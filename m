@@ -4,81 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C910C46467
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Jan 2023 12:24:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C09C9C54EBC
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Jan 2023 17:59:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Content-Type:Subject:Cc
-	:To:From:Message-ID:MIME-Version:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zv9DFz2jFU7cwgarhZpClLtUvJqk7GOMCDtGW4naVT4=; b=Rzm25R57GXUc8IpuEuMVlum/Jc
-	Q25v/NcI39IFrnRp/z3/+2mnvyGnJhIRMl8A1AsXbUOEo68/DY0/XF36A9sjiGrnHV3ydNxGl7SmC
-	hrReZD807fUu//GZk//QwtL8JIcl3/Ew8nmG890G/js6+363R+kVz+IZyANPRTLQdx89BDTE7QNk5
-	I0bKknez+KjkB5JRdFSDixoyOS+mwvlMxFRJnW6WO5IICh+P2nhYHLvFDBeLDoE+2VUpwsGKxsYw7
-	JMA0Td/ugHG9jh7aFeCHOHHDLXjjZua+/OOFadm1QzY4bkZe9DL7hwpmlh2F6onka2DI+blMXuYMk
-	ZCTS7ACg==;
+	bh=iWqmgQf0ITiBcZh6JNhizBnvL7irlNgfSV2PoqtxyOw=; b=fndI2DAYIRRVxXOL5dG+NChkG9
+	wi1+80b4nzPvkS9AbZvk2phnJrA+JXc7PfwMnb5W+zHXkGU6lZxfIEPSR7MbIdsHmyWQ3V2GAf/gL
+	CVUuE7EUxUYD/p/xTTo+SSbqKN4mxpe1kqlF8JRW0Aa2SruEOptN5YdDud1ou3BfcpJnpN8wkFfPN
+	JR5KO5YR1opkUAwTADyIWNZmrNDxuYMWXb2N8zR0GryYvl/TPC7QPTmqgFZ/wJfLbk6ZlGLE8Pjw9
+	zXMWL7p0xJnOAtJUyERvsTa9pU4MbkOBRh+Ih5WpElATy/UMb9TzWKFcJloVlufvpzP1uIegToI0Z
+	78/gkpKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pE8FP-004mNM-Fc; Sat, 07 Jan 2023 12:24:27 +0000
-Received: from mout.gmx.net ([212.227.17.22])
+	id 1pEDTt-007tVz-Fo; Sat, 07 Jan 2023 17:59:45 +0000
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pE8FK-004mJQ-3j
-	for linux-mediatek@lists.infradead.org; Sat, 07 Jan 2023 12:24:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1673094231;
-	bh=zv9DFz2jFU7cwgarhZpClLtUvJqk7GOMCDtGW4naVT4=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
-	b=hbAOPRtSb4588GuGdrreMXwPNKZzA8qLj0qIC6pxdDTQB8M+r5wxb8kCPYrrf/0UW
-	 x+BOek4gnxBmzNEdiZ170bcM+j41CLvtvGVJtzLYRKeOAbW+tLCpZva0Rsqg4+qzdL
-	 +ovfeXt0aToUj+rRFcBqMuTcmMnMrPEN1qncGGIbm8pOURdl4tZ4e8oZfaFPOVXAqu
-	 0HoqcyUZ0bZjICnAPO303ej8Tia+MRrdNe4TDk1v99ca6OewdpAq4MCuFZSA1BdSD7
-	 ++yHyddhAX4MiCbTPijTZ21oNhmfX+rCPZ7tc+63wKu5ha5zllyMwX4AMsT4lnXi3g
-	 77phW1xspdWLw==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.149.37] ([217.61.149.37]) by web-mail.gmx.net
- (3c-app-gmx-bap38.server.lan [172.19.172.108]) (via HTTP); Sat, 7 Jan 2023
- 13:23:50 +0100
+	id 1pEDTr-007tUv-82
+	for linux-mediatek@lists.infradead.org; Sat, 07 Jan 2023 17:59:44 +0000
+Received: by mail-pl1-x629.google.com with SMTP id b2so5065376pld.7
+        for <linux-mediatek@lists.infradead.org>; Sat, 07 Jan 2023 09:59:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=compal-corp-partner-google-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=iWqmgQf0ITiBcZh6JNhizBnvL7irlNgfSV2PoqtxyOw=;
+        b=wMIOyxfyvHuC8e5Aj6CB86Nw70h9LBzXvBV1QA9bp/cj6fSM7QyfknVz52mhPEPidk
+         a1zsQzUy5Qq7BA4Ks65U5UYG+sp3s+EBb25I2XDJ2dcahqqjpM60S5LbDLZfRpx2MeFU
+         W7nfaCWOroj4S4MucO++lqXNHZVD+7BdFUnEzq659JgK4gdHmWhnogPQqXUkmUxBgp5a
+         Ua/h1lO+/UUDk4aU/llV3Dk9KtpcdmChz7iAN5oZkUagA7INeCQhFf3pz9/QqMnZ5Gww
+         FlwN4i2TSMyEqfdVC6acojXTwY3qO43cpWjfuEQnQa2sYVZKFU4f/Vp8pm576XC0SbMc
+         5nLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=iWqmgQf0ITiBcZh6JNhizBnvL7irlNgfSV2PoqtxyOw=;
+        b=Kuw3zftAs0MIJogZyAz9N2TlXHDWNFjdNVfubmtOASGpFR5JmeblBxiHCpZTdNaWbC
+         n2mYqey9OcjknSyOFMShN7EMnTXkmzKjhwxFNEZhBrNfmXwllU7EAmMA77yLwDmMwqpS
+         RN830lE0uXGSFrR+L4qmu27tZfk0hqEFdHmHkfjCTGo3NCDih2ihSzZ4Fiqx0Wt6tEsb
+         /iLx/8bMDDs4LWEbg4aHzhafxUQ2kLpZrYD50S/5mj3IHkBGkZyUGIuV0deHvvCXaR/G
+         eW0LxlI3IEhMFlUD50bKXB6yUtlb0vU8HyCAnVgqbMiC+z99vRHuft0hfXQ5Q+JFYnSc
+         DIXg==
+X-Gm-Message-State: AFqh2kp5VuXOzmqv9o7dJ/TsH650E8gM+7uy6LBQctHMQweCGSAaOaUq
+	iZxt6efaXkBqFfDOQqwjGr+9Sw==
+X-Google-Smtp-Source: AMrXdXtVpHJdVOh4RfHSJOx0P/jtbPc2ZkMWo8tGt2ZaF7BG1czvecWZCiKuu3acIhIcAZwpeKeMbg==
+X-Received: by 2002:a05:6a20:1a84:b0:a7:89fd:884c with SMTP id ci4-20020a056a201a8400b000a789fd884cmr66257655pzb.11.1673114380551;
+        Sat, 07 Jan 2023 09:59:40 -0800 (PST)
+Received: from localhost.localdomain (36-226-16-237.dynamic-ip.hinet.net. [36.226.16.237])
+        by smtp.gmail.com with ESMTPSA id g84-20020a625257000000b00580978caca7sm3102886pfb.45.2023.01.07.09.59.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 07 Jan 2023 09:59:39 -0800 (PST)
+From: Ajye Huang <ajye_huang@compal.corp-partner.google.com>
+To: linux-kernel@vger.kernel.org
+Cc: Mark Brown <broonie@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	tongjian <tongjian@huaqin.corp-partner.google.com>,
+	linux-mediatek@lists.infradead.org,
+	"chunxu . li" <chunxu.li@mediatek.com>,
+	Takashi Iwai <tiwai@suse.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Jiaxin Yu <jiaxin.yu@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Ajye Huang <ajye_huang@compal.corp-partner.google.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	alsa-devel@alsa-project.org,
+	kernel test robot <lkp@intel.com>,
+	Dan Carpenter <error27@gmail.com>
+Subject: [PATCH v1] ASoC: mediatek: mt8186-rt5682: primary_codec_init() warn: missing error code? 'ret'
+Date: Sun,  8 Jan 2023 01:59:33 +0800
+Message-Id: <20230107175933.12973-1-ajye_huang@compal.corp-partner.google.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Message-ID: <trinity-88ad03e9-e830-4898-93f0-106af8b753bd-1673094230865@3c-app-gmx-bap38>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Felix Fietkau <nbd@nbd.name>
-Cc: netdev@vger.kernel.org, John Crispin <john@phrozen.org>, Sean Wang
- <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
- Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
- Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Aw: Re:  Re: Re: [PATCH net v3 4/5] net: ethernet: mtk_eth_soc:
- drop generic vlan rx offload, only use DSA untagging
-Content-Type: text/plain; charset=UTF-8
-Date: Sat, 7 Jan 2023 13:23:50 +0100
-Importance: normal
-Sensitivity: Normal
-X-Priority: 3
-X-Provags-ID: V03:K1:wP4TMKG2DaLks5PJfrg2GiHqrg61/W8XG98+sNB3yE8BNT7gs3jeY2pXQVQKnB7KxWyUS
- K5gRCfuJyh+1XkzUHJYtYdCyz12l1Zrq2nJXf2uy7GIx4Q+0TfZ86VV7pbS+KPUjhTZu3RMng/up
- gr67XmEPFWRWirGMyy0KXX0dDCBELBUm7bo1YDH/eomd69m06ar2+5LgUiPk0bRdVWPlIGFV2yCX
- 3WwyLlARITSboIzUqWrkF0qDjrmaOJrdwkB9XVL61jT7xuBZdAgg4eSrrYmhGW+coaew3xGIpP9K
- Gc=
-UI-OutboundReport: notjunk:1;M01:P0:UIrRf/JzP+0=;92GAdljAG5pcOdjgtJXbJhVbr1z
- MYRfKTlAMm+8VBnPWol1WaUFOO1zKpSY0/vTXsjeXWhxiWax0Zc5vbK7M2Fq4EXosoZHKfVjf
- 1A/n7THFpjvoALbpfzC4WZU/2vHhXNeHCbLDy3NtWq85bgwvidRz4P9tDUTrNvRB9YgAlvYbQ
- b58NB5HVVLMqwS/Fxhp29FtMG3cvehpBLxN0lVf+1dcldosd0CoW3zRvSOC2ctkfY4VlfoMFp
- 7k1fVyVfar+ZSC+HKnXeuLEZF2QHYQSmOQMQXAEpOiXfaqaq+wBWsIZFfnc/iEyELv7WbTurm
- ijROU15BsZDdARYwMbWm4X6ZmLE6/UnXIxvN6hoBMb7ycKSRQbOAvAml5Ql0hv3ir2IOK56Ms
- n9+t32zdTlMfu1NaXEPsaqKR7QSI+bWGRAfp/iDjg9YOQjISAQ1zeR9CuZtPnGF1Qp+F6lUWx
- 3i2vNr8XzOMM71xklgjniMh74y4ze56L+f9l4cs0+5Mn1EmKjQt5Tes7c91j3qnvPTSYO2gwC
- FXKp6eBexPneP/Bq/6d6iwQHslBfprX5KcGo9qD43mbOTTOrYnN1eA1vKouXjzQp+Q42cu2gr
- Seykp6axgvDcl5BSp2ox2hBzcUA64d6Bt/ak391zvTvHDK02U7wjJIE1TrzQzE0dKJFjOSajK
- T2Vq110SDrT3xQTIiKvHDAsaunF+wB5eyQmHbGD/S/TAsHn343zPDTSB/YuBE9ajoVpAktw2U
- 7g6pBEpje75bGYB6xnF38GpTayoo7CGOZRgE6My4CfWg4YpGcdqRW8B84OCdOI17PVQXrkXxn
- 13v2RlCe0Gs/pw4G9T9Cnu+Zj3lCekIcISIecUcklGlUI=
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230107_042422_572756_DC410EFD 
-X-CRM114-Status: UNSURE (   4.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230107_095943_523371_F5F2A7C2 
+X-CRM114-Status: GOOD (  11.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,23 +100,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+The function primary_codec_init() should return 0 if dmic_sel is null.
 
-FYI, opened a systemd issue on github
+Here is the warning message reported by 0-DAY CI Kernel Test Service.
 
-https://github.com/systemd/systemd/issues/25970
+smatch warnings:
+primary_codec_init() warn: missing error code? 'ret'
+...
+2022-11-02  141       if (!priv->dmic_sel) {
+2022-11-02  142               dev_info(card->dev, "dmic_sel is null\n");
+2022-11-02 @143               return ret;
+
+return -EIVNAL;?  return 0;?
+
+2022-11-02  144       }
+
+Reported-by: kernel test robot <lkp@intel.com>
+Reported-by: Dan Carpenter <error27@gmail.com>
+Signed-off-by: Ajye Huang <ajye_huang@compal.corp-partner.google.com>
 
 ---
+ sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-regards Frank
+diff --git a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
+index af44e331dae8..b333950aa3c3 100644
+--- a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
++++ b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
+@@ -140,7 +140,7 @@ static int primary_codec_init(struct snd_soc_pcm_runtime *rtd)
+ 
+ 	if (!priv->dmic_sel) {
+ 		dev_info(card->dev, "dmic_sel is null\n");
+-		return ret;
++		return 0;
+ 	}
+ 
+ 	ret = snd_soc_dapm_new_controls(&card->dapm, dmic_widgets,
+-- 
+2.25.1
 
-Hi,
-
-update on my tests...something in my systemd-networkd breaks vlan on dsa-port.
-
-if i boot with this disabled vlan added manually works on dsa-port and gmac too. so felix you can keep my tested-by.
-
-if vlan is working and i activate networkd afterwards vlans are still working...i guess systemd puts the wan-interface into some kind of non-vlan-mode (vlan-filtering?).
-
-...
 
