@@ -4,66 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C60A4C54EBD
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Jan 2023 21:41:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C910C46467
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Jan 2023 12:24:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Content-Type:Subject:Cc
+	:To:From:Message-ID:MIME-Version:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LLvVl74Y860WVErCSik7gZGhZ72jffHsm2l1RpDtuXU=; b=LOpc3WEfGF2vN7nsDGSguAtV9A
-	P80TkSwDTiBK1mBL3PKmY2CNSD5BRtrkISKTMP4twWc2k81zzqMX1ehDQHBoN/exhqhl5l8qNjPZh
-	GkKCYjXCgvanRpdFTkc6sWgbshe0SRzwplzBVneINB2UQxpChmhN2KwHJbn05L1eWLd/k8SPmg/xr
-	v1uNwdZVJA4gYFgdSmvc1avwxGEwvhXjZuh2fgneYVU9xV/R/7Z+gcz+dHj0env1m0z4TEU4nOZ7L
-	yirN/OgNeGk/0DUa4ymx+MCTjOHKS4mUaKjjrCSTH4zXQfMizrjFpmObJR95XnDWlsJKnybhmgBCI
-	691/fyMw==;
+	bh=zv9DFz2jFU7cwgarhZpClLtUvJqk7GOMCDtGW4naVT4=; b=Rzm25R57GXUc8IpuEuMVlum/Jc
+	Q25v/NcI39IFrnRp/z3/+2mnvyGnJhIRMl8A1AsXbUOEo68/DY0/XF36A9sjiGrnHV3ydNxGl7SmC
+	hrReZD807fUu//GZk//QwtL8JIcl3/Ew8nmG890G/js6+363R+kVz+IZyANPRTLQdx89BDTE7QNk5
+	I0bKknez+KjkB5JRdFSDixoyOS+mwvlMxFRJnW6WO5IICh+P2nhYHLvFDBeLDoE+2VUpwsGKxsYw7
+	JMA0Td/ugHG9jh7aFeCHOHHDLXjjZua+/OOFadm1QzY4bkZe9DL7hwpmlh2F6onka2DI+blMXuYMk
+	ZCTS7ACg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDuSd-00F6GF-70; Fri, 06 Jan 2023 21:41:11 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pE8FP-004mNM-Fc; Sat, 07 Jan 2023 12:24:27 +0000
+Received: from mout.gmx.net ([212.227.17.22])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDuSW-00F6Dq-Cy
-	for linux-mediatek@lists.infradead.org; Fri, 06 Jan 2023 21:41:09 +0000
-X-UUID: 3936236f850d44f1835e7ad9ee509f8e-20230106
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=LLvVl74Y860WVErCSik7gZGhZ72jffHsm2l1RpDtuXU=;
-	b=AgKBeOGDHKr0luRQ4kVL/rMujfhDkNR6tHclR9Oo9DjO1dX64IjGQjYJWSQReZnFw4XsO+0kQkyfH42Kf34V30KVyzBUaSiBwLrNtsMHp2vbJOaAABB7sFYYpqWz45gpwHM4A869LKyZDpJJiSRp7ZsuXzw7FXfuKlbvp/Oh1Xo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:0df9d15f-56f4-42a3-84b6-645385356eb3,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:543e81c,CLOUDID:9215808b-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0,NGT
-X-UUID: 3936236f850d44f1835e7ad9ee509f8e-20230106
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 711172235; Fri, 06 Jan 2023 14:40:46 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Sat, 7 Jan 2023 05:40:43 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Sat, 7 Jan 2023 05:40:43 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH v3] wifi: mt76: mt7915: fix WED TxS reporting
-Date: Sat, 7 Jan 2023 05:40:42 +0800
-Message-ID: <c5ec30d62cb4ee5a5fe9beebf85f111289183de1.1672965945.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pE8FK-004mJQ-3j
+	for linux-mediatek@lists.infradead.org; Sat, 07 Jan 2023 12:24:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1673094231;
+	bh=zv9DFz2jFU7cwgarhZpClLtUvJqk7GOMCDtGW4naVT4=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
+	b=hbAOPRtSb4588GuGdrreMXwPNKZzA8qLj0qIC6pxdDTQB8M+r5wxb8kCPYrrf/0UW
+	 x+BOek4gnxBmzNEdiZ170bcM+j41CLvtvGVJtzLYRKeOAbW+tLCpZva0Rsqg4+qzdL
+	 +ovfeXt0aToUj+rRFcBqMuTcmMnMrPEN1qncGGIbm8pOURdl4tZ4e8oZfaFPOVXAqu
+	 0HoqcyUZ0bZjICnAPO303ej8Tia+MRrdNe4TDk1v99ca6OewdpAq4MCuFZSA1BdSD7
+	 ++yHyddhAX4MiCbTPijTZ21oNhmfX+rCPZ7tc+63wKu5ha5zllyMwX4AMsT4lnXi3g
+	 77phW1xspdWLw==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.149.37] ([217.61.149.37]) by web-mail.gmx.net
+ (3c-app-gmx-bap38.server.lan [172.19.172.108]) (via HTTP); Sat, 7 Jan 2023
+ 13:23:50 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Message-ID: <trinity-88ad03e9-e830-4898-93f0-106af8b753bd-1673094230865@3c-app-gmx-bap38>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Felix Fietkau <nbd@nbd.name>
+Cc: netdev@vger.kernel.org, John Crispin <john@phrozen.org>, Sean Wang
+ <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
+ Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
+ Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Aw: Re:  Re: Re: [PATCH net v3 4/5] net: ethernet: mtk_eth_soc:
+ drop generic vlan rx offload, only use DSA untagging
+Content-Type: text/plain; charset=UTF-8
+Date: Sat, 7 Jan 2023 13:23:50 +0100
+Importance: normal
+Sensitivity: Normal
+X-Priority: 3
+X-Provags-ID: V03:K1:wP4TMKG2DaLks5PJfrg2GiHqrg61/W8XG98+sNB3yE8BNT7gs3jeY2pXQVQKnB7KxWyUS
+ K5gRCfuJyh+1XkzUHJYtYdCyz12l1Zrq2nJXf2uy7GIx4Q+0TfZ86VV7pbS+KPUjhTZu3RMng/up
+ gr67XmEPFWRWirGMyy0KXX0dDCBELBUm7bo1YDH/eomd69m06ar2+5LgUiPk0bRdVWPlIGFV2yCX
+ 3WwyLlARITSboIzUqWrkF0qDjrmaOJrdwkB9XVL61jT7xuBZdAgg4eSrrYmhGW+coaew3xGIpP9K
+ Gc=
+UI-OutboundReport: notjunk:1;M01:P0:UIrRf/JzP+0=;92GAdljAG5pcOdjgtJXbJhVbr1z
+ MYRfKTlAMm+8VBnPWol1WaUFOO1zKpSY0/vTXsjeXWhxiWax0Zc5vbK7M2Fq4EXosoZHKfVjf
+ 1A/n7THFpjvoALbpfzC4WZU/2vHhXNeHCbLDy3NtWq85bgwvidRz4P9tDUTrNvRB9YgAlvYbQ
+ b58NB5HVVLMqwS/Fxhp29FtMG3cvehpBLxN0lVf+1dcldosd0CoW3zRvSOC2ctkfY4VlfoMFp
+ 7k1fVyVfar+ZSC+HKnXeuLEZF2QHYQSmOQMQXAEpOiXfaqaq+wBWsIZFfnc/iEyELv7WbTurm
+ ijROU15BsZDdARYwMbWm4X6ZmLE6/UnXIxvN6hoBMb7ycKSRQbOAvAml5Ql0hv3ir2IOK56Ms
+ n9+t32zdTlMfu1NaXEPsaqKR7QSI+bWGRAfp/iDjg9YOQjISAQ1zeR9CuZtPnGF1Qp+F6lUWx
+ 3i2vNr8XzOMM71xklgjniMh74y4ze56L+f9l4cs0+5Mn1EmKjQt5Tes7c91j3qnvPTSYO2gwC
+ FXKp6eBexPneP/Bq/6d6iwQHslBfprX5KcGo9qD43mbOTTOrYnN1eA1vKouXjzQp+Q42cu2gr
+ Seykp6axgvDcl5BSp2ox2hBzcUA64d6Bt/ak391zvTvHDK02U7wjJIE1TrzQzE0dKJFjOSajK
+ T2Vq110SDrT3xQTIiKvHDAsaunF+wB5eyQmHbGD/S/TAsHn343zPDTSB/YuBE9ajoVpAktw2U
+ 7g6pBEpje75bGYB6xnF38GpTayoo7CGOZRgE6My4CfWg4YpGcdqRW8B84OCdOI17PVQXrkXxn
+ 13v2RlCe0Gs/pw4G9T9Cnu+Zj3lCekIcISIecUcklGlUI=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230106_134104_491881_17E1B0BA 
-X-CRM114-Status: UNSURE (   7.90  )
+X-CRM114-CacheID: sfid-20230107_042422_572756_DC410EFD 
+X-CRM114-Status: UNSURE (   4.71  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,33 +93,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The previous commit forgot to remove a leftover check.
+Hi,
 
-Fixes: 43eaa3689507 ("wifi: mt76: add PPDU based TxS support for WED device")
-Reported-By: Sujuan Chen <sujuan.chen@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+FYI, opened a systemd issue on github
+
+https://github.com/systemd/systemd/issues/25970
+
 ---
-changes since v3 - revert v2 changes
-changes since v2 - correct bitmask
----
- drivers/net/wireless/mediatek/mt76/mt7915/mac.c | 3 ---
- 1 file changed, 3 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index f0d5a3603902..1a6def77db57 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -1061,9 +1061,6 @@ static void mt7915_mac_add_txs(struct mt7915_dev *dev, void *data)
- 	u16 wcidx;
- 	u8 pid;
- 
--	if (le32_get_bits(txs_data[0], MT_TXS0_TXS_FORMAT) > 1)
--		return;
--
- 	wcidx = le32_get_bits(txs_data[2], MT_TXS2_WCID);
- 	pid = le32_get_bits(txs_data[3], MT_TXS3_PID);
- 
--- 
-2.18.0
+regards Frank
 
+Hi,
+
+update on my tests...something in my systemd-networkd breaks vlan on dsa-port.
+
+if i boot with this disabled vlan added manually works on dsa-port and gmac too. so felix you can keep my tested-by.
+
+if vlan is working and i activate networkd afterwards vlans are still working...i guess systemd puts the wan-interface into some kind of non-vlan-mode (vlan-filtering?).
+
+...
 
