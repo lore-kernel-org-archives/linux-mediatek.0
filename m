@@ -4,86 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 920F6C46467
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Jan 2023 21:47:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF26FC54EBC
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Jan 2023 06:57:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zNjKwUpl4MAZri6WkLaSE7g3L6zmbqPHmA9ZJ9Bzi1w=; b=uiHakJy2ETCM+cbTZ4sRboBLzY
-	2p+ABV2cl1zu1PxClLk4bSAQvXk3EjZ8jBzo5jKgF62VigUHOWD3grUtoqn5Qj0zz5Bz1G4fm3SuA
-	kn2wA8JKubac3d5HNL/z5LUEHKO4AJ0WtH0A2gdAmffep26RwCUT6sAiyCNifWc2vYIIe2L2WtUkv
-	T+K8hI6kzz5diVNY+BEfwqt0kM+ct8nd6P8at0RflZ+b+W1QDqA1O2yb3OWKeHfmefp37Vbju2ZdL
-	sIDCI08mNZkER5b8v7Mnptbtbr5oyJEI/LGjPpSLQtUBZJr2r9sJjY3mGO8COChs8K1IPIpkJpVGr
-	tmSHfc5g==;
+	bh=ZdACthabd6t5WUDs82Y5H8ItQrpBcJwfFxmAQ24PtBU=; b=HBX3TkzAUrhvAlBaTS7rs34au8
+	/9fHCOYAoOqrYtPPKC+7D/zIulbHQPAnH7KcFQeqOzgnv31B6g1GUh1/jn7hoqu96cCgPFPLyIiqX
+	ihsarpIkDMw4wWHQebLquFZYApb7yir0bFum4b6ocyi5acqANnGXROJU4vFUNeEyLA/rqRxPiMSmO
+	QVZgcvQ79LY6eqTYbweVxIZNM709WVB1piscqdHXF7LsE56U6/XAptkhQ2oIkRh3q1OAtnNIOsHbu
+	5Xatxp9TSHoI1+don9mlcfvNWxDfzbrJ0Cmm2Ursiv8ImmaS6gJlQaDnYpdZqV/yaTVH7e7xXK75C
+	JuijVk6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEH2C-008WPl-Pm; Sat, 07 Jan 2023 21:47:24 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pEPcS-00Bsnc-J8; Sun, 08 Jan 2023 06:57:24 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEH2A-008WOw-R6
-	for linux-mediatek@bombadil.infradead.org; Sat, 07 Jan 2023 21:47:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=zNjKwUpl4MAZri6WkLaSE7g3L6zmbqPHmA9ZJ9Bzi1w=; b=nC0UaZObS/Njj7U2DUF6MM79W6
-	nYOSXH8BuEf/HCBfL05e34BLAt6LPsRQkvm0umDH9rtCQsYGXwBRJE0yjUAX1zgKt8oIbM9UcHlkO
-	TlbdR3Z8cBIvRjmpY6OMuAFtLcQZ9nGcmsbw0OQALSS/8P4PvX92GV70Fc9aJsuFx+FLlpHIMyai/
-	SfpgFcySSSS+TaGIjYYg/2R1e35t+CKGkISoOoK7FEyvOf918ufjUhP7l2Qw/uDvUsCjiGFyzkJwD
-	uvR2C67mOAJKFgkk4N6e+0vb5lb6kLMdiccYxydT6xZwHdU+cTB1QuiTkZUoUsHvTZzNCvLC6/8sY
-	eeeEV8EA==;
-Received: from mailrelay5-1.pub.mailoutpod2-cph3.one.com ([46.30.211.180])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pEH20-002Dkz-1n
-	for linux-mediatek@lists.infradead.org;
-	Sat, 07 Jan 2023 21:47:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=ravnborg.org; s=rsa2;
-	h=in-reply-to:content-type:mime-version:references:message-id:subject:cc:to:
-	 from:date:from;
-	bh=zNjKwUpl4MAZri6WkLaSE7g3L6zmbqPHmA9ZJ9Bzi1w=;
-	b=P4J8i7CuwvpmkbZ5a1nsowUUAbTvKNu9VrELvmrf8z8IsVdysY8xVbHJcPji5OUGYY0mKyPRUJK0L
-	 q2eAqJpoU0YYTBa+th94PE+xy0++ga2HdaVh1ETK7UcQU+lelpnPe9vI5PsUX0L1//kAhIyQHinC1y
-	 CIpouzk/o+Uu5lUG4zv0OgJ9In2MISZimMN4WtAyzVdlh6I29vgHEk/FEU7v3IXCnCDW0OwDKy07JV
-	 bdbQfulVL4QbiZLfT+5Ypo7a2fe2AESQ5FwLqCvfmudujtG5DLxVUmkPjNrfNke8tGVTvbMqgCHaGJ
-	 kxnWoTN7fVeIHS+iOkJR9R/v1IL3LEw==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
-	d=ravnborg.org; s=ed2;
-	h=in-reply-to:content-type:mime-version:references:message-id:subject:cc:to:
-	 from:date:from;
-	bh=zNjKwUpl4MAZri6WkLaSE7g3L6zmbqPHmA9ZJ9Bzi1w=;
-	b=/5wL/FcJR0pGFXvug0CaJFWWqZOoKGhwrv3hW6ZqandXERIJZ+x5mtwNcs7aE5hZJwKV/R70kMOUB
-	 nLj6Px/CA==
-X-HalOne-ID: 328201d2-8eca-11ed-857d-7703b0afff57
-Received: from ravnborg.org (2-105-2-98-cable.dk.customer.tdc.net [2.105.2.98])
-	by mailrelay5 (Halon) with ESMTPSA
-	id 328201d2-8eca-11ed-857d-7703b0afff57;
-	Sat, 07 Jan 2023 20:31:02 +0000 (UTC)
-Date: Sat, 7 Jan 2023 21:31:01 +0100
-From: Sam Ravnborg <sam@ravnborg.org>
-To: xinlei.lee@mediatek.com
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
-	daniel@ffwll.ch, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, jitao.shi@mediatek.com,
-	thierry.reding@gmail.com, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH 2/2] drm/panel: boe-tv101wum-nl6: Reduce lcm_reset to
- send initial code time
-Message-ID: <Y7nWhciY7cru78lQ@ravnborg.org>
-References: <1672974321-18947-1-git-send-email-xinlei.lee@mediatek.com>
- <1672974321-18947-3-git-send-email-xinlei.lee@mediatek.com>
+	id 1pEPcG-00Bsjp-O0; Sun, 08 Jan 2023 06:57:14 +0000
+Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id EAF8E6CF;
+	Sun,  8 Jan 2023 07:57:02 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1673161023;
+	bh=bt40o19/YEKXIIGOmDN9pFrfQRCF+UbVIZKIlIuqMq4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=S93UmhWNIOX8OvzH6D94A0tVnB1K66wFo2R398CVhoDr470LXNaeACkoeIYSCNhlP
+	 +U2U9p48BPV42uNRcWmQgK+7ycmaApKesNBSt0BTr4GyucR+QRJ9NRrq2kVD6oMFiN
+	 irtCSEpkD+5j5V7xUWZv1fKUYBXNk8KTKzTOaYpY=
+Date: Sun, 8 Jan 2023 08:56:59 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Aradhya Bhatia <a-bhatia1@ti.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Tomi Valkeinen <tomba@kernel.org>, Jyri Sarha <jyri.sarha@iki.fi>,
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Sam Ravnborg <sam@ravnborg.org>, Maxime Ripard <maxime@cerno.tech>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Albert Ou <aou@eecs.berkeley.edu>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Guo Ren <guoren@kernel.org>,
+	DRI Development List <dri-devel@lists.freedesktop.org>,
+	Devicetree List <devicetree@vger.kernel.org>,
+	Linux Kernel List <linux-kernel@vger.kernel.org>,
+	Linux RISC-V List <linux-riscv@lists.infradead.org>,
+	Linux ARM Kernel List <linux-arm-kernel@lists.infradead.org>,
+	Linux Mediatek List <linux-mediatek@lists.infradead.org>,
+	Linux C-SKY Arch List <linux-csky@vger.kernel.org>,
+	Nishanth Menon <nm@ti.com>, Vignesh Raghavendra <vigneshr@ti.com>,
+	Rahul T R <r-ravikumar@ti.com>, Devarsh Thakkar <devarsht@ti.com>,
+	Jai Luthra <j-luthra@ti.com>, Jayesh Choudhary <j-choudhary@ti.com>
+Subject: Re: [RFC PATCH 3/4] dt-bindings: panel: Introduce dual-link LVDS
+ panel
+Message-ID: <Y7ppO8nZFw7ZKdOi@pendragon.ideasonboard.com>
+References: <20230103064615.5311-1-a-bhatia1@ti.com>
+ <20230103064615.5311-4-a-bhatia1@ti.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <1672974321-18947-3-git-send-email-xinlei.lee@mediatek.com>
+In-Reply-To: <20230103064615.5311-4-a-bhatia1@ti.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230107_214712_837441_D6D970FC 
-X-CRM114-Status: GOOD (  17.87  )
+X-CRM114-CacheID: sfid-20230107_225712_971105_58DFFF06 
+X-CRM114-Status: GOOD (  21.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,38 +87,209 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 06, 2023 at 11:05:21AM +0800, xinlei.lee@mediatek.com wrote:
-> From: Xinlei Lee <xinlei.lee@mediatek.com>
+Hi Aradhya,
+
+Thank you for the patch.
+
+On Tue, Jan 03, 2023 at 12:16:14PM +0530, Aradhya Bhatia wrote:
+> Dual-link LVDS interfaces have 2 links, with even pixels traveling on
+> one link, and odd pixels on the other. These panels are also generic in
+> nature, with no documented constraints, much like their single-link
+> counterparts, "panel-lvds".
 > 
-> Since the panel spec stipulates that the time from lcm_reset to DSI to
-> send the initial code should be greater than 6ms and less than 40ms,
-> so reduce the delay before sending the initial code and avoid panel
-> exceptions.
-
-The changelog says "reduce the delay", but the patch removes the delay.
-Are there other delays that make sure the "greater than 6 ms" is OK?
-
-	Sam
-
+> Add a new compatible, "panel-dual-lvds", and a dt-binding document for
+> these panels.
 > 
-> Fixes: a869b9db7adf ("drm/panel: support for boe tv101wum-nl6 wuxga dsi video mode panel")
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> Signed-off-by: Aradhya Bhatia <a-bhatia1@ti.com>
 > ---
->  drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c | 1 -
->  1 file changed, 1 deletion(-)
+>  .../display/panel/panel-dual-lvds.yaml        | 157 ++++++++++++++++++
+>  MAINTAINERS                                   |   1 +
+>  2 files changed, 158 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
 > 
-> diff --git a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
-> index 857a2f0420d7..f0093035f1ff 100644
-> --- a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
-> +++ b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
-> @@ -780,7 +780,6 @@ static const struct panel_init_cmd inx_hj110iz_init_cmd[] = {
->  };
+> diff --git a/Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml b/Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
+> new file mode 100644
+> index 000000000000..88a7aa2410be
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
+> @@ -0,0 +1,157 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/display/panel/panel-dual-lvds.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Generic Dual-Link LVDS Display Panel
+> +
+> +maintainers:
+> +  - Aradhya Bhatia <a-bhatia1@ti.com>
+> +  - Thierry Reding <thierry.reding@gmail.com>
+> +
+> +description: |
+> +  A dual-LVDS interface is a dual-link connection with the even pixels
+> +  traveling on one link, and the odd pixels traveling on the other.
+> +
+> +allOf:
+> +  - $ref: panel-common.yaml#
+> +  - $ref: /schemas/display/lvds.yaml/#
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - items:
+> +          - enum:
+> +              - lincolntech,lcd185-101ct
+> +              - microtips,13-101hieb0hf0-s
+> +          - const: panel-dual-lvds
+> +      - const: panel-dual-lvds
+
+A device-specific compatible string should be required,
+"panel-dual-lvds" alone shouldn't be allowed. Otherwise it won't be
+possible to tell different models apart later should this be required.
+
+> +
+> +  ports:
+> +    $ref: /schemas/graph.yaml#/properties/ports
+> +
+> +    properties:
+> +      port@0:
+> +        $ref: /schemas/graph.yaml#/$defs/port-base
+> +        unevaluatedProperties: false
+> +        description: The sink for first set of LVDS pixels.
+> +
+> +        properties:
+> +          dual-lvds-odd-pixels:
+> +            type: boolean
+> +
+> +          dual-lvds-even-pixels:
+> +            type: boolean
+> +
+> +        oneOf:
+> +          - required: [dual-lvds-odd-pixels]
+> +          - required: [dual-lvds-even-pixels]
+> +
+> +      port@1:
+> +        $ref: /schemas/graph.yaml#/$defs/port-base
+> +        unevaluatedProperties: false
+> +        description: The sink for second set of LVDS pixels.
+> +
+> +        properties:
+> +          dual-lvds-even-pixels:
+> +            type: boolean
+> +
+> +          dual-lvds-odd-pixels:
+> +            type: boolean
+> +
+> +        oneOf:
+> +          - required: [dual-lvds-even-pixels]
+> +          - required: [dual-lvds-odd-pixels]
+> +
+> +    allOf:
+> +      - if:
+> +          properties:
+> +            port@0:
+> +              properties:
+> +                dual-lvds-odd-pixels: true
+> +              required:
+> +                - dual-lvds-odd-pixels
+> +        then:
+> +          properties:
+> +            port@1:
+> +              properties:
+> +                dual-lvds-even-pixels: true
+> +                dual-lvds-odd-pixels: false
+> +
+> +      - if:
+> +          properties:
+> +            port@0:
+> +              properties:
+> +                dual-lvds-even-pixels: true
+> +              required:
+> +                - dual-lvds-even-pixels
+> +        then:
+> +          properties:
+> +            port@1:
+> +              properties:
+> +                dual-lvds-odd-pixels: true
+> +                dual-lvds-even-pixels: false
+> +
+> +    required:
+> +      - port@0
+> +      - port@1
+> +
+> +  port: false
+> +
+> +unevaluatedProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - width-mm
+> +  - height-mm
+> +  - data-mapping
+> +  - panel-timing
+> +  - ports
+> +
+> +examples:
+> +  - |+
+> +    panel-dual-lvds {
+> +      compatible = "microtips,13-101hieb0hf0-s", "panel-dual-lvds";
+> +
+> +      width-mm = <217>;
+> +      height-mm = <136>;
+> +
+> +      data-mapping = "vesa-24";
+> +
+> +      panel-timing {
+> +        clock-frequency = <150275000>;
+> +        hactive = <1920>;
+> +        vactive = <1200>;
+> +        hfront-porch = <32>;
+> +        hsync-len = <52>;
+> +        hback-porch = <24>;
+> +        vfront-porch = <24>;
+> +        vsync-len = <8>;
+> +        vback-porch = <3>;
+> +        de-active = <1>;
+> +      };
+> +
+> +      ports {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        port@0 {
+> +          reg = <0>;
+> +          dual-lvds-odd-pixels;
+> +          lcd_in0: endpoint {
+> +            remote-endpoint = <&oldi_out0>;
+> +          };
+> +        };
+> +
+> +        port@1 {
+> +          reg = <1>;
+> +          dual-lvds-even-pixels;
+> +          lcd_in1: endpoint {
+> +            remote-endpoint = <&oldi_out1>;
+> +          };
+> +        };
+> +      };
+> +    };
+> +
+> +...
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 7f86d02cb427..c13f24293ab1 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -6595,6 +6595,7 @@ T:	git git://anongit.freedesktop.org/drm/drm-misc
+>  S:	Maintained
+>  F:	drivers/gpu/drm/panel/panel-lvds.c
+>  F:	Documentation/devicetree/bindings/display/lvds.yaml
+> +F:	Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
+>  F:	Documentation/devicetree/bindings/display/panel/panel-lvds.yaml
 >  
->  static const struct panel_init_cmd boe_init_cmd[] = {
-> -	_INIT_DELAY_CMD(24),
->  	_INIT_DCS_CMD(0xB0, 0x05),
->  	_INIT_DCS_CMD(0xB1, 0xE5),
->  	_INIT_DCS_CMD(0xB3, 0x52),
-> -- 
-> 2.18.0
+>  DRM DRIVER FOR MANTIX MLAF057WE51 PANELS
+
+-- 
+Regards,
+
+Laurent Pinchart
 
