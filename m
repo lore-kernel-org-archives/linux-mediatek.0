@@ -4,46 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35F3DC5479D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 17:08:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 489E2C54EBD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 17:18:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eM0NwOGFlLu9vFSEUrdZRsSrF/f4poIqUeaQPkLxJi8=; b=r8U1lVgjj7HK9vBCtjaPiyEzLP
-	QdOikqJAIXkkijBcA6T/Y3E1Fg1UIY3yZQSAf59G6UxEtaS+iawuIwECToleSyOr/B7uKRRxWlP6x
-	TkWp9dzvy8s+/d1e53UwkvLxz1d4zAfVIgTBvW7Ybsri2+jMw6pDus/4Qhat24IkBpnXyYQnMAjuo
-	ot9lmIfcAOjnndnS/8QUP3sjEaAel0bRIv9KFzwgnrj3lkj01qIN8O+4bT/7A5/y5373frp6DOCPO
-	MJrcoCoiu7b04PxTnctIjH6KHtZ86p2nFfUwUPbXroe419rMLDuTVMNZCXM5kHxvzmQlB+w7qCgD1
-	GBOtu5vA==;
+	bh=M1fzgT/hvdf1Qv1HcXNuSMlZM/1hnG6hd0UtQoC6aEs=; b=iCZImGfoZlx7eEzrC7sf+fGRPg
+	NUUm5uullmW538moijnkTrVh2RukFd+aqnVbSiRubpc2o8aFMUv7DV2VgK0jYSzs2OrNWkSMiy/Nv
+	dbCl+xuGQ8qiv+SstyhLF2ddstjhMTAmuYFo4X4lfCF/PCnIF+Sd6hSZXx80bijnC60ipgsQ+s7OS
+	lQPBFqhCp90xzYAO9+pxaTSjpGfkzL4Yu6yO8hyGWo1uRgGO4YR2vq3/TKvuNM2hrpD4VqS2fxQQb
+	C7VFnLHeC5zy99cu3tLm2cfyVZnBoCG1Ay+vQDKnAMyg0/kAg5H0d6eb+KjPfGtKFLpatwzKSykWU
+	rm64k5dQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEvdC-002nEb-19; Mon, 09 Jan 2023 17:08:18 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pEvn0-002rbI-VH; Mon, 09 Jan 2023 17:18:26 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEvd9-002nCz-1o
-	for linux-mediatek@lists.infradead.org; Mon, 09 Jan 2023 17:08:16 +0000
-X-UUID: 32dba99e41a449aea7fb94c0f43ed7de-20230109
+	id 1pEvmv-002rZb-5g
+	for linux-mediatek@bombadil.infradead.org; Mon, 09 Jan 2023 17:18:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=M1fzgT/hvdf1Qv1HcXNuSMlZM/1hnG6hd0UtQoC6aEs=; b=mdvYNIK+oHOwbBvOE4CgElG+IB
+	W8YleJzWCMipbnpPAA8kFRWkv91x8PkVqYT3QMqOn0SvhM5NcCEsiK1c+dM1thqBQRfOUNHvt/5Wa
+	Ef4WcIU5MiWCXf2ZCQoxy5wNSaPsAjAmbMaXFwlFP9/W5zM984NyhnrKNg5Rp3ie70m+nMGkrr9pW
+	/C4rxaxW3DQjLui8Lg+ZdPy95EbxaSz8lCpmI7+3amkEppv+jDEUWwSMSPxGVWYqQFVPMhkMrs/kr
+	+3tBu8zNQ+Rkkd7S3xZFuXIXleiPu4CVYwEW2peQl6xmbMgyKFyUgMPBbKZw4I09JhccymhQF/QRr
+	eGW0v75w==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pEvmh-002nAd-2K
+	for linux-mediatek@lists.infradead.org;
+	Mon, 09 Jan 2023 17:18:11 +0000
+X-UUID: f7354ca4a24b44638cf97674454611f6-20230109
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=eM0NwOGFlLu9vFSEUrdZRsSrF/f4poIqUeaQPkLxJi8=;
-	b=PJBZ8okeiXrOD6YX040Hb+T2Xg0ipE0ozKgU56Rlz5XwBHn6+jguWn1rCdVxdVU+3Dx2lROnDvyqQkFDRzd7qgvSonOxtOLIF6CzH4Le2CTgg7gGEctnouzxyqO7LcEbOs6ukpKuEAslbfE75x978BTxnLGEz1Jfggcr48aRhYo=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=M1fzgT/hvdf1Qv1HcXNuSMlZM/1hnG6hd0UtQoC6aEs=;
+	b=qyDdl0BrLiI0aGbg+WAborIL0vDBTBEDhZ15dyZynP2FCAXl4pvKus4qzThAzPwWTZpgjorU2yWgA7wL81/pI0KJnS9KECJKMgqVE+QuMRr8yC1kvoeFic+VDdsvpLhYBjVoGSg4np2HgpQKqpwgfWRd7RW6l6XmQswVarfKIV0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:5e227838-132d-4277-b9e4-0e3fa6603f22,IP:0,U
+X-CID-O-INFO: VERSION:1.1.17,REQID:f78c67a2-2e41-4738-a908-9ac95bb2ed11,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:543e81c,CLOUDID:ec2f2154-dd49-462e-a4be-2143a3ddc739,B
+X-CID-META: VersionHash:543e81c,CLOUDID:db1a4bf5-ff42-4fb0-b929-626456a83c14,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
 X-CID-BVR: 0
-X-UUID: 32dba99e41a449aea7fb94c0f43ed7de-20230109
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: f7354ca4a24b44638cf97674454611f6-20230109
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 281044690; Mon, 09 Jan 2023 10:08:08 -0700
+	with ESMTP id 1276271637; Mon, 09 Jan 2023 10:18:08 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.792.15; Tue, 10 Jan 2023 00:58:04 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -55,9 +70,9 @@ CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
 	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
 	<evelyn.tsai@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH 03/13] wifi: mt76: connac: add helpers for EHT capability
-Date: Tue, 10 Jan 2023 00:57:21 +0800
-Message-ID: <20230109165731.682-4-shayne.chen@mediatek.com>
+Subject: [PATCH 02/13] wifi: mt76: connac: add CMD_CBW_320MHZ
+Date: Tue, 10 Jan 2023 00:57:20 +0800
+Message-ID: <20230109165731.682-3-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230109165731.682-1-shayne.chen@mediatek.com>
 References: <20230109165731.682-1-shayne.chen@mediatek.com>
@@ -65,8 +80,9 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230109_090815_140245_F0E09332 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20230109_171808_451136_874CB2BB 
+X-CRM114-Status: UNSURE (   9.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,96 +97,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add helpers to get eht cap and phymode on different bands and vifs.
+Add CMD_CBW_320MHZ for setting bandwidth 320 MHz to firmware.
 This is the preliminary patch to add EHT support for mt7996.
 
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 46 +++++++++++++++++++
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  4 ++
- 2 files changed, 50 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt76_connac.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-index 5a047e630860..efb9bfaa187f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -1329,6 +1329,40 @@ u8 mt76_connac_get_phy_mode(struct mt76_phy *phy, struct ieee80211_vif *vif,
- }
- EXPORT_SYMBOL_GPL(mt76_connac_get_phy_mode);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
+index 8ba883b03e50..c3dabad5d40d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
+@@ -42,6 +42,7 @@ enum {
+ 	CMD_CBW_10MHZ,
+ 	CMD_CBW_5MHZ,
+ 	CMD_CBW_8080MHZ,
++	CMD_CBW_320MHZ,
  
-+u8 mt76_connac_get_phy_mode_ext(struct mt76_phy *phy, struct ieee80211_vif *vif,
-+				enum nl80211_band band)
-+{
-+	const struct ieee80211_sta_eht_cap *eht_cap;
-+	struct ieee80211_supported_band *sband;
-+	u8 mode = 0;
-+
-+	if (band == NL80211_BAND_6GHZ)
-+		mode |= PHY_MODE_AX_6G;
-+
-+	sband = phy->hw->wiphy->bands[band];
-+	eht_cap = ieee80211_get_eht_iftype_cap(sband, vif->type);
-+
-+	if (!eht_cap || !eht_cap->has_eht)
-+		return mode;
-+
-+	switch (band) {
-+	case NL80211_BAND_6GHZ:
-+		mode |= PHY_MODE_BE_6G;
-+		break;
-+	case NL80211_BAND_5GHZ:
-+		mode |= PHY_MODE_BE_5G;
-+		break;
-+	case NL80211_BAND_2GHZ:
-+		mode |= PHY_MODE_BE_24G;
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return mode;
-+}
-+EXPORT_SYMBOL_GPL(mt76_connac_get_phy_mode_ext);
-+
- const struct ieee80211_sta_he_cap *
- mt76_connac_get_he_phy_cap(struct mt76_phy *phy, struct ieee80211_vif *vif)
- {
-@@ -1341,6 +1375,18 @@ mt76_connac_get_he_phy_cap(struct mt76_phy *phy, struct ieee80211_vif *vif)
- }
- EXPORT_SYMBOL_GPL(mt76_connac_get_he_phy_cap);
+ 	CMD_HE_MCS_BW80 = 0,
+ 	CMD_HE_MCS_BW160,
+@@ -239,6 +240,7 @@ static inline u8 mt76_connac_chan_bw(struct cfg80211_chan_def *chandef)
+ 		[NL80211_CHAN_WIDTH_10] = CMD_CBW_10MHZ,
+ 		[NL80211_CHAN_WIDTH_20] = CMD_CBW_20MHZ,
+ 		[NL80211_CHAN_WIDTH_20_NOHT] = CMD_CBW_20MHZ,
++		[NL80211_CHAN_WIDTH_320] = CMD_CBW_320MHZ,
+ 	};
  
-+const struct ieee80211_sta_eht_cap *
-+mt76_connac_get_eht_phy_cap(struct mt76_phy *phy, struct ieee80211_vif *vif)
-+{
-+	enum nl80211_band band = phy->chandef.chan->band;
-+	struct ieee80211_supported_band *sband;
-+
-+	sband = phy->hw->wiphy->bands[band];
-+
-+	return ieee80211_get_eht_iftype_cap(sband, vif->type);
-+}
-+EXPORT_SYMBOL_GPL(mt76_connac_get_eht_phy_cap);
-+
- #define DEFAULT_HE_PE_DURATION		4
- #define DEFAULT_HE_DURATION_RTS_THRES	1023
- static void
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index 947b0900daec..efba24bd3c6b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -1870,8 +1870,12 @@ void mt76_connac_mcu_reg_wr(struct mt76_dev *dev, u32 offset, u32 val);
- 
- const struct ieee80211_sta_he_cap *
- mt76_connac_get_he_phy_cap(struct mt76_phy *phy, struct ieee80211_vif *vif);
-+const struct ieee80211_sta_eht_cap *
-+mt76_connac_get_eht_phy_cap(struct mt76_phy *phy, struct ieee80211_vif *vif);
- u8 mt76_connac_get_phy_mode(struct mt76_phy *phy, struct ieee80211_vif *vif,
- 			    enum nl80211_band band, struct ieee80211_sta *sta);
-+u8 mt76_connac_get_phy_mode_ext(struct mt76_phy *phy, struct ieee80211_vif *vif,
-+				enum nl80211_band band);
- 
- int mt76_connac_mcu_add_key(struct mt76_dev *dev, struct ieee80211_vif *vif,
- 			    struct mt76_connac_sta_key_conf *sta_key_conf,
+ 	if (chandef->width >= ARRAY_SIZE(width_to_bw))
 -- 
 2.25.1
 
