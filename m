@@ -4,66 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCD79C54EBD
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Jan 2023 22:07:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23CFEC54EBC
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 01:35:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DSyezriUL/lNJCBbCnrFB5rH1MXCIbx1ORje4SC5K9Q=; b=n0h82Askp9wiYBxDWf1EGbFvDV
-	IBIL7XoJzuQZBUBkXZ4VVxF2I9h430BiDNUad3CX+g1Y+Dxh/QkFSbKr6I+XtZzPyDh/Y9h4MwW0p
-	GeN7PjAfNDfB1VUt2adwOy8vBnfQzdy0jdY8opxW9vNhQjMjclN5OxAbnDA7zIlS/1YUbSStZ0UJa
-	i+/L4iLSt3ppFo1FcIfuomYFjrmCq5PwerAfsx4RfC58f4S2kZJnUeZtOAhYPfQmQGAmpsutp0Hbk
-	B5rDmpHmSuOk0yeWVI1TAUG7dqw6C0GnbcRjIR0Ra+VXBm+IGZKDkK+BeZ0e2QcaATujIFuRF/PC9
-	ATlF9tCw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=bfXJhM3jfsvxM4ujHI3kzKKGuay9TnUa3pjw6jLxvus=; b=Y+EMc7slI2ILdQo7Hqwof6fBHR
+	llwEUUqP4NfO0qwfBtiusDqzshbazk+SbTH43g1RRpAIixsZ7DkLFn+Nlm8Qq6P6L5ef8PDxAP4bB
+	Gw4N3QTvutP9G4MQ6vqpiex1SXSd8mVfLBDaNgzZTW1+oTFWrfYtM69X2CPD4COM07OYPOOcxnS3p
+	Vxd5utKKFjbjKNHE4SkcYFJz6PI5fQe7nvc66y3yLU1eXln8UqBetj4ChjvFClB5rX+zUcrXu5IV6
+	hC0+Qqzoxt0bdVScDG1CLnJKppahQ7ZXw52vLaU1wWu2PQAv77VsOf3KyAk4r4U2iTQXjd1MN0iy0
+	+opZyJzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEdp0-00FyE6-Qz; Sun, 08 Jan 2023 22:07:18 +0000
-Received: from mail-qt1-f172.google.com ([209.85.160.172])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEdox-00FyCb-17; Sun, 08 Jan 2023 22:07:16 +0000
-Received: by mail-qt1-f172.google.com with SMTP id fa5so1209827qtb.11;
-        Sun, 08 Jan 2023 14:07:14 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=DSyezriUL/lNJCBbCnrFB5rH1MXCIbx1ORje4SC5K9Q=;
-        b=es2keTY2sNd2wHX3r9k3M3mFRKLDwO/QpR+N8ngI23KLtKqbf4U7+mpdAa/a5AnfB6
-         zRIMGpZil+01isay+hHYSSvJ3qFpj0h/bgPMnS3LA6pEISczUcGkCJ/9IT3C8/SA47Nc
-         VDkvoMiYG0zz/K2/t36lwjkXZoDPn5Hv/i+jWg50+2v55NT4A/WuQzt1V4j4khfpXLYC
-         8YY3CLtmJG8fo8Yf7suE5+YX02dIly8hUVkCwGD9CRdzIQMX/L2WCz/POh9e3f+Qit09
-         ztIuH8Oi2M6JC/p4QJaXBMhQbglo0LNBG3UWZ4hjB6Z7mXhjaHin66+WTIicQPEeh03j
-         u/Dw==
-X-Gm-Message-State: AFqh2krruauqkGihDLeqB8OFVFBKCVXEjz33MoVlY1vHqjXVYXzbZYRt
-	a414P3e/I+05S4FPFbJ3dw==
-X-Google-Smtp-Source: AMrXdXtiEZ+bMuMU+KeikknktjQhAuTk6bddM96Sps6T8MQGto5OfixHJF2B/USv9hnPuMQKfyfn5g==
-X-Received: by 2002:ac8:4e04:0:b0:3ab:5dc7:6bf0 with SMTP id c4-20020ac84e04000000b003ab5dc76bf0mr85234496qtw.36.1673215633610;
-        Sun, 08 Jan 2023 14:07:13 -0800 (PST)
-Received: from robh_at_kernel.org ([2605:ef80:80a5:9b51:39ae:24d1:33f3:811e])
-        by smtp.gmail.com with ESMTPSA id bp32-20020a05620a45a000b00705b4001fbasm1425450qkb.128.2023.01.08.14.07.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 08 Jan 2023 14:07:13 -0800 (PST)
-Received: (nullmailer pid 345158 invoked by uid 1000);
-	Sun, 08 Jan 2023 22:07:07 -0000
-Date: Sun, 8 Jan 2023 16:07:07 -0600
-From: Rob Herring <robh@kernel.org>
-To: Markus Schneider-Pargmann <msp@baylibre.com>
-Cc: Chun-Jie Chen <chun-jie.chen@mediatek.com>, linux-mediatek@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, Fabien Parent <parent.f@gmail.com>, linux-kernel@vger.kernel.org, Fabien Parent <fparent@baylibre.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Subject: Re: [PATCH 1/8] dt-bindings: power: Add MT8365 power domains
-Message-ID: <167321562678.345108.18031842904012970078.robh@kernel.org>
-References: <20230105170735.1637416-1-msp@baylibre.com>
- <20230105170735.1637416-2-msp@baylibre.com>
+	id 1pEh4a-00Gg8r-05; Mon, 09 Jan 2023 01:35:36 +0000
+Received: from mg.richtek.com ([220.130.44.152])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pEh4V-00Gg7U-G6; Mon, 09 Jan 2023 01:35:34 +0000
+X-MailGates: (flag:4,DYNAMIC,BADHELO,RELAY,NOHOST:PASS)(compute_score:DE
+	LIVER,40,3)
+Received: from 192.168.10.46
+	by mg.richtek.com with MailGates ESMTP Server V5.0(16482:0:AUTH_RELAY)
+	(envelope-from <cy_huang@richtek.com>); Mon, 09 Jan 2023 09:34:54 +0800 (CST)
+Received: from ex3.rt.l (192.168.10.46) by ex3.rt.l (192.168.10.46) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.20; Mon, 9 Jan
+ 2023 09:34:53 +0800
+Received: from linuxcarl2.richtek.com (192.168.10.154) by ex3.rt.l
+ (192.168.10.45) with Microsoft SMTP Server id 15.2.1118.20 via Frontend
+ Transport; Mon, 9 Jan 2023 09:34:53 +0800
+From: <cy_huang@richtek.com>
+To: <linux@roeck-us.net>, <heikki.krogerus@linux.intel.com>,
+	<matthias.bgg@gmail.com>
+CC: <gregkh@linuxfoundation.org>, <gene_chen@richtek.com>,
+	<linux-usb@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	ChiYuan Huang <cy_huang@richtek.com>, <stable@vger.kernel.org>
+Subject: [PATCH v2] usb: typec: tcpm: Fix altmode re-registration causes sysfs create fail
+Date: Mon, 9 Jan 2023 09:34:52 +0800
+Message-ID: <1673228092-27281-1-git-send-email-cy_huang@richtek.com>
+X-Mailer: git-send-email 1.8.3.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230105170735.1637416-2-msp@baylibre.com>
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230108_140715_086802_B5BBE8AB 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20230108_173532_055476_B2E15DA9 
+X-CRM114-Status: GOOD (  11.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,31 +67,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: ChiYuan Huang <cy_huang@richtek.com>
 
-On Thu, 05 Jan 2023 18:07:28 +0100, Markus Schneider-Pargmann wrote:
-> From: Fabien Parent <fparent@baylibre.com>
-> 
-> Add power domains dt-bindings for MT8365.
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> ---
-> 
-> Notes:
->     Changes in v4:
->     - Add infracfg_nao as it is used by mt8365
-> 
->     Changes in v3:
->     - Renamed mt8365-power.h to mediatek,mt8365-power.h
-> 
->     Changes in v2:
->     - Made include/dt-bindings/power/mt8365-power.h dual-license.
-> 
->  .../power/mediatek,power-controller.yaml      |  6 ++++++
->  .../dt-bindings/power/mediatek,mt8365-power.h | 19 +++++++++++++++++++
->  2 files changed, 25 insertions(+)
->  create mode 100644 include/dt-bindings/power/mediatek,mt8365-power.h
-> 
+There's the altmode re-registeration issue after data role
+swap (DR_SWAP).
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Comparing to USBPD 2.0, in USBPD 3.0, it loose the limit that only DFP
+can initiate the VDM command to get partner identity information.
+
+For a USBPD 3.0 UFP device, it may already get the identity information
+from its port partner before DR_SWAP. If DR_SWAP send or receive at the
+mean time, 'send_discover' flag will be raised again. It causes discover
+identify action restart while entering ready state. And after all
+discover actions are done, the 'tcpm_register_altmodes' will be called.
+If old altmode is not unregistered, this sysfs create fail can be found.
+
+In 'DR_SWAP_CHANGE_DR' state case, only DFP will unregister altmodes.
+For UFP, the original altmodes keep registered.
+
+This patch fix the logic that after DR_SWAP, 'tcpm_unregister_altmodes'
+must be called whatever the current data role is.
+
+Reviewed-by: Macpaul Lin <macpaul.lin@mediatek.com>
+Fixes: ae8a2ca8a221 ("usb: typec: Group all TCPCI/TCPM code together)
+Reported-by: TommyYl Chen <tommyyl.chen@mediatek.com>
+Cc: stable@vger.kernel.org
+Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+---
+Since v2:
+1. Correct the mail sent from Richtek.
+2. Add 'Reviewed-by' tag.
+
+---
+ drivers/usb/typec/tcpm/tcpm.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/usb/typec/tcpm/tcpm.c b/drivers/usb/typec/tcpm/tcpm.c
+index 904c7b4..59b366b 100644
+--- a/drivers/usb/typec/tcpm/tcpm.c
++++ b/drivers/usb/typec/tcpm/tcpm.c
+@@ -4594,14 +4594,13 @@ static void run_state_machine(struct tcpm_port *por=
+t)
+                tcpm_set_state(port, ready_state(port), 0);
+                break;
+        case DR_SWAP_CHANGE_DR:
+-               if (port->data_role =3D=3D TYPEC_HOST) {
+-                       tcpm_unregister_altmodes(port);
++               tcpm_unregister_altmodes(port);
++               if (port->data_role =3D=3D TYPEC_HOST)
+                        tcpm_set_roles(port, true, port->pwr_role,
+                                       TYPEC_DEVICE);
+-               } else {
++               else
+                        tcpm_set_roles(port, true, port->pwr_role,
+                                       TYPEC_HOST);
+-               }
+                tcpm_ams_finish(port);
+                tcpm_set_state(port, ready_state(port), 0);
+                break;
+--
+2.7.4
+
+************* Email Confidentiality Notice ********************
+
+The information contained in this e-mail message (including any attachments=
+) may be confidential, proprietary, privileged, or otherwise exempt from di=
+sclosure under applicable laws. It is intended to be conveyed only to the d=
+esignated recipient(s). Any use, dissemination, distribution, printing, ret=
+aining or copying of this e-mail (including its attachments) by unintended =
+recipient(s) is strictly prohibited and may be unlawful. If you are not an =
+intended recipient of this e-mail, or believe that you have received this e=
+-mail in error, please notify the sender immediately (by replying to this e=
+-mail), delete any and all copies of this e-mail (including any attachments=
+) from your system, and do not disclose the content of this e-mail to any o=
+ther person. Thank you!
 
