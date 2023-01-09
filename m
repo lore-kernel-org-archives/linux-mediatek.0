@@ -4,73 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4462BC54EBD
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 15:37:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF2B9C5479D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 15:50:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HNr/3z9uIVXHH/dsxG51QQYxf6cRktTO5iC8JOqbAFY=; b=WqpPaZUqoEK1i4JR/rs7Rn3jgd
-	YPOq6BLGrExmw269md1XmVSt74RN2AYPwwCUM+ngZDhw6u1Vgp2Z5XQCnp2901CUrpOCr5v053Y76
-	AcBV3Si5p1NLb2u8GDmBcoMT9EMDWK0HGvbf8EfW6GgK/OI1QfcG6QpW07bdxT6YOyTSc07G4OA21
-	wq5C5Uf44XndoXkHXrZEfBoMvCmM+FyZUv4L3R2W4H5fKegvtezx/d2pZBnbAmMPggLutZqm7TauR
-	slvSARvt7mt98kjf1VkxS8IB9iHNeNyHycnMxmVFnay8YHo09M4ldAsaCDoh5tThIEs7390Ey/pfM
-	nG3Nm14w==;
+	bh=tHZZefyYne34nwtHlmcO9279ZiTFZKklHDR4wSaraLs=; b=ds6f7Y288qarvA3NBsTvX4m2Pm
+	/gvdnapv6uAYVMPrXienaxAIv3G1Hodisrr5Ac7cbBjAezWdboLNjXjyWbvsw0B/f9+mPVwc4KGEE
+	dc3HtMD/a70g/6WD1kAjDlltuRUSdHd3ksAECetLSysiZBNC/85MkG97AX6SW3Di+tnuKF5zRuWpJ
+	aHlBMk8iIzvUCM0tJyOl8XR2MvHMSW43X6lK/1qPqLsH9IfkZfVOzHALFDqxkLCjpN5e7CpS2kNYT
+	OypG04OXITE3MVb9WO5YeVv2WcN+yhoCzN17FSISxlToLLs1+XuI3n/2gQ8pVkXmA+BfpmeoLz4NP
+	RlSkQGTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEuDB-002Jdg-JS; Mon, 09 Jan 2023 15:37:21 +0000
-Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
+	id 1pEuPm-002PQN-Uv; Mon, 09 Jan 2023 15:50:22 +0000
+Received: from fllv0015.ext.ti.com ([198.47.19.141])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEu75-002FyO-03; Mon, 09 Jan 2023 15:31:11 +0000
-Received: from mwalle01.sab.local (unknown [213.135.10.150])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 92F811A11;
-	Mon,  9 Jan 2023 16:30:58 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1673278258;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=HNr/3z9uIVXHH/dsxG51QQYxf6cRktTO5iC8JOqbAFY=;
-	b=kxst7edEMF+wOKsTqNfUehJsnE6pLdTtIL47AAXJVwXj9qedSFIe6zTWJetypt/jNnC55v
-	rCutxCa487leU3NVLm5aPkrACPBbVTVU6jbxFnd13u3mnnRj6J2o64INxBKZ8U3AjRAmn3
-	e+g7gMRq7fkGpuaAhfpAF47a/1l1ggmzjy24LGq9NawRole2WaD8rSsXScvmom8y4Y6GTF
-	Et8W8EvgUchdQlsUYda3eEzHM9ubtkxd9MVGGsdH6dWq1zlWi1cdT3+E8QHv5ozhRPSSC8
-	p7FRXd2Qycr7K40IsdclJDuwAHpZo/Pk+aaY3hyETm4k70FWjD3WTif7w9tBbQ==
-From: Michael Walle <michael@walle.cc>
-Date: Mon, 09 Jan 2023 16:30:51 +0100
-Subject: [PATCH net-next v3 11/11] net: dsa: mv88e6xxx: Separate C22 and C45
- transactions
+	id 1pEuPL-002PCG-Tn; Mon, 09 Jan 2023 15:49:57 +0000
+Received: from fllv0034.itg.ti.com ([10.64.40.246])
+	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 309FnKbk021502;
+	Mon, 9 Jan 2023 09:49:20 -0600
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+	s=ti-com-17Q1; t=1673279360;
+	bh=tHZZefyYne34nwtHlmcO9279ZiTFZKklHDR4wSaraLs=;
+	h=Date:Subject:To:CC:References:From:In-Reply-To;
+	b=MPUiZGBLs/Ku6SlSm3Fh+yFJcoGIXbBdA2icjuIIZ3bG28Lf4hxlbusjtBtW3r+j1
+	 d+ESwERr6zuKSVhU4PuUTfDVFIQp3yL6qzK+Rp5rdyZvl3hNXAGClH9q8f6DuClU8d
+	 KyAqikzfsRBeqcXaHluWkpbzVG7Qm/XmCoIq+OSg=
+Received: from DFLE112.ent.ti.com (dfle112.ent.ti.com [10.64.6.33])
+	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 309FnKl1105964
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Mon, 9 Jan 2023 09:49:20 -0600
+Received: from DFLE114.ent.ti.com (10.64.6.35) by DFLE112.ent.ti.com
+ (10.64.6.33) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.16; Mon, 9
+ Jan 2023 09:49:19 -0600
+Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE114.ent.ti.com
+ (10.64.6.35) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.16 via
+ Frontend Transport; Mon, 9 Jan 2023 09:49:19 -0600
+Received: from [10.250.234.21] (ileaxei01-snat2.itg.ti.com [10.180.69.6])
+	by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 309Fn9qV038794;
+	Mon, 9 Jan 2023 09:49:10 -0600
+Message-ID: <784cc3a5-8b10-aed3-b151-77cedb531f25@ti.com>
+Date: Mon, 9 Jan 2023 21:19:08 +0530
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [RFC PATCH 3/4] dt-bindings: panel: Introduce dual-link LVDS
+ panel
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+        Rob Herring
+	<robh+dt@kernel.org>,
+        Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>,
+        Tomi Valkeinen <tomba@kernel.org>, Jyri
+ Sarha <jyri.sarha@iki.fi>,
+        David Airlie <airlied@gmail.com>, Daniel Vetter
+	<daniel@ffwll.ch>,
+        Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+        Thierry Reding <thierry.reding@gmail.com>,
+        Sam Ravnborg <sam@ravnborg.org>, Maxime Ripard <maxime@cerno.tech>,
+        Liam Girdwood <lgirdwood@gmail.com>, Mark
+ Brown <broonie@kernel.org>,
+        Lad Prabhakar
+	<prabhakar.mahadev-lad.rj@bp.renesas.com>,
+        Paul Walmsley
+	<paul.walmsley@sifive.com>,
+        Palmer Dabbelt <palmer@dabbelt.com>,
+        Albert Ou
+	<aou@eecs.berkeley.edu>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        Guo Ren
+	<guoren@kernel.org>
+CC: DRI Development List <dri-devel@lists.freedesktop.org>,
+        Devicetree List
+	<devicetree@vger.kernel.org>,
+        Linux Kernel List
+	<linux-kernel@vger.kernel.org>,
+        Linux RISC-V List
+	<linux-riscv@lists.infradead.org>,
+        Linux ARM Kernel List
+	<linux-arm-kernel@lists.infradead.org>,
+        Linux Mediatek List
+	<linux-mediatek@lists.infradead.org>,
+        Linux C-SKY Arch List
+	<linux-csky@vger.kernel.org>,
+        Nishanth Menon <nm@ti.com>, Vignesh Raghavendra
+	<vigneshr@ti.com>,
+        Rahul T R <r-ravikumar@ti.com>, Devarsh Thakkar
+	<devarsht@ti.com>,
+        Jai Luthra <j-luthra@ti.com>, Jayesh Choudhary
+	<j-choudhary@ti.com>
+References: <20230103064615.5311-1-a-bhatia1@ti.com>
+ <20230103064615.5311-4-a-bhatia1@ti.com>
+ <85837957-f6d2-4722-7693-98c6cf932096@linaro.org>
+ <32d66fb7-6c63-0985-222f-0bd3c36c165d@ti.com>
+ <30423568-df03-1d72-81fe-3a4b33214e5c@linaro.org>
+From: Aradhya Bhatia <a-bhatia1@ti.com>
+In-Reply-To: <30423568-df03-1d72-81fe-3a4b33214e5c@linaro.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 7bit
-Message-Id: <20221227-v6-2-rc1-c45-seperation-v3-11-ade1deb438da@walle.cc>
-References: <20221227-v6-2-rc1-c45-seperation-v3-0-ade1deb438da@walle.cc>
-In-Reply-To: <20221227-v6-2-rc1-c45-seperation-v3-0-ade1deb438da@walle.cc>
-To: Heiner Kallweit <hkallweit1@gmail.com>,
- Russell King <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Jose Abreu <Jose.Abreu@synopsys.com>,
- Sergey Shtylyov <s.shtylyov@omp.ru>, Wei Fang <wei.fang@nxp.com>,
- Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>,
- NXP Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@mediatek.com>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Michael Walle <michael@walle.cc>, Vladimir Oltean <vladimir.oltean@nxp.com>
-X-Mailer: b4 0.11.1
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230109_073106_835879_301F4C63 
-X-CRM114-Status: GOOD (  13.84  )
+X-CRM114-CacheID: sfid-20230109_074956_085319_C253B420 
+X-CRM114-Status: GOOD (  17.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,633 +127,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Andrew Lunn <andrew@lunn.ch>
+Hi Krzysztof,
 
-The global2 SMI MDIO bus driver can perform both C22 and C45
-transfers. Create separate functions for each and register the C45
-versions using the new API calls where appropriate. Update the SERDES
-code to make use of these new accessors.
+On 03-Jan-23 16:58, Krzysztof Kozlowski wrote:
+> On 03/01/2023 12:02, Aradhya Bhatia wrote:
+>> But this is throwing an error. I am confused what else could be done.
+>> Can you please suggest what might be a more accurate check here?
+>>
+>>>
+>>>> +              required:
+>>>> +                - dual-lvds-odd-pixels
+>>>> +        then:
+>>>> +          properties:
+>>>> +            port@1:
+>>>> +              properties:
+>>>> +                dual-lvds-even-pixels: true
+>>>> +                dual-lvds-odd-pixels: false
+>>>
+>>> Why do you need this? Your oneOf before already solves it.
+>>
+>> I agree with your comment here. It makes sense to only have
+>>
+>> 	dual-lvds-even-pixels: true
+>>
+>> and have the oneOf condition take care of the other. But, I just tested
+>> this and it was unable to pick-up this intentionally-added error.
+>>
+>> I added 'dual-lvds-odd-pixels' property to both the nodes, and
+>> dt_binding_check passes successfully (which it should have not.)
+>>
+>> Instead, if I only keep this,
+>>
+>> 	dual-lvds-odd-pixels: false
+>>
+>> then the dt_binding_check detects the error as it should.
+>>
+>> Regardless, I am curious why the first method doesn't work. Will try to
+>> explore more on that.
+> 
+> The check for presence of properties is only against required:, but you
+> added there properties. Like this:
+> 
+> https://elixir.bootlin.com/linux/v5.17-rc2/source/Documentation/devicetree/bindings/mfd/samsung,s5m8767.yaml#L155
+> 
+> 
+> Other way is to drop your both oneOf and entire allOf from ports and use:
+> 
+> oneOf:
+>    - properties:
+>        ports:
+>          $ref: /schemas/graph.yaml#/properties/ports
+>          properties:
+>            port@0:
+>              required:
+>                - dual-lvds-odd-pixels
+>            port@1:
+>              required:
+>                - dual-lvds-even-pixels
+>    - properties:
+>        ports:
+>          $ref: /schemas/graph.yaml#/properties/ports
+>          properties:
+>            port@1:
+>              required:
+>                - dual-lvds-odd-pixels
+>            port@0:
+>              required:
+>                - dual-lvds-even-pixels
+> 
 
-Signed-off-by: Andrew Lunn <andrew@lunn.ch>
-Signed-off-by: Michael Walle <michael@walle.cc>
-Reviewed-by: Vladimir Oltean <vladimir.oltean@nxp.com>
----
- drivers/net/dsa/mv88e6xxx/chip.c    | 175 ++++++++++++++++++++++++++----------
- drivers/net/dsa/mv88e6xxx/chip.h    |   7 ++
- drivers/net/dsa/mv88e6xxx/global2.c |  66 ++++++++------
- drivers/net/dsa/mv88e6xxx/global2.h |  18 ++--
- drivers/net/dsa/mv88e6xxx/phy.c     |  32 +++++++
- drivers/net/dsa/mv88e6xxx/phy.h     |   4 +
- drivers/net/dsa/mv88e6xxx/serdes.c  |   8 +-
- 7 files changed, 225 insertions(+), 85 deletions(-)
+Thank you for the suggestions.
+I tested the both of them, and they seem to be working as expected.
 
-diff --git a/drivers/net/dsa/mv88e6xxx/chip.c b/drivers/net/dsa/mv88e6xxx/chip.c
-index 242b8b325504..0ff9cd0be217 100644
---- a/drivers/net/dsa/mv88e6xxx/chip.c
-+++ b/drivers/net/dsa/mv88e6xxx/chip.c
-@@ -3884,6 +3884,24 @@ static int mv88e6xxx_mdio_read(struct mii_bus *bus, int phy, int reg)
- 	return err ? err : val;
- }
- 
-+static int mv88e6xxx_mdio_read_c45(struct mii_bus *bus, int phy, int devad,
-+				   int reg)
-+{
-+	struct mv88e6xxx_mdio_bus *mdio_bus = bus->priv;
-+	struct mv88e6xxx_chip *chip = mdio_bus->chip;
-+	u16 val;
-+	int err;
-+
-+	if (!chip->info->ops->phy_read_c45)
-+		return -EOPNOTSUPP;
-+
-+	mv88e6xxx_reg_lock(chip);
-+	err = chip->info->ops->phy_read_c45(chip, bus, phy, devad, reg, &val);
-+	mv88e6xxx_reg_unlock(chip);
-+
-+	return err ? err : val;
-+}
-+
- static int mv88e6xxx_mdio_write(struct mii_bus *bus, int phy, int reg, u16 val)
- {
- 	struct mv88e6xxx_mdio_bus *mdio_bus = bus->priv;
-@@ -3900,6 +3918,23 @@ static int mv88e6xxx_mdio_write(struct mii_bus *bus, int phy, int reg, u16 val)
- 	return err;
- }
- 
-+static int mv88e6xxx_mdio_write_c45(struct mii_bus *bus, int phy, int devad,
-+				    int reg, u16 val)
-+{
-+	struct mv88e6xxx_mdio_bus *mdio_bus = bus->priv;
-+	struct mv88e6xxx_chip *chip = mdio_bus->chip;
-+	int err;
-+
-+	if (!chip->info->ops->phy_write_c45)
-+		return -EOPNOTSUPP;
-+
-+	mv88e6xxx_reg_lock(chip);
-+	err = chip->info->ops->phy_write_c45(chip, bus, phy, devad, reg, val);
-+	mv88e6xxx_reg_unlock(chip);
-+
-+	return err;
-+}
-+
- static int mv88e6xxx_mdio_register(struct mv88e6xxx_chip *chip,
- 				   struct device_node *np,
- 				   bool external)
-@@ -3938,6 +3973,8 @@ static int mv88e6xxx_mdio_register(struct mv88e6xxx_chip *chip,
- 
- 	bus->read = mv88e6xxx_mdio_read;
- 	bus->write = mv88e6xxx_mdio_write;
-+	bus->read_c45 = mv88e6xxx_mdio_read_c45;
-+	bus->write_c45 = mv88e6xxx_mdio_write_c45;
- 	bus->parent = chip->dev;
- 
- 	if (!external) {
-@@ -4149,8 +4186,10 @@ static const struct mv88e6xxx_ops mv88e6097_ops = {
- 	.ip_pri_map = mv88e6085_g1_ip_pri_map,
- 	.irl_init_all = mv88e6352_g2_irl_init_all,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6185_port_sync_link,
- 	.port_set_speed_duplex = mv88e6185_port_set_speed_duplex,
-@@ -4198,8 +4237,10 @@ static const struct mv88e6xxx_ops mv88e6123_ops = {
- 	.ip_pri_map = mv88e6085_g1_ip_pri_map,
- 	.irl_init_all = mv88e6352_g2_irl_init_all,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_speed_duplex = mv88e6185_port_set_speed_duplex,
-@@ -4279,8 +4320,10 @@ static const struct mv88e6xxx_ops mv88e6141_ops = {
- 	.get_eeprom = mv88e6xxx_g2_get_eeprom8,
- 	.set_eeprom = mv88e6xxx_g2_set_eeprom8,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6390_port_set_rgmii_delay,
-@@ -4343,8 +4386,10 @@ static const struct mv88e6xxx_ops mv88e6161_ops = {
- 	.ip_pri_map = mv88e6085_g1_ip_pri_map,
- 	.irl_init_all = mv88e6352_g2_irl_init_all,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_speed_duplex = mv88e6185_port_set_speed_duplex,
-@@ -4426,8 +4471,10 @@ static const struct mv88e6xxx_ops mv88e6171_ops = {
- 	.ip_pri_map = mv88e6085_g1_ip_pri_map,
- 	.irl_init_all = mv88e6352_g2_irl_init_all,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6352_port_set_rgmii_delay,
-@@ -4472,8 +4519,10 @@ static const struct mv88e6xxx_ops mv88e6172_ops = {
- 	.get_eeprom = mv88e6xxx_g2_get_eeprom16,
- 	.set_eeprom = mv88e6xxx_g2_set_eeprom16,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6352_port_set_rgmii_delay,
-@@ -4527,8 +4576,10 @@ static const struct mv88e6xxx_ops mv88e6175_ops = {
- 	.ip_pri_map = mv88e6085_g1_ip_pri_map,
- 	.irl_init_all = mv88e6352_g2_irl_init_all,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6352_port_set_rgmii_delay,
-@@ -4573,8 +4624,10 @@ static const struct mv88e6xxx_ops mv88e6176_ops = {
- 	.get_eeprom = mv88e6xxx_g2_get_eeprom16,
- 	.set_eeprom = mv88e6xxx_g2_set_eeprom16,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6352_port_set_rgmii_delay,
-@@ -4673,8 +4726,10 @@ static const struct mv88e6xxx_ops mv88e6190_ops = {
- 	.get_eeprom = mv88e6xxx_g2_get_eeprom8,
- 	.set_eeprom = mv88e6xxx_g2_set_eeprom8,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6390_port_set_rgmii_delay,
-@@ -4736,8 +4791,10 @@ static const struct mv88e6xxx_ops mv88e6190x_ops = {
- 	.get_eeprom = mv88e6xxx_g2_get_eeprom8,
- 	.set_eeprom = mv88e6xxx_g2_set_eeprom8,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6390_port_set_rgmii_delay,
-@@ -4799,8 +4856,10 @@ static const struct mv88e6xxx_ops mv88e6191_ops = {
- 	.get_eeprom = mv88e6xxx_g2_get_eeprom8,
- 	.set_eeprom = mv88e6xxx_g2_set_eeprom8,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6390_port_set_rgmii_delay,
-@@ -4862,8 +4921,10 @@ static const struct mv88e6xxx_ops mv88e6240_ops = {
- 	.get_eeprom = mv88e6xxx_g2_get_eeprom16,
- 	.set_eeprom = mv88e6xxx_g2_set_eeprom16,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6352_port_set_rgmii_delay,
-@@ -4925,8 +4986,10 @@ static const struct mv88e6xxx_ops mv88e6250_ops = {
- 	.get_eeprom = mv88e6xxx_g2_get_eeprom16,
- 	.set_eeprom = mv88e6xxx_g2_set_eeprom16,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6352_port_set_rgmii_delay,
-@@ -4964,8 +5027,10 @@ static const struct mv88e6xxx_ops mv88e6290_ops = {
- 	.get_eeprom = mv88e6xxx_g2_get_eeprom8,
- 	.set_eeprom = mv88e6xxx_g2_set_eeprom8,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6390_port_set_rgmii_delay,
-@@ -5029,8 +5094,10 @@ static const struct mv88e6xxx_ops mv88e6320_ops = {
- 	.get_eeprom = mv88e6xxx_g2_get_eeprom16,
- 	.set_eeprom = mv88e6xxx_g2_set_eeprom16,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6320_port_set_rgmii_delay,
-@@ -5074,8 +5141,10 @@ static const struct mv88e6xxx_ops mv88e6321_ops = {
- 	.get_eeprom = mv88e6xxx_g2_get_eeprom16,
- 	.set_eeprom = mv88e6xxx_g2_set_eeprom16,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6320_port_set_rgmii_delay,
-@@ -5117,8 +5186,10 @@ static const struct mv88e6xxx_ops mv88e6341_ops = {
- 	.get_eeprom = mv88e6xxx_g2_get_eeprom8,
- 	.set_eeprom = mv88e6xxx_g2_set_eeprom8,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6390_port_set_rgmii_delay,
-@@ -5183,8 +5254,10 @@ static const struct mv88e6xxx_ops mv88e6350_ops = {
- 	.ip_pri_map = mv88e6085_g1_ip_pri_map,
- 	.irl_init_all = mv88e6352_g2_irl_init_all,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6352_port_set_rgmii_delay,
-@@ -5227,8 +5300,10 @@ static const struct mv88e6xxx_ops mv88e6351_ops = {
- 	.ip_pri_map = mv88e6085_g1_ip_pri_map,
- 	.irl_init_all = mv88e6352_g2_irl_init_all,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6352_port_set_rgmii_delay,
-@@ -5275,8 +5350,10 @@ static const struct mv88e6xxx_ops mv88e6352_ops = {
- 	.get_eeprom = mv88e6xxx_g2_get_eeprom16,
- 	.set_eeprom = mv88e6xxx_g2_set_eeprom16,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6352_port_set_rgmii_delay,
-@@ -5340,8 +5417,10 @@ static const struct mv88e6xxx_ops mv88e6390_ops = {
- 	.get_eeprom = mv88e6xxx_g2_get_eeprom8,
- 	.set_eeprom = mv88e6xxx_g2_set_eeprom8,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6390_port_set_rgmii_delay,
-@@ -5407,8 +5486,10 @@ static const struct mv88e6xxx_ops mv88e6390x_ops = {
- 	.get_eeprom = mv88e6xxx_g2_get_eeprom8,
- 	.set_eeprom = mv88e6xxx_g2_set_eeprom8,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6390_port_set_rgmii_delay,
-@@ -5473,8 +5554,10 @@ static const struct mv88e6xxx_ops mv88e6393x_ops = {
- 	.get_eeprom = mv88e6xxx_g2_get_eeprom8,
- 	.set_eeprom = mv88e6xxx_g2_set_eeprom8,
- 	.set_switch_mac = mv88e6xxx_g2_set_switch_mac,
--	.phy_read = mv88e6xxx_g2_smi_phy_read,
--	.phy_write = mv88e6xxx_g2_smi_phy_write,
-+	.phy_read = mv88e6xxx_g2_smi_phy_read_c22,
-+	.phy_write = mv88e6xxx_g2_smi_phy_write_c22,
-+	.phy_read_c45 = mv88e6xxx_g2_smi_phy_read_c45,
-+	.phy_write_c45 = mv88e6xxx_g2_smi_phy_write_c45,
- 	.port_set_link = mv88e6xxx_port_set_link,
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6390_port_set_rgmii_delay,
-diff --git a/drivers/net/dsa/mv88e6xxx/chip.h b/drivers/net/dsa/mv88e6xxx/chip.h
-index e693154cf803..751bede49942 100644
---- a/drivers/net/dsa/mv88e6xxx/chip.h
-+++ b/drivers/net/dsa/mv88e6xxx/chip.h
-@@ -451,6 +451,13 @@ struct mv88e6xxx_ops {
- 			 struct mii_bus *bus,
- 			 int addr, int reg, u16 val);
- 
-+	int (*phy_read_c45)(struct mv88e6xxx_chip *chip,
-+			    struct mii_bus *bus,
-+			    int addr, int devad, int reg, u16 *val);
-+	int (*phy_write_c45)(struct mv88e6xxx_chip *chip,
-+			     struct mii_bus *bus,
-+			     int addr, int devad, int reg, u16 val);
-+
- 	/* Priority Override Table operations */
- 	int (*pot_clear)(struct mv88e6xxx_chip *chip);
- 
-diff --git a/drivers/net/dsa/mv88e6xxx/global2.c b/drivers/net/dsa/mv88e6xxx/global2.c
-index fa65ecd9cb85..ed3b2f88e783 100644
---- a/drivers/net/dsa/mv88e6xxx/global2.c
-+++ b/drivers/net/dsa/mv88e6xxx/global2.c
-@@ -739,20 +739,18 @@ static int mv88e6xxx_g2_smi_phy_read_data_c45(struct mv88e6xxx_chip *chip,
- 	return mv88e6xxx_g2_read(chip, MV88E6XXX_G2_SMI_PHY_DATA, data);
- }
- 
--static int mv88e6xxx_g2_smi_phy_read_c45(struct mv88e6xxx_chip *chip,
--					 bool external, int port, int reg,
--					 u16 *data)
-+static int _mv88e6xxx_g2_smi_phy_read_c45(struct mv88e6xxx_chip *chip,
-+					  bool external, int port, int devad,
-+					  int reg, u16 *data)
- {
--	int dev = (reg >> 16) & 0x1f;
--	int addr = reg & 0xffff;
- 	int err;
- 
--	err = mv88e6xxx_g2_smi_phy_write_addr_c45(chip, external, port, dev,
--						  addr);
-+	err = mv88e6xxx_g2_smi_phy_write_addr_c45(chip, external, port, devad,
-+						  reg);
- 	if (err)
- 		return err;
- 
--	return mv88e6xxx_g2_smi_phy_read_data_c45(chip, external, port, dev,
-+	return mv88e6xxx_g2_smi_phy_read_data_c45(chip, external, port, devad,
- 						  data);
- }
- 
-@@ -771,51 +769,65 @@ static int mv88e6xxx_g2_smi_phy_write_data_c45(struct mv88e6xxx_chip *chip,
- 	return mv88e6xxx_g2_smi_phy_access_c45(chip, external, op, port, dev);
- }
- 
--static int mv88e6xxx_g2_smi_phy_write_c45(struct mv88e6xxx_chip *chip,
--					  bool external, int port, int reg,
--					  u16 data)
-+static int _mv88e6xxx_g2_smi_phy_write_c45(struct mv88e6xxx_chip *chip,
-+					   bool external, int port, int devad,
-+					   int reg, u16 data)
- {
--	int dev = (reg >> 16) & 0x1f;
--	int addr = reg & 0xffff;
- 	int err;
- 
--	err = mv88e6xxx_g2_smi_phy_write_addr_c45(chip, external, port, dev,
--						  addr);
-+	err = mv88e6xxx_g2_smi_phy_write_addr_c45(chip, external, port, devad,
-+						  reg);
- 	if (err)
- 		return err;
- 
--	return mv88e6xxx_g2_smi_phy_write_data_c45(chip, external, port, dev,
-+	return mv88e6xxx_g2_smi_phy_write_data_c45(chip, external, port, devad,
- 						   data);
- }
- 
--int mv88e6xxx_g2_smi_phy_read(struct mv88e6xxx_chip *chip, struct mii_bus *bus,
--			      int addr, int reg, u16 *val)
-+int mv88e6xxx_g2_smi_phy_read_c22(struct mv88e6xxx_chip *chip,
-+				  struct mii_bus *bus,
-+				  int addr, int reg, u16 *val)
- {
- 	struct mv88e6xxx_mdio_bus *mdio_bus = bus->priv;
- 	bool external = mdio_bus->external;
- 
--	if (reg & MII_ADDR_C45)
--		return mv88e6xxx_g2_smi_phy_read_c45(chip, external, addr, reg,
--						     val);
--
- 	return mv88e6xxx_g2_smi_phy_read_data_c22(chip, external, addr, reg,
- 						  val);
- }
- 
--int mv88e6xxx_g2_smi_phy_write(struct mv88e6xxx_chip *chip, struct mii_bus *bus,
--			       int addr, int reg, u16 val)
-+int mv88e6xxx_g2_smi_phy_read_c45(struct mv88e6xxx_chip *chip,
-+				  struct mii_bus *bus, int addr, int devad,
-+				  int reg, u16 *val)
- {
- 	struct mv88e6xxx_mdio_bus *mdio_bus = bus->priv;
- 	bool external = mdio_bus->external;
- 
--	if (reg & MII_ADDR_C45)
--		return mv88e6xxx_g2_smi_phy_write_c45(chip, external, addr, reg,
--						      val);
-+	return _mv88e6xxx_g2_smi_phy_read_c45(chip, external, addr, devad, reg,
-+					      val);
-+}
-+
-+int mv88e6xxx_g2_smi_phy_write_c22(struct mv88e6xxx_chip *chip,
-+				   struct mii_bus *bus, int addr, int reg,
-+				   u16 val)
-+{
-+	struct mv88e6xxx_mdio_bus *mdio_bus = bus->priv;
-+	bool external = mdio_bus->external;
- 
- 	return mv88e6xxx_g2_smi_phy_write_data_c22(chip, external, addr, reg,
- 						   val);
- }
- 
-+int mv88e6xxx_g2_smi_phy_write_c45(struct mv88e6xxx_chip *chip,
-+				   struct mii_bus *bus, int addr, int devad,
-+				   int reg, u16 val)
-+{
-+	struct mv88e6xxx_mdio_bus *mdio_bus = bus->priv;
-+	bool external = mdio_bus->external;
-+
-+	return _mv88e6xxx_g2_smi_phy_write_c45(chip, external, addr, devad, reg,
-+					       val);
-+}
-+
- /* Offset 0x1B: Watchdog Control */
- static int mv88e6097_watchdog_action(struct mv88e6xxx_chip *chip, int irq)
- {
-diff --git a/drivers/net/dsa/mv88e6xxx/global2.h b/drivers/net/dsa/mv88e6xxx/global2.h
-index 7536b8b0ad01..e973114d6890 100644
---- a/drivers/net/dsa/mv88e6xxx/global2.h
-+++ b/drivers/net/dsa/mv88e6xxx/global2.h
-@@ -314,12 +314,18 @@ int mv88e6xxx_g2_wait_bit(struct mv88e6xxx_chip *chip, int reg,
- int mv88e6352_g2_irl_init_all(struct mv88e6xxx_chip *chip, int port);
- int mv88e6390_g2_irl_init_all(struct mv88e6xxx_chip *chip, int port);
- 
--int mv88e6xxx_g2_smi_phy_read(struct mv88e6xxx_chip *chip,
--			      struct mii_bus *bus,
--			      int addr, int reg, u16 *val);
--int mv88e6xxx_g2_smi_phy_write(struct mv88e6xxx_chip *chip,
--			       struct mii_bus *bus,
--			       int addr, int reg, u16 val);
-+int mv88e6xxx_g2_smi_phy_read_c22(struct mv88e6xxx_chip *chip,
-+				  struct mii_bus *bus,
-+				  int addr, int reg, u16 *val);
-+int mv88e6xxx_g2_smi_phy_write_c22(struct mv88e6xxx_chip *chip,
-+				   struct mii_bus *bus,
-+				   int addr, int reg, u16 val);
-+int mv88e6xxx_g2_smi_phy_read_c45(struct mv88e6xxx_chip *chip,
-+				  struct mii_bus *bus,
-+				  int addr, int devad, int reg, u16 *val);
-+int mv88e6xxx_g2_smi_phy_write_c45(struct mv88e6xxx_chip *chip,
-+				   struct mii_bus *bus,
-+				   int addr, int devad, int reg, u16 val);
- int mv88e6xxx_g2_set_switch_mac(struct mv88e6xxx_chip *chip, u8 *addr);
- 
- int mv88e6xxx_g2_get_eeprom8(struct mv88e6xxx_chip *chip,
-diff --git a/drivers/net/dsa/mv88e6xxx/phy.c b/drivers/net/dsa/mv88e6xxx/phy.c
-index 252b5b3a3efe..8bb88b3d900d 100644
---- a/drivers/net/dsa/mv88e6xxx/phy.c
-+++ b/drivers/net/dsa/mv88e6xxx/phy.c
-@@ -55,6 +55,38 @@ int mv88e6xxx_phy_write(struct mv88e6xxx_chip *chip, int phy, int reg, u16 val)
- 	return chip->info->ops->phy_write(chip, bus, addr, reg, val);
- }
- 
-+int mv88e6xxx_phy_read_c45(struct mv88e6xxx_chip *chip, int phy, int devad,
-+			   int reg, u16 *val)
-+{
-+	int addr = phy; /* PHY devices addresses start at 0x0 */
-+	struct mii_bus *bus;
-+
-+	bus = mv88e6xxx_default_mdio_bus(chip);
-+	if (!bus)
-+		return -EOPNOTSUPP;
-+
-+	if (!chip->info->ops->phy_read_c45)
-+		return -EOPNOTSUPP;
-+
-+	return chip->info->ops->phy_read_c45(chip, bus, addr, devad, reg, val);
-+}
-+
-+int mv88e6xxx_phy_write_c45(struct mv88e6xxx_chip *chip, int phy, int devad,
-+			    int reg, u16 val)
-+{
-+	int addr = phy; /* PHY devices addresses start at 0x0 */
-+	struct mii_bus *bus;
-+
-+	bus = mv88e6xxx_default_mdio_bus(chip);
-+	if (!bus)
-+		return -EOPNOTSUPP;
-+
-+	if (!chip->info->ops->phy_write_c45)
-+		return -EOPNOTSUPP;
-+
-+	return chip->info->ops->phy_write_c45(chip, bus, addr, devad, reg, val);
-+}
-+
- static int mv88e6xxx_phy_page_get(struct mv88e6xxx_chip *chip, int phy, u8 page)
- {
- 	return mv88e6xxx_phy_write(chip, phy, MV88E6XXX_PHY_PAGE, page);
-diff --git a/drivers/net/dsa/mv88e6xxx/phy.h b/drivers/net/dsa/mv88e6xxx/phy.h
-index 05ea0d546969..5f47722364cc 100644
---- a/drivers/net/dsa/mv88e6xxx/phy.h
-+++ b/drivers/net/dsa/mv88e6xxx/phy.h
-@@ -28,6 +28,10 @@ int mv88e6xxx_phy_read(struct mv88e6xxx_chip *chip, int phy,
- 		       int reg, u16 *val);
- int mv88e6xxx_phy_write(struct mv88e6xxx_chip *chip, int phy,
- 			int reg, u16 val);
-+int mv88e6xxx_phy_read_c45(struct mv88e6xxx_chip *chip, int phy, int devad,
-+			   int reg, u16 *val);
-+int mv88e6xxx_phy_write_c45(struct mv88e6xxx_chip *chip, int phy, int devad,
-+			    int reg, u16 val);
- int mv88e6xxx_phy_page_read(struct mv88e6xxx_chip *chip, int phy,
- 			    u8 page, int reg, u16 *val);
- int mv88e6xxx_phy_page_write(struct mv88e6xxx_chip *chip, int phy,
-diff --git a/drivers/net/dsa/mv88e6xxx/serdes.c b/drivers/net/dsa/mv88e6xxx/serdes.c
-index d94150d8f3f4..72faec8f44dc 100644
---- a/drivers/net/dsa/mv88e6xxx/serdes.c
-+++ b/drivers/net/dsa/mv88e6xxx/serdes.c
-@@ -36,17 +36,13 @@ static int mv88e6352_serdes_write(struct mv88e6xxx_chip *chip, int reg,
- static int mv88e6390_serdes_read(struct mv88e6xxx_chip *chip,
- 				 int lane, int device, int reg, u16 *val)
- {
--	int reg_c45 = MII_ADDR_C45 | device << 16 | reg;
--
--	return mv88e6xxx_phy_read(chip, lane, reg_c45, val);
-+	return mv88e6xxx_phy_read_c45(chip, lane, device, reg, val);
- }
- 
- static int mv88e6390_serdes_write(struct mv88e6xxx_chip *chip,
- 				  int lane, int device, int reg, u16 val)
- {
--	int reg_c45 = MII_ADDR_C45 | device << 16 | reg;
--
--	return mv88e6xxx_phy_write(chip, lane, reg_c45, val);
-+	return mv88e6xxx_phy_write_c45(chip, lane, device, reg, val);
- }
- 
- static int mv88e6xxx_serdes_pcs_get_state(struct mv88e6xxx_chip *chip,
+V2 will reflect all the required fixes.
 
--- 
-2.30.2
+
+Regards
+Aradhya
 
