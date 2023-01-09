@@ -4,84 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24645C5479D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 20:57:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4297CC54EBE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 23:49:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EI+HK5d2VVHprte9/R4H7nRhtttrT0pgRQ4cGp2gqIE=; b=uSYx70Uw5VplMHyQgy6pQxkGAQ
-	g1LlmKB6IApz7G4jrrvjhA9CSX73mAvAI3P/kAc4oH0N4fq/EbNQvs+YRCqxzzRaqi+qXRrNlcVec
-	wEpNabZ90tJfAwvwak1YMp8XIwW3WHUwHMFOQ2ODhWNzlZGN0WbhnX1NDomNaNoVSOGaMej4ezQ91
-	jfgT26LTmrod4JuwzN3C/IvG70omgjQGCnbvZHknAS9TGjCgZqmbhiSaDRShWWxVPgblHV0xswhQ3
-	M7VkpO5aJYLvyI45c2L4ulTaemuqRTtUdNIpBEnluDuD2xXFviLcLre/Mb/Fysk66Rp/bEPueOl5O
-	PBicJG3w==;
+	bh=Rszgv4ftpflSP0hfAbu9auGucePJ+YbSLRVLVyYuDXk=; b=wV4PYEbXLg59maiqa/1e/kUhPk
+	tAElbkpwEVZ4EkA7ZtqhIg+nxRhtEmx980bOYQhWmn+JjzJQYakxppEZapZUbvj94o0RmJvywcXuk
+	fJwExRDNvhhZTaj3R9WtbCKY+XzbUCOw9Cmp/DY0WeIO1+pzpZPnsojsxdD4ovPE7KNKN7/Jxep1R
+	CaKFf80iuq2N6rAn+0IVi6BLeD8a2s5cj1Gvjz+ZFtOQPwk+tJDpSOHJY7DPP6rIvNA2W1gMBIxGi
+	NrcPb4UX1SIrdSbpyqQlpHdBl6noAwPEdhTAbc6toPmTlJNmnN9jVSaxH1ycD7NQHelvWXTzW5ZPZ
+	f8b/Ei6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEzD7-0041pq-AN; Mon, 09 Jan 2023 20:57:37 +0000
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+	id 1pF1tF-004g7C-Sk; Mon, 09 Jan 2023 23:49:17 +0000
+Received: from mail-qt1-x82e.google.com ([2607:f8b0:4864:20::82e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEzBC-0040q5-JC; Mon, 09 Jan 2023 20:55:39 +0000
-Received: by mail-pg1-x52d.google.com with SMTP id s67so6761662pgs.3;
-        Mon, 09 Jan 2023 12:55:36 -0800 (PST)
+	id 1pF1t2-004g0v-Li; Mon, 09 Jan 2023 23:49:05 +0000
+Received: by mail-qt1-x82e.google.com with SMTP id a25so2440842qto.10;
+        Mon, 09 Jan 2023 15:49:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=EI+HK5d2VVHprte9/R4H7nRhtttrT0pgRQ4cGp2gqIE=;
-        b=XXSphh6WdemqNlaouq27ZMv9FP/uelVUYlorwcZLgqAYLkGmCZpoIMxcvLw17XqQlk
-         Wq/rki201eF9da9X5SZjRnH7GUBOad2hD9nME7ux6bfICDszp0NTAoGgZjST8dPBU9+G
-         +ZFmWlA6yHf3FEmbDRIWfg44SBnSMyDQgxkb/tvEfG1srLYwbSJfn9c96o2s+r6TSjT6
-         H3adegRyMv9R2Dw43i668JZf5yOZ/EG0BOextW/2Py2wcB1n3OuHz6Z3AGINU8D0Zq6i
-         uXuFYaX3t79fxm38YgA2HtmAMj1Jaa9W/62SfvD7oAOWMiuUv1dMC/CfSVan5XD+zdd1
-         bAQg==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Rszgv4ftpflSP0hfAbu9auGucePJ+YbSLRVLVyYuDXk=;
+        b=bq0pFZG6HYlFRfwv/fEiuOtG+U2H0ZPh+d7TNDidxHUedHGkhXEiMIhrSS73kbvXr0
+         9WwhVBJL1CqXfCiMUlUIz22JOdVF5Y8RpGyYnlWqzlN1D5ohpb/b2xycl6ppik2u6x4T
+         6Jz3cm4uMHYmAmXHagTUf1ychN2iuHsxPmbsfG7Y2KCjeCirQxaNET9wp6rMhvKcApyJ
+         UT1/edkqnYKXg5NNDRn84s6DmgcVAZ7ZOTuuCd94ZXekEy4SKpFL33vNCO1yCHnLW2u0
+         NlK49731n7jqJ0BJz+0BJQf9N1L6hNUo/9zU9zY45qcl0jtZbY48Vn8kQoRBDrSHzhQJ
+         +sAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=EI+HK5d2VVHprte9/R4H7nRhtttrT0pgRQ4cGp2gqIE=;
-        b=k4GUuZTsleEP/us5iHpKROrUqCOn56vVQTHJBQmkuX+UbjtDJYkve/MOG+qa8IuhrZ
-         a6wgvsRdMdkZnsnM/9VyowlnVY98c0CEUegKpIR3Lm1q3bfOliYR6IGm3ZGFE2SXwCTd
-         iPGEGXW0Shc8cXf85Izei4rEJXP90X5mHF063R7yPc0xmn9c19KUE/ArE+JO/HQDnkSf
-         wzVe0b66CBIAPGZhTxjJW8f9pDaH0oVY3mHui0ddoUF1eBwkS0rPh0sPwrhPwrvtPKNS
-         D2CTBPcVUyfDhsuyhcXje8gwG33i78Gpvn7pAIbQUExAaT1i/K48EEuoHYRn5xV4kOBe
-         x2QQ==
-X-Gm-Message-State: AFqh2kpRpar/8K5xyJR7LddeiOEFsIZGp31X1DI8JrRKvqeWa4e6YfiI
-	xBdF7Tvrz9o8LvZ8Ikceflv9FESct/8AelQAWsY=
-X-Google-Smtp-Source: AMrXdXtBdjMC2XbkCbg/sKxAYKrMMuQrVmVkCfTKgQdKmZ+HbnKyM9ffUAKFBpYnQwb9R5I/d32LLW0gc4vI7HYioOE=
-X-Received: by 2002:a65:6bc5:0:b0:478:31a5:3656 with SMTP id
- e5-20020a656bc5000000b0047831a53656mr3286091pgw.273.1673297736001; Mon, 09
- Jan 2023 12:55:36 -0800 (PST)
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Rszgv4ftpflSP0hfAbu9auGucePJ+YbSLRVLVyYuDXk=;
+        b=2dRPUwM9GxWyIAsa8uFF8uTKOrBRoxBeJrpGiOy0hoh1na1hN10/UWRXL5LMHF8PvX
+         Og3xjtEFPNu5uPgqbdUCzTv/h7adASeisN9e+CwCDDgoz7CXQnj9YojQCpmhgBfxWfGe
+         90Du31TRP2/jMx50dCX9Py3J5IjXNfvqVulUhXerSIPOEGOdhFG6ynz34DIvpI8pzNzp
+         2wcBtO1ithOqzg9FHLY7P+Kebn8GHNZHYQLfywdC8+qKz5NQD1XmWCx27ci4l4z0Hn/J
+         LvcXReNxz5ZUMJTwPafGaoICXzlJYX1LbF8pFL9MbWl9JvrBAtDoTno/wKLwuMpTWMwd
+         Xr0g==
+X-Gm-Message-State: AFqh2krjQGLxC8eiK/5LzC3+yWNWiDGbPd5Brd8zw4F+57TdSH4QACnV
+	QcGDWNaylrz+zRBwyMJGuS0=
+X-Google-Smtp-Source: AMrXdXsFyUnhOqKpDyFw2zu3D79IHlXWFEnxcd+MLCh7XJ/2VlzDOwjVoHObK/9LFIy/K0bCx6rOwQ==
+X-Received: by 2002:ac8:764b:0:b0:3ab:d179:d49e with SMTP id i11-20020ac8764b000000b003abd179d49emr1219580qtr.45.1673308140043;
+        Mon, 09 Jan 2023 15:49:00 -0800 (PST)
+Received: from [10.67.48.245] ([192.19.223.252])
+        by smtp.googlemail.com with ESMTPSA id x8-20020ac81208000000b003999d25e772sm5205577qti.71.2023.01.09.15.48.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 09 Jan 2023 15:48:59 -0800 (PST)
+Message-ID: <101995f8-ef11-c3e8-f50f-02aaa62c8e8f@gmail.com>
+Date: Mon, 9 Jan 2023 15:48:43 -0800
 MIME-Version: 1.0
-References: <20230103075603.12294-1-Kuan-Ying.Lee@mediatek.com>
- <CA+fCnZdk0HoWx6XCbTsiNhyR2Z_7zv5JUdgNs8Q_tV4GRkkmCg@mail.gmail.com> <dbaeb044c547ddb908bffdce4d2dfa0936805ef7.camel@mediatek.com>
-In-Reply-To: <dbaeb044c547ddb908bffdce4d2dfa0936805ef7.camel@mediatek.com>
-From: Andrey Konovalov <andreyknvl@gmail.com>
-Date: Mon, 9 Jan 2023 21:55:25 +0100
-Message-ID: <CA+fCnZfhH+XRU-Ywvb6WThjmwuSODfNV5fNxDpHY1enibdNYSQ@mail.gmail.com>
-Subject: Re: [PATCH] kasan: infer the requested size by scanning shadow memory
-To: =?UTF-8?B?S3Vhbi1ZaW5nIExlZSAo5p2O5Yag56mOKQ==?= <Kuan-Ying.Lee@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	=?UTF-8?B?UXVuLXdlaSBMaW4gKOael+e+pOW0tCk=?= <Qun-wei.Lin@mediatek.com>, 
-	"linux-mm@kvack.org" <linux-mm@kvack.org>, 
-	=?UTF-8?B?Q2hpbndlbiBDaGFuZyAo5by16Yym5paHKQ==?= <chinwen.chang@mediatek.com>, 
-	"dvyukov@google.com" <dvyukov@google.com>, 
-	"kasan-dev@googlegroups.com" <kasan-dev@googlegroups.com>, 
-	"akpm@linux-foundation.org" <akpm@linux-foundation.org>, 
-	"ryabinin.a.a@gmail.com" <ryabinin.a.a@gmail.com>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"vincenzo.frascino@arm.com" <vincenzo.frascino@arm.com>, "glider@google.com" <glider@google.com>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH net-next v3 02/11] net: pcs: pcs-xpcs: Use C45 MDIO API
+Content-Language: en-US
+To: Michael Walle <michael@walle.cc>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Jose Abreu <Jose.Abreu@synopsys.com>, Sergey Shtylyov <s.shtylyov@omp.ru>,
+ Wei Fang <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>,
+ Clark Wang <xiaoning.wang@nxp.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Vladimir Oltean <vladimir.oltean@nxp.com>
+References: <20221227-v6-2-rc1-c45-seperation-v3-0-ade1deb438da@walle.cc>
+ <20221227-v6-2-rc1-c45-seperation-v3-2-ade1deb438da@walle.cc>
+From: Florian Fainelli <f.fainelli@gmail.com>
+In-Reply-To: <20221227-v6-2-rc1-c45-seperation-v3-2-ade1deb438da@walle.cc>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230109_125538_707104_28B6CFE1 
-X-CRM114-Status: GOOD (  10.45  )
+X-CRM114-CacheID: sfid-20230109_154904_740882_8315AC44 
+X-CRM114-Status: UNSURE (   8.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,17 +105,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 9, 2023 at 6:02 AM Kuan-Ying Lee (=E6=9D=8E=E5=86=A0=E7=A9=8E)
-<Kuan-Ying.Lee@mediatek.com> wrote:
->
-> > Let's leave the first two lines as is, and instead change the second
-> > two lines to:
-> >
-> > The buggy address is located 0 bytes to the right of
-> >  requested 184-byte region [ffff888017576600, ffff8880175766c0)
->
-> Did you mean region [ffff888017576600, ffff8880175766b8)?
+On 1/9/23 07:30, Michael Walle wrote:
+> From: Andrew Lunn <andrew@lunn.ch>
+> 
+> Convert the PCS-XPCS driver to make use of the C45 MDIO bus API for
+> modify_change().
+> 
+> Signed-off-by: Andrew Lunn <andrew@lunn.ch>
+> Signed-off-by: Michael Walle <michael@walle.cc>
+> Reviewed-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 
-Yes! Forgot to change the range. The idea is to refer to the requested
-size in these two lines of the report.
+Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+-- 
+Florian
+
 
