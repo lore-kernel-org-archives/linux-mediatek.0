@@ -4,52 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 521C7C5479D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 15:36:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECD56C54EBD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 15:37:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZKZX4lcj+SRBIVWCBH17m7wfPVkw0M5gZtlyN0DyHu8=; b=U75kEKDxzIxyxaLqCpZR2iSmb/
-	cKliyRvDMb2B0/doYuGymOr1581wNglsqGhDwCaAwmljqYowRy0wK5OmCk2M5CdR4dIAh9xWj6r+K
-	O/xkj236wNt6ALY61IIQfuQF1H1lFeVwM/ZJFrcpxwXYgZbn9mZahKugbVUg0Bb2/45Xmv0eT8sK/
-	4rkEfbFciXJRQ2LnM/Jw11eGP+DWNTiVtCWo2694IHp1zPsNa77QW+RXGNM/zla6xzoG6g4UtR7Z3
-	E7cJgi1/z3QwRkb1E2vmOgY28Yy+BiA9FdBzVZOzRWGJLQ190OXIMh0dVdO7SI6ULDxMNDwAcmKI3
-	peqQAirQ==;
+	bh=6a41x9xkDddn0pKN675NFehAFfkJd5FOLk73tfVYXAs=; b=Hk+Mad8mt65Y2rmWhJlAIbPgPs
+	iUKCbZ2PZKvKhY7SBPoWMTCpCfL0CX1XCbS/3/c2ivaZJ8PfRV6Qvm3L1iKKNkEksGb0dbJdw1NlH
+	e5J8gYs2fkgDMUcXlDK0zs57nJqHCsMNZ8IFc4lrBXaxapgposhbFdEhAPCLaYtaCdawr5oiwrPJ8
+	CT2hbJOzqFPq4/IV0gHpgLLYJmZQX/XvG96Vc8Ktr6YOxQVMN8jUBIsfbibx7Fyu2CQTEkvZeJiP2
+	eV6OMGHDxd8LoyFumnHa3+IzYUC1UTofGSDDL+60qWuO4yoH2kia6GJW4qsTF5hyqUVnkySNDRCxd
+	6aBjn9lA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEuCe-002JL2-UR; Mon, 09 Jan 2023 15:36:49 +0000
+	id 1pEuCj-002JO0-5B; Mon, 09 Jan 2023 15:36:53 +0000
 Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEu74-002FyK-IG; Mon, 09 Jan 2023 15:31:08 +0000
+	id 1pEu74-002FyJ-Ip; Mon, 09 Jan 2023 15:31:08 +0000
 Received: from mwalle01.sab.local (unknown [213.135.10.150])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 4327319AC;
-	Mon,  9 Jan 2023 16:30:58 +0100 (CET)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 9A08118F4;
+	Mon,  9 Jan 2023 16:30:57 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1673278258;
+	t=1673278257;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=ZKZX4lcj+SRBIVWCBH17m7wfPVkw0M5gZtlyN0DyHu8=;
-	b=fCSsUcMXDlZzixTku/Y+ymZofQlKNafLyq8JmlrNVkLWLAFDn3XTwVw51vWElJJug1k+ZF
-	ogtfq1axpzXT0hqcrnwCHvgMMPNP6WaRhHDKAifUTLBQ9/xzr0f3e9ZG7OIot1HTsrmSgF
-	E5JPalqR23Z7h5hF6Y8X91w8h5uzm0ilszAFTB8nCKi7399/rjeup3ijl+Ln9olwa8mlLz
-	G8eav1lUQCAxySB/z8ynkAfTL1UOMuJwT0g37B+DPElKUBlcNAwinuITOjgZ5iTqKJBH5O
-	yYTauzwB5otYjzxH9nQbr9EYkoIuNFAC7oQyhruz9v/Fha75yrSS1p/xWID3jA==
+	bh=6a41x9xkDddn0pKN675NFehAFfkJd5FOLk73tfVYXAs=;
+	b=Z1otKrDv2SQDrlxMVXMdZ+1hmiRsJovlAtyCffdDyrk6DoX/tSjVMtAFL8MymE2O8CdF8C
+	9Bq51R898qZ8Xo5H0OB2147Oiy6w50KIRVkhRayrgNUfNV6OA3cYkc/FyCsZUr0s516Nch
+	JvupojR10HYlL0Mr4GuXArtVFYmouFz6P3fX2BhC0rxum6JjoE+CQbbVnT5lVLiOP0z8u2
+	CmBNE5roIjSoVyAj0/jLwktY4p0PFruSq6zRF6BH+lM38TlxhwkyyhZFW37bRmFvm9F3QU
+	5Tj/ncMnsM5tuAOwRRwry/mrAZozMWSdj4QwjDprvLjFVqpmQCyCKCmPs9ZyEw==
 From: Michael Walle <michael@walle.cc>
-Date: Mon, 09 Jan 2023 16:30:50 +0100
-Subject: [PATCH net-next v3 10/11] net: mdio: add
- mdiobus_c45_read/write_nested helpers
+Date: Mon, 09 Jan 2023 16:30:49 +0100
+Subject: [PATCH net-next v3 09/11] net: fec: Separate C22 and C45 transactions
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20221227-v6-2-rc1-c45-seperation-v3-10-ade1deb438da@walle.cc>
+Message-Id: <20221227-v6-2-rc1-c45-seperation-v3-9-ade1deb438da@walle.cc>
 References: <20221227-v6-2-rc1-c45-seperation-v3-0-ade1deb438da@walle.cc>
 In-Reply-To: <20221227-v6-2-rc1-c45-seperation-v3-0-ade1deb438da@walle.cc>
 To: Heiner Kallweit <hkallweit1@gmail.com>,
@@ -69,8 +68,8 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  Michael Walle <michael@walle.cc>, Vladimir Oltean <vladimir.oltean@nxp.com>
 X-Mailer: b4 0.11.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230109_073106_837702_2F9133EC 
-X-CRM114-Status: GOOD (  11.67  )
+X-CRM114-CacheID: sfid-20230109_073106_793408_B5E9C6CF 
+X-CRM114-Status: GOOD (  17.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,113 +86,232 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Andrew Lunn <andrew@lunn.ch>
 
-Some DSA devices pass through PHY access to the MDIO bus the switch is
-on. Add C45 versions of the current C22 helpers for nested accesses to
-MDIO busses, so that C22 and C45 can be separated in these DSA
-drivers.
+The fec MDIO bus driver can perform both C22 and C45 transfers.
+Create separate functions for each and register the C45 versions using
+the new API calls where appropriate.
 
 Signed-off-by: Andrew Lunn <andrew@lunn.ch>
 Signed-off-by: Michael Walle <michael@walle.cc>
+Reviewed-by: Wei Fang <wei.fang@nxp.com>
 ---
 v2:
- - [al] new patch
+ - [al] Fixup some indentation
+v3:
+ - [mw] More concise subject
 ---
- drivers/net/phy/mdio_bus.c | 55 ++++++++++++++++++++++++++++++++++++++++++++++
- include/linux/mdio.h       |  4 ++++
- 2 files changed, 59 insertions(+)
+ drivers/net/ethernet/freescale/fec_main.c | 153 ++++++++++++++++++++----------
+ 1 file changed, 103 insertions(+), 50 deletions(-)
 
-diff --git a/drivers/net/phy/mdio_bus.c b/drivers/net/phy/mdio_bus.c
-index 522cbe6a0b23..902e1c88ef58 100644
---- a/drivers/net/phy/mdio_bus.c
-+++ b/drivers/net/phy/mdio_bus.c
-@@ -1008,6 +1008,33 @@ int mdiobus_c45_read(struct mii_bus *bus, int addr, int devad, u32 regnum)
+diff --git a/drivers/net/ethernet/freescale/fec_main.c b/drivers/net/ethernet/freescale/fec_main.c
+index 644f3c963730..e6238e53940d 100644
+--- a/drivers/net/ethernet/freescale/fec_main.c
++++ b/drivers/net/ethernet/freescale/fec_main.c
+@@ -1987,47 +1987,74 @@ static int fec_enet_mdio_wait(struct fec_enet_private *fep)
+ 	return ret;
  }
- EXPORT_SYMBOL(mdiobus_c45_read);
  
-+/**
-+ * mdiobus_c45_read_nested - Nested version of the mdiobus_c45_read function
-+ * @bus: the mii_bus struct
-+ * @addr: the phy address
-+ * @devad: device address to read
-+ * @regnum: register number to read
-+ *
-+ * In case of nested MDIO bus access avoid lockdep false positives by
-+ * using mutex_lock_nested().
-+ *
-+ * NOTE: MUST NOT be called from interrupt context,
-+ * because the bus read/write functions may wait for an interrupt
-+ * to conclude the operation.
-+ */
-+int mdiobus_c45_read_nested(struct mii_bus *bus, int addr, int devad,
-+			    u32 regnum)
-+{
-+	int retval;
+-static int fec_enet_mdio_read(struct mii_bus *bus, int mii_id, int regnum)
++static int fec_enet_mdio_read_c22(struct mii_bus *bus, int mii_id, int regnum)
+ {
+ 	struct fec_enet_private *fep = bus->priv;
+ 	struct device *dev = &fep->pdev->dev;
+ 	int ret = 0, frame_start, frame_addr, frame_op;
+-	bool is_c45 = !!(regnum & MII_ADDR_C45);
+ 
+ 	ret = pm_runtime_resume_and_get(dev);
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	if (is_c45) {
+-		frame_start = FEC_MMFR_ST_C45;
++	/* C22 read */
++	frame_op = FEC_MMFR_OP_READ;
++	frame_start = FEC_MMFR_ST;
++	frame_addr = regnum;
+ 
+-		/* write address */
+-		frame_addr = (regnum >> 16);
+-		writel(frame_start | FEC_MMFR_OP_ADDR_WRITE |
+-		       FEC_MMFR_PA(mii_id) | FEC_MMFR_RA(frame_addr) |
+-		       FEC_MMFR_TA | (regnum & 0xFFFF),
+-		       fep->hwp + FEC_MII_DATA);
++	/* start a read op */
++	writel(frame_start | frame_op |
++	       FEC_MMFR_PA(mii_id) | FEC_MMFR_RA(frame_addr) |
++	       FEC_MMFR_TA, fep->hwp + FEC_MII_DATA);
+ 
+-		/* wait for end of transfer */
+-		ret = fec_enet_mdio_wait(fep);
+-		if (ret) {
+-			netdev_err(fep->netdev, "MDIO address write timeout\n");
+-			goto out;
+-		}
++	/* wait for end of transfer */
++	ret = fec_enet_mdio_wait(fep);
++	if (ret) {
++		netdev_err(fep->netdev, "MDIO read timeout\n");
++		goto out;
++	}
+ 
+-		frame_op = FEC_MMFR_OP_READ_C45;
++	ret = FEC_MMFR_DATA(readl(fep->hwp + FEC_MII_DATA));
+ 
+-	} else {
+-		/* C22 read */
+-		frame_op = FEC_MMFR_OP_READ;
+-		frame_start = FEC_MMFR_ST;
+-		frame_addr = regnum;
++out:
++	pm_runtime_mark_last_busy(dev);
++	pm_runtime_put_autosuspend(dev);
 +
-+	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-+	retval = __mdiobus_c45_read(bus, addr, devad, regnum);
-+	mutex_unlock(&bus->mdio_lock);
-+
-+	return retval;
++	return ret;
 +}
-+EXPORT_SYMBOL(mdiobus_c45_read_nested);
 +
- /**
-  * mdiobus_write_nested - Nested version of the mdiobus_write function
-  * @bus: the mii_bus struct
-@@ -1082,6 +1109,34 @@ int mdiobus_c45_write(struct mii_bus *bus, int addr, int devad, u32 regnum,
++static int fec_enet_mdio_read_c45(struct mii_bus *bus, int mii_id,
++				  int devad, int regnum)
++{
++	struct fec_enet_private *fep = bus->priv;
++	struct device *dev = &fep->pdev->dev;
++	int ret = 0, frame_start, frame_op;
++
++	ret = pm_runtime_resume_and_get(dev);
++	if (ret < 0)
++		return ret;
++
++	frame_start = FEC_MMFR_ST_C45;
++
++	/* write address */
++	writel(frame_start | FEC_MMFR_OP_ADDR_WRITE |
++	       FEC_MMFR_PA(mii_id) | FEC_MMFR_RA(devad) |
++	       FEC_MMFR_TA | (regnum & 0xFFFF),
++	       fep->hwp + FEC_MII_DATA);
++
++	/* wait for end of transfer */
++	ret = fec_enet_mdio_wait(fep);
++	if (ret) {
++		netdev_err(fep->netdev, "MDIO address write timeout\n");
++		goto out;
+ 	}
+ 
++	frame_op = FEC_MMFR_OP_READ_C45;
++
+ 	/* start a read op */
+ 	writel(frame_start | frame_op |
+-		FEC_MMFR_PA(mii_id) | FEC_MMFR_RA(frame_addr) |
+-		FEC_MMFR_TA, fep->hwp + FEC_MII_DATA);
++	       FEC_MMFR_PA(mii_id) | FEC_MMFR_RA(devad) |
++	       FEC_MMFR_TA, fep->hwp + FEC_MII_DATA);
+ 
+ 	/* wait for end of transfer */
+ 	ret = fec_enet_mdio_wait(fep);
+@@ -2045,45 +2072,69 @@ static int fec_enet_mdio_read(struct mii_bus *bus, int mii_id, int regnum)
+ 	return ret;
  }
- EXPORT_SYMBOL(mdiobus_c45_write);
  
-+/**
-+ * mdiobus_c45_write_nested - Nested version of the mdiobus_c45_write function
-+ * @bus: the mii_bus struct
-+ * @addr: the phy address
-+ * @devad: device address to read
-+ * @regnum: register number to write
-+ * @val: value to write to @regnum
-+ *
-+ * In case of nested MDIO bus access avoid lockdep false positives by
-+ * using mutex_lock_nested().
-+ *
-+ * NOTE: MUST NOT be called from interrupt context,
-+ * because the bus read/write functions may wait for an interrupt
-+ * to conclude the operation.
-+ */
-+int mdiobus_c45_write_nested(struct mii_bus *bus, int addr, int devad,
-+			     u32 regnum, u16 val)
-+{
-+	int err;
+-static int fec_enet_mdio_write(struct mii_bus *bus, int mii_id, int regnum,
+-			   u16 value)
++static int fec_enet_mdio_write_c22(struct mii_bus *bus, int mii_id, int regnum,
++				   u16 value)
+ {
+ 	struct fec_enet_private *fep = bus->priv;
+ 	struct device *dev = &fep->pdev->dev;
+ 	int ret, frame_start, frame_addr;
+-	bool is_c45 = !!(regnum & MII_ADDR_C45);
+ 
+ 	ret = pm_runtime_resume_and_get(dev);
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	if (is_c45) {
+-		frame_start = FEC_MMFR_ST_C45;
++	/* C22 write */
++	frame_start = FEC_MMFR_ST;
++	frame_addr = regnum;
+ 
+-		/* write address */
+-		frame_addr = (regnum >> 16);
+-		writel(frame_start | FEC_MMFR_OP_ADDR_WRITE |
+-		       FEC_MMFR_PA(mii_id) | FEC_MMFR_RA(frame_addr) |
+-		       FEC_MMFR_TA | (regnum & 0xFFFF),
+-		       fep->hwp + FEC_MII_DATA);
++	/* start a write op */
++	writel(frame_start | FEC_MMFR_OP_WRITE |
++	       FEC_MMFR_PA(mii_id) | FEC_MMFR_RA(frame_addr) |
++	       FEC_MMFR_TA | FEC_MMFR_DATA(value),
++	       fep->hwp + FEC_MII_DATA);
+ 
+-		/* wait for end of transfer */
+-		ret = fec_enet_mdio_wait(fep);
+-		if (ret) {
+-			netdev_err(fep->netdev, "MDIO address write timeout\n");
+-			goto out;
+-		}
+-	} else {
+-		/* C22 write */
+-		frame_start = FEC_MMFR_ST;
+-		frame_addr = regnum;
++	/* wait for end of transfer */
++	ret = fec_enet_mdio_wait(fep);
++	if (ret)
++		netdev_err(fep->netdev, "MDIO write timeout\n");
 +
-+	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
-+	err = __mdiobus_c45_write(bus, addr, devad, regnum, val);
-+	mutex_unlock(&bus->mdio_lock);
++	pm_runtime_mark_last_busy(dev);
++	pm_runtime_put_autosuspend(dev);
 +
-+	return err;
++	return ret;
 +}
-+EXPORT_SYMBOL(mdiobus_c45_write_nested);
 +
- /**
-  * mdiobus_modify - Convenience function for modifying a given mdio device
-  *	register
-diff --git a/include/linux/mdio.h b/include/linux/mdio.h
-index 97b49765e8b5..220f3ca8702d 100644
---- a/include/linux/mdio.h
-+++ b/include/linux/mdio.h
-@@ -425,10 +425,14 @@ int mdiobus_modify_changed(struct mii_bus *bus, int addr, u32 regnum,
- 			   u16 mask, u16 set);
- int __mdiobus_c45_read(struct mii_bus *bus, int addr, int devad, u32 regnum);
- int mdiobus_c45_read(struct mii_bus *bus, int addr, int devad, u32 regnum);
-+int mdiobus_c45_read_nested(struct mii_bus *bus, int addr, int devad,
-+			     u32 regnum);
- int __mdiobus_c45_write(struct mii_bus *bus, int addr,  int devad, u32 regnum,
- 			u16 val);
- int mdiobus_c45_write(struct mii_bus *bus, int addr,  int devad, u32 regnum,
- 		      u16 val);
-+int mdiobus_c45_write_nested(struct mii_bus *bus, int addr,  int devad,
-+			     u32 regnum, u16 val);
- int mdiobus_c45_modify(struct mii_bus *bus, int addr, int devad, u32 regnum,
- 		       u16 mask, u16 set);
++static int fec_enet_mdio_write_c45(struct mii_bus *bus, int mii_id,
++				   int devad, int regnum, u16 value)
++{
++	struct fec_enet_private *fep = bus->priv;
++	struct device *dev = &fep->pdev->dev;
++	int ret, frame_start;
++
++	ret = pm_runtime_resume_and_get(dev);
++	if (ret < 0)
++		return ret;
++
++	frame_start = FEC_MMFR_ST_C45;
++
++	/* write address */
++	writel(frame_start | FEC_MMFR_OP_ADDR_WRITE |
++	       FEC_MMFR_PA(mii_id) | FEC_MMFR_RA(devad) |
++	       FEC_MMFR_TA | (regnum & 0xFFFF),
++	       fep->hwp + FEC_MII_DATA);
++
++	/* wait for end of transfer */
++	ret = fec_enet_mdio_wait(fep);
++	if (ret) {
++		netdev_err(fep->netdev, "MDIO address write timeout\n");
++		goto out;
+ 	}
  
+ 	/* start a write op */
+ 	writel(frame_start | FEC_MMFR_OP_WRITE |
+-		FEC_MMFR_PA(mii_id) | FEC_MMFR_RA(frame_addr) |
+-		FEC_MMFR_TA | FEC_MMFR_DATA(value),
+-		fep->hwp + FEC_MII_DATA);
++	       FEC_MMFR_PA(mii_id) | FEC_MMFR_RA(devad) |
++	       FEC_MMFR_TA | FEC_MMFR_DATA(value),
++	       fep->hwp + FEC_MII_DATA);
+ 
+ 	/* wait for end of transfer */
+ 	ret = fec_enet_mdio_wait(fep);
+@@ -2381,8 +2432,10 @@ static int fec_enet_mii_init(struct platform_device *pdev)
+ 	}
+ 
+ 	fep->mii_bus->name = "fec_enet_mii_bus";
+-	fep->mii_bus->read = fec_enet_mdio_read;
+-	fep->mii_bus->write = fec_enet_mdio_write;
++	fep->mii_bus->read = fec_enet_mdio_read_c22;
++	fep->mii_bus->write = fec_enet_mdio_write_c22;
++	fep->mii_bus->read_c45 = fec_enet_mdio_read_c45;
++	fep->mii_bus->write_c45 = fec_enet_mdio_write_c45;
+ 	snprintf(fep->mii_bus->id, MII_BUS_ID_SIZE, "%s-%x",
+ 		pdev->name, fep->dev_id + 1);
+ 	fep->mii_bus->priv = fep;
 
 -- 
 2.30.2
