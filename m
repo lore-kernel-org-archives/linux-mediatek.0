@@ -4,63 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B255C54EBC
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 01:42:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83985C54EBD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 03:48:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mloTljDLM3+9wiYZIt0ylVlgbVBUVZ/eq3ZfGpbT1ck=; b=O+VeKZgAgkeIACU/c4kKLUmtNl
-	mLH1yNREyMJMKAetidI9WZXGzuKJW9AAMea1fm/GfQWc6HNOcYirTd0uHIsHvg4e719paIQj/7FhU
-	hrlYd5ufeYmSaOOgtnOBULyK5I+uSY0JtrsCzXfd+5F8Gc1g7L5nEeIjVQRvy1yYEYdjO5kNUb7wh
-	zNjxEipgAC119Pi2yjYMhRa/dutzy7WXF+7CAu9yZFTNLTXlcK2+FLbNoi60HmWIBqNiV9LQzgCxw
-	RcffGOZKaKsIDcIG4xsPQNn4kkfpKh4wZhIWde/bLT63AAYzE/pc2jp9efPwDlacDSpgyBIFaDjq3
-	fh2+R9Ow==;
+	bh=sihnne3RQDI8AsdrTTmVwvZYK1ek1HQcaOW0HCkOxEk=; b=nSDJXz0fp7hHe78yqOMuN4fGVE
+	ztE3aL7ovVNYdaw+9vb6V6BQ7k36MoBFesxpA91h76X4ur+xvq2ZMwCH2M8toAekWgieO1yhp00lJ
+	BjrGhK5jm5sys2NhCgARjCtuV07edQhqnkXZG5xVMtak8bQE24oKbqSnLiWMtNyE/XiVq7JJps/JD
+	GWZCJygTo4x34UCBtTq9tTVpGkufpGYfzWlxo7AKbQ0OIzid3kXeo20J+7stoBjZrjknt0ZUcby6Y
+	eRp5IR8pRRqRjwZcQFtJB5V2rZZsXtRruMAUn1RMVKMO2mb36uvl+/ccsecbkWIOseTuF8Rmw1LJt
+	s1cDNpWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEhAn-00GhBV-Km; Mon, 09 Jan 2023 01:42:01 +0000
-Received: from mg.richtek.com ([220.130.44.152])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEhAi-00Gh9l-Tq; Mon, 09 Jan 2023 01:41:59 +0000
-X-MailGates: (flag:4,DYNAMIC,BADHELO,RELAY,NOHOST:PASS)(compute_score:DE
-	LIVER,40,3)
-Received: from 192.168.10.46
-	by mg.richtek.com with MailGates ESMTP Server V5.0(16491:0:AUTH_RELAY)
-	(envelope-from <cy_huang@richtek.com>); Mon, 09 Jan 2023 09:41:24 +0800 (CST)
-Received: from ex3.rt.l (192.168.10.46) by ex3.rt.l (192.168.10.46) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.20; Mon, 9 Jan
- 2023 09:41:23 +0800
-Received: from linuxcarl2.richtek.com (192.168.10.154) by ex3.rt.l
- (192.168.10.45) with Microsoft SMTP Server id 15.2.1118.20 via Frontend
- Transport; Mon, 9 Jan 2023 09:41:23 +0800
-Date: Mon, 9 Jan 2023 09:41:23 +0800
-From: ChiYuan Huang <cy_huang@richtek.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-CC: ChiYuan Huang <u0084500@gmail.com>, <linux@roeck-us.net>,
-	<heikki.krogerus@linux.intel.com>, <matthias.bgg@gmail.com>,
-	<tommyyl.chen@mediatek.com>, <macpaul.lin@mediatek.com>,
-	<gene_chen@richtek.com>, <linux-usb@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <stable@vger.kernel.org>
-Subject: Re: [PATCH] usb: typec: tcpm: Fix altmode re-registration causes
- sysfs create fail
-Message-ID: <20230109014123.GA27423@linuxcarl2.richtek.com>
-References: <1671096096-20307-1-git-send-email-u0084500@gmail.com>
- <Y5rsdo/SGHJM4UKG@kroah.com>
- <CADiBU3-iVLQf6Q5SzOB_pMCs2PGcFuWryjpDn5Qvz41WQ6C2RA@mail.gmail.com>
- <Y5sIZ3zC6o4ARDEn@kroah.com>
+	id 1pEj91-00HAAY-I5; Mon, 09 Jan 2023 03:48:19 +0000
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pEj8p-00HA8r-FU; Mon, 09 Jan 2023 03:48:09 +0000
+Received: by mail-pf1-x42e.google.com with SMTP id k19so5193204pfg.11;
+        Sun, 08 Jan 2023 19:48:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=sihnne3RQDI8AsdrTTmVwvZYK1ek1HQcaOW0HCkOxEk=;
+        b=hNItLYuuLWjoX0cymxAC15T9INjLF2mV5p3Qzx/Q73maJ98TH+Oho4K4F3C78Lvsst
+         oIEGZdyvI84JLRAnXj99u2EeDJ8N6Vn1uy2gyBn938q0VTFLcZ5RDd5KrPsErPCyd631
+         S5LUgG+lwzXzI/Co+eg6Kr2R/cV3srgaS+BhdiJJNkDBFimfD9mqJ5qzAGFXfXdRPpvy
+         sB1vq8ytKGm7VJcTaX/FOeRl63DcR6TLuGfizJnGQTiNosmydWpNJs3XEjBXd8uKvvCM
+         GNbfGSe8QdcED3pFQw3nOmelqL7dM1t1QGNfOurN1XWNBxdMNDUX36pw17u4/94+VhXN
+         Zgvg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=sihnne3RQDI8AsdrTTmVwvZYK1ek1HQcaOW0HCkOxEk=;
+        b=3gjRyGvbljx6Q4FMzKR0WlNzIHv70xxCgSaX7qrBJJvAjwRX/0mmbAZH/FbOcmHAyv
+         uj9Pb6BcFwGmUiADzT+1aHp8fqeRoq4pehp2dM2zaaczvTAHDQuvLe2pXLrlpgSOMc/i
+         tG7/TTKf5E5QC//x4tRqTig05GMl+oImG/+qUVThw7MODhoEp23xQqL2Xb592nFGjIN1
+         t4EBg2W47K5y3pYIiQ5sY2pocLZ0PNp3yfLX7StDnyWtmA8fkpdG+rbmOv/lM1q4yJyJ
+         vwtQRqaVaj4Eu7pUzRBmkP554sRv2YRqnakNrbkFmenoU14LYCOhv04Mb8pZrvIxL/PP
+         qZWw==
+X-Gm-Message-State: AFqh2kqN28rdNvs3ddcafr9UZeDhJ5IeZVlcObyiUhyRWOZiS97PlZfI
+	gBI1Vr+h7h7R645VD3MZ0Mg=
+X-Google-Smtp-Source: AMrXdXvsrsFv9SyBFedTssm19CKLisNlVQAY89mLir9qOPrri2um2bVlWhINufu0cbp/NAbyG/cvyQ==
+X-Received: by 2002:a05:6a00:158e:b0:581:5be0:4e2a with SMTP id u14-20020a056a00158e00b005815be04e2amr61249952pfk.31.1673236084803;
+        Sun, 08 Jan 2023 19:48:04 -0800 (PST)
+Received: from debian.me (subs03-180-214-233-24.three.co.id. [180.214.233.24])
+        by smtp.gmail.com with ESMTPSA id p128-20020a625b86000000b00580d25a2bb2sm357565pfb.108.2023.01.08.19.48.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 08 Jan 2023 19:48:04 -0800 (PST)
+Received: by debian.me (Postfix, from userid 1000)
+	id D6FC0100C90; Mon,  9 Jan 2023 10:48:00 +0700 (WIB)
+Date: Mon, 9 Jan 2023 10:48:00 +0700
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+To: m.chetan.kumar@linux.intel.com, netdev@vger.kernel.org
+Cc: kuba@kernel.org, davem@davemloft.net, johannes@sipsolutions.net,
+	ryazanov.s.a@gmail.com, loic.poulain@linaro.org,
+	ilpo.jarvinen@linux.intel.com, ricardo.martinez@linux.intel.com,
+	chiranjeevi.rapolu@linux.intel.com, haijun.liu@mediatek.com,
+	edumazet@google.com, pabeni@redhat.com, linuxwwan@intel.com,
+	linuxwwan_5g@intel.com, chandrashekar.devegowda@intel.com,
+	matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-doc@vger.kernel.org,
+	jiri@nvidia.com, corbet@lwn.net
+Subject: Re: [PATCH v3 net-next 5/5] net: wwan: t7xx: Devlink documentation
+Message-ID: <Y7uOcBRN0Awn5xAb@debian.me>
+References: <cover.1673016069.git.m.chetan.kumar@linux.intel.com>
+ <500a41cb400b4cdedd6df414b40200a5211965f5.1673016069.git.m.chetan.kumar@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="irWeDYniLkJASH6A"
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <Y5sIZ3zC6o4ARDEn@kroah.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <500a41cb400b4cdedd6df414b40200a5211965f5.1673016069.git.m.chetan.kumar@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230108_174157_405766_E76CCDD9 
-X-CRM114-Status: GOOD (  18.53  )
+X-CRM114-CacheID: sfid-20230108_194807_570737_EB988C7B 
+X-CRM114-Status: GOOD (  16.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,53 +98,337 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 15, 2022 at 12:43:35PM +0100, Greg KH wrote:
-> On Thu, Dec 15, 2022 at 05:53:44PM +0800, ChiYuan Huang wrote:
-> > Greg KH <gregkh@linuxfoundation.org> =E6=96=BC 2022=E5=B9=B412=E6=9C=88=
-15=E6=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=8B=E5=8D=885:44=E5=AF=AB=E9=81=93=EF=
-=BC=9A
-> > >
-> > > On Thu, Dec 15, 2022 at 05:21:36PM +0800, cy_huang wrote:
-> > > > From: ChiYuan Huang <cy_huang@richtek.com>
-> > >
-> > > Why not send directly from this address so we can validate that this =
-is
-> > > the correct email address of yours?
-> > >
-> > It's  the company mailbox policy. To send the external mail, there's
-> > the security text block at the bottom.
-> > Except this, some mail address are also blocked. To avoid this, I use
-> > my personal mail to send the patch
-> > and leave the SoB for the Richtek mailbox.
-> > It's lazy to fight for this.
->
-> Please fix it, otherwise your company's email address will be spoofed
-> and people can claim to be sending changes from their domain.
->
-> Please fix that up, abusing random gmail addresses like this is not ok,
-> sorry.
 
-Thanks for your comment.
-After the work with MIS for several weeks, we finnaly got one way to do it.
+--irWeDYniLkJASH6A
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-But I'm not sure all mail account can receive the mail.
-If anyone cannot receive the mail, please inform me.
+On Fri, Jan 06, 2023 at 09:58:06PM +0530, m.chetan.kumar@linux.intel.com wr=
+ote:
+> Refer to t7xx.rst file for details.
 
-ChiYuan Huang.
+Above line is unnecessary.
 
->
-> greg k-h
-************* Email Confidentiality Notice ********************
+> +The wwan device is put into fastboot mode via devlink reload command, by
+> +passing "driver_reinit" action.
+> +
+> +$ devlink dev reload pci/0000:$bdf action driver_reinit
+> +
+> +Upon completion of fw flashing or coredump collection the wwan device is
+> +reset to normal mode using devlink reload command, by passing "fw_activa=
+te"
+> +action.
+> +
+> +$ devlink dev reload pci/0000:$bdf action fw_activate
 
-The information contained in this e-mail message (including any attachments=
-) may be confidential, proprietary, privileged, or otherwise exempt from di=
-sclosure under applicable laws. It is intended to be conveyed only to the d=
-esignated recipient(s). Any use, dissemination, distribution, printing, ret=
-aining or copying of this e-mail (including its attachments) by unintended =
-recipient(s) is strictly prohibited and may be unlawful. If you are not an =
-intended recipient of this e-mail, or believe that you have received this e=
--mail in error, please notify the sender immediately (by replying to this e=
--mail), delete any and all copies of this e-mail (including any attachments=
-) from your system, and do not disclose the content of this e-mail to any o=
-ther person. Thank you!
+Personally I prefer to put command-line explanations below the actual
+command:
+
+---- >8 ----
+
+diff --git a/Documentation/networking/devlink/t7xx.rst b/Documentation/netw=
+orking/devlink/t7xx.rst
+index de220878ad7649..24f9e0ee69bffb 100644
+--- a/Documentation/networking/devlink/t7xx.rst
++++ b/Documentation/networking/devlink/t7xx.rst
+@@ -74,17 +74,21 @@ The supported list of firmware image types is described=
+ below.
+ procedure, fastboot command & response are exchanged between driver and ww=
+an
+ device.
+=20
++::
++
++  $ devlink dev reload pci/0000:$bdf action driver_reinit
++
+ The wwan device is put into fastboot mode via devlink reload command, by
+ passing "driver_reinit" action.
+=20
+-$ devlink dev reload pci/0000:$bdf action driver_reinit
++::
++
++  $ devlink dev reload pci/0000:$bdf action fw_activate
+=20
+ Upon completion of fw flashing or coredump collection the wwan device is
+ reset to normal mode using devlink reload command, by passing "fw_activate"
+ action.
+=20
+-$ devlink dev reload pci/0000:$bdf action fw_activate
+-
+ Flash Commands:
+ =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+=20
+
+However, I find it's odd to jump from firmware image type list directly to
+devlink usage. Perhaps the latter should be put into the following section
+below?
+
+I also find that there is minor inconsistency of keyword formatting, so I
+have to inline-code the uninlined remainings:
+
+---- >8 ----
+
+diff --git a/Documentation/networking/devlink/t7xx.rst b/Documentation/netw=
+orking/devlink/t7xx.rst
+index 24f9e0ee69bffb..d8feefe116c978 100644
+--- a/Documentation/networking/devlink/t7xx.rst
++++ b/Documentation/networking/devlink/t7xx.rst
+@@ -29,7 +29,7 @@ Flash Update
+ The ``t7xx`` driver implements the flash update using the ``devlink-flash``
+ interface.
+=20
+-The driver uses DEVLINK_SUPPORT_FLASH_UPDATE_COMPONENT to identify the typ=
+e of
++The driver uses ``DEVLINK_SUPPORT_FLASH_UPDATE_COMPONENT`` to identify the=
+ type of
+ firmware image that need to be programmed upon the request by user space a=
+pplication.
+=20
+ The supported list of firmware image types is described below.
+@@ -79,14 +79,14 @@ device.
+   $ devlink dev reload pci/0000:$bdf action driver_reinit
+=20
+ The wwan device is put into fastboot mode via devlink reload command, by
+-passing "driver_reinit" action.
++passing ``driver_reinit`` action.
+=20
+ ::
+=20
+   $ devlink dev reload pci/0000:$bdf action fw_activate
+=20
+ Upon completion of fw flashing or coredump collection the wwan device is
+-reset to normal mode using devlink reload command, by passing "fw_activate"
++reset to normal mode using devlink reload command, by passing ``fw_activat=
+e``
+ action.
+=20
+ Flash Commands:
+=20
+> +
+> +Flash Commands:
+> +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+
+Trim the unneeded trailing colon on the section title.
+
+> +
+> +$ devlink dev flash pci/0000:$bdf file preloader_k6880v1_mdot2_datacard.=
+bin component "preloader"
+> +
+> +$ devlink dev flash pci/0000:$bdf file loader_ext-verified.img component=
+ "loader_ext1"
+> +
+> +$ devlink dev flash pci/0000:$bdf file tee-verified.img component "tee1"
+> +
+> +$ devlink dev flash pci/0000:$bdf file lk-verified.img component "lk"
+> +
+> +$ devlink dev flash pci/0000:$bdf file spmfw-verified.img component "spm=
+fw"
+> +
+> +$ devlink dev flash pci/0000:$bdf file sspm-verified.img component "sspm=
+_1"
+> +
+> +$ devlink dev flash pci/0000:$bdf file mcupm-verified.img component "mcu=
+pm_1"
+> +
+> +$ devlink dev flash pci/0000:$bdf file dpm-verified.img component "dpm_1"
+> +
+> +$ devlink dev flash pci/0000:$bdf file boot-verified.img component "boot"
+> +
+> +$ devlink dev flash pci/0000:$bdf file root.squashfs component "rootfs"
+> +
+> +$ devlink dev flash pci/0000:$bdf file modem-verified.img component "md1=
+img"
+> +
+> +$ devlink dev flash pci/0000:$bdf file dsp-verified.bin component "md1ds=
+p"
+> +
+> +$ devlink dev flash pci/0000:$bdf file OP_OTA.img component "mcf1"
+> +
+> +$ devlink dev flash pci/0000:$bdf file OEM_OTA.img component "mcf2"
+> +
+> +$ devlink dev flash pci/0000:$bdf file DEV_OTA.img component "mcf3"
+> +
+> <snipped>...
+> +Region commands
+> +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> +
+> +$ devlink region show
+> +
+> +
+> +$ devlink region new mr_dump
+> +
+> +$ devlink region read mr_dump snapshot 0 address 0 length $len
+> +
+> +$ devlink region del mr_dump snapshot 0
+> +
+> +$ devlink region new lk_dump
+> +
+> +$ devlink region read lk_dump snapshot 0 address 0 length $len
+> +
+> +$ devlink region del lk_dump snapshot 0
+> +
+> +Note: $len is actual len to be dumped.
+
+Please briefly describe these devlink commands.
+
+Also, wrap them in literal code blocks:
+
+---- >8 ----
+
+diff --git a/Documentation/networking/devlink/t7xx.rst b/Documentation/netw=
+orking/devlink/t7xx.rst
+index d8feefe116c978..1ba3ba4680e721 100644
+--- a/Documentation/networking/devlink/t7xx.rst
++++ b/Documentation/networking/devlink/t7xx.rst
+@@ -92,35 +92,65 @@ action.
+ Flash Commands:
+ =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+=20
+-$ devlink dev flash pci/0000:$bdf file preloader_k6880v1_mdot2_datacard.bi=
+n component "preloader"
++::
+=20
+-$ devlink dev flash pci/0000:$bdf file loader_ext-verified.img component "=
+loader_ext1"
++  $ devlink dev flash pci/0000:$bdf file preloader_k6880v1_mdot2_datacard.=
+bin component "preloader"
+=20
+-$ devlink dev flash pci/0000:$bdf file tee-verified.img component "tee1"
++::
+=20
+-$ devlink dev flash pci/0000:$bdf file lk-verified.img component "lk"
++  $ devlink dev flash pci/0000:$bdf file loader_ext-verified.img component=
+ "loader_ext1"
+=20
+-$ devlink dev flash pci/0000:$bdf file spmfw-verified.img component "spmfw"
++::
+=20
+-$ devlink dev flash pci/0000:$bdf file sspm-verified.img component "sspm_1"
++  $ devlink dev flash pci/0000:$bdf file tee-verified.img component "tee1"
+=20
+-$ devlink dev flash pci/0000:$bdf file mcupm-verified.img component "mcupm=
+_1"
++::
+=20
+-$ devlink dev flash pci/0000:$bdf file dpm-verified.img component "dpm_1"
++  $ devlink dev flash pci/0000:$bdf file lk-verified.img component "lk"
+=20
+-$ devlink dev flash pci/0000:$bdf file boot-verified.img component "boot"
++::
+=20
+-$ devlink dev flash pci/0000:$bdf file root.squashfs component "rootfs"
++  $ devlink dev flash pci/0000:$bdf file spmfw-verified.img component "spm=
+fw"
+=20
+-$ devlink dev flash pci/0000:$bdf file modem-verified.img component "md1im=
+g"
++::
+=20
+-$ devlink dev flash pci/0000:$bdf file dsp-verified.bin component "md1dsp"
++  $ devlink dev flash pci/0000:$bdf file sspm-verified.img component "sspm=
+_1"
+=20
+-$ devlink dev flash pci/0000:$bdf file OP_OTA.img component "mcf1"
++::
+=20
+-$ devlink dev flash pci/0000:$bdf file OEM_OTA.img component "mcf2"
++  $ devlink dev flash pci/0000:$bdf file mcupm-verified.img component "mcu=
+pm_1"
+=20
+-$ devlink dev flash pci/0000:$bdf file DEV_OTA.img component "mcf3"
++::
++
++  $ devlink dev flash pci/0000:$bdf file dpm-verified.img component "dpm_1"
++
++::
++
++  $ devlink dev flash pci/0000:$bdf file boot-verified.img component "boot"
++
++::
++
++  $ devlink dev flash pci/0000:$bdf file root.squashfs component "rootfs"
++
++::
++
++  $ devlink dev flash pci/0000:$bdf file modem-verified.img component "md1=
+img"
++
++::
++
++  $ devlink dev flash pci/0000:$bdf file dsp-verified.bin component "md1ds=
+p"
++
++::
++
++  $ devlink dev flash pci/0000:$bdf file OP_OTA.img component "mcf1"
++
++::
++
++  $ devlink dev flash pci/0000:$bdf file OEM_OTA.img component "mcf2"
++
++::
++
++  $ devlink dev flash pci/0000:$bdf file DEV_OTA.img component "mcf3"
+=20
+ Note: Component selects the partition type to be programmed.
+=20
+@@ -147,19 +177,31 @@ Following regions are accessed for device internal da=
+ta.
+ Region commands
+ =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+=20
+-$ devlink region show
++::
++  $ devlink region show
+=20
++::
+=20
+-$ devlink region new mr_dump
++  $ devlink region new mr_dump
+=20
+-$ devlink region read mr_dump snapshot 0 address 0 length $len
++::
+=20
+-$ devlink region del mr_dump snapshot 0
++  $ devlink region read mr_dump snapshot 0 address 0 length $len
+=20
+-$ devlink region new lk_dump
++::
+=20
+-$ devlink region read lk_dump snapshot 0 address 0 length $len
++  $ devlink region del mr_dump snapshot 0
+=20
+-$ devlink region del lk_dump snapshot 0
++::
++
++  $ devlink region new lk_dump
++
++::
++
++  $ devlink region read lk_dump snapshot 0 address 0 length $len
++
++::
++
++  $ devlink region del lk_dump snapshot 0
+=20
+ Note: $len is actual len to be dumped.
+
+Thanks.
+
+--=20
+An old man doll... just what I always wanted! - Clara
+
+--irWeDYniLkJASH6A
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQSSYQ6Cy7oyFNCHrUH2uYlJVVFOowUCY7uOagAKCRD2uYlJVVFO
+o5A/AP9NvGek0JW4Qi2C310VlJ6mWaEt905jsN7pUeU2ePzEsQD/cg7dAHSb2ecn
+DLfa0bVhusQk9kl6SrOwZdSyr0x6YAM=
+=Ppu6
+-----END PGP SIGNATURE-----
+
+--irWeDYniLkJASH6A--
 
