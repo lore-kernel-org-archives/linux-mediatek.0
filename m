@@ -4,69 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80606C54EBD
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 18:41:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24645C5479D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 20:57:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=mcw6TST58e8Q0uX2FzOQBem/d4q8P5QHY7UX1B18UwA=; b=lhx1drN1Aifk29KRwUqLjbWkMv
-	dA0c3ISWjF36ffhDPUkhR0lnN9LQxCXEzuXQBHEyhFnMgeeBm0iSDUp2L6KLAjP6S7lM0fLUxP+hM
-	THYBjgn88kUJkUPkJ7xJqsP3qT3Vqw4vDm8eHaq8u+CQvnA5mTpRAKWVFBLnUQJgz3lUaaFgUAdA6
-	I6zDXGhPk9s1IWkM5sjKyA/v6M7gcbIiutALnKbIAXvqC6eaypOXXUuqrwmNApgCe8ICVE4cQBjz4
-	11fTnxKDgxE3111kExQ6AXTrzYS3ZAjx701wDTwPqIJJbbglo39WIQIcNh3n2VrVTkcTdMpKRuBxe
-	oORgRIZg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EI+HK5d2VVHprte9/R4H7nRhtttrT0pgRQ4cGp2gqIE=; b=uSYx70Uw5VplMHyQgy6pQxkGAQ
+	g1LlmKB6IApz7G4jrrvjhA9CSX73mAvAI3P/kAc4oH0N4fq/EbNQvs+YRCqxzzRaqi+qXRrNlcVec
+	wEpNabZ90tJfAwvwak1YMp8XIwW3WHUwHMFOQ2ODhWNzlZGN0WbhnX1NDomNaNoVSOGaMej4ezQ91
+	jfgT26LTmrod4JuwzN3C/IvG70omgjQGCnbvZHknAS9TGjCgZqmbhiSaDRShWWxVPgblHV0xswhQ3
+	M7VkpO5aJYLvyI45c2L4ulTaemuqRTtUdNIpBEnluDuD2xXFviLcLre/Mb/Fysk66Rp/bEPueOl5O
+	PBicJG3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEx4w-003NFq-2T; Mon, 09 Jan 2023 18:41:02 +0000
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+	id 1pEzD7-0041pq-AN; Mon, 09 Jan 2023 20:57:37 +0000
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEwqv-003GwD-8y
-	for linux-mediatek@lists.infradead.org; Mon, 09 Jan 2023 18:26:39 +0000
-Received: by mail-pj1-x1029.google.com with SMTP id z4-20020a17090a170400b00226d331390cso10589597pjd.5
-        for <linux-mediatek@lists.infradead.org>; Mon, 09 Jan 2023 10:26:24 -0800 (PST)
+	id 1pEzBC-0040q5-JC; Mon, 09 Jan 2023 20:55:39 +0000
+Received: by mail-pg1-x52d.google.com with SMTP id s67so6761662pgs.3;
+        Mon, 09 Jan 2023 12:55:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=mcw6TST58e8Q0uX2FzOQBem/d4q8P5QHY7UX1B18UwA=;
-        b=PDpK/5o6LQb6tGxUuuzLarQFE5Avm1G7pdkXRnv3WVdrNO1mzU77JBhHe7FlekMFI0
-         apXnVpw+Zj+dHNUJYshbu1yOPI69RWkCzhziRmdlofm9Z58V/s6eWEPGo/8Xtn2zvNiC
-         twJgrjHQGqiEeSXlAKae6YJlZ+195u8CU1h+Y=
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=EI+HK5d2VVHprte9/R4H7nRhtttrT0pgRQ4cGp2gqIE=;
+        b=XXSphh6WdemqNlaouq27ZMv9FP/uelVUYlorwcZLgqAYLkGmCZpoIMxcvLw17XqQlk
+         Wq/rki201eF9da9X5SZjRnH7GUBOad2hD9nME7ux6bfICDszp0NTAoGgZjST8dPBU9+G
+         +ZFmWlA6yHf3FEmbDRIWfg44SBnSMyDQgxkb/tvEfG1srLYwbSJfn9c96o2s+r6TSjT6
+         H3adegRyMv9R2Dw43i668JZf5yOZ/EG0BOextW/2Py2wcB1n3OuHz6Z3AGINU8D0Zq6i
+         uXuFYaX3t79fxm38YgA2HtmAMj1Jaa9W/62SfvD7oAOWMiuUv1dMC/CfSVan5XD+zdd1
+         bAQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=mcw6TST58e8Q0uX2FzOQBem/d4q8P5QHY7UX1B18UwA=;
-        b=h2lAPpFtC7J6L6uvWW8kbbF19ZXAZTLF2nOJHtry6W5mukOWoH4AIqYWERdVsD4yAs
-         DBbheaJc0z7PhbLyclpu76jY2KKhLbY2R78+uf/JIglVG8rqpygzP7cohrsvyz7TcVOI
-         XILiZPCKkDDqlShtCgvBMwvrbTrsfT/ZSUdPm8/YB4GR7rTIqihqdHEFvYvm/MUQpV/B
-         +xrmZUjavotaBYhsBx2HqQhinRLDW66Icz3D2mNqYdF0z1o1uzjFjtdLM8A7q2fHGDCn
-         YhxAyiNDEfTUruft3xYGwxu2R4DTkUfQKLM0zqLX2l2FdHqWBVUWk3kganKIN41Tzvi6
-         VVlg==
-X-Gm-Message-State: AFqh2kpvLs8OeKJ6k2zVDh8JEv7smimkgBO4Oe6FZVVxXSi04BbzHnXe
-	PaqtUfRhA5bsHIfH6gAxeB5IM9vFaupT1dPwo4T6446AzxK8tnWv
-X-Google-Smtp-Source: AMrXdXs+felrXn71fDQFUAwQfKnX/2KTbDbWSMzFuSrTO/C5+epcXgDL/JBzogwsfdEgh1GHupmnDQ0/7vM2CglPvro=
-X-Received: by 2002:a17:902:cf0f:b0:193:373e:513e with SMTP id
- i15-20020a170902cf0f00b00193373e513emr247496plg.23.1673288784142; Mon, 09 Jan
- 2023 10:26:24 -0800 (PST)
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=EI+HK5d2VVHprte9/R4H7nRhtttrT0pgRQ4cGp2gqIE=;
+        b=k4GUuZTsleEP/us5iHpKROrUqCOn56vVQTHJBQmkuX+UbjtDJYkve/MOG+qa8IuhrZ
+         a6wgvsRdMdkZnsnM/9VyowlnVY98c0CEUegKpIR3Lm1q3bfOliYR6IGm3ZGFE2SXwCTd
+         iPGEGXW0Shc8cXf85Izei4rEJXP90X5mHF063R7yPc0xmn9c19KUE/ArE+JO/HQDnkSf
+         wzVe0b66CBIAPGZhTxjJW8f9pDaH0oVY3mHui0ddoUF1eBwkS0rPh0sPwrhPwrvtPKNS
+         D2CTBPcVUyfDhsuyhcXje8gwG33i78Gpvn7pAIbQUExAaT1i/K48EEuoHYRn5xV4kOBe
+         x2QQ==
+X-Gm-Message-State: AFqh2kpRpar/8K5xyJR7LddeiOEFsIZGp31X1DI8JrRKvqeWa4e6YfiI
+	xBdF7Tvrz9o8LvZ8Ikceflv9FESct/8AelQAWsY=
+X-Google-Smtp-Source: AMrXdXtBdjMC2XbkCbg/sKxAYKrMMuQrVmVkCfTKgQdKmZ+HbnKyM9ffUAKFBpYnQwb9R5I/d32LLW0gc4vI7HYioOE=
+X-Received: by 2002:a65:6bc5:0:b0:478:31a5:3656 with SMTP id
+ e5-20020a656bc5000000b0047831a53656mr3286091pgw.273.1673297736001; Mon, 09
+ Jan 2023 12:55:36 -0800 (PST)
 MIME-Version: 1.0
-From: Justin Green <greenjustin@chromium.org>
-Date: Mon, 9 Jan 2023 13:26:13 -0500
-Message-ID: <CAHC42ReC+pkKxkHdagfpQ5-hLWGAad5nWtdd4uZTDhuQz_bwMA@mail.gmail.com>
-Subject: [RESEND PATCH] drm/mediatek: Add support for AR30 and BA30
-To: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, jason-jh.lin@mediatek.com, 
-	justin.yeh@mediatek.com, Chen-Yu Tsai <wenst@chromium.org>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, p.zabel@pengutronix.de, airlied@linux.ie, 
-	matthias.bgg@gmail.com, daniel@ffwll.ch, Daniel Stone <daniel@fooishbar.org>, 
-	Justin Green <greenjustin@chromium.org>
+References: <20230103075603.12294-1-Kuan-Ying.Lee@mediatek.com>
+ <CA+fCnZdk0HoWx6XCbTsiNhyR2Z_7zv5JUdgNs8Q_tV4GRkkmCg@mail.gmail.com> <dbaeb044c547ddb908bffdce4d2dfa0936805ef7.camel@mediatek.com>
+In-Reply-To: <dbaeb044c547ddb908bffdce4d2dfa0936805ef7.camel@mediatek.com>
+From: Andrey Konovalov <andreyknvl@gmail.com>
+Date: Mon, 9 Jan 2023 21:55:25 +0100
+Message-ID: <CA+fCnZfhH+XRU-Ywvb6WThjmwuSODfNV5fNxDpHY1enibdNYSQ@mail.gmail.com>
+Subject: Re: [PATCH] kasan: infer the requested size by scanning shadow memory
+To: =?UTF-8?B?S3Vhbi1ZaW5nIExlZSAo5p2O5Yag56mOKQ==?= <Kuan-Ying.Lee@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	=?UTF-8?B?UXVuLXdlaSBMaW4gKOael+e+pOW0tCk=?= <Qun-wei.Lin@mediatek.com>, 
+	"linux-mm@kvack.org" <linux-mm@kvack.org>, 
+	=?UTF-8?B?Q2hpbndlbiBDaGFuZyAo5by16Yym5paHKQ==?= <chinwen.chang@mediatek.com>, 
+	"dvyukov@google.com" <dvyukov@google.com>, 
+	"kasan-dev@googlegroups.com" <kasan-dev@googlegroups.com>, 
+	"akpm@linux-foundation.org" <akpm@linux-foundation.org>, 
+	"ryabinin.a.a@gmail.com" <ryabinin.a.a@gmail.com>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"vincenzo.frascino@arm.com" <vincenzo.frascino@arm.com>, "glider@google.com" <glider@google.com>, 
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230109_102634_120610_C3DADB7F 
-X-CRM114-Status: GOOD (  16.07  )
+X-CRM114-CacheID: sfid-20230109_125538_707104_28B6CFE1 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,230 +96,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for AR30 and BA30 pixel formats to the Mediatek DRM driver.
+On Mon, Jan 9, 2023 at 6:02 AM Kuan-Ying Lee (=E6=9D=8E=E5=86=A0=E7=A9=8E)
+<Kuan-Ying.Lee@mediatek.com> wrote:
+>
+> > Let's leave the first two lines as is, and instead change the second
+> > two lines to:
+> >
+> > The buggy address is located 0 bytes to the right of
+> >  requested 184-byte region [ffff888017576600, ffff8880175766c0)
+>
+> Did you mean region [ffff888017576600, ffff8880175766b8)?
 
-Tested using "modetest -P" on an MT8195.
-
-Signed-off-by: Justin Green <greenjustin@chromium.org>
----
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c  | 29 ++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c  | 19 +++++++++++-
- drivers/gpu/drm/mediatek/mtk_drm_plane.c | 38 ++++++++++++++++++++----
- drivers/gpu/drm/mediatek/mtk_drm_plane.h |  2 +-
- 4 files changed, 81 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 002b0f6cae1a..be1dfc82aab2 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -38,6 +38,7 @@
- #define DISP_REG_OVL_RDMA_CTRL(n)              (0x00c0 + 0x20 * (n))
- #define DISP_REG_OVL_RDMA_GMC(n)               (0x00c8 + 0x20 * (n))
- #define DISP_REG_OVL_ADDR_MT2701               0x0040
-+#define DISP_REG_OVL_CLRFMT_EXT                        0x02D0
- #define DISP_REG_OVL_ADDR_MT8173               0x0f40
- #define DISP_REG_OVL_ADDR(ovl, n)              ((ovl)->data->addr + 0x20 * (n))
-
-@@ -56,6 +57,10 @@
-                                        0 : OVL_CON_CLRFMT_RGB)
- #define OVL_CON_CLRFMT_RGB888(ovl)     ((ovl)->data->fmt_rgb565_is_0 ? \
-                                        OVL_CON_CLRFMT_RGB : 0)
-+#define OVL_CON_CLRFMT_BIT_DEPTH_MASK(ovl)     (0xFF << 4 * (ovl))
-+#define OVL_CON_CLRFMT_BIT_DEPTH(depth, ovl)   (depth << 4 * (ovl))
-+#define OVL_CON_CLRFMT_8_BIT                   0x00
-+#define OVL_CON_CLRFMT_10_BIT                  0x01
- #define        OVL_CON_AEN             BIT(8)
- #define        OVL_CON_ALPHA           0xff
- #define        OVL_CON_VIRT_FLIP       BIT(9)
-@@ -175,6 +180,26 @@ void mtk_ovl_stop(struct device *dev)
-
- }
-
-+static void mtk_ovl_set_bit_depth(struct device *dev, int idx, u32 format,
-+                                 struct cmdq_pkt *cmdq_pkt)
-+{
-+       struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
-+       unsigned int reg;
-+       unsigned int bit_depth = OVL_CON_CLRFMT_8_BIT;
-+
-+       reg = readl(ovl->regs + DISP_REG_OVL_CLRFMT_EXT);
-+       reg &= ~OVL_CON_CLRFMT_BIT_DEPTH_MASK(idx);
-+
-+       if (format == DRM_FORMAT_RGBA1010102 ||
-+           format == DRM_FORMAT_BGRA1010102 ||
-+           format == DRM_FORMAT_ARGB2101010)
-+               bit_depth = OVL_CON_CLRFMT_10_BIT;
-+
-+       reg |= OVL_CON_CLRFMT_BIT_DEPTH(bit_depth, idx);
-+
-+       mtk_ddp_write(cmdq_pkt, reg, &ovl->cmdq_reg, ovl->regs,
-DISP_REG_OVL_CLRFMT_EXT);
-+}
-+
- void mtk_ovl_config(struct device *dev, unsigned int w,
-                    unsigned int h, unsigned int vrefresh,
-                    unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-@@ -289,9 +314,11 @@ static unsigned int ovl_fmt_convert(struct
-mtk_disp_ovl *ovl, unsigned int fmt)
-                return OVL_CON_CLRFMT_ARGB8888;
-        case DRM_FORMAT_BGRX8888:
-        case DRM_FORMAT_BGRA8888:
-+       case DRM_FORMAT_BGRA1010102:
-                return OVL_CON_CLRFMT_ARGB8888 | OVL_CON_BYTE_SWAP;
-        case DRM_FORMAT_XRGB8888:
-        case DRM_FORMAT_ARGB8888:
-+       case DRM_FORMAT_ARGB2101010:
-                return OVL_CON_CLRFMT_RGBA8888;
-        case DRM_FORMAT_XBGR8888:
-        case DRM_FORMAT_ABGR8888:
-@@ -346,6 +373,8 @@ void mtk_ovl_layer_config(struct device *dev,
-unsigned int idx,
-        mtk_ddp_write_relaxed(cmdq_pkt, addr, &ovl->cmdq_reg, ovl->regs,
-                              DISP_REG_OVL_ADDR(ovl, idx));
-
-+       mtk_ovl_set_bit_depth(dev, idx, fmt, cmdq_pkt);
-+
-        mtk_ovl_layer_on(dev, idx, cmdq_pkt);
- }
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index 42cc7052b050..b2b944344c7a 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -843,6 +843,21 @@ enum drm_plane_type
-mtk_drm_crtc_plane_type(unsigned int plane_idx,
-
- }
-
-+static const char *ovls_with_10bit_cap[] = {
-+       "mediatek,mt8195-disp-ovl",
-+};
-+
-+static bool is_10bit_cap_device(void)
-+{
-+       for (int i = 0; i < ARRAY_SIZE(ovls_with_10bit_cap); i++) {
-+               if (of_find_compatible_node(NULL, NULL,
-+                                           ovls_with_10bit_cap[i]))
-+                       return true;
-+       }
-+
-+       return false;
-+}
-+
- static int mtk_drm_crtc_init_comp_planes(struct drm_device *drm_dev,
-                                         struct mtk_drm_crtc *mtk_crtc,
-                                         int comp_idx, int pipe)
-@@ -850,6 +865,7 @@ static int mtk_drm_crtc_init_comp_planes(struct
-drm_device *drm_dev,
-        int num_planes = mtk_drm_crtc_num_comp_planes(mtk_crtc, comp_idx);
-        struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[comp_idx];
-        int i, ret;
-+       bool supports_10bit = is_10bit_cap_device();
-
-        for (i = 0; i < num_planes; i++) {
-                ret = mtk_plane_init(drm_dev,
-@@ -857,7 +873,8 @@ static int mtk_drm_crtc_init_comp_planes(struct
-drm_device *drm_dev,
-                                BIT(pipe),
-                                mtk_drm_crtc_plane_type(mtk_crtc->layer_nr,
-                                                        num_planes),
--                               mtk_ddp_comp_supported_rotations(comp));
-+                               mtk_ddp_comp_supported_rotations(comp),
-+                               supports_10bit);
-                if (ret)
-                        return ret;
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-index 5c0d9ce69931..2726344b5696 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-@@ -12,6 +12,7 @@
- #include <drm/drm_framebuffer.h>
- #include <drm/drm_gem_atomic_helper.h>
- #include <drm/drm_plane_helper.h>
-+#include <linux/of.h>
-
- #include "mtk_drm_crtc.h"
- #include "mtk_drm_ddp_comp.h"
-@@ -19,7 +20,7 @@
- #include "mtk_drm_gem.h"
- #include "mtk_drm_plane.h"
-
--static const u32 formats[] = {
-+static const u32 default_formats[] = {
-        DRM_FORMAT_XRGB8888,
-        DRM_FORMAT_ARGB8888,
-        DRM_FORMAT_BGRX8888,
-@@ -33,6 +34,22 @@ static const u32 formats[] = {
-        DRM_FORMAT_YUYV,
- };
-
-+static const u32 formats_with_10bit_cap[] = {
-+       DRM_FORMAT_XRGB8888,
-+       DRM_FORMAT_ARGB8888,
-+       DRM_FORMAT_ARGB2101010,
-+       DRM_FORMAT_BGRX8888,
-+       DRM_FORMAT_BGRA8888,
-+       DRM_FORMAT_BGRA1010102,
-+       DRM_FORMAT_ABGR8888,
-+       DRM_FORMAT_XBGR8888,
-+       DRM_FORMAT_RGB888,
-+       DRM_FORMAT_BGR888,
-+       DRM_FORMAT_RGB565,
-+       DRM_FORMAT_UYVY,
-+       DRM_FORMAT_YUYV,
-+};
-+
- static void mtk_plane_reset(struct drm_plane *plane)
- {
-        struct mtk_plane_state *state;
-@@ -248,13 +265,24 @@ static const struct drm_plane_helper_funcs
-mtk_plane_helper_funcs = {
-
- int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
-                   unsigned long possible_crtcs, enum drm_plane_type type,
--                  unsigned int supported_rotations)
-+                  unsigned int supported_rotations, bool supports_10bit)
- {
-        int err;
-
--       err = drm_universal_plane_init(dev, plane, possible_crtcs,
--                                      &mtk_plane_funcs, formats,
--                                      ARRAY_SIZE(formats), NULL, type, NULL);
-+       if (supports_10bit) {
-+               err = drm_universal_plane_init(dev, plane, possible_crtcs,
-+                                              &mtk_plane_funcs,
-+                                              formats_with_10bit_cap,
-+
-ARRAY_SIZE(formats_with_10bit_cap),
-+                                              NULL, type, NULL);
-+       } else {
-+               err = drm_universal_plane_init(dev, plane, possible_crtcs,
-+                                              &mtk_plane_funcs,
-+                                              default_formats,
-+                                              ARRAY_SIZE(default_formats),
-+                                              NULL, type, NULL);
-+       }
-+
-        if (err) {
-                DRM_ERROR("failed to initialize plane\n");
-                return err;
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-index 2d5ec66e3df1..49737153f0a6 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-@@ -40,6 +40,6 @@ to_mtk_plane_state(struct drm_plane_state *state)
-
- int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
-                   unsigned long possible_crtcs, enum drm_plane_type type,
--                  unsigned int supported_rotations);
-+                  unsigned int supported_rotations, bool supports_10bit);
-
- #endif
---
-2.38.1.431.g37b22c650d-goog
+Yes! Forgot to change the range. The idea is to refer to the requested
+size in these two lines of the report.
 
