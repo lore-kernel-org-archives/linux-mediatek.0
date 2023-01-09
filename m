@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E9F9C61DB3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 15:31:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1959AC54EBD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 15:33:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cwldWyFf7CaFTxQBOBymigKCBxPFmfPQFSYXECFA1MQ=; b=JkYyv5mUJA5TaKjiBioBzGvw56
-	krWU97DvocTTSvPTWnKsgKafvCRuZKfqzEteUDHrQYv0e26OXxg0T+7Uxw07ZQCnn6h6mS3ZmBT0A
-	yyM/ckPSKBruYEHI3jgztkElMzhyQu16oFwIdbDFyUhcXThJndepLkJo06BYPJo2nAigkwldIOFMe
-	Okh47gxc36HJs7gE8py6yU/hoDA883IXLsuEtrD6tZZ/vEjvLMeDT2a+AqaIQoYk0oIdFp4OmYKIx
-	HGie7cHdQSX0/pl8sUnaYajaH4tjyrp0NZu2nqpPa3WtVGi6sFWGEhU2sr5ULI3nbwpEi/zC+xeQ0
-	PdLlpPIw==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0JNRzr7St2ezRYMlxrXO71M8QU2NXMGqXtjfNXofb+Q=; b=4i5at2TM2W5pNv
+	VXseOexTrpIPIyrAzoof6SIXY0n/OjJsKDy6Idxj2N30y1luRnaoldwf8Lex8am5vk3uyGfCZ5bjm
+	aNWRYpabVLkPCGnAWmyxoZ2jj79vyOXRaaeKqPKfNePV9Bmo1zHNw4M3VZNOUSEZZCSLebBcRG8Gl
+	UY/fRkAWZE9aZ0hT6Qh9TllcksTiWSfr8atiIVm5tRLBy6LbEoCGq5a8L8Ai5o/rrz/BVTLPvz0iP
+	I2GqYHNtfxb7Qaaz1PtDWqP+I41OSmo3mcy5JxUmIUM3Ji+edl40cE/OYwCHpts+1wQ/tkDxQ+fqp
+	mIpvOlE6KRJqYc0CoK0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEu7e-002GEX-05; Mon, 09 Jan 2023 15:31:38 +0000
+	id 1pEu94-002HAV-1D; Mon, 09 Jan 2023 15:33:06 +0000
 Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEu6z-002Fth-LA; Mon, 09 Jan 2023 15:30:59 +0000
+	id 1pEu6z-002FsP-LH; Mon, 09 Jan 2023 15:31:01 +0000
 Received: from mwalle01.sab.local (unknown [213.135.10.150])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 0282E1654;
-	Mon,  9 Jan 2023 16:30:55 +0100 (CET)
+	by mail.3ffe.de (Postfix) with ESMTPSA id D3D1B1243;
+	Mon,  9 Jan 2023 16:30:51 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1673278255;
+	t=1673278252;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=cwldWyFf7CaFTxQBOBymigKCBxPFmfPQFSYXECFA1MQ=;
-	b=oBe/wDiEGzYu9Fc30RDGqfOtePnx+5N67Jc8XWAwViJATJbP5JciHihYt08LZ2CPnqoGXm
-	uZArpFXb8LGFjfjAjXXX7S79M2PS+79KJbqSZO69qsWKd3bzRrrLYAYIXYg6ql+KNj6eYf
-	QFLV/7qysP76I17N9ZXUkpM8Co/fADHz8zTv8pRK0+sadsWUa23hOO8F8/TFqbhkDxEDNV
-	Kh4IJzK9xvXaw84ecISSaMUBh90vtEkIuwjqMygFfeNX7aQTRJKU3bGSi62Qh3a0YIRJXQ
-	PD2iEEB36IH2lBcrduXuSgnBMlXDpiUEHLj2BemVjPRj+aiM8jY7HGIZ/J1pvg==
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=0JNRzr7St2ezRYMlxrXO71M8QU2NXMGqXtjfNXofb+Q=;
+	b=PScwPRpenuUk8qxmsBN4sisFwMyQiTX+BT8QUWU2gTRDpzunt1jiNyCV1U0OBzZHUBwNXO
+	SfAvc6nvszAtkOyDeqXcy8WMWU+ycBpIvsqJWuMa3X60+CMJhGyEyxaI//9l5JHFW3aeMp
+	uBynKH1gJX/9ofjMntxfFC3keOGunVd5QI4KoTYTJ666S8/PNYsDCGPXj2BE9b/E6fx+/v
+	FaI97AdNFft/ZKNOLR+R2nWItRaOem9AWriFFlgpJv0FipNcl+66Cwj31YeN03MO7TE7Z9
+	Ob/SvwGeT2RthsSAkfJZxwp2o8cyNwrJE8CxV0y53H/CTuhKPgKxxacPS9cYfQ==
 From: Michael Walle <michael@walle.cc>
-Date: Mon, 09 Jan 2023 16:30:44 +0100
-Subject: [PATCH net-next v3 04/11] net: mdio: C22 is now optional, EOPNOTSUPP
- if not provided
+Subject: [PATCH net-next v3 00/11] net: mdio: Start separating C22 and C45
+Date: Mon, 09 Jan 2023 16:30:41 +0100
+Message-Id: <20221227-v6-2-rc1-c45-seperation-v3-0-ade1deb438da@walle.cc>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20221227-v6-2-rc1-c45-seperation-v3-4-ade1deb438da@walle.cc>
-References: <20221227-v6-2-rc1-c45-seperation-v3-0-ade1deb438da@walle.cc>
-In-Reply-To: <20221227-v6-2-rc1-c45-seperation-v3-0-ade1deb438da@walle.cc>
+X-B4-Tracking: v=1; b=H4sIACIzvGMC/4WOTQqDMBBGryKz7pQ4/gS66j2KizGONWBjSUJqE
+ e/e6AW6/Hg83rdBEG8lwK3YwEuywS4uj+pSgJnYPQXtkDeQIiqJNKYWCb0p0dQNBnmL55gdbKpR
+ t1TXirmEbPccBHvPzkyH/+IQxR/g7WW065l8gJOITtYIXSaTDXHx3/NLopP/zSZChcPQV1qXShr
+ W9w/Ps1yNgW7f9x/ZTHz64AAAAA==
 To: Heiner Kallweit <hkallweit1@gmail.com>,
  Russell King <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
@@ -69,8 +69,8 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  Michael Walle <michael@walle.cc>, Vladimir Oltean <vladimir.oltean@nxp.com>
 X-Mailer: b4 0.11.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230109_073057_941364_D564E4FC 
-X-CRM114-Status: GOOD (  11.24  )
+X-CRM114-CacheID: sfid-20230109_073058_021236_EA86311D 
+X-CRM114-Status: GOOD (  15.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,47 +85,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Andrew Lunn <andrew@lunn.ch>
+I've picked this older series from Andrew up and rebased it onto
+v6.2-rc1.
 
-When performing a C22 operation, check that the bus driver actually
-provides the methods, and return -EOPNOTSUPP if not. C45 only busses
-do exist, and in future their C22 methods will be NULL.
+This patch set starts the separation of C22 and C45 MDIO bus
+transactions at the API level to the MDIO Bus drivers. C45 read and
+write ops are added to the MDIO bus driver structure, and the MDIO
+core will try to use these ops if requested to perform a C45
+transfer. If not available a fallback to the older API is made, to
+allow backwards compatibility until all drivers are converted.
 
-Signed-off-by: Andrew Lunn <andrew@lunn.ch>
-Signed-off-by: Michael Walle <michael@walle.cc>
+A few drivers are then converted to this new API.
+
+The core DSA patch was dropped for now as there is still an ongoing
+discussion. It will be picked up in a later series again.
+
+To: Heiner Kallweit <hkallweit1@gmail.com>
+To: Russell King <linux@armlinux.org.uk>
+To: "David S. Miller" <davem@davemloft.net>
+To: Eric Dumazet <edumazet@google.com>
+To: Jakub Kicinski <kuba@kernel.org>
+To: Paolo Abeni <pabeni@redhat.com>
+To: Jose Abreu <Jose.Abreu@synopsys.com>
+To: Sergey Shtylyov <s.shtylyov@omp.ru>
+To: Wei Fang <wei.fang@nxp.com>
+To: Shenwei Wang <shenwei.wang@nxp.com>
+To: Clark Wang <xiaoning.wang@nxp.com>
+To: NXP Linux Team <linux-imx@nxp.com>
+To: Sean Wang <sean.wang@mediatek.com>
+To: Landen Chao <Landen.Chao@mediatek.com>
+To: DENG Qingfang <dqfext@gmail.com>
+To: Florian Fainelli <f.fainelli@gmail.com>
+To: Vladimir Oltean <olteanv@gmail.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: netdev@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-renesas-soc@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: Andrew Lunn <andrew@lunn.ch>
+Cc: Geert Uytterhoeven <geert+renesas@glider.be>
+
 ---
- drivers/net/phy/mdio_bus.c | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+Link to v2: https://lore.kernel.org/r/20221227-v6-2-rc1-c45-seperation-v2-0-ddb37710e5a7@walle.cc
+Link to v1: https://lore.kernel.org/r/20220508153049.427227-1-andrew@lunn.ch
 
-diff --git a/drivers/net/phy/mdio_bus.c b/drivers/net/phy/mdio_bus.c
-index c992a9fd8b01..f71ba6ab85a7 100644
---- a/drivers/net/phy/mdio_bus.c
-+++ b/drivers/net/phy/mdio_bus.c
-@@ -766,7 +766,10 @@ int __mdiobus_read(struct mii_bus *bus, int addr, u32 regnum)
- 
- 	lockdep_assert_held_once(&bus->mdio_lock);
- 
--	retval = bus->read(bus, addr, regnum);
-+	if (bus->read)
-+		retval = bus->read(bus, addr, regnum);
-+	else
-+		retval = -EOPNOTSUPP;
- 
- 	trace_mdio_access(bus, 1, addr, regnum, retval, retval);
- 	mdiobus_stats_acct(&bus->stats[addr], true, retval);
-@@ -792,7 +795,10 @@ int __mdiobus_write(struct mii_bus *bus, int addr, u32 regnum, u16 val)
- 
- 	lockdep_assert_held_once(&bus->mdio_lock);
- 
--	err = bus->write(bus, addr, regnum, val);
-+	if (bus->write)
-+		err = bus->write(bus, addr, regnum, val);
-+	else
-+		err = -EOPNOTSUPP;
- 
- 	trace_mdio_access(bus, 0, addr, regnum, val, err);
- 	mdiobus_stats_acct(&bus->stats[addr], false, err);
+---
+Andrew Lunn (11):
+      net: mdio: Add dedicated C45 API to MDIO bus drivers
+      net: pcs: pcs-xpcs: Use C45 MDIO API
+      net: mdio: mdiobus_register: update validation test
+      net: mdio: C22 is now optional, EOPNOTSUPP if not provided
+      net: mdio: Move mdiobus_c45_addr() next to users
+      net: mdio: mdio-bitbang: Separate C22 and C45 transactions
+      net: mdio: mvmdio: Convert XSMI bus to new API
+      net: mdio: xgmac_mdio: Separate C22 and C45 transactions
+      net: fec: Separate C22 and C45 transactions
+      net: mdio: add mdiobus_c45_read/write_nested helpers
+      net: dsa: mv88e6xxx: Separate C22 and C45 transactions
 
+ drivers/net/dsa/mv88e6xxx/chip.c            | 175 +++++++++++++-----
+ drivers/net/dsa/mv88e6xxx/chip.h            |   7 +
+ drivers/net/dsa/mv88e6xxx/global2.c         |  66 ++++---
+ drivers/net/dsa/mv88e6xxx/global2.h         |  18 +-
+ drivers/net/dsa/mv88e6xxx/phy.c             |  32 ++++
+ drivers/net/dsa/mv88e6xxx/phy.h             |   4 +
+ drivers/net/dsa/mv88e6xxx/serdes.c          |   8 +-
+ drivers/net/ethernet/freescale/fec_main.c   | 153 ++++++++++------
+ drivers/net/ethernet/freescale/xgmac_mdio.c | 148 ++++++++++-----
+ drivers/net/ethernet/marvell/mvmdio.c       |  24 +--
+ drivers/net/ethernet/renesas/sh_eth.c       |  37 +++-
+ drivers/net/ethernet/ti/davinci_mdio.c      |  50 +++++-
+ drivers/net/mdio/mdio-bitbang.c             |  77 +++++---
+ drivers/net/pcs/pcs-xpcs.c                  |   4 +-
+ drivers/net/phy/mdio_bus.c                  | 270 +++++++++++++++++++++++++++-
+ include/linux/mdio-bitbang.h                |   6 +-
+ include/linux/mdio.h                        |  48 ++---
+ include/linux/phy.h                         |   5 +
+ 18 files changed, 870 insertions(+), 262 deletions(-)
+---
+base-commit: 12c1604ae1a39bef87ac099f106594b4cb433b75
+change-id: 20221227-v6-2-rc1-c45-seperation-53f762440aa1
+
+Best regards,
 -- 
-2.30.2
+Michael Walle <michael@walle.cc>
 
