@@ -4,58 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A74FC54EBD
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 11:50:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9431CC5479D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 11:52:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TqbAP5cT/b+ExiWVRO6du893kKfiO3WpvTJA30o7nN8=; b=aZg+eqgeFRV2jpeSLfmSnSttZ8
-	I+N0g4V7BNn1TDGk9GvdcnyQRTib1xtf0D6GfP0Jdt3B8IfiT0FhVI7FBomCl+vy7D7A6R5yQIloM
-	5Eu3d1WQqxIC0NDmkxzwktb8WQuDxRmyWK/6AkvlqcGe0kEVR7kF6AKEaTssvvaPLRdBTTxL5QHmU
-	HUpJHAuf+P5752yl+0Dt164BUFch+tm2KP1uxtxEtcPS6vOOMSTsTHjtUXoeMQzs7+JBbJ7gnFr0h
-	av9ykCcvEXWlcEfqFR+Suf6nZuMLNq+cqSHUlSvbqLRYB8YSdjq+zX6McDrmu+5g7OJFnt7oupphi
-	F4PcbAXg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aj54tILATw6IjxGXVi89331IRiw4NYazC/2sU/ZkN+Y=; b=vIt94vKQ0MkpVQpttB1i4mvCaW
+	iXNQbW2KFEHKpPigAQ4NUMSbJ40zlBc2K/0RAisUfPQmVW82IXXRf7I7ams45jkTGZg0noq59qpnW
+	VybV+NrocitmjG1f9gXFK2Poz06s2T8pwuBr9XVrovtXlHi7pom5vY0lldXQcVAsfULXk8oM0TySI
+	fmVk6ldnGhzvnHWV6ntHroOs3ZbU3wTtGxxtTczkSSGSDqPCW4l9fi0aKwh7HHEc/ik8vhp+/rRZk
+	lsFSsmHwMq33zq7w8gxWySq81CaBKzyEsBzkxKwPAwHivHr6ENhH0c/fWMiiOR/QS60oUt7CB0E6t
+	6k7sMxHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEqf4-0015Y0-14; Mon, 09 Jan 2023 11:49:54 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEqcx-00152r-0c; Mon, 09 Jan 2023 11:47:51 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9A5D51042;
-	Mon,  9 Jan 2023 03:48:12 -0800 (PST)
-Received: from [10.57.77.32] (unknown [10.57.77.32])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id B8F9E3F67D;
-	Mon,  9 Jan 2023 03:47:28 -0800 (PST)
-Message-ID: <99695d77-e54f-3270-ee9a-9b3cbb3296e5@arm.com>
-Date: Mon, 9 Jan 2023 11:47:21 +0000
+	id 1pEqhg-0016eE-PZ; Mon, 09 Jan 2023 11:52:36 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pEqhT-0016Xh-2O
+	for linux-mediatek@lists.infradead.org; Mon, 09 Jan 2023 11:52:25 +0000
+Received: by mail-ed1-x536.google.com with SMTP id v30so12102378edb.9
+        for <linux-mediatek@lists.infradead.org>; Mon, 09 Jan 2023 03:52:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=streamunlimited.com; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=aj54tILATw6IjxGXVi89331IRiw4NYazC/2sU/ZkN+Y=;
+        b=BCCCQEKmZL84Juhc7zGZCXjtK4wyyaCN4hfIM+xbNBfxo2cKpGp5cR4DCifuTkUzdJ
+         jhxXnBeM3XShSj/wMrYO9jfOrTHerhq4Vlf73TjgoH7s5JZVtNkCYE2WPHJrhaTcXe6z
+         CG+cq6MEKS/MALB+m8YJxvYIHuuPd6kDIx5CA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=aj54tILATw6IjxGXVi89331IRiw4NYazC/2sU/ZkN+Y=;
+        b=8Q3tKchNA7pVCI18sMyZ9AkWCZOqR+/v+ULah38woo0iUxLmqrNdTNqqisAdXJRY0U
+         64uYL6woQr6MU0MCOPiAPfThdS/tDBpExJ8316mjKUT7B9gE3eGO7wArOg9JiU2OMaYg
+         B9yiPiuPQb/EdeYCFyqU9zXLxDmI8TjCaJ8Q6/tZNCQWO5QScp0VRpdloLouMjrGoRra
+         O7t8VnsokF/KTExOIgTG86GNVk6W7uY/dDTWaxsG3X0OhmZBFPL1adcbjhbWFQukccil
+         m/0m5LX/IlPtOA4iJn0yhhJR2QhGQUWVo8BKzM6EDu2CVp6ldTrzieylLadqMHVnHm9Y
+         7gMA==
+X-Gm-Message-State: AFqh2kqGsRwDrFzfQDfD6YPBMiCxLUgOmCSQ/0ci8Esssen3XRaawxHA
+	xCvvMvT742eWX8qpi9tz00ArPzYgy+LSE3LZyukjsw==
+X-Google-Smtp-Source: AMrXdXvN+Ats8ThNe0Wauwq+5AC+Xtplphn3hZTaZBEbiZru8LtYPLmG1d5frTknSfPmN1CM7v2/wz2UX19/OcnHhq4=
+X-Received: by 2002:a05:6402:a49:b0:48c:974b:cffd with SMTP id
+ bt9-20020a0564020a4900b0048c974bcffdmr2271764edb.83.1673265139305; Mon, 09
+ Jan 2023 03:52:19 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH] iommu/iova: Fix alloc iova overflows issue
-Content-Language: en-GB
-To: yf.wang@mediatek.com, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- "open list:IOMMU DMA-API LAYER" <iommu@lists.linux.dev>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-Cc: wsd_upstream@mediatek.com, Libo Kang <Libo.Kang@mediatek.com>,
- Yong Wu <yong.wu@mediatek.com>, Ning Li <Ning.Li@mediatek.com>,
- jianjiao zeng <jianjiao.zeng@mediatek.com>
-References: <20230109083429.25622-1-yf.wang@mediatek.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20230109083429.25622-1-yf.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <52861a84-0fe2-37f0-d66a-145f2ebe1d79@gmail.com>
+ <20221214134620.3028726-1-peter.suti@streamunlimited.com> <c6863a3e-8855-50fe-25cb-0b38bc3a05e0@gmail.com>
+In-Reply-To: <c6863a3e-8855-50fe-25cb-0b38bc3a05e0@gmail.com>
+From: Peter Suti <peter.suti@streamunlimited.com>
+Date: Mon, 9 Jan 2023 12:52:08 +0100
+Message-ID: <CACMGZgZY4Zb+3vHUDAS0+3r55K4_J40dtbsTPTFZMd6duBikpQ@mail.gmail.com>
+Subject: Re: [PATCH v3] mmc: meson-gx: fix SDIO interrupt handling
+To: Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, linux-mmc@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230109_034743_187237_8C72D723 
-X-CRM114-Status: GOOD (  23.95  )
+X-CRM114-CacheID: sfid-20230109_035223_231760_FCF928DA 
+X-CRM114-Status: GOOD (  39.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,71 +86,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023-01-09 08:34, yf.wang@mediatek.com wrote:
-> From: Yunfei Wang <yf.wang@mediatek.com>
-> 
-> In __alloc_and_insert_iova_range, there is an issue that retry_pfn
-> overflows. The value of iovad->anchor.pfn_hi is ~0UL, then when
-> iovad->cached_node is iovad->anchor, curr_iova->pfn_hi + 1 will
-> overflow. As a result, if the retry logic is executed, low_pfn is
-> updated to 0, and then new_pfn < low_pfn returns false to make the
-> allocation successful.
-> 
-> This issue occurs in the following two situations:
-> 1. The first iova size exceeds the domain size. When initializing
-> iova domain, iovad->cached_node is assigned as iovad->anchor. For
-> example, the iova domain size is 10M, start_pfn is 0x1_F000_0000,
-> and the iova size allocated for the first time is 11M. The
-> following is the log information, new->pfn_lo is smaller than
-> iovad->cached_node.
-> 
-> Example log:
-> [  223.798112][T1705487] sh: [name:iova&]__alloc_and_insert_iova_range
-> start_pfn:0x1f0000,retry_pfn:0x0,size:0xb00,limit_pfn:0x1f0a00
-> [  223.799590][T1705487] sh: [name:iova&]__alloc_and_insert_iova_range
-> success start_pfn:0x1f0000,new->pfn_lo:0x1efe00,new->pfn_hi:0x1f08ff
-> 
-> 2. The node with the largest iova->pfn_lo value in the iova domain
-> is deleted, iovad->cached_node will be updated to iovad->anchor,
-> and then the alloc iova size exceeds the maximum iova size that can
-> be allocated in the domain.
-> 
-> Adding judgment that retry_pfn must be greater than iovad->start_pfn
-> can fix this issue.
+On Wed, Dec 14, 2022 at 10:33 PM Heiner Kallweit <hkallweit1@gmail.com> wrote:
+>
+> On 14.12.2022 14:46, Peter Suti wrote:
+> > With the interrupt support introduced in commit 066ecde sometimes the
+> > Marvell-8987 wifi chip got stuck using the marvell-sd-uapsta-8987
+> > vendor driver. The cause seems to be that after sending ack to all interrupts
+> > the IRQ_SDIO still happens, but it is ignored.
+> >
+> > To work around this, recheck the IRQ_SDIO after meson_mmc_request_done().
+> >
+> > Inspired by 9e2582e ("mmc: mediatek: fix SDIO irq issue") which used a
+> > similar fix to handle lost interrupts.
+> >
+> The commit description of the referenced fix isn't clear with regard to
+> who's fault it is that an interrupt can be lost. I'd interpret it being
+> a silicon bug rather than a kernel/driver bug.
+Unfortunately I can't confirm that the referenced bug is in the
+silicon for the original commit either.
+However a similar workaround works in this case too which is why I
+referenced that commit.
 
-Hmm, indeed that's a sneaky little bug - thanks for the thorough 
-analysis - but couldn't we avoid the overflow entirely? I don't have the 
-complete logic paged in, but superficially it seems like:
-
-	retry_pfn = curr_iova->pfn_hi;
-	...
-		retry_pfn <= limit_pfn
-	...
-		low_pfn = retry_pfn + 1;
-
-should still work, shouldn't it?
-
-Thanks,
-Robin.
-
-> Signed-off-by: jianjiao zeng <jianjiao.zeng@mediatek.com>
-> Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
-> ---
->   drivers/iommu/iova.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/iommu/iova.c b/drivers/iommu/iova.c
-> index a44ad92fc5eb..0073206c2a95 100644
-> --- a/drivers/iommu/iova.c
-> +++ b/drivers/iommu/iova.c
-> @@ -209,7 +209,8 @@ static int __alloc_and_insert_iova_range(struct iova_domain *iovad,
->   	} while (curr && new_pfn <= curr_iova->pfn_hi && new_pfn >= low_pfn);
->   
->   	if (high_pfn < size || new_pfn < low_pfn) {
-> -		if (low_pfn == iovad->start_pfn && retry_pfn < limit_pfn) {
-> +		if (low_pfn == iovad->start_pfn &&
-> +		    retry_pfn >= iovad->start_pfn && retry_pfn < limit_pfn) {
->   			high_pfn = limit_pfn;
->   			low_pfn = retry_pfn;
->   			curr = iova_find_limit(iovad, limit_pfn);
+> Not sure whether it's the case, but it's possible that both vendors use
+> at least parts of the same IP in the MMC block, and therefore the issue
+> pops up here too.
+>
+> > Fixes: 066ecde ("mmc: meson-gx: add SDIO interrupt support")
+> >
+> > Signed-off-by: Peter Suti <peter.suti@streamunlimited.com>
+> > ---
+> > Changes in v2:
+> >       - use spin_lock instead of spin_lock_irqsave
+> >       - only reenable interrupts if they were enabled already
+> >
+> > Changes in v3:
+> >       - Rework the patch based on feedback from Heiner Kallweit.
+> >               The IRQ does not happen on 2 CPUs and the hard IRQ is not re-entrant.
+> >               But still one SDIO IRQ is lost without this change.
+> >               After the ack, reading the SD_EMMC_STATUS BIT(15) is set, but
+> >               meson_mmc_irq() is never called again.
+> >
+> >               The fix is similar to Mediatek msdc_recheck_sdio_irq().
+> >               That platform also loses an IRQ in some cases it seems.
+> >
+> >  drivers/mmc/host/meson-gx-mmc.c | 16 ++++++++++++++++
+> >  1 file changed, 16 insertions(+)
+> >
+> > diff --git a/drivers/mmc/host/meson-gx-mmc.c b/drivers/mmc/host/meson-gx-mmc.c
+> > index 6e5ea0213b47..7d3ee2f9a7f6 100644
+> > --- a/drivers/mmc/host/meson-gx-mmc.c
+> > +++ b/drivers/mmc/host/meson-gx-mmc.c
+> > @@ -1023,6 +1023,22 @@ static irqreturn_t meson_mmc_irq(int irq, void *dev_id)
+> >       if (ret == IRQ_HANDLED)
+> >               meson_mmc_request_done(host->mmc, cmd->mrq);
+> >
+> > +     /*
+> > +     * Sometimes after we ack all raised interrupts,
+> > +     * an IRQ_SDIO can still be pending, which can get lost.
+> > +     *
+>
+> A reader may scratch his head here and wonder how the interrupt can get lost,
+> and why adding a workaround instead of eliminating the root cause for losing
+> the interrupt. If you can't provide an explanation why the root cause for
+> losing the interrupt can't be fixed, presumably you would have to say that
+> you're adding a workaround for a suspected silicon bug.
+After talking to the manufacturer, we got the following explanation
+for this situation:
+"wifi may have dat1 interrupt coming in, without this the dat1
+interrupt would be missed"
+Supposedly this is fixed in their codebase.
+Unfortunately we were not able to find out more and can't prepare a
+patch with a proper explanation.
+Thank you for reviewing.
+>
+> > +     * To prevent this, recheck the IRQ_SDIO here and schedule
+> > +     * it to be processed.
+> > +     */
+> > +     raw_status = readl(host->regs + SD_EMMC_STATUS);
+> > +     status = raw_status & (IRQ_EN_MASK | IRQ_SDIO);
+>
+> This isn't needed here. Why not simply:
+>
+> status = readl(host->regs + SD_EMMC_STATUS);
+> if (status & IRQ_SDIO)
+>   ...
+>
+>
+> > +     if (status & IRQ_SDIO) {
+> > +             spin_lock(&host->lock);
+> > +             __meson_mmc_enable_sdio_irq(host->mmc, 0);
+> > +             sdio_signal_irq(host->mmc);
+> > +             spin_unlock(&host->lock);
+> > +     }
+> > +
+> >       return ret;
+> >  }
+> >
+>
 
