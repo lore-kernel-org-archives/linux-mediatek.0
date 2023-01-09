@@ -4,52 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB70FC5479D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 15:34:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2EB3C5479D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 15:34:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hiQtbjr1MuOIadudcSBQhGvcT/hBXRIhqkSXGDXJPIo=; b=XKTifmr2Zja94nDaAbTAiBE3vN
-	u0Nk9SzUbfweEwmybISVOZndNoAzCEcVR/UYrEcmcTjCUnjWyzO0oQWXapg1E+5KT2nahlSwS88SP
-	Sd3XOOg9OZcKFCZd39+pF1/gSrAcDqwDSoe9wiNBENCjO3SvKus6u4DJd1IBOqg5G0rTM5g2jF+0X
-	0Q1BFd6jsoV6dlGJ7TeKNOg+g6wZ89bmaTLdRN/JH2YrA3VPLRd8rr317aJVLG8c22r7wYxg+vvhz
-	u1wOX+h43S0qWHbKrq/R/8nNOr38KXdTcjPGotPBiVcv0xxny62cZoWP9poddUGqQ6C9ynWPx5l0O
-	1Yw9DCCA==;
+	bh=Lgn0fUyj9IFSMk8AaMRWHgs4+wjSuyxk0Wk78bhVnA0=; b=w/GK61mOyqBs6fQ4/BYszr8cI4
+	GFQh7ZayjWngZlDUKlpB8Mtn/wXEajaxdEg6XLO80vQo56fAeyh4oV+h3Py967tpE/du5R3zKPjsx
+	2lZRlRBYmd4qjXYTdBDw3/ODW7TxFAH7sUGAhy97i+s7U7jAbKGDQjv3S75MlGydQUgqTNFRfMbB6
+	ei2QThJ0341TF7/nXFmxUowZL854cX5ltLcwnNkd7tXJmTGiWIx2q4xGtTBNVAzk4BmCAv2rfvxsB
+	uDN7TC+7tnltM8hPvBp3Q9coQn5WdXfNcOCdb3Wyf9C3T+iR+RDKIRguc+eUdEKvesafOwII3UIfy
+	pxQeEjtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEuAg-002IAC-8Y; Mon, 09 Jan 2023 15:34:46 +0000
+	id 1pEuAk-002IDA-Fr; Mon, 09 Jan 2023 15:34:50 +0000
 Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEu72-002FwS-TM; Mon, 09 Jan 2023 15:31:03 +0000
+	id 1pEu72-002FwR-UW; Mon, 09 Jan 2023 15:31:03 +0000
 Received: from mwalle01.sab.local (unknown [213.135.10.150])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id EB74118D8;
+	by mail.3ffe.de (Postfix) with ESMTPSA id A15021872;
 	Mon,  9 Jan 2023 16:30:56 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1673278257;
+	t=1673278256;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=hiQtbjr1MuOIadudcSBQhGvcT/hBXRIhqkSXGDXJPIo=;
-	b=x23FRf2u9HfAfVFtarmaIOkyQ4mbzjmqiVXL6KW6UrcYg5mixeDYZAJ+R4KLfpQk5m44c4
-	+j3KIuImPXWUdFvV0eDTZt2/M9difs2f19yL1+SOSj00FQJUgZdSb80Mz6C5TgdaboLdzC
-	8Mpj1ZHw2ALLfqq2NtWW+QjmWZlr66n75loFWcrfi8ceddmWqxTR/M/aM6DUlBEwZAdn/Z
-	xEMLUp9P+KSknWY+pZCSS8PX0WTL4VM8/UETnELEx0VQccEybpIGBiaWCxhc2g5Y9+JmNV
-	4AFosfhti3qPd6Os1gaVHlC6EJwAqkAaWHenofimLIXwsEPPDlBY/ruwIKfDKQ==
+	bh=Lgn0fUyj9IFSMk8AaMRWHgs4+wjSuyxk0Wk78bhVnA0=;
+	b=paHoMYp5QyTdFJmmJGlkyXxyx1kT7mnZo4KsGjYw673zA4PozBqwyJfHLfMUDMeyv98ELr
+	xmptzo+6SEGjSibLaBQj4m+FO+HdVMUhJiS19ZDemTrPStFuuEo3TKrf9iCCypPs+zIn6x
+	aPA3K6eGXZajQEi1AZWWZM7oj4qeoc786ugIgP2xji+EKZ2w7DVNirDKl0NJ+npLxKv6qR
+	3byRLnvcqXoxg2/tawbXmbt+oBwczg81pRjk4sz/5jOe/16WZv4Qfl4oljyNCHhFlCxme1
+	+YXfZQYmFv9eoVubcaixqiWW1+X2D9Y+83Dtp7qmXhatDjOfdIRIukTHqw6n+g==
 From: Michael Walle <michael@walle.cc>
-Date: Mon, 09 Jan 2023 16:30:48 +0100
-Subject: [PATCH net-next v3 08/11] net: mdio: xgmac_mdio: Separate C22 and C45
- transactions
+Date: Mon, 09 Jan 2023 16:30:47 +0100
+Subject:  [PATCH net-next v3 07/11] net: mdio: mvmdio: Convert XSMI bus to new API
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20221227-v6-2-rc1-c45-seperation-v3-8-ade1deb438da@walle.cc>
+Message-Id: <20221227-v6-2-rc1-c45-seperation-v3-7-ade1deb438da@walle.cc>
 References: <20221227-v6-2-rc1-c45-seperation-v3-0-ade1deb438da@walle.cc>
 In-Reply-To: <20221227-v6-2-rc1-c45-seperation-v3-0-ade1deb438da@walle.cc>
 To: Heiner Kallweit <hkallweit1@gmail.com>,
@@ -69,8 +68,8 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  Michael Walle <michael@walle.cc>, Vladimir Oltean <vladimir.oltean@nxp.com>
 X-Mailer: b4 0.11.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230109_073101_210328_C0E1ED49 
-X-CRM114-Status: GOOD (  25.93  )
+X-CRM114-CacheID: sfid-20230109_073101_254528_C9EDA6E2 
+X-CRM114-Status: GOOD (  14.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,250 +86,81 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Andrew Lunn <andrew@lunn.ch>
 
-The xgmac MDIO bus driver can perform both C22 and C45 transfers.
-Create separate functions for each and register the C45 versions using
-the new API calls where appropriate.
-
-While at it, remove the misleading comment. According to Vladimir
-Oltean:
- - miimcom is a register accessed by fsl_pq_mdio.c, not by xgmac_mdio.c
- - "device dev" doesn't really refer to anything (maybe "dev_addr").
- - I don't understand what is meant by the comment "All PHY
-   configuration has to be done through the TSEC1 MIIM regs". Or rather
-   said, I think I understand, but it is irrelevant to the driver for 2
-   reasons:
-    * TSEC devices use the fsl_pq_mdio.c driver, not this one
-    * It doesn't matter to this driver whose TSEC registers are used for
-      MDIO access. The driver just works with the registers it's given,
-      which is a concern for the device tree.
- - barring the above, the rest just describes the MDIO bus API, which is
-   superfluous
+The marvell MDIO driver supports two different hardware blocks. The
+XSMI block is C45 only. Convert this block to the new API, and only
+populate the c45 calls in the bus structure.
 
 Signed-off-by: Andrew Lunn <andrew@lunn.ch>
 Signed-off-by: Michael Walle <michael@walle.cc>
-Tested-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 ---
-v2:
- - [al] Move the masking of regnum into the variable declarations
- - [al] Remove a couple of blank lines
-v3:
- - [mw] Remove comment
----
- drivers/net/ethernet/freescale/xgmac_mdio.c | 148 ++++++++++++++++++++--------
- 1 file changed, 108 insertions(+), 40 deletions(-)
+ drivers/net/ethernet/marvell/mvmdio.c | 24 ++++++++----------------
+ 1 file changed, 8 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/net/ethernet/freescale/xgmac_mdio.c b/drivers/net/ethernet/freescale/xgmac_mdio.c
-index d7d39a58cd80..8b5a4cd8ff08 100644
---- a/drivers/net/ethernet/freescale/xgmac_mdio.c
-+++ b/drivers/net/ethernet/freescale/xgmac_mdio.c
-@@ -128,30 +128,49 @@ static int xgmac_wait_until_done(struct device *dev,
- 	return 0;
+diff --git a/drivers/net/ethernet/marvell/mvmdio.c b/drivers/net/ethernet/marvell/mvmdio.c
+index ef878973b859..2d654a40af13 100644
+--- a/drivers/net/ethernet/marvell/mvmdio.c
++++ b/drivers/net/ethernet/marvell/mvmdio.c
+@@ -204,21 +204,17 @@ static const struct orion_mdio_ops orion_mdio_xsmi_ops = {
+ 	.poll_interval_max = MVMDIO_XSMI_POLL_INTERVAL_MAX,
+ };
+ 
+-static int orion_mdio_xsmi_read(struct mii_bus *bus, int mii_id,
+-				int regnum)
++static int orion_mdio_xsmi_read_c45(struct mii_bus *bus, int mii_id,
++				    int dev_addr, int regnum)
+ {
+ 	struct orion_mdio_dev *dev = bus->priv;
+-	u16 dev_addr = (regnum >> 16) & GENMASK(4, 0);
+ 	int ret;
+ 
+-	if (!(regnum & MII_ADDR_C45))
+-		return -EOPNOTSUPP;
+-
+ 	ret = orion_mdio_wait_ready(&orion_mdio_xsmi_ops, bus);
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	writel(regnum & GENMASK(15, 0), dev->regs + MVMDIO_XSMI_ADDR_REG);
++	writel(regnum, dev->regs + MVMDIO_XSMI_ADDR_REG);
+ 	writel((mii_id << MVMDIO_XSMI_PHYADDR_SHIFT) |
+ 	       (dev_addr << MVMDIO_XSMI_DEVADDR_SHIFT) |
+ 	       MVMDIO_XSMI_READ_OPERATION,
+@@ -237,21 +233,17 @@ static int orion_mdio_xsmi_read(struct mii_bus *bus, int mii_id,
+ 	return readl(dev->regs + MVMDIO_XSMI_MGNT_REG) & GENMASK(15, 0);
  }
  
--/*
-- * Write value to the PHY for this device to the register at regnum,waiting
-- * until the write is done before it returns.  All PHY configuration has to be
-- * done through the TSEC1 MIIM regs.
-- */
--static int xgmac_mdio_write(struct mii_bus *bus, int phy_id, int regnum, u16 value)
-+static int xgmac_mdio_write_c22(struct mii_bus *bus, int phy_id, int regnum,
-+				u16 value)
+-static int orion_mdio_xsmi_write(struct mii_bus *bus, int mii_id,
+-				int regnum, u16 value)
++static int orion_mdio_xsmi_write_c45(struct mii_bus *bus, int mii_id,
++				     int dev_addr, int regnum, u16 value)
  {
- 	struct mdio_fsl_priv *priv = (struct mdio_fsl_priv *)bus->priv;
- 	struct tgec_mdio_controller __iomem *regs = priv->mdio_base;
--	uint16_t dev_addr;
-+	bool endian = priv->is_little_endian;
-+	u16 dev_addr = regnum & 0x1f;
- 	u32 mdio_ctl, mdio_stat;
+ 	struct orion_mdio_dev *dev = bus->priv;
+-	u16 dev_addr = (regnum >> 16) & GENMASK(4, 0);
  	int ret;
-+
-+	mdio_stat = xgmac_read32(&regs->mdio_stat, endian);
-+	mdio_stat &= ~MDIO_STAT_ENC;
-+	xgmac_write32(mdio_stat, &regs->mdio_stat, endian);
-+
-+	ret = xgmac_wait_until_free(&bus->dev, regs, endian);
-+	if (ret)
-+		return ret;
-+
-+	/* Set the port and dev addr */
-+	mdio_ctl = MDIO_CTL_PORT_ADDR(phy_id) | MDIO_CTL_DEV_ADDR(dev_addr);
-+	xgmac_write32(mdio_ctl, &regs->mdio_ctl, endian);
-+
-+	/* Write the value to the register */
-+	xgmac_write32(MDIO_DATA(value), &regs->mdio_data, endian);
-+
-+	ret = xgmac_wait_until_done(&bus->dev, regs, endian);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static int xgmac_mdio_write_c45(struct mii_bus *bus, int phy_id, int dev_addr,
-+				int regnum, u16 value)
-+{
-+	struct mdio_fsl_priv *priv = (struct mdio_fsl_priv *)bus->priv;
-+	struct tgec_mdio_controller __iomem *regs = priv->mdio_base;
- 	bool endian = priv->is_little_endian;
-+	u32 mdio_ctl, mdio_stat;
-+	int ret;
  
- 	mdio_stat = xgmac_read32(&regs->mdio_stat, endian);
--	if (regnum & MII_ADDR_C45) {
--		/* Clause 45 (ie 10G) */
--		dev_addr = (regnum >> 16) & 0x1f;
--		mdio_stat |= MDIO_STAT_ENC;
--	} else {
--		/* Clause 22 (ie 1G) */
--		dev_addr = regnum & 0x1f;
--		mdio_stat &= ~MDIO_STAT_ENC;
--	}
-+	mdio_stat |= MDIO_STAT_ENC;
+-	if (!(regnum & MII_ADDR_C45))
+-		return -EOPNOTSUPP;
+-
+ 	ret = orion_mdio_wait_ready(&orion_mdio_xsmi_ops, bus);
+ 	if (ret < 0)
+ 		return ret;
  
- 	xgmac_write32(mdio_stat, &regs->mdio_stat, endian);
- 
-@@ -164,13 +183,11 @@ static int xgmac_mdio_write(struct mii_bus *bus, int phy_id, int regnum, u16 val
- 	xgmac_write32(mdio_ctl, &regs->mdio_ctl, endian);
- 
- 	/* Set the register address */
--	if (regnum & MII_ADDR_C45) {
--		xgmac_write32(regnum & 0xffff, &regs->mdio_addr, endian);
-+	xgmac_write32(regnum & 0xffff, &regs->mdio_addr, endian);
- 
--		ret = xgmac_wait_until_free(&bus->dev, regs, endian);
--		if (ret)
--			return ret;
--	}
-+	ret = xgmac_wait_until_free(&bus->dev, regs, endian);
-+	if (ret)
-+		return ret;
- 
- 	/* Write the value to the register */
- 	xgmac_write32(MDIO_DATA(value), &regs->mdio_data, endian);
-@@ -182,31 +199,82 @@ static int xgmac_mdio_write(struct mii_bus *bus, int phy_id, int regnum, u16 val
- 	return 0;
- }
- 
--/*
-- * Reads from register regnum in the PHY for device dev, returning the value.
-+/* Reads from register regnum in the PHY for device dev, returning the value.
-  * Clears miimcom first.  All PHY configuration has to be done through the
-  * TSEC1 MIIM regs.
-  */
--static int xgmac_mdio_read(struct mii_bus *bus, int phy_id, int regnum)
-+static int xgmac_mdio_read_c22(struct mii_bus *bus, int phy_id, int regnum)
- {
- 	struct mdio_fsl_priv *priv = (struct mdio_fsl_priv *)bus->priv;
- 	struct tgec_mdio_controller __iomem *regs = priv->mdio_base;
-+	bool endian = priv->is_little_endian;
-+	u16 dev_addr = regnum & 0x1f;
- 	unsigned long flags;
--	uint16_t dev_addr;
- 	uint32_t mdio_stat;
- 	uint32_t mdio_ctl;
- 	int ret;
--	bool endian = priv->is_little_endian;
- 
- 	mdio_stat = xgmac_read32(&regs->mdio_stat, endian);
--	if (regnum & MII_ADDR_C45) {
--		dev_addr = (regnum >> 16) & 0x1f;
--		mdio_stat |= MDIO_STAT_ENC;
-+	mdio_stat &= ~MDIO_STAT_ENC;
-+	xgmac_write32(mdio_stat, &regs->mdio_stat, endian);
-+
-+	ret = xgmac_wait_until_free(&bus->dev, regs, endian);
-+	if (ret)
-+		return ret;
-+
-+	/* Set the Port and Device Addrs */
-+	mdio_ctl = MDIO_CTL_PORT_ADDR(phy_id) | MDIO_CTL_DEV_ADDR(dev_addr);
-+	xgmac_write32(mdio_ctl, &regs->mdio_ctl, endian);
-+
-+	if (priv->has_a009885)
-+		/* Once the operation completes, i.e. MDIO_STAT_BSY clears, we
-+		 * must read back the data register within 16 MDC cycles.
-+		 */
-+		local_irq_save(flags);
-+
-+	/* Initiate the read */
-+	xgmac_write32(mdio_ctl | MDIO_CTL_READ, &regs->mdio_ctl, endian);
-+
-+	ret = xgmac_wait_until_done(&bus->dev, regs, endian);
-+	if (ret)
-+		goto irq_restore;
-+
-+	/* Return all Fs if nothing was there */
-+	if ((xgmac_read32(&regs->mdio_stat, endian) & MDIO_STAT_RD_ER) &&
-+	    !priv->has_a011043) {
-+		dev_dbg(&bus->dev,
-+			"Error while reading PHY%d reg at %d.%d\n",
-+			phy_id, dev_addr, regnum);
-+		ret = 0xffff;
- 	} else {
--		dev_addr = regnum & 0x1f;
--		mdio_stat &= ~MDIO_STAT_ENC;
-+		ret = xgmac_read32(&regs->mdio_data, endian) & 0xffff;
-+		dev_dbg(&bus->dev, "read %04x\n", ret);
+-	writel(regnum & GENMASK(15, 0), dev->regs + MVMDIO_XSMI_ADDR_REG);
++	writel(regnum, dev->regs + MVMDIO_XSMI_ADDR_REG);
+ 	writel((mii_id << MVMDIO_XSMI_PHYADDR_SHIFT) |
+ 	       (dev_addr << MVMDIO_XSMI_DEVADDR_SHIFT) |
+ 	       MVMDIO_XSMI_WRITE_OPERATION | value,
+@@ -302,8 +294,8 @@ static int orion_mdio_probe(struct platform_device *pdev)
+ 		bus->write = orion_mdio_smi_write;
+ 		break;
+ 	case BUS_TYPE_XSMI:
+-		bus->read = orion_mdio_xsmi_read;
+-		bus->write = orion_mdio_xsmi_write;
++		bus->read_c45 = orion_mdio_xsmi_read_c45;
++		bus->write_c45 = orion_mdio_xsmi_write_c45;
+ 		break;
  	}
  
-+irq_restore:
-+	if (priv->has_a009885)
-+		local_irq_restore(flags);
-+
-+	return ret;
-+}
-+
-+/* Reads from register regnum in the PHY for device dev, returning the value.
-+ * Clears miimcom first.  All PHY configuration has to be done through the
-+ * TSEC1 MIIM regs.
-+ */
-+static int xgmac_mdio_read_c45(struct mii_bus *bus, int phy_id, int dev_addr,
-+			       int regnum)
-+{
-+	struct mdio_fsl_priv *priv = (struct mdio_fsl_priv *)bus->priv;
-+	struct tgec_mdio_controller __iomem *regs = priv->mdio_base;
-+	bool endian = priv->is_little_endian;
-+	u32 mdio_stat, mdio_ctl;
-+	unsigned long flags;
-+	int ret;
-+
-+	mdio_stat = xgmac_read32(&regs->mdio_stat, endian);
-+	mdio_stat |= MDIO_STAT_ENC;
-+
- 	xgmac_write32(mdio_stat, &regs->mdio_stat, endian);
- 
- 	ret = xgmac_wait_until_free(&bus->dev, regs, endian);
-@@ -218,13 +286,11 @@ static int xgmac_mdio_read(struct mii_bus *bus, int phy_id, int regnum)
- 	xgmac_write32(mdio_ctl, &regs->mdio_ctl, endian);
- 
- 	/* Set the register address */
--	if (regnum & MII_ADDR_C45) {
--		xgmac_write32(regnum & 0xffff, &regs->mdio_addr, endian);
-+	xgmac_write32(regnum & 0xffff, &regs->mdio_addr, endian);
- 
--		ret = xgmac_wait_until_free(&bus->dev, regs, endian);
--		if (ret)
--			return ret;
--	}
-+	ret = xgmac_wait_until_free(&bus->dev, regs, endian);
-+	if (ret)
-+		return ret;
- 
- 	if (priv->has_a009885)
- 		/* Once the operation completes, i.e. MDIO_STAT_BSY clears, we
-@@ -326,8 +392,10 @@ static int xgmac_mdio_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	bus->name = "Freescale XGMAC MDIO Bus";
--	bus->read = xgmac_mdio_read;
--	bus->write = xgmac_mdio_write;
-+	bus->read = xgmac_mdio_read_c22;
-+	bus->write = xgmac_mdio_write_c22;
-+	bus->read_c45 = xgmac_mdio_read_c45;
-+	bus->write_c45 = xgmac_mdio_write_c45;
- 	bus->parent = &pdev->dev;
- 	bus->probe_capabilities = MDIOBUS_C22_C45;
- 	snprintf(bus->id, MII_BUS_ID_SIZE, "%pa", &res->start);
 
 -- 
 2.30.2
