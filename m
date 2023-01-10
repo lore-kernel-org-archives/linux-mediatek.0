@@ -4,78 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3F5AC54EBC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 19:30:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0939BC54EBC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 20:48:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:References:In-Reply-To:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C0mrhoty+Ut/5gp43tpMbErT7DWwGt+4GLr6GpRkjbQ=; b=NcpfGMtaJCrjx50UVT+DyM2ivx
-	yGRdvBzrjZmt/9DN3ut4qUgvuV2FN7LEx5GfmbnPW8LjQe19a2Oc+HKpJZDb7Fddb1InsWYFdW+3Q
-	yF3cVqdGrCcjQF1eGMi+llZ/hEB6F9HV/mmFS0A/nSOi0QmQHY1roBk7VfU/AoDvGYF9z6sYGCGz6
-	KzcHFo0K2HJLTL8g6y96eNQFqD9jG6h+e54clkvCO/dsRtCtuYX3O5VLd+AKFGDyK7u2611STVRXT
-	1POtPbNfOJnP8NHGZwFc+QW9IvX/qgpeF/cljzbljTnhKyokmj4X5+nFUr0DB+y5VnZKSFpu0QfFn
-	jvqC06zw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=LNkmbPLxmBzQtQA4WlZ5lNA3PV6OlrWh8T5N9f26/rk=; b=BYsZKJIEnYWPim4rEN3bk5JVJh
+	40qpsMq+OcgerxT+iWHsW6o4jOs09LlSZyd++yFsrLmE3nXRHRnhpKQSCeBxBt26y2Lu9WKA/B79+
+	SidXLki88AcM+lUkqQPoNk/5OR6T8GRsTquD+0vTKtb+ExRVDK/QoCYZDj/oxpyOJ1jZFedaV0zKp
+	mI1F/NS047QtAIuEf8buwWRmBz7ZQn/BROXqevKIMmH1pjpPfR4/aI42P+sy8sePAojhRew2v7J3s
+	ldIpRBoE82vfvtAmAlz5CGgR+DTI8HCYIHE4pVl6SNI+xdQDjiMS/n2a0lDPJyvMlf4Ijmm7ubj+8
+	plUXez0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFKJj-008IX7-Cj; Tue, 10 Jan 2023 19:29:51 +0000
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
+	id 1pFLXJ-008WLy-7y; Tue, 10 Jan 2023 20:47:57 +0000
+Received: from mail-qt1-x835.google.com ([2607:f8b0:4864:20::835])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFKJg-008IUE-A5
-	for linux-mediatek@lists.infradead.org; Tue, 10 Jan 2023 19:29:49 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id x37so13644197ljq.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Jan 2023 11:29:43 -0800 (PST)
+	id 1pFLXG-008WKk-53
+	for linux-mediatek@lists.infradead.org; Tue, 10 Jan 2023 20:47:55 +0000
+Received: by mail-qt1-x835.google.com with SMTP id z12so12012297qtv.5
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Jan 2023 12:47:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
-        h=cc:to:subject:message-id:date:user-agent:from:references
-         :in-reply-to:mime-version:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=C0mrhoty+Ut/5gp43tpMbErT7DWwGt+4GLr6GpRkjbQ=;
-        b=i1+w0zA7s1qv8jt4zUE+emrBPpmeSdaUBPz0yCFo1nbNg9YBG5C9AAvS4RNrL0co/Y
-         dqSyexwdFchejaYEPv5Wfg4lBoPaVxUCnM4E9fys7J60ul6YlINQL+lxBN5cjLvLT7fy
-         V1Xpg8rHHMcctUni8OS7+vepJW4M0IZKby69k=
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=LNkmbPLxmBzQtQA4WlZ5lNA3PV6OlrWh8T5N9f26/rk=;
+        b=Ar1kALT2vCLC0jsxBT02ALvFqTERzGmIASoyMWnRwl1PpFNHODjhfiKDKvTYFFlG6I
+         4668NLR78C7XrvdGkuU/fIMOqC0EsQ1KkPADHZr9yJZqQyQWXYXmWoQqJ1LDED1XITDk
+         gjtT+DOMCvtdELqCKGWO70pjLtuhNbcdCXOZk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:user-agent:from:references
-         :in-reply-to:mime-version:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=C0mrhoty+Ut/5gp43tpMbErT7DWwGt+4GLr6GpRkjbQ=;
-        b=bjR5F7z8npCBiQV/xwvNGYGOQwngbq/VZGghy6B/HQNP3BSaqZvXurQqB/tPluXn9Q
-         PIlLAkfGM/WIYCfBeefal/MGmzUj7xTeI0NRt2uUfdwTmg/w+khZTeJvCBo3FqUr/WFO
-         h1INEN8XwKvK6xvbrLnsEEjNxCuXnAifTXTIO1S+LXC2iwAna9f7Ogjx2lfd8NCRhSl5
-         B0II7H5JbSRt6KqG0TRvyRFp9pgSq3rF/FhNYm00eP3Xdo8YumSt3bXr6UyzgNZ+Z8B3
-         O1A/uy+SKO4pbQshzeYPld8vkcgXhnRLysRibW8el07TGyu7WvXnEj8Mfzfp+9u5YOm2
-         wEHg==
-X-Gm-Message-State: AFqh2kpFU31CGXCC3txsANKQAa6CaNZZSgnxJMvCFocKFP7+LP584ydL
-	9JvbZtvIY7xl0CZ13++0RYGSVZPS3EsBORvu/9SOJA==
-X-Google-Smtp-Source: AMrXdXvM2MfqylLeD7zuAdCzxczA9kWaE3YYfn4AhNYhK9aWSE+eYRCCCjZP2dMjqs5j2772EMlAYv4Eqh5jwd26EBI=
-X-Received: by 2002:a2e:2ac4:0:b0:27f:cc03:496a with SMTP id
- q187-20020a2e2ac4000000b0027fcc03496amr3837868ljq.359.1673378982518; Tue, 10
- Jan 2023 11:29:42 -0800 (PST)
-Received: from 753933720722 named unknown by gmailapi.google.com with
- HTTPREST; Tue, 10 Jan 2023 11:29:41 -0800
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=LNkmbPLxmBzQtQA4WlZ5lNA3PV6OlrWh8T5N9f26/rk=;
+        b=AnFj8kfzDcA+zKDgfSPWzT8Qn0I8dKbJQn/axDMRgoV0HkCudKNSpKRSTtEzl6lE/s
+         qxxUfeY2yHaAOy1fjmewLOZFYKLx7XIboNaHTYIoSJUK4qCL3HYm3C5DyL8AgFurte0m
+         DXVGD3BDatsGOc60EQ80GSg75tNb09S62aIyZLltWUY+S5cFvuEOXLHzXqnx5Iq2hkYw
+         aSseknTWNDymUeg1NJULgbufk251zxUI+Kav4puzz9yFWuT+8igVEnMdYl3+qucjjSOQ
+         xGYoIfBhnZQ2tNE2USz94uKPVj4OzM7dTliL9qxwRWAQbxUovaxVp9I20SvrkYyPG7dx
+         cwgg==
+X-Gm-Message-State: AFqh2kr8lnmriE5Da+QkA8lh4wRZG+FSiuSshnn4LkyHq4WRlnWUhIgs
+	wPgYa03jXpLCHWVx2vp1sfDqQwrv1SmCB/g1
+X-Google-Smtp-Source: AMrXdXvf+uqiaz+qFqTZQOauEc0cu2GgM8DN67lHXsZe0vyeWWNmfX9cLwaSV4btYGfwS7PtIPtvLA==
+X-Received: by 2002:a05:622a:5d96:b0:3ad:8bb2:31f5 with SMTP id fu22-20020a05622a5d9600b003ad8bb231f5mr11095797qtb.64.1673383669903;
+        Tue, 10 Jan 2023 12:47:49 -0800 (PST)
+Received: from greenjustin3.nyc.corp.google.com ([2620:0:1003:314:9e2b:736d:6c00:da04])
+        by smtp.gmail.com with ESMTPSA id jr49-20020a05622a803100b003ad373d04b6sm3545204qtb.59.2023.01.10.12.47.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Jan 2023 12:47:49 -0800 (PST)
+From: Justin Green <greenjustin@chromium.org>
+To: linux-mediatek@lists.infradead.org,
+	dri-devel@lists.freedesktop.org
+Cc: angelogioacchino.delregno@collabora.com,
+	jason-jh.lin@mediatek.com,
+	justin.yeh@mediatek.com,
+	wenst@chromium.org,
+	chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de,
+	airlied@linux.ie,
+	matthias.bgg@gmail.com,
+	daniel@ffwll.ch,
+	daniel@fooishbar.org,
+	greenjustin@chromium.org
+Subject: [PATCH v2] drm/mediatek: Add support for AR30 and BA30
+Date: Tue, 10 Jan 2023 15:47:42 -0500
+Message-Id: <20230110204742.1354797-1-greenjustin@chromium.org>
+X-Mailer: git-send-email 2.39.0.314.g84b9a713c41-goog
 MIME-Version: 1.0
-In-Reply-To: <Y7nV+aeFiq5aD0xU@ravnborg.org>
-References: <20230106030108.2542081-1-swboyd@chromium.org> <Y7nV+aeFiq5aD0xU@ravnborg.org>
-From: Stephen Boyd <swboyd@chromium.org>
-User-Agent: alot/0.10
-Date: Tue, 10 Jan 2023 11:29:41 -0800
-Message-ID: <CAE-0n50QOv_+j1Pe19xKj4Cx2Y5_Ak5Kt68UBJuZt10D-jQ44g@mail.gmail.com>
-Subject: Re: [PATCH] drm/panel: boe-tv101wum-nl6: Ensure DSI writes succeed
- during disable
-To: Sam Ravnborg <sam@ravnborg.org>
-Cc: Thierry Reding <thierry.reding@gmail.com>, linux-kernel@vger.kernel.org, 
-	patches@lists.linux.dev, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	yangcong <yangcong5@huaqin.corp-partner.google.com>, 
-	Douglas Anderson <dianders@chromium.org>, Jitao Shi <jitao.shi@mediatek.com>, 
-	Rob Clark <robdclark@chromium.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_112948_404933_C47FBDDE 
-X-CRM114-Status: GOOD (  26.63  )
+X-CRM114-CacheID: sfid-20230110_124754_235120_E5C32FCA 
+X-CRM114-Status: GOOD (  18.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,54 +93,222 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Sam Ravnborg (2023-01-07 12:28:41)
-> On Thu, Jan 05, 2023 at 07:01:08PM -0800, Stephen Boyd wrote:
-> > The unprepare sequence has started to fail after moving to panel bridge
-> > code in the msm drm driver (commit 007ac0262b0d ("drm/msm/dsi: switch to
-> > DRM_PANEL_BRIDGE")). You'll see messages like this in the kernel logs:
-> >
-> >    panel-boe-tv101wum-nl6 ae94000.dsi.0: failed to set panel off: -22
-> >
-> > This is because boe_panel_enter_sleep_mode() needs an operating DSI link
-> > to set the panel into sleep mode. Performing those writes in the
-> > unprepare phase of bridge ops is too late, because the link has already
-> > been torn down by the DSI controller in post_disable, i.e. the PHY has
-> > been disabled, etc. See dsi_mgr_bridge_post_disable() for more details
-> > on the DSI .
-> >
-> > Split the unprepare function into a disable part and an unprepare part.
-> > For now, just the DSI writes to enter sleep mode are put in the disable
-> > function. This fixes the panel off routine and keeps the panel happy.
-> >
-> > My Wormdingler has an integrated touchscreen that stops responding to
-> > touch if the panel is only half disabled too. This patch fixes it. And
-> > finally, this saves power when the screen is off because without this
-> > fix the regulators for the panel are left enabled when nothing is being
-> > displayed on the screen.
->
-> The pattern we use in several (but not all) panel drivers are that
-> errors in unprepare/disable are logged but the function do not skip
-> the remainder of the function. This is to avoid that we do not disable
-> power supplies etc.
+Add support for AR30 and BA30 pixel formats to the Mediatek DRM driver.
 
-Ah that would have made it so I didn't see a problem. But I wonder if
-the panel gets borked if you don't disable it via DSI writes before
-yanking the power?
+Tested using "modetest -P" on an MT8195.
 
->
-> For this case we could ask ourself if the display needs to enter sleep
-> mode right before we disable the regulator. But if the regulator is
-> fixed, so the disable has no effect, this seems OK.
+Signed-off-by: Justin Green <greenjustin@chromium.org>
+---
+v2:
+ * Rebase and resolve merge conflicts with the AFBC patch.
 
-What do you mean by fixed?
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c  | 28 +++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c  | 19 +++++++++++-
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c | 39 +++++++++++++++++++++---
+ drivers/gpu/drm/mediatek/mtk_drm_plane.h |  2 +-
+ 4 files changed, 81 insertions(+), 7 deletions(-)
 
->
-> Please fix the unprepare to not jump out early, on top of or together
-> with the other fix.
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index 84daeaffab6a..667ae57c8754 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -41,6 +41,7 @@
+ #define DISP_REG_OVL_RDMA_CTRL(n)		(0x00c0 + 0x20 * (n))
+ #define DISP_REG_OVL_RDMA_GMC(n)		(0x00c8 + 0x20 * (n))
+ #define DISP_REG_OVL_ADDR_MT2701		0x0040
++#define DISP_REG_OVL_CLRFMT_EXT			0x02D0
+ #define DISP_REG_OVL_ADDR_MT8173		0x0f40
+ #define DISP_REG_OVL_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n))
+ #define DISP_REG_OVL_HDR_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n) + 0x04)
+@@ -61,6 +62,10 @@
+ 					0 : OVL_CON_CLRFMT_RGB)
+ #define OVL_CON_CLRFMT_RGB888(ovl)	((ovl)->data->fmt_rgb565_is_0 ? \
+ 					OVL_CON_CLRFMT_RGB : 0)
++#define OVL_CON_CLRFMT_BIT_DEPTH_MASK(ovl)	(0xFF << 4 * (ovl))
++#define OVL_CON_CLRFMT_BIT_DEPTH(depth, ovl)	(depth << 4 * (ovl))
++#define OVL_CON_CLRFMT_8_BIT			0x00
++#define OVL_CON_CLRFMT_10_BIT			0x01
+ #define	OVL_CON_AEN		BIT(8)
+ #define	OVL_CON_ALPHA		0xff
+ #define	OVL_CON_VIRT_FLIP	BIT(9)
+@@ -188,6 +193,26 @@ static void mtk_ovl_set_afbc(struct mtk_disp_ovl *ovl, struct cmdq_pkt *cmdq_pkt
+ 			   DISP_REG_OVL_DATAPATH_CON, OVL_LAYER_AFBC_EN(idx));
+ }
+ 
++static void mtk_ovl_set_bit_depth(struct device *dev, int idx, u32 format,
++				  struct cmdq_pkt *cmdq_pkt)
++{
++	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
++	unsigned int reg;
++	unsigned int bit_depth = OVL_CON_CLRFMT_8_BIT;
++
++	reg = readl(ovl->regs + DISP_REG_OVL_CLRFMT_EXT);
++	reg &= ~OVL_CON_CLRFMT_BIT_DEPTH_MASK(idx);
++
++	if (format == DRM_FORMAT_RGBA1010102 ||
++	    format == DRM_FORMAT_BGRA1010102 ||
++	    format == DRM_FORMAT_ARGB2101010)
++		bit_depth = OVL_CON_CLRFMT_10_BIT;
++
++	reg |= OVL_CON_CLRFMT_BIT_DEPTH(bit_depth, idx);
++
++	mtk_ddp_write(cmdq_pkt, reg, &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_CLRFMT_EXT);
++}
++
+ void mtk_ovl_config(struct device *dev, unsigned int w,
+ 		    unsigned int h, unsigned int vrefresh,
+ 		    unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+@@ -302,9 +327,11 @@ static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt)
+ 		return OVL_CON_CLRFMT_ARGB8888;
+ 	case DRM_FORMAT_BGRX8888:
+ 	case DRM_FORMAT_BGRA8888:
++	case DRM_FORMAT_BGRA1010102:
+ 		return OVL_CON_CLRFMT_ARGB8888 | OVL_CON_BYTE_SWAP;
+ 	case DRM_FORMAT_XRGB8888:
+ 	case DRM_FORMAT_ARGB8888:
++	case DRM_FORMAT_ARGB2101010:
+ 		return OVL_CON_CLRFMT_RGBA8888;
+ 	case DRM_FORMAT_XBGR8888:
+ 	case DRM_FORMAT_ABGR8888:
+@@ -388,6 +415,7 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+ 				      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_PITCH_MSB(idx));
+ 	}
+ 
++	mtk_ovl_set_bit_depth(dev, idx, fmt, cmdq_pkt);
+ 	mtk_ovl_layer_on(dev, idx, cmdq_pkt);
+ }
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index 112615817dcb..d50379c97c4b 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -842,6 +842,21 @@ enum drm_plane_type mtk_drm_crtc_plane_type(unsigned int plane_idx,
+ 
+ }
+ 
++static const char *ovls_with_10bit_cap[] = {
++	"mediatek,mt8195-disp-ovl",
++};
++
++static bool is_10bit_cap_device(void)
++{
++	for (int i = 0; i < ARRAY_SIZE(ovls_with_10bit_cap); i++) {
++		if (of_find_compatible_node(NULL, NULL,
++					    ovls_with_10bit_cap[i]))
++			return true;
++	}
++
++	return false;
++}
++
+ static int mtk_drm_crtc_init_comp_planes(struct drm_device *drm_dev,
+ 					 struct mtk_drm_crtc *mtk_crtc,
+ 					 int comp_idx, int pipe)
+@@ -849,6 +864,7 @@ static int mtk_drm_crtc_init_comp_planes(struct drm_device *drm_dev,
+ 	int num_planes = mtk_drm_crtc_num_comp_planes(mtk_crtc, comp_idx);
+ 	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[comp_idx];
+ 	int i, ret;
++	bool supports_10bit = is_10bit_cap_device();
+ 
+ 	for (i = 0; i < num_planes; i++) {
+ 		ret = mtk_plane_init(drm_dev,
+@@ -856,7 +872,8 @@ static int mtk_drm_crtc_init_comp_planes(struct drm_device *drm_dev,
+ 				BIT(pipe),
+ 				mtk_drm_crtc_plane_type(mtk_crtc->layer_nr,
+ 							num_planes),
+-				mtk_ddp_comp_supported_rotations(comp));
++				mtk_ddp_comp_supported_rotations(comp),
++				supports_10bit);
+ 		if (ret)
+ 			return ret;
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+index d54fbf34b000..7fe5c47b4d50 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+@@ -12,6 +12,8 @@
+ #include <drm/drm_framebuffer.h>
+ #include <drm/drm_gem_atomic_helper.h>
+ #include <linux/align.h>
++#include <drm/drm_plane_helper.h>
++#include <linux/of.h>
+ 
+ #include "mtk_drm_crtc.h"
+ #include "mtk_drm_ddp_comp.h"
+@@ -19,7 +21,7 @@
+ #include "mtk_drm_gem.h"
+ #include "mtk_drm_plane.h"
+ 
+-static const u32 formats[] = {
++static const u32 default_formats[] = {
+ 	DRM_FORMAT_XRGB8888,
+ 	DRM_FORMAT_ARGB8888,
+ 	DRM_FORMAT_BGRX8888,
+@@ -41,6 +43,22 @@ static const u64 modifiers[] = {
+ 	DRM_FORMAT_MOD_INVALID,
+ };
+ 
++static const u32 formats_with_10bit_cap[] = {
++	DRM_FORMAT_XRGB8888,
++	DRM_FORMAT_ARGB8888,
++	DRM_FORMAT_ARGB2101010,
++	DRM_FORMAT_BGRX8888,
++	DRM_FORMAT_BGRA8888,
++	DRM_FORMAT_BGRA1010102,
++	DRM_FORMAT_ABGR8888,
++	DRM_FORMAT_XBGR8888,
++	DRM_FORMAT_RGB888,
++	DRM_FORMAT_BGR888,
++	DRM_FORMAT_RGB565,
++	DRM_FORMAT_UYVY,
++	DRM_FORMAT_YUYV,
++};
++
+ static void mtk_plane_reset(struct drm_plane *plane)
+ {
+ 	struct mtk_plane_state *state;
+@@ -315,13 +333,24 @@ static const struct drm_plane_helper_funcs mtk_plane_helper_funcs = {
+ 
+ int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
+ 		   unsigned long possible_crtcs, enum drm_plane_type type,
+-		   unsigned int supported_rotations)
++		   unsigned int supported_rotations, bool supports_10bit)
+ {
+ 	int err;
+ 
+-	err = drm_universal_plane_init(dev, plane, possible_crtcs,
+-				       &mtk_plane_funcs, formats,
+-				       ARRAY_SIZE(formats), modifiers, type, NULL);
++	if (supports_10bit) {
++		err = drm_universal_plane_init(dev, plane, possible_crtcs,
++					       &mtk_plane_funcs,
++					       formats_with_10bit_cap,
++					       ARRAY_SIZE(formats_with_10bit_cap),
++					       modifiers, type, NULL);
++	} else {
++		err = drm_universal_plane_init(dev, plane, possible_crtcs,
++					       &mtk_plane_funcs,
++					       default_formats,
++					       ARRAY_SIZE(default_formats),
++					       modifiers, type, NULL);
++	}
++
+ 	if (err) {
+ 		DRM_ERROR("failed to initialize plane\n");
+ 		return err;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.h b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
+index 8f39011cdbfc..d3e6f29a1e25 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_plane.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
+@@ -48,6 +48,6 @@ to_mtk_plane_state(struct drm_plane_state *state)
+ 
+ int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
+ 		   unsigned long possible_crtcs, enum drm_plane_type type,
+-		   unsigned int supported_rotations);
++		   unsigned int supported_rotations, bool supports_10bit);
+ 
+ #endif
+-- 
+2.39.0.314.g84b9a713c41-goog
 
-After this patch the unprepare only bails out early if the bool
-'prepared' flag isn't set. Are you suggesting to get rid of that flag
-and unconditionally disable the regulators? Is it possible for the
-unprepare to be called multiple times without a balanced call to
-prepare?
 
