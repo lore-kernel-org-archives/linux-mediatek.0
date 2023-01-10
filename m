@@ -4,69 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5F90C54EBE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 09:06:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB108C54EBE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 09:18:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZnnDtwSrbOsgaNNLMtwIA+taLrmm8E6vv52upu4T4hY=; b=oHHY84A9XitbvfTXulb2akckzE
-	fzGkObTO9ygVLd74NGD2JKFCyGvE2vAqzBHOUE/0Zua1exI/tmrNRTUchs8d7ecgdB0gRutKSDLCr
-	1boqorSsNrqhyCoup88oxtdptPFvl5YzULjbjcLEMY5A5X9lJJ5gms4cB2w1FX27m7owOQzyPRGD3
-	wr1KCK6uXqLmGMmMA/92l4wikVgh+3OJPz3Q9a18MSTebpBNWxfBi7CgZVFDuX346B4ffFoOewCAl
-	We6b7neDbXG5TO9cP4ZMWmewEM990i6dy3RjwHEEQa97zEJtMcOi/1bjH18OCtGOyCV4CM13O10Oz
-	Yr3zSgpA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Z5SWkjHFUcPB57dyxsSgJTsbrRzl7x0XxIf/mFqL7yw=; b=HVY6fdR3Aan5kf0Hc3zZOcpB0P
+	f40d0+0ax8laDt9FThLyv55H4Esp78TnGLMJNZSUV0c0mDOHfgZz1MuiNQBpTDQ+pTdGaVMjjBx0I
+	3kHSkJQUonxkBoFQH8IiFe3ad646MexhfoIFf/U3XHNmHcrcfMMR95yYlH6wJOC6oHtNSoF6njdfD
+	ZCSu+qrM24xxdxIUrVUmZo62aIuT9zrCqmUpl1Ff7YF2ib5oUFcVmUlrOV0RdDew0UFIkBkaxkPao
+	8OhcB0hxIZD/xMu20tbbxWT+RKABboskcHuLQLrmuMO+Q/yfEPGETVmiNZSHYQPiVu/KFqp3vtam4
+	RtwYrxpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFAap-005zbS-4N; Tue, 10 Jan 2023 09:06:51 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pFAlw-0062fZ-7e; Tue, 10 Jan 2023 09:18:20 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFAac-005zX9-KI; Tue, 10 Jan 2023 09:06:41 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 11D186602B36;
-	Tue, 10 Jan 2023 09:06:36 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1673341596;
-	bh=kbKycHo/8y4LSI1eaSTdpLeMXKbrQ1WWfguHPOeUVvE=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=A0B66fpuC44+WE9Eay9wGQTlwyDn6kl42S6tRA3PS4HknE04ERKJoHMyDE+Kaay3p
-	 aRHNOh5U8OjwVcVywvTaefxsRsu3n7p+zV1fYrtYzH8yHf6qJelHYsVg721V6oBmiy
-	 iIx6lbwiIMjUyCkcEfbtv1yStEpY8vUD61xtbJe1yl6gA7UwYWVqgheoKZKMbWbKaK
-	 gVvDoMbpCP2/PfKR7fOaufWU0yglwoiCm9QFKQTo8n2NTGmRFV2sjNi3PEjQV9mUpr
-	 02KbCnzK/+MKxCh/8i/+ljWII8TGJcn2nz6F6AKZVD0YdkUyp6p19iJzxQYnabUxQo
-	 dJmbKbNtgVVfQ==
-Message-ID: <b10e5f06-379b-7aaf-137b-60f4176ae325@collabora.com>
-Date: Tue, 10 Jan 2023 10:06:33 +0100
+	id 1pFAlP-0062Ta-Fj; Tue, 10 Jan 2023 09:17:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:Message-ID:
+	Date:Subject:CC:To:From:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=Z5SWkjHFUcPB57dyxsSgJTsbrRzl7x0XxIf/mFqL7yw=; b=NaThtEj68fFewLOrkkTH7Wn44z
+	AwrOsutjuQazbGUDKBuvuSZ32fEmJ9LgQpM9duXvkABeqbwkTa/5Zvs7VXeHcXBP3FXVw4StfiDfo
+	QXXyYMsxe/9bDQUJ50y35dPJ+WzWn7Y7owTsGMLC5tC/VXnl4uzbMEesZJsfRE6VQYPFMpkRyoGUF
+	nhhjtc03WZasbS1eXRXWPTBf+yKpNw7L6ks3T3VtKd2qdccroLj/d8RgcMhnzjVYN5pA+9VJ7fcH2
+	7ROgueh+6CwjF5gs6ruhwtpMkUpfR4qA2J2qvSv+daSe7S00gym1fZdBmO5Yox+LGX+KGt2wbNh3M
+	MMYdhK9A==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pFAlB-0034ER-2F;
+	Tue, 10 Jan 2023 09:17:38 +0000
+X-UUID: 995ea4d090c711eda08d4d6090ec5a5c-20230110
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Z5SWkjHFUcPB57dyxsSgJTsbrRzl7x0XxIf/mFqL7yw=;
+	b=j7Pf0BJc2MoPMybzbx1S16kARn8UrWorsWxdfOR1Yl9QFMHp1yTfZio3BOWMdDjI9fP5jrzpyIccWfI79mRB3XRD+qO57mcGsRCXZUWELzTTJnaZRhiHAqTeyMflABZAcqw6MMawCKl4AqBdWdYbCfeHto8AgTcZh886JjY7eO8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.17,REQID:f33fd1d1-a277-4a96-8cb6-37f228cefe77,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:90
+X-CID-INFO: VERSION:1.1.17,REQID:f33fd1d1-a277-4a96-8cb6-37f228cefe77,IP:0,URL
+	:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:90
+X-CID-META: VersionHash:543e81c,CLOUDID:2072d38b-8530-4eff-9f77-222cf6e2895b,B
+	ulkID:230110171651TYF6DIFR,BulkQuantity:3,Recheck:0,SF:38|28|17|19|48,TC:n
+	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,OSI
+	:0,OSA:0
+X-CID-APTURL: Status:success,Category:nil,Trust:0,Unknown:0,Malicious:0
+X-CID-BVR: 0,NGT
+X-UUID: 995ea4d090c711eda08d4d6090ec5a5c-20230110
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <miles.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1985545896; Tue, 10 Jan 2023 02:17:26 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Tue, 10 Jan 2023 17:16:49 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 10 Jan 2023 17:16:49 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Daniel Vetter
+	<daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: <linux-kernel@vger.kernel.org>, Miles Chen <miles.chen@mediatek.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>
+Subject: [PATCH] drm/mediatek: include missing headers
+Date: Tue, 10 Jan 2023 17:16:46 +0800
+Message-ID: <20230110091647.13265-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [RESEND PATCH v3] soc: mediatek: Introduce
- mediatek-regulator-coupler driver
-Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, wenst@chromium.org,
- alyssa.rosenzweig@collabora.com, nfraprado@collabora.com,
- dmitry.osipenko@collabora.com
-References: <20221006115816.66853-1-angelogioacchino.delregno@collabora.com>
- <e04d15ee-9570-c919-5218-91109a88c0cb@gmail.com>
- <fe236ad5-c4e0-1649-6521-ab7c14a1ff15@collabora.com>
- <732e4a1d-8008-072d-cedb-c6859cbfdf98@collabora.com>
- <19d04ffd-a79d-06f6-cb0e-fe56bc18615f@gmail.com>
- <0d155803-0861-ee56-fea1-abcfa77acd0a@collabora.com>
-In-Reply-To: <0d155803-0861-ee56-fea1-abcfa77acd0a@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_010638_952312_0432BE91 
-X-CRM114-Status: GOOD (  40.48  )
+X-CRM114-CacheID: sfid-20230110_091735_106007_FA503DF3 
+X-CRM114-Status: UNSURE (   9.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,346 +99,157 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/12/22 09:49, AngeloGioacchino Del Regno ha scritto:
-> Il 16/12/22 16:26, Matthias Brugger ha scritto:
->> Hi Angelo,
->>
->> On 16/12/2022 14:15, AngeloGioacchino Del Regno wrote:
->>> Il 21/11/22 13:01, AngeloGioacchino Del Regno ha scritto:
->>>> Il 21/11/22 12:44, Matthias Brugger ha scritto:
->>>>>
->>>>>
->>>>> On 06/10/2022 13:58, AngeloGioacchino Del Regno wrote:
->>>>>> This driver currently deals with GPU-SRAM regulator coupling, ensuring
->>>>>> that the SRAM voltage is always between a specific range of distance to
->>>>>> the GPU voltage, depending on the SoC, necessary in order to achieve
->>>>>> system stability across the full range of supported GPU frequencies.
->>>>>>
->>>>>> Signed-off-by: AngeloGioacchino Del Regno 
->>>>>> <angelogioacchino.delregno@collabora.com>
->>>>>> Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
->>>>>> ---
->>>>>>
->>>>>> This driver was successfully tested for more than 3 months.
->>>>>> GPU DVFS works correctly with no stability issues.
->>>>>>
->>>>>> Changes in RESEND,v3:
->>>>>>   Rebased over next-20221005
->>>>>>
->>>>>> Changes in v3:
->>>>>>   - Added braces to else-if branch
->>>>>>
->>>>>> Changes in v2:
->>>>>>   - Added check for n_coupled
->>>>>>   - Added check for vgpu to enforce attaching to vgpu<->sram coupling only
->>>>>>
->>>>>> Context:
->>>>>> This driver is the last of the pieces of a bigger puzzle, aiming to finally
->>>>>> enable Dynamic Voltage/Frequency Scaling for Mali GPUs found on MediaTek
->>>>>> SoCs on the fully open source graphics stack (Panfrost driver).
->>>>>>
->>>>>> No devicetree bindings are provided because this does not require any
->>>>>> driver-specific binding at all.
->>>>>>
->>>>>> Last but not least: it was chosen to have this driver enabled for
->>>>>> ( ARCH_MEDIATEK && REGULATOR ) without really giving a free configuration
->>>>>> choice because, once the DVFS mechanism will be fully working, using one
->>>>>> of the listed MediaTek SoCs *without* this coupling mechanism *will* lead
->>>>>> to unstabilities and system crashes.
->>>>>> For COMPILE_TEST, choice is given for obvious reasons.
->>>>>>
->>>>>>   drivers/soc/mediatek/Kconfig                 |   5 +
->>>>>>   drivers/soc/mediatek/Makefile                |   1 +
->>>>>>   drivers/soc/mediatek/mtk-regulator-coupler.c | 159 +++++++++++++++++++
->>>>>>   3 files changed, 165 insertions(+)
->>>>>>   create mode 100644 drivers/soc/mediatek/mtk-regulator-coupler.c
->>>>>>
->>>>>> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
->>>>>> index 40d0cc600cae..30b5afc0e51d 100644
->>>>>> --- a/drivers/soc/mediatek/Kconfig
->>>>>> +++ b/drivers/soc/mediatek/Kconfig
->>>>>> @@ -44,6 +44,11 @@ config MTK_PMIC_WRAP
->>>>>>         on different MediaTek SoCs. The PMIC wrapper is a proprietary
->>>>>>         hardware to connect the PMIC.
->>>>>> +config MTK_REGULATOR_COUPLER
->>>>>> +    bool "MediaTek SoC Regulator Coupler" if COMPILE_TEST
->>>>>> +    default ARCH_MEDIATEK
->>>>>> +    depends on REGULATOR
->>>>>> +
->>>>>>   config MTK_SCPSYS
->>>>>>       bool "MediaTek SCPSYS Support"
->>>>>>       default ARCH_MEDIATEK
->>>>>> diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
->>>>>> index 0e9e703c931a..8c0ddacbcde8 100644
->>>>>> --- a/drivers/soc/mediatek/Makefile
->>>>>> +++ b/drivers/soc/mediatek/Makefile
->>>>>> @@ -3,6 +3,7 @@ obj-$(CONFIG_MTK_CMDQ) += mtk-cmdq-helper.o
->>>>>>   obj-$(CONFIG_MTK_DEVAPC) += mtk-devapc.o
->>>>>>   obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
->>>>>>   obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
->>>>>> +obj-$(CONFIG_MTK_REGULATOR_COUPLER) += mtk-regulator-coupler.o
->>>>>>   obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
->>>>>>   obj-$(CONFIG_MTK_SCPSYS_PM_DOMAINS) += mtk-pm-domains.o
->>>>>>   obj-$(CONFIG_MTK_MMSYS) += mtk-mmsys.o
->>>>>> diff --git a/drivers/soc/mediatek/mtk-regulator-coupler.c 
->>>>>> b/drivers/soc/mediatek/mtk-regulator-coupler.c
->>>>>> new file mode 100644
->>>>>> index 000000000000..ad2ed42aa697
->>>>>> --- /dev/null
->>>>>> +++ b/drivers/soc/mediatek/mtk-regulator-coupler.c
->>>>>> @@ -0,0 +1,159 @@
->>>>>> +// SPDX-License-Identifier: GPL-2.0-only
->>>>>> +/*
->>>>>> + * Voltage regulators coupler for MediaTek SoCs
->>>>>> + *
->>>>>> + * Copyright (C) 2022 Collabora, Ltd.
->>>>>> + * Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>>>> + */
->>>>>> +
->>>>>> +#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
->>>>>> +
->>>>>> +#include <linux/init.h>
->>>>>> +#include <linux/kernel.h>
->>>>>> +#include <linux/of.h>
->>>>>> +#include <linux/regulator/coupler.h>
->>>>>> +#include <linux/regulator/driver.h>
->>>>>> +#include <linux/regulator/machine.h>
->>>>>> +#include <linux/suspend.h>
->>>>>> +
->>>>>> +#define to_mediatek_coupler(x)    container_of(x, struct 
->>>>>> mediatek_regulator_coupler, coupler)
->>>>>> +
->>>>>> +struct mediatek_regulator_coupler {
->>>>>> +    struct regulator_coupler coupler;
->>>>>> +    struct regulator_dev *vsram_rdev;
->>>>>> +};
->>>>>> +
->>>>>> +/*
->>>>>> + * We currently support only couples of not more than two vregs and
->>>>>> + * modify the vsram voltage only when changing voltage of vgpu.
->>>>>> + *
->>>>>> + * This function is limited to the GPU<->SRAM voltages relationships.
->>>>>> + */
->>>>>> +static int mediatek_regulator_balance_voltage(struct regulator_coupler 
->>>>>> *coupler,
->>>>>> +                          struct regulator_dev *rdev,
->>>>>> +                          suspend_state_t state)
->>>>>> +{
->>>>>> +    struct mediatek_regulator_coupler *mrc = to_mediatek_coupler(coupler);
->>>>>> +    int max_spread = rdev->constraints->max_spread[0];
->>>>>> +    int vsram_min_uV = mrc->vsram_rdev->constraints->min_uV;
->>>>>> +    int vsram_max_uV = mrc->vsram_rdev->constraints->max_uV;
->>>>>> +    int vsram_target_min_uV, vsram_target_max_uV;
->>>>>> +    int min_uV = 0;
->>>>>> +    int max_uV = INT_MAX;
->>>>>> +    int ret;
->>>>>> +
->>>>>> +    /*
->>>>>> +     * If the target device is on, setting the SRAM voltage directly
->>>>>> +     * is not supported as it scales through its coupled supply voltage.
->>>>>> +     *
->>>>>> +     * An exception is made in case the use_count is zero: this means
->>>>>> +     * that this is the first time we power up the SRAM regulator, which
->>>>>> +     * implies that the target device has yet to perform initialization
->>>>>> +     * and setting a voltage at that time is harmless.
->>>>>> +     */
->>>>>> +    if (rdev == mrc->vsram_rdev) {
->>>>>> +        if (rdev->use_count == 0)
->>>>>> +            return regulator_do_balance_voltage(rdev, state, true);
->>>>>> +
->>>>>> +        return -EPERM;
->>>>>> +    }
->>>>>> +
->>>>>> +    ret = regulator_check_consumers(rdev, &min_uV, &max_uV, state);
->>>>>> +    if (ret < 0)
->>>>>> +        return ret;
->>>>>> +
->>>>>> +    if (min_uV == 0) {
->>>>>> +        ret = regulator_get_voltage_rdev(rdev);
->>>>>> +        if (ret < 0)
->>>>>> +            return ret;
->>>>>> +        min_uV = ret;
->>>>>> +    }
->>>>>> +
->>>>>> +    ret = regulator_check_voltage(rdev, &min_uV, &max_uV);
->>>>>> +    if (ret < 0)
->>>>>> +        return ret;
->>>>>> +
->>>>>> +    /*
->>>>>> +     * If we're asked to set a voltage less than VSRAM min_uV, set
->>>>>> +     * the minimum allowed voltage on VSRAM, as in this case it is
->>>>>> +     * safe to ignore the max_spread parameter.
->>>>>> +     */
->>>>>> +    vsram_target_min_uV = max(vsram_min_uV, min_uV + max_spread);
->>>>>> +    vsram_target_max_uV = min(vsram_max_uV, vsram_target_min_uV + max_spread);
->>>>>> +
->>>>>> +    /* Make sure we're not out of range */
->>>>>> +    vsram_target_min_uV = min(vsram_target_min_uV, vsram_max_uV);
->>>>>> +
->>>>>> +    pr_debug("Setting voltage %d-%duV on %s (minuV %d)\n",
->>>>>> +         vsram_target_min_uV, vsram_target_max_uV,
->>>>>> +         rdev_get_name(mrc->vsram_rdev), min_uV);
->>>>>> +
->>>>>> +    ret = regulator_set_voltage_rdev(mrc->vsram_rdev, vsram_target_min_uV,
->>>>>> +                     vsram_target_max_uV, state);
->>>>>> +    if (ret)
->>>>>> +        return ret;
->>>>>> +
->>>>>> +    /* The sram voltage is now balanced: update the target vreg voltage */
->>>>>> +    return regulator_do_balance_voltage(rdev, state, true);
->>>>>> +}
->>>>>> +
->>>>>> +static int mediatek_regulator_attach(struct regulator_coupler *coupler,
->>>>>> +                     struct regulator_dev *rdev)
->>>>>> +{
->>>>>> +    struct mediatek_regulator_coupler *mrc = to_mediatek_coupler(coupler);
->>>>>> +    const char *rdev_name = rdev_get_name(rdev);
->>>>>> +
->>>>>> +    /*
->>>>>> +     * If we're getting a coupling of more than two regulators here and
->>>>>> +     * this means that this is surely not a GPU<->SRAM couple: in that
->>>>>> +     * case, we may want to use another coupler implementation, if any,
->>>>>> +     * or the generic one: the regulator core will keep walking through
->>>>>> +     * the list of couplers when any .attach_regulator() cb returns 1.
->>>>>> +     */
->>>>>> +    if (rdev->coupling_desc.n_coupled > 2)
->>>>>> +        return 1;
->>>>>> +
->>>>>> +    if (strstr(rdev_name, "sram")) {
->>>>>
->>>>> My understanding is, that we have to have either a DT node with regulator-name 
->>>>> = "sram" property to pollute rdev->constraints->name or some 
->>>>> regulator_desc->name populated in the drivers/regulator/mt*.c
->>>>>
->>>>
->>>> No, it's not trying to find a regulator named "sram", but any regulator that
->>>> *contains* the "sram" string in its name, but checks only regulators that are
->>>> coupled to others. This is the same for the "Vgpu" / "vgpu".
->>>>
->>>> Example:
->>>>
->>>> Regulator A, coupled to Regulator B.
->>>>
->>>> Regulator A name = "Vgpu" or "vgpu", or *vgpu*, or *Vgpu*
->>>>                     (name must contain either Vgpu or vgpu)
->>>>
->>>> Regulator B name = "vsram" or "sram_gpu" or *sram*
->>>>                     (name must contain "sram").
->>>>
->>>> mrc->vsram_rdev = rdev
->>>>
->>>> rdev == our Regulator B.
->>>>
->>>> We hence return 0 to the coupling API: this will produce the effect of making
->>>> it use this driver's .balance_voltage() callback instead of the generic one
->>>> on vgpu<->vsram.
->>>>
->>>>
->>>>> I wasn't able to find either of this, so I wonder how this is supposed to 
->>>>> work. Please provide pointers to a working and complete implementation of 
->>>>> this, so that I'm able to judge what is going on and if the approach is the 
->>>>> correct one.
->>>>>
->>>>> I tried to figure out using mt8195-tracking-master-rolling
->>>>
->>>> That's the right branch.
->>>>
->>>> Let's take MT8192 Asurada as an example of how this works....
->>>>
->>>> `mt6359_vsram_others_ldo_reg´ is the SRAM regulator for the GPU:
->>>> https://gitlab.collabora.com/google/chromeos-kernel/-/blob/mt8195-tracking-master-rolling/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi#L551
->>>>
->>>> `mt6359_vsram_others_ldo_reg` regulator-name = "vsram_others";
->>>>                                                   ^^^^
->>>> Contains "sram", and this regulator is also
->>>>
->>>>      regulator-coupled-with = <&mt6315_7_vbuck1>;
->>>>
->>>> `mt6315_7_vbuck1` regulator-name = "Vgpu";
->>>>                                      ^^^^
->>>> Contains "Vgpu", and this regulator is also
->>>>
->>>>      regulator-coupled-with = <&mt6359_vsram_others_ldo_reg>;
->>>>
->>>> That's how the coupling works in this case.
->>>>
->>>>
->>>> Now, looking at case exclusions:
->>>> In MT8192 Asurada (or, actually, mt6359.dtsi) we have other regulators that do
->>>> actually contain "sram" in their name, like "vsram_proc1" and 
->>>> "vsram_others_sshub".
->>>>
->>>> These regulators will be ignored, as they are *not* coupled with Vgpu.
->>>>
->>>>
->>>> What this driver currently does in this regard is:
->>>> 1. Regulator attach is called only on *coupled* regulators, not on the others
->>>> 2. If the regulator contains name "vgpu" or "Vgpu" or "sram" we're good,
->>>>     otherwise we don't attach the balance_voltage logic of this driver to
->>>>     the unmatched regulators.
->>>>
->>>>
->>>> Does this explanation clarify your doubts?
->>>>
->>>> Regards,
->>>> Angelo
->>>>
->>>
->>> Matthias, please don't forget about this one :-)
->>>
->>
->> Unfortunately I have to leave now and didn't had time to look more into it. So 
->> I'll write just my suspicion. So please feel free to correct me if I'm totally 
->> wrong (I know you will do anyway ;)
->>
->> 1) When the regulator-coupler driver was introduced the driver was bound by a 
->> compatible, but we use arch_initcall(...) for it.
->> 2) I really don't like the hardcoded search for a the regulator name in the 
->> mediatek_regulator_attach function. I haven't seen that in the Nvidia driver, 
->> also I had no time to understand how they decide which regulators need to be 
->> coupled. My instinct would tell me that this should be described in device-tree.
->>
-> 
-> I didn't want to use custom devicetree properties to couple our regulators...
-> 
-> Tegra wants to couple three regulators: CORE, RTC and CPU and they're getting that
-> with three custom properties:
-> * nvidia,tegra-core-regulator
-> * nvidia,tegra-rtc-regulator
-> * nvidia,tegra-gpu-regulator
-> 
-> Hardcoding the regulator name *sub*string in the mediatek-regulator-coupler allows
-> us to use *only* generic devicetree properties instead of inventing our own: after
-> all, even in the case in which a board uses a regulator that doesn't have the VGPU
-> and/or VSRAM_GPU "kind of name" in it, it's still possible to change the name via
-> devicetree (which would be correct, because the regulator is used for that, and
-> would be the right name).
-> 
-> As of now, there's no board using a regulator that has a not matching name, and
-> this is because MediaTek SoCs are always using a MediaTek PMIC in combination,
-> which always specifies this kind of name.
-> 
-> I remind you that this driver does *nothing* unless coupling is activated through
-> devicetree propert*ies*, as this driver has to be seen as a hook to the regulator
-> coupling API, and not standalone code - hence, in my opinion, the cleanest
-> implementation of that is to use only properties provided by the regulator coupling
-> API, without any assistance from custom properties, unless *really* needed.
-> 
-> Summarizing:
-> * Deciding which regulators need to be coupled *already needs to* be described
->    in devicetree, otherwise this driver will do nothing;
-> * The hardcoded strings are there only to restrict this driver to GPU related
->    regulators (vgpu as gpu core supply - vsram-gpu as gpu sram supply)
-> 
-> Cheers!
-> Angelo
-> 
+Fix the follow sparse warnings by adding missing headers:
 
-Hello Matthias,
+drivers/gpu/drm/mediatek/mtk_cec.c:251:24: sparse: warning: symbol 'mtk_cec_driver' was not declared. Should it be static?
+drivers/gpu/drm/mediatek/mtk_disp_ccorr.c:221:24: sparse: warning: symbol 'mtk_disp_ccorr_driver' was not declared. Should it be static?
+drivers/gpu/drm/mediatek/mtk_disp_rdma.c:390:24: sparse: warning: symbol 'mtk_disp_rdma_driver' was not declared. Should it be static?
+drivers/gpu/drm/mediatek/mtk_disp_gamma.c:209:24: sparse: warning: symbol 'mtk_disp_gamma_driver' was not declared. Should it be static?
+drivers/gpu/drm/mediatek/mtk_disp_ovl.c:565:24: sparse: warning: symbol 'mtk_disp_ovl_driver' was not declared. Should it be static?
+drivers/gpu/drm/mediatek/mtk_disp_color.c:164:24: sparse: warning: symbol 'mtk_disp_color_driver' was not declared. Should it be static?
+drivers/gpu/drm/mediatek/mtk_disp_aal.c:161:24: sparse: warning: symbol 'mtk_disp_aal_driver' was not declared. Should it be static?
+drivers/gpu/drm/mediatek/mtk_dpi.c:1109:24: sparse: warning: symbol 'mtk_dpi_driver' was not declared. Should it be static?
+drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c:340:24: sparse: warning: symbol 'mtk_hdmi_ddc_driver' was not declared. Should it be static?
+drivers/gpu/drm/mediatek/mtk_dsi.c:1223:24: sparse: warning: symbol 'mtk_dsi_driver' was not declared. Should it be static?
 
-do-not-forget ping :-)
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_cec.c        | 2 ++
+ drivers/gpu/drm/mediatek/mtk_disp_aal.c   | 1 +
+ drivers/gpu/drm/mediatek/mtk_disp_ccorr.c | 1 +
+ drivers/gpu/drm/mediatek/mtk_disp_color.c | 1 +
+ drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 1 +
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c   | 1 +
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c  | 1 +
+ drivers/gpu/drm/mediatek/mtk_dpi.c        | 1 +
+ drivers/gpu/drm/mediatek/mtk_dsi.c        | 1 +
+ drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c   | 3 +++
+ 10 files changed, 13 insertions(+)
 
-Cheers,
-Angelo
+diff --git a/drivers/gpu/drm/mediatek/mtk_cec.c b/drivers/gpu/drm/mediatek/mtk_cec.c
+index cdfa648910b2..b640bc0559e7 100644
+--- a/drivers/gpu/drm/mediatek/mtk_cec.c
++++ b/drivers/gpu/drm/mediatek/mtk_cec.c
+@@ -12,6 +12,8 @@
+ #include <linux/platform_device.h>
+ 
+ #include "mtk_cec.h"
++#include "mtk_hdmi.h"
++#include "mtk_drm_drv.h"
+ 
+ #define TR_CONFIG		0x00
+ #define CLEAR_CEC_IRQ			BIT(15)
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+index 0f9d7efb61d7..434e8a9ce8ab 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+@@ -14,6 +14,7 @@
+ #include "mtk_disp_drv.h"
+ #include "mtk_drm_crtc.h"
+ #include "mtk_drm_ddp_comp.h"
++#include "mtk_drm_drv.h"
+ 
+ #define DISP_AAL_EN				0x0000
+ #define AAL_EN						BIT(0)
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
+index 3a53ebc4e172..1773379b2439 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
+@@ -14,6 +14,7 @@
+ #include "mtk_disp_drv.h"
+ #include "mtk_drm_crtc.h"
+ #include "mtk_drm_ddp_comp.h"
++#include "mtk_drm_drv.h"
+ 
+ #define DISP_CCORR_EN				0x0000
+ #define CCORR_EN					BIT(0)
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_color.c b/drivers/gpu/drm/mediatek/mtk_disp_color.c
+index 473f5bb5cbad..cac9206079e7 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_color.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_color.c
+@@ -14,6 +14,7 @@
+ #include "mtk_disp_drv.h"
+ #include "mtk_drm_crtc.h"
+ #include "mtk_drm_ddp_comp.h"
++#include "mtk_drm_drv.h"
+ 
+ #define DISP_COLOR_CFG_MAIN			0x0400
+ #define DISP_COLOR_START_MT2701			0x0f00
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+index bbd558a036ec..c844942603f7 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+@@ -14,6 +14,7 @@
+ #include "mtk_disp_drv.h"
+ #include "mtk_drm_crtc.h"
+ #include "mtk_drm_ddp_comp.h"
++#include "mtk_drm_drv.h"
+ 
+ #define DISP_GAMMA_EN				0x0000
+ #define GAMMA_EN					BIT(0)
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index 84daeaffab6a..9d8c986700ee 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -19,6 +19,7 @@
+ #include "mtk_disp_drv.h"
+ #include "mtk_drm_crtc.h"
+ #include "mtk_drm_ddp_comp.h"
++#include "mtk_drm_drv.h"
+ 
+ #define DISP_REG_OVL_INTEN			0x0004
+ #define OVL_FME_CPL_INT					BIT(1)
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+index 0ec2e4049e07..a5a0c3bac35d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+@@ -17,6 +17,7 @@
+ #include "mtk_disp_drv.h"
+ #include "mtk_drm_crtc.h"
+ #include "mtk_drm_ddp_comp.h"
++#include "mtk_drm_drv.h"
+ 
+ #define DISP_REG_RDMA_INT_ENABLE		0x0000
+ #define DISP_REG_RDMA_INT_STATUS		0x0004
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 4317595a15d1..3158dd3896a8 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -29,6 +29,7 @@
+ #include "mtk_disp_drv.h"
+ #include "mtk_dpi_regs.h"
+ #include "mtk_drm_ddp_comp.h"
++#include "mtk_drm_drv.h"
+ 
+ enum mtk_dpi_out_bit_num {
+ 	MTK_DPI_OUT_BIT_NUM_8BITS,
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 3b7d13028fb6..357301fa2e7d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -28,6 +28,7 @@
+ 
+ #include "mtk_disp_drv.h"
+ #include "mtk_drm_ddp_comp.h"
++#include "mtk_drm_drv.h"
+ 
+ #define DSI_START		0x00
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c b/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
+index 6207eac88550..2fc9214ffa82 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
+@@ -19,6 +19,9 @@
+ #include <linux/of_irq.h>
+ #include <linux/of_platform.h>
+ 
++#include "mtk_drm_drv.h"
++#include "mtk_hdmi.h"
++
+ #define SIF1_CLOK		(288)
+ #define DDC_DDCMCTL0		(0x0)
+ #define DDCM_ODRAIN			BIT(31)
+-- 
+2.18.0
 
 
