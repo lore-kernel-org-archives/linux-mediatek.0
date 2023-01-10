@@ -4,71 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35E65C54EBE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 06:16:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68ACFC46467
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 08:27:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LY4G6QzuBSZZIXQ8TTtTbpZjrWuqx7+js+6/78ZfUYM=; b=VpJ30bpe46XOjINgC/HUtodwLQ
-	D9o6K1KpeH215Vhf3d6YkmYoD/rXUCLJiZPA/F0q0rdEtVq1KLELwt89a8cYQ2XT8tZjf7h151Dqs
-	sypLjRtJ3V6/12wP0M0zv9ydYXK7nt1lpnYQZpcd+av+FLe9bDm+wczjpQ7JBklNEvHWaR4geosn4
-	bYIveyRNWlHZ3XdycYABGfIzjP/Vxvx7ay6Sy6UEoIhQgt8dVgmztUfq6bnpdKJipeTQG2UKzjexf
-	Edx8b1a1HarSLcaR1E5IDE0/QyHCM4LGJcDwfiAAw9WMjqQO/k93Dwsx5QKPmQ59hZOjU2HcUqwrA
-	4sfqsfjA==;
+	bh=wawoO53rvJlk1mkrEk3Mn7XLvK6KEeT6tqX3/48e1U8=; b=3s3E+o+5LLaz8Ebmh8RTeP/evU
+	mmGo7BY4SYg5fziLKQk6nXFR2kcckrezxb3DXp28XigdW6pOAo+wZ8SYTu4/BvcsZm1SGUJyoJ6EQ
+	hjGz5ZFbBZe6nTob8fJU9COTxGAuYJJOq/kE2fxBWJega3UOX2CEwt94fvlLOljf0qBWMm22i/zzy
+	hEDYrhpp+RmC2pJWx+Ig/KFzCLjULJGP1Uchn9JEciphRcA9R4Ocu0P7eVRzbRKh5Db9vMNIw6Gk/
+	x0nmb4F0AVbZKTW98ecSsMbeuo1m0wbliuL5vysx2AxvnZGiqY1bpo967+26TtYJ2lbch/9lIGrtb
+	4s+yQqAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pF7vg-005RyO-St; Tue, 10 Jan 2023 06:16:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pF9yK-005nfy-8Z; Tue, 10 Jan 2023 08:27:04 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pF7ve-005RxQ-Ea; Tue, 10 Jan 2023 06:16:11 +0000
-X-UUID: 4354913090ae11ed9febb318cfc39896-20230109
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=LY4G6QzuBSZZIXQ8TTtTbpZjrWuqx7+js+6/78ZfUYM=;
-	b=cVCHp3JtxJne7COAK8VeVtmMNT78Czxb+5iskzVJTeoBp0a5obkmAI5z1iAnOuA6CD769nFRtPj6RG7pbpobkzqJ5o8pZ3m3fJ0DoS2ptxx9+OPXWZrKx9yj/P+JKSxMgdLt0BPSDWI5TlFEq8MIHU17Ez7as6gOHdkjX2kNMWU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:878033a4-9c26-4246-bc15-afe8ee1d4b39,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:543e81c,CLOUDID:bcf0cc8b-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0
-X-UUID: 4354913090ae11ed9febb318cfc39896-20230109
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <xinlei.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2051301718; Mon, 09 Jan 2023 23:16:04 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 10 Jan 2023 13:54:58 +0800
-Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Tue, 10 Jan 2023 13:54:57 +0800
-From: <xinlei.lee@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
-	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <jitao.shi@mediatek.com>,
-	<thierry.reding@gmail.com>, <sam@ravnborg.org>
-CC: <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Xinlei Lee
-	<xinlei.lee@mediatek.com>
-Subject: [PATCH v2 1/3] drm/mediatek: dsi: Reduce the time of dsi from LP11 to sending cmd
-Date: Tue, 10 Jan 2023 13:54:51 +0800
-Message-ID: <1673330093-6771-2-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1673330093-6771-1-git-send-email-xinlei.lee@mediatek.com>
-References: <1673330093-6771-1-git-send-email-xinlei.lee@mediatek.com>
+	id 1pF9y9-005nbT-Bh
+	for linux-mediatek@lists.infradead.org; Tue, 10 Jan 2023 08:26:54 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id k22-20020a05600c1c9600b003d1ee3a6289so9196972wms.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Jan 2023 00:26:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
+         :content-language:subject:reply-to:from:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=wawoO53rvJlk1mkrEk3Mn7XLvK6KEeT6tqX3/48e1U8=;
+        b=Pr9agmqsqknAJz4q08X2fSpPXl8kZ8Z5uKdN4Vv71jNwgsf/nNe86VXEyygxPjlS1+
+         gh/phTG0PdLsHhZdshqlb5kYaQvTDXCXFwOhBsnXxIcWteCMcYoy5Qfs3SsrxkWLLx3W
+         hugOFc5Hcu3lEo7HJkKfdm+xi9R4ToC5ofhUwt8yR7aTMtheBUy8nXzk+YeSc4/MIGmj
+         iD/UurKfMlWmDuUgf0tfMLblapSoqUpYumCISSHxfU0vA0+iib6EPvbgXmkBVX5aLl6K
+         b+wkefGVbEhaGjydfCcfx2NBpZjUVLA14rAOF6IeuLZdbqp88gk3Nlm2m5/UhHvPAel0
+         I72Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
+         :content-language:subject:reply-to:from:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=wawoO53rvJlk1mkrEk3Mn7XLvK6KEeT6tqX3/48e1U8=;
+        b=RY9EfZ3F/O+8W76Zw7KZF3D5e/tVa0hbXv6m1vs85nI5fIXgCXnhMew3MBqkyGiLv4
+         6uDqyCpQ9rU6EJI2pzRpFwLameiBikfPlK5vNBF+i+mP0RKNpNDosRXGdWt2F3rg1Rvx
+         E9S/RozGAoAmPv1fFuFUXFh37mTenGfYyYcOkHMx5O9UCVoKfptVMLLJZKmHzHLSx9qI
+         YXxEO2WmMhxyIIO26beqJAYWViLHctjUEFwW9y+kYyHHyphknbHZG/NVP+mdBrqqACHZ
+         u2QeauLvnCK8Aa6PNbAl0DNbGsyl42D4OOREtcda4t+yIbvqzzIP26neLe8TEEPJa27R
+         C6/g==
+X-Gm-Message-State: AFqh2kr0dAqP/WcgZ9Fm2XhZ06fnEDRDWoeaiH/gc1W44QYXThQ4KUQn
+	+JveRmuHIYSQMIBJSEiqeqlmFg==
+X-Google-Smtp-Source: AMrXdXt2gDqizNUTxd+mOomuKh6q+bSdCe2n3FEqcVtnbcChDYNm1xQohVp5HnaiBOhdC0GfD1EAIQ==
+X-Received: by 2002:a05:600c:1d23:b0:3d9:fb59:c16b with SMTP id l35-20020a05600c1d2300b003d9fb59c16bmr190317wms.36.1673339212077;
+        Tue, 10 Jan 2023 00:26:52 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:982:cbb0:26cc:e5e1:3044:b226? ([2a01:e0a:982:cbb0:26cc:e5e1:3044:b226])
+        by smtp.gmail.com with ESMTPSA id v10-20020a05600c444a00b003d998412db6sm19917256wmn.28.2023.01.10.00.26.51
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Jan 2023 00:26:51 -0800 (PST)
+Message-ID: <71924012-8955-92f2-5fcc-4632a01bba29@linaro.org>
+Date: Tue, 10 Jan 2023 09:26:50 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+From: Neil Armstrong <neil.armstrong@linaro.org>
+Subject: Re: [PATCH] firmware: meson_sm: stop using 0 as NULL pointer
+Content-Language: en-US
+To: Miles Chen <miles.chen@mediatek.com>, Kevin Hilman
+ <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230110031242.4917-1-miles.chen@mediatek.com>
+Organization: Linaro Developer Services
+In-Reply-To: <20230110031242.4917-1-miles.chen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230109_221610_498496_545E1E17 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20230110_002653_406921_F0F904C7 
+X-CRM114-Status: GOOD (  14.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,48 +94,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: neil.armstrong@linaro.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Xinlei Lee <xinlei.lee@mediatek.com>
+On 10/01/2023 04:12, Miles Chen wrote:
+> Use NULL for NULL pointer to fix the following sparse warning:
+> drivers/firmware/meson/meson_sm.c:85:24: sparse: warning: Using plain integer as NULL pointer
+> 
+> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> ---
+>   drivers/firmware/meson/meson_sm.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/firmware/meson/meson_sm.c b/drivers/firmware/meson/meson_sm.c
+> index 77aa5c6398aa..3f5ff9ed668e 100644
+> --- a/drivers/firmware/meson/meson_sm.c
+> +++ b/drivers/firmware/meson/meson_sm.c
+> @@ -82,7 +82,7 @@ static void __iomem *meson_sm_map_shmem(u32 cmd_shmem, unsigned int size)
+>   
+>   	sm_phy_base = __meson_sm_call(cmd_shmem, 0, 0, 0, 0, 0);
+>   	if (!sm_phy_base)
+> -		return 0;
+> +		return NULL;
+>   
+>   	return ioremap_cache(sm_phy_base, size);
+>   }
 
-According to Figure 16 Turnaround Procedure on page 36 in [1], you
-can see the status of LP-00 -> LP10 -> LP11. This state can correspond
-to the state of DSI from LP00 -> LP11 in mtk_dsi_lane_ready function
-in mtk_dsi.c.
 
-LP-00 -> LP10 -> LP11 takes about 2*TLPX time (refer to [1] page 51
-to see that TLPX is 50ns)
-
-The delay at the end of the mtk_dsi_lane_ready function should be
-greater than the 2*TLPX specified by the DSI spec, and less than
-the time specified by the DSI_RX (generally 6ms to 40ms), to avoid
-problems caused by the RX specification
-
-[1]:mipi_D-PHY_specification_v1-1
-
-Fixes: 39e8d062b03c ("drm/mediatek: Keep dsi as LP00 before dcs cmds transfer")
-Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-Acked-by: Sam Ravnborg <sam@ravnborg.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/gpu/drm/mediatek/mtk_dsi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 3b7d13028fb6..9e1363c9fcdb 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -721,7 +721,7 @@ static void mtk_dsi_lane_ready(struct mtk_dsi *dsi)
- 		mtk_dsi_clk_ulp_mode_leave(dsi);
- 		mtk_dsi_lane0_ulp_mode_leave(dsi);
- 		mtk_dsi_clk_hs_mode(dsi, 0);
--		msleep(20);
-+		usleep_range(1000, 3000);
- 		/* The reaction time after pulling up the mipi signal for dsi_rx */
- 	}
- }
--- 
-2.18.0
-
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 
