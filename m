@@ -4,89 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56F57C46467
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 10:51:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 198B0C678D7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 11:07:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wDhRoFdk/wz4YhwEvYGPmWAa3bEESv7lEX1Sf3y+vY8=; b=cNKuLNGe/vnLOYsQdPhqbafqOU
-	c5uPHo7JQxTE+tRtP6socpD+v1W5tBidkImqcV+lmbBkf72m/b8wtLHN4d0aH/YXV2lgkD4QLXfsN
-	Xy4RqGjh558Br+LjiNMmXfXOUFn5FKzqYJOKkca1hS1tECLvS1JsoUCeuHMcv6cYlaKQ1gnPF5QXf
-	GwWxAB74n5nraVtVcC84RW7S1Yi8qTnsVr3mZEbAYuLdJVJOcGsHWrHyge58UgReyVx/vhxjIA3sM
-	Iv4ASWpgvyKOy9pvCugZyK1ortxyAQqN6p/KPnvqSiJvN4pREwSWfcrPkF3eC/hxUdpXT6W7i/2oG
-	SKN2H02w==;
+	bh=+fQYRTV57BNZsZcWxCfYeMeUDaEKJhnFHvxAIN1MOCA=; b=WyL1vd9XQ2Qp3msVIwi0nQFODr
+	WHTK4RzTtz8ceQXY6hcjOqSOfH9ElePv4quVnXG5FdOhX+TJbd+3B51zkJ/wWbJU6VKbTqxknQxzc
+	+vQC2qfnFyRImjcsiC+0GoQGIZx8czaljpaOQ9cSxlhRlYYDdsKLo/vZPBxYIXYoSw6iqIvpKFeCc
+	rftRHMjaQHHZaXKB77dpB527s6w80N10OfaOPVq4WiA0ibeBjAN56tQ2XR2om/yu0wuc5nMuDSVRm
+	vnkUYOBMzVfCSIe9oT6wRORdIfTn11/Eh0vftLKhbkXmtipXp8Wehj9vw2uFB8ClR2wn189DCc1Uv
+	yesBJi4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFCDT-006RO7-8T; Tue, 10 Jan 2023 10:50:51 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1pFCT9-006XPj-37; Tue, 10 Jan 2023 11:07:03 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFCDC-006RGn-Ry
-	for linux-mediatek@lists.infradead.org; Tue, 10 Jan 2023 10:50:36 +0000
-Received: by mail-wr1-x429.google.com with SMTP id d17so11280224wrs.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Jan 2023 02:50:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=wDhRoFdk/wz4YhwEvYGPmWAa3bEESv7lEX1Sf3y+vY8=;
-        b=kpYMzbwl2nK/SPNdPdAb1kZsm+a7mjYsJ1MZpv6SWly5g8fmzZYjcdcWLvigOPfmQu
-         3Zb4Op3qMqqukyIzZ+6vLG122XnmeNv4XvO/uLCyR+cKqmQR///bjqOpKmxCiUznEbNU
-         yEmdgRYtC7FArbUBoTSCo8LfIp9NvOZ+nvlkJE31ZT2Ca3ImGeqsgIOcjl8y8HqL74/Y
-         vv/Psp3u6lLBjghTsu4Y3X0jRzNjyzH1VFKQRpyLoKgzm2mWE4HsaYTuMqoONsEEov6t
-         RzsweWVzdZ89nJZfTkaPBt1yz77XMAhIUdDTYsWebrZbvCS2KfBVdcUCUPVDMGEE0wfg
-         1HZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=wDhRoFdk/wz4YhwEvYGPmWAa3bEESv7lEX1Sf3y+vY8=;
-        b=o2GklXKEElcfgrcrHNAzUM1i6HjeA09hJDSbCKBkJbQP7XbwAG6n6mu1D5NE8zTEbr
-         lBPPd3mNUZt7+z8IvuMt1DQ6xrJpWY5kPmq5yZz3IbHuusVuD1f1SK9n6B7IKruot6vg
-         yi88XKnSioKkDnHEdwPUN1Btuh/cC3v8mLjQI1Rz5/sjqBOE7aLEdpTfFqB1onFhojin
-         Mub9MJKd3WM0kydTtOgKKFgQBJy6QMx8WZzQKi6CHYA0CFk5aLTez4KmIEOj1pSiwbxQ
-         iRL/g+jfsBzHX+sIaD6wmetK71i2wBf5WQSsjNoFOG9pCt2qafRpW9BeZJzyXlmNx/hA
-         txFg==
-X-Gm-Message-State: AFqh2kpKeFjLhUhbd9WJ1Xt+UqQyvcBErNvcfvv/xGinCk10t0UUPzhI
-	0c9tUbWNcQtfVKDPjg8I/zJuzQ==
-X-Google-Smtp-Source: AMrXdXvHkDs0uBSrWlkrTbnY061a7BH/0P0k+wTuGOhU7UgZir+7gDxhqgcb9+QKEahb+t3EUaVHnA==
-X-Received: by 2002:a5d:4f05:0:b0:28c:6430:c1bc with SMTP id c5-20020a5d4f05000000b0028c6430c1bcmr25775139wru.3.1673347832948;
-        Tue, 10 Jan 2023 02:50:32 -0800 (PST)
-Received: from [192.168.1.109] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id v12-20020a5d6b0c000000b002366553eca7sm10853383wrw.83.2023.01.10.02.50.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 10 Jan 2023 02:50:32 -0800 (PST)
-Message-ID: <cbd6ff49-a31b-00ad-c5bb-9a185391132d@linaro.org>
-Date: Tue, 10 Jan 2023 11:50:30 +0100
+	id 1pFCRg-006Wlx-B0; Tue, 10 Jan 2023 11:05:34 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6EFD36602D76;
+	Tue, 10 Jan 2023 11:05:25 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1673348727;
+	bh=npkTfw5AkuKfVozPXHhlB8Rn+FzOl8AfixjbglEYM5E=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=g8mf7PG7JBP8XJNBtWZ8xgKI0tOPJZokIWTbOEYuVJkOn5DbhJxaSJNBUO2Q1bfmK
+	 y1cMK33sW6/WquNq39qtJ+odJJSftGycmg4aztwS874/mPrMof0lYm+fsOrT5Nwq3m
+	 XnH22BPZ3qXZeaD8iU9PxqrEuIq9uU/28KPoxfuz6lIefi1XhBECgx/F1zSWa3QYd6
+	 O8SATtKZfIVM6gP8Dbp4oVWKgnhmhGHx8mh24o8yFg0qe82SJMc0J2wNSJlPzhtsBA
+	 8YRHsF805A+5id8/DCqbidHCpsqprOFHMyUNHvuTAtsYxRnwpJUAkqoFwxh6d1Bs8L
+	 GKudUCJsH8MLQ==
+Message-ID: <4dbaf8a4-21df-8a7e-89ef-9ad2580ff341@collabora.com>
+Date: Tue, 10 Jan 2023 12:05:22 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v29 01/11] dt-bindings: arm: mediatek: mmsys: add vdosys1
- compatible for MT8195
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v2 03/23] clk: mediatek: clk-gate: Propagate struct device
+ with mtk_clk_register_gates()
 Content-Language: en-US
-To: "Nancy.Lin" <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>,
- wim@linux-watchdog.org, krzysztof.kozlowski+dt@linaro.org
-Cc: Nathan Chancellor <nathan@kernel.org>,
- Nick Desaulniers <ndesaulniers@google.com>,
- Jason-JH Lin <jason-jh.lin@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, clang-built-linux@googlegroups.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com, singo.chang@mediatek.com
-References: <20221227080443.6273-1-nancy.lin@mediatek.com>
- <20221227080443.6273-2-nancy.lin@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221227080443.6273-2-nancy.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+To: Markus Schneider-Pargmann <msp@baylibre.com>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, wenst@chromium.org,
+ johnson.wang@mediatek.com, miles.chen@mediatek.com, fparent@baylibre.com,
+ chun-jie.chen@mediatek.com, sam.shih@mediatek.com, y.oudjana@protonmail.com,
+ nfraprado@collabora.com, rex-bc.chen@mediatek.com, ryder.lee@kernel.org,
+ daniel@makrotopia.org, jose.exposito89@gmail.com, yangyingliang@huawei.com,
+ pablo.sun@mediatek.com, weiyi.lu@mediatek.com, ikjn@chromium.org,
+ linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, kernel@collabora.com
+References: <20221223094259.87373-1-angelogioacchino.delregno@collabora.com>
+ <20221223094259.87373-4-angelogioacchino.delregno@collabora.com>
+ <20230104112144.n2mx33xqavigxwa2@blmsp>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230104112144.n2mx33xqavigxwa2@blmsp>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_025034_938196_58E81266 
-X-CRM114-Status: GOOD (  13.63  )
+X-CRM114-CacheID: sfid-20230110_030532_812948_D5420422 
+X-CRM114-Status: GOOD (  30.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,33 +84,189 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27/12/2022 09:04, Nancy.Lin wrote:
-> Add vdosys1 mmsys compatible for MT8195 platform.
+Il 04/01/23 12:21, Markus Schneider-Pargmann ha scritto:
+> Hi Angelo,
 > 
-> For MT8195, VDOSYS0 and VDOSYS1 are 2 display HW pipelines binding to
-> 2 different power domains, different clock drivers and different
-> mediatek-drm drivers.
+> On Fri, Dec 23, 2022 at 10:42:39AM +0100, AngeloGioacchino Del Regno wrote:
+>> Commit e4c23e19aa2a ("clk: mediatek: Register clock gate with device")
+>> introduces a helper function for the sole purpose of propagating a
+>> struct device pointer to the clk API when registering the mtk-gate
+>> clocks to take advantage of Runtime PM when/where needed and where
+>> a power domain is defined in devicetree.
+>>
+>> Function mtk_clk_register_gates() then becomes a wrapper around the
+>> new mtk_clk_register_gates_with_dev() function that will simply pass
+>> NULL as struct device: this is essential when registering drivers
+>> with CLK_OF_DECLARE instead of as a platform device, as there will
+>> be no struct device to pass... but we can as well simply have only
+>> one function that always takes such pointer as a param and pass NULL
+>> when unavoidable.
+>>
+>> This commit removes the mtk_clk_register_gates() wrapper and renames
+>> mtk_clk_register_gates_with_dev() to the former and all of the calls
+>> to either of the two functions were fixed in all drivers in order to
+>> reflect this change.
+>>
+>> Since a lot of MediaTek clock drivers are actually registering as a
+>> platform device, but were still registering the mtk-gate clocks
+>> without passing any struct device to the clock framework, they've
+>> been changed to pass a valid one now, as to make all those platforms
+>> able to use runtime power management where available.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > 
-> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> ---
->  .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml      | 4 ++++
->  1 file changed, 4 insertions(+)
+> A few nitpicks, otherwise it looks good,
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> index 0711f1834fbd..242ce5a69432 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> @@ -52,6 +52,10 @@ properties:
->            - const: mediatek,mt8195-mmsys
->            - const: syscon
->  
-> +      - items:
-> +          - const: mediatek,mt8195-vdosys1
+> Reviewed-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> 
+>> ---
+>>   drivers/clk/mediatek/clk-gate.c              | 16 ++++------------
+>>   drivers/clk/mediatek/clk-gate.h              |  8 ++------
+>>   drivers/clk/mediatek/clk-mt2701-aud.c        |  2 +-
+>>   drivers/clk/mediatek/clk-mt2701-eth.c        |  2 +-
+>>   drivers/clk/mediatek/clk-mt2701-g3d.c        |  2 +-
+>>   drivers/clk/mediatek/clk-mt2701-hif.c        |  2 +-
+>>   drivers/clk/mediatek/clk-mt2701-mm.c         |  2 +-
+>>   drivers/clk/mediatek/clk-mt2701.c            |  6 +++---
+>>   drivers/clk/mediatek/clk-mt2712-mm.c         |  2 +-
+>>   drivers/clk/mediatek/clk-mt2712.c            |  6 +++---
+>>   drivers/clk/mediatek/clk-mt6765.c            |  6 +++---
+>>   drivers/clk/mediatek/clk-mt6779-mm.c         |  2 +-
+>>   drivers/clk/mediatek/clk-mt6779.c            |  4 ++--
+>>   drivers/clk/mediatek/clk-mt6795-infracfg.c   |  3 ++-
+>>   drivers/clk/mediatek/clk-mt6795-mm.c         |  3 ++-
+>>   drivers/clk/mediatek/clk-mt6795-pericfg.c    |  3 ++-
+>>   drivers/clk/mediatek/clk-mt6797-mm.c         |  2 +-
+>>   drivers/clk/mediatek/clk-mt6797.c            |  2 +-
+>>   drivers/clk/mediatek/clk-mt7622-aud.c        |  2 +-
+>>   drivers/clk/mediatek/clk-mt7622-eth.c        |  4 ++--
+>>   drivers/clk/mediatek/clk-mt7622-hif.c        |  4 ++--
+>>   drivers/clk/mediatek/clk-mt7622.c            |  9 +++++----
+>>   drivers/clk/mediatek/clk-mt7629-eth.c        |  5 +++--
+>>   drivers/clk/mediatek/clk-mt7629-hif.c        |  4 ++--
+>>   drivers/clk/mediatek/clk-mt7629.c            |  6 +++---
+>>   drivers/clk/mediatek/clk-mt7986-eth.c        |  6 +++---
+>>   drivers/clk/mediatek/clk-mt7986-infracfg.c   |  2 +-
+>>   drivers/clk/mediatek/clk-mt8135.c            |  4 ++--
+>>   drivers/clk/mediatek/clk-mt8167-aud.c        |  2 +-
+>>   drivers/clk/mediatek/clk-mt8167-img.c        |  2 +-
+>>   drivers/clk/mediatek/clk-mt8167-mfgcfg.c     |  2 +-
+>>   drivers/clk/mediatek/clk-mt8167-mm.c         |  2 +-
+>>   drivers/clk/mediatek/clk-mt8167-vdec.c       |  3 ++-
+>>   drivers/clk/mediatek/clk-mt8167.c            |  2 +-
+>>   drivers/clk/mediatek/clk-mt8173-mm.c         |  2 +-
+>>   drivers/clk/mediatek/clk-mt8173.c            | 12 ++++++------
+>>   drivers/clk/mediatek/clk-mt8183-audio.c      |  2 +-
+>>   drivers/clk/mediatek/clk-mt8183-mm.c         |  2 +-
+>>   drivers/clk/mediatek/clk-mt8183.c            |  8 ++++----
+>>   drivers/clk/mediatek/clk-mt8186-mm.c         |  3 ++-
+>>   drivers/clk/mediatek/clk-mt8192-aud.c        |  3 ++-
+>>   drivers/clk/mediatek/clk-mt8192-mm.c         |  3 ++-
+>>   drivers/clk/mediatek/clk-mt8192.c            | 12 ++++++------
+>>   drivers/clk/mediatek/clk-mt8195-apmixedsys.c |  3 ++-
+>>   drivers/clk/mediatek/clk-mt8195-topckgen.c   |  3 ++-
+>>   drivers/clk/mediatek/clk-mt8195-vdo0.c       |  3 ++-
+>>   drivers/clk/mediatek/clk-mt8195-vdo1.c       |  3 ++-
+>>   drivers/clk/mediatek/clk-mt8365-mm.c         |  5 ++---
+>>   drivers/clk/mediatek/clk-mt8365.c            |  2 +-
+>>   drivers/clk/mediatek/clk-mt8516-aud.c        |  2 +-
+>>   drivers/clk/mediatek/clk-mt8516.c            |  2 +-
+>>   drivers/clk/mediatek/clk-mtk.c               |  4 ++--
+>>   52 files changed, 103 insertions(+), 103 deletions(-)
+>>
+> 
+> [...]
+> 
+>> diff --git a/drivers/clk/mediatek/clk-mt7986-eth.c b/drivers/clk/mediatek/clk-mt7986-eth.c
+>> index 7868c0728e96..765df117afa6 100644
+>> --- a/drivers/clk/mediatek/clk-mt7986-eth.c
+>> +++ b/drivers/clk/mediatek/clk-mt7986-eth.c
+>> @@ -85,7 +85,7 @@ static void __init mtk_sgmiisys_0_init(struct device_node *node)
+>>   	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(sgmii0_clks));
+>>   
+>>   	mtk_clk_register_gates(node, sgmii0_clks, ARRAY_SIZE(sgmii0_clks),
+>> -			       clk_data);
+>> +			       clk_data, NULL);
+>>   
+>>   	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+>>   	if (r)
+>> @@ -103,7 +103,7 @@ static void __init mtk_sgmiisys_1_init(struct device_node *node)
+>>   	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(sgmii1_clks));
+>>   
+>>   	mtk_clk_register_gates(node, sgmii1_clks, ARRAY_SIZE(sgmii1_clks),
+>> -			       clk_data);
+>> +			       clk_data, NULL);
+>>   
+>>   	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+>>   
+>> @@ -121,7 +121,7 @@ static void __init mtk_ethsys_init(struct device_node *node)
+>>   
+>>   	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(eth_clks));
+>>   
+>> -	mtk_clk_register_gates(node, eth_clks, ARRAY_SIZE(eth_clks), clk_data);
+>> +	mtk_clk_register_gates(node, eth_clks, ARRAY_SIZE(eth_clks), clk_data, NULL);
+> 
+> You kept within 80c nearly everywhere, but there are a few calls where
+> you added 'NULL' that go over the 80c now. Not sure if that was
+> intended?!
+> 
 
-This should be part of first enum. Don't create redundant entries.
+Yeah that's intended. It's 86 columns, and one more line just for a NULL doesn't
+really look good to my eyes.
+Besides, we're using 80c terminals from the 1980's anymore in 2023, so that's
+fine :-)
 
-Best regards,
-Krzysztof
+>>   
+>>   	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+>>   
+> 
+> [...]
+> 
+>> diff --git a/drivers/clk/mediatek/clk-mt8183-mm.c b/drivers/clk/mediatek/clk-mt8183-mm.c
+>> index 11ecc6fb0065..f93043da26c0 100644
+>> --- a/drivers/clk/mediatek/clk-mt8183-mm.c
+>> +++ b/drivers/clk/mediatek/clk-mt8183-mm.c
+>> @@ -91,7 +91,7 @@ static int clk_mt8183_mm_probe(struct platform_device *pdev)
+>>   	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
+>>   
+>>   	mtk_clk_register_gates(node, mm_clks, ARRAY_SIZE(mm_clks),
+>> -			clk_data);
+>> +			clk_data, &pdev->dev);
+> 
+> This is not aligned with the opening bracket here and a few below. Maybe
+> you can fix it with your patch as well.
+> 
+
+Keeping in mind the size of the series, I wanted to reduce the changes to the bone
+and to avoid touching indentation as well, but I guess the TAB key on my keyboard
+can handle one more keypress :-P
+
+>>   
+>>   	return of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+>>   }
+> [...]
+>> diff --git a/drivers/clk/mediatek/clk-mt8192.c b/drivers/clk/mediatek/clk-mt8192.c
+>> index 991d78a71644..e1b625b86911 100644
+>> --- a/drivers/clk/mediatek/clk-mt8192.c
+>> +++ b/drivers/clk/mediatek/clk-mt8192.c
+>> @@ -1127,7 +1127,7 @@ static int clk_mt8192_top_probe(struct platform_device *pdev)
+>>   	if (r)
+>>   		goto unregister_top_composites;
+>>   
+>> -	r = mtk_clk_register_gates_with_dev(node, top_clks, ARRAY_SIZE(top_clks),
+>> +	r = mtk_clk_register_gates(node, top_clks, ARRAY_SIZE(top_clks),
+>>   					    top_clk_data, &pdev->dev);
+> 
+> Here and below, the function call got shorter, please fix the
+> indentation in the following lines.
+> 
+
+More keypresses to do!
+
+Thanks for the review, will fix for v3 :-)
+
+Regards,
+Angelo
+
 
 
