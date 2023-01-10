@@ -4,93 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4297CC54EBE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jan 2023 23:49:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B2FFC54EBC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 03:13:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Rszgv4ftpflSP0hfAbu9auGucePJ+YbSLRVLVyYuDXk=; b=wV4PYEbXLg59maiqa/1e/kUhPk
-	tAElbkpwEVZ4EkA7ZtqhIg+nxRhtEmx980bOYQhWmn+JjzJQYakxppEZapZUbvj94o0RmJvywcXuk
-	fJwExRDNvhhZTaj3R9WtbCKY+XzbUCOw9Cmp/DY0WeIO1+pzpZPnsojsxdD4ovPE7KNKN7/Jxep1R
-	CaKFf80iuq2N6rAn+0IVi6BLeD8a2s5cj1Gvjz+ZFtOQPwk+tJDpSOHJY7DPP6rIvNA2W1gMBIxGi
-	NrcPb4UX1SIrdSbpyqQlpHdBl6noAwPEdhTAbc6toPmTlJNmnN9jVSaxH1ycD7NQHelvWXTzW5ZPZ
-	f8b/Ei6A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=FIej2eD4SEujFQBxd08bv8HhsKCLd7iptP8Lr3bnREU=; b=oF0FjJMy3gxGGLSS9urrRtOAee
+	NF9o2ZjEuxbIbMFRHQjoYmqleltNrW5i0CwgzsDKtr4Qs8TwltSF4kMvCLoN9DTe2Dzxdn5JWrbSt
+	W15wjj/PdhO3tFO0oA0bnUz3daqu410T5c8uUI7pvF41X1YcRxO5Am0XIr4Uj4yfh9aHTwYXdTYX5
+	Clv9QFDhxODyVrTbS2+bmevkquH2xdgsXDzKruqQHsMOAAYnmhw6mQRpYNRBRg/yNp2813zgvzAZF
+	Pu9iODqGofJuvsMmILnXuDODwSXZHxZ+f28asNAMeW7K9q0jqfGAeGFgcsWtTWUwptRtFufb3v3LZ
+	YawyeUFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pF1tF-004g7C-Sk; Mon, 09 Jan 2023 23:49:17 +0000
-Received: from mail-qt1-x82e.google.com ([2607:f8b0:4864:20::82e])
+	id 1pF54e-0053Vj-FL; Tue, 10 Jan 2023 03:13:16 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pF1t2-004g0v-Li; Mon, 09 Jan 2023 23:49:05 +0000
-Received: by mail-qt1-x82e.google.com with SMTP id a25so2440842qto.10;
-        Mon, 09 Jan 2023 15:49:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Rszgv4ftpflSP0hfAbu9auGucePJ+YbSLRVLVyYuDXk=;
-        b=bq0pFZG6HYlFRfwv/fEiuOtG+U2H0ZPh+d7TNDidxHUedHGkhXEiMIhrSS73kbvXr0
-         9WwhVBJL1CqXfCiMUlUIz22JOdVF5Y8RpGyYnlWqzlN1D5ohpb/b2xycl6ppik2u6x4T
-         6Jz3cm4uMHYmAmXHagTUf1ychN2iuHsxPmbsfG7Y2KCjeCirQxaNET9wp6rMhvKcApyJ
-         UT1/edkqnYKXg5NNDRn84s6DmgcVAZ7ZOTuuCd94ZXekEy4SKpFL33vNCO1yCHnLW2u0
-         NlK49731n7jqJ0BJz+0BJQf9N1L6hNUo/9zU9zY45qcl0jtZbY48Vn8kQoRBDrSHzhQJ
-         +sAA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Rszgv4ftpflSP0hfAbu9auGucePJ+YbSLRVLVyYuDXk=;
-        b=2dRPUwM9GxWyIAsa8uFF8uTKOrBRoxBeJrpGiOy0hoh1na1hN10/UWRXL5LMHF8PvX
-         Og3xjtEFPNu5uPgqbdUCzTv/h7adASeisN9e+CwCDDgoz7CXQnj9YojQCpmhgBfxWfGe
-         90Du31TRP2/jMx50dCX9Py3J5IjXNfvqVulUhXerSIPOEGOdhFG6ynz34DIvpI8pzNzp
-         2wcBtO1ithOqzg9FHLY7P+Kebn8GHNZHYQLfywdC8+qKz5NQD1XmWCx27ci4l4z0Hn/J
-         LvcXReNxz5ZUMJTwPafGaoICXzlJYX1LbF8pFL9MbWl9JvrBAtDoTno/wKLwuMpTWMwd
-         Xr0g==
-X-Gm-Message-State: AFqh2krjQGLxC8eiK/5LzC3+yWNWiDGbPd5Brd8zw4F+57TdSH4QACnV
-	QcGDWNaylrz+zRBwyMJGuS0=
-X-Google-Smtp-Source: AMrXdXsFyUnhOqKpDyFw2zu3D79IHlXWFEnxcd+MLCh7XJ/2VlzDOwjVoHObK/9LFIy/K0bCx6rOwQ==
-X-Received: by 2002:ac8:764b:0:b0:3ab:d179:d49e with SMTP id i11-20020ac8764b000000b003abd179d49emr1219580qtr.45.1673308140043;
-        Mon, 09 Jan 2023 15:49:00 -0800 (PST)
-Received: from [10.67.48.245] ([192.19.223.252])
-        by smtp.googlemail.com with ESMTPSA id x8-20020ac81208000000b003999d25e772sm5205577qti.71.2023.01.09.15.48.46
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Jan 2023 15:48:59 -0800 (PST)
-Message-ID: <101995f8-ef11-c3e8-f50f-02aaa62c8e8f@gmail.com>
-Date: Mon, 9 Jan 2023 15:48:43 -0800
+	id 1pF54T-0053Tk-Dy; Tue, 10 Jan 2023 03:13:07 +0000
+X-UUID: 9391b4d59178477abce637c6ebe74d77-20230109
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=FIej2eD4SEujFQBxd08bv8HhsKCLd7iptP8Lr3bnREU=;
+	b=lNWukquaZDMkwy2OJMn2kO78RpWer59GTrvaT6lS4u4ki1Q39d8/HUx7FEYUeS+CgseSf2HKRbgNPCIRqBNICDiz2tLWmmqhMrlcOx+UHdIosnDKGeumCEI7wKn+4x5PLus2F7BGpxqaCnYJzz1LfYHWKTGSfM+7N3PTPFeAVSY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.17,REQID:805f2e6c-c5f5-40df-9ee1-9f5b56110fa8,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:543e81c,CLOUDID:9c4156f5-ff42-4fb0-b929-626456a83c14,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+X-CID-BVR: 0,NGT
+X-UUID: 9391b4d59178477abce637c6ebe74d77-20230109
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <miles.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1864520102; Mon, 09 Jan 2023 20:12:48 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 10 Jan 2023 11:12:24 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 10 Jan 2023 11:12:24 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Daniel Vetter
+	<daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: <linux-kernel@vger.kernel.org>, Miles Chen <miles.chen@mediatek.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>
+Subject: [PATCH] drm/mediatek: stop using 0 as NULL pointer
+Date: Tue, 10 Jan 2023 11:12:21 +0800
+Message-ID: <20230110031223.4820-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH net-next v3 02/11] net: pcs: pcs-xpcs: Use C45 MDIO API
-Content-Language: en-US
-To: Michael Walle <michael@walle.cc>, Heiner Kallweit <hkallweit1@gmail.com>,
- Russell King <linux@armlinux.org.uk>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Jose Abreu <Jose.Abreu@synopsys.com>, Sergey Shtylyov <s.shtylyov@omp.ru>,
- Wei Fang <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>,
- Clark Wang <xiaoning.wang@nxp.com>, NXP Linux Team <linux-imx@nxp.com>,
- Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Vladimir Oltean <vladimir.oltean@nxp.com>
-References: <20221227-v6-2-rc1-c45-seperation-v3-0-ade1deb438da@walle.cc>
- <20221227-v6-2-rc1-c45-seperation-v3-2-ade1deb438da@walle.cc>
-From: Florian Fainelli <f.fainelli@gmail.com>
-In-Reply-To: <20221227-v6-2-rc1-c45-seperation-v3-2-ade1deb438da@walle.cc>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230109_154904_740882_8315AC44 
-X-CRM114-Status: UNSURE (   8.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230109_191305_481380_0A85B003 
+X-CRM114-Status: GOOD (  11.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,18 +79,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 1/9/23 07:30, Michael Walle wrote:
-> From: Andrew Lunn <andrew@lunn.ch>
-> 
-> Convert the PCS-XPCS driver to make use of the C45 MDIO bus API for
-> modify_change().
-> 
-> Signed-off-by: Andrew Lunn <andrew@lunn.ch>
-> Signed-off-by: Michael Walle <michael@walle.cc>
-> Reviewed-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+Use NULL for NULL pointer to fix the following sparse warning:
+drivers/gpu/drm/mediatek/mtk_drm_gem.c:265:27: sparse: warning: Using plain integer as NULL pointer
 
-Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+
+---
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+index 47e96b0289f9..06aadd5e7f5b 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+@@ -262,6 +262,6 @@ void mtk_drm_gem_prime_vunmap(struct drm_gem_object *obj,
+ 		return;
+ 
+ 	vunmap(vaddr);
+-	mtk_gem->kvaddr = 0;
++	mtk_gem->kvaddr = NULL;
+ 	kfree(mtk_gem->pages);
+ }
 -- 
-Florian
+2.18.0
 
 
