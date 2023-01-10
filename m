@@ -4,69 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07801C46467
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 03:13:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A700C46467
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 04:02:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QNyb5Z3QvxQnVVBV71UIuozwt8O7RNweh4eQ8iUbsl0=; b=0xdPvMQtxusmqpfLxVHvSWbzjX
-	Rj57KN8lyvpXIFm3mXRl5M4jWw/m9nj2h4was3pZeU5CK3X47OGq0f0+E1UIfki4PoCjnLUOb+9nc
-	nH5C06Eml97/xmrEdLhSH3IVjLQl6p+fNrYv2vsGzse4gbuF/31RnjjfgjqA6cAgKn+V2o0lydtG0
-	c6RpFkk85uKzv33bY7UiFnafGITxDOWAz3Ia9Rmcn1AQPSy2pNRs/0goY+URhJv7BTLzvEPQtxeyj
-	qFe1/CNMi0/QkA7KArZ28js5fBJeEBIYEI+zJW+yvjoRb0EPfH1NKzCKjD25O/iq7AxckePCI3yV2
-	URfPZndg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6Coka7hAOYzARe/xcghtsc60l2UEKbV33rmZ4o8eYoM=; b=1zQDrZSXgSGKpZrKQANew8ZIkk
+	G2uC0yblJQn/DaFnnbjaJmtKKb6JxGCVZmdMb7SCnlUEL0Y5fIREdsQb4FlV3+tmHMeohO9xnGyfp
+	AYZi78c5MwtjbSGToYsvDxXtt2MdY1RgqOoBrFSYQEje8rstNkoROCO10MR5r7q7OhJXwP1p29G/R
+	vam3TVmWauR65Rk8K6xYMQ7lDv9jq18LD0H1q+o1byKYFB0mISwRfNrzyWxpkQNV1S/0vYzTcDcd1
+	bPkuYKUAnczYSacm/UGD/DOV/99f0d/FH3aK7yZ4MQhiVi3gZuS1lsVCzmM7vfKc8yMi+GxHGPbu9
+	22muErbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pF54r-0053Yg-EM; Tue, 10 Jan 2023 03:13:29 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pF5qd-0059OT-8O; Tue, 10 Jan 2023 04:02:51 +0000
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pF54o-0053Wo-Ts; Tue, 10 Jan 2023 03:13:28 +0000
-X-UUID: 86884fca122f4287bf462284890453bb-20230109
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=QNyb5Z3QvxQnVVBV71UIuozwt8O7RNweh4eQ8iUbsl0=;
-	b=qKYxgJwY8+FaWP4Q19QoI9af0hqGMWHzpXsGtVU173w/NcwFTRueMP81j2afO/oiNaIfnwcexrX5H2TRFUWu4xFmHbmVD3TL45FOVbCIinJBVo3BqRK7HwfwvKcAmudK8ZUlieLX/op2G+F0U41kik5Bwp1dt3zwddUx2MPd9fI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:e5b36b9e-14e3-4fab-a6b0-f277a713b190,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:543e81c,CLOUDID:bd4756f5-ff42-4fb0-b929-626456a83c14,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0,NGT
-X-UUID: 86884fca122f4287bf462284890453bb-20230109
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <miles.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1724054063; Mon, 09 Jan 2023 20:13:21 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 10 Jan 2023 11:12:55 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Tue, 10 Jan 2023 11:12:55 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: Andrew Lunn <andrew@lunn.ch>, Gregory Clement
-	<gregory.clement@bootlin.com>, Sebastian Hesselbarth
-	<sebastian.hesselbarth@gmail.com>, "Rafael J. Wysocki" <rafael@kernel.org>,
-	Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: <linux-kernel@vger.kernel.org>, Miles Chen <miles.chen@mediatek.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-pm@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH] cpufreq: armada-37xx: stop using 0 as NULL pointer
-Date: Tue, 10 Jan 2023 11:12:52 +0800
-Message-ID: <20230110031252.5014-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pF5qS-0059LU-Fr
+	for linux-mediatek@lists.infradead.org; Tue, 10 Jan 2023 04:02:41 +0000
+Received: by mail-pj1-x102c.google.com with SMTP id bj3so7758844pjb.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 09 Jan 2023 20:02:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=6Coka7hAOYzARe/xcghtsc60l2UEKbV33rmZ4o8eYoM=;
+        b=JiLRLa2a7kAmcgWy8jhB2AmEifcjgFrHTsh6bx0X6F/l32+W8hFjU3Qr/RkmIc6Qco
+         z/MaQLfEl8aX4I/db8Ocgw0fvLmpg9RhUKV23TPXaDjQdmCrJhQ3G9PBSZWW0qfVzwHc
+         trc36HvaCZVNdbjlqvoSlUUeCX5ygigezg1twjVFLINICSeMNesUKjCAvKW6gR0RmDfp
+         a4gfkgN9Yl2ffkvhtWWRBEYY1YKH4kjGGGEwy/4iiGmBHXffEMEPvQsBT5vkzFPkSAof
+         WAwXx2wjETK9OsIqP5O0u7cfEL0AReSm7cBYzATPQ4zZLCvUBJgu+ie5NOuQvpKggVkz
+         LpTQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=6Coka7hAOYzARe/xcghtsc60l2UEKbV33rmZ4o8eYoM=;
+        b=snZj4powwiqWK2A8+ow7DF6GtpTE0MR+zXVO9xUf886S/jXrFt7/3oObFjguMMe2ie
+         BEs6/J8ELacDBCMNtWJOVYobi3sfyrPb2goDaerFrRvhFCtwuvuNqu1H9Y7ynlEabzDb
+         qMXxNSB5wMqW3Y5xJsHZQ2leaXsU+ewMacKMjCrSBAmBhRtELeb8RJ+9A6dcej7cVRuF
+         y6r479bwrD/3S7lsulOUfh6gw0E2/zXF6zhjnQAg8hQuMeL/SOQAmG8+iIjmVIv53w6s
+         EaxZpir/trbUZ0H3XPT44DpFNt8khXaQRdfUIHGmaoH1craxol06RL2gJ9ZhaDqiHL0O
+         Vp5w==
+X-Gm-Message-State: AFqh2kp1leP8nK1csy0eGjmHWAOrXSoGxysg/KjPDjhaqdgWA/i1aG7o
+	/vsOSZIAWvVNJDbUMZ0u/6B7cQ==
+X-Google-Smtp-Source: AMrXdXs1xjzrEaB+nt4ps7YBC4mvRJDyu5uxWxiV2DXp/xxfR5X++ZGtkijDXSTFJWPjIaCxJAjM8w==
+X-Received: by 2002:a17:902:b493:b0:189:cb73:75f0 with SMTP id y19-20020a170902b49300b00189cb7375f0mr61280351plr.8.1673323356576;
+        Mon, 09 Jan 2023 20:02:36 -0800 (PST)
+Received: from localhost ([122.172.82.107])
+        by smtp.gmail.com with ESMTPSA id k7-20020a170902ce0700b001929827731esm6861059plg.201.2023.01.09.20.02.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 09 Jan 2023 20:02:35 -0800 (PST)
+Date: Tue, 10 Jan 2023 09:32:33 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Miles Chen <miles.chen@mediatek.com>
+Cc: Andrew Lunn <andrew@lunn.ch>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] cpufreq: armada-37xx: stop using 0 as NULL pointer
+Message-ID: <20230110040233.dm6ldb5qgl2ksiht@vireshk-i7>
+References: <20230110031252.5014-1-miles.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230110031252.5014-1-miles.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230109_191326_987399_3EF43090 
-X-CRM114-Status: GOOD (  12.18  )
+X-CRM114-CacheID: sfid-20230109_200240_602425_55442EB4 
+X-CRM114-Status: GOOD (  16.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,28 +93,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use NULL for NULL pointer to fix the following sparse warning:
-drivers/cpufreq/armada-37xx-cpufreq.c:448:32: sparse: warning: Using plain integer as NULL pointer
+On 10-01-23, 11:12, Miles Chen wrote:
+> Use NULL for NULL pointer to fix the following sparse warning:
+> drivers/cpufreq/armada-37xx-cpufreq.c:448:32: sparse: warning: Using plain integer as NULL pointer
+> 
+> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> ---
+>  drivers/cpufreq/armada-37xx-cpufreq.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/cpufreq/armada-37xx-cpufreq.c b/drivers/cpufreq/armada-37xx-cpufreq.c
+> index c10fc33b29b1..b74289a95a17 100644
+> --- a/drivers/cpufreq/armada-37xx-cpufreq.c
+> +++ b/drivers/cpufreq/armada-37xx-cpufreq.c
+> @@ -445,7 +445,7 @@ static int __init armada37xx_cpufreq_driver_init(void)
+>  		return -ENODEV;
+>  	}
+>  
+> -	clk = clk_get(cpu_dev, 0);
+> +	clk = clk_get(cpu_dev, NULL);
+>  	if (IS_ERR(clk)) {
+>  		dev_err(cpu_dev, "Cannot get clock for CPU0\n");
+>  		return PTR_ERR(clk);
 
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
----
- drivers/cpufreq/armada-37xx-cpufreq.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Applied. Thanks.
 
-diff --git a/drivers/cpufreq/armada-37xx-cpufreq.c b/drivers/cpufreq/armada-37xx-cpufreq.c
-index c10fc33b29b1..b74289a95a17 100644
---- a/drivers/cpufreq/armada-37xx-cpufreq.c
-+++ b/drivers/cpufreq/armada-37xx-cpufreq.c
-@@ -445,7 +445,7 @@ static int __init armada37xx_cpufreq_driver_init(void)
- 		return -ENODEV;
- 	}
- 
--	clk = clk_get(cpu_dev, 0);
-+	clk = clk_get(cpu_dev, NULL);
- 	if (IS_ERR(clk)) {
- 		dev_err(cpu_dev, "Cannot get clock for CPU0\n");
- 		return PTR_ERR(clk);
 -- 
-2.18.0
-
+viresh
 
