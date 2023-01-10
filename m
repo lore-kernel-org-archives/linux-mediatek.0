@@ -4,72 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 198B0C678D7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 11:07:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A65A2C54EBC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 11:17:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+fQYRTV57BNZsZcWxCfYeMeUDaEKJhnFHvxAIN1MOCA=; b=WyL1vd9XQ2Qp3msVIwi0nQFODr
-	WHTK4RzTtz8ceQXY6hcjOqSOfH9ElePv4quVnXG5FdOhX+TJbd+3B51zkJ/wWbJU6VKbTqxknQxzc
-	+vQC2qfnFyRImjcsiC+0GoQGIZx8czaljpaOQ9cSxlhRlYYDdsKLo/vZPBxYIXYoSw6iqIvpKFeCc
-	rftRHMjaQHHZaXKB77dpB527s6w80N10OfaOPVq4WiA0ibeBjAN56tQ2XR2om/yu0wuc5nMuDSVRm
-	vnkUYOBMzVfCSIe9oT6wRORdIfTn11/Eh0vftLKhbkXmtipXp8Wehj9vw2uFB8ClR2wn189DCc1Uv
-	yesBJi4w==;
+	bh=7R6k4XeSSfrouTet4Pl7FYt1MDO+biHA3LgQPUZKzOM=; b=gfrDOnPIP3AXc6slME0Mxs3z7O
+	4v1qUzw7HM1dOHETu5Tcb02zJbguxkTnPnpS8fH7dkAdH9rYcmOTToOqX3FsGYNJWf+zuQLZ8fYSy
+	gNHjQA9dkN1Zf1QOVx/vXT+Q0GZq4BTKe/8jpcAfuY594YVL56GeeMFER066za4NKrS2BxsFHzS8H
+	5A1VCBz8YJRl5U0itXzBgbncd3Le+6kNdCykdVTCLt/nBsSiuKIGO4t1ooteq1peJi+8gJ/GNbppN
+	Cyw3V6KY3gsJ19ZCh+SU7ZPfQNC7YgQpvwzvY0dxZF/nIA7LDvyRd3X2STkr9ar3Ng+DdwLlQX7Z/
+	PxoZZb8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFCT9-006XPj-37; Tue, 10 Jan 2023 11:07:03 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pFCdD-006c9b-LF; Tue, 10 Jan 2023 11:17:27 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFCRg-006Wlx-B0; Tue, 10 Jan 2023 11:05:34 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6EFD36602D76;
-	Tue, 10 Jan 2023 11:05:25 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1673348727;
-	bh=npkTfw5AkuKfVozPXHhlB8Rn+FzOl8AfixjbglEYM5E=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=g8mf7PG7JBP8XJNBtWZ8xgKI0tOPJZokIWTbOEYuVJkOn5DbhJxaSJNBUO2Q1bfmK
-	 y1cMK33sW6/WquNq39qtJ+odJJSftGycmg4aztwS874/mPrMof0lYm+fsOrT5Nwq3m
-	 XnH22BPZ3qXZeaD8iU9PxqrEuIq9uU/28KPoxfuz6lIefi1XhBECgx/F1zSWa3QYd6
-	 O8SATtKZfIVM6gP8Dbp4oVWKgnhmhGHx8mh24o8yFg0qe82SJMc0J2wNSJlPzhtsBA
-	 8YRHsF805A+5id8/DCqbidHCpsqprOFHMyUNHvuTAtsYxRnwpJUAkqoFwxh6d1Bs8L
-	 GKudUCJsH8MLQ==
-Message-ID: <4dbaf8a4-21df-8a7e-89ef-9ad2580ff341@collabora.com>
-Date: Tue, 10 Jan 2023 12:05:22 +0100
+	id 1pFCcu-006by1-4I
+	for linux-mediatek@lists.infradead.org; Tue, 10 Jan 2023 11:17:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1673349421;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=7R6k4XeSSfrouTet4Pl7FYt1MDO+biHA3LgQPUZKzOM=;
+	b=PkdKWIR7QPEzuFMnMppcCEVq3ibLSxh0HQLEwGs1nIqdUTWk5+l53vb65OugsT1Sj7BjQp
+	d4U+y+bqLJNkcsTb62HK4m4JUVWZzP3q4lKGndNVtZ65nJdGgTdU23aJTAOxEYdzvouW2O
+	1giirtF38N5mhTq5laph7clukkLRoiQ=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-272-Wljx3E9_NBeaPwr8nKwAZA-1; Tue, 10 Jan 2023 06:17:00 -0500
+X-MC-Unique: Wljx3E9_NBeaPwr8nKwAZA-1
+Received: by mail-qk1-f199.google.com with SMTP id l16-20020a05620a28d000b00704af700820so8442349qkp.5
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Jan 2023 03:17:00 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=7R6k4XeSSfrouTet4Pl7FYt1MDO+biHA3LgQPUZKzOM=;
+        b=gfinRAAsTz4ZMt9FOJoRFLK9USTGOoEJ5E8j6aFDMBbZoEdxe/2X3gUi0DbD0U4ht5
+         MGYiu4M02jECaosGHYx0/0BB8opJ9V/0JVLP4CyHR585fy0guhw8v49d4Wm+8d9pGeqQ
+         wSBU9bzzyv90nmb/T9m4UvR05q2zHdfAl4YWNBX+NwXGShCMN2iH7c8fzYHai5dilz4y
+         8mVSW5U+qzNmTzdOc7EUB2CcYOWK/ERdlUzsS25LgQRTmKvli8P4oS8d4ructPXvwMHb
+         w62lUc4prvywgHXKx9UkjNfrEACAtwZPJWnfOZAo3oNc5g9UC60pzHpoq7X+D7jdfGTk
+         LBYw==
+X-Gm-Message-State: AFqh2krT3sR7syRyWsNd2RQ+zaPfpVlHLnDnHpKuYRsbAOPJhYOfg/zS
+	6FOtKZvw4f4ShMspp8Okxi/bzyAaVrz4/9RZAPRcGpLzd9O34275L5oobs6FXCAP4nAZOahqAgz
+	IXLB+ntJeDVZmZlI4H5sJiyY1gkmrkBsM
+X-Received: by 2002:ac8:520c:0:b0:3a8:1079:b844 with SMTP id r12-20020ac8520c000000b003a81079b844mr89443427qtn.46.1673349419766;
+        Tue, 10 Jan 2023 03:16:59 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXt7LAw0VjeSUK8wkVXMaLsnRFvPYmNquEuKr7XZHAByB6NkEWLdJSItXvzP6gLV6c7Tmr1r8Q==
+X-Received: by 2002:ac8:520c:0:b0:3a8:1079:b844 with SMTP id r12-20020ac8520c000000b003a81079b844mr89443387qtn.46.1673349419493;
+        Tue, 10 Jan 2023 03:16:59 -0800 (PST)
+Received: from gerbillo.redhat.com (146-241-120-128.dyn.eolo.it. [146.241.120.128])
+        by smtp.gmail.com with ESMTPSA id k8-20020ac80748000000b0038b684a1642sm5839964qth.32.2023.01.10.03.16.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Jan 2023 03:16:58 -0800 (PST)
+Message-ID: <5bd7ee34ead313785951defbf3069b64d4338a45.camel@redhat.com>
+Subject: Re: [PATCH net-next v3 01/11] net: mdio: Add dedicated C45 API to
+ MDIO bus drivers
+From: Paolo Abeni <pabeni@redhat.com>
+To: Michael Walle <michael@walle.cc>, Heiner Kallweit
+ <hkallweit1@gmail.com>,  Russell King <linux@armlinux.org.uk>, "David S.
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
+ Kicinski <kuba@kernel.org>, Jose Abreu <Jose.Abreu@synopsys.com>, Sergey
+ Shtylyov <s.shtylyov@omp.ru>, Wei Fang <wei.fang@nxp.com>, Shenwei Wang
+ <shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, NXP Linux Team
+ <linux-imx@nxp.com>, Sean Wang <sean.wang@mediatek.com>, Landen Chao
+ <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Florian
+ Fainelli <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-renesas-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>, Geert
+ Uytterhoeven <geert+renesas@glider.be>, Vladimir Oltean
+ <vladimir.oltean@nxp.com>
+Date: Tue, 10 Jan 2023 12:16:53 +0100
+In-Reply-To: <20221227-v6-2-rc1-c45-seperation-v3-1-ade1deb438da@walle.cc>
+References: <20221227-v6-2-rc1-c45-seperation-v3-0-ade1deb438da@walle.cc>
+	 <20221227-v6-2-rc1-c45-seperation-v3-1-ade1deb438da@walle.cc>
+User-Agent: Evolution 3.42.4 (3.42.4-2.fc35)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v2 03/23] clk: mediatek: clk-gate: Propagate struct device
- with mtk_clk_register_gates()
-Content-Language: en-US
-To: Markus Schneider-Pargmann <msp@baylibre.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, wenst@chromium.org,
- johnson.wang@mediatek.com, miles.chen@mediatek.com, fparent@baylibre.com,
- chun-jie.chen@mediatek.com, sam.shih@mediatek.com, y.oudjana@protonmail.com,
- nfraprado@collabora.com, rex-bc.chen@mediatek.com, ryder.lee@kernel.org,
- daniel@makrotopia.org, jose.exposito89@gmail.com, yangyingliang@huawei.com,
- pablo.sun@mediatek.com, weiyi.lu@mediatek.com, ikjn@chromium.org,
- linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, kernel@collabora.com
-References: <20221223094259.87373-1-angelogioacchino.delregno@collabora.com>
- <20221223094259.87373-4-angelogioacchino.delregno@collabora.com>
- <20230104112144.n2mx33xqavigxwa2@blmsp>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230104112144.n2mx33xqavigxwa2@blmsp>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_030532_812948_D5420422 
-X-CRM114-Status: GOOD (  30.44  )
+X-CRM114-CacheID: sfid-20230110_031708_312099_2A8552F4 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,189 +112,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/01/23 12:21, Markus Schneider-Pargmann ha scritto:
-> Hi Angelo,
-> 
-> On Fri, Dec 23, 2022 at 10:42:39AM +0100, AngeloGioacchino Del Regno wrote:
->> Commit e4c23e19aa2a ("clk: mediatek: Register clock gate with device")
->> introduces a helper function for the sole purpose of propagating a
->> struct device pointer to the clk API when registering the mtk-gate
->> clocks to take advantage of Runtime PM when/where needed and where
->> a power domain is defined in devicetree.
->>
->> Function mtk_clk_register_gates() then becomes a wrapper around the
->> new mtk_clk_register_gates_with_dev() function that will simply pass
->> NULL as struct device: this is essential when registering drivers
->> with CLK_OF_DECLARE instead of as a platform device, as there will
->> be no struct device to pass... but we can as well simply have only
->> one function that always takes such pointer as a param and pass NULL
->> when unavoidable.
->>
->> This commit removes the mtk_clk_register_gates() wrapper and renames
->> mtk_clk_register_gates_with_dev() to the former and all of the calls
->> to either of the two functions were fixed in all drivers in order to
->> reflect this change.
->>
->> Since a lot of MediaTek clock drivers are actually registering as a
->> platform device, but were still registering the mtk-gate clocks
->> without passing any struct device to the clock framework, they've
->> been changed to pass a valid one now, as to make all those platforms
->> able to use runtime power management where available.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> 
-> A few nitpicks, otherwise it looks good,
-> 
-> Reviewed-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> 
->> ---
->>   drivers/clk/mediatek/clk-gate.c              | 16 ++++------------
->>   drivers/clk/mediatek/clk-gate.h              |  8 ++------
->>   drivers/clk/mediatek/clk-mt2701-aud.c        |  2 +-
->>   drivers/clk/mediatek/clk-mt2701-eth.c        |  2 +-
->>   drivers/clk/mediatek/clk-mt2701-g3d.c        |  2 +-
->>   drivers/clk/mediatek/clk-mt2701-hif.c        |  2 +-
->>   drivers/clk/mediatek/clk-mt2701-mm.c         |  2 +-
->>   drivers/clk/mediatek/clk-mt2701.c            |  6 +++---
->>   drivers/clk/mediatek/clk-mt2712-mm.c         |  2 +-
->>   drivers/clk/mediatek/clk-mt2712.c            |  6 +++---
->>   drivers/clk/mediatek/clk-mt6765.c            |  6 +++---
->>   drivers/clk/mediatek/clk-mt6779-mm.c         |  2 +-
->>   drivers/clk/mediatek/clk-mt6779.c            |  4 ++--
->>   drivers/clk/mediatek/clk-mt6795-infracfg.c   |  3 ++-
->>   drivers/clk/mediatek/clk-mt6795-mm.c         |  3 ++-
->>   drivers/clk/mediatek/clk-mt6795-pericfg.c    |  3 ++-
->>   drivers/clk/mediatek/clk-mt6797-mm.c         |  2 +-
->>   drivers/clk/mediatek/clk-mt6797.c            |  2 +-
->>   drivers/clk/mediatek/clk-mt7622-aud.c        |  2 +-
->>   drivers/clk/mediatek/clk-mt7622-eth.c        |  4 ++--
->>   drivers/clk/mediatek/clk-mt7622-hif.c        |  4 ++--
->>   drivers/clk/mediatek/clk-mt7622.c            |  9 +++++----
->>   drivers/clk/mediatek/clk-mt7629-eth.c        |  5 +++--
->>   drivers/clk/mediatek/clk-mt7629-hif.c        |  4 ++--
->>   drivers/clk/mediatek/clk-mt7629.c            |  6 +++---
->>   drivers/clk/mediatek/clk-mt7986-eth.c        |  6 +++---
->>   drivers/clk/mediatek/clk-mt7986-infracfg.c   |  2 +-
->>   drivers/clk/mediatek/clk-mt8135.c            |  4 ++--
->>   drivers/clk/mediatek/clk-mt8167-aud.c        |  2 +-
->>   drivers/clk/mediatek/clk-mt8167-img.c        |  2 +-
->>   drivers/clk/mediatek/clk-mt8167-mfgcfg.c     |  2 +-
->>   drivers/clk/mediatek/clk-mt8167-mm.c         |  2 +-
->>   drivers/clk/mediatek/clk-mt8167-vdec.c       |  3 ++-
->>   drivers/clk/mediatek/clk-mt8167.c            |  2 +-
->>   drivers/clk/mediatek/clk-mt8173-mm.c         |  2 +-
->>   drivers/clk/mediatek/clk-mt8173.c            | 12 ++++++------
->>   drivers/clk/mediatek/clk-mt8183-audio.c      |  2 +-
->>   drivers/clk/mediatek/clk-mt8183-mm.c         |  2 +-
->>   drivers/clk/mediatek/clk-mt8183.c            |  8 ++++----
->>   drivers/clk/mediatek/clk-mt8186-mm.c         |  3 ++-
->>   drivers/clk/mediatek/clk-mt8192-aud.c        |  3 ++-
->>   drivers/clk/mediatek/clk-mt8192-mm.c         |  3 ++-
->>   drivers/clk/mediatek/clk-mt8192.c            | 12 ++++++------
->>   drivers/clk/mediatek/clk-mt8195-apmixedsys.c |  3 ++-
->>   drivers/clk/mediatek/clk-mt8195-topckgen.c   |  3 ++-
->>   drivers/clk/mediatek/clk-mt8195-vdo0.c       |  3 ++-
->>   drivers/clk/mediatek/clk-mt8195-vdo1.c       |  3 ++-
->>   drivers/clk/mediatek/clk-mt8365-mm.c         |  5 ++---
->>   drivers/clk/mediatek/clk-mt8365.c            |  2 +-
->>   drivers/clk/mediatek/clk-mt8516-aud.c        |  2 +-
->>   drivers/clk/mediatek/clk-mt8516.c            |  2 +-
->>   drivers/clk/mediatek/clk-mtk.c               |  4 ++--
->>   52 files changed, 103 insertions(+), 103 deletions(-)
->>
-> 
-> [...]
-> 
->> diff --git a/drivers/clk/mediatek/clk-mt7986-eth.c b/drivers/clk/mediatek/clk-mt7986-eth.c
->> index 7868c0728e96..765df117afa6 100644
->> --- a/drivers/clk/mediatek/clk-mt7986-eth.c
->> +++ b/drivers/clk/mediatek/clk-mt7986-eth.c
->> @@ -85,7 +85,7 @@ static void __init mtk_sgmiisys_0_init(struct device_node *node)
->>   	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(sgmii0_clks));
->>   
->>   	mtk_clk_register_gates(node, sgmii0_clks, ARRAY_SIZE(sgmii0_clks),
->> -			       clk_data);
->> +			       clk_data, NULL);
->>   
->>   	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
->>   	if (r)
->> @@ -103,7 +103,7 @@ static void __init mtk_sgmiisys_1_init(struct device_node *node)
->>   	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(sgmii1_clks));
->>   
->>   	mtk_clk_register_gates(node, sgmii1_clks, ARRAY_SIZE(sgmii1_clks),
->> -			       clk_data);
->> +			       clk_data, NULL);
->>   
->>   	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
->>   
->> @@ -121,7 +121,7 @@ static void __init mtk_ethsys_init(struct device_node *node)
->>   
->>   	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(eth_clks));
->>   
->> -	mtk_clk_register_gates(node, eth_clks, ARRAY_SIZE(eth_clks), clk_data);
->> +	mtk_clk_register_gates(node, eth_clks, ARRAY_SIZE(eth_clks), clk_data, NULL);
-> 
-> You kept within 80c nearly everywhere, but there are a few calls where
-> you added 'NULL' that go over the 80c now. Not sure if that was
-> intended?!
-> 
+On Mon, 2023-01-09 at 16:30 +0100, Michael Walle wrote:
+> diff --git a/include/linux/phy.h b/include/linux/phy.h
+> index 6378c997ded5..65844f0a7fb3 100644
+> --- a/include/linux/phy.h
+> +++ b/include/linux/phy.h
+> @@ -364,6 +364,11 @@ struct mii_bus {
+>  	int (*read)(struct mii_bus *bus, int addr, int regnum);
+>  	/** @write: Perform a write transfer on the bus */
+>  	int (*write)(struct mii_bus *bus, int addr, int regnum, u16 val);
+> +	/** @read: Perform a C45 read transfer on the bus */
 
-Yeah that's intended. It's 86 columns, and one more line just for a NULL doesn't
-really look good to my eyes.
-Besides, we're using 80c terminals from the 1980's anymore in 2023, so that's
-fine :-)
+Minor nit: s/@read/@read_c45/ 
 
->>   
->>   	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
->>   
-> 
-> [...]
-> 
->> diff --git a/drivers/clk/mediatek/clk-mt8183-mm.c b/drivers/clk/mediatek/clk-mt8183-mm.c
->> index 11ecc6fb0065..f93043da26c0 100644
->> --- a/drivers/clk/mediatek/clk-mt8183-mm.c
->> +++ b/drivers/clk/mediatek/clk-mt8183-mm.c
->> @@ -91,7 +91,7 @@ static int clk_mt8183_mm_probe(struct platform_device *pdev)
->>   	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
->>   
->>   	mtk_clk_register_gates(node, mm_clks, ARRAY_SIZE(mm_clks),
->> -			clk_data);
->> +			clk_data, &pdev->dev);
-> 
-> This is not aligned with the opening bracket here and a few below. Maybe
-> you can fix it with your patch as well.
-> 
+> +	int (*read_c45)(struct mii_bus *bus, int addr, int devnum, int regnum);
+> +	/** @write: Perform a C45 write transfer on the bus */
 
-Keeping in mind the size of the series, I wanted to reduce the changes to the bone
-and to avoid touching indentation as well, but I guess the TAB key on my keyboard
-can handle one more keypress :-P
+Mutatis mutandis, same thing here.
 
->>   
->>   	return of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
->>   }
-> [...]
->> diff --git a/drivers/clk/mediatek/clk-mt8192.c b/drivers/clk/mediatek/clk-mt8192.c
->> index 991d78a71644..e1b625b86911 100644
->> --- a/drivers/clk/mediatek/clk-mt8192.c
->> +++ b/drivers/clk/mediatek/clk-mt8192.c
->> @@ -1127,7 +1127,7 @@ static int clk_mt8192_top_probe(struct platform_device *pdev)
->>   	if (r)
->>   		goto unregister_top_composites;
->>   
->> -	r = mtk_clk_register_gates_with_dev(node, top_clks, ARRAY_SIZE(top_clks),
->> +	r = mtk_clk_register_gates(node, top_clks, ARRAY_SIZE(top_clks),
->>   					    top_clk_data, &pdev->dev);
-> 
-> Here and below, the function call got shorter, please fix the
-> indentation in the following lines.
-> 
+Thanks!
 
-More keypresses to do!
-
-Thanks for the review, will fix for v3 :-)
-
-Regards,
-Angelo
-
+Paolo
 
 
