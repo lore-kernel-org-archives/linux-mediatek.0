@@ -4,66 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 776DAC54EBE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 09:02:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA99BC46467
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 09:04:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=as9LyHWt0XLFexRj7GpXdvsUjobsRYjzSupS3fQCl9U=; b=HbOhGKoD6mX13w7AS2dD2zCzKA
-	I/feQEIvulKjSB8qoDRtyRx7w+vRltH+XM2nCZ0vp9bDObvuscAZLAVrFtTkGjUPqnpyh4VBBfrBJ
-	fJT6FVaxN+MbdVRQbAJR74cmIdzQ+74RGNSCmeAw29Ucf9x8FOfxCYIkgzDc7AxvJu/2n94mFNXKz
-	tf1LZrQiQ21ExCFuGmaJYIUuV2MZPtdMGtumST6vH2aZTgTiyubwc6dM/db7ipfpBnYvIVGSzxvUd
-	Os+y0lZEgQTrAC5aHGHNagKWIGMtvAXdtE1TQUvxl4SlEflPog9t2MxX3XpD95UXZLnqr8eoVqeA+
-	GVyTJP9g==;
+	bh=Yt/1rVdKqsCac3uXMYG6HnpQCTqHWocqbiuBN4kIjIY=; b=YYDue8lV3iWPyPZ+C8yu3J6DDi
+	mGe79cDNity+nRhq6fSQI6ZFXokutIPo7KAZUJ40/v3MqFiUyEHQeGmclAZbLXEfbOt9nSvnYKHJa
+	HieUV0w4PwyVYAsYCLdWzEC605N0RcJI/3aq9o1O3BBKWBRnIDb2XSNdo3LnWb+KkbOgHSJJPMzw0
+	boNmtWCIDuROEPCnur6qzeeiXNQEATN0RbmTqpGkH1s3gagPembTQqBpTa4skepXXd/1XBivlpRDa
+	a/abtvlx8NghDPB89mh9OZZpXR4jqVAc60YwEnwoeXKpDv/A6ehuhfbQV8fzJ4CFxe8jpytTwF461
+	H/VfhINg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFAWK-005ych-S4; Tue, 10 Jan 2023 09:02:12 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pFAYB-005z1G-Du; Tue, 10 Jan 2023 09:04:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFAWH-005ybh-Ts
-	for linux-mediatek@lists.infradead.org; Tue, 10 Jan 2023 09:02:11 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 24EC7660230B;
-	Tue, 10 Jan 2023 09:02:05 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1673341325;
-	bh=oIJ9/QBPo+xtU86fwp39bkctw5qjqzfW5/QtYhI/UrA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ZoHFvuUlrlcCMArQ3GE28bgB1BiUBSZDanmJGf7TWfHY4HaHXUcudf10Rd93by/kd
-	 wNt3BBx48a8dJafvq5xB6miHFUNTlPoxz/F7ao8C73nHZ9M+E/xDUz0vYPerumNN68
-	 DtE4SFGZGw2dcjFtslquD0T19onZDeDPPR2I94vtK5wJBq8ZxSOcvetqyzG/xJejpi
-	 5Y+cqlGuvMJ8jQHvERWSYSTc706+gVaIJTzTtig3ctZa5fwil4+/jo5J6i9ffWpJAZ
-	 IEuiabxTn9aLxWEfO1HD9AHFy5PIRnK6bBM351pG7ByKNLUHT/bPqgNk+ePACC74NA
-	 EiNs5iHBL0x0Q==
-Message-ID: <fc950d71-29da-dce6-3c81-578362a78f78@collabora.com>
-Date: Tue, 10 Jan 2023 10:02:02 +0100
+	id 1pFAXy-005yyH-7o; Tue, 10 Jan 2023 09:03:57 +0000
+X-UUID: b267f0d290c511edbbe3f76fe852e059-20230110
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Yt/1rVdKqsCac3uXMYG6HnpQCTqHWocqbiuBN4kIjIY=;
+	b=J9MbmLMLe629K81IkJ6Nng6LSqAYxJ+ArdxxbtOsHcFGevXiKzk+XCX9FdhFrWjHnkwDxMcMe14e3WjoHoxlhevr7kL6gvEgz/8KwdH/U3WJrWhV0nyigYtxq0H/ZsVokzfFEUvBT2yVcXCd/tiViYd8q1KOjrqVqNUia+BsPmA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.17,REQID:1b5aba4a-7651-41e1-9121-062197e790b5,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:543e81c,CLOUDID:31df61f5-ff42-4fb0-b929-626456a83c14,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+X-CID-BVR: 0
+X-UUID: b267f0d290c511edbbe3f76fe852e059-20230110
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1548561703; Tue, 10 Jan 2023 02:03:49 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 10 Jan 2023 16:43:13 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 10 Jan 2023 16:43:13 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Pierre-Louis Bossart
+	<pierre-louis.bossart@linux.intel.com>, Liam Girdwood <lgirdwood@gmail.com>,
+	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, Bard Liao
+	<yung-chuan.liao@linux.intel.com>, Ranjani Sridharan
+	<ranjani.sridharan@linux.intel.com>, Kai Vehmanen
+	<kai.vehmanen@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>, "Mark
+ Brown" <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
+	<tiwai@suse.com>, Tinghan Shen <tinghan.shen@mediatek.com>, "AngeloGioacchino
+ Del Regno" <angelogioacchino.delregno@collabora.com>, Chunxu Li
+	<chunxu.li@mediatek.com>, Dan Carpenter <error27@gmail.com>, YC Hung
+	<yc.hung@mediatek.com>, Wan Jiabing <wanjiabing@vivo.com>, Allen-KH Cheng
+	<Allen-KH.Cheng@mediatek.com>
+CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<sound-open-firmware@alsa-project.org>, <alsa-devel@alsa-project.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v2 2/3] ASoC: SOF: mediatek: Support mt8188 platform
+Date: Tue, 10 Jan 2023 16:43:11 +0800
+Message-ID: <20230110084312.12953-3-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230110084312.12953-1-tinghan.shen@mediatek.com>
+References: <20230110084312.12953-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [RESEND PATCH] drm/mediatek: Add support for AR30 and BA30
-To: Justin Green <greenjustin@chromium.org>,
- linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org
-Cc: jason-jh.lin@mediatek.com, justin.yeh@mediatek.com,
- Chen-Yu Tsai <wenst@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- p.zabel@pengutronix.de, airlied@linux.ie, matthias.bgg@gmail.com,
- daniel@ffwll.ch, Daniel Stone <daniel@fooishbar.org>
-References: <CAHC42ReC+pkKxkHdagfpQ5-hLWGAad5nWtdd4uZTDhuQz_bwMA@mail.gmail.com>
-Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAHC42ReC+pkKxkHdagfpQ5-hLWGAad5nWtdd4uZTDhuQz_bwMA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_010210_118202_CCB933A7 
-X-CRM114-Status: UNSURE (   7.12  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230110_010355_912988_EDC7D680 
+X-CRM114-Status: GOOD (  18.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,21 +94,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/01/23 19:26, Justin Green ha scritto:
-> Add support for AR30 and BA30 pixel formats to the Mediatek DRM driver.
-> 
-> Tested using "modetest -P" on an MT8195.
-> 
-> Signed-off-by: Justin Green <greenjustin@chromium.org>
+Add support of SOF on MediaTek MT8188 SoC.
+MT8188 ADSP integrates with a single core Cadence HiFi-5 DSP.
+The IPC communication between AP and DSP is based on shared DRAM and
+mailbox interrupt.
 
-Hello Justin,
+The change in the mt8186.h is compatible on both mt8186 and
+mt8188. The register controls booting the DSP core with the
+default address or the user specified address. Both mt8186
+and mt8188 should boot with the user specified boot in the driver.
+The usage of the register is the same on both SoC, but the
+control bit is different on mt8186 and mt8188, which is bit 1 on mt8186
+and bit 0 on mt8188. Configure the redundant bit has noside effect
+on both SoCs.
 
-this commit does not apply against next-20230110 because of your own AFBC support
-addition :-)
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Reviewed-by: Péter Ujfalusi <peter.ujfalusi@linux.intel.com>
+Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Reviewed-by: Ranjani Sridharan <ranjani.sridharan@linux.intel.com>
+---
+ sound/soc/sof/mediatek/mt8186/mt8186.c | 17 +++++++++++++++++
+ sound/soc/sof/mediatek/mt8186/mt8186.h | 10 +++++++++-
+ 2 files changed, 26 insertions(+), 1 deletion(-)
 
-Can you please rebase and send a v2?
-
-Cheers,
-Angelo
+diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
+index 79da25725987..af0dfc2fc4cc 100644
+--- a/sound/soc/sof/mediatek/mt8186/mt8186.c
++++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
+@@ -625,8 +625,25 @@ static const struct sof_dev_desc sof_of_mt8186_desc = {
+ 	.ops = &sof_mt8186_ops,
+ };
+ 
++static const struct sof_dev_desc sof_of_mt8188_desc = {
++	.ipc_supported_mask	= BIT(SOF_IPC),
++	.ipc_default		= SOF_IPC,
++	.default_fw_path = {
++		[SOF_IPC] = "mediatek/sof",
++	},
++	.default_tplg_path = {
++		[SOF_IPC] = "mediatek/sof-tplg",
++	},
++	.default_fw_filename = {
++		[SOF_IPC] = "sof-mt8188.ri",
++	},
++	.nocodec_tplg_filename = "sof-mt8188-nocodec.tplg",
++	.ops = &sof_mt8186_ops,
++};
++
+ static const struct of_device_id sof_of_mt8186_ids[] = {
+ 	{ .compatible = "mediatek,mt8186-dsp", .data = &sof_of_mt8186_desc},
++	{ .compatible = "mediatek,mt8188-dsp", .data = &sof_of_mt8188_desc},
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(of, sof_of_mt8186_ids);
+diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.h b/sound/soc/sof/mediatek/mt8186/mt8186.h
+index 98b2965e5ba6..5b521c60b4e3 100644
+--- a/sound/soc/sof/mediatek/mt8186/mt8186.h
++++ b/sound/soc/sof/mediatek/mt8186/mt8186.h
+@@ -52,7 +52,15 @@ struct snd_sof_dev;
+ #define ADSP_PRID			0x0
+ #define ADSP_ALTVEC_C0			0x04
+ #define ADSP_ALTVECSEL			0x0C
+-#define ADSP_ALTVECSEL_C0		BIT(1)
++#define MT8188_ADSP_ALTVECSEL_C0	BIT(0)
++#define MT8186_ADSP_ALTVECSEL_C0	BIT(1)
++
++/*
++ * On MT8188, BIT(1) is not evaluated and on MT8186 BIT(0) is not evaluated:
++ * We can simplify the driver by safely setting both bits regardless of the SoC.
++ */
++#define ADSP_ALTVECSEL_C0		(MT8188_ADSP_ALTVECSEL_C0 | \
++					 MT8186_ADSP_ALTVECSEL_C0)
+ 
+ /* dsp bus */
+ #define ADSP_SRAM_POOL_CON		0x190
+-- 
+2.18.0
 
 
