@@ -4,76 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64F97C46467
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 16:54:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3F5AC54EBC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 19:30:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z1WoXll1oXrslYI1Yn5mwpAY+zNYeA1ArYFtm8lqmcs=; b=AGuwGgsPCq8Hle1Xz4wYCbpnrN
-	Lx1vTh5htJTi3IK4vwKky0rm+7s+BIUuE2FTUtDmx/BwDAPrphxfn8EIuMTKkE2RdtkGm61bvPZed
-	weETlojXboro5gybvV6M/KtKjLea2UHNpeZXByD4BPLRZaU0M6T0vwJ0GqHGa7+Lo1vfYvt+obj44
-	dTxCKyxhbA5I/nAM4zosyL9uj2kaz4hQAsvzx8GrFDW8oKfw8+WqO6nP5SpaTH7NmngdphwNpd4ZO
-	ofZPa6q5n9qOMOwv69dgFPvhZ7RpfTXhpFeu7+KiNmtA/bGZavRl/RceQxksrSQGTnvmnQd+QfV0F
-	du1E8uaw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:References:In-Reply-To:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C0mrhoty+Ut/5gp43tpMbErT7DWwGt+4GLr6GpRkjbQ=; b=NcpfGMtaJCrjx50UVT+DyM2ivx
+	yGRdvBzrjZmt/9DN3ut4qUgvuV2FN7LEx5GfmbnPW8LjQe19a2Oc+HKpJZDb7Fddb1InsWYFdW+3Q
+	yF3cVqdGrCcjQF1eGMi+llZ/hEB6F9HV/mmFS0A/nSOi0QmQHY1roBk7VfU/AoDvGYF9z6sYGCGz6
+	KzcHFo0K2HJLTL8g6y96eNQFqD9jG6h+e54clkvCO/dsRtCtuYX3O5VLd+AKFGDyK7u2611STVRXT
+	1POtPbNfOJnP8NHGZwFc+QW9IvX/qgpeF/cljzbljTnhKyokmj4X5+nFUr0DB+y5VnZKSFpu0QfFn
+	jvqC06zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFHtB-007sRx-1y; Tue, 10 Jan 2023 16:54:17 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pFKJj-008IX7-Cj; Tue, 10 Jan 2023 19:29:51 +0000
+Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFHsq-007sMh-5h; Tue, 10 Jan 2023 16:53:57 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id AECFE614F3;
-	Tue, 10 Jan 2023 16:53:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2DB35C433D2;
-	Tue, 10 Jan 2023 16:53:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1673369635;
-	bh=8bYl3EkgXZRUNK57wCietLLP/Pf13l89ULpfbcWOHK8=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=gBiuoUKO6JWztiz5PI24eupTdl7muvcNZ3jI5I9CvnpdFIAQDT8S+a6MtCnBc3Ung
-	 pA0Dgx/N+lA/9VnhCWbCCcHG1z+klgeLBfaTHZWWSQHzHZ7UOKL6uVimN+VpF4Sxih
-	 Zb3qXdFOL7Ns7AqDIbdcQkhtZCo6W1OvvmgmrdAT7CZlA/WjVqbinrq5kwy63i37Pe
-	 JmP9Wg8YRgx1uFVx42IlO0VOCD9i6wC+Tdf95H8OFFVpxlM8cKtZGzYdjTy4nYxw4c
-	 tQH8AZUILD3s3QhalfwdMLW9iVI0mma8o3K3VdzMD8UdEDJTXSAaebjLKCYVn6vADk
-	 ZKqmaxgw9LVBg==
-From: Mark Brown <broonie@kernel.org>
-To: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
- Bard Liao <yung-chuan.liao@linux.intel.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
- Kai Vehmanen <kai.vehmanen@linux.intel.com>,
- Daniel Baluta <daniel.baluta@nxp.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chunxu Li <chunxu.li@mediatek.com>, Dan Carpenter <error27@gmail.com>,
- YC Hung <yc.hung@mediatek.com>, Wan Jiabing <wanjiabing@vivo.com>,
- Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>,
- Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- sound-open-firmware@alsa-project.org, alsa-devel@alsa-project.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-In-Reply-To: <20230110084312.12953-1-tinghan.shen@mediatek.com>
-References: <20230110084312.12953-1-tinghan.shen@mediatek.com>
-Subject: Re: [PATCH v2 0/3] Add support of MediaTek mt8188 to SOF
-Message-Id: <167336962989.1940041.17948802979012631387.b4-ty@kernel.org>
-Date: Tue, 10 Jan 2023 16:53:49 +0000
+	id 1pFKJg-008IUE-A5
+	for linux-mediatek@lists.infradead.org; Tue, 10 Jan 2023 19:29:49 +0000
+Received: by mail-lj1-x22e.google.com with SMTP id x37so13644197ljq.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Jan 2023 11:29:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=cc:to:subject:message-id:date:user-agent:from:references
+         :in-reply-to:mime-version:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=C0mrhoty+Ut/5gp43tpMbErT7DWwGt+4GLr6GpRkjbQ=;
+        b=i1+w0zA7s1qv8jt4zUE+emrBPpmeSdaUBPz0yCFo1nbNg9YBG5C9AAvS4RNrL0co/Y
+         dqSyexwdFchejaYEPv5Wfg4lBoPaVxUCnM4E9fys7J60ul6YlINQL+lxBN5cjLvLT7fy
+         V1Xpg8rHHMcctUni8OS7+vepJW4M0IZKby69k=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:user-agent:from:references
+         :in-reply-to:mime-version:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=C0mrhoty+Ut/5gp43tpMbErT7DWwGt+4GLr6GpRkjbQ=;
+        b=bjR5F7z8npCBiQV/xwvNGYGOQwngbq/VZGghy6B/HQNP3BSaqZvXurQqB/tPluXn9Q
+         PIlLAkfGM/WIYCfBeefal/MGmzUj7xTeI0NRt2uUfdwTmg/w+khZTeJvCBo3FqUr/WFO
+         h1INEN8XwKvK6xvbrLnsEEjNxCuXnAifTXTIO1S+LXC2iwAna9f7Ogjx2lfd8NCRhSl5
+         B0II7H5JbSRt6KqG0TRvyRFp9pgSq3rF/FhNYm00eP3Xdo8YumSt3bXr6UyzgNZ+Z8B3
+         O1A/uy+SKO4pbQshzeYPld8vkcgXhnRLysRibW8el07TGyu7WvXnEj8Mfzfp+9u5YOm2
+         wEHg==
+X-Gm-Message-State: AFqh2kpFU31CGXCC3txsANKQAa6CaNZZSgnxJMvCFocKFP7+LP584ydL
+	9JvbZtvIY7xl0CZ13++0RYGSVZPS3EsBORvu/9SOJA==
+X-Google-Smtp-Source: AMrXdXvM2MfqylLeD7zuAdCzxczA9kWaE3YYfn4AhNYhK9aWSE+eYRCCCjZP2dMjqs5j2772EMlAYv4Eqh5jwd26EBI=
+X-Received: by 2002:a2e:2ac4:0:b0:27f:cc03:496a with SMTP id
+ q187-20020a2e2ac4000000b0027fcc03496amr3837868ljq.359.1673378982518; Tue, 10
+ Jan 2023 11:29:42 -0800 (PST)
+Received: from 753933720722 named unknown by gmailapi.google.com with
+ HTTPREST; Tue, 10 Jan 2023 11:29:41 -0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.12-dev-8b3d1
+In-Reply-To: <Y7nV+aeFiq5aD0xU@ravnborg.org>
+References: <20230106030108.2542081-1-swboyd@chromium.org> <Y7nV+aeFiq5aD0xU@ravnborg.org>
+From: Stephen Boyd <swboyd@chromium.org>
+User-Agent: alot/0.10
+Date: Tue, 10 Jan 2023 11:29:41 -0800
+Message-ID: <CAE-0n50QOv_+j1Pe19xKj4Cx2Y5_Ak5Kt68UBJuZt10D-jQ44g@mail.gmail.com>
+Subject: Re: [PATCH] drm/panel: boe-tv101wum-nl6: Ensure DSI writes succeed
+ during disable
+To: Sam Ravnborg <sam@ravnborg.org>
+Cc: Thierry Reding <thierry.reding@gmail.com>, linux-kernel@vger.kernel.org, 
+	patches@lists.linux.dev, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	yangcong <yangcong5@huaqin.corp-partner.google.com>, 
+	Douglas Anderson <dianders@chromium.org>, Jitao Shi <jitao.shi@mediatek.com>, 
+	Rob Clark <robdclark@chromium.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_085356_317477_7E492E29 
-X-CRM114-Status: GOOD (  15.87  )
+X-CRM114-CacheID: sfid-20230110_112948_404933_C47FBDDE 
+X-CRM114-Status: GOOD (  26.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,47 +90,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 10 Jan 2023 16:43:09 +0800, Tinghan Shen wrote:
-> Add support of MediaTek mt8188 SoC DSP to SOF.
-> The sof driver patches in this series are taken from
-> thesofproject/linux/tree/topic/sof-dev-rebase.
-> 
-> Tinghan Shen (3):
->   dt-bindings: dsp: mediatek: Add mt8188 dsp compatible
->   ASoC: SOF: mediatek: Support mt8188 platform
->   ASoC: SOF: mediatek: Provide debugfs_add_region_item ops for core
-> 
-> [...]
+Quoting Sam Ravnborg (2023-01-07 12:28:41)
+> On Thu, Jan 05, 2023 at 07:01:08PM -0800, Stephen Boyd wrote:
+> > The unprepare sequence has started to fail after moving to panel bridge
+> > code in the msm drm driver (commit 007ac0262b0d ("drm/msm/dsi: switch to
+> > DRM_PANEL_BRIDGE")). You'll see messages like this in the kernel logs:
+> >
+> >    panel-boe-tv101wum-nl6 ae94000.dsi.0: failed to set panel off: -22
+> >
+> > This is because boe_panel_enter_sleep_mode() needs an operating DSI link
+> > to set the panel into sleep mode. Performing those writes in the
+> > unprepare phase of bridge ops is too late, because the link has already
+> > been torn down by the DSI controller in post_disable, i.e. the PHY has
+> > been disabled, etc. See dsi_mgr_bridge_post_disable() for more details
+> > on the DSI .
+> >
+> > Split the unprepare function into a disable part and an unprepare part.
+> > For now, just the DSI writes to enter sleep mode are put in the disable
+> > function. This fixes the panel off routine and keeps the panel happy.
+> >
+> > My Wormdingler has an integrated touchscreen that stops responding to
+> > touch if the panel is only half disabled too. This patch fixes it. And
+> > finally, this saves power when the screen is off because without this
+> > fix the regulators for the panel are left enabled when nothing is being
+> > displayed on the screen.
+>
+> The pattern we use in several (but not all) panel drivers are that
+> errors in unprepare/disable are logged but the function do not skip
+> the remainder of the function. This is to avoid that we do not disable
+> power supplies etc.
 
-Applied to
+Ah that would have made it so I didn't see a problem. But I wonder if
+the panel gets borked if you don't disable it via DSI writes before
+yanking the power?
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+>
+> For this case we could ask ourself if the display needs to enter sleep
+> mode right before we disable the regulator. But if the regulator is
+> fixed, so the disable has no effect, this seems OK.
 
-Thanks!
+What do you mean by fixed?
 
-[1/3] dt-bindings: dsp: mediatek: Add mt8188 dsp compatible
-      commit: e15ec6892832d586069ce575c222366b94ad6a5e
-[2/3] ASoC: SOF: mediatek: Support mt8188 platform
-      commit: 6b43538f0698695fba9aa0c0b29a80c555cf1b63
-[3/3] ASoC: SOF: mediatek: Provide debugfs_add_region_item ops for core
-      commit: 6fa8c0732bff8e0ab794736837b25dc7ac38cd54
+>
+> Please fix the unprepare to not jump out early, on top of or together
+> with the other fix.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+After this patch the unprepare only bails out early if the bool
+'prepared' flag isn't set. Are you suggesting to get rid of that flag
+and unconditionally disable the regulators? Is it possible for the
+unprepare to be called multiple times without a balanced call to
+prepare?
 
