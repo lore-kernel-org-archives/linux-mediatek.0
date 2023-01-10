@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7BF3C54EBE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 06:09:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C5E0C54EBE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 06:15:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s5/tOMASlrJlrpdGZBEiIUGnY/yMA8EeWTUgOk0cPbU=; b=1Bd7gvwz6e91UKzZSDNLTYc4qO
-	h2Lht1oD0b4vjV9Of+7r9TYe2RgTat8EEuoH0vSnvpjfTeBnQEG9e0bCOVm3x8/3440StLkFXd2Cb
-	Zt5jgTt471Anniz2GXcxfiPL3FNy4fvrMLZY2v1kdH7QltBtEEPFhVzNFXNYeyj4FE7mNtsu2BmQ+
-	3+qwSJNC9S6h/1ubtvz7q5PKxTSee3pbTHiYZ4i6zZn29telL5e900BgrVY/+XXZaeLJH99ksRDdO
-	oWSuprcBXVYlk7zvauL59GUjpzMsuBa6mCvZEuSi+LCAyCkA4tBpzkTgawrA+biSFLBlEPEj2jHTA
-	1B7vTvQQ==;
+	bh=nWLgk4eMZAsD/bVVJsuHq4USM6+AlpxQ1BjwEy3BOtI=; b=BaD3UnTa0HHAbDxZ9vpHf42q/U
+	agXfl3AoBQL1qDzMGc297c6EKK7UMladRrP2y5KXPS2HNrnms0mQqaauiUq7DW8V90rUj8F+PgSIq
+	J9ivWQRFAUq7tI6W0UOWCqYDkC6Idzp6WdTKv6v+HNNyXAhRx5uTpvEEJJD0rKua5u0PJGcdCUA5e
+	tDdVwFyWaDq6H0APNtrgzpOfwHQ6NcWtMP/r9aODu2ErmcgeDgYLRDN9J9cNepEk30hPrxzx1zzWI
+	2r2ZTPwycv+Tqp0bg0UyCpxw7XTgnWMh0l8zFcWF90DNFvH9aEq9FGB3w/o18vIGZ2HSy8jWpbl1Y
+	KRXN4i3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pF7pH-005Qp3-W6; Tue, 10 Jan 2023 06:09:36 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pF7vF-005RrO-NN; Tue, 10 Jan 2023 06:15:45 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pF7pE-005QoB-Ry; Tue, 10 Jan 2023 06:09:34 +0000
-X-UUID: 95d9ad4c70bb44efae869521b2e74d85-20230109
+	id 1pF7vC-005RqF-Q8; Tue, 10 Jan 2023 06:15:44 +0000
+X-UUID: 33636c6090ae11ed9febb318cfc39896-20230109
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=s5/tOMASlrJlrpdGZBEiIUGnY/yMA8EeWTUgOk0cPbU=;
-	b=JCSBlMIYEOkUjVnVIBGoSKm0ZAfp/jJOo7IkIy3urCgzMujPXuXXpCrCfN6tIXlNLSO3EwYa+QdZyaH3DZjudaytDiE6E++PEZGAv3XwLkeosoDMfQEiNSCaOV7wslSFvMea+W3LkNbaj+zRCw/fEB8NPWvFUuEhUYAmwxRXP1Q=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=nWLgk4eMZAsD/bVVJsuHq4USM6+AlpxQ1BjwEy3BOtI=;
+	b=AjoFMeWjSTcaoplCjp0Nj/sQ/wFeU1vDV8nmxX7Cu7KTN8PDLJxaCQv8MiAjiUOO7T+a4gcpctuHz7LD3RzPrxH0pgEfRcL3twUSHHC7mqYTs/fh+NnciZ9sxcnG7C+zMS8moVa3BkydKnB1JJcQDdC5IwAA/FXyPN9kodytpig=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:cf8170e9-0dfa-4f54-a40d-fbe0a7e4eee6,IP:0,U
+X-CID-O-INFO: VERSION:1.1.17,REQID:9d13638f-a14f-4c92-8ff5-01987c198403,IP:0,U
 	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
 	:release,TS:-5
-X-CID-META: VersionHash:543e81c,CLOUDID:e57b5bf5-ff42-4fb0-b929-626456a83c14,B
+X-CID-META: VersionHash:543e81c,CLOUDID:31053254-dd49-462e-a4be-2143a3ddc739,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0
-X-UUID: 95d9ad4c70bb44efae869521b2e74d85-20230109
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-CID-BVR: 0,NGT
+X-UUID: 33636c6090ae11ed9febb318cfc39896-20230109
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <xinlei.lee@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 107853615; Mon, 09 Jan 2023 23:06:07 -0700
+	with ESMTP id 886996971; Mon, 09 Jan 2023 23:15:37 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 10 Jan 2023 13:55:02 +0800
+ 15.2.792.15; Tue, 10 Jan 2023 13:55:00 +0800
 Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Tue, 10 Jan 2023 13:55:01 +0800
+ 15.2.792.15 via Frontend Transport; Tue, 10 Jan 2023 13:54:59 +0800
 From: <xinlei.lee@mediatek.com>
 To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
 	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>,
@@ -57,9 +57,9 @@ CC: <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Xinlei Lee
 	<xinlei.lee@mediatek.com>
-Subject: [PATCH v2 3/3] drm/panel: boe-tv101wum-nl6: Fine tune the panel power sequence
-Date: Tue, 10 Jan 2023 13:54:53 +0800
-Message-ID: <1673330093-6771-4-git-send-email-xinlei.lee@mediatek.com>
+Subject: [PATCH v2 2/3] drm/panel: boe-tv101wum-nl6: Reduce lcm_reset to send initial code time
+Date: Tue, 10 Jan 2023 13:54:52 +0800
+Message-ID: <1673330093-6771-3-git-send-email-xinlei.lee@mediatek.com>
 X-Mailer: git-send-email 2.6.4
 In-Reply-To: <1673330093-6771-1-git-send-email-xinlei.lee@mediatek.com>
 References: <1673330093-6771-1-git-send-email-xinlei.lee@mediatek.com>
@@ -67,8 +67,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230109_220932_942447_992D1565 
-X-CRM114-Status: GOOD (  12.45  )
+X-CRM114-CacheID: sfid-20230109_221542_868597_0F7100F1 
+X-CRM114-Status: GOOD (  11.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,46 +85,29 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Xinlei Lee <xinlei.lee@mediatek.com>
 
-For "boe,tv105wum-nw0" this special panel, it is stipulated in the 
-panel spec that MIPI needs to keep the LP11 state before the 
-lcm_reset pin is pulled high.
+Since the panel spec stipulates that the time from lcm_reset to DSI to
+send the initial code should be greater than 6ms and less than 40ms,
+so reduce the delay before sending the initial code and avoid panel
+exceptions.
 
+Fixes: a869b9db7adf ("drm/panel: support for boe tv101wum-nl6 wuxga dsi video mode panel")
 Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
 ---
- drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
-index f0093035f1ff..67df61de64ae 100644
+index 857a2f0420d7..f0093035f1ff 100644
 --- a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
 +++ b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
-@@ -36,6 +36,7 @@ struct panel_desc {
- 	const struct panel_init_cmd *init_cmds;
- 	unsigned int lanes;
- 	bool discharge_on_disable;
-+	bool lp11_before_reset;
+@@ -780,7 +780,6 @@ static const struct panel_init_cmd inx_hj110iz_init_cmd[] = {
  };
  
- struct boe_panel {
-@@ -1261,6 +1262,10 @@ static int boe_panel_prepare(struct drm_panel *panel)
- 
- 	usleep_range(10000, 11000);
- 
-+	if (boe->desc->lp11_before_reset) {
-+		mipi_dsi_dcs_nop(boe->dsi);
-+		usleep_range(1000, 2000);
-+	}
- 	gpiod_set_value(boe->enable_gpio, 1);
- 	usleep_range(1000, 2000);
- 	gpiod_set_value(boe->enable_gpio, 0);
-@@ -1487,6 +1492,7 @@ static const struct panel_desc boe_tv105wum_nw0_desc = {
- 	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_SYNC_PULSE |
- 		      MIPI_DSI_MODE_LPM,
- 	.init_cmds = boe_init_cmd,
-+	.lp11_before_reset = true,
- };
- 
- static int boe_panel_get_modes(struct drm_panel *panel,
+ static const struct panel_init_cmd boe_init_cmd[] = {
+-	_INIT_DELAY_CMD(24),
+ 	_INIT_DCS_CMD(0xB0, 0x05),
+ 	_INIT_DCS_CMD(0xB1, 0xE5),
+ 	_INIT_DCS_CMD(0xB3, 0x52),
 -- 
 2.18.0
 
