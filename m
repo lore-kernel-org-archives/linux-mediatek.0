@@ -4,81 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E614C46467
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 14:21:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 751C1C54EBC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 16:54:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=liyTD8kZN+VJiroRLr8l9K3r5/CB+eOjRyoY0GEnNto=; b=GZVJ3rgH+YAecvDZ+FKa3DZp/m
-	I5bGSB0XuqVsnmcqINF3Jvun24u5D5/sUepwh8mFVcYOY3lv9HgJHtwVDHg9YU4FkE/apsAoc/137
-	I6cUdNSC3XMZLHBNreAvWEv10GGjkruiF0ah+8EblvR0MBQeepB/ty+Fu1gNA2wXz+wRGVbKd4WYr
-	bnpcd2aAeFCluZRQORq6+nYME/RdqeEDM9TJi6PuH0TQMwbhRkTUvE6Kunm+XnixklPaFaDOGoFmd
-	E+N0Duhs2BVVj+9ROGwi4eriEY3lyFemP8yUXoMeuYeQsjTxKYubZ8Ym0lAM8+SuMKp24AL3Uu0/J
-	A1tzK7YQ==;
+	bh=0RZKGG1WZzbZG3eKxFkBZDY9293VFjXLTXFMuSP/PY4=; b=Z9meovoqsAR4ktFK/NvbyatEmV
+	LKOiQnjGBktRf0KouvQKi7ReKIHHIewcmmOAtn+oY2EOFotd4HMj/WR8I6UTz6hp4xap6CVPbr1Mq
+	BUczJ7Ufzi/aHKL7dRUp7IQME3JQ1h2BkU/BaPLhEykKbS/BByKYYw+wliYRL5PGBpo5fnwkox30y
+	NZT+LN2ZeA9/pa6g9CeAO/1jFilB47upQrd5ZZSAmThv5NiT9dm0NL+pq+6Lx7agubjMLEuSGwrok
+	WtdFqD/t7mZjxlx6gSPEp2G3DkOYbjCTLKMi/n42+B3varoqBm5FkqW36fPKfrqHCXKrA87K0jaHg
+	Lz+6AKCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFFVO-007HNz-E2; Tue, 10 Jan 2023 14:21:34 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1pFHt2-007sOo-0G; Tue, 10 Jan 2023 16:54:08 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFFVA-007HEp-JZ
-	for linux-mediatek@lists.infradead.org; Tue, 10 Jan 2023 14:21:22 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id ay40so8912623wmb.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Jan 2023 06:21:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=liyTD8kZN+VJiroRLr8l9K3r5/CB+eOjRyoY0GEnNto=;
-        b=Es3Z1g+oh8f+c06foHQ1GV+ZKr97m8fGyY0/oPZpjfwDZQrLcUp0vyNSMLxjekUuej
-         T3bgHP+pM/83eBnqgMUR/PtbGhXWm7rHW/KJ0vEtEOtnG7C/cglsv3d/QNIuYkgEjm7i
-         evHiyk0pYU/RSuLDP2DZ29SM2JwWGTKzgN6fGyuIgViqeJB0dGwoX+KWu7sDFnVvEmtb
-         jcpTOXerKhAZBWG92EccZBbshvXP1Ch7fGPcRb1WksetqOLl0aIa6wBbceaqiFZSG4GD
-         jrygSV+g5ggEEot9jbCbgcJxyfTyJUhzSMfo+h44AN/y3+R0cxa6pdUGVgozEuxqY4Q4
-         BtOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=liyTD8kZN+VJiroRLr8l9K3r5/CB+eOjRyoY0GEnNto=;
-        b=5fmy/dZ/lYF3UCtHJZRpiwbB3ZuzV2umBYmrC4hwvgy0xA9ScqyvD1X/0l8L9qbPou
-         5FtDDnZt28yjFl7ToTPunG07Lo82zS/LO2G5Dprgj79pwGCoWP3e+33Fc3C/i5ecGNG0
-         hGu5KUh+v1RcckRL+FA+7GYRhSyeIICpCaIKC0h9KQpOuISC3/iKOsOs6RgFMxkLUvSN
-         enp3IBr7vcih2x1lguUkFfmqm/2PoENOBtfiwa/C1QOEwmgZeLhpveXquCCKa3kWjo+0
-         iYtZnyi8vzC8Sy7U9FMXxllUfpi/FdMWd/R+ZG/IYZAydYOSfa17fDE6xFRTUdJjuF4V
-         6uzQ==
-X-Gm-Message-State: AFqh2kpODTlG7yEQvnYu10SkNWxAcdZ/mKd7IqPgzsRY4lLRe7xt7lg6
-	fCLBhuym5SIfPtWDIypLtPtH/g==
-X-Google-Smtp-Source: AMrXdXuNjH+i9dFOXqBb7TEvhlDjx16HuNabSp7vHXWViPs7mGvrXmbrr8HmiRDwYR0s3uQkiCY93Q==
-X-Received: by 2002:a05:600c:2844:b0:3da:4e:8dfe with SMTP id r4-20020a05600c284400b003da004e8dfemr183826wmb.38.1673360477384;
-        Tue, 10 Jan 2023 06:21:17 -0800 (PST)
-Received: from arrakeen.starnux.net ([2a01:e0a:982:cbb0:8261:5fff:fe11:bdda])
-        by smtp.gmail.com with ESMTPSA id f15-20020a7bcd0f000000b003d9a71ee54dsm14640561wmj.36.2023.01.10.06.21.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Jan 2023 06:21:16 -0800 (PST)
-From: Neil Armstrong <neil.armstrong@linaro.org>
-To: Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	id 1pFHso-007sM8-EM; Tue, 10 Jan 2023 16:53:56 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sin.source.kernel.org (Postfix) with ESMTPS id 6C22ACE1876;
+	Tue, 10 Jan 2023 16:53:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0B11C433F1;
+	Tue, 10 Jan 2023 16:53:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1673369629;
+	bh=SollqPHgY5I7lTwviKqNUa8+yrbzo1QLNEo3j1yUsrE=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=Pcx4YAWaJufTQxXy4GmIV8Y1noj4cbwA15h92+yCwAy6+iAD1g4NCRKi+Pc/MhOrA
+	 9fZmAqK66hDCjjocSouT92wlgPUXT2FnN45SDl130vtR53DfSKC1oQEkT0Lx7E1SL1
+	 ltLqOXveg2pUrYZePevnJZCfBbzXF9kpl0BYd47uoGh72YpWX86DYd0ZURIMAlMzGC
+	 V8yVDpk/rzieN+Y7QR7ojyEB6u6BY/t2e41t2iEnUI/PFt4CbIk+sm+jdpd1KO99+1
+	 TA1i1vL7vlBrlVJ3Bpm+HFBdpWcpCrAlBH+y7CN7NvNMBTM8gXCBdNIY7wXWVZeel0
+	 OazQiUHiDX+Dw==
+From: Mark Brown <broonie@kernel.org>
+To: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Miles Chen <miles.chen@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20230110031242.4917-1-miles.chen@mediatek.com>
-References: <20230110031242.4917-1-miles.chen@mediatek.com>
-Subject: Re: [PATCH] firmware: meson_sm: stop using 0 as NULL pointer
-Message-Id: <167336047652.1961574.14299477052580291272.b4-ty@linaro.org>
-Date: Tue, 10 Jan 2023 15:21:16 +0100
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+ Bard Liao <yung-chuan.liao@linux.intel.com>,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+ Daniel Baluta <daniel.baluta@nxp.com>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>, Chunxu Li <chunxu.li@mediatek.com>,
+ Dan Carpenter <error27@gmail.com>, YC Hung <yc.hung@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>,
+ Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ sound-open-firmware@alsa-project.org, alsa-devel@alsa-project.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+In-Reply-To: <20221222072150.10627-1-tinghan.shen@mediatek.com>
+References: <20221222072150.10627-1-tinghan.shen@mediatek.com>
+Subject: Re: [PATCH v1 0/3] Add support of MediaTek mt8188 to SOF
+Message-Id: <167336962456.1940041.13852570954333682480.b4-ty@kernel.org>
+Date: Tue, 10 Jan 2023 16:53:44 +0000
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.11.1
+X-Mailer: b4 0.12-dev-8b3d1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_062120_654253_66CBEF20 
-X-CRM114-Status: GOOD (  10.67  )
+X-CRM114-CacheID: sfid-20230110_085354_906366_1E16DAAF 
+X-CRM114-Status: GOOD (  15.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,40 +87,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Tue, 10 Jan 2023 11:12:42 +0800, Miles Chen wrote:
-> Use NULL for NULL pointer to fix the following sparse warning:
-> drivers/firmware/meson/meson_sm.c:85:24: sparse: warning: Using plain integer as NULL pointer
+On Thu, 22 Dec 2022 15:21:47 +0800, Tinghan Shen wrote:
+> Add support of MediaTek mt8188 SoC DSP to SOF.
+> The sof driver patches in this series are taken from
+> thesofproject/linux/tree/topic/sof-dev-rebase.
 > 
+> Tinghan Shen (3):
+>   dt-bindings: dsp: mediatek: Add mt8188 dsp compatible
+>   ASoC: SOF: mediatek: Support mt8188 platform
+>   ASoC: SOF: mediatek: Provide debugfs_add_region_item ops for core
 > 
+> [...]
 
-Thanks, Applied to https://git.kernel.org/pub/scm/linux/kernel/git/amlogic/linux.git (v6.3/drivers)
+Applied to
 
-[1/1] firmware: meson_sm: stop using 0 as NULL pointer
-      https://git.kernel.org/amlogic/c/fcdc53aceed413dce3ef1d0166a8e9348d5a9c94
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-These changes has been applied on the intermediate git tree [1].
+Thanks!
 
-The v6.3/drivers branch will then be sent via a formal Pull Request to the Linux SoC maintainers
-for inclusion in their intermediate git branches in order to be sent to Linus during
-the next merge window, or sooner if it's a set of fixes.
+[1/3] dt-bindings: dsp: mediatek: Add mt8188 dsp compatible
+      commit: e15ec6892832d586069ce575c222366b94ad6a5e
+[2/3] ASoC: SOF: mediatek: Support mt8188 platform
+      commit: 6b43538f0698695fba9aa0c0b29a80c555cf1b63
+[3/3] ASoC: SOF: mediatek: Provide debugfs_add_region_item ops for core
+      commit: 6fa8c0732bff8e0ab794736837b25dc7ac38cd54
 
-In the cases of fixes, those will be merged in the current release candidate
-kernel and as soon they appear on the Linux master branch they will be
-backported to the previous Stable and Long-Stable kernels [2].
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-The intermediate git branches are merged daily in the linux-next tree [3],
-people are encouraged testing these pre-release kernels and report issues on the
-relevant mailing-lists.
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-If problems are discovered on those changes, please submit a signed-off-by revert
-patch followed by a corrective changeset.
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/amlogic/linux.git
-[2] https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
-[3] https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
--- 
-Neil
+Thanks,
+Mark
 
