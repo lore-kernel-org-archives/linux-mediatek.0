@@ -4,94 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47FFFC54EBE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 08:44:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 776DAC54EBE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 09:02:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=WFDK6HF3F9x/8+wn/8Ji4fbDarvgIgMr9kjOz7e90ro=; b=doX1o7rfK771EDZdEZzdiLHZjl
-	F1NMQQoToogglvJe7TQgVwR/HounpNfjHrD9vSvPP++zSHP8dlS/wZVSfL9dihKCo26rl5NvkYPp9
-	R1r/V1vXE4NCRZU2nmWBW8jHIlKHYpCny2nLDUj1vfP4BduUWnSQ7fkoVEXjI/uM6OFH0/MxUZBI6
-	S2WNuQenkbVbhZv7HbJmePVNOQi++xRX5du1JHDjub/dQrrtzzKOAMOOSyZU0UX5WOVSzZIUD33v6
-	q88pBjlPgO5WQfxWWG+VOV8RLCvshicTnlP7ANCz4aDkPwxRmUdSns4BY0N4cEV+Imt/Nl+jrFLFV
-	qbCOq1LA==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=as9LyHWt0XLFexRj7GpXdvsUjobsRYjzSupS3fQCl9U=; b=HbOhGKoD6mX13w7AS2dD2zCzKA
+	I/feQEIvulKjSB8qoDRtyRx7w+vRltH+XM2nCZ0vp9bDObvuscAZLAVrFtTkGjUPqnpyh4VBBfrBJ
+	fJT6FVaxN+MbdVRQbAJR74cmIdzQ+74RGNSCmeAw29Ucf9x8FOfxCYIkgzDc7AxvJu/2n94mFNXKz
+	tf1LZrQiQ21ExCFuGmaJYIUuV2MZPtdMGtumST6vH2aZTgTiyubwc6dM/db7ipfpBnYvIVGSzxvUd
+	Os+y0lZEgQTrAC5aHGHNagKWIGMtvAXdtE1TQUvxl4SlEflPog9t2MxX3XpD95UXZLnqr8eoVqeA+
+	GVyTJP9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFAFO-005sVN-4P; Tue, 10 Jan 2023 08:44:42 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pFAWK-005ych-S4; Tue, 10 Jan 2023 09:02:12 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFAEm-005sEr-4J; Tue, 10 Jan 2023 08:44:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=WFDK6HF3F9x/8+wn/8Ji4fbDarvgIgMr9kjOz7e90ro=; b=bRlU6jNIWUZsiyBmeG+AvzIXxe
-	B/FmXiiGUlFkLT1jhDtCQNq8GKCugCAZBwAvslSpt9UkSQZfuJO+Bsf6w7axskhw0h9o/6J6AG5va
-	yVOGSBDEJ7GCRkb6iwfh3yfe/QiUasghP5vDkKAtARe1Vi8JhU6dNCi5gR+jig6YmH1FlVG+vhkHJ
-	MTxzdRzc+FNLQLgV+c8XNDwMyn2VXO4TsJgYEftxvIe+MS5aG1yWyfTGS1nei3hODyZJ+BfpUnMu/
-	5buUFZA+lU5DeIdxL1rhqHKXE4lW3P8/SN1SoB4RChyMhLLZ3EYHn+N8qAzYJXMDaZbN9cr0RtKUX
-	XH0RSrBg==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pFAEX-0033Zh-20;
-	Tue, 10 Jan 2023 08:43:54 +0000
-X-UUID: e713c36890c211eda08d4d6090ec5a5c-20230110
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=WFDK6HF3F9x/8+wn/8Ji4fbDarvgIgMr9kjOz7e90ro=;
-	b=rwJLPa6ZuK4j5a9JlKsomShktI2MV6zozaCJNl0BWcQrmYdSLNR1cSI0/ObkuZSIScwAv8qSLD4MXgn6WwVHASJxCdsJgYCLnItXhC8J446yA7CysIgk9SUoOSQxncD1+q4w123FSFzoZuUWWVVXRAAPlO2iekg/ct+JK8S/jIs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:e13ee938-a95a-4e2f-9170-b893224602ac,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:543e81c,CLOUDID:a0683754-dd49-462e-a4be-2143a3ddc739,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0
-X-UUID: e713c36890c211eda08d4d6090ec5a5c-20230110
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1858416146; Tue, 10 Jan 2023 01:43:49 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 10 Jan 2023 16:43:13 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Tue, 10 Jan 2023 16:43:13 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Pierre-Louis Bossart
-	<pierre-louis.bossart@linux.intel.com>, Liam Girdwood <lgirdwood@gmail.com>,
-	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, Bard Liao
-	<yung-chuan.liao@linux.intel.com>, Ranjani Sridharan
-	<ranjani.sridharan@linux.intel.com>, Kai Vehmanen
-	<kai.vehmanen@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>, Mark
- Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
-	<tiwai@suse.com>, Tinghan Shen <tinghan.shen@mediatek.com>, AngeloGioacchino
- Del Regno <angelogioacchino.delregno@collabora.com>, Chunxu Li
-	<chunxu.li@mediatek.com>, Dan Carpenter <error27@gmail.com>, YC Hung
-	<yc.hung@mediatek.com>, Wan Jiabing <wanjiabing@vivo.com>, Allen-KH Cheng
-	<Allen-KH.Cheng@mediatek.com>
-CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<sound-open-firmware@alsa-project.org>, <alsa-devel@alsa-project.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2 0/3] Add support of MediaTek mt8188 to SOF
-Date: Tue, 10 Jan 2023 16:43:09 +0800
-Message-ID: <20230110084312.12953-1-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pFAWH-005ybh-Ts
+	for linux-mediatek@lists.infradead.org; Tue, 10 Jan 2023 09:02:11 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 24EC7660230B;
+	Tue, 10 Jan 2023 09:02:05 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1673341325;
+	bh=oIJ9/QBPo+xtU86fwp39bkctw5qjqzfW5/QtYhI/UrA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ZoHFvuUlrlcCMArQ3GE28bgB1BiUBSZDanmJGf7TWfHY4HaHXUcudf10Rd93by/kd
+	 wNt3BBx48a8dJafvq5xB6miHFUNTlPoxz/F7ao8C73nHZ9M+E/xDUz0vYPerumNN68
+	 DtE4SFGZGw2dcjFtslquD0T19onZDeDPPR2I94vtK5wJBq8ZxSOcvetqyzG/xJejpi
+	 5Y+cqlGuvMJ8jQHvERWSYSTc706+gVaIJTzTtig3ctZa5fwil4+/jo5J6i9ffWpJAZ
+	 IEuiabxTn9aLxWEfO1HD9AHFy5PIRnK6bBM351pG7ByKNLUHT/bPqgNk+ePACC74NA
+	 EiNs5iHBL0x0Q==
+Message-ID: <fc950d71-29da-dce6-3c81-578362a78f78@collabora.com>
+Date: Tue, 10 Jan 2023 10:02:02 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [RESEND PATCH] drm/mediatek: Add support for AR30 and BA30
+To: Justin Green <greenjustin@chromium.org>,
+ linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org
+Cc: jason-jh.lin@mediatek.com, justin.yeh@mediatek.com,
+ Chen-Yu Tsai <wenst@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ p.zabel@pengutronix.de, airlied@linux.ie, matthias.bgg@gmail.com,
+ daniel@ffwll.ch, Daniel Stone <daniel@fooishbar.org>
+References: <CAHC42ReC+pkKxkHdagfpQ5-hLWGAad5nWtdd4uZTDhuQz_bwMA@mail.gmail.com>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAHC42ReC+pkKxkHdagfpQ5-hLWGAad5nWtdd4uZTDhuQz_bwMA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_084350_872239_8431EEE6 
-X-CRM114-Status: GOOD (  10.63  )
+X-CRM114-CacheID: sfid-20230110_010210_118202_CCB933A7 
+X-CRM114-Status: UNSURE (   7.12  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,22 +78,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support of MediaTek mt8188 SoC DSP to SOF.
-The sof driver patches in this series are taken from
-thesofproject/linux/tree/topic/sof-dev-rebase.
+Il 09/01/23 19:26, Justin Green ha scritto:
+> Add support for AR30 and BA30 pixel formats to the Mediatek DRM driver.
+> 
+> Tested using "modetest -P" on an MT8195.
+> 
+> Signed-off-by: Justin Green <greenjustin@chromium.org>
 
-Tinghan Shen (3):
-  dt-bindings: dsp: mediatek: Add mt8188 dsp compatible
-  ASoC: SOF: mediatek: Support mt8188 platform
-  ASoC: SOF: mediatek: Provide debugfs_add_region_item ops for core
+Hello Justin,
 
- .../bindings/dsp/mediatek,mt8186-dsp.yaml     |  4 +++-
- sound/soc/sof/mediatek/mt8186/mt8186.c        | 20 +++++++++++++++++++
- sound/soc/sof/mediatek/mt8186/mt8186.h        | 10 +++++++++-
- sound/soc/sof/mediatek/mt8195/mt8195.c        |  1 +
- 4 files changed, 33 insertions(+), 2 deletions(-)
+this commit does not apply against next-20230110 because of your own AFBC support
+addition :-)
 
--- 
-2.18.0
+Can you please rebase and send a v2?
+
+Cheers,
+Angelo
 
 
