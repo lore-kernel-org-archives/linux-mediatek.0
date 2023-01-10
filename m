@@ -4,101 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31E55C63797
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 12:49:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2068CC54EBE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 13:32:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LtmIDGWw27oWIDOH8I1+LwSysyCQMzRcxJv1yEQeQLc=; b=ZcDnFkGYtWQsPIQTn4Lw5qduhf
-	HPzmnm5zLVNHLEUKQzh4XPWyiyzwWZ41Tj1IqW6OFMO4FD7SWYbZA0+bJUuhBgGGu5HoG5zrJoD4B
-	aArI77Dzfi3fnpr65tm1GrZEN/NAZ2m4BESyeVrI74ChJF2m3kcYLYuOa0/3MpC3jbpe33QFBcI1h
-	sDYfHTO3kBcfH7d0RgDAJM79T0ohf1LcXiXP8654RvUn9c5nj9WPWI0eSbRSwPr4aKtz6l5QjcwPs
-	YwZMAQREVeU3LO8xFJL//Nk4lnuUzhkAmWaeuZj3GZJC6Tw3JAOpCz3qG0ZZ8pSs35c1llfWRivhe
-	Yp5qpRfA==;
+	bh=dILAv4D9643VkTO7OSvwa6WeqMpOXyQnO1Ko8xiwEyg=; b=CXdiTgrVK0DO+K2hwLlLjAnrKI
+	bpWsJcghJSiwkfdZn2xytq/3HcHsT20pdJCC88ls3pb88NxXfAhEj9FW5xomOA/TOlMNMXerVIZYj
+	JRVBkzEwDYWbLXD6++zCo0LhP8HF+hBUSXnNiaRuwm5eF1nhjzVi+WgwRJGtVZtBKVMQNq2igH/qO
+	ZQ+BXOMXUCX4Y4scIkdtcdNArtWj0SFeplNVNfEwnuinTdTfLB61g2iTpjMhsGF5CLAQ8sFayelEY
+	Y5XjNfNT9c3HpMxyqltrwI/m+Qe4LbS1jssr1t/Stn+2asQM+xBvJd5qqc2x+pTh4u8ZdtqWdgJ6t
+	0CLFDncQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFE4T-006wNW-UJ; Tue, 10 Jan 2023 12:49:41 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1pFEjO-0073ie-TT; Tue, 10 Jan 2023 13:31:58 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFE4P-006wLy-6Z
-	for linux-mediatek@lists.infradead.org; Tue, 10 Jan 2023 12:49:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1673354975;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=LtmIDGWw27oWIDOH8I1+LwSysyCQMzRcxJv1yEQeQLc=;
-	b=Xix274QjZK36iOCJQemgohC0WVIzXJjXYMZIsmMUaqTyqIJ+xR4Psg5ADlaa6m1ZjAp/pK
-	YupNhpGFY5UmEmEMU/+gCcueLwrukEF9sgfttvdGvpcbGSAviiihEhQUa/wnZpQpQDBhFZ
-	xJ0m0qDqfrEGsdNdToLyoAQOEceNXa4=
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-562-ff571bhgO52uqXFrpwLODw-1; Tue, 10 Jan 2023 07:49:34 -0500
-X-MC-Unique: ff571bhgO52uqXFrpwLODw-1
-Received: by mail-qk1-f200.google.com with SMTP id x12-20020a05620a258c00b007051ae500a2so8639606qko.15
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Jan 2023 04:49:34 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=LtmIDGWw27oWIDOH8I1+LwSysyCQMzRcxJv1yEQeQLc=;
-        b=79WronFswwhs6yVzKznccqMKThusnsSZD+28AGzWE68Hp8fFcwW0BzbXr2MBX43nA5
-         foaUmz+m3bwXTg+WX1NKhv6tuUpuXvFnSTeCKHnAzXLuNk6VkSYO/cV8okeUwg8EcBmh
-         yd+leEmjmLlsSH6EyS92/x4OyeZKY/XEfGK0+i9aKleSdy3dmwg/eghC2G3h83X1552N
-         BScYe1o8yCvLE6ZBsre1OUnOJM/YQv0r+1udXWOoNw7H5xQRsvBla2g2dEr/4yNVtcLn
-         Xbw1c+biSZpijM9yqolDSd3gONRWBSrSvr4HMe5RSqThyRhb9TY5nH4kasD6C2VFTbA7
-         Wywg==
-X-Gm-Message-State: AFqh2kp8Yup3IV8km3IX2Q1HIBwHYudwxfGKa+kXhI/GSjkyJIrFk8nD
-	Sf7NO6J7jHcJrHV1HqGUanDGDGzzKjbbdDiT5JoYmeQboUkfUlyRHoP3YI+a+IMBXmFyt3uPGMM
-	9glIfLcPSQXKxaWRu4RsRTjZudWmNJuiy
-X-Received: by 2002:ac8:5ed4:0:b0:39c:efc8:b2a8 with SMTP id s20-20020ac85ed4000000b0039cefc8b2a8mr3571961qtx.27.1673354974185;
-        Tue, 10 Jan 2023 04:49:34 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuapLeanbK2mF2tkISFRRR7kbnBi3E797VRZF+bY3EPqOw88qp4xilDlE2/BCG9bCjL8KEtBw==
-X-Received: by 2002:ac8:5ed4:0:b0:39c:efc8:b2a8 with SMTP id s20-20020ac85ed4000000b0039cefc8b2a8mr3571931qtx.27.1673354973900;
-        Tue, 10 Jan 2023 04:49:33 -0800 (PST)
-Received: from gerbillo.redhat.com (146-241-120-128.dyn.eolo.it. [146.241.120.128])
-        by smtp.gmail.com with ESMTPSA id g19-20020a05620a40d300b006cec8001bf4sm7232697qko.26.2023.01.10.04.49.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Jan 2023 04:49:33 -0800 (PST)
-Message-ID: <161fdffccb78fca2f16f1f5c78390420f60817b3.camel@redhat.com>
-Subject: Re: [PATCH net-next v3 01/11] net: mdio: Add dedicated C45 API to
- MDIO bus drivers
-From: Paolo Abeni <pabeni@redhat.com>
-To: Michael Walle <michael@walle.cc>, Heiner Kallweit
- <hkallweit1@gmail.com>,  Russell King <linux@armlinux.org.uk>, "David S.
- Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>, Jose Abreu <Jose.Abreu@synopsys.com>, Sergey
- Shtylyov <s.shtylyov@omp.ru>, Wei Fang <wei.fang@nxp.com>, Shenwei Wang
- <shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, NXP Linux Team
- <linux-imx@nxp.com>, Sean Wang <sean.wang@mediatek.com>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Florian
- Fainelli <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-renesas-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>, Geert
- Uytterhoeven <geert+renesas@glider.be>, Vladimir Oltean
- <vladimir.oltean@nxp.com>
-Date: Tue, 10 Jan 2023 13:49:28 +0100
-In-Reply-To: <5bd7ee34ead313785951defbf3069b64d4338a45.camel@redhat.com>
-References: <20221227-v6-2-rc1-c45-seperation-v3-0-ade1deb438da@walle.cc>
-	 <20221227-v6-2-rc1-c45-seperation-v3-1-ade1deb438da@walle.cc>
-	 <5bd7ee34ead313785951defbf3069b64d4338a45.camel@redhat.com>
-User-Agent: Evolution 3.42.4 (3.42.4-2.fc35)
+	id 1pFEjE-0073f9-D9; Tue, 10 Jan 2023 13:31:50 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1A6796602D78;
+	Tue, 10 Jan 2023 13:31:43 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1673357504;
+	bh=nU+9tDyRUi5VH2nG2ng3G2MunVx5ogxNNUVZZkeyweo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=MBSFiqnFkqymXPVHM4PSJRYeKX5CShiIOTQDI+g42dl51/zC67q5KWPTHoTzsmCjx
+	 tZMZI266wArfaNginE7dSUrQfvU5war2EgRlqiK1GN72mlBTnV459UYy+JvkIWuwnD
+	 obMPwbADdt2mOKLw0jcFlc3Jrk9J6eY/jcckshSJj/50J654DmdJvC2vgJRBk5x6f5
+	 UU18clv9bw3i402F1I7qyUibC0eeCrp5wqzswMNwlVe9Bwh+NY8Q6L9zgAFuqv5WbA
+	 rAnf/1eFFWJLZJS5Errxu0r8s7/jldJbw2elAwuVrMwatiEKYxzAo79usy4ReIOB8V
+	 +yKm3hjYUxBmQ==
+Message-ID: <cba61b03-7e54-09e2-b1bd-8352f583a81b@collabora.com>
+Date: Tue, 10 Jan 2023 14:31:40 +0100
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v2 11/23] clk: mediatek: Switch to mtk_clk_simple_probe()
+ where possible
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ johnson.wang@mediatek.com, miles.chen@mediatek.com, fparent@baylibre.com,
+ chun-jie.chen@mediatek.com, sam.shih@mediatek.com, y.oudjana@protonmail.com,
+ nfraprado@collabora.com, rex-bc.chen@mediatek.com, ryder.lee@kernel.org,
+ daniel@makrotopia.org, jose.exposito89@gmail.com, yangyingliang@huawei.com,
+ pablo.sun@mediatek.com, msp@baylibre.com, weiyi.lu@mediatek.com,
+ ikjn@chromium.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, kernel@collabora.com
+References: <20221223094259.87373-1-angelogioacchino.delregno@collabora.com>
+ <20221223094259.87373-12-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5GYk2wr-UnnshT3R2uDUSn7-i5KifyJ4qDDZbptSQ9G7A@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAGXv+5GYk2wr-UnnshT3R2uDUSn7-i5KifyJ4qDDZbptSQ9G7A@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_044937_340731_00F82A9F 
-X-CRM114-Status: GOOD (  14.28  )
+X-CRM114-CacheID: sfid-20230110_053148_813885_C3284920 
+X-CRM114-Status: GOOD (  28.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,32 +84,148 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2023-01-10 at 12:16 +0100, Paolo Abeni wrote:
-> On Mon, 2023-01-09 at 16:30 +0100, Michael Walle wrote:
-> > diff --git a/include/linux/phy.h b/include/linux/phy.h
-> > index 6378c997ded5..65844f0a7fb3 100644
-> > --- a/include/linux/phy.h
-> > +++ b/include/linux/phy.h
-> > @@ -364,6 +364,11 @@ struct mii_bus {
-> >  	int (*read)(struct mii_bus *bus, int addr, int regnum);
-> >  	/** @write: Perform a write transfer on the bus */
-> >  	int (*write)(struct mii_bus *bus, int addr, int regnum, u16 val);
-> > +	/** @read: Perform a C45 read transfer on the bus */
+Il 30/12/22 06:12, Chen-Yu Tsai ha scritto:
+> On Fri, Dec 23, 2022 at 5:43 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> mtk_clk_simple_probe() is a function that registers mtk gate clocks
+>> and, if reset data is present, a reset controller and across all of
+>> the MTK clock drivers, such a function is duplicated many times:
+>> switch to the common mtk_clk_simple_probe() function for all of the
+>> clock drivers that are registering as platform drivers.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   drivers/clk/mediatek/clk-mt2701-aud.c   | 26 +++----
+>>   drivers/clk/mediatek/clk-mt2701-eth.c   | 34 +++------
+>>   drivers/clk/mediatek/clk-mt2701-g3d.c   | 56 +++-----------
+>>   drivers/clk/mediatek/clk-mt2701-hif.c   | 36 +++------
+>>   drivers/clk/mediatek/clk-mt2712.c       | 83 ++++++++-------------
+>>   drivers/clk/mediatek/clk-mt6779.c       | 42 ++++++-----
+>>   drivers/clk/mediatek/clk-mt7622-aud.c   | 49 +++----------
+>>   drivers/clk/mediatek/clk-mt7622-eth.c   | 82 ++++-----------------
+>>   drivers/clk/mediatek/clk-mt7622-hif.c   | 85 ++++-----------------
+>>   drivers/clk/mediatek/clk-mt7629-hif.c   | 85 ++++-----------------
+>>   drivers/clk/mediatek/clk-mt8183-audio.c | 19 +++--
+>>   drivers/clk/mediatek/clk-mt8183.c       | 75 ++++++++-----------
+>>   drivers/clk/mediatek/clk-mt8192-aud.c   | 25 +++----
+>>   drivers/clk/mediatek/clk-mt8192.c       | 98 ++++++++-----------------
+>>   14 files changed, 236 insertions(+), 559 deletions(-)
 > 
-> Minor nit: s/@read/@read_c45/ 
+> This looks mostly good, however ...
 > 
-> > +	int (*read_c45)(struct mii_bus *bus, int addr, int devnum, int regnum);
-> > +	/** @write: Perform a C45 write transfer on the bus */
+>> diff --git a/drivers/clk/mediatek/clk-mt2701-aud.c b/drivers/clk/mediatek/clk-mt2701-aud.c
+>> index ab13ab618fb5..1fd6d96b34dc 100644
+>> --- a/drivers/clk/mediatek/clk-mt2701-aud.c
+>> +++ b/drivers/clk/mediatek/clk-mt2701-aud.c
+>> @@ -76,6 +76,7 @@ static const struct mtk_gate_regs audio3_cg_regs = {
+>>   };
+>>
+>>   static const struct mtk_gate audio_clks[] = {
+>> +       GATE_DUMMY(CLK_DUMMY, "aud_dummy"),
+>>          /* AUDIO0 */
+>>          GATE_AUDIO0(CLK_AUD_AFE, "audio_afe", "aud_intbus_sel", 2),
+>>          GATE_AUDIO0(CLK_AUD_HDMI, "audio_hdmi", "audpll_sel", 20),
+>> @@ -138,29 +139,26 @@ static const struct mtk_gate audio_clks[] = {
+>>          GATE_AUDIO3(CLK_AUD_MEM_ASRC5, "audio_mem_asrc5", "asm_h_sel", 14),
+>>   };
+>>
+>> +static const struct mtk_clk_desc audio_desc = {
+>> +       .clks = audio_clks,
+>> +       .num_clks = ARRAY_SIZE(audio_clks),
+>> +};
+>> +
+>>   static const struct of_device_id of_match_clk_mt2701_aud[] = {
+>> -       { .compatible = "mediatek,mt2701-audsys", },
+>> -       {}
+>> +       { .compatible = "mediatek,mt2701-audsys", .data = &audio_desc },
+>> +       { /* sentinel */ }
+>>   };
+>>
+>>   static int clk_mt2701_aud_probe(struct platform_device *pdev)
+>>   {
+>> -       struct clk_hw_onecell_data *clk_data;
+>> -       struct device_node *node = pdev->dev.of_node;
+>>          int r;
+>>
+>> -       clk_data = mtk_alloc_clk_data(CLK_AUD_NR);
+>> -
+>> -       mtk_clk_register_gates(node, audio_clks, ARRAY_SIZE(audio_clks),
+>> -                              clk_data, &pdev->dev);
+>> -
+>> -       r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+>> +       r = mtk_clk_simple_probe(pdev);
+>>          if (r) {
+>>                  dev_err(&pdev->dev,
+>>                          "could not register clock provider: %s: %d\n",
+>>                          pdev->name, r);
+>> -
+>> -               goto err_clk_provider;
+>> +               return r;
+>>          }
+>>
+>>          r = devm_of_platform_populate(&pdev->dev);
+>> @@ -170,13 +168,13 @@ static int clk_mt2701_aud_probe(struct platform_device *pdev)
+>>          return 0;
+>>
+>>   err_plat_populate:
+>> -       of_clk_del_provider(node);
+>> -err_clk_provider:
+>> +       mtk_clk_simple_remove(pdev);
+>>          return r;
+>>   }
+>>
+>>   static struct platform_driver clk_mt2701_aud_drv = {
+>>          .probe = clk_mt2701_aud_probe,
+>> +       .remove = mtk_clk_simple_remove,
 > 
-> Mutatis mutandis, same thing here.
+> I'm not a big fan of mixing devres and non-devres teardown code. Automatic
+> devres teardown happens after the remove callback returns, so in this
+> case you could have child devices being unregistered that touch clocks
+> or resets that have already been unregistered and freed in the remove
+> callback.
+> 
 
-Otherwise the series LGTM. I think it would be preferable avoiding
-reposting a largish series like this for such a minor change. I think
-the series can be merged as-is and the above can be addressed with a
-follow-up patch.
+I'll add a custom remove function that calls of_platform_depopulate() and
+tears everything down manually in the correct order.
+
+Thanks for catching this one, I didn't notice at all!
+
+>>          .driver = {
+>>                  .name = "clk-mt2701-aud",
+>>                  .of_match_table = of_match_clk_mt2701_aud,
+> 
+> [...]
+> 
+>> --- a/drivers/clk/mediatek/clk-mt2712.c
+>> +++ b/drivers/clk/mediatek/clk-mt2712.c
+> 
+> [...]
+> 
+>> @@ -1482,7 +1459,11 @@ static struct platform_driver clk_mt2712_drv = {
+>>
+>>   static int __init clk_mt2712_init(void)
+>>   {
+>> -       return platform_driver_register(&clk_mt2712_drv);
+>> +       int ret = platform_driver_register(&clk_mt2712_drv);
+>> +
+>> +       if (ret)
+>> +               return ret;
+>> +       return platform_driver_register(&clk_mt2712_simple_drv);
+>>   }
+>>
+>>   arch_initcall(clk_mt2712_init);
+> 
+> Would this get cleaned up even more? I.e. have just one driver left and
+> we could have the nice *_platform_driver() macros.
+> 
+
+In the future, yes - granted that I find someone that can help with the testing,
+as I don't have any MT2712 hardware here.
+
+Not in this series though (please!).
 
 Cheers,
-
-Paolo
+Angelo
 
 
