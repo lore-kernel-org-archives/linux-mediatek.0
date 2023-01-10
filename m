@@ -4,72 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D86F2C54EBC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 12:33:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31E55C63797
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jan 2023 12:49:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FsEqrFCHbGeEmPwAyqBb/qFMf4VY8Bj/3MYM3A8KFss=; b=Uh7rC0v05mSVqi+RyMiJmWdmez
-	9Wkt4IO19mvaRLsVxrrdc0FLNup68OwYdGPe1r62O37QstO6nISNDxXmLcz4qqJxaqTPdV4mZA6BD
-	R6VmaDHOe5GQSYjW9F0dTkjbY6oZSSQpoufvrcmHwzKNmre+xbd2LiakGcxm3fWK2qRJ0EMz1vSBw
-	YnE8kJ54SgMVj3bCviCCTkf9lG/9Y2MM05CJv8cmghvPV3vgziXE2bLorWdAMeRXFVK2N4QRBAECK
-	VaJnyHcqJ1AtYM4rSxgUPUWOeA+OYpkfVa6fSIHJ0IoOqCIdTyc5IuYXuPJ0jTw+G/5D2dtM4TaQ7
-	wLrmX24A==;
+	bh=LtmIDGWw27oWIDOH8I1+LwSysyCQMzRcxJv1yEQeQLc=; b=ZcDnFkGYtWQsPIQTn4Lw5qduhf
+	HPzmnm5zLVNHLEUKQzh4XPWyiyzwWZ41Tj1IqW6OFMO4FD7SWYbZA0+bJUuhBgGGu5HoG5zrJoD4B
+	aArI77Dzfi3fnpr65tm1GrZEN/NAZ2m4BESyeVrI74ChJF2m3kcYLYuOa0/3MpC3jbpe33QFBcI1h
+	sDYfHTO3kBcfH7d0RgDAJM79T0ohf1LcXiXP8654RvUn9c5nj9WPWI0eSbRSwPr4aKtz6l5QjcwPs
+	YwZMAQREVeU3LO8xFJL//Nk4lnuUzhkAmWaeuZj3GZJC6Tw3JAOpCz3qG0ZZ8pSs35c1llfWRivhe
+	Yp5qpRfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFDoD-006tDn-FU; Tue, 10 Jan 2023 12:32:53 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pFE4T-006wNW-UJ; Tue, 10 Jan 2023 12:49:41 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFDo2-006tBX-AQ; Tue, 10 Jan 2023 12:32:43 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D5A5C6602D72;
-	Tue, 10 Jan 2023 12:32:37 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1673353959;
-	bh=fN5gyt8JffTBLNEv/AsicLPn3AAzjD6PZaav/xa60RI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=iOHUaegnR5bxW/PEQuwLF6b9sdSAJyCLscMJPjH0O6fXNmed8eX9eXHNgk+y9IU0k
-	 nSMkZSnuVtFY+kaDDYdn7zjmspq1ktsw9gamaf4B3TueM2F8/p2LqM14Gb33kjUHWS
-	 RQl14Kyho7fRaqqEVCZQ8HcJkj9dMrJy9QZKOWfLd0IkHG/lxE15SYTHzPXKHdKMAX
-	 nG0OhASg7J3Yx8BppJnnelRGSBLaK8ACc2nAlUSvBgllScLq88T5J5ZIhjRs1F3cZi
-	 J+dxjV9RFxXcDGltlOkZ2kO/tbY6zA7/PkT/hlZ7HAFjRskOygKbvaaY2q7fLxZgA7
-	 JGG6L68MKplkw==
-Message-ID: <8bc4330b-0cfe-222b-7b8a-35fd15a30a52@collabora.com>
-Date: Tue, 10 Jan 2023 13:32:34 +0100
+	id 1pFE4P-006wLy-6Z
+	for linux-mediatek@lists.infradead.org; Tue, 10 Jan 2023 12:49:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1673354975;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=LtmIDGWw27oWIDOH8I1+LwSysyCQMzRcxJv1yEQeQLc=;
+	b=Xix274QjZK36iOCJQemgohC0WVIzXJjXYMZIsmMUaqTyqIJ+xR4Psg5ADlaa6m1ZjAp/pK
+	YupNhpGFY5UmEmEMU/+gCcueLwrukEF9sgfttvdGvpcbGSAviiihEhQUa/wnZpQpQDBhFZ
+	xJ0m0qDqfrEGsdNdToLyoAQOEceNXa4=
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-562-ff571bhgO52uqXFrpwLODw-1; Tue, 10 Jan 2023 07:49:34 -0500
+X-MC-Unique: ff571bhgO52uqXFrpwLODw-1
+Received: by mail-qk1-f200.google.com with SMTP id x12-20020a05620a258c00b007051ae500a2so8639606qko.15
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Jan 2023 04:49:34 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=LtmIDGWw27oWIDOH8I1+LwSysyCQMzRcxJv1yEQeQLc=;
+        b=79WronFswwhs6yVzKznccqMKThusnsSZD+28AGzWE68Hp8fFcwW0BzbXr2MBX43nA5
+         foaUmz+m3bwXTg+WX1NKhv6tuUpuXvFnSTeCKHnAzXLuNk6VkSYO/cV8okeUwg8EcBmh
+         yd+leEmjmLlsSH6EyS92/x4OyeZKY/XEfGK0+i9aKleSdy3dmwg/eghC2G3h83X1552N
+         BScYe1o8yCvLE6ZBsre1OUnOJM/YQv0r+1udXWOoNw7H5xQRsvBla2g2dEr/4yNVtcLn
+         Xbw1c+biSZpijM9yqolDSd3gONRWBSrSvr4HMe5RSqThyRhb9TY5nH4kasD6C2VFTbA7
+         Wywg==
+X-Gm-Message-State: AFqh2kp8Yup3IV8km3IX2Q1HIBwHYudwxfGKa+kXhI/GSjkyJIrFk8nD
+	Sf7NO6J7jHcJrHV1HqGUanDGDGzzKjbbdDiT5JoYmeQboUkfUlyRHoP3YI+a+IMBXmFyt3uPGMM
+	9glIfLcPSQXKxaWRu4RsRTjZudWmNJuiy
+X-Received: by 2002:ac8:5ed4:0:b0:39c:efc8:b2a8 with SMTP id s20-20020ac85ed4000000b0039cefc8b2a8mr3571961qtx.27.1673354974185;
+        Tue, 10 Jan 2023 04:49:34 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuapLeanbK2mF2tkISFRRR7kbnBi3E797VRZF+bY3EPqOw88qp4xilDlE2/BCG9bCjL8KEtBw==
+X-Received: by 2002:ac8:5ed4:0:b0:39c:efc8:b2a8 with SMTP id s20-20020ac85ed4000000b0039cefc8b2a8mr3571931qtx.27.1673354973900;
+        Tue, 10 Jan 2023 04:49:33 -0800 (PST)
+Received: from gerbillo.redhat.com (146-241-120-128.dyn.eolo.it. [146.241.120.128])
+        by smtp.gmail.com with ESMTPSA id g19-20020a05620a40d300b006cec8001bf4sm7232697qko.26.2023.01.10.04.49.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Jan 2023 04:49:33 -0800 (PST)
+Message-ID: <161fdffccb78fca2f16f1f5c78390420f60817b3.camel@redhat.com>
+Subject: Re: [PATCH net-next v3 01/11] net: mdio: Add dedicated C45 API to
+ MDIO bus drivers
+From: Paolo Abeni <pabeni@redhat.com>
+To: Michael Walle <michael@walle.cc>, Heiner Kallweit
+ <hkallweit1@gmail.com>,  Russell King <linux@armlinux.org.uk>, "David S.
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
+ Kicinski <kuba@kernel.org>, Jose Abreu <Jose.Abreu@synopsys.com>, Sergey
+ Shtylyov <s.shtylyov@omp.ru>, Wei Fang <wei.fang@nxp.com>, Shenwei Wang
+ <shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, NXP Linux Team
+ <linux-imx@nxp.com>, Sean Wang <sean.wang@mediatek.com>, Landen Chao
+ <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Florian
+ Fainelli <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-renesas-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>, Geert
+ Uytterhoeven <geert+renesas@glider.be>, Vladimir Oltean
+ <vladimir.oltean@nxp.com>
+Date: Tue, 10 Jan 2023 13:49:28 +0100
+In-Reply-To: <5bd7ee34ead313785951defbf3069b64d4338a45.camel@redhat.com>
+References: <20221227-v6-2-rc1-c45-seperation-v3-0-ade1deb438da@walle.cc>
+	 <20221227-v6-2-rc1-c45-seperation-v3-1-ade1deb438da@walle.cc>
+	 <5bd7ee34ead313785951defbf3069b64d4338a45.camel@redhat.com>
+User-Agent: Evolution 3.42.4 (3.42.4-2.fc35)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v2 09/23] clk: mediatek: mt8173: Remove
- mtk_clk_enable_critical()
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- johnson.wang@mediatek.com, miles.chen@mediatek.com, fparent@baylibre.com,
- chun-jie.chen@mediatek.com, sam.shih@mediatek.com, y.oudjana@protonmail.com,
- nfraprado@collabora.com, rex-bc.chen@mediatek.com, ryder.lee@kernel.org,
- daniel@makrotopia.org, jose.exposito89@gmail.com, yangyingliang@huawei.com,
- pablo.sun@mediatek.com, msp@baylibre.com, weiyi.lu@mediatek.com,
- ikjn@chromium.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, kernel@collabora.com
-References: <20221223094259.87373-1-angelogioacchino.delregno@collabora.com>
- <20221223094259.87373-10-angelogioacchino.delregno@collabora.com>
- <CAGXv+5Hk8kguJ=joLXF3OrRXxGvuFAJFKYoK+y7q+wqDBS-wtQ@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5Hk8kguJ=joLXF3OrRXxGvuFAJFKYoK+y7q+wqDBS-wtQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_043242_537599_8ABCD8CB 
-X-CRM114-Status: GOOD (  19.10  )
+X-CRM114-CacheID: sfid-20230110_044937_340731_00F82A9F 
+X-CRM114-Status: GOOD (  14.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,51 +113,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 30/12/22 05:58, Chen-Yu Tsai ha scritto:
-> On Fri, Dec 23, 2022 at 5:43 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> The entire point of mtk_clk_enable_critical() is to raise the refcount
->> of some clocks so that they won't be turned off during runtime, but
->> this is the same as what the CLK_IS_CRITICAL flag does.
->>
->> Set CLK_IS_CRITICAL on all of the critical clocks and remove the
->> aforementioned function as a cleanup.
->>
->> No functional changes.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On Tue, 2023-01-10 at 12:16 +0100, Paolo Abeni wrote:
+> On Mon, 2023-01-09 at 16:30 +0100, Michael Walle wrote:
+> > diff --git a/include/linux/phy.h b/include/linux/phy.h
+> > index 6378c997ded5..65844f0a7fb3 100644
+> > --- a/include/linux/phy.h
+> > +++ b/include/linux/phy.h
+> > @@ -364,6 +364,11 @@ struct mii_bus {
+> >  	int (*read)(struct mii_bus *bus, int addr, int regnum);
+> >  	/** @write: Perform a write transfer on the bus */
+> >  	int (*write)(struct mii_bus *bus, int addr, int regnum, u16 val);
+> > +	/** @read: Perform a C45 read transfer on the bus */
 > 
+> Minor nit: s/@read/@read_c45/ 
 > 
-> Looks good to me,
+> > +	int (*read_c45)(struct mii_bus *bus, int addr, int devnum, int regnum);
+> > +	/** @write: Perform a C45 write transfer on the bus */
 > 
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-> 
-> However, if you move this patch before the previous one ...
-> 
->> ---
->>   drivers/clk/mediatek/clk-mt8173.c | 41 ++++++++++++-------------------
->>   1 file changed, 16 insertions(+), 25 deletions(-)
->>
->> diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
->> index 70cdc0719658..02231f8ba6d9 100644
->> --- a/drivers/clk/mediatek/clk-mt8173.c
->> +++ b/drivers/clk/mediatek/clk-mt8173.c
+> Mutatis mutandis, same thing here.
 
->> @@ -846,23 +852,8 @@ static const struct mtk_clk_rst_desc clk_rst_desc[] = {
->>          }
->>   };
->>
->> -static struct clk_hw_onecell_data *mt8173_top_clk_data;
->> -static struct clk_hw_onecell_data *mt8173_pll_clk_data;
-> 
-> You wouldn't have to touch these lines twice?
-> 
-
-That's true, but please,  I prefer not to, as the patches are ordered for
-eas(y/ier) bisectability in case anything happens.
+Otherwise the series LGTM. I think it would be preferable avoiding
+reposting a largish series like this for such a minor change. I think
+the series can be merged as-is and the above can be addressed with a
+follow-up patch.
 
 Cheers,
-Angelo
+
+Paolo
 
 
