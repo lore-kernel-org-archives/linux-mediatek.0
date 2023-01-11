@@ -4,64 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60E3BC61DB3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jan 2023 03:26:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FDAEC46467
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jan 2023 03:39:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mbHqNJkSdR1rCR9KdCc2/hI6jI6Bavtsh5EvXljRiSY=; b=bZUqKRtXvFV/f1H467u+S0MpG0
-	tUL5iV/OoAC5JlP4lN39dHcoPzuYQhKtS4ZqMEE1ZJbxxgRUwLBnYvDKhKHOyrY+NbRxZ6Cy+i27b
-	mbGmaFow1+a4hWHtJKbQnARils4LkKZpuEdYC4W4Ub31SLbRYLwazB58zNMvIm15ilzwpQ4lQ7C1N
-	ZG9LRyvpyceGX8DJixZny6d3nLIKnVQ6k0+pkZ2beLf79JmKF4ujNr7m8fCiMTD68PDcGehHJvmXr
-	2qL+jTpEqtx7c9KcgaPAKRFhMhyzRtNVgJg9kkEheYb4gwD4LmTuQvkCGf8sGuuZYuIYWa3/oQpIH
-	9DfSGILg==;
+	bh=mbHqNJkSdR1rCR9KdCc2/hI6jI6Bavtsh5EvXljRiSY=; b=XgIySXi2TIvXZrR9Bd/AsshbZv
+	ExalE3deX1A77CA4L1F3efpEtSppB1cgpmVXnvQjRAy5sxv8Tt0umk/6yUzD9MtuxUD97lBMZ0sZU
+	eVKIHhaQvK5of415HY7PhkKTOzaLxERT7rx41gIGl9PQAGyHhcY2VzZbhZJdUvN/C2a95WN4bFNLk
+	i5i8erbp37eDPdjEbWXonPs1pmaQSCAMeeKcOLCm5qi+4GIMGiRrYfXvZuzIUJxxIkD2oYchjy7Ok
+	V8Y4P1xrk7dNujkabXCUGNDbMSJQ5Yy6VsH0bcszUwZOkbCy6/tBA5+WeHccVhSLCvy7Fd3S4VkNr
+	GRd4CCqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFRlA-009PCP-Qo; Wed, 11 Jan 2023 03:26:40 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pFRxb-009Qol-0E; Wed, 11 Jan 2023 03:39:31 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFRl8-009PBp-EC; Wed, 11 Jan 2023 03:26:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=mbHqNJkSdR1rCR9KdCc2/hI6jI6Bavtsh5EvXljRiSY=; b=aVnV6RCIdCamBDX7GWlsi+cGqV
-	szLvIQJIBSVtYGjG0yEPs0fQsrfXfJfVI6mPY+qya9eIvifWT28a4oUnP9MPSEIw4XAyL5EEbcxbl
-	6tMmHYffiL9kQqQNHKDbztTfawm+EXSfj8XI9z0YcU1+Q8Bk6sfMKlG4Vh/cVKsc5AOs9worcbTqt
-	nmKVabsviL4ruILfPSciodYh8eo6xWbwIhEm7WC6jCHv5nKe7UG45hVBk+hi6MgPWXCImnHiWe2lk
-	uY9fhN4nHMMjqyISRbONpsE71eSBWQ3TLAv0BR+xlpj6s553pqFoK81xyot2O5kouvx3yaXCm8KQl
-	81uDyljA==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pFRkv-003W50-2J;
-	Wed, 11 Jan 2023 03:26:29 +0000
-X-UUID: b770e044915f11edbbe3f76fe852e059-20230110
+	id 1pFRxP-009QnH-SI; Wed, 11 Jan 2023 03:39:21 +0000
+X-UUID: 84d37460916111eda08d4d6090ec5a5c-20230110
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
 	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=mbHqNJkSdR1rCR9KdCc2/hI6jI6Bavtsh5EvXljRiSY=;
-	b=Yyt9KLWoTR957uQaMxj3N+z0wARJDwemIejKu7atqV+tLagg0wcHErtlbbsPw/mQP4cbSYOfzzEssGyyDQjn/BHWDlR+M20sfRi7hRswLmJamZFfvUnTMbsUwQGyQwXPnahYvDKGNHU0I4JczcQQneFs7oZntmfN/K8UMHOvfSA=;
+	b=lHZ3DVWS3hE20MhW1YGcmm/ytMX868/3s22x1dnm1B4QEPct9uq8DepnLMn5axqgxKSxz1Q4PHnvBCD1X2tDVl5UPBy2zoOVncjpwX3MDgONrFhv9DZmH7I/KeYYDVbnDpH6XoguTIFdFKc6SXFJ2U/UMboKU5Tcl1qHbGQOt3U=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:a8f18af5-6cdb-479e-8134-964ef937af35,IP:0,U
+X-CID-O-INFO: VERSION:1.1.17,REQID:301d4048-5f6e-4fd4-93c8-8a0246a87ace,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:543e81c,CLOUDID:22e275f5-ff42-4fb0-b929-626456a83c14,B
+X-CID-META: VersionHash:543e81c,CLOUDID:5f5576f5-ff42-4fb0-b929-626456a83c14,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
 X-CID-BVR: 0
-X-UUID: b770e044915f11edbbe3f76fe852e059-20230110
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+X-UUID: 84d37460916111eda08d4d6090ec5a5c-20230110
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <jian.yang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1398560568; Tue, 10 Jan 2023 20:26:20 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 1897068747; Tue, 10 Jan 2023 20:39:14 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 11 Jan 2023 11:26:13 +0800
+ 15.2.792.15; Wed, 11 Jan 2023 11:28:37 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 11 Jan 2023 11:26:12 +0800
+ 15.2.792.15 via Frontend Transport; Wed, 11 Jan 2023 11:28:36 +0800
 From: Jian Yang <jian.yang@mediatek.com>
 To: Lorenzo Pieralisi <lpieralisi@kernel.org>, Jianjun Wang
 	<jianjun.wang@mediatek.com>, Rob Herring <robh@kernel.org>, Bjorn Helgaas
@@ -76,17 +62,17 @@ CC: <linux-pci@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<jieyy.yang@mediatek.com>, <qizhong.cheng@mediatek.com>,
 	<rex-bc.chen@mediatek.com>, <david-yh.chiu@mediatek.com>
 Subject: [PATCH 1/2] PCI: mediatek-gen3: Add power and reset control feature for downstream component
-Date: Wed, 11 Jan 2023 11:25:41 +0800
-Message-ID: <20230111032542.20306-2-jian.yang@mediatek.com>
+Date: Wed, 11 Jan 2023 11:28:29 +0800
+Message-ID: <20230111032830.20447-2-jian.yang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230111032542.20306-1-jian.yang@mediatek.com>
-References: <20230111032542.20306-1-jian.yang@mediatek.com>
+In-Reply-To: <20230111032830.20447-1-jian.yang@mediatek.com>
+References: <20230111032830.20447-1-jian.yang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230111_032626_411769_D8BF4102 
-X-CRM114-Status: GOOD (  23.89  )
+X-CRM114-CacheID: sfid-20230110_193919_959779_9F8F2729 
+X-CRM114-Status: GOOD (  24.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
