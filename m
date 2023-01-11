@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51067C54EBC
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60E3BC61DB3
 	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jan 2023 03:26:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=tPBVLufhdIhjett3dh8ZSV7+mAa/jQgjUH4vRx9Y3lE=; b=c2Jkcsn69Vw5YTQNzbUu5wOF5s
-	yWpuPuhsror9subir/KQ9yOGHwrErkWOn1wvZfOLDGkd7e3lmMo20XRHDwYWzfg4lorppfrQFhbRM
-	yu8nu3Sov4RFoUL4cS5dZvY4LrxfMtFGVItdWtXlM/AKCP9m+1Vv2WemLT7S0EE/b+6S5pe5C1uGd
-	AEdeetFpJwVsEB6zdqqRQY1hPilD72ly37lBgKRGFu7PwJmK1U9rz6gsxjIt9Q70Qc8lqSqANERld
-	LgIO7L65nlMPo5xmWQxPIEWqSewPBkUtAI0qjwUPzhUkBmjfWvRyD6ZMuFl27CI/EtwzLGCYySeF3
-	YGPm5HYw==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mbHqNJkSdR1rCR9KdCc2/hI6jI6Bavtsh5EvXljRiSY=; b=bZUqKRtXvFV/f1H467u+S0MpG0
+	tUL5iV/OoAC5JlP4lN39dHcoPzuYQhKtS4ZqMEE1ZJbxxgRUwLBnYvDKhKHOyrY+NbRxZ6Cy+i27b
+	mbGmaFow1+a4hWHtJKbQnARils4LkKZpuEdYC4W4Ub31SLbRYLwazB58zNMvIm15ilzwpQ4lQ7C1N
+	ZG9LRyvpyceGX8DJixZny6d3nLIKnVQ6k0+pkZ2beLf79JmKF4ujNr7m8fCiMTD68PDcGehHJvmXr
+	2qL+jTpEqtx7c9KcgaPAKRFhMhyzRtNVgJg9kkEheYb4gwD4LmTuQvkCGf8sGuuZYuIYWa3/oQpIH
+	9DfSGILg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFRlA-009PCJ-4s; Wed, 11 Jan 2023 03:26:40 +0000
+	id 1pFRlA-009PCP-Qo; Wed, 11 Jan 2023 03:26:40 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFRl8-009PBo-EC; Wed, 11 Jan 2023 03:26:38 +0000
+	id 1pFRl8-009PBp-EC; Wed, 11 Jan 2023 03:26:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=tPBVLufhdIhjett3dh8ZSV7+mAa/jQgjUH4vRx9Y3lE=; b=LOjd5ZqN7v6JxPn/9HXcybbcxY
-	ZkZLJv8fPFw3DNixFVD42ZH8Bzb+reLJnJFGK46iiKSugEjQSd0UyuOLBFAOcVOFdTncdHVVMyXuP
-	q4GVtjRiR4eKlA6cpXjuMv8ZHHBx7pO0SLuY98W6kGVlof92zeWh5G8LpMiIEgPikshi9d+dN5+j4
-	1PM6+hJTfz2VkQ7OaJ2MTOpMCV5b9/zc6+JFe4mGo8tsgvSYmNyAEtvbuLRHQFc9vrQa0yPOWpLvr
-	XAbMRvo3CuFymPR2mXLN1YmH07BZB3Y1S98cTEbEXnJMha75t9CVgRP2yC6XVpKrE87QzkZKvU+XS
-	I64QbtKw==;
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=mbHqNJkSdR1rCR9KdCc2/hI6jI6Bavtsh5EvXljRiSY=; b=aVnV6RCIdCamBDX7GWlsi+cGqV
+	szLvIQJIBSVtYGjG0yEPs0fQsrfXfJfVI6mPY+qya9eIvifWT28a4oUnP9MPSEIw4XAyL5EEbcxbl
+	6tMmHYffiL9kQqQNHKDbztTfawm+EXSfj8XI9z0YcU1+Q8Bk6sfMKlG4Vh/cVKsc5AOs9worcbTqt
+	nmKVabsviL4ruILfPSciodYh8eo6xWbwIhEm7WC6jCHv5nKe7UG45hVBk+hi6MgPWXCImnHiWe2lk
+	uY9fhN4nHMMjqyISRbONpsE71eSBWQ3TLAv0BR+xlpj6s553pqFoK81xyot2O5kouvx3yaXCm8KQl
+	81uDyljA==;
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pFRkv-003W4z-1o;
+	id 1pFRkv-003W50-2J;
 	Wed, 11 Jan 2023 03:26:29 +0000
-X-UUID: b70e4b96915f11edbbe3f76fe852e059-20230110
+X-UUID: b770e044915f11edbbe3f76fe852e059-20230110
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=tPBVLufhdIhjett3dh8ZSV7+mAa/jQgjUH4vRx9Y3lE=;
-	b=C8tFDmU1S95DzL54D0/ikMhTr+vl+7WI6TQavdRFkN+OE+S/NDg+kOtO+wO0ceOvxjYmwVs0B5fcuRlF26Jv1U4c7LJRChxVr9wBKLnKKGd0UC3EHnU64N2LUsbn4gQb/m5ZQcw6H/9vbb2OuF9SbvnMCmcPND8nTKFfTOxGRQo=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=mbHqNJkSdR1rCR9KdCc2/hI6jI6Bavtsh5EvXljRiSY=;
+	b=Yyt9KLWoTR957uQaMxj3N+z0wARJDwemIejKu7atqV+tLagg0wcHErtlbbsPw/mQP4cbSYOfzzEssGyyDQjn/BHWDlR+M20sfRi7hRswLmJamZFfvUnTMbsUwQGyQwXPnahYvDKGNHU0I4JczcQQneFs7oZntmfN/K8UMHOvfSA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:5322ebfc-c830-492f-99a2-b84a8063de81,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:543e81c,CLOUDID:21e275f5-ff42-4fb0-b929-626456a83c14,B
+X-CID-O-INFO: VERSION:1.1.17,REQID:a8f18af5-6cdb-479e-8134-964ef937af35,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:543e81c,CLOUDID:22e275f5-ff42-4fb0-b929-626456a83c14,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0,NGT
-X-UUID: b70e4b96915f11edbbe3f76fe852e059-20230110
+X-CID-BVR: 0
+X-UUID: b770e044915f11edbbe3f76fe852e059-20230110
 Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <jian.yang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1812994122; Tue, 10 Jan 2023 20:26:19 -0700
+	with ESMTP id 1398560568; Tue, 10 Jan 2023 20:26:20 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 11 Jan 2023 11:25:44 +0800
+ 15.2.792.15; Wed, 11 Jan 2023 11:26:13 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 11 Jan 2023 11:25:43 +0800
+ 15.2.792.15 via Frontend Transport; Wed, 11 Jan 2023 11:26:12 +0800
 From: Jian Yang <jian.yang@mediatek.com>
 To: Lorenzo Pieralisi <lpieralisi@kernel.org>, Jianjun Wang
 	<jianjun.wang@mediatek.com>, Rob Herring <robh@kernel.org>, Bjorn Helgaas
@@ -75,17 +75,18 @@ CC: <linux-pci@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<jian.yang@mediatek.com>, <chuanjia.liu@mediatek.com>,
 	<jieyy.yang@mediatek.com>, <qizhong.cheng@mediatek.com>,
 	<rex-bc.chen@mediatek.com>, <david-yh.chiu@mediatek.com>
-Subject: [PATCH 0/2] PCI: mediatek-gen3: Support controlling power supplies
-Date: Wed, 11 Jan 2023 11:25:40 +0800
-Message-ID: <20230111032542.20306-1-jian.yang@mediatek.com>
+Subject: [PATCH 1/2] PCI: mediatek-gen3: Add power and reset control feature for downstream component
+Date: Wed, 11 Jan 2023 11:25:41 +0800
+Message-ID: <20230111032542.20306-2-jian.yang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230111032542.20306-1-jian.yang@mediatek.com>
+References: <20230111032542.20306-1-jian.yang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230111_032626_411769_3CD5FF40 
-X-CRM114-Status: UNSURE (   7.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230111_032626_411769_D8BF4102 
+X-CRM114-Status: GOOD (  23.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,19 +103,215 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "jian.yang" <jian.yang@mediatek.com>
 
-These series patches add support for controlling power supplies and reset
-GPIO of a downstream component in MediaTek's PCIe GEN3 controller driver.
+Make MediaTek's controller driver capable of controlling power
+supplies and reset pin of a downstream component in power-on and
+power-off flow.
 
-jian.yang (2):
-  PCI: mediatek-gen3: Add power and reset control feature for downstream
-    component
-  dt-bindings: PCI: mediatek-gen3: Add support for controlling power and
-    reset
+Some downstream components (e.g., a WIFI chip) may need an extra
+reset other than of PERST# and their power supplies, depending on
+the requirements of platform, may need to controlled by their
+parent's driver. To meet the requirements described above, I add this
+feature to MediaTek's PCIe controller driver as a optional feature.
 
- .../bindings/pci/mediatek-pcie-gen3.yaml      |  23 ++++
- drivers/pci/controller/pcie-mediatek-gen3.c   | 114 +++++++++++++++++-
- 2 files changed, 136 insertions(+), 1 deletion(-)
+Signed-off-by: jian.yang <jian.yang@mediatek.com>
+---
+ drivers/pci/controller/pcie-mediatek-gen3.c | 114 +++++++++++++++++++-
+ 1 file changed, 113 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index b8612ce5f4d0..5ddbc2a0c020 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -8,6 +8,8 @@
+ 
+ #include <linux/clk.h>
+ #include <linux/delay.h>
++#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/iopoll.h>
+ #include <linux/irq.h>
+ #include <linux/irqchip/chained_irq.h>
+@@ -15,11 +17,13 @@
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+ #include <linux/msi.h>
++#include <linux/of_gpio.h>
+ #include <linux/pci.h>
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_domain.h>
+ #include <linux/pm_runtime.h>
++#include <linux/regulator/consumer.h>
+ #include <linux/reset.h>
+ 
+ #include "../pci.h"
+@@ -100,6 +104,13 @@
+ #define PCIE_ATR_TLP_TYPE_MEM		PCIE_ATR_TLP_TYPE(0)
+ #define PCIE_ATR_TLP_TYPE_IO		PCIE_ATR_TLP_TYPE(2)
+ 
++/* Downstream Component power supplies used by MediaTek PCIe */
++static const char *const dsc_power_supplies[] = {
++	"pcie1v8",
++	"pcie3v3",
++	"pcie12v",
++};
++
+ /**
+  * struct mtk_msi_set - MSI information for each set
+  * @base: IO mapped register base
+@@ -122,6 +133,10 @@ struct mtk_msi_set {
+  * @phy: PHY controller block
+  * @clks: PCIe clocks
+  * @num_clks: PCIe clocks count for this port
++ * @supplies: Downstream Component power supplies
++ * @num_supplies: Downstream Component power supplies count
++ * @dsc_reset: The GPIO pin to reset Downstream component
++ * @dsc_reset_delay_ms: Delay in ms before the deassertion of reset GPIO
+  * @irq: PCIe controller interrupt number
+  * @saved_irq_state: IRQ enable state saved at suspend time
+  * @irq_lock: lock protecting IRQ register access
+@@ -141,6 +156,10 @@ struct mtk_gen3_pcie {
+ 	struct phy *phy;
+ 	struct clk_bulk_data *clks;
+ 	int num_clks;
++	struct regulator_bulk_data *supplies;
++	int num_supplies;
++	struct gpio_desc *dsc_reset;
++	u32 dsc_reset_delay_ms;
+ 
+ 	int irq;
+ 	u32 saved_irq_state;
+@@ -763,7 +782,9 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
+ 	struct device *dev = pcie->dev;
+ 	struct platform_device *pdev = to_platform_device(dev);
+ 	struct resource *regs;
+-	int ret;
++	enum of_gpio_flags flags;
++	enum gpiod_flags dsc_reset_init_flags;
++	int ret, i;
+ 
+ 	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "pcie-mac");
+ 	if (!regs)
+@@ -809,14 +830,103 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
+ 		return pcie->num_clks;
+ 	}
+ 
++	pcie->num_supplies = ARRAY_SIZE(dsc_power_supplies);
++	pcie->supplies = devm_kcalloc(dev, pcie->num_supplies,
++				      sizeof(*pcie->supplies),
++				      GFP_KERNEL);
++	if (!pcie->supplies)
++		return -ENOMEM;
++
++	for (i = 0; i < pcie->num_supplies; i++)
++		pcie->supplies[i].supply = dsc_power_supplies[i];
++
++	ret = devm_regulator_bulk_get(dev, pcie->num_supplies, pcie->supplies);
++	if (ret)
++		return ret;
++
++	ret = of_get_named_gpio_flags(dev->of_node, "dsc-reset-gpios", 0,
++				      &flags);
++	if (ret < 0) {
++		if (ret == -EPROBE_DEFER)
++			return ret;
++
++		/*
++		 * It's okay that the reset GPIO of a downstream component not
++		 * defined in related devicetree node since it's an optional
++		 * property.
++		 */
++		return 0;
++	}
++
++	dsc_reset_init_flags = (flags & OF_GPIO_ACTIVE_LOW) ? GPIOD_OUT_HIGH :
++			       GPIOD_OUT_LOW;
++	pcie->dsc_reset = devm_gpiod_get_optional(dev, "dsc-reset",
++						  dsc_reset_init_flags);
++	if (IS_ERR(pcie->dsc_reset)) {
++		ret = PTR_ERR(pcie->dsc_reset);
++		if (ret != -EPROBE_DEFER)
++			dev_err(dev, "failed to request DSC reset gpio\n");
++
++		return ret;
++	}
++
++	ret = of_property_read_u32(dev->of_node, "dsc-reset-msleep",
++				   &pcie->dsc_reset_delay_ms);
++	if (ret) {
++		dev_info(dev, "Failed to get delay time of DSC, set it to default 5ms\n");
++		pcie->dsc_reset_delay_ms = 5;
++	}
++
+ 	return 0;
+ }
+ 
++static int mtk_pcie_dsc_power_up(struct mtk_gen3_pcie *pcie)
++{
++	struct device *dev = pcie->dev;
++	int ret;
++
++	/* Assert Downstream Component reset */
++	if (pcie->dsc_reset)
++		gpiod_set_value_cansleep(pcie->dsc_reset, 1);
++
++	ret = regulator_bulk_enable(pcie->num_supplies, pcie->supplies);
++	if (ret)
++		dev_err(dev, "failed to enable DSC power supplies: %d\n", ret);
++
++	/* De-assert Downstream Component reset */
++	if (pcie->dsc_reset) {
++		/*
++		 * Wait for a short time before we de-assert the reset GPIO.
++		 * Depends on the requirement of a specific Downstream
++		 * Component.
++		 */
++		usleep_range(1000 * pcie->dsc_reset_delay_ms,
++			     1000 * pcie->dsc_reset_delay_ms + 100);
++		gpiod_set_value_cansleep(pcie->dsc_reset, 0);
++	}
++
++	return ret;
++}
++
++static void mtk_pcie_dsc_power_down(struct mtk_gen3_pcie *pcie)
++{
++	/* Assert Downstream Component reset */
++	if (pcie->dsc_reset)
++		gpiod_set_value_cansleep(pcie->dsc_reset, 1);
++
++	regulator_bulk_disable(pcie->num_supplies, pcie->supplies);
++}
++
+ static int mtk_pcie_power_up(struct mtk_gen3_pcie *pcie)
+ {
+ 	struct device *dev = pcie->dev;
+ 	int err;
+ 
++	/* Downstream Component power up before RC */
++	err = mtk_pcie_dsc_power_up(pcie);
++	if (err)
++		return err;
++
+ 	/* PHY power on and enable pipe clock */
+ 	reset_control_deassert(pcie->phy_reset);
+ 
+@@ -855,6 +965,7 @@ static int mtk_pcie_power_up(struct mtk_gen3_pcie *pcie)
+ 	phy_exit(pcie->phy);
+ err_phy_init:
+ 	reset_control_assert(pcie->phy_reset);
++	mtk_pcie_dsc_power_down(pcie);
+ 
+ 	return err;
+ }
+@@ -870,6 +981,7 @@ static void mtk_pcie_power_down(struct mtk_gen3_pcie *pcie)
+ 	phy_power_off(pcie->phy);
+ 	phy_exit(pcie->phy);
+ 	reset_control_assert(pcie->phy_reset);
++	mtk_pcie_dsc_power_down(pcie);
+ }
+ 
+ static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
 -- 
 2.18.0
 
