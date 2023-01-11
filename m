@@ -4,50 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B5D7C46467
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jan 2023 07:50:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF4D6C46467
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jan 2023 08:06:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b81aGFLsMXn7Mteqk82Xapzhw4W9E3XXo/PGF6ZSd94=; b=NkGh2FqJ6nKNMdIw4RemtrYWC5
-	AICnuITgzOd6/KDSqG7d9Ndm3eT2cd7Cc8vPxc2LJJn1iNb1Hj85/FgvUZtSl9+YHhVTo+3ohSSgj
-	clnOCQsLwH4QJ4k4/1d+JkEe0vPaw67aPnRwU92Y6qnWvO6sZKjqVj/4KATgCRGUc6lqjc7HrGNFF
-	vZxrkhUB3FjmMol2YgZ/PNyykDaR6bQuj/4o3+Uhs0mqleDHEiE22eAVXBmcT/JAhmvCBD2LVGrNO
-	bblXhiTZiWOK622jycTnpDVH0Esh5eB2l7VVkXXUed0q2AN4gfsSy1MXvEP5O8QQOAFJuSQUtzmjS
-	ImWU3pYQ==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1IcXxUlcMjL6OjiByHs+3U0DRKLrz/x/GXv70XJcADo=; b=4ff7d2JbPLu5wfzgUZBAOzTru+
+	5ojVuajsBx1+bAM+KsK8ib8y8S7WoNkaC1DPi/jdxAcZGnKCCdJTfqtgf2GEvqhPH4DMbTkx8WG4r
+	utGO44ADrJUG8lvt+F28z3JGaMaLgLZ67iDaqKWQBTlJ8MBI0yltlBwLUgXJzGDFMVYn4hdasbLd1
+	fWS9zD2ndz1IAmYfmWWo3Pr3dSGxZui4dMANBnF8csMgiUWxwWKzyRLmwiCC4PmCaOiPdp51AccPl
+	9DZ1JTvrDg2NsLyw+2ICPGW5K7sggJrjg5CxXYkGWRO4DStoi8x3UICBBKXaG0AX6kJWJSnd4L2bg
+	eAjYulcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFVsb-00A9HS-Tm; Wed, 11 Jan 2023 07:50:37 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pFW86-00AHmt-1c; Wed, 11 Jan 2023 08:06:38 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFVok-00A6vM-0H; Wed, 11 Jan 2023 07:46:39 +0000
-X-UUID: 12c5d9b2918411eda08d4d6090ec5a5c-20230111
+	id 1pFW84-00AHld-Oa; Wed, 11 Jan 2023 08:06:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:Message-ID:
+	Date:Subject:CC:To:From:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=1IcXxUlcMjL6OjiByHs+3U0DRKLrz/x/GXv70XJcADo=; b=YwOHDIo/7c4hs98syxSrNY4AGr
+	HfQ8pRYu6GjsmLb7x26It1w3/jBsKxL1CH2hG6yKXX18naE1vBcwHpFIx8q226shdgdYUNm2V6aOy
+	EidEOi5mSb2ErbjXm75k8USuhANZ4CDHFeQfsXyo44h+zD8ETH9UkXUgANHbVs5xCcedT0x/TafF9
+	xMI4gQh6V/0jWl/XvcXaasYMMP4Jf5UVRoA9Ihgq1bjRxnFV6H8A2Gme2THxGOPU84PmWZKL6nNVd
+	ZY1Z4sP+Z9DlwOP/4ZbZ2UsXfLKwx0P0lRMpomNDKfvF/zIYg+wEMyp6kw13sVtYA+zo09NeQySsd
+	6mnwNcVQ==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pFW7s-003Zcd-0C;
+	Wed, 11 Jan 2023 08:06:27 +0000
+X-UUID: cccbc89c918611edbbe3f76fe852e059-20230111
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=b81aGFLsMXn7Mteqk82Xapzhw4W9E3XXo/PGF6ZSd94=;
-	b=AgC0/YLU3Uw2pLJp1PIsJJWI6DMhZXHQKuOrQ9clEba5WEVAuZSYErw+wua7iDxMwq4O6TN2dbJ2PDde4+m3kNIrGts0+RCqsnWkA7TYMI4PPS1UYRz4gpPNYkFyjoUJmXrzWmmMNqFPLio619zRBddPJbxXe335EJ2t/Uwjfvk=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=1IcXxUlcMjL6OjiByHs+3U0DRKLrz/x/GXv70XJcADo=;
+	b=q+KxuErKEDdXT0h122zyBa873ChK/ioOiaJy68Pm8xlAecLa/5zBZxQcIdXhz9+UeVHZhZfgu66t3BUYfmO8L8yiX/ftebFNKjn71FtXb1ZeTkSypbovCLXgErMAkA+GUwThdOXlZc9quVDJh4EQnU6u4tRVEOPVgBftmaBmAck=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:45a6d053-9655-434a-9767-b165c140262c,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:543e81c,CLOUDID:4f7d7df5-ff42-4fb0-b929-626456a83c14,B
+X-CID-O-INFO: VERSION:1.1.17,REQID:2f973ca0-5ae6-49af-ae8e-be12a20c8ecc,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:543e81c,CLOUDID:6d4def8b-8530-4eff-9f77-222cf6e2895b,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0
-X-UUID: 12c5d9b2918411eda08d4d6090ec5a5c-20230111
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+X-CID-BVR: 0,NGT
+X-UUID: cccbc89c918611edbbe3f76fe852e059-20230111
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <roger.lu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 714082512; Wed, 11 Jan 2023 00:46:35 -0700
+	with ESMTP id 1038756757; Wed, 11 Jan 2023 01:06:06 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
  mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 11 Jan 2023 15:45:31 +0800
+ 15.2.792.15; Wed, 11 Jan 2023 15:45:29 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 11 Jan 2023 15:45:31 +0800
+ 15.2.792.15 via Frontend Transport; Wed, 11 Jan 2023 15:45:29 +0800
 From: Roger Lu <roger.lu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
 	<eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Nicolas Boichat
@@ -57,18 +71,17 @@ CC: Fan Chen <fan.chen@mediatek.com>, Roger Lu <roger.lu@mediatek.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, <linux-pm@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v4 10/14] soc: mediatek: mtk-svs: move svs_platform_probe into probe
-Date: Wed, 11 Jan 2023 15:45:24 +0800
-Message-ID: <20230111074528.29354-11-roger.lu@mediatek.com>
+Subject: [PATCH v4 0/14] Enahance SVS's robustness
+Date: Wed, 11 Jan 2023 15:45:14 +0800
+Message-ID: <20230111074528.29354-1-roger.lu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230111074528.29354-1-roger.lu@mediatek.com>
-References: <20230111074528.29354-1-roger.lu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_234638_117604_65253597 
-X-CRM114-Status: GOOD (  13.48  )
+X-CRM114-CacheID: sfid-20230111_080624_902757_9B44DC0F 
+X-CRM114-Status: UNSURE (   8.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,65 +96,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Matthias Brugger <matthias.bgg@gmail.com>
+SVS driver got accepted upstream but still has room to be improved.
+Therefore, we add these patches to fix issues and coding style.
 
-Moving svs_platform_probe into driver probe function will allow us to
-reduce svs_platform members. This will be done in a follow-up patch.
+Change since v3:
+- Remove cleanup codes in patch [01/14] for letting it backport easily
+- Enclose svs debug cmd codes with "CONFIG_DEBUG_FS" where needed
+- Reorder patch sequenece to put fix up patch first
 
-Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Roger Lu <roger.lu@mediatek.com>
----
- drivers/soc/mediatek/mtk-svs.c | 20 ++++----------------
- 1 file changed, 4 insertions(+), 16 deletions(-)
+Tested on:
+MT8183 Platform (kernel v5.10)
+MT8192 Platform (kernel v5.4)
 
-diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index 354582825082..9d9210c22289 100644
---- a/drivers/soc/mediatek/mtk-svs.c
-+++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -2387,17 +2387,17 @@ static const struct of_device_id svs_of_match[] = {
- 	},
- };
- 
--static struct svs_platform *svs_platform_probe(struct platform_device *pdev)
-+static int svs_probe(struct platform_device *pdev)
- {
- 	struct svs_platform *svsp;
- 	const struct svs_platform_data *svsp_data;
--	int ret;
-+	int ret, svsp_irq;
- 
- 	svsp_data = of_device_get_match_data(&pdev->dev);
- 
- 	svsp = devm_kzalloc(&pdev->dev, sizeof(*svsp), GFP_KERNEL);
- 	if (!svsp)
--		return ERR_PTR(-ENOMEM);
-+		return -ENOMEM;
- 
- 	svsp->dev = &pdev->dev;
- 	svsp->name = svsp_data->name;
-@@ -2408,19 +2408,7 @@ static struct svs_platform *svs_platform_probe(struct platform_device *pdev)
- 
- 	ret = svsp_data->probe(svsp);
- 	if (ret)
--		return ERR_PTR(ret);
--
--	return svsp;
--}
--
--static int svs_probe(struct platform_device *pdev)
--{
--	struct svs_platform *svsp;
--	int svsp_irq, ret;
--
--	svsp = svs_platform_probe(pdev);
--	if (IS_ERR(svsp))
--		return PTR_ERR(svsp);
-+		return ret;
- 
- 	if (!svs_is_efuse_data_correct(svsp)) {
- 		dev_notice(svsp->dev, "efuse data isn't correct\n");
--- 
-2.18.0
+Matthias Brugger (4):
+  soc: mediatek: mtk-svs: clean up platform probing
+  soc: mediatek: mtk-svs: improve readability of platform_probe
+  soc: mediatek: mtk-svs: move svs_platform_probe into probe
+  soc: mediatek: mtk-svs: delete superfluous platform data entries
+
+Ricardo Ribalda (1):
+  soc: mediatek: mtk-svs: enable the IRQ later
+
+Roger Lu (8):
+  soc: mediatek: mtk-svs: restore default voltages when svs_init02()
+    fail
+  soc: mediatek: mtk-svs: reset svs when svs_resume() fail
+  soc: mediatek: mtk-svs: use svs clk control APIs
+  soc: mediatek: mtk-svs: add thermal voltage compensation if needed
+  soc: mediatek: mtk-svs: keep svs alive if CONFIG_DEBUG_FS not
+    supported
+  soc: mediatek: mtk-svs: use svs get efuse common function
+  soc: mediatek: mtk-svs: use common function to disable restore
+    voltages
+  soc: mtk-svs: mt8183: refactor o_slope calculation
+
+Shang XiaoJing (1):
+  soc: mediatek: mtk-svs: Use pm_runtime_resume_and_get() in
+    svs_init01()
+
+ drivers/soc/mediatek/mtk-svs.c | 339 +++++++++++++++++----------------
+ 1 file changed, 173 insertions(+), 166 deletions(-)
+
 
 
