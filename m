@@ -4,61 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56EE4C54EBC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jan 2023 14:07:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81734C5479D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jan 2023 16:39:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=iF0XeBjwYTnZXjGJqxu1zDCO1Q6G7fns6hD+lzukNVk=; b=G+mWEqnbvMTx/XyPzyiOnQJ58q
-	PoBU6PORLbl3G0MtjjTLZq4F6zHDIpJtR5lkQOLuJA2ujZRo+JxKqdCrVLxfXq7IrSjY1asxRPqDj
-	WK5JI4Xa/p6+CSfAurRaBvOkL/Ssvg9gxHKi4hiF2PYmULjXbsCXYDqFfwjb/y5eIxNraMfGwn7lI
-	ZjhR5T6/KUYpA5GOmdGIv8o30U4x7JUCIp1zFia5pa/CaIgy9lm/Egqt7W/RbegO6n8Kj04QDTJ/K
-	8Afm6xXqWmFdK1Td8k0AVlxIKIlCBdw/lmb34Hh8rTHvATtelnTpL95k55so0wZmsSyJBqUa1Py+m
-	SZFOMDiA==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nBuL4AczQptgNEm5joP44LjUKcigswa4AdAZa/pW8cg=; b=Dh7KsOpvnGXqLWtD0KWbem7AHG
+	An+vm9e0NkDUpuGfrBpYOjLQ3/2JE0jx1XOSkVGoQ7DeGfIUAqJ7hlSFonGKb0XNywHyJfKbIz7a/
+	N8xZgKAu71hn+iyDvnxFMw2w0DQrJe8pt6o0d+/RbID83UmtoPnSfGBLsgVUEFeHeTPILCAkBCfXz
+	4Gqpbl30aSswUpwawQQP9WnVtaorZlNceEIdjOk17B59Jk97NKFB4gNjK0QPzyqUs673q2kMhRBx7
+	y1IdeMAzkTJItr+mzRQhQVfpTKqOrqT4O/9lYAqDVTX/kmEsaf1IrauENHuLloKBVGi2EPXt9w1vi
+	Ja3lAmnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFble-00BjJc-BC; Wed, 11 Jan 2023 14:07:50 +0000
+	id 1pFe8G-00CCFM-OB; Wed, 11 Jan 2023 16:39:20 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFblU-00BjIA-7p; Wed, 11 Jan 2023 14:07:41 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	id 1pFe8D-00CCE6-NT
+	for linux-mediatek@lists.infradead.org; Wed, 11 Jan 2023 16:39:19 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8E9006602D9C;
-	Wed, 11 Jan 2023 14:07:36 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 06F996602D3E;
+	Wed, 11 Jan 2023 16:39:12 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1673446057;
-	bh=n5WHHdQNBAmOfq5p8QxYo1xuR8hghbRyMcc6c0ej73E=;
-	h=From:To:Cc:Subject:Date:From;
-	b=ft+RLNTMPustVX31ZWVZ+VbC8cBRx/3a766ayXp+Je96O72qZb91w6D7v68FJ1NDL
-	 KsXKIoRZVL4b6CmVrTmJ09ngH1dGN1MowQDAM81UCm8Vfsy36O7OTsl3egi55IDvV6
-	 envsu1WpEfF5FCOQoI/tSwRMQCp1PH5R0mSDjCTs5EjD+tRatASSerY4C8QF/qGJFX
-	 Lu2ho8UJ8BUTiWXUeloV2QzRIXUnb0CFLkcWxvcPCsq8NeLMZCdXgr4ikJ4pUrh8++
-	 N4o15u4RBqLyukqKK7Zx8Tzb8XmYy54VBXvIDZH/3ov5gCxijHm4/Qw2YAAt5rUDzX
-	 LSAWgXk4WxxnQ==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: robh+dt@kernel.org
-Cc: krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH] arm64: dts: mediatek: mt8173-elm: Move display to ps8640 auxiliary bus
-Date: Wed, 11 Jan 2023 15:07:24 +0100
-Message-Id: <20230111140724.294533-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.39.0
+	s=mail; t=1673455153;
+	bh=gia7NHJzP8vCL5xfKWqDX1VgVkCNInSkGk4TT8KZ0DU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=hZX55ayKE7k7KQ5VJ/4r36NFhQpP986LaAfX+U7vW0ZnoIx3bbomN4QN44XMOV8h6
+	 BVnCQV0/HNPKk132jafEaeGZlZ7ClF+Oivq2V1MC333ZF9EfwTbdIJOB1vlnfOxMdE
+	 ulDd7/3bMdLGs5nbBHw5gQFx6TvgkmZKoZSTnbSffHT5+9ZT6asuoOL1CeF1dlvFQH
+	 TlVEijrDu7Ish1bPoIts58YrultpQ8b6uSggwDWvDhYW5W+UgUcrGXnw65Q65vdT3g
+	 qP1OkLQ76SqPJGw5xeGfWLk76pwnU2M4Gwzd8AoT8P8xly3SnGVZ5NeEi09oc+4vtU
+	 Qf7enchWfu+/g==
+Message-ID: <e7bcf53a-0d01-4e40-e609-c1cd9b5a9ef3@collabora.com>
+Date: Wed, 11 Jan 2023 17:39:10 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v2] drm/mediatek: Add support for AR30 and BA30
+Content-Language: en-US
+To: Justin Green <greenjustin@chromium.org>,
+ linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org
+Cc: jason-jh.lin@mediatek.com, justin.yeh@mediatek.com, wenst@chromium.org,
+ chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
+ matthias.bgg@gmail.com, daniel@ffwll.ch, daniel@fooishbar.org
+References: <20230110204742.1354797-1-greenjustin@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230110204742.1354797-1-greenjustin@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230111_060740_444922_B02CCC62 
-X-CRM114-Status: UNSURE (   8.28  )
+X-CRM114-CacheID: sfid-20230111_083918_002102_A4FC7B45 
+X-CRM114-Status: UNSURE (   6.81  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,58 +77,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Move the display to an aux-bus subnode of the PS8640 eDP bridge.
+Il 10/01/23 21:47, Justin Green ha scritto:
+> Add support for AR30 and BA30 pixel formats to the Mediatek DRM driver.
+> 
+> Tested using "modetest -P" on an MT8195.
+> 
+> Signed-off-by: Justin Green <greenjustin@chromium.org>
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 26 +++++++++++---------
- 1 file changed, 14 insertions(+), 12 deletions(-)
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index 18e214464a2d..f9b10c7027cf 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -90,18 +90,6 @@ switch-volume-up {
- 		};
- 	};
- 
--	panel: panel {
--		compatible = "lg,lp120up1";
--		power-supply = <&panel_fixed_3v3>;
--		backlight = <&backlight>;
--
--		port {
--			panel_in: endpoint {
--				remote-endpoint = <&ps8640_out>;
--			};
--		};
--	};
--
- 	panel_fixed_3v3: regulator1 {
- 		compatible = "regulator-fixed";
- 		regulator-name = "PANEL_3V3";
-@@ -282,6 +270,20 @@ ps8640_out: endpoint {
- 				};
- 			};
- 		};
-+
-+		aux-bus {
-+			panel: panel {
-+				compatible = "lg,lp120up1";
-+				power-supply = <&panel_fixed_3v3>;
-+				backlight = <&backlight>;
-+
-+				port {
-+					panel_in: endpoint {
-+						remote-endpoint = <&ps8640_out>;
-+					};
-+				};
-+			};
-+		};
- 	};
- };
- 
--- 
-2.39.0
 
 
