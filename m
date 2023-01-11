@@ -4,52 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52C91C54EBE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jan 2023 07:47:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC311C6379F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jan 2023 07:47:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3Hk6/LOaCSVWYRTs09f5CDgwCj2clql0+dtr3RCnhuo=; b=MJsC2LUX8pBmFtInom+H/MC/br
-	ckSyoDjqCehlNuj2pUjMntUwoQVKGB6XHg+c43SNASy6bbhWLS8s3HTKKTFbnokay7MD0muEWoSds
-	5czw9I+v2NIyEskx1hxsfANMR32ImJaLyT7UcG5SBlIzUKHXRTJP/ppuoeeExwJfyg8i397S1GVt5
-	VlQ8D6te93sBM4/YgutJWIzPzSAtyIVwXklGNxX4LMtAzkS0IzgmHufEKXteZw32xRnjQfApbXGhc
-	94d19OILaVYCJ26ReA1xgoOQr8XokEEJzKSvsQCdaoP7dUMWWRxsgoP9CSz0uC4Ze3bVHcFPY/cpL
-	TA+wVePw==;
+	bh=uhX2et4yxSPi/HdQNsiUjCBSxcD2/EuMHoj4iu7sMPY=; b=h0dspLRQEKhk6e78Pe6gWtSQgL
+	WH4U98ft0/8NBrDd5Yh315G0D3QNMT39ykKe2Xn4d2YKVZwQooU5r8GLLrdh3M3vu2DEjGFE22Y6K
+	T6pmVOw6ycT3B/gg1KfcX9IwRyGz+XA6plaFn6GdpuTYpupm8fy3q0C1yp9H2J7hQPvhzMGu1WKdd
+	3JwakWKwjdGZRrFiR2kDOWAUBuLw3VDA4z4zV38NucW9P9Ln4mf9nYxb2YlFdkUhGg4+jAGsxUTDF
+	d3v8E87Lr/rFytDCiGQp8hTzaXtM8456cngug2fjO2uepy6Umug5gRhr90vXbAxqydUcuVYWrlDyF
+	yJivP1LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFVpt-00A7fO-Hv; Wed, 11 Jan 2023 07:47:49 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pFVpw-00A7hI-4O; Wed, 11 Jan 2023 07:47:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFVoI-00A6dT-4M; Wed, 11 Jan 2023 07:46:14 +0000
-X-UUID: ffd313c4918311edbbe3f76fe852e059-20230111
+	id 1pFVoJ-00A6fc-02; Wed, 11 Jan 2023 07:46:14 +0000
+X-UUID: fff32ef2918311eda08d4d6090ec5a5c-20230111
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=3Hk6/LOaCSVWYRTs09f5CDgwCj2clql0+dtr3RCnhuo=;
-	b=DrJBxKk2yrQ15UTJZAyWdHYXD/HYJDpTATD8vKlytkRX7YcoyaXzEqAFvf5xi5KTwGJcDhrEXxo+Ui5eBxB5vKfDJgOtY/Vw+CLkh+6mpNvLuF0MOMkFULFUKIBIDyw8NCqeAQtMYiwTb+/pIayvjC2M1kduYO7XHGhcFeEZkOs=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=uhX2et4yxSPi/HdQNsiUjCBSxcD2/EuMHoj4iu7sMPY=;
+	b=JYArLuMCDbCMOJ6dFL1r5mbgmqlac97DP1/t2EWpr8aCjfhzcBPnhaatpCqeCaaTonXmjaOlMLALZxrqwrNcROUx0CG7z3slqzGP3+LcJ64TFFE7Or/0KWMreK6rqNXmeCTIHN+d3hs4uS2MZFk9OF8yUIYsqibekFxS/aiVtxw=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:461da1df-5af3-487e-930a-7a6337fe0da5,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:90
-X-CID-INFO: VERSION:1.1.17,REQID:461da1df-5af3-487e-930a-7a6337fe0da5,IP:0,URL
-	:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
-	N:quarantine,TS:90
-X-CID-META: VersionHash:543e81c,CLOUDID:869eee8b-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:230111154534QHX5H8P7,BulkQuantity:4,Recheck:0,SF:38|28|17|19|48,TC:n
-	il,Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0
-X-CID-APTURL: Status:success,Category:nil,Trust:0,Unknown:0,Malicious:0
-X-CID-BVR: 0,NGT
-X-UUID: ffd313c4918311edbbe3f76fe852e059-20230111
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+X-CID-O-INFO: VERSION:1.1.17,REQID:09a76759-0524-4ead-a27a-e75ec9a95951,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:543e81c,CLOUDID:c1797df5-ff42-4fb0-b929-626456a83c14,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+X-CID-BVR: 0
+X-UUID: fff32ef2918311eda08d4d6090ec5a5c-20230111
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <roger.lu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2032518223; Wed, 11 Jan 2023 00:46:03 -0700
+	with ESMTP id 830798671; Wed, 11 Jan 2023 00:46:03 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 11 Jan 2023 15:45:30 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Wed, 11 Jan 2023 15:45:30 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.792.15 via Frontend Transport; Wed, 11 Jan 2023 15:45:30 +0800
@@ -61,11 +56,10 @@ CC: Fan Chen <fan.chen@mediatek.com>, Roger Lu <roger.lu@mediatek.com>,
 	Jia-wei Chang <jia-wei.chang@mediatek.com>, <devicetree@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, <linux-pm@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Ricardo Ribalda
-	<ribalda@chromium.org>
-Subject: [PATCH v4 03/14] soc: mediatek: mtk-svs: enable the IRQ later
-Date: Wed, 11 Jan 2023 15:45:17 +0800
-Message-ID: <20230111074528.29354-4-roger.lu@mediatek.com>
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v4 06/14] soc: mediatek: mtk-svs: add thermal voltage compensation if needed
+Date: Wed, 11 Jan 2023 15:45:20 +0800
+Message-ID: <20230111074528.29354-7-roger.lu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230111074528.29354-1-roger.lu@mediatek.com>
 References: <20230111074528.29354-1-roger.lu@mediatek.com>
@@ -73,8 +67,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_234610_217553_6D684BA1 
-X-CRM114-Status: GOOD (  14.14  )
+X-CRM114-CacheID: sfid-20230110_234611_085749_F9B13A99 
+X-CRM114-Status: GOOD (  14.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,71 +83,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ricardo Ribalda <ribalda@chromium.org>
+Some extreme test environment may keep IC temperature very low or very high
+during system boot stage. For stability concern, we add thermal voltage
+compenstation if needed no matter svs bank phase is in init02 or mon mode.
 
-If the system does not come from reset (like when is booted via
-kexec(), the peripheral might trigger an IRQ before the data structures
-are initialized.
-
-Fixes:
-
-[    0.227710] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000f08
-[    0.227913] Call trace:
-[    0.227918]  svs_isr+0x8c/0x538
-
-Fixes: 681a02e95000 ("soc: mediatek: SVS: introduce MTK SVS engine")
-Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/soc/mediatek/mtk-svs.c | 28 ++++++++++++++--------------
- 1 file changed, 14 insertions(+), 14 deletions(-)
+ drivers/soc/mediatek/mtk-svs.c | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index a803b92afc3d..64d4d03ab71c 100644
+index 830263bad81e..a3c84e819bc5 100644
 --- a/drivers/soc/mediatek/mtk-svs.c
 +++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -2403,20 +2403,6 @@ static int svs_probe(struct platform_device *pdev)
- 		goto svs_probe_free_resource;
+@@ -590,7 +590,7 @@ static int svs_adjust_pm_opp_volts(struct svs_bank *svsb)
  	}
  
--	svsp_irq = platform_get_irq(pdev, 0);
--	if (svsp_irq < 0) {
--		ret = svsp_irq;
--		goto svs_probe_free_resource;
--	}
--
--	ret = devm_request_threaded_irq(svsp->dev, svsp_irq, NULL, svs_isr,
--					IRQF_ONESHOT, svsp->name, svsp);
--	if (ret) {
--		dev_err(svsp->dev, "register irq(%d) failed: %d\n",
--			svsp_irq, ret);
--		goto svs_probe_free_resource;
--	}
--
- 	svsp->main_clk = devm_clk_get(svsp->dev, "main");
- 	if (IS_ERR(svsp->main_clk)) {
- 		dev_err(svsp->dev, "failed to get clock: %ld\n",
-@@ -2438,6 +2424,20 @@ static int svs_probe(struct platform_device *pdev)
- 		goto svs_probe_clk_disable;
- 	}
+ 	/* Get thermal effect */
+-	if (svsb->phase == SVSB_PHASE_MON) {
++	if (!IS_ERR_OR_NULL(svsb->tzd)) {
+ 		ret = thermal_zone_get_temp(svsb->tzd, &tzone_temp);
+ 		if (ret || (svsb->temp > SVSB_TEMP_UPPER_BOUND &&
+ 			    svsb->temp < SVSB_TEMP_LOWER_BOUND)) {
+@@ -605,7 +605,8 @@ static int svs_adjust_pm_opp_volts(struct svs_bank *svsb)
+ 			temp_voffset += svsb->tzone_ltemp_voffset;
  
-+	svsp_irq = platform_get_irq(pdev, 0);
-+	if (svsp_irq < 0) {
-+		ret = svsp_irq;
-+		goto svs_probe_iounmap;
-+	}
-+
-+	ret = devm_request_threaded_irq(svsp->dev, svsp_irq, NULL, svs_isr,
-+					IRQF_ONESHOT, svsp->name, svsp);
-+	if (ret) {
-+		dev_err(svsp->dev, "register irq(%d) failed: %d\n",
-+			svsp_irq, ret);
-+		goto svs_probe_iounmap;
-+	}
-+
- 	ret = svs_start(svsp);
- 	if (ret) {
- 		dev_err(svsp->dev, "svs start fail: %d\n", ret);
+ 		/* 2-line bank update all opp volts when running mon mode */
+-		if (svsb->type == SVSB_HIGH || svsb->type == SVSB_LOW) {
++		if (svsb->phase == SVSB_PHASE_MON && (svsb->type == SVSB_HIGH ||
++						      svsb->type == SVSB_LOW)) {
+ 			opp_start = 0;
+ 			opp_stop = svsb->opp_count;
+ 		}
+@@ -621,11 +622,6 @@ static int svs_adjust_pm_opp_volts(struct svs_bank *svsb)
+ 			/* do nothing */
+ 			goto unlock_mutex;
+ 		case SVSB_PHASE_INIT02:
+-			svsb_volt = max(svsb->volt[i], svsb->vmin);
+-			opp_volt = svs_bank_volt_to_opp_volt(svsb_volt,
+-							     svsb->volt_step,
+-							     svsb->volt_base);
+-			break;
+ 		case SVSB_PHASE_MON:
+ 			svsb_volt = max(svsb->volt[i] + temp_voffset, svsb->vmin);
+ 			opp_volt = svs_bank_volt_to_opp_volt(svsb_volt,
+@@ -1728,7 +1724,7 @@ static int svs_bank_resource_setup(struct svs_platform *svsp)
+ 			}
+ 		}
+ 
+-		if (svsb->mode_support & SVSB_MODE_MON) {
++		if (!IS_ERR_OR_NULL(svsb->tzone_name)) {
+ 			svsb->tzd = thermal_zone_get_zone_by_name(svsb->tzone_name);
+ 			if (IS_ERR(svsb->tzd)) {
+ 				dev_err(svsb->dev, "cannot get \"%s\" thermal zone\n",
+@@ -2201,6 +2197,7 @@ static struct svs_bank svs_mt8192_banks[] = {
+ 		.type			= SVSB_LOW,
+ 		.set_freq_pct		= svs_set_bank_freq_pct_v3,
+ 		.get_volts		= svs_get_bank_volts_v3,
++		.tzone_name		= "gpu1",
+ 		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT,
+ 		.mode_support		= SVSB_MODE_INIT02,
+ 		.opp_count		= MAX_OPP_ENTRIES,
+@@ -2218,6 +2215,10 @@ static struct svs_bank svs_mt8192_banks[] = {
+ 		.core_sel		= 0x0fff0100,
+ 		.int_st			= BIT(0),
+ 		.ctl0			= 0x00540003,
++		.tzone_htemp		= 85000,
++		.tzone_htemp_voffset	= 0,
++		.tzone_ltemp		= 25000,
++		.tzone_ltemp_voffset	= 7,
+ 	},
+ 	{
+ 		.sw_id			= SVSB_GPU,
 -- 
 2.18.0
 
