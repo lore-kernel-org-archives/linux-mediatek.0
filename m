@@ -4,79 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CF4AC5479D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jan 2023 05:52:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A660C46467
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jan 2023 06:10:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iSRMa3URb6no/Wd7CjkH5X93Fu9KW1GnRk2pSZR1Mr0=; b=3vHHgp8wkrgO8ERo2vC8DP13xh
-	Cy+1/HtLUKvwsArjElf1455W+t7i5pNL8YSGcEd51bx2rX10I+sXVn39N/tcpMQ+Ton0Y/8idNiAs
-	WJ6ZoYuZUoaVOTBbaSj1JrlD2/NY8ZFTnGCju6BgWal1kcOt8in5ZRBAPHbJyQ4/SNz1Xsy6HUbsW
-	dr5teelpmcvLdDsdZgpJWXRinAsKAwNJFzzHr+4oqYXQfgEBUkpkueBbQuNB4Cp+ucD77/i2OqhkP
-	BLTr00kobbKByxHosHxebmkwG3/8Rgmbk/wP7MCY1cZvHAl0Cxftt4Db+rbMnE81Rwno3NXlA10nA
-	gDtLe+Ag==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=i65n54Pntj3LMiHk0kDTcKGqGuncnAshkJdAZpuEpWA=; b=Gup7+b4w/HoK2HIwmanCPu49g7
+	zjITiYjhko/mHJ9+T3o3IWmqs+ykARwrkISTRHMCpWbVUxj4adhuQuFErnm2lB7b2Pn5ZQLDLLcel
+	lm2w3PAD6S08Q8eH0u67eB+iw2NUHtXaWMkYvIW3E6CNdIfEeCqekk60CHgEwh90nNReDH0WQBAlc
+	8V02uQZSsIUIrbX10V+yQ3Wa5nGeewjz/4rr/KytHcm0dN4ALib/J30VXqVmFjLVDdW1mtl81Y32o
+	Ysp+kXofQ13sqX6LOPj2i35vCu4+4s05PAHsaGrxY3i4X2v/PKlUKSC5pq7HmorQx4H5yuexwwwv2
+	4U49I/zA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFU1p-009maW-NC; Wed, 11 Jan 2023 05:52:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pFUJP-009ozG-5o; Wed, 11 Jan 2023 06:10:11 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFU1n-009mYt-43; Wed, 11 Jan 2023 05:52:00 +0000
-X-UUID: 0868a220917411edbbe3f76fe852e059-20230110
+	id 1pFUJM-009oyw-Oi; Wed, 11 Jan 2023 06:10:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=i65n54Pntj3LMiHk0kDTcKGqGuncnAshkJdAZpuEpWA=; b=WBvlVSUf4g1tAJjUM1N8Xli1XS
+	apOD/BU1YPLNF2XGEwLht4vNJCMSS18sRZgOw7JFjo1ZbnweF8LEtqED2YWKxXMiIq4a3C2cEpwcc
+	zdypf260g8eWPeIJ1+imF7w1Inz5rbY05bdxMGW3N63CIRDmYuWJws+aQ7R9eyeOip240EPBI/e/l
+	PXAE5GOz/pc/DczakpidmPeKsaoSvPngL9vv3DTAbD/xCLNTse1vlLZTWTyfhrZZ3bP3rTlWzXwe1
+	I7+Anozn/iktT+RLsaGv8OmM1lxs7JeYkDX+RIm0ZufjoVKnqFaumm8i+51zJB502b54Z2tuXbdiF
+	XA32/QZg==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pFUJ8-003YIR-0M;
+	Wed, 11 Jan 2023 06:09:58 +0000
+X-UUID: 8d07b44c917611eda08d4d6090ec5a5c-20230110
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=iSRMa3URb6no/Wd7CjkH5X93Fu9KW1GnRk2pSZR1Mr0=;
-	b=ePZsRTtO7y9a1Fy2XjBM7NjRXNsaxYTY/jIl2BU7FV31xgjskLleRGdAXeT3enkISpXhZeu/U6q4K0W6kw4bEnFDk91DVu0AKRvPUJdOp6os+JurLRIvEPXL8nmUEaAmC1ZvUyG7rdknuvOcrE44C4zBPUa9s0ang59kdJunqW8=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=i65n54Pntj3LMiHk0kDTcKGqGuncnAshkJdAZpuEpWA=;
+	b=nvfoG21pOh2CcD9c3C/hTaCva/8FDgfUp43AjNHK3Va/SdJ7arP2NqyWh60WOeP3QW2yVJ69MgSySQhkydajWuLElIOiPd9tjL0EqgTE8eEZxX/ltVTphgE1TiTIvJPcrivZBqqQ43ugnsgNBJgpNs2GpQHP5f2yrW6NcWgcjlg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:1da8f7e7-693e-4d2a-99a1-9c3f4e0c7c15,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:543e81c,CLOUDID:70d9ea8b-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+X-CID-O-INFO: VERSION:1.1.17,REQID:8665217e-a1a4-4ce2-87db-bf2da17d95af,IP:0,U
+	RL:0,TC:0,Content:9,EDM:0,RT:0,SF:45,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:54
+X-CID-INFO: VERSION:1.1.17,REQID:8665217e-a1a4-4ce2-87db-bf2da17d95af,IP:0,URL
+	:0,TC:0,Content:9,EDM:0,RT:0,SF:45,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:54
+X-CID-META: VersionHash:543e81c,CLOUDID:266beb8b-8530-4eff-9f77-222cf6e2895b,B
+	ulkID:230111140913KY6GPHWI,BulkQuantity:2,Recheck:0,SF:28|17|19|48|102,TC:
+	nil,Content:4,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
+	,OSI:0,OSA:0
+X-CID-APTURL: Status:success,Category:nil,Trust:0,Unknown:0,Malicious:0
 X-CID-BVR: 0,NGT
-X-UUID: 0868a220917411edbbe3f76fe852e059-20230110
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
+X-UUID: 8d07b44c917611eda08d4d6090ec5a5c-20230110
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <yf.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 660597923; Tue, 10 Jan 2023 22:51:46 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+	with ESMTP id 167238183; Tue, 10 Jan 2023 23:09:47 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 11 Jan 2023 13:41:09 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Wed, 11 Jan 2023 13:41:09 +0800
-Message-ID: <add7a0ed-b676-142f-dea4-3a024a85a72c@mediatek.com>
-Date: Wed, 11 Jan 2023 13:41:07 +0800
+ Wed, 11 Jan 2023 14:09:11 +0800
+Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 11 Jan 2023 14:09:10 +0800
+From: <yf.wang@mediatek.com>
+To: <robin.murphy@arm.com>
+CC: <Libo.Kang@mediatek.com>, <Ning.Li@mediatek.com>, <iommu@lists.linux.dev>,
+	<jianjiao.zeng@mediatek.com>, <joro@8bytes.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <matthias.bgg@gmail.com>,
+	<will@kernel.org>, <wsd_upstream@mediatek.com>, <yf.wang@mediatek.com>,
+	<yong.wu@mediatek.com>
+Subject: RE: [PATCH] iommu/iova: Fix alloc iova overflows issue
+Date: Wed, 11 Jan 2023 13:57:49 +0800
+Message-ID: <20230111055749.11519-1-yf.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <99695d77-e54f-3270-ee9a-9b3cbb3296e5@arm.com>
+References: <99695d77-e54f-3270-ee9a-9b3cbb3296e5@arm.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH 3/3] arm64: dts: mediatek: enable USB device port for
- mt8195-demo board
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul@gmail.com>, Miles Chen <miles.chen@mediatek.com>,
-	<linux-usb@vger.kernel.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Tinghan Shen <tinghan.shen@mediatek.com>, Rex-BC Chen
-	<rex-bc.chen@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	<yow-shin.liou@mediatek.com>, <ben.lok@mediatek.com>
-References: <20230105092809.14214-1-macpaul.lin@mediatek.com>
- <20230105092809.14214-3-macpaul.lin@mediatek.com>
- <fb2a4f7d-f35a-2c48-ad31-3138a4fae247@linaro.org>
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-In-Reply-To: <fb2a4f7d-f35a-2c48-ad31-3138a4fae247@linaro.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_215159_196888_4AB48C91 
-X-CRM114-Status: GOOD (  15.80  )
+X-CRM114-CacheID: sfid-20230111_060955_097008_3B9A78D4 
+X-CRM114-Status: GOOD (  31.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,69 +101,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 1/6/23 20:56, Krzysztof Kozlowski wrote:
-> On 05/01/2023 10:28, Macpaul Lin wrote:
->> 1. Enable USB device port (USB port0).
->> 2. Enable u2 speed for other USB HOST (USB port1/2/3).
->> 3. Configure mt6360 (TYPEC) related pinctrls.
->>
->> Note: Full dual-role switch capability requires TYPEC MUX driver and dts
->> update will be send in separate patches.
->>
->> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
->> ---
->>   arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 51 ++++++++++++++++++++
->>   1 file changed, 51 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
->> index 07a864cb8b54..207bb5f4c58f 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
->> +++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
->> @@ -12,6 +12,7 @@
->>   #include <dt-bindings/input/input.h>
->>   #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
->>   #include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
->> +#include <dt-bindings/usb/pd.h>
->>   
->>   / {
->>   	model = "MediaTek MT8195 demo board";
->> @@ -380,6 +381,22 @@
->>   		};
->>   	};
->>   
->> +	mt6360_pins: mt6360-pins {
->> +		pins {
->> +			pinmux = <PINMUX_GPIO100__FUNC_GPIO100>,
->> +				 <PINMUX_GPIO101__FUNC_GPIO101>;
->> +			input-enable;
->> +			bias-pull-up;
->> +		};
->> +	};
->> +
->> +	u3_p0_vbus: u3_p0vbusdefault {
+On Mon, 2023-01-09 at 11:47 +0000, Robin Murphy wrote:
+> On 2023-01-09 08:34, yf.wang@mediatek.com wrote:
+> > From: Yunfei Wang <yf.wang@mediatek.com>
+> > 
+> > In __alloc_and_insert_iova_range, there is an issue that retry_pfn
+> > overflows. The value of iovad->anchor.pfn_hi is ~0UL, then when
+> > iovad->cached_node is iovad->anchor, curr_iova->pfn_hi + 1 will
+> > overflow. As a result, if the retry logic is executed, low_pfn is
+> > updated to 0, and then new_pfn < low_pfn returns false to make the
+> > allocation successful.
+> > 
+> > This issue occurs in the following two situations:
+> > 1. The first iova size exceeds the domain size. When initializing
+> > iova domain, iovad->cached_node is assigned as iovad->anchor. For
+> > example, the iova domain size is 10M, start_pfn is 0x1_F000_0000,
+> > and the iova size allocated for the first time is 11M. The
+> > following is the log information, new->pfn_lo is smaller than
+> > iovad->cached_node.
+> > 
+> > Example log:
+> > [  223.798112][T1705487] sh:
+> > [name:iova&]__alloc_and_insert_iova_range
+> > start_pfn:0x1f0000,retry_pfn:0x0,size:0xb00,limit_pfn:0x1f0a00
+> > [  223.799590][T1705487] sh:
+> > [name:iova&]__alloc_and_insert_iova_range
+> > success start_pfn:0x1f0000,new->pfn_lo:0x1efe00,new-
+> > >pfn_hi:0x1f08ff
+> > 
+> > 2. The node with the largest iova->pfn_lo value in the iova domain
+> > is deleted, iovad->cached_node will be updated to iovad->anchor,
+> > and then the alloc iova size exceeds the maximum iova size that can
+> > be allocated in the domain.
+> > 
+> > Adding judgment that retry_pfn must be greater than iovad-
+> > >start_pfn
+> > can fix this issue.
 > 
-> No underscores in node names. Also does not look correct naming. Please
-> run `make dtbs_check` (see
-> Documentation/devicetree/bindings/writing-schema.rst for instructions).
-
-Thanks for the suggest.
-I'm trying to request IT to setup for the environment for supporting 
-"make dtbs_check". This should be fix in next patch.
-
->> +		pins_cmd_dat {
+> Hmm, indeed that's a sneaky little bug - thanks for the thorough 
+> analysis - but couldn't we avoid the overflow entirely? I don't have
+> the 
+> complete logic paged in, but superficially it seems like:
 > 
-> Same problem.
+> 	retry_pfn = curr_iova->pfn_hi;
+> 	...
+> 		retry_pfn <= limit_pfn
+> 	...
+> 		low_pfn = retry_pfn + 1;
+> 
+> should still work, shouldn't it?
+> 
+> Thanks,
+> Robin.
 > 
 
-Got it.
+Hi Robin,
+Thanks for your suggestion, your solution is more perfect,
+PATCH v2 version will modify it.
 
-> 
-> Best regards,
-> Krzysztof
-> 
+Thanks,
+Yunfei.
 
-Thanks!
-Macpaul Lin
+> > Signed-off-by: jianjiao zeng <jianjiao.zeng@mediatek.com>
+> > Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
+> > ---
+> >   drivers/iommu/iova.c | 3 ++-
+> >   1 file changed, 2 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/iommu/iova.c b/drivers/iommu/iova.c
+> > index a44ad92fc5eb..0073206c2a95 100644
+> > --- a/drivers/iommu/iova.c
+> > +++ b/drivers/iommu/iova.c
+> > @@ -209,7 +209,8 @@ static int __alloc_and_insert_iova_range(struct
+> > iova_domain *iovad,
+> >   	} while (curr && new_pfn <= curr_iova->pfn_hi && new_pfn >=
+> > low_pfn);
+> >   
+> >   	if (high_pfn < size || new_pfn < low_pfn) {
+> > -		if (low_pfn == iovad->start_pfn && retry_pfn <
+> > limit_pfn) {
+> > +		if (low_pfn == iovad->start_pfn &&
+> > +		    retry_pfn >= iovad->start_pfn && retry_pfn <
+> > limit_pfn) {
+> >   			high_pfn = limit_pfn;
+> >   			low_pfn = retry_pfn;
+> >   			curr = iova_find_limit(iovad, limit_pfn);
 
