@@ -4,69 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1664C46467
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jan 2023 00:10:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F3E7C54EBC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jan 2023 02:27:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FoWupDWvLxjR+arT2rw2J3NBAwSy+z4LO+Bee7MSNM8=; b=FoK1v48JFf4qzAgVFGyIBfYTJ+
-	ouCOcT0YKQYLsvCq4jrkTjqQXk7Y2mzbXOpQ2YTUBN3Z8ZZ0WQpu7lAT1Iqt7FPW/JmzWb57msq2b
-	OV5MANhMqzbwjBuG9wB0gyaimwc73rfyTtG3o1k0KW0hm/dGb8jKKYMzjd5RG1WnGCsiFpiYEbljc
-	GXIGbwsZjWjtWkjpk9K2SOH7fihxNFS6FD+apu94I95A5x0H16Pm/tCs2S1SS6n7zPsBjaXLmITWT
-	br/B1nNkEg6BUnz/gbHcoY0wTZ08no2iWH58TwNEPEJ0PqRPXfUPLuwqwgAYENuwVaYDfZR2HD9Dz
-	9gQ0LHjg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WdQ1c6eIJ8Pfh7VJVWDgTo7nFYYtcTyxyIymvuRY7c8=; b=UK5DynGpx7uwEPllQOdmtbNPtv
+	e3ByoEJMbak/WbQn97CRgM0ovQ72xgWaWRr4qQn3l8env52K0DmhVcfXb+ZnqcWsZ2jOOHwoy9W1Q
+	NREzDj9CTs7AQcUW+B7Ibf8WdvmCD1gxGdMbGXz+DJfMWtbvnxm+yD6HJXcS1M8GA5xxXq8FSXZYT
+	EJd6x0lPr6FrMWk4j7ZaodqDEtFsM7jsITIO9Td9PmDT7U5HVcs3gFSpuLXsN3kcJuaDtg/gmMpJf
+	JpmtmQe4eLbXj5bQJapOra44EgMvV1oLmF8mURjjne6DsUOtRkHmz+U6AyHFMy/8Mf8LtFfTjqTSN
+	YrvZue6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFOhM-00900d-3y; Wed, 11 Jan 2023 00:10:32 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pFQpf-009Gv7-Pa; Wed, 11 Jan 2023 02:27:15 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFOhB-008zxR-52; Wed, 11 Jan 2023 00:10:22 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 990FF61987;
-	Wed, 11 Jan 2023 00:10:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 040FBC433D2;
-	Wed, 11 Jan 2023 00:10:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1673395818;
-	bh=2Oz4hwPxPjuMAf/Gd82dMOKnsmuaokvLtGpniKKLwKI=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=JS2WpUu9gPQdnTU2OpkuanwmDXxgqopFsvBaVkwuAfiDkEwh3ehmVPeZ/eFAX1yW6
-	 Y8citpTQmvbBzwvyKjKQ3H21VtntINErqkGmmEXxVV/0puFOHVjEZ6r+fdpUvDR6xO
-	 MyML7rGVE7h5UdftG1t/zwiroly+RSDBZrgGKyx5k1Y1WN9k75WdvZvRnlfLUyZoIc
-	 MUC7STUe/MWmtMU4OssdGSBm7muUMFMi/IbZf1ar8SVA+PnGibG7Ku4EPhfMm9oVcH
-	 YIeOfCeTgFKNbWpIqO5yKRq7uO9R+zGstoQ1xnPC9M2X515DXJ4N7R4xvZm0ZcJfnQ
-	 /amxNjrvOTEdw==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id DAFDEE21EE8;
-	Wed, 11 Jan 2023 00:10:17 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1pFQpc-009Gsv-Nf
+	for linux-mediatek@lists.infradead.org; Wed, 11 Jan 2023 02:27:14 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id bj3so11184838pjb.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Jan 2023 18:27:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=WdQ1c6eIJ8Pfh7VJVWDgTo7nFYYtcTyxyIymvuRY7c8=;
+        b=OWz6nrL6Wuyi/TWAJns/mDs7pQZjgqFrZ9wUn5e/fzATmgMoVuVRsjAwmOSWW2+K+N
+         z8zAIrFngkWZMTl1cShrD0INkGiavt+5wH/F0YAttPa9YJAH62VE9kTl5UuW+bXCLqEc
+         H4K73gA1/jtHMuUOJkoIYBm8LvPP/GHCWxY4Q=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=WdQ1c6eIJ8Pfh7VJVWDgTo7nFYYtcTyxyIymvuRY7c8=;
+        b=xaUxvE7UjLimYB+8FXHae2FLqs0AspYSqBquxalrMJAsQY27Gsl+TOaCIflnDDDO4A
+         HFcXjHGJX3zhc/5jPH7D/KuLjJVmgOUgN+C72xKST1MIsIMTjTcO9i/H8EvGrFAp7M4r
+         vcwd1L/FAVXYxdfR0rKiEHeDy0tgkSTRUZoSQ++EI2jdYdIktou5gIRCKX/pYDdTG4jC
+         IHVG9vD8dsgb9uw6FdLVGeixuZWyuuoFgnLhN4BOiP+VXI6z+S/IiX0O6hYSKdbBih8z
+         e+QfT5I7s2HFNSq/thsIrfa99UZfdLD6QQciTq5gpiLWLL49wfQbAm3p5aMJGyafYtoA
+         q7Hw==
+X-Gm-Message-State: AFqh2kqrI+IHM9u3olUz0pboEa6JwgGb8zfrq8gYKkhb2BNKNktkMKqu
+	6EfmyXKYCN7mZf1U+2fLzXfydA==
+X-Google-Smtp-Source: AMrXdXvXToYtzezykd+4mKc0RKkAYBPN8uoLeLVJ1EmSVDKfwhrNLNUGBwdmAi/c8oZEsXTdioXOUw==
+X-Received: by 2002:a05:6a20:548e:b0:ac:19cf:1553 with SMTP id i14-20020a056a20548e00b000ac19cf1553mr96271314pzk.61.1673404028343;
+        Tue, 10 Jan 2023 18:27:08 -0800 (PST)
+Received: from google.com (2001-b011-0003-1479-d038-ab51-d40d-2b1f.dynamic-ip6.hinet.net. [2001:b011:3:1479:d038:ab51:d40d:2b1f])
+        by smtp.gmail.com with ESMTPSA id t2-20020a1709027fc200b00192f9991e51sm8649128plb.251.2023.01.10.18.27.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Jan 2023 18:27:08 -0800 (PST)
+Date: Wed, 11 Jan 2023 10:27:01 +0800
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
+	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	johnson.wang@mediatek.com, miles.chen@mediatek.com,
+	fparent@baylibre.com, chun-jie.chen@mediatek.com,
+	sam.shih@mediatek.com, y.oudjana@protonmail.com,
+	nfraprado@collabora.com, rex-bc.chen@mediatek.com,
+	ryder.lee@kernel.org, daniel@makrotopia.org,
+	jose.exposito89@gmail.com, yangyingliang@huawei.com,
+	pablo.sun@mediatek.com, msp@baylibre.com, weiyi.lu@mediatek.com,
+	ikjn@chromium.org, linux-kernel@vger.kernel.org,
+	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	kernel@collabora.com
+Subject: Re: [PATCH v2 09/23] clk: mediatek: mt8173: Remove
+ mtk_clk_enable_critical()
+Message-ID: <Y74edWvIF6I40ANt@google.com>
+References: <20221223094259.87373-1-angelogioacchino.delregno@collabora.com>
+ <20221223094259.87373-10-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5Hk8kguJ=joLXF3OrRXxGvuFAJFKYoK+y7q+wqDBS-wtQ@mail.gmail.com>
+ <8bc4330b-0cfe-222b-7b8a-35fd15a30a52@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v3 00/11] net: mdio: Start separating C22 and C45
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id:  <167339581789.32183.5441523442987743331.git-patchwork-notify@kernel.org>
-Date: Wed, 11 Jan 2023 00:10:17 +0000
-References: <20221227-v6-2-rc1-c45-seperation-v3-0-ade1deb438da@walle.cc>
-In-Reply-To: <20221227-v6-2-rc1-c45-seperation-v3-0-ade1deb438da@walle.cc>
-To: Michael Walle <michael@walle.cc>
-Cc: hkallweit1@gmail.com, linux@armlinux.org.uk, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- Jose.Abreu@synopsys.com, s.shtylyov@omp.ru, wei.fang@nxp.com,
- shenwei.wang@nxp.com, xiaoning.wang@nxp.com, linux-imx@nxp.com,
- sean.wang@mediatek.com, Landen.Chao@mediatek.com, dqfext@gmail.com,
- f.fainelli@gmail.com, olteanv@gmail.com, matthias.bgg@gmail.com,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, andrew@lunn.ch, geert+renesas@glider.be,
- vladimir.oltean@nxp.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <8bc4330b-0cfe-222b-7b8a-35fd15a30a52@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_161021_295596_BAC9A1EE 
-X-CRM114-Status: GOOD (  15.37  )
+X-CRM114-CacheID: sfid-20230110_182712_806834_817B3838 
+X-CRM114-Status: GOOD (  25.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,52 +100,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This series was applied to netdev/net-next.git (master)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Mon, 09 Jan 2023 16:30:41 +0100 you wrote:
-> I've picked this older series from Andrew up and rebased it onto
-> v6.2-rc1.
+On Tue, Jan 10, 2023 at 01:32:34PM +0100, AngeloGioacchino Del Regno wrote:
+> Il 30/12/22 05:58, Chen-Yu Tsai ha scritto:
+> > On Fri, Dec 23, 2022 at 5:43 PM AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com> wrote:
+> > > 
+> > > The entire point of mtk_clk_enable_critical() is to raise the refcount
+> > > of some clocks so that they won't be turned off during runtime, but
+> > > this is the same as what the CLK_IS_CRITICAL flag does.
+> > > 
+> > > Set CLK_IS_CRITICAL on all of the critical clocks and remove the
+> > > aforementioned function as a cleanup.
+> > > 
+> > > No functional changes.
+> > > 
+> > > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > 
+> > 
+> > Looks good to me,
+> > 
+> > Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> > 
+> > However, if you move this patch before the previous one ...
+> > 
+> > > ---
+> > >   drivers/clk/mediatek/clk-mt8173.c | 41 ++++++++++++-------------------
+> > >   1 file changed, 16 insertions(+), 25 deletions(-)
+> > > 
+> > > diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
+> > > index 70cdc0719658..02231f8ba6d9 100644
+> > > --- a/drivers/clk/mediatek/clk-mt8173.c
+> > > +++ b/drivers/clk/mediatek/clk-mt8173.c
 > 
-> This patch set starts the separation of C22 and C45 MDIO bus
-> transactions at the API level to the MDIO Bus drivers. C45 read and
-> write ops are added to the MDIO bus driver structure, and the MDIO
-> core will try to use these ops if requested to perform a C45
-> transfer. If not available a fallback to the older API is made, to
-> allow backwards compatibility until all drivers are converted.
+> > > @@ -846,23 +852,8 @@ static const struct mtk_clk_rst_desc clk_rst_desc[] = {
+> > >          }
+> > >   };
+> > > 
+> > > -static struct clk_hw_onecell_data *mt8173_top_clk_data;
+> > > -static struct clk_hw_onecell_data *mt8173_pll_clk_data;
+> > 
+> > You wouldn't have to touch these lines twice?
+> > 
 > 
-> [...]
+> That's true, but please,  I prefer not to, as the patches are ordered for
+> eas(y/ier) bisectability in case anything happens.
 
-Here is the summary with links:
-  - [net-next,v3,01/11] net: mdio: Add dedicated C45 API to MDIO bus drivers
-    (no matching commit)
-  - [net-next,v3,02/11] net: pcs: pcs-xpcs: Use C45 MDIO API
-    https://git.kernel.org/netdev/net-next/c/3a65e5f91780
-  - [net-next,v3,03/11] net: mdio: mdiobus_register: update validation test
-    https://git.kernel.org/netdev/net-next/c/555d64c6d8e5
-  - [net-next,v3,04/11] net: mdio: C22 is now optional, EOPNOTSUPP if not provided
-    https://git.kernel.org/netdev/net-next/c/b063b1924fd9
-  - [net-next,v3,05/11] net: mdio: Move mdiobus_c45_addr() next to users
-    https://git.kernel.org/netdev/net-next/c/ce30fa56cbf0
-  - [net-next,v3,06/11] net: mdio: mdio-bitbang: Separate C22 and C45 transactions
-    https://git.kernel.org/netdev/net-next/c/002dd3de097c
-  - [net-next,v3,07/11] net: mdio: mvmdio: Convert XSMI bus to new API
-    https://git.kernel.org/netdev/net-next/c/b3c84ae5ff99
-  - [net-next,v3,08/11] net: mdio: xgmac_mdio: Separate C22 and C45 transactions
-    https://git.kernel.org/netdev/net-next/c/c0fc8e6dcee4
-  - [net-next,v3,09/11] net: fec: Separate C22 and C45 transactions
-    https://git.kernel.org/netdev/net-next/c/8d03ad1ab0b0
-  - [net-next,v3,10/11] net: mdio: add mdiobus_c45_read/write_nested helpers
-    https://git.kernel.org/netdev/net-next/c/1d914d51f03c
-  - [net-next,v3,11/11] net: dsa: mv88e6xxx: Separate C22 and C45 transactions
-    https://git.kernel.org/netdev/net-next/c/743a19e38d02
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+Got it.
 
