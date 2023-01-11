@@ -4,71 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79073C5479D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jan 2023 10:37:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B155C46467
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jan 2023 12:11:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OhzdySPOLY1Xrh164RsRj3n1veQAAzSokfOR26ztCmA=; b=MblMqhYfCNwnxqhCr5ygS7P2Fc
-	IknZ8dh0oHZyhpKyLTGLhpKmnq9Wro3mv+fB/SzY6uxKWbUj4L++/VsxRG3GPcxYtQN6xRcIDScG1
-	UWpZauJ8mXRHkRhWdpMzEB72oevPGrKOHXUROkEVXlYt5M0H0RejdE5T8Bv1C5Q9zw3t057Qedelu
-	RPxXJXtC7eM9tyn+TxlGAU+JuApfJVRgnLy/hMn/BidDaIn1bC/XSbwiynzsdGdejNNnl596+gx4J
-	GUbv6MBXdPqbonKWEXwTNQ2Q2aGkr4mCr8idv25MT5M+1/MyGlT8bbb/5yPR/A2XshMICG8SyDu+4
-	VH7qnDvA==;
+	bh=MOgbzEn3kTlo8t1d+qHc1uVXnLml6p855i7Aw77M5aQ=; b=aClVP4MtURZVQmD7st8tpQKPgz
+	NJeEr7yuQhBMLoPSUNIGz1+1C3dyREuRU3bTjNJS288c8f3Y8Tsg6LY6Ub6GktybDKFKhrjwx5lwl
+	TyfFUizaOlnVb0CYZHJI6a9hbPmrnJpvXqeOSWuIwTkelw70mPM27h5vWRZ1TD8ATmjrq8EuUZ0TB
+	l0eE5EMrAqtwZVXdIHJ+B5P4XB2//HazJamFlI89IysBvl/t7IxzkqlzKPLPPEojiBLYiXdDZ6wK3
+	yW8cuxCsGacT0MlVm0/ayxaUTbvqjbtdTbimH6vw7KwccHlKATYnLuv2ZsXBGHfPf/PINhK0BZZ49
+	1qbFLj/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFYTd-00ApkX-DF; Wed, 11 Jan 2023 10:37:01 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFYTS-00Apgr-RN; Wed, 11 Jan 2023 10:36:52 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C29C56602CEE;
-	Wed, 11 Jan 2023 10:36:40 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1673433402;
-	bh=H6zzHJpHQe1KvLuxZKBTil2t46+1H+8k2jz3su1ylJM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Rx59Oac2V1EYhsjboFmG7hLyyIMkP+MOnbiyspABilPj681rqxLlV1XHg9GLsSgWs
-	 jsnxNcGF5hx2JB4OssIvba/es9sEMyyD9U1hPITXMBc5qXdk+Pfuw5NEpfeL1v9M5I
-	 lO3hH7ezSBT0nQ482mAIL8HT59w2s9Ipki4bD5REZcOwrhxXpbsMzvpEYzQDDmSVNF
-	 cHZSZ3EmBOZ2peeEEUwQs1ieAHRKWZl1lb2d2ojvVq0QfKl0GF/9jD8DZ63cpOW8AF
-	 BKuJ3QUxMBhrBUMa8BhzTudZgdOB0/Q5coLVnULtXZh6hbWAEi3GqaRM4qvWPpKZ4V
-	 0kylkWTLvW+KA==
-Message-ID: <e263490c-8ff3-d19d-bcb8-8a81ab7f6245@collabora.com>
-Date: Wed, 11 Jan 2023 11:36:37 +0100
+	id 1pFZx8-00BCy3-D7; Wed, 11 Jan 2023 12:11:34 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pFZwq-00BCre-92; Wed, 11 Jan 2023 12:11:18 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id F1F2BFEC;
+	Wed, 11 Jan 2023 04:11:53 -0800 (PST)
+Received: from [10.57.68.138] (unknown [10.57.68.138])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D7D313F71A;
+	Wed, 11 Jan 2023 04:11:09 -0800 (PST)
+Message-ID: <02f259fe-1c6f-834b-c29d-aaf2a0595adb@arm.com>
+Date: Wed, 11 Jan 2023 12:11:04 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v2 11/23] clk: mediatek: Switch to mtk_clk_simple_probe()
-To: Miles Chen <miles.chen@mediatek.com>, wenst@chromium.org
-Cc: chun-jie.chen@mediatek.com, daniel@makrotopia.org,
- devicetree@vger.kernel.org, fparent@baylibre.com, ikjn@chromium.org,
- johnson.wang@mediatek.com, jose.exposito89@gmail.com, kernel@collabora.com,
- krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org,
- linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- msp@baylibre.com, mturquette@baylibre.com, nfraprado@collabora.com,
- pablo.sun@mediatek.com, rex-bc.chen@mediatek.com, robh+dt@kernel.org,
- ryder.lee@kernel.org, sam.shih@mediatek.com, sboyd@kernel.org,
- weiyi.lu@mediatek.com, y.oudjana@protonmail.com, yangyingliang@huawei.com,
- mingming.su@mediatek.com
-References: <Y74jNZbjpopT2rNY@google.com>
- <20230111085645.30683-1-miles.chen@mediatek.com>
-Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230111085645.30683-1-miles.chen@mediatek.com>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v2] iommu/iova: Fix alloc iova overflows issue
+Content-Language: en-GB
+To: yf.wang@mediatek.com, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "open list:IOMMU DMA-API LAYER" <iommu@lists.linux.dev>,
+ open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+Cc: wsd_upstream@mediatek.com, stable@vger.kernel.org,
+ Libo Kang <Libo.Kang@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
+ Ning Li <Ning.Li@mediatek.com>, jianjiao zeng <jianjiao.zeng@mediatek.com>
+References: <20230111063801.25107-1-yf.wang@mediatek.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20230111063801.25107-1-yf.wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230111_023651_048721_E432D2CA 
-X-CRM114-Status: GOOD (  11.82  )
+X-CRM114-CacheID: sfid-20230111_041116_438638_AEC2D2EA 
+X-CRM114-Status: GOOD (  24.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,35 +70,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/01/23 09:56, Miles Chen ha scritto:
-> cc Mingming
+On 2023-01-11 06:38, yf.wang@mediatek.com wrote:
+> From: Yunfei Wang <yf.wang@mediatek.com>
 > 
->>>> Would this get cleaned up even more? I.e. have just one driver left and
->>>> we could have the nice *_platform_driver() macros.
->>>>
->>>
->>> In the future, yes - granted that I find someone that can help with the testing,
->>> as I don't have any MT2712 hardware here.
->>>
->>> Not in this series though (please!).
->>
->> Got it.
->>
->> Maybe Miles has access to some EVBs, or knows someone who does.
->>
->> ChenYu
+> In __alloc_and_insert_iova_range, there is an issue that retry_pfn
+> overflows. The value of iovad->anchor.pfn_hi is ~0UL, then when
+> iovad->cached_node is iovad->anchor, curr_iova->pfn_hi + 1 will
+> overflow. As a result, if the retry logic is executed, low_pfn is
+> updated to 0, and then new_pfn < low_pfn returns false to make the
+> allocation successful.
 > 
-> I do not have any MT2712 board.
-> Thanks for Mingming's help, Mingming will test v2 series on the MT2712 platform.
+> This issue occurs in the following two situations:
+> 1. The first iova size exceeds the domain size. When initializing
+> iova domain, iovad->cached_node is assigned as iovad->anchor. For
+> example, the iova domain size is 10M, start_pfn is 0x1_F000_0000,
+> and the iova size allocated for the first time is 11M. The
+> following is the log information, new->pfn_lo is smaller than
+> iovad->cached_node.
 > 
-> thanks,
-> Miles
+> Example log as follows:
+> [  223.798112][T1705487] sh: [name:iova&]__alloc_and_insert_iova_range
+> start_pfn:0x1f0000,retry_pfn:0x0,size:0xb00,limit_pfn:0x1f0a00
+> [  223.799590][T1705487] sh: [name:iova&]__alloc_and_insert_iova_range
+> success start_pfn:0x1f0000,new->pfn_lo:0x1efe00,new->pfn_hi:0x1f08ff
 > 
+> 2. The node with the largest iova->pfn_lo value in the iova domain
+> is deleted, iovad->cached_node will be updated to iovad->anchor,
+> and then the alloc iova size exceeds the maximum iova size that can
+> be allocated in the domain.
+> 
+> After judging that retry_pfn is less than limit_pfn, call retry_pfn+1
+> to fix the overflow issue.
+> 
+> Signed-off-by: jianjiao zeng <jianjiao.zeng@mediatek.com>
+> Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
+> Cc: <stable@vger.kernel.org> # 5.15.*
 
-I'll remember to add Mingming to the Cc's for the other series that I will send
-after this one gets picked.
-Many thanks for offering testing!
+Fixes: 4e89dce72521 ("iommu/iova: Retry from last rb tree node if iova search fails")
 
-Cheers,
-Angelo
+Acked-by: Robin Murphy <robin.murphy@arm.com>
+
+> ---
+> v2: Update patch
+>      1. Cc stable@vger.kernel.org
+>         This patch needs to be merged stable branch,
+>         add stable@vger.kernel.org in mail list.
+>      2. Refer robin's suggestion to update patch.
+> 
+> ---
+>   drivers/iommu/iova.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/iommu/iova.c b/drivers/iommu/iova.c
+> index a44ad92fc5eb..fe452ce46642 100644
+> --- a/drivers/iommu/iova.c
+> +++ b/drivers/iommu/iova.c
+> @@ -197,7 +197,7 @@ static int __alloc_and_insert_iova_range(struct iova_domain *iovad,
+>   
+>   	curr = __get_cached_rbnode(iovad, limit_pfn);
+>   	curr_iova = to_iova(curr);
+> -	retry_pfn = curr_iova->pfn_hi + 1;
+> +	retry_pfn = curr_iova->pfn_hi;
+>   
+>   retry:
+>   	do {
+> @@ -211,7 +211,7 @@ static int __alloc_and_insert_iova_range(struct iova_domain *iovad,
+>   	if (high_pfn < size || new_pfn < low_pfn) {
+>   		if (low_pfn == iovad->start_pfn && retry_pfn < limit_pfn) {
+>   			high_pfn = limit_pfn;
+> -			low_pfn = retry_pfn;
+> +			low_pfn = retry_pfn + 1;
+>   			curr = iova_find_limit(iovad, limit_pfn);
+>   			curr_iova = to_iova(curr);
+>   			goto retry;
 
