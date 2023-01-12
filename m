@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AC50C63797
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jan 2023 18:00:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF8BCC54EBE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jan 2023 18:01:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Qd/kAKEvr3Tcc8Sv/GkNlmr2eKPdfRYoeXyEaMMLtoc=; b=KSkfgph2EHElt/pVCce5Ls2lVG
-	jgIE6sgX0mslrCiMMPONeRt65tGoDRW6G/AIQNZeqehMlETnZndx38Prb68oQaugfrh0TVsbVHZW/
-	YKCe/VLh6HOru++aCbDeBLZpGETJNJ+FvuFM875LNFd1QxCaIAoWW4vmZp9aoe/f6Jj5+EpzHxSvG
-	Cvd89O99YbkcSMncSkL4mc5xczzYBkZDJa75tTZnlIFuQjJucZzjqR8esued9pgCbst+punCLUghl
-	2Jrb+OfDBDCYsgavmLUzg5LbHZMJSp+0p7tlTLwHyCJCtHMP3r+BZNVzj4QwD97TVngn/J/D7qUtt
-	z0LzLgbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-Id:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=L9No1CGaAX6oJczw7gY4fqsz4RLNzX1qUr0FD+GZuH8=; b=3+h2A6Vhyvgl1UMZKlZsUq4+vI
+	YzmNzmEpU4Z+Ry2nXgydGXbRlCcZVDOXZV05GDw3KinqABfUL1wfnT9D7Nnqsp4Q9QWCt/8Oil6WZ
+	bPSqWUDKhQk6WEeylvB6arNlXPMy/iwFEpFsmYRH7eW0JGtIlj2a/dXqe9ZHC/T9PPVOxOCHAgYYG
+	97bnopo4sMRhfiA9cadodqEaIQlbA3bCsP11vf/800gX31BNXJKDQ11R3h84mkjbiuVfv/Kda3Se/
+	PezvySGyp/mej6Yr6fqDSZJh51ukJ2kQURQZYLW7Y6ZRJoBPouXeqW+emv7FUqxRuZRKoyWxgPln2
+	6ivZtTlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pG1sF-00GAdf-38; Thu, 12 Jan 2023 18:00:23 +0000
+	id 1pG1t8-00GB0q-A9; Thu, 12 Jan 2023 18:01:18 +0000
 Received: from mail-bn8nam11on2100.outbound.protection.outlook.com ([40.107.236.100] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pG1og-00G9Dv-3L; Thu, 12 Jan 2023 17:56:43 +0000
+	id 1pG1ok-00G9Dv-St; Thu, 12 Jan 2023 17:56:53 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=JnEoO6vaKEz0os7Ji8TAU9tq2/yb8OLdF+/WPX7Q4kGbbs8kxeTmMClF37FLvZUU7XjKWDnhdZXp6QZkmtRHsz4kSyDSXJ0rj5CMgVeI76Oxa1kIa6XT8/XrAoqWMXC5ENtaJNtf9EP7iMY+/Vx9VD27OHccWU9MLaF7h+mWr/oXOv5N+4VjFLVxOCQsxZjZZcLLmyhWAqSNZY3VEfECsgyaor5PDWnjKsLOZogBiIn9bh8wSxhYH14I5+L+VKyDsVRXF3T1oY6rjpcWXV+u/Lx9WYljeYCfHP+VDYsLREY6FBd4XZVWAOT82QyqSRJ8YZjZJrbG+Iwrub9EqYl60Q==
+ b=IJTZarWaoKsJHulIKgLpaed9kY01ou280WwJLdddi8bhV7568s865Et43eq6jFDJQmQM+etXoRy3dxBLkhqUNtBl8V2d5r+9BqsMgRx0O0AQSIN5Q9NvPIJPllpKsolb4lpxRmaYMz96qXVBisRbUCuxMTp3KPf5g2EEoWhUAV0gJE76DXJVEArWePbV8EgJmaylLwvGt9kkt7SYBMGSDZlpBdWhdvnJIAPPLk3NCnCSZMdPj2/SaZQGJN0wwKl7Z0KbATclklQxA2DnDiYKgz+db401mLEPHex4HRNMsLZh3WwAoMrOc9ZVa5IXRPiz3hqFHzOOuNUJY8Ed14cM9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Qd/kAKEvr3Tcc8Sv/GkNlmr2eKPdfRYoeXyEaMMLtoc=;
- b=jsrqFFOk4XH+BaSD8GEe+xo8Sz71D+jwj2UAb8RZ4988dpLShC5Oca/w4ikHbBFfj4et/bIEBK6AxGO/gZtw/izH9OqvJHP2fc68/0incHDErnebNsI9r1yDcn2DGD1KDp27Win3CCQ9w45LebtGhuRmV5j0CJrMHE3T69+Qk+ECMwCorWWBMpHPD/KGfEjl+eMwK9PiZL+lI3h3rUuEPufyeFIOjwcyAEaJF7GkIe10ZTx+mpLBBmWmQNKkXpTs1MOPZHMKT5W5TQiYAH/QzWZxpd9Y/W3ssb2J04SeT3VVuJnUfP7WOfWksI0fXajM0I4fjbVOvzRtGqj9ynC6pg==
+ bh=L9No1CGaAX6oJczw7gY4fqsz4RLNzX1qUr0FD+GZuH8=;
+ b=hyTKmc9HYwq+SLddTgf+S2Sw+5m3VLcmwQ3mmRTlnXwKx8+gZgUJXOQjwXSUOqRm9LHZ+b0LrhpH1IJ35s5QjeHsWVqFJJXO/UknMJghLi+DeHJd60pNzBtJ4cnX5MihDaANc4YktUdDKpZoEqr4uGvDfkIvnXu+c6NYImWrWsSsClxgxa4127mXlupuf7Y4odbzb4vjY4VWMA/GJECJyeBQfom7xHEKwfvyzxicpAQnqrJQLkS137RcblWc8hVyF7dds0hzrK9vpBPi1gAscCWPZESbFIBqxHO//2LPNi17+dATiirY7aMtoX6Lu1VSMfL7kuYvCE49ruAG2VL3pQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=in-advantage.com; dmarc=pass action=none
  header.from=in-advantage.com; dkim=pass header.d=in-advantage.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=inadvantage.onmicrosoft.com; s=selector2-inadvantage-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Qd/kAKEvr3Tcc8Sv/GkNlmr2eKPdfRYoeXyEaMMLtoc=;
- b=HytHi4S+DEbQlK8TdTiP5r4gE0J5zAOY+TR0aYzOKZgd3sn70W+O/a+uEsTSsk9Jftisa75pHDixnhBMWxRFMp8MpAJtTYCou/xsGy6G9IItDBhjbq2YKPYYolg8/eSaVjOMY5+yZAvxvG/PbqOLJJ0rAG+XZ9WW5kVvQ9WvNWM=
+ bh=L9No1CGaAX6oJczw7gY4fqsz4RLNzX1qUr0FD+GZuH8=;
+ b=U4lpfV6FAe5vRw2zJ9gXacY/YMg14e1rcIHeWPyoBcsNzGp2S0gD7QQOcY5WAg5yIOdy2r7LC7pBclOgKToJlfyFBJ9I0tkqeA8i0q5G1LIZg5rVv8e0Ms6SlVbA0rlottTjMiHROgX13hNE6cSpZlE9TUPDzVcoIRwZvGY3OT0=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=in-advantage.com;
 Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
  (2603:10b6:301:35::37) by SN7PR10MB6548.namprd10.prod.outlook.com
  (2603:10b6:806:2ab::5) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6002.12; Thu, 12 Jan
- 2023 17:56:36 +0000
+ 2023 17:56:43 +0000
 Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
  ([fe80::2015:3589:3e96:2acd]) by MWHPR1001MB2351.namprd10.prod.outlook.com
  ([fe80::2015:3589:3e96:2acd%5]) with mapi id 15.20.6002.012; Thu, 12 Jan 2023
- 17:56:36 +0000
+ 17:56:43 +0000
 From: Colin Foster <colin.foster@in-advantage.com>
 To: linux-renesas-soc@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
@@ -82,70 +82,79 @@ Cc: John Crispin <john@phrozen.org>,
 	Andrew Lunn <andrew@lunn.ch>,
 	George McCollister <george.mccollister@gmail.com>,
 	Rob Herring <robh@kernel.org>
-Subject: [PATCH v7 net-next 02/10] dt-bindings: net: dsa: sf2: fix brcm,use-bcm-hdr documentation
-Date: Thu, 12 Jan 2023 07:56:05 -1000
-Message-Id: <20230112175613.18211-3-colin.foster@in-advantage.com>
+Subject: [PATCH v7 net-next 04/10] dt-bindings: net: dsa: utilize base definitions for standard dsa switches
+Date: Thu, 12 Jan 2023 07:56:07 -1000
+Message-Id: <20230112175613.18211-5-colin.foster@in-advantage.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230112175613.18211-1-colin.foster@in-advantage.com>
 References: <20230112175613.18211-1-colin.foster@in-advantage.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-ClientProxiedBy: BY3PR03CA0002.namprd03.prod.outlook.com
  (2603:10b6:a03:39a::7) To MWHPR1001MB2351.namprd10.prod.outlook.com
  (2603:10b6:301:35::37)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: MWHPR1001MB2351:EE_|SN7PR10MB6548:EE_
-X-MS-Office365-Filtering-Correlation-Id: 1afa9640-b95c-40cc-6718-08daf4c658d4
+X-MS-Office365-Filtering-Correlation-Id: b281a153-d04b-43b1-4a98-08daf4c65cf9
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	URyotYrxwO7BCHjDSLr8nlReMlCrZoYx3R6VIXdKZldUQTu62hI47EciA+suQFGa/vcn8OX/ZRGqv7pggBqWFffvHxNvn8UT7O5V0hCwYbMAvaWw0cSzLWG1vOq4TrEsV2sohT4B3/lF9E9NSReB+b1Q4mfV0dlJjwpOVZWz8LHx1lghtwhB0ZSiK6nHCiLXI15+MmHN7sBnB/dhGKJ+oWNhvqI/pvIlpSWhi684MPHffRH6+oLlbKIf3Xn1aOREeApxZqnBPpaU8sWFyF/YEKeYVRaCAhFtKfMquJXS3WEyrV5ajJhKgxJfhNjphEqnknf+cICYRN+CpfGUFHEi/Xf5cEpbOy1mLfbJnWSttMrOm1yTRxSf3U2VJspcJSMIMSbQEPGJwQNMkpCtZ3Sxuz/KWRwemeveogFORWnmJkK8//obfQ+1jHe+coWHaLg/SZIab4Z7Q7ddoEbHetIEuRav3BA1tc0ipQ0XWmwaC/2ZziCGZccZskCgaQ3rtXYwkVovgcLC5MqsOLIDKm8/+H1AP5s8h69GNnaneu6xkaqOey5L2E5Q5ZOSJSJ8MMxxRLSqJNMwijrpHqYDCHt5dcv1rAeqMPIqnfbjfSoW8rqSA0gqVsLS+gWK1t2s82Tj
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2351.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(396003)(136003)(376002)(366004)(39830400003)(346002)(451199015)(66476007)(41300700001)(66556008)(66946007)(8676002)(7406005)(5660300002)(7416002)(316002)(44832011)(54906003)(4326008)(8936002)(2906002)(86362001)(38100700002)(478600001)(36756003)(6486002)(52116002)(6666004)(186003)(6506007)(1076003)(2616005)(6512007)(83380400001);DIR:OUT;SFP:1102;
+X-Microsoft-Antispam-Message-Info: 	DtQTfhXbJJYrzwlf0F7Xbfh7vJgqNiUJNKHg2xkK1PyESIOVNmD2KrFwFHAWVRmEwzDnCWDJfo+FZyAmIgvcTrQk7xM+1/c1k27ihuCSurfzTZvvtA/2bXI29LWYRtfIBX1blpvF5CpWIIbrSEBiWPO/wVFRh6pSNTYGrbKDzgTpg/5WV9clEzPCl2QaySnrKQ81MgOj3HNjWZrDEyACDJdjnvPN8YKD3hLxpVRfJG0/kcESf7jNZu7Jy3M7z7tuPGxqlPiqmkm2rtc1iXsr6zMIoLH8e+fnCu4xV2ned+U5DUnogzeTurWLbnifTwfc5mVAOWn/Va1qXaZNb7XkH0YP9QlUJk/0HCk+wWcST5agHu7g6deYQ7KqgUK45xQU9QR8wy9VW9Oo9F8zBKQqUEzlbX2egofXzc5EA13V83N+Kwkjql+Y9JY5AqXoNCksOTBC5SK3V41yX1xVLv28g4Yj7Ov+s/tosTTzyAw3RGLiLaYupmpXuDtL3ujX9SqJyWPXtesj2byFWPovNhBA0Smo0D5Dure1LcoqwT1rocRdRAj60KNxGe+tQCwceysoHavnD6XHGnAzI/BH/cuzq6UWiDXUL/PIBzdmfZJxkO5jVz3spC25RsIsiIZQxy0nTJ+nN1Y2onzM8SKRbTYcLEszIllVBAkPQ+D1KVByg8U=
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2351.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(396003)(136003)(376002)(39840400004)(366004)(346002)(451199015)(66476007)(41300700001)(66556008)(66946007)(8676002)(7406005)(5660300002)(7416002)(316002)(44832011)(54906003)(4326008)(8936002)(2906002)(86362001)(38100700002)(966005)(478600001)(36756003)(6486002)(52116002)(6666004)(186003)(6506007)(1076003)(2616005)(6512007)(83380400001);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?PdSBYFt6Dn3IfkT5J8jWvMQZBDpibv1nu7mjNMzcVfZpd571v5TojJZJy0tU?=
- =?us-ascii?Q?Nmk3Zimg94DXeXWbi/+tN1VYVsHbZmgmwIM78qwakQi9KLOIOTwIa8S9KixP?=
- =?us-ascii?Q?TLWQvP/31g/asgLNe5MeSDIc76KIa1LsOYgB+fb5z47JYYINu7aaOmUWmkPN?=
- =?us-ascii?Q?p0m+8gCvD6ZRbHPWUruP63ZFSGOqbNDnIsCkGmNpO+WOwop2Yg7Ew3zWd2tP?=
- =?us-ascii?Q?X8X94B8xRNbsxrQNvJEYA+Di5R2c7zhTEuw7fzVpc1fn09NU7Tu2qed86MuG?=
- =?us-ascii?Q?xpfiEuZ4GPaRc6nNGsU5BwCYUIu52cDbc+6dHRFkAcWzmYnnt+O96gC8Zfit?=
- =?us-ascii?Q?dtQPvvjwyxbJbjLHfbL+jUy6FRO8MBFrP9CjpqWpk/PoQlYpZlwWOddWjBJz?=
- =?us-ascii?Q?R0oVFD5ni8zZdmG8X+429d9rOpmv4V0dPC0dXejPcH2/6fGiBNkJPfmL6ONV?=
- =?us-ascii?Q?jhcPJRDgYhhmuMsQEBU9umKqB+5ppQk8QO6mN2rYu/J72bhNpEDJyKtQ/Wcg?=
- =?us-ascii?Q?4uIcuPzfKh37OlnrnvQW2jarZE4ElLCWjOw/DGqCI/S3cUeUIg/Ca7Y92Iv2?=
- =?us-ascii?Q?WcdFRJpOhhm/pRGWyU+nFFkFFHmvNlry+3dnM4lzFj8Mdp9Tz5LihK0OmRCC?=
- =?us-ascii?Q?86cDsp8UjGDKtM3gXg0oezIh2l7jx1B32G9tzgxLxsCpbDuJ0u7Tg+iUhnJP?=
- =?us-ascii?Q?E/itxDsRq3ZdU3ydnHppTIDEdyOQIaY4LsQPtYmvA6DCIyi8zbTd6s69a97i?=
- =?us-ascii?Q?U7r/ZJ/zdsUY7EUjDZiZRKhBMua7Iq8eCR8P3QGQ2HJdhQKNbCvwidjhuGTo?=
- =?us-ascii?Q?R6PDui6H/M5pt2ckhsnpiiTMiYUmJ0LR7Nv3Kl3FW7WLg5N9pRVPDn+xeLKN?=
- =?us-ascii?Q?WsaPjyFGC97FSwf6J3vzqOQvgHgRuYus/PW+egQmIbl4zRG9UKlGOQesOjxy?=
- =?us-ascii?Q?YVeoGVKNZuds/3IAOfQrH+FtP2Xq8WeRBs9uzvOJrAS3+neFyMbXsQbAqtuh?=
- =?us-ascii?Q?sJftzidSx78v94svs3nJ4oeP4ttHZcA0BvPLWAeS62emSMcLFDlkDIliUmAp?=
- =?us-ascii?Q?KcICRIO1niI3wZ3PGWFdLEPU7t2MXdt1E6PTdthRQmq7KFl0LLg3X4QgG1Tt?=
- =?us-ascii?Q?E8szNRBgYvXoZMhvb9F721jjVaMZNTCDYYnhP+TJo/G88DbCGKBYypnZx68G?=
- =?us-ascii?Q?6zpIWMEl2sdyWzDV+6FMJZVgG+p7h8vJYfOyXqX5h/Atx2TFFq2ZKGvVKcDu?=
- =?us-ascii?Q?QvtDZjrmw+Fxg43RAAg15TmJLWlQhif0QKrqlro+u9vdokSjFkWjxvKlESPL?=
- =?us-ascii?Q?yDKYq5r4DKlCu4dWZkV08jGHOwOIl/Sd6GoHH9cVbEWy+AAxo7OqCiya6YBI?=
- =?us-ascii?Q?ZIWs3kh9QbE0D5nAbTBikMM0wDPiWaP/7hYO6u+4S8PfsGyRleU7QRzn0kWm?=
- =?us-ascii?Q?QmGIM7GZ7FQnp6Q44XqxSy34e6WPFKyWlLR8ougFCgHUU7Lug5qnsir5fTNU?=
- =?us-ascii?Q?0XUQdvlVxdz5G3zP4Qmh/yDUDWN21u/h4jg9rx4e6WIH9B3c0xCBl5FLkg6a?=
- =?us-ascii?Q?JWyDW6pfSn6U4ZvWN/5oXRREoGnDYGG5aSYzjoW5cGsctLDxMflFTDN8pybc?=
- =?us-ascii?Q?yWw2cF7NavEnWaWjDes53Hv3m0h3Z8DeJX5PqnbcawujFUWHnLGA2vqAjivS?=
- =?us-ascii?Q?kG6VHOg/19nhmj+Y33YRt8qGLxY=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?Y2diR0YvcFFoSG10VHpNVUZvSzM5TjZHSHhQUmlwTGswR3ZVbHRVcGNQcHNx?=
+ =?utf-8?B?Y0lzVDk3Y3lCSW1HbVYzTnA2NWtIM2VYK3pVVC9kNXZHTnBnQ3RkeE1SRTBj?=
+ =?utf-8?B?NVZrZmQ0RTlueU9qU25pRG1oaFdTSFpTYzFrb1RuaGc3RDBIMGVIVS9leXdZ?=
+ =?utf-8?B?QmMyOTVvMkhSc200dTVJbWwxaklBN3F1aEFqN0cva0llZkNxc1JrN1FCamFv?=
+ =?utf-8?B?Wjc3bmZFRTZDWVQ5eEJJazlEOWdiNGFUcjExdGpWSzlYQTIzR0Zlb3lYMjhV?=
+ =?utf-8?B?VWJ3WnFNMkZnRFo3T0NSRE1MZGRFL2gzaHdSelFMcHNHbVY0K2wvK3J0WkI4?=
+ =?utf-8?B?cXJ4RU1BcFJxZ083TXBMQk5kbGlkczgzUnRlaDRxVlJvVXc5TGZhN1dPaGdw?=
+ =?utf-8?B?WDhJVkZwWnZLdXluL3N4dTJtZjNjSXB5NVpOODdUb3dKR2xjYVVmUWVxM0l4?=
+ =?utf-8?B?c05IQ0liQjQyU0hOQVdHQzgvTmh6ZHlXeXdscVFCL1JTcFdTL2Q3UlJuQnhP?=
+ =?utf-8?B?MHRIb3RPb1NNNjg1b0lhMUZXYm1kWXVDV08rd0EyMmUrc01YWGRQRlpBeDJm?=
+ =?utf-8?B?eVVJWmRjZkthMm5vMk9qdkJkVHllM28wdjFCOXFQeHNrQXNFc3IvOWhmR3hE?=
+ =?utf-8?B?TVpVcnE0V2ZpZEw3UUxwZnNjdXROTU1meFdvaWIrOWVOcndrMExUNm82bEtp?=
+ =?utf-8?B?bWgzRlo0WkVyMnQ4dXlJMlhCVGRjNXU5c09PTUxnYlRweWh0VXUrYlpMb3R2?=
+ =?utf-8?B?TkJtM1UrcW02TFlNeWJkUUkxT0ZpSXFmaEUwcnVIbk5jWmw0ZTNzK3pyY2Z4?=
+ =?utf-8?B?NHV1bGF0TGdVWnhsczhkNEdTUXJ2VGp3N21xUlNVdkpaN1lrVU1md1pyWmpp?=
+ =?utf-8?B?ZUlDRXBUYmJTcG8wU2dZaDIrN3lKYSs4K3BiQnpUV0ZsaTZzOTZYeEJDSVBn?=
+ =?utf-8?B?MFZFdUdNbmZWTStlQ3B2WDdIckpqME01NmUrNlNFc0NBdWVsNVdxdjU0cm02?=
+ =?utf-8?B?c0taR3I5S0VsQjRIbmdtTW5LSi9iLzRPUjludnpibWJGMVI2UXJYNWF2N3JC?=
+ =?utf-8?B?dEpjcTk0UThkZTYvTWY0RFlNU3hMQllRSllVNGwwUGpwamRNa0k2cnh5c2xO?=
+ =?utf-8?B?OWQzMDYrNWt1Ny9wUS90UHZjRDI3WTlMYjlUOHFwN2hOcVlvVk1scjVxdUJn?=
+ =?utf-8?B?bGJrZGI2TnplYzBSUFk1aGpORUdaTUlGK24vSVh4L3RnR21xU0dFSGI3OGZh?=
+ =?utf-8?B?a0Jtc24wczdrZG42UHVSZUM1bHU0MUFubGFNaGNEZWRHUTlqWEZzd1BuaFhD?=
+ =?utf-8?B?NmY0SlkyM2ZJMSsxTHljS0ZHT1ZVazF6RGFEUWVvSng1azhUblJpSS90T0RP?=
+ =?utf-8?B?SndEUHREUHIvME9MUVpNOWR6eTRaS0QxQTBMY0lLYkdSY2I4cHhOQUpSdWNr?=
+ =?utf-8?B?bUZrOW9OREhhdHdNNTRZa1VncVc3OHRYeGN1bFVSaHlwc3RDSEYwa3hOQXR6?=
+ =?utf-8?B?SDZacWxJekhuMkZFSnNuV2ZCaFJ6Y3dITk5TcXM2ZjJuZTdzallrSDNBcGh1?=
+ =?utf-8?B?eU9LN21EYWd2Z1k5RTV4NFMzaHdiL3h1U2lxeG5HVytkNGRqUTJsVFQzcVBr?=
+ =?utf-8?B?TzhGaG5jcG95U0I5VTN2a1VCSWRyK2lKZmVQOElSMjN4UkZndS9GdDJvOUxo?=
+ =?utf-8?B?Q1JMck5lTnl6QWFpTTBVNWxpWUxkWE1ycmYyMzUrMm9MZ2dFZitCZnp0UTBD?=
+ =?utf-8?B?MU9OWSt1Z3MyeVVNYnUyV1RsMDNUejllMmZDTCt3L3lFQXRQUnlvaW9IN3Bs?=
+ =?utf-8?B?ZzVuK1VQMkprdXJxWTVtU1hWWm5BQSs2NkgxckN5K0VvMkVKc2JkbDhDckZa?=
+ =?utf-8?B?dFkvU0x3aWt0cDNMU3Z0M2sycTBLNVh4MXd1RGlpZjcxbjZJNWRaazBDYzA2?=
+ =?utf-8?B?alM0cmxRNytPSTE1YmthSjNXeXdRV3NVWXpmekdQWFlVZVZMbjZocVJzWG1O?=
+ =?utf-8?B?bWI3OFdNWjNhSnNld1hPM05PNnlOYnA3Q2pCbWxxTEk0bFBqTC9RV2JGWnlu?=
+ =?utf-8?B?THI1cFd0U0YvU1kxRW9tUitUVHhRakR2d2dweG5MYXZ5Wnk3cFhYTkRlcFBN?=
+ =?utf-8?B?N1RHK2t3QWl1UCtGQlpvemhEV0R2b3JnTWZHWHhBcFRKMjYyOFNGeksyY0dP?=
+ =?utf-8?B?Y2NKNkd1czBCMWwxSGJiZ3AvKzlqd3BFT3ExSGR1ek9xa2RPZjJrWGN4OE1G?=
+ =?utf-8?Q?Yxz8D5jtQERj/IAg7Lt/iG14Dynj5Ha4eiDviC7M5I=3D?=
 X-OriginatorOrg: in-advantage.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1afa9640-b95c-40cc-6718-08daf4c658d4
+X-MS-Exchange-CrossTenant-Network-Message-Id: b281a153-d04b-43b1-4a98-08daf4c65cf9
 X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2351.namprd10.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Jan 2023 17:56:36.0175
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Jan 2023 17:56:42.9545
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 48e842ca-fbd8-4633-a79d-0c955a7d3aae
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: S9iee6IQ1Wmb9hR9YN7Y0X2GmP3P60sVqvvakRUsgy/csbDJVm8wI73BEW+TbEIs1ddBWy9CcOOsm47nn6+dT0fF/lNvXm6UlW5N9k3+fnM=
+X-MS-Exchange-CrossTenant-UserPrincipalName: 0m2W3LTtPRdXj+g3Psy6Z9NmRqAF+UxQniCGQtDZ0+1eQKs8UOFnvhcoIU0/OieE54Q030/Rf+9j4XIzOohqDCzjdV/Ga6jN/yqMRiVbMwA=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR10MB6548
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230112_095642_210086_C24A1C5F 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20230112_095649_039922_5F14A40D 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -160,56 +169,237 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The property use-bcm-hdr was documented as an entry under the ports node
-for the bcm_sf2 DSA switch. This property is actually evaluated for each
-port. Correct the documentation to match the actual behavior and properly
-reference dsa-port.yaml for additional properties of the node.
+DSA switches can fall into one of two categories: switches where all ports
+follow standard '(ethernet-)?port' properties, and switches that have
+additional properties for the ports.
+
+The scenario where DSA ports are all standardized can be handled by
+switches with a reference to the new 'dsa.yaml#/$defs/ethernet-ports'.
+
+The scenario where DSA ports require additional properties can reference
+'$dsa.yaml#' directly. This will allow switches to reference these standard
+definitions of the DSA switch, but add additional properties under the port
+nodes.
 
 Suggested-by: Rob Herring <robh@kernel.org>
 Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
-Acked-by: Florian Fainelli <f.fainelli@gmail.com>
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
 Reviewed-by: Rob Herring <robh@kernel.org>
+Acked-by: Alvin Šipraga <alsi@bang-olufsen.dk> # realtek
+Acked-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
 
-v4 -> v7
+v5 -> v7
   * No change
 
+v4 -> v5
+  * Add Rob Reviewed, Arınç Acked
+  * Defer the removal of "^(ethernet-)?switch(@.*)?$" in dsa.yaml until a
+    later patch
+  * Undo the move of ethernet switch ports description in mediatek,mt7530.yaml
+  * Fix typos in commit message
+
 v3 -> v4
-  * Add Acked and Reviewed tags
+  * Rename "$defs/base" to "$defs/ethernet-ports" to avoid implication of a
+    "base class" and fix commit message accordingly
+  * Add the following to the common etherent-ports node:
+      "additionalProperties: false"
+      "#address-cells" property
+      "#size-cells" property
+  * Fix "etherenet-ports@[0-9]+" to correctly be "ethernet-port@[0-9]+"
+  * Remove unnecessary newline
+  * Apply changes to mediatek,mt7530.yaml that were previously in a separate patch
+  * Add Reviewed and Acked tags
 
 v3
   * New patch
 
 ---
- .../devicetree/bindings/net/dsa/brcm,sf2.yaml     | 15 ++++++++++-----
- 1 file changed, 10 insertions(+), 5 deletions(-)
+ .../bindings/net/dsa/arrow,xrs700x.yaml       |  2 +-
+ .../devicetree/bindings/net/dsa/brcm,b53.yaml |  2 +-
+ .../devicetree/bindings/net/dsa/dsa.yaml      | 22 +++++++++++++++++++
+ .../net/dsa/hirschmann,hellcreek.yaml         |  2 +-
+ .../bindings/net/dsa/mediatek,mt7530.yaml     |  5 +----
+ .../bindings/net/dsa/microchip,ksz.yaml       |  2 +-
+ .../bindings/net/dsa/microchip,lan937x.yaml   |  2 +-
+ .../bindings/net/dsa/mscc,ocelot.yaml         |  2 +-
+ .../bindings/net/dsa/nxp,sja1105.yaml         |  2 +-
+ .../devicetree/bindings/net/dsa/realtek.yaml  |  2 +-
+ .../bindings/net/dsa/renesas,rzn1-a5psw.yaml  |  2 +-
+ 11 files changed, 32 insertions(+), 13 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/dsa/brcm,sf2.yaml b/Documentation/devicetree/bindings/net/dsa/brcm,sf2.yaml
-index d159ac78cec1..eed16e216fb6 100644
---- a/Documentation/devicetree/bindings/net/dsa/brcm,sf2.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/brcm,sf2.yaml
-@@ -85,11 +85,16 @@ properties:
-   ports:
-     type: object
+diff --git a/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml b/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
+index 2a6d126606ca..9565a7402146 100644
+--- a/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
+@@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
+ title: Arrow SpeedChips XRS7000 Series Switch
  
--    properties:
--      brcm,use-bcm-hdr:
--        description: if present, indicates that the switch port has Broadcom
--          tags enabled (per-packet metadata)
--        type: boolean
+ allOf:
+-  - $ref: dsa.yaml#
++  - $ref: dsa.yaml#/$defs/ethernet-ports
+ 
+ maintainers:
+   - George McCollister <george.mccollister@gmail.com>
+diff --git a/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml b/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
+index 1219b830b1a4..5bef4128d175 100644
+--- a/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
+@@ -66,7 +66,7 @@ required:
+   - reg
+ 
+ allOf:
+-  - $ref: dsa.yaml#
++  - $ref: dsa.yaml#/$defs/ethernet-ports
+   - if:
+       properties:
+         compatible:
+diff --git a/Documentation/devicetree/bindings/net/dsa/dsa.yaml b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
+index e189fcc83fc4..efaa94cb89ae 100644
+--- a/Documentation/devicetree/bindings/net/dsa/dsa.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
+@@ -58,4 +58,26 @@ oneOf:
+ 
+ additionalProperties: true
+ 
++$defs:
++  ethernet-ports:
++    description: A DSA switch without any extra port properties
++    $ref: '#/'
++
 +    patternProperties:
-+      '^port@[0-9a-f]$':
-+        $ref: dsa-port.yaml#
-+        unevaluatedProperties: false
++      "^(ethernet-)?ports$":
++        type: object
++        additionalProperties: false
 +
 +        properties:
-+          brcm,use-bcm-hdr:
-+            description: if present, indicates that the switch port has Broadcom
-+              tags enabled (per-packet metadata)
-+            type: boolean
++          '#address-cells':
++            const: 1
++          '#size-cells':
++            const: 0
++
++        patternProperties:
++          "^(ethernet-)?port@[0-9]+$":
++            description: Ethernet switch ports
++            $ref: dsa-port.yaml#
++            unevaluatedProperties: false
++
+ ...
+diff --git a/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml b/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
+index 447589b01e8e..4021b054f684 100644
+--- a/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
+@@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
+ title: Hirschmann Hellcreek TSN Switch
  
- required:
+ allOf:
+-  - $ref: dsa.yaml#
++  - $ref: dsa.yaml#/$defs/ethernet-ports
+ 
+ maintainers:
+   - Andrew Lunn <andrew@lunn.ch>
+diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+index f2e9ff3f580b..20312f5d1944 100644
+--- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+@@ -157,9 +157,6 @@ patternProperties:
+     patternProperties:
+       "^(ethernet-)?port@[0-9]+$":
+         type: object
+-        description: Ethernet switch ports
+-
+-        unevaluatedProperties: false
+ 
+         properties:
+           reg:
+@@ -238,7 +235,7 @@ $defs:
+                       - sgmii
+ 
+ allOf:
+-  - $ref: dsa.yaml#
++  - $ref: dsa.yaml#/$defs/ethernet-ports
+   - if:
+       required:
+         - mediatek,mcm
+diff --git a/Documentation/devicetree/bindings/net/dsa/microchip,ksz.yaml b/Documentation/devicetree/bindings/net/dsa/microchip,ksz.yaml
+index 4da75b1f9533..a4b53434c85c 100644
+--- a/Documentation/devicetree/bindings/net/dsa/microchip,ksz.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/microchip,ksz.yaml
+@@ -11,7 +11,7 @@ maintainers:
+   - Woojung Huh <Woojung.Huh@microchip.com>
+ 
+ allOf:
+-  - $ref: dsa.yaml#
++  - $ref: dsa.yaml#/$defs/ethernet-ports
+   - $ref: /schemas/spi/spi-peripheral-props.yaml#
+ 
+ properties:
+diff --git a/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml b/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
+index b34de303966b..8d7e878b84dc 100644
+--- a/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
+@@ -10,7 +10,7 @@ maintainers:
+   - UNGLinuxDriver@microchip.com
+ 
+ allOf:
+-  - $ref: dsa.yaml#
++  - $ref: dsa.yaml#/$defs/ethernet-ports
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/net/dsa/mscc,ocelot.yaml b/Documentation/devicetree/bindings/net/dsa/mscc,ocelot.yaml
+index 347a0e1b3d3f..fe02d05196e4 100644
+--- a/Documentation/devicetree/bindings/net/dsa/mscc,ocelot.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/mscc,ocelot.yaml
+@@ -78,7 +78,7 @@ required:
    - reg
+ 
+ allOf:
+-  - $ref: dsa.yaml#
++  - $ref: dsa.yaml#/$defs/ethernet-ports
+   - if:
+       properties:
+         compatible:
+diff --git a/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml b/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
+index df98a16e4e75..9a64ed658745 100644
+--- a/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
+@@ -13,7 +13,7 @@ description:
+   depends on the SPI bus master driver.
+ 
+ allOf:
+-  - $ref: "dsa.yaml#"
++  - $ref: dsa.yaml#/$defs/ethernet-ports
+   - $ref: /schemas/spi/spi-peripheral-props.yaml#
+ 
+ maintainers:
+diff --git a/Documentation/devicetree/bindings/net/dsa/realtek.yaml b/Documentation/devicetree/bindings/net/dsa/realtek.yaml
+index 1a7d45a8ad66..cfd69c2604ea 100644
+--- a/Documentation/devicetree/bindings/net/dsa/realtek.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/realtek.yaml
+@@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
+ title: Realtek switches for unmanaged switches
+ 
+ allOf:
+-  - $ref: dsa.yaml#
++  - $ref: dsa.yaml#/$defs/ethernet-ports
+ 
+ maintainers:
+   - Linus Walleij <linus.walleij@linaro.org>
+diff --git a/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml b/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml
+index 0a0d62b6c00e..833d2f68daa1 100644
+--- a/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml
+@@ -14,7 +14,7 @@ description: |
+   handles 4 ports + 1 CPU management port.
+ 
+ allOf:
+-  - $ref: dsa.yaml#
++  - $ref: dsa.yaml#/$defs/ethernet-ports
+ 
+ properties:
+   compatible:
 -- 
 2.25.1
 
