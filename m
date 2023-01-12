@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C399C677F1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jan 2023 15:19:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39C77C54EBC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jan 2023 15:19:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qDAHxHfRrvf51PIr8qmkywmz1eulPcXYJJmt0L06/Wc=; b=HJ0+Iolt3mk7j3BJ7p6FW0Rna5
-	sVK8IskYLyQvUWkn8SDKiLwgrlKR0tY3bzE2Xx3MZkqmpbppp9EqW8v1kd5jMtmZJRZ6AHcqPdsD3
-	IkZoh5KdcnhvTrf7AMlMVeD9+hbvPZdejSxr/jeAERO02i+ZsrfFeioWfhgrfgXzFkAIOUsqg0XnE
-	BGrST4ditxhvfNT6/ZmpTF0jF/IRKh2t/gArlv/KY8R4coxw056MMVy8pRe9yPMBjzPrwpG3YdOVQ
-	MjOF7KgGUn8jZ7yCYBMKppdvvc9ZHJxiYXWibq0YqCAC80k27bvk1TbBTLpTbvMhSzUAJeBjFCk7A
-	4ZH4XGdw==;
+	bh=UL8X5iPeOEkFpX+tWxIlqjpBa+Q45KGX7u55pnVrDdE=; b=elhNI4d5iPNoJz+L7zmsOUrii8
+	r88iA5C/ND5XdEHkC2Do7/ArKAj9oqmWPPbm3MD5iMfI9JVUbsb4eNSDF3ffjeCf67yde8SYSRTEN
+	zJhzfiFAh7tnWQ6owu9nMkSwSLWLIsf76WJyzHeDoW2qaVEdygyC+6ibezf3bep4G7QfidDTycsk3
+	5w2smR5GUbp9xfGM2icgW7CEr19tTShWdRnTwR/QfMhTHTyPRo4DdkoCmwTxTF+yv/Bx9dOuoLOsK
+	ldtaHzRsi+XcKANWCyh76ON+WQXIXM4SV+XAz6/q3egCQJbEo3lKfX54rELcu/vpTZIpOoz6ESfwh
+	LUJmJYZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFzMV-00FaWh-Vn; Thu, 12 Jan 2023 15:19:28 +0000
-Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
+	id 1pFzMZ-00FaZ8-8K; Thu, 12 Jan 2023 15:19:31 +0000
+Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFzIm-00FYQN-Bl; Thu, 12 Jan 2023 15:15:41 +0000
+	id 1pFzIm-00FYQO-D5; Thu, 12 Jan 2023 15:15:41 +0000
 Received: from mwalle01.sab.local (unknown [213.135.10.150])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id AB61D1694;
-	Thu, 12 Jan 2023 16:15:25 +0100 (CET)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 1D4191695;
+	Thu, 12 Jan 2023 16:15:26 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
 	t=1673536526;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=qDAHxHfRrvf51PIr8qmkywmz1eulPcXYJJmt0L06/Wc=;
-	b=dxJrkPGrUuPERHwOXrIz6EipOact5Skyuz4gZjFnkKNdVRA5sGIMzO2HgJvV2WvCfXExga
-	NZeMBVuR2zjkdVevQ6QDTKYgKRx5BLIGSZMKrrokbRjn2C7acN0prb44Ylj5sSAsot20t9
-	dNfeIt3I77raGBZTUUQxHdVLb4qoQnoU+8T09zcOraoSzVkYZr//XkQhenVWTOcOnZGiUD
-	zrr7VBG8+/i0oEYcU1Gn/9FGPDi5RYrXUv2osARSmAh95Dt/EK8+M8fYVPFRZj9drfIh9N
-	RKMcfuCqZo0JW69x802ebFbfKfbSC5EZtbV2kQf3LNk/bXJIyVUlvnNWf2GAzA==
+	bh=UL8X5iPeOEkFpX+tWxIlqjpBa+Q45KGX7u55pnVrDdE=;
+	b=ly1tq+6t5Kx2ZJeBlBEa+kI3AKPOQXKu7okt4KuckBRVJ7FE4rA7VV48JJxe1K/AZxKrLs
+	mrux6tALW07R9EkqKAW6KBeN5HmP1MNXTQdrXpUVwaOwBI24pQkefVZfC67JrH4Oq4OyWo
+	fE0dUN0aIgAvzFrcltvcYAb/t+J+FIKXy32u4DZ6b5tOkkWAO6eGJxD0KvuLYo3V0z3pZg
+	xS2cnn4T48RjuheFVPasaWI3D3tmhZ8Ttl+g6HwHqhMjLMb3kplmKxYPSFpXsezbRXFiJR
+	yu0VH8lbaMa/4oS/k59AGb8tUIKXH3rWAlS5YYHfvRp+6GoUfbMqyylROyQzlw==
 From: Michael Walle <michael@walle.cc>
-Date: Thu, 12 Jan 2023 16:15:11 +0100
-Subject:  [PATCH net-next 05/10] net: mdio: ipq4019: Separate C22 and C45 transactions
+Date: Thu, 12 Jan 2023 16:15:12 +0100
+Subject: [PATCH net-next 06/10] net: ethernet: mtk_eth_soc: Separate C22 and
+ C45 transactions
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id:  <20230112-net-next-c45-seperation-part-2-v1-5-5eeaae931526@walle.cc>
+Message-Id:  <20230112-net-next-c45-seperation-part-2-v1-6-5eeaae931526@walle.cc>
 References:  <20230112-net-next-c45-seperation-part-2-v1-0-5eeaae931526@walle.cc>
 In-Reply-To:  <20230112-net-next-c45-seperation-part-2-v1-0-5eeaae931526@walle.cc>
 To: Heiner Kallweit <hkallweit1@gmail.com>,
@@ -78,8 +79,8 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  Michael Walle <michael@walle.cc>
 X-Mailer: b4 0.11.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230112_071538_054715_06F5D34D 
-X-CRM114-Status: GOOD (  16.70  )
+X-CRM114-CacheID: sfid-20230112_071538_098890_2EAE9A00 
+X-CRM114-Status: GOOD (  14.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,240 +97,248 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Andrew Lunn <andrew@lunn.ch>
 
-The ipq4019 driver can perform both C22 and C45 transfers.  Create
-separate functions for each and register the C45 versions using the
-new driver API calls.
+The mediatek bus driver can perform both C22 and C45 transfers.
+Create separate functions for each and register the C45 versions using
+the new API calls.
 
 Signed-off-by: Andrew Lunn <andrew@lunn.ch>
 Signed-off-by: Michael Walle <michael@walle.cc>
 ---
- drivers/net/mdio/mdio-ipq4019.c | 154 +++++++++++++++++++++++-----------------
- 1 file changed, 90 insertions(+), 64 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 178 +++++++++++++++++-----------
+ 1 file changed, 112 insertions(+), 66 deletions(-)
 
-diff --git a/drivers/net/mdio/mdio-ipq4019.c b/drivers/net/mdio/mdio-ipq4019.c
-index 4eba5a91075c..78b93de636f5 100644
---- a/drivers/net/mdio/mdio-ipq4019.c
-+++ b/drivers/net/mdio/mdio-ipq4019.c
-@@ -53,7 +53,8 @@ static int ipq4019_mdio_wait_busy(struct mii_bus *bus)
- 				  IPQ4019_MDIO_SLEEP, IPQ4019_MDIO_TIMEOUT);
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index e3de9a53b2d9..dc50e0b227a6 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -215,8 +215,8 @@ static int mtk_mdio_busy_wait(struct mtk_eth *eth)
+ 	return -ETIMEDOUT;
  }
  
--static int ipq4019_mdio_read(struct mii_bus *bus, int mii_id, int regnum)
-+static int ipq4019_mdio_read_c45(struct mii_bus *bus, int mii_id, int mmd,
-+				 int reg)
+-static int _mtk_mdio_write(struct mtk_eth *eth, u32 phy_addr, u32 phy_reg,
+-			   u32 write_data)
++static int _mtk_mdio_write_c22(struct mtk_eth *eth, u32 phy_addr, u32 phy_reg,
++			       u32 write_data)
  {
- 	struct ipq4019_mdio_data *priv = bus->priv;
- 	unsigned int data;
-@@ -62,61 +63,71 @@ static int ipq4019_mdio_read(struct mii_bus *bus, int mii_id, int regnum)
- 	if (ipq4019_mdio_wait_busy(bus))
- 		return -ETIMEDOUT;
+ 	int ret;
  
--	/* Clause 45 support */
--	if (regnum & MII_ADDR_C45) {
--		unsigned int mmd = (regnum >> 16) & 0x1F;
--		unsigned int reg = regnum & 0xFFFF;
-+	data = readl(priv->membase + MDIO_MODE_REG);
+@@ -224,35 +224,13 @@ static int _mtk_mdio_write(struct mtk_eth *eth, u32 phy_addr, u32 phy_reg,
+ 	if (ret < 0)
+ 		return ret;
  
--		/* Enter Clause 45 mode */
--		data = readl(priv->membase + MDIO_MODE_REG);
-+	data |= MDIO_MODE_C45;
- 
--		data |= MDIO_MODE_C45;
-+	writel(data, priv->membase + MDIO_MODE_REG);
- 
--		writel(data, priv->membase + MDIO_MODE_REG);
-+	/* issue the phy address and mmd */
-+	writel((mii_id << 8) | mmd, priv->membase + MDIO_ADDR_REG);
- 
--		/* issue the phy address and mmd */
--		writel((mii_id << 8) | mmd, priv->membase + MDIO_ADDR_REG);
-+	/* issue reg */
-+	writel(reg, priv->membase + MDIO_DATA_WRITE_REG);
- 
--		/* issue reg */
--		writel(reg, priv->membase + MDIO_DATA_WRITE_REG);
-+	cmd = MDIO_CMD_ACCESS_START | MDIO_CMD_ACCESS_CODE_C45_ADDR;
- 
--		cmd = MDIO_CMD_ACCESS_START | MDIO_CMD_ACCESS_CODE_C45_ADDR;
+-	if (phy_reg & MII_ADDR_C45) {
+-		mtk_w32(eth, PHY_IAC_ACCESS |
+-			     PHY_IAC_START_C45 |
+-			     PHY_IAC_CMD_C45_ADDR |
+-			     PHY_IAC_REG(mdiobus_c45_devad(phy_reg)) |
+-			     PHY_IAC_ADDR(phy_addr) |
+-			     PHY_IAC_DATA(mdiobus_c45_regad(phy_reg)),
+-			MTK_PHY_IAC);
+-
+-		ret = mtk_mdio_busy_wait(eth);
+-		if (ret < 0)
+-			return ret;
+-
+-		mtk_w32(eth, PHY_IAC_ACCESS |
+-			     PHY_IAC_START_C45 |
+-			     PHY_IAC_CMD_WRITE |
+-			     PHY_IAC_REG(mdiobus_c45_devad(phy_reg)) |
+-			     PHY_IAC_ADDR(phy_addr) |
+-			     PHY_IAC_DATA(write_data),
+-			MTK_PHY_IAC);
 -	} else {
--		/* Enter Clause 22 mode */
--		data = readl(priv->membase + MDIO_MODE_REG);
-+	/* issue read command */
-+	writel(cmd, priv->membase + MDIO_CMD_REG);
- 
--		data &= ~MDIO_MODE_C45;
-+	/* Wait read complete */
-+	if (ipq4019_mdio_wait_busy(bus))
-+		return -ETIMEDOUT;
- 
--		writel(data, priv->membase + MDIO_MODE_REG);
-+	cmd = MDIO_CMD_ACCESS_START | MDIO_CMD_ACCESS_CODE_C45_READ;
- 
--		/* issue the phy address and reg */
--		writel((mii_id << 8) | regnum, priv->membase + MDIO_ADDR_REG);
-+	writel(cmd, priv->membase + MDIO_CMD_REG);
- 
--		cmd = MDIO_CMD_ACCESS_START | MDIO_CMD_ACCESS_CODE_READ;
+-		mtk_w32(eth, PHY_IAC_ACCESS |
+-			     PHY_IAC_START_C22 |
+-			     PHY_IAC_CMD_WRITE |
+-			     PHY_IAC_REG(phy_reg) |
+-			     PHY_IAC_ADDR(phy_addr) |
+-			     PHY_IAC_DATA(write_data),
+-			MTK_PHY_IAC);
 -	}
-+	if (ipq4019_mdio_wait_busy(bus))
-+		return -ETIMEDOUT;
++	mtk_w32(eth, PHY_IAC_ACCESS |
++		PHY_IAC_START_C22 |
++		PHY_IAC_CMD_WRITE |
++		PHY_IAC_REG(phy_reg) |
++		PHY_IAC_ADDR(phy_addr) |
++		PHY_IAC_DATA(write_data),
++		MTK_PHY_IAC);
  
--	/* issue read command */
--	writel(cmd, priv->membase + MDIO_CMD_REG);
-+	/* Read and return data */
-+	return readl(priv->membase + MDIO_DATA_READ_REG);
-+}
-+
-+static int ipq4019_mdio_read_c22(struct mii_bus *bus, int mii_id, int regnum)
-+{
-+	struct ipq4019_mdio_data *priv = bus->priv;
-+	unsigned int data;
-+	unsigned int cmd;
- 
--	/* Wait read complete */
- 	if (ipq4019_mdio_wait_busy(bus))
- 		return -ETIMEDOUT;
- 
--	if (regnum & MII_ADDR_C45) {
--		cmd = MDIO_CMD_ACCESS_START | MDIO_CMD_ACCESS_CODE_C45_READ;
-+	data = readl(priv->membase + MDIO_MODE_REG);
- 
--		writel(cmd, priv->membase + MDIO_CMD_REG);
-+	data &= ~MDIO_MODE_C45;
- 
--		if (ipq4019_mdio_wait_busy(bus))
--			return -ETIMEDOUT;
--	}
-+	writel(data, priv->membase + MDIO_MODE_REG);
-+
-+	/* issue the phy address and reg */
-+	writel((mii_id << 8) | regnum, priv->membase + MDIO_ADDR_REG);
-+
-+	cmd = MDIO_CMD_ACCESS_START | MDIO_CMD_ACCESS_CODE_READ;
-+
-+	/* issue read command */
-+	writel(cmd, priv->membase + MDIO_CMD_REG);
-+
-+	/* Wait read complete */
-+	if (ipq4019_mdio_wait_busy(bus))
-+		return -ETIMEDOUT;
- 
- 	/* Read and return data */
- 	return readl(priv->membase + MDIO_DATA_READ_REG);
+ 	ret = mtk_mdio_busy_wait(eth);
+ 	if (ret < 0)
+@@ -261,7 +239,8 @@ static int _mtk_mdio_write(struct mtk_eth *eth, u32 phy_addr, u32 phy_reg,
+ 	return 0;
  }
  
--static int ipq4019_mdio_write(struct mii_bus *bus, int mii_id, int regnum,
--							 u16 value)
-+static int ipq4019_mdio_write_c45(struct mii_bus *bus, int mii_id, int mmd,
-+				  int reg, u16 value)
+-static int _mtk_mdio_read(struct mtk_eth *eth, u32 phy_addr, u32 phy_reg)
++static int _mtk_mdio_write_c45(struct mtk_eth *eth, u32 phy_addr,
++			       u32 devad, u32 phy_reg, u32 write_data)
  {
- 	struct ipq4019_mdio_data *priv = bus->priv;
- 	unsigned int data;
-@@ -125,50 +136,63 @@ static int ipq4019_mdio_write(struct mii_bus *bus, int mii_id, int regnum,
- 	if (ipq4019_mdio_wait_busy(bus))
- 		return -ETIMEDOUT;
+ 	int ret;
  
--	/* Clause 45 support */
--	if (regnum & MII_ADDR_C45) {
--		unsigned int mmd = (regnum >> 16) & 0x1F;
--		unsigned int reg = regnum & 0xFFFF;
-+	data = readl(priv->membase + MDIO_MODE_REG);
+@@ -269,33 +248,82 @@ static int _mtk_mdio_read(struct mtk_eth *eth, u32 phy_addr, u32 phy_reg)
+ 	if (ret < 0)
+ 		return ret;
  
--		/* Enter Clause 45 mode */
--		data = readl(priv->membase + MDIO_MODE_REG);
-+	data |= MDIO_MODE_C45;
- 
--		data |= MDIO_MODE_C45;
-+	writel(data, priv->membase + MDIO_MODE_REG);
- 
--		writel(data, priv->membase + MDIO_MODE_REG);
-+	/* issue the phy address and mmd */
-+	writel((mii_id << 8) | mmd, priv->membase + MDIO_ADDR_REG);
- 
--		/* issue the phy address and mmd */
--		writel((mii_id << 8) | mmd, priv->membase + MDIO_ADDR_REG);
-+	/* issue reg */
-+	writel(reg, priv->membase + MDIO_DATA_WRITE_REG);
- 
--		/* issue reg */
--		writel(reg, priv->membase + MDIO_DATA_WRITE_REG);
-+	cmd = MDIO_CMD_ACCESS_START | MDIO_CMD_ACCESS_CODE_C45_ADDR;
- 
--		cmd = MDIO_CMD_ACCESS_START | MDIO_CMD_ACCESS_CODE_C45_ADDR;
-+	writel(cmd, priv->membase + MDIO_CMD_REG);
- 
--		writel(cmd, priv->membase + MDIO_CMD_REG);
-+	if (ipq4019_mdio_wait_busy(bus))
-+		return -ETIMEDOUT;
- 
--		if (ipq4019_mdio_wait_busy(bus))
--			return -ETIMEDOUT;
+-	if (phy_reg & MII_ADDR_C45) {
+-		mtk_w32(eth, PHY_IAC_ACCESS |
+-			     PHY_IAC_START_C45 |
+-			     PHY_IAC_CMD_C45_ADDR |
+-			     PHY_IAC_REG(mdiobus_c45_devad(phy_reg)) |
+-			     PHY_IAC_ADDR(phy_addr) |
+-			     PHY_IAC_DATA(mdiobus_c45_regad(phy_reg)),
+-			MTK_PHY_IAC);
+-
+-		ret = mtk_mdio_busy_wait(eth);
+-		if (ret < 0)
+-			return ret;
+-
+-		mtk_w32(eth, PHY_IAC_ACCESS |
+-			     PHY_IAC_START_C45 |
+-			     PHY_IAC_CMD_C45_READ |
+-			     PHY_IAC_REG(mdiobus_c45_devad(phy_reg)) |
+-			     PHY_IAC_ADDR(phy_addr),
+-			MTK_PHY_IAC);
 -	} else {
--		/* Enter Clause 22 mode */
--		data = readl(priv->membase + MDIO_MODE_REG);
-+	/* issue write data */
-+	writel(value, priv->membase + MDIO_DATA_WRITE_REG);
- 
--		data &= ~MDIO_MODE_C45;
-+	cmd = MDIO_CMD_ACCESS_START | MDIO_CMD_ACCESS_CODE_C45_WRITE;
-+	writel(cmd, priv->membase + MDIO_CMD_REG);
- 
--		writel(data, priv->membase + MDIO_MODE_REG);
-+	/* Wait write complete */
-+	if (ipq4019_mdio_wait_busy(bus))
-+		return -ETIMEDOUT;
- 
--		/* issue the phy address and reg */
--		writel((mii_id << 8) | regnum, priv->membase + MDIO_ADDR_REG);
+-		mtk_w32(eth, PHY_IAC_ACCESS |
+-			     PHY_IAC_START_C22 |
+-			     PHY_IAC_CMD_C22_READ |
+-			     PHY_IAC_REG(phy_reg) |
+-			     PHY_IAC_ADDR(phy_addr),
+-			MTK_PHY_IAC);
 -	}
++	mtk_w32(eth, PHY_IAC_ACCESS |
++		PHY_IAC_START_C45 |
++		PHY_IAC_CMD_C45_ADDR |
++		PHY_IAC_REG(devad) |
++		PHY_IAC_ADDR(phy_addr) |
++		PHY_IAC_DATA(phy_reg),
++		MTK_PHY_IAC);
++
++	ret = mtk_mdio_busy_wait(eth);
++	if (ret < 0)
++		return ret;
++
++	mtk_w32(eth, PHY_IAC_ACCESS |
++		PHY_IAC_START_C45 |
++		PHY_IAC_CMD_WRITE |
++		PHY_IAC_REG(devad) |
++		PHY_IAC_ADDR(phy_addr) |
++		PHY_IAC_DATA(write_data),
++		MTK_PHY_IAC);
++
++	ret = mtk_mdio_busy_wait(eth);
++	if (ret < 0)
++		return ret;
++
 +	return 0;
 +}
 +
-+static int ipq4019_mdio_write_c22(struct mii_bus *bus, int mii_id, int regnum,
-+				  u16 value)
++static int _mtk_mdio_read_c22(struct mtk_eth *eth, u32 phy_addr, u32 phy_reg)
 +{
-+	struct ipq4019_mdio_data *priv = bus->priv;
-+	unsigned int data;
-+	unsigned int cmd;
++	int ret;
 +
-+	if (ipq4019_mdio_wait_busy(bus))
-+		return -ETIMEDOUT;
++	ret = mtk_mdio_busy_wait(eth);
++	if (ret < 0)
++		return ret;
 +
-+	/* Enter Clause 22 mode */
-+	data = readl(priv->membase + MDIO_MODE_REG);
++	mtk_w32(eth, PHY_IAC_ACCESS |
++		PHY_IAC_START_C22 |
++		PHY_IAC_CMD_C22_READ |
++		PHY_IAC_REG(phy_reg) |
++		PHY_IAC_ADDR(phy_addr),
++		MTK_PHY_IAC);
 +
-+	data &= ~MDIO_MODE_C45;
++	ret = mtk_mdio_busy_wait(eth);
++	if (ret < 0)
++		return ret;
 +
-+	writel(data, priv->membase + MDIO_MODE_REG);
++	return mtk_r32(eth, MTK_PHY_IAC) & PHY_IAC_DATA_MASK;
++}
 +
-+	/* issue the phy address and reg */
-+	writel((mii_id << 8) | regnum, priv->membase + MDIO_ADDR_REG);
++static int _mtk_mdio_read_c45(struct mtk_eth *eth, u32 phy_addr,
++			      u32 devad, u32 phy_reg)
++{
++	int ret;
++
++	ret = mtk_mdio_busy_wait(eth);
++	if (ret < 0)
++		return ret;
++
++	mtk_w32(eth, PHY_IAC_ACCESS |
++		PHY_IAC_START_C45 |
++		PHY_IAC_CMD_C45_ADDR |
++		PHY_IAC_REG(devad) |
++		PHY_IAC_ADDR(phy_addr) |
++		PHY_IAC_DATA(phy_reg),
++		MTK_PHY_IAC);
++
++	ret = mtk_mdio_busy_wait(eth);
++	if (ret < 0)
++		return ret;
++
++	mtk_w32(eth, PHY_IAC_ACCESS |
++		PHY_IAC_START_C45 |
++		PHY_IAC_CMD_C45_READ |
++		PHY_IAC_REG(devad) |
++		PHY_IAC_ADDR(phy_addr),
++		MTK_PHY_IAC);
  
- 	/* issue write data */
- 	writel(value, priv->membase + MDIO_DATA_WRITE_REG);
+ 	ret = mtk_mdio_busy_wait(eth);
+ 	if (ret < 0)
+@@ -304,19 +332,35 @@ static int _mtk_mdio_read(struct mtk_eth *eth, u32 phy_addr, u32 phy_reg)
+ 	return mtk_r32(eth, MTK_PHY_IAC) & PHY_IAC_DATA_MASK;
+ }
  
- 	/* issue write command */
--	if (regnum & MII_ADDR_C45)
--		cmd = MDIO_CMD_ACCESS_START | MDIO_CMD_ACCESS_CODE_C45_WRITE;
--	else
--		cmd = MDIO_CMD_ACCESS_START | MDIO_CMD_ACCESS_CODE_WRITE;
-+	cmd = MDIO_CMD_ACCESS_START | MDIO_CMD_ACCESS_CODE_WRITE;
+-static int mtk_mdio_write(struct mii_bus *bus, int phy_addr,
+-			  int phy_reg, u16 val)
++static int mtk_mdio_write_c22(struct mii_bus *bus, int phy_addr,
++			      int phy_reg, u16 val)
++{
++	struct mtk_eth *eth = bus->priv;
++
++	return _mtk_mdio_write_c22(eth, phy_addr, phy_reg, val);
++}
++
++static int mtk_mdio_write_c45(struct mii_bus *bus, int phy_addr,
++			      int devad, int phy_reg, u16 val)
++{
++	struct mtk_eth *eth = bus->priv;
++
++	return _mtk_mdio_write_c45(eth, phy_addr, devad, phy_reg, val);
++}
++
++static int mtk_mdio_read_c22(struct mii_bus *bus, int phy_addr, int phy_reg)
+ {
+ 	struct mtk_eth *eth = bus->priv;
  
- 	writel(cmd, priv->membase + MDIO_CMD_REG);
+-	return _mtk_mdio_write(eth, phy_addr, phy_reg, val);
++	return _mtk_mdio_read_c22(eth, phy_addr, phy_reg);
+ }
  
-@@ -235,8 +259,10 @@ static int ipq4019_mdio_probe(struct platform_device *pdev)
- 		priv->eth_ldo_rdy = devm_ioremap_resource(&pdev->dev, res);
+-static int mtk_mdio_read(struct mii_bus *bus, int phy_addr, int phy_reg)
++static int mtk_mdio_read_c45(struct mii_bus *bus, int phy_addr, int devad,
++			     int phy_reg)
+ {
+ 	struct mtk_eth *eth = bus->priv;
  
- 	bus->name = "ipq4019_mdio";
--	bus->read = ipq4019_mdio_read;
--	bus->write = ipq4019_mdio_write;
-+	bus->read = ipq4019_mdio_read_c22;
-+	bus->write = ipq4019_mdio_write_c22;
-+	bus->read_c45 = ipq4019_mdio_read_c45;
-+	bus->write_c45 = ipq4019_mdio_write_c45;
- 	bus->reset = ipq_mdio_reset;
- 	bus->parent = &pdev->dev;
- 	snprintf(bus->id, MII_BUS_ID_SIZE, "%s%d", pdev->name, pdev->id);
+-	return _mtk_mdio_read(eth, phy_addr, phy_reg);
++	return _mtk_mdio_read_c45(eth, phy_addr, devad, phy_reg);
+ }
+ 
+ static int mt7621_gmac0_rgmii_adjust(struct mtk_eth *eth,
+@@ -760,8 +804,10 @@ static int mtk_mdio_init(struct mtk_eth *eth)
+ 	}
+ 
+ 	eth->mii_bus->name = "mdio";
+-	eth->mii_bus->read = mtk_mdio_read;
+-	eth->mii_bus->write = mtk_mdio_write;
++	eth->mii_bus->read = mtk_mdio_read_c22;
++	eth->mii_bus->write = mtk_mdio_write_c22;
++	eth->mii_bus->read_c45 = mtk_mdio_read_c45;
++	eth->mii_bus->write_c45 = mtk_mdio_write_c45;
+ 	eth->mii_bus->probe_capabilities = MDIOBUS_C22_C45;
+ 	eth->mii_bus->priv = eth;
+ 	eth->mii_bus->parent = eth->dev;
 
 -- 
 2.30.2
