@@ -4,83 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39C77C54EBC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jan 2023 15:19:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C003C61DB3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jan 2023 15:30:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UL8X5iPeOEkFpX+tWxIlqjpBa+Q45KGX7u55pnVrDdE=; b=elhNI4d5iPNoJz+L7zmsOUrii8
-	r88iA5C/ND5XdEHkC2Do7/ArKAj9oqmWPPbm3MD5iMfI9JVUbsb4eNSDF3ffjeCf67yde8SYSRTEN
-	zJhzfiFAh7tnWQ6owu9nMkSwSLWLIsf76WJyzHeDoW2qaVEdygyC+6ibezf3bep4G7QfidDTycsk3
-	5w2smR5GUbp9xfGM2icgW7CEr19tTShWdRnTwR/QfMhTHTyPRo4DdkoCmwTxTF+yv/Bx9dOuoLOsK
-	ldtaHzRsi+XcKANWCyh76ON+WQXIXM4SV+XAz6/q3egCQJbEo3lKfX54rELcu/vpTZIpOoz6ESfwh
-	LUJmJYZw==;
+	bh=5QQJhQTvWiPr9ySZtlJAJmZ7yaiH8RE0d51kxRCXOJE=; b=qx9tz+qevXgWAw0e77gqy4/R7P
+	cJ2sCucqJ9lcE2tA3CQ4AE3htSpwa+D8jX4ADK3pn4wGUY8ESyWVcQcZus6b0/qelZBekLfyCaZgC
+	pJdjV0fN8wydbpvdjR8k94FO8mKvJLgFl8YtN3k2F4q4jxuTFNJFkbFzsRH28kyNq1YGMaciGBM2c
+	uGbMY8+8Vpmg2jPVibzoBMCIgq1fHLGdDa4BYDi5JEdyTrBxyV2HCT+sYuCfT7HJP7PNyHDQzJQFl
+	dwhgC+in/aiwv6WaNBzI4m1mhgHiQgkVb97zEE8kghl8JsOmFTs6V1Jl7nQB2M1Pzm1mvQDIArlbO
+	UV6tzGQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFzMZ-00FaZ8-8K; Thu, 12 Jan 2023 15:19:31 +0000
-Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
+	id 1pFzWy-00FelY-Hi; Thu, 12 Jan 2023 15:30:16 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFzIm-00FYQO-D5; Thu, 12 Jan 2023 15:15:41 +0000
-Received: from mwalle01.sab.local (unknown [213.135.10.150])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 1D4191695;
-	Thu, 12 Jan 2023 16:15:26 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1673536526;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=UL8X5iPeOEkFpX+tWxIlqjpBa+Q45KGX7u55pnVrDdE=;
-	b=ly1tq+6t5Kx2ZJeBlBEa+kI3AKPOQXKu7okt4KuckBRVJ7FE4rA7VV48JJxe1K/AZxKrLs
-	mrux6tALW07R9EkqKAW6KBeN5HmP1MNXTQdrXpUVwaOwBI24pQkefVZfC67JrH4Oq4OyWo
-	fE0dUN0aIgAvzFrcltvcYAb/t+J+FIKXy32u4DZ6b5tOkkWAO6eGJxD0KvuLYo3V0z3pZg
-	xS2cnn4T48RjuheFVPasaWI3D3tmhZ8Ttl+g6HwHqhMjLMb3kplmKxYPSFpXsezbRXFiJR
-	yu0VH8lbaMa/4oS/k59AGb8tUIKXH3rWAlS5YYHfvRp+6GoUfbMqyylROyQzlw==
-From: Michael Walle <michael@walle.cc>
-Date: Thu, 12 Jan 2023 16:15:12 +0100
-Subject: [PATCH net-next 06/10] net: ethernet: mtk_eth_soc: Separate C22 and
- C45 transactions
+	id 1pFzWd-00Fead-UM
+	for linux-mediatek@lists.infradead.org; Thu, 12 Jan 2023 15:29:58 +0000
+Received: by mail-wm1-x330.google.com with SMTP id ja17so13463355wmb.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 12 Jan 2023 07:29:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=5QQJhQTvWiPr9ySZtlJAJmZ7yaiH8RE0d51kxRCXOJE=;
+        b=UxompglSyH+QvEIlm5ZP/6IP6s/tpCs6DgkoLYD0u9PacNQMNULMI+i/ZjWqE9HoDT
+         sEyWwjMAAiB3lH96geHYqYModKKu43ori8b1/0uYFBAgFezIl61+KZbc1G5LiFL3ZUMl
+         nztSxAnV3FqIYMEpYSoARP+5AOD4/2sQFO6cL21Yl26L/cmLX4Kz3G8F1KvZqBcTjr+B
+         qeU+Xif0CjVQPbDEtewQaq0sQEHz+yOvT2g8GNRSoyT1GuTxOvI6sBPyHSWZZr4MMUL8
+         JHEl9SE969bygf+zMzgNAjNAf85aD2C0mP6bO0hB3q6Qa/9Mcz7a4UX6Jf8/DTxItW9j
+         fnxQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=5QQJhQTvWiPr9ySZtlJAJmZ7yaiH8RE0d51kxRCXOJE=;
+        b=hACH8+zYh9Z7xliCh+0Dg+YJHa7U7EUXl0yFwnAxPQbeD7dLfUcFqUxPw4xTlecMnA
+         sAaYvFr/7oBNgKgJ4Rh2XXJ1YUXG5FKw/DFPu8/fsW4gx1PvmlDLWOerMcfDnbC1tUoa
+         uHATmQ2dYF/9brwkYpydgjfU3QXnh8sc9H2ZrF35McGyvG9aT3/m9MwOklQlvYPCb1iI
+         qOrZBQokG9JZIYVq2vwtRXQdwvEZGsUpZG8P7KcqvO2otaa31PmvIkhoW7R5QJu2Lxdm
+         96b1odp2eEjKFf2V1QatN1IbUmcQVPR3zRohtbSxozg0a89trgFIdgmGWWV5LFRkiCw0
+         G6CQ==
+X-Gm-Message-State: AFqh2kpar5c3+hNxECAcKBVIm/q2O1nbG5jdDOUm9Yn4rTI+QWCrzPQ4
+	5R29BNwkr8/7YEFgD+1lIjD/Dw==
+X-Google-Smtp-Source: AMrXdXsXDrab2+i2WxxH6TGfNt5hv1F/al/3N+fX7+lLUjnAGIEXBMulggAI+kjrlcmjW28EM3yExw==
+X-Received: by 2002:a05:600c:3509:b0:3c6:e60f:3f6f with SMTP id h9-20020a05600c350900b003c6e60f3f6fmr54885253wmq.38.1673537394730;
+        Thu, 12 Jan 2023 07:29:54 -0800 (PST)
+Received: from t480-bl003.civfrance.com (58.188.158.77.rev.sfr.net. [77.158.188.58])
+        by smtp.gmail.com with ESMTPSA id l24-20020a1ced18000000b003d99da8d30asm26395909wmh.46.2023.01.12.07.29.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Jan 2023 07:29:54 -0800 (PST)
+From: bchihi@baylibre.com
+To: daniel.lezcano@linaro.org,
+	rafael@kernel.org,
+	amitk@kernel.org,
+	rui.zhang@intel.com
+Cc: linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	khilman@baylibre.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	james.lo@mediatek.com,
+	rex-bc.chen@mediatek.com
+Subject: [PATCH v10 2/6] dt-bindings/thermal/mediatek: Add dt-binding document for LVTS thermal controllers
+Date: Thu, 12 Jan 2023 16:28:51 +0100
+Message-Id: <20230112152855.216072-3-bchihi@baylibre.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230112152855.216072-1-bchihi@baylibre.com>
+References: <20230112152855.216072-1-bchihi@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id:  <20230112-net-next-c45-seperation-part-2-v1-6-5eeaae931526@walle.cc>
-References:  <20230112-net-next-c45-seperation-part-2-v1-0-5eeaae931526@walle.cc>
-In-Reply-To:  <20230112-net-next-c45-seperation-part-2-v1-0-5eeaae931526@walle.cc>
-To: Heiner Kallweit <hkallweit1@gmail.com>,
- Russell King <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Ray Jui <rjui@broadcom.com>,
- Scott Branden <sbranden@broadcom.com>,
- Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
- Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
- Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
- Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Bryan Whitehead <bryan.whitehead@microchip.com>, UNGLinuxDriver@microchip.com,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jose Abreu <joabreu@synopsys.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Vladimir Oltean <vladimir.oltean@nxp.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Li Yang <leoyang.li@nxp.com>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
- linux-mediatek@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
- linuxppc-dev@lists.ozlabs.org, Andrew Lunn <andrew@lunn.ch>,
- Michael Walle <michael@walle.cc>
-X-Mailer: b4 0.11.1
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230112_071538_098890_2EAE9A00 
-X-CRM114-Status: GOOD (  14.35  )
+X-CRM114-CacheID: sfid-20230112_072956_028018_3D6C45CF 
+X-CRM114-Status: GOOD (  12.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,251 +97,163 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Andrew Lunn <andrew@lunn.ch>
+From: Balsam CHIHI <bchihi@baylibre.com>
 
-The mediatek bus driver can perform both C22 and C45 transfers.
-Create separate functions for each and register the C45 versions using
-the new API calls.
+Add dt-binding document for mt8192 and mt8195 LVTS thermal controllers.
 
-Signed-off-by: Andrew Lunn <andrew@lunn.ch>
-Signed-off-by: Michael Walle <michael@walle.cc>
+Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 178 +++++++++++++++++-----------
- 1 file changed, 112 insertions(+), 66 deletions(-)
+ .../thermal/mediatek,lvts-thermal.yaml        | 140 ++++++++++++++++++
+ 1 file changed, 140 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index e3de9a53b2d9..dc50e0b227a6 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -215,8 +215,8 @@ static int mtk_mdio_busy_wait(struct mtk_eth *eth)
- 	return -ETIMEDOUT;
- }
- 
--static int _mtk_mdio_write(struct mtk_eth *eth, u32 phy_addr, u32 phy_reg,
--			   u32 write_data)
-+static int _mtk_mdio_write_c22(struct mtk_eth *eth, u32 phy_addr, u32 phy_reg,
-+			       u32 write_data)
- {
- 	int ret;
- 
-@@ -224,35 +224,13 @@ static int _mtk_mdio_write(struct mtk_eth *eth, u32 phy_addr, u32 phy_reg,
- 	if (ret < 0)
- 		return ret;
- 
--	if (phy_reg & MII_ADDR_C45) {
--		mtk_w32(eth, PHY_IAC_ACCESS |
--			     PHY_IAC_START_C45 |
--			     PHY_IAC_CMD_C45_ADDR |
--			     PHY_IAC_REG(mdiobus_c45_devad(phy_reg)) |
--			     PHY_IAC_ADDR(phy_addr) |
--			     PHY_IAC_DATA(mdiobus_c45_regad(phy_reg)),
--			MTK_PHY_IAC);
--
--		ret = mtk_mdio_busy_wait(eth);
--		if (ret < 0)
--			return ret;
--
--		mtk_w32(eth, PHY_IAC_ACCESS |
--			     PHY_IAC_START_C45 |
--			     PHY_IAC_CMD_WRITE |
--			     PHY_IAC_REG(mdiobus_c45_devad(phy_reg)) |
--			     PHY_IAC_ADDR(phy_addr) |
--			     PHY_IAC_DATA(write_data),
--			MTK_PHY_IAC);
--	} else {
--		mtk_w32(eth, PHY_IAC_ACCESS |
--			     PHY_IAC_START_C22 |
--			     PHY_IAC_CMD_WRITE |
--			     PHY_IAC_REG(phy_reg) |
--			     PHY_IAC_ADDR(phy_addr) |
--			     PHY_IAC_DATA(write_data),
--			MTK_PHY_IAC);
--	}
-+	mtk_w32(eth, PHY_IAC_ACCESS |
-+		PHY_IAC_START_C22 |
-+		PHY_IAC_CMD_WRITE |
-+		PHY_IAC_REG(phy_reg) |
-+		PHY_IAC_ADDR(phy_addr) |
-+		PHY_IAC_DATA(write_data),
-+		MTK_PHY_IAC);
- 
- 	ret = mtk_mdio_busy_wait(eth);
- 	if (ret < 0)
-@@ -261,7 +239,8 @@ static int _mtk_mdio_write(struct mtk_eth *eth, u32 phy_addr, u32 phy_reg,
- 	return 0;
- }
- 
--static int _mtk_mdio_read(struct mtk_eth *eth, u32 phy_addr, u32 phy_reg)
-+static int _mtk_mdio_write_c45(struct mtk_eth *eth, u32 phy_addr,
-+			       u32 devad, u32 phy_reg, u32 write_data)
- {
- 	int ret;
- 
-@@ -269,33 +248,82 @@ static int _mtk_mdio_read(struct mtk_eth *eth, u32 phy_addr, u32 phy_reg)
- 	if (ret < 0)
- 		return ret;
- 
--	if (phy_reg & MII_ADDR_C45) {
--		mtk_w32(eth, PHY_IAC_ACCESS |
--			     PHY_IAC_START_C45 |
--			     PHY_IAC_CMD_C45_ADDR |
--			     PHY_IAC_REG(mdiobus_c45_devad(phy_reg)) |
--			     PHY_IAC_ADDR(phy_addr) |
--			     PHY_IAC_DATA(mdiobus_c45_regad(phy_reg)),
--			MTK_PHY_IAC);
--
--		ret = mtk_mdio_busy_wait(eth);
--		if (ret < 0)
--			return ret;
--
--		mtk_w32(eth, PHY_IAC_ACCESS |
--			     PHY_IAC_START_C45 |
--			     PHY_IAC_CMD_C45_READ |
--			     PHY_IAC_REG(mdiobus_c45_devad(phy_reg)) |
--			     PHY_IAC_ADDR(phy_addr),
--			MTK_PHY_IAC);
--	} else {
--		mtk_w32(eth, PHY_IAC_ACCESS |
--			     PHY_IAC_START_C22 |
--			     PHY_IAC_CMD_C22_READ |
--			     PHY_IAC_REG(phy_reg) |
--			     PHY_IAC_ADDR(phy_addr),
--			MTK_PHY_IAC);
--	}
-+	mtk_w32(eth, PHY_IAC_ACCESS |
-+		PHY_IAC_START_C45 |
-+		PHY_IAC_CMD_C45_ADDR |
-+		PHY_IAC_REG(devad) |
-+		PHY_IAC_ADDR(phy_addr) |
-+		PHY_IAC_DATA(phy_reg),
-+		MTK_PHY_IAC);
+diff --git a/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+new file mode 100644
+index 000000000000..43b8777fc1b2
+--- /dev/null
++++ b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+@@ -0,0 +1,140 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/thermal/mediatek,lvts-thermal.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+	ret = mtk_mdio_busy_wait(eth);
-+	if (ret < 0)
-+		return ret;
++title: MediaTek SoC Low Voltage Thermal Sensor (LVTS)
 +
-+	mtk_w32(eth, PHY_IAC_ACCESS |
-+		PHY_IAC_START_C45 |
-+		PHY_IAC_CMD_WRITE |
-+		PHY_IAC_REG(devad) |
-+		PHY_IAC_ADDR(phy_addr) |
-+		PHY_IAC_DATA(write_data),
-+		MTK_PHY_IAC);
++maintainers:
++  - Balsam CHIHI <bchihi@baylibre.com>
 +
-+	ret = mtk_mdio_busy_wait(eth);
-+	if (ret < 0)
-+		return ret;
++description: |
++  LVTS is a thermal management architecture composed of three subsystems,
++  a Sensing device - Thermal Sensing Micro Circuit Unit (TSMCU),
++  a Converter - Low Voltage Thermal Sensor converter (LVTS), and
++  a Digital controller (LVTS_CTRL).
 +
-+	return 0;
-+}
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8192-lvts-mcu
++      - mediatek,mt8192-lvts-ap
++      - mediatek,mt8195-lvts-mcu
++      - mediatek,mt8195-lvts-ap
 +
-+static int _mtk_mdio_read_c22(struct mtk_eth *eth, u32 phy_addr, u32 phy_reg)
-+{
-+	int ret;
++  reg:
++    maxItems: 1
 +
-+	ret = mtk_mdio_busy_wait(eth);
-+	if (ret < 0)
-+		return ret;
++  interrupts:
++    maxItems: 1
 +
-+	mtk_w32(eth, PHY_IAC_ACCESS |
-+		PHY_IAC_START_C22 |
-+		PHY_IAC_CMD_C22_READ |
-+		PHY_IAC_REG(phy_reg) |
-+		PHY_IAC_ADDR(phy_addr),
-+		MTK_PHY_IAC);
++  clocks:
++    maxItems: 1
 +
-+	ret = mtk_mdio_busy_wait(eth);
-+	if (ret < 0)
-+		return ret;
++  resets:
++    maxItems: 1
++    description: LVTS reset for clearing temporary data on AP/MCU.
 +
-+	return mtk_r32(eth, MTK_PHY_IAC) & PHY_IAC_DATA_MASK;
-+}
++  nvmem-cells:
++    minItems: 1
++    items:
++      - description: Calibration eFuse data 1 for LVTS
++      - description: Calibration eFuse data 2 for LVTS
 +
-+static int _mtk_mdio_read_c45(struct mtk_eth *eth, u32 phy_addr,
-+			      u32 devad, u32 phy_reg)
-+{
-+	int ret;
++  nvmem-cell-names:
++    minItems: 1
++    items:
++      - const: lvts-calib-data-1
++      - const: lvts-calib-data-2
 +
-+	ret = mtk_mdio_busy_wait(eth);
-+	if (ret < 0)
-+		return ret;
++  "#thermal-sensor-cells":
++    const: 1
 +
-+	mtk_w32(eth, PHY_IAC_ACCESS |
-+		PHY_IAC_START_C45 |
-+		PHY_IAC_CMD_C45_ADDR |
-+		PHY_IAC_REG(devad) |
-+		PHY_IAC_ADDR(phy_addr) |
-+		PHY_IAC_DATA(phy_reg),
-+		MTK_PHY_IAC);
++allOf:
++  - $ref: thermal-sensor.yaml#
 +
-+	ret = mtk_mdio_busy_wait(eth);
-+	if (ret < 0)
-+		return ret;
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt8192-lvts-mcu
++              - mediatek,mt8192-lvts-ap
++    then:
++      properties:
++        nvmem-cells:
++          maxItems: 1
 +
-+	mtk_w32(eth, PHY_IAC_ACCESS |
-+		PHY_IAC_START_C45 |
-+		PHY_IAC_CMD_C45_READ |
-+		PHY_IAC_REG(devad) |
-+		PHY_IAC_ADDR(phy_addr),
-+		MTK_PHY_IAC);
- 
- 	ret = mtk_mdio_busy_wait(eth);
- 	if (ret < 0)
-@@ -304,19 +332,35 @@ static int _mtk_mdio_read(struct mtk_eth *eth, u32 phy_addr, u32 phy_reg)
- 	return mtk_r32(eth, MTK_PHY_IAC) & PHY_IAC_DATA_MASK;
- }
- 
--static int mtk_mdio_write(struct mii_bus *bus, int phy_addr,
--			  int phy_reg, u16 val)
-+static int mtk_mdio_write_c22(struct mii_bus *bus, int phy_addr,
-+			      int phy_reg, u16 val)
-+{
-+	struct mtk_eth *eth = bus->priv;
++        nvmem-cell-names:
++          maxItems: 1
 +
-+	return _mtk_mdio_write_c22(eth, phy_addr, phy_reg, val);
-+}
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt8195-lvts-mcu
++              - mediatek,mt8195-lvts-ap
++    then:
++      properties:
++        nvmem-cells:
++          maxItems: 2
 +
-+static int mtk_mdio_write_c45(struct mii_bus *bus, int phy_addr,
-+			      int devad, int phy_reg, u16 val)
-+{
-+	struct mtk_eth *eth = bus->priv;
++        nvmem-cell-names:
++          maxItems: 2
 +
-+	return _mtk_mdio_write_c45(eth, phy_addr, devad, phy_reg, val);
-+}
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - resets
++  - nvmem-cells
++  - nvmem-cell-names
++  - "#thermal-sensor-cells"
 +
-+static int mtk_mdio_read_c22(struct mii_bus *bus, int phy_addr, int phy_reg)
- {
- 	struct mtk_eth *eth = bus->priv;
- 
--	return _mtk_mdio_write(eth, phy_addr, phy_reg, val);
-+	return _mtk_mdio_read_c22(eth, phy_addr, phy_reg);
- }
- 
--static int mtk_mdio_read(struct mii_bus *bus, int phy_addr, int phy_reg)
-+static int mtk_mdio_read_c45(struct mii_bus *bus, int phy_addr, int devad,
-+			     int phy_reg)
- {
- 	struct mtk_eth *eth = bus->priv;
- 
--	return _mtk_mdio_read(eth, phy_addr, phy_reg);
-+	return _mtk_mdio_read_c45(eth, phy_addr, devad, phy_reg);
- }
- 
- static int mt7621_gmac0_rgmii_adjust(struct mtk_eth *eth,
-@@ -760,8 +804,10 @@ static int mtk_mdio_init(struct mtk_eth *eth)
- 	}
- 
- 	eth->mii_bus->name = "mdio";
--	eth->mii_bus->read = mtk_mdio_read;
--	eth->mii_bus->write = mtk_mdio_write;
-+	eth->mii_bus->read = mtk_mdio_read_c22;
-+	eth->mii_bus->write = mtk_mdio_write_c22;
-+	eth->mii_bus->read_c45 = mtk_mdio_read_c45;
-+	eth->mii_bus->write_c45 = mtk_mdio_write_c45;
- 	eth->mii_bus->probe_capabilities = MDIOBUS_C22_C45;
- 	eth->mii_bus->priv = eth;
- 	eth->mii_bus->parent = eth->dev;
-
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/reset/mt8195-resets.h>
++    #include <dt-bindings/thermal/mediatek-lvts.h>
++
++    soc {
++      #address-cells = <2>;
++      #size-cells = <2>;
++
++      lvts_mcu: thermal-sensor@11278000 {
++        compatible = "mediatek,mt8195-lvts-mcu";
++        reg = <0 0x11278000 0 0x1000>;
++        interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH 0>;
++        clocks = <&infracfg_ao CLK_INFRA_AO_THERM>;
++        resets = <&infracfg_ao MT8195_INFRA_RST4_THERM_CTRL_MCU_SWRST>;
++        nvmem-cells = <&lvts_efuse_data1 &lvts_efuse_data2>;
++        nvmem-cell-names = "lvts-calib-data-1", "lvts-calib-data-2";
++        #thermal-sensor-cells = <1>;
++      };
++    };
++
++    thermal_zones: thermal-zones {
++      cpu0-thermal {
++        polling-delay = <1000>;
++        polling-delay-passive = <250>;
++        thermal-sensors = <&lvts_mcu MT819x_MCU_LITTLE_CPU0>;
++        trips {
++          cpu0_alert: trip-alert {
++            temperature = <85000>;
++            hysteresis = <2000>;
++            type = "passive";
++          };
++          cpu0_crit: trip-crit {
++            temperature = <100000>;
++            hysteresis = <2000>;
++            type = "critical";
++          };
++        };
++      };
++    };
 -- 
-2.30.2
+2.34.1
+
 
