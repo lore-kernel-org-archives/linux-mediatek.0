@@ -4,205 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAF5AC54EBD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jan 2023 15:32:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76DCDC61DB3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jan 2023 17:17:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3ypVkPRINook+yraif37jJjjkLxdxcUoPnMic3Y5bsI=; b=WJxcJvXAl3MzSS9qPYZ4BYUc9i
-	gYtXxE2mI7yINaCU0U0+7tLz4yyOD4Zs1tm6AVJzdcAaa6KcN2+AFq/pLnYUd8/KsEZz2vGhaYZu5
-	sXtupVvIs15VTJyqmGjUzc61qI/8m1UEM/Gm3+d6Vrz8SfvN83T9M7XmjdIgEgoF1xP49RRTrbJwF
-	u01IQm4Ksz8QBHYeRAG2hO8s/IQ6LYchLklCnythA6EyF1tMiGtQshLDYl8qfPY95dN+L13f0+Fsv
-	Iy9XgFqYN5+yTnv/W2K9RAMMeXwQ6HT6dNaSIuhcqpWxGlMQ+Q2BCTtXJNYZuQQ+FzmRIr56sxzak
-	LzgCJF4Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KC/RhwubwTgVZ1PhplLH6EYhmsxWaFoSiBEGxbhOMq0=; b=pWARlZ2/w05pbgzRnotLznYqDX
+	EUrJFtFtU9DHeYzIN5T/22oKsrdLyT7/bdvUCLjlpknyLdibNo4ZWb96POmjEYYMi1v6gWwUsd9Hf
+	SWqEhK1zL5FnMNZVJ1HgcgOu6arveZ91hk0WtdKGfp3QM80yPDd38GeAPZvc5ox3b+HhDSQ4++NCa
+	vbjR9xZYAWjPJTu1OFh8DsU2GbQtR2oR1ekLxaICvaWdl0A8KxeTPPCZmSl+lRJVnfNghqakDJWvr
+	gTiXXMjt1mMHSm83wdMY/U+y4BdHIAw0uIksCd3JS3kO76CoNE7B/7aHZyQQsjX5EvT5hfgavlEtI
+	ApZ7RGHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFzYy-00FfyB-EX; Thu, 12 Jan 2023 15:32:20 +0000
-Received: from mail-mw2nam12on2066.outbound.protection.outlook.com ([40.107.244.66] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+	id 1pG1Ck-00FzaC-4z; Thu, 12 Jan 2023 17:17:30 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFzYg-00FfkP-Bc; Thu, 12 Jan 2023 15:32:04 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=hUejrCYtQMknSTe3GlwcGOgTw7j3lgsrdhRckBC/pIcBAXccMefDBf9HhAyJgspWk0GCpbP2RdkZJyx6CzCSJAY2kNE4A2FbjIAPVp/Rhhl+jQbA4TfwN+YZvfan+thws6PQIk+NF2QDnqcmuP7Ty+a2RcAeJ0P6XgARV4Fk8R+oQf7bOj3CScHPwBZFon+tIH4NPhcKkxA92gAZoKiNmPxIQu4gtQR3aYmanhmq6b0oPhlPGSBFPfbADFYmYYI/orBUkPwuw14NvGIIAcxxzCwBHjMvI5HdZojvW/wQA2OC6X+nmIZdL9gHU2f97YaKOgf0GBQC4p11D8jaIIMVmA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=3ypVkPRINook+yraif37jJjjkLxdxcUoPnMic3Y5bsI=;
- b=EUf5qk0F9H6Bph94QXHGptvcoOZawL9o0gwXDQEzy/mDD8ysHket/DWbI1raCbO4ayoTrUcQi7WdAb7sun+wWoxBA6lMGiILCd3v81HX2wRc2QHDgBCyXPkNaTyaP8xk1l7Bn92xp+5BVDS7oikIiprjfWE5+URhYr8P5LRQr5nxggxYpLLrBQReWnRhHp9O92xdULicuh4PCspzOeH5hj3Cg2RIhN84qnfTnjrwqA3bfM5GxjT22l8U1PR4zdjQCmOXivw9kuw0yaR0K/z+JukklUJHYznC5MAY7KAlJRit0f4TAblRnCGP9D+33SEYeK/17IdPXd7VtOBkLo+3CQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3ypVkPRINook+yraif37jJjjkLxdxcUoPnMic3Y5bsI=;
- b=Wd/89GCB0taZXs9L9Q6N/sJ2XE9ouATh1yvD/J4gIO/osU9Si1Jfn52tzSyvMQ0JX39gLso8E9eqHU+8qU1e5uvuERhpwGgeut8raUjhZyY79FNo6Vr2lDsNhDRKcyjhmDfEh7HXwtgNDZcGfHqhsMpIDHRcYTqzYNdOGazcxQs=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-Received: from DM4PR12MB5229.namprd12.prod.outlook.com (2603:10b6:5:398::12)
- by IA1PR12MB6211.namprd12.prod.outlook.com (2603:10b6:208:3e5::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5986.18; Thu, 12 Jan
- 2023 15:31:52 +0000
-Received: from DM4PR12MB5229.namprd12.prod.outlook.com
- ([fe80::8200:4042:8db4:63d7]) by DM4PR12MB5229.namprd12.prod.outlook.com
- ([fe80::8200:4042:8db4:63d7%3]) with mapi id 15.20.6002.013; Thu, 12 Jan 2023
- 15:31:52 +0000
-Message-ID: <7b7cd84a-e9ff-b2c1-4bf0-0ed05cca76bd@amd.com>
-Date: Thu, 12 Jan 2023 09:31:43 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v2 02/23] arm64: dts: Update cache properties for amd
-Content-Language: en-US
-To: Pierre Gondois <pierre.gondois@arm.com>, linux-kernel@vger.kernel.org
-Cc: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>,
- Scott Branden <sbranden@broadcom.com>,
- Tsahee Zidenberg <tsahee@annapurnalabs.com>,
- Antoine Tenart <atenart@kernel.org>,
- Brijesh Singh <brijeshkumar.singh@amd.com>,
- Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Khuong Dinh <khuong@os.amperecomputing.com>,
- Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- William Zhang <william.zhang@broadcom.com>,
- Anand Gore <anand.gore@broadcom.com>, Kursad Oney
- <kursad.oney@broadcom.com>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
- <rafal@milecki.pl>, Alim Akhtar <alim.akhtar@samsung.com>,
- Shawn Guo <shawnguo@kernel.org>, Li Yang <leoyang.li@nxp.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Chester Lin <clin@suse.com>, =?UTF-8?Q?Andreas_F=c3=a4rber?=
- <afaerber@suse.de>, Matthias Brugger <mbrugger@suse.com>,
- NXP S32 Linux Team <s32@nxp.com>, Wei Xu <xuwei5@hisilicon.com>,
- Chanho Min <chanho.min@lge.com>, Andrew Lunn <andrew@lunn.ch>,
- Gregory Clement <gregory.clement@bootlin.com>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Lars Povlsen <lars.povlsen@microchip.com>,
- Steen Hegelund <Steen.Hegelund@microchip.com>,
- Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
- Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
- Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>,
- Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@somainline.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Magnus Damm <magnus.damm@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>, Jisheng Zhang <jszhang@kernel.org>,
- Nishanth Menon <nm@ti.com>, Vignesh Raghavendra <vigneshr@ti.com>,
- Tero Kristo <kristo@kernel.org>, Viorel Suman <viorel.suman@nxp.com>,
- Abel Vesa <abelvesa@kernel.org>, Zhou Peng <eagle.zhou@nxp.com>,
- Shenwei Wang <shenwei.wang@nxp.com>, Ming Qian <ming.qian@nxp.com>,
- Peng Fan <peng.fan@nxp.com>, Tim Harvey <tharvey@gateworks.com>,
- Adam Ford <aford173@gmail.com>, Lucas Stach <l.stach@pengutronix.de>,
- Richard Zhu <hongxing.zhu@nxp.com>, Li Jun <jun.li@nxp.com>,
- Markus Niebel <Markus.Niebel@ew.tq-group.com>,
- Joakim Zhang <qiangqing.zhang@nxp.com>, Marek Vasut <marex@denx.de>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Paul Elder <paul.elder@ideasonboard.com>,
- Alexander Stein <alexander.stein@ew.tq-group.com>,
- Martin Kepplinger <martink@posteo.de>, David Heidelberg <david@ixit.cz>,
- Liu Ying <victor.liu@nxp.com>,
- Oliver Graute <oliver.graute@kococonnector.com>,
- Dong Aisheng <aisheng.dong@nxp.com>, Wei Fang <wei.fang@nxp.com>,
- Clark Wang <xiaoning.wang@nxp.com>, Jacky Bai <ping.bai@nxp.com>,
- Chris Packham <chris.packham@alliedtelesis.co.nz>,
- Vadym Kochan <vadym.kochan@plvision.eu>, Sameer Pujar <spujar@nvidia.com>,
- Prathamesh Shete <pshete@nvidia.com>, Mikko Perttunen
- <mperttunen@nvidia.com>, Akhil R <akhilrajeev@nvidia.com>,
- Sumit Gupta <sumitg@nvidia.com>, Diogo Ivo <diogo.ivo@tecnico.ulisboa.pt>,
- Vidya Sagar <vidyas@nvidia.com>, Ashish Mhetre <amhetre@nvidia.com>,
- Johan Jonker <jbx6244@gmail.com>,
- Christopher Obbard <chris.obbard@collabora.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Aswani Reddy <aswani.reddy@samsung.com>,
- Shashank Prashar <s.prashar@samsung.com>, devicetree@vger.kernel.org,
- linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
- linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-realtek-soc@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20221107155825.1644604-1-pierre.gondois@arm.com>
- <20221107155825.1644604-3-pierre.gondois@arm.com>
-From: Tom Lendacky <thomas.lendacky@amd.com>
-In-Reply-To: <20221107155825.1644604-3-pierre.gondois@arm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: CH0PR13CA0005.namprd13.prod.outlook.com
- (2603:10b6:610:b1::10) To DM4PR12MB5229.namprd12.prod.outlook.com
- (2603:10b6:5:398::12)
+	id 1pG1CY-00FzWc-Ig; Thu, 12 Jan 2023 17:17:20 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CFC776602D59;
+	Thu, 12 Jan 2023 17:17:15 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1673543836;
+	bh=Ju29I8xxTwaCSSaxCoJjs4WpH/sWHGWNYC2IjKsuXAM=;
+	h=From:To:Cc:Subject:Date:From;
+	b=BFL6oRMvx51BsGrLnLpE2ZR/2CITfYMpUcxKF/nL3LdXDp2+lKio7p/hHJelTHl3Z
+	 5rYCaxtMOx+bBRgg9WYHKsoWQC39fhUfIPAXxlSA7M1w4/G2YnVfWXs5C3xPi+JHxf
+	 9NxtiNLPEmtJPafOpTJvEJmrVXM7uu2SU3ZciVAj/N7iFTQ/V8Ml+MQQ9OOMpH5F16
+	 n70kUcCUk6vxBQz2ldIkeopsy+Aq1yzXDWeYinqTnpOzka5U7lwvR5WBG0wvnekpd/
+	 zim9LIDfFwWnlW1nGQNYql61Qc6IotpIA1gzDiOmrmL81Bz499ESJhgZK/3P8Lv0Gc
+	 K3TPNKhjOLPHA==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: nbd@nbd.name
+Cc: lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	kvalo@kernel.org,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	matthias.bgg@gmail.com,
+	sujuan.chen@mediatek.com,
+	linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com,
+	nfraprado@collabora.com,
+	wenst@chromium.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] wifi: mt76: Stop unmapping all buffers when WED not present
+Date: Thu, 12 Jan 2023 18:17:06 +0100
+Message-Id: <20230112171706.294550-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.39.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM4PR12MB5229:EE_|IA1PR12MB6211:EE_
-X-MS-Office365-Filtering-Correlation-Id: a062c05d-9055-44e5-402e-08daf4b220e0
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	8TUH8PsIFKnGxIVf0IAQD6kX28An3Y3E4vLgq7qyZZZHWKQCZ5s6QgaeBmo7vqHsEC3SRvcTfb+gDNtUK2Ko7Hyp7Yg5XIjzzlFzXqLBAgXt0snPUPYaxpSQCytm66e5UqhxWKC+TU1crs1HXZZ5oSpLxFVwY3Br9DUtf10sefl/hN9NoRH41nGjnKizTsQH+U3SDDNW7QgZfIlSXJkOqBPYRJfW48dQyWfNM+yow48r1vW9GQM1FWW1L1JUIsiAizx6v98ulKHj14vwRLRIdtMJt/bT7nIZFwV2K2ZKRj40JRCl29HeFFNl/z8nWHvMbCR/aSEi8Xf4EgCPwk2fBokUsfd0cnpvVWB2vlaq7X/nkyDT/cIEOH1Na7KV68cCqB8xsIZ3jVT41tc1nBuMT3SNfpTD3RE8jWXBdCJooT8izwF3qLbnk2Fzaca1t6QdY1WEvbpocnzcHXjDsMN8vvwojdcs4UoWSDngtX+IWMvZwNP6ono6+iJf+kUAjqnPtBhun2b7idwpH4cYgP9WFqMYmftugqB5r39brHpnZMQx+W9ByFd+ky5rZ8JRHKzs/EcgZK+08jkiyEkyIADW2EfiXtyWnk4OtABuATeA4LDzFf9pqjPklsJC/VwTzDv3ImUIi0xzphkUW5rpq7KYd1qvutD5PhDiWMVF5NJT4L+egWeyhThg0ojkuem+kbA0Dgq1cgS0t/7bodxTvYPfuPK7ZcCBGgxC2+wtFEDsaJQ=
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM4PR12MB5229.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(366004)(39860400002)(396003)(136003)(376002)(346002)(451199015)(53546011)(2906002)(15650500001)(6506007)(6486002)(6666004)(26005)(478600001)(6512007)(186003)(31686004)(316002)(54906003)(4326008)(36756003)(8676002)(66946007)(7406005)(66476007)(2616005)(66556008)(41300700001)(8936002)(83380400001)(5660300002)(38100700002)(7416002)(7276002)(7366002)(7336002)(86362001)(31696002)(43740500002)(45980500001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?Y3VOZGFsM3V0OCs4VjcyZERYUWZtZ0NORndQL1k0MzlWRzY2dlJnQ0NWc2ht?=
- =?utf-8?B?VHQ5L1V5YU1VUnZFRC8wRTB3N0h5L1BtaUJXc28yZGtzQlk2NWtNaUNEQ0Z1?=
- =?utf-8?B?R2ZHa1Z0aUl4eE5Yd1VBeWgxb2plVGoySU1BN1FIVndZMnpZei9kQit4bEwz?=
- =?utf-8?B?Z1RhLzZYejhGSFVueVd5a0pwVzBOTk1YNDZQR3RCcnc2VW9MTGRFdjh3V01y?=
- =?utf-8?B?cFBEeW0vT0REVG5UM2I2U2N4ZHZPNzhqNjFaaU1iRkhZRXpZNWh6em9VZVM2?=
- =?utf-8?B?elhlTTJ2QUI3end1SmVtN2EyUFVQKytDLzdxRjQ0eWI2SC9IUXMwUk1idEcz?=
- =?utf-8?B?d2F5RmpTNGV5Y28yMmtRNDE4N2NXYzZHNGR3UVd1K29sN0Vjc3dFRFhlZHpB?=
- =?utf-8?B?ZUpJc1JINUtoQW82cVUzOGZLRjRHdllxQWtiMTdjc09GcXNPT2xVUVVSUTY4?=
- =?utf-8?B?bmxLN3FKZ1hBdUNzTERHL0RiNWpPS2xIODJ5VXE0eXBqRkwzaGJhdTNxd01s?=
- =?utf-8?B?VE1nKzVwTElVUHJmOXY3YjZRSVZXcjc3a2xjekRRWWM5ZWUxMlNQSVVkNzAx?=
- =?utf-8?B?TmdQQm9zS3lRelF4ajBOYlRvVk02Q25JYmNoSWREVm5SYVk3aTFDbnBzMk1n?=
- =?utf-8?B?a0luVEFnVmRWaFhmWE96OS9NY3R6R2ErZ21FWlRZL1dlTE1uU1V6bUplSlpT?=
- =?utf-8?B?YjZ5dC93NHVlZUJvMjJiejg0THhLWDRXeThxbXFtVGo4dnU4c3dvLzJ0ZGN4?=
- =?utf-8?B?SEd0R1ZpbmFPMWJFb055S0hvYzRzeWNHSDN1YkdqMVJBZnZwYngwR2RCZlI2?=
- =?utf-8?B?QTBzU2pXWDIvZ1VLaFJhd1hmQk9POTk0OUpGYndXMWtpVU9NNUpBNVhVOE84?=
- =?utf-8?B?cWY2U2VRb3pZdmJyTmZoRW1zbkpjaGNjVUhGK20zUDVDQUxUWHNKM2hRUE14?=
- =?utf-8?B?WFFqaHhwdHRZZVlSVVRjVUd3TDhXOEdVV2ZkazlrU0JtZC9zQzhRWk1SMFVF?=
- =?utf-8?B?T3dXZURyVGtiaVBONmsvYjdQWUFGMjVFNGErUzg3S1IzbFhGdVUvK2xPZFRK?=
- =?utf-8?B?dyt1b2xBTXBhZU1QSG1CR04xQkNlUFFiQW1ianE0TWF3WDZMM1ZOS2o2MTE2?=
- =?utf-8?B?Sk92clo3TnY1YnNqMDJXNjkzY1d2S2hFbjlXOU9UN2tRVTJwTWhiSDJuTFFt?=
- =?utf-8?B?K3d1S3hLTjcwSGlWaDRkN1FzZDN6SXZ1Y2VBT1NlKzQ2clBlMnFxVWFkbHB3?=
- =?utf-8?B?TURuaG4yY1RxUmZvR0tEQlp3VUwwZnVrdEVOR1FqNEVycmtndjk2VTAzK0o0?=
- =?utf-8?B?MHVPZVVFanNMSy83SnRIM2toUmhURzFaT3A1RFF5SDB2Rm1tYlhPazJHQkJj?=
- =?utf-8?B?VTN0MmNXOEhzajg3N09ETkpZTFY5RHoxWkF2bnkxYWFmNEpIUXhTbkJJOTRG?=
- =?utf-8?B?ZEVOMU9BTk51QjVLRDRvZHYwbW9DN05zeTlhTlNKU3I5VkUrdWpReldxbCs0?=
- =?utf-8?B?dlhBU1M4VjgrYTN1cnl5NUpyVDRRZGhkRG1vZEsxUDZjR2FCckRrQkgxNks0?=
- =?utf-8?B?NkRvM1FVbnVQSHNxRUU0czV0enNoaTliZ0JjZFVqYlhsMTJXZ1NwV0hCZmM4?=
- =?utf-8?B?bjZDbDBXZmZpL2xwZXN3Wi9qOFFic2p3MnY4UE4zcmdlTWtBcDlLWmNwR251?=
- =?utf-8?B?Nm9wVktvZGJnR2ZQSk5jNjVhb3hHQmdxa3NXeHovTUF4NVBxSkJjaTVlK2RY?=
- =?utf-8?B?QURxSGk3U3pyWWVXTzVZMktIdXB6a3FCNTNCclAwUThzcmhMd1FmZWFOcFkv?=
- =?utf-8?B?L3g1RTg2OEpUa0Z6SGJlekhSbDZwWjF6UFlnWU1vRnhLR254VWZlZmZxSEtN?=
- =?utf-8?B?RWVFcnc1VWpGdU14bWRRTGNCSGNoV2szQkZZN3BBektrVkszeW9ySTBmYjZz?=
- =?utf-8?B?TnBFV1Bnakk2TkZhcjhweWFRK0tyWi9zNEhuWHlmUDBWUW1TYjlkRjVlaXBT?=
- =?utf-8?B?bVZrbGdZSzF3UVZIWC83OHVlUHYrWU5VcGgwR1hNL3pFTXJZSWMvaTF4b1hW?=
- =?utf-8?B?L2NSWUF1OTRsNlZrUU1RMzFRenMzcVhLZkFyRU11R3JrTjFpS0hYL1oxZ1J6?=
- =?utf-8?Q?B5ax5vAtZ862qfhM6klYHG0aD?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a062c05d-9055-44e5-402e-08daf4b220e0
-X-MS-Exchange-CrossTenant-AuthSource: DM4PR12MB5229.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Jan 2023 15:31:52.2863
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 7t/eEDE3kMlj1iHqlQjkoQmkkqShsVxCkGHmhayI6j7xw63i+GnEkqsmI7aUCgFaoBdqh213mqUwtvEhO1vyxw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB6211
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230112_073202_474088_042511D8 
-X-CRM114-Status: GOOD (  16.75  )
+X-CRM114-CacheID: sfid-20230112_091718_902262_127C9830 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -217,73 +86,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/7/22 09:56, Pierre Gondois wrote:
-> The DeviceTree Specification v0.3 specifies that the cache node
-> 'compatible' and 'cache-level' properties are 'required'. Cf.
-> s3.8 Multi-level and Shared Cache Nodes
-> The 'cache-unified' property should be present if one of the
-> properties for unified cache is present ('cache-size', ...).
-> 
-> Update the Device Trees accordingly.
-> 
-> Signed-off-by: Pierre Gondois <pierre.gondois@arm.com>
+Before the introduction of WED RX support, this driver was resetting
+buf0 and the TXWI pointer only on the head of the passed queue but
+now it's doing that on all buffers: while this is fine on systems
+that are not relying on IOMMU, such as the MT8192 Asurada Spherion
+Chromebook (MT7921E), it causes a crash on others using IOMMUs, such
+as the MT8195 Cherry Tomato Chromebook (MT7921E again!).
 
-Acked-by: Tom Lendacky <thomas.lendacky@amd.com>
+Reverting to the described behavior solves the following kernel panic:
 
-> ---
->   arch/arm64/boot/dts/amd/amd-seattle-cpus.dtsi | 9 +++++++++
->   1 file changed, 9 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/amd/amd-seattle-cpus.dtsi b/arch/arm64/boot/dts/amd/amd-seattle-cpus.dtsi
-> index 93688a0b6820..9f2d983e082d 100644
-> --- a/arch/arm64/boot/dts/amd/amd-seattle-cpus.dtsi
-> +++ b/arch/arm64/boot/dts/amd/amd-seattle-cpus.dtsi
-> @@ -163,38 +163,47 @@ CPU7: cpu@301 {
->   	};
->   
->   	L2_0: l2-cache0 {
-> +		compatible = "cache";
->   		cache-size = <0x100000>;
->   		cache-line-size = <64>;
->   		cache-sets = <1024>;
->   		cache-unified;
-> +		cache-level = <2>;
->   		next-level-cache = <&L3>;
->   	};
->   
->   	L2_1: l2-cache1 {
-> +		compatible = "cache";
->   		cache-size = <0x100000>;
->   		cache-line-size = <64>;
->   		cache-sets = <1024>;
->   		cache-unified;
-> +		cache-level = <2>;
->   		next-level-cache = <&L3>;
->   	};
->   
->   	L2_2: l2-cache2 {
-> +		compatible = "cache";
->   		cache-size = <0x100000>;
->   		cache-line-size = <64>;
->   		cache-sets = <1024>;
->   		cache-unified;
-> +		cache-level = <2>;
->   		next-level-cache = <&L3>;
->   	};
->   
->   	L2_3: l2-cache3 {
-> +		compatible = "cache";
->   		cache-size = <0x100000>;
->   		cache-line-size = <64>;
->   		cache-sets = <1024>;
->   		cache-unified;
-> +		cache-level = <2>;
->   		next-level-cache = <&L3>;
->   	};
->   
->   	L3: l3-cache {
-> +		compatible = "cache";
->   		cache-level = <3>;
->   		cache-size = <0x800000>;
->   		cache-line-size = <64>;
+[   20.357772] Unable to handle kernel paging request at virtual address ffff170fc0000000
+[   20.365943] Mem abort info:
+[   20.368989]   ESR = 0x0000000096000145
+[   20.372988]   EC = 0x25: DABT (current EL), IL = 32 bits
+[   20.378551]   SET = 0, FnV = 0
+[   20.381857]   EA = 0, S1PTW = 0
+[   20.385248]   FSC = 0x05: level 1 translation fault
+[   20.390376] Data abort info:
+[   20.393507]   ISV = 0, ISS = 0x00000145
+[   20.397593]   CM = 1, WnR = 1
+[   20.400811] swapper pgtable: 4k pages, 48-bit VAs, pgdp=0000000041fb3000
+[   20.407763] [ffff170fc0000000] pgd=180000023fff7003, p4d=180000023fff7003, pud=0000000000000000
+[   20.416714] Internal error: Oops: 0000000096000145 [#1] SMP
+[   20.422535] Modules linked in: af_alg qrtr mt7921e mt7921_common mt76_connac_lib mt76 mac80211 btusb btrtl btintel btmtk btbcm 8021q cfg80211 bluetooth uvcvideo garp mrp snd_sof_ipc_msg_injector snd_sof_ipc_flood_test stp snd_sof_mt8195 videobuf2_vmalloc llc panfrost cros_ec_sensors cros_ec_lid_angle crct10dif_ce mtk_adsp_common ecdh_generic cros_ec_sensors_core ecc snd_sof_xtensa_dsp gpu_sched rfkill snd_sof_of sbs_battery hid_multitouch cros_usbpd_logger snd_sof snd_sof_utils fuse ipv6
+[   20.465969] CPU: 6 PID: 9 Comm: kworker/u16:0 Tainted: G        W          6.2.0-rc3-next-20230111+ #237
+[   20.475695] Hardware name: Acer Tomato (rev2) board (DT)
+[   20.481254] Workqueue: phy0 ieee80211_iface_work [mac80211]
+[   20.487119] pstate: 80400009 (Nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[   20.494328] pc : dcache_clean_poc+0x20/0x38
+[   20.498764] lr : arch_sync_dma_for_device+0x2c/0x40
+[   20.503893] sp : ffff8000080cb430
+[   20.507457] x29: ffff8000080cb430 x28: 0000000000000000 x27: ffff1710c740e0d0
+[   20.514842] x26: ffff1710d8c03b38 x25: ffff1710d75e4fb0 x24: ffff1710c619e280
+[   20.522225] x23: ffff8000080cb578 x22: 0000000000000001 x21: 0000000000000040
+[   20.529608] x20: 0000000000000000 x19: ffff1710c740e0d0 x18: 0000000000000030
+[   20.536991] x17: 000000040044ffff x16: ffffc06d4c37d200 x15: ffffffffffffffff
+[   20.544373] x14: 0000000000000000 x13: 0000000000007800 x12: 0000000000000000
+[   20.551755] x11: 0000000000007961 x10: 0000000000007961 x9 : ffffc06d4cbe0ff8
+[   20.559137] x8 : 0000000000000001 x7 : 0000000000008000 x6 : 0000000000000000
+[   20.566518] x5 : 000000000000801e x4 : 0000000054765809 x3 : 000000000000003f
+[   20.573899] x2 : 0000000000000040 x1 : ffff170fc0000040 x0 : ffff170fc0000000
+[   20.581282] Call trace:
+[   20.583976]  dcache_clean_poc+0x20/0x38
+[   20.588061]  iommu_dma_sync_single_for_device+0xc4/0xdc
+[   20.593534]  dma_sync_single_for_device+0x38/0x120
+[   20.598574]  mt76_dma_tx_queue_skb+0x4f4/0x5b0 [mt76]
+[   20.603880]  __mt76_tx_queue_skb+0x5c/0xe0 [mt76]
+[   20.608836]  mt76_tx+0xbc/0x164 [mt76]
+[   20.612838]  mt7921_tx+0x9c/0x170 [mt7921_common]
+[   20.617795]  ieee80211_tx_frags+0x22c/0x2a0 [mac80211]
+[   20.623215]  __ieee80211_tx+0x90/0x1c0 [mac80211]
+[   20.628195]  ieee80211_tx+0x114/0x160 [mac80211]
+[   20.633088]  ieee80211_xmit+0xa0/0xd4 [mac80211]
+[   20.637980]  __ieee80211_tx_skb_tid_band+0xa8/0x2e0 [mac80211]
+[   20.644087]  ieee80211_tx_skb_tid+0xac/0x270 [mac80211]
+[   20.649585]  ieee80211_send_auth+0x1ac/0x250 [mac80211]
+[   20.655080]  ieee80211_auth+0x16c/0x2dc [mac80211]
+[   20.660145]  ieee80211_sta_work+0x3a0/0xab4 [mac80211]
+[   20.665557]  ieee80211_iface_work+0x394/0x400 [mac80211]
+[   20.671144]  process_one_work+0x294/0x674
+[   20.675406]  worker_thread+0x7c/0x45c
+[   20.679316]  kthread+0x104/0x110
+[   20.682793]  ret_from_fork+0x10/0x20
+[   20.686621] Code: d2800082 9ac32042 d1000443 8a230000 (d50b7a20)
+[   20.692962] ---[ end trace 0000000000000000 ]---
+
+Fixes: cd372b8c99c5 ("wifi: mt76: add WED RX support to mt76_dma_{add,get}_buf")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/net/wireless/mediatek/mt76/dma.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
+index 420302ff0328..a0fe3ab0126d 100644
+--- a/drivers/net/wireless/mediatek/mt76/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/dma.c
+@@ -215,6 +215,12 @@ mt76_dma_add_buf(struct mt76_dev *dev, struct mt76_queue *q,
+ 	u32 ctrl;
+ 	int i, idx = -1;
+ 
++	if (txwi && !(q->flags & MT_QFLAG_WED) &&
++	    !FIELD_GET(MT_QFLAG_WED_TYPE, q->flags)) {
++		q->entry[q->head].txwi = DMA_DUMMY_DATA;
++		q->entry[q->head].skip_buf0 = true;
++	}
++
+ 	for (i = 0; i < nbufs; i += 2, buf += 2) {
+ 		u32 buf0 = buf[0].addr, buf1 = 0;
+ 
+@@ -238,11 +244,6 @@ mt76_dma_add_buf(struct mt76_dev *dev, struct mt76_queue *q,
+ 			ctrl = FIELD_PREP(MT_DMA_CTL_SD_LEN0, buf[0].len) |
+ 			       MT_DMA_CTL_TO_HOST;
+ 		} else {
+-			if (txwi) {
+-				q->entry[q->head].txwi = DMA_DUMMY_DATA;
+-				q->entry[q->head].skip_buf0 = true;
+-			}
+-
+ 			if (buf[0].skip_unmap)
+ 				entry->skip_buf0 = true;
+ 			entry->skip_buf1 = i == nbufs - 1;
+-- 
+2.39.0
+
 
