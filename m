@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DB66C61DB3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jan 2023 15:18:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85A33C54EBC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jan 2023 15:18:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GHiclTSJcQpEuXc7UZJCs+DUc7vMe7Q2Zx9qkP/i6VE=; b=Q9Fe4RvlnikXGs2C4GoIHRLMEp
-	Qodj+vQekbLp/QwlM9jJY8rbJwJY0ztu3aRDL4wZXMme2f7K1jW67GkktfuhF+qH/wlJ7NsG//KFq
-	TiNFPscLd7oHLdcolNLUfkc5ryJ6XSvVv/dijGpAsN0ctmsBkS9dJEHKVfMP0Suj0/MRwZwFIWhUT
-	+dxSQ0KNeE57aO7dI4/BBpb9wWkqX/hP1Pesk0LxlwvyVuFizD8dMhO9lt/fUNiB5xyu1SrocNV4a
-	4CTWu1PRcyz9Ow0QxAtccQzsarM28UqgxmnsfLBwyd+FB9M7z4fGIaKy5t5Or/Dtzucxi3daJ9fAo
-	UEiIcbKQ==;
+	bh=80Acs2WYYpj+pnZcfpfbf8Ss/qQYwMe4n+th9ivgh1s=; b=unVzAn184dkBuBDmu3UTz5viXD
+	FTj04hYdA627nuNYoD8Za46xrJQKY6HqfOsPVSEs968J3Ib4VsyuXy/fMtp5d/abYP6JsFtZS2c7Y
+	RoKfnRYWc1g/phzRJhmBpaPoSyE2gjax3In+8hul32sJDX/y7tMC8DGJH4JqfEsZFa3gn1ECrqUmK
+	JqBenuXs2mi5m9iCf1utpu2H5D8q/dGzUfjd12ZiuUbyKbi72NiwsszZJ1clJP9xWhVsGh56fA+m7
+	Jdn0k3xHnqZzjwy+YfwPdOlipD8TXGeTw2l3PyuC02GVxIm9jZo5T3HIe3qjjLal61u6QwBZuq6qL
+	EgXsaHaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFzLN-00FZnR-FR; Thu, 12 Jan 2023 15:18:17 +0000
-Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
+	id 1pFzLQ-00FZp1-60; Thu, 12 Jan 2023 15:18:20 +0000
+Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFzIk-00FYOy-A1; Thu, 12 Jan 2023 15:15:38 +0000
+	id 1pFzIk-00FYP0-Bf; Thu, 12 Jan 2023 15:15:38 +0000
 Received: from mwalle01.sab.local (unknown [213.135.10.150])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 3F45B16D0;
+	by mail.3ffe.de (Postfix) with ESMTPSA id A55EB16E0;
 	Thu, 12 Jan 2023 16:15:27 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1673536527;
+	t=1673536528;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=GHiclTSJcQpEuXc7UZJCs+DUc7vMe7Q2Zx9qkP/i6VE=;
-	b=v2xaDV+uTTGZtERRTebXFr9t/CTFUCCN4cIyZ36GhKO6lzWaiK6KNnXMqdsfJ6FC6hOlr1
-	cMQIaSkUzmLe05Kkra3vSNOCD67P5B0c+FnQM71eVfwP7LAYft7Za0E8e4hsHFVeP+D33b
-	gVw0+UOT+g2TEcxMRSCIFZVzNPSiMMjoN4Aoogtd/83d4apM4H9AwxC2+Ga5Mq0ZPYezqg
-	hHSwR+rwZXD6/B8nHnzpdi2tGbZSnRhe5OoWjgWV0B3zyVaFydCpBEHcdhFwiIKoJvDrR0
-	ZYu9qvGBlRIPTgTMH8KuVwtuD81vpI44p7MTkR7mVtmCNV1iMzWZYpVoIrIs0Q==
+	bh=80Acs2WYYpj+pnZcfpfbf8Ss/qQYwMe4n+th9ivgh1s=;
+	b=hDUshVdYr6kbwBwi2X0/NSxkLTLHvnXh16ebqQ1vmqVRXwZ3CcRXKv4eaajXkBrbjWgkI8
+	wXkzYC3kTJ7ChaPu3pQIgwOAp6VPWhMgJMGVf/Z044FHvUq8wHT7PTehN5IjgRAJmLyF5F
+	6J3bt72Qn2h15RChH53HekFdcUPOlAXYu01RE24QvKX5eJw3XHL/1xshGn1nSOCXN0k1EM
+	TPUd5KqUBhJM0v0gntCvS3tEsK62VbF0WwQGT5Vc8nANbO5rPL+RtF7PuAAd3HgWOkV2Gz
+	A4/bDB7gtm1K+1dzBNzKybu7CiMStl5SpMnnnW7kkJty/ATr1pwPBHG8LtZ/eQ==
 From: Michael Walle <michael@walle.cc>
-Date: Thu, 12 Jan 2023 16:15:14 +0100
-Subject: [PATCH net-next 08/10] net: stmmac: Separate C22 and C45 transactions
- for xgmac2
+Date: Thu, 12 Jan 2023 16:15:15 +0100
+Subject: [PATCH net-next 09/10] net: stmmac: Separate C22 and C45 transactions
+ for xgmac
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id:  <20230112-net-next-c45-seperation-part-2-v1-8-5eeaae931526@walle.cc>
+Message-Id:  <20230112-net-next-c45-seperation-part-2-v1-9-5eeaae931526@walle.cc>
 References:  <20230112-net-next-c45-seperation-part-2-v1-0-5eeaae931526@walle.cc>
 In-Reply-To:  <20230112-net-next-c45-seperation-part-2-v1-0-5eeaae931526@walle.cc>
 To: Heiner Kallweit <hkallweit1@gmail.com>,
@@ -79,8 +79,8 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  Michael Walle <michael@walle.cc>
 X-Mailer: b4 0.11.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230112_071534_781470_FA75D04B 
-X-CRM114-Status: GOOD (  18.50  )
+X-CRM114-CacheID: sfid-20230112_071534_785640_E4D17D37 
+X-CRM114-Status: GOOD (  21.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,228 +97,292 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Andrew Lunn <andrew@lunn.ch>
 
-The stmicro stmmac xgmac2 MDIO bus driver can perform both C22 and C45
-transfers. Create separate functions for each and register the C45
-versions using the new API calls where appropriate.
+The stmmac MDIO bus driver in variant gmac4 can perform both C22 and
+C45 transfers. Create separate functions for each and register the
+C45 versions using the new API calls where appropriate.
 
 Signed-off-by: Andrew Lunn <andrew@lunn.ch>
 Signed-off-by: Michael Walle <michael@walle.cc>
 ---
- drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c | 131 +++++++++++++---------
- 1 file changed, 81 insertions(+), 50 deletions(-)
+ drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c | 200 +++++++++++++++-------
+ 1 file changed, 138 insertions(+), 62 deletions(-)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
-index 5f177ea80725..4836a40df1af 100644
+index 4836a40df1af..d2cb22f49ce5 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
-@@ -45,8 +45,8 @@
- #define MII_XGMAC_PA_SHIFT		16
- #define MII_XGMAC_DA_SHIFT		21
- 
--static int stmmac_xgmac2_c45_format(struct stmmac_priv *priv, int phyaddr,
--				    int phyreg, u32 *hw_addr)
-+static void stmmac_xgmac2_c45_format(struct stmmac_priv *priv, int phyaddr,
-+				     int devad, int phyreg, u32 *hw_addr)
- {
- 	u32 tmp;
- 
-@@ -56,19 +56,14 @@ static int stmmac_xgmac2_c45_format(struct stmmac_priv *priv, int phyaddr,
- 	writel(tmp, priv->ioaddr + XGMAC_MDIO_C22P);
- 
- 	*hw_addr = (phyaddr << MII_XGMAC_PA_SHIFT) | (phyreg & 0xffff);
--	*hw_addr |= (phyreg >> MII_DEVADDR_C45_SHIFT) << MII_XGMAC_DA_SHIFT;
--	return 0;
-+	*hw_addr |= devad << MII_XGMAC_DA_SHIFT;
+@@ -234,8 +234,29 @@ static int stmmac_xgmac2_mdio_write_c45(struct mii_bus *bus, int phyaddr,
+ 					phydata);
  }
  
--static int stmmac_xgmac2_c22_format(struct stmmac_priv *priv, int phyaddr,
--				    int phyreg, u32 *hw_addr)
-+static void stmmac_xgmac2_c22_format(struct stmmac_priv *priv, int phyaddr,
-+				     int phyreg, u32 *hw_addr)
- {
- 	u32 tmp;
- 
--	/* HW does not support C22 addr >= 4 */
--	if (phyaddr > MII_XGMAC_MAX_C22ADDR)
--		return -ENODEV;
--
- 	/* Set port as Clause 22 */
- 	tmp = readl(priv->ioaddr + XGMAC_MDIO_C22P);
- 	tmp &= ~MII_XGMAC_C22P_MASK;
-@@ -76,16 +71,14 @@ static int stmmac_xgmac2_c22_format(struct stmmac_priv *priv, int phyaddr,
- 	writel(tmp, priv->ioaddr + XGMAC_MDIO_C22P);
- 
- 	*hw_addr = (phyaddr << MII_XGMAC_PA_SHIFT) | (phyreg & 0x1f);
--	return 0;
- }
- 
--static int stmmac_xgmac2_mdio_read(struct mii_bus *bus, int phyaddr, int phyreg)
-+static int stmmac_xgmac2_mdio_read(struct stmmac_priv *priv, u32 addr,
-+				   u32 value)
- {
--	struct net_device *ndev = bus->priv;
--	struct stmmac_priv *priv = netdev_priv(ndev);
- 	unsigned int mii_address = priv->hw->mii.addr;
- 	unsigned int mii_data = priv->hw->mii.data;
--	u32 tmp, addr, value = MII_XGMAC_BUSY;
-+	u32 tmp;
- 	int ret;
- 
- 	ret = pm_runtime_resume_and_get(priv->device);
-@@ -99,20 +92,6 @@ static int stmmac_xgmac2_mdio_read(struct mii_bus *bus, int phyaddr, int phyreg)
- 		goto err_disable_clks;
- 	}
- 
--	if (phyreg & MII_ADDR_C45) {
--		phyreg &= ~MII_ADDR_C45;
--
--		ret = stmmac_xgmac2_c45_format(priv, phyaddr, phyreg, &addr);
--		if (ret)
--			goto err_disable_clks;
--	} else {
--		ret = stmmac_xgmac2_c22_format(priv, phyaddr, phyreg, &addr);
--		if (ret)
--			goto err_disable_clks;
--
--		value |= MII_XGMAC_SADDR;
--	}
--
- 	value |= (priv->clk_csr << priv->hw->mii.clk_csr_shift)
- 		& priv->hw->mii.clk_csr_mask;
- 	value |= MII_XGMAC_READ;
-@@ -144,14 +123,44 @@ static int stmmac_xgmac2_mdio_read(struct mii_bus *bus, int phyaddr, int phyreg)
- 	return ret;
- }
- 
--static int stmmac_xgmac2_mdio_write(struct mii_bus *bus, int phyaddr,
--				    int phyreg, u16 phydata)
-+static int stmmac_xgmac2_mdio_read_c22(struct mii_bus *bus, int phyaddr,
-+				       int phyreg)
- {
- 	struct net_device *ndev = bus->priv;
--	struct stmmac_priv *priv = netdev_priv(ndev);
-+	struct stmmac_priv *priv;
-+	u32 addr;
-+
-+	priv = netdev_priv(ndev);
-+
-+	/* HW does not support C22 addr >= 4 */
-+	if (phyaddr > MII_XGMAC_MAX_C22ADDR)
-+		return -ENODEV;
-+
-+	stmmac_xgmac2_c22_format(priv, phyaddr, phyreg, &addr);
-+
-+	return stmmac_xgmac2_mdio_read(priv, addr, MII_XGMAC_BUSY);
-+}
-+
-+static int stmmac_xgmac2_mdio_read_c45(struct mii_bus *bus, int phyaddr,
-+				       int devad, int phyreg)
++static int stmmac_mdio_read(struct stmmac_priv *priv, int data, u32 value)
 +{
-+	struct net_device *ndev = bus->priv;
-+	struct stmmac_priv *priv;
-+	u32 addr;
++	unsigned int mii_address = priv->hw->mii.addr;
++	unsigned int mii_data = priv->hw->mii.data;
++	u32 v;
 +
-+	priv = netdev_priv(ndev);
++	if (readl_poll_timeout(priv->ioaddr + mii_address, v, !(v & MII_BUSY),
++			       100, 10000))
++		return -EBUSY;
 +
-+	stmmac_xgmac2_c45_format(priv, phyaddr, devad, phyreg, &addr);
++	writel(data, priv->ioaddr + mii_data);
++	writel(value, priv->ioaddr + mii_address);
 +
-+	return stmmac_xgmac2_mdio_read(priv, addr, MII_XGMAC_BUSY);
-+}
++	if (readl_poll_timeout(priv->ioaddr + mii_address, v, !(v & MII_BUSY),
++			       100, 10000))
++		return -EBUSY;
 +
-+static int stmmac_xgmac2_mdio_write(struct stmmac_priv *priv, u32 addr,
-+				    u32 value, u16 phydata)
-+{
- 	unsigned int mii_address = priv->hw->mii.addr;
- 	unsigned int mii_data = priv->hw->mii.data;
--	u32 addr, tmp, value = MII_XGMAC_BUSY;
-+	u32 tmp;
- 	int ret;
- 
- 	ret = pm_runtime_resume_and_get(priv->device);
-@@ -165,20 +174,6 @@ static int stmmac_xgmac2_mdio_write(struct mii_bus *bus, int phyaddr,
- 		goto err_disable_clks;
- 	}
- 
--	if (phyreg & MII_ADDR_C45) {
--		phyreg &= ~MII_ADDR_C45;
--
--		ret = stmmac_xgmac2_c45_format(priv, phyaddr, phyreg, &addr);
--		if (ret)
--			goto err_disable_clks;
--	} else {
--		ret = stmmac_xgmac2_c22_format(priv, phyaddr, phyreg, &addr);
--		if (ret)
--			goto err_disable_clks;
--
--		value |= MII_XGMAC_SADDR;
--	}
--
- 	value |= (priv->clk_csr << priv->hw->mii.clk_csr_shift)
- 		& priv->hw->mii.clk_csr_mask;
- 	value |= phydata;
-@@ -205,6 +200,40 @@ static int stmmac_xgmac2_mdio_write(struct mii_bus *bus, int phyaddr,
- 	return ret;
- }
- 
-+static int stmmac_xgmac2_mdio_write_c22(struct mii_bus *bus, int phyaddr,
-+					int phyreg, u16 phydata)
-+{
-+	struct net_device *ndev = bus->priv;
-+	struct stmmac_priv *priv;
-+	u32 addr;
-+
-+	priv = netdev_priv(ndev);
-+
-+	/* HW does not support C22 addr >= 4 */
-+	if (phyaddr > MII_XGMAC_MAX_C22ADDR)
-+		return -ENODEV;
-+
-+	stmmac_xgmac2_c22_format(priv, phyaddr, phyreg, &addr);
-+
-+	return stmmac_xgmac2_mdio_write(priv, addr,
-+					MII_XGMAC_BUSY | MII_XGMAC_SADDR, phydata);
-+}
-+
-+static int stmmac_xgmac2_mdio_write_c45(struct mii_bus *bus, int phyaddr,
-+					int devad, int phyreg, u16 phydata)
-+{
-+	struct net_device *ndev = bus->priv;
-+	struct stmmac_priv *priv;
-+	u32 addr;
-+
-+	priv = netdev_priv(ndev);
-+
-+	stmmac_xgmac2_c45_format(priv, phyaddr, devad, phyreg, &addr);
-+
-+	return stmmac_xgmac2_mdio_write(priv, addr, MII_XGMAC_BUSY,
-+					phydata);
++	/* Read the data from the MII data register */
++	return readl(priv->ioaddr + mii_data) & MII_DATA_MASK;
 +}
 +
  /**
-  * stmmac_mdio_read
+- * stmmac_mdio_read
++ * stmmac_mdio_read_c22
   * @bus: points to the mii_bus structure
-@@ -457,8 +486,10 @@ int stmmac_mdio_register(struct net_device *ndev)
- 		new_bus->probe_capabilities = MDIOBUS_C22_C45;
+  * @phyaddr: MII addr
+  * @phyreg: MII reg
+@@ -244,15 +265,12 @@ static int stmmac_xgmac2_mdio_write_c45(struct mii_bus *bus, int phyaddr,
+  * accessing the PHY registers.
+  * Fortunately, it seems this has no drawback for the 7109 MAC.
+  */
+-static int stmmac_mdio_read(struct mii_bus *bus, int phyaddr, int phyreg)
++static int stmmac_mdio_read_c22(struct mii_bus *bus, int phyaddr, int phyreg)
+ {
+ 	struct net_device *ndev = bus->priv;
+ 	struct stmmac_priv *priv = netdev_priv(ndev);
+-	unsigned int mii_address = priv->hw->mii.addr;
+-	unsigned int mii_data = priv->hw->mii.data;
+ 	u32 value = MII_BUSY;
+ 	int data = 0;
+-	u32 v;
  
- 	if (priv->plat->has_xgmac) {
--		new_bus->read = &stmmac_xgmac2_mdio_read;
--		new_bus->write = &stmmac_xgmac2_mdio_write;
-+		new_bus->read = &stmmac_xgmac2_mdio_read_c22;
-+		new_bus->write = &stmmac_xgmac2_mdio_write_c22;
-+		new_bus->read_c45 = &stmmac_xgmac2_mdio_read_c45;
-+		new_bus->write_c45 = &stmmac_xgmac2_mdio_write_c45;
+ 	data = pm_runtime_resume_and_get(priv->device);
+ 	if (data < 0)
+@@ -265,60 +283,94 @@ static int stmmac_mdio_read(struct mii_bus *bus, int phyaddr, int phyreg)
+ 		& priv->hw->mii.clk_csr_mask;
+ 	if (priv->plat->has_gmac4) {
+ 		value |= MII_GMAC4_READ;
+-		if (phyreg & MII_ADDR_C45) {
+-			value |= MII_GMAC4_C45E;
+-			value &= ~priv->hw->mii.reg_mask;
+-			value |= ((phyreg >> MII_DEVADDR_C45_SHIFT) <<
+-			       priv->hw->mii.reg_shift) &
+-			       priv->hw->mii.reg_mask;
+-
+-			data |= (phyreg & MII_REGADDR_C45_MASK) <<
+-				MII_GMAC4_REG_ADDR_SHIFT;
+-		}
+ 	}
  
- 		/* Right now only C22 phys are supported */
- 		max_addr = MII_XGMAC_MAX_C22ADDR + 1;
-@@ -490,7 +521,7 @@ int stmmac_mdio_register(struct net_device *ndev)
+-	if (readl_poll_timeout(priv->ioaddr + mii_address, v, !(v & MII_BUSY),
+-			       100, 10000)) {
+-		data = -EBUSY;
+-		goto err_disable_clks;
+-	}
++	data = stmmac_mdio_read(priv, data, value);
  
- 	/* Looks like we need a dummy read for XGMAC only and C45 PHYs */
- 	if (priv->plat->has_xgmac)
--		stmmac_xgmac2_mdio_read(new_bus, 0, MII_ADDR_C45);
-+		stmmac_xgmac2_mdio_read_c45(new_bus, 0, 0, 0);
+-	writel(data, priv->ioaddr + mii_data);
+-	writel(value, priv->ioaddr + mii_address);
++	pm_runtime_put(priv->device);
  
- 	/* If fixed-link is set, skip PHY scanning */
- 	if (!fwnode)
+-	if (readl_poll_timeout(priv->ioaddr + mii_address, v, !(v & MII_BUSY),
+-			       100, 10000)) {
+-		data = -EBUSY;
+-		goto err_disable_clks;
++	return data;
++}
++
++/**
++ * stmmac_mdio_read_c45
++ * @bus: points to the mii_bus structure
++ * @phyaddr: MII addr
++ * @devad: device address to read
++ * @phyreg: MII reg
++ * Description: it reads data from the MII register from within the phy device.
++ * For the 7111 GMAC, we must set the bit 0 in the MII address register while
++ * accessing the PHY registers.
++ * Fortunately, it seems this has no drawback for the 7109 MAC.
++ */
++static int stmmac_mdio_read_c45(struct mii_bus *bus, int phyaddr, int devad,
++				int phyreg)
++{
++	struct net_device *ndev = bus->priv;
++	struct stmmac_priv *priv = netdev_priv(ndev);
++	u32 value = MII_BUSY;
++	int data = 0;
++
++	data = pm_runtime_get_sync(priv->device);
++	if (data < 0) {
++		pm_runtime_put_noidle(priv->device);
++		return data;
+ 	}
+ 
+-	/* Read the data from the MII data register */
+-	data = (int)readl(priv->ioaddr + mii_data) & MII_DATA_MASK;
++	value |= (phyaddr << priv->hw->mii.addr_shift)
++		& priv->hw->mii.addr_mask;
++	value |= (phyreg << priv->hw->mii.reg_shift) & priv->hw->mii.reg_mask;
++	value |= (priv->clk_csr << priv->hw->mii.clk_csr_shift)
++		& priv->hw->mii.clk_csr_mask;
++	value |= MII_GMAC4_READ;
++	value |= MII_GMAC4_C45E;
++	value &= ~priv->hw->mii.reg_mask;
++	value |= (devad << priv->hw->mii.reg_shift) & priv->hw->mii.reg_mask;
++
++	data |= phyreg << MII_GMAC4_REG_ADDR_SHIFT;
++
++	data = stmmac_mdio_read(priv, data, value);
+ 
+-err_disable_clks:
+ 	pm_runtime_put(priv->device);
+ 
+ 	return data;
+ }
+ 
++static int stmmac_mdio_write(struct stmmac_priv *priv, int data, u32 value)
++{
++	unsigned int mii_address = priv->hw->mii.addr;
++	unsigned int mii_data = priv->hw->mii.data;
++	u32 v;
++
++	/* Wait until any existing MII operation is complete */
++	if (readl_poll_timeout(priv->ioaddr + mii_address, v, !(v & MII_BUSY),
++			       100, 10000))
++		return -EBUSY;
++
++	/* Set the MII address register to write */
++	writel(data, priv->ioaddr + mii_data);
++	writel(value, priv->ioaddr + mii_address);
++
++	/* Wait until any existing MII operation is complete */
++	return readl_poll_timeout(priv->ioaddr + mii_address, v,
++				  !(v & MII_BUSY), 100, 10000);
++}
++
+ /**
+- * stmmac_mdio_write
++ * stmmac_mdio_write_c22
+  * @bus: points to the mii_bus structure
+  * @phyaddr: MII addr
+  * @phyreg: MII reg
+  * @phydata: phy data
+  * Description: it writes the data into the MII register from within the device.
+  */
+-static int stmmac_mdio_write(struct mii_bus *bus, int phyaddr, int phyreg,
+-			     u16 phydata)
++static int stmmac_mdio_write_c22(struct mii_bus *bus, int phyaddr, int phyreg,
++				 u16 phydata)
+ {
+ 	struct net_device *ndev = bus->priv;
+ 	struct stmmac_priv *priv = netdev_priv(ndev);
+-	unsigned int mii_address = priv->hw->mii.addr;
+-	unsigned int mii_data = priv->hw->mii.data;
+ 	int ret, data = phydata;
+ 	u32 value = MII_BUSY;
+-	u32 v;
+ 
+ 	ret = pm_runtime_resume_and_get(priv->device);
+ 	if (ret < 0)
+@@ -330,38 +382,57 @@ static int stmmac_mdio_write(struct mii_bus *bus, int phyaddr, int phyreg,
+ 
+ 	value |= (priv->clk_csr << priv->hw->mii.clk_csr_shift)
+ 		& priv->hw->mii.clk_csr_mask;
+-	if (priv->plat->has_gmac4) {
++	if (priv->plat->has_gmac4)
+ 		value |= MII_GMAC4_WRITE;
+-		if (phyreg & MII_ADDR_C45) {
+-			value |= MII_GMAC4_C45E;
+-			value &= ~priv->hw->mii.reg_mask;
+-			value |= ((phyreg >> MII_DEVADDR_C45_SHIFT) <<
+-			       priv->hw->mii.reg_shift) &
+-			       priv->hw->mii.reg_mask;
+-
+-			data |= (phyreg & MII_REGADDR_C45_MASK) <<
+-				MII_GMAC4_REG_ADDR_SHIFT;
+-		}
+-	} else {
++	else
+ 		value |= MII_WRITE;
+-	}
+ 
+-	/* Wait until any existing MII operation is complete */
+-	if (readl_poll_timeout(priv->ioaddr + mii_address, v, !(v & MII_BUSY),
+-			       100, 10000)) {
+-		ret = -EBUSY;
+-		goto err_disable_clks;
++	ret = stmmac_mdio_write(priv, data, value);
++
++	pm_runtime_put(priv->device);
++
++	return ret;
++}
++
++/**
++ * stmmac_mdio_write_c45
++ * @bus: points to the mii_bus structure
++ * @phyaddr: MII addr
++ * @phyreg: MII reg
++ * @devad: device address to read
++ * @phydata: phy data
++ * Description: it writes the data into the MII register from within the device.
++ */
++static int stmmac_mdio_write_c45(struct mii_bus *bus, int phyaddr,
++				 int devad, int phyreg, u16 phydata)
++{
++	struct net_device *ndev = bus->priv;
++	struct stmmac_priv *priv = netdev_priv(ndev);
++	int ret, data = phydata;
++	u32 value = MII_BUSY;
++
++	ret = pm_runtime_get_sync(priv->device);
++	if (ret < 0) {
++		pm_runtime_put_noidle(priv->device);
++		return ret;
+ 	}
+ 
+-	/* Set the MII address register to write */
+-	writel(data, priv->ioaddr + mii_data);
+-	writel(value, priv->ioaddr + mii_address);
++	value |= (phyaddr << priv->hw->mii.addr_shift)
++		& priv->hw->mii.addr_mask;
++	value |= (phyreg << priv->hw->mii.reg_shift) & priv->hw->mii.reg_mask;
+ 
+-	/* Wait until any existing MII operation is complete */
+-	ret = readl_poll_timeout(priv->ioaddr + mii_address, v, !(v & MII_BUSY),
+-				 100, 10000);
++	value |= (priv->clk_csr << priv->hw->mii.clk_csr_shift)
++		& priv->hw->mii.clk_csr_mask;
++
++	value |= MII_GMAC4_WRITE;
++	value |= MII_GMAC4_C45E;
++	value &= ~priv->hw->mii.reg_mask;
++	value |= (devad << priv->hw->mii.reg_shift) & priv->hw->mii.reg_mask;
++
++	data |= phyreg << MII_GMAC4_REG_ADDR_SHIFT;
++
++	ret = stmmac_mdio_write(priv, data, value);
+ 
+-err_disable_clks:
+ 	pm_runtime_put(priv->device);
+ 
+ 	return ret;
+@@ -499,8 +570,13 @@ int stmmac_mdio_register(struct net_device *ndev)
+ 			dev_err(dev, "Unsupported phy_addr (max=%d)\n",
+ 					MII_XGMAC_MAX_C22ADDR);
+ 	} else {
+-		new_bus->read = &stmmac_mdio_read;
+-		new_bus->write = &stmmac_mdio_write;
++		new_bus->read = &stmmac_mdio_read_c22;
++		new_bus->write = &stmmac_mdio_write_c22;
++		if (priv->plat->has_gmac4) {
++			new_bus->read_c45 = &stmmac_mdio_read_c45;
++			new_bus->write_c45 = &stmmac_mdio_write_c45;
++		}
++
+ 		max_addr = PHY_MAX_ADDR;
+ 	}
+ 
 
 -- 
 2.30.2
