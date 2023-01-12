@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56A12C678D4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jan 2023 17:58:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71AACC63797
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jan 2023 18:00:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
 	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mqvuJlWi82/9wzUwPpCeKdBR/5CC7D4vHwyTUk/tjU0=; b=JwE/Rl1Jp8VEMEqjkLd12siYCL
-	TaK0x8hBilMFHeUhoqT8DB02auUJ1aQyL48RV7C7TjXg073T+5f/vmZjBlUL0GON8cV2MtualHpiL
-	D0hTddn2c+KcUip0RMANjk7hqZt9MJGmAgVnLqPHkjpPjTTREAZ3OIZQmoJB2KMNPhOs2KPC+qz8v
-	oCnARhGPcg99BePCqVq5O3WD7GQLRECGycUtcnhwiUA97+dptsuNMbE5aDrk4+ul0mL07g3562xXY
-	bRrv6Xh/dD4L6NxwcyAZn7y7MbMmN1uRh7CGQ2My+Ij4JNmRS7bSao4gnTjzj5dV200XiMiCt/GtU
-	KZBDuj2w==;
+	bh=4DrvsQ/tz3r/k7xNTF5Z49aZdUaQ4DAq1eAb2foYGT0=; b=NBZUEEW1lZ/X8q+9/QGCtyFGnb
+	db9Fa80kZ4NIUAJ/i5AK2xYYPFxXmNvfgVAFibH/8HeuXA8hstR73YQYa+h8UGKeGkytGSACUi/N1
+	Aveu92GOyy90sdIezWCvC4VFpTIiiRYF4GZIgRuXNEbURzS2+AUhw7Cy7sezB2/c2TFmoK/YriAWR
+	oiZwUACG+67t/T5pxOdzDLoc3acnttUxuCUNeWIkdxtTsrLvUrA1F+D4IKbme9EgBMZwCmvA1/p0v
+	V984BpmTDdCipnsTE/YS4qMdbycIEtm0IEqHqT8wAaxE85Kb8svJOE0PdsuFNMg4RyhlXn9iqCL8Q
+	h7+6tzKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pG1qb-00G9vH-RA; Thu, 12 Jan 2023 17:58:41 +0000
+	id 1pG1s8-00GAZv-1r; Thu, 12 Jan 2023 18:00:16 +0000
 Received: from mail-bn8nam11on2100.outbound.protection.outlook.com ([40.107.236.100] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pG1oe-00G9Dv-9K; Thu, 12 Jan 2023 17:56:41 +0000
+	id 1pG1oi-00G9Dv-7y; Thu, 12 Jan 2023 17:56:46 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=bLJpGkPV6U8krEUftqVOb5GWAAzAfwuup906qfJo2s/TrYntdonXOhfsz37pHNXfTxY73eYKRgezkjX+vQVge32Kk2Ncwwc5FySJ6BlHiW+7hTFn5nuqJW4JLnwB94rVILBlnghTGZm3MRZlFko41WFHVy6GRQMfq9w7saVaTiYBXpxxjO4eUo7c+3Vh7eMb17jrVhlML8eVBpUFLlbBILNvVigu4HfANqrNmaZmYC1gBxa00cH/02k5uMogTzoGCYl8cc7wR+yXsyy61lHoU2p23K+FczWdA4BSp9ZUMj6Grd6qe8aaTejp5ROs+itBsCjLN+9WoSYJFr6N20fkOA==
+ b=h3uAQTj4UtZnVqtmduYd/t+dGQYG88XKuut7PXX41/TLwsus4ZgvhlaEf8B+9lkzw/WVV5y87/L3u/LmURswL2zBx49FnUBzZSA1cRSWsUlr1/8TAoKfj3o9j/w2sK29esv0U6PBYWJJ4jSrfMYb0EyEa9hA3nUqeWjO39nov1H/2hJjmWQGIRN7Lq+KVncQIunOa6o5C2Y/8G2VzNgMyg8qBug3zg3jyE6kEkrce4k6+hgmkMYURw5kmYSqyUFhjP53eT0JQ4Il/uGcJNYy62vVfCeGuidCL8ZT2GEXoC0ep2E8WuaDDhg2bA5rpjJhhUNUfweiTsM7doNBtqirMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=mqvuJlWi82/9wzUwPpCeKdBR/5CC7D4vHwyTUk/tjU0=;
- b=Pg0JTHadsH3UZjBwSJG9LM2DiY/giXBwO4ipTI2daiTXZ5AeN0CCzbsH8fOBGfnY7zaX5YoRq3JyDxmohQjSfcdSBQPkdos9Y5ntfhu+0VRpXwHdMAsQs7n4BGvLVm5T9s1e3OhxEQE9DsAWlMteWqkTbgrPia4PMQnjCu9MZP662XowQEUU/Cn6myA4ujZIPzAiJxxalGJ8T2bp/Mxwk2V4bboYRPfVUMqyT0eHg3qwLfbI8VdAoWXGMAN3wWmRemUv64wPAxeOl496NZUVnhHJC0TA7tf11dNUp0JDcv8Yiyh+wt8DWqRKrfIIukT5lTuEZZtQq6gTJE2ZD3gSFA==
+ bh=4DrvsQ/tz3r/k7xNTF5Z49aZdUaQ4DAq1eAb2foYGT0=;
+ b=drZB0i7/BnMej2rTGcFbyZ1kuwKlMuy1xeXcD85Lj8sWn77g2LZwetFrV4odwjmg2E8iyx/Xoz40TZt5nBFL3sGg0BKU6AGuwLPwvsOQDjKH3TIdm16qneAj4ZnqwvrwBJCsh3iSn9/6kLP9inPwpww3Pz0ZmnUCEdyEVCR6On44f4/DxZ0pt4+Q9qHxJXtdBJbO++8ZET2oEkAptFHrZNkaomGhP50XCr92m/yvUGInlX2HKTDdiNrN9q425Df8fIu3d/h1dFZkOP4T5fAnwzlQsNHt+eHXliT//TMZUri7s0RptvtLy3wHe8Nc439FmZxSdsWLOkbDtEmyy5x8Gw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=in-advantage.com; dmarc=pass action=none
  header.from=in-advantage.com; dkim=pass header.d=in-advantage.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=inadvantage.onmicrosoft.com; s=selector2-inadvantage-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mqvuJlWi82/9wzUwPpCeKdBR/5CC7D4vHwyTUk/tjU0=;
- b=P1l0danu4MvKu2GoGXu4cMEBZTssB4B3vGErFL4wvTCtL4iAjL8A0RN4PsQG0dHRDIaY3Nvzrto2HUCZx4EXefnboJwDUq5SSjjmyx8CvOKjhe307ZyyBNrAvsGm0fyEhF9xUa2kP0/7sJZebRtSIg7qWDPkldkC92G2uNFpa64=
+ bh=4DrvsQ/tz3r/k7xNTF5Z49aZdUaQ4DAq1eAb2foYGT0=;
+ b=E70MmB79gepBI/2N7qb2Fmzh5du8MWVq5mDLJWmY1SGYH1VK1Qv/5rTGvGooRf0OJfRDj09nXVlHvAZX6fnAG26321y2+V+IxFZlrvOfTwc3uTACQ1E23yPF78fNFazA5MNMUR8gdN6FAizZUorhSMZaV7uZz7RujNIpjkX0q04=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=in-advantage.com;
 Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
  (2603:10b6:301:35::37) by SN7PR10MB6548.namprd10.prod.outlook.com
  (2603:10b6:806:2ab::5) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6002.12; Thu, 12 Jan
- 2023 17:56:32 +0000
+ 2023 17:56:39 +0000
 Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
  ([fe80::2015:3589:3e96:2acd]) by MWHPR1001MB2351.namprd10.prod.outlook.com
  ([fe80::2015:3589:3e96:2acd%5]) with mapi id 15.20.6002.012; Thu, 12 Jan 2023
- 17:56:32 +0000
+ 17:56:39 +0000
 From: Colin Foster <colin.foster@in-advantage.com>
 To: linux-renesas-soc@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
@@ -82,9 +82,9 @@ Cc: John Crispin <john@phrozen.org>,
 	Andrew Lunn <andrew@lunn.ch>,
 	George McCollister <george.mccollister@gmail.com>,
 	Rob Herring <robh@kernel.org>
-Subject: [PATCH v7 net-next 01/10] dt-bindings: dsa: sync with maintainers
-Date: Thu, 12 Jan 2023 07:56:04 -1000
-Message-Id: <20230112175613.18211-2-colin.foster@in-advantage.com>
+Subject: [PATCH v7 net-next 03/10] dt-bindings: net: dsa: qca8k: remove address-cells and size-cells from switch node
+Date: Thu, 12 Jan 2023 07:56:06 -1000
+Message-Id: <20230112175613.18211-4-colin.foster@in-advantage.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230112175613.18211-1-colin.foster@in-advantage.com>
 References: <20230112175613.18211-1-colin.foster@in-advantage.com>
@@ -96,56 +96,56 @@ X-ClientProxiedBy: BY3PR03CA0002.namprd03.prod.outlook.com
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: MWHPR1001MB2351:EE_|SN7PR10MB6548:EE_
-X-MS-Office365-Filtering-Correlation-Id: 674df376-2ef8-4a39-1405-08daf4c656b0
+X-MS-Office365-Filtering-Correlation-Id: a71aff7e-689e-481b-a7bc-08daf4c65ae5
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	xxFWLALHmZ6cB5xHaTyiECtZQ8CXpN00itr/YQuWDK1+zkOAHSnF013fz+0DeAolgiDCbQRtIktUJCrDTIj9H/240+7ZzkpoX5mclw7iZ3Jt02U7DcXMfBNcWFBdGSP/EcoDu4xRAtb2/k9i9yfz2O6rwx9iRVr7mX74Z2+CxMn4pnH6qTzFuwgJoZGJASi4lzpFD4oUvgwDsfn5mDABJe77pqW4jRX2WwvZvILd78IJl9J2nik8iils32G9gycH3luYWPdsBKhLJx+Si26dEfnoLKnhTwhJxxjhthLEuYwYeKCNT401BB7J0OtdFCOv+563Njp1OJbpq9xI09FesBzbEe9fnFfhTv1K3OYJiJ6/6Kiyi/egJ2M0+40Cbx43rINFmAG4pYqvqy2sFdDmnt0wCNiHr7IWxLn/G7EM/LrggCOtCYTwRgA5tzIh/akcjcrydJqmv07pL/Inx07oCGTiL97zIV01eZo2fwXZ2V1pbAggrC7vP3XCc4qcgsswSsZBCGBq1guAAeGbzkvM2qITuvWNUDKJtcOOmFAzOhtNJImrU8tHO6s120sT1+YXnaH/KNmYQDa6tGw10ZnS95ZMczSR/1VLKKJY4qIcZrgucfLzhIZLKpmMHjK6aCgzYJfz8SLxxHveoKnj85Qnzg==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2351.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(396003)(136003)(376002)(366004)(39830400003)(346002)(451199015)(66476007)(41300700001)(66556008)(66946007)(8676002)(7406005)(5660300002)(7416002)(316002)(44832011)(54906003)(4326008)(8936002)(2906002)(86362001)(38100700002)(478600001)(36756003)(6486002)(52116002)(6666004)(186003)(6506007)(1076003)(2616005)(6512007)(83380400001);DIR:OUT;SFP:1102;
+X-Microsoft-Antispam-Message-Info: 	sV5nYhmSmJT5SngEM2g+tTD/3SQ42b5riFWvzczZ5jFkT/xvP3+4v2zOLuZ3Og1tZY33H44o6npJkPe0a3EeBT43mWiwEC4ozP6Ga2fOUtGmk+JLEhHEGbn92A+9F5VcKzjvYlK5ts/kiwC2QaOYdDLxz6U9OHIbFElfRWa9jnrwSiB4k8nAxSk/xA3G4medZW+jlw/Z6ln+k0Ll1M1x7fnFogtRATCrtLJc5kFQlTk909BJYyWztQMifD9MbAWOjJQuOt6mUAtZTs3A4I+YyqWzl8l3549TFS8NV05CraomSDvOiWa1h//v4r/0DlArC+kwVwurCuv5F/UiutOdpY+0+x3QxoJG16KJWSvZy1wBk1BBLSS1lV7SNliqEqg7MBM7FONscVmKLBfKBjL/C7CI25+0+FAgQjMezYAY4eLlYxlraCAcghlhcfanpDSuoYxy8Igdqi5c5ULpOm3YjhHgNjepOrbRVzKcaNzSzh1BYygrYS602yPyflEBuhXttqaBtSTscSBbl6pmMLEhiHDKBt3ULcpDfWxmcLL+f8b5DJ9vQXZpwIUOkYR3rqFdurWrdtOMunEINgIvomuD6u1fdQeIIBBc5WPTN8w3FBzLhWvxDpSsd5028Y1zHDQ6GShzDQJaNSbNAjQ6szhh52lg1zMhjJtYkd3FVVJTABGsXycHfMY+H/YcmLL30ObX
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2351.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(396003)(136003)(376002)(39840400004)(366004)(346002)(451199015)(66476007)(41300700001)(66556008)(66946007)(8676002)(7406005)(5660300002)(7416002)(316002)(44832011)(54906003)(4326008)(8936002)(2906002)(86362001)(38100700002)(478600001)(36756003)(6486002)(52116002)(6666004)(186003)(6506007)(1076003)(2616005)(6512007)(83380400001)(32563001);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?ro8Iw5InTPWnCP8G7WobThq/4f2ZWnboHi9xlVe+BxeY9CUzyNV8Xk/0KuPK?=
- =?us-ascii?Q?JV8/i8nkqVEXPg93wLfnAqkamVjl3ABF9KGIUuQRhQgiZ+f/LI4HjdshWk9b?=
- =?us-ascii?Q?PPYKwwVjxjrPcz7YLq4kMXyNpbzX+SFWEDE7sT9YHe0iOaYlzu0CdLmIpgmp?=
- =?us-ascii?Q?vjDFH4ppwYuDAlvBE7yGunHhQ3kixSwWgacOq6LOhBJCfq2jrXRVbSXnEitU?=
- =?us-ascii?Q?sLYFLkCHJXR3ATd9G0N9VAiE0IoVgcwQt7EJ0LkO4pVTSYwM1Q/oP6aG9iBN?=
- =?us-ascii?Q?3NC/nUbrPvJNLZ5CS3CYzTchF6eQYhYqirCTwKJllc1TaGwEzkTk/zEjSVlE?=
- =?us-ascii?Q?AFe/99adDRYZ3v0iZNV5bpoQWrzWEW7V3MYiZlmNmYqHQDnW/FGaAgAxm0Vg?=
- =?us-ascii?Q?/hpaqeJ8sQdYTTH9WIiHqF2eA/JpzXw9kMvvVCZjHuI9kphywkKR8MhQQSZx?=
- =?us-ascii?Q?hvuzA/jP+iaL+wP0DU5ct8OZdXd2HlNiUrkA+2BAHtg6OxOwL2+tkUI+cNMM?=
- =?us-ascii?Q?OX/db/uwp1v9IVmXb6Di4zXylRr6tYJd0uuTzL3WWTScJ2AedFn+I7E9j4wK?=
- =?us-ascii?Q?sUQdhMoTMznR+IBhA21wdManSi2ZFrY/ISWyKBCVXCxanXO+mDCOxo/szfy+?=
- =?us-ascii?Q?qQXptR59Udfy1xgydgF4N79F2qYHSg4/bnHL517E/QjbuxrJAWIx8dTaHcK0?=
- =?us-ascii?Q?KmQIwkqFhqztDVu+Dvgs0unJy3XpGPTePrkff19IOd39xlcMY1+NCKa0jdmK?=
- =?us-ascii?Q?r+bAJbDa3ibBA1SC+vSmXKdsRizAOM4l3gIM6hUHIy/eSOeO2xkpxZqYcerM?=
- =?us-ascii?Q?Bvb7P5HCXjnJaatIEe7EhqM3xL2PHc+X8BZOkJtNvZEtgc4p7N/f1blsqD2A?=
- =?us-ascii?Q?UjMzcNEg4CzvOrtsl/iqgsuFTmKwmuGyZfYtv5fuM4/Pp2rHBpiaDy2BV0/C?=
- =?us-ascii?Q?fme1r60ff4exg1ehR5F7auXhCMeb3HcKTMWNFyT8ZpcK3bl4h/ScItFDbvAW?=
- =?us-ascii?Q?HFKoneQxdciVtMYTp+cFCa3akhJwm9u4LCxbHMx/xPsdo6jKTcTDUL8r69/v?=
- =?us-ascii?Q?xsIeuz2Ribum2UGbZs0YQmWcOjXZp4Cjwy5kva5LoyTPglkO4WtpfywibIpj?=
- =?us-ascii?Q?rMTEsnEC6ose6k7vHu/KAnOnVjiTv8XYIe7hf7P3kLHwjzaPHipH4AmySrGP?=
- =?us-ascii?Q?24UxGrdaIkR4NaZtjpXfLNREm672dqwO8FqdK4J85PjSqJbD43Ja7rDmwr3h?=
- =?us-ascii?Q?HZh+e0+YCfepyQLn+bLXrhLOuXJ+aonYSZurNk/8GQcgJPhLfzuSn1Jhzjsa?=
- =?us-ascii?Q?aM+E2nmCYBAnhPr0ib6KU/sWv1okCLhrOGNQ4N0Qrr1jcSI70fyg/4qr7UbT?=
- =?us-ascii?Q?iokD892Bezgv8mDVm3mFO+BdyL+vRQTlTo0HgLqVL1rADCac3l9FSYEWCEaT?=
- =?us-ascii?Q?2juDXQXqo9P5p6JjBHjKJ6iwLn115y75mGnPmChaw2ApY72Ze1+Nw4+MSSbh?=
- =?us-ascii?Q?VqUwfhSg4n3WvIX20/JRsFBvTdYZB4VjjB86cnGC7U8QOCMQyehMxUvTZCcJ?=
- =?us-ascii?Q?sesY2vsqfbxPWaCB9Jfrce8KAsXoZ8RoKCnnjm8ml6Qb6KOANlX3kuYXmPuz?=
- =?us-ascii?Q?pdKY03/E7RcTsx7fvz57+KL0U7sBlCW6fsz5VcN6ALdPYd1JQ77bv96UTNqF?=
- =?us-ascii?Q?BB59HxbF9arvmj49mEEdEue+Yy8=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?26KlAV0yhJ19g1+oRvWYvpyIlRywRxUMP/7NJ9CCQRx7zE8sDYE/jI5DmYXL?=
+ =?us-ascii?Q?FQiYdxpXy0//gTpN5RUOmR/Jw3qYE20YHUGJGOTYXcPRn96ij5DrRNKP/8Gm?=
+ =?us-ascii?Q?nXP4DeHU3ufXHjggb2jzjrXzTcnG+9lj23ojpbVahINzktGxgn9BnmcGc40Z?=
+ =?us-ascii?Q?2jAkMmYPh5/YIWqUlXZaUuByXu130UcjHV3U0l8HoWwXBIrT3+ZJyG7zSgi4?=
+ =?us-ascii?Q?5XFUKma+mPaC9okAqfy7P9pqqlcXvJu0T4HJay5wAFYt0Z6iG+jODGULe9RS?=
+ =?us-ascii?Q?kvuyEa7h4g03yI+WtOrBaRf51F2vDI3ZIuOjF9pUVWJ+o/EHIODkfZHsOanB?=
+ =?us-ascii?Q?v158z1kvznkTP1XSeIIYI4EpJnrmCvYqSnGgKUFhroQ9I5zlT3BG+oLhAt8S?=
+ =?us-ascii?Q?0xMoql46u3zDIbBwJ+gdJmo7BiJ3fSzOV+hwoEkyT6r40abNinRLk6orW089?=
+ =?us-ascii?Q?Q07nM3x6qJvpTRIN/RA9qTvHLG4g2aSiF5esAEqK+tyFNzbT9gzukNz9vTv6?=
+ =?us-ascii?Q?F79qqAxLy1DwANNOxN9zwe9PCEQYK2SD8ETj89xzwOWz2ebvhfslcRuQY1LP?=
+ =?us-ascii?Q?qwG5h0pBR1c37LepOqnMFQd1pSG3qSx0QF16fTt/w9zCK6Dsv/UU2W2E0sEr?=
+ =?us-ascii?Q?lVqNSKzx0qaP7D5FJpwRKhwyrH+1v9fB+2EcKtKXVI/CoCOuDuVZ56nu/zzf?=
+ =?us-ascii?Q?wE8HCdZ64GwaDX/AEfuvAfKnAdmZlrSARy7wq9WSSlp8N9ZtjadKhfRuPeHn?=
+ =?us-ascii?Q?Ou1qn8GqSYdeplxD8pHkhqaZq4hcXt2R+jA2qGTKAyO+75nR7qwQS+AOOZbP?=
+ =?us-ascii?Q?ww0LoT7/EjEwM3gj/QBV77y5LA/1j+djx94ENhoOKwb9MYpJibTS99B2XMUQ?=
+ =?us-ascii?Q?eW2EpgjxkVAsOCCq8dWl7PybtO6I/s0l1xnklwnSuvb4LJ0epToLLh65LGAT?=
+ =?us-ascii?Q?7sCaHWN7/V2qozfUduFiBnSOaLgM+HetIqGlw1vwaGyWUh7kL+WFnVX/3e4q?=
+ =?us-ascii?Q?nmTzfWHqvEV9UfksQI3VG5KJOOFmkB72dnURSyGHrabNmhrG6dy3uHh9T1CC?=
+ =?us-ascii?Q?M/NNxsKpADsmELG5kEFF2Ff1iK1BfQDSOORuLzJ+BKB8pzUOJlVgwjLNTmOs?=
+ =?us-ascii?Q?JGQ3JClOmgYvn6dmwM97/oqzHmQGr6ANwGyUKiv8FyUJ9gGtUFX2tHqq3WUE?=
+ =?us-ascii?Q?pxKHo08jkWFiJZpvpWGzrKKznDH4DrSoqNpMUjJ8pkg3NI5E0gPArmmWoTZV?=
+ =?us-ascii?Q?pDlc8VtJG0dChWQhk9n3PZ5FrlA3peut2jDOJjArnQhAeUrdsu1ndqsVFti7?=
+ =?us-ascii?Q?569rAT1fy4OhUol1wxOP4L/Wc+JVhFiuNyOy1MrzwGaX7kKJwu2wD4V1GSJ7?=
+ =?us-ascii?Q?QgaiOjJ2dW6e6hkH+DYeDsuH4VswpndfhsetsNyH3DapBCwegDaRtUvBximr?=
+ =?us-ascii?Q?zYRRN+PoV/8zztq35ZjJwzipE93BSBnwYwaQJQefDA8LaLLxYncyDKKYTQ9T?=
+ =?us-ascii?Q?OkUbq2oyN8pus0r+rvyToxN4NywGX27gmql3fSZmllToY5aRB/T/c+g/jfHI?=
+ =?us-ascii?Q?WbQUHNyOJ6rskpPAFUgOE4GsaH+fsWzAbEABR44kY3r+idmnTElsuvhqg1OX?=
+ =?us-ascii?Q?xlGQ5zpSJP/NiyJGzuQeg/Zk5491E5YNVqLo5u5DMArxMT5DXKvWqqU5OHBj?=
+ =?us-ascii?Q?OqYSrwfkodJ9tIf1qzLWDtMzNUE=3D?=
 X-OriginatorOrg: in-advantage.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 674df376-2ef8-4a39-1405-08daf4c656b0
+X-MS-Exchange-CrossTenant-Network-Message-Id: a71aff7e-689e-481b-a7bc-08daf4c65ae5
 X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2351.namprd10.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Jan 2023 17:56:32.4084
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Jan 2023 17:56:39.4860
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 48e842ca-fbd8-4633-a79d-0c955a7d3aae
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: vnm5nASBdukHF2F0q3Tr2vER7wKb69Wa3Wl9SBHgonnOzyFlpG/AK3tLtXracqxFem6fsGfo9VJ8+/JEZMXRzVXJhe75NmCVDp6qZQxek3Y=
+X-MS-Exchange-CrossTenant-UserPrincipalName: NOkqZQvnuhY+L7ODjCFQ1/1ply2fXF+l64ctgeONfXXZjUsCWcgHbzBYbYCMrYLxwrZQxF5CcSqrBNj43VYODjVju0hC4enODUI/jsVV+mk=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR10MB6548
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230112_095640_376481_7B6991EF 
-X-CRM114-Status: GOOD (  11.82  )
+X-CRM114-CacheID: sfid-20230112_095644_425357_0EF0C63D 
+X-CRM114-Status: GOOD (  10.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -160,56 +160,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MAINTAINERS file has Andrew Lunn, Florian Fainelli, and Vladimir Oltean
-listed as the maintainers for generic dsa bindings. Update dsa.yaml and
-dsa-port.yaml accordingly.
+The children of the switch node don't have a unit address, and therefore
+should not need the #address-cells or #size-cells entries. Fix the example
+schemas accordingly.
 
+Suggested-by: Vladimir Oltean <olteanv@gmail.com>
 Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
-Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
-Acked-by: Rob Herring <robh@kernel.org>
 Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
 ---
 
-v6 -> v7
-  * Add Reviewed and Acked
-
-v5 -> v6
+v4 -> v7
   * No change
 
-v5
+v3 -> v4
+  * Add Reviewed tags
+
+v3
   * New patch
 
 ---
- Documentation/devicetree/bindings/net/dsa/dsa-port.yaml | 2 +-
- Documentation/devicetree/bindings/net/dsa/dsa.yaml      | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ Documentation/devicetree/bindings/net/dsa/qca8k.yaml | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml b/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
-index b173fceb8998..fb338486ce85 100644
---- a/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
-@@ -9,7 +9,7 @@ title: Ethernet Switch port
- maintainers:
-   - Andrew Lunn <andrew@lunn.ch>
-   - Florian Fainelli <f.fainelli@gmail.com>
--  - Vivien Didelot <vivien.didelot@gmail.com>
-+  - Vladimir Oltean <olteanv@gmail.com>
+diff --git a/Documentation/devicetree/bindings/net/dsa/qca8k.yaml b/Documentation/devicetree/bindings/net/dsa/qca8k.yaml
+index 978162df51f7..6fc9bc985726 100644
+--- a/Documentation/devicetree/bindings/net/dsa/qca8k.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/qca8k.yaml
+@@ -148,8 +148,6 @@ examples:
  
- description:
-   Ethernet switch port Description
-diff --git a/Documentation/devicetree/bindings/net/dsa/dsa.yaml b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
-index 5469ae8a4389..e189fcc83fc4 100644
---- a/Documentation/devicetree/bindings/net/dsa/dsa.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
-@@ -9,7 +9,7 @@ title: Ethernet Switch
- maintainers:
-   - Andrew Lunn <andrew@lunn.ch>
-   - Florian Fainelli <f.fainelli@gmail.com>
--  - Vivien Didelot <vivien.didelot@gmail.com>
-+  - Vladimir Oltean <olteanv@gmail.com>
+         switch@10 {
+             compatible = "qca,qca8337";
+-            #address-cells = <1>;
+-            #size-cells = <0>;
+             reset-gpios = <&gpio 42 GPIO_ACTIVE_LOW>;
+             reg = <0x10>;
  
- description:
-   This binding represents Ethernet Switches which have a dedicated CPU
+@@ -209,8 +207,6 @@ examples:
+ 
+         switch@10 {
+             compatible = "qca,qca8337";
+-            #address-cells = <1>;
+-            #size-cells = <0>;
+             reset-gpios = <&gpio 42 GPIO_ACTIVE_LOW>;
+             reg = <0x10>;
+ 
 -- 
 2.25.1
 
