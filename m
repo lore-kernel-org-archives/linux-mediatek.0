@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C4B9C5479D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jan 2023 22:14:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65FBCC67871
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jan 2023 04:12:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=hi3XB0zlsg6R1JuCZB44u/f32HwritsWiDcNXVbnAd4=; b=hiFhT5zI9tZXqr
-	IhlOLJJzkf76ULe87aUVpv8igPjHj6zOOXw2btxNv5WmqHIm3YvTZ7ljBQFgVKQCZM7kcNHCoXgq4
-	Re9C/w1DLJ4OtwwGAhKKYgbaX7ez3Bh3ieuKCjNkFKcNr8zCGU/SSqBdBtz+y62XBGR9tdB77Fwwn
-	rIqc1a7Z/1f316E5dLA4/2YMkX8fWNOXmkvkQ5FtTO/rwM9/1k+lT514oBqjr+/BWEqM+xzxwfkhn
-	OCa9OfBcF6OzFTI7xsnLYFBtyOtB/m+GQ5B6RkdTkouay2tqnQD05N7/qDcTsbSMr66XnkKKGfF1g
-	OXhvcrv7PT00J6gQVIfg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1QLBrSsG7E2u1njVXZa5n91Os9tdpWXSJi2J27b1lDs=; b=yxQm2XmZjdoCdH1oe2lAQClX6D
+	p22qy8OtjqFzA9zKv3PHIaSMdE7PiI+e4Q+LBT4l56zquw8utQ28s/CF7fpoJnffCxHPLBwL23qiB
+	Bv7H2yTRJrP5BhEQ61lOXyWgf6NcDwESAoyyfbQRDlUMVnydsImmkD0ZUxW1zpU7dRsZXF+Qci+ns
+	UqVpZQMwCmSIX1v7CRYAVGyQDD7yRhX43dq85Q+r5Ye/eFxk54Q0yTChLzc4AUkCJpHsK72U74f+C
+	2GgckcdQNACUGmpDpJ16RX9ABr1kp0IIh9c+6b2f8tJk9s4vb6JisjwtUTZ1G9B9OgNaRKkuZFN8H
+	dA4g4r4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFjMg-00D4Lj-34; Wed, 11 Jan 2023 22:14:34 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pFox0-00DegQ-CE; Thu, 12 Jan 2023 04:12:26 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFjMV-00D4Kh-2N; Wed, 11 Jan 2023 22:14:24 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id CA52361EDC;
-	Wed, 11 Jan 2023 22:14:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EC377C433EF;
-	Wed, 11 Jan 2023 22:14:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1673475261;
-	bh=brVowBD7+XLa5K8t/DrjPINuNXrFSej5bIzDIj+mIFI=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=dG3fOAFX0pDPm9wB7aarisELFuK5eWKPQ1eHhaEiS5CXGgVo8fswI+q6JmaGaJzQq
-	 4PW7BjrZHQnZIwDnxBabdJCo/XstfAqNrQWO9z7s3YRYf2NkTXayVJHhc9KSnR42+M
-	 RlRxsc9oqJFIe3aPzKNaxDrHTJan9pHD70nkp8j3ReR8MgKkDjsJrkoqw9NcilnO5f
-	 iO+hkJA2t7+aJOXa6/XUOo58D4nFucoDM3DMRV9pNFlfbRS6gSe/g9F825KmhJuCQo
-	 Up33XjlCLgLtu+/RJRoxWjvJj+m4Xu8KlOpx0wekWfREKUGu83AUKlP6ZLi+wVrRJZ
-	 koV0YRz1S7q8A==
-Date: Wed, 11 Jan 2023 16:14:19 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Jian Yang <jian.yang@mediatek.com>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	chuanjia.liu@mediatek.com, jieyy.yang@mediatek.com,
-	qizhong.cheng@mediatek.com, rex-bc.chen@mediatek.com,
-	david-yh.chiu@mediatek.com
-Subject: Re: [PATCH 1/2] PCI: mediatek-gen3: Add power and reset control
- feature for downstream component
-Message-ID: <20230111221419.GA1710905@bhelgaas>
+	id 1pFoww-00DedZ-DR; Thu, 12 Jan 2023 04:12:23 +0000
+X-UUID: 4802aeba922f11eda08d4d6090ec5a5c-20230111
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=1QLBrSsG7E2u1njVXZa5n91Os9tdpWXSJi2J27b1lDs=;
+	b=ecZUqa7LNCkApDa/JfMjJyYegpt/unxLl/VR+VAY8HWzLBdRLjd35ztyofTsWRUSW4gUxaS7NoIKM7YDC4ltLMfL6xLvQlUIIJ49YWpczHIhEDYogKVhU2KqOs0M9ugk9bQDIClYZJkhZ4zVZ57F7hIfu8sEx9WQiVpR6lOEIcQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.17,REQID:a0a0cd4b-0ece-43a8-86c0-4b055362387a,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:543e81c,CLOUDID:dcb76b54-dd49-462e-a4be-2143a3ddc739,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+X-CID-BVR: 0,NGT
+X-UUID: 4802aeba922f11eda08d4d6090ec5a5c-20230111
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 948423087; Wed, 11 Jan 2023 21:12:08 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 12 Jan 2023 12:11:44 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 12 Jan 2023 12:11:43 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
+	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>
+CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
+	<frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve Cho
+	<stevecho@chromium.org>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v3,2/7] media: mediatek: vcodec: using each instance lat_buf count replace core ready list
+Date: Thu, 12 Jan 2023 12:11:35 +0800
+Message-ID: <20230112041140.833-3-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230112041140.833-1-yunfei.dong@mediatek.com>
+References: <20230112041140.833-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230111032542.20306-2-jian.yang@mediatek.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230111_141423_171338_FCEE96FA 
-X-CRM114-Status: GOOD (  14.71  )
+X-CRM114-CacheID: sfid-20230111_201222_464964_C20A44FA 
+X-CRM114-Status: GOOD (  13.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,28 +88,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Core Hardware decoder depends on each instance lat_buf count,
+calling queue_work decode again when the lat_buf count of each instance
+isn't zero.
 
-On Wed, Jan 11, 2023 at 11:25:41AM +0800, Jian Yang wrote:
-> From: "jian.yang" <jian.yang@mediatek.com>
-> 
-> Make MediaTek's controller driver capable of controlling power
-> supplies and reset pin of a downstream component in power-on and
-> power-off flow.
-> 
-> Some downstream components (e.g., a WIFI chip) may need an extra
-> reset other than of PERST# and their power supplies, depending on
-> the requirements of platform, may need to controlled by their
-> parent's driver. To meet the requirements described above, I add this
-> feature to MediaTek's PCIe controller driver as a optional feature.
+Fixes: 365e4ba01df4 ("media: mtk-vcodec: Add work queue for core hardware decode")
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+ drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Is this delay (dsc-reset-msleep) specific to a device downstream from
-the MediaTek controller, not to the MediaTek controller itself?  If
-so, it sounds like it should be a generic value that could be used by
-other drivers, too.
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
+index 3f016c87d722..ad5002ca953e 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
+@@ -239,7 +239,7 @@ static void vdec_msg_queue_core_work(struct work_struct *work)
+ 	mtk_vcodec_dec_disable_hardware(ctx, MTK_VDEC_CORE);
+ 	vdec_msg_queue_qbuf(&ctx->msg_queue.lat_ctx, lat_buf);
+ 
+-	if (!list_empty(&dev->msg_queue_core_ctx.ready_queue)) {
++	if (atomic_read(&lat_buf->ctx->msg_queue.core_list_cnt)) {
+ 		mtk_v4l2_debug(3, "re-schedule to decode for core: %d",
+ 			       dev->msg_queue_core_ctx.ready_num);
+ 		queue_work(dev->core_workqueue, &msg_queue->core_work);
+-- 
+2.18.0
 
-How do you determine the value?  If there's some PCIe spec that
-determines this, please include a citation to it.  
-
-Bjorn
 
