@@ -4,93 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C339C54EBE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 11:36:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ECCBC54EBE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 11:45:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UVemH/+n0aJ7yrCrT3xpnKXM2hgC6V4Q+8fb69hwAOk=; b=RTt+af49RxngLGry2x6B5VROVw
-	c7bnXZE94Ak8qunOZOMgvF8Rn8yzJo418d2KAYE8d0L8lGA93SJrs+uNtpNiEypYvzGbRbNnOJlPF
-	2QGH1KsSf6YH6V58R/8LAtcImCmflssxrDmxD6MFWOjOKgPHYWAaLibnX2q92EHwH9f+4dwRKGKLF
-	W0APp+BCygnfaq8d7wY7u9VOhJYfRnJV+r7Q1sfic+NT2Si5vHLz93uwmjS9VUenBmTsY3VA7e//i
-	ixAJ049jFKAbv3vaX4la4lqZDTrkm4EOi3TK0S9D/axfRKzZp6mh3154RaJvowQPN4iL9bHEGpTyl
-	BVn7zs6A==;
+	bh=jn2+fCHl5ad18BYclTOTd/dWOtO4Qcidi7ooXugxCNQ=; b=NrGdcBWlnEcDs/T2jgITTQ1QGp
+	HJUJqnAK9lXb9z+4bXXT+hYVDySoSig7GVUGG4uG4MKepwNBY811pL2Y2+eQo2sdsBjKlvRGQkWMf
+	54HSzPlsl7AWmpLssXY/4kSZJNK+PPT8zcDDSVUmp4DTx6iXmoQFo+gyUJOyiGU+WNlJt2xKnbAPr
+	mIk70ZatXtfaVehovWeUQB0D6rXwDWqLAMvkRpkWaItSMTGc4EswFPP8QeBq/OspeI6QZhEnQV1z+
+	aJdEtNOkQLinv9iiIepSffngIWPIejMH/P+0eJ82QtxK5hiRH9VUmIMfAiBRqDLHl4fJrSHUktKQy
+	fc+opVbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGILx-002EKt-O2; Fri, 13 Jan 2023 11:36:09 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1pGIUt-002Ihs-CR; Fri, 13 Jan 2023 11:45:23 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGI6M-0026i5-Qb
-	for linux-mediatek@lists.infradead.org; Fri, 13 Jan 2023 11:20:04 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id tz12so51579079ejc.9
-        for <linux-mediatek@lists.infradead.org>; Fri, 13 Jan 2023 03:20:00 -0800 (PST)
+	id 1pGIUh-002IcI-ID; Fri, 13 Jan 2023 11:45:12 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id bs20so20817145wrb.3;
+        Fri, 13 Jan 2023 03:45:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
+        d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=UVemH/+n0aJ7yrCrT3xpnKXM2hgC6V4Q+8fb69hwAOk=;
-        b=HN33jyjNY76i+LmfFBLXwMrJnAzRKg4pfO2NpJJS1nn6PmfyMNwshrXZx9YqEjRVYU
-         jAxgiZUHuZX+hj9PxL8Q265xOrOVw6Lt9h0Ii9YvBxYnGvt1UpW115w7DFNFDF2KmvWo
-         aP/GvHAjt5Q0w6Ay24UpdYig+C0+cAPhXG2ud4EdeYYRRbpe7YIF+8BDiNJiudCdNx2O
-         JMKT1pF0kHr0WGSn6n0oruAJqA+gan1xxHoZNg/ap7PjxyMZ97HHy0Ct+l1+JIdr64F3
-         //ir3yRDNNDlRnCvRBdR5c9dmhnAo/k31psfuedl+viz/MS0gHRMYjCzcC2Lf6896ytL
-         GRag==
+        bh=jn2+fCHl5ad18BYclTOTd/dWOtO4Qcidi7ooXugxCNQ=;
+        b=GS3kERsiiAD8MQz1KiiAaDhKe1WJ+iBm9SjGh2QWZZYbCE1EzGzfumiTO88BBNSkAi
+         Q+RAVpaO7n1uTFgTnBCmsb3BRoh3ytBvrDF81ddV6XKevC1O/Q7xabgIxvH6guBsg9DK
+         lDqyo+jPJpdg1n9P3KJvfu+pnzQETtAFPpvopSqo4Fxuxo7qfF/EoUcwJK9s8Ehy//WJ
+         wuXUXMEw6D2LThQnGJc9o0nMRN4rjA/nreRDExeBtz0i1wU7MpDAPYFk+z+dMoyORkH8
+         MkjoiZSMXLxgrI88yAwxdrUTz+GpyZwpaR/Jig/lnzZ0L5KurNn7slGxFQGtv+lM0nwU
+         aJHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=UVemH/+n0aJ7yrCrT3xpnKXM2hgC6V4Q+8fb69hwAOk=;
-        b=TTZW4DT5KSllCrppV7HbTe2QyAI/WhcwI0/EHNWjSDuOmJBY5KOWFAoakNYhWsFZsb
-         bsqNhlweQUyE8Rw3TVuFsaMV8WQ0TxY3AURXosusNEASuU77UiYYmDV3y6jZi2sDgL/p
-         2R+pa4mOTu7q15KBwx2N6rvE+4jZPsizc7U55mqX283KczB20ThkVnu6osvYgwC3DFTR
-         bbNguyNIGPshs27EZYA3VDG9H16H/+ZhPe4H2Og41/ep1v20yZI8aBKS1vyr+ldHdo8B
-         5Lrj5LaeIX50Tt1z5NI7K/DoqtFcMPZbQ7F60+xctiIk+PSXInH0BahxFtZ+BODHCYDe
-         oXSA==
-X-Gm-Message-State: AFqh2kpllMd+cn+NRg5xwDYliiqnU+HUnDPxA8wmKLNb4O3w3stn5oW/
-	AegdaGUSElIpQzkejz+5KmGYpg==
-X-Google-Smtp-Source: AMrXdXuBDV8ne84njqmvaISRnt4bQg7QL0cfZ+DV1EG8StSnyW43wySSBQBImvGeW9CNIaH+VYgy3Q==
-X-Received: by 2002:a17:907:8b11:b0:81b:fbff:a7cc with SMTP id sz17-20020a1709078b1100b0081bfbffa7ccmr69306280ejc.18.1673608799052;
-        Fri, 13 Jan 2023 03:19:59 -0800 (PST)
-Received: from [192.168.1.109] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id k8-20020a1709062a4800b0083ffb81f01esm8397495eje.136.2023.01.13.03.19.56
+        bh=jn2+fCHl5ad18BYclTOTd/dWOtO4Qcidi7ooXugxCNQ=;
+        b=sPlTPNxPE2FKtQmppF9o/0S6StXuAzgTtSA7tCwpwo+9jfqj9hOVvJ+/SmFicSdG7u
+         eF8YYnrtRKpjLiiZ/8id3r/2JAu9F0250VvNoJRhvrbNAwEWQvWcPtKI+DiH0HCteaSS
+         iuWfZkAbRAIKXaAfQCzdDqhBv9RpMfhh03LSPc71k5cjG4xSmxw04R9LQyN1r2v7ZVVa
+         v6MFZqp2CkO7mm/Yyj9a6Te2cyNEYzMCNy0t7lyBaTGXQDe6yi6tC2QMKOdUj0+mnajy
+         Oig4oVfTKg8CqdFf4U7uCiNdjBZWTPe33v6vzr8bH6ArY7Ct/3Bdlhecm5liaaOPpr/2
+         oIGg==
+X-Gm-Message-State: AFqh2kpznpDD2R22Tw/wsiHU36qeHwuNe4DhPHoj56RpfghrOqLq6HJH
+	seyCMoht/Mo6QOZwbZZpsj4=
+X-Google-Smtp-Source: AMrXdXtfcJLQrWeIUr4UDN6ImK6x+hSR/nhLfjBfN+6jtiLjGDc4A5OGvU9xqAwrDkqqZLh6yaSVoA==
+X-Received: by 2002:adf:e7cd:0:b0:2bd:d782:c2b8 with SMTP id e13-20020adfe7cd000000b002bdd782c2b8mr3630527wrn.29.1673610306993;
+        Fri, 13 Jan 2023 03:45:06 -0800 (PST)
+Received: from [192.168.0.30] ([37.222.254.155])
+        by smtp.gmail.com with ESMTPSA id c18-20020adffb52000000b0025e86026866sm21956492wrs.0.2023.01.13.03.45.05
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Jan 2023 03:19:58 -0800 (PST)
-Message-ID: <72b30123-300d-0751-9725-6cd8e2a18f4d@linaro.org>
-Date: Fri, 13 Jan 2023 12:19:56 +0100
+        Fri, 13 Jan 2023 03:45:06 -0800 (PST)
+Message-ID: <1e5d5341-4ed4-0333-a56d-673f8342aeed@gmail.com>
+Date: Fri, 13 Jan 2023 12:45:04 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH v30 01/11] dt-bindings: arm: mediatek: mmsys: add vdosys1
- compatible for MT8195
+Subject: Re: [PATCH v10 3/6] arm64/dts/mt8195: Add efuse node to mt8195
 Content-Language: en-US
-To: "Nancy.Lin" <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>
-Cc: Nathan Chancellor <nathan@kernel.org>,
- Nick Desaulniers <ndesaulniers@google.com>, Tom Rix <trix@redhat.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
- Nathan Lu <nathan.lu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
- Xinlei Lee <xinlei.lee@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, llvm@lists.linux.dev,
- singo.chang@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20230113104434.28023-1-nancy.lin@mediatek.com>
- <20230113104434.28023-2-nancy.lin@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230113104434.28023-2-nancy.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+To: bchihi@baylibre.com, daniel.lezcano@linaro.org, rafael@kernel.org,
+ amitk@kernel.org, rui.zhang@intel.com
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ khilman@baylibre.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, james.lo@mediatek.com,
+ rex-bc.chen@mediatek.com
+References: <20230112152855.216072-1-bchihi@baylibre.com>
+ <20230112152855.216072-4-bchihi@baylibre.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20230112152855.216072-4-bchihi@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230113_032002_910249_AF9D054E 
-X-CRM114-Status: UNSURE (   7.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230113_034511_657012_1AE15729 
+X-CRM114-Status: GOOD (  13.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,16 +95,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/01/2023 11:44, Nancy.Lin wrote:
-> Add vdosys1 mmsys compatible for MT8195 platform.
+
+
+On 12/01/2023 16:28, bchihi@baylibre.com wrote:
+> From: Balsam CHIHI <bchihi@baylibre.com>
 > 
-> For MT8195, VDOSYS0 and VDOSYS1 are 2 display HW pipelines binding to
-> 2 different power domains, different clock drivers and different
-> mediatek-drm drivers.
+> Add efuse node.
+> This will be required by the thermal driver to get the calibration data.
+> 
+> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Best regards,
-Krzysztof
-
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 6 ++++++
+>   1 file changed, 6 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> index 5d31536f4c48..09df105f4606 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -1380,6 +1380,12 @@ pciephy_glb_intr: pciephy-glb-intr@193 {
+>   			dp_calibration: dp-data@1ac {
+>   				reg = <0x1ac 0x10>;
+>   			};
+> +			lvts_efuse_data1: lvts1-calib@1bc {
+> +				reg = <0x1bc 0x14>;
+> +			};
+> +			lvts_efuse_data2: lvts2-calib@1d0 {
+> +				reg = <0x1d0 0x38>;
+> +			};
+>   		};
+>   
+>   		u3phy2: t-phy@11c40000 {
 
