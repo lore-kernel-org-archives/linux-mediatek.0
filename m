@@ -4,87 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DAE1C54EBE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 12:05:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 553D6C54EBE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 12:43:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lM60jB5CeQGfmEnmDWStP3rhRDC4AugryFBW67wjBxI=; b=j57gGuEhn6zL9FLzudx+CTXOfF
-	8bdFQum6nJVU9+cR7wSfpcA8PHz5ooCi/Fe5nAokmiU4uQqhK/SG72hi6igwRcXnkTr1KYXocI5LK
-	z3TScAazMx077Nm/brjS4nrbBgmHY9pXsvHwtQ1uOe6RTjsqqdNGh99o0UorZEuHcGVhga6inYU/k
-	LVOzyvjD2TqgAh85sGNZm8JfeIhDmn9vNtYAYCpMd+mc280x80FpxbfY4vovD38Euz0sISHyZBXWv
-	aR2thQ3y+lnxi4mRt9hwDkxbdb6M5Z+Ekw6f2eeG6bV1lp40XLXGgqmRxleOTVFK3RqnY9tFhxKI5
-	VpPkK8dA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TcM3UhmX4V8KSyZnY4nAAwUPvIj1NLjz7lmQqW/RSPA=; b=BSaST8OuahAWy+KqFy19HpmCiG
+	bhmU65uCOfoTpekrVIZy+9ACRsUvuHUgKg1QsICFvtc/hXAGEHmLz0Q4tahav1AoZHu3GYPyLKBKM
+	9oz/BUFCcMpvDzm6KazSH+eLgnwDr3sr0Aoj3gfNjn5KHJYfiDfUSxcN9kQOY3tKddKy472C9Mw1M
+	LgkpjOn3YR3OMUbKqgNmXtfYi3/AnTNJSvl+pAJG2KtFAiCmmi9cUz36IHCI+Fgvo8FjoWfLDhjbx
+	1ek2mfHnMsmJP9A+TAdH1NCmY5i3gaaQVLRHRImFgnj12lrlX8/6MFZD0oqjXVgAjl5+Nk8L9Mmfx
+	XgIk5jfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGInt-002ReO-P3; Fri, 13 Jan 2023 12:05:01 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGIiv-002PNF-Ei
-	for linux-mediatek@lists.infradead.org; Fri, 13 Jan 2023 11:59:54 +0000
-Received: by mail-ej1-x634.google.com with SMTP id v6so8780916ejg.6
-        for <linux-mediatek@lists.infradead.org>; Fri, 13 Jan 2023 03:59:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=lM60jB5CeQGfmEnmDWStP3rhRDC4AugryFBW67wjBxI=;
-        b=XaEEC5PZdtcHMQ7EV4jsUpXyAKWlZi1l4EUZI2/t0KdEhJEZf2pRJWdFEIkdkcDAWS
-         hNEV7yYATrN8TE65cpXj9S2cI4rY3lprGDk7RPsbQOJksOYrf1rgDlUaMEFheiLIi4OD
-         gWtrHp+p+t2y56+Yea4IE2kMNDXtC70yZeClRBMZlYzJtYebnmDQ4bQhCF1b4G2wsRz/
-         G380H320AapWZ74/58MqNsqQ+fk8UBx12uOW6598WiU94HbxImN/oMGdjBUgiOBt8ayG
-         uhtGX2OEQrV7eSCTy1NKbMMxVouHv2gLlXeJpaDffQ+hpsNJGXloKDm3l4SNRRp/uCGE
-         IvpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=lM60jB5CeQGfmEnmDWStP3rhRDC4AugryFBW67wjBxI=;
-        b=fdvMl+x+NkbKFYqUXYhEU0GF7b17PeKKAViya8xRHwQnWgnYPgsCnzCq9D2xVyHUYY
-         0Y6GJkMKYaWgtKYMpqczXk9dETQr9MeMhX1Hnsu71l9/loGqxPRKZ6gUYCloC+XGlVls
-         /NvNBPddPSUdzeoQlz6i+thmPHuvmf5axnmWo4a+3oOw5FnRexgTk6YKLeN5vATErATE
-         nxryVYad0rjUphXcWwklkIncpqAOoSdzHkfXZdnibUsDGAV/i0VWr6NBlhg8k0+G7wOw
-         SXpQqJ7YK++h2fqUBoRpEO1UShBSiOvBpnAZhwFR9BCFsQHXK/ANlrBEd+ggwgFojT9T
-         rDjg==
-X-Gm-Message-State: AFqh2krFUXtspYw/ET8nZDTRM7CcfRZ3udpybngSv3kgP9TbXrOjwSS0
-	sVqiesBvVfJBBTov3jKx2dE7IQ==
-X-Google-Smtp-Source: AMrXdXvHFuBXHMVk0hBzhEM99tOU+VIvQ/ZKfYPQVI98WQOjRvcco+YhoSpAcYKvIxwXWJifbqXL3g==
-X-Received: by 2002:a17:906:99d1:b0:7c1:12ef:bf52 with SMTP id s17-20020a17090699d100b007c112efbf52mr63943919ejn.3.1673611191261;
-        Fri, 13 Jan 2023 03:59:51 -0800 (PST)
-Received: from [192.168.1.109] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id kr12-20020a1709079a0c00b0084d44553af9sm6417588ejc.215.2023.01.13.03.59.49
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Jan 2023 03:59:50 -0800 (PST)
-Message-ID: <d16ed246-86b3-7837-845d-ba33dd61b482@linaro.org>
-Date: Fri, 13 Jan 2023 12:59:49 +0100
+	id 1pGJPI-002b3Z-Jl; Fri, 13 Jan 2023 12:43:40 +0000
+Received: from mail.8bytes.org ([85.214.250.239])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pGJP6-002azI-1F; Fri, 13 Jan 2023 12:43:29 +0000
+Received: from 8bytes.org (p200300c277327f0086ad4f9d2505dd0d.dip0.t-ipconnect.de [IPv6:2003:c2:7732:7f00:86ad:4f9d:2505:dd0d])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.8bytes.org (Postfix) with ESMTPSA id B52F6262340;
+	Fri, 13 Jan 2023 13:43:26 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
+	s=default; t=1673613806;
+	bh=eAedM8kUpXf74wYVvw3sbi954tDx1WJVtgDncIaNFq8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XVvCfrEHbJJBmS+tx4zrgb9AW8hqb3KqzWWGZhf+kizYzwhSaHILZZ/w1IEqVvKUs
+	 82Rr7nw9/Otg4eeV2II5Z9XkfRJmtC29LfRYGbj27HUMzIj8AvZNt73Va4e1sIB6gp
+	 ILFTXXLcLI3dtOoRv6zB98XtnvJsdlmRzsilsXQ967oY0BTT5m7wSt4bu5D1HC0aQP
+	 CPEVAOZTMabLxz8YfwGCGRjLf2evCsYlQoYq7c6OSoOcWgIGErvmPQEiQ8zKQ1qgR0
+	 UAJaYXMH1gSjXdgjKyYu81pur7zkCA6vmnQ/VxYOESwQb7c8uUyghiz/VlACimGvfi
+	 06u70PnpsuPEg==
+Date: Fri, 13 Jan 2023 13:43:25 +0100
+From: Joerg Roedel <joro@8bytes.org>
+To: yf.wang@mediatek.com
+Cc: Robin Murphy <robin.murphy@arm.com>, Will Deacon <will@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	"open list:IOMMU DMA-API LAYER" <iommu@lists.linux.dev>,
+	open list <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	wsd_upstream@mediatek.com, stable@vger.kernel.org,
+	Libo Kang <Libo.Kang@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
+	Ning Li <Ning.Li@mediatek.com>,
+	jianjiao zeng <jianjiao.zeng@mediatek.com>
+Subject: Re: [PATCH v2] iommu/iova: Fix alloc iova overflows issue
+Message-ID: <Y8FR7U8YaDrIF62d@8bytes.org>
+References: <20230111063801.25107-1-yf.wang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v5 02/10] dt-bindings: arm: mediatek: mmsys: Add support
- for MT8195 VPPSYS
-Content-Language: en-US
-To: Moudy Ho <moudy.ho@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20230113054304.21841-1-moudy.ho@mediatek.com>
- <20230113054304.21841-3-moudy.ho@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230113054304.21841-3-moudy.ho@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230111063801.25107-1-yf.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230113_035953_527869_36379410 
-X-CRM114-Status: GOOD (  12.95  )
+X-CRM114-CacheID: sfid-20230113_044328_325366_6BFF7015 
+X-CRM114-Status: UNSURE (   8.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,32 +78,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/01/2023 06:42, Moudy Ho wrote:
-> For MT8195, VPPSYS0 and VPPSYS1 are 2 display pipes with
-> hardware differences in power domains, clocks and subsystem counts,
-> which should be determined by compatible names.
-> 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
->  .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml        | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> index 84de12709323..27d2631d43d3 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> @@ -34,6 +34,8 @@ properties:
->                - mediatek,mt8188-vdosys0
->                - mediatek,mt8192-mmsys
->                - mediatek,mt8365-mmsys
-> +              - mediatek,mt8195-vppsys0
-> +              - mediatek,mt8195-vppsys1
+On Wed, Jan 11, 2023 at 02:38:00PM +0800, yf.wang@mediatek.com wrote:
+> v2: Update patch
+>     1. Cc stable@vger.kernel.org
+>        This patch needs to be merged stable branch,
+>        add stable@vger.kernel.org in mail list.
+>     2. Refer robin's suggestion to update patch.
 
-That's broken order and I did not ack something like this. What's
-happening with these patches?
-
-Best regards,
-Krzysztof
-
+Applied for 6.2, thanks.
 
