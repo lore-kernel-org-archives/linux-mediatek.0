@@ -4,84 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6132C54EBE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 08:02:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F79BC54EBD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 08:12:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Dd0gSl4CE2V3d5G56HYqss/GOHVFV1yZ9nbqL6AwD9A=; b=kpP5cNYFZiLFW8J2Lm5iOO0Ll1
-	E44Bob02qAkTvLmn8yX2Vov45TVfSiY6NiiU0kFT5LYTRQTm25piTGvJhypD1EiS10g9+uIguZr2v
-	/ZDsZ2S+GmdBe8AM8cbBIA8pOY1bO+S9qmGHA6fR63TE7vXX/aNCiCgSrgTJyf8RXzWSdevW3qfxz
-	zV76ptH794rMrISyiPbDkEs4oQK32povX8Ni7nCQUFJJfJHmC4jRJQTXp9t9k2Msc0HL3+Vt9AKbH
-	hVjltaKROsMkmKXkw8/ymZG0s0IQF9XlQoxB4Bd4uUMnrI0ni5zxN4Yd7Xtrk3vEkhoHSmXz4j6sn
-	GfqKcxhA==;
+	bh=fjaW0AKsz0XwH3czs0gOtSoZ9GFwMX3dHRXY6veioIM=; b=rerw7crDBCnWyaKp0rmwKeoRdm
+	duCdAMGBzJshzE30//5UXD4o7dIh0zynoDsrbB1/CA2XWhzifX0r88SFU1iBPO31R9W+e0tHgLGE9
+	jypMlJxaYbmEumVEmuRHuWvOsym5n+lmznZVXXA1V1Tp/Amwm3uWVfqL+gJURFe/E4sU6QIltMGYO
+	soOiROFztGCB1xK0sdV85ZntopprzG7TZvWoLeZRd84UEb9KFzSRAD/4n5OcMV3yDkNz/WCcErEys
+	5m9T4P+iHWi8N4XL7o0/0hsyXxBm9sIYsSi/5CI4gsFxYsjQh4nBzg6wbuF5pc3Qx0frdzvc1eerW
+	8KqOZQHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGF1H-0015Yy-8m; Fri, 13 Jan 2023 08:02:35 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1pGFAG-0018PU-FW; Fri, 13 Jan 2023 08:11:52 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGF0x-0015Nu-JY
-	for linux-mediatek@lists.infradead.org; Fri, 13 Jan 2023 08:02:17 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id bq39so32038408lfb.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 13 Jan 2023 00:02:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Dd0gSl4CE2V3d5G56HYqss/GOHVFV1yZ9nbqL6AwD9A=;
-        b=mqO98eOBz/748Ci6ObhHIea8mpxnmd1rLxJ1Ah0FmfoDLs+0VTI6z2oPJlJ53r268e
-         xHuZrV1llZVFtYzDl0sZAThadKvHRnMn3SMfUbCcOT9fu4uum5kjAhAWxrPETU8dgQ68
-         O2ypD+B1kjo3uMVWaB8Gc2y/NTTKCh7cFQlmzYJo1/iZzhdwYnhopyKNkz7saxX+Kg92
-         OLF9Ov9XTl5HPOe4qR9WGx8Z59cOx+sHT46tu/vN6k+x0ZhWlMAhY2dahytJ+XR7sOOg
-         Mzde0OVNSIncs51cnSUdwFHUJ0wJIYMZ4pdq/uwRtSG5ywtU9tbixlRfPpBtAxCNExhY
-         u2kA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Dd0gSl4CE2V3d5G56HYqss/GOHVFV1yZ9nbqL6AwD9A=;
-        b=U1vf9aqpoTWfrc5oDJ5lAXsSjDJmaJ26MgFaX2TKe/PBHTLa3lW6FLkjGgYQN5oysu
-         QJ9//aJrCfdqXr+Bal2uIGscsCNIHpTqe5SKSQtDaS2FZWcji3nfZ9t4UpEr9Sixfv9+
-         /Ew9DDWiNKZK7rLYHNABnpXezek3yTqeogDr35JqsCY8E+JT16cg3IFjgNaCm1QnUUJ+
-         gca6r93YMzqsMb7HfJuYUpEZEDAiKnOTFLX21mNNUwL7A/VZu1UHScCnkWG9giujapSx
-         tAK8pOUBDTXTZ8AQxII+LWPBKP54OxEhYDRL2TpnqmAqGwklNF8b6xklrGotux5/Sa4B
-         2XYA==
-X-Gm-Message-State: AFqh2kouK8ffecF9r3O0dGELcdFOk64pDoCXuSN8GVwJ24iP9WhkN+a1
-	yKXdMHecx49zcTysFI9ejsmL70vN1gKzzoFqWEEfgQ==
-X-Google-Smtp-Source: AMrXdXsuLPtxsRjt59Z2mJObWpDdPhsFvqdheqjEmNoRMVg61TYZVi8JX1s9a7xADaxX36MhxBDwaBe+xj6Bo6cV56o=
-X-Received: by 2002:a05:6512:6c6:b0:4a4:77a8:45a4 with SMTP id
- u6-20020a05651206c600b004a477a845a4mr3595816lff.654.1673596931130; Fri, 13
- Jan 2023 00:02:11 -0800 (PST)
+	id 1pGFA5-0018NU-9w; Fri, 13 Jan 2023 08:11:42 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 07DD4B820CB;
+	Fri, 13 Jan 2023 08:11:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 398CCC433EF;
+	Fri, 13 Jan 2023 08:11:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1673597497;
+	bh=DJouDT5lhPUbU7anaQI3h0jmuQGiHZvzy1TF8vdqLbU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=cC4GXKs1uAhxo4jHFGJrBIVvOlBUpnn3TsYxxkupYC1jhNg5dBa4TCQSFxvBuuDyd
+	 qNfVmqTolmY7h1mXpwyzFJtHLGXhYj5hpxJbJ46qvqRkuMqnDOGX2iq1Wl2OKQIl6k
+	 W4ITasqcS8Q05Pmh779uygdHcz4ZipZb4SOq2zQQsjWgDR3IRG35SZjeFbfr3UmJ8g
+	 vPwRF/wfDiMHG8gE2Ej6JNMIO3uVJIt9JBV78vp5P11JQAAY33MQ/Eudag6enremfY
+	 0rjdN3wsJjJeRjxhgqP/OVeS4LnbRrdXDPRJFN4U4dYDHIThiHBBpYRuLKZxAbOnxM
+	 BjueR1WOmL2rQ==
+Message-ID: <13262366-49f3-2a34-6772-9500461512d4@kernel.org>
+Date: Fri, 13 Jan 2023 09:11:29 +0100
 MIME-Version: 1.0
-References: <20230103075603.12294-1-Kuan-Ying.Lee@mediatek.com>
- <CACT4Y+b5hbCod=Gj6oGxFrq5CaFPbz5T9A0nomzhWooiXQy5aA@mail.gmail.com> <edbcce8a1e9e772e3a3fd032cd4600bd5677c877.camel@mediatek.com>
-In-Reply-To: <edbcce8a1e9e772e3a3fd032cd4600bd5677c877.camel@mediatek.com>
-From: Dmitry Vyukov <dvyukov@google.com>
-Date: Fri, 13 Jan 2023 09:01:58 +0100
-Message-ID: <CACT4Y+Yx+8tjTvE5oR3qzHa4oMoPoj=+BTgcFZHA8jwxgtp1Pg@mail.gmail.com>
-Subject: Re: [PATCH] kasan: infer the requested size by scanning shadow memory
-To: =?UTF-8?B?S3Vhbi1ZaW5nIExlZSAo5p2O5Yag56mOKQ==?= <Kuan-Ying.Lee@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	=?UTF-8?B?UXVuLXdlaSBMaW4gKOael+e+pOW0tCk=?= <Qun-wei.Lin@mediatek.com>, 
-	"linux-mm@kvack.org" <linux-mm@kvack.org>, "andreyknvl@gmail.com" <andreyknvl@gmail.com>, 
-	=?UTF-8?B?Q2hpbndlbiBDaGFuZyAo5by16Yym5paHKQ==?= <chinwen.chang@mediatek.com>, 
-	"kasan-dev@googlegroups.com" <kasan-dev@googlegroups.com>, 
-	"akpm@linux-foundation.org" <akpm@linux-foundation.org>, 
-	"ryabinin.a.a@gmail.com" <ryabinin.a.a@gmail.com>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"glider@google.com" <glider@google.com>, "vincenzo.frascino@arm.com" <vincenzo.frascino@arm.com>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v10 2/6] dt-bindings/thermal/mediatek: Add dt-binding
+ document for LVTS thermal controllers
+To: bchihi@baylibre.com, daniel.lezcano@linaro.org, rafael@kernel.org,
+ amitk@kernel.org, rui.zhang@intel.com
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ khilman@baylibre.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, james.lo@mediatek.com,
+ rex-bc.chen@mediatek.com
+References: <20230112152855.216072-1-bchihi@baylibre.com>
+ <20230112152855.216072-3-bchihi@baylibre.com>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzk@kernel.org>
+In-Reply-To: <20230112152855.216072-3-bchihi@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230113_000215_723397_CC331395 
-X-CRM114-Status: GOOD (  35.54  )
+X-CRM114-CacheID: sfid-20230113_001141_542687_7D1FE258 
+X-CRM114-Status: UNSURE (   8.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,163 +79,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 13 Jan 2023 at 08:59, 'Kuan-Ying Lee (=E6=9D=8E=E5=86=A0=E7=A9=8E)'=
- via kasan-dev
-<kasan-dev@googlegroups.com> wrote:
->
-> On Mon, 2023-01-09 at 07:51 +0100, Dmitry Vyukov wrote:
-> > On Tue, 3 Jan 2023 at 08:56, 'Kuan-Ying Lee' via kasan-dev
-> > <kasan-dev@googlegroups.com> wrote:
-> > >
-> > > We scan the shadow memory to infer the requested size instead of
-> > > printing cache->object_size directly.
-> > >
-> > > This patch will fix the confusing generic kasan report like below.
-> > > [1]
-> > > Report shows "cache kmalloc-192 of size 192", but user
-> > > actually kmalloc(184).
-> > >
-> > > =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> > > BUG: KASAN: slab-out-of-bounds in _find_next_bit+0x143/0x160
-> > > lib/find_bit.c:109
-> > > Read of size 8 at addr ffff8880175766b8 by task kworker/1:1/26
-> > > ...
-> > > The buggy address belongs to the object at ffff888017576600
-> > >  which belongs to the cache kmalloc-192 of size 192
-> > > The buggy address is located 184 bytes inside of
-> > >  192-byte region [ffff888017576600, ffff8880175766c0)
-> > > ...
-> > > Memory state around the buggy address:
-> > >  ffff888017576580: fb fb fb fb fb fb fb fb fc fc fc fc fc fc fc fc
-> > >  ffff888017576600: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-> > > > ffff888017576680: 00 00 00 00 00 00 00 fc fc fc fc fc fc fc fc fc
-> > >
-> > >                                         ^
-> > >  ffff888017576700: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
-> > >  ffff888017576780: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
-> > > =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> > >
-> > > After this patch, report will show "cache kmalloc-192 of size 184".
-> > >
-> > > Link:
-> > > https://urldefense.com/v3/__https://bugzilla.kernel.org/show_bug.cgi?=
-id=3D216457__;!!CTRNKA9wMg0ARbw!mLNcuZ83c39d0Xkut-WMY3CcvZcAYDuLCmv4mu7IAld=
-w4_n4i6XvX8GORBfjOadWxOa6d-ODQdx6ZCSvB2g13Q$
-> > > $   [1]
-> > >
-> > > Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-> > > ---
-> > >  mm/kasan/kasan.h          |  5 +++++
-> > >  mm/kasan/report.c         |  3 ++-
-> > >  mm/kasan/report_generic.c | 18 ++++++++++++++++++
-> > >  3 files changed, 25 insertions(+), 1 deletion(-)
-> > >
-> > > diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-> > > index 32413f22aa82..7bb627d21580 100644
-> > > --- a/mm/kasan/kasan.h
-> > > +++ b/mm/kasan/kasan.h
-> > > @@ -340,8 +340,13 @@ static inline void
-> > > kasan_print_address_stack_frame(const void *addr) { }
-> > >
-> > >  #ifdef CONFIG_KASAN_GENERIC
-> > >  void kasan_print_aux_stacks(struct kmem_cache *cache, const void
-> > > *object);
-> > > +int kasan_get_alloc_size(void *object_addr, struct kmem_cache
-> > > *cache);
-> > >  #else
-> > >  static inline void kasan_print_aux_stacks(struct kmem_cache
-> > > *cache, const void *object) { }
-> > > +static inline int kasan_get_alloc_size(void *object_addr, struct
-> > > kmem_cache *cache)
-> > > +{
-> > > +       return cache->object_size;
-> > > +}
-> > >  #endif
-> > >
-> > >  bool kasan_report(unsigned long addr, size_t size,
-> > > diff --git a/mm/kasan/report.c b/mm/kasan/report.c
-> > > index 1d02757e90a3..6de454bb2cad 100644
-> > > --- a/mm/kasan/report.c
-> > > +++ b/mm/kasan/report.c
-> > > @@ -236,12 +236,13 @@ static void describe_object_addr(const void
-> > > *addr, struct kmem_cache *cache,
-> > >  {
-> > >         unsigned long access_addr =3D (unsigned long)addr;
-> > >         unsigned long object_addr =3D (unsigned long)object;
-> > > +       int real_size =3D kasan_get_alloc_size((void *)object_addr,
-> > > cache);
-> > >         const char *rel_type;
-> > >         int rel_bytes;
-> > >
-> > >         pr_err("The buggy address belongs to the object at %px\n"
-> > >                " which belongs to the cache %s of size %d\n",
-> > > -               object, cache->name, cache->object_size);
-> > > +               object, cache->name, real_size);
-> > >
-> > >         if (access_addr < object_addr) {
-> > >                 rel_type =3D "to the left";
-> > > diff --git a/mm/kasan/report_generic.c b/mm/kasan/report_generic.c
-> > > index 043c94b04605..01b38e459352 100644
-> > > --- a/mm/kasan/report_generic.c
-> > > +++ b/mm/kasan/report_generic.c
-> > > @@ -43,6 +43,24 @@ void *kasan_find_first_bad_addr(void *addr,
-> > > size_t size)
-> > >         return p;
-> > >  }
-> > >
-> > > +int kasan_get_alloc_size(void *addr, struct kmem_cache *cache)
-> > > +{
-> > > +       int size =3D 0;
-> > > +       u8 *shadow =3D (u8 *)kasan_mem_to_shadow(addr);
-> > > +
-> > > +       while (size < cache->object_size) {
-> > > +               if (*shadow =3D=3D 0)
-> > > +                       size +=3D KASAN_GRANULE_SIZE;
-> > > +               else if (*shadow >=3D 1 && *shadow <=3D
-> > > KASAN_GRANULE_SIZE - 1)
-> > > +                       size +=3D *shadow;
-> > > +               else
-> > > +                       return size;
-> > > +               shadow++;
-> >
-> > This only works for out-of-bounds reports, but I don't see any checks
-> > for report type. Won't this break reporting for all other report
-> > types?
-> >
->
-> I think it won't break reporting for other report types.
-> This function is only called by slab OOB and UAF.
+On 12/01/2023 16:28, bchihi@baylibre.com wrote:
+> From: Balsam CHIHI <bchihi@baylibre.com>
+> 
+> Add dt-binding document for mt8192 and mt8195 LVTS thermal controllers.
 
-I meant specifically UAF reports.
-During UAF there are no 0s in the object shadow.
+Please use scripts/get_maintainers.pl to get a list of necessary people
+and lists to CC.  It might happen, that command when run on an older
+kernel, gives you outdated entries.  Therefore please be sure you base
+your patches on recent Linux kernel.
 
-> > I would also print the cache name anyway. Sometimes reports are
-> > perplexing and/or this logic may return a wrong result for some
-> > reason. The total object size may be useful to understand harder
-> > cases.
-> >
->
-> Ok. I will keep the cache name and the total object_size.
->
-> > > +       }
-> > > +
-> > > +       return cache->object_size;
-> > > +}
-> > > +
-> > >  static const char *get_shadow_bug_type(struct kasan_report_info
-> > > *info)
-> > >  {
-> > >         const char *bug_type =3D "unknown-crash";
->
-> --
-> You received this message because you are subscribed to the Google Groups=
- "kasan-dev" group.
-> To unsubscribe from this group and stop receiving emails from it, send an=
- email to kasan-dev+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgi=
-d/kasan-dev/edbcce8a1e9e772e3a3fd032cd4600bd5677c877.camel%40mediatek.com.
+You skipped several lists and maintainers. Resend.
+
+Best regards,
+Krzysztof
+
 
