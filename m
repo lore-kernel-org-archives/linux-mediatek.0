@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4B65C677F1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 11:30:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0498C54EBE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 11:33:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=39fBaE4ipH2IdOG9WI3mHWkimThKWegcmMfQcqFI7qc=; b=URAjcvlkpkZKLJNJrtn5eTMMUN
-	tZ6uwJKQvsEOAADSuySnT0euIrAeu1W/BxPfSmhRuwA0KiianS/AZSusykxq7jY7tIPr3XqIRQStz
-	o2K5apD9EO62C0sJLvUdDDEptgkOFAF66A+tplRWyVaAtNgInv0ayKYCEgCNDk+zuoS5BDlYsnPFN
-	BcGroKHOEGU82coesKgmcFIzm44ISQU6O2MLTjTj9FAAjx8IL4h+Jl4l1KEdYcRbPhpkq0wtUMasJ
-	p+CbosajQkpUfjfeW2IzBkm9oXKvk58qyIXEtu3/vpdCG7V4ysJh8cAPGN/P3DRH+PZjBTy2TSA5A
-	/5GLOv4w==;
+	bh=DmCzOmR6ex7ieClmwYYa3UePeppwePD5IPHTAkthcC8=; b=Ks56S7kw9N4MTd4bIJ0mC1mDc1
+	0Vq3cfJeKye2+yYLQ3qU332+FPswAnXXwNgKpDjHdDBQA1dpWX4HETQB6jXiBX4zn1FjudMptV/b5
+	MkbVAX+iu6qddPu4GakGoyGATXfae8xsQllaRjJL49FUlE83p/1+gLA013yiGuGJjJ/qq6O9fL0pr
+	vEA3wtNIIurp/Y8MedPNuz8+8RQLG3eh5300bSrwrIBhubGJCpphvdkQRCnnGWhfNgqqeKIwxY9rW
+	hWMK50MSkf9HPuOnGit4V/KjjW74/bVjrNKaGzFXSMfu765L/3AjRIdg8dQnM8SQcYOMy7tX4GCKf
+	jmFt+Z4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGIGB-002BVz-Ag; Fri, 13 Jan 2023 11:30:11 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pGIIt-002CmP-P2; Fri, 13 Jan 2023 11:32:59 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGHuA-0020iJ-Ur; Fri, 13 Jan 2023 11:07:28 +0000
+	id 1pGHuI-0020m9-Ej; Fri, 13 Jan 2023 11:07:37 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 659916602DD0;
-	Fri, 13 Jan 2023 11:07:24 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CE22A6602DD6;
+	Fri, 13 Jan 2023 11:07:31 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1673608045;
-	bh=L0Mz/P3KB8addEISdXHQv+iKk4/hljSZDtHjdPB07W4=;
+	s=mail; t=1673608053;
+	bh=veBd2JTLsjF36au7M5gXmubbsmxaRJK4ZtEZdeWnvyU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=k3NMTqFnOD4XKNcv1qoKa8tDJ685PPecyHWBsS25XBib08oLin0V2NkRBZ2iEP/17
-	 sQuXG3vBs983FZ4lnGCDG5hLbk/rGx7SAr9xXbHl7F6eWpYlFC24WqHLyOfdmcLZTp
-	 AociwIORtq+ouvO3P5QWBAdsA4yIBG7ZcJHwMh2ZNtrf0NgReZUI+AeQx8f5S4KTiF
-	 muJKCrURB7PLtovSvEKWL5FKKIDydGIuqrupQweW8tFw5ZlQ/7PICpoaGzk3itLviI
-	 Hc0eaVt2mqIh32GQccNDtxz+WJuAgU7XtmP9YdS5BDDur9+LbASk9VvcSt3/jML7iS
-	 CqK+cefxFkCbg==
+	b=FWgbwc7dZax6LDBGEiGQnlvmFGkqmm2NLP36YgDVmqMDx2405TYWjC6ZNug9yYTi7
+	 fM5P32VJB3VmIAhHZr56qdwVEtCTJVmDwGipkLo1G7j5mEtVHL9QLyh5eL93Fq8CE+
+	 7CTrFCgv3K3oAVQwlpTShZsrPkdhKoELLGUyKpp9tGKAve/Kfpqq1bJvyMrg6ZLpGm
+	 X6Fof2s9gv62jQGJMVLFnEMdlE4zmh5wWLwYZmoApZo3AIJGrd+laIjlxtabNJH2VB
+	 0WihPmsnI2SULIPQXApOUeEJEweDSKpr1Yvl3dYqAoa53TJMVoLD2yoAg7DVVvJnPZ
+	 BjhCsFkXRDjZg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mturquette@baylibre.com
 Cc: sboyd@kernel.org,
@@ -71,18 +71,17 @@ Cc: sboyd@kernel.org,
 	linux-mediatek@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH v3 17/23] clk: mediatek: clk-mt8183: Join top_aud_muxes and top_aud_divs
-Date: Fri, 13 Jan 2023 12:06:10 +0100
-Message-Id: <20230113110616.111001-18-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 22/23] clk: mediatek: clk-mt7986-topckgen: Properly keep some clocks enabled
+Date: Fri, 13 Jan 2023 12:06:15 +0100
+Message-Id: <20230113110616.111001-23-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230113110616.111001-1-angelogioacchino.delregno@collabora.com>
 References: <20230113110616.111001-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230113_030727_157167_47135C23 
-X-CRM114-Status: UNSURE (   9.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230113_030735_588579_9097E179 
+X-CRM114-Status: GOOD (  11.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,76 +96,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Join the two to register them in one shot.
+Instead of calling clk_prepare_enable() on a bunch of clocks at probe
+time, set the CLK_IS_CRITICAL flag to the same as these are required
+to be always on, and this is the right way of achieving that.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Reviewed-by: Miles Chen <miles.chen@mediatek.com>
 ---
- drivers/clk/mediatek/clk-mt8183.c | 37 +++++++++++++------------------
- 1 file changed, 15 insertions(+), 22 deletions(-)
+ drivers/clk/mediatek/clk-mt7986-topckgen.c | 46 +++++++++++-----------
+ 1 file changed, 24 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
-index cc4f71bffba1..722d913f0b4d 100644
---- a/drivers/clk/mediatek/clk-mt8183.c
-+++ b/drivers/clk/mediatek/clk-mt8183.c
-@@ -613,21 +613,6 @@ static const char * const apll_i2s5_parents[] = {
- 	"aud_2_sel"
- };
- 
--static struct mtk_composite top_aud_muxes[] = {
--	MUX(CLK_TOP_MUX_APLL_I2S0, "apll_i2s0_sel", apll_i2s0_parents,
--		0x320, 8, 1),
--	MUX(CLK_TOP_MUX_APLL_I2S1, "apll_i2s1_sel", apll_i2s1_parents,
--		0x320, 9, 1),
--	MUX(CLK_TOP_MUX_APLL_I2S2, "apll_i2s2_sel", apll_i2s2_parents,
--		0x320, 10, 1),
--	MUX(CLK_TOP_MUX_APLL_I2S3, "apll_i2s3_sel", apll_i2s3_parents,
--		0x320, 11, 1),
--	MUX(CLK_TOP_MUX_APLL_I2S4, "apll_i2s4_sel", apll_i2s4_parents,
--		0x320, 12, 1),
--	MUX(CLK_TOP_MUX_APLL_I2S5, "apll_i2s5_sel", apll_i2s5_parents,
--		0x328, 20, 1),
--};
--
- static const char * const mcu_mp0_parents[] = {
- 	"clk26m",
- 	"armpll_ll",
-@@ -658,7 +643,19 @@ static struct mtk_composite mcu_muxes[] = {
- 	MUX(CLK_MCU_BUS_SEL, "mcu_bus_sel", mcu_bus_parents, 0x7C0, 9, 2),
- };
- 
--static struct mtk_composite top_aud_divs[] = {
-+static struct mtk_composite top_aud_comp[] = {
-+	MUX(CLK_TOP_MUX_APLL_I2S0, "apll_i2s0_sel", apll_i2s0_parents,
-+		0x320, 8, 1),
-+	MUX(CLK_TOP_MUX_APLL_I2S1, "apll_i2s1_sel", apll_i2s1_parents,
-+		0x320, 9, 1),
-+	MUX(CLK_TOP_MUX_APLL_I2S2, "apll_i2s2_sel", apll_i2s2_parents,
-+		0x320, 10, 1),
-+	MUX(CLK_TOP_MUX_APLL_I2S3, "apll_i2s3_sel", apll_i2s3_parents,
-+		0x320, 11, 1),
-+	MUX(CLK_TOP_MUX_APLL_I2S4, "apll_i2s4_sel", apll_i2s4_parents,
-+		0x320, 12, 1),
-+	MUX(CLK_TOP_MUX_APLL_I2S5, "apll_i2s5_sel", apll_i2s5_parents,
-+		0x328, 20, 1),
- 	DIV_GATE(CLK_TOP_APLL12_DIV0, "apll12_div0", "apll_i2s0_sel",
- 		0x320, 2, 0x324, 8, 0),
- 	DIV_GATE(CLK_TOP_APLL12_DIV1, "apll12_div1", "apll_i2s1_sel",
-@@ -1170,12 +1167,8 @@ static int clk_mt8183_top_probe(struct platform_device *pdev)
+diff --git a/drivers/clk/mediatek/clk-mt7986-topckgen.c b/drivers/clk/mediatek/clk-mt7986-topckgen.c
+index c9bf47e6098f..36553f0c13fe 100644
+--- a/drivers/clk/mediatek/clk-mt7986-topckgen.c
++++ b/drivers/clk/mediatek/clk-mt7986-topckgen.c
+@@ -202,16 +202,23 @@ static const struct mtk_mux top_muxes[] = {
+ 	MUX_GATE_CLR_SET_UPD(CLK_TOP_F_26M_ADC_SEL, "f_26m_adc_sel",
+ 			     f_26m_adc_parents, 0x020, 0x024, 0x028, 16, 1, 23,
+ 			     0x1C0, 10),
+-	MUX_GATE_CLR_SET_UPD(CLK_TOP_DRAMC_SEL, "dramc_sel", f_26m_adc_parents,
+-			     0x020, 0x024, 0x028, 24, 1, 31, 0x1C0, 11),
++	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_DRAMC_SEL, "dramc_sel",
++				   f_26m_adc_parents, 0x020, 0x024, 0x028,
++				   24, 1, 31, 0x1C0, 11,
++				   CLK_IS_CRITICAL | CLK_SET_RATE_PARENT),
+ 	/* CLK_CFG_3 */
+-	MUX_GATE_CLR_SET_UPD(CLK_TOP_DRAMC_MD32_SEL, "dramc_md32_sel",
+-			     dramc_md32_parents, 0x030, 0x034, 0x038, 0, 1, 7,
+-			     0x1C0, 12),
+-	MUX_GATE_CLR_SET_UPD(CLK_TOP_SYSAXI_SEL, "sysaxi_sel", sysaxi_parents,
+-			     0x030, 0x034, 0x038, 8, 2, 15, 0x1C0, 13),
+-	MUX_GATE_CLR_SET_UPD(CLK_TOP_SYSAPB_SEL, "sysapb_sel", sysapb_parents,
+-			     0x030, 0x034, 0x038, 16, 2, 23, 0x1C0, 14),
++	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_DRAMC_MD32_SEL, "dramc_md32_sel",
++				   dramc_md32_parents, 0x030, 0x034, 0x038,
++				   0, 1, 7, 0x1C0, 12,
++				   CLK_IS_CRITICAL | CLK_SET_RATE_PARENT),
++	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_SYSAXI_SEL, "sysaxi_sel",
++				   sysaxi_parents, 0x030, 0x034, 0x038,
++				   8, 2, 15, 0x1C0, 13,
++				   CLK_IS_CRITICAL | CLK_SET_RATE_PARENT),
++	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_SYSAPB_SEL, "sysapb_sel",
++				   sysapb_parents, 0x030, 0x034, 0x038,
++				   16, 2, 23, 0x1C0, 14,
++				   CLK_IS_CRITICAL | CLK_SET_RATE_PARENT),
+ 	MUX_GATE_CLR_SET_UPD(CLK_TOP_ARM_DB_MAIN_SEL, "arm_db_main_sel",
+ 			     arm_db_main_parents, 0x030, 0x034, 0x038, 24, 1,
+ 			     31, 0x1C0, 15),
+@@ -234,9 +241,10 @@ static const struct mtk_mux top_muxes[] = {
+ 	MUX_GATE_CLR_SET_UPD(CLK_TOP_SGM_325M_SEL, "sgm_325m_sel",
+ 			     sgm_325m_parents, 0x050, 0x054, 0x058, 8, 1, 15,
+ 			     0x1C0, 21),
+-	MUX_GATE_CLR_SET_UPD(CLK_TOP_SGM_REG_SEL, "sgm_reg_sel",
+-			     sgm_reg_parents, 0x050, 0x054, 0x058, 16, 1, 23,
+-			     0x1C0, 22),
++	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_SGM_REG_SEL, "sgm_reg_sel",
++				   sgm_reg_parents, 0x050, 0x054, 0x058,
++				   16, 1, 23, 0x1C0, 22,
++				   CLK_IS_CRITICAL | CLK_SET_RATE_PARENT),
+ 	MUX_GATE_CLR_SET_UPD(CLK_TOP_A1SYS_SEL, "a1sys_sel", a1sys_parents,
+ 			     0x050, 0x054, 0x058, 24, 1, 31, 0x1C0, 23),
+ 	/* CLK_CFG_6 */
+@@ -252,9 +260,10 @@ static const struct mtk_mux top_muxes[] = {
+ 			     f_26m_adc_parents, 0x060, 0x064, 0x068, 24, 1, 31,
+ 			     0x1C0, 27),
+ 	/* CLK_CFG_7 */
+-	MUX_GATE_CLR_SET_UPD(CLK_TOP_F26M_SEL, "csw_f26m_sel",
+-			     f_26m_adc_parents, 0x070, 0x074, 0x078, 0, 1, 7,
+-			     0x1C0, 28),
++	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_F26M_SEL, "csw_f26m_sel",
++				   f_26m_adc_parents, 0x070, 0x074, 0x078,
++				   0, 1, 7, 0x1C0, 28,
++				   CLK_IS_CRITICAL | CLK_SET_RATE_PARENT),
+ 	MUX_GATE_CLR_SET_UPD(CLK_TOP_AUD_L_SEL, "aud_l_sel", aud_l_parents,
+ 			     0x070, 0x074, 0x078, 8, 2, 15, 0x1C0, 29),
+ 	MUX_GATE_CLR_SET_UPD(CLK_TOP_A_TUNER_SEL, "a_tuner_sel",
+@@ -307,13 +316,6 @@ static int clk_mt7986_topckgen_probe(struct platform_device *pdev)
  			       ARRAY_SIZE(top_muxes), node,
- 			       &mt8183_clk_lock, top_clk_data);
+ 			       &mt7986_clk_lock, clk_data);
  
--	mtk_clk_register_composites(&pdev->dev, top_aud_muxes,
--				    ARRAY_SIZE(top_aud_muxes), base,
--				    &mt8183_clk_lock, top_clk_data);
+-	clk_prepare_enable(clk_data->hws[CLK_TOP_SYSAXI_SEL]->clk);
+-	clk_prepare_enable(clk_data->hws[CLK_TOP_SYSAPB_SEL]->clk);
+-	clk_prepare_enable(clk_data->hws[CLK_TOP_DRAMC_SEL]->clk);
+-	clk_prepare_enable(clk_data->hws[CLK_TOP_DRAMC_MD32_SEL]->clk);
+-	clk_prepare_enable(clk_data->hws[CLK_TOP_F26M_SEL]->clk);
+-	clk_prepare_enable(clk_data->hws[CLK_TOP_SGM_REG_SEL]->clk);
 -
--	mtk_clk_register_composites(&pdev->dev, top_aud_divs,
--				    ARRAY_SIZE(top_aud_divs), base,
-+	mtk_clk_register_composites(&pdev->dev, top_aud_comp,
-+				    ARRAY_SIZE(top_aud_comp), base,
- 				    &mt8183_clk_lock, top_clk_data);
+ 	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
  
- 	mtk_clk_register_gates(&pdev->dev, node, top_clks,
+ 	if (r) {
 -- 
 2.39.0
 
