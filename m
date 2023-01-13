@@ -4,74 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02D48C54EBE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 14:52:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF913C54EBD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 15:03:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KwQ22b8Nr1nOkVeoMuuOuuiuzvEAnD1GlpwPb7e64as=; b=jjOAn1YZaUVBhOL7z1SfAIN3wj
-	7T+q/egZ4EZyEnJbDNdmLE7m3r7hNIS/QT0O6A5xm9u0W7gc9HZcUGMqhjkpFuW7h5oOUdxLY9p5S
-	DfaS5ftrLapNVaTnwoFC5/y4MlTdeb0gbXthpQl9BqZZzDz8kGmk8h0HS2nsJUZXRH9J88yFo4PIB
-	VdzReQT1QV85RFzv+zcYurI9X/459V293NDIqU1QUMO1PnT13o8G5CbeeTiH/jATHaybIHQgtKg/m
-	fKkky79QM+fz/X2qQuaFSRfDx22+Hdf87SYKqVtzmnYpEuoJWLTf1DxcfAc/4u+Q9RZx42PcxW+Ps
-	0fFTk9TQ==;
+	bh=mQnwZd2y2E+PbZ/WCc24FX5SYUqFVRfKZfEjSHAZL+g=; b=X1ohauxWb8e5P4QaGjyzv1orXi
+	eSAQSlpbjvVKOQymS4F8kgMcxf7YLYwGcPV4dJrr9436Rw04Ze+2+ToKNWrZE9EhXq4D5wQj8ooIf
+	tYcD7eE/gyxhQ5620wFBHIPOkumbtRO9axGaUHZc9gVbVQsfEd4zjdMFepAMIgyj2kZn0GI/tgau1
+	Q7OuNIAes1EpSyf5/sQ2hW7fme7jQYLakoDXG4c0Q2IaobIq2EhpnMtIJdF8b/8n6NmtWklsBILzU
+	QxJuQOGfPbPPNoNlQCEGYmQuVwGwqc1vqjCC5J0H0XwjU1jqhOHa+jWnHU/QFORhjys+AFr8uNZzt
+	8X6W2eig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGLPt-0033F3-5h; Fri, 13 Jan 2023 14:52:25 +0000
-Received: from mailrelay2-1.pub.mailoutpod2-cph3.one.com ([2a02:2350:5:401::1])
+	id 1pGLaV-0035cJ-6D; Fri, 13 Jan 2023 15:03:23 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGLPp-0033CV-F0
-	for linux-mediatek@lists.infradead.org; Fri, 13 Jan 2023 14:52:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=ravnborg.org; s=rsa2;
-	h=in-reply-to:content-type:mime-version:references:message-id:subject:cc:to:
-	 from:date:from;
-	bh=KwQ22b8Nr1nOkVeoMuuOuuiuzvEAnD1GlpwPb7e64as=;
-	b=NnbFIHNQsE4SGlyOpADh5QOibw62s4YIpk8BfSxLHZkosThjDfZasg47Xf95DMgstg4iLLH91bCyA
-	 s0tGTA6wMUOCvS5ytmDUTq15usC/vdlh1CBYHZ7zAZDDQN5qt40GbQalL76aWwVxkhA5Ldl7F93HT1
-	 sISdwEfCKZu4YhbeMF76SfoCYSofMnYx4j46O4NqXIu+aZN/dWMKx7WgOAFvVhXoG5y1cQwSlCu8nS
-	 AibyXw8+/MSQNMhds2N9oNgNn6mgSiSv/CS8xGWLoEO3qwQPcm76FklvC2cHQu2wejHu9eoIt1kwS7
-	 HubLJxSep0UrRwLYmuStCShFOnvm/3A==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
-	d=ravnborg.org; s=ed2;
-	h=in-reply-to:content-type:mime-version:references:message-id:subject:cc:to:
-	 from:date:from;
-	bh=KwQ22b8Nr1nOkVeoMuuOuuiuzvEAnD1GlpwPb7e64as=;
-	b=jXTnJnPbpPvp28lUNFIDX6bN9rE1EJYDsoziEwow3qmbI5T60a0vGRZAw8SefUhP005zyh4s8JP9S
-	 MqfcaBdCw==
-X-HalOne-ID: dac2612b-9351-11ed-80f4-93f0a866dfbb
-Received: from ravnborg.org (2-105-2-98-cable.dk.customer.tdc.net [2.105.2.98])
-	by mailrelay2 (Halon) with ESMTPSA
-	id dac2612b-9351-11ed-80f4-93f0a866dfbb;
-	Fri, 13 Jan 2023 14:52:11 +0000 (UTC)
-Date: Fri, 13 Jan 2023 15:52:09 +0100
-From: Sam Ravnborg <sam@ravnborg.org>
-To: Stephen Boyd <swboyd@chromium.org>
-Cc: Thierry Reding <thierry.reding@gmail.com>, linux-kernel@vger.kernel.org,
-	patches@lists.linux.dev, dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	yangcong <yangcong5@huaqin.corp-partner.google.com>,
-	Douglas Anderson <dianders@chromium.org>,
-	Jitao Shi <jitao.shi@mediatek.com>,
-	Rob Clark <robdclark@chromium.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Subject: Re: [PATCH] drm/panel: boe-tv101wum-nl6: Ensure DSI writes succeed
- during disable
-Message-ID: <Y8FwGTWeYtX0j8MX@ravnborg.org>
-References: <20230106030108.2542081-1-swboyd@chromium.org>
- <Y7nV+aeFiq5aD0xU@ravnborg.org>
- <CAE-0n50QOv_+j1Pe19xKj4Cx2Y5_Ak5Kt68UBJuZt10D-jQ44g@mail.gmail.com>
+	id 1pGLaJ-0035YE-GY; Fri, 13 Jan 2023 15:03:13 +0000
+Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6FB386602DD6;
+	Fri, 13 Jan 2023 15:03:03 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1673622186;
+	bh=fogr+uZTaVcUpklPH0FPHlfhwcndHj9i6ZT507O7UGQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=VeGyHLZ/upyjgtilOjqJrXGwTdYKAMuw+7A7dyr+7WeRnHKKKpAPwDtpFEAC55HqS
+	 naqUxpBvDoZ9P9ht3i6t3ZEXKk5b9WmLI9n/8tytAi6e8cFgsQfoet7FFZ4p0OqE0J
+	 vUChAcB4qNG4RvZ8bnHQLBdHdeYjUyeB6fXdfFODBdughAm9Cd2057qXWs2e1iJGnF
+	 xIUZvk6pgWLB+yzlU8kIwuw4w2/oFNWSaoIHjRVBInek65tEXmjA0M7ocnqlaqzQ/W
+	 NiI+EqzJ9xwww7PUrDKKLn+MczaEkJQAHb3jFJTcOUCWabf63+uyqaGLibxHwZXdvj
+	 G0D0odut2rJbQ==
+Date: Fri, 13 Jan 2023 10:02:40 -0500
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Yunfei Dong =?utf-8?B?KOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>
+Cc: "angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
+	"nicolas@ndufresne.ca" <nicolas@ndufresne.ca>,
+	"robh+dt@kernel.org" <robh+dt@kernel.org>,
+	George Sun =?utf-8?B?KOWtmeaelyk=?= <George.Sun@mediatek.com>,
+	Tiffany Lin =?utf-8?B?KOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>,
+	"stevecho@chromium.org" <stevecho@chromium.org>,
+	"frkoenig@chromium.org" <frkoenig@chromium.org>,
+	Xiaoyong Lu =?utf-8?B?KOWNouWwj+WLhyk=?= <Xiaoyong.Lu@mediatek.com>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"mchehab@kernel.org" <mchehab@kernel.org>,
+	"daniel@ffwll.ch" <daniel@ffwll.ch>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	Irui Wang =?utf-8?B?KOeOi+eRnik=?= <Irui.Wang@mediatek.com>,
+	"tfiga@google.com" <tfiga@google.com>,
+	"benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
+	"hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"hsinyi@chromium.org" <hsinyi@chromium.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	Andrew-CT Chen =?utf-8?B?KOmZs+aZuui/qik=?= <Andrew-CT.Chen@mediatek.com>,
+	"acourbot@chromium.org" <acourbot@chromium.org>
+Subject: Re: [PATCH v7, 5/7] media: mediatek: vcodec: Different codec using
+ different capture format
+Message-ID: <20230113150240.6tqi3kc7cdu3xr65@notapiano>
+References: <20220518123004.18286-1-yunfei.dong@mediatek.com>
+ <20220518123004.18286-6-yunfei.dong@mediatek.com>
+ <20230112205825.wb5qcqhh5kwvyi3y@notapiano>
+ <2fe7132f2fcc3fb4724a34c3c4a918b821c845a3.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <CAE-0n50QOv_+j1Pe19xKj4Cx2Y5_Ak5Kt68UBJuZt10D-jQ44g@mail.gmail.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <2fe7132f2fcc3fb4724a34c3c4a918b821c845a3.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230113_065221_676159_99A2DF93 
-X-CRM114-Status: GOOD (  16.42  )
+X-CRM114-CacheID: sfid-20230113_070311_784052_3595C697 
+X-CRM114-Status: GOOD (  22.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,30 +98,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Stephen,
-On Tue, Jan 10, 2023 at 11:29:41AM -0800, Stephen Boyd wrote:
-> Quoting Sam Ravnborg (2023-01-07 12:28:41)
+On Fri, Jan 13, 2023 at 03:25:46AM +0000, Yunfei Dong (董云飞) wrote:
+> Hi Nicolas,
 > 
-> >
-> > For this case we could ask ourself if the display needs to enter sleep
-> > mode right before we disable the regulator. But if the regulator is
-> > fixed, so the disable has no effect, this seems OK.
+> Thanks for your information.
+> On Thu, 2023-01-12 at 15:58 -0500, Nícolas F. R. A. Prado wrote:
+> > On Wed, May 18, 2022 at 08:30:02PM +0800, Yunfei Dong wrote:
+> > > Vp8 need to use MM21, but vp9 and h264 need to use HyFbc mode
+> > > for mt8195. Vp8/vp9/h264 use the same MM21 format for mt8192.
+> > 
+> > Hi Yunfei,
+> > 
+> > why do VP9 and H264 need to use HyFbc (is this the same as MT21C?)
+> > mode on
+> > MT8195? The SCP firmware on linux-firmware for MT8195 [1] only has
+> > MM21
+> > available and based on my testing it works just fine. And contrary to
+> > what the
+> > commit message states this logic is also being applied to MT8192,
+> > preventing it
+> > to use MM21 when there are more than one format available.
+> > 
+> The kernel driver not support dynamic switch mt21c and mm21. The driver
+> flow as below:
+> 1: If there are mt21c and mm21: h264/vp9/av1 will use mt21c(vp8 use
+> mm21 always);
+> 2: If there are only mt21c or mm21 will use this format only.
 > 
-> What do you mean by fixed?
-What I tried to say here is if we have a fixed regulator - or in others
-words a supply voltage we cannot turn off, then entering sleep mode is
-important to reduce power consumption.
-But any sane design where power consumption is a concern will have the
-possibility to turn off the power anyway.
+> But the scp.img is changed to support mt21c and mm21, the kernel driver
+> will use mt21c. Or force the kernel driver only support mm21(small
+> effort).
+> 
+> But the best solution is changed the driver to dynamic switch mt21c and
+> mm21, need to discuss the enum and set format flow(middle effort).
 
-> 
-> >
-> > Please fix the unprepare to not jump out early, on top of or together
-> > with the other fix.
-> 
-> After this patch the unprepare only bails out early if the bool
-> 'prepared' flag isn't set.
-OK, then everything is fine.
+Agreed. The aim should be to get this dynamic format switching implemented in
+the driver so that the firmware can expose both formats and userspace can
+select any of them to use.
 
-	Sam
+However, as you said that solution will take more effort, so in the meantime,
+given that currently only mm21 is supported by gstreamer, I think forcing the
+kernel driver to always select mm21 makes the most sense right now. That way it
+doesn't matter whether the firmware has mm21 or mm21+mt21c, decoding will keep
+working with gstreamer using mm21.
+
+Thanks,
+Nícolas
 
