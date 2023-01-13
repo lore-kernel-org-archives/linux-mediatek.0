@@ -4,96 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FE37C6379F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 20:55:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B62AC677F1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 21:12:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2gnvKmQQsZNTmUuHgm3zwNFDqUUkz6YkNKxFpEYsREs=; b=d8ZPcuk4+uRaPnMXQQqVC18qaA
-	rZ0Njd7SPbrtw55HC3vvK/Q4FiHYtza76N6H+vrepgDBXQUrOME9AqRBn2HMuooPw+QOkbRw1RclY
-	dzNY0LxFNwVuiVsxjsrUO6NJaAaujmvStj40vq+OTc5QaLIJHX8tRj82jw8WWiDi2PWvHZIdYr3xm
-	oUkbAKkNQKXqQpzMnuzRGL6D1LFoswV+BHe8VwlE//OIeeRls/7F1FxI3L1zQjaLcbXy+HsWZvNbk
-	T2LULr25nAusAyhKcnOGcotHZREOACn3bA7awBSmITaE9y/uo3e5SPhAsmgeTVZsAMzWdQeazgAvX
-	M7WuBarA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:References:In-Reply-To:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=r5E2jUOsmFLtdYppT5Vp0YBT45RVJ+ABe3kgqhVZhkI=; b=qN7B/Rk2Rcd0CGNw8GJFBZV6iU
+	JRJ2sM1FNleo8oxLN+ZIP5x05HeyRCmokKkQiCljOjbGOpqD5ZETSU8plE9D3yBWxibTkh3g7xwBR
+	osALEdt3n3qXx7oX7xLeONyJ40h2fSETpPLlR50P9c/E+VmDP6HnIuOfC1OWIlMRkDUwomhYfeJOG
+	9IVsKWaRZQsw1iqxDOhKzEYZf0CNyQMTsnE3cG00aTp0E18901VJ3T0Vk9ejSprtoPQ9dJJr7yfjH
+	BF3WnUpTe+pcJjeDXJ5fzk0Ejda59bzKrFu6WYiigBPSLkNw9PMm800ziPlOquoxkH/CFpBx5Y52l
+	IAfjB/rA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGR5X-004PZ0-EL; Fri, 13 Jan 2023 20:55:47 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1pGRLb-004UrE-Nu; Fri, 13 Jan 2023 21:12:23 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGR3c-004OY8-MB; Fri, 13 Jan 2023 20:53:50 +0000
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 30DKmYYP018224;
-	Fri, 13 Jan 2023 20:53:44 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-type; s=qcppdkim1;
- bh=2gnvKmQQsZNTmUuHgm3zwNFDqUUkz6YkNKxFpEYsREs=;
- b=MDc+EloaPbilFlagWJ8kJ0HBb+UNlSsm8ZBZ5NEoA2xR/efYPRVr0pRMb7kfD7QKe4qr
- ZI6LpPdKlKSGSJK5oo2g7XKnfzVidLK5AziskUofaljKYbOeg9GQRXY+GUXHT0KiYB/2
- DIlJOjvc3UU8cMjwg3kFZCWYvAiy/rpvpmLuuPm0zFKW02NBmciwvPAokBQ2qJqm7Io4
- jIE3v0ihCNI2b/wAtWBU1i1BBk/nBE7N0Zv30OqPeXUdR43C6Zt1cOIq0vgQ6Pcm8p+t
- KQ6RDcWq+JkWbQeQBcT7G+QSmXZ+eqKBOP513j2RPe4smvSBz5VGjKTRq9o502NU42Px /g== 
-Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3n3a8mgj2c-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 13 Jan 2023 20:53:44 +0000
-Received: from nasanex01a.na.qualcomm.com ([10.52.223.231])
-	by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 30DKrhKc025709
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 13 Jan 2023 20:53:43 GMT
-Received: from asutoshd-linux1.qualcomm.com (10.80.80.8) by
- nasanex01a.na.qualcomm.com (10.52.223.231) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.36; Fri, 13 Jan 2023 12:53:42 -0800
-From: Asutosh Das <quic_asutoshd@quicinc.com>
-To: <quic_cang@quicinc.com>, <martin.petersen@oracle.com>,
-        <linux-scsi@vger.kernel.org>
-CC: <quic_nguyenb@quicinc.com>, <quic_xiaosenh@quicinc.com>,
-        <stanley.chu@mediatek.com>, <adrian.hunter@intel.com>,
-        <bvanassche@acm.org>, <avri.altman@wdc.com>, <mani@kernel.org>,
-        <beanhuo@micron.com>, Asutosh Das
-	<quic_asutoshd@quicinc.com>,
-        <linux-arm-msm@vger.kernel.org>,
-        Alim Akhtar
-	<alim.akhtar@samsung.com>,
-        "James E.J. Bottomley" <jejb@linux.ibm.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        Jinyoung Choi
-	<j-young.choi@samsung.com>,
-        open list <linux-kernel@vger.kernel.org>,
-        "moderated list:ARM/Mediatek SoC support"
-	<linux-arm-kernel@lists.infradead.org>,
-        "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v13 15/15] ufs: core: mcq: Enable Multi Circular Queue
-Date: Fri, 13 Jan 2023 12:48:52 -0800
-Message-ID: <1dc2055e6ef1b0b080e2881bd15851dbf1cdc397.1673557949.git.quic_asutoshd@quicinc.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <cover.1673557949.git.quic_asutoshd@quicinc.com>
-References: <cover.1673557949.git.quic_asutoshd@quicinc.com>
+	id 1pGRLQ-004Uls-D9
+	for linux-mediatek@lists.infradead.org; Fri, 13 Jan 2023 21:12:14 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id bu8so34782430lfb.4
+        for <linux-mediatek@lists.infradead.org>; Fri, 13 Jan 2023 13:12:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:user-agent
+         :from:references:in-reply-to:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=r5E2jUOsmFLtdYppT5Vp0YBT45RVJ+ABe3kgqhVZhkI=;
+        b=IkJ+FOVocZ4ttJ4pEh+dqaYc1loiq1VzM4s8rw3sfw+1LDPtVXu3+QCzwNyI/P+Oz3
+         Q8GtrQlQFVgEw2AwhcdO9Y+lo70CcrUxOaUVv6K3tg9hOQIlRZure7tE16OwYGB+40y7
+         IkaTssjuMdbN49fZTK+WSj6EXgdB+69XdqZus=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:user-agent
+         :from:references:in-reply-to:mime-version:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=r5E2jUOsmFLtdYppT5Vp0YBT45RVJ+ABe3kgqhVZhkI=;
+        b=aMZaTVes8/0iaix6pAec3Tc1Xoqzr6GytW3MUsIDO/V5RJ6qsyV2M9uVRo/724qCvx
+         WCVHp41YdNgpn0sh/LWreC81f+PV2rJG4j8vyJ70kw5YhHRk6fiuSQ3E9Ch89TCUAogH
+         5Sz0e7tn3FV+s+higsmk/sxaOxmlX8zW7RkYWnfSwjJbLUatPVYuGY0cr/UHGQPjiXQB
+         OCVD9ZrynArvV35b2I432ZrYdd5Rc/uTd6yUqrf1uNxK91T7SK+eFfx/YTdsfkGx3MD7
+         4pl6aqGg42VJRIumYpPkgyPsh1wKAGTlaGacW5P5AvatdtkkaugzTLvdOcJq5Z4Zh6Wx
+         uHDw==
+X-Gm-Message-State: AFqh2kr6opuTMjHdarnofpgxV3AXTV/CPTDMBXK8kfRnZppsNwFCRDm1
+	0WhfinmHgVIIZYt9g+VObI9YuNMz4ME2pgrCeyXalQ==
+X-Google-Smtp-Source: AMrXdXsEHDMUikQ5Emug3xW/Z4eyYFdBuE++yVRLiUqBN6JN5+W+1CZEk4riH+MmzQZSNNRp1Leh8neGlYysREAjyE0=
+X-Received: by 2002:a05:6512:4017:b0:4bd:35fd:65b5 with SMTP id
+ br23-20020a056512401700b004bd35fd65b5mr8207466lfb.297.1673644328511; Fri, 13
+ Jan 2023 13:12:08 -0800 (PST)
+Received: from 753933720722 named unknown by gmailapi.google.com with
+ HTTPREST; Fri, 13 Jan 2023 15:12:07 -0600
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nasanex01a.na.qualcomm.com (10.52.223.231)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: YM6usDvVXS49QQ1xSnV_rOzwzfhrN6oM
-X-Proofpoint-ORIG-GUID: YM6usDvVXS49QQ1xSnV_rOzwzfhrN6oM
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.219,Aquarius:18.0.923,Hydra:6.0.562,FMLib:17.11.122.1
- definitions=2023-01-13_10,2023-01-13_02,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0 clxscore=1015
- impostorscore=0 spamscore=0 lowpriorityscore=0 mlxlogscore=999
- priorityscore=1501 mlxscore=0 adultscore=0 phishscore=0 bulkscore=0
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2212070000 definitions=main-2301130142
+In-Reply-To: <CAPY8ntA=Dq6GFQ3gEOm9PzPyOa9bHTr8JrpXLibnai7xKqRbpQ@mail.gmail.com>
+References: <20230106030108.2542081-1-swboyd@chromium.org> <CAPY8ntA=Dq6GFQ3gEOm9PzPyOa9bHTr8JrpXLibnai7xKqRbpQ@mail.gmail.com>
+From: Stephen Boyd <swboyd@chromium.org>
+User-Agent: alot/0.10
+Date: Fri, 13 Jan 2023 15:12:07 -0600
+Message-ID: <CAE-0n53UFuyYvjJUWViXy9Eex2mpBRJGtt4vGc2cbFZS9i8xFw@mail.gmail.com>
+Subject: Re: [PATCH] drm/panel: boe-tv101wum-nl6: Ensure DSI writes succeed
+ during disable
+To: Dave Stevenson <dave.stevenson@raspberrypi.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>, Rob Clark <robdclark@chromium.org>, 
+	Douglas Anderson <dianders@chromium.org>, Jitao Shi <jitao.shi@mediatek.com>, 
+	yangcong <yangcong5@huaqin.corp-partner.google.com>, linux-kernel@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, patches@lists.linux.dev, 
+	linux-mediatek@lists.infradead.org, 
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Sam Ravnborg <sam@ravnborg.org>, 
+	linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230113_125348_768030_B9C5EB1D 
-X-CRM114-Status: GOOD (  13.71  )
+X-CRM114-CacheID: sfid-20230113_131212_451890_D2CB7D50 
+X-CRM114-Status: GOOD (  25.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,34 +92,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable MCQ in the Host Controller.
+Quoting Dave Stevenson (2023-01-13 08:27:29)
+> Hi Stephen
+>
+> On Fri, 6 Jan 2023 at 03:01, Stephen Boyd <swboyd@chromium.org> wrote:
+> >
+> > The unprepare sequence has started to fail after moving to panel bridge
+> > code in the msm drm driver (commit 007ac0262b0d ("drm/msm/dsi: switch t=
+o
+> > DRM_PANEL_BRIDGE")). You'll see messages like this in the kernel logs:
+> >
+> >    panel-boe-tv101wum-nl6 ae94000.dsi.0: failed to set panel off: -22
+> >
+> > This is because boe_panel_enter_sleep_mode() needs an operating DSI lin=
+k
+> > to set the panel into sleep mode. Performing those writes in the
+> > unprepare phase of bridge ops is too late, because the link has already
+> > been torn down by the DSI controller in post_disable, i.e. the PHY has
+> > been disabled, etc. See dsi_mgr_bridge_post_disable() for more details
+> > on the DSI .
+> >
+> > Split the unprepare function into a disable part and an unprepare part.
+> > For now, just the DSI writes to enter sleep mode are put in the disable
+> > function. This fixes the panel off routine and keeps the panel happy.
+>
+> It is documented that the mipi_dsi_host_ops transfer function should
+> be called with the host in any state [1], so the host driver is
+> failing there.
 
-Signed-off-by: Asutosh Das <quic_asutoshd@quicinc.com>
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
-Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
-Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
----
- drivers/ufs/core/ufshcd.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+Thanks for the info! It says "Drivers that need the underlying device to
+be powered to perform these operations will first need to make sure it=E2=
+=80=99s
+been properly enabled." Does that mean the panel driver needs to make
+sure the underlying dsi host device is powered? The sentence is too
+ambiguous for me to understand what 'drivers' and 'underlying device'
+are.
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index cb1bca4..54717c4 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -8455,6 +8455,12 @@ static void ufshcd_config_mcq(struct ufs_hba *hba)
- 
- 	hba->host->can_queue = hba->nutrs - UFSHCD_NUM_RESERVED;
- 	hba->reserved_slot = hba->nutrs - UFSHCD_NUM_RESERVED;
-+
-+	/* Select MCQ mode */
-+	ufshcd_writel(hba, ufshcd_readl(hba, REG_UFS_MEM_CFG) | 0x1,
-+		      REG_UFS_MEM_CFG);
-+	hba->mcq_enabled = true;
-+
- 	dev_info(hba->dev, "MCQ configured, nr_queues=%d, io_queues=%d, read_queue=%d, poll_queues=%d, queue_depth=%d\n",
- 		 hba->nr_hw_queues, hba->nr_queues[HCTX_TYPE_DEFAULT],
- 		 hba->nr_queues[HCTX_TYPE_READ], hba->nr_queues[HCTX_TYPE_POLL],
--- 
-2.7.4
+>
+> This sounds like the same issue I was addressing in adding the
+> prepare_prev_first flag to drm_panel, and pre_enable_prev_first to
+> drm_bridge via [2].
+> Defining prepare_prev_first for your panel would result in the host
+> pre_enable being called before the panel prepare, and therefore the
+> transfer calls from boe_panel_init_dcs_cmd boe_panel_prepare won't be
+> relying on the DSI host powering up early. It will also call the panel
+> unprepare before the DSI host bridge post_disable is called, and
+> therefore the DSI host will still be powered up and the transfer won't
+> fail.
+>
+> Actually I've just noted the comment at [3]. [2] is that framework fix
+> that means that the magic workaround isn't required, but it will
+> require this panel to opt in to the ordering change.
 
+Cool. Glad that we can clean that up with your series.
+
+Is it wrong to split unprepare to a disable and unprepare phase? I'm not
+super keen on fixing 6.1 stable kernels by opting this driver into the
+ordering change. Splitting the phase into two is small and simple and
+works. I suspect changing the ordering may uncover more bugs, or be a
+larger task. I'd be glad to test that series[2] from you to get rid of
+[3].
+
+>
+>
+> [1] https://www.kernel.org/doc/html/latest/gpu/drm-kms-helpers.html#c.mip=
+i_dsi_host_ops
+> [2] https://patchwork.freedesktop.org/series/100252/
+> [3] https://github.com/torvalds/linux/blob/master/drivers/gpu/drm/msm/dsi=
+/dsi_manager.c#L47
+>
 
