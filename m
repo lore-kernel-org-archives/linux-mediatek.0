@@ -4,46 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E35CC54EBE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 09:25:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9FDCC54EBE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 09:25:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aY4CAf3skfHLYZ3AYMyo1tLHqy+vDAlxRtPewRLh9GA=; b=p1VktAQSDT8hcROHXJCY1RKPeN
-	qQxDa7ZIdODRNjK1KLlKx2Z1LZ35a0PB3IgJAZm06a1tr7cgVwaKOeRhnbp7hkgsG1+Ssg6rXmXWM
-	qd7rAWFju91wtlQA39x9oHQdU1qgzfFMf73Cda1v4Hktljz+eCWwNXyVIfieZGU1lhvpZhT1z88bd
-	rABW35iPIGYDGKYTkGNUYtTvWm37Wx4XMpiuIB58GfYvSxwpjAqev6cUCYx5s6GdMJP6chz55fXTF
-	GYMZnj4fIX9h+bv9E7iRpvHhnKa7FS0fhsIqTSYQerRN4uoXopxETN0DrgiBMMkTucYsz844eXRbR
-	6rEzG80Q==;
+	bh=KGwSf8Y5cDES9BrgXFmERM3o/zIVW/5u3di1ykeQWy0=; b=Q4nPHNzVSHaAvW7MgL47idyYbg
+	klS2Cufu1OnpgLcbH7cb2WajSfA/yKcc5RijbfMGAkZtPbvznlJjG65GMjgY8pWJnCFD0YBhh79gm
+	xfcXlO5ruvmFPSUSGtSWCBWP4As/FijrAYRL2bl92LbBXY8vIieBn2RctFjkcJdybJ96748COYpy1
+	z286hGQ1z4N16DZiBDkvtxMzTy7/DhmxL37nTBDiWDDH+Zg09/BNBmqX1T8aK3xjv+/diTamcHV6f
+	ZAGNw9ptMOoiDliqoGUNbFgIlU14onY902GV1fosWELyMoDhc1TB93xvN960lK9Po6RYR0g/Zb74G
+	TO2zfqMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGGJ9-001SLR-Dz; Fri, 13 Jan 2023 09:25:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pGGJB-001SMU-Ma; Fri, 13 Jan 2023 09:25:09 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGGI8-001RiW-Vk
-	for linux-mediatek@lists.infradead.org; Fri, 13 Jan 2023 09:24:07 +0000
-X-UUID: 02b5d260932411edbbe3f76fe852e059-20230113
+	id 1pGGJ2-001SGh-Bu
+	for linux-mediatek@bombadil.infradead.org; Fri, 13 Jan 2023 09:25:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=KGwSf8Y5cDES9BrgXFmERM3o/zIVW/5u3di1ykeQWy0=; b=FXWDquFOroXeQyqXhMi+coUWZ4
+	9eeFbXHz7Fwxr8exZGKgIYOwYwuueH3AH09c0kwv43pQv57vRgvLJpJUy2lkr7aG2TOwY9v8OIg+i
+	QoBHNTzGmdM525Bi7/heASe688Y9ZrG4bs5K+WdBCYuptWNk+ggTi5nr2hr4wx6GNdqGeIw8bcPnk
+	KTpAOyRkfbmq+wAQV7qpWo1fmnWQhr6A5MxcVUMGQMTQJea+u8PfAwFvjg5vrnn2rRPcem8PCa3cr
+	jRfc3CJJVPAARBYYHdMiuI2H50WllDc9A9cUJgN2T0l5rVgwLHT6a6D0uvT0BlBm99TGGhX/lAI8Z
+	uWA8c3dQ==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pGGIn-004JDk-0u
+	for linux-mediatek@lists.infradead.org;
+	Fri, 13 Jan 2023 09:24:50 +0000
+X-UUID: 13b7ef9e932411eda08d4d6090ec5a5c-20230113
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=aY4CAf3skfHLYZ3AYMyo1tLHqy+vDAlxRtPewRLh9GA=;
-	b=cfr1tFsfKudxsiTBmvqMTqDiORuIY8uJ7cDSSvggxptC0xDasGKzfdplRzKj/NwKoVDDuOa+XuFtfToKBlb0WePo3J0UL0R8vv6NGbVDyJqRWBmI9HDIkelExZ93dDmwUxWX81aOYm5UV/IVW1yLnpjR55QssQp7zTxYDWsBlFk=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=KGwSf8Y5cDES9BrgXFmERM3o/zIVW/5u3di1ykeQWy0=;
+	b=WABkk/50lXI9GFydIvfYPCg1ASxSG39l+IDmfmv7k+m8FUVgH+EOBjS6X1UTiqbJzniC7KJCt0lYmORZHAe00DgAV2VJ/ACx1l8HLWlWctoZycC8CPmCLxWC/iyrCRIHAZnJvbPAWrpiNY54vwNGWG4yVWxAdRk0QJDh/i0xWe4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:ded3d6c3-b467-48c4-9596-9c1663383ef1,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:543e81c,CLOUDID:5b19bbf5-ff42-4fb0-b929-626456a83c14,B
+X-CID-O-INFO: VERSION:1.1.17,REQID:28fab422-0140-4fbc-a8dd-2c9cfdf8d170,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:543e81c,CLOUDID:091dbbf5-ff42-4fb0-b929-626456a83c14,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
 X-CID-BVR: 0,NGT
-X-UUID: 02b5d260932411edbbe3f76fe852e059-20230113
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 13b7ef9e932411eda08d4d6090ec5a5c-20230113
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 6982029; Fri, 13 Jan 2023 02:23:59 -0700
+	with ESMTP id 711949819; Fri, 13 Jan 2023 02:24:27 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.792.15; Fri, 13 Jan 2023 17:03:23 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -56,9 +71,9 @@ CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, <linux-media@vger.kernel.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
 	<moudy.ho@mediatek.com>
-Subject: [PATCH v3 08/13] media: platform: mtk-mdp3: extend GCE event waiting in RDMA and WROT
-Date: Fri, 13 Jan 2023 17:03:16 +0800
-Message-ID: <20230113090321.25128-9-moudy.ho@mediatek.com>
+Subject: [PATCH v3 06/13] media: platform: mtk-mdp3: add checks for dummy components
+Date: Fri, 13 Jan 2023 17:03:14 +0800
+Message-ID: <20230113090321.25128-7-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230113090321.25128-1-moudy.ho@mediatek.com>
 References: <20230113090321.25128-1-moudy.ho@mediatek.com>
@@ -66,8 +81,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230113_012405_051147_09647B08 
-X-CRM114-Status: GOOD (  14.52  )
+X-CRM114-CacheID: sfid-20230113_092447_773049_CEBA92BD 
+X-CRM114-Status: GOOD (  15.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,86 +97,188 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Support for multiple RDMA/WROT waits for GCE events.
+Some components are only used as bridges and do not require configuration.
 
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 ---
- .../mediatek/mdp3/mt8183/mdp3-plat-mt8183.h     |  2 ++
- .../platform/mediatek/mdp3/mtk-mdp3-comp.c      | 17 +++++++++++------
- .../platform/mediatek/mdp3/mtk-mdp3-core.h      |  2 ++
- 3 files changed, 15 insertions(+), 6 deletions(-)
+ .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 64 ++++++++++++++++++-
+ 1 file changed, 63 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h b/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
-index 6dd06131e256..35425299e9bd 100644
---- a/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
-+++ b/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
-@@ -11,8 +11,10 @@ static const struct mdp_platform_config mt8183_plat_cfg = {
- 	.rdma_support_10bit		= true,
- 	.rdma_rsz1_sram_sharing		= true,
- 	.rdma_upsample_repeat_only	= true,
-+	.rdma_event_num			= 1,
- 	.rsz_disable_dcm_small_sample	= false,
- 	.wrot_filter_constraint		= false,
-+	.wrot_event_num			= 1,
- };
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+index 2936701a9cc9..72b5dc4cb3b1 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+@@ -43,6 +43,13 @@ static bool is_output_disabled(int p_id, const struct img_compparam *param, u32
+ 	return (count < num) ? (dis_output || dis_tile) : true;
+ }
  
- static const struct of_device_id mt8183_mdp_probe_infra[MDP_INFRA_MAX] = {
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-index 576b90a2fb9d..9b1b7fbb3d6b 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-@@ -280,14 +280,17 @@ static int config_rdma_subfrm(struct mdp_comp_ctx *ctx,
- 
- static int wait_rdma_event(struct mdp_comp_ctx *ctx, struct mdp_cmdq_cmd *cmd)
++static bool is_dummy_engine(struct mdp_dev *mdp_dev, s32 inner_id)
++{
++	enum mtk_mdp_comp_id public_id = get_comp_public_id(mdp_dev, inner_id);
++
++	return (mdp_dev->mdp_data->comp_data[public_id].match.type == MDP_COMP_TYPE_DUMMY);
++}
++
+ static struct mtk_mutex *__get_mutex(const struct mdp_dev *mdp_dev,
+ 				     const struct mdp_pipe_info *p)
  {
-+	const struct mdp_platform_config *mdp_cfg = __get_plat_cfg(ctx);
- 	struct device *dev = &ctx->comp->mdp_dev->pdev->dev;
- 	phys_addr_t base = ctx->comp->reg_base;
- 	u8 subsys_id = ctx->comp->subsys_id;
+@@ -114,6 +121,12 @@ static int mdp_path_subfrm_require(const struct mdp_path *path,
  
--	if (ctx->comp->alias_id == 0)
-+	if (ctx->comp->alias_id < mdp_cfg->rdma_event_num) {
- 		MM_REG_WAIT(cmd, ctx->comp->gce_event[MDP_GCE_EVENT_EOF]);
--	else
--		dev_err(dev, "Do not support RDMA1_DONE event\n");
-+	} else {
-+		dev_err(dev, "Invalid RDMA event %d\n", ctx->comp->alias_id);
-+		return -EINVAL;
+ 	/* Set mutex mod */
+ 	for (index = 0; index < num_comp; index++) {
++		s32 inner_id = MDP_COMP_NONE;
++
++		if (CFG_CHECK(MT8183, p_id))
++			inner_id = CFG_GET(MT8183, path->config, components[index].type);
++		if (is_dummy_engine(path->mdp_dev, inner_id))
++			continue;
+ 		ctx = &path->comps[index];
+ 		if (is_output_disabled(p_id, ctx->param, count))
+ 			continue;
+@@ -138,6 +151,7 @@ static int mdp_path_subfrm_run(const struct mdp_path *path,
+ 	int index;
+ 	u32 num_comp = 0;
+ 	s32 event;
++	s32 inner_id = MDP_COMP_NONE;
+ 
+ 	if (-1 == p->mutex_id) {
+ 		dev_err(dev, "Incorrect mutex id");
+@@ -150,6 +164,10 @@ static int mdp_path_subfrm_run(const struct mdp_path *path,
+ 	/* Wait WROT SRAM shared to DISP RDMA */
+ 	/* Clear SOF event for each engine */
+ 	for (index = 0; index < num_comp; index++) {
++		if (CFG_CHECK(MT8183, p_id))
++			inner_id = CFG_GET(MT8183, path->config, components[index].type);
++		if (is_dummy_engine(path->mdp_dev, inner_id))
++			continue;
+ 		ctx = &path->comps[index];
+ 		if (is_output_disabled(p_id, ctx->param, count))
+ 			continue;
+@@ -164,6 +182,10 @@ static int mdp_path_subfrm_run(const struct mdp_path *path,
+ 
+ 	/* Wait SOF events and clear mutex modules (optional) */
+ 	for (index = 0; index < num_comp; index++) {
++		if (CFG_CHECK(MT8183, p_id))
++			inner_id = CFG_GET(MT8183, path->config, components[index].type);
++		if (is_dummy_engine(path->mdp_dev, inner_id))
++			continue;
+ 		ctx = &path->comps[index];
+ 		if (is_output_disabled(p_id, ctx->param, count))
+ 			continue;
+@@ -189,6 +211,12 @@ static int mdp_path_ctx_init(struct mdp_dev *mdp, struct mdp_path *path)
+ 		return -EINVAL;
+ 
+ 	for (index = 0; index < num_comp; index++) {
++		s32 inner_id = MDP_COMP_NONE;
++
++		if (CFG_CHECK(MT8183, p_id))
++			inner_id = CFG_GET(MT8183, path->config, components[index].type);
++		if (is_dummy_engine(path->mdp_dev, inner_id))
++			continue;
+ 		if (CFG_CHECK(MT8183, p_id))
+ 			param = (void *)CFG_ADDR(MT8183, path->config, components[index]);
+ 		ret = mdp_comp_ctx_config(mdp, &path->comps[index],
+@@ -210,6 +238,7 @@ static int mdp_path_config_subfrm(struct mdp_cmdq_cmd *cmd,
+ 	struct mdp_pipe_info pipe;
+ 	int index, ret;
+ 	u32 num_comp = 0;
++	s32 inner_id = MDP_COMP_NONE;
+ 
+ 	if (CFG_CHECK(MT8183, p_id))
+ 		num_comp = CFG_GET(MT8183, path->config, num_components);
+@@ -229,6 +258,10 @@ static int mdp_path_config_subfrm(struct mdp_cmdq_cmd *cmd,
+ 	}
+ 	/* Config sub-frame information */
+ 	for (index = (num_comp - 1); index >= 0; index--) {
++		if (CFG_CHECK(MT8183, p_id))
++			inner_id = CFG_GET(MT8183, path->config, components[index].type);
++		if (is_dummy_engine(path->mdp_dev, inner_id))
++			continue;
+ 		ctx = &path->comps[index];
+ 		if (is_output_disabled(p_id, ctx->param, count))
+ 			continue;
+@@ -242,6 +275,10 @@ static int mdp_path_config_subfrm(struct mdp_cmdq_cmd *cmd,
+ 		return ret;
+ 	/* Wait components done */
+ 	for (index = 0; index < num_comp; index++) {
++		if (CFG_CHECK(MT8183, p_id))
++			inner_id = CFG_GET(MT8183, path->config, components[index].type);
++		if (is_dummy_engine(path->mdp_dev, inner_id))
++			continue;
+ 		ctx = &path->comps[index];
+ 		if (is_output_disabled(p_id, ctx->param, count))
+ 			continue;
+@@ -251,6 +288,10 @@ static int mdp_path_config_subfrm(struct mdp_cmdq_cmd *cmd,
+ 	}
+ 	/* Advance to the next sub-frame */
+ 	for (index = 0; index < num_comp; index++) {
++		if (CFG_CHECK(MT8183, p_id))
++			inner_id = CFG_GET(MT8183, path->config, components[index].type);
++		if (is_dummy_engine(path->mdp_dev, inner_id))
++			continue;
+ 		ctx = &path->comps[index];
+ 		ret = call_op(ctx, advance_subfrm, cmd, count);
+ 		if (ret)
+@@ -274,6 +315,7 @@ static int mdp_path_config(struct mdp_dev *mdp, struct mdp_cmdq_cmd *cmd,
+ 	int index, count, ret;
+ 	u32 num_comp = 0;
+ 	u32 num_sub = 0;
++	s32 inner_id = MDP_COMP_NONE;
+ 
+ 	if (CFG_CHECK(MT8183, p_id))
+ 		num_comp = CFG_GET(MT8183, path->config, num_components);
+@@ -284,6 +326,10 @@ static int mdp_path_config(struct mdp_dev *mdp, struct mdp_cmdq_cmd *cmd,
+ 	/* Config path frame */
+ 	/* Reset components */
+ 	for (index = 0; index < num_comp; index++) {
++		if (CFG_CHECK(MT8183, p_id))
++			inner_id = CFG_GET(MT8183, path->config, components[index].type);
++		if (is_dummy_engine(path->mdp_dev, inner_id))
++			continue;
+ 		ctx = &path->comps[index];
+ 		ret = call_op(ctx, init_comp, cmd);
+ 		if (ret)
+@@ -294,6 +340,11 @@ static int mdp_path_config(struct mdp_dev *mdp, struct mdp_cmdq_cmd *cmd,
+ 		const struct v4l2_rect *compose;
+ 		u32 out = 0;
+ 
++		if (CFG_CHECK(MT8183, p_id))
++			inner_id = CFG_GET(MT8183, path->config, components[index].type);
++		if (is_dummy_engine(path->mdp_dev, inner_id))
++			continue;
++
+ 		if (CFG_CHECK(MT8183, p_id))
+ 			out = CFG_COMP(MT8183, ctx->param, outputs[0]);
+ 
+@@ -312,6 +363,10 @@ static int mdp_path_config(struct mdp_dev *mdp, struct mdp_cmdq_cmd *cmd,
+ 	}
+ 	/* Post processing information */
+ 	for (index = 0; index < num_comp; index++) {
++		if (CFG_CHECK(MT8183, p_id))
++			inner_id = CFG_GET(MT8183, path->config, components[index].type);
++		if (is_dummy_engine(path->mdp_dev, inner_id))
++			continue;
+ 		ctx = &path->comps[index];
+ 		ret = call_op(ctx, post_process, cmd);
+ 		if (ret)
+@@ -512,9 +567,16 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
+ 	}
+ 	cmdq_pkt_finalize(&cmd->pkt);
+ 
+-	for (i = 0; i < num_comp; i++)
++	for (i = 0; i < num_comp; i++) {
++		s32 inner_id = MDP_COMP_NONE;
++
++		if (CFG_CHECK(MT8183, p_id))
++			inner_id = CFG_GET(MT8183, path->config, components[i].type);
++		if (is_dummy_engine(mdp, inner_id))
++			continue;
+ 		memcpy(&comps[i], path->comps[i].comp,
+ 		       sizeof(struct mdp_comp));
 +	}
  
- 	/* Disable RDMA */
- 	MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_EN, 0x0, BIT(0));
-@@ -582,10 +585,12 @@ static int wait_wrot_event(struct mdp_comp_ctx *ctx, struct mdp_cmdq_cmd *cmd)
- 	phys_addr_t base = ctx->comp->reg_base;
- 	u8 subsys_id = ctx->comp->subsys_id;
- 
--	if (ctx->comp->alias_id == 0)
-+	if (ctx->comp->alias_id < mdp_cfg->wrot_event_num) {
- 		MM_REG_WAIT(cmd, ctx->comp->gce_event[MDP_GCE_EVENT_EOF]);
--	else
--		dev_err(dev, "Do not support WROT1_DONE event\n");
-+	} else {
-+		dev_err(dev, "Invalid WROT event %d!\n", ctx->comp->alias_id);
-+		return -EINVAL;
-+	}
- 
- 	if (mdp_cfg && mdp_cfg->wrot_filter_constraint)
- 		MM_REG_WRITE(cmd, subsys_id, base, VIDO_MAIN_BUF_SIZE, 0x0,
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-index e3e60b106c72..a9beb8bd440b 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-@@ -40,8 +40,10 @@ struct mdp_platform_config {
- 	bool	rdma_support_10bit;
- 	bool	rdma_rsz1_sram_sharing;
- 	bool	rdma_upsample_repeat_only;
-+	u32	rdma_event_num;
- 	bool	rsz_disable_dcm_small_sample;
- 	bool	wrot_filter_constraint;
-+	u32	wrot_event_num;
- };
- 
- /* indicate which mutex is used by each pipepline */
+ 	mdp->cmdq_clt->client.rx_callback = mdp_handle_cmdq_callback;
+ 	cmd->mdp = mdp;
 -- 
 2.18.0
 
