@@ -4,87 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A445DC61DB3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jan 2023 21:28:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10451C63797
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 00:34:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EQ1D5UHr4tggTsAIC/Qawu9eWnHs++i/i+4IgFLa5Fw=; b=wxwq3AyafeOmm17qekNF6khMFU
-	de/O5W8oNPf63rMuGKWUSFoqSmEFt9dVkcmwT07Rbea2Xr4HzLXQNW7m41V8LMP951cKbkSR5x7qr
-	XU0tn+StD4zq9Tilklr3uNNdO/oqh667P5DiDmDcIaexB5/oKnkIRQ1RG1qLUdH0haG+Nf4q/xB+t
-	95SnkeT1N0PIQSGR+01XaiSIcNIps2HGjXdKwNRDq0oDgLE62hXPpjX2dnRU7lR+g4BOHTDEiIdcu
-	FOngLa2C+AHHWbf0I50xuSpPMnTCUxkr2Fzcot3Il1bjTlNJJazurKxJF/IumVTqR1GdalHzj6/rb
-	lAq6wzTA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qCnLlBafyh4GwT6zVHEN0+uHO/uAkzlVBLePEGOwfww=; b=FPDTcdxeCdcz15k31ARHHzq8Vt
+	t+RjRYlnY4FPFYuEGBfYMaPxU9oXDQrsNIXNaIEGOeOfrCcr8ADZXt3g6A0J/1/6Se3jxSfVYVqUD
+	YYu2C07c5pwOd5NQ1p9hMOUH7G1eZoM4BFZrV5FseXe6tCWcKKmDMwTcTurvGEGHhsClQLQsfF51f
+	RW8UVZhgE1F4HY14WSh0TnVwEIETwfHGInBRxCh3ENKm3mPJ6W93BrDYjyMno+yiu8tQNMU8Q0QYj
+	j32ktmGow2sMT0D1T5t31XVs9OzXtqbyoWAn+TUS02weP1B5TT9tJ8RechudoHCvV11f+dCB3sgld
+	xiobeGsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pG57F-00H8Xv-ME; Thu, 12 Jan 2023 21:28:05 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pG574-00H8VT-3p; Thu, 12 Jan 2023 21:27:55 +0000
-Received: by mail-wm1-x335.google.com with SMTP id bi26-20020a05600c3d9a00b003d3404a89faso53818wmb.1;
-        Thu, 12 Jan 2023 13:27:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:content-language
-         :references:cc:to:user-agent:mime-version:date:message-id:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=EQ1D5UHr4tggTsAIC/Qawu9eWnHs++i/i+4IgFLa5Fw=;
-        b=hktHdGS8fjL/kAij+ShBbKkzIj2DX4IeZwG+91HsnQGKf9BjwXH25fl46yt6QgbcEZ
-         dmfTzOcDhAiTRS+DOw8t0NNS7o2z3LWT2EQVCDBQXjryxipoiYYUFSMUoRPrsu8Bjw68
-         7oTIyZXFzZ1z4eQ+R3ziNiRiprFldf6k9DDL3XVIZE7p7R+DaIWlF5741UZf3zeb60kE
-         gOTVWs1qky+rvf2lIvNEUzIPpOVFL5VVni7fh9hxWUB1/JSkeEdgsd0lBAfyylezmWve
-         QZoodcGMs9F+rrl//E8U8si+5AMME2dFINVfuQHSXJYbjgTdZEJC7Z4wONm8skVmr1L3
-         Aw7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:content-language
-         :references:cc:to:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=EQ1D5UHr4tggTsAIC/Qawu9eWnHs++i/i+4IgFLa5Fw=;
-        b=gN41KY0jy1j3Vj8kJYTBmJZJthnTTh7Qb8h/gvDZKkxa/jYZ3AXhQlHbcTi1KlR3nb
-         NA9CeNAxv4u95ccEfAoknLWgaFhGCmbHP+QJwm+/3QwEX6mloZWtjgyVbVsyHyY8teAj
-         UVlRnKlhND5PFeEOI2S1SaGu0CPGA9GEKMPXaTmWsVju3WcEMoESC7WjnooQ0J1mHNcv
-         fTqBC3dscrTUuicTFn26qwWlJ9+eCaDV/1B4VZtStN3Oh7rqmx/LxGgRf04PAxEEzikp
-         9DbJXcf7ARswxZnP4AtIrfNDFD2OBroBc3ROLSJW0GXmUVmXRCHLTIC23ihaWwzelOB7
-         KL+g==
-X-Gm-Message-State: AFqh2krCdA48aZRrP88E9ZHvnKrOBbHVS/aiyqW2Jzz4GIq6poFAeCuH
-	0wq47mUCR5aYh26UHuOvsQE=
-X-Google-Smtp-Source: AMrXdXtQnJrnUij3Vwfvj8mzp6AXzARTTmYdUixlVR2SbeVZiq8jg1v6Uj2Hnt2dBY2MkArqeey85Q==
-X-Received: by 2002:a05:600c:601b:b0:3d3:56ce:5693 with SMTP id az27-20020a05600c601b00b003d356ce5693mr55607798wmb.17.1673558869896;
-        Thu, 12 Jan 2023 13:27:49 -0800 (PST)
-Received: from ?IPV6:2a01:c22:76ef:5d00:a043:7bec:4d7a:60ff? (dynamic-2a01-0c22-76ef-5d00-a043-7bec-4d7a-60ff.c22.pool.telefonica.de. [2a01:c22:76ef:5d00:a043:7bec:4d7a:60ff])
-        by smtp.googlemail.com with ESMTPSA id u2-20020a05600c210200b003d98f92692fsm1101375wml.17.2023.01.12.13.27.48
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Jan 2023 13:27:49 -0800 (PST)
-Message-ID: <7c4aa0d2-d8e9-416b-b2ad-f5c3c8ea33de@gmail.com>
-Date: Thu, 12 Jan 2023 22:27:44 +0100
+	id 1pG815-00HacU-Ce; Fri, 13 Jan 2023 00:33:55 +0000
+Received: from mg.richtek.com ([220.130.44.152])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pG80y-00Haa1-LE; Fri, 13 Jan 2023 00:33:51 +0000
+X-MailGates: (flag:4,DYNAMIC,BADHELO,RELAY,NOHOST:PASS)(compute_score:DE
+	LIVER,40,3)
+Received: from 192.168.10.46
+	by mg.richtek.com with MailGates ESMTP Server V5.0(16491:0:AUTH_RELAY)
+	(envelope-from <cy_huang@richtek.com>); Fri, 13 Jan 2023 08:33:08 +0800 (CST)
+Received: from ex4.rt.l (192.168.10.47) by ex3.rt.l (192.168.10.46) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.20; Fri, 13 Jan
+ 2023 08:33:08 +0800
+Received: from linuxcarl2.richtek.com (192.168.10.154) by ex4.rt.l
+ (192.168.10.45) with Microsoft SMTP Server id 15.2.1118.20 via Frontend
+ Transport; Fri, 13 Jan 2023 08:33:08 +0800
+Date: Fri, 13 Jan 2023 08:33:07 +0800
+From: ChiYuan Huang <cy_huang@richtek.com>
+To: <linux@roeck-us.net>, <heikki.krogerus@linux.intel.com>,
+	<matthias.bgg@gmail.com>
+CC: <gregkh@linuxfoundation.org>, <gene_chen@richtek.com>,
+	<linux-usb@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<stable@vger.kernel.org>
+Subject: Re: [PATCH RESEND v2] usb: typec: tcpm: Fix altmode re-registration
+ causes sysfs create fail
+Message-ID: <20230113003307.GA4232@linuxcarl2.richtek.com>
+References: <1673248790-15794-1-git-send-email-cy_huang@richtek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-To: Peter Suti <peter.suti@streamunlimited.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mmc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <52861a84-0fe2-37f0-d66a-145f2ebe1d79@gmail.com>
- <20221214134620.3028726-1-peter.suti@streamunlimited.com>
- <c6863a3e-8855-50fe-25cb-0b38bc3a05e0@gmail.com>
- <CACMGZgZY4Zb+3vHUDAS0+3r55K4_J40dtbsTPTFZMd6duBikpQ@mail.gmail.com>
-Content-Language: en-US
-From: Heiner Kallweit <hkallweit1@gmail.com>
-Subject: Re: [PATCH v3] mmc: meson-gx: fix SDIO interrupt handling
-In-Reply-To: <CACMGZgZY4Zb+3vHUDAS0+3r55K4_J40dtbsTPTFZMd6duBikpQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <1673248790-15794-1-git-send-email-cy_huang@richtek.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230112_132754_211918_59512CCC 
-X-CRM114-Status: GOOD (  30.09  )
+X-CRM114-CacheID: sfid-20230112_163349_176880_B61A6499 
+X-CRM114-Status: GOOD (  25.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,117 +70,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09.01.2023 12:52, Peter Suti wrote:
-> On Wed, Dec 14, 2022 at 10:33 PM Heiner Kallweit <hkallweit1@gmail.com> wrote:
->>
->> On 14.12.2022 14:46, Peter Suti wrote:
->>> With the interrupt support introduced in commit 066ecde sometimes the
->>> Marvell-8987 wifi chip got stuck using the marvell-sd-uapsta-8987
->>> vendor driver. The cause seems to be that after sending ack to all interrupts
->>> the IRQ_SDIO still happens, but it is ignored.
->>>
->>> To work around this, recheck the IRQ_SDIO after meson_mmc_request_done().
->>>
->>> Inspired by 9e2582e ("mmc: mediatek: fix SDIO irq issue") which used a
->>> similar fix to handle lost interrupts.
->>>
->> The commit description of the referenced fix isn't clear with regard to
->> who's fault it is that an interrupt can be lost. I'd interpret it being
->> a silicon bug rather than a kernel/driver bug.
-> Unfortunately I can't confirm that the referenced bug is in the
-> silicon for the original commit either.
-> However a similar workaround works in this case too which is why I
-> referenced that commit.
+On Mon, Jan 09, 2023 at 03:19:50PM +0800, cy_huang@richtek.com wrote:
+> From: ChiYuan Huang <cy_huang@richtek.com>
 > 
->> Not sure whether it's the case, but it's possible that both vendors use
->> at least parts of the same IP in the MMC block, and therefore the issue
->> pops up here too.
->>
->>> Fixes: 066ecde ("mmc: meson-gx: add SDIO interrupt support")
->>>
->>> Signed-off-by: Peter Suti <peter.suti@streamunlimited.com>
->>> ---
->>> Changes in v2:
->>>       - use spin_lock instead of spin_lock_irqsave
->>>       - only reenable interrupts if they were enabled already
->>>
->>> Changes in v3:
->>>       - Rework the patch based on feedback from Heiner Kallweit.
->>>               The IRQ does not happen on 2 CPUs and the hard IRQ is not re-entrant.
->>>               But still one SDIO IRQ is lost without this change.
->>>               After the ack, reading the SD_EMMC_STATUS BIT(15) is set, but
->>>               meson_mmc_irq() is never called again.
->>>
->>>               The fix is similar to Mediatek msdc_recheck_sdio_irq().
->>>               That platform also loses an IRQ in some cases it seems.
->>>
->>>  drivers/mmc/host/meson-gx-mmc.c | 16 ++++++++++++++++
->>>  1 file changed, 16 insertions(+)
->>>
->>> diff --git a/drivers/mmc/host/meson-gx-mmc.c b/drivers/mmc/host/meson-gx-mmc.c
->>> index 6e5ea0213b47..7d3ee2f9a7f6 100644
->>> --- a/drivers/mmc/host/meson-gx-mmc.c
->>> +++ b/drivers/mmc/host/meson-gx-mmc.c
->>> @@ -1023,6 +1023,22 @@ static irqreturn_t meson_mmc_irq(int irq, void *dev_id)
->>>       if (ret == IRQ_HANDLED)
->>>               meson_mmc_request_done(host->mmc, cmd->mrq);
->>>
->>> +     /*
->>> +     * Sometimes after we ack all raised interrupts,
->>> +     * an IRQ_SDIO can still be pending, which can get lost.
->>> +     *
->>
->> A reader may scratch his head here and wonder how the interrupt can get lost,
->> and why adding a workaround instead of eliminating the root cause for losing
->> the interrupt. If you can't provide an explanation why the root cause for
->> losing the interrupt can't be fixed, presumably you would have to say that
->> you're adding a workaround for a suspected silicon bug.
-> After talking to the manufacturer, we got the following explanation
-> for this situation:
+> There's the altmode re-registeration issue after data role
+> swap (DR_SWAP).
+> 
+> Comparing to USBPD 2.0, in USBPD 3.0, it loose the limit that only DFP
+> can initiate the VDM command to get partner identity information.
+> 
+> For a USBPD 3.0 UFP device, it may already get the identity information
+> from its port partner before DR_SWAP. If DR_SWAP send or receive at the
+> mean time, 'send_discover' flag will be raised again. It causes discover
+> identify action restart while entering ready state. And after all
+> discover actions are done, the 'tcpm_register_altmodes' will be called.
+> If old altmode is not unregistered, this sysfs create fail can be found.
+> 
+> In 'DR_SWAP_CHANGE_DR' state case, only DFP will unregister altmodes.
+> For UFP, the original altmodes keep registered.
+> 
+> This patch fix the logic that after DR_SWAP, 'tcpm_unregister_altmodes'
+> must be called whatever the current data role is.
+> 
+> Reviewed-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> Fixes: ae8a2ca8a221 ("usb: typec: Group all TCPCI/TCPM code together)
+> Reported-by: TommyYl Chen <tommyyl.chen@mediatek.com>
+> Cc: stable@vger.kernel.org
+> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+> ---
+> Since v2:
+> - Correct the mail sent from Richtek.
+> - Add 'Reviewed-by' tag.
+>
 
-To which manufacturer did you talk, Marvell or Amlogic?
+Sorry, it seems I focus on the email testing and forget to attach the issue
+log in the v2 patch appendix.
 
-> "wifi may have dat1 interrupt coming in, without this the dat1
-> interrupt would be missed"
+If anyone check this issue. Please refer to the v1 patch link.
+https://lore.kernel.org/lkml/1671096096-20307-1-git-send-email-u0084500@gmail.com/
+Inside this, the issue log show how it happened.
 
-I don't understand this sentence. W/o the interrupt coming in
-the interrupt would be missed? Can you explain it?
+This can help better analyze this issue. 
 
-> Supposedly this is fixed in their codebase.
-
-Which codebase do you mean? A specific vendor driver? Or firmware?
-
-> Unfortunately we were not able to find out more and can't prepare a
-> patch with a proper explanation.
-
-The workaround is rather simple, so we should add it.
-It's just unfortunate that we have no idea about the root cause of the issue.
-
-> Thank you for reviewing.
->>
->>> +     * To prevent this, recheck the IRQ_SDIO here and schedule
->>> +     * it to be processed.
->>> +     */
->>> +     raw_status = readl(host->regs + SD_EMMC_STATUS);
->>> +     status = raw_status & (IRQ_EN_MASK | IRQ_SDIO);
->>
->> This isn't needed here. Why not simply:
->>
->> status = readl(host->regs + SD_EMMC_STATUS);
->> if (status & IRQ_SDIO)
->>   ...
->>
->>
->>> +     if (status & IRQ_SDIO) {
->>> +             spin_lock(&host->lock);
->>> +             __meson_mmc_enable_sdio_irq(host->mmc, 0);
->>> +             sdio_signal_irq(host->mmc);
->>> +             spin_unlock(&host->lock);
->>> +     }
->>> +
->>>       return ret;
->>>  }
->>>
->>
-
+ChiYuan Huang.
+> Hi, Greg:
+> 
+>   Please check this one. I have strongly requested our MIS to remove the confidential string.
+> 
+> ChiYuan Huang.
+> ---
+>  drivers/usb/typec/tcpm/tcpm.c | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/usb/typec/tcpm/tcpm.c b/drivers/usb/typec/tcpm/tcpm.c
+> index 904c7b4..59b366b 100644
+> --- a/drivers/usb/typec/tcpm/tcpm.c
+> +++ b/drivers/usb/typec/tcpm/tcpm.c
+> @@ -4594,14 +4594,13 @@ static void run_state_machine(struct tcpm_port *port)
+>  		tcpm_set_state(port, ready_state(port), 0);
+>  		break;
+>  	case DR_SWAP_CHANGE_DR:
+> -		if (port->data_role == TYPEC_HOST) {
+> -			tcpm_unregister_altmodes(port);
+> +		tcpm_unregister_altmodes(port);
+> +		if (port->data_role == TYPEC_HOST)
+>  			tcpm_set_roles(port, true, port->pwr_role,
+>  				       TYPEC_DEVICE);
+> -		} else {
+> +		else
+>  			tcpm_set_roles(port, true, port->pwr_role,
+>  				       TYPEC_HOST);
+> -		}
+>  		tcpm_ams_finish(port);
+>  		tcpm_set_state(port, ready_state(port), 0);
+>  		break;
+> -- 
+> 2.7.4
+> 
 
