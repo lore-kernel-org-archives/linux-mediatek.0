@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D01D1C54EBE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 06:03:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B588C54EBE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 06:04:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fflmxDTxMrV2jZE/8Py4czZ0kmynsjaA3QqDclyW3Kk=; b=hF3buwNqymzGcRGN4PBMADVbBL
-	zjX1XziWnHxwu6VTW1EWM9wUxEutdm3JRhwqN9BkCqtHe5T8uGq2pkXot0f94soUnieLfUkkw4mt4
-	pEiEe/IDG2hzdlXKFksB6WJ9genX5WJgbq36qrDSGTvxWdv3+5+8nPjXMzgL+t/YTrNbfnyu+OvP5
-	sdypUNnAvg1d92wRyJZxWZkHIymm7yp70wbcSxeD8gRgifjdHOfT1xnIsmKuiIctVIlbAa+4ZWhk6
-	W6fVbh0cwS7FdxUnjPyMLIH1xx/sgviJuWNb791Z8rGHHEh8pLuoj2O3PDtgil2BcSzg3uH97PUIo
-	9FVZ37Dg==;
+	bh=E6zytyzpUaWfANCbH+2LMnrCFmkHdDPrML8ngJihNEM=; b=Oe440yo0sDEjXxK+axCUBFLO19
+	MjwDm3kMjwt55/Vtpsai6Cx30cdlRxMKFYWkZeVhp990kDo41Zi8lnZNAU129TDXHpljqWugH6P01
+	E3hpyoRPAfnIq7zdOEALj7D49JlANM9l92emASriBezoL+hMUxp5YVL06/bi8j0071fhz9SvUvuxs
+	mpK0h2vO39lVcsh4JPDyjDcBJ00hx93zyzIok2ZlsDVApaOWqkK0P3uVATor2TsKKGUf5HQV2UqUo
+	qsPuAR2tQzdRJyS5mX83YLG66LYi6I1vDPu7agYN9LSMlg1nz5i0LWM1DwVaC4tSLhhwMakBeP8ul
+	JyWipC1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGDAB-000emH-69; Fri, 13 Jan 2023 06:03:39 +0000
+	id 1pGDAz-000fAA-40; Fri, 13 Jan 2023 06:04:29 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGD9U-000eP9-93; Fri, 13 Jan 2023 06:02:58 +0000
-X-UUID: ea84cf46930711edbbe3f76fe852e059-20230112
+	id 1pGD9V-000eO8-Hu; Fri, 13 Jan 2023 06:03:00 +0000
+X-UUID: ec09c9ac930711edbbe3f76fe852e059-20230112
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=fflmxDTxMrV2jZE/8Py4czZ0kmynsjaA3QqDclyW3Kk=;
-	b=imFUMntl1UIidcg9ncx3HN0xjf9aNiFP1h7qUR4JO43U/sP2VLJRtod8KyKzKu6fhDAOpMfmg9yo4udvB1nqG010y8Nx+HK/hQV6qx2vo9JnTdn+r/xDrhOwuwpLR8jsnFyQDGC911uaJTk31uXyayHZ/d8P6u0dzf4WzF7krV0=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=E6zytyzpUaWfANCbH+2LMnrCFmkHdDPrML8ngJihNEM=;
+	b=cij678r/WCSLKkfqmfsGupGORdEF4lvQj5wFio/zYcU+DS5M2h7Hxa7AgeJ8TXM0m/gcijO8ATu/s4sp9pnJzUf7ZDZLCNVH5wBRLbgmiHlJvVRHjT89Pq18YhvmWMrzZZPuwt3+mig8CjO6WfL+vkyAV7A1j4Apo+EqNLyXpRM=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:8da31bf9-3a96-407f-9c32-65f5bc53ced3,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:70
-X-CID-INFO: VERSION:1.1.17,REQID:8da31bf9-3a96-407f-9c32-65f5bc53ced3,IP:0,URL
-	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
-	ON:quarantine,TS:70
-X-CID-META: VersionHash:543e81c,CLOUDID:3ff6258c-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:2301131402230SNQ1E6Q,BulkQuantity:1,Recheck:0,SF:38|28|17|19|48,TC:n
+X-CID-O-INFO: VERSION:1.1.17,REQID:aa32fce8-ab95-4ab5-bcc8-092d756e58ec,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:95
+X-CID-INFO: VERSION:1.1.17,REQID:aa32fce8-ab95-4ab5-bcc8-092d756e58ec,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
+	:quarantine,TS:95
+X-CID-META: VersionHash:543e81c,CLOUDID:c0f48a54-dd49-462e-a4be-2143a3ddc739,B
+	ulkID:230113140254FS9JMCCJ,BulkQuantity:1,Recheck:0,SF:38|28|17|19|48,TC:n
 	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,OSI
 	:0,OSA:0
 X-CID-APTURL: Status:success,Category:nil,Trust:0,Unknown:0,Malicious:0
 X-CID-BVR: 0
-X-UUID: ea84cf46930711edbbe3f76fe852e059-20230112
+X-UUID: ec09c9ac930711edbbe3f76fe852e059-20230112
 Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
 	(envelope-from <yong.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1219060555; Thu, 12 Jan 2023 23:02:52 -0700
+	with ESMTP id 1815018577; Thu, 12 Jan 2023 23:02:55 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 13 Jan 2023 14:02:19 +0800
+ 15.2.792.15; Fri, 13 Jan 2023 14:02:52 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 13 Jan 2023 14:02:18 +0800
+ 15.2.792.15 via Frontend Transport; Fri, 13 Jan 2023 14:02:50 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>
@@ -67,11 +67,10 @@ CC: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
 	Yunfei Dong <yunfei.dong@mediatek.com>, kyrie wu
 	<kyrie.wu@mediatek.corp-partner.google.com>, <chengci.xu@mediatek.com>,
 	<youlin.pei@mediatek.com>, <anan.sun@mediatek.com>, Yong Wu
-	<yong.wu@mediatek.com>, Bin Liu <bin.liu@mediatek.com>, Xia Jiang
-	<xia.jiang@mediatek.com>
-Subject: [PATCH 02/10] dt-bindings: media: mediatek,jpeg: Remove dma-ranges property
-Date: Fri, 13 Jan 2023 14:01:25 +0800
-Message-ID: <20230113060133.9394-3-yong.wu@mediatek.com>
+	<yong.wu@mediatek.com>
+Subject: [PATCH 06/10] iommu/mediatek: mt8192: add larb_region_msk
+Date: Fri, 13 Jan 2023 14:01:29 +0800
+Message-ID: <20230113060133.9394-7-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230113060133.9394-1-yong.wu@mediatek.com>
 References: <20230113060133.9394-1-yong.wu@mediatek.com>
@@ -79,9 +78,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230112_220256_515370_37208854 
-X-CRM114-Status: UNSURE (   9.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230112_220257_722462_ED42B65A 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,104 +94,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Mediatek IOMMU has already controlled the masters' iova ranges by the
-master's larb/port id. then the dma-ranges property is unnecessary for
-the master's node. the master is jpeg here.
+Add larb_region_msk for mt8192. we separate the 16GB iova regions
+by each device's larbid/portid.
+Note: larb3/6/8/10/12/15 connect nothing in this SoC.
+Refer to the comment in include/dt-bindings/memory/mt8192-larb-port.h
 
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: Rob Herring <robh+dt@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Bin Liu <bin.liu@mediatek.com>
-Cc: kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>
-Cc: Xia Jiang <xia.jiang@mediatek.com>
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- .../devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml | 7 -------
- .../devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml | 7 -------
- .../devicetree/bindings/media/mediatek-jpeg-encoder.yaml   | 5 -----
- 3 files changed, 19 deletions(-)
+ drivers/iommu/mtk_iommu.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
-index 71595c013dbb..e5448c60e3eb 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
-@@ -26,11 +26,6 @@ properties:
-       Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
-       Ports are according to the HW.
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index ffd0203f515e..e4b8c07d4dbd 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -1531,6 +1531,17 @@ static const struct mtk_iommu_plat_data mt8186_data_mm = {
+ 	.larb_region_msk = mt8186_larb_region_msk,
+ };
  
--  dma-ranges:
--    maxItems: 1
--    description: |
--      Describes the physical address space of IOMMU maps to memory.
--
-   "#address-cells":
-     const: 2
- 
-@@ -89,7 +84,6 @@ required:
-   - compatible
-   - power-domains
-   - iommus
--  - dma-ranges
-   - ranges
- 
- additionalProperties: false
-@@ -115,7 +109,6 @@ examples:
-                      <&iommu_vpp M4U_PORT_L19_JPGDEC_BSDMA1>,
-                      <&iommu_vpp M4U_PORT_L19_JPGDEC_BUFF_OFFSET1>,
-                      <&iommu_vpp M4U_PORT_L19_JPGDEC_BUFF_OFFSET0>;
--            dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
-             #address-cells = <2>;
-             #size-cells = <2>;
-             ranges;
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
-index 95990539f7c0..596186497b68 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
-@@ -26,11 +26,6 @@ properties:
-       Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
-       Ports are according to the HW.
- 
--  dma-ranges:
--    maxItems: 1
--    description: |
--      Describes the physical address space of IOMMU maps to memory.
--
-   "#address-cells":
-     const: 2
- 
-@@ -89,7 +84,6 @@ required:
-   - compatible
-   - power-domains
-   - iommus
--  - dma-ranges
-   - ranges
- 
- additionalProperties: false
-@@ -113,7 +107,6 @@ examples:
-                      <&iommu_vpp M4U_PORT_L20_JPGENC_C_RDMA>,
-                      <&iommu_vpp M4U_PORT_L20_JPGENC_Q_TABLE>,
-                      <&iommu_vpp M4U_PORT_L20_JPGENC_BSDMA>;
--            dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
-             #address-cells = <2>;
-             #size-cells = <2>;
-             ranges;
-diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-index c8412e8ab353..37800e1908cc 100644
---- a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-@@ -44,11 +44,6 @@ properties:
-       Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
-       Ports are according to the HW.
- 
--  dma-ranges:
--    maxItems: 1
--    description: |
--      Describes the physical address space of IOMMU maps to memory.
--
- required:
-   - compatible
-   - reg
++static const unsigned int mt8192_larb_region_msk[][32] = {
++	[0] = {~0, ~0},				/* Region0: larb0/1 */
++	[1] = {0, 0, 0, 0, ~0, ~0, 0, ~0},	/* Region1: larb4/5/7 */
++	[2] = {0, 0, ~0, 0, 0, 0, 0, 0,		/* Region2: larb2/9/11/13/14/16/17/18/19/20 */
++	       0, ~0, 0, ~0, 0, ~(u32)(BIT(9) | BIT(10)), ~(u32)(BIT(4) | BIT(5)), 0,
++	       ~0, ~0, ~0, ~0, ~0},
++	[3] = {0},
++	[4] = {[13] = BIT(9) | BIT(10)},	/* larb13 port9/10 */
++	[5] = {[14] = BIT(4) | BIT(5)},		/* larb14 port4/5 */
++};
++
+ static const struct mtk_iommu_plat_data mt8192_data = {
+ 	.m4u_plat       = M4U_MT8192,
+ 	.flags          = HAS_BCLK | HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN |
+@@ -1540,6 +1551,7 @@ static const struct mtk_iommu_plat_data mt8192_data = {
+ 	.banks_enable   = {true},
+ 	.iova_region    = mt8192_multi_dom,
+ 	.iova_region_nr = ARRAY_SIZE(mt8192_multi_dom),
++	.larb_region_msk = mt8192_larb_region_msk,
+ 	.larbid_remap   = {{0}, {1}, {4, 5}, {7}, {2}, {9, 11, 19, 20},
+ 			   {0, 14, 16}, {0, 13, 18, 17}},
+ };
 -- 
 2.18.0
 
