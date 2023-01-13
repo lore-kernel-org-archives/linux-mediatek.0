@@ -4,86 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF913C54EBD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 15:03:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E468C54EBD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 15:05:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mQnwZd2y2E+PbZ/WCc24FX5SYUqFVRfKZfEjSHAZL+g=; b=X1ohauxWb8e5P4QaGjyzv1orXi
-	eSAQSlpbjvVKOQymS4F8kgMcxf7YLYwGcPV4dJrr9436Rw04Ze+2+ToKNWrZE9EhXq4D5wQj8ooIf
-	tYcD7eE/gyxhQ5620wFBHIPOkumbtRO9axGaUHZc9gVbVQsfEd4zjdMFepAMIgyj2kZn0GI/tgau1
-	Q7OuNIAes1EpSyf5/sQ2hW7fme7jQYLakoDXG4c0Q2IaobIq2EhpnMtIJdF8b/8n6NmtWklsBILzU
-	QxJuQOGfPbPPNoNlQCEGYmQuVwGwqc1vqjCC5J0H0XwjU1jqhOHa+jWnHU/QFORhjys+AFr8uNZzt
-	8X6W2eig==;
+	bh=gy3H7/cm6qwaEzsvZ6Ibt0qAZNE5wC8oiAsqhQvvNa8=; b=SXo2PCeDgNhWCfHYzicT94N0Vx
+	hcqvcnoijmhFy1sg4yoM53eXZCvMuC7lQzaPI0v73Shw8dnR2+dIVxv8PBDcpuGMpGKU63lhRp/Nf
+	iIWY1kDo5sF9oxlMDvY+E6mR3XwPQXYxbXpBTApEid3jnfJSHGf38E9Vd2kIVdWKVU1FyZUmxnyXY
+	J9OYmPRWu4ZriiVlW/aRNp7J4VBOZ4vkIewEoQV3N1WG0CDkVEfgCUemCNPKGonlUv8O96EWl3aIc
+	uVW9+sdvOq2uwWnPlzpXPpzoLT7v8BXhCUxxfaRfAekwLUMnYz09DR6sFLOHNjs0ll0qh6/uZ4b5T
+	eTkMSq9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGLaV-0035cJ-6D; Fri, 13 Jan 2023 15:03:23 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pGLcL-0035zi-52; Fri, 13 Jan 2023 15:05:17 +0000
+Received: from e10edge.fintech.ru ([195.54.195.159] helo=exchange.fintech.ru)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGLaJ-0035YE-GY; Fri, 13 Jan 2023 15:03:13 +0000
-Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6FB386602DD6;
-	Fri, 13 Jan 2023 15:03:03 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1673622186;
-	bh=fogr+uZTaVcUpklPH0FPHlfhwcndHj9i6ZT507O7UGQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=VeGyHLZ/upyjgtilOjqJrXGwTdYKAMuw+7A7dyr+7WeRnHKKKpAPwDtpFEAC55HqS
-	 naqUxpBvDoZ9P9ht3i6t3ZEXKk5b9WmLI9n/8tytAi6e8cFgsQfoet7FFZ4p0OqE0J
-	 vUChAcB4qNG4RvZ8bnHQLBdHdeYjUyeB6fXdfFODBdughAm9Cd2057qXWs2e1iJGnF
-	 xIUZvk6pgWLB+yzlU8kIwuw4w2/oFNWSaoIHjRVBInek65tEXmjA0M7ocnqlaqzQ/W
-	 NiI+EqzJ9xwww7PUrDKKLn+MczaEkJQAHb3jFJTcOUCWabf63+uyqaGLibxHwZXdvj
-	 G0D0odut2rJbQ==
-Date: Fri, 13 Jan 2023 10:02:40 -0500
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Yunfei Dong =?utf-8?B?KOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>
-Cc: "angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
-	"nicolas@ndufresne.ca" <nicolas@ndufresne.ca>,
-	"robh+dt@kernel.org" <robh+dt@kernel.org>,
-	George Sun =?utf-8?B?KOWtmeaelyk=?= <George.Sun@mediatek.com>,
-	Tiffany Lin =?utf-8?B?KOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>,
-	"stevecho@chromium.org" <stevecho@chromium.org>,
-	"frkoenig@chromium.org" <frkoenig@chromium.org>,
-	Xiaoyong Lu =?utf-8?B?KOWNouWwj+WLhyk=?= <Xiaoyong.Lu@mediatek.com>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"mchehab@kernel.org" <mchehab@kernel.org>,
-	"daniel@ffwll.ch" <daniel@ffwll.ch>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	Irui Wang =?utf-8?B?KOeOi+eRnik=?= <Irui.Wang@mediatek.com>,
-	"tfiga@google.com" <tfiga@google.com>,
-	"benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
-	"hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"hsinyi@chromium.org" <hsinyi@chromium.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	Andrew-CT Chen =?utf-8?B?KOmZs+aZuui/qik=?= <Andrew-CT.Chen@mediatek.com>,
-	"acourbot@chromium.org" <acourbot@chromium.org>
-Subject: Re: [PATCH v7, 5/7] media: mediatek: vcodec: Different codec using
- different capture format
-Message-ID: <20230113150240.6tqi3kc7cdu3xr65@notapiano>
-References: <20220518123004.18286-1-yunfei.dong@mediatek.com>
- <20220518123004.18286-6-yunfei.dong@mediatek.com>
- <20230112205825.wb5qcqhh5kwvyi3y@notapiano>
- <2fe7132f2fcc3fb4724a34c3c4a918b821c845a3.camel@mediatek.com>
+	id 1pGLcH-0035wX-Ds
+	for linux-mediatek@lists.infradead.org; Fri, 13 Jan 2023 15:05:16 +0000
+Received: from Ex16-01.fintech.ru (10.0.10.18) by exchange.fintech.ru
+ (195.54.195.159) with Microsoft SMTP Server (TLS) id 14.3.498.0; Fri, 13 Jan
+ 2023 18:04:52 +0300
+Received: from localhost (10.0.253.157) by Ex16-01.fintech.ru (10.0.10.18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4; Fri, 13 Jan
+ 2023 18:04:52 +0300
+From: Nikita Zhandarovich <n.zhandarovich@fintech.ru>
+To: <stable@vger.kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+CC: Nikita Zhandarovich <n.zhandarovich@fintech.ru>, Felix Fietkau
+	<nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Ryder Lee
+	<ryder.lee@mediatek.com>, Kalle Valo <kvalo@codeaurora.org>,
+	<linux-wireless@vger.kernel.org>, <netdev@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	"Alexey Khoroshilov" <khoroshilov@ispras.ru>, <lvc-project@linuxtesting.org>
+Subject: [PATCH 5.10 0/1] mt76: move mt76_init_tx_queue in common code
+Date: Fri, 13 Jan 2023 07:04:45 -0800
+Message-ID: <20230113150445.39286-1-n.zhandarovich@fintech.ru>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <Y8AD4jdyOpqrPT9a@kroah.com>
+References: 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <2fe7132f2fcc3fb4724a34c3c4a918b821c845a3.camel@mediatek.com>
+Content-Type: text/plain
+X-Originating-IP: [10.0.253.157]
+X-ClientProxiedBy: Ex16-01.fintech.ru (10.0.10.18) To Ex16-01.fintech.ru
+ (10.0.10.18)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230113_070311_784052_3595C697 
-X-CRM114-Status: GOOD (  22.94  )
+X-CRM114-CacheID: sfid-20230113_070513_505444_B76FE616 
+X-CRM114-Status: UNSURE (   6.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,50 +70,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 13, 2023 at 03:25:46AM +0000, Yunfei Dong (董云飞) wrote:
-> Hi Nicolas,
-> 
-> Thanks for your information.
-> On Thu, 2023-01-12 at 15:58 -0500, Nícolas F. R. A. Prado wrote:
-> > On Wed, May 18, 2022 at 08:30:02PM +0800, Yunfei Dong wrote:
-> > > Vp8 need to use MM21, but vp9 and h264 need to use HyFbc mode
-> > > for mt8195. Vp8/vp9/h264 use the same MM21 format for mt8192.
-> > 
-> > Hi Yunfei,
-> > 
-> > why do VP9 and H264 need to use HyFbc (is this the same as MT21C?)
-> > mode on
-> > MT8195? The SCP firmware on linux-firmware for MT8195 [1] only has
-> > MM21
-> > available and based on my testing it works just fine. And contrary to
-> > what the
-> > commit message states this logic is also being applied to MT8192,
-> > preventing it
-> > to use MM21 when there are more than one format available.
-> > 
-> The kernel driver not support dynamic switch mt21c and mm21. The driver
-> flow as below:
-> 1: If there are mt21c and mm21: h264/vp9/av1 will use mt21c(vp8 use
-> mm21 always);
-> 2: If there are only mt21c or mm21 will use this format only.
-> 
-> But the scp.img is changed to support mt21c and mm21, the kernel driver
-> will use mt21c. Or force the kernel driver only support mm21(small
-> effort).
-> 
-> But the best solution is changed the driver to dynamic switch mt21c and
-> mm21, need to discuss the enum and set format flow(middle effort).
+My apologies, I should've have explained my reasoning better.
 
-Agreed. The aim should be to get this dynamic format switching implemented in
-the driver so that the firmware can expose both formats and userspace can
-select any of them to use.
+1. My issue with 5.10 version of mt7615_init_tx_queues() in drivers/net/wireless/mediatek/mt76/mt7615/dma.c is that return value of final call to mt7615_init_tx_queue() is not taken into account
+when returning result of mt7615_init_tx_queues(). So, if last mt7615_init_tx_queue() fails (due to memory issues, for instance), parent function will still erroneously return 0.
 
-However, as you said that solution will take more effort, so in the meantime,
-given that currently only mm21 is supported by gstreamer, I think forcing the
-kernel driver to always select mm21 makes the most sense right now. That way it
-doesn't matter whether the firmware has mm21 or mm21+mt21c, decoding will keep
-working with gstreamer using mm21.
+2. To correct the issue, I turned to Lorenzo's patch in b671da33d1c5973f90f098ff66a91953691df582 which solves my petit problem as well as rewrites a single mt76_init_tx_queue() function to be used
+across all mt76 drivers.
+
+3. I was torn between writing my own little patch to fix a single mistake or use an existing one that increases code readability and uniformity. I settled on latter.
+
+4. As for this patch exclusivity to 5.10.y branch, I have an incentive to prioritise prioritize 5.10. Wasn't sure I should be the one to suggest the patch for other branches.
 
 Thanks,
-Nícolas
+
+Nikita
 
