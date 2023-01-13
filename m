@@ -4,58 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10451C63797
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 00:34:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD86BC54EBE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 01:14:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qCnLlBafyh4GwT6zVHEN0+uHO/uAkzlVBLePEGOwfww=; b=FPDTcdxeCdcz15k31ARHHzq8Vt
-	t+RjRYlnY4FPFYuEGBfYMaPxU9oXDQrsNIXNaIEGOeOfrCcr8ADZXt3g6A0J/1/6Se3jxSfVYVqUD
-	YYu2C07c5pwOd5NQ1p9hMOUH7G1eZoM4BFZrV5FseXe6tCWcKKmDMwTcTurvGEGHhsClQLQsfF51f
-	RW8UVZhgE1F4HY14WSh0TnVwEIETwfHGInBRxCh3ENKm3mPJ6W93BrDYjyMno+yiu8tQNMU8Q0QYj
-	j32ktmGow2sMT0D1T5t31XVs9OzXtqbyoWAn+TUS02weP1B5TT9tJ8RechudoHCvV11f+dCB3sgld
-	xiobeGsQ==;
+	bh=/+22Q56bJPrledR2Cz6M9kGSFqzu3U0nD7pq3Hab+AU=; b=ik4pndLyZB7jMBkxDXVrGgCkxg
+	XwNkKwlDX5XO0Lfqp2yRjbTSdEHX9o77xX+jXseNv96iSWtCxioW1F8yqBw7L6cIAXG3xbnMwDnJI
+	xJuC+xz5K2w0HTHvQ7e7tMgjPJw7Df/uGaPhfAQkE56FWSn5e7RlBYWOxYeBK+67H0tQwcbUYz60G
+	viRLEcRPbdfO2zCiEsG+F7y1/Sjc5v0xrJfqot5y85KzoHpXOUQq7zdtNNTGuMl48QzQkbbW/YgNV
+	qMFYhO8njhuf3o6Ex/6dA0YflYvdfLQb0ziLU6jH9nxijZtIrlb0i1Z5efkIXM/7/ATObrhrb0wTt
+	7Y4WNIuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pG815-00HacU-Ce; Fri, 13 Jan 2023 00:33:55 +0000
-Received: from mg.richtek.com ([220.130.44.152])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pG80y-00Haa1-LE; Fri, 13 Jan 2023 00:33:51 +0000
-X-MailGates: (flag:4,DYNAMIC,BADHELO,RELAY,NOHOST:PASS)(compute_score:DE
-	LIVER,40,3)
-Received: from 192.168.10.46
-	by mg.richtek.com with MailGates ESMTP Server V5.0(16491:0:AUTH_RELAY)
-	(envelope-from <cy_huang@richtek.com>); Fri, 13 Jan 2023 08:33:08 +0800 (CST)
-Received: from ex4.rt.l (192.168.10.47) by ex3.rt.l (192.168.10.46) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.20; Fri, 13 Jan
- 2023 08:33:08 +0800
-Received: from linuxcarl2.richtek.com (192.168.10.154) by ex4.rt.l
- (192.168.10.45) with Microsoft SMTP Server id 15.2.1118.20 via Frontend
- Transport; Fri, 13 Jan 2023 08:33:08 +0800
-Date: Fri, 13 Jan 2023 08:33:07 +0800
-From: ChiYuan Huang <cy_huang@richtek.com>
-To: <linux@roeck-us.net>, <heikki.krogerus@linux.intel.com>,
-	<matthias.bgg@gmail.com>
-CC: <gregkh@linuxfoundation.org>, <gene_chen@richtek.com>,
-	<linux-usb@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<stable@vger.kernel.org>
-Subject: Re: [PATCH RESEND v2] usb: typec: tcpm: Fix altmode re-registration
- causes sysfs create fail
-Message-ID: <20230113003307.GA4232@linuxcarl2.richtek.com>
-References: <1673248790-15794-1-git-send-email-cy_huang@richtek.com>
+	id 1pG8eS-0003DD-G0; Fri, 13 Jan 2023 01:14:36 +0000
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pG8eQ-0003By-9Z; Fri, 13 Jan 2023 01:14:35 +0000
+Received: by mail-pj1-x102b.google.com with SMTP id o13so17399970pjg.2;
+        Thu, 12 Jan 2023 17:14:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:sender
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=/+22Q56bJPrledR2Cz6M9kGSFqzu3U0nD7pq3Hab+AU=;
+        b=LskLqLtZroGnCLT7v2RAIbLULPmZdsvu+XzR5D7MTLPsEC8wXxf272Z1o+0hiCjvSw
+         qCJB26/ruPEjGO9FEme6GxPxk1Jpqhmzx/rcE2woX5PtAQRllglFJUqPzPqFgHxqLuUX
+         JMS8qq+fXNeUZjx7jY80f2+gg6DHsNPa/+ihzIx/5qH3t3iPZiFPRrlkD/34R3crlFxC
+         0N8G1VAb51W/zqTdhDE9f+Ox7hgVcOUiN8GVadsvOUT7oovyDsc16OIZ8lve1Qgmdc0W
+         tzcL6hwJ49DJ0/nkeSsYJvoBbW8nMevIDVzqk5CFywnuWwFtDcYxU22PgihW9CgQH/Qk
+         HIiA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:sender
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=/+22Q56bJPrledR2Cz6M9kGSFqzu3U0nD7pq3Hab+AU=;
+        b=II2t7Xc0/lB6OdMDbEXrF9oc4EcvW3Bfi4bwLw/I4Xmi4pDIu1RoYJYct2xyX/T1+5
+         bxMmA2o+IINgHrwm8iyRfG/A40t462bP5/QIvo1XG2GW3w8Q0UPmncvMPc4zA3mEUcBB
+         BRmt7327SKcf/ZnMFyVkAfJ85Q4aYi8QYlJKO1EXYXFOHqjuUilfXeSpWLABSUSVVOtF
+         9LLMdCF8n4DdeXQoQvL6wlWTGHsF2qMHBxhtFaNML0QM96RTouHt0/ZsRAkGMDXGkPdU
+         XKDNUNxB6OC1ceANd70asgfyUwP6dyKQWcHYbWbEJC8stK7N0IVdqd7haoQ4ZmE5pnxL
+         Zx3g==
+X-Gm-Message-State: AFqh2koedDbjZomo9IhXsiFxypbjuMKUglTvG30wCVQBzTA1xr70BZBh
+	YCo0S3bibPdxCASNNKJzs1I=
+X-Google-Smtp-Source: AMrXdXujFy2LOPaRirPf6arh4aphG8TPOW1quE5cVwOxrk1jjMoBJkSKwNXWKVmknjsIZv2gbgAjJg==
+X-Received: by 2002:a17:902:d918:b0:194:4b9a:ca90 with SMTP id c24-20020a170902d91800b001944b9aca90mr8498898plz.4.1673572472408;
+        Thu, 12 Jan 2023 17:14:32 -0800 (PST)
+Received: from localhost (2603-800c-1a02-1bae-a7fa-157f-969a-4cde.res6.spectrum.com. [2603:800c:1a02:1bae:a7fa:157f:969a:4cde])
+        by smtp.gmail.com with ESMTPSA id n9-20020a170902d2c900b00183c6784704sm12700852plc.291.2023.01.12.17.14.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Jan 2023 17:14:31 -0800 (PST)
+Date: Thu, 12 Jan 2023 15:14:30 -1000
+From: "tj@kernel.org" <tj@kernel.org>
+To: Lixiong Liu =?utf-8?B?KOWImOWIqembhCk=?= <Lixiong.Liu@mediatek.com>
+Cc: "lizefan@huawei.com" <lizefan@huawei.com>,
+	"hannes@cmpxchg.org" <hannes@cmpxchg.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"cgroups@vger.kernel.org" <cgroups@vger.kernel.org>,
+	Wenju Xu =?utf-8?B?KOiuuOaWh+S4vik=?= <Wenju.Xu@mediatek.com>,
+	wsd_upstream <wsd_upstream@mediatek.com>,
+	Jing-Ting Wu =?utf-8?B?KOWQs+mdnOWptyk=?= <Jing-Ting.Wu@mediatek.com>,
+	WJ Wang =?utf-8?B?KOeOi+WGmyk=?= <wj.wang@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	Andress Kuo =?utf-8?B?KOmDreWtn+S/rik=?= <Andress.Kuo@mediatek.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
+Subject: Re: cgroup user-after-free
+Message-ID: <Y8Cwdsk5pYNd8fX8@slm.duckdns.org>
+References: <697032f2331a92eec0e03e85e46cb78bd975a788.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <1673248790-15794-1-git-send-email-cy_huang@richtek.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <697032f2331a92eec0e03e85e46cb78bd975a788.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230112_163349_176880_B61A6499 
-X-CRM114-Status: GOOD (  25.09  )
+X-CRM114-CacheID: sfid-20230112_171434_357253_2E8F34B0 
+X-CRM114-Status: UNSURE (   8.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,81 +100,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 09, 2023 at 03:19:50PM +0800, cy_huang@richtek.com wrote:
-> From: ChiYuan Huang <cy_huang@richtek.com>
+On Thu, Jan 12, 2023 at 09:48:55AM +0000, Lixiong Liu (刘利雄) wrote:
+> Hi,
 > 
-> There's the altmode re-registeration issue after data role
-> swap (DR_SWAP).
+> We meet cgroup use-after-free happened in T SW version with 
 > 
-> Comparing to USBPD 2.0, in USBPD 3.0, it loose the limit that only DFP
-> can initiate the VDM command to get partner identity information.
+> kernel-5.15.
+>  
+> Root cause: 
+> cgroup_migrate_finish free cset’s cgroup,
 > 
-> For a USBPD 3.0 UFP device, it may already get the identity information
-> from its port partner before DR_SWAP. If DR_SWAP send or receive at the
-> mean time, 'send_discover' flag will be raised again. It causes discover
-> identify action restart while entering ready state. And after all
-> discover actions are done, the 'tcpm_register_altmodes' will be called.
-> If old altmode is not unregistered, this sysfs create fail can be found.
+> but cgroup_sk_alloc use the freed cgroup,
 > 
-> In 'DR_SWAP_CHANGE_DR' state case, only DFP will unregister altmodes.
-> For UFP, the original altmodes keep registered.
-> 
-> This patch fix the logic that after DR_SWAP, 'tcpm_unregister_altmodes'
-> must be called whatever the current data role is.
-> 
-> Reviewed-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> Fixes: ae8a2ca8a221 ("usb: typec: Group all TCPCI/TCPM code together)
-> Reported-by: TommyYl Chen <tommyyl.chen@mediatek.com>
-> Cc: stable@vger.kernel.org
-> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
-> ---
-> Since v2:
-> - Correct the mail sent from Richtek.
-> - Add 'Reviewed-by' tag.
->
+> then use-after-free happened.
 
-Sorry, it seems I focus on the email testing and forget to attach the issue
-log in the v2 patch appendix.
+Sounds similar to the problem fixed by 07fd5b6cdf3c ("cgroup: Use separate
+src/dst nodes when preloading css_sets for migration"). Can you try it out?
 
-If anyone check this issue. Please refer to the v1 patch link.
-https://lore.kernel.org/lkml/1671096096-20307-1-git-send-email-u0084500@gmail.com/
-Inside this, the issue log show how it happened.
+Thanks.
 
-This can help better analyze this issue. 
-
-ChiYuan Huang.
-> Hi, Greg:
-> 
->   Please check this one. I have strongly requested our MIS to remove the confidential string.
-> 
-> ChiYuan Huang.
-> ---
->  drivers/usb/typec/tcpm/tcpm.c | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/usb/typec/tcpm/tcpm.c b/drivers/usb/typec/tcpm/tcpm.c
-> index 904c7b4..59b366b 100644
-> --- a/drivers/usb/typec/tcpm/tcpm.c
-> +++ b/drivers/usb/typec/tcpm/tcpm.c
-> @@ -4594,14 +4594,13 @@ static void run_state_machine(struct tcpm_port *port)
->  		tcpm_set_state(port, ready_state(port), 0);
->  		break;
->  	case DR_SWAP_CHANGE_DR:
-> -		if (port->data_role == TYPEC_HOST) {
-> -			tcpm_unregister_altmodes(port);
-> +		tcpm_unregister_altmodes(port);
-> +		if (port->data_role == TYPEC_HOST)
->  			tcpm_set_roles(port, true, port->pwr_role,
->  				       TYPEC_DEVICE);
-> -		} else {
-> +		else
->  			tcpm_set_roles(port, true, port->pwr_role,
->  				       TYPEC_HOST);
-> -		}
->  		tcpm_ams_finish(port);
->  		tcpm_set_state(port, ready_state(port), 0);
->  		break;
-> -- 
-> 2.7.4
-> 
+-- 
+tejun
 
