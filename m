@@ -4,83 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9E5EC54EBE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 10:20:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF19BC54EBD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 10:24:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R8UGna3NvU6BqJN38fD7BOeeWmtWz0VHiahdkErFzDM=; b=Jn1i4HKU8UIRjYqtDwgHePDyCC
-	EyRsc7P+3DOyveeqzbN/n7tfI/c8QbGGzckPZ0uAYi8wmPZTrAiLCkqAB33oZqi8ZFopFXHE1MA6S
-	a2KYlN6p16E6GHxRFt5gC0CERRt//WynpSQ0drU3oQBgl9hWMKh0DRS/saXeZd5ZOe+33+kUWYZMd
-	jiLbgtn8wH3ZMszmAFQM/G495oRRP4Xzsyk0sT6vx4HRUsQHPYygaOrDVvccjYVrXla8pCNlxFuI7
-	MyPUjQ3cOhiWLy5w5Dkfl9w2hTlmz40DGT6vZcMNvmyYCIzN8g6nq1b7W6jkBoGOYKTkOz5HHgaGH
-	OPQ9Qnig==;
+	bh=ZbOiyQOMX+TqFsBXvvTuwLbevCEJ/uL3jQq7x7SrPOg=; b=Kt7mdRzJ+qrwZfa1E4ITDZ1DBE
+	IIgNB/5XJHqrI+aYs1LMycUxnlqBDSOD3npe+84fqhD5GS50bJvDnz/sJxennqIIy9uwtinnOFBsX
+	npKpKvhx4pyjTR84vJYwV7JlAZY8d8MSLQu6kZM3qV2BbjmWK3QVYK3fJRRKBn61DzfxMWmcovqrc
+	TI34N5w+j8iwUmoclxlrN7rJLn5E8bfV5l4gf0rG2mI1KuOA1LjabO6l0XXHuCrbWrXK1bpmTb87h
+	H8jec4ifWq7rEllI44o1HIwZNu9WYSxXMcFyKk2C76C8Xpmpk7804fS3IpzQX5Cn/Z08TjQes3J6w
+	aOxvs6PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGHAg-001jaM-3U; Fri, 13 Jan 2023 10:20:26 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1pGHEH-001ktq-SO; Fri, 13 Jan 2023 10:24:09 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGHAb-001jYM-SA
-	for linux-mediatek@lists.infradead.org; Fri, 13 Jan 2023 10:20:24 +0000
-Received: by mail-wr1-x429.google.com with SMTP id t5so16190235wrq.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 13 Jan 2023 02:20:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=R8UGna3NvU6BqJN38fD7BOeeWmtWz0VHiahdkErFzDM=;
-        b=HS9/A2RUs3GRmV+lBocazW5E1MWmENkSmuwiLhNXJO2BMnSkGeFBqYzG3mUal5UDYc
-         2lcNIy/Z4bTYpdVa2E9B1aByagDK9ndV+D8TCDCuO0cvAunJevXAHtk4QM4UktkDP6OG
-         98pbpfTGZTSkvWXyQNKjZlwqVXLFnSrvb3t80dsOVbv6YJnIXHC9AdbYTg2Dxex9JFhz
-         4I363Se8rd8CkIWcPvKUIz/wvptVWP4Cbcss7FDHhZXIn/We626mkGZbBPWpll8MB+8m
-         Yzxi8xzy5hTb4agJE6AEAlIWw59igVwLjOe5z5MZ74YxSTHJUpEWcO8waVNkkc0qyWpe
-         wfRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=R8UGna3NvU6BqJN38fD7BOeeWmtWz0VHiahdkErFzDM=;
-        b=MX3iO8gUegQ8b7HxhpaujIxAbyqMinfeZ4iIfc0z4cd/TKb6e6QcP68E5dhn6HX8lz
-         LeZtIZ+10SgUfRhZUZBf0a53TeNQW2h8f618BZzm2tAIC0BV1ftLo6jzmiiNqf6AkamO
-         2Zhq+ME+jGlklsvi9adUAdDurFzipa3nuHuYT+ZxZAwULbnqxIz78MBSl5424M8U/vaO
-         4t8v0SVjdKEBFV/z+szp8+tNzstlGrhs22RPtUI3MohMDnmRya8dw8kpkkXmI21Ire0V
-         h0l/AaITK80d/AIVoOjnOC5jxIaTsu28Ux94TWGxTdb38TI3YetohSGmfQaYsWVLM1ZJ
-         skRA==
-X-Gm-Message-State: AFqh2kotJzp1tyd6PHm1QeGZfkBotVBhc5e2nTaYOy8nZqmVV4CxphG4
-	B8sIvrGL03jpHuhgwlvlMI+NCA==
-X-Google-Smtp-Source: AMrXdXuBnifufZaaMMgkYNy2Rnx2O9dvBZ6xWhzIFG2CPXcx9HLtGHFcu6BxzWXzZOVP58AvU+FJFg==
-X-Received: by 2002:adf:f585:0:b0:2bd:dc3f:336a with SMTP id f5-20020adff585000000b002bddc3f336amr2080800wro.58.1673605218639;
-        Fri, 13 Jan 2023 02:20:18 -0800 (PST)
-Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.googlemail.com with ESMTPSA id w4-20020adfee44000000b0029100e8dedasm18482938wro.28.2023.01.13.02.20.17
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Jan 2023 02:20:18 -0800 (PST)
-Message-ID: <d855d1c5-330b-f87c-1db1-139b131d930f@linaro.org>
-Date: Fri, 13 Jan 2023 11:20:17 +0100
+	id 1pGHE5-001km8-H8
+	for linux-mediatek@lists.infradead.org; Fri, 13 Jan 2023 10:23:59 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id A77E760F33;
+	Fri, 13 Jan 2023 10:23:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A9B47C43392;
+	Fri, 13 Jan 2023 10:23:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1673605426;
+	bh=DUPv7WIfv9352Q9UfMwcmiH4ujbFGhwE4utd9cuo8jk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=bcgdx/KP1w7WzRjn2rre8FUZpCFhjqm2bBTdL3dG3UyVzN+U+maa8bc1nIKwER43u
+	 nK+48Ni1FuBPJIuv7SDjoeVuonq/2QqBjk23Mz5TiamwTNGev5G13cPOZBBbEkfLtX
+	 HiNWB/tpvJAxdkRrtYMPZAeoacvtUeD7I7xGMZoVWrCxqgBwO0BJny/thap7FZMFQv
+	 Swq9lF8ErmAHjighV036dHa+E3ATtQ3KpgJDoJqA9Y/9WMwLKKFZEAnkLfqqpsu+f9
+	 J4/9EKFh5lBaEXMB6UxWTI2WrExn/WN8daQmd8xghM1O6TIVjNgz5c9YAilwusMlce
+	 Ti1a54/wXEPUg==
+Message-ID: <656ab366-05c9-64fa-651b-12597251d116@kernel.org>
+Date: Fri, 13 Jan 2023 11:23:39 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH] thermal: mtk_thermal: fix kernel-doc function name
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v3 01/13] dt-binding: mediatek: add bindings for MediaTek
+ mt8195 MDP3 components
 Content-Language: en-US
-To: Randy Dunlap <rdunlap@infradead.org>, linux-kernel@vger.kernel.org
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Amit Kucheria
- <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230113064449.15061-1-rdunlap@infradead.org>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20230113064449.15061-1-rdunlap@infradead.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+To: Moudy Ho <moudy.ho@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-media@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230113090321.25128-1-moudy.ho@mediatek.com>
+ <20230113090321.25128-2-moudy.ho@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+In-Reply-To: <20230113090321.25128-2-moudy.ho@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230113_022021_975616_3AA1E35F 
-X-CRM114-Status: UNSURE (   8.02  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230113_022357_643613_857BB57F 
+X-CRM114-Status: GOOD (  11.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,30 +80,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/01/2023 07:44, Randy Dunlap wrote:
-> Use the correct function name in a kernel-doc comment to prevent
-> a warning:
+On 13/01/2023 10:03, Moudy Ho wrote:
+> This patch adds support for MT8195 MDP3 RDMA, and introduce more
+> MDP3 components present in MT8195.
 > 
-> drivers/thermal/mtk_thermal.c:562: warning: expecting prototype for raw_to_mcelsius(). Prototype was for raw_to_mcelsius_v1() instead
-> 
-> Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
-> Cc: "Rafael J. Wysocki" <rafael@kernel.org>
-> Cc: Daniel Lezcano <daniel.lezcano@linaro.org>
-> Cc: Amit Kucheria <amitk@kernel.org>
-> Cc: Zhang Rui <rui.zhang@intel.com>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: linux-pm@vger.kernel.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-mediatek@lists.infradead.org
-> ---
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 
-Applied, thanks
+Please use scripts/get_maintainers.pl to get a list of necessary people
+and lists to CC.  It might happen, that command when run on an older
+kernel, gives you outdated entries.  Therefore please be sure you base
+your patches on recent Linux kernel.
 
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+You missed several entries, so please resend.
 
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+Best regards,
+Krzysztof
 
 
