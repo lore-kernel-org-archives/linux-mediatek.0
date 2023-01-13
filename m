@@ -4,83 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB817C3DA78
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 20:52:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94C95C6379F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jan 2023 20:53:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qKVCZNLAlv75mP7YVxkjLAdZf98rBSYaNY8Q6b/D//k=; b=n8lhhph9ZZIGq+JHQ59Yfu1RJw
-	FGiF7Ug1CqW/hWS56u8wAKEGoaMS5INiEhfP3dqk34213JCJwZJhMldVoxf4+y40J5zHbprneVswT
-	sj2uNusqT+Hl6/NzkCPMxMcylS0HfKuGmUwLeKGIIBz3UH4xc++x5RQqKvyLvYuBhMjDdmtqCIsCe
-	RbH/JW1mmZo0GqJRII1kiXSRiJ4xRu0zMtfYFO6sE/hcpmtiERwQvT9r6U4QqcnxEp/6PX+ZuVLKL
-	XMKbFQdIWelX8APLOSxuT5ZxPP5xfxU4JK6Gt3+jaFKFN5ttKbCUs3N6iOVAnvvWvDsoGmRiTvI/K
-	tyLMXpYg==;
+	bh=1UYa1W7aGrdtp/b6rNC3UP7pc8KuYDY4idXp1slti5Y=; b=E9FAyCmu+fZjhy1XSYJUZxlwOO
+	uem03EiT3CdJxlL0O0mJD0NA4dZKGUI7vBENzH/IyeYekfS6AsBn2HifQhD89RImfwwu9W1ZpluUF
+	fjI6OtyljaY7+HJ1mclSRYc1aZ9qAuhE5Nic1G/3K0nTobjj//OPyX5dEjwbXKSOsvQ8G1Yb0TQM/
+	9wriz1690gPjPFgMdUqMzPrwBEhqhYIrQcFlwE9Gi6/K2aLHfvdPjvw7r/AAtjg7IVSiIhrjDH3Xq
+	39/h3O9A3xOQAkagU1cujQDsbyxihbSQLIL5r6AJzn3JFMpL6H0cx+fTJ5UDQEoEDn5gDe4AEXchI
+	M4xTve1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGR2C-004Nlu-0Y; Fri, 13 Jan 2023 20:52:20 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1pGR2o-004O5V-Ly; Fri, 13 Jan 2023 20:52:58 +0000
+Received: from alexa-out-sd-01.qualcomm.com ([199.106.114.38])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGR1t-004NbQ-AN; Fri, 13 Jan 2023 20:52:03 +0000
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 30DKfCrw017643;
-	Fri, 13 Jan 2023 20:51:54 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-type; s=qcppdkim1;
- bh=qKVCZNLAlv75mP7YVxkjLAdZf98rBSYaNY8Q6b/D//k=;
- b=o2Hc0wNAlFSBX42apmocQ00AOiLyFAhloUkWrdWAbrdDB2PZhvCfXq64izEtPiInCm5R
- bwKdHRi5j7gk3r+j7pMtGLn+wdjpgFa0fICuDYeRTX9xQpaMtvJgvH4iLPbc9NISevmD
- wswH4OrlqaRw1ZM6tZwdkdiB82CtdOX1oEdOLgpKzZJghUspTtPMAJL9TCFMvnK6jgSR
- fiQ+MCZwkkGIVCo+g63wQv8j1T+Ik5/FmpmOpNTJQf8hvNtr7juxn5nulZFh7RwKloXZ
- rJwCz9mrunCzu4TsOpYQBBAWILbrTTUl2xI5JrmRypfGVK5vuqS4oV/MAjhh+K0u6ITU uQ== 
-Received: from nasanppmta01.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3n351f9jvv-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 13 Jan 2023 20:51:53 +0000
-Received: from nasanex01a.na.qualcomm.com ([10.52.223.231])
-	by NASANPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 30DKprKW006492
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 13 Jan 2023 20:51:53 GMT
+	id 1pGR2T-004Num-5x; Fri, 13 Jan 2023 20:52:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
+  t=1673643157; x=1705179157;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version;
+  bh=1UYa1W7aGrdtp/b6rNC3UP7pc8KuYDY4idXp1slti5Y=;
+  b=TI5sjaNzC8M8hLRjCJASjP1w3ThnmnNF7hNvgFYFmoaWkZKNzS+/nomQ
+   H3XKjLhzBGk158YXzGk4nV8zLz8NX3oQ+UP51t1Scb8YMts2HwjfkIX1I
+   4TefbVgEWLd9E/5Mesqj+vV6IDgh+2MfQ3CO0LK842Jmc4/KKmh1mb13u
+   c=;
+Received: from unknown (HELO ironmsg04-sd.qualcomm.com) ([10.53.140.144])
+  by alexa-out-sd-01.qualcomm.com with ESMTP; 13 Jan 2023 12:52:33 -0800
+X-QCInternal: smtphost
+Received: from unknown (HELO nasanex01a.na.qualcomm.com) ([10.52.223.231])
+  by ironmsg04-sd.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Jan 2023 12:52:32 -0800
 Received: from asutoshd-linux1.qualcomm.com (10.80.80.8) by
  nasanex01a.na.qualcomm.com (10.52.223.231) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.36; Fri, 13 Jan 2023 12:51:52 -0800
+ 15.2.986.36; Fri, 13 Jan 2023 12:52:32 -0800
 From: Asutosh Das <quic_asutoshd@quicinc.com>
 To: <quic_cang@quicinc.com>, <martin.petersen@oracle.com>,
-        <linux-scsi@vger.kernel.org>
+	<linux-scsi@vger.kernel.org>
 CC: <quic_nguyenb@quicinc.com>, <quic_xiaosenh@quicinc.com>,
-        <stanley.chu@mediatek.com>, <adrian.hunter@intel.com>,
-        <bvanassche@acm.org>, <avri.altman@wdc.com>, <mani@kernel.org>,
-        <beanhuo@micron.com>, Asutosh Das
-	<quic_asutoshd@quicinc.com>,
-        <linux-arm-msm@vger.kernel.org>,
-        Alim Akhtar
-	<alim.akhtar@samsung.com>,
-        "James E.J. Bottomley" <jejb@linux.ibm.com>,
-        "Andy
- Gross" <agross@kernel.org>,
-        Bjorn Andersson <andersson@kernel.org>,
-        "Konrad
- Dybcio" <konrad.dybcio@linaro.org>,
-        Matthias Brugger
-	<matthias.bgg@gmail.com>,
-        Arthur Simchaev <Arthur.Simchaev@wdc.com>,
-        Jinyoung
- Choi <j-young.choi@samsung.com>,
-        Kiwoong Kim <kwmad.kim@samsung.com>,
-        Eric
- Biggers <ebiggers@google.com>,
-        open list <linux-kernel@vger.kernel.org>,
-        "moderated list:ARM/Mediatek SoC support"
-	<linux-arm-kernel@lists.infradead.org>,
-        "moderated list:ARM/Mediatek SoC
+	<stanley.chu@mediatek.com>, <adrian.hunter@intel.com>, <bvanassche@acm.org>,
+	<avri.altman@wdc.com>, <mani@kernel.org>, <beanhuo@micron.com>, Asutosh Das
+	<quic_asutoshd@quicinc.com>, <linux-arm-msm@vger.kernel.org>, Alim Akhtar
+	<alim.akhtar@samsung.com>, "James E.J. Bottomley" <jejb@linux.ibm.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, Jinyoung Choi
+	<j-young.choi@samsung.com>, open list <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support"
+	<linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
  support" <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v13 06/15] ufs: core: mcq: Calculate queue depth
-Date: Fri, 13 Jan 2023 12:48:43 -0800
-Message-ID: <627f00e91fa714db9bb226c20566d66ed66030c5.1673557949.git.quic_asutoshd@quicinc.com>
+Subject: [PATCH v13 09/15] ufs: core: mcq: Use shared tags for MCQ mode
+Date: Fri, 13 Jan 2023 12:48:46 -0800
+Message-ID: <607a508d9a842381bdaf36258859efa2ab35d4e1.1673557949.git.quic_asutoshd@quicinc.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1673557949.git.quic_asutoshd@quicinc.com>
 References: <cover.1673557949.git.quic_asutoshd@quicinc.com>
@@ -89,21 +67,9 @@ Content-Type: text/plain
 X-Originating-IP: [10.80.80.8]
 X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
  nasanex01a.na.qualcomm.com (10.52.223.231)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: 0CNjI6awa-DobCHshAh65Ifb1QfX-nd6
-X-Proofpoint-ORIG-GUID: 0CNjI6awa-DobCHshAh65Ifb1QfX-nd6
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.219,Aquarius:18.0.923,Hydra:6.0.562,FMLib:17.11.122.1
- definitions=2023-01-13_10,2023-01-13_02,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0 adultscore=0
- clxscore=1015 impostorscore=0 mlxlogscore=999 spamscore=0
- lowpriorityscore=0 bulkscore=0 priorityscore=1501 malwarescore=0
- mlxscore=0 phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2212070000 definitions=main-2301130142
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230113_125201_396391_889C9FBD 
-X-CRM114-Status: GOOD (  25.59  )
+X-CRM114-CacheID: sfid-20230113_125237_304951_45E4803A 
+X-CRM114-Status: GOOD (  16.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,227 +84,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The ufs device defines the supported queuedepth by
-bqueuedepth which has a max value of 256.
-The HC defines MAC (Max Active Commands) that define
-the max number of commands that in flight to the ufs
-device.
-Calculate and configure the nutrs based on both these
-values.
+Enable shared tags for MCQ. For UFS, this should
+not have a huge performance impact. It however
+simplifies the MCQ implementation and reuses most of
+the existing code in the issue and completion path.
+Also add multiple queue mapping to map_queue().
 
 Co-developed-by: Can Guo <quic_cang@quicinc.com>
 Signed-off-by: Can Guo <quic_cang@quicinc.com>
 Signed-off-by: Asutosh Das <quic_asutoshd@quicinc.com>
-Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
 Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
 Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
 ---
- drivers/ufs/core/ufs-mcq.c     | 35 +++++++++++++++++++++++++++++++++++
- drivers/ufs/core/ufshcd-priv.h |  9 +++++++++
- drivers/ufs/core/ufshcd.c      | 17 ++++++++++++++++-
- drivers/ufs/host/ufs-qcom.c    |  7 +++++++
- drivers/ufs/host/ufs-qcom.h    |  1 +
- include/ufs/ufs.h              |  2 ++
- include/ufs/ufshcd.h           |  2 ++
- include/ufs/ufshci.h           |  1 +
- 8 files changed, 73 insertions(+), 1 deletion(-)
+ drivers/ufs/core/ufs-mcq.c |  2 ++
+ drivers/ufs/core/ufshcd.c  | 28 ++++++++++++++++------------
+ 2 files changed, 18 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-index 65c0037..2f680ff 100644
+index 496e2b6..8bf222f 100644
 --- a/drivers/ufs/core/ufs-mcq.c
 +++ b/drivers/ufs/core/ufs-mcq.c
-@@ -19,6 +19,9 @@
- #define UFS_MCQ_NUM_DEV_CMD_QUEUES 1
- #define UFS_MCQ_MIN_POLL_QUEUES 0
+@@ -280,6 +280,7 @@ void ufshcd_mcq_make_queues_operational(struct ufs_hba *hba)
  
-+#define MAX_DEV_CMD_ENTRIES	2
-+#define MCQ_CFG_MAC_MASK	GENMASK(16, 8)
-+
- static int rw_queue_count_set(const char *val, const struct kernel_param *kp)
+ int ufshcd_mcq_init(struct ufs_hba *hba)
  {
- 	return param_set_uint_minmax(val, kp, UFS_MCQ_MIN_RW_QUEUES,
-@@ -67,6 +70,38 @@ module_param_cb(poll_queues, &poll_queue_count_ops, &poll_queues, 0644);
- MODULE_PARM_DESC(poll_queues,
- 		 "Number of poll queues used for r/w. Default value is 1");
++	struct Scsi_Host *host = hba->host;
+ 	struct ufs_hw_queue *hwq;
+ 	int ret, i;
  
-+/**
-+ * ufshcd_mcq_decide_queue_depth - decide the queue depth
-+ * @hba - per adapter instance
-+ *
-+ * Returns queue-depth on success, non-zero on error
-+ *
-+ * MAC - Max. Active Command of the Host Controller (HC)
-+ * HC wouldn't send more than this commands to the device.
-+ * It is mandatory to implement get_hba_mac() to enable MCQ mode.
-+ * Calculates and adjusts the queue depth based on the depth
-+ * supported by the HC and ufs device.
-+ */
-+int ufshcd_mcq_decide_queue_depth(struct ufs_hba *hba)
-+{
-+	int mac;
-+
-+	/* Mandatory to implement get_hba_mac() */
-+	mac = ufshcd_mcq_vops_get_hba_mac(hba);
-+	if (mac < 0) {
-+		dev_err(hba->dev, "Failed to get mac, err=%d\n", mac);
-+		return mac;
-+	}
-+
-+	WARN_ON_ONCE(!hba->dev_info.bqueuedepth);
-+	/*
-+	 * max. value of bqueuedepth = 256, mac is host dependent.
-+	 * It is mandatory for UFS device to define bQueueDepth if
-+	 * shared queuing architecture is enabled.
-+	 */
-+	return min_t(int, mac, hba->dev_info.bqueuedepth);
-+}
-+
- static int ufshcd_mcq_config_nr_queues(struct ufs_hba *hba)
- {
- 	int i;
-diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
-index e3bc4ce..11076c3 100644
---- a/drivers/ufs/core/ufshcd-priv.h
-+++ b/drivers/ufs/core/ufshcd-priv.h
-@@ -62,6 +62,7 @@ int ufshcd_query_flag(struct ufs_hba *hba, enum query_opcode opcode,
- 	enum flag_idn idn, u8 index, bool *flag_res);
- void ufshcd_auto_hibern8_update(struct ufs_hba *hba, u32 ahit);
- int ufshcd_mcq_init(struct ufs_hba *hba);
-+int ufshcd_mcq_decide_queue_depth(struct ufs_hba *hba);
+@@ -315,5 +316,6 @@ int ufshcd_mcq_init(struct ufs_hba *hba)
+ 	/* Give dev_cmd_queue the minimal number of entries */
+ 	hba->dev_cmd_queue->max_entries = MAX_DEV_CMD_ENTRIES;
  
- #define SD_ASCII_STD true
- #define SD_RAW false
-@@ -238,6 +239,14 @@ static inline int ufshcd_vops_mcq_config_resource(struct ufs_hba *hba)
- 	return -EOPNOTSUPP;
++	host->host_tagset = 1;
+ 	return 0;
  }
- 
-+static inline int ufshcd_mcq_vops_get_hba_mac(struct ufs_hba *hba)
-+{
-+	if (hba->vops && hba->vops->get_hba_mac)
-+		return hba->vops->get_hba_mac(hba);
-+
-+	return -EOPNOTSUPP;
-+}
-+
- extern const struct ufs_pm_lvl_states ufs_pm_lvl_states[];
- 
- /**
 diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 9712086..5c8570c 100644
+index 9d58278..a492c88 100644
 --- a/drivers/ufs/core/ufshcd.c
 +++ b/drivers/ufs/core/ufshcd.c
-@@ -7887,6 +7887,7 @@ static int ufs_get_device_desc(struct ufs_hba *hba)
- 	/* getting Specification Version in big endian format */
- 	dev_info->wspecversion = desc_buf[DEVICE_DESC_PARAM_SPEC_VER] << 8 |
- 				      desc_buf[DEVICE_DESC_PARAM_SPEC_VER + 1];
-+	dev_info->bqueuedepth = desc_buf[DEVICE_DESC_PARAM_Q_DPTH];
- 	b_ufs_feature_sup = desc_buf[DEVICE_DESC_PARAM_UFS_FEAT];
- 
- 	model_index = desc_buf[DEVICE_DESC_PARAM_PRDCT_NAME];
-@@ -8296,7 +8297,21 @@ static int ufshcd_add_lus(struct ufs_hba *hba)
- 
- static int ufshcd_alloc_mcq(struct ufs_hba *hba)
- {
--	return ufshcd_mcq_init(hba);
-+	int ret;
-+	int old_nutrs = hba->nutrs;
-+
-+	ret = ufshcd_mcq_decide_queue_depth(hba);
-+	if (ret < 0)
-+		return ret;
-+
-+	hba->nutrs = ret;
-+	ret = ufshcd_mcq_init(hba);
-+	if (ret) {
-+		hba->nutrs = old_nutrs;
-+		return ret;
-+	}
-+
-+	return 0;
- }
- 
- static int ufshcd_device_init(struct ufs_hba *hba, bool init_dev_params)
-diff --git a/drivers/ufs/host/ufs-qcom.c b/drivers/ufs/host/ufs-qcom.c
-index 2a1434f..edd7225 100644
---- a/drivers/ufs/host/ufs-qcom.c
-+++ b/drivers/ufs/host/ufs-qcom.c
-@@ -1496,6 +1496,12 @@ static int ufs_qcom_mcq_config_resource(struct ufs_hba *hba)
- 	return ret;
- }
- 
-+static int ufs_qcom_get_hba_mac(struct ufs_hba *hba)
-+{
-+	/* Qualcomm HC supports up to 64 */
-+	return MAX_SUPP_MAC;
-+}
-+
- /*
-  * struct ufs_hba_qcom_vops - UFS QCOM specific variant operations
-  *
-@@ -1521,6 +1527,7 @@ static const struct ufs_hba_variant_ops ufs_hba_qcom_vops = {
- 	.program_key		= ufs_qcom_ice_program_key,
- 	.reinit_notify		= ufs_qcom_reinit_notify,
- 	.mcq_config_resource	= ufs_qcom_mcq_config_resource,
-+	.get_hba_mac		= ufs_qcom_get_hba_mac,
- };
- 
- /**
-diff --git a/drivers/ufs/host/ufs-qcom.h b/drivers/ufs/host/ufs-qcom.h
-index f744a9e..164e18b 100644
---- a/drivers/ufs/host/ufs-qcom.h
-+++ b/drivers/ufs/host/ufs-qcom.h
-@@ -16,6 +16,7 @@
- #define HBRN8_POLL_TOUT_MS      100
- #define DEFAULT_CLK_RATE_HZ     1000000
- #define BUS_VECTOR_NAME_LEN     32
-+#define MAX_SUPP_MAC		64
- 
- #define UFS_HW_VER_MAJOR_MASK	GENMASK(31, 28)
- #define UFS_HW_VER_MINOR_MASK	GENMASK(27, 16)
-diff --git a/include/ufs/ufs.h b/include/ufs/ufs.h
-index bea7b20..4e8d624 100644
---- a/include/ufs/ufs.h
-+++ b/include/ufs/ufs.h
-@@ -617,6 +617,8 @@ struct ufs_dev_info {
- 	u8	*model;
- 	u16	wspecversion;
- 	u32	clk_gating_wait_us;
-+	/* Stores the depth of queue in UFS device */
-+	u8	bqueuedepth;
- 
- 	/* UFS HPB related flag */
- 	bool	hpb_enabled;
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index 81c7494..57854bb 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -301,6 +301,7 @@ struct ufs_pwr_mode_info {
-  * @event_notify: called to notify important events
-  * @reinit_notify: called to notify reinit of UFSHCD during max gear switch
-  * @mcq_config_resource: called to configure MCQ platform resources
-+ * @get_hba_mac: called to get vendor specific mac value, mandatory for mcq mode
+@@ -2776,24 +2776,28 @@ static inline bool is_device_wlun(struct scsi_device *sdev)
   */
- struct ufs_hba_variant_ops {
- 	const char *name;
-@@ -341,6 +342,7 @@ struct ufs_hba_variant_ops {
- 				enum ufs_event_type evt, void *data);
- 	void	(*reinit_notify)(struct ufs_hba *);
- 	int	(*mcq_config_resource)(struct ufs_hba *hba);
-+	int	(*get_hba_mac)(struct ufs_hba *hba);
- };
+ static void ufshcd_map_queues(struct Scsi_Host *shost)
+ {
+-	int i;
++	struct ufs_hba *hba = shost_priv(shost);
++	int i, queue_offset = 0;
++
++	if (!is_mcq_supported(hba)) {
++		hba->nr_queues[HCTX_TYPE_DEFAULT] = 1;
++		hba->nr_queues[HCTX_TYPE_READ] = 0;
++		hba->nr_queues[HCTX_TYPE_POLL] = 1;
++		hba->nr_hw_queues = 1;
++	}
  
- /* clock gating state  */
-diff --git a/include/ufs/ufshci.h b/include/ufs/ufshci.h
-index f41bc7b..845a82a 100644
---- a/include/ufs/ufshci.h
-+++ b/include/ufs/ufshci.h
-@@ -57,6 +57,7 @@ enum {
- 	REG_UFS_CCAP				= 0x100,
- 	REG_UFS_CRYPTOCAP			= 0x104,
+ 	for (i = 0; i < shost->nr_maps; i++) {
+ 		struct blk_mq_queue_map *map = &shost->tag_set.map[i];
  
-+	REG_UFS_MCQ_CFG				= 0x380,
- 	UFSHCI_CRYPTO_REG_SPACE_SIZE		= 0x400,
- };
+-		switch (i) {
+-		case HCTX_TYPE_DEFAULT:
+-		case HCTX_TYPE_POLL:
+-			map->nr_queues = 1;
+-			break;
+-		case HCTX_TYPE_READ:
+-			map->nr_queues = 0;
++		map->nr_queues = hba->nr_queues[i];
++		if (!map->nr_queues)
+ 			continue;
+-		default:
+-			WARN_ON_ONCE(true);
+-		}
+-		map->queue_offset = 0;
++		map->queue_offset = queue_offset;
++		if (i == HCTX_TYPE_POLL && !is_mcq_supported(hba))
++			map->queue_offset = 0;
++
+ 		blk_mq_map_queues(map);
++		queue_offset += map->nr_queues;
+ 	}
+ }
  
 -- 
 2.7.4
