@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 823D9C54EBE
-	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Jan 2023 01:09:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57F06C3DA78
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Jan 2023 04:11:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xvXDfYuLHswyCP7+9/zZOgCsl28UIcpuNxwTwRp5NOU=; b=XwqUOeU2ye8fj/W7WusI6HU8rO
-	QV5V9fDim3JkYS4uWIJ2XbUFFSQRSVAO9DlOig+Ylc7HvXxGn/f+caXE1kQvKsru1YwgUnU+j711+
-	/yxTRtLPBidiJBF2iacdEuMGdvpJuxVkxTNPPnDXvpkpts9npnEhdEoPbDdUEXWZOMpCEuMkiiroJ
-	eR9Q+Fb+9PhFsHAKBMUFdGes/R5au2P4W+biVxLFA/v+WFyqNTWh61ccFVgrpbKc+TZJxs0dwwlhr
-	rLzXaagbjuVviXP+TqO0pexbX4R5j4rxb2nrXd2c+opSETYDrLzIcVBaVCvPBPE7nwu8C4INQOS3P
-	v39GaNjQ==;
+	bh=FDzpVCFD06+J8mJ1Ix4s+3fevSkwQUedwknR/GY8nqw=; b=2Rk/cdmNrt3el+nwqv2Sn2AZA2
+	7gD2G5rZ3lT9hE3mcOv/IDMGRIna4aEgvpgBFsN2tO3YuPV88e6VmTzCcAm/y4nt5uiumXPtBka7p
+	0V+utDmMzGY0Kbavogk2LTGzbk2ZucB399McBlWpLOHE50lo1UoW3IX3Z1N5PESTQuvGY2yyaQpZ8
+	Gq43kbCKCO40+akwndyAkrBEea9rJOmhX5fJRRBPK4nCHpmyIP+yUA3+b0Gp3mE06r4keuzt8834J
+	fJk6UfTsUODNm8xeKCGiFCtj95BEbLZPtMqe42iWFP9+iD7SrrU2hcSHQFzX/yKqx1zjV9t+2uFvG
+	FQJobAww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGV34-004x7H-AY; Sat, 14 Jan 2023 01:09:30 +0000
-Received: from mga05.intel.com ([192.55.52.43])
+	id 1pGXsF-005Bg1-4n; Sat, 14 Jan 2023 04:10:31 +0000
+Received: from mga02.intel.com ([134.134.136.20])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGV2u-004x6I-Rb; Sat, 14 Jan 2023 01:09:25 +0000
+	id 1pGXs7-005BfC-2v; Sat, 14 Jan 2023 04:10:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1673658560; x=1705194560;
+  t=1673669423; x=1705205423;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=Kk4379RNeP6AjP7hQ0/ffEosI1x07O6M7pm1Zq94La0=;
-  b=MxJp9sGyy8i4CZ11q74AVaqoO3SV0bCZo/AefCR51nTvm3cxC8vqecNP
-   MMcVwfuboIxiZUhdAzkPBIWjiN0SG59D0LGz5eHCYob1mWkNZV1pYhtcC
-   qaf8s8SiM6K23q/EveBry/SOYRKNlMCHcSzApjJusg7uCdGUUVUSpFv63
-   /LK4/ip097p+z/JebuMwjPEB6FK61aHF/Xp9FuygYNZNSWKeNFbeUV6XL
-   9T0dNWls4KtYNecYCnOzdxzVewuJqdCumD5KrOp/Riup8dDelZaw2ccib
-   8drOLa9uqMt9h+O6gnmxOQIB/C8BICe6ybGKiaxNWMRVrRIAAFBNrtTYR
+  bh=qRM8Nd7+mvRuQnB26A4jyOIk/JiJWD+6kVLuKYLkUds=;
+  b=M8BoAr68FWz9Zi11krLfOsVKZEFOIGV7K4IU8yDAOjkpSzR1zJkhh82x
+   sAALND8wKlQSRNEJMX9My1jmwbES3m3cIzVKXAL6iIgA6z8JiCca31iYk
+   ojf7VvkD2z/4rw183+wClUU5ntUauBJ9AMclfqLE0yZPOaaBxUuSqWaFn
+   eBc6+qBN1xaCkTWgQmACYmXWSSR40odZJJju9UmJ/QdvSvb6rdkHX1Xh3
+   TzZZsKsIcxkSu7lA3c4XHjTHc9sziKiUB5Mh0rl8/fFPVIVCcafyxcav+
+   r7+ci5zIFS8hHLlS0o/WzfLvp7BOd2X+QQ2AgWmywMFMb4FKTnd5kxzpo
    w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10589"; a="410384597"
+X-IronPort-AV: E=McAfee;i="6500,9779,10589"; a="312011495"
 X-IronPort-AV: E=Sophos;i="5.97,215,1669104000"; 
-   d="scan'208";a="410384597"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Jan 2023 17:08:31 -0800
+   d="scan'208";a="312011495"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Jan 2023 20:10:14 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10589"; a="688927463"
+X-IronPort-AV: E=McAfee;i="6500,9779,10589"; a="658420687"
 X-IronPort-AV: E=Sophos;i="5.97,215,1669104000"; 
-   d="scan'208";a="688927463"
+   d="scan'208";a="658420687"
 Received: from lkp-server02.sh.intel.com (HELO f1920e93ebb5) ([10.239.97.151])
-  by orsmga008.jf.intel.com with ESMTP; 13 Jan 2023 17:08:22 -0800
+  by orsmga002.jf.intel.com with ESMTP; 13 Jan 2023 20:10:05 -0800
 Received: from kbuild by f1920e93ebb5 with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1pGV1x-000Bae-1e;
-	Sat, 14 Jan 2023 01:08:21 +0000
-Date: Sat, 14 Jan 2023 09:07:27 +0800
+	id 1pGXrj-000BjS-0e;
+	Sat, 14 Jan 2023 04:09:59 +0000
+Date: Sat, 14 Jan 2023 12:09:50 +0800
 From: kernel test robot <lkp@intel.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	mturquette@baylibre.com
@@ -70,14 +70,14 @@ Cc: oe-kbuild-all@lists.linux.dev, sboyd@kernel.org, matthias.bgg@gmail.com,
 	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
 	kernel@collabora.com
-Subject: Re: [PATCH v3 10/23] clk: mediatek: mt8173: Break down clock drivers
- and allow module build
-Message-ID: <202301140958.QWKleVBk-lkp@intel.com>
-References: <20230113110616.111001-11-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v3 13/23] clk: mediatek: mt8173: Migrate pericfg/topckgen
+ to mtk_clk_simple_probe()
+Message-ID: <202301141253.WvTwtg6I-lkp@intel.com>
+References: <20230113110616.111001-14-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="qhme6hQD8rcbOz3U"
+Content-Type: multipart/mixed; boundary="uHZExI67BvVYdEZu"
 Content-Disposition: inline
-In-Reply-To: <20230113110616.111001-11-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230113110616.111001-14-angelogioacchino.delregno@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,7 +93,7 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---qhme6hQD8rcbOz3U
+--uHZExI67BvVYdEZu
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
@@ -109,17 +109,17 @@ https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
 url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/clk-mediatek-mt8192-Correctly-unregister-and-free-clocks-on-failure/20230113-193607
 base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
-patch link:    https://lore.kernel.org/r/20230113110616.111001-11-angelogioacchino.delregno%40collabora.com
-patch subject: [PATCH v3 10/23] clk: mediatek: mt8173: Break down clock drivers and allow module build
+patch link:    https://lore.kernel.org/r/20230113110616.111001-14-angelogioacchino.delregno%40collabora.com
+patch subject: [PATCH v3 13/23] clk: mediatek: mt8173: Migrate pericfg/topckgen to mtk_clk_simple_probe()
 config: m68k-allmodconfig
 compiler: m68k-linux-gcc (GCC) 12.1.0
 reproduce (this is a W=1 build):
         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
         chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/45a19866504754fce1615ef3fef4336f7a4a46b0
+        # https://github.com/intel-lab-lkp/linux/commit/2e9a7fb083e39d93010c8ccaad9bcf74d5f0b371
         git remote add linux-review https://github.com/intel-lab-lkp/linux
         git fetch --no-tags linux-review AngeloGioacchino-Del-Regno/clk-mediatek-mt8192-Correctly-unregister-and-free-clocks-on-failure/20230113-193607
-        git checkout 45a19866504754fce1615ef3fef4336f7a4a46b0
+        git checkout 2e9a7fb083e39d93010c8ccaad9bcf74d5f0b371
         # save the config file
         mkdir build_dir && cp config build_dir/.config
         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=m68k olddefconfig
@@ -130,17 +130,18 @@ If you fix the issue, kindly add following tag where applicable
 
 All errors (new ones prefixed by >>, old ones prefixed by <<):
 
->> ERROR: modpost: "mtk_register_reset_controller" [drivers/clk/mediatek/clk-mt8173-infracfg.ko] undefined!
->> ERROR: modpost: "mtk_register_reset_controller" [drivers/clk/mediatek/clk-mt8173-pericfg.ko] undefined!
->> ERROR: modpost: "cg_regs_dummy" [drivers/clk/mediatek/clk-mt8173-img.ko] undefined!
->> ERROR: modpost: "cg_regs_dummy" [drivers/clk/mediatek/clk-mt8173-vdecsys.ko] undefined!
->> ERROR: modpost: "cg_regs_dummy" [drivers/clk/mediatek/clk-mt8173-vencsys.ko] undefined!
+ERROR: modpost: "cg_regs_dummy" [drivers/clk/mediatek/clk-mt6779.ko] undefined!
+ERROR: modpost: "mtk_register_reset_controller" [drivers/clk/mediatek/clk-mt8173-infracfg.ko] undefined!
+>> ERROR: modpost: "cg_regs_dummy" [drivers/clk/mediatek/clk-mt8173-pericfg.ko] undefined!
+ERROR: modpost: "cg_regs_dummy" [drivers/clk/mediatek/clk-mt8173-img.ko] undefined!
+ERROR: modpost: "cg_regs_dummy" [drivers/clk/mediatek/clk-mt8173-vdecsys.ko] undefined!
+ERROR: modpost: "cg_regs_dummy" [drivers/clk/mediatek/clk-mt8173-vencsys.ko] undefined!
 
 -- 
 0-DAY CI Kernel Test Service
 https://github.com/intel/lkp-tests
 
---qhme6hQD8rcbOz3U
+--uHZExI67BvVYdEZu
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: attachment; filename=config
 
@@ -12495,5 +12496,5 @@ CONFIG_WARN_MISSING_DOCUMENTS=y
 CONFIG_WARN_ABI_ERRORS=y
 # end of Kernel hacking
 
---qhme6hQD8rcbOz3U--
+--uHZExI67BvVYdEZu--
 
