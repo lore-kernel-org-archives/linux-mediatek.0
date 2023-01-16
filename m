@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C730BC46467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 14:59:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98FD8C677F1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 15:23:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WFKnv3IXFGo/+R8aB760h27cGKXKKD/moSarcuDR1DI=; b=oEF6v3lTLDv81Q82HE2AO6dieJ
-	p4Cc3G2N0R4Bq2fP/6DQjEiUlq0ljesX6uRMOZp+SGUkhHO3xhLfRE2MlNOT8uG2CpCG4wvnjb4Cc
-	31Ae1T5a4OFTqiK5elZyyulxF+Px1liUHvj8FJ+I3x+hua5YDsTXfkwb+Xc/uFGqnstmE5bO8B7Pa
-	LOjPvJZFPElC/Qty2MwadZYNLrlS20HNUPDc7jPeFgnruTrggG/J6FC16E4wUKvdbh5qqBw7pbs+x
-	hQ7BzurysDO2Hv0Rrv+2PibDgKw3cuDpDkBlmkZiWKAZmwgM+o9dHrx5fUfJOBvithmFanxmi1uE7
-	HmUYXMpw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=WShhfjt/HHh0NshNOvMg+g+72tOEAis9r62sjM//RqY=; b=mYFAKsSSYTF0ypnONeKJaEqy07
+	+uMUTbv96zDKdZmO3gsEBgJnm4IW6YEmjNhA2B5+MdFIPfkiyuOH8g599xPyNtY/LjGRkRjHE2qt2
+	GPgMmRooooO+8EyI9pXXbdFDz+LeN86TZwfC8Mtd+faNjnR8W7HNyMdMttyHKrq0drtvf3lRpP55i
+	v4DCEOj9mgQT10ritPS1nYDblFS+7yIqRaF70c++rZFqkIINhQXVk4j/aLgNGPZVx4Okorut1Ah09
+	TLNdlYKBnoAGTQJQBv2fPiWl4UhZxQ6kx79AlD37deFQpmnVkVoaNWrAvLJgqMFLvA1i/x2eHeSEH
+	3OgXCzFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHQxX-00B1Qu-SL; Mon, 16 Jan 2023 14:59:39 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1pHRKR-00B5Se-Dd; Mon, 16 Jan 2023 15:23:19 +0000
+Received: from smtp-relay-canonical-0.canonical.com ([185.125.188.120])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHQxV-00B1Ps-H1; Mon, 16 Jan 2023 14:59:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=WFKnv3IXFGo/+R8aB760h27cGKXKKD/moSarcuDR1DI=; b=KiXQaWYjAzj22qeVwf+8jraFnd
-	piSsFBsu9jpccuQs1OylYmOhIxYpYJMXk9UyP8itAzdxLXZH6mTTAzAzsQlF0ezNt4NoQdpe1IkY8
-	u4k28bU9DzDlGgLhdaq2SePXFBylBp0fFPF2Gd8K/VFGgpVHIi/HDGC4TJ1MNqtbFIB3V4jZwt3Zq
-	a2jILgICyiMK0Ye8t3cBHRBaVU6/N/P71gpgPg43tBGnmXFdXv0semHNJb9z0WCUs/2JuoRMYNrSF
-	31fMcmwwLBZ8kcU/TEM9VyQ4w00g1Hv4AnsJ0drPuoayyhfQokV48ZP1CRv+eMOvMhEtJfolfdvIH
-	3bklwOgA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:36130)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1pHQxM-0005D4-H5; Mon, 16 Jan 2023 14:59:28 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1pHQxG-00066F-Sc; Mon, 16 Jan 2023 14:59:22 +0000
-Date: Mon, 16 Jan 2023 14:59:22 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: =?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
-Subject: Re: [PATCH v2] net: mtk_sgmii: implement mtk_pcs_ops
-Message-ID: <Y8VmSrjHTlllaDy2@shell.armlinux.org.uk>
-References: <trinity-ac9a840b-cb06-4710-827a-4c4423686074-1666551838763@3c-app-gmx-bs01>
- <trinity-169e3c3f-3a64-485c-9a43-b7cc595531a9-1666552897046@3c-app-gmx-bs01>
- <Y1Wfc+M/zVdw9Di3@shell.armlinux.org.uk>
- <Y1Zah4+hyFk50JC6@shell.armlinux.org.uk>
- <trinity-d2f74581-c020-4473-a5f4-0fc591233293-1666622740261@3c-app-gmx-bap55>
- <Y1ansgmD69AcITWx@shell.armlinux.org.uk>
- <trinity-defa4f3d-804e-401e-bea1-b36246cbc11b-1666685003285@3c-app-gmx-bap29>
- <87o7qy39v5.fsf@miraculix.mork.no>
- <Y8VVa0zHk0nCwS1w@shell.armlinux.org.uk>
- <87h6wq35dn.fsf@miraculix.mork.no>
+	id 1pHRK8-00B5Lg-DO; Mon, 16 Jan 2023 15:23:02 +0000
+Received: from localhost.localdomain (unknown [222.129.38.177])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-relay-canonical-0.canonical.com (Postfix) with ESMTPSA id D5AC53F177;
+	Mon, 16 Jan 2023 15:22:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+	s=20210705; t=1673882572;
+	bh=WShhfjt/HHh0NshNOvMg+g+72tOEAis9r62sjM//RqY=;
+	h=From:To:Subject:Date:Message-Id:MIME-Version;
+	b=ipYD4Y0OQQUCmjI0C9LbgmGfDgYwAkymK/5e/Hm2HEncGkBXrPt6rWG4g2D5mZJw9
+	 Jgh33MGAUY9aRlbwCPMOzuLugGeO2D+8C3MtWLMv2RhFihPvI2moS5LaKJxYRfGeou
+	 unqi8CB9nANne05yDdaF+DFbXVvI2a+poruvmdBKVNmVhi3I5oq7Sxk+cKkNGRNH35
+	 nyl19EjLjhj5l8xQuiJlovuSohVQKYp/TQXmWquO4QakI2KX0eFlKVYxpFjSXCsGcJ
+	 HgXeiX8euL1TqKoq7Cz/Xb/edl4DhoproU6nP75142a2fzH77iLu3OQE4RF0S7cl96
+	 3vcYvYlnmWQQQ==
+From: Aaron Ma <aaron.ma@canonical.com>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	kvalo@kernel.org,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	matthias.bgg@gmail.com,
+	linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	aaron.ma@canonical.com
+Subject: [PATCH] wifi: mt76: mt7921: fix error code of return in mt7921_acpi_read
+Date: Mon, 16 Jan 2023 23:22:35 +0800
+Message-Id: <20230116152235.1433484-1-aaron.ma@canonical.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <87h6wq35dn.fsf@miraculix.mork.no>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_065937_585276_FE3801DC 
-X-CRM114-Status: GOOD (  21.73  )
+X-CRM114-CacheID: sfid-20230116_072300_730603_6C2D55DB 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,53 +78,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Frank Wunderlich <linux@fw-web.de>, Paolo Abeni <pabeni@redhat.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 16, 2023 at 03:45:24PM +0100, Bjørn Mork wrote:
-> "Russell King (Oracle)" <linux@armlinux.org.uk> writes:
-> > On Mon, Jan 16, 2023 at 02:08:30PM +0100, Bjørn Mork wrote:
-> >> Frank Wunderlich <frank-w@public-files.de> writes:
-> >> 
-> >> > apart from this little problem it works much better than it actually is so imho more
-> >> > people should test it on different platforms.
-> >> 
-> >> Hello!  I've been banging my head against an MT7986 board with two
-> >> Maxlinear GPY211C phys for a while. One of those phys is connected to
-> >> port 5 of the MT7531 switch.  This is working perfectly.
-> >> 
-> >> The other GPY211C is connected to the second MT7986 mac.  This one is
-> >> giving me a headache...
-> >> 
-> >> I can only get the port to work at 2500Mb/s.  Changing the speed to
-> >> anything lower looks fine in ethtool etc, but traffic is blocked.
-> >
-> > My guess would be that the GPY PHY is using in-band SGMII negotiation
-> > (it sets VSPEC1_SGMII_ANEN_ANRS when entering SGMII mode and clears
-> > it in 2500base-X), but as the link is not using in-band mode on the
-> > PCS side, the PHY never sees its in-band negotiation complete, so the
-> > link between PCS and PHY never comes up.
-> >
-> > Both sides need to agree on that detail.
-> 
-> Any hints on how I would go about doing that?  I am a little lost here,
-> changing arbitrary bits I don't understand the meaning of.
+Kernel NULL pointer dereference when ACPI SAR table isn't implemented well.
+Fix the error code of return to mark the ACPI SAR table as invalid.
 
-Hi,
+[    5.077128] mt7921e 0000:06:00.0: sar cnt = 0
+[    5.077381] BUG: kernel NULL pointer dereference, address:
+0000000000000004
+[    5.077630] #PF: supervisor read access in kernel mode
+[    5.077883] #PF: error_code(0x0000) - not-present page
+[    5.078138] PGD 0 P4D 0
+[    5.078398] Oops: 0000 [#1] PREEMPT SMP NOPTI
+[    5.079202] RIP: 0010:mt7921_init_acpi_sar+0x106/0x220
+[mt7921_common]
+...
+[    5.080786] Call Trace:
+[    5.080786]  <TASK>
+[    5.080786]  mt7921_register_device+0x37d/0x490 [mt7921_common]
+[    5.080786]  mt7921_pci_probe.part.0+0x2ee/0x310 [mt7921e]
+[    5.080786]  mt7921_pci_probe+0x52/0x70 [mt7921e]
+[    5.080786]  local_pci_probe+0x47/0x90
+[    5.080786]  pci_call_probe+0x55/0x190
+[    5.080786]  pci_device_probe+0x84/0x120
 
-To prove the point, in mtk_pcs_config():
+Fixes: f965333e491e ("mt76: mt7921: introduce ACPI SAR support")
+Signed-off-by: Aaron Ma <aaron.ma@canonical.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-        if (interface == PHY_INTERFACE_MODE_SGMII) {
-                sgm_mode = SGMII_IF_MODE_SGMII;
-                if (phylink_autoneg_inband(mode)) {
-
-Force the second if() to always be true, and see whether that allows
-traffic to pass.
-
-Thanks.
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c b/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c
+index 47e034a9b003..ed9241d4aa64 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c
+@@ -33,14 +33,17 @@ mt7921_acpi_read(struct mt7921_dev *dev, u8 *method, u8 **tbl, u32 *len)
+ 	    sar_root->package.elements[0].type != ACPI_TYPE_INTEGER) {
+ 		dev_err(mdev->dev, "sar cnt = %d\n",
+ 			sar_root->package.count);
++		ret = -EINVAL;
+ 		goto free;
+ 	}
+ 
+ 	if (!*tbl) {
+ 		*tbl = devm_kzalloc(mdev->dev, sar_root->package.count,
+ 				    GFP_KERNEL);
+-		if (!*tbl)
++		if (!*tbl) {
++			ret = -ENOMEM;
+ 			goto free;
++		}
+ 	}
+ 	if (len)
+ 		*len = sar_root->package.count;
+@@ -52,9 +55,9 @@ mt7921_acpi_read(struct mt7921_dev *dev, u8 *method, u8 **tbl, u32 *len)
+ 			break;
+ 		*(*tbl + i) = (u8)sar_unit->integer.value;
+ 	}
+-free:
+ 	ret = (i == sar_root->package.count) ? 0 : -EINVAL;
+ 
++free:
+ 	kfree(sar_root);
+ 
+ 	return ret;
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+2.34.1
+
 
