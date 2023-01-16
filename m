@@ -4,184 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E757CC46467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 02:59:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8692BC678D7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 03:22:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jCb3bRSh04kRbsbK6tOttRD15lIzn+Ernm/BYZoE0Rs=; b=cANZ3yX22q9wuy5+GPiNeJho3L
-	NcNMjN0r0LIi/l4aB6bnn0AqnqaXclFMOa7JEmRnN23ZtT7O+NE8v2ezl0YEaWwoKKUS6SwyISYxl
-	Din8E+O/G/OleVCPj2yHq5aTBA4TWqmIIArcjVjzDZs+G0nevKdLKb3X+gR0Xuz9tCw4NelKno4fs
-	6zX50JZDwzwla9lbLFwwFdoV8CZXQS4X4p/DbkUSPblECEn1LOHj4tuh5/LDMb/ECDrY5KkZDqPbS
-	bXO/HXKtdY7mCfH8duI7ZeYKloA8XPOAefwJHI+sc424wX/fdVY2gyGidnrtF/rlMPm7cFbvLvTyo
-	iVWZ6ufQ==;
+	bh=TnbQu2RDLgnLZf+Loav0pMMKlyv2eDh10wYzaITxK2U=; b=cGoV93+gRpuTYB3hyThQXnFkod
+	sTxel3LhDW45ih+zIkdLqmgjrRfMJ8jOReuFTiyFfIFCjxYKx1k142O6vnfsx3PsQ0ZBO8KZ0ad0B
+	Nj6fhi5DhrdBbTnvZx8ObicZEjkVMEn5X4XjTqgth6CP9p9pMoQLqUvCsNaz36n0/N/9sGmJ86A7t
+	iqqfZUF6lUo1Wdq9YzqjiCRuvFY9lhVgsvS+566H1JFVs8pofZE2BLnyfXU1+E1ZXr1gMzFe6RPrN
+	wB1FWvWGidpiRoQVX5nyuzVvzBweBGDp6oY2GL7Gpuue26wnkyI0kE6cS1+Tf+IdKwREHckDfYiDv
+	asY4lrFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHFiw-008Omj-PE; Mon, 16 Jan 2023 02:59:50 +0000
+	id 1pHG4Y-008Qxg-7G; Mon, 16 Jan 2023 03:22:10 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHFiv-008OmF-Vh; Mon, 16 Jan 2023 02:59:50 +0000
+	id 1pHG4W-008QwX-AJ; Mon, 16 Jan 2023 03:22:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
-	:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To
-	:From:Sender:Reply-To:Content-Description;
-	bh=jCb3bRSh04kRbsbK6tOttRD15lIzn+Ernm/BYZoE0Rs=; b=qAeK4PRF12f90/4e+2XgzyFBwq
-	AfXBIW48i6Xx+QlREgm/FRuvXKKSQZ69L5cg11CYENw83gOz41vSPmH4ub6wfjd4/HM3BsKESxNib
-	1v+gOrHbjY6BR+52tJGmmA4h0pfyfFELZt04HlNN9RUZRnrjoLoQTvlbyPLobxnrfaMeoELa5iAdi
-	m29zvCEIu8y8DiryuM1R1v3x9W9YuFxqk/2FbAnysCOd3jNueJ5wMzq+nCT+T30gDiFl5jypFr9+O
-	pz3rntE2xXyWkKnlM4ZLeu4b/lGfv4HmudfUNgKEYRry/wLvupfK/uhB/+c6kCMdc3DEEqi0+Sv03
-	tWgu1W/A==;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=TnbQu2RDLgnLZf+Loav0pMMKlyv2eDh10wYzaITxK2U=; b=D8pioQUw5wZqJh7YXsW9tPux4I
+	W0+X2C1vE+0yxXkgx2p9EO+qXrdtXdge8PmZSeaGOEXgtNAStm61XvwOlVBtRuoSRajRH/feo9FIq
+	Hq+qN7fSn4GzFynXtRugyWkMbvCQJh1iLFZ1iqN+vSw3/EwOOzRO9DJwl9OU3pVivFuaABnQPyZ7Q
+	s8e0/bozFEO8W1bB6Wm10kqxXhBYJ1rFlVDHadPsjzTrteoa19UHgUdAwbblufCQB/TBwg8OTxSnm
+	cX6k+MeTLrg0MW0Q4+8y2vXxBYtd9anKkhIpwKciEmZ+lXYZGqE8GuZQwDEXxRlZRERF8h5DHkDjQ
+	by9MzjPA==;
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pHFih-005SRZ-27;
-	Mon, 16 Jan 2023 02:59:39 +0000
-X-UUID: cd0ebf28954911edbbe3f76fe852e059-20230115
+	id 1pHG4G-005SkF-1O;
+	Mon, 16 Jan 2023 03:21:57 +0000
+X-UUID: eafa07ce954c11edbbe3f76fe852e059-20230115
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=jCb3bRSh04kRbsbK6tOttRD15lIzn+Ernm/BYZoE0Rs=;
-	b=XwZnyIyKYBoOgNDZ/ppeI77CmQ8GQDzKKyTnMv+GFq/M2O8KCOeSIrNOlUgr8GbZsvTY1IEQrTFrH4SgaOB8wdj8/7MDZpeQD1jzkP6SYB6DTYyR50XlHncGdv0vRIVVb1RcKAozCH3haSME71uo0uvsg3eYGOuQbNsM++LCTlI=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=TnbQu2RDLgnLZf+Loav0pMMKlyv2eDh10wYzaITxK2U=;
+	b=OncVUfzbAOrIOU/fHcXbZ96xgZ6xgwVujitfb+MPHo4XDvPwB/fQkheoYN6vnN32kTHtTI+XMKP0Dmfj88OtIJ+O6xLovpRIUUkTCVFN1XvHKmEA0HfDPTmQ/jzZZzlF9tfFTC6budMGi9OWUSM/XAUJ+y+e5cEiROFEjbpt4pk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:0ccafdc0-5282-487e-b307-14d8daca0677,IP:0,U
+X-CID-O-INFO: VERSION:1.1.17,REQID:43e4ee2d-3158-4935-ada9-367fd98dd7d0,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:543e81c,CLOUDID:d6d0e3f5-ff42-4fb0-b929-626456a83c14,B
+X-CID-META: VersionHash:543e81c,CLOUDID:a2f6558c-8530-4eff-9f77-222cf6e2895b,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
 X-CID-BVR: 0,NGT
-X-UUID: cd0ebf28954911edbbe3f76fe852e059-20230115
+X-UUID: eafa07ce954c11edbbe3f76fe852e059-20230115
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1599289047; Sun, 15 Jan 2023 19:59:32 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+	with ESMTP id 288388247; Sun, 15 Jan 2023 20:21:51 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 16 Jan 2023 10:49:29 +0800
-Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.239)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Mon, 16 Jan 2023 10:49:29 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IJ6wglwG+JVmhXY/dbWLbYGFi6KYNHDHjKlOgH1phQjZGMKnpbliQ2tB18N3wfD5j6+tl1q4s1hGo8JvWZZeivc89urXPKoCIIcrcGsA0l0t9X+hSe2f8NlzzhzU9nWfHU5VARgneSyaKjXEaMxmqwJl/2wgXnIQHF4Re8M43xGTr8ocMZrcwx05H2fFJAwz3l7u0STbyiXX2phZPoiazMSKrwzF54T1CcHRGD3jQXbU4P9ROj9AgZAhJW2zA0Sw0fIX35acpPiTYGVAxe01NIaQolwFrP6bgUO8DmMwSpkUu/aQd0e0bTmT+wEzuBQPqAni/wGEg8Fjvw5BdtnkGQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=jCb3bRSh04kRbsbK6tOttRD15lIzn+Ernm/BYZoE0Rs=;
- b=glrHksGm8y+lTzJLMlmchFbOJcuB3kbA/EOuoGShStKryh4MKX5N4C93yQMyl0e6iQ2nH3Qq5TKp2vv3mzm1U7pVLU3OOMGM6pHElChM51OU8+UHB7nSGpGrt3OXdKbHhBvG5YnbESCxgIZ4r1wBHulSfzmAmhAaAw1OlzYchLJaPrDUCitNp6oFac8ZQ66bk5BFr/oJwL6MmFKgCN5o2uUHnTSxk+fJWbZo6KZFsvIoekmdhVEDgnM+fx2xcWNJlbmhngGZEG1Z14hNpsSbk4jtnTHPmR5eUxwJItrbNWh7m1SZZq0v5BfhFqdwNmvGwT8vP/H2j5qWQjPPllx/1A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=jCb3bRSh04kRbsbK6tOttRD15lIzn+Ernm/BYZoE0Rs=;
- b=vNC03rG7lhyxscAkfDzoUf7iy+ES2dFPOUI8/PTjQjXA1M3evV0s4G3xu1gu4hDi9eWGuHvhY/gBMC4BL/appwRyNPmnyGvHApxzzcah2EoKdAgK3rfSCOJwFJfsc99/RWI0j+jtg8dc9G3Smz4I1wkz1l1FPXUJKWtJdb09BSQ=
-Received: from TY0PR03MB6356.apcprd03.prod.outlook.com (2603:1096:400:14c::9)
- by KL1PR03MB5618.apcprd03.prod.outlook.com (2603:1096:820:3b::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5986.19; Mon, 16 Jan
- 2023 02:49:27 +0000
-Received: from TY0PR03MB6356.apcprd03.prod.outlook.com
- ([fe80::eb3c:770d:783d:352d]) by TY0PR03MB6356.apcprd03.prod.outlook.com
- ([fe80::eb3c:770d:783d:352d%4]) with mapi id 15.20.5986.023; Mon, 16 Jan 2023
- 02:49:27 +0000
-From: =?utf-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>
-To: "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "robh+dt@kernel.org"
-	<robh+dt@kernel.org>, "krzysztof.kozlowski+dt@linaro.org"
-	<krzysztof.kozlowski+dt@linaro.org>, "chunkuang.hu@kernel.org"
-	<chunkuang.hu@kernel.org>
-CC: "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: Re: [PATCH v5 02/10] dt-bindings: arm: mediatek: mmsys: Add support
- for MT8195 VPPSYS
-Thread-Topic: [PATCH v5 02/10] dt-bindings: arm: mediatek: mmsys: Add support
- for MT8195 VPPSYS
-Thread-Index: AQHZJxHqN7EdSO15vEGirGp2QiEpdK6cPu6AgAQdOAA=
-Date: Mon, 16 Jan 2023 02:49:27 +0000
-Message-ID: <4e638f60bd316104be8bb110d22dcb17e05fc6a4.camel@mediatek.com>
-References: <20230113054304.21841-1-moudy.ho@mediatek.com>
-	 <20230113054304.21841-3-moudy.ho@mediatek.com>
-	 <d16ed246-86b3-7837-845d-ba33dd61b482@linaro.org>
-In-Reply-To: <d16ed246-86b3-7837-845d-ba33dd61b482@linaro.org>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TY0PR03MB6356:EE_|KL1PR03MB5618:EE_
-x-ms-office365-filtering-correlation-id: 6181d919-7d17-469f-1183-08daf76c488e
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: spopha5KsoRXDOjhwKzndir4fbUNPi9uZrFyJRs+KqhRzqnH/OtQM+zjLJqzCkhJCSnH0kBnY9Bo4VbNClw2Npw8aj5RDuSIGJU2hCix+RU8lp026vj8PTKbblENETZd/KpilN/Uio4VCYWaegypimrRXga1Il7ihvVr1o6/R/CaK1oRkqLc+FE7hj3piyJbGhuJA1dRzv/tsHTJoco5f34yuAANWkv6SvOoVYE0oLKTMEiAz4bz8gbQuiB38flkvwU7E53i59GLG8b9yiI0v7mckXXkvmBBxBlM3xsTZJ991sSB9U6Q8cI9VYxp7gtBrdfxG2CoN4O2djMyWlV/CosrgVb4vboCNE3pkOH9zgl/BU0/Konb/Y5lQRBQGKKGoc1ZOYaS9V2wdhICJXvhCsFWkfbKtluDBp8g77p4eXmYX9BN5AwWghzUPrpUubcghRaKXdGRl/bQeDT77ADaszz1bYYBL03KIdO8r/9UbPEeIr3mr6LAB0t7e4L4Vxxm8+SkSn8oxcEW3RV+/kWFvri8JjFDXHKYrTVUDxAq9nCfnB8poCAZSeLeCMSip0mcnyfQfAj+dWIMeeeLdZBcREn71KaZGTsLqC97USsXL8sibfeZRKgD1zBxdD9zI7hKmli1zjBE+1pFcaVFofeZeY0+4sLeudP7RX5QxicCxtSmy709BAdPwmItlgwhcVF93tSwFYhxpkDUydaNaw//rWT5PVfKVKKupBfmYQTMH84=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR03MB6356.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(396003)(39860400002)(346002)(136003)(366004)(376002)(451199015)(38100700002)(122000001)(41300700001)(38070700005)(7416002)(86362001)(8936002)(5660300002)(2906002)(53546011)(6506007)(66446008)(64756008)(66556008)(107886003)(6512007)(186003)(83380400001)(26005)(316002)(66946007)(66476007)(110136005)(76116006)(54906003)(4326008)(8676002)(478600001)(71200400001)(2616005)(6486002)(85182001)(36756003)(99106002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?N1JNcUxlMDZTTk5KTUdZdXV1UWl5SXBmTnc3Smh6SnRUQlI1RG9jWXBOSjBs?=
- =?utf-8?B?cm9pMlZLYW5UK2JkMkVKc2ZOT2lvWnVXdERRWDdxaS9UTnd6N1BzS3RPNkxo?=
- =?utf-8?B?Vkx1UUNsbEx0NlRkVmwvVGZMdksvR0JUeWNOTU45TTU2ZGs3K2FwNDlCQjBI?=
- =?utf-8?B?MXVnaUpMVTRpdXY5OGNlSnFKSUYzZ013anBRTGVuNzh2TThCTS93Wno4Njg2?=
- =?utf-8?B?ZXZTTXVtNmx6cEFKa3RHbDFpV1JHa2FlbU1ETy9iUDRGTlhvYUhQK2UvbFBV?=
- =?utf-8?B?QmovYmg3VGR6elZ0S0dOVHV5Z2NBY0ZxUHZ0a21zbStuQ1Y3S3RxZ2N2bW1O?=
- =?utf-8?B?Vi9kS2hGN2x0L0VPZ1cvVUx1SGJVOWFuU3FKYUk3OHZVNUp5eHVFcmlmc3E0?=
- =?utf-8?B?WVBIZlJMV1ZrRjQrWDFwalg0LzRqbE5aVzlMUldHSDFjdndZM0JPSldqVzhR?=
- =?utf-8?B?ZlZpNUJkcnRwVUtMajBhQ09KdkhSL01KVnZmeGdYRzlMMXRtcnBlOXk3aFFm?=
- =?utf-8?B?SG1LdUw5Y25hck9zQVY4alFLN0RHSFVqMDRLZFU3bzAySUpkZnQzcWp5eVg4?=
- =?utf-8?B?ckZuTUlPUytaamhaUDN0WmxWaE1ienlUQ21rUlQ5b3o3anJmK0FXWG0zaDZO?=
- =?utf-8?B?WEIzaVF2WXFjL1NtU1UrWVZFNWEzbGFGdGdFZUI5eXQ1VWNZZzJ6QTlJeHdh?=
- =?utf-8?B?VTU5cVUyeGdmamZmWWxvdGhQcjBBVW5CdTVoaVBYV3crUEFTckF5WWRKQnA1?=
- =?utf-8?B?OFdMZk9rUGRHdnVaYUIvUGhCcDNrRWpyS1kyRUJidVYrcUlEcGwzOEREM0ZM?=
- =?utf-8?B?V1ZpUHphL0YrV2ZsMEk4aUg1dVljYS9LM0g3TE9UNnJFRkJpeHlJY1VrVTlw?=
- =?utf-8?B?KzhRUHJFYkg0d2hUZWsvK2txVlFyMWViNkJ4VUczYnQ1T2o1c1pWbTVQdWls?=
- =?utf-8?B?eHJGVHN3bGE4eHZtU01TVCtWRGtiZnIzY3g1K0tTTEFRaW5ORFZ1a0k2aHlz?=
- =?utf-8?B?NWp3a0N2cGtPN291T0hCdTJqK1VsdUROTnl4cWZobXF2SjAyeStzd0hoUXox?=
- =?utf-8?B?VlR3di9vTll6WVNMOTFBc01VYXpkR2t3RjQxOElmVEFtYTluaUJhb3hha0tZ?=
- =?utf-8?B?d1hTTVJ4NHpoWVZnK2h5MHFReWJQcDJYL1VrTEZzbm9iRkhtNmpZUkFmamVT?=
- =?utf-8?B?c1dTOEdCREcyKy9RaWcrc1EyQzVVd1V3K2hPcWJkbE1xdFVabTRlTnFsUHYz?=
- =?utf-8?B?bnJML2tXTlk2Z2svY1lYZWlaRUJUL09wdjBlVkxnbTJIMEwxUG83TkY1cTh5?=
- =?utf-8?B?Rit6RDlMR2VxTWswOC9SV3pSQ1pRalBRSms3OHNRTzRPUWFqaFVrdThvUEZH?=
- =?utf-8?B?bWdpQnFBVk4vN2J3K0FCTlVBcDVPUFJ6TjlQeE1LSHdqOW80K0xxbnZvalgy?=
- =?utf-8?B?MjhUZFZQMlJZSkF3TUVVaVRqVjY3U2NFVk10R2x1c3YwTUc1MnArcXZCUXpV?=
- =?utf-8?B?cDRxU0h0aHZaSmhxeUluTk5EWDlraDVHdUVNSmR5YjBMMVJwelQ2aEpubm5D?=
- =?utf-8?B?TUh4dWJWc3REVUtNL1BSa0crN2dCeFp1T05RUWlnRVJoMmVHUUpDdVc4b0hw?=
- =?utf-8?B?YmtITi9kMEt3dmcrU3lya09PYmUwWEEzc1ZGSzFlV2FxcGRqUzRHZDZIZDFx?=
- =?utf-8?B?QlhVY2cxdnl5TXR2OXFMcTExR3ptb1FiTWc2bVlYMmRYbTkwUzZOMHBMaFFL?=
- =?utf-8?B?OUw3U0c3K2tRV3NFSGdYR0lYaW5VejNYQTBXdjVYUlBYS1pnbEtCVlpLaG9M?=
- =?utf-8?B?Q3ZNSlZCYWNrT204d2EzYkxHTVV0MzZoOVF2Wm9yUVRSTnQ0ZkNIQVJrYVh2?=
- =?utf-8?B?NHJpbTNNVFNJeDJ4VmZsZ2tzTE9FbEFZVWxUVjFOZlo2YjQ1aStsUm9YVGpX?=
- =?utf-8?B?QzhYRmxmTXZRcU1VZEVpR3g0UXZmT0RySHNUWE5kTzY1SHIwYVdES3VVVWVx?=
- =?utf-8?B?NHdxUDFLQk1JN25la0dyclplYm8rbkQ3ZVVKaTdSZEZBYUw1bXZRWDVTa1kz?=
- =?utf-8?B?TDBSdWlpY1I2MS9TNkJRNERYamlBa2ZJa2RGSjhXQjdZeFZWZUdady8zNEY2?=
- =?utf-8?B?UjF6RStVTHF1MXZ5SVNacFF0VXh1ZHA2Z2Y3WURFWkdzcHlWdHNOUFZtS1BI?=
- =?utf-8?B?WEE9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <8B5B07B38F7CD34BAA594E796D1F7722@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ 15.2.792.15; Mon, 16 Jan 2023 11:21:48 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Mon, 16 Jan 2023 11:21:48 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
+	<moudy.ho@mediatek.com>
+Subject: [RESEND v3 02/13] arm64: dts: mediatek: mt8195: add MDP3 nodes
+Date: Mon, 16 Jan 2023 11:21:36 +0800
+Message-ID: <20230116032147.23607-3-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230116032147.23607-1-moudy.ho@mediatek.com>
+References: <20230116032147.23607-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TY0PR03MB6356.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6181d919-7d17-469f-1183-08daf76c488e
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Jan 2023 02:49:27.1989
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: PKPghNHkC+UgccHLor+ycS+XUlcny49CADyqVPiZH70g7wW8tR9pUJJjMIBqu5ifGuENK6b1E75tYyFs2/359w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR03MB5618
+Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_025936_474929_BCE883CA 
-X-CRM114-Status: GOOD (  17.17  )
+X-CRM114-CacheID: sfid-20230116_032153_850316_3EE8E1BC 
+X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -196,31 +99,452 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCAyMDIzLTAxLTEzIGF0IDEyOjU5ICswMTAwLCBLcnp5c3p0b2YgS296bG93c2tpIHdy
-b3RlOg0KPiBPbiAxMy8wMS8yMDIzIDA2OjQyLCBNb3VkeSBIbyB3cm90ZToNCj4gPiBGb3IgTVQ4
-MTk1LCBWUFBTWVMwIGFuZCBWUFBTWVMxIGFyZSAyIGRpc3BsYXkgcGlwZXMgd2l0aA0KPiA+IGhh
-cmR3YXJlIGRpZmZlcmVuY2VzIGluIHBvd2VyIGRvbWFpbnMsIGNsb2NrcyBhbmQgc3Vic3lzdGVt
-IGNvdW50cywNCj4gPiB3aGljaCBzaG91bGQgYmUgZGV0ZXJtaW5lZCBieSBjb21wYXRpYmxlIG5h
-bWVzLg0KPiA+IA0KPiA+IFNpZ25lZC1vZmYtYnk6IE1vdWR5IEhvIDxtb3VkeS5ob0BtZWRpYXRl
-ay5jb20+DQo+ID4gQWNrZWQtYnk6IEtyenlzenRvZiBLb3psb3dza2kgPGtyenlzenRvZi5rb3ps
-b3dza2lAbGluYXJvLm9yZz4NCj4gPiAtLS0NCj4gPiAgLi4uL2RldmljZXRyZWUvYmluZGluZ3Mv
-YXJtL21lZGlhdGVrL21lZGlhdGVrLG1tc3lzLnlhbWwgICAgICAgIHwNCj4gPiAyICsrDQo+ID4g
-IDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKykNCj4gPiANCj4gPiBkaWZmIC0tZ2l0DQo+
-ID4gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL21lZGlhdGVrL21lZGlh
-dGVrLG1tc3lzLnlhbQ0KPiA+IGwNCj4gPiBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
-aW5ncy9hcm0vbWVkaWF0ZWsvbWVkaWF0ZWssbW1zeXMueWFtDQo+ID4gbA0KPiA+IGluZGV4IDg0
-ZGUxMjcwOTMyMy4uMjdkMjYzMWQ0M2QzIDEwMDY0NA0KPiA+IC0tLQ0KPiA+IGEvRG9jdW1lbnRh
-dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9tZWRpYXRlay9tZWRpYXRlayxtbXN5cy55YW0N
-Cj4gPiBsDQo+ID4gKysrDQo+ID4gYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mv
-YXJtL21lZGlhdGVrL21lZGlhdGVrLG1tc3lzLnlhbQ0KPiA+IGwNCj4gPiBAQCAtMzQsNiArMzQs
-OCBAQCBwcm9wZXJ0aWVzOg0KPiA+ICAgICAgICAgICAgICAgIC0gbWVkaWF0ZWssbXQ4MTg4LXZk
-b3N5czANCj4gPiAgICAgICAgICAgICAgICAtIG1lZGlhdGVrLG10ODE5Mi1tbXN5cw0KPiA+ICAg
-ICAgICAgICAgICAgIC0gbWVkaWF0ZWssbXQ4MzY1LW1tc3lzDQo+ID4gKyAgICAgICAgICAgICAg
-LSBtZWRpYXRlayxtdDgxOTUtdnBwc3lzMA0KPiA+ICsgICAgICAgICAgICAgIC0gbWVkaWF0ZWss
-bXQ4MTk1LXZwcHN5czENCj4gDQo+IFRoYXQncyBicm9rZW4gb3JkZXIgYW5kIEkgZGlkIG5vdCBh
-Y2sgc29tZXRoaW5nIGxpa2UgdGhpcy4gV2hhdCdzDQo+IGhhcHBlbmluZyB3aXRoIHRoZXNlIHBh
-dGNoZXM/DQo+IA0KPiBCZXN0IHJlZ2FyZHMsDQo+IEtyenlzenRvZg0KPiANCkhpIEtyenlzenRv
-ZiwNCg0KQXBvbG9naXplIGZvciB0aGUgdGFnIG5vdCBiZWluZyByZW1vdmVkIGFuZCB0aGUgd3Jv
-bmcgYWxwaGEtb3JkZXIuDQpUaGVzZSB3aWxsIGJlIGNvcnJlY3RlZCBpbiB0aGUgbmV4dCB2ZXJz
-aW9uLg0KDQpUaGFua3MgJiBSZWdhcmRzLA0KTW91ZHkNCg==
+Add device nodes for Media Data Path 3 (MDP3) modules.
+
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 420 +++++++++++++++++++++++
+ 1 file changed, 420 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 206dd534c3f6..d2d1ba71222d 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -1706,6 +1706,133 @@
+ 			#clock-cells = <1>;
+ 		};
+ 
++		mdp3-rdma0@14001000 {
++			compatible = "mediatek,mt8195-mdp3-rdma";
++			reg = <0 0x14001000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x1000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_VPP0_MDP_RDMA_SOF>,
++					      <CMDQ_EVENT_VPP0_MDP_RDMA_FRAME_DONE>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>,
++					<&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++			iommus = <&iommu_vpp M4U_PORT_L4_MDP_RDMA>,
++				 <&iommu_vpp M4U_PORT_L4_MDP_WROT>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_RDMA>,
++				 <&topckgen CLK_TOP_CFG_VPP0>,
++				 <&topckgen CLK_TOP_CFG_26M_VPP0>,
++				 <&vppsys0 CLK_VPP0_WARP0_ASYNC_TX>,
++				 <&vppsys0 CLK_VPP0_WARP0_RELAY>,
++				 <&vppsys0 CLK_VPP0_WARP0_MDP_DL_ASYNC>,
++				 <&vppsys0 CLK_VPP0_WARP1_ASYNC_TX>,
++				 <&vppsys0 CLK_VPP0_WARP1_RELAY>,
++				 <&vppsys0 CLK_VPP0_WARP1_MDP_DL_ASYNC>,
++				 <&vppsys0 CLK_VPP0_VPP02VPP1_RELAY>,
++				 <&vppsys1 CLK_VPP1_DL_ASYNC>,
++				 <&vppsys1 CLK_VPP1_VPP0_DL_ASYNC>,
++				 <&vppsys1 CLK_VPP1_VPP0_DL_RELAY>,
++				 <&vppsys0 CLK_VPP0_VPP12VPP0_ASYNC>,
++				 <&vppsys1 CLK_VPP1_VPP0_DL1_RELAY>,
++				 <&vppsys1 CLK_VPP1_SVPP2_VDO0_DL_RELAY>,
++				 <&vppsys1 CLK_VPP1_SVPP3_VDO1_DL_RELAY>,
++				 <&vppsys1 CLK_VPP1_SVPP2_VDO1_DL_RELAY>,
++				 <&vppsys1 CLK_VPP1_SVPP3_VDO0_DL_RELAY>;
++			mboxes = <&gce1 12 CMDQ_THR_PRIO_1>,
++				 <&gce1 13 CMDQ_THR_PRIO_1>,
++				 <&gce1 14 CMDQ_THR_PRIO_1>,
++				 <&gce1 21 CMDQ_THR_PRIO_1>,
++				 <&gce1 22 CMDQ_THR_PRIO_1>;
++		};
++
++		mdp3-fg0@14002000 {
++			compatible = "mediatek,mt8195-mdp3-fg";
++			reg = <0 0x14002000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x2000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_FG>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3-stich0@14003000 {
++			compatible = "mediatek,mt8195-mdp3-stitch";
++			reg = <0 0x14003000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x3000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_STITCH>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3-hdr0@14004000 {
++			compatible = "mediatek,mt8195-mdp3-hdr";
++			reg = <0 0x14004000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x4000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_HDR>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3-aal0@14005000 {
++			compatible = "mediatek,mt8195-mdp3-aal";
++			reg = <0 0x14005000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x5000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_AAL>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3-rsz0@14006000 {
++			compatible = "mediatek,mt8183-mdp3-rsz";
++			reg = <0 0x14006000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x6000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_RSZ>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3-tdshp0@14007000 {
++			compatible = "mediatek,mt8195-mdp3-tdshp";
++			reg = <0 0x14007000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x7000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_TDSHP>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3-color0@14008000 {
++			compatible = "mediatek,mt8195-mdp3-color";
++			reg = <0 0x14008000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x8000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_COLOR>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3-ovl0@14009000 {
++			compatible = "mediatek,mt8195-mdp3-ovl";
++			reg = <0 0x14009000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x9000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_OVL>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3-pad0@1400a000 {
++			compatible = "mediatek,mt8195-mdp3-pad";
++			reg = <0 0x1400a000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0xa000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_PADDING>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3-tcc0@1400b000 {
++			compatible = "mediatek,mt8195-mdp3-tcc";
++			reg = <0 0x1400b000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0xb000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_TCC>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3-wrot0@1400c000 {
++			compatible = "mediatek,mt8183-mdp3-wrot";
++			reg = <0 0x1400c000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0xc000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_VPP0_MDP_WROT_SOF>,
++					      <CMDQ_EVENT_VPP0_MDP_WROT_VIDO_WDONE>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_WROT>;
++			iommus = <&iommu_vpp M4U_PORT_L4_MDP_WROT>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
+ 		mutex@1400f000 {
+ 			compatible = "mediatek,mt8195-vpp-mutex";
+ 			reg = <0 0x1400f000 0 0x1000>;
+@@ -1853,6 +1980,299 @@
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
+ 		};
+ 
++		mdp3-split0@14f06000 {
++			compatible = "mediatek,mt8195-mdp3-split";
++			reg = <0 0x14f06000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0x6000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_VPP_SPLIT>,
++				 <&vppsys1 CLK_VPP1_HDMI_META>,
++				 <&vppsys1 CLK_VPP1_VPP_SPLIT_HDMI>,
++				 <&vppsys1 CLK_VPP1_DGI_IN>,
++				 <&vppsys1 CLK_VPP1_DGI_OUT>,
++				 <&vppsys1 CLK_VPP1_VPP_SPLIT_DGI>,
++				 <&vppsys1 CLK_VPP1_VPP_SPLIT_26M>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-tcc1@14f07000 {
++			compatible = "mediatek,mt8195-mdp3-tcc";
++			reg = <0 0x14f07000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0x7000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_TCC>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-rdma1@14f08000 {
++			compatible = "mediatek,mt8195-mdp3-rdma";
++			reg = <0 0x14f08000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0x8000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP1_MDP_RDMA_SOF>,
++					      <CMDQ_EVENT_VPP1_SVPP1_MDP_RDMA_FRAME_DONE>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_RDMA>,
++				 <&topckgen CLK_TOP_CFG_VPP1>,
++				 <&topckgen CLK_TOP_CFG_26M_VPP1>;
++			iommus = <&iommu_vdo M4U_PORT_L5_SVPP1_MDP_RDMA>,
++				 <&iommu_vdo M4U_PORT_L5_SVPP1_MDP_WROT>;
++			#address-cells = <2>;
++			#size-cells = <2>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-rdma2@14f09000 {
++			compatible = "mediatek,mt8195-mdp3-rdma";
++			reg = <0 0x14f09000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0x9000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP2_MDP_RDMA_SOF>,
++					      <CMDQ_EVENT_VPP1_SVPP2_MDP_RDMA_FRAME_DONE>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_RDMA>,
++				 <&topckgen CLK_TOP_CFG_VPP1>,
++				 <&topckgen CLK_TOP_CFG_26M_VPP1>;
++			iommus = <&iommu_vdo M4U_PORT_L5_SVPP2_MDP_RDMA>,
++				 <&iommu_vdo M4U_PORT_L5_SVPP2_MDP_WROT>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-rdma3@14f0a000 {
++			compatible = "mediatek,mt8195-mdp3-rdma";
++			reg = <0 0x14f0a000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0xa000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP3_MDP_RDMA_SOF>,
++					      <CMDQ_EVENT_VPP1_SVPP3_MDP_RDMA_FRAME_DONE>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_RDMA>,
++				 <&topckgen CLK_TOP_CFG_VPP1>,
++				 <&topckgen CLK_TOP_CFG_26M_VPP1>;
++			iommus = <&iommu_vpp M4U_PORT_L6_SVPP3_MDP_RDMA>,
++				 <&iommu_vpp M4U_PORT_L6_SVPP3_MDP_WROT>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-fg1@14f0b000 {
++			compatible = "mediatek,mt8195-mdp3-fg";
++			reg = <0 0x14f0b000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0xb000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_FG>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-fg2@14f0c000 {
++			compatible = "mediatek,mt8195-mdp3-fg";
++			reg = <0 0x14f0c000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0xc000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_FG>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-fg3@14f0d000 {
++			compatible = "mediatek,mt8195-mdp3-fg";
++			reg = <0 0x14f0d000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0xd000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_FG>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-hdr1@14f0e000 {
++			compatible = "mediatek,mt8195-mdp3-hdr";
++			reg = <0 0x14f0e000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0xe000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_HDR>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-hdr2@14f0f000 {
++			compatible = "mediatek,mt8195-mdp3-hdr";
++			reg = <0 0x14f0f000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0xf000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_HDR>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-hdr3@14f10000 {
++			compatible = "mediatek,mt8195-mdp3-hdr";
++			reg = <0 0x14f10000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_HDR>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-aal1@14f11000 {
++			compatible = "mediatek,mt8195-mdp3-aal";
++			reg = <0 0x14f11000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x1000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_AAL>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-aal2@14f12000 {
++			compatible = "mediatek,mt8195-mdp3-aal";
++			reg = <0 0x14f12000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x2000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_AAL>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-aal3@14f13000 {
++			compatible = "mediatek,mt8195-mdp3-aal";
++			reg = <0 0x14f13000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x3000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_AAL>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-rsz1@14f14000 {
++			compatible = "mediatek,mt8183-mdp3-rsz";
++			reg = <0 0x14f14000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x4000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_RSZ>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-rsz2@14f15000 {
++			compatible = "mediatek,mt8183-mdp3-rsz";
++			reg = <0 0x14f15000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x5000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_RSZ>,
++				 <&vppsys1 CLK_VPP1_SVPP2_VPP_MERGE>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-rsz3@14f16000 {
++			compatible = "mediatek,mt8183-mdp3-rsz";
++			reg = <0 0x14f16000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x6000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_RSZ>,
++				 <&vppsys1 CLK_VPP1_SVPP3_VPP_MERGE>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-tdshp1@14f17000 {
++			compatible = "mediatek,mt8195-mdp3-tdshp";
++			reg = <0 0x14f17000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x7000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_TDSHP>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-tdshp2@14f18000 {
++			compatible = "mediatek,mt8195-mdp3-tdshp";
++			reg = <0 0x14f18000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x8000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_TDSHP>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-tdshp3@14f19000 {
++			compatible = "mediatek,mt8195-mdp3-tdshp";
++			reg = <0 0x14f19000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x9000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_TDSHP>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-merge0@14f1a000 {
++			compatible = "mediatek,mt8195-mdp3-merge";
++			reg = <0 0x14f1a000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0xa000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_VPP_MERGE>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-merge1@14f1b000 {
++			compatible = "mediatek,mt8195-mdp3-merge";
++			reg = <0 0x14f1b000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0xb000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_VPP_MERGE>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-color1@14f1c000 {
++			compatible = "mediatek,mt8195-mdp3-color";
++			reg = <0 0x14f1c000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0xc000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_COLOR>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-color2@14f1d000 {
++			compatible = "mediatek,mt8195-mdp3-color";
++			reg = <0 0x14f1d000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0xd000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_COLOR>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-color3@14f1e000 {
++			compatible = "mediatek,mt8195-mdp3-color";
++			reg = <0 0x14f1e000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0xe000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_COLOR>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-ovl1@14f1f000 {
++			compatible = "mediatek,mt8195-mdp3-ovl";
++			reg = <0 0x14f1f000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0xf000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_OVL>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-pad1@14f20000 {
++			compatible = "mediatek,mt8195-mdp3-pad";
++			reg = <0 0x14f20000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f2XXXX 0 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_VPP_PAD>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-pad2@14f21000 {
++			compatible = "mediatek,mt8195-mdp3-pad";
++			reg = <0 0x14f21000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f2XXXX 0x1000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_VPP_PAD>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-pad3@14f22000 {
++			compatible = "mediatek,mt8195-mdp3-pad";
++			reg = <0 0x14f22000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f2XXXX 0x2000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_VPP_PAD>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-wrot1@14f23000 {
++			compatible = "mediatek,mt8183-mdp3-wrot";
++			reg = <0 0x14f23000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f2XXXX 0x3000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP1_MDP_WROT_SOF>,
++					      <CMDQ_EVENT_VPP1_SVPP1_MDP_WROT_FRAME_DONE>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_WROT>;
++			iommus = <&iommu_vdo M4U_PORT_L5_SVPP1_MDP_WROT>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-wrot2@14f24000 {
++			compatible = "mediatek,mt8183-mdp3-wrot";
++			reg = <0 0x14f24000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f2XXXX 0x4000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP2_MDP_WROT_SOF>,
++					<CMDQ_EVENT_VPP1_SVPP2_MDP_WROT_FRAME_DONE>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_WROT>;
++			iommus = <&iommu_vdo M4U_PORT_L5_SVPP2_MDP_WROT>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-wrot3@14f25000 {
++			compatible = "mediatek,mt8183-mdp3-wrot";
++			reg = <0 0x14f25000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f2XXXX 0x5000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP3_MDP_WROT_SOF>,
++					<CMDQ_EVENT_VPP1_SVPP3_MDP_WROT_FRAME_DONE>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_WROT>;
++			iommus = <&iommu_vpp M4U_PORT_L6_SVPP3_MDP_WROT>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
+ 		imgsys: clock-controller@15000000 {
+ 			compatible = "mediatek,mt8195-imgsys";
+ 			reg = <0 0x15000000 0 0x1000>;
+-- 
+2.18.0
+
 
