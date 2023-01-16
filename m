@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2230EC54EBE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 12:59:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 668D0C54EBE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 12:59:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ykfQZOm+BASL1GRgngyr2+aX6xmiGeCmWuvPVEfYj38=; b=47SmrrWE3zPuS+eH9W6NEbDuB2
-	c1D4dMSEdYmQdAJ9SnS766FlAg0HwOfzwIdSk50+byr9qnkoain83hz4E1WNCwwZxeCgv2XvtmvXX
-	e/ZdH1DBBZQBmyWU9M6J4Y6znLxw/QjyQbnX5NhvQCcuvxktYGakd/eNHXEkj4hbhxcG1Thw2uMfj
-	5pl9IEUaeu0V7nIdBiYzJ+NZsEMGx9tK0Sk/pEP7GTrUsKKruBij+uX9isagNXMGNUaP7b8MQYigw
-	1KLA4Sjui16qJ49l3gBZrYAE0O78IfxNrXuaeI0cuo4c9sNME2dXI+2tBelaIkOfH05l56n4O8IH+
-	unUei6MQ==;
+	bh=W5Spwn+5qRW864bp5C5OgGPVSnNBAMvY7J7oVAjQX4k=; b=jLeaWbfNXzUR4q7X44V8EEkaqO
+	FFF/Z3hDEYvChs8+515bLc5ojZ/VnK5dhwk67lpZf3xIb3YHF5Oo/2KFLzceV5pfCxUmtfGOFWE+8
+	rbn8SfUljHwHCqU+l9noaa+woO6ghaZQYAoQwNB93EgWp7cxUhYXZaToAel2fopu1cUR8i9CVjKSD
+	RuIqVFvYMqSQFMOE+0Ypb0h4LNip0Rzm4K5RUrzirXldU0F0QWWWUQRYEwQa4pHjdwbOh0lAIA1On
+	dBc3WUuPJSkGZ4/PNogCZBNhKpG12G8fBOYmdxuo49EfPnX/ZztItJr3ETz/EjRqNFGKD9hjLQK1C
+	6MYmRdvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHP57-00ADwR-Gw; Mon, 16 Jan 2023 12:59:21 +0000
-Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
+	id 1pHP5B-00ADyN-6Q; Mon, 16 Jan 2023 12:59:25 +0000
+Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHP1Y-00ACS6-0w; Mon, 16 Jan 2023 12:55:41 +0000
+	id 1pHP1Z-00ACSt-JP; Mon, 16 Jan 2023 12:55:43 +0000
 Received: from mwalle01.sab.local (unknown [213.135.10.150])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id ACA07166C;
-	Mon, 16 Jan 2023 13:55:35 +0100 (CET)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 68D5516E8;
+	Mon, 16 Jan 2023 13:55:37 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1673873735;
+	t=1673873737;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=ykfQZOm+BASL1GRgngyr2+aX6xmiGeCmWuvPVEfYj38=;
-	b=aA2u2Wx7ZKyQuxkNpuPYxgfMS5B+GnVIDNIN0zt/QCu4YlEArWbIuUj1GPucDXwmCAEf+Y
-	LW64GMhF9PVSps9IXsahMzdwBBcHskaGdAVgCZTKTscquNL2binpZ0yUk4+SLET4biR23t
-	9b2HL1qR6ZJkbDFjYIBmYsN4XKzBdPpldXAvm7QEE+Dv6Efv50hndXE0bMdf0heUf5AQKn
-	QBqi1c6Lw709w3D78JQrXFIogAKBWkK/z4e+tRzY2OJmbh1VhZFidD3TWO21LWYEpAf9BC
-	VI6DXXHhh1ej+LTrxSCDkupqF3eaOEpaT5m2s8PUTzkOCeD34Acd0db3+oRK9g==
+	bh=W5Spwn+5qRW864bp5C5OgGPVSnNBAMvY7J7oVAjQX4k=;
+	b=yEEVhq99moifusghajmavnVyJawstON1afqC5Ff04kQU5FcGh+uBKpXdm+vTexU/67q7MJ
+	kNEKHriYbGV8HSHSiTGmNNbXJIDYPz2PCIJL0w513IT7/2JFtP4uLWM5tvmoRwMjo6zV79
+	bm9Iy1ZK89C+HNt09RugGpVqIBI5yHMoAFsiR4x8JNl8M+XS3zLGLcIkh4Vs3U0x4RGofZ
+	elYe1Bd8q3AOX/HETYv5xgbWsoQ/52E8XVlda3GogtajUnjVfaEEoPPhRNwXhVwOLZrg7f
+	za0L4cmjFrEnvbiFWil9a5tSr1ZwDB2XxgTfW+xqEu+OPu/ZSp9YAp/vYTdSjQ==
 From: Michael Walle <michael@walle.cc>
-Date: Mon, 16 Jan 2023 13:55:13 +0100
-Subject: [PATCH net-next 1/6] net: mdio: Move mdiobus_scan() within file
+Date: Mon, 16 Jan 2023 13:55:16 +0100
+Subject: [PATCH net-next 4/6] net: mdio: scan bus based on bus capabilities
+ for C22 and C45
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id:  <20230116-net-next-remove-probe-capabilities-v1-1-5aa29738a023@walle.cc>
+Message-Id:  <20230116-net-next-remove-probe-capabilities-v1-4-5aa29738a023@walle.cc>
 References:  <20230116-net-next-remove-probe-capabilities-v1-0-5aa29738a023@walle.cc>
 In-Reply-To:  <20230116-net-next-remove-probe-capabilities-v1-0-5aa29738a023@walle.cc>
 To: Heiner Kallweit <hkallweit1@gmail.com>,
@@ -70,8 +71,8 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  Andrew Lunn <andrew@lunn.ch>, Michael Walle <michael@walle.cc>
 X-Mailer: b4 0.11.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_045540_316141_43F91BB1 
-X-CRM114-Status: GOOD (  17.39  )
+X-CRM114-CacheID: sfid-20230116_045541_865737_1418DCAF 
+X-CRM114-Status: GOOD (  11.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,136 +89,43 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Andrew Lunn <andrew@lunn.ch>
 
-No functional change, just place it earlier in preparation for some
-refactoring.
-
-While at it, correct the comment format and one typo.
+Now that all MDIO bus drivers which set probe_capabilities to
+MDIOBUS_C22_C45 have been converted to use the name API for C45
+transactions, perform the scanning of the bus based on which methods
+the bus provides.
 
 Signed-off-by: Andrew Lunn <andrew@lunn.ch>
 Signed-off-by: Michael Walle <michael@walle.cc>
 ---
- drivers/net/phy/mdio_bus.c | 101 ++++++++++++++++++++++-----------------------
- 1 file changed, 50 insertions(+), 51 deletions(-)
+ drivers/net/phy/mdio_bus.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/net/phy/mdio_bus.c b/drivers/net/phy/mdio_bus.c
-index 902e1c88ef58..61c33c6098a1 100644
+index f173c91842e0..34790e601cb1 100644
 --- a/drivers/net/phy/mdio_bus.c
 +++ b/drivers/net/phy/mdio_bus.c
-@@ -506,6 +506,56 @@ static int mdiobus_create_device(struct mii_bus *bus,
- 	return ret;
- }
+@@ -710,9 +710,7 @@ int __mdiobus_register(struct mii_bus *bus, struct module *owner)
+ 			goto error_reset_gpiod;
+ 	}
  
-+/**
-+ * mdiobus_scan - scan a bus for MDIO devices.
-+ * @bus: mii_bus to scan
-+ * @addr: address on bus to scan
-+ *
-+ * This function scans the MDIO bus, looking for devices which can be
-+ * identified using a vendor/product ID in registers 2 and 3. Not all
-+ * MDIO devices have such registers, but PHY devices typically
-+ * do. Hence this function assumes anything found is a PHY, or can be
-+ * treated as a PHY. Other MDIO devices, such as switches, will
-+ * probably not be found during the scan.
-+ */
-+struct phy_device *mdiobus_scan(struct mii_bus *bus, int addr)
-+{
-+	struct phy_device *phydev = ERR_PTR(-ENODEV);
-+	int err;
-+
-+	switch (bus->probe_capabilities) {
-+	case MDIOBUS_NO_CAP:
-+	case MDIOBUS_C22:
-+		phydev = get_phy_device(bus, addr, false);
-+		break;
-+	case MDIOBUS_C45:
-+		phydev = get_phy_device(bus, addr, true);
-+		break;
-+	case MDIOBUS_C22_C45:
-+		phydev = get_phy_device(bus, addr, false);
-+		if (IS_ERR(phydev))
-+			phydev = get_phy_device(bus, addr, true);
-+		break;
-+	}
-+
-+	if (IS_ERR(phydev))
-+		return phydev;
-+
-+	/* For DT, see if the auto-probed phy has a corresponding child
-+	 * in the bus node, and set the of_node pointer in this case.
-+	 */
-+	of_mdiobus_link_mdiodev(bus, &phydev->mdio);
-+
-+	err = phy_device_register(phydev);
-+	if (err) {
-+		phy_device_free(phydev);
-+		return ERR_PTR(-ENODEV);
-+	}
-+
-+	return phydev;
-+}
-+EXPORT_SYMBOL(mdiobus_scan);
-+
- /**
-  * __mdiobus_register - bring up all the PHYs on a given bus and attach them to bus
-  * @bus: target mii_bus
-@@ -679,57 +729,6 @@ void mdiobus_free(struct mii_bus *bus)
- }
- EXPORT_SYMBOL(mdiobus_free);
+-	if (bus->probe_capabilities == MDIOBUS_NO_CAP ||
+-	    bus->probe_capabilities == MDIOBUS_C22 ||
+-	    bus->probe_capabilities == MDIOBUS_C22_C45) {
++	if (bus->read) {
+ 		err = mdiobus_scan_bus_c22(bus);
+ 		if (err)
+ 			goto error;
+@@ -720,9 +718,7 @@ int __mdiobus_register(struct mii_bus *bus, struct module *owner)
  
--/**
-- * mdiobus_scan - scan a bus for MDIO devices.
-- * @bus: mii_bus to scan
-- * @addr: address on bus to scan
-- *
-- * This function scans the MDIO bus, looking for devices which can be
-- * identified using a vendor/product ID in registers 2 and 3. Not all
-- * MDIO devices have such registers, but PHY devices typically
-- * do. Hence this function assumes anything found is a PHY, or can be
-- * treated as a PHY. Other MDIO devices, such as switches, will
-- * probably not be found during the scan.
-- */
--struct phy_device *mdiobus_scan(struct mii_bus *bus, int addr)
--{
--	struct phy_device *phydev = ERR_PTR(-ENODEV);
--	int err;
--
--	switch (bus->probe_capabilities) {
--	case MDIOBUS_NO_CAP:
--	case MDIOBUS_C22:
--		phydev = get_phy_device(bus, addr, false);
--		break;
--	case MDIOBUS_C45:
--		phydev = get_phy_device(bus, addr, true);
--		break;
--	case MDIOBUS_C22_C45:
--		phydev = get_phy_device(bus, addr, false);
--		if (IS_ERR(phydev))
--			phydev = get_phy_device(bus, addr, true);
--		break;
--	}
--
--	if (IS_ERR(phydev))
--		return phydev;
--
--	/*
--	 * For DT, see if the auto-probed phy has a correspoding child
--	 * in the bus node, and set the of_node pointer in this case.
--	 */
--	of_mdiobus_link_mdiodev(bus, &phydev->mdio);
--
--	err = phy_device_register(phydev);
--	if (err) {
--		phy_device_free(phydev);
--		return ERR_PTR(-ENODEV);
--	}
--
--	return phydev;
--}
--EXPORT_SYMBOL(mdiobus_scan);
--
- static void mdiobus_stats_acct(struct mdio_bus_stats *stats, bool op, int ret)
- {
- 	preempt_disable();
+ 	prevent_c45_scan = mdiobus_prevent_c45_scan(bus);
+ 
+-	if (!prevent_c45_scan &&
+-	    (bus->probe_capabilities == MDIOBUS_C45 ||
+-	     bus->probe_capabilities == MDIOBUS_C22_C45)) {
++	if (!prevent_c45_scan && bus->read_c45) {
+ 		err = mdiobus_scan_bus_c45(bus);
+ 		if (err)
+ 			goto error;
 
 -- 
 2.30.2
