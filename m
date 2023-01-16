@@ -4,87 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E0AFC46467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 17:13:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2528FC46467
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 17:47:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UD4ZhaHjRcn1J2dnBAvslht8N8U56Uf/Euv/eC9LvAo=; b=miKvjKUN6bisYb
-	2mr1NmqDtQFETvS7NhHOAxU9mph9NHhUoBE7m9WvVuJV5lF1OG8RAsnGQEl0eRvWweNNMsOtyeWbw
-	BcMwGcOwe/wk0SxbQNgKW8FLOS0s3UU4D0LFVhYiXGYDGYRHJ0rYVYQoN1TfaxgedQ64DNCxGVky3
-	LbuORsFD1RsOE8Qyxzdj3Ww+JANYK4lnTV2UjpzE4Ryf69RxNNHOQaPn5v5+hgiPAmxQ17hneonUR
-	3ciaXVqvKZbjJEXmysxtePPxJZZ3Q9wt0zndvSbgrr9BSi0XA/DBvJQfdLy7TvM4PQ3U+evBmFzJY
-	Gcbv5OrRaA8oiBcqGA1w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5f0UBgCPp3tFWqM3s+p8DvuQ09mTPhTTw+4Y7XQLJWk=; b=sko/Pg69D6N94wq88vmOTZVcAf
+	ya3IRux4OMWxTUtZmcZ/ZajSDzLZBU0eeI/oBHx7i4J5q/2mNYKZaiJKutH+pmLfr/3BRIZI+A1fX
+	/Dr2usRS2jkRHlaxtcrafa89kh7/5RmZIWyFxMVxVEFUXPoh7mhiaF+WHuntOyPJxo+yaEjc6q6w4
+	fKCFxDafyALVbFNYdkgz7a9j6IDq42tnB5QShFZwZ5+U3l43BamueGQvZajIf4D/iAddAoWlGpimJ
+	dYNun0ky4xpzBnmTc54CQ3ZZdNvFc1q6Kmow1Q4UFJgWHEJMx5eHel/iqD7xoCqLIBx6H4f0VrOJ0
+	tYaCuFHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHT3L-00BWJq-0d; Mon, 16 Jan 2023 17:13:47 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pHTZn-00BZgC-IK; Mon, 16 Jan 2023 17:47:19 +0000
+Received: from mail-dm6nam11on2102.outbound.protection.outlook.com ([40.107.223.102] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHT3J-00BWJ5-Vq; Mon, 16 Jan 2023 17:13:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=UD4ZhaHjRcn1J2dnBAvslht8N8U56Uf/Euv/eC9LvAo=; b=Qa9/mUi3KraNYDEUX1VHIktJ02
-	k/iLIbJZPkfswduCBRDnpLRi+TlNap6f0gvBgvPJa0I7bnkRlkvXOdchvbXkWwQX2e5pZsay/UgxD
-	/jWizIubZygg6yyp9OmjjW8h1Mx80GYKwc+w60hoiUTKZRkoOjnHUA36UClUpDBOcD/kQOk6oxZEt
-	3Dw1vXXS6rOW1vKUk57aymaLekq2YLGvdT/kGH6etCC7OqNuW+WP7XXREaLgZ+pAiKSJs5k2HUmH5
-	G3l5uizvXjFy9W1FkAyAFrMlcxn+edeaj3MO3LR95VSo9NI76E02sJKAZCalP/t8tUClS92vq4Zr4
-	VzT3Ervg==;
-Received: from dilbert.mork.no ([2a01:4f9:c010:a439::d])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pHSfY-005ebD-18;
-	Mon, 16 Jan 2023 16:49:16 +0000
-Received: from canardo.dyn.mork.no ([IPv6:2a01:799:c9a:3200:0:0:0:1])
-	(authenticated bits=0)
-	by dilbert.mork.no (8.15.2/8.15.2) with ESMTPSA id 30GGmpaU2102783
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
-	Mon, 16 Jan 2023 16:48:52 GMT
-Received: from miraculix.mork.no ([IPv6:2a01:799:c9a:3202:549f:9f7a:c9d8:875b])
-	(authenticated bits=0)
-	by canardo.dyn.mork.no (8.15.2/8.15.2) with ESMTPSA id 30GGmjDj2045637
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
-	Mon, 16 Jan 2023 17:48:45 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mork.no; s=b;
-	t=1673887726; bh=UD4ZhaHjRcn1J2dnBAvslht8N8U56Uf/Euv/eC9LvAo=;
-	h=From:To:Cc:Subject:References:Date:Message-ID:From;
-	b=PTdLyuia0bJNc5u9zqdnDShXdiE3GeI5ngqK4fbBuVluwBjD87vjwLYx+IzeNJZv/
-	 taALeumzB0roYExAe6bLKOftCFkFWWhbdUomsV6d83GY5tsvqNetimULAxzYSvGevl
-	 dGFFWwI74DAMZsAEcTMM6rq4JHme9kXjXVMurB0A=
-Received: (nullmailer pid 377843 invoked by uid 1000);
-	Mon, 16 Jan 2023 16:48:45 -0000
-From: =?utf-8?Q?Bj=C3=B8rn_Mork?= <bjorn@mork.no>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Subject: Re: [PATCH v2] net: mtk_sgmii: implement mtk_pcs_ops
-Organization: m
-References: <trinity-d2f74581-c020-4473-a5f4-0fc591233293-1666622740261@3c-app-gmx-bap55>
-	<Y1ansgmD69AcITWx@shell.armlinux.org.uk>
-	<trinity-defa4f3d-804e-401e-bea1-b36246cbc11b-1666685003285@3c-app-gmx-bap29>
-	<87o7qy39v5.fsf@miraculix.mork.no>
-	<Y8VVa0zHk0nCwS1w@shell.armlinux.org.uk>
-	<87h6wq35dn.fsf@miraculix.mork.no>
-	<Y8VmSrjHTlllaDy2@shell.armlinux.org.uk>
-	<87bkmy33ph.fsf@miraculix.mork.no>
-	<Y8Vt9vfEa4w8HXHQ@shell.armlinux.org.uk>
-	<875yd630cu.fsf@miraculix.mork.no>
-	<Y8V+pvWlV6pSuDX/@shell.armlinux.org.uk>
-Date: Mon, 16 Jan 2023 17:48:45 +0100
-In-Reply-To: <Y8V+pvWlV6pSuDX/@shell.armlinux.org.uk> (Russell King's message
-	of "Mon, 16 Jan 2023 16:43:18 +0000")
-Message-ID: <87v8l61l3m.fsf@miraculix.mork.no>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+	id 1pHTZb-00BZf5-UN; Mon, 16 Jan 2023 17:47:09 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=DjFmo+jtOpIIdiBD9XQt9WKos07PfHVt7oklSs7rSxq02Hv6829B93jLCJD+UhZH9SN3k4ywU1y33fSrnRehMui4u8lkjrhqKp4t0bQEsiDvUNAFFfvDz/q/YQ6sYMCyyinOHt0Ezg2zXpqgI1cPiGeerflEqhg8vOeS3EwX2xTmmUO38cxnFNU291f4l5fc2fa11bKL8FpcjPH1fz0SwULnAICT3VJOdszl0Hb9dRgrG2kuobK0MOJ/XVuF8bqBkHkivMR9N4px3RLV04ayaG9ey4MXtIxFPVhU8l9gnp/i0DLzF+yvRTZC0mOo03D1PStCQ7pHxljDFiHtwS7zgw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=5f0UBgCPp3tFWqM3s+p8DvuQ09mTPhTTw+4Y7XQLJWk=;
+ b=oCMNqPtLxyiLTBYM5wYc5phbkawZDSZt/HpFWeoj8rCEQoM/bsRard0ENlYrFO6GsRRVmQbP5mLzr9wnjhegaqtVcCVxoS0pYbS9dSLuVasxRe0vssY9ZchOXB6x/yp/HArgJ9DoyfetJAiDaa9XWx6P35H983wPLHHn/XDpXVHPwew5Ll6fvn2Hx797ghKaWjC/BM3+lJU1sQW3ASaPWW1wrJrvda24xYHxJaIeY7FsZMpibmqvsVyzQX8nlbFbb2OAmOXvGCf/rqTIsLsnATsTrHNo1a2HBmoR6X5orCVfpN0X0i9inrGUOyA8NXPzfVkZvixgxnva5uvzgyUeqA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=in-advantage.com; dmarc=pass action=none
+ header.from=in-advantage.com; dkim=pass header.d=in-advantage.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=inadvantage.onmicrosoft.com; s=selector2-inadvantage-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5f0UBgCPp3tFWqM3s+p8DvuQ09mTPhTTw+4Y7XQLJWk=;
+ b=zW+iqsqvWJ+nryGLM4izEhyshGplvmS1bomIzVWmsR0Rj2MmUb/NNhufIUIbKrugcaEgCAatzsICtG9GCr+BRBh5pWd3ifFwunDba+fGe1Tv+BNYPKeT3noySjdmSTlsxMTPaNojIB29Dq3W41bw0SH+yXVwSoCidNrS2zUsEVQ=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=in-advantage.com;
+Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
+ (2603:10b6:301:35::37) by CH2PR10MB4151.namprd10.prod.outlook.com
+ (2603:10b6:610:aa::22) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6002.11; Mon, 16 Jan
+ 2023 17:47:02 +0000
+Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
+ ([fe80::2015:3589:3e96:2acd]) by MWHPR1001MB2351.namprd10.prod.outlook.com
+ ([fe80::2015:3589:3e96:2acd%5]) with mapi id 15.20.6002.012; Mon, 16 Jan 2023
+ 17:47:01 +0000
+Date: Mon, 16 Jan 2023 07:47:00 -1000
+From: Colin Foster <colin.foster@in-advantage.com>
+To: linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org, netdev@vger.kernel.org
+Cc: John Crispin <john@phrozen.org>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Marek Vasut <marex@denx.de>, Sean Wang <sean.wang@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	=?utf-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
+	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	UNGLinuxDriver@microchip.com,
+	Woojung Huh <woojung.huh@microchip.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Rob Herring <robh+dt@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	George McCollister <george.mccollister@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Subject: Re: [PATCH v7 net-next 00/10] dt-binding preparation for ocelot
+ switches
+Message-ID: <Y8WNlBD+R1J1lAIx@MSI.localdomain>
+References: <20230112175613.18211-1-colin.foster@in-advantage.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230112175613.18211-1-colin.foster@in-advantage.com>
+X-ClientProxiedBy: BYAPR07CA0089.namprd07.prod.outlook.com
+ (2603:10b6:a03:12b::30) To MWHPR1001MB2351.namprd10.prod.outlook.com
+ (2603:10b6:301:35::37)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Virus-Scanned: clamav-milter 0.103.7 at canardo
-X-Virus-Status: Clean
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MWHPR1001MB2351:EE_|CH2PR10MB4151:EE_
+X-MS-Office365-Filtering-Correlation-Id: 89994719-4834-4a12-f8d3-08daf7e9abb4
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	jkxRWVsFibY+VXIc+gQ6zElsP5uQ6yvht1WTMThSMVWM865RqcuzBK0wZH8MrO/zKY4CnQ+7hPvuJJSexd0Jk/TwwXi6vfb6r0sV9rLxEahRghaye5/OJ327Uxsx8JkGq/7RdamaPcTJcEWJLYj4+bcEq4c9/ymJKq4WGdPnzz3yl1z5Px7U67l9um5CX9qGDi8JcFlHR4kYJ9HIKa3ybOXwMI6vDqB8xi9AHwequ9ifPYiZfXsI4Guqxn8uYYlu6ImGpxnYqwodkbQozBJorSJghQPOidWsALaK7V2RX6LTRgFcPK8XPxvA0dOluJEVtDJK54PW6HCCFkqiuvCqPlc8+B2p2i4xE97A/R4YV441ES1TyOyw3V86rloIwrDwY8w8PwJ60ELpyAilSJuoZJWbIWql/3se3fsWLFCBILBd1hJmJOuV+kUlG+deLcNk0kkR5bZSFG3acsGa+j+BjXIoBw5XIdmsIPyYWM4yVhPtNozMi9hbZVTCGjmtEZ5wRHDk+071Bot06XF6YAZS8+pQz8F4d7VI7NNt3mvzk0jo5a8hHn8M6/CS/AN2YJzmXl/uWMIIox37vcA+2RbN3p0XcAUv7btVoHY0L9NSsb9iLTX0E+4/jyOCnTDipKOqK626jgAzbiWQ6/Fk0Ko+dz72lFUMASwrX8AqtcMoUzxbl5vbwLQl4620RggujbXB
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2351.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(376002)(39830400003)(396003)(346002)(366004)(136003)(451199015)(6486002)(478600001)(2906002)(38100700002)(86362001)(6512007)(83380400001)(9686003)(6506007)(66899015)(186003)(66946007)(7406005)(5660300002)(4326008)(7416002)(66476007)(66556008)(41300700001)(8676002)(316002)(8936002)(54906003)(44832011)(67856001);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?6Mt/FZjmMD3waVzgCqyU2RGWXLouxqsFRRodjFPX2/jIKjteKbZ+oL98MAnU?=
+ =?us-ascii?Q?6vEt3KWuPrJv5k6gh4duDdYIUwjSgCqTFdRcA/pQQaYUulh0dGoi/zQgSWZQ?=
+ =?us-ascii?Q?tN0e3IGbzhnPXzFopRrn7ZHEbgWGBqWkmW9l+dUkheYNUVYZ9+qauaPE+Ii7?=
+ =?us-ascii?Q?c+UM/u08whvbnmWPpZaYRjsCQ/stAUDzrtB0YqNQhm+DKa0kuKOcXuZ/AvvJ?=
+ =?us-ascii?Q?A+aJWJYPMnNxEI+q2zMQyPSnsywXPQbrfzwG7IPzYOXj1FqoxywDZBHlWRji?=
+ =?us-ascii?Q?RMa6pvz3+xbKDWh/AhPvE2+Y/bRc0LmYn0SQDq5zKXE8L+0rF9E6oOGj6NGY?=
+ =?us-ascii?Q?EbMd2jZZspUr1HMKY1Mw63zJW8SKoA98XRoQddZSV8bpR3JSWT7IW4sY1SqX?=
+ =?us-ascii?Q?1YQPI5yBTcwMchw1Pbe027avIKaczmpV0ZtRmXbUa5vPCM044rnX7LM35p8w?=
+ =?us-ascii?Q?WGKRQNmeyZvZ2Q5mGRQB4ZIGjXEJj2BUUp5jQKrdVD6HaJlXv2gsT6Yyjs7c?=
+ =?us-ascii?Q?D6XF5lVW8VVknOmN+3p1ohOjFGExlj6uooh+DQaE8NCv18u5OiA+VnuorFr9?=
+ =?us-ascii?Q?Gx5Isw1xBOw33qT+NwPrq4L+fhSiNXDxh4xzR8P0cf8yIfT2mnz0EOMV4EQ4?=
+ =?us-ascii?Q?kmS05zpwCwJDMKblLNxKTDukemlTPsoQFmii2wy506Cr/0IRSi+2HZ3h3Ikd?=
+ =?us-ascii?Q?O5xAXa+Hni2wbwewsa0mVgIoudGC4T9qYxAXhAp/ppRidX6Bpvnj8QeZTnzw?=
+ =?us-ascii?Q?obZnzQ6kF71Xp2q4Kpq5wRGKQxk2HIpSff2izyTn/whFwnDMhjmVylyp03jl?=
+ =?us-ascii?Q?YR1w+vWac/B6fuya/dr6+n7bk9zZ6wLLViAUEF71jI2hEsau+KG9ISFymvbE?=
+ =?us-ascii?Q?QZQb50Psd6U70ti7E2RANV+ly63y2WivDCcitVKCGDNdUmGsODByQ77lPQvq?=
+ =?us-ascii?Q?QOjW7N1tWVYf+TBQ8Olvq5xI5j8K+wGn7Sx0rG6pI9m2JiKuFIVgWktYUUv6?=
+ =?us-ascii?Q?3NfthUAwlbqdKGcMucyT5K1YHbpvUDRKgOt3meH3GdQ/9fmNTqr0SKYddG6a?=
+ =?us-ascii?Q?4uJlViEzyGAguY/3KJYNEmh2MbjbMtAf00Og6cavBx9+0dY2jdaj+6LnZ7nu?=
+ =?us-ascii?Q?ixzIjVdz7upaVq5R2jfAQ6y/OJDnDn+Noq+eVYkcAMPODLnYpAtvD3YALhOO?=
+ =?us-ascii?Q?BwDzMsxwCedM2t1n8MSlKdY9NkDqUwc+7yb5GfYMwVlmnQtICmS1Davu+LCY?=
+ =?us-ascii?Q?gR7WT8n8ZTBoFFACmZ21/ffmaGGpQDzi9TY4OeWDikyTBr3bbJLGdzGMDO0+?=
+ =?us-ascii?Q?YeSciJeop6CUdeRfsX3tgLAYX7mJIFBQXqQ8E+MS5ysqaKm6kkRCXBCaaB4m?=
+ =?us-ascii?Q?fs6DiV80/Ti7GwEQFWNkMB7S+7WH26jjsJ9qR9h/fWBBRKAxsG4HIUvSTf5h?=
+ =?us-ascii?Q?cuFG8JV2kfrYQwF0784ELTrGkkIytEZV2zep98d2drE1Wqvqimkc3EJqdvlX?=
+ =?us-ascii?Q?iFDKfdd3qWmiZVAwVVM6IuoBw1bKRpKgrP+BL0dTb3uvMgOUbAdUw8tsVRKi?=
+ =?us-ascii?Q?Bh1tL+QIJUxq5D1NJkzZRr2lcevuCWIC5cejWO9X3rdgSnIu0a5HnJQlG+mR?=
+ =?us-ascii?Q?KZIrWypmiDnkYs5Bik1IJIo/IsgOIhLIffGg5eKSxgUCLkN5dpZWqgd1z0km?=
+ =?us-ascii?Q?ZLEAm4SayB+xUDInPwD9GoUkeEs=3D?=
+X-OriginatorOrg: in-advantage.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 89994719-4834-4a12-f8d3-08daf7e9abb4
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2351.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Jan 2023 17:47:01.0457
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 48e842ca-fbd8-4633-a79d-0c955a7d3aae
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: rZUwMgB5k6AJTZ/2F6SHdwEqMu9BMFSRVhqXWXX8kVIz3fTkw2rQ12j2cm1AoggO46cklIkNKGVc/cjp9kHbocXLCzfvINOqY/PIe1EJugM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR10MB4151
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_164912_774072_65DC8BD0 
-X-CRM114-Status: UNSURE (   8.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230116_094708_212948_955C28EE 
+X-CRM114-Status: GOOD (  28.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,29 +152,116 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Frank Wunderlich <linux@fw-web.de>, Paolo Abeni <pabeni@redhat.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-"Russell King (Oracle)" <linux@armlinux.org.uk> writes:
+I saw on Patchwork I'd missed Krzysztof's CC. Apologies - I missed it
+in a copy-paste error.
 
-> I found the document for the PHY at:
->
-> https://assets.maxlinear.com/web/documents/617792_gpy212b1vc_gpy212c0vc_d=
-s_rev1.3.pdf
->
-> It seems as I suspected, the PHY has not completed SGMII AN. Please
-> can you read register 8 when operating at 1G speeds as well
-> (VSPEC1_SGMII_CTRL)? Thanks.
-
-Both phys at 1G:
-
-root@OpenWrt:/# mdio mdio-bus 5:30 raw 8
-0x34da
-
-root@OpenWrt:/# mdio mdio-bus 6:30 raw 8
-0x34da
-
-
-Bj=C3=B8rn
+On Thu, Jan 12, 2023 at 07:56:03AM -1000, Colin Foster wrote:
+> Ocelot switches have the abilitiy to be used internally via
+> memory-mapped IO or externally via SPI or PCIe. This brings up issues
+> for documentation, where the same chip might be accessed internally in a
+> switchdev manner, or externally in a DSA configuration. This patch set
+> is perparation to bring DSA functionality to the VSC7512, utilizing as
+> much as possible with an almost identical VSC7514 chip.
+> 
+> This patch set changed quite a bit from v2, so I'll omit the background
+> of how those sets came to be. Rob offered a lot of very useful guidance.
+> My thanks.
+> 
+> At the end of the day, with this patch set, there should be a framework
+> to document Ocelot switches (and any switch) in scenarios where they can
+> be controlled internally (ethernet-switch) or externally (dsa-switch).
+> 
+> ---
+> 
+> v6 -> v7
+>   * Add Reviewed / Acked on patch 1
+>   * Clean up descriptions on Ethernet / DSA switch port bindings
+> 
+> v5 -> v6
+>   * Rebase so it applies to net-next cleanly.
+>   * No other changes - during the last submission round I said I'd
+>     submit v6 with a change to move $dsa-port.yaml to outside the allOf
+>     list. In retrospect that wasn't the right thing to do, because later
+>     in the patch series the $dsa-port.yaml is removed outright. So I
+>     believe the submission in v5 to keep "type: object" was correct.
+> 
+> v4 -> v5
+>   * Sync DSA maintainers with MAINTAINERS file (new patch 1)
+>   * Undo move of port description of mediatek,mt7530.yaml (patch 4)
+>   * Move removal of "^(ethernet-)?switch(@.*)?$" in dsa.yaml from patch 4
+>     to patch 8
+>   * Add more consistent capitalization in title lines and better Ethernet
+>     switch port description. (patch 8)
+> 
+> v3 -> v4
+>   * Renamed "base" to "ethernet-ports" to avoid confusion with the concept
+>     of a base class.
+>   * Squash ("dt-bindings: net: dsa: mediatek,mt7530: fix port description location")
+>     patch into ("dt-bindings: net: dsa: utilize base definitions for standard dsa
+>     switches")
+>   * Corrections to fix confusion about additonalProperties vs unevaluatedProperties.
+>     See specific patches for details.
+> 
+> v2 -> v3
+>   * Restructured everything to use a "base" iref for devices that don't
+>     have additional properties, and simply a "ref" for devices that do.
+>   * New patches to fix up brcm,sf2, qca8k, and mt7530
+>   * Fix unevaluatedProperties errors from previous sets (see specific
+>     patches for more detail)
+>   * Removed redundant "Device Tree Binding" from titles, where applicable.
+> 
+> v1 -> v2
+>   * Two MFD patches were brought into the MFD tree, so are dropped
+>   * Add first patch 1/6 to allow DSA devices to add ports and port
+>     properties
+>   * Test qca8k against new dt-bindings and fix warnings. (patch 2/6)
+>   * Add tags (patch 3/6)
+>   * Fix vsc7514 refs and properties
+> 
+> ---
+> 
+> Colin Foster (10):
+>   dt-bindings: dsa: sync with maintainers
+>   dt-bindings: net: dsa: sf2: fix brcm,use-bcm-hdr documentation
+>   dt-bindings: net: dsa: qca8k: remove address-cells and size-cells from
+>     switch node
+>   dt-bindings: net: dsa: utilize base definitions for standard dsa
+>     switches
+>   dt-bindings: net: dsa: allow additional ethernet-port properties
+>   dt-bindings: net: dsa: qca8k: utilize shared dsa.yaml
+>   dt-bindings: net: dsa: mediatek,mt7530: remove unnecessary dsa-port
+>     reference
+>   dt-bindings: net: add generic ethernet-switch
+>   dt-bindings: net: add generic ethernet-switch-port binding
+>   dt-bindings: net: mscc,vsc7514-switch: utilize generic
+>     ethernet-switch.yaml
+> 
+>  .../bindings/net/dsa/arrow,xrs700x.yaml       |  2 +-
+>  .../devicetree/bindings/net/dsa/brcm,b53.yaml |  2 +-
+>  .../devicetree/bindings/net/dsa/brcm,sf2.yaml | 15 +++--
+>  .../devicetree/bindings/net/dsa/dsa-port.yaml | 30 ++-------
+>  .../devicetree/bindings/net/dsa/dsa.yaml      | 49 +++++++--------
+>  .../net/dsa/hirschmann,hellcreek.yaml         |  2 +-
+>  .../bindings/net/dsa/mediatek,mt7530.yaml     |  6 +-
+>  .../bindings/net/dsa/microchip,ksz.yaml       |  2 +-
+>  .../bindings/net/dsa/microchip,lan937x.yaml   |  2 +-
+>  .../bindings/net/dsa/mscc,ocelot.yaml         |  2 +-
+>  .../bindings/net/dsa/nxp,sja1105.yaml         |  2 +-
+>  .../devicetree/bindings/net/dsa/qca8k.yaml    | 14 +----
+>  .../devicetree/bindings/net/dsa/realtek.yaml  |  2 +-
+>  .../bindings/net/dsa/renesas,rzn1-a5psw.yaml  |  2 +-
+>  .../bindings/net/ethernet-switch-port.yaml    | 26 ++++++++
+>  .../bindings/net/ethernet-switch.yaml         | 62 +++++++++++++++++++
+>  .../bindings/net/mscc,vsc7514-switch.yaml     | 31 +---------
+>  MAINTAINERS                                   |  2 +
+>  18 files changed, 145 insertions(+), 108 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/net/ethernet-switch-port.yaml
+>  create mode 100644 Documentation/devicetree/bindings/net/ethernet-switch.yaml
+> 
+> -- 
+> 2.25.1
+> 
 
