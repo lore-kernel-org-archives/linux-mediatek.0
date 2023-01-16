@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 769EDC46467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 09:46:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 469ACC46467
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 09:47:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D9q9+EB9tFYnjpJaSgG63m4nxkyiIYt0RNii/Zj/ntY=; b=APx/S5cNE7tYY7g5ah8Nc9elKQ
-	zLBFzBwOO9Wu6d7BtVZMHju0f7uPpGAhdHDpdyGpM9UGmZjScqfkEEVuUEMxp2Ch+X53C7e5IvMB9
-	YdgLzWp4P1YwTtgw9IyrRCwocaXm/Avuwcy1/9wlGSefwXhXiFCU29M/B04VkCQi0cdW/RPj5bImG
-	NMPLiQQx3hv0O2G8sLXVih3EAD/3ApAS3mRt1JzkV7ydeoNr8lHWQnM1FGGIkR9osdc0GiXM3i6W7
-	FbsENbLNP9676Zgt+LOPy6Vki5eTPBVplg/2egoHuMwgcbluP8N/v/O1klaO9bUMNhHBJxPp1Tt73
-	zVmPKloA==;
+	bh=8a9qpEIewqaqSAbQg7ntAUW7gDieheAG/80rlSxUSLE=; b=m+4Hh1gdhb4G//+R9mYcI9ErLk
+	DrBM4zJg0YWAqrtrYLSuw1sNDrWwJsK8YYb/Ikt6BWXlHGEP1JFfmaZfXKx0qbZCEFI7GnVr025t9
+	k6RObu8hTIIpznQ0H2NKnco4Yx5HVj1hknmnvfizLfbeFnUjOXPLBypLsoJS7kL/I8v0L/BDvc3ET
+	7yMbIyw3f+bCE3eRsnuKkPBkgIwK4xstp0eCUTwjfhHUMNva7yz8vfYzKlivHJZmQrBRDSDUc0H0P
+	P26n5x0TGnutqbTyCI04EZVZ6fy9ixIdIRrCkBLsIYFPZaNFxgt4Q/+X+sMl2GOY89zObVaGhTmvS
+	qbb942SA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHM4c-009ST8-2z; Mon, 16 Jan 2023 09:46:38 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pHM5j-009Sst-C6; Mon, 16 Jan 2023 09:47:47 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHM4N-009SMj-9H; Mon, 16 Jan 2023 09:46:24 +0000
+	id 1pHM5U-009Sm1-9p; Mon, 16 Jan 2023 09:47:33 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A6E0766029A5;
-	Mon, 16 Jan 2023 09:46:18 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 30B6866029A5;
+	Mon, 16 Jan 2023 09:47:29 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1673862380;
-	bh=nYQprZYDKKBXvoouxOYysIQde0DT4K7g+1YTSkKBGiU=;
+	s=mail; t=1673862450;
+	bh=33zIFHwmx9BzY/eZo1j7iwlJxGh1pbqYh9OLwq0AIO8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=fCApfwp9woRngKm4ZG1JqCe1yX4d8c7xfrO7LrW+GG7lSywzWwWeeIwU3Dum54yfK
-	 nUpHOLQzwI4kPzWF5uawdu3O5okGrLLMWS6AZAuIUS7y3MRp7her0w3C/6cW8e7cAf
-	 97Yq+BWJjT4xBp4HVbtgi5O62P0aYr5TpXd0YA+Bz366oVzInpp1V2X+Dm1+aSsIQu
-	 eUh3Jv4RfX4pbC8GZwZZCuqnLHeSuFo22t/tvMCwwqrnoABMVR2hZ9VLwwNOqkiWQO
-	 zpQnYL3o+9v+DHRHXmmrFVWm94uTnVxRhjS1yL7gjLXoD0jYCT2D1XefE24Ex6XaDm
-	 HHjZgdmtzZfhQ==
-Message-ID: <1a9a09d5-58e2-badc-6d1c-fe2008c305f9@collabora.com>
-Date: Mon, 16 Jan 2023 10:46:16 +0100
+	b=VU1ikWfY30pNkiJqE3XjwoKgR44syhpC/71YWMr5OFxsOcNB/z4aLE2aDesOeWB1+
+	 1OhBFUG0uMCPAYZihjxzOndhOH4HcnDMH6Z3NNYRWYba7gkmK3UkhtDIsVCg29bFUP
+	 XdeqtHlTY/XjseoQfuIrR6RC6RH0qZv4AHoXdFfciqrLDOF9CDgKvVd+twcxWlY33c
+	 sqp7zDq9lTDBuosMn6mfyF8dJYKjSt7G2u9upE8YOO4bXqRus0rPafoZaBP0bRnh4+
+	 9r6QLLSqzK1oAXdA8ntWHCBXf3vOeOEW/ZzrRsaSqQ4zaEPZvFW6gdhZioGC4p+cIl
+	 yZmKVcQLdH39Q==
+Message-ID: <6aa2d375-144f-c66d-0bf9-24d9f8226907@collabora.com>
+Date: Mon, 16 Jan 2023 10:47:26 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.0
-Subject: Re: [PATCH 07/10] iommu/mediatek: Add a gap for the iova regions
+Subject: Re: [PATCH 08/10] arm64: dts: mt8195: Add dma-ranges for the parent
+ "soc" node
 Content-Language: en-US
 To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
@@ -62,14 +63,14 @@ Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
  kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>,
  chengci.xu@mediatek.com, youlin.pei@mediatek.com, anan.sun@mediatek.com
 References: <20230113060133.9394-1-yong.wu@mediatek.com>
- <20230113060133.9394-8-yong.wu@mediatek.com>
+ <20230113060133.9394-9-yong.wu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230113060133.9394-8-yong.wu@mediatek.com>
+In-Reply-To: <20230113060133.9394-9-yong.wu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_014623_492090_F4850E31 
-X-CRM114-Status: GOOD (  14.20  )
+X-CRM114-CacheID: sfid-20230116_014732_504469_3FF9EF93 
+X-CRM114-Status: GOOD (  10.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,24 +86,19 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 13/01/23 07:01, Yong Wu ha scritto:
-> Currenly masters can not indicate its special dma-ranges. Prepare
-> for vcodec. some vcodec end address is address + size, if our size
-> is 4G, the end address may be 0x2_0000_0000. and the
-> register is u32, then it may get zero. thus add a gap(8M) for
-> all the regions.
+> After commit f1ad5338a4d5 ("of: Fix "dma-ranges" handling for bus
+> controllers"), the dma-ranges property is not allowed for
+> the leaf node. But our iommu/dma-ranges is 16GB, we still expect
+> separate the 16GB dma-range like:
+> a) display is in 0 - 4GB;
+> b) vcodec is in 4GB - 8GB;
+> c) camera is in 8GB - 12GB.
+> We can not expect all the masters add a parent node for them,
+> especial for the existed drivers/nodes.
+> Thus, we add whole the 16GB dma-ranges in the parent "soc" node.
 > 
 > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 
-I definitely agree on the fact that we do *need* this series... but this
-particular commit looks like a hack.
-
-I'm not convinced: I have a hunch that this one will sooner or later backfire
-on us and break things again... at the same time, I'm not sure how to do this
-properly at this point (I didn't do any research, anyway).
-
-Ideas?
-
-Regards,
-Angelo
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
