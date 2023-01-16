@@ -4,97 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FA00C46467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 20:45:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6590AC54EBE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 23:53:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=McaoZ+7Dkbq9jEM9b4UoYkn0ULYk5tb0S1SNSyF9RUA=; b=OAuUi0iDd5Re4OPutXEI7PylyI
-	IzO2SvdpP6hNAvreipEF39eK0hYkIhZi4gKMD7UdLs4g3tAyxLgZH1oXj4B8iaOzzHTqmcRXivGR3
-	RtOfuvr2XQ6+GyilLY+3OiDUSSvrH7qDap0OqursiHibsu278zyg8LTTSIQII6IZYcbGLVY1FmZcm
-	GZCBfGoqaET2GTeLQhWeeI9WK+1DKwq0BGZU62VjE6YNKx7u/xMgLqCWWG03cAZ8x2OKN8pd0aLIN
-	pAiYQ8F2Vk8PoGlvJXmR1AJXa06maESsaBGn2rmESkaC3wMdPppFdCx2GWou6q7EXTYcP6XvKZ70t
-	GBfTRCGg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qrw3VdQJ88seeNfsCmHZ0Ug/EiNIUO7V5SWjfSjWOKQ=; b=n0D+lVUgoNln2eRyyQXTWUfxlA
+	Gbalxd6r/db9ElHewmWvBvGznxPr2Kays0r2gvoMqe3+YmDqBxdD/JlwnYGv4aQf0NpQwWNAt8gpq
+	HoO3A6Z4cT5vfEeW+CLSmkcZPKTiVB4w7kjbsXJSl6k2PG0PxmoM5WE6lMdd902JgrsmSBgiao7W0
+	gyjzM6tntMdZLWdN6RirGKg2Rxm+1Wo47/FSjD3pEQww4WMTVBj6CTk1H4AHIq8LoX697zmIN/IPF
+	V+fxTTzh9olRmgglLLuky5PK4Y/NHFtR64Ea8nAZzN7qxjnbYxayHfJpMxWiEYJblkPOP6iOfO/Y7
+	4CLwWCVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHWLm-00C1Ol-Il; Mon, 16 Jan 2023 20:45:02 +0000
-Received: from relay03.th.seeweb.it ([5.144.164.164])
+	id 1pHZHk-00CIKl-9j; Mon, 16 Jan 2023 23:53:04 +0000
+Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHWLi-00C1O6-3V
-	for linux-mediatek@lists.infradead.org; Mon, 16 Jan 2023 20:44:59 +0000
-Received: from SoMainline.org (94-211-6-86.cable.dynamic.v4.ziggo.nl [94.211.6.86])
+	id 1pHZHW-00CICu-OG; Mon, 16 Jan 2023 23:52:52 +0000
+Received: from mwalle01.sab.local (unknown [213.135.10.150])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by m-r1.th.seeweb.it (Postfix) with ESMTPSA id 7A08D1FAA6;
-	Mon, 16 Jan 2023 21:44:53 +0100 (CET)
-Date: Mon, 16 Jan 2023 21:44:52 +0100
-From: Marijn Suijten <marijn.suijten@somainline.org>
-To: Jonathan Cameron <jic23@kernel.org>
-Cc: Nuno =?utf-8?B?U8Oh?= <nuno.sa@analog.com>, openbmc@lists.ozlabs.org,
-	linux-imx@nxp.com, linux-stm32@st-md-mailman.stormreply.com,
-	linux-iio@vger.kernel.org, linux-mips@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
-	linux-arm-msm@vger.kernel.org,
-	Gwendal Grignou <gwendal@chromium.org>,
-	Saravanan Sekar <sravanhome@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
-	Olivier Moysan <olivier.moysan@foss.st.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Thara Gopinath <thara.gopinath@linaro.org>,
-	Bjorn Andersson <bjorn.andersson@linaro.org>,
-	Arnd Bergmann <arnd@arndb.de>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Patrick Venture <venture@google.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Benson Leung <bleung@chromium.org>, Nancy Yuen <yuenn@google.com>,
-	Miquel Raynal <miquel.raynal@bootlin.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Zhang Rui <rui.zhang@intel.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Christophe Branchereau <cbranchereau@gmail.com>,
-	Cai Huoqing <cai.huoqing@linux.dev>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Eugen Hristev <eugen.hristev@microchip.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Andy Shevchenko <andy.shevchenko@gmail.com>,
-	Guenter Roeck <groeck@chromium.org>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Andy Gross <agross@kernel.org>, Amit Kucheria <amitk@kernel.org>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Haibo Chen <haibo.chen@nxp.com>,
-	Jishnu Prakash <quic_jprakash@quicinc.com>
-Subject: Re: [PATCH v3 12/15] iio: adc: qcom-spmi-adc5: convert to device
- properties
-Message-ID: <20230116204452.il4gase2szipeexz@SoMainline.org>
-References: <20220715122903.332535-1-nuno.sa@analog.com>
- <20220715122903.332535-13-nuno.sa@analog.com>
- <20220806192048.0ca41cc5@jic23-huawei>
+	by mail.3ffe.de (Postfix) with ESMTPSA id D81451645;
+	Tue, 17 Jan 2023 00:52:45 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
+	t=1673913166;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=qrw3VdQJ88seeNfsCmHZ0Ug/EiNIUO7V5SWjfSjWOKQ=;
+	b=rvBx26LB/U/ku27CC+lu1uAY7KDI3oh4SWNBjiMZKuPQB+vluqypoYHhh5/2/VukYWWUlc
+	UT7lV2rpdokc5dCe1bAjyAZtkHwq8etN0SQsfmTRnLepJAbIYpc6feOCz4+pNTSiWpzhn8
+	IHadilsFnOnfAEsWsBPVi+83xk/a5TeB1rOgjQfqySx9PDK2/QQ3m6Ao35i2v3GGXy4iYp
+	Wjwk75qQuCMUwq8PSkAVJFdPd0mgfRA5PJlGfZ9KfhJlVZU4lX0g/tWza991VE/YnhVlVa
+	/CyBLp1jcHEkB1AwLQMAdwxpXE3r6i4YX3YA1GEqJXimD20zJljhis3cRes2Zw==
+From: Michael Walle <michael@walle.cc>
+Date: Tue, 17 Jan 2023 00:52:18 +0100
+Subject: [PATCH net-next 03/12] net: nixge: Separate C22 and C45 transactions
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220806192048.0ca41cc5@jic23-huawei>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id:  <20230116-net-next-c45-seperation-part-3-v1-3-0c53afa56aad@walle.cc>
+References:  <20230116-net-next-c45-seperation-part-3-v1-0-0c53afa56aad@walle.cc>
+In-Reply-To:  <20230116-net-next-c45-seperation-part-3-v1-0-0c53afa56aad@walle.cc>
+To: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, Byungho An <bh74.an@samsung.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Yisen Zhuang <yisen.zhuang@huawei.com>, Salil Mehta <salil.mehta@huawei.com>,
+ Tom Lendacky <thomas.lendacky@amd.com>,
+ Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
+ Sergey Shtylyov <s.shtylyov@omp.ru>
+Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-renesas-soc@vger.kernel.org,
+ Andrew Lunn <andrew@lunn.ch>, Michael Walle <michael@walle.cc>
+X-Mailer: b4 0.11.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_124458_328160_61A1882D 
-X-CRM114-Status: GOOD (  18.99  )
+X-CRM114-CacheID: sfid-20230116_155251_010472_46D33DA1 
+X-CRM114-Status: GOOD (  14.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,34 +87,216 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-08-06 19:20:48, Jonathan Cameron wrote:
-> On Fri, 15 Jul 2022 14:29:00 +0200
-> Nuno Sá <nuno.sa@analog.com> wrote:
-> 
-> > Make the conversion to firmware agnostic device properties. As part of
-> > the conversion the IIO inkern interface 'of_xlate()' is also converted to
-> > 'fwnode_xlate()'. The goal is to completely drop 'of_xlate' and hence OF
-> > dependencies from IIO.
-> > 
-> > Signed-off-by: Nuno Sá <nuno.sa@analog.com>
-> > Acked-by: Linus Walleij <linus.walleij@linaro.org>
-> > Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
-> +CC Marijin who happend to post a patch for this driver that I just accepted
-> and hence probably has hardware access.  Any chance of a test for this series?
-> 
-> If not, no problem as this is fairly mechanical and we have testing on some of
-> the other drivers using the new code.
-> 
-> I'll probably queue this up in the meantime but it won't end up upstream
-> for a few weeks yet.
+From: Andrew Lunn <andrew@lunn.ch>
 
-Jonathan,
+The nixge MDIO bus driver can perform both C22 and C45 transfers.
+Create separate functions for each and register the C45 versions using
+the new API calls where appropriate.
 
-This CC just surfaced in my inbox while searching for our current
-discussion around missing labels in qcom-spmi-vadc - and on the side a
-userspace @xx label name ABI break (in qcom-spmi-adc5) caused by this
-patch's fwnode_get_name change - we could've caught it if I had not
-accidentally marked it as read and/or forgot about it.  My apologies.
+Signed-off-by: Andrew Lunn <andrew@lunn.ch>
+Signed-off-by: Michael Walle <michael@walle.cc>
+---
+ drivers/net/ethernet/ni/nixge.c | 141 ++++++++++++++++++++++++----------------
+ 1 file changed, 85 insertions(+), 56 deletions(-)
 
-- Marijn
+diff --git a/drivers/net/ethernet/ni/nixge.c b/drivers/net/ethernet/ni/nixge.c
+index 62320be4de5a..56e02cba0b8a 100644
+--- a/drivers/net/ethernet/ni/nixge.c
++++ b/drivers/net/ethernet/ni/nixge.c
+@@ -1081,40 +1081,59 @@ static const struct ethtool_ops nixge_ethtool_ops = {
+ 	.get_link		= ethtool_op_get_link,
+ };
+ 
+-static int nixge_mdio_read(struct mii_bus *bus, int phy_id, int reg)
++static int nixge_mdio_read_c22(struct mii_bus *bus, int phy_id, int reg)
+ {
+ 	struct nixge_priv *priv = bus->priv;
+ 	u32 status, tmp;
+ 	int err;
+ 	u16 device;
+ 
+-	if (reg & MII_ADDR_C45) {
+-		device = (reg >> 16) & 0x1f;
++	device = reg & 0x1f;
+ 
+-		nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_ADDR, reg & 0xffff);
++	tmp = NIXGE_MDIO_CLAUSE22 | NIXGE_MDIO_OP(NIXGE_MDIO_C22_READ) |
++	      NIXGE_MDIO_ADDR(phy_id) | NIXGE_MDIO_MMD(device);
+ 
+-		tmp = NIXGE_MDIO_CLAUSE45 | NIXGE_MDIO_OP(NIXGE_MDIO_OP_ADDRESS)
+-			| NIXGE_MDIO_ADDR(phy_id) | NIXGE_MDIO_MMD(device);
++	nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_OP, tmp);
++	nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_CTRL, 1);
+ 
+-		nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_OP, tmp);
+-		nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_CTRL, 1);
++	err = nixge_ctrl_poll_timeout(priv, NIXGE_REG_MDIO_CTRL, status,
++				      !status, 10, 1000);
++	if (err) {
++		dev_err(priv->dev, "timeout setting read command");
++		return err;
++	}
+ 
+-		err = nixge_ctrl_poll_timeout(priv, NIXGE_REG_MDIO_CTRL, status,
+-					      !status, 10, 1000);
+-		if (err) {
+-			dev_err(priv->dev, "timeout setting address");
+-			return err;
+-		}
++	status = nixge_ctrl_read_reg(priv, NIXGE_REG_MDIO_DATA);
+ 
+-		tmp = NIXGE_MDIO_CLAUSE45 | NIXGE_MDIO_OP(NIXGE_MDIO_C45_READ) |
+-			NIXGE_MDIO_ADDR(phy_id) | NIXGE_MDIO_MMD(device);
+-	} else {
+-		device = reg & 0x1f;
++	return status;
++}
+ 
+-		tmp = NIXGE_MDIO_CLAUSE22 | NIXGE_MDIO_OP(NIXGE_MDIO_C22_READ) |
+-			NIXGE_MDIO_ADDR(phy_id) | NIXGE_MDIO_MMD(device);
++static int nixge_mdio_read_c45(struct mii_bus *bus, int phy_id, int device,
++			       int reg)
++{
++	struct nixge_priv *priv = bus->priv;
++	u32 status, tmp;
++	int err;
++
++	nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_ADDR, reg & 0xffff);
++
++	tmp = NIXGE_MDIO_CLAUSE45 |
++	      NIXGE_MDIO_OP(NIXGE_MDIO_OP_ADDRESS) |
++	      NIXGE_MDIO_ADDR(phy_id) | NIXGE_MDIO_MMD(device);
++
++	nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_OP, tmp);
++	nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_CTRL, 1);
++
++	err = nixge_ctrl_poll_timeout(priv, NIXGE_REG_MDIO_CTRL, status,
++				      !status, 10, 1000);
++	if (err) {
++		dev_err(priv->dev, "timeout setting address");
++		return err;
+ 	}
+ 
++	tmp = NIXGE_MDIO_CLAUSE45 | NIXGE_MDIO_OP(NIXGE_MDIO_C45_READ) |
++	      NIXGE_MDIO_ADDR(phy_id) | NIXGE_MDIO_MMD(device);
++
+ 	nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_OP, tmp);
+ 	nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_CTRL, 1);
+ 
+@@ -1130,57 +1149,65 @@ static int nixge_mdio_read(struct mii_bus *bus, int phy_id, int reg)
+ 	return status;
+ }
+ 
+-static int nixge_mdio_write(struct mii_bus *bus, int phy_id, int reg, u16 val)
++static int nixge_mdio_write_c22(struct mii_bus *bus, int phy_id, int reg,
++				u16 val)
+ {
+ 	struct nixge_priv *priv = bus->priv;
+ 	u32 status, tmp;
+ 	u16 device;
+ 	int err;
+ 
+-	if (reg & MII_ADDR_C45) {
+-		device = (reg >> 16) & 0x1f;
++	device = reg & 0x1f;
+ 
+-		nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_ADDR, reg & 0xffff);
++	tmp = NIXGE_MDIO_CLAUSE22 | NIXGE_MDIO_OP(NIXGE_MDIO_C22_WRITE) |
++	      NIXGE_MDIO_ADDR(phy_id) | NIXGE_MDIO_MMD(device);
+ 
+-		tmp = NIXGE_MDIO_CLAUSE45 | NIXGE_MDIO_OP(NIXGE_MDIO_OP_ADDRESS)
+-			| NIXGE_MDIO_ADDR(phy_id) | NIXGE_MDIO_MMD(device);
++	nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_DATA, val);
++	nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_OP, tmp);
++	nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_CTRL, 1);
+ 
+-		nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_OP, tmp);
+-		nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_CTRL, 1);
++	err = nixge_ctrl_poll_timeout(priv, NIXGE_REG_MDIO_CTRL, status,
++				      !status, 10, 1000);
++	if (err)
++		dev_err(priv->dev, "timeout setting write command");
+ 
+-		err = nixge_ctrl_poll_timeout(priv, NIXGE_REG_MDIO_CTRL, status,
+-					      !status, 10, 1000);
+-		if (err) {
+-			dev_err(priv->dev, "timeout setting address");
+-			return err;
+-		}
++	return err;
++}
+ 
+-		tmp = NIXGE_MDIO_CLAUSE45 | NIXGE_MDIO_OP(NIXGE_MDIO_C45_WRITE)
+-			| NIXGE_MDIO_ADDR(phy_id) | NIXGE_MDIO_MMD(device);
++static int nixge_mdio_write_c45(struct mii_bus *bus, int phy_id,
++				int device, int reg, u16 val)
++{
++	struct nixge_priv *priv = bus->priv;
++	u32 status, tmp;
++	int err;
+ 
+-		nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_DATA, val);
+-		nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_OP, tmp);
+-		err = nixge_ctrl_poll_timeout(priv, NIXGE_REG_MDIO_CTRL, status,
+-					      !status, 10, 1000);
+-		if (err)
+-			dev_err(priv->dev, "timeout setting write command");
+-	} else {
+-		device = reg & 0x1f;
++	nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_ADDR, reg & 0xffff);
+ 
+-		tmp = NIXGE_MDIO_CLAUSE22 |
+-			NIXGE_MDIO_OP(NIXGE_MDIO_C22_WRITE) |
+-			NIXGE_MDIO_ADDR(phy_id) | NIXGE_MDIO_MMD(device);
++	tmp = NIXGE_MDIO_CLAUSE45 |
++	      NIXGE_MDIO_OP(NIXGE_MDIO_OP_ADDRESS) |
++	      NIXGE_MDIO_ADDR(phy_id) | NIXGE_MDIO_MMD(device);
+ 
+-		nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_DATA, val);
+-		nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_OP, tmp);
+-		nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_CTRL, 1);
++	nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_OP, tmp);
++	nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_CTRL, 1);
+ 
+-		err = nixge_ctrl_poll_timeout(priv, NIXGE_REG_MDIO_CTRL, status,
+-					      !status, 10, 1000);
+-		if (err)
+-			dev_err(priv->dev, "timeout setting write command");
++	err = nixge_ctrl_poll_timeout(priv, NIXGE_REG_MDIO_CTRL, status,
++				      !status, 10, 1000);
++	if (err) {
++		dev_err(priv->dev, "timeout setting address");
++		return err;
+ 	}
+ 
++	tmp = NIXGE_MDIO_CLAUSE45 | NIXGE_MDIO_OP(NIXGE_MDIO_C45_WRITE) |
++	      NIXGE_MDIO_ADDR(phy_id) | NIXGE_MDIO_MMD(device);
++
++	nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_DATA, val);
++	nixge_ctrl_write_reg(priv, NIXGE_REG_MDIO_OP, tmp);
++
++	err = nixge_ctrl_poll_timeout(priv, NIXGE_REG_MDIO_CTRL, status,
++				      !status, 10, 1000);
++	if (err)
++		dev_err(priv->dev, "timeout setting write command");
++
+ 	return err;
+ }
+ 
+@@ -1195,8 +1222,10 @@ static int nixge_mdio_setup(struct nixge_priv *priv, struct device_node *np)
+ 	snprintf(bus->id, MII_BUS_ID_SIZE, "%s-mii", dev_name(priv->dev));
+ 	bus->priv = priv;
+ 	bus->name = "nixge_mii_bus";
+-	bus->read = nixge_mdio_read;
+-	bus->write = nixge_mdio_write;
++	bus->read = nixge_mdio_read_c22;
++	bus->write = nixge_mdio_write_c22;
++	bus->read_c45 = nixge_mdio_read_c45;
++	bus->write_c45 = nixge_mdio_write_c45;
+ 	bus->parent = priv->dev;
+ 
+ 	priv->mii_bus = bus;
+
+-- 
+2.30.2
 
