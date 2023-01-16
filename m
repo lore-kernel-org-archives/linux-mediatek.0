@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A2E7C46467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 14:19:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73FA2C46467
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 14:20:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i1p+vWlKHISNXrWwv+lfYDMX9jmyzPHiRUmGnYPEFXI=; b=1RJvM399jLVqSOjrPbgOMxvlY5
-	+WveuNxiAcddWlFHqSeEW2QLbt9qqgSAiCBMIr60CTb+km0VBj0wdosNHlVshxQDArAluIUK5MdPh
-	0YvR1VVDoaQlpnINyyL28cF/FKBdr6PDTYJlSu6LHxoRAcqOCpxVjzlp354v2ztGM2ZExSitf23xy
-	oC8fJcKbp9Ec1DCN1e9sdpJMfAjC0YyiHiqBtJil1KJJbhOzlgWOhhMDQDAI/HgiAPKmEtk9TKwXi
-	YTEQQ2HO5mBtVSEP4OPqFr5o5uNaE2NBk1o3mkSc/QdxgGTILO8oVIPovr0+WsOo7+DBmwdb1KsFI
-	8V06LTFg==;
+	bh=i1p+vWlKHISNXrWwv+lfYDMX9jmyzPHiRUmGnYPEFXI=; b=ooxVQreERk8QVlsX5PB+40Xhd8
+	COowAIN6pcP+ndZ02QEkfxfmh5E2w3ROysdeNk5VQUhGgv0r2gVwooLE3DB4mNdT6cwJtL+oVdS1p
+	4cztz0Mez9KNyl3l7YqXkDo7YF+fw5/3YbZ4bxlyaIsqEkYTJuyNY2j9eYdDy2Ra/wnrZZh9V5h6m
+	rJ3A6NeAoga38IcoSNyCf7kw1gMnMntc+FKyyL9zZ/SJbrNORHS/dKDmLEm3N3jPMX7+oxMfLuRxK
+	I4v85NdkWjIA1rzZ155vmACbg2bsDs7FI6ea+OchwNjguQRsMwfFACK5DCrTJpYpZJDzjhkxUtAL/
+	/628xYhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHQKN-00Apg6-I9; Mon, 16 Jan 2023 14:19:11 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pHQLt-00AqOv-Ot; Mon, 16 Jan 2023 14:20:45 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHQ6k-00Ai4m-PV; Mon, 16 Jan 2023 14:05:08 +0000
+	id 1pHQ7C-00AiIc-7g; Mon, 16 Jan 2023 14:05:36 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 41ADD60FDB;
-	Mon, 16 Jan 2023 14:05:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6967AC4339C;
-	Mon, 16 Jan 2023 14:05:04 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 97EE360FB3;
+	Mon, 16 Jan 2023 14:05:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3A540C433F1;
+	Mon, 16 Jan 2023 14:05:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1673877905;
+	s=k20201202; t=1673877933;
 	bh=IzuufyDbJLXhFSsDSZlIOGlXoHOFnZTOQwcthzc3Pi4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=sBjxKqvHq7xELSDb74X1xg2l0FoWRzHL0Mt2PlbrdYtvZxaDbroDskOEbFEafnoQH
-	 NBMupeya33qV4Ltr6gQvLdJgZqJ9w/UfISuNwtICT8zUIEr5lrEvXJ4dHdi7RomioP
-	 +73sZp5AxrEt9q6duNRcGRSwNV28cp3lwP5qF4gFfMb807KqBKjZaZysr/xwnOsNqJ
-	 pV4hq7fxaJM/1VkLwYLgCabr5maa4ma2FjSSXhhQiimsDej2rTREk0MNdt++GGncHb
-	 ZUY4HySiGCA3J5l24y4GsZvlOWopcqG3oiNerh0oeCT/bgTr+l4fLD2xSCbNuNyjVG
-	 Bq32tfqNT5OXA==
+	b=Mb0z3wFUsgnjdBrArVxIMA986Md1FwNrmAT5G9MMgkbhfV7kzJNpGoM2Gc358ClPg
+	 L6lzgNmhrAIR09ZcrXPl5D9RaFD/1zyJCIgt7LRLj+EthV21Cfo42yXmK1EiIvnSYF
+	 AezsJDGwmf+yp4lp9eFa0yndqMo1/ag6BqPgFV3ow1XyTplPU8oWjD/JIysofTyTlg
+	 wCJldUccrwhTRAZZxzVA4P5NWpN4WuLaN+HA5PbggIaeY4sWai1MlU3in6H3m+H7no
+	 yUZNjLFrRWBXHK6RgVE+4ZJsyZlBRcGXJLhsYuTQB78t73BUkFlrV/AjfKSD2/Bi3n
+	 htsyCnS5WfZGw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -55,19 +55,19 @@ Cc: Miles Chen <miles.chen@mediatek.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-pm@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 08/17] cpufreq: armada-37xx: stop using 0 as NULL pointer
-Date: Mon, 16 Jan 2023 09:04:39 -0500
-Message-Id: <20230116140448.116034-8-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 06/16] cpufreq: armada-37xx: stop using 0 as NULL pointer
+Date: Mon, 16 Jan 2023 09:05:09 -0500
+Message-Id: <20230116140520.116257-6-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20230116140448.116034-1-sashal@kernel.org>
-References: <20230116140448.116034-1-sashal@kernel.org>
+In-Reply-To: <20230116140520.116257-1-sashal@kernel.org>
+References: <20230116140520.116257-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_060506_916833_73FA74B7 
-X-CRM114-Status: GOOD (  13.27  )
+X-CRM114-CacheID: sfid-20230116_060534_346028_63FAE690 
+X-CRM114-Status: GOOD (  12.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
