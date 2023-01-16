@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99687C46467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 03:44:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4E1EC46467
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 03:46:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2SWHC8Oxp6O/RP7OYprVR+5LpqMtGm21A+5926VAQM8=; b=KNMHcfyfJ/x7XkrW1vlzuhIjUA
-	WvwqpFfzpxUWncLcUKMKdFKqTUcG1mUSXZ6AzeuxFnntTGO5CjlMO7QpJWhIvXSej88/9P6PrqMme
-	mxL0FeuUxSf4zwH4SRVMLUNJl8/tAhUwlRWLddGsthuvYrrXVZznLE6aqsccoAr6OP0sGY9jneKyR
-	b2h1E4B0fvptEGpPvxEkSp0OZpuB9D7+CHyJKBUPFbvn+CBTjaED56gWeWI3bOiy0HptCj1hlKk7d
-	UHgejE6pXCq5CPe+6Bq4NWvjnpH2+NSgG8Ff8b/FtWRQHy/+2WgLUwDEZODjXllzEjenZ2/nMH22E
-	RsEljy2g==;
+	bh=LPlLIL6Jqf64qHEk6gvXazUQP7Nowl8/Sq0B4Ez2dYs=; b=oJl8D3S7zyY3EcU0fxJNQHXXkF
+	Lduq1vjbXkAhOgsx+nFGj2OmxHzFJ+gOPRzd0UGz9yUcpwT9BIpi/zgxbBtDcZwxcEo8Cuk4D3nmj
+	UIKWxA3xL6ic2e0DjdTU5a1y+Cz4LD14CA6FW4DvEG1G9KbILZWE6mOvHBb6EwnqdbeF7LAAGcE2M
+	72DTDiCBPzyeYGp2+0+R0Q1rVje7LFl2icZXZLKnp1V4IeCzM/YMT/3BXLlHjvNIWbb8Mztvc/c09
+	PTBz88Vk0ZO1uEcTSzzQm+tOLHLtrm01q2nzpNsIakd+d9feKKDQ4a7AmL6PIAjw2ziRn8xh7vNeB
+	/pdj+hUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHGQQ-008X8P-JE; Mon, 16 Jan 2023 03:44:46 +0000
+	id 1pHGRZ-008Xho-00; Mon, 16 Jan 2023 03:45:57 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHGO1-008W03-C4; Mon, 16 Jan 2023 03:42:17 +0000
+	id 1pHGO1-008Vzy-OO; Mon, 16 Jan 2023 03:42:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=2SWHC8Oxp6O/RP7OYprVR+5LpqMtGm21A+5926VAQM8=; b=GSd4aJb6aIoSYQ/mf4VkIufdQ0
-	tmt2SV5Uh967CWdGo/UUrlspMFy0U2A5cXKPMGqDjUv+l4z7RZOf6XiZ/5+mgRljEAoe6UmIhgMRT
-	QpOi4L1paejv77LokV2aqaymVYMqcxezLDB5mdYAGG61e+8nJWAPmLr6vAA9qqXyvtIgwwjc1O4Bi
-	iIpbclpn1dbnExytqSB/i1kheT7d1nshszSl5nJBb60nXVU58fNLpvwB3MpFG8qRUijibGZ4aJmbG
-	CfUzhyumAZ3S9k9B1xNM81Z6QpQXIQnRV6vmU7OhRY+r8vyYSqwFAtNnIS7ybQlKLObCeI2rTTHDQ
-	093cA67A==;
+	bh=LPlLIL6Jqf64qHEk6gvXazUQP7Nowl8/Sq0B4Ez2dYs=; b=i800dpDr2G7syfIs9msOJcQvmx
+	X245e6Vy2xB4aNppcLUH6kNNBM9oBJkm72wC7JntSUaZg8zbIUYqCfEyfGDiDttjx7xFxd3PUtWe4
+	ZgFocVmvOUpbnGPIcle1D3w4R5cegGXSLRh8WeSyuUxvbFebnnYXgJlovk5d10S78UqmX4ZLHNknI
+	bRszV3tGyVK03oOSCmnQPxgekvFlDesySr6pMN1kpIDwvHF09kIdbURPn1lbI+MUdZfBRBNhlOocn
+	/ZuMVbdGaFcKZwz1SSmIebIOSxy4Q8eQGlEARq/BAzpiqvCKxJMCRTexPrkZZ5AxYEmO8V4u9JK9C
+	ISqJJqJQ==;
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pHGNi-005Sz0-2y;
+	id 1pHGNj-005Syx-05;
 	Mon, 16 Jan 2023 03:42:05 +0000
-X-UUID: b2207f5c954f11edbbe3f76fe852e059-20230115
+X-UUID: af7570b4954f11edbbe3f76fe852e059-20230115
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=2SWHC8Oxp6O/RP7OYprVR+5LpqMtGm21A+5926VAQM8=;
-	b=l6zLWY88IOQJzly4v55IL+hezKwm6Nw6qa7qo46AemZQO6TPlE3R4jpIhlSkTObq8Obh6eC6moyAyWUjATVMlSIFPmzh6IuFNU/3sPcxFss47sp2ju5xGk06XaM67nq/hkR/snQ//pTbsn+z/fWM9iYPp/lZ/XY10CiULea51Ok=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=LPlLIL6Jqf64qHEk6gvXazUQP7Nowl8/Sq0B4Ez2dYs=;
+	b=RAmU+TrYIISZdTfWUswywHQxHnCDahgjogxxyg+08aojI357uFAot3AfklcP2i9UF7cndLqXON7PgB8EGVUtycNsxz7YOROUkw6/KvLf+vi6vNSHCSDW1RXNPUVXCgnkduwpjYrIU+PQiG9dvmFlKT79PVJ6njDeHLWsghWmsk0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:10f117ca-a838-4019-b777-b6026da358e2,IP:0,U
+X-CID-O-INFO: VERSION:1.1.17,REQID:add7c12c-d3c4-4edd-8754-71a4a2058f78,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:543e81c,CLOUDID:f1cae5f5-ff42-4fb0-b929-626456a83c14,B
+X-CID-META: VersionHash:543e81c,CLOUDID:9ccae5f5-ff42-4fb0-b929-626456a83c14,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0,NGT
-X-UUID: b2207f5c954f11edbbe3f76fe852e059-20230115
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+X-CID-BVR: 0
+X-UUID: af7570b4954f11edbbe3f76fe852e059-20230115
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <trevor.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 772965062; Sun, 15 Jan 2023 20:41:44 -0700
+	with ESMTP id 625053808; Sun, 15 Jan 2023 20:41:39 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 16 Jan 2023 11:41:37 +0800
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 16 Jan 2023 11:41:37 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.792.15 via Frontend Transport; Mon, 16 Jan 2023 11:41:37 +0800
@@ -71,9 +71,9 @@ CC: <trevor.wu@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
 	<alsa-devel@alsa-project.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<devicetree@vger.kernel.org>
-Subject: [RESEND,v5 12/13] ASoC: mediatek: mt8188: add machine driver with mt6359
-Date: Mon, 16 Jan 2023 11:41:30 +0800
-Message-ID: <20230116034131.23943-13-trevor.wu@mediatek.com>
+Subject: [RESEND,v5 09/13] ASoC: mediatek: mt8188: add control for timing select
+Date: Mon, 16 Jan 2023 11:41:27 +0800
+Message-ID: <20230116034131.23943-10-trevor.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230116034131.23943-1-trevor.wu@mediatek.com>
 References: <20230116034131.23943-1-trevor.wu@mediatek.com>
@@ -81,8 +81,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_034159_563920_ABEFEB2E 
-X-CRM114-Status: GOOD (  23.12  )
+X-CRM114-CacheID: sfid-20230116_034159_451049_A9B49BE7 
+X-CRM114-Status: GOOD (  11.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,841 +97,538 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for mt8188 board with mt6359.
+Add mixer control for irq and memif timing selection.
 
 Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
-Reported-by: kernel test robot <lkp@intel.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- sound/soc/mediatek/Kconfig                |  11 +
- sound/soc/mediatek/mt8188/Makefile        |   3 +
- sound/soc/mediatek/mt8188/mt8188-mt6359.c | 785 ++++++++++++++++++++++
- 3 files changed, 799 insertions(+)
- create mode 100644 sound/soc/mediatek/mt8188/mt8188-mt6359.c
+ sound/soc/mediatek/mt8188/mt8188-afe-pcm.c | 506 +++++++++++++++++++++
+ 1 file changed, 506 insertions(+)
 
-diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-index c35e864a2c23..4baac72677d9 100644
---- a/sound/soc/mediatek/Kconfig
-+++ b/sound/soc/mediatek/Kconfig
-@@ -220,6 +220,17 @@ config SND_SOC_MT8188
- 	  Select Y if you have such device.
- 	  If unsure select "N".
+diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
+index 6bef980846fa..57a31330e5f4 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
++++ b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
+@@ -1394,6 +1394,510 @@ static const struct snd_soc_dapm_route mt8188_memif_routes[] = {
+ 	{"O041", "I169 Switch", "I169"},
+ };
  
-+config SND_SOC_MT8188_MT6359
-+	tristate "ASoC Audio driver for MT8188 with MT6359 and I2S codecs"
-+	depends on SND_SOC_MT8188 && MTK_PMIC_WRAP
-+	select SND_SOC_MT6359
-+	select SND_SOC_HDMI_CODEC
-+	help
-+	  This adds support for ASoC machine driver for MediaTek MT8188
-+	  boards with the MT6359 and other I2S audio codecs.
-+	  Select Y if you have such device.
-+	  If unsure select "N".
-+
- config SND_SOC_MT8192
- 	tristate "ASoC support for Mediatek MT8192 chip"
- 	depends on ARCH_MEDIATEK
-diff --git a/sound/soc/mediatek/mt8188/Makefile b/sound/soc/mediatek/mt8188/Makefile
-index fa5d383c5e47..781e61cbb22b 100644
---- a/sound/soc/mediatek/mt8188/Makefile
-+++ b/sound/soc/mediatek/mt8188/Makefile
-@@ -10,3 +10,6 @@ snd-soc-mt8188-afe-objs := \
- 	mt8188-dai-pcm.o
- 
- obj-$(CONFIG_SND_SOC_MT8188) += snd-soc-mt8188-afe.o
-+
-+# machine driver
-+obj-$(CONFIG_SND_SOC_MT8188_MT6359) += mt8188-mt6359.o
-diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-new file mode 100644
-index 000000000000..919d74ea1934
---- /dev/null
-+++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-@@ -0,0 +1,785 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * mt8188-mt6359.c  --  MT8188-MT6359 ALSA SoC machine driver
-+ *
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Trevor Wu <trevor.wu@mediatek.com>
-+ */
-+
-+#include <linux/module.h>
-+#include <linux/of_device.h>
-+#include <linux/pm_runtime.h>
-+#include <sound/jack.h>
-+#include <sound/pcm_params.h>
-+#include <sound/soc.h>
-+#include "mt8188-afe-common.h"
-+#include "../../codecs/mt6359.h"
-+#include "../common/mtk-afe-platform-driver.h"
-+#include "../common/mtk-soundcard-driver.h"
-+
-+/* FE */
-+SND_SOC_DAILINK_DEFS(playback2,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("DL2")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(playback3,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("DL3")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(playback6,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("DL6")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(playback7,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("DL7")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(playback8,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("DL8")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(playback10,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("DL10")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(playback11,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("DL11")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(capture1,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("UL1")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(capture2,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("UL2")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(capture3,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("UL3")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(capture4,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("UL4")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(capture5,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("UL5")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(capture6,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("UL6")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(capture8,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("UL8")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(capture9,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("UL9")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(capture10,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("UL10")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+/* BE */
-+SND_SOC_DAILINK_DEFS(adda,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("ADDA")),
-+		     DAILINK_COMP_ARRAY(COMP_CODEC("mt6359-sound",
-+						   "mt6359-snd-codec-aif1")),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(dptx,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("DPTX")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(etdm1_in,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("ETDM1_IN")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(etdm2_in,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("ETDM2_IN")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(etdm1_out,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("ETDM1_OUT")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(etdm2_out,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("ETDM2_OUT")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(etdm3_out,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("ETDM3_OUT")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+SND_SOC_DAILINK_DEFS(pcm1,
-+		     DAILINK_COMP_ARRAY(COMP_CPU("PCM1")),
-+		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+struct mt8188_mt6359_priv {
-+	struct snd_soc_jack dp_jack;
-+	struct snd_soc_jack hdmi_jack;
++static const char * const mt8188_afe_1x_en_sel_text[] = {
++	"a1sys_a2sys", "a3sys", "a4sys",
 +};
 +
-+struct mt8188_card_data {
-+	const char *name;
-+	unsigned long quirk;
++static const unsigned int mt8188_afe_1x_en_sel_values[] = {
++	0, 1, 2,
 +};
 +
-+static const struct snd_soc_dapm_widget mt8188_mt6359_widgets[] = {
-+	SND_SOC_DAPM_HP("Headphone", NULL),
-+	SND_SOC_DAPM_MIC("Headset Mic", NULL),
++static SOC_VALUE_ENUM_SINGLE_DECL(dl2_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 18, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl3_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 20, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl6_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 22, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl7_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 24, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl8_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 26, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl10_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 28, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl11_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 30, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul1_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 0, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul2_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 2, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul3_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 4, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul4_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 6, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul5_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 8, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul6_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 10, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul8_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 12, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul9_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 14, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul10_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 16, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq1_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 0, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq2_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 2, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq3_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 4, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq4_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 6, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq5_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 8, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq6_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 10, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq7_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 12, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq8_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 14, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq9_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 16, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq10_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 18, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq11_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 20, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq12_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 22, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq13_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 24, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq14_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 26, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq15_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 28, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq16_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 30, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++
++static const char * const mt8188_afe_fs_timing_sel_text[] = {
++	"asys",
++	"etdmout1_1x_en",
++	"etdmout2_1x_en",
++	"etdmout3_1x_en",
++	"etdmin1_1x_en",
++	"etdmin2_1x_en",
++	"etdmin1_nx_en",
++	"etdmin2_nx_en",
 +};
 +
-+static const struct snd_kcontrol_new mt8188_mt6359_controls[] = {
-+	SOC_DAPM_PIN_SWITCH("Headphone"),
-+	SOC_DAPM_PIN_SWITCH("Headset Mic"),
++static const unsigned int mt8188_afe_fs_timing_sel_values[] = {
++	0,
++	MT8188_ETDM_OUT1_1X_EN,
++	MT8188_ETDM_OUT2_1X_EN,
++	MT8188_ETDM_OUT3_1X_EN,
++	MT8188_ETDM_IN1_1X_EN,
++	MT8188_ETDM_IN2_1X_EN,
++	MT8188_ETDM_IN1_NX_EN,
++	MT8188_ETDM_IN2_NX_EN,
 +};
 +
-+#define CKSYS_AUD_TOP_CFG 0x032c
-+#define CKSYS_AUD_TOP_MON 0x0330
++static SOC_VALUE_ENUM_SINGLE_DECL(dl2_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl3_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl6_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl8_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl11_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul2_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul4_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul5_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul9_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul10_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
 +
-+static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
++static int mt8188_memif_1x_en_sel_put(struct snd_kcontrol *kcontrol,
++				      struct snd_ctl_elem_value *ucontrol)
 +{
-+	struct snd_soc_component *cmpnt_afe =
-+		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
-+	struct snd_soc_component *cmpnt_codec =
-+		asoc_rtd_to_codec(rtd, 0)->component;
-+	struct mtk_base_afe *afe;
-+	struct mt8188_afe_private *afe_priv;
-+	struct mtkaif_param *param;
-+	int chosen_phase_1, chosen_phase_2;
-+	int prev_cycle_1, prev_cycle_2;
-+	int test_done_1, test_done_2;
-+	int cycle_1, cycle_2;
-+	int mtkaif_chosen_phase[MT8188_MTKAIF_MISO_NUM];
-+	int mtkaif_phase_cycle[MT8188_MTKAIF_MISO_NUM];
-+	int mtkaif_calibration_num_phase;
-+	bool mtkaif_calibration_ok;
-+	unsigned int monitor = 0;
-+	int counter;
-+	int phase;
-+	int i;
++	struct snd_soc_component *component =
++		snd_soc_kcontrol_component(kcontrol);
++	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
++	struct mt8188_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_dai_memif_priv *memif_priv;
++	unsigned int dai_id = kcontrol->id.device;
++	long val = ucontrol->value.integer.value[0];
++	int ret = 0;
 +
-+	if (!cmpnt_afe)
++	memif_priv = afe_priv->dai_priv[dai_id];
++
++	if (val == memif_priv->asys_timing_sel)
++		return 0;
++
++	ret = snd_soc_put_enum_double(kcontrol, ucontrol);
++
++	memif_priv->asys_timing_sel = val;
++
++	return ret;
++}
++
++static int mt8188_asys_irq_1x_en_sel_put(struct snd_kcontrol *kcontrol,
++					 struct snd_ctl_elem_value *ucontrol)
++{
++	struct snd_soc_component *component =
++		snd_soc_kcontrol_component(kcontrol);
++	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
++	struct mt8188_afe_private *afe_priv = afe->platform_priv;
++	unsigned int id = kcontrol->id.device;
++	long val = ucontrol->value.integer.value[0];
++	int ret = 0;
++
++	if (val == afe_priv->irq_priv[id].asys_timing_sel)
++		return 0;
++
++	ret = snd_soc_put_enum_double(kcontrol, ucontrol);
++
++	afe_priv->irq_priv[id].asys_timing_sel = val;
++
++	return ret;
++}
++
++static int mt8188_memif_fs_timing_sel_get(struct snd_kcontrol *kcontrol,
++					  struct snd_ctl_elem_value *ucontrol)
++{
++	struct snd_soc_component *component = snd_soc_kcontrol_component(kcontrol);
++	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
++	struct mt8188_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_dai_memif_priv *memif_priv;
++	unsigned int dai_id = kcontrol->id.device;
++	struct soc_enum *e = (struct soc_enum *)kcontrol->private_value;
++
++	memif_priv = afe_priv->dai_priv[dai_id];
++
++	ucontrol->value.enumerated.item[0] =
++		snd_soc_enum_val_to_item(e, memif_priv->fs_timing);
++
++	return 0;
++}
++
++static int mt8188_memif_fs_timing_sel_put(struct snd_kcontrol *kcontrol,
++					  struct snd_ctl_elem_value *ucontrol)
++{
++	struct snd_soc_component *component = snd_soc_kcontrol_component(kcontrol);
++	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
++	struct mt8188_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_dai_memif_priv *memif_priv;
++	unsigned int dai_id = kcontrol->id.device;
++	struct soc_enum *e = (struct soc_enum *)kcontrol->private_value;
++	unsigned int *item = ucontrol->value.enumerated.item;
++	unsigned int prev_item = 0;
++
++	if (item[0] >= e->items)
 +		return -EINVAL;
 +
-+	afe = snd_soc_component_get_drvdata(cmpnt_afe);
-+	afe_priv = afe->platform_priv;
-+	param = &afe_priv->mtkaif_params;
++	memif_priv = afe_priv->dai_priv[dai_id];
 +
-+	dev_dbg(afe->dev, "%s(), start\n", __func__);
++	prev_item = snd_soc_enum_val_to_item(e, memif_priv->fs_timing);
 +
-+	param->mtkaif_calibration_ok = false;
-+	for (i = 0; i < MT8188_MTKAIF_MISO_NUM; i++) {
-+		param->mtkaif_chosen_phase[i] = -1;
-+		param->mtkaif_phase_cycle[i] = 0;
-+		mtkaif_chosen_phase[i] = -1;
-+		mtkaif_phase_cycle[i] = 0;
-+	}
-+
-+	if (IS_ERR(afe_priv->topckgen)) {
-+		dev_info(afe->dev, "%s() Cannot find topckgen controller\n",
-+			 __func__);
++	if (item[0] == prev_item)
 +		return 0;
-+	}
 +
-+	pm_runtime_get_sync(afe->dev);
-+	mt6359_mtkaif_calibration_enable(cmpnt_codec);
++	memif_priv->fs_timing = snd_soc_enum_item_to_val(e, item[0]);
 +
-+	/* set test type to synchronizer pulse */
-+	regmap_update_bits(afe_priv->topckgen,
-+			   CKSYS_AUD_TOP_CFG, 0xffff, 0x4);
-+	mtkaif_calibration_num_phase = 42;	/* mt6359: 0 ~ 42 */
-+	mtkaif_calibration_ok = true;
-+
-+	for (phase = 0;
-+	     phase <= mtkaif_calibration_num_phase && mtkaif_calibration_ok;
-+	     phase++) {
-+		mt6359_set_mtkaif_calibration_phase(cmpnt_codec,
-+						    phase, phase, phase);
-+
-+		regmap_set_bits(afe_priv->topckgen, CKSYS_AUD_TOP_CFG, 0x1);
-+
-+		test_done_1 = 0;
-+		test_done_2 = 0;
-+
-+		cycle_1 = -1;
-+		cycle_2 = -1;
-+
-+		counter = 0;
-+		while (!(test_done_1 & test_done_2)) {
-+			regmap_read(afe_priv->topckgen,
-+				    CKSYS_AUD_TOP_MON, &monitor);
-+			test_done_1 = (monitor >> 28) & 0x1;
-+			test_done_2 = (monitor >> 29) & 0x1;
-+
-+			if (test_done_1 == 1)
-+				cycle_1 = monitor & 0xf;
-+
-+			if (test_done_2 == 1)
-+				cycle_2 = (monitor >> 4) & 0xf;
-+
-+			/* handle if never test done */
-+			if (++counter > 10000) {
-+				dev_info(afe->dev, "%s(), test fail, cycle_1 %d, cycle_2 %d, monitor 0x%x\n",
-+					 __func__,
-+					 cycle_1, cycle_2, monitor);
-+				mtkaif_calibration_ok = false;
-+				break;
-+			}
-+		}
-+
-+		if (phase == 0) {
-+			prev_cycle_1 = cycle_1;
-+			prev_cycle_2 = cycle_2;
-+		}
-+
-+		if (cycle_1 != prev_cycle_1 &&
-+		    mtkaif_chosen_phase[MT8188_MTKAIF_MISO_0] < 0) {
-+			mtkaif_chosen_phase[MT8188_MTKAIF_MISO_0] = phase - 1;
-+			mtkaif_phase_cycle[MT8188_MTKAIF_MISO_0] = prev_cycle_1;
-+		}
-+
-+		if (cycle_2 != prev_cycle_2 &&
-+		    mtkaif_chosen_phase[MT8188_MTKAIF_MISO_1] < 0) {
-+			mtkaif_chosen_phase[MT8188_MTKAIF_MISO_1] = phase - 1;
-+			mtkaif_phase_cycle[MT8188_MTKAIF_MISO_1] = prev_cycle_2;
-+		}
-+
-+		regmap_clear_bits(afe_priv->topckgen, CKSYS_AUD_TOP_CFG, 0x1);
-+
-+		if (mtkaif_chosen_phase[MT8188_MTKAIF_MISO_0] >= 0 &&
-+		    mtkaif_chosen_phase[MT8188_MTKAIF_MISO_1] >= 0)
-+			break;
-+	}
-+
-+	if (mtkaif_chosen_phase[MT8188_MTKAIF_MISO_0] < 0) {
-+		mtkaif_calibration_ok = false;
-+		chosen_phase_1 = 0;
-+	} else {
-+		chosen_phase_1 = mtkaif_chosen_phase[MT8188_MTKAIF_MISO_0];
-+	}
-+
-+	if (mtkaif_chosen_phase[MT8188_MTKAIF_MISO_1] < 0) {
-+		mtkaif_calibration_ok = false;
-+		chosen_phase_2 = 0;
-+	} else {
-+		chosen_phase_2 = mtkaif_chosen_phase[MT8188_MTKAIF_MISO_1];
-+	}
-+
-+	mt6359_set_mtkaif_calibration_phase(cmpnt_codec,
-+					    chosen_phase_1,
-+					    chosen_phase_2,
-+					    0);
-+
-+	mt6359_mtkaif_calibration_disable(cmpnt_codec);
-+	pm_runtime_put(afe->dev);
-+
-+	param->mtkaif_calibration_ok = mtkaif_calibration_ok;
-+	param->mtkaif_chosen_phase[MT8188_MTKAIF_MISO_0] = chosen_phase_1;
-+	param->mtkaif_chosen_phase[MT8188_MTKAIF_MISO_1] = chosen_phase_2;
-+
-+	for (i = 0; i < MT8188_MTKAIF_MISO_NUM; i++)
-+		param->mtkaif_phase_cycle[i] = mtkaif_phase_cycle[i];
-+
-+	dev_info(afe->dev, "%s(), end, calibration ok %d\n",
-+		 __func__, param->mtkaif_calibration_ok);
-+
-+	return 0;
++	return 1;
 +}
 +
-+static int mt8188_mt6359_init(struct snd_soc_pcm_runtime *rtd)
-+{
-+	struct snd_soc_component *cmpnt_codec =
-+		asoc_rtd_to_codec(rtd, 0)->component;
-+
-+	/* set mtkaif protocol */
-+	mt6359_set_mtkaif_protocol(cmpnt_codec,
-+				   MT6359_MTKAIF_PROTOCOL_2_CLK_P2);
-+
-+	/* mtkaif calibration */
-+	mt8188_mt6359_mtkaif_calibration(rtd);
-+
-+	return 0;
-+}
-+
-+enum {
-+	DAI_LINK_DL2_FE,
-+	DAI_LINK_DL3_FE,
-+	DAI_LINK_DL6_FE,
-+	DAI_LINK_DL7_FE,
-+	DAI_LINK_DL8_FE,
-+	DAI_LINK_DL10_FE,
-+	DAI_LINK_DL11_FE,
-+	DAI_LINK_UL1_FE,
-+	DAI_LINK_UL2_FE,
-+	DAI_LINK_UL3_FE,
-+	DAI_LINK_UL4_FE,
-+	DAI_LINK_UL5_FE,
-+	DAI_LINK_UL6_FE,
-+	DAI_LINK_UL8_FE,
-+	DAI_LINK_UL9_FE,
-+	DAI_LINK_UL10_FE,
-+	DAI_LINK_ADDA_BE,
-+	DAI_LINK_DPTX_BE,
-+	DAI_LINK_ETDM1_IN_BE,
-+	DAI_LINK_ETDM2_IN_BE,
-+	DAI_LINK_ETDM1_OUT_BE,
-+	DAI_LINK_ETDM2_OUT_BE,
-+	DAI_LINK_ETDM3_OUT_BE,
-+	DAI_LINK_PCM1_BE,
++static const struct snd_kcontrol_new mt8188_memif_controls[] = {
++	MT8188_SOC_ENUM_EXT("dl2_1x_en_sel",
++			    dl2_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_DL2),
++	MT8188_SOC_ENUM_EXT("dl3_1x_en_sel",
++			    dl3_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_DL3),
++	MT8188_SOC_ENUM_EXT("dl6_1x_en_sel",
++			    dl6_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_DL6),
++	MT8188_SOC_ENUM_EXT("dl7_1x_en_sel",
++			    dl7_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_DL7),
++	MT8188_SOC_ENUM_EXT("dl8_1x_en_sel",
++			    dl8_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_DL8),
++	MT8188_SOC_ENUM_EXT("dl10_1x_en_sel",
++			    dl10_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_DL10),
++	MT8188_SOC_ENUM_EXT("dl11_1x_en_sel",
++			    dl11_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_DL11),
++	MT8188_SOC_ENUM_EXT("ul1_1x_en_sel",
++			    ul1_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_UL1),
++	MT8188_SOC_ENUM_EXT("ul2_1x_en_sel",
++			    ul2_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_UL2),
++	MT8188_SOC_ENUM_EXT("ul3_1x_en_sel",
++			    ul3_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_UL3),
++	MT8188_SOC_ENUM_EXT("ul4_1x_en_sel",
++			    ul4_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_UL4),
++	MT8188_SOC_ENUM_EXT("ul5_1x_en_sel",
++			    ul5_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_UL5),
++	MT8188_SOC_ENUM_EXT("ul6_1x_en_sel",
++			    ul6_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_UL6),
++	MT8188_SOC_ENUM_EXT("ul8_1x_en_sel",
++			    ul8_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_UL8),
++	MT8188_SOC_ENUM_EXT("ul9_1x_en_sel",
++			    ul9_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_UL9),
++	MT8188_SOC_ENUM_EXT("ul10_1x_en_sel",
++			    ul10_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_UL10),
++	MT8188_SOC_ENUM_EXT("asys_irq1_1x_en_sel",
++			    asys_irq1_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_13),
++	MT8188_SOC_ENUM_EXT("asys_irq2_1x_en_sel",
++			    asys_irq2_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_14),
++	MT8188_SOC_ENUM_EXT("asys_irq3_1x_en_sel",
++			    asys_irq3_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_15),
++	MT8188_SOC_ENUM_EXT("asys_irq4_1x_en_sel",
++			    asys_irq4_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_16),
++	MT8188_SOC_ENUM_EXT("asys_irq5_1x_en_sel",
++			    asys_irq5_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_17),
++	MT8188_SOC_ENUM_EXT("asys_irq6_1x_en_sel",
++			    asys_irq6_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_18),
++	MT8188_SOC_ENUM_EXT("asys_irq7_1x_en_sel",
++			    asys_irq7_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_19),
++	MT8188_SOC_ENUM_EXT("asys_irq8_1x_en_sel",
++			    asys_irq8_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_20),
++	MT8188_SOC_ENUM_EXT("asys_irq9_1x_en_sel",
++			    asys_irq9_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_21),
++	MT8188_SOC_ENUM_EXT("asys_irq10_1x_en_sel",
++			    asys_irq10_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_22),
++	MT8188_SOC_ENUM_EXT("asys_irq11_1x_en_sel",
++			    asys_irq11_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_23),
++	MT8188_SOC_ENUM_EXT("asys_irq12_1x_en_sel",
++			    asys_irq12_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_24),
++	MT8188_SOC_ENUM_EXT("asys_irq13_1x_en_sel",
++			    asys_irq13_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_25),
++	MT8188_SOC_ENUM_EXT("asys_irq14_1x_en_sel",
++			    asys_irq14_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_26),
++	MT8188_SOC_ENUM_EXT("asys_irq15_1x_en_sel",
++			    asys_irq15_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_27),
++	MT8188_SOC_ENUM_EXT("asys_irq16_1x_en_sel",
++			    asys_irq16_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_28),
++	MT8188_SOC_ENUM_EXT("dl2_fs_timing_sel",
++			    dl2_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_DL2),
++	MT8188_SOC_ENUM_EXT("dl3_fs_timing_sel",
++			    dl3_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_DL3),
++	MT8188_SOC_ENUM_EXT("dl6_fs_timing_sel",
++			    dl6_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_DL6),
++	MT8188_SOC_ENUM_EXT("dl8_fs_timing_sel",
++			    dl8_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_DL8),
++	MT8188_SOC_ENUM_EXT("dl11_fs_timing_sel",
++			    dl11_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_DL11),
++	MT8188_SOC_ENUM_EXT("ul2_fs_timing_sel",
++			    ul2_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_UL2),
++	MT8188_SOC_ENUM_EXT("ul4_fs_timing_sel",
++			    ul4_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_UL4),
++	MT8188_SOC_ENUM_EXT("ul5_fs_timing_sel",
++			    ul5_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_UL5),
++	MT8188_SOC_ENUM_EXT("ul9_fs_timing_sel",
++			    ul9_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_UL9),
++	MT8188_SOC_ENUM_EXT("ul10_fs_timing_sel",
++			    ul10_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_UL10),
 +};
 +
-+static int mt8188_dptx_hw_params(struct snd_pcm_substream *substream,
-+				 struct snd_pcm_hw_params *params)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	unsigned int rate = params_rate(params);
-+	unsigned int mclk_fs_ratio = 256;
-+	unsigned int mclk_fs = rate * mclk_fs_ratio;
-+	struct snd_soc_dai *dai = asoc_rtd_to_cpu(rtd, 0);
-+
-+	return snd_soc_dai_set_sysclk(dai, 0, mclk_fs, SND_SOC_CLOCK_OUT);
-+}
-+
-+static const struct snd_soc_ops mt8188_dptx_ops = {
-+	.hw_params = mt8188_dptx_hw_params,
-+};
-+
-+static int mt8188_dptx_hw_params_fixup(struct snd_soc_pcm_runtime *rtd,
-+				       struct snd_pcm_hw_params *params)
-+{
-+	/* fix BE i2s format to 32bit, clean param mask first */
-+	snd_mask_reset_range(hw_param_mask(params, SNDRV_PCM_HW_PARAM_FORMAT),
-+			     0, (__force unsigned int)SNDRV_PCM_FORMAT_LAST);
-+
-+	params_set_format(params, SNDRV_PCM_FORMAT_S32_LE);
-+
-+	return 0;
-+}
-+
-+static int mt8188_hdmi_codec_init(struct snd_soc_pcm_runtime *rtd)
-+{
-+	struct mt8188_mt6359_priv *priv = snd_soc_card_get_drvdata(rtd->card);
-+	struct snd_soc_component *component = asoc_rtd_to_codec(rtd, 0)->component;
-+	int ret = 0;
-+
-+	ret = snd_soc_card_jack_new(rtd->card, "HDMI Jack", SND_JACK_LINEOUT,
-+				    &priv->hdmi_jack);
-+	if (ret) {
-+		dev_info(rtd->dev, "%s, new jack failed: %d\n", __func__, ret);
-+		return ret;
-+	}
-+
-+	ret = snd_soc_component_set_jack(component, &priv->hdmi_jack, NULL);
-+	if (ret)
-+		dev_info(rtd->dev, "%s, set jack failed on %s (ret=%d)\n",
-+			 __func__, component->name, ret);
-+
-+	return ret;
-+}
-+
-+static int mt8188_dptx_codec_init(struct snd_soc_pcm_runtime *rtd)
-+{
-+	struct mt8188_mt6359_priv *priv = snd_soc_card_get_drvdata(rtd->card);
-+	struct snd_soc_component *component = asoc_rtd_to_codec(rtd, 0)->component;
-+	int ret = 0;
-+
-+	ret = snd_soc_card_jack_new(rtd->card, "DP Jack", SND_JACK_LINEOUT,
-+				    &priv->dp_jack);
-+	if (ret) {
-+		dev_info(rtd->dev, "%s, new jack failed: %d\n", __func__, ret);
-+		return ret;
-+	}
-+
-+	ret = snd_soc_component_set_jack(component, &priv->dp_jack, NULL);
-+	if (ret)
-+		dev_info(rtd->dev, "%s, set jack failed on %s (ret=%d)\n",
-+			 __func__, component->name, ret);
-+
-+	return ret;
-+}
-+
-+static struct snd_soc_dai_link mt8188_mt6359_dai_links[] = {
-+	/* FE */
-+	[DAI_LINK_DL2_FE] = {
-+		.name = "DL2_FE",
-+		.stream_name = "DL2 Playback",
-+		.trigger = {
-+			SND_SOC_DPCM_TRIGGER_POST,
-+			SND_SOC_DPCM_TRIGGER_POST,
-+		},
-+		.dynamic = 1,
-+		.dpcm_playback = 1,
-+		SND_SOC_DAILINK_REG(playback2),
-+	},
-+	[DAI_LINK_DL3_FE] = {
-+		.name = "DL3_FE",
-+		.stream_name = "DL3 Playback",
-+		.trigger = {
-+			SND_SOC_DPCM_TRIGGER_POST,
-+			SND_SOC_DPCM_TRIGGER_POST,
-+		},
-+		.dynamic = 1,
-+		.dpcm_playback = 1,
-+		SND_SOC_DAILINK_REG(playback3),
-+	},
-+	[DAI_LINK_DL6_FE] = {
-+		.name = "DL6_FE",
-+		.stream_name = "DL6 Playback",
-+		.trigger = {
-+			SND_SOC_DPCM_TRIGGER_POST,
-+			SND_SOC_DPCM_TRIGGER_POST,
-+		},
-+		.dynamic = 1,
-+		.dpcm_playback = 1,
-+		SND_SOC_DAILINK_REG(playback6),
-+	},
-+	[DAI_LINK_DL7_FE] = {
-+		.name = "DL7_FE",
-+		.stream_name = "DL7 Playback",
-+		.trigger = {
-+			SND_SOC_DPCM_TRIGGER_PRE,
-+			SND_SOC_DPCM_TRIGGER_PRE,
-+		},
-+		.dynamic = 1,
-+		.dpcm_playback = 1,
-+		SND_SOC_DAILINK_REG(playback7),
-+	},
-+	[DAI_LINK_DL8_FE] = {
-+		.name = "DL8_FE",
-+		.stream_name = "DL8 Playback",
-+		.trigger = {
-+			SND_SOC_DPCM_TRIGGER_POST,
-+			SND_SOC_DPCM_TRIGGER_POST,
-+		},
-+		.dynamic = 1,
-+		.dpcm_playback = 1,
-+		SND_SOC_DAILINK_REG(playback8),
-+	},
-+	[DAI_LINK_DL10_FE] = {
-+		.name = "DL10_FE",
-+		.stream_name = "DL10 Playback",
-+		.trigger = {
-+			SND_SOC_DPCM_TRIGGER_POST,
-+			SND_SOC_DPCM_TRIGGER_POST,
-+		},
-+		.dynamic = 1,
-+		.dpcm_playback = 1,
-+		SND_SOC_DAILINK_REG(playback10),
-+	},
-+	[DAI_LINK_DL11_FE] = {
-+		.name = "DL11_FE",
-+		.stream_name = "DL11 Playback",
-+		.trigger = {
-+			SND_SOC_DPCM_TRIGGER_POST,
-+			SND_SOC_DPCM_TRIGGER_POST,
-+		},
-+		.dynamic = 1,
-+		.dpcm_playback = 1,
-+		SND_SOC_DAILINK_REG(playback11),
-+	},
-+	[DAI_LINK_UL1_FE] = {
-+		.name = "UL1_FE",
-+		.stream_name = "UL1 Capture",
-+		.trigger = {
-+			SND_SOC_DPCM_TRIGGER_PRE,
-+			SND_SOC_DPCM_TRIGGER_PRE,
-+		},
-+		.dynamic = 1,
-+		.dpcm_capture = 1,
-+		SND_SOC_DAILINK_REG(capture1),
-+	},
-+	[DAI_LINK_UL2_FE] = {
-+		.name = "UL2_FE",
-+		.stream_name = "UL2 Capture",
-+		.trigger = {
-+			SND_SOC_DPCM_TRIGGER_POST,
-+			SND_SOC_DPCM_TRIGGER_POST,
-+		},
-+		.dynamic = 1,
-+		.dpcm_capture = 1,
-+		SND_SOC_DAILINK_REG(capture2),
-+	},
-+	[DAI_LINK_UL3_FE] = {
-+		.name = "UL3_FE",
-+		.stream_name = "UL3 Capture",
-+		.trigger = {
-+			SND_SOC_DPCM_TRIGGER_POST,
-+			SND_SOC_DPCM_TRIGGER_POST,
-+		},
-+		.dynamic = 1,
-+		.dpcm_capture = 1,
-+		SND_SOC_DAILINK_REG(capture3),
-+	},
-+	[DAI_LINK_UL4_FE] = {
-+		.name = "UL4_FE",
-+		.stream_name = "UL4 Capture",
-+		.trigger = {
-+			SND_SOC_DPCM_TRIGGER_POST,
-+			SND_SOC_DPCM_TRIGGER_POST,
-+		},
-+		.dynamic = 1,
-+		.dpcm_capture = 1,
-+		SND_SOC_DAILINK_REG(capture4),
-+	},
-+	[DAI_LINK_UL5_FE] = {
-+		.name = "UL5_FE",
-+		.stream_name = "UL5 Capture",
-+		.trigger = {
-+			SND_SOC_DPCM_TRIGGER_POST,
-+			SND_SOC_DPCM_TRIGGER_POST,
-+		},
-+		.dynamic = 1,
-+		.dpcm_capture = 1,
-+		SND_SOC_DAILINK_REG(capture5),
-+	},
-+	[DAI_LINK_UL6_FE] = {
-+		.name = "UL6_FE",
-+		.stream_name = "UL6 Capture",
-+		.trigger = {
-+			SND_SOC_DPCM_TRIGGER_PRE,
-+			SND_SOC_DPCM_TRIGGER_PRE,
-+		},
-+		.dynamic = 1,
-+		.dpcm_capture = 1,
-+		SND_SOC_DAILINK_REG(capture6),
-+	},
-+	[DAI_LINK_UL8_FE] = {
-+		.name = "UL8_FE",
-+		.stream_name = "UL8 Capture",
-+		.trigger = {
-+			SND_SOC_DPCM_TRIGGER_POST,
-+			SND_SOC_DPCM_TRIGGER_POST,
-+		},
-+		.dynamic = 1,
-+		.dpcm_capture = 1,
-+		SND_SOC_DAILINK_REG(capture8),
-+	},
-+	[DAI_LINK_UL9_FE] = {
-+		.name = "UL9_FE",
-+		.stream_name = "UL9 Capture",
-+		.trigger = {
-+			SND_SOC_DPCM_TRIGGER_POST,
-+			SND_SOC_DPCM_TRIGGER_POST,
-+		},
-+		.dynamic = 1,
-+		.dpcm_capture = 1,
-+		SND_SOC_DAILINK_REG(capture9),
-+	},
-+	[DAI_LINK_UL10_FE] = {
-+		.name = "UL10_FE",
-+		.stream_name = "UL10 Capture",
-+		.trigger = {
-+			SND_SOC_DPCM_TRIGGER_POST,
-+			SND_SOC_DPCM_TRIGGER_POST,
-+		},
-+		.dynamic = 1,
-+		.dpcm_capture = 1,
-+		SND_SOC_DAILINK_REG(capture10),
-+	},
-+	/* BE */
-+	[DAI_LINK_ADDA_BE] = {
-+		.name = "ADDA_BE",
-+		.no_pcm = 1,
-+		.dpcm_playback = 1,
-+		.dpcm_capture = 1,
-+		.init = mt8188_mt6359_init,
-+		SND_SOC_DAILINK_REG(adda),
-+	},
-+	[DAI_LINK_DPTX_BE] = {
-+		.name = "DPTX_BE",
-+		.ops = &mt8188_dptx_ops,
-+		.be_hw_params_fixup = mt8188_dptx_hw_params_fixup,
-+		.no_pcm = 1,
-+		.dpcm_playback = 1,
-+		SND_SOC_DAILINK_REG(dptx),
-+	},
-+	[DAI_LINK_ETDM1_IN_BE] = {
-+		.name = "ETDM1_IN_BE",
-+		.no_pcm = 1,
-+		.dai_fmt = SND_SOC_DAIFMT_I2S |
-+			SND_SOC_DAIFMT_NB_NF |
-+			SND_SOC_DAIFMT_CBP_CFP,
-+		.dpcm_capture = 1,
-+		.ignore_suspend = 1,
-+		SND_SOC_DAILINK_REG(etdm1_in),
-+	},
-+	[DAI_LINK_ETDM2_IN_BE] = {
-+		.name = "ETDM2_IN_BE",
-+		.no_pcm = 1,
-+		.dai_fmt = SND_SOC_DAIFMT_I2S |
-+			SND_SOC_DAIFMT_NB_NF |
-+			SND_SOC_DAIFMT_CBP_CFP,
-+		.dpcm_capture = 1,
-+		SND_SOC_DAILINK_REG(etdm2_in),
-+	},
-+	[DAI_LINK_ETDM1_OUT_BE] = {
-+		.name = "ETDM1_OUT_BE",
-+		.no_pcm = 1,
-+		.dai_fmt = SND_SOC_DAIFMT_I2S |
-+			SND_SOC_DAIFMT_NB_NF |
-+			SND_SOC_DAIFMT_CBC_CFC,
-+		.dpcm_playback = 1,
-+		SND_SOC_DAILINK_REG(etdm1_out),
-+	},
-+	[DAI_LINK_ETDM2_OUT_BE] = {
-+		.name = "ETDM2_OUT_BE",
-+		.no_pcm = 1,
-+		.dai_fmt = SND_SOC_DAIFMT_I2S |
-+			SND_SOC_DAIFMT_NB_NF |
-+			SND_SOC_DAIFMT_CBC_CFC,
-+		.dpcm_playback = 1,
-+		SND_SOC_DAILINK_REG(etdm2_out),
-+	},
-+	[DAI_LINK_ETDM3_OUT_BE] = {
-+		.name = "ETDM3_OUT_BE",
-+		.no_pcm = 1,
-+		.dai_fmt = SND_SOC_DAIFMT_I2S |
-+			SND_SOC_DAIFMT_NB_NF |
-+			SND_SOC_DAIFMT_CBC_CFC,
-+		.dpcm_playback = 1,
-+		SND_SOC_DAILINK_REG(etdm3_out),
-+	},
-+	[DAI_LINK_PCM1_BE] = {
-+		.name = "PCM1_BE",
-+		.no_pcm = 1,
-+		.dai_fmt = SND_SOC_DAIFMT_I2S |
-+			SND_SOC_DAIFMT_NB_NF |
-+			SND_SOC_DAIFMT_CBC_CFC,
-+		.dpcm_playback = 1,
-+		.dpcm_capture = 1,
-+		SND_SOC_DAILINK_REG(pcm1),
-+	},
-+};
-+
-+static struct snd_soc_card mt8188_mt6359_soc_card = {
-+	.owner = THIS_MODULE,
-+	.dai_link = mt8188_mt6359_dai_links,
-+	.num_links = ARRAY_SIZE(mt8188_mt6359_dai_links),
-+	.dapm_widgets = mt8188_mt6359_widgets,
-+	.num_dapm_widgets = ARRAY_SIZE(mt8188_mt6359_widgets),
-+	.controls = mt8188_mt6359_controls,
-+	.num_controls = ARRAY_SIZE(mt8188_mt6359_controls),
-+};
-+
-+static int mt8188_mt6359_dev_probe(struct platform_device *pdev)
-+{
-+	struct snd_soc_card *card = &mt8188_mt6359_soc_card;
-+	struct device_node *platform_node;
-+	struct mt8188_mt6359_priv *priv;
-+	struct mt8188_card_data *card_data;
-+	struct snd_soc_dai_link *dai_link;
-+	int ret, i;
-+
-+	card_data = (struct mt8188_card_data *)of_device_get_match_data(&pdev->dev);
-+	card->dev = &pdev->dev;
-+
-+	ret = snd_soc_of_parse_card_name(card, "model");
-+	if (ret)
-+		return dev_err_probe(&pdev->dev, ret, "%s new card name parsing error\n",
-+				     __func__);
-+
-+	if (!card->name)
-+		card->name = card_data->name;
-+
-+	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return  -ENOMEM;
-+
-+	if (of_property_read_bool(pdev->dev.of_node, "audio-routing")) {
-+		ret = snd_soc_of_parse_audio_routing(card, "audio-routing");
-+		if (ret)
-+			return ret;
-+	}
-+
-+	platform_node = of_parse_phandle(pdev->dev.of_node,
-+					 "mediatek,platform", 0);
-+	if (!platform_node) {
-+		ret = -EINVAL;
-+		return dev_err_probe(&pdev->dev, ret, "Property 'platform' missing or invalid\n");
-+	}
-+
-+	ret = parse_dai_link_info(card);
-+	if (ret)
-+		goto err;
-+
-+	for_each_card_prelinks(card, i, dai_link) {
-+		if (!dai_link->platforms->name)
-+			dai_link->platforms->of_node = platform_node;
-+
-+		if (strcmp(dai_link->name, "DPTX_BE") == 0) {
-+			if (strcmp(dai_link->codecs->dai_name, "snd-soc-dummy-dai"))
-+				dai_link->init = mt8188_dptx_codec_init;
-+		} else if (strcmp(dai_link->name, "ETDM3_OUT_BE") == 0) {
-+			if (strcmp(dai_link->codecs->dai_name, "snd-soc-dummy-dai"))
-+				dai_link->init = mt8188_hdmi_codec_init;
-+		}
-+	}
-+
-+	snd_soc_card_set_drvdata(card, priv);
-+
-+	ret = devm_snd_soc_register_card(&pdev->dev, card);
-+	if (ret)
-+		dev_err_probe(&pdev->dev, ret, "%s snd_soc_register_card fail\n",
-+			      __func__);
-+err:
-+	of_node_put(platform_node);
-+	clean_card_reference(card);
-+	return ret;
-+}
-+
-+static struct mt8188_card_data mt8188_evb_card = {
-+	.name = "mt8188_mt6359",
-+};
-+
-+static const struct of_device_id mt8188_mt6359_dt_match[] = {
-+	{
-+		.compatible = "mediatek,mt8188-mt6359-evb",
-+		.data = &mt8188_evb_card,
-+	},
-+	{},
-+};
-+MODULE_DEVICE_TABLE(of, mt8188_mt6359_dt_match);
-+
-+static struct platform_driver mt8188_mt6359_driver = {
-+	.driver = {
-+		.name = "mt8188_mt6359",
-+		.of_match_table = mt8188_mt6359_dt_match,
-+		.pm = &snd_soc_pm_ops,
-+	},
-+	.probe = mt8188_mt6359_dev_probe,
-+};
-+
-+module_platform_driver(mt8188_mt6359_driver);
-+
-+/* Module information */
-+MODULE_DESCRIPTION("MT8188-MT6359 ALSA SoC machine driver");
-+MODULE_AUTHOR("Trevor Wu <trevor.wu@mediatek.com>");
-+MODULE_LICENSE("GPL");
-+MODULE_ALIAS("mt8188 mt6359 soc card");
+ static const struct snd_soc_component_driver mt8188_afe_pcm_dai_component = {
+ 	.name = "mt8188-afe-pcm-dai",
+ };
+@@ -2583,6 +3087,8 @@ static int mt8188_dai_memif_register(struct mtk_base_afe *afe)
+ 	dai->num_dapm_widgets = ARRAY_SIZE(mt8188_memif_widgets);
+ 	dai->dapm_routes = mt8188_memif_routes;
+ 	dai->num_dapm_routes = ARRAY_SIZE(mt8188_memif_routes);
++	dai->controls = mt8188_memif_controls;
++	dai->num_controls = ARRAY_SIZE(mt8188_memif_controls);
+ 
+ 	return init_memif_priv_data(afe);
+ }
 -- 
 2.18.0
 
