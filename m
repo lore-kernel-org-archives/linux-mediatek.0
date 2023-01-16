@@ -4,81 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A4D4C46467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 07:52:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98CB7C54EBE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 08:01:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wex/E6ADFcsrQWYTNlA0xrKfTIWSKEBPY4LIi/xz/m4=; b=Np0YV3cJ51QuUQheumE7IidiQ7
-	qu6NEdpPP9U4QmqkGixTylPlCiMQ3b7qoSmcfhXzU8l/XO+e/EW/owJCOq4cn33ixOJWEDmyOPgKp
-	2pKSMfnLEIJ1oSP40a+H2yBLFx2jw//z2lwCBDshdr4N0fc3yepTBiL/EXYYrCTDAya8Sj9nuiSpw
-	yej+g7sKD+nRpCh72x8uH8j9vvcuKXkkMuU484ktLRdj8X09l2NRHSezZkOQwy2QOJIrm43hB00jc
-	rAXL3aejXcS9cDAddNR42ET6OPWm2/Jj2yt4ApbJd3SHs9PyZtgZmcMXxxiHVVQM7+lhTs6v9sMk5
-	NxwVMgEQ==;
+	bh=hRcPPcKl8l6HimLtXqG+dhNtbHx4LXcAEzJ5JUHT+Yo=; b=36G7TNhAsdsI8JlUCas3V0ruIX
+	AtzWpqGORL9eOjEMzta7o21CCVvf363ZC5S09K9MeTPrfEs2eyx35C3B+i1GMX5+zcDZDvhxPC4tK
+	RT9kiyp22/tQ9uLfcDf/1FzQt2ZK+RYlm5JfZKRFuC7rAeL6O0MVYegZnYrU/uEOGv4nuJuNd55j9
+	ddnce5slxiNgK375/TfcspNmq6CuNWBQ0W5+PUFhg1TKXWA2LL3V2Qt/2uuU4w1EziSzaZwnFwkdz
+	fL0YPm69M/kABYHPOwkMURti0zqku/2n6In6xcodb784vVbQEtWkFyt3Vhdq1nCV7NfRTYS1N9/1E
+	Ui7FLeYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHKHu-0093xZ-L4; Mon, 16 Jan 2023 07:52:14 +0000
-Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
+	id 1pHKQP-0094sw-Vf; Mon, 16 Jan 2023 08:01:02 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHKHj-0093v5-FB; Mon, 16 Jan 2023 07:52:04 +0000
-Received: from 3ffe.de (0001.3ffe.de [IPv6:2a01:4f8:c0c:9d57::1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 13D06B8B;
-	Mon, 16 Jan 2023 08:51:56 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1673855516;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=wex/E6ADFcsrQWYTNlA0xrKfTIWSKEBPY4LIi/xz/m4=;
-	b=gvFMHaDms+nw59CSILYnAkCxJenNCQWr8lE3DeHdKlcmYNCeRTEiSZg8NL/YT27hks8eVM
-	3M90hSRPSzkdi4xbr2cE/muF4A1OLTrsC3p9OyihQEspNjRTBuKeJui2F2W1Usz155OazF
-	d4QTJ6fYpzWMIDU735/fsaVnkmUPGTK017U8u+WKMuUxzCBUvFZ2qA9DLBlyrl3HMsORW5
-	xbW7BsYEVfujReNcbKKw3NFU3VsvSYT1zngjoNPuhAzUtV/TcmjAN/Ka/wsGIQWYAz7P0e
-	/uI69FttYFKwZ+CXZi8PnHLaEH4dGoxKW5gLOpRdlHF4/JnJQfAzHOhTOFoUZw==
+	id 1pHKQN-0094ra-CF
+	for linux-mediatek@lists.infradead.org; Mon, 16 Jan 2023 08:01:00 +0000
+Received: by mail-ed1-x532.google.com with SMTP id m21so39603223edc.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 16 Jan 2023 00:00:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=hRcPPcKl8l6HimLtXqG+dhNtbHx4LXcAEzJ5JUHT+Yo=;
+        b=CxKc+v8/gkzhMyLtMlUalA9tpB2MR/Fsvd5InjdW1/0FtKK2M/QL6NyHJ5GBu/si0M
+         hMTNuIh++CLkEeT1+Jzq8PyjRT9urF8X8/h2vHwpWCN7wPKIjcdypBIXlbXZ6tFbE4xk
+         CIijC2ImdntkD3X6UE9mh2VkA9ro1gm+pAxLPHZldoc9H0uRCrjwEIaqXk8HEHP5CSL6
+         3UktxtP9n94NAb+9cHwA+pC/hgs8xrIUw9AmaalGTQKqda1QzZnUXIBrWeDGR7Mzvndy
+         7RzM4vnqq7J8IXJf/xYpb5rhG1dum67J52KK7PRzpG0xMlVSPGoEpLckuB1mmIAN9FRl
+         cAyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=hRcPPcKl8l6HimLtXqG+dhNtbHx4LXcAEzJ5JUHT+Yo=;
+        b=MhsEwqPDD2EriGR8r5FXhgLHhgMqFW1vpDZNKfDxNdhWdT5e3QQBktVyEwd0EiKGuw
+         CtcET/rWeU9p1UgNuoqi7TkL5OKE01ThzfSDw9Gu6uZSybuMLUN/CJIkQvocDAOqUvvs
+         7alNhizBsUnFBz08YuQosuO7l0NNF2NxuGWmbAU83C3e4HszQYyj+L4EM8ekViJJl24x
+         FUJ/twPcrlG9LyMbaBqu4vxXb/NG1sOUE6R8KWQTlWAXHx+JdrC+/wK8HK7UESEssTm4
+         xdH1Ki+mCUMmfbPsm/FJIUbYl5/6XodO+P4wgvK0PCOJQskr82ndX9R7hrYE9/0KdmRv
+         0yow==
+X-Gm-Message-State: AFqh2ko74ylfRU73hNxN9CJkZxNjzz/DfiR2K5dau7jFmnCWWK+pErfO
+	77wLJhdYNcuBiDTw8LVvd5u0VQ==
+X-Google-Smtp-Source: AMrXdXsaXXXEwOyq1RNmSbugZN83uyUrb/G2s/2ksOUaet9ssaySB5n5Qe465BxS1g2zQ/WWrZ+pcQ==
+X-Received: by 2002:aa7:d288:0:b0:498:1ca:80d0 with SMTP id w8-20020aa7d288000000b0049801ca80d0mr34933986edq.28.1673856056899;
+        Mon, 16 Jan 2023 00:00:56 -0800 (PST)
+Received: from [192.168.1.109] ([178.197.216.144])
+        by smtp.gmail.com with ESMTPSA id s1-20020aa7cb01000000b00463b9d47e1fsm11096530edt.71.2023.01.16.00.00.55
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 16 Jan 2023 00:00:56 -0800 (PST)
+Message-ID: <ce4d2d3b-a826-ac59-e077-2fa452d115a3@linaro.org>
+Date: Mon, 16 Jan 2023 09:00:54 +0100
 MIME-Version: 1.0
-Date: Mon, 16 Jan 2023 08:51:55 +0100
-From: Michael Walle <michael@walle.cc>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
- Russell King <linux@armlinux.org.uk>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
- <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Jose Abreu
- <Jose.Abreu@synopsys.com>, Sergey Shtylyov <s.shtylyov@omp.ru>, Wei Fang
- <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang
- <xiaoning.wang@nxp.com>, NXP Linux Team <linux-imx@nxp.com>, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
- Qingfang <dqfext@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Geert Uytterhoeven <geert+renesas@glider.be>, Luiz Angelo Daros de Luca
- <luizluca@gmail.com>
-Subject: Re: [PATCH RFC net-next v2 11/12] net: dsa: Separate C22 and C45 MDIO
- bus transaction methods
-In-Reply-To: <20230103155633.tfdxncl75s4tb2ln@skbuf>
-References: <20221227-v6-2-rc1-c45-seperation-v2-0-ddb37710e5a7@walle.cc>
- <20221227-v6-2-rc1-c45-seperation-v2-0-ddb37710e5a7@walle.cc>
- <20221227-v6-2-rc1-c45-seperation-v2-11-ddb37710e5a7@walle.cc>
- <20221227-v6-2-rc1-c45-seperation-v2-11-ddb37710e5a7@walle.cc>
- <20230103153134.utalc6kw3l34dp4s@skbuf> <Y7ROa8ql9R5SHPsK@lunn.ch>
- <20230103155633.tfdxncl75s4tb2ln@skbuf>
-User-Agent: Roundcube Webmail/1.4.13
-Message-ID: <6208c429b0b5541a4f6d2a8556ae1fcb@walle.cc>
-X-Sender: michael@walle.cc
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v5 01/10] dt-bindings: arm: mediatek: migrate MT8195
+ vppsys0/1 to mtk-mmsys driver
+Content-Language: en-US
+To: =?UTF-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+Cc: "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20230113054304.21841-1-moudy.ho@mediatek.com>
+ <20230113054304.21841-2-moudy.ho@mediatek.com>
+ <329aed63-4522-9859-4359-2a450c46dcc0@linaro.org>
+ <fa386a3ab2f2ed0c963d5fdec8bbea56ba276169.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <fa386a3ab2f2ed0c963d5fdec8bbea56ba276169.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230115_235203_709591_DC2059AF 
-X-CRM114-Status: UNSURE (   7.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230116_000059_443346_59A0C5BE 
+X-CRM114-Status: GOOD (  14.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,15 +107,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-Am 2023-01-03 16:56, schrieb Vladimir Oltean:
->> So Luiz patches may allow a C45 bus, but are there any drivers today
->> actually using it?
+On 16/01/2023 03:42, Moudy Ho (何宗原) wrote:
+> On Fri, 2023-01-13 at 12:58 +0100, Krzysztof Kozlowski wrote:
+>> On 13/01/2023 06:42, Moudy Ho wrote:
+>>> MT8195 vppsys0/1 should be probed from mtk-mmsys driver to
+>>> populate device by platform_device_register_data then start
+>>> its own clock driver.
+>>
+>> Unfortunately I don't understand why this justifies removal of
+>> compatibles.
+>>
+>> How do you propagate or instantiate devices is not really connected
+>> with
+>>  the hardware description.
+>>
+>> Best regards,
+>> Krzysztof
+>>
 > 
-> I sent a private email to Luiz a few minutes ago asking him to confirm.
+> Hi Krzysztof,
+> 
+> Refer to the comments of 0/8 and 1/8 in the following series:
+> https://patchwork.kernel.org/project/linux-mediatek/list/?series=702518
+> 
+> This patch is used in conjunction with another one(Message ID = 
+> 20230113054304.21841-7-moudy.ho@mediatek.com/) to fix the binding
+> warnings caused by newly added in MMSYS.
 
-Any news here? Do we need the c45 methods?
+The patch should stand on its own. IOW, it should explain everything
+needed and it should justify its existence.
 
--michael
+Best regards,
+Krzysztof
+
 
