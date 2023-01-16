@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9EB4C46467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 19:00:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE227C46467
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 19:15:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a4SXkIxmSrOYxxcCMtrOU0vev2/ZChtTN7KgK4Iptkk=; b=vi8IvPONvV6G1F
-	atK/PW0fhQoenaMMb2vbVv3zpI17ST3RfST9HYtJh06gtxwz3cwW2rnwhUvL3lriRhawbTgF+pUul
-	XD993CTJZAPD+cs830U0xbYIqmbR+bwgca++Lf5s/2fgeYpBbm4VkWBrX9IFthWV6NDBG87dsjZYR
-	Pf/L1rUALYA/NqXdn4iTAkurlbV1DIhk2jDfaFWtmSnlDTk95PqqMYsSpgL1h35l5eatXxvVT01Xj
-	DZNnaCBTui2Z7YuzeeMOH/XGXJZPS6LdIj1eFeGX2pMySjwNFh58TXZ+4Bn+TOL0chOP7gsniC/JQ
-	PJHOqeYTeW1agVA1PSAw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hkNFVtbzzp0XpZsfx3emQeVOO5FVZGr7hZw/Jma4LVA=; b=JjE6Lu8neutnyDO70nOUJXXvrD
+	Ss2DjzCUxHNofU7cROd1Gz0Qsit2BmAP8ZevyU6NGXAL+6C/DT0N958M2awdCGRUn1/Kiejv5PwEw
+	8dPRVPvbCg2g8msq8RguPqqLyF0qq9D8CBoP74bAbtV11nzaes1jfA2VcKhD2Hg+1RDPZHrrzC4YX
+	ltqUsMMwKktUgHU7RN8Moq0TXZPitl/Yney+nxhW7YpgFga17fXBRFAzK50jktpOsexnUx2eDRw+H
+	QZuFq41nv7U6XlXj++gNcPMBpim8c5KidFPqMGtf/X8CLVkf5SvoyoMkO+HVh+10uKScmMNkU6eoe
+	RRRbQK+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHUik-00Bnkg-B2; Mon, 16 Jan 2023 19:00:38 +0000
-Received: from dilbert.mork.no ([2a01:4f9:c010:a439::d])
+	id 1pHUwy-00Bpzt-35; Mon, 16 Jan 2023 19:15:20 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHUig-00BnjH-EC; Mon, 16 Jan 2023 19:00:36 +0000
-Received: from canardo.dyn.mork.no ([IPv6:2a01:799:c9a:3200:0:0:0:1])
-	(authenticated bits=0)
-	by dilbert.mork.no (8.15.2/8.15.2) with ESMTPSA id 30GIxuOn2109213
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
-	Mon, 16 Jan 2023 18:59:57 GMT
-Received: from miraculix.mork.no ([IPv6:2a01:799:c9a:3202:549f:9f7a:c9d8:875b])
-	(authenticated bits=0)
-	by canardo.dyn.mork.no (8.15.2/8.15.2) with ESMTPSA id 30GIxoPL2177984
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
-	Mon, 16 Jan 2023 19:59:50 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mork.no; s=b;
-	t=1673895591; bh=a4SXkIxmSrOYxxcCMtrOU0vev2/ZChtTN7KgK4Iptkk=;
-	h=From:To:Cc:Subject:References:Date:Message-ID:From;
-	b=kQkPNgTCxYO8ZngrQVLf1ev5VkkeS7NUDz467UYSHqRWRl33bLvhs5qsTRMrCWf8c
-	 6BYJthnUdI7buFBRRe/TUfe/2722DX6fmLLcctQ6KCh+QzQDgJJgX/SqlVB7UoUvb1
-	 O0vsA831gPz393sL+SYfAC2vQRFmH+wZqbhHF3W8=
-Received: (nullmailer pid 387067 invoked by uid 1000);
-	Mon, 16 Jan 2023 18:59:50 -0000
-From: =?utf-8?Q?Bj=C3=B8rn_Mork?= <bjorn@mork.no>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+	id 1pHUwu-00Bpxm-MM; Mon, 16 Jan 2023 19:15:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=hkNFVtbzzp0XpZsfx3emQeVOO5FVZGr7hZw/Jma4LVA=; b=UupanAH6GT+TSgnVN/G70/Kw+B
+	jPITqiNGkh1JrRh4mlCwzBvLRsti1vU9cmXyJwxNBF6EbMEIaedOKbOf5aXZyJDsqzmkpMfvc18bl
+	8hRllSvXxKlcUQMjMA0GqDTdHEauQuSd7+Q0vPKWYL/ZAaMVaTUKwmZj5F6tMVh5UQVW5Si47khOP
+	D8HQcYo1QZAI0HVfnrpxtKXyWSt48mw3gp6ZHPKDTzQvP2OwOTqL8aFQ//OfBy5osBf0GYWPClAXX
+	Mtxn6D6nH3BEvK5dwzHfSQICxaXXLSBafF1KyzaFFy3Pf9AGmpBag8BDGPNkJrPhHv5ISf8I/8uIO
+	unUC1hPg==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:36150)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1pHUwp-0005k4-0o; Mon, 16 Jan 2023 19:15:10 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1pHUwl-0006Gj-Bh; Mon, 16 Jan 2023 19:15:07 +0000
+Date: Mon, 16 Jan 2023 19:15:07 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: =?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
 Subject: Re: [PATCH v2] net: mtk_sgmii: implement mtk_pcs_ops
-Organization: m
-References: <Y8VmSrjHTlllaDy2@shell.armlinux.org.uk>
-	<87bkmy33ph.fsf@miraculix.mork.no>
-	<Y8Vt9vfEa4w8HXHQ@shell.armlinux.org.uk>
-	<875yd630cu.fsf@miraculix.mork.no> <871qnu2ztz.fsf@miraculix.mork.no>
-	<Y8WNxAQ6C6NyUUn1@shell.armlinux.org.uk>
-	<87pmbe1hu0.fsf@miraculix.mork.no> <87lem21hkq.fsf@miraculix.mork.no>
-	<Y8WT6GwMqwi8rBe7@shell.armlinux.org.uk>
-	<87a62i1ge4.fsf@miraculix.mork.no>
-	<Y8WdTVU141f2L1R5@shell.armlinux.org.uk>
-Date: Mon, 16 Jan 2023 19:59:50 +0100
-In-Reply-To: <Y8WdTVU141f2L1R5@shell.armlinux.org.uk> (Russell King's message
-	of "Mon, 16 Jan 2023 18:54:05 +0000")
-Message-ID: <87zgaiz4nt.fsf@miraculix.mork.no>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+Message-ID: <Y8WiO+8mkD6TPIAQ@shell.armlinux.org.uk>
+References: <87bkmy33ph.fsf@miraculix.mork.no>
+ <Y8Vt9vfEa4w8HXHQ@shell.armlinux.org.uk>
+ <875yd630cu.fsf@miraculix.mork.no>
+ <871qnu2ztz.fsf@miraculix.mork.no>
+ <Y8WNxAQ6C6NyUUn1@shell.armlinux.org.uk>
+ <87pmbe1hu0.fsf@miraculix.mork.no>
+ <87lem21hkq.fsf@miraculix.mork.no>
+ <Y8WT6GwMqwi8rBe7@shell.armlinux.org.uk>
+ <87a62i1ge4.fsf@miraculix.mork.no>
+ <875yd61fg3.fsf@miraculix.mork.no>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Virus-Scanned: clamav-milter 0.103.7 at canardo
-X-Virus-Status: Clean
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <875yd61fg3.fsf@miraculix.mork.no>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_110034_807242_EEC4BD2F 
-X-CRM114-Status: GOOD (  23.57  )
+X-CRM114-CacheID: sfid-20230116_111516_748987_1E262A9F 
+X-CRM114-Status: GOOD (  17.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,89 +82,105 @@ Cc: netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vge
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-"Russell King (Oracle)" <linux@armlinux.org.uk> writes:
+On Mon, Jan 16, 2023 at 07:50:52PM +0100, Bjørn Mork wrote:
+> Made things fail with 2.5G, as expected I guess. But this actually works
+> with 1G!
+> 
+> Except for an unexpected packet drop.  But at least there are packets
+> coming through at 1G now.  This is the remote end of the link:
+> 
+> ns-enp3s0# ethtool -s enp3s0 autoneg off speed 1000 duplex full
+> ns-enp3s0# ping  192.168.0.1
+> PING 192.168.0.1 (192.168.0.1) 56(84) bytes of data.
+> 64 bytes from 192.168.0.1: icmp_seq=1 ttl=64 time=0.544 ms
+> 64 bytes from 192.168.0.1: icmp_seq=3 ttl=64 time=0.283 ms
+> 64 bytes from 192.168.0.1: icmp_seq=4 ttl=64 time=0.261 ms
+> 64 bytes from 192.168.0.1: icmp_seq=5 ttl=64 time=0.295 ms
+> 64 bytes from 192.168.0.1: icmp_seq=6 ttl=64 time=0.273 ms
+> 64 bytes from 192.168.0.1: icmp_seq=7 ttl=64 time=0.290 ms
+> 64 bytes from 192.168.0.1: icmp_seq=8 ttl=64 time=0.266 ms
+> 64 bytes from 192.168.0.1: icmp_seq=9 ttl=64 time=0.269 ms
+> 64 bytes from 192.168.0.1: icmp_seq=10 ttl=64 time=0.270 ms
+> 64 bytes from 192.168.0.1: icmp_seq=11 ttl=64 time=0.261 ms
+> 64 bytes from 192.168.0.1: icmp_seq=12 ttl=64 time=0.261 ms
+> 64 bytes from 192.168.0.1: icmp_seq=13 ttl=64 time=0.266 ms
+> ^C
+> --- 192.168.0.1 ping statistics ---
+> 13 packets transmitted, 12 received, 7.69231% packet loss, time 12282ms
+> rtt min/avg/max/mdev = 0.261/0.294/0.544/0.075 ms
+> ns-enp3s0# ethtool enp3s0
+> Settings for enp3s0:
+>         Supported ports: [ TP ]
+>         Supported link modes:   100baseT/Full
+>                                 1000baseT/Full
+>                                 10000baseT/Full
+>                                 2500baseT/Full
+>                                 5000baseT/Full
+>         Supported pause frame use: Symmetric Receive-only
+>         Supports auto-negotiation: Yes
+>         Supported FEC modes: Not reported
+>         Advertised link modes:  1000baseT/Full
+>         Advertised pause frame use: Symmetric
+>         Advertised auto-negotiation: No
+>         Advertised FEC modes: Not reported
+>         Speed: 1000Mb/s
+>         Duplex: Full
+>         Auto-negotiation: off
+>         Port: Twisted Pair
+>         PHYAD: 0
+>         Transceiver: internal
+>         MDI-X: Unknown
+>         Supports Wake-on: pg
+>         Wake-on: g
+>         Current message level: 0x00000005 (5)
+>                                drv link
+>         Link detected: yes
+> .
+> 
+> The MT7986 end looks like this:
+> 
+> root@OpenWrt:/# [   55.659413] mtk_pcs_get_state: bm=0x81140, adv=0x1a0
+> [   55.664380] mtk_pcs_get_state: bm=0x81140, adv=0x1a0
+> [   58.779924] mtk_pcs_get_state: bm=0x81140, adv=0x1a0
+> [   58.784884] mtk_pcs_get_state: bm=0x81140, adv=0x1a0
+> [   58.789841] mtk_sgmii_select_pcs: id=1
+> [   58.793581] mtk_pcs_config: interface=4
+> [   58.797399] offset:0 0x81140
+> [   58.797401] offset:4 0x4d544950
+> [   58.800273] offset:8 0x1a0
+> [   58.803397] offset:0x20 0x31120118
 
-> On Mon, Jan 16, 2023 at 07:30:27PM +0100, Bj=C3=B8rn Mork wrote:
->> "Russell King (Oracle)" <linux@armlinux.org.uk> writes:
->>=20
->> > That all looks fine. However, I'm running out of ideas.
->>=20
->> Thanks a lot for the effort in any case.  It's comforting that even the
->> top experts can't figure out this one :-)
->>=20
->>=20
->> > What we seem to have is:
->> >
->> > PHY:
->> > VSPEC1_SGMII_CTRL =3D 0x34da
->> > VSPEC1_SGMII_STAT =3D 0x000e
->> >
->> > The PHY is programmed to exchange SGMII with the host PCS, and it
->> > says that it hasn't completed that exchange (bit 5 of STAT).
->> >
->> > The Mediatek PCS says:
->> > BMCR =3D 0x1140		AN enabled
->> > BMSR =3D 0x0008		AN capable
->> > ADVERTISE =3D 0x0001	SGMII response (bit 14 is clear, hardware is
->> > 			supposed to manage that bit)
->> > LPA =3D 0x0000		SGMII received control word (nothing)
->> > SGMII_MODE =3D 0x011b	SGMII mode, duplex AN, 1000M, Full duplex,
->> > 			Remote fault disable
->> >
->> > which all looks like it should work - but it isn't.
->> >
->> > One last thing I can think of trying at the moment would be writing
->> > the VSPEC1_SGMII_CTRL with 0x36da, setting bit 9 which allegedly
->> > restarts the SGMII exchange. There's some comments in the PHY driver
->> > that this may be needed - maybe it's necessary once the MAC's PCS
->> > has been switched to SGMII mode.
->>=20
->>=20
->> Tried that now.  Didn't change anything.  And still no packets.
->>=20
->> root@OpenWrt:/# mdio mdio-bus 6:30 raw 8
->> 0x34da
->> root@OpenWrt:/# mdio mdio-bus 6:30 raw 9
->> 0x000e
->> root@OpenWrt:/# mdio mdio-bus 6:30 raw 8 0x36da
->> root@OpenWrt:/# mdio mdio-bus 6:30 raw 8
->> 0x34da
->> root@OpenWrt:/# mdio mdio-bus 6:30 raw 9
->> 0x000e
->
-> If bit 9 is indeed the restart-an bit, it will be self-clearing, so
-> I wouldn't expect a read back of it to change to 0x36da.
->
-> I guess next thing to try is clearing and setting the AN enable bit,
-> bit 12, so please try this:
->
-> mdio mdio-bus 6:30 raw 8 0x24da
-> mdio mdio-bus 6:30 raw 8 0x36da
-> mdio mdio-bus 6:30 raw 9
->
-> If that doesn't work, then let's try something a bit harder:
->
-> mdio mdio-bus 6:30 raw 8 0xb4da
-> mdio mdio-bus 6:30 raw 9
->
-> Please let me know the results from those.
+This looks like it's configured for 1000base-X at this point.
 
-OK, back to the original dts with phy-mode =3D "2500base-x", with peer set
-to 1G.  Still no success:
+> [   58.806089] forcing AN
+> [   58.811826] mtk_pcs_config: rgc3=0x0, advertise=0x1 (changed), link_timer=1600000,  sgm_mode=0x103, bmcr=0x1200, use_an=1
+> [   58.822759] mtk_pcs_restart_an
+> [   58.825800] mtk_pcs_get_state: bm=0x81140, adv=0xda014001
+> [   58.831184] mtk_pcs_get_state: bm=0x2c1140, adv=0xda014001
+> [   58.836649] mtk_pcs_link_up: interface=4
+> [   58.840559] offset:0 0xac1140
+> [   58.840561] offset:4 0x4d544950
+> [   58.843512] offset:8 0xda014001
+> [   58.846636] offset:0x20 0x3112011b
 
-root@OpenWrt:/# mdio mdio-bus 6:30 raw 8
-0x34da
-root@OpenWrt:/# mdio mdio-bus 6:30 raw 9
-0x000e
-root@OpenWrt:/#  mdio mdio-bus 6:30 raw 8 0x24da
-root@OpenWrt:/# mdio mdio-bus 6:30 raw 8 0x36da
-root@OpenWrt:/# mdio mdio-bus 6:30 raw 9
-0x000e
-root@OpenWrt:/# mdio mdio-bus 6:30 raw 8 0xb4da
-root@OpenWrt:/# mdio mdio-bus 6:30 raw 9
-0x000e
+and here we've reconfigured it for SGMII mode - and we can see the
+Mediatek PCS has set the ACK bit (bit 14) in its advertisement
+register as one would expect.
 
+> Now, if we only could figure out what the difference is between this and
+> what we configure when the mode is changed from 2500base-x to sgmii.
 
+Maybe there is something missing which we need to do on the Mediatek
+side to properly switch between 2500base-X and SGMII.
 
-Bj=C3=B8rn
+It has a feel of a problem changing the underlying link speed between
+3.125 and 1.25Gbps, which is done by the ANA_RGC3 register.
+
+Hmm, maybe the PCS needs to be powered down to change the speed, in
+other words, SGMII_PHYA_PWD needs to be set before the write to the
+ANA_RGC3 register?
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
