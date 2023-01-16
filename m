@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38226C46467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 23:57:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07AACC54EBE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 23:58:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0dass3X/H3O9IpfBuJUCk6sEtL29z8uf5viM4VBJ0Jw=; b=bo8kYJ4hbWGdRONBj/7Z+pLViX
-	TVLVbhumz3mKTciAlfXzEuwWxi0g9Ak1B3Je0M0DUCD16ttjXWnP20dk8Zv79i6cMMz8tEMxGeCzC
-	a74uXdNIUyCNEk6ku1oSMU2gbFYnsozMLa84lC54UnR7CO/wcfzfunSfQqdsHu3YWeJn+6Kx5IJwN
-	kcedsRnSUoLOpkvWBTAyEYw/cQ7w/fUw+1KOVK1zbJYX9n+B6VbPqGdop3wnSoWZ7nw36YbkehhQN
-	Cmz8yNvHzJauR0W4ajneAaH8gFbEbgwtxMsaorxZd6CU82gYB7ghB7/afHPLq4Fk3Se5ZwCA7upXI
-	+Zv/HRzA==;
+	bh=PFq5un9JlbToLiEUj0nEDWPTfIuewGK7kNH+3d7asFw=; b=ZLH1LahDu93Bhn4ME0JdCZMWac
+	YHHyd9xK2/O9CEAqjmekqwUC1rtqMH0ElscH38DjGCh4zMDYslwjjxcTwmuPqJStZjQdzZIpzShyZ
+	Gly4mwdD90f6X0pYq+2HD15D6prBXKki6GPQAo6ZzxurYgum1RUaUGXx+wwID/0Gv+gZhFBiGQkB2
+	nyXNhfPAA/57FPV3/FqlWdt54P5R7qpIeM9qhf2eImGkE36ht/Fjum0jk48PoDz/2cgxsPylOvsJz
+	XCZ1jbWYywD13Oaw1L0H16Wt9WHewbOmBSZzGbQGWbKESDidz7pUTLfsExvW6J854mcDHFcB5N9cJ
+	UrLm25Lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHZLb-00CKWL-Ot; Mon, 16 Jan 2023 23:57:03 +0000
-Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
+	id 1pHZMk-00CL1W-8P; Mon, 16 Jan 2023 23:58:14 +0000
+Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHZHb-00CIFp-ML; Mon, 16 Jan 2023 23:52:59 +0000
+	id 1pHZHc-00CIG4-2H; Mon, 16 Jan 2023 23:52:59 +0000
 Received: from mwalle01.sab.local (unknown [213.135.10.150])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 1ADD719AC;
-	Tue, 17 Jan 2023 00:52:49 +0100 (CET)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 10C0D1693;
+	Tue, 17 Jan 2023 00:52:47 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1673913169;
+	t=1673913167;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=0dass3X/H3O9IpfBuJUCk6sEtL29z8uf5viM4VBJ0Jw=;
-	b=1ls1tfDPJa9hUc9j6lnczXgUpmoRJaEtfaktOu/Vj7xSjhcWW+BHawDplZMCUn0jwDBcXK
-	8GbZ2tEUFti1RddNsH3yfMcPp0sKOy3gyHcdCxlPpPoQzz7C0lprWPE3PcXw9cqDhGQ6Ib
-	wFqTZoLFZPCUCDjO1uVpCnSjH1Kf8D7jTiUcFfOX1yVc5rFjI5WioUky2T+Uld5svvSrLV
-	Wv/4X5mH6idhEpW9FhEu03dkChT7nxExoZTEFXj29VntE4x1ztwqENFriI2bZvIp3LEDDm
-	lgACv/uOnGp7wRKCiiRJxr8eJNHp7XQFLEVNrY3yutSrQOFlvnI/7dteeuhiYQ==
+	bh=PFq5un9JlbToLiEUj0nEDWPTfIuewGK7kNH+3d7asFw=;
+	b=zcnE0vM9eHhinaZhJQuxvUlD1BcsW4ohyv3E1wm1GirFDOPAErkLLNw2OUPwGqlHt8buFN
+	/SwXr7NxtcKDjd3X7Kr/U1OUwdcU6Oo/Ojif6DCTqmnretu9/DVl8kAHFADZTXsqZRriUo
+	eDBVbck2sdoNknaQTvr7GF+yLmL9bcPIoE79JZjXjigrQm8nQfi5qS6/I2b5c3FYF9N1F5
+	NGI9XcYI7x0OeTT1Q8cUjoEe00/oqIx5WZtwetBxo9b+G8jQ+yOQBUAUJHiaVAxU6N1SvE
+	dc85hbU/CmWeRpUg0fwIAEX9+W3Rxv8om9S9YylrcIPf9/YvxBWL5RiH4XCaLQ==
 From: Michael Walle <michael@walle.cc>
-Date: Tue, 17 Jan 2023 00:52:23 +0100
-Subject: [PATCH net-next 08/12] amd-xgbe: Separate C22 and C45 transactions
+Date: Tue, 17 Jan 2023 00:52:20 +0100
+Subject: [PATCH net-next 05/12] ixgbe: Separate C22 and C45 transactions
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id:  <20230116-net-next-c45-seperation-part-3-v1-8-0c53afa56aad@walle.cc>
+Message-Id:  <20230116-net-next-c45-seperation-part-3-v1-5-0c53afa56aad@walle.cc>
 References:  <20230116-net-next-c45-seperation-part-3-v1-0-0c53afa56aad@walle.cc>
 In-Reply-To:  <20230116-net-next-c45-seperation-part-3-v1-0-0c53afa56aad@walle.cc>
 To: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
@@ -71,8 +71,8 @@ Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Andrew Lunn <andrew@lunn.ch>, Michael Walle <michael@walle.cc>
 X-Mailer: b4 0.11.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_155256_144740_B165426D 
-X-CRM114-Status: GOOD (  17.35  )
+X-CRM114-CacheID: sfid-20230116_155256_473773_E0FBCA44 
+X-CRM114-Status: GOOD (  18.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,349 +89,388 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Andrew Lunn <andrew@lunn.ch>
 
-The xgbe MDIO bus driver can perform both C22 and C45 transfers, when
-using its MDIO bus hardware. The SFP I2C mdio bus driver only supports
-C22. Create separate functions for each and register the C45 versions
-using the new API calls where appropriate.
+The ixgbe MDIO bus driver can perform both C22 and C45 transfers.
+Create separate functions for each and register the C45 versions using
+the new API calls where appropriate.
 
 Signed-off-by: Andrew Lunn <andrew@lunn.ch>
 Signed-off-by: Michael Walle <michael@walle.cc>
 ---
- drivers/net/ethernet/amd/xgbe/xgbe-dev.c    |  75 ++++++++++++++---
- drivers/net/ethernet/amd/xgbe/xgbe-phy-v2.c | 120 +++++++++++++++++++++-------
- drivers/net/ethernet/amd/xgbe/xgbe.h        |   7 +-
- 3 files changed, 158 insertions(+), 44 deletions(-)
+ drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c | 237 ++++++++++++++++++++-------
+ 1 file changed, 182 insertions(+), 55 deletions(-)
 
-diff --git a/drivers/net/ethernet/amd/xgbe/xgbe-dev.c b/drivers/net/ethernet/amd/xgbe/xgbe-dev.c
-index 255ea6dc1377..aafa02fb3fdf 100644
---- a/drivers/net/ethernet/amd/xgbe/xgbe-dev.c
-+++ b/drivers/net/ethernet/amd/xgbe/xgbe-dev.c
-@@ -1294,11 +1294,20 @@ static void xgbe_write_mmd_regs(struct xgbe_prv_data *pdata, int prtad,
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
+index 123dca9ce468..689470c1e8ad 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
+@@ -680,14 +680,14 @@ static s32 ixgbe_msca_cmd(struct ixgbe_hw *hw, u32 cmd)
+ }
+ 
+ /**
+- *  ixgbe_mii_bus_read_generic - Read a clause 22/45 register with gssr flags
++ *  ixgbe_mii_bus_read_generic_c22 - Read a clause 22 register with gssr flags
+  *  @hw: pointer to hardware structure
+  *  @addr: address
+  *  @regnum: register number
+  *  @gssr: semaphore flags to acquire
+  **/
+-static s32 ixgbe_mii_bus_read_generic(struct ixgbe_hw *hw, int addr,
+-				      int regnum, u32 gssr)
++static s32 ixgbe_mii_bus_read_generic_c22(struct ixgbe_hw *hw, int addr,
++					  int regnum, u32 gssr)
+ {
+ 	u32 hwaddr, cmd;
+ 	s32 data;
+@@ -696,31 +696,52 @@ static s32 ixgbe_mii_bus_read_generic(struct ixgbe_hw *hw, int addr,
+ 		return -EBUSY;
+ 
+ 	hwaddr = addr << IXGBE_MSCA_PHY_ADDR_SHIFT;
+-	if (regnum & MII_ADDR_C45) {
+-		hwaddr |= regnum & GENMASK(21, 0);
+-		cmd = hwaddr | IXGBE_MSCA_ADDR_CYCLE | IXGBE_MSCA_MDI_COMMAND;
+-	} else {
+-		hwaddr |= (regnum & GENMASK(5, 0)) << IXGBE_MSCA_DEV_TYPE_SHIFT;
+-		cmd = hwaddr | IXGBE_MSCA_OLD_PROTOCOL |
+-			IXGBE_MSCA_READ_AUTOINC | IXGBE_MSCA_MDI_COMMAND;
+-	}
++	hwaddr |= (regnum & GENMASK(5, 0)) << IXGBE_MSCA_DEV_TYPE_SHIFT;
++	cmd = hwaddr | IXGBE_MSCA_OLD_PROTOCOL |
++		IXGBE_MSCA_READ_AUTOINC | IXGBE_MSCA_MDI_COMMAND;
+ 
+ 	data = ixgbe_msca_cmd(hw, cmd);
+ 	if (data < 0)
+ 		goto mii_bus_read_done;
+ 
+-	/* For a clause 45 access the address cycle just completed, we still
+-	 * need to do the read command, otherwise just get the data
+-	 */
+-	if (!(regnum & MII_ADDR_C45))
+-		goto do_mii_bus_read;
++	data = IXGBE_READ_REG(hw, IXGBE_MSRWD);
++	data = (data >> IXGBE_MSRWD_READ_DATA_SHIFT) & GENMASK(16, 0);
++
++mii_bus_read_done:
++	hw->mac.ops.release_swfw_sync(hw, gssr);
++	return data;
++}
++
++/**
++ *  ixgbe_mii_bus_read_generic_c45 - Read a clause 45 register with gssr flags
++ *  @hw: pointer to hardware structure
++ *  @addr: address
++ *  @devad: device address to read
++ *  @regnum: register number
++ *  @gssr: semaphore flags to acquire
++ **/
++static s32 ixgbe_mii_bus_read_generic_c45(struct ixgbe_hw *hw, int addr,
++					  int devad, int regnum, u32 gssr)
++{
++	u32 hwaddr, cmd;
++	s32 data;
++
++	if (hw->mac.ops.acquire_swfw_sync(hw, gssr))
++		return -EBUSY;
++
++	hwaddr = addr << IXGBE_MSCA_PHY_ADDR_SHIFT;
++	hwaddr |= devad << 16 | regnum;
++	cmd = hwaddr | IXGBE_MSCA_ADDR_CYCLE | IXGBE_MSCA_MDI_COMMAND;
++
++	data = ixgbe_msca_cmd(hw, cmd);
++	if (data < 0)
++		goto mii_bus_read_done;
+ 
+ 	cmd = hwaddr | IXGBE_MSCA_READ | IXGBE_MSCA_MDI_COMMAND;
+ 	data = ixgbe_msca_cmd(hw, cmd);
+ 	if (data < 0)
+ 		goto mii_bus_read_done;
+ 
+-do_mii_bus_read:
+ 	data = IXGBE_READ_REG(hw, IXGBE_MSRWD);
+ 	data = (data >> IXGBE_MSRWD_READ_DATA_SHIFT) & GENMASK(16, 0);
+ 
+@@ -730,15 +751,15 @@ static s32 ixgbe_mii_bus_read_generic(struct ixgbe_hw *hw, int addr,
+ }
+ 
+ /**
+- *  ixgbe_mii_bus_write_generic - Write a clause 22/45 register with gssr flags
++ *  ixgbe_mii_bus_write_generic_c22 - Write a clause 22 register with gssr flags
+  *  @hw: pointer to hardware structure
+  *  @addr: address
+  *  @regnum: register number
+  *  @val: value to write
+  *  @gssr: semaphore flags to acquire
+  **/
+-static s32 ixgbe_mii_bus_write_generic(struct ixgbe_hw *hw, int addr,
+-				       int regnum, u16 val, u32 gssr)
++static s32 ixgbe_mii_bus_write_generic_c22(struct ixgbe_hw *hw, int addr,
++					   int regnum, u16 val, u32 gssr)
+ {
+ 	u32 hwaddr, cmd;
+ 	s32 err;
+@@ -749,20 +770,43 @@ static s32 ixgbe_mii_bus_write_generic(struct ixgbe_hw *hw, int addr,
+ 	IXGBE_WRITE_REG(hw, IXGBE_MSRWD, (u32)val);
+ 
+ 	hwaddr = addr << IXGBE_MSCA_PHY_ADDR_SHIFT;
+-	if (regnum & MII_ADDR_C45) {
+-		hwaddr |= regnum & GENMASK(21, 0);
+-		cmd = hwaddr | IXGBE_MSCA_ADDR_CYCLE | IXGBE_MSCA_MDI_COMMAND;
+-	} else {
+-		hwaddr |= (regnum & GENMASK(5, 0)) << IXGBE_MSCA_DEV_TYPE_SHIFT;
+-		cmd = hwaddr | IXGBE_MSCA_OLD_PROTOCOL | IXGBE_MSCA_WRITE |
+-			IXGBE_MSCA_MDI_COMMAND;
+-	}
++	hwaddr |= (regnum & GENMASK(5, 0)) << IXGBE_MSCA_DEV_TYPE_SHIFT;
++	cmd = hwaddr | IXGBE_MSCA_OLD_PROTOCOL | IXGBE_MSCA_WRITE |
++		IXGBE_MSCA_MDI_COMMAND;
++
++	err = ixgbe_msca_cmd(hw, cmd);
++
++	hw->mac.ops.release_swfw_sync(hw, gssr);
++	return err;
++}
++
++/**
++ *  ixgbe_mii_bus_write_generic_c45 - Write a clause 45 register with gssr flags
++ *  @hw: pointer to hardware structure
++ *  @addr: address
++ *  @devad: device address to read
++ *  @regnum: register number
++ *  @val: value to write
++ *  @gssr: semaphore flags to acquire
++ **/
++static s32 ixgbe_mii_bus_write_generic_c45(struct ixgbe_hw *hw, int addr,
++					   int devad, int regnum, u16 val,
++					   u32 gssr)
++{
++	u32 hwaddr, cmd;
++	s32 err;
++
++	if (hw->mac.ops.acquire_swfw_sync(hw, gssr))
++		return -EBUSY;
++
++	IXGBE_WRITE_REG(hw, IXGBE_MSRWD, (u32)val);
++
++	hwaddr = addr << IXGBE_MSCA_PHY_ADDR_SHIFT;
++	hwaddr |= devad << 16 | regnum;
++	cmd = hwaddr | IXGBE_MSCA_ADDR_CYCLE | IXGBE_MSCA_MDI_COMMAND;
+ 
+-	/* For clause 45 this is an address cycle, for clause 22 this is the
+-	 * entire transaction
+-	 */
+ 	err = ixgbe_msca_cmd(hw, cmd);
+-	if (err < 0 || !(regnum & MII_ADDR_C45))
++	if (err < 0)
+ 		goto mii_bus_write_done;
+ 
+ 	cmd = hwaddr | IXGBE_MSCA_WRITE | IXGBE_MSCA_MDI_COMMAND;
+@@ -774,70 +818,144 @@ static s32 ixgbe_mii_bus_write_generic(struct ixgbe_hw *hw, int addr,
+ }
+ 
+ /**
+- *  ixgbe_mii_bus_read - Read a clause 22/45 register
++ *  ixgbe_mii_bus_read_c22 - Read a clause 22 register
++ *  @bus: pointer to mii_bus structure which points to our driver private
++ *  @addr: address
++ *  @regnum: register number
++ **/
++static s32 ixgbe_mii_bus_read_c22(struct mii_bus *bus, int addr, int regnum)
++{
++	struct ixgbe_adapter *adapter = bus->priv;
++	struct ixgbe_hw *hw = &adapter->hw;
++	u32 gssr = hw->phy.phy_semaphore_mask;
++
++	return ixgbe_mii_bus_read_generic_c22(hw, addr, regnum, gssr);
++}
++
++/**
++ *  ixgbe_mii_bus_read_c45 - Read a clause 45 register
+  *  @bus: pointer to mii_bus structure which points to our driver private
++ *  @devad: device address to read
+  *  @addr: address
+  *  @regnum: register number
+  **/
+-static s32 ixgbe_mii_bus_read(struct mii_bus *bus, int addr, int regnum)
++static s32 ixgbe_mii_bus_read_c45(struct mii_bus *bus, int devad, int addr,
++				  int regnum)
++{
++	struct ixgbe_adapter *adapter = bus->priv;
++	struct ixgbe_hw *hw = &adapter->hw;
++	u32 gssr = hw->phy.phy_semaphore_mask;
++
++	return ixgbe_mii_bus_read_generic_c45(hw, addr, devad, regnum, gssr);
++}
++
++/**
++ *  ixgbe_mii_bus_write_c22 - Write a clause 22 register
++ *  @bus: pointer to mii_bus structure which points to our driver private
++ *  @addr: address
++ *  @regnum: register number
++ *  @val: value to write
++ **/
++static s32 ixgbe_mii_bus_write_c22(struct mii_bus *bus, int addr, int regnum,
++				   u16 val)
+ {
+ 	struct ixgbe_adapter *adapter = bus->priv;
+ 	struct ixgbe_hw *hw = &adapter->hw;
+ 	u32 gssr = hw->phy.phy_semaphore_mask;
+ 
+-	return ixgbe_mii_bus_read_generic(hw, addr, regnum, gssr);
++	return ixgbe_mii_bus_write_generic_c22(hw, addr, regnum, val, gssr);
+ }
+ 
+ /**
+- *  ixgbe_mii_bus_write - Write a clause 22/45 register
++ *  ixgbe_mii_bus_write_c45 - Write a clause 45 register
+  *  @bus: pointer to mii_bus structure which points to our driver private
+  *  @addr: address
++ *  @devad: device address to read
+  *  @regnum: register number
+  *  @val: value to write
+  **/
+-static s32 ixgbe_mii_bus_write(struct mii_bus *bus, int addr, int regnum,
+-			       u16 val)
++static s32 ixgbe_mii_bus_write_c45(struct mii_bus *bus, int addr, int devad,
++				   int regnum, u16 val)
+ {
+ 	struct ixgbe_adapter *adapter = bus->priv;
+ 	struct ixgbe_hw *hw = &adapter->hw;
+ 	u32 gssr = hw->phy.phy_semaphore_mask;
+ 
+-	return ixgbe_mii_bus_write_generic(hw, addr, regnum, val, gssr);
++	return ixgbe_mii_bus_write_generic_c45(hw, addr, devad, regnum, val,
++					       gssr);
+ }
+ 
+ /**
+- *  ixgbe_x550em_a_mii_bus_read - Read a clause 22/45 register on x550em_a
++ *  ixgbe_x550em_a_mii_bus_read_c22 - Read a clause 22 register on x550em_a
+  *  @bus: pointer to mii_bus structure which points to our driver private
+  *  @addr: address
+  *  @regnum: register number
+  **/
+-static s32 ixgbe_x550em_a_mii_bus_read(struct mii_bus *bus, int addr,
+-				       int regnum)
++static s32 ixgbe_x550em_a_mii_bus_read_c22(struct mii_bus *bus, int addr,
++					   int regnum)
++{
++	struct ixgbe_adapter *adapter = bus->priv;
++	struct ixgbe_hw *hw = &adapter->hw;
++	u32 gssr = hw->phy.phy_semaphore_mask;
++
++	gssr |= IXGBE_GSSR_TOKEN_SM | IXGBE_GSSR_PHY0_SM;
++	return ixgbe_mii_bus_read_generic_c22(hw, addr, regnum, gssr);
++}
++
++/**
++ *  ixgbe_x550em_a_mii_bus_read_c45 - Read a clause 45 register on x550em_a
++ *  @bus: pointer to mii_bus structure which points to our driver private
++ *  @addr: address
++ *  @devad: device address to read
++ *  @regnum: register number
++ **/
++static s32 ixgbe_x550em_a_mii_bus_read_c45(struct mii_bus *bus, int addr,
++					   int devad, int regnum)
++{
++	struct ixgbe_adapter *adapter = bus->priv;
++	struct ixgbe_hw *hw = &adapter->hw;
++	u32 gssr = hw->phy.phy_semaphore_mask;
++
++	gssr |= IXGBE_GSSR_TOKEN_SM | IXGBE_GSSR_PHY0_SM;
++	return ixgbe_mii_bus_read_generic_c45(hw, addr, devad, regnum, gssr);
++}
++
++/**
++ *  ixgbe_x550em_a_mii_bus_write_c22 - Write a clause 22 register on x550em_a
++ *  @bus: pointer to mii_bus structure which points to our driver private
++ *  @addr: address
++ *  @regnum: register number
++ *  @val: value to write
++ **/
++static s32 ixgbe_x550em_a_mii_bus_write_c22(struct mii_bus *bus, int addr,
++					    int regnum, u16 val)
+ {
+ 	struct ixgbe_adapter *adapter = bus->priv;
+ 	struct ixgbe_hw *hw = &adapter->hw;
+ 	u32 gssr = hw->phy.phy_semaphore_mask;
+ 
+ 	gssr |= IXGBE_GSSR_TOKEN_SM | IXGBE_GSSR_PHY0_SM;
+-	return ixgbe_mii_bus_read_generic(hw, addr, regnum, gssr);
++	return ixgbe_mii_bus_write_generic_c22(hw, addr, regnum, val, gssr);
+ }
+ 
+ /**
+- *  ixgbe_x550em_a_mii_bus_write - Write a clause 22/45 register on x550em_a
++ *  ixgbe_x550em_a_mii_bus_write_c45 - Write a clause 45 register on x550em_a
+  *  @bus: pointer to mii_bus structure which points to our driver private
+  *  @addr: address
++ *  @devad: device address to read
+  *  @regnum: register number
+  *  @val: value to write
+  **/
+-static s32 ixgbe_x550em_a_mii_bus_write(struct mii_bus *bus, int addr,
+-					int regnum, u16 val)
++static s32 ixgbe_x550em_a_mii_bus_write_c45(struct mii_bus *bus, int addr,
++					    int devad, int regnum, u16 val)
+ {
+ 	struct ixgbe_adapter *adapter = bus->priv;
+ 	struct ixgbe_hw *hw = &adapter->hw;
+ 	u32 gssr = hw->phy.phy_semaphore_mask;
+ 
+ 	gssr |= IXGBE_GSSR_TOKEN_SM | IXGBE_GSSR_PHY0_SM;
+-	return ixgbe_mii_bus_write_generic(hw, addr, regnum, val, gssr);
++	return ixgbe_mii_bus_write_generic_c45(hw, addr, devad, regnum, val,
++					       gssr);
+ }
+ 
+ /**
+@@ -909,8 +1027,11 @@ static bool ixgbe_x550em_a_has_mii(struct ixgbe_hw *hw)
+  **/
+ s32 ixgbe_mii_bus_init(struct ixgbe_hw *hw)
+ {
+-	s32 (*write)(struct mii_bus *bus, int addr, int regnum, u16 val);
+-	s32 (*read)(struct mii_bus *bus, int addr, int regnum);
++	s32 (*write_c22)(struct mii_bus *bus, int addr, int regnum, u16 val);
++	s32 (*read_c22)(struct mii_bus *bus, int addr, int regnum);
++	s32 (*write_c45)(struct mii_bus *bus, int addr, int devad, int regnum,
++			 u16 val);
++	s32 (*read_c45)(struct mii_bus *bus, int addr, int devad, int regnum);
+ 	struct ixgbe_adapter *adapter = hw->back;
+ 	struct pci_dev *pdev = adapter->pdev;
+ 	struct device *dev = &adapter->netdev->dev;
+@@ -929,12 +1050,16 @@ s32 ixgbe_mii_bus_init(struct ixgbe_hw *hw)
+ 	case IXGBE_DEV_ID_X550EM_A_1G_T_L:
+ 		if (!ixgbe_x550em_a_has_mii(hw))
+ 			return 0;
+-		read = &ixgbe_x550em_a_mii_bus_read;
+-		write = &ixgbe_x550em_a_mii_bus_write;
++		read_c22 = ixgbe_x550em_a_mii_bus_read_c22;
++		write_c22 = ixgbe_x550em_a_mii_bus_write_c22;
++		read_c45 = ixgbe_x550em_a_mii_bus_read_c45;
++		write_c45 = ixgbe_x550em_a_mii_bus_write_c45;
+ 		break;
+ 	default:
+-		read = &ixgbe_mii_bus_read;
+-		write = &ixgbe_mii_bus_write;
++		read_c22 = ixgbe_mii_bus_read_c22;
++		write_c22 = ixgbe_mii_bus_write_c22;
++		read_c45 = ixgbe_mii_bus_read_c45;
++		write_c45 = ixgbe_mii_bus_write_c45;
+ 		break;
  	}
- }
  
--static unsigned int xgbe_create_mdio_sca(int port, int reg)
-+static unsigned int xgbe_create_mdio_sca_c22(int port, int reg)
- {
--	unsigned int mdio_sca, da;
-+	unsigned int mdio_sca;
+@@ -942,8 +1067,10 @@ s32 ixgbe_mii_bus_init(struct ixgbe_hw *hw)
+ 	if (!bus)
+ 		return -ENOMEM;
  
--	da = (reg & MII_ADDR_C45) ? reg >> 16 : 0;
-+	mdio_sca = 0;
-+	XGMAC_SET_BITS(mdio_sca, MAC_MDIOSCAR, RA, reg);
-+	XGMAC_SET_BITS(mdio_sca, MAC_MDIOSCAR, PA, port);
-+
-+	return mdio_sca;
-+}
-+
-+static unsigned int xgbe_create_mdio_sca_c45(int port, unsigned int da, int reg)
-+{
-+	unsigned int mdio_sca;
+-	bus->read = read;
+-	bus->write = write;
++	bus->read = read_c22;
++	bus->write = write_c22;
++	bus->read_c45 = read_c45;
++	bus->write_c45 = write_c45;
  
- 	mdio_sca = 0;
- 	XGMAC_SET_BITS(mdio_sca, MAC_MDIOSCAR, RA, reg);
-@@ -1308,14 +1317,13 @@ static unsigned int xgbe_create_mdio_sca(int port, int reg)
- 	return mdio_sca;
- }
- 
--static int xgbe_write_ext_mii_regs(struct xgbe_prv_data *pdata, int addr,
--				   int reg, u16 val)
-+static int xgbe_write_ext_mii_regs(struct xgbe_prv_data *pdata,
-+				   unsigned int mdio_sca, u16 val)
- {
--	unsigned int mdio_sca, mdio_sccd;
-+	unsigned int mdio_sccd;
- 
- 	reinit_completion(&pdata->mdio_complete);
- 
--	mdio_sca = xgbe_create_mdio_sca(addr, reg);
- 	XGMAC_IOWRITE(pdata, MAC_MDIOSCAR, mdio_sca);
- 
- 	mdio_sccd = 0;
-@@ -1332,14 +1340,33 @@ static int xgbe_write_ext_mii_regs(struct xgbe_prv_data *pdata, int addr,
- 	return 0;
- }
- 
--static int xgbe_read_ext_mii_regs(struct xgbe_prv_data *pdata, int addr,
--				  int reg)
-+static int xgbe_write_ext_mii_regs_c22(struct xgbe_prv_data *pdata, int addr,
-+				       int reg, u16 val)
-+{
-+	unsigned int mdio_sca;
-+
-+	mdio_sca = xgbe_create_mdio_sca_c22(addr, reg);
-+
-+	return xgbe_write_ext_mii_regs(pdata, mdio_sca, val);
-+}
-+
-+static int xgbe_write_ext_mii_regs_c45(struct xgbe_prv_data *pdata, int addr,
-+				       int devad, int reg, u16 val)
-+{
-+	unsigned int mdio_sca;
-+
-+	mdio_sca = xgbe_create_mdio_sca_c45(addr, devad, reg);
-+
-+	return xgbe_write_ext_mii_regs(pdata, mdio_sca, val);
-+}
-+
-+static int xgbe_read_ext_mii_regs(struct xgbe_prv_data *pdata,
-+				  unsigned int mdio_sca)
- {
--	unsigned int mdio_sca, mdio_sccd;
-+	unsigned int mdio_sccd;
- 
- 	reinit_completion(&pdata->mdio_complete);
- 
--	mdio_sca = xgbe_create_mdio_sca(addr, reg);
- 	XGMAC_IOWRITE(pdata, MAC_MDIOSCAR, mdio_sca);
- 
- 	mdio_sccd = 0;
-@@ -1355,6 +1382,26 @@ static int xgbe_read_ext_mii_regs(struct xgbe_prv_data *pdata, int addr,
- 	return XGMAC_IOREAD_BITS(pdata, MAC_MDIOSCCDR, DATA);
- }
- 
-+static int xgbe_read_ext_mii_regs_c22(struct xgbe_prv_data *pdata, int addr,
-+				      int reg)
-+{
-+	unsigned int mdio_sca;
-+
-+	mdio_sca = xgbe_create_mdio_sca_c22(addr, reg);
-+
-+	return xgbe_read_ext_mii_regs(pdata, mdio_sca);
-+}
-+
-+static int xgbe_read_ext_mii_regs_c45(struct xgbe_prv_data *pdata, int addr,
-+				      int devad, int reg)
-+{
-+	unsigned int mdio_sca;
-+
-+	mdio_sca = xgbe_create_mdio_sca_c45(addr, devad, reg);
-+
-+	return xgbe_read_ext_mii_regs(pdata, mdio_sca);
-+}
-+
- static int xgbe_set_ext_mii_mode(struct xgbe_prv_data *pdata, unsigned int port,
- 				 enum xgbe_mdio_mode mode)
- {
-@@ -3568,8 +3615,10 @@ void xgbe_init_function_ptrs_dev(struct xgbe_hw_if *hw_if)
- 	hw_if->set_speed = xgbe_set_speed;
- 
- 	hw_if->set_ext_mii_mode = xgbe_set_ext_mii_mode;
--	hw_if->read_ext_mii_regs = xgbe_read_ext_mii_regs;
--	hw_if->write_ext_mii_regs = xgbe_write_ext_mii_regs;
-+	hw_if->read_ext_mii_regs_c22 = xgbe_read_ext_mii_regs_c22;
-+	hw_if->write_ext_mii_regs_c22 = xgbe_write_ext_mii_regs_c22;
-+	hw_if->read_ext_mii_regs_c45 = xgbe_read_ext_mii_regs_c45;
-+	hw_if->write_ext_mii_regs_c45 = xgbe_write_ext_mii_regs_c45;
- 
- 	hw_if->set_gpio = xgbe_set_gpio;
- 	hw_if->clr_gpio = xgbe_clr_gpio;
-diff --git a/drivers/net/ethernet/amd/xgbe/xgbe-phy-v2.c b/drivers/net/ethernet/amd/xgbe/xgbe-phy-v2.c
-index de7118cb10b8..f4683d53e58c 100644
---- a/drivers/net/ethernet/amd/xgbe/xgbe-phy-v2.c
-+++ b/drivers/net/ethernet/amd/xgbe/xgbe-phy-v2.c
-@@ -600,20 +600,27 @@ static int xgbe_phy_get_comm_ownership(struct xgbe_prv_data *pdata)
- 	return -ETIMEDOUT;
- }
- 
--static int xgbe_phy_mdio_mii_write(struct xgbe_prv_data *pdata, int addr,
--				   int reg, u16 val)
-+static int xgbe_phy_mdio_mii_write_c22(struct xgbe_prv_data *pdata, int addr,
-+				       int reg, u16 val)
- {
- 	struct xgbe_phy_data *phy_data = pdata->phy_data;
- 
--	if (reg & MII_ADDR_C45) {
--		if (phy_data->phydev_mode != XGBE_MDIO_MODE_CL45)
--			return -ENOTSUPP;
--	} else {
--		if (phy_data->phydev_mode != XGBE_MDIO_MODE_CL22)
--			return -ENOTSUPP;
--	}
-+	if (phy_data->phydev_mode != XGBE_MDIO_MODE_CL22)
-+		return -EOPNOTSUPP;
-+
-+	return pdata->hw_if.write_ext_mii_regs_c22(pdata, addr, reg, val);
-+}
-+
-+static int xgbe_phy_mdio_mii_write_c45(struct xgbe_prv_data *pdata, int addr,
-+				       int devad, int reg, u16 val)
-+{
-+	struct xgbe_phy_data *phy_data = pdata->phy_data;
- 
--	return pdata->hw_if.write_ext_mii_regs(pdata, addr, reg, val);
-+	if (phy_data->phydev_mode != XGBE_MDIO_MODE_CL45)
-+		return -EOPNOTSUPP;
-+
-+	return pdata->hw_if.write_ext_mii_regs_c45(pdata, addr, devad,
-+						   reg, val);
- }
- 
- static int xgbe_phy_i2c_mii_write(struct xgbe_prv_data *pdata, int reg, u16 val)
-@@ -638,7 +645,8 @@ static int xgbe_phy_i2c_mii_write(struct xgbe_prv_data *pdata, int reg, u16 val)
- 	return ret;
- }
- 
--static int xgbe_phy_mii_write(struct mii_bus *mii, int addr, int reg, u16 val)
-+static int xgbe_phy_mii_write_c22(struct mii_bus *mii, int addr, int reg,
-+				  u16 val)
- {
- 	struct xgbe_prv_data *pdata = mii->priv;
- 	struct xgbe_phy_data *phy_data = pdata->phy_data;
-@@ -651,29 +659,58 @@ static int xgbe_phy_mii_write(struct mii_bus *mii, int addr, int reg, u16 val)
- 	if (phy_data->conn_type == XGBE_CONN_TYPE_SFP)
- 		ret = xgbe_phy_i2c_mii_write(pdata, reg, val);
- 	else if (phy_data->conn_type & XGBE_CONN_TYPE_MDIO)
--		ret = xgbe_phy_mdio_mii_write(pdata, addr, reg, val);
-+		ret = xgbe_phy_mdio_mii_write_c22(pdata, addr, reg, val);
- 	else
--		ret = -ENOTSUPP;
-+		ret = -EOPNOTSUPP;
- 
- 	xgbe_phy_put_comm_ownership(pdata);
- 
- 	return ret;
- }
- 
--static int xgbe_phy_mdio_mii_read(struct xgbe_prv_data *pdata, int addr,
--				  int reg)
-+static int xgbe_phy_mii_write_c45(struct mii_bus *mii, int addr, int devad,
-+				  int reg, u16 val)
- {
-+	struct xgbe_prv_data *pdata = mii->priv;
- 	struct xgbe_phy_data *phy_data = pdata->phy_data;
-+	int ret;
- 
--	if (reg & MII_ADDR_C45) {
--		if (phy_data->phydev_mode != XGBE_MDIO_MODE_CL45)
--			return -ENOTSUPP;
--	} else {
--		if (phy_data->phydev_mode != XGBE_MDIO_MODE_CL22)
--			return -ENOTSUPP;
--	}
-+	ret = xgbe_phy_get_comm_ownership(pdata);
-+	if (ret)
-+		return ret;
- 
--	return pdata->hw_if.read_ext_mii_regs(pdata, addr, reg);
-+	if (phy_data->conn_type == XGBE_CONN_TYPE_SFP)
-+		ret = -EOPNOTSUPP;
-+	else if (phy_data->conn_type & XGBE_CONN_TYPE_MDIO)
-+		ret = xgbe_phy_mdio_mii_write_c45(pdata, addr, devad, reg, val);
-+	else
-+		ret = -EOPNOTSUPP;
-+
-+	xgbe_phy_put_comm_ownership(pdata);
-+
-+	return ret;
-+}
-+
-+static int xgbe_phy_mdio_mii_read_c22(struct xgbe_prv_data *pdata, int addr,
-+				      int reg)
-+{
-+	struct xgbe_phy_data *phy_data = pdata->phy_data;
-+
-+	if (phy_data->phydev_mode != XGBE_MDIO_MODE_CL22)
-+		return -EOPNOTSUPP;
-+
-+	return pdata->hw_if.read_ext_mii_regs_c22(pdata, addr, reg);
-+}
-+
-+static int xgbe_phy_mdio_mii_read_c45(struct xgbe_prv_data *pdata, int addr,
-+				      int devad, int reg)
-+{
-+	struct xgbe_phy_data *phy_data = pdata->phy_data;
-+
-+	if (phy_data->phydev_mode != XGBE_MDIO_MODE_CL45)
-+		return -EOPNOTSUPP;
-+
-+	return pdata->hw_if.read_ext_mii_regs_c45(pdata, addr, devad, reg);
- }
- 
- static int xgbe_phy_i2c_mii_read(struct xgbe_prv_data *pdata, int reg)
-@@ -698,7 +735,7 @@ static int xgbe_phy_i2c_mii_read(struct xgbe_prv_data *pdata, int reg)
- 	return ret;
- }
- 
--static int xgbe_phy_mii_read(struct mii_bus *mii, int addr, int reg)
-+static int xgbe_phy_mii_read_c22(struct mii_bus *mii, int addr, int reg)
- {
- 	struct xgbe_prv_data *pdata = mii->priv;
- 	struct xgbe_phy_data *phy_data = pdata->phy_data;
-@@ -711,7 +748,30 @@ static int xgbe_phy_mii_read(struct mii_bus *mii, int addr, int reg)
- 	if (phy_data->conn_type == XGBE_CONN_TYPE_SFP)
- 		ret = xgbe_phy_i2c_mii_read(pdata, reg);
- 	else if (phy_data->conn_type & XGBE_CONN_TYPE_MDIO)
--		ret = xgbe_phy_mdio_mii_read(pdata, addr, reg);
-+		ret = xgbe_phy_mdio_mii_read_c22(pdata, addr, reg);
-+	else
-+		ret = -EOPNOTSUPP;
-+
-+	xgbe_phy_put_comm_ownership(pdata);
-+
-+	return ret;
-+}
-+
-+static int xgbe_phy_mii_read_c45(struct mii_bus *mii, int addr, int devad,
-+				 int reg)
-+{
-+	struct xgbe_prv_data *pdata = mii->priv;
-+	struct xgbe_phy_data *phy_data = pdata->phy_data;
-+	int ret;
-+
-+	ret = xgbe_phy_get_comm_ownership(pdata);
-+	if (ret)
-+		return ret;
-+
-+	if (phy_data->conn_type == XGBE_CONN_TYPE_SFP)
-+		ret = -EOPNOTSUPP;
-+	else if (phy_data->conn_type & XGBE_CONN_TYPE_MDIO)
-+		ret = xgbe_phy_mdio_mii_read_c45(pdata, addr, devad, reg);
- 	else
- 		ret = -ENOTSUPP;
- 
-@@ -1929,8 +1989,8 @@ static int xgbe_phy_set_redrv_mode_mdio(struct xgbe_prv_data *pdata,
- 	redrv_reg = XGBE_PHY_REDRV_MODE_REG + (phy_data->redrv_lane * 0x1000);
- 	redrv_val = (u16)mode;
- 
--	return pdata->hw_if.write_ext_mii_regs(pdata, phy_data->redrv_addr,
--					       redrv_reg, redrv_val);
-+	return pdata->hw_if.write_ext_mii_regs_c22(pdata, phy_data->redrv_addr,
-+						   redrv_reg, redrv_val);
- }
- 
- static int xgbe_phy_set_redrv_mode_i2c(struct xgbe_prv_data *pdata,
-@@ -3502,8 +3562,10 @@ static int xgbe_phy_init(struct xgbe_prv_data *pdata)
- 
- 	mii->priv = pdata;
- 	mii->name = "amd-xgbe-mii";
--	mii->read = xgbe_phy_mii_read;
--	mii->write = xgbe_phy_mii_write;
-+	mii->read = xgbe_phy_mii_read_c22;
-+	mii->write = xgbe_phy_mii_write_c22;
-+	mii->read_c45 = xgbe_phy_mii_read_c45;
-+	mii->write_c45 = xgbe_phy_mii_write_c45;
- 	mii->parent = pdata->dev;
- 	mii->phy_mask = ~0;
- 	snprintf(mii->id, sizeof(mii->id), "%s", dev_name(pdata->dev));
-diff --git a/drivers/net/ethernet/amd/xgbe/xgbe.h b/drivers/net/ethernet/amd/xgbe/xgbe.h
-index 4ae19a6f1704..16e73df3e9b9 100644
---- a/drivers/net/ethernet/amd/xgbe/xgbe.h
-+++ b/drivers/net/ethernet/amd/xgbe/xgbe.h
-@@ -776,8 +776,11 @@ struct xgbe_hw_if {
- 
- 	int (*set_ext_mii_mode)(struct xgbe_prv_data *, unsigned int,
- 				enum xgbe_mdio_mode);
--	int (*read_ext_mii_regs)(struct xgbe_prv_data *, int, int);
--	int (*write_ext_mii_regs)(struct xgbe_prv_data *, int, int, u16);
-+	int (*read_ext_mii_regs_c22)(struct xgbe_prv_data *, int, int);
-+	int (*write_ext_mii_regs_c22)(struct xgbe_prv_data *, int, int, u16);
-+	int (*read_ext_mii_regs_c45)(struct xgbe_prv_data *, int, int, int);
-+	int (*write_ext_mii_regs_c45)(struct xgbe_prv_data *, int, int, int,
-+				      u16);
- 
- 	int (*set_gpio)(struct xgbe_prv_data *, unsigned int);
- 	int (*clr_gpio)(struct xgbe_prv_data *, unsigned int);
+ 	/* Use the position of the device in the PCI hierarchy as the id */
+ 	snprintf(bus->id, MII_BUS_ID_SIZE, "%s-mdio-%s", ixgbe_driver_name,
 
 -- 
 2.30.2
