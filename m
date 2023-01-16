@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CB81C46467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 03:43:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D259C67871
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 03:43:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yTwi/wm1VEa7sxfk9gx+359zu2PiIe1XEuGy8+FqnVo=; b=XTAXvJ2hMWCS0wogZZJZWlzDgW
-	jSJ6lK70noKXuTKH3n+X4++DdCLtnvnYoIc/d0k4ESyZUZK+ed8rdlFX9F1knkVmBAXiDs2qnb6MQ
-	8w+KRNKJi9BpZLDM39bVOa7q+RaVz3/lvOwK7qJ13d23kJ4c0AiWnufc5IqImJZyr/jyHOrWwgxdl
-	oNkfLX1RPbBl0zIppPLaZBWySxIFAkByVGIpJkgZPgRIBZSrrz19AsdPm8z/3yN0hXc2BhoXFPOJN
-	OOPwYD0nNU8ALF0dU4iLdJG207vpbgWPR2INchpUq2kXzMJ+aHd50cgW8MF6ox9mIhLLJpqCOik0i
-	hxjE4hiA==;
+	bh=QsXVaBlLyZgLe3Omky45vD7Ia8dAb9dNk+EXoNiFXQE=; b=O8FPqH9hgU1tPU3IGDD/9DWj6m
+	v6x4q+mWDAae2V3MzKMQXj8dR/+F4/tXQB/FuaZ/DzyXk9CCELki6ZcrmnJFv4Cr3Aq7J1Qmq//gG
+	8xrmXgHF2pQqO2ZdMOviCLB/cjaZzC7TdhBfP54ynH34Ww5X7IYC5iv/G7NSPdOsdP8ukjM6tDFoG
+	BrUnXDvz6aCtr3VMZ1SAvNnAFLB8NCAcE5KyAItvcCO/cD27JUX8MJDYL4TMWbY5vdu/WNElPots6
+	WjZP0K2nS5DLkR6Gn9/oDVXeXI2TSagJfBNIipzyo4n0tKVnlqHX80wElyE0OV9tNezva6XlwHKCp
+	GbOJRdPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHGPT-008WZ9-KF; Mon, 16 Jan 2023 03:43:47 +0000
+	id 1pHGPV-008WaB-0D; Mon, 16 Jan 2023 03:43:49 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHGNz-008Vz6-Su; Mon, 16 Jan 2023 03:42:16 +0000
+	id 1pHGNz-008Vz4-SP; Mon, 16 Jan 2023 03:42:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=yTwi/wm1VEa7sxfk9gx+359zu2PiIe1XEuGy8+FqnVo=; b=H3xCMmCrKe7ob/EUtYdWrjldjP
-	+ik2hQBAH4JoXwLexklsY7e21cL3xn5JtnuDfYTnGo7/u2gG7INT2E7uGmqwUp4F+Nj1X72m+6syo
-	l/oCYCocDu7dJdWgOv293dh2+0qDLwVmA3P3nKuD/kBRRSTCDX446p/eP1hnMrKzuWOTjUHYzC6iX
-	YfqtZLWb62r9XYQj8Ci+CgM6nfcYyRTLjt4gHo/qBpOqQjfSXX2RIHYrimAoHRY9IE6yubtQjNoh0
-	RhNee8mbiWSxB1B4SLG83IkY6CgTn/iPbAm3HQtnKV5e4+6D6gAn7nqOC+IiQkVPoNyrAjGtS0spr
-	BURVQiUQ==;
+	bh=QsXVaBlLyZgLe3Omky45vD7Ia8dAb9dNk+EXoNiFXQE=; b=SGsEMdkxrlCihDT0pkeTospovc
+	DS0pnRtN2xoRd7NbbB9+laYUM/+tCR6YqgXj/LT9NaveAnSki6AsLoVnpTgxuF0egykyegdazaSa8
+	EwXxkgcaRBmb7dMCgqKrG5Fauwno1sny1c9wKKb6DayHk9XVUNF2hrzW8yo2fWNDaBwtqZtfoLUr0
+	+2RgkoZWWXnRPbRbqlAvI5+oVjIOpLDv9CxaenBHWoTosFU5fp1TCovVtcQgm1jT/d5qQiNTGVLdT
+	+A3Iej0jgYJqZP3ySLOfG+d44eozY5qOb3jDf3sLS4Kk/t2OoeBZ3xnOjMaCesvG2OHSugxwt3pmD
+	fhmsJYww==;
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pHGNi-005Syz-30;
-	Mon, 16 Jan 2023 03:42:03 +0000
-X-UUID: b0b9fe86954f11edbbe3f76fe852e059-20230115
+	id 1pHGNh-005Syu-2m;
+	Mon, 16 Jan 2023 03:42:02 +0000
+X-UUID: b04de6ba954f11edbbe3f76fe852e059-20230115
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=yTwi/wm1VEa7sxfk9gx+359zu2PiIe1XEuGy8+FqnVo=;
-	b=bBa36DHErvlQEPp4/ao2o/7xCL3IOzHQIX/tGSIHd3QujETcWXJ8k8Tl5Pb15PSlupUznd+/cZu9fCjIAzKafwhmzMFRqJWzDgqpYq4ihanx8DfKY7h/wbNad13a+arMoN3TWCox76jM3jn0SfoGPYMuLA65m9KyzcQw7QPtSH8=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=QsXVaBlLyZgLe3Omky45vD7Ia8dAb9dNk+EXoNiFXQE=;
+	b=RuGMsMymFkAVicw6LOsqDlpLkRl2osnjAjZE7QvLcOEenn2NoBYw+A15t5LmeWa6/ZPrhWISStgu1oeI0E5XfE7G/Kp02FBePvJhB8JoMAXS/kqs/wnsHphNxbC1IjLeKjXqiPp9b76cQy7x9xjAqpOrj+6byDkTbIUBvVbXW+k=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:2cdc99e7-5cf4-4334-b336-9429099f28b4,IP:0,U
-	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:25
-X-CID-META: VersionHash:543e81c,CLOUDID:efee568c-8530-4eff-9f77-222cf6e2895b,B
+X-CID-O-INFO: VERSION:1.1.17,REQID:0df45d72-6043-4bf6-a32b-3fc06f17cebe,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:543e81c,CLOUDID:f0f1bb54-dd49-462e-a4be-2143a3ddc739,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
 X-CID-BVR: 0,NGT
-X-UUID: b0b9fe86954f11edbbe3f76fe852e059-20230115
+X-UUID: b04de6ba954f11edbbe3f76fe852e059-20230115
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <trevor.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 301679109; Sun, 15 Jan 2023 20:41:41 -0700
+	with ESMTP id 894337834; Sun, 15 Jan 2023 20:41:41 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 16 Jan 2023 11:41:38 +0800
+ 15.2.792.15; Mon, 16 Jan 2023 11:41:37 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.792.15 via Frontend Transport; Mon, 16 Jan 2023 11:41:37 +0800
@@ -71,9 +71,9 @@ CC: <trevor.wu@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
 	<alsa-devel@alsa-project.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<devicetree@vger.kernel.org>
-Subject: [RESEND,v5 13/13] ASoC: dt-bindings: mediatek,mt8188-mt6359: add mt8188-mt6359 document
-Date: Mon, 16 Jan 2023 11:41:31 +0800
-Message-ID: <20230116034131.23943-14-trevor.wu@mediatek.com>
+Subject: [RESEND,v5 11/13] ASoC: mediatek: common: add soundcard driver common code
+Date: Mon, 16 Jan 2023 11:41:29 +0800
+Message-ID: <20230116034131.23943-12-trevor.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230116034131.23943-1-trevor.wu@mediatek.com>
 References: <20230116034131.23943-1-trevor.wu@mediatek.com>
@@ -81,8 +81,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_034159_414071_0F7E15D8 
-X-CRM114-Status: GOOD (  12.87  )
+X-CRM114-CacheID: sfid-20230116_034158_734429_ABCE2FCE 
+X-CRM114-Status: GOOD (  16.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,118 +97,135 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add document for mt8188 board with mt6359.
+Add common code to support of_node of codec parsing, so codec phandle
+can be assigned by sound-dai in dts.
 
 Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- .../sound/mediatek,mt8188-mt6359.yaml         | 97 +++++++++++++++++++
- 1 file changed, 97 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
+ sound/soc/mediatek/common/Makefile            |  2 +-
+ .../mediatek/common/mtk-soundcard-driver.c    | 79 +++++++++++++++++++
+ .../mediatek/common/mtk-soundcard-driver.h    | 14 ++++
+ 3 files changed, 94 insertions(+), 1 deletion(-)
+ create mode 100644 sound/soc/mediatek/common/mtk-soundcard-driver.c
+ create mode 100644 sound/soc/mediatek/common/mtk-soundcard-driver.h
 
-diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
+diff --git a/sound/soc/mediatek/common/Makefile b/sound/soc/mediatek/common/Makefile
+index 576deb7f8cce..42e636c10c1e 100644
+--- a/sound/soc/mediatek/common/Makefile
++++ b/sound/soc/mediatek/common/Makefile
+@@ -1,6 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+ # platform driver
+-snd-soc-mtk-common-objs := mtk-afe-platform-driver.o mtk-afe-fe-dai.o mtk-dsp-sof-common.o
++snd-soc-mtk-common-objs := mtk-afe-platform-driver.o mtk-afe-fe-dai.o mtk-dsp-sof-common.o mtk-soundcard-driver.o
+ obj-$(CONFIG_SND_SOC_MEDIATEK) += snd-soc-mtk-common.o
+ 
+ obj-$(CONFIG_SND_SOC_MTK_BTCVSD) += mtk-btcvsd.o
+diff --git a/sound/soc/mediatek/common/mtk-soundcard-driver.c b/sound/soc/mediatek/common/mtk-soundcard-driver.c
 new file mode 100644
-index 000000000000..6640272b3f4f
+index 000000000000..7c55c2cb1f21
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
-@@ -0,0 +1,97 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/sound/mediatek,mt8188-mt6359.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++++ b/sound/soc/mediatek/common/mtk-soundcard-driver.c
+@@ -0,0 +1,79 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * mtk-soundcard-driver.c  --  MediaTek soundcard driver common
++ *
++ * Copyright (c) 2022 MediaTek Inc.
++ * Author: Trevor Wu <trevor.wu@mediatek.com>
++ */
 +
-+title: MediaTek MT8188 ASoC sound card
++#include <linux/module.h>
++#include <linux/of.h>
++#include <sound/soc.h>
 +
-+maintainers:
-+  - Trevor Wu <trevor.wu@mediatek.com>
++#include "mtk-soundcard-driver.h"
 +
-+properties:
-+  compatible:
-+    const: mediatek,mt8188-mt6359-evb
++static int set_card_codec_info(struct snd_soc_card *card,
++			       struct device_node *sub_node,
++			       struct snd_soc_dai_link *dai_link)
++{
++	struct device *dev = card->dev;
++	struct device_node *codec_node;
++	int ret;
 +
-+  model:
-+    $ref: /schemas/types.yaml#/definitions/string
-+    description: User specified audio sound card name
++	codec_node = of_get_child_by_name(sub_node, "codec");
++	if (!codec_node)
++		return -EINVAL;
 +
-+  audio-routing:
-+    $ref: /schemas/types.yaml#/definitions/non-unique-string-array
-+    description:
-+      A list of the connections between audio components. Each entry is a
-+      sink/source pair of strings. Valid names could be the input or output
-+      widgets of audio components, power supplies, MicBias of codec and the
-+      software switch.
++	/* set card codec info */
++	ret = snd_soc_of_get_dai_link_codecs(dev, codec_node, dai_link);
 +
-+  mediatek,platform:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: The phandle of MT8188 ASoC platform.
++	of_node_put(codec_node);
 +
-+patternProperties:
-+  "^dai-link-[0-9]+$":
-+    type: object
-+    description:
-+      Container for dai-link level properties and CODEC sub-nodes.
++	if (ret < 0)
++		return dev_err_probe(dev, ret, "%s: codec dai not found\n",
++				     dai_link->name);
 +
-+    properties:
-+      link-name:
-+        description:
-+          This property corresponds to the name of the BE dai-link to which
-+          we are going to update parameters in this node.
-+        items:
-+          enum:
-+            - ADDA_BE
-+            - DPTX_BE
-+            - ETDM1_IN_BE
-+            - ETDM2_IN_BE
-+            - ETDM1_OUT_BE
-+            - ETDM2_OUT_BE
-+            - ETDM3_OUT_BE
-+            - PCM1_BE
++	return 0;
++}
 +
-+      codec:
-+        description: Holds subnode which indicates codec dai.
-+        type: object
-+        additionalProperties: false
-+        properties:
-+          sound-dai:
-+            minItems: 1
-+            maxItems: 2
-+        required:
-+          - sound-dai
++int parse_dai_link_info(struct snd_soc_card *card)
++{
++	struct device *dev = card->dev;
++	struct device_node *sub_node;
++	struct snd_soc_dai_link *dai_link;
++	const char *dai_link_name;
++	int ret, i;
 +
-+    additionalProperties: false
++	/* Loop over all the dai link sub nodes */
++	for_each_available_child_of_node(dev->of_node, sub_node) {
++		if (of_property_read_string(sub_node, "link-name",
++					    &dai_link_name))
++			return -EINVAL;
 +
-+    required:
-+      - link-name
-+      - codec
++		for_each_card_prelinks(card, i, dai_link) {
++			if (!strcmp(dai_link_name, dai_link->name))
++				break;
++		}
 +
-+additionalProperties: false
++		if (i >= card->num_links)
++			return -EINVAL;
 +
-+required:
-+  - compatible
-+  - mediatek,platform
++		ret = set_card_codec_info(card, sub_node, dai_link);
++		if (ret < 0)
++			return ret;
++	}
 +
-+examples:
-+  - |
-+    sound {
-+        compatible = "mediatek,mt8188-mt6359-evb";
-+        mediatek,platform = <&afe>;
-+        pinctrl-names = "default";
-+        pinctrl-0 = <&aud_pins_default>;
-+        audio-routing =
-+            "Headphone", "Headphone L",
-+            "Headphone", "Headphone R",
-+            "AIN1", "Headset Mic";
-+        dai-link-0 {
-+            link-name = "ETDM3_OUT_BE";
++	return 0;
++}
++EXPORT_SYMBOL_GPL(parse_dai_link_info);
 +
-+            codec {
-+                sound-dai = <&hdmi0>;
-+            };
-+        };
-+    };
++void clean_card_reference(struct snd_soc_card *card)
++{
++	struct snd_soc_dai_link *dai_link;
++	int i;
 +
-+...
++	/* release codec reference gotten by set_card_codec_info */
++	for_each_card_prelinks(card, i, dai_link)
++		snd_soc_of_put_dai_link_codecs(dai_link);
++}
++EXPORT_SYMBOL_GPL(clean_card_reference);
+diff --git a/sound/soc/mediatek/common/mtk-soundcard-driver.h b/sound/soc/mediatek/common/mtk-soundcard-driver.h
+new file mode 100644
+index 000000000000..d92cac1d7b72
+--- /dev/null
++++ b/sound/soc/mediatek/common/mtk-soundcard-driver.h
+@@ -0,0 +1,14 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * mtk-soundcard-driver.h  --  MediaTek soundcard driver common definition
++ *
++ * Copyright (c) 2022 MediaTek Inc.
++ * Author: Trevor Wu <trevor.wu@mediatek.com>
++ */
++
++#ifndef _MTK_SOUNDCARD_DRIVER_H_
++#define _MTK_SOUNDCARD_DRIVER_H_
++
++int parse_dai_link_info(struct snd_soc_card *card);
++void clean_card_reference(struct snd_soc_card *card);
++#endif
 -- 
 2.18.0
 
