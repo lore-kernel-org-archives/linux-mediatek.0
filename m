@@ -4,72 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 607C3C54EBE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 14:46:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C730BC46467
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 14:59:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mx+q3yLiLRos9hCCmecWMw+O0wMnKRMkoi7oBC1P2yw=; b=K0TFC6Fuh+EtGm
-	tvCLOz7sZ8kmyha3GLt4jTrxCgxsUTSJrdxrK6Neitq3O4n6jnafJRjNNC4QtCU6KiL8UVtq8Yy+7
-	EHdYgp9+uYpWxvyn7rLaStDqLTyBvDJ+trPHoGr/bMdK3YEHc0coBMWTb//zvW9YsyXtRL/fWDEzO
-	6W9KkfEZpXYvw66etuBF26YVtztSIwiKeUe/M8N5ixVX9vZRIr09rgHdXSgIoLRizEeRMHM3BqD9f
-	JLBovuCMIVraxqZ+5dpRqywGwHBXjBoL0lbbGwzIkHTEHw8BmpnKjrZpmFHhefLx7nlUKK/Po+rQZ
-	N2os1Vo1Mdlx2sDFV26g==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WFKnv3IXFGo/+R8aB760h27cGKXKKD/moSarcuDR1DI=; b=oEF6v3lTLDv81Q82HE2AO6dieJ
+	p4Cc3G2N0R4Bq2fP/6DQjEiUlq0ljesX6uRMOZp+SGUkhHO3xhLfRE2MlNOT8uG2CpCG4wvnjb4Cc
+	31Ae1T5a4OFTqiK5elZyyulxF+Px1liUHvj8FJ+I3x+hua5YDsTXfkwb+Xc/uFGqnstmE5bO8B7Pa
+	LOjPvJZFPElC/Qty2MwadZYNLrlS20HNUPDc7jPeFgnruTrggG/J6FC16E4wUKvdbh5qqBw7pbs+x
+	hQ7BzurysDO2Hv0Rrv+2PibDgKw3cuDpDkBlmkZiWKAZmwgM+o9dHrx5fUfJOBvithmFanxmi1uE7
+	HmUYXMpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHQkQ-00AxkV-8x; Mon, 16 Jan 2023 14:46:06 +0000
-Received: from dilbert.mork.no ([2a01:4f9:c010:a439::d])
+	id 1pHQxX-00B1Qu-SL; Mon, 16 Jan 2023 14:59:39 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHQkN-00Axiv-9s; Mon, 16 Jan 2023 14:46:04 +0000
-Received: from canardo.dyn.mork.no ([IPv6:2a01:799:c9a:3200:0:0:0:1])
-	(authenticated bits=0)
-	by dilbert.mork.no (8.15.2/8.15.2) with ESMTPSA id 30GEjVgq2096589
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
-	Mon, 16 Jan 2023 14:45:32 GMT
-Received: from miraculix.mork.no ([IPv6:2a01:799:c9a:3202:549f:9f7a:c9d8:875b])
-	(authenticated bits=0)
-	by canardo.dyn.mork.no (8.15.2/8.15.2) with ESMTPSA id 30GEjO301941354
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
-	Mon, 16 Jan 2023 15:45:25 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mork.no; s=b;
-	t=1673880326; bh=mx+q3yLiLRos9hCCmecWMw+O0wMnKRMkoi7oBC1P2yw=;
-	h=From:To:Cc:Subject:References:Date:Message-ID:From;
-	b=l1FEWKcFwozAXZT92eOk4DYK9J5PCDmXUQrfN+v/KWtvYc2fpizFf5QuySWUej9vH
-	 gtapsUguFpTOxxoGcK918w1E9C0f+tX/TELSuLMxT1uGkro6wLbp60oGBBdhkA41yz
-	 ABGYMJ8pa1LLF/WVx79N1VB0rbgWi11X6tb1CLZ4=
-Received: (nullmailer pid 375753 invoked by uid 1000);
-	Mon, 16 Jan 2023 14:45:24 -0000
-From: =?utf-8?Q?Bj=C3=B8rn_Mork?= <bjorn@mork.no>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+	id 1pHQxV-00B1Ps-H1; Mon, 16 Jan 2023 14:59:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=WFKnv3IXFGo/+R8aB760h27cGKXKKD/moSarcuDR1DI=; b=KiXQaWYjAzj22qeVwf+8jraFnd
+	piSsFBsu9jpccuQs1OylYmOhIxYpYJMXk9UyP8itAzdxLXZH6mTTAzAzsQlF0ezNt4NoQdpe1IkY8
+	u4k28bU9DzDlGgLhdaq2SePXFBylBp0fFPF2Gd8K/VFGgpVHIi/HDGC4TJ1MNqtbFIB3V4jZwt3Zq
+	a2jILgICyiMK0Ye8t3cBHRBaVU6/N/P71gpgPg43tBGnmXFdXv0semHNJb9z0WCUs/2JuoRMYNrSF
+	31fMcmwwLBZ8kcU/TEM9VyQ4w00g1Hv4AnsJ0drPuoayyhfQokV48ZP1CRv+eMOvMhEtJfolfdvIH
+	3bklwOgA==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:36130)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1pHQxM-0005D4-H5; Mon, 16 Jan 2023 14:59:28 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1pHQxG-00066F-Sc; Mon, 16 Jan 2023 14:59:22 +0000
+Date: Mon, 16 Jan 2023 14:59:22 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: =?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
 Subject: Re: [PATCH v2] net: mtk_sgmii: implement mtk_pcs_ops
-Organization: m
-References: <trinity-1d4cc306-d1a4-4ccf-b853-d315553515ce-1666543305596@3c-app-gmx-bs01>
-	<Y1V/asUompZKj0ct@shell.armlinux.org.uk>
-	<trinity-ac9a840b-cb06-4710-827a-4c4423686074-1666551838763@3c-app-gmx-bs01>
-	<trinity-169e3c3f-3a64-485c-9a43-b7cc595531a9-1666552897046@3c-app-gmx-bs01>
-	<Y1Wfc+M/zVdw9Di3@shell.armlinux.org.uk>
-	<Y1Zah4+hyFk50JC6@shell.armlinux.org.uk>
-	<trinity-d2f74581-c020-4473-a5f4-0fc591233293-1666622740261@3c-app-gmx-bap55>
-	<Y1ansgmD69AcITWx@shell.armlinux.org.uk>
-	<trinity-defa4f3d-804e-401e-bea1-b36246cbc11b-1666685003285@3c-app-gmx-bap29>
-	<87o7qy39v5.fsf@miraculix.mork.no>
-	<Y8VVa0zHk0nCwS1w@shell.armlinux.org.uk>
-Date: Mon, 16 Jan 2023 15:45:24 +0100
-In-Reply-To: <Y8VVa0zHk0nCwS1w@shell.armlinux.org.uk> (Russell King's message
-	of "Mon, 16 Jan 2023 13:47:23 +0000")
-Message-ID: <87h6wq35dn.fsf@miraculix.mork.no>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+Message-ID: <Y8VmSrjHTlllaDy2@shell.armlinux.org.uk>
+References: <trinity-ac9a840b-cb06-4710-827a-4c4423686074-1666551838763@3c-app-gmx-bs01>
+ <trinity-169e3c3f-3a64-485c-9a43-b7cc595531a9-1666552897046@3c-app-gmx-bs01>
+ <Y1Wfc+M/zVdw9Di3@shell.armlinux.org.uk>
+ <Y1Zah4+hyFk50JC6@shell.armlinux.org.uk>
+ <trinity-d2f74581-c020-4473-a5f4-0fc591233293-1666622740261@3c-app-gmx-bap55>
+ <Y1ansgmD69AcITWx@shell.armlinux.org.uk>
+ <trinity-defa4f3d-804e-401e-bea1-b36246cbc11b-1666685003285@3c-app-gmx-bap29>
+ <87o7qy39v5.fsf@miraculix.mork.no>
+ <Y8VVa0zHk0nCwS1w@shell.armlinux.org.uk>
+ <87h6wq35dn.fsf@miraculix.mork.no>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Virus-Scanned: clamav-milter 0.103.7 at canardo
-X-Virus-Status: Clean
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <87h6wq35dn.fsf@miraculix.mork.no>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_064603_670098_474A46CA 
-X-CRM114-Status: GOOD (  16.19  )
+X-CRM114-CacheID: sfid-20230116_065937_585276_FE3801DC 
+X-CRM114-Status: GOOD (  21.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,35 +82,49 @@ Cc: netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vge
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-"Russell King (Oracle)" <linux@armlinux.org.uk> writes:
-> On Mon, Jan 16, 2023 at 02:08:30PM +0100, Bj=C3=B8rn Mork wrote:
->> Frank Wunderlich <frank-w@public-files.de> writes:
->>=20
->> > apart from this little problem it works much better than it actually i=
-s so imho more
->> > people should test it on different platforms.
->>=20
->> Hello!  I've been banging my head against an MT7986 board with two
->> Maxlinear GPY211C phys for a while. One of those phys is connected to
->> port 5 of the MT7531 switch.  This is working perfectly.
->>=20
->> The other GPY211C is connected to the second MT7986 mac.  This one is
->> giving me a headache...
->>=20
->> I can only get the port to work at 2500Mb/s.  Changing the speed to
->> anything lower looks fine in ethtool etc, but traffic is blocked.
->
-> My guess would be that the GPY PHY is using in-band SGMII negotiation
-> (it sets VSPEC1_SGMII_ANEN_ANRS when entering SGMII mode and clears
-> it in 2500base-X), but as the link is not using in-band mode on the
-> PCS side, the PHY never sees its in-band negotiation complete, so the
-> link between PCS and PHY never comes up.
->
-> Both sides need to agree on that detail.
+On Mon, Jan 16, 2023 at 03:45:24PM +0100, Bjørn Mork wrote:
+> "Russell King (Oracle)" <linux@armlinux.org.uk> writes:
+> > On Mon, Jan 16, 2023 at 02:08:30PM +0100, Bjørn Mork wrote:
+> >> Frank Wunderlich <frank-w@public-files.de> writes:
+> >> 
+> >> > apart from this little problem it works much better than it actually is so imho more
+> >> > people should test it on different platforms.
+> >> 
+> >> Hello!  I've been banging my head against an MT7986 board with two
+> >> Maxlinear GPY211C phys for a while. One of those phys is connected to
+> >> port 5 of the MT7531 switch.  This is working perfectly.
+> >> 
+> >> The other GPY211C is connected to the second MT7986 mac.  This one is
+> >> giving me a headache...
+> >> 
+> >> I can only get the port to work at 2500Mb/s.  Changing the speed to
+> >> anything lower looks fine in ethtool etc, but traffic is blocked.
+> >
+> > My guess would be that the GPY PHY is using in-band SGMII negotiation
+> > (it sets VSPEC1_SGMII_ANEN_ANRS when entering SGMII mode and clears
+> > it in 2500base-X), but as the link is not using in-band mode on the
+> > PCS side, the PHY never sees its in-band negotiation complete, so the
+> > link between PCS and PHY never comes up.
+> >
+> > Both sides need to agree on that detail.
+> 
+> Any hints on how I would go about doing that?  I am a little lost here,
+> changing arbitrary bits I don't understand the meaning of.
 
-Any hints on how I would go about doing that?  I am a little lost here,
-changing arbitrary bits I don't understand the meaning of.
+Hi,
 
+To prove the point, in mtk_pcs_config():
 
-Bj=C3=B8rn
+        if (interface == PHY_INTERFACE_MODE_SGMII) {
+                sgm_mode = SGMII_IF_MODE_SGMII;
+                if (phylink_autoneg_inband(mode)) {
+
+Force the second if() to always be true, and see whether that allows
+traffic to pass.
+
+Thanks.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
