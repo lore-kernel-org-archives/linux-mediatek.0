@@ -4,69 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0BD6C54EBE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 17:48:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0216CC46467
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 18:00:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YlUo0VHGiHMqOq7GALN7Pw8+2+ppyERsUnHndjGHafs=; b=ZoebtnEcRC0/u3Apid7P/Maobs
-	Yy0kZYFF4uhBqDIk4FyivKAzy27QsuXPmOApT93E9idgbvL7B9n41L+UgEWZI0aY6QahCsKjZEltw
-	jNUNeI0gy7vyi3joq45nnTdLSuropZL98Ob3+glmVPgH+AlIowOZ0siOFqrvZT+/6SsUR8idv3xFT
-	2zt+QWSQVpoi/CnklEtJWiGLvAy9JGLTB4slRJQka4qI5hDMsJuLAIrC2FBoWJf5ugRdUYRMnCmgz
-	syTSrUlN5ifGM0D8c3F9RITLeC6v5/7oA5ySNwKwUICUzxVPuCLFZ/DrbKtdV5fmvRg1ndo4cKgeg
-	YCwb2XOQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:In-Reply-To:
+	Date:References:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HDuvAz64SqsKbU9gYiKU5aaWYNXaEHcp2xofRwaGKA4=; b=qKx+QNleSZYKLn
+	zICgE4AhSl7ZR1Pg/QjjpYv35VgnRtglkBkqKgXJHNOXVOzql55uxVHX/HUTwWvhZRcmhFaHWTJBD
+	5n7giG035MhPCfbEeNOIy165e7/8OKGHk3rrDy2bmde+uCDIU3GMv8qM511mXZ3DzXg0RiGxGuCVb
+	DY4DhHrLXfyjTUtaSuyNxBG8n1fvlVzGQfHlB/BdY+0h6QsfLzNeHkKZKhYVCoJ2xZcsoRIsKbvkV
+	NIlOr58L6TWP63a6d4KEoGQwRgVQwrvOBUYsVA1D7fpI1KP67G6aBUVA4Pbs+8i1K3yaJ/Y2Tt9O0
+	bBsyrvnwSO+tHNKsa+Lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHTaa-00BZpA-WA; Mon, 16 Jan 2023 17:48:09 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1pHTm3-00Bcn0-IM; Mon, 16 Jan 2023 17:59:59 +0000
+Received: from dilbert.mork.no ([2a01:4f9:c010:a439::d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHTaX-00BZnQ-Bx; Mon, 16 Jan 2023 17:48:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=YlUo0VHGiHMqOq7GALN7Pw8+2+ppyERsUnHndjGHafs=; b=OkJyz9r3mgDSaw8Y2k1jx3/8VU
-	c8RMeUzS9M04RYoq1Lk4ZHGQl0R+MP1845w3OzyAeAqYxy3M3RF1YhDYLyZRu/UCelyBeXKAkyK8T
-	oM98rrAddjYBDUzkHi5/CNg0FXFcinO2Wrxgv77CMPZcCUB7Pqkpfd7fuolnMrgwOxR9K9r2zQOvh
-	CVMtSThx2FDWKBeWPOm6UByPU66XVEO2OaBNDTgTCQp2WOHq6l+TACWelbDj7ZwRqZqa4qVIaKhRh
-	qDKn7WUiILBPzXUMhAQ0QrII1eKTpWJzbXi9U2fgp+hqkSyeybbA2pf5T5Gl82oZMx8T/bbro38Br
-	PCACa7/g==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:36136)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1pHTaM-0005YZ-3b; Mon, 16 Jan 2023 17:47:53 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1pHTaG-0006CW-EU; Mon, 16 Jan 2023 17:47:48 +0000
-Date: Mon, 16 Jan 2023 17:47:48 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: =?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
+	id 1pHTlx-00BckH-C8; Mon, 16 Jan 2023 17:59:57 +0000
+Received: from canardo.dyn.mork.no ([IPv6:2a01:799:c9a:3200:0:0:0:1])
+	(authenticated bits=0)
+	by dilbert.mork.no (8.15.2/8.15.2) with ESMTPSA id 30GHxPUE2106206
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
+	Mon, 16 Jan 2023 17:59:26 GMT
+Received: from miraculix.mork.no ([IPv6:2a01:799:c9a:3202:549f:9f7a:c9d8:875b])
+	(authenticated bits=0)
+	by canardo.dyn.mork.no (8.15.2/8.15.2) with ESMTPSA id 30GHxJrP2083208
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
+	Mon, 16 Jan 2023 18:59:19 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mork.no; s=b;
+	t=1673891960; bh=HDuvAz64SqsKbU9gYiKU5aaWYNXaEHcp2xofRwaGKA4=;
+	h=From:To:Cc:Subject:References:Date:Message-ID:From;
+	b=g3nhyG6Z9qnhfhTznf2bRAH/7kBCvKFOv8lPvw/AT4jnKqIzDU1AW1XPLuiTjt4jv
+	 vkbDjFSpCUeFSafYiM5CNsN9ZXw1gTAbFrz3EVZeFt7md8AGyfKVrBc+bykMPGdnI3
+	 RvLyCKn/9C59pTMdMSJv4SwPWLfA1pN8xQk/kigI=
+Received: (nullmailer pid 386524 invoked by uid 1000);
+	Mon, 16 Jan 2023 17:59:19 -0000
+From: =?utf-8?Q?Bj=C3=B8rn_Mork?= <bjorn@mork.no>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
 Subject: Re: [PATCH v2] net: mtk_sgmii: implement mtk_pcs_ops
-Message-ID: <Y8WNxAQ6C6NyUUn1@shell.armlinux.org.uk>
+Organization: m
 References: <Y1ansgmD69AcITWx@shell.armlinux.org.uk>
- <trinity-defa4f3d-804e-401e-bea1-b36246cbc11b-1666685003285@3c-app-gmx-bap29>
- <87o7qy39v5.fsf@miraculix.mork.no>
- <Y8VVa0zHk0nCwS1w@shell.armlinux.org.uk>
- <87h6wq35dn.fsf@miraculix.mork.no>
- <Y8VmSrjHTlllaDy2@shell.armlinux.org.uk>
- <87bkmy33ph.fsf@miraculix.mork.no>
- <Y8Vt9vfEa4w8HXHQ@shell.armlinux.org.uk>
- <875yd630cu.fsf@miraculix.mork.no>
- <871qnu2ztz.fsf@miraculix.mork.no>
+	<trinity-defa4f3d-804e-401e-bea1-b36246cbc11b-1666685003285@3c-app-gmx-bap29>
+	<87o7qy39v5.fsf@miraculix.mork.no>
+	<Y8VVa0zHk0nCwS1w@shell.armlinux.org.uk>
+	<87h6wq35dn.fsf@miraculix.mork.no>
+	<Y8VmSrjHTlllaDy2@shell.armlinux.org.uk>
+	<87bkmy33ph.fsf@miraculix.mork.no>
+	<Y8Vt9vfEa4w8HXHQ@shell.armlinux.org.uk>
+	<875yd630cu.fsf@miraculix.mork.no> <871qnu2ztz.fsf@miraculix.mork.no>
+	<Y8WNxAQ6C6NyUUn1@shell.armlinux.org.uk>
+Date: Mon, 16 Jan 2023 18:59:19 +0100
+In-Reply-To: <Y8WNxAQ6C6NyUUn1@shell.armlinux.org.uk> (Russell King's message
+	of "Mon, 16 Jan 2023 17:47:48 +0000")
+Message-ID: <87pmbe1hu0.fsf@miraculix.mork.no>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <871qnu2ztz.fsf@miraculix.mork.no>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Virus-Scanned: clamav-milter 0.103.7 at canardo
+X-Virus-Status: Clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_094805_425763_00F3CD58 
-X-CRM114-Status: GOOD (  13.88  )
+X-CRM114-CacheID: sfid-20230116_095953_742097_7794F077 
+X-CRM114-Status: GOOD (  13.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,45 +84,82 @@ Cc: netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vge
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 16, 2023 at 05:45:12PM +0100, Bjørn Mork wrote:
-> Bjørn Mork <bjorn@mork.no> writes:
-> 
-> >> You have bmcr=0x1000, but the code sets two bits - SGMII_AN_RESTART and
-> >> SGMII_AN_ENABLE which are bits 9 and 12, so bmcr should be 0x1200, not
-> >> 0x1000. Any ideas why?
-> >
-> > No, not really
-> 
-> Doh! Looked over it again, and this was my fault of course.  Had an
-> 
->   "bmcr = SGMII_AN_ENABLE;"
->   
-> line overwriting the original value from a previous attempt without
-> changing the if condition.. Thanks for spotting that.
-> 
-> But this still doesn't work any better:
-> 
-> [   43.019395] mtk_soc_eth 15100000.ethernet wan: Link is Down
-> [   45.099898] mtk_sgmii_select_pcs: id=1
-> [   45.103653] mtk_pcs_config: interface=4
-> [   45.107473] offset:0 0x140
-> [   45.107476] offset:4 0x4d544950
-> [   45.110181] offset:8 0x20
-> [   45.113305] forcing AN
-> [   45.118256] mtk_pcs_config: rgc3=0x0, advertise=0x1 (changed), link_timer=1600000,  sgm_mode=0x103, bmcr=0x1200, use_an=1
-> [   45.129191] mtk_pcs_link_up: interface=4
-> [   45.133100] offset:0 0x81140
-> [   45.133102] offset:4 0x4d544950
-> [   45.135967] offset:8 0x1
-> [   45.139104] mtk_soc_eth 15100000.ethernet wan: Link is Up - 1Gbps/Full - flow control rx/tx
+"Russell King (Oracle)" <linux@armlinux.org.uk> writes:
 
-In your _dump_pcs_ctrl() function, please can you dump the
-SGMSYS_SGMII_MODE register as well (offset 0x20), in case this gives
-more clue as to what's going on.
+> On Mon, Jan 16, 2023 at 05:45:12PM +0100, Bj=C3=B8rn Mork wrote:
+>> Bj=C3=B8rn Mork <bjorn@mork.no> writes:
+>>=20
+>> >> You have bmcr=3D0x1000, but the code sets two bits - SGMII_AN_RESTART=
+ and
+>> >> SGMII_AN_ENABLE which are bits 9 and 12, so bmcr should be 0x1200, not
+>> >> 0x1000. Any ideas why?
+>> >
+>> > No, not really
+>>=20
+>> Doh! Looked over it again, and this was my fault of course.  Had an
+>>=20
+>>   "bmcr =3D SGMII_AN_ENABLE;"
+>>=20=20=20
+>> line overwriting the original value from a previous attempt without
+>> changing the if condition.. Thanks for spotting that.
+>>=20
+>> But this still doesn't work any better:
+>>=20
+>> [   43.019395] mtk_soc_eth 15100000.ethernet wan: Link is Down
+>> [   45.099898] mtk_sgmii_select_pcs: id=3D1
+>> [   45.103653] mtk_pcs_config: interface=3D4
+>> [   45.107473] offset:0 0x140
+>> [   45.107476] offset:4 0x4d544950
+>> [   45.110181] offset:8 0x20
+>> [   45.113305] forcing AN
+>> [   45.118256] mtk_pcs_config: rgc3=3D0x0, advertise=3D0x1 (changed), li=
+nk_timer=3D1600000,  sgm_mode=3D0x103, bmcr=3D0x1200, use_an=3D1
+>> [   45.129191] mtk_pcs_link_up: interface=3D4
+>> [   45.133100] offset:0 0x81140
+>> [   45.133102] offset:4 0x4d544950
+>> [   45.135967] offset:8 0x1
+>> [   45.139104] mtk_soc_eth 15100000.ethernet wan: Link is Up - 1Gbps/Ful=
+l - flow control rx/tx
+>
+> In your _dump_pcs_ctrl() function, please can you dump the
+> SGMSYS_SGMII_MODE register as well (offset 0x20), in case this gives
+> more clue as to what's going on.
 
-Thanks.
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+[   49.339410] mtk_soc_eth 15100000.ethernet wan: Link is Down
+[   52.459913] mtk_sgmii_select_pcs: id=3D1
+[   52.463673] mtk_pcs_config: interface=3D4
+[   52.467494] offset:0 0x140
+[   52.467496] offset:4 0x4d544950
+[   52.470199] offset:8 0x20
+[   52.473325] offset:20 0x10000
+[   52.475929] forcing AN
+[   52.481232] mtk_pcs_config: rgc3=3D0x0, advertise=3D0x1 (changed), link_=
+timer=3D1600000,  sgm_mode=3D0x103, bmcr=3D0x1200, use_an=3D1
+[   52.492166] mtk_pcs_link_up: interface=3D4
+[   52.496072] offset:0 0x81140
+[   52.496074] offset:4 0x4d544950
+[   52.498938] offset:8 0x1
+[   52.502067] offset:20 0x10000
+[   52.504599] mtk_soc_eth 15100000.ethernet wan: Link is Up - 1Gbps/Full -=
+ flow control rx/tx
+[   65.979410] mtk_soc_eth 15100000.ethernet wan: Link is Down
+[   70.139856] mtk_sgmii_select_pcs: id=3D1
+[   70.143616] mtk_pcs_config: interface=3D22
+[   70.147523] offset:0 0x81140
+[   70.147525] offset:4 0x4d544950
+[   70.150402] offset:8 0x1
+[   70.153526] offset:20 0x10000
+[   70.156049] mtk_pcs_config: rgc3=3D0x4, advertise=3D0x20 (changed), link=
+_timer=3D10000000,  sgm_mode=3D0x0, bmcr=3D0x0, use_an=3D0
+[   70.169672] mtk_pcs_link_up: interface=3D22
+[   70.173664] offset:0 0x40140
+[   70.173666] offset:4 0x4d544950
+[   70.176530] offset:8 0x20
+[   70.179659] offset:20 0x10000
+[   70.182279] mtk_soc_eth 15100000.ethernet wan: Link is Up - 2.5Gbps/Full=
+ - flow control rx/tx
+
+
+Bj=C3=B8rn
 
