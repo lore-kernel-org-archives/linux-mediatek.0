@@ -4,66 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 218E2C46467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 14:10:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7BC2C54EBE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 14:13:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0d22Wj9YSgGlvQPy7q8cZh2XhkSJ1Gv5em2fXiDoRRE=; b=2P7Kq4A8kZoSXxOBpvQAh0v6MF
-	lFvX1nNo1IS0nmD/32lQHNEK1XABYNAgAAgqwlNw5dDbD4XXGjvsmgxARJh/C21QWDLn4egU5eVqr
-	00wEfPf420QQa5LC9BMUdnMA1g+4Tbj5bu6yQCjQ5R7DlWv0tYPcOrXYh0SsmH8hkgM1ozswYOh0L
-	xY5BAUtNjNhNpwaB2CWgtQhQCDI9FEZWkHxWxkLTRh2gK6NGDT10zvnkQ1GVblWH44sbBh98Q9nN/
-	b9fHnr8vdobxfl3GcfB8DPwP5h/vkw8ZDZj/wLV3jB/3boinmyrMHrgaz1LVOu9X8tRY/+megma7/
-	+eLjGFwg==;
+	bh=3KixZnYN0dc+lJ2OjS2OJhyCtEN+lVS9GdbU8+6zwEE=; b=1Ke1dz4FcEcP6GVWC0blO92sTm
+	ori+4VpjVVQhK78pSDVL6DQwsQEi77AXmIrzh0ao7zMh8w7NTT97WlbpAD9GHXdwALZ3ri6cFp6v6
+	GOfC+MG5LFr+h1Q9SWyVAxFI7zdHbqWZiYa/HEuJvDUm4n+5Fdmdp0nlSKyzzILdGvEEjMRFz+9BZ
+	VzBLPt1Wu3qyaQpr7Qe0LwIIOuJR1tm7KvSRm05niP0rnZDHUh7LLDwMZQULpXz55emfJHNbBnn6v
+	x8cnOV9GH449/91FgRACqCwNcoO8IlfB0hzI4pKs8t7FqMQn5hkuTLiUbGGIYYp3KNKu2zpuhklLq
+	/DRxdkVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHQBT-00Akx0-VQ; Mon, 16 Jan 2023 14:09:59 +0000
+	id 1pHQEx-00Amsx-2L; Mon, 16 Jan 2023 14:13:35 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHQ4M-00Aggu-LI; Mon, 16 Jan 2023 14:02:40 +0000
+	id 1pHQ50-00Ah2h-Ii; Mon, 16 Jan 2023 14:03:20 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 02D2C60FCA;
-	Mon, 16 Jan 2023 14:02:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1345AC433EF;
-	Mon, 16 Jan 2023 14:02:35 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id A4F8860FE0;
+	Mon, 16 Jan 2023 14:03:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 467E9C433EF;
+	Mon, 16 Jan 2023 14:03:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1673877757;
-	bh=rKhjvkQjqw5KgkQ2IGqQE+M1sJPep97rfaS5IO0auYg=;
+	s=k20201202; t=1673877797;
+	bh=vzGU7fggFYdTM/Yz8WBo94uwKocZoX7eVhfAfkKbvRA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=NQ3kgJk1vmkTeA1lOwjtfoxP/rT4tY+1KhWg4RhMbiT77aX/ozV1XBKLXQUvBlYjg
-	 4ZdNbYK7X6qEo1Nz0xQfq9bZIAyygVGDnASxf+sU6HiTb06+XHvD/T6XJvJvlScQJ8
-	 LmRHDh5xQD1T0h8H0WmNBWFZBbq6LLpvsD1CL2C7xfRwBgaZEc8zZl6OS5UH7CSuyo
-	 5ZCzZqq/sUh3eUoSsXZq2Iba2GLU5Wc0gTy2Ef/kxtYmo6xAmTCgVeYxG/3FgnmBF/
-	 UuRIBtlpEMCedDWLznp5koEuOiebyX2Ty1CrrX4p4qshlh7JvN1EQHSEBz91+mqbmU
-	 DWEE/p7TK8Dng==
+	b=cSJFOyD0U/8NUKLfczffwrD458xnjyQImChDno+1T6qLYpUhD6FXA7ql9o5f1ISlK
+	 qy3RiIW/wNk6B5XIFhGGruOB2aYvEwdTd5ANOjDdfVpxsIa/7Yg52+RVdW/UbJ9xdM
+	 23L3Nw0cMiEQ7lvO48RV5uFHvTsPM/ad9pHcQFk/X/bRT/JIUaIC79CrJkatMrilJ/
+	 1RJfibmzy5m8maqAEA+jm7YM78/TThv7kFFtpUgx3eMLZ59Y8tYlLr48W/SQaEM2IA
+	 93MLC3HqEklTAPHF+BrcGqHVKvodT9f3GjVNdH94nlGNw92HebUIou36p1kLDM/ecZ
+	 HW7C3+iv/JiSA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Mars Chen <chenxiangrui@huaqin.corp-partner.google.com>,
-	Mark Brown <broonie@kernel.org>,
+Cc: Miles Chen <miles.chen@mediatek.com>,
+	Viresh Kumar <viresh.kumar@linaro.org>,
 	Sasha Levin <sashal@kernel.org>,
-	lgirdwood@gmail.com,
-	perex@perex.cz,
-	tiwai@suse.com,
+	andrew@lunn.ch,
+	gregory.clement@bootlin.com,
+	sebastian.hesselbarth@gmail.com,
+	rafael@kernel.org,
 	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	jiaxin.yu@mediatek.com,
-	tzungbi@kernel.org,
-	trevor.wu@mediatek.com,
-	julianbraha@gmail.com,
-	allen-kh.cheng@mediatek.com,
-	renzhijie2@huawei.com,
-	alsa-devel@alsa-project.org,
 	linux-arm-kernel@lists.infradead.org,
+	linux-pm@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 12/53] ASoC: support machine driver with max98360
-Date: Mon, 16 Jan 2023 09:01:12 -0500
-Message-Id: <20230116140154.114951-12-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.1 31/53] cpufreq: armada-37xx: stop using 0 as NULL pointer
+Date: Mon, 16 Jan 2023 09:01:31 -0500
+Message-Id: <20230116140154.114951-31-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20230116140154.114951-1-sashal@kernel.org>
 References: <20230116140154.114951-1-sashal@kernel.org>
@@ -72,9 +66,8 @@ X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_060238_779340_22A062AA 
-X-CRM114-Status: UNSURE (   9.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230116_060318_709032_E60F38F4 
+X-CRM114-Status: GOOD (  12.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,30 +82,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Mars Chen <chenxiangrui@huaqin.corp-partner.google.com>
+From: Miles Chen <miles.chen@mediatek.com>
 
-[ Upstream commit 810948f45d99c46b60852ef2a5a2777c12d6bb3e ]
+[ Upstream commit 08f0adb193c008de640fde34a2e00a666c01d77c ]
 
-Signed-off-by: Mars Chen <chenxiangrui@huaqin.corp-partner.google.com>
-Link: https://lore.kernel.org/r/20221228103812.450956-1-chenxiangrui@huaqin.corp-partner.google.com
-Signed-off-by: Mark Brown <broonie@kernel.org>
+Use NULL for NULL pointer to fix the following sparse warning:
+drivers/cpufreq/armada-37xx-cpufreq.c:448:32: sparse: warning: Using plain integer as NULL pointer
+
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- sound/soc/mediatek/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/cpufreq/armada-37xx-cpufreq.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-index 7bdb0ded831c..b027fba8233d 100644
---- a/sound/soc/mediatek/Kconfig
-+++ b/sound/soc/mediatek/Kconfig
-@@ -187,6 +187,7 @@ config SND_SOC_MT8186_MT6366_RT1019_RT5682S
- 	depends on SND_SOC_MT8186 && MTK_PMIC_WRAP
- 	select SND_SOC_MAX98357A
- 	select SND_SOC_MT6358
-+	select SND_SOC_MAX98357A
- 	select SND_SOC_RT1015P
- 	select SND_SOC_RT5682S
- 	select SND_SOC_BT_SCO
+diff --git a/drivers/cpufreq/armada-37xx-cpufreq.c b/drivers/cpufreq/armada-37xx-cpufreq.c
+index c10fc33b29b1..b74289a95a17 100644
+--- a/drivers/cpufreq/armada-37xx-cpufreq.c
++++ b/drivers/cpufreq/armada-37xx-cpufreq.c
+@@ -445,7 +445,7 @@ static int __init armada37xx_cpufreq_driver_init(void)
+ 		return -ENODEV;
+ 	}
+ 
+-	clk = clk_get(cpu_dev, 0);
++	clk = clk_get(cpu_dev, NULL);
+ 	if (IS_ERR(clk)) {
+ 		dev_err(cpu_dev, "Cannot get clock for CPU0\n");
+ 		return PTR_ERR(clk);
 -- 
 2.35.1
 
