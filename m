@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 274DDC54EBE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 23:56:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A464CC46467
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 23:56:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fRnrZfwUNJp2IC+ysULsHp9fJlB7cZ3Z/7z1oE7VHLk=; b=OkoBrm43FfLiahoGbqWYrOvGSn
-	jaiPX7NvLluAwbTg8w/R2o3wpHOPuOkT+dr/wwemeSLLy4WBYd4KdNkHYRRqMKG02y+AAEXP730EP
-	UIkOTVgcb4x70wEAeZcLUnOcTnrOlUEeQwfY+PJa9co/tKMzaRUaJD/p6beUV/eFRUPGQxz4+oR7R
-	fehIpBoTMWqK5QnyfKfNk1aQq457boLqiIuXn8UveGj1zWaC+hVkozX8e6NbouC0x7Z+z6vIXq+Kz
-	bo3KMHqjZPdt8eBPqeInaQPPEiFGLit+lEaih/pizyMLVAGh3TjL0/6zMPremEIuhTWEsJBKjjjC+
-	Iqr3/83g==;
+	bh=OmJ+9CmwjBTs3CG9j8tedbOIS1gGBtjDkwnDw2VO6LM=; b=TyFovEGraz1iKNirh2QWE1u3AA
+	bd/rDGCmOHhbLWUY866GluNLl2zDJnwwcnA3oqqQI4pZHJhw8ULmpQSUU/8vpDTYIyyrrEORcUFs6
+	KBRkAKfCCMLbJdmNoJHEa4aAKtU4F7MmORpdFepLfsQhnEkWJ2TNen+AmZI3tUuBUapIoTz6QCLgU
+	9vGbiMDRo8leaDGk7CWhP1SyWl3dTcwT2oGhJp6eGs8UMaG2QSlH3GF02ngE6d1VqhnqwsRJs7GB3
+	NvrGoyeXj/G+gzxvcJBpNGO4th8H07YrKbmb5brJZWxgzRpi/68PqyAs/tfYuuHPsxsGGOlHdcxjc
+	uiRh7o1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHZKS-00CJsB-6z; Mon, 16 Jan 2023 23:55:52 +0000
+	id 1pHZKV-00CJu2-60; Mon, 16 Jan 2023 23:55:55 +0000
 Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHZHa-00CIEc-7b; Mon, 16 Jan 2023 23:52:57 +0000
+	id 1pHZHb-00CIG3-Uo; Mon, 16 Jan 2023 23:52:57 +0000
 Received: from mwalle01.sab.local (unknown [213.135.10.150])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 2B4AF1A07;
-	Tue, 17 Jan 2023 00:52:50 +0100 (CET)
+	by mail.3ffe.de (Postfix) with ESMTPSA id D8A0816EA;
+	Tue, 17 Jan 2023 00:52:47 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1673913170;
+	t=1673913168;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=fRnrZfwUNJp2IC+ysULsHp9fJlB7cZ3Z/7z1oE7VHLk=;
-	b=18nYmw1ZzKt9SdoRatWrAq/uSj+xNfpSivkKWAE1vnYD55Gox9PlHJPByiRafi31nONmSq
-	1X6VAdHXUfB0PVK0xVODgP6gShYhma8kU1cvmTbHg53jrqNYH3DyR4CKC/5/5AGMGd6DFS
-	p/6ir9U0U0dEndLbublpwLroqVSb2iKvzWH1N57DgLDc2vo3JHrKfAkptS2Hojp+iUlYsE
-	I0vkjOv5YBm6j3A1SwBdi8cT+qJ+ZYK3uRKOR5k7zDfeJ3wC0K2WzhFaYOnbXbFVC2cFor
-	rf2CVH6+ys1lOBHLqhcM6INYECWdi5HgfRX4IucvCXb4PBzfMwS1MzgZ2AEHBg==
+	bh=OmJ+9CmwjBTs3CG9j8tedbOIS1gGBtjDkwnDw2VO6LM=;
+	b=eItgcFr83H0p1PU0iNChDNdiOgj8KhYJ8woVXKsLke+s9Qzn4YWii5eReEsBuleyYQt6qF
+	zdB3j5sZRNRt7IYX77xPINY9PI563Domlhi3UUM6iYnR/7cJNfvw2qJ9K/pFln4/WldMhR
+	KLEda5zh67qih83Ir652RtZkToIDVhs+vwYaXJQkzFrYdR4NRzGcjoj7o0P9BTVYD+HGzh
+	e91HRJCCAaJRUCf8LXpvVLVkoVWluGPxBaeiv+On9tzW4vLvj/LrS/kvi4VC8xZIjuV/fH
+	dq6rAn7Pjrjnz7XuZr3iXlIGBZFY2xdOTT7geNfbJloqNBU6E5xeHvWycz+NAw==
 From: Michael Walle <michael@walle.cc>
-Date: Tue, 17 Jan 2023 00:52:25 +0100
-Subject:  [PATCH net-next 10/12] net: dsa: sja1105: C45 only transactions for PCS
+Date: Tue, 17 Jan 2023 00:52:21 +0100
+Subject: [PATCH net-next 06/12] ixgbe: Use C45 mdiobus accessors
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id:  <20230116-net-next-c45-seperation-part-3-v1-10-0c53afa56aad@walle.cc>
+Message-Id:  <20230116-net-next-c45-seperation-part-3-v1-6-0c53afa56aad@walle.cc>
 References:  <20230116-net-next-c45-seperation-part-3-v1-0-0c53afa56aad@walle.cc>
 In-Reply-To:  <20230116-net-next-c45-seperation-part-3-v1-0-0c53afa56aad@walle.cc>
 To: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
@@ -71,8 +71,8 @@ Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Andrew Lunn <andrew@lunn.ch>, Michael Walle <michael@walle.cc>
 X-Mailer: b4 0.11.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_155254_502146_BB1FD2D5 
-X-CRM114-Status: GOOD (  16.79  )
+X-CRM114-CacheID: sfid-20230116_155256_235466_F69C3273 
+X-CRM114-Status: GOOD (  11.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,249 +89,40 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Andrew Lunn <andrew@lunn.ch>
 
-The sja1105 MDIO bus driver only supports C45 transfers. Update the
-function names to make this clear, pass the mmd as a parameter, and
-register the accessors to the _c45 ops of the bus driver structure.
+When performing a C45 bus transaction, make use of the c45 variants of
+the bus read/write helpers. The ability to pass a special register
+value is being removed to clean up the mdio bus driver API.
 
 Signed-off-by: Andrew Lunn <andrew@lunn.ch>
 Signed-off-by: Michael Walle <michael@walle.cc>
 ---
- drivers/net/dsa/sja1105/sja1105.h      | 16 ++++++++-----
- drivers/net/dsa/sja1105/sja1105_mdio.c | 44 ++++++++++------------------------
- drivers/net/dsa/sja1105/sja1105_spi.c  | 24 +++++++++----------
- 3 files changed, 35 insertions(+), 49 deletions(-)
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/dsa/sja1105/sja1105.h b/drivers/net/dsa/sja1105/sja1105.h
-index 9ba2ec2b966d..fb1549a5fe32 100644
---- a/drivers/net/dsa/sja1105/sja1105.h
-+++ b/drivers/net/dsa/sja1105/sja1105.h
-@@ -149,8 +149,10 @@ struct sja1105_info {
- 	bool (*rxtstamp)(struct dsa_switch *ds, int port, struct sk_buff *skb);
- 	void (*txtstamp)(struct dsa_switch *ds, int port, struct sk_buff *skb);
- 	int (*clocking_setup)(struct sja1105_private *priv);
--	int (*pcs_mdio_read)(struct mii_bus *bus, int phy, int reg);
--	int (*pcs_mdio_write)(struct mii_bus *bus, int phy, int reg, u16 val);
-+	int (*pcs_mdio_read_c45)(struct mii_bus *bus, int phy, int mmd,
-+				 int reg);
-+	int (*pcs_mdio_write_c45)(struct mii_bus *bus, int phy, int mmd,
-+				  int reg, u16 val);
- 	int (*disable_microcontroller)(struct sja1105_private *priv);
- 	const char *name;
- 	bool supports_mii[SJA1105_MAX_NUM_PORTS];
-@@ -303,10 +305,12 @@ void sja1105_frame_memory_partitioning(struct sja1105_private *priv);
- /* From sja1105_mdio.c */
- int sja1105_mdiobus_register(struct dsa_switch *ds);
- void sja1105_mdiobus_unregister(struct dsa_switch *ds);
--int sja1105_pcs_mdio_read(struct mii_bus *bus, int phy, int reg);
--int sja1105_pcs_mdio_write(struct mii_bus *bus, int phy, int reg, u16 val);
--int sja1110_pcs_mdio_read(struct mii_bus *bus, int phy, int reg);
--int sja1110_pcs_mdio_write(struct mii_bus *bus, int phy, int reg, u16 val);
-+int sja1105_pcs_mdio_read_c45(struct mii_bus *bus, int phy, int mmd, int reg);
-+int sja1105_pcs_mdio_write_c45(struct mii_bus *bus, int phy, int mmd, int reg,
-+			       u16 val);
-+int sja1110_pcs_mdio_read_c45(struct mii_bus *bus, int phy, int mmd, int reg);
-+int sja1110_pcs_mdio_write_c45(struct mii_bus *bus, int phy, int mmd, int reg,
-+			       u16 val);
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index ab8370c413f3..59f9d82ce532 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -8937,7 +8937,8 @@ ixgbe_mdio_read(struct net_device *netdev, int prtad, int devad, u16 addr)
+ 		int regnum = addr;
  
- /* From sja1105_devlink.c */
- int sja1105_devlink_setup(struct dsa_switch *ds);
-diff --git a/drivers/net/dsa/sja1105/sja1105_mdio.c b/drivers/net/dsa/sja1105/sja1105_mdio.c
-index 4059fcc8c832..8f1fcaf8e1d9 100644
---- a/drivers/net/dsa/sja1105/sja1105_mdio.c
-+++ b/drivers/net/dsa/sja1105/sja1105_mdio.c
-@@ -7,20 +7,15 @@
+ 		if (devad != MDIO_DEVAD_NONE)
+-			regnum |= (devad << 16) | MII_ADDR_C45;
++			return mdiobus_c45_read(adapter->mii_bus, prtad,
++						devad, regnum);
  
- #define SJA1110_PCS_BANK_REG		SJA1110_SPI_ADDR(0x3fc)
+ 		return mdiobus_read(adapter->mii_bus, prtad, regnum);
+ 	}
+@@ -8960,7 +8961,8 @@ static int ixgbe_mdio_write(struct net_device *netdev, int prtad, int devad,
+ 		int regnum = addr;
  
--int sja1105_pcs_mdio_read(struct mii_bus *bus, int phy, int reg)
-+int sja1105_pcs_mdio_read_c45(struct mii_bus *bus, int phy, int mmd, int reg)
- {
- 	struct sja1105_mdio_private *mdio_priv = bus->priv;
- 	struct sja1105_private *priv = mdio_priv->priv;
- 	u64 addr;
- 	u32 tmp;
--	u16 mmd;
- 	int rc;
+ 		if (devad != MDIO_DEVAD_NONE)
+-			regnum |= (devad << 16) | MII_ADDR_C45;
++			return mdiobus_c45_write(adapter->mii_bus, prtad, devad,
++						 regnum, value);
  
--	if (!(reg & MII_ADDR_C45))
--		return -EINVAL;
--
--	mmd = (reg >> MII_DEVADDR_C45_SHIFT) & 0x1f;
--	addr = (mmd << 16) | (reg & GENMASK(15, 0));
-+	addr = (mmd << 16) | reg;
- 
- 	if (mmd != MDIO_MMD_VEND1 && mmd != MDIO_MMD_VEND2)
- 		return 0xffff;
-@@ -37,19 +32,15 @@ int sja1105_pcs_mdio_read(struct mii_bus *bus, int phy, int reg)
- 	return tmp & 0xffff;
- }
- 
--int sja1105_pcs_mdio_write(struct mii_bus *bus, int phy, int reg, u16 val)
-+int sja1105_pcs_mdio_write_c45(struct mii_bus *bus, int phy, int mmd,
-+			       int reg, u16 val)
- {
- 	struct sja1105_mdio_private *mdio_priv = bus->priv;
- 	struct sja1105_private *priv = mdio_priv->priv;
- 	u64 addr;
- 	u32 tmp;
--	u16 mmd;
--
--	if (!(reg & MII_ADDR_C45))
--		return -EINVAL;
- 
--	mmd = (reg >> MII_DEVADDR_C45_SHIFT) & 0x1f;
--	addr = (mmd << 16) | (reg & GENMASK(15, 0));
-+	addr = (mmd << 16) | reg;
- 	tmp = val;
- 
- 	if (mmd != MDIO_MMD_VEND1 && mmd != MDIO_MMD_VEND2)
-@@ -58,7 +49,7 @@ int sja1105_pcs_mdio_write(struct mii_bus *bus, int phy, int reg, u16 val)
- 	return sja1105_xfer_u32(priv, SPI_WRITE, addr, &tmp, NULL);
- }
- 
--int sja1110_pcs_mdio_read(struct mii_bus *bus, int phy, int reg)
-+int sja1110_pcs_mdio_read_c45(struct mii_bus *bus, int phy, int mmd, int reg)
- {
- 	struct sja1105_mdio_private *mdio_priv = bus->priv;
- 	struct sja1105_private *priv = mdio_priv->priv;
-@@ -66,17 +57,12 @@ int sja1110_pcs_mdio_read(struct mii_bus *bus, int phy, int reg)
- 	int offset, bank;
- 	u64 addr;
- 	u32 tmp;
--	u16 mmd;
- 	int rc;
- 
--	if (!(reg & MII_ADDR_C45))
--		return -EINVAL;
--
- 	if (regs->pcs_base[phy] == SJA1105_RSV_ADDR)
- 		return -ENODEV;
- 
--	mmd = (reg >> MII_DEVADDR_C45_SHIFT) & 0x1f;
--	addr = (mmd << 16) | (reg & GENMASK(15, 0));
-+	addr = (mmd << 16) | reg;
- 
- 	if (mmd == MDIO_MMD_VEND2 && (reg & GENMASK(15, 0)) == MII_PHYSID1)
- 		return NXP_SJA1110_XPCS_ID >> 16;
-@@ -108,7 +94,8 @@ int sja1110_pcs_mdio_read(struct mii_bus *bus, int phy, int reg)
- 	return tmp & 0xffff;
- }
- 
--int sja1110_pcs_mdio_write(struct mii_bus *bus, int phy, int reg, u16 val)
-+int sja1110_pcs_mdio_write_c45(struct mii_bus *bus, int phy, int reg, int mmd,
-+			       u16 val)
- {
- 	struct sja1105_mdio_private *mdio_priv = bus->priv;
- 	struct sja1105_private *priv = mdio_priv->priv;
-@@ -116,17 +103,12 @@ int sja1110_pcs_mdio_write(struct mii_bus *bus, int phy, int reg, u16 val)
- 	int offset, bank;
- 	u64 addr;
- 	u32 tmp;
--	u16 mmd;
- 	int rc;
- 
--	if (!(reg & MII_ADDR_C45))
--		return -EINVAL;
--
- 	if (regs->pcs_base[phy] == SJA1105_RSV_ADDR)
- 		return -ENODEV;
- 
--	mmd = (reg >> MII_DEVADDR_C45_SHIFT) & 0x1f;
--	addr = (mmd << 16) | (reg & GENMASK(15, 0));
-+	addr = (mmd << 16) | reg;
- 
- 	bank = addr >> 8;
- 	offset = addr & GENMASK(7, 0);
-@@ -398,7 +380,7 @@ static int sja1105_mdiobus_pcs_register(struct sja1105_private *priv)
- 	int rc = 0;
- 	int port;
- 
--	if (!priv->info->pcs_mdio_read || !priv->info->pcs_mdio_write)
-+	if (!priv->info->pcs_mdio_read_c45 || !priv->info->pcs_mdio_write_c45)
- 		return 0;
- 
- 	bus = mdiobus_alloc_size(sizeof(*mdio_priv));
-@@ -408,8 +390,8 @@ static int sja1105_mdiobus_pcs_register(struct sja1105_private *priv)
- 	bus->name = "SJA1105 PCS MDIO bus";
- 	snprintf(bus->id, MII_BUS_ID_SIZE, "%s-pcs",
- 		 dev_name(ds->dev));
--	bus->read = priv->info->pcs_mdio_read;
--	bus->write = priv->info->pcs_mdio_write;
-+	bus->read_c45 = priv->info->pcs_mdio_read_c45;
-+	bus->write_c45 = priv->info->pcs_mdio_write_c45;
- 	bus->parent = ds->dev;
- 	/* There is no PHY on this MDIO bus => mask out all PHY addresses
- 	 * from auto probing.
-diff --git a/drivers/net/dsa/sja1105/sja1105_spi.c b/drivers/net/dsa/sja1105/sja1105_spi.c
-index d3c9ad6d39d4..5ce29c8057a4 100644
---- a/drivers/net/dsa/sja1105/sja1105_spi.c
-+++ b/drivers/net/dsa/sja1105/sja1105_spi.c
-@@ -719,8 +719,8 @@ const struct sja1105_info sja1105r_info = {
- 	.ptp_cmd_packing	= sja1105pqrs_ptp_cmd_packing,
- 	.rxtstamp		= sja1105_rxtstamp,
- 	.clocking_setup		= sja1105_clocking_setup,
--	.pcs_mdio_read		= sja1105_pcs_mdio_read,
--	.pcs_mdio_write		= sja1105_pcs_mdio_write,
-+	.pcs_mdio_read_c45	= sja1105_pcs_mdio_read_c45,
-+	.pcs_mdio_write_c45	= sja1105_pcs_mdio_write_c45,
- 	.regs			= &sja1105pqrs_regs,
- 	.port_speed		= {
- 		[SJA1105_SPEED_AUTO] = 0,
-@@ -756,8 +756,8 @@ const struct sja1105_info sja1105s_info = {
- 	.ptp_cmd_packing	= sja1105pqrs_ptp_cmd_packing,
- 	.rxtstamp		= sja1105_rxtstamp,
- 	.clocking_setup		= sja1105_clocking_setup,
--	.pcs_mdio_read		= sja1105_pcs_mdio_read,
--	.pcs_mdio_write		= sja1105_pcs_mdio_write,
-+	.pcs_mdio_read_c45	= sja1105_pcs_mdio_read_c45,
-+	.pcs_mdio_write_c45	= sja1105_pcs_mdio_write_c45,
- 	.port_speed		= {
- 		[SJA1105_SPEED_AUTO] = 0,
- 		[SJA1105_SPEED_10MBPS] = 3,
-@@ -794,8 +794,8 @@ const struct sja1105_info sja1110a_info = {
- 	.rxtstamp		= sja1110_rxtstamp,
- 	.txtstamp		= sja1110_txtstamp,
- 	.disable_microcontroller = sja1110_disable_microcontroller,
--	.pcs_mdio_read		= sja1110_pcs_mdio_read,
--	.pcs_mdio_write		= sja1110_pcs_mdio_write,
-+	.pcs_mdio_read_c45	= sja1110_pcs_mdio_read_c45,
-+	.pcs_mdio_write_c45	= sja1110_pcs_mdio_write_c45,
- 	.port_speed		= {
- 		[SJA1105_SPEED_AUTO] = 0,
- 		[SJA1105_SPEED_10MBPS] = 4,
-@@ -844,8 +844,8 @@ const struct sja1105_info sja1110b_info = {
- 	.rxtstamp		= sja1110_rxtstamp,
- 	.txtstamp		= sja1110_txtstamp,
- 	.disable_microcontroller = sja1110_disable_microcontroller,
--	.pcs_mdio_read		= sja1110_pcs_mdio_read,
--	.pcs_mdio_write		= sja1110_pcs_mdio_write,
-+	.pcs_mdio_read_c45	= sja1110_pcs_mdio_read_c45,
-+	.pcs_mdio_write_c45	= sja1110_pcs_mdio_write_c45,
- 	.port_speed		= {
- 		[SJA1105_SPEED_AUTO] = 0,
- 		[SJA1105_SPEED_10MBPS] = 4,
-@@ -894,8 +894,8 @@ const struct sja1105_info sja1110c_info = {
- 	.rxtstamp		= sja1110_rxtstamp,
- 	.txtstamp		= sja1110_txtstamp,
- 	.disable_microcontroller = sja1110_disable_microcontroller,
--	.pcs_mdio_read		= sja1110_pcs_mdio_read,
--	.pcs_mdio_write		= sja1110_pcs_mdio_write,
-+	.pcs_mdio_read_c45	= sja1110_pcs_mdio_read_c45,
-+	.pcs_mdio_write_c45	= sja1110_pcs_mdio_write_c45,
- 	.port_speed		= {
- 		[SJA1105_SPEED_AUTO] = 0,
- 		[SJA1105_SPEED_10MBPS] = 4,
-@@ -944,8 +944,8 @@ const struct sja1105_info sja1110d_info = {
- 	.rxtstamp		= sja1110_rxtstamp,
- 	.txtstamp		= sja1110_txtstamp,
- 	.disable_microcontroller = sja1110_disable_microcontroller,
--	.pcs_mdio_read		= sja1110_pcs_mdio_read,
--	.pcs_mdio_write		= sja1110_pcs_mdio_write,
-+	.pcs_mdio_read_c45	= sja1110_pcs_mdio_read_c45,
-+	.pcs_mdio_write_c45	= sja1110_pcs_mdio_write_c45,
- 	.port_speed		= {
- 		[SJA1105_SPEED_AUTO] = 0,
- 		[SJA1105_SPEED_10MBPS] = 4,
+ 		return mdiobus_write(adapter->mii_bus, prtad, regnum, value);
+ 	}
 
 -- 
 2.30.2
