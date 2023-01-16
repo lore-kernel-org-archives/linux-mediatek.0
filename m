@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC683C54EBE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 23:53:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EB09C46467
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 23:53:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kLjDb6Z8ltzyK2BgVssXp9+2hjvKuJoCm2q3gVXDY64=; b=rr7UCWPiwT9pgQyXhTY4amBK5N
-	TkRfMMw1+hPbrZZdK9+lTd2JAnBEdmCypAEUmB1eAzVV5Pnx+z1KRdoAH6Pt7nKofbiejxnfQR5ok
-	HpZTQJkG0YN4d3oZtQhUHBGr3IWYpKGG6zWbWyBInKDzW0mRPOVpA2JN2ZNRAuY+SZUQIa4E8n8fU
-	DbPNiPMBDez7aYhYfHgI4nXAX5Y3O6i/gn05f5SQcruSDg6K19/M6n3rJCFOA9u//Os+3nQq/CnL/
-	3NIagH1Xi8hmlGj96+sNASTIZ6MW0lWiHloLYbjojsWFomYy4JW/7uuv5890KCWfzh/jUuJABqtMa
-	nEzHXFDw==;
+	bh=//jZFF/GKZSX23gW4WXwNqIqRriY0jkw/xc8m4eElhk=; b=m4dQPZAPq1FU3I5Z7Nv/OZpVIS
+	mJWcCaPC21k1gpvn2ch40mlqIatsUaMTCRSJKNNZqxYpHJpJEVkgnkSE6NBgGpAmzBcn+krThgQ9x
+	v+TNvLMSsmUCNvdmET3fNz3/36fCxlCgUTvWc/vhdGqTVsyP4AXSd1arDyz1PMtae4E0xluxYW3kd
+	cdmbOxlj741H4/HHzekOGeCiQqq54xhFJVU7eq8VoJoMBsjhWb0iqbJKrpg21AeB9fIN/UmfVpou2
+	2AIlTGbH5A+AikLr6QXncsdoKKjKAm+szwcGlisuMs9xoVWcXb4S4coAkJRCGncmUUln1mSKWrajB
+	mh9eX/Rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHZIP-00CIbw-6q; Mon, 16 Jan 2023 23:53:45 +0000
-Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
+	id 1pHZIQ-00CIcw-Tg; Mon, 16 Jan 2023 23:53:46 +0000
+Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHZHW-00CICs-OH; Mon, 16 Jan 2023 23:52:54 +0000
+	id 1pHZHW-00CICx-ON; Mon, 16 Jan 2023 23:52:54 +0000
 Received: from mwalle01.sab.local (unknown [213.135.10.150])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 1799DD5D;
-	Tue, 17 Jan 2023 00:52:45 +0100 (CET)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 520EB168F;
+	Tue, 17 Jan 2023 00:52:46 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1673913165;
+	t=1673913166;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=kLjDb6Z8ltzyK2BgVssXp9+2hjvKuJoCm2q3gVXDY64=;
-	b=XItSZsfnJuwjkmNaFwtcgj+Y7MpJYfyoWA7PaQkMzgeEmESyAyLYKWX9qam1NV2ZXuQuxt
-	k1GZsNnjqa0pKwncLNhxKXnQQ8BSKBcE9/n7CLgAbsv5UV4OIVTW3DqJp1XA4iq/fNXcyY
-	MVdBjdGSZDN9f1SEF3EcZYfftynKEKUNGq0/06LeEcLY6eszPLLosepdF0q3fSSI/zYzib
-	VS8hplpbKetRNCUM7SZbN+WOzuwgmDwi2TwPpmZcz7EcSgCgosWxidTzYe1I4+0qJqkwCp
-	OQo5dIiT6ZsvMoZHqGpAR/xWyBA7ChtO655PnnLhyNVbbn4AFIOLK0ZS1Jayow==
+	bh=//jZFF/GKZSX23gW4WXwNqIqRriY0jkw/xc8m4eElhk=;
+	b=n+unXMBKmVQ6lkMZJUho3EF4QaA/MqsEgo/LrLZTw7btUrypYoJdg1HHeP55rJlFRxboNT
+	0vZiIZ2s1pbZZlpJy1qGoXqOGT67Xco90tEx+VIHUc6GGJN1fAlEbctLk/Xqf4l5Bm7pVE
+	2HY9bKMXwdfXZHQR5AAfVI9bKmwTBIyCXAo0A/lBpN4dcZLCGS1CXnzzNDWdjEPgBkp6W/
+	nhj3kcgGLDZDP1IBnrjHNVr2XP1TStjM5NOZSVmLWlrwbUFbFJeFitySL9i99nYWiYp0Xp
+	8p0TRzCxpz0jELJdAxVgbtLiwrH7HzRUBRXyBwnzYAHJ5uv8164vnFiJep+eNw==
 From: Michael Walle <michael@walle.cc>
-Date: Tue, 17 Jan 2023 00:52:17 +0100
-Subject: [PATCH net-next 02/12] net: sxgbe: Separate C22 and C45 transactions
+Date: Tue, 17 Jan 2023 00:52:19 +0100
+Subject: [PATCH net-next 04/12] net: macb: Separate C22 and C45 transactions
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id:  <20230116-net-next-c45-seperation-part-3-v1-2-0c53afa56aad@walle.cc>
+Message-Id:  <20230116-net-next-c45-seperation-part-3-v1-4-0c53afa56aad@walle.cc>
 References:  <20230116-net-next-c45-seperation-part-3-v1-0-0c53afa56aad@walle.cc>
 In-Reply-To:  <20230116-net-next-c45-seperation-part-3-v1-0-0c53afa56aad@walle.cc>
 To: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
@@ -71,8 +71,8 @@ Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Andrew Lunn <andrew@lunn.ch>, Michael Walle <michael@walle.cc>
 X-Mailer: b4 0.11.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_155251_015386_C279B34E 
-X-CRM114-Status: GOOD (  17.50  )
+X-CRM114-CacheID: sfid-20230116_155251_013276_3ED67C7C 
+X-CRM114-Status: GOOD (  14.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,188 +89,224 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Andrew Lunn <andrew@lunn.ch>
 
-The sxgdb MDIO bus driver can perform both C22 and C45 transfers.
+The macb MDIO bus driver can perform both C22 and C45 transfers.
 Create separate functions for each and register the C45 versions using
 the new API calls where appropriate.
 
 Signed-off-by: Andrew Lunn <andrew@lunn.ch>
 Signed-off-by: Michael Walle <michael@walle.cc>
 ---
- drivers/net/ethernet/samsung/sxgbe/sxgbe_mdio.c | 105 ++++++++++++++++++------
- 1 file changed, 81 insertions(+), 24 deletions(-)
+ drivers/net/ethernet/cadence/macb_main.c | 161 +++++++++++++++++++++----------
+ 1 file changed, 108 insertions(+), 53 deletions(-)
 
-diff --git a/drivers/net/ethernet/samsung/sxgbe/sxgbe_mdio.c b/drivers/net/ethernet/samsung/sxgbe/sxgbe_mdio.c
-index fceb6d637235..0227223c06fa 100644
---- a/drivers/net/ethernet/samsung/sxgbe/sxgbe_mdio.c
-+++ b/drivers/net/ethernet/samsung/sxgbe/sxgbe_mdio.c
-@@ -50,12 +50,12 @@ static void sxgbe_mdio_ctrl_data(struct sxgbe_priv_data *sp, u32 cmd,
+diff --git a/drivers/net/ethernet/cadence/macb_main.c b/drivers/net/ethernet/cadence/macb_main.c
+index 95667b979fab..f2d08a2dadf9 100644
+--- a/drivers/net/ethernet/cadence/macb_main.c
++++ b/drivers/net/ethernet/cadence/macb_main.c
+@@ -334,7 +334,7 @@ static int macb_mdio_wait_for_idle(struct macb *bp)
+ 				  1, MACB_MDIO_TIMEOUT);
  }
  
- static void sxgbe_mdio_c45(struct sxgbe_priv_data *sp, u32 cmd, int phyaddr,
--			   int phyreg, u16 phydata)
-+			   int devad, int phyreg, u16 phydata)
+-static int macb_mdio_read(struct mii_bus *bus, int mii_id, int regnum)
++static int macb_mdio_read_c22(struct mii_bus *bus, int mii_id, int regnum)
  {
- 	u32 reg;
+ 	struct macb *bp = bus->priv;
+ 	int status;
+@@ -347,31 +347,58 @@ static int macb_mdio_read(struct mii_bus *bus, int mii_id, int regnum)
+ 	if (status < 0)
+ 		goto mdio_read_exit;
  
- 	/* set mdio address register */
--	reg = ((phyreg >> 16) & 0x1f) << 21;
-+	reg = (devad & 0x1f) << 21;
- 	reg |= (phyaddr << 16) | (phyreg & 0xffff);
- 	writel(reg, sp->ioaddr + sp->hw->mii.addr);
- 
-@@ -76,8 +76,8 @@ static void sxgbe_mdio_c22(struct sxgbe_priv_data *sp, u32 cmd, int phyaddr,
- 	sxgbe_mdio_ctrl_data(sp, cmd, phydata);
- }
- 
--static int sxgbe_mdio_access(struct sxgbe_priv_data *sp, u32 cmd, int phyaddr,
--			     int phyreg, u16 phydata)
-+static int sxgbe_mdio_access_c22(struct sxgbe_priv_data *sp, u32 cmd,
-+				 int phyaddr, int phyreg, u16 phydata)
- {
- 	const struct mii_regs *mii = &sp->hw->mii;
- 	int rc;
-@@ -86,33 +86,46 @@ static int sxgbe_mdio_access(struct sxgbe_priv_data *sp, u32 cmd, int phyaddr,
- 	if (rc < 0)
- 		return rc;
- 
--	if (phyreg & MII_ADDR_C45) {
--		sxgbe_mdio_c45(sp, cmd, phyaddr, phyreg, phydata);
+-	if (regnum & MII_ADDR_C45) {
+-		macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C45_SOF)
+-			    | MACB_BF(RW, MACB_MAN_C45_ADDR)
+-			    | MACB_BF(PHYA, mii_id)
+-			    | MACB_BF(REGA, (regnum >> 16) & 0x1F)
+-			    | MACB_BF(DATA, regnum & 0xFFFF)
+-			    | MACB_BF(CODE, MACB_MAN_C45_CODE)));
+-
+-		status = macb_mdio_wait_for_idle(bp);
+-		if (status < 0)
+-			goto mdio_read_exit;
+-
+-		macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C45_SOF)
+-			    | MACB_BF(RW, MACB_MAN_C45_READ)
+-			    | MACB_BF(PHYA, mii_id)
+-			    | MACB_BF(REGA, (regnum >> 16) & 0x1F)
+-			    | MACB_BF(CODE, MACB_MAN_C45_CODE)));
 -	} else {
--		 /* Ports 0-3 only support C22. */
--		if (phyaddr >= 4)
--			return -ENODEV;
-+	/* Ports 0-3 only support C22. */
-+	if (phyaddr >= 4)
-+		return -ENODEV;
- 
--		sxgbe_mdio_c22(sp, cmd, phyaddr, phyreg, phydata);
--	}
-+	sxgbe_mdio_c22(sp, cmd, phyaddr, phyreg, phydata);
+-		macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C22_SOF)
+-				| MACB_BF(RW, MACB_MAN_C22_READ)
+-				| MACB_BF(PHYA, mii_id)
+-				| MACB_BF(REGA, regnum)
+-				| MACB_BF(CODE, MACB_MAN_C22_CODE)));
++	macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C22_SOF)
++			      | MACB_BF(RW, MACB_MAN_C22_READ)
++			      | MACB_BF(PHYA, mii_id)
++			      | MACB_BF(REGA, regnum)
++			      | MACB_BF(CODE, MACB_MAN_C22_CODE)));
 +
-+	return sxgbe_mdio_busy_wait(sp->ioaddr, mii->data);
++	status = macb_mdio_wait_for_idle(bp);
++	if (status < 0)
++		goto mdio_read_exit;
++
++	status = MACB_BFEXT(DATA, macb_readl(bp, MAN));
++
++mdio_read_exit:
++	pm_runtime_mark_last_busy(&bp->pdev->dev);
++	pm_runtime_put_autosuspend(&bp->pdev->dev);
++mdio_pm_exit:
++	return status;
 +}
 +
-+static int sxgbe_mdio_access_c45(struct sxgbe_priv_data *sp, u32 cmd,
-+				 int phyaddr, int devad, int phyreg,
-+				 u16 phydata)
++static int macb_mdio_read_c45(struct mii_bus *bus, int mii_id, int devad,
++			      int regnum)
 +{
-+	const struct mii_regs *mii = &sp->hw->mii;
-+	int rc;
++	struct macb *bp = bus->priv;
++	int status;
 +
-+	rc = sxgbe_mdio_busy_wait(sp->ioaddr, mii->data);
-+	if (rc < 0)
-+		return rc;
-+
-+	sxgbe_mdio_c45(sp, cmd, phyaddr, devad, phyreg, phydata);
++	status = pm_runtime_get_sync(&bp->pdev->dev);
++	if (status < 0) {
++		pm_runtime_put_noidle(&bp->pdev->dev);
++		goto mdio_pm_exit;
+ 	}
  
- 	return sxgbe_mdio_busy_wait(sp->ioaddr, mii->data);
++	status = macb_mdio_wait_for_idle(bp);
++	if (status < 0)
++		goto mdio_read_exit;
++
++	macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C45_SOF)
++			      | MACB_BF(RW, MACB_MAN_C45_ADDR)
++			      | MACB_BF(PHYA, mii_id)
++			      | MACB_BF(REGA, devad & 0x1F)
++			      | MACB_BF(DATA, regnum & 0xFFFF)
++			      | MACB_BF(CODE, MACB_MAN_C45_CODE)));
++
++	status = macb_mdio_wait_for_idle(bp);
++	if (status < 0)
++		goto mdio_read_exit;
++
++	macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C45_SOF)
++			      | MACB_BF(RW, MACB_MAN_C45_READ)
++			      | MACB_BF(PHYA, mii_id)
++			      | MACB_BF(REGA, devad & 0x1F)
++			      | MACB_BF(CODE, MACB_MAN_C45_CODE)));
++
+ 	status = macb_mdio_wait_for_idle(bp);
+ 	if (status < 0)
+ 		goto mdio_read_exit;
+@@ -385,8 +412,8 @@ static int macb_mdio_read(struct mii_bus *bus, int mii_id, int regnum)
+ 	return status;
  }
  
- /**
-- * sxgbe_mdio_read
-+ * sxgbe_mdio_read_c22
-  * @bus: points to the mii_bus structure
-  * @phyaddr: address of phy port
-  * @phyreg: address of register with in phy register
-- * Description: this function used for C45 and C22 MDIO Read
-+ * Description: this function used for C22 MDIO Read
-  */
--static int sxgbe_mdio_read(struct mii_bus *bus, int phyaddr, int phyreg)
-+static int sxgbe_mdio_read_c22(struct mii_bus *bus, int phyaddr, int phyreg)
+-static int macb_mdio_write(struct mii_bus *bus, int mii_id, int regnum,
+-			   u16 value)
++static int macb_mdio_write_c22(struct mii_bus *bus, int mii_id, int regnum,
++			       u16 value)
  {
- 	struct net_device *ndev = bus->priv;
- 	struct sxgbe_priv_data *priv = netdev_priv(ndev);
- 	int rc;
+ 	struct macb *bp = bus->priv;
+ 	int status;
+@@ -399,37 +426,63 @@ static int macb_mdio_write(struct mii_bus *bus, int mii_id, int regnum,
+ 	if (status < 0)
+ 		goto mdio_write_exit;
  
--	rc = sxgbe_mdio_access(priv, SXGBE_SMA_READ_CMD, phyaddr, phyreg, 0);
-+	rc = sxgbe_mdio_access_c22(priv, SXGBE_SMA_READ_CMD, phyaddr,
-+				   phyreg, 0);
- 	if (rc < 0)
- 		return rc;
- 
-@@ -120,21 +133,63 @@ static int sxgbe_mdio_read(struct mii_bus *bus, int phyaddr, int phyreg)
- }
- 
- /**
-- * sxgbe_mdio_write
-+ * sxgbe_mdio_read_c45
-+ * @bus: points to the mii_bus structure
-+ * @phyaddr: address of phy port
-+ * @devad: device (MMD) address
-+ * @phyreg: address of register with in phy register
-+ * Description: this function used for C45 MDIO Read
-+ */
-+static int sxgbe_mdio_read_c45(struct mii_bus *bus, int phyaddr, int devad,
-+			       int phyreg)
-+{
-+	struct net_device *ndev = bus->priv;
-+	struct sxgbe_priv_data *priv = netdev_priv(ndev);
-+	int rc;
+-	if (regnum & MII_ADDR_C45) {
+-		macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C45_SOF)
+-			    | MACB_BF(RW, MACB_MAN_C45_ADDR)
+-			    | MACB_BF(PHYA, mii_id)
+-			    | MACB_BF(REGA, (regnum >> 16) & 0x1F)
+-			    | MACB_BF(DATA, regnum & 0xFFFF)
+-			    | MACB_BF(CODE, MACB_MAN_C45_CODE)));
+-
+-		status = macb_mdio_wait_for_idle(bp);
+-		if (status < 0)
+-			goto mdio_write_exit;
+-
+-		macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C45_SOF)
+-			    | MACB_BF(RW, MACB_MAN_C45_WRITE)
+-			    | MACB_BF(PHYA, mii_id)
+-			    | MACB_BF(REGA, (regnum >> 16) & 0x1F)
+-			    | MACB_BF(CODE, MACB_MAN_C45_CODE)
+-			    | MACB_BF(DATA, value)));
+-	} else {
+-		macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C22_SOF)
+-				| MACB_BF(RW, MACB_MAN_C22_WRITE)
+-				| MACB_BF(PHYA, mii_id)
+-				| MACB_BF(REGA, regnum)
+-				| MACB_BF(CODE, MACB_MAN_C22_CODE)
+-				| MACB_BF(DATA, value)));
++	macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C22_SOF)
++			      | MACB_BF(RW, MACB_MAN_C22_WRITE)
++			      | MACB_BF(PHYA, mii_id)
++			      | MACB_BF(REGA, regnum)
++			      | MACB_BF(CODE, MACB_MAN_C22_CODE)
++			      | MACB_BF(DATA, value)));
 +
-+	rc = sxgbe_mdio_access_c45(priv, SXGBE_SMA_READ_CMD, phyaddr,
-+				   devad, phyreg, 0);
-+	if (rc < 0)
-+		return rc;
++	status = macb_mdio_wait_for_idle(bp);
++	if (status < 0)
++		goto mdio_write_exit;
 +
-+	return readl(priv->ioaddr + priv->hw->mii.data) & 0xffff;
++mdio_write_exit:
++	pm_runtime_mark_last_busy(&bp->pdev->dev);
++	pm_runtime_put_autosuspend(&bp->pdev->dev);
++mdio_pm_exit:
++	return status;
 +}
 +
-+/**
-+ * sxgbe_mdio_write_c22
-+ * @bus: points to the mii_bus structure
-+ * @phyaddr: address of phy port
-+ * @phyreg: address of phy registers
-+ * @phydata: data to be written into phy register
-+ * Description: this function is used for C22 MDIO write
-+ */
-+static int sxgbe_mdio_write_c22(struct mii_bus *bus, int phyaddr, int phyreg,
-+				u16 phydata)
++static int macb_mdio_write_c45(struct mii_bus *bus, int mii_id,
++			       int devad, int regnum,
++			       u16 value)
 +{
-+	struct net_device *ndev = bus->priv;
-+	struct sxgbe_priv_data *priv = netdev_priv(ndev);
++	struct macb *bp = bus->priv;
++	int status;
 +
-+	return sxgbe_mdio_access_c22(priv, SXGBE_SMA_WRITE_CMD, phyaddr, phyreg,
-+				     phydata);
-+}
++	status = pm_runtime_get_sync(&bp->pdev->dev);
++	if (status < 0) {
++		pm_runtime_put_noidle(&bp->pdev->dev);
++		goto mdio_pm_exit;
+ 	}
+ 
+ 	status = macb_mdio_wait_for_idle(bp);
+ 	if (status < 0)
+ 		goto mdio_write_exit;
+ 
++	macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C45_SOF)
++			      | MACB_BF(RW, MACB_MAN_C45_ADDR)
++			      | MACB_BF(PHYA, mii_id)
++			      | MACB_BF(REGA, devad & 0x1F)
++			      | MACB_BF(DATA, regnum & 0xFFFF)
++			      | MACB_BF(CODE, MACB_MAN_C45_CODE)));
 +
-+/**
-+ * sxgbe_mdio_write_c45
-  * @bus: points to the mii_bus structure
-  * @phyaddr: address of phy port
-  * @phyreg: address of phy registers
-+ * @devad: device (MMD) address
-  * @phydata: data to be written into phy register
-- * Description: this function is used for C45 and C22 MDIO write
-+ * Description: this function is used for C45 MDIO write
-  */
--static int sxgbe_mdio_write(struct mii_bus *bus, int phyaddr, int phyreg,
--			     u16 phydata)
-+static int sxgbe_mdio_write_c45(struct mii_bus *bus, int phyaddr, int devad,
-+				int phyreg, u16 phydata)
- {
- 	struct net_device *ndev = bus->priv;
- 	struct sxgbe_priv_data *priv = netdev_priv(ndev);
++	status = macb_mdio_wait_for_idle(bp);
++	if (status < 0)
++		goto mdio_write_exit;
++
++	macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C45_SOF)
++			      | MACB_BF(RW, MACB_MAN_C45_WRITE)
++			      | MACB_BF(PHYA, mii_id)
++			      | MACB_BF(REGA, devad & 0x1F)
++			      | MACB_BF(CODE, MACB_MAN_C45_CODE)
++			      | MACB_BF(DATA, value)));
++
++	status = macb_mdio_wait_for_idle(bp);
++	if (status < 0)
++		goto mdio_write_exit;
++
+ mdio_write_exit:
+ 	pm_runtime_mark_last_busy(&bp->pdev->dev);
+ 	pm_runtime_put_autosuspend(&bp->pdev->dev);
+@@ -902,8 +955,10 @@ static int macb_mii_init(struct macb *bp)
+ 	}
  
--	return sxgbe_mdio_access(priv, SXGBE_SMA_WRITE_CMD, phyaddr, phyreg,
--				 phydata);
-+	return sxgbe_mdio_access_c45(priv, SXGBE_SMA_WRITE_CMD, phyaddr,
-+				     devad, phyreg, phydata);
- }
- 
- int sxgbe_mdio_register(struct net_device *ndev)
-@@ -161,8 +216,10 @@ int sxgbe_mdio_register(struct net_device *ndev)
- 
- 	/* assign mii bus fields */
- 	mdio_bus->name = "sxgbe";
--	mdio_bus->read = &sxgbe_mdio_read;
--	mdio_bus->write = &sxgbe_mdio_write;
-+	mdio_bus->read = sxgbe_mdio_read_c22;
-+	mdio_bus->write = sxgbe_mdio_write_c22;
-+	mdio_bus->read_c45 = sxgbe_mdio_read_c45;
-+	mdio_bus->write_c45 = sxgbe_mdio_write_c45;
- 	snprintf(mdio_bus->id, MII_BUS_ID_SIZE, "%s-%x",
- 		 mdio_bus->name, priv->plat->bus_id);
- 	mdio_bus->priv = ndev;
+ 	bp->mii_bus->name = "MACB_mii_bus";
+-	bp->mii_bus->read = &macb_mdio_read;
+-	bp->mii_bus->write = &macb_mdio_write;
++	bp->mii_bus->read = &macb_mdio_read_c22;
++	bp->mii_bus->write = &macb_mdio_write_c22;
++	bp->mii_bus->read_c45 = &macb_mdio_read_c45;
++	bp->mii_bus->write_c45 = &macb_mdio_write_c45;
+ 	snprintf(bp->mii_bus->id, MII_BUS_ID_SIZE, "%s-%x",
+ 		 bp->pdev->name, bp->pdev->id);
+ 	bp->mii_bus->priv = bp;
 
 -- 
 2.30.2
