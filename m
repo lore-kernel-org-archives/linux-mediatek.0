@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EB09C46467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 23:53:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E7A1C46467
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 23:54:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=//jZFF/GKZSX23gW4WXwNqIqRriY0jkw/xc8m4eElhk=; b=m4dQPZAPq1FU3I5Z7Nv/OZpVIS
-	mJWcCaPC21k1gpvn2ch40mlqIatsUaMTCRSJKNNZqxYpHJpJEVkgnkSE6NBgGpAmzBcn+krThgQ9x
-	v+TNvLMSsmUCNvdmET3fNz3/36fCxlCgUTvWc/vhdGqTVsyP4AXSd1arDyz1PMtae4E0xluxYW3kd
-	cdmbOxlj741H4/HHzekOGeCiQqq54xhFJVU7eq8VoJoMBsjhWb0iqbJKrpg21AeB9fIN/UmfVpou2
-	2AIlTGbH5A+AikLr6QXncsdoKKjKAm+szwcGlisuMs9xoVWcXb4S4coAkJRCGncmUUln1mSKWrajB
-	mh9eX/Rg==;
+	bh=VAC3lvYePixzcXebo4E3nrWp2H/ZNlz8TyV8NSReGQs=; b=RwPaFwPFdScVMznkiwJQJoT9GM
+	/NhIVnlzYvNa0Z2LLqxm1ceO6pqUbQaK+7CbfNN3peVBV7nGHwO1v+KT2eqUbvjYtz6xqqnF4vzzD
+	FlxM3X7rvCesz7H+Ahg2hMaENKXWYPekHtxmwwDhBAwC2WzlscLnBMUti/BMc2fdBDNgViH+Xm9rC
+	59mC3k/7ohQierGlQ54s0D3bq+dQcu8flke7WasQ/xv9A+TvVFiMe8l/38mDkF3yxe7xLZ/gOowpE
+	Gw27RsxgZVc1N9ijqwFKhj9uVR7YrEPjQDcimNY5CrKjsoODN8DL8FMBnVgirBF3YybROHltFO9O2
+	NKk25FdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHZIQ-00CIcw-Tg; Mon, 16 Jan 2023 23:53:46 +0000
+	id 1pHZIr-00CItB-F4; Mon, 16 Jan 2023 23:54:13 +0000
 Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHZHW-00CICx-ON; Mon, 16 Jan 2023 23:52:54 +0000
+	id 1pHZHa-00CIEb-66; Mon, 16 Jan 2023 23:52:56 +0000
 Received: from mwalle01.sab.local (unknown [213.135.10.150])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 520EB168F;
-	Tue, 17 Jan 2023 00:52:46 +0100 (CET)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 377561AA3;
+	Tue, 17 Jan 2023 00:52:51 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1673913166;
+	t=1673913171;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=//jZFF/GKZSX23gW4WXwNqIqRriY0jkw/xc8m4eElhk=;
-	b=n+unXMBKmVQ6lkMZJUho3EF4QaA/MqsEgo/LrLZTw7btUrypYoJdg1HHeP55rJlFRxboNT
-	0vZiIZ2s1pbZZlpJy1qGoXqOGT67Xco90tEx+VIHUc6GGJN1fAlEbctLk/Xqf4l5Bm7pVE
-	2HY9bKMXwdfXZHQR5AAfVI9bKmwTBIyCXAo0A/lBpN4dcZLCGS1CXnzzNDWdjEPgBkp6W/
-	nhj3kcgGLDZDP1IBnrjHNVr2XP1TStjM5NOZSVmLWlrwbUFbFJeFitySL9i99nYWiYp0Xp
-	8p0TRzCxpz0jELJdAxVgbtLiwrH7HzRUBRXyBwnzYAHJ5uv8164vnFiJep+eNw==
+	bh=VAC3lvYePixzcXebo4E3nrWp2H/ZNlz8TyV8NSReGQs=;
+	b=GX7X6H8lc5xEN2+bG0vGPNrbHpUIAQOgt5cogS4U1N7qThjjN2kBzzYQp/8KzT84ti0igo
+	xSB7LtanZuOWOoFLF//R6xu0DEVnKAgh2gmiPE8/wZoeTLTCRdhRpTvFILbtntC9hLuBLj
+	CnLtT1FJ5lt9YoGY5oDs0zZjipTZSuzptW13uvMVmynj6dYqNfnd42XKFSNgMGotGTUKE8
+	BXzciw/3UQuIntlC/9InYkjZ7/KD6wG+fCP+B75yawvNq2My4riw29+tbN+fKgvqe1mdeQ
+	IY10rHas3nLp7tewG0aHGrt5ZwAbQkMfxwLieYn3rr2+MYMWJ09/jxb5QTziBA==
 From: Michael Walle <michael@walle.cc>
-Date: Tue, 17 Jan 2023 00:52:19 +0100
-Subject: [PATCH net-next 04/12] net: macb: Separate C22 and C45 transactions
+Date: Tue, 17 Jan 2023 00:52:27 +0100
+Subject:  [PATCH net-next 12/12] net: ethernet: renesas: rswitch: C45 only transactions
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id:  <20230116-net-next-c45-seperation-part-3-v1-4-0c53afa56aad@walle.cc>
+Message-Id:  <20230116-net-next-c45-seperation-part-3-v1-12-0c53afa56aad@walle.cc>
 References:  <20230116-net-next-c45-seperation-part-3-v1-0-0c53afa56aad@walle.cc>
 In-Reply-To:  <20230116-net-next-c45-seperation-part-3-v1-0-0c53afa56aad@walle.cc>
 To: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
@@ -71,8 +71,8 @@ Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Andrew Lunn <andrew@lunn.ch>, Michael Walle <michael@walle.cc>
 X-Mailer: b4 0.11.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_155251_013276_3ED67C7C 
-X-CRM114-Status: GOOD (  14.78  )
+X-CRM114-CacheID: sfid-20230116_155254_435864_E7DA714B 
+X-CRM114-Status: GOOD (  12.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,226 +87,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Andrew Lunn <andrew@lunn.ch>
+The rswitch MDIO bus driver only supports C45 transfers. Update the
+function names to make this clear, pass the mmd as a parameter, and
+register the accessors to the _c45 ops of the bus driver structure.
 
-The macb MDIO bus driver can perform both C22 and C45 transfers.
-Create separate functions for each and register the C45 versions using
-the new API calls where appropriate.
-
-Signed-off-by: Andrew Lunn <andrew@lunn.ch>
 Signed-off-by: Michael Walle <michael@walle.cc>
 ---
- drivers/net/ethernet/cadence/macb_main.c | 161 +++++++++++++++++++++----------
- 1 file changed, 108 insertions(+), 53 deletions(-)
+ drivers/net/ethernet/renesas/rswitch.c | 28 ++++++----------------------
+ 1 file changed, 6 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/net/ethernet/cadence/macb_main.c b/drivers/net/ethernet/cadence/macb_main.c
-index 95667b979fab..f2d08a2dadf9 100644
---- a/drivers/net/ethernet/cadence/macb_main.c
-+++ b/drivers/net/ethernet/cadence/macb_main.c
-@@ -334,7 +334,7 @@ static int macb_mdio_wait_for_idle(struct macb *bp)
- 				  1, MACB_MDIO_TIMEOUT);
+diff --git a/drivers/net/ethernet/renesas/rswitch.c b/drivers/net/ethernet/renesas/rswitch.c
+index 6441892636db..885fdb077b62 100644
+--- a/drivers/net/ethernet/renesas/rswitch.c
++++ b/drivers/net/ethernet/renesas/rswitch.c
+@@ -1024,34 +1024,18 @@ static int rswitch_etha_set_access(struct rswitch_etha *etha, bool read,
+ 	return ret;
  }
  
--static int macb_mdio_read(struct mii_bus *bus, int mii_id, int regnum)
-+static int macb_mdio_read_c22(struct mii_bus *bus, int mii_id, int regnum)
+-static int rswitch_etha_mii_read(struct mii_bus *bus, int addr, int regnum)
++static int rswitch_etha_mii_read_c45(struct mii_bus *bus, int addr, int devad,
++				     int regad)
  {
- 	struct macb *bp = bus->priv;
- 	int status;
-@@ -347,31 +347,58 @@ static int macb_mdio_read(struct mii_bus *bus, int mii_id, int regnum)
- 	if (status < 0)
- 		goto mdio_read_exit;
- 
--	if (regnum & MII_ADDR_C45) {
--		macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C45_SOF)
--			    | MACB_BF(RW, MACB_MAN_C45_ADDR)
--			    | MACB_BF(PHYA, mii_id)
--			    | MACB_BF(REGA, (regnum >> 16) & 0x1F)
--			    | MACB_BF(DATA, regnum & 0xFFFF)
--			    | MACB_BF(CODE, MACB_MAN_C45_CODE)));
+ 	struct rswitch_etha *etha = bus->priv;
+-	int mode, devad, regad;
 -
--		status = macb_mdio_wait_for_idle(bp);
--		if (status < 0)
--			goto mdio_read_exit;
+-	mode = regnum & MII_ADDR_C45;
+-	devad = (regnum >> MII_DEVADDR_C45_SHIFT) & 0x1f;
+-	regad = regnum & MII_REGADDR_C45_MASK;
 -
--		macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C45_SOF)
--			    | MACB_BF(RW, MACB_MAN_C45_READ)
--			    | MACB_BF(PHYA, mii_id)
--			    | MACB_BF(REGA, (regnum >> 16) & 0x1F)
--			    | MACB_BF(CODE, MACB_MAN_C45_CODE)));
--	} else {
--		macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C22_SOF)
--				| MACB_BF(RW, MACB_MAN_C22_READ)
--				| MACB_BF(PHYA, mii_id)
--				| MACB_BF(REGA, regnum)
--				| MACB_BF(CODE, MACB_MAN_C22_CODE)));
-+	macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C22_SOF)
-+			      | MACB_BF(RW, MACB_MAN_C22_READ)
-+			      | MACB_BF(PHYA, mii_id)
-+			      | MACB_BF(REGA, regnum)
-+			      | MACB_BF(CODE, MACB_MAN_C22_CODE)));
-+
-+	status = macb_mdio_wait_for_idle(bp);
-+	if (status < 0)
-+		goto mdio_read_exit;
-+
-+	status = MACB_BFEXT(DATA, macb_readl(bp, MAN));
-+
-+mdio_read_exit:
-+	pm_runtime_mark_last_busy(&bp->pdev->dev);
-+	pm_runtime_put_autosuspend(&bp->pdev->dev);
-+mdio_pm_exit:
-+	return status;
-+}
-+
-+static int macb_mdio_read_c45(struct mii_bus *bus, int mii_id, int devad,
-+			      int regnum)
-+{
-+	struct macb *bp = bus->priv;
-+	int status;
-+
-+	status = pm_runtime_get_sync(&bp->pdev->dev);
-+	if (status < 0) {
-+		pm_runtime_put_noidle(&bp->pdev->dev);
-+		goto mdio_pm_exit;
- 	}
+-	/* Not support Clause 22 access method */
+-	if (!mode)
+-		return -EOPNOTSUPP;
  
-+	status = macb_mdio_wait_for_idle(bp);
-+	if (status < 0)
-+		goto mdio_read_exit;
-+
-+	macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C45_SOF)
-+			      | MACB_BF(RW, MACB_MAN_C45_ADDR)
-+			      | MACB_BF(PHYA, mii_id)
-+			      | MACB_BF(REGA, devad & 0x1F)
-+			      | MACB_BF(DATA, regnum & 0xFFFF)
-+			      | MACB_BF(CODE, MACB_MAN_C45_CODE)));
-+
-+	status = macb_mdio_wait_for_idle(bp);
-+	if (status < 0)
-+		goto mdio_read_exit;
-+
-+	macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C45_SOF)
-+			      | MACB_BF(RW, MACB_MAN_C45_READ)
-+			      | MACB_BF(PHYA, mii_id)
-+			      | MACB_BF(REGA, devad & 0x1F)
-+			      | MACB_BF(CODE, MACB_MAN_C45_CODE)));
-+
- 	status = macb_mdio_wait_for_idle(bp);
- 	if (status < 0)
- 		goto mdio_read_exit;
-@@ -385,8 +412,8 @@ static int macb_mdio_read(struct mii_bus *bus, int mii_id, int regnum)
- 	return status;
+ 	return rswitch_etha_set_access(etha, true, addr, devad, regad, 0);
  }
  
--static int macb_mdio_write(struct mii_bus *bus, int mii_id, int regnum,
--			   u16 value)
-+static int macb_mdio_write_c22(struct mii_bus *bus, int mii_id, int regnum,
-+			       u16 value)
+-static int rswitch_etha_mii_write(struct mii_bus *bus, int addr, int regnum, u16 val)
++static int rswitch_etha_mii_write_c45(struct mii_bus *bus, int addr, int devad,
++				      int regad, u16 val)
  {
- 	struct macb *bp = bus->priv;
- 	int status;
-@@ -399,37 +426,63 @@ static int macb_mdio_write(struct mii_bus *bus, int mii_id, int regnum,
- 	if (status < 0)
- 		goto mdio_write_exit;
- 
--	if (regnum & MII_ADDR_C45) {
--		macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C45_SOF)
--			    | MACB_BF(RW, MACB_MAN_C45_ADDR)
--			    | MACB_BF(PHYA, mii_id)
--			    | MACB_BF(REGA, (regnum >> 16) & 0x1F)
--			    | MACB_BF(DATA, regnum & 0xFFFF)
--			    | MACB_BF(CODE, MACB_MAN_C45_CODE)));
+ 	struct rswitch_etha *etha = bus->priv;
+-	int mode, devad, regad;
 -
--		status = macb_mdio_wait_for_idle(bp);
--		if (status < 0)
--			goto mdio_write_exit;
+-	mode = regnum & MII_ADDR_C45;
+-	devad = (regnum >> MII_DEVADDR_C45_SHIFT) & 0x1f;
+-	regad = regnum & MII_REGADDR_C45_MASK;
 -
--		macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C45_SOF)
--			    | MACB_BF(RW, MACB_MAN_C45_WRITE)
--			    | MACB_BF(PHYA, mii_id)
--			    | MACB_BF(REGA, (regnum >> 16) & 0x1F)
--			    | MACB_BF(CODE, MACB_MAN_C45_CODE)
--			    | MACB_BF(DATA, value)));
--	} else {
--		macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C22_SOF)
--				| MACB_BF(RW, MACB_MAN_C22_WRITE)
--				| MACB_BF(PHYA, mii_id)
--				| MACB_BF(REGA, regnum)
--				| MACB_BF(CODE, MACB_MAN_C22_CODE)
--				| MACB_BF(DATA, value)));
-+	macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C22_SOF)
-+			      | MACB_BF(RW, MACB_MAN_C22_WRITE)
-+			      | MACB_BF(PHYA, mii_id)
-+			      | MACB_BF(REGA, regnum)
-+			      | MACB_BF(CODE, MACB_MAN_C22_CODE)
-+			      | MACB_BF(DATA, value)));
-+
-+	status = macb_mdio_wait_for_idle(bp);
-+	if (status < 0)
-+		goto mdio_write_exit;
-+
-+mdio_write_exit:
-+	pm_runtime_mark_last_busy(&bp->pdev->dev);
-+	pm_runtime_put_autosuspend(&bp->pdev->dev);
-+mdio_pm_exit:
-+	return status;
-+}
-+
-+static int macb_mdio_write_c45(struct mii_bus *bus, int mii_id,
-+			       int devad, int regnum,
-+			       u16 value)
-+{
-+	struct macb *bp = bus->priv;
-+	int status;
-+
-+	status = pm_runtime_get_sync(&bp->pdev->dev);
-+	if (status < 0) {
-+		pm_runtime_put_noidle(&bp->pdev->dev);
-+		goto mdio_pm_exit;
- 	}
+-	/* Not support Clause 22 access method */
+-	if (!mode)
+-		return -EOPNOTSUPP;
  
- 	status = macb_mdio_wait_for_idle(bp);
- 	if (status < 0)
- 		goto mdio_write_exit;
+ 	return rswitch_etha_set_access(etha, false, addr, devad, regad, val);
+ }
+@@ -1142,8 +1126,8 @@ static int rswitch_mii_register(struct rswitch_device *rdev)
+ 	mii_bus->name = "rswitch_mii";
+ 	sprintf(mii_bus->id, "etha%d", rdev->etha->index);
+ 	mii_bus->priv = rdev->etha;
+-	mii_bus->read = rswitch_etha_mii_read;
+-	mii_bus->write = rswitch_etha_mii_write;
++	mii_bus->read_c45 = rswitch_etha_mii_read_c45;
++	mii_bus->write_c45 = rswitch_etha_mii_write_c45;
+ 	mii_bus->parent = &rdev->priv->pdev->dev;
  
-+	macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C45_SOF)
-+			      | MACB_BF(RW, MACB_MAN_C45_ADDR)
-+			      | MACB_BF(PHYA, mii_id)
-+			      | MACB_BF(REGA, devad & 0x1F)
-+			      | MACB_BF(DATA, regnum & 0xFFFF)
-+			      | MACB_BF(CODE, MACB_MAN_C45_CODE)));
-+
-+	status = macb_mdio_wait_for_idle(bp);
-+	if (status < 0)
-+		goto mdio_write_exit;
-+
-+	macb_writel(bp, MAN, (MACB_BF(SOF, MACB_MAN_C45_SOF)
-+			      | MACB_BF(RW, MACB_MAN_C45_WRITE)
-+			      | MACB_BF(PHYA, mii_id)
-+			      | MACB_BF(REGA, devad & 0x1F)
-+			      | MACB_BF(CODE, MACB_MAN_C45_CODE)
-+			      | MACB_BF(DATA, value)));
-+
-+	status = macb_mdio_wait_for_idle(bp);
-+	if (status < 0)
-+		goto mdio_write_exit;
-+
- mdio_write_exit:
- 	pm_runtime_mark_last_busy(&bp->pdev->dev);
- 	pm_runtime_put_autosuspend(&bp->pdev->dev);
-@@ -902,8 +955,10 @@ static int macb_mii_init(struct macb *bp)
- 	}
- 
- 	bp->mii_bus->name = "MACB_mii_bus";
--	bp->mii_bus->read = &macb_mdio_read;
--	bp->mii_bus->write = &macb_mdio_write;
-+	bp->mii_bus->read = &macb_mdio_read_c22;
-+	bp->mii_bus->write = &macb_mdio_write_c22;
-+	bp->mii_bus->read_c45 = &macb_mdio_read_c45;
-+	bp->mii_bus->write_c45 = &macb_mdio_write_c45;
- 	snprintf(bp->mii_bus->id, MII_BUS_ID_SIZE, "%s-%x",
- 		 bp->pdev->name, bp->pdev->id);
- 	bp->mii_bus->priv = bp;
+ 	mdio_np = rswitch_get_mdio_node(rdev);
 
 -- 
 2.30.2
