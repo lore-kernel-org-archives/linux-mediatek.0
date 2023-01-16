@@ -4,69 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF172C46467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 12:07:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2230EC54EBE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 12:59:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WAN7QqDdOWM33hSI9IS0guHk29DmMPTMLLcXOUpds5k=; b=lB3wWUcAbccTq7H+yiLl38nH3j
-	tCsBYom4o+tMdAC5XBk/dJJfGwljvdRlS0HlUQWpoCbTsElQAq3d7g+f3aFIFyFcVjfgx11o+nBKP
-	cLLV8h82oUkvE4LZ8jyi6+cBdIFIUe6JwOwdbeC2BQI2YLeeR6iSsxom8pe9Esf07WXVVvU9L6OmL
-	TIToKdT8qEZaS7ptNb7tsm9tKEIHOzGcUgl1JaUdZN5r6y+lAxrSduFzqkszj7dgcXuXK5My18JW9
-	ZB79VJpdaeHaM6WYBvI4TZB6nV71HKh3+huFRJK/P+5XZLjKmraBXAl23BQbpz7tOFMcbyea+N3XI
-	Svq5POdA==;
+	bh=ykfQZOm+BASL1GRgngyr2+aX6xmiGeCmWuvPVEfYj38=; b=47SmrrWE3zPuS+eH9W6NEbDuB2
+	c1D4dMSEdYmQdAJ9SnS766FlAg0HwOfzwIdSk50+byr9qnkoain83hz4E1WNCwwZxeCgv2XvtmvXX
+	e/ZdH1DBBZQBmyWU9M6J4Y6znLxw/QjyQbnX5NhvQCcuvxktYGakd/eNHXEkj4hbhxcG1Thw2uMfj
+	5pl9IEUaeu0V7nIdBiYzJ+NZsEMGx9tK0Sk/pEP7GTrUsKKruBij+uX9isagNXMGNUaP7b8MQYigw
+	1KLA4Sjui16qJ49l3gBZrYAE0O78IfxNrXuaeI0cuo4c9sNME2dXI+2tBelaIkOfH05l56n4O8IH+
+	unUei6MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHOGY-00A2FU-K6; Mon, 16 Jan 2023 12:07:06 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pHP57-00ADwR-Gw; Mon, 16 Jan 2023 12:59:21 +0000
+Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHOGO-00A2Cv-0U; Mon, 16 Jan 2023 12:06:57 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1pHP1Y-00ACS6-0w; Mon, 16 Jan 2023 12:55:41 +0000
+Received: from mwalle01.sab.local (unknown [213.135.10.150])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3D6EE660035A;
-	Mon, 16 Jan 2023 12:06:54 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1673870814;
-	bh=ZaBlGRRy0FiA9ociHJtulXryHKF8KYSJW4u+p7j0/44=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=BrNVFrMeB9Ey9jNLd7osHBpnzp3Xa40ySk0/OepdHSQtrnc6Rch31wCeNWCklpJPB
-	 +iiIG6L+P8RfaRGjfoTkruajeByVkcFr0n300ySQdFObdcKMS7S9gqAD1mFB1ydsxv
-	 6h0+c9Cvt7Ekd+r7+x008fMQ2dLQcjsTpzKgJMA8vLfcUJ85oEaKFOmTRhxMYMEUds
-	 kIJv0EER3V+wpPz2a58iqpRVt+3mg+IWO4w38RVctuaahyp0Ona25iIISlo8esurV5
-	 HNtguY9yXuEle6No+iM/KZ4dlem/jnDayItlR3ZvaVi84i1J5pzQK8ucETmEdLiIGe
-	 s54D/K9z9OZmQ==
-Message-ID: <6d78fcb6-c975-8a4c-787f-19f83fef2bd7@collabora.com>
-Date: Mon, 16 Jan 2023 13:06:52 +0100
+	by mail.3ffe.de (Postfix) with ESMTPSA id ACA07166C;
+	Mon, 16 Jan 2023 13:55:35 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
+	t=1673873735;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ykfQZOm+BASL1GRgngyr2+aX6xmiGeCmWuvPVEfYj38=;
+	b=aA2u2Wx7ZKyQuxkNpuPYxgfMS5B+GnVIDNIN0zt/QCu4YlEArWbIuUj1GPucDXwmCAEf+Y
+	LW64GMhF9PVSps9IXsahMzdwBBcHskaGdAVgCZTKTscquNL2binpZ0yUk4+SLET4biR23t
+	9b2HL1qR6ZJkbDFjYIBmYsN4XKzBdPpldXAvm7QEE+Dv6Efv50hndXE0bMdf0heUf5AQKn
+	QBqi1c6Lw709w3D78JQrXFIogAKBWkK/z4e+tRzY2OJmbh1VhZFidD3TWO21LWYEpAf9BC
+	VI6DXXHhh1ej+LTrxSCDkupqF3eaOEpaT5m2s8PUTzkOCeD34Acd0db3+oRK9g==
+From: Michael Walle <michael@walle.cc>
+Date: Mon, 16 Jan 2023 13:55:13 +0100
+Subject: [PATCH net-next 1/6] net: mdio: Move mdiobus_scan() within file
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v2 2/2] watchdog: mtk_wdt: Add reset_by_toprgu support
-Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
- <linux@roeck-us.net>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- linux-watchdog@vger.kernel.org
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20230116105305.31818-1-allen-kh.cheng@mediatek.com>
- <20230116105305.31818-3-allen-kh.cheng@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230116105305.31818-3-allen-kh.cheng@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+Message-Id:  <20230116-net-next-remove-probe-capabilities-v1-1-5aa29738a023@walle.cc>
+References:  <20230116-net-next-remove-probe-capabilities-v1-0-5aa29738a023@walle.cc>
+In-Reply-To:  <20230116-net-next-remove-probe-capabilities-v1-0-5aa29738a023@walle.cc>
+To: Heiner Kallweit <hkallweit1@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Felix Fietkau <nbd@nbd.name>,
+ John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Bryan Whitehead <bryan.whitehead@microchip.com>, UNGLinuxDriver@microchip.com,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@aj.id.au>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-aspeed@lists.ozlabs.org,
+ Andrew Lunn <andrew@lunn.ch>, Michael Walle <michael@walle.cc>
+X-Mailer: b4 0.11.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_040656_213345_1B730447 
-X-CRM114-Status: UNSURE (   8.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230116_045540_316141_43F91BB1 
+X-CRM114-Status: GOOD (  17.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,14 +86,139 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/01/23 11:53, Allen-KH Cheng ha scritto:
-> In some cases, the MediaTek watchdog requires the toprgu to reset
-> timer after system resets.
-> 
-> Provide a reset_by_toprgu parameter for configuration.
-> 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+From: Andrew Lunn <andrew@lunn.ch>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+No functional change, just place it earlier in preparation for some
+refactoring.
 
+While at it, correct the comment format and one typo.
+
+Signed-off-by: Andrew Lunn <andrew@lunn.ch>
+Signed-off-by: Michael Walle <michael@walle.cc>
+---
+ drivers/net/phy/mdio_bus.c | 101 ++++++++++++++++++++++-----------------------
+ 1 file changed, 50 insertions(+), 51 deletions(-)
+
+diff --git a/drivers/net/phy/mdio_bus.c b/drivers/net/phy/mdio_bus.c
+index 902e1c88ef58..61c33c6098a1 100644
+--- a/drivers/net/phy/mdio_bus.c
++++ b/drivers/net/phy/mdio_bus.c
+@@ -506,6 +506,56 @@ static int mdiobus_create_device(struct mii_bus *bus,
+ 	return ret;
+ }
+ 
++/**
++ * mdiobus_scan - scan a bus for MDIO devices.
++ * @bus: mii_bus to scan
++ * @addr: address on bus to scan
++ *
++ * This function scans the MDIO bus, looking for devices which can be
++ * identified using a vendor/product ID in registers 2 and 3. Not all
++ * MDIO devices have such registers, but PHY devices typically
++ * do. Hence this function assumes anything found is a PHY, or can be
++ * treated as a PHY. Other MDIO devices, such as switches, will
++ * probably not be found during the scan.
++ */
++struct phy_device *mdiobus_scan(struct mii_bus *bus, int addr)
++{
++	struct phy_device *phydev = ERR_PTR(-ENODEV);
++	int err;
++
++	switch (bus->probe_capabilities) {
++	case MDIOBUS_NO_CAP:
++	case MDIOBUS_C22:
++		phydev = get_phy_device(bus, addr, false);
++		break;
++	case MDIOBUS_C45:
++		phydev = get_phy_device(bus, addr, true);
++		break;
++	case MDIOBUS_C22_C45:
++		phydev = get_phy_device(bus, addr, false);
++		if (IS_ERR(phydev))
++			phydev = get_phy_device(bus, addr, true);
++		break;
++	}
++
++	if (IS_ERR(phydev))
++		return phydev;
++
++	/* For DT, see if the auto-probed phy has a corresponding child
++	 * in the bus node, and set the of_node pointer in this case.
++	 */
++	of_mdiobus_link_mdiodev(bus, &phydev->mdio);
++
++	err = phy_device_register(phydev);
++	if (err) {
++		phy_device_free(phydev);
++		return ERR_PTR(-ENODEV);
++	}
++
++	return phydev;
++}
++EXPORT_SYMBOL(mdiobus_scan);
++
+ /**
+  * __mdiobus_register - bring up all the PHYs on a given bus and attach them to bus
+  * @bus: target mii_bus
+@@ -679,57 +729,6 @@ void mdiobus_free(struct mii_bus *bus)
+ }
+ EXPORT_SYMBOL(mdiobus_free);
+ 
+-/**
+- * mdiobus_scan - scan a bus for MDIO devices.
+- * @bus: mii_bus to scan
+- * @addr: address on bus to scan
+- *
+- * This function scans the MDIO bus, looking for devices which can be
+- * identified using a vendor/product ID in registers 2 and 3. Not all
+- * MDIO devices have such registers, but PHY devices typically
+- * do. Hence this function assumes anything found is a PHY, or can be
+- * treated as a PHY. Other MDIO devices, such as switches, will
+- * probably not be found during the scan.
+- */
+-struct phy_device *mdiobus_scan(struct mii_bus *bus, int addr)
+-{
+-	struct phy_device *phydev = ERR_PTR(-ENODEV);
+-	int err;
+-
+-	switch (bus->probe_capabilities) {
+-	case MDIOBUS_NO_CAP:
+-	case MDIOBUS_C22:
+-		phydev = get_phy_device(bus, addr, false);
+-		break;
+-	case MDIOBUS_C45:
+-		phydev = get_phy_device(bus, addr, true);
+-		break;
+-	case MDIOBUS_C22_C45:
+-		phydev = get_phy_device(bus, addr, false);
+-		if (IS_ERR(phydev))
+-			phydev = get_phy_device(bus, addr, true);
+-		break;
+-	}
+-
+-	if (IS_ERR(phydev))
+-		return phydev;
+-
+-	/*
+-	 * For DT, see if the auto-probed phy has a correspoding child
+-	 * in the bus node, and set the of_node pointer in this case.
+-	 */
+-	of_mdiobus_link_mdiodev(bus, &phydev->mdio);
+-
+-	err = phy_device_register(phydev);
+-	if (err) {
+-		phy_device_free(phydev);
+-		return ERR_PTR(-ENODEV);
+-	}
+-
+-	return phydev;
+-}
+-EXPORT_SYMBOL(mdiobus_scan);
+-
+ static void mdiobus_stats_acct(struct mdio_bus_stats *stats, bool op, int ret)
+ {
+ 	preempt_disable();
+
+-- 
+2.30.2
 
