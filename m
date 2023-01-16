@@ -4,172 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94379C46467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 09:19:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 425D5C46467
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 09:31:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PMk1hiQpcwT8Mfpf4F3dTig6LcaugHlzNzjQJOGSgmE=; b=AJVnjrIDWWExWOHFK7vbZktLX1
-	e+P4f2KhTMTfmTleb+P3pGZJsMWd5VWlGi6sjVamyiJh5UO6fFYetkfW7AoUsCbJaWvoZewEIqLV/
-	2tRLgVsH6X7tooCg/Pir+/wNxq0sp497v1zushz7ohwIEzxZh0gOVwrs/vfZxobOpa9N81O6oKNEk
-	1z7AnfXfxjdw5bPVfxXSzDW24XcSOpwhnR9z/ezjRAQvOxwiFEpGMPLc/2FZZuYXToBMbzJrNEgfO
-	lWCv8y5dJe8iUZ/ND23XpSuMxHLOgsH9z+wkUQxT4a9ch/vwQoFBg4df8UZ8EFzQmKRU00MnG1oJk
-	NHaY4esA==;
+	bh=S/vL4aRvWzvT5+Y6H7kqvKR2yDJTWXuyhGu5Hgl5QSk=; b=QqlvfafBTMopqIUXjkB90eZnut
+	hlDDznQvVx/hftePn3PjaC2AMUEXdp5I2YyAD4aPR+j2KDRoso+IsMa+mPwI2JxgIUyR9nn6FRytB
+	S0UeeWzigTuTkaj3v1HmNwq4snZe9jyDv6T8rxGcW4W6hDQzTVCtkkAfrLb0cjIIRZHZHtluKSsDe
+	FUqyiOdH9DBxy/enl7DWCIkWsgS/yZY81w4SBHw/ZwdUX34+jZavAq5HHme2ybr5DgeV+KqrkKr12
+	vO+bvxzd3OXGB7vkyhAhimZtwOGEI8a42Of28Xdg9lK4NxI9QehR0jZAhG7T7WasdaaSfGZOac7oB
+	FTGt+6Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHLeA-009Jya-8k; Mon, 16 Jan 2023 09:19:18 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pHLpb-009MJD-Tk; Mon, 16 Jan 2023 09:31:07 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHLe7-009Jwv-25; Mon, 16 Jan 2023 09:19:16 +0000
-X-UUID: d6b129a0957e11eda08d4d6090ec5a5c-20230116
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=PMk1hiQpcwT8Mfpf4F3dTig6LcaugHlzNzjQJOGSgmE=;
-	b=A09rVLPTtQQigN4JelyNftS5E29jfOyduiXmoPf7abIOuKU+4XuRlLIRkVsXm2X1CmBu6SPmNPlK2WAfTZf0co5w4W10ysg9hx/Xs6dR4p3X77VmKoS0oXDEt/uXmVPHdj7kvfy6osPNbIJSoUPS8tWk6tcCcReerG+PzUOHl9g=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:d19853db-b82a-4809-aaa1-014072b8177a,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:543e81c,CLOUDID:250bf0f5-ff42-4fb0-b929-626456a83c14,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0,NGT
-X-UUID: d6b129a0957e11eda08d4d6090ec5a5c-20230116
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1521204238; Mon, 16 Jan 2023 02:19:11 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 16 Jan 2023 17:08:34 +0800
-Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.239)
- by mtkmbs10n1.mediatek.com (172.21.101.34) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Mon, 16 Jan 2023 17:08:34 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=YPUZXVc3TenRzgRtT8oMWv8Avdo5Aaa9THjB4sEQoO6xUErzZnsLhrS3+KHCjRVqbbcmXTdZSJqMNJL3DW2mt7foCwN0lm58s+ZHO0VI95xcKFcgWQqZkthzNpyp6VtLdFO/zXpfK1NmpdNvcewbSfgW+33nO9WBrKqdFvKApCO1zMTAYCTOhURR9gtOHyhrkHYTfOkDvkHRMykUaWwrau7odQwHNdV2kjvJKE9hdCsBHAv9tRmruRhtJPmhZGW2pusbJLkITdCrPMuavYuQRFkq1wKLbfFEf2oOXspiyt/IXIzedeGiT/Pic7vA3ThtFPnQvHL36qbu94vpHfhv+g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=PMk1hiQpcwT8Mfpf4F3dTig6LcaugHlzNzjQJOGSgmE=;
- b=Bg4sQf8HWP12vimtUBBJnsjPf3VgVQA2zOlmFMYc92K608/5lw4FoB2lWALEUMBPuNeGFO0cWUNSt+m6obeteU3F5jZcVM+hjCe8fHIvJwlAp9rTiX2C+kgmLbWqJRMknLm8+0L6ATbgcAecyEnOd1XN+Pab+fTAmy0KCJG0/cxA4kFxEFWIIfTC1aKADDfFD6grFoMN5/8bDSYck6zZkcJPFUyYo6v1jPaFq8v3Sx+JqbU5Wwk3wa1Xw0ixwNKaJARHVvScOk76oYna8fr+MWKBsr8tfrXDJyvt9yenre/3LIhaJ+XKogxnmQGbw4NJ7rs6R0CXaOyLmoNDNCwnZg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=PMk1hiQpcwT8Mfpf4F3dTig6LcaugHlzNzjQJOGSgmE=;
- b=rcQSVE6sXcpdCktc1Mxi5wqk7u3gjpPbOoSDvWdmjCNPpILuVpOoG4yqzimHtwzrm4D8+ZITbWDpB4p3ENnPxtH0g0jOUkh/2aMqlWKbegT2JLVnaY5jFEhHkM5QmwfHxTqbVZP2Gj6UN3r7egA0OzzotR1cImnWtT1D4bEmiOo=
-Received: from TY0PR03MB6356.apcprd03.prod.outlook.com (2603:1096:400:14c::9)
- by KL1PR03MB6086.apcprd03.prod.outlook.com (2603:1096:820:91::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6002.12; Mon, 16 Jan
- 2023 09:08:32 +0000
-Received: from TY0PR03MB6356.apcprd03.prod.outlook.com
- ([fe80::eb3c:770d:783d:352d]) by TY0PR03MB6356.apcprd03.prod.outlook.com
- ([fe80::eb3c:770d:783d:352d%4]) with mapi id 15.20.5986.023; Mon, 16 Jan 2023
- 09:08:32 +0000
-From: =?utf-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>
-To: "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "robh+dt@kernel.org"
-	<robh+dt@kernel.org>, "krzysztof.kozlowski+dt@linaro.org"
-	<krzysztof.kozlowski+dt@linaro.org>, "chunkuang.hu@kernel.org"
-	<chunkuang.hu@kernel.org>
-CC: "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: Re: [PATCH v5 01/10] dt-bindings: arm: mediatek: migrate MT8195
- vppsys0/1 to mtk-mmsys driver
-Thread-Topic: [PATCH v5 01/10] dt-bindings: arm: mediatek: migrate MT8195
- vppsys0/1 to mtk-mmsys driver
-Thread-Index: AQHZJxILUyhKsU0HSEOH8wZhL0XGK66cPnYAgAQbzwCAAFjnAIAAEuSA
-Date: Mon, 16 Jan 2023 09:08:31 +0000
-Message-ID: <de1f1e594477e72e308f8f6f4392ef16b2d59cc9.camel@mediatek.com>
-References: <20230113054304.21841-1-moudy.ho@mediatek.com>
-	 <20230113054304.21841-2-moudy.ho@mediatek.com>
-	 <329aed63-4522-9859-4359-2a450c46dcc0@linaro.org>
-	 <fa386a3ab2f2ed0c963d5fdec8bbea56ba276169.camel@mediatek.com>
-	 <ce4d2d3b-a826-ac59-e077-2fa452d115a3@linaro.org>
-In-Reply-To: <ce4d2d3b-a826-ac59-e077-2fa452d115a3@linaro.org>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TY0PR03MB6356:EE_|KL1PR03MB6086:EE_
-x-ms-office365-filtering-correlation-id: be334cf7-3ff9-4d9c-bb6f-08daf7a13d8a
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 9As3hiNpj2EGyWdjxwpe/5NKYO330H7GQeVYhWwwulFOqX5a54Lsd87cY8Ct/okMBE2tN20dYbHjJt0QpP7G/I+QGmY/qX+VY7EEts12eDxCsdWigrRzItIHwbx5S+P/P3xP8HOCT/QuajOJfC1AD/lEO+ikcC0dz0HmAxUZabv7iJ/hWej+Q74tzvkVylAWNxn0YCXVwvLz0A18s3M7nJv+jT+tL8N/SfVsf3cCKPikims0IBdjZQ+RLTGwBu+Rp+TBFMGxpRil2hoTLce+VK71OsujxFn6OsomYGHUs6OVab9o78q6zRz9TPBr4Y8v22OYrHtXwclgm1uPatVC6WlFEcO1XXrwUKdcEMOZXCyLAl/4zjxZNycqeAivVATVk+yamVqVRWh+Efb/vyUnSKDAipcvWt/nIZT1jWOJo8FXu1vlHFtiDLtRpjwh7IEpodXopFDXUxYbutMd89VlFmPkzI0Syl9S1KLzsUv4HmSIOrV0iWrRJZxFxweuIUIjDFh54Bd4ZtVz8HDHHwxueVKxwwjRmf7IU9IUdfee++cYjOyuiSahYbCpFE0jEr57lU5yeDioM4R7y8eQ1QGGfdu3QYqpf91TzlFXI35hDSd0yMlU70kbkn87hjjCizYvd6wFQFLqbm78jp9yltvnh15lWu0Jn0iKVQ7eFm/XhqytMKSHZhUggwJe+WI5cOauNme8PT7rkWKpT+A31U33LzdiOSAtdN6GPOkW8j/2hDtvu+v5QohPCX83N9qOaTC4
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR03MB6356.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(136003)(346002)(396003)(39860400002)(366004)(376002)(451199015)(8936002)(76116006)(91956017)(86362001)(66446008)(64756008)(66476007)(66946007)(83380400001)(8676002)(4326008)(966005)(38070700005)(122000001)(38100700002)(36756003)(85182001)(5660300002)(478600001)(6486002)(66556008)(110136005)(7416002)(107886003)(41300700001)(2906002)(54906003)(6512007)(6506007)(53546011)(26005)(186003)(71200400001)(316002)(2616005)(99106002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?b2ZJUHFhU1Iwa1ZxaFQxWWw3L1FIWEJUajZpY0tiYjBRV0pycExLa2hMeTZw?=
- =?utf-8?B?cG5lY3BQNDFRUlZ2L1FCS1BHRW9RMEUvWUYxUE5WelUyTnlxS2xkbEVtdHVK?=
- =?utf-8?B?RkhvOTZkV1hLK1FHRDVHb3luNTlaTTFtdTZrRXFzc29OeE9NWjNVT3ZTd2h2?=
- =?utf-8?B?RlZBaDM1ay9WTXltMXhBdDBYQmRHSmxQZ0UyYUVUOTJpb0I4Z3dvYjduWjVs?=
- =?utf-8?B?Tzh1V2RMWG9idU1uM2gwdmRCSlB2bWNjc1hXdy9VQktYUzRxbWhHY1ZNc3pF?=
- =?utf-8?B?a29CMFcrU1o4SVM5em42d3JwZjY0VWYzTTZ5SkJpUWI4SU5jSnYyRmhHK2ox?=
- =?utf-8?B?TFJrSFJqU3FuclQ0cVNoUXdpRU9ZUUhkcDNna2NwejI0Ly9JNC8xYzNlZlYw?=
- =?utf-8?B?R0VCTlZ2WDA3UWlsbG5DRFRHNHNxOUo5YVV4UGswdnN4R05TaWRQQm1pNGY4?=
- =?utf-8?B?eGw1MXBnbktGMVRDNENORmxwazlyekNKL2I3aWlJRDZtRVlMcUJ2dHFzVVBn?=
- =?utf-8?B?Wkk3YkQ1TkpnMytBbW9RN1VkMzVkK2tUR2ozU0Z4R2ZKSEdTQ0JrUmVTYS8z?=
- =?utf-8?B?Q0hCZmQ5Nk5CckpicURoQ3ZVcHR5enJFTG9YT25kQlpUbkVwbndLc0JWTll1?=
- =?utf-8?B?WGRXdEhtWW0xUjNJMFNBcC9qYXpPUGl5S1d6Q2FLTmJZRDdxdWpER01HOUQ2?=
- =?utf-8?B?ajFNTUhyNk9INExrb2tja2RzMUxnVm9VK0JCMzU3TlBaR2tjSUJjYWNTUFVZ?=
- =?utf-8?B?djc4NFhjNWdpQm5mNG02RDljNCtsQ0ZwK1FRbkdQaVVKSUkvN21XdkNYQys1?=
- =?utf-8?B?dGY2d0NOS1pJSzdZU01OOVM2YzY5S01EQXdCQVhsV1JkSUR3RTczVmoyYXNE?=
- =?utf-8?B?RW1zcGxjZ0lqNXo4UVNFdE5VcFg4MFIreElkeUdXTmN5ZHp2dVhaUzZLOEJC?=
- =?utf-8?B?SWRwZk5oL2lvNDhyNlR4ZWVYT3Z6V05ZUGkyU1dic1psN2RBdUkxRk45ZWlx?=
- =?utf-8?B?TksyYi9velRRYjU4bk90QXFoTzVFN1lJc3U1RzA4R1FMS3JKVEM0WmZMYVNq?=
- =?utf-8?B?aGRSdEZsdkdubUI5NGI2U3N6UDY0ZUkyL0ZXOTdSZkU4YmtHS0lIKzhweTE5?=
- =?utf-8?B?eGQ4VFJTekkxZlhJV3RTRkoxQ3YwcFkwZEN6L0RJM0RnTVVyZXBqR1RLM3oy?=
- =?utf-8?B?N0pEUnZGd3NXQUpIcnFsTWNqUUZEMXpmYWl4RlRITExlRk5sMWpORzAya2Ev?=
- =?utf-8?B?akpHZ3pRaXQ5WEptaFB1b2dCVW1udStLR1dHOXByYWNSQU5wV0U3clNYZ0hp?=
- =?utf-8?B?Y1hnL2M5M2RoRHN3OEo4OW1wL2JreFd5dnQ0RUlWSWRnK1lNaVNwblhHc2Fp?=
- =?utf-8?B?N1VVcGxLMzR1ZEFhOUlHbUtLSXVleG43WjA4VThhTlJPdGNGdzUvMlpIazRC?=
- =?utf-8?B?S1ZwM3ZMQWcwS2JicmJsb3htMjdhVUhUMnZ3WS9xcTI1ZlV4SjIvZ2Z4NkZn?=
- =?utf-8?B?VVBPRWR1VFZVbkpIQkhORjhtTlk4RlMxdE1SN0xZQVZxbiswOXVnT01sUEFM?=
- =?utf-8?B?Qk80QlA0SnVmV1Y5bWpYSFdrUENjZHpZbDRrQUY2bDNIT2RLNXo3UUlWaUdU?=
- =?utf-8?B?TlRGQWRuTlAwQnNBTEYzSjFVQWUzM0dzTWw4d3VtTUF0bUhpTC9SVU15bDNB?=
- =?utf-8?B?TUpMa0xHTksyTmR3ZDFsZ20vLzhrd0trUmdWTjhaREdtL05oTDdrWDVmSHB3?=
- =?utf-8?B?LzBnT1RLaVY5WDRpQjlCbjRTVnFyMURUeTkwRy9KcFdwZGNNNi9LUlFROVZ0?=
- =?utf-8?B?L0FIRTFYSWVVbXY4YzBQdm5EdG0wa3hFMzNnVnZnR1R3dDVWc3lVV280enNh?=
- =?utf-8?B?V1B5cld0dm4yWEtTdjg1bjc4T1hGYmVZTjJGMFZEbDZNamsrQ1BpTU5XM2tx?=
- =?utf-8?B?a0l6OGpuOTJvakNRNGx5WjVUNkpwZXJYT1N1U1c2dnBNeDZ5WTlJUXprc0xw?=
- =?utf-8?B?alEzN1dPc1ZSR2N3TVVUdVZjK3NzbHRMb0x5RTZPaUoxb1I4TWtKaDEySWJj?=
- =?utf-8?B?MUZ6MENXNzJld2FvazFza0RFV0ZUckpnSmdoeTdIK05JMWJIZFJvdnVqNGVq?=
- =?utf-8?B?QkdhL0xqUDhxcW5DbTJ6aEMwMlpGaUtkejRwNkNpUUZxMUkyVWxXMitlc3Yw?=
- =?utf-8?B?MGc9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <B6EF75E68CEB3E48B82045DD3AA652B2@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1pHLpN-009MCR-CL; Mon, 16 Jan 2023 09:30:55 +0000
+Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id D163D802;
+	Mon, 16 Jan 2023 10:30:39 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1673861440;
+	bh=9YWn45J/ZNgJKTD6UEkGgR2mEmqJ7NYekCQW2ePfKgc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=N+zSHiOP3BPeIWVxgMUMZkbWSMpAwC7eyS7KRf00o33vAIM8HgnNlYZlsGe4NvEx+
+	 ggan64ipd8TDap0zM7nKhc17S/7JZhs8uDIM+s21vxICnSvXcvLCGEqibqZ7MKdHAQ
+	 GpwQEr5QqXpkio0Z6yTPKSTEHMw4GfSB6ctnf2Pk=
+Date: Mon, 16 Jan 2023 11:30:40 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Aradhya Bhatia <a-bhatia1@ti.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Tomi Valkeinen <tomba@kernel.org>, Jyri Sarha <jyri.sarha@iki.fi>,
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Sam Ravnborg <sam@ravnborg.org>, Maxime Ripard <maxime@cerno.tech>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Albert Ou <aou@eecs.berkeley.edu>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Guo Ren <guoren@kernel.org>, Nishanth Menon <nm@ti.com>,
+	Devicetree List <devicetree@vger.kernel.org>,
+	Jayesh Choudhary <j-choudhary@ti.com>, Jai Luthra <j-luthra@ti.com>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Devarsh Thakkar <devarsht@ti.com>,
+	Linux Kernel List <linux-kernel@vger.kernel.org>,
+	DRI Development List <dri-devel@lists.freedesktop.org>,
+	Linux Mediatek List <linux-mediatek@lists.infradead.org>,
+	Linux C-SKY Arch List <linux-csky@vger.kernel.org>,
+	Linux RISC-V List <linux-riscv@lists.infradead.org>,
+	Linux ARM Kernel List <linux-arm-kernel@lists.infradead.org>,
+	Rahul T R <r-ravikumar@ti.com>
+Subject: Re: [RFC PATCH 0/4] dt-bindings: Introduce dual-link panels &
+ panel-vendors
+Message-ID: <Y8UZQHvVT2VQcQ33@pendragon.ideasonboard.com>
+References: <20230103064615.5311-1-a-bhatia1@ti.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TY0PR03MB6356.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: be334cf7-3ff9-4d9c-bb6f-08daf7a13d8a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Jan 2023 09:08:32.0175
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: WzY8Do5n//NseW3oM3EPAWQls5QA2Rq7aiMpzuC+IcJimQyCXUoPeNljfJMFcDqa4nIjbCuV62OSYhV2Nzslew==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR03MB6086
-X-MTK: N
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20230103064615.5311-1-a-bhatia1@ti.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_011915_184557_11E8D197 
-X-CRM114-Status: GOOD (  22.95  )
+X-CRM114-CacheID: sfid-20230116_013053_592906_53E5460D 
+X-CRM114-Status: GOOD (  39.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -184,31 +87,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDIzLTAxLTE2IGF0IDA5OjAwICswMTAwLCBLcnp5c3p0b2YgS296bG93c2tpIHdy
-b3RlOg0KPiBPbiAxNi8wMS8yMDIzIDAzOjQyLCBNb3VkeSBIbyAo5L2V5a6X5Y6fKSB3cm90ZToN
-Cj4gPiBPbiBGcmksIDIwMjMtMDEtMTMgYXQgMTI6NTggKzAxMDAsIEtyenlzenRvZiBLb3psb3dz
-a2kgd3JvdGU6DQo+ID4gPiBPbiAxMy8wMS8yMDIzIDA2OjQyLCBNb3VkeSBIbyB3cm90ZToNCj4g
-PiA+ID4gTVQ4MTk1IHZwcHN5czAvMSBzaG91bGQgYmUgcHJvYmVkIGZyb20gbXRrLW1tc3lzIGRy
-aXZlciB0bw0KPiA+ID4gPiBwb3B1bGF0ZSBkZXZpY2UgYnkgcGxhdGZvcm1fZGV2aWNlX3JlZ2lz
-dGVyX2RhdGEgdGhlbiBzdGFydA0KPiA+ID4gPiBpdHMgb3duIGNsb2NrIGRyaXZlci4NCj4gPiA+
-IA0KPiA+ID4gVW5mb3J0dW5hdGVseSBJIGRvbid0IHVuZGVyc3RhbmQgd2h5IHRoaXMganVzdGlm
-aWVzIHJlbW92YWwgb2YNCj4gPiA+IGNvbXBhdGlibGVzLg0KPiA+ID4gDQo+ID4gPiBIb3cgZG8g
-eW91IHByb3BhZ2F0ZSBvciBpbnN0YW50aWF0ZSBkZXZpY2VzIGlzIG5vdCByZWFsbHkNCj4gPiA+
-IGNvbm5lY3RlZA0KPiA+ID4gd2l0aA0KPiA+ID4gIHRoZSBoYXJkd2FyZSBkZXNjcmlwdGlvbi4N
-Cj4gPiA+IA0KPiA+ID4gQmVzdCByZWdhcmRzLA0KPiA+ID4gS3J6eXN6dG9mDQo+ID4gPiANCj4g
-PiANCj4gPiBIaSBLcnp5c3p0b2YsDQo+ID4gDQo+ID4gUmVmZXIgdG8gdGhlIGNvbW1lbnRzIG9m
-IDAvOCBhbmQgMS84IGluIHRoZSBmb2xsb3dpbmcgc2VyaWVzOg0KPiA+IA0KaHR0cHM6Ly91cmxk
-ZWZlbnNlLmNvbS92My9fX2h0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51
-eC1tZWRpYXRlay9saXN0Lz9zZXJpZXM9NzAyNTE4X187ISFDVFJOS0E5d01nMEFSYnchaVI5b3F5
-WXNCcnVqbmxfdjVERXVEWnJUR3A3NWlCS2tMSzk5S1dRVjM5MWtycXBaX2xLM2QyWXI5TUt4Z1JP
-QnVWZ3EyZm5WOWNGczdqekd3UmpZWDVfempMMG8kwqANCj4gPiAgDQo+ID4gDQo+ID4gVGhpcyBw
-YXRjaCBpcyB1c2VkIGluIGNvbmp1bmN0aW9uIHdpdGggYW5vdGhlciBvbmUoTWVzc2FnZSBJRCA9
-IA0KPiA+IDIwMjMwMTEzMDU0MzA0LjIxODQxLTctbW91ZHkuaG9AbWVkaWF0ZWsuY29tLykgdG8g
-Zml4IHRoZSBiaW5kaW5nDQo+ID4gd2FybmluZ3MgY2F1c2VkIGJ5IG5ld2x5IGFkZGVkIGluIE1N
-U1lTLg0KPiANCj4gVGhlIHBhdGNoIHNob3VsZCBzdGFuZCBvbiBpdHMgb3duLiBJT1csIGl0IHNo
-b3VsZCBleHBsYWluIGV2ZXJ5dGhpbmcNCj4gbmVlZGVkIGFuZCBpdCBzaG91bGQganVzdGlmeSBp
-dHMgZXhpc3RlbmNlLg0KPiANCj4gQmVzdCByZWdhcmRzLA0KPiBLcnp5c3p0b2YNCj4gDQoNCkhp
-IEtyenlzenRvZiwNCg0KVGhhbmtzIGZvciB0aGUgc3VnZ2VzdGlvbiwgSSB3aWxsIHNwbGl0IGFs
-bCByZWxhdGVkIHBhdGNoZXMgaW50bw0KYW5vdGhlciBzZXJpZXMuDQoNClNpbmNlcmVseSwNCk1v
-dWR5DQo=
+Hi Aradhya,
+
+On Tue, Jan 03, 2023 at 12:16:11PM +0530, Aradhya Bhatia wrote:
+> Hi all,
+> 
+> Microtips Technology Solutions USA, and Lincoln Technology Solutions are
+> 2 display panel vendors, and the first 2 patches add their vendor
+> prefixes.
+> 
+> The fourth patch, simply introduces the new compatible for the generic
+> dual-link panels in the panel-lvds driver. This new compatible is based
+> from a new DT binding added in the third patch explained below.
+> 
+> The third patch introduces a dt-binding for generic dual-link LVDS
+> panels. These panels do not have any documented constraints, except for
+> their timing characteristics. Further, these panels have 2 pixel-sinks.
+> In a dual-link connection between an LVDS encoder and the panel, one
+> sink accepts the odd set of LVDS pixels and the other, the even set.
+> 
+> A lot of this has been based from the Advantech,idk-2121wr dual-link
+> panel[1] and Maxime's patches for generic LVDS panels[2] (which are
+> single-link by default.) and the discussions that happened before they
+> were finally merged.
+> 
+> Below are some notes and points that I want to bring forward.
+> 
+>   - The advantech,idk-2121wr panel binding uses 2 boolean properties
+>     dual-link-odd/even-pixels, to signify which port sink is being used
+>     for which set of LVDS pixels. I too have added similar support and
+>     introduced constraints around those properties, so as to not break
+>     the ABI... but I believe there is a better way to achieve this.
+> 
+>     A "pixel-type" enum property could be introduced in their stead,
+>     which can accept one of the 2 options <dual-lvds-odd-pixels> or
+>     <dual-lvds-even-pixels>.
+> 
+>     This method, in my opinion, is more accurate and cleaner to
+>     implement in the bindings as well.
+> 
+>     If this does sound a better I can push out a new revision where the
+>     driver supports both these methods (to not break the ABI) and the
+>     advantech,2121wr panel can remain as an exception.
+
+It's usually best not to change an existing system if there are no good
+reasons, so I'd ask why you think a pixel-type property would be better
+(including when taking into account the fact that we would have to
+maintain the advantech,2121wtr driver separately) if you want to go that
+way. Otherwise, if we were developing this from scratch, I would have no
+real preference.
+
+>   - As an alternative to the previous point, if that method is not
+>     preferred for some reason, the advantech,2121wtr panel binding
+>     could then be merged in the panel-dual-lvds binding as part of
+>     future work.
+> 
+> 
+>   - Another tweak, I am looking forward to do as part of future work and
+>     would like all your comments is to introduce driver-based
+>     implementation of the panel timing parameters, like it is with
+>     "panel-simple". The driver can then support both the panel-timing
+>     sources (DT node or hard-coded driver structure) and the binding
+>     can remove this from the "required" section.
+
+There's been a very long discussion in the past (multiple discussions
+actually) regarding whether timings should be set in DT or in drivers.
+There were multiple arguments supporting both sides, without (it seems)
+a clear winner. If you want driver-side timings for dual-link panels,
+I'd like to understand why you think that's better. If the reasons are
+the same as the ones expressed when we discussed simple panels, you
+should also look at whether or not any of the fears expressed on either
+side have materialized.
+
+> Thank you!
+> 
+> [1]: https://patchwork.freedesktop.org/patch/357122/
+> [2]: https://patchwork.freedesktop.org/patch/471228/
+> 
+> Aradhya Bhatia (4):
+>   dt-bindings: vendor-prefixes: Add microtips
+>   dt-bindings: vendor-prefixes: Add lincolntech
+>   dt-bindings: panel: Introduce dual-link LVDS panel
+>   drm: panel-lvds: Introduce dual-link panels
+> 
+>  .../display/panel/panel-dual-lvds.yaml        | 157 ++++++++++++++++++
+>  .../devicetree/bindings/vendor-prefixes.yaml  |   4 +
+>  MAINTAINERS                                   |   1 +
+>  drivers/gpu/drm/panel/panel-lvds.c            |   1 +
+>  4 files changed, 163 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
+
+-- 
+Regards,
+
+Laurent Pinchart
 
