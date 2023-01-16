@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E7A1C46467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 23:54:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F551C67871
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 23:54:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VAC3lvYePixzcXebo4E3nrWp2H/ZNlz8TyV8NSReGQs=; b=RwPaFwPFdScVMznkiwJQJoT9GM
-	/NhIVnlzYvNa0Z2LLqxm1ceO6pqUbQaK+7CbfNN3peVBV7nGHwO1v+KT2eqUbvjYtz6xqqnF4vzzD
-	FlxM3X7rvCesz7H+Ahg2hMaENKXWYPekHtxmwwDhBAwC2WzlscLnBMUti/BMc2fdBDNgViH+Xm9rC
-	59mC3k/7ohQierGlQ54s0D3bq+dQcu8flke7WasQ/xv9A+TvVFiMe8l/38mDkF3yxe7xLZ/gOowpE
-	Gw27RsxgZVc1N9ijqwFKhj9uVR7YrEPjQDcimNY5CrKjsoODN8DL8FMBnVgirBF3YybROHltFO9O2
-	NKk25FdA==;
+	bh=COkswAySxVV9ZpIM0zsphdnLDffX8p/RY2QGfsrBvlk=; b=umj7LgTI2Izaq9IH8j9aXiIQH9
+	nXf4R/FI6zmybzCtvum/IOPDVplovC8GdmFFgaWaAgL+mrLHnpBZsApI3yl6BpbL0lOtDQM+HfiPZ
+	vcxN8jaQYr9Pq7HUfGIrOcPVEJgfMM56K+Rf28VD5KhH6iQ5YYov53TT2ygigKXApIndxGB+3APfU
+	yMe89gRBfo9enf7IntFuoI82Ne3d28Ouxgi/99xzhQntR2CSZNKoSIvZTxum9zjtRpCb393AvX+VK
+	OpI3xkMxYdjtX5AL7yyNIeAPt5QtD8zsLQDO8YZDaTJLGh5MgxKBIkXCE5nezbnjXoS8o84VDPnCS
+	Eri84l2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHZIr-00CItB-F4; Mon, 16 Jan 2023 23:54:13 +0000
+	id 1pHZJA-00CJ58-Ft; Mon, 16 Jan 2023 23:54:32 +0000
 Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHZHa-00CIEb-66; Mon, 16 Jan 2023 23:52:56 +0000
+	id 1pHZHa-00CIEa-4i; Mon, 16 Jan 2023 23:52:56 +0000
 Received: from mwalle01.sab.local (unknown [213.135.10.150])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 377561AA3;
-	Tue, 17 Jan 2023 00:52:51 +0100 (CET)
+	by mail.3ffe.de (Postfix) with ESMTPSA id C5F951A3D;
+	Tue, 17 Jan 2023 00:52:50 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
 	t=1673913171;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=VAC3lvYePixzcXebo4E3nrWp2H/ZNlz8TyV8NSReGQs=;
-	b=GX7X6H8lc5xEN2+bG0vGPNrbHpUIAQOgt5cogS4U1N7qThjjN2kBzzYQp/8KzT84ti0igo
-	xSB7LtanZuOWOoFLF//R6xu0DEVnKAgh2gmiPE8/wZoeTLTCRdhRpTvFILbtntC9hLuBLj
-	CnLtT1FJ5lt9YoGY5oDs0zZjipTZSuzptW13uvMVmynj6dYqNfnd42XKFSNgMGotGTUKE8
-	BXzciw/3UQuIntlC/9InYkjZ7/KD6wG+fCP+B75yawvNq2My4riw29+tbN+fKgvqe1mdeQ
-	IY10rHas3nLp7tewG0aHGrt5ZwAbQkMfxwLieYn3rr2+MYMWJ09/jxb5QTziBA==
+	bh=COkswAySxVV9ZpIM0zsphdnLDffX8p/RY2QGfsrBvlk=;
+	b=g9T38H6nBHcRXorUkzgRp7Ym/eOnwVbkNjQKYHN7wMMLMjyYNraA8JVO3Dok8DrIwzEW0k
+	gIdBp/1p682iBH/8jsHLciJK2nX7mUlQ9YozETBI2U1C0lKIp5EbBU6fNCyCstv13Lmv8G
+	K/ITd7str2gQaUTnXyfx/ybXX7J2ATJGeCoZMZbnXvPbDJH/591cDVM+oIUbBx3OEw+F5K
+	nLESQtbg40RSglrU3RJgr5NHPahBynQWKOUZm1QX3slza6/jq+H7MqIVxkiUOpeJFyMF32
+	ep+Lo+Mi2wgmWo9EmKsErAKmWxP7vUkSs9swoucoS6NZg1c/ZmjFiSm8mP3UdQ==
 From: Michael Walle <michael@walle.cc>
-Date: Tue, 17 Jan 2023 00:52:27 +0100
-Subject:  [PATCH net-next 12/12] net: ethernet: renesas: rswitch: C45 only transactions
+Date: Tue, 17 Jan 2023 00:52:26 +0100
+Subject: [PATCH net-next 11/12] net: dsa: sja1105: Separate C22 and C45
+ transactions for T1 MDIO bus
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id:  <20230116-net-next-c45-seperation-part-3-v1-12-0c53afa56aad@walle.cc>
+Message-Id:  <20230116-net-next-c45-seperation-part-3-v1-11-0c53afa56aad@walle.cc>
 References:  <20230116-net-next-c45-seperation-part-3-v1-0-0c53afa56aad@walle.cc>
 In-Reply-To:  <20230116-net-next-c45-seperation-part-3-v1-0-0c53afa56aad@walle.cc>
 To: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
@@ -71,8 +72,8 @@ Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Andrew Lunn <andrew@lunn.ch>, Michael Walle <michael@walle.cc>
 X-Mailer: b4 0.11.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_155254_435864_E7DA714B 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20230116_155254_414508_A2FF2123 
+X-CRM114-Status: GOOD (  14.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,69 +88,155 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The rswitch MDIO bus driver only supports C45 transfers. Update the
-function names to make this clear, pass the mmd as a parameter, and
-register the accessors to the _c45 ops of the bus driver structure.
+From: Andrew Lunn <andrew@lunn.ch>
 
+The T1 MDIO bus driver can perform both C22 and C45 transfers. Create
+separate functions for each and register the C45 versions using the
+new API calls where appropriate.
+
+Signed-off-by: Andrew Lunn <andrew@lunn.ch>
 Signed-off-by: Michael Walle <michael@walle.cc>
 ---
- drivers/net/ethernet/renesas/rswitch.c | 28 ++++++----------------------
- 1 file changed, 6 insertions(+), 22 deletions(-)
+ drivers/net/dsa/sja1105/sja1105_mdio.c | 87 +++++++++++++++++-----------------
+ 1 file changed, 43 insertions(+), 44 deletions(-)
 
-diff --git a/drivers/net/ethernet/renesas/rswitch.c b/drivers/net/ethernet/renesas/rswitch.c
-index 6441892636db..885fdb077b62 100644
---- a/drivers/net/ethernet/renesas/rswitch.c
-+++ b/drivers/net/ethernet/renesas/rswitch.c
-@@ -1024,34 +1024,18 @@ static int rswitch_etha_set_access(struct rswitch_etha *etha, bool read,
- 	return ret;
+diff --git a/drivers/net/dsa/sja1105/sja1105_mdio.c b/drivers/net/dsa/sja1105/sja1105_mdio.c
+index 8f1fcaf8e1d9..2fcb601cb4eb 100644
+--- a/drivers/net/dsa/sja1105/sja1105_mdio.c
++++ b/drivers/net/dsa/sja1105/sja1105_mdio.c
+@@ -149,7 +149,7 @@ static u64 sja1105_base_t1_encode_addr(struct sja1105_private *priv,
+ 	return regs->mdio_100base_t1 | (phy << 7) | (op << 5) | (xad << 0);
  }
  
--static int rswitch_etha_mii_read(struct mii_bus *bus, int addr, int regnum)
-+static int rswitch_etha_mii_read_c45(struct mii_bus *bus, int addr, int devad,
-+				     int regad)
+-static int sja1105_base_t1_mdio_read(struct mii_bus *bus, int phy, int reg)
++static int sja1105_base_t1_mdio_read_c22(struct mii_bus *bus, int phy, int reg)
  {
- 	struct rswitch_etha *etha = bus->priv;
--	int mode, devad, regad;
--
--	mode = regnum & MII_ADDR_C45;
--	devad = (regnum >> MII_DEVADDR_C45_SHIFT) & 0x1f;
--	regad = regnum & MII_REGADDR_C45_MASK;
--
--	/* Not support Clause 22 access method */
--	if (!mode)
--		return -EOPNOTSUPP;
+ 	struct sja1105_mdio_private *mdio_priv = bus->priv;
+ 	struct sja1105_private *priv = mdio_priv->priv;
+@@ -157,30 +157,31 @@ static int sja1105_base_t1_mdio_read(struct mii_bus *bus, int phy, int reg)
+ 	u32 tmp;
+ 	int rc;
  
- 	return rswitch_etha_set_access(etha, true, addr, devad, regad, 0);
+-	if (reg & MII_ADDR_C45) {
+-		u16 mmd = (reg >> MII_DEVADDR_C45_SHIFT) & 0x1f;
+-
+-		addr = sja1105_base_t1_encode_addr(priv, phy, SJA1105_C45_ADDR,
+-						   mmd);
++	addr = sja1105_base_t1_encode_addr(priv, phy, SJA1105_C22, reg & 0x1f);
+ 
+-		tmp = reg & MII_REGADDR_C45_MASK;
++	rc = sja1105_xfer_u32(priv, SPI_READ, addr, &tmp, NULL);
++	if (rc < 0)
++		return rc;
+ 
+-		rc = sja1105_xfer_u32(priv, SPI_WRITE, addr, &tmp, NULL);
+-		if (rc < 0)
+-			return rc;
++	return tmp & 0xffff;
++}
+ 
+-		addr = sja1105_base_t1_encode_addr(priv, phy, SJA1105_C45_DATA,
+-						   mmd);
++static int sja1105_base_t1_mdio_read_c45(struct mii_bus *bus, int phy,
++					 int mmd, int reg)
++{
++	struct sja1105_mdio_private *mdio_priv = bus->priv;
++	struct sja1105_private *priv = mdio_priv->priv;
++	u64 addr;
++	u32 tmp;
++	int rc;
+ 
+-		rc = sja1105_xfer_u32(priv, SPI_READ, addr, &tmp, NULL);
+-		if (rc < 0)
+-			return rc;
++	addr = sja1105_base_t1_encode_addr(priv, phy, SJA1105_C45_ADDR, mmd);
+ 
+-		return tmp & 0xffff;
+-	}
++	rc = sja1105_xfer_u32(priv, SPI_WRITE, addr, &reg, NULL);
++	if (rc < 0)
++		return rc;
+ 
+-	/* Clause 22 read */
+-	addr = sja1105_base_t1_encode_addr(priv, phy, SJA1105_C22, reg & 0x1f);
++	addr = sja1105_base_t1_encode_addr(priv, phy, SJA1105_C45_DATA, mmd);
+ 
+ 	rc = sja1105_xfer_u32(priv, SPI_READ, addr, &tmp, NULL);
+ 	if (rc < 0)
+@@ -189,41 +190,37 @@ static int sja1105_base_t1_mdio_read(struct mii_bus *bus, int phy, int reg)
+ 	return tmp & 0xffff;
  }
  
--static int rswitch_etha_mii_write(struct mii_bus *bus, int addr, int regnum, u16 val)
-+static int rswitch_etha_mii_write_c45(struct mii_bus *bus, int addr, int devad,
-+				      int regad, u16 val)
+-static int sja1105_base_t1_mdio_write(struct mii_bus *bus, int phy, int reg,
+-				      u16 val)
++static int sja1105_base_t1_mdio_write_c22(struct mii_bus *bus, int phy, int reg,
++					  u16 val)
  {
- 	struct rswitch_etha *etha = bus->priv;
--	int mode, devad, regad;
+ 	struct sja1105_mdio_private *mdio_priv = bus->priv;
+ 	struct sja1105_private *priv = mdio_priv->priv;
+ 	u64 addr;
+ 	u32 tmp;
+-	int rc;
 -
--	mode = regnum & MII_ADDR_C45;
--	devad = (regnum >> MII_DEVADDR_C45_SHIFT) & 0x1f;
--	regad = regnum & MII_REGADDR_C45_MASK;
+-	if (reg & MII_ADDR_C45) {
+-		u16 mmd = (reg >> MII_DEVADDR_C45_SHIFT) & 0x1f;
 -
--	/* Not support Clause 22 access method */
--	if (!mode)
--		return -EOPNOTSUPP;
+-		addr = sja1105_base_t1_encode_addr(priv, phy, SJA1105_C45_ADDR,
+-						   mmd);
  
- 	return rswitch_etha_set_access(etha, false, addr, devad, regad, val);
- }
-@@ -1142,8 +1126,8 @@ static int rswitch_mii_register(struct rswitch_device *rdev)
- 	mii_bus->name = "rswitch_mii";
- 	sprintf(mii_bus->id, "etha%d", rdev->etha->index);
- 	mii_bus->priv = rdev->etha;
--	mii_bus->read = rswitch_etha_mii_read;
--	mii_bus->write = rswitch_etha_mii_write;
-+	mii_bus->read_c45 = rswitch_etha_mii_read_c45;
-+	mii_bus->write_c45 = rswitch_etha_mii_write_c45;
- 	mii_bus->parent = &rdev->priv->pdev->dev;
+-		tmp = reg & MII_REGADDR_C45_MASK;
++	addr = sja1105_base_t1_encode_addr(priv, phy, SJA1105_C22, reg & 0x1f);
  
- 	mdio_np = rswitch_get_mdio_node(rdev);
+-		rc = sja1105_xfer_u32(priv, SPI_WRITE, addr, &tmp, NULL);
+-		if (rc < 0)
+-			return rc;
++	tmp = val & 0xffff;
+ 
+-		addr = sja1105_base_t1_encode_addr(priv, phy, SJA1105_C45_DATA,
+-						   mmd);
++	return sja1105_xfer_u32(priv, SPI_WRITE, addr, &tmp, NULL);
++}
+ 
+-		tmp = val & 0xffff;
++static int sja1105_base_t1_mdio_write_c45(struct mii_bus *bus, int phy,
++					  int mmd, int reg, u16 val)
++{
++	struct sja1105_mdio_private *mdio_priv = bus->priv;
++	struct sja1105_private *priv = mdio_priv->priv;
++	u64 addr;
++	u32 tmp;
++	int rc;
+ 
+-		rc = sja1105_xfer_u32(priv, SPI_WRITE, addr, &tmp, NULL);
+-		if (rc < 0)
+-			return rc;
++	addr = sja1105_base_t1_encode_addr(priv, phy, SJA1105_C45_ADDR, mmd);
+ 
+-		return 0;
+-	}
++	rc = sja1105_xfer_u32(priv, SPI_WRITE, addr, &reg, NULL);
++	if (rc < 0)
++		return rc;
+ 
+-	/* Clause 22 write */
+-	addr = sja1105_base_t1_encode_addr(priv, phy, SJA1105_C22, reg & 0x1f);
++	addr = sja1105_base_t1_encode_addr(priv, phy, SJA1105_C45_DATA, mmd);
+ 
+ 	tmp = val & 0xffff;
+ 
+@@ -342,8 +339,10 @@ static int sja1105_mdiobus_base_t1_register(struct sja1105_private *priv,
+ 	bus->name = "SJA1110 100base-T1 MDIO bus";
+ 	snprintf(bus->id, MII_BUS_ID_SIZE, "%s-base-t1",
+ 		 dev_name(priv->ds->dev));
+-	bus->read = sja1105_base_t1_mdio_read;
+-	bus->write = sja1105_base_t1_mdio_write;
++	bus->read = sja1105_base_t1_mdio_read_c22;
++	bus->write = sja1105_base_t1_mdio_write_c22;
++	bus->read_c45 = sja1105_base_t1_mdio_read_c45;
++	bus->write_c45 = sja1105_base_t1_mdio_write_c45;
+ 	bus->parent = priv->ds->dev;
+ 	mdio_priv = bus->priv;
+ 	mdio_priv->priv = priv;
 
 -- 
 2.30.2
