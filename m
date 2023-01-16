@@ -4,72 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABEDDC46467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 11:03:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9CABC46467
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 11:06:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4G8Y0ViVJzXb6BsOeFBPQvk3DHX0QfUnX0ejt3ACyfU=; b=zrd6gboWhlduBVN2s8dQueFdha
-	UORaVtZ7/R1o/KZSqkamPvrPWcP/ek/ZzNCYWAonvqyinS95S+NX0ltj5NyYiA2S6dhOmaMI4VM5C
-	qXi6kiQ3tOgva2w/m/D8oxRVnOHTTE33y35KEN3MmbsCbgtL7dxlQRsBBcJV0KRs8Gb9mhsczSbme
-	9yPHwzr838d0SXX/fCsJzOQeiklasarQqpbKtwWxb97MBZYWgLX6FQQSwndRunhQvOSF3Ux9EbZfr
-	67tquyXrb7WBZAMbF7cCjpT5fluw2KFCA5GG7l16Iw+pTl2bztpQDemXWa7GdXa9zPP+hP9e7DG5x
-	UKvdSfTA==;
+	bh=DkTQIvOTy2Q+K4dJuv6vPdsOqGOw58PTiozdPxfZn3I=; b=t3N5ZUOJjIhphmAHBcXQx6/CR+
+	F4ADh3MOYDxK7lHsaepgGEk2b/ufl1MEPbJj69Q0QKgddr9BsWkSKwEd/fmy0+3Do+aromJUMVXVm
+	9MhTJE1TdFVU9uJ4IxQgLt49/U7VdlnDt8kvwHVEj/YUGvuJr7URc9MN8MxUYc3qpMrwzeS2Tl2f3
+	22qeTuschZAkl9dXib3NvtYukMNOvf9eySM+kI2LsMuBjJGdoICOOqaSQLAYh4rjLrnT0xr9gnYyr
+	O2zhdgGA0RdotimvC56er9wUMkCIEU2UzYrb9MLz9m3dKoRpnhlaPZ6ac5KzkzzlHlwkJdAaLgBje
+	pOpTIk9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHNGp-009q4W-4b; Mon, 16 Jan 2023 11:03:19 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pHNJM-009qfN-W7; Mon, 16 Jan 2023 11:05:57 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHNGm-009q45-Qr; Mon, 16 Jan 2023 11:03:18 +0000
-X-UUID: 5e157d8e958d11edbbe3f76fe852e059-20230116
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=4G8Y0ViVJzXb6BsOeFBPQvk3DHX0QfUnX0ejt3ACyfU=;
-	b=kzEtSVn8Hu+INqkYtPtHDQ84mcUFru8ZQY4cxOv92Vqa6UWd0+OxRSpEFlYeHAbw0ZIeNiU8seI8zAokpPIEBbz1lSpH7zX6ct3IrOUZ7I+x9PqFEoFC4Y59a7FuUsYtUcSpFC0DpujVOqpVS5qRmYBo0xNX5FnFCmlIcgmC+pM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.18,REQID:806ca2f6-219a-4c98-be02-1d76a1785e4f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:3ca2d6b,CLOUDID:51cb638c-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0,NGT
-X-UUID: 5e157d8e958d11edbbe3f76fe852e059-20230116
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <allen-kh.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 698931496; Mon, 16 Jan 2023 04:03:11 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 16 Jan 2023 18:53:08 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Mon, 16 Jan 2023 18:53:08 +0800
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
-	<linux@roeck-us.net>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
-	<linux-watchdog@vger.kernel.org>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Subject: [PATCH v2 2/2] watchdog: mtk_wdt: Add reset_by_toprgu support
-Date: Mon, 16 Jan 2023 18:53:05 +0800
-Message-ID: <20230116105305.31818-3-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230116105305.31818-1-allen-kh.cheng@mediatek.com>
-References: <20230116105305.31818-1-allen-kh.cheng@mediatek.com>
+	id 1pHNJC-009qcK-Kn
+	for linux-mediatek@lists.infradead.org; Mon, 16 Jan 2023 11:05:48 +0000
+Received: by mail-ed1-x533.google.com with SMTP id z11so40249353ede.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 16 Jan 2023 03:05:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=DkTQIvOTy2Q+K4dJuv6vPdsOqGOw58PTiozdPxfZn3I=;
+        b=ED6QSrMSUPNHwFiTOrKroYXFmam4lacEgtZHDTlJNUpWMEL4jpdoM2kBWOqUELlHw7
+         2bj5P3opYT0PPSSfaBzk0RpDdc6EdHW1T4R6kSoYMYNRAEtssW4RBLnmttw/IKapOJPb
+         PH2E2tvWImw0CwO1A72ACqZlVvDAQMEXcnJxXA2kG6pxV/xxo4xx8MBKiVYrdj4N3v44
+         EL826unFaCLt1nrKeMeZOKGrxJgM+Ado/7w0WF1WTUV/X7PGpRnfdZlZIHoFucFLE+FG
+         NyoBr7BrCkbIOhbY8fLkIk60R/SBtZoTeW3ktTExq1t6OAwVN3ifO2Psev+/84LyyDvg
+         xjJw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=DkTQIvOTy2Q+K4dJuv6vPdsOqGOw58PTiozdPxfZn3I=;
+        b=hZG43Urr6v0HqNE+L55n5Ov7j+hfOjEpTH2PuTFWM9wZpN7dsX0nUSGPhJy2VlhST1
+         RkaZJW+ArL6r75yEOpp8/xtAXw20xB8TLlDxwA1zoHhwu89mnxF5t/FJrA4ka6pGyT91
+         UsyP9rqxban+yOdlahFEcTSxJGQTiD58b3xsCpfhNWby9YRARSi+B4nabc9GrfnX/6ob
+         CXv+dkB1+TGMK5tii5KM+Zj1GVDjSFcPBij3htDYChX/MofIlfi37ptLvlckKSO9ZGJr
+         SVAt5tBJZyjITaQhtnv3xzKdO3mICyQ2PZw0exgHA78jmm1cY1pX/wOTDX6QZ45uxvdT
+         5Bjw==
+X-Gm-Message-State: AFqh2koCAmN6AM7BaXtxQAk91CzwyiUXDyDaa8cTfq5Phb4NOs1f0b/5
+	qY45Ht4S3j754cgKMY3H4GZ3wnZdp2DKeqNKBDHPWQ==
+X-Google-Smtp-Source: AMrXdXusX6CCt6i+1zaot2H1Rxeu6HDMPxop2j94acllkt+bi9QBmrv2MyabXzFTmvM+wRwke6z0eFz0cOXpsGJoQa4=
+X-Received: by 2002:a50:ab4b:0:b0:46a:b1a9:c34e with SMTP id
+ t11-20020a50ab4b000000b0046ab1a9c34emr12264339edc.212.1673867142735; Mon, 16
+ Jan 2023 03:05:42 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20230112152855.216072-1-bchihi@baylibre.com> <20230112152855.216072-3-bchihi@baylibre.com>
+ <256c2328-a426-a1bf-4f47-1d6c9e706f63@collabora.com>
+In-Reply-To: <256c2328-a426-a1bf-4f47-1d6c9e706f63@collabora.com>
+From: Balsam CHIHI <bchihi@baylibre.com>
+Date: Mon, 16 Jan 2023 12:05:07 +0100
+Message-ID: <CAGuA+orQ333LxJYw9Gws=uLXxewM2z_nX5QH1CfhOk06ViJrMg@mail.gmail.com>
+Subject: Re: [PATCH v10 2/6] dt-bindings/thermal/mediatek: Add dt-binding
+ document for LVTS thermal controllers
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: daniel.lezcano@linaro.org, rafael@kernel.org, amitk@kernel.org, 
+	rui.zhang@intel.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	khilman@baylibre.com, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, james.lo@mediatek.com, 
+	rex-bc.chen@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_030316_895598_89DC625A 
-X-CRM114-Status: GOOD (  12.74  )
+X-CRM114-CacheID: sfid-20230116_030546_685128_87EBFF3A 
+X-CRM114-Status: GOOD (  20.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,56 +89,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In some cases, the MediaTek watchdog requires the toprgu to reset
-timer after system resets.
+On Mon, Jan 16, 2023 at 11:38 AM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 12/01/23 16:28, bchihi@baylibre.com ha scritto:
+> > From: Balsam CHIHI <bchihi@baylibre.com>
+> >
+> > Add dt-binding document for mt8192 and mt8195 LVTS thermal controllers.
+> >
+> > Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+> > ---
+> >   .../thermal/mediatek,lvts-thermal.yaml        | 140 ++++++++++++++++++
+> >   1 file changed, 140 insertions(+)
+> >   create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+> >
+> > diff --git a/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+> > new file mode 100644
+> > index 000000000000..43b8777fc1b2
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+> > @@ -0,0 +1,140 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/thermal/mediatek,lvts-thermal.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: MediaTek SoC Low Voltage Thermal Sensor (LVTS)
+> > +
+> > +maintainers:
+> > +  - Balsam CHIHI <bchihi@baylibre.com>
+> > +
+> > +description: |
+> > +  LVTS is a thermal management architecture composed of three subsystems,
+> > +  a Sensing device - Thermal Sensing Micro Circuit Unit (TSMCU),
+> > +  a Converter - Low Voltage Thermal Sensor converter (LVTS), and
+> > +  a Digital controller (LVTS_CTRL).
+> > +
+> > +properties:
+> > +  compatible:
+> > +    enum:
+> > +      - mediatek,mt8192-lvts-mcu
+> > +      - mediatek,mt8192-lvts-ap
+>
+> I agree, MT8192 has LVTS... but you don't have it in the driver?
+> I don't think that it would be much effort to just add it to the commit that
+> adds the driver itself... otherwise, even though bindings are describing the
+> hardware and not the drivers, I, personally, don't really like to see the
+> binding advertising mt8192 mcu/ap while it's not really supported in the driver.
 
-Provide a reset_by_toprgu parameter for configuration.
+Hi Angelo,
 
-Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
----
- drivers/watchdog/mtk_wdt.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+mt8192 will be supported later,
+so I totally agree with you about removing its binding description for now.
 
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index 3e6212591e69..a9c437598e7e 100644
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -50,6 +50,7 @@
- #define WDT_MODE_IRQ_EN		(1 << 3)
- #define WDT_MODE_AUTO_START	(1 << 4)
- #define WDT_MODE_DUAL_EN	(1 << 6)
-+#define WDT_MODE_CNT_SEL	(1 << 8)
- #define WDT_MODE_KEY		0x22000000
- 
- #define WDT_SWRST		0x14
-@@ -70,6 +71,7 @@ struct mtk_wdt_dev {
- 	spinlock_t lock; /* protects WDT_SWSYSRST reg */
- 	struct reset_controller_dev rcdev;
- 	bool disable_wdt_extrst;
-+	bool reset_by_toprgu;
- };
- 
- struct mtk_wdt_data {
-@@ -279,6 +281,8 @@ static int mtk_wdt_start(struct watchdog_device *wdt_dev)
- 		reg &= ~(WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
- 	if (mtk_wdt->disable_wdt_extrst)
- 		reg &= ~WDT_MODE_EXRST_EN;
-+	if (mtk_wdt->reset_by_toprgu)
-+		reg |= WDT_MODE_CNT_SEL;
- 	reg |= (WDT_MODE_EN | WDT_MODE_KEY);
- 	iowrite32(reg, wdt_base + WDT_MODE);
- 
-@@ -408,6 +412,9 @@ static int mtk_wdt_probe(struct platform_device *pdev)
- 	mtk_wdt->disable_wdt_extrst =
- 		of_property_read_bool(dev->of_node, "mediatek,disable-extrst");
- 
-+	mtk_wdt->reset_by_toprgu =
-+		of_property_read_bool(dev->of_node, "mediatek,reset-by-toprgu");
-+
- 	return 0;
- }
- 
--- 
-2.18.0
+Best regards,
+Balsam
 
+>
+> Regards,
+> Angelo
 
