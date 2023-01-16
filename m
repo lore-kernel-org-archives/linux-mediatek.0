@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 070D4C54EBE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 09:48:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 891BEC63797
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jan 2023 09:49:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=own8fQF29dpa8H+4i1gX7xBuUrtz0M6sQkJ0J4BcVPs=; b=VCt63hqIkBRv42pK7kUwh38Qx9
-	9CzRH8Ex3QuzzeDdGShaLAWOooim3bEzbJ/9kNEtAQVPJ9bKgQAmJZepELxRC/uHiDTWSerO/x+au
-	0Rmphm4BXl4IM/KSAe9oaaAq9k+A7r89/0W2fKehZvMDYDmVar22DVDU9UusJPaAfZLcRVF+9F73W
-	3SCTo3fwXFYn5pNq8sf+CXZLeJS0yPECtd406qCK+7NWvsgNM0rSD7/H4x3SiiZe3ILrDiVMqM18c
-	2g/Mi7ugENiKfL6FbEYXrRlA10HKs3i6GJbtP/h2x2y68TL0na1/lViJ6poc2n3UlxYSLx57SHVB8
-	25RY2Eig==;
+	bh=CnprSVYS5L5krlzhrVv8JZ2Sk1Gq1enSMVENct3rIDc=; b=Id2/3plL0XpePVNRtd9fJhL6Gs
+	IcQp1YzbwGe+4DvY/6NiGeO2O4pLOgWPbLoRNCsr9om2GX3p/V+4X6Ft3MCmEpZjdm17co73ugXsN
+	uGMucap5tJ1A3+vmgcSVudxJZDrCrf10ke90vaGgctMXpflD8VmXZQMWAX338TdOahzsyX+fnf2Rs
+	yYMp45/Y4Z3HxCKoYrwkm5i2EybMzc99JbqRUTClILkE4HopHSnLBF66jxuyoPqZQwFjx6nagnihN
+	eYIkaWyE/qS+sdgzWdowadk6Ll3ThWmyJXUpUjZNrlTm9SNTE1BqAYkEF16xjFfteeodoP2/8Oak0
+	dMyclu/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHM6h-009TNV-EU; Mon, 16 Jan 2023 09:48:47 +0000
+	id 1pHM7K-009Tj1-Ej; Mon, 16 Jan 2023 09:49:26 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHM5s-009Swo-M5; Mon, 16 Jan 2023 09:47:57 +0000
+	id 1pHM5y-009T01-Ff; Mon, 16 Jan 2023 09:48:03 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 519CE66029A5;
-	Mon, 16 Jan 2023 09:47:54 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 62DD06602BBC;
+	Mon, 16 Jan 2023 09:47:59 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1673862475;
-	bh=93o0gsrzJuP/JbjPwP1VlaNpDSduuvf2Js/VnsKFP5E=;
+	s=mail; t=1673862481;
+	bh=bKAGXkeFj/dyVaazeNvGD2Nhl6TivR/edeVsvxnJNcY=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jLOoqKC1axP2Z/SRrpfWWfXjFj74GgxeHtvSpNWYx/7hph3dsLDhlDg+0L6HzsTq1
-	 VPPw5HRUFxqnqtUGmvmm2THCQBy0o7xLnu4a8dLkTNn6BXgrGW9sHUX3Ts8eba+mvo
-	 lDkT04B2Pe+S7N+VZ7rVmDV3fQ4mWfuU3rbxRRZLqB4Qpo6fGOPa4QGhhKrrHuwUQ0
-	 h9E6MJCWHrqTR9fhFPH3/LXcu1AV7zL9PKn5whBiet2B53GfNmLtOQiI1UdWFTw7BE
-	 qmz7pNe8uwsxQM/nRVJUEeBx29v+U5bfjgZR7gPrCjEKe4MZ4vJYd97fJ8QBTAxyhI
-	 rPWY27O1sX5iQ==
-Message-ID: <0e3f3cda-e8d1-6381-ec22-fe917f508112@collabora.com>
-Date: Mon, 16 Jan 2023 10:47:51 +0100
+	b=XE27kOgxftoxDkJN/Dnk1N1OzYfC/s49/59PL0ZBzna81kcHe0OfjgIZ/iti+PdKI
+	 rPHVQkFXj57abKu61EU0aZmextJtdP7MyxRrl+zMxMFrmUfTsTsyqnvMhpBNXTEW9o
+	 cLoQ1AEqGlqalyNyLbkALMMKrULXGbswEpHSBVErSMAG74hFeN8igQzyWtlgOMiyyb
+	 4ix2Gy8JuCbTTSE/44u23Cq6PpiGF0zKsAuYXMNW5z3CQ3zTqG/Wg9HcPE6P4HBai5
+	 /X5R3jM74oD3e6VHdf0x25fOg8FoS7MdoKvqcao8GjGJuEPv3QclM/eC+ptpgT8b6U
+	 MIyt6t/fGbArA==
+Message-ID: <4772fac3-aa57-aee0-e75d-bc9428d5b5e1@collabora.com>
+Date: Mon, 16 Jan 2023 10:47:57 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.0
-Subject: Re: [PATCH 09/10] arm64: dts: mt8195: Remove the unnecessary
- dma-ranges
+Subject: Re: [PATCH 02/10] dt-bindings: media: mediatek,jpeg: Remove
+ dma-ranges property
 Content-Language: en-US
 To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
@@ -61,16 +61,17 @@ Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
  mingyuan.ma@mediatek.com, yf.wang@mediatek.com, libo.kang@mediatek.com,
  Yunfei Dong <yunfei.dong@mediatek.com>,
  kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>,
- chengci.xu@mediatek.com, youlin.pei@mediatek.com, anan.sun@mediatek.com
+ chengci.xu@mediatek.com, youlin.pei@mediatek.com, anan.sun@mediatek.com,
+ Bin Liu <bin.liu@mediatek.com>, Xia Jiang <xia.jiang@mediatek.com>
 References: <20230113060133.9394-1-yong.wu@mediatek.com>
- <20230113060133.9394-10-yong.wu@mediatek.com>
+ <20230113060133.9394-3-yong.wu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230113060133.9394-10-yong.wu@mediatek.com>
+In-Reply-To: <20230113060133.9394-3-yong.wu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_014756_883606_8F6B5F65 
-X-CRM114-Status: UNSURE (   7.93  )
+X-CRM114-CacheID: sfid-20230116_014802_729079_1EF5056A 
+X-CRM114-Status: UNSURE (   8.58  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,9 +88,17 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 13/01/23 07:01, Yong Wu ha scritto:
-> After we add the dma-ranges in the parent "soc" node,
-> this property is unnecessary for the leaf node.
+> Mediatek IOMMU has already controlled the masters' iova ranges by the
+> master's larb/port id. then the dma-ranges property is unnecessary for
+> the master's node. the master is jpeg here.
 > 
+> Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
+> Cc: Rob Herring <robh+dt@kernel.org>
+> Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Bin Liu <bin.liu@mediatek.com>
+> Cc: kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>
+> Cc: Xia Jiang <xia.jiang@mediatek.com>
 > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
