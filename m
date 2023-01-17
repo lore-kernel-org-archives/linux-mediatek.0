@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 665A8C3DA78
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jan 2023 08:51:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B10E0C63797
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jan 2023 08:51:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GnntDb2wSxyksznyUK9vORluc24yy6XtA4jjRHLcBuk=; b=E3Y09a1RuQP2ybRS96ast5yoWN
-	k+1ALcjcI6fpUZWfzDJgJoNl8Cn8pGg8RcZVdcTOC5m8Sp1oP9ly+t+3u9j1ApRTWY/Hk/qmAYpc4
-	bWUFRlFiCk0YKIrtMuI7VtEkGypz1HMEkk71DP7Z/9dcpMUJFsA1pJPvNY6bLUm0nJth5hhe63Tue
-	L0d6e+QybTpqDCdjcbqCHDFv5HnY2ovoiUHSlydAbZLUuWMF8IIYVSoy7U+sXbQuuhIhGs+fy2SkN
-	OPgjO+ZLIbRsxzLf0WOguNqxxuXi37m/1dvZFT5y4iFnLdXAicYLyc4vJL6OOkJoKJuA2du+aaiKT
-	0t6eRYrg==;
+	bh=UgoXPu1A6G8aOhAjG7a8w9p9zygyaf4s9I2TGoeTltI=; b=QJrI8pj6UMqWPk/Wbr2kvApxWt
+	vCy6uZoRuOpXYDO2ApV+cn51W+f0rZfDsnJdR/OtGRrmc8JezZSUh9KjQJ2r1NvRvd5mvvpFi4/UM
+	TyBSc5QZzG6xZGDW8r5zEQ+w/BfoXhPfxMoT/lYVNJ1+14UvKenfSYxUNA5dk4yAYK+pxWaumgWrI
+	Hn0NuH7WqimgkYZfYkNp7pDsUSm24Zm0g/6M0KKn6f092pbeB4s6I1fg3oeYfzlpXGSTMfFiyLpDf
+	Hrh9cGztCMvF2JQD+A9fZQKTHtNJ8mwJi0B9FNXXOdMDlGdh+dkMexiHaEsw4/wqwQdOO3M5ZfB9R
+	w2P6nLLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHhgj-00DOUE-43; Tue, 17 Jan 2023 08:51:25 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1pHhgn-00DOWL-9Y; Tue, 17 Jan 2023 08:51:29 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHhfL-00DNmD-Ti
-	for linux-mediatek@lists.infradead.org; Tue, 17 Jan 2023 08:50:02 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id m5-20020a05600c4f4500b003db03b2559eso1797865wmq.5
-        for <linux-mediatek@lists.infradead.org>; Tue, 17 Jan 2023 00:49:57 -0800 (PST)
+	id 1pHhfI-00DNkZ-VP
+	for linux-mediatek@lists.infradead.org; Tue, 17 Jan 2023 08:50:01 +0000
+Received: by mail-wm1-x335.google.com with SMTP id m5-20020a05600c4f4500b003db03b2559eso1797797wmq.5
+        for <linux-mediatek@lists.infradead.org>; Tue, 17 Jan 2023 00:49:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=GnntDb2wSxyksznyUK9vORluc24yy6XtA4jjRHLcBuk=;
-        b=LYUV60VqALvvzk6MilzChbMVqyD/B0GIA7z7QQD9RC9k/FTRraa9aq3o9DhdmmF3iq
-         bEZxLJ/EPaEukjPDguwckMzwT4iZWzklaDDCcm8uvmRbfgEzQZ6BypnK+5qR13RDCnuo
-         g/NoNBxqzf6YLnbLdMwkvsPYPgpfMg1IVWEfSQM4dsbIHLnsghP853ZEx8x80OXMesKO
-         Gu6CisBcCKzX5DE471QmgAykmNMIdj+swGJPBP7wSz0pf8//+a8SQFDGZUzGW+MnbWQ+
-         84Q0DSLD8KCf7zQKe08zeZA1GxLvcYKM7P0/3YWWTFKmdYhwcXPB8+J9/t/YfUwb6Dp9
-         NQvA==
+        bh=UgoXPu1A6G8aOhAjG7a8w9p9zygyaf4s9I2TGoeTltI=;
+        b=br0AnOeqEeTM0zui1xtg65KTyJzkss2Hnbj0igYV+z0AGaL3ZPigHUjl7LH+iLh9s1
+         UOB99NxhPyHnEsOZVigJagAIQdCNDM2VGavpVH2lMZ3z+yD6qwJEyMoveeDWBxbUqK1F
+         ZKd6b348eIeht3C4jJGN/IKf7ngNYLfIvhM+kYHnXHC3NiJwyEm8Fr6ePhAtv0EJDw9+
+         0lLq1byDElzyt9jUJUycc2iMsgzJFGfmU80f3gJS/4PvmB58O80F1a2Pi/2l5im6rhd8
+         MA+/y6l65ytx5H5LPYhF4dATSTXFK61F+/PKAoEaAe0AOW9chItrcYys7vlS4nVfIBrg
+         pn4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=GnntDb2wSxyksznyUK9vORluc24yy6XtA4jjRHLcBuk=;
-        b=I6bCEah73TZ/PNT3Q0cL+iBpmzh7R+9zezhBTRoMtH+EA+Zol7Ejdqh3mY8KakGQHj
-         B+cEtoqk419kNZy2liHutMjhGItydc75dRqaCeKDVIdPhqqYx0dTNCjEYn9aM8eveYQa
-         Ncb+YQ9qHzcXfoPRT+qzSW3okK/vNN1mhCOqy//fxrWZdTcfPK8OcVuiT5Mjp6KLoJzV
-         dKO7ODQoFW4gVHXM2gJMox2UT5GD2ou+Fj28fenG7MVyUTgqEJ+Gd7aSoLah6zgXWNby
-         80l6xAvl0EgGBhty2X7GkTKYtbyb7kC8EQR169rOo15NH3SSoIGhJGLi70CpQN7tWNvj
-         IIYQ==
-X-Gm-Message-State: AFqh2krQtu7h5fjM0njlPJxTwTM+uKFs7uIwlqx+nGnGdiuRqwbaZD/y
-	bOR212CepZ8JC89DscrEUKuXfQ==
-X-Google-Smtp-Source: AMrXdXvVghYU3f6f4pnX+urBDdE5Tc0O9C8WHHbtOL7Y9xI3DWYl8EiIm5gXNSp4H0aKqqrXqdqEMg==
-X-Received: by 2002:a05:600c:920:b0:3da:22a6:7b6b with SMTP id m32-20020a05600c092000b003da22a67b6bmr2225151wmp.13.1673945396215;
-        Tue, 17 Jan 2023 00:49:56 -0800 (PST)
+        bh=UgoXPu1A6G8aOhAjG7a8w9p9zygyaf4s9I2TGoeTltI=;
+        b=VFigucslWEk4BcQN1lm+mffJO7+J/3eyF8B329eE0YpOYHBrqCF0eSNznpneA4stT2
+         GIOKJBog/vXghhoFLF7LjEVeeSt+U8C7DOPdVR2jsy4F8ydsBzhAi9lE9ntwNM9IvmVI
+         NvHxkvGvWx5TtG83ws+8PMamsBwD7/q+PF51a1fb5aOP4Pr5GNLlkTzY2F9Tz7pl8bPU
+         sgidgr9ic1quR8pvudLqtUy0BE4cttmJWQM8LgjS0mQoTawcwLctoxzuiR+KEHoQDuja
+         V6GPInKNgzg1NOtNXNEJeBxP2j/nvvbnJTN5pgOUsh6ZG5OUt5fNFgxuwIIOlOVXTTg3
+         VPVQ==
+X-Gm-Message-State: AFqh2kpuHWoTTkqdptoxT3HG6JhvhO7LBmwjadrArta11gKXj402RLGz
+	tzCfW+8ik9A246TAxe2P+Mamtg==
+X-Google-Smtp-Source: AMrXdXuDwjuQIJ9bVydfzGqKXubMAUmMY5yYYHElltf5Pc0ST63jYYv8z3loNVA4Fd2I2eGFzTk8WQ==
+X-Received: by 2002:a05:600c:4928:b0:3da:909f:1f6b with SMTP id f40-20020a05600c492800b003da909f1f6bmr2465111wmp.1.1673945394216;
+        Tue, 17 Jan 2023 00:49:54 -0800 (PST)
 Received: from [127.0.1.1] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.googlemail.com with ESMTPSA id i14-20020a05600c354e00b003d1d5a83b2esm45040928wmq.35.2023.01.17.00.49.55
+        by smtp.googlemail.com with ESMTPSA id i14-20020a05600c354e00b003d1d5a83b2esm45040928wmq.35.2023.01.17.00.49.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Jan 2023 00:49:55 -0800 (PST)
+        Tue, 17 Jan 2023 00:49:53 -0800 (PST)
 From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Tue, 17 Jan 2023 09:49:42 +0100
-Subject: [PATCH 4/4] i2c: i2c-mt65xx: add MT8365 SoC support
+Date: Tue, 17 Jan 2023 09:49:40 +0100
+Subject: [PATCH 2/4] arm64: dts: mediatek: add i2c support for mt8365 SoC
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20221122-mt8365-i2c-support-v1-4-4aeb7c54c67b@baylibre.com>
+Message-Id: <20221122-mt8365-i2c-support-v1-2-4aeb7c54c67b@baylibre.com>
 References: <20221122-mt8365-i2c-support-v1-0-4aeb7c54c67b@baylibre.com>
 In-Reply-To: <20221122-mt8365-i2c-support-v1-0-4aeb7c54c67b@baylibre.com>
 To: Rob Herring <robh+dt@kernel.org>, Qii Wang <qii.wang@mediatek.com>,
@@ -75,24 +75,24 @@ Cc: linux-i2c@vger.kernel.org, Rob Herring <robh@kernel.org>, Fabien Parent <fpa
  linux-arm-kernel@lists.infradead.org, Alexandre Mergnat <amergnat@baylibre.com>, Kevin Hilman <khilman@baylibre.com>,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
 X-Mailer: b4 0.10.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1454; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=TWV0BAft8RkOG5xbYhjbDPUS/3D2IDzrN9QH/A7cKxU=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBjxmEuVzYMtofJIUJ5oFTa3W0oKUDkqaKLoTvfJXnh
- 0IBK/E2JAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCY8ZhLgAKCRArRkmdfjHURcOQEA
- DBqTEdZxCLimcj4ODKJJMfctwwdA7ZiAVFTtdGMWA71M/U79w8cFUVxFHSXnTn47gSHeFVcpiyFjaI
- DM0uhFv5NDrZdV3SvNjHSaHSCDFeQE+N5c9Uzhc431ttuJryYIry72+ioFiUOTnA+U/JDGaD1M7a9m
- 7tL5AJP/pd6FzUpK/mV+KL/oRcSU45dHzjB2WbXsafsVh0yoMAoH2ONYHbYsE9VACpkQs8w11L7I6f
- MgM+zhIRh9TzyVGZ4uL9mRIOgiVqSkRJgNyPnFKCVgpa89Dv+rxu0+Uc7ZJ9OaOXnAAw6+GIvFrF7B
- FMDPiQ89s5gm9KpDwc9Mq/QcKfGm6J9gpPGiMo8mMOx6Jjwl2Pe4PFrbj/CH7lGxINvxSdbUcOkZTL
- 1kUybTF+GoV300oW3Vfqd36rJNPg5T4A2obypuNuBiZ3UTueo+NATNKkWnJc+MxMy92nY4enQJ4TP2
- JKVX1z0A1FPrgtwj1B9IsKKaaK30kPyFuVZSIgLNpXQ5FqeHn9VQAypE9CUnNJdzDZBnOCaLYMeRmu
- XVLDdGgM/IsiHN6asVJvJMCpLe2H9voep8GpiI6rPdNcDDd9IQkkdOMROkZRyRto73sWYT2RlbZTwD
- GFFhgWu5qafDgyJWt1h1f8uSQDUo7fjIA0XyiyGP/zssH+KUXbMKkrEWIf/A==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2508; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=pLPRl4jPAYZIqf1fe/JXLH5pg1d46bBPCeqWhQgjHKU=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBjxmEucJi1q1NdT5HmNXnp5kIxA1c+e049A9ok+evg
+ 5QXuV6uJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCY8ZhLgAKCRArRkmdfjHURVrmD/
+ 4gskZjdw09f2tZ7bUHTkY/CVV7XUZSvc78gwOs2ISy6/sqNimRoXdAbaoO1qZEnZA8x73UFSv2cnNi
+ +5FANiQKHS47maGYzC2OIaMnxsmhy8KvLsvsmgt45YoEb8t0LW5Erq8eYEWlB0qW4XzcfMloK2DZBo
+ NkTlDS65SDy2FvvGJOyhmSXS0RGUzjnFz2AXv9ATc30Ne3VCoWdMn8t4kdESqovn4qWcxpAspbEX9S
+ /vb/CeAquacvmUw90GvgcmZ7lOYWMlir36wYnHRrvpkEEwkhT9ibp4fRljjS9AHD9HvsJBV8aBvlJr
+ nq9BkyYFSpmpnJhvDrmDiYlPjJ/uLM8urevXr95JSLe9hL03WuS/NcVgft99n081xCJ6da44ERbDrN
+ MwcIeb0Qp78Guz6iICSbmkr0IChMmfZTeSm06oWPL63yLAzA2IbFCqIbe0H0a9CEW8c6k3VVMZAF7X
+ 5AhvgKdFJyHKaKlHpkl98w02jfFPRIKSKve0BN3Do0GwmfgicJSDded41vqU9vJ6gMPOvWe7wqVqsg
+ Jllv4HfdHSwJFNwsONhbi+jbEPMzxFIFHdxK7A5GyS23UawCdMu9yeth4hWlSN7TO0zd4otLV69q52
+ VqcBsbxU2S3VwSZLVsv5piHR5MIGFrontdbYQKgIiU5nwWCzvRK2LU7+0sfw==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230117_005000_007767_B117F58C 
-X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-CacheID: sfid-20230117_004957_055571_88653E71 
+X-CRM114-Status: UNSURE (   9.54  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -108,48 +108,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Fabien Parent <fparent@baylibre.com>
+There are four I2C master channels in MT8365 with a same HW architecture.
 
-Add support for I2C on MT8365 SoCs.
-
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- drivers/i2c/busses/i2c-mt65xx.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8365.dtsi | 60 ++++++++++++++++++++++++++++++++
+ 1 file changed, 60 insertions(+)
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index d80e59340d97..2c9dbb42861a 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -511,6 +511,19 @@ static const struct mtk_i2c_compatible mt8192_compat = {
- 	.max_dma_support = 36,
- };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+index a32f2b7507be..3c2819bd32af 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+@@ -282,6 +282,66 @@ pwm: pwm@11006000 {
+ 			clock-names = "top", "main", "pwm1", "pwm2", "pwm3";
+ 		};
  
-+static const struct mtk_i2c_compatible mt8365_compat = {
-+	.regs = mt_i2c_regs_v1,
-+	.pmic_i2c = 0,
-+	.dcm = 1,
-+	.auto_restart = 1,
-+	.aux_len_reg = 1,
-+	.timing_adjust = 1,
-+	.dma_sync = 1,
-+	.ltiming_adjust = 0,
-+	.apdma_sync = 0,
-+	.max_dma_support = 33,
-+};
++		i2c0: i2c@11007000 {
++			compatible = "mediatek,mt8365-i2c",
++				     "mediatek,mt8168-i2c";
++			reg = <0 0x11007000 0 0xa0>,
++			      <0 0x11000080 0 0x80>;
++			interrupts = <GIC_SPI 28 IRQ_TYPE_LEVEL_LOW>;
++			clock-div = <1>;
++			clocks = <&infracfg CLK_IFR_I2C0_AXI>,
++				 <&infracfg CLK_IFR_AP_DMA>;
++			clock-names = "main", "dma";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			status = "disabled";
++		};
 +
- static const struct of_device_id mtk_i2c_of_match[] = {
- 	{ .compatible = "mediatek,mt2712-i2c", .data = &mt2712_compat },
- 	{ .compatible = "mediatek,mt6577-i2c", .data = &mt6577_compat },
-@@ -523,6 +536,7 @@ static const struct of_device_id mtk_i2c_of_match[] = {
- 	{ .compatible = "mediatek,mt8186-i2c", .data = &mt8186_compat },
- 	{ .compatible = "mediatek,mt8188-i2c", .data = &mt8188_compat },
- 	{ .compatible = "mediatek,mt8192-i2c", .data = &mt8192_compat },
-+	{ .compatible = "mediatek,mt8365-i2c", .data = &mt8365_compat },
- 	{}
- };
- MODULE_DEVICE_TABLE(of, mtk_i2c_of_match);
++		i2c1: i2c@11008000 {
++			compatible = "mediatek,mt8365-i2c",
++				     "mediatek,mt8168-i2c";
++			reg = <0 0x11008000 0 0xa0>,
++			      <0 0x11000100 0 0x80>;
++			interrupts = <GIC_SPI 29 IRQ_TYPE_LEVEL_LOW>;
++			clock-div = <1>;
++			clocks = <&infracfg CLK_IFR_I2C1_AXI>,
++				 <&infracfg CLK_IFR_AP_DMA>;
++			clock-names = "main", "dma";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			status = "disabled";
++		};
++
++		i2c2: i2c@11009000 {
++			compatible = "mediatek,mt8365-i2c",
++				     "mediatek,mt8168-i2c";
++			reg = <0 0x11009000 0 0xa0>,
++			      <0 0x11000180 0 0x80>;
++			interrupts = <GIC_SPI 30 IRQ_TYPE_LEVEL_LOW>;
++			clock-div = <1>;
++			clocks = <&infracfg CLK_IFR_I2C2_AXI>,
++				 <&infracfg CLK_IFR_AP_DMA>;
++			clock-names = "main", "dma";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			status = "disabled";
++		};
++
++		i2c3: i2c@1100f000 {
++			compatible = "mediatek,mt8365-i2c",
++				     "mediatek,mt8168-i2c";
++			reg = <0 0x1100f000 0 0xa0>,
++			      <0 0x11000200 0 0x80>;
++			interrupts = <GIC_SPI 31 IRQ_TYPE_LEVEL_LOW>;
++			clock-div = <1>;
++			clocks = <&infracfg CLK_IFR_I2C3_AXI>,
++				 <&infracfg CLK_IFR_AP_DMA>;
++			clock-names = "main", "dma";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			status = "disabled";
++		};
++
+ 		spi: spi@1100a000 {
+ 			compatible = "mediatek,mt8365-spi", "mediatek,mt7622-spi";
+ 			reg = <0 0x1100a000 0 0x100>;
 
 -- 
 b4 0.10.1
