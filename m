@@ -4,96 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B10E0C63797
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jan 2023 08:51:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD6A9C3DA78
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jan 2023 08:54:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UgoXPu1A6G8aOhAjG7a8w9p9zygyaf4s9I2TGoeTltI=; b=QJrI8pj6UMqWPk/Wbr2kvApxWt
-	vCy6uZoRuOpXYDO2ApV+cn51W+f0rZfDsnJdR/OtGRrmc8JezZSUh9KjQJ2r1NvRvd5mvvpFi4/UM
-	TyBSc5QZzG6xZGDW8r5zEQ+w/BfoXhPfxMoT/lYVNJ1+14UvKenfSYxUNA5dk4yAYK+pxWaumgWrI
-	Hn0NuH7WqimgkYZfYkNp7pDsUSm24Zm0g/6M0KKn6f092pbeB4s6I1fg3oeYfzlpXGSTMfFiyLpDf
-	Hrh9cGztCMvF2JQD+A9fZQKTHtNJ8mwJi0B9FNXXOdMDlGdh+dkMexiHaEsw4/wqwQdOO3M5ZfB9R
-	w2P6nLLg==;
+	bh=dseOSX2zTH+XeCQ35kHO/8kj0vzRJ47S5eW+pnauFVw=; b=W8t5CrAQO//wVS/1TNDNSeIh0P
+	+WfATwWv6A4GB9AeQcFltO0+pRQi6JAW6qyfbtf5nN6yC847MQjIY90gjHmzRhd7gye7FWEWCXps9
+	sU9U9bYvwzLlg/orhcI+CMETpXWqSH0rF4ybsK85OhfPiXhQMJ1kWZLAOOjTWaHA5uzoLpdaE/EhM
+	+483XRy0zKz2iyGpH+HDj0mV6myMhOp9WkdE0Zq44jitQB4GOybArtaQGJbhJIZuED+b089T3uRYt
+	/AjgJvXuXPLDCV/u2sypOISzmHYrjK5oky/OQFV1/XNp7IMtBufIajkZJ0bv801j5QqEmKnLca0RD
+	A8X80Wug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHhgn-00DOWL-9Y; Tue, 17 Jan 2023 08:51:29 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1pHhjF-00DPaV-2n; Tue, 17 Jan 2023 08:54:01 +0000
+Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHhfI-00DNkZ-VP
-	for linux-mediatek@lists.infradead.org; Tue, 17 Jan 2023 08:50:01 +0000
-Received: by mail-wm1-x335.google.com with SMTP id m5-20020a05600c4f4500b003db03b2559eso1797797wmq.5
-        for <linux-mediatek@lists.infradead.org>; Tue, 17 Jan 2023 00:49:55 -0800 (PST)
+	id 1pHhjC-00DPYl-UJ; Tue, 17 Jan 2023 08:54:00 +0000
+Received: by mail-qv1-xf2c.google.com with SMTP id h10so21190628qvq.7;
+        Tue, 17 Jan 2023 00:53:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=UgoXPu1A6G8aOhAjG7a8w9p9zygyaf4s9I2TGoeTltI=;
-        b=br0AnOeqEeTM0zui1xtg65KTyJzkss2Hnbj0igYV+z0AGaL3ZPigHUjl7LH+iLh9s1
-         UOB99NxhPyHnEsOZVigJagAIQdCNDM2VGavpVH2lMZ3z+yD6qwJEyMoveeDWBxbUqK1F
-         ZKd6b348eIeht3C4jJGN/IKf7ngNYLfIvhM+kYHnXHC3NiJwyEm8Fr6ePhAtv0EJDw9+
-         0lLq1byDElzyt9jUJUycc2iMsgzJFGfmU80f3gJS/4PvmB58O80F1a2Pi/2l5im6rhd8
-         MA+/y6l65ytx5H5LPYhF4dATSTXFK61F+/PKAoEaAe0AOW9chItrcYys7vlS4nVfIBrg
-         pn4w==
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=dseOSX2zTH+XeCQ35kHO/8kj0vzRJ47S5eW+pnauFVw=;
+        b=IN1tCeVLnwqol5mOOyaSKxyI6kXzBL3oblSeLXVIqXyUFgWIwbZ0AEzA8olwW7upIy
+         FObicSGhLmkCghdvzFXSEJAyGxharJCShW7z0r+lEuvRAdFgw/Mxnef/EERBExtq8sMy
+         Mcp+PQsHnyA392QlG4twkaHS5FodAKoH3B3yaJJT0FBlqe7JmvyILW6DXybR86bCuoQC
+         UqoyUTTaZe3pVph9PjUnNC+gdZK/JhrtzzJA5+OSVpLY72U3uaJRq46DnYklrCW6khCa
+         fPiWIzKX0q18Q1gHryK2/LjCQP56sP8q10LYVdVfp1q/DwJiFCOzLG6iIT0dwfrQWPTz
+         2MNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=UgoXPu1A6G8aOhAjG7a8w9p9zygyaf4s9I2TGoeTltI=;
-        b=VFigucslWEk4BcQN1lm+mffJO7+J/3eyF8B329eE0YpOYHBrqCF0eSNznpneA4stT2
-         GIOKJBog/vXghhoFLF7LjEVeeSt+U8C7DOPdVR2jsy4F8ydsBzhAi9lE9ntwNM9IvmVI
-         NvHxkvGvWx5TtG83ws+8PMamsBwD7/q+PF51a1fb5aOP4Pr5GNLlkTzY2F9Tz7pl8bPU
-         sgidgr9ic1quR8pvudLqtUy0BE4cttmJWQM8LgjS0mQoTawcwLctoxzuiR+KEHoQDuja
-         V6GPInKNgzg1NOtNXNEJeBxP2j/nvvbnJTN5pgOUsh6ZG5OUt5fNFgxuwIIOlOVXTTg3
-         VPVQ==
-X-Gm-Message-State: AFqh2kpuHWoTTkqdptoxT3HG6JhvhO7LBmwjadrArta11gKXj402RLGz
-	tzCfW+8ik9A246TAxe2P+Mamtg==
-X-Google-Smtp-Source: AMrXdXuDwjuQIJ9bVydfzGqKXubMAUmMY5yYYHElltf5Pc0ST63jYYv8z3loNVA4Fd2I2eGFzTk8WQ==
-X-Received: by 2002:a05:600c:4928:b0:3da:909f:1f6b with SMTP id f40-20020a05600c492800b003da909f1f6bmr2465111wmp.1.1673945394216;
-        Tue, 17 Jan 2023 00:49:54 -0800 (PST)
-Received: from [127.0.1.1] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.googlemail.com with ESMTPSA id i14-20020a05600c354e00b003d1d5a83b2esm45040928wmq.35.2023.01.17.00.49.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Jan 2023 00:49:53 -0800 (PST)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Tue, 17 Jan 2023 09:49:40 +0100
-Subject: [PATCH 2/4] arm64: dts: mediatek: add i2c support for mt8365 SoC
+        bh=dseOSX2zTH+XeCQ35kHO/8kj0vzRJ47S5eW+pnauFVw=;
+        b=X5k6bIil17w65W1y8qqcL/iZ0LsTq6oKxtlpEGNwqImQA3n6yFR9m7Xsp6j7UoXWyv
+         XteHJiSzV6IDBTFSgAdylYhBAmwdU/nXQQRIHltThPJTjmft2NERgWgsnKN+LFzDzLda
+         AuQaD4WS1oN4GgmZeIJsvhwnfXRcRhdMM4TxKadVYthh8wNDNxGW8NEMgwo9wq1Am3qX
+         L6qmoMGcF2NA0BsRmjWPfpx3YcHKAna+yg+fXUB8q8Ne1feQ7d2lLY9lb0PYr1NiVhBA
+         0BOCv0XPfb/5tVlT2jvjHBmyWZOgkzj7XTnGKnQ7CUq2y0itEgaS7MsAycYu5C2IRR8U
+         nPjQ==
+X-Gm-Message-State: AFqh2kq3jKzzSoX+Sz18bFfjpsj/g27HPO6dR1plvRytE57KhzeVCFue
+	cANUQsK0/tWT2qAsu6Fe6Hf6UFNb5gEPZiX7lFg=
+X-Google-Smtp-Source: AMrXdXvLiqXj9jIN/w78ICHR0nICmfROd8xLwBZS8MBQVeGvCEuFhhD92MzOr0asWEhyUaMDPd3N/hzGbdM64AxxTSk=
+X-Received: by 2002:a0c:f6c2:0:b0:532:2dd4:fea3 with SMTP id
+ d2-20020a0cf6c2000000b005322dd4fea3mr144148qvo.48.1673945635919; Tue, 17 Jan
+ 2023 00:53:55 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20221122-mt8365-i2c-support-v1-2-4aeb7c54c67b@baylibre.com>
-References: <20221122-mt8365-i2c-support-v1-0-4aeb7c54c67b@baylibre.com>
-In-Reply-To: <20221122-mt8365-i2c-support-v1-0-4aeb7c54c67b@baylibre.com>
-To: Rob Herring <robh+dt@kernel.org>, Qii Wang <qii.wang@mediatek.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-i2c@vger.kernel.org, Rob Herring <robh@kernel.org>, Fabien Parent <fparent@baylibre.com>,
- linux-arm-kernel@lists.infradead.org, Alexandre Mergnat <amergnat@baylibre.com>, Kevin Hilman <khilman@baylibre.com>,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-X-Mailer: b4 0.10.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2508; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=pLPRl4jPAYZIqf1fe/JXLH5pg1d46bBPCeqWhQgjHKU=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBjxmEucJi1q1NdT5HmNXnp5kIxA1c+e049A9ok+evg
- 5QXuV6uJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCY8ZhLgAKCRArRkmdfjHURVrmD/
- 4gskZjdw09f2tZ7bUHTkY/CVV7XUZSvc78gwOs2ISy6/sqNimRoXdAbaoO1qZEnZA8x73UFSv2cnNi
- +5FANiQKHS47maGYzC2OIaMnxsmhy8KvLsvsmgt45YoEb8t0LW5Erq8eYEWlB0qW4XzcfMloK2DZBo
- NkTlDS65SDy2FvvGJOyhmSXS0RGUzjnFz2AXv9ATc30Ne3VCoWdMn8t4kdESqovn4qWcxpAspbEX9S
- /vb/CeAquacvmUw90GvgcmZ7lOYWMlir36wYnHRrvpkEEwkhT9ibp4fRljjS9AHD9HvsJBV8aBvlJr
- nq9BkyYFSpmpnJhvDrmDiYlPjJ/uLM8urevXr95JSLe9hL03WuS/NcVgft99n081xCJ6da44ERbDrN
- MwcIeb0Qp78Guz6iICSbmkr0IChMmfZTeSm06oWPL63yLAzA2IbFCqIbe0H0a9CEW8c6k3VVMZAF7X
- 5AhvgKdFJyHKaKlHpkl98w02jfFPRIKSKve0BN3Do0GwmfgicJSDded41vqU9vJ6gMPOvWe7wqVqsg
- Jllv4HfdHSwJFNwsONhbi+jbEPMzxFIFHdxK7A5GyS23UawCdMu9yeth4hWlSN7TO0zd4otLV69q52
- VqcBsbxU2S3VwSZLVsv5piHR5MIGFrontdbYQKgIiU5nwWCzvRK2LU7+0sfw==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
+References: <20220715122903.332535-1-nuno.sa@analog.com> <20220715122903.332535-13-nuno.sa@analog.com>
+ <20220806192048.0ca41cc5@jic23-huawei> <20230116204452.il4gase2szipeexz@SoMainline.org>
+In-Reply-To: <20230116204452.il4gase2szipeexz@SoMainline.org>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Tue, 17 Jan 2023 10:53:19 +0200
+Message-ID: <CAHp75VdX9sFgn9STyzwcDCK1KYbU00ejFNcEP3FVnLk5J=Pktg@mail.gmail.com>
+Subject: Re: [PATCH v3 12/15] iio: adc: qcom-spmi-adc5: convert to device properties
+To: Marijn Suijten <marijn.suijten@somainline.org>
+Cc: Jonathan Cameron <jic23@kernel.org>, =?UTF-8?B?TnVubyBTw6E=?= <nuno.sa@analog.com>, 
+	openbmc@lists.ozlabs.org, linux-imx@nxp.com, 
+	linux-stm32@st-md-mailman.stormreply.com, linux-iio@vger.kernel.org, 
+	linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, 
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, linux-arm-msm@vger.kernel.org, 
+	Gwendal Grignou <gwendal@chromium.org>, Saravanan Sekar <sravanhome@gmail.com>, 
+	Tomer Maimon <tmaimon77@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, 
+	Olivier Moysan <olivier.moysan@foss.st.com>, Tali Perry <tali.perry1@gmail.com>, 
+	Thara Gopinath <thara.gopinath@linaro.org>, Bjorn Andersson <bjorn.andersson@linaro.org>, 
+	Arnd Bergmann <arnd@arndb.de>, Benjamin Fair <benjaminfair@google.com>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Patrick Venture <venture@google.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabrice Gasnier <fabrice.gasnier@foss.st.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, 
+	Benson Leung <bleung@chromium.org>, Nancy Yuen <yuenn@google.com>, 
+	Miquel Raynal <miquel.raynal@bootlin.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Zhang Rui <rui.zhang@intel.com>, 
+	Linus Walleij <linus.walleij@linaro.org>, Christophe Branchereau <cbranchereau@gmail.com>, 
+	Cai Huoqing <cai.huoqing@linux.dev>, Avi Fishman <avifishman70@gmail.com>, 
+	Eugen Hristev <eugen.hristev@microchip.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Lars-Peter Clausen <lars@metafoo.de>, 
+	Guenter Roeck <groeck@chromium.org>, Paul Cercueil <paul@crapouillou.net>, 
+	Claudiu Beznea <claudiu.beznea@microchip.com>, Andy Gross <agross@kernel.org>, 
+	Amit Kucheria <amitk@kernel.org>, Michael Hennerich <Michael.Hennerich@analog.com>, 
+	Haibo Chen <haibo.chen@nxp.com>, Jishnu Prakash <quic_jprakash@quicinc.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230117_004957_055571_88653E71 
-X-CRM114-Status: UNSURE (   9.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230117_005359_005608_A3B6F790 
+X-CRM114-Status: GOOD (  23.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,85 +112,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are four I2C master channels in MT8365 with a same HW architecture.
+On Mon, Jan 16, 2023 at 10:44 PM Marijn Suijten
+<marijn.suijten@somainline.org> wrote:
+>
+> On 2022-08-06 19:20:48, Jonathan Cameron wrote:
+> > On Fri, 15 Jul 2022 14:29:00 +0200
+> > Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
+> >
+> > > Make the conversion to firmware agnostic device properties. As part o=
+f
+> > > the conversion the IIO inkern interface 'of_xlate()' is also converte=
+d to
+> > > 'fwnode_xlate()'. The goal is to completely drop 'of_xlate' and hence=
+ OF
+> > > dependencies from IIO.
+> > >
+> > > Signed-off-by: Nuno S=C3=A1 <nuno.sa@analog.com>
+> > > Acked-by: Linus Walleij <linus.walleij@linaro.org>
+> > > Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
+> > +CC Marijin who happend to post a patch for this driver that I just acc=
+epted
+> > and hence probably has hardware access.  Any chance of a test for this =
+series?
+> >
+> > If not, no problem as this is fairly mechanical and we have testing on =
+some of
+> > the other drivers using the new code.
+> >
+> > I'll probably queue this up in the meantime but it won't end up upstrea=
+m
+> > for a few weeks yet.
+>
+> Jonathan,
+>
+> This CC just surfaced in my inbox while searching for our current
+> discussion around missing labels in qcom-spmi-vadc - and on the side a
+> userspace @xx label name ABI break (in qcom-spmi-adc5) caused by this
+> patch's fwnode_get_name change - we could've caught it if I had not
+> accidentally marked it as read and/or forgot about it.  My apologies.
 
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
- arch/arm64/boot/dts/mediatek/mt8365.dtsi | 60 ++++++++++++++++++++++++++++++++
- 1 file changed, 60 insertions(+)
+Does the following addition to the top of the
+adc5_get_fw_channel_data() fix the issue?
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-index a32f2b7507be..3c2819bd32af 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-@@ -282,6 +282,66 @@ pwm: pwm@11006000 {
- 			clock-names = "top", "main", "pwm1", "pwm2", "pwm3";
- 		};
- 
-+		i2c0: i2c@11007000 {
-+			compatible = "mediatek,mt8365-i2c",
-+				     "mediatek,mt8168-i2c";
-+			reg = <0 0x11007000 0 0xa0>,
-+			      <0 0x11000080 0 0x80>;
-+			interrupts = <GIC_SPI 28 IRQ_TYPE_LEVEL_LOW>;
-+			clock-div = <1>;
-+			clocks = <&infracfg CLK_IFR_I2C0_AXI>,
-+				 <&infracfg CLK_IFR_AP_DMA>;
-+			clock-names = "main", "dma";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		i2c1: i2c@11008000 {
-+			compatible = "mediatek,mt8365-i2c",
-+				     "mediatek,mt8168-i2c";
-+			reg = <0 0x11008000 0 0xa0>,
-+			      <0 0x11000100 0 0x80>;
-+			interrupts = <GIC_SPI 29 IRQ_TYPE_LEVEL_LOW>;
-+			clock-div = <1>;
-+			clocks = <&infracfg CLK_IFR_I2C1_AXI>,
-+				 <&infracfg CLK_IFR_AP_DMA>;
-+			clock-names = "main", "dma";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		i2c2: i2c@11009000 {
-+			compatible = "mediatek,mt8365-i2c",
-+				     "mediatek,mt8168-i2c";
-+			reg = <0 0x11009000 0 0xa0>,
-+			      <0 0x11000180 0 0x80>;
-+			interrupts = <GIC_SPI 30 IRQ_TYPE_LEVEL_LOW>;
-+			clock-div = <1>;
-+			clocks = <&infracfg CLK_IFR_I2C2_AXI>,
-+				 <&infracfg CLK_IFR_AP_DMA>;
-+			clock-names = "main", "dma";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		i2c3: i2c@1100f000 {
-+			compatible = "mediatek,mt8365-i2c",
-+				     "mediatek,mt8168-i2c";
-+			reg = <0 0x1100f000 0 0xa0>,
-+			      <0 0x11000200 0 0x80>;
-+			interrupts = <GIC_SPI 31 IRQ_TYPE_LEVEL_LOW>;
-+			clock-div = <1>;
-+			clocks = <&infracfg CLK_IFR_I2C3_AXI>,
-+				 <&infracfg CLK_IFR_AP_DMA>;
-+			clock-names = "main", "dma";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
- 		spi: spi@1100a000 {
- 			compatible = "mediatek,mt8365-spi", "mediatek,mt7622-spi";
- 			reg = <0 0x1100a000 0 0x100>;
++       name =3D devm_kasprintf(adc->dev, GFP_KERNEL, "%pfwP", fwnode);
++       if (!name)
++               return -ENOMEM;
 
--- 
-b4 0.10.1
+--=20
+With Best Regards,
+Andy Shevchenko
 
