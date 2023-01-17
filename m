@@ -4,69 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A2D1C38142
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jan 2023 23:17:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55003C38147
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jan 2023 23:18:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wO1hSSRqfqnLACJMPscMDWXkiPwtg0os6INSuyLq4lw=; b=eLA3vZqbHX/wBXET9hR0937JDi
-	vc8N9aIwlfZqfJR1gQU2vB6cSerGgA54A4uCysGklgkf7WaFwDtTkK4IqQtelKhl7+ofhCObG4U+g
-	8Z8LJ3Lma6XBxNigWjvFWP4MsWjD2fxahiYMi0tB3AyHgKcaM4wRXh1u9rOyNbIFUMAoeteE2IziM
-	V6EEtFLO0mqqwjMtkBntmr9G2FUWBPpzQyHwd1J53aKjkoCpKMWTViPwFzulX2MA5O4GKSFcX6BCq
-	XTidSBvEt1N8MmZoiSEJaPqB5IIBB4LVM6Evw6eTV5HKtHmKMgC17BVuP28TbC2WuFj7d0Ne1G1pS
-	vUXjHDyA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wzoFsN2BtIwkV7J9p1OybyavGXclmQ9kcPW4uj8vI+4=; b=dpKCJZ6HQA55bMfHwlG9dk23ED
+	4U1lL9f13VoHUzfMidwb/7SAs5HsKMqmd5TGP6KdU3+Tve1awrhIXSX1mugowx5EWRRvsnsJjv/M3
+	/j7C3VTUttDuyVkzgDzLZd8XlP86hvy1Ji6Tu52/ehi9lGXGqCn5qm58rwivEjjn6rtea4w6gHZI6
+	SImsm40rkn9nC4kiBYF0j9nSw3jtB3vu99knoxS7L+kQQXKIFIdPW7y68T+TF+0YwiIo+2GGuqMS6
+	Q6uPOa0b4Ocjlp3HNKfWseFcR4d0NzwwmOZug1b3zImT//PzpylDJ4NxokUHT7YxLesoncHu2987O
+	xWui4eMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHvCY-00GDUB-31; Tue, 17 Jan 2023 23:17:10 +0000
-Received: from phobos.denx.de ([2a01:238:438b:c500:173d:9f52:ddab:ee01])
+	id 1pHvDi-00GDzO-Dl; Tue, 17 Jan 2023 23:18:22 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHvCC-00GDM7-UB; Tue, 17 Jan 2023 23:16:51 +0000
-Received: from tr.lan (ip-86-49-120-218.bb.vodafone.cz [86.49.120.218])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
-	(No client certificate requested)
-	(Authenticated sender: marex@denx.de)
-	by phobos.denx.de (Postfix) with ESMTPSA id 6825A855C0;
-	Wed, 18 Jan 2023 00:16:44 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=denx.de;
-	s=phobos-20191101; t=1673997404;
-	bh=wO1hSSRqfqnLACJMPscMDWXkiPwtg0os6INSuyLq4lw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ByKSUvPRA1u35i+s0mU3XVRD/o+7qINCw/rQIjrLOv9wEOIE2USineigwPurk8csx
-	 BG7Ei5IFgruPsn1zXwTXwvl6+Hpvy4dPodrwUQXTC8Zcw6Tk3bgDw1Wa2/4tJblLE6
-	 XW2al9qBtmtyC5T7ZjP5qYAARerVzmulHrGAGEqf/Y+b4LevZo3KwAkgjwAtpkGnX1
-	 huZTZTiPadoRoUr2BPhmQ1u9RDPlwzxL4AlEwCqV6ilsuF1s5miob6r29NivHXBHog
-	 nEl1wiMSc1F8D7IE0ETqClE2GXWaGDhVafgFYPDsMEwCcebYLuBpIOXMdy0giiLIAq
-	 eT/ns5S7s6Lxg==
-From: Marek Vasut <marex@denx.de>
-To: linux-clk@vger.kernel.org
-Cc: Marek Vasut <marex@denx.de>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	id 1pHvDW-00GDqb-8G; Tue, 17 Jan 2023 23:18:11 +0000
+Received: by mail-ej1-x632.google.com with SMTP id tz11so14748597ejc.0;
+        Tue, 17 Jan 2023 15:17:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=wzoFsN2BtIwkV7J9p1OybyavGXclmQ9kcPW4uj8vI+4=;
+        b=WHkz1zPwXkTNrAiIJUYxeLo3UGJReyuX52LQMNDjwPjA7k3W/kAYzvCsEzteUoEbu4
+         yPAJWqnKYjN3T9Y0xfzCw8HsGJQdEZTqj4u0qMr0hYP9TSroZy6ZGbd1QX0+RpWNR5h/
+         OigdrmABYXR+MFv/Ar3o2IjM9bOQZkEATabOuTvlr4F6PSGsFeKKtNt4P6DfO8grzL8a
+         Wlt6QM8UkV7I4gD+iqf96i0VPn97OK4iwvJSA5WSIRl3e3GhvaJZFO4S+kKSuRBvmNOP
+         8p7Mgj/QnaBU9sQdFLHhnetF3dMl9apL4Ry5w8QJZIcBcBEM2uC+DT6QDtQpH8K0QaS4
+         1+vA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=wzoFsN2BtIwkV7J9p1OybyavGXclmQ9kcPW4uj8vI+4=;
+        b=xF5NujpxvjQHr625J3mtv4utfvvH1L9J33Fs0yorcTHFb+3h7MTsMnieACnQNu+7wo
+         hjBPWa6BttE3UxYKAuo00dijtmLJEdKjIQzT+5Rwia4Jr4SsWit/u8Xee6TIcIQxc2ZP
+         DXRhXmomHB/6FVeRTNrCUDTlksQHQzXg4GL9RFJ9gVSZAQddE3i3ixdCaxRfpCN25Ufq
+         nGH9gfi+mlJvqQaDUlQIp8Scf6Dj7+px3TFJdpJy0fu+6zzO68Qoh/gaEpVyvA0/rSpi
+         Ftf23d/wLG86MZ2s7BaSjC+W0GoHByPj7F3+hs9iHjLc3bEsp5yLZ/804q/5xHRQsDy7
+         2HOg==
+X-Gm-Message-State: AFqh2kppqar0Y80yv0kkKg9aMahXYMp09hX49q8N9PhMNUoBdHF6Ywj8
+	cDJF+YgoV3HJ1dVAb/iJanY/ndk2iAY=
+X-Google-Smtp-Source: AMrXdXsHkUY7XfIE1B2bjhbcIkUoum8bNrkbJ1XX/wIp0s+lBwNIEiBdSnR4Jk843e+5/9ZDSuNesw==
+X-Received: by 2002:a17:906:358f:b0:829:6064:bc52 with SMTP id o15-20020a170906358f00b008296064bc52mr4616096ejb.74.1673997473518;
+        Tue, 17 Jan 2023 15:17:53 -0800 (PST)
+Received: from skbuf ([188.27.184.249])
+        by smtp.gmail.com with ESMTPSA id g18-20020a1709061c9200b007c1675d2626sm13977440ejh.96.2023.01.17.15.17.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 17 Jan 2023 15:17:53 -0800 (PST)
+Date: Wed, 18 Jan 2023 01:17:50 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: "Hans J. Schultz" <netdev@kapio-technology.com>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>, Eric Dumazet <edumazet@google.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	"maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Stephen Boyd <sboyd@kernel.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-riscv@lists.infradead.org
-Subject: [PATCH v2 2/2] clk: si521xx: Clock driver for Skyworks Si521xx I2C PCIe clock generators
-Date: Wed, 18 Jan 2023 00:16:26 +0100
-Message-Id: <20230117231626.134588-2-marex@denx.de>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230117231626.134588-1-marex@denx.de>
-References: <20230117231626.134588-1-marex@denx.de>
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
+	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
+	Russell King <linux@armlinux.org.uk>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	open list <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	"open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>,
+	"moderated list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>
+Subject: Re: [RFC PATCH net-next 2/5] net: dsa: propagate flags down towards
+ drivers
+Message-ID: <20230117231750.r5jr4hwvpadgopmf@skbuf>
+References: <20230117185714.3058453-1-netdev@kapio-technology.com>
+ <20230117185714.3058453-3-netdev@kapio-technology.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Virus-Scanned: clamav-milter 0.103.6 at phobos.denx.de
-X-Virus-Status: Clean
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230117185714.3058453-3-netdev@kapio-technology.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230117_151649_802616_9AAA88C1 
-X-CRM114-Status: GOOD (  30.19  )
+X-CRM114-CacheID: sfid-20230117_151810_333182_2CEA412E 
+X-CRM114-Status: GOOD (  17.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,468 +112,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add driver for the Skyworks Si521xx PCIe clock generators. Supported models
-are Si52144/Si52146/Si52147, tested model is Si52144. It should be possible
-to add Si5213x series as well.
+On Tue, Jan 17, 2023 at 07:57:11PM +0100, Hans J. Schultz wrote:
+> Dynamic FDB flag needs to be propagated through the DSA layer to be
+> added to drivers.
+> Use a u16 for fdb flags for future use, so that other flags can also be
+> sent the same way without having to change function interfaces.
+> 
+> Signed-off-by: Hans J. Schultz <netdev@kapio-technology.com>
+> ---
+> @@ -3364,6 +3368,7 @@ static int dsa_slave_fdb_event(struct net_device *dev,
+>  	struct dsa_port *dp = dsa_slave_to_port(dev);
+>  	bool host_addr = fdb_info->is_local;
+>  	struct dsa_switch *ds = dp->ds;
+> +	u16 fdb_flags = 0;
+>  
+>  	if (ctx && ctx != dp)
+>  		return 0;
+> @@ -3410,6 +3415,9 @@ static int dsa_slave_fdb_event(struct net_device *dev,
+>  		   orig_dev->name, fdb_info->addr, fdb_info->vid,
+>  		   host_addr ? " as host address" : "");
+>  
+> +	if (fdb_info->is_dyn)
+> +		fdb_flags |= DSA_FDB_FLAG_DYNAMIC;
+> +
 
-Signed-off-by: Marek Vasut <marex@denx.de>
----
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: Marek Vasut <marex@denx.de>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Michael Turquette <mturquette@baylibre.com>
-Cc: Palmer Dabbelt <palmer@dabbelt.com>
-Cc: Paul Walmsley <paul.walmsley@sifive.com>
-Cc: Rob Herring <robh+dt@kernel.org>
-Cc: Stephen Boyd <sboyd@kernel.org>
-Cc: devicetree@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-riscv@lists.infradead.org
-To: linux-clk@vger.kernel.org
----
-V2: - Include bitfield.h to pull in FIELD_PREP macro
----
- drivers/clk/Kconfig       |   9 +
- drivers/clk/Makefile      |   1 +
- drivers/clk/clk-si521xx.c | 395 ++++++++++++++++++++++++++++++++++++++
- 3 files changed, 405 insertions(+)
- create mode 100644 drivers/clk/clk-si521xx.c
+Hmm, I don't think this is going to work with the assisted_learning_on_cpu_port
+feature ("if (switchdev_fdb_is_dynamically_learned(fdb_info))"). The reason being
+that a "dynamically learned" FDB entry (defined as this):
 
-diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
-index d79905f3e1744..b853fc60d118d 100644
---- a/drivers/clk/Kconfig
-+++ b/drivers/clk/Kconfig
-@@ -368,6 +368,15 @@ config COMMON_CLK_RS9_PCIE
- 	  This driver supports the Renesas 9-series PCIe clock generator
- 	  models 9FGV/9DBV/9DMV/9FGL/9DML/9QXL/9SQ.
- 
-+config COMMON_CLK_SI521XX
-+	tristate "Clock driver for SkyWorks Si521xx PCIe clock generators"
-+	depends on I2C
-+	depends on OF
-+	select REGMAP_I2C
-+	help
-+	  This driver supports the SkyWorks Si521xx PCIe clock generator
-+	  models Si52144/Si52146/Si52147.
-+
- config COMMON_CLK_VC5
- 	tristate "Clock driver for IDT VersaClock 5,6 devices"
- 	depends on I2C
-diff --git a/drivers/clk/Makefile b/drivers/clk/Makefile
-index e3ca0d058a256..5e2c225f040c4 100644
---- a/drivers/clk/Makefile
-+++ b/drivers/clk/Makefile
-@@ -72,6 +72,7 @@ obj-$(CONFIG_COMMON_CLK_TPS68470)      += clk-tps68470.o
- obj-$(CONFIG_CLK_TWL6040)		+= clk-twl6040.o
- obj-$(CONFIG_ARCH_VT8500)		+= clk-vt8500.o
- obj-$(CONFIG_COMMON_CLK_RS9_PCIE)	+= clk-renesas-pcie.o
-+obj-$(CONFIG_COMMON_CLK_SI521XX)	+= clk-si521xx.o
- obj-$(CONFIG_COMMON_CLK_VC5)		+= clk-versaclock5.o
- obj-$(CONFIG_COMMON_CLK_VC7)		+= clk-versaclock7.o
- obj-$(CONFIG_COMMON_CLK_WM831X)		+= clk-wm831x.o
-diff --git a/drivers/clk/clk-si521xx.c b/drivers/clk/clk-si521xx.c
-new file mode 100644
-index 0000000000000..de952a6999479
---- /dev/null
-+++ b/drivers/clk/clk-si521xx.c
-@@ -0,0 +1,395 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * Driver for Skyworks Si521xx PCIe clock generator driver
-+ *
-+ * The following series can be supported:
-+ *   - Si52144 - 4x DIFF
-+ *   - Si52146 - 6x DIFF
-+ *   - Si52147 - 9x DIFF
-+ * Currently tested:
-+ *   - Si52144
-+ *
-+ * Copyright (C) 2022 Marek Vasut <marex@denx.de>
-+ */
-+
-+#include <linux/bitfield.h>
-+#include <linux/bitrev.h>
-+#include <linux/clk-provider.h>
-+#include <linux/i2c.h>
-+#include <linux/mod_devicetable.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/regmap.h>
-+
-+/* OE1 and OE2 register */
-+#define SI521XX_REG_OE(n)			(((n) & 0x1) + 1)
-+#define SI521XX_REG_ID				0x3
-+#define SI521XX_REG_ID_PROG			GENMASK(7, 4)
-+#define SI521XX_REG_ID_VENDOR			GENMASK(3, 0)
-+#define SI521XX_REG_BC				0x4
-+#define SI521XX_REG_DA				0x5
-+#define SI521XX_REG_DA_AMP_SEL			BIT(7)
-+#define SI521XX_REG_DA_AMP_MASK			GENMASK(6, 4)
-+#define SI521XX_REG_DA_AMP_MIN			300000
-+#define SI521XX_REG_DA_AMP_DEFAULT		800000
-+#define SI521XX_REG_DA_AMP_MAX			1000000
-+#define SI521XX_REG_DA_AMP_STEP			100000
-+#define SI521XX_REG_DA_AMP(UV)			\
-+	FIELD_PREP(SI521XX_REG_DA_AMP_MASK,	\
-+		   ((UV) - SI521XX_REG_DA_AMP_MIN) / SI521XX_REG_DA_AMP_STEP)
-+#define SI521XX_REG_DA_UNKNOWN			BIT(3)	/* Always set */
-+
-+/* Count of populated OE bits in control register ref, 1 and 2 */
-+#define SI521XX_OE_MAP(cr1, cr2)	(((cr2) << 8) | (cr1))
-+#define SI521XX_OE_MAP_GET_OE(oe, map)	(((map) >> (((oe) - 1) * 8)) & 0xff)
-+
-+#define SI521XX_DIFF_MULT	4
-+#define SI521XX_DIFF_DIV	1
-+
-+/* Supported Skyworks Si521xx models. */
-+enum si521xx_model {
-+	SI52144 = 0x44,
-+	SI52146 = 0x46,
-+	SI52147 = 0x47,
-+};
-+
-+struct si521xx;
-+
-+struct si_clk {
-+	struct clk_hw		hw;
-+	struct si521xx		*si;
-+	u8			reg;
-+	u8			bit;
-+};
-+
-+struct si521xx {
-+	struct i2c_client	*client;
-+	struct regmap		*regmap;
-+	struct si_clk		clk_dif[9];
-+	u16			chip_info;
-+	u8			pll_amplitude;
-+};
-+
-+/*
-+ * Si521xx i2c regmap
-+ */
-+static const struct regmap_range si521xx_readable_ranges[] = {
-+	regmap_reg_range(SI521XX_REG_OE(0), SI521XX_REG_DA),
-+};
-+
-+static const struct regmap_access_table si521xx_readable_table = {
-+	.yes_ranges = si521xx_readable_ranges,
-+	.n_yes_ranges = ARRAY_SIZE(si521xx_readable_ranges),
-+};
-+
-+static const struct regmap_range si521xx_writeable_ranges[] = {
-+	regmap_reg_range(SI521XX_REG_OE(0), SI521XX_REG_OE(1)),
-+	regmap_reg_range(SI521XX_REG_BC, SI521XX_REG_DA),
-+};
-+
-+static const struct regmap_access_table si521xx_writeable_table = {
-+	.yes_ranges = si521xx_writeable_ranges,
-+	.n_yes_ranges = ARRAY_SIZE(si521xx_writeable_ranges),
-+};
-+
-+static int si521xx_regmap_i2c_write(void *context, unsigned int reg,
-+				    unsigned int val)
-+{
-+	struct i2c_client *i2c = context;
-+	const u8 data[3] = { reg, 1, val };
-+	const int count = ARRAY_SIZE(data);
-+	int ret;
-+
-+	ret = i2c_master_send(i2c, data, count);
-+	if (ret == count)
-+		return 0;
-+	else if (ret < 0)
-+		return ret;
-+	else
-+		return -EIO;
-+}
-+
-+static int si521xx_regmap_i2c_read(void *context, unsigned int reg,
-+				   unsigned int *val)
-+{
-+	struct i2c_client *i2c = context;
-+	struct i2c_msg xfer[2];
-+	u8 txdata = reg;
-+	u8 rxdata[2];
-+	int ret;
-+
-+	xfer[0].addr = i2c->addr;
-+	xfer[0].flags = 0;
-+	xfer[0].len = 1;
-+	xfer[0].buf = (void *)&txdata;
-+
-+	xfer[1].addr = i2c->addr;
-+	xfer[1].flags = I2C_M_RD;
-+	xfer[1].len = 2;
-+	xfer[1].buf = (void *)rxdata;
-+
-+	ret = i2c_transfer(i2c->adapter, xfer, 2);
-+	if (ret < 0)
-+		return ret;
-+	if (ret != 2)
-+		return -EIO;
-+
-+	/*
-+	 * Byte 0 is transfer length, which is always 1 due
-+	 * to BCP register programming to 1 in si521xx_probe(),
-+	 * ignore it and use data from Byte 1.
-+	 */
-+	*val = rxdata[1];
-+	return 0;
-+}
-+
-+static const struct regmap_config si521xx_regmap_config = {
-+	.reg_bits = 8,
-+	.val_bits = 8,
-+	.cache_type = REGCACHE_NONE,
-+	.max_register = SI521XX_REG_DA,
-+	.rd_table = &si521xx_readable_table,
-+	.wr_table = &si521xx_writeable_table,
-+	.reg_write = si521xx_regmap_i2c_write,
-+	.reg_read = si521xx_regmap_i2c_read,
-+};
-+
-+static unsigned long si521xx_diff_recalc_rate(struct clk_hw *hw,
-+					      unsigned long parent_rate)
-+{
-+	unsigned long long rate;
-+
-+	rate = (unsigned long long)parent_rate * SI521XX_DIFF_MULT;
-+	do_div(rate, SI521XX_DIFF_DIV);
-+	return (unsigned long)rate;
-+}
-+
-+static long si521xx_diff_round_rate(struct clk_hw *hw, unsigned long rate,
-+				    unsigned long *prate)
-+{
-+	unsigned long best_parent;
-+
-+	best_parent = (rate / SI521XX_DIFF_MULT) * SI521XX_DIFF_DIV;
-+	*prate = clk_hw_round_rate(clk_hw_get_parent(hw), best_parent);
-+
-+	return (*prate / SI521XX_DIFF_DIV) * SI521XX_DIFF_MULT;
-+}
-+
-+static int si521xx_diff_set_rate(struct clk_hw *hw, unsigned long rate,
-+				 unsigned long parent_rate)
-+{
-+	/*
-+	 * We must report success but we can do so unconditionally because
-+	 * si521xx_diff_round_rate returns values that ensure this call is a
-+	 * nop.
-+	 */
-+
-+	return 0;
-+}
-+
-+#define to_si521xx_clk(_hw) container_of(_hw, struct si_clk, hw)
-+
-+static int si521xx_diff_prepare(struct clk_hw *hw)
-+{
-+	struct si_clk *si_clk = to_si521xx_clk(hw);
-+	struct si521xx *si = si_clk->si;
-+
-+	regmap_set_bits(si->regmap, SI521XX_REG_OE(si_clk->reg), si_clk->bit);
-+
-+	return 0;
-+}
-+
-+static void si521xx_diff_unprepare(struct clk_hw *hw)
-+{
-+	struct si_clk *si_clk = to_si521xx_clk(hw);
-+	struct si521xx *si = si_clk->si;
-+
-+	regmap_clear_bits(si->regmap, SI521XX_REG_OE(si_clk->reg), si_clk->bit);
-+}
-+
-+const struct clk_ops si521xx_diff_clk_ops = {
-+	.round_rate	= si521xx_diff_round_rate,
-+	.set_rate	= si521xx_diff_set_rate,
-+	.recalc_rate	= si521xx_diff_recalc_rate,
-+	.prepare	= si521xx_diff_prepare,
-+	.unprepare	= si521xx_diff_unprepare,
-+};
-+
-+static int si521xx_get_common_config(struct si521xx *si)
-+{
-+	struct i2c_client *client = si->client;
-+	struct device_node *np = client->dev.of_node;
-+	unsigned int amp;
-+	int ret;
-+
-+	/* Set defaults */
-+	si->pll_amplitude = SI521XX_REG_DA_AMP(SI521XX_REG_DA_AMP_DEFAULT);
-+
-+	/* Output clock amplitude */
-+	ret = of_property_read_u32(np, "skyworks,out-amplitude-microvolt",
-+				   &amp);
-+	if (!ret) {
-+		if (amp < SI521XX_REG_DA_AMP_MIN || amp > SI521XX_REG_DA_AMP_MAX ||
-+		    amp % SI521XX_REG_DA_AMP_STEP) {
-+			return dev_err_probe(&client->dev, -EINVAL,
-+					     "Invalid skyworks,out-amplitude-microvolt value\n");
-+		}
-+		si->pll_amplitude = SI521XX_REG_DA_AMP(amp);
-+	}
-+
-+	return 0;
-+}
-+
-+static void si521xx_update_config(struct si521xx *si)
-+{
-+	/* If amplitude is non-default, update it. */
-+	if (si->pll_amplitude == SI521XX_REG_DA_AMP(SI521XX_REG_DA_AMP_DEFAULT))
-+		return;
-+
-+	regmap_update_bits(si->regmap, SI521XX_REG_DA,
-+			   SI521XX_REG_DA_AMP_MASK, si->pll_amplitude);
-+}
-+
-+static void si521xx_diff_idx_to_reg_bit(const u16 chip_info, const int idx,
-+					struct si_clk *clk)
-+{
-+	unsigned long mask;
-+	int oe, b, ctr = 0;
-+
-+	for (oe = 1; oe <= 2; oe++) {
-+		mask = bitrev8(SI521XX_OE_MAP_GET_OE(oe, chip_info));
-+		for_each_set_bit(b, &mask, 8) {
-+			if (ctr++ != idx)
-+				continue;
-+			clk->reg = SI521XX_REG_OE(oe);
-+			clk->bit = 7 - b;
-+			return;
-+		}
-+	}
-+}
-+
-+static struct clk_hw *
-+si521xx_of_clk_get(struct of_phandle_args *clkspec, void *data)
-+{
-+	struct si521xx *si = data;
-+	unsigned int idx = clkspec->args[0];
-+
-+	return &si->clk_dif[idx].hw;
-+}
-+
-+static int si521xx_probe(struct i2c_client *client)
-+{
-+	const u16 chip_info = (u16)(uintptr_t)device_get_match_data(&client->dev);
-+	const struct clk_parent_data clk_parent_data = { .index = 0 };
-+	struct si521xx *si;
-+	unsigned char name[6] = "DIFF0";
-+	struct clk_init_data init = {};
-+	int i, ret;
-+
-+	if (!chip_info)
-+		return -EINVAL;
-+
-+	si = devm_kzalloc(&client->dev, sizeof(*si), GFP_KERNEL);
-+	if (!si)
-+		return -ENOMEM;
-+
-+	i2c_set_clientdata(client, si);
-+	si->client = client;
-+
-+	/* Fetch common configuration from DT (if specified) */
-+	ret = si521xx_get_common_config(si);
-+	if (ret)
-+		return ret;
-+
-+	si->regmap = devm_regmap_init(&client->dev, NULL, client,
-+				      &si521xx_regmap_config);
-+	if (IS_ERR(si->regmap))
-+		return dev_err_probe(&client->dev, PTR_ERR(si->regmap),
-+				     "Failed to allocate register map\n");
-+
-+	/* Always read back 1 Byte via I2C */
-+	ret = regmap_write(si->regmap, SI521XX_REG_BC, 1);
-+	if (ret < 0)
-+		return ret;
-+
-+	/* Register clock */
-+	for (i = 0; i < hweight16(chip_info); i++) {
-+		memset(&init, 0, sizeof(init));
-+		snprintf(name, 6, "DIFF%d", i);
-+		init.name = name;
-+		init.ops = &si521xx_diff_clk_ops;
-+		init.parent_data = &clk_parent_data;
-+		init.num_parents = 1;
-+		init.flags = CLK_SET_RATE_PARENT;
-+
-+		si->clk_dif[i].hw.init = &init;
-+		si->clk_dif[i].si = si;
-+
-+		si521xx_diff_idx_to_reg_bit(chip_info, i, &si->clk_dif[i]);
-+
-+		ret = devm_clk_hw_register(&client->dev, &si->clk_dif[i].hw);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	ret = devm_of_clk_add_hw_provider(&client->dev, si521xx_of_clk_get, si);
-+	if (!ret)
-+		si521xx_update_config(si);
-+
-+	return ret;
-+}
-+
-+static int __maybe_unused si521xx_suspend(struct device *dev)
-+{
-+	struct si521xx *si = dev_get_drvdata(dev);
-+
-+	regcache_cache_only(si->regmap, true);
-+	regcache_mark_dirty(si->regmap);
-+
-+	return 0;
-+}
-+
-+static int __maybe_unused si521xx_resume(struct device *dev)
-+{
-+	struct si521xx *si = dev_get_drvdata(dev);
-+	int ret;
-+
-+	regcache_cache_only(si->regmap, false);
-+	ret = regcache_sync(si->regmap);
-+	if (ret)
-+		dev_err(dev, "Failed to restore register map: %d\n", ret);
-+	return ret;
-+}
-+
-+static const struct i2c_device_id si521xx_id[] = {
-+	{ "si52144", .driver_data = SI521XX_OE_MAP(0x5, 0xc0) },
-+	{ "si52146", .driver_data = SI521XX_OE_MAP(0x15, 0xe0) },
-+	{ "si52147", .driver_data = SI521XX_OE_MAP(0x17, 0xf8) },
-+	{ }
-+};
-+MODULE_DEVICE_TABLE(i2c, si521xx_id);
-+
-+static const struct of_device_id clk_si521xx_of_match[] = {
-+	{ .compatible = "skyworks,si52144", .data = (void *)SI521XX_OE_MAP(0x5, 0xc0) },
-+	{ .compatible = "skyworks,si52146", .data = (void *)SI521XX_OE_MAP(0x15, 0xe0) },
-+	{ .compatible = "skyworks,si52147", .data = (void *)SI521XX_OE_MAP(0x15, 0xf8) },
-+	{ }
-+};
-+MODULE_DEVICE_TABLE(of, clk_si521xx_of_match);
-+
-+static SIMPLE_DEV_PM_OPS(si521xx_pm_ops, si521xx_suspend, si521xx_resume);
-+
-+static struct i2c_driver si521xx_driver = {
-+	.driver = {
-+		.name = "clk-si521xx",
-+		.pm	= &si521xx_pm_ops,
-+		.of_match_table = clk_si521xx_of_match,
-+	},
-+	.probe_new	= si521xx_probe,
-+	.id_table	= si521xx_id,
-+};
-+module_i2c_driver(si521xx_driver);
-+
-+MODULE_AUTHOR("Marek Vasut <marex@denx.de>");
-+MODULE_DESCRIPTION("Skyworks Si521xx PCIe clock generator driver");
-+MODULE_LICENSE("GPL");
--- 
-2.39.0
+static inline bool
+switchdev_fdb_is_dynamically_learned(const struct switchdev_notifier_fdb_info *fdb_info)
+{
+	return !fdb_info->added_by_user && !fdb_info->is_local;
+}
 
+is also dynamic in the DSA_FDB_FLAG_DYNAMIC sense. But we install a
+static FDB entry for it on the CPU port.
+
+And in your follow-up patch 3/5, you make all drivers except mv88e6xxx
+ignore all DSA_FDB_FLAG_DYNAMIC entries (including the ones snooped from
+address learning on software interfaces). So this breaks those drivers
+which don't implement DSA_FDB_FLAG_DYNAMIC but do set ds->assisted_learning_on_cpu_port
+to true.
+
+I think you also want to look at the added_by_user flag to disambiguate
+between a dynamic FDB entry added from learning (which it's ok to
+offload as static, because software ageing will remove it) and one added
+by the user.
+
+>  	INIT_WORK(&switchdev_work->work, dsa_slave_switchdev_event_work);
+>  	switchdev_work->event = event;
+>  	switchdev_work->dev = dev;
+> @@ -3418,6 +3426,7 @@ static int dsa_slave_fdb_event(struct net_device *dev,
+>  	ether_addr_copy(switchdev_work->addr, fdb_info->addr);
+>  	switchdev_work->vid = fdb_info->vid;
+>  	switchdev_work->host_addr = host_addr;
+> +	switchdev_work->fdb_flags = fdb_flags;
+>  
+>  	dsa_schedule_work(&switchdev_work->work);
+>  
 
