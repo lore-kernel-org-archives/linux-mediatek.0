@@ -4,79 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BF89C63797
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jan 2023 12:39:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECB60C3DA78
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jan 2023 12:50:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KRKlyrWmfJlglnzUD4Wpu2MBTD+1V3Zf1U7PgFhOFmk=; b=i7vJNLg3cp1k6aZCIl7RJuyDFi
-	ZcI6J1KQxusz5PfkqEOHOCeWtZ/TRKkafCzu7Np9XTSXbrKhbYkflOWPDs/aSP5Pb4bj252gk/v4/
-	rtmnaajaGSJ1Tdj46av121OQtGVYwr0acoHaU/xPJCziL+roGh2P2ugn9F2/jOmxFEm0g/Xs07u6W
-	5d+L1I7wG8bFTd+IKVv40Z9IslJDrtG8UDMX8ZLNBRKYl076xDMJCExOp+hK69XZ4CCLC8bHfcZ8r
-	sk/IYKvq/9gWLAdZTmsnGTi6QxSH2qi+VbfNiri+hb8OEQ6cnXf3Gec7zBQC7rwItl7dJfqQM1PYX
-	48akAvxQ==;
+	bh=gA1T1mkTnxN4dRbzlJUTkdSXzutk+n2w+xhsIWJ6kIA=; b=x8krG9MmPdgqE5s00Y6aXRpapx
+	JgWsOLFjCH/S4IgMB3cV2kIDl0ZYg2HO2SNTDqjlQrUgzs+UPOy9BKIwdKrEZUYwXWV0AceUahZoW
+	PVCvrpHOEyGt1Afas6qn/zNyTxoe9CTu82zi8r9ns+Ski8YrdVpfxeW8x3y5bMMbRUarKdnI2nl5b
+	mzcQzJNMWBJOxe9PtpQW7umDYDJZuSqCJQN3TZAjmBcnJD8N+CTFfNQ5mR5Ics6+DUoXuTSUoKXHt
+	DEeZzXfscgAMtfEF2dwaE3M0c/M0j3SlmVyO5cDiyd5rXAJqYpQlANzKHr2N4++f9z8IsDYNdUqhm
+	IZTTkzmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHlFG-00EC43-Nx; Tue, 17 Jan 2023 12:39:18 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1pHlPm-00EETc-1d; Tue, 17 Jan 2023 12:50:10 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHlF5-00EC0k-Ti; Tue, 17 Jan 2023 12:39:09 +0000
-Received: from [192.168.1.15] (91-154-32-225.elisa-laajakaista.fi [91.154.32.225])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B5E8310C;
-	Tue, 17 Jan 2023 13:38:59 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1673959141;
-	bh=0xanUWyMoxJnvXqqNZ5UOGy3oyg6sQdr/aJLg0bLmX0=;
+	id 1pHlPV-00EEMS-If; Tue, 17 Jan 2023 12:49:55 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D51126602D6D;
+	Tue, 17 Jan 2023 12:49:47 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1673959788;
+	bh=2f4/mH0AmuS+686ZhgQepdDKGjjvbP5co+SkciQwZ54=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=lhXA6EOBtju3hz7RVGApa3gFkm8IjwyEevWIttJjwuSssA6tWWX3VMk4dP6KCwshf
-	 D1TXAw5l8b9t1Vd5W0sbVT1fBO26Skg59JiGVMd89TgWhDkXbpcp0S0PTFKKS9B67y
-	 fFirV+o2rzHN81rIAuhffeTrNvXXekunotwKsK54=
-Message-ID: <808e831f-4282-0e58-ebb2-2f556aaeaca4@ideasonboard.com>
-Date: Tue, 17 Jan 2023 14:38:57 +0200
+	b=fREZ3JJ9lELJEDVXlMRtWynjzQRr2cSZa0ufDIp6MWMx8eeAK2KZ50mD5cs0LkuDz
+	 GLgFa9JaukEKBjYibCrFl91X5+Bt+mCD3BskgiPHx1ChgYmpab+8ZuDuEPrQf5sKvs
+	 FdGiubXww7SzlAclSd/fFAEVujBXmFZXCAIgyFhmKJyvCYmjy6x6hhgwDs3P+tgKcO
+	 /rh5LR2CAKS/iXmSm3yPgDz1meuRil3K9XCRwYkXC6fRBdp6m2wK5fU3P8wCSQZAAU
+	 g42aoPD54UT8zWIXGMvbrfY0a7cGd2jU2Dn9qkXpttLXJZNpwcmDzvIsPREVndf2ip
+	 AO7Is0EoLOZ7A==
+Message-ID: <7a6522ef-7cf7-808f-8be4-07cf5567d18a@collabora.com>
+Date: Tue, 17 Jan 2023 13:49:44 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [RFC PATCH 3/4] dt-bindings: panel: Introduce dual-link LVDS
- panel
+ Thunderbird/102.6.0
+Subject: Re: [PATCH 4/4] i2c: i2c-mt65xx: add MT8365 SoC support
 Content-Language: en-US
-To: Aradhya Bhatia <a-bhatia1@ti.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Rob Herring <robh+dt@kernel.org>,
+To: Alexandre Mergnat <amergnat@baylibre.com>,
+ Rob Herring <robh+dt@kernel.org>, Qii Wang <qii.wang@mediatek.com>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Jyri Sarha <jyri.sarha@iki.fi>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>,
- Maxime Ripard <maxime@cerno.tech>, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>,
- Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, Palmer Dabbelt
- <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Matthias Brugger <matthias.bgg@gmail.com>, Guo Ren <guoren@kernel.org>
-Cc: DRI Development List <dri-devel@lists.freedesktop.org>,
- Devicetree List <devicetree@vger.kernel.org>,
- Linux Kernel List <linux-kernel@vger.kernel.org>,
- Linux RISC-V List <linux-riscv@lists.infradead.org>,
- Linux ARM Kernel List <linux-arm-kernel@lists.infradead.org>,
- Linux Mediatek List <linux-mediatek@lists.infradead.org>,
- Linux C-SKY Arch List <linux-csky@vger.kernel.org>,
- Nishanth Menon <nm@ti.com>, Vignesh Raghavendra <vigneshr@ti.com>,
- Rahul T R <r-ravikumar@ti.com>, Devarsh Thakkar <devarsht@ti.com>,
- Jai Luthra <j-luthra@ti.com>, Jayesh Choudhary <j-choudhary@ti.com>
-References: <20230103064615.5311-1-a-bhatia1@ti.com>
- <20230103064615.5311-4-a-bhatia1@ti.com>
- <09f1ca83-c7d5-a186-6fa6-09cdd7a0b9cc@collabora.com>
- <431ddd82-055b-2526-3d5e-f6563e48d264@ti.com>
-From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-In-Reply-To: <431ddd82-055b-2526-3d5e-f6563e48d264@ti.com>
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-i2c@vger.kernel.org, Rob Herring <robh@kernel.org>,
+ Fabien Parent <fparent@baylibre.com>, linux-arm-kernel@lists.infradead.org,
+ Kevin Hilman <khilman@baylibre.com>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+References: <20221122-mt8365-i2c-support-v1-0-4aeb7c54c67b@baylibre.com>
+ <20221122-mt8365-i2c-support-v1-4-4aeb7c54c67b@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221122-mt8365-i2c-support-v1-4-4aeb7c54c67b@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230117_043908_177615_878225DE 
-X-CRM114-Status: GOOD (  25.83  )
+X-CRM114-CacheID: sfid-20230117_044953_795306_A838DB0C 
+X-CRM114-Status: GOOD (  17.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,146 +79,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09/01/2023 18:21, Aradhya Bhatia wrote:
-> Hi Angelo,
+Il 17/01/23 09:49, Alexandre Mergnat ha scritto:
+> From: Fabien Parent <fparent@baylibre.com>
 > 
-> Thanks for taking a look at the patches!
+> Add support for I2C on MT8365 SoCs.
 > 
-> On 03-Jan-23 17:21, AngeloGioacchino Del Regno wrote:
->> Il 03/01/23 07:46, Aradhya Bhatia ha scritto:
->>> Dual-link LVDS interfaces have 2 links, with even pixels traveling on
->>> one link, and odd pixels on the other. These panels are also generic in
->>> nature, with no documented constraints, much like their single-link
->>> counterparts, "panel-lvds".
->>>
->>> Add a new compatible, "panel-dual-lvds", and a dt-binding document for
->>> these panels.
->>>
->>> Signed-off-by: Aradhya Bhatia <a-bhatia1@ti.com>
->>> ---
->>>   .../display/panel/panel-dual-lvds.yaml        | 157 ++++++++++++++++++
->>>   MAINTAINERS                                   |   1 +
->>>   2 files changed, 158 insertions(+)
->>>   create mode 100644 
->>> Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
->>>
->>> diff --git 
->>> a/Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml b/Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
->>> new file mode 100644
->>> index 000000000000..88a7aa2410be
->>> --- /dev/null
->>> +++ 
->>> b/Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
->>> @@ -0,0 +1,157 @@
->>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->>> +%YAML 1.2
->>> +---
->>> +$id: http://devicetree.org/schemas/display/panel/panel-dual-lvds.yaml#
->>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->>> +
->>> +title: Generic Dual-Link LVDS Display Panel
->>> +
->>> +maintainers:
->>> +  - Aradhya Bhatia <a-bhatia1@ti.com>
->>> +  - Thierry Reding <thierry.reding@gmail.com>
->>> +
->>> +description: |
->>> +  A dual-LVDS interface is a dual-link connection with the even pixels
->>> +  traveling on one link, and the odd pixels traveling on the other.
->>> +
->>> +allOf:
->>> +  - $ref: panel-common.yaml#
->>> +  - $ref: /schemas/display/lvds.yaml/#
->>> +
->>> +properties:
->>> +  compatible:
->>> +    oneOf:
->>> +      - items:
->>> +          - enum:
->>> +              - lincolntech,lcd185-101ct
->>> +              - microtips,13-101hieb0hf0-s
->>> +          - const: panel-dual-lvds
->>> +      - const: panel-dual-lvds
->>> +
->>> +  ports:
->>> +    $ref: /schemas/graph.yaml#/properties/ports
->>> +
->>> +    properties:
->>> +      port@0:
->>> +        $ref: /schemas/graph.yaml#/$defs/port-base
->>> +        unevaluatedProperties: false
->>> +        description: The sink for first set of LVDS pixels.
->>> +
->>> +        properties:
->>> +          dual-lvds-odd-pixels:
->>> +            type: boolean
->>> +
->>> +          dual-lvds-even-pixels:
->>> +            type: boolean
->>> +
->>> +        oneOf:
->>> +          - required: [dual-lvds-odd-pixels]
->>
->> One question: why do we need a "panel-dual-lvds" compatible?
->> A Dual-LVDS panel is a LVDS panel using two ports, hence still a 
->> panel-lvds.
->>
->> If you're doing this to clearly distinguish, for human readability 
->> purposes,
->> single-link vs dual-link panels, I think that this would still be 
->> clear even
->> if we use panel-lvds alone because dual-link panels, as you wrote in this
->> binding, does *require* two ports, with "dual-lvds-{odd,even}-pixels" 
->> properties.
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> ---
+>   drivers/i2c/busses/i2c-mt65xx.c | 14 ++++++++++++++
+>   1 file changed, 14 insertions(+)
 > 
-> Yes, while they are both LVDS based panels the extra LVDS sink in these
-> panels, and the capability to decode and display the 2 sets of signals
-> are enough hardware differences that warrant for an addition of a new
-> compatible.
-> 
->>
->> So... the devicetree node would look like this:
->>
->> panel {
->>      compatible = "vendor,panel", "panel-lvds";
->>      ....
->>      ports {
->>          port@0 {
->>              .....
->>              -> dual-lvds-odd-pixels <-
->>          }
->>
->>          port@1 {
->>              .....
->>              -> dual-lvds-even-pixels <-
->>          };
->>      };
->> };
->>
->>> +          - required: [dual-lvds-even-pixels]
->>
->> ...Though, if you expect dual-lvds panels to get other quirks in the 
->> future,
->> that's a whole different story and you may actually need the 
->> panel-dual-lvds
->> compatible.
-> 
-> Yes, exactly. Even while being non-smart, there are going to be more
-> quirks in future. And it would be better if they have their own
-> compatible/binding, and are not getting appended in an ever-growing
-> if-else ladder. :)
+> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> index d80e59340d97..2c9dbb42861a 100644
+> --- a/drivers/i2c/busses/i2c-mt65xx.c
+> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> @@ -511,6 +511,19 @@ static const struct mtk_i2c_compatible mt8192_compat = {
+>   	.max_dma_support = 36,
+>   };
+>   
+> +static const struct mtk_i2c_compatible mt8365_compat = {
 
-I can imagine a panel which you can use with a single LVDS link if the 
-clock is high enough, or two LVDS links if the clock has to be lower. Is 
-that a dual-lvds panel? =)
+This is exactly the same as mt8168_compat... so you can avoid adding this one
+and you can also avoid adding the compatible to this driver.
 
-But probably that situation is no different than a panel that can work 
-with DSI or DPI input.
+This means that you can get it working with a devicetree declaring
 
-Still, I'm agree with Angelo in that a new compatible string for dual 
-link lvds feels a bit odd. That said, it's possible the panel-lvds 
-bindings might get rather confusing. So I don't have a strong feeling here.
+compatible = "mediatek,mt8365-i2c", "mediatek,mt8168-i2c";
 
-  Tomi
+like you're already doing and without any addition to this driver at all.
+So, you can drop this commit.
+
+Regards,
+Angelo
+
 
 
