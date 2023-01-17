@@ -4,88 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7237C63797
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jan 2023 09:41:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C611C678D4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jan 2023 10:27:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hdQxBMQOMwqD8VUok85rROkSgj2htMeyYzI/9JQJnaY=; b=e+YphyYiR8A+ytrQTPYUqc6lO4
-	pPxIGsqxMBjI2En1aKCPLQ+Yl9Z7jxVKRATBqrXaQXoF7aDSzGjhWKv0gcwUDD6mpfeaabItRb/nv
-	s8fF8ufWcZeQ805QLr7+gDHBNS+UV6LOQCrlAGawQdlc0AGYDDSbwU4R4HrWU8itWDtYlgQXuTRCF
-	DEISrTn4ZpziYboOK8YmFTWjLWtzTEvsGjxOJBIvUu6wl1COvT/e8qzCn/BKC/0DMFN7Wm6Ko/LOw
-	/0f24Rn/xTetcM1CLSQdoowEVbsGXtIdpZMXplHKPPbNvG/dbPtcTDbJhBA6Wr//j1UuVoioKVtT9
-	ftuvHIAg==;
+	bh=HLR+mGL+Qj5K/UgXvir37XZAI7z3g+0nfN0Ej2ahbJU=; b=S+Qa0gfQ7Z5wxyviwotj4l/NqR
+	13KrHJtd9YbLdqOi/L0vx0eKRJqy+l1sn2XNEFpp/4uzIyor4aX2lgR/IAJbM6+7xEd/BIUN3/lZu
+	aYLn7z5hej3Fm2/0Vdes3yLQchj7IBif6Zg2ZRUhinu/eFLnVEq50ytztc+IsiJ/vvet5C8PqvXxS
+	PrCvl6OIwU9Q0gOIsJEfzL3cTnkvsQE0BpBjVwLp3RFd+prWu+w13HotDxj50JL/4BLRv3IYb2Tlc
+	UTFFVUZTK5AV35FadTHSHHMTBulidlze+wTpwSS7wgAuzV89XJ9z95TpSpApfUZ/z2lAxxiQZQXKy
+	9i1mIAMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHiT6-00DcuS-LX; Tue, 17 Jan 2023 09:41:24 +0000
-Received: from mail-qk1-x734.google.com ([2607:f8b0:4864:20::734])
+	id 1pHjBp-00DkU5-S0; Tue, 17 Jan 2023 10:27:37 +0000
+Received: from fllv0016.ext.ti.com ([198.47.19.142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHiT3-00Dct1-WD; Tue, 17 Jan 2023 09:41:23 +0000
-Received: by mail-qk1-x734.google.com with SMTP id p22so3462207qkm.0;
-        Tue, 17 Jan 2023 01:41:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=hdQxBMQOMwqD8VUok85rROkSgj2htMeyYzI/9JQJnaY=;
-        b=HdpUBrzVC+fRm5us0I5pcSVClglYaFUfiEm/cGmO0HRwQ+aYU0HVym6Sa1QAveTfcy
-         HVrNoblnZL7c17Uzkx9cWtDUNfb/se9p1L8E0LImXSu+eOf5/sphsIlfsbxsZUBcSG3A
-         epLckHWQLqK9BHTP8K/H2nWLrxRMmIziEGtmrfzMCzTlKxaNHqt+yQ5uevBzAlX/9/dD
-         eraOfE2nSwKxtnVs7ghhKhl4PJs4QjHGI2ViGL60UKvVQ0h5+wkTdiujQa4bIuASu3/g
-         mGE/ZB8GT3isx1sHuKZF2MZCBZI+i9AXRO9tTxFkQbgjJOCiiAphcf9gB63ctNnSGHL5
-         ktCA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=hdQxBMQOMwqD8VUok85rROkSgj2htMeyYzI/9JQJnaY=;
-        b=NsTW+j3WqTSo8AIWR06YYEqk1R8Lw2v2nzTl+khb2sHNYoN4Gg92rjHKiRHscq1+8C
-         1O1/fFtFsaDE8aO5e/JYKKuBERkGVRzdwVI0LhN0/G+2LdtLiRPOw792htAfFtF/1X69
-         3rIU2FMzfrAr837OqCZp6LMEjSIu4ss/aCpnr1JkR9gAB8LgVazhhsCWcTTerbA6FXMk
-         m8t9Nbd8PeXMh7aO0HJ+sFyeXRpcxL7UFBnUb/MZpsYDGA2nme7DLQTQACetDBWIVAsw
-         gLlSU59t+FXz6q+X7bm23InoEigbQAEWnjl/mVKTr/g0lJwen9wF5yRrBDlQIQMpNs3U
-         6Ibw==
-X-Gm-Message-State: AFqh2kptVnd0hF9EW/oJEAS96NSfdQcZ5klEkr29GyiVsRiSYQLC168u
-	z+wKxhXsMcM6rz/BHL1ebnxwxAi/TpOhz2Q2Ivo=
-X-Google-Smtp-Source: AMrXdXvUweQfxPG9XW/trbF8uyUaDAKToxBAJ8l2RD/emKWwnVOskao8jQNpBm7SRN0AryYBpZ/goUm0u7jIv/pAfEY=
-X-Received: by 2002:a05:620a:36f4:b0:702:34dc:25a8 with SMTP id
- cz52-20020a05620a36f400b0070234dc25a8mr95984qkb.748.1673948478628; Tue, 17
- Jan 2023 01:41:18 -0800 (PST)
+	id 1pHjBm-00DkSf-Fs; Tue, 17 Jan 2023 10:27:36 +0000
+Received: from lelv0265.itg.ti.com ([10.180.67.224])
+	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 30HAQsXv103287;
+	Tue, 17 Jan 2023 04:26:54 -0600
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+	s=ti-com-17Q1; t=1673951214;
+	bh=HLR+mGL+Qj5K/UgXvir37XZAI7z3g+0nfN0Ej2ahbJU=;
+	h=Date:Subject:To:CC:References:From:In-Reply-To;
+	b=Rh5hZ4g0uh5A8jXmMjycfiTYYjzSQhfMkIr6i2Ce4ZhOvL8rMUq6rlIJsD1kKZE86
+	 DcWJK+SeByxXW65XzxNxc7XsKAuXuBdLLpg0Txu2DUmjCBfQLHvZbPmYstw+QKmlLf
+	 rmXBqH19WuBZcRX3abXXxn72Ve78vvFtr+7zfbKo=
+Received: from DFLE105.ent.ti.com (dfle105.ent.ti.com [10.64.6.26])
+	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 30HAQsJs029663
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Tue, 17 Jan 2023 04:26:54 -0600
+Received: from DFLE111.ent.ti.com (10.64.6.32) by DFLE105.ent.ti.com
+ (10.64.6.26) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.16; Tue, 17
+ Jan 2023 04:26:53 -0600
+Received: from fllv0039.itg.ti.com (10.64.41.19) by DFLE111.ent.ti.com
+ (10.64.6.32) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.16 via
+ Frontend Transport; Tue, 17 Jan 2023 04:26:53 -0600
+Received: from [172.24.223.35] (ileaxei01-snat2.itg.ti.com [10.180.69.6])
+	by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 30HAQj0K053861;
+	Tue, 17 Jan 2023 04:26:45 -0600
+Message-ID: <10ca38d8-df9a-33f1-3f66-8342580ef5a9@ti.com>
+Date: Tue, 17 Jan 2023 15:56:44 +0530
 MIME-Version: 1.0
-References: <20220715122903.332535-1-nuno.sa@analog.com> <20220715122903.332535-13-nuno.sa@analog.com>
- <20220806192048.0ca41cc5@jic23-huawei> <20230116204452.il4gase2szipeexz@SoMainline.org>
- <CAHp75VdX9sFgn9STyzwcDCK1KYbU00ejFNcEP3FVnLk5J=Pktg@mail.gmail.com> <CAHp75VdTftm1BE21rH1HVHiwUye-0Dvc66uCK2LE2qF4_zA6hg@mail.gmail.com>
-In-Reply-To: <CAHp75VdTftm1BE21rH1HVHiwUye-0Dvc66uCK2LE2qF4_zA6hg@mail.gmail.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Tue, 17 Jan 2023 11:40:42 +0200
-Message-ID: <CAHp75VdyCA7mQdm--kg=hUbmQqX4-jfFMHgLxref5mNSM1vnMA@mail.gmail.com>
-Subject: Re: [PATCH v3 12/15] iio: adc: qcom-spmi-adc5: convert to device properties
-To: Marijn Suijten <marijn.suijten@somainline.org>
-Cc: Jonathan Cameron <jic23@kernel.org>, =?UTF-8?B?TnVubyBTw6E=?= <nuno.sa@analog.com>, 
-	openbmc@lists.ozlabs.org, linux-imx@nxp.com, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-iio@vger.kernel.org, 
-	linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, 
-	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, linux-arm-msm@vger.kernel.org, 
-	Gwendal Grignou <gwendal@chromium.org>, Fabio Estevam <festevam@gmail.com>, 
-	Tali Perry <tali.perry1@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabrice Gasnier <fabrice.gasnier@foss.st.com>, 
-	Daniel Lezcano <daniel.lezcano@linaro.org>, Miquel Raynal <miquel.raynal@bootlin.com>, 
-	Eugen Hristev <eugen.hristev@microchip.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Lars-Peter Clausen <lars@metafoo.de>, Paul Cercueil <paul@crapouillou.net>, 
-	Claudiu Beznea <claudiu.beznea@microchip.com>, 
-	Michael Hennerich <Michael.Hennerich@analog.com>, Haibo Chen <haibo.chen@nxp.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [RFC PATCH 0/4] dt-bindings: Introduce dual-link panels &
+ panel-vendors
+Content-Language: en-US
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+CC: Rob Herring <robh+dt@kernel.org>,
+        Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>,
+        Tomi Valkeinen <tomba@kernel.org>, Jyri
+ Sarha <jyri.sarha@iki.fi>,
+        David Airlie <airlied@gmail.com>, Daniel Vetter
+	<daniel@ffwll.ch>,
+        Thierry Reding <thierry.reding@gmail.com>,
+        Sam Ravnborg
+	<sam@ravnborg.org>, Maxime Ripard <maxime@cerno.tech>,
+        Liam Girdwood
+	<lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+        Lad Prabhakar
+	<prabhakar.mahadev-lad.rj@bp.renesas.com>,
+        Paul Walmsley
+	<paul.walmsley@sifive.com>,
+        Palmer Dabbelt <palmer@dabbelt.com>,
+        Albert Ou
+	<aou@eecs.berkeley.edu>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        Guo Ren
+	<guoren@kernel.org>, Nishanth Menon <nm@ti.com>,
+        Devicetree List
+	<devicetree@vger.kernel.org>,
+        Jayesh Choudhary <j-choudhary@ti.com>, Jai
+ Luthra <j-luthra@ti.com>,
+        Vignesh Raghavendra <vigneshr@ti.com>,
+        Devarsh
+ Thakkar <devarsht@ti.com>,
+        Linux Kernel List <linux-kernel@vger.kernel.org>,
+        DRI Development List <dri-devel@lists.freedesktop.org>,
+        Linux Mediatek List
+	<linux-mediatek@lists.infradead.org>,
+        Linux C-SKY Arch List
+	<linux-csky@vger.kernel.org>,
+        Linux RISC-V List
+	<linux-riscv@lists.infradead.org>,
+        Linux ARM Kernel List
+	<linux-arm-kernel@lists.infradead.org>,
+        Rahul T R <r-ravikumar@ti.com>
+References: <20230103064615.5311-1-a-bhatia1@ti.com>
+ <Y8UZQHvVT2VQcQ33@pendragon.ideasonboard.com>
+From: Aradhya Bhatia <a-bhatia1@ti.com>
+In-Reply-To: <Y8UZQHvVT2VQcQ33@pendragon.ideasonboard.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230117_014122_072346_2236B266 
-X-CRM114-Status: GOOD (  28.28  )
+X-CRM114-CacheID: sfid-20230117_022734_721000_26FFA66D 
+X-CRM114-Status: GOOD (  40.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,67 +122,123 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 17, 2023 at 11:06 AM Andy Shevchenko
-<andy.shevchenko@gmail.com> wrote:
->
-> On Tue, Jan 17, 2023 at 10:53 AM Andy Shevchenko
-> <andy.shevchenko@gmail.com> wrote:
-> >
-> > On Mon, Jan 16, 2023 at 10:44 PM Marijn Suijten
-> > <marijn.suijten@somainline.org> wrote:
-> > >
-> > > On 2022-08-06 19:20:48, Jonathan Cameron wrote:
-> > > > On Fri, 15 Jul 2022 14:29:00 +0200
-> > > > Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
-> > > >
-> > > > > Make the conversion to firmware agnostic device properties. As pa=
-rt of
-> > > > > the conversion the IIO inkern interface 'of_xlate()' is also conv=
-erted to
-> > > > > 'fwnode_xlate()'. The goal is to completely drop 'of_xlate' and h=
-ence OF
-> > > > > dependencies from IIO.
-> > > > >
-> > > > > Signed-off-by: Nuno S=C3=A1 <nuno.sa@analog.com>
-> > > > > Acked-by: Linus Walleij <linus.walleij@linaro.org>
-> > > > > Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
-> > > > +CC Marijin who happend to post a patch for this driver that I just=
- accepted
-> > > > and hence probably has hardware access.  Any chance of a test for t=
-his series?
-> > > >
-> > > > If not, no problem as this is fairly mechanical and we have testing=
- on some of
-> > > > the other drivers using the new code.
-> > > >
-> > > > I'll probably queue this up in the meantime but it won't end up ups=
-tream
-> > > > for a few weeks yet.
-> > >
-> > > Jonathan,
-> > >
-> > > This CC just surfaced in my inbox while searching for our current
-> > > discussion around missing labels in qcom-spmi-vadc - and on the side =
-a
-> > > userspace @xx label name ABI break (in qcom-spmi-adc5) caused by this
-> > > patch's fwnode_get_name change - we could've caught it if I had not
-> > > accidentally marked it as read and/or forgot about it.  My apologies.
-> >
-> > Does the following addition to the top of the
-> > adc5_get_fw_channel_data() fix the issue?
-> >
-> > +       name =3D devm_kasprintf(adc->dev, GFP_KERNEL, "%pfwP", fwnode);
-> > +       if (!name)
-> > +               return -ENOMEM;
->
-> Okay, it probably the same, so it might need additional code to
->
-> + name[strchrnul(name, '@') - name] =3D '\0';
+Hi Laurent,
 
-I have just sent a formal patch, please test on top of non-working kernel.
+Thank you for taking a look at this!
 
+On 16-Jan-23 15:00, Laurent Pinchart wrote:
+> Hi Aradhya,
+> 
+> On Tue, Jan 03, 2023 at 12:16:11PM +0530, Aradhya Bhatia wrote:
+>> Hi all,
+>>
+>> Microtips Technology Solutions USA, and Lincoln Technology Solutions are
+>> 2 display panel vendors, and the first 2 patches add their vendor
+>> prefixes.
+>>
+>> The fourth patch, simply introduces the new compatible for the generic
+>> dual-link panels in the panel-lvds driver. This new compatible is based
+>> from a new DT binding added in the third patch explained below.
+>>
+>> The third patch introduces a dt-binding for generic dual-link LVDS
+>> panels. These panels do not have any documented constraints, except for
+>> their timing characteristics. Further, these panels have 2 pixel-sinks.
+>> In a dual-link connection between an LVDS encoder and the panel, one
+>> sink accepts the odd set of LVDS pixels and the other, the even set.
+>>
+>> A lot of this has been based from the Advantech,idk-2121wr dual-link
+>> panel[1] and Maxime's patches for generic LVDS panels[2] (which are
+>> single-link by default.) and the discussions that happened before they
+>> were finally merged.
+>>
+>> Below are some notes and points that I want to bring forward.
+>>
+>>    - The advantech,idk-2121wr panel binding uses 2 boolean properties
+>>      dual-link-odd/even-pixels, to signify which port sink is being used
+>>      for which set of LVDS pixels. I too have added similar support and
+>>      introduced constraints around those properties, so as to not break
+>>      the ABI... but I believe there is a better way to achieve this.
+>>
+>>      A "pixel-type" enum property could be introduced in their stead,
+>>      which can accept one of the 2 options <dual-lvds-odd-pixels> or
+>>      <dual-lvds-even-pixels>.
+>>
+>>      This method, in my opinion, is more accurate and cleaner to
+>>      implement in the bindings as well.
+>>
+>>      If this does sound a better I can push out a new revision where the
+>>      driver supports both these methods (to not break the ABI) and the
+>>      advantech,2121wr panel can remain as an exception.
+> 
+> It's usually best not to change an existing system if there are no good
+> reasons, so I'd ask why you think a pixel-type property would be better
+> (including when taking into account the fact that we would have to
+> maintain the advantech,2121wtr driver separately) if you want to go that
+> way. Otherwise, if we were developing this from scratch, I would have no
+> real preference.
+> 
+Such a property would have been a more accurate representation of the
+case here, voiding the need of a "oneOf:" clause, and simplifying the
+overall binding implementation.
 
---
-With Best Regards,
-Andy Shevchenko
+Furthermore, I saw this as a fair opportunity to introduce the new
+property because there was only one other dual link panel which used the
+original properties.
+And, while the code delta shall be same in implementing the pixel-type
+property irrespective of the number of existing dual-link panels that
+support the original method, I believe with pixel-type, we can set a
+fresh precedence for future scenarios (perhaps for "quad-link" LVDS, if
+there ever will be one).
+
+Having said that, this was merely a suggestion. If this does not seem to
+be a strong enough reason to change the existing system, I can keep
+using the original properties (as I have in the patches) and send a v2.
+
+>>    - As an alternative to the previous point, if that method is not
+>>      preferred for some reason, the advantech,2121wtr panel binding
+>>      could then be merged in the panel-dual-lvds binding as part of
+>>      future work.
+>>
+>>
+>>    - Another tweak, I am looking forward to do as part of future work and
+>>      would like all your comments is to introduce driver-based
+>>      implementation of the panel timing parameters, like it is with
+>>      "panel-simple". The driver can then support both the panel-timing
+>>      sources (DT node or hard-coded driver structure) and the binding
+>>      can remove this from the "required" section.
+> 
+> There's been a very long discussion in the past (multiple discussions
+> actually) regarding whether timings should be set in DT or in drivers.
+> There were multiple arguments supporting both sides, without (it seems)
+> a clear winner. If you want driver-side timings for dual-link panels,
+> I'd like to understand why you think that's better. If the reasons are
+> the same as the ones expressed when we discussed simple panels, you
+> should also look at whether or not any of the fears expressed on either
+> side have materialized.
+
+I went through the discussions that you mentioned above. For now, I will
+stick to the status-quo that there is for LVDS panels. =)
+
+> 
+>> Thank you!
+>>
+>> [1]: https://patchwork.freedesktop.org/patch/357122/
+>> [2]: https://patchwork.freedesktop.org/patch/471228/
+>>
+>> Aradhya Bhatia (4):
+>>    dt-bindings: vendor-prefixes: Add microtips
+>>    dt-bindings: vendor-prefixes: Add lincolntech
+>>    dt-bindings: panel: Introduce dual-link LVDS panel
+>>    drm: panel-lvds: Introduce dual-link panels
+>>
+>>   .../display/panel/panel-dual-lvds.yaml        | 157 ++++++++++++++++++
+>>   .../devicetree/bindings/vendor-prefixes.yaml  |   4 +
+>>   MAINTAINERS                                   |   1 +
+>>   drivers/gpu/drm/panel/panel-lvds.c            |   1 +
+>>   4 files changed, 163 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
+> 
+
+Regards
+Aradhya
 
