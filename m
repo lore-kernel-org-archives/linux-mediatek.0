@@ -4,87 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FFD8C63797
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jan 2023 11:39:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BF89C63797
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jan 2023 12:39:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vF3QjaM7bROJjvJo2a/mn+CmXlw/84X7LZJ02v/ABAU=; b=cG1cMYr8zS+aeec8GNu0dCNIcA
-	Qh4vd5cH9tKutoR5KTbC32mLDMjLrp1izsFIJKB2oPQOibbWK8j8EDrgxGZsVKcmAAiSJ/YWzVb4x
-	6z1FE6pSM2Wwz0P/X4xYQuCavtBs1uTFO46aDB/hGYJDbb6rz7tK522pnropGNrcafam/v8d8xceI
-	+RniByY3O6bFShvMy4QS2Qwz0veOs4rsir3U2pk2pjaA0UURXtixgLRYBHyB0wHIqmeFIezaJgeJL
-	/6C6Y4vRNJZjpmAkUNEU4PtiRLPHHmK2r/0gMKM32Qavu2iozXJJn2NtYvyIvtONlM/4EoQWyBUPr
-	sSmU3xDQ==;
+	bh=KRKlyrWmfJlglnzUD4Wpu2MBTD+1V3Zf1U7PgFhOFmk=; b=i7vJNLg3cp1k6aZCIl7RJuyDFi
+	ZcI6J1KQxusz5PfkqEOHOCeWtZ/TRKkafCzu7Np9XTSXbrKhbYkflOWPDs/aSP5Pb4bj252gk/v4/
+	rtmnaajaGSJ1Tdj46av121OQtGVYwr0acoHaU/xPJCziL+roGh2P2ugn9F2/jOmxFEm0g/Xs07u6W
+	5d+L1I7wG8bFTd+IKVv40Z9IslJDrtG8UDMX8ZLNBRKYl076xDMJCExOp+hK69XZ4CCLC8bHfcZ8r
+	sk/IYKvq/9gWLAdZTmsnGTi6QxSH2qi+VbfNiri+hb8OEQ6cnXf3Gec7zBQC7rwItl7dJfqQM1PYX
+	48akAvxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHkJa-00E42J-JW; Tue, 17 Jan 2023 11:39:42 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1pHlFG-00EC43-Nx; Tue, 17 Jan 2023 12:39:18 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHkJP-00E408-DO
-	for linux-mediatek@lists.infradead.org; Tue, 17 Jan 2023 11:39:33 +0000
-Received: by mail-wr1-x435.google.com with SMTP id e3so21045779wru.13
-        for <linux-mediatek@lists.infradead.org>; Tue, 17 Jan 2023 03:39:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=vF3QjaM7bROJjvJo2a/mn+CmXlw/84X7LZJ02v/ABAU=;
-        b=zLKBoIKI1X1tbKr4R/cZoQ7RMIGw8APCZhFTXrfz4YG7Gl5o99Y2nFQ6WoJk7DMG/3
-         yzzPBZIZ9K9Fuw2Ba+q7I3dUgVF8u14QN683j5+7pd3L1DnI4tNLzyF+Rq/viGT8TwBr
-         w8+2O3c+A9vkyf4Xh3VbrlCLVsDkDky8G6e1EtamptWw/sOAL/7jK3cxF20PpZQOrM+i
-         I0UibyUBGThQVEWaCHoOGrcuKXPzUSCaRTz1lfZdcWdUjCP43hjGHM01og21Q597wW9h
-         CCWv/qzbSM3Y+BflWlJgMyAFDUYzZYscvA9hEDk2hCmVow5TiANBZ28vQn1ozYo+ji8H
-         BMdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=vF3QjaM7bROJjvJo2a/mn+CmXlw/84X7LZJ02v/ABAU=;
-        b=6eNycLxiHDi7djWq8RoQz4Tjap1sUrMIked2j0S6x7V4O9ZrnfABVYuCtRi1WwYe4C
-         /z5WMG8Q4K+IhTdD9iZ0g28/atraSvE8FuP3jwmdoNU3PgfhIMGZDGqm0dg1eYA0t4tR
-         KOmsVtyDj7qYXQenxKA+bq7QdYr6Z+nEqdNgD+5UysZjRhFpvK+eB8rN11lrASIUcAPS
-         t2UnExpr8PlndbySWsBY4UqCv2IH0G4uJLisrB3GK1R1WF4AD+eZfTYDDQOCtEfK0S9f
-         7zCs0a3s1ZC2syK/M2WqRM5Gcn7XfDIMVLuwFYezK0YcIsMZXZgryNi33fVLdfdJJ87X
-         l6TQ==
-X-Gm-Message-State: AFqh2kpPUGcp1afHD9bpB8MImwR6YUcSZhRPNsXtoPbpGXg6PL0wfCVO
-	7WFaHsgKGZGVspcQXjhl0dGVTw==
-X-Google-Smtp-Source: AMrXdXuCkpdLgZ/1mIa89YtmyXjuzTAlZJrLeKfPOg30l2hHTbnVlkY+nMfI32aoJYuG8fprjU9EAg==
-X-Received: by 2002:adf:f78d:0:b0:2bd:bed5:9207 with SMTP id q13-20020adff78d000000b002bdbed59207mr2498792wrp.12.1673955567741;
-        Tue, 17 Jan 2023 03:39:27 -0800 (PST)
-Received: from [192.168.1.109] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id u24-20020adfa198000000b002bc84c55758sm24641864wru.63.2023.01.17.03.39.25
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 17 Jan 2023 03:39:26 -0800 (PST)
-Message-ID: <9c11bf53-6639-2cbe-0d27-ce1ea154f576@linaro.org>
-Date: Tue, 17 Jan 2023 12:39:24 +0100
+	id 1pHlF5-00EC0k-Ti; Tue, 17 Jan 2023 12:39:09 +0000
+Received: from [192.168.1.15] (91-154-32-225.elisa-laajakaista.fi [91.154.32.225])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B5E8310C;
+	Tue, 17 Jan 2023 13:38:59 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1673959141;
+	bh=0xanUWyMoxJnvXqqNZ5UOGy3oyg6sQdr/aJLg0bLmX0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=lhXA6EOBtju3hz7RVGApa3gFkm8IjwyEevWIttJjwuSssA6tWWX3VMk4dP6KCwshf
+	 D1TXAw5l8b9t1Vd5W0sbVT1fBO26Skg59JiGVMd89TgWhDkXbpcp0S0PTFKKS9B67y
+	 fFirV+o2rzHN81rIAuhffeTrNvXXekunotwKsK54=
+Message-ID: <808e831f-4282-0e58-ebb2-2f556aaeaca4@ideasonboard.com>
+Date: Tue, 17 Jan 2023 14:38:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v4 01/19] dt-bindings: ARM: MediaTek: Add new MT8188 clock
+ Thunderbird/102.4.2
+Subject: Re: [RFC PATCH 3/4] dt-bindings: panel: Introduce dual-link LVDS
+ panel
 Content-Language: en-US
-To: "Garmin.Chang" <Garmin.Chang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+To: Aradhya Bhatia <a-bhatia1@ti.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Richard Cochran <richardcochran@gmail.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-clk@vger.kernel.org, netdev@vger.kernel.org
-References: <20230109124516.31425-1-Garmin.Chang@mediatek.com>
- <20230109124516.31425-2-Garmin.Chang@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230109124516.31425-2-Garmin.Chang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+ Jyri Sarha <jyri.sarha@iki.fi>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>,
+ Maxime Ripard <maxime@cerno.tech>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>,
+ Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Palmer Dabbelt
+ <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Guo Ren <guoren@kernel.org>
+Cc: DRI Development List <dri-devel@lists.freedesktop.org>,
+ Devicetree List <devicetree@vger.kernel.org>,
+ Linux Kernel List <linux-kernel@vger.kernel.org>,
+ Linux RISC-V List <linux-riscv@lists.infradead.org>,
+ Linux ARM Kernel List <linux-arm-kernel@lists.infradead.org>,
+ Linux Mediatek List <linux-mediatek@lists.infradead.org>,
+ Linux C-SKY Arch List <linux-csky@vger.kernel.org>,
+ Nishanth Menon <nm@ti.com>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Rahul T R <r-ravikumar@ti.com>, Devarsh Thakkar <devarsht@ti.com>,
+ Jai Luthra <j-luthra@ti.com>, Jayesh Choudhary <j-choudhary@ti.com>
+References: <20230103064615.5311-1-a-bhatia1@ti.com>
+ <20230103064615.5311-4-a-bhatia1@ti.com>
+ <09f1ca83-c7d5-a186-6fa6-09cdd7a0b9cc@collabora.com>
+ <431ddd82-055b-2526-3d5e-f6563e48d264@ti.com>
+From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+In-Reply-To: <431ddd82-055b-2526-3d5e-f6563e48d264@ti.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230117_033931_494350_DE40888F 
-X-CRM114-Status: GOOD (  18.57  )
+X-CRM114-CacheID: sfid-20230117_043908_177615_878225DE 
+X-CRM114-Status: GOOD (  25.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,149 +91,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09/01/2023 13:44, Garmin.Chang wrote:
-> Add the new binding documentation for system clock
-> and functional clock on MediaTek MT8188.
-
-Use subject prefixes matching the subsystem (which you can get for
-example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
-your patch is touching).
-
+On 09/01/2023 18:21, Aradhya Bhatia wrote:
+> Hi Angelo,
 > 
-> Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
-> ---
->  .../bindings/clock/mediatek,mt8188-clock.yaml |  71 ++
->  .../clock/mediatek,mt8188-sys-clock.yaml      |  55 ++
->  .../dt-bindings/clock/mediatek,mt8188-clk.h   | 733 ++++++++++++++++++
->  3 files changed, 859 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt8188-clock.yaml
->  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt8188-sys-clock.yaml
->  create mode 100644 include/dt-bindings/clock/mediatek,mt8188-clk.h
+> Thanks for taking a look at the patches!
 > 
-> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8188-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8188-clock.yaml
-> new file mode 100644
-> index 000000000000..6654cead71f6
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt8188-clock.yaml
-> @@ -0,0 +1,71 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt8188-clock.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek Functional Clock Controller for MT8188
-> +
-> +maintainers:
-> +  - Garmin Chang <garmin.chang@mediatek.com>
-> +
-> +description: |
-> +  The clock architecture in MediaTek like below
-> +  PLLs -->
-> +          dividers -->
-> +                      muxes
-> +                           -->
-> +                              clock gate
-> +
-> +  The devices provide clock gate control in different IP blocks.
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt8188-adsp-audio26m
-> +      - mediatek,mt8188-imp-iic-wrap-c
-> +      - mediatek,mt8188-imp-iic-wrap-en
-> +      - mediatek,mt8188-imp-iic-wrap-w
-> +      - mediatek,mt8188-mfgcfg
-> +      - mediatek,mt8188-vppsys0
-> +      - mediatek,mt8188-wpesys
-> +      - mediatek,mt8188-wpesys-vpp0
-> +      - mediatek,mt8188-vppsys1
-> +      - mediatek,mt8188-imgsys
-> +      - mediatek,mt8188-imgsys-wpe1
-> +      - mediatek,mt8188-imgsys-wpe2
-> +      - mediatek,mt8188-imgsys-wpe3
-> +      - mediatek,mt8188-imgsys1-dip-top
-> +      - mediatek,mt8188-imgsys1-dip-nr
-> +      - mediatek,mt8188-ipesys
-> +      - mediatek,mt8188-camsys
-> +      - mediatek,mt8188-camsys-rawa
-> +      - mediatek,mt8188-camsys-yuva
-> +      - mediatek,mt8188-camsys-rawb
-> +      - mediatek,mt8188-camsys-yuvb
-> +      - mediatek,mt8188-ccusys
-> +      - mediatek,mt8188-vdecsys-soc
-> +      - mediatek,mt8188-vdecsys
-> +      - mediatek,mt8188-vencsys
+> On 03-Jan-23 17:21, AngeloGioacchino Del Regno wrote:
+>> Il 03/01/23 07:46, Aradhya Bhatia ha scritto:
+>>> Dual-link LVDS interfaces have 2 links, with even pixels traveling on
+>>> one link, and odd pixels on the other. These panels are also generic in
+>>> nature, with no documented constraints, much like their single-link
+>>> counterparts, "panel-lvds".
+>>>
+>>> Add a new compatible, "panel-dual-lvds", and a dt-binding document for
+>>> these panels.
+>>>
+>>> Signed-off-by: Aradhya Bhatia <a-bhatia1@ti.com>
+>>> ---
+>>>   .../display/panel/panel-dual-lvds.yaml        | 157 ++++++++++++++++++
+>>>   MAINTAINERS                                   |   1 +
+>>>   2 files changed, 158 insertions(+)
+>>>   create mode 100644 
+>>> Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
+>>>
+>>> diff --git 
+>>> a/Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml b/Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
+>>> new file mode 100644
+>>> index 000000000000..88a7aa2410be
+>>> --- /dev/null
+>>> +++ 
+>>> b/Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
+>>> @@ -0,0 +1,157 @@
+>>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+>>> +%YAML 1.2
+>>> +---
+>>> +$id: http://devicetree.org/schemas/display/panel/panel-dual-lvds.yaml#
+>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>>> +
+>>> +title: Generic Dual-Link LVDS Display Panel
+>>> +
+>>> +maintainers:
+>>> +  - Aradhya Bhatia <a-bhatia1@ti.com>
+>>> +  - Thierry Reding <thierry.reding@gmail.com>
+>>> +
+>>> +description: |
+>>> +  A dual-LVDS interface is a dual-link connection with the even pixels
+>>> +  traveling on one link, and the odd pixels traveling on the other.
+>>> +
+>>> +allOf:
+>>> +  - $ref: panel-common.yaml#
+>>> +  - $ref: /schemas/display/lvds.yaml/#
+>>> +
+>>> +properties:
+>>> +  compatible:
+>>> +    oneOf:
+>>> +      - items:
+>>> +          - enum:
+>>> +              - lincolntech,lcd185-101ct
+>>> +              - microtips,13-101hieb0hf0-s
+>>> +          - const: panel-dual-lvds
+>>> +      - const: panel-dual-lvds
+>>> +
+>>> +  ports:
+>>> +    $ref: /schemas/graph.yaml#/properties/ports
+>>> +
+>>> +    properties:
+>>> +      port@0:
+>>> +        $ref: /schemas/graph.yaml#/$defs/port-base
+>>> +        unevaluatedProperties: false
+>>> +        description: The sink for first set of LVDS pixels.
+>>> +
+>>> +        properties:
+>>> +          dual-lvds-odd-pixels:
+>>> +            type: boolean
+>>> +
+>>> +          dual-lvds-even-pixels:
+>>> +            type: boolean
+>>> +
+>>> +        oneOf:
+>>> +          - required: [dual-lvds-odd-pixels]
+>>
+>> One question: why do we need a "panel-dual-lvds" compatible?
+>> A Dual-LVDS panel is a LVDS panel using two ports, hence still a 
+>> panel-lvds.
+>>
+>> If you're doing this to clearly distinguish, for human readability 
+>> purposes,
+>> single-link vs dual-link panels, I think that this would still be 
+>> clear even
+>> if we use panel-lvds alone because dual-link panels, as you wrote in this
+>> binding, does *require* two ports, with "dual-lvds-{odd,even}-pixels" 
+>> properties.
+> 
+> Yes, while they are both LVDS based panels the extra LVDS sink in these
+> panels, and the capability to decode and display the 2 sets of signals
+> are enough hardware differences that warrant for an addition of a new
+> compatible.
+> 
+>>
+>> So... the devicetree node would look like this:
+>>
+>> panel {
+>>      compatible = "vendor,panel", "panel-lvds";
+>>      ....
+>>      ports {
+>>          port@0 {
+>>              .....
+>>              -> dual-lvds-odd-pixels <-
+>>          }
+>>
+>>          port@1 {
+>>              .....
+>>              -> dual-lvds-even-pixels <-
+>>          };
+>>      };
+>> };
+>>
+>>> +          - required: [dual-lvds-even-pixels]
+>>
+>> ...Though, if you expect dual-lvds panels to get other quirks in the 
+>> future,
+>> that's a whole different story and you may actually need the 
+>> panel-dual-lvds
+>> compatible.
+> 
+> Yes, exactly. Even while being non-smart, there are going to be more
+> quirks in future. And it would be better if they have their own
+> compatible/binding, and are not getting appended in an ever-growing
+> if-else ladder. :)
 
-The list should be ordered by name.
+I can imagine a panel which you can use with a single LVDS link if the 
+clock is high enough, or two LVDS links if the clock has to be lower. Is 
+that a dual-lvds panel? =)
 
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  '#clock-cells':
-> +    const: 1
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - '#clock-cells'
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    clock-controller@11283000 {
-> +        compatible = "mediatek,mt8188-imp-iic-wrap-c";
-> +        reg = <0x11283000 0x1000>;
-> +        #clock-cells = <1>;
-> +    };
-> +
-> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8188-sys-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8188-sys-clock.yaml
-> new file mode 100644
-> index 000000000000..541e0f7df79f
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt8188-sys-clock.yaml
-> @@ -0,0 +1,55 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt8188-sys-clock.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek System Clock Controller for MT8188
-> +
-> +maintainers:
-> +  - Garmin Chang <garmin.chang@mediatek.com>
-> +
-> +description: |
-> +  The clock architecture in MediaTek like below
-> +  PLLs -->
-> +          dividers -->
-> +                      muxes
-> +                           -->
-> +                              clock gate
-> +
-> +  The apmixedsys provides most of PLLs which generated from SoC 26m.
-> +  The topckgen provides dividers and muxes which provide the clock source to other IP blocks.
-> +  The infracfg_ao provides clock gate in peripheral and infrastructure IP blocks.
-> +  The mcusys provides mux control to select the clock source in AP MCU.
-> +  The device nodes also provide the system control capacity for configuration.
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - enum:
-> +          - mediatek,mt8188-topckgen
-> +          - mediatek,mt8188-infracfg-ao
-> +          - mediatek,mt8188-apmixedsys
-> +          - mediatek,mt8188-pericfg-ao
+But probably that situation is no different than a panel that can work 
+with DSI or DPI input.
 
-Ditto
+Still, I'm agree with Angelo in that a new compatible string for dual 
+link lvds feels a bit odd. That said, it's possible the panel-lvds 
+bindings might get rather confusing. So I don't have a strong feeling here.
 
-
-Best regards,
-Krzysztof
+  Tomi
 
 
