@@ -4,100 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD6A9C3DA78
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jan 2023 08:54:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AC2CC63797
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jan 2023 08:57:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dseOSX2zTH+XeCQ35kHO/8kj0vzRJ47S5eW+pnauFVw=; b=W8t5CrAQO//wVS/1TNDNSeIh0P
-	+WfATwWv6A4GB9AeQcFltO0+pRQi6JAW6qyfbtf5nN6yC847MQjIY90gjHmzRhd7gye7FWEWCXps9
-	sU9U9bYvwzLlg/orhcI+CMETpXWqSH0rF4ybsK85OhfPiXhQMJ1kWZLAOOjTWaHA5uzoLpdaE/EhM
-	+483XRy0zKz2iyGpH+HDj0mV6myMhOp9WkdE0Zq44jitQB4GOybArtaQGJbhJIZuED+b089T3uRYt
-	/AjgJvXuXPLDCV/u2sypOISzmHYrjK5oky/OQFV1/XNp7IMtBufIajkZJ0bv801j5QqEmKnLca0RD
-	A8X80Wug==;
+	bh=/08YhPyahKR2Y0AmjhCQ3W+vEqj2lDUB+zppFLDlFH4=; b=u5T3MfRpVWOA9cR6atB3n4fAw1
+	BHG1UBKc2BG2ErXUV4avZfl+SRD5nA3H7PMmC/KZ1YbWsi6jLwz9fkYmlUISaJlNi+7w4eh6Ad8Vl
+	3961AU68vIdFFnVixnKdvDdr36tj+6ZF63TYMWTifLhE7GQ7FVLKTc4hkPgOaIJvdOZ0BFkAjBgzY
+	4+IcJcH17IBgOBzOVlw4xgNQg5AnVfirXOPa7Y9KuyvxnHlHkIBwyfb6xJQyabNqg9e3p0s/elh7S
+	a3iJrbveL1aHNUxFjJKQTmwFkbuS3EgQH8v/mNtMsMyCJ93Y51OyRdFueSnLN1Q2rG0loLIqd3Vrw
+	Y4ZmMUjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHhjF-00DPaV-2n; Tue, 17 Jan 2023 08:54:01 +0000
-Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
+	id 1pHhmX-00DQmp-4p; Tue, 17 Jan 2023 08:57:25 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHhjC-00DPYl-UJ; Tue, 17 Jan 2023 08:54:00 +0000
-Received: by mail-qv1-xf2c.google.com with SMTP id h10so21190628qvq.7;
-        Tue, 17 Jan 2023 00:53:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=dseOSX2zTH+XeCQ35kHO/8kj0vzRJ47S5eW+pnauFVw=;
-        b=IN1tCeVLnwqol5mOOyaSKxyI6kXzBL3oblSeLXVIqXyUFgWIwbZ0AEzA8olwW7upIy
-         FObicSGhLmkCghdvzFXSEJAyGxharJCShW7z0r+lEuvRAdFgw/Mxnef/EERBExtq8sMy
-         Mcp+PQsHnyA392QlG4twkaHS5FodAKoH3B3yaJJT0FBlqe7JmvyILW6DXybR86bCuoQC
-         UqoyUTTaZe3pVph9PjUnNC+gdZK/JhrtzzJA5+OSVpLY72U3uaJRq46DnYklrCW6khCa
-         fPiWIzKX0q18Q1gHryK2/LjCQP56sP8q10LYVdVfp1q/DwJiFCOzLG6iIT0dwfrQWPTz
-         2MNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=dseOSX2zTH+XeCQ35kHO/8kj0vzRJ47S5eW+pnauFVw=;
-        b=X5k6bIil17w65W1y8qqcL/iZ0LsTq6oKxtlpEGNwqImQA3n6yFR9m7Xsp6j7UoXWyv
-         XteHJiSzV6IDBTFSgAdylYhBAmwdU/nXQQRIHltThPJTjmft2NERgWgsnKN+LFzDzLda
-         AuQaD4WS1oN4GgmZeIJsvhwnfXRcRhdMM4TxKadVYthh8wNDNxGW8NEMgwo9wq1Am3qX
-         L6qmoMGcF2NA0BsRmjWPfpx3YcHKAna+yg+fXUB8q8Ne1feQ7d2lLY9lb0PYr1NiVhBA
-         0BOCv0XPfb/5tVlT2jvjHBmyWZOgkzj7XTnGKnQ7CUq2y0itEgaS7MsAycYu5C2IRR8U
-         nPjQ==
-X-Gm-Message-State: AFqh2kq3jKzzSoX+Sz18bFfjpsj/g27HPO6dR1plvRytE57KhzeVCFue
-	cANUQsK0/tWT2qAsu6Fe6Hf6UFNb5gEPZiX7lFg=
-X-Google-Smtp-Source: AMrXdXvLiqXj9jIN/w78ICHR0nICmfROd8xLwBZS8MBQVeGvCEuFhhD92MzOr0asWEhyUaMDPd3N/hzGbdM64AxxTSk=
-X-Received: by 2002:a0c:f6c2:0:b0:532:2dd4:fea3 with SMTP id
- d2-20020a0cf6c2000000b005322dd4fea3mr144148qvo.48.1673945635919; Tue, 17 Jan
- 2023 00:53:55 -0800 (PST)
+	id 1pHhlD-00DQCM-03; Tue, 17 Jan 2023 08:56:08 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2BB276602DEA;
+	Tue, 17 Jan 2023 08:55:58 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1673945758;
+	bh=1l8bRtve9AuPClri5xPXP0TG5XKpU9LVLc3BXtynT2A=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TydjTD6Rj/FCxeBP/vVDTukf3FoK86aZv3JisYKUf+jzXnsGdqSRz2OqzPRF8EuJT
+	 SWOlkcXU4EzKuuWy6429rVrpRC98rTsuNzsvjTZCCmBIaBRyTwJdB/gCj7+POLRrHi
+	 shLx/I+Gxr37qOy9bzpHOHpb+cKbEv3D+89NdEGZ3KRy79Fx1VsfXwUaF21z90kEqY
+	 xLus8/u6Sx63dh/5tBJPSJDuBc8ORn6IM3WgC+eJ5F56+8wnsQQe9av5HT3sS+s+v1
+	 DYwQuMUSvDkbCw2rtdDN739bkHny8za/Nm7dH6NImgNgTuFk3uAE2EKWV5ZdBAB71R
+	 4hBoLxlsD0Zqw==
+Message-ID: <a2fd85fd-c325-043b-a6d5-10969c4eb34b@collabora.com>
+Date: Tue, 17 Jan 2023 09:55:55 +0100
 MIME-Version: 1.0
-References: <20220715122903.332535-1-nuno.sa@analog.com> <20220715122903.332535-13-nuno.sa@analog.com>
- <20220806192048.0ca41cc5@jic23-huawei> <20230116204452.il4gase2szipeexz@SoMainline.org>
-In-Reply-To: <20230116204452.il4gase2szipeexz@SoMainline.org>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Tue, 17 Jan 2023 10:53:19 +0200
-Message-ID: <CAHp75VdX9sFgn9STyzwcDCK1KYbU00ejFNcEP3FVnLk5J=Pktg@mail.gmail.com>
-Subject: Re: [PATCH v3 12/15] iio: adc: qcom-spmi-adc5: convert to device properties
-To: Marijn Suijten <marijn.suijten@somainline.org>
-Cc: Jonathan Cameron <jic23@kernel.org>, =?UTF-8?B?TnVubyBTw6E=?= <nuno.sa@analog.com>, 
-	openbmc@lists.ozlabs.org, linux-imx@nxp.com, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-iio@vger.kernel.org, 
-	linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, 
-	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, linux-arm-msm@vger.kernel.org, 
-	Gwendal Grignou <gwendal@chromium.org>, Saravanan Sekar <sravanhome@gmail.com>, 
-	Tomer Maimon <tmaimon77@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, 
-	Olivier Moysan <olivier.moysan@foss.st.com>, Tali Perry <tali.perry1@gmail.com>, 
-	Thara Gopinath <thara.gopinath@linaro.org>, Bjorn Andersson <bjorn.andersson@linaro.org>, 
-	Arnd Bergmann <arnd@arndb.de>, Benjamin Fair <benjaminfair@google.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Patrick Venture <venture@google.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabrice Gasnier <fabrice.gasnier@foss.st.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, 
-	Benson Leung <bleung@chromium.org>, Nancy Yuen <yuenn@google.com>, 
-	Miquel Raynal <miquel.raynal@bootlin.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Zhang Rui <rui.zhang@intel.com>, 
-	Linus Walleij <linus.walleij@linaro.org>, Christophe Branchereau <cbranchereau@gmail.com>, 
-	Cai Huoqing <cai.huoqing@linux.dev>, Avi Fishman <avifishman70@gmail.com>, 
-	Eugen Hristev <eugen.hristev@microchip.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Lars-Peter Clausen <lars@metafoo.de>, 
-	Guenter Roeck <groeck@chromium.org>, Paul Cercueil <paul@crapouillou.net>, 
-	Claudiu Beznea <claudiu.beznea@microchip.com>, Andy Gross <agross@kernel.org>, 
-	Amit Kucheria <amitk@kernel.org>, Michael Hennerich <Michael.Hennerich@analog.com>, 
-	Haibo Chen <haibo.chen@nxp.com>, Jishnu Prakash <quic_jprakash@quicinc.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v3 03/11] arm64: dts: mt8195: Add SCP core 1 node
+To: =?UTF-8?B?VGluZ0hhbiBTaGVuICjmsojlu7fnv7Ap?= <TingHan.Shen@mediatek.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ =?UTF-8?B?VGlmZmFueSBMaW4gKOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>,
+ "mchehab@kernel.org" <mchehab@kernel.org>,
+ =?UTF-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "andersson@kernel.org" <andersson@kernel.org>,
+ =?UTF-8?B?QW5kcmV3LUNUIENoZW4gKOmZs+aZuui/qik=?=
+ <Andrew-CT.Chen@mediatek.com>,
+ "mathieu.poirier@linaro.org" <mathieu.poirier@linaro.org>
+Cc: "linux-remoteproc@vger.kernel.org" <linux-remoteproc@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
+References: <20220927025606.26673-1-tinghan.shen@mediatek.com>
+ <20220927025606.26673-4-tinghan.shen@mediatek.com>
+ <cbed65b6-bd7c-b750-ac8e-504fe143a804@collabora.com>
+ <52e3bf53a6197f5b42724d7c5e706781ae8a6e56.camel@mediatek.com>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <52e3bf53a6197f5b42724d7c5e706781ae8a6e56.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230117_005359_005608_A3B6F790 
-X-CRM114-Status: GOOD (  23.43  )
+X-CRM114-CacheID: sfid-20230117_005603_501736_C97CE8DC 
+X-CRM114-Status: GOOD (  20.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,53 +91,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 16, 2023 at 10:44 PM Marijn Suijten
-<marijn.suijten@somainline.org> wrote:
->
-> On 2022-08-06 19:20:48, Jonathan Cameron wrote:
-> > On Fri, 15 Jul 2022 14:29:00 +0200
-> > Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
-> >
-> > > Make the conversion to firmware agnostic device properties. As part o=
-f
-> > > the conversion the IIO inkern interface 'of_xlate()' is also converte=
-d to
-> > > 'fwnode_xlate()'. The goal is to completely drop 'of_xlate' and hence=
- OF
-> > > dependencies from IIO.
-> > >
-> > > Signed-off-by: Nuno S=C3=A1 <nuno.sa@analog.com>
-> > > Acked-by: Linus Walleij <linus.walleij@linaro.org>
-> > > Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
-> > +CC Marijin who happend to post a patch for this driver that I just acc=
-epted
-> > and hence probably has hardware access.  Any chance of a test for this =
-series?
-> >
-> > If not, no problem as this is fairly mechanical and we have testing on =
-some of
-> > the other drivers using the new code.
-> >
-> > I'll probably queue this up in the meantime but it won't end up upstrea=
-m
-> > for a few weeks yet.
->
-> Jonathan,
->
-> This CC just surfaced in my inbox while searching for our current
-> discussion around missing labels in qcom-spmi-vadc - and on the side a
-> userspace @xx label name ABI break (in qcom-spmi-adc5) caused by this
-> patch's fwnode_get_name change - we could've caught it if I had not
-> accidentally marked it as read and/or forgot about it.  My apologies.
+Il 17/01/23 09:19, TingHan Shen (沈廷翰) ha scritto:
+> On Tue, 2022-09-27 at 13:01 +0200, AngeloGioacchino Del Regno wrote:
+>> Il 27/09/22 04:55, Tinghan Shen ha scritto:
+>>> Add the 2nd core(core 1) of MT8195 dual-core SCP to devicetree file.
+>>> Reserve some SRAM spaces for the core 1 image.
+>>>
+>>> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+>>> ---
+>>>    arch/arm64/boot/dts/mediatek/mt8195.dtsi | 14 +++++++++++++-
+>>>    1 file changed, 13 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>>> index 905d1a90b406..48d457bd39b8 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>>> @@ -760,12 +760,24 @@
+>>>    
+>>>    		scp: scp@10500000 {
+>>>    			compatible = "mediatek,mt8195-scp";
+>>> -			reg = <0 0x10500000 0 0x100000>,
+>>> +			reg = <0 0x10500000 0 0xa0000>,
+>>>    			      <0 0x10720000 0 0xe0000>,
+>>>    			      <0 0x10700000 0 0x8000>;
+>>>    			reg-names = "sram", "cfg", "l1tcm";
+>>>    			interrupts = <GIC_SPI 462 IRQ_TYPE_LEVEL_HIGH 0>;
+>>>    			status = "disabled";
+>>> +
+>>> +			#address-cells = <1>;
+>>> +			#size-cells = <1>;
+>>> +			ranges = <0x105a0000 0 0x105a0000 0x20000>;
+>>> +
+>>> +			scp_c1: scp-c1@105a0000 {
+>>> +				compatible = "mediatek,mt8195-scp-core";
+>>> +				reg = <0x105a0000 0x20000>;
+>>> +				reg-names = "sram";
+>>> +				interrupts = <GIC_SPI 463 IRQ_TYPE_LEVEL_HIGH 0>;
+>>> +				status = "disabled";
+>>> +			};
+>>
+>> I think that the best way of describing a dual-core SCP in devicetree would
+>> be either something like:
+>>
+>> scp: scp@10500000 {
+>> 	compatible = "mediatek,mt8195-scp";
+>> 	reg = <0 0x10500000 0 0xa0000>, <0 0x105a0000 0 0x20000>,
+>> 	      <0 0x10720000 0 0xe0000>, <0 0x10700000 0 0x8000>;
+>> 	reg-names = "sram", "sram-c1", "cfg", "l1tcm";
+>> 	interrupts = <GIC_SPI 462 IRQ_TYPE_LEVEL_HIGH 0>,
+>> 		     <GIC_SPI 463 IRQ_TYPE_LEVEL_HIGH 0>;
+>> 	status = "disabled";
+>> };
+>>
+>> ...but that may pose an issue when trying to assign different (or more instances
+>> of the same) subnode(s) to each core... for which, I'd be more for something like:
+>>
+>> scp: scp@10500000 {
+>> 	compatible = "mediatek,mt8195-scp";
+>> 	reg = <0 0x10720000 0 0xe0000>, <0 0x10700000 0 0x8000>;
+>> 	reg-names = "cfg", "l1tcm";
+>> 	#address-cells = <1>;
+>> 	#size-cells = <1>;
+>> 	ranges = <0 0 0x10500000 0x100000>;
+>> 	status = "disabled";
+>>
+>> 	scp_c0: scp-core@0 {
+>> 		compatible = "mediatek,mt8195-scp-core";
+>> 		reg = <0x0 0xa0000>;
+>> 		reg-names = "sram";
+>> 		interrupts = <GIC_SPI 462 IRQ_TYPE_LEVEL_HIGH 0>;
+>> 	};
+>>
+>> 	scp_c1: scp-core@a0000 {
+>> 		compatible = "mediatek,mt8195-scp-core";
+>> 		reg = <0xa0000 0x20000>;
+>> 		reg-names = "sram";
+>> 		interrupts = <GIC_SPI 463 IRQ_TYPE_LEVEL_HIGH 0>;
+>> 	};
+>> };
+>>
+>> Regards,
+>> Angelo
+>>
+>>
+> Hi Angelo,
+> 
+> I'm thinking about identifying the cores by the order of the sub nodes,
+> i.e. core 0 must be the first sub node and core 1 must be the second sub node,
+> because the scp cores in the example have the same compatible name.
+> 
+> I'm hesitant to make the sub nodes appear in a certain order. Is it appropriate?
+> Or, would it be more readable to create a new core id property? Or utilizing
+> different compatble strings for cores? I would appreciat it if you could share your opinion.
+> 
+> 
 
-Does the following addition to the top of the
-adc5_get_fw_channel_data() fix the issue?
+Assuming that in a future >2 cores architecture only the first core, which I will
+call "core 0" for commodity, will have "special treatment" and core 1, 2, 3...N
+will always be "interchangeable", I think that something like `mediatek,scp-leader`
+would work to identify the first core.
 
-+       name =3D devm_kasprintf(adc->dev, GFP_KERNEL, "%pfwP", fwnode);
-+       if (!name)
-+               return -ENOMEM;
-
---=20
-With Best Regards,
-Andy Shevchenko
+Cheers!
+Angelo
 
