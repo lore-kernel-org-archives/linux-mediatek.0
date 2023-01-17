@@ -4,82 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 947E1C54E76
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jan 2023 19:02:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CDCFC3DA78
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jan 2023 21:40:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5GAKTGu2Rc2KwjiMjjc/1NhEIw4ARfoigWPn3cBUCUA=; b=vqWSqW666uCRr2CW1ldy/PAo4Z
-	TSIpF1AyZr7sSNkwbt4pfXmxP4WiLBdwUzPrqrV781PDyGF2hJ8ZjKYds2pQq1N6JDEtf1VAypjoj
-	Q2KBhncLl01gxuOpKqRevvTK0ioD31l+tGZtewmCsHqD7k9s5/GPqZUxYuGWEfa6qfE5JInlJxJzc
-	cyJ39/oG9tgKak07nr9aJHSGGGpXBr89uQc/XgIc4tgp8hFU3thDIlvEwIY9oCvzi7O+LheSrt1jV
-	zX530NzAi5V4XjTyvwaDTtI3Wmq310MRXTlfKzUQ4W+gmtR0HSeYTXJcdxHuSR5noUbnLq1c0BGa3
-	zruAkepA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=a7g8tgfMvRpAaDtTVFt/qAubZuOqJNWo6+ViY1DTbIM=; b=aLezy3Qpmexh8CQszUuPSje+5U
+	RwI8MJqlf4Wo3e0xhOy38RuMYUIi82CG1hqg+p6vKcwZi0sf/YoXdje3OURlulacQdQdFgdAs4YJd
+	OOa+Uz5PvO1iZmgbV28GRXRX4mofD59H1Fokk8UrhNHrndpp3aAcDxWSs5VHbK1OG3HoAphRGamb/
+	cxtS/XLyuI9JB1+zmg2ZLGxyScsey2Yn1pdYoL4oIjcbkwW/MNRaUaY1eNe/jabooDco5g6zdCzMJ
+	Ix3EbyzCUGH97u3XEQmqg1j/AH0Qw6I/C75f7cuCo/qTqFwVTXWQ0BsN817tBjH7gOyGcwNc8J0n/
+	zFn+iSYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHrEM-00FXRV-Ab; Tue, 17 Jan 2023 19:02:46 +0000
-Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
+	id 1pHth7-00FzdA-2G; Tue, 17 Jan 2023 21:40:37 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHrD8-00FWQ4-L0; Tue, 17 Jan 2023 19:01:32 +0000
-Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id AE21A18835E0;
-	Tue, 17 Jan 2023 18:59:13 +0000 (UTC)
-Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id 9A4A1250007B;
-	Tue, 17 Jan 2023 18:59:13 +0000 (UTC)
-Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id 889F29EC000B; Tue, 17 Jan 2023 18:59:13 +0000 (UTC)
-X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
-Received: from fujitsu.vestervang (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
-	by smtp.gigahost.dk (Postfix) with ESMTPSA id E4C7591201E3;
-	Tue, 17 Jan 2023 18:59:12 +0000 (UTC)
-From: "Hans J. Schultz" <netdev@kapio-technology.com>
-To: davem@davemloft.net,
-	kuba@kernel.org
-Cc: netdev@vger.kernel.org,
-	"Hans J. Schultz" <netdev@kapio-technology.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com (maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER),
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	=?UTF-8?q?Cl=C3=A9ment=20L=C3=A9ger?= <clement.leger@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>,
-	Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Russell King <linux@armlinux.org.uk>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	linux-kernel@vger.kernel.org (open list),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-renesas-soc@vger.kernel.org (open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER),
-	bridge@lists.linux-foundation.org (moderated list:ETHERNET BRIDGE)
-Subject: [RFC PATCH net-next 2/5] net: dsa: propagate flags down towards drivers
-Date: Tue, 17 Jan 2023 19:57:11 +0100
-Message-Id: <20230117185714.3058453-3-netdev@kapio-technology.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230117185714.3058453-1-netdev@kapio-technology.com>
-References: <20230117185714.3058453-1-netdev@kapio-technology.com>
+	id 1pHtgw-00FzZn-IH
+	for linux-mediatek@lists.infradead.org; Tue, 17 Jan 2023 21:40:28 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pHtg0-0003Ts-5Q; Tue, 17 Jan 2023 22:39:28 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pHtfv-006lgx-TT; Tue, 17 Jan 2023 22:39:23 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pHtfv-00DhU5-7L; Tue, 17 Jan 2023 22:39:23 +0100
+Date: Tue, 17 Jan 2023 22:39:19 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	thierry.reding@gmail.com, krzysztof.kozlowski+dt@linaro.org
+Cc: robh+dt@kernel.org, matthias.bgg@gmail.com, john@phrozen.org,
+	sean.wang@mediatek.com, linux-pwm@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v1 1/2] arm64: dts: mediatek: mt7622: Add missing
+ pwm-cells to pwm node
+Message-ID: <20230117213919.56cl74ffxzdpdcgp@pengutronix.de>
+References: <20221128112028.58021-1-angelogioacchino.delregno@collabora.com>
+ <20221128112028.58021-2-angelogioacchino.delregno@collabora.com>
+ <20221202180932.5k3vymrwds5ssivq@pengutronix.de>
 MIME-Version: 1.0
-Organization: Westermo Network Technologies AB
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="reopnm6bu5cdz26m"
+Content-Disposition: inline
+In-Reply-To: <20221202180932.5k3vymrwds5ssivq@pengutronix.de>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230117_110131_053826_F304E49E 
-X-CRM114-Status: GOOD (  17.45  )
+X-CRM114-CacheID: sfid-20230117_134026_622720_A523024D 
+X-CRM114-Status: GOOD (  22.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,322 +78,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dynamic FDB flag needs to be propagated through the DSA layer to be
-added to drivers.
-Use a u16 for fdb flags for future use, so that other flags can also be
-sent the same way without having to change function interfaces.
 
-Signed-off-by: Hans J. Schultz <netdev@kapio-technology.com>
----
- include/net/dsa.h |  2 ++
- net/dsa/port.c    | 28 ++++++++++++++++------------
- net/dsa/port.h    |  8 ++++----
- net/dsa/slave.c   | 17 +++++++++++++----
- net/dsa/switch.c  | 18 ++++++++++++------
- net/dsa/switch.h  |  1 +
- 6 files changed, 48 insertions(+), 26 deletions(-)
+--reopnm6bu5cdz26m
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/include/net/dsa.h b/include/net/dsa.h
-index 96086289aa9b..f697d56e52d5 100644
---- a/include/net/dsa.h
-+++ b/include/net/dsa.h
-@@ -818,6 +818,8 @@ static inline bool dsa_port_tree_same(const struct dsa_port *a,
- 	return a->ds->dst == b->ds->dst;
- }
- 
-+#define DSA_FDB_FLAG_DYNAMIC		BIT(0)
-+
- typedef int dsa_fdb_dump_cb_t(const unsigned char *addr, u16 vid,
- 			      bool is_static, void *data);
- struct dsa_switch_ops {
-diff --git a/net/dsa/port.c b/net/dsa/port.c
-index 67ad1adec2a2..65b8c4470d59 100644
---- a/net/dsa/port.c
-+++ b/net/dsa/port.c
-@@ -976,12 +976,13 @@ int dsa_port_mtu_change(struct dsa_port *dp, int new_mtu)
- }
- 
- int dsa_port_fdb_add(struct dsa_port *dp, const unsigned char *addr,
--		     u16 vid)
-+		     u16 vid, u16 fdb_flags)
- {
- 	struct dsa_notifier_fdb_info info = {
- 		.dp = dp,
- 		.addr = addr,
- 		.vid = vid,
-+		.fdb_flags = fdb_flags,
- 		.db = {
- 			.type = DSA_DB_BRIDGE,
- 			.bridge = *dp->bridge,
-@@ -999,12 +1000,13 @@ int dsa_port_fdb_add(struct dsa_port *dp, const unsigned char *addr,
- }
- 
- int dsa_port_fdb_del(struct dsa_port *dp, const unsigned char *addr,
--		     u16 vid)
-+		     u16 vid, u16 fdb_flags)
- {
- 	struct dsa_notifier_fdb_info info = {
- 		.dp = dp,
- 		.addr = addr,
- 		.vid = vid,
-+		.fdb_flags = fdb_flags,
- 		.db = {
- 			.type = DSA_DB_BRIDGE,
- 			.bridge = *dp->bridge,
-@@ -1019,12 +1021,13 @@ int dsa_port_fdb_del(struct dsa_port *dp, const unsigned char *addr,
- 
- static int dsa_port_host_fdb_add(struct dsa_port *dp,
- 				 const unsigned char *addr, u16 vid,
--				 struct dsa_db db)
-+				 u16 fdb_flags, struct dsa_db db)
- {
- 	struct dsa_notifier_fdb_info info = {
- 		.dp = dp,
- 		.addr = addr,
- 		.vid = vid,
-+		.fdb_flags = fdb_flags,
- 		.db = db,
- 	};
- 
-@@ -1042,11 +1045,11 @@ int dsa_port_standalone_host_fdb_add(struct dsa_port *dp,
- 		.dp = dp,
- 	};
- 
--	return dsa_port_host_fdb_add(dp, addr, vid, db);
-+	return dsa_port_host_fdb_add(dp, addr, vid, 0, db);
- }
- 
--int dsa_port_bridge_host_fdb_add(struct dsa_port *dp,
--				 const unsigned char *addr, u16 vid)
-+int dsa_port_bridge_host_fdb_add(struct dsa_port *dp, const unsigned char *addr,
-+				 u16 vid, u16 fdb_flags)
- {
- 	struct net_device *master = dsa_port_to_master(dp);
- 	struct dsa_db db = {
-@@ -1065,17 +1068,18 @@ int dsa_port_bridge_host_fdb_add(struct dsa_port *dp,
- 			return err;
- 	}
- 
--	return dsa_port_host_fdb_add(dp, addr, vid, db);
-+	return dsa_port_host_fdb_add(dp, addr, vid, fdb_flags, db);
- }
- 
- static int dsa_port_host_fdb_del(struct dsa_port *dp,
- 				 const unsigned char *addr, u16 vid,
--				 struct dsa_db db)
-+				 u16 fdb_flags, struct dsa_db db)
- {
- 	struct dsa_notifier_fdb_info info = {
- 		.dp = dp,
- 		.addr = addr,
- 		.vid = vid,
-+		.fdb_flags = fdb_flags,
- 		.db = db,
- 	};
- 
-@@ -1093,11 +1097,11 @@ int dsa_port_standalone_host_fdb_del(struct dsa_port *dp,
- 		.dp = dp,
- 	};
- 
--	return dsa_port_host_fdb_del(dp, addr, vid, db);
-+	return dsa_port_host_fdb_del(dp, addr, vid, 0, db);
- }
- 
--int dsa_port_bridge_host_fdb_del(struct dsa_port *dp,
--				 const unsigned char *addr, u16 vid)
-+int dsa_port_bridge_host_fdb_del(struct dsa_port *dp, const unsigned char *addr,
-+				 u16 vid, u16 fdb_flags)
- {
- 	struct net_device *master = dsa_port_to_master(dp);
- 	struct dsa_db db = {
-@@ -1112,7 +1116,7 @@ int dsa_port_bridge_host_fdb_del(struct dsa_port *dp,
- 			return err;
- 	}
- 
--	return dsa_port_host_fdb_del(dp, addr, vid, db);
-+	return dsa_port_host_fdb_del(dp, addr, vid, fdb_flags, db);
- }
- 
- int dsa_port_lag_fdb_add(struct dsa_port *dp, const unsigned char *addr,
-diff --git a/net/dsa/port.h b/net/dsa/port.h
-index 9c218660d223..0a4f487e3c05 100644
---- a/net/dsa/port.h
-+++ b/net/dsa/port.h
-@@ -47,17 +47,17 @@ int dsa_port_vlan_msti(struct dsa_port *dp,
- 		       const struct switchdev_vlan_msti *msti);
- int dsa_port_mtu_change(struct dsa_port *dp, int new_mtu);
- int dsa_port_fdb_add(struct dsa_port *dp, const unsigned char *addr,
--		     u16 vid);
-+		     u16 vid, u16 fdb_flags);
- int dsa_port_fdb_del(struct dsa_port *dp, const unsigned char *addr,
--		     u16 vid);
-+		     u16 vid, u16 fdb_flags);
- int dsa_port_standalone_host_fdb_add(struct dsa_port *dp,
- 				     const unsigned char *addr, u16 vid);
- int dsa_port_standalone_host_fdb_del(struct dsa_port *dp,
- 				     const unsigned char *addr, u16 vid);
- int dsa_port_bridge_host_fdb_add(struct dsa_port *dp, const unsigned char *addr,
--				 u16 vid);
-+				 u16 vid, u16 fdb_flags);
- int dsa_port_bridge_host_fdb_del(struct dsa_port *dp, const unsigned char *addr,
--				 u16 vid);
-+				 u16 vid, u16 fdb_flags);
- int dsa_port_lag_fdb_add(struct dsa_port *dp, const unsigned char *addr,
- 			 u16 vid);
- int dsa_port_lag_fdb_del(struct dsa_port *dp, const unsigned char *addr,
-diff --git a/net/dsa/slave.c b/net/dsa/slave.c
-index aab79c355224..b6381baa1ff3 100644
---- a/net/dsa/slave.c
-+++ b/net/dsa/slave.c
-@@ -39,6 +39,7 @@ struct dsa_switchdev_event_work {
- 	 */
- 	unsigned char addr[ETH_ALEN];
- 	u16 vid;
-+	u16 fdb_flags;
- 	bool host_addr;
- };
- 
-@@ -3295,6 +3296,7 @@ static void dsa_slave_switchdev_event_work(struct work_struct *work)
- 		container_of(work, struct dsa_switchdev_event_work, work);
- 	const unsigned char *addr = switchdev_work->addr;
- 	struct net_device *dev = switchdev_work->dev;
-+	u16 fdb_flags = switchdev_work->fdb_flags;
- 	u16 vid = switchdev_work->vid;
- 	struct dsa_switch *ds;
- 	struct dsa_port *dp;
-@@ -3306,11 +3308,12 @@ static void dsa_slave_switchdev_event_work(struct work_struct *work)
- 	switch (switchdev_work->event) {
- 	case SWITCHDEV_FDB_ADD_TO_DEVICE:
- 		if (switchdev_work->host_addr)
--			err = dsa_port_bridge_host_fdb_add(dp, addr, vid);
-+			err = dsa_port_bridge_host_fdb_add(dp, addr,
-+							   vid, fdb_flags);
- 		else if (dp->lag)
- 			err = dsa_port_lag_fdb_add(dp, addr, vid);
- 		else
--			err = dsa_port_fdb_add(dp, addr, vid);
-+			err = dsa_port_fdb_add(dp, addr, vid, fdb_flags);
- 		if (err) {
- 			dev_err(ds->dev,
- 				"port %d failed to add %pM vid %d to fdb: %d\n",
-@@ -3322,11 +3325,12 @@ static void dsa_slave_switchdev_event_work(struct work_struct *work)
- 
- 	case SWITCHDEV_FDB_DEL_TO_DEVICE:
- 		if (switchdev_work->host_addr)
--			err = dsa_port_bridge_host_fdb_del(dp, addr, vid);
-+			err = dsa_port_bridge_host_fdb_del(dp, addr,
-+							   vid, fdb_flags);
- 		else if (dp->lag)
- 			err = dsa_port_lag_fdb_del(dp, addr, vid);
- 		else
--			err = dsa_port_fdb_del(dp, addr, vid);
-+			err = dsa_port_fdb_del(dp, addr, vid, fdb_flags);
- 		if (err) {
- 			dev_err(ds->dev,
- 				"port %d failed to delete %pM vid %d from fdb: %d\n",
-@@ -3364,6 +3368,7 @@ static int dsa_slave_fdb_event(struct net_device *dev,
- 	struct dsa_port *dp = dsa_slave_to_port(dev);
- 	bool host_addr = fdb_info->is_local;
- 	struct dsa_switch *ds = dp->ds;
-+	u16 fdb_flags = 0;
- 
- 	if (ctx && ctx != dp)
- 		return 0;
-@@ -3410,6 +3415,9 @@ static int dsa_slave_fdb_event(struct net_device *dev,
- 		   orig_dev->name, fdb_info->addr, fdb_info->vid,
- 		   host_addr ? " as host address" : "");
- 
-+	if (fdb_info->is_dyn)
-+		fdb_flags |= DSA_FDB_FLAG_DYNAMIC;
-+
- 	INIT_WORK(&switchdev_work->work, dsa_slave_switchdev_event_work);
- 	switchdev_work->event = event;
- 	switchdev_work->dev = dev;
-@@ -3418,6 +3426,7 @@ static int dsa_slave_fdb_event(struct net_device *dev,
- 	ether_addr_copy(switchdev_work->addr, fdb_info->addr);
- 	switchdev_work->vid = fdb_info->vid;
- 	switchdev_work->host_addr = host_addr;
-+	switchdev_work->fdb_flags = fdb_flags;
- 
- 	dsa_schedule_work(&switchdev_work->work);
- 
-diff --git a/net/dsa/switch.c b/net/dsa/switch.c
-index d5bc4bb7310d..9b0d6ce0f7da 100644
---- a/net/dsa/switch.c
-+++ b/net/dsa/switch.c
-@@ -239,7 +239,7 @@ static int dsa_port_do_mdb_del(struct dsa_port *dp,
- }
- 
- static int dsa_port_do_fdb_add(struct dsa_port *dp, const unsigned char *addr,
--			       u16 vid, struct dsa_db db)
-+			       u16 vid, u16 fdb_flags, struct dsa_db db)
- {
- 	struct dsa_switch *ds = dp->ds;
- 	struct dsa_mac_addr *a;
-@@ -283,7 +283,7 @@ static int dsa_port_do_fdb_add(struct dsa_port *dp, const unsigned char *addr,
- }
- 
- static int dsa_port_do_fdb_del(struct dsa_port *dp, const unsigned char *addr,
--			       u16 vid, struct dsa_db db)
-+			       u16 vid, u16 fdb_flags, struct dsa_db db)
- {
- 	struct dsa_switch *ds = dp->ds;
- 	struct dsa_mac_addr *a;
-@@ -410,7 +410,9 @@ static int dsa_switch_host_fdb_add(struct dsa_switch *ds,
- 								info->db);
- 			} else {
- 				err = dsa_port_do_fdb_add(dp, info->addr,
--							  info->vid, info->db);
-+							  info->vid,
-+							  info->fdb_flags,
-+							  info->db);
- 			}
- 			if (err)
- 				break;
-@@ -438,7 +440,9 @@ static int dsa_switch_host_fdb_del(struct dsa_switch *ds,
- 								info->db);
- 			} else {
- 				err = dsa_port_do_fdb_del(dp, info->addr,
--							  info->vid, info->db);
-+							  info->vid,
-+							  info->fdb_flags,
-+							  info->db);
- 			}
- 			if (err)
- 				break;
-@@ -457,7 +461,8 @@ static int dsa_switch_fdb_add(struct dsa_switch *ds,
- 	if (!ds->ops->port_fdb_add)
- 		return -EOPNOTSUPP;
- 
--	return dsa_port_do_fdb_add(dp, info->addr, info->vid, info->db);
-+	return dsa_port_do_fdb_add(dp, info->addr, info->vid,
-+				   info->fdb_flags, info->db);
- }
- 
- static int dsa_switch_fdb_del(struct dsa_switch *ds,
-@@ -469,7 +474,8 @@ static int dsa_switch_fdb_del(struct dsa_switch *ds,
- 	if (!ds->ops->port_fdb_del)
- 		return -EOPNOTSUPP;
- 
--	return dsa_port_do_fdb_del(dp, info->addr, info->vid, info->db);
-+	return dsa_port_do_fdb_del(dp, info->addr, info->vid,
-+				   info->fdb_flags, info->db);
- }
- 
- static int dsa_switch_lag_fdb_add(struct dsa_switch *ds,
-diff --git a/net/dsa/switch.h b/net/dsa/switch.h
-index 15e67b95eb6e..824ad7950785 100644
---- a/net/dsa/switch.h
-+++ b/net/dsa/switch.h
-@@ -55,6 +55,7 @@ struct dsa_notifier_fdb_info {
- 	const struct dsa_port *dp;
- 	const unsigned char *addr;
- 	u16 vid;
-+	u16 fdb_flags;
- 	struct dsa_db db;
- };
- 
--- 
-2.34.1
+Hello,
 
+On Fri, Dec 02, 2022 at 07:09:32PM +0100, Uwe Kleine-K=F6nig wrote:
+> On Mon, Nov 28, 2022 at 12:20:27PM +0100, AngeloGioacchino Del Regno wrot=
+e:
+> > Specify #pwm-cells on pwm@11006000 to make it actually usable.
+> >=20
+> > Fixes: ae457b7679c4 ("arm64: dts: mt7622: add SoC and peripheral relate=
+d device nodes")
+> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@co=
+llabora.com>
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt7622.dtsi | 1 +
+> >  1 file changed, 1 insertion(+)
+> >=20
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot=
+/dts/mediatek/mt7622.dtsi
+> > index 146e18b5b1f4..f321c6d0fd7c 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> > @@ -435,6 +435,7 @@ uart3: serial@11005000 {
+> >  	pwm: pwm@11006000 {
+> >  		compatible =3D "mediatek,mt7622-pwm";
+> >  		reg =3D <0 0x11006000 0 0x1000>;
+> > +		#pwm-cells =3D <2>;
+>=20
+> 3 should be possible, too. The driver does only support one
+> polarity, so it's not really needed, but would be nice for consistency?
+>=20
+> Thierry, what's your take here?
+>=20
+> Other than that: Who would pick this up, I assume it to go via an ARM
+> tree together with the 2nd patch in this series?
+
+The questions here are still open and both patches unapplied. :-\
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--reopnm6bu5cdz26m
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmPHFYQACgkQwfwUeK3K
+7Akv5gf/SJFYiqZQ3e3k7+kMNq/B+6Dm6vLLOrHhY7dXMcF3Xl9CD/eMuHJ3f23K
+J99iGKEB0DLxV5P33FS7xbJKdCUc9LuZSdVJyn0O38dbk3r0JkWRuVyU03KbQ1F5
+bklzciXjRNjn0GjeZVVNKt77U27aQvYCH6sTf3pwm3Daswr2sZLczSApMP/Hxmo4
+4JUU7HoWFUyFekbH1Sdc/b2eFi8gTgSMsfQ2tCjmwsIDYuvEKJag7VKn91D3SZhL
+/YZD5rSW+enlPaLQPqgl3LblyW7eyaaCnjwdY8VTNKzKqEHdxfDywhkD0uNMNzR5
+L/3BJO7uE2sGE+y9hMx8I6jtMiCRzw==
+=m6Kf
+-----END PGP SIGNATURE-----
+
+--reopnm6bu5cdz26m--
 
