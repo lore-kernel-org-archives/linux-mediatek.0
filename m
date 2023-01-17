@@ -4,198 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0400C3DA78
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jan 2023 13:41:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0C66C63797
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jan 2023 13:52:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8tzcj7YcBvmsXG1Iqf3XfpgVaGKs2epzXYS+rFPxnuU=; b=Y0alQsaMy4QbX74eFMyDM/ayWw
-	5ngDhM9+S7Md1eSfhmMDIV8v7ylCLz1QG2396X+3Ru1UR1Nv8AhQ7nRLkSF4JTbnH+bFDb3jbc4FJ
-	miBRyj7yKLo1qfS7PBmYFGVwJ8i4qAKS2bIjGT3UmmywGHIfcmR/O1dymepMAkEtthQ/0mXphcfgZ
-	UavvvLntJsBIRC6JsFZXUYD/Yh2IFZRRuU4RNs1DG7ZMsJ89heGLy/r2fdjqcrQwSxy3bdG5qdfoA
-	IzSvVHBfsW5WLWlq82I5DVC+Owxau/m5Zjskyw55wvPFUtkMXa3kQjMGmVEUS+BXYEs/Tkjv1Bg2r
-	5Gs8OCrQ==;
+	Content-Type:Subject:To:From:MIME-Version:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vgjmjcKuXP3RoqqniCwReaFJ8sbKhLTf3w6njJyfS3U=; b=Xpai+IzwBr8weDGS9UOKPbtItp
+	mwVsZRKsJ5SKFbJNuPzCy+rlAIHOXL3svwKZOdWnenWub3Hhh6W69ttu5NpOPPPIE005YIqUAJS18
+	S/ro1HVPWlPbrXRTEJ520T+h1LgmdtbHJIykyp5lK+m5jrG5RoERj3OI73ZpS99b5Sv7tLjLVnBpM
+	f0yFqaEdROqHZ/DmvgUSML2QRHCb7pQ6/2tbPPleKjMy4OJg1szCnKtTA+wGRnfv33PdPFjAmAlDD
+	+kcLOIFe0bcgV1cLxrE054ZSIOmVaVxz5CJ0PTDI3v1o5xEqORePCLsadtjaN38xH+hPfLYK1c4JK
+	UaGgU3Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHmDi-00EPzT-Nz; Tue, 17 Jan 2023 13:41:46 +0000
-Received: from lelv0142.ext.ti.com ([198.47.23.249])
+	id 1pHmNY-00ETUi-6u; Tue, 17 Jan 2023 13:51:56 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHmDf-00EPyH-2W; Tue, 17 Jan 2023 13:41:44 +0000
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
-	by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 30HDfg9Q043905;
-	Tue, 17 Jan 2023 07:41:42 -0600
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1673962902;
-	bh=8tzcj7YcBvmsXG1Iqf3XfpgVaGKs2epzXYS+rFPxnuU=;
-	h=Date:Subject:To:CC:References:From:In-Reply-To;
-	b=nl1+B6EplvVzZA15QZJmQnV0YdsSFFGL1wr8SRISR+q9H9TiP1ZqN85q/gNU2qBdv
-	 zNMgyU0UiBgblxBGfzA/wut5xt/feiJ9bD01HeFvMnc3ieIWAVaWt6ztcrzvYEKyWa
-	 GyKdUF/kYV5RCxvXO6tawJu2Duq9hvEqPPXSXWzk=
-Received: from DLEE103.ent.ti.com (dlee103.ent.ti.com [157.170.170.33])
-	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 30HDfg2n112619
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Tue, 17 Jan 2023 07:41:42 -0600
-Received: from DLEE107.ent.ti.com (157.170.170.37) by DLEE103.ent.ti.com
- (157.170.170.33) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.16; Tue, 17
- Jan 2023 07:41:41 -0600
-Received: from fllv0039.itg.ti.com (10.64.41.19) by DLEE107.ent.ti.com
- (157.170.170.37) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.16 via
- Frontend Transport; Tue, 17 Jan 2023 07:41:41 -0600
-Received: from [10.250.235.217] (ileaxei01-snat.itg.ti.com [10.180.69.5])
-	by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 30HDfBu1083638;
-	Tue, 17 Jan 2023 07:41:12 -0600
-Message-ID: <5c888a22-aa56-6d94-2d56-ac5c224f8565@ti.com>
-Date: Tue, 17 Jan 2023 19:11:10 +0530
+	id 1pHmN0-00ETJ5-Sq
+	for linux-mediatek@lists.infradead.org; Tue, 17 Jan 2023 13:51:25 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id d2so10519356wrp.8
+        for <linux-mediatek@lists.infradead.org>; Tue, 17 Jan 2023 05:51:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:subject:to:from:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=vgjmjcKuXP3RoqqniCwReaFJ8sbKhLTf3w6njJyfS3U=;
+        b=YAG1uRaqtgDqVmRAAA7CmSQFyBvkUJRr+PGzxcda44vL8c5IVl/NZ7T2YRwQ7BeqCO
+         wbWkpvDXfAvHeAvYxunxRGS/OhM33Oj1jawbxIvALZWDLUh+VlwQ7rA/allcbI76LYhf
+         YFbo9duRJ1GPpkr0APIyTgL8mqHujK4YR8kz0exs1PLAsXay8ZALGtfm3jHB76vAVfyu
+         MhLI7rYKOwVigX6wF6rQ6YNErdfsJ/JbPrWbqEeaxHmorvhEwJRlhL5NryyEkVWIuFjs
+         1jkBMlDaN93epFefkanDddYu/tDQoxssXzNDJJmzMlY/jSMaNz5+wyqxH+6gGfN+S1or
+         pOVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:subject:to:from:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=vgjmjcKuXP3RoqqniCwReaFJ8sbKhLTf3w6njJyfS3U=;
+        b=PLynAwwjlaz9dyxpbPK/+n7iPQFEg6FQcfBAzaMiAeVAwozqoEd5oW565wM6MQ7xUW
+         uygkWYa9a0hAaCqI8kLv+moFeClA3YyTuMji1qt24MTsfA8xreGZi1WzZFN03fFnWVcl
+         VrxWR971giNc6dMdn8EODXDHUA7ElAH+i4iM9nY7Rje7gYIcDAt7dOqkFFhuBwb1ADhF
+         DVzC9dGbE+b6TfR+55nW/jkyXFkvLIt873tnpKvYyiDx/UYbUC8vSNI6+otXSTebawOS
+         a+ZfFlYymcWQvv9bbPS5Orxftjftmb8G42pi9ojdfC8Pwbu2Eh/hRGarO78qANi5BFgS
+         sGFg==
+X-Gm-Message-State: AFqh2krr5XpdJ72qvIER/BHRvXhA2VfdE67Q89B6EXXdvpf6sPdyDa5A
+	XDw/RecHDTAHvprNIX69WqBbZI5Mq34=
+X-Google-Smtp-Source: AMrXdXvYdfo+hFeCtJ1eP1cNZ5pQ4yyr8gbaq3Masx7f3nVAxkOvtuVP7cNe9x57Z3ItH57wL2TX8w==
+X-Received: by 2002:a5d:6988:0:b0:2bd:f18d:e909 with SMTP id g8-20020a5d6988000000b002bdf18de909mr2888588wru.1.1673963478360;
+        Tue, 17 Jan 2023 05:51:18 -0800 (PST)
+Received: from DESKTOP-53HLT22 ([39.42.178.198])
+        by smtp.gmail.com with ESMTPSA id f2-20020adff982000000b002bde537721dsm10900971wrr.20.2023.01.17.05.51.16
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
+        Tue, 17 Jan 2023 05:51:17 -0800 (PST)
+Message-ID: <63c6a7d5.df0a0220.526d9.481b@mx.google.com>
+Date: Tue, 17 Jan 2023 05:51:17 -0800 (PST)
+X-Google-Original-Date: 17 Jan 2023 08:52:52 -0500
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: (subset) [PATCH v2 23/23] arm64: dts: Update cache properties for
- ti
-To: Pierre Gondois <pierre.gondois@arm.com>, <linux-kernel@vger.kernel.org>
-CC: Rob Herring <robh+dt@kernel.org>,
-        Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>,
-        Florian Fainelli <f.fainelli@gmail.com>,
-        Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-        Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-        Tsahee
- Zidenberg <tsahee@annapurnalabs.com>,
-        Antoine Tenart <atenart@kernel.org>,
-        Brijesh Singh <brijeshkumar.singh@amd.com>,
-        Suravee Suthikulpanit
-	<suravee.suthikulpanit@amd.com>,
-        Tom Lendacky <thomas.lendacky@amd.com>,
-        Neil
- Armstrong <neil.armstrong@linaro.org>,
-        Kevin Hilman <khilman@baylibre.com>,
-        Jerome Brunet <jbrunet@baylibre.com>,
-        Martin Blumenstingl
-	<martin.blumenstingl@googlemail.com>,
-        Khuong Dinh
-	<khuong@os.amperecomputing.com>,
-        Liviu Dudau <liviu.dudau@arm.com>,
-        Sudeep
- Holla <sudeep.holla@arm.com>,
-        Lorenzo Pieralisi <lpieralisi@kernel.org>,
-        William Zhang <william.zhang@broadcom.com>,
-        Anand Gore
-	<anand.gore@broadcom.com>,
-        Kursad Oney <kursad.oney@broadcom.com>,
-        =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
-        Alim Akhtar
-	<alim.akhtar@samsung.com>,
-        Shawn Guo <shawnguo@kernel.org>, Li Yang
-	<leoyang.li@nxp.com>,
-        Sascha Hauer <s.hauer@pengutronix.de>,
-        Pengutronix
- Kernel Team <kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>,
-        NXP
- Linux Team <linux-imx@nxp.com>, Chester Lin <clin@suse.com>,
-        =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
-        Matthias Brugger
-	<mbrugger@suse.com>,
-        NXP S32 Linux Team <s32@nxp.com>, Wei Xu
-	<xuwei5@hisilicon.com>,
-        Chanho Min <chanho.min@lge.com>, Andrew Lunn
-	<andrew@lunn.ch>,
-        Gregory Clement <gregory.clement@bootlin.com>,
-        Sebastian
- Hesselbarth <sebastian.hesselbarth@gmail.com>,
-        Lars Povlsen
-	<lars.povlsen@microchip.com>,
-        Steen Hegelund <Steen.Hegelund@microchip.com>,
-        Daniel Machon <daniel.machon@microchip.com>,
-        <UNGLinuxDriver@microchip.com>, Avi Fishman <avifishman70@gmail.com>,
-        Tomer Maimon <tmaimon77@gmail.com>, Tali Perry <tali.perry1@gmail.com>,
-        Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
-        Benjamin Fair <benjaminfair@google.com>,
-        Thierry Reding <thierry.reding@gmail.com>,
-        Jonathan Hunter
-	<jonathanh@nvidia.com>,
-        Andy Gross <agross@kernel.org>,
-        Bjorn Andersson
-	<andersson@kernel.org>,
-        Konrad Dybcio <konrad.dybcio@somainline.org>,
-        Geert
- Uytterhoeven <geert+renesas@glider.be>,
-        Magnus Damm <magnus.damm@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
-        Kunihiko Hayashi
-	<hayashi.kunihiko@socionext.com>,
-        Masami Hiramatsu <mhiramat@kernel.org>,
-        Jisheng Zhang <jszhang@kernel.org>, Nishanth Menon <nm@ti.com>,
-        Tero Kristo
-	<kristo@kernel.org>, Viorel Suman <viorel.suman@nxp.com>,
-        Abel Vesa
-	<abelvesa@kernel.org>, Zhou Peng <eagle.zhou@nxp.com>,
-        Shenwei Wang
-	<shenwei.wang@nxp.com>, Peng Fan <peng.fan@nxp.com>,
-        Ming Qian
-	<ming.qian@nxp.com>, Tim Harvey <tharvey@gateworks.com>,
-        Adam Ford
-	<aford173@gmail.com>, Lucas Stach <l.stach@pengutronix.de>,
-        Li Jun
-	<jun.li@nxp.com>, Richard Zhu <hongxing.zhu@nxp.com>,
-        Markus Niebel
-	<Markus.Niebel@ew.tq-group.com>,
-        Joakim Zhang <qiangqing.zhang@nxp.com>, Marek Vasut <marex@denx.de>,
-        Laurent Pinchart
-	<laurent.pinchart@ideasonboard.com>,
-        Alexander Stein
-	<alexander.stein@ew.tq-group.com>,
-        Paul Elder <paul.elder@ideasonboard.com>,
-        Martin Kepplinger <martink@posteo.de>,
-        David Heidelberg <david@ixit.cz>,
-        Oliver Graute <oliver.graute@kococonnector.com>,
-        Liu Ying
-	<victor.liu@nxp.com>, Wei Fang <wei.fang@nxp.com>,
-        Clark Wang
-	<xiaoning.wang@nxp.com>, Jacky Bai <ping.bai@nxp.com>,
-        Chris Packham
-	<chris.packham@alliedtelesis.co.nz>,
-        Vadym Kochan <vadym.kochan@plvision.eu>,
-        Sameer Pujar <spujar@nvidia.com>,
-        Mikko Perttunen <mperttunen@nvidia.com>,
-        Prathamesh Shete <pshete@nvidia.com>, Akhil R <akhilrajeev@nvidia.com>,
-        Sumit
- Gupta <sumitg@nvidia.com>,
-        Diogo Ivo <diogo.ivo@tecnico.ulisboa.pt>,
-        Vidya
- Sagar <vidyas@nvidia.com>, Ashish Mhetre <amhetre@nvidia.com>,
-        Johan Jonker
-	<jbx6244@gmail.com>,
-        Christopher Obbard <chris.obbard@collabora.com>,
-        Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-        Aswani Reddy
-	<aswani.reddy@samsung.com>,
-        Shashank Prashar <s.prashar@samsung.com>,
-        Arjun K
- V <arjun.kv@samsung.com>, <devicetree@vger.kernel.org>,
-        <linux-rpi-kernel@lists.infradead.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-amlogic@lists.infradead.org>,
-        <linux-samsung-soc@vger.kernel.org>,
-        <linux-mediatek@lists.infradead.org>, <openbmc@lists.ozlabs.org>,
-        <linux-tegra@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-        <linux-realtek-soc@lists.infradead.org>,
-        <linux-renesas-soc@vger.kernel.org>,
-        <linux-rockchip@lists.infradead.org>
-References: <20221107155825.1644604-1-pierre.gondois@arm.com>
- <20221107155825.1644604-24-pierre.gondois@arm.com>
-Content-Language: en-US
-From: "Raghavendra, Vignesh" <vigneshr@ti.com>
-In-Reply-To: <20221107155825.1644604-24-pierre.gondois@arm.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+From: archiefederico530@gmail.com
+To: linux-mediatek@lists.infradead.org
+Subject: Any Drawings for Estimate?
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230117_054143_233543_73F722D2 
-X-CRM114-Status: GOOD (  12.41  )
+X-CRM114-CacheID: sfid-20230117_055122_964273_6A1EBBFC 
+X-CRM114-Status: UNSURE (   4.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -210,43 +87,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Pierre Gondois,
+=0D=0AHi,=0D=0A=0D=0ADo you have any estimating projects for us=0D=0A=
+=0D=0AIf you are holding a project, please send over the plans in=
+ PDF format for getting a firm quote on your project.=0D=0A=0D=0A=
+Let me know if you have any questions or if you would like to see=
+ some samples.=0D=0A=0D=0AWe will be happy to answer any question=
+s you have. Thank you=0D=0A=0D=0ARegards,=0D=0AArchie Federico=0D=0A=
+Crossland Estimation, INC
 
-On 11/7/2022 9:27 PM, Pierre Gondois wrote:
-> The DeviceTree Specification v0.3 specifies that the cache node
-> 'compatible' and 'cache-level' properties are 'required'. Cf.
-> s3.8 Multi-level and Shared Cache Nodes
-> The 'cache-unified' property should be present if one of the
-> properties for unified cache is present ('cache-size', ...).
-> 
-> Update the Device Trees accordingly.
-
-[...]
-
-[23/23] arm64: dts: Update cache properties for ti
-        commit: 880932e657ffc677c1b053a947afa87ffed1b29d
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent up the chain
-during the next merge window (or sooner if it is a relevant bug fix),
-however if problems are discovered then the patch may be dropped or
-reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/ti/linux.git
---
-Vignesh
-
-
-[...]
 
