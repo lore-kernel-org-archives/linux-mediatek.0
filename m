@@ -4,67 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F224C38147
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 15:59:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4557C38159
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 16:13:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uYLwATUgXkSjEpYITC3xrrUBVVSKhXYf3klEB5MK1WI=; b=08qXIZWr3jj1wkPRkTu8/8N/4/
-	Tsu70YNm9ckUIsU63BZ064gcgb3iZ5rczRmjg4iqhJLLdkxZPLQ779Gb1hEEW5UcfkHjuyapy4x7u
-	pB3lAR08q+0YoMkrFbcAJCghOCGtfLHZg2uCD1z+YI4j+6LSeYBAecj3P+pc80w/GivehYtrU9QH6
-	TVX48KsSQvTTlyQ12oGyUA9Bknd+mGJHI3KPUiLGnx4BxL1gnRqgc/rLYdKJ26tkoSMfLR20N/NrH
-	UFJcRyIcz0EMh9sXZmoz6iJBC8YlsPTYtOl1l1xc/PogjDB1NxPLJUx5u5NmOofHVMVvwIan9Ggec
-	X8dJwScQ==;
+	bh=ov5wqGbWe4h37M5QW4tQbi+7/3gsF/xkhbs/pkJrkfA=; b=CsA0Db4aalWrcf1CsrJbB4mxb2
+	+yATL/kWpJhc6luJzTOJdLAvZnGlj3lpqsxytiRN+BOmliKmOOmupST4rWXGWnir5wldZFZiti9Bj
+	so2e+67p16/ig5+O1lUysTDeNi7BjGDfKsmnWq4DE0FlmavNXhaqvZOKmqgEaUGZYoJ0BWVmFcw5B
+	Ip9VPWxnWM52KLDN5Dt1frxIStD//pyDktHYcNl0d81ERvz5JMfnGEWUNlCjueA5ExTXQsV8a+dkh
+	bt7wQcMaOq19r7o3IDZrxXVP3F96ev5j/bg9PZFwil3EqYrOqpQpXpYV8IobpkNI2OsMmajvWIAB8
+	WanstiWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIAqj-001jqO-E3; Wed, 18 Jan 2023 15:59:41 +0000
-Received: from mail-oa1-f49.google.com ([209.85.160.49])
+	id 1pIB4D-001mgZ-T1; Wed, 18 Jan 2023 16:13:37 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIAqg-001jpA-Id; Wed, 18 Jan 2023 15:59:39 +0000
-Received: by mail-oa1-f49.google.com with SMTP id 586e51a60fabf-15f83e0fc63so2460548fac.11;
-        Wed, 18 Jan 2023 07:59:38 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=uYLwATUgXkSjEpYITC3xrrUBVVSKhXYf3klEB5MK1WI=;
-        b=M49cX0CFvsa8Bz3xgng4ls7JczTqM3/HontI82t7EYsxBBJEEcYAuVjwtgggNxFWy2
-         PE16IQqTAPFLRut8QuptQi/UvjcuHBlEtoyc9DRzIqNb23LrlaSxKdfBh4N3whspzU2m
-         Qq8Ctm+bwfKZvb5Jo6yY4mBiQw+Dz/KQKhJuGK0neyb1ENCMZK9cIUpBZYBJI05v+Jg2
-         NwfF0LMBphSFJPWpF30cxPQ+kAojAoaeXXtPk0Wy6MQxs+MuLJSXqvI5ZOmSAtv6gaoH
-         Udne73zsUoJb4Dhj+COGQqtXuhoLvH5VKGrPhkvvIyj/SuqYgm55q0dAgu1D3J9Ux6bV
-         NdPQ==
-X-Gm-Message-State: AFqh2ko0I8DnH3ls+2pzryl9eqJcnnG+OsdhfL/4+0JG5bPwb3ZRjjLe
-	ump/69dsX+eoRkK9yO4F7g==
-X-Google-Smtp-Source: AMrXdXtNXcgtaf4kqxp3LkeZgl009U5TgsdRR7APA5uSgwVb7Iat9myzCJOSH4NszFG9TWuteb8Vig==
-X-Received: by 2002:a05:6870:4b9b:b0:15f:29ff:b84b with SMTP id lx27-20020a0568704b9b00b0015f29ffb84bmr4426352oab.53.1674057577328;
-        Wed, 18 Jan 2023 07:59:37 -0800 (PST)
-Received: from robh_at_kernel.org ([4.31.143.193])
-        by smtp.gmail.com with ESMTPSA id e23-20020aca1317000000b0035028730c90sm1293795oii.1.2023.01.18.07.59.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Jan 2023 07:59:37 -0800 (PST)
-Received: (nullmailer pid 80474 invoked by uid 1000);
-	Wed, 18 Jan 2023 15:59:36 -0000
-Date: Wed, 18 Jan 2023 09:59:36 -0600
-From: Rob Herring <robh@kernel.org>
-To: Moudy Ho <moudy.ho@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Michael Turquette <mturquette@baylibre.com>, Project_Global_Chrome_Upstream_Group@mediatek.com, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org
-Subject: Re: [PATCH v6 2/4] dt-bindings: arm: mediatek: mmsys: Add support
- for MT8195 VPPSYS
-Message-ID: <167405753490.79458.14830841571648305293.robh@kernel.org>
-References: <20230118031509.29834-1-moudy.ho@mediatek.com>
- <20230118031509.29834-3-moudy.ho@mediatek.com>
+	id 1pIB4B-001mfK-48
+	for linux-mediatek@lists.infradead.org; Wed, 18 Jan 2023 16:13:36 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id A0398618B8;
+	Wed, 18 Jan 2023 16:13:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3636C433D2;
+	Wed, 18 Jan 2023 16:13:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1674058413;
+	bh=KzPKGXPnXYOt358vnWUhJJgGbXzewwE0wiwFyChRPAs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=pqlMuPUs1rSqgu9V7AoGGTaxHdzuQNDhYekVWF9R8U7qtKFMJ9BqCzqlBA4kmFw5T
+	 aAn2jfssrzYOZxt2fQO8H9gcZJIT6b03YcaTaMNgQFZe1wB+4vEW9CN0m3iqqGhVC7
+	 E2eARM0nFxAoaVtGIHQVE1tDGKotQWgYeS5O871R/JaAjs7yFm3WKyRoFHQBBWmy3u
+	 0X6V5FDvHLuoKvpAkyRrVFTYsPoNgsgg3vKztgxrmA9nrxVDnN1ZRYVG2P0gkZpSbb
+	 54qeDf/YpRlYN3HqPaQyrpEnpY3CA26GalJsFRhItkJpcJ2i2hAT+6MYl7UGLA64/f
+	 xdmREhRau8QWQ==
+Date: Wed, 18 Jan 2023 17:13:29 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Shayne Chen <shayne.chen@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>,
+	linux-wireless <linux-wireless@vger.kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	Bo Jiao <Bo.Jiao@mediatek.com>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH 06/13] wifi: mt76: add EHT rate stats for ethtool
+Message-ID: <Y8gaqTqI/un8dgZd@lore-desk>
+References: <20230109165731.682-1-shayne.chen@mediatek.com>
+ <20230109165731.682-7-shayne.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="17+pKBupczAMysgX"
 Content-Disposition: inline
-In-Reply-To: <20230118031509.29834-3-moudy.ho@mediatek.com>
+In-Reply-To: <20230109165731.682-7-shayne.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_075938_639749_78380830 
-X-CRM114-Status: GOOD (  13.86  )
+X-CRM114-CacheID: sfid-20230118_081335_279943_ECF298FE 
+X-CRM114-Status: GOOD (  18.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,27 +78,88 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Wed, 18 Jan 2023 11:15:07 +0800, Moudy Ho wrote:
-> For MT8195, VPPSYS0 and VPPSYS1 are 2 display pipes with
-> hardware differences in power domains, clocks and subsystem counts,
-> which should be determined by compatible names.
-> 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+--17+pKBupczAMysgX
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> Add support to get EHT rate stats from ethtool.
+> This is the preliminary patch to add EHT support for mt7996.
+>=20
+> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 > ---
->  .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml        | 2 ++
->  1 file changed, 2 insertions(+)
-> 
+>  drivers/net/wireless/mediatek/mt76/mt76.h        | 2 +-
+>  drivers/net/wireless/mediatek/mt76/mt7996/main.c | 6 ++++++
+>  2 files changed, 7 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wire=
+less/mediatek/mt76/mt76.h
+> index b3fd3abfdd9f..3d3c68b9e1cf 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+> @@ -272,7 +272,7 @@ enum mt76_phy_type {
+> =20
+>  struct mt76_sta_stats {
+>  	u64 tx_mode[__MT_PHY_TYPE_MAX];
+> -	u64 tx_bw[4];		/* 20, 40, 80, 160 */
+> +	u64 tx_bw[5];		/* 20, 40, 80, 160, 320 */
 
+Hi Shayne,
 
-Please add Acked-by/Reviewed-by tags when posting new versions. However,
-there's no need to repost patches *only* to add the tags. The upstream
-maintainer will do that for acks received on the version they apply.
+I think this change will break mt7915 ethtool support. In particular it will
+break tx_bw for loop in mt76_ethtool_worker().
 
-If a tag was not added on purpose, please state why and what changed.
+Regards,
+Lorenzo
 
-Missing tags:
+>  	u64 tx_nss[4];		/* 1, 2, 3, 4 */
+>  	u64 tx_mcs[16];		/* mcs idx */
+>  	u64 tx_bytes;
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7996/main.c
+> index c423b052e4f4..9ea2e1198477 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+> @@ -1084,10 +1084,14 @@ static const char mt7996_gstrings_stats[][ETH_GST=
+RING_LEN] =3D {
+>  	"v_tx_mode_he_ext_su",
+>  	"v_tx_mode_he_tb",
+>  	"v_tx_mode_he_mu",
+> +	"v_tx_mode_eht_su",
+> +	"v_tx_mode_eht_trig",
+> +	"v_tx_mode_eht_mu",
+>  	"v_tx_bw_20",
+>  	"v_tx_bw_40",
+>  	"v_tx_bw_80",
+>  	"v_tx_bw_160",
+> +	"v_tx_bw_320",
+>  	"v_tx_mcs_0",
+>  	"v_tx_mcs_1",
+>  	"v_tx_mcs_2",
+> @@ -1100,6 +1104,8 @@ static const char mt7996_gstrings_stats[][ETH_GSTRI=
+NG_LEN] =3D {
+>  	"v_tx_mcs_9",
+>  	"v_tx_mcs_10",
+>  	"v_tx_mcs_11",
+> +	"v_tx_mcs_12",
+> +	"v_tx_mcs_13",
+>  };
+> =20
+>  #define MT7996_SSTATS_LEN ARRAY_SIZE(mt7996_gstrings_stats)
+> --=20
+> 2.25.1
+>=20
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+--17+pKBupczAMysgX
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
 
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY8gaqQAKCRA6cBh0uS2t
+rCjbAP9gamsCGrHCI7lRONjPAy30luSazvHeHFDCzXXxtwIDygEA7kk0hRdlqvZe
+feHpFAfzcmJZ+zzwlnA6XyJkvOhfAgo=
+=bmhD
+-----END PGP SIGNATURE-----
+
+--17+pKBupczAMysgX--
 
