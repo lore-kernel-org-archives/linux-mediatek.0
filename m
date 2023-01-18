@@ -4,94 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1530BC32793
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 12:48:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA438C46467
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 12:52:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gK8o2Y7reHAMOMVQV1NSBRgNT3cGc7DMsQikEldiSbI=; b=Q7hiH1BRg3/700Rt4Kw76ZUTuj
-	e5fsHaZYApY8c2hImGytWV00lQ9NYpiaC36hA2f+DZ8PkdPOJhDaow1TzBJI0a1veZg0LOLzCLkd/
-	5sScZf85oxBbJDBtIRPYjdINO84+jxwQjUuTJA3lx2A+Qf8Kn+1qaCmjI0CcdqLcelD9eF8X5LOfn
-	nK5ASkwwf7ijqGCgdliP8nTNuKHGBvGKS+wJ5QADbUahPCnEe7JFuY5rEheEF/oOiMXCxLHRrf+cb
-	oFKcxjadrYNQ9TfAijRRPq60fgZA2bLTb1RZFMxr5nrAUlKJcE/2Iq8gbef9o4gEF7FYTvteHn/R1
-	qD8ZBM+g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=y3f6LY4L/lLnz5JjIGjIGZChBIxAYM9KExA0bJx6y18=; b=1LZlLivN30BVbQ
+	gndJqWv6VeWB4rTvHYLNjMYSQhIWwvPoQVnOzaEZCp32SBGiP6+Q+VU3Gnr632qpWgPMTh3b//l1/
+	VuRM3t6qFYCnvPdUd47CBmFRKn+ZbiPMn2xzYB062FsL4H4qHWSyvvcJwhghAF0vpA9wyIOxiNjVH
+	+rgZXEvGAyshUYnyF+VMUS4WEot7St2XHUG7gBPPva4ByNIJRxmvMebdQxGoNMmokeVioVOS8MYM1
+	E7seVaIp5+Ab+74gL+DVp/mQg9pxvNUbM3EAA8tvTi1ODBaLRMZjtEY3wp2cMvl7PRCkjiT+LcVj4
+	keDT38lxWaG4IupsfJjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI7re-000x4h-KV; Wed, 18 Jan 2023 12:48:26 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1pI7vW-000yZB-5H; Wed, 18 Jan 2023 12:52:26 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI7qz-000woY-Fg
-	for linux-mediatek@lists.infradead.org; Wed, 18 Jan 2023 12:47:48 +0000
-Received: by mail-wm1-x336.google.com with SMTP id c10-20020a05600c0a4a00b003db0636ff84so1456837wmq.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 18 Jan 2023 04:47:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=gK8o2Y7reHAMOMVQV1NSBRgNT3cGc7DMsQikEldiSbI=;
-        b=jtbzq6oRKAc24SZ+A3rDy+tQplPXJxB3XqhjdRocPvAQVmH7d4Y5IqNPLvywIBa4qn
-         9vGbE/jjtt8BzzUgKJfYNTwp/i5CG/zYnWXe4bLRLuVA+syACJg/i9ojwv/pB7jefG97
-         zO+PqHcKWrUKcnaSzlu6OpI9ZSCyMmB6OTDMiW0AsNm5ipqHzI3xYObWBMt9IfD4Dnty
-         jJJop/zZyG+OA82/cMAu50KKtHYUBDtTxt67NIImVfM1HffdIFT+eDzflIiqoOola5l7
-         GvV/kGv41OathEVFB6UxTjVGOLvnlf6K0LWG9HlAWz5gdq9zwYKXZUrHoHob6M/TqQkE
-         AVsA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=gK8o2Y7reHAMOMVQV1NSBRgNT3cGc7DMsQikEldiSbI=;
-        b=LJNX1G1koAFD3xHeVxWH1NAU92EM6AaO39QLzgfQ54Pg8v5SHrmmPF0cbhgCLs27C+
-         HrHtwgxwHE3pCSo9uH3/tObBBEqlzxxZG/oQDnS6HcTZ0vBPxiP/LsHy98iv5iqqZjm3
-         JakLHkLDcZILPUsZ6OMM8oicHJCCRr4huSE+UfASm+bqqG/Ww9cDXmzxEIRtL2zFHGB5
-         QvJIs0g9dokclEC21jdwa3s9myJxCHkkGx5mEr0l5FZJJso8DIUCJOYb/5tvMLiGnsCv
-         mtv0AJDE6IH8oGfoA1DxRsl6w6JMv4joi2IK5YCGm4TzlcsJPPdYx0d/Z8tM4IeYx9Rg
-         hmww==
-X-Gm-Message-State: AFqh2kojGv3BsJ9Q65OAZZdFAKSjXR3ICQxN7PSMt/U/e4SRFopggNI4
-	vQGhqOZtARP0cg2dtUBfAreMHA==
-X-Google-Smtp-Source: AMrXdXuDAKEnalP/OhK8Zy5tavc5exXluG1UAm4pHSXwlJdzB7qa5JtQH+D7YJlwjtCHFr+bpPo96A==
-X-Received: by 2002:a05:600c:35d5:b0:3db:fc4:d018 with SMTP id r21-20020a05600c35d500b003db0fc4d018mr3028764wmq.40.1674046061596;
-        Wed, 18 Jan 2023 04:47:41 -0800 (PST)
-Received: from [192.168.1.109] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id f17-20020a1c6a11000000b003d9fba3c7a4sm1782153wmc.16.2023.01.18.04.47.40
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 18 Jan 2023 04:47:41 -0800 (PST)
-Message-ID: <392acd9d-ab7e-a5d0-67cd-162f49d2e6b6@linaro.org>
-Date: Wed, 18 Jan 2023 13:47:39 +0100
+	id 1pI7um-000yEJ-Jg; Wed, 18 Jan 2023 12:51:44 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DBCD46602DFF;
+	Wed, 18 Jan 2023 12:51:35 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1674046296;
+	bh=lRImklMheY/mkerDhgF3t+gOPWvx98JSfHVl/z55Mwg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=eV9a7C/DAkgpHzFu+lxyYL9ggSGKrRwZI+eY2S0maBO7wTwByBqCpS52K8nbm3Pj0
+	 JkRVQzRW5k8xNiffu4Rrw8MEL2T+1Uud/zsmyVcI1+vaDCMnsJcVi1zk2INR1XH+YD
+	 bVW5JZYgehWiVirH7/uiIyIon/rMRkBK/PqOVybCRoE/RPB07kVbzSwV+/XAf1M6FH
+	 LqKnApM5JEFyTHxIParFd1sGZIQxgkDvocRx6ENY57BlEdkZ3t8KpUADULE7X4Uv0Y
+	 EslnVXL/SHC6sVwi36ridWXDoDXYGpqigm+g57dp7XCQHZUdW+5oxzjb3T8/v8gMsp
+	 YfEiNh4sx8laA==
+Message-ID: <0488e63a-aa81-08ea-4b32-2bb608c957ea@collabora.com>
+Date: Wed, 18 Jan 2023 13:51:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.0
-Subject: Re: [RESEND v3 01/13] dt-binding: mediatek: add bindings for MediaTek
- mt8195 MDP3 components
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v4 1/2] thermal: mediatek: use function pointer for
+ raw_to_mcelsius
 Content-Language: en-US
-To: =?UTF-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "mchehab@kernel.org" <mchehab@kernel.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-References: <20230116032147.23607-1-moudy.ho@mediatek.com>
- <20230116032147.23607-2-moudy.ho@mediatek.com>
- <f24a54f1-2720-3345-9596-bb8d388ba16f@linaro.org>
- <bd6bbc3d126a39dd8b8499e891b152c25b6713a7.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <bd6bbc3d126a39dd8b8499e891b152c25b6713a7.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+To: Daniel Golle <daniel@makrotopia.org>, linux-pm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, "Rafael J. Wysocki" <rafael@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria
+ <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+References: <cover.1674012985.git.daniel@makrotopia.org>
+ <69c17529e8418da3eec703dde31e1b01e5b0f7e8.1674012985.git.daniel@makrotopia.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <69c17529e8418da3eec703dde31e1b01e5b0f7e8.1674012985.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_044745_643560_91A721C8 
-X-CRM114-Status: GOOD (  15.11  )
+X-CRM114-CacheID: sfid-20230118_045140_819936_EC181DB3 
+X-CRM114-Status: UNSURE (   8.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,79 +76,19 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: John Crispin <john@phrozen.org>, Steven Liu <steven.liu@mediatek.com>, Chad Monroe <chad@monroe.io>, Henry Yen <Henry.Yen@mediatek.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18/01/2023 09:52, Moudy Ho (何宗原) wrote:
-> On Mon, 2023-01-16 at 09:10 +0100, Krzysztof Kozlowski wrote:
->> On 16/01/2023 04:21, Moudy Ho wrote:
+Il 18/01/23 04:55, Daniel Golle ha scritto:
+> Instead of having if-else logic selecting either raw_to_mcelsius_v1 or
+> raw_to_mcelsius_v2 in mtk_thermal_bank_temperature introduce a function
+> pointer raw_to_mcelsius to struct mtk_thermal which is initialized in the
+> probe function.
 > 
-> (snip)
-> 
->>> +  mediatek,gce-client-reg:
->>> +    description:
->>> +      The register of client driver can be configured by gce with
->>> 4 arguments
->>> +      defined in this property, such as phandle of gce, subsys id,
->>> +      register offset and size.
->>> +      Each subsys id is mapping to a base address of display
->>> function blocks
->>> +      register which is defined in the gce header
->>> +      include/dt-bindings/gce/<chip>-gce.h.
->>> +    $ref: /schemas/types.yaml#/definitions/phandle-array
->>> +    maxItems: 1
->>
->> items with items syntax instead:
->>
->>
-> https://urldefense.com/v3/__https://elixir.bootlin.com/linux/v5.18-rc1/source/Documentation/devicetree/bindings/soc/samsung/exynos-usi.yaml*L42__;Iw!!CTRNKA9wMg0ARbw!lcferrFFP-mshDHNL-rwJLgNKDrXF9fXoljpqL30k5YKTNvCwuC3webzR32VnQQoPeFvSvAewNkeupcT4mjdE_roxWUo$ 
->>  
->>
->>> +
-> 
-> (snip)
-> 
->>> +
->>> +  mediatek,gce-client-reg:
->>> +    description:
->>> +      The register of client driver can be configured by gce with
->>> 4 arguments
->>> +      defined in this property, such as phandle of gce, subsys id,
->>> +      register offset and size.
->>> +      Each subsys id is mapping to a base address of display
->>> function blocks
->>> +      register which is defined in the gce header
->>> +      include/dt-bindings/gce/<chip>-gce.h.
->>
->> Full, real path please, so it could be validated with tools.
->>
->>
->> Best regards,
->> Krzysztof
->>
-> 
-> Hi Krzysztof,
-> 
-> Sorry to bug you again about this property, could it be changed to
-> following form.
-> 
->     mediatek,gce-client-reg:
->       $ref: /schemas/types.yaml#/definitions/phandle-array
->       items:
->         items:
->           - description: phandle of GCE
->           - description: GCE subsys id
->           - description: register offset
->           - description: register size
->       description:
->         ... defined in <include/dt-bindings/gce/mt8195-gce.h>.
->      maxItems: 1 
->   
-> Also, is the include header path still necessary in this form?
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-No.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Best regards,
-Krzysztof
 
 
