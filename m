@@ -4,75 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A688C32793
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 13:33:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 746F1C32793
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 13:59:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r/MdaMfGpngTvDj1TEFnHjyrcQTvG4jCt3QryBUQJFc=; b=MQ8jqx5xamvqcxcfOYwFXHw4OZ
-	MvZTEV0ZKzDXYCd7AyxqAOnNfgUKu9kCYvyCFGB1CKl/GvQjBpjvaP5CHugWS7KpAGy+ASv/5i1gq
-	TRvLVQ511eunvqS+LeoUdertcal2BQvgp8Du8o/4Y5s8DDJejpwJQxOqBfTglowxiFmI4TijyDBCl
-	wU23C79gBoPkqnH7mPSBshu0RqJyLGGtA/1mTHKvPibY+rJGzMPZLtqlof+QONjEyHD0jyk/1lGDo
-	d9dN6KwfedJJMt+9IqcQmRBhPOSQP0OG52w40x5+aZXQ4zwLa6OZZM+Z/XiJC7+/vXGa5WRdEEq2R
-	ZhcPo/fA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=M+9UDLe8IGzJ0ltnHTHAlmb3jmqlL+bWfwS38VOWRDM=; b=cfjwQTaUllEy7u14Hp9opK0hYC
+	R2zMYNp1lbUTtossKj1seLVLtChhV+TIwdJywv8LC5QlfuZrFzaFnEp5L2dUtHD+arOMLu7hqfU8o
+	YXcNqOeod7hERs9qdEp7OG7Y2WssY2NOx4YOg4x3GFAKSKmla4pa58Bi5nfc51PEZdXeeaV47MmQk
+	S4mKuXvcGab8zlEeXxhaZ8fcpA3s0y+9kDcT1phjzImtB4O/H7ZEr9SpdaJ3qeGGAU/JYTMBrl2g1
+	WJ8Jyt598mLrzeF/fIz7VpRbZPq8/neW5P9wJjQlGpmB1R5L1hr4LcXYYUCD88NiTKl//NWHP2ZLX
+	Beivcz1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI8ZS-001AoW-9I; Wed, 18 Jan 2023 13:33:42 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1pI8yV-001Ecx-Jq; Wed, 18 Jan 2023 13:59:35 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI8Yv-001ARg-6Z
-	for linux-mediatek@lists.infradead.org; Wed, 18 Jan 2023 13:33:11 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id mp20so36664318ejc.7
-        for <linux-mediatek@lists.infradead.org>; Wed, 18 Jan 2023 05:33:05 -0800 (PST)
+	id 1pI8yR-001Eb9-3i
+	for linux-mediatek@lists.infradead.org; Wed, 18 Jan 2023 13:59:34 +0000
+Received: by mail-ed1-x533.google.com with SMTP id w14so32403403edi.5
+        for <linux-mediatek@lists.infradead.org>; Wed, 18 Jan 2023 05:59:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=streamunlimited.com; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=r/MdaMfGpngTvDj1TEFnHjyrcQTvG4jCt3QryBUQJFc=;
-        b=ZZupgezhFoK3Ma5R4scdDL1xnc4rtd41/9W6aJRWZax9QBq3W0G3zCGVJW0U42iCYd
-         4KvJbYbw4CQi67BClvaNwX37mzcqLlr0nmJnmb8jvbyaQXvQkAtNOap+C+bD8nXs+OR8
-         3toqCE8yeR4NEL9Ne0r+XcH19jWXeAMlNKwv0=
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=M+9UDLe8IGzJ0ltnHTHAlmb3jmqlL+bWfwS38VOWRDM=;
+        b=1Yrklex0hWqxQshAdSOn5FBUHdEwe5v1D2VVJATCsyANedBsekxqZsOgSoIYgMhACk
+         jpLi6Kar05vbbfU1QWTm0UaW3DUImpXi/9uulrVC/0iQp3+CEK0VYUbYmoqSkco8U3cH
+         1j8GFC6sNuamhEeDfe6v1cDWebJyiUw3tbNDyRflXez3gmckCyB2he4VRTKB9zLNaKdj
+         02DCTAi+4PrErw4GtXDNhGsbZIn78tsYhKe/VgiaCZaKGXXhVEahAAt+FrolRj7gBTqd
+         9smDDDNk0+rxHLDzgxnPUiQX6taU1RDQhLKFp66Zpc4Hicx0ou4rCvu393+faw+ZspYw
+         7L1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=r/MdaMfGpngTvDj1TEFnHjyrcQTvG4jCt3QryBUQJFc=;
-        b=0sMN7hOHyGsm2F9JC465hHwdB//dD0RstpGGfpG4vrtlwVMaJH3biWEmnQQWHpau3A
-         surX2tlNoNvosLLgG7/KN/yg74fxvX0Rj1wfLX5AJBgdvRMtPzQzXYqvS4xavkwtrrHl
-         DsHBgfopVvKCGGwyYQqH8IOFf9Tp5YkgeXo2pLvMlQtFUsPFjxL0xjORFgfHWk15o+8x
-         t6OGBzDWMANdP8oSfFqYecToxHxk6Mav2+nLuESGOiIb6/9PPcUP49yjr63Od6Sn9HuQ
-         /WkyyT/BbZv0ZtrGXpLS8Nqefkhc/UU+zkN/Vpf1tB6RIeQ6dZl4Gzb6AmxctiIg7IH1
-         18Rw==
-X-Gm-Message-State: AFqh2krEGHKFtaTX5CNndEct0APYPK2MtUw/I6EqIp86+WNpbGuCg4a2
-	xASveM5HTIPzIoOyjtYk64W+Lm8lRLe8P0QgUPH9Gw==
-X-Google-Smtp-Source: AMrXdXty6aY2Hc4VxG7Ode8zCbjODFHEqzOLgr86xygYZq3+W86ERvY0w5qF42m7zwo4OhQfVchNKrC1JPZn0ehrxtI=
-X-Received: by 2002:a17:906:7109:b0:84d:1502:a8b4 with SMTP id
- x9-20020a170906710900b0084d1502a8b4mr553373ejj.295.1674048784788; Wed, 18 Jan
- 2023 05:33:04 -0800 (PST)
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=M+9UDLe8IGzJ0ltnHTHAlmb3jmqlL+bWfwS38VOWRDM=;
+        b=s345iwEkvBBSCEl1Zo3e+ie0FCpv+7cEZk9OehtY1lbEBl07F60eBU0cA95znXcVH/
+         vQf9en4zHEcvHEaWyGDflqwkqxA3+6AdcI3o+QbOSB8HWC72t86Okbt3NUISKZstRiFw
+         eiXUwOD3iab/CYUtfzh9gJZO5UhZ8IIu/eJXKWesVQp0Go+Kludz9L0nFiE6n3hNVENi
+         hn2fjplEHD2PPi2w8af+XNzXmBlh0DY8JefJPYLz4Pm3Fu0UN0AfFgXP3U1v3LZ+omCO
+         pFtb3ttB4Zudr9f4wmKY6ahktPY9CIZ2Y96qTz/y+JpwHjbOK9DLvugwB27YOJJOU4D3
+         vPxQ==
+X-Gm-Message-State: AFqh2kos0T+RNY+OfGbTDkHKNpG+LD4d2uW+F9MFr62GP1zObMqByqOl
+	Dv96KFIamdhSUvixUue7TOp9pXgINAGRCQIbDoqTEQ==
+X-Google-Smtp-Source: AMrXdXu/A6FHaef0aqsRpArgPbbmmheGUwPjIIOVBznoNlW1oFKmK0vB8k+GU6/w/NMXHLan+xdJmDueT7V+rkMZSaE=
+X-Received: by 2002:a05:6402:1:b0:498:dfe5:49aa with SMTP id
+ d1-20020a056402000100b00498dfe549aamr550020edu.398.1674050364722; Wed, 18 Jan
+ 2023 05:59:24 -0800 (PST)
 MIME-Version: 1.0
-References: <52861a84-0fe2-37f0-d66a-145f2ebe1d79@gmail.com>
- <20221214134620.3028726-1-peter.suti@streamunlimited.com> <c6863a3e-8855-50fe-25cb-0b38bc3a05e0@gmail.com>
- <CACMGZgZY4Zb+3vHUDAS0+3r55K4_J40dtbsTPTFZMd6duBikpQ@mail.gmail.com> <7c4aa0d2-d8e9-416b-b2ad-f5c3c8ea33de@gmail.com>
-In-Reply-To: <7c4aa0d2-d8e9-416b-b2ad-f5c3c8ea33de@gmail.com>
-From: Peter Suti <peter.suti@streamunlimited.com>
-Date: Wed, 18 Jan 2023 14:32:53 +0100
-Message-ID: <CACMGZgaS7z2YoViA3jV-gVBvASSq1maiGj_6hfrJQ3zr69esgQ@mail.gmail.com>
-Subject: Re: [PATCH v3] mmc: meson-gx: fix SDIO interrupt handling
-To: Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, linux-mmc@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20230112152855.216072-1-bchihi@baylibre.com> <20230112152855.216072-5-bchihi@baylibre.com>
+ <feab4ff4-b874-aa10-2031-ad6b84cbc004@collabora.com>
+In-Reply-To: <feab4ff4-b874-aa10-2031-ad6b84cbc004@collabora.com>
+From: Balsam CHIHI <bchihi@baylibre.com>
+Date: Wed, 18 Jan 2023 14:58:46 +0100
+Message-ID: <CAGuA+ooxTf-j957gQ1zRe2-+u2kphaaLGvTDi1=kit5Q3bKOxA@mail.gmail.com>
+Subject: Re: [PATCH v10 4/6] thermal/drivers/mediatek: Add the Low Voltage
+ Thermal Sensor driver
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: daniel.lezcano@linaro.org, rafael@kernel.org, amitk@kernel.org, 
+	rui.zhang@intel.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	khilman@baylibre.com, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, james.lo@mediatek.com, 
+	rex-bc.chen@mediatek.com
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_053309_268435_767524CF 
-X-CRM114-Status: GOOD (  29.93  )
+X-CRM114-CacheID: sfid-20230118_055931_409547_EF9071ED 
+X-CRM114-Status: GOOD (  55.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,69 +91,544 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 12, 2023 at 10:27 PM Heiner Kallweit <hkallweit1@gmail.com> wrote:
->
-> On 09.01.2023 12:52, Peter Suti wrote:
-> > On Wed, Dec 14, 2022 at 10:33 PM Heiner Kallweit <hkallweit1@gmail.com> wrote:
-> >>
-> >> On 14.12.2022 14:46, Peter Suti wrote:
-> >>>
-> >>> diff --git a/drivers/mmc/host/meson-gx-mmc.c b/drivers/mmc/host/meson-gx-mmc.c
-> >>> index 6e5ea0213b47..7d3ee2f9a7f6 100644
-> >>> --- a/drivers/mmc/host/meson-gx-mmc.c
-> >>> +++ b/drivers/mmc/host/meson-gx-mmc.c
-> >>> @@ -1023,6 +1023,22 @@ static irqreturn_t meson_mmc_irq(int irq, void *dev_id)
-> >>>       if (ret == IRQ_HANDLED)
-> >>>               meson_mmc_request_done(host->mmc, cmd->mrq);
-> >>>
-> >>> +     /*
-> >>> +     * Sometimes after we ack all raised interrupts,
-> >>> +     * an IRQ_SDIO can still be pending, which can get lost.
-> >>> +     *
-> >>
-> >> A reader may scratch his head here and wonder how the interrupt can get lost,
-> >> and why adding a workaround instead of eliminating the root cause for losing
-> >> the interrupt. If you can't provide an explanation why the root cause for
-> >> losing the interrupt can't be fixed, presumably you would have to say that
-> >> you're adding a workaround for a suspected silicon bug.
-> > After talking to the manufacturer, we got the following explanation
-> > for this situation:
->
-> To which manufacturer did you talk, Marvell or Amlogic?
+Hi Angelo,
 
-Amlogic
+On Mon, Jan 16, 2023 at 11:50 AM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 12/01/23 16:28, bchihi@baylibre.com ha scritto:
+> > From: Balsam CHIHI <bchihi@baylibre.com>
+> >
+> > The Low Voltage Thermal Sensor (LVTS) is a multiple sensors, multi
+> > controllers contained in a thermal domain.
+> >
+> > A thermal domains can be the MCU or the AP.
+> >
+> > Each thermal domains contain up to seven controllers, each thermal
+> > controller handle up to four thermal sensors.
+> >
+> > The LVTS has two Finite State Machines (FSM), one to handle the
+> > functionin temperatures range like hot or cold temperature and another
+> > one to handle monitoring trip point. The FSM notifies via interrupts
+> > when a trip point is crossed.
+> >
+> > The interrupt is managed at the thermal controller level, so when an
+> > interrupt occurs, the driver has to find out which sensor triggered
+> > such an interrupt.
+> >
+> > The sampling of the thermal can be filtered or immediate. For the
+> > former, the LVTS measures several points and applies a low pass
+> > filter.
+> >
+> > Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+> > ---
+> >   drivers/thermal/mediatek/Kconfig            |   15 +
+> >   drivers/thermal/mediatek/Makefile           |    1 +
+> >   drivers/thermal/mediatek/lvts_thermal.c     | 1244 ++++++++++++++++++=
++
+> >   include/dt-bindings/thermal/mediatek-lvts.h |   19 +
+> >   4 files changed, 1279 insertions(+)
+> >   create mode 100644 drivers/thermal/mediatek/lvts_thermal.c
+> >   create mode 100644 include/dt-bindings/thermal/mediatek-lvts.h
+> >
+
+..snip..
+
+> > +
+> > +static irqreturn_t lvts_ctrl_irq_handler(struct lvts_ctrl *lvts_ctrl)
+> > +{
+> > +     irqreturn_t iret =3D IRQ_NONE;
+> > +     u32 value, masks[] =3D { 0x0009001F, 0X000881F0, 0x00247C00, 0x1F=
+C00000 };
+>
+> Please, no magic numbers around.
+>
+
+These number are explained in the comment bellow.
+This is part of it :
+      * sensor 3 interrupt: 0001 1111 1100 0000 0000 0000 0000 0000
+      *                  =3D> 0x1FC00000
+      * sensor 2 interrupt: 0000 0000 0010 0100 0111 1100 0000 0000
+      *                  =3D> 0x00247C00
+      * sensor 1 interrupt: 0000 0000 0001 0001 0000 0011 1110 0000
+      *                  =3D> 0X000881F0
+      * sensor 0 interrupt: 0000 0000 0000 1001 0000 0000 0001 1111
+      *                  =3D> 0x0009001F
+
+> > +     int i;
+> > +
+> > +     /*
+> > +      * Interrupt monitoring status
+> > +      *
+> > +      * LVTS_MONINTST
+> > +      *
+> > +      * Bits:
+>
+> You're describing the register with nice words, but there's another way t=
+o do
+> the same that will be even more effective.
+>
+> /*
+>   * LVTS MONINT: Interrupt Monitoring register
+>   * Each bit describes the enable status of per-sensor interrupts.
+>   */
+> #define LVTS_MONINT_THRES_COLD  BIT(0)  /* Cold threshold */
+> #define LVTS_MONINT_THRES_HOT   BIT(1)  /* Hot threshold */
+> #define LVTS_MONINT_OFFST_LOW   BIT(2)  /* Low offset */
+> #define LVTS_MONINT_OFFST_HIGH  BIT(3)  /* High offset */
+> #define LVTS_MONINT_OFFST_NTH   BIT(4)  /* Normal To Hot */
+> #define EVERYTHING_ELSE ........................
+>
+> #define LVTS_MONINT_SNS0_MASK   GENMASK( ... )
+> #define LVTS_MONINT_SNS1_MASK   GENMASK .....
+>
+> /* Find a better name for this one */
+> #define LVTS_MONINT_EN_IRQS     ( LVTS_MONINT_THRES_COLD | LVTS_MONINT_TH=
+RES_HOT |
+>                                   LVTS_MONINT_OFFST_LOW ..... etc etc)
+>
+
+Given the complexity of the controller and the number of registers,
+if we create a define per bits, we will end up with a huge list of
+defines (~300).
+I don't think that will help for the readability.
+
+> > +      *
+> > +      * 31 : Interrupt for stage 3
+> > +      * 30 : Interrupt for stage 2
+> > +      * 29 : Interrupt for state 1
+> > +      * 28 : Interrupt using filter on sensor 3
+> > +      *
+
+..snip..
+
+> > +      *
+> > +      *  3 : Interrupt high offset interrupt on sensor 0
+> > +      *  2 : Interrupt low offset interrupt on sensor 0
+> > +      *  1 : Interrupt hot threshold on sensor 0
+> > +      *  0 : Interrupt cold threshold on sensor 0
+> > +      *
+> > +      * We are interested in the sensor(s) responsible of the
+> > +      * interrupt event. We update the thermal framework with the
+> > +      * thermal zone associated with the sensor. The framework will
+> > +      * take care of the rest whatever the kind of interrupt, we
+> > +      * are only interested in which sensor raised the interrupt.
+> > +      *
+> > +      * sensor 3 interrupt: 0001 1111 1100 0000 0000 0000 0000 0000
+> > +      *                  =3D> 0x1FC00000
+> > +      * sensor 2 interrupt: 0000 0000 0010 0100 0111 1100 0000 0000
+> > +      *                  =3D> 0x00247C00
+> > +      * sensor 1 interrupt: 0000 0000 0001 0001 0000 0011 1110 0000
+> > +      *                  =3D> 0X000881F0
+> > +      * sensor 0 interrupt: 0000 0000 0000 1001 0000 0000 0001 1111
+> > +      *                  =3D> 0x0009001F
+> > +      */
+> > +     value =3D readl(LVTS_MONINTSTS(lvts_ctrl->base));
+> > +
+> > +     /*
+> > +      * Let's figure out which sensors raised the interrupt
+> > +      *
+> > +      * NOTE: the masks array must be ordered with the index
+> > +      * corresponding to the sensor id eg. index=3D0, mask for
+> > +      * sensor0.
+> > +      */
+> > +     for (i =3D 0; i < ARRAY_SIZE(masks); i++) {
+> > +
+> > +             if (!(value & masks[i]))
+>
+> Questions for you:
+>
+> 1. Are the masks always the same for all SoCs?
+
+The LVTS controller is not SoC specific.
+The mask is controller specific whatever the SoC version.
+
+> 2. Do they correspond to what we set in lvts_irq_init()?
+
+Not exactly, we set LVTS_MONINT and the controller sets the LVTS_MONINTSTS.
+The content will be different with what we set and what we get.
 
 >
-> > "wifi may have dat1 interrupt coming in, without this the dat1
-> > interrupt would be missed"
+> I'd expect future new SoCs to have different masks... and since lvts_irq_=
+init() is
+> actually "playing with" interrupts register(s), with one of them (LVTS_MO=
+NINT)
+> having the same layout as this one, I would place all of the initializati=
+on in
+> that function instead.
 >
-> I don't understand this sentence. W/o the interrupt coming in
-> the interrupt would be missed? Can you explain it?
+> This means that we'd initialize those masks at lvts_irq_init() time, in a=
+ struct
+> member, and read it back in this interrupt handler: like that, we get tha=
+t a bit
+> more ordered and generally more readable.
+>
 
-So the "without this" part of that sentence referred to the patch.
-Which means that without the patch, the interrupt can be missed.
+No. Actually, what will change is on which sensor a thermal zone is tie to,
+and that is handled already by the device tree configuration.
+
+> > +                     continue;
+> > +
+> > +             thermal_zone_device_update(lvts_ctrl->sensors[i].tz,
+> > +                                        THERMAL_TRIP_VIOLATED);
+> > +             iret |=3D IRQ_HANDLED;
+> > +     }
+> > +
+> > +     /*
+> > +      * Write back to clear the interrupt status (W1C)
+> > +      */
+> > +     writel(value, LVTS_MONINTSTS(lvts_ctrl->base));
+> > +
+> > +     return iret;
+> > +}
+> > +
+> > +/*
+> > + * Temperature interrupt handler. Even if the driver supports more
+> > + * interrupt modes, we use the interrupt when the temperature crosses
+> > + * the hot threshold the way up and the way down (modulo the
+> > + * hysteresis).
+> > + *
+> > + * Each thermal domain has a couple of interrupts, one for hardware
+> > + * reset and another one for all the thermal events happening on the
+> > + * different sensors.
+> > + *
+> > + * The interrupt is configured for thermal events when crossing the
+> > + * hot temperature limit. At each interrupt, we check in every
+> > + * controller if there is an interrupt pending.
+> > + */
+> > +static irqreturn_t lvts_irq_handler(int irq, void *data)
+> > +{
+> > +     struct lvts_domain *lvts_td =3D data;
+> > +     irqreturn_t iret =3D IRQ_NONE;
+> > +     int i;
+> > +
+> > +     for (i =3D 0; i < lvts_td->num_lvts_ctrl; i++)
+> > +             iret |=3D lvts_ctrl_irq_handler(lvts_td->lvts_ctrl);
+>
+> Please do *not* OR your function calls! While this is surely fine here in
+> this function and for this particular case, it's generally bad practice
+> and shall be avoided.
+>
+
+I understand that could be prone to errors.
+I can propose this alternative but it looks less elegant than OR'ing the re=
+sult.
+Do you have a suggestion to improve this code snippet?
+
+> > +
+> > +     return iret;
+> > +}
+> > +
+> > +static struct thermal_zone_device_ops lvts_ops =3D {
+> > +     .get_temp =3D lvts_get_temp,
+> > +     .set_trips =3D lvts_set_trips,
+> > +};
+> > +
+>
+> ..snip..
+>
+> > +
+> > +static int lvts_irq_init(struct lvts_ctrl *lvts_ctrl)
+> > +{
+> > +     u32 value;
+> > +
+> > +     /*
+> > +      * LVTS_PROTCTL : Thermal Protection Sensor Selection
+> > +      *
+> > +      * Bits:
+> > +      *
+> > +      * 19-18 : Sensor to base the protection on
+> > +      * 17-16 : Strategy:
+> > +      *         00 : Average of 4 sensors
+> > +      *         01 : Max of 4 sensors
+> > +      *         10 : Selected sensor with bits 19-18
+> > +      *         11 : Reserved
+> > +      */
+> > +     value =3D BIT(16);
+> > +     writel(value, LVTS_PROTCTL(lvts_ctrl->base));
+> > +
+> > +     /*
+> > +      * LVTS_PROTTA : Stage 1 temperature threshold
+> > +      * LVTS_PROTTB : Stage 2 temperature threshold
+> > +      * LVTS_PROTTC : Stage 3 temperature threshold
+> > +      *
+> > +      * Bits:
+> > +      *
+> > +      * 14-0: Raw temperature threshold
+> > +      *
+> > +      * writel(0x0, LVTS_PROTTA(lvts_ctrl->base));
+> > +      * writel(0x0, LVTS_PROTTB(lvts_ctrl->base));
+> > +      */
+> > +     writel(lvts_ctrl->hw_tshut_raw_temp, LVTS_PROTTC(lvts_ctrl->base)=
+);
+> > +
+> > +     /*
+> > +      * LVTS_MONINT : Interrupt configuration register
+> > +      *
+> > +      * The LVTS_MONINT register layout is the same as the LVTS_MONINT=
+STS
+> > +      * register, except we set the bits to enable the interrupt.
+> > +      */
+> > +     value =3D 0x9FBF7BDE;
+>
+>         u32 val;
+>
+>         val =3D FIELD_PREP(LVTS_MONINT_SNS0_MASK, LVTS_MONINT_EN_IRQS);
+>         val |=3D FIELD_PREP(LVTS_MONINT_SNS1_MASK, LVTS_MONINT_EN_IRQS);
+>
+>         ... etc
+>
+>         writel(val, ...... )
+>
+
+OK, I'll change it accordingly.
+
+> > +     writel(value, LVTS_MONINT(lvts_ctrl->base));
+> > +
+> > +     return 0;
+> > +}
+> > +
+>
+> ..snip..
+>
+> > +
+> > +static int lvts_ctrl_initialize(struct device *dev, struct lvts_ctrl *=
+lvts_ctrl)
+> > +{
+> > +     /*
+> > +      * Write device mask: 0xC1030000
+> > +      */
+> > +     u32 cmds[] =3D {
+> > +             0xC1030E01, 0xC1030CFC, 0xC1030A8C, 0xC103098D, 0xC10308F=
+1,
+> > +             0xC10307A6, 0xC10306B8, 0xC1030500, 0xC1030420, 0xC103030=
+0,
+> > +             0xC1030030, 0xC10300F6, 0xC1030050, 0xC1030060, 0xC10300A=
+C,
+> > +             0xC10300FC, 0xC103009D, 0xC10300F1, 0xC10300E1
+> > +     };
+> ...what is this long list of commands?
+>
+> Why 0xC103_0000? Describe that please.
+>
+
+AFAIU, based on the documentation, the configuration register can be
+read or write.
+When we write it, we set the different bits corresponding to a write sequen=
+ce
+which is 0xC1030000.
+The documentation gives the register layout but does not explain how it wor=
+ks.
+
+> Also, why is this not a platform data constant?
+>
+
+It is not a platform data, it is a controller data.
+Whatever the SoC the configuration sequence will be the same.
+
+> Example:
+> struct lvts_plat {
+>         const struct lvts_ctrl_data *ctrl_data;
+>         u8 num_ctrl_data;
+>         const u16 device_mask;
+>         const u16 *init_cmds;
+>         u8 num_init_cmds;
+> }
+>
+> where device_mask gets set to 0xc103 and init_cmds is an array containing
+> the low-16 (0x0e01, 0x0cfc, ...), and where this function would simply do
+> something like
+>
+>         lvts_write_config(lvts_ctrl, plat->device_mask, init_cmds, num_in=
+it_cmds);
+>
+> ... and where lvts_write_config() does something like:
+>
+>         for (i =3D 0; i < num_cmds; i++) {
+>                 u32 val =3D device_mask | init_cmds[i];
+>                 writel(val, LVTS_CONFIG ...)
+>         }
+> > +
+> > +     lvts_write_config(lvts_ctrl, cmds, ARRAY_SIZE(cmds));
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static int lvts_ctrl_calibrate(struct device *dev, struct lvts_ctrl *l=
+vts_ctrl)
+> > +{
+> > +     int i;
+> > +     void __iomem *lvts_edata[] =3D {
+>
+> Can we constify this?
+>
+
+Constifying "void __iomem *lvts_edata[]" generates the following
+compilation warning :
+drivers/thermal/mediatek/lvts_thermal.c:835:47: warning: passing
+argument 2 of =E2=80=98writel=E2=80=99 discards =E2=80=98const=E2=80=99 qua=
+lifier from pointer target
+type [-Wdiscarded-qualifiers]
+  835 |   writel(lvts_ctrl->calibration[i], lvts_edata[i]);
+      |                                     ~~~~~~~~~~^~~
+
+> > +             LVTS_EDATA00(lvts_ctrl->base),
+> > +             LVTS_EDATA01(lvts_ctrl->base),
+> > +             LVTS_EDATA02(lvts_ctrl->base),
+> > +             LVTS_EDATA03(lvts_ctrl->base)
+> > +     };
+> > +
+> > +     /*
+> > +      * LVTS_EDATA0X : Efuse calibration reference value for sensor X
+> > +      *
+> > +      * Bits:
+> > +      *
+> > +      * 20-0 : Efuse value for normalization data
+> > +      */
+> > +     for (i =3D 0; i < LVTS_SENSOR_MAX; i++)
+> > +             writel(lvts_ctrl->calibration[i], lvts_edata[i]);
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static int lvts_ctrl_configure(struct device *dev, struct lvts_ctrl *l=
+vts_ctrl)
+> > +{
+> > +     u32 period_unit =3D (118 * 1000) / (256 * 38);
+>
+> #define SOMETHING       118
+> #define SOMETHING_ELSE  1000
+> #define ....
+>
+> const u32 period_unit =3D (SOMETHING * SOMETHING_ELSE) / ....
+>
+
+Constifying "u32 period_unit" generates the following compilation warning :
+./include/asm-generic/io.h:273:61: note: expected =E2=80=98volatile void *=
+=E2=80=99
+but argument is of type =E2=80=98const void *=E2=80=99
+  273 | static inline void writel(u32 value, volatile void __iomem *addr)
+      |                                      ~~~~~~~~~~~~~~~~~~~~~~~^~~~
+
+> > +     u32 grp_interval =3D 1;
+> > +     u32 flt_interval =3D 1;
+> > +     u32 sensor_interval =3D 1;
+> > +     u32 hw_filter =3D 0x2;
+> > +     u32 value;
+> > +
+>
+> ...snip...
+>
+> > +
+> > +static struct lvts_ctrl_data mt819x_lvts_data_ctrl[] =3D {
+>
+> No wildcards. Please, rename this to give the name of the oldest SoC
+> that uses these values. Assuming that it is MT8192.... mt8192_lvts_data_c=
+trl[]
+>
+
+OK, it Will be mt8195_lvts_data_ctrl[].
+
+> > +     {
+> > +             .cal_offset =3D { 0x4, 0x7 },
+> > +             .lvts_sensor =3D {
+> > +                     { .dt_id =3D MT819x_MCU_BIG_CPU0 },
+> > +                     { .dt_id =3D MT819x_MCU_BIG_CPU1 }
+> > +             },
+> > +             .num_lvts_sensor =3D 2,
+> > +             .offset =3D 0x0,
+> > +             .hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8195,
+> > +     },
+> > +
+
+..snip..
+
+> > +static struct lvts_data mt819x_lvts_mcu_data =3D {
+>
+> Same here.
+>
+
+OK, it Will be mt8195_lvts_mcu_data.
+
+> > +     .lvts_ctrl      =3D mt819x_lvts_data_ctrl,
+> > +     .num_lvts_ctrl  =3D ARRAY_SIZE(mt819x_lvts_data_ctrl),
+> > +};
+> > +
+> > +static const struct of_device_id lvts_of_match[] =3D {
+> > +     { .compatible =3D "mediatek,mt8195-lvts-mcu", .data =3D &mt819x_l=
+vts_mcu_data },
+> > +     {},
+> > +};
+> > +MODULE_DEVICE_TABLE(of, lvts_of_match);
+> > +
+> > +static struct platform_driver lvts_driver =3D {
+> > +     .probe =3D lvts_probe,
+> > +     .remove =3D lvts_remove,
+> > +     .driver =3D {
+> > +             .name =3D "mtk-lvts-thermal",
+> > +             .of_match_table =3D lvts_of_match,
+> > +     },
+> > +};
+> > +module_platform_driver(lvts_driver);
+> > +
+> > +MODULE_AUTHOR("Balsam CHIHI <bchihi@baylibre.com>");
+> > +MODULE_DESCRIPTION("MediaTek LVTS Thermal Driver");
+> > +MODULE_LICENSE("GPL");
+> > diff --git a/include/dt-bindings/thermal/mediatek-lvts.h b/include/dt-b=
+indings/thermal/mediatek-lvts.h
+> > new file mode 100644
+> > index 000000000000..80d060400236
+> > --- /dev/null
+> > +++ b/include/dt-bindings/thermal/mediatek-lvts.h
+>
+> Bindings go in a different commit: add this in your patch [2/6], where yo=
+u are
+> adding the yaml binding.
+>
+
+OK, it will be moved to :
+[2/6] dt-bindings/thermal/mediatek: Add dt-binding document for LVTS
+thermal controllers
+
+> Also, please follow binding names: rename this file to mediatek,mt8192-lv=
+ts.h.
+>
+
+LVTS is SoC independent (only available on MT8192 and MT8195).
+Should not we leave this file name SoC indemendent too "mediatek-lvts.h",
+just like "mediatek,lvts-thermal.yaml"?
+
+> > @@ -0,0 +1,19 @@
+> > +/* SPDX-License-Identifier: GPL-2.0+ */
+> > +/*
+> > + * Copyright (c) 2023 MediaTek Inc.
+> > + * Author: Balsam CHIHI <bchihi@baylibre.com>
+> > + */
+> > +
+> > +#ifndef __MEDIATEK_LVTS_DT_H
+> > +#define __MEDIATEK_LVTS_DT_H
+> > +
+> > +#define MT819x_MCU_BIG_CPU0  0
+>
+> No wildcards: MT8192_MCU_BIG_CPU0
+>
+
+OK, it Will be MT8195_MCU_BIG_CPU0.
 
 >
-> > Supposedly this is fixed in their codebase.
+> > +#define MT819x_MCU_BIG_CPU1  1
+> > +#define      MT819x_MCU_BIG_CPU2     2
+> > +#define      MT819x_MCU_BIG_CPU3     3
+> > +#define      MT819x_MCU_LITTLE_CPU0  4
+> > +#define      MT819x_MCU_LITTLE_CPU1  5
+> > +#define      MT819x_MCU_LITTLE_CPU2  6
+> > +#define      MT819x_MCU_LITTLE_CPU3  7
+> > +
+> > +#endif /* __MEDIATEK_LVTS_DT_H */
 >
-> Which codebase do you mean? A specific vendor driver? Or firmware?
+> Regards,
+> Angelo
 
-The vendor driver from openlinux2.amlogic.com handles SDIO interrupts
-a bit differently. It uses mmc_signal_sdio_irq()
-
->
-> > Unfortunately we were not able to find out more and can't prepare a
-> > patch with a proper explanation.
->
-> The workaround is rather simple, so we should add it.
-> It's just unfortunate that we have no idea about the root cause of the issue.
-
-After doing a more long term stress test, it was revealed that this
-patch is still not sufficient, but only masks the underlying problem
-better. Reverting 066ecde fixes the issue fully for us (verified
-overnight with iperf).
-v1 and v2 also fix the issue, but v3 does not correct the bug when
-WiFi is stressed for a longer time. And therefore it should not be
-used.
-Could you please give us some advice on how to investigate this further?
+Best regards,
+Balsam
 
