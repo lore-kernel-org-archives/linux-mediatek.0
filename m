@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66234C38159
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 10:03:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0773BC004D4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 10:03:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5sGIMeo0xOf+3HRghClVH+PZ/YqsQ1nE+ZFy+ze4Ous=; b=T4+vxoi+m+Fr26gg1hHfNwZ2cL
-	KSpyaMGnzjKQO76RcHLAZNWPyXwtFtfsnIb5bTWiuViT8B2Eocved+iHJ4nQ0+vVCmBb/4ud6Xnju
-	YwXpsrv4ehrnlUcmBQmvJg4IBvD+R6aNCXsYgcVRf54mXcTZfvul8Y7LVeOL+03lm3UdJbEYFXr25
-	QNl3KZggl3oWILVEEg0tr9KiE564m57UXaHsn2+fL1sPNsSJZRa1ZdHPPOyC9v1IO6n0W9cca3y/D
-	SL7ev/EtshB+coM21o9wwtcg/VcgWwlsAyPzrVJ/2Z8wMKFDiW5rPPCjIzbjuKXOfcxBF3a3KmwYD
-	SSCdTGFA==;
+	bh=qmS5PwsqlNKYFNsXJSmOQNGOMIlR870TlCO69KtLAI8=; b=TKY2yV6Osus91rPa7VTCw6q3R3
+	UFhlUjGQtUGHogYUVfY64Zbs8giqn3EEmQ3Si03JjRIKio8hmdMlDmprxXAmORvkuij21FHgU8ZZ8
+	JsT1/HcCYLuVAqRrWhSrhTLm0nwMfPHIv34GsHyciD36Jlh0VDDQr2TzuFhLrPpWCD2oH6Fy/QMY0
+	/k7VF9kPIUoxYyfAgAmhE2GD5b5+sLWnmfUuYyKiM5wjyITtjoazegP4LztqfuL9aXb+9KKz0AGxL
+	lW/kxgZ5oa5xbP2vM6RTyeDavfJ3HLso9o8m24mmTZu32yakplzFh8raZoYVBEk00SbgoEEEt0od6
+	OYEsTZ1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI5Hv-000FgT-AU; Wed, 18 Jan 2023 10:03:23 +0000
-Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
+	id 1pI5IN-000Fz5-NY; Wed, 18 Jan 2023 10:03:51 +0000
+Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI5GT-000F3K-9T; Wed, 18 Jan 2023 10:01:57 +0000
+	id 1pI5GW-000F5g-3N; Wed, 18 Jan 2023 10:01:58 +0000
 Received: from mwalle01.sab.local (unknown [213.135.10.150])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 2C9B91670;
-	Wed, 18 Jan 2023 11:01:45 +0100 (CET)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 4FAB216A1;
+	Wed, 18 Jan 2023 11:01:47 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1674036105;
+	t=1674036107;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=5sGIMeo0xOf+3HRghClVH+PZ/YqsQ1nE+ZFy+ze4Ous=;
-	b=NHUX7muhruWGH3lnBOr/S/uqJpQ+U4zAk0U/A2nUwtxZLpL0RBfibHeDxRw5e4aOxxUbaD
-	ya4muCRnd7Qu8R6EFopsvjujS/YdUdBgnZ0tnHqOwJCw9JcOMy4z3FtmH2468mjwN0agCf
-	rEbaTvNKyxHEULtle3rEqhPxjH3Ool1Y11EUiJU4wlfX66sx9tKtKRm7a0zunpNLv9/B/H
-	ueF1cQy679mgce3HqSBI6T5peevtcxc5KhX7JlcC0zgQ5wyJYTikR9hNKhPH8mFPLOdjth
-	LJGAUxVuGg8AX6A8skIK3qhwxOgrAS8x/biP8JqsHA7NN36fOSzrnJcwOx7dXQ==
+	bh=qmS5PwsqlNKYFNsXJSmOQNGOMIlR870TlCO69KtLAI8=;
+	b=mkSwwTTn69Y4Vq1/O3eHn5Gs9dlh7bMN7HnjIbK4qkNqZtDPAhNmzh8xVBHjRzmIFZgRvG
+	6W4W924Ykc7WJgFGrVkIKtbjBboSMfmK3/vamcZMRqFoslB/psSGow7v/gMeRxHAX6cefk
+	shKNXwoHPkxtnGx1sh+ON/zL/PiCMB8b13MlHD4ipJGzGMBrYXttSu++DY7QcYgIhPUGwR
+	QK3ivxWZA/hlGyD9gnsMS66OWpQESTArNFRW1ZVwZ4TquMU+ulLENoVQ9eFfBZ9VlQ70m/
+	Gmfr//iACJ9TJzRYwoORt22EWJ2yYZflUXPqpC+9CbTzZsQf0e9MSq9LcMz/1Q==
 From: Michael Walle <michael@walle.cc>
-Date: Wed, 18 Jan 2023 11:01:36 +0100
-Subject:  [PATCH net-next v2 2/6] net: mdio: Rework scanning of bus ready for quirks
+Date: Wed, 18 Jan 2023 11:01:40 +0100
+Subject: [PATCH net-next v2 6/6] net: phy: Remove probe_capabilities
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id:  <20230116-net-next-remove-probe-capabilities-v2-2-15513b05e1f4@walle.cc>
+Message-Id:  <20230116-net-next-remove-probe-capabilities-v2-6-15513b05e1f4@walle.cc>
 References:  <20230116-net-next-remove-probe-capabilities-v2-0-15513b05e1f4@walle.cc>
 In-Reply-To:  <20230116-net-next-remove-probe-capabilities-v2-0-15513b05e1f4@walle.cc>
 To: Heiner Kallweit <hkallweit1@gmail.com>,
@@ -71,8 +71,8 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  Jesse Brandeburg <jesse.brandeburg@intel.com>
 X-Mailer: b4 0.11.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_020153_597450_A170670F 
-X-CRM114-Status: GOOD (  23.46  )
+X-CRM114-CacheID: sfid-20230118_020156_427276_AFE1004B 
+X-CRM114-Status: GOOD (  12.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,215 +89,124 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Andrew Lunn <andrew@lunn.ch>
 
-Some C22 PHYs do bad things when there are C45 transactions on the
-bus. In order to handle this, the bus needs to be scanned first for
-C22 at all addresses, and then C45 scanned for all addresses.
-
-The Marvell pxa168 driver scans a specific address on the bus to find
-its PHY. This is a C22 only device, so update it to use the c22
-helper.
+Deciding if to probe of PHYs using C45 is now determine by if the bus
+provides the C45 read method. This makes probe_capabilities redundant
+so remove it.
 
 Signed-off-by: Andrew Lunn <andrew@lunn.ch>
 Signed-off-by: Michael Walle <michael@walle.cc>
 Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 ---
-v2:
- [mw] Avoid the use of unitialized variabe. Thanks Jakub.
-      Just iterate over all possible addresses in the error path.
----
- drivers/net/ethernet/marvell/pxa168_eth.c |   2 +-
- drivers/net/phy/mdio_bus.c                | 125 ++++++++++++++++++++----------
- include/linux/phy.h                       |   2 +-
- 3 files changed, 88 insertions(+), 41 deletions(-)
+ drivers/net/ethernet/adi/adin1110.c               | 1 -
+ drivers/net/ethernet/freescale/xgmac_mdio.c       | 1 -
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c       | 1 -
+ drivers/net/ethernet/microchip/lan743x_main.c     | 2 --
+ drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c | 3 ---
+ drivers/net/mdio/mdio-aspeed.c                    | 1 -
+ include/linux/phy.h                               | 8 --------
+ 7 files changed, 17 deletions(-)
 
-diff --git a/drivers/net/ethernet/marvell/pxa168_eth.c b/drivers/net/ethernet/marvell/pxa168_eth.c
-index cf456d62677f..87fff539d39d 100644
---- a/drivers/net/ethernet/marvell/pxa168_eth.c
-+++ b/drivers/net/ethernet/marvell/pxa168_eth.c
-@@ -965,7 +965,7 @@ static int pxa168_init_phy(struct net_device *dev)
- 	if (dev->phydev)
- 		return 0;
+diff --git a/drivers/net/ethernet/adi/adin1110.c b/drivers/net/ethernet/adi/adin1110.c
+index 0805f249fff2..25f55756681d 100644
+--- a/drivers/net/ethernet/adi/adin1110.c
++++ b/drivers/net/ethernet/adi/adin1110.c
+@@ -523,7 +523,6 @@ static int adin1110_register_mdiobus(struct adin1110_priv *priv,
+ 	mii_bus->priv = priv;
+ 	mii_bus->parent = dev;
+ 	mii_bus->phy_mask = ~((u32)GENMASK(2, 0));
+-	mii_bus->probe_capabilities = MDIOBUS_C22;
+ 	snprintf(mii_bus->id, MII_BUS_ID_SIZE, "%s", dev_name(dev));
  
--	phy = mdiobus_scan(pep->smi_bus, pep->phy_addr);
-+	phy = mdiobus_scan_c22(pep->smi_bus, pep->phy_addr);
- 	if (IS_ERR(phy))
- 		return PTR_ERR(phy);
+ 	ret = devm_mdiobus_register(dev, mii_bus);
+diff --git a/drivers/net/ethernet/freescale/xgmac_mdio.c b/drivers/net/ethernet/freescale/xgmac_mdio.c
+index 8b5a4cd8ff08..a13b4ba4d6e1 100644
+--- a/drivers/net/ethernet/freescale/xgmac_mdio.c
++++ b/drivers/net/ethernet/freescale/xgmac_mdio.c
+@@ -397,7 +397,6 @@ static int xgmac_mdio_probe(struct platform_device *pdev)
+ 	bus->read_c45 = xgmac_mdio_read_c45;
+ 	bus->write_c45 = xgmac_mdio_write_c45;
+ 	bus->parent = &pdev->dev;
+-	bus->probe_capabilities = MDIOBUS_C22_C45;
+ 	snprintf(bus->id, MII_BUS_ID_SIZE, "%pa", &res->start);
  
-diff --git a/drivers/net/phy/mdio_bus.c b/drivers/net/phy/mdio_bus.c
-index 61c33c6098a1..667247f661c5 100644
---- a/drivers/net/phy/mdio_bus.c
-+++ b/drivers/net/phy/mdio_bus.c
-@@ -506,38 +506,12 @@ static int mdiobus_create_device(struct mii_bus *bus,
- 	return ret;
- }
+ 	priv = bus->priv;
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index dc50e0b227a6..d67ec28b2ba3 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -808,7 +808,6 @@ static int mtk_mdio_init(struct mtk_eth *eth)
+ 	eth->mii_bus->write = mtk_mdio_write_c22;
+ 	eth->mii_bus->read_c45 = mtk_mdio_read_c45;
+ 	eth->mii_bus->write_c45 = mtk_mdio_write_c45;
+-	eth->mii_bus->probe_capabilities = MDIOBUS_C22_C45;
+ 	eth->mii_bus->priv = eth;
+ 	eth->mii_bus->parent = eth->dev;
  
--/**
-- * mdiobus_scan - scan a bus for MDIO devices.
-- * @bus: mii_bus to scan
-- * @addr: address on bus to scan
-- *
-- * This function scans the MDIO bus, looking for devices which can be
-- * identified using a vendor/product ID in registers 2 and 3. Not all
-- * MDIO devices have such registers, but PHY devices typically
-- * do. Hence this function assumes anything found is a PHY, or can be
-- * treated as a PHY. Other MDIO devices, such as switches, will
-- * probably not be found during the scan.
-- */
--struct phy_device *mdiobus_scan(struct mii_bus *bus, int addr)
-+static struct phy_device *mdiobus_scan(struct mii_bus *bus, int addr, bool c45)
- {
- 	struct phy_device *phydev = ERR_PTR(-ENODEV);
- 	int err;
+diff --git a/drivers/net/ethernet/microchip/lan743x_main.c b/drivers/net/ethernet/microchip/lan743x_main.c
+index e205edf477de..86b81df374da 100644
+--- a/drivers/net/ethernet/microchip/lan743x_main.c
++++ b/drivers/net/ethernet/microchip/lan743x_main.c
+@@ -3279,7 +3279,6 @@ static int lan743x_mdiobus_init(struct lan743x_adapter *adapter)
+ 			lan743x_csr_write(adapter, SGMII_CTL, sgmii_ctl);
+ 			netif_dbg(adapter, drv, adapter->netdev,
+ 				  "SGMII operation\n");
+-			adapter->mdiobus->probe_capabilities = MDIOBUS_C22_C45;
+ 			adapter->mdiobus->read = lan743x_mdiobus_read_c22;
+ 			adapter->mdiobus->write = lan743x_mdiobus_write_c22;
+ 			adapter->mdiobus->read_c45 = lan743x_mdiobus_read_c45;
+@@ -3295,7 +3294,6 @@ static int lan743x_mdiobus_init(struct lan743x_adapter *adapter)
+ 			netif_dbg(adapter, drv, adapter->netdev,
+ 				  "RGMII operation\n");
+ 			// Only C22 support when RGMII I/F
+-			adapter->mdiobus->probe_capabilities = MDIOBUS_C22;
+ 			adapter->mdiobus->read = lan743x_mdiobus_read_c22;
+ 			adapter->mdiobus->write = lan743x_mdiobus_write_c22;
+ 			adapter->mdiobus->name = "lan743x-mdiobus";
+diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
+index d2cb22f49ce5..21aaa2730ac8 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
++++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
+@@ -553,9 +553,6 @@ int stmmac_mdio_register(struct net_device *ndev)
  
--	switch (bus->probe_capabilities) {
--	case MDIOBUS_NO_CAP:
--	case MDIOBUS_C22:
--		phydev = get_phy_device(bus, addr, false);
--		break;
--	case MDIOBUS_C45:
--		phydev = get_phy_device(bus, addr, true);
--		break;
--	case MDIOBUS_C22_C45:
--		phydev = get_phy_device(bus, addr, false);
--		if (IS_ERR(phydev))
--			phydev = get_phy_device(bus, addr, true);
--		break;
--	}
+ 	new_bus->name = "stmmac";
+ 
+-	if (priv->plat->has_gmac4)
+-		new_bus->probe_capabilities = MDIOBUS_C22_C45;
 -
-+	phydev = get_phy_device(bus, addr, c45);
- 	if (IS_ERR(phydev))
- 		return phydev;
+ 	if (priv->plat->has_xgmac) {
+ 		new_bus->read = &stmmac_xgmac2_mdio_read_c22;
+ 		new_bus->write = &stmmac_xgmac2_mdio_write_c22;
+diff --git a/drivers/net/mdio/mdio-aspeed.c b/drivers/net/mdio/mdio-aspeed.c
+index 2f4bbda5e56c..c727103c8b05 100644
+--- a/drivers/net/mdio/mdio-aspeed.c
++++ b/drivers/net/mdio/mdio-aspeed.c
+@@ -164,7 +164,6 @@ static int aspeed_mdio_probe(struct platform_device *pdev)
+ 	bus->write = aspeed_mdio_write_c22;
+ 	bus->read_c45 = aspeed_mdio_read_c45;
+ 	bus->write_c45 = aspeed_mdio_write_c45;
+-	bus->probe_capabilities = MDIOBUS_C22_C45;
  
-@@ -554,7 +528,77 @@ struct phy_device *mdiobus_scan(struct mii_bus *bus, int addr)
- 
- 	return phydev;
- }
--EXPORT_SYMBOL(mdiobus_scan);
-+
-+/**
-+ * mdiobus_scan_c22 - scan one address on a bus for C22 MDIO devices.
-+ * @bus: mii_bus to scan
-+ * @addr: address on bus to scan
-+ *
-+ * This function scans one address on the MDIO bus, looking for
-+ * devices which can be identified using a vendor/product ID in
-+ * registers 2 and 3. Not all MDIO devices have such registers, but
-+ * PHY devices typically do. Hence this function assumes anything
-+ * found is a PHY, or can be treated as a PHY. Other MDIO devices,
-+ * such as switches, will probably not be found during the scan.
-+ */
-+struct phy_device *mdiobus_scan_c22(struct mii_bus *bus, int addr)
-+{
-+	return mdiobus_scan(bus, addr, false);
-+}
-+EXPORT_SYMBOL(mdiobus_scan_c22);
-+
-+/**
-+ * mdiobus_scan_c45 - scan one address on a bus for C45 MDIO devices.
-+ * @bus: mii_bus to scan
-+ * @addr: address on bus to scan
-+ *
-+ * This function scans one address on the MDIO bus, looking for
-+ * devices which can be identified using a vendor/product ID in
-+ * registers 2 and 3. Not all MDIO devices have such registers, but
-+ * PHY devices typically do. Hence this function assumes anything
-+ * found is a PHY, or can be treated as a PHY. Other MDIO devices,
-+ * such as switches, will probably not be found during the scan.
-+ */
-+static struct phy_device *mdiobus_scan_c45(struct mii_bus *bus, int addr)
-+{
-+	return mdiobus_scan(bus, addr, true);
-+}
-+
-+static int mdiobus_scan_bus_c22(struct mii_bus *bus)
-+{
-+	int i;
-+
-+	for (i = 0; i < PHY_MAX_ADDR; i++) {
-+		if ((bus->phy_mask & BIT(i)) == 0) {
-+			struct phy_device *phydev;
-+
-+			phydev = mdiobus_scan_c22(bus, i);
-+			if (IS_ERR(phydev) && (PTR_ERR(phydev) != -ENODEV))
-+				return PTR_ERR(phydev);
-+		}
-+	}
-+	return 0;
-+}
-+
-+static int mdiobus_scan_bus_c45(struct mii_bus *bus)
-+{
-+	int i;
-+
-+	for (i = 0; i < PHY_MAX_ADDR; i++) {
-+		if ((bus->phy_mask & BIT(i)) == 0) {
-+			struct phy_device *phydev;
-+
-+			/* Don't scan C45 if we already have a C22 device */
-+			if (bus->mdio_map[i])
-+				continue;
-+
-+			phydev = mdiobus_scan_c45(bus, i);
-+			if (IS_ERR(phydev) && (PTR_ERR(phydev) != -ENODEV))
-+				return PTR_ERR(phydev);
-+		}
-+	}
-+	return 0;
-+}
- 
- /**
-  * __mdiobus_register - bring up all the PHYs on a given bus and attach them to bus
-@@ -639,16 +683,19 @@ int __mdiobus_register(struct mii_bus *bus, struct module *owner)
- 			goto error_reset_gpiod;
- 	}
- 
--	for (i = 0; i < PHY_MAX_ADDR; i++) {
--		if ((bus->phy_mask & BIT(i)) == 0) {
--			struct phy_device *phydev;
-+	if (bus->probe_capabilities == MDIOBUS_NO_CAP ||
-+	    bus->probe_capabilities == MDIOBUS_C22 ||
-+	    bus->probe_capabilities == MDIOBUS_C22_C45) {
-+		err = mdiobus_scan_bus_c22(bus);
-+		if (err)
-+			goto error;
-+	}
- 
--			phydev = mdiobus_scan(bus, i);
--			if (IS_ERR(phydev) && (PTR_ERR(phydev) != -ENODEV)) {
--				err = PTR_ERR(phydev);
--				goto error;
--			}
--		}
-+	if (bus->probe_capabilities == MDIOBUS_C45 ||
-+	    bus->probe_capabilities == MDIOBUS_C22_C45) {
-+		err = mdiobus_scan_bus_c45(bus);
-+		if (err)
-+			goto error;
- 	}
- 
- 	mdiobus_setup_mdiodev_from_board_info(bus, mdiobus_create_device);
-@@ -658,7 +705,7 @@ int __mdiobus_register(struct mii_bus *bus, struct module *owner)
- 	return 0;
- 
- error:
--	while (--i >= 0) {
-+	for (i = 0; i < PHY_MAX_ADDR; i++) {
- 		mdiodev = bus->mdio_map[i];
- 		if (!mdiodev)
- 			continue;
+ 	rc = of_mdiobus_register(bus, pdev->dev.of_node);
+ 	if (rc) {
 diff --git a/include/linux/phy.h b/include/linux/phy.h
-index b3cf1e08e880..fceaac0fb319 100644
+index fceaac0fb319..fbeba4fee8d4 100644
 --- a/include/linux/phy.h
 +++ b/include/linux/phy.h
-@@ -464,7 +464,7 @@ static inline struct mii_bus *devm_mdiobus_alloc(struct device *dev)
- }
+@@ -419,14 +419,6 @@ struct mii_bus {
+ 	/** @reset_gpiod: Reset GPIO descriptor pointer */
+ 	struct gpio_desc *reset_gpiod;
  
- struct mii_bus *mdio_find_bus(const char *mdio_name);
--struct phy_device *mdiobus_scan(struct mii_bus *bus, int addr);
-+struct phy_device *mdiobus_scan_c22(struct mii_bus *bus, int addr);
+-	/** @probe_capabilities: bus capabilities, used for probing */
+-	enum {
+-		MDIOBUS_NO_CAP = 0,
+-		MDIOBUS_C22,
+-		MDIOBUS_C45,
+-		MDIOBUS_C22_C45,
+-	} probe_capabilities;
+-
+ 	/** @shared_lock: protect access to the shared element */
+ 	struct mutex shared_lock;
  
- #define PHY_INTERRUPT_DISABLED	false
- #define PHY_INTERRUPT_ENABLED	true
 
 -- 
 2.30.2
