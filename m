@@ -4,131 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDEE9C32793
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 08:21:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C988FC004D4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 08:37:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2Pi2FhYms8rU5qm8xKHkMWUh3m1gamMEnH3Omx98304=; b=vakykewo6qqlxTcLHMxgvGeTZc
-	tajcZPC05kbULEezShmpql2ocG05r3SAyx9B8a0HZht8QgeNIVmV7YH2NLDAuQyVj3cLL0v1Es4oU
-	hdl+4QV2kSvJEIIgo1hJvDwlJBeXa3upJ0rE2DXLnQ+eux45nwn8Z7LK/t2dlMa8xjur9cn7k5yWZ
-	OCvmiQjH1BDj2/trqcxpJBCX8XW6YDcDPaWka3JFYr8HzjELPBeKRzSge7zUchn1uLVGdJO7wDat9
-	sPsuXwPGtFoWRY3mWuiRO6TMEjXEi3xXW+FzvLkjPbrNDj17Sas9gugcnkCeFEVJUee2Yz5dQEvK2
-	+xAPP71w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=25UwbnVsrXF2XOi/rzL1DlQwNobgAwu6Gm3xehAhpEg=; b=rtgdA62zFwX4BcmQXjvvnN7imD
+	q4c4BdvMqC/e38GuMQaW+NVNgyNrj+CMo68Yie65S1F9D//VLiQNwZIZKfwcwtVV0adJdK0tNt3i9
+	Rs/9fQsi/V79lAIHERlDgSW6cGZ9fDB+84VMWazB+kApE9oyIoIqj2kmz4F68l38Kvvjx1Ee/ZUV0
+	WKHEuzJON0ucccIlmXaNgLPPety0Mq6Yi1BfsnSn7Zx/+xW5DgoboaFwMFmGwdQb6NQ9QrtMLBYbz
+	42Y1RVKfZBEbnpO1Oktna2cCS2L+xSnqWolGXXxt7VtGPDSFEbzAbS7zRHR88tMsrvjaTfXEVJCNj
+	wYNNFLJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI3hS-00HRn4-F0; Wed, 18 Jan 2023 08:21:38 +0000
-Received: from esa.microchip.iphmx.com ([68.232.154.123])
+	id 1pI3ws-00HUym-Hg; Wed, 18 Jan 2023 08:37:34 +0000
+Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI3hN-00HRmB-1F; Wed, 18 Jan 2023 08:21:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
-  t=1674030092; x=1705566092;
-  h=message-id:subject:from:to:cc:date:in-reply-to:
-   references:content-transfer-encoding:mime-version;
-  bh=2Pi2FhYms8rU5qm8xKHkMWUh3m1gamMEnH3Omx98304=;
-  b=UlhasIbja8Z+aerB7F2ZmMZwuO/ZFl0sWyzZZlHkWtodje9I9VFtM9vN
-   PfARl0mAfmTpHhlN92ctDLueznD6+U8nGT2RsZJn3ZibYjYy6ri8qKVVa
-   wScMjBxko7dFSsGAnrAA1X/L6jLc5MfZk6D4wZN717CLsk89VbB+dhKBZ
-   rMb0H/51LUKVn8logTA5B8KosLpc9USGpMHQWsUcdyybuymng8HdfGUOq
-   x2tqVo/t4h/NX3EDli/J6MxVC0oEvvz36bhyIfrgF42hUVjmF/bVA9fiB
-   CjGT/tdt51+/36DRxA4WuEQkZ/AEJBWUc1YGBKsPq2FBCoEcdJNloW2mA
-   w==;
-X-IronPort-AV: E=Sophos;i="5.97,224,1669100400"; 
-   d="scan'208";a="196300402"
-Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
-  by esa2.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256; 18 Jan 2023 01:21:27 -0700
-Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
- chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Wed, 18 Jan 2023 01:21:26 -0700
-Received: from den-dk-m31857.microchip.com (10.10.115.15) by
- chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server id
- 15.1.2507.16 via Frontend Transport; Wed, 18 Jan 2023 01:21:07 -0700
-Message-ID: <7eb58e2459715a6b2bb5eb45e2ce1f1e88050dff.camel@microchip.com>
-Subject: Re: [PATCH v2 13/23] arm64: dts: Update cache properties for
- microchip
-From: Steen Hegelund <steen.hegelund@microchip.com>
-To: Pierre Gondois <pierre.gondois@arm.com>, <linux-kernel@vger.kernel.org>
-CC: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Florian Fainelli <f.fainelli@gmail.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, "Tsahee
- Zidenberg" <tsahee@annapurnalabs.com>, Antoine Tenart <atenart@kernel.org>,
-	Brijesh Singh <brijeshkumar.singh@amd.com>, Suravee Suthikulpanit
-	<suravee.suthikulpanit@amd.com>, Tom Lendacky <thomas.lendacky@amd.com>,
-	"Neil Armstrong" <neil.armstrong@linaro.org>, Kevin Hilman
-	<khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Martin
- Blumenstingl <martin.blumenstingl@googlemail.com>, Khuong Dinh
-	<khuong@os.amperecomputing.com>, Liviu Dudau <liviu.dudau@arm.com>, "Sudeep
- Holla" <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	William Zhang <william.zhang@broadcom.com>, Anand Gore
-	<anand.gore@broadcom.com>, Kursad Oney <kursad.oney@broadcom.com>,
-	=?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>, Alim Akhtar
-	<alim.akhtar@samsung.com>, Shawn Guo <shawnguo@kernel.org>, Li Yang
-	<leoyang.li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, "Pengutronix
- Kernel Team" <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
-	"NXP Linux Team" <linux-imx@nxp.com>, Chester Lin <clin@suse.com>, Andreas
- =?ISO-8859-1?Q?F=E4rber?= <afaerber@suse.de>, Matthias Brugger
-	<mbrugger@suse.com>, NXP S32 Linux Team <s32@nxp.com>, Wei Xu
-	<xuwei5@hisilicon.com>, Chanho Min <chanho.min@lge.com>, Andrew Lunn
-	<andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, "Sebastian
- Hesselbarth" <sebastian.hesselbarth@gmail.com>, Lars Povlsen
-	<lars.povlsen@microchip.com>, Daniel Machon <daniel.machon@microchip.com>,
-	<UNGLinuxDriver@microchip.com>, Avi Fishman <avifishman70@gmail.com>, "Tomer
- Maimon" <tmaimon77@gmail.com>, Tali Perry <tali.perry1@gmail.com>, "Patrick
- Venture" <venture@google.com>, Nancy Yuen <yuenn@google.com>, Benjamin Fair
-	<benjaminfair@google.com>, Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>, Andy Gross <agross@kernel.org>,
-	"Bjorn Andersson" <andersson@kernel.org>, Konrad Dybcio
-	<konrad.dybcio@somainline.org>, Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu
-	<mhiramat@kernel.org>, Jisheng Zhang <jszhang@kernel.org>, Nishanth Menon
-	<nm@ti.com>, Vignesh Raghavendra <vigneshr@ti.com>, Tero Kristo
-	<kristo@kernel.org>, Viorel Suman <viorel.suman@nxp.com>, Abel Vesa
-	<abelvesa@kernel.org>, Peng Fan <peng.fan@nxp.com>, Ming Qian
-	<ming.qian@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, Adam Ford
-	<aford173@gmail.com>, Tim Harvey <tharvey@gateworks.com>, Lucas Stach
-	<l.stach@pengutronix.de>, Richard Zhu <hongxing.zhu@nxp.com>, Li Jun
-	<jun.li@nxp.com>, Markus Niebel <Markus.Niebel@ew.tq-group.com>, Joakim Zhang
-	<qiangqing.zhang@nxp.com>, Marek Vasut <marex@denx.de>, Laurent Pinchart
-	<laurent.pinchart@ideasonboard.com>, Alexander Stein
-	<alexander.stein@ew.tq-group.com>, Paul Elder <paul.elder@ideasonboard.com>,
-	Martin Kepplinger <martink@posteo.de>, David Heidelberg <david@ixit.cz>, "Joy
- Zou" <joy.zou@nxp.com>, Oliver Graute <oliver.graute@kococonnector.com>, "Liu
- Ying" <victor.liu@nxp.com>, Zhou Peng <eagle.zhou@nxp.com>, Shijie Qin
-	<shijie.qin@nxp.com>, Wei Fang <wei.fang@nxp.com>, Jacky Bai
-	<ping.bai@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, Chris Packham
-	<chris.packham@alliedtelesis.co.nz>, Vadym Kochan <vadym.kochan@plvision.eu>,
-	Sameer Pujar <spujar@nvidia.com>, Akhil R <akhilrajeev@nvidia.com>, "Mikko
- Perttunen" <mperttunen@nvidia.com>, Prathamesh Shete <pshete@nvidia.com>,
-	Sumit Gupta <sumitg@nvidia.com>, Diogo Ivo <diogo.ivo@tecnico.ulisboa.pt>,
-	Vidya Sagar <vidyas@nvidia.com>, Ashish Mhetre <amhetre@nvidia.com>, "Johan
- Jonker" <jbx6244@gmail.com>, Christopher Obbard <chris.obbard@collabora.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Aswani Reddy
-	<aswani.reddy@samsung.com>, Shashank Prashar <s.prashar@samsung.com>, "Arnd
- Bergmann" <arnd@arndb.de>, <devicetree@vger.kernel.org>,
-	<linux-rpi-kernel@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-amlogic@lists.infradead.org>,
-	<linux-samsung-soc@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<openbmc@lists.ozlabs.org>, <linux-tegra@vger.kernel.org>,
-	<linux-arm-msm@vger.kernel.org>, <linux-realtek-soc@lists.infradead.org>,
-	<linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>
-Date: Wed, 18 Jan 2023 09:21:07 +0100
-In-Reply-To: <20221107155825.1644604-14-pierre.gondois@arm.com>
-References: <20221107155825.1644604-1-pierre.gondois@arm.com>
-	 <20221107155825.1644604-14-pierre.gondois@arm.com>
+	id 1pI3wh-00HUvn-2P
+	for linux-mediatek@lists.infradead.org; Wed, 18 Jan 2023 08:37:25 +0000
+Received: by mail-yb1-xb34.google.com with SMTP id d62so21102164ybh.8
+        for <linux-mediatek@lists.infradead.org>; Wed, 18 Jan 2023 00:37:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=25UwbnVsrXF2XOi/rzL1DlQwNobgAwu6Gm3xehAhpEg=;
+        b=7STNftU56FeuGXCbKpxA8SkAyftYHoh2ddBxJLrGdwEMF2wSLs4242bL3ea7idm5Y4
+         ZVQ/xvgum+hHgSjspxs86GNktGzef1nXS6Mo89JmiQa5yugKc3EeVHltuwxL+WF/pNdS
+         +K37nonpOv3TdxAAYtLuBz9afr/v5GEmecEAozwXbxje8N+rYtBYhjqK1SY1832d17C5
+         RSydKm1Znlri1UHuFga/UcmMn1Y2pX9kmXQ4HVHhy9Hmn9TBDGz8yjVny/4VHzBOW7pc
+         rO9LAg34p8wTL1M9PSKiR0CRlB1B2GuzGZUvri8SOBxJz08Zt8e4Jc5lcosU1Oc6lIme
+         L7TA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=25UwbnVsrXF2XOi/rzL1DlQwNobgAwu6Gm3xehAhpEg=;
+        b=J42GqvWVrWAwZHIrxXP1e45eC0GSoApm0105Jfo/DelGwoJKoj8guaioVvKX4AERLm
+         TTs694yOx5BZfLSXweQg0CiZUTRFSUq7/SDmkbYPRYpqUZKdxg4IZ5Wu5MP1ndrJgpU+
+         4S8bwM8KiDIt+IN/fPRpXYTp64JwGQaS/iXhkm1xJHa1A+FBCWlb2vGRtjqXugLftXxO
+         mKoqIbGD9CRP0saAWHnNIeQEFn/GzE8LNHszIHFLlbMtvqSe/V8KEClGn4AfiD637Ree
+         x9VgZn7N5z1dIBPSbZyUIecnr55OEwSjj/N/fo22mJL20Gs8mZxtbqaPJUEQJgT+p/TE
+         DGaQ==
+X-Gm-Message-State: AFqh2kp4rHSbOCr8KhrOq7qEf/gskA2bxXUFi585fjsEf+EPkhGlQiDD
+	kiz90gWc3OHAlMxtiU+QgyHWLSJhVUBwhRh4uerVEA==
+X-Google-Smtp-Source: AMrXdXvkAjgZueXUsTbnjRyYgL573SkSrK6hKqOKoelBS/6ldk0KA9UsmaJzrb/I41AEghUW3nnSomU38BecAKrN5lo=
+X-Received: by 2002:a5b:4d2:0:b0:707:473f:b763 with SMTP id
+ u18-20020a5b04d2000000b00707473fb763mr812592ybp.158.1674031039739; Wed, 18
+ Jan 2023 00:37:19 -0800 (PST)
+MIME-Version: 1.0
+References: <20221005-mt6357-support-v7-0-477e60126749@baylibre.com>
+ <7hr0xe56uf.fsf@baylibre.com> <0fc0217e-f1dd-d64c-d43c-cd47a8acbfd4@gmail.com>
+ <CAFGrd9qZzpxPWpiEOJacc9m2WDFB8Mgr5U5too89mZmqqFir_Q@mail.gmail.com>
+In-Reply-To: <CAFGrd9qZzpxPWpiEOJacc9m2WDFB8Mgr5U5too89mZmqqFir_Q@mail.gmail.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Wed, 18 Jan 2023 09:37:08 +0100
+Message-ID: <CAFGrd9q9aMZLH71HuyDfCxca65bdeSnkO4Oe+PTsYq=+qNAWjw@mail.gmail.com>
+Subject: Re: [PATCH v7 0/8] Add MediaTek MT6357 PMIC support
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Kevin Hilman <khilman@kernel.org>, Mark Brown <broonie@kernel.org>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Alessandro Zummo <a.zummo@towertech.it>, 
+	Rob Herring <robh+dt@kernel.org>, Fabien Parent <fabien.parent@linaro.org>, 
+	Tianping Fang <tianping.fang@mediatek.com>, Flora Fu <flora.fu@mediatek.com>, 
+	Chen Zhong <chen.zhong@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+	Lee Jones <lee@kernel.org>, Pavel Machek <pavel@ucw.cz>, 
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-mediatek@lists.infradead.org, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
+	Rob Herring <robh@kernel.org>, Mattijs Korpershoek <mkorpershoek@baylibre.com>, linux-rtc@vger.kernel.org, 
+	linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Fabien Parent <fparent@baylibre.com>, 
+	linux-leds@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.46.3 
-MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_002133_234851_16FF1FFB 
-X-CRM114-Status: GOOD (  15.47  )
+X-CRM114-CacheID: sfid-20230118_003723_351257_9D2E3AF6 
+X-CRM114-Status: GOOD (  15.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,55 +100,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Pierre,
+Hi Matthias,
 
-This looks good to me.
+Gentle ping to merge the v8 rebased on top of v6.2-tmp/soc.
+https://lore.kernel.org/r/20221005-mt6357-support-v8-0-560caaafee53@baylibr=
+e.com
 
-Reviewed-by: Steen Hegelund <Steen.Hegelund@microchip.com>
+Thanks,
+Alex
 
-BR
-Steen
-
-On Mon, 2022-11-07 at 16:57 +0100, Pierre Gondois wrote:
-> EXTERNAL EMAIL: Do not click links or open attachments unless you know th=
-e
-> content is safe
->=20
-> The DeviceTree Specification v0.3 specifies that the cache node
-> 'compatible' and 'cache-level' properties are 'required'. Cf.
-> s3.8 Multi-level and Shared Cache Nodes
-> The 'cache-unified' property should be present if one of the
-> properties for unified cache is present ('cache-size', ...).
->=20
-> Update the Device Trees accordingly.
->=20
-> Signed-off-by: Pierre Gondois <pierre.gondois@arm.com>
-> ---
-> =C2=A0arch/arm64/boot/dts/microchip/sparx5.dtsi | 1 +
-> =C2=A01 file changed, 1 insertion(+)
->=20
-> diff --git a/arch/arm64/boot/dts/microchip/sparx5.dtsi
-> b/arch/arm64/boot/dts/microchip/sparx5.dtsi
-> index 2dd5e38820b1..c4bca23b96b9 100644
-> --- a/arch/arm64/boot/dts/microchip/sparx5.dtsi
-> +++ b/arch/arm64/boot/dts/microchip/sparx5.dtsi
-> @@ -52,6 +52,7 @@ cpu1: cpu@1 {
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 };
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 L2_0: l2-cache0 {
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 compatib=
-le =3D "cache";
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 cache-level =
-=3D <2>;
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 };
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 };
->=20
-> --
-> 2.25.1
->=20
-
+Le lun. 2 janv. 2023 =C3=A0 17:10, Alexandre Mergnat
+<amergnat@baylibre.com> a =C3=A9crit :
+>
+> > >> This patch series adds MFD, PMIC keys, and regulator support for MT6=
+357.
+> > >> MT6357 is a MediaTek PMIC very similar to MT6358.
+> > >
+> > > The regulator driver (and bindings) were merged by Mark.  Could you t=
+ake
+> > > the rest of this series via your mediatek tree?  The input driver (an=
+d
+> > > bindings) are ack'd by Dmitry.
+> > >
+> >
+> > Yes I can do that but 3/8 does not apply cleanly. Could you please reba=
+se on top
+> > of v6.2-tmp/soc?
+>
+> Hi Matthias,
+>
+> I've pushed the V8 rebased on top of v6.2-tmp/soc.
+> https://lore.kernel.org/r/20221005-mt6357-support-v8-0-560caaafee53@bayli=
+bre.com
+>
+> Thanks,
+> Alex
 
