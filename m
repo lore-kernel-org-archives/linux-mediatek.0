@@ -4,179 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 423A9C00A5A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 01:10:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AD06C38142
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 01:18:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q+G2kRycMIx1Z+gcN2lFGOCspfd24cpgLo3ZI9+n7uA=; b=QDK1NHZepm0k8MPMYuairQrSv5
-	CzWdalEGqvSaWpiWyOl63m+TwqVNc7+bXTmz18oAu0iTsON75vPm62ZC/9H0WSatiNueKACBplGYp
-	Fs9FWWHNKJaFaJI4FmSkijkzPc/DkhuclmjTYlOKw4HS06mB/Fxicd14JPo2YVTS5BVL/UrrjFsky
-	GwupxaWJB2ACzgKauFOsvsdhy2Y3A3bgvN3e4sHlmp2VHoMpEeOMkDHIyIPxkn+G7ZhF7AW+MqxnE
-	e7rRCcD9ZImsQytUQRERp4Si/h7QgGjgQNKzMNr4Ukmza2h7KvVGlBT0aaEtgxvu6EtmQmJS9FvIz
-	J9cBIRSg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rdtp96MkQqNFQz6JJRJ1cbL+HbsHJDeQaX0Fm7hkhL0=; b=LVBRHacZ9XSTAmgKQ9Oec0TMtz
+	c7vFkW+61YUVqp8yPJixkoMgtFuMhF0yNNb+Zhx2RGo9tEiy/uTGrP4e9TL+C4ur7DRntw9FY736j
+	D8/Z0rEAqvzJMA8tbQF/n8QidS9O3PDvGmTT0Xxe3teeUUNRXC+ahWXm2h04SvJaypbFfr5BK1N7H
+	0ZP0Sejp8qwNLPIofnUsGfvb7PEG1pUvmRVM06j83TjJI6M/tJGHcxXQcJLo2ouBD1vSY9rqs6280
+	qAFiFNu50e+REFUgajxrMd3kVwCn7hIEjKLlLrLP/4gmr/IF2LDyuo5NJKWnqg1Qie0bb4wngGt9g
+	/RceYFNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHwyC-00GPZB-Mi; Wed, 18 Jan 2023 01:10:28 +0000
-Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
+	id 1pHx5W-00GROa-3w; Wed, 18 Jan 2023 01:18:02 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHwwI-00GOmi-Ny; Wed, 18 Jan 2023 01:08:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1674004110; x=1705540110;
-  h=message-id:date:subject:to:cc:references:from:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=g3nJNx/Z1ntyFqevnlqnUec3sTqDI10j19AbP6TQTlM=;
-  b=QInbhyD9+cGcWUkYGYs4J1GmaX02GdkKel6uo9oXPSvNiEhI0qn9ibHy
-   BKqLD5KUDEh9WIXuv5oxD/zzs9XpSMVW+Iut2VTSDqYDq5EpfySVbwQbS
-   ekuTjMz7sAJ7St3CWoThk1LhLGNZbkxhB868pGFeX9YKuwwk/lmN+J0DX
-   9K9lU/zcx77T/2xTVcToUFaEfM3zE0b3tqf+OZViAZqlj45eMppR2eVOF
-   3a0PR2PWqfp4GLX1vL9g9STrw3BWweii3URSyxAUXwCPr6PcIYAWfWOn4
-   jYazvDp7Hs8YJ5i7JWFBJx+dPbw4lplidJxz0yIw/75Qpo0msbt2g7+Sg
-   Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10593"; a="387217676"
-X-IronPort-AV: E=Sophos;i="5.97,224,1669104000"; 
-   d="scan'208";a="387217676"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Jan 2023 17:08:29 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10593"; a="691786651"
-X-IronPort-AV: E=Sophos;i="5.97,224,1669104000"; 
-   d="scan'208";a="691786651"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
-  by orsmga001.jf.intel.com with ESMTP; 17 Jan 2023 17:08:28 -0800
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Tue, 17 Jan 2023 17:08:28 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Tue, 17 Jan 2023 17:08:28 -0800
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Tue, 17 Jan 2023 17:08:28 -0800
-Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.41) by
- edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Tue, 17 Jan 2023 17:08:27 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Qfeh5U21bg+N8dO+pHcq+rdRH6jU5VvINFbQjXfxKOHlzkm1OQN81ZRiVwcDxg2iviFXMHWt3UdmqhTYQd8EzWr1KsAdWgc8tVFOpssgsogmqnJ+wTpZ8IaBcIKv/CkAWQ3+U6ArrvW2j5AV2idFvMdFDGgmtB97SB/forNFy6CSf5etD99Tw6O44HfP1Ag3ZC8bbNRrRw5VHRuYJe+CB53wqztIpgCoVu8jROW610f5jSUyt2ssL314w66p40g3kpLjPGPOm2gGU+sJsQMS3CTaoDiBUeJy8hiLHbYwdTgcq6SosAS+nDTGyiZYbaNvYhds9sr8frta/WCeDoIihQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Q+G2kRycMIx1Z+gcN2lFGOCspfd24cpgLo3ZI9+n7uA=;
- b=CXF2PhyymNKnCmpp0BhPc8IH8JrlOnjqSbiepukJX0L7OPqDhsApoi55joT7KLbY5BDlcBdTtfstuxAJsg3idW0XCETCqlr78ysOiISwp2ULHGNP4Kgb2GiMI9WU0+q6wuGYcEN6cxamgSbp97hZOse2g4lEdmfJ/VCh02HEarsmbllKo33A+wNPQAe849aOvD2bKY4ZcIXU9yIID3V8/bqcVHAQJWjr+e7kOy01RCGLLbTB6JdmPcR0bdnhLh+fJqA4TzeRm4it+w9lIxGGbZqNJ/HRXd+oAh+C55FktfOQmPNdDS2HkcTYU8COXOKElL2yzvHcO/2IZaOMqv3RXA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from CO1PR11MB4914.namprd11.prod.outlook.com (2603:10b6:303:90::24)
- by BY1PR11MB8126.namprd11.prod.outlook.com (2603:10b6:a03:52e::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5986.23; Wed, 18 Jan
- 2023 01:08:25 +0000
-Received: from CO1PR11MB4914.namprd11.prod.outlook.com
- ([fe80::c743:ed9a:85d0:262e]) by CO1PR11MB4914.namprd11.prod.outlook.com
- ([fe80::c743:ed9a:85d0:262e%6]) with mapi id 15.20.5986.023; Wed, 18 Jan 2023
- 01:08:25 +0000
-Message-ID: <a4da45c6-7a04-c649-b841-ee1567c531ea@intel.com>
-Date: Tue, 17 Jan 2023 17:08:22 -0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH net-next 6/6] net: phy: Remove probe_capabilities
-Content-Language: en-US
-To: Michael Walle <michael@walle.cc>, Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>, "David S. Miller"
-	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
-	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Felix Fietkau
-	<nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang
-	<sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, "Lorenzo
- Bianconi" <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	Bryan Whitehead <bryan.whitehead@microchip.com>,
-	<UNGLinuxDriver@microchip.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu
-	<joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, "Joel
- Stanley" <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>
-CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>, <linux-aspeed@lists.ozlabs.org>,
-	Andrew Lunn <andrew@lunn.ch>
+	id 1pHx5E-00GRLP-66; Wed, 18 Jan 2023 01:17:46 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 91B03615BF;
+	Wed, 18 Jan 2023 01:17:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 50EDEC433D2;
+	Wed, 18 Jan 2023 01:17:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1674004662;
+	bh=FGOiyRzcJoEHKdMm+kbK+YBbd8BVEKp07glKSiqMg5M=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=QbeEAIQw7uP/CRIUHrwWm1uUqA0LznQ6bZkZCm/JvVzO+chR72Aco1aIqOwMEMO6A
+	 nBojp92S1Dz6EWGVhbEqXnr2gR1nDDCg1BvKgFHpWbYSepjNRH/Y/8jrAVBM+iwkX5
+	 HJdlwLQF+HWFHnVGGr0vEm2GmGJw5zhl0oOL6KxGZo1YkpRav1MK6etkZ44IQEhchi
+	 ys/UxjqQtx//40gat0FDCYAyyq+pPU/BaAhpVXg2/scFUUHc+hUK6WNuwBEXmm5NCW
+	 cvWuhnpp8XPzu/obuWLLL3faKEfzlFEgRT48oZuIESimcnHSBlKaDsX86cFMQE22Of
+	 l8V+vvA4V+WDQ==
+Date: Tue, 17 Jan 2023 17:17:40 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Michael Walle <michael@walle.cc>
+Cc: Heiner Kallweit <hkallweit1@gmail.com>, Russell King
+ <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Felix
+ Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang
+ <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
+ Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Bryan Whitehead <bryan.whitehead@microchip.com>,
+ UNGLinuxDriver@microchip.com, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu
+ <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Joel
+ Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-aspeed@lists.ozlabs.org,
+ Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [PATCH net-next 2/6] net: mdio: Rework scanning of bus ready
+ for quirks
+Message-ID: <20230117171740.3a9e6f8d@kernel.org>
+In-Reply-To: <20230116-net-next-remove-probe-capabilities-v1-2-5aa29738a023@walle.cc>
 References: <20230116-net-next-remove-probe-capabilities-v1-0-5aa29738a023@walle.cc>
- <20230116-net-next-remove-probe-capabilities-v1-6-5aa29738a023@walle.cc>
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-In-Reply-To: <20230116-net-next-remove-probe-capabilities-v1-6-5aa29738a023@walle.cc>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: BYAPR08CA0012.namprd08.prod.outlook.com
- (2603:10b6:a03:100::25) To CO1PR11MB4914.namprd11.prod.outlook.com
- (2603:10b6:303:90::24)
+	<20230116-net-next-remove-probe-capabilities-v1-2-5aa29738a023@walle.cc>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1PR11MB4914:EE_|BY1PR11MB8126:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2f41409b-07b1-4ac2-a490-08daf8f0806b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: DVQb82nsJ+YzYJk0IMmiSXz+vb0NpOqM6iDQsUpRXCrbRl2dAKlsZSquAokHobc0ORrxXeb0vXABmqNRl4WvlbGqi/2x3D4eMs36d8CGY174CvemYONQuh+HhouipQDqxndDfaWSAllOO4mZVPdlU4MWP5olC9y6kCIrAw1m57G0iFFryKHNx8GinoJFQrORyu3CTIli9ewwl0LYLVi/89A15Ufq/Ln0ygKDC+yY3mewaC9IYl3i0kYaa1bIzFFTk2anXOFc5GHJcv4xq0DxNOp1IriNHx+T2B6SWF5gXwpjIzb3GFg1wPd/Wq+lnr6nAIRfcfwi4JilYTiLAzdy+5SuWFzgmm+jIBFzzaj6tQbL/2Re8M53h2hDhtEXa+KlKfoAF471Jv+d2Ln43F5VkyYUcoE4QgyQkFzi5sqgGiXJ5UZFbgl6TCIIvrN2qdFHJVptTpiu61u2cj9xrKTJMeNBM0hiQgxfXR8qeO3YDuhFbYgoPkiPRNNgj/vTKB/AMGU+msYarir2V2QtpY4n7qytOHutcvQ2SOFkmkoEdFR2wTu1kGmyC1Ig6kHPy34WZA1bmnHBXeePPALpgPRuXF2ujH0U/DA4L2Z50h4Bo3Cq5XJwQ56XKbF1a2iqF/pzeQrumMb6H7kg9dAa/v3aQLtVaQx3yCkrv2PJbYh89TYhuNTRtZBH0vDN3BFS23CdTrQiOUIWFS/LpucNHotcS/Klw7FCqvCox3pDH16l/I2A5IiQlrHZBAV29b7gWiKV
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CO1PR11MB4914.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(396003)(39860400002)(136003)(346002)(376002)(366004)(451199015)(38100700002)(66476007)(921005)(4326008)(82960400001)(7416002)(66556008)(86362001)(31696002)(2906002)(44832011)(8676002)(8936002)(5660300002)(66946007)(6506007)(53546011)(186003)(6512007)(2616005)(26005)(6666004)(6486002)(478600001)(316002)(41300700001)(110136005)(31686004)(36756003)(45980500001)(43740500002);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Q1ZYMHVOdG1uWW1rdUVaSmU3MUlQQTFVdGQ1cmNpVVhFSkl0RWYvaWdWQmpL?=
- =?utf-8?B?ZXFiVDM5bUxCY015NUtHMUtpNVc3dDZkSnFySW5Vb3gxa0RNdG1BYlFjY0d2?=
- =?utf-8?B?K1ltcy92Ky9BbjdiSkdURUNuN0dNa2xMeENPOEZRaEFyV3cyRHpOT3RKc2ZW?=
- =?utf-8?B?bUpOeDRkUFV2MlNPZU4zK04zK1EwU1FSVHZsQ0YrRjR3TUszMjFrajhKYmVt?=
- =?utf-8?B?SDBuTGpsaXBiNXNManErdzl6aDUvVXI0bXBtRkZCWWxJZFBQYWo0ak02eDIr?=
- =?utf-8?B?bHJsTVpPTElxOFp1ZXZrRFVkeGw1N1JOOFE4cXFvTzhJc0V5N25wajBhTm5T?=
- =?utf-8?B?NWpPQnZNL09hd1htOW9SZkZmU2RRcW9FWkZ4Q2taR1orZjFXSGhSTUhETFlT?=
- =?utf-8?B?Z3lkYXhlS3NNMWFMSmEwMVVWbWNUUlJZUjRxdm9uOEZaNXlLZXhVQ0xDcS9j?=
- =?utf-8?B?VkM2b3JhYkZqNmRMVUVkc0VBaFRmRlRFTHRLcFZmSVZZalM2bUlQaS9tSVB0?=
- =?utf-8?B?aFhBV1o1VjRjTE0rbG5VazFZbEpJY0x4VUlwelcwSjVzbVYvbmQ2MVpjN0wv?=
- =?utf-8?B?M1p1dlVCMVFubi9RM21vckhxR3k5UHRUak1iNW1yOExZL1ltSlRkL0xSKzFE?=
- =?utf-8?B?dVo4TnFWc292Vld6ZS93bEczd0l6VTJhNVdtMHB3dlNMMU5XaVpJNENTMUNk?=
- =?utf-8?B?Y2I2VmRWMUk1VFhRLzZrQU9ETmdiOXNIMCtXTGJqY2tqbFNNdFc5Ulp3SElW?=
- =?utf-8?B?SnpFOE1EZWNTRVFNZ05aajcxUExqU01xMGh4OHFoa3FqV0pwYitnWWVsSld0?=
- =?utf-8?B?MTNNbGd0RnV6Mi9uYlRiSE1tOTJvNmJ5ZUpKM1MvNDNFcWI5eHpxUGtTUXZY?=
- =?utf-8?B?OU5MZHVTZVQ1WUJoWE5kU0tKVEpQUUdLWDJtVzB2L1dwbXQ5T1Q5TndWYmtI?=
- =?utf-8?B?UTlhc09iZHNqVkYxVTh0RjlUaTU0U2hSY01MWnJFSjRIWURlZ1NyajkrSjdx?=
- =?utf-8?B?TFpneTZXMitZK0oxa0FOMjA2cnRwOWsrWlEvZ3dya1pTTk5pY3I5N0NtbDhR?=
- =?utf-8?B?VkxobjB3VTMwaUlZVWhmRFZseDU4azRBYVpxbGpkYThjYjJLeUczYW5NSVFt?=
- =?utf-8?B?SnAvdXVFUCtrdTNJVkZmcVh0NlJCczlsaDFrOURoaGQyQjNleTNFbGVXeVhq?=
- =?utf-8?B?OEZtRjdoRkhMVmE0WWFtODRtMnFneStQY3BZMjVXNUw5TXVVaGM2Sjl3c2F6?=
- =?utf-8?B?TnhBQmd3YVROcE14NDlOYkcvTmtmUnhHd2hsTG9rZXJaaEtBZDFNMVkyekx2?=
- =?utf-8?B?dHlNMTFuQ3g2cUlPWENUM1NtbVFIbVJhN2FLU0E3THdhaUczaDBFbWhpVUYy?=
- =?utf-8?B?MnNDRVF3M01nOEtpN2NMWU14ZEZYbGE4VGFiQWpadlhEbTR2MWFLSmxOUDJM?=
- =?utf-8?B?alVGSDdoSUhVVC9GS1FwdXJoQTFVRTc1Q211SVBOR0M0SThZWG1wcGNXT01p?=
- =?utf-8?B?N3d5aGpWSkExMW9aK1YrVVE0U3h5K3lkSk45QTc4Tms0TTZYMHlxeW1rMlc1?=
- =?utf-8?B?NUlzOU9oLzF3QTBOcXpNL29URmtMQVJYNnB0dHdIdXl0M2ZTM0ZZYXNvSTZk?=
- =?utf-8?B?cXVreXpxemV0RDdGQ0dhWlRQbTZ3U0FDUVQ2eHd3WGM2anorMW1aUmFtbDBT?=
- =?utf-8?B?NUJ5TDF2aHZVQjVGelRBdFpOY0ZLZ050Y0x3UTRSWVNuTUFxT0F1LzhIaXEv?=
- =?utf-8?B?TzdhMzJ0OE16TDIrQUQ1Y2dheGFURUg4Nnp3dlViQzJvSGxOR2cvUEV4T0Jq?=
- =?utf-8?B?RldHZGRPS1Z1WkQyNDhTZ244S1hCZURpV3hlZEF4VVRYYUFwTVFaZDBlOFUw?=
- =?utf-8?B?Q1FCaGx4SFFtSDZFbXNnUExmaVVvSVBuV0lXQ3ZYRExYeGxhUnBiRXV0dUxR?=
- =?utf-8?B?R0p6QjhSbHhTOCtRSHhDVXZvZkREeHlaVUZWeTZLbXczdEE2djl4eVl1c0pu?=
- =?utf-8?B?NzFkclVoUDYvcUd6MkVpNGJEcjlmMEQ1Skg4bTB6cVA5a3QwSGJ4MHVYUXhT?=
- =?utf-8?B?L2tZSmUxVE5VcVRDMlNXbFdYWGpPRnZUVWtiZjlJR1FqZVNGWTFITE90Z3FZ?=
- =?utf-8?B?aWhLdzFiL3JHVGxyTk5RcVJsYjhUQU5XYWhYMnJyMjk5dW4zMzNVRHZDR2NT?=
- =?utf-8?B?VXc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2f41409b-07b1-4ac2-a490-08daf8f0806b
-X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB4914.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Jan 2023 01:08:25.8285
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: WqvOP9mwc0ZA32oOqMD6Rm5StMbcAPajqBOpNQArS/HPad6/4prmsQ89lHP0/lXeIiLM4fIB5fX3m9tg1ixtJrksr2Ucdvpjq8qJUoX71vM=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY1PR11MB8126
-X-OriginatorOrg: intel.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230117_170830_891110_C5B9C099 
-X-CRM114-Status: GOOD (  16.88  )
+X-CRM114-CacheID: sfid-20230117_171744_340730_2B53C7D4 
+X-CRM114-Status: GOOD (  12.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -191,37 +85,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 1/16/2023 4:55 AM, Michael Walle wrote:
+On Mon, 16 Jan 2023 13:55:14 +0100 Michael Walle wrote:
 > From: Andrew Lunn <andrew@lunn.ch>
 > 
-> Deciding if to probe of PHYs using C45 is now determine by if the bus
-> provides the C45 read method. This makes probe_capabilities redundant
-> so remove it.
+> Some C22 PHYs do bad things when there are C45 transactions on the
+> bus. In order to handle this, the bus needs to be scanned first for
+> C22 at all addresses, and then C45 scanned for all addresses.
 > 
-> Signed-off-by: Andrew Lunn <andrew@lunn.ch>
-> Signed-off-by: Michael Walle <michael@walle.cc>
-...
+> The Marvell pxa168 driver scans a specific address on the bus to find
+> its PHY. This is a C22 only device, so update it to use the c22
+> helper.
 
-> diff --git a/include/linux/phy.h b/include/linux/phy.h
-> index fceaac0fb319..fbeba4fee8d4 100644
-> --- a/include/linux/phy.h
-> +++ b/include/linux/phy.h
-> @@ -419,14 +419,6 @@ struct mii_bus {
->   	/** @reset_gpiod: Reset GPIO descriptor pointer */
->   	struct gpio_desc *reset_gpiod;
->   
-> -	/** @probe_capabilities: bus capabilities, used for probing */
-> -	enum {
-> -		MDIOBUS_NO_CAP = 0,
-> -		MDIOBUS_C22,
-> -		MDIOBUS_C45,
-> -		MDIOBUS_C22_C45,
-> -	} probe_capabilities;
-> -
+clang says:
 
-I'm a little surprised there is no Documentation regarding this stuff, 
-that needs to be removed or fixed up, but since there isn't...
-
-Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-
+drivers/net/phy/mdio_bus.c:708:11: warning: variable 'i' is uninitialized when used here [-Wuninitialized]
+        while (--i >= 0) {
+                 ^
+drivers/net/phy/mdio_bus.c:620:7: note: initialize the variable 'i' to silence this warning
+        int i, err;
+             ^
+              = 0
 
