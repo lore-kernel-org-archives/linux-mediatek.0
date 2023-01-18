@@ -4,100 +4,180 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55003C38147
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jan 2023 23:18:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0C4FC00A5A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 01:07:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wzoFsN2BtIwkV7J9p1OybyavGXclmQ9kcPW4uj8vI+4=; b=dpKCJZ6HQA55bMfHwlG9dk23ED
-	4U1lL9f13VoHUzfMidwb/7SAs5HsKMqmd5TGP6KdU3+Tve1awrhIXSX1mugowx5EWRRvsnsJjv/M3
-	/j7C3VTUttDuyVkzgDzLZd8XlP86hvy1Ji6Tu52/ehi9lGXGqCn5qm58rwivEjjn6rtea4w6gHZI6
-	SImsm40rkn9nC4kiBYF0j9nSw3jtB3vu99knoxS7L+kQQXKIFIdPW7y68T+TF+0YwiIo+2GGuqMS6
-	Q6uPOa0b4Ocjlp3HNKfWseFcR4d0NzwwmOZug1b3zImT//PzpylDJ4NxokUHT7YxLesoncHu2987O
-	xWui4eMQ==;
+	bh=gk6d7UVo5r20nbcRRZlkbybVC5ZPyxTsBffKFo5Q0es=; b=RxfsJEzKuNmqpYj5r2Ehj80C3H
+	ARIIykoITejOkfeh0e9JSg2G2/oKiBfRcFpOr457lnwypjUl9N1xw+TVQFSXgwFr+qhQUaNZSRrdx
+	pWjCmrUahwITmVc87k9URAo1ZA36RyE8WhKoKQSE4JvywP+bONC7/nAhz/7HCwdK9sLSxBIcgcJZI
+	Q5yEHyQhLiznQk4BtIwsxk6ae3ZtRTZZjd0XHmHg4Idxf+s581v/fzTEKshr0qb8gtVHo3Fx7SHvR
+	OYoj0QAEj2s9UMvn5bB3TJH7mQ+j4ep89NMi6B9TBZK5nWJkQSQupVN5/qKG5/4k4WIAnqD2mmKlr
+	t8n+rrFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHvDi-00GDzO-Dl; Tue, 17 Jan 2023 23:18:22 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1pHwvP-00GOR4-QU; Wed, 18 Jan 2023 01:07:35 +0000
+Received: from mga05.intel.com ([192.55.52.43])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHvDW-00GDqb-8G; Tue, 17 Jan 2023 23:18:11 +0000
-Received: by mail-ej1-x632.google.com with SMTP id tz11so14748597ejc.0;
-        Tue, 17 Jan 2023 15:17:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=wzoFsN2BtIwkV7J9p1OybyavGXclmQ9kcPW4uj8vI+4=;
-        b=WHkz1zPwXkTNrAiIJUYxeLo3UGJReyuX52LQMNDjwPjA7k3W/kAYzvCsEzteUoEbu4
-         yPAJWqnKYjN3T9Y0xfzCw8HsGJQdEZTqj4u0qMr0hYP9TSroZy6ZGbd1QX0+RpWNR5h/
-         OigdrmABYXR+MFv/Ar3o2IjM9bOQZkEATabOuTvlr4F6PSGsFeKKtNt4P6DfO8grzL8a
-         Wlt6QM8UkV7I4gD+iqf96i0VPn97OK4iwvJSA5WSIRl3e3GhvaJZFO4S+kKSuRBvmNOP
-         8p7Mgj/QnaBU9sQdFLHhnetF3dMl9apL4Ry5w8QJZIcBcBEM2uC+DT6QDtQpH8K0QaS4
-         1+vA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=wzoFsN2BtIwkV7J9p1OybyavGXclmQ9kcPW4uj8vI+4=;
-        b=xF5NujpxvjQHr625J3mtv4utfvvH1L9J33Fs0yorcTHFb+3h7MTsMnieACnQNu+7wo
-         hjBPWa6BttE3UxYKAuo00dijtmLJEdKjIQzT+5Rwia4Jr4SsWit/u8Xee6TIcIQxc2ZP
-         DXRhXmomHB/6FVeRTNrCUDTlksQHQzXg4GL9RFJ9gVSZAQddE3i3ixdCaxRfpCN25Ufq
-         nGH9gfi+mlJvqQaDUlQIp8Scf6Dj7+px3TFJdpJy0fu+6zzO68Qoh/gaEpVyvA0/rSpi
-         Ftf23d/wLG86MZ2s7BaSjC+W0GoHByPj7F3+hs9iHjLc3bEsp5yLZ/804q/5xHRQsDy7
-         2HOg==
-X-Gm-Message-State: AFqh2kppqar0Y80yv0kkKg9aMahXYMp09hX49q8N9PhMNUoBdHF6Ywj8
-	cDJF+YgoV3HJ1dVAb/iJanY/ndk2iAY=
-X-Google-Smtp-Source: AMrXdXsHkUY7XfIE1B2bjhbcIkUoum8bNrkbJ1XX/wIp0s+lBwNIEiBdSnR4Jk843e+5/9ZDSuNesw==
-X-Received: by 2002:a17:906:358f:b0:829:6064:bc52 with SMTP id o15-20020a170906358f00b008296064bc52mr4616096ejb.74.1673997473518;
-        Tue, 17 Jan 2023 15:17:53 -0800 (PST)
-Received: from skbuf ([188.27.184.249])
-        by smtp.gmail.com with ESMTPSA id g18-20020a1709061c9200b007c1675d2626sm13977440ejh.96.2023.01.17.15.17.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Jan 2023 15:17:53 -0800 (PST)
-Date: Wed, 18 Jan 2023 01:17:50 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: "Hans J. Schultz" <netdev@kapio-technology.com>
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, Eric Dumazet <edumazet@google.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	"maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Russell King <linux@armlinux.org.uk>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	open list <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	"open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>,
-	"moderated list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>
-Subject: Re: [RFC PATCH net-next 2/5] net: dsa: propagate flags down towards
- drivers
-Message-ID: <20230117231750.r5jr4hwvpadgopmf@skbuf>
-References: <20230117185714.3058453-1-netdev@kapio-technology.com>
- <20230117185714.3058453-3-netdev@kapio-technology.com>
+	id 1pHwvD-00GOOB-FJ; Wed, 18 Jan 2023 01:07:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1674004043; x=1705540043;
+  h=message-id:date:subject:to:cc:references:from:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=c52TvG8n/NLSARmd6BjyLwk0mpP6q1iYQRjsWMEAc0I=;
+  b=HPL891ETZIF2LrztHR8FznrIa9OlVyXQYaGcDJnvdTIBX69D1+6jucTN
+   tk6OubPzaZudIZGbvCvkPUqQJV/PwY5O9jChUpu+KKer8TdvSJyVOeddc
+   Z+U4um/oYo6J/9sQWbF9XROgGs6c/SptMebYxKbPw7OUvrJmTcwH1wNht
+   UvmNn/xNaf3uXVZMuNIqk+IXmkbC1es6gNOMGTSzu0zpHhu2OvkF83ugM
+   k6VqTs3vfI6vegVLMaXgpI8nr8xfwC9M5yJG/4qS2v5gNegBQiMzSvdha
+   TVfc4vXnnx+SZQaNJbHhwnEI6N5uCOU3M/h17mhYInPg2uQSJuVqM3B0G
+   A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10593"; a="411105222"
+X-IronPort-AV: E=Sophos;i="5.97,224,1669104000"; 
+   d="scan'208";a="411105222"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Jan 2023 17:07:18 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10593"; a="652718455"
+X-IronPort-AV: E=Sophos;i="5.97,224,1669104000"; 
+   d="scan'208";a="652718455"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+  by orsmga007.jf.intel.com with ESMTP; 17 Jan 2023 17:07:18 -0800
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Tue, 17 Jan 2023 17:07:17 -0800
+Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Tue, 17 Jan 2023 17:07:17 -0800
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Tue, 17 Jan 2023 17:07:17 -0800
+Received: from NAM04-DM6-obe.outbound.protection.outlook.com (104.47.73.46) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Tue, 17 Jan 2023 17:07:16 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=g3DhdsZQOlLqGz/GobqsAWf/ZtdHiWgZmM8y4wRLJtZqHCsdgjNnGHR6WZ7ddt+AZzbwDTYvJv7H5K6hxNg4Wz67yVuqSZgKFAkHaM7SDDuBm6F0+bvB29nMy8frdARh7jbsmuY6+tfz8XVKK+Qpzq+aQK44cQ0KndAjxiUhuaBFeVyY+cvTe5bnIRCM528zP6L0CT9/rt/aFuTWKcbGP9fTKnnfJv80/eaIedXGphbfuKu6oA6HZSQj0X3QVxRAL2iAYrvqcryoknUI7Ergb1b9/u3Motxc6oy6lu3BmrCZ37WyK/99yWFi418Mbl3T0Sgpym5v0WjLvK1FU7xaXQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=gk6d7UVo5r20nbcRRZlkbybVC5ZPyxTsBffKFo5Q0es=;
+ b=XLA+gUZ4YqbbV2E/fr6YD+xRu3WmyR4U+8c6bL0ysQ7zqRsH0barc3tCmpaXwlvQ2jVbplb6OeWo4vS8nsBCKeIKwkDQDCrCdGL82B7o4R1tHzxIl0EIQprXVHgrL0EWdxXbwfP9PtZ7QTmqG/5zziJQCL/7BsF08/ayk10B/tfEORQqaYeJ1it+SozqJq23i/1yXjULkTQkT5TL9IvUjwlQubeA4WpmJIVDr/pTyyPWGx+bNdHNHpHdXw2mJHc27YB+lXioRkB/hr9Ymx6TkDlHOS/eSx5fjGhydZOCB8swjQjyLTO7IpUHVWAUkHhotI9vBSr7nI5BbryD6lYwlQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from CO1PR11MB4914.namprd11.prod.outlook.com (2603:10b6:303:90::24)
+ by BY1PR11MB8126.namprd11.prod.outlook.com (2603:10b6:a03:52e::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5986.23; Wed, 18 Jan
+ 2023 01:07:15 +0000
+Received: from CO1PR11MB4914.namprd11.prod.outlook.com
+ ([fe80::c743:ed9a:85d0:262e]) by CO1PR11MB4914.namprd11.prod.outlook.com
+ ([fe80::c743:ed9a:85d0:262e%6]) with mapi id 15.20.5986.023; Wed, 18 Jan 2023
+ 01:07:15 +0000
+Message-ID: <30225b71-18f8-1948-9d1b-95e418d14748@intel.com>
+Date: Tue, 17 Jan 2023 17:07:12 -0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH net-next 1/6] net: mdio: Move mdiobus_scan() within file
+Content-Language: en-US
+To: Michael Walle <michael@walle.cc>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>, "David S. Miller"
+	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Felix Fietkau
+	<nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang
+	<sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, "Lorenzo
+ Bianconi" <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	Bryan Whitehead <bryan.whitehead@microchip.com>,
+	<UNGLinuxDriver@microchip.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu
+	<joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, "Joel
+ Stanley" <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>
+CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>, <linux-aspeed@lists.ozlabs.org>,
+	Andrew Lunn <andrew@lunn.ch>
+References: <20230116-net-next-remove-probe-capabilities-v1-0-5aa29738a023@walle.cc>
+ <20230116-net-next-remove-probe-capabilities-v1-1-5aa29738a023@walle.cc>
+From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+In-Reply-To: <20230116-net-next-remove-probe-capabilities-v1-1-5aa29738a023@walle.cc>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: BY3PR04CA0012.namprd04.prod.outlook.com
+ (2603:10b6:a03:217::17) To CO1PR11MB4914.namprd11.prod.outlook.com
+ (2603:10b6:303:90::24)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230117185714.3058453-3-netdev@kapio-technology.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1PR11MB4914:EE_|BY1PR11MB8126:EE_
+X-MS-Office365-Filtering-Correlation-Id: 23e43f9e-475d-4da2-48d4-08daf8f0569c
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: hFwuECT6R4iau0BhDpFwK9b5cdMx2HSTx1Hnmj+Awy3g5n6uCSq0rvYHXJpXbiOmYkjPQ3n7iFq4IifIbhY86rqfmSlzQCiwWvlxCJRmVieGvKzjn/xP3UwRbbnIzyTX1SStrCrJF7gfc00XCJy5DaaRoFg2/b0ax0XXKRb14WSoZCxrkrghq3G9C3aLI9Af+xgN2szpPDtvq1R+ahtleoYPy+FfC+mPSlYwSqr7UXOcRHW5bDuq79lejtT/glOB5vz3pOJe0rul5wueIo9nZ30DzcN+ibT0x5abIxJThqipd1Tbvq1Ct7NpoVg7eW0lBXlQmAsdyCB9BuIcT2TIjaInLqQyMotxuqZm0vOVRSrCN+BocS2qauQkRuKtunQthgwJn1hnwNA6m3sn3wPE6Uw1ORMG0AyZ2MT4/8thV24BcX87aDbuxKiyKwHJAfJ+H2cFYLpqiLHWHWrqwVz1VDrSPmADoJ27hKPAb83PmRm2i0yXN/2P37h3GP6o0Yh4PR5xp+VcsLwcW7MIxXVpEl12LhY4GAXPurvTDIlrFAb0BQY5hpLywbvYFWwCgIIRUyCvQ80QKV2U+CVOrWNv25j25dQ1PNKrOY5QnzpNtrj+1t0k2DmXCByfldlt5hJzzZeB9zbnddgkqRxku0PMzAsuSIRf7dPZvnj6+YmFmfhZwiGvjBigaQx5EPUsns5dWlBIu6ABVtdI0qX4nhhe8dNJ5N5+p13JGCfXOq+A+Dl2gAVMOYzj1Wwi4Lw+zDTK
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CO1PR11MB4914.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(396003)(39860400002)(136003)(346002)(376002)(366004)(451199015)(38100700002)(66476007)(921005)(4326008)(82960400001)(7416002)(4744005)(66556008)(86362001)(31696002)(2906002)(44832011)(8676002)(8936002)(5660300002)(66946007)(6506007)(53546011)(186003)(6512007)(2616005)(26005)(6666004)(6486002)(478600001)(316002)(41300700001)(110136005)(31686004)(36756003)(45980500001)(43740500002);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?d2FBdnMveVlkdzQxYTFCcUIwSGlvK084NUNNb3JMcmYzSThxNk4zMkJUR1dQ?=
+ =?utf-8?B?c2FveCtseG4vVklESHUrZlV2THV5eHcwZ3FKVm5SZmEwenVhWDV6R2h0ekRw?=
+ =?utf-8?B?RTZLY085WnJlaG04MVNWbmNhS09xY1UxWk80VXFmWkpYMFhEN2kwRjY3VGNL?=
+ =?utf-8?B?L05QTyt1eVZ3UXJwK1RoRWduMGxIeGZRSjhsTUJ1eFVxN2NVemlrZVFLUEJJ?=
+ =?utf-8?B?ZUVyK2JqVFNBMFd2eFVmQ3JOYzZNUUdVQVpHWVhWbFpoUW44NmFHTTdOR2Ro?=
+ =?utf-8?B?TmJ0VWRaSTQ2TTVXYXZ3bXlMemZyL1ZQK1lBdlJaR0l4VVo5VnJmL2J6UFVC?=
+ =?utf-8?B?MFAyN0piRXZuVURuc00yZXUrMng3L2gyOXpWMkE3NVpCT2VsODh2Vi80QWw3?=
+ =?utf-8?B?YUNBbEhGRVhoeEkxa2Y3MFVaQ09SZlVKTmhhT0ZWODJZbDNiMzdaNEIrTHh2?=
+ =?utf-8?B?VllHeC91dG9McTdHbjF2aHFQUWxZbUY3dVQ4SXNLOWlramZ5RUROaHhBTlJr?=
+ =?utf-8?B?OWlITkg1WlByMlhZOEVDdGNnZlJzUlQ4TFlaSVVDaWJiMEhEYU1pZ01IMFl4?=
+ =?utf-8?B?WU5NbDlRTXRnRnVvUGIwa25saHl2dXhLM3lzbDFVZVE4T1dHT3Q1VHZQQmln?=
+ =?utf-8?B?Y09ZTmR4aTNLcFpWSktUVWRQcHo2TFNnazd3eXpabHkvYjkxV3M3RDlxUnJ5?=
+ =?utf-8?B?L1pVZlVIWE53ZmlyMUtLR1c4VE9mTnRmcE1ic1BNazZZc21VM1hUZ2Fxdm1D?=
+ =?utf-8?B?b3FMVmdjNUlOZXhRbkdkOWFjSGk1K0NPdUhxSzY2eHdBaVRCWE5LV1BsLzRu?=
+ =?utf-8?B?NXNya3ZzcEFzTW40WWYramxNb2E1WGphS2lncVErU1BpdGVqajh4YlRyMFB6?=
+ =?utf-8?B?VExWV2dsQ1dHZmY4NndOeFo2azZRVWVWZWdZdHoySXVIbnYyMytBSVZLdEdM?=
+ =?utf-8?B?c2hDSWFmZUk2NVVRNVVWS3Q2WFB1eWhObUNxU0VScitBMkJlSnZxcTRmS2h2?=
+ =?utf-8?B?QkxlcWxyV2JrSElxUG4vaGo1SjBZVVRGTlFUdEFwcjFFK1NqU0ZoUFVnTHhB?=
+ =?utf-8?B?TjJHV0JycXRvNklUaE1od1l1TEdHcExEOVc0U2RMWkFoRzBWVGJWSkFuc3pJ?=
+ =?utf-8?B?SnQ3Y3Y0TUYzZEt2ektLbXBQSkN0RldsT3V1SG9CNzhLRy9TNkdmNlZTRS9S?=
+ =?utf-8?B?cTNQQ2wyYklFRk9VQXA1TG4yUVUxVmJ2aXRNRGd5T2lRLzFGVFZGelRaOUpp?=
+ =?utf-8?B?WWVtem9pbnNWODI1T3p1c3Bzd2VYbGc1SGVhSS9ZVGZsL2hWZUhuYU5wcy9R?=
+ =?utf-8?B?ZFZMSmI1M2NYV3BOWVV5K2dpK0wyNGJxRlBlTU40ZlhhNThYb1ozbmdVZ3BE?=
+ =?utf-8?B?R1F4Tm94aW9RK0xYRklHdk9Qd0FuazMyNjZRUzlzOCtSMngxa0VGa3gya2pr?=
+ =?utf-8?B?UTJYY0xPWkx5ZzhndkF2UzJSWkdUV2VaVlVFRGtDTmRRSDdaT0MrcDQwUUwv?=
+ =?utf-8?B?NE1DZjZ6Z2trRjdxUEJ2UGlkM0ZqRmhJaCtWQWFkLy9pU29Wd1VtQldmTEx5?=
+ =?utf-8?B?SFNUcUU1cHRaS0oxdUsrTlllTTVSSjN0VUQybjVPaGpxSktDNWtQYW5hVDRE?=
+ =?utf-8?B?V244bkErMFgxaTh0TFB3NWUvYlFyaHJ3QTJweDJDVVlaR0NoWTVMV0F1K1l5?=
+ =?utf-8?B?cDErVlJuWUNia1dVQmt5WjNNU01rS2V1YTdUc0puMi9pb2RwZSt3R2dlakQr?=
+ =?utf-8?B?cVJTeTM4eGJnQkJEbC90VnVzSmZpaVpnRklvZk52dEJDNTAwNnFZT2lmaGVV?=
+ =?utf-8?B?ZHg0ZythZnFKc2ZUaHVDNnV6Q0xsdkZMWmRYMFF5L3kvRk1sV01tMHN1QWRP?=
+ =?utf-8?B?bllkSTVuRWJmd2ZIMW82dUtVZVFPZjlFT1JmNGk3alNHT290Mm0xODRtOWph?=
+ =?utf-8?B?QVlSNW1FdENHVEk3dTRaTmg2TzRRN1hwVGFmRkptb085bUgyREhEblJiSzU0?=
+ =?utf-8?B?MkxWMWQzcitZZkRTMmt4TDUrUDVKSHFzdzZOT0EwVkZmRml4Vlh0MDhmT0Iz?=
+ =?utf-8?B?MTlMOWNEanI1aG5lSFRMdStmUmxxeEtwamlQWmF5SWpVdG5wQlErNWFKc2lX?=
+ =?utf-8?B?M2FyOC9XQzAyL3B6bGNGMm9JVmw3ZEJUSXE5OGc0OFpZZktqOTVwTGU3dzE3?=
+ =?utf-8?B?U3c9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 23e43f9e-475d-4da2-48d4-08daf8f0569c
+X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB4914.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Jan 2023 01:07:15.6738
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: /3Dt37mmP41J6UiC/DZi/xKb4KDA1Un9oCqmkjyoRkPd5NqAlZ/ESDHp5tdN5+58/DoPZXEiRGsD5IQGdJkFXpksgmZ7bad/ig9Sf9Ih4SA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY1PR11MB8126
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230117_151810_333182_2CEA412E 
-X-CRM114-Status: GOOD (  17.10  )
+X-CRM114-CacheID: sfid-20230117_170723_600750_A448F8B8 
+X-CRM114-Status: UNSURE (   9.57  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,63 +192,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 17, 2023 at 07:57:11PM +0100, Hans J. Schultz wrote:
-> Dynamic FDB flag needs to be propagated through the DSA layer to be
-> added to drivers.
-> Use a u16 for fdb flags for future use, so that other flags can also be
-> sent the same way without having to change function interfaces.
+On 1/16/2023 4:55 AM, Michael Walle wrote:
+> From: Andrew Lunn <andrew@lunn.ch>
 > 
-> Signed-off-by: Hans J. Schultz <netdev@kapio-technology.com>
-> ---
-> @@ -3364,6 +3368,7 @@ static int dsa_slave_fdb_event(struct net_device *dev,
->  	struct dsa_port *dp = dsa_slave_to_port(dev);
->  	bool host_addr = fdb_info->is_local;
->  	struct dsa_switch *ds = dp->ds;
-> +	u16 fdb_flags = 0;
->  
->  	if (ctx && ctx != dp)
->  		return 0;
-> @@ -3410,6 +3415,9 @@ static int dsa_slave_fdb_event(struct net_device *dev,
->  		   orig_dev->name, fdb_info->addr, fdb_info->vid,
->  		   host_addr ? " as host address" : "");
->  
-> +	if (fdb_info->is_dyn)
-> +		fdb_flags |= DSA_FDB_FLAG_DYNAMIC;
-> +
+> No functional change, just place it earlier in preparation for some
+> refactoring.
+> 
+> While at it, correct the comment format and one typo.
+> 
+> Signed-off-by: Andrew Lunn <andrew@lunn.ch>
+> Signed-off-by: Michael Walle <michael@walle.cc>
 
-Hmm, I don't think this is going to work with the assisted_learning_on_cpu_port
-feature ("if (switchdev_fdb_is_dynamically_learned(fdb_info))"). The reason being
-that a "dynamically learned" FDB entry (defined as this):
+Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 
-static inline bool
-switchdev_fdb_is_dynamically_learned(const struct switchdev_notifier_fdb_info *fdb_info)
-{
-	return !fdb_info->added_by_user && !fdb_info->is_local;
-}
 
-is also dynamic in the DSA_FDB_FLAG_DYNAMIC sense. But we install a
-static FDB entry for it on the CPU port.
-
-And in your follow-up patch 3/5, you make all drivers except mv88e6xxx
-ignore all DSA_FDB_FLAG_DYNAMIC entries (including the ones snooped from
-address learning on software interfaces). So this breaks those drivers
-which don't implement DSA_FDB_FLAG_DYNAMIC but do set ds->assisted_learning_on_cpu_port
-to true.
-
-I think you also want to look at the added_by_user flag to disambiguate
-between a dynamic FDB entry added from learning (which it's ok to
-offload as static, because software ageing will remove it) and one added
-by the user.
-
->  	INIT_WORK(&switchdev_work->work, dsa_slave_switchdev_event_work);
->  	switchdev_work->event = event;
->  	switchdev_work->dev = dev;
-> @@ -3418,6 +3426,7 @@ static int dsa_slave_fdb_event(struct net_device *dev,
->  	ether_addr_copy(switchdev_work->addr, fdb_info->addr);
->  	switchdev_work->vid = fdb_info->vid;
->  	switchdev_work->host_addr = host_addr;
-> +	switchdev_work->fdb_flags = fdb_flags;
->  
->  	dsa_schedule_work(&switchdev_work->work);
->  
 
