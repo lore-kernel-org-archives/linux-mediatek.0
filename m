@@ -4,147 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75D5FC678DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 17:40:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C994C38147
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 17:54:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8zAUxFAa6lgoBmjDrVTvJWNlnuKPEoPpig68boL1vlc=; b=dTymD+SxPj1Yyaua6upKnoIAOh
-	lf9/boR6+9QdGOdAnpscMvIo2LlqLzxtufJjEKbsp1bBMp8sZG2h7dcLzlDT//g2Et++XOkyo/eJJ
-	8BFBZqvCmY5patWEsP1kWAy9yI5QWWH0MBTGeEpyMYZ7KyPm01iAe29oPJje7qRmiLEvt8JXSSVk5
-	JrQlzu/Ot3zwG5ExJJNxLMJKT3s1uoq602YDst1G4sc0bq2TtAs6LxczJwrytxeub/fRx/iA2+BD/
-	PEKk+j9b1D5WuSc5M+TCzZGF/zyUL2YPzyEE3TEUTMTSOSJDBNIolLEuJ3n9ttrFhNU5zVSjJP5X/
-	y3kBn/7g==;
+	bh=TWpO1YbgA04yjZBzLFJGZr2Ux7J9tn5oLTa4Qr7uJbk=; b=oQIb7uYEERBKjK8+uKeZLhOWTP
+	q9SIEL1+luxIcplqgJgr36cpw9dg0T8FfxucVpo3JXf5CbuyXZ9Dwi7xIPI5BXn1qGkUz9bh+6OIA
+	hXOjNI/D5z1XXFEe6CDtCratyL0/xU+O7qiBQe1ddC0ixa5P6yZRyOY+EbMizBnL+KNW5SHziIBfy
+	dy2K6I97k4+zU0Elgw/w1o3mEDJe/fxWfPwHaxmDivQH0uu5lBuE0bFbYMZNOGlrSqTamDTRcqRX2
+	r3mMv1xeXHHDXHR9ZJ1Ke4fOBJYE/6rNnXsmk7SZGcJCOig3OVV/DspKlOLN6KB2Hr2/aM+e+l98i
+	A/AFlNaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pICPn-0024zy-Fe; Wed, 18 Jan 2023 17:39:59 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1pICdh-0027nF-J1; Wed, 18 Jan 2023 17:54:21 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pICPg-0024w0-7q
-	for linux-mediatek@lists.infradead.org; Wed, 18 Jan 2023 17:39:58 +0000
-Received: by mail-wr1-x431.google.com with SMTP id b5so13562339wrn.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 18 Jan 2023 09:39:49 -0800 (PST)
+	id 1pICde-0027mF-Ie
+	for linux-mediatek@lists.infradead.org; Wed, 18 Jan 2023 17:54:20 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id m5-20020a05600c4f4500b003db03b2559eso2162099wmq.5
+        for <linux-mediatek@lists.infradead.org>; Wed, 18 Jan 2023 09:54:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=8zAUxFAa6lgoBmjDrVTvJWNlnuKPEoPpig68boL1vlc=;
-        b=wiyLrKzuIwLqu0gkfqhRUOcgUSvxSnHWc+GoURfGb5vd1vItbsEZP0qVQ2W4UTjxFS
-         YLRkwIXhykjmiEMcXtiXHYurzSRQg9iL2zZPjtX1CDaAWuvCX9ORGO1eZaCYAd2JjUcw
-         unxKalcXAkbCuzPr4KhrdoSMorIkKFY0fhQ7UjplSFVvZdJizlpHflFJ5+jtR6eBDWUG
-         ttPOkBP5ERSC5etHjjIg/jSpnwxOsL4Hfj96rEPER/DLogHbAfUqIll46wYsT0ZQ3Bo6
-         MdF4uI3eNTfBT4ZrDDSRKdJSn4pwj6wT/W/PW5bPo8NloVY4BJ+/fq4fToYe0NRm8qgL
-         ZafA==
+        bh=TWpO1YbgA04yjZBzLFJGZr2Ux7J9tn5oLTa4Qr7uJbk=;
+        b=yPqo3wCU1xKWJPTbuSCKCbqYu6Q+pewK3OQ1KwO4DvrbPw4kUHaYyutclqFtr8rniv
+         rFB6x+jo6VQZ3dIlql4OO3K15gyVQVAKU3AYVC2LM+MZh6yPUdKhf9nv6PA2T845Jgx0
+         7yms/WQF5TaY3zASjHlGhI5n4Bamh23pq1kXrtkbHWpAmcRoSyGmggfj3vgMv2XT0hVc
+         ny3oYDCyascDlK2oamvzZXNSAKXv97QzBO8GY3CF9s0p+ggSH3VBEFKJ7FowVdowCM0s
+         lOyVHWx9INpOjZ9m5zUjoUnY8HVAxBrvv6R0qQ9om98BW0nVvP1h4U8BW7Fog/yjGxf+
+         Wzzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=8zAUxFAa6lgoBmjDrVTvJWNlnuKPEoPpig68boL1vlc=;
-        b=K5uZ6/iiFvlvjDRsFd+qeDdPfQgI9ZPBDg7g67nl32KENOMMPzVNpkJCRZUSKEuvIk
-         4Boqeb5MXoanYVwOsvpvnPpwfv34OUpX2gIkmMUkMEdsAS9arSzoVMcjLQ8jumQ0s77c
-         AJfaEVB/i6bjeCX6rNSXVKi5guDuIyxD32s8WZVm0ZqYQA5x+2dl+84UxjEdD/eqp4Q7
-         uqxtN2QbarqgQpXq3ULMMJ1FpXk/RGs6YofeSSUX5nJUexD1jW5xZvZ7I5Xk+mHFr19D
-         M9+4h+AOKELLpVPf8thd/FL6TW5SnZq2q2Z8fDGoHbC/A7PBkIYJHhCTEdiVBsw1oZb3
-         p65w==
-X-Gm-Message-State: AFqh2krut44SXims+D8WphJEq6/dJA7RqMl8jBy43QPWsCk/yVwgnAFM
-	0TM+mFtbegRRlCEbWh7x25N0nA==
-X-Google-Smtp-Source: AMrXdXsVdcmkimY1ohFAGq7ca4IHJWAZdDJmZXDKvF5dDjw0VyKjn3H85j4r6k/iD1JYDrl22B3FSQ==
-X-Received: by 2002:adf:f10b:0:b0:2bd:e215:4372 with SMTP id r11-20020adff10b000000b002bde2154372mr6131854wro.20.1674063587368;
-        Wed, 18 Jan 2023 09:39:47 -0800 (PST)
+        bh=TWpO1YbgA04yjZBzLFJGZr2Ux7J9tn5oLTa4Qr7uJbk=;
+        b=vgvbijnQwLTdHdYqMBTlPN/76z9Cr2iLzhICBG+/W5eXs69TV9xXC8NdTARvarhfeG
+         OhuokG8wXC+8II6k4mNNpgpYP5z7D49MMZ+6snaow9pftTliDCMCv/iknrRx/CnyLWG/
+         v5gB/bd75NnLPLriJ+hblO0+jWAZm1PYJIsk6kueyzE8Nc0KUFX1f/AlVbycgODA1tbj
+         KX6AITBlEVCOFI6/mfhaf8lotgthoDPX9UVo9d+u1z0sWkQ0FHQ2W6pjUfujTyXkJr/d
+         jzrsfQYq1Yc4kAMFT99sAU00cei7QPsex7RNH0ptQ6vHcv6eWVkmuXvKameac83M1Shz
+         0iAQ==
+X-Gm-Message-State: AFqh2krh5V27OHMloqASy8IEN6sQ+zd4nHR8dHhcgOIpy3GdHPdxba8I
+	H5nV6w8tMvln2S4Xhcu1ueA/GQ==
+X-Google-Smtp-Source: AMrXdXuVbyarxnAiepfXzbwTR1RHkFZszrKxbE5DGbOdnNgX139UqeLC5+bUZ7kndu3Jzieu7igTOQ==
+X-Received: by 2002:a05:600c:4d93:b0:3d9:efd1:214d with SMTP id v19-20020a05600c4d9300b003d9efd1214dmr7568201wmp.25.1674064457145;
+        Wed, 18 Jan 2023 09:54:17 -0800 (PST)
 Received: from krzk-bin.. ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id u24-20020adfa198000000b002bc84c55758sm28730074wru.63.2023.01.18.09.39.43
+        by smtp.gmail.com with ESMTPSA id o2-20020a05600c4fc200b003cf894dbc4fsm2730015wmq.25.2023.01.18.09.54.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Jan 2023 09:39:46 -0800 (PST)
+        Wed, 18 Jan 2023 09:54:16 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Mark Brown <broonie@kernel.org>,
+To: Kalle Valo <kvalo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
 	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Joel Stanley <joel@jms.id.au>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	Kamal Dasu <kdasu.kdev@gmail.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Han Xu <han.xu@nxp.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Serge Semin <fancer.lancer@gmail.com>,
-	Haibo Chen <haibo.chen@nxp.com>,
-	Yogesh Gaur <yogeshgaur.83@gmail.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Li-hao Kuo <lhjeff911@gmail.com>,
-	Michal Simek <michal.simek@xilinx.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	=?UTF-8?q?=82ecki?= <rafal@milecki.pl>,
-	Vaishnav Achath <vaishnav.a@ti.com>,
-	Parshuram Thombare <pthombar@cadence.com>,
-	Leilk Liu <leilk.liu@mediatek.com>,
-	Gabor Juhos <juhosg@openwrt.org>,
-	Bert Vermeulen <bert@biot.com>,
-	Miquel Raynal <miquel.raynal@bootlin.com>,
-	Marek Vasut <marex@denx.de>,
-	Birger Koblitz <mail@birger-koblitz.de>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Anson Huang <Anson.Huang@nxp.com>,
-	Chris Packham <chris.packham@alliedtelesis.co.nz>,
-	Kuldeep Singh <singh.kuldeep87k@gmail.com>,
-	Pragnesh Patel <pragnesh.patel@sifive.com>,
-	Christophe Kerello <christophe.kerello@foss.st.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Erwan Leray <erwan.leray@foss.st.com>,
-	Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
-	linux-spi@vger.kernel.org,
+	=?UTF-8?q?J=C3=A9r=C3=B4me=20Pouiller?= <jerome.pouiller@silabs.com>,
+	de Goede <hdegoede@redhat.com>,
+	Tony Lindgren <tony@atomide.com>,
+	linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org,
 	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev,
 	linux-kernel@vger.kernel.org,
-	linux-amlogic@lists.infradead.org,
-	linux-aspeed@lists.ozlabs.org,
-	openbmc@lists.ozlabs.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	linux-tegra@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
+	ath11k@lists.infradead.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 1/2] spi: dt-bindings: drop unneeded quotes
-Date: Wed, 18 Jan 2023 18:39:31 +0100
-Message-Id: <20230118173932.358153-1-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH] dt-bindings: net: wireless: minor whitespace and name cleanups
+Date: Wed, 18 Jan 2023 18:54:13 +0100
+Message-Id: <20230118175413.360153-1-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_093952_336307_3D0CC383 
-X-CRM114-Status: GOOD (  12.27  )
+X-CRM114-CacheID: sfid-20230118_095418_675119_340FEB38 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,605 +107,217 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Cleanup by removing unneeded quotes from refs and redundant blank lines.
+Minor cleanups:
+ - Drop redundant blank lines,
+ - Correct indentaion in examples,
+ - Correct node names in examples to drop underscore and use generic
+   name.
+
 No functional impact except adjusting to preferred coding style.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- .../bindings/spi/allwinner,sun4i-a10-spi.yaml  |  2 +-
- .../bindings/spi/allwinner,sun6i-a31-spi.yaml  |  2 +-
- .../bindings/spi/amlogic,meson-gx-spicc.yaml   |  6 +++---
- .../bindings/spi/amlogic,meson6-spifc.yaml     |  6 +++---
- .../bindings/spi/aspeed,ast2600-fmc.yaml       |  2 +-
- .../devicetree/bindings/spi/cdns,qspi-nor.yaml |  2 +-
- .../devicetree/bindings/spi/cdns,xspi.yaml     |  6 +++---
- .../bindings/spi/fsl,spi-fsl-qspi.yaml         |  2 +-
- .../devicetree/bindings/spi/fsl-imx-cspi.yaml  |  2 +-
- .../bindings/spi/mediatek,spi-mt65xx.yaml      |  2 +-
- .../spi/mediatek,spi-slave-mt27xx.yaml         |  2 +-
- .../bindings/spi/mikrotik,rb4xx-spi.yaml       |  2 +-
- .../bindings/spi/mxicy,mx25f0a-spi.yaml        |  2 +-
- .../devicetree/bindings/spi/mxs-spi.yaml       |  2 +-
- .../bindings/spi/nvidia,tegra210-quad.yaml     |  2 +-
- .../bindings/spi/qcom,spi-qcom-qspi.yaml       |  5 ++---
- .../bindings/spi/realtek,rtl-spi.yaml          |  2 +-
- .../bindings/spi/snps,dw-apb-ssi.yaml          |  2 +-
- .../devicetree/bindings/spi/spi-cadence.yaml   |  2 +-
- .../devicetree/bindings/spi/spi-fsl-lpspi.yaml |  2 +-
- .../devicetree/bindings/spi/spi-gpio.yaml      |  4 ++--
- .../devicetree/bindings/spi/spi-mux.yaml       |  4 ++--
- .../devicetree/bindings/spi/spi-nxp-fspi.yaml  |  2 +-
- .../devicetree/bindings/spi/spi-pl022.yaml     | 18 +++++++++---------
- .../devicetree/bindings/spi/spi-rockchip.yaml  |  2 +-
- .../devicetree/bindings/spi/spi-sifive.yaml    |  6 +++---
- .../bindings/spi/spi-sunplus-sp7021.yaml       |  2 +-
- .../devicetree/bindings/spi/spi-xilinx.yaml    |  2 +-
- .../bindings/spi/spi-zynqmp-qspi.yaml          |  2 +-
- .../devicetree/bindings/spi/sprd,spi-adi.yaml  |  5 ++---
- .../devicetree/bindings/spi/st,stm32-qspi.yaml |  2 +-
- .../devicetree/bindings/spi/st,stm32-spi.yaml  |  2 +-
- .../bindings/spi/xlnx,zynq-qspi.yaml           |  2 +-
- 33 files changed, 53 insertions(+), 55 deletions(-)
+ .../bindings/net/wireless/esp,esp8089.yaml    | 20 +++---
+ .../bindings/net/wireless/ieee80211.yaml      |  1 -
+ .../bindings/net/wireless/mediatek,mt76.yaml  |  1 -
+ .../bindings/net/wireless/qcom,ath11k.yaml    | 11 ++-
+ .../bindings/net/wireless/silabs,wfx.yaml     |  1 -
+ .../bindings/net/wireless/ti,wlcore.yaml      | 70 +++++++++----------
+ 6 files changed, 50 insertions(+), 54 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/spi/allwinner,sun4i-a10-spi.yaml b/Documentation/devicetree/bindings/spi/allwinner,sun4i-a10-spi.yaml
-index f1176a28fd87..eb0567b2971a 100644
---- a/Documentation/devicetree/bindings/spi/allwinner,sun4i-a10-spi.yaml
-+++ b/Documentation/devicetree/bindings/spi/allwinner,sun4i-a10-spi.yaml
-@@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
- title: Allwinner A10 SPI Controller
+diff --git a/Documentation/devicetree/bindings/net/wireless/esp,esp8089.yaml b/Documentation/devicetree/bindings/net/wireless/esp,esp8089.yaml
+index 5557676e9d4b..0ea84d6fe73e 100644
+--- a/Documentation/devicetree/bindings/net/wireless/esp,esp8089.yaml
++++ b/Documentation/devicetree/bindings/net/wireless/esp,esp8089.yaml
+@@ -29,15 +29,15 @@ additionalProperties: false
  
- allOf:
--  - $ref: "spi-controller.yaml"
-+  - $ref: spi-controller.yaml
+ examples:
+   - |
+-      mmc {
+-          #address-cells = <1>;
+-          #size-cells = <0>;
+-
+-          wifi@1 {
+-              compatible = "esp,esp8089";
+-              reg = <1>;
+-              esp,crystal-26M-en = <2>;
+-          };
+-      };
++    mmc {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        wifi@1 {
++            compatible = "esp,esp8089";
++            reg = <1>;
++            esp,crystal-26M-en = <2>;
++        };
++    };
  
- maintainers:
-   - Chen-Yu Tsai <wens@csie.org>
-diff --git a/Documentation/devicetree/bindings/spi/allwinner,sun6i-a31-spi.yaml b/Documentation/devicetree/bindings/spi/allwinner,sun6i-a31-spi.yaml
-index 58b7056f4a70..acf218507d22 100644
---- a/Documentation/devicetree/bindings/spi/allwinner,sun6i-a31-spi.yaml
-+++ b/Documentation/devicetree/bindings/spi/allwinner,sun6i-a31-spi.yaml
-@@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
- title: Allwinner A31 SPI Controller
- 
- allOf:
--  - $ref: "spi-controller.yaml"
-+  - $ref: spi-controller.yaml
- 
- maintainers:
-   - Chen-Yu Tsai <wens@csie.org>
-diff --git a/Documentation/devicetree/bindings/spi/amlogic,meson-gx-spicc.yaml b/Documentation/devicetree/bindings/spi/amlogic,meson-gx-spicc.yaml
-index 53eb6562b979..e5eca3a6f132 100644
---- a/Documentation/devicetree/bindings/spi/amlogic,meson-gx-spicc.yaml
-+++ b/Documentation/devicetree/bindings/spi/amlogic,meson-gx-spicc.yaml
-@@ -2,8 +2,8 @@
- # Copyright 2019 BayLibre, SAS
- %YAML 1.2
- ---
--$id: "http://devicetree.org/schemas/spi/amlogic,meson-gx-spicc.yaml#"
--$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-+$id: http://devicetree.org/schemas/spi/amlogic,meson-gx-spicc.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
- 
- title: Amlogic Meson SPI Communication Controller
- 
-@@ -41,7 +41,7 @@ properties:
-     maxItems: 2
- 
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
-   - if:
-       properties:
-         compatible:
-diff --git a/Documentation/devicetree/bindings/spi/amlogic,meson6-spifc.yaml b/Documentation/devicetree/bindings/spi/amlogic,meson6-spifc.yaml
-index ac3b2ec300ac..806043fed4d1 100644
---- a/Documentation/devicetree/bindings/spi/amlogic,meson6-spifc.yaml
-+++ b/Documentation/devicetree/bindings/spi/amlogic,meson6-spifc.yaml
-@@ -2,8 +2,8 @@
- # Copyright 2019 BayLibre, SAS
- %YAML 1.2
- ---
--$id: "http://devicetree.org/schemas/spi/amlogic,meson6-spifc.yaml#"
--$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-+$id: http://devicetree.org/schemas/spi/amlogic,meson6-spifc.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
- 
- title: Amlogic Meson SPI Flash Controller
- 
-@@ -11,7 +11,7 @@ maintainers:
-   - Neil Armstrong <neil.armstrong@linaro.org>
- 
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
- 
- description: |
-   The Meson SPIFC is a controller optimized for communication with SPI
-diff --git a/Documentation/devicetree/bindings/spi/aspeed,ast2600-fmc.yaml b/Documentation/devicetree/bindings/spi/aspeed,ast2600-fmc.yaml
-index e6c817de3449..aae6fb139b5b 100644
---- a/Documentation/devicetree/bindings/spi/aspeed,ast2600-fmc.yaml
-+++ b/Documentation/devicetree/bindings/spi/aspeed,ast2600-fmc.yaml
-@@ -15,7 +15,7 @@ description: |
-   SPI) of the AST2400, AST2500 and AST2600 SOCs.
- 
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/spi/cdns,qspi-nor.yaml b/Documentation/devicetree/bindings/spi/cdns,qspi-nor.yaml
-index 4707294d8f59..9be4e2c5d1ee 100644
---- a/Documentation/devicetree/bindings/spi/cdns,qspi-nor.yaml
-+++ b/Documentation/devicetree/bindings/spi/cdns,qspi-nor.yaml
-@@ -47,7 +47,7 @@ properties:
-   cdns,fifo-depth:
-     description:
-       Size of the data FIFO in words.
--    $ref: "/schemas/types.yaml#/definitions/uint32"
-+    $ref: /schemas/types.yaml#/definitions/uint32
-     enum: [ 128, 256 ]
-     default: 128
- 
-diff --git a/Documentation/devicetree/bindings/spi/cdns,xspi.yaml b/Documentation/devicetree/bindings/spi/cdns,xspi.yaml
-index b8bb8a3dbf54..eb0f92468185 100644
---- a/Documentation/devicetree/bindings/spi/cdns,xspi.yaml
-+++ b/Documentation/devicetree/bindings/spi/cdns,xspi.yaml
-@@ -2,8 +2,8 @@
- # Copyright 2020-21 Cadence
- %YAML 1.2
- ---
--$id: "http://devicetree.org/schemas/spi/cdns,xspi.yaml#"
--$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-+$id: http://devicetree.org/schemas/spi/cdns,xspi.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
- 
- title: Cadence XSPI Controller
- 
-@@ -16,7 +16,7 @@ description: |
-   read/write access to slaves such as SPI-NOR flash.
- 
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/spi/fsl,spi-fsl-qspi.yaml b/Documentation/devicetree/bindings/spi/fsl,spi-fsl-qspi.yaml
-index e58644558412..f2dd20370dbb 100644
---- a/Documentation/devicetree/bindings/spi/fsl,spi-fsl-qspi.yaml
-+++ b/Documentation/devicetree/bindings/spi/fsl,spi-fsl-qspi.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Han Xu <han.xu@nxp.com>
- 
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/spi/fsl-imx-cspi.yaml b/Documentation/devicetree/bindings/spi/fsl-imx-cspi.yaml
-index 12cb76711000..2f593c7225e5 100644
---- a/Documentation/devicetree/bindings/spi/fsl-imx-cspi.yaml
-+++ b/Documentation/devicetree/bindings/spi/fsl-imx-cspi.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Shawn Guo <shawnguo@kernel.org>
- 
- allOf:
--  - $ref: "/schemas/spi/spi-controller.yaml#"
-+  - $ref: /schemas/spi/spi-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-index 8d2a6c084eab..b6249880c3f9 100644
---- a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-+++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Leilk Liu <leilk.liu@mediatek.com>
- 
- allOf:
--  - $ref: "/schemas/spi/spi-controller.yaml#"
-+  - $ref: /schemas/spi/spi-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-slave-mt27xx.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-slave-mt27xx.yaml
-index 7977799a8ee1..d19c9f73978f 100644
---- a/Documentation/devicetree/bindings/spi/mediatek,spi-slave-mt27xx.yaml
-+++ b/Documentation/devicetree/bindings/spi/mediatek,spi-slave-mt27xx.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Leilk Liu <leilk.liu@mediatek.com>
- 
- allOf:
--  - $ref: "/schemas/spi/spi-controller.yaml#"
-+  - $ref: /schemas/spi/spi-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/spi/mikrotik,rb4xx-spi.yaml b/Documentation/devicetree/bindings/spi/mikrotik,rb4xx-spi.yaml
-index 3fd0a8adfe9a..303f6dca89c0 100644
---- a/Documentation/devicetree/bindings/spi/mikrotik,rb4xx-spi.yaml
-+++ b/Documentation/devicetree/bindings/spi/mikrotik,rb4xx-spi.yaml
-@@ -11,7 +11,7 @@ maintainers:
-   - Bert Vermeulen <bert@biot.com>
- 
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/spi/mxicy,mx25f0a-spi.yaml b/Documentation/devicetree/bindings/spi/mxicy,mx25f0a-spi.yaml
-index a3aa5e07c0e4..221fe6e2ef53 100644
---- a/Documentation/devicetree/bindings/spi/mxicy,mx25f0a-spi.yaml
-+++ b/Documentation/devicetree/bindings/spi/mxicy,mx25f0a-spi.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Miquel Raynal <miquel.raynal@bootlin.com>
- 
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/spi/mxs-spi.yaml b/Documentation/devicetree/bindings/spi/mxs-spi.yaml
-index 51f8c664323e..e2512166c1cd 100644
---- a/Documentation/devicetree/bindings/spi/mxs-spi.yaml
-+++ b/Documentation/devicetree/bindings/spi/mxs-spi.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Marek Vasut <marex@denx.de>
- 
- allOf:
--  - $ref: "/schemas/spi/spi-controller.yaml#"
-+  - $ref: /schemas/spi/spi-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/spi/nvidia,tegra210-quad.yaml b/Documentation/devicetree/bindings/spi/nvidia,tegra210-quad.yaml
-index 899100e783c9..9f78b2c06494 100644
---- a/Documentation/devicetree/bindings/spi/nvidia,tegra210-quad.yaml
-+++ b/Documentation/devicetree/bindings/spi/nvidia,tegra210-quad.yaml
-@@ -11,7 +11,7 @@ maintainers:
-   - Jonathan Hunter <jonathanh@nvidia.com>
- 
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/spi/qcom,spi-qcom-qspi.yaml b/Documentation/devicetree/bindings/spi/qcom,spi-qcom-qspi.yaml
-index b622bb7363ec..85e7770703bd 100644
---- a/Documentation/devicetree/bindings/spi/qcom,spi-qcom-qspi.yaml
-+++ b/Documentation/devicetree/bindings/spi/qcom,spi-qcom-qspi.yaml
-@@ -1,9 +1,8 @@
- # SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+ ...
+diff --git a/Documentation/devicetree/bindings/net/wireless/ieee80211.yaml b/Documentation/devicetree/bindings/net/wireless/ieee80211.yaml
+index e68ed9423150..d89f7a3f88a7 100644
+--- a/Documentation/devicetree/bindings/net/wireless/ieee80211.yaml
++++ b/Documentation/devicetree/bindings/net/wireless/ieee80211.yaml
+@@ -1,6 +1,5 @@
+ # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+ # Copyright (c) 2018-2019 The Linux Foundation. All rights reserved.
 -
  %YAML 1.2
  ---
--$id: "http://devicetree.org/schemas/spi/qcom,spi-qcom-qspi.yaml#"
--$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-+$id: http://devicetree.org/schemas/spi/qcom,spi-qcom-qspi.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
- 
- title: Qualcomm Quad Serial Peripheral Interface (QSPI)
- 
-diff --git a/Documentation/devicetree/bindings/spi/realtek,rtl-spi.yaml b/Documentation/devicetree/bindings/spi/realtek,rtl-spi.yaml
-index 2f938c293f70..70330d945a70 100644
---- a/Documentation/devicetree/bindings/spi/realtek,rtl-spi.yaml
-+++ b/Documentation/devicetree/bindings/spi/realtek,rtl-spi.yaml
-@@ -11,7 +11,7 @@ maintainers:
-   - Birger Koblitz <mail@birger-koblitz.de>
- 
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/spi/snps,dw-apb-ssi.yaml b/Documentation/devicetree/bindings/spi/snps,dw-apb-ssi.yaml
-index d33b72fabc5d..a132b5fc56e0 100644
---- a/Documentation/devicetree/bindings/spi/snps,dw-apb-ssi.yaml
-+++ b/Documentation/devicetree/bindings/spi/snps,dw-apb-ssi.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Mark Brown <broonie@kernel.org>
- 
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
-   - if:
-       properties:
-         compatible:
-diff --git a/Documentation/devicetree/bindings/spi/spi-cadence.yaml b/Documentation/devicetree/bindings/spi/spi-cadence.yaml
-index 64bf4e621142..b0f83b5c2cdd 100644
---- a/Documentation/devicetree/bindings/spi/spi-cadence.yaml
-+++ b/Documentation/devicetree/bindings/spi/spi-cadence.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Michal Simek <michal.simek@xilinx.com>
- 
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/spi/spi-fsl-lpspi.yaml b/Documentation/devicetree/bindings/spi/spi-fsl-lpspi.yaml
-index 94caa2b7e241..e91425012319 100644
---- a/Documentation/devicetree/bindings/spi/spi-fsl-lpspi.yaml
-+++ b/Documentation/devicetree/bindings/spi/spi-fsl-lpspi.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Anson Huang <Anson.Huang@nxp.com>
- 
- allOf:
--  - $ref: "/schemas/spi/spi-controller.yaml#"
-+  - $ref: /schemas/spi/spi-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/spi/spi-gpio.yaml b/Documentation/devicetree/bindings/spi/spi-gpio.yaml
-index f29b89076c99..9ce1df93d4c3 100644
---- a/Documentation/devicetree/bindings/spi/spi-gpio.yaml
-+++ b/Documentation/devicetree/bindings/spi/spi-gpio.yaml
-@@ -14,7 +14,7 @@ description:
-   dedicated GPIO lines.
- 
- allOf:
--  - $ref: "/schemas/spi/spi-controller.yaml#"
-+  - $ref: /schemas/spi/spi-controller.yaml#
- 
- properties:
-   compatible:
-@@ -41,7 +41,7 @@ properties:
-   num-chipselects:
-     description: Number of chipselect lines. Should be <0> if a single device
-       with no chip select is connected.
--    $ref: "/schemas/types.yaml#/definitions/uint32"
-+    $ref: /schemas/types.yaml#/definitions/uint32
- 
-   # Deprecated properties
-   gpio-sck: false
-diff --git a/Documentation/devicetree/bindings/spi/spi-mux.yaml b/Documentation/devicetree/bindings/spi/spi-mux.yaml
-index 7ea79f6d33f3..fb2a6039928c 100644
---- a/Documentation/devicetree/bindings/spi/spi-mux.yaml
-+++ b/Documentation/devicetree/bindings/spi/spi-mux.yaml
-@@ -30,8 +30,8 @@ description: |
-       +------------+
- 
- allOf:
--  - $ref: "/schemas/spi/spi-controller.yaml#"
--  - $ref: "/schemas/spi/spi-peripheral-props.yaml#"
-+  - $ref: /schemas/spi/spi-controller.yaml#
-+  - $ref: /schemas/spi/spi-peripheral-props.yaml#
- 
- maintainers:
-   - Chris Packham <chris.packham@alliedtelesis.co.nz>
-diff --git a/Documentation/devicetree/bindings/spi/spi-nxp-fspi.yaml b/Documentation/devicetree/bindings/spi/spi-nxp-fspi.yaml
-index 1b552c298277..a813c971ecf6 100644
---- a/Documentation/devicetree/bindings/spi/spi-nxp-fspi.yaml
-+++ b/Documentation/devicetree/bindings/spi/spi-nxp-fspi.yaml
-@@ -11,7 +11,7 @@ maintainers:
-   - Kuldeep Singh <singh.kuldeep87k@gmail.com>
- 
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/spi/spi-pl022.yaml b/Documentation/devicetree/bindings/spi/spi-pl022.yaml
-index 0e382119c64f..91e540a92faf 100644
---- a/Documentation/devicetree/bindings/spi/spi-pl022.yaml
-+++ b/Documentation/devicetree/bindings/spi/spi-pl022.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Linus Walleij <linus.walleij@linaro.org>
- 
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
- 
- # We need a select here so we don't match all nodes with 'arm,primecell'
- select:
-@@ -45,7 +45,7 @@ properties:
-     description: delay in ms following transfer completion before the
-       runtime power management system suspends the device. A setting of 0
-       indicates no delay and the device will be suspended immediately.
--    $ref: "/schemas/types.yaml#/definitions/uint32"
-+    $ref: /schemas/types.yaml#/definitions/uint32
- 
-   pl022,rt:
-     description: indicates the controller should run the message pump with realtime
-@@ -81,7 +81,7 @@ patternProperties:
-     properties:
-       pl022,interface:
-         description: SPI interface type
--        $ref: "/schemas/types.yaml#/definitions/uint32"
-+        $ref: /schemas/types.yaml#/definitions/uint32
-         enum:
-           - 0      # SPI
-           - 1      # Texas Instruments Synchronous Serial Frame Format
-@@ -89,7 +89,7 @@ patternProperties:
- 
-       pl022,com-mode:
-         description: Specifies the transfer mode
--        $ref: "/schemas/types.yaml#/definitions/uint32"
-+        $ref: /schemas/types.yaml#/definitions/uint32
-         enum:
-           - 0      # interrupt mode
-           - 1      # polling mode
-@@ -98,30 +98,30 @@ patternProperties:
- 
-       pl022,rx-level-trig:
-         description: Rx FIFO watermark level
--        $ref: "/schemas/types.yaml#/definitions/uint32"
-+        $ref: /schemas/types.yaml#/definitions/uint32
-         minimum: 0
-         maximum: 4
- 
-       pl022,tx-level-trig:
-         description: Tx FIFO watermark level
--        $ref: "/schemas/types.yaml#/definitions/uint32"
-+        $ref: /schemas/types.yaml#/definitions/uint32
-         minimum: 0
-         maximum: 4
- 
-       pl022,ctrl-len:
-         description: Microwire interface - Control length
--        $ref: "/schemas/types.yaml#/definitions/uint32"
-+        $ref: /schemas/types.yaml#/definitions/uint32
-         minimum: 0x03
-         maximum: 0x1f
- 
-       pl022,wait-state:
-         description: Microwire interface - Wait state
--        $ref: "/schemas/types.yaml#/definitions/uint32"
-+        $ref: /schemas/types.yaml#/definitions/uint32
-         enum: [0, 1]
- 
-       pl022,duplex:
-         description: Microwire interface - Full/Half duplex
--        $ref: "/schemas/types.yaml#/definitions/uint32"
-+        $ref: /schemas/types.yaml#/definitions/uint32
-         enum: [0, 1]
- 
- required:
-diff --git a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-index 66e49947b703..e4941e9212d1 100644
---- a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-+++ b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-@@ -11,7 +11,7 @@ description:
-   as flash and display controllers using the SPI communication interface.
- 
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
- 
- maintainers:
-   - Heiko Stuebner <heiko@sntech.de>
-diff --git a/Documentation/devicetree/bindings/spi/spi-sifive.yaml b/Documentation/devicetree/bindings/spi/spi-sifive.yaml
-index 6e7e394fc1e4..5bffefb9c7eb 100644
---- a/Documentation/devicetree/bindings/spi/spi-sifive.yaml
-+++ b/Documentation/devicetree/bindings/spi/spi-sifive.yaml
-@@ -12,7 +12,7 @@ maintainers:
-   - Palmer Dabbelt <palmer@sifive.com>
- 
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
- 
- properties:
-   compatible:
-@@ -51,14 +51,14 @@ properties:
-   sifive,fifo-depth:
-     description:
-       Depth of hardware queues; defaults to 8
--    $ref: "/schemas/types.yaml#/definitions/uint32"
-+    $ref: /schemas/types.yaml#/definitions/uint32
-     enum: [8]
-     default: 8
- 
-   sifive,max-bits-per-word:
-     description:
-       Maximum bits per word; defaults to 8
--    $ref: "/schemas/types.yaml#/definitions/uint32"
-+    $ref: /schemas/types.yaml#/definitions/uint32
-     enum: [0, 1, 2, 3, 4, 5, 6, 7, 8]
-     default: 8
- 
-diff --git a/Documentation/devicetree/bindings/spi/spi-sunplus-sp7021.yaml b/Documentation/devicetree/bindings/spi/spi-sunplus-sp7021.yaml
-index 3a58cf0f1ec8..69a463305274 100644
---- a/Documentation/devicetree/bindings/spi/spi-sunplus-sp7021.yaml
-+++ b/Documentation/devicetree/bindings/spi/spi-sunplus-sp7021.yaml
-@@ -8,7 +8,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
- title: Sunplus sp7021 SPI controller
- 
- allOf:
--  - $ref: "spi-controller.yaml"
-+  - $ref: spi-controller.yaml
- 
- maintainers:
-   - Li-hao Kuo <lhjeff911@gmail.com>
-diff --git a/Documentation/devicetree/bindings/spi/spi-xilinx.yaml b/Documentation/devicetree/bindings/spi/spi-xilinx.yaml
-index bbb735603f29..6bd83836eded 100644
---- a/Documentation/devicetree/bindings/spi/spi-xilinx.yaml
-+++ b/Documentation/devicetree/bindings/spi/spi-xilinx.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Michal Simek <michal.simek@xilinx.com>
- 
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/spi/spi-zynqmp-qspi.yaml b/Documentation/devicetree/bindings/spi/spi-zynqmp-qspi.yaml
-index 546c416cdb55..20f77246d365 100644
---- a/Documentation/devicetree/bindings/spi/spi-zynqmp-qspi.yaml
-+++ b/Documentation/devicetree/bindings/spi/spi-zynqmp-qspi.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Michal Simek <michal.simek@xilinx.com>
- 
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/spi/sprd,spi-adi.yaml b/Documentation/devicetree/bindings/spi/sprd,spi-adi.yaml
-index a3ab1a1f1eb4..903b06f88b1b 100644
---- a/Documentation/devicetree/bindings/spi/sprd,spi-adi.yaml
-+++ b/Documentation/devicetree/bindings/spi/sprd,spi-adi.yaml
-@@ -1,9 +1,8 @@
- # SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+ $id: http://devicetree.org/schemas/net/wireless/ieee80211.yaml#
+diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+index f0c78f994491..7d526ff53fb7 100644
+--- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
++++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+@@ -1,6 +1,5 @@
+ # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+ # Copyright (c) 2018-2019 The Linux Foundation. All rights reserved.
 -
  %YAML 1.2
  ---
--$id: "http://devicetree.org/schemas/spi/sprd,spi-adi.yaml#"
--$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-+$id: http://devicetree.org/schemas/spi/sprd,spi-adi.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+ $id: http://devicetree.org/schemas/net/wireless/mediatek,mt76.yaml#
+diff --git a/Documentation/devicetree/bindings/net/wireless/qcom,ath11k.yaml b/Documentation/devicetree/bindings/net/wireless/qcom,ath11k.yaml
+index 556eb523606a..5f4b141ba813 100644
+--- a/Documentation/devicetree/bindings/net/wireless/qcom,ath11k.yaml
++++ b/Documentation/devicetree/bindings/net/wireless/qcom,ath11k.yaml
+@@ -1,6 +1,5 @@
+ # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+ # Copyright (c) 2018-2019 The Linux Foundation. All rights reserved.
+-
+ %YAML 1.2
+ ---
+ $id: http://devicetree.org/schemas/net/wireless/qcom,ath11k.yaml#
+@@ -262,10 +261,10 @@ allOf:
+ examples:
+   - |
  
- title: Spreadtrum ADI controller
+-    q6v5_wcss: q6v5_wcss@CD00000 {
++    q6v5_wcss: remoteproc@cd00000 {
+         compatible = "qcom,ipq8074-wcss-pil";
+-        reg = <0xCD00000 0x4040>,
+-              <0x4AB000 0x20>;
++        reg = <0xcd00000 0x4040>,
++              <0x4ab000 0x20>;
+         reg-names = "qdsp6",
+                     "rmb";
+     };
+@@ -386,7 +385,7 @@ examples:
+         #address-cells = <2>;
+         #size-cells = <2>;
  
-diff --git a/Documentation/devicetree/bindings/spi/st,stm32-qspi.yaml b/Documentation/devicetree/bindings/spi/st,stm32-qspi.yaml
-index 1eb17f7a4d86..8bba965a9ae6 100644
---- a/Documentation/devicetree/bindings/spi/st,stm32-qspi.yaml
-+++ b/Documentation/devicetree/bindings/spi/st,stm32-qspi.yaml
-@@ -11,7 +11,7 @@ maintainers:
-   - Patrice Chotard <patrice.chotard@foss.st.com>
+-        qcn9074_0: qcn9074_0@51100000 {
++        qcn9074_0: wifi@51100000 {
+             no-map;
+             reg = <0x0 0x51100000 0x0 0x03500000>;
+         };
+@@ -463,6 +462,6 @@ examples:
+         qcom,smem-states = <&wlan_smp2p_out 0>;
+         qcom,smem-state-names = "wlan-smp2p-out";
+         wifi-firmware {
+-                iommus = <&apps_smmu 0x1c02 0x1>;
++            iommus = <&apps_smmu 0x1c02 0x1>;
+         };
+     };
+diff --git a/Documentation/devicetree/bindings/net/wireless/silabs,wfx.yaml b/Documentation/devicetree/bindings/net/wireless/silabs,wfx.yaml
+index 583db5d42226..84e5659e50ef 100644
+--- a/Documentation/devicetree/bindings/net/wireless/silabs,wfx.yaml
++++ b/Documentation/devicetree/bindings/net/wireless/silabs,wfx.yaml
+@@ -2,7 +2,6 @@
+ # Copyright (c) 2020, Silicon Laboratories, Inc.
+ %YAML 1.2
+ ---
+-
+ $id: http://devicetree.org/schemas/net/wireless/silabs,wfx.yaml#
+ $schema: http://devicetree.org/meta-schemas/core.yaml#
  
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
+diff --git a/Documentation/devicetree/bindings/net/wireless/ti,wlcore.yaml b/Documentation/devicetree/bindings/net/wireless/ti,wlcore.yaml
+index e31456730e9f..f799a1e52173 100644
+--- a/Documentation/devicetree/bindings/net/wireless/ti,wlcore.yaml
++++ b/Documentation/devicetree/bindings/net/wireless/ti,wlcore.yaml
+@@ -90,47 +90,47 @@ examples:
  
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/spi/st,stm32-spi.yaml b/Documentation/devicetree/bindings/spi/st,stm32-spi.yaml
-index 1cda15f91cc3..d35c6f7e2dd5 100644
---- a/Documentation/devicetree/bindings/spi/st,stm32-spi.yaml
-+++ b/Documentation/devicetree/bindings/spi/st,stm32-spi.yaml
-@@ -17,7 +17,7 @@ maintainers:
-   - Fabrice Gasnier <fabrice.gasnier@foss.st.com>
+     // For wl12xx family:
+     spi1 {
+-            #address-cells = <1>;
+-            #size-cells = <0>;
+-
+-            wlcore1: wlcore@1 {
+-                    compatible = "ti,wl1271";
+-                    reg = <1>;
+-                    spi-max-frequency = <48000000>;
+-                    interrupts = <8 IRQ_TYPE_LEVEL_HIGH>;
+-                    vwlan-supply = <&vwlan_fixed>;
+-                    clock-xtal;
+-                    ref-clock-frequency = <38400000>;
+-            };
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        wlcore1: wlcore@1 {
++            compatible = "ti,wl1271";
++            reg = <1>;
++            spi-max-frequency = <48000000>;
++            interrupts = <8 IRQ_TYPE_LEVEL_HIGH>;
++            vwlan-supply = <&vwlan_fixed>;
++            clock-xtal;
++            ref-clock-frequency = <38400000>;
++        };
+     };
  
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
-   - if:
-       properties:
-         compatible:
-diff --git a/Documentation/devicetree/bindings/spi/xlnx,zynq-qspi.yaml b/Documentation/devicetree/bindings/spi/xlnx,zynq-qspi.yaml
-index 1f1c40a9f320..83e8fb4a548d 100644
---- a/Documentation/devicetree/bindings/spi/xlnx,zynq-qspi.yaml
-+++ b/Documentation/devicetree/bindings/spi/xlnx,zynq-qspi.yaml
-@@ -11,7 +11,7 @@ description:
-   memory devices.
+     // For wl18xx family:
+     spi2 {
+-            #address-cells = <1>;
+-            #size-cells = <0>;
+-
+-            wlcore2: wlcore@0 {
+-                    compatible = "ti,wl1835";
+-                    reg = <0>;
+-                    spi-max-frequency = <48000000>;
+-                    interrupts = <27 IRQ_TYPE_EDGE_RISING>;
+-                    vwlan-supply = <&vwlan_fixed>;
+-            };
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        wlcore2: wlcore@0 {
++            compatible = "ti,wl1835";
++            reg = <0>;
++            spi-max-frequency = <48000000>;
++            interrupts = <27 IRQ_TYPE_EDGE_RISING>;
++            vwlan-supply = <&vwlan_fixed>;
++        };
+     };
  
- allOf:
--  - $ref: "spi-controller.yaml#"
-+  - $ref: spi-controller.yaml#
- 
- maintainers:
-   - Michal Simek <michal.simek@xilinx.com>
+     // SDIO example:
+     mmc3 {
+-            vmmc-supply = <&wlan_en_reg>;
+-            bus-width = <4>;
+-            cap-power-off-card;
+-            keep-power-in-suspend;
+-
+-            #address-cells = <1>;
+-            #size-cells = <0>;
+-
+-            wlcore3: wlcore@2 {
+-                    compatible = "ti,wl1835";
+-                    reg = <2>;
+-                    interrupts = <19 IRQ_TYPE_LEVEL_HIGH>;
+-            };
++        vmmc-supply = <&wlan_en_reg>;
++        bus-width = <4>;
++        cap-power-off-card;
++        keep-power-in-suspend;
++
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        wlcore3: wlcore@2 {
++            compatible = "ti,wl1835";
++            reg = <2>;
++            interrupts = <19 IRQ_TYPE_LEVEL_HIGH>;
++        };
+     };
 -- 
 2.34.1
 
