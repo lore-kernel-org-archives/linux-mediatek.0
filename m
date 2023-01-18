@@ -4,66 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96B38C38147
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 12:54:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A688C32793
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 13:33:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cb36DGiK3tJG27Cs4Fs0g+zV5Qzr68EAvHoTeY6Mfgk=; b=vRtszEbltmnO/x
-	xlJ/JIkhH+MiJtYmIGe/DXAkPcOYZ0MtZRsj+9BpF5EwjD1Y1usCOgRV4/Gl5TvDUWj+fbO8zDJfL
-	fqIvwz0jew4L8aMizpxHBQKhVszRXDQgAt6iHeMfDrDbYNhBdE4wYFRIAGzlrbnsedSMSUgLqp4wq
-	yDGeLqAyzdpGq5dmYC50f9wF8tzQ1M7Xw68pB8AbtBCrGO+OZWSZk7rc1WfMrHb/oHUyRI6ygZMWv
-	i0Lz1jqb5nl3HiPU9s4Xo4g4AggYlVe+cdd6yHNttC67h1qcOGPKWISqKHe6E33Q/3Qk10iC6qeXf
-	r8jBjNQ81eYcy0JbMG/w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=r/MdaMfGpngTvDj1TEFnHjyrcQTvG4jCt3QryBUQJFc=; b=MQ8jqx5xamvqcxcfOYwFXHw4OZ
+	MvZTEV0ZKzDXYCd7AyxqAOnNfgUKu9kCYvyCFGB1CKl/GvQjBpjvaP5CHugWS7KpAGy+ASv/5i1gq
+	TRvLVQ511eunvqS+LeoUdertcal2BQvgp8Du8o/4Y5s8DDJejpwJQxOqBfTglowxiFmI4TijyDBCl
+	wU23C79gBoPkqnH7mPSBshu0RqJyLGGtA/1mTHKvPibY+rJGzMPZLtqlof+QONjEyHD0jyk/1lGDo
+	d9dN6KwfedJJMt+9IqcQmRBhPOSQP0OG52w40x5+aZXQ4zwLa6OZZM+Z/XiJC7+/vXGa5WRdEEq2R
+	ZhcPo/fA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI7xN-000zL8-5T; Wed, 18 Jan 2023 12:54:21 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pI8ZS-001AoW-9I; Wed, 18 Jan 2023 13:33:42 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI7x5-000zEf-5m; Wed, 18 Jan 2023 12:54:04 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D4EE76602DFF;
-	Wed, 18 Jan 2023 12:54:00 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1674046441;
-	bh=W0maxCKa2xr4pnTX1HqInnogwxcqmMSgRc+NoZCdKOY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=P2GIpFG0pdcWYxZdlMkFPN/2kgFVwaVu/WECh/MB7dooeOxYJSI3SVx1TjURSjkWx
-	 cYudLUfd27Y7Qc8W81DBRt9wKpZ+4zoDh0jfRjVpYCQCGtMjHnbXO6PFj3dUA/5OoG
-	 7XvrrhjKbvXAGvFHmT5NmfZbHsWdBLIO9XioxvzbaIr68WFGnK1pC6FjzDox/Arvzl
-	 0kXG3FdVlnqa3RZCci0FnSw/4gNJA7YdUl5V5L0Jr9PCu5igDqZBJ+tLEMkXGZwm7X
-	 +Ts+zuQJHrbag4d/u6Bc//5N/NzyFIXeLn+Dlu/PS9xY7AWQ90lMv3Whp4Pa3ZWmhG
-	 PL6tC9Z1wmLAw==
-Message-ID: <0dc9466d-9baa-451b-98fa-7caf424acd4c@collabora.com>
-Date: Wed, 18 Jan 2023 13:53:58 +0100
+	id 1pI8Yv-001ARg-6Z
+	for linux-mediatek@lists.infradead.org; Wed, 18 Jan 2023 13:33:11 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id mp20so36664318ejc.7
+        for <linux-mediatek@lists.infradead.org>; Wed, 18 Jan 2023 05:33:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=streamunlimited.com; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=r/MdaMfGpngTvDj1TEFnHjyrcQTvG4jCt3QryBUQJFc=;
+        b=ZZupgezhFoK3Ma5R4scdDL1xnc4rtd41/9W6aJRWZax9QBq3W0G3zCGVJW0U42iCYd
+         4KvJbYbw4CQi67BClvaNwX37mzcqLlr0nmJnmb8jvbyaQXvQkAtNOap+C+bD8nXs+OR8
+         3toqCE8yeR4NEL9Ne0r+XcH19jWXeAMlNKwv0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=r/MdaMfGpngTvDj1TEFnHjyrcQTvG4jCt3QryBUQJFc=;
+        b=0sMN7hOHyGsm2F9JC465hHwdB//dD0RstpGGfpG4vrtlwVMaJH3biWEmnQQWHpau3A
+         surX2tlNoNvosLLgG7/KN/yg74fxvX0Rj1wfLX5AJBgdvRMtPzQzXYqvS4xavkwtrrHl
+         DsHBgfopVvKCGGwyYQqH8IOFf9Tp5YkgeXo2pLvMlQtFUsPFjxL0xjORFgfHWk15o+8x
+         t6OGBzDWMANdP8oSfFqYecToxHxk6Mav2+nLuESGOiIb6/9PPcUP49yjr63Od6Sn9HuQ
+         /WkyyT/BbZv0ZtrGXpLS8Nqefkhc/UU+zkN/Vpf1tB6RIeQ6dZl4Gzb6AmxctiIg7IH1
+         18Rw==
+X-Gm-Message-State: AFqh2krEGHKFtaTX5CNndEct0APYPK2MtUw/I6EqIp86+WNpbGuCg4a2
+	xASveM5HTIPzIoOyjtYk64W+Lm8lRLe8P0QgUPH9Gw==
+X-Google-Smtp-Source: AMrXdXty6aY2Hc4VxG7Ode8zCbjODFHEqzOLgr86xygYZq3+W86ERvY0w5qF42m7zwo4OhQfVchNKrC1JPZn0ehrxtI=
+X-Received: by 2002:a17:906:7109:b0:84d:1502:a8b4 with SMTP id
+ x9-20020a170906710900b0084d1502a8b4mr553373ejj.295.1674048784788; Wed, 18 Jan
+ 2023 05:33:04 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v4 2/2] thermal: mediatek: add support for MT7986 and
- MT7981
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria
- <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-References: <cover.1674012985.git.daniel@makrotopia.org>
- <aa957c759b1182aee00cc35178667f849f941b42.1674012985.git.daniel@makrotopia.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <aa957c759b1182aee00cc35178667f849f941b42.1674012985.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <52861a84-0fe2-37f0-d66a-145f2ebe1d79@gmail.com>
+ <20221214134620.3028726-1-peter.suti@streamunlimited.com> <c6863a3e-8855-50fe-25cb-0b38bc3a05e0@gmail.com>
+ <CACMGZgZY4Zb+3vHUDAS0+3r55K4_J40dtbsTPTFZMd6duBikpQ@mail.gmail.com> <7c4aa0d2-d8e9-416b-b2ad-f5c3c8ea33de@gmail.com>
+In-Reply-To: <7c4aa0d2-d8e9-416b-b2ad-f5c3c8ea33de@gmail.com>
+From: Peter Suti <peter.suti@streamunlimited.com>
+Date: Wed, 18 Jan 2023 14:32:53 +0100
+Message-ID: <CACMGZgaS7z2YoViA3jV-gVBvASSq1maiGj_6hfrJQ3zr69esgQ@mail.gmail.com>
+Subject: Re: [PATCH v3] mmc: meson-gx: fix SDIO interrupt handling
+To: Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, linux-mmc@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_045403_379476_F4DD7D5C 
-X-CRM114-Status: GOOD (  19.50  )
+X-CRM114-CacheID: sfid-20230118_053309_268435_767524CF 
+X-CRM114-Status: GOOD (  29.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,66 +84,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: John Crispin <john@phrozen.org>, Steven Liu <steven.liu@mediatek.com>, Chad Monroe <chad@monroe.io>, Henry Yen <Henry.Yen@mediatek.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/01/23 04:55, Daniel Golle ha scritto:
-> Add support for V3 generation thermal found in MT7986 and MT7981 SoCs.
-> Brings code to assign values from efuse as well as new function to
-> convert raw temperature to millidegree celsius, as found in MediaTek's
-> SDK sources (but cleaned up and de-duplicated)
-> 
-> [1]: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/baf36c7eef477aae1f8f2653b6c29e2caf48475b
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->   drivers/thermal/mtk_thermal.c | 137 ++++++++++++++++++++++++++++++++--
->   1 file changed, 132 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-> index 992750ee09e62..171f485a809bb 100644
-> --- a/drivers/thermal/mtk_thermal.c
-> +++ b/drivers/thermal/mtk_thermal.c
+On Thu, Jan 12, 2023 at 10:27 PM Heiner Kallweit <hkallweit1@gmail.com> wrote:
+>
+> On 09.01.2023 12:52, Peter Suti wrote:
+> > On Wed, Dec 14, 2022 at 10:33 PM Heiner Kallweit <hkallweit1@gmail.com> wrote:
+> >>
+> >> On 14.12.2022 14:46, Peter Suti wrote:
+> >>>
+> >>> diff --git a/drivers/mmc/host/meson-gx-mmc.c b/drivers/mmc/host/meson-gx-mmc.c
+> >>> index 6e5ea0213b47..7d3ee2f9a7f6 100644
+> >>> --- a/drivers/mmc/host/meson-gx-mmc.c
+> >>> +++ b/drivers/mmc/host/meson-gx-mmc.c
+> >>> @@ -1023,6 +1023,22 @@ static irqreturn_t meson_mmc_irq(int irq, void *dev_id)
+> >>>       if (ret == IRQ_HANDLED)
+> >>>               meson_mmc_request_done(host->mmc, cmd->mrq);
+> >>>
+> >>> +     /*
+> >>> +     * Sometimes after we ack all raised interrupts,
+> >>> +     * an IRQ_SDIO can still be pending, which can get lost.
+> >>> +     *
+> >>
+> >> A reader may scratch his head here and wonder how the interrupt can get lost,
+> >> and why adding a workaround instead of eliminating the root cause for losing
+> >> the interrupt. If you can't provide an explanation why the root cause for
+> >> losing the interrupt can't be fixed, presumably you would have to say that
+> >> you're adding a workaround for a suspected silicon bug.
+> > After talking to the manufacturer, we got the following explanation
+> > for this situation:
+>
+> To which manufacturer did you talk, Marvell or Amlogic?
 
-..snip..
+Amlogic
 
->   		.data = (void *)&mt8183_thermal_data,
-> @@ -1068,15 +1186,24 @@ static int mtk_thermal_probe(struct platform_device *pdev)
->   		goto err_disable_clk_auxadc;
->   	}
->   
-> -	if (mt->conf->version == MTK_THERMAL_V2) {
-> +	if (mt->conf->version != MTK_THERMAL_V1) {
->   		mtk_thermal_turn_on_buffer(apmixed_base);
->   		mtk_thermal_release_periodic_ts(mt, auxadc_base);
->   	}
->   
-> -	if (mt->conf->version == MTK_THERMAL_V1)
-> +	switch (mt->conf->version) {
-> +	case MTK_THERMAL_V1:
->   		mt->raw_to_mcelsius = raw_to_mcelsius_v1;
-> -	else
-> +		break;
-> +	case MTK_THERMAL_V2:
->   		mt->raw_to_mcelsius = raw_to_mcelsius_v2;
-> +		break;
-> +	case MTK_THERMAL_V3:
-> +		mt->raw_to_mcelsius = raw_to_mcelsius_v3;
-> +		break;
-> +	default:
-> +		break;
-> +	}
+>
+> > "wifi may have dat1 interrupt coming in, without this the dat1
+> > interrupt would be missed"
+>
+> I don't understand this sentence. W/o the interrupt coming in
+> the interrupt would be missed? Can you explain it?
 
-Either directly use a switch in your commit [1/2] or follow `else if` here.
+So the "without this" part of that sentence referred to the patch.
+Which means that without the patch, the interrupt can be missed.
 
-I would prefer if you changed your first commit to use a switch, but I don't
-really have strong opinions, which is why I gave you a Reviewed-by tag on
-[1/2].
+>
+> > Supposedly this is fixed in their codebase.
+>
+> Which codebase do you mean? A specific vendor driver? Or firmware?
 
-Your choice - but please don't "change the game" all of a sudden in a commit
-whose purpose is to add support for a new version of MTK_THERMAL. :-)
+The vendor driver from openlinux2.amlogic.com handles SDIO interrupts
+a bit differently. It uses mmc_signal_sdio_irq()
 
-Cheers,
-Angelo
+>
+> > Unfortunately we were not able to find out more and can't prepare a
+> > patch with a proper explanation.
+>
+> The workaround is rather simple, so we should add it.
+> It's just unfortunate that we have no idea about the root cause of the issue.
 
+After doing a more long term stress test, it was revealed that this
+patch is still not sufficient, but only masks the underlying problem
+better. Reverting 066ecde fixes the issue fully for us (verified
+overnight with iperf).
+v1 and v2 also fix the issue, but v3 does not correct the bug when
+WiFi is stressed for a longer time. And therefore it should not be
+used.
+Could you please give us some advice on how to investigate this further?
 
