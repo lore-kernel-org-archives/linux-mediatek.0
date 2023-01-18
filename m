@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A964C32793
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 06:21:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94B80C38159
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 06:22:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=woicIWywMPyEsGfjzqeJZVmpu2C7tQguryCnNThhvE8=; b=F8uFJRLXqCLXXCvyPizeureHK2
-	JyBJXMi+np4TOQJKPzL0r37L7xxYWZbFgWuKLjpY5tbAtAfdjc7GHWh1dFV/n4erL0v53mUgsdshg
-	8Jlvf08WK5yhHzVA1VhZmtPHQMDcOMU9w99kHqQWlkFYYnGIEXEhIugb9K7VYw3RVtnxZ4irejNSt
-	upzPT3X6P1+GujIevsjoZ6ZXGYRXQbFzLNADHirKiQ4krAyFpguMrJhM5Sa01BHwOGJfoFJs45gei
-	hrq20Yu++XDnSI00xgz7vyllVRmeR5MLAknjmc63y0OzDa/ngGVvDOb4ld6TfsYaEE/2aYITNNBBr
-	lxpGA9Eg==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=73BY3Vgbw3t6Q3sPe77rJeiSjxD1qMfAnvy9gFdOjsY=; b=kqg4PEe566xTlt4Bbu+Jt0ZGLI
+	SCtRxiHUtOV0rfyuzkoXMdlHWQ8xRby/Pm46U7TALYqPQSWeExgl/CknSKy76VVPkg4Pu3NEmHjcH
+	ijTizyQcthpmAjLoxU2+Bi15cGxMnynzTfEHEYoi2bNwwHkps3ysGVt4sR8Kjdr5vCN55zfeLg8FZ
+	rqnlF8cqNTLMYjfA8ywbhjbvBs8Amn4KoDTRihOZ0yQ0Ah7hc/dCIRguBp19DkSDuHa/1waSpapRv
+	q9jAZhJstBag/at8V3Z6XVFDtoU0+wBJsMjuTGkULIhb/YCNc7tYxalX88/hc9kgDaUOrpnB7aB7N
+	fc77fi/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI1pV-00H4OI-Oi; Wed, 18 Jan 2023 06:21:49 +0000
+	id 1pI1q5-00H4gA-Vy; Wed, 18 Jan 2023 06:22:25 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI1pA-00H4FY-NZ; Wed, 18 Jan 2023 06:21:28 +0000
+	id 1pI1pp-00H4Y9-Oa; Wed, 18 Jan 2023 06:22:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=woicIWywMPyEsGfjzqeJZVmpu2C7tQguryCnNThhvE8=; b=eKyD73SKsGv0PHqv79R4QCUjJg
-	i51azXXdj1ijq2uFz0qzFu74gaBD/zg+i0eQNzIQHaFtTx2KeSD8B0myNvp2GFRVdtSDmR5Fp4sF2
-	Z8CgvNXvkipbP5RJNDBwAXqvX3IJoTFOMk83lzycb+c8Mn/M+U/KlNZmVSrWY5bLmUCF5gGAsqiIJ
-	R+7wm9WV4KUfiDXFS3o5wbGWNA0O8vhRNpOcVG46aFoGLGQu1NQbKB/54K7EPq4ax6KmbthzXlrfu
-	lVu9lu9QW7+4COapE1qM5NulzAeTkuPC/foTxL1R6kN6fhRZgZJLImZ7c+uqD8RVXsznPQaHGK2lX
-	z4FFXqEA==;
+	:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=73BY3Vgbw3t6Q3sPe77rJeiSjxD1qMfAnvy9gFdOjsY=; b=Hjc6shoE9vEcVZ5XdOiuKP+Z8G
+	TLLXMhUOKFDSptXim/Ri2EvjnpbAuFJJ7iXBlOPQ/T0jPvcalqtl1Q7uZO7G6+SB4e4SDnU5/78oR
+	YLcCxS7pe6CDIsqk+wM67tTASJWZnsUr5xESYOLmInHVbhbqKbtbRpJTnrkgkiQxgJdYVN6YsbyL4
+	5vNbCTQTdQxJw69r+51lKmZEziltHfRSkfNfY1YnfwFNXrzIjpsTKzRNEFjNsixEZ3ylVCYMDv6v+
+	BvOd0hnNBkEWYWwFQRSYqokIk1sCRvQeVqcgJ1uMFmVnpmtGu2rxchX83u2eN251EBlfptuq5xYCt
+	r3f0GutQ==;
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pI1ox-006B9u-08;
-	Wed, 18 Jan 2023 06:21:17 +0000
-X-UUID: 4efb09d896f811eda08d4d6090ec5a5c-20230117
+	id 1pI1pZ-006BAo-3C;
+	Wed, 18 Jan 2023 06:21:58 +0000
+X-UUID: 6829667096f811eda08d4d6090ec5a5c-20230117
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=woicIWywMPyEsGfjzqeJZVmpu2C7tQguryCnNThhvE8=;
-	b=JdZLevugZXOLN+C2wShJ69Re1kJjMBfPHhXlw5HfJDOhmqxyViXHuoAHC/XBRfcovu+R30bstILwkMRkFsMqqLghTAqjrs5/eH9vTcIkFCKEqF+1oLBnkvqLlZnLVXP7nzIaJyjeMs8EPm0h1Vjg8b0M8JXgycRFqfzLRfHSPPs=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=73BY3Vgbw3t6Q3sPe77rJeiSjxD1qMfAnvy9gFdOjsY=;
+	b=ClTuv/67iyuxVqUGKl6AMYFiUx2wc+vnmSnpIZRv2TLiaf84rzk6WEu8xGPmQSRsw18UJ+sf8lgAUUIfVsWTrXLHyZY2AaqqflsWZyNpipL3MggFZBI7DWGz7Y1AheQxnzjpSiemn4iVjuwIYlv1lLT57KROh7i1y3sjfWgMHU4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.18,REQID:cd284b90-969d-4ce1-a0c5-b7d37897c672,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:3ca2d6b,CLOUDID:1cb424f6-ff42-4fb0-b929-626456a83c14,B
+X-CID-O-INFO: VERSION:1.1.18,REQID:75208bb7-676b-47d9-b4fc-eced6acc4763,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:3ca2d6b,CLOUDID:f5edfa54-dd49-462e-a4be-2143a3ddc739,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
 X-CID-BVR: 0
-X-UUID: 4efb09d896f811eda08d4d6090ec5a5c-20230117
+X-UUID: 6829667096f811eda08d4d6090ec5a5c-20230117
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <guodong.liu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1202574650; Tue, 17 Jan 2023 23:21:13 -0700
+	with ESMTP id 1906178724; Tue, 17 Jan 2023 23:21:56 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 18 Jan 2023 14:20:40 +0800
+ 15.2.792.15; Wed, 18 Jan 2023 14:21:20 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 18 Jan 2023 14:20:40 +0800
+ 15.2.792.15 via Frontend Transport; Wed, 18 Jan 2023 14:21:19 +0800
 From: Guodong Liu <Guodong.Liu@mediatek.com>
 To: Sean Wang <sean.wang@kernel.org>, Linus Walleij
 	<linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Light
@@ -71,19 +71,17 @@ CC: <linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	Zhiyong Tao <zhiyong.tao@mediatek.com>, Guodong Liu
 	<Guodong.Liu@mediatek.com>
-Subject: [PATCH 1/2] pinctrl: mediatek: Initialize variable pullen and pullup to zero
-Date: Wed, 18 Jan 2023 14:20:35 +0800
-Message-ID: <20230118062036.26258-2-Guodong.Liu@mediatek.com>
+Subject: [PATCH] pinctrl: mediatek: Fix the drive register definition of some Pins
+Date: Wed, 18 Jan 2023 14:21:16 +0800
+Message-ID: <20230118062116.26315-1-Guodong.Liu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230118062036.26258-1-Guodong.Liu@mediatek.com>
-References: <20230118062036.26258-1-Guodong.Liu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_062115_801166_D458CEA0 
-X-CRM114-Status: GOOD (  14.32  )
+X-CRM114-CacheID: sfid-20230118_062154_761930_3D51422A 
+X-CRM114-Status: GOOD (  12.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,32 +96,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Coverity spotted that pullen and pullup is not initialized to zero in
-mtk_pctrl_show_one_pin. The uninitialized variable pullen is used in
-assignment statement "rsel = pullen;" in mtk_pctrl_show_one_pin, and
-Uninitialized variable pullup is used when calling scnprintf. Fix this
-coverity by initializing pullen and pullup as zero.
+The drive adjustment register definition of gpio13 and gpio81 is wrong:
+"the start address for the range" of gpio18 is corrected to 0x000,
+"the start bit for the first register within the range" of gpio81 is
+corrected to 24.
 
-Fixes: 184d8e13f9b1 ("pinctrl: mediatek: Add support for pin configuration
-dump via debugfs.")
+Fixes: 6cf5e9ef362a ("pinctrl: add pinctrl driver on mt8195")
 Signed-off-by: Guodong Liu <Guodong.Liu@mediatek.com>
 ---
- drivers/pinctrl/mediatek/pinctrl-paris.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/pinctrl/mediatek/pinctrl-mt8195.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-index f2ce3f626dd1..e736c1610f3c 100644
---- a/drivers/pinctrl/mediatek/pinctrl-paris.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-@@ -635,7 +635,7 @@ static int mtk_hw_get_value_wrap(struct mtk_pinctrl *hw, unsigned int gpio, int
- ssize_t mtk_pctrl_show_one_pin(struct mtk_pinctrl *hw,
- 	unsigned int gpio, char *buf, unsigned int buf_len)
- {
--	int pinmux, pullup, pullen, len = 0, r1 = -1, r0 = -1, rsel = -1;
-+	int pinmux, pullup = 0, pullen = 0, len = 0, r1 = -1, r0 = -1, rsel = -1;
- 	const struct mtk_pin_desc *desc;
- 	u32 try_all_type = 0;
- 
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8195.c b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
+index 563693d3d4c2..c21ca33b2d59 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8195.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
+@@ -659,7 +659,7 @@ static const struct mtk_pin_field_calc mt8195_pin_drv_range[] = {
+ 	PIN_FIELD_BASE(10, 10, 4, 0x010, 0x10, 9, 3),
+ 	PIN_FIELD_BASE(11, 11, 4, 0x000, 0x10, 24, 3),
+ 	PIN_FIELD_BASE(12, 12, 4, 0x010, 0x10, 12, 3),
+-	PIN_FIELD_BASE(13, 13, 4, 0x010, 0x10, 27, 3),
++	PIN_FIELD_BASE(13, 13, 4, 0x000, 0x10, 27, 3),
+ 	PIN_FIELD_BASE(14, 14, 4, 0x010, 0x10, 15, 3),
+ 	PIN_FIELD_BASE(15, 15, 4, 0x010, 0x10, 0, 3),
+ 	PIN_FIELD_BASE(16, 16, 4, 0x010, 0x10, 18, 3),
+@@ -708,7 +708,7 @@ static const struct mtk_pin_field_calc mt8195_pin_drv_range[] = {
+ 	PIN_FIELD_BASE(78, 78, 3, 0x000, 0x10, 15, 3),
+ 	PIN_FIELD_BASE(79, 79, 3, 0x000, 0x10, 18, 3),
+ 	PIN_FIELD_BASE(80, 80, 3, 0x000, 0x10, 21, 3),
+-	PIN_FIELD_BASE(81, 81, 3, 0x000, 0x10, 28, 3),
++	PIN_FIELD_BASE(81, 81, 3, 0x000, 0x10, 24, 3),
+ 	PIN_FIELD_BASE(82, 82, 3, 0x000, 0x10, 27, 3),
+ 	PIN_FIELD_BASE(83, 83, 3, 0x010, 0x10, 0, 3),
+ 	PIN_FIELD_BASE(84, 84, 3, 0x010, 0x10, 3, 3),
 -- 
 2.25.1
 
