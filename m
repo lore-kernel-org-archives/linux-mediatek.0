@@ -4,75 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0773BC004D4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 10:03:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03B67C32793
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 11:26:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qmS5PwsqlNKYFNsXJSmOQNGOMIlR870TlCO69KtLAI8=; b=TKY2yV6Osus91rPa7VTCw6q3R3
-	UFhlUjGQtUGHogYUVfY64Zbs8giqn3EEmQ3Si03JjRIKio8hmdMlDmprxXAmORvkuij21FHgU8ZZ8
-	JsT1/HcCYLuVAqRrWhSrhTLm0nwMfPHIv34GsHyciD36Jlh0VDDQr2TzuFhLrPpWCD2oH6Fy/QMY0
-	/k7VF9kPIUoxYyfAgAmhE2GD5b5+sLWnmfUuYyKiM5wjyITtjoazegP4LztqfuL9aXb+9KKz0AGxL
-	lW/kxgZ5oa5xbP2vM6RTyeDavfJ3HLso9o8m24mmTZu32yakplzFh8raZoYVBEk00SbgoEEEt0od6
-	OYEsTZ1w==;
+	bh=B82/3/xDp/IQxqACB5wrtRFspv40/chspxpULHCPY2k=; b=uYQzwJu8GCeb9QsN4Va8EnkxYf
+	FILZFXOlme/og0pxKxsDxFk43vg1/3/qPtFjTi1G8nTF9q/v1JoDb3VhDQWJsWR69/uLHgrP7LnZv
+	ih561k8SdrsAAiYPyNgPvEO0XqKKepgfmI+on8NMDcZmQZ4YOMgLqIue/pKrr/X8b2czKzuxJr9ou
+	tyPWaMfTGuOBqzgYIijsqLFj1V7hR94P91fhMWg36cyZ98LYvN0a5OYgMKJVREkmtM08pJO4QSMBB
+	/6Cnid/e9ReGW4Q9um+u8FGhmLPVi24Hhisnaj+0pybNss+OyOMdMHqd0yB7yIZb6XxbFH+PU2XOE
+	9iG4zHbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI5IN-000Fz5-NY; Wed, 18 Jan 2023 10:03:51 +0000
-Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
+	id 1pI6aR-000Wm8-Vu; Wed, 18 Jan 2023 11:26:35 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI5GW-000F5g-3N; Wed, 18 Jan 2023 10:01:58 +0000
-Received: from mwalle01.sab.local (unknown [213.135.10.150])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	id 1pI6aH-000WkF-V4; Wed, 18 Jan 2023 11:26:27 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 4FAB216A1;
-	Wed, 18 Jan 2023 11:01:47 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1674036107;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=qmS5PwsqlNKYFNsXJSmOQNGOMIlR870TlCO69KtLAI8=;
-	b=mkSwwTTn69Y4Vq1/O3eHn5Gs9dlh7bMN7HnjIbK4qkNqZtDPAhNmzh8xVBHjRzmIFZgRvG
-	6W4W924Ykc7WJgFGrVkIKtbjBboSMfmK3/vamcZMRqFoslB/psSGow7v/gMeRxHAX6cefk
-	shKNXwoHPkxtnGx1sh+ON/zL/PiCMB8b13MlHD4ipJGzGMBrYXttSu++DY7QcYgIhPUGwR
-	QK3ivxWZA/hlGyD9gnsMS66OWpQESTArNFRW1ZVwZ4TquMU+ulLENoVQ9eFfBZ9VlQ70m/
-	Gmfr//iACJ9TJzRYwoORt22EWJ2yYZflUXPqpC+9CbTzZsQf0e9MSq9LcMz/1Q==
-From: Michael Walle <michael@walle.cc>
-Date: Wed, 18 Jan 2023 11:01:40 +0100
-Subject: [PATCH net-next v2 6/6] net: phy: Remove probe_capabilities
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8F7DC6602E0A;
+	Wed, 18 Jan 2023 11:26:22 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1674041183;
+	bh=RilHqFPMaWTucBwrDBDlmCahDlfPKMU/BJEodhKEbQI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=mM05r1D1Kn8ZwXLxWE5eryt1Z52Jm57sz/fyt7AGTvpMz3r5MwVfjtg2OcU/wsM0N
+	 jRLo0Nz0hyaUBqPwg5/K2WbCB0GFKEIn8OdtCLnyITHRJg/Me+0evBAy9bzYMawJhw
+	 wuPm1DY4g0N4OROQPFEknX2pEhN6kUqOmjjlJhsqhckthqQUzwDrVg+k16JnvJf7YI
+	 n1C3Z9aHb15DXsqjLIDdxnncU6aX131KQt2hmS8/jy+ydd/a9Wiv9SDQ3gCg4CxNvo
+	 Fd6MAspNPJ7tw6F/wq1D5+uutjT6ss61SHws2v5uKmJ2aR3MI02IAb/TnK9UC1tz3y
+	 /1Z8mELjN2CaA==
+Message-ID: <2662ea23-614f-10d6-124f-44aa5fff2a5b@collabora.com>
+Date: Wed, 18 Jan 2023 12:26:19 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id:  <20230116-net-next-remove-probe-capabilities-v2-6-15513b05e1f4@walle.cc>
-References:  <20230116-net-next-remove-probe-capabilities-v2-0-15513b05e1f4@walle.cc>
-In-Reply-To:  <20230116-net-next-remove-probe-capabilities-v2-0-15513b05e1f4@walle.cc>
-To: Heiner Kallweit <hkallweit1@gmail.com>,
- Russell King <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Felix Fietkau <nbd@nbd.name>,
- John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
- Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH 2/2] pinctrl: mediatek: Initialize variable *buf to zero
+Content-Language: en-US
+To: Guodong Liu <Guodong.Liu@mediatek.com>, Sean Wang <sean.wang@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Bryan Whitehead <bryan.whitehead@microchip.com>, UNGLinuxDriver@microchip.com,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jose Abreu <joabreu@synopsys.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@aj.id.au>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-aspeed@lists.ozlabs.org,
- Andrew Lunn <andrew@lunn.ch>, Michael Walle <michael@walle.cc>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>
-X-Mailer: b4 0.11.1
+ Light Hsieh <light.hsieh@mediatek.com>, Rob Herring <robh@kernel.org>
+Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Zhiyong Tao <zhiyong.tao@mediatek.com>
+References: <20230118062036.26258-1-Guodong.Liu@mediatek.com>
+ <20230118062036.26258-3-Guodong.Liu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230118062036.26258-3-Guodong.Liu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_020156_427276_AFE1004B 
-X-CRM114-Status: GOOD (  12.88  )
+X-CRM114-CacheID: sfid-20230118_032626_252529_6F25C05B 
+X-CRM114-Status: UNSURE (   8.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,127 +79,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Andrew Lunn <andrew@lunn.ch>
+Il 18/01/23 07:20, Guodong Liu ha scritto:
+> Coverity spotted that *buf is not initialized to zero in
+> mtk_pctrl_dbg_show. Using uninitialized variable *buf as argument to %s
+> when calling seq_printf. Fix this coverity by initializing *buf as zero.
+> 
+> Fixes: 184d8e13f9b1 ("pinctrl: mediatek: Add support for pin configuration
+> dump via debugfs.")
+> Signed-off-by: Guodong Liu <Guodong.Liu@mediatek.com>
 
-Deciding if to probe of PHYs using C45 is now determine by if the bus
-provides the C45 read method. This makes probe_capabilities redundant
-so remove it.
 
-Signed-off-by: Andrew Lunn <andrew@lunn.ch>
-Signed-off-by: Michael Walle <michael@walle.cc>
-Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
----
- drivers/net/ethernet/adi/adin1110.c               | 1 -
- drivers/net/ethernet/freescale/xgmac_mdio.c       | 1 -
- drivers/net/ethernet/mediatek/mtk_eth_soc.c       | 1 -
- drivers/net/ethernet/microchip/lan743x_main.c     | 2 --
- drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c | 3 ---
- drivers/net/mdio/mdio-aspeed.c                    | 1 -
- include/linux/phy.h                               | 8 --------
- 7 files changed, 17 deletions(-)
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-diff --git a/drivers/net/ethernet/adi/adin1110.c b/drivers/net/ethernet/adi/adin1110.c
-index 0805f249fff2..25f55756681d 100644
---- a/drivers/net/ethernet/adi/adin1110.c
-+++ b/drivers/net/ethernet/adi/adin1110.c
-@@ -523,7 +523,6 @@ static int adin1110_register_mdiobus(struct adin1110_priv *priv,
- 	mii_bus->priv = priv;
- 	mii_bus->parent = dev;
- 	mii_bus->phy_mask = ~((u32)GENMASK(2, 0));
--	mii_bus->probe_capabilities = MDIOBUS_C22;
- 	snprintf(mii_bus->id, MII_BUS_ID_SIZE, "%s", dev_name(dev));
- 
- 	ret = devm_mdiobus_register(dev, mii_bus);
-diff --git a/drivers/net/ethernet/freescale/xgmac_mdio.c b/drivers/net/ethernet/freescale/xgmac_mdio.c
-index 8b5a4cd8ff08..a13b4ba4d6e1 100644
---- a/drivers/net/ethernet/freescale/xgmac_mdio.c
-+++ b/drivers/net/ethernet/freescale/xgmac_mdio.c
-@@ -397,7 +397,6 @@ static int xgmac_mdio_probe(struct platform_device *pdev)
- 	bus->read_c45 = xgmac_mdio_read_c45;
- 	bus->write_c45 = xgmac_mdio_write_c45;
- 	bus->parent = &pdev->dev;
--	bus->probe_capabilities = MDIOBUS_C22_C45;
- 	snprintf(bus->id, MII_BUS_ID_SIZE, "%pa", &res->start);
- 
- 	priv = bus->priv;
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index dc50e0b227a6..d67ec28b2ba3 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -808,7 +808,6 @@ static int mtk_mdio_init(struct mtk_eth *eth)
- 	eth->mii_bus->write = mtk_mdio_write_c22;
- 	eth->mii_bus->read_c45 = mtk_mdio_read_c45;
- 	eth->mii_bus->write_c45 = mtk_mdio_write_c45;
--	eth->mii_bus->probe_capabilities = MDIOBUS_C22_C45;
- 	eth->mii_bus->priv = eth;
- 	eth->mii_bus->parent = eth->dev;
- 
-diff --git a/drivers/net/ethernet/microchip/lan743x_main.c b/drivers/net/ethernet/microchip/lan743x_main.c
-index e205edf477de..86b81df374da 100644
---- a/drivers/net/ethernet/microchip/lan743x_main.c
-+++ b/drivers/net/ethernet/microchip/lan743x_main.c
-@@ -3279,7 +3279,6 @@ static int lan743x_mdiobus_init(struct lan743x_adapter *adapter)
- 			lan743x_csr_write(adapter, SGMII_CTL, sgmii_ctl);
- 			netif_dbg(adapter, drv, adapter->netdev,
- 				  "SGMII operation\n");
--			adapter->mdiobus->probe_capabilities = MDIOBUS_C22_C45;
- 			adapter->mdiobus->read = lan743x_mdiobus_read_c22;
- 			adapter->mdiobus->write = lan743x_mdiobus_write_c22;
- 			adapter->mdiobus->read_c45 = lan743x_mdiobus_read_c45;
-@@ -3295,7 +3294,6 @@ static int lan743x_mdiobus_init(struct lan743x_adapter *adapter)
- 			netif_dbg(adapter, drv, adapter->netdev,
- 				  "RGMII operation\n");
- 			// Only C22 support when RGMII I/F
--			adapter->mdiobus->probe_capabilities = MDIOBUS_C22;
- 			adapter->mdiobus->read = lan743x_mdiobus_read_c22;
- 			adapter->mdiobus->write = lan743x_mdiobus_write_c22;
- 			adapter->mdiobus->name = "lan743x-mdiobus";
-diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
-index d2cb22f49ce5..21aaa2730ac8 100644
---- a/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
-@@ -553,9 +553,6 @@ int stmmac_mdio_register(struct net_device *ndev)
- 
- 	new_bus->name = "stmmac";
- 
--	if (priv->plat->has_gmac4)
--		new_bus->probe_capabilities = MDIOBUS_C22_C45;
--
- 	if (priv->plat->has_xgmac) {
- 		new_bus->read = &stmmac_xgmac2_mdio_read_c22;
- 		new_bus->write = &stmmac_xgmac2_mdio_write_c22;
-diff --git a/drivers/net/mdio/mdio-aspeed.c b/drivers/net/mdio/mdio-aspeed.c
-index 2f4bbda5e56c..c727103c8b05 100644
---- a/drivers/net/mdio/mdio-aspeed.c
-+++ b/drivers/net/mdio/mdio-aspeed.c
-@@ -164,7 +164,6 @@ static int aspeed_mdio_probe(struct platform_device *pdev)
- 	bus->write = aspeed_mdio_write_c22;
- 	bus->read_c45 = aspeed_mdio_read_c45;
- 	bus->write_c45 = aspeed_mdio_write_c45;
--	bus->probe_capabilities = MDIOBUS_C22_C45;
- 
- 	rc = of_mdiobus_register(bus, pdev->dev.of_node);
- 	if (rc) {
-diff --git a/include/linux/phy.h b/include/linux/phy.h
-index fceaac0fb319..fbeba4fee8d4 100644
---- a/include/linux/phy.h
-+++ b/include/linux/phy.h
-@@ -419,14 +419,6 @@ struct mii_bus {
- 	/** @reset_gpiod: Reset GPIO descriptor pointer */
- 	struct gpio_desc *reset_gpiod;
- 
--	/** @probe_capabilities: bus capabilities, used for probing */
--	enum {
--		MDIOBUS_NO_CAP = 0,
--		MDIOBUS_C22,
--		MDIOBUS_C45,
--		MDIOBUS_C22_C45,
--	} probe_capabilities;
--
- 	/** @shared_lock: protect access to the shared element */
- 	struct mutex shared_lock;
- 
 
--- 
-2.30.2
 
