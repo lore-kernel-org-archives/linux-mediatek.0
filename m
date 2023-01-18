@@ -4,74 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BBAEC32793
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 09:29:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0CB0C32793
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 09:40:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/qs5AP02dhkCWqdSuirwOLn7ESeQZZWhOOpRZScjecQ=; b=nv+bQFirjerPVcQkQDdY6xGPeV
-	2nN4dp2A+IqhRBr+GPkV+Ek+whW00Bsrmg9nikDauexTlvH8rfyvlLrdTc0IZhpuSjQwX9svvG8Ti
-	4JPBk5Ak4tSzpAmurUSM0go1Vs0qPFLQq12GCosC5tlFriLfjfDkxFUqTQ9nmwTKXU6QPWOjb+ffL
-	SR7vm5rOJhDzdwdEqB+QM3P+dpyS4UY4kLHV8kowgwWQkaWsoH8eW7RbiKIMjmFZFPZ4qVcHNvwYc
-	1ETQutLJkcG6m4sjCOgZTBcoLnvRBP4LlQ4kr0jWiryjukFcBuFwWRbkvwMiHMlcR/z15gzEbY4M8
-	h55yolSQ==;
+	bh=DwNWU9H0jlFf7a3RNgRpbLKduCFaN8GBzI42VxtTjDo=; b=vfruNqZyXEtz3F1riG0kNQlKk9
+	OLtv3AtZiT3BncfqQtyy7i/GA0rlZK+SO4qq7Q7ymFIjH0oK3ZNLQ4++7P7PJQJ/3nAskkV4ViTVs
+	9kvxzqRaKwFTx83BgB5XWzbP3lvRKOhpKRRE99Nh9tcuIBTqeFAAEt9c9sQyQEguXaiHmrs3Vl/Yt
+	UKFDGha2g2eGJn3Zl5HWa/nOojabOfmIw+nAyplmc0DMQ1K2j8jOlZIPNnYy+gnkBHj1O+8KR665C
+	SuUDWot4VK5gogOjRE6dB2d3wHdQtYN3cPMtI+Y7JeueTYRbLpJXeNMe2OUQ6mrLGvOsqCSPBFmz1
+	HL90cHqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI4ku-0007hf-GD; Wed, 18 Jan 2023 09:29:16 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pI4vj-0009Jo-Kd; Wed, 18 Jan 2023 09:40:27 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:191:4433::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI4kr-0007fH-12; Wed, 18 Jan 2023 09:29:15 +0000
-X-UUID: 8fcdf2da971211eda08d4d6090ec5a5c-20230118
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=/qs5AP02dhkCWqdSuirwOLn7ESeQZZWhOOpRZScjecQ=;
-	b=BkhuMenEviQO2GrB5iJ4zjpEzc06dhfz1IPPwtZtkJ6+QNf5iMZr1MXxqrs+Mo5SaUGzfIhM7/gidITZFTDFoTqvhHJ1e8T77Lv8N7rGXxB4yoFIIEGDJGBGYk5CBCY+OuM0d0cyf8PsEMDytV6FT0DywatlAHh2qPvv8kE/mX0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.18,REQID:eb6593d0-5a2a-4dd4-b57b-f4b31d479dd8,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:3ca2d6b,CLOUDID:5b642af6-ff42-4fb0-b929-626456a83c14,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0,NGT
-X-UUID: 8fcdf2da971211eda08d4d6090ec5a5c-20230118
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <allen-kh.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 304520985; Wed, 18 Jan 2023 02:29:09 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 18 Jan 2023 17:18:32 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 18 Jan 2023 17:18:32 +0800
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>, Stephen Boyd <sboyd@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<dri-devel@lists.freedesktop.org>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<hsinyi@chromium.org>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Subject: [PATCH v2 3/9] arm64: dts: mediatek: mt8186: Add SPMI node
-Date: Wed, 18 Jan 2023 17:18:23 +0800
-Message-ID: <20230118091829.755-4-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230118091829.755-1-allen-kh.cheng@mediatek.com>
-References: <20230118091829.755-1-allen-kh.cheng@mediatek.com>
+	id 1pI4vh-0009Io-4o
+	for linux-mediatek@lists.infradead.org; Wed, 18 Jan 2023 09:40:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+	Resent-Cc:Resent-Message-ID; bh=DwNWU9H0jlFf7a3RNgRpbLKduCFaN8GBzI42VxtTjDo=;
+	t=1674034821; x=1675244421; b=i4KP4hsVNSPEFCBwZwGBMjqdEd8NcTeGMS2arXV3KLO9TlG
+	ljbGWnOvLj6LvIoK/51Eu0xPBMkR39Uj1XuZYij5IIhAPY+Lqjh/joaA7gTnmXgh8nwOFw8c6+1bj
+	7uY9AOIbNxBmq08NPab7/O1CikIZ1rruS595+ituTrFwfMr9oA8Lm50YmrGNgnWH6gHwhIJ7aPJm+
+	LLbb5E2sD4EvEr61FCf++63KqXdnqT6xWajZPqsWSmJX6uw9Ak39XOH+J/qkVgOrQc5ZtxSJ8mjdJ
+	cibu5LtAt7+6NLTFm+c87mx2JOdT3onGZyo/wIuTnm4IeHeguJJ3XxstXkW9Uklg==;
+Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.96)
+	(envelope-from <johannes@sipsolutions.net>)
+	id 1pI4vR-005XzM-08;
+	Wed, 18 Jan 2023 10:40:09 +0100
+Message-ID: <277f8db1f790931aaac0f94ba0ea69efcb6ba3ac.camel@sipsolutions.net>
+Subject: Re: [PATCH] wifi: mac80211: check the control channel before
+ downgrading the bandwidth
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Michael Lee <michael-cy.lee@mediatek.com>, linux-wireless
+	 <linux-wireless@vger.kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, Money Wang
+ <money.wang@mediatek.com>,  linux-mediatek
+ <linux-mediatek@lists.infradead.org>
+Date: Wed, 18 Jan 2023 10:40:07 +0100
+In-Reply-To: <20221222091354.14050-1-michael-cy.lee@mediatek.com>
+References: <20221222091354.14050-1-michael-cy.lee@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.3 (3.46.3-1.fc37) 
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_012913_079100_7A2CB209 
-X-CRM114-Status: GOOD (  11.34  )
+X-CRM114-CacheID: sfid-20230118_014025_331994_B826A1F8 
+X-CRM114-Status: GOOD (  24.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,44 +76,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add SPMI node for MT8186 SoC.
+Hi,
 
-Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8186.dtsi | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+So I've looked at this patch a few times, but it just confuses me ...
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-index 3d88480913eb..a8ff984f1192 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-@@ -605,6 +605,25 @@
- 			clock-names = "spi", "wrap";
- 		};
- 
-+		spmi: spmi@10015000 {
-+			compatible = "mediatek,mt8186-spmi",
-+				     "mediatek,mt8195-spmi";
-+			reg = <0 0x10015000 0 0x000e00>,
-+			      <0 0x1001B000 0 0x000100>;
-+			reg-names = "pmif", "spmimst";
-+			clocks = <&infracfg_ao CLK_INFRA_AO_PMIC_AP>,
-+				 <&infracfg_ao CLK_INFRA_AO_PMIC_TMR>,
-+				 <&topckgen CLK_TOP_SPMI_MST>;
-+			clock-names = "pmif_sys_ck",
-+				      "pmif_tmr_ck",
-+				      "spmimst_clk_mux";
-+			assigned-clocks = <&topckgen CLK_TOP_SPMI_MST>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_ULPOSC1_D10>;
-+			interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_HIGH 0>,
-+				     <GIC_SPI 241 IRQ_TYPE_LEVEL_HIGH 0>;
-+			status = "disabled";
-+		};
-+
- 		systimer: timer@10017000 {
- 			compatible = "mediatek,mt8186-timer",
- 				     "mediatek,mt6765-timer";
--- 
-2.18.0
+On Thu, 2022-12-22 at 17:13 +0800, Michael Lee wrote:
+> When the link fails to use the channel, chandef's bandwidth will be=20
+> downgraded without checking the control channel.
+> The issue happens when the STA of an extender with limited channel=20
+> context associates with a root AP operating on a different channel.
+>=20
+> Below is an example:
+>=20
+>     ______________           ________________
+>    | RootAP(ch36) |         | Extender(ch44) |
+>    |              | (ASSOC) |       AP       |
+>    |      AP <-------------------- STA       |
+>    |______________|         |________________|
+>=20
+> - RootAP is operating on channel 36, while Extender is operating
+>   on channel 44
+
+What does this matter? The extended is just a STA, no? Or are you saying
+it's important that the extender has a concurrent AP interface that's on
+channel 44?
+
+And if you say "ch36" or "ch44" that's just the control channel (I
+guess), but what's the actual complete channel configuration?
+
+> - When associating with RootAP, Extender-STA downgrades the
+>   chandef's bandwidth to be compatible with any channels on the phy
+
+What do you mean by "on the phy" here? That's not mac80211 terminology,
+so not sure.
+
+> - Finally, chandef's bandwidth is downgraded to 20MHz and=20
+>   the association fails
+>=20
+> In this patch, a control channel checking is added to avoid unnecessary
+> bandwidth downgrading
+>=20
+> Signed-off-by: Michael Lee <michael-cy.lee@mediatek.com>
+> ---
+>  net/mac80211/mlme.c | 24 ++++++++++++++++++++++++
+>  1 file changed, 24 insertions(+)
+>=20
+> diff --git a/net/mac80211/mlme.c b/net/mac80211/mlme.c
+> index 0aee2392dd29..bc435e8508e2 100644
+> --- a/net/mac80211/mlme.c
+> +++ b/net/mac80211/mlme.c
+> @@ -4616,6 +4616,27 @@ ieee80211_verify_sta_he_mcs_support(struct ieee802=
+11_sub_if_data *sdata,
+>  	return false;
+>  }
+> =20
+> +static bool
+> +ieee80211_check_same_ctrl_channel(struct ieee80211_sub_if_data *sdata,
+> +				  const struct cfg80211_chan_def *chandef)
+> +{
+> +	struct ieee80211_local *local =3D sdata->local;
+> +	struct ieee80211_chanctx *ctx;
+> +
+> +	mutex_lock(&local->chanctx_mtx);
+> +	list_for_each_entry(ctx, &local->chanctx_list, list) {
+> +		if (ctx->replace_state =3D=3D IEEE80211_CHANCTX_WILL_BE_REPLACED)
+> +			continue;
+> +		if (ctx->mode =3D=3D IEEE80211_CHANCTX_EXCLUSIVE)
+> +			continue;
+> +		if (chandef->chan =3D=3D ctx->conf.def.chan)
+> +			return true;
+> +	}
+> +
+> +	mutex_unlock(&local->chanctx_mtx);
+> +	return false;
+> +}
+> +
+>  static int ieee80211_prep_channel(struct ieee80211_sub_if_data *sdata,
+>  				  struct ieee80211_link_data *link,
+>  				  struct cfg80211_bss *cbss,
+> @@ -4842,6 +4863,9 @@ static int ieee80211_prep_channel(struct ieee80211_=
+sub_if_data *sdata,
+>  	    chandef.width =3D=3D NL80211_CHAN_WIDTH_10)
+>  		goto out;
+> =20
+> +	if (!ret || !ieee80211_check_same_ctrl_channel(sdata, &chandef))
+> +		goto out;
+
+Not sure I get how this is any different - you're describing a case
+where "ret !=3D 0" (because if ret =3D=3D 0 nothing happens in the while
+loop), so then you fail _anyway_? So what's the point?
+
+johannes
 
 
