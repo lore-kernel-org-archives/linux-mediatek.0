@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7150C54EBE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 10:02:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE518C004D4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 10:02:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7i9qbwSDlGkaEMAao/7IOBLlkWEf4kE9vsL/6dW7DOw=; b=FOOnTQ4wg0SPYLtZtMy67P77nC
-	i73sOz0o29UcfSIJIJs358/UbFQasSqTnwqTNvl87NWsiGTCtkLky0RnYRzrlrECqyxofW96bMhsr
-	IMWtPpA0tHo0rVIQz/MYeUx7TcS4ZxC38eOW3NKA0aa0nfiugT7K2kbLhpgXePcCoyscHXseLxBUS
-	GM7Z76kSMuhXqP8PmaNtgGJgoYo4Q1l6Nb8n8PhN0bQFj9m7Ijqo54Sauo7fWIOT82hqrGCuZiP3X
-	5R9rhA7MQjP2bPclJAO0eqd0XnOQ3saL1rZcsXBA3CfBzoYdYtkzsi1LITokG4M+6u6FeYDbV0tn1
-	XyLOSing==;
+	bh=mwRgH1gwGvw1Zmyg8lEWyK1RUMWeRROk6pcDON7Mutc=; b=RgeHwzFEtR4qx9vRyiHjXVh10T
+	xHxrbNNh9bBujA9WlqjC4N/whauibQ3o7ZxdJi/3coWM20OfERwDbYCXfS22Sd+ChVWeKLjwSeRSy
+	b2IcvfjT2pNxcPFkwsxuno2IG43G+GNqf5A1h9wwV5/mQKjDlO9eP4eTdbdfYaJscurBcU8qZwz8n
+	cilxeT3iRHSfOMU7+rQ2xEnpFrWqVvtFV+OeoBtZJVScNPcTADiLtGcaqUV5R++Ty/oDiWIRe7zpO
+	M7D/ZitCrExj/Yt86YUcwwTL/QgrXRblesgdxbxh/N6hGceLMeNGcqGhSU19tmuAhO8QjtorcRPbt
+	hKBAWiXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI5Gg-000F8c-8k; Wed, 18 Jan 2023 10:02:06 +0000
+	id 1pI5HH-000FLB-Ki; Wed, 18 Jan 2023 10:02:43 +0000
 Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI5GS-000F3J-8U; Wed, 18 Jan 2023 10:01:53 +0000
+	id 1pI5GS-000F3H-9n; Wed, 18 Jan 2023 10:01:55 +0000
 Received: from mwalle01.sab.local (unknown [213.135.10.150])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id CF3581671;
-	Wed, 18 Jan 2023 11:01:45 +0100 (CET)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 403D11696;
+	Wed, 18 Jan 2023 11:01:46 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
 	t=1674036106;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=7i9qbwSDlGkaEMAao/7IOBLlkWEf4kE9vsL/6dW7DOw=;
-	b=sfpSS9Kjd9842sP40iyX+WvxgWIzof0diOjdpmoYAZE3RTcYKt2G38MkWRx4WLhkoRrVjX
-	v/4fI/4AbkKptvvqLKhYqdYf9fC29BSzA89BeZWQLwEF3iYIXtFaSsn0aRvEeHUz/Vr67C
-	CgefUeD6AcNz8oorpMrkwONDcoKdufbdmEbDonIsUeubP4W5+teBXU3A8Q1SzDKs9cIpvm
-	TLplpA7l4ioD8wtn3Lz+RI3+7xCXSa3ednymkbTwHDjs37GP2fYgRKzpTkA1UbSrwLVzEo
-	azg3IK2lO195nKysbe5d3R1dGqi+Rrnrkkt2qDss8UJKO9VFnpEB5I62KoZIqg==
+	bh=mwRgH1gwGvw1Zmyg8lEWyK1RUMWeRROk6pcDON7Mutc=;
+	b=sL7klO901P68+Qf+oOucnTQ8o7LJqALT6i87nmTOHVWPOS9ZYlXtiknTB/H8z//VkltPnb
+	UztiV9XdRDU5w++sTB8S4n9hEz4uwMs5H6JSVhAdg07jAhK2O5B0+DDv56MqvpmlTPTOVG
+	Bdnqi9+Oi61wYHTPU4EWyb81JqFpSw1jtqsaaDKW6TbkpXPTRDfdMPyt37OO1t2W/dCSta
+	tJAhIrZ68UvwOcCHU3CPygVZ/L2zVoGL6wP2g/NfT+DzQe+VOMXSxGDsGfaF5qdRk6p3t9
+	2kYLiT8zedHyBMw554J6/N5RiVOWfwIwYvnxaCY8VPMRyDTl2QL2tXiB4bxLLg==
 From: Michael Walle <michael@walle.cc>
-Date: Wed, 18 Jan 2023 11:01:37 +0100
-Subject: [PATCH net-next v2 3/6] net: mdio: Add workaround for Micrel PHYs
- which are not C45 compatible
+Date: Wed, 18 Jan 2023 11:01:38 +0100
+Subject: [PATCH net-next v2 4/6] net: mdio: scan bus based on bus capabilities
+ for C22 and C45
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id:  <20230116-net-next-remove-probe-capabilities-v2-3-15513b05e1f4@walle.cc>
+Message-Id:  <20230116-net-next-remove-probe-capabilities-v2-4-15513b05e1f4@walle.cc>
 References:  <20230116-net-next-remove-probe-capabilities-v2-0-15513b05e1f4@walle.cc>
 In-Reply-To:  <20230116-net-next-remove-probe-capabilities-v2-0-15513b05e1f4@walle.cc>
 To: Heiner Kallweit <hkallweit1@gmail.com>,
@@ -72,8 +72,8 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  Jesse Brandeburg <jesse.brandeburg@intel.com>
 X-Mailer: b4 0.11.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_020152_527581_D497E90B 
-X-CRM114-Status: GOOD (  19.89  )
+X-CRM114-CacheID: sfid-20230118_020152_544850_052B9E0C 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,104 +90,44 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Andrew Lunn <andrew@lunn.ch>
 
-After scanning the bus for C22 devices, check if any Micrel PHYs have
-been found.  They are known to do bad things if there are C45
-transactions on the bus. Prevent the scanning of the bus using C45 if
-such a PHY has been detected.
+Now that all MDIO bus drivers which set probe_capabilities to
+MDIOBUS_C22_C45 have been converted to use the name API for C45
+transactions, perform the scanning of the bus based on which methods
+the bus provides.
 
 Signed-off-by: Andrew Lunn <andrew@lunn.ch>
 Signed-off-by: Michael Walle <michael@walle.cc>
+Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 ---
-v2:
- [mw] move variable declaration into the loop. Thanks, Jesse.
----
- drivers/net/phy/mdio_bus.c | 37 ++++++++++++++++++++++++++++++++++---
- include/linux/micrel_phy.h |  2 ++
- 2 files changed, 36 insertions(+), 3 deletions(-)
+ drivers/net/phy/mdio_bus.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/net/phy/mdio_bus.c b/drivers/net/phy/mdio_bus.c
-index 667247f661c5..a664eeb1868d 100644
+index a664eeb1868d..5b2f48c09a6a 100644
 --- a/drivers/net/phy/mdio_bus.c
 +++ b/drivers/net/phy/mdio_bus.c
-@@ -19,6 +19,7 @@
- #include <linux/interrupt.h>
- #include <linux/io.h>
- #include <linux/kernel.h>
-+#include <linux/micrel_phy.h>
- #include <linux/mii.h>
- #include <linux/mm.h>
- #include <linux/module.h>
-@@ -600,6 +601,32 @@ static int mdiobus_scan_bus_c45(struct mii_bus *bus)
- 	return 0;
- }
- 
-+/* There are some C22 PHYs which do bad things when where is a C45
-+ * transaction on the bus, like accepting a read themselves, and
-+ * stomping over the true devices reply, to performing a write to
-+ * themselves which was intended for another device. Now that C22
-+ * devices have been found, see if any of them are bad for C45, and if we
-+ * should skip the C45 scan.
-+ */
-+static bool mdiobus_prevent_c45_scan(struct mii_bus *bus)
-+{
-+	int i;
-+
-+	for (i = 0; i < PHY_MAX_ADDR; i++) {
-+		struct phy_device *phydev;
-+		u32 oui;
-+
-+		phydev = mdiobus_get_phy(bus, i);
-+		if (!phydev)
-+			continue;
-+		oui = phydev->phy_id >> 10;
-+
-+		if (oui == MICREL_OUI)
-+			return true;
-+	}
-+	return false;
-+}
-+
- /**
-  * __mdiobus_register - bring up all the PHYs on a given bus and attach them to bus
-  * @bus: target mii_bus
-@@ -617,8 +644,9 @@ static int mdiobus_scan_bus_c45(struct mii_bus *bus)
- int __mdiobus_register(struct mii_bus *bus, struct module *owner)
- {
- 	struct mdio_device *mdiodev;
--	int i, err;
- 	struct gpio_desc *gpiod;
-+	bool prevent_c45_scan;
-+	int i, err;
- 
- 	if (!bus || !bus->name)
- 		return -EINVAL;
-@@ -691,8 +719,11 @@ int __mdiobus_register(struct mii_bus *bus, struct module *owner)
- 			goto error;
+@@ -711,9 +711,7 @@ int __mdiobus_register(struct mii_bus *bus, struct module *owner)
+ 			goto error_reset_gpiod;
  	}
  
--	if (bus->probe_capabilities == MDIOBUS_C45 ||
+-	if (bus->probe_capabilities == MDIOBUS_NO_CAP ||
+-	    bus->probe_capabilities == MDIOBUS_C22 ||
 -	    bus->probe_capabilities == MDIOBUS_C22_C45) {
-+	prevent_c45_scan = mdiobus_prevent_c45_scan(bus);
-+
-+	if (!prevent_c45_scan &&
-+	    (bus->probe_capabilities == MDIOBUS_C45 ||
-+	     bus->probe_capabilities == MDIOBUS_C22_C45)) {
++	if (bus->read) {
+ 		err = mdiobus_scan_bus_c22(bus);
+ 		if (err)
+ 			goto error;
+@@ -721,9 +719,7 @@ int __mdiobus_register(struct mii_bus *bus, struct module *owner)
+ 
+ 	prevent_c45_scan = mdiobus_prevent_c45_scan(bus);
+ 
+-	if (!prevent_c45_scan &&
+-	    (bus->probe_capabilities == MDIOBUS_C45 ||
+-	     bus->probe_capabilities == MDIOBUS_C22_C45)) {
++	if (!prevent_c45_scan && bus->read_c45) {
  		err = mdiobus_scan_bus_c45(bus);
  		if (err)
  			goto error;
-diff --git a/include/linux/micrel_phy.h b/include/linux/micrel_phy.h
-index 1f7c33b2f5a3..771e050883db 100644
---- a/include/linux/micrel_phy.h
-+++ b/include/linux/micrel_phy.h
-@@ -8,6 +8,8 @@
- #ifndef _MICREL_PHY_H
- #define _MICREL_PHY_H
- 
-+#define MICREL_OUI		0x0885
-+
- #define MICREL_PHY_ID_MASK	0x00fffff0
- 
- #define PHY_ID_KSZ8873MLL	0x000e7237
 
 -- 
 2.30.2
