@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 381E7C32793
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 15:41:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 347ACC32793
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jan 2023 15:41:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=d5E+3PKlxbfGjEEZmC5WyTIcXVJieqdeCZUgJSSU6Ac=; b=QdL8sqrl2FcWx4l+ErjOC/XIfB
-	orslUrxywAC1I6ryTokqei9Om2+m7P/gMG0ZHwiyzYuq3OaTvLWTM7/scyerY88UsevlNj3NdT+Mq
-	IbfVtCiH0Yaf9N74DEfCM18u9Qj4oWMlpDUJXGfsCumVsyeOiSuiConUysnV0ubY4Nro/a6JEWXCY
-	NxF0BOAbUMHmTbiIp9XZjq3XrOuGj/wzNeSp/UljtRd3mlatrct/db4vjUc9WwhO2bmNIKYhNBwtg
-	ezfDHnGNOQHsqFNWzmGdJlJI2IeWaQZBX14QZoVjtEVEwSDKUKvsXgVj75rLecm8d7xrbG63qtUKK
-	Q8FzvgkQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=o78476BCBNeXUUh8dYtk1P5K0AodHpMpcG8B/jLfRgU=; b=BneMTgreCg3bjR8020KH41yhiO
+	VUAeo8JHgpoMPXESdcaQM/j/kW+2yxAlGu+lytiuSqFVXz4knyow29N9em+RwSu3BGQgoLXtzitNn
+	NTHqYM2DiCs+CYIvlGhs1rl50OJ2DzQmbnUbbACW36vi72Jrr/Cnp6/l4HqXMzJG4ziGzBCP1b/H9
+	MtjUQKP04jYHWzyv7jMhqUxh2RfuIDTubgDAGzUI8VsIRX6HGgMSIUwUC9gtSuFZlhU8pDO8S/fLc
+	dfa9jXabzN2APNwH9f1Yqpb0lWhAx1zoF0jcKbxi9qTy0oDPL59PVY9pg3i5Fgg2gdSiZmmNS+FsR
+	0WoO/GcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIAYW-001bhK-Mt; Wed, 18 Jan 2023 15:40:52 +0000
+	id 1pIAYf-001bl0-Ud; Wed, 18 Jan 2023 15:41:01 +0000
 Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIAYK-001bd2-Dz; Wed, 18 Jan 2023 15:40:42 +0000
+	id 1pIAYR-001bfc-1q; Wed, 18 Jan 2023 15:40:48 +0000
 Received: from local
 	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1pIAY6-0007gG-1J;
-	Wed, 18 Jan 2023 16:40:26 +0100
-Date: Wed, 18 Jan 2023 15:40:19 +0000
+	id 1pIAYP-0007gi-0q;
+	Wed, 18 Jan 2023 16:40:45 +0100
+Date: Wed, 18 Jan 2023 15:40:39 +0000
 From: Daniel Golle <daniel@makrotopia.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
@@ -43,14 +43,17 @@ To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 Cc: Steven Liu <steven.liu@mediatek.com>,
 	Henry Yen <Henry.Yen@mediatek.com>, Chad Monroe <chad@monroe.io>,
 	John Crispin <john@phrozen.org>
-Subject: [PATCH v5 0/2] thermal: mediatek: add support for MT7986 and MT7981
-Message-ID: <cover.1674055882.git.daniel@makrotopia.org>
+Subject: [PATCH v5 1/2] thermal/drivers/mtk: use function pointer for
+ raw_to_mcelsius
+Message-ID: <69c17529e8418da3eec703dde31e1b01e5b0f7e8.1674055882.git.daniel@makrotopia.org>
+References: <cover.1674055882.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <cover.1674055882.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_074040_484600_ACD018F2 
-X-CRM114-Status: GOOD (  12.11  )
+X-CRM114-CacheID: sfid-20230118_074047_137680_C12F4C6C 
+X-CRM114-Status: GOOD (  14.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,47 +68,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As requested in a previous review, first convert the if-else selection
-of the raw_to_mcelsius_* function to instead use a function pointer
-added to struct mtk_thermal. Then add thermal support for the MT7986
-SoC which can also be used on MT7981.
+Instead of having if-else logic selecting either raw_to_mcelsius_v1 or
+raw_to_mcelsius_v2 in mtk_thermal_bank_temperature introduce a function
+pointer raw_to_mcelsius to struct mtk_thermal which is initialized in the
+probe function.
 
-Device Tree bindings have already been merged[1].
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/thermal/mtk_thermal.c | 17 ++++++++++-------
+ 1 file changed, 10 insertions(+), 7 deletions(-)
 
-Changes since v4: Only use switch statement where requested[2] and keep
-if-else logic in other places.
-
-When submitting v3, it looked like the patch series submitted by Amjad
-Ouled-Ameur ("thermal: mediatek: Add support for MT8365 SoC"[3]) which
-also adds this function pointer would be merged first. However, a
-re-spin of this series addressing the comments it has received has not
-yet been submitted. The change introducing the raw_to_mcelsius function
-pointer is hence being applied independently.
-
-Changes since v2: Rebase on top of pending patch introducing
-raw_to_mcelsius function pointer.
-Drop left-over macro extracting the unused adc_oe field.
-Use switch (...) instead of if-else-if-else-... statements.
-For now, return -EINVAL as default in case of unknown version. Imho
-this should be BUG(), as this version is only defined within this
-driver.
-
-Changes since v1: Drop use of adc_oe field in efuse, Henry Yen
-confirmed its use has been dropped intentionally in MTK SDK as well.
-
-[1]: https://git.kernel.org/pub/scm/linux/kernel/git/thermal/linux.git/commit/?h=thermal/bleeding-edge&id=071e99848ccc1fbe238c4c9c7cfffd83f1dfe156
-[2]: https://lore.kernel.org/lkml/0b72a12c-286f-79d0-09e9-b1761530850a@collabora.com/
-[3]: https://lore.kernel.org/linux-arm-kernel/4121bb6b-30db-7a23-f4c8-40afdda7a0b5@linaro.org/T/
-
-Daniel Golle (2):
-  thermal/drivers/mtk: use function pointer for raw_to_mcelsius
-  thermal: mediatek: add support for MT7986 and MT7981
-
- drivers/thermal/mtk_thermal.c | 143 +++++++++++++++++++++++++++++++---
- 1 file changed, 133 insertions(+), 10 deletions(-)
-
-
-base-commit: 9ce08dd7ea24253aac5fd2519f9aea27dfb390c9
+diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+index 0084b76493d9a..992750ee09e62 100644
+--- a/drivers/thermal/mtk_thermal.c
++++ b/drivers/thermal/mtk_thermal.c
+@@ -292,6 +292,8 @@ struct mtk_thermal {
+ 
+ 	const struct mtk_thermal_data *conf;
+ 	struct mtk_thermal_bank banks[MAX_NUM_ZONES];
++
++	int (*raw_to_mcelsius)(struct mtk_thermal *mt, int sensno, s32 raw);
+ };
+ 
+ /* MT8183 thermal sensor data */
+@@ -656,13 +658,9 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
+ 	for (i = 0; i < conf->bank_data[bank->id].num_sensors; i++) {
+ 		raw = readl(mt->thermal_base + conf->msr[i]);
+ 
+-		if (mt->conf->version == MTK_THERMAL_V1) {
+-			temp = raw_to_mcelsius_v1(
+-				mt, conf->bank_data[bank->id].sensors[i], raw);
+-		} else {
+-			temp = raw_to_mcelsius_v2(
+-				mt, conf->bank_data[bank->id].sensors[i], raw);
+-		}
++		temp = mt->raw_to_mcelsius(
++			mt, conf->bank_data[bank->id].sensors[i], raw);
++
+ 
+ 		/*
+ 		 * The first read of a sensor often contains very high bogus
+@@ -1075,6 +1073,11 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 		mtk_thermal_release_periodic_ts(mt, auxadc_base);
+ 	}
+ 
++	if (mt->conf->version == MTK_THERMAL_V1)
++		mt->raw_to_mcelsius = raw_to_mcelsius_v1;
++	else
++		mt->raw_to_mcelsius = raw_to_mcelsius_v2;
++
+ 	for (ctrl_id = 0; ctrl_id < mt->conf->num_controller ; ctrl_id++)
+ 		for (i = 0; i < mt->conf->num_banks; i++)
+ 			mtk_thermal_init_bank(mt, i, apmixed_phys_base,
 -- 
 2.39.1
 
