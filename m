@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6248C46467
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 12:50:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29F2FC004D4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 12:50:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3UpF9BQLr8Dku9e/r6Hix5mBMx2zn/DvvEm9dU3vTWI=; b=awZYQU6cBXhMoQABvJ90ySYm3b
-	59j17TmnNkSm9HfRuv3Vrgm2t3sV0RM3mNYkKfBEqtsngPITbyOOjoDxRDuDD5p5eK44MODEbnm2I
-	vbBvkZxns06l0H8yFeFoj7TWj80iC45TZq4F4NQUKnAn7yn8Av8Fyq4r7kpv0LHR+zW+qN3zowCAk
-	JRd4SJdWRqSvBe5+WyLbO5i8u47LaEzhVOhjOc3p/wvIkDg3TPPz/Fb88lsxgH6wxAlGHJmX8+Jkj
-	r2q4d7+oEfM+flYAAGC9x8I6kw0c0HAz+2Woh15umEdAG6KAJXuM2bmBLRvOW/EifPFmX4KWl++QB
-	KdZ6QWdA==;
+	bh=oPUSoPDu5i0jbOtt/MmddOTPCrDjJXOro6qMAU1Xv9E=; b=qS99vkFakSItCzimj9E2fOzNoA
+	13qLIa6wI/epXmrjr41NprEQac7MFeuO8Qi8NQlRf0+BZqXufARidprNNSZQfzXpWVpzmsQNp5o3X
+	gyCkzEW1nqPbUhImSs8hltUFZDqRXxUzYjKH37gkPFvEzXXp9pbJUAat8yGKz1gNJYAU/VFvVQ1Sp
+	2bOLrm7P79mMnt1FV2/uJeN4ahPUcShMQIJ6EDCflsjzXkrU2ack05ub8NC0vAXNP9pGw1B2ReoMO
+	c801J3N+idRPgx8zOLUkLBV98kUyyyao++PocXrbQinPqNca5THAZuYMK9w7FHSMxF7SlrL4IU50f
+	XRR/d2Ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIUN2-004rzI-JA; Thu, 19 Jan 2023 12:50:21 +0000
+	id 1pIUN4-004s0F-RP; Thu, 19 Jan 2023 12:50:22 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIUMP-004rjE-0Y; Thu, 19 Jan 2023 12:49:41 +0000
+	id 1pIUMP-004rjD-09; Thu, 19 Jan 2023 12:49:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=3UpF9BQLr8Dku9e/r6Hix5mBMx2zn/DvvEm9dU3vTWI=; b=X1fOw3jGy4K1HkPTLEkp/DDQFh
-	N5C2mO2qTRMYQV91IMZ3CGHFeNl5PWrtVl2/FwGoPzms7vr7fvtasMZ2bivDlbxEg/Ei+8kpjJ8Be
-	PfG1+Caq4W8piEmabQvAtl+3bohITRTjJj2tAZNxutoLP+YRIiZMyYEgo00gGOCuJ6/AgXoxbqnfG
-	FTPSYFQCP58LzVQn+WPj2A4ZHSsPYWbsgxYSSC1zo+ceZQ9ivkidGLN6f5BeQEvqPsnSsn7/8jA64
-	stBPbdBDtjctRb3efSGmwCSoq0Vu8ZxLBwHtLExdNoIBonr1Qm/o/a6YEIzaU9VnK35/bpHcboyqU
-	gZgJFoVQ==;
+	bh=oPUSoPDu5i0jbOtt/MmddOTPCrDjJXOro6qMAU1Xv9E=; b=NPkk22TdkOcwM0xdcggKioOo6M
+	r5M0nKWkOAUcFQrXfjViJpF2VmeJYtUgsoyVKP83uO6riCfqbwKfNO6XgsUsYMwbQS4G9jh24SC3T
+	yCttc/GVhg79Nssx0vY3KZGHiE5/gngSioHA/0LQSe/6GKlnReqDxskRach1ahQRFP5s/7atoSFVL
+	aXSvyTZ84H7TW4+FKeR4UfZj0LYJbnoxPH3Hlxy0uLM8Umq2rCoCGM/kHSus+G8dkGM1Dj6PM5G8B
+	68l9G8ZC3WnUmFfZVp1ALVs4joM0SceKKJgTI9puoDWtpqeYAQk0asCKDopGwQAuKexFWOJGyqamU
+	dngoNt9A==;
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pIULl-000IP4-0f;
+	id 1pIULl-000IP1-0f;
 	Thu, 19 Jan 2023 12:49:09 +0000
-X-UUID: a475513e97f711edbbe3f76fe852e059-20230119
+X-UUID: a4e141a097f711edbbe3f76fe852e059-20230119
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=3UpF9BQLr8Dku9e/r6Hix5mBMx2zn/DvvEm9dU3vTWI=;
-	b=ZYcUKJo5OiruV9WQR+vU3j5m9Egh+yJNwnxWxgbT+uo93qQ6Q+cvNa2FryjnWdkhETloCvncsRqObrix99Uws2vztUHQOJV5ey7ljuwqmYzk/Te1Js8t3SjXgDpvLOHwo9b2Lmd4kzaKKkgZDi2JTbuSddnOwQbe0CsfhD+/VNI=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=oPUSoPDu5i0jbOtt/MmddOTPCrDjJXOro6qMAU1Xv9E=;
+	b=YsNfTfVRBaS1MeQa9E0OiiOeVwBBPdbg/6UGERkM9O0iTV8cPeAIQkeUz2mWgab6Gt942BovbvWSa1si+bbWO9kwBjAQkuygFvim9ymI3bsFhkoEmCL784PDEmWbyx71M4dYW6wgH+kTOzLh1EtMTw7OjJ2IB/r7XbHPQm43lJs=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.18,REQID:c9cc990a-9737-4d6a-b9c9-f625b1740bba,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:90
-X-CID-INFO: VERSION:1.1.18,REQID:c9cc990a-9737-4d6a-b9c9-f625b1740bba,IP:0,URL
-	:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
-	N:quarantine,TS:90
-X-CID-META: VersionHash:3ca2d6b,CLOUDID:3fa4ba8c-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:2301192049006DK0CHHW,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-	,OSI:0,OSA:0
+X-CID-O-INFO: VERSION:1.1.18,REQID:771bdefd-2ee7-49a6-a2d8-690939e08270,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:70
+X-CID-INFO: VERSION:1.1.18,REQID:771bdefd-2ee7-49a6-a2d8-690939e08270,IP:0,URL
+	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
+	ON:quarantine,TS:70
+X-CID-META: VersionHash:3ca2d6b,CLOUDID:3ea4ba8c-8530-4eff-9f77-222cf6e2895b,B
+	ulkID:2301192049006DK0CHHW,BulkQuantity:1,Recheck:0,SF:38|29|28|17|19|48,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:43,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0
 X-CID-BVR: 0
-X-UUID: a475513e97f711edbbe3f76fe852e059-20230119
+X-UUID: a4e141a097f711edbbe3f76fe852e059-20230119
 Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
 	(envelope-from <garmin.chang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1256037909; Thu, 19 Jan 2023 05:48:59 -0700
+	with ESMTP id 827338895; Thu, 19 Jan 2023 05:48:59 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 19 Jan 2023 20:48:55 +0800
+ 15.2.792.15; Thu, 19 Jan 2023 20:48:56 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 19 Jan 2023 20:48:55 +0800
+ 15.2.792.15 via Frontend Transport; Thu, 19 Jan 2023 20:48:56 +0800
 From: Garmin.Chang <Garmin.Chang@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
 	<robh+dt@kernel.org>, Krzysztof Kozlowski
@@ -77,9 +77,9 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-clk@vger.kernel.org>, <netdev@vger.kernel.org>, Garmin.Chang
 	<Garmin.Chang@mediatek.com>
-Subject: [PATCH v5 06/19] clk: mediatek: Add MT8188 camsys clock support
-Date: Thu, 19 Jan 2023 20:48:35 +0800
-Message-ID: <20230119124848.26364-7-Garmin.Chang@mediatek.com>
+Subject: [PATCH v5 10/19] clk: mediatek: Add MT8188 mfgcfg clock support
+Date: Thu, 19 Jan 2023 20:48:39 +0800
+Message-ID: <20230119124848.26364-11-Garmin.Chang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230119124848.26364-1-Garmin.Chang@mediatek.com>
 References: <20230119124848.26364-1-Garmin.Chang@mediatek.com>
@@ -87,8 +87,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_124903_683145_4124BB90 
-X-CRM114-Status: GOOD (  15.68  )
+X-CRM114-CacheID: sfid-20230119_124903_708107_30EE6BE5 
+X-CRM114-Status: GOOD (  16.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,36 +103,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8188 camsys clock controllers which provide clock gate
-control for camera IP blocks.
+Add MT8188 mfg clock controller which provides clock gate
+control for GPU.
 
 Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
 ---
- drivers/clk/mediatek/Makefile         |   3 +-
- drivers/clk/mediatek/clk-mt8188-cam.c | 118 ++++++++++++++++++++++++++
- 2 files changed, 120 insertions(+), 1 deletion(-)
- create mode 100644 drivers/clk/mediatek/clk-mt8188-cam.c
+ drivers/clk/mediatek/Makefile         |  2 +-
+ drivers/clk/mediatek/clk-mt8188-mfg.c | 47 +++++++++++++++++++++++++++
+ 2 files changed, 48 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-mfg.c
 
 diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index a3393782f7e1..dc247bf67e8b 100644
+index 4a599122f761..a0fd87a882b5 100644
 --- a/drivers/clk/mediatek/Makefile
 +++ b/drivers/clk/mediatek/Makefile
-@@ -84,7 +84,8 @@ obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o clk-mt8186-topckgen.o clk-mt
- 				   clk-mt8186-img.o clk-mt8186-vdec.o clk-mt8186-venc.o \
- 				   clk-mt8186-cam.o clk-mt8186-mdp.o clk-mt8186-ipe.o
+@@ -86,7 +86,7 @@ obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o clk-mt8186-topckgen.o clk-mt
  obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o clk-mt8188-topckgen.o \
--				   clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o
-+				   clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o \
-+				   clk-mt8188-cam.o
+ 				   clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o \
+ 				   clk-mt8188-cam.o clk-mt8188-ccu.o clk-mt8188-img.o \
+-				   clk-mt8188-ipe.o
++				   clk-mt8188-ipe.o clk-mt8188-mfg.o
  obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
  obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
  obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
-diff --git a/drivers/clk/mediatek/clk-mt8188-cam.c b/drivers/clk/mediatek/clk-mt8188-cam.c
+diff --git a/drivers/clk/mediatek/clk-mt8188-mfg.c b/drivers/clk/mediatek/clk-mt8188-mfg.c
 new file mode 100644
-index 000000000000..5f7cf9db12f2
+index 000000000000..57b0afb5f4df
 --- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8188-cam.c
-@@ -0,0 +1,118 @@
++++ b/drivers/clk/mediatek/clk-mt8188-mfg.c
+@@ -0,0 +1,47 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +//
 +// Copyright (c) 2022 MediaTek Inc.
@@ -145,111 +144,40 @@ index 000000000000..5f7cf9db12f2
 +#include "clk-gate.h"
 +#include "clk-mtk.h"
 +
-+static const struct mtk_gate_regs cam_cg_regs = {
++static const struct mtk_gate_regs mfgcfg_cg_regs = {
 +	.set_ofs = 0x4,
 +	.clr_ofs = 0x8,
 +	.sta_ofs = 0x0,
 +};
 +
-+#define GATE_CAM(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &cam_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++#define GATE_MFG(_id, _name, _parent, _shift)				\
++	GATE_MTK_FLAGS(_id, _name, _parent, &mfgcfg_cg_regs, _shift,	\
++		       &mtk_clk_gate_ops_setclr, CLK_SET_RATE_PARENT)
 +
-+static const struct mtk_gate cam_main_clks[] = {
-+	GATE_CAM(CLK_CAM_MAIN_LARB13, "cam_main_larb13", "top_cam", 0),
-+	GATE_CAM(CLK_CAM_MAIN_LARB14, "cam_main_larb14", "top_cam", 1),
-+	GATE_CAM(CLK_CAM_MAIN_CAM, "cam_main_cam", "top_cam", 2),
-+	GATE_CAM(CLK_CAM_MAIN_CAM_SUBA, "cam_main_cam_suba", "top_cam", 3),
-+	GATE_CAM(CLK_CAM_MAIN_CAM_SUBB, "cam_main_cam_subb", "top_cam", 4),
-+	GATE_CAM(CLK_CAM_MAIN_CAMTG, "cam_main_camtg", "top_cam", 7),
-+	GATE_CAM(CLK_CAM_MAIN_SENINF, "cam_main_seninf", "top_cam", 8),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVA, "cam_main_gcamsva", "top_cam", 9),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVB, "cam_main_gcamsvb", "top_cam", 10),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVC, "cam_main_gcamsvc", "top_cam", 11),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVD, "cam_main_gcamsvd", "top_cam", 12),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVE, "cam_main_gcamsve", "top_cam", 13),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVF, "cam_main_gcamsvf", "top_cam", 14),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVG, "cam_main_gcamsvg", "top_cam", 15),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVH, "cam_main_gcamsvh", "top_cam", 16),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVI, "cam_main_gcamsvi", "top_cam", 17),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVJ, "cam_main_gcamsvj", "top_cam", 18),
-+	GATE_CAM(CLK_CAM_MAIN_CAMSV_TOP, "cam_main_camsv", "top_cam", 19),
-+	GATE_CAM(CLK_CAM_MAIN_CAMSV_CQ_A, "cam_main_camsv_cq_a", "top_cam", 20),
-+	GATE_CAM(CLK_CAM_MAIN_CAMSV_CQ_B, "cam_main_camsv_cq_b", "top_cam", 21),
-+	GATE_CAM(CLK_CAM_MAIN_CAMSV_CQ_C, "cam_main_camsv_cq_c", "top_cam", 22),
-+	GATE_CAM(CLK_CAM_MAIN_FAKE_ENG, "cam_main_fake_eng", "top_cam", 28),
-+	GATE_CAM(CLK_CAM_MAIN_CAM2MM0_GALS, "cam_main_cam2mm0_gals", "top_cam", 29),
-+	GATE_CAM(CLK_CAM_MAIN_CAM2MM1_GALS, "cam_main_cam2mm1_gals", "top_cam", 30),
-+	GATE_CAM(CLK_CAM_MAIN_CAM2SYS_GALS, "cam_main_cam2sys_gals", "top_cam", 31),
++static const struct mtk_gate mfgcfg_clks[] = {
++	GATE_MFG(CLK_MFGCFG_BG3D, "mfgcfg_bg3d", "top_mfg_core_tmp", 0),
 +};
 +
-+static const struct mtk_gate cam_rawa_clks[] = {
-+	GATE_CAM(CLK_CAM_RAWA_LARBX, "cam_rawa_larbx", "top_cam", 0),
-+	GATE_CAM(CLK_CAM_RAWA_CAM, "cam_rawa_cam", "top_cam", 1),
-+	GATE_CAM(CLK_CAM_RAWA_CAMTG, "cam_rawa_camtg", "top_cam", 2),
++static const struct mtk_clk_desc mfgcfg_desc = {
++	.clks = mfgcfg_clks,
++	.num_clks = ARRAY_SIZE(mfgcfg_clks),
 +};
 +
-+static const struct mtk_gate cam_rawb_clks[] = {
-+	GATE_CAM(CLK_CAM_RAWB_LARBX, "cam_rawb_larbx", "top_cam", 0),
-+	GATE_CAM(CLK_CAM_RAWB_CAM, "cam_rawb_cam", "top_cam", 1),
-+	GATE_CAM(CLK_CAM_RAWB_CAMTG, "cam_rawb_camtg", "top_cam", 2),
++static const struct of_device_id of_match_clk_mt8188_mfgcfg[] = {
++	{ .compatible = "mediatek,mt8188-mfgcfg", .data = &mfgcfg_desc, },
++	{ /* sentinel */ }
 +};
 +
-+static const struct mtk_gate cam_yuva_clks[] = {
-+	GATE_CAM(CLK_CAM_YUVA_LARBX, "cam_yuva_larbx", "top_cam", 0),
-+	GATE_CAM(CLK_CAM_YUVA_CAM, "cam_yuva_cam", "top_cam", 1),
-+	GATE_CAM(CLK_CAM_YUVA_CAMTG, "cam_yuva_camtg", "top_cam", 2),
-+};
-+
-+static const struct mtk_gate cam_yuvb_clks[] = {
-+	GATE_CAM(CLK_CAM_YUVB_LARBX, "cam_yuvb_larbx", "top_cam", 0),
-+	GATE_CAM(CLK_CAM_YUVB_CAM, "cam_yuvb_cam", "top_cam", 1),
-+	GATE_CAM(CLK_CAM_YUVB_CAMTG, "cam_yuvb_camtg", "top_cam", 2),
-+};
-+
-+static const struct mtk_clk_desc cam_main_desc = {
-+	.clks = cam_main_clks,
-+	.num_clks = ARRAY_SIZE(cam_main_clks),
-+};
-+
-+static const struct mtk_clk_desc cam_rawa_desc = {
-+	.clks = cam_rawa_clks,
-+	.num_clks = ARRAY_SIZE(cam_rawa_clks),
-+};
-+
-+static const struct mtk_clk_desc cam_rawb_desc = {
-+	.clks = cam_rawb_clks,
-+	.num_clks = ARRAY_SIZE(cam_rawb_clks),
-+};
-+
-+static const struct mtk_clk_desc cam_yuva_desc = {
-+	.clks = cam_yuva_clks,
-+	.num_clks = ARRAY_SIZE(cam_yuva_clks),
-+};
-+
-+static const struct mtk_clk_desc cam_yuvb_desc = {
-+	.clks = cam_yuvb_clks,
-+	.num_clks = ARRAY_SIZE(cam_yuvb_clks),
-+};
-+
-+static const struct of_device_id of_match_clk_mt8188_cam[] = {
-+	{ .compatible = "mediatek,mt8188-camsys", .data = &cam_main_desc },
-+	{ .compatible = "mediatek,mt8188-camsys-rawa", .data = &cam_rawa_desc },
-+	{ .compatible = "mediatek,mt8188-camsys-rawb", .data = &cam_rawb_desc },
-+	{ .compatible = "mediatek,mt8188-camsys-yuva", .data = &cam_yuva_desc },
-+	{ .compatible = "mediatek,mt8188-camsys-yuvb", .data = &cam_yuvb_desc },
-+	{ /* sentinel */}
-+};
-+
-+static struct platform_driver clk_mt8188_cam_drv = {
++static struct platform_driver clk_mt8188_mfgcfg_drv = {
 +	.probe = mtk_clk_simple_probe,
 +	.remove = mtk_clk_simple_remove,
 +	.driver = {
-+		.name = "clk-mt8188-cam",
-+		.of_match_table = of_match_clk_mt8188_cam,
++		.name = "clk-mt8188-mfgcfg",
++		.of_match_table = of_match_clk_mt8188_mfgcfg,
 +	},
 +};
 +
-+builtin_platform_driver(clk_mt8188_cam_drv);
++builtin_platform_driver(clk_mt8188_mfgcfg_drv);
 +MODULE_LICENSE("GPL");
 -- 
 2.18.0
