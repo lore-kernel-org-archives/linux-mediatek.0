@@ -4,43 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECAB7C00A5A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 13:18:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11807C00A5A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 13:18:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=3UHdwuLPhXMunD6/Q87hv9DQ5vVyKhuoTXpWSJ50hAQ=; b=3mtcW2b1g6nHOjxQ9TaHrbx+GV
-	ZsCS1C3EUxXG60Tmf5usag8pE+4yDI2dJzxanSPkgax8B9Wcw3VRgduwnCBthO9zU3CfBdpcI9xNx
-	UD/BGPftQK/b6xHbldYFVltp5LywGk6ZVlI7hu3KsQbEjGvxfiL8SPL68+ktwQHlohqUWf8rIhA+x
-	B9FL01/OAIG84FWT3/A9B9F/4O9y6z5foRpA1GpmoUDopBCb+XI6dR/w8gc2q5+Xl9fG7KnhJL/lr
-	BmAzupL8o7bH6ipUt5Sb/ycY8R+dc1B2i9ZZv//l3TU3r4wxx6t/o7ioQ3Crn4+ZbOyMDI/Lf0sKC
-	eJEwU8qA==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KB9q2klnkcEtMLmw33Oo0QuC0liZTfwwOM7ryE/7LOs=; b=jHrArI17kaZherMZBgDW5R8dVK
+	dZ3+3+P+dPVTdCvMg0SR/Zue01STe9R/pWBRgiyOh7KRoTmttS4eR3ZKXw39Ra1cVIqUKvTQkJJ9p
+	gBKsskR0suNJym+O6XuYMOmLy8M2tpKIm/cU/STCeUUn8OAHLwwrGSK1ZnbGa5i21knRgSfUmFcJW
+	DV9Uc5EPelI8jPeIVlfmLSxrlYqKdL1bGz+eTIDX3r5AUiQkpIF5b9y9K3QAUnUEmDh3NLJciDYpo
+	HiZOXhuRVeVGJbBcEDqrvw6mPu4zYCI8CCYL66E4ZXpZ6BNWb6SFVZISFbavts1QOjMmHRszzELZs
+	Bs5wakPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIUoR-0053s0-Oh; Thu, 19 Jan 2023 13:18:39 +0000
+	id 1pIUoZ-0053vG-0k; Thu, 19 Jan 2023 13:18:47 +0000
 Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIUe8-004zhL-PL; Thu, 19 Jan 2023 13:08:07 +0000
+	id 1pIUeA-004zja-O6; Thu, 19 Jan 2023 13:08:08 +0000
 Received: from mwalle01.kontron.local. (unknown [213.135.10.150])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id D398E1693;
-	Thu, 19 Jan 2023 14:07:57 +0100 (CET)
+	by mail.3ffe.de (Postfix) with ESMTPSA id CE88C1A07;
+	Thu, 19 Jan 2023 14:07:59 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1674133678;
+	t=1674133680;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=3UHdwuLPhXMunD6/Q87hv9DQ5vVyKhuoTXpWSJ50hAQ=;
-	b=Yoyi9wo7/ZF287RuEL0Zgg/52fWFCovu59p10HaO7ExZWnSijGhagfN7KX0DoxF7oYxDSq
-	M+KCaMyotjb4vR1ipKfm0jZurv/qtSEeHn3k2MBmoup4fqN7hyPZF0NL3kH3ZXnukz1I8Z
-	zuOvBNd71Cwf9CpB0RuMm29LzZ9N4+CehbSluy0+PEndsy5dUvRG5kEczhVyBu+fC9Gcz6
-	2rq2ExxRuOwclB7aNgylEVQylsdVw/oTTHc93iE33XwEfPJNC6soVVFuSt32RV9PQnLZds
-	r5bbOdfF/JkFya9dsUK2HmYbukHd31JOGdpt8jrhfUYuhG8Thkf7gNUpgviUJQ==
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=KB9q2klnkcEtMLmw33Oo0QuC0liZTfwwOM7ryE/7LOs=;
+	b=W3xTjohztJGbXmy3C4u8IpeO8WIju8y6jS2QjgV3yMJCcfEXSd3ETq7Z4OZhilXOOdMzmu
+	2+FxZ9xPwbZnvOSBQl2UxSX83+1u50X728rQuuGR4OLvs0i/zqvShDClDGNiuFheptSiXD
+	DfFlCJh3lPXpvvyPuraZEMn+PBB2FgovkCTsx01k82hbUB4erF0wAJsX1HHp5H4bUcZn89
+	3U4w72R4WseRtujUm8DPMxwXj07OZey/1a5d43QQ/xEdnyBBgNCiOwVICGYlMWqeSq0KKQ
+	aJ7sxUSDqqgiEALb31v+Mqu+8Wp1yhNM5TYHyaqfdJ0/b4jGLwFrmZ4anjOHOA==
 From: Michael Walle <michael@walle.cc>
 To: Woojung Huh <woojung.huh@microchip.com>,
 	UNGLinuxDriver@microchip.com,
@@ -73,17 +74,18 @@ Cc: netdev@vger.kernel.org,
 	linux-actions@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Michael Walle <michael@walle.cc>
-Subject: [PATCH RESEND net-next 0/4] net: mdio: Remove support for building C45 muxed addresses
-Date: Thu, 19 Jan 2023 14:06:56 +0100
-Message-Id: <20230119130700.440601-1-michael@walle.cc>
+Subject: [PATCH RESEND net-next 3/4] net: Remove C45 check in C22 only MDIO bus drivers
+Date: Thu, 19 Jan 2023 14:06:59 +0100
+Message-Id: <20230119130700.440601-4-michael@walle.cc>
 X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20230119130700.440601-1-michael@walle.cc>
+References: <20230119130700.440601-1-michael@walle.cc>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Spam: Yes
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_050801_193976_AEC48F97 
-X-CRM114-Status: UNSURE (   8.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230119_050803_215072_83D058B1 
+X-CRM114-Status: GOOD (  14.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,42 +100,343 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[Russell told me that his mailserver rejected my mail because of
-an ill-formated "To:" header. Resending now with plain git-send-email
-instead of b4 send.]
+From: Andrew Lunn <andrew@lunn.ch>
 
-I've picked this older series from Andrew up and rebased it onto
-the latest net-next.
+The MDIO core should not pass a C45 request via the C22 API call any
+more. So remove the tests from the drivers.
 
-With all drivers which support c45 now being converted to a seperate c22
-and c45 access op, we can now remove the old MII_ADDR_C45 flag.
+Signed-off-by: Andrew Lunn <andrew@lunn.ch>
+Signed-off-by: Michael Walle <michael@walle.cc>
+---
+ drivers/net/dsa/microchip/ksz_common.c                    | 6 ------
+ drivers/net/dsa/rzn1_a5psw.c                              | 6 ------
+ drivers/net/dsa/sja1105/sja1105_mdio.c                    | 6 ------
+ drivers/net/ethernet/actions/owl-emac.c                   | 6 ------
+ drivers/net/ethernet/engleder/tsnep_main.c                | 6 ------
+ drivers/net/ethernet/marvell/mvmdio.c                     | 6 ------
+ drivers/net/ethernet/mediatek/mtk_star_emac.c             | 6 ------
+ .../net/ethernet/mellanox/mlxbf_gige/mlxbf_gige_mdio.c    | 6 ------
+ drivers/net/ethernet/sunplus/spl2sw_mdio.c                | 6 ------
+ drivers/net/mdio/mdio-i2c.c                               | 6 ------
+ drivers/net/mdio/mdio-ipq8064.c                           | 8 --------
+ drivers/net/mdio/mdio-mscc-miim.c                         | 6 ------
+ drivers/net/mdio/mdio-mvusb.c                             | 6 ------
+ 13 files changed, 80 deletions(-)
 
-Andrew Lunn (3):
-  net: phy: Remove fallback to old C45 method
-  net: Remove C45 check in C22 only MDIO bus drivers
-  net: mdio: Remove support for building C45 muxed addresses
-
-Michael Walle (1):
-  net: ngbe: Drop mdiobus_c45_regad()
-
- drivers/net/dsa/microchip/ksz_common.c         |  6 ------
- drivers/net/dsa/rzn1_a5psw.c                   |  6 ------
- drivers/net/dsa/sja1105/sja1105_mdio.c         |  6 ------
- drivers/net/ethernet/actions/owl-emac.c        |  6 ------
- drivers/net/ethernet/engleder/tsnep_main.c     |  6 ------
- drivers/net/ethernet/marvell/mvmdio.c          |  6 ------
- drivers/net/ethernet/mediatek/mtk_star_emac.c  |  6 ------
- .../mellanox/mlxbf_gige/mlxbf_gige_mdio.c      |  6 ------
- drivers/net/ethernet/sunplus/spl2sw_mdio.c     |  6 ------
- drivers/net/ethernet/wangxun/ngbe/ngbe_mdio.c  |  4 ++--
- drivers/net/mdio/mdio-i2c.c                    |  6 ------
- drivers/net/mdio/mdio-ipq8064.c                |  8 --------
- drivers/net/mdio/mdio-mscc-miim.c              |  6 ------
- drivers/net/mdio/mdio-mvusb.c                  |  6 ------
- drivers/net/phy/mdio_bus.c                     | 10 ++--------
- include/linux/mdio.h                           | 18 ------------------
- 16 files changed, 4 insertions(+), 108 deletions(-)
-
+diff --git a/drivers/net/dsa/microchip/ksz_common.c b/drivers/net/dsa/microchip/ksz_common.c
+index 5e1e5bd555d2..28d26e80e256 100644
+--- a/drivers/net/dsa/microchip/ksz_common.c
++++ b/drivers/net/dsa/microchip/ksz_common.c
+@@ -1777,9 +1777,6 @@ static int ksz_sw_mdio_read(struct mii_bus *bus, int addr, int regnum)
+ 	u16 val;
+ 	int ret;
+ 
+-	if (regnum & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	ret = dev->dev_ops->r_phy(dev, addr, regnum, &val);
+ 	if (ret < 0)
+ 		return ret;
+@@ -1792,9 +1789,6 @@ static int ksz_sw_mdio_write(struct mii_bus *bus, int addr, int regnum,
+ {
+ 	struct ksz_device *dev = bus->priv;
+ 
+-	if (regnum & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	return dev->dev_ops->w_phy(dev, addr, regnum, val);
+ }
+ 
+diff --git a/drivers/net/dsa/rzn1_a5psw.c b/drivers/net/dsa/rzn1_a5psw.c
+index ed413d555bec..919027cf2012 100644
+--- a/drivers/net/dsa/rzn1_a5psw.c
++++ b/drivers/net/dsa/rzn1_a5psw.c
+@@ -781,9 +781,6 @@ static int a5psw_mdio_read(struct mii_bus *bus, int phy_id, int phy_reg)
+ 	u32 cmd, status;
+ 	int ret;
+ 
+-	if (phy_reg & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	cmd = A5PSW_MDIO_COMMAND_READ;
+ 	cmd |= FIELD_PREP(A5PSW_MDIO_COMMAND_REG_ADDR, phy_reg);
+ 	cmd |= FIELD_PREP(A5PSW_MDIO_COMMAND_PHY_ADDR, phy_id);
+@@ -809,9 +806,6 @@ static int a5psw_mdio_write(struct mii_bus *bus, int phy_id, int phy_reg,
+ 	struct a5psw *a5psw = bus->priv;
+ 	u32 cmd;
+ 
+-	if (phy_reg & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	cmd = FIELD_PREP(A5PSW_MDIO_COMMAND_REG_ADDR, phy_reg);
+ 	cmd |= FIELD_PREP(A5PSW_MDIO_COMMAND_PHY_ADDR, phy_id);
+ 
+diff --git a/drivers/net/dsa/sja1105/sja1105_mdio.c b/drivers/net/dsa/sja1105/sja1105_mdio.c
+index 2fcb601cb4eb..01f1cb719042 100644
+--- a/drivers/net/dsa/sja1105/sja1105_mdio.c
++++ b/drivers/net/dsa/sja1105/sja1105_mdio.c
+@@ -235,9 +235,6 @@ static int sja1105_base_tx_mdio_read(struct mii_bus *bus, int phy, int reg)
+ 	u32 tmp;
+ 	int rc;
+ 
+-	if (reg & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	rc = sja1105_xfer_u32(priv, SPI_READ, regs->mdio_100base_tx + reg,
+ 			      &tmp, NULL);
+ 	if (rc < 0)
+@@ -254,9 +251,6 @@ static int sja1105_base_tx_mdio_write(struct mii_bus *bus, int phy, int reg,
+ 	const struct sja1105_regs *regs = priv->info->regs;
+ 	u32 tmp = val;
+ 
+-	if (reg & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	return sja1105_xfer_u32(priv, SPI_WRITE, regs->mdio_100base_tx + reg,
+ 				&tmp, NULL);
+ }
+diff --git a/drivers/net/ethernet/actions/owl-emac.c b/drivers/net/ethernet/actions/owl-emac.c
+index cd4d71b83c33..c6f8f852bff1 100644
+--- a/drivers/net/ethernet/actions/owl-emac.c
++++ b/drivers/net/ethernet/actions/owl-emac.c
+@@ -1275,9 +1275,6 @@ static int owl_emac_mdio_read(struct mii_bus *bus, int addr, int regnum)
+ 	u32 data, tmp;
+ 	int ret;
+ 
+-	if (regnum & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	data = OWL_EMAC_BIT_MAC_CSR10_SB;
+ 	data |= OWL_EMAC_VAL_MAC_CSR10_OPCODE_RD << OWL_EMAC_OFF_MAC_CSR10_OPCODE;
+ 
+@@ -1305,9 +1302,6 @@ owl_emac_mdio_write(struct mii_bus *bus, int addr, int regnum, u16 val)
+ 	struct owl_emac_priv *priv = bus->priv;
+ 	u32 data, tmp;
+ 
+-	if (regnum & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	data = OWL_EMAC_BIT_MAC_CSR10_SB;
+ 	data |= OWL_EMAC_VAL_MAC_CSR10_OPCODE_WR << OWL_EMAC_OFF_MAC_CSR10_OPCODE;
+ 
+diff --git a/drivers/net/ethernet/engleder/tsnep_main.c b/drivers/net/ethernet/engleder/tsnep_main.c
+index 5a909c1c11bc..e9dfefba5973 100644
+--- a/drivers/net/ethernet/engleder/tsnep_main.c
++++ b/drivers/net/ethernet/engleder/tsnep_main.c
+@@ -130,9 +130,6 @@ static int tsnep_mdiobus_read(struct mii_bus *bus, int addr, int regnum)
+ 	u32 md;
+ 	int retval;
+ 
+-	if (regnum & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	md = ECM_MD_READ;
+ 	if (!adapter->suppress_preamble)
+ 		md |= ECM_MD_PREAMBLE;
+@@ -154,9 +151,6 @@ static int tsnep_mdiobus_write(struct mii_bus *bus, int addr, int regnum,
+ 	u32 md;
+ 	int retval;
+ 
+-	if (regnum & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	md = ECM_MD_WRITE;
+ 	if (!adapter->suppress_preamble)
+ 		md |= ECM_MD_PREAMBLE;
+diff --git a/drivers/net/ethernet/marvell/mvmdio.c b/drivers/net/ethernet/marvell/mvmdio.c
+index 2d654a40af13..8662543ca5c8 100644
+--- a/drivers/net/ethernet/marvell/mvmdio.c
++++ b/drivers/net/ethernet/marvell/mvmdio.c
+@@ -146,9 +146,6 @@ static int orion_mdio_smi_read(struct mii_bus *bus, int mii_id,
+ 	u32 val;
+ 	int ret;
+ 
+-	if (regnum & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	ret = orion_mdio_wait_ready(&orion_mdio_smi_ops, bus);
+ 	if (ret < 0)
+ 		return ret;
+@@ -177,9 +174,6 @@ static int orion_mdio_smi_write(struct mii_bus *bus, int mii_id,
+ 	struct orion_mdio_dev *dev = bus->priv;
+ 	int ret;
+ 
+-	if (regnum & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	ret = orion_mdio_wait_ready(&orion_mdio_smi_ops, bus);
+ 	if (ret < 0)
+ 		return ret;
+diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+index 7050351250b7..02c03325911f 100644
+--- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
++++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+@@ -1378,9 +1378,6 @@ static int mtk_star_mdio_read(struct mii_bus *mii, int phy_id, int regnum)
+ 	unsigned int val, data;
+ 	int ret;
+ 
+-	if (regnum & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	mtk_star_mdio_rwok_clear(priv);
+ 
+ 	val = (regnum << MTK_STAR_OFF_PHY_CTRL0_PREG);
+@@ -1407,9 +1404,6 @@ static int mtk_star_mdio_write(struct mii_bus *mii, int phy_id,
+ 	struct mtk_star_priv *priv = mii->priv;
+ 	unsigned int val;
+ 
+-	if (regnum & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	mtk_star_mdio_rwok_clear(priv);
+ 
+ 	val = data;
+diff --git a/drivers/net/ethernet/mellanox/mlxbf_gige/mlxbf_gige_mdio.c b/drivers/net/ethernet/mellanox/mlxbf_gige/mlxbf_gige_mdio.c
+index 7ac06fd31011..654190263535 100644
+--- a/drivers/net/ethernet/mellanox/mlxbf_gige/mlxbf_gige_mdio.c
++++ b/drivers/net/ethernet/mellanox/mlxbf_gige/mlxbf_gige_mdio.c
+@@ -213,9 +213,6 @@ static int mlxbf_gige_mdio_read(struct mii_bus *bus, int phy_add, int phy_reg)
+ 	int ret;
+ 	u32 val;
+ 
+-	if (phy_reg & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	/* Send mdio read request */
+ 	cmd = mlxbf_gige_mdio_create_cmd(priv->mdio_gw, 0, phy_add, phy_reg,
+ 					 MLXBF_GIGE_MDIO_CL22_READ);
+@@ -249,9 +246,6 @@ static int mlxbf_gige_mdio_write(struct mii_bus *bus, int phy_add,
+ 	u32 cmd;
+ 	int ret;
+ 
+-	if (phy_reg & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	/* Send mdio write request */
+ 	cmd = mlxbf_gige_mdio_create_cmd(priv->mdio_gw, val, phy_add, phy_reg,
+ 					 MLXBF_GIGE_MDIO_CL22_WRITE);
+diff --git a/drivers/net/ethernet/sunplus/spl2sw_mdio.c b/drivers/net/ethernet/sunplus/spl2sw_mdio.c
+index 733ae1704269..c8ef17e34f3c 100644
+--- a/drivers/net/ethernet/sunplus/spl2sw_mdio.c
++++ b/drivers/net/ethernet/sunplus/spl2sw_mdio.c
+@@ -61,9 +61,6 @@ static int spl2sw_mii_read(struct mii_bus *bus, int addr, int regnum)
+ {
+ 	struct spl2sw_common *comm = bus->priv;
+ 
+-	if (regnum & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	return spl2sw_mdio_access(comm, SPL2SW_MDIO_READ_CMD, addr, regnum, 0);
+ }
+ 
+@@ -72,9 +69,6 @@ static int spl2sw_mii_write(struct mii_bus *bus, int addr, int regnum, u16 val)
+ 	struct spl2sw_common *comm = bus->priv;
+ 	int ret;
+ 
+-	if (regnum & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	ret = spl2sw_mdio_access(comm, SPL2SW_MDIO_WRITE_CMD, addr, regnum, val);
+ 	if (ret < 0)
+ 		return ret;
+diff --git a/drivers/net/mdio/mdio-i2c.c b/drivers/net/mdio/mdio-i2c.c
+index 9577a1842997..1e0c206d0f2e 100644
+--- a/drivers/net/mdio/mdio-i2c.c
++++ b/drivers/net/mdio/mdio-i2c.c
+@@ -297,9 +297,6 @@ static int i2c_mii_read_rollball(struct mii_bus *bus, int phy_id, int reg)
+ 	int bus_addr, ret;
+ 	u16 val;
+ 
+-	if (!(reg & MII_ADDR_C45))
+-		return -EOPNOTSUPP;
+-
+ 	bus_addr = i2c_mii_phy_addr(phy_id);
+ 	if (bus_addr != ROLLBALL_PHY_I2C_ADDR)
+ 		return 0xffff;
+@@ -331,9 +328,6 @@ static int i2c_mii_write_rollball(struct mii_bus *bus, int phy_id, int reg,
+ 	int bus_addr, ret;
+ 	u8 buf[6];
+ 
+-	if (!(reg & MII_ADDR_C45))
+-		return -EOPNOTSUPP;
+-
+ 	bus_addr = i2c_mii_phy_addr(phy_id);
+ 	if (bus_addr != ROLLBALL_PHY_I2C_ADDR)
+ 		return 0;
+diff --git a/drivers/net/mdio/mdio-ipq8064.c b/drivers/net/mdio/mdio-ipq8064.c
+index 37e0d8b6da07..fd9716960106 100644
+--- a/drivers/net/mdio/mdio-ipq8064.c
++++ b/drivers/net/mdio/mdio-ipq8064.c
+@@ -57,10 +57,6 @@ ipq8064_mdio_read(struct mii_bus *bus, int phy_addr, int reg_offset)
+ 	u32 ret_val;
+ 	int err;
+ 
+-	/* Reject clause 45 */
+-	if (reg_offset & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	miiaddr |= ((phy_addr << MII_ADDR_SHIFT) & MII_ADDR_MASK) |
+ 		   ((reg_offset << MII_REG_SHIFT) & MII_REG_MASK);
+ 
+@@ -81,10 +77,6 @@ ipq8064_mdio_write(struct mii_bus *bus, int phy_addr, int reg_offset, u16 data)
+ 	u32 miiaddr = MII_WRITE | MII_BUSY | MII_CLKRANGE_250_300M;
+ 	struct ipq8064_mdio *priv = bus->priv;
+ 
+-	/* Reject clause 45 */
+-	if (reg_offset & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	regmap_write(priv->base, MII_DATA_REG_ADDR, data);
+ 
+ 	miiaddr |= ((phy_addr << MII_ADDR_SHIFT) & MII_ADDR_MASK) |
+diff --git a/drivers/net/mdio/mdio-mscc-miim.c b/drivers/net/mdio/mdio-mscc-miim.c
+index 51f68daac152..c87e991d1a17 100644
+--- a/drivers/net/mdio/mdio-mscc-miim.c
++++ b/drivers/net/mdio/mdio-mscc-miim.c
+@@ -108,9 +108,6 @@ static int mscc_miim_read(struct mii_bus *bus, int mii_id, int regnum)
+ 	u32 val;
+ 	int ret;
+ 
+-	if (regnum & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	ret = mscc_miim_wait_pending(bus);
+ 	if (ret)
+ 		goto out;
+@@ -154,9 +151,6 @@ static int mscc_miim_write(struct mii_bus *bus, int mii_id,
+ 	struct mscc_miim_dev *miim = bus->priv;
+ 	int ret;
+ 
+-	if (regnum & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	ret = mscc_miim_wait_pending(bus);
+ 	if (ret < 0)
+ 		goto out;
+diff --git a/drivers/net/mdio/mdio-mvusb.c b/drivers/net/mdio/mdio-mvusb.c
+index d5eabddfdf51..68fc55906e78 100644
+--- a/drivers/net/mdio/mdio-mvusb.c
++++ b/drivers/net/mdio/mdio-mvusb.c
+@@ -34,9 +34,6 @@ static int mvusb_mdio_read(struct mii_bus *mdio, int dev, int reg)
+ 	struct mvusb_mdio *mvusb = mdio->priv;
+ 	int err, alen;
+ 
+-	if (dev & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	mvusb->buf[MVUSB_CMD_ADDR] = cpu_to_le16(0xa400 | (dev << 5) | reg);
+ 
+ 	err = usb_bulk_msg(mvusb->udev, usb_sndbulkpipe(mvusb->udev, 2),
+@@ -57,9 +54,6 @@ static int mvusb_mdio_write(struct mii_bus *mdio, int dev, int reg, u16 val)
+ 	struct mvusb_mdio *mvusb = mdio->priv;
+ 	int alen;
+ 
+-	if (dev & MII_ADDR_C45)
+-		return -EOPNOTSUPP;
+-
+ 	mvusb->buf[MVUSB_CMD_ADDR] = cpu_to_le16(0x8000 | (dev << 5) | reg);
+ 	mvusb->buf[MVUSB_CMD_VAL]  = cpu_to_le16(val);
+ 
 -- 
 2.30.2
 
