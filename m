@@ -4,106 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F22BEC38142
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 05:02:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A02DCC38142
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 05:14:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Subject:Cc:To:
-	From:Date:References:In-Reply-To:Message-Id:Mime-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fu40e8RKK34NvCHYIuaClUtcfG1TOlQku9GsJJ+aQa4=; b=1MJI/UtP7wO/3uHeuGA+8xQ/k0
-	zBIOmkWQcYhfoJ0sLd0DdjRXwSycNk9n2bb0LNNoIds8a5drAkTO+zwSLqeP161XIC3u9wJxtzgh3
-	2lZcBsMq1WbQliggiEgEgqn/OHXVP4Z5YNj5Qa+YTqvvJAY0spgevhU61DNZtzVan8U83DVakXhlD
-	b3a932s4mBJsq1otf1swTVh9JNhft88pFRruBK2eN+iqSGO7qD/nvpUV7jd6KHiUPz4b3Jis7yBwo
-	wOqYJay7GvMAAhn4QZbLwoKvwC7fGRcopIt5xus52PMlb8ZQoT4+dbfwfbMzhapYoq6J4AZCVFR5T
-	f/zefZVA==;
+	bh=mPfNtFcFhVGXibc3gdpynC2sYzD31J/tra2G3KnaUGE=; b=XrA+Qp6maLVN3hM4bBWSBKeksn
+	EPhGjj4UVbtu185UQ0Khp/Y5AkSzGmsAaVVcUhUuYhYlXpq2j6QWtkAyIKJijgy5D9VsAjHPmLu4f
+	ezAJRlFcl1VkV9K6NunzlW0OvpAZv/ZInyeUREog0LYLZAZh6yqqo0jYy5qYZhqyXR6cfgStWENDs
+	tveD9va5IRrAvxhkT1Ap0/IZePITCHyKKeCuPxia5poaEDe2IsmuurnDJfXd0fPJBNNVyx2/ngYfG
+	MzHFzgTKVKHqt/hJUd/VBvLHsDu4bXjyS0D7UL0guc1ROnuJMp1EEyd8xMleU4Bqsa/9IQ4lJjjBF
+	dSITc0lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIN4R-003cpR-KE; Thu, 19 Jan 2023 05:02:39 +0000
-Received: from wnew2-smtp.messagingengine.com ([64.147.123.27])
+	id 1pINFi-003eGO-1p; Thu, 19 Jan 2023 05:14:18 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIN4G-003coR-6e; Thu, 19 Jan 2023 05:02:29 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
-	by mailnew.west.internal (Postfix) with ESMTP id 2AA562B06398;
-	Thu, 19 Jan 2023 00:02:25 -0500 (EST)
-Received: from imap50 ([10.202.2.100])
-  by compute6.internal (MEProxy); Thu, 19 Jan 2023 00:02:27 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
-	:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm2; t=1674104544; x=1674111744; bh=fu40e8RKK3
-	4NvCHYIuaClUtcfG1TOlQku9GsJJ+aQa4=; b=niveqFVmdI3XG32zed5l1bc0mp
-	IKA0Jkdx/+fZ2tNQSyG/tFd38tRV7BasA/ERh+NOMPUsP2kf5ZiWDLWnjJlwLE23
-	YFTuWglgESWTBuXB2YTeA9Au50fqRvK4OR90ZhFpjHV7IpKcHav5H+YN8hZMKxYE
-	5AfD5As7/h43RNVj0fJ1GHsIqLnD5DozNgi2ozIBvOUEn+QeYwaSELbY2+M/qcgR
-	KM02+HADixF9qP8WJ7JLcNjMIw5WUOapy3z+8fB3Jc5xjF51J7fJBmAAIJ+6E7u7
-	+Vkp7+0PbYKml1UdNARoqtSF2NokrTcBLqM8i7eWJO6yq9ZHW/cx8fWLzPbA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
-	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:sender:subject:subject:to:to
-	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm3; t=1674104544; x=1674111744; bh=fu40e8RKK34NvCHYIuaClUtcfG1T
-	OlQku9GsJJ+aQa4=; b=jlNWVJu99w72/n2Tkp2UbpJxJ371tfwWtRCurZnYOXqw
-	o9a0OksINXmlcCUDRouTiPVN1WsKEDTXZ71s7o/RhREvPOkj8eCQYJd68MmcIoU7
-	dUVEAa0s8jpFfA47OG1ivTZhbgEpERo968T32XxbNiSbd6uCioM2dAN/dhp+4A6j
-	MZYMbJRM6XojTZNauRJBzikZAC8h46SjzzQ0bGYO3NBhS0SQxb5EMaqPXlwXuPhf
-	YsSGitWjoYVXbsWqd+RwnauXdQ4R6K541WNzUmY7WLsVVnC3KfUG5ze6chnX8dgc
-	HHYxjojS8h7BC1e2V1NWE2p3JJzNnr6cWT8V+M1kng==
-X-ME-Sender: <xms:3s7IY-xqKErPH6RiKYJ9XefoO3TYAKUWFG4clxebOvCxjLC78UhHtw>
-    <xme:3s7IY6Sqy2S4zobDhaFTIw2Gplc65pRkmx1CIClopeFHRFltC_COHtgxDXfhL8biB
-    3EEnFJtHs2mvewXTA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddtledgjeekucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    gfrhhlucfvnfffucdljedmnecujfgurhepofgfggfkjghffffhvfevufgtsehttdertder
-    redtnecuhfhrohhmpedftehnughrvgifucflvghffhgvrhihfdcuoegrnhgurhgvfiesrg
-    hjrdhiugdrrghuqeenucggtffrrghtthgvrhhnpeekvdekjeekgfejudffteetgeejkeet
-    teduvedtffdtledutdfhheevfeetkeeiteenucevlhhushhtvghrufhiiigvpedtnecurf
-    grrhgrmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghjrdhiugdrrghu
-X-ME-Proxy: <xmx:3s7IYwVYl2S1Sksqg2sBvwuWvkzknIaNaHdy3IacePoOFH91nLOreg>
-    <xmx:3s7IY0hkBI2Hffxm4Rc0Xh2JJ757mV0V8yrJiruvGxdcAFXFFOxvvQ>
-    <xmx:3s7IYwAnmxtzUf2Y6vBc-oyaBG3HKjIz9OV9Qa2ezN7ZymSUcSTquw>
-    <xmx:4M7IYzauEzxGa9jG18p-HgSTD6yji4XoXQLiuVFmrUoqLKOm-lhvkc83hUs>
-Feedback-ID: idfb84289:Fastmail
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
-	id C367E1700089; Thu, 19 Jan 2023 00:02:22 -0500 (EST)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.9.0-alpha0-85-gd6d859e0cf-fm-20230116.001-gd6d859e0
-Mime-Version: 1.0
-Message-Id: <61140466-6195-4309-8f46-3edf084731c2@app.fastmail.com>
-In-Reply-To:  <20230116-net-next-remove-probe-capabilities-v2-6-15513b05e1f4@walle.cc>
-References:  <20230116-net-next-remove-probe-capabilities-v2-0-15513b05e1f4@walle.cc>
- <20230116-net-next-remove-probe-capabilities-v2-6-15513b05e1f4@walle.cc>
-Date: Thu, 19 Jan 2023 15:32:02 +1030
-From: "Andrew Jeffery" <andrew@aj.id.au>
-To: "Michael Walle" <michael@walle.cc>,
- "Heiner Kallweit" <hkallweit1@gmail.com>,
- "Russell King" <linux@armlinux.org.uk>, "David Miller" <davem@davemloft.net>,
- "Eric Dumazet" <edumazet@google.com>, "Jakub Kicinski" <kuba@kernel.org>,
- "Paolo Abeni" <pabeni@redhat.com>, "Felix Fietkau" <nbd@nbd.name>,
- "John Crispin" <john@phrozen.org>, "Sean Wang" <sean.wang@mediatek.com>,
- "Mark Lee" <Mark-MC.Lee@mediatek.com>,
- "Lorenzo Bianconi" <lorenzo@kernel.org>,
- "Matthias Brugger" <matthias.bgg@gmail.com>,
- "Bryan Whitehead" <bryan.whitehead@microchip.com>,
- UNGLinuxDriver@microchip.com, "Giuseppe Cavallaro" <peppe.cavallaro@st.com>,
- "Alexandre Torgue" <alexandre.torgue@foss.st.com>,
- "Jose Abreu" <joabreu@synopsys.com>,
- "Maxime Coquelin" <mcoquelin.stm32@gmail.com>,
- "Joel Stanley" <joel@jms.id.au>
-Cc: netdev <netdev@vger.kernel.org>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-aspeed@lists.ozlabs.org,
- "Andrew Lunn" <andrew@lunn.ch>,
- "Jesse Brandeburg" <jesse.brandeburg@intel.com>
-Subject: Re: [PATCH net-next v2 6/6] net: phy: Remove probe_capabilities
+	id 1pINFV-003eDc-M1; Thu, 19 Jan 2023 05:14:07 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 28DCD61A60;
+	Thu, 19 Jan 2023 05:14:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1C09C433EF;
+	Thu, 19 Jan 2023 05:13:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1674105241;
+	bh=vOpQ4Ds9jWqyGxR9dJ6k9KZUW8KJ9ISfjtx7rMdu5Vo=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=tSrDNfwWpTpr7+utoIBt0yr9qOIlNUR6q3GVm7F6C3MXYpzwIcJhJkPd/xCgjkW1Q
+	 KyUqqDC98bCI0JpuVjU3GxTGPFSUYqyD5ihoBoEJZMwUz4b3XNABP08FYhJyySJVzv
+	 BYBUdkpWnh3Mf0oky2BSSNGH4p14qIW/nDr8lIzptM4+m2/At9i4kvFInVW9z8sbFV
+	 q2ksRhOjtceeaBxdAeuV/CoNi83BELbyNE03TPPtoMgl+ZtPN7AJTEOVPJOUEJMn58
+	 yt706ICqTTwZ6u+tWi3ddued5oW/hSHksddbDe/ZkiZEyNnCyztmwO/jdfALAaYoMN
+	 iZY4ZR/+17kcQ==
+From: Kalle Valo <kvalo@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: "David S. Miller" <davem@davemloft.net>,  Eric Dumazet
+ <edumazet@google.com>,  Jakub Kicinski <kuba@kernel.org>,  Paolo Abeni
+ <pabeni@redhat.com>,  Rob Herring <robh+dt@kernel.org>,  Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>,  Felix Fietkau
+ <nbd@nbd.name>,  Lorenzo Bianconi <lorenzo@kernel.org>,  Ryder Lee
+ <ryder.lee@mediatek.com>,  Shayne Chen <shayne.chen@mediatek.com>,  Sean
+ Wang <sean.wang@mediatek.com>,  Matthias Brugger <matthias.bgg@gmail.com>,
+  =?utf-8?B?SsOpcsO0bWU=?= Pouiller <jerome.pouiller@silabs.com>,  de Goede
+ <hdegoede@redhat.com>,  Tony Lindgren <tony@atomide.com>,
+  linux-wireless@vger.kernel.org,  netdev@vger.kernel.org,
+  devicetree@vger.kernel.org,  linux-kernel@vger.kernel.org,
+  linux-arm-kernel@lists.infradead.org,
+  linux-mediatek@lists.infradead.org,  ath11k@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: net: wireless: minor whitespace and name cleanups
+References: <20230118175413.360153-1-krzysztof.kozlowski@linaro.org>
+Date: Thu, 19 Jan 2023 07:13:52 +0200
+In-Reply-To: <20230118175413.360153-1-krzysztof.kozlowski@linaro.org>
+	(Krzysztof Kozlowski's message of "Wed, 18 Jan 2023 18:54:13 +0100")
+Message-ID: <87bkmv85tb.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+MIME-Version: 1.0
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_210228_316229_6A1A071D 
-X-CRM114-Status: UNSURE (   9.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230118_211405_797082_FB5929BF 
+X-CRM114-Status: GOOD (  12.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,27 +82,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> writes:
 
-
-On Wed, 18 Jan 2023, at 20:31, Michael Walle wrote:
-> From: Andrew Lunn <andrew@lunn.ch>
+> Minor cleanups:
+>  - Drop redundant blank lines,
+>  - Correct indentaion in examples,
+>  - Correct node names in examples to drop underscore and use generic
+>    name.
 >
-> Deciding if to probe of PHYs using C45 is now determine by if the bus
-> provides the C45 read method. This makes probe_capabilities redundant
-> so remove it.
+> No functional impact except adjusting to preferred coding style.
 >
-> Signed-off-by: Andrew Lunn <andrew@lunn.ch>
-> Signed-off-by: Michael Walle <michael@walle.cc>
-> Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > ---
->  drivers/net/ethernet/adi/adin1110.c               | 1 -
->  drivers/net/ethernet/freescale/xgmac_mdio.c       | 1 -
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c       | 1 -
->  drivers/net/ethernet/microchip/lan743x_main.c     | 2 --
->  drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c | 3 ---
->  drivers/net/mdio/mdio-aspeed.c                    | 1 -
+>  .../bindings/net/wireless/esp,esp8089.yaml    | 20 +++---
+>  .../bindings/net/wireless/ieee80211.yaml      |  1 -
+>  .../bindings/net/wireless/mediatek,mt76.yaml  |  1 -
+>  .../bindings/net/wireless/qcom,ath11k.yaml    | 11 ++-
+>  .../bindings/net/wireless/silabs,wfx.yaml     |  1 -
+>  .../bindings/net/wireless/ti,wlcore.yaml      | 70 +++++++++----------
+>  6 files changed, 50 insertions(+), 54 deletions(-)
 
-For the Aspeed change:
+Thanks for the cleanup. Would you like to me to take this to
+wireless-next or do you have other plans?
 
-Acked-by: Andrew Jeffery <andrew@aj.id.au>
+-- 
+https://patchwork.kernel.org/project/linux-wireless/list/
+
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
