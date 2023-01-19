@@ -4,88 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85E3BC004D4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 16:45:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38E1AC004D4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 16:50:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p31jk7oJoppAGvipyfcQkOKfkHgOguOdfo62urZGHvU=; b=Dv0TI8LrVKHNR9KNPRrd3+Re/0
-	HrxQJb1BIr9+nbHqHqkwL1v31ZvwDWbmolDSeJvMW3qlww+sUi6vw3965aVFOJlju9tX8YezPxUad
-	n0e710wpB2Si+SuLZXQbDTSnBLa/+7gZ+kQ+BFfuZIBFJMO1V4ZeC+CU6eyiULcG08TuXpWMWYm+O
-	qV/nXnZVCzVOP/XFeMYp3vZ5qLljCKfRfYyXB3U/kfECTOr5DIiElazpxoa+ZksdOUuBDCEMpCMcr
-	aNG75teGRWhHy0Dzb16KjtiE0748scGvcQG2EpUIU3qusBqhFg7lliM62QbtoTAaXDnbLvmQkYOTb
-	5kk7a0Aw==;
+	bh=+1zYb7kTowDyYx4WO/wHDGvEDrmcG3mzHWa0V5K3+9c=; b=zBbEXobwWTj0rtQCoEkLsiQdCo
+	0QYtuXezXPFzHv0yqfsCuUcGv0X404SPN7EdmDHe7V+fl2j1cy3S8xNtI7ZpLQtWPS48SGphvB4U5
+	6fmc9uygXDGcRh/ExLGJn4eUfU0+lZFk9ZDnmt5+Ukm0FF4ukJG5rDJSX1RNvd2i5iPG2z+pcWaLW
+	EjWG3mzdnj8ba7CQzNV2djLkPe/GrVs26GQg6iEHIdd1nyGqisDflRQv5U5/f2QaS9RzOYXeAcVux
+	wA1Cr/5nam/RMfNvk9vI4gU+ziBTY1nmdpmlUPs4C6zdRapK4yowTACmtYOBhIS/aD1m+6XirewOX
+	2xMuVe2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIY2R-0064la-4C; Thu, 19 Jan 2023 16:45:19 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1pIY6s-0065t2-K1; Thu, 19 Jan 2023 16:49:54 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIY2A-0064eT-2y; Thu, 19 Jan 2023 16:45:03 +0000
-Received: by mail-wm1-x332.google.com with SMTP id q8so2001709wmo.5;
-        Thu, 19 Jan 2023 08:45:00 -0800 (PST)
+	id 1pIY6i-0065qq-BG
+	for linux-mediatek@lists.infradead.org; Thu, 19 Jan 2023 16:49:45 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id e3so2433281wru.13
+        for <linux-mediatek@lists.infradead.org>; Thu, 19 Jan 2023 08:49:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
+        d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=p31jk7oJoppAGvipyfcQkOKfkHgOguOdfo62urZGHvU=;
-        b=F2Zg/HFTLqmm+K1UCvTm13AYT09XXrhVLj5hyL4jJzM4ETw/oOfzGJ91QHVQkKygP+
-         x5y4xrP/fP88kOijUZOpztyQO8KlV06CatSaAeNbLBwtnhJVIReIlVvOIpInkE8+kAyf
-         9nAeUejSX/oHASky6LXt2uBUaNsmQeK8y4uGiTfWM+KDvfI+y9FZdsdect0DJx4BwBG9
-         HwlK16lDRcL44GL03o+SSUbYtmcLlryq1YiO94/ea+TlXxvUM7TiIWf9Ct1pNMc6RhZe
-         6VNJK6f1HZzLK6RHy848hcKXBzGUQYF5+vkhN19ULZCcflfkElRxloScVVjeyG7QMr/6
-         MxFA==
+        bh=+1zYb7kTowDyYx4WO/wHDGvEDrmcG3mzHWa0V5K3+9c=;
+        b=lk9VF/k3N2YcpqkT+LXNcaEu3bDxQaXHwfn+32c1jO0Lc2lPSDAji7akMbW0yEDVuw
+         VvZy4QgPNST/ik+Nkfyy7CPT1DS3JOi34Ds9JlCrp0pasUjsVe1kif8bdz61e+yR0TUB
+         ub3BCnRA1i0jW0zkkNL43p4Ec+wYOBR/l1XUrDaShiyHLrp3zbsLh2K+YZ/ETVPNgIiF
+         2MOHuScvhKHQSDNceND3TAI8M6JW4M9eLzd2Ghcqw1Op+4LnRvHWt8+7NSy+ifKwqumR
+         hyjTusbBS7a7Tqs+raFdvSAm3MFfMhIKeBm98x4QbeSY1qErjQSafBNjq/exVL23o/cw
+         nM8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=p31jk7oJoppAGvipyfcQkOKfkHgOguOdfo62urZGHvU=;
-        b=eC0/QklwhTdgPObBYIUhkbnL6Dsb0WARnI97kFqCYJp9YJmuLpMK+zwWfVifMaYN2K
-         2I9ZryXQy/wvew9mEXtNHrH9bUItkNEY5LWsAzCYiYtQXELk2Pr96K/b0sIXKPzJwVeb
-         EK1PkLjSoVBnLC971K/dgYSLO3qBZqOqBw9Ndd6TpJ5+FEB1Ld4+UmjYhuVDZ7GBrmni
-         n0WnzbHq1ApuFBT02cl/9xD/tU9qzyZKtWXgmgMI6HByrPGlVI5Eus87cNMwnueB+WH1
-         56V7xwFy3q7z9IT7Qi+OoZooNoBc9o7/I4iRa450Hbm8wPCZF7R+xrmMFBkD7yIkJUTe
-         XNlA==
-X-Gm-Message-State: AFqh2kpLbOSflg9M8cQkKeIA/xaxdj0/uHVlMJL6OswqnN2dBNrUeAlY
-	5SWeNwEQioM7nCT8q/7BfvA=
-X-Google-Smtp-Source: AMrXdXtXLoOKeiDjNOplfKgIStlJLK1HdxG/83Z7TnVyHlxxEPOdE51VTk5wzMunD8ESCyTjAqw84Q==
-X-Received: by 2002:a05:600c:920:b0:3da:22a6:7b6b with SMTP id m32-20020a05600c092000b003da22a67b6bmr10978954wmp.13.1674146698929;
-        Thu, 19 Jan 2023 08:44:58 -0800 (PST)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id j30-20020a05600c1c1e00b003daf89e01d3sm6287926wms.11.2023.01.19.08.44.57
+        bh=+1zYb7kTowDyYx4WO/wHDGvEDrmcG3mzHWa0V5K3+9c=;
+        b=maT9g491nhGSewDfIAAjsNApJt8X5zbaqZZQOq26kFPdrux9Nbd73NXif1z0ZyCDWh
+         IiRlJyZkw/5zdO3dGDVsxKYXd8oaffrMh0E5pg41fGKcyiy2kapHX56id1g9MSswEaZV
+         Rc5vOjGT5+sdyghQGK4Qu3sNSXRtnrGfh4Tg/fLuhFiGurLw3390rnHrXmEumKCv/zhL
+         irJG+tbFq2NjUANk4J1IVdCQT3mBqv1a1QRJaeXzsOBXQJd+AI0fqzyNaa1CMBLC907l
+         tvvZZrprbp8qU89GqG7dDhTGx6zmcQ2D2ctleVOnwGkP0Bv/+0tRfXBNHdyY5kts0N7L
+         sHog==
+X-Gm-Message-State: AFqh2kqsp92FjlgY1QkG7gX/hIe3+YnPpzJJB2LnjOT7amHzqkYWJG8N
+	x/IpiiE1wDlggLiaIWMxO3DVMA==
+X-Google-Smtp-Source: AMrXdXsQtuxwxOCAddUUeO6nawc0o3nR3p8GWKNtjVSi5vMi2XTjtWlqS/S3ALjcyut0AvOObTlpQg==
+X-Received: by 2002:a5d:56c2:0:b0:2be:5370:d797 with SMTP id m2-20020a5d56c2000000b002be5370d797mr131488wrw.14.1674146982818;
+        Thu, 19 Jan 2023 08:49:42 -0800 (PST)
+Received: from [192.168.1.109] ([178.197.216.144])
+        by smtp.gmail.com with ESMTPSA id c6-20020adffb06000000b002423620d356sm14001708wrr.35.2023.01.19.08.49.41
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 19 Jan 2023 08:44:58 -0800 (PST)
-Message-ID: <36bb49f6-91ac-148d-2caf-c4f52da57aed@gmail.com>
-Date: Thu, 19 Jan 2023 17:44:56 +0100
+        Thu, 19 Jan 2023 08:49:42 -0800 (PST)
+Message-ID: <60766c7b-abb2-3afb-aa16-0e1385b88a73@linaro.org>
+Date: Thu, 19 Jan 2023 17:49:40 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v5 1/2] thermal/drivers/mtk: use function pointer for
- raw_to_mcelsius
+ Thunderbird/102.7.0
+Subject: Re: [PATCH 2/2] spi: spidev: add new mediatek support
 Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria
- <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Rob Herring <robh+dt@kernel.org>
-Cc: Steven Liu <steven.liu@mediatek.com>, Henry Yen <Henry.Yen@mediatek.com>,
- Chad Monroe <chad@monroe.io>, John Crispin <john@phrozen.org>
-References: <cover.1674055882.git.daniel@makrotopia.org>
- <69c17529e8418da3eec703dde31e1b01e5b0f7e8.1674055882.git.daniel@makrotopia.org>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <69c17529e8418da3eec703dde31e1b01e5b0f7e8.1674055882.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Alexandre Mergnat <amergnat@baylibre.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-spi@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20230118-mt8365-spi-support-v1-0-842a21e50494@baylibre.com>
+ <20230118-mt8365-spi-support-v1-2-842a21e50494@baylibre.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230118-mt8365-spi-support-v1-2-842a21e50494@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_084502_215810_80AFDD27 
-X-CRM114-Status: GOOD (  19.93  )
+X-CRM114-CacheID: sfid-20230119_084944_516043_6730824C 
+X-CRM114-Status: GOOD (  14.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,63 +97,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 18/01/2023 16:40, Daniel Golle wrote:
-> Instead of having if-else logic selecting either raw_to_mcelsius_v1 or
-> raw_to_mcelsius_v2 in mtk_thermal_bank_temperature introduce a function
-> pointer raw_to_mcelsius to struct mtk_thermal which is initialized in the
-> probe function.
+On 19/01/2023 17:28, Alexandre Mergnat wrote:
+> Add the "mediatek,genio" compatible string to support Mediatek
+> SPI controller on the genio boards.
 > 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 > ---
->   drivers/thermal/mtk_thermal.c | 17 ++++++++++-------
->   1 file changed, 10 insertions(+), 7 deletions(-)
+>  drivers/spi/spidev.c | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
-> diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-> index 0084b76493d9a..992750ee09e62 100644
-> --- a/drivers/thermal/mtk_thermal.c
-> +++ b/drivers/thermal/mtk_thermal.c
-> @@ -292,6 +292,8 @@ struct mtk_thermal {
->   
->   	const struct mtk_thermal_data *conf;
->   	struct mtk_thermal_bank banks[MAX_NUM_ZONES];
-> +
-> +	int (*raw_to_mcelsius)(struct mtk_thermal *mt, int sensno, s32 raw);
->   };
->   
->   /* MT8183 thermal sensor data */
-> @@ -656,13 +658,9 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
->   	for (i = 0; i < conf->bank_data[bank->id].num_sensors; i++) {
->   		raw = readl(mt->thermal_base + conf->msr[i]);
->   
-> -		if (mt->conf->version == MTK_THERMAL_V1) {
-> -			temp = raw_to_mcelsius_v1(
-> -				mt, conf->bank_data[bank->id].sensors[i], raw);
-> -		} else {
-> -			temp = raw_to_mcelsius_v2(
-> -				mt, conf->bank_data[bank->id].sensors[i], raw);
-> -		}
-> +		temp = mt->raw_to_mcelsius(
-> +			mt, conf->bank_data[bank->id].sensors[i], raw);
-> +
->   
->   		/*
->   		 * The first read of a sensor often contains very high bogus
-> @@ -1075,6 +1073,11 @@ static int mtk_thermal_probe(struct platform_device *pdev)
->   		mtk_thermal_release_periodic_ts(mt, auxadc_base);
->   	}
->   
-> +	if (mt->conf->version == MTK_THERMAL_V1)
-> +		mt->raw_to_mcelsius = raw_to_mcelsius_v1;
-> +	else
-> +		mt->raw_to_mcelsius = raw_to_mcelsius_v2;
-> +
->   	for (ctrl_id = 0; ctrl_id < mt->conf->num_controller ; ctrl_id++)
->   		for (i = 0; i < mt->conf->num_banks; i++)
->   			mtk_thermal_init_bank(mt, i, apmixed_phys_base,
+> diff --git a/drivers/spi/spidev.c b/drivers/spi/spidev.c
+> index 6313e7d0cdf8..e23b825b8d30 100644
+> --- a/drivers/spi/spidev.c
+> +++ b/drivers/spi/spidev.c
+> @@ -702,6 +702,7 @@ static const struct spi_device_id spidev_spi_ids[] = {
+>  	{ .name = "m53cpld" },
+>  	{ .name = "spi-petra" },
+>  	{ .name = "spi-authenta" },
+> +	{ .name = "genio" },
+>  	{},
+>  };
+>  MODULE_DEVICE_TABLE(spi, spidev_spi_ids);
+> @@ -728,6 +729,7 @@ static const struct of_device_id spidev_dt_ids[] = {
+>  	{ .compatible = "menlo,m53cpld", .data = &spidev_of_check },
+>  	{ .compatible = "cisco,spi-petra", .data = &spidev_of_check },
+>  	{ .compatible = "micron,spi-authenta", .data = &spidev_of_check },
+> +	{ .compatible = "mediatek,genio", .data = &spidev_of_check },
+
+Please run scripts/checkpatch.pl and fix reported warnings.
+
+Best regards,
+Krzysztof
+
 
