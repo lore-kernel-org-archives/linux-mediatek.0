@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE5CFC46467
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 18:22:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 053D5C004D4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 18:27:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PkT0cysy+FxecAuEegqoIzMHcxej0PKOCevVj35BZ0U=; b=KU5blrEKuePiVB20HiNPHI24Qj
-	gsm3vU/CWhrq0GKheMC3ftOZOD9qULJkbNH57aAIClBCPdFPgxlTZMGDknw99itSWofkq3jpLZpE+
-	zSU9rD0eD9cbS3WM+cxIN4k+LisCi3gvzzMJN73Lv5uAM2lHFRneBuAE9zNq3sh/kJSnsAwscZgvr
-	1AqAWXUZbXHgEaQftOnRx/+xmtMGQ3ByY1bmu8zHbQR7v3ctDJr5RFpiGOXB4kkZZlTfNvBY4vvmH
-	iwokrpHH2WakNVNm1oZiuukJE9OXfFF49bcueD5E5JDMfblLknS3JLMNPJg0WDkRe6fHFtCtWQ7Op
-	lS0YQDAw==;
+	bh=8dJmsDozdVRAs19D/c5MdA3A6jGV12O+/i00BReI/8E=; b=fI85qxA0xyhdu3pA4qAoMCQVh9
+	GWsxMmXJ4Zvj2GTZruGIlMqIb1fCo0wcicJ4MOZ1Y55IaHveiHB4QP6NsNl2RV1CcujSpMY00G0o4
+	CrU7aTyy3/kOVNNPSt+ubvO8zCvKSZNSyv+3ASJcElwRI0108KxRBcuSpUlxaX1CjXid2rOzY2cMt
+	8RsJlMOUfJ5fGNEovGDjmqAynQqz6LgicrOMhiAKWUkAy9wCRor+6TzZlzWzLvoOmmRVsMJFskqHl
+	IFY8Qcec93okU5f+ap855juQVnKypkrn7MSaokFacCzh7UeGSLwYny91/GjLZ19t3B+D0FP0zxdLg
+	KOvuzRcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIZYc-006XEu-Cz; Thu, 19 Jan 2023 18:22:38 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1pIZd0-006YXl-Ub; Thu, 19 Jan 2023 18:27:10 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIZYN-006X8N-LN; Thu, 19 Jan 2023 18:22:25 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id f19-20020a1c6a13000000b003db0ef4dedcso4162971wmc.4;
-        Thu, 19 Jan 2023 10:22:23 -0800 (PST)
+	id 1pIZcj-006YP3-SG; Thu, 19 Jan 2023 18:26:55 +0000
+Received: by mail-wm1-x331.google.com with SMTP id q8so2223797wmo.5;
+        Thu, 19 Jan 2023 10:26:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=PkT0cysy+FxecAuEegqoIzMHcxej0PKOCevVj35BZ0U=;
-        b=qPISyl2PgMZSakzvfLevnCw1T47CDwwswcEAdxTEY89OIKyHie+CZYVAaUWvcIQN8T
-         AdZSZM3SUdNJS7C+xjSOH4yr+PQGwrIV1u+Rrs40cxAIfznggxJkfyA0g2jA8idfCloW
-         FB6XhQCmZmAlcHfvSZwISyU45rXtcT3pZjXEHQSj5NY2V/CcE/Yp/SOUUmBrhYKHDSta
-         9NGKKhUcgMaJBgZ7rv0dmcE3Q6fBm4opDPP9xWZdN87lf7jYJJi1Lz/jtGcXowe0WNau
-         mF22XOdp63tgEJlzmLal0xlmVajeOvzeArPqrf8yDhOfgAqsPn76NwCFESjMViGEubJz
-         EfOg==
+        bh=8dJmsDozdVRAs19D/c5MdA3A6jGV12O+/i00BReI/8E=;
+        b=ZUtIQIKuikeEhvVTBOdwAnI5gTNkXBiK4ZGMgTMla0Iy6odLdVySNIU9pY/UVfzuFL
+         vrgyBB8A+QbXeceKV9jz6VvH+L34aJ4TTNNezZUfK50L1nkEDMX16xEMdjv6xI/pd7/3
+         Vmti+FHEld7qc4a19lF4bVG0gzPj0XBsIpW8M6fZmWZLcXmjZrI76e0zkk/FY/xYC/ak
+         XGbX2lHBmkZQPXAYH0cKg3CjMvjREz2M10vovSfarsRtdV6LWWHZsk/IJJseOBJ8GDjB
+         H2HoEQ4OJhZiuP/r7/yPqWT2nq4VrOd9Az0+UWFp/5RmhQYl46PuGKu2WP44iOoW2N9K
+         EZwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=PkT0cysy+FxecAuEegqoIzMHcxej0PKOCevVj35BZ0U=;
-        b=L5Bzc6tfEWmyZgI+5pDYgd4HRrg3vRM8uuzwynmFns+Cv3vsVGlQT5uI8M4CH8d+4a
-         AZFRueUoeVaZdhyL5tdBg8ZoMKlD9OFn3sO0hRuU5OsxsUN32GckyKHLDZH97UeQ3M39
-         p2yeWhQY0ovaU4dCor3XR0El5TS41/T1++m5LOvBv91AKQh0s//FLNqkYsW4i7t8w2ho
-         u5EgOyOS7MP3Bvzc+PPl+YFh5xpwFUe2AjtOBDJTvwIPi96C23pnXDJq5pZOVEhi/Y7K
-         50fK2xPW27lGhXwX6Vi7BcNMXW8iDBBhFFC7oppjuWlweXMf3hIEhwCCUZ4BR0Erlq8/
-         FCOQ==
-X-Gm-Message-State: AFqh2kpTbIE1CfFMQA6eGv90YiePaf5n95aNw9U6BzUWZZVX0WreTQoC
-	HTdgHkSz4OSi4t+XzuxFaTosjBUy3DkU4Q==
-X-Google-Smtp-Source: AMrXdXtlJ+BqjAv7TuLog+rZuaq6u1JMgaw1kapSbEZsIn63mSSX9fAYaQxezDKK1PjMtcJBS8eYyQ==
-X-Received: by 2002:a05:600c:3555:b0:3c6:e63d:fcfc with SMTP id i21-20020a05600c355500b003c6e63dfcfcmr11254139wmq.35.1674152542216;
-        Thu, 19 Jan 2023 10:22:22 -0800 (PST)
+        bh=8dJmsDozdVRAs19D/c5MdA3A6jGV12O+/i00BReI/8E=;
+        b=2Tbd00MpkQvPilpdFftizwg0wnO2RgJHiq0BxfIjM7DmSM7dt8Qeo73ZaEaouj4JLC
+         jpjS8jN+4j47mzC1R2njkJaOf4TojWe/chiSQh2rZhLxuVzJKn9JE5l2LFSm2m6p2XW7
+         sVLN4euBB4fXTjPm4JCInbyEMTof8bdhOdENK2SJggpYEMMad8AzhrPqp9RatzcJk+GH
+         hS7Yy55Ei2oH/AiV9oO0oZvfai4xBznl7wzOfsdy7QtK4xD5bPbf/H/yvtBUF/rExnt5
+         flGEEZcazUf3HiXdNw9Pvg3RtJA/SQc1PtXmnt/I2ZU8KA7cPisdgdzZtgivQB/eOCl/
+         qwEQ==
+X-Gm-Message-State: AFqh2krXNer8q6HeTSDL968BBmjE9pPvy6a5cmiZhPlQD4xvWGAslCcY
+	l5CedJNC/Goh9swVlQzDGsVHSf5ucVbT5w==
+X-Google-Smtp-Source: AMrXdXuLslVnlOzGTATGgcmq7IrSUmDZBaEvqzhg+QUBZdi3cGfnc1CRoFCFvFMq3Tc1gz9uh4APug==
+X-Received: by 2002:a05:600c:54d0:b0:3da:f9c9:cec9 with SMTP id iw16-20020a05600c54d000b003daf9c9cec9mr11360079wmb.1.1674152810079;
+        Thu, 19 Jan 2023 10:26:50 -0800 (PST)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id q10-20020a1cf30a000000b003d1e3b1624dsm5444546wmq.2.2023.01.19.10.22.21
+        by smtp.gmail.com with ESMTPSA id bg1-20020a05600c3c8100b003db09eaddb5sm6906139wmb.3.2023.01.19.10.26.48
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 19 Jan 2023 10:22:21 -0800 (PST)
-Message-ID: <6ecedcf7-e6ca-b118-e2f2-4f1ba0fbe7c6@gmail.com>
-Date: Thu, 19 Jan 2023 19:22:20 +0100
+        Thu, 19 Jan 2023 10:26:49 -0800 (PST)
+Message-ID: <a8d05899-edfa-8036-6672-c4e7e79d60d5@gmail.com>
+Date: Thu, 19 Jan 2023 19:26:48 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8173-elm: Move display to ps8640
- auxiliary bus
+Subject: Re: [PATCH] arm64: dts: mt8183: jacuzzi: Move panel under aux-bus
 Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- robh+dt@kernel.org
-Cc: krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20230111140724.294533-1-angelogioacchino.delregno@collabora.com>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20221228113204.1551180-1-hsinyi@chromium.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230111140724.294533-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221228113204.1551180-1-hsinyi@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_102223_766561_DC19D5FF 
-X-CRM114-Status: GOOD (  14.14  )
+X-CRM114-CacheID: sfid-20230119_102653_998014_FB406348 
+X-CRM114-Status: GOOD (  14.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,54 +96,56 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 11/01/2023 15:07, AngeloGioacchino Del Regno wrote:
-> Move the display to an aux-bus subnode of the PS8640 eDP bridge.
+On 28/12/2022 12:32, Hsin-Yi Wang wrote:
+> Read edp panel edid through aux bus, which is a more preferred way. Also
+> use a more generic compatible since each jacuzzi models use different
+> panels.
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 
-Applied, thanks!
+Applied, thanks.
 
 > ---
->   arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 26 +++++++++++---------
+>   .../dts/mediatek/mt8183-kukui-jacuzzi.dtsi    | 26 ++++++++++---------
 >   1 file changed, 14 insertions(+), 12 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-> index 18e214464a2d..f9b10c7027cf 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-> @@ -90,18 +90,6 @@ switch-volume-up {
->   		};
->   	};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+> index 3ac83be53627..543286ce9cea 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+> @@ -6,18 +6,6 @@
+>   #include "mt8183-kukui.dtsi"
 >   
+>   / {
 > -	panel: panel {
-> -		compatible = "lg,lp120up1";
-> -		power-supply = <&panel_fixed_3v3>;
-> -		backlight = <&backlight>;
+> -		compatible = "auo,b116xw03";
+> -		power-supply = <&pp3300_panel>;
+> -		backlight = <&backlight_lcd0>;
 > -
 > -		port {
 > -			panel_in: endpoint {
-> -				remote-endpoint = <&ps8640_out>;
+> -				remote-endpoint = <&anx7625_out>;
 > -			};
 > -		};
 > -	};
 > -
->   	panel_fixed_3v3: regulator1 {
+>   	pp1200_mipibrdg: pp1200-mipibrdg {
 >   		compatible = "regulator-fixed";
->   		regulator-name = "PANEL_3V3";
-> @@ -282,6 +270,20 @@ ps8640_out: endpoint {
->   				};
+>   		regulator-name = "pp1200_mipibrdg";
+> @@ -181,6 +169,20 @@ anx7625_out: endpoint {
+>   				remote-endpoint = <&panel_in>;
 >   			};
 >   		};
 > +
 > +		aux-bus {
 > +			panel: panel {
-> +				compatible = "lg,lp120up1";
-> +				power-supply = <&panel_fixed_3v3>;
-> +				backlight = <&backlight>;
+> +				compatible = "edp-panel";
+> +				power-supply = <&pp3300_panel>;
+> +				backlight = <&backlight_lcd0>;
 > +
 > +				port {
 > +					panel_in: endpoint {
-> +						remote-endpoint = <&ps8640_out>;
+> +						remote-endpoint = <&anx7625_out>;
 > +					};
 > +				};
 > +			};
