@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1E2AC004D4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 16:32:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 164E1C6379F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 16:38:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kISsw3ka351W71cdTlHfeqvj1tDvB34A5YrxX8eaPhY=; b=I7r7y9A/vthm0V2HV+d3BHi/u6
-	mwC+uPTaDDTcOzXT5V8WEo7cOZzLnN3zkUG8DH567yDg/LRKlt19arjiPmV07yA02Zo5ZHVXEXnIh
-	iNnsPMl4nT/9U5gsvS4yitfYjF255ziM3K4E3hgy7Cqfd4x1ADthDiskUD4nJCgHSjijN5hHlj1VH
-	G+tbOxVHFqBVVVT7ZwbUtQqsuTDU5Zhktf5hAg9oD3CBrY6QcK1uS/XEiG0xui3PtzDqulNgzrKY2
-	8VMrW54pihalK0Iu3EMSJVB67C6PN5yR9/ove/g5zJuWW+alVXsvserrTcYrGF7x8qFb+JyKavAP6
-	JuPleQNw==;
+	bh=zQl7qUGxsdoKFrCBv66aUl3ctKwMQI8qh2LAJ26Qshs=; b=p97sz4G4NqKQA8p+KdToNSYqiD
+	IJXU3jQPM9qmFpVQmAlgitgKV1ytzZOuplRZS3Yj9pSKSAY9ygYbSQvVOxA1U5RtJ5OZiVSZAGBN9
+	XIgeFUophlXTlWn3ek7vVeqUI3KPN+tkFTs2Txb4h5zewOneRqoxESQIieb1jvttCUei6Woqr/Wi7
+	gNQAAWv/PA6LYFH8N13bZOmLJ0yHYcKDBGvHUtn6c4Jb/nZkwo7FA2Nzjalu7FvAcbJsF6/NCDOKa
+	GmDRz5jUrOAu5HdtbS7/jVesxlB51H5Tt3T3Z0LdDxy8WF869Q6NANIxMl92NrnIB3j13YMvfx2KO
+	3QxDYaag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIXqB-0060cl-AV; Thu, 19 Jan 2023 16:32:39 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1pIXvz-0062KH-6z; Thu, 19 Jan 2023 16:38:39 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIXpp-0060Sa-N9; Thu, 19 Jan 2023 16:32:19 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id j17so2018212wms.0;
-        Thu, 19 Jan 2023 08:32:16 -0800 (PST)
+	id 1pIXvk-0062Gb-TT; Thu, 19 Jan 2023 16:38:28 +0000
+Received: by mail-wr1-x436.google.com with SMTP id r30so2417072wrr.10;
+        Thu, 19 Jan 2023 08:38:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=kISsw3ka351W71cdTlHfeqvj1tDvB34A5YrxX8eaPhY=;
-        b=NSkj7iMOP2CnoZNIaPDjSKL+KKbshuGz1XlGid8CesKFWQes8jnfg7LV5VtSmrraMS
-         4tR3Ms9c3Ea8vM5JnC4FPTfui6ag0x7JhjwkdG+EhvtZlddPLFr1VYagyWzDyxLJX/NV
-         OgWCLU8qqBpnGmAvPLyEXPJbtgPiSsXtFDwcggKhzVYAYHGbYubjEkp12f0WK1NNymvv
-         /jvkTZr+i5oi9sYME7TkSchyaT/pOjy5TG0ciQRQwiLiHXeeMY7268YO+ZosuXuq1tGA
-         mpUg42XC2S12FRBRwFo81tmmkDCFCLzwniZxI/NU4Y2gDmmrWvefRcxBFnqkWDRFiNR9
-         q60Q==
+        bh=zQl7qUGxsdoKFrCBv66aUl3ctKwMQI8qh2LAJ26Qshs=;
+        b=XSLEULwtL1hfc0ehGCkOo/d8/WdNcR/Ld/stT0tCp64bOhVWhM2UelHbCVpKCI+Pke
+         5ADmmJB+wxQEtBkGa0n9l4yHXw3+POItWwRLe/ctscm15xN3fIczmH5Xm/CWQ6r6Wm+Q
+         tbLxMd+Xvwd75WTdxb6mKorM4fVKjA30BrjMPyCl0WM7410KQ6aP6RKAkzRr2n3V2O/Y
+         /yOE2+G+Nh1Kc/jYSd3ZUhsuf1oFFTLQ/D/QrpLOIQO20Ig6a3ZqnPz3SmxP2ixaDPTU
+         g+gq52AnXwnO7JcGGSLoxj+R4CBc1MOqJ1FWwltb7C0HlR17u4gFcwVNRo4wMDXe/uyf
+         YQIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=kISsw3ka351W71cdTlHfeqvj1tDvB34A5YrxX8eaPhY=;
-        b=sCUvVHHHrXPoZvY+wW3Ekf/FWssxAf1c5C1K83SIktiagfH8bal930H0iGvEutrxnw
-         8Ts4A6p82LIw3eQwKbU1jA7QY/83hMiP5s4ZDYFi8OOH0XiqCLdQWc0+0/hPoLGpfymz
-         dR/GTbKywBdH61EIgjgSB74ONm/Uu2MhgHqTZxICiqSQ7cXBYEs3xAtZM0sfY4WIIo3y
-         +BOCMd99Twyce6iYOT6YrCmN3pcHXb4MbhNLBUHaV1s7e41X6/kIFLbPZz2Se2hepgll
-         CUyW9fLlEIwbFew8+tDhFElYHF3rO61vnuQV+wvngud7zS2qEKpBz0Rd1jWcQlLKdzBT
-         0UCQ==
-X-Gm-Message-State: AFqh2kreX8PtDaxtjnOrlb3SuW5HA34SEk1wUwA5iWXPMK52ylDNQTUr
-	7xA2hGca9XzDj3wHEmFIQeU=
-X-Google-Smtp-Source: AMrXdXv9EBtbXnsYULYPFoJNloy6O/ErN/hAcWIoch5i2nj40w/DPTMPhwgaX6fLP3mKWsam8/XI7A==
-X-Received: by 2002:a05:600c:c16:b0:3da:26e5:10b6 with SMTP id fm22-20020a05600c0c1600b003da26e510b6mr11197814wmb.30.1674145935484;
-        Thu, 19 Jan 2023 08:32:15 -0800 (PST)
+        bh=zQl7qUGxsdoKFrCBv66aUl3ctKwMQI8qh2LAJ26Qshs=;
+        b=OwW4/479a0P4is4/JJ42cAkMKxSsgB6yrwVo/ftv/kyZw917HhWLWG+NcTYa0s87ma
+         jJE/iN8ROKwfT/VvmHmLibIlpctjF1f65TO6Tz3nVB5etVtCKNlhOeew1koHE6PDN0zI
+         ysCR1DoWYVRP10acv+dSPV/Vx7+EoOej1i2HomIE4TmHVL4x7GEOi7R8MI6bqdsB8/YE
+         LYY5ADnhxXQ+LNYAVn73g1SaZuIMoM6iGlj8q43lVjTY11j+tyWHnp93B6S/6CcmuOJv
+         bM8e/K8hsyjxE+cZ/RouM3fQ+MKi1G+mDLKcgMhthNyjUJzNOlUf65PoMO6ulXrt5nhh
+         k04A==
+X-Gm-Message-State: AFqh2krATNLIeFg7kdln1jf0aQt9t2y4JfDBNqVAvIRxvzUe9vYDTjQM
+	b7rTQ28+KyEK0gKVSH7BVaI=
+X-Google-Smtp-Source: AMrXdXt8fakZIEKWCsTm2c2xaq1MMWkP19AbenzPjcXfucpcdAoh9oJ2/Tedi7D7HHxw+dMNzUWA6w==
+X-Received: by 2002:a5d:6b42:0:b0:2bc:7e6c:7cd8 with SMTP id x2-20020a5d6b42000000b002bc7e6c7cd8mr10363922wrw.26.1674146303319;
+        Thu, 19 Jan 2023 08:38:23 -0800 (PST)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id fk6-20020a05600c0cc600b003a84375d0d1sm5193380wmb.44.2023.01.19.08.32.14
+        by smtp.gmail.com with ESMTPSA id g2-20020a5d64e2000000b002be063f6820sm14948613wri.81.2023.01.19.08.38.22
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 19 Jan 2023 08:32:15 -0800 (PST)
-Message-ID: <c0026ce0-caca-1ca2-dc4c-72d14078de6f@gmail.com>
-Date: Thu, 19 Jan 2023 17:32:13 +0100
+        Thu, 19 Jan 2023 08:38:22 -0800 (PST)
+Message-ID: <344b14cf-7b87-34ac-5588-58388399357c@gmail.com>
+Date: Thu, 19 Jan 2023 17:38:21 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH v2 8/9] dt-bindings: display: mediatek: Fix the fallback
- for mediatek,mt8186-disp-ccorr
+Subject: Re: [PATCH v2 4/9] arm64: dts: mediatek: mt8186: Add ADSP mailbox
+ nodes
 Content-Language: en-US
 To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
  Rob Herring <robh+dt@kernel.org>,
@@ -80,14 +80,14 @@ Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
  hsinyi@chromium.org
 References: <20230118091829.755-1-allen-kh.cheng@mediatek.com>
- <20230118091829.755-9-allen-kh.cheng@mediatek.com>
+ <20230118091829.755-5-allen-kh.cheng@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230118091829.755-9-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20230118091829.755-5-allen-kh.cheng@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_083217_857979_6574388C 
-X-CRM114-Status: GOOD (  18.08  )
+X-CRM114-CacheID: sfid-20230119_083824_999845_992CC817 
+X-CRM114-Status: GOOD (  14.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,33 +105,39 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 18/01/2023 10:18, Allen-KH Cheng wrote:
-> The mt8186-disp-ccorr is not fully compatible with the mt8183-disp-ccorr
-> implementation. It causes a crash when system resumes if it binds to the
-> device.
+> Add ADSP mailbox node for MT8186 SoC.
 > 
-> We should use mt8192-disp-ccorr as fallback of mt8186-disp-ccorr.
-> 
-> Fixes: 8a26ea19d4dc ("dt-bindings: display: mediatek: add MT8186 SoC binding")
 > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Applied, thanks!
 
 > ---
->   .../devicetree/bindings/display/mediatek/mediatek,ccorr.yaml    | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   arch/arm64/boot/dts/mediatek/mt8186.dtsi | 14 ++++++++++++++
+>   1 file changed, 14 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-> index 63fb02014a56..117e3db43f84 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-> @@ -32,7 +32,7 @@ properties:
->         - items:
->             - enum:
->                 - mediatek,mt8186-disp-ccorr
-> -          - const: mediatek,mt8183-disp-ccorr
-> +          - const: mediatek,mt8192-disp-ccorr
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> index a8ff984f1192..a0b7dacc10cd 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> @@ -640,6 +640,20 @@
+>   			interrupts = <GIC_SPI 205 IRQ_TYPE_LEVEL_HIGH 0>;
+>   		};
 >   
->     reg:
->       maxItems: 1
+> +		adsp_mailbox0: mailbox@10686000 {
+> +			compatible = "mediatek,mt8186-adsp-mbox";
+> +			#mbox-cells = <0>;
+> +			reg = <0 0x10686100 0 0x1000>;
+> +			interrupts = <GIC_SPI 361 IRQ_TYPE_LEVEL_HIGH 0>;
+> +		};
+> +
+> +		adsp_mailbox1: mailbox@10687000 {
+> +			compatible = "mediatek,mt8186-adsp-mbox";
+> +			#mbox-cells = <0>;
+> +			reg = <0 0x10687100 0 0x1000>;
+> +			interrupts = <GIC_SPI 362 IRQ_TYPE_LEVEL_HIGH 0>;
+> +		};
+> +
+>   		nor_flash: spi@11000000 {
+>   			compatible = "mediatek,mt8186-nor";
+>   			reg = <0 0x11000000 0 0x1000>;
 
