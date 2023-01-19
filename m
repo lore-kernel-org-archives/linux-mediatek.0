@@ -4,85 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38E1AC004D4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 16:50:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D788C004D4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 17:03:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+1zYb7kTowDyYx4WO/wHDGvEDrmcG3mzHWa0V5K3+9c=; b=zBbEXobwWTj0rtQCoEkLsiQdCo
-	0QYtuXezXPFzHv0yqfsCuUcGv0X404SPN7EdmDHe7V+fl2j1cy3S8xNtI7ZpLQtWPS48SGphvB4U5
-	6fmc9uygXDGcRh/ExLGJn4eUfU0+lZFk9ZDnmt5+Ukm0FF4ukJG5rDJSX1RNvd2i5iPG2z+pcWaLW
-	EjWG3mzdnj8ba7CQzNV2djLkPe/GrVs26GQg6iEHIdd1nyGqisDflRQv5U5/f2QaS9RzOYXeAcVux
-	wA1Cr/5nam/RMfNvk9vI4gU+ziBTY1nmdpmlUPs4C6zdRapK4yowTACmtYOBhIS/aD1m+6XirewOX
-	2xMuVe2Q==;
+	bh=xoDg7X6k/SjUQcyWVxb++knJQou/HfRjq27D3pK1OL0=; b=KP9sW+UJVpZiPw88u96Bgvbzje
+	4oqcd9XsVO4KToSIrrTF8MiWa28g5S9xwwQbBYUD784knmqkqktokDIIiEa94xyTLSHsQ7eqAnC9i
+	MfX2JudJBD85HIIOCGkJC5ILKqcwqdhXxWptQma7j8jLstK8zff63DK3a9v3BHTt2yops/yRYkZVd
+	FGSTLkZizuymH6wy1AwdJ1XjpjppGcWgvrdAMp7+GIhv3YpPM5ztlt1hQJEx1YRULJ+VJuO9IksE6
+	T+3DQztvjfQOCLS7zNAs6navQJognda/yHQKeCc1QmHQYhRIs09+/Iwc67L2UAJ2+u/MzL6a5Hr+K
+	wjZH6S0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIY6s-0065t2-K1; Thu, 19 Jan 2023 16:49:54 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1pIYK3-0068gf-EF; Thu, 19 Jan 2023 17:03:31 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIY6i-0065qq-BG
-	for linux-mediatek@lists.infradead.org; Thu, 19 Jan 2023 16:49:45 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id e3so2433281wru.13
-        for <linux-mediatek@lists.infradead.org>; Thu, 19 Jan 2023 08:49:43 -0800 (PST)
+	id 1pIYJo-0068ca-6j
+	for linux-mediatek@lists.infradead.org; Thu, 19 Jan 2023 17:03:18 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id l41-20020a05600c1d2900b003daf986faaeso1748860wms.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 19 Jan 2023 09:03:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=+1zYb7kTowDyYx4WO/wHDGvEDrmcG3mzHWa0V5K3+9c=;
-        b=lk9VF/k3N2YcpqkT+LXNcaEu3bDxQaXHwfn+32c1jO0Lc2lPSDAji7akMbW0yEDVuw
-         VvZy4QgPNST/ik+Nkfyy7CPT1DS3JOi34Ds9JlCrp0pasUjsVe1kif8bdz61e+yR0TUB
-         ub3BCnRA1i0jW0zkkNL43p4Ec+wYOBR/l1XUrDaShiyHLrp3zbsLh2K+YZ/ETVPNgIiF
-         2MOHuScvhKHQSDNceND3TAI8M6JW4M9eLzd2Ghcqw1Op+4LnRvHWt8+7NSy+ifKwqumR
-         hyjTusbBS7a7Tqs+raFdvSAm3MFfMhIKeBm98x4QbeSY1qErjQSafBNjq/exVL23o/cw
-         nM8g==
+        bh=xoDg7X6k/SjUQcyWVxb++knJQou/HfRjq27D3pK1OL0=;
+        b=1hrdE6EhVZapN/amnndIOVoCyNf2PV5AUtAzDtKRv2WE7dv+4JYyd12hJtZZmEQfNg
+         3unnzAFt3Ei2XSXRQ/382g6ej48VXzNYBSocOMr2bvg3dUc9WGRZhEkCDD8OjAxdeFDS
+         j/hEXC0lom9dHs+G9YMstoUY1PzRiX4Gq9UniA38h1YFkA4N6cDzUHMgV/ta21+W7iqA
+         sYtJ5hc5jHIH69AI267vdjXQH8ttU24qNCX6UVpI5JojnLTa9HdfJoK1VbvfIHs4aHVA
+         1LUXsoBE/oGphFk0PGffJ/ThRyFprXILexDcb91ZNqkjorykOr6X1SKXSKRMuSuEvh8A
+         5AAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=+1zYb7kTowDyYx4WO/wHDGvEDrmcG3mzHWa0V5K3+9c=;
-        b=maT9g491nhGSewDfIAAjsNApJt8X5zbaqZZQOq26kFPdrux9Nbd73NXif1z0ZyCDWh
-         IiRlJyZkw/5zdO3dGDVsxKYXd8oaffrMh0E5pg41fGKcyiy2kapHX56id1g9MSswEaZV
-         Rc5vOjGT5+sdyghQGK4Qu3sNSXRtnrGfh4Tg/fLuhFiGurLw3390rnHrXmEumKCv/zhL
-         irJG+tbFq2NjUANk4J1IVdCQT3mBqv1a1QRJaeXzsOBXQJd+AI0fqzyNaa1CMBLC907l
-         tvvZZrprbp8qU89GqG7dDhTGx6zmcQ2D2ctleVOnwGkP0Bv/+0tRfXBNHdyY5kts0N7L
-         sHog==
-X-Gm-Message-State: AFqh2kqsp92FjlgY1QkG7gX/hIe3+YnPpzJJB2LnjOT7amHzqkYWJG8N
-	x/IpiiE1wDlggLiaIWMxO3DVMA==
-X-Google-Smtp-Source: AMrXdXsQtuxwxOCAddUUeO6nawc0o3nR3p8GWKNtjVSi5vMi2XTjtWlqS/S3ALjcyut0AvOObTlpQg==
-X-Received: by 2002:a5d:56c2:0:b0:2be:5370:d797 with SMTP id m2-20020a5d56c2000000b002be5370d797mr131488wrw.14.1674146982818;
-        Thu, 19 Jan 2023 08:49:42 -0800 (PST)
-Received: from [192.168.1.109] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id c6-20020adffb06000000b002423620d356sm14001708wrr.35.2023.01.19.08.49.41
+        bh=xoDg7X6k/SjUQcyWVxb++knJQou/HfRjq27D3pK1OL0=;
+        b=v4j1dSGHlZFpgtf7p2KgnrEGlFO+01xOceL7NhzUtI4rc8hid3FCzaVWUDm9c4FTIS
+         4+nB5qgOXP28DNAtvB+co/BHv8/YbZ9BierXIsI/MwXT1y2pOdVb2Ioxu9asD1YE1kMQ
+         mgpiYNxiIGtbElxQMKqLxem7Ce1iRkLID0j+7Cr+szHkPpql3AMaAEFrM5SWftlTTvRW
+         H0k/a+YgazNBgTMXbGpnFe3eK5TnvU6uBZfgpRGSr/rV/zdbrmfx53Va2OEkB1CQ8HQo
+         7r+BaD5q8qBDzzfMXOI+AZ4CjjL4Da4aPZx7UUhSIv55SRmlsLs6B9ATS19hfnKwb/vy
+         6h7w==
+X-Gm-Message-State: AFqh2krgiLeoxKcug1Bx+RK1B3sljyeXO7lzXuf/SKOHFep5+lB3RF1g
+	+6pzX50dESV1uoHai4zZyi6a2w==
+X-Google-Smtp-Source: AMrXdXvVqir7OAh4deRHUpeRJymXdvbDE5Wl8w9DSxpLlPsa1In7nF1ob0+NOI0SLMtg6L6CnI5eQg==
+X-Received: by 2002:a05:600c:1d8e:b0:3d9:f9ef:3d23 with SMTP id p14-20020a05600c1d8e00b003d9f9ef3d23mr11316499wms.23.1674147793846;
+        Thu, 19 Jan 2023 09:03:13 -0800 (PST)
+Received: from [10.8.2.10] ([195.200.221.42])
+        by smtp.gmail.com with ESMTPSA id g10-20020a05600c4eca00b003a3442f1229sm6193662wmq.29.2023.01.19.09.03.08
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 19 Jan 2023 08:49:42 -0800 (PST)
-Message-ID: <60766c7b-abb2-3afb-aa16-0e1385b88a73@linaro.org>
-Date: Thu, 19 Jan 2023 17:49:40 +0100
+        Thu, 19 Jan 2023 09:03:10 -0800 (PST)
+Message-ID: <187b0fe1-1f14-d8b8-c827-1e824da0b1d3@baylibre.com>
+Date: Thu, 19 Jan 2023 18:03:07 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.7.0
-Subject: Re: [PATCH 2/2] spi: spidev: add new mediatek support
-Content-Language: en-US
-To: Alexandre Mergnat <amergnat@baylibre.com>,
+Subject: Re: [PATCH v7 4/4] thermal: mediatek: add another get_temp ops for
+ thermal sensors
+To: Daniel Lezcano <daniel.lezcano@linaro.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Amit Kucheria <amitk@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-spi@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-References: <20230118-mt8365-spi-support-v1-0-842a21e50494@baylibre.com>
- <20230118-mt8365-spi-support-v1-2-842a21e50494@baylibre.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230118-mt8365-spi-support-v1-2-842a21e50494@baylibre.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+ Zhang Rui <rui.zhang@intel.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Fabien Parent <fparent@baylibre.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Markus Schneider-Pargmann <msp@baylibre.com>, linux-pm@vger.kernel.org,
+ Rob Herring <robh@kernel.org>, Michael Kao <michael.kao@mediatek.com>,
+ linux-kernel@vger.kernel.org, Hsin-Yi Wang <hsinyi@chromium.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org
+References: <20221018-up-i350-thermal-bringup-v7-0-ebf08ff2eddb@baylibre.com>
+ <20221018-up-i350-thermal-bringup-v7-4-ebf08ff2eddb@baylibre.com>
+ <4121bb6b-30db-7a23-f4c8-40afdda7a0b5@linaro.org>
+ <COTTJX635TNF.1WL2TEZN7VW9O@amjad-ThinkPad-T490>
+ <adfe41f7-00e5-876b-7803-3127919fba13@linaro.org>
+ <COUMF3IZ9Y63.LA3KFHJSUZIC@amjad-ThinkPad-T490>
+ <0644aede-c281-3919-50e0-4466f6587d81@linaro.org>
+Content-Language: en-US
+From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+In-Reply-To: <0644aede-c281-3919-50e0-4466f6587d81@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_084944_516043_6730824C 
-X-CRM114-Status: GOOD (  14.55  )
+X-CRM114-CacheID: sfid-20230119_090316_292742_40BD64CC 
+X-CRM114-Status: GOOD (  23.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,36 +109,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 19/01/2023 17:28, Alexandre Mergnat wrote:
-> Add the "mediatek,genio" compatible string to support Mediatek
-> SPI controller on the genio boards.
-> 
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> ---
->  drivers/spi/spidev.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/spi/spidev.c b/drivers/spi/spidev.c
-> index 6313e7d0cdf8..e23b825b8d30 100644
-> --- a/drivers/spi/spidev.c
-> +++ b/drivers/spi/spidev.c
-> @@ -702,6 +702,7 @@ static const struct spi_device_id spidev_spi_ids[] = {
->  	{ .name = "m53cpld" },
->  	{ .name = "spi-petra" },
->  	{ .name = "spi-authenta" },
-> +	{ .name = "genio" },
->  	{},
->  };
->  MODULE_DEVICE_TABLE(spi, spidev_spi_ids);
-> @@ -728,6 +729,7 @@ static const struct of_device_id spidev_dt_ids[] = {
->  	{ .compatible = "menlo,m53cpld", .data = &spidev_of_check },
->  	{ .compatible = "cisco,spi-petra", .data = &spidev_of_check },
->  	{ .compatible = "micron,spi-authenta", .data = &spidev_of_check },
-> +	{ .compatible = "mediatek,genio", .data = &spidev_of_check },
+Hi Daniel,
 
-Please run scripts/checkpatch.pl and fix reported warnings.
+On 12/29/22 16:49, Daniel Lezcano wrote:
+> On 06/12/2022 10:18, Amjad Ouled-Ameur wrote:
+>> Hi Daniel,
+>> On Mon Dec 5, 2022 at 8:39 PM CET, Daniel Lezcano wrote:
+>>>
+>>> Hi Amjad,
+>>>
+>>>
+>>> On 05/12/2022 11:41, Amjad Ouled-Ameur wrote:
+>>>
+>>> [ ... ]
+>>>
+>>>>>> @@ -1161,11 +1197,24 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+>>>>>>             platform_set_drvdata(pdev, mt);
+>>>>>>     -    tzdev = devm_thermal_of_zone_register(&pdev->dev, 0, mt,
+>>>>>> -                          &mtk_thermal_ops);
+>>>>>> -    if (IS_ERR(tzdev)) {
+>>>>>> -        ret = PTR_ERR(tzdev);
+>>>>>> -        goto err_disable_clk_peri_therm;
+>>>>>> +    for (i = 0; i < mt->conf->num_sensors + 1; i++) {
+>>>>>> +        tz = devm_kmalloc(&pdev->dev, sizeof(*tz), GFP_KERNEL);
+>>>>>> +        if (!tz)
+>>>>>> +            return -ENOMEM;
+>>>>>> +
+>>>>>> +        tz->mt = mt;
+>>>>>> +        tz->id = i;
+>>>>>> +
+>>>>>> +        tzdev = devm_thermal_of_zone_register(&pdev->dev, i, tz, (i == 0) ?
+>>>>>> +                                 &mtk_thermal_ops :
+>>>>>> + &mtk_thermal_sensor_ops);
+>>>>>
+>>>>> Here you use again the aggregation
+>>>> I addressed this concern in V6, could you please take a look and let me
+>>>> know what you think [0].
+>>>>
+>>>> [0]: https://lore.kernel.org/all/5eb0cdc2-e9f9-dd42-bf80-b7dcd8bcc196@baylibre.com/
+>>>
+>>> May I misunderstanding but AFAICS, this patch is setting the
+>>> mtk_thermal_ops if the sensor id is zero. The get_temp is computing the
+>>> max temperature in this ops which is what we don't want to do.
+>>
+>> Correct, but I think that is out of scope of this patchset, as the current
+>> driver already uses mtk_thermal_ops for sensor 0. The focus of this patchset
+>> is to add support for the other sensors.
+>>
+>> Besides, what do you suggest as a clean implementation if the current one
+>> no longer meets thermal core requirements ?
+>
+> IIUC, there is a sensor per couple of cores. 1 x 2Bigs, 1 x 2Bigs, 1 x 4 Little, right ?
 
-Best regards,
-Krzysztof
+MT8365 SoC has 4 x A53 CPUs. The SoC has 4 thermal zones per sensor. Thermal zone 0 corresponds
 
+to all 4 x A53 CPUs, the other thermal zones (1, 2 and 3) has nothing to do with CPUs. The cooling device type
+
+used for CPUs is passive. FYI, thermal zones 1, 2 and 3 are present in the SoC for debug-purpose only, they are not supposed
+
+to be used for production.
+
+
+Regards,
+
+Amjad
+
+>
+> If it is the case, then a thermal zone per sensor with the trip points and a cooling device for each of them.
+>
+> The two thermal zones for the big will share the same cooling device. The little thermal zone will have its own cooling device.
+>
+> If there is the GPU, then its own cooling device also with devfreq.
+>
+>
+>>> <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+>>>
+>>> Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+>>> <http://twitter.com/#!/linaroorg> Twitter |
+>>> <http://www.linaro.org/linaro-blog/> Blog
+>>
+>
 
