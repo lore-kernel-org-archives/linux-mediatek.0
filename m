@@ -4,80 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F0BBC004D4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 18:02:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42250C004D4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 18:20:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EQ1fSGGlGH77kXooVwbjybwU1LhFwJogktLoTx8jPAQ=; b=UyDjJ5uJdX6Y4RNUISANBAaWak
-	geGJjMBZkDXOeYlsRzbfwyuAr8uFUBtkIgSCp1eQ1ztYuqt305woX5So/yFBqSMVw5jOKnDcdzmZk
-	3fwKrKI3uAt69va6MfgLGQfjTl8t8MhFnq9ylL3oN+hNQ6KoZXV0ZWf7D/xVRTe41ko4dEWj/PY6g
-	qawFqzllV/OwhbuPea1ppqXMe1Bi12ILZrmZLLUkHmfYX7V0v9N4N38Z/sssrb2WVdU3Hplfefxfi
-	Msh+gcCQSfF1JvUb7S/Vx53ec3u2+DYcEbYVx93N7w3B5EeYrufkjKrf2i+o6Hb3rnGiRvJ2dpIGm
-	Hc01oyAg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oHH+KmVkm4uaS5su6DhQGdf280FMF9BCxat013P5oGQ=; b=0TiyMyXUl0AWE1FQkNhuAptjjg
+	aMQMmW8nhrcpYEfXeMiom2sZLdxcK/UKyDw7hl+mfD2mpICrsP2khvPJB8l3ndRGOS9q8W67YAHT0
+	8bs0h8IpU3Y/YmFjaMO/8avclsQcAdnvhndAagj7qPvr2jTH08RgWYquElxsr91UItzkLN39Blof/
+	/cPqKZ1hdHwJ8D7o+Xk3thtQvkyCf1Wk/UP9LVIMKXE46VbZC0MzKU+LlQ2iz1HUBlDgLe54q+54Z
+	vpDYwLkAvtpdcL4paApynEHzcpcCrfAnqtj47aEurzjHyZhJQL4g/m3OUdGCIuZQ26SsEFt+ODZEb
+	17oD8i3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIZFG-006RFg-Jk; Thu, 19 Jan 2023 18:02:38 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pIZWI-006WVF-Mh; Thu, 19 Jan 2023 18:20:14 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIZF2-006R8G-FD; Thu, 19 Jan 2023 18:02:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=EQ1fSGGlGH77kXooVwbjybwU1LhFwJogktLoTx8jPAQ=; b=pI+2t7jwoPpZRnajM4O1P19ieN
-	X0Jfq9jXSmfWk9ylymZ4CCVfB+giDvyUJYNqPnNtJgC0bx80o47LboLRQ9gPfEyoQkPItIH+WnJUq
-	cVmZA7Zfb28ztOAmNLtbbe7q/kFz71QddRcxSTdADbWf6uwoJaumjtFtSNhPGa8/qSpLUSyQ5qPg6
-	1UVJwF0GVWku3HlbG52Hh0oXV5AOnIcb8zQzjpGAv9nYDKy5zyBvgqOMuYt279RzIjlEzNTPY8wk6
-	Kdrn/AReujlpo7KlbERUj8zG6z6+HPBmv/B3mRE40zgHZDEH9Ybe0ejFwLUWDUy7uAClN9oEexWwI
-	apscp/ig==;
-Received: from ams.source.kernel.org ([145.40.68.75])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pIYph-000Nco-1z;
-	Thu, 19 Jan 2023 17:36:15 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 57844B826A7;
-	Thu, 19 Jan 2023 17:36:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5C02DC433D2;
-	Thu, 19 Jan 2023 17:36:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1674149789;
-	bh=EQ1fSGGlGH77kXooVwbjybwU1LhFwJogktLoTx8jPAQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Mz7rCjR/A33xwAO7ZrvKUN7jh8KtBbd7CBPKGiVSdyLBLmM+cwcl38xhjCKqv8ey6
-	 i9TkTBrT538e04b5/quBdE7b4XeTRQUEVPJ7EG09A5Y0FBRp7UYIlqin9YP7zj6CxP
-	 RM+FC0eKo8W6L8jB0pFZr2ZjOeWRxNy7M5srSVRBIyMIwSLpppt4+ZfM784Vk21gUs
-	 RsPxKj0NgF3FjMhNdhoW2YbOe4HsqpH3IorX9l22WD5lUDEqYvMPgGPx3Kn/987zuH
-	 1Zm4hvm/A9fKsJC5eo5yY64TPTfJ8oI7B68xbMpWixcnm5ObJENOhSBJDFI5DHjJvn
-	 RcMZ43COLKsjA==
-Date: Thu, 19 Jan 2023 17:36:25 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	Amjad Ouled-Ameur <aouledameur@baylibre.com>,
-	linux-mediatek@lists.infradead.org, linux-spi@vger.kernel.org
-Subject: Re: [PATCH v2 2/2] spi: spidev: add new mediatek support
-Message-ID: <Y8l/mQjjgKJiE1/F@sirena.org.uk>
-References: <20230118-mt8365-spi-support-v2-0-be3ac97a28c6@baylibre.com>
- <20230118-mt8365-spi-support-v2-2-be3ac97a28c6@baylibre.com>
+	id 1pIZW4-006WR7-DZ; Thu, 19 Jan 2023 18:20:04 +0000
+Received: by mail-wm1-x333.google.com with SMTP id l8so2220384wms.3;
+        Thu, 19 Jan 2023 10:19:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=oHH+KmVkm4uaS5su6DhQGdf280FMF9BCxat013P5oGQ=;
+        b=GqKp2vOVQlufREuR+mxKuUX/qXUZVhR/2fU4TQRP7zRuP3onF9SvxcIZUU12qbKKO3
+         GA74CUGvcgfj6xg9d0591RN7dfxwN3w4OPiF9QfYA/Fw4pL64+hAXaHEGkCtBr/nsHZ/
+         Ta7SSWWR89aEi1FET0Hx9aJPYmJmFGAedLZKagiMBQ5+tZcMP6WFARpaGl3pAQAoAnO3
+         FDJVcuUvZxnnBxSsfze+rlI0Wpe4dIqXmHjPYSUh6EooRGvn/QDZ1pEXoGwi0l2z5zPo
+         cAmbd+2ubz9AZW7mbV4O3DqfDoIXPKkCGf9foK+oJZ/Oe/3hM2+FeStvV+iIhkqCcEfZ
+         UNww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=oHH+KmVkm4uaS5su6DhQGdf280FMF9BCxat013P5oGQ=;
+        b=345pg8GtYg/JhHHVAnJLEUrO/onN5zS5kCzmJ2WUfDpZRhGl7c6WSCcn8ZDaRDtGus
+         jX+9JOs1plzLhS6XDAldj1CulxBvpDMwvQCIf/fa+p07747T2FVtwMgazTgFL+2yhGIy
+         KpD3+j66pz+3NRW6GWb+ztqXJchty0URcs6vPTgmYIfM2UA9/MSrJHep0aVhuqsLlTfB
+         UO+bBxJ6zzH/8xtqENlWFM1r/1NENBXPNQppimWRNYx1Z9/nO007zgrnaMcC2rFkg1r6
+         H0uGoZk/DIE/iduM/n4khuz/Pm3HdyZ6TIK//IMGlkd/4cX6UFMpCGGNR+vsMiJdhFgr
+         joyA==
+X-Gm-Message-State: AFqh2ko+/ARu6Z0s7vkPcNISU6sjRlKOMoFHFg4OhhrxtqBy3loVFdjP
+	WJsBMWs9ZfYx1IuJH9yN3iE=
+X-Google-Smtp-Source: AMrXdXutKZIpKraeZQVfKb2+7pXev/RBBlJWtd2oCakLdYQqUCD5lRtEWIx2JODT4tXHXXYajoe+mg==
+X-Received: by 2002:a05:600c:510d:b0:3da:f719:50cd with SMTP id o13-20020a05600c510d00b003daf71950cdmr10826371wms.18.1674152397010;
+        Thu, 19 Jan 2023 10:19:57 -0800 (PST)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id s7-20020a1cf207000000b003db11dfc687sm5464787wmc.36.2023.01.19.10.19.55
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 19 Jan 2023 10:19:56 -0800 (PST)
+Message-ID: <d580f1dc-e49f-48c9-30be-a0ef25ad1435@gmail.com>
+Date: Thu, 19 Jan 2023 19:19:54 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Jz0aOHbv75kB/Hqi"
-Content-Disposition: inline
-In-Reply-To: <20230118-mt8365-spi-support-v2-2-be3ac97a28c6@baylibre.com>
-X-Cookie: Serving suggestion.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v8 2/2] arm64: dts: mt8195: Add Ethernet controller
+Content-Language: en-US
+To: Biao Huang <biao.huang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>, "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Richard Cochran <richardcochran@gmail.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ macpaul.lin@mediatek.com, netdev@vger.kernel.org
+References: <20230105010712.10116-1-biao.huang@mediatek.com>
+ <20230105010712.10116-3-biao.huang@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20230105010712.10116-3-biao.huang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_173613_848699_1AC3C685 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20230119_102002_501708_F88CE1F4 
+X-CRM114-Status: GOOD (  13.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,31 +103,217 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---Jz0aOHbv75kB/Hqi
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 
-On Thu, Jan 19, 2023 at 06:28:20PM +0100, Alexandre Mergnat wrote:
-> Add the "mediatek,genio" compatible string to support Mediatek
-> SPI controller on the genio boards.
+On 05/01/2023 02:07, Biao Huang wrote:
+> Add Ethernet controller node for mt8195.
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 
-All my previous review comments stand, please don't ignore review
-feedback.
+Applied, thanks!
 
---Jz0aOHbv75kB/Hqi
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmPJf5gACgkQJNaLcl1U
-h9C0BAf+Jl+1E0pCscUWyq547PeayYiVt04DMkk+4q1qCXREpiJP/zLOicoEZCWz
-2xIkBo1hIB1RAJXIZWkrMO/kN5SbqsLQ+ySgMVaWK/Lp3aL0M8YyPF34pmEhLojN
-ly/WNvpWVwmdO6n6NGGsK1tgp7IE4pyEj9M08YmBcRbWzMddKO71u1YMgY+mmOcN
-NDEc2E1vmp4aWd22lsMmgtFlJgpRPAw0+/T6nA+XLdP4u3EvGo+Au3LOa3ij1xOA
-tWw3+wlro3nIC9+h0Iwy5rWLBzuaxMccUhM2ZEYAbj1a8Nq8yq8Of+7vlxOhiee/
-NdWsOYPhtLy6IuWthaMnaMi7vzliew==
-=uuJE
------END PGP SIGNATURE-----
-
---Jz0aOHbv75kB/Hqi--
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 77 ++++++++++++++++
+>   arch/arm64/boot/dts/mediatek/mt8195.dtsi     | 92 ++++++++++++++++++++
+>   2 files changed, 169 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+> index 4fbd99eb496a..6a48c135f0da 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+> @@ -78,6 +78,23 @@ optee_reserved: optee@43200000 {
+>   	};
+>   };
+>   
+> +&eth {
+> +	phy-mode ="rgmii-id";
+> +	phy-handle = <&ethernet_phy0>;
+> +	snps,reset-gpio = <&pio 93 GPIO_ACTIVE_HIGH>;
+> +	snps,reset-delays-us = <0 10000 80000>;
+> +	pinctrl-names = "default", "sleep";
+> +	pinctrl-0 = <&eth_default_pins>;
+> +	pinctrl-1 = <&eth_sleep_pins>;
+> +	status = "okay";
+> +
+> +	mdio {
+> +		ethernet_phy0: ethernet-phy@1 {
+> +			reg = <0x1>;
+> +		};
+> +	};
+> +};
+> +
+>   &i2c6 {
+>   	clock-frequency = <400000>;
+>   	pinctrl-0 = <&i2c6_pins>;
+> @@ -258,6 +275,66 @@ &mt6359_vsram_others_ldo_reg {
+>   };
+>   
+>   &pio {
+> +	eth_default_pins: eth-default-pins {
+> +		pins-txd {
+> +			pinmux = <PINMUX_GPIO77__FUNC_GBE_TXD3>,
+> +				 <PINMUX_GPIO78__FUNC_GBE_TXD2>,
+> +				 <PINMUX_GPIO79__FUNC_GBE_TXD1>,
+> +				 <PINMUX_GPIO80__FUNC_GBE_TXD0>;
+> +			drive-strength = <MTK_DRIVE_8mA>;
+> +		};
+> +		pins-cc {
+> +			pinmux = <PINMUX_GPIO85__FUNC_GBE_TXC>,
+> +				 <PINMUX_GPIO88__FUNC_GBE_TXEN>,
+> +				 <PINMUX_GPIO87__FUNC_GBE_RXDV>,
+> +				 <PINMUX_GPIO86__FUNC_GBE_RXC>;
+> +			drive-strength = <MTK_DRIVE_8mA>;
+> +		};
+> +		pins-rxd {
+> +			pinmux = <PINMUX_GPIO81__FUNC_GBE_RXD3>,
+> +				 <PINMUX_GPIO82__FUNC_GBE_RXD2>,
+> +				 <PINMUX_GPIO83__FUNC_GBE_RXD1>,
+> +				 <PINMUX_GPIO84__FUNC_GBE_RXD0>;
+> +		};
+> +		pins-mdio {
+> +			pinmux = <PINMUX_GPIO89__FUNC_GBE_MDC>,
+> +				 <PINMUX_GPIO90__FUNC_GBE_MDIO>;
+> +			input-enable;
+> +		};
+> +		pins-power {
+> +			pinmux = <PINMUX_GPIO91__FUNC_GPIO91>,
+> +				 <PINMUX_GPIO92__FUNC_GPIO92>;
+> +			output-high;
+> +		};
+> +	};
+> +
+> +	eth_sleep_pins: eth-sleep-pins {
+> +		pins-txd {
+> +			pinmux = <PINMUX_GPIO77__FUNC_GPIO77>,
+> +				 <PINMUX_GPIO78__FUNC_GPIO78>,
+> +				 <PINMUX_GPIO79__FUNC_GPIO79>,
+> +				 <PINMUX_GPIO80__FUNC_GPIO80>;
+> +		};
+> +		pins-cc {
+> +			pinmux = <PINMUX_GPIO85__FUNC_GPIO85>,
+> +				 <PINMUX_GPIO88__FUNC_GPIO88>,
+> +				 <PINMUX_GPIO87__FUNC_GPIO87>,
+> +				 <PINMUX_GPIO86__FUNC_GPIO86>;
+> +		};
+> +		pins-rxd {
+> +			pinmux = <PINMUX_GPIO81__FUNC_GPIO81>,
+> +				 <PINMUX_GPIO82__FUNC_GPIO82>,
+> +				 <PINMUX_GPIO83__FUNC_GPIO83>,
+> +				 <PINMUX_GPIO84__FUNC_GPIO84>;
+> +		};
+> +		pins-mdio {
+> +			pinmux = <PINMUX_GPIO89__FUNC_GPIO89>,
+> +				 <PINMUX_GPIO90__FUNC_GPIO90>;
+> +			input-disable;
+> +			bias-disable;
+> +		};
+> +	};
+> +
+>   	gpio_keys_pins: gpio-keys-pins {
+>   		pins {
+>   			pinmux = <PINMUX_GPIO106__FUNC_GPIO106>;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> index 5d31536f4c48..28b3ebd145bf 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -1046,6 +1046,98 @@ spis1: spi@1101e000 {
+>   			status = "disabled";
+>   		};
+>   
+> +		eth: ethernet@11021000 {
+> +			compatible = "mediatek,mt8195-gmac", "snps,dwmac-5.10a";
+> +			reg = <0 0x11021000 0 0x4000>;
+> +			interrupts = <GIC_SPI 716 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			interrupt-names = "macirq";
+> +			clock-names = "axi",
+> +				      "apb",
+> +				      "mac_main",
+> +				      "ptp_ref",
+> +				      "rmii_internal",
+> +				      "mac_cg";
+> +			clocks = <&pericfg_ao CLK_PERI_AO_ETHERNET>,
+> +				 <&pericfg_ao CLK_PERI_AO_ETHERNET_BUS>,
+> +				 <&topckgen CLK_TOP_SNPS_ETH_250M>,
+> +				 <&topckgen CLK_TOP_SNPS_ETH_62P4M_PTP>,
+> +				 <&topckgen CLK_TOP_SNPS_ETH_50M_RMII>,
+> +				 <&pericfg_ao CLK_PERI_AO_ETHERNET_MAC>;
+> +			assigned-clocks = <&topckgen CLK_TOP_SNPS_ETH_250M>,
+> +					  <&topckgen CLK_TOP_SNPS_ETH_62P4M_PTP>,
+> +					  <&topckgen CLK_TOP_SNPS_ETH_50M_RMII>;
+> +			assigned-clock-parents = <&topckgen CLK_TOP_ETHPLL_D2>,
+> +						 <&topckgen CLK_TOP_ETHPLL_D8>,
+> +						 <&topckgen CLK_TOP_ETHPLL_D10>;
+> +			power-domains = <&spm MT8195_POWER_DOMAIN_ETHER>;
+> +			mediatek,pericfg = <&infracfg_ao>;
+> +			snps,axi-config = <&stmmac_axi_setup>;
+> +			snps,mtl-rx-config = <&mtl_rx_setup>;
+> +			snps,mtl-tx-config = <&mtl_tx_setup>;
+> +			snps,txpbl = <16>;
+> +			snps,rxpbl = <16>;
+> +			snps,clk-csr = <0>;
+> +			status = "disabled";
+> +
+> +			mdio {
+> +				compatible = "snps,dwmac-mdio";
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +			};
+> +
+> +			stmmac_axi_setup: stmmac-axi-config {
+> +				snps,wr_osr_lmt = <0x7>;
+> +				snps,rd_osr_lmt = <0x7>;
+> +				snps,blen = <0 0 0 0 16 8 4>;
+> +			};
+> +
+> +			mtl_rx_setup: rx-queues-config {
+> +				snps,rx-queues-to-use = <4>;
+> +				snps,rx-sched-sp;
+> +				queue0 {
+> +					snps,dcb-algorithm;
+> +					snps,map-to-dma-channel = <0x0>;
+> +				};
+> +				queue1 {
+> +					snps,dcb-algorithm;
+> +					snps,map-to-dma-channel = <0x0>;
+> +				};
+> +				queue2 {
+> +					snps,dcb-algorithm;
+> +					snps,map-to-dma-channel = <0x0>;
+> +				};
+> +				queue3 {
+> +					snps,dcb-algorithm;
+> +					snps,map-to-dma-channel = <0x0>;
+> +				};
+> +			};
+> +
+> +			mtl_tx_setup: tx-queues-config {
+> +				snps,tx-queues-to-use = <4>;
+> +				snps,tx-sched-wrr;
+> +				queue0 {
+> +					snps,weight = <0x10>;
+> +					snps,dcb-algorithm;
+> +					snps,priority = <0x0>;
+> +				};
+> +				queue1 {
+> +					snps,weight = <0x11>;
+> +					snps,dcb-algorithm;
+> +					snps,priority = <0x1>;
+> +				};
+> +				queue2 {
+> +					snps,weight = <0x12>;
+> +					snps,dcb-algorithm;
+> +					snps,priority = <0x2>;
+> +				};
+> +				queue3 {
+> +					snps,weight = <0x13>;
+> +					snps,dcb-algorithm;
+> +					snps,priority = <0x3>;
+> +				};
+> +			};
+> +		};
+> +
+>   		xhci0: usb@11200000 {
+>   			compatible = "mediatek,mt8195-xhci",
+>   				     "mediatek,mtk-xhci";
 
