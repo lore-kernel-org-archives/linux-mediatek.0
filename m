@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1689C46467
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 16:20:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CA61C004D4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 16:22:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AI3KPUIQBnzfJy+fBgM0aRds3MLa6M/rKQfXw1R8FE4=; b=ATWiUaioLUup8S4FJOdThmqA16
-	TDjwDzjKVGgZNWoYebHJY0W+Ts6xoqoqPYNWjwOhDEaMAJB/ORZOyykIVFKz6WMP1FDgxpfYUwAR5
-	zgxLs0KJlA7cVzbYTwl9136Lnf3Cs92QZAHtBjbouz5Wk/I8v2VR4L8h/Xz/P4ow6grtAD+shFueQ
-	qGomQJfDCg3RPB12ufpaoKGShujQF2Ie4n8lCXtEBVMZz161ABaJw95RfNZ115VTHFxo632IPt9j/
-	q7fCJbm9FDMlH6ZXpoqFPLtAsosgq4VblifvNYNasrnB32utHc2DTsgIwsGBYr6Fx452uhRrmMVV5
-	Q8RyLe0g==;
+	bh=zCpAl90W827N8CpD/RGvFok8HJmi1E+2gm0/TKEaZeg=; b=NSq2BYUDwBZ1vS5/Cp8VH2Wi1g
+	I0b0TqGNmyMO8HVH3103BQ6ar7Bb0QlfYru00QGq86IU1AjP/NJ5XO6FHm0hqMNBTLwbeQw59RUNw
+	MSmwGgxVKGtuRkty76mS1ZS2zdy+B3CKxNaX8yFXb/WPsdG8pGzSHG9lEfFnDr8Uk98ML911Q4o6F
+	3i5M7BAq0N3owmCo6sIloMlosh01FHOjzlzSXQwzOyQ1OfIs0uBNs8xOmJki/KS98ygxHTmbBYQ6V
+	O/lndoQtP4P3aqfghadE5PKRgJPzCXRHvM4pir4D2c4DSn8upnYS/VS2jEpiZqyCTa0+BpcGOt6jy
+	JO/a1MIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIXeZ-005vFd-1i; Thu, 19 Jan 2023 16:20:39 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pIXgD-005vww-F1; Thu, 19 Jan 2023 16:22:21 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIXe7-005v5K-Jc; Thu, 19 Jan 2023 16:20:13 +0000
+	id 1pIXft-005vs4-QW; Thu, 19 Jan 2023 16:22:03 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 2485761C7B;
-	Thu, 19 Jan 2023 16:20:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 919C2C433F0;
-	Thu, 19 Jan 2023 16:20:05 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 5F0FA61CB6;
+	Thu, 19 Jan 2023 16:22:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44106C433EF;
+	Thu, 19 Jan 2023 16:21:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1674145210;
-	bh=rtqy/4jzWUKYzufv20wtz3Q4NRBKbXZ0tWFYpyC86SE=;
+	s=k20201202; t=1674145320;
+	bh=lYW4XXPu/4M0mVDoNevIYpipR/KmVNL/JlKftb1SEaY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=VQoFOGi7OdAifp5AcLc3j3TfX3u3pABncPkLJ7uhzc9S7buteUyqpaM7r+fwN31Fx
-	 7FwT9y4UgsktGOa0c5BEwEKOq6IMBVdSIMar4nWZumQ3/5nGK7E2n7dvyZQ1LMyaxG
-	 xxYZqiiBXRt05tPS4troo2WsU8Rz1fqzoPGtHP3Z4Pw8zNWHF+QF4jrY+Wu/OWAlVd
-	 DYbFfFMDMp9HQfKtPgPwBYhN8VAFT+BHaz3ODidaGTXuePCoCwJn8yK83cUpKLcfUQ
-	 TYvBFXPqrxYvgMm2XGPQCRb3YScL6A4Ro4F2RtCmlHfpTvDJW9JhfGe3Ik9WUT+AHu
-	 hqWoqd+lqnecA==
-Date: Thu, 19 Jan 2023 16:20:02 +0000
+	b=HSLIvmR/6lbKxtNEGDKqFJHpYJrHXPVXBb5eKJEaxAKzlWVtnlNO5VR0D/m4BNqh4
+	 VQNjcq/k8Wwitf12CSgVQwAU6sxWHvQJaFtDM+W1lZk3QCZarlHP6ZoTuNtHIRusGg
+	 9nvqPV7lBz0XgTHOIm/Oe8tSJG9/r9uagCEmixAJRa6G111CMCYn0+vNUC3PsD7OUu
+	 OmHlL7rq24an7huWcZcyMrk5M//6ecRx3bJTgXeRRJeuRgSaXS05NNXHIQhnaVdpeU
+	 WEXs1WWcgjuha62levsHsaBs9VszzQiiP3PrcbSEKJwGz7XqIKWy+7lXGSeYuwfZ4a
+	 JxUGk1vGQazzA==
+Date: Thu, 19 Jan 2023 16:21:52 +0000
 From: Lee Jones <lee@kernel.org>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Cc: Gene Chen <gene_chen@richtek.com>, linux-leds@vger.kernel.org,
@@ -55,20 +55,21 @@ Cc: Gene Chen <gene_chen@richtek.com>, linux-leds@vger.kernel.org,
 	Vladimir Oltean <olteanv@gmail.com>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Subject: Re: [PATCH v4 05/11] leds: bcm6358: Get rid of custom
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v4 06/11] leds: mt6323: Get rid of custom
  led_init_default_state_get()
-Message-ID: <Y8ltsrSpD4bMT+qz@google.com>
+Message-ID: <Y8luIOy4bbBu5OGr@google.com>
 References: <20230103131256.33894-1-andriy.shevchenko@linux.intel.com>
- <20230103131256.33894-6-andriy.shevchenko@linux.intel.com>
+ <20230103131256.33894-7-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230103131256.33894-6-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20230103131256.33894-7-andriy.shevchenko@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_082011_757999_C34D1CA4 
-X-CRM114-Status: GOOD (  11.59  )
+X-CRM114-CacheID: sfid-20230119_082201_954027_2AC955CA 
+X-CRM114-Status: GOOD (  11.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,10 +90,10 @@ On Tue, 03 Jan 2023, Andy Shevchenko wrote:
 > Use it instead of custom implementation.
 > 
 > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  drivers/leds/leds-bcm6358.c | 32 ++++++++++++++++----------------
->  1 file changed, 16 insertions(+), 16 deletions(-)
+>  drivers/leds/leds-mt6323.c | 30 +++++++++++++++---------------
+>  1 file changed, 15 insertions(+), 15 deletions(-)
 
 Applied, thanks
 
