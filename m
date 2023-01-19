@@ -4,95 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF4D7C6379F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 17:29:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A54D6C004D4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 17:34:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:Date:From:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SiCKnh1A0rDMxjwJ+8FnUzsil063oz6GksT8G3Rwl1Q=; b=dLzD7oH9ptCPn1rdMBWYaibklH
-	KY/KxFKk8VqZqM13CYb5qYEbp5UhVaFFaOnmJkg6z9imAXlkKEqeI/L8cQupKR41N/ndXiKsbkJK8
-	ZajkYx+OA36cyZgQZRme87rTgkeKMLKW+ZC2P28DcusFoeLKv4wcj/scm+ruBWmIXj8uw3W9ML0eX
-	5QIOoGS5rAXyxYrXa1n7YTak3ZP1qtfOLWyFqVot0nQuUcGi5aWucoXGO2+V846akggcfb2Q5ieR4
-	P6gKnxd85bFAaEThq++ABhLJA95/Q3knLyOgj/+q1iIke66ZC3OaLIUXxTirQ1juC0KruQKLUaCnG
-	i9/pMFsg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HRkHxltOADy9ynfqvAg9dqzLPh81gN0Pd9b3KEsiRcI=; b=e3kzcbEHfRRCxueSKJzcBJirpl
+	LkNVQOAueONPBMGerEqKBYjem2xn3mjMJublH+hb1TOVoi4JTdQNrZV38gUl3Ng+7Jr/PGsb+ebJ7
+	R/vxG5+fWHMXEZ5FhfhpeOciflQMxz29/p569n9DpmvLj028o+KbhnFkNYKiFIUyLuSN+dOr5cBO0
+	Zyl6ykL7EIw2Y43xsFV4LSDihUuaGY+4tW2rI8wWZOT8ruTUOkEvdhDAuq8jJoIIuLm5i1neHDyTV
+	4czcHGtRIZUM1L8yYil8eYGRppskcJ/ODBZXdh2IYkC6/Fl4f4eqsb5g89r3oGOoi8sga0UEavqbK
+	nCBfoOeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIYjG-006HI4-Q3; Thu, 19 Jan 2023 17:29:34 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1pIYnW-006J7j-Gn; Thu, 19 Jan 2023 17:33:58 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIYiN-006Gqd-Ax
-	for linux-mediatek@lists.infradead.org; Thu, 19 Jan 2023 17:28:41 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id c10-20020a05600c0a4a00b003db0636ff84so1829253wmq.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 19 Jan 2023 09:28:36 -0800 (PST)
+	id 1pIYnA-006IzW-0g; Thu, 19 Jan 2023 17:33:37 +0000
+Received: by mail-wm1-x331.google.com with SMTP id l41-20020a05600c1d2900b003daf986faaeso1816822wms.3;
+        Thu, 19 Jan 2023 09:33:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:message-id:date:from:content-transfer-encoding:mime-version
-         :subject:from:to:cc:subject:date:message-id:reply-to;
-        bh=SiCKnh1A0rDMxjwJ+8FnUzsil063oz6GksT8G3Rwl1Q=;
-        b=LNyDZCFVPiujevJ73s6D8i8VYTVUrPVuBfnKCz/1eF9v8zJ1YHo2X+2a8USNAxW2Pf
-         1TfCKKNetUvikg8WC6XF9Hz9zA1NsativSJ9hCXGTsAbP3GbI59uTPtZVaola4KBBepZ
-         X4cb9ntmYcm0ryvauWzvktBUqVLK9q/UEPS8cuOt3cTIwcBgls+/1vOteQRJucRyJpv8
-         sLp9akoqJWIgfLE+djMg96Twbmp24gGNnZQom/lotQm5G2QDHIs01iiEFRQ/iGAaeJyh
-         Hhe7XFnEE61hahC0nLxuqhzPaUshHoB/CGwBSRAt0C9RGCr3MMq5zz3f/c7oiES+nUTa
-         JZcg==
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=HRkHxltOADy9ynfqvAg9dqzLPh81gN0Pd9b3KEsiRcI=;
+        b=pGwcN8w2cNHtPOjLhb/xHdlexc8kF1Umz+hd6UPmihuPQ4CJlyjDxot5gJT6uZoL15
+         EXEIikiO4T4xVDbPMpcFMFqGtxm9/cSYmGC3iSSKzwpRwTwQb4NuvpRYy4uAjUrrhT8E
+         CZDi5r6xOu+KgIT/93EGOtrNFI7jCDGZEyH+1ZxmfuR2Har04fhiXFfcfo9FP0ni18zs
+         AABofBkOysQnILml+tMmEneuD6doMu2yZAOrj3H0J3lTMImIUVivnuYInSLiZfoPxmg4
+         3Dbw8D1rzxRIjbQuX9495G8tmsmbnADmD1tk5wRRIXnbFWvC3PDAuiq5JCLpFlh79+8q
+         3PUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:message-id:date:from:content-transfer-encoding:mime-version
-         :subject:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=SiCKnh1A0rDMxjwJ+8FnUzsil063oz6GksT8G3Rwl1Q=;
-        b=MUIN4uh9b9CxygouUjEQjYlMaIw2JK3IWiqsrNFPOA9izOaT0v/1oeB/34zWX32+iW
-         i3X3GVqqnmu8l/o4diAU7+tX54nkDxvbopzE2YMBLkENecJYfuONKOh/zKm6HaGMcWUZ
-         tA1jLscRPxNS6aLQwK+UH7HHSVCgZquFkLWFCJ+tVWCfcIwXYi5asPICLbUrIafA68eI
-         6D6xKWE5cja5j9mKWEekZeRW4pDins08BiGsaWfc1z9OMmsolXcWW2pA3V1KQ2fxEkI7
-         4qLGwmWOM/iYc6fp0GRw52luukc8OVCDcW1py6KcovQDf5pidAKrKlRt3sd5m7Jne3rb
-         jIoQ==
-X-Gm-Message-State: AFqh2kqgeqiiTBgyx1BRzdDsxdClmn2fcA92zmL0cXvRtXCCG3juj5Pu
-	EcBljYkOAhFIy65MQ7CtkHMBaA==
-X-Google-Smtp-Source: AMrXdXuzWfZ4bHJUCis4rIhlmdVCuixhWWJZXp5n2L6sMuCx+1lBtA//Znp4g3Gq1IVPthS7DYhCkQ==
-X-Received: by 2002:a05:600c:c16:b0:3da:26e5:10b6 with SMTP id fm22-20020a05600c0c1600b003da26e510b6mr11369469wmb.30.1674149314614;
-        Thu, 19 Jan 2023 09:28:34 -0800 (PST)
-Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id h11-20020a05600c314b00b003db2e3f2c7csm124186wmo.0.2023.01.19.09.28.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Jan 2023 09:28:33 -0800 (PST)
-Subject: [PATCH v2 0/2] Add MediaTek MT8365 SPI support
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=HRkHxltOADy9ynfqvAg9dqzLPh81gN0Pd9b3KEsiRcI=;
+        b=WJOLPchBqcmTioArHljJIrMeiBoaPRs1U0GCXeu25/CqxgLOIveEzDxVRxLkY/CcUs
+         UtL3oe/5iT3b90Wg1SvMnZt/LM6LhXwlhAYIWVFhZAis7g0wa/ZwB+XsmkXFPvJwT7HW
+         fcDQykuqQVQVKTLN2lFB2Ls7wPLgrtGbtDUj9SdqjC6+DBPHVqUNubOMDXBQjsxdxaX2
+         ng6hFUOsMRarai+udEOWhwf08QuTRw/mQGc7g8X7i7+Jjl+8zviGSEzpiaAj+O0dNR8p
+         MRndUGvD2k1EB1ANpnQMAyAmWm9fp33pIrHBA2G6DEJsXISLl+SYrkkj1xubM0Jfbj3V
+         tvXg==
+X-Gm-Message-State: AFqh2koN5xpRGsfXvTuKh75y/qI/lxCJzAQOIE6tFjHt6QhDzkKGEife
+	GUnJL/1mqtPhGVKkNa67C+Q=
+X-Google-Smtp-Source: AMrXdXv2+4MHflMXeHtA9NOmShcNOhoq7h9Pm3HghF12eXjmubTmiKbdJIrzRJazNaZnB8yCo/n5tg==
+X-Received: by 2002:a05:600c:198c:b0:3db:392:ecee with SMTP id t12-20020a05600c198c00b003db0392eceemr7141224wmq.31.1674149614566;
+        Thu, 19 Jan 2023 09:33:34 -0800 (PST)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id f24-20020a05600c491800b003db0ad636d1sm4995466wmp.28.2023.01.19.09.33.33
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 19 Jan 2023 09:33:34 -0800 (PST)
+Message-ID: <fe2e5a9c-2505-5a95-d65a-bac387f4ea71@gmail.com>
+Date: Thu, 19 Jan 2023 18:33:32 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v1 1/2] arm64: dts: mediatek: mt7622: Add missing
+ pwm-cells to pwm node
+Content-Language: en-US
+To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ thierry.reding@gmail.com, krzysztof.kozlowski+dt@linaro.org
+Cc: robh+dt@kernel.org, john@phrozen.org, sean.wang@mediatek.com,
+ linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20221128112028.58021-1-angelogioacchino.delregno@collabora.com>
+ <20221128112028.58021-2-angelogioacchino.delregno@collabora.com>
+ <20221202180932.5k3vymrwds5ssivq@pengutronix.de>
+ <20230117213919.56cl74ffxzdpdcgp@pengutronix.de>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20230117213919.56cl74ffxzdpdcgp@pengutronix.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-b4-tracking: H4sIALJ9yWMC/32NQQqDMBBFryKz7pQkJqJd9R6li0kcakATSaIg4t0beoCuPu/D+/+EzMlzhkdzQu
- LdZx9DBXVrwE0UPox+rAxKqFZI2eNS+rYzmFePeVvXmAqKceisM4Y0CaiipcxoEwU3VTVs81zLyecS
- 0/E72mWN19/NXaLAXitSko3Qg35aOmZvE99dXOB9XdcXy2eP+LwAAAA=
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Thu, 19 Jan 2023 18:28:18 +0100
-Message-Id: <20230118-mt8365-spi-support-v2-0-be3ac97a28c6@baylibre.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: linux-arm-kernel@lists.infradead.org, Alexandre Mergnat <amergnat@baylibre.com>, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, Amjad Ouled-Ameur <aouledameur@baylibre.com>, linux-mediatek@lists.infradead.org,
- linux-spi@vger.kernel.org
-X-Mailer: b4 0.10.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1635; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=dnb60EIwMZF/t+qpJpOhEHQaGAuRMDbKO4dBLwI/lsY=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBjyX3BW9YqoQgrhB3ntOOv0c01jfvNFgBDq3Hjp16A
- IDcYNZKJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCY8l9wQAKCRArRkmdfjHURdTMD/
- 4vL5RVu602wStR5BIiJRPHWR2ipZln37Rd1Uxu4wsWtBJcIYnwimBbnuzSrzprXdef2u5RMj145cc5
- 186M96G/b999VDfbUtvejkTzAQkOVCOXL0mPlm+tcCqeuqPuftIFrswP5Tv5bDbk8uO8nVLONIeqAx
- xVGEe+oqw27aDUlA2bJxMlBFSqYcvSvhPtp7ZERwwJuoHMiO+HngE/YrhkPB9MGUvTrkEXXN90lOFo
- m/QDs/httd7vB21rsdMQvQJtVmMAxq1amDFfXirs6pEO/sKWNgwmsOx2Tqak3CoMEDVqWYJZvOdqo/
- y0gYXG3Okazu4vleANuHxGk6maIutIlCBvn8qChA08zD7zP0x5zroIqHrSrHmRjLcUa0ecvGBXU7XN
- WSjWyNvvagGFafo+iuWm1ZSErYAfS24KTQUrcflfsPQ524KnEOs8Sav8bzWsT9CUHJnTjcpW2da0l0
- PzGyhCVKPXMZZ9LaGV6FcCZEO0f3Vb2n6DrrySNOzVkT1JrVCo+fmEnf5w8s0K178GW8xE5EI1RS3Q
- IfFbVlFRzy0zY4CoNe4p2LlXz0z6D/CtzV21kh0H2SmGi2EbWVaMGf3KI2MCbQ6DxqomeVtNGz+nS0
- UlWwYQcPf+9B+Ivq1yNHAgttYMvG7B7ruEVYB9H6HWts88rVYxZCI2kDMX5g==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_092839_471377_F965BBB1 
-X-CRM114-Status: GOOD (  13.72  )
+X-CRM114-CacheID: sfid-20230119_093336_119538_A8F2A61D 
+X-CRM114-Status: GOOD (  17.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,54 +99,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-This patch series adds SPI support for MT8365-EVK board.
-The SPIDEV is enabled, it can be used through the board pin header,
-as described directly on the PCB.
 
-This series depends to another one which add support for
-MT8365 SoC and EVK board. Link [1].
 
-Test:
-- Loopback MOSI and MISO pins
-- Issue the following command:
-spidev_test -D /dev/spidev0.0 -v
-- RX line should be the same as TX line.
+On 17/01/2023 22:39, Uwe Kleine-König wrote:
+> Hello,
+> 
+> On Fri, Dec 02, 2022 at 07:09:32PM +0100, Uwe Kleine-König wrote:
+>> On Mon, Nov 28, 2022 at 12:20:27PM +0100, AngeloGioacchino Del Regno wrote:
+>>> Specify #pwm-cells on pwm@11006000 to make it actually usable.
+>>>
+>>> Fixes: ae457b7679c4 ("arm64: dts: mt7622: add SoC and peripheral related device nodes")
+>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>> ---
+>>>   arch/arm64/boot/dts/mediatek/mt7622.dtsi | 1 +
+>>>   1 file changed, 1 insertion(+)
+>>>
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+>>> index 146e18b5b1f4..f321c6d0fd7c 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+>>> @@ -435,6 +435,7 @@ uart3: serial@11005000 {
+>>>   	pwm: pwm@11006000 {
+>>>   		compatible = "mediatek,mt7622-pwm";
+>>>   		reg = <0 0x11006000 0 0x1000>;
+>>> +		#pwm-cells = <2>;
+>>
+>> 3 should be possible, too. The driver does only support one
+>> polarity, so it's not really needed, but would be nice for consistency?
+>>
+>> Thierry, what's your take here?
+>>
+>> Other than that: Who would pick this up, I assume it to go via an ARM
+>> tree together with the 2nd patch in this series?
+
+The DT patch should go through my tree once all questions are answered and the 
+dt-binding patch got accpeted by PWM maintainer.
 
 Regards,
-Alex
+Matthias
 
-[1]: https://lore.kernel.org/linux-mediatek/20230101220149.3035048-1-bero@baylibre.com/
-
-To: Rob Herring <robh+dt@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-To: Mark Brown <broonie@kernel.org>
-Cc: devicetree@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-spi@vger.kernel.org
-Cc: Amjad Ouled-Ameur <aouledameur@baylibre.com>
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
-Changes in v2:
-- Add Amjad Ouled-Ameur SoB.
-- Link to v1: https://lore.kernel.org/r/20230118-mt8365-spi-support-v1-0-842a21e50494@baylibre.com
-
----
-Alexandre Mergnat (2):
-      arm64: dts: mediatek: add spidev support for mt8365-evk board
-      spi: spidev: add new mediatek support
-
- arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 24 ++++++++++++++++++++++++
- drivers/spi/spidev.c                        |  2 ++
- 2 files changed, 26 insertions(+)
----
-base-commit: 8b6cfcce3ce939db11166680a57253c39110f07e
-change-id: 20230118-mt8365-spi-support-0d96bc55a4a0
-
-Best regards,
--- 
-Alexandre Mergnat <amergnat@baylibre.com>
+> 
+> The questions here are still open and both patches unapplied. :-\
+> 
+> Best regards
+> Uwe
+> 
 
