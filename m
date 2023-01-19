@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E777BC38142
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 04:45:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A3DBC00A5A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 04:54:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Subject:To:From
 	:Date:References:In-Reply-To:Message-Id:Mime-Version:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RA62djbRjHAtR5eYDGCg3s9PgydQzyaEPXFw3P5ADCE=; b=1wVytqmR4vxbPPPxXmLuw/U1uH
-	G7xTY8eWe1bbHNOFvfvRyRZcXkodkxJ+4KVNFCSFn54y/2RemY1wBXHeSN9oNb6MuI6dXbCiho/c+
-	JiUM5vPGXm9f4YElfhSqSj7N3EWeSNa1SmtFYJ2rG+EW8zakybn21cmRrIwjh9JL5K7Ceiv80szW9
-	Ip2aezpRHQi8t+xu2c9yei2E+nRjZxooEW06rmm0H05zoxLg3OF6RfoyG7IjYS119/lAeJWPWnUn3
-	GIR/kV9Pv8xFM0rKO9XqsO3cMP515Ple1ZBHEZ3/5B4VrBwRH4gH4k5MKeWfbNLjEYyB0mexSok7i
-	1kAccijw==;
+	bh=Jp0nEIifZiHOJSvV20z7BP6fpn/Kau5COB1QREBO070=; b=Ypp0QXlmMaQ4hwosZLf80YNQXZ
+	m3iNx4+T0T3ol2G7U5WgI6ADG9u50CwdFNitnOagqr110EkrBbHkL0O6brt7upVvnrA5r/6XZNWK2
+	RLENt5t/1SSiijMBnE1E+HlHA63eT7M4pbswW7GF/QgwSsmBnWsLNbTTbdYy3AlxUVTENzPlC1sM3
+	5rdDr3BcNuwg8dBLGVRb1jfLW0AQT+ZO0xdsI7qP7O8M1nYthHRiKvJtnhB0J5zYjPoelJvomG/r6
+	Ry01xG8wH22Wnyn2DAPIIuv5FTLqkecUX3rCtBwcaQ7InBvLZeR72ZeL9Juc7fUZRE/sJmfmt/M6g
+	8Ov338Iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIMna-003bWj-Iq; Thu, 19 Jan 2023 04:45:14 +0000
+	id 1pIMwR-003c5O-02; Thu, 19 Jan 2023 04:54:23 +0000
 Received: from wnew2-smtp.messagingengine.com ([64.147.123.27])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIMnV-003bV3-Bg; Thu, 19 Jan 2023 04:45:11 +0000
+	id 1pIMwN-003c4X-3d; Thu, 19 Jan 2023 04:54:20 +0000
 Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
-	by mailnew.west.internal (Postfix) with ESMTP id 6BA982B067C3;
-	Wed, 18 Jan 2023 23:44:59 -0500 (EST)
+	by mailnew.west.internal (Postfix) with ESMTP id B19B52B067FE;
+	Wed, 18 Jan 2023 23:54:14 -0500 (EST)
 Received: from imap50 ([10.202.2.100])
-  by compute6.internal (MEProxy); Wed, 18 Jan 2023 23:45:03 -0500
+  by compute6.internal (MEProxy); Wed, 18 Jan 2023 23:54:18 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
 	:content-type:date:date:from:from:in-reply-to:in-reply-to
 	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm2; t=1674103499; x=1674110699; bh=RA62djbRjH
-	AtR5eYDGCg3s9PgydQzyaEPXFw3P5ADCE=; b=IpsjyOTlH5j8QOByEhfxxZUtbb
-	xqJnmFVSTytXcx6+tFAO3hWlFS49HpirZWOhOk39sVNksgD8Wm6hZyp2+LY/ozDJ
-	nddtGSxVtD1rdIyA84vx/4Xt2hiZO7fWNvHBA6DKXOG7MXRFyyeZVhASiGL8HLac
-	A0t1NiaaMb87bwccNz8KL+E9QiYVq19xG4mDRXgK6VvhAZ1Y+OBbVRkqyMkSRf7b
-	xKemIdRdemThaumc9Vs279Bb41I1dL0iSNSwesVcSAxTCCq6VkpOwps9qrSbnDZr
-	ftWte7zHHNTOdwMJRZTkdgr6KHk2iDMWRon8PBm+H93LmvjNCyxWOW6Tm2qA==
+	:subject:to:to; s=fm2; t=1674104054; x=1674111254; bh=Jp0nEIifZi
+	HOJSvV20z7BP6fpn/Kau5COB1QREBO070=; b=vbzAmfBKcFB8AOPr4uXDMgqmk5
+	clGM2aj6FMScjZ6BbYJ+vgybqjKJNAWyqXoaaHoUIt+fa6G2aKB5MYVrtEN6rPNw
+	ekHMUtQGMwWAlmkeBiBXp+sCff3eggXGnpVQO/X1J5BPs5uX52TTL283/vOkPyB0
+	I/5NwNQAp/4ee9SMINakabvXev/nvmqvQGDZknkUWk/5wDea0l3I8ahJM/vXvMrR
+	/MSGxZXhPg44kssCVdmjkq+zTp77ktyOGZ7CI4ekq+w7V9XPJaUt1B/mKNP4C++u
+	Ky4p8qnKmh7u0gQS3CuarZ2ZEAc2FeENsuwYbiZ2eM99ZWeA4BQCn5JykGnA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:content-type:date:date:feedback-id
 	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
 	:mime-version:references:reply-to:sender:subject:subject:to:to
 	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm3; t=1674103499; x=1674110699; bh=RA62djbRjHAtR5eYDGCg3s9PgydQ
-	zyaEPXFw3P5ADCE=; b=FdpetIHX8CEoHNlkaO1BpYfDpEIGIgh42HuArpleoZGH
-	n/nTrqA1ZGkEXV8YRYx7IkNBTA0Wd6oCif2OnCKlmGcKXI2+dGsJ+AG5vs2yaOTd
-	5LbB72NwDjBNo2JsPs52Z56hfDFZ6eXA9pUQEgw9zYodf3OfLNvNX/RzfDbwlrVZ
-	YEVSG4fmJXghz+Y2qoZm5BcJGZf+IOlG2Fu5Sesv0ZSbGbDnH8a6TSsT3ywZuQej
-	5S/FRmiOgdtHTCL7cs9cuyVIrFdbJLAHy+NIm33+MuH+QERmydfahOp3nzLDoUqf
-	4QUpN1aaUfPtSKQFojX4Q+L74Y9iXsglLup0b0UKaQ==
-X-ME-Sender: <xms:yMrIY8RhERCQ4jB3QGK1K7UB0n9GpfcRnvNefwkC33VfPIV7pUdCrA>
-    <xme:yMrIY5zU4tWYLIxcSqUPg_NHC_xOsPf4-M8m1QeE2sk8kBkD_7bIiL_vH9iWx-mYZ
-    gGn5bcarqRVa8XF8Q>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddtledgjeehucetufdoteggodetrfdotf
+	fm3; t=1674104054; x=1674111254; bh=Jp0nEIifZiHOJSvV20z7BP6fpn/K
+	au5COB1QREBO070=; b=WojTXSbjvSW4xND20l+X/zxuGH6YT45jEqaQ0oGenJWw
+	InBnhXltRrpW/0COYHV0q+an3JKo0Ygxh8kxhPLtEAvsUMBrLxLYXDExhBjaKsKh
+	tMfMOp0ZZLTHDhRqiSOPay9lxwxvfH9VuUmgfc5+HHKpunCflf4bzlfHh5bBhC+B
+	e8rX+CTJhOdml0OA3Nor48xWDOjbNBujibT6IPFYxdNcwabxjO8W+EcmnHpjZnTS
+	wPiNVH6TwMz9ixSoIW3YlIa5kdMHz79GXvdTxHbblmWchX5DXXHEPbWxP0iVY7QT
+	sQ1ySX252sjKsupF2G7Rbz+Ae5mUAZEjlOMqV1ZEnQ==
+X-ME-Sender: <xms:9czIY-jK6uT2mGK9VS3uQSt4Q7_SJveCRpsc0tUzUozhdM4A82c-qg>
+    <xme:9czIY_DwGvA-AABsTHUow97627iyXSzv22TgvGFxZCNPJnFvUIt3CRAK8F6rY-Plf
+    1GaQa20QxsRzZbmNg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddtledgjeejucetufdoteggodetrfdotf
     fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
     uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
     cujfgurhepofgfggfkjghffffhvffutgesthdtredtreertdenucfhrhhomhepfdetnhgu
@@ -62,21 +62,20 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddtledgjeehucetufdoteggod
     grthhtvghrnhephefhfeekgfekudevheffheeihedujeefjeevjeefudfgfeeutdeuvdeh
     hfevueffnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
     eprghnughrvgifsegrjhdrihgurdgruh
-X-ME-Proxy: <xmx:yMrIY50GyRtBh5E_brbTljefw1vdppNYkTGvGkY3zezjVB3g-jRvjA>
-    <xmx:yMrIYwBLKPTI0OVY5nFE6pZBqFHxtXkoVOfg6nrTFT9nmbqEyeTRCw>
-    <xmx:yMrIY1izzYjA3B4bulCei4RJiIVzlnLZWMnGqOIKjRhfCpp2_HZOxQ>
-    <xmx:y8rIY2JOabJhXFpgnz1s382LAPbnMA2dBpcKwQYf2OOENVfZZlpPAJ-prvQ>
+X-ME-Proxy: <xmx:9czIY2GOkKSDtjERBbvMlDiUUBJpRcpwgD9Ej4fMTeVQgo1MR9VxSw>
+    <xmx:9czIY3Qxx5VV69Q7BJz_MhYuM-s_mZfclV0sUMyArX03NZ3KkefvnQ>
+    <xmx:9czIY7wKcicS7WqwRh0Y6RUlCWJJy8ib7wKcyw1F7dOTiL4BUFDknA>
+    <xmx:9szIYzb4I3PhKAY6Khx0hZeAmEcdQDLkBodqImNTOqHAB7hqv4uPR0hlNfQ>
 Feedback-ID: idfb84289:Fastmail
 Received: by mailuser.nyi.internal (Postfix, from userid 501)
-	id A40C61700089; Wed, 18 Jan 2023 23:44:56 -0500 (EST)
+	id 183811700089; Wed, 18 Jan 2023 23:54:12 -0500 (EST)
 X-Mailer: MessagingEngine.com Webmail Interface
 User-Agent: Cyrus-JMAP/3.9.0-alpha0-85-gd6d859e0cf-fm-20230116.001-gd6d859e0
 Mime-Version: 1.0
-Message-Id: <9a82d30a-c8ca-47fb-a976-f7f4d99cefec@app.fastmail.com>
-In-Reply-To: <20230118173932.358153-2-krzysztof.kozlowski@linaro.org>
+Message-Id: <47290046-59a2-4bf0-8af0-3a7b4304deb3@app.fastmail.com>
+In-Reply-To: <20230118173932.358153-1-krzysztof.kozlowski@linaro.org>
 References: <20230118173932.358153-1-krzysztof.kozlowski@linaro.org>
- <20230118173932.358153-2-krzysztof.kozlowski@linaro.org>
-Date: Thu, 19 Jan 2023 15:14:36 +1030
+Date: Thu, 19 Jan 2023 15:23:52 +1030
 From: "Andrew Jeffery" <andrew@aj.id.au>
 To: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>,
  "Mark Brown" <broonie@kernel.org>, "Rob Herring" <robh+dt@kernel.org>,
@@ -143,12 +142,11 @@ To: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>,
  linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
  linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH 2/2] spi: dt-bindings: cleanup examples - indentation, lowercase
- hex
+Subject: Re: [PATCH 1/2] spi: dt-bindings: drop unneeded quotes
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_204510_020689_106A36BE 
-X-CRM114-Status: UNSURE (   6.14  )
+X-CRM114-CacheID: sfid-20230118_205419_206663_A6B2A78F 
+X-CRM114-Status: UNSURE (   6.33  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -167,18 +165,16 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On Thu, 19 Jan 2023, at 04:09, Krzysztof Kozlowski wrote:
-> Cleanup examples:
->  - use 4-space indentation (for cases when it is neither 4 not 2 space),
->  - drop redundant blank lines,
->  - use lowercase hex.
->
+> Cleanup by removing unneeded quotes from refs and redundant blank lines.
 > No functional impact except adjusting to preferred coding style.
 >
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > ---
->  .../bindings/spi/amlogic,meson-gx-spicc.yaml  |  26 +--
->  .../bindings/spi/amlogic,meson6-spifc.yaml    |  22 +--
->  .../bindings/spi/aspeed,ast2600-fmc.yaml      |  24 +--
+>  .../bindings/spi/allwinner,sun4i-a10-spi.yaml  |  2 +-
+>  .../bindings/spi/allwinner,sun6i-a31-spi.yaml  |  2 +-
+>  .../bindings/spi/amlogic,meson-gx-spicc.yaml   |  6 +++---
+>  .../bindings/spi/amlogic,meson6-spifc.yaml     |  6 +++---
+>  .../bindings/spi/aspeed,ast2600-fmc.yaml       |  2 +-
 
 For the Aspeed change:
 
