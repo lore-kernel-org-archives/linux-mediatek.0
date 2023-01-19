@@ -4,103 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A65EDC46467
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 13:41:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FE28C004D4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 14:11:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2sA9EhPclZO6+f6VLQzu+GI/zukGWQQoz8R1Dt12GsI=; b=Xs5ImqolKTdLjcT2/bzyx1Yf8d
-	lvhiWbzmB/bLRw0/5HgC6Xar9L4e+1fGUqTVBFqFlNVSDf61cjC3tLcLiSxEFsmI3bFTrADv7wa33
-	5NVd0V7TAyXZGxd03mDIWPd+62rhK1AYznaSk4WsiMBUq4ZWE8eyXKKrMwvqzS/qKX4B4liNqZaBp
-	Ynes9oULXz0iCggGh8Csu07pmUXNS6oDyLbeUQUxUuSIUNbObLu8mz0A3ly3tVd4PGgK17am5VJhc
-	UH9icTn/bI3Kpkr6YEReJvPSSpQeZoXklBEvUB9+jvJsrtU4wMnMISmj94Vs2k3RAuyQlZHvirHED
-	8daOEcKA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3uvQ7g4oFemSXhTcUKVqSmQntN88dTb2qgYG6qxER7U=; b=vuaHqMFWh8CH6KDGZS79pVC5Bj
+	XM1J/RlJCFoau04YFK2tlXfGryWXyjxTwlmxkhTmGSVitmdRiflmRX+ipjWljW32MxeTBJEe0VSrk
+	JBqbRwqR/ELyN/D9LEfejxYdh3v0dJQARgEqBXdxeT5YxHDbfWpjhhR4jKnqE26Cnzdg3Mb0GyMzO
+	yMc5U91rOaXCSLGYv2WNNIWsCQSzzzAVRKiNDkSfyTlsxWwiLreUl1F1xZhDi1z5kE3Te3ClpBWNO
+	i+RNTRMTbj4Ny8cPU5UmYM+2woSLw8EV45bKoUOFGl4EtRE6eCoZuN/gu2O4Qr+uVWrc2vbps50D8
+	bLTqkuhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIVA9-0059nn-SN; Thu, 19 Jan 2023 13:41:05 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1pIVdi-005Fan-G0; Thu, 19 Jan 2023 14:11:38 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIV9w-0059kU-0T; Thu, 19 Jan 2023 13:40:53 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id w14so2898743edi.5;
-        Thu, 19 Jan 2023 05:40:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=2sA9EhPclZO6+f6VLQzu+GI/zukGWQQoz8R1Dt12GsI=;
-        b=Ssrumq6PQhx2e/g4Bd6SuNl23SQH9Qv/nzp1Uy9v//x8kEfruuqhhMNDkoX0H6ubCI
-         MaR+SU/RqMNRmjwnNWDMEcpz5GjfoleC+3BNcTsopxhWnVzJ1nwvkgl4GUS7gqR9n1Fq
-         izOLXvz1I0ML3IDmv7IE1eUXRtk1Yci1fVgckWGdmoTrtO/ZlMVH35H0a2v/yyavFMTI
-         dgIH49auVy3dEz1m78McldLsu3o9041upq0t+vH0lbSnrUxZ+kOG4XyhlXJ82KOUrTZk
-         0WYx/93yCnKvBMWzXt48IicEnnzHqiPpFmQESj7PjC1dRCf2NXHPeU7yGmFs8AcDl6o1
-         hazw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=2sA9EhPclZO6+f6VLQzu+GI/zukGWQQoz8R1Dt12GsI=;
-        b=I61jftrPdUxIs92nCZuMx/+zZutIIIw+9qV/f/9U5hVqIsCnX5fmWxr7yIczyBDCOE
-         UZ9kmCNKN4AtflhX3I7++m0yiO03cyWv9MN0IeMO0M+rf8F1XdKPKB7/AGXXybJcmdc3
-         K1seE4IomDh6RvWzEy7nrXmKU1G3VmwaDBhXoCP5bnj/qYdsfRZhoKnNoLETO8B9N8/h
-         C08fh92ru29h+kajJIg6OWnKtvRE/f9c3ADjj23m9/xiA7+uNr+Q4j5dIZWfHepr/mPu
-         OqTjTLksoUkaFA3b8Zmzb/+IV2vd4YIGYAOfqzePSXysVPLAMrLUL6oCg/PJ2zB5Kxkx
-         kWmA==
-X-Gm-Message-State: AFqh2koNnvkR2PE0qUsKB5Ko0UMV4d5yaBIDMvTJt54NBTolWQZvPFvx
-	Wd8DCu+HImdkRdCf0aUEGnA=
-X-Google-Smtp-Source: AMrXdXvXkuKoZFQFQT4KXsKjMumQ66Scy56M1tiUgcqYCQA/AY3QpuuZlRLh4qPLSeGgenAVe3KP+g==
-X-Received: by 2002:a05:6402:cba:b0:49d:25f3:6b4e with SMTP id cn26-20020a0564020cba00b0049d25f36b4emr10522051edb.28.1674135648960;
-        Thu, 19 Jan 2023 05:40:48 -0800 (PST)
-Received: from skbuf ([188.27.185.85])
-        by smtp.gmail.com with ESMTPSA id sb25-20020a1709076d9900b0084c6581c16fsm16304907ejc.64.2023.01.19.05.40.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Jan 2023 05:40:48 -0800 (PST)
-Date: Thu, 19 Jan 2023 15:40:45 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: netdev@kapio-technology.com
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, Eric Dumazet <edumazet@google.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	"maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
+	id 1pIVdW-005FY2-7Y; Thu, 19 Jan 2023 14:11:29 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pIVdE-0008Lb-1h;
+	Thu, 19 Jan 2023 15:11:08 +0100
+Date: Thu, 19 Jan 2023 14:11:01 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Russell King <linux@armlinux.org.uk>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	open list <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	"open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>,
-	"moderated list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>
-Subject: Re: [RFC PATCH net-next 1/5] net: bridge: add dynamic flag to
- switchdev notifier
-Message-ID: <20230119134045.fqdt6zrna5x3iavt@skbuf>
-References: <20230117185714.3058453-1-netdev@kapio-technology.com>
- <20230117185714.3058453-2-netdev@kapio-technology.com>
- <20230117230806.ipwcbnq4jcc4qs7z@skbuf>
- <a3bba3eb856a00b5e5e0c1e2ffe8749a@kapio-technology.com>
- <20230119093358.gbyka2x4qbxxr43b@skbuf>
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Miles Chen <miles.chen@mediatek.com>,
+	Edward-JW Yang <edward-jw.yang@mediatek.com>,
+	Johnson Wang <johnson.wang@mediatek.com>,
+	Fabien Parent <fparent@baylibre.com>,
+	Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+	Sam Shih <sam.shih@mediatek.com>,
+	Jianhui Zhao <zhaojh329@gmail.com>
+Subject: [PATCH 0/2] add support for clocks on MT7981 SoC
+Message-ID: <cover.1674137304.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230119093358.gbyka2x4qbxxr43b@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_054052_096804_668AE8F2 
-X-CRM114-Status: GOOD (  19.11  )
+X-CRM114-CacheID: sfid-20230119_061126_289232_D72574CB 
+X-CRM114-Status: GOOD (  11.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,24 +69,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 19, 2023 at 11:33:58AM +0200, Vladimir Oltean wrote:
-> On Wed, Jan 18, 2023 at 11:14:00PM +0100, netdev@kapio-technology.com wrote:
-> > > > +	item->is_dyn = !test_bit(BR_FDB_STATIC, &fdb->flags);
-> > > 
-> > > Why reverse logic? Why not just name this "is_static" and leave any
-> > > further interpretations up to the consumer?
-> > 
-> > My reasoning for this is that the common case is to have static entries,
-> > thus is_dyn=false, so whenever someone uses a switchdev_notifier_fdb_info
-> > struct the common case does not need to be entered.
-> > Otherwise it might also break something when someone uses this struct and if
-> > it was 'is_static' and they forget to code is_static=true they will get
-> > dynamic entries without wanting it and it can be hard to find such an error.
-> 
-> I'll leave it up to bridge maintainers if this is preferable to patching
-> all callers of SWITCHDEV_FDB_ADD_TO_BRIDGE such that they set is_static=true.
+The MediaTek MT7981 SoC is quite similar to its big sibling, the
+MT7986. Hence most drivers can be reused and not much is missing the
+get also this SoC working on mainline Linux.
 
-Actually, why would you assume that all users of SWITCHDEV_FDB_ADD_TO_BRIDGE
-want to add static FDB entries? You can't avoid inspecting the code and
-making sure that the is_dyn/is_static flag is set correctly either way.
+Start with a cleaned-up version of the clock drivers, based on what can
+also be found in MediaTek's SDK[1].
+
+[1]: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/refs/heads/master/target/linux/mediatek/files-5.4/drivers/clk/mediatek/clk-mt7981.c
+
+Daniel Golle (2):
+  dt-bindings: clock: add some compatible strings for MT7981
+  clk: mediatek: add MT7981 clock support
+
+ .../bindings/clock/mediatek,apmixedsys.yaml   |   1 +
+ .../bindings/clock/mediatek,topckgen.yaml     |   1 +
+ drivers/clk/mediatek/Kconfig                  |  17 +
+ drivers/clk/mediatek/Makefile                 |   4 +
+ drivers/clk/mediatek/clk-mt7981-apmixed.c     | 103 +++++
+ drivers/clk/mediatek/clk-mt7981-eth.c         | 138 ++++++
+ drivers/clk/mediatek/clk-mt7981-infracfg.c    | 236 ++++++++++
+ drivers/clk/mediatek/clk-mt7981-topckgen.c    | 431 ++++++++++++++++++
+ include/dt-bindings/clock/mt7981-clk.h        | 215 +++++++++
+ 9 files changed, 1146 insertions(+)
+ create mode 100644 drivers/clk/mediatek/clk-mt7981-apmixed.c
+ create mode 100644 drivers/clk/mediatek/clk-mt7981-eth.c
+ create mode 100644 drivers/clk/mediatek/clk-mt7981-infracfg.c
+ create mode 100644 drivers/clk/mediatek/clk-mt7981-topckgen.c
+ create mode 100644 include/dt-bindings/clock/mt7981-clk.h
+
+
+base-commit: aa5c49149a823599764e6953229b028e4bf6e9cc
+-- 
+2.39.1
+
 
