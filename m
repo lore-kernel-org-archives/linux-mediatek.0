@@ -4,82 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19E5FC38142
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 03:34:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8341C00A5A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 04:29:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=nVBXFg+lOnDLmoTtrhjNFvx9l0GF1e2zXUq38b1bO0A=; b=RAWRfadlXJC6WIOOTi6vudrWWR
-	YPbNXiGDu0xx9bngDm+iJBvroIKakESmqIZ8shLrwIyF+vMCtaGdPphG1nhqA/winHjAPdLRw8P1V
-	IrZi+QMQPcati7C6WivzyhwyNgaWvVmRPTU7j6MbHIm/fl0KltJD6ckSlKK1I/8nRvaYOUuj9hnb8
-	5uf3qzk35WZiw5SzNjE0mWy9jbsaJ9wpJn6aSX90Zx9/KSXpprz6ZaiARP88oQSewoER7pD/4w/cG
-	ksiy6vOPzHGkQb+a3iYmBv4zrzOs8WiZwXKZdarzjilCKjq9xrZu6QefEsO8brW502t4K6iYG+FjN
-	/hOiY62A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=c1y/5KDHgKHirXTUDecr+02A1cm5hXFyau/VonkRgpE=; b=YnsUw6WCwNkew4fCkq5e5gzVXC
+	gAzJhEfSG7yzSvKxJDzCNCoALw0cL6QcSVEg8n5MGt/Ax3zRLhBqpmT5RXHfWOB0FE1FTl4RllUCm
+	3JhrQ4Jdf3OVzW6seCXdMoTY3Dj3MU1upW3o+IzKicSHX5UzfakcJkkufQ9vYBkV0KalFAYGUpOwu
+	4pqX2cij5qv5WnfI7Tg8iEHRrEi2QjONlgvk3W37D7Y/4vqn8XWznwTDDN0fVW5Hs3RL0oJE6x4jI
+	JbYJ3oY+QLo7hxwRHKlQgOokSq0j3h4yXGLjmFy1pOwLU7B2foegYVTAKJu0pC4CSMFYsie6PvWaw
+	3d8ToObg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pILgl-003J0N-3F; Thu, 19 Jan 2023 03:34:07 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pIMYS-003ZMB-SP; Thu, 19 Jan 2023 04:29:37 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pILgk-003J01-12; Thu, 19 Jan 2023 03:34:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=nVBXFg+lOnDLmoTtrhjNFvx9l0GF1e2zXUq38b1bO0A=; b=PLgL13S5kvcK8L1v+Er4/bnr0M
-	T1gMEyz0GuvVwqB1/etkjS9VmmSkUi3susaPxGXEkR/ON4o+WL/hXe79fMgZvcIHiBjZejXDJRgVa
-	7K6R7T68kUDt5XoqYuILsXXFR0ADfnhJAOalh2H+jbpgKlKcCECETICHUrZMeTw7YwG1rT82Af/wH
-	6yA0IXYvD+EZX+n8tuESjlnsC3rx041V4B6WnY5VGTrR/aVnKSvyBIQrM6o/b31uI4UwH8J5KEyPM
-	Em0LA7G2zDUfwx8yLoIr4PMaZrtRdRVrk63rZQQs4ljdduar5VYG6JOpmYWkTsTBkDqwIQX432J8i
-	WlYdlGig==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pILg9-000Agy-3A;
-	Thu, 19 Jan 2023 03:33:35 +0000
-X-UUID: 087afaf697aa11eda08d4d6090ec5a5c-20230118
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=nVBXFg+lOnDLmoTtrhjNFvx9l0GF1e2zXUq38b1bO0A=;
-	b=F2y11Nlv/qGTvzpz0RsLiZVfrGSR3z3TpEjkVFz1f7rZoOPdkKPAAqC8GX78h9kd0XGHK8eiq9tXbZZLOBbCWHXaOoy0mLMtDeKMOK1RPJYX17/xWAlNjlmWJwDmm3Zc90o0lt5rJYM50lMOX5wg5H1nGHMU+A1Cp/fYMvDFEHU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.18,REQID:fd046f9e-b05e-4781-a87c-acc92d92b6ad,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:3ca2d6b,CLOUDID:37223cf6-ff42-4fb0-b929-626456a83c14,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0
-X-UUID: 087afaf697aa11eda08d4d6090ec5a5c-20230118
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 323319801; Wed, 18 Jan 2023 20:33:26 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 19 Jan 2023 11:33:23 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 19 Jan 2023 11:33:23 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, Eddie Hung <eddie.hung@mediatek.com>, Min Guo
-	<min.guo@mediatek.com>
-Subject: [PATCH] usb: mtu3: fix the failure of qmu stop
-Date: Thu, 19 Jan 2023 11:33:22 +0800
-Message-ID: <20230119033322.21426-1-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1pIMYM-003ZIn-Bl
+	for linux-mediatek@lists.infradead.org; Thu, 19 Jan 2023 04:29:32 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id a14-20020a17090a70ce00b00229a2f73c56so4655216pjm.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 18 Jan 2023 20:29:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=c1y/5KDHgKHirXTUDecr+02A1cm5hXFyau/VonkRgpE=;
+        b=Qwwu3mjMk12mb8arDhmeBCvpdrQtaWykCv52bQMcfaQnPlZn+g4S4pyHWK9g5gJq/E
+         bO7IKgK54I54tGt/S05MX6Bugw6bPxNfhg+ah1MT6QRzC2BodAU7Nxc3jTYm0+gOfRju
+         rQK0Xne7+kdHXBVjGreIcWWobpNO5IybesRxyfrNKwIxvNJ4yschR/MT3M0xuU4V9iLQ
+         o9Q6K/DEzCiH29zW01Y9cg6rR9MmG3HVgncg8V1EWXGBj2G8UTMnjfYdHZEb5fExOvTX
+         fa3wF8EGcngCDygVAXXSYTLa32Z2WL/Lw84vQis+TJezj9R9KJ13ggeoKElki9XZ9BB1
+         8FZg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=c1y/5KDHgKHirXTUDecr+02A1cm5hXFyau/VonkRgpE=;
+        b=P6fDli81u5VEOhFhURPygifd2bKlNncmRO71FsjJvsTkmR5Z5yqf3VRhmW8n99GyOX
+         WFYVm5aslmN+P17lTXRKo3LtOKt8jAHxftsRNl/T35t9kdM02uThpgbxXn/Cq67vhCu/
+         3KOjyjgTMjn6qdV5a5lpoyZYwg7kK92MNn81OX7Vsj7DnkL/bpK06bdvfNf2eNhA7jeG
+         bPOkFIR2ucm2TSEp1miBtVmAf3GeGhzfRklHNYTWIlfTJIHlPGM3wIF3Ru7Fqk84mrv0
+         oJ3lkLrRgUoM8u2mAAh2Pm/8efjg/buPoFlNgUpOnVFJ8UV6XYV+mwMmakbQz7/0UHgT
+         Ej7Q==
+X-Gm-Message-State: AFqh2kp9unbQy7QUMDnPyVge27zflpYCJMc0TFp2EWRJ1lYsZl2SOyj7
+	5B0P/dcacio/Uf0x41/gQkaLtg==
+X-Google-Smtp-Source: AMrXdXsL1ggmaWVhUlXD0gW9Nplw6seQdpkL31Roa0A2ZWPa6AvCI+80NJvuCsPquPnD0v53gX9ycw==
+X-Received: by 2002:a05:6a20:9b86:b0:b8:648f:f414 with SMTP id mr6-20020a056a209b8600b000b8648ff414mr9493806pzb.29.1674102565791;
+        Wed, 18 Jan 2023 20:29:25 -0800 (PST)
+Received: from localhost ([122.172.83.155])
+        by smtp.gmail.com with ESMTPSA id bg7-20020a056a02010700b004785c24ffb4sm10760212pgb.26.2023.01.18.20.29.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 18 Jan 2023 20:29:24 -0800 (PST)
+Date: Thu, 19 Jan 2023 09:59:22 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Olivier Dautricourt <olivierdautricourt@gmail.com>,
+	Stefan Roese <sr@denx.de>, Hector Martin <marcan@marcan.st>,
+	Sven Peter <sven@svenpeter.dev>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Viresh Kumar <vireshk@kernel.org>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Green Wan <green.wan@sifive.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	=?utf-8?B?77+9ZXI=?= <povik+lin@cutebit.org>,
+	Peng Fan <peng.fan@nxp.com>, Paul Cercueil <paul@crapouillou.net>,
+	- <chuanhua.lei@intel.com>, Long Cheng <long.cheng@mediatek.com>,
+	Rajesh Gumasta <rgumasta@nvidia.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Biju Das <biju.das.jz@bp.renesas.com>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	Palmer Debbelt <palmer@sifive.com>,
+	Masahiro Yamada <yamada.masahiro@socionext.com>,
+	Amelie Delaunay <amelie.delaunay@foss.st.com>,
+	Linus Walleij <linus.walleij@linaro.org>, dmaengine@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+	asahi@lists.linux.dev, linux-tegra@vger.kernel.org,
+	linux-actions@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] dt-bindings: dma: drop unneeded quotes
+Message-ID: <20230119042922.aiggjqvnirk6sgdo@vireshk-i7>
+References: <20230118180144.364756-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230118180144.364756-1-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_033332_440444_A15691D2 
-X-CRM114-Status: GOOD (  15.14  )
+X-CRM114-CacheID: sfid-20230118_202930_437086_D54C5037 
+X-CRM114-Status: GOOD (  10.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,85 +132,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This happens when do stress test of uvc stream on/off which will
-enable/disable endpoints. uvc has four tx requests, and may disable
-endpoint between queue tx requests as following:
-    enable ep --> start qmu
-    queue tx request0
-    queue tx request1
-    queue tx request2 --> resume qmu
-    disable ep --> stop qmu may fail [1]
-    queue tx request3 --> will resume qmu, may cause qmu can't work
-                          when enable ep next time [2]
+On 18-01-23, 19:01, Krzysztof Kozlowski wrote:
+> diff --git a/Documentation/devicetree/bindings/dma/snps,dma-spear1340.yaml b/Documentation/devicetree/bindings/dma/snps,dma-spear1340.yaml
+> index c13649bf7f19..5da8291a7de0 100644
+> --- a/Documentation/devicetree/bindings/dma/snps,dma-spear1340.yaml
+> +++ b/Documentation/devicetree/bindings/dma/snps,dma-spear1340.yaml
+> @@ -11,7 +11,7 @@ maintainers:
+>    - Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+>  
+>  allOf:
+> -  - $ref: "dma-controller.yaml#"
+> +  - $ref: dma-controller.yaml#
+>  
+>  properties:
+>    compatible:
 
-[1]: when the tx fifo has some data to transmit, and
-    try to stop qmu (stop ep) meanwhile resume qmu (queue tx request),
-    it may cause stop qmu timeout, then can be fixed by flushing fifo
-    when stop qmu.
-[2]: it resumes qmu again, shall stop qmu again.
+Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Reported-by: Min Guo <min.guo@mediatek.com>
----
- drivers/usb/mtu3/mtu3_gadget.c  | 3 +--
- drivers/usb/mtu3/mtu3_hw_regs.h | 1 +
- drivers/usb/mtu3/mtu3_qmu.c     | 7 +++++++
- 3 files changed, 9 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
-index 80236e7b0895..c0264d5426bf 100644
---- a/drivers/usb/mtu3/mtu3_gadget.c
-+++ b/drivers/usb/mtu3/mtu3_gadget.c
-@@ -133,10 +133,9 @@ static int mtu3_ep_disable(struct mtu3_ep *mep)
- {
- 	struct mtu3 *mtu = mep->mtu;
- 
--	mtu3_qmu_stop(mep);
--
- 	/* abort all pending requests */
- 	nuke(mep, -ESHUTDOWN);
-+	mtu3_qmu_stop(mep);
- 	mtu3_deconfig_ep(mtu, mep);
- 	mtu3_gpd_ring_free(mep);
- 
-diff --git a/drivers/usb/mtu3/mtu3_hw_regs.h b/drivers/usb/mtu3/mtu3_hw_regs.h
-index 519a58301f45..ee30ae0a4b54 100644
---- a/drivers/usb/mtu3/mtu3_hw_regs.h
-+++ b/drivers/usb/mtu3/mtu3_hw_regs.h
-@@ -128,6 +128,7 @@
- #define TX_FIFOEMPTY		BIT(24)
- #define TX_SENTSTALL		BIT(22)
- #define TX_SENDSTALL		BIT(21)
-+#define TX_FLUSHFIFO		BIT(20)
- #define TX_TXPKTRDY		BIT(16)
- #define TX_TXMAXPKTSZ_MSK	GENMASK(10, 0)
- #define TX_TXMAXPKTSZ(x)	((x) & TX_TXMAXPKTSZ_MSK)
-diff --git a/drivers/usb/mtu3/mtu3_qmu.c b/drivers/usb/mtu3/mtu3_qmu.c
-index 2ea3157ddb6e..a2fdab8b63b2 100644
---- a/drivers/usb/mtu3/mtu3_qmu.c
-+++ b/drivers/usb/mtu3/mtu3_qmu.c
-@@ -388,6 +388,9 @@ void mtu3_qmu_stop(struct mtu3_ep *mep)
- 	}
- 	mtu3_writel(mbase, qcsr, QMU_Q_STOP);
- 
-+	if (mep->is_in)
-+		mtu3_setbits(mbase, MU3D_EP_TXCR0(epnum), TX_FLUSHFIFO);
-+
- 	ret = readl_poll_timeout_atomic(mbase + qcsr, value,
- 			!(value & QMU_Q_ACTIVE), 1, 1000);
- 	if (ret) {
-@@ -395,6 +398,10 @@ void mtu3_qmu_stop(struct mtu3_ep *mep)
- 		return;
- 	}
- 
-+	/* flush fifo again to make sure the fifo is empty */
-+	if (mep->is_in)
-+		mtu3_setbits(mbase, MU3D_EP_TXCR0(epnum), TX_FLUSHFIFO);
-+
- 	dev_dbg(mtu->dev, "%s's qmu stop now!\n", mep->name);
- }
- 
 -- 
-2.18.0
-
+viresh
 
