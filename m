@@ -4,70 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A02DCC38142
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 05:14:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5914C38142
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 05:24:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mPfNtFcFhVGXibc3gdpynC2sYzD31J/tra2G3KnaUGE=; b=XrA+Qp6maLVN3hM4bBWSBKeksn
-	EPhGjj4UVbtu185UQ0Khp/Y5AkSzGmsAaVVcUhUuYhYlXpq2j6QWtkAyIKJijgy5D9VsAjHPmLu4f
-	ezAJRlFcl1VkV9K6NunzlW0OvpAZv/ZInyeUREog0LYLZAZh6yqqo0jYy5qYZhqyXR6cfgStWENDs
-	tveD9va5IRrAvxhkT1Ap0/IZePITCHyKKeCuPxia5poaEDe2IsmuurnDJfXd0fPJBNNVyx2/ngYfG
-	MzHFzgTKVKHqt/hJUd/VBvLHsDu4bXjyS0D7UL0guc1ROnuJMp1EEyd8xMleU4Bqsa/9IQ4lJjjBF
-	dSITc0lw==;
+	bh=/7Yi1/TMdF0ZsngPg/D7r3gCUq5DRgym11bWH2ZX2aA=; b=ig9a8b1bTN//PuFbtttxneS50Y
+	PJnCNMvQgql6pvzBQ26XwWk2oUQlP0+/D2/vT1xX12ipcPh7mzmy32i4v0UDz0epofskLkLemaJxX
+	+vXJXpEf4QtU5Q0KoZhWWjnnYAJro4VqCPWshYEFwocstoXskNAdClyy2BHz1gRedw+3/VaKs4yA8
+	ngAe9tCqqB+pZW8nTKC29KKOQ/eJfxYcnGeAYhPIkf05Xr4/4JoqYxAiZ75hY8btuTzQMhxb9HYs4
+	YyRszgKZKWAwBLi241XlIRm/Z7WZ70xd9+9GZ4GdSlzYW6nDGvQdbKLby4jiJNZiX/kr3Xb+TvNBZ
+	nbyPZitQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pINFi-003eGO-1p; Thu, 19 Jan 2023 05:14:18 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pINPb-003fE8-29; Thu, 19 Jan 2023 05:24:31 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pINFV-003eDc-M1; Thu, 19 Jan 2023 05:14:07 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 28DCD61A60;
-	Thu, 19 Jan 2023 05:14:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1C09C433EF;
-	Thu, 19 Jan 2023 05:13:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1674105241;
-	bh=vOpQ4Ds9jWqyGxR9dJ6k9KZUW8KJ9ISfjtx7rMdu5Vo=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=tSrDNfwWpTpr7+utoIBt0yr9qOIlNUR6q3GVm7F6C3MXYpzwIcJhJkPd/xCgjkW1Q
-	 KyUqqDC98bCI0JpuVjU3GxTGPFSUYqyD5ihoBoEJZMwUz4b3XNABP08FYhJyySJVzv
-	 BYBUdkpWnh3Mf0oky2BSSNGH4p14qIW/nDr8lIzptM4+m2/At9i4kvFInVW9z8sbFV
-	 q2ksRhOjtceeaBxdAeuV/CoNi83BELbyNE03TPPtoMgl+ZtPN7AJTEOVPJOUEJMn58
-	 yt706ICqTTwZ6u+tWi3ddued5oW/hSHksddbDe/ZkiZEyNnCyztmwO/jdfALAaYoMN
-	 iZY4ZR/+17kcQ==
-From: Kalle Valo <kvalo@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: "David S. Miller" <davem@davemloft.net>,  Eric Dumazet
- <edumazet@google.com>,  Jakub Kicinski <kuba@kernel.org>,  Paolo Abeni
- <pabeni@redhat.com>,  Rob Herring <robh+dt@kernel.org>,  Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>,  Felix Fietkau
- <nbd@nbd.name>,  Lorenzo Bianconi <lorenzo@kernel.org>,  Ryder Lee
- <ryder.lee@mediatek.com>,  Shayne Chen <shayne.chen@mediatek.com>,  Sean
- Wang <sean.wang@mediatek.com>,  Matthias Brugger <matthias.bgg@gmail.com>,
-  =?utf-8?B?SsOpcsO0bWU=?= Pouiller <jerome.pouiller@silabs.com>,  de Goede
- <hdegoede@redhat.com>,  Tony Lindgren <tony@atomide.com>,
-  linux-wireless@vger.kernel.org,  netdev@vger.kernel.org,
-  devicetree@vger.kernel.org,  linux-kernel@vger.kernel.org,
-  linux-arm-kernel@lists.infradead.org,
-  linux-mediatek@lists.infradead.org,  ath11k@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: net: wireless: minor whitespace and name cleanups
-References: <20230118175413.360153-1-krzysztof.kozlowski@linaro.org>
-Date: Thu, 19 Jan 2023 07:13:52 +0200
-In-Reply-To: <20230118175413.360153-1-krzysztof.kozlowski@linaro.org>
-	(Krzysztof Kozlowski's message of "Wed, 18 Jan 2023 18:54:13 +0100")
-Message-ID: <87bkmv85tb.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	id 1pINPQ-003fCb-Sy; Thu, 19 Jan 2023 05:24:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=/7Yi1/TMdF0ZsngPg/D7r3gCUq5DRgym11bWH2ZX2aA=; b=Uzo1ORVqKHgwOyjKfJYi2Fy9Yj
+	1Is+zElmpII2ocH8yflQLfxpReUz5Z9/iHyhDHctNyl4kO9Ld9wWq6YhG1evyG5UPWGtdYYjY6IG8
+	4IQ6InaNk79w62Z3gl6f6Tmr41yxycIRbbch6TMbbP1AQpdx8Zuvi3R5zD+XKl+QTLPYUnkOPMkk/
+	T4J4tylBqBc+H/3YNUcGoQ/megOCw9Nitepqck3c8NdWXvOUKjQqJsDykmz6hI864gw2H3Eqi6TDN
+	gyOw/gQURVoUb/r3JM/ti+oaa8BF1zl4nkd0bmwHgqobJp+Q2/JumYoQ2KuW99yytMgQHXyHPUg46
+	t9IJJ5TA==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pINOj-000CVh-1M;
+	Thu, 19 Jan 2023 05:23:41 +0000
+X-UUID: 6823e93697b911eda08d4d6090ec5a5c-20230118
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=/7Yi1/TMdF0ZsngPg/D7r3gCUq5DRgym11bWH2ZX2aA=;
+	b=e8yyzlcpYUExm4xjS1jPrciM7zF7of3lvO0A9m89cCdt/A+oCRqfdRes2wYn/GIqi8kQzRvmupToiClFJmcfO/ebEnOxQ4vuLJhDvt9aRLdKrvxT3u6DA+N3nQ+S3+d7qDp1phPQ8WHQ+MIzZthEdABZSRFZo+8La2vG/9Dbd7g=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.18,REQID:4241fc54-af37-481f-ba33-801b48511cfb,IP:0,U
+	RL:0,TC:0,Content:14,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:14
+X-CID-META: VersionHash:3ca2d6b,CLOUDID:92b5af8c-8530-4eff-9f77-222cf6e2895b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:3,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+X-CID-BVR: 0
+X-UUID: 6823e93697b911eda08d4d6090ec5a5c-20230118
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <miles.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1991981328; Wed, 18 Jan 2023 22:23:29 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 19 Jan 2023 13:23:26 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 19 Jan 2023 13:23:26 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <angelogioacchino.delregno@collabora.com>
+CC: <chun-jie.chen@mediatek.com>, <daniel@makrotopia.org>,
+	<devicetree@vger.kernel.org>, <fparent@baylibre.com>, <ikjn@chromium.org>,
+	<johnson.wang@mediatek.com>, <jose.exposito89@gmail.com>,
+	<kernel@collabora.com>, <krzysztof.kozlowski+dt@linaro.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-clk@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<matthias.bgg@gmail.com>, <miles.chen@mediatek.com>, <msp@baylibre.com>,
+	<mturquette@baylibre.com>, <nfraprado@collabora.com>,
+	<pablo.sun@mediatek.com>, <rex-bc.chen@mediatek.com>, <robh+dt@kernel.org>,
+	<ryder.lee@kernel.org>, <sam.shih@mediatek.com>, <sboyd@kernel.org>,
+	<weiyi.lu@mediatek.com>, <wenst@chromium.org>, <y.oudjana@protonmail.com>,
+	<yangyingliang@huawei.com>, <Mingming.Su@mediatek.com>
+Subject: Re: [PATCH v3 00/23] MediaTek clocks cleanups and improvements
+Date: Thu, 19 Jan 2023 13:23:26 +0800
+Message-ID: <20230119052326.15790-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230113110616.111001-1-angelogioacchino.delregno@collabora.com>
+References: <20230113110616.111001-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_211405_797082_FB5929BF 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20230119_052338_730198_EBC9DF0F 
+X-CRM114-Status: UNSURE (   5.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,31 +103,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> writes:
+cc Mingming for mt2712.
 
-> Minor cleanups:
->  - Drop redundant blank lines,
->  - Correct indentaion in examples,
->  - Correct node names in examples to drop underscore and use generic
->    name.
->
-> No functional impact except adjusting to preferred coding style.
->
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
->  .../bindings/net/wireless/esp,esp8089.yaml    | 20 +++---
->  .../bindings/net/wireless/ieee80211.yaml      |  1 -
->  .../bindings/net/wireless/mediatek,mt76.yaml  |  1 -
->  .../bindings/net/wireless/qcom,ath11k.yaml    | 11 ++-
->  .../bindings/net/wireless/silabs,wfx.yaml     |  1 -
->  .../bindings/net/wireless/ti,wlcore.yaml      | 70 +++++++++----------
->  6 files changed, 50 insertions(+), 54 deletions(-)
+I tested this v3 series on mt6779 and mt8192.
 
-Thanks for the cleanup. Would you like to me to take this to
-wireless-next or do you have other plans?
+Tested-by: Miles Chen <miles.chen@mediatek.com> 
 
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
-
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
