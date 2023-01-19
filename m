@@ -4,44 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5CC1C004D4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 13:18:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECAB7C00A5A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 13:18:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mcR19n1jDxBUupnqYv6z29UpOBYVbpXsCvGX6v7zcG0=; b=HZchVK8BVzQZLnSv5lgrnZexWC
-	P2CkbCO6jkl8PDXglzLGs4Sv8hdAwJl4mp9NjC83LYONF3Y5TUdun9DY92b/sIkOTVOGX5cFgGZP0
-	mX8ZqPc2cOEt7Uw4DZoapTathp8D+uzQkCz9q8d2p8L+lLB1NNpSLRC2tKPszlEeW2pby6PwlnXqo
-	BGNz+x4oaqyKw4MXzh70JlpUlAoOYy4YoxovgKCXH1b4rbC/220yTEj3IIOMceSXkMtbXj7ep9y4k
-	cA7WCjDgV3Ruxyel6dj7ikdCzXr2FcfDO8uTHyPCTRsVuNON023rx3ucq1Yo9Oilo/a1Y8E+u9GTu
-	VkUZaswg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3UHdwuLPhXMunD6/Q87hv9DQ5vVyKhuoTXpWSJ50hAQ=; b=3mtcW2b1g6nHOjxQ9TaHrbx+GV
+	ZsCS1C3EUxXG60Tmf5usag8pE+4yDI2dJzxanSPkgax8B9Wcw3VRgduwnCBthO9zU3CfBdpcI9xNx
+	UD/BGPftQK/b6xHbldYFVltp5LywGk6ZVlI7hu3KsQbEjGvxfiL8SPL68+ktwQHlohqUWf8rIhA+x
+	B9FL01/OAIG84FWT3/A9B9F/4O9y6z5foRpA1GpmoUDopBCb+XI6dR/w8gc2q5+Xl9fG7KnhJL/lr
+	BmAzupL8o7bH6ipUt5Sb/ycY8R+dc1B2i9ZZv//l3TU3r4wxx6t/o7ioQ3Crn4+ZbOyMDI/Lf0sKC
+	eJEwU8qA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIUoN-0053q9-T2; Thu, 19 Jan 2023 13:18:35 +0000
-Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
+	id 1pIUoR-0053s0-Oh; Thu, 19 Jan 2023 13:18:39 +0000
+Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIUeA-004zjb-S1; Thu, 19 Jan 2023 13:08:05 +0000
+	id 1pIUe8-004zhL-PL; Thu, 19 Jan 2023 13:08:07 +0000
 Received: from mwalle01.kontron.local. (unknown [213.135.10.150])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 95AB41A20;
-	Thu, 19 Jan 2023 14:08:00 +0100 (CET)
+	by mail.3ffe.de (Postfix) with ESMTPSA id D398E1693;
+	Thu, 19 Jan 2023 14:07:57 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1674133680;
+	t=1674133678;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=mcR19n1jDxBUupnqYv6z29UpOBYVbpXsCvGX6v7zcG0=;
-	b=NDLWWYBkTVutRYnfjXhxKtQozJCPobbGKm41FWp+lv8xA3rDIuiWCWKrv9GVJp96TIMats
-	YGVT1PCNvNvAIQpAdLGx1udVKsm/uaFfQrMU/5uVfVmvD3+ysuMEyqVFm3RHlurOjDsJ8g
-	6DrjmliJLYEjoFZ/xuPUk1XOT5nPSnI6HQT5wYO2ZMgmp9YMp1xXc1ievjfY6aBoenlMG4
-	RFIcC+hEwPLqaFh2rM6rWXHcUZrCon7GsHMb7GGg2DDO+m7QkAg64xnEED8KniBp6RUcoU
-	Echz3WDK71FeMKCMeY2fhmEn9LtTglFMY14GzppjgyQVDldVqeq3X4v5Ln+Njg==
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=3UHdwuLPhXMunD6/Q87hv9DQ5vVyKhuoTXpWSJ50hAQ=;
+	b=Yoyi9wo7/ZF287RuEL0Zgg/52fWFCovu59p10HaO7ExZWnSijGhagfN7KX0DoxF7oYxDSq
+	M+KCaMyotjb4vR1ipKfm0jZurv/qtSEeHn3k2MBmoup4fqN7hyPZF0NL3kH3ZXnukz1I8Z
+	zuOvBNd71Cwf9CpB0RuMm29LzZ9N4+CehbSluy0+PEndsy5dUvRG5kEczhVyBu+fC9Gcz6
+	2rq2ExxRuOwclB7aNgylEVQylsdVw/oTTHc93iE33XwEfPJNC6soVVFuSt32RV9PQnLZds
+	r5bbOdfF/JkFya9dsUK2HmYbukHd31JOGdpt8jrhfUYuhG8Thkf7gNUpgviUJQ==
 From: Michael Walle <michael@walle.cc>
 To: Woojung Huh <woojung.huh@microchip.com>,
 	UNGLinuxDriver@microchip.com,
@@ -74,18 +73,17 @@ Cc: netdev@vger.kernel.org,
 	linux-actions@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Michael Walle <michael@walle.cc>
-Subject: [PATCH RESEND net-next 4/4] net: mdio: Remove support for building C45 muxed addresses
-Date: Thu, 19 Jan 2023 14:07:00 +0100
-Message-Id: <20230119130700.440601-5-michael@walle.cc>
+Subject: [PATCH RESEND net-next 0/4] net: mdio: Remove support for building C45 muxed addresses
+Date: Thu, 19 Jan 2023 14:06:56 +0100
+Message-Id: <20230119130700.440601-1-michael@walle.cc>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20230119130700.440601-1-michael@walle.cc>
-References: <20230119130700.440601-1-michael@walle.cc>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Spam: Yes
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_050803_102251_FD3DBCE7 
-X-CRM114-Status: GOOD (  13.17  )
+X-CRM114-CacheID: sfid-20230119_050801_193976_AEC48F97 
+X-CRM114-Status: UNSURE (   8.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,57 +98,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Andrew Lunn <andrew@lunn.ch>
+[Russell told me that his mailserver rejected my mail because of
+an ill-formated "To:" header. Resending now with plain git-send-email
+instead of b4 send.]
 
-The old way of performing a C45 bus transfer created a special
-register value and passed it to the MDIO bus driver, in the hope it
-would see the MII_ADDR_C45 bit set, and perform a C45 transfer. Now
-that there is a clear separation of C22 and C45, this scheme is no
-longer used. Remove all the #defines and helpers, to prevent any code
-being added which tries to use it.
+I've picked this older series from Andrew up and rebased it onto
+the latest net-next.
 
-Signed-off-by: Andrew Lunn <andrew@lunn.ch>
-Signed-off-by: Michael Walle <michael@walle.cc>
----
- include/linux/mdio.h | 18 ------------------
- 1 file changed, 18 deletions(-)
+With all drivers which support c45 now being converted to a seperate c22
+and c45 access op, we can now remove the old MII_ADDR_C45 flag.
 
-diff --git a/include/linux/mdio.h b/include/linux/mdio.h
-index 220f3ca8702d..c0da30d63b1d 100644
---- a/include/linux/mdio.h
-+++ b/include/linux/mdio.h
-@@ -10,14 +10,6 @@
- #include <linux/bitfield.h>
- #include <linux/mod_devicetable.h>
- 
--/* Or MII_ADDR_C45 into regnum for read/write on mii_bus to enable the 21 bit
-- * IEEE 802.3ae clause 45 addressing mode used by 10GIGE phy chips.
-- */
--#define MII_ADDR_C45		(1<<30)
--#define MII_DEVADDR_C45_SHIFT	16
--#define MII_DEVADDR_C45_MASK	GENMASK(20, 16)
--#define MII_REGADDR_C45_MASK	GENMASK(15, 0)
--
- struct gpio_desc;
- struct mii_bus;
- struct reset_control;
-@@ -463,16 +455,6 @@ static inline int mdiodev_modify_changed(struct mdio_device *mdiodev,
- 				      mask, set);
- }
- 
--static inline u16 mdiobus_c45_regad(u32 regnum)
--{
--	return FIELD_GET(MII_REGADDR_C45_MASK, regnum);
--}
--
--static inline u16 mdiobus_c45_devad(u32 regnum)
--{
--	return FIELD_GET(MII_DEVADDR_C45_MASK, regnum);
--}
--
- static inline int mdiodev_c45_modify(struct mdio_device *mdiodev, int devad,
- 				     u32 regnum, u16 mask, u16 set)
- {
+Andrew Lunn (3):
+  net: phy: Remove fallback to old C45 method
+  net: Remove C45 check in C22 only MDIO bus drivers
+  net: mdio: Remove support for building C45 muxed addresses
+
+Michael Walle (1):
+  net: ngbe: Drop mdiobus_c45_regad()
+
+ drivers/net/dsa/microchip/ksz_common.c         |  6 ------
+ drivers/net/dsa/rzn1_a5psw.c                   |  6 ------
+ drivers/net/dsa/sja1105/sja1105_mdio.c         |  6 ------
+ drivers/net/ethernet/actions/owl-emac.c        |  6 ------
+ drivers/net/ethernet/engleder/tsnep_main.c     |  6 ------
+ drivers/net/ethernet/marvell/mvmdio.c          |  6 ------
+ drivers/net/ethernet/mediatek/mtk_star_emac.c  |  6 ------
+ .../mellanox/mlxbf_gige/mlxbf_gige_mdio.c      |  6 ------
+ drivers/net/ethernet/sunplus/spl2sw_mdio.c     |  6 ------
+ drivers/net/ethernet/wangxun/ngbe/ngbe_mdio.c  |  4 ++--
+ drivers/net/mdio/mdio-i2c.c                    |  6 ------
+ drivers/net/mdio/mdio-ipq8064.c                |  8 --------
+ drivers/net/mdio/mdio-mscc-miim.c              |  6 ------
+ drivers/net/mdio/mdio-mvusb.c                  |  6 ------
+ drivers/net/phy/mdio_bus.c                     | 10 ++--------
+ include/linux/mdio.h                           | 18 ------------------
+ 16 files changed, 4 insertions(+), 108 deletions(-)
+
 -- 
 2.30.2
 
