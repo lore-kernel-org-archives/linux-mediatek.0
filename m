@@ -4,89 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61238C004D4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 19:38:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EB82C46467
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 22:41:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TWUY+nGMwQRRn9qKV3OMcfKlHJ0IrJJCjkoiQnnNiJE=; b=4CwsvOrtctPyOUnQyIatYN0WyO
-	4E3AJPMbbqlOewcbU4fvwYMJlxNwaFa/heBylAKk4MJ8Ys/7o2pObYHnK9o1Cv+tSPKX6zkr3szC9
-	GgAJxnbkWLWmTzaIN7pWKG7nRReu2cv8kootueFa3oATVBvZBGix3Wz2fLOowXT7JEaxIhfleAZ9Z
-	ppyc0kU3zkLShL92Ck/rLIQY4NeC3oA/T4GBspWH875Gi+Za1bDwevemjONdf6VTzpAz4yIwNLgUC
-	zN6wgE9szvZH4XgHG3TPH9iR9W+/Mcc86cIizLHmIgK55EVUbQCG8O9y7GObMYmVwr8BHEDq8aTtN
-	ZjvmAKiA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=rNVirr7Mh55HoZPwbq9lUXgYo3JdiDpzBy8o0MLFF70=; b=aWkPmXMmtZzE489v/Vh1Z0YTRA
+	DY2FJjO7OZYrbuWN0anFyKP/V3nqyuphrXXjdfWjRKP8pO+s0Ouwx2N3y30ydO9DGImtLOn+WbNQn
+	K+4Iy2NOa8w+INmLvFog9AS6zxLuocGv7Ic+xptEA/8SVbuSLZmiVBjAVj9b/LnAs7tEVzYOzKTj2
+	GJS+vIH7Q37nhg9W7QQIZntzpCMIBHkZgOoYNS3JDOLkNWjLlnW3U+DKtqnKvRZU+jrRYwqHZ2/EJ
+	1G+ru9RJiM9kdAxvYk6O0tykuntMuKW5jxGxutawLmdSo50hkTe97KpDVpr8Sp8bgwWf5jcx6yqi7
+	75rG7YeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIajY-0070K3-2l; Thu, 19 Jan 2023 19:38:00 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1pIdaY-007Uc0-17; Thu, 19 Jan 2023 22:40:54 +0000
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIaj8-0070Bx-Dx; Thu, 19 Jan 2023 19:37:39 +0000
-Received: by mail-ej1-x634.google.com with SMTP id kt14so8472139ejc.3;
-        Thu, 19 Jan 2023 11:37:32 -0800 (PST)
+	id 1pIdaU-007Uap-Fy; Thu, 19 Jan 2023 22:40:51 +0000
+Received: by mail-pf1-x431.google.com with SMTP id i65so2690681pfc.0;
+        Thu, 19 Jan 2023 14:40:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:content-language
-         :references:cc:to:user-agent:mime-version:date:message-id:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=TWUY+nGMwQRRn9qKV3OMcfKlHJ0IrJJCjkoiQnnNiJE=;
-        b=Z4OiSgGlE0/HqZproBTYFHawXPoWq6Y9lq7aytkKanyqbAxcFn/IhnzTwcBT7ufpFm
-         VgkzcQr5W2SUjcIptV7XcVBIK8opxIYkiT0aOjLx1PL8sd+qzDQu2tv9ynfiiMhu7GLZ
-         JL3/MzBzKMdWVFRVuI6OtPntTwf26zQjIBS+VvOr4dKmGYjHzhrKGL1jQ6BwKOlbcPFX
-         89gKG/t7d4PlCKlNCEHI99vESX8SPmAlXNAHNhESLWCsYqu5l2j0FmrvxRiXAZnPg0oq
-         HIEHVP76V5fHn+AArHLe9oOj4044MMzWuqloik4ZbIgA36uXKOZ/oXWo3I6xpDmg5lpX
-         Ckrw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=rNVirr7Mh55HoZPwbq9lUXgYo3JdiDpzBy8o0MLFF70=;
+        b=aFrVtm751bC7Wj4QpfEcse3y80R5JKQlg6yJDGcYfJqg2vUWXjOnVuGkBhuMHVoMc9
+         7k/nRUyAdZqum1UxhknqAz9ycBaiPKFJu7CqmLucaeAmSm6BxwomU6SpJAMKByRA6M/f
+         yuVwoVStRilq5e6F5twMsddLu7ppayYGugLAXQxZjK51e7Vsb/JF4FgS/uIjV5plMacP
+         v3+dpRBC9fBa5K6FapBglGnZuEzFsx7mZ+rjFj9awLRsCudjmZ92Jd0mMW1S8ZyDfRvk
+         TztGrLmb/oVmd9wmiKG7Xf1EADYPseot/SOSBFMV4cZ3bGd8ZuBygXjxyNolq6C3a1MD
+         Sr2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:content-language
-         :references:cc:to:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=TWUY+nGMwQRRn9qKV3OMcfKlHJ0IrJJCjkoiQnnNiJE=;
-        b=SKAsmECJBKDGkcJjczC+LYVY6PcZcI9gEKiLPXZpOvCxgBBMBIobApvdkbvaJ7uXEu
-         7Vzy3JehejYV7CA9ZdtX8pmv2jILI+BqIwiAwLuK9O16b0kiozS3ZX43gJ28/E9Na2OW
-         5pkhgY10/PMIwiA9SEXSptvkmf3Q/JLQuma1+3qfP15jLgtMaMiTHKo32Ft64h/WoPqv
-         SL++pkwznhFf/dea+u795Pg03uovIuGzI2cMnE1+cOMQfUXQIYFTxKtT2hQrxv9WJzbR
-         oWFrWY7QiTc6wi3M4VZKqcrqP2lYB/bNlrdPr4PzPBJAPuWCRo1vV3+bqYzgmZB1iTPM
-         qisQ==
-X-Gm-Message-State: AFqh2krs0+6inNU+tn4SLqSj2VXlZxUmbztvMHda67TCluE8cLtSjXol
-	689xitb6JnOijtpH0zT0Tq4=
-X-Google-Smtp-Source: AMrXdXs7cTdwMd4l/GYKEkUZlgXHRmArxsYaAYbuWxd/uQ48tWPmsVrg2sQxrbWFBYuOW5+e25gd9g==
-X-Received: by 2002:a17:906:52d0:b0:870:5496:26c0 with SMTP id w16-20020a17090652d000b00870549626c0mr12054824ejn.34.1674157050955;
-        Thu, 19 Jan 2023 11:37:30 -0800 (PST)
-Received: from ?IPV6:2a01:c23:c477:4300:3c6e:3915:fc5a:2ff1? (dynamic-2a01-0c23-c477-4300-3c6e-3915-fc5a-2ff1.c23.pool.telefonica.de. [2a01:c23:c477:4300:3c6e:3915:fc5a:2ff1])
-        by smtp.googlemail.com with ESMTPSA id y16-20020a1709063a9000b0084ce5d5d21bsm16722676ejd.22.2023.01.19.11.37.29
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 19 Jan 2023 11:37:30 -0800 (PST)
-Message-ID: <c6d797f8-8177-75c7-4522-eea3da6b56d8@gmail.com>
-Date: Thu, 19 Jan 2023 20:37:23 +0100
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=rNVirr7Mh55HoZPwbq9lUXgYo3JdiDpzBy8o0MLFF70=;
+        b=PTXRxCJsAS99iydROQPCc2+CTqYhRS9KTJr9ra9ky9slqWrDR0h66r9TGAGloz99k+
+         issIbWOlrkC7BPgjSlV5wqS9gbKo0H9MbVikZ5k0jPILDgpiWvU7i1W6IYrAAr662T+j
+         PpIPjZZCLYR1PzkkNEbGcYTEf00pzJVqqqMviMpNKCOz46p7EOxq725hez61t/k2rwwc
+         Ecg2Yg7P4UrkOXYtRy3AgWY8tykDqwZD+pFEGjXU53yB8uaUufuaKqqBsxlB8RtrMVbM
+         l8j7ZL4a/AyEg5cWVzmO8arACUWSqNBUg1kOd9Td5CNHZXS7JiPs+so4YeBaVCtCMAc6
+         gbvQ==
+X-Gm-Message-State: AFqh2koKI+rfoeiL9e6OOfvjsfu4ELz0wYHqwzlWb8RjOqXQGCJ+RocP
+	PWD4dHvHycBkmnVyTMA0Ozw=
+X-Google-Smtp-Source: AMrXdXuTk57vqfyycosJjc83ytHzfOrTz8oBlyWzkuEA4oYwVi918dWiZhgHT9pQS5GsV8DtjUo1+g==
+X-Received: by 2002:a05:6a00:188b:b0:576:de1:cd32 with SMTP id x11-20020a056a00188b00b005760de1cd32mr16243662pfh.0.1674168048178;
+        Thu, 19 Jan 2023 14:40:48 -0800 (PST)
+Received: from localhost ([2a00:79e1:abd:4a00:2703:3c72:eb1a:cffd])
+        by smtp.gmail.com with ESMTPSA id 63-20020a621942000000b0056d98e359a5sm24553533pfz.165.2023.01.19.14.40.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Jan 2023 14:40:47 -0800 (PST)
+From: Rob Clark <robdclark@gmail.com>
+To: dri-devel@lists.freedesktop.org
+Cc: Rob Clark <robdclark@chromium.org>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-mediatek@lists.infradead.org (moderated list:DRM DRIVERS FOR MEDIATEK),
+	linux-kernel@vger.kernel.org (open list),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH] drm/mediatek: Remove dependency on GEM DMA helper
+Date: Thu, 19 Jan 2023 14:40:52 -0800
+Message-Id: <20230119224052.2879106-1-robdclark@gmail.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-To: Peter Suti <peter.suti@streamunlimited.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mmc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <52861a84-0fe2-37f0-d66a-145f2ebe1d79@gmail.com>
- <20221214134620.3028726-1-peter.suti@streamunlimited.com>
- <c6863a3e-8855-50fe-25cb-0b38bc3a05e0@gmail.com>
- <CACMGZgZY4Zb+3vHUDAS0+3r55K4_J40dtbsTPTFZMd6duBikpQ@mail.gmail.com>
- <7c4aa0d2-d8e9-416b-b2ad-f5c3c8ea33de@gmail.com>
- <CACMGZgaS7z2YoViA3jV-gVBvASSq1maiGj_6hfrJQ3zr69esgQ@mail.gmail.com>
-Content-Language: en-US
-From: Heiner Kallweit <hkallweit1@gmail.com>
-Subject: Re: [PATCH v3] mmc: meson-gx: fix SDIO interrupt handling
-In-Reply-To: <CACMGZgaS7z2YoViA3jV-gVBvASSq1maiGj_6hfrJQ3zr69esgQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_113734_573464_8F184711 
-X-CRM114-Status: GOOD (  26.76  )
+X-CRM114-CacheID: sfid-20230119_144050_576582_5809FEEE 
+X-CRM114-Status: GOOD (  11.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,86 +92,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18.01.2023 14:32, Peter Suti wrote:
-> On Thu, Jan 12, 2023 at 10:27 PM Heiner Kallweit <hkallweit1@gmail.com> wrote:
->>
->> On 09.01.2023 12:52, Peter Suti wrote:
->>> On Wed, Dec 14, 2022 at 10:33 PM Heiner Kallweit <hkallweit1@gmail.com> wrote:
->>>>
->>>> On 14.12.2022 14:46, Peter Suti wrote:
->>>>>
->>>>> diff --git a/drivers/mmc/host/meson-gx-mmc.c b/drivers/mmc/host/meson-gx-mmc.c
->>>>> index 6e5ea0213b47..7d3ee2f9a7f6 100644
->>>>> --- a/drivers/mmc/host/meson-gx-mmc.c
->>>>> +++ b/drivers/mmc/host/meson-gx-mmc.c
->>>>> @@ -1023,6 +1023,22 @@ static irqreturn_t meson_mmc_irq(int irq, void *dev_id)
->>>>>       if (ret == IRQ_HANDLED)
->>>>>               meson_mmc_request_done(host->mmc, cmd->mrq);
->>>>>
->>>>> +     /*
->>>>> +     * Sometimes after we ack all raised interrupts,
->>>>> +     * an IRQ_SDIO can still be pending, which can get lost.
->>>>> +     *
->>>>
->>>> A reader may scratch his head here and wonder how the interrupt can get lost,
->>>> and why adding a workaround instead of eliminating the root cause for losing
->>>> the interrupt. If you can't provide an explanation why the root cause for
->>>> losing the interrupt can't be fixed, presumably you would have to say that
->>>> you're adding a workaround for a suspected silicon bug.
->>> After talking to the manufacturer, we got the following explanation
->>> for this situation:
->>
->> To which manufacturer did you talk, Marvell or Amlogic?
-> 
-> Amlogic
-> 
->>
->>> "wifi may have dat1 interrupt coming in, without this the dat1
->>> interrupt would be missed"
->>
->> I don't understand this sentence. W/o the interrupt coming in
->> the interrupt would be missed? Can you explain it?
-> 
-> So the "without this" part of that sentence referred to the patch.
-> Which means that without the patch, the interrupt can be missed.
-> 
->>
->>> Supposedly this is fixed in their codebase.
->>
->> Which codebase do you mean? A specific vendor driver? Or firmware?
-> 
-> The vendor driver from openlinux2.amlogic.com handles SDIO interrupts
-> a bit differently. It uses mmc_signal_sdio_irq()
-> 
->>
->>> Unfortunately we were not able to find out more and can't prepare a
->>> patch with a proper explanation.
->>
->> The workaround is rather simple, so we should add it.
->> It's just unfortunate that we have no idea about the root cause of the issue.
-> 
-> After doing a more long term stress test, it was revealed that this
-> patch is still not sufficient, but only masks the underlying problem
-> better. Reverting 066ecde fixes the issue fully for us (verified
-> overnight with iperf).
-> v1 and v2 also fix the issue, but v3 does not correct the bug when
-> WiFi is stressed for a longer time. And therefore it should not be
-> used.
-> Could you please give us some advice on how to investigate this further?
+From: Rob Clark <robdclark@chromium.org>
 
-One more thought:
-When checking device tree I found that my system uses IRQ_TYPE_LEVEL_HIGH
-for the SDIO interrupt. meson-g12-common.dtsi uses IRQ_TYPE_EDGE_RISING
-in mainline Linux, however vendor kernel uses IRQ_TYPE_LEVEL_HIGH
-in meson-g12-common.dtsi. A wrong interrupt trigger type may result in
-lost interrupts.
-So you could check which trigger type your system uses for the SDIO interrupt.
-If it's IRQ_TYPE_EDGE_RISING, re-test with IRQ_TYPE_LEVEL_HIGH.
+It appears that the dependency on the DMA helpers was only for
+drm_gem_dma_vm_ops.
 
+Signed-off-by: Rob Clark <robdclark@chromium.org>
+---
+ drivers/gpu/drm/mediatek/Kconfig       | 1 -
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c | 7 ++++++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
 
-
-
-
-
+diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/Kconfig
+index 369e495d0c3e..b451dee64d34 100644
+--- a/drivers/gpu/drm/mediatek/Kconfig
++++ b/drivers/gpu/drm/mediatek/Kconfig
+@@ -7,7 +7,6 @@ config DRM_MEDIATEK
+ 	depends on HAVE_ARM_SMCCC
+ 	depends on OF
+ 	depends on MTK_MMSYS
+-	select DRM_GEM_DMA_HELPER
+ 	select DRM_KMS_HELPER
+ 	select DRM_MIPI_DSI
+ 	select DRM_PANEL
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+index 47e96b0289f9..9b3d15d3a983 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+@@ -16,13 +16,18 @@
+ 
+ static int mtk_drm_gem_object_mmap(struct drm_gem_object *obj, struct vm_area_struct *vma);
+ 
++static const struct vm_operations_struct vm_ops = {
++	.open = drm_gem_vm_open,
++	.close = drm_gem_vm_close,
++};
++
+ static const struct drm_gem_object_funcs mtk_drm_gem_object_funcs = {
+ 	.free = mtk_drm_gem_free_object,
+ 	.get_sg_table = mtk_gem_prime_get_sg_table,
+ 	.vmap = mtk_drm_gem_prime_vmap,
+ 	.vunmap = mtk_drm_gem_prime_vunmap,
+ 	.mmap = mtk_drm_gem_object_mmap,
+-	.vm_ops = &drm_gem_dma_vm_ops,
++	.vm_ops = &vm_ops,
+ };
+ 
+ static struct mtk_drm_gem_obj *mtk_drm_gem_init(struct drm_device *dev,
+-- 
+2.38.1
 
 
