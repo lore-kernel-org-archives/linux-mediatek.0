@@ -4,89 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC483C004D4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 16:39:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73E84C46467
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 16:40:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cFccX0iQGUkPDvHxdXm2Dg7nOAysUilW9CKtDUmJ0cw=; b=DTC5TJ2oHodwqMjzwqhefLkRBD
-	3t+nTvpY6pismSA+NCCB28dH/V1wuNIPLSGPlonBy4WP9JNImq4MrFIUEwwcnm04VBAOxlbkxscNM
-	vPVGSnaIednUeOku3pQwMcj8wI/V8mdAJ4PX5rpB6emhYKN093RonuXTsqFmR/ZHvb/2S+pdX089u
-	On1ivbigInaph3hwp64U6Bk2ywYvpeHl+i2AoK9L7/cFdxrIBX8IsUFX6R97DYM6wljxr1ldYvEJI
-	feG0vOBUq3y/XCP7PFepjZtAV9c0Gxww2D3QInl/19lr5+w+3fH2XblJM83a39VGEAnqLWDwnd/Ci
-	5oynPbxw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+irgeTPLyNUYfNouEshTZpbr4v7VPMBL471TEr0+Q/A=; b=MwsPb0Tm9CITCwn7iG0VxIJ9dD
+	iyvA1xhbmT7D0O/qmIFYipKOhYE9ePCCDSCDoZE8Xr0FDMF1yd3yGgHlQSSfy6CO86RXN5/YENosR
+	OX6U3BqBjldEiICjp0nQX4hdRMsq/IxlL9eYCCn1RgXQIe3Wk2UvVaYVplQtyZ4iwZVy/6uL4cGYt
+	n7Kwms2VVaBnsaN+91I0a5o8iwoNeY7pRiZYj0NLQpd9Pd2pRS6MAX8cUUWHxHmuhT0y4YOYc/jgQ
+	PnECMPLwpVSPdzL86MECXAYzfuCozirtySjJMeT6xWVXc2SzPH2buTqG+QZkarpPZJIFzNI37DRTM
+	T2kODN4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIXwh-0062ce-Mk; Thu, 19 Jan 2023 16:39:23 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1pIXxP-0062xC-9m; Thu, 19 Jan 2023 16:40:07 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIXwN-0062Se-FR; Thu, 19 Jan 2023 16:39:05 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id b7so2441548wrt.3;
-        Thu, 19 Jan 2023 08:39:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=cFccX0iQGUkPDvHxdXm2Dg7nOAysUilW9CKtDUmJ0cw=;
-        b=I81c7RERXKi+udhauEcEapckO0k8IyPli493C0u5Ry877Fr6qBEqIDv+107R/2YV0h
-         RGBlf2WitbBBsk37ywG476iJ9O+F7Ci929YlrSK1e+hBMpiAkqTTdCsCi3XNsanqq2oj
-         dFrpAaSLyXY4t7eeUzkB2MdTb7ye6RkvXeqiE6MZxsmjwrFoMK9i1cMdtBm73+bfB7Kf
-         AzGl92rNdOnzGoGsfuf7R/ygb48lad37rsjD/i0oJJR1zzz3lwIsXOJ4Jt5eueFugZVK
-         P161mwGSEDjTtvGcq9JeTcbSxHXW9D2U7+ke9NCbCNatoPaXSBtR7qhwgR+N6COXKvxP
-         jgfQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=cFccX0iQGUkPDvHxdXm2Dg7nOAysUilW9CKtDUmJ0cw=;
-        b=odTkcyqHWSqLqgIa/xUAooKaK5ebRn7dVtrS6MAiK9jN3+01OvqAjqotaJquK/k09y
-         Dub1vHtt546XTU8+hvuwmax4+57fY7aAVnsivXIongLO0YO5PCgy0/D/I/8YrC/DSVb6
-         MGc0ZsIWbJ6QnMOESXv767ZFiI4Vpm2THOM6WCnUysgGrX8zAONYyYqCg7AQbrAjsOLG
-         I5iJOM+w9VBKe/0M4INeM28hnRKlkRStXqfSt8DIPF5NTJLJNY3/lVbdmrWPmy1pZerK
-         WnXutmVdfrUfAv8wzfU8xcQsSmlskKGLnMl9A82Xx7UubQnxF4bFwtnm4NZa2wGsEqfe
-         GsYA==
-X-Gm-Message-State: AFqh2kqh5SxyA4VQk79VOrHLWGZBXY+GD2ZoMttsV8LFknwAcFBEzCCl
-	v+bfJxTyov+hXZpc8/RS3EfMbMMznPc=
-X-Google-Smtp-Source: AMrXdXvnv3Mh0kiEG2JAGXOY0znP12LMrjnWY7tdftGlWSZFodg0/DJdtw6YlWjdWjtRZfMIz2R3Hw==
-X-Received: by 2002:adf:df10:0:b0:2bb:e891:1829 with SMTP id y16-20020adfdf10000000b002bbe8911829mr10242278wrl.4.1674146341814;
-        Thu, 19 Jan 2023 08:39:01 -0800 (PST)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id l6-20020a5d4bc6000000b0027323b19ecesm33836836wrt.16.2023.01.19.08.39.00
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 19 Jan 2023 08:39:01 -0800 (PST)
-Message-ID: <572b472b-088b-4ebe-0b52-927736199f70@gmail.com>
-Date: Thu, 19 Jan 2023 17:38:59 +0100
+	id 1pIXwn-0062fE-U5; Thu, 19 Jan 2023 16:39:31 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 3C210B82620;
+	Thu, 19 Jan 2023 16:39:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72650C433EF;
+	Thu, 19 Jan 2023 16:39:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1674146366;
+	bh=3bJjdB+nWWOEDo4Kr2GKl2c8L2HL7kShd//vBhxQxIA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=OAmesnlcLr4gXydaCxspVBHJl//Pg48EEE9Ac1TuOp9VDD22lqzx2tTzjv8ElSimU
+	 pWOk7Tpp0yXR8fj7azquosDK8AHJhlQDRpdzhmLD0lfvBPvDM1bklUh/uEA76afBPg
+	 gC/3E9MSVR5mRb3tWpVgRll+UrxNn6HRXTmG/DSYEtdLdxj9MgElxOuaJhm8BojqV5
+	 6lc+OAZIpb4B/ZJpqUfKQFuMWQH55IZjFqgfbDtvV96U9AGQn9gGT06dMbsEZqp2wh
+	 A5lS99N0Zg4L8gWvXMMr9qlhpA5dZN8pmF3UDJDBX/MFCXdZP8j6mnVo+Jz9JRA5sM
+	 BN2z4OU8HN0KA==
+Date: Thu, 19 Jan 2023 16:39:21 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-spi@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 2/2] spi: spidev: add new mediatek support
+Message-ID: <Y8lyORTrfmwIzEEO@sirena.org.uk>
+References: <20230118-mt8365-spi-support-v1-0-842a21e50494@baylibre.com>
+ <20230118-mt8365-spi-support-v1-2-842a21e50494@baylibre.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v2 7/9] arm64: dts: mediatek: mt8186: Add DPI node
-Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Stephen Boyd <sboyd@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- dri-devel@lists.freedesktop.org
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- hsinyi@chromium.org
-References: <20230118091829.755-1-allen-kh.cheng@mediatek.com>
- <20230118091829.755-8-allen-kh.cheng@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230118091829.755-8-allen-kh.cheng@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="fQ/9xqKBaGbAnkd8"
+Content-Disposition: inline
+In-Reply-To: <20230118-mt8365-spi-support-v1-2-842a21e50494@baylibre.com>
+X-Cookie: Serving suggestion.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_083903_607168_970A0855 
-X-CRM114-Status: GOOD (  14.93  )
+X-CRM114-CacheID: sfid-20230119_083930_203403_D6D54C5C 
+X-CRM114-Status: GOOD (  14.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,45 +78,41 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
+--fQ/9xqKBaGbAnkd8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On 18/01/2023 10:18, Allen-KH Cheng wrote:
-> Add DPI node for MT8186 SoC.
-> 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+On Thu, Jan 19, 2023 at 05:28:50PM +0100, Alexandre Mergnat wrote:
+> Add the "mediatek,genio" compatible string to support Mediatek
+> SPI controller on the genio boards.
 
-Applied, thanks!
+>  	{ .compatible = "cisco,spi-petra", .data = &spidev_of_check },
+>  	{ .compatible = "micron,spi-authenta", .data = &spidev_of_check },
+> +	{ .compatible = "mediatek,genio", .data = &spidev_of_check },
 
-> ---
->   arch/arm64/boot/dts/mediatek/mt8186.dtsi | 17 +++++++++++++++++
->   1 file changed, 17 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-> index c52f9be1e750..45b9d6777929 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-> @@ -1230,6 +1230,23 @@
->   			power-domains = <&spm MT8186_POWER_DOMAIN_DIS>;
->   		};
->   
-> +		dpi: dpi@1400a000 {
-> +			compatible = "mediatek,mt8186-dpi";
-> +			reg = <0 0x1400a000 0 0x1000>;
-> +			clocks = <&topckgen CLK_TOP_DPI>,
-> +				 <&mmsys CLK_MM_DISP_DPI>,
-> +				 <&apmixedsys CLK_APMIXED_TVDPLL>;
-> +			clock-names = "pixel", "engine", "pll";
-> +			assigned-clocks = <&topckgen CLK_TOP_DPI>;
-> +			assigned-clock-parents = <&topckgen CLK_TOP_TVDPLL_D2>;
-> +			interrupts = <GIC_SPI 309 IRQ_TYPE_LEVEL_LOW 0>;
-> +			status = "disabled";
-> +
-> +			port {
-> +				dpi_out: endpoint { };
-> +			};
-> +		};
-> +
->   		dsi0: dsi@14013000 {
->   			compatible = "mediatek,mt8186-dsi";
->   			reg = <0 0x14013000 0 0x1000>;
+We need a matching update to the binding document.
+
+This does also seem like a terribly generic name - Google
+suggests that this is actually a series of numbered products (eg,
+Genio 700), perhaps we should be using the specific numbers here?
+I guess users would care which they're talking to.  It really
+parses as being "generic I/O" which would be an end run around
+describing the actual product though it's not actually that.
+
+--fQ/9xqKBaGbAnkd8
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmPJcjgACgkQJNaLcl1U
+h9CRKgf/aE9L/bycOwLdBtT6N4nGdMCTKRv3Lik1C75xILzdQEoMeSY6hbiIprsK
+akyYOAkVATInpreBpDdxVLBv2WRoF1gjCOyS658l/ZDWgPSYZ2oIe8cR2Ve4TYYX
+OiK6PPIcF/PiQ4/MMrHDd4V3GOQ9JUBukMUM88cbBsqMbHXiITvP83Omb04MPXV2
+xyAtq50UCaRGJnlwS1/ahDJ4wSL42RUKgu+6WJNeMckv3L3tM4hhs4qKcZVOfWPV
+yDflRvfSWw0mgd6x9C4CoRslSC9FRLEpniU8fRtwbkvP2CnBzJnx7o+mQ3KtFnor
+opcBdJ4aSzsX9xPuTU+M97GKibnXeg==
+=IObu
+-----END PGP SIGNATURE-----
+
+--fQ/9xqKBaGbAnkd8--
 
