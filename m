@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D943BC00A5A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 13:17:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CB12C00A5A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 13:17:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=khuF9D5aRrU+RqS5yxEYYs8dKhh0RK9DJlZz4Fdm+kU=; b=QVEp7a069GrHcGyIFOmSDF2W6+
-	I5wsd+Urlm5z+NSiSrJ39cKj9KM1GhjvR1EzQJ3ALemLYTxwVBfR2vezzgOeh21Nz7AnJvUEhUWAa
-	RlrmXuheiV9+nhBUuNGRh2ZyKcHvGmfZkouPubs2JK/ao/HPyFRrJPFVO8/UD7ADRr9SQ02rPjoX4
-	Akm/EE4z5Fh45cqrK8AoRxJfUL/QFJLuOiZCTxWEZXtLV0Qs/yZEbehpyCbDb9zoF9RLWTqUesfl0
-	ywVFShDASK5Y7ZQEx7kouTaYhxJtMYO0BaVV1rtXQ87y11VnlNkTCFpcXXtUb9qGTVBgZ6ftDzYEG
-	b6OfSDLQ==;
+	bh=8ucNqQrBv58FmJgsbqN8x3M/G1cfrpq7tqtLwGp8Zts=; b=cFqQ9R5HSJDYUsHWhe15SuQ6z/
+	EkxKQ+dBS0o2tEe3TBJr8HWMAeNGrojeTfPTk3U1N9jBF4x3gtiW8TTP1Ys4p0YC/KPcIhOKLU/Li
+	QebQbNFrncsp6+WvdCs0TktiYJYrU40LM1hA3jDNYrLM+rCrK/wpugMcwxL8b04agFF4aksX+K1aG
+	zXspCk/ZqC/vd4znyu9NnrvNabQXv6GySkHGxPgzufssXtFh3qc7k+px0W52/EA4gcrIuS/GhOU0F
+	EnOhDZlVNrfIjTtg/RfrfhjNoz5kibVB/BJVNIvV8Iq2pdS5kmZl57w4tn7Io7UkyDgLxHIefdweu
+	5VFpsjlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIUmq-00538a-Md; Thu, 19 Jan 2023 13:17:00 +0000
+	id 1pIUnR-0053Oh-3N; Thu, 19 Jan 2023 13:17:37 +0000
 Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIUe8-004zhF-OR; Thu, 19 Jan 2023 13:08:03 +0000
+	id 1pIUe9-004zhj-8I; Thu, 19 Jan 2023 13:08:05 +0000
 Received: from mwalle01.kontron.local. (unknown [213.135.10.150])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 4F8C518D8;
-	Thu, 19 Jan 2023 14:07:58 +0100 (CET)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 17FA41A00;
+	Thu, 19 Jan 2023 14:07:59 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1674133678;
+	t=1674133679;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=khuF9D5aRrU+RqS5yxEYYs8dKhh0RK9DJlZz4Fdm+kU=;
-	b=ELaQzDQS/Rb8IAB9R0Pt+rIRCMsEkAtSuwUypOhzEYItq8wf5369kWuR3b1vmg/r7hqSXq
-	jrzs/i2jaDREjQI+27CQpIrMmgERRMP8mPnjtB6gnkma/7Q8z3r586D0X0yj6MYPVI/guN
-	dFxfFIVmDq1JyKHS5rTkjoUM8S9Y02KS5A+K3BVFI4xYCNXoQc/wiaKvsrLJNM+HzmAbts
-	Mrtgx/u7YFnMyB42Y2ZmYxQGn02c8oJX8s5BSx+kCkmpVdWHA5Rxoi6xj8IiTwzWdUeb2Y
-	KjSAmnVlGA8Wtmk1B2LBtx1KeQ6RimYPHHgIUwGqCrBCT2PNkj+o9vj9RbjntQ==
+	bh=8ucNqQrBv58FmJgsbqN8x3M/G1cfrpq7tqtLwGp8Zts=;
+	b=BO/W7ryvR8JDotAf4gWdeS8Dhl59cGsFoi2/VnxatK00UV12d84+KVEVwGfDL8trZQBnc+
+	49hLDoUSNcQCQtN4ZVeOAI0dyEb+tNHVH1L8GNuYlK+07FEsRD3IRwEQZ5B/adTcnrzazY
+	HmDIqU/fUL97iMbwdSjzRRA0kOypKtd15rrc/7qZAdyJRUQumxYBxBGm6d53iZtp4z6V3n
+	HwP+BjH8gf176YsJHMPazgLiq1kx4TNoXJTop86c7QkTOAueyZsuTW7tzMcpeJRYRRXmkH
+	RV1t7L68Q23HalVppN3uKO0DLIapfih8QyyqhJ5svBPlhCLRnlxVS4vNivCqiQ==
 From: Michael Walle <michael@walle.cc>
 To: Woojung Huh <woojung.huh@microchip.com>,
 	UNGLinuxDriver@microchip.com,
@@ -74,9 +74,9 @@ Cc: netdev@vger.kernel.org,
 	linux-actions@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Michael Walle <michael@walle.cc>
-Subject: [PATCH RESEND net-next 1/4] net: phy: Remove fallback to old C45 method
-Date: Thu, 19 Jan 2023 14:06:57 +0100
-Message-Id: <20230119130700.440601-2-michael@walle.cc>
+Subject: [PATCH RESEND net-next 2/4] net: ngbe: Drop mdiobus_c45_regad()
+Date: Thu, 19 Jan 2023 14:06:58 +0100
+Message-Id: <20230119130700.440601-3-michael@walle.cc>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20230119130700.440601-1-michael@walle.cc>
 References: <20230119130700.440601-1-michael@walle.cc>
@@ -84,8 +84,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Spam: Yes
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_050801_037326_DA570EB9 
-X-CRM114-Status: GOOD (  10.85  )
+X-CRM114-CacheID: sfid-20230119_050801_555001_461EE0B2 
+X-CRM114-Status: GOOD (  11.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,52 +100,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Andrew Lunn <andrew@lunn.ch>
+With the new C45 MDIO access API, there is no encoding of the register
+number anymore and thus the masking isn't necessary anymore. Remove it.
 
-Now that all MDIO bus drivers which support C45 implement the c45
-specific ops, remove the fallback to the old method.
-
-Signed-off-by: Andrew Lunn <andrew@lunn.ch>
 Signed-off-by: Michael Walle <michael@walle.cc>
 ---
- drivers/net/phy/mdio_bus.c | 10 ++--------
- 1 file changed, 2 insertions(+), 8 deletions(-)
+ drivers/net/ethernet/wangxun/ngbe/ngbe_mdio.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/phy/mdio_bus.c b/drivers/net/phy/mdio_bus.c
-index 132dd1f905f4..f5e319549f67 100644
---- a/drivers/net/phy/mdio_bus.c
-+++ b/drivers/net/phy/mdio_bus.c
-@@ -844,11 +844,6 @@ int __mdiobus_modify_changed(struct mii_bus *bus, int addr, u32 regnum,
- }
- EXPORT_SYMBOL_GPL(__mdiobus_modify_changed);
+diff --git a/drivers/net/ethernet/wangxun/ngbe/ngbe_mdio.c b/drivers/net/ethernet/wangxun/ngbe/ngbe_mdio.c
+index ba33a57b42c2..c9ddbbc3fa4f 100644
+--- a/drivers/net/ethernet/wangxun/ngbe/ngbe_mdio.c
++++ b/drivers/net/ethernet/wangxun/ngbe/ngbe_mdio.c
+@@ -92,7 +92,7 @@ static int ngbe_phy_read_reg_mdi_c45(struct mii_bus *bus, int phy_addr, int devn
  
--static u32 mdiobus_c45_addr(int devad, u16 regnum)
--{
--	return MII_ADDR_C45 | devad << MII_DEVADDR_C45_SHIFT | regnum;
--}
--
- /**
-  * __mdiobus_c45_read - Unlocked version of the mdiobus_c45_read function
-  * @bus: the mii_bus struct
-@@ -869,7 +864,7 @@ int __mdiobus_c45_read(struct mii_bus *bus, int addr, int devad, u32 regnum)
- 	if (bus->read_c45)
- 		retval = bus->read_c45(bus, addr, devad, regnum);
- 	else
--		retval = bus->read(bus, addr, mdiobus_c45_addr(devad, regnum));
-+		retval = -EOPNOTSUPP;
+ 	wr32(wx, NGBE_MDIO_CLAUSE_SELECT, 0x0);
+ 	/* setup and write the address cycle command */
+-	command = NGBE_MSCA_RA(mdiobus_c45_regad(regnum)) |
++	command = NGBE_MSCA_RA(regnum) |
+ 		  NGBE_MSCA_PA(phy_addr) |
+ 		  NGBE_MSCA_DA(devnum);
+ 	wr32(wx, NGBE_MSCA, command);
+@@ -121,7 +121,7 @@ static int ngbe_phy_write_reg_mdi_c45(struct mii_bus *bus, int phy_addr,
  
- 	trace_mdio_access(bus, 1, addr, regnum, retval, retval);
- 	mdiobus_stats_acct(&bus->stats[addr], true, retval);
-@@ -900,8 +895,7 @@ int __mdiobus_c45_write(struct mii_bus *bus, int addr, int devad, u32 regnum,
- 	if (bus->write_c45)
- 		err = bus->write_c45(bus, addr, devad, regnum, val);
- 	else
--		err = bus->write(bus, addr, mdiobus_c45_addr(devad, regnum),
--				 val);
-+		err = -EOPNOTSUPP;
- 
- 	trace_mdio_access(bus, 0, addr, regnum, val, err);
- 	mdiobus_stats_acct(&bus->stats[addr], false, err);
+ 	wr32(wx, NGBE_MDIO_CLAUSE_SELECT, 0x0);
+ 	/* setup and write the address cycle command */
+-	command = NGBE_MSCA_RA(mdiobus_c45_regad(regnum)) |
++	command = NGBE_MSCA_RA(regnum) |
+ 		  NGBE_MSCA_PA(phy_addr) |
+ 		  NGBE_MSCA_DA(devnum);
+ 	wr32(wx, NGBE_MSCA, command);
 -- 
 2.30.2
 
