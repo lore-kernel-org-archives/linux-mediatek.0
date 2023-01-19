@@ -4,161 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A39A7C38142
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 07:45:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A91BC00A5A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 07:55:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jL/MbEBfkVAq5ZMy1e9+noLbvk1MZWNuOQ2c+Fz8nz0=; b=ZdidQ5cWpDswslYcoFCinhsR1K
-	zabPA7OutzjiAyA4gm1GHnFIAahejLiq7hrOzCgaNYD0LSFLzrRvlOHPIpYZqms8jF1/WfQozctUe
-	1tKAmyPLm2JfeWdSxZQhX+OAqJzr22VqrXw3DYqSpzulenpFTf7kI+DMqKwNfGxSz/6Z6G8vrSseB
-	mRlBNKHW2XP048eqSPRsxp4MrLFpEOSH0H/9DZAbie4DZhWZzrQ+xRdl+JuM3gaPIE5b6AEvgQk0X
-	PzZ4LGzwC2M4xIChxweAvJh/CL3+7Vz7sfx3QVqLNEoPgA1lRzO2V9BXeDB5Djunw/6URJCrCKQOE
-	Dd/WVYmA==;
+	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EWviBnBumLa3lo5dwVP+uotrksiLTeP+2ci/rlH33Ks=; b=QBqH3GnBI4L5Wz1Vy1VSiJ2ybf
+	qV2+vlkfi14OBfWJT4yBP1gB59qICKv0EG6XeYde9SZKFQ2NVQ7DZtl0ceOP56y2IgPGjLgBX8wxH
+	Jqztck/17i+DGwnHYIQxdDdenv9lMQ0Db7HCxsQ+UtLpWOoNmyxHYPtrow1QCaFGro+X+n578FlEP
+	6sLl3+5qpq57PObPBhgXEosqxcwz402BrJrumXQ7DK0dBJUl1KCnedmBiOdasGmAXOI42FJSBOSD5
+	hyYIxJoG9+4xiDVNt6aqjQBo6HUm0Skve6vlUK2upLu3LDtrTm0buuYzWY0fOOTQgTdQofGyUkXBd
+	aOF6z5gA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIPcM-003uqG-7G; Thu, 19 Jan 2023 07:45:50 +0000
-Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
+	id 1pIPm0-003yfp-EZ; Thu, 19 Jan 2023 07:55:48 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIPZi-003tWG-0t; Thu, 19 Jan 2023 07:43:07 +0000
-Received: from pps.filterd (m0046661.ppops.net [127.0.0.1])
-	by mx07-00178001.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 30J4AmBm002246;
-	Thu, 19 Jan 2023 08:41:47 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=message-id : date :
- mime-version : subject : to : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=selector1;
- bh=jL/MbEBfkVAq5ZMy1e9+noLbvk1MZWNuOQ2c+Fz8nz0=;
- b=BX5ioQOOwo8TiUALeHu96ZUvFqNIHMHC983BbAfFTiaXFGm04nFWgpxOs1Q7wy8bd1tT
- iacyKZPEi3RiNxjrVN23olXkUMvfN1LPcgEkOJgqBS13VE4H31+IPZjKsZJYTAOAlkMT
- wVL+gSSJR/+ua+zPPFyqR+rcwK/c8ePcyJhBfcKCqe7NVkmg0bsxcWYHrl5vTZSYL8jJ
- tM9o3ECjI5clfhz0HeAB4Gu+1cmmSklmH4q2DKtaUl+ZfNNyWLjnc2/8bm5Gj8t00Toz
- vt5LmHTqJz6oq9ZHq4VnRcItZY7fnlvBIqaAKdyh8+tU4QSDXG7WCok/Mg8ZAujzrnsd Aw== 
-Received: from beta.dmz-eu.st.com (beta.dmz-eu.st.com [164.129.1.35])
-	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3n3m5qd4je-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 19 Jan 2023 08:41:47 +0100
-Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
-	by beta.dmz-eu.st.com (STMicroelectronics) with ESMTP id C88C4100034;
-	Thu, 19 Jan 2023 08:41:39 +0100 (CET)
-Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
-	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 22EC520F562;
-	Thu, 19 Jan 2023 08:41:39 +0100 (CET)
-Received: from [10.201.21.26] (10.201.21.26) by SHFDAG1NODE1.st.com
- (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.13; Thu, 19 Jan
- 2023 08:41:36 +0100
-Message-ID: <39af6fac-3e8e-4929-43b3-eb0b7af0ab30@foss.st.com>
-Date: Thu, 19 Jan 2023 08:41:36 +0100
+	id 1pIPk2-003y0Q-KH; Thu, 19 Jan 2023 07:53:48 +0000
+Received: by mail-ed1-x530.google.com with SMTP id 18so1799994edw.7;
+        Wed, 18 Jan 2023 23:53:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=EWviBnBumLa3lo5dwVP+uotrksiLTeP+2ci/rlH33Ks=;
+        b=T5UxcrAvnlPwErYlYjaaCYCHK0tvutr+16i5q64bp4X1NZwevZYx+vreTJhv2pUhE3
+         PBP/12VMv1h5nn0IC9NZwOoC2SlFQ5Ure1efJaReQ3zkyaNSv8H3Mxy00iTKb/L2KkKW
+         VO3KEXIunNHVjNryMqxlAuWlaDnkaKJGRQ3QmqxpchlyrjhDS17RaG43TIcNHtrC3fT3
+         pxBvPHF1CPX4M3m6U8ZfDk8wN+Xu2L0FyiF9cj9FctU2yX42yXY9NpH8bQvTDSBnrPuo
+         PAtxU836CAuLPcgCcC7FNUgQ0UA6g9JtcKOlNHkPGv1/J1zQlJVJLuUQAox1zNmUjDTJ
+         Vgrw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=EWviBnBumLa3lo5dwVP+uotrksiLTeP+2ci/rlH33Ks=;
+        b=OVqxLHKVqJjQlUjvWivlz4V0p9qfQa7EmcVUs5XGvJU4tm1jEkqH6hqNN3RFiJjlyv
+         UA83iWAHPoH51qI/fdfQ3Wc8PPWqblYNxOSgmSL15Khkyc5dCAHKP9hpGozBSr4X/84R
+         lM2gIj5D/epeO5LPyQBTrxI96bM6BRIRC7/0z2hkSfhWqrJ7IWj15JDoEozFIL7Wm8Gy
+         2he2HmQftb48SnSkeMdw4s7pWaFGhhLc1HkyJi6/8CLvSTA/WE7rlAbF+9/MxEd23G5g
+         +T0Vyi6RVAlHsGl2t02is3cr0LHwkI8Auw01UU/lcEnp3XWWrnhDRseXHk1zck8XBqh4
+         6jzA==
+X-Gm-Message-State: AFqh2kqJm08n+5ULMSWxJEnA3+MR5KnqLutRb3pPXzXcL+Dak2vg/ufE
+	YikXX8vKFOiGWl4iNWWG5nhO7Cda7UM=
+X-Google-Smtp-Source: AMrXdXtC1FhLxOa5uddlJTrPG2c8t/oFYkLbKvmlT6Q60PgvJzzurTbjwq5gdVLJM7BwN/R3/hD20A==
+X-Received: by 2002:aa7:c44d:0:b0:46c:b919:997f with SMTP id n13-20020aa7c44d000000b0046cb919997fmr870882edr.17.1674114823272;
+        Wed, 18 Jan 2023 23:53:43 -0800 (PST)
+Received: from ?IPV6:2a01:c23:c477:4300:6902:d630:fe6:8186? (dynamic-2a01-0c23-c477-4300-6902-d630-0fe6-8186.c23.pool.telefonica.de. [2a01:c23:c477:4300:6902:d630:fe6:8186])
+        by smtp.googlemail.com with ESMTPSA id w1-20020aa7dcc1000000b0047a3a407b49sm15278976edu.43.2023.01.18.23.53.42
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 18 Jan 2023 23:53:42 -0800 (PST)
+Message-ID: <e40f8fec-58b0-cb93-7858-6ac143b83747@gmail.com>
+Date: Thu, 19 Jan 2023 08:53:29 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH 1/2] spi: dt-bindings: drop unneeded quotes
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
 Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-        Mark Brown
-	<broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
-        Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>,
-        Chen-Yu Tsai <wens@csie.org>,
-        Jernej
- Skrabec <jernej.skrabec@gmail.com>,
-        Samuel Holland <samuel@sholland.org>,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Kevin Hilman
-	<khilman@baylibre.com>,
-        Jerome Brunet <jbrunet@baylibre.com>,
-        Martin
- Blumenstingl <martin.blumenstingl@googlemail.com>,
-        Chin-Ting Kuo
-	<chin-ting_kuo@aspeedtech.com>,
-        =?UTF-8?Q?C=c3=a9dric_Le_Goat?=
- =?UTF-8?Q?er?= <clg@kaod.org>,
-        Joel Stanley <joel@jms.id.au>, Andrew Jeffery
-	<andrew@aj.id.au>,
-        Kamal Dasu <kdasu.kdev@gmail.com>,
-        Broadcom internal
- kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-        Han Xu
-	<han.xu@nxp.com>, Shawn Guo <shawnguo@kernel.org>,
-        Sascha Hauer
-	<s.hauer@pengutronix.de>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        Thierry Reding
-	<thierry.reding@gmail.com>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Andy
- Gross <agross@kernel.org>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Konrad
- Dybcio <konrad.dybcio@linaro.org>,
-        Serge Semin <fancer.lancer@gmail.com>, Haibo Chen <haibo.chen@nxp.com>,
-        Yogesh Gaur <yogeshgaur.83@gmail.com>,
-        Linus
- Walleij <linus.walleij@linaro.org>,
-        Heiko Stuebner <heiko@sntech.de>, Palmer
- Dabbelt <palmer@dabbelt.com>,
-        Paul Walmsley <paul.walmsley@sifive.com>,
-        Li-hao Kuo <lhjeff911@gmail.com>,
-        Michal Simek <michal.simek@xilinx.com>,
-        Orson Zhai <orsonzhai@gmail.com>,
-        Baolin Wang
-	<baolin.wang@linux.alibaba.com>,
-        Chunyan Zhang <zhang.lyra@gmail.com>,
-        Maxime
- Coquelin <mcoquelin.stm32@gmail.com>,
-        Alexandre Torgue
-	<alexandre.torgue@foss.st.com>,
-        Maxime Ripard <mripard@kernel.org>,
-        =?UTF-8?B?77+9ZWNraQ==?= <rafal@milecki.pl>,
-        Vaishnav Achath
-	<vaishnav.a@ti.com>,
-        Parshuram Thombare <pthombar@cadence.com>,
-        Leilk Liu
-	<leilk.liu@mediatek.com>, Gabor Juhos <juhosg@openwrt.org>,
-        Bert Vermeulen
-	<bert@biot.com>,
-        Miquel Raynal <miquel.raynal@bootlin.com>,
-        Marek Vasut
-	<marex@denx.de>, Birger Koblitz <mail@birger-koblitz.de>,
-        Geert Uytterhoeven
-	<geert+renesas@glider.be>,
-        Anson Huang <Anson.Huang@nxp.com>,
-        Chris Packham
-	<chris.packham@alliedtelesis.co.nz>,
-        Kuldeep Singh
-	<singh.kuldeep87k@gmail.com>,
-        Pragnesh Patel <pragnesh.patel@sifive.com>,
-        Christophe Kerello <christophe.kerello@foss.st.com>,
-        Erwan Leray
-	<erwan.leray@foss.st.com>,
-        Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
-        <linux-spi@vger.kernel.org>, <devicetree@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>, <linux-sunxi@lists.linux.dev>,
-        <linux-kernel@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
-        <linux-aspeed@lists.ozlabs.org>, <openbmc@lists.ozlabs.org>,
-        <linux-mediatek@lists.infradead.org>, <linux-tegra@vger.kernel.org>,
-        <linux-arm-msm@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
-        <linux-riscv@lists.infradead.org>,
-        <linux-stm32@st-md-mailman.stormreply.com>
-References: <20230118173932.358153-1-krzysztof.kozlowski@linaro.org>
-From: Patrice CHOTARD <patrice.chotard@foss.st.com>
-In-Reply-To: <20230118173932.358153-1-krzysztof.kozlowski@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+To: Peter Suti <peter.suti@streamunlimited.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mmc@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <52861a84-0fe2-37f0-d66a-145f2ebe1d79@gmail.com>
+ <20221214134620.3028726-1-peter.suti@streamunlimited.com>
+ <c6863a3e-8855-50fe-25cb-0b38bc3a05e0@gmail.com>
+ <CACMGZgZY4Zb+3vHUDAS0+3r55K4_J40dtbsTPTFZMd6duBikpQ@mail.gmail.com>
+ <7c4aa0d2-d8e9-416b-b2ad-f5c3c8ea33de@gmail.com>
+ <CACMGZgaS7z2YoViA3jV-gVBvASSq1maiGj_6hfrJQ3zr69esgQ@mail.gmail.com>
+From: Heiner Kallweit <hkallweit1@gmail.com>
+Subject: Re: [PATCH v3] mmc: meson-gx: fix SDIO interrupt handling
+In-Reply-To: <CACMGZgaS7z2YoViA3jV-gVBvASSq1maiGj_6hfrJQ3zr69esgQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.201.21.26]
-X-ClientProxiedBy: SHFCAS1NODE2.st.com (10.75.129.73) To SHFDAG1NODE1.st.com
- (10.75.129.69)
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.219,Aquarius:18.0.923,Hydra:6.0.562,FMLib:17.11.122.1
- definitions=2023-01-18_05,2023-01-18_01,2022-06-22_01
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_234306_453667_CB7063E7 
-X-CRM114-Status: GOOD (  14.94  )
+X-CRM114-CacheID: sfid-20230118_235346_731867_0269BB91 
+X-CRM114-Status: GOOD (  30.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -173,35 +101,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof
-
-On 1/18/23 18:39, Krzysztof Kozlowski wrote:
-> Cleanup by removing unneeded quotes from refs and redundant blank lines.
-> No functional impact except adjusting to preferred coding style.
+On 18.01.2023 14:32, Peter Suti wrote:
+> On Thu, Jan 12, 2023 at 10:27 PM Heiner Kallweit <hkallweit1@gmail.com> wrote:
+>>
+>> On 09.01.2023 12:52, Peter Suti wrote:
+>>> On Wed, Dec 14, 2022 at 10:33 PM Heiner Kallweit <hkallweit1@gmail.com> wrote:
+>>>>
+>>>> On 14.12.2022 14:46, Peter Suti wrote:
+>>>>>
+>>>>> diff --git a/drivers/mmc/host/meson-gx-mmc.c b/drivers/mmc/host/meson-gx-mmc.c
+>>>>> index 6e5ea0213b47..7d3ee2f9a7f6 100644
+>>>>> --- a/drivers/mmc/host/meson-gx-mmc.c
+>>>>> +++ b/drivers/mmc/host/meson-gx-mmc.c
+>>>>> @@ -1023,6 +1023,22 @@ static irqreturn_t meson_mmc_irq(int irq, void *dev_id)
+>>>>>       if (ret == IRQ_HANDLED)
+>>>>>               meson_mmc_request_done(host->mmc, cmd->mrq);
+>>>>>
+>>>>> +     /*
+>>>>> +     * Sometimes after we ack all raised interrupts,
+>>>>> +     * an IRQ_SDIO can still be pending, which can get lost.
+>>>>> +     *
+>>>>
+>>>> A reader may scratch his head here and wonder how the interrupt can get lost,
+>>>> and why adding a workaround instead of eliminating the root cause for losing
+>>>> the interrupt. If you can't provide an explanation why the root cause for
+>>>> losing the interrupt can't be fixed, presumably you would have to say that
+>>>> you're adding a workaround for a suspected silicon bug.
+>>> After talking to the manufacturer, we got the following explanation
+>>> for this situation:
+>>
+>> To which manufacturer did you talk, Marvell or Amlogic?
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
+> Amlogic
+> 
+>>
+>>> "wifi may have dat1 interrupt coming in, without this the dat1
+>>> interrupt would be missed"
+>>
+>> I don't understand this sentence. W/o the interrupt coming in
+>> the interrupt would be missed? Can you explain it?
+> 
+> So the "without this" part of that sentence referred to the patch.
+> Which means that without the patch, the interrupt can be missed.
+> 
 
-[...]
+Did you ask Amlogic for the root cause of the problem? Silicon bug?
 
-> diff --git a/Documentation/devicetree/bindings/spi/st,stm32-qspi.yaml b/Documentation/devicetree/bindings/spi/st,stm32-qspi.yaml
-> index 1eb17f7a4d86..8bba965a9ae6 100644
-> --- a/Documentation/devicetree/bindings/spi/st,stm32-qspi.yaml
-> +++ b/Documentation/devicetree/bindings/spi/st,stm32-qspi.yaml
-> @@ -11,7 +11,7 @@ maintainers:
->    - Patrice Chotard <patrice.chotard@foss.st.com>
->  
->  allOf:
-> -  - $ref: "spi-controller.yaml#"
-> +  - $ref: spi-controller.yaml#
->  
->  properties:
->    compatible:
+>>
+>>> Supposedly this is fixed in their codebase.
+>>
+>> Which codebase do you mean? A specific vendor driver? Or firmware?
+> 
+> The vendor driver from openlinux2.amlogic.com handles SDIO interrupts
+> a bit differently. It uses mmc_signal_sdio_irq()
+> 
+This is the legacy API for SDIO irq.
+
+>>
+>>> Unfortunately we were not able to find out more and can't prepare a
+>>> patch with a proper explanation.
+>>
+>> The workaround is rather simple, so we should add it.
+>> It's just unfortunate that we have no idea about the root cause of the issue.
+> 
+> After doing a more long term stress test, it was revealed that this
+> patch is still not sufficient, but only masks the underlying problem
+> better. Reverting 066ecde fixes the issue fully for us (verified
+> overnight with iperf).
+> v1 and v2 also fix the issue, but v3 does not correct the bug when
+> WiFi is stressed for a longer time. And therefore it should not be
+> used.
+> Could you please give us some advice on how to investigate this further?
+
+When talking about v2 of the patch, it includes a number of actual changes:
+
+- hold lock from start to end of interrupt handler
+- if SDIO irq was disabled when entering the irq handler I see no change
+- if SDIO irq was enabled
+  - disable SDIO irq at start of irq handler, no matter which type of interrupt was received
+    -> means disable SDIO irq during irq handler even if some other interrupt was received
+  - if SDIO and another interrupt source flag is set, leave irq handler with SDIO irq enabled.
+    Not sure whether that's intentional, you can use the small patch listed below on top of v2
+    to check whether SDIO irq still works ok or not.
+    
+
+At least to me it's not clear which (or all?) of the changes are needed to work
+around the problem. So you could check whether SDIO irq still works fine if you
+remove a single change from the patch.
 
 
-For stm32-qspi 
-Reviewed-by: Patrice Chotard <patrice.chotard@foss.st.com>
+diff --git a/drivers/mmc/host/meson-gx-mmc.c b/drivers/mmc/host/meson-gx-mmc.c
+index f4b102b85..711431706 100644
+--- a/drivers/mmc/host/meson-gx-mmc.c
++++ b/drivers/mmc/host/meson-gx-mmc.c
+@@ -994,6 +994,7 @@ static irqreturn_t meson_mmc_irq(int irq, void *dev_id)
+ 			spin_unlock(&host->lock);
+ 			return IRQ_HANDLED;
+ 		}
++		irq_enabled = false;
+ 	}
+ 
+ 	if (WARN_ON(!cmd))
+-- 
+2.39.0
 
-Thanks
-Patrice
+
 
