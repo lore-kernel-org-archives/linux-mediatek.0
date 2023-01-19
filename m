@@ -4,67 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDA61C004D4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 11:26:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32E96C004D4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 12:29:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nM4UMg/o8RDoPbGH+inkw3t4KMxyPF1Ds0ghlASfl38=; b=cO1k8BMXDoMlKjIAxlZ829ie9h
-	UdmUrVAHj2mTXKrn+9sH+m14m8Mhso84OJx8lKIDlI2m6/gask9AAY4bW6iZYG8N4luPaairqkSkh
-	5g599GEJv3hJsRh6653s4ai57WKq/3NW5Qo1lP87NeVgNHMKnKGlBFslv/LpUOLURWzEWPSLMjcTI
-	eJuAIacJCQRzCWkVh5D29BfAiOVPcEo6QgQi9pP+8Xw/RIZkpcqA/cSEFFHyi6rh8yOjI7CK9NG+L
-	0VXy2riLTiYu5vAym3ZnGLoQ2UdEhM76D9zJqPBle2/o0bQ+fkDzJLeki4I0tDdq8cD2OkL/DcVX+
-	F/6g4OjQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Pj9cP3NpgvUWuF50cw3EKdAEtmy3S7Yk4hSUuL2CjLA=; b=ngVFf5oVuH9cq3HP5aLFffTATO
+	B0Vea6U3VHCHd1pQIThs0kNu4PTziRDzN7RnzUnfAgNFyxlN/NNcumSYAqGxxD/VrSmg4R2aX5y1Q
+	0J3q9mF+qEvXi6RZl3589ECpVB6dR5AD53OAUcWVCyfQyGc50AJ7OhtMtl29CX2V4IHO7EV/Hy1Nj
+	ZK6iWwTzAGM2UGTF5jai889arScWgAOQylIe6UD+87NmrOdWvmW6QjcU/XXNuLXz5AztlbkCM/SEq
+	+wKxokT/3O+++NKYWBYo7jggu5LtLfkWoCnG5TrW5TDSR3ox0H9V5ejQkxYu5/0hxa2hw1ams31Zk
+	4R+imBJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIT3U-004aOx-Vi; Thu, 19 Jan 2023 11:26:04 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pIU2F-004oxC-AW; Thu, 19 Jan 2023 12:28:51 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIT3H-004aLu-Ks; Thu, 19 Jan 2023 11:25:55 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 090286600871;
-	Thu, 19 Jan 2023 11:25:46 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1674127547;
-	bh=P24BRF7G7AAJcBdQBiIy1w/i3HakP9ngzoNRVWMdu7M=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=KpvG3szd4tWA0VjCEYmAoCWKdkBPJuPlFQdL8rOhTvoY+HEBYkHuT/G9OsOI3cJaO
-	 +zKIogHTO850/DhNIz7klyy5Pday+8CmJewQ+9rc4HLPG8XlBoduL8AJe3TUoiugT5
-	 XZAGtA1cH6r8dIigXdGymIMRKoIaviOdDZtZHCK2j/zedqwT7M+ToAP37IlTytv34z
-	 NH5pbOOZ5eWRYLPtrPP2SWA/oXGyM+A4vx/6K8VWS//Gkr2rP7vwtabci2BY7DkIx1
-	 RVt43lAzL/4y9kSLSv7FOLHq8gS+fYPUWQDyxEO9R+7nVkxHHnzqlHILJLh12j1THg
-	 eTy7x4/zZMO4A==
-Message-ID: <eaf43efd-e750-a09a-00b2-513c1a11a4aa@collabora.com>
-Date: Thu, 19 Jan 2023 12:25:42 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v3 2/2] soc: mediatek: pm-domains: Add support for mt8188
-To: "Garmin.Chang" <Garmin.Chang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+	id 1pIU27-004ovX-Mc; Thu, 19 Jan 2023 12:28:45 +0000
+Received: from wf0783.dip.tu-dresden.de ([141.76.183.15] helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1pIU0w-0002qB-4T; Thu, 19 Jan 2023 13:27:30 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>,
+ =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ Kamal Dasu <kdasu.kdev@gmail.com>,
+ Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+ Han Xu <han.xu@nxp.com>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Serge Semin <fancer.lancer@gmail.com>, Haibo Chen <haibo.chen@nxp.com>,
+ Yogesh Gaur <yogeshgaur.83@gmail.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Li-hao Kuo <lhjeff911@gmail.com>,
+ Michal Simek <michal.simek@xilinx.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Maxime Ripard <mripard@kernel.org>,
+ =?utf-8?B?77+9ZWNraQ==?= <rafal@milecki.pl>,
+ Vaishnav Achath <vaishnav.a@ti.com>,
+ Parshuram Thombare <pthombar@cadence.com>,
+ Leilk Liu <leilk.liu@mediatek.com>, Gabor Juhos <juhosg@openwrt.org>,
+ Bert Vermeulen <bert@biot.com>, Miquel Raynal <miquel.raynal@bootlin.com>,
+ Marek Vasut <marex@denx.de>, Birger Koblitz <mail@birger-koblitz.de>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Anson Huang <Anson.Huang@nxp.com>,
+ Chris Packham <chris.packham@alliedtelesis.co.nz>,
+ Kuldeep Singh <singh.kuldeep87k@gmail.com>,
+ Pragnesh Patel <pragnesh.patel@sifive.com>,
+ Christophe Kerello <christophe.kerello@foss.st.com>,
+ Patrice Chotard <patrice.chotard@foss.st.com>,
+ Erwan Leray <erwan.leray@foss.st.com>,
+ Fabrice Gasnier <fabrice.gasnier@foss.st.com>, linux-spi@vger.kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-clk@vger.kernel.org, netdev@vger.kernel.org
-References: <20221223080553.9397-1-Garmin.Chang@mediatek.com>
- <20221223080553.9397-3-Garmin.Chang@mediatek.com>
-Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221223080553.9397-3-Garmin.Chang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+ linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
+ openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
+ linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH 1/2] spi: dt-bindings: drop unneeded quotes
+Date: Thu, 19 Jan 2023 13:27:26 +0100
+Message-ID: <4772603.GXAFRqVoOG@phil>
+In-Reply-To: <20230118173932.358153-1-krzysztof.kozlowski@linaro.org>
+References: <20230118173932.358153-1-krzysztof.kozlowski@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_032551_918721_9A41F985 
-X-CRM114-Status: UNSURE (   7.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230119_042843_772580_E38E9473 
+X-CRM114-Status: GOOD (  13.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,13 +111,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/12/22 09:05, Garmin.Chang ha scritto:
-> Add domain control data including bus protection data size
-> change due to more protection steps in mt8188.
+Am Mittwoch, 18. Januar 2023, 18:39:31 CET schrieb Krzysztof Kozlowski:
+> Cleanup by removing unneeded quotes from refs and redundant blank lines.
+> No functional impact except adjusting to preferred coding style.
 > 
-> Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+[...]
+
+> diff --git a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+> index 66e49947b703..e4941e9212d1 100644
+> --- a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+> @@ -11,7 +11,7 @@ description:
+>    as flash and display controllers using the SPI communication interface.
+>  
+>  allOf:
+> -  - $ref: "spi-controller.yaml#"
+> +  - $ref: spi-controller.yaml#
+>  
+>  maintainers:
+>    - Heiko Stuebner <heiko@sntech.de>
+
+For Rockchip:
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
 
 
