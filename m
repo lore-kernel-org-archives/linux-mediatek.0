@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CA61C004D4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 16:22:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1BA1C004D4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 16:23:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zCpAl90W827N8CpD/RGvFok8HJmi1E+2gm0/TKEaZeg=; b=NSq2BYUDwBZ1vS5/Cp8VH2Wi1g
-	I0b0TqGNmyMO8HVH3103BQ6ar7Bb0QlfYru00QGq86IU1AjP/NJ5XO6FHm0hqMNBTLwbeQw59RUNw
-	MSmwGgxVKGtuRkty76mS1ZS2zdy+B3CKxNaX8yFXb/WPsdG8pGzSHG9lEfFnDr8Uk98ML911Q4o6F
-	3i5M7BAq0N3owmCo6sIloMlosh01FHOjzlzSXQwzOyQ1OfIs0uBNs8xOmJki/KS98ygxHTmbBYQ6V
-	O/lndoQtP4P3aqfghadE5PKRgJPzCXRHvM4pir4D2c4DSn8upnYS/VS2jEpiZqyCTa0+BpcGOt6jy
-	JO/a1MIA==;
+	bh=Zc/NSY6GWrtTUUJGjuAd068DMG1X94L7zxp+NzLjvw4=; b=2M2HHMrPGTfNxltxRmH5ShF29v
+	e2erSOP6V4nYlqc/mncpMa680kfgqJC7FS6uoyn77pQolAyQqIdSKC8bFbgVqllMjr21z8we+FRCC
+	IHpX4h8BYGc7tZX6oJm99jQJregdhmIrW1tUXo9oewCwqHU8hv3vRfqIQ8uVU+IPPvYPBVv4r8F8H
+	xGYWzinMlEB012sM7dI7ALQVG/XRrkjvr7L6aTZM3Jh+K8pFBXTBcpU+02fnc8TfZm0oIwZgZCEaa
+	0RnG4FvMDZdwfmHQ/oMZqtuu1fvt6dlu2TYQGroWpYUQbLrd1wKFNcXPqJiSCBDNXeO6kx0hnIp0e
+	CS+4PJjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIXgD-005vww-F1; Thu, 19 Jan 2023 16:22:21 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pIXgq-005wCT-7w; Thu, 19 Jan 2023 16:23:00 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIXft-005vs4-QW; Thu, 19 Jan 2023 16:22:03 +0000
+	id 1pIXgX-005w4t-CG; Thu, 19 Jan 2023 16:22:42 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 5F0FA61CB6;
-	Thu, 19 Jan 2023 16:22:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44106C433EF;
-	Thu, 19 Jan 2023 16:21:56 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E909161C7B;
+	Thu, 19 Jan 2023 16:22:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C258EC433EF;
+	Thu, 19 Jan 2023 16:22:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1674145320;
-	bh=lYW4XXPu/4M0mVDoNevIYpipR/KmVNL/JlKftb1SEaY=;
+	s=k20201202; t=1674145360;
+	bh=mMNU0hX5604g+0qs6K1wrlzdb2Auk61vShun7veApWc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=HSLIvmR/6lbKxtNEGDKqFJHpYJrHXPVXBb5eKJEaxAKzlWVtnlNO5VR0D/m4BNqh4
-	 VQNjcq/k8Wwitf12CSgVQwAU6sxWHvQJaFtDM+W1lZk3QCZarlHP6ZoTuNtHIRusGg
-	 9nvqPV7lBz0XgTHOIm/Oe8tSJG9/r9uagCEmixAJRa6G111CMCYn0+vNUC3PsD7OUu
-	 OmHlL7rq24an7huWcZcyMrk5M//6ecRx3bJTgXeRRJeuRgSaXS05NNXHIQhnaVdpeU
-	 WEXs1WWcgjuha62levsHsaBs9VszzQiiP3PrcbSEKJwGz7XqIKWy+7lXGSeYuwfZ4a
-	 JxUGk1vGQazzA==
-Date: Thu, 19 Jan 2023 16:21:52 +0000
+	b=JQMhvA8xwnA/qZrYWMsM9GhMhIrpN8+y9l4tdbYFWzGo/LPsOuxuOkqEq+BtoLj+K
+	 FyqkYUDtCkFsxQOFO3C+AFPb7bQoYr10AlYAxhCe+AwygoIK6GaM3pkKnhFN2rxZMV
+	 I3lY3SWaS3mNdWgwkFI7HiGkHc0EEB3mNCeugfVTnSLLx75YNneJFwG0QhkOOm6rf8
+	 gcxTCWlh/I6gIE1uDPFq4YOZrq+vFrx0DWEd7PFfNR12vKGw97mj2swcTXmK9pW5hi
+	 On3GIyT2IMVqLGDVHERAawvGtiKMyfS4zShzh11K0cpOPQ0SC42PE/1g/+JRwfoS9P
+	 ay9RKCzs7erDA==
+Date: Thu, 19 Jan 2023 16:22:32 +0000
 From: Lee Jones <lee@kernel.org>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Cc: Gene Chen <gene_chen@richtek.com>, linux-leds@vger.kernel.org,
@@ -57,19 +57,19 @@ Cc: Gene Chen <gene_chen@richtek.com>, linux-leds@vger.kernel.org,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v4 06/11] leds: mt6323: Get rid of custom
+Subject: Re: [PATCH v4 07/11] leds: mt6360: Get rid of custom
  led_init_default_state_get()
-Message-ID: <Y8luIOy4bbBu5OGr@google.com>
+Message-ID: <Y8luSMOOSPj266sC@google.com>
 References: <20230103131256.33894-1-andriy.shevchenko@linux.intel.com>
- <20230103131256.33894-7-andriy.shevchenko@linux.intel.com>
+ <20230103131256.33894-8-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230103131256.33894-7-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20230103131256.33894-8-andriy.shevchenko@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_082201_954027_2AC955CA 
-X-CRM114-Status: GOOD (  11.80  )
+X-CRM114-CacheID: sfid-20230119_082241_552600_CBF5DC14 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,10 +90,11 @@ On Tue, 03 Jan 2023, Andy Shevchenko wrote:
 > Use it instead of custom implementation.
 > 
 > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  drivers/leds/leds-mt6323.c | 30 +++++++++++++++---------------
->  1 file changed, 15 insertions(+), 15 deletions(-)
+>  drivers/leds/flash/leds-mt6360.c | 38 +++++---------------------------
+>  1 file changed, 6 insertions(+), 32 deletions(-)
 
 Applied, thanks
 
