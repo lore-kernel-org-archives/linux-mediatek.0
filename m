@@ -4,84 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC7DDC6379F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 16:09:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 686F8C004D4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 16:17:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yXxv4f/GrzSHSPu/QzcHkyK4EnmsjXpwAUc8WugyuBY=; b=KL/2wqe+GGE/bMA/CVXsHuUbra
-	Lt87iCDSxv4maVLvYedW3qAJlnE8l+KfGufxB5tEq/7ZJco1OZ+2/VbrKIB+R56VUUM0+8+2CJB4v
-	eRxuwaQJlb6wPmz2priFEEJYl+7yBbvhLxRivNJxsK9WVlNj7VDZ02pYpeh//29BtIsGnLCm+fX8A
-	MY5IzoVKN1IkVEOCAkuBtvQXKC59ZPkNLznspxmhLy1tZJSQ/HQvGWcjALMqR9DRbfS8CBtsVXHbv
-	9wM4V7XZDJyxCIi5CvMxIs9idTjl7Jyzhgu3lVvqxIrUXJJQO9/KEYTqtSB7iOadcjevDe6+eXE3A
-	FBcxQcBg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hcGAoepvsEO3k7eRWlvv55F7FjHMEdrfADYYqAFGFnk=; b=5Cgp+KeBGp+F1Ad+zPyThU8rqs
+	z3NY+msTDkBExzFoffAqJpZf9bN8LOwyuefs1GMDkxapxfIVoTlTf59lsu1GNky6Sizuye7ffucjZ
+	L/lCyjScQbrSXrbbjRHxv2jaHfg2iPs5VGu2IgpzsCHWI2syNRfRmfm0m9d54rMcLVnuQKcE/a1Po
+	JfBrnBXZIiLhxzhRaCl4ki3p0HZXsnuMB0RuT6zSl3EgYWkJuuVRL7UHbgaFM2sBheUsrIpMsQZOY
+	tnzNb4kk2SIy8/cb5+7hm/zHTofeXCTFN3M5g8mzdVNmkmuRy6iQWYzi/HMUIkhice5GMyMdyjBP8
+	DFyIl8IQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIXTX-005rma-2U; Thu, 19 Jan 2023 16:09:15 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1pIXb0-005thj-MJ; Thu, 19 Jan 2023 16:16:58 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIXT9-005rgN-Bb; Thu, 19 Jan 2023 16:08:52 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id f12-20020a7bc8cc000000b003daf6b2f9b9so3891156wml.3;
-        Thu, 19 Jan 2023 08:08:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=yXxv4f/GrzSHSPu/QzcHkyK4EnmsjXpwAUc8WugyuBY=;
-        b=C1lMrrVx4bxj9zX1x/HNOWUgVfK4+6w+sbcqfAxU0BO8dfhmUvSl511zCVyOpOAUlu
-         rabqut5ECP1iUkMafoskAChJhOM3IIgczRnAZ+k1NVX6MH5WDI7aScfamWfhihq3SC3N
-         6DoyRntCpYgjrS9ZS357UbdY76LKm/zKp9RVQd8AOoMMH4OJgrTGwnsAu8uzBvN6xzeE
-         6jeU9GYiD0vVd6tGfc3VGmOMYccvbADx1K+/3oTfvUj9U7pUEWdQcq8jKfT96XxXKnHy
-         Hy5L3pKxRjsoL/GUpPbDa7ugLBA20zdmAAy5zPcKo9J8tiEsoXfIcC5nD1/zXag5Lkyy
-         KseA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=yXxv4f/GrzSHSPu/QzcHkyK4EnmsjXpwAUc8WugyuBY=;
-        b=jO//iI3iOOu3RZFZrRtQbE45ZqJ4fpqppDyKr2wbxOFAQvKO7BEkUdTeyiH9dLzVub
-         4kT9Y2GrQBwNQ7kuw5GHg8G0DxmphRUvinij9+er7OqVfkXcgtg0RLGXQY6wo50eH9sK
-         EEkqvklGNxIiL2cdCmkkfabZRFhHHmrwTwNzp++gHanVrJe4wSF+dIprNe7omQu2KTMq
-         hV+T+wV1HT+lSeGjRvc2aTObo0ZrjE/dL1zGv3TRR0cPM+vW9PCKUtOhAcnAaWnldmgO
-         CC7lURe/W1TzQ0zLJ0UqWl94ySF7uq0QejQ9vVYv7XTbPuVDwWWI+ZyqrLEImh+hnC3B
-         hQOg==
-X-Gm-Message-State: AFqh2krTExwhFSn0jHqePEK0/CouD6NCROZRn/F29RqXTezAlR1gdfht
-	A5C4oX/zmFcuIP6Dm04Q+8Y=
-X-Google-Smtp-Source: AMrXdXuHd37802o67zKMA0vSXhoL6McWWKMzRHrp3BkFuf9/dCjllHInE53NvVEDqDJ4iZmyFfmG4w==
-X-Received: by 2002:a05:600c:1912:b0:3db:f0a:8707 with SMTP id j18-20020a05600c191200b003db0f0a8707mr7630059wmq.40.1674144529818;
-        Thu, 19 Jan 2023 08:08:49 -0800 (PST)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id be12-20020a05600c1e8c00b003db06224953sm6249655wmb.41.2023.01.19.08.08.48
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 19 Jan 2023 08:08:49 -0800 (PST)
-Message-ID: <8ae4469e-ed2c-5019-605b-013a49af77ea@gmail.com>
-Date: Thu, 19 Jan 2023 17:08:48 +0100
+	id 1pIXaV-005tZE-3J; Thu, 19 Jan 2023 16:16:28 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id A729C61CB8;
+	Thu, 19 Jan 2023 16:16:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 686F4C433EF;
+	Thu, 19 Jan 2023 16:16:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1674144986;
+	bh=KCGVBnDEkLnMEQSY6tEtqfJoXRhHiOT2it8+U/KUeXU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=lQN1IErrIxsvnYoPHEmxSkukWKLHZ3L47Hbth5LpwxT0XDzjNG/7ifs0mrs9eWHao
+	 Z/Sbz9+QD7hKDtYKIhXCEUOd4Uly0xBTnQvq14xkIKs3Hw2PgvzdHWdG1OMeCTMpyq
+	 3FLqL1RmP6wlc67BWzR+fwsUrTrB1dYXclFd1FGW7rF04/t8mVLOg8MxACngsI8Xgd
+	 6/f2E+xnp8t0x8UVyiDF1+Al5E8QtDNSKpdCN3Ye4ted742TaAiWxpY2Fx+wF1W9Eo
+	 4KSIOm7CdctBS90En1W3uDmC3lbu+My4tGCJnG5fVOmU0o+jyPPrJbv3Hn47aWGDjp
+	 1pBKB7xImPWUA==
+Date: Thu, 19 Jan 2023 16:16:17 +0000
+From: Lee Jones <lee@kernel.org>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Gene Chen <gene_chen@richtek.com>, linux-leds@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org, Pavel Machek <pavel@ucw.cz>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>, Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Subject: Re: [PATCH v4 01/11] leds: add missing includes and forward
+ declarations in leds.h
+Message-ID: <Y8ls0ZQiY/dcTdAE@google.com>
+References: <20230103131256.33894-1-andriy.shevchenko@linux.intel.com>
+ <20230103131256.33894-2-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v6 1/4] dt-bindings: arm: mediatek: migrate MT8195
- vppsys0/1 to mtk-mmsys driver
-Content-Language: en-US
-To: Moudy Ho <moudy.ho@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-clk@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20230118031509.29834-1-moudy.ho@mediatek.com>
- <20230118031509.29834-2-moudy.ho@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230118031509.29834-2-moudy.ho@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230103131256.33894-2-andriy.shevchenko@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_080851_465663_AF469480 
-X-CRM114-Status: GOOD (  14.85  )
+X-CRM114-CacheID: sfid-20230119_081627_240479_47A5F3FD 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,70 +83,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, 03 Jan 2023, Andy Shevchenko wrote:
 
-
-On 18/01/2023 04:15, Moudy Ho wrote:
-> MT8195 VPPSYS 0/1 should be probed from mtk-mmsys driver to
-> populate device by platform_device_register_data then start
-> its own clock driver.
+> Add missing includes and forward declarations to leds.h. While at it,
+> replace headers by forward declarations and vise versa.
 > 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-Stephen, if you want I can take 1/4 and 3/4 through my tree. 3/4 shouldn't be a 
-problem, not sure about this patch. In any case if you want me to do so, I'd 
-need a Acked-by from you.
-
-Regards,
-Matthias
-
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 > ---
->   .../arm/mediatek/mediatek,mt8195-clock.yaml      | 16 ----------------
->   1 file changed, 16 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8195-clock.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8195-clock.yaml
-> index 17fcbb45d121..d62d60181147 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8195-clock.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8195-clock.yaml
-> @@ -28,11 +28,9 @@ properties:
->             - mediatek,mt8195-imp_iic_wrap_s
->             - mediatek,mt8195-imp_iic_wrap_w
->             - mediatek,mt8195-mfgcfg
-> -          - mediatek,mt8195-vppsys0
->             - mediatek,mt8195-wpesys
->             - mediatek,mt8195-wpesys_vpp0
->             - mediatek,mt8195-wpesys_vpp1
-> -          - mediatek,mt8195-vppsys1
->             - mediatek,mt8195-imgsys
->             - mediatek,mt8195-imgsys1_dip_top
->             - mediatek,mt8195-imgsys1_dip_nr
-> @@ -92,13 +90,6 @@ examples:
->           #clock-cells = <1>;
->       };
->   
-> -  - |
-> -    vppsys0: clock-controller@14000000 {
-> -        compatible = "mediatek,mt8195-vppsys0";
-> -        reg = <0x14000000 0x1000>;
-> -        #clock-cells = <1>;
-> -    };
-> -
->     - |
->       wpesys: clock-controller@14e00000 {
->           compatible = "mediatek,mt8195-wpesys";
-> @@ -120,13 +111,6 @@ examples:
->           #clock-cells = <1>;
->       };
->   
-> -  - |
-> -    vppsys1: clock-controller@14f00000 {
-> -        compatible = "mediatek,mt8195-vppsys1";
-> -        reg = <0x14f00000 0x1000>;
-> -        #clock-cells = <1>;
-> -    };
-> -
->     - |
->       imgsys: clock-controller@15000000 {
->           compatible = "mediatek,mt8195-imgsys";
+>  include/linux/leds.h | 13 ++++++++-----
+>  1 file changed, 8 insertions(+), 5 deletions(-)
+
+Applied, thanks
+
+-- 
+Lee Jones [李琼斯]
 
