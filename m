@@ -4,137 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9570DC004D4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 16:25:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9337C46467
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 16:28:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8lVOvMoIQ2x2Wf6zy8frHnpB0eXV9ve1xBd2DqHKd8Y=; b=PYCYn/RyTUAYHEt+6aEatAOImv
-	SH2OQ0BgqRypfghSWK83zM5kpY8eS58Rdz3qXKUIUa+Oc6qF75xmabOhu95wClhXVyzzTps5snPWs
-	pQK2vCkRheDnbsQWbnZi7QYV19Rhv/hogwy4EeFvrxa+NGOKMfFZBReWKkxD+zYHfuMDl8dl83XTe
-	s8N/AyzAYZoQxqLNMUdBqjl+uanOIx650mMqujK+tD0vROTBqGFXCnyPsrr7HVxBi9HnKMtvRce1w
-	T57esdWkcnNlSksEOKrYIp6dj2YlFM72VQeod6I6Ri//fh7DVfMuT22fBwru73FE/HRuI+mjLvQAO
-	84a4W7ag==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=G/U5zgB7p6OPqHMQlkEy+bwIc9R4WIoTQK22mTGWePo=; b=21hV+yOZQFG7EzFQOsbMDp59Ep
+	mrwQp3wpVyzrvOBuhJkwJBBeSw/9Kvbuj2FmJBzv4AA7KacQy7QWuQ9f9tAaocKJzWAyf3RntVKCd
+	26EU68LJ1AjIo1eypyOe0zOLEkptvVyYY61VPX2kGrOd3edNGw/zrYlOpBPffAUONNIGe1iH6gebw
+	3/bvK3ejJYmmXkV3NMMGp/P+2h5vWXL1aeAeULdb4QcdrBcY2VgfekQsaw+1CWVWNWqscjHNjKE2N
+	V5fpicC7V6ERB0lx9Ar/1PmBGjltDGct3uSpD1VrwSgY5lnkMhV/A2UodoF9gHQoyOWIWhzTcJ4RF
+	qj1xF1MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIXjV-005xYL-Rh; Thu, 19 Jan 2023 16:25:46 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1pIXlr-005yhB-BU; Thu, 19 Jan 2023 16:28:11 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIXiR-005wxT-7N; Thu, 19 Jan 2023 16:24:40 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id bp15so3939886lfb.13;
-        Thu, 19 Jan 2023 08:24:37 -0800 (PST)
+	id 1pIXlS-005yWL-MG; Thu, 19 Jan 2023 16:27:48 +0000
+Received: by mail-wr1-x430.google.com with SMTP id b5so2446522wrn.0;
+        Thu, 19 Jan 2023 08:27:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=8lVOvMoIQ2x2Wf6zy8frHnpB0eXV9ve1xBd2DqHKd8Y=;
-        b=a/g9O4xy606aS7gTGUOYByXG9qF6KTMWOZA30DBpya3y/ma8wWSWbZ0GhEnw/5Dd56
-         SwWKUvve09j1o3F73iD1XSqxXcz9bXivs5oPpAd58vaExY7Ut/gg8J5SySYtOKeJp85Y
-         xmSrmvNHPLNYd+qGYEno2szmpyk9kL3REN4AGFML0pKUuvB9xnBoYaDYyqhUn2RKO/PI
-         lFHQZLGbsqrirm06txrQIW/ebbIiz59ba6eAsRY5KjrWXIZ73jywqljunaP/ghJHB5A9
-         uKyEtu3Zvgig66EC5x+MjGQiTGePO5AKzyatccaZUr2ktzAcgc0H0B/UBMut22jZ1DsG
-         EBCw==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=G/U5zgB7p6OPqHMQlkEy+bwIc9R4WIoTQK22mTGWePo=;
+        b=fehBeiL89VwQgVcafbZ9QQSKjqCm23MRx5+udadtSKvVH7KDt3+9ShdubuWImJZN/d
+         hWHtyRDCOTanWJpvde1aFlT+v2Q+xYATcGL4q1NVrotOUXxUqFeTWXWJfgo9a0F/LrK7
+         dcLbQMkXf057SiNAUXv2qK89NpwC8CGpy40BDeccLXhCdCcj8a7VaNsJsiX0m2GV50gJ
+         f1a/OxIqlVSvdITWsbx6fVKoy/306HGBPBl8SfeZsONDZ2qrOfWfa+QDqBEVm6wSmGJI
+         aDSoOaqcOOT4Yq4pcCZc1qO00QACoRO9B/3vJM6eiRtXluU2ClwyQznEWa5GZG72NLbB
+         Js8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=8lVOvMoIQ2x2Wf6zy8frHnpB0eXV9ve1xBd2DqHKd8Y=;
-        b=Oi2w/VVeQVpiliNeSeOsz/ngHEi3vU+7ZJOxfuF8DEtt5tJDLsTt80bgu4bualRz6q
-         N/fIUfXNsngz9a/sQyseiY4GKNkHow85OBJgy6L5waFnGezWtyk81d5OLtnb9UWCs5f1
-         EhlLzUzP9jxdvL7/gVrwsNVlLM7i5rZNqwRB6QMGcEc3tELULIlhOz/N1/g0eVSCn1Z2
-         4WQ9rSVpMaJ6LFOIn2rgR/+fWwnE5ZbsTEJ7uLlpTCcA57IlEBVXCvcLEazNosvBQZPR
-         hmnkgx0gu6CM/bv6c+Qg8eTm0F9treByelgep/EnxgB55MLe/Xt4KE4Lj57nXDONppv7
-         xaYA==
-X-Gm-Message-State: AFqh2koUOPUXr2v/GzqcxnyyHh/ZbZVv7JWyUTKgTB9kv0YiRb1wx3Mz
-	qR3Z+SVYpvxBigPRr/0fK40=
-X-Google-Smtp-Source: AMrXdXv7/blNpjVnMJiMaPKfEdqpiTFTh3jtjnRI+SUuGsVsK9TsgKmt9RRC03LAK7v7xiQAHH0RHA==
-X-Received: by 2002:a05:6512:25a5:b0:4b5:7338:e2c7 with SMTP id bf37-20020a05651225a500b004b57338e2c7mr3358360lfb.53.1674145476128;
-        Thu, 19 Jan 2023 08:24:36 -0800 (PST)
-Received: from mobilestation ([95.79.133.202])
-        by smtp.gmail.com with ESMTPSA id s9-20020ac24649000000b004cb41b43c25sm5884147lfo.197.2023.01.19.08.24.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Jan 2023 08:24:35 -0800 (PST)
-Date: Thu, 19 Jan 2023 19:24:31 +0300
-From: Serge Semin <fancer.lancer@gmail.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>,
-	=?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
-	Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
-	Kamal Dasu <kdasu.kdev@gmail.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Han Xu <han.xu@nxp.com>, Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Haibo Chen <haibo.chen@nxp.com>,
-	Yogesh Gaur <yogeshgaur.83@gmail.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Li-hao Kuo <lhjeff911@gmail.com>,
-	Michal Simek <michal.simek@xilinx.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	=?utf-8?B?77+9ZWNraQ==?= <rafal@milecki.pl>,
-	Vaishnav Achath <vaishnav.a@ti.com>,
-	Parshuram Thombare <pthombar@cadence.com>,
-	Leilk Liu <leilk.liu@mediatek.com>,
-	Gabor Juhos <juhosg@openwrt.org>, Bert Vermeulen <bert@biot.com>,
-	Miquel Raynal <miquel.raynal@bootlin.com>,
-	Marek Vasut <marex@denx.de>,
-	Birger Koblitz <mail@birger-koblitz.de>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Anson Huang <Anson.Huang@nxp.com>,
-	Chris Packham <chris.packham@alliedtelesis.co.nz>,
-	Kuldeep Singh <singh.kuldeep87k@gmail.com>,
-	Pragnesh Patel <pragnesh.patel@sifive.com>,
-	Christophe Kerello <christophe.kerello@foss.st.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Erwan Leray <erwan.leray@foss.st.com>,
-	Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
-	linux-spi@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
-	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
-	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH 1/2] spi: dt-bindings: drop unneeded quotes
-Message-ID: <20230119162431.mepdze3xibqjgwsi@mobilestation>
-References: <20230118173932.358153-1-krzysztof.kozlowski@linaro.org>
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=G/U5zgB7p6OPqHMQlkEy+bwIc9R4WIoTQK22mTGWePo=;
+        b=i3pffwyERe6PfSJvo2O8ERX0SKPS8uYsEAlCPqzB9fFJQVOT+wpg7gpRsnxzxkpJJ+
+         HNqY1y308hEAgkAIJPwIO2QjbBxuSRik3BDvhEw6yOYWUJKuUfo95gKPZmz1Ov19mvd0
+         xEyf28S9occKCFeXAGjFypnis10SCo8NtWLE0HxqJpPv/RXNVb+jp5WuNu8dHI0GMFnv
+         XPuQKhLoyK3tljKGDXKCTc6aid3zN7aEDftEhk3oCtvAV0//ipC2J+KdPYUfaPwQTpzJ
+         Xgs4/80YJo5L1SuenQbTroTxcZbkMrsQR/tD6dWHMxCM/mJMWVLcEytLHb0kto5R9GgX
+         EINg==
+X-Gm-Message-State: AFqh2kpjwYxTGnHpRhIhoYP31OrXpsM5S9jkG+T223LxVWHvUUA1HYDK
+	pMxIxW8eHQfk0kr9bZf6Quc=
+X-Google-Smtp-Source: AMrXdXs9Cqz0kN5li7jUZKL9XHr8uTasSMBvof1S8Lp/gYpd11zsi5j9VtdWxlRUsSXtROeRulr9/w==
+X-Received: by 2002:adf:ee10:0:b0:2bd:d5f5:8820 with SMTP id y16-20020adfee10000000b002bdd5f58820mr10124489wrn.27.1674145663376;
+        Thu, 19 Jan 2023 08:27:43 -0800 (PST)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id co22-20020a0560000a1600b002a01e64f7a1sm10707038wrb.88.2023.01.19.08.27.42
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 19 Jan 2023 08:27:42 -0800 (PST)
+Message-ID: <9d991211-4c5a-f6c7-6179-b5740a484a75@gmail.com>
+Date: Thu, 19 Jan 2023 17:27:41 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230118173932.358153-1-krzysztof.kozlowski@linaro.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v2 2/9] dt-bindings: spmi: spmi-mtk-pmif: Document
+ mediatek,mt8195-spmi as fallback of mediatek,mt8186-spmi
+Content-Language: en-US
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Stephen Boyd <sboyd@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ dri-devel@lists.freedesktop.org
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ hsinyi@chromium.org
+References: <20230118091829.755-1-allen-kh.cheng@mediatek.com>
+ <20230118091829.755-3-allen-kh.cheng@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20230118091829.755-3-allen-kh.cheng@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_082439_472900_58AD33CD 
-X-CRM114-Status: GOOD (  13.67  )
+X-CRM114-CacheID: sfid-20230119_082746_849200_D096E1B6 
+X-CRM114-Status: GOOD (  15.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,37 +102,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 18, 2023 at 06:39:31PM +0100, Krzysztof Kozlowski wrote:
-> Cleanup by removing unneeded quotes from refs and redundant blank lines.
-> No functional impact except adjusting to preferred coding style.
+
+
+On 18/01/2023 10:18, Allen-KH Cheng wrote:
+> The mt8186-spmi is used as compatible with mt8195-spmi on the MT8186,
+> document this situation.
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
+
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
 > ---
-
-[nip]
-
->  .../bindings/spi/snps,dw-apb-ssi.yaml          |  2 +-
-
-[nip]
-
-> diff --git a/Documentation/devicetree/bindings/spi/snps,dw-apb-ssi.yaml b/Documentation/devicetree/bindings/spi/snps,dw-apb-ssi.yaml
-> index d33b72fabc5d..a132b5fc56e0 100644
-> --- a/Documentation/devicetree/bindings/spi/snps,dw-apb-ssi.yaml
-> +++ b/Documentation/devicetree/bindings/spi/snps,dw-apb-ssi.yaml
-> @@ -10,7 +10,7 @@ maintainers:
->    - Mark Brown <broonie@kernel.org>
->  
->  allOf:
-> -  - $ref: "spi-controller.yaml#"
-> +  - $ref: spi-controller.yaml#
->    - if:
->        properties:
->          compatible:
-
-For the Synopsys DW SSI bindings:
-Reviewed-by: Serge Semin <fancer.lancer@gmail.com>
-
-Thanks
--Serge(y)
-
+>   .../devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml   | 11 ++++++++---
+>   1 file changed, 8 insertions(+), 3 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml b/Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml
+> index abcbbe13723f..e4f465abcfe9 100644
+> --- a/Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml
+> +++ b/Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml
+> @@ -18,9 +18,14 @@ allOf:
+>   
+>   properties:
+>     compatible:
+> -    enum:
+> -      - mediatek,mt6873-spmi
+> -      - mediatek,mt8195-spmi
+> +    oneOf:
+> +      - enum:
+> +          - mediatek,mt6873-spmi
+> +          - mediatek,mt8195-spmi
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt8186-spmi
+> +          - const: mediatek,mt8195-spmi
+>   
+>     reg:
+>       maxItems: 2
 
