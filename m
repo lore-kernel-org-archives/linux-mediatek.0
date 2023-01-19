@@ -4,99 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32E96C004D4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 12:29:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA85AC004D4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jan 2023 12:49:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Pj9cP3NpgvUWuF50cw3EKdAEtmy3S7Yk4hSUuL2CjLA=; b=ngVFf5oVuH9cq3HP5aLFffTATO
-	B0Vea6U3VHCHd1pQIThs0kNu4PTziRDzN7RnzUnfAgNFyxlN/NNcumSYAqGxxD/VrSmg4R2aX5y1Q
-	0J3q9mF+qEvXi6RZl3589ECpVB6dR5AD53OAUcWVCyfQyGc50AJ7OhtMtl29CX2V4IHO7EV/Hy1Nj
-	ZK6iWwTzAGM2UGTF5jai889arScWgAOQylIe6UD+87NmrOdWvmW6QjcU/XXNuLXz5AztlbkCM/SEq
-	+wKxokT/3O+++NKYWBYo7jggu5LtLfkWoCnG5TrW5TDSR3ox0H9V5ejQkxYu5/0hxa2hw1ams31Zk
-	4R+imBJA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=OOcWWrqauDBRZ5RKAs25XGV9XBvNLchE1Gd1yNIHU/o=; b=hwaFq8MRWManZYC6OSwT0B4njL
+	DsNpnaTRUzPOZYpKuqmcADJ4kDvnCgCe7opn+JpEI59bKWiUAKpFE6xTzbbZtk+FWQMlSuuF9vA1/
+	RRz1whbKuWCVhocvvHaZ0RjfAiAwoR7N4Ess8F0WXF6UXI6NCiqXUcBqyoPUcvvRQi8AtMBxrqpw/
+	81ZEylXgh9NPUl1vN0RI3dOtN4Mj6niilhUMxPiywuEFBK3OANhLhpbljCqu1wpLRfUXfzdglZO/4
+	6Mu9tqhp8v5zDYQc5MZzEXKCP658rkmLXxUxV+PqIEObhmcuocrdXzWQR1KVW2CptzN9Exxj/Fjpd
+	/nT1PFPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIU2F-004oxC-AW; Thu, 19 Jan 2023 12:28:51 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1pIUMO-004rjM-JZ; Thu, 19 Jan 2023 12:49:40 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIU27-004ovX-Mc; Thu, 19 Jan 2023 12:28:45 +0000
-Received: from wf0783.dip.tu-dresden.de ([141.76.183.15] helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1pIU0w-0002qB-4T; Thu, 19 Jan 2023 13:27:30 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>,
- =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
- Kamal Dasu <kdasu.kdev@gmail.com>,
- Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
- Han Xu <han.xu@nxp.com>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>,
- Serge Semin <fancer.lancer@gmail.com>, Haibo Chen <haibo.chen@nxp.com>,
- Yogesh Gaur <yogeshgaur.83@gmail.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, Li-hao Kuo <lhjeff911@gmail.com>,
- Michal Simek <michal.simek@xilinx.com>, Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Maxime Ripard <mripard@kernel.org>,
- =?utf-8?B?77+9ZWNraQ==?= <rafal@milecki.pl>,
- Vaishnav Achath <vaishnav.a@ti.com>,
- Parshuram Thombare <pthombar@cadence.com>,
- Leilk Liu <leilk.liu@mediatek.com>, Gabor Juhos <juhosg@openwrt.org>,
- Bert Vermeulen <bert@biot.com>, Miquel Raynal <miquel.raynal@bootlin.com>,
- Marek Vasut <marex@denx.de>, Birger Koblitz <mail@birger-koblitz.de>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Anson Huang <Anson.Huang@nxp.com>,
- Chris Packham <chris.packham@alliedtelesis.co.nz>,
- Kuldeep Singh <singh.kuldeep87k@gmail.com>,
- Pragnesh Patel <pragnesh.patel@sifive.com>,
- Christophe Kerello <christophe.kerello@foss.st.com>,
- Patrice Chotard <patrice.chotard@foss.st.com>,
- Erwan Leray <erwan.leray@foss.st.com>,
- Fabrice Gasnier <fabrice.gasnier@foss.st.com>, linux-spi@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
- linux-amlogic@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
- openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
- linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH 1/2] spi: dt-bindings: drop unneeded quotes
-Date: Thu, 19 Jan 2023 13:27:26 +0100
-Message-ID: <4772603.GXAFRqVoOG@phil>
-In-Reply-To: <20230118173932.358153-1-krzysztof.kozlowski@linaro.org>
-References: <20230118173932.358153-1-krzysztof.kozlowski@linaro.org>
+	id 1pIUMM-004riT-OW; Thu, 19 Jan 2023 12:49:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:Message-ID:
+	Date:Subject:CC:To:From:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=OOcWWrqauDBRZ5RKAs25XGV9XBvNLchE1Gd1yNIHU/o=; b=iiw99Ej1P+6csa5QfALSA5JgGx
+	ShGn+WXrN4pM8Boxq2QbhJPO+VaI1pU/Co30zC0kXBRtTFGC+cQKehK0OynhTazp/WbHZoEr0/uzw
+	CyxkRNBciwRXGQQRrfU231CsjOBrWPv1EsgPvcq9G/l+YKZ9a2kYFt0ko8bUegCEsyQ3BQlM8j5mL
+	0DctIBZflYw+CM1xSn9qeoFAc2249nBw5Je7bmsGRkQXkAT2Ww2Vbq5KXh5EPcEaQKvICsefa0NoW
+	HsDQ7SznmdsnqUYAbXIQEi4DCdGrBnlNBvozXAOu2dMMDR5X0IZcHAjkRFb3lPwcHsCZ6eluYsYvW
+	wu/s9m4A==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pIULl-000IP0-0f;
+	Thu, 19 Jan 2023 12:49:06 +0000
+X-UUID: a387547097f711edbbe3f76fe852e059-20230119
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=OOcWWrqauDBRZ5RKAs25XGV9XBvNLchE1Gd1yNIHU/o=;
+	b=VkeeMYc39yg2SqjSgr9IkXyGFYLM8NRN8JWZdkd8qNDI+0vy2zcO8CUeDz7OF5e+vkFp6nRMAoitrrq9sJOPpvEaDQ4+WqZuL2Bd/VA7gNFBLVyZVrmuf0fjn6ySe1n3g4N/OI8feyc6I2b2P84xQNbp8toa3v5Arc3bAGe96A4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.18,REQID:befa8bba-fd5a-48b1-8c43-b0f1c5d2b082,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:90
+X-CID-INFO: VERSION:1.1.18,REQID:befa8bba-fd5a-48b1-8c43-b0f1c5d2b082,IP:0,URL
+	:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:90
+X-CID-META: VersionHash:3ca2d6b,CLOUDID:bbba1f55-dd49-462e-a4be-2143a3ddc739,B
+	ulkID:230119204900BIK2K2XC,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+	,OSI:0,OSA:0
+X-CID-BVR: 0,NGT
+X-UUID: a387547097f711edbbe3f76fe852e059-20230119
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <garmin.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 456088079; Thu, 19 Jan 2023 05:48:57 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 19 Jan 2023 20:48:54 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 19 Jan 2023 20:48:54 +0800
+From: Garmin.Chang <Garmin.Chang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Michael Turquette
+	<mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Richard Cochran
+	<richardcochran@gmail.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-clk@vger.kernel.org>, <netdev@vger.kernel.org>, Garmin.Chang
+	<Garmin.Chang@mediatek.com>
+Subject: [PATCH v5 00/19] MediaTek MT8188 clock support
+Date: Thu, 19 Jan 2023 20:48:29 +0800
+Message-ID: <20230119124848.26364-1-Garmin.Chang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_042843_772580_E38E9473 
-X-CRM114-Status: GOOD (  13.69  )
+X-CRM114-CacheID: sfid-20230119_124903_671326_BE082800 
+X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,30 +102,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 18. Januar 2023, 18:39:31 CET schrieb Krzysztof Kozlowski:
-> Cleanup by removing unneeded quotes from refs and redundant blank lines.
-> No functional impact except adjusting to preferred coding style.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Base on tag: next-20230119, linux-next/master
 
-[...]
+changes since v4:
+- modify yaml file
+- modify infrastructure clock
 
-> diff --git a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-> index 66e49947b703..e4941e9212d1 100644
-> --- a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-> @@ -11,7 +11,7 @@ description:
->    as flash and display controllers using the SPI communication interface.
->  
->  allOf:
-> -  - $ref: "spi-controller.yaml#"
-> +  - $ref: spi-controller.yaml#
->  
->  maintainers:
->    - Heiko Stuebner <heiko@sntech.de>
+Garmin.Chang (19):
+  dt-bindings: clock: mediatek: Add new MT8188 clock
+  clk: mediatek: Add MT8188 apmixedsys clock support
+  clk: mediatek: Add MT8188 topckgen clock support
+  clk: mediatek: Add MT8188 peripheral clock support
+  clk: mediatek: Add MT8188 infrastructure clock support
+  clk: mediatek: Add MT8188 camsys clock support
+  clk: mediatek: Add MT8188 ccusys clock support
+  clk: mediatek: Add MT8188 imgsys clock support
+  clk: mediatek: Add MT8188 ipesys clock support
+  clk: mediatek: Add MT8188 mfgcfg clock support
+  clk: mediatek: Add MT8188 vdecsys clock support
+  clk: mediatek: Add MT8188 vdosys0 clock support
+  clk: mediatek: Add MT8188 vdosys1 clock support
+  clk: mediatek: Add MT8188 vencsys clock support
+  clk: mediatek: Add MT8188 vppsys0 clock support
+  clk: mediatek: Add MT8188 vppsys1 clock support
+  clk: mediatek: Add MT8188 wpesys clock support
+  clk: mediatek: Add MT8188 imp i2c wrapper clock support
+  clk: mediatek: Add MT8188 adsp clock support
 
-For Rockchip:
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+ .../bindings/clock/mediatek,mt8188-clock.yaml |   71 +
+ .../clock/mediatek,mt8188-sys-clock.yaml      |   55 +
+ drivers/clk/mediatek/Kconfig                  |   11 +
+ drivers/clk/mediatek/Makefile                 |    7 +
+ .../clk/mediatek/clk-mt8188-adsp_audio26m.c   |   45 +
+ drivers/clk/mediatek/clk-mt8188-apmixedsys.c  |  154 ++
+ drivers/clk/mediatek/clk-mt8188-cam.c         |  118 ++
+ drivers/clk/mediatek/clk-mt8188-ccu.c         |   48 +
+ drivers/clk/mediatek/clk-mt8188-img.c         |  110 ++
+ .../clk/mediatek/clk-mt8188-imp_iic_wrap.c    |   78 +
+ drivers/clk/mediatek/clk-mt8188-infra_ao.c    |  196 +++
+ drivers/clk/mediatek/clk-mt8188-ipe.c         |   50 +
+ drivers/clk/mediatek/clk-mt8188-mfg.c         |   47 +
+ drivers/clk/mediatek/clk-mt8188-peri_ao.c     |   56 +
+ drivers/clk/mediatek/clk-mt8188-topckgen.c    | 1352 +++++++++++++++++
+ drivers/clk/mediatek/clk-mt8188-vdec.c        |   90 ++
+ drivers/clk/mediatek/clk-mt8188-vdo0.c        |  134 ++
+ drivers/clk/mediatek/clk-mt8188-vdo1.c        |  181 +++
+ drivers/clk/mediatek/clk-mt8188-venc.c        |   52 +
+ drivers/clk/mediatek/clk-mt8188-vpp0.c        |  143 ++
+ drivers/clk/mediatek/clk-mt8188-vpp1.c        |  138 ++
+ drivers/clk/mediatek/clk-mt8188-wpe.c         |  101 ++
+ .../dt-bindings/clock/mediatek,mt8188-clk.h   |  733 +++++++++
+ 23 files changed, 3970 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt8188-clock.yaml
+ create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt8188-sys-clock.yaml
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-adsp_audio26m.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-apmixedsys.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-cam.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-ccu.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-img.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-imp_iic_wrap.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-infra_ao.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-ipe.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-mfg.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-peri_ao.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-topckgen.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-vdec.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-vdo0.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-vdo1.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-venc.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-vpp0.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-vpp1.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-wpe.c
+ create mode 100644 include/dt-bindings/clock/mediatek,mt8188-clk.h
 
+-- 
+2.18.0
 
 
