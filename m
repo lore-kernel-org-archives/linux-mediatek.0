@@ -4,79 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9660DC25B4E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jan 2023 08:42:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 709BAC05027
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jan 2023 08:47:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tB0MmybYo3CIQd+gytr6S3Y+F0W3ehGkmi3+XA96szM=; b=e9jj/W14tic30qP8zAT1VRuof5
-	v844jTl4OdfNeCUYTk4c3UIY6jtQimeW7QNAcjMMhe6DwW4rmvOkfn7E5DQjCCOqJmLwrkkJHp7mx
-	4emQfNbV+ts1x0yH9B816QpOC/HRmQBnrXXS+57EAQUDABmcVB4hlNa+z2D7RyFCqeaS4aZkTXwOr
-	Mev6+K0EVr1CzPOWDs7OedURojca+VJylK8C1oC31dmthcH0WvkHtiNgUiIQM76WTKOkPf5fJBJXB
-	RVwdJfMHr5X5fzhdC19LAcyViCHKPiJkzyznwVUx6n92TXLbMMSl36FJfUBZadznGVfCjdtQph7Fz
-	4d/f6uUw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=E/oFMR6r4G1G0JRsPvYGzh6wFfAdEHd7pyZr3BSpQ24=; b=EUbvlGsev7Jy81HuA9/si6oJUn
+	Fm2jM3iG3x2dIM3ltlD8Q3yMXhenDr1Iej1iGoonGx3yLwdXVR+DTY5ksgcGumTOJl0sSomSZxRKP
+	8U7OFSP1y/Rh/5DvMkrWiJWCYj/SzHnRRN04a2ggBQI0wpkPcEuvpC/eYhMfVJUnD5Ox3ecHNH5u4
+	xq+T4wggj37zic3H8rw7k/fcQTWF0o9M68djx/DCpfMsBE+JIbvf+WZJGTwsdSkViG8pDYXJyCu0x
+	ywY1ITSoGbspLP+NIAyZ8u4wuwaWIGIJy2B9K9hcfX0EYHg75YEqT1aXR/1EvDxG7hskLECTfMwR2
+	tARFpyPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pImyq-0095y0-Ql; Fri, 20 Jan 2023 08:42:36 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pIn3O-009704-L1; Fri, 20 Jan 2023 08:47:18 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pImyg-0095uu-3s; Fri, 20 Jan 2023 08:42:27 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1pIn3L-0096y5-I6
+	for linux-mediatek@lists.infradead.org; Fri, 20 Jan 2023 08:47:17 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 0F769B81853;
-	Fri, 20 Jan 2023 08:42:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 63366C4339B;
-	Fri, 20 Jan 2023 08:42:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1674204142;
-	bh=tB0MmybYo3CIQd+gytr6S3Y+F0W3ehGkmi3+XA96szM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AMV02sHEMtZDjobYL/T669czLEGSbDoQX6as42+vgygCGbcY+YD7ZUieJA7g8W5jn
-	 /B08jybxOVX+tZ3rgjLqVemGoktwZd1kraYFLy8zTFxuFZeHf7AI/iT+yqGe4mi4M9
-	 CU8QD1EFJ8RbnLM64LKZzBMuLPYgqPB3gENwjRjoOaQzza6CihZie+DgOgEixn3qDK
-	 oTeV3Kpz9bAIS6EUlzq3QATDPZPvQ19ScreBoX0em2WLMOFwT8SzfA56PfwISRs61x
-	 R4Y1X+uUjzJUO1IZFzN3mRmOdCZd7PgHdvVex4bPonMy7HTtrCPurvNlOBqe/1wafO
-	 XH0vZ22MYvTsQ==
-Date: Fri, 20 Jan 2023 09:42:17 +0100
-From: Wolfram Sang <wsa@kernel.org>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Qii Wang <qii.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Fabien Parent <fparent@baylibre.com>, Rob Herring <robh@kernel.org>,
-	linux-i2c@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH v2 1/3] dt-bindings: i2c: i2c-mt65xx: add binding for
- MT8365 SoC
-Message-ID: <Y8pT6dhe8xcDEz9k@ninjato>
-Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	Qii Wang <qii.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Fabien Parent <fparent@baylibre.com>, Rob Herring <robh@kernel.org>,
-	linux-i2c@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org
-References: <20221122-mt8365-i2c-support-v2-0-e4c7c514e781@baylibre.com>
- <20221122-mt8365-i2c-support-v2-1-e4c7c514e781@baylibre.com>
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B43A3660087F;
+	Fri, 20 Jan 2023 08:47:10 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1674204431;
+	bh=/SK8ISCMrpGsFtSoxiSJpeLREJYNFoufne4NUgMTmHA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=XUcohdPfeK625umviXPYsywtgCILi5Tt5xJieyZ6tdGB6ZXt3bF6Pk2VcBGA/DETo
+	 FEsJ+3LHqwVGuedCFX36QPm9lVV7jiGLFBD9557V88Muuvf0dVRFQjetywKnXcqqZV
+	 e0IC8j2+tO8F3BKYa8ucF1YrErnYjS9/k3hNUMJzLnx8/WEqcYtPbJwIzRg4T4lJQl
+	 dshsxKsDhjDKW6SPO2OOpc1CWaL+ielLTnwnbOZhY8rKFe6H0Ih6tudSAZMxe3BzN4
+	 mfB/LvcYTd2gSkJINvw0l5s1EKRorHyUmM4XeGap19/ECrsew/glo5cX9g9q9Z+Ax9
+	 ZIxuygQTbxR0g==
+Message-ID: <0e8452bd-3c7f-57bf-2cef-b9b2411742c5@collabora.com>
+Date: Fri, 20 Jan 2023 09:47:07 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="FHiaATq8WsrcHDfa"
-Content-Disposition: inline
-In-Reply-To: <20221122-mt8365-i2c-support-v2-1-e4c7c514e781@baylibre.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v2 3/3] clk: mediatek: add MT7981 clock support
+To: Daniel Golle <daniel@makrotopia.org>, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-armkernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Miles Chen <miles.chen@mediatek.com>,
+ Edward-JW Yang <edward-jw.yang@mediatek.com>,
+ Johnson Wang <johnson.wang@mediatek.com>,
+ Fabien Parent <fparent@baylibre.com>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>, Sam Shih
+ <sam.shih@mediatek.com>, Jianhui Zhao <zhaojh329@gmail.com>
+References: <cover.1674152610.git.daniel@makrotopia.org>
+ <1f5749622816b9da315ac092cfa2be515b1d3505.1674152610.git.daniel@makrotopia.org>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <1f5749622816b9da315ac092cfa2be515b1d3505.1674152610.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230120_004226_483819_B54D1F1A 
-X-CRM114-Status: GOOD (  10.96  )
+X-CRM114-CacheID: sfid-20230120_004715_990519_39C01B4D 
+X-CRM114-Status: GOOD (  31.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,45 +85,253 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 20/01/23 02:27, Daniel Golle ha scritto:
+> Add MT7986 clock support, include topckgen, apmixedsys, infracfg and
+> ethernet subsystem clocks.
+> 
+> The drivers are based on clk-mt7981.c which can be found in MediaTek's
+> SDK sources. To be fit for upstream inclusion the driver has been split
+> into clock domains and the infracfg part has been significantly
+> de-bloated by removing all the 1:1 factors (aliases).
+> 
+> Signed-off-by: Jianhui Zhao <zhaojh329@gmail.com>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+>   drivers/clk/mediatek/Kconfig               |  17 +
+>   drivers/clk/mediatek/Makefile              |   4 +
+>   drivers/clk/mediatek/clk-mt7981-apmixed.c  | 103 +++++
+>   drivers/clk/mediatek/clk-mt7981-eth.c      | 138 +++++++
+>   drivers/clk/mediatek/clk-mt7981-infracfg.c | 236 ++++++++++++
+>   drivers/clk/mediatek/clk-mt7981-topckgen.c | 423 +++++++++++++++++++++
+>   6 files changed, 921 insertions(+)
+>   create mode 100644 drivers/clk/mediatek/clk-mt7981-apmixed.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt7981-eth.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt7981-infracfg.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt7981-topckgen.c
+> 
+> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+> index a40135f563777..c8f045a7f4aa8 100644
+> --- a/drivers/clk/mediatek/Kconfig
+> +++ b/drivers/clk/mediatek/Kconfig
+> @@ -388,6 +388,23 @@ config COMMON_CLK_MT7629_HIFSYS
+>   	  This driver supports MediaTek MT7629 HIFSYS clocks providing
+>   	  to PCI-E and USB.
+>   
+> +config COMMON_CLK_MT7981
+> +	bool "Clock driver for MediaTek MT7981"
+> +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	select COMMON_CLK_MEDIATEK
+> +	default ARCH_MEDIATEK
+> +	help
+> +	  This driver supports MediaTek MT7981 basic clocks and clocks
+> +	  required for various peripherals found on this SoC.
+> +
+> +config COMMON_CLK_MT7981_ETHSYS
+> +	bool "Clock driver for MediaTek MT7981 ETHSYS"
 
---FHiaATq8WsrcHDfa
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+If you convert this to platform driver, you can change this bool to tristate
+and compile ETHSYS as a module, as this is not a boot-critical clock driver.
+Usually, you want to boot from eMMC/SD... but in case you really want to boot
+from ethernet (nfs?) you can always either compile this as builtin or keep it
+a module and provide a ramdisk(/initrd) that has this module inside.
 
-On Thu, Jan 19, 2023 at 06:08:52PM +0100, Alexandre Mergnat wrote:
-> From: Fabien Parent <fparent@baylibre.com>
->=20
-> Add binding documentation for the MT8365 I2C controllers.
->=20
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Acked-by: Rob Herring <robh@kernel.org>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-
-Applied to for-next, thanks!
+Please, do so.
 
 
---FHiaATq8WsrcHDfa
-Content-Type: application/pgp-signature; name="signature.asc"
+> diff --git a/drivers/clk/mediatek/clk-mt7981-apmixed.c b/drivers/clk/mediatek/clk-mt7981-apmixed.c
+> new file mode 100644
+> index 0000000000000..df41d2aa8706e
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-mt7981-apmixed.c
+> @@ -0,0 +1,103 @@
 
------BEGIN PGP SIGNATURE-----
+..snip..
 
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmPKU+UACgkQFA3kzBSg
-KbbYAg/+NvPont0Ra5ivgZMy0aWdgYNhPXjOIwbtl0vtaaU1ZeUbGnHll9skN77k
-w2FSH9BR8dZiTgwgw1PGaVNhvFTU6BOkIrnN9TXAsTdUAj82JxHhQKer4kIM/uVf
-cCjwDN+9rrapuUCBJbMqAhEWvWvm1ylodAs1lF5tik0WxBX/qPpiZn6MFkl3qCfm
-Kr0zsZ3MRjj0A1eA9F3ptxL1Y7yvPBfFEDWjyaFxIQgkAkIlfOXi+Sv8QyUD4Ncs
-o8Uy5Q0EZsTG2CElvnlPW6h0TSIc6uJbMzW/vuXH+3G1IUoYAHFxkNxyDbBoH6Dk
-9BIeCj9VdQBSDYwvRrCvB5+eGrCB3NE94eI6ArUFiYA+ZNMIw74bFsIKYnJv/6Dr
-VoPG0eOOkJEeWA4vKgPPJzWadCj/WvHlZp5mJ2JeY2zchRf4IuYhUiJiZW+gOhGr
-Lp4eXYNxblarSF+9DwYZ+GK/oNVRE7M7JjD2j02eRTunVkkAOIBCzCt+egKq/gbW
-53SnS5rSQRhHT+TixOtqdsY8li2pLdpF2Uj9k1eaIoLX1CaPSqo6UE5oijt+8Yi1
-+jwAfNQ7Tdcw+PadlhCylVCUw/TLSZ1WTrJTPuLZ2dkWAoem1eLsLedyRiuu4DVV
-G2qyr4BM86T+5gNypaj/uufkz2aB5BxwNFU/tJ+X9EjkRf/1m/s=
-=mGx/
------END PGP SIGNATURE-----
+> +
+> +static int clk_mt7981_apmixed_probe(struct platform_device *pdev)
+> +{
+> +	struct clk_hw_onecell_data *clk_data;
+> +	struct device_node *node = pdev->dev.of_node;
+> +	int r;
+> +
+> +	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(plls));
+> +	if (!clk_data)
+> +		return -ENOMEM;
+> +
+> +	mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
+> +
+> +	clk_prepare_enable(clk_data->hws[CLK_APMIXED_ARMPLL]->clk);
 
---FHiaATq8WsrcHDfa--
+No, this is not the right way of managing a clock that has to be always on.
+The CLK_IS_CRITICAL flag is what you're looking for.
+
+> +
+> +	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+> +	if (r) {
+> +		pr_err("%s(): could not register clock provider: %d\n",
+> +		       __func__, r);
+> +		goto free_apmixed_data;
+> +	}
+> +	return r;
+> +
+> +free_apmixed_data:
+> +	mtk_free_clk_data(clk_data);
+> +	return r;
+> +}
+> +
+> +static struct platform_driver clk_mt7981_apmixed_drv = {
+> +	.probe = clk_mt7981_apmixed_probe,
+> +	.driver = {
+> +		.name = "clk-mt7981-apmixed",
+> +		.of_match_table = of_match_clk_mt7981_apmixed,
+> +	},
+> +};
+> +builtin_platform_driver(clk_mt7981_apmixed_drv);
+> diff --git a/drivers/clk/mediatek/clk-mt7981-eth.c b/drivers/clk/mediatek/clk-mt7981-eth.c
+> new file mode 100644
+> index 0000000000000..ade7645c921ec
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-mt7981-eth.c
+> @@ -0,0 +1,138 @@
+
+..snip..
+
+> +
+> +static void __init mtk_sgmiisys_0_init(struct device_node *node)
+> +{
+> +	struct clk_hw_onecell_data *clk_data;
+> +	int r;
+> +
+> +	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(sgmii0_clks));
+> +
+> +	mtk_clk_register_gates(NULL, node, sgmii0_clks, ARRAY_SIZE(sgmii0_clks),
+> +			       clk_data);
+> +
+> +	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+> +	if (r)
+> +		pr_err("%s(): could not register clock provider: %d\n",
+> +		       __func__, r);
+> +}
+> +CLK_OF_DECLARE(mtk_sgmiisys_0, "mediatek,mt7981-sgmiisys_0",
+> +	       mtk_sgmiisys_0_init);
+
+Do you really need to use CLK_OF_DECLARE?
+
+Is there any reason why SGMIISYS 0/1 and ETHSYS are not platform drivers?
+
+Please, convert to platform drivers.
+
+> diff --git a/drivers/clk/mediatek/clk-mt7981-infracfg.c b/drivers/clk/mediatek/clk-mt7981-infracfg.c
+> new file mode 100644
+> index 0000000000000..0cb301895c7bf
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-mt7981-infracfg.c
+> @@ -0,0 +1,236 @@
+
+..snip..
+
+
+You can remove this probe function entirely:
+
+static const struct mtk_clk_desc topck_desc = {
+	.factor_clks = infra_divs,
+	.num_factor_clks = ARRAY_SIZE(infra_divs),
+	.mux_clks = infra_muxes,
+	.num_mux_clks = ARRAY_SIZE(infra_muxes),
+	.clks = infra_clks,
+	.num_clks = ARRAY_SIZE(infra_clks),
+	.clk_lock = &mt7981_clk_lock,
+};
+
+> +static int clk_mt7981_infracfg_probe(struct platform_device *pdev)
+> +{
+> +	struct clk_hw_onecell_data *clk_data;
+> +	struct device_node *node = pdev->dev.of_node;
+> +	int r;
+> +	void __iomem *base;
+> +	int nr = ARRAY_SIZE(infra_divs) + ARRAY_SIZE(infra_muxes) +
+> +		 ARRAY_SIZE(infra_clks);
+> +
+> +	base = of_iomap(node, 0);
+> +	if (!base) {
+> +		pr_err("%s(): ioremap failed\n", __func__);
+> +		return -ENOMEM;
+> +	}
+> +
+> +	clk_data = mtk_alloc_clk_data(nr);
+> +
+> +	if (!clk_data)
+> +		return -ENOMEM;
+> +
+> +	mtk_clk_register_factors(infra_divs, ARRAY_SIZE(infra_divs), clk_data);
+> +	mtk_clk_register_muxes(&pdev->dev, infra_muxes, ARRAY_SIZE(infra_muxes), node,
+> +			       &mt7981_clk_lock, clk_data);
+> +	mtk_clk_register_gates(&pdev->dev, node, infra_clks, ARRAY_SIZE(infra_clks),
+> +			       clk_data);
+> +
+> +	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+> +	if (r) {
+> +		pr_err("%s(): could not register clock provider: %d\n",
+> +		       __func__, r);
+> +		goto free_infracfg_data;
+> +	}
+> +	return r;
+> +
+> +free_infracfg_data:
+> +	mtk_free_clk_data(clk_data);
+> +	return r;
+> +
+> +}
+> +
+> +static const struct of_device_id of_match_clk_mt7981_infracfg[] = {
+> +	{ .compatible = "mediatek,mt7981-infracfg", },
+> +	{}
+
+Please always end of_device_id arrays with
+
+	{ /* sentinel */ }
+
+> +};
+> +
+> +static struct platform_driver clk_mt7981_infracfg_drv = {
+> +	.probe = clk_mt7981_infracfg_probe,
+> +	.driver = {
+> +		.name = "clk-mt7981-infracfg",
+> +		.of_match_table = of_match_clk_mt7981_infracfg,
+> +	},
+> +};
+> +builtin_platform_driver(clk_mt7981_infracfg_drv);
+> diff --git a/drivers/clk/mediatek/clk-mt7981-topckgen.c b/drivers/clk/mediatek/clk-mt7981-topckgen.c
+> new file mode 100644
+> index 0000000000000..e711c39993dd3
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-mt7981-topckgen.c
+> @@ -0,0 +1,423 @@
+
+..snip..
+
+> +static const struct of_device_id of_match_clk_mt7981_topckgen[] = {
+> +	{ .compatible = "mediatek,mt7981-topckgen", .data = &topck_desc },
+> +	{}
+
+	{ /* sentinel */ }
+
+> +};
+> +
+> +static struct platform_driver clk_mt7981_topckgen_drv = {
+> +	.probe = mtk_clk_simple_probe,
+> +	.remove = mtk_clk_simple_remove,
+> +
+
+Please remove this unnecessary blank line.
+
+> +	.driver = {
+> +		.name = "clk-mt7981-topckgen",
+> +		.of_match_table = of_match_clk_mt7981_topckgen,
+> +	},
+> +};
+> +builtin_platform_driver(clk_mt7981_topckgen_drv);
+
+
+
 
