@@ -4,77 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACE80C05027
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jan 2023 16:46:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E76DDC25B4E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jan 2023 17:24:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/v8el1f2Alzp5osEye90kMa/1C8i+wSBxtLcNVCt6Z0=; b=oDlqEyyfoSi9kJeF+XxGhzP+DZ
-	o8Pjm4Qf8j7IWlnuWG4vZrFhzlfNSvj4hfWPyI7WBwprq/eJY7gF6M/Ztaqv5kRaxQ1g1pINzehak
-	KFD/pnCZnOR04Zcqok0ICOjDVL6Z4d0VkSraC3GsjRP2983ucFC8bIWvt2EDK9OTTFC9GyyIgG4ON
-	42T+0fgYymBgnwKXT5rWI8WyocjxFo6ELJ3Urlw/p+68EGB3xPTcNboKvl9aejyJkcWcm5MNksqkR
-	ta+U4qGCpcQoUeCXc/Jw8fMmHMwosfG96qt0PWULhb/yMzAK1H0C4bxnbGbDBhT1e+MFH3QK8WrWk
-	ymm4WnIg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=JrmQ9YByHItWBueH2+ttxwSuumw74wejKeuUDbbBJuc=; b=L53KLSh6ht7xpGcC7olXlA/28f
+	qIOtgdXEaIymxSAU+zz8fQWuXsXOxE3v/kz5B9jfhITk3K/iB6gOijlFJeDaK+DNlq4ljnVwMMGiw
+	0OJmTGlCXsfTc41jJKLnOwYvPuQXQ0o2dMYRfroReZsjGTdyI7lUYOFQQGRreMDNTHWc5WIqmZAJx
+	vJfWhXzgck3/RPd1Z12FnovBaqUebUBe2MI6KGTSi8osiT7x7fXw0y+OGCNZEB8RsPDtCNZJH6sXh
+	QLY0+CJSH7k7+pt+4S9/2gQzUM58iBgl1NTSxwQ0zF9JeRKPvfmOubvwjd3Lx/jV013o4ZQmUokCF
+	4JZetfzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIuX4-00BIr3-1c; Fri, 20 Jan 2023 16:46:26 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pItSJ-00B1U5-63
-	for linux-mediatek@lists.infradead.org; Fri, 20 Jan 2023 15:37:29 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id CA9861595
-	for <linux-mediatek@lists.infradead.org>; Fri, 20 Jan 2023 07:38:04 -0800 (PST)
-Received: from e110455-lin.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id E02483F67D
-	for <linux-mediatek@lists.infradead.org>; Fri, 20 Jan 2023 07:37:22 -0800 (PST)
-Date: Fri, 20 Jan 2023 15:36:50 +0000
-From: Liviu Dudau <liviu.dudau@arm.com>
-To: Sean Anderson <sean.anderson@seco.com>
-Cc: David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	dri-devel@lists.freedesktop.org,
-	Xinliang Liu <xinliang.liu@linaro.org>, linux-mips@vger.kernel.org,
-	Paul Cercueil <paul@crapouillou.net>,
-	John Stultz <jstultz@google.com>,
-	Mihail Atanassov <mihail.atanassov@arm.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Russell King <linux@armlinux.org.uk>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Mali DP Maintainers <malidp@foss.arm.com>,
-	linux-arm-msm@vger.kernel.org,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
-	linux-sunxi@lists.linux.dev,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Chen Feng <puck.chen@hisilicon.com>,
-	Abhinav Kumar <quic_abhinavk@quicinc.com>,
-	etnaviv@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org,
-	Tomi Valkeinen <tomba@kernel.org>, freedreno@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
-	Tian Tao <tiantao6@hisilicon.com>, Jyri Sarha <jyri.sarha@iki.fi>
-Subject: Re: [PATCH v3 3/3] drm: Convert users of drm_of_component_match_add
- to component_match_add_of
-Message-ID: <Y8q0tN88QGKcIfw/@e110455-lin.cambridge.arm.com>
-References: <20230119191040.1637739-1-sean.anderson@seco.com>
- <20230119191040.1637739-4-sean.anderson@seco.com>
+	id 1pIv7k-00BYOS-Mc; Fri, 20 Jan 2023 17:24:20 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pIv6y-00BXxr-5r; Fri, 20 Jan 2023 17:23:33 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pIv6o-00054u-0o;
+	Fri, 20 Jan 2023 18:23:22 +0100
+Date: Fri, 20 Jan 2023 17:23:12 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Miles Chen <miles.chen@mediatek.com>,
+	Edward-JW Yang <edward-jw.yang@mediatek.com>,
+	Johnson Wang <johnson.wang@mediatek.com>,
+	Fabien Parent <fparent@baylibre.com>,
+	Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+	Sam Shih <sam.shih@mediatek.com>,
+	Jianhui Zhao <zhaojh329@gmail.com>
+Subject: [PATCH v3 0/3] add support for clocks on MT7981 SoC
+Message-ID: <cover.1674233728.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230119191040.1637739-4-sean.anderson@seco.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230120_073727_352842_5C0B3736 
-X-CRM114-Status: GOOD (  23.58  )
+X-CRM114-CacheID: sfid-20230120_092332_276221_30113FBC 
+X-CRM114-Status: GOOD (  14.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,383 +69,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 19, 2023 at 02:10:39PM -0500, Sean Anderson wrote:
-> Every user of this function either uses component_compare_of or
-> something equivalent. Most of them immediately put the device node as
-> well. Convert these users to component_match_add_of and remove
-> drm_of_component_match_add.
-> 
-> Signed-off-by: Sean Anderson <sean.anderson@seco.com>
-> Acked-by: Jyri Sarha <jyri.sarhaı@iki.fi>
-> Tested-by: Jyri Sarha <jyri.sarha@iki.fi>
-> ---
-> 
-> (no changes since v1)
-> 
->  .../gpu/drm/arm/display/komeda/komeda_drv.c   |  6 ++--
->  drivers/gpu/drm/arm/hdlcd_drv.c               |  9 +-----
->  drivers/gpu/drm/arm/malidp_drv.c              | 11 +------
->  drivers/gpu/drm/armada/armada_drv.c           | 10 ++++---
->  drivers/gpu/drm/drm_of.c                      | 29 +++----------------
->  drivers/gpu/drm/etnaviv/etnaviv_drv.c         |  4 +--
->  .../gpu/drm/hisilicon/kirin/kirin_drm_drv.c   |  3 +-
->  drivers/gpu/drm/ingenic/ingenic-drm-drv.c     |  3 +-
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  4 +--
->  drivers/gpu/drm/msm/msm_drv.c                 | 14 ++++-----
->  drivers/gpu/drm/sti/sti_drv.c                 |  3 +-
->  drivers/gpu/drm/sun4i/sun4i_drv.c             |  3 +-
->  drivers/gpu/drm/tilcdc/tilcdc_external.c      | 10 ++-----
->  include/drm/drm_of.h                          | 12 --------
->  14 files changed, 33 insertions(+), 88 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/arm/display/komeda/komeda_drv.c b/drivers/gpu/drm/arm/display/komeda/komeda_drv.c
-> index 3f4e719eebd8..e3bfc72c378f 100644
-> --- a/drivers/gpu/drm/arm/display/komeda/komeda_drv.c
-> +++ b/drivers/gpu/drm/arm/display/komeda/komeda_drv.c
-> @@ -103,10 +103,8 @@ static void komeda_add_slave(struct device *master,
->  	struct device_node *remote;
->  
->  	remote = of_graph_get_remote_node(np, port, endpoint);
-> -	if (remote) {
-> -		drm_of_component_match_add(master, match, component_compare_of, remote);
-> -		of_node_put(remote);
-> -	}
-> +	if (remote)
-> +		component_match_add_of(master, match, remote);
->  }
->  
->  static int komeda_platform_probe(struct platform_device *pdev)
-> diff --git a/drivers/gpu/drm/arm/hdlcd_drv.c b/drivers/gpu/drm/arm/hdlcd_drv.c
-> index e3507dd6f82a..5f760bb66af4 100644
-> --- a/drivers/gpu/drm/arm/hdlcd_drv.c
-> +++ b/drivers/gpu/drm/arm/hdlcd_drv.c
-> @@ -347,11 +347,6 @@ static const struct component_master_ops hdlcd_master_ops = {
->  	.unbind		= hdlcd_drm_unbind,
->  };
->  
-> -static int compare_dev(struct device *dev, void *data)
-> -{
-> -	return dev->of_node == data;
-> -}
-> -
->  static int hdlcd_probe(struct platform_device *pdev)
->  {
->  	struct device_node *port;
-> @@ -362,9 +357,7 @@ static int hdlcd_probe(struct platform_device *pdev)
->  	if (!port)
->  		return -ENODEV;
->  
-> -	drm_of_component_match_add(&pdev->dev, &match, compare_dev, port);
-> -	of_node_put(port);
-> -
-> +	component_match_add_of(&pdev->dev, &match, port);
->  	return component_master_add_with_match(&pdev->dev, &hdlcd_master_ops,
->  					       match);
->  }
-> diff --git a/drivers/gpu/drm/arm/malidp_drv.c b/drivers/gpu/drm/arm/malidp_drv.c
-> index 589c1c66a6dc..3a49c29ba5b8 100644
-> --- a/drivers/gpu/drm/arm/malidp_drv.c
-> +++ b/drivers/gpu/drm/arm/malidp_drv.c
-> @@ -909,13 +909,6 @@ static const struct component_master_ops malidp_master_ops = {
->  	.unbind = malidp_unbind,
->  };
->  
-> -static int malidp_compare_dev(struct device *dev, void *data)
-> -{
-> -	struct device_node *np = data;
-> -
-> -	return dev->of_node == np;
-> -}
-> -
->  static int malidp_platform_probe(struct platform_device *pdev)
->  {
->  	struct device_node *port;
-> @@ -929,9 +922,7 @@ static int malidp_platform_probe(struct platform_device *pdev)
->  	if (!port)
->  		return -ENODEV;
->  
-> -	drm_of_component_match_add(&pdev->dev, &match, malidp_compare_dev,
-> -				   port);
-> -	of_node_put(port);
-> +	component_match_add_of(&pdev->dev, &match, port);
->  	return component_master_add_with_match(&pdev->dev, &malidp_master_ops,
->  					       match);
->  }
+The MediaTek MT7981 SoC is quite similar to its big sibling, the
+MT7986. Hence most drivers can be reused and not much is missing the
+get also this SoC working on mainline Linux.
 
-For komeda, mali_dp and hdlcd: Acked-by: Liviu Dudau <liviu.dudau@arm.com>
+Start with a cleaned-up version of the clock drivers, based on what can
+also be found in MediaTek's SDK[1].
 
-Best regards,
-Liviu
+Upon request of AngeloGioacchino Del Regno this series has been rebased
+and adapted to be applied on top of the pending series
+"MediaTek clocks cleanups and improvements"[2]
 
+The complete tree used for testing (with still some to-be-cleaned-up
+changes, esp. for the Ethernet driver) can be found on Github[3].
 
-> diff --git a/drivers/gpu/drm/armada/armada_drv.c b/drivers/gpu/drm/armada/armada_drv.c
-> index 0643887800b4..c0211ad7a45d 100644
-> --- a/drivers/gpu/drm/armada/armada_drv.c
-> +++ b/drivers/gpu/drm/armada/armada_drv.c
-> @@ -184,10 +184,12 @@ static void armada_add_endpoints(struct device *dev,
->  
->  	for_each_endpoint_of_node(dev_node, ep) {
->  		remote = of_graph_get_remote_port_parent(ep);
-> -		if (remote && of_device_is_available(remote))
-> -			drm_of_component_match_add(dev, match, component_compare_of,
-> -						   remote);
-> -		of_node_put(remote);
-> +		if (remote) {
-> +			if (of_device_is_available(remote))
-> +				component_match_add_of(dev, match, remote);
-> +			else
-> +				of_node_put(remote);
-> +		}
->  	}
->  }
->  
-> diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
-> index 7bbcb999bb75..0a474729ddf6 100644
-> --- a/drivers/gpu/drm/drm_of.c
-> +++ b/drivers/gpu/drm/drm_of.c
-> @@ -78,24 +78,6 @@ uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
->  }
->  EXPORT_SYMBOL(drm_of_find_possible_crtcs);
->  
-> -/**
-> - * drm_of_component_match_add - Add a component helper OF node match rule
-> - * @master: master device
-> - * @matchptr: component match pointer
-> - * @compare: compare function used for matching component
-> - * @node: of_node
-> - */
-> -void drm_of_component_match_add(struct device *master,
-> -				struct component_match **matchptr,
-> -				int (*compare)(struct device *, void *),
-> -				struct device_node *node)
-> -{
-> -	of_node_get(node);
-> -	component_match_add_release(master, matchptr, component_release_of,
-> -				    compare, node);
-> -}
-> -EXPORT_SYMBOL_GPL(drm_of_component_match_add);
-> -
->  /**
->   * drm_of_component_probe - Generic probe function for a component based master
->   * @dev: master device containing the OF node
-> @@ -130,10 +112,9 @@ int drm_of_component_probe(struct device *dev,
->  			break;
->  
->  		if (of_device_is_available(port->parent))
-> -			drm_of_component_match_add(dev, &match, compare_of,
-> -						   port);
-> -
-> -		of_node_put(port);
-> +			component_match_add_of(dev, &match, port);
-> +		else
-> +			of_node_put(port);
->  	}
->  
->  	if (i == 0) {
-> @@ -171,9 +152,7 @@ int drm_of_component_probe(struct device *dev,
->  				continue;
->  			}
->  
-> -			drm_of_component_match_add(dev, &match, compare_of,
-> -						   remote);
-> -			of_node_put(remote);
-> +			component_match_add_of(dev, &match, remote);
->  		}
->  		of_node_put(port);
->  	}
-> diff --git a/drivers/gpu/drm/etnaviv/etnaviv_drv.c b/drivers/gpu/drm/etnaviv/etnaviv_drv.c
-> index 1d2b4fb4bcf8..4a0dba34a6e7 100644
-> --- a/drivers/gpu/drm/etnaviv/etnaviv_drv.c
-> +++ b/drivers/gpu/drm/etnaviv/etnaviv_drv.c
-> @@ -590,8 +590,8 @@ static int etnaviv_pdev_probe(struct platform_device *pdev)
->  			if (!first_node)
->  				first_node = core_node;
->  
-> -			drm_of_component_match_add(&pdev->dev, &match,
-> -						   component_compare_of, core_node);
-> +			of_node_get(core_node);
-> +			component_match_add_of(&pdev->dev, &match, core_node);
->  		}
->  	} else {
->  		char **names = dev->platform_data;
-> diff --git a/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c b/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c
-> index 9c5d49bf40c9..3ee277615c39 100644
-> --- a/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c
-> +++ b/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c
-> @@ -273,8 +273,7 @@ static int kirin_drm_platform_probe(struct platform_device *pdev)
->  	if (!remote)
->  		return -ENODEV;
->  
-> -	drm_of_component_match_add(dev, &match, component_compare_of, remote);
-> -	of_node_put(remote);
-> +	component_match_add_of(dev, &match, remote);
->  
->  	return component_master_add_with_match(dev, &kirin_drm_ops, match);
->  }
-> diff --git a/drivers/gpu/drm/ingenic/ingenic-drm-drv.c b/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
-> index 3d5af44bf92d..d0c87175dec4 100644
-> --- a/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
-> +++ b/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
-> @@ -1444,8 +1444,7 @@ static int ingenic_drm_probe(struct platform_device *pdev)
->  	if (!np)
->  		return ingenic_drm_bind(dev, false);
->  
-> -	drm_of_component_match_add(dev, &match, component_compare_of, np);
-> -	of_node_put(np);
-> +	component_match_add_of(dev, &match, np);
->  
->  	return component_master_add_with_match(dev, &ingenic_master_ops, match);
->  }
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index cd5b18ef7951..abead814bfdc 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -787,8 +787,8 @@ static int mtk_drm_probe(struct platform_device *pdev)
->  		    comp_type == MTK_DSI) {
->  			dev_info(dev, "Adding component match for %pOF\n",
->  				 node);
-> -			drm_of_component_match_add(dev, &match, component_compare_of,
-> -						   node);
-> +			of_node_get(node);
-> +			component_match_add_of(dev, &match, node);
->  		}
->  
->  		ret = mtk_ddp_comp_init(node, &private->ddp_comp[comp_id], comp_id);
-> diff --git a/drivers/gpu/drm/msm/msm_drv.c b/drivers/gpu/drm/msm/msm_drv.c
-> index 8b0b0ac74a6f..8ccf57def955 100644
-> --- a/drivers/gpu/drm/msm/msm_drv.c
-> +++ b/drivers/gpu/drm/msm/msm_drv.c
-> @@ -5,6 +5,7 @@
->   * Author: Rob Clark <robdclark@gmail.com>
->   */
->  
-> +#include <linux/component.h>
->  #include <linux/dma-mapping.h>
->  #include <linux/fault-inject.h>
->  #include <linux/kthread.h>
-> @@ -1156,10 +1157,9 @@ static int add_components_mdp(struct device *master_dev,
->  			continue;
->  
->  		if (of_device_is_available(intf))
-> -			drm_of_component_match_add(master_dev, matchptr,
-> -						   component_compare_of, intf);
-> -
-> -		of_node_put(intf);
-> +			component_match_add_of(master_dev, matchptr, intf);
-> +		else
-> +			of_node_put(intf);
->  	}
->  
->  	return 0;
-> @@ -1188,9 +1188,9 @@ static int add_gpu_components(struct device *dev,
->  		return 0;
->  
->  	if (of_device_is_available(np))
-> -		drm_of_component_match_add(dev, matchptr, component_compare_of, np);
-> -
-> -	of_node_put(np);
-> +		component_match_add_of(dev, matchptr, np);
-> +	else
-> +		of_node_put(np);
->  
->  	return 0;
->  }
-> diff --git a/drivers/gpu/drm/sti/sti_drv.c b/drivers/gpu/drm/sti/sti_drv.c
-> index ef6a4e63198f..e3aae4574c75 100644
-> --- a/drivers/gpu/drm/sti/sti_drv.c
-> +++ b/drivers/gpu/drm/sti/sti_drv.c
-> @@ -238,8 +238,7 @@ static int sti_platform_probe(struct platform_device *pdev)
->  	child_np = of_get_next_available_child(node, NULL);
->  
->  	while (child_np) {
-> -		drm_of_component_match_add(dev, &match, component_compare_of,
-> -					   child_np);
-> +		component_match_add_of(dev, &match, child_np);
->  		child_np = of_get_next_available_child(node, child_np);
->  	}
->  
-> diff --git a/drivers/gpu/drm/sun4i/sun4i_drv.c b/drivers/gpu/drm/sun4i/sun4i_drv.c
-> index cc94efbbf2d4..9b3ddd82f1be 100644
-> --- a/drivers/gpu/drm/sun4i/sun4i_drv.c
-> +++ b/drivers/gpu/drm/sun4i/sun4i_drv.c
-> @@ -323,7 +323,8 @@ static int sun4i_drv_add_endpoints(struct device *dev,
->  	     of_device_is_available(node))) {
->  		/* Add current component */
->  		DRM_DEBUG_DRIVER("Adding component %pOF\n", node);
-> -		drm_of_component_match_add(dev, match, component_compare_of, node);
-> +		of_node_get(node);
-> +		component_match_add_of(dev, match, node);
->  		count++;
->  	}
->  
-> diff --git a/drivers/gpu/drm/tilcdc/tilcdc_external.c b/drivers/gpu/drm/tilcdc/tilcdc_external.c
-> index 3b86d002ef62..0138ce02a64f 100644
-> --- a/drivers/gpu/drm/tilcdc/tilcdc_external.c
-> +++ b/drivers/gpu/drm/tilcdc/tilcdc_external.c
-> @@ -155,11 +155,6 @@ int tilcdc_attach_external_device(struct drm_device *ddev)
->  	return ret;
->  }
->  
-> -static int dev_match_of(struct device *dev, void *data)
-> -{
-> -	return dev->of_node == data;
-> -}
-> -
->  int tilcdc_get_external_components(struct device *dev,
->  				   struct component_match **match)
->  {
-> @@ -173,7 +168,8 @@ int tilcdc_get_external_components(struct device *dev,
->  	}
->  
->  	if (match)
-> -		drm_of_component_match_add(dev, match, dev_match_of, node);
-> -	of_node_put(node);
-> +		component_match_add_of(dev, match, node);
-> +	else
-> +		of_node_put(node);
->  	return 1;
->  }
-> diff --git a/include/drm/drm_of.h b/include/drm/drm_of.h
-> index 10ab58c40746..685c44dc1dae 100644
-> --- a/include/drm/drm_of.h
-> +++ b/include/drm/drm_of.h
-> @@ -33,10 +33,6 @@ uint32_t drm_of_crtc_port_mask(struct drm_device *dev,
->  			    struct device_node *port);
->  uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
->  				    struct device_node *port);
-> -void drm_of_component_match_add(struct device *master,
-> -				struct component_match **matchptr,
-> -				int (*compare)(struct device *, void *),
-> -				struct device_node *node);
->  int drm_of_component_probe(struct device *dev,
->  			   int (*compare_of)(struct device *, void *),
->  			   const struct component_master_ops *m_ops);
-> @@ -69,14 +65,6 @@ static inline uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
->  	return 0;
->  }
->  
-> -static inline void
-> -drm_of_component_match_add(struct device *master,
-> -			   struct component_match **matchptr,
-> -			   int (*compare)(struct device *, void *),
-> -			   struct device_node *node)
-> -{
-> -}
-> -
->  static inline int
->  drm_of_component_probe(struct device *dev,
->  		       int (*compare_of)(struct device *, void *),
-> -- 
-> 2.35.1.1320.gc452695387.dirty
-> 
+[1]: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/refs/heads/master/target/linux/mediatek/files-5.4/drivers/clk/mediatek/clk-mt7981.c
+[2]: https://patchwork.kernel.org/project/linux-clk/list/?series=714057
+[3]: https://github.com/dangowrt/linux
+
+Changes since v2:
+ * rebase on top of next-20230120 with v4 of AngeloGioacchino's series[2]
+ * fix titles of dt-bindings commits (this time for real)
+ * convert clk-mt7981-infracfg to use mtk_clk_simple_probe
+ * make use of PLL_AO flag in clk-mt7981-apmixed
+ * convert clk-mt7981-ethsys into platform driver, also using the generic
+   probe function, allow building as module
+
+Changes since v1:
+ * rebase and adapt on top of [2]
+ * split-off addition of dt-bindings header, fix filename
+ * changed commit title as requested
+
+Daniel Golle (3):
+  dt-bindings: clock: Add apmixedsys/topckgen compatibles for MT7981
+  dt-bindings: clock: mediatek: add mt7981 clock IDs
+  clk: mediatek: add MT7981 clock support
+
+ .../bindings/clock/mediatek,apmixedsys.yaml   |   1 +
+ .../bindings/clock/mediatek,topckgen.yaml     |   1 +
+ drivers/clk/mediatek/Kconfig                  |  17 +
+ drivers/clk/mediatek/Makefile                 |   4 +
+ drivers/clk/mediatek/clk-mt7981-apmixed.c     | 102 +++++
+ drivers/clk/mediatek/clk-mt7981-eth.c         | 117 +++++
+ drivers/clk/mediatek/clk-mt7981-infracfg.c    | 207 +++++++++
+ drivers/clk/mediatek/clk-mt7981-topckgen.c    | 422 ++++++++++++++++++
+ .../dt-bindings/clock/mediatek,mt7981-clk.h   | 215 +++++++++
+ 9 files changed, 1086 insertions(+)
+ create mode 100644 drivers/clk/mediatek/clk-mt7981-apmixed.c
+ create mode 100644 drivers/clk/mediatek/clk-mt7981-eth.c
+ create mode 100644 drivers/clk/mediatek/clk-mt7981-infracfg.c
+ create mode 100644 drivers/clk/mediatek/clk-mt7981-topckgen.c
+ create mode 100644 include/dt-bindings/clock/mediatek,mt7981-clk.h
 
 -- 
-====================
-| I would like to |
-| fix the world,  |
-| but they're not |
-| giving me the   |
- \ source code!  /
-  ---------------
-    ¯\_(ツ)_/¯
+2.39.1
+
 
