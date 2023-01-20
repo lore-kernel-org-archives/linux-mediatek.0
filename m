@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CF7AC25B4E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jan 2023 09:45:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1DA6C25B4E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jan 2023 09:45:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LjxtQm9yGz6MJPuXyRMk0bzwYVSnoLlNx3J1i1Kq8ro=; b=NvSWzK/2KMLyYKgvuJnubiin6Z
-	25id4QuTVFdYxjceWC9Gszc7YHyoKRvymkpCDoUBRPpMJvP/CAnRG3DsFzoW9Mj4TdhDsE5Gt5zla
-	wYRH7zWnCY8C5cPLt4hBRrPPyNlUocqyHsS9QHIEV2rsCVDM5BRKpjuU7tvFwdzgIghl9KzladXbj
-	NnrDwvcr/VfbjsWZ8ulYf4UIp9P8CYiiSzp49Oz0/GJXCwGRwb4bVAy2qKBX+wNIwQiw3go032iso
-	93rm4FW0iii+lFI94mDsKiRZOXMxXNKwnRTspGNH6/z7n6A5qo04zW8edDs3TxGczBIo+Ai5UE7dR
-	R4NrMlug==;
+	bh=umTQT5RRGjKvqnTZkzqSCy7FmIiM20nFwQOC5hXKy+g=; b=dRKGpFxn72uCRr/IjQtquWsIt+
+	DV8837B7ldJFlBgYTT25bbTFfb80V4GWGTw3RIdJ57L8Mh8u5jYTmxW5Q0GBbb7/yKId6BYsDx0RB
+	/9i4Vl9S2ZbdxVprPCodO5yRi1hV4E9uV6ZjA6psXkCsQeZMio2XKQiQvdSaigrZEhzt5JLPbLzRu
+	TpA8vHKius9dP0j6p6/KHG4ZlvPhpZr+ba6ywAHciRDMIcWVG6Ur8NZboBzok63uA/l0/HXPTo/vb
+	rY95ZCblUAQDCvkaGyh7gYNS26ksn7AWWWil5QGHaRyXjTg37Eeh/SSSyP/TowuprRiYnrGJgGj0l
+	nn3FkhBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pInxM-009Up0-Bz; Fri, 20 Jan 2023 09:45:08 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pInxQ-009Uqz-5g; Fri, 20 Jan 2023 09:45:12 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pInaO-009JuN-Gt; Fri, 20 Jan 2023 09:21:31 +0000
+	id 1pInaM-009JtZ-Sm; Fri, 20 Jan 2023 09:21:31 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 997906602E8E;
-	Fri, 20 Jan 2023 09:21:21 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id F03C26602E33;
+	Fri, 20 Jan 2023 09:21:19 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1674206483;
-	bh=TXsvpuYEwVayUGP6yTdMIQtVttt74SBr+RVJGfEefQQ=;
+	s=mail; t=1674206481;
+	bh=hyvZWVe4ucYAiauxcf5ZTm/oM/iSZL9fEKOY17bmsT0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KnpU2UKUHHOdVtqDj350MN+FIuePsNaXgLcilcaOUEQsYyFgwXj076hIe2ck5QZDn
-	 F/wVTYuThbymeWjdhfV1eTD0OIw3gPkLCvkfeFdNTyah5Q+ESNA0Z7+homEytIGpNz
-	 UiPTgMK/Vq6yShR01/rG06xiU3GPpc6+rPWlDiJokY3iedxyU9gB33kGFo5JqfxznM
-	 QnOOxIiVHk6d2b5XGAyDRhW4p33pxN0NAhEfSVJyc8pQ+w8HZpwPM+EenqrchXMbI/
-	 gnPq1cyIV0VhwWpj5Oemu9xoeluXsOv4u0gn8NszP6I5lGecOaiqZQ4gUkZ5S0vsKh
-	 cw43oMzeCUNKw==
+	b=ArFWnpwU9BMxzSmwnSuLQupVtoVqZkZVi8le2zbJTs20X8UFx9EQ84xCG7fNlXh52
+	 eSTx2H0Pc8T/8VmcT+wlENRDNG+ZPY0BrNnPoDausxtZVViheC8bMDY26Q2YJncbvy
+	 dyLTr1ofqZUgfbmvDq9r5VtZwrORzwsCUO1aJpb9a28gK50kHszDh2tzdsHsSoZ4Fq
+	 p7mC33HVq9RogtOttnXYNz7Y9Ievyh+y3djrwutJxuP2gp2QF1pd2Jq6m3p2xt7UjW
+	 qftS35tcFM2RrXR0ObWeMKs/q2nJpQh21OqIuKG0CNa9K449+MHAHiEmyacyIRPq5p
+	 vHZshz+Y2otBA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mturquette@baylibre.com
 Cc: sboyd@kernel.org,
@@ -71,17 +71,17 @@ Cc: sboyd@kernel.org,
 	linux-mediatek@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH v4 14/23] clk: mediatek: clk-mt8192: Move CLK_TOP_CSW_F26M_D2 in top_divs
-Date: Fri, 20 Jan 2023 10:20:44 +0100
-Message-Id: <20230120092053.182923-15-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v4 13/23] clk: mediatek: mt8173: Migrate pericfg/topckgen to mtk_clk_simple_probe()
+Date: Fri, 20 Jan 2023 10:20:43 +0100
+Message-Id: <20230120092053.182923-14-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230120092053.182923-1-angelogioacchino.delregno@collabora.com>
 References: <20230120092053.182923-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230120_012124_961316_58145629 
-X-CRM114-Status: GOOD (  15.41  )
+X-CRM114-CacheID: sfid-20230120_012123_270983_1A760E5D 
+X-CRM114-Status: GOOD (  13.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,118 +96,225 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This driver is registered early in clk_mt8192_top_init_early() and
-then again in clk_mt8192_top_probe(): the difference between the
-two is that the early one is probed with CLK_OF_DECLARE_DRIVER and
-the latter is regularly probed as a platform_driver.
-
-Knowing that it is not necessary for this platform to register the
-TOP_CSW_F26M_D2 clock that early, move it to top_divs and register
-it with the others during platform_driver probe for topckgen;
-
-While at it, since the only reason why the early probe existed was
-to register that clock, remove that entirely - leaving this driver
-to use only platform_driver.
+Function mtk_clk_simple_probe() gained the ability to register multiple
+clock types: migrate MT8173's pericfg and topckgen to this common
+probe function to reduce duplication and code size.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Miles Chen <miles.chen@mediatek.com>
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-Tested-by: Miles Chen <miles.chen@mediatek.com>
 ---
- drivers/clk/mediatek/clk-mt8192.c | 39 ++++++-------------------------
- 1 file changed, 7 insertions(+), 32 deletions(-)
+ drivers/clk/mediatek/clk-mt8173-pericfg.c  | 76 ++++-----------------
+ drivers/clk/mediatek/clk-mt8173-topckgen.c | 77 ++++------------------
+ 2 files changed, 27 insertions(+), 126 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt8192.c b/drivers/clk/mediatek/clk-mt8192.c
-index ea4164c0995e..d012a229274e 100644
---- a/drivers/clk/mediatek/clk-mt8192.c
-+++ b/drivers/clk/mediatek/clk-mt8192.c
-@@ -26,10 +26,6 @@ static const struct mtk_fixed_clk top_fixed_clks[] = {
- 	FIXED_CLK(CLK_TOP_ULPOSC, "ulposc", NULL, 260000000),
+diff --git a/drivers/clk/mediatek/clk-mt8173-pericfg.c b/drivers/clk/mediatek/clk-mt8173-pericfg.c
+index 3552235ad55e..e87294b72c2c 100644
+--- a/drivers/clk/mediatek/clk-mt8173-pericfg.c
++++ b/drivers/clk/mediatek/clk-mt8173-pericfg.c
+@@ -46,6 +46,7 @@ static const struct mtk_composite peri_clks[] = {
  };
  
--static const struct mtk_fixed_factor top_early_divs[] = {
--	FACTOR(CLK_TOP_CSW_F26M_D2, "csw_f26m_d2", "clk26m", 1, 2),
--};
--
- static const struct mtk_fixed_factor top_divs[] = {
- 	FACTOR_FLAGS(CLK_TOP_MAINPLL_D3, "mainpll_d3", "mainpll", 1, 3, 0),
- 	FACTOR_FLAGS(CLK_TOP_MAINPLL_D4, "mainpll_d4", "mainpll", 1, 4, 0),
-@@ -95,6 +91,7 @@ static const struct mtk_fixed_factor top_divs[] = {
- 	FACTOR(CLK_TOP_OSC_D10, "osc_d10", "ulposc", 1, 10),
- 	FACTOR(CLK_TOP_OSC_D16, "osc_d16", "ulposc", 1, 16),
- 	FACTOR(CLK_TOP_OSC_D20, "osc_d20", "ulposc", 1, 20),
-+	FACTOR(CLK_TOP_CSW_F26M_D2, "csw_f26m_d2", "clk26m", 1, 2),
- 	FACTOR(CLK_TOP_ADSPPLL, "adsppll_ck", "adsppll", 1, 1),
- 	FACTOR_FLAGS(CLK_TOP_UNIVPLL_192M, "univpll_192m", "univpll", 1, 13, 0),
- 	FACTOR_FLAGS(CLK_TOP_UNIVPLL_192M_D2, "univpll_192m_d2", "univpll_192m", 1, 2, 0),
-@@ -1047,27 +1044,6 @@ static const struct mtk_pll_data plls[] = {
- 	      0, 0, 32, 0x0330, 24, 0, 0, 0, 0x0334, 0),
+ static const struct mtk_gate peri_gates[] = {
++	GATE_DUMMY(CLK_DUMMY, "peri_gate_dummy"),
+ 	/* PERI0 */
+ 	GATE_PERI0(CLK_PERI_NFI, "peri_nfi", "axi_sel", 0),
+ 	GATE_PERI0(CLK_PERI_THERM, "peri_therm", "axi_sel", 1),
+@@ -93,78 +94,27 @@ static const struct mtk_clk_rst_desc clk_rst_desc = {
+ 	.rst_bank_nr = ARRAY_SIZE(pericfg_rst_ofs),
  };
  
--static struct clk_hw_onecell_data *top_clk_data;
--
--static void clk_mt8192_top_init_early(struct device_node *node)
++static const struct mtk_clk_desc peri_desc = {
++	.clks = peri_gates,
++	.num_clks = ARRAY_SIZE(peri_gates),
++	.composite_clks = peri_clks,
++	.num_composite_clks = ARRAY_SIZE(peri_clks),
++	.clk_lock = &mt8173_clk_lock,
++	.rst_desc = &clk_rst_desc,
++};
++
+ static const struct of_device_id of_match_clk_mt8173_pericfg[] = {
+-	{ .compatible = "mediatek,mt8173-pericfg" },
++	{ .compatible = "mediatek,mt8173-pericfg", .data = &peri_desc },
+ 	{ /* sentinel */ }
+ };
+ 
+-static int clk_mt8173_pericfg_probe(struct platform_device *pdev)
 -{
--	int i;
+-	struct device_node *node = pdev->dev.of_node;
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-	void __iomem *base;
 -
--	top_clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
--	if (!top_clk_data)
--		return;
+-	base = devm_platform_ioremap_resource(pdev, 0);
+-	if (IS_ERR(base))
+-		return PTR_ERR(base);
 -
--	for (i = 0; i < CLK_TOP_NR_CLK; i++)
--		top_clk_data->hws[i] = ERR_PTR(-EPROBE_DEFER);
+-	clk_data = mtk_alloc_clk_data(CLK_PERI_NR_CLK);
+-	if (IS_ERR_OR_NULL(clk_data))
+-		return -ENOMEM;
 -
--	mtk_clk_register_factors(top_early_divs, ARRAY_SIZE(top_early_divs), top_clk_data);
+-	r = mtk_clk_register_gates(&pdev->dev, node, peri_gates,
+-				   ARRAY_SIZE(peri_gates), clk_data);
+-	if (r)
+-		goto free_clk_data;
 -
--	of_clk_add_hw_provider(node, of_clk_hw_onecell_get, top_clk_data);
+-	r = mtk_clk_register_composites(&pdev->dev, peri_clks,
+-					ARRAY_SIZE(peri_clks), base,
+-					&mt8173_clk_lock, clk_data);
+-	if (r)
+-		goto unregister_gates;
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r)
+-		goto unregister_composites;
+-
+-	r = mtk_register_reset_controller_with_dev(&pdev->dev, &clk_rst_desc);
+-	if (r)
+-		goto unregister_clk_hw;
+-
+-	return 0;
+-
+-unregister_clk_hw:
+-	of_clk_del_provider(node);
+-unregister_composites:
+-	mtk_clk_unregister_composites(peri_clks, ARRAY_SIZE(peri_clks), clk_data);
+-unregister_gates:
+-	mtk_clk_unregister_gates(peri_gates, ARRAY_SIZE(peri_gates), clk_data);
+-free_clk_data:
+-	mtk_free_clk_data(clk_data);
+-	return r;
 -}
 -
--CLK_OF_DECLARE_DRIVER(mt8192_topckgen, "mediatek,mt8192-topckgen",
--		      clk_mt8192_top_init_early);
+-static int clk_mt8173_pericfg_remove(struct platform_device *pdev)
+-{
+-	struct device_node *node = pdev->dev.of_node;
+-	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
 -
- /* Register mux notifier for MFG mux */
- static int clk_mt8192_reg_mfg_mux_notifier(struct device *dev, struct clk *clk)
- {
-@@ -1093,6 +1069,7 @@ static int clk_mt8192_reg_mfg_mux_notifier(struct device *dev, struct clk *clk)
- static int clk_mt8192_top_probe(struct platform_device *pdev)
- {
- 	struct device_node *node = pdev->dev.of_node;
-+	struct clk_hw_onecell_data *top_clk_data;
- 	int r;
- 	void __iomem *base;
+-	of_clk_del_provider(node);
+-	mtk_clk_unregister_composites(peri_clks, ARRAY_SIZE(peri_clks), clk_data);
+-	mtk_clk_unregister_gates(peri_gates, ARRAY_SIZE(peri_gates), clk_data);
+-	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+-}
+-
+ static struct platform_driver clk_mt8173_pericfg_drv = {
+ 	.driver = {
+ 		.name = "clk-mt8173-pericfg",
+ 		.of_match_table = of_match_clk_mt8173_pericfg,
+ 	},
+-	.probe = clk_mt8173_pericfg_probe,
+-	.remove = clk_mt8173_pericfg_remove,
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ };
+ module_platform_driver(clk_mt8173_pericfg_drv);
  
-@@ -1100,17 +1077,17 @@ static int clk_mt8192_top_probe(struct platform_device *pdev)
- 	if (IS_ERR(base))
- 		return PTR_ERR(base);
+diff --git a/drivers/clk/mediatek/clk-mt8173-topckgen.c b/drivers/clk/mediatek/clk-mt8173-topckgen.c
+index cfcfd016357a..257961528fe2 100644
+--- a/drivers/clk/mediatek/clk-mt8173-topckgen.c
++++ b/drivers/clk/mediatek/clk-mt8173-topckgen.c
+@@ -421,6 +421,7 @@ static const char * const i2s3_b_ck_parents[] = {
+ };
  
-+	top_clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
-+	if (!top_clk_data)
-+		return;
+ static const struct mtk_fixed_clk fixed_clks[] = {
++	FIXED_CLK(CLK_DUMMY, "topck_dummy", "clk26m", DUMMY_RATE),
+ 	FIXED_CLK(CLK_TOP_CLKPH_MCK_O, "clkph_mck_o", "clk26m", DUMMY_RATE),
+ 	FIXED_CLK(CLK_TOP_USB_SYSPLL_125M, "usb_syspll_125m", "clk26m", 125 * MHZ),
+ 	FIXED_CLK(CLK_TOP_DSI0_DIG, "dsi0_dig", "clk26m", DUMMY_RATE),
+@@ -623,78 +624,28 @@ static const struct mtk_composite top_muxes[] = {
+ 	MUX(CLK_TOP_I2S3_B_SEL, "i2s3_b_ck_sel", i2s3_b_ck_parents, 0x120, 8, 1),
+ };
+ 
++static const struct mtk_clk_desc topck_desc = {
++	.fixed_clks = fixed_clks,
++	.num_fixed_clks = ARRAY_SIZE(fixed_clks),
++	.factor_clks = top_divs,
++	.num_factor_clks = ARRAY_SIZE(top_divs),
++	.composite_clks = top_muxes,
++	.num_composite_clks = ARRAY_SIZE(top_muxes),
++	.clk_lock = &mt8173_top_clk_lock,
++};
 +
- 	r = mtk_clk_register_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_fixed_clks), top_clk_data);
- 	if (r)
- 		return r;
+ static const struct of_device_id of_match_clk_mt8173_topckgen[] = {
+-	{ .compatible = "mediatek,mt8173-topckgen" },
++	{ .compatible = "mediatek,mt8173-topckgen", .data = &topck_desc },
+ 	{ /* sentinel */ }
+ };
  
--	r = mtk_clk_register_factors(top_early_divs, ARRAY_SIZE(top_early_divs), top_clk_data);
+-static int clk_mt8173_topckgen_probe(struct platform_device *pdev)
+-{
+-	struct device_node *node = pdev->dev.of_node;
+-	struct clk_hw_onecell_data *clk_data;
+-	void __iomem *base;
+-	int r;
+-
+-	base = devm_platform_ioremap_resource(pdev, 0);
+-	if (IS_ERR(base))
+-		return PTR_ERR(base);
+-
+-	clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
+-	if (IS_ERR_OR_NULL(clk_data))
+-		return -ENOMEM;
+-
+-	r = mtk_clk_register_fixed_clks(fixed_clks, ARRAY_SIZE(fixed_clks), clk_data);
+-	if (r)
+-		goto free_clk_data;
+-
+-	r = mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), clk_data);
 -	if (r)
 -		goto unregister_fixed_clks;
 -
- 	r = mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), top_clk_data);
- 	if (r)
--		goto unregister_early_factors;
-+		goto unregister_fixed_clks;
+-	r = mtk_clk_register_composites(&pdev->dev, top_muxes,
+-					ARRAY_SIZE(top_muxes), base,
+-					&mt8173_top_clk_lock, clk_data);
+-	if (r)
+-		goto unregister_factors;
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r)
+-		goto unregister_composites;
+-
+-	return 0;
+-
+-unregister_composites:
+-	mtk_clk_unregister_composites(top_muxes, ARRAY_SIZE(top_muxes), clk_data);
+-unregister_factors:
+-	mtk_clk_unregister_factors(top_divs, ARRAY_SIZE(top_divs), clk_data);
+-unregister_fixed_clks:
+-	mtk_clk_unregister_fixed_clks(fixed_clks, ARRAY_SIZE(fixed_clks), clk_data);
+-free_clk_data:
+-	mtk_free_clk_data(clk_data);
+-	return r;
+-}
+-
+-static int clk_mt8173_topckgen_remove(struct platform_device *pdev)
+-{
+-	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+-	struct device_node *node = pdev->dev.of_node;
+-
+-	of_clk_del_provider(node);
+-	mtk_clk_unregister_composites(top_muxes, ARRAY_SIZE(top_muxes), clk_data);
+-	mtk_clk_unregister_factors(top_divs, ARRAY_SIZE(top_divs), clk_data);
+-	mtk_clk_unregister_fixed_clks(fixed_clks, ARRAY_SIZE(fixed_clks), clk_data);
+-	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+-}
+-
+ static struct platform_driver clk_mt8173_topckgen_drv = {
+ 	.driver = {
+ 		.name = "clk-mt8173-topckgen",
+ 		.of_match_table = of_match_clk_mt8173_topckgen,
+ 	},
+-	.probe = clk_mt8173_topckgen_probe,
+-	.remove = clk_mt8173_topckgen_remove,
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ };
+ module_platform_driver(clk_mt8173_topckgen_drv);
  
- 	r = mtk_clk_register_muxes(&pdev->dev, top_mtk_muxes,
- 				   ARRAY_SIZE(top_mtk_muxes), node,
-@@ -1156,8 +1133,6 @@ static int clk_mt8192_top_probe(struct platform_device *pdev)
- 	mtk_clk_unregister_muxes(top_mtk_muxes, ARRAY_SIZE(top_mtk_muxes), top_clk_data);
- unregister_factors:
- 	mtk_clk_unregister_factors(top_divs, ARRAY_SIZE(top_divs), top_clk_data);
--unregister_early_factors:
--	mtk_clk_unregister_factors(top_early_divs, ARRAY_SIZE(top_early_divs), top_clk_data);
- unregister_fixed_clks:
- 	mtk_clk_unregister_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_fixed_clks),
- 				      top_clk_data);
 -- 
 2.39.0
 
