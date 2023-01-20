@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E76DDC25B4E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jan 2023 17:24:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CC69C05027
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jan 2023 17:25:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=JrmQ9YByHItWBueH2+ttxwSuumw74wejKeuUDbbBJuc=; b=L53KLSh6ht7xpGcC7olXlA/28f
-	qIOtgdXEaIymxSAU+zz8fQWuXsXOxE3v/kz5B9jfhITk3K/iB6gOijlFJeDaK+DNlq4ljnVwMMGiw
-	0OJmTGlCXsfTc41jJKLnOwYvPuQXQ0o2dMYRfroReZsjGTdyI7lUYOFQQGRreMDNTHWc5WIqmZAJx
-	vJfWhXzgck3/RPd1Z12FnovBaqUebUBe2MI6KGTSi8osiT7x7fXw0y+OGCNZEB8RsPDtCNZJH6sXh
-	QLY0+CJSH7k7+pt+4S9/2gQzUM58iBgl1NTSxwQ0zF9JeRKPvfmOubvwjd3Lx/jV013o4ZQmUokCF
-	4JZetfzg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=d3p4kzgJ9fAQ+9qfV8Bq7U/HrX+rB8t6IZlrc8gF0M4=; b=geiFQiU9G7GLpC8cQ0wdORS1wn
+	4rS0fjyTwCj2DhGoGTjUtly/MlbQ1wpppjqok3AwZJwMnNnOb5Hot/KVVMJDMX/ckbKbnUUbs3dRc
+	pxmiw1V7UHAk9mqSr5R3HbmsPa8RF7eSFAhqj259qmSJ+wXCkwPzzW7xVQ1YzClMDlHSTAgQxgZx4
+	YoW0aJTMQK8Ht+s8cxssa4/n9kOdMZGZYxtRtjGe4CtPfQMwVYUi2ga5ZFN8A/nRRrbhOe65QigtR
+	5tzIknqel06+PxwZ7NpZdv8XxXauh+s2iqfVdjeuohUdvxzFooYs6rCniqnEDFbNmNfxvyeQQGeHX
+	iPXM2q5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIv7k-00BYOS-Mc; Fri, 20 Jan 2023 17:24:20 +0000
+	id 1pIv8g-00BYpm-4f; Fri, 20 Jan 2023 17:25:18 +0000
 Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIv6y-00BXxr-5r; Fri, 20 Jan 2023 17:23:33 +0000
+	id 1pIv7Q-00BYEC-2d; Fri, 20 Jan 2023 17:24:02 +0000
 Received: from local
 	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1pIv6o-00054u-0o;
-	Fri, 20 Jan 2023 18:23:22 +0100
-Date: Fri, 20 Jan 2023 17:23:12 +0000
+	id 1pIv7N-00055J-34;
+	Fri, 20 Jan 2023 18:23:58 +0100
+Date: Fri, 20 Jan 2023 17:23:50 +0000
 From: Daniel Golle <daniel@makrotopia.org>
 To: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
@@ -47,14 +47,18 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>, Miles Chen <miles.chen@mediatek.com>,
 	Chun-Jie Chen <chun-jie.chen@mediatek.com>,
 	Sam Shih <sam.shih@mediatek.com>,
 	Jianhui Zhao <zhaojh329@gmail.com>
-Subject: [PATCH v3 0/3] add support for clocks on MT7981 SoC
-Message-ID: <cover.1674233728.git.daniel@makrotopia.org>
+Subject: [PATCH v3 1/3] dt-bindings: clock: Add apmixedsys/topckgen
+ compatibles for MT7981
+Message-ID: <ae9acd210c1566b4bd72b09df4430bcad4a36c9b.1674233728.git.daniel@makrotopia.org>
+References: <cover.1674233728.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <cover.1674233728.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230120_092332_276221_30113FBC 
-X-CRM114-Status: GOOD (  14.34  )
+X-CRM114-CacheID: sfid-20230120_092400_196480_84D4DEC0 
+X-CRM114-Status: UNSURE (   9.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,58 +73,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek MT7981 SoC is quite similar to its big sibling, the
-MT7986. Hence most drivers can be reused and not much is missing the
-get also this SoC working on mainline Linux.
+Add compatible string for MT7981 to existing binding documenation
+at mediatek,apmixedsys.yaml and mediatek,topckgen.yaml.
 
-Start with a cleaned-up version of the clock drivers, based on what can
-also be found in MediaTek's SDK[1].
+Signed-off-by: Jianhui Zhao <zhaojh329@gmail.com>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml | 1 +
+ Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml   | 1 +
+ 2 files changed, 2 insertions(+)
 
-Upon request of AngeloGioacchino Del Regno this series has been rebased
-and adapted to be applied on top of the pending series
-"MediaTek clocks cleanups and improvements"[2]
-
-The complete tree used for testing (with still some to-be-cleaned-up
-changes, esp. for the Ethernet driver) can be found on Github[3].
-
-[1]: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/refs/heads/master/target/linux/mediatek/files-5.4/drivers/clk/mediatek/clk-mt7981.c
-[2]: https://patchwork.kernel.org/project/linux-clk/list/?series=714057
-[3]: https://github.com/dangowrt/linux
-
-Changes since v2:
- * rebase on top of next-20230120 with v4 of AngeloGioacchino's series[2]
- * fix titles of dt-bindings commits (this time for real)
- * convert clk-mt7981-infracfg to use mtk_clk_simple_probe
- * make use of PLL_AO flag in clk-mt7981-apmixed
- * convert clk-mt7981-ethsys into platform driver, also using the generic
-   probe function, allow building as module
-
-Changes since v1:
- * rebase and adapt on top of [2]
- * split-off addition of dt-bindings header, fix filename
- * changed commit title as requested
-
-Daniel Golle (3):
-  dt-bindings: clock: Add apmixedsys/topckgen compatibles for MT7981
-  dt-bindings: clock: mediatek: add mt7981 clock IDs
-  clk: mediatek: add MT7981 clock support
-
- .../bindings/clock/mediatek,apmixedsys.yaml   |   1 +
- .../bindings/clock/mediatek,topckgen.yaml     |   1 +
- drivers/clk/mediatek/Kconfig                  |  17 +
- drivers/clk/mediatek/Makefile                 |   4 +
- drivers/clk/mediatek/clk-mt7981-apmixed.c     | 102 +++++
- drivers/clk/mediatek/clk-mt7981-eth.c         | 117 +++++
- drivers/clk/mediatek/clk-mt7981-infracfg.c    | 207 +++++++++
- drivers/clk/mediatek/clk-mt7981-topckgen.c    | 422 ++++++++++++++++++
- .../dt-bindings/clock/mediatek,mt7981-clk.h   | 215 +++++++++
- 9 files changed, 1086 insertions(+)
- create mode 100644 drivers/clk/mediatek/clk-mt7981-apmixed.c
- create mode 100644 drivers/clk/mediatek/clk-mt7981-eth.c
- create mode 100644 drivers/clk/mediatek/clk-mt7981-infracfg.c
- create mode 100644 drivers/clk/mediatek/clk-mt7981-topckgen.c
- create mode 100644 include/dt-bindings/clock/mediatek,mt7981-clk.h
-
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
+index 731bfe0408c20..dae25dba4ba69 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
+@@ -20,6 +20,7 @@ properties:
+       - enum:
+           - mediatek,mt6797-apmixedsys
+           - mediatek,mt7622-apmixedsys
++          - mediatek,mt7981-apmixedsys
+           - mediatek,mt7986-apmixedsys
+           - mediatek,mt8135-apmixedsys
+           - mediatek,mt8173-apmixedsys
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml b/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
+index 81531b5b0db79..0fdf564148334 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
+@@ -35,6 +35,7 @@ properties:
+               - mediatek,mt6779-topckgen
+               - mediatek,mt6795-topckgen
+               - mediatek,mt7629-topckgen
++              - mediatek,mt7981-topckgen
+               - mediatek,mt7986-topckgen
+               - mediatek,mt8167-topckgen
+               - mediatek,mt8183-topckgen
 -- 
 2.39.1
 
