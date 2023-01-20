@@ -4,89 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A398C05027
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jan 2023 08:30:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9660DC25B4E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jan 2023 08:42:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UZ1kQ6Dc/Aq1ANuf4SsTTOiufClKPa57UzLLGIHz6lA=; b=nrDX1MtY71Yiu7ZU/iEBFRj+o+
-	6pj4JbWBzceDe6a4jozN73uPUeukh+63k40lpYGTPSK7QUy63/9w9crT/CQpGewBbFsdCpKY0+XAy
-	4iDYAgr+ksj3TXsIbUmzQkmoaw392LmgtjzHDKCl+bbApRE8chb/zEEVPqDKQ0ert+SWLF4ytQq1y
-	eeDT4P/Mey0DGCqXx4UawFA3gOcIQVyngoDPSeE/urTcBHtyEwFG1AY2SqNe6se5RTjoOLNsLytUe
-	sBdHDx4wczkqvWrR3Zg9P7R5hlR9gNFFH2rIXbrf3CEtw4sjDyPZyu0qzuAG61uVIJ/EUu7g4OMO8
-	4sdVrVyA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tB0MmybYo3CIQd+gytr6S3Y+F0W3ehGkmi3+XA96szM=; b=e9jj/W14tic30qP8zAT1VRuof5
+	v844jTl4OdfNeCUYTk4c3UIY6jtQimeW7QNAcjMMhe6DwW4rmvOkfn7E5DQjCCOqJmLwrkkJHp7mx
+	4emQfNbV+ts1x0yH9B816QpOC/HRmQBnrXXS+57EAQUDABmcVB4hlNa+z2D7RyFCqeaS4aZkTXwOr
+	Mev6+K0EVr1CzPOWDs7OedURojca+VJylK8C1oC31dmthcH0WvkHtiNgUiIQM76WTKOkPf5fJBJXB
+	RVwdJfMHr5X5fzhdC19LAcyViCHKPiJkzyznwVUx6n92TXLbMMSl36FJfUBZadznGVfCjdtQph7Fz
+	4d/f6uUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pImmd-0093Kw-G2; Fri, 20 Jan 2023 08:29:59 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1pImyq-0095y0-Ql; Fri, 20 Jan 2023 08:42:36 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pImmR-0093Gt-TM
-	for linux-mediatek@lists.infradead.org; Fri, 20 Jan 2023 08:29:49 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id j17so3429623wms.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 20 Jan 2023 00:29:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=UZ1kQ6Dc/Aq1ANuf4SsTTOiufClKPa57UzLLGIHz6lA=;
-        b=jgParfB21yrZPlsfTLXKtBj85ZlU3hEUYG35prDPSa/wKEWSILYui/Q3N+ntb9bx0O
-         ET1RwUNCNFkHjT27224FkDTS/BAKl6L9ih9LE263YlBkVH8M3+mHSmuTJRBGQjV8yGCg
-         d26UkidnKC0QT+633G1nO3V5hzfRenrn1rT0Dbn/ii2IGC2zJpKMd7IhuHNbINUeXrlQ
-         2++OWg+2lmEUQ04u/MZBXp02tM2VAzigE/6gnzVofKEpp95WW65TNNnK76dvnbsgJgdC
-         92VRjB/s+lDxvnOjZETVrDh97aV9sxWfl+dUeYDg9GEkEup6M/SZng4wU8U+zb7GzSZm
-         kEnQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=UZ1kQ6Dc/Aq1ANuf4SsTTOiufClKPa57UzLLGIHz6lA=;
-        b=OSKD5d1Ry6AfYyvW8Lx2O3zW8Uj35enEw7fecBPRHFu5VKAJPN/QdA4YMQaGOfRq50
-         Rq052Xx4hg1LoagKc9qaOprzCheUdRJ950LI5vPRUhM5c2IPpxt5E57atemU9R8YX01x
-         sPpG2Ij8F725g66LTqHhFb9O85xlP1wL5nmjpQIA21bKuqMkLQycEYiB1x0Oe+UqijlF
-         wFfBhtmE4WSOZm8lUGeEEG0BCFOSXisoTidlDClMulGZ5mFv7D2wxrF++3bPZ3JIHuKF
-         qfzBter7KZtzmZjBcfAaN04wdGBb7wTqMkdKWdQLiJP6Yb7QNf/i7ttNgHuUiWnGapbT
-         D1BA==
-X-Gm-Message-State: AFqh2krMowFzvq4YpdDgr1f4WNpAe++e7Q+6UdqhREDTNL5yOEJmcGA1
-	CwmrdAgsKWRJlSCLeHbK9E146g==
-X-Google-Smtp-Source: AMrXdXvt2hZOZLqdPD4UWX5LsE6FgLHiW5K1inIkH+ssvdTcXfKQ/nK9NhNqjlexM0zd0IwTVVGTcQ==
-X-Received: by 2002:a05:600c:a13:b0:3db:1de2:af31 with SMTP id z19-20020a05600c0a1300b003db1de2af31mr5499408wmp.37.1674203385532;
-        Fri, 20 Jan 2023 00:29:45 -0800 (PST)
-Received: from [192.168.1.109] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id t13-20020a1c770d000000b003db1ca20170sm1485418wmi.37.2023.01.20.00.29.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 20 Jan 2023 00:29:45 -0800 (PST)
-Message-ID: <402ac5a2-334e-1843-0517-5ecf61f6a965@linaro.org>
-Date: Fri, 20 Jan 2023 09:29:43 +0100
+	id 1pImyg-0095uu-3s; Fri, 20 Jan 2023 08:42:27 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 0F769B81853;
+	Fri, 20 Jan 2023 08:42:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 63366C4339B;
+	Fri, 20 Jan 2023 08:42:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1674204142;
+	bh=tB0MmybYo3CIQd+gytr6S3Y+F0W3ehGkmi3+XA96szM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=AMV02sHEMtZDjobYL/T669czLEGSbDoQX6as42+vgygCGbcY+YD7ZUieJA7g8W5jn
+	 /B08jybxOVX+tZ3rgjLqVemGoktwZd1kraYFLy8zTFxuFZeHf7AI/iT+yqGe4mi4M9
+	 CU8QD1EFJ8RbnLM64LKZzBMuLPYgqPB3gENwjRjoOaQzza6CihZie+DgOgEixn3qDK
+	 oTeV3Kpz9bAIS6EUlzq3QATDPZPvQ19ScreBoX0em2WLMOFwT8SzfA56PfwISRs61x
+	 R4Y1X+uUjzJUO1IZFzN3mRmOdCZd7PgHdvVex4bPonMy7HTtrCPurvNlOBqe/1wafO
+	 XH0vZ22MYvTsQ==
+Date: Fri, 20 Jan 2023 09:42:17 +0100
+From: Wolfram Sang <wsa@kernel.org>
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Qii Wang <qii.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Fabien Parent <fparent@baylibre.com>, Rob Herring <robh@kernel.org>,
+	linux-i2c@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH v2 1/3] dt-bindings: i2c: i2c-mt65xx: add binding for
+ MT8365 SoC
+Message-ID: <Y8pT6dhe8xcDEz9k@ninjato>
+Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Qii Wang <qii.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Fabien Parent <fparent@baylibre.com>, Rob Herring <robh@kernel.org>,
+	linux-i2c@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org
+References: <20221122-mt8365-i2c-support-v2-0-e4c7c514e781@baylibre.com>
+ <20221122-mt8365-i2c-support-v2-1-e4c7c514e781@baylibre.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.0
-Subject: Re: [PATCH v5 01/19] dt-bindings: clock: mediatek: Add new MT8188
- clock
-Content-Language: en-US
-To: "Garmin.Chang" <Garmin.Chang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Richard Cochran <richardcochran@gmail.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-clk@vger.kernel.org, netdev@vger.kernel.org
-References: <20230119124848.26364-1-Garmin.Chang@mediatek.com>
- <20230119124848.26364-2-Garmin.Chang@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230119124848.26364-2-Garmin.Chang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="FHiaATq8WsrcHDfa"
+Content-Disposition: inline
+In-Reply-To: <20221122-mt8365-i2c-support-v2-1-e4c7c514e781@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230120_002947_984016_58B270C7 
-X-CRM114-Status: UNSURE (   8.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230120_004226_483819_B54D1F1A 
+X-CRM114-Status: GOOD (  10.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,21 +91,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 19/01/2023 13:48, Garmin.Chang wrote:
-> Add the new binding documentation for system clock
-> and functional clock on MediaTek MT8188.
-> 
-> Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
-> ---
->  .../bindings/clock/mediatek,mt8188-clock.yaml |  71 ++
->  .../clock/mediatek,mt8188-sys-clock.yaml      |  55 ++
->  .../dt-bindings/clock/mediatek,mt8188-clk.h   | 733 ++++++++++++++++++
->  3 files changed, 859 insertions(+)
+
+--FHiaATq8WsrcHDfa
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Jan 19, 2023 at 06:08:52PM +0100, Alexandre Mergnat wrote:
+> From: Fabien Parent <fparent@baylibre.com>
+>=20
+> Add binding documentation for the MT8365 I2C controllers.
+>=20
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Acked-by: Rob Herring <robh@kernel.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+
+Applied to for-next, thanks!
 
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+--FHiaATq8WsrcHDfa
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Best regards,
-Krzysztof
+-----BEGIN PGP SIGNATURE-----
 
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmPKU+UACgkQFA3kzBSg
+KbbYAg/+NvPont0Ra5ivgZMy0aWdgYNhPXjOIwbtl0vtaaU1ZeUbGnHll9skN77k
+w2FSH9BR8dZiTgwgw1PGaVNhvFTU6BOkIrnN9TXAsTdUAj82JxHhQKer4kIM/uVf
+cCjwDN+9rrapuUCBJbMqAhEWvWvm1ylodAs1lF5tik0WxBX/qPpiZn6MFkl3qCfm
+Kr0zsZ3MRjj0A1eA9F3ptxL1Y7yvPBfFEDWjyaFxIQgkAkIlfOXi+Sv8QyUD4Ncs
+o8Uy5Q0EZsTG2CElvnlPW6h0TSIc6uJbMzW/vuXH+3G1IUoYAHFxkNxyDbBoH6Dk
+9BIeCj9VdQBSDYwvRrCvB5+eGrCB3NE94eI6ArUFiYA+ZNMIw74bFsIKYnJv/6Dr
+VoPG0eOOkJEeWA4vKgPPJzWadCj/WvHlZp5mJ2JeY2zchRf4IuYhUiJiZW+gOhGr
+Lp4eXYNxblarSF+9DwYZ+GK/oNVRE7M7JjD2j02eRTunVkkAOIBCzCt+egKq/gbW
+53SnS5rSQRhHT+TixOtqdsY8li2pLdpF2Uj9k1eaIoLX1CaPSqo6UE5oijt+8Yi1
++jwAfNQ7Tdcw+PadlhCylVCUw/TLSZ1WTrJTPuLZ2dkWAoem1eLsLedyRiuu4DVV
+G2qyr4BM86T+5gNypaj/uufkz2aB5BxwNFU/tJ+X9EjkRf/1m/s=
+=mGx/
+-----END PGP SIGNATURE-----
+
+--FHiaATq8WsrcHDfa--
 
