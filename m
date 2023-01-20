@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 552D6C25B50
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jan 2023 20:54:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D293EC25B50
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jan 2023 20:54:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dKH2wn+0gz7vBfBaUG+NFMrHFQ5k4jFbG7iDREyDosg=; b=gvtKQWpVRXmaix
-	dn32m+xRWqow4cyjU/kyr3QtD4vxFM1jPTj0iJ07sHmbs/f0aL1os3xgpg2sQwX14a6Bg/VfRU4ww
-	mJ2DH1jJoK3Tqt4tiph+L+q4L/mBhivMG/WaXmTYSxtEAD5LXB2gY00FKDS7oIimwNpLyePHEo6Oz
-	U99DbeAFZJtn+xNUhF0T71jX+DL3RVDbclbVHhnUKxjW3zgG4pi2JnO7mgTvw5PaU4Dj6rJNGCX1s
-	RWf1dQVD5I2dyUCBHSxol4rr/FDG9Gj9i7UcvTKQnEItzZKqZBxvmTFGyErIAB9btIgKeiwu7es2z
-	MkSFU1KJvR8vf1jDT8Cw==;
+	List-Owner; bh=5YvsubmY8tgaR4DoiSQWtSTX5lD/XiceQv1q0csqgsg=; b=Y5bINv0OxPCU2u
+	TSJkK85Vi2/lGvCzSVEnswVCN4neGbbs7kAwTDMOQfBd2KPWxYbjbN/szXlPjUoJ7roL+rg6OuDon
+	im7xj9GSoxKKEcumGew1UWW/oubGdhuCbhNzv85lBAR8DeSCPBvpDOhempxW9pnHfxdXN8zsvR/c0
+	yxGSFX/MCkvLA5wiBurZVfvj9bL1UDO6bgan4UZg9dEv784lO0Razo4ZkHnwyTd4LBdpz0WTkFTgf
+	Dy6HwFJ9ValJh/ShxyCfUWBLUL/2XKOyTnalLCmGqMqiEzD4Lv8Bxv0DHCYDgCDU0CBD0QS6e8D7m
+	O8xpbDo0B9QmNh71YM2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIyOg-00CLLP-2n; Fri, 20 Jan 2023 20:54:02 +0000
+	id 1pIyOk-00CLO6-A5; Fri, 20 Jan 2023 20:54:06 +0000
 Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIyOc-00CLIu-7D; Fri, 20 Jan 2023 20:53:59 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1674248031; cv=none; 
+	id 1pIyOd-00CLJb-6y; Fri, 20 Jan 2023 20:54:00 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1674248035; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=Ln38ROi2fbT6ShQpnFVy/0nOzJsfavMPxDdkFM3Q90OZS8Kryrir8kNCEeAkEpY0zz1LKL6SOOi/rIemVefiNOxHTgOOBLwuC3h3rtZ3LpSL9LjbtjeT109J1eLtXMdhC5Cv2gJImBlnu8EsZU6txqSL7IZTwCJnG0m2ITSzuG0=
+	b=SUCoACN7Px4/FNgrHahnYY8C0yCAX5tR6idgwqoXKzMHWnCHIROC/tKeTMcu4QSREIH7GY6WxDwODPFuPI0K09jnVkdTt+FYDwNlzY9Dtyd0jpBYBt5vDVDbxz+dca77dd6M28rfFv4PZf5Rx1zXcdRPkXSHMD4ror5TS2H8dXk=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1674248031; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=dKH2wn+0gz7vBfBaUG+NFMrHFQ5k4jFbG7iDREyDosg=; 
-	b=CoQFbOqvjjjewE70cP2d/vpWg/mnGd6dVRxxYa7wUtYrdEo4QhFDUNAxvW1dj0v/tSiIQ+t0Rp3ntTs9BzISIYTUBPaYzxgft3slsxwFK++7bPBFXIk5P0rHadTgHCLOBLE9TWKBC+ixVWzgVTagNRH+p0UhVOC8t0UwOwHSKQU=
+	t=1674248035; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=5YvsubmY8tgaR4DoiSQWtSTX5lD/XiceQv1q0csqgsg=; 
+	b=WZu7hbBZYXRdyHb4Aazjfv0CSrSp15CVYySpp5Mw5XHDMxy9OIj6WiRLYK3RbK7sOW1xmmQ5zM5ZyMaJ8Pd1wjqlgXfqAF4Anbs/s5ev1ZYnNeKdtXxatEkYqqFhZLWCPbILd9pISQ7LEXvAXseusmcN6s0+dtuQtsnJYRerB6s=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1674248031;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1674248035;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
-	bh=dKH2wn+0gz7vBfBaUG+NFMrHFQ5k4jFbG7iDREyDosg=;
-	b=Y1WgMvKZhY6Erbdyi/+ICnWJQAgSPS5avuDzvznUpumel8OeGxidOB+KJGBgWQKb
-	UJAFRaS3NNb0OZ73CH3pgmDVbLrxGXmUeCaW37gOSJveT0iv5Ou2A+n6R7wKs/UqLHf
-	j3RFhlHzhL7aq45nrZ3qBdKmqYzPz5kL7kW3JhyA=
+	bh=5YvsubmY8tgaR4DoiSQWtSTX5lD/XiceQv1q0csqgsg=;
+	b=Pnk0k7ZlvCO8Ggm8ie0d77RIn30aY9BgDkjtUCHKjk47ObjcPdRQRJClxc40+qtf
+	95ClAfhNR2JdyuwjuSfgxajG+093Lqz9JRBWeoxE89zd4zUExrBgC1giY/02JmyAMib
+	7dWfP6PrEH48CHsY8SU7yw4olg10JPBpnsVM8CuI=
 Received: from arinc9-PC.lan (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1674248029220735.8863556192579; Fri, 20 Jan 2023 12:53:49 -0800 (PST)
+	with SMTPS id 1674248033074652.0041030895701; Fri, 20 Jan 2023 12:53:53 -0800 (PST)
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH 3/5] arm: dts: mt7623: change mt7530 switch address
-Date: Fri, 20 Jan 2023 23:53:16 +0300
-Message-Id: <20230120205318.519493-4-arinc.unal@arinc9.com>
+Subject: [PATCH 4/5] arm: dts: mt7623: mux phy0 on Bananapi BPI-R2
+Date: Fri, 20 Jan 2023 23:53:17 +0300
+Message-Id: <20230120205318.519493-5-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20230120205318.519493-1-arinc.unal@arinc9.com>
 References: <20230120205318.519493-1-arinc.unal@arinc9.com>
@@ -59,8 +59,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230120_125358_507790_D2798C40 
-X-CRM114-Status: GOOD (  12.15  )
+X-CRM114-CacheID: sfid-20230120_125359_358560_65FCC8EC 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,68 +77,51 @@ Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, =?UTF-8?q?Ar
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In the case of muxing phy0 of the MT7530 switch, the switch and the phy
-will have the same address on the mdio bus, 0. This causes the ethernet
-driver to fail since devices on the mdio bus cannot share an address.
+Mux the MT7530 switch's phy0 to gmac5 which is wired to the SoC's gmac1.
+This achieves 2 Gbps total bandwidth to the CPU using the second RGMII.
 
-Any address can be used for the switch, therefore, change the switch
-address to 0x1f.
-
+Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- arch/arm/boot/dts/mt7623a.dtsi                | 4 ++--
- arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 4 ++--
- arch/arm/boot/dts/mt7623n-rfb-emmc.dts        | 4 ++--
- 3 files changed, 6 insertions(+), 6 deletions(-)
+ arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
 
-diff --git a/arch/arm/boot/dts/mt7623a.dtsi b/arch/arm/boot/dts/mt7623a.dtsi
-index 5207e0183f3a..a1a393028629 100644
---- a/arch/arm/boot/dts/mt7623a.dtsi
-+++ b/arch/arm/boot/dts/mt7623a.dtsi
-@@ -35,9 +35,9 @@ mdio: mdio-bus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
- 
--		switch0: switch@0 {
-+		switch0: switch@1f {
- 			compatible = "mediatek,mt7530";
--			reg = <0>;
-+			reg = <0x1f>;
- 			mediatek,mcm;
- 			resets = <&ethsys MT2701_ETHSYS_MCM_RST>;
- 			reset-names = "mcm";
 diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-index a5800a524302..94174cb2b7e1 100644
+index 94174cb2b7e1..28051136c4e2 100644
 --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
 +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-@@ -188,9 +188,9 @@ mdio: mdio-bus {
+@@ -184,10 +184,19 @@ fixed-link {
+ 		};
+ 	};
+ 
++	gmac1: mac@1 {
++		status = "okay";
++		phy-handle = <&ethphy0>;
++	};
++
+ 	mdio: mdio-bus {
  		#address-cells = <1>;
  		#size-cells = <0>;
  
--		switch@0 {
-+		switch@1f {
++		ethphy0: ethernet-phy@0 {
++			reg = <0>;
++		};
++
+ 		switch@1f {
  			compatible = "mediatek,mt7530";
--			reg = <0>;
-+			reg = <0x1f>;
- 			reset-gpios = <&pio 33 0>;
- 			core-supply = <&mt6323_vpa_reg>;
- 			io-supply = <&mt6323_vemc3v3_reg>;
-diff --git a/arch/arm/boot/dts/mt7623n-rfb-emmc.dts b/arch/arm/boot/dts/mt7623n-rfb-emmc.dts
-index 2a869a6476eb..7c3298a92887 100644
---- a/arch/arm/boot/dts/mt7623n-rfb-emmc.dts
-+++ b/arch/arm/boot/dts/mt7623n-rfb-emmc.dts
-@@ -183,9 +183,9 @@ phy5: ethernet-phy@5 {
- 			phy-mode = "rgmii-rxid";
- 		};
+ 			reg = <0x1f>;
+@@ -199,11 +208,6 @@ ports {
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
  
--		switch@0 {
-+		switch@1f {
- 			compatible = "mediatek,mt7530";
--			reg = <0>;
-+			reg = <0x1f>;
- 			reset-gpios = <&pio 33 0>;
- 			core-supply = <&mt6323_vpa_reg>;
- 			io-supply = <&mt6323_vemc3v3_reg>;
+-				port@0 {
+-					reg = <0>;
+-					label = "wan";
+-				};
+-
+ 				port@1 {
+ 					reg = <1>;
+ 					label = "lan0";
 -- 
 2.37.2
 
