@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83E51C05027
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jan 2023 11:11:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEC26C25B4E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jan 2023 11:16:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oJZe3s4inpT/hcwKJ3vZgCwpOglZxifr7rndVpXtWsE=; b=vVkU081J76QomhunBEJv0FvWxH
-	ueRN8HStwHnAUBLkqlzbvGxOC8mGqDq0wvnKREHjf0S5HMohCZQvfNnWsF4fhq+1BYREvgYIEryus
-	o7pjgC7y/c6HJs09an3vO2tZqkC5V7XB8oU86Y4i+s64JyEG0oxbhGzsWFTGj0Ca1DJVqFPq+R2im
-	OkDwM2793IjZ50gB1Z7EIU7bBp9NXL5iLbyXdrBimW+zNOULeHrK3BAFLemios+tCBbiq5vbvY4xG
-	SSEIlocUEty+wh0R3ZWN7C9MMgzmw87lasQitiO8R93nnKLIW/FCJsHwhaHlpgPagykAbvZFBHhwA
-	yqerE8zA==;
+	bh=FF1ywf4sSRyVQGi2pPIOQY9r6cElJ3WI7Nmk6WdnxZY=; b=OfA3MF5EhArv/xzZ5fBDVwD+MO
+	YZkUXvjMkmbVuI4yvfLDaiw02I+1AYb2RZ/SnnMEWGZoCMVQi8ebXGYJDk3QDancSB2oYBK8wvbRJ
+	okMHv1VL9tA8GVTv3WqCBpZMBBahCrnMjiOn2D2BWvfEMsDr0OQdDTJmmkWgbeOWT7PNDSWpHjpDJ
+	MajaAo12a/tsCB3PBusTdivAvTGsJEvY86QvqiF/X8wHJr4UfXVPb6Ga4dC6sdnSp7RA7u1eZZZTp
+	i66oAOl3EagtU0NdtgF6IFBMTzaMBkhjKhdpVZMcX6YNizMJgrSOty85pW6EwzJHC6kmqRm233nSO
+	27FvWPvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIpIo-009x0F-7B; Fri, 20 Jan 2023 11:11:22 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pIpNB-009yZS-BH; Fri, 20 Jan 2023 11:15:53 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIpIZ-009wvx-Mp; Fri, 20 Jan 2023 11:11:09 +0000
+	id 1pIpMl-009yNz-Px; Fri, 20 Jan 2023 11:15:29 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 41E5A660230B;
-	Fri, 20 Jan 2023 11:11:01 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E1AB96602D25;
+	Fri, 20 Jan 2023 11:15:24 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1674213062;
-	bh=k6CDrFMFNBBTo0iy9o/fuYF/D5i8QlRkB7/+jV9nrOk=;
+	s=mail; t=1674213325;
+	bh=pk0IDna2rdFOCASraCLd7evCkGbMHFk7ARo77hGlbMo=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nR+3UleAsemunHhYoEqXI5W7peTA3EirkVKy8eb6C+4stfe002V6194laqGu7APx1
-	 Vq9FjWlC9bupqdQXvEZSuubvETGn5mVVAiGo6JeGHEI5HjZpq6MT4jVHnak7WngAFL
-	 YF6GHS9RY5/nqHCkgKb2388iTWbVBhGhyB9L1emHwn7UWjM2+na5qPs7Zlg51LMpBQ
-	 o0rW2bDLmAu8JFLLVDi9Hf80IfUnlwNrO5xvkse0ZyS3nEXk9V9wuy/waegO3ba95E
-	 AGTnlCQBFIcsl5vN0wL2kZiePJT9uhgIe18rh6jeRhoX5q3FakFtEUmdb4bxIcNUrb
-	 +NruoKUBw4hqg==
-Message-ID: <91627ce5-1eb0-1a8d-3e73-4966cb7a817f@collabora.com>
-Date: Fri, 20 Jan 2023 12:10:59 +0100
+	b=K2MOTQvLN7GOlV57FsPI26ZCkig6YDHIcebXCASlOI+Dtrp0mjLBJCY6iy95WiFvl
+	 1mnskzibbi3R6xOjsgp1d8CLmRCYv94hF8xjwpcWPQ0xSHRc90X2XsfYNBxL+HZuJ3
+	 IJ+qtg9RzoV6K81BA87zEV9pQWcsZEKN2ysjtGynroVr7hYF2hsqD4Q5JC6iAltSmB
+	 xwnSWQrafRZ0QtcA/Psi//KI3ntUbP0OInTF52KXaU44UkekjRDP3Wge9BUTRne+Lg
+	 EV8p4arvjD/f0WjC8EAc6Qb+OW7TF5akWw32mYkdQbtjYvMMTaMzk/G/cqgeFLTnfI
+	 QftUW5bfliLTw==
+Message-ID: <8f7bda23-7063-d2ff-9b5d-b1604052a502@collabora.com>
+Date: Fri, 20 Jan 2023 12:15:23 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.0
-Subject: Re: [PATCH v30 00/11] Add MediaTek SoC(vdosys1) support for mt8195
+Subject: Re: [PATCH v3 2/3] iommu/sound: Use component_match_add_of helper
 Content-Language: en-US
-To: "Nancy.Lin" <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+To: Sean Anderson <sean.anderson@seco.com>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ dri-devel@lists.freedesktop.org
+Cc: linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Joerg Roedel <joro@8bytes.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Nathan Chancellor <nathan@kernel.org>,
- Nick Desaulniers <ndesaulniers@google.com>, Tom Rix <trix@redhat.com>,
- "Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
- Nathan Lu <nathan.lu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
- Xinlei Lee <xinlei.lee@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, llvm@lists.linux.dev,
- singo.chang@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20230113104434.28023-1-nancy.lin@mediatek.com>
+ Robin Murphy <robin.murphy@arm.com>, Takashi Iwai <tiwai@suse.com>,
+ Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+ alsa-devel@alsa-project.org, iommu@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230119191040.1637739-1-sean.anderson@seco.com>
+ <20230119191040.1637739-3-sean.anderson@seco.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230113104434.28023-1-nancy.lin@mediatek.com>
+In-Reply-To: <20230119191040.1637739-3-sean.anderson@seco.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230120_031107_924838_A56CD92D 
-X-CRM114-Status: GOOD (  11.58  )
+X-CRM114-CacheID: sfid-20230120_031528_330781_31508F37 
+X-CRM114-Status: UNSURE (   8.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,32 +85,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 13/01/23 11:44, Nancy.Lin ha scritto:
-> The hardware path of vdosys1 with DPTx output need to go through by several modules, such as, OVL_ADAPTOR and MERGE.
+Il 19/01/23 20:10, Sean Anderson ha scritto:
+> Convert users of component_match_add_release with component_release_of
+> and component_compare_of to component_match_add_of.
 > 
-> Add mmsys and mutex modules support by the patches below:
-> 
-> Changes in v30:
+> Signed-off-by: Sean Anderson <sean.anderson@seco.com>
+> Acked-by: Mark Brown <broonie@kernel.org>
 
-Matthias, can you please pick this one?
 
-It reached -> v30 <-.... I think that's way beyond being enough versions :-P
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-P.S.: We have MT8195 support and Tomato Chromebook support, but the display
-       doesn't work because of the VDOSYS1 soc+drm[1] not being there...
-       I'd really like to get this machine fully upstreamed.
-
-[1]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=707095
-
-Also, CK, please can you coordinate with Matthias so that we get both series
-merged in now?
-
-Thanks,
-Angelo
-
-> - rebase to next-20230113
-> - fix reviewer comment in v29
->    - fix mmysy binding doc for vdosys1
-> 
 
 
