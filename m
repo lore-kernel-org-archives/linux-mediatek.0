@@ -4,75 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1170FC46467
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jan 2023 03:52:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68BE0C38159
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jan 2023 05:00:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2lIUwszs20vP8ZqwnhMcV/6lWMoLi/u8ghdqcD9n4/M=; b=EslWeriFfJkshX7kBGarGv+/QL
-	CMDCLonkwNcMVt9Ty2X/xVj4s8WnDHkYYwBpHv6LKct12CdszYCSe0F44LuPEL4lA3kDLlVEARd4P
-	8GcIIW5ABGleTsGqvxvjOvTBK2fIALboCXXnOvB48oiDlZGq/1g+HEouEGiF25+X4gC/q7dlE9QsK
-	Jt8+WJhf1rYmX6AqHORBfJItx1zS2OwHZwuU3o8ffZieOiZ/Y5eE/pCx4+GMUFyig3R1YS/nHSfcM
-	C6hdvuXolfpNlilzCmEfBK0ATA1SDjcH5Baec94Tlm6KKxen43UyMpdzl7HoUbval1l7G2VRr8f2h
-	WT5LCqoQ==;
+	bh=FhdMm8snS4EyWglAxG9HV9C8rgTh2MdCa/PV2daai+0=; b=qQZJU90+siB8tb8nIJV+E6/jzo
+	Uy20sXtP8nxKcQGo7z9KafIDZJEiZ0sEKO/RRgid18SGCcyZelzemLpNMrMpP3SPpWhB5LXmLCE+q
+	wFnkgOV7PKtFDsnuuJ9OChEFh4bQWLOWZ7aRkX292c1qvcdJjb1P3hd6TfvBJzXkNj+a6ydFqfuvW
+	dDz3wKEkQi2BPx0SQ+baAAEKI7+4IzvbR0LRX8/DdZBVR1wLBIGGJUPHZ+qwVTvG/HnMmv1aiVmhM
+	Akl4x2wGxMyGuzGqDCM12PG7F2AJfazO36ZVGZ4/ZE0ct1ig7B0kitMS5OFvqEsIHM7vl99BQhTXu
+	mSnYQAIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIiS1-008Gzo-E7; Fri, 20 Jan 2023 03:52:25 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1pIjVG-008PfM-9s; Fri, 20 Jan 2023 04:59:50 +0000
+Received: from fllv0015.ext.ti.com ([198.47.19.141])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIiRy-008GyX-IB
-	for linux-mediatek@lists.infradead.org; Fri, 20 Jan 2023 03:52:23 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 7E459CE12AF;
-	Fri, 20 Jan 2023 03:52:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F006C433D2;
-	Fri, 20 Jan 2023 03:52:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1674186732;
-	bh=MC1ENP+CPVPn+1arFstG4AqmfHtgPeKoFZHEIfXNfBc=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=Fd6a2F+2dwaIRbyZ2hydGSBCCfBkRYByrCSBY4+EWztnRHHwawx5KTdS9x2PwHL3/
-	 NRymhnOUZeo95z8cq8S0FnVhQhBr/AOX5rS0GGcDrmcob7gwLmumYWLXwzLcoiyPS1
-	 7tNQfDLyCtoro9Heom9UiKuU4fLKcKi+7/UtUhGCgGxOuL1P/hn+3nSDutccPvkSnZ
-	 tcgvgwTvANSMbUjYJfr/v1mXLwJ8CS8oxBaadiXrTU/yH1nLumjzd4fC8HUryzERBQ
-	 KQ5TfbnuVnrLLwll/BFT7+61sjIp1StTV8o4CG5co/UmYGgFF1it6BJhPIKrghBKf/
-	 CBqQl39GhMSqQ==
-Date: Thu, 19 Jan 2023 19:52:10 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Yanchao Yang <yanchao.yang@mediatek.com>
-Cc: Loic Poulain <loic.poulain@linaro.org>, Sergey Ryazanov
- <ryazanov.s.a@gmail.com>, Johannes Berg <johannes@sipsolutions.net>, "David
- S . Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Paolo Abeni <pabeni@redhat.com>, netdev ML <netdev@vger.kernel.org>, kernel
- ML <linux-kernel@vger.kernel.org>, Intel experts <linuxwwan@intel.com>,
- Chetan <m.chetan.kumar@intel.com>, MTK ML
- <linux-mediatek@lists.infradead.org>, Liang Lu <liang.lu@mediatek.com>,
- Haijun Liu <haijun.liu@mediatek.com>, Hua Yang <hua.yang@mediatek.com>,
- Ting Wang <ting.wang@mediatek.com>, Felix Chen <felix.chen@mediatek.com>,
- Mingliang Xu <mingliang.xu@mediatek.com>, Min Dong <min.dong@mediatek.com>,
- Aiden Wang <aiden.wang@mediatek.com>, Guohao Zhang
- <guohao.zhang@mediatek.com>, Chris Feng <chris.feng@mediatek.com>, Lambert
- Wang <lambert.wang@mediatek.com>, Mingchuang Qiao
- <mingchuang.qiao@mediatek.com>, Xiayu Zhang <xiayu.zhang@mediatek.com>,
- Haozhe Chang <haozhe.chang@mediatek.com>
-Subject: Re: [PATCH net-next v2 08/12] net: wwan: tmi: Add data plane
- transaction layer
-Message-ID: <20230119195210.03537a93@kernel.org>
-In-Reply-To: <20230118113859.175836-9-yanchao.yang@mediatek.com>
-References: <20230118113859.175836-1-yanchao.yang@mediatek.com>
-	<20230118113859.175836-9-yanchao.yang@mediatek.com>
+	id 1pIjV2-008Paq-J2; Fri, 20 Jan 2023 04:59:38 +0000
+Received: from fllv0034.itg.ti.com ([10.64.40.246])
+	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 30K4wwaL059217;
+	Thu, 19 Jan 2023 22:58:58 -0600
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+	s=ti-com-17Q1; t=1674190738;
+	bh=FhdMm8snS4EyWglAxG9HV9C8rgTh2MdCa/PV2daai+0=;
+	h=Date:Subject:To:CC:References:From:In-Reply-To;
+	b=IQIjXef8eot9FsusDlpnq4ExSa3ShrotvDLKZTWVWjFVwfIti0C44gBEdKYHbZ941
+	 d4FgjRzaupR90M0pb3/LnJq5dmc3YnXkhoE3pJDNHx0Qr1bjWPdqMFChFPaLYKEnYn
+	 t+rnl+NLCidenbOG2q/xjWzNgOKMsVQqdVS3O2H4=
+Received: from DLEE106.ent.ti.com (dlee106.ent.ti.com [157.170.170.36])
+	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 30K4wwvM108629
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Thu, 19 Jan 2023 22:58:58 -0600
+Received: from DLEE101.ent.ti.com (157.170.170.31) by DLEE106.ent.ti.com
+ (157.170.170.36) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.16; Thu, 19
+ Jan 2023 22:58:57 -0600
+Received: from fllv0040.itg.ti.com (10.64.41.20) by DLEE101.ent.ti.com
+ (157.170.170.31) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.16 via
+ Frontend Transport; Thu, 19 Jan 2023 22:58:57 -0600
+Received: from [172.24.223.178] (ileaxei01-snat2.itg.ti.com [10.180.69.6])
+	by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 30K4wmmo100309;
+	Thu, 19 Jan 2023 22:58:49 -0600
+Message-ID: <36fe032b-a00c-dad1-a3db-bea1f15726c0@ti.com>
+Date: Fri, 20 Jan 2023 10:28:48 +0530
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [RFC PATCH 3/4] dt-bindings: panel: Introduce dual-link LVDS
+ panel
+Content-Language: en-US
+To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+        AngeloGioacchino Del
+ Regno <angelogioacchino.delregno@collabora.com>,
+        Rob Herring
+	<robh+dt@kernel.org>,
+        Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>,
+        Jyri Sarha <jyri.sarha@iki.fi>, David
+ Airlie <airlied@gmail.com>,
+        Daniel Vetter <daniel@ffwll.ch>,
+        Laurent Pinchart
+	<laurent.pinchart@ideasonboard.com>,
+        Thierry Reding
+	<thierry.reding@gmail.com>,
+        Sam Ravnborg <sam@ravnborg.org>, Maxime Ripard
+	<maxime@cerno.tech>,
+        Liam Girdwood <lgirdwood@gmail.com>, Mark Brown
+	<broonie@kernel.org>,
+        Lad Prabhakar
+	<prabhakar.mahadev-lad.rj@bp.renesas.com>,
+        Paul Walmsley
+	<paul.walmsley@sifive.com>,
+        Palmer Dabbelt <palmer@dabbelt.com>,
+        Albert Ou
+	<aou@eecs.berkeley.edu>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        Guo Ren
+	<guoren@kernel.org>
+CC: DRI Development List <dri-devel@lists.freedesktop.org>,
+        Devicetree List
+	<devicetree@vger.kernel.org>,
+        Linux Kernel List
+	<linux-kernel@vger.kernel.org>,
+        Linux RISC-V List
+	<linux-riscv@lists.infradead.org>,
+        Linux ARM Kernel List
+	<linux-arm-kernel@lists.infradead.org>,
+        Linux Mediatek List
+	<linux-mediatek@lists.infradead.org>,
+        Linux C-SKY Arch List
+	<linux-csky@vger.kernel.org>,
+        Nishanth Menon <nm@ti.com>, Vignesh Raghavendra
+	<vigneshr@ti.com>,
+        Rahul T R <r-ravikumar@ti.com>, Devarsh Thakkar
+	<devarsht@ti.com>,
+        Jai Luthra <j-luthra@ti.com>, Jayesh Choudhary
+	<j-choudhary@ti.com>
+References: <20230103064615.5311-1-a-bhatia1@ti.com>
+ <20230103064615.5311-4-a-bhatia1@ti.com>
+ <09f1ca83-c7d5-a186-6fa6-09cdd7a0b9cc@collabora.com>
+ <431ddd82-055b-2526-3d5e-f6563e48d264@ti.com>
+ <808e831f-4282-0e58-ebb2-2f556aaeaca4@ideasonboard.com>
+From: Aradhya Bhatia <a-bhatia1@ti.com>
+In-Reply-To: <808e831f-4282-0e58-ebb2-2f556aaeaca4@ideasonboard.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_195222_836935_E7E304B9 
-X-CRM114-Status: UNSURE (   7.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230119_205936_749463_458779E8 
+X-CRM114-Status: GOOD (  26.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,13 +131,161 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 18 Jan 2023 19:38:55 +0800 Yanchao Yang wrote:
->  drivers/net/wwan/mediatek/mtk_dpmaif.c     | 4005 ++++++++++++++++++++
+Hi Tomi,
 
-clang detects out-of-bound memcpy/strcpy or such somewhere in this file.
-Please fix that.
+Thank you for taking a look at the patches!
 
-Please try to make the series smaller than 17,770 :/
-Strip stuff down to minimal working version.
-I don't think anyone can review 17kLoC in one sitting :/
+On 17-Jan-23 18:08, Tomi Valkeinen wrote:
+> On 09/01/2023 18:21, Aradhya Bhatia wrote:
+>> Hi Angelo,
+>>
+>> Thanks for taking a look at the patches!
+>>
+>> On 03-Jan-23 17:21, AngeloGioacchino Del Regno wrote:
+>>> Il 03/01/23 07:46, Aradhya Bhatia ha scritto:
+>>>> Dual-link LVDS interfaces have 2 links, with even pixels traveling on
+>>>> one link, and odd pixels on the other. These panels are also generic in
+>>>> nature, with no documented constraints, much like their single-link
+>>>> counterparts, "panel-lvds".
+>>>>
+>>>> Add a new compatible, "panel-dual-lvds", and a dt-binding document for
+>>>> these panels.
+>>>>
+>>>> Signed-off-by: Aradhya Bhatia <a-bhatia1@ti.com>
+>>>> ---
+>>>>   .../display/panel/panel-dual-lvds.yaml        | 157 
+>>>> ++++++++++++++++++
+>>>>   MAINTAINERS                                   |   1 +
+>>>>   2 files changed, 158 insertions(+)
+>>>>   create mode 100644 
+>>>> Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
+>>>>
+>>>> diff --git 
+>>>> a/Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml b/Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
+>>>> new file mode 100644
+>>>> index 000000000000..88a7aa2410be
+>>>> --- /dev/null
+>>>> +++ 
+>>>> b/Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
+>>>> @@ -0,0 +1,157 @@
+>>>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+>>>> +%YAML 1.2
+>>>> +---
+>>>> +$id: http://devicetree.org/schemas/display/panel/panel-dual-lvds.yaml#
+>>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>>>> +
+>>>> +title: Generic Dual-Link LVDS Display Panel
+>>>> +
+>>>> +maintainers:
+>>>> +  - Aradhya Bhatia <a-bhatia1@ti.com>
+>>>> +  - Thierry Reding <thierry.reding@gmail.com>
+>>>> +
+>>>> +description: |
+>>>> +  A dual-LVDS interface is a dual-link connection with the even pixels
+>>>> +  traveling on one link, and the odd pixels traveling on the other.
+>>>> +
+>>>> +allOf:
+>>>> +  - $ref: panel-common.yaml#
+>>>> +  - $ref: /schemas/display/lvds.yaml/#
+>>>> +
+>>>> +properties:
+>>>> +  compatible:
+>>>> +    oneOf:
+>>>> +      - items:
+>>>> +          - enum:
+>>>> +              - lincolntech,lcd185-101ct
+>>>> +              - microtips,13-101hieb0hf0-s
+>>>> +          - const: panel-dual-lvds
+>>>> +      - const: panel-dual-lvds
+>>>> +
+>>>> +  ports:
+>>>> +    $ref: /schemas/graph.yaml#/properties/ports
+>>>> +
+>>>> +    properties:
+>>>> +      port@0:
+>>>> +        $ref: /schemas/graph.yaml#/$defs/port-base
+>>>> +        unevaluatedProperties: false
+>>>> +        description: The sink for first set of LVDS pixels.
+>>>> +
+>>>> +        properties:
+>>>> +          dual-lvds-odd-pixels:
+>>>> +            type: boolean
+>>>> +
+>>>> +          dual-lvds-even-pixels:
+>>>> +            type: boolean
+>>>> +
+>>>> +        oneOf:
+>>>> +          - required: [dual-lvds-odd-pixels]
+>>>
+>>> One question: why do we need a "panel-dual-lvds" compatible?
+>>> A Dual-LVDS panel is a LVDS panel using two ports, hence still a 
+>>> panel-lvds.
+>>>
+>>> If you're doing this to clearly distinguish, for human readability purposes,
+>>> single-link vs dual-link panels, I think that this would still be clear even
+>>> if we use panel-lvds alone because dual-link panels, as you wrote in this
+>>> binding, does *require* two ports, with "dual-lvds-{odd,even}-pixels" properties.
+>>
+>> Yes, while they are both LVDS based panels the extra LVDS sink in these
+>> panels, and the capability to decode and display the 2 sets of signals
+>> are enough hardware differences that warrant for an addition of a new
+>> compatible.
+>>
+>>>
+>>> So... the devicetree node would look like this:
+>>>
+>>> panel {
+>>>      compatible = "vendor,panel", "panel-lvds";
+>>>      ....
+>>>      ports {
+>>>          port@0 {
+>>>              .....
+>>>              -> dual-lvds-odd-pixels <-
+>>>          }
+>>>
+>>>          port@1 {
+>>>              .....
+>>>              -> dual-lvds-even-pixels <-
+>>>          };
+>>>      };
+>>> };
+>>>
+>>>> +          - required: [dual-lvds-even-pixels]
+>>>
+>>> ...Though, if you expect dual-lvds panels to get other quirks in the future,
+>>> that's a whole different story and you may actually need the panel-dual-lvds
+>>> compatible.
+>>
+>> Yes, exactly. Even while being non-smart, there are going to be more
+>> quirks in future. And it would be better if they have their own
+>> compatible/binding, and are not getting appended in an ever-growing
+>> if-else ladder. :)
+> 
+> I can imagine a panel which you can use with a single LVDS link if the 
+> clock is high enough, or two LVDS links if the clock has to be lower. Is 
+> that a dual-lvds panel? =)
+
+Hmm, I can see what you are saying here.
+
+If one wants to run a dual-link panel, with 1 link (given enough clock
+frequency), then the bindings here will *not* allow for a single port
+with the odd/even properties absent.
+
+In such a case, the compatible will indeed need to be changed to
+"panel-lvds".
+
+While it does feel a tad bit odd, I believe it is still worth
+maintaining the clarity and HW differences between the single and dual
+link panels. :)
+
+> 
+> But probably that situation is no different than a panel that can work 
+> with DSI or DPI input.
+> 
+> Still, I'm agree with Angelo in that a new compatible string for dual 
+> link lvds feels a bit odd. That said, it's possible the panel-lvds  > bindings might get rather confusing. So I don't have a strong feeling 
+here.
+
+Regards
+Aradhya
 
