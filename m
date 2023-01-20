@@ -4,64 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 410C5C05027
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jan 2023 13:06:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACE80C05027
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jan 2023 16:46:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TsmSPcxO7LKQsADIib3EpniOR608r5PsJOiaLyKVUao=; b=mS85CUJQX1DymdWPlStFonmkF0
-	M6uj7FDHDDCv4EtqHWSqhLbkBJD90sv2NMTkxalCRvlWzixjeQmIUtqZgfpLVJbAw2g57K11MaGv9
-	6HY78QHmc5EEJerfw4Bv6LzY4Qs5h5DdfYqysb+0TG0JcHM3xlw2YPHmCzqhaKkVzt2E2MaWi6Jig
-	wiLnpQcUaHNsi8C1lQBJS0uOCEdL5iGKitWCKslmFxBbHSIl77M9txdKhLSVPbcYAh7sIjiSoTJUk
-	RF6HY44vQUDV3OvDgfSXjBLMIrtaIAutlN5NzmS/wjHGeAxiCyvjXDF3fuV0+W3jODqyHkiIV1acE
-	7j3fl1Ww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/v8el1f2Alzp5osEye90kMa/1C8i+wSBxtLcNVCt6Z0=; b=oDlqEyyfoSi9kJeF+XxGhzP+DZ
+	o8Pjm4Qf8j7IWlnuWG4vZrFhzlfNSvj4hfWPyI7WBwprq/eJY7gF6M/Ztaqv5kRaxQ1g1pINzehak
+	KFD/pnCZnOR04Zcqok0ICOjDVL6Z4d0VkSraC3GsjRP2983ucFC8bIWvt2EDK9OTTFC9GyyIgG4ON
+	42T+0fgYymBgnwKXT5rWI8WyocjxFo6ELJ3Urlw/p+68EGB3xPTcNboKvl9aejyJkcWcm5MNksqkR
+	ta+U4qGCpcQoUeCXc/Jw8fMmHMwosfG96qt0PWULhb/yMzAK1H0C4bxnbGbDBhT1e+MFH3QK8WrWk
+	ymm4WnIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIr6W-00AO6w-0r; Fri, 20 Jan 2023 13:06:48 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIr6J-00AO3U-66; Fri, 20 Jan 2023 13:06:39 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CADAD660230B;
-	Fri, 20 Jan 2023 13:06:30 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1674219991;
-	bh=Q5x2AtmYaA0fgZ4jp//x0TyHgSicTqhcPO5/1kpTO4w=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=CmsJPrUv5BhTSOordLZ4nQ1PesnxSdh3BQ4Tu+d2hpQH1h+WV91YkA6dN6CN6eAgf
-	 0rvZ9f1X+ipOJxujYxzItFTDlYCNpXgg0T6hZmeJvicxv6PpGtNcd9C9h6usKmc5Gq
-	 5CBJfki6cEB7oME4uujjbuFfyB3hPI0RXkP99B+muAlS89oXR44/yKpPfgBBmiViqp
-	 lwkYeV451Gxe9rMSgKxUz607+/Cp03e/CXrPVPH2/UwfuVU0Iwu6/6XsEuKjUDoFx/
-	 0gb+Ly6vVbLvv1/Irxx5ZRSY7/MpGLi0+H28PxHT9HAVOgZJzs+5Tpn84yqvb4acVQ
-	 PvB1JjTj93S5g==
-Message-ID: <4d277d1e-f06a-07ad-f2c3-f910880a40d7@collabora.com>
-Date: Fri, 20 Jan 2023 14:06:28 +0100
+	id 1pIuX4-00BIr3-1c; Fri, 20 Jan 2023 16:46:26 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pItSJ-00B1U5-63
+	for linux-mediatek@lists.infradead.org; Fri, 20 Jan 2023 15:37:29 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id CA9861595
+	for <linux-mediatek@lists.infradead.org>; Fri, 20 Jan 2023 07:38:04 -0800 (PST)
+Received: from e110455-lin.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id E02483F67D
+	for <linux-mediatek@lists.infradead.org>; Fri, 20 Jan 2023 07:37:22 -0800 (PST)
+Date: Fri, 20 Jan 2023 15:36:50 +0000
+From: Liviu Dudau <liviu.dudau@arm.com>
+To: Sean Anderson <sean.anderson@seco.com>
+Cc: David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	dri-devel@lists.freedesktop.org,
+	Xinliang Liu <xinliang.liu@linaro.org>, linux-mips@vger.kernel.org,
+	Paul Cercueil <paul@crapouillou.net>,
+	John Stultz <jstultz@google.com>,
+	Mihail Atanassov <mihail.atanassov@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Russell King <linux@armlinux.org.uk>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Mali DP Maintainers <malidp@foss.arm.com>,
+	linux-arm-msm@vger.kernel.org,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+	linux-sunxi@lists.linux.dev,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Chen Feng <puck.chen@hisilicon.com>,
+	Abhinav Kumar <quic_abhinavk@quicinc.com>,
+	etnaviv@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org,
+	Tomi Valkeinen <tomba@kernel.org>, freedreno@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+	Tian Tao <tiantao6@hisilicon.com>, Jyri Sarha <jyri.sarha@iki.fi>
+Subject: Re: [PATCH v3 3/3] drm: Convert users of drm_of_component_match_add
+ to component_match_add_of
+Message-ID: <Y8q0tN88QGKcIfw/@e110455-lin.cambridge.arm.com>
+References: <20230119191040.1637739-1-sean.anderson@seco.com>
+ <20230119191040.1637739-4-sean.anderson@seco.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH] usb: mtu3: fix the failure of qmu stop
-Content-Language: en-US
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Eddie Hung <eddie.hung@mediatek.com>,
- Min Guo <min.guo@mediatek.com>
-References: <20230119033322.21426-1-chunfeng.yun@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230119033322.21426-1-chunfeng.yun@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230119191040.1637739-4-sean.anderson@seco.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230120_050635_445088_B2B13A17 
-X-CRM114-Status: GOOD (  10.02  )
+X-CRM114-CacheID: sfid-20230120_073727_352842_5C0B3736 
+X-CRM114-Status: GOOD (  23.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,28 +89,383 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/01/23 04:33, Chunfeng Yun ha scritto:
-> This happens when do stress test of uvc stream on/off which will
-> enable/disable endpoints. uvc has four tx requests, and may disable
-> endpoint between queue tx requests as following:
->      enable ep --> start qmu
->      queue tx request0
->      queue tx request1
->      queue tx request2 --> resume qmu
->      disable ep --> stop qmu may fail [1]
->      queue tx request3 --> will resume qmu, may cause qmu can't work
->                            when enable ep next time [2]
+On Thu, Jan 19, 2023 at 02:10:39PM -0500, Sean Anderson wrote:
+> Every user of this function either uses component_compare_of or
+> something equivalent. Most of them immediately put the device node as
+> well. Convert these users to component_match_add_of and remove
+> drm_of_component_match_add.
 > 
-> [1]: when the tx fifo has some data to transmit, and
->      try to stop qmu (stop ep) meanwhile resume qmu (queue tx request),
->      it may cause stop qmu timeout, then can be fixed by flushing fifo
->      when stop qmu.
-> [2]: it resumes qmu again, shall stop qmu again.
+> Signed-off-by: Sean Anderson <sean.anderson@seco.com>
+> Acked-by: Jyri Sarha <jyri.sarhaı@iki.fi>
+> Tested-by: Jyri Sarha <jyri.sarha@iki.fi>
+> ---
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> Reported-by: Min Guo <min.guo@mediatek.com>
+> (no changes since v1)
+> 
+>  .../gpu/drm/arm/display/komeda/komeda_drv.c   |  6 ++--
+>  drivers/gpu/drm/arm/hdlcd_drv.c               |  9 +-----
+>  drivers/gpu/drm/arm/malidp_drv.c              | 11 +------
+>  drivers/gpu/drm/armada/armada_drv.c           | 10 ++++---
+>  drivers/gpu/drm/drm_of.c                      | 29 +++----------------
+>  drivers/gpu/drm/etnaviv/etnaviv_drv.c         |  4 +--
+>  .../gpu/drm/hisilicon/kirin/kirin_drm_drv.c   |  3 +-
+>  drivers/gpu/drm/ingenic/ingenic-drm-drv.c     |  3 +-
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  4 +--
+>  drivers/gpu/drm/msm/msm_drv.c                 | 14 ++++-----
+>  drivers/gpu/drm/sti/sti_drv.c                 |  3 +-
+>  drivers/gpu/drm/sun4i/sun4i_drv.c             |  3 +-
+>  drivers/gpu/drm/tilcdc/tilcdc_external.c      | 10 ++-----
+>  include/drm/drm_of.h                          | 12 --------
+>  14 files changed, 33 insertions(+), 88 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/arm/display/komeda/komeda_drv.c b/drivers/gpu/drm/arm/display/komeda/komeda_drv.c
+> index 3f4e719eebd8..e3bfc72c378f 100644
+> --- a/drivers/gpu/drm/arm/display/komeda/komeda_drv.c
+> +++ b/drivers/gpu/drm/arm/display/komeda/komeda_drv.c
+> @@ -103,10 +103,8 @@ static void komeda_add_slave(struct device *master,
+>  	struct device_node *remote;
+>  
+>  	remote = of_graph_get_remote_node(np, port, endpoint);
+> -	if (remote) {
+> -		drm_of_component_match_add(master, match, component_compare_of, remote);
+> -		of_node_put(remote);
+> -	}
+> +	if (remote)
+> +		component_match_add_of(master, match, remote);
+>  }
+>  
+>  static int komeda_platform_probe(struct platform_device *pdev)
+> diff --git a/drivers/gpu/drm/arm/hdlcd_drv.c b/drivers/gpu/drm/arm/hdlcd_drv.c
+> index e3507dd6f82a..5f760bb66af4 100644
+> --- a/drivers/gpu/drm/arm/hdlcd_drv.c
+> +++ b/drivers/gpu/drm/arm/hdlcd_drv.c
+> @@ -347,11 +347,6 @@ static const struct component_master_ops hdlcd_master_ops = {
+>  	.unbind		= hdlcd_drm_unbind,
+>  };
+>  
+> -static int compare_dev(struct device *dev, void *data)
+> -{
+> -	return dev->of_node == data;
+> -}
+> -
+>  static int hdlcd_probe(struct platform_device *pdev)
+>  {
+>  	struct device_node *port;
+> @@ -362,9 +357,7 @@ static int hdlcd_probe(struct platform_device *pdev)
+>  	if (!port)
+>  		return -ENODEV;
+>  
+> -	drm_of_component_match_add(&pdev->dev, &match, compare_dev, port);
+> -	of_node_put(port);
+> -
+> +	component_match_add_of(&pdev->dev, &match, port);
+>  	return component_master_add_with_match(&pdev->dev, &hdlcd_master_ops,
+>  					       match);
+>  }
+> diff --git a/drivers/gpu/drm/arm/malidp_drv.c b/drivers/gpu/drm/arm/malidp_drv.c
+> index 589c1c66a6dc..3a49c29ba5b8 100644
+> --- a/drivers/gpu/drm/arm/malidp_drv.c
+> +++ b/drivers/gpu/drm/arm/malidp_drv.c
+> @@ -909,13 +909,6 @@ static const struct component_master_ops malidp_master_ops = {
+>  	.unbind = malidp_unbind,
+>  };
+>  
+> -static int malidp_compare_dev(struct device *dev, void *data)
+> -{
+> -	struct device_node *np = data;
+> -
+> -	return dev->of_node == np;
+> -}
+> -
+>  static int malidp_platform_probe(struct platform_device *pdev)
+>  {
+>  	struct device_node *port;
+> @@ -929,9 +922,7 @@ static int malidp_platform_probe(struct platform_device *pdev)
+>  	if (!port)
+>  		return -ENODEV;
+>  
+> -	drm_of_component_match_add(&pdev->dev, &match, malidp_compare_dev,
+> -				   port);
+> -	of_node_put(port);
+> +	component_match_add_of(&pdev->dev, &match, port);
+>  	return component_master_add_with_match(&pdev->dev, &malidp_master_ops,
+>  					       match);
+>  }
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+For komeda, mali_dp and hdlcd: Acked-by: Liviu Dudau <liviu.dudau@arm.com>
+
+Best regards,
+Liviu
 
 
+> diff --git a/drivers/gpu/drm/armada/armada_drv.c b/drivers/gpu/drm/armada/armada_drv.c
+> index 0643887800b4..c0211ad7a45d 100644
+> --- a/drivers/gpu/drm/armada/armada_drv.c
+> +++ b/drivers/gpu/drm/armada/armada_drv.c
+> @@ -184,10 +184,12 @@ static void armada_add_endpoints(struct device *dev,
+>  
+>  	for_each_endpoint_of_node(dev_node, ep) {
+>  		remote = of_graph_get_remote_port_parent(ep);
+> -		if (remote && of_device_is_available(remote))
+> -			drm_of_component_match_add(dev, match, component_compare_of,
+> -						   remote);
+> -		of_node_put(remote);
+> +		if (remote) {
+> +			if (of_device_is_available(remote))
+> +				component_match_add_of(dev, match, remote);
+> +			else
+> +				of_node_put(remote);
+> +		}
+>  	}
+>  }
+>  
+> diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
+> index 7bbcb999bb75..0a474729ddf6 100644
+> --- a/drivers/gpu/drm/drm_of.c
+> +++ b/drivers/gpu/drm/drm_of.c
+> @@ -78,24 +78,6 @@ uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
+>  }
+>  EXPORT_SYMBOL(drm_of_find_possible_crtcs);
+>  
+> -/**
+> - * drm_of_component_match_add - Add a component helper OF node match rule
+> - * @master: master device
+> - * @matchptr: component match pointer
+> - * @compare: compare function used for matching component
+> - * @node: of_node
+> - */
+> -void drm_of_component_match_add(struct device *master,
+> -				struct component_match **matchptr,
+> -				int (*compare)(struct device *, void *),
+> -				struct device_node *node)
+> -{
+> -	of_node_get(node);
+> -	component_match_add_release(master, matchptr, component_release_of,
+> -				    compare, node);
+> -}
+> -EXPORT_SYMBOL_GPL(drm_of_component_match_add);
+> -
+>  /**
+>   * drm_of_component_probe - Generic probe function for a component based master
+>   * @dev: master device containing the OF node
+> @@ -130,10 +112,9 @@ int drm_of_component_probe(struct device *dev,
+>  			break;
+>  
+>  		if (of_device_is_available(port->parent))
+> -			drm_of_component_match_add(dev, &match, compare_of,
+> -						   port);
+> -
+> -		of_node_put(port);
+> +			component_match_add_of(dev, &match, port);
+> +		else
+> +			of_node_put(port);
+>  	}
+>  
+>  	if (i == 0) {
+> @@ -171,9 +152,7 @@ int drm_of_component_probe(struct device *dev,
+>  				continue;
+>  			}
+>  
+> -			drm_of_component_match_add(dev, &match, compare_of,
+> -						   remote);
+> -			of_node_put(remote);
+> +			component_match_add_of(dev, &match, remote);
+>  		}
+>  		of_node_put(port);
+>  	}
+> diff --git a/drivers/gpu/drm/etnaviv/etnaviv_drv.c b/drivers/gpu/drm/etnaviv/etnaviv_drv.c
+> index 1d2b4fb4bcf8..4a0dba34a6e7 100644
+> --- a/drivers/gpu/drm/etnaviv/etnaviv_drv.c
+> +++ b/drivers/gpu/drm/etnaviv/etnaviv_drv.c
+> @@ -590,8 +590,8 @@ static int etnaviv_pdev_probe(struct platform_device *pdev)
+>  			if (!first_node)
+>  				first_node = core_node;
+>  
+> -			drm_of_component_match_add(&pdev->dev, &match,
+> -						   component_compare_of, core_node);
+> +			of_node_get(core_node);
+> +			component_match_add_of(&pdev->dev, &match, core_node);
+>  		}
+>  	} else {
+>  		char **names = dev->platform_data;
+> diff --git a/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c b/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c
+> index 9c5d49bf40c9..3ee277615c39 100644
+> --- a/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c
+> +++ b/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c
+> @@ -273,8 +273,7 @@ static int kirin_drm_platform_probe(struct platform_device *pdev)
+>  	if (!remote)
+>  		return -ENODEV;
+>  
+> -	drm_of_component_match_add(dev, &match, component_compare_of, remote);
+> -	of_node_put(remote);
+> +	component_match_add_of(dev, &match, remote);
+>  
+>  	return component_master_add_with_match(dev, &kirin_drm_ops, match);
+>  }
+> diff --git a/drivers/gpu/drm/ingenic/ingenic-drm-drv.c b/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
+> index 3d5af44bf92d..d0c87175dec4 100644
+> --- a/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
+> +++ b/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
+> @@ -1444,8 +1444,7 @@ static int ingenic_drm_probe(struct platform_device *pdev)
+>  	if (!np)
+>  		return ingenic_drm_bind(dev, false);
+>  
+> -	drm_of_component_match_add(dev, &match, component_compare_of, np);
+> -	of_node_put(np);
+> +	component_match_add_of(dev, &match, np);
+>  
+>  	return component_master_add_with_match(dev, &ingenic_master_ops, match);
+>  }
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> index cd5b18ef7951..abead814bfdc 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -787,8 +787,8 @@ static int mtk_drm_probe(struct platform_device *pdev)
+>  		    comp_type == MTK_DSI) {
+>  			dev_info(dev, "Adding component match for %pOF\n",
+>  				 node);
+> -			drm_of_component_match_add(dev, &match, component_compare_of,
+> -						   node);
+> +			of_node_get(node);
+> +			component_match_add_of(dev, &match, node);
+>  		}
+>  
+>  		ret = mtk_ddp_comp_init(node, &private->ddp_comp[comp_id], comp_id);
+> diff --git a/drivers/gpu/drm/msm/msm_drv.c b/drivers/gpu/drm/msm/msm_drv.c
+> index 8b0b0ac74a6f..8ccf57def955 100644
+> --- a/drivers/gpu/drm/msm/msm_drv.c
+> +++ b/drivers/gpu/drm/msm/msm_drv.c
+> @@ -5,6 +5,7 @@
+>   * Author: Rob Clark <robdclark@gmail.com>
+>   */
+>  
+> +#include <linux/component.h>
+>  #include <linux/dma-mapping.h>
+>  #include <linux/fault-inject.h>
+>  #include <linux/kthread.h>
+> @@ -1156,10 +1157,9 @@ static int add_components_mdp(struct device *master_dev,
+>  			continue;
+>  
+>  		if (of_device_is_available(intf))
+> -			drm_of_component_match_add(master_dev, matchptr,
+> -						   component_compare_of, intf);
+> -
+> -		of_node_put(intf);
+> +			component_match_add_of(master_dev, matchptr, intf);
+> +		else
+> +			of_node_put(intf);
+>  	}
+>  
+>  	return 0;
+> @@ -1188,9 +1188,9 @@ static int add_gpu_components(struct device *dev,
+>  		return 0;
+>  
+>  	if (of_device_is_available(np))
+> -		drm_of_component_match_add(dev, matchptr, component_compare_of, np);
+> -
+> -	of_node_put(np);
+> +		component_match_add_of(dev, matchptr, np);
+> +	else
+> +		of_node_put(np);
+>  
+>  	return 0;
+>  }
+> diff --git a/drivers/gpu/drm/sti/sti_drv.c b/drivers/gpu/drm/sti/sti_drv.c
+> index ef6a4e63198f..e3aae4574c75 100644
+> --- a/drivers/gpu/drm/sti/sti_drv.c
+> +++ b/drivers/gpu/drm/sti/sti_drv.c
+> @@ -238,8 +238,7 @@ static int sti_platform_probe(struct platform_device *pdev)
+>  	child_np = of_get_next_available_child(node, NULL);
+>  
+>  	while (child_np) {
+> -		drm_of_component_match_add(dev, &match, component_compare_of,
+> -					   child_np);
+> +		component_match_add_of(dev, &match, child_np);
+>  		child_np = of_get_next_available_child(node, child_np);
+>  	}
+>  
+> diff --git a/drivers/gpu/drm/sun4i/sun4i_drv.c b/drivers/gpu/drm/sun4i/sun4i_drv.c
+> index cc94efbbf2d4..9b3ddd82f1be 100644
+> --- a/drivers/gpu/drm/sun4i/sun4i_drv.c
+> +++ b/drivers/gpu/drm/sun4i/sun4i_drv.c
+> @@ -323,7 +323,8 @@ static int sun4i_drv_add_endpoints(struct device *dev,
+>  	     of_device_is_available(node))) {
+>  		/* Add current component */
+>  		DRM_DEBUG_DRIVER("Adding component %pOF\n", node);
+> -		drm_of_component_match_add(dev, match, component_compare_of, node);
+> +		of_node_get(node);
+> +		component_match_add_of(dev, match, node);
+>  		count++;
+>  	}
+>  
+> diff --git a/drivers/gpu/drm/tilcdc/tilcdc_external.c b/drivers/gpu/drm/tilcdc/tilcdc_external.c
+> index 3b86d002ef62..0138ce02a64f 100644
+> --- a/drivers/gpu/drm/tilcdc/tilcdc_external.c
+> +++ b/drivers/gpu/drm/tilcdc/tilcdc_external.c
+> @@ -155,11 +155,6 @@ int tilcdc_attach_external_device(struct drm_device *ddev)
+>  	return ret;
+>  }
+>  
+> -static int dev_match_of(struct device *dev, void *data)
+> -{
+> -	return dev->of_node == data;
+> -}
+> -
+>  int tilcdc_get_external_components(struct device *dev,
+>  				   struct component_match **match)
+>  {
+> @@ -173,7 +168,8 @@ int tilcdc_get_external_components(struct device *dev,
+>  	}
+>  
+>  	if (match)
+> -		drm_of_component_match_add(dev, match, dev_match_of, node);
+> -	of_node_put(node);
+> +		component_match_add_of(dev, match, node);
+> +	else
+> +		of_node_put(node);
+>  	return 1;
+>  }
+> diff --git a/include/drm/drm_of.h b/include/drm/drm_of.h
+> index 10ab58c40746..685c44dc1dae 100644
+> --- a/include/drm/drm_of.h
+> +++ b/include/drm/drm_of.h
+> @@ -33,10 +33,6 @@ uint32_t drm_of_crtc_port_mask(struct drm_device *dev,
+>  			    struct device_node *port);
+>  uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
+>  				    struct device_node *port);
+> -void drm_of_component_match_add(struct device *master,
+> -				struct component_match **matchptr,
+> -				int (*compare)(struct device *, void *),
+> -				struct device_node *node);
+>  int drm_of_component_probe(struct device *dev,
+>  			   int (*compare_of)(struct device *, void *),
+>  			   const struct component_master_ops *m_ops);
+> @@ -69,14 +65,6 @@ static inline uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
+>  	return 0;
+>  }
+>  
+> -static inline void
+> -drm_of_component_match_add(struct device *master,
+> -			   struct component_match **matchptr,
+> -			   int (*compare)(struct device *, void *),
+> -			   struct device_node *node)
+> -{
+> -}
+> -
+>  static inline int
+>  drm_of_component_probe(struct device *dev,
+>  		       int (*compare_of)(struct device *, void *),
+> -- 
+> 2.35.1.1320.gc452695387.dirty
+> 
+
+-- 
+====================
+| I would like to |
+| fix the world,  |
+| but they're not |
+| giving me the   |
+ \ source code!  /
+  ---------------
+    ¯\_(ツ)_/¯
 
