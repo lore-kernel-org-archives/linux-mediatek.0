@@ -4,107 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E66DC004D4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Jan 2023 16:39:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EA8EC38142
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Jan 2023 21:47:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=POvmYWcz0Hy4dDGRLrQk2Z+CWYp5WY4L8Qn+ldpMGuk=; b=NzXGZ71NNbWJ00QJNJY9dEa0WM
-	6TBsydfLBn2CP5p/ogYR8b7B4dkmnQsI3UbwxBv2M7chmNQtlBKaKrd95GTzsu03uEa0YaePu4F0D
-	gET/Nz2Ny8oPDwBJELdHI2h7XgkcBVPFT4M5wITVZA58MXid3R1PvTBzGODoxQWIFXNrRQs9NgM2i
-	cCEzbnXoLOyhCmTuelWS1dk6e3F55nKDN2fSEdeFQGcS0SExReCj3nB2izsmtrHx5u5fPnHWKI+5y
-	KNrXfY+cTBI5YLLGYZoBuHh+pj3QbHDQxzZxql9OISNaGb7LpUY+lnMzUZrS2nB9cy+myU8922tag
-	suwkhGrg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=m1FvsiEYtCEkPZWslbXtK2Knh3nmyjfRPm5I1P5bv6E=; b=GlPl3LpRzYK4IfCNyhHIR0Dy+6
+	rMdXlAo3g6oYy0FpSxsmiy1CdD1vHShLOmJyT9f9hXvR6+y5hrZUwXRDCJw3cbJkGaxkSVu0Ic4TG
+	3j19X7NYvAmm+jvj6goPCtLOws3QOdPzIHBICGC+i8FCSG30aBS/fNO489qF+1DaKp3R3qQMUUARM
+	V1hAHquUSFkStRZDJoRNcuQToRvfkvkPoR6pTs0Cab8CDytQpttBzxll++3x5l1iCHobRdz9XyfGu
+	3P66N8vwo/lsCmw6D0oPPRJ1WlbaORxFvgDtrm/+kmW92DywR0RVEvkZjFFb0AEGDTQMRWKVd60Eg
+	NLkeOBvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJGtj-00EAE7-VU; Sat, 21 Jan 2023 16:39:19 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pJLhT-00EZzJ-Mf; Sat, 21 Jan 2023 21:46:59 +0000
+Received: from mga07.intel.com ([134.134.136.100])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJGte-00EAD7-DB; Sat, 21 Jan 2023 16:39:15 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 5626360B47;
-	Sat, 21 Jan 2023 16:39:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4FBD0C433D2;
-	Sat, 21 Jan 2023 16:38:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1674319150;
-	bh=gT/5AvVpeDrgKjkh47OXtzrBPwHm9WVXPk88PeHkYdg=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=T2T2vnT1Xs4tW5V/oTrCVF/YscJHiNq+7HTjvmQMO07kIVdALzUWUY/Lg7jgN8oeV
-	 wDH/jrinV14zyuMq2EWtvqw0MJqCVYQkQmSM97I02rGKmkJT8mWnP+XySroZ4rplWG
-	 RlAswjzAZLSIUe5xREEi1xk7mpGRJ+el+yXQps4AW3OLVqJhTAobryzkTKQ7IcmeFR
-	 gz9n7eY4kKn03iiqGBkjRAI/u36bgFn5jBskRGSmm4cNBL/uaGM08TtLTQYXpHtqxx
-	 meoZpovFIIHToxzFIsTk068dsFlMtc5YJ3ropDVVqr5LoNdkRAl4Bqac9L/I3U7BVM
-	 lonUWh/lOpEIw==
-Date: Sat, 21 Jan 2023 16:52:35 +0000
-From: Jonathan Cameron <jic23@kernel.org>
-To: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
-Cc: <broonie@kernel.org>, <miquel.raynal@bootlin.com>, <richard@nod.at>,
- <vigneshr@ti.com>, <tudor.ambarus@microchip.com>, <pratyush@kernel.org>,
- <sanju.mehta@amd.com>, <chin-ting_kuo@aspeedtech.com>, <clg@kaod.org>,
- <kdasu.kdev@gmail.com>, <f.fainelli@gmail.com>, <rjui@broadcom.com>,
- <sbranden@broadcom.com>, <eajames@linux.ibm.com>, <olteanv@gmail.com>,
- <han.xu@nxp.com>, <john.garry@huawei.com>, <shawnguo@kernel.org>,
- <s.hauer@pengutronix.de>, <narmstrong@baylibre.com>,
- <khilman@baylibre.com>, <matthias.bgg@gmail.com>, <haibo.chen@nxp.com>,
- <linus.walleij@linaro.org>, <daniel@zonque.org>,
- <haojian.zhuang@gmail.com>, <robert.jarzmik@free.fr>, <agross@kernel.org>,
- <bjorn.andersson@linaro.org>, <heiko@sntech.de>,
- <krzysztof.kozlowski@linaro.org>, <andi@etezian.org>,
- <mcoquelin.stm32@gmail.com>, <alexandre.torgue@foss.st.com>,
- <wens@csie.org>, <jernej.skrabec@gmail.com>, <samuel@sholland.org>,
- <masahisa.kojima@linaro.org>, <jaswinder.singh@linaro.org>,
- <rostedt@goodmis.org>, <mingo@redhat.com>, <l.stelmach@samsung.com>,
- <davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>,
- <pabeni@redhat.com>, <alex.aring@gmail.com>, <stefan@datenfreihafen.org>,
- <kvalo@kernel.org>, <thierry.reding@gmail.com>, <jonathanh@nvidia.com>,
- <skomatineni@nvidia.com>, <sumit.semwal@linaro.org>,
- <christian.koenig@amd.com>, <j.neuschaefer@gmx.net>, <vireshk@kernel.org>,
- <rmfrfs@gmail.com>, <johan@kernel.org>, <elder@kernel.org>,
- <gregkh@linuxfoundation.org>, <git@amd.com>, <linux-spi@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <joel@jms.id.au>, <andrew@aj.id.au>,
- <radu_nicolae.pirea@upb.ro>, <nicolas.ferre@microchip.com>,
- <alexandre.belloni@bootlin.com>, <claudiu.beznea@microchip.com>,
- <bcm-kernel-feedback-list@broadcom.com>, <fancer.lancer@gmail.com>,
- <kernel@pengutronix.de>, <festevam@gmail.com>, <linux-imx@nxp.com>,
- <jbrunet@baylibre.com>, <martin.blumenstingl@googlemail.com>,
- <avifishman70@gmail.com>, <tmaimon77@gmail.com>, <tali.perry1@gmail.com>,
- <venture@google.com>, <yuenn@google.com>, <benjaminfair@google.com>,
- <yogeshgaur.83@gmail.com>, <konrad.dybcio@somainline.org>,
- <alim.akhtar@samsung.com>, <ldewangan@nvidia.com>, <michal.simek@amd.com>,
- <linux-aspeed@lists.ozlabs.org>, <openbmc@lists.ozlabs.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rpi-kernel@lists.infradead.org>,
- <linux-amlogic@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-msm@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
- <linux-samsung-soc@vger.kernel.org>,
- <linux-stm32@st-md-mailman.stormreply.com>, <linux-sunxi@lists.linux.dev>,
- <linux-tegra@vger.kernel.org>, <netdev@vger.kernel.org>,
- <linux-wpan@vger.kernel.org>, <libertas-dev@lists.infradead.org>,
- <linux-wireless@vger.kernel.org>, <linux-mtd@lists.infradead.org>,
- <lars@metafoo.de>, <Michael.Hennerich@analog.com>,
- <linux-iio@vger.kernel.org>, <michael@walle.cc>, <palmer@dabbelt.com>,
- <linux-riscv@lists.infradead.org>, <linux-media@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>, <greybus-dev@lists.linaro.org>,
- <linux-staging@lists.linux.dev>, <amitrkcian2002@gmail.com>
-Subject: Re: [PATCH v2 04/13] iio: imu: Replace all spi->chip_select and
- spi->cs_gpiod references with function call
-Message-ID: <20230121165235.13da9db2@jic23-huawei>
-In-Reply-To: <20230119185342.2093323-5-amit.kumar-mahapatra@amd.com>
-References: <20230119185342.2093323-1-amit.kumar-mahapatra@amd.com>
-	<20230119185342.2093323-5-amit.kumar-mahapatra@amd.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.36; x86_64-pc-linux-gnu)
+	id 1pJLhR-00EZyf-7x
+	for linux-mediatek@lists.infradead.org; Sat, 21 Jan 2023 21:46:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1674337617; x=1705873617;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=JAKSS4dPSaIj68kmeXyY63au78qva1tFAdBiC+XiVko=;
+  b=HGQ/MJc0C6E1Ydjmop30vNqqUjFmqE3raWYotkR73OCpocqdCqZP8hL/
+   XuUf/8iq6Ig8VFV37Cps7vemLt5rqjYnUpqaZZBDae7eyh7vMLbi9T1WU
+   KQhjMTKXoU8ebLCjrJiTkt54XWql890/WnsyFxeYJlc7OGJPiAYzhAwgE
+   377ETEriMRLV5qVN64rkuG1nCoL4zDJKrogt4T8b4i4nZ3WAgwsojN7Kc
+   K4TuN+GAIXp0SfbTpTgOWWLq71wt4c1F6G4iBWQzAyItXGrTjiQi15E29
+   bsOvXTpDSQozJwravZIpM0FoJwiZcHohdQVk5mZ9P5zQr1Pt1sIA5C2D2
+   w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10597"; a="390340339"
+X-IronPort-AV: E=Sophos;i="5.97,235,1669104000"; 
+   d="scan'208";a="390340339"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Jan 2023 13:46:54 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10597"; a="662918042"
+X-IronPort-AV: E=Sophos;i="5.97,235,1669104000"; 
+   d="scan'208";a="662918042"
+Received: from lkp-server01.sh.intel.com (HELO 5646d64e7320) ([10.239.97.150])
+  by fmsmga007.fm.intel.com with ESMTP; 21 Jan 2023 13:46:46 -0800
+Received: from kbuild by 5646d64e7320 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1pJLhG-0004VC-09;
+	Sat, 21 Jan 2023 21:46:46 +0000
+Date: Sun, 22 Jan 2023 05:46:21 +0800
+From: kernel test robot <lkp@intel.com>
+To: Yanchao Yang <yanchao.yang@mediatek.com>,
+	Loic Poulain <loic.poulain@linaro.org>,
+	Sergey Ryazanov <ryazanov.s.a@gmail.com>,
+	Johannes Berg <johannes@sipsolutions.net>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	netdev ML <netdev@vger.kernel.org>,
+	kernel ML <linux-kernel@vger.kernel.org>
+Cc: oe-kbuild-all@lists.linux.dev, Intel experts <linuxwwan@intel.com>,
+	Chetan <m.chetan.kumar@intel.com>,
+	MTK ML <linux-mediatek@lists.infradead.org>,
+	Liang Lu <liang.lu@mediatek.com>,
+	Haijun Liu <haijun.liu@mediatek.com>,
+	Hua Yang <hua.yang@mediatek.com>,
+	Ting Wang <ting.wang@mediatek.com>,
+	Felix Chen <felix.chen@mediatek.com>,
+	Mingliang Xu <mingliang.xu@mediatek.com>,
+	Min Dong <min.dong@mediatek.com>,
+	Aiden Wang <aiden.wang@mediatek.com>,
+	Guohao Zhang <guohao.zhang@mediatek.com>,
+	Chris Feng <chris.feng@mediatek.com>,
+	Yanchao Yang <yanchao.yang@mediatek.com>,
+	Lambert Wang <lambert.wang@mediatek.com>,
+	Mingchuang Qiao <mingchuang.qiao@mediatek.com>,
+	Xiayu Zhang <xiayu.zhang@mediatek.com>,
+	Haozhe Chang <haozhe.chang@mediatek.com>
+Subject: Re: [PATCH net-next v2 06/12] net: wwan: tmi: Add AT & MBIM WWAN
+ ports
+Message-ID: <202301220534.qrMLlR2w-lkp@intel.com>
+References: <20230118113859.175836-7-yanchao.yang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230118113859.175836-7-yanchao.yang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230121_083914_569845_EC06A874 
-X-CRM114-Status: GOOD (  19.36  )
+X-CRM114-CacheID: sfid-20230121_134657_365077_92E9C5DB 
+X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,40 +108,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 20 Jan 2023 00:23:33 +0530
-Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com> wrote:
+Hi Yanchao,
 
-> Supporting multi-cs in spi drivers would require the chip_select & cs_gpiod
-> members of struct spi_device to be an array. But changing the type of these
-> members to array would break the spi driver functionality. To make the
-> transition smoother introduced four new APIs to get/set the
-> spi->chip_select & spi->cs_gpiod and replaced all spi->chip_select and
-> spi->cs_gpiod references with get or set API calls.
-> While adding multi-cs support in further patches the chip_select & cs_gpiod
-> members of the spi_device structure would be converted to arrays & the
-> "idx" parameter of the APIs would be used as array index i.e.,
-> spi->chip_select[idx] & spi->cs_gpiod[idx] respectively.
-> 
-> Signed-off-by: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
+Thank you for the patch! Yet something to improve:
 
-Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+[auto build test ERROR on net-next/master]
 
-> ---
->  drivers/iio/imu/adis16400.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/iio/imu/adis16400.c b/drivers/iio/imu/adis16400.c
-> index c02fc35dceb4..3eda32e12a53 100644
-> --- a/drivers/iio/imu/adis16400.c
-> +++ b/drivers/iio/imu/adis16400.c
-> @@ -466,7 +466,7 @@ static int adis16400_initial_setup(struct iio_dev *indio_dev)
->  
->  		dev_info(&indio_dev->dev, "%s: prod_id 0x%04x at CS%d (irq %d)\n",
->  			indio_dev->name, prod_id,
-> -			st->adis.spi->chip_select, st->adis.spi->irq);
-> +			spi_get_chipselect(st->adis.spi, 0), st->adis.spi->irq);
->  	}
->  	/* use high spi speed if possible */
->  	if (st->variant->flags & ADIS16400_HAS_SLOW_MODE) {
+url:    https://github.com/intel-lab-lkp/linux/commits/Yanchao-Yang/net-wwan-tmi-Add-PCIe-core/20230118-203144
+patch link:    https://lore.kernel.org/r/20230118113859.175836-7-yanchao.yang%40mediatek.com
+patch subject: [PATCH net-next v2 06/12] net: wwan: tmi: Add AT & MBIM WWAN ports
+config: openrisc-randconfig-s052-20230120 (https://download.01.org/0day-ci/archive/20230122/202301220534.qrMLlR2w-lkp@intel.com/config)
+compiler: or1k-linux-gcc (GCC) 12.1.0
+reproduce:
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # apt-get install sparse
+        # sparse version: v0.6.4-39-gce1a6720-dirty
+        # https://github.com/intel-lab-lkp/linux/commit/366056f9aec8d7739b18869078ce15a2a4c9d719
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Yanchao-Yang/net-wwan-tmi-Add-PCIe-core/20230118-203144
+        git checkout 366056f9aec8d7739b18869078ce15a2a4c9d719
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross C=1 CF='-fdiagnostic-prefix -D__CHECK_ENDIAN__' O=build_dir ARCH=openrisc olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross C=1 CF='-fdiagnostic-prefix -D__CHECK_ENDIAN__' O=build_dir ARCH=openrisc SHELL=/bin/bash
 
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+
+All errors (new ones prefixed by >>):
+
+   or1k-linux-ld: drivers/net/wwan/mediatek/mtk_port_io.o: in function `mtk_port_relayfs_recv':
+>> mtk_port_io.c:(.text+0x238): undefined reference to `relay_switch_subbuf'
+   mtk_port_io.c:(.text+0x238): relocation truncated to fit: R_OR1K_INSN_REL_26 against undefined symbol `relay_switch_subbuf'
+   or1k-linux-ld: drivers/net/wwan/mediatek/mtk_port_io.o: in function `mtk_port_relayfs_disable':
+>> mtk_port_io.c:(.text+0x2c8): undefined reference to `relay_close'
+   mtk_port_io.c:(.text+0x2c8): relocation truncated to fit: R_OR1K_INSN_REL_26 against undefined symbol `relay_close'
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
