@@ -4,72 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF8F3C05027
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Jan 2023 02:20:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E66DC004D4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Jan 2023 16:39:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sGFfGpKxRAKovzkQlrQEOOoL3fm0R+9cG2GbrYqJYUE=; b=NTEIGKXJ8/JH2p0V9eM2I8iLa+
-	eaXaFImQE4a7Lec2aVHkPCEq4BTGJ6dB6UH7w1MRrmmnIq208bwuBOaMZbae37kZNEqbMOMMuMfUp
-	s+R0JVSkW7LGQQ96OPfeDdrmoNIAwp1IX26416UuOR9WiWAxQ6PqCiq6z92Ljg2j3FxHTmLP3S+iz
-	ckdX++ymV4utxl2KsbtQN2eTqyc+V9n+PWZzDAdl5Jo7wZOCwJYbhnvvj6vgVSw5+Dwg4R1RkzGPk
-	0P/Oaa0pyGQl6HzrozQ2sYU8Yhmm90I/Vx3r4+XHcPn70aTpRdtKif8deTPOvMgv4oCOAkH7wsorJ
-	J1zrRmLw==;
+	bh=POvmYWcz0Hy4dDGRLrQk2Z+CWYp5WY4L8Qn+ldpMGuk=; b=NzXGZ71NNbWJ00QJNJY9dEa0WM
+	6TBsydfLBn2CP5p/ogYR8b7B4dkmnQsI3UbwxBv2M7chmNQtlBKaKrd95GTzsu03uEa0YaePu4F0D
+	gET/Nz2Ny8oPDwBJELdHI2h7XgkcBVPFT4M5wITVZA58MXid3R1PvTBzGODoxQWIFXNrRQs9NgM2i
+	cCEzbnXoLOyhCmTuelWS1dk6e3F55nKDN2fSEdeFQGcS0SExReCj3nB2izsmtrHx5u5fPnHWKI+5y
+	KNrXfY+cTBI5YLLGYZoBuHh+pj3QbHDQxzZxql9OISNaGb7LpUY+lnMzUZrS2nB9cy+myU8922tag
+	suwkhGrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJ3Uf-00D1SE-R9; Sat, 21 Jan 2023 02:20:33 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1pJGtj-00EAE7-VU; Sat, 21 Jan 2023 16:39:19 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJ3UU-00D1Oh-8J; Sat, 21 Jan 2023 02:20:23 +0000
+	id 1pJGte-00EAD7-DB; Sat, 21 Jan 2023 16:39:15 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 44062B82B66;
-	Sat, 21 Jan 2023 02:20:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id D6920C433A0;
-	Sat, 21 Jan 2023 02:20:17 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 5626360B47;
+	Sat, 21 Jan 2023 16:39:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4FBD0C433D2;
+	Sat, 21 Jan 2023 16:38:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1674267617;
-	bh=y7M014lk2ucYfpZYK7TqpOQMfKJdndxwV/Xbmbc3ajM=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=CnDdZvkIowhY0c5wUZf47RObO9PPZANK2I1QmDStTRJAHmY9doWdiHtZb1FqVl6+B
-	 jlMiFNhigYJ3pwux+rrfhM0uzWUzGkM8ho7OAsX2WrqpsyL/akeHYXEAktPwQep3C7
-	 lyOMT6SnVOP8pvekYptS0RE9CYHj4ODIvjMivZuZL0lcdhi5tR9HJl5HKSkt6WI8Wo
-	 IGyi4/0uxcFxt3LD/51/05EY8YwL5BnYO7iaeHrQad97ZPtyRK9u4257ZuLJ55ji/m
-	 RKB1zTEcvGI/a+Le7ssOPUX9OVWImRXhWZAo5Wt2VY+5/a5KWSQmmxJE/1gTwxZqCW
-	 qOzjEI8CtoV2w==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id BBB08C04E34;
-	Sat, 21 Jan 2023 02:20:17 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1674319150;
+	bh=gT/5AvVpeDrgKjkh47OXtzrBPwHm9WVXPk88PeHkYdg=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=T2T2vnT1Xs4tW5V/oTrCVF/YscJHiNq+7HTjvmQMO07kIVdALzUWUY/Lg7jgN8oeV
+	 wDH/jrinV14zyuMq2EWtvqw0MJqCVYQkQmSM97I02rGKmkJT8mWnP+XySroZ4rplWG
+	 RlAswjzAZLSIUe5xREEi1xk7mpGRJ+el+yXQps4AW3OLVqJhTAobryzkTKQ7IcmeFR
+	 gz9n7eY4kKn03iiqGBkjRAI/u36bgFn5jBskRGSmm4cNBL/uaGM08TtLTQYXpHtqxx
+	 meoZpovFIIHToxzFIsTk068dsFlMtc5YJ3ropDVVqr5LoNdkRAl4Bqac9L/I3U7BVM
+	 lonUWh/lOpEIw==
+Date: Sat, 21 Jan 2023 16:52:35 +0000
+From: Jonathan Cameron <jic23@kernel.org>
+To: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
+Cc: <broonie@kernel.org>, <miquel.raynal@bootlin.com>, <richard@nod.at>,
+ <vigneshr@ti.com>, <tudor.ambarus@microchip.com>, <pratyush@kernel.org>,
+ <sanju.mehta@amd.com>, <chin-ting_kuo@aspeedtech.com>, <clg@kaod.org>,
+ <kdasu.kdev@gmail.com>, <f.fainelli@gmail.com>, <rjui@broadcom.com>,
+ <sbranden@broadcom.com>, <eajames@linux.ibm.com>, <olteanv@gmail.com>,
+ <han.xu@nxp.com>, <john.garry@huawei.com>, <shawnguo@kernel.org>,
+ <s.hauer@pengutronix.de>, <narmstrong@baylibre.com>,
+ <khilman@baylibre.com>, <matthias.bgg@gmail.com>, <haibo.chen@nxp.com>,
+ <linus.walleij@linaro.org>, <daniel@zonque.org>,
+ <haojian.zhuang@gmail.com>, <robert.jarzmik@free.fr>, <agross@kernel.org>,
+ <bjorn.andersson@linaro.org>, <heiko@sntech.de>,
+ <krzysztof.kozlowski@linaro.org>, <andi@etezian.org>,
+ <mcoquelin.stm32@gmail.com>, <alexandre.torgue@foss.st.com>,
+ <wens@csie.org>, <jernej.skrabec@gmail.com>, <samuel@sholland.org>,
+ <masahisa.kojima@linaro.org>, <jaswinder.singh@linaro.org>,
+ <rostedt@goodmis.org>, <mingo@redhat.com>, <l.stelmach@samsung.com>,
+ <davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>,
+ <pabeni@redhat.com>, <alex.aring@gmail.com>, <stefan@datenfreihafen.org>,
+ <kvalo@kernel.org>, <thierry.reding@gmail.com>, <jonathanh@nvidia.com>,
+ <skomatineni@nvidia.com>, <sumit.semwal@linaro.org>,
+ <christian.koenig@amd.com>, <j.neuschaefer@gmx.net>, <vireshk@kernel.org>,
+ <rmfrfs@gmail.com>, <johan@kernel.org>, <elder@kernel.org>,
+ <gregkh@linuxfoundation.org>, <git@amd.com>, <linux-spi@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <joel@jms.id.au>, <andrew@aj.id.au>,
+ <radu_nicolae.pirea@upb.ro>, <nicolas.ferre@microchip.com>,
+ <alexandre.belloni@bootlin.com>, <claudiu.beznea@microchip.com>,
+ <bcm-kernel-feedback-list@broadcom.com>, <fancer.lancer@gmail.com>,
+ <kernel@pengutronix.de>, <festevam@gmail.com>, <linux-imx@nxp.com>,
+ <jbrunet@baylibre.com>, <martin.blumenstingl@googlemail.com>,
+ <avifishman70@gmail.com>, <tmaimon77@gmail.com>, <tali.perry1@gmail.com>,
+ <venture@google.com>, <yuenn@google.com>, <benjaminfair@google.com>,
+ <yogeshgaur.83@gmail.com>, <konrad.dybcio@somainline.org>,
+ <alim.akhtar@samsung.com>, <ldewangan@nvidia.com>, <michal.simek@amd.com>,
+ <linux-aspeed@lists.ozlabs.org>, <openbmc@lists.ozlabs.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-rpi-kernel@lists.infradead.org>,
+ <linux-amlogic@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-msm@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+ <linux-samsung-soc@vger.kernel.org>,
+ <linux-stm32@st-md-mailman.stormreply.com>, <linux-sunxi@lists.linux.dev>,
+ <linux-tegra@vger.kernel.org>, <netdev@vger.kernel.org>,
+ <linux-wpan@vger.kernel.org>, <libertas-dev@lists.infradead.org>,
+ <linux-wireless@vger.kernel.org>, <linux-mtd@lists.infradead.org>,
+ <lars@metafoo.de>, <Michael.Hennerich@analog.com>,
+ <linux-iio@vger.kernel.org>, <michael@walle.cc>, <palmer@dabbelt.com>,
+ <linux-riscv@lists.infradead.org>, <linux-media@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>, <greybus-dev@lists.linaro.org>,
+ <linux-staging@lists.linux.dev>, <amitrkcian2002@gmail.com>
+Subject: Re: [PATCH v2 04/13] iio: imu: Replace all spi->chip_select and
+ spi->cs_gpiod references with function call
+Message-ID: <20230121165235.13da9db2@jic23-huawei>
+In-Reply-To: <20230119185342.2093323-5-amit.kumar-mahapatra@amd.com>
+References: <20230119185342.2093323-1-amit.kumar-mahapatra@amd.com>
+	<20230119185342.2093323-5-amit.kumar-mahapatra@amd.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.36; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH RESEND net-next 0/4] net: mdio: Remove support for building
- C45 muxed addresses
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id:  <167426761776.30830.16011679653553684585.git-patchwork-notify@kernel.org>
-Date: Sat, 21 Jan 2023 02:20:17 +0000
-References: <20230119130700.440601-1-michael@walle.cc>
-In-Reply-To: <20230119130700.440601-1-michael@walle.cc>
-To: Michael Walle <michael@walle.cc>
-Cc: woojung.huh@microchip.com, UNGLinuxDriver@microchip.com, andrew@lunn.ch,
- f.fainelli@gmail.com, olteanv@gmail.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- clement.leger@bootlin.com, afaerber@suse.de, mani@kernel.org, nbd@nbd.name,
- john@phrozen.org, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
- lorenzo@kernel.org, matthias.bgg@gmail.com, wellslutw@gmail.com,
- jiawenwu@trustnetic.com, mengyuanlou@net-swift.com, hkallweit1@gmail.com,
- linux@armlinux.org.uk, tobias@waldekranz.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230120_182022_486078_1458CCD6 
-X-CRM114-Status: UNSURE (   9.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230121_083914_569845_EC06A874 
+X-CRM114-Status: GOOD (  19.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,35 +119,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+On Fri, 20 Jan 2023 00:23:33 +0530
+Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com> wrote:
 
-This series was applied to netdev/net-next.git (master)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Thu, 19 Jan 2023 14:06:56 +0100 you wrote:
-> [Russell told me that his mailserver rejected my mail because of
-> an ill-formated "To:" header. Resending now with plain git-send-email
-> instead of b4 send.]
+> Supporting multi-cs in spi drivers would require the chip_select & cs_gpiod
+> members of struct spi_device to be an array. But changing the type of these
+> members to array would break the spi driver functionality. To make the
+> transition smoother introduced four new APIs to get/set the
+> spi->chip_select & spi->cs_gpiod and replaced all spi->chip_select and
+> spi->cs_gpiod references with get or set API calls.
+> While adding multi-cs support in further patches the chip_select & cs_gpiod
+> members of the spi_device structure would be converted to arrays & the
+> "idx" parameter of the APIs would be used as array index i.e.,
+> spi->chip_select[idx] & spi->cs_gpiod[idx] respectively.
 > 
-> I've picked this older series from Andrew up and rebased it onto
-> the latest net-next.
+> Signed-off-by: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
+
+Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+
+> ---
+>  drivers/iio/imu/adis16400.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> [...]
-
-Here is the summary with links:
-  - [RESEND,net-next,1/4] net: phy: Remove fallback to old C45 method
-    https://git.kernel.org/netdev/net-next/c/db1a63aed89c
-  - [RESEND,net-next,2/4] net: ngbe: Drop mdiobus_c45_regad()
-    https://git.kernel.org/netdev/net-next/c/45d564bf3625
-  - [RESEND,net-next,3/4] net: Remove C45 check in C22 only MDIO bus drivers
-    https://git.kernel.org/netdev/net-next/c/660a57046035
-  - [RESEND,net-next,4/4] net: mdio: Remove support for building C45 muxed addresses
-    https://git.kernel.org/netdev/net-next/c/99d5fe9c7f3d
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+> diff --git a/drivers/iio/imu/adis16400.c b/drivers/iio/imu/adis16400.c
+> index c02fc35dceb4..3eda32e12a53 100644
+> --- a/drivers/iio/imu/adis16400.c
+> +++ b/drivers/iio/imu/adis16400.c
+> @@ -466,7 +466,7 @@ static int adis16400_initial_setup(struct iio_dev *indio_dev)
+>  
+>  		dev_info(&indio_dev->dev, "%s: prod_id 0x%04x at CS%d (irq %d)\n",
+>  			indio_dev->name, prod_id,
+> -			st->adis.spi->chip_select, st->adis.spi->irq);
+> +			spi_get_chipselect(st->adis.spi, 0), st->adis.spi->irq);
+>  	}
+>  	/* use high spi speed if possible */
+>  	if (st->variant->flags & ADIS16400_HAS_SLOW_MODE) {
 
 
