@@ -4,57 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28563C25B4E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Jan 2023 16:00:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11EE1C25B4E
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Jan 2023 18:23:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=325TJicpHY314HcClfwupK49opcfbDVn75cS/+fHml0=; b=KdWBszDp/KvpfACUn0qMAl1cUe
-	1HVjX/a3tNa1EYMaqU1/SOK7pJcPE2lQBVWtdXKhq2Qh1qs/3MIlsMR/S147YhdHVfplCQhZZEO73
-	GGyQrXs+FfA4tDXFJC0P1uqP01VtWbMSmoiwHo0vS1y4abx/gdvG+WqVRTgtE32CJ0cy+YB8s9nmN
-	mhxrOvpPvjY6VEzEvAFaMGqQHee4AJxaQ1dKVjvad6PDrHoK9pF/4vUyG+DUwfe4z1NoAvrBzW4a+
-	8sxETtSKoZlkFEZu5NgjZt5smIm00iGpK1wNO6mDm7prW9qWouracxDcuhG0Eatl0eiZiDVZ4e8Z6
-	3q6Chbtw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=yqWzA2A8s0W3l1TM/BzQd4A0DOG2jZ8sXCG0x2a12mA=; b=x1DHNlvaADm1UlckMqji1wzpXT
+	GT2e7JCBg9NFtd8w93YllGHXJV3jHamdgZdweKnoYvE3HKVYxrtDzGQLblFYDfMg53z8O46uEdN82
+	ZrSyxAsBzUUQNjh74nqzpO4tiogaY3aOEbms9H7oJ1fB4pGiB1AsdX7vx+d6bhAQ/JWPt2o+WrbZh
+	603PUI2yiG5id3gU9h8RPc6UtavzmLnBVQXuu99nkfDPB6fSpjKM/zabKI48tst6VneTfDV+F0iOe
+	uWdNXK4c+zs1VoEgetefG3/dOhNYLmlomP3ghT2FWLuJkZGO8/fHCr2nugUNjeACEaf0kXs0hwcxh
+	Ydzd7P6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJcl9-00FW1K-CP; Sun, 22 Jan 2023 15:59:55 +0000
-Received: from exchange.fintech.ru ([195.54.195.159])
+	id 1pJf07-00FfBh-Kw; Sun, 22 Jan 2023 18:23:31 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJcl3-00FVzV-Do
-	for linux-mediatek@lists.infradead.org; Sun, 22 Jan 2023 15:59:53 +0000
-Received: from Ex16-01.fintech.ru (10.0.10.18) by exchange.fintech.ru
- (195.54.195.169) with Microsoft SMTP Server (TLS) id 14.3.498.0; Sun, 22 Jan
- 2023 18:59:17 +0300
-Received: from localhost (10.0.253.157) by Ex16-01.fintech.ru (10.0.10.18)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4; Sun, 22 Jan
- 2023 18:59:17 +0300
-From: Nikita Zhandarovich <n.zhandarovich@fintech.ru>
-To: <stable@vger.kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-CC: Nikita Zhandarovich <n.zhandarovich@fintech.ru>, Felix Fietkau
-	<nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Ryder Lee
-	<ryder.lee@mediatek.com>, Kalle Valo <kvalo@codeaurora.org>,
-	<linux-wireless@vger.kernel.org>, <netdev@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	"Alexey Khoroshilov" <khoroshilov@ispras.ru>, <lvc-project@linuxtesting.org>
-Subject: [PATCH 5.10 0/1] mt76: move mt76_init_tx_queue in common code
-Date: Sun, 22 Jan 2023 07:59:10 -0800
-Message-ID: <20230122155910.32635-1-n.zhandarovich@fintech.ru>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230112115850.9208-2-n.zhandarovich@fintech.ru>
-References: 
+	id 1pJf03-00FfBF-RL; Sun, 22 Jan 2023 18:23:29 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pJezw-0003q9-17;
+	Sun, 22 Jan 2023 19:23:20 +0100
+Date: Sun, 22 Jan 2023 18:23:13 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+	Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sam Shih <sam.shih@mediatek.com>,
+	Jianhui Zhao <zhaojh329@gmail.com>
+Subject: [PATCH 0/2] add pinctrl driver for MT7981 SoC
+Message-ID: <cover.1674409777.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.0.253.157]
-X-ClientProxiedBy: Ex16-01.fintech.ru (10.0.10.18) To Ex16-01.fintech.ru
- (10.0.10.18)
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230122_075949_504061_E4414B06 
-X-CRM114-Status: UNSURE (   6.91  )
+X-CRM114-CacheID: sfid-20230122_102327_921383_2E1FC2C9 
+X-CRM114-Status: UNSURE (   9.94  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -70,21 +66,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-My apologies, I should've have explained my reasoning for the patch better (and sooner).
+The MediaTek MT7981 SoC is the smaller sibbling of the MT7986 SoC.
+While MT7986 is already fully supported in vanilla Linux, only few things
+are missing to support also MT7981.
 
-1. My issue with 5.10 version of mt7615_init_tx_queues() in drivers/net/wireless/mediatek/mt76/mt7615/dma.c is that return value of final call to mt7615_init_tx_queue() is not taken into account
-when returning result of mt7615_init_tx_queues(). So, if last mt7615_init_tx_queue() fails (due to memory issues, for instance), parent function will still erroneously return 0.
+Add pinctrl driver including devicetree bindings for MediaTek MT7981
+which together with the added clock drivers[1] completes support for the
+most basic features of this SoC.
 
-2. To correct the issue, I turned to Lorenzo's patch in b671da33d1c5973f90f098ff66a91953691df582 which solves my petit problem as well as rewrites a single mt76_init_tx_queue() function to be used
-across all mt76 drivers.
+A complete work-in-progress tree based on linux-next for testing is
+available via Github[2]:
 
-3. I was torn between writing my own little patch to fix a single mistake or use an existing one that increases code readability and uniformity. I settled on latter.
+[1]: https://patchwork.kernel.org/project/linux-clk/list/?series=714497
+[2]: https://github.com/dangowrt/linux
 
-4. As for this patch exclusivity to 5.10.y branch, I have an incentive to prioritize 5.10 of all others. Wasn't sure I should be the one to suggest the patch for other branches but it does make sense.
+Daniel Golle (2):
+  dt-bindings: pinctrl: add bindings for MT7981 SoC
+  pinctrl: add mt7981 pinctrl driver
 
-Keep having issues with quoting emails properly, hope this one worked fine.
+ .../pinctrl/mediatek,mt7981-pinctrl.yaml      | 475 +++++++++
+ drivers/pinctrl/mediatek/Kconfig              |   7 +
+ drivers/pinctrl/mediatek/Makefile             |   1 +
+ drivers/pinctrl/mediatek/pinctrl-mt7981.c     | 957 ++++++++++++++++++
+ 4 files changed, 1440 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt7981-pinctrl.yaml
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt7981.c
 
-Thanks,
 
-Nikita
+base-commit: d514392f17fd4d386cfadde7f849d97db4ca1fb0
+-- 
+2.39.1
+
 
