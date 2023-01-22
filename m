@@ -4,75 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72EFDC27C76
-	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Jan 2023 11:09:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B59B6C27C76
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Jan 2023 13:49:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1cs8CQMUnzAkcAdMGkMzha0PghtPkyZLUG0nIyh3RyE=; b=jniKo8VpXUFrOLXy0Dn2Wc97fy
-	5XX51bKNgXNVGgAf5ccWdZqsgvC6OTYVySKY7fgvMa7BCrkldEk+KE+d0/W1PDD/5L51mM4+t6uFl
-	B9/hrXfyhwW1WNKzEYnj7hnItexF83xsY0TqnK2ec3cAi0scTgh/kzbqC4ffooAEf1O1RDPuVXv+H
-	xyuuRzGpYAkMX/NJwOFAnQIhSbhb05Fql7T6INefTV5nazAlxo7O/XtD7t7UvDwNMxSKaynechziA
-	X//LwWQlWINYP63oSkjdXINJDtEv/1LbLOB9qhT3YECJPu8BE3QyWQPDsjXMvgIAaCI4mqZ+9RG4U
-	V9zyv4HA==;
+	bh=W2uRWqFF0r7q2TBMIaKQWmaMLNnBJspMVsHJ2UF06HY=; b=paNE2RECpnNNX8Yq73oTq8+5OI
+	NOn2fOj3jYYOagAF5RIGIQAkblwT+fMtI5z5sXCXzoRhBWHz5Q859s3WCLOWENcT7O9kY8N0p/70c
+	Nzvaizx7l8AbTa9tBQOGuoSOHAlwR94T1pMxd0667agFOBoUyXCfFVzdOCbrBIqVCi9ehMYPgSFJC
+	IDxHpSFRCemzsbamtHFR5sBqwLyDu99CVMCIzW7MVrc0xgycOLkDwClRsPD67z01rgl0cd2+OkLmc
+	bo7ZbZyuGrIvk97wmdM8jRjJ4N7wyuFnsdOKFZ3ZSaZCUt6Z30Ors2E6viJt08yERkBK6gRBvdwEa
+	mUtJTOXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJYDf-00FDTl-F7; Sun, 22 Jan 2023 11:09:03 +0000
-Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
+	id 1pJair-00FMp0-HI; Sun, 22 Jan 2023 13:49:25 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJYDU-00FDR2-Ja; Sun, 22 Jan 2023 11:08:54 +0000
-Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 5FB2618839B5;
-	Sun, 22 Jan 2023 11:08:43 +0000 (UTC)
-Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id 44DED2500261;
-	Sun, 22 Jan 2023 11:08:43 +0000 (UTC)
-Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id 3727B9EC000B; Sun, 22 Jan 2023 11:08:43 +0000 (UTC)
-X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
+	id 1pJaie-00FMnc-7N
+	for linux-mediatek@lists.infradead.org; Sun, 22 Jan 2023 13:49:14 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id f25-20020a1c6a19000000b003da221fbf48so6760889wmc.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 22 Jan 2023 05:49:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=W2uRWqFF0r7q2TBMIaKQWmaMLNnBJspMVsHJ2UF06HY=;
+        b=A5nrwbz9H/JghFPYjDYxiF530ecHYrVdNXPJISoleEMn961zrzTqWzfeKn88HBVwWD
+         swdMlnsnKpW2FAXUsX5SNegxl7ZB/FmB2eHGT7tgaJf/JY/P39W9oSZBZf724q/QCbLU
+         2WKi54/8Y1ECJG1KLNuuO5bdukWTWooVfA15Dfn/+yIYSH4mtXLJCoDJsh/wamgTMudA
+         vQMlhY9lLBhZmlpZQjGZy6NGyK1JjeY6GjZn3/g2NQgnsUqOgX36aQwG1WPEDYF9rbKR
+         v1UYab0dwAKBjHXkdgS3ww4wtTcR8ukC6149Teh8dQJve1NVZgvjqFgFNK2vC9cKvud7
+         7Wwg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=W2uRWqFF0r7q2TBMIaKQWmaMLNnBJspMVsHJ2UF06HY=;
+        b=MTcT0aixiDKOXb6hyzPw6tDiNuO3evkOnwzcq0p/XxEgixbYcQ9lemtQKsRE3Pmk7G
+         AVDfFRko4iSF6zN78cq8EhV30Q1zA1KF6v1vfachM7PRvyAFeC2m7xyne0r60ewUP2UT
+         rfskGRiS6Snt2gHy+1anHMj01D0dmaIWud3jZ0f/70tPsUSs7pAO4Xq/w7KH90wbBPRn
+         66ntL+My0+vaWWEkTtasGkZC0u5Y8MMkYdQN1ycluYP5WSZudN9OMOK/xBmWPtzdvpnA
+         nUQESsgDA7UVtrwvSyUiYrHR2T5LqYVqXqLSx3UNGbUuzm72gdLsorqyYtF+uwpNqm06
+         8Hxw==
+X-Gm-Message-State: AFqh2krl8fleQgg1hTxjcRKAviTyVNMJzjeicH9E/Uq/UE7tl2a6e2O+
+	eKAtXPD1CvfqfjdP3pySZbHNew==
+X-Google-Smtp-Source: AMrXdXsO8kqG9ZRaMxEGmJ0/tMT938JibYEZWNhJ1g920foowoq6eZiI5F8tqalMzBJU2Pz6wZ9L3Q==
+X-Received: by 2002:a05:600c:1712:b0:3d9:a145:91a with SMTP id c18-20020a05600c171200b003d9a145091amr20679919wmn.28.1674395349413;
+        Sun, 22 Jan 2023 05:49:09 -0800 (PST)
+Received: from [192.168.1.109] ([178.197.216.144])
+        by smtp.gmail.com with ESMTPSA id 21-20020a05600c26d500b003d9b87296a9sm7547873wmv.25.2023.01.22.05.49.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 22 Jan 2023 05:49:08 -0800 (PST)
+Message-ID: <bb386e57-0826-93aa-d97c-72d277991141@linaro.org>
+Date: Sun, 22 Jan 2023 14:49:06 +0100
 MIME-Version: 1.0
-Date: Sun, 22 Jan 2023 12:08:42 +0100
-From: netdev@kapio-technology.com
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
- Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Eric Dumazet
- <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt Kanzenbach
- <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung Huh
- <woojung.huh@microchip.com>, "maintainer:MICROCHIP KSZ SERIES ETHERNET
- SWITCH DRIVER" <UNGLinuxDriver@microchip.com>, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
- Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, =?UTF-8?Q?Cl=C3=A9ment_L=C3=A9ger?=
- <clement.leger@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
- <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
- <razor@blackwall.org>, Russell King <linux@armlinux.org.uk>, Christian
- Marangi <ansuelsmth@gmail.com>, open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>, "open list:RENESAS RZ/N1
- A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>, "moderated
- list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>
-Subject: Re: [RFC PATCH net-next 2/5] net: dsa: propagate flags down towards
- drivers
-In-Reply-To: <20230118230135.szu6a7kvt2mjb3i5@skbuf>
-References: <20230117185714.3058453-1-netdev@kapio-technology.com>
- <20230117185714.3058453-3-netdev@kapio-technology.com>
- <20230117231750.r5jr4hwvpadgopmf@skbuf>
- <e4acb7edb300d41a9459890133b928b4@kapio-technology.com>
- <20230118230135.szu6a7kvt2mjb3i5@skbuf>
-User-Agent: Gigahost Webmail
-Message-ID: <746b27d5f83b95f17eca18e22843951a@kapio-technology.com>
-X-Sender: netdev@kapio-technology.com
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.0
+Subject: Re: [PATCH v3 1/3] dt-bindings: clock: Add apmixedsys/topckgen
+ compatibles for MT7981
+Content-Language: en-US
+To: Daniel Golle <daniel@makrotopia.org>, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Miles Chen <miles.chen@mediatek.com>,
+ Edward-JW Yang <edward-jw.yang@mediatek.com>,
+ Johnson Wang <johnson.wang@mediatek.com>,
+ Fabien Parent <fparent@baylibre.com>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>, Sam Shih
+ <sam.shih@mediatek.com>, Jianhui Zhao <zhaojh329@gmail.com>
+References: <cover.1674233728.git.daniel@makrotopia.org>
+ <ae9acd210c1566b4bd72b09df4430bcad4a36c9b.1674233728.git.daniel@makrotopia.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <ae9acd210c1566b4bd72b09df4430bcad4a36c9b.1674233728.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230122_030852_820427_3560F457 
-X-CRM114-Status: GOOD (  12.54  )
+X-CRM114-CacheID: sfid-20230122_054912_317742_09112B00 
+X-CRM114-Status: UNSURE (   8.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,24 +106,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023-01-19 00:01, Vladimir Oltean wrote:
-> On Wed, Jan 18, 2023 at 11:35:08PM +0100, netdev@kapio-technology.com 
-> wrote:
+On 20/01/2023 18:23, Daniel Golle wrote:
+> Add compatible string for MT7981 to existing binding documenation
 
->> When the new dynamic flag is true, all drivers will ignore it in patch 
->> #3,
->> so basically nothing will change by that.
-> 
-> This is not true, because it assumes that DSA never called 
-> port_fdb_add()
-> up until now for bridge FDB entries with the BR_FDB_STATIC flag unset,
-> which is incorrect (it did).
-> 
-> So what will change is that drivers which used to react to those bridge
-> FDB entries will stop doing so.
-> 
+typo: documentation
 
-So the solution to this problem could be to only set the is_dyn flag in 
-combination with the added_by_user flag. So an 'and' operation with the 
-two in br_switchdev_fdb_populate()?
+(or better just drop the word - it is redundant)
+
+> at mediatek,apmixedsys.yaml and mediatek,topckgen.yaml.
+> 
+> Signed-off-by: Jianhui Zhao <zhaojh329@gmail.com>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+
+
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Best regards,
+Krzysztof
+
 
