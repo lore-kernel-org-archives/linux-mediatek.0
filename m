@@ -4,80 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28969C25B50
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jan 2023 10:17:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6330AC25B50
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jan 2023 10:44:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VicuVzYu4s6fn4J013oQR8HfGltLPxIwfCDN/KofZV4=; b=VeEbQTir5Gk6PzL6ngCesWNc28
-	9bEJoV/pP3L3bNivzP8FbXH9WTKOkbrm7Qq3NgRRPo/M6C4NjEaNJel1wx8dKt8JnoZpeLsS72wFR
-	NHwd3cRpRY+RIzWdLKNHz6aVGOsEMXWjf1sCJIuK9fiC6D7cjev5+PGQUMzb/csUl8vxFjftG6U3A
-	FkyajejOL84g6vrLHppW16X++t0hYimcaulEF02F6EmZKOF9uVn7Df8VBUdBG8tfyANCTWRVM/kka
-	QAUIfL125sncUl4alvDScUo5meUSLQRYE8AaxunSgv9OmAHbbps5Ed4RSZN4tO9cEny9uE3OiPXHW
-	OkcqhL8A==;
+	bh=DFxG+3+AuEwK9dzCd11bJRVbzf/YkEZyr1PAY32IkjE=; b=dGH+u1MUV/CW7tdH9SLwB+qfiH
+	bR9Tzhg1ZyGC6lyp5jW5tZPJ7gZ5fcg7ZtlDYBdfPYgxSAD14QuJebQdTUwNfOSayY7OEputZGq9F
+	3xA83s4/uVLTY9qmR4zALJ7ruNjpzidgVm/YIQ4BN4LQMImfgr/E0GWgP2KWvCG/vQ3IEdVFllt0A
+	doyd8rQBXPCWD37SeCHFaCqI4VjMFBikl19ELCqSRcEWJvdueYl+NCWWvuzFsZQioCJZuikGI+k6b
+	n3jd3Fj4e/cMSozXxnffUqMDJhpklYy7jZGOr0vQGaryL5W4Bz77OIj0Qo0/f2DBsZnNpSg4lwkgV
+	46N6FWAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJtt9-00GkIS-1z; Mon, 23 Jan 2023 10:17:19 +0000
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+	id 1pJuJl-00Gshr-2a; Mon, 23 Jan 2023 10:44:49 +0000
+Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJtir-00Gg9P-CW
-	for linux-mediatek@lists.infradead.org; Mon, 23 Jan 2023 10:06:44 +0000
-Received: by mail-yw1-x112e.google.com with SMTP id 00721157ae682-4b718cab0e4so164298687b3.9
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Jan 2023 02:06:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=VicuVzYu4s6fn4J013oQR8HfGltLPxIwfCDN/KofZV4=;
-        b=Y6ClXDCRtaM0NFUm2exFLL9k/94ruQcZKAH6AGrXv44azxyMt5YFlavlrXbinR0jop
-         DU1fhE18zgcsGj0kmkI7OSQG0EO9+VmIZkKZKxAS8wXy8sjQvRsgvTKwT7m3D2FCvglL
-         /ecwm2GbkU4KzTay2o7Wd8BbgsXxXmBnjks0x1u0tI3kWXpz26bluupkbvQJ0jPZjHgW
-         mLdP3xYta2Xv/cnV2L7H7nWAJCnqiXx7CxqSgj/LFGP6HO33lWP5jO1eS4ToRmEbZ9Ff
-         XNcfYlfwf3Pt2yTdGcISpX9AQTPWMF9p+ZUTYaEdhthXOTtNnHcMJgzXA1vWJ92BdEvg
-         qbtQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=VicuVzYu4s6fn4J013oQR8HfGltLPxIwfCDN/KofZV4=;
-        b=A7wo1iOeS2FrOzaK3h6wIzRQtwAx1buWh+H3+h3DyrqbG2Fo5XbC4L2aRKtkKazfhK
-         9DVHTymHC4dp1RkHfz0QDVqSnmQdu9/rhduqHuX2Pa/M+1Gz5Qr4dA+7vFJ8sRAseSz2
-         ouLpZNuMSOgqzGMfUnj3ELIfrzKuW5O382ENNPhSaSzfVNjV4uhADYm6Dx8f5gCvWG0F
-         6qDtCjlAN4Ro3ne/DOlyRLh7MU15vmX07R1xpKVX5D7+z6ISbMmdsAJrQAvk+4GDX/Pz
-         UUv9vuPQiyT9OC/fS3ZgTVmV1h6P3cocPo8rj0AOxpTqXSUq2GijduZP+jBffeAiJXqE
-         zx4w==
-X-Gm-Message-State: AFqh2ko7IevMLPVonliL1VbQCK0EtB1mPrNEnnL/aB5Cm+nRE2+MMUfP
-	gb6oxKOT44hTLeV2twQpZ9F6j4/+wENl4Vvdusc7sxFIimOm8Q9t
-X-Google-Smtp-Source: AMrXdXu00x2BMrHmuqKFdmwf8soxBKobdwtYbxJRewGUxxnrJfPYQTlkT0upDkADd3uCyDg9kDJIpyrZS/Q3hl4Q2C8=
-X-Received: by 2002:a81:4006:0:b0:46b:c07c:c1d9 with SMTP id
- l6-20020a814006000000b0046bc07cc1d9mr827028ywn.56.1674468399283; Mon, 23 Jan
- 2023 02:06:39 -0800 (PST)
+	id 1pJuJa-00Gsfn-MH; Mon, 23 Jan 2023 10:44:40 +0000
+Received: from 3ffe.de (0001.3ffe.de [IPv6:2a01:4f8:c0c:9d57::1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 9E6F641;
+	Mon, 23 Jan 2023 11:44:30 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
+	t=1674470670;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=DFxG+3+AuEwK9dzCd11bJRVbzf/YkEZyr1PAY32IkjE=;
+	b=VdV5rc8IrJMFjBa6mto/mGtQoXEGtCUqj8STBbOoayWmrEWIXIX88kYqpel7XFP2/KZel/
+	36ppyAyqN1vpFgVr6YlGgYvLtfh2CpDJrOEkQFva0MEUflK4LsbL014Btz1/LN4I22+jvl
+	l3Bkzz2K0VLMFH+8mBXQsLAW9uYsyOePaVgjB+zHj4Xcle7Dlf9gNTqpHgKeAU9GBHBAhL
+	nKQFX61FWp9SiyEpdF7Ol8W8WqyZOdg9/R+rcpxDeVVqPp2E53pYMvrq74N9ulW1nkVcmi
+	KDdXDCulaWhYCGpaesZFCzQkWH0BBiBPO0NREK33biEnVUjNCwZ6R3PrCIEUwg==
 MIME-Version: 1.0
-References: <20230118-mt8365-spi-support-v1-0-842a21e50494@baylibre.com>
- <20230118-mt8365-spi-support-v1-2-842a21e50494@baylibre.com>
- <60766c7b-abb2-3afb-aa16-0e1385b88a73@linaro.org> <CAFGrd9rtO0B2XWEEU6gtv39PndjdjLL6tbRWimWT3RvLu1GFrQ@mail.gmail.com>
- <259d738b-5717-8fda-22f0-c61db4660e95@linaro.org>
-In-Reply-To: <259d738b-5717-8fda-22f0-c61db4660e95@linaro.org>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Mon, 23 Jan 2023 11:06:27 +0100
-Message-ID: <CAFGrd9qENTZV2fs52HPv291=AJdcBHpd2L_uoc9PhbO1vcKw=w@mail.gmail.com>
+Date: Mon, 23 Jan 2023 11:44:30 +0100
+From: Michael Walle <michael@walle.cc>
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: broonie@kernel.org, devicetree@vger.kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-spi@vger.kernel.org, matthias.bgg@gmail.com, robh+dt@kernel.org
 Subject: Re: [PATCH 2/2] spi: spidev: add new mediatek support
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Mark Brown <broonie@kernel.org>, 
-	Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-spi@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <CAFGrd9qXL-u4XzG9MLK2zbKoDudhTYpr-gJaZPjbysJ9Fo2gnQ@mail.gmail.com>
+References: <20230118-mt8365-spi-support-v1-2-842a21e50494@baylibre.com>
+ <20230120082054.610626-1-michael@walle.cc>
+ <CAFGrd9qXL-u4XzG9MLK2zbKoDudhTYpr-gJaZPjbysJ9Fo2gnQ@mail.gmail.com>
+User-Agent: Roundcube Webmail/1.4.13
+Message-ID: <2aa2ff64cfd3b5ccd1342873fffa6cb4@walle.cc>
+X-Sender: michael@walle.cc
+Content-Type: text/plain; charset=UTF-8;
+ format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230123_020641_557372_B391F6D3 
-X-CRM114-Status: GOOD (  14.73  )
+X-CRM114-CacheID: sfid-20230123_024439_144649_03EB7D4F 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,49 +78,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
- Because there are no logical order:
-    { .compatible =3D "rohm,dh2228fv", .data =3D &spidev_of_check },
-    { .compatible =3D "lineartechnology,ltc2488", .data =3D &spidev_of_chec=
-k },
-    { .compatible =3D "semtech,sx1301", .data =3D &spidev_of_check },
-    { .compatible =3D "lwn,bk4", .data =3D &spidev_of_check },
-    { .compatible =3D "dh,dhcom-board", .data =3D &spidev_of_check },
-    { .compatible =3D "menlo,m53cpld", .data =3D &spidev_of_check },
-    { .compatible =3D "cisco,spi-petra", .data =3D &spidev_of_check },
-    { .compatible =3D "micron,spi-authenta", .data =3D &spidev_of_check },
-    { .compatible =3D "mediatek,genio", .data =3D &spidev_of_check },
+Hi,
 
-I can put it first then before "rohm", or before
-"micron,spi-authenta" you prefer.
+Am 2023-01-23 10:37, schrieb Alexandre Mergnat:
+> Le ven. 20 janv. 2023 à 09:20, Michael Walle <michael@walle.cc> a écrit 
+> :
+>> 
+>> From: Alexandre Mergnat <amergnat@baylibre.com>
+>> 
+>> > Add the "mediatek,genio" compatible string to support Mediatek
+>> > SPI controller on the genio boards.
+>> 
+>> What is the use case of having the spidev? What if I want to
+>> connect a device with a linux driver to it? It seems like you
+>> just want to expose the SPI bus on the pin header. There was a
+>> similar discussion for a mikrobus connector [1].
+>> 
+> Yes I want to expose the SPI on the pin header for two reasons:
 
-I can also introduce another patch in my serie to re-order everything.
+Then "mediatek,genio" doesn't really describe the hardware, does it?
+If you read that linked thread, NXP was also trying exposing the SPI
+bus on a pin header. IMHO this is just misusing the userspace spi-dev.
 
-Le ven. 20 janv. 2023 =C3=A0 08:47, Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> a =C3=A9crit :
->
-> On 19/01/2023 20:18, Alexandre Mergnat wrote:
-> > Le jeu. 19 janv. 2023 =C3=A0 17:49, Krzysztof Kozlowski
-> > <krzysztof.kozlowski@linaro.org> a =C3=A9crit :
-> >>
-> >> On 19/01/2023 17:28, Alexandre Mergnat wrote:
-> >>>       { .compatible =3D "micron,spi-authenta", .data =3D &spidev_of_c=
-heck },
-> >>> +     { .compatible =3D "mediatek,genio", .data =3D &spidev_of_check =
-},
-> >>
-> >> Please run scripts/checkpatch.pl and fix reported warnings.
-> >
-> > Actually I did.
-> > I saw: "WARNING: DT compatible string "mediatek,genio" appears
-> > un-documented -- check ./Documentation/devicetree/bindings/"
-> > But there are no bindings for spidev. I've made some grep on already
-> > supported compatible devices like "micron,spi-authenta", but I didn't
-> > find documentation to add "mediatek,genio".
->
-> Another point - why is this after "micron"? Don't add entries to the end
-> but in order.
->
-> Best regards,
-> Krzysztof
->
+That being said, exposing something on a pinheader (or on a standardized
+connector) seems like a common thing and we should be working towards
+a good solution. I still think Robs proposal for the mikrobus connector
+makes also sense for your case.
+
+-michael
 
