@@ -4,78 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAF59C05027
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jan 2023 15:08:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8116FC54E94
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jan 2023 15:41:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JM1EiOocNtSZA8MsnSOByXfINK+alIpF0Dhm3T9y7wc=; b=oZGhd4C+hOWb6Ws2v7wTgQM2s5
-	QbFDFAMw4OEV6HhsV2VtNmSxdHzlxr6Z8xPvtONDik66ZFaYAjXWBt6xfSNkzrDdTyAwYp3EllZQN
-	vqU5/zyBjCFKVjgz2xMfPgW9DVePKYXlf6WPcSzajGPI2IWHjgGzR8pG6dHvjph66PXyl052lDXV1
-	qsI30aFhl4gwj3Tu8NDfhM7MCESnriK5ScYljH1Ld5jZ23AfsjQWhqTREzCi65Vob2dE9U6crS/n5
-	eEhz9TYM8IG0rWwJtN8D6dU5jwrxZxr2mfaIqb1LH8yOoXxqHWUUzEZe4A4XsVwaBrzG7jX2z1Y4d
-	8wmMHwDQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=OFTnHcRctLWrnULhb3EI/HUIzsZhbsTYXYP8OfwRkEw=; b=fBDJ7SLJLiMjsTNRzo/tL6XBPH
+	H6Cxhe+JApyL0V8V9iTYKGItnSj+Q/Sv5K3eAuuWduZdmB1SSUU0A1kjgPhdjrblu/bgVovEJFuk+
+	B1z/iXBxnGttOryWSBXdA+lFP3GG8oOgiDttoJAYY8BaSBjuH4OwCw3RB8962TVbaIsSLKhb51T1Z
+	wqEv+TI/TzXGZFL1K8uavyUk/9ltmBUZe6I92CRHxlH02NrulJNKWujswIRiZR32p9FHU6wAA5sk1
+	XRDLM8Mec+4ruvE9ep+5usnMJrg4K6BIIyPkUk5fQWgy9b6qi+TU2rYUshNSqdjcsuiNP0Nex01B/
+	JirNmd7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJyQM-0004Ie-Ia; Mon, 23 Jan 2023 15:07:54 +0000
-Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
+	id 1pJywS-000Gaf-Dm; Mon, 23 Jan 2023 15:41:04 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJyQJ-0004H3-GY
-	for linux-mediatek@lists.infradead.org; Mon, 23 Jan 2023 15:07:53 +0000
-Received: by mail-yb1-xb32.google.com with SMTP id p141so12413203ybg.12
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Jan 2023 07:07:50 -0800 (PST)
+	id 1pJyYp-00073O-Lb
+	for linux-mediatek@lists.infradead.org; Mon, 23 Jan 2023 15:16:44 +0000
+Received: by mail-wr1-x431.google.com with SMTP id y1so6632277wru.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Jan 2023 07:16:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=JM1EiOocNtSZA8MsnSOByXfINK+alIpF0Dhm3T9y7wc=;
-        b=M2x2MjTHjmUlY72HKk4rlnXeJkdFfgeXmtMqYIyp8cmQJ8MtURsID4V59mR9+0Cn8U
-         stkKjYi7X8vbNQipHx9DzCo5RgQyzvB6dknGpuiE2l1ptYtEc2rzCbOVgw0m7H4XAL8o
-         +33Ibf5zFZ7swAPkUpjetRJkoz78HepNsRNWQ6hKfnyVD+7J3g+/TWrKGY9bKjHhpOAB
-         UpYZdp852Txr3UQCAxYOFzoCRl8im3RVsf6FIRyK4TTq6k6UUy8cfgqeU7UC2MbTxumt
-         Pu1wxP/1iGZTTYVkRqg3vdhp89nB6/obEXACanGagUvroApU7sosjl94Y0xWiiFpDO7k
-         v56g==
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=OFTnHcRctLWrnULhb3EI/HUIzsZhbsTYXYP8OfwRkEw=;
+        b=ntVxbmy6Fq0vOni4vVui6s4bRpjxK3RukrFp13xG0a5SYybDV2IsZk7PoZx297/T7m
+         xUdg3rdDVHEYXmeCsp/nof1/mYreJEWye+gvVmJNxlGoRlvsKu+rs0i3PMysgqkxyszv
+         vGQ9EirwDhLgGMfK5z64e42HMg4ED50n6jfbOM4pQFmxc8rF+n1fXrs//huwKsLV9bEh
+         pjBgRNIlU2p63XQC+KIk/qdYEbK3VUpZxtXtOJE9kjmlHjnvPtbnDAuowlRyErae0rdi
+         XbpL6sjoApOUeneDfVkL/z5rFuobGwgGR0Yl4HG7lr7OHj9s/Y5PVaQcWesrjk0PFjtN
+         ozwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=JM1EiOocNtSZA8MsnSOByXfINK+alIpF0Dhm3T9y7wc=;
-        b=m826at/oM8DY0aJmOPOfO5tJ1AqPhslj9t1VhcwnSs6JFFmkqzBNnbjDSDnAL8Bhdd
-         A66mIftz0XA20+iZYPst1czutB9fQwFkdyUQkFeLHDrJGEObV6+qfMmFnGg/z2IV6Wum
-         XOj529F6aMXT1uaKqWx2AY5oSeNfL4couV1vinl8V5rUYbSIleXuQZV9eHHh6DFNDx0X
-         I/8ymXgR1haQe/ntzRdNGFbIYKNCBjXBTbUEBN5stiv3bm14G+ublchnY89ls9PDKs5o
-         zHsFT2DwtJVDFZgoU3O5OwwDLa8EEWOOrT7QQpVZcnNkNH7itpS4sxq9RMZbZQrq70zZ
-         joow==
-X-Gm-Message-State: AFqh2kpcn3y/S6FPxHlPqFPgCjR0AxwzhYsj3P+qNfAjnaqWo+k8nmE/
-	WU0Gldt8VAQ6wvVIe73tNd181J+/vU04JPOpXtMP1g==
-X-Google-Smtp-Source: AMrXdXtou+r1eGkUjO+yV5sepHYYEBThh559isR/Qxq8Kt/3Do7Ef2BAHj6FQrPgGPw8IKZFv6I1Yuaq3ctMN14OTH4=
-X-Received: by 2002:a25:690a:0:b0:70b:87c6:4fe with SMTP id
- e10-20020a25690a000000b0070b87c604femr2900478ybc.550.1674486469535; Mon, 23
- Jan 2023 07:07:49 -0800 (PST)
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=OFTnHcRctLWrnULhb3EI/HUIzsZhbsTYXYP8OfwRkEw=;
+        b=agPe8jvxdzlKw51jqHwGsey/ERgCiRwBVU/hzcOGJfidU92+AttaQBgRw0hj6nYLNl
+         U6qoYZ99DequhyP57LacwEZefiS/UgDkN6PsVWQ4auEgwxxnaqWKRl8WtbIdRVKg1LLZ
+         MqB88raOWl/eoC8B9Ax2E+c4ZPF7glVfubJ56en/gMQhRho1jOPFApN/ib41iyOTkb76
+         ypYJWlwUncf3YhcdHdRz53dk7WDBdgm3G/b4ibkC+uxpypTeugc+foSZJvv57NCotL9v
+         Rxtyn0/BTqq5zAHcbj1ZVodmZxzRHh6i611+XOcUOUEzOQ6ze7PVbfQCSiFJpcSt+cbh
+         Mt0A==
+X-Gm-Message-State: AFqh2koQ1CG1Cu5VDDws1Vgnz49AQxkar07IGxiEkckrBxirtt3t4fIm
+	BFg5dVoWorvMTiMsz/imgsN39w==
+X-Google-Smtp-Source: AMrXdXuKXxzCkpYs6AOdh5Ygh9/C4C8N1s66O4nAlyeXCjk2dt5C/yN0NuE+xCc1aM7XRI8/Wwd9rA==
+X-Received: by 2002:adf:dc88:0:b0:2bb:ddc0:dcc0 with SMTP id r8-20020adfdc88000000b002bbddc0dcc0mr20331561wrj.31.1674486998285;
+        Mon, 23 Jan 2023 07:16:38 -0800 (PST)
+Received: from krzk-bin.. ([178.197.216.144])
+        by smtp.gmail.com with ESMTPSA id k3-20020a5d6e83000000b00289bdda07b7sm4529287wrz.92.2023.01.23.07.16.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 23 Jan 2023 07:16:37 -0800 (PST)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 1/2] arm64: dts: mediatek: mt7622: drop serial clock-names
+Date: Mon, 23 Jan 2023 16:16:33 +0100
+Message-Id: <20230123151634.370011-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20230118-mt8365-spi-support-v1-2-842a21e50494@baylibre.com>
- <20230120082054.610626-1-michael@walle.cc> <CAFGrd9qXL-u4XzG9MLK2zbKoDudhTYpr-gJaZPjbysJ9Fo2gnQ@mail.gmail.com>
- <Y857VOG5upNJfpdM@sirena.org.uk>
-In-Reply-To: <Y857VOG5upNJfpdM@sirena.org.uk>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Mon, 23 Jan 2023 16:07:38 +0100
-Message-ID: <CAFGrd9qww=s1iox+cye_-JW=LPpUdKjLfGO1+V_1J92z7eniOw@mail.gmail.com>
-Subject: Re: [PATCH 2/2] spi: spidev: add new mediatek support
-To: Mark Brown <broonie@kernel.org>
-Cc: Michael Walle <michael@walle.cc>, devicetree@vger.kernel.org, 
-	krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-spi@vger.kernel.org, matthias.bgg@gmail.com, robh+dt@kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230123_070751_609242_EFBB046E 
-X-CRM114-Status: GOOD (  15.02  )
+X-CRM114-CacheID: sfid-20230123_071639_773286_871610C2 
+X-CRM114-Status: UNSURE (   9.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,24 +92,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le lun. 23 janv. 2023 =C3=A0 13:19, Mark Brown <broonie@kernel.org> a =C3=
-=A9crit :
->
-> On Mon, Jan 23, 2023 at 10:37:58AM +0100, Alexandre Mergnat wrote:
->
-> > Yes I want to expose the SPI on the pin header for two reasons:
-> > - It's an Evaluation Kit board, I believe exposing SPI helps new
-> > customers to try/understand it.
->
-> That's not how this works.  Anyone connecting something to the
-> SPI header will need to update the DT to reflect whatever they
-> have connected, if that is something that should be controlled
-> with spidev then they should add the compatible for that thing
-> to the driver.  If that is something that has a regular driver
-> then the regular driver will be used.
+The serial node does not use clock-names:
 
-Got it. I think this series should be dropped then. If someone needs
-the SPI, then he should use overlay (or modify the DTS locally).
-I thought I could use spidev to bring SPI into the userspace, to help
-future users play with it ("/dev/spidev0.0").
+  mt7622-bananapi-bpi-r64.dtb: serial@1100c000: Unevaluated properties are not allowed ('clock-names' was unexpected)
+
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+index 146e18b5b1f4..62487a3c4db1 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+@@ -526,7 +526,6 @@ btif: serial@1100c000 {
+ 		reg = <0 0x1100c000 0 0x1000>;
+ 		interrupts = <GIC_SPI 90 IRQ_TYPE_LEVEL_LOW>;
+ 		clocks = <&pericfg CLK_PERI_BTIF_PD>;
+-		clock-names = "main";
+ 		reg-shift = <2>;
+ 		reg-io-width = <4>;
+ 		status = "disabled";
+-- 
+2.34.1
+
 
