@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0D13C05027
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jan 2023 16:30:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29A7AC38142
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jan 2023 16:30:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=1d5ojnmia1Y4CLSFeMu2wE+MLDW3yZPfv1hdEIVgr0A=; b=gNjKPJ1MHfJc6mRGAHMVDN9O1/
-	su8Fhe8xvwSZU2oQGKTbNv3m/G8105Iy3ZbF7HpvDwVgT7uS5LENmVbW7qOR4ANRImQbNnAX2G1WX
-	LJskWjM93n0gUsLBKucA3Wg8a8pTpDEKl2MT3WuZ+4bonPNoWUuXgV3GfM7R8dZPSETExLEBhT/ja
-	+P1qAX02ityqLr1ZPuGmzlMLOWpMBbORkgHjCYYJOPYkBKeIEiVPag8rwl4X9rW/CqcCO4rOdislP
-	MfRxYW69uwU8NahAAum852X5rcuYBIO6OPP4tdnWI7YXvi3b3uiiXlc4goRE/AlKBujTf739OveyO
-	8gvnoIGw==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1hgLz6o6NOhRQW3qOtoP4+/IX9vTrGiJtyHS7zEj4CE=; b=UqdZykA+8mKYaUhNkYB7OkXPcN
+	Su1YTMQjZpjLcj/2PS6P8Gdat+vqfkPuJXHHbW6UOHD2EBdGTfB9/oV9NJRxd/ztNFxJOGRzbB7B6
+	CL/yb2aWTQPltx0oz5Nz/vsvFsRM3stjg/T4HIdZMYArEww3weX29eguGagjSgyqc3AUjSIx5WjZN
+	I05ne37fNYCx9UvwzVhmLsH6tY/FKOoqP3Qn8eTvAiX30151J7lKu19q9WAcNfXd+FpJURYWtZU9p
+	qGJVCWkniDXlm5NXLAvxbdKI60Tu1fVoe+KLSMIDCrX0s5R9xBsySDSGPB0QTakWreHJYKoEueW5k
+	ZX5INeAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJziK-000YKf-UT; Mon, 23 Jan 2023 16:30:33 +0000
+	id 1pJziO-000YM4-HB; Mon, 23 Jan 2023 16:30:36 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJzL5-000QGB-Ja; Mon, 23 Jan 2023 16:06:35 +0000
+	id 1pJzL5-000QGR-Jx; Mon, 23 Jan 2023 16:06:39 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8B09B6602E19;
-	Mon, 23 Jan 2023 16:06:20 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 270926602E39;
+	Mon, 23 Jan 2023 16:06:22 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1674489981;
-	bh=cQC3SstRN0i+rvAOG3ydA4+K6fOMQx+oZJ/RtdVRVpw=;
-	h=From:To:Cc:Subject:Date:From;
-	b=et/J8I8vWx34O+uyFxgCXVxZQYlkSJwYerq+782D+3/vyLydpK1LW4NJB/MnGYvja
-	 7daHL7g9uGu7Au5vdVrI1rEt/2BxZQJftUU9huccAqA/zkuxNL3NaFB7U3t71m6+7X
-	 remb2zKawD6ZiKN9yHZ5OlyZMj89MPlgM0ie0eRUOFL+DSnkapAv5f/rKNptT4rSPU
-	 9MI5H82KP3vuc0Cl1uGq9GsJLBs14ZQrKpo7uVlfSaFWdupWrEN0Bw3POWWfLScqS8
-	 9UScJ4m1cKEEmJbXafsKxWZ+4tajbM6imq4Kf0eepjqT2tlFy2KR8tVD5AyF3SqIsY
-	 ec2HzgVzl99QQ==
+	s=mail; t=1674489982;
+	bh=a//s0VQPI4VdLC1yskDrbe3IDSo3z5asw/jCKWGhMlQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=H3V1YsI/b+cbffNHubYqbr0HJ7rUbYaejxLw+JGWCgYDdM4NWGo0N/D08482o4TqI
+	 Q7R9Lgt+M023xCUnAiQW3HEviuOqk69dXNzV4ufWXNyeu2bsGKhruDo+bTCOmEEge0
+	 XNdHYZvCYM6D5fd5MjSgG5CET4ba2iqhmaL5xOuzGhhZg/41scThqm58W/HPG/1m/h
+	 DpRqNnV9teGc9T/zLhYqu0wF63mlmAgNUuZcPofkwCBGTPJyUlbQuuSR2a0JwCqCRi
+	 QNSOCcBPUNP61fNPQT1XTA5TvaOp/SmZuLGfROcw6GrKnoRbNit1RyeEcXivfrdb1A
+	 6yW8j4K1va6JQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: thierry.reding@gmail.com
 Cc: u.kleine-koenig@pengutronix.de,
@@ -53,16 +53,17 @@ Cc: u.kleine-koenig@pengutronix.de,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 0/2] pwm: mtk-disp: Fix backlight configuration at boot
-Date: Mon, 23 Jan 2023 17:06:13 +0100
-Message-Id: <20230123160615.375969-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 2/2] pwm: mtk-disp: Configure double buffering before reading in .get_state()
+Date: Mon, 23 Jan 2023 17:06:15 +0100
+Message-Id: <20230123160615.375969-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230123160615.375969-1-angelogioacchino.delregno@collabora.com>
+References: <20230123160615.375969-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230123_080631_847552_1953F237 
-X-CRM114-Status: UNSURE (   7.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230123_080631_922127_E3B1E815 
+X-CRM114-Status: GOOD (  15.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,24 +78,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since the pwm-mtk-disp driver was fixed to get PWM_EN state from the
-right register, an old two-wrongs-make-one-right issue emerged: as a
-result, MT8192 Asurada Spherion got no backlight at boot unless a
-suspend/resume cycle was performed.
-Also, the backlight would sometimes not get updated with the requested
-value, requiring the user to change it back and forth until it worked.
+The DISP_PWM controller's default behavior is to always use register
+double buffering: all reads/writes are then performed on shadow
+registers instead of working registers and this becomes an issue
+in case our chosen configuration in Linux is different from the
+default (or from the one that was pre-applied by the bootloader).
 
-This series fixes both of the aforementioned issues found on MT8192.
+An example of broken behavior is when the controller is configured
+to use shadow registers, but this driver wants to configure it
+otherwise: what happens is that the .get_state() callback is called
+right after registering the pwmchip and checks whether the PWM is
+enabled by reading the DISP_PWM_EN register;
+At this point, if shadow registers are enabled but their content
+was not committed before booting Linux, we are *not* reading the
+current PWM enablement status, leading to the kernel knowing that
+the hardware is actually enabled when, in reality, it's not.
 
-AngeloGioacchino Del Regno (2):
-  pwm: mtk-disp: Disable shadow registers before setting backlight
-    values
-  pwm: mtk-disp: Configure double buffering before reading in
-    .get_state()
+The aforementioned issue emerged since this driver was fixed with
+commit 0b5ef3429d8f ("pwm: mtk-disp: Fix the parameters calculated
+by the enabled flag of disp_pwm") making it to read the enablement
+status from the right register.
 
- drivers/pwm/pwm-mtk-disp.c | 34 +++++++++++++++++++++++-----------
- 1 file changed, 23 insertions(+), 11 deletions(-)
+Configure the controller in the .get_state() callback to avoid
+this desync issue and get the backlight properly working again.
 
+Fixes: 3f2b16734914 ("pwm: mtk-disp: Implement atomic API .get_state()")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/pwm/pwm-mtk-disp.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
+index 82b430d881a2..fe9593f968ee 100644
+--- a/drivers/pwm/pwm-mtk-disp.c
++++ b/drivers/pwm/pwm-mtk-disp.c
+@@ -196,6 +196,16 @@ static int mtk_disp_pwm_get_state(struct pwm_chip *chip,
+ 		return err;
+ 	}
+ 
++	/*
++	 * Apply DISP_PWM_DEBUG settings to choose whether to enable or disable
++	 * registers double buffer and manual commit to working register before
++	 * performing any read/write operation
++	 */
++	if (mdp->data->bls_debug)
++		mtk_disp_pwm_update_bits(mdp, mdp->data->bls_debug,
++					 mdp->data->bls_debug_mask,
++					 mdp->data->bls_debug_mask);
++
+ 	rate = clk_get_rate(mdp->clk_main);
+ 	con0 = readl(mdp->base + mdp->data->con0);
+ 	con1 = readl(mdp->base + mdp->data->con1);
 -- 
 2.39.0
 
