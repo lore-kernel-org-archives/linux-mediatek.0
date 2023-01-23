@@ -4,70 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD411C38142
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jan 2023 09:14:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA3A8C38142
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jan 2023 09:17:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J6D3Z+rL/kSjDwtcfzqTjQkCgAcKq6mcuDqDjlB8tIY=; b=gy71lIJSqQNiQ+RxfmsacJlHZ7
-	Mu2cWUtlf4jzDdvxbRMB6gMoT2+AjBW6qzV7ZGh3Wh+gad0nqJyy+un7/2n9FQ053Wh2Z6AAefHep
-	5YuWAY+I2KK1UUEyu/5Y7ExBkmdgmPceJN5HGBxybVcb0efZUkjcMBZ/XTiIHOgVZllrhsPu1GuNl
-	QMnleODzrjC/nFiMdUnIzC7rrlUXXJiKNPzL5k5APRuY2rTK9XkwWJwZ3naH1G5N3syBkUsQgiNon
-	5Z1yZHEpmunnT8rkQJTRSortUqmgVH7TGByrSLIz9aTKoKbsznYmr32DuzzdO+UJAEdHWQlyLR9o0
-	ABi0f/iQ==;
+	Mime-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=YkNx3mgLipQJhG+GYImQ79kbUnDwDwiamP4NsmHL+BM=; b=Ox+4xOzNk8zMvBNaF1GtEQiav5
+	oUmdUKhq8sXXr0GvQ3pARo77RbG6uTpSOv6CRD/5H5znWZGjtTy7JdvbbnRlvxZdogyV6YMHzL9jd
+	bcyLfNYWVLfNVmlfUIHiltR3GlkceAGwny8Imzk4gZq/xAbx20RoJqHcgKPD6qqgXaSw2V1FuiEDq
+	ikvmZ7wZgYLgO293n6El681pDVocvdidsvkiPi6PPLG46SGyUFM40NxbbXpyqFl2RVrToSGbBOE7c
+	Z4kYw8IDtvpacPu1HD+5HkLWCsMJKuQc91tBDVcBUBdayVRMx+13AYqBqb3TPfIf2LL3stAk+5T4V
+	qX/4K8ZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJsuS-00GThL-LZ; Mon, 23 Jan 2023 09:14:36 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pJswt-00GUR5-QI; Mon, 23 Jan 2023 09:17:07 +0000
+Received: from securemail.qrsnap.io ([50.126.96.22] helo=securemail.qrnsap.io)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJsuH-00GTdr-7a; Mon, 23 Jan 2023 09:14:26 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B1E4A6600358;
-	Mon, 23 Jan 2023 09:14:22 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1674465263;
-	bh=4HIAtVi1kXnmDL51f6x/c8XKm1ukMWybodqRfMejQiw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PSyV1alFkTW/LzpaZHAERun4E/EE5RqgbuxQ+OGFaB4HiCcBm0d1WjO0KGf10g6cX
-	 4VyJG1bdVrOlKf8MQMtlUv+hsy1qeEcRtB5g7PnAUN37XzkXwrPkN6MbYVyUh3j5aV
-	 ewGbHhqizHo65ISbyU669XthMkgX6zof58KL7VuRr/D+GXxOfbvZ5c7N52giXu3OaG
-	 Ct2vFwCGPClriB+6BTmWxuwdNkyIxj9fRUCeWnDRexreToCpS1OT+5s115ZZ2jpwJM
-	 iOAK45DunHb4jo96QeMmuXVngR3sT7X3SVapsgmv0646faIkRWr5FvXdYRGZIsSSXs
-	 nPSVF7yP9ajyQ==
-Message-ID: <8b0d1a4b-a2d3-0e17-9b31-95258a855807@collabora.com>
-Date: Mon, 23 Jan 2023 10:14:20 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v4 3/3] clk: mediatek: add MT7981 clock support
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Miles Chen <miles.chen@mediatek.com>,
- Edward-JW Yang <edward-jw.yang@mediatek.com>,
- Johnson Wang <johnson.wang@mediatek.com>,
- Fabien Parent <fparent@baylibre.com>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>, Sam Shih
- <sam.shih@mediatek.com>, Jianhui Zhao <zhaojh329@gmail.com>
-References: <cover.1674401764.git.daniel@makrotopia.org>
- <367cf74b038281d235681f6e7fd6f3f7046c962b.1674401764.git.daniel@makrotopia.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <367cf74b038281d235681f6e7fd6f3f7046c962b.1674401764.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+	id 1pJswg-00GUL7-C3; Mon, 23 Jan 2023 09:16:55 +0000
+From: Reese Russell <git@qrsnap.io>
+To: git@qrsnap.io
+Cc: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Kalle Valo <kvalo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Deren Wu <deren.wu@mediatek.com>,
+	YN Chen <YN.Chen@mediatek.com>,
+	Ben Greear <greearb@candelatech.com>,
+	linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] Added Netgear AXE3000 (A8000) usb_device_id to mt7921u_device_table[]
+Date: Mon, 23 Jan 2023 01:05:50 -0800
+Message-Id: <20230123090555.21415-1-git@qrsnap.io>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230123_011425_451573_3D43CC3C 
-X-CRM114-Status: UNSURE (   8.99  )
+X-CRM114-CacheID: sfid-20230123_011654_447277_2C332F8D 
+X-CRM114-Status: UNSURE (   7.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,19 +68,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/01/23 16:44, Daniel Golle ha scritto:
-> Add MT7981 clock support, include topckgen, apmixedsys, infracfg and
-> ethernet subsystem clocks.
-> 
-> The drivers are based on clk-mt7981.c which can be found in MediaTek's
-> SDK sources. To be fit for upstream inclusion the driver has been split
-> into clock domains and the infracfg part has been significantly
-> de-bloated by removing all the 1:1 factors (aliases).
-> 
-> Signed-off-by: Jianhui Zhao <zhaojh329@gmail.com>
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Issue: Though the Netgear AXE3000 (A8000) is based on the mt7921
+chipset because of the unique USB VID:PID combination this device
+does not initialize/register. Thus making it not plug and play.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Fix: Adds support for the Netgear AXE3000 (A8000) based on the Mediatek
+mt7921au chipset. The method of action is adding the USD VID/PID
+pair to the mt7921u_device_table[] array.
 
+Notes: A retail sample of the Netgear AXE3000 (A8000) yeilds the following
+from lsusb D 0846:9060 NetGear, Inc. Wireless_Device. This pair
+0846:9060 VID:PID has been reported by other users on Github.
+
+Signed-off-by: Reese Russell <git@qrsnap.io>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/usb.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+index 5321d20dcdcb..62e9728588f8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+@@ -15,6 +15,8 @@
+ static const struct usb_device_id mt7921u_device_table[] = {
+ 	{ USB_DEVICE_AND_INTERFACE_INFO(0x0e8d, 0x7961, 0xff, 0xff, 0xff),
+ 		.driver_info = (kernel_ulong_t)MT7921_FIRMWARE_WM },
++	{ USB_DEVICE_AND_INTERFACE_INFO(0x0846, 0x9060, 0xff, 0xff, 0xff),
++		.driver_info = (kernel_ulong_t)MT7921_FIRMWARE_WM },
+ 	{ },
+ };
+ 
+-- 
+2.37.2
 
 
