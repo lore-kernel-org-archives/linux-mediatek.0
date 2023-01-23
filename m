@@ -4,55 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21E42C38142
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jan 2023 16:05:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A31EC05027
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jan 2023 16:07:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gY0//JTxAY+w+mrqeloBZtOyUmkia0w/AT3mYVToHto=; b=q/+Nn1QKLmorF4twLg59QZEQc2
-	z6VRIf5w1tWPFp9sDRXg61qz6f9LIsZuYl7jz4Hl1bOwMCQVQ+cx72uAjI6LRcrca0gKYW265VEP5
-	Lk6QQJSxPsoGRXcn4Waol4ZnU4/FK1TBh90c9PdGhzufyeLn84sbdVIvzyuK60MV//NUy08TzewuS
-	lyAhHqYPPTVNg0IpWXkwCZeSf1/wBgWmTc9WISAvOmwW9IlUCNAiVVrLIopW4tdH2RV9xdSRpEobs
-	SNK8vI02d/qYqntdxRIx4BOjP0vdWC1laszKxt1wpzlj3HjGN1SwUx+WH1bzG1+z4cJoF4dcZ60lk
-	wyPPns1g==;
+	bh=UQ+/a8w/qFj3luZoDJ3OxPjYbwogmzi2kqkpt3vBPmQ=; b=bShVbWEDLiGZAdEmpAYbHVRWBN
+	6ksPaW8XF+GCu9+j+IrKUo5pYXaPIwlB6c9+r2bgAXk/JXA+0O3qRTz9eTk/F8k+WrHTrAiU8O93r
+	a0ip2DZEZWncc4tgaCZmOPibbrrohOTm5uElCok0wZJj0mtB8AMO74MIjAwhykyndYer753k7YfRg
+	NehtMn7kpgSxEOeYeZImtd7itGp9VFfWsz0sie2hcsJagBfa8az9/QQbjnXt5tAKPISTeqgER1xT8
+	LSlIbV/M2saB8Qir5IWkfFw1ozjxJBm/upgd8MnwKqXU51IYjX97Q/n/Q102cS3VpJR2T1aGApuUt
+	D3tX9C/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJzK6-000PxJ-EF; Mon, 23 Jan 2023 16:05:30 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1pJzLX-000QRL-MM; Mon, 23 Jan 2023 16:06:59 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJz6J-000KZX-IM
-	for linux-mediatek@lists.infradead.org; Mon, 23 Jan 2023 15:51:18 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id E0B61B80DEF;
-	Mon, 23 Jan 2023 15:51:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 129C6C433EF;
-	Mon, 23 Jan 2023 15:51:10 +0000 (UTC)
-Message-ID: <200db318-73e8-988c-7992-e529e332a6a1@xs4all.nl>
-Date: Mon, 23 Jan 2023 16:51:09 +0100
+	id 1pJzAk-000MNV-RL
+	for linux-mediatek@lists.infradead.org; Mon, 23 Jan 2023 15:55:52 +0000
+Received: by mail-wm1-x329.google.com with SMTP id c10-20020a05600c0a4a00b003db0636ff84so8939123wmq.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Jan 2023 07:55:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=UQ+/a8w/qFj3luZoDJ3OxPjYbwogmzi2kqkpt3vBPmQ=;
+        b=VWS7PSmLmcJaTf6s/uhF+6wnvE+BRrCrll9s928FrSFccqhWO2UJvnlL2172c3R4BG
+         baRGfNGYybTJ1LR97ouds3lNSYT8qGmBhAdsjsUV546yl55AzJOKPYUWxLnfbvYeSrx9
+         QCWrCKMzl1u9q/CRqKphUzwokHw+oju5ZLZq1JnFj+d40qH6lzC00YG8Pb7PWDDux65R
+         aZmNwO97F8yUgYsLPeyQMTsoJTJzwr9v9V8yqrcwR4eDRbH1Er+hFD3lgoowNAy2hzjE
+         NF2x6ukHrhImJI21NHC0LyBw30x1IOvup7SRC4sbmDvQOjrajtr07Jn770O8tTq4viIJ
+         2qLA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=UQ+/a8w/qFj3luZoDJ3OxPjYbwogmzi2kqkpt3vBPmQ=;
+        b=S5c3fZYmZSdqauwjR6yVWigAWExm+Audl66WY2D8mjk96zH6NeLy6Bi+q3WnIuQ2KG
+         4pLdtZPPmB5dxP6XwUHwzJ9E/SlDekJ9+pmJ06ivXFahfffsfkkkQQhf91ojCjbSq9NT
+         NhDlALna65lS4D21Yj97JcE2YA3ykBDk6fcSxG44hdbBv14+fOFU+F6wtQYvpVbfI+ti
+         W+LXxYl/fjbS3FlORi85oPpBgAiFi5zdR7dm8NkUjM7SLeFVIn8ENPT9uWuPZJQXFahy
+         Kw0KoTlQKX0zd62aAb1rpDizJpBpHoNQ8UtioSV7Z/EP0Cpqp7Xc6KJus1ELXXummFZV
+         xRhg==
+X-Gm-Message-State: AFqh2kpRJMI1WC0eOL4Vzv/xocwazB3ToGMH2fiQegel3l09x2PRJhji
+	j1sLF1grF5Wv8CSwOCk/x9QEgA==
+X-Google-Smtp-Source: AMrXdXt8WYT9onKbkfM8CaJV81Gp9fudEaR2Scx8A4s5srCWVOUCIqmfOHP0RzuwYfOTN5WR9mt20w==
+X-Received: by 2002:a05:600c:2d05:b0:3d0:85b5:33d3 with SMTP id x5-20020a05600c2d0500b003d085b533d3mr23415558wmf.16.1674489349204;
+        Mon, 23 Jan 2023 07:55:49 -0800 (PST)
+Received: from [192.168.1.109] ([178.197.216.144])
+        by smtp.gmail.com with ESMTPSA id o24-20020a05600c511800b003d9de0c39fasm14623257wms.36.2023.01.23.07.55.48
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 23 Jan 2023 07:55:48 -0800 (PST)
+Message-ID: <b2fee032-cd19-eea9-730f-0502274884ba@linaro.org>
+Date: Mon, 23 Jan 2023 16:55:47 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v5 00/12] Add support for multiple chips
+ Thunderbird/102.7.0
+Subject: Re: [PATCH 2/2] spi: spidev: add new mediatek support
 Content-Language: en-US
-To: Moudy Ho <moudy.ho@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-media@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20230113064104.22402-1-moudy.ho@mediatek.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230113064104.22402-1-moudy.ho@mediatek.com>
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-spi@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20230118-mt8365-spi-support-v1-0-842a21e50494@baylibre.com>
+ <20230118-mt8365-spi-support-v1-2-842a21e50494@baylibre.com>
+ <60766c7b-abb2-3afb-aa16-0e1385b88a73@linaro.org>
+ <CAFGrd9rtO0B2XWEEU6gtv39PndjdjLL6tbRWimWT3RvLu1GFrQ@mail.gmail.com>
+ <259d738b-5717-8fda-22f0-c61db4660e95@linaro.org>
+ <CAFGrd9qENTZV2fs52HPv291=AJdcBHpd2L_uoc9PhbO1vcKw=w@mail.gmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <CAFGrd9qENTZV2fs52HPv291=AJdcBHpd2L_uoc9PhbO1vcKw=w@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230123_075116_031851_C3DD87DB 
-X-CRM114-Status: GOOD (  20.18  )
+X-CRM114-CacheID: sfid-20230123_075550_977580_A066EA49 
+X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,196 +101,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/01/2023 07:40, Moudy Ho wrote:
-> Changes since v4:
-> - Rebase on linux-next.
-> - Fix potential frame size overflow in "mtk-mdp3-regs.c".
-> - Fix OOB in MDP3 component clocks in "mtk-mdp3-comp.*".
-> - Reconfigure the shared memory between MDP3 kerenl and SCP.
+On 23/01/2023 11:06, Alexandre Mergnat wrote:
+>  Because there are no logical order:
+>     { .compatible = "rohm,dh2228fv", .data = &spidev_of_check },
+>     { .compatible = "lineartechnology,ltc2488", .data = &spidev_of_check },
+>     { .compatible = "semtech,sx1301", .data = &spidev_of_check },
+>     { .compatible = "lwn,bk4", .data = &spidev_of_check },
+>     { .compatible = "dh,dhcom-board", .data = &spidev_of_check },
+>     { .compatible = "menlo,m53cpld", .data = &spidev_of_check },
+>     { .compatible = "cisco,spi-petra", .data = &spidev_of_check },
+>     { .compatible = "micron,spi-authenta", .data = &spidev_of_check },
+>     { .compatible = "mediatek,genio", .data = &spidev_of_check },
 > 
-> Changes since v3:
-> - Rebase on linux-next.
-> - In the file "mtk-mdp3-m2m.c", use the limited resolution defined by
->   each platform to replace the default format.
-> - Add platform ID in driver data, and refine shared memory structure preprocessing.
-> - Simplify the way to get mutex ID in function "mdp_path_subfrm_require".
-> 
-> Changes since v2:
-> - Depend on :
->   [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=687004
-> - Split the shared memory header(mtk-img-ipi.h) by preprocessing instead, and
->   classify the generic parts into "mtk-mdp3-type.h", and move
->   chip-specific parts to"mt8183/mdp3-comp-mt8183.h".
-> 
-> Changes since v1:
-> - Depend on :
->   [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=687004
-> - For hardware-specific structures in the shared memory header(mtk-img-ipi.h),
->   split the relevant functions and structure definitions.
-> 
-> Hi,
-> 
-> To support multiple chips, a chip configuration header file needs to be created
-> and the relevant information split and moved into it.
+> I can put it first then before "rohm", or before
+> "micron,spi-authenta" you prefer.
 
-FYI: compiling this series with smatch results in the following warnings and errors:
-
-drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c:285 mdp_vpu_process() warn: inconsistent returns 'vpu->lock'.
-drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c:43 is_output_disabled() error: uninitialized symbol 'dis_output'.
-drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c:43 is_output_disabled() error: uninitialized symbol 'dis_tile'.
-drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c:427 mdp_cmdq_send() warn: missing error code 'ret'
-drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c:59 get_comp_public_id() error: 'mdp_dev' dereferencing possible ERR_PTR()
-
-Regards,
-
-	Hans
+Yeah, I noticed it afterwards.
 
 > 
-> The v4l2-compliance test results list is as follows:
-> v4l2-compliance 1.23.0-4942, 32 bits, 32-bit time_t
-> v4l2-compliance SHA: 4cf258c24026 2022-07-28 15:43:45
-> 
-> Compliance test for mtk-mdp3 device /dev/video0:
-> 
-> Driver Info:
-> 	Driver name      : mtk-mdp3
-> 	Card type        : MediaTek MDP3
-> 	Bus info         : platform:14001000.mdp3-rdma0
-> 	Driver version   : 6.2.0
-> 	Capabilities     : 0x84204000
-> 		Video Memory-to-Memory Multiplanar
-> 		Streaming
-> 		Extended Pix Format
-> 		Device Capabilities
-> 	Device Caps      : 0x04204000
-> 		Video Memory-to-Memory Multiplanar
-> 		Streaming
-> 		Extended Pix Format
-> 
-> Required ioctls:
-> 	test VIDIOC_QUERYCAP: OK
-> 	test invalid ioctls: OK
-> 
-> Allow for multiple opens:
-> 	test second /dev/video0 open: OK
-> 	test VIDIOC_QUERYCAP: OK
-> 	test VIDIOC_G/S_PRIORITY: OK
-> 	test for unlimited opens: OK
-> 
-> Debug ioctls:
-> 	test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
-> 	test VIDIOC_LOG_STATUS: OK (Not Supported)
-> 
-> Input ioctls:
-> 	test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
-> 	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-> 	test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
-> 	test VIDIOC_ENUMAUDIO: OK (Not Supported)
-> 	test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
-> 	test VIDIOC_G/S_AUDIO: OK (Not Supported)
-> 	Inputs: 0 Audio Inputs: 0 Tuners: 0
-> 
-> Output ioctls:
-> 	test VIDIOC_G/S_MODULATOR: OK (Not Supported)
-> 	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-> 	test VIDIOC_ENUMAUDOUT: OK (Not Supported)
-> 	test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
-> 	test VIDIOC_G/S_AUDOUT: OK (Not Supported)
-> 	Outputs: 0 Audio Outputs: 0 Modulators: 0
-> 
-> Input/Output configuration ioctls:
-> 	test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
-> 	test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
-> 	test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
-> 	test VIDIOC_G/S_EDID: OK (Not Supported)
-> 
-> Control ioctls:
-> 	test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
-> 	test VIDIOC_QUERYCTRL: OK
-> 	test VIDIOC_G/S_CTRL: OK
-> 	test VIDIOC_G/S/TRY_EXT_CTRLS: OK
-> 	test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
-> 	test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
-> 	Standard Controls: 4 Private Controls: 0
-> 
-> Format ioctls:
-> 	test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
-> 	test VIDIOC_G/S_PARM: OK (Not Supported)
-> 	test VIDIOC_G_FBUF: OK (Not Supported)
-> 	test VIDIOC_G_FMT: OK
-> 	test VIDIOC_TRY_FMT: OK
-> 	test VIDIOC_S_FMT: OK
-> 	test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
-> 	test Cropping: OK
-> 	test Composing: OK
-> 	test Scaling: OK
-> 
-> Codec ioctls:
-> 	test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
-> 	test VIDIOC_G_ENC_INDEX: OK (Not Supported)
-> 	test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
-> 
-> Buffer ioctls:
-> 	test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
-> 	test VIDIOC_EXPBUF: OK
-> 	test Requests: OK (Not Supported)
-> 	test TIME32/64: OK
-> 
-> Test input 0:
-> 
-> Streaming ioctls:
-> 	test read/write: OK (Not Supported)
-> 	test blocking wait: OK
->     (snip)
-> 	test MMAP (no poll): OK
-> 	(snip)
-> 	test MMAP (select): OK
->     (snip)
-> 	test MMAP (epoll): OK
-> 	test USERPTR (no poll): OK (Not Supported)
-> 	test USERPTR (select): OK (Not Supported)
-> 	test DMABUF: Cannot test, specify --expbuf-device
-> 
-> Stream using all formats:
-> 	(snip)
-> Total for mtk-mdp3 device /dev/video0: 1174, Succeeded: 1174, Failed: 0, Warnings: 0
-> 
-> Moudy Ho (12):
->   media: platform: mtk-mdp3: fix potential frame size overflow in
->     mdp_try_fmt_mplane()
->   media: platform: mtk-mdp3: add chip configuration header file
->   media: platform: mtk-mdp3: chip config split about component settings
->   media: platform: mtk-mdp3: chip config split about subcomponents
->   media: platform: mtk-mdp3: chip config split about color format
->   media: platform: mtk-mdp3: chip config split about resolution
->     limitations
->   media: platform: mtk-mdp3: chip config split about pipe info
->   media: platform: mtk-mdp3: extend mdp_color format for compressed mode
->   media: platform: mtk-mdp3: dynamically allocate component clocks
->   media: platform: mtk-mdp3: Split general definitions used in MDP3
->   media: platform: mtk-mdp3: decompose hardware-related information in
->     shared memory
->   media: platform: mtk-mdp3: reconfigure shared memory
-> 
->  .../mediatek/mdp3/mt8183/mdp3-comp-mt8183.h   | 144 +++++
->  .../mediatek/mdp3/mt8183/mdp3-plat-mt8183.h   | 409 +++++++++++++
->  .../platform/mediatek/mdp3/mtk-img-ipi.h      | 188 +-----
->  .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 145 +++--
->  .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 567 ++++++++++++------
->  .../platform/mediatek/mdp3/mtk-mdp3-comp.h    |  27 +-
->  .../platform/mediatek/mdp3/mtk-mdp3-core.c    |  49 +-
->  .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  18 +-
->  .../platform/mediatek/mdp3/mtk-mdp3-m2m.c     |  28 +-
->  .../platform/mediatek/mdp3/mtk-mdp3-m2m.h     |   1 -
->  .../platform/mediatek/mdp3/mtk-mdp3-regs.c    | 287 +--------
->  .../platform/mediatek/mdp3/mtk-mdp3-regs.h    | 214 +++----
->  .../platform/mediatek/mdp3/mtk-mdp3-type.h    |  53 ++
->  .../platform/mediatek/mdp3/mtk-mdp3-vpu.c     | 194 +++---
->  .../platform/mediatek/mdp3/mtk-mdp3-vpu.h     |  29 +-
->  15 files changed, 1397 insertions(+), 956 deletions(-)
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mt8183/mdp3-comp-mt8183.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-type.h
-> 
+> I can also introduce another patch in my serie to re-order everything.
+
+I already sent a patch for it.
+
+Best regards,
+Krzysztof
 
 
