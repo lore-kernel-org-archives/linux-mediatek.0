@@ -4,57 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B3F3C38142
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jan 2023 15:01:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52AFAC54E94
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jan 2023 15:05:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JDLPfcgb27zqEQ5bTGG0tGIbIT0CsvUk7CGZvgPlU+A=; b=jeoKe4sqzabR8jPd+U5KUZJ/tL
-	3wRCQp2NCLOOb+lETzDxazb/QkRaeK+Om+09V8BchUfXBPFrQuwQwIuRz+rygH71cr83TrBCIaZQf
-	o4cBfLTyFKLo5PEft/fgPatayC64EKUfEPu5RmxM1Up2s2IZaHhU/+IcWo/tKzkY8aaiqTq9vEljA
-	HAMiSMXubfPLLINWon7s0EQ+zqIG0cXlQfuEJ8jX6PxxcUeFZdXYIyRjeNFH2wB1YOqn7eyqxMaAw
-	9hYPsFvdtNyEr57h4HKt2dofhEwmCM0pxKRt1O2fLN8cY70kcZfmVQ7frMV8LNVHGd9uKYjRhJnym
-	qVR4LeDQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=P3rqFJi0wYIMyx4eFEnrANXBYlUWFGjnlOrB4sJY0mc=; b=b7NQXI/cchGwQ5WYPi5uXEMDZ9
+	T09751Z6F9bu3T/2Q38/K2jAv9PQuvYku7aXLO6CpJjyH7JAhTT8ENOhSpkygCQz9qiB/MaW1bkPU
+	quhUg2qjfW2co+QyVm8mrDXVAkjvaPfowb92LF+8JZRLYSvcpjZev+QxjPqs1fY0L8/ccRzQyqC7c
+	UcUNgzTZ3PPYzWWZy8qbsS2qe8o5TSuQGhkxMKQHolYSstDunTc91YxCfaN3kbWJI3xk8IIlof5Kc
+	P9bYbYRYkzYmX1IUarXPNNcNAH+0G+cDttpFpZqi9j4rnmmj2QhWl1drOZh7VUTVCnhg/JXLvesXN
+	k2RMt/iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJyKI-00036i-7x; Mon, 23 Jan 2023 15:01:38 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1pJyNn-0003bQ-9j; Mon, 23 Jan 2023 15:05:15 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJyKF-00035u-Bm
-	for linux-mediatek@lists.infradead.org; Mon, 23 Jan 2023 15:01:37 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id BF12BB80DDA;
-	Mon, 23 Jan 2023 15:01:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3FE9C433D2;
-	Mon, 23 Jan 2023 15:01:30 +0000 (UTC)
-Message-ID: <068ee5ec-6863-2c1d-39a9-b18156d4e57d@xs4all.nl>
-Date: Mon, 23 Jan 2023 16:01:29 +0100
+	id 1pJyNb-0003Xi-QC; Mon, 23 Jan 2023 15:05:05 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id cf42so18660683lfb.1;
+        Mon, 23 Jan 2023 07:05:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=P3rqFJi0wYIMyx4eFEnrANXBYlUWFGjnlOrB4sJY0mc=;
+        b=VSvjd1+J+2hfVE0rK2aWfDA0OVUPFITcaGU/EEk+ovd3PB+LZoSIbLXjg/6O4g0QkX
+         wQSOdPQHW8ShVOvuv6K4ehak+/FUBZ6bBjlKapxHcHQImaA7q7t1gEwYZmwObqGrP/PP
+         CuO1Q1/NA1X4wba91SbkMkbJ02vBgbwFgxkUGAZz0utThM5EFRk4Y/dHFQrqiTC3T8XY
+         pxEaA9cykcbArWN/Q14sLzrf2oqArLVwTmvV0IHeWZXjaXfjdJS++GDWvaf9CtXKja5B
+         /+o8WCQ6Z8OG5i90gfUfiXJhw6rQk2gldlIFYsb4njbrpXyfD3NMkTBxEGrhoTwav/UE
+         HUzA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=P3rqFJi0wYIMyx4eFEnrANXBYlUWFGjnlOrB4sJY0mc=;
+        b=uEluSrt+jwzKCF2AW6SN98wnxjkw/R1FBSLdBCBlymwPc7SJmnlUzkvtUy98+4CyOY
+         QfzoxDWYlxPXpZy04JBeuRBt5gtKScTSM88lJIal3ffEV/tjmqDYr+Jw8XvlBzyGGAyS
+         UTjJdBlfADcphC/GYwB1Y9bkE/EPYqsNz0LyTjb9+TXEELOg9LsWeNUvu2TYaBxmqBrB
+         Kmjn2OcHN1HAsz4zfE/uuAAdQSTBXwDyTifu3CwgX3LTGCjoPnpurumsoiK7N1+RWMVI
+         pYQLAb5JwfBofLK3y412aly4ftvPi1pt8JQ9JEjTpj2aIJiMElICaJ67YrAu0BFFCKCm
+         DQ4A==
+X-Gm-Message-State: AFqh2koIC40gjvYRPDeHXubwpHlCK2wWaypLGZRuYT2eQlx2DW5nYilm
+	VGjDzhC251smpnSoj9Bcglo=
+X-Google-Smtp-Source: AMrXdXuHnINfpXEMI/5P6IHfO27xMrOaiT1cQnmYVDzQ2npYaq/u8eUakJKoBBnDu0eFJD/hs2QaqA==
+X-Received: by 2002:a05:6512:340a:b0:4d2:551e:3838 with SMTP id i10-20020a056512340a00b004d2551e3838mr7464162lfr.29.1674486299330;
+        Mon, 23 Jan 2023 07:04:59 -0800 (PST)
+Received: from mobilestation ([95.79.133.202])
+        by smtp.gmail.com with ESMTPSA id b8-20020a0565120b8800b004d593f218absm1011508lfv.108.2023.01.23.07.04.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 23 Jan 2023 07:04:58 -0800 (PST)
+Date: Mon, 23 Jan 2023 18:04:56 +0300
+From: Serge Semin <fancer.lancer@gmail.com>
+To: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
+Cc: broonie@kernel.org, miquel.raynal@bootlin.com, linus.walleij@linaro.org,
+	krzysztof.kozlowski@linaro.org, vireshk@kernel.org,
+	gregkh@linuxfoundation.org, linux-spi@vger.kernel.org,
+	linux-kernel@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com,
+	kernel@pengutronix.de, linux-aspeed@lists.ozlabs.org,
+	openbmc@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+	netdev@vger.kernel.org, linux-wpan@vger.kernel.org,
+	libertas-dev@lists.infradead.org, linux-wireless@vger.kernel.org,
+	linux-mtd@lists.infradead.org, linux-iio@vger.kernel.org,
+	linux-riscv@lists.infradead.org, linux-media@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, greybus-dev@lists.linaro.org,
+	linux-staging@lists.linux.dev
+Subject: Re: [PATCH v2 02/13] spi: Replace all spi->chip_select and
+ spi->cs_gpiod references with function call
+Message-ID: <20230123145953.ytaaq3x4tetgepyf@mobilestation>
+References: <20230119185342.2093323-1-amit.kumar-mahapatra@amd.com>
+ <20230119185342.2093323-3-amit.kumar-mahapatra@amd.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v5 02/12] media: platform: mtk-mdp3: add chip
- configuration header file
-Content-Language: en-US
-To: Moudy Ho <moudy.ho@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-media@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20230113064104.22402-1-moudy.ho@mediatek.com>
- <20230113064104.22402-3-moudy.ho@mediatek.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230113064104.22402-3-moudy.ho@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230119185342.2093323-3-amit.kumar-mahapatra@amd.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230123_070135_718721_1AA286D5 
-X-CRM114-Status: GOOD (  21.97  )
+X-CRM114-CacheID: sfid-20230123_070503_902046_76D55349 
+X-CRM114-Status: GOOD (  16.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,111 +106,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/01/2023 07:40, Moudy Ho wrote:
-> In order to be compatible with more MDP3 chip settings in the future,
-> move the chip-related configuration to a separate header file.
+On Fri, Jan 20, 2023 at 12:23:31AM +0530, Amit Kumar Mahapatra wrote:
+> Supporting multi-cs in spi drivers would require the chip_select & cs_gpiod
+> members of struct spi_device to be an array. But changing the type of these
+> members to array would break the spi driver functionality. To make the
+> transition smoother introduced four new APIs to get/set the
+> spi->chip_select & spi->cs_gpiod and replaced all spi->chip_select and
+> spi->cs_gpiod references with get or set API calls.
+> While adding multi-cs support in further patches the chip_select & cs_gpiod
+> members of the spi_device structure would be converted to arrays & the
+> "idx" parameter of the APIs would be used as array index i.e.,
+> spi->chip_select[idx] & spi->cs_gpiod[idx] respectively.
 > 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> Signed-off-by: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
 > ---
->  .../mediatek/mdp3/mt8183/mdp3-plat-mt8183.h   | 35 +++++++++++++++++++
->  .../platform/mediatek/mdp3/mtk-mdp3-core.c    | 27 ++------------
->  2 files changed, 37 insertions(+), 25 deletions(-)
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
-> 
-> diff --git a/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h b/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
-> new file mode 100644
-> index 000000000000..3084f62e7df5
-> --- /dev/null
-> +++ b/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
-> @@ -0,0 +1,35 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +/*
-> + * Copyright (c) 2022 MediaTek Inc.
-> + * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-> + */
-> +
-> +#ifndef __MDP3_PLAT_MT8183_H__
-> +#define __MDP3_PLAT_MT8183_H__
-> +
-> +static const struct mdp_platform_config mt8183_plat_cfg = {
-> +	.rdma_support_10bit		= true,
-> +	.rdma_rsz1_sram_sharing		= true,
-> +	.rdma_upsample_repeat_only	= true,
-> +	.rsz_disable_dcm_small_sample	= false,
-> +	.wrot_filter_constraint		= false,
-> +};
-> +
-> +static const struct of_device_id mt8183_mdp_probe_infra[MDP_INFRA_MAX] = {
-> +	[MDP_INFRA_MMSYS] = { .compatible = "mediatek,mt8183-mmsys" },
-> +	[MDP_INFRA_MUTEX] = { .compatible = "mediatek,mt8183-disp-mutex" },
-> +	[MDP_INFRA_SCP] = { .compatible = "mediatek,mt8183-scp" }
-> +};
-> +
-> +static const u32 mt8183_mutex_idx[MDP_MAX_COMP_COUNT] = {
-> +	[MDP_COMP_RDMA0] = MUTEX_MOD_IDX_MDP_RDMA0,
-> +	[MDP_COMP_RSZ0] = MUTEX_MOD_IDX_MDP_RSZ0,
-> +	[MDP_COMP_RSZ1] = MUTEX_MOD_IDX_MDP_RSZ1,
-> +	[MDP_COMP_TDSHP0] = MUTEX_MOD_IDX_MDP_TDSHP0,
-> +	[MDP_COMP_WROT0] = MUTEX_MOD_IDX_MDP_WROT0,
-> +	[MDP_COMP_WDMA] = MUTEX_MOD_IDX_MDP_WDMA,
-> +	[MDP_COMP_AAL0] = MUTEX_MOD_IDX_MDP_AAL0,
-> +	[MDP_COMP_CCORR0] = MUTEX_MOD_IDX_MDP_CCORR0,
-> +};
 
-I am really not keen on storing variable declarations in a header. This belongs
-in a source.
+[nip]
 
-What you typically do is put this in a source together with the declaration
-of the mt8183_mdp_driver_data struct for the chip config, and just export that
-top-level struct as an extern.
+>  drivers/spi/spi-dw-core.c         |  2 +-
+>  drivers/spi/spi-dw-mmio.c         |  4 ++--
 
-An example of how to do this is drivers/media/platform/verisilicon/imx8m_vpu_hw.c.
+[nip]
 
-Regards,
-
-	Hans
-
-> +
-> +#endif  /* __MDP3_PLAT_MT8183_H__ */
-> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-> index 2d1f6ae9f080..658037d06250 100644
-> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-> @@ -12,33 +12,10 @@
->  #include <linux/remoteproc.h>
->  #include <linux/remoteproc/mtk_scp.h>
->  #include <media/videobuf2-dma-contig.h>
-> +
->  #include "mtk-mdp3-core.h"
->  #include "mtk-mdp3-m2m.h"
-> -
-> -static const struct mdp_platform_config mt8183_plat_cfg = {
-> -	.rdma_support_10bit		= true,
-> -	.rdma_rsz1_sram_sharing		= true,
-> -	.rdma_upsample_repeat_only	= true,
-> -	.rsz_disable_dcm_small_sample	= false,
-> -	.wrot_filter_constraint		= false,
-> -};
-> -
-> -static const struct of_device_id mt8183_mdp_probe_infra[MDP_INFRA_MAX] = {
-> -	[MDP_INFRA_MMSYS] = { .compatible = "mediatek,mt8183-mmsys" },
-> -	[MDP_INFRA_MUTEX] = { .compatible = "mediatek,mt8183-disp-mutex" },
-> -	[MDP_INFRA_SCP] = { .compatible = "mediatek,mt8183-scp" }
-> -};
-> -
-> -static const u32 mt8183_mutex_idx[MDP_MAX_COMP_COUNT] = {
-> -	[MDP_COMP_RDMA0] = MUTEX_MOD_IDX_MDP_RDMA0,
-> -	[MDP_COMP_RSZ0] = MUTEX_MOD_IDX_MDP_RSZ0,
-> -	[MDP_COMP_RSZ1] = MUTEX_MOD_IDX_MDP_RSZ1,
-> -	[MDP_COMP_TDSHP0] = MUTEX_MOD_IDX_MDP_TDSHP0,
-> -	[MDP_COMP_WROT0] = MUTEX_MOD_IDX_MDP_WROT0,
-> -	[MDP_COMP_WDMA] = MUTEX_MOD_IDX_MDP_WDMA,
-> -	[MDP_COMP_AAL0] = MUTEX_MOD_IDX_MDP_AAL0,
-> -	[MDP_COMP_CCORR0] = MUTEX_MOD_IDX_MDP_CCORR0,
-> -};
-> +#include "mt8183/mdp3-plat-mt8183.h"
+> diff --git a/drivers/spi/spi-dw-core.c b/drivers/spi/spi-dw-core.c
+> index 99edddf9958b..4fd1aa800cc3 100644
+> --- a/drivers/spi/spi-dw-core.c
+> +++ b/drivers/spi/spi-dw-core.c
+> @@ -103,7 +103,7 @@ void dw_spi_set_cs(struct spi_device *spi, bool enable)
+>  	 * support active-high or active-low CS level.
+>  	 */
+>  	if (cs_high == enable)
+> -		dw_writel(dws, DW_SPI_SER, BIT(spi->chip_select));
+> +		dw_writel(dws, DW_SPI_SER, BIT(spi_get_chipselect(spi, 0)));
+>  	else
+>  		dw_writel(dws, DW_SPI_SER, 0);
+>  }
+> diff --git a/drivers/spi/spi-dw-mmio.c b/drivers/spi/spi-dw-mmio.c
+> index 26c40ea6dd12..d511da766ce8 100644
+> --- a/drivers/spi/spi-dw-mmio.c
+> +++ b/drivers/spi/spi-dw-mmio.c
+> @@ -65,7 +65,7 @@ static void dw_spi_mscc_set_cs(struct spi_device *spi, bool enable)
+>  	struct dw_spi *dws = spi_master_get_devdata(spi->master);
+>  	struct dw_spi_mmio *dwsmmio = container_of(dws, struct dw_spi_mmio, dws);
+>  	struct dw_spi_mscc *dwsmscc = dwsmmio->priv;
+> -	u32 cs = spi->chip_select;
+> +	u32 cs = spi_get_chipselect(spi, 0);
 >  
->  static const struct mtk_mdp_driver_data mt8183_mdp_driver_data = {
->  	.mdp_probe_infra = mt8183_mdp_probe_infra,
+>  	if (cs < 4) {
+>  		u32 sw_mode = MSCC_SPI_MST_SW_MODE_SW_PIN_CTRL_MODE;
+> @@ -138,7 +138,7 @@ static void dw_spi_sparx5_set_cs(struct spi_device *spi, bool enable)
+>  	struct dw_spi *dws = spi_master_get_devdata(spi->master);
+>  	struct dw_spi_mmio *dwsmmio = container_of(dws, struct dw_spi_mmio, dws);
+>  	struct dw_spi_mscc *dwsmscc = dwsmmio->priv;
+> -	u8 cs = spi->chip_select;
+> +	u8 cs = spi_get_chipselect(spi, 0);
+>  
+>  	if (!enable) {
+>  		/* CS override drive enable */
 
+For the DW SSI part:
+Reviewed-by: Serge Semin <fancer.lancer@gmail.com>
+
+-Serge(y)
+
+[nip]
 
