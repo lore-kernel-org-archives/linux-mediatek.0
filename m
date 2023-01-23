@@ -4,78 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82FB7C38142
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jan 2023 14:58:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B3F3C38142
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jan 2023 15:01:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xvTqSv9IiiqJO7FY0k9EPMcUo95Z2K5HRqvuXpd73A4=; b=mTbsbZO0TKbJNew69rLaYifeS5
-	IHOZ/7OZZZ+SSJbKUhrVwKDTd18t5/a/92DNsp1dJ0F0dsF2OnP0fxYdhiYOFjo2ciigmj+ZsnXhv
-	cuYZ0lWaQ47wkhIsvidpGcC6No3/OoKgSsUKX4ILtfzEYyY5VxouGpyphzrATfWf/0kL4sKGWgpY3
-	RlYHvCQa2nj63yeQz1sRGrjxiNt5Ru43iaPiRA/41sw+17IxJoomX4NOP4Yfm47daYKqp8FgssJc7
-	67zrZMxXyBHcwZrmMQ2Oga7esD4NQO0Kf4WBXMAZ8UODVGSrM/hwvH5rJ5IeBRjQWVM4StpsBif3X
-	L/o8MEQA==;
+	bh=JDLPfcgb27zqEQ5bTGG0tGIbIT0CsvUk7CGZvgPlU+A=; b=jeoKe4sqzabR8jPd+U5KUZJ/tL
+	3wRCQp2NCLOOb+lETzDxazb/QkRaeK+Om+09V8BchUfXBPFrQuwQwIuRz+rygH71cr83TrBCIaZQf
+	o4cBfLTyFKLo5PEft/fgPatayC64EKUfEPu5RmxM1Up2s2IZaHhU/+IcWo/tKzkY8aaiqTq9vEljA
+	HAMiSMXubfPLLINWon7s0EQ+zqIG0cXlQfuEJ8jX6PxxcUeFZdXYIyRjeNFH2wB1YOqn7eyqxMaAw
+	9hYPsFvdtNyEr57h4HKt2dofhEwmCM0pxKRt1O2fLN8cY70kcZfmVQ7frMV8LNVHGd9uKYjRhJnym
+	qVR4LeDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJyHA-0002lN-AY; Mon, 23 Jan 2023 14:58:24 +0000
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+	id 1pJyKI-00036i-7x; Mon, 23 Jan 2023 15:01:38 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJyGz-0002je-Ss
-	for linux-mediatek@lists.infradead.org; Mon, 23 Jan 2023 14:58:15 +0000
-Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-4fda31c3351so146072597b3.11
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Jan 2023 06:58:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xvTqSv9IiiqJO7FY0k9EPMcUo95Z2K5HRqvuXpd73A4=;
-        b=weCELVEjnhgirLS0yfICmHlYM1tJJK/1wLN12zzmlA69lZ/8m7OZl49Sz1klvbgzoU
-         ne/WEVg5nXjUUCYdrmxXAnOYWpxrm0aQPTqm0gFH1HGewVCAs3YecycYgaTPaBcocZW3
-         UizWpTtV2T6B1V0KueIpIOc5VABYaNPLZNPyDWZEV128P67OAl5aVs6DoR1asmQAwz5R
-         CLePFN0oG16pKNmhr3T1iga/Y2bQK58xHS9mw4iNNDJZUnmUehfF/q+DX4P+TplSGWVR
-         Mz22E+WC/kxzVjbef1FVlrkj46Nq11iZ4Wa8Q+Qp0DLV1m0TzVzc8/5c7iaHVfV6u06g
-         Rj6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xvTqSv9IiiqJO7FY0k9EPMcUo95Z2K5HRqvuXpd73A4=;
-        b=zIYDGNK/SBCVSQVNZ3MIRs7LB8XpxPPkuZ1BFKkgm5n9kYxO25/fn7wrel6Oktztzr
-         VyRuungq6N/kfHE/nvgtOpntDik5l2hSKumM4PHUdKllaBqUkonT5NXhPJaR5j4P3ddX
-         Y+CoDshmQcbVoYiuFrehzF7onZwzaSiBm9Z/8+6E6Kxv2aqR8NUSRfjz1UB4Py/r6xS8
-         CM4tmtxrgQUX1sP9zjpCy1DcngQ5PfxHHRkS5CkpAm3+BIVPkLjG/DmBVToL3naIKjGE
-         h95kfvybTG47je6jsG5/RR0NuSDlpfy8zMd8H0eT1p/YEnd5wJkdYZnwqwDEtXZT4PLn
-         o0+w==
-X-Gm-Message-State: AFqh2krodYXowauCOKKw4y59cqip7Q8MV5N57opnD9ng0VCtrlpufFm4
-	4OHQ76ZkjXTa4j+mzNgfyhJMEe5Ra5HVm7zfEMOHLQ==
-X-Google-Smtp-Source: AMrXdXvb8K7VSIORVsr8Qw4LbxKTz53T405uI7iUamoWMQKa2zwGzQKmuAxlkobEyafiMl05CCpJpwK2s4Bv3QBaFj0=
-X-Received: by 2002:a81:11c2:0:b0:3e8:76df:4afd with SMTP id
- 185-20020a8111c2000000b003e876df4afdmr2507306ywr.380.1674485890612; Mon, 23
- Jan 2023 06:58:10 -0800 (PST)
+	id 1pJyKF-00035u-Bm
+	for linux-mediatek@lists.infradead.org; Mon, 23 Jan 2023 15:01:37 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id BF12BB80DDA;
+	Mon, 23 Jan 2023 15:01:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3FE9C433D2;
+	Mon, 23 Jan 2023 15:01:30 +0000 (UTC)
+Message-ID: <068ee5ec-6863-2c1d-39a9-b18156d4e57d@xs4all.nl>
+Date: Mon, 23 Jan 2023 16:01:29 +0100
 MIME-Version: 1.0
-References: <20230118-mt8365-spi-support-v1-2-842a21e50494@baylibre.com>
- <20230120082054.610626-1-michael@walle.cc> <CAFGrd9qXL-u4XzG9MLK2zbKoDudhTYpr-gJaZPjbysJ9Fo2gnQ@mail.gmail.com>
- <2aa2ff64cfd3b5ccd1342873fffa6cb4@walle.cc>
-In-Reply-To: <2aa2ff64cfd3b5ccd1342873fffa6cb4@walle.cc>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Mon, 23 Jan 2023 15:57:59 +0100
-Message-ID: <CAFGrd9pKuMsjmqg=mPsrwn=u7pCHdHEGaiW5PnwA_=TSte5sDw@mail.gmail.com>
-Subject: Re: [PATCH 2/2] spi: spidev: add new mediatek support
-To: Michael Walle <michael@walle.cc>
-Cc: broonie@kernel.org, devicetree@vger.kernel.org, 
-	krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-spi@vger.kernel.org, matthias.bgg@gmail.com, robh+dt@kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v5 02/12] media: platform: mtk-mdp3: add chip
+ configuration header file
+Content-Language: en-US
+To: Moudy Ho <moudy.ho@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-media@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230113064104.22402-1-moudy.ho@mediatek.com>
+ <20230113064104.22402-3-moudy.ho@mediatek.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20230113064104.22402-3-moudy.ho@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230123_065813_957969_E5B09706 
-X-CRM114-Status: GOOD (  19.26  )
+X-CRM114-CacheID: sfid-20230123_070135_718721_1AA286D5 
+X-CRM114-Status: GOOD (  21.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,43 +69,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le lun. 23 janv. 2023 =C3=A0 11:44, Michael Walle <michael@walle.cc> a =C3=
-=A9crit :
->
-> Hi,
->
-> Am 2023-01-23 10:37, schrieb Alexandre Mergnat:
-> > Le ven. 20 janv. 2023 =C3=A0 09:20, Michael Walle <michael@walle.cc> a =
-=C3=A9crit
-> > :
-> >>
-> >> From: Alexandre Mergnat <amergnat@baylibre.com>
-> >>
-> >> > Add the "mediatek,genio" compatible string to support Mediatek
-> >> > SPI controller on the genio boards.
-> >>
-> >> What is the use case of having the spidev? What if I want to
-> >> connect a device with a linux driver to it? It seems like you
-> >> just want to expose the SPI bus on the pin header. There was a
-> >> similar discussion for a mikrobus connector [1].
-> >>
-> > Yes I want to expose the SPI on the pin header for two reasons:
->
-> Then "mediatek,genio" doesn't really describe the hardware, does it?
-> If you read that linked thread, NXP was also trying exposing the SPI
-> bus on a pin header. IMHO this is just misusing the userspace spi-dev.
->
-> That being said, exposing something on a pinheader (or on a standardized
-> connector) seems like a common thing and we should be working towards
-> a good solution. I still think Robs proposal for the mikrobus connector
-> makes also sense for your case.
->
+On 13/01/2023 07:40, Moudy Ho wrote:
+> In order to be compatible with more MDP3 chip settings in the future,
+> move the chip-related configuration to a separate header file.
+> 
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> ---
+>  .../mediatek/mdp3/mt8183/mdp3-plat-mt8183.h   | 35 +++++++++++++++++++
+>  .../platform/mediatek/mdp3/mtk-mdp3-core.c    | 27 ++------------
+>  2 files changed, 37 insertions(+), 25 deletions(-)
+>  create mode 100644 drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
+> 
+> diff --git a/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h b/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
+> new file mode 100644
+> index 000000000000..3084f62e7df5
+> --- /dev/null
+> +++ b/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
+> @@ -0,0 +1,35 @@
+> +/* SPDX-License-Identifier: GPL-2.0-only */
+> +/*
+> + * Copyright (c) 2022 MediaTek Inc.
+> + * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
+> + */
+> +
+> +#ifndef __MDP3_PLAT_MT8183_H__
+> +#define __MDP3_PLAT_MT8183_H__
+> +
+> +static const struct mdp_platform_config mt8183_plat_cfg = {
+> +	.rdma_support_10bit		= true,
+> +	.rdma_rsz1_sram_sharing		= true,
+> +	.rdma_upsample_repeat_only	= true,
+> +	.rsz_disable_dcm_small_sample	= false,
+> +	.wrot_filter_constraint		= false,
+> +};
+> +
+> +static const struct of_device_id mt8183_mdp_probe_infra[MDP_INFRA_MAX] = {
+> +	[MDP_INFRA_MMSYS] = { .compatible = "mediatek,mt8183-mmsys" },
+> +	[MDP_INFRA_MUTEX] = { .compatible = "mediatek,mt8183-disp-mutex" },
+> +	[MDP_INFRA_SCP] = { .compatible = "mediatek,mt8183-scp" }
+> +};
+> +
+> +static const u32 mt8183_mutex_idx[MDP_MAX_COMP_COUNT] = {
+> +	[MDP_COMP_RDMA0] = MUTEX_MOD_IDX_MDP_RDMA0,
+> +	[MDP_COMP_RSZ0] = MUTEX_MOD_IDX_MDP_RSZ0,
+> +	[MDP_COMP_RSZ1] = MUTEX_MOD_IDX_MDP_RSZ1,
+> +	[MDP_COMP_TDSHP0] = MUTEX_MOD_IDX_MDP_TDSHP0,
+> +	[MDP_COMP_WROT0] = MUTEX_MOD_IDX_MDP_WROT0,
+> +	[MDP_COMP_WDMA] = MUTEX_MOD_IDX_MDP_WDMA,
+> +	[MDP_COMP_AAL0] = MUTEX_MOD_IDX_MDP_AAL0,
+> +	[MDP_COMP_CCORR0] = MUTEX_MOD_IDX_MDP_CCORR0,
+> +};
 
-I don't think this is the same case. For the mikrobus case, it's
-consistent to have a connector because it fit with other "add-on"
-board which can be plug on the "mother board".
-Here I've just a simple debug pin header. I've taken a look at
-raspberry pi and Beaglebone black DTS, they don't use connector, but
-DTS overlay to enable SPI. I think you're right when you say that I'm
-misusing the userspace spi-dev.
+I am really not keen on storing variable declarations in a header. This belongs
+in a source.
+
+What you typically do is put this in a source together with the declaration
+of the mt8183_mdp_driver_data struct for the chip config, and just export that
+top-level struct as an extern.
+
+An example of how to do this is drivers/media/platform/verisilicon/imx8m_vpu_hw.c.
+
+Regards,
+
+	Hans
+
+> +
+> +#endif  /* __MDP3_PLAT_MT8183_H__ */
+> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+> index 2d1f6ae9f080..658037d06250 100644
+> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+> @@ -12,33 +12,10 @@
+>  #include <linux/remoteproc.h>
+>  #include <linux/remoteproc/mtk_scp.h>
+>  #include <media/videobuf2-dma-contig.h>
+> +
+>  #include "mtk-mdp3-core.h"
+>  #include "mtk-mdp3-m2m.h"
+> -
+> -static const struct mdp_platform_config mt8183_plat_cfg = {
+> -	.rdma_support_10bit		= true,
+> -	.rdma_rsz1_sram_sharing		= true,
+> -	.rdma_upsample_repeat_only	= true,
+> -	.rsz_disable_dcm_small_sample	= false,
+> -	.wrot_filter_constraint		= false,
+> -};
+> -
+> -static const struct of_device_id mt8183_mdp_probe_infra[MDP_INFRA_MAX] = {
+> -	[MDP_INFRA_MMSYS] = { .compatible = "mediatek,mt8183-mmsys" },
+> -	[MDP_INFRA_MUTEX] = { .compatible = "mediatek,mt8183-disp-mutex" },
+> -	[MDP_INFRA_SCP] = { .compatible = "mediatek,mt8183-scp" }
+> -};
+> -
+> -static const u32 mt8183_mutex_idx[MDP_MAX_COMP_COUNT] = {
+> -	[MDP_COMP_RDMA0] = MUTEX_MOD_IDX_MDP_RDMA0,
+> -	[MDP_COMP_RSZ0] = MUTEX_MOD_IDX_MDP_RSZ0,
+> -	[MDP_COMP_RSZ1] = MUTEX_MOD_IDX_MDP_RSZ1,
+> -	[MDP_COMP_TDSHP0] = MUTEX_MOD_IDX_MDP_TDSHP0,
+> -	[MDP_COMP_WROT0] = MUTEX_MOD_IDX_MDP_WROT0,
+> -	[MDP_COMP_WDMA] = MUTEX_MOD_IDX_MDP_WDMA,
+> -	[MDP_COMP_AAL0] = MUTEX_MOD_IDX_MDP_AAL0,
+> -	[MDP_COMP_CCORR0] = MUTEX_MOD_IDX_MDP_CCORR0,
+> -};
+> +#include "mt8183/mdp3-plat-mt8183.h"
+>  
+>  static const struct mtk_mdp_driver_data mt8183_mdp_driver_data = {
+>  	.mdp_probe_infra = mt8183_mdp_probe_infra,
+
 
