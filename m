@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ECADC25B4E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jan 2023 08:11:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D273C25B4E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jan 2023 08:11:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=dJMIdeh7gUIDCtKqXhsomSitFoJwzKoPZZBaRo8PmA0=; b=pRR5/7kgjOfmaPWCJ2d97cTFlR
-	0m1i2A4PMJUlKfeaegTumWof7XlmAJw46vkKF0Pdv2a4L/oi5ZgwSIRlDA81MUDbUvSknLo/Bl+V7
-	dHI1TFt2aE+psTxQCBzQlwpiULhwHU1SEcqBEGHIMAev1B/LdYpzgwlr4u8g8OVnQn5xWvRvxqW1y
-	2E9SZOBieZbf7p0LlwrxG/7JcMalMYx/NRumoL+OTmspK9NqASWe4bD5VsuT8OvOrr9OkJc/lG25E
-	0dKuGFcxP1OSaXVE7x0Ycr6yBtIn2GT7dAWb0Gys4NY587SCvsbt8Cjzs18Tze23E/snTrlOuaPJ/
-	3cjQDZ4Q==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nfjek5I1oI6I+fvZ0/B32LKubURkbISmBCkZ0YpdN10=; b=UmfSxwbB8oewdzFsNkl5Mr4AzD
+	/ib+eTolJRZr5mbBlpIdJl2UVS+OP+urFQtiRRbrG/c756SvcDkJaiskzX3TapPROARS0s/f7JFwk
+	lYp4yvROQ0gQ41xAgh5h59ICEzrGp0O4dFeoTFjVxLFUD1UbFSeCUyko02CE1ftilYSbrx1ZCcXqn
+	crmrxNxzhQkOO4E5jag8Vdhvq/s/fEqmd7/IJEslISM34OQa4M1YgRQmje/UO8Aqf0UsyV8JgFNfS
+	uyyoQqIDMxDSWupIcQ3OtFPx3SaAMvHpPSXxt33pr3eoF8MpTBFFuySc+wO2ubay9Lxhj07iXDgv8
+	wbTPharA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKEOu-002haK-IR; Tue, 24 Jan 2023 08:11:28 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1pKEP0-002hdj-WE; Tue, 24 Jan 2023 08:11:35 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKEOq-002hWo-KW
-	for linux-mediatek@lists.infradead.org; Tue, 24 Jan 2023 08:11:27 +0000
-Received: by mail-wm1-x333.google.com with SMTP id f19-20020a1c6a13000000b003db0ef4dedcso12213636wmc.4
-        for <linux-mediatek@lists.infradead.org>; Tue, 24 Jan 2023 00:11:24 -0800 (PST)
+	id 1pKEOw-002haQ-Ng
+	for linux-mediatek@lists.infradead.org; Tue, 24 Jan 2023 08:11:32 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id c10-20020a05600c0a4a00b003db0636ff84so10305739wmq.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 24 Jan 2023 00:11:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=dJMIdeh7gUIDCtKqXhsomSitFoJwzKoPZZBaRo8PmA0=;
-        b=DFVw5yDTGtqhm8cDvw92tBgRCFIReN8WTiMBu+Kyl7BuiY52eDa9yvzb6di1VFILX8
-         ant/LKMdtDIIBVtSWrekjWtNKTJs3/IekrS47No/+yhNDsqvlrbKKTAfXctRSwe4amOf
-         vu+qw9jPcx3RSEf7YpvK5WjgQtQUqwrdBqqY45WZ8g+wlnv7FDqrUJMraSWxd5zgMz7n
-         5QNjpJqXmL9tBx0c/DXPPOSZiTijYDABaI5uO6XJRqrly7R+MfjMCGQMz9E7r4oVk+YB
-         iBD6zDQGj/Y2B1Cmbo6FjsXYOkpoXpnmRRMhQ09ijorANFcdwRrK2kxjNuYWZKCb3yCk
-         XDow==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=nfjek5I1oI6I+fvZ0/B32LKubURkbISmBCkZ0YpdN10=;
+        b=eDb2eUaNmqc6RJ4X2WI2l7rWHFeOluRyE/kcnDtOWp+0DqwtA38WsnV48j3ePYzbFP
+         EQYQxNv9ZXhvWuZbMtoLxRjrcC6np4eQaLKmXzt1SB1j2qi6KqWvzw97Qqw8q9Tcj/kJ
+         jRkpTATMw5OIV0lre30D8pKGEEkyeXkw4ljIHPMQNEyAhtrIzYwPkv7vOSeHKGF5iD40
+         wci0xsCQgObSm9c0bqJUw7B42/Mi/epy4pqCgUifQQemyne16Fh2aeGwJHrQWfBPLLGF
+         eXMXqllG6GWAuOS6znc7YpeyMd2iydmUqqH51FyZvDoPgN/LAPAB5nC35L/n6/NSluM4
+         ynWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=dJMIdeh7gUIDCtKqXhsomSitFoJwzKoPZZBaRo8PmA0=;
-        b=TnlImKreGSMwAtlmfOaybvwldQGCuG8jSq/AVGfG759vcjgYIjhx98ANfa7zdVxzva
-         ajZwQmKkVxyX7siXFb4m9kPSDyjnOGp0iCpFPm/hizrf4kNtEFubRNI7kU8pXDBHyH20
-         iMoqFhVOKFEdgOn/nabXj8h9zv8uDXl0XKuKuPTmM0mUPH8Sk+ieTy0c7T64gVDMr9m7
-         A2mRRGSR4ANwX1lqr7hBHe8ap5OFLzBRkBQnbwl7DrXet3F0P2+c6mz5uasySs1pGav4
-         r690mgdSajsAQukzBRM6Cljtg+X3Lx5ntIxuWUy8DJC4+XSo58I8LPTP9R8qzXdmbFPr
-         j+LA==
-X-Gm-Message-State: AFqh2krPW/aS8Ju2LjK+VUazH4ehf7OgKk0MNsndqUPcwlfaIMFmFFVm
-	6gtLo8T3icVyKD9oF11qxglCGQ==
-X-Google-Smtp-Source: AMrXdXv0DR2w9J1xBtCsI865Q0WjuNZPuC9tyU+oLnSNgH7tbVW9hTSFPkv5ml1XwCEOeyLt68Zp9Q==
-X-Received: by 2002:a05:600c:13c8:b0:3db:3e8:feca with SMTP id e8-20020a05600c13c800b003db03e8fecamr26589510wmg.15.1674547884049;
-        Tue, 24 Jan 2023 00:11:24 -0800 (PST)
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=nfjek5I1oI6I+fvZ0/B32LKubURkbISmBCkZ0YpdN10=;
+        b=FJBXyUNlmTqhYYUvXlWMwjb+dxgQLdWAkz/Sub2/sRLfGV9v7uvIIFBCwUFeBRgzxH
+         2VxMkzbHgzpJSyTn21+bAkBe6RC8PS9+TvwDeUz6tW67efKl25Dl61EHsFhOQnfZ/bkL
+         HxSHUF3PEjotlMP5eb7S2xUayUtiNc8nf6oXZQJothzogMnsoRJOnyNq/CxYcVAgfE+l
+         7A1zx3IbHByjvSx4lE3nbL+aAPylFp/0O0nFZKI/5Hu1hKmrCNfPe+4s0pTQeqOQ0w/4
+         bFNwb+SMywITHMcElyu6JlelTbGT99n87239svB/iNKKEmlk7ONTRuJ1Nyfk+d/H6l6i
+         F9TA==
+X-Gm-Message-State: AFqh2kpO7tmmn04H6Tz610MzEtWem1aFzUKXi3+RypHlHAKwUloIGxIf
+	MZcNG9xPmiOiGtSmv8pdHICFPw==
+X-Google-Smtp-Source: AMrXdXsAy5Fj0pQUlmUK2moB+gPQM3akwPZ40HQiL5qb7z319tG/FrGiJd4D178rigOr93uyKBy5+Q==
+X-Received: by 2002:a05:600c:4928:b0:3d2:2043:9cb7 with SMTP id f40-20020a05600c492800b003d220439cb7mr26935434wmp.5.1674547888579;
+        Tue, 24 Jan 2023 00:11:28 -0800 (PST)
 Received: from krzk-bin.. ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id o17-20020a05600c511100b003dc0d5b4fa6sm1387338wms.3.2023.01.24.00.11.19
+        by smtp.gmail.com with ESMTPSA id o17-20020a05600c511100b003dc0d5b4fa6sm1387338wms.3.2023.01.24.00.11.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Jan 2023 00:11:23 -0800 (PST)
+        Tue, 24 Jan 2023 00:11:28 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Vinod Koul <vkoul@kernel.org>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -115,18 +116,18 @@ To: Vinod Koul <vkoul@kernel.org>,
 	linux-riscv@lists.infradead.org,
 	linux-stm32@st-md-mailman.stormreply.com,
 	linux-mediatek@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Rob Herring <robh@kernel.org>
-Subject: [PATCH v2 1/2] dt-bindings: dma: drop unneeded quotes
-Date: Tue, 24 Jan 2023 09:11:16 +0100
-Message-Id: <20230124081117.31186-1-krzysztof.kozlowski@linaro.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v2 2/2] dt-bindings: dma: cleanup examples - indentation, lowercase hex
+Date: Tue, 24 Jan 2023 09:11:17 +0100
+Message-Id: <20230124081117.31186-2-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230124081117.31186-1-krzysztof.kozlowski@linaro.org>
+References: <20230124081117.31186-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230124_001124_708522_08D081B1 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20230124_001130_792627_8D9AA54E 
+X-CRM114-Status: GOOD (  12.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -141,436 +142,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Cleanup by removing unneeded quotes from refs and redundant blank lines.
-No functional impact except adjusting to preferred coding style.
+Cleanup examples:
+ - use 4-space indentation (for cases when it is neither 4 not 2 space),
+ - use lowercase hex,
+ - drop unused node's label.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com> # mediatek
-Acked-by: Rob Herring <robh@kernel.org>
-Acked-by: Hector Martin <marcan@marcan.st> # apple
----
- .../devicetree/bindings/dma/allwinner,sun4i-a10-dma.yaml        | 2 +-
- .../devicetree/bindings/dma/allwinner,sun50i-a64-dma.yaml       | 2 +-
- .../devicetree/bindings/dma/allwinner,sun6i-a31-dma.yaml        | 2 +-
- Documentation/devicetree/bindings/dma/altr,msgdma.yaml          | 2 +-
- Documentation/devicetree/bindings/dma/apple,admac.yaml          | 2 +-
- Documentation/devicetree/bindings/dma/arm-pl08x.yaml            | 2 +-
- Documentation/devicetree/bindings/dma/dma-controller.yaml       | 2 +-
- Documentation/devicetree/bindings/dma/dma-router.yaml           | 2 +-
- Documentation/devicetree/bindings/dma/fsl,edma.yaml             | 2 +-
- Documentation/devicetree/bindings/dma/ingenic,dma.yaml          | 2 +-
- Documentation/devicetree/bindings/dma/intel,ldma.yaml           | 2 +-
- Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml    | 2 +-
- .../devicetree/bindings/dma/nvidia,tegra186-gpc-dma.yaml        | 2 +-
- Documentation/devicetree/bindings/dma/nvidia,tegra210-adma.yaml | 2 +-
- Documentation/devicetree/bindings/dma/owl-dma.yaml              | 2 +-
- Documentation/devicetree/bindings/dma/qcom,bam-dma.yaml         | 2 +-
- Documentation/devicetree/bindings/dma/qcom,gpi.yaml             | 2 +-
- Documentation/devicetree/bindings/dma/renesas,rcar-dmac.yaml    | 2 +-
- Documentation/devicetree/bindings/dma/renesas,rz-dmac.yaml      | 2 +-
- Documentation/devicetree/bindings/dma/renesas,rzn1-dmamux.yaml  | 2 +-
- Documentation/devicetree/bindings/dma/renesas,usb-dmac.yaml     | 2 +-
- .../devicetree/bindings/dma/sifive,fu540-c000-pdma.yaml         | 2 +-
- Documentation/devicetree/bindings/dma/snps,dma-spear1340.yaml   | 2 +-
- Documentation/devicetree/bindings/dma/snps,dw-axi-dmac.yaml     | 2 +-
- .../devicetree/bindings/dma/socionext,uniphier-mio-dmac.yaml    | 2 +-
- .../devicetree/bindings/dma/socionext,uniphier-xdmac.yaml       | 2 +-
- Documentation/devicetree/bindings/dma/st,stm32-dma.yaml         | 2 +-
- Documentation/devicetree/bindings/dma/st,stm32-dmamux.yaml      | 2 +-
- Documentation/devicetree/bindings/dma/st,stm32-mdma.yaml        | 2 +-
- Documentation/devicetree/bindings/dma/stericsson,dma40.yaml     | 2 +-
- 30 files changed, 30 insertions(+), 30 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/dma/allwinner,sun4i-a10-dma.yaml b/Documentation/devicetree/bindings/dma/allwinner,sun4i-a10-dma.yaml
-index 26d0d8ab7984..02d5bd035409 100644
---- a/Documentation/devicetree/bindings/dma/allwinner,sun4i-a10-dma.yaml
-+++ b/Documentation/devicetree/bindings/dma/allwinner,sun4i-a10-dma.yaml
-@@ -11,7 +11,7 @@ maintainers:
-   - Maxime Ripard <mripard@kernel.org>
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   "#dma-cells":
-diff --git a/Documentation/devicetree/bindings/dma/allwinner,sun50i-a64-dma.yaml b/Documentation/devicetree/bindings/dma/allwinner,sun50i-a64-dma.yaml
-index bd599bda2653..ec2d7a789ffe 100644
---- a/Documentation/devicetree/bindings/dma/allwinner,sun50i-a64-dma.yaml
-+++ b/Documentation/devicetree/bindings/dma/allwinner,sun50i-a64-dma.yaml
-@@ -11,7 +11,7 @@ maintainers:
-   - Maxime Ripard <mripard@kernel.org>
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   "#dma-cells":
-diff --git a/Documentation/devicetree/bindings/dma/allwinner,sun6i-a31-dma.yaml b/Documentation/devicetree/bindings/dma/allwinner,sun6i-a31-dma.yaml
-index 344dc7e04931..5d554bcfab3d 100644
---- a/Documentation/devicetree/bindings/dma/allwinner,sun6i-a31-dma.yaml
-+++ b/Documentation/devicetree/bindings/dma/allwinner,sun6i-a31-dma.yaml
-@@ -11,7 +11,7 @@ maintainers:
-   - Maxime Ripard <mripard@kernel.org>
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   "#dma-cells":
-diff --git a/Documentation/devicetree/bindings/dma/altr,msgdma.yaml b/Documentation/devicetree/bindings/dma/altr,msgdma.yaml
-index b53ac7631a76..391bf5838602 100644
---- a/Documentation/devicetree/bindings/dma/altr,msgdma.yaml
-+++ b/Documentation/devicetree/bindings/dma/altr,msgdma.yaml
-@@ -14,7 +14,7 @@ description: |
-   intellectual property (IP)
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/dma/apple,admac.yaml b/Documentation/devicetree/bindings/dma/apple,admac.yaml
-index 97282469e4af..05163d124ec3 100644
---- a/Documentation/devicetree/bindings/dma/apple,admac.yaml
-+++ b/Documentation/devicetree/bindings/dma/apple,admac.yaml
-@@ -18,7 +18,7 @@ maintainers:
-   - Martin Povišer <povik+lin@cutebit.org>
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/dma/arm-pl08x.yaml b/Documentation/devicetree/bindings/dma/arm-pl08x.yaml
-index 9193b18fb75f..ab25ae63d2c3 100644
---- a/Documentation/devicetree/bindings/dma/arm-pl08x.yaml
-+++ b/Documentation/devicetree/bindings/dma/arm-pl08x.yaml
-@@ -11,7 +11,7 @@ maintainers:
- 
- allOf:
-   - $ref: /schemas/arm/primecell.yaml#
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- # We need a select here so we don't match all nodes with 'arm,primecell'
- select:
-diff --git a/Documentation/devicetree/bindings/dma/dma-controller.yaml b/Documentation/devicetree/bindings/dma/dma-controller.yaml
-index 538ebadff652..04d150d4d15d 100644
---- a/Documentation/devicetree/bindings/dma/dma-controller.yaml
-+++ b/Documentation/devicetree/bindings/dma/dma-controller.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Vinod Koul <vkoul@kernel.org>
- 
- allOf:
--  - $ref: "dma-common.yaml#"
-+  - $ref: dma-common.yaml#
- 
- # Everything else is described in the common file
- properties:
-diff --git a/Documentation/devicetree/bindings/dma/dma-router.yaml b/Documentation/devicetree/bindings/dma/dma-router.yaml
-index f8d8c3c88bcc..346fe0fa4460 100644
---- a/Documentation/devicetree/bindings/dma/dma-router.yaml
-+++ b/Documentation/devicetree/bindings/dma/dma-router.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Vinod Koul <vkoul@kernel.org>
- 
- allOf:
--  - $ref: "dma-common.yaml#"
-+  - $ref: dma-common.yaml#
- 
- description:
-   DMA routers are transparent IP blocks used to route DMA request
-diff --git a/Documentation/devicetree/bindings/dma/fsl,edma.yaml b/Documentation/devicetree/bindings/dma/fsl,edma.yaml
-index 050e6cd57727..5fd8fc604261 100644
---- a/Documentation/devicetree/bindings/dma/fsl,edma.yaml
-+++ b/Documentation/devicetree/bindings/dma/fsl,edma.yaml
-@@ -64,7 +64,7 @@ required:
-   - dma-channels
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
-   - if:
-       properties:
-         compatible:
-diff --git a/Documentation/devicetree/bindings/dma/ingenic,dma.yaml b/Documentation/devicetree/bindings/dma/ingenic,dma.yaml
-index fd5b0a8eaed8..37400496e086 100644
---- a/Documentation/devicetree/bindings/dma/ingenic,dma.yaml
-+++ b/Documentation/devicetree/bindings/dma/ingenic,dma.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Paul Cercueil <paul@crapouillou.net>
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/dma/intel,ldma.yaml b/Documentation/devicetree/bindings/dma/intel,ldma.yaml
-index a5c4be783593..d6bb553a2c6f 100644
---- a/Documentation/devicetree/bindings/dma/intel,ldma.yaml
-+++ b/Documentation/devicetree/bindings/dma/intel,ldma.yaml
-@@ -11,7 +11,7 @@ maintainers:
-   - mallikarjunax.reddy@intel.com
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml b/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
-index 9ab4d81ead35..dab468a88942 100644
---- a/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
-+++ b/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
-@@ -14,7 +14,7 @@ description: |
-   for the UART peripheral bus.
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/dma/nvidia,tegra186-gpc-dma.yaml b/Documentation/devicetree/bindings/dma/nvidia,tegra186-gpc-dma.yaml
-index 851bd50ee67f..a790e5687844 100644
---- a/Documentation/devicetree/bindings/dma/nvidia,tegra186-gpc-dma.yaml
-+++ b/Documentation/devicetree/bindings/dma/nvidia,tegra186-gpc-dma.yaml
-@@ -16,7 +16,7 @@ maintainers:
-   - Rajesh Gumasta <rgumasta@nvidia.com>
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/dma/nvidia,tegra210-adma.yaml b/Documentation/devicetree/bindings/dma/nvidia,tegra210-adma.yaml
-index fef804565b88..4003dbe94940 100644
---- a/Documentation/devicetree/bindings/dma/nvidia,tegra210-adma.yaml
-+++ b/Documentation/devicetree/bindings/dma/nvidia,tegra210-adma.yaml
-@@ -14,7 +14,7 @@ maintainers:
-   - Jon Hunter <jonathanh@nvidia.com>
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/dma/owl-dma.yaml b/Documentation/devicetree/bindings/dma/owl-dma.yaml
-index 93b4847554fb..ec8b3dc37ca4 100644
---- a/Documentation/devicetree/bindings/dma/owl-dma.yaml
-+++ b/Documentation/devicetree/bindings/dma/owl-dma.yaml
-@@ -15,7 +15,7 @@ maintainers:
-   - Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/dma/qcom,bam-dma.yaml b/Documentation/devicetree/bindings/dma/qcom,bam-dma.yaml
-index 003098caf709..f1ddcf672261 100644
---- a/Documentation/devicetree/bindings/dma/qcom,bam-dma.yaml
-+++ b/Documentation/devicetree/bindings/dma/qcom,bam-dma.yaml
-@@ -11,7 +11,7 @@ maintainers:
-   - Bjorn Andersson <andersson@kernel.org>
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/dma/qcom,gpi.yaml b/Documentation/devicetree/bindings/dma/qcom,gpi.yaml
-index 1dec506cd4f7..fc5de7b6f19e 100644
---- a/Documentation/devicetree/bindings/dma/qcom,gpi.yaml
-+++ b/Documentation/devicetree/bindings/dma/qcom,gpi.yaml
-@@ -14,7 +14,7 @@ description: |
-   peripheral buses such as I2C, UART, and SPI.
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/dma/renesas,rcar-dmac.yaml b/Documentation/devicetree/bindings/dma/renesas,rcar-dmac.yaml
-index 89b591a05bce..03aa067b1229 100644
---- a/Documentation/devicetree/bindings/dma/renesas,rcar-dmac.yaml
-+++ b/Documentation/devicetree/bindings/dma/renesas,rcar-dmac.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/dma/renesas,rz-dmac.yaml b/Documentation/devicetree/bindings/dma/renesas,rz-dmac.yaml
-index 1e25c5b0fb4d..f638d3934e71 100644
---- a/Documentation/devicetree/bindings/dma/renesas,rz-dmac.yaml
-+++ b/Documentation/devicetree/bindings/dma/renesas,rz-dmac.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Biju Das <biju.das.jz@bp.renesas.com>
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/dma/renesas,rzn1-dmamux.yaml b/Documentation/devicetree/bindings/dma/renesas,rzn1-dmamux.yaml
-index d83013b0dd74..ee9833dcc36c 100644
---- a/Documentation/devicetree/bindings/dma/renesas,rzn1-dmamux.yaml
-+++ b/Documentation/devicetree/bindings/dma/renesas,rzn1-dmamux.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Miquel Raynal <miquel.raynal@bootlin.com>
- 
- allOf:
--  - $ref: "dma-router.yaml#"
-+  - $ref: dma-router.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/dma/renesas,usb-dmac.yaml b/Documentation/devicetree/bindings/dma/renesas,usb-dmac.yaml
-index ab287c652b2c..17813599fccb 100644
---- a/Documentation/devicetree/bindings/dma/renesas,usb-dmac.yaml
-+++ b/Documentation/devicetree/bindings/dma/renesas,usb-dmac.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/dma/sifive,fu540-c000-pdma.yaml b/Documentation/devicetree/bindings/dma/sifive,fu540-c000-pdma.yaml
-index 3271755787b4..a1af0b906365 100644
---- a/Documentation/devicetree/bindings/dma/sifive,fu540-c000-pdma.yaml
-+++ b/Documentation/devicetree/bindings/dma/sifive,fu540-c000-pdma.yaml
-@@ -23,7 +23,7 @@ description: |
-   https://static.dev.sifive.com/FU540-C000-v1.0.pdf
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/dma/snps,dma-spear1340.yaml b/Documentation/devicetree/bindings/dma/snps,dma-spear1340.yaml
-index c13649bf7f19..5da8291a7de0 100644
---- a/Documentation/devicetree/bindings/dma/snps,dma-spear1340.yaml
-+++ b/Documentation/devicetree/bindings/dma/snps,dma-spear1340.yaml
-@@ -11,7 +11,7 @@ maintainers:
-   - Andy Shevchenko <andriy.shevchenko@linux.intel.com>
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   compatible:
+---
+
+Changes since v1:
+1. Drop unused label, correct indentation.
+---
+ .../bindings/dma/snps,dw-axi-dmac.yaml        | 36 +++++++++----------
+ .../bindings/dma/stericsson,dma40.yaml        | 16 ++++-----
+ 2 files changed, 26 insertions(+), 26 deletions(-)
+
 diff --git a/Documentation/devicetree/bindings/dma/snps,dw-axi-dmac.yaml b/Documentation/devicetree/bindings/dma/snps,dw-axi-dmac.yaml
-index ad107a4d3b33..2bedab1f74e0 100644
+index 2bedab1f74e0..5c81194e2300 100644
 --- a/Documentation/devicetree/bindings/dma/snps,dw-axi-dmac.yaml
 +++ b/Documentation/devicetree/bindings/dma/snps,dw-axi-dmac.yaml
-@@ -13,7 +13,7 @@ description:
-   Synopsys DesignWare AXI DMA Controller DT Binding
+@@ -113,21 +113,21 @@ additionalProperties: false
  
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/dma/socionext,uniphier-mio-dmac.yaml b/Documentation/devicetree/bindings/dma/socionext,uniphier-mio-dmac.yaml
-index e7bf6dd7da29..23c8a7bf24de 100644
---- a/Documentation/devicetree/bindings/dma/socionext,uniphier-mio-dmac.yaml
-+++ b/Documentation/devicetree/bindings/dma/socionext,uniphier-mio-dmac.yaml
-@@ -14,7 +14,7 @@ maintainers:
-   - Masahiro Yamada <yamada.masahiro@socionext.com>
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/dma/socionext,uniphier-xdmac.yaml b/Documentation/devicetree/bindings/dma/socionext,uniphier-xdmac.yaml
-index 371f18773198..da61d1ddc9c3 100644
---- a/Documentation/devicetree/bindings/dma/socionext,uniphier-xdmac.yaml
-+++ b/Documentation/devicetree/bindings/dma/socionext,uniphier-xdmac.yaml
-@@ -15,7 +15,7 @@ maintainers:
-   - Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/dma/st,stm32-dma.yaml b/Documentation/devicetree/bindings/dma/st,stm32-dma.yaml
-index 158c791d7caa..329847ef096a 100644
---- a/Documentation/devicetree/bindings/dma/st,stm32-dma.yaml
-+++ b/Documentation/devicetree/bindings/dma/st,stm32-dma.yaml
-@@ -53,7 +53,7 @@ maintainers:
-   - Amelie Delaunay <amelie.delaunay@foss.st.com>
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   "#dma-cells":
-diff --git a/Documentation/devicetree/bindings/dma/st,stm32-dmamux.yaml b/Documentation/devicetree/bindings/dma/st,stm32-dmamux.yaml
-index 3e0b82d277ca..e722fbcd8a5f 100644
---- a/Documentation/devicetree/bindings/dma/st,stm32-dmamux.yaml
-+++ b/Documentation/devicetree/bindings/dma/st,stm32-dmamux.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Amelie Delaunay <amelie.delaunay@foss.st.com>
- 
- allOf:
--  - $ref: "dma-router.yaml#"
-+  - $ref: dma-router.yaml#
- 
- properties:
-   "#dma-cells":
-diff --git a/Documentation/devicetree/bindings/dma/st,stm32-mdma.yaml b/Documentation/devicetree/bindings/dma/st,stm32-mdma.yaml
-index 08a59bd69a2f..3874544dfa74 100644
---- a/Documentation/devicetree/bindings/dma/st,stm32-mdma.yaml
-+++ b/Documentation/devicetree/bindings/dma/st,stm32-mdma.yaml
-@@ -53,7 +53,7 @@ maintainers:
-   - Amelie Delaunay <amelie.delaunay@foss.st.com>
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   "#dma-cells":
+ examples:
+   - |
+-     #include <dt-bindings/interrupt-controller/arm-gic.h>
+-     #include <dt-bindings/interrupt-controller/irq.h>
+-     /* example with snps,dw-axi-dmac */
+-     dmac: dma-controller@80000 {
+-         compatible = "snps,axi-dma-1.01a";
+-         reg = <0x80000 0x400>;
+-         clocks = <&core_clk>, <&cfgr_clk>;
+-         clock-names = "core-clk", "cfgr-clk";
+-         interrupt-parent = <&intc>;
+-         interrupts = <27>;
+-         #dma-cells = <1>;
+-         dma-channels = <4>;
+-         snps,dma-masters = <2>;
+-         snps,data-width = <3>;
+-         snps,block-size = <4096 4096 4096 4096>;
+-         snps,priority = <0 1 2 3>;
+-         snps,axi-max-burst-len = <16>;
+-     };
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    /* example with snps,dw-axi-dmac */
++    dma-controller@80000 {
++        compatible = "snps,axi-dma-1.01a";
++        reg = <0x80000 0x400>;
++        clocks = <&core_clk>, <&cfgr_clk>;
++        clock-names = "core-clk", "cfgr-clk";
++        interrupt-parent = <&intc>;
++        interrupts = <27>;
++        #dma-cells = <1>;
++        dma-channels = <4>;
++        snps,dma-masters = <2>;
++        snps,data-width = <3>;
++        snps,block-size = <4096 4096 4096 4096>;
++        snps,priority = <0 1 2 3>;
++        snps,axi-max-burst-len = <16>;
++    };
 diff --git a/Documentation/devicetree/bindings/dma/stericsson,dma40.yaml b/Documentation/devicetree/bindings/dma/stericsson,dma40.yaml
-index 8bddfb3b6fa0..664ee61a00d8 100644
+index 664ee61a00d8..64845347f44d 100644
 --- a/Documentation/devicetree/bindings/dma/stericsson,dma40.yaml
 +++ b/Documentation/devicetree/bindings/dma/stericsson,dma40.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Linus Walleij <linus.walleij@linaro.org>
- 
- allOf:
--  - $ref: "dma-controller.yaml#"
-+  - $ref: dma-controller.yaml#
- 
- properties:
-   "#dma-cells":
+@@ -147,13 +147,13 @@ examples:
+     #include <dt-bindings/interrupt-controller/irq.h>
+     #include <dt-bindings/interrupt-controller/arm-gic.h>
+     #include <dt-bindings/mfd/dbx500-prcmu.h>
+-    dma-controller@801C0000 {
+-      compatible = "stericsson,db8500-dma40", "stericsson,dma40";
+-      reg = <0x801C0000 0x1000>, <0x40010000 0x800>;
+-      reg-names = "base", "lcpa";
+-      interrupts = <GIC_SPI 25 IRQ_TYPE_LEVEL_HIGH>;
+-      #dma-cells = <3>;
+-      memcpy-channels = <56 57 58 59 60>;
+-      clocks = <&prcmu_clk PRCMU_DMACLK>;
++    dma-controller@801c0000 {
++        compatible = "stericsson,db8500-dma40", "stericsson,dma40";
++        reg = <0x801c0000 0x1000>, <0x40010000 0x800>;
++        reg-names = "base", "lcpa";
++        interrupts = <GIC_SPI 25 IRQ_TYPE_LEVEL_HIGH>;
++        #dma-cells = <3>;
++        memcpy-channels = <56 57 58 59 60>;
++        clocks = <&prcmu_clk PRCMU_DMACLK>;
+     };
+ ...
 -- 
 2.34.1
 
