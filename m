@@ -4,57 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDE85C25B50
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jan 2023 23:56:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F883C25B50
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jan 2023 02:13:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:
+	Content-Type:Subject:Cc:References:In-Reply-To:To:From:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x1ua+jMTdHt0D547plDoi6i4Hvmq7N3D/q0ejJhcSo8=; b=qyT9d/XB2sd5Z+1VCOgwGXTmlH
-	k6CfX7PgChXFxW7JGyUypvpdGT7ZJxVAeO4tb2f1d3tmZsKErtQ7sFuSUKkYyykMoK70X16N7uyjl
-	iiWpbQAV8MG+rOWeBcYnCsPnoXn6BQVlU06xBX3Dt5FdNIRtcxS/3TAE8U0YekabYG8gVo5krRVvR
-	69W/dqi73wOAu+P/mF/j9P12Audjn3tyrQELJRA6J50Gt62vmFIJZqU4yFm2X5VzP1kX/Sy6aqJLj
-	TtIzUtePpFaZHgYWtApCTTjWwTYAHRL+0iofZpUYdfVdsFAXiZfFBB9xiZYoy2BbvBINKs9ZNfpTO
-	Ygdd8Wtg==;
+	bh=EcHtF/n2MSlkWXR586MqlkB7DN4Aawdn+kM8+CENqbw=; b=MGuf0UYDjm1yEnAuGhaULvfolh
+	mvAugkr1TIKX+koqj0KKPmdNgnNgf5CkQ2HAxD8Rt2rdjdXf2jZebtQLVgmWFvljcVGYARU6xZ9Cs
+	wR6T29dOfrVX4Dty9L0PZsSnKl8Q5ZksPuFb2ZFkzcAmislcqmIoix9KfHf97Wi1N06R94phsVH9s
+	Wt35gO/nwqSa62xdDiI2t53z8L9LWZ74e9IEnJyI2oKZACK1M1lVfg6umSu80Kg/s8omme6GkfgK5
+	vR0cdbDPqUwm9bFxs9NquHwxuTkHwMCcSGMnTkJjzt0s9f9nL4Tpr2XGZ+ZT1r2tpIJkGDd/9wx7I
+	r1PRrdxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pK6fb-001smR-4m; Mon, 23 Jan 2023 23:56:11 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pK8oB-0025LQ-Di; Tue, 24 Jan 2023 02:13:11 +0000
+Received: from mail-os0jpn01on2118.outbound.protection.outlook.com ([40.107.113.118] helo=JPN01-OS0-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pK6fV-001slj-PF; Mon, 23 Jan 2023 23:56:10 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pK6fO-0007oE-1l;
-	Tue, 24 Jan 2023 00:55:58 +0100
-Date: Mon, 23 Jan 2023 23:55:51 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: Rob Herring <robh@kernel.org>
-Cc: linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	Sean Wang <sean.wang@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sam Shih <sam.shih@mediatek.com>,
-	Jianhui Zhao <zhaojh329@gmail.com>
-Subject: Re: [PATCH 1/2] dt-bindings: pinctrl: add bindings for MT7981 SoC
-Message-ID: <Y88eMrwDmSZ2xovw@makrotopia.org>
-References: <cover.1674409777.git.daniel@makrotopia.org>
- <7c680bf2502ddfd2077306a46c69728d212386f9.1674409777.git.daniel@makrotopia.org>
- <20230123225943.GA2781371-robh@kernel.org>
+	id 1pK8nz-0025J1-L7; Tue, 24 Jan 2023 02:13:02 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=j1QDK62/q70voPZ35hFdIA19H3jy5IKIvXsPETL0qEQ5YOpfqfEBdRfJXKVKn/rD9mA448blx/LMIRjcu/qV4XMqCwVtJZmOIP3p7QUTBA6HYvski1x8J8QFxaB5XB0Zi0USeyWHKbphav/wTacklGmRHx9wsGAXP+pyKl95FES1V5fWrJlJAW3jBCDPFhZU5hg63g6mAHt96Xu9ytl/mBIphKK0KdS4MRLtKRJmvL9SgpqFHQsADQXkM/5MlZExwGjazcACl7vw+k8YO7n6I88y8INxHFkkiwYaoPQmfPirLhSjbvylP9KthRVnUAyflG+FivXC2d7bA7kEA5ryHg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=EcHtF/n2MSlkWXR586MqlkB7DN4Aawdn+kM8+CENqbw=;
+ b=HB+f3OSiCR7oFI11dC0ynoVQlfa6up+opoNxqtM0jpsuaTULrqrIT//YwbzrKyZHt3gyXV6vcIl++J/XMBgkMcdOlvjQGc5Qnkp+P89v7Wnj2AZdqpICgBApvtY0llGQCBU0/zfDMfsVHWWh/6rT7X9unKceq1zpCO+dV0kEEjzZ85PS7BfPSTmrnSjuzm8JrChsTOygDXceF5omKHQNzWN55hUUAw2BwqUHK8glWMXuVmjhIjpR2J/oOpS3w6p0SHMQ5rKJjJDZ2KKbsgsghS6MsrHfobiG8J9OCudW93CaFLmR1iPxSt3znTkEPEosrR0JJOZr6Unz18FVVykqIA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=renesas.com; dmarc=pass action=none header.from=renesas.com;
+ dkim=pass header.d=renesas.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=renesas.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=EcHtF/n2MSlkWXR586MqlkB7DN4Aawdn+kM8+CENqbw=;
+ b=kP2zeiIJ5p0Ne1mT3sQKafti/Pc6ui+drdFeoiyJUT1rDDVT7iDd4Ibwi2z2v4HI2eULqa3Y/oCZq8xADFmElSh52lgxLXsKQCk/YvSedFx/j+94xplY8KyX4zDd9qwos5KcG4ifRbrq/Hy7+eqmwGCKU7Al9K2chIcWDCXFVGU=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=renesas.com;
+Received: from OS3PR01MB8426.jpnprd01.prod.outlook.com (2603:1096:604:194::10)
+ by OS7PR01MB11964.jpnprd01.prod.outlook.com (2603:1096:604:23e::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6002.33; Tue, 24 Jan
+ 2023 02:12:46 +0000
+Received: from OS3PR01MB8426.jpnprd01.prod.outlook.com
+ ([fe80::3cd7:a7b5:ea86:9ae]) by OS3PR01MB8426.jpnprd01.prod.outlook.com
+ ([fe80::3cd7:a7b5:ea86:9ae%6]) with mapi id 15.20.6002.033; Tue, 24 Jan 2023
+ 02:12:46 +0000
+Message-ID: <87edrku1cy.wl-kuninori.morimoto.gx@renesas.com>
+From: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+To: Mark Brown <broonie@kernel.org>
+In-Reply-To: <87y1psu1m1.wl-kuninori.morimoto.gx@renesas.com>
+References: <87y1psu1m1.wl-kuninori.morimoto.gx@renesas.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chunxu Li <chunxu.li@mediatek.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Charles Keepax <ckeepax@opensource.cirrus.com>, Minghao Chi <chi.minghao@zte.com.cn>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Linux-ALSA <alsa-devel@alsa-project.org>
+Subject: [PATCH v2 14/25] ASoC: mediatek: use helper function
+User-Agent: Wanderlust/2.15.9 Emacs/26.3 Mule/6.0
+Content-Type: text/plain; charset=US-ASCII
+Date: Tue, 24 Jan 2023 02:12:45 +0000
+X-ClientProxiedBy: TYCPR01CA0183.jpnprd01.prod.outlook.com
+ (2603:1096:400:2b0::19) To OS3PR01MB8426.jpnprd01.prod.outlook.com
+ (2603:1096:604:194::10)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230123225943.GA2781371-robh@kernel.org>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: OS3PR01MB8426:EE_|OS7PR01MB11964:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7f4d2812-9d8a-4cd1-e5e3-08dafdb07bb8
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	N/hpDMLYeneW4dKcEMJ9O8dw/QdvL6Igp9qX7eM7uHlXopfzECOkLRv+WfPgfF49Q/hrxZIVhnXZc706c+WnT3C1Fft7jiwbvQVn+9tOCzw2+rbxzIiCknJ/DFgVPIJCtRii4NAAPjJ+o+tSD/xiKVijEmRcyIXVwielEsRj2WwCHKQy+nQzz7bWtAt65x3zGbgAvjbCwogpdkmtlyq2rNjYHtvX5AooaOcLT9alVXWmlqtaEcFTbyX5Vhq9Vqn7LqLhkqxb438dARz176nA4ybfZ7cVLXcTYekMinAxjcFENp+wKjRTYMGpIgtpOenEHq9BmfT7Mq+nK8i8aFfTYlqwWQqECvQLe4EG/8TR3BAbqgSZrZbFd3bxSCJ8pm9sJyKrPoOA1y+O375n+38NCREP0oBymmkFaiaBTD0BY3v8w0n8SjFea8X5f6JuaZjJkKZwPCnCkKFAH98jhko0p2QgQ3Rzry5M4VETAQxlCJIypQOiNSctUYJ1hnpx/BgLk1w+Jh6MpPAxdI0TUENsH5uXB4bPv3Av/QGrwPqyp9M5XImsOV6VtOCAZtaBsbECQOASs76evqf6X0F4FXw94aLjWXKVX3fJGlTnsmhGJS9dbH16SeMpiiZIdoQVoLRQRcbV7WgbgLeQDtXDqodFMX8Z5pVQfQKcn0ov1rPlr4hyQiaZ0rYmqeUhoKNwkirb6yV5ylNepZ/EagmC5TCKeg==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:OS3PR01MB8426.jpnprd01.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(39860400002)(376002)(346002)(396003)(366004)(136003)(451199015)(36756003)(2906002)(6512007)(7416002)(5660300002)(478600001)(186003)(6486002)(26005)(2616005)(8936002)(54906003)(66946007)(316002)(4326008)(66556008)(66476007)(8676002)(6916009)(83380400001)(6506007)(52116002)(86362001)(38100700002)(38350700002)(41300700001);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?gDlUUOSW9gJaWLa5kTiI5CxhPoxFx00HgHhpk7/73XgPsep57DKQlZp/+Hc7?=
+ =?us-ascii?Q?/hnaxgA9eqhRTRUzVv6Q7dWYLYM/0OdTq9YQrnakuwyd7X1/ztuNBKazX/L0?=
+ =?us-ascii?Q?3w6mnCow7NszhpIGQqqVCTWIeliGaR/8gWMc086pDGe3Fgx+NkbjpNLy2Mol?=
+ =?us-ascii?Q?sabm6Zw5bcZaEOBsQTJkLuNsqNRwzdLX1wPWQLLhnw5NztdjAqS8QOH7lH5W?=
+ =?us-ascii?Q?Dzl0KCkQj4goAZT8COwujJOXCbcUNfE5YxSc4ilfM8MSe2YBBEPo7JZueXhh?=
+ =?us-ascii?Q?+x/wVEqbaoUm1FAOrOJoImtJNIuha9v40CkPOSP0CvzR1oYhikHCWfZfQnnc?=
+ =?us-ascii?Q?pHubcf/DelHt9cy58wLkwtBQUmozh98ZUoubcJRZIlxe3pQMMrsqZQ11mMXv?=
+ =?us-ascii?Q?DoIxGa2Alt3CXrmauBxft+OZTMQooh07FXlPEbkBIJO+wHo0lF0qD2e9kWg8?=
+ =?us-ascii?Q?dX5Ewfj6YXO7d6jygsYMeaZDPHh/k6wLQbusP1AOu/igckWiGsRUgSH/Pc/R?=
+ =?us-ascii?Q?Av7ut9nDeDwW8l1vYAmGf71afAMSZCMCKAro93fhhVemxQXWJ43P6VyZK2b4?=
+ =?us-ascii?Q?xrAcMy6qMRdBjDAa2HXtUEV+ywwKbNZQew4QifS6fnL2ysaRu5iQaZa4sN79?=
+ =?us-ascii?Q?38mecNtLYo32eySgVI1vuUcoK9Knn7dPUWqVIuHrPk9OA3Mw7V+xthFo4SCs?=
+ =?us-ascii?Q?Ed0KwY7FeckzK8BGZGaE5QAa4QSVY3bX5AAEcWVdeQZtDG8eGaNFqONGGXQx?=
+ =?us-ascii?Q?wRrOUAl5l/9UwRGy70EiOvzaihSEWs/rIiRfe1GaJpszIb+QsiFUsoDEKAof?=
+ =?us-ascii?Q?O4DYURZyXh5j29RH6c1tjzjMkBEa9n3VvCsz72PIn5tePC7X/OTRqj7pJEiB?=
+ =?us-ascii?Q?O8ogSQ+bDV+bchll556KX1LzCid9fb7BE+hAM+/je6FP+PF0kf7VV/Gd88TV?=
+ =?us-ascii?Q?s/QfMIDkWBWYSmVgnl3K8uLh7b7dtr06JS2TELANeAXseIXRvSlXhRKLYsqP?=
+ =?us-ascii?Q?aMR2W3hn3GrGU7iU7gPuYuLLtwlMlF6LumBqZb9zgdds4e25nAHlyKEyPP25?=
+ =?us-ascii?Q?VL2VLc3Uzw+nDYOP9nhideWMV6fM8hNtaHVEYJo6VrJ9rnTuhtwl4bzJQsdq?=
+ =?us-ascii?Q?hnemAYuUa/18H+39VCKIQBkKUqFSApwooSF/zPGOVUkCXNldVjxp3Amau8rW?=
+ =?us-ascii?Q?JIrELYhSlKmUyBoxHZwKObp0IZaPipzMrAXwYa1jGow9r/y6wIrKL6fXGZao?=
+ =?us-ascii?Q?tSF/jLq/A8A3Ve6CdLO8GPrP/qkrTCzyho5ky9p1aSZzok3uc1licRJQW1kR?=
+ =?us-ascii?Q?SktGd9Jk17Eg/kAnkfiOgtM3x5tKHmzkume590PqVkR0atiutfhOAAj/Vt46?=
+ =?us-ascii?Q?5yC7Vid90l6dAUOORUJhWClbXAojdJQvoDfxePIagSZyj8VK6PDOgAbGYusS?=
+ =?us-ascii?Q?UjM8MSPU8dm3U5h6s66T4YBwkx8wtwR/hbPrr9r2JS2SuABuERPneGZNIKfg?=
+ =?us-ascii?Q?mRgUypBymOywIEDpd0F6QKk1RYVjru0Vsp3xIyu2YtW+bYfxQKVMzbsuJK7s?=
+ =?us-ascii?Q?KFZck9+1LJ2kexyBQbf15J5QrTb05Io/foO+hicDxkenKjvWi7pAqpEjKriT?=
+ =?us-ascii?Q?4h7Yk1vSjfQ/kAlgZ2VBMPo=3D?=
+X-OriginatorOrg: renesas.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7f4d2812-9d8a-4cd1-e5e3-08dafdb07bb8
+X-MS-Exchange-CrossTenant-AuthSource: OS3PR01MB8426.jpnprd01.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jan 2023 02:12:45.9070
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 53d82571-da19-47e4-9cb4-625a166a4a2a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: XEVSX2x0eomLp9b3fgGolG8c6RblouJVqRqFHe1SfvUOgrV2BOH1GSrLjDUfTBQKKk4qS1HBKoqA+rcfXxCxk7H4KkM8IHkQohMoAkvIpXq66w2RVwT0+riRXDQnCifK
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: OS7PR01MB11964
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230123_155606_178715_546F9FF6 
-X-CRM114-Status: GOOD (  27.70  )
+X-CRM114-CacheID: sfid-20230123_181259_860628_E5241AFF 
+X-CRM114-Status: GOOD (  13.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,541 +129,193 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 23, 2023 at 04:59:43PM -0600, Rob Herring wrote:
-> On Sun, Jan 22, 2023 at 06:23:55PM +0000, Daniel Golle wrote:
-> > Add bindings for the MT7981 pinctrl driver, based on existing MT7986
-> > pinctrl bindings.
-> 
-> What existing bindings? A .txt file you need to remove, or undocumented, 
-> but in use somewhere (where?)?
 
-What I meant to express is that I used the existing
-mediatek,mt7986-pinctrl.yaml file as the template to create a similar
-document for MT7981. I guess my English was not clear enough.
+From: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
 
-Maybe better like this?
+Current ASoC has many helper function.
+This patch use it.
 
-"Add bindings for the MT7981 pinctrl driver. As MT7981 is simiar to
-MT7986, the existing mediatek,mt7986-pinctrl.yaml was used as an example
-to create a similar document covering MT7981."
+Signed-off-by: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+---
+ sound/soc/mediatek/common/mtk-dsp-sof-common.c | 18 +++++++-----------
+ sound/soc/mediatek/mt6797/mt6797-dai-pcm.c     |  8 +++++---
+ sound/soc/mediatek/mt8183/mt8183-dai-pcm.c     |  7 ++++---
+ sound/soc/mediatek/mt8186/mt8186-dai-pcm.c     |  7 ++++---
+ sound/soc/mediatek/mt8192/mt8192-dai-pcm.c     |  8 +++++---
+ sound/soc/mediatek/mt8195/mt8195-dai-pcm.c     |  7 +++++--
+ 6 files changed, 30 insertions(+), 25 deletions(-)
 
+diff --git a/sound/soc/mediatek/common/mtk-dsp-sof-common.c b/sound/soc/mediatek/common/mtk-dsp-sof-common.c
+index 8b1b623207be..6fef16306f74 100644
+--- a/sound/soc/mediatek/common/mtk-dsp-sof-common.c
++++ b/sound/soc/mediatek/common/mtk-dsp-sof-common.c
+@@ -32,7 +32,7 @@ int mtk_sof_dai_link_fixup(struct snd_soc_pcm_runtime *rtd,
+ 				continue;
+ 
+ 			for_each_rtd_cpu_dais(runtime, j, cpu_dai) {
+-				if (cpu_dai->stream_active[conn->stream_dir] > 0) {
++				if (snd_soc_dai_stream_active(cpu_dai, conn->stream_dir) > 0) {
+ 					sof_dai_link = runtime->dai_link;
+ 					break;
+ 				}
+@@ -111,21 +111,17 @@ int mtk_sof_card_late_probe(struct snd_soc_card *card)
+ 			for_each_rtd_cpu_dais(sof_rtd, j, cpu_dai) {
+ 				struct snd_soc_dapm_route route;
+ 				struct snd_soc_dapm_path *p = NULL;
+-				struct snd_soc_dapm_widget *play_widget =
+-					cpu_dai->playback_widget;
+-				struct snd_soc_dapm_widget *cap_widget =
+-					cpu_dai->capture_widget;
++				struct snd_soc_dapm_widget *widget = snd_soc_dai_get_widget(cpu_dai, conn->stream_dir);
++
+ 				memset(&route, 0, sizeof(route));
+-				if (conn->stream_dir == SNDRV_PCM_STREAM_CAPTURE &&
+-				    cap_widget) {
+-					snd_soc_dapm_widget_for_each_sink_path(cap_widget, p) {
++				if (conn->stream_dir == SNDRV_PCM_STREAM_CAPTURE && widget) {
++					snd_soc_dapm_widget_for_each_sink_path(widget, p) {
+ 						route.source = conn->sof_dma;
+ 						route.sink = p->sink->name;
+ 						snd_soc_dapm_add_routes(&card->dapm, &route, 1);
+ 					}
+-				} else if (conn->stream_dir == SNDRV_PCM_STREAM_PLAYBACK &&
+-						play_widget) {
+-					snd_soc_dapm_widget_for_each_source_path(play_widget, p) {
++				} else if (conn->stream_dir == SNDRV_PCM_STREAM_PLAYBACK && widget) {
++					snd_soc_dapm_widget_for_each_source_path(widget, p) {
+ 						route.source = p->source->name;
+ 						route.sink = conn->sof_dma;
+ 						snd_soc_dapm_add_routes(&card->dapm, &route, 1);
+diff --git a/sound/soc/mediatek/mt6797/mt6797-dai-pcm.c b/sound/soc/mediatek/mt6797/mt6797-dai-pcm.c
+index 51f736f319e4..8a309b0734f7 100644
+--- a/sound/soc/mediatek/mt6797/mt6797-dai-pcm.c
++++ b/sound/soc/mediatek/mt6797/mt6797-dai-pcm.c
+@@ -183,6 +183,8 @@ static int mtk_dai_pcm_hw_params(struct snd_pcm_substream *substream,
+ 				 struct snd_soc_dai *dai)
+ {
+ 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
++	struct snd_soc_dapm_widget *p = snd_soc_dai_get_widget_playback(dai);
++	struct snd_soc_dapm_widget *c = snd_soc_dai_get_widget_capture(dai);
+ 	unsigned int rate = params_rate(params);
+ 	unsigned int rate_reg = mt6797_rate_transform(afe->dev, rate, dai->id);
+ 	unsigned int pcm_con = 0;
+@@ -193,10 +195,10 @@ static int mtk_dai_pcm_hw_params(struct snd_pcm_substream *substream,
+ 		substream->stream,
+ 		rate,
+ 		rate_reg,
+-		dai->playback_widget->active,
+-		dai->capture_widget->active);
++		p->active,
++		c->active);
+ 
+-	if (dai->playback_widget->active || dai->capture_widget->active)
++	if (p->active || c->active)
+ 		return 0;
+ 
+ 	switch (dai->id) {
+diff --git a/sound/soc/mediatek/mt8183/mt8183-dai-pcm.c b/sound/soc/mediatek/mt8183/mt8183-dai-pcm.c
+index 38ce0e36cdb4..4e25287fc0e4 100644
+--- a/sound/soc/mediatek/mt8183/mt8183-dai-pcm.c
++++ b/sound/soc/mediatek/mt8183/mt8183-dai-pcm.c
+@@ -183,6 +183,8 @@ static int mtk_dai_pcm_hw_params(struct snd_pcm_substream *substream,
+ 				 struct snd_soc_dai *dai)
+ {
+ 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
++	struct snd_soc_dapm_widget *p = snd_soc_dai_get_widget_playback(dai);
++	struct snd_soc_dapm_widget *c = snd_soc_dai_get_widget_capture(dai);
+ 	unsigned int rate = params_rate(params);
+ 	unsigned int rate_reg = mt8183_rate_transform(afe->dev, rate, dai->id);
+ 	unsigned int pcm_con = 0;
+@@ -193,10 +195,9 @@ static int mtk_dai_pcm_hw_params(struct snd_pcm_substream *substream,
+ 		substream->stream,
+ 		rate,
+ 		rate_reg,
+-		dai->playback_widget->active,
+-		dai->capture_widget->active);
++		p->active, c->active);
+ 
+-	if (dai->playback_widget->active || dai->capture_widget->active)
++	if (p->active || c->active)
+ 		return 0;
+ 
+ 	switch (dai->id) {
+diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-pcm.c b/sound/soc/mediatek/mt8186/mt8186-dai-pcm.c
+index 41221a66111c..a50aa294960b 100644
+--- a/sound/soc/mediatek/mt8186/mt8186-dai-pcm.c
++++ b/sound/soc/mediatek/mt8186/mt8186-dai-pcm.c
+@@ -218,6 +218,8 @@ static int mtk_dai_pcm_hw_params(struct snd_pcm_substream *substream,
+ {
+ 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+ 	struct mt8186_afe_private *afe_priv = afe->platform_priv;
++	struct snd_soc_dapm_widget *p = snd_soc_dai_get_widget_playback(dai);
++	struct snd_soc_dapm_widget *c = snd_soc_dai_get_widget_capture(dai);
+ 	int pcm_id = dai->id;
+ 	struct mtk_afe_pcm_priv *pcm_priv = afe_priv->dai_priv[pcm_id];
+ 	unsigned int rate = params_rate(params);
+@@ -230,12 +232,11 @@ static int mtk_dai_pcm_hw_params(struct snd_pcm_substream *substream,
+ 	unsigned int pcm_con = 0;
+ 
+ 	dev_dbg(afe->dev, "%s(), id %d, stream %d, widget active p %d, c %d\n",
+-		__func__, dai->id, substream->stream, dai->playback_widget->active,
+-		dai->capture_widget->active);
++		__func__, dai->id, substream->stream, p->active, c->active);
+ 	dev_dbg(afe->dev, "%s(), rate %d, rate_reg %d, data_width %d, wlen_width %d\n",
+ 		__func__, rate, rate_reg, data_width, wlen_width);
+ 
+-	if (dai->playback_widget->active || dai->capture_widget->active)
++	if (p->active || c->active)
+ 		return 0;
+ 
+ 	switch (dai->id) {
+diff --git a/sound/soc/mediatek/mt8192/mt8192-dai-pcm.c b/sound/soc/mediatek/mt8192/mt8192-dai-pcm.c
+index 239e3f5b53d3..2847a2e747be 100644
+--- a/sound/soc/mediatek/mt8192/mt8192-dai-pcm.c
++++ b/sound/soc/mediatek/mt8192/mt8192-dai-pcm.c
+@@ -273,6 +273,8 @@ static int mtk_dai_pcm_hw_params(struct snd_pcm_substream *substream,
+ 				 struct snd_soc_dai *dai)
+ {
+ 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
++	struct snd_soc_dapm_widget *p = snd_soc_dai_get_widget_playback(dai);
++	struct snd_soc_dapm_widget *c = snd_soc_dai_get_widget_capture(dai);
+ 	unsigned int rate = params_rate(params);
+ 	unsigned int rate_reg = mt8192_rate_transform(afe->dev, rate, dai->id);
+ 	unsigned int pcm_con = 0;
+@@ -283,10 +285,10 @@ static int mtk_dai_pcm_hw_params(struct snd_pcm_substream *substream,
+ 		 substream->stream,
+ 		 rate,
+ 		 rate_reg,
+-		 dai->playback_widget->active,
+-		 dai->capture_widget->active);
++		 p->active,
++		 c->active);
+ 
+-	if (dai->playback_widget->active || dai->capture_widget->active)
++	if (p->active || c->active)
+ 		return 0;
+ 
+ 	switch (dai->id) {
+diff --git a/sound/soc/mediatek/mt8195/mt8195-dai-pcm.c b/sound/soc/mediatek/mt8195/mt8195-dai-pcm.c
+index caceb0deb467..051433689ff5 100644
+--- a/sound/soc/mediatek/mt8195/mt8195-dai-pcm.c
++++ b/sound/soc/mediatek/mt8195/mt8195-dai-pcm.c
+@@ -213,11 +213,14 @@ static int mtk_dai_pcm_configure(struct snd_pcm_substream *substream,
+ static int mtk_dai_pcm_prepare(struct snd_pcm_substream *substream,
+ 			       struct snd_soc_dai *dai)
+ {
++	struct snd_soc_dapm_widget *p = snd_soc_dai_get_widget_playback(dai);
++	struct snd_soc_dapm_widget *c = snd_soc_dai_get_widget_capture(dai);
++
+ 	dev_dbg(dai->dev, "%s(), id %d, stream %d, widget active p %d, c %d\n",
+ 		__func__, dai->id, substream->stream,
+-		dai->playback_widget->active, dai->capture_widget->active);
++		p->active, c->active);
+ 
+-	if (dai->playback_widget->active || dai->capture_widget->active)
++	if (p->active || c->active)
+ 		return 0;
+ 
+ 	return mtk_dai_pcm_configure(substream, dai);
+-- 
+2.25.1
 
-> 
-> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> > ---
-> >  .../pinctrl/mediatek,mt7981-pinctrl.yaml      | 475 ++++++++++++++++++
-> >  1 file changed, 475 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt7981-pinctrl.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7981-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7981-pinctrl.yaml
-> > new file mode 100644
-> > index 0000000000000..e76fe0d5083a3
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7981-pinctrl.yaml
-> > @@ -0,0 +1,475 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/pinctrl/mediatek,mt7981-pinctrl.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Mediatek MT7981 Pin Controller
-> > +
-> > +maintainers:
-> > +  - Daniel Golle <daniel@makrotopia.org>
-> > +
-> > +description: |+
-> 
-> Don't need '|+' unless there are line endings to preserve.
-> 
-> > +  The MediaTek's MT7981 Pin controller is used to control SoC pins.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    enum:
-> > +      - mediatek,mt7981-pinctrl
-> > +
-> > +  reg:
-> > +    minItems: 9
-> > +    maxItems: 9
-> > +
-> > +  reg-names:
-> > +    items:
-> > +      - const: gpio
-> > +      - const: iocfg_rt
-> > +      - const: iocfg_rm
-> > +      - const: iocfg_rb
-> > +      - const: iocfg_lb
-> > +      - const: iocfg_bl
-> > +      - const: iocfg_tm
-> > +      - const: iocfg_tl
-> > +      - const: eint
-> > +
-> > +  gpio-controller: true
-> > +
-> > +  "#gpio-cells":
-> > +    const: 2
-> > +    description: |
-> > +      Number of cells in GPIO specifier. Since the generic GPIO
-> > +      binding is used, the amount of cells must be specified as 2. See the below
-> > +      mentioned gpio binding representation for description of particular cells.
-> > +
-> > +  gpio-ranges:
-> > +    minItems: 1
-> > +    maxItems: 5
-> > +    description: |
-> > +      GPIO valid number range.
-> > +
-> > +  interrupt-controller: true
-> > +
-> > +  interrupts:
-> > +    maxItems: 1
-> > +
-> > +  "#interrupt-cells":
-> > +    const: 2
-> > +
-> > +allOf:
-> > +  - $ref: "pinctrl.yaml#"
-> 
-> Drop quotes
-> 
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - reg-names
-> > +  - gpio-controller
-> > +  - "#gpio-cells"
-> > +
-> > +patternProperties:
-> > +  '-pins$':
-> > +    type: object
-> > +    additionalProperties: false
-> > +
-> > +    patternProperties:
-> > +      '.*mux.*':
-> 
-> Just to be really clear: '^.*mux.*$'
-> 
-> Really, if not already in use, it would be preferred if this was either 
-> a prefix or a suffix.
-> 
-> > +        type: object
-> > +        additionalProperties: false
-> > +        description: |
-> > +          pinmux configuration nodes.
-> > +
-> > +          The following table shows the effective values of "group", "function"
-> > +          properties and chip pinout pins
-> > +
-> > +          groups                 function    pins (in pin#)
-> > +          ---------------------------------------------------------------------
-> > +          "wa_aice1"             "wa_aice"   0, 1
-> > +          "wa_aice2"             "wa_aice"   0, 1
-> > +          "wm_uart_0"            "uart"      0, 1
-> > +          "dfd"                  "dfd"       0, 1, 4, 5
-> > +          "watchdog"             "watchdog"  2
-> > +          "pcie_pereset"         "pcie"      3
-> > +          "jtag"                 "jtag"      4, 5, 6, 7, 8
-> > +          "wm_jtag_0"            "jtag"      4, 5, 6, 7, 8
-> > +          "wo0_jtag_0"           "jtag"      9, 10, 11, 12, 13
-> > +          "uart2_0"              "uart"      4, 5, 6, 7
-> > +          "gbe_led0"             "led"       8
-> > +          "pta_ext_0"            "pta"       4, 5, 6
-> > +          "pwm2"                 "pwm"       7
-> > +          "net_wo0_uart_txd_0"   "uart"      8
-> > +          "spi1_0"               "spi"       4, 5, 6, 7
-> > +          "i2c0_0"               "i2c"       6, 7
-> > +          "dfd_ntrst"            "dfd"       8
-> > +          "wm_aice1"             "wa_aice"   9, 10
-> > +          "pwm0_0"               "pwm"       13
-> > +          "pwm0_1"               "pwm"       15
-> > +          "pwm1_0"               "pwm"       14
-> > +          "pwm1_1"               "pwm"       15
-> > +          "net_wo0_uart_txd_1"   "uart"      14
-> > +          "net_wo0_uart_txd_2"   "uart"      15
-> > +          "gbe_led1"             "led"       13
-> > +          "pcm"                  "pcm"       9, 10, 11, 12, 13, 25
-> > +          "watchdog1"            "watchdog"  13
-> > +          "udi"                  "udi"       9, 10, 11, 12, 13
-> > +          "drv_vbus"             "usb"       14
-> > +          "emmc_45"              "flash"     15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25
-> > +          "snfi"                 "flash"     16, 17, 18, 19, 20, 21
-> > +          "spi0"                 "spi"       16, 17, 18, 19
-> > +          "spi0_wp_hold"         "spi"       20, 21
-> > +          "spi1_1"               "spi"       22, 23, 24, 25
-> > +          "spi2"                 "spi"       26, 27, 28, 29
-> > +          "spi2_wp_hold"         "spi"       30, 31
-> > +          "uart1_0"              "uart"      16, 17, 18, 19
-> > +          "uart1_1"              "uart"      26, 27, 28, 29
-> > +          "uart2_1"              "uart"      22, 23, 24, 25
-> > +          "pta_ext_1"            "pta"       22, 23, 24
-> > +          "wm_aurt_1"            "uart"      20, 21
-> > +          "wm_aurt_2"            "uart"      30, 31
-> > +          "wm_jtag_1"            "jtag"      20, 21, 22, 23, 24
-> > +          "wo0_jtag_1"           "jtag"      25, 26, 27, 28, 29
-> > +          "wa_aice3"             "wa_aice"   28, 20
-> > +          "wm_aice2"             "wa_aice"   30, 31
-> > +          "i2c0_1"               "i2c"       30, 31
-> > +          "u2_phy_i2c"           "i2c"       30, 31
-> > +          "uart0"                "uart"      32, 33
-> > +          "sgmii1_phy_i2c"       "i2c"       32, 33
-> > +          "u3_phy_i2c"           "i2c"       32, 33
-> > +          "sgmii0_phy_i2c"       "i2c"       32, 33
-> > +          "pcie_clk"             "pcie"      34
-> > +          "pcie_wake"            "pcie"      35
-> > +          "i2c0_2"               "i2c"       36, 37
-> > +          "smi_mdc_mdio"         "eth"       36, 37
-> > +          "gbe_ext_mdc_mdio"     "eth"       36, 37
-> > +          "wf0_mode1"            "eth"       40, 41, 42, 43, 44, 45, 46, 47, 48,
-> > +                                             49, 50, 51, 52, 53, 54, 55, 56
-> > +
-> > +          "wf0_mode3"            "eth"       45, 46, 47, 48, 49, 51
-> > +          "wf2g_led0"            "led"       30
-> > +          "wf2g_led1"            "led"       34
-> > +          "wf5g_led0"            "led"       31
-> > +          "wf5g_led1"            "led"       35
-> > +          "mt7531_int"           "eth"       38
-> > +          "ant_sel"              "ant"       14, 15, 16, 17, 18, 19, 20, 21, 22
-> > +                                             23, 24, 25, 34, 35
-> > +
-> > +        $ref: "/schemas/pinctrl/pinmux-node.yaml"
-> 
-> Drop quotes.
-> 
-> > +        properties:
-> > +          function:
-> > +            description: |
-> 
-> Don't need '|'.
-> 
-> > +              A string containing the name of the function to mux to the group.
-> > +            enum: [wa_aice, dfd, jtag, pta, pcm, udi, usb, ant, eth, i2c, led,
-> > +                   pwm, spi, uart, watchdog, flash, pcie]
-> > +          groups:
-> > +            description: |
-> > +              An array of strings. Each string contains the name of a group.
-> 
-> Blank line.
-> 
-> > +        required:
-> > +          - function
-> > +          - groups
-> > +
-> > +        allOf:
-> > +          - if:
-> > +              properties:
-> > +                function:
-> > +                  const: wa_aice
-> > +            then:
-> > +              properties:
-> > +                groups:
-> > +                  enum: [wa_aice1, wa_aice2, wm_aice1_1, wa_aice3, wm_aice1_2]
-> > +          - if:
-> > +              properties:
-> > +                function:
-> > +                  const: dfd
-> > +            then:
-> > +              properties:
-> > +                groups:
-> > +                  enum: [dfd, dfd_ntrst]
-> > +          - if:
-> > +              properties:
-> > +                function:
-> > +                  const: jtag
-> > +            then:
-> > +              properties:
-> > +                groups:
-> > +                  enum: [jtag, wm_jtag_0, wo0_jtag_0, wo0_jtag_1, wm_jtag_1]
-> > +          - if:
-> > +              properties:
-> > +                function:
-> > +                  const: pta
-> > +            then:
-> > +              properties:
-> > +                groups:
-> > +                  enum: [pta_ext_0, pta_ext_1]
-> > +          - if:
-> > +              properties:
-> > +                function:
-> > +                  const: pcm
-> > +            then:
-> > +              properties:
-> > +                groups:
-> > +                  enum: [pcm]
-> > +          - if:
-> > +              properties:
-> > +                function:
-> > +                  const: udi
-> > +            then:
-> > +              properties:
-> > +                groups:
-> > +                  enum: [udi]
-> > +          - if:
-> > +              properties:
-> > +                function:
-> > +                  const: usb
-> > +            then:
-> > +              properties:
-> > +                groups:
-> > +                  enum: [drv_vbus]
-> > +          - if:
-> > +              properties:
-> > +                function:
-> > +                  const: ant
-> > +            then:
-> > +              properties:
-> > +                groups:
-> > +                  enum: [ant_sel]
-> > +          - if:
-> > +              properties:
-> > +                function:
-> > +                  const: eth
-> > +            then:
-> > +              properties:
-> > +                groups:
-> > +                  enum: [smi_mdc_mdio, gbe_ext_mdc_mdio, wf0_mode1, wf0_mode3,
-> > +                         mt7531_int]
-> > +          - if:
-> > +              properties:
-> > +                function:
-> > +                  const: i2c
-> > +            then:
-> > +              properties:
-> > +                groups:
-> > +                  enum: [i2c0_0, i2c0_1, u2_phy_i2c, sgmii1_phy_i2c, u3_phy_i2c,
-> > +                         sgmii0_phy_i2c, i2c0_2]
-> > +          - if:
-> > +              properties:
-> > +                function:
-> > +                  const: led
-> > +            then:
-> > +              properties:
-> > +                groups:
-> > +                  enum: [gbe_led0, gbe_led1, wf2g_led0, wf2g_led1, wf5g_led0, wf5g_led1]
-> > +          - if:
-> > +              properties:
-> > +                function:
-> > +                  const: pwm
-> > +            then:
-> > +              properties:
-> > +                groups:
-> > +                  items:
-> > +                    enum: [pwm2, pwm0_0, pwm0_1, pwm1_0, pwm1_1]
-> > +                  maxItems: 3
-> > +          - if:
-> > +              properties:
-> > +                function:
-> > +                  const: spi
-> > +            then:
-> > +              properties:
-> > +                groups:
-> > +                  items:
-> > +                    enum: [spi1_0, spi0, spi0_wp_hold, spi1_1, spi2, spi2_wp_hold]
-> > +                  maxItems: 4
-> > +          - if:
-> > +              properties:
-> > +                function:
-> > +                  const: uart
-> > +            then:
-> > +              properties:
-> > +                groups:
-> > +                  items:
-> > +                    enum: [wm_uart_0, uart2_0, net_wo0_uart_txd_0,
-> > +                           net_wo0_uart_txd_1, net_wo0_uart_txd_2, uart1_0,
-> > +                           uart1_1, uart2_1, wm_aurt_1, wm_aurt_2, uart0]
-> > +          - if:
-> > +              properties:
-> > +                function:
-> > +                  const: watchdog
-> > +            then:
-> > +              properties:
-> > +                groups:
-> > +                  enum: [watchdog]
-> > +          - if:
-> > +              properties:
-> > +                function:
-> > +                  const: flash
-> > +            then:
-> > +              properties:
-> > +                groups:
-> > +                  items:
-> > +                    enum: [emmc_45, snfi]
-> > +                  maxItems: 1
-> > +          - if:
-> > +              properties:
-> > +                function:
-> > +                  const: pcie
-> > +            then:
-> > +              properties:
-> > +                groups:
-> > +                  items:
-> > +                    enum: [pcie_clk, pcie_wake, pcie_pereset]
-> > +                  maxItems: 3
-> > +      '.*conf.*':
-> 
-> Same comments as 'mux'.
-> 
-> > +        type: object
-> > +        additionalProperties: false
-> > +        description: |
-> > +          pinconf configuration nodes.
-> > +        $ref: "/schemas/pinctrl/pincfg-node.yaml"
-> 
-> Drop quotes.
-> 
-> > +
-> > +        properties:
-> > +          pins:
-> > +            description: |
-> > +              An array of strings. Each string contains the name of a pin.
-> > +            items:
-> > +              enum: [GPIO_WPS, GPIO_RESET, SYS_WATCHDOG, PCIE_PERESET_N,
-> > +                     JTAG_JTDO, JTAG_JTDI, JTAG_JTMS, JTAG_JTCLK, JTAG_JTRST_N,
-> > +                     WO_JTAG_JTDO, WO_JTAG_JTDI, WO_JTAG_JTMS, WO_JTAG_JTCLK,
-> > +                     WO_JTAG_JTRST_N, USB_VBUS, PWM0, SPI0_CLK, SPI0_MOSI,
-> > +                     SPI0_MISO, SPI0_CS, SPI0_HOLD, SPI0_WP, SPI1_CLK, SPI1_MOSI,
-> > +                     SPI1_MISO, SPI1_CS, SPI2_CLK, SPI2_MOSI, SPI2_MISO, SPI2_CS,
-> > +                     SPI2_HOLD, SPI2_WP, UART0_RXD, UART0_TXD, PCIE_CLK_REQ,
-> > +                     PCIE_WAKE_N, SMI_MDC, SMI_MDIO, GBE_INT, GBE_RESET,
-> > +                     WF_DIG_RESETB, WF_CBA_RESETB, WF_XO_REQ, WF_TOP_CLK,
-> > +                     WF_TOP_DATA, WF_HB1, WF_HB2, WF_HB3, WF_HB4, WF_HB0,
-> > +                     WF_HB0_B, WF_HB5, WF_HB6, WF_HB7, WF_HB8, WF_HB9, WF_HB10]
-> > +            maxItems: 57
-> > +
-> > +          bias-disable: true
-> > +
-> > +          bias-pull-up:
-> > +            oneOf:
-> > +              - type: boolean
-> > +                description: normal pull up.
-> > +              - enum: [100, 101, 102, 103]
-> > +                description: |
-> > +                  PUPD/R1/R0 pull down type. See MTK_PUPD_SET_R1R0 defines in
-> > +                  dt-bindings/pinctrl/mt65xx.h.
-> > +
-> > +          bias-pull-down:
-> > +            oneOf:
-> > +              - type: boolean
-> > +                description: normal pull down.
-> > +              - enum: [100, 101, 102, 103]
-> > +                description: |
-> > +                  PUPD/R1/R0 pull down type. See MTK_PUPD_SET_R1R0 defines in
-> > +                  dt-bindings/pinctrl/mt65xx.h.
-> > +
-> > +          input-enable: true
-> > +
-> > +          input-disable: true
-> > +
-> > +          output-enable: true
-> > +
-> > +          output-low: true
-> > +
-> > +          output-high: true
-> > +
-> > +          input-schmitt-enable: true
-> > +
-> > +          input-schmitt-disable: true
-> > +
-> > +          drive-strength:
-> > +            enum: [2, 4, 6, 8, 10, 12, 14, 16]
-> > +
-> > +          mediatek,pull-up-adv:
-> > +            description: |
-> > +              Valid arguments for 'mediatek,pull-up-adv' are '0', '1', '2', '3'
-> > +              Pull up setings for 2 pull resistors, R0 and R1. Valid arguments
-> > +              are described as below:
-> > +              0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
-> > +              1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
-> > +              2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
-> > +              3: (R1, R0) = (1, 1) which means R1 enabled and R0 enabled.
-> > +            $ref: /schemas/types.yaml#/definitions/uint32
-> > +            enum: [0, 1, 2, 3]
-> > +
-> > +          mediatek,pull-down-adv:
-> > +            description: |
-> > +              Valid arguments for 'mediatek,pull-up-adv' are '0', '1', '2', '3'
-> > +              Pull down setings for 2 pull resistors, R0 and R1. Valid arguments
-> > +              are described as below:
-> > +              0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
-> > +              1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
-> > +              2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
-> > +              3: (R1, R0) = (1, 1) which means R1 enabled and R0 enabled.
-> > +            $ref: /schemas/types.yaml#/definitions/uint32
-> > +            enum: [0, 1, 2, 3]
-> > +
-> > +        required:
-> > +          - pins
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    #include <dt-bindings/interrupt-controller/irq.h>
-> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > +    #include <dt-bindings/pinctrl/mt65xx.h>
-> > +
-> > +    soc {
-> > +      #address-cells = <2>;
-> > +      #size-cells = <2>;
-> > +      pio: pinctrl@11d00000 {
-> > +        compatible = "mediatek,mt7981-pinctrl";
-> > +        reg = <0 0x11d00000 0 0x1000>,
-> > +              <0 0x11c00000 0 0x1000>,
-> > +              <0 0x11c10000 0 0x1000>,
-> > +              <0 0x11d20000 0 0x1000>,
-> > +              <0 0x11e00000 0 0x1000>,
-> > +              <0 0x11e20000 0 0x1000>,
-> > +              <0 0x11f00000 0 0x1000>,
-> > +              <0 0x11f10000 0 0x1000>,
-> > +              <0 0x1000b000 0 0x1000>;
-> > +        reg-names = "gpio", "iocfg_rt", "iocfg_rm",
-> > +                    "iocfg_rb", "iocfg_lb", "iocfg_bl",
-> > +                    "iocfg_tm", "iocfg_tl", "eint";
-> > +        gpio-controller;
-> > +        #gpio-cells = <2>;
-> > +        gpio-ranges = <&pio 0 0 56>;
-> > +        interrupt-controller;
-> > +        interrupts = <GIC_SPI 225 IRQ_TYPE_LEVEL_HIGH>;
-> > +        interrupt-parent = <&gic>;
-> > +        #interrupt-cells = <2>;
-> > +
-> > +        mdio_pins: mdio-pins {
-> > +          mux {
-> > +            function = "eth";
-> > +            groups = "smi_mdc_mdio";
-> > +          };
-> > +        };
-> > +
-> > +        spi0_flash_pins: spi0-pins {
-> > +          mux {
-> > +            function = "spi";
-> > +            groups = "spi0", "spi0_wp_hold";
-> > +          };
-> > +
-> > +          conf-pu {
-> > +            pins = "SPI0_CS", "SPI0_HOLD", "SPI0_WP";
-> > +            drive-strength = <MTK_DRIVE_8mA>;
-> > +            bias-pull-up = <MTK_PUPD_SET_R1R0_11>;
-> > +          };
-> > +
-> > +          conf-pd {
-> > +            pins = "SPI0_CLK", "SPI0_MOSI", "SPI0_MISO";
-> > +            drive-strength = <MTK_DRIVE_8mA>;
-> > +            bias-pull-down = <MTK_PUPD_SET_R1R0_11>;
-> > +          };
-> > +        };
-> > +
-> > +        pcie_pins: pcie-pins {
-> > +          mux {
-> > +            function = "pcie";
-> > +            groups = "pcie_clk", "pcie_wake", "pcie_pereset";
-> > +          };
-> > +        };
-> > +
-> > +      };
-> > +    };
-> > -- 
-> > 2.39.1
-> > 
 
