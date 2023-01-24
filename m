@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56D01C54EB4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jan 2023 10:13:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49A1AC54EAA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jan 2023 10:14:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y98f6JcfN3LVqyfn9v+xxR4SH8jrP9djJmUQfnsRA+I=; b=4YSu1dEihVWm+PN70XbScVP2dC
-	VysiLejW9P2ZM0jb+Vo3VGK6CYMlAZO9mm1iE3E7X0rytYRV0YAjBAQwoDjTkAAmeceVmi2kUPc7E
-	KQCkgtKKycMKnaV6GQeXPLSimLJyoEy5PxneN+L5aneGJ9wpKr+E3hI1DoA1SgQjBy/5vyrIi4trf
-	1garjDC4Ae8be4Ya1BFarKPEZQlrOjaIwKZnnRux9Pxh72Wsyh/gaK/6DjRe7V3r3Dv7DJUWmvdoJ
-	H1djzjdmHvjqPO8/rImUoaXhn+Y1KRiTLcm0kMuzZIPDGwOaLBlB0Lw1ZMCtRaLKt/zVw4OMooVJk
-	TPHTTEbw==;
+	bh=ghswS2nFYduYIes1Z1G2QvvBAQbFntj6MXzY4neWztI=; b=iGvtvBIWF+P1pi1bpUvPWiMXmD
+	qgOL26qjSIhFNSyeuK2ajuQGR7Kdd45V/01pZsVfxBJmAxGKVl4g0bbxP/pF5erxsWDs0v1gbKgnT
+	pVWi9Owck5WPbITxSZDiWze5GpR6QkoNcBk9ehqeYx7sRgfBVKLPY5MYPnscTjP4jLeFKIqaDwqpq
+	rQ2Cv8scj1rXy86lu+VDR9xLoQm1j8waT5vUx3mJSz9zcZ60qSCrrGoxX6PnWHMkYv4+NRSCso1yK
+	uq0royG+ROqjclvWyclk0ToGoPw51qatS6yt+Fzpy0i9PWuZYjrWMcYTvsqTtoZjkLbq5bXynRAY7
+	MWrUU3qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKGJF-0033kL-Cy; Tue, 24 Jan 2023 10:13:45 +0000
-Received: from lelv0142.ext.ti.com ([198.47.23.249])
+	id 1pKGJa-0033wI-Fg; Tue, 24 Jan 2023 10:14:06 +0000
+Received: from lelv0143.ext.ti.com ([198.47.23.248])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKGIj-0033RT-6s; Tue, 24 Jan 2023 10:13:15 +0000
-Received: from fllv0034.itg.ti.com ([10.64.40.246])
-	by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 30OACjLK088019;
-	Tue, 24 Jan 2023 04:12:45 -0600
+	id 1pKGIi-0033RS-Ru; Tue, 24 Jan 2023 10:13:15 +0000
+Received: from lelv0266.itg.ti.com ([10.180.67.225])
+	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 30OACfpC019815;
+	Tue, 24 Jan 2023 04:12:41 -0600
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1674555165;
-	bh=y98f6JcfN3LVqyfn9v+xxR4SH8jrP9djJmUQfnsRA+I=;
+	s=ti-com-17Q1; t=1674555161;
+	bh=ghswS2nFYduYIes1Z1G2QvvBAQbFntj6MXzY4neWztI=;
 	h=From:To:CC:Subject:Date:In-Reply-To:References;
-	b=vIO7JTDHunTiaXAQlODfNliKQgBNy2A0nZV0gDriJb+DF3O5vloTrdDd2ZGhGtEYt
-	 MyWvysPDEdrGHumeDN/i1XMdMymDyUQ7RGnhi3d72kZ6bbX//e08Otx5ypLURvvt89
-	 XoOCG1blH8mNbbc1CVk16p5ND+lmT/bW56CCzlHE=
-Received: from DFLE103.ent.ti.com (dfle103.ent.ti.com [10.64.6.24])
-	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 30OACjTo070565
+	b=qpjcKBfQWPtbbeljysQUHh0YzH7tlJkVqaHxKcXts2Xar9bJAg39bkI5B8s8sUHyY
+	 1A/TGXmbV68tKXj60XN3rjGNspbDZKw64GJjghxt4GQDcf07yWVdkY+AdeA6YzTaia
+	 5f+bTL8tTQD3sSrSg7jIJYBk2pVVhOviaQa8lONg=
+Received: from DFLE104.ent.ti.com (dfle104.ent.ti.com [10.64.6.25])
+	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 30OACfaq038334
 	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Tue, 24 Jan 2023 04:12:45 -0600
-Received: from DFLE112.ent.ti.com (10.64.6.33) by DFLE103.ent.ti.com
- (10.64.6.24) with Microsoft SMTP Server (version=TLS1_2,
+	Tue, 24 Jan 2023 04:12:41 -0600
+Received: from DFLE101.ent.ti.com (10.64.6.22) by DFLE104.ent.ti.com
+ (10.64.6.25) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.16; Tue, 24
- Jan 2023 04:12:45 -0600
-Received: from fllv0040.itg.ti.com (10.64.41.20) by DFLE112.ent.ti.com
- (10.64.6.33) with Microsoft SMTP Server (version=TLS1_2,
+ Jan 2023 04:12:40 -0600
+Received: from fllv0039.itg.ti.com (10.64.41.19) by DFLE101.ent.ti.com
+ (10.64.6.22) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.16 via
- Frontend Transport; Tue, 24 Jan 2023 04:12:45 -0600
-Received: from localhost (ileaxei01-snat2.itg.ti.com [10.180.69.6])
-	by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 30OACiY0018496;
-	Tue, 24 Jan 2023 04:12:45 -0600
+ Frontend Transport; Tue, 24 Jan 2023 04:12:40 -0600
+Received: from localhost (ileaxei01-snat.itg.ti.com [10.180.69.5])
+	by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 30OACebS013089;
+	Tue, 24 Jan 2023 04:12:40 -0600
 From: Aradhya Bhatia <a-bhatia1@ti.com>
 To: Rob Herring <robh+dt@kernel.org>,
         Krzysztof Kozlowski
@@ -92,9 +92,9 @@ CC: DRI Development List <dri-devel@lists.freedesktop.org>,
         Jai Luthra <j-luthra@ti.com>, Jayesh Choudhary
 	<j-choudhary@ti.com>,
         Aradhya Bhatia <a-bhatia1@ti.com>
-Subject: [PATCH v2 4/4] drm: panel-lvds: Introduce dual-link panels
-Date: Tue, 24 Jan 2023 15:42:38 +0530
-Message-ID: <20230124101238.4542-5-a-bhatia1@ti.com>
+Subject: [PATCH v2 1/4] dt-bindings: vendor-prefixes: Add microtips
+Date: Tue, 24 Jan 2023 15:42:35 +0530
+Message-ID: <20230124101238.4542-2-a-bhatia1@ti.com>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230124101238.4542-1-a-bhatia1@ti.com>
 References: <20230124101238.4542-1-a-bhatia1@ti.com>
@@ -103,8 +103,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230124_021313_386409_24FFA231 
-X-CRM114-Status: GOOD (  13.17  )
+X-CRM114-CacheID: sfid-20230124_021313_036835_C047F633 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,30 +119,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a new compatible, "panel-dual-lvds".
-
-Dual-link LVDS interfaces have 2 links, with even pixels traveling on
-one link, and odd pixels on the other. These panels are also generic in
-nature, with no documented constraints, much like their single-link
-counterparts, "panel-lvds".
+Add document vendor prefix for Microtips Technology USA (microtips).
 
 Signed-off-by: Aradhya Bhatia <a-bhatia1@ti.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
 ---
- drivers/gpu/drm/panel/panel-lvds.c | 1 +
- 1 file changed, 1 insertion(+)
+ Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/gpu/drm/panel/panel-lvds.c b/drivers/gpu/drm/panel/panel-lvds.c
-index de8758c30e6e..bf6f84af0730 100644
---- a/drivers/gpu/drm/panel/panel-lvds.c
-+++ b/drivers/gpu/drm/panel/panel-lvds.c
-@@ -241,6 +241,7 @@ static int panel_lvds_remove(struct platform_device *pdev)
- 
- static const struct of_device_id panel_lvds_of_table[] = {
- 	{ .compatible = "panel-lvds", },
-+	{ .compatible = "panel-dual-lvds", },
- 	{ /* Sentinel */ },
- };
- 
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index ce00135fd6d0..169a3d4210bb 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -833,6 +833,8 @@ patternProperties:
+     description: Microsoft Corporation
+   "^microsys,.*":
+     description: MicroSys Electronics GmbH
++  "^microtips,.*":
++    description: Microtips Technology USA
+   "^mikroe,.*":
+     description: MikroElektronika d.o.o.
+   "^mikrotik,.*":
 -- 
 2.39.0
 
