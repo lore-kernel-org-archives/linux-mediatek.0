@@ -4,117 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F883C25B50
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jan 2023 02:13:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86AA9C25B4E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jan 2023 05:46:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:
-	Content-Type:Subject:Cc:References:In-Reply-To:To:From:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EcHtF/n2MSlkWXR586MqlkB7DN4Aawdn+kM8+CENqbw=; b=MGuf0UYDjm1yEnAuGhaULvfolh
-	mvAugkr1TIKX+koqj0KKPmdNgnNgf5CkQ2HAxD8Rt2rdjdXf2jZebtQLVgmWFvljcVGYARU6xZ9Cs
-	wR6T29dOfrVX4Dty9L0PZsSnKl8Q5ZksPuFb2ZFkzcAmislcqmIoix9KfHf97Wi1N06R94phsVH9s
-	Wt35gO/nwqSa62xdDiI2t53z8L9LWZ74e9IEnJyI2oKZACK1M1lVfg6umSu80Kg/s8omme6GkfgK5
-	vR0cdbDPqUwm9bFxs9NquHwxuTkHwMCcSGMnTkJjzt0s9f9nL4Tpr2XGZ+ZT1r2tpIJkGDd/9wx7I
-	r1PRrdxA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iN5h1aZzeTsiKDNIiMKG1gDXMbVTvgWYF0v+HiAhVDM=; b=gkryYliEKoJMdFC/kjh7EIxKh2
+	rZj0h1UIJmpd1uB+k3E/EwCDdj/EV0DmqdsaXmU+pFHcapNB3dYXf0G61IvM40bfAI3DevBGT8Bvo
+	EWE2w60Bqt8tWkuwqYpIPH7rlB61uI47hefzsw9SinuQC84ZNOJ7YT7EG1jB2GaCt5qVNV2EaQNTC
+	gvx7wbMp+5XHV4mqeLs3YmQ0TQLgYyNnozXlC4CxTbaSl0v8jwqtmYc7y0K1SO/mW8SA0hNFywNGU
+	GEJE9VGmSS14+sSdLas6z76FZJ15E76IG9Dgklfi7EewmV8hMtKt/9j0tcA0Z+dpocvwmavY+1xY7
+	hjEUG7FQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pK8oB-0025LQ-Di; Tue, 24 Jan 2023 02:13:11 +0000
-Received: from mail-os0jpn01on2118.outbound.protection.outlook.com ([40.107.113.118] helo=JPN01-OS0-obe.outbound.protection.outlook.com)
+	id 1pKC8B-002Owp-SO; Tue, 24 Jan 2023 05:46:03 +0000
+Received: from marcansoft.com ([212.63.210.85] helo=mail.marcansoft.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pK8nz-0025J1-L7; Tue, 24 Jan 2023 02:13:02 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=j1QDK62/q70voPZ35hFdIA19H3jy5IKIvXsPETL0qEQ5YOpfqfEBdRfJXKVKn/rD9mA448blx/LMIRjcu/qV4XMqCwVtJZmOIP3p7QUTBA6HYvski1x8J8QFxaB5XB0Zi0USeyWHKbphav/wTacklGmRHx9wsGAXP+pyKl95FES1V5fWrJlJAW3jBCDPFhZU5hg63g6mAHt96Xu9ytl/mBIphKK0KdS4MRLtKRJmvL9SgpqFHQsADQXkM/5MlZExwGjazcACl7vw+k8YO7n6I88y8INxHFkkiwYaoPQmfPirLhSjbvylP9KthRVnUAyflG+FivXC2d7bA7kEA5ryHg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=EcHtF/n2MSlkWXR586MqlkB7DN4Aawdn+kM8+CENqbw=;
- b=HB+f3OSiCR7oFI11dC0ynoVQlfa6up+opoNxqtM0jpsuaTULrqrIT//YwbzrKyZHt3gyXV6vcIl++J/XMBgkMcdOlvjQGc5Qnkp+P89v7Wnj2AZdqpICgBApvtY0llGQCBU0/zfDMfsVHWWh/6rT7X9unKceq1zpCO+dV0kEEjzZ85PS7BfPSTmrnSjuzm8JrChsTOygDXceF5omKHQNzWN55hUUAw2BwqUHK8glWMXuVmjhIjpR2J/oOpS3w6p0SHMQ5rKJjJDZ2KKbsgsghS6MsrHfobiG8J9OCudW93CaFLmR1iPxSt3znTkEPEosrR0JJOZr6Unz18FVVykqIA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=renesas.com; dmarc=pass action=none header.from=renesas.com;
- dkim=pass header.d=renesas.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=renesas.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=EcHtF/n2MSlkWXR586MqlkB7DN4Aawdn+kM8+CENqbw=;
- b=kP2zeiIJ5p0Ne1mT3sQKafti/Pc6ui+drdFeoiyJUT1rDDVT7iDd4Ibwi2z2v4HI2eULqa3Y/oCZq8xADFmElSh52lgxLXsKQCk/YvSedFx/j+94xplY8KyX4zDd9qwos5KcG4ifRbrq/Hy7+eqmwGCKU7Al9K2chIcWDCXFVGU=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=renesas.com;
-Received: from OS3PR01MB8426.jpnprd01.prod.outlook.com (2603:1096:604:194::10)
- by OS7PR01MB11964.jpnprd01.prod.outlook.com (2603:1096:604:23e::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6002.33; Tue, 24 Jan
- 2023 02:12:46 +0000
-Received: from OS3PR01MB8426.jpnprd01.prod.outlook.com
- ([fe80::3cd7:a7b5:ea86:9ae]) by OS3PR01MB8426.jpnprd01.prod.outlook.com
- ([fe80::3cd7:a7b5:ea86:9ae%6]) with mapi id 15.20.6002.033; Tue, 24 Jan 2023
- 02:12:46 +0000
-Message-ID: <87edrku1cy.wl-kuninori.morimoto.gx@renesas.com>
-From: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
-To: Mark Brown <broonie@kernel.org>
-In-Reply-To: <87y1psu1m1.wl-kuninori.morimoto.gx@renesas.com>
-References: <87y1psu1m1.wl-kuninori.morimoto.gx@renesas.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chunxu Li <chunxu.li@mediatek.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Charles Keepax <ckeepax@opensource.cirrus.com>, Minghao Chi <chi.minghao@zte.com.cn>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Linux-ALSA <alsa-devel@alsa-project.org>
-Subject: [PATCH v2 14/25] ASoC: mediatek: use helper function
-User-Agent: Wanderlust/2.15.9 Emacs/26.3 Mule/6.0
-Content-Type: text/plain; charset=US-ASCII
-Date: Tue, 24 Jan 2023 02:12:45 +0000
-X-ClientProxiedBy: TYCPR01CA0183.jpnprd01.prod.outlook.com
- (2603:1096:400:2b0::19) To OS3PR01MB8426.jpnprd01.prod.outlook.com
- (2603:1096:604:194::10)
+	id 1pKC86-002Oq0-Bg; Tue, 24 Jan 2023 05:46:00 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: marcan@marcan.st)
+	by mail.marcansoft.com (Postfix) with ESMTPSA id A4A7E42651;
+	Tue, 24 Jan 2023 05:45:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=marcan.st; s=default;
+	t=1674539148; bh=HljMxe7jrBTG1Genyu+Pm2rYswosR8p2EtuxuYI1k5k=;
+	h=Date:Subject:To:References:From:In-Reply-To;
+	b=tGJDNdnjFM7diTyJhByzlPW+Qgjt+NJVZE3JfiWvoqqTN22OFEMWJCJu2Ml1pOsAO
+	 r0/W8qLAIOzYaNHY8izHRJlBZMIadNunPGWmPwbEb40y1c6VosRAOpZ3Wcs4aMWegs
+	 XbuvONOwx1zSvJYikQceLhiAJggA2UD6cvlPAdRG3c6kHqxdgYFDuUkADi9HPGh5Iv
+	 0wfqvQC+iXGieASzeODYfH1Ol3XFtpUDplCyJZqQsIPWXhbLyyI6/TLH14CQRMCzGs
+	 /k/FBLs2Gdm6AmXg+b0qJZwx9ZtzOaW60Td3qkL6/m3omSubjkfWbCU4KWlUN6s7C8
+	 0z/OcdYARoLFA==
+Message-ID: <d7575a8e-035e-b729-bd16-7fd10b2c56c5@marcan.st>
+Date: Tue, 24 Jan 2023 14:45:31 +0900
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: OS3PR01MB8426:EE_|OS7PR01MB11964:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7f4d2812-9d8a-4cd1-e5e3-08dafdb07bb8
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	N/hpDMLYeneW4dKcEMJ9O8dw/QdvL6Igp9qX7eM7uHlXopfzECOkLRv+WfPgfF49Q/hrxZIVhnXZc706c+WnT3C1Fft7jiwbvQVn+9tOCzw2+rbxzIiCknJ/DFgVPIJCtRii4NAAPjJ+o+tSD/xiKVijEmRcyIXVwielEsRj2WwCHKQy+nQzz7bWtAt65x3zGbgAvjbCwogpdkmtlyq2rNjYHtvX5AooaOcLT9alVXWmlqtaEcFTbyX5Vhq9Vqn7LqLhkqxb438dARz176nA4ybfZ7cVLXcTYekMinAxjcFENp+wKjRTYMGpIgtpOenEHq9BmfT7Mq+nK8i8aFfTYlqwWQqECvQLe4EG/8TR3BAbqgSZrZbFd3bxSCJ8pm9sJyKrPoOA1y+O375n+38NCREP0oBymmkFaiaBTD0BY3v8w0n8SjFea8X5f6JuaZjJkKZwPCnCkKFAH98jhko0p2QgQ3Rzry5M4VETAQxlCJIypQOiNSctUYJ1hnpx/BgLk1w+Jh6MpPAxdI0TUENsH5uXB4bPv3Av/QGrwPqyp9M5XImsOV6VtOCAZtaBsbECQOASs76evqf6X0F4FXw94aLjWXKVX3fJGlTnsmhGJS9dbH16SeMpiiZIdoQVoLRQRcbV7WgbgLeQDtXDqodFMX8Z5pVQfQKcn0ov1rPlr4hyQiaZ0rYmqeUhoKNwkirb6yV5ylNepZ/EagmC5TCKeg==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:OS3PR01MB8426.jpnprd01.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(39860400002)(376002)(346002)(396003)(366004)(136003)(451199015)(36756003)(2906002)(6512007)(7416002)(5660300002)(478600001)(186003)(6486002)(26005)(2616005)(8936002)(54906003)(66946007)(316002)(4326008)(66556008)(66476007)(8676002)(6916009)(83380400001)(6506007)(52116002)(86362001)(38100700002)(38350700002)(41300700001);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?gDlUUOSW9gJaWLa5kTiI5CxhPoxFx00HgHhpk7/73XgPsep57DKQlZp/+Hc7?=
- =?us-ascii?Q?/hnaxgA9eqhRTRUzVv6Q7dWYLYM/0OdTq9YQrnakuwyd7X1/ztuNBKazX/L0?=
- =?us-ascii?Q?3w6mnCow7NszhpIGQqqVCTWIeliGaR/8gWMc086pDGe3Fgx+NkbjpNLy2Mol?=
- =?us-ascii?Q?sabm6Zw5bcZaEOBsQTJkLuNsqNRwzdLX1wPWQLLhnw5NztdjAqS8QOH7lH5W?=
- =?us-ascii?Q?Dzl0KCkQj4goAZT8COwujJOXCbcUNfE5YxSc4ilfM8MSe2YBBEPo7JZueXhh?=
- =?us-ascii?Q?+x/wVEqbaoUm1FAOrOJoImtJNIuha9v40CkPOSP0CvzR1oYhikHCWfZfQnnc?=
- =?us-ascii?Q?pHubcf/DelHt9cy58wLkwtBQUmozh98ZUoubcJRZIlxe3pQMMrsqZQ11mMXv?=
- =?us-ascii?Q?DoIxGa2Alt3CXrmauBxft+OZTMQooh07FXlPEbkBIJO+wHo0lF0qD2e9kWg8?=
- =?us-ascii?Q?dX5Ewfj6YXO7d6jygsYMeaZDPHh/k6wLQbusP1AOu/igckWiGsRUgSH/Pc/R?=
- =?us-ascii?Q?Av7ut9nDeDwW8l1vYAmGf71afAMSZCMCKAro93fhhVemxQXWJ43P6VyZK2b4?=
- =?us-ascii?Q?xrAcMy6qMRdBjDAa2HXtUEV+ywwKbNZQew4QifS6fnL2ysaRu5iQaZa4sN79?=
- =?us-ascii?Q?38mecNtLYo32eySgVI1vuUcoK9Knn7dPUWqVIuHrPk9OA3Mw7V+xthFo4SCs?=
- =?us-ascii?Q?Ed0KwY7FeckzK8BGZGaE5QAa4QSVY3bX5AAEcWVdeQZtDG8eGaNFqONGGXQx?=
- =?us-ascii?Q?wRrOUAl5l/9UwRGy70EiOvzaihSEWs/rIiRfe1GaJpszIb+QsiFUsoDEKAof?=
- =?us-ascii?Q?O4DYURZyXh5j29RH6c1tjzjMkBEa9n3VvCsz72PIn5tePC7X/OTRqj7pJEiB?=
- =?us-ascii?Q?O8ogSQ+bDV+bchll556KX1LzCid9fb7BE+hAM+/je6FP+PF0kf7VV/Gd88TV?=
- =?us-ascii?Q?s/QfMIDkWBWYSmVgnl3K8uLh7b7dtr06JS2TELANeAXseIXRvSlXhRKLYsqP?=
- =?us-ascii?Q?aMR2W3hn3GrGU7iU7gPuYuLLtwlMlF6LumBqZb9zgdds4e25nAHlyKEyPP25?=
- =?us-ascii?Q?VL2VLc3Uzw+nDYOP9nhideWMV6fM8hNtaHVEYJo6VrJ9rnTuhtwl4bzJQsdq?=
- =?us-ascii?Q?hnemAYuUa/18H+39VCKIQBkKUqFSApwooSF/zPGOVUkCXNldVjxp3Amau8rW?=
- =?us-ascii?Q?JIrELYhSlKmUyBoxHZwKObp0IZaPipzMrAXwYa1jGow9r/y6wIrKL6fXGZao?=
- =?us-ascii?Q?tSF/jLq/A8A3Ve6CdLO8GPrP/qkrTCzyho5ky9p1aSZzok3uc1licRJQW1kR?=
- =?us-ascii?Q?SktGd9Jk17Eg/kAnkfiOgtM3x5tKHmzkume590PqVkR0atiutfhOAAj/Vt46?=
- =?us-ascii?Q?5yC7Vid90l6dAUOORUJhWClbXAojdJQvoDfxePIagSZyj8VK6PDOgAbGYusS?=
- =?us-ascii?Q?UjM8MSPU8dm3U5h6s66T4YBwkx8wtwR/hbPrr9r2JS2SuABuERPneGZNIKfg?=
- =?us-ascii?Q?mRgUypBymOywIEDpd0F6QKk1RYVjru0Vsp3xIyu2YtW+bYfxQKVMzbsuJK7s?=
- =?us-ascii?Q?KFZck9+1LJ2kexyBQbf15J5QrTb05Io/foO+hicDxkenKjvWi7pAqpEjKriT?=
- =?us-ascii?Q?4h7Yk1vSjfQ/kAlgZ2VBMPo=3D?=
-X-OriginatorOrg: renesas.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7f4d2812-9d8a-4cd1-e5e3-08dafdb07bb8
-X-MS-Exchange-CrossTenant-AuthSource: OS3PR01MB8426.jpnprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jan 2023 02:12:45.9070
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 53d82571-da19-47e4-9cb4-625a166a4a2a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: XEVSX2x0eomLp9b3fgGolG8c6RblouJVqRqFHe1SfvUOgrV2BOH1GSrLjDUfTBQKKk4qS1HBKoqA+rcfXxCxk7H4KkM8IHkQohMoAkvIpXq66w2RVwT0+riRXDQnCifK
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: OS7PR01MB11964
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH 1/2] dt-bindings: dma: drop unneeded quotes
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Olivier Dautricourt <olivierdautricourt@gmail.com>, Stefan Roese
+ <sr@denx.de>, Sven Peter <sven@svenpeter.dev>,
+ Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, =?UTF-8?Q?Andreas_F=c3=a4rber?=
+ <afaerber@suse.de>, Manivannan Sadhasivam <mani@kernel.org>,
+ Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Viresh Kumar <vireshk@kernel.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Green Wan <green.wan@sifive.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard
+ <mripard@kernel.org>, =?UTF-8?B?77+9ZXI=?= <povik+lin@cutebit.org>,
+ Peng Fan <peng.fan@nxp.com>, Paul Cercueil <paul@crapouillou.net>,
+ - <chuanhua.lei@intel.com>, Long Cheng <long.cheng@mediatek.com>,
+ Rajesh Gumasta <rgumasta@nvidia.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Biju Das <biju.das.jz@bp.renesas.com>,
+ Miquel Raynal <miquel.raynal@bootlin.com>, Palmer Debbelt
+ <palmer@sifive.com>, Masahiro Yamada <yamada.masahiro@socionext.com>,
+ Amelie Delaunay <amelie.delaunay@foss.st.com>,
+ Linus Walleij <linus.walleij@linaro.org>, dmaengine@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+ asahi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ linux-actions@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-mediatek@lists.infradead.org
+References: <20230118180144.364756-1-krzysztof.kozlowski@linaro.org>
+From: Hector Martin <marcan@marcan.st>
+In-Reply-To: <20230118180144.364756-1-krzysztof.kozlowski@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230123_181259_860628_E5241AFF 
-X-CRM114-Status: GOOD (  13.72  )
+X-CRM114-CacheID: sfid-20230123_214559_496403_78172110 
+X-CRM114-Status: UNSURE (   7.28  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,193 +108,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 19/01/2023 03.01, Krzysztof Kozlowski wrote:
+> Cleanup by removing unneeded quotes from refs and redundant blank lines.
+> No functional impact except adjusting to preferred coding style.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
 
-From: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+For the Apple stuff,
 
-Current ASoC has many helper function.
-This patch use it.
+Acked-by: Hector Martin <marcan@marcan.st>
 
-Signed-off-by: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
----
- sound/soc/mediatek/common/mtk-dsp-sof-common.c | 18 +++++++-----------
- sound/soc/mediatek/mt6797/mt6797-dai-pcm.c     |  8 +++++---
- sound/soc/mediatek/mt8183/mt8183-dai-pcm.c     |  7 ++++---
- sound/soc/mediatek/mt8186/mt8186-dai-pcm.c     |  7 ++++---
- sound/soc/mediatek/mt8192/mt8192-dai-pcm.c     |  8 +++++---
- sound/soc/mediatek/mt8195/mt8195-dai-pcm.c     |  7 +++++--
- 6 files changed, 30 insertions(+), 25 deletions(-)
-
-diff --git a/sound/soc/mediatek/common/mtk-dsp-sof-common.c b/sound/soc/mediatek/common/mtk-dsp-sof-common.c
-index 8b1b623207be..6fef16306f74 100644
---- a/sound/soc/mediatek/common/mtk-dsp-sof-common.c
-+++ b/sound/soc/mediatek/common/mtk-dsp-sof-common.c
-@@ -32,7 +32,7 @@ int mtk_sof_dai_link_fixup(struct snd_soc_pcm_runtime *rtd,
- 				continue;
- 
- 			for_each_rtd_cpu_dais(runtime, j, cpu_dai) {
--				if (cpu_dai->stream_active[conn->stream_dir] > 0) {
-+				if (snd_soc_dai_stream_active(cpu_dai, conn->stream_dir) > 0) {
- 					sof_dai_link = runtime->dai_link;
- 					break;
- 				}
-@@ -111,21 +111,17 @@ int mtk_sof_card_late_probe(struct snd_soc_card *card)
- 			for_each_rtd_cpu_dais(sof_rtd, j, cpu_dai) {
- 				struct snd_soc_dapm_route route;
- 				struct snd_soc_dapm_path *p = NULL;
--				struct snd_soc_dapm_widget *play_widget =
--					cpu_dai->playback_widget;
--				struct snd_soc_dapm_widget *cap_widget =
--					cpu_dai->capture_widget;
-+				struct snd_soc_dapm_widget *widget = snd_soc_dai_get_widget(cpu_dai, conn->stream_dir);
-+
- 				memset(&route, 0, sizeof(route));
--				if (conn->stream_dir == SNDRV_PCM_STREAM_CAPTURE &&
--				    cap_widget) {
--					snd_soc_dapm_widget_for_each_sink_path(cap_widget, p) {
-+				if (conn->stream_dir == SNDRV_PCM_STREAM_CAPTURE && widget) {
-+					snd_soc_dapm_widget_for_each_sink_path(widget, p) {
- 						route.source = conn->sof_dma;
- 						route.sink = p->sink->name;
- 						snd_soc_dapm_add_routes(&card->dapm, &route, 1);
- 					}
--				} else if (conn->stream_dir == SNDRV_PCM_STREAM_PLAYBACK &&
--						play_widget) {
--					snd_soc_dapm_widget_for_each_source_path(play_widget, p) {
-+				} else if (conn->stream_dir == SNDRV_PCM_STREAM_PLAYBACK && widget) {
-+					snd_soc_dapm_widget_for_each_source_path(widget, p) {
- 						route.source = p->source->name;
- 						route.sink = conn->sof_dma;
- 						snd_soc_dapm_add_routes(&card->dapm, &route, 1);
-diff --git a/sound/soc/mediatek/mt6797/mt6797-dai-pcm.c b/sound/soc/mediatek/mt6797/mt6797-dai-pcm.c
-index 51f736f319e4..8a309b0734f7 100644
---- a/sound/soc/mediatek/mt6797/mt6797-dai-pcm.c
-+++ b/sound/soc/mediatek/mt6797/mt6797-dai-pcm.c
-@@ -183,6 +183,8 @@ static int mtk_dai_pcm_hw_params(struct snd_pcm_substream *substream,
- 				 struct snd_soc_dai *dai)
- {
- 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	struct snd_soc_dapm_widget *p = snd_soc_dai_get_widget_playback(dai);
-+	struct snd_soc_dapm_widget *c = snd_soc_dai_get_widget_capture(dai);
- 	unsigned int rate = params_rate(params);
- 	unsigned int rate_reg = mt6797_rate_transform(afe->dev, rate, dai->id);
- 	unsigned int pcm_con = 0;
-@@ -193,10 +195,10 @@ static int mtk_dai_pcm_hw_params(struct snd_pcm_substream *substream,
- 		substream->stream,
- 		rate,
- 		rate_reg,
--		dai->playback_widget->active,
--		dai->capture_widget->active);
-+		p->active,
-+		c->active);
- 
--	if (dai->playback_widget->active || dai->capture_widget->active)
-+	if (p->active || c->active)
- 		return 0;
- 
- 	switch (dai->id) {
-diff --git a/sound/soc/mediatek/mt8183/mt8183-dai-pcm.c b/sound/soc/mediatek/mt8183/mt8183-dai-pcm.c
-index 38ce0e36cdb4..4e25287fc0e4 100644
---- a/sound/soc/mediatek/mt8183/mt8183-dai-pcm.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-dai-pcm.c
-@@ -183,6 +183,8 @@ static int mtk_dai_pcm_hw_params(struct snd_pcm_substream *substream,
- 				 struct snd_soc_dai *dai)
- {
- 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	struct snd_soc_dapm_widget *p = snd_soc_dai_get_widget_playback(dai);
-+	struct snd_soc_dapm_widget *c = snd_soc_dai_get_widget_capture(dai);
- 	unsigned int rate = params_rate(params);
- 	unsigned int rate_reg = mt8183_rate_transform(afe->dev, rate, dai->id);
- 	unsigned int pcm_con = 0;
-@@ -193,10 +195,9 @@ static int mtk_dai_pcm_hw_params(struct snd_pcm_substream *substream,
- 		substream->stream,
- 		rate,
- 		rate_reg,
--		dai->playback_widget->active,
--		dai->capture_widget->active);
-+		p->active, c->active);
- 
--	if (dai->playback_widget->active || dai->capture_widget->active)
-+	if (p->active || c->active)
- 		return 0;
- 
- 	switch (dai->id) {
-diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-pcm.c b/sound/soc/mediatek/mt8186/mt8186-dai-pcm.c
-index 41221a66111c..a50aa294960b 100644
---- a/sound/soc/mediatek/mt8186/mt8186-dai-pcm.c
-+++ b/sound/soc/mediatek/mt8186/mt8186-dai-pcm.c
-@@ -218,6 +218,8 @@ static int mtk_dai_pcm_hw_params(struct snd_pcm_substream *substream,
- {
- 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
- 	struct mt8186_afe_private *afe_priv = afe->platform_priv;
-+	struct snd_soc_dapm_widget *p = snd_soc_dai_get_widget_playback(dai);
-+	struct snd_soc_dapm_widget *c = snd_soc_dai_get_widget_capture(dai);
- 	int pcm_id = dai->id;
- 	struct mtk_afe_pcm_priv *pcm_priv = afe_priv->dai_priv[pcm_id];
- 	unsigned int rate = params_rate(params);
-@@ -230,12 +232,11 @@ static int mtk_dai_pcm_hw_params(struct snd_pcm_substream *substream,
- 	unsigned int pcm_con = 0;
- 
- 	dev_dbg(afe->dev, "%s(), id %d, stream %d, widget active p %d, c %d\n",
--		__func__, dai->id, substream->stream, dai->playback_widget->active,
--		dai->capture_widget->active);
-+		__func__, dai->id, substream->stream, p->active, c->active);
- 	dev_dbg(afe->dev, "%s(), rate %d, rate_reg %d, data_width %d, wlen_width %d\n",
- 		__func__, rate, rate_reg, data_width, wlen_width);
- 
--	if (dai->playback_widget->active || dai->capture_widget->active)
-+	if (p->active || c->active)
- 		return 0;
- 
- 	switch (dai->id) {
-diff --git a/sound/soc/mediatek/mt8192/mt8192-dai-pcm.c b/sound/soc/mediatek/mt8192/mt8192-dai-pcm.c
-index 239e3f5b53d3..2847a2e747be 100644
---- a/sound/soc/mediatek/mt8192/mt8192-dai-pcm.c
-+++ b/sound/soc/mediatek/mt8192/mt8192-dai-pcm.c
-@@ -273,6 +273,8 @@ static int mtk_dai_pcm_hw_params(struct snd_pcm_substream *substream,
- 				 struct snd_soc_dai *dai)
- {
- 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	struct snd_soc_dapm_widget *p = snd_soc_dai_get_widget_playback(dai);
-+	struct snd_soc_dapm_widget *c = snd_soc_dai_get_widget_capture(dai);
- 	unsigned int rate = params_rate(params);
- 	unsigned int rate_reg = mt8192_rate_transform(afe->dev, rate, dai->id);
- 	unsigned int pcm_con = 0;
-@@ -283,10 +285,10 @@ static int mtk_dai_pcm_hw_params(struct snd_pcm_substream *substream,
- 		 substream->stream,
- 		 rate,
- 		 rate_reg,
--		 dai->playback_widget->active,
--		 dai->capture_widget->active);
-+		 p->active,
-+		 c->active);
- 
--	if (dai->playback_widget->active || dai->capture_widget->active)
-+	if (p->active || c->active)
- 		return 0;
- 
- 	switch (dai->id) {
-diff --git a/sound/soc/mediatek/mt8195/mt8195-dai-pcm.c b/sound/soc/mediatek/mt8195/mt8195-dai-pcm.c
-index caceb0deb467..051433689ff5 100644
---- a/sound/soc/mediatek/mt8195/mt8195-dai-pcm.c
-+++ b/sound/soc/mediatek/mt8195/mt8195-dai-pcm.c
-@@ -213,11 +213,14 @@ static int mtk_dai_pcm_configure(struct snd_pcm_substream *substream,
- static int mtk_dai_pcm_prepare(struct snd_pcm_substream *substream,
- 			       struct snd_soc_dai *dai)
- {
-+	struct snd_soc_dapm_widget *p = snd_soc_dai_get_widget_playback(dai);
-+	struct snd_soc_dapm_widget *c = snd_soc_dai_get_widget_capture(dai);
-+
- 	dev_dbg(dai->dev, "%s(), id %d, stream %d, widget active p %d, c %d\n",
- 		__func__, dai->id, substream->stream,
--		dai->playback_widget->active, dai->capture_widget->active);
-+		p->active, c->active);
- 
--	if (dai->playback_widget->active || dai->capture_widget->active)
-+	if (p->active || c->active)
- 		return 0;
- 
- 	return mtk_dai_pcm_configure(substream, dai);
--- 
-2.25.1
-
+- Hector
 
