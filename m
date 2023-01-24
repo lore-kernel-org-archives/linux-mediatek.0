@@ -4,108 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AA36C54E94
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jan 2023 14:07:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36DADC25B4E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jan 2023 14:52:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VYZQGFlPP5P/RkMABIrbs0eSZjZa02mf4fdtuwRY9mc=; b=IixSi1NKoeeSXkXr07JZyjAftV
-	9GkaumXC61zxzwYVh7X1T4JXJETcukls61ekr+OE937XQWoWqUBXLk6tfinmsCGLfbVHHmT04g2j8
-	B6GEFzGjkMYA3GZqlNCPFsRMXidRoGQKnKUSDYaKOXnclNtfhBYZ/jotsBRFckcTvEBGLj5q8b7xE
-	D5hHrJQfBqOuKAavfOAtZl5G2i2NAD9cqTUXcPu1FlcU0F0wjNbYd5zye4zQTVLH0g/9Njw4fDhth
-	7ZZqNquQzTxI0ZZzqcTZkN81lEDfJMFRe3HjCU7KdWxtGqDqDMB76EkTz1MYAmVwB7rPpTBwYgeT0
-	1+R40FGw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CE0uxDp+j8MuO+sTZHqpL532aGD/TQaP4LM2JKprAdY=; b=FSFA8R0qsj4rAlivA3WxslJ7YJ
+	MI2X8+jNwAZu3PHgTCwLJcUBoZOSaTNLWTpnmNxFfJ0nD8hpEZa1aiBir+TR7g0d8LMuHvOcIV7WI
+	6EoAssaqprMEhAr2+D2RWR4dDptJNKgjvvtQmUhMNrCeBapzinL21/oyuEAwh7Hj5L8hvAZuNzpqN
+	Fgt38p+J0Asxh0a5oDLk3Vl/Oi8q3togooR7e7LOTy42KgPpcnbSGkh2ug8xudhZKmjifmw/RBK3Q
+	OJx6PUWH367TzgNKT8Fkur5z24bW8ECHQHkWWup3G70HIMjnEenig9gwrsZx3+ZpkWZ4YFKjUO0Hr
+	k7IRUXHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKJxH-004CaS-R6; Tue, 24 Jan 2023 14:07:19 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pKKeb-004Q9h-0T; Tue, 24 Jan 2023 14:52:05 +0000
+Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKJsz-004ASG-DK
-	for linux-mediatek@bombadil.infradead.org; Tue, 24 Jan 2023 14:02:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=VYZQGFlPP5P/RkMABIrbs0eSZjZa02mf4fdtuwRY9mc=; b=GUe0xGku+PNZLHxaj3xpaDpN7G
-	tYtXeQ18lqemck9NdfF7NlqYzLQdIUQDl/W5hGQPsp0QlLBjENHPOwk07yGK0mBo2n5p9DPU3I8JH
-	2+PxMJ5Fita0/ham/wGWvz6GFsdyeI7GCzZqGqSE22QvfAlMe/cMD7LynZIFX2JUDlvydcvpUuk+4
-	UYZMbqsbfTYUJKIaSIHmKcOXgWM8SilP86iXNaIxK12mx2n2U8AGA17uf7fIfANDW6VO6yqSpmgSh
-	Z/z1Z0fA2ibVpUZurh5bF/6pDFOXQNR8dDAU9xD3pRz1tbRcq2nzpZlYn0O9oIl144CqunvDWIS56
-	ApHNaI4Q==;
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pKJAY-001qyb-2w
-	for linux-mediatek@lists.infradead.org;
-	Tue, 24 Jan 2023 13:17:02 +0000
-Received: by mail-wr1-x434.google.com with SMTP id h12so9847493wrv.10
-        for <linux-mediatek@lists.infradead.org>; Tue, 24 Jan 2023 05:17:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=VYZQGFlPP5P/RkMABIrbs0eSZjZa02mf4fdtuwRY9mc=;
-        b=LvzJ5qejfKsGezJgZ0/qaFtlHArz8tyPy2zcpYrl3qtC+Md2S1iHJ5ZsZ5wgCO6dCi
-         jn2efJJ09102dQxMA8YGKJdPa4B3GxCvLdyoGxA/3hixN9zVk0defqqVTFJdr0kOXQvi
-         d4CI0xfE0gMAn8IwdZm1YdNL/qUxrMPP+T7P9RpUx10hzjrvU0VtOwNOx7Esq6Sq3wy/
-         ySLC1M37orcjxu7ivMppTIyYUkBpdA/t0auKXNDeCW3GgOPR5r9g/IHv2DQw8PW8s+Ui
-         XI0N2i+GcazkL9WFtRcnRxx8tb8VN3R9FudUFaE9PZhcVqVZHLbS9SSzfeWKwhlh7eCA
-         hb+A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=VYZQGFlPP5P/RkMABIrbs0eSZjZa02mf4fdtuwRY9mc=;
-        b=Av9YEbjI8sGdNK44PYFujJVXxRfJw4S4YgzwN3QaPj7oxoSyon60NXMuHS8gqy0q9l
-         eyqnuD+csJLkRrCpa2GHLteHdI1VjCzdWJkmolsbttWeVraPOylgnIol++p1C7uacy/M
-         7uTa1fTNIHKVJ/upaLC5DgQTTWyo/8tcAjVUHOtZuuv3IKuqM1UtcX7z1T11wdjlt+5T
-         jZfhIfRW6jybx/fGd+yNG4BhMkbGUkXtCs+F7HJGPZIzbAE160x482t+r6C9uiCbyHfr
-         LxepaSDGCIcpXw0m0ZOVtjIgucQXI7o/oh6tJbSz1G/ScUWf/OT+QalOIC+XmrzDJdkz
-         iHdQ==
-X-Gm-Message-State: AFqh2kqydbVkqYV15gI32ySxG0SfoVp4UjIeqC1TGoQJRzA4vsDf7QtU
-	qtA8Ccnl1E1Npe+AzI0lzxCo4Q==
-X-Google-Smtp-Source: AMrXdXuQYFl4pUTj0SbP3xV3T+Aw2YTblcG/tXvardPqn07thVl0y+FReYxWRPg4/OF7WMHUoCoDiQ==
-X-Received: by 2002:a5d:6186:0:b0:2bd:dc24:cade with SMTP id j6-20020a5d6186000000b002bddc24cademr19692374wru.16.1674566245280;
-        Tue, 24 Jan 2023 05:17:25 -0800 (PST)
-Received: from t480-bl003.civfrance.com (58.188.158.77.rev.sfr.net. [77.158.188.58])
-        by smtp.gmail.com with ESMTPSA id a5-20020adfeec5000000b002bfb5ebf8cfsm49427wrp.21.2023.01.24.05.17.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Jan 2023 05:17:25 -0800 (PST)
-From: bchihi@baylibre.com
-To: daniel.lezcano@linaro.org,
-	angelogioacchino.delregno@collabora.com,
-	rafael@kernel.org,
-	amitk@kernel.org,
-	rui.zhang@intel.com,
-	matthias.bgg@gmail.com,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	rdunlap@infradead.org,
-	ye.xingchen@zte.com.cn,
-	p.zabel@pengutronix.de
-Cc: linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	khilman@baylibre.com,
-	james.lo@mediatek.com,
-	rex-bc.chen@mediatek.com
-Subject: [PATCH v11 5/6] arm64/dts/mt8195: Add thermal zones and thermal nodes
-Date: Tue, 24 Jan 2023 14:17:16 +0100
-Message-Id: <20230124131717.128660-6-bchihi@baylibre.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230124131717.128660-1-bchihi@baylibre.com>
-References: <20230124131717.128660-1-bchihi@baylibre.com>
+	id 1pKKeX-004Q7L-8p
+	for linux-mediatek@lists.infradead.org; Tue, 24 Jan 2023 14:52:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1674571921; x=1706107921;
+  h=from:to:cc:subject:in-reply-to:references:date:
+   message-id:mime-version;
+  bh=RA+DKNp+d4oq6n7db0SeDuyhdEEeXCsrsOwjUflRiNM=;
+  b=Mt9p802Fy5NkIbuwVClfPcDEDvSBI3/ybkb/EwO23LZHnbrjAcrMqPFV
+   emqS/CnInh9H/VC6fTAEMXhYYOeu4qQ7iTYHqzz742p8f6uizfbeMqQk6
+   3DqRVKdegOfiITz5zq2tQPZCuHCcwvD0atKe2QEL7GB+hHETchOq/RSOS
+   6NhglkAWDUa2X6qCCxZ3nvSnzgj8BqTf6N7mELFt2zho22bgzkYLPqfYh
+   rBry0JNwGpYz6R1u/5CFbEAKEnHISXLGFlNEDdclca8vHTMwrjvI5FdYs
+   DggM11IosZSgebZvnIOLp0XDXZ3Q2HjdYv2qa6HwGxPQzMRGBxIaZNnXU
+   A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10599"; a="388653253"
+X-IronPort-AV: E=Sophos;i="5.97,242,1669104000"; 
+   d="scan'208";a="388653253"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jan 2023 06:51:55 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10599"; a="770338025"
+X-IronPort-AV: E=Sophos;i="5.97,242,1669104000"; 
+   d="scan'208";a="770338025"
+Received: from pesir-mobl.ger.corp.intel.com (HELO localhost) ([10.252.57.197])
+  by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jan 2023 06:51:47 -0800
+From: Jani Nikula <jani.nikula@intel.com>
+To: kernel test robot <lkp@intel.com>, dri-devel@lists.freedesktop.org
+Cc: oe-kbuild-all@lists.linux.dev, Emma Anholt <emma@anholt.net>,
+ amd-gfx@lists.freedesktop.org, Andrzej Hajda <andrzej.hajda@intel.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>, Jernej Skrabec
+ <jernej.skrabec@gmail.com>, Alain Volmat <alain.volmat@foss.st.com>,
+ Pan@freedesktop.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Jonas
+ Karlman <jonas@kwiboo.se>, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, Abhinav Kumar
+ <quic_abhinavk@quicinc.com>, Maxime Ripard <mripard@kernel.org>, Inki Dae
+ <inki.dae@samsung.com>, Alex
+ Deucher <alexander.deucher@amd.com>, linux-mediatek@lists.infradead.org,
+ Neil Armstrong <neil.armstrong@linaro.org>, Xinhui <Xinhui.Pan@amd.com>,
+ Seung-Woo Kim <sw0312.kim@samsung.com>, Robert Foss
+ <robert.foss@linaro.org>, Philipp Zabel <p.zabel@pengutronix.de>, Dmitry
+ Baryshkov <dmitry.baryshkov@linaro.org>, freedreno@lists.freedesktop.org,
+ Christian
+ =?utf-8?Q?K=C3=B6nig?= <christian.koenig@amd.com>, Laurent Pinchart
+ <Laurent.pinchart@ideasonboard.com>
+Subject: Re: [Intel-gfx] [PATCH 3/3] drm/connector: move ELD and video/audio
+ latencies to display info
+In-Reply-To: <202301242049.eKzx7RzZ-lkp@intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20230124094154.2282778-3-jani.nikula@intel.com>
+ <202301242049.eKzx7RzZ-lkp@intel.com>
+Date: Tue, 24 Jan 2023 16:51:45 +0200
+Message-ID: <87h6wg6l4u.fsf@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230124_131659_869589_D912DB6C 
-X-CRM114-Status: GOOD (  10.14  )
+X-CRM114-CacheID: sfid-20230124_065201_359983_A213EF9C 
+X-CRM114-Status: GOOD (  15.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,175 +94,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Balsam CHIHI <bchihi@baylibre.com>
 
-Add thermal zones and thermal nodes for the mt8195.
+Obviously, I need to still work on this. *looks for brown paper bag*
 
-Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
----
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 129 +++++++++++++++++++++++
- 1 file changed, 129 insertions(+)
+On Tue, 24 Jan 2023, kernel test robot <lkp@intel.com> wrote:
+> Hi Jani,
+>
+> I love your patch! Yet something to improve:
+>
+> [auto build test ERROR on drm-tip/drm-tip]
+>
+> url:    https://github.com/intel-lab-lkp/linux/commits/Jani-Nikula/drm-connector-move-HDR-sink-metadata-to-display-info/20230124-174322
+> base:   git://anongit.freedesktop.org/drm/drm-tip drm-tip
+> patch link:    https://lore.kernel.org/r/20230124094154.2282778-3-jani.nikula%40intel.com
+> patch subject: [Intel-gfx] [PATCH 3/3] drm/connector: move ELD and video/audio latencies to display info
+> config: arm-defconfig (https://download.01.org/0day-ci/archive/20230124/202301242049.eKzx7RzZ-lkp@intel.com/config)
+> compiler: arm-linux-gnueabi-gcc (GCC) 12.1.0
+> reproduce (this is a W=1 build):
+>         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+>         chmod +x ~/bin/make.cross
+>         # https://github.com/intel-lab-lkp/linux/commit/1e92b5478cfc1b0df66153652111117e9548b0d5
+>         git remote add linux-review https://github.com/intel-lab-lkp/linux
+>         git fetch --no-tags linux-review Jani-Nikula/drm-connector-move-HDR-sink-metadata-to-display-info/20230124-174322
+>         git checkout 1e92b5478cfc1b0df66153652111117e9548b0d5
+>         # save the config file
+>         mkdir build_dir && cp config build_dir/.config
+>         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm olddefconfig
+>         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm SHELL=/bin/bash drivers/gpu/
+>
+> If you fix the issue, kindly add following tag where applicable
+> | Reported-by: kernel test robot <lkp@intel.com>
+>
+> All errors (new ones prefixed by >>):
+>
+>    drivers/gpu/drm/tegra/hdmi.c: In function 'tegra_hdmi_write_eld':
+>>> drivers/gpu/drm/tegra/hdmi.c:620:60: error: 'struct drm_connector' has no member named 'eld'
+>      620 |         size_t length = drm_eld_size(hdmi->output.connector.eld), i;
+>          |                                                            ^
+>    drivers/gpu/drm/tegra/hdmi.c:624:72: error: 'struct drm_connector' has no member named 'eld'
+>      624 |                 tegra_hdmi_writel(hdmi, i << 8 | hdmi->output.connector.eld[i],
+>          |                                                                        ^
+> --
+>    drivers/gpu/drm/tegra/sor.c: In function 'tegra_sor_write_eld':
+>>> drivers/gpu/drm/tegra/sor.c:1951:59: error: 'struct drm_connector' has no member named 'eld'
+>     1951 |         size_t length = drm_eld_size(sor->output.connector.eld), i;
+>          |                                                           ^
+>    drivers/gpu/drm/tegra/sor.c:1954:69: error: 'struct drm_connector' has no member named 'eld'
+>     1954 |                 tegra_sor_writel(sor, i << 8 | sor->output.connector.eld[i],
+>          |                                                                     ^
+>
+>
+> vim +620 drivers/gpu/drm/tegra/hdmi.c
+>
+> edec4af4c3d6d2 Thierry Reding 2012-11-15  617  
+> 5234549b93aa2a Thierry Reding 2015-08-07  618  static void tegra_hdmi_write_eld(struct tegra_hdmi *hdmi)
+> 5234549b93aa2a Thierry Reding 2015-08-07  619  {
+> 5234549b93aa2a Thierry Reding 2015-08-07 @620  	size_t length = drm_eld_size(hdmi->output.connector.eld), i;
+> 5234549b93aa2a Thierry Reding 2015-08-07  621  	u32 value;
+> edec4af4c3d6d2 Thierry Reding 2012-11-15  622  
+> 5234549b93aa2a Thierry Reding 2015-08-07  623  	for (i = 0; i < length; i++)
+> 5234549b93aa2a Thierry Reding 2015-08-07  624  		tegra_hdmi_writel(hdmi, i << 8 | hdmi->output.connector.eld[i],
+> 5234549b93aa2a Thierry Reding 2015-08-07  625  				  HDMI_NV_PDISP_SOR_AUDIO_HDA_ELD_BUFWR);
+> edec4af4c3d6d2 Thierry Reding 2012-11-15  626  
+> 5234549b93aa2a Thierry Reding 2015-08-07  627  	/*
+> 5234549b93aa2a Thierry Reding 2015-08-07  628  	 * The HDA codec will always report an ELD buffer size of 96 bytes and
+> 5234549b93aa2a Thierry Reding 2015-08-07  629  	 * the HDA codec driver will check that each byte read from the buffer
+> 5234549b93aa2a Thierry Reding 2015-08-07  630  	 * is valid. Therefore every byte must be written, even if no 96 bytes
+> 5234549b93aa2a Thierry Reding 2015-08-07  631  	 * were parsed from EDID.
+> 5234549b93aa2a Thierry Reding 2015-08-07  632  	 */
+> 5234549b93aa2a Thierry Reding 2015-08-07  633  	for (i = length; i < HDMI_ELD_BUFFER_SIZE; i++)
+> 5234549b93aa2a Thierry Reding 2015-08-07  634  		tegra_hdmi_writel(hdmi, i << 8 | 0,
+> 5234549b93aa2a Thierry Reding 2015-08-07  635  				  HDMI_NV_PDISP_SOR_AUDIO_HDA_ELD_BUFWR);
+> 5234549b93aa2a Thierry Reding 2015-08-07  636  
+> 5234549b93aa2a Thierry Reding 2015-08-07  637  	value = SOR_AUDIO_HDA_PRESENSE_VALID | SOR_AUDIO_HDA_PRESENSE_PRESENT;
+> 5234549b93aa2a Thierry Reding 2015-08-07  638  	tegra_hdmi_writel(hdmi, value, HDMI_NV_PDISP_SOR_AUDIO_HDA_PRESENSE);
+> edec4af4c3d6d2 Thierry Reding 2012-11-15  639  }
+> edec4af4c3d6d2 Thierry Reding 2012-11-15  640  
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 09df105f4606..636676f4ba25 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -14,6 +14,7 @@
- #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
- #include <dt-bindings/power/mt8195-power.h>
- #include <dt-bindings/reset/mt8195-resets.h>
-+#include <dt-bindings/thermal/mediatek-lvts.h>
- 
- / {
- 	compatible = "mediatek,mt8195";
-@@ -954,6 +955,17 @@ spi0: spi@1100a000 {
- 			status = "disabled";
- 		};
- 
-+		lvts_ap: thermal-sensor@1100b000 {
-+			compatible = "mediatek,mt8195-lvts-ap";
-+			reg = <0 0x1100b000 0 0x1000>;
-+			interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&infracfg_ao CLK_INFRA_AO_THERM>;
-+			resets = <&infracfg_ao MT8195_INFRA_RST0_THERM_CTRL_SWRST>;
-+			nvmem-cells = <&lvts_efuse_data1 &lvts_efuse_data2>;
-+			nvmem-cell-names = "lvts-calib-data-1", "lvts-calib-data-2";
-+			#thermal-sensor-cells = <1>;
-+		};
-+
- 		spi1: spi@11010000 {
- 			compatible = "mediatek,mt8195-spi",
- 				     "mediatek,mt6765-spi";
-@@ -1114,6 +1126,17 @@ mmc2: mmc@11250000 {
- 			status = "disabled";
- 		};
- 
-+		lvts_mcu: thermal-sensor@11278000 {
-+			compatible = "mediatek,mt8195-lvts-mcu";
-+			reg = <0 0x11278000 0 0x1000>;
-+			interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&infracfg_ao CLK_INFRA_AO_THERM>;
-+			resets = <&infracfg_ao MT8195_INFRA_RST4_THERM_CTRL_MCU_SWRST>;
-+			nvmem-cells = <&lvts_efuse_data1 &lvts_efuse_data2>;
-+			nvmem-cell-names = "lvts-calib-data-1", "lvts-calib-data-2";
-+			#thermal-sensor-cells = <1>;
-+		};
-+
- 		xhci1: usb@11290000 {
- 			compatible = "mediatek,mt8195-xhci",
- 				     "mediatek,mtk-xhci";
-@@ -2387,4 +2410,110 @@ dp_tx: dp-tx@1c600000 {
- 			status = "disabled";
- 		};
- 	};
-+
-+	thermal_zones: thermal-zones {
-+		cpu0-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_mcu MT8195_MCU_LITTLE_CPU0>;
-+			trips {
-+				cpu0_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		cpu1-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_mcu MT8195_MCU_LITTLE_CPU1>;
-+			trips {
-+				cpu1_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		cpu2-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_mcu MT8195_MCU_LITTLE_CPU2>;
-+			trips {
-+				cpu2_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		cpu3-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_mcu MT8195_MCU_LITTLE_CPU3>;
-+			trips {
-+				cpu3_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		cpu4-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_mcu MT8195_MCU_BIG_CPU0>;
-+			trips {
-+				cpu4_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		cpu5-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_mcu MT8195_MCU_BIG_CPU1>;
-+			trips {
-+				cpu5_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		cpu6-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_mcu MT8195_MCU_BIG_CPU2>;
-+			trips {
-+				cpu6_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		cpu7-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_mcu MT8195_MCU_BIG_CPU3>;
-+			trips {
-+				cpu7_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+	};
- };
 -- 
-2.34.1
-
+Jani Nikula, Intel Open Source Graphics Center
 
