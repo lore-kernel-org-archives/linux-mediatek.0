@@ -4,96 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86AA9C25B4E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jan 2023 05:46:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15779C38142
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jan 2023 07:29:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iN5h1aZzeTsiKDNIiMKG1gDXMbVTvgWYF0v+HiAhVDM=; b=gkryYliEKoJMdFC/kjh7EIxKh2
-	rZj0h1UIJmpd1uB+k3E/EwCDdj/EV0DmqdsaXmU+pFHcapNB3dYXf0G61IvM40bfAI3DevBGT8Bvo
-	EWE2w60Bqt8tWkuwqYpIPH7rlB61uI47hefzsw9SinuQC84ZNOJ7YT7EG1jB2GaCt5qVNV2EaQNTC
-	gvx7wbMp+5XHV4mqeLs3YmQ0TQLgYyNnozXlC4CxTbaSl0v8jwqtmYc7y0K1SO/mW8SA0hNFywNGU
-	GEJE9VGmSS14+sSdLas6z76FZJ15E76IG9Dgklfi7EewmV8hMtKt/9j0tcA0Z+dpocvwmavY+1xY7
-	hjEUG7FQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=m6qG3BxsU9DzBi96t2cPx3U6M9c7IcgwUtyH0SLYa4g=; b=42bjUE2Yy9sUMpWTdpo7o1/xBy
+	CZAShZFXc6H+/UVcG81r3E+SAKkUKUReg2kO3i6AI6xT+AlfNPgMq3LIp6NUP87HT9KaqKNEiXZBY
+	KZ2StbuNjebvbuC2e7sk28ZA3gm9rzc2mupz42Mc55frxGSPzDdD2kyhwDc9PofacRQGc7M+07yXz
+	dZXf9ovEcNSGc5nOjPQTjXdSLit2mz9Fio2aDF1PG/QRMwASuokUURAXhcoXd6S1gK6Bfs3ze1MBY
+	GPNJ7n1hqoiM5qpk4F+8EPcjNXkyypahtJnLG/ybuYuKZGC1y1yNsURKOLy5lxfkluoqpfVRFU7iC
+	iQ2Cmruw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKC8B-002Owp-SO; Tue, 24 Jan 2023 05:46:03 +0000
-Received: from marcansoft.com ([212.63.210.85] helo=mail.marcansoft.com)
+	id 1pKDkN-002eL1-Tp; Tue, 24 Jan 2023 07:29:35 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKC86-002Oq0-Bg; Tue, 24 Jan 2023 05:46:00 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: marcan@marcan.st)
-	by mail.marcansoft.com (Postfix) with ESMTPSA id A4A7E42651;
-	Tue, 24 Jan 2023 05:45:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=marcan.st; s=default;
-	t=1674539148; bh=HljMxe7jrBTG1Genyu+Pm2rYswosR8p2EtuxuYI1k5k=;
-	h=Date:Subject:To:References:From:In-Reply-To;
-	b=tGJDNdnjFM7diTyJhByzlPW+Qgjt+NJVZE3JfiWvoqqTN22OFEMWJCJu2Ml1pOsAO
-	 r0/W8qLAIOzYaNHY8izHRJlBZMIadNunPGWmPwbEb40y1c6VosRAOpZ3Wcs4aMWegs
-	 XbuvONOwx1zSvJYikQceLhiAJggA2UD6cvlPAdRG3c6kHqxdgYFDuUkADi9HPGh5Iv
-	 0wfqvQC+iXGieASzeODYfH1Ol3XFtpUDplCyJZqQsIPWXhbLyyI6/TLH14CQRMCzGs
-	 /k/FBLs2Gdm6AmXg+b0qJZwx9ZtzOaW60Td3qkL6/m3omSubjkfWbCU4KWlUN6s7C8
-	 0z/OcdYARoLFA==
-Message-ID: <d7575a8e-035e-b729-bd16-7fd10b2c56c5@marcan.st>
-Date: Tue, 24 Jan 2023 14:45:31 +0900
+	id 1pKDkK-002eJN-LJ
+	for linux-mediatek@lists.infradead.org; Tue, 24 Jan 2023 07:29:34 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id qx13so36514705ejb.13
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Jan 2023 23:29:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=streamunlimited.com; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=m6qG3BxsU9DzBi96t2cPx3U6M9c7IcgwUtyH0SLYa4g=;
+        b=XQJEBD+Y7xXVzz/nDHd/S0HvH752rWzTMP0DGsUG38TNK8qbInkeX38e7aL20QWe6M
+         kBVcoZbmlAMEKoI1tVfFsZpem66CouQRKsddSFwIgsX5WGdyHserqv6Cz18iyTVwfS51
+         nRepPkKhPh77MF1ftu2fBC1KafiG0Apx3fp/A=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=m6qG3BxsU9DzBi96t2cPx3U6M9c7IcgwUtyH0SLYa4g=;
+        b=o841FLj4yYMC/0XJ5STZPH3zk7jP45bb1gwVx7CGgQQE0kfon8GAxWhgfh7jJYOLUv
+         lcIvpX5f6UOiRHMP+HtGEmSv1f23OtkUB2OeTDMN2Xbd8sr6FetR0rDmMTl6FwOt/MsE
+         9xt45nuvjME08dT4eS+oOH0vrSzq6lo0AL+3szSF5m5u30jRELu+HrtsXAysUMSS1kyz
+         sgdGHcElHC0o7+gAdO0SuoAL+sCkxgFabnN9QzzHtUQXXJjaJdncCMkJjsHoXh0qFhVJ
+         Xp6nShKrPODhBaxbS8Tvs6criJVMmNVn8FzEXlx5pIYfVPfYV+jNGs7fO5wrn8Sv0piv
+         Wvcg==
+X-Gm-Message-State: AFqh2koE069wy3whlaUKL6Gpf2r7vUy0z4yFZO8czjwFSPGlFObRvkW6
+	n0mN0vholJ6JAtD9oMg6+Qtv+trbTmcSD5atwWRJsQ==
+X-Google-Smtp-Source: AMrXdXvidJI1X9Ofw2tlxMTOMXNJKUk8KX9Nvo9V+Ox1qGGWLz9APdwv7vOmlMKgq5MPZP8u79+DHlr5adylHiaktg0=
+X-Received: by 2002:a17:906:f9d5:b0:86e:65b8:e908 with SMTP id
+ lj21-20020a170906f9d500b0086e65b8e908mr2065436ejb.450.1674545367480; Mon, 23
+ Jan 2023 23:29:27 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH 1/2] dt-bindings: dma: drop unneeded quotes
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- Olivier Dautricourt <olivierdautricourt@gmail.com>, Stefan Roese
- <sr@denx.de>, Sven Peter <sven@svenpeter.dev>,
- Alyssa Rosenzweig <alyssa@rosenzweig.io>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, =?UTF-8?Q?Andreas_F=c3=a4rber?=
- <afaerber@suse.de>, Manivannan Sadhasivam <mani@kernel.org>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Viresh Kumar <vireshk@kernel.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Green Wan <green.wan@sifive.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard
- <mripard@kernel.org>, =?UTF-8?B?77+9ZXI=?= <povik+lin@cutebit.org>,
- Peng Fan <peng.fan@nxp.com>, Paul Cercueil <paul@crapouillou.net>,
- - <chuanhua.lei@intel.com>, Long Cheng <long.cheng@mediatek.com>,
- Rajesh Gumasta <rgumasta@nvidia.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Biju Das <biju.das.jz@bp.renesas.com>,
- Miquel Raynal <miquel.raynal@bootlin.com>, Palmer Debbelt
- <palmer@sifive.com>, Masahiro Yamada <yamada.masahiro@socionext.com>,
- Amelie Delaunay <amelie.delaunay@foss.st.com>,
- Linus Walleij <linus.walleij@linaro.org>, dmaengine@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
- asahi@lists.linux.dev, linux-tegra@vger.kernel.org,
- linux-actions@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-mediatek@lists.infradead.org
-References: <20230118180144.364756-1-krzysztof.kozlowski@linaro.org>
-From: Hector Martin <marcan@marcan.st>
-In-Reply-To: <20230118180144.364756-1-krzysztof.kozlowski@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <52861a84-0fe2-37f0-d66a-145f2ebe1d79@gmail.com>
+ <20221214134620.3028726-1-peter.suti@streamunlimited.com> <c6863a3e-8855-50fe-25cb-0b38bc3a05e0@gmail.com>
+ <CACMGZgZY4Zb+3vHUDAS0+3r55K4_J40dtbsTPTFZMd6duBikpQ@mail.gmail.com>
+ <7c4aa0d2-d8e9-416b-b2ad-f5c3c8ea33de@gmail.com> <CACMGZgaS7z2YoViA3jV-gVBvASSq1maiGj_6hfrJQ3zr69esgQ@mail.gmail.com>
+ <c6d797f8-8177-75c7-4522-eea3da6b56d8@gmail.com>
+In-Reply-To: <c6d797f8-8177-75c7-4522-eea3da6b56d8@gmail.com>
+From: Peter Suti <peter.suti@streamunlimited.com>
+Date: Tue, 24 Jan 2023 08:29:16 +0100
+Message-ID: <CACMGZgbR_aE9Wph3ZGZ8yGy+V2qjG6GXV8w6JMkw2WYzk8gdow@mail.gmail.com>
+Subject: Re: [PATCH v3] mmc: meson-gx: fix SDIO interrupt handling
+To: Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, linux-mmc@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230123_214559_496403_78172110 
-X-CRM114-Status: UNSURE (   7.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230123_232933_013595_22DC2322 
+X-CRM114-Status: GOOD (  14.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,16 +89,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 19/01/2023 03.01, Krzysztof Kozlowski wrote:
-> Cleanup by removing unneeded quotes from refs and redundant blank lines.
-> No functional impact except adjusting to preferred coding style.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
+On Thu, Jan 19, 2023 at 8:37 PM Heiner Kallweit <hkallweit1@gmail.com> wrote:
+>
+> > v1 and v2 also fix the issue, but v3 does not correct the bug when
+> > WiFi is stressed for a longer time. And therefore it should not be
+> > used.
+> > Could you please give us some advice on how to investigate this further?
+>
+> One more thought:
+> When checking device tree I found that my system uses IRQ_TYPE_LEVEL_HIGH
+> for the SDIO interrupt. meson-g12-common.dtsi uses IRQ_TYPE_EDGE_RISING
+> in mainline Linux, however vendor kernel uses IRQ_TYPE_LEVEL_HIGH
+> in meson-g12-common.dtsi. A wrong interrupt trigger type may result in
+> lost interrupts.
+> So you could check which trigger type your system uses for the SDIO interrupt.
+> If it's IRQ_TYPE_EDGE_RISING, re-test with IRQ_TYPE_LEVEL_HIGH.
 
-For the Apple stuff,
-
-Acked-by: Hector Martin <marcan@marcan.st>
-
-- Hector
+Thank you for this suggestion, this change fixes the problem fully.
+With the interrupt trigger type set to IRQ_TYPE_LEVEL_HIGH everything
+works as expected even when WiFI is stressed for a long time.
 
