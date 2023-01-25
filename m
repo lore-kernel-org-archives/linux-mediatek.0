@@ -4,129 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 394CEC636BD
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jan 2023 16:50:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 625BFC27C76
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jan 2023 16:53:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9oBkpwDuDP6Raat/HRHsNpx8MqzIjjZSJojQEumXoyE=; b=bWG/AydBjx20nilQj6PA8AAZAP
-	nNTj/h+R89muaL9jbK93xILQao/FAVHSuMqpTjLfDxLmEeOF2i/gP/xTRaklXZcGwb6nTZjhYs9dl
-	MSsXBxih/5E3WVmwX0vgVZcZggMpZWhjZ4+feSE2I2f69xWRkqiJid4cEtOpe6lCeiS9467SrrxaW
-	iVlf0yhETBR+htKZl8ZLZIO0gd0HyOvvfz9JLkn1hsVgcazX6JoeF1yk4q74KPwMU6TvF7KVq4Q+D
-	j7ljhJzWmWMGe33H1qvJh8TC4/X6kx+AwsijQYdk3JyuPAh4nGQs/Ziw5Ofsw8qICjv4LgdwQ5Nns
-	J2hK+Iew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=n6uhViJAk2dcnYUKQtk76YHI3HBSLcS24oN4Cx0z7Nk=; b=fkXtzvKe7AYJxbfHwrwkwC0SnG
+	blfDyI44/A2uI9dYIq6k0HlFRHwc8ua6Nc3ivDu9nHra19WghprMlr+CPVTYJ+xHrBEjKAhzqsPgS
+	G7Kl808d8IfkLzf1WojJa+13fe7J1VtLPerbfhxmVKW9i/+B66fKBXrRe3AHK6lEGo/oxdvEf7rMm
+	4fmPCtI53e5w4KzFEWgw6yCUaDtD+GEtNstYplgsYTuVadvG84Yxg4V/2JfwUHBFElY0xdmQHkfFi
+	lEGdrI2cXd6UEoKsDPH0+BcLEaRLHXUjKIU4EwVG4LLz95rnDjpT7xiON9Xz4WeM+u4hDc5B3xonP
+	wJNs7+TA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKiyU-008482-65; Wed, 25 Jan 2023 16:50:14 +0000
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+	id 1pKj16-00855m-Jk; Wed, 25 Jan 2023 16:52:56 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKiyO-008415-R1
-	for linux-mediatek@lists.infradead.org; Wed, 25 Jan 2023 16:50:11 +0000
-Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-50112511ba7so213097717b3.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Jan 2023 08:50:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=9oBkpwDuDP6Raat/HRHsNpx8MqzIjjZSJojQEumXoyE=;
-        b=telMSbMEB1I/JdT8E+AOlYPkvLPDxj1UCnywL1f/zz+GxB6zyzUgN+Q3Q48l8AYc8X
-         qS5rmRFlzboD9JIVNM4srPZju+Dc0OvfYTnyPjpp4sHdEutwmKfLXtqzcN+4YmFBRVgu
-         A3oTpxaFO/E/7LaM1iu3pe6Iv0CmRV+MC10+sbVUAqr2eeBPD17IhS27buTMH3bCJoMu
-         fEQq5XzvwDAqtF1fp8r2H4g3vh98tijISo+CkjBRkXWvZWGfdkjpWZzF8VgIKtCc5sLs
-         +bZFNae0CmrxcmnBVuga8Dg0CQRlWnW+6m8p+riuFjzQ8BSrHATHKU3+MoO2RS3dWuby
-         cPfQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=9oBkpwDuDP6Raat/HRHsNpx8MqzIjjZSJojQEumXoyE=;
-        b=6uVad7AxUhLVYwOrfePVyEYcPwyMsCLvRjI+BYbtjm/H7B1P7Jz7PLdTbkHJvnsjPe
-         vLj8u8tuYejObKHb3oxMSrSkKVAMDlrh0tl4zn8q7tSbyCi7gA0Sul+aYNRiaOsLPqCt
-         PGBZVGz+yzcB4lk/JlB15iCXg4qAA0Pdv7bLUlPm9iuyT25L8UbVVQjyYOuc+pKpwfos
-         ez/EmbfpBzWy802QBNaNH4dghdh7hcMWkm/BxnKeCLKVBK0t6NcdJS64KUoxKELflU/Y
-         dNFPUJMLEKFflxs9Fs1si/riBJOkhZojZ7vKSNVEVXsnEhO8UmHvdktyCOXtlPEIuqnL
-         6Tnw==
-X-Gm-Message-State: AFqh2ko1jeZxgPZnFA/OD+oNyfqprNDai4V0C/CZVVeKP5REqxu38HwK
-	ulKojClzYKzemj2WXtxMXSlHkT7zx5h3RUs+mB9oZA==
-X-Google-Smtp-Source: AMrXdXsah5c2WKVW38d6ZSr7pPop+n/mEJC53KDRGLQOXrHcU20AK6F0ktCN8HrtzVAtxjIN7wyafP19A/nGyLOtNU8=
-X-Received: by 2002:a81:1d2:0:b0:433:f1c0:3f1c with SMTP id
- 201-20020a8101d2000000b00433f1c03f1cmr4401576ywb.438.1674665403087; Wed, 25
- Jan 2023 08:50:03 -0800 (PST)
+	id 1pKj0k-0084x4-I2; Wed, 25 Jan 2023 16:52:35 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1674665548; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=JgY/DFxi5wzMgRQ+sYu8oaeM+0JcJURHVL0tqksIK6sf5di9goLVm6mxgCYU9cCUQGEuf3i2MxmbhctJigNmp4wicQ6ovKmlk3Lu1wHC3Ow1wLdRLIvhakKzZNHOrGtQQb/rUaN3SDchfNYDxOowdFW8wQEZBImu66I/n1Dmm+Y=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1674665548; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=n6uhViJAk2dcnYUKQtk76YHI3HBSLcS24oN4Cx0z7Nk=; 
+	b=kTEV9POAYIoBN7LpMkySt47cS5a2+JcVN9axrdgyg+oFtGxbGHctVntG+vs3DjwLtr90BY9c35Qai1VEwrt5rP3m8cisH/VWoG/B+BUHs+14aHEthZlaUE6BCo6yPANx48YfCnILYyajxuB0SBSvWb/ZM9QSICyJxl4w7H4wV+g=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1674665548;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=n6uhViJAk2dcnYUKQtk76YHI3HBSLcS24oN4Cx0z7Nk=;
+	b=hBDT9b4mWWMH9J0Ohrl3UNLqZBywU/CoGnCDToJVOq8VHdRQy1pevJpArt3Yjqo/
+	rQ+BS8I6R+0j1XUzgl9KiBBrqGnkHCWiYLl7tPMDMGhS8twEszzfvh9jnEL/q4xo91Z
+	3i0w1p0C4JKtHXsRLUolGginS0g7KwrOAMU8Wais=
+Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
+	with SMTPS id 1674665547622312.4603569868316; Wed, 25 Jan 2023 08:52:27 -0800 (PST)
+Message-ID: <3ab1b3d2-f9fd-e64d-6346-1d80e7f57dba@arinc9.com>
+Date: Wed, 25 Jan 2023 19:52:21 +0300
 MIME-Version: 1.0
-References: <20230125083851.27759-1-surenb@google.com> <20230125083851.27759-2-surenb@google.com>
- <Y9Dx0cPXF2yoLwww@hirez.programming.kicks-ass.net>
-In-Reply-To: <Y9Dx0cPXF2yoLwww@hirez.programming.kicks-ass.net>
-From: Suren Baghdasaryan <surenb@google.com>
-Date: Wed, 25 Jan 2023 08:49:50 -0800
-Message-ID: <CAJuCfpEcVCZaCGzc-Wim25eaV5e6YG1YJAAdKwZ6JHViB0z8aw@mail.gmail.com>
-Subject: Re: [PATCH v2 1/6] mm: introduce vma->vm_flags modifier functions
-To: Peter Zijlstra <peterz@infradead.org>
-Cc: akpm@linux-foundation.org, michel@lespinasse.org, jglisse@google.com, 
-	mhocko@suse.com, vbabka@suse.cz, hannes@cmpxchg.org, 
-	mgorman@techsingularity.net, dave@stgolabs.net, willy@infradead.org, 
-	liam.howlett@oracle.com, ldufour@linux.ibm.com, paulmck@kernel.org, 
-	luto@kernel.org, songliubraving@fb.com, peterx@redhat.com, david@redhat.com, 
-	dhowells@redhat.com, hughd@google.com, bigeasy@linutronix.de, 
-	kent.overstreet@linux.dev, punit.agrawal@bytedance.com, lstoakes@gmail.com, 
-	peterjung1337@gmail.com, rientjes@google.com, axelrasmussen@google.com, 
-	joelaf@google.com, minchan@google.com, jannh@google.com, shakeelb@google.com, 
-	tatashin@google.com, edumazet@google.com, gthelen@google.com, 
-	gurua@google.com, arjunroy@google.com, soheil@google.com, 
-	hughlynch@google.com, leewalsh@google.com, posk@google.com, will@kernel.org, 
-	aneesh.kumar@linux.ibm.com, npiggin@gmail.com, chenhuacai@kernel.org, 
-	tglx@linutronix.de, mingo@redhat.com, bp@alien8.de, 
-	dave.hansen@linux.intel.com, richard@nod.at, anton.ivanov@cambridgegreys.com, 
-	johannes@sipsolutions.net, qianweili@huawei.com, wangzhou1@hisilicon.com, 
-	herbert@gondor.apana.org.au, davem@davemloft.net, vkoul@kernel.org, 
-	airlied@gmail.com, daniel@ffwll.ch, maarten.lankhorst@linux.intel.com, 
-	mripard@kernel.org, tzimmermann@suse.de, l.stach@pengutronix.de, 
-	krzysztof.kozlowski@linaro.org, patrik.r.jakobsson@gmail.com, 
-	matthias.bgg@gmail.com, robdclark@gmail.com, quic_abhinavk@quicinc.com, 
-	dmitry.baryshkov@linaro.org, tomba@kernel.org, hjc@rock-chips.com, 
-	heiko@sntech.de, ray.huang@amd.com, kraxel@redhat.com, sre@kernel.org, 
-	mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com, tfiga@chromium.org, 
-	m.szyprowski@samsung.com, mchehab@kernel.org, dimitri.sivanich@hpe.com, 
-	zhangfei.gao@linaro.org, jejb@linux.ibm.com, martin.petersen@oracle.com, 
-	dgilbert@interlog.com, hdegoede@redhat.com, mst@redhat.com, 
-	jasowang@redhat.com, alex.williamson@redhat.com, deller@gmx.de, 
-	jayalk@intworks.biz, viro@zeniv.linux.org.uk, nico@fluxnic.net, 
-	xiang@kernel.org, chao@kernel.org, tytso@mit.edu, adilger.kernel@dilger.ca, 
-	miklos@szeredi.hu, mike.kravetz@oracle.com, muchun.song@linux.dev, 
-	bhe@redhat.com, andrii@kernel.org, yoshfuji@linux-ipv6.org, 
-	dsahern@kernel.org, kuba@kernel.org, pabeni@redhat.com, perex@perex.cz, 
-	tiwai@suse.com, haojian.zhuang@gmail.com, robert.jarzmik@free.fr, 
-	linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, 
-	linuxppc-dev@lists.ozlabs.org, x86@kernel.org, linux-kernel@vger.kernel.org, 
-	linux-graphics-maintainer@vmware.com, linux-ia64@vger.kernel.org, 
-	linux-arch@vger.kernel.org, loongarch@lists.linux.dev, kvm@vger.kernel.org, 
-	linux-s390@vger.kernel.org, linux-sgx@vger.kernel.org, 
-	linux-um@lists.infradead.org, linux-acpi@vger.kernel.org, 
-	linux-crypto@vger.kernel.org, nvdimm@lists.linux.dev, 
-	dmaengine@vger.kernel.org, amd-gfx@lists.freedesktop.org, 
-	dri-devel@lists.freedesktop.org, etnaviv@lists.freedesktop.org, 
-	linux-samsung-soc@vger.kernel.org, intel-gfx@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
-	linux-tegra@vger.kernel.org, virtualization@lists.linux-foundation.org, 
-	xen-devel@lists.xenproject.org, linux-stm32@st-md-mailman.stormreply.com, 
-	linux-rdma@vger.kernel.org, linux-media@vger.kernel.org, 
-	linux-accelerators@lists.ozlabs.org, sparclinux@vger.kernel.org, 
-	linux-scsi@vger.kernel.org, linux-staging@lists.linux.dev, 
-	target-devel@vger.kernel.org, linux-usb@vger.kernel.org, 
-	netdev@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-aio@kvack.org, 
-	linux-fsdevel@vger.kernel.org, linux-erofs@lists.ozlabs.org, 
-	linux-ext4@vger.kernel.org, devel@lists.orangefs.org, 
-	kexec@lists.infradead.org, linux-xfs@vger.kernel.org, bpf@vger.kernel.org, 
-	linux-perf-users@vger.kernel.org, kasan-dev@googlegroups.com, 
-	selinux@vger.kernel.org, alsa-devel@alsa-project.org, kernel-team@android.com
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH 1/5] arm: dts: mt7623: add gmacs to mt7623.dtsi
+To: frank-w@public-files.de, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ erkin.bozoglu@xeront.com, Sean Wang <sean.wang@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>
+References: <20230120205318.519493-1-arinc.unal@arinc9.com>
+ <20230120205318.519493-2-arinc.unal@arinc9.com>
+ <BAF25F3F-7B1B-4E9D-A0D9-89DB663B0AB3@public-files.de>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <BAF25F3F-7B1B-4E9D-A0D9-89DB663B0AB3@public-files.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230125_085008_927779_91DF5173 
-X-CRM114-Status: GOOD (  15.60  )
+X-CRM114-CacheID: sfid-20230125_085234_674578_6D2A3E3E 
+X-CRM114-Status: GOOD (  10.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -141,34 +83,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 25, 2023 at 1:10 AM Peter Zijlstra <peterz@infradead.org> wrote:
->
-> On Wed, Jan 25, 2023 at 12:38:46AM -0800, Suren Baghdasaryan wrote:
->
-> > diff --git a/include/linux/mm_types.h b/include/linux/mm_types.h
-> > index 2d6d790d9bed..6c7c70bf50dd 100644
-> > --- a/include/linux/mm_types.h
-> > +++ b/include/linux/mm_types.h
-> > @@ -491,7 +491,13 @@ struct vm_area_struct {
-> >        * See vmf_insert_mixed_prot() for discussion.
-> >        */
-> >       pgprot_t vm_page_prot;
-> > -     unsigned long vm_flags;         /* Flags, see mm.h. */
-> > +
-> > +     /*
-> > +      * Flags, see mm.h.
-> > +      * WARNING! Do not modify directly.
-> > +      * Use {init|reset|set|clear|mod}_vm_flags() functions instead.
-> > +      */
-> > +     unsigned long vm_flags;
->
-> We have __private and ACCESS_PRIVATE() to help with enforcing this.
+On 25.01.2023 19:45, Frank Wunderlich wrote:
+> Am 20. Januar 2023 21:53:14 MEZ schrieb "Arınç ÜNAL" <arinc.unal@arinc9.com>:
+> 
+>> index 25d31e40a553..5eb698a90d34 100644
+>> --- a/arch/arm/boot/dts/mt7623.dtsi
+>> +++ b/arch/arm/boot/dts/mt7623.dtsi
+>> @@ -981,6 +981,20 @@ eth: ethernet@1b100000 {
+>> 		#address-cells = <1>;
+>> 		#size-cells = <0>;
+>> 		status = "disabled";
+>> +
+>> +		gmac0: mac@0 {
+>> +			compatible = "mediatek,eth-mac";
+>> +			reg = <0>;
+>> +			phy-mode = "trgmii";
+>> +			status = "disabled";
+>> +		};
+>> +
+>> +		gmac1: mac@1 {
+>> +			compatible = "mediatek,eth-mac";
+>> +			reg = <1>;
+>> +			phy-mode = "rgmii";
+>> +			status = "disabled";
+>> +		};
+>> 	};
+>>
+> 
+>> diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+>> index 5008115d2494..a5800a524302 100644
+>> --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+>> +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+>> @@ -175,9 +175,7 @@ &eth {
+>> 	status = "okay";
+>>
+>> 	gmac0: mac@0 {
+> 
+> Should node not be accessed with label (&gmac0) instead of defining it again and shadow the one from dtsi?
 
-Thanks for pointing this out, Peter! I guess for that I'll need to
-convert all read accesses and provide get_vm_flags() too? That will
-cause some additional churt (a quick search shows 801 hits over 248
-files) but maybe it's worth it? I think Michal suggested that too in
-another patch. Should I do that while we are at it?
+I think that's up to preference. I kept it the current way as it's 
+cleaner than taking it out of &eth.
 
->
+Arınç
 
