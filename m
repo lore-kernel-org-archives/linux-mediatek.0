@@ -4,86 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69681C54E94
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jan 2023 14:26:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE36BC54E94
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jan 2023 14:32:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IlIUJxcSdCXYA3OeLTMx+yjKn/rWMjqFuTKoW+FqBqQ=; b=cTdf1R2NO/jvdD4HsAnGNUceN+
-	8EZtqMgLg0CwhLpTnaCf7u9xC4F7pWzxEpgeAlko58U8s43YFrMHrUtjI/iDy5g1Zp3J0tICj287x
-	431X0tUgq8sj9njnfi3+O6TozNQDYxd7MOLpB6fmhBXsYiX21K8kF4znLZSQh3vJrVyrjhRMHmkK0
-	5D4fXOd+WPtblRPiPWXv0QRmXmzymlRG12lVmINdiKhXergJQnR+QhaNXQBfAUTCZpekZtqeUQOEZ
-	YiF7SsWfCMLW8mpfYrEhduA+sGrr9fQuSW47MrYIXKe9UlFRG4LjjmwR8wf81YdQqRhBrbLDBSUBM
-	LGGxngCw==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AYXw+AOPwLHoksA7Df9XhHVSAEgssnhp/xg1dUt6Rjk=; b=O3PNyPTvQ/5JD2k9evnF+G1QML
+	XYAjasx1WrVWCG+aXDRwvRSuAWpN9iojhmSlQ1LU6ISSeX8Qu8DPjT6PXupH2L+8uaz9tnncpEcJr
+	Vsee/eJm+0CWJEhq/2nc6Md/n2aSaVMuGNEi8qC7+3QDJgVHmzGef1MDU2s31SXQIPxHbW+uX3l0Q
+	97B1ZBcxE/gvsibT5aO0AKQPxrQedU1lVehwN2mbNH7WvOUN8o8THYaGrRidKCUL08w7K/b/taFWE
+	OfBxhuRa9UShL7/yfxw7PhSP3qiSPMd/WfmYPzlYQgcTcI9gnrzF9RVuOq2cWH4lvKBS3yoKnH9DN
+	yEKLETCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKgiy-007XCv-JA; Wed, 25 Jan 2023 14:26:04 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1pKgpV-007Yd0-1I; Wed, 25 Jan 2023 14:32:49 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKgio-007XAf-Tq; Wed, 25 Jan 2023 14:25:56 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id c4-20020a1c3504000000b003d9e2f72093so1346524wma.1;
-        Wed, 25 Jan 2023 06:25:50 -0800 (PST)
+	id 1pKgpJ-007YZj-1t; Wed, 25 Jan 2023 14:32:38 +0000
+Received: by mail-wr1-x434.google.com with SMTP id h16so17229705wrz.12;
+        Wed, 25 Jan 2023 06:32:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+        h=content-transfer-encoding:in-reply-to:from:references:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=IlIUJxcSdCXYA3OeLTMx+yjKn/rWMjqFuTKoW+FqBqQ=;
-        b=ESzuU4Xe/NCTHQj01jK85maPoZaB0fjlWtTTOzzBYWqjXCW1UlPVfIeWfVZ69iUywz
-         XDwlochFxYGMmulrlSIJmEJKnyzRQWq2/K7rOX7yFq0SbPXpJd4ziQDak9I4S9UQ1HVw
-         IV12wN+ODbqdzDuepL/BbZJW/E/+XF6mV9VseyEb7EV6SD7TybiDHpezYCJS1QcQ7HIV
-         KpitgM/ULJx3FH9SlGaAFw8DeSusleSe/iWfoFtg1DV3D7HUQwHv4dazXdwLWC4dQMMP
-         oA+4IKuoLFkhP0E0ophBN0cQriw8drJug0/m/AWmIja6O6wnNcylAht+Y21UdXCzFSWd
-         29KQ==
+        bh=AYXw+AOPwLHoksA7Df9XhHVSAEgssnhp/xg1dUt6Rjk=;
+        b=GHWgJ+c0TSTRESaqEAwTU+5yoPgI+ytcXnZCX0h+e8p01oUDKdNXbNh2cupxWWKQaM
+         cSW6mlKwZPksBJrJ8y8ABz8nd2c/APnXLkjsJ4zYFAALKKtHVCrcbUNOeUgj7gyESWfD
+         tk8cpWYegvvNzJVSWWZBV8U1FnBFHkQU8Zoe6fDFfMmI1rj7VisvbLDXA/ngSw3jRrvC
+         lhWACWx78W1sGREkjmCSV2b7oBoNrEOddTdpaHABIkJVi2vD2676z62WeV7g1r1R8mOW
+         o8sJ83vAJSn/Is5bYmliqlsDNT4vYCicEDpJRcVz0psbTStiOMf5uf8XwgsMVRrol26H
+         AGFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+        h=content-transfer-encoding:in-reply-to:from:references:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=IlIUJxcSdCXYA3OeLTMx+yjKn/rWMjqFuTKoW+FqBqQ=;
-        b=0P1WOQI3huZQ6MMiiuJF9t2FxyzWV78zcwI8oalRjM8/KMyYozlfMt3vYUQfmoPvzv
-         SzOrYfkuj8hBM3biWnTQtjLusf/grBUKRZ0waDtyk+QNBdPWQBtSYWURB3OFnaSYMyPH
-         uh7jHwfaUrmtulnGOtY4Y0CT0Udrx1Re2zxurUAxvMkV0fNhfPWjIsId2vTbsH62ZhOL
-         pG/fNVKutIYRw2wcC1y9jc6TDHP+MO+ROM8gJ6JAFrcwQsCx5ILMG9oPgNdxKEPkwihZ
-         +3Zk6ZJCjsD/OiAYVzIV3yzdBVpYpDTlcHQMs3jufXRnpTW6MoeiN8PXDdbh4/rXfPqN
-         6zYg==
-X-Gm-Message-State: AFqh2koejjrwGexPaF+k/zkKiQ1OeS/Ww6dG3T4IFm7qPtELSV2LD0xP
-	01mSIc804ioWfDy5PejALaM=
-X-Google-Smtp-Source: AMrXdXtJkYCfBZ98bJpRNPlgWcGmh8+LeAgVJB+l0cf5KmxTT+BJsZJRK7/wmRdZG8sq/rwhaW2/tw==
-X-Received: by 2002:a05:600c:5021:b0:3d9:9755:d659 with SMTP id n33-20020a05600c502100b003d99755d659mr32006876wmr.22.1674656749638;
-        Wed, 25 Jan 2023 06:25:49 -0800 (PST)
+        bh=AYXw+AOPwLHoksA7Df9XhHVSAEgssnhp/xg1dUt6Rjk=;
+        b=Iz4yOrXUwv1QzpFOPAvyUX3Sf8Yjid8lHOs5HJLCXrO+nhn/lBV2GtBjQzbhn2EiUZ
+         OlhCKne/L4sCrYRLNyut1WSnOwEqrxtGqwNzD9fMQaetl7E3U9Y2HONMqfbuFL3cyPRR
+         H+iaSd5WaOyvxalGxE4bOiujosXUqBdfOrvU4sebPzDP8v6gfVHNuk1xYviuI45jTncA
+         NrSZzaxi7+JNxCYwOZ/DSKXI50BrsuzxBAqSuPc7C2ks53Alg3Zl3H3U3HakQukOQ+Nj
+         mlrlqQ0Z1VVbJr19/GSu63XzczsUrtp3H9U/+0s2lyGenb4gSzkWHH9m5KZr78DhF2mu
+         aGuw==
+X-Gm-Message-State: AFqh2kpygU5UEm1g0wP+N4+fNq68o9soEh/yNiXufmA/ED/kf7qc1Q/r
+	iRypJ5iw+KD8t8oxQ6LaX/CK+GrAGUc=
+X-Google-Smtp-Source: AMrXdXvf88ZGka2HcScPY6lOi/9ubPa5qOr1CJ68XaLkNAIMhzQF5oG/o5Vp75Duyi7BfDhyBItWzQ==
+X-Received: by 2002:adf:eacd:0:b0:2bb:f4bf:e763 with SMTP id o13-20020adfeacd000000b002bbf4bfe763mr38736300wrn.51.1674657153146;
+        Wed, 25 Jan 2023 06:32:33 -0800 (PST)
 Received: from [192.168.1.135] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id r4-20020a5d4e44000000b0027cb20605e3sm4574996wrt.105.2023.01.25.06.25.47
+        by smtp.gmail.com with ESMTPSA id o10-20020adfeaca000000b002b57bae7174sm4767577wrn.5.2023.01.25.06.32.31
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 25 Jan 2023 06:25:49 -0800 (PST)
-Message-ID: <104bb37e-55c3-8dd0-f501-0e8a142511e6@gmail.com>
-Date: Wed, 25 Jan 2023 15:25:45 +0100
+        Wed, 25 Jan 2023 06:32:32 -0800 (PST)
+Message-ID: <b143d52a-0a03-9576-ac32-61591d347e54@gmail.com>
+Date: Wed, 25 Jan 2023 15:32:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH v11 3/6] arm64/dts/mt8195: Add efuse node to mt8195
+Subject: Re: [PATCH 1/2] arm64: dts: mediatek: mt7622: drop serial clock-names
 Content-Language: en-US
-To: bchihi@baylibre.com, daniel.lezcano@linaro.org,
- angelogioacchino.delregno@collabora.com, rafael@kernel.org,
- amitk@kernel.org, rui.zhang@intel.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org,
- ye.xingchen@zte.com.cn, p.zabel@pengutronix.de
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com,
- rex-bc.chen@mediatek.com
-References: <20230124131717.128660-1-bchihi@baylibre.com>
- <20230124131717.128660-4-bchihi@baylibre.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20230123151634.370011-1-krzysztof.kozlowski@linaro.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230124131717.128660-4-bchihi@baylibre.com>
+In-Reply-To: <20230123151634.370011-1-krzysztof.kozlowski@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230125_062554_988839_F987102F 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20230125_063237_125179_B0D19F70 
+X-CRM114-Status: GOOD (  14.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,42 +95,29 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 24/01/2023 14:17, bchihi@baylibre.com wrote:
-> From: Balsam CHIHI <bchihi@baylibre.com>
+On 23/01/2023 16:16, Krzysztof Kozlowski wrote:
+> The serial node does not use clock-names:
 > 
-> Add efuse node.
-> This will be required by the thermal driver to get the calibration data.
+>    mt7622-bananapi-bpi-r64.dtb: serial@1100c000: Unevaluated properties are not allowed ('clock-names' was unexpected)
 > 
-> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-I fixed the subject prefix to:
-arm64: dts: mt8195: ...
-to be in line with other commits.
-Please take that into account for future patches you send.
-
-Applied thanks!
+Both applied, thanks!
 
 > ---
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 6 ++++++
->   1 file changed, 6 insertions(+)
+>   arch/arm64/boot/dts/mediatek/mt7622.dtsi | 1 -
+>   1 file changed, 1 deletion(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> index 5d31536f4c48..09df105f4606 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -1380,6 +1380,12 @@ pciephy_glb_intr: pciephy-glb-intr@193 {
->   			dp_calibration: dp-data@1ac {
->   				reg = <0x1ac 0x10>;
->   			};
-> +			lvts_efuse_data1: lvts1-calib@1bc {
-> +				reg = <0x1bc 0x14>;
-> +			};
-> +			lvts_efuse_data2: lvts2-calib@1d0 {
-> +				reg = <0x1d0 0x38>;
-> +			};
->   		};
->   
->   		u3phy2: t-phy@11c40000 {
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> index 146e18b5b1f4..62487a3c4db1 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> @@ -526,7 +526,6 @@ btif: serial@1100c000 {
+>   		reg = <0 0x1100c000 0 0x1000>;
+>   		interrupts = <GIC_SPI 90 IRQ_TYPE_LEVEL_LOW>;
+>   		clocks = <&pericfg CLK_PERI_BTIF_PD>;
+> -		clock-names = "main";
+>   		reg-shift = <2>;
+>   		reg-io-width = <4>;
+>   		status = "disabled";
 
