@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0088CC61DA2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jan 2023 09:31:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BF44C636BD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jan 2023 09:39:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jognpwZWDP/caNk47/2I5pB+VrjaxgWmcyaDbH1onsg=; b=dChpROmTYj71YvpeYILuzFs8FV
-	BLVjWzNcFaPSMdEJ2WggwivAT9VTbSpjNezlLxPU87AzmaZmLCE5Jw8x4oaVn/nxVGHIh+LrOYO21
-	a3BFTp6KAw6zKSZcqaiOSowQB6bq0y8XVc1gSCGcm6TZgbBlS7Rkcs3fLljwzjALp2flAgceGab0F
-	XmmIzcBmRFcDrU6ciSQeQyVPjComqZbCgn6hKnGhv0kzyCcih9wajg3vN98hCHYjap6MKE46K2ohd
-	JuF+WCd1YQG9vgsujkYzqSRMBW6FJhlN4Ts6xDtl/lDPQCCWnjrJE61l0cs+75Ge4Dx/4C5FclWMD
-	oTgGckMQ==;
+	bh=rlC3v8G7Qltb7/sMWGykfElAbj3RZvreU88MtZ+OLHM=; b=ipKxbMgGJr+OxpodZGlsiWzmOD
+	h+eWp70K/6C2qNaNYtvPwvD1TsIXQ0Wkj3Gyz8aVQlrBorlPOsdg91vwj+Bba4f+P2WOIoMC0muad
+	0FTsJnaY/uirSW/v/8zQ6X20bbF2hMJpVdqK/jUj42iIY1YxknjylP0Vl2J+6ghJgo/lGMCSzYZUK
+	S4VHz7qSEIpvKyT+MLU7Za520K5dfcT7WNAX7qyMDcNugnDTMLAeLdf5yVqmi+36t+nk3CZeiD4mJ
+	G6cp5Oopk8QGeeedMQRJMu3dChOU23JND0Am4EsK0g2WAtq8osjTL6lV5rqKz099peNC6qMDxdLb0
+	u280OLgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKc7T-006cvF-Ga; Wed, 25 Jan 2023 09:31:03 +0000
-Received: from smtp-out1.suse.de ([195.135.220.28])
+	id 1pKcF9-006eBg-Mu; Wed, 25 Jan 2023 09:38:59 +0000
+Received: from smtp-out2.suse.de ([195.135.220.29])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKc7P-006csc-9c; Wed, 25 Jan 2023 09:31:00 +0000
+	id 1pKcF6-006eAB-BG; Wed, 25 Jan 2023 09:38:57 +0000
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id C57E921C78;
-	Wed, 25 Jan 2023 09:30:54 +0000 (UTC)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 8985B1F8CC;
+	Wed, 25 Jan 2023 09:38:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
-	t=1674639054; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1674639534; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=jognpwZWDP/caNk47/2I5pB+VrjaxgWmcyaDbH1onsg=;
-	b=Pij8ssoJlw6k6tQr48jFXJyevDWch308vx0CLomRDmV84uEdMgTC6NhqR8VCkgI74II7DW
-	anm6YuwD0GfDOi17b+9Zs5S20/ilyumOWkOAGicsthADYQDP18s2AfYp6RzP5d5hjTOUwm
-	W4uNWFQcSkUDrOF5p/6xahiK2Zzyzto=
+	bh=rlC3v8G7Qltb7/sMWGykfElAbj3RZvreU88MtZ+OLHM=;
+	b=r0FIat4kOE8WovOTP3LWhacl5M3EjQXhF3aBT5cBj3FuQ5I+yJMTY0cq7QTmO7SFPDQv6O
+	tRrm4BhOZHjZFNfq3BxFKWYU7SqtAc8zTE0tqhcCiP6BOgQ+ipP6+yjGZBzFWwz4Mee2C0
+	GFF6IKS/BdrV8Bwlj7T9ur543veHKvk=
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 684E91358F;
-	Wed, 25 Jan 2023 09:30:54 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 446411358F;
+	Wed, 25 Jan 2023 09:38:54 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id yJRSGc720GMeHAAAMHmgww
-	(envelope-from <mhocko@suse.com>); Wed, 25 Jan 2023 09:30:54 +0000
-Date: Wed, 25 Jan 2023 10:30:53 +0100
+	id jLUjEK740GMsIAAAMHmgww
+	(envelope-from <mhocko@suse.com>); Wed, 25 Jan 2023 09:38:54 +0000
+Date: Wed, 25 Jan 2023 10:38:53 +0100
 From: Michal Hocko <mhocko@suse.com>
 To: Suren Baghdasaryan <surenb@google.com>
 Cc: akpm@linux-foundation.org, michel@lespinasse.org, jglisse@google.com,
@@ -121,18 +121,18 @@ Cc: akpm@linux-foundation.org, michel@lespinasse.org, jglisse@google.com,
 	linux-perf-users@vger.kernel.org, kasan-dev@googlegroups.com,
 	selinux@vger.kernel.org, alsa-devel@alsa-project.org,
 	kernel-team@android.com
-Subject: Re: [PATCH v2 3/6] mm: replace vma->vm_flags direct modifications
- with modifier calls
-Message-ID: <Y9D2zXpy+9iyZNun@dhcp22.suse.cz>
+Subject: Re: [PATCH v2 4/6] mm: replace vma->vm_flags indirect modification
+ in ksm_madvise
+Message-ID: <Y9D4rWEsajV/WfNx@dhcp22.suse.cz>
 References: <20230125083851.27759-1-surenb@google.com>
- <20230125083851.27759-4-surenb@google.com>
+ <20230125083851.27759-5-surenb@google.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230125083851.27759-4-surenb@google.com>
+In-Reply-To: <20230125083851.27759-5-surenb@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230125_013059_501881_C07D97B8 
-X-CRM114-Status: UNSURE (   8.13  )
+X-CRM114-CacheID: sfid-20230125_013856_568655_E121E10E 
+X-CRM114-Status: UNSURE (   7.58  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -148,23 +148,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed 25-01-23 00:38:48, Suren Baghdasaryan wrote:
-> Replace direct modifications to vma->vm_flags with calls to modifier
+On Wed 25-01-23 00:38:49, Suren Baghdasaryan wrote:
+> Replace indirect modifications to vma->vm_flags with calls to modifier
 > functions to be able to track flag changes and to keep vma locking
-> correctness.
+> correctness. Add a BUG_ON check in ksm_madvise() to catch indirect
+> vm_flags modification attempts.
 
-Is this a manual (git grep) based work or have you used Coccinele for
-the patch generation?
+Those BUG_ONs scream to much IMHO. KSM is an MM internal code so I
+gueess we should be willing to trust it.
 
-My potentially incomplete check
-$ git grep ">[[:space:]]*vm_flags[[:space:]]*[&|^]="
+> Signed-off-by: Suren Baghdasaryan <surenb@google.com>
 
-shows that nothing should be left after this. There is still quite a lot
-of direct checks of the flags (more than 600). Maybe it would be good to
-make flags accessible only via accessors which would also prevent any
-future direct setting of those flags in uncontrolled way as well.
-
-Anyway
 Acked-by: Michal Hocko <mhocko@suse.com>
 -- 
 Michal Hocko
