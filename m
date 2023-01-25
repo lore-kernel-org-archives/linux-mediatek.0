@@ -4,87 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02A83C54E94
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jan 2023 15:22:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09163C27C76
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jan 2023 16:42:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+cKkovPwhRMpRzyfESa0Nn+hlo0AHN0pmurSQImGzGg=; b=yw4H2kc4+NSCYqctgl4gwUZk0c
-	8QtJrodXKWqlXi9ikRQSvbA+C3GHPpew4UXF7jC38s9HBlGdDTcOUpF9g/zCC5BIwnACzlO1ZHveJ
-	ifrxtQNiVQL9NrP+al1ceQ9vJlRBtwdhlhaJjAUEAMEvPr1Tj7EeKlC1x3IgQ/YXuvuSlnBwTmIJo
-	wh6NqRy/saXFhEfh2UqliVbAWmmk2NrurMr7OQgiluvqSMTjp6iZAzO3M4LHiSHfdZCsvekzTz4AP
-	sKDCkJ7pEjSF16qkPHPUHAsUdw512NxL5q/xajRTQb30Q7nqA6OzCMIBxcbCfOOeKUMFOMi0GuW5g
-	THyLEc4w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=I/XYpvqrK1DqQFzbaeT9L0xlHCiGajy68Z1wX83YMy8=; b=I1rMifhzhvzZv1
+	BjCHf1ILDRtQTRca+6+g8aONWejVCxW5CIQRdFx9EdOUoYiCkQ/Ub8gtf8CaBrp3S5DvG3N0z40a+
+	bHqKCgPhWjiqccfmrpnMoTNqyWe8O7oSWiuKIUGq/aH9JGD8oIvauyPr4GPYX9fTZXjA+X9PvwAWM
+	941GQmXWS2TxIUryWwhaBewR+XAWbUeM2loa4HMgW2vDMx+eDl37dWqXbKFvUrcwk6gn43+ND9RRn
+	AESnfffPjsFVXjtsoWN9056F3xQ+sNP09qOb8c2y2qgw9cEotefAL+FUxA3+HZLowYHOTDr1XBMUr
+	g43iEExrTuwXuSTI/4ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKhbY-007nsY-0z; Wed, 25 Jan 2023 15:22:28 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1pKiqv-0080GF-56; Wed, 25 Jan 2023 16:42:25 +0000
+Received: from mout.gmx.net ([212.227.17.22])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKhbM-007noO-Uk; Wed, 25 Jan 2023 15:22:18 +0000
-Received: by mail-wm1-x332.google.com with SMTP id l8so14026007wms.3;
-        Wed, 25 Jan 2023 07:22:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=+cKkovPwhRMpRzyfESa0Nn+hlo0AHN0pmurSQImGzGg=;
-        b=c56bBLOwNUcAjFdOKoGKTZgg8PImKyx+ee/GIya27ZazszZv/4X8DalRcCiTxuVUbf
-         0ay7SIKVdx2CfL8p9KMsDDu5uOTzkxFFqd0RuN6Y92X/nWdeGw8i6C/I6bt8VSY2633G
-         Mph8tDz988vKVnezUAHA392AngkNnwyAhIKf5il884nlCMRr9R3fE3v6/h5ow4qdgj+M
-         Fq22FUCrXId6aRexAUOKNAidm7ygLajXRo0MQQvqCwCvcafsYv13aFntghvqRWq0lduO
-         BshGHnVksmh+ctYu3DLo531bxv0+iU5Sbwo6+yl52W160RZ6BEO+K3ik/SxmuwBctvgF
-         c8qQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=+cKkovPwhRMpRzyfESa0Nn+hlo0AHN0pmurSQImGzGg=;
-        b=VIjKs7Ds2d+e3ZoJncSipaV/BjxDL/W5t89OJ3tl6jRxpnpPv5HMVugfDLNQB7qAw8
-         40osdb5qeqPMaxudSKM3Btw7+DUH1B7k6EZTlALHyobBwc+x5USwJVSzhwxTfzBOVAQ3
-         s2uprRxfa7OlI+kR7fIGwWAfwb89MG4u+eXUdidxClzPH82UPygD2it41BkxL52Do1i0
-         iJvRUTYIJqVN/DQjHAMSzfGXCeQG8vcCoeIETJGowsYB0jTm0A5HJvKsnBpI68lYqWsl
-         /vbaNIXUnIjfZyTCCPxoaz4TL+bI971Upqn9d+8PjSqr5XRPzd1vb0SCj7XTMX1bAUhQ
-         YeUw==
-X-Gm-Message-State: AFqh2kqG6fmSCqt38HIcVdaKzIEnYQlgZZb09/wsiR8dpMFC523zsFRF
-	q154erm3UFDTMktVuLQMyddJZid2AAY=
-X-Google-Smtp-Source: AMrXdXte+pCfs4LGfK4VbuM26cJk1PIH0LuEe4MZdQEOXF06DWuRk4ApCwbryG5b3dH0tXKAc/PKCQ==
-X-Received: by 2002:a05:600c:2d0b:b0:3da:fcf0:a31d with SMTP id x11-20020a05600c2d0b00b003dafcf0a31dmr32278071wmf.22.1674660133088;
-        Wed, 25 Jan 2023 07:22:13 -0800 (PST)
-Received: from [192.168.1.135] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id j15-20020a05600c130f00b003db0659c454sm2432709wmf.32.2023.01.25.07.22.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 25 Jan 2023 07:22:12 -0800 (PST)
-Message-ID: <892229a2-01b9-f4cc-95fb-980107166715@gmail.com>
-Date: Wed, 25 Jan 2023 16:22:11 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [V1,0/2] Add jpeg enc & dec device node for MT8195
-Content-Language: en-US
-To: Irui Wang <irui.wang@mediatek.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Rob Herring <robh+dt@kernel.org>,
+	id 1pKiqS-00800Y-06; Wed, 25 Jan 2023 16:41:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1674664893;
+	bh=rq+I8BBcOwkHDtDkBgR8HbDE4eXh6wxwg8QxpCdBsuk=;
+	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
+	 References;
+	b=Aib0yHDu+eyiQv28rupHTeZhOzRItxLLzzSnQWkDqzpyA/2TJf0OMdEGE4mYpX3PE
+	 Av7TfeuAuAA0/G0teARI99Jmu1BgpijM1f47Hs2GqMqm1aMIW/3VyXLns9W5HcwwGC
+	 Bh4NaKNuvH9T+9d6EdOkLHASvpm1lCiEwQdjNclizsuTXRDiBxOpeeA/omjkMq06aa
+	 8VzAKzef5k6GW0PxwsnlBDLO14pcuhjLIjWOOaEjiEdPBeLPJekd1wINQZxOyaFsUr
+	 e5p9yRWsnSr6Q2l8VTUpA7v2gWt2iAef9PkBq0erZJhIDgNQqj1fYyyo2Z0+FUvlD1
+	 lLWANVNlGFAOg==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [127.0.0.1] ([80.245.74.59]) by mail.gmx.net (mrgmx105
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1N33ET-1ofqaG02KD-013RVC; Wed, 25
+ Jan 2023 17:41:33 +0100
+Date: Wed, 25 Jan 2023 17:41:25 +0100
+From: Frank Wunderlich <frank-w@public-files.de>
+To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- angelogioacchino.delregno@collabora.com, nicolas.dufresne@collabora.com,
- kyrie wu <kyrie.wu@mediatek.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>,
- xia.jiang@mediatek.com, maoguang.meng@mediatek.com
-References: <20230112084503.4277-1-irui.wang@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230112084503.4277-1-irui.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+ Matthias Brugger <matthias.bgg@gmail.com>
+CC: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ erkin.bozoglu@xeront.com, Sean Wang <sean.wang@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>
+Subject: Re: [PATCH 4/5] arm: dts: mt7623: mux phy0 on Bananapi BPI-R2
+User-Agent: K-9 Mail for Android
+In-Reply-To: <20230120205318.519493-5-arinc.unal@arinc9.com>
+References: <20230120205318.519493-1-arinc.unal@arinc9.com> <20230120205318.519493-5-arinc.unal@arinc9.com>
+Message-ID: <9A7BD95A-F026-4EAB-96E1-12B1B0C6AAA4@public-files.de>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:CG5Ii1F2NzN0unmUtBDjSqSGd3Cfi/OGshwd2tOQ+KvmtVd8au4
+ VD+h0gQ0/p3kX6FHp5MTu/2MvM0VEcPvzs+TsWPU86u26qfKhK1ThTcIyZq/oPfHxaeb+zQ
+ iRGVr0cbfzoFsfcUUWOeCbHb310xYBXdWcmEA8rNipZGmw9rLIuV92BOt99UoLlBzTqsWYY
+ X4UGMEBCvepZgHZ08dhVQ==
+UI-OutboundReport: notjunk:1;M01:P0:K5UPTwbdRb8=;kWsV7bmkHlOyetrvEMoeRlecVhy
+ txkPzft12wrIFC5uE169oHr5ThrVpekB/nkEJYYFQAwfnxsH914wxKGk4usF5NT0o8wPpNco7
+ raEszTt63uPhOUvdQrutQ9XIp3Hoh4/VdOX11/eQ2oOw760xObk7ObF5Qj3EYF+LQHFVdna9u
+ oP7IJQKX0xZOdc+1Nd2YVHFCxNipJ9nYsspQ68sdnubve7zngVsj9Thm7I2fbKCKhJd91IMYE
+ UXrxyMN+2c7qDKVnZ5epSIlriP9eVdh2sH1QMBxfsqA9kAMektkVa515AwqomYUqJtFnDZacS
+ GASml8R22UbNcI+NEHjRE5Wx7QTBv1bBkxBMf9WwF/ayua78K9mVJmFST2Dcc6p4DbTXvzc7C
+ oSSeI7R1da7ecnrpkFjb6IvWblVAeTgRbcmwLMq5zfBQkbW6xZGFc2rtURM5ejDPrAdloLMIP
+ GTC9aTOZupTVayK/PLIjhKv2iChEYkXbwzZ4cZOtN0KJK16D7WfvGvJgjzzGrPQzQEU06g0RQ
+ V0ZdI8Yl+wd+6pLR/BHTgOS4m2T8zT6AeKo9H6skO63nWkSbw6FZv6gJMLhrhUgIi3A49UI6U
+ QdNqLxuHVX46vOGDMfzggVa6AVIJG1b+xFrQfeNqClu1ySK2Sr/RkeB9ZPotnMnvyUb54dciJ
+ uT9UFAOtICPOaEOZQDvO6QIlnSgB0EId302jDAKsfpfA2656PoCsByRH8xi//HXMvLHM3niOY
+ eqyfVRNz5TQkdugiKPCw/42QiJvb+6tGr8lu+q6SJXkRhrnik0c4G9NJdp6XiZ+e4LSH+F2CI
+ lJDIG9FSFMzr0f4drH/Y4EPww93iTWJv86nI/5VCWl1V3WyjgM2XHm41x2ntIHPA+Py41hq1d
+ G2AFXASKAss8utIX1JGbmWdCEOBJIFWhHO7ZXx5IPp3dhN7jNooDgjnq4JPVmeLfbHKuRVVNi
+ Grm01g==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230125_072217_018605_555E85B3 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20230125_084156_441852_DB3C91A1 
+X-CRM114-Status: UNSURE (   6.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,30 +92,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Applied, thanks!
+Am 20=2E Januar 2023 21:53:17 MEZ schrieb "Ar=C4=B1n=C3=A7 =C3=9CNAL" <arin=
+c=2Eunal@arinc9=2Ecom>:
 
-On 12/01/2023 09:45, Irui Wang wrote:
-> From: kyrie wu <kyrie.wu@mediatek.com>
-> 
-> This series add jpeg enc and dec device node to dts file
-> for the purpose of supporting multi hardwares jpeg
-> enc & dec of MT8195.
-> 
-> This series has been tested with MT8195 Gstreamer.
-> Encoding and decoding worked for this chip.
-> 
-> Patches 1 Adds jpeg encoder device node for mt8195.
-> 
-> Patches 2 Adds jpeg decoder device node for mt8195.
-> 
-> kyrie wu (2):
->    arm64: dts: mt8195: add jpeg encode device node
->    arm64: dts: mt8195: add jpeg decode device node
-> 
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 100 +++++++++++++++++++++++
->   1 file changed, 100 insertions(+)
-> 
+> 		switch@1f {
+> 			compatible =3D "mediatek,mt7530";
+> 			reg =3D <0x1f>;
+>@@ -199,11 +208,6 @@ ports {
+> 				#address-cells =3D <1>;
+> 				#size-cells =3D <0>;
+>=20
+>-				port@0 {
+>-					reg =3D <0>;
+>-					label =3D "wan";
+>-				};
+>-
+
+This will break existing userspace setups using wan as interface name=2E
+
+> 				port@1 {
+> 					reg =3D <1>;
+> 					label =3D "lan0";
+
+
+regards Frank
 
