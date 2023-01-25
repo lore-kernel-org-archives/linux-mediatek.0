@@ -4,121 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A07EC54E94
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jan 2023 18:37:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 195DAC27C76
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jan 2023 19:09:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j8xmcwaWWp8ClSuIcWbfPO9W4DI7+K1SIXYR1hupOAY=; b=SjUAGoRx8240BboJBPriBPjGdw
-	ARvdo7xN52jzl+ZCu3/ybf4xl1HdUpIEtYIK4h3TawK0peynSH9EgddjxYAcEVkBfAk/JFI8aWNbc
-	EDD/guWnoKLXrmazzurE5sZFmijJeCokmGgG2B2v+RGkz1O/i1d9o8mdpDUBsOTF6mRp5NdECG/OO
-	moUw5MpAteS4bNtF6LU82r1B7xEBJ/MMA6zgWpcAzjz+OTe1qVXwxSkUjJQSyCz7m8FOAJanJscQB
-	6AwSD4a4gTC55JImUv1fiTMbd2m1GLyHLTX6i4RyiOqjoqW/x/DhlumhHQtviag2UOBg36H9xC0Pt
-	QWXXDqEg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5RAf+FoD3kD3uKp2a9aXTt0ztNoNqQfHHQT67AwEHFY=; b=Tsinqy7HJhKPQg5dzf026f+8no
+	Qu2sR/Bi6XHR7tlzUspXcK5zSVkB8TJkQMCTaZIYhOZd9nIByXLz1YcTfdPHX7HmPmo84Wp7/+1vM
+	cmYLigmx+Cp+YHMsyZb971f4M0TYteUY7u5sfRNEBbzukKHpoRSQtxYMVjRbIFyfYl9ap6RLfnSPs
+	xemJ2oAM2/Vq/1E6OGZSWTUUDtQ9sCZlqjqWFT/5oSEMx45mG+ePNRtbhPESnLjH9R1Vv0zyjA/ba
+	9zn6iobVcF1oua2TGCyWu7EnOV5Zu9C/Ge05APi5myk4rZeLsbInCmL1MaQZgpcJAyt8LSmCF9DBW
+	8H+ON8Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKkeX-008M0r-Cy; Wed, 25 Jan 2023 18:37:45 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1pKl97-008Qqt-TN; Wed, 25 Jan 2023 19:09:21 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKkeU-008M0V-KA; Wed, 25 Jan 2023 18:37:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=j8xmcwaWWp8ClSuIcWbfPO9W4DI7+K1SIXYR1hupOAY=; b=uqNynxzucz1vO4Sybud/wnfqlG
-	XxsLNOwKfxMMQq2z+2mEwSQepA2Cgl288rz8ppyGnCDD245OrpnK+lLHo83C85yAJqJOOkyy9NCp4
-	qmW1PdDBkKx7H5H7CuTrTaW668Ax6XD7hJfO7woN7MoWAjzhSqQRaCuht1RFhZ03cdOhzx8vskmyo
-	utYjRqoPln+RK+MIFkiqDBv2fEqneNERI4c9/pWDfp7yn00dEjgBzAOu+9ajSFVQvgY4Ml53E7t5d
-	4KvoHjjGbdeWlMlk7Lgwsa8VGdyruWiJYIAak7bpfijYPXdYqIwuOD9Kmo+xWyNX8MhOoxpc82QLY
-	/xONblxA==;
-Received: from willy by casper.infradead.org with local (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKkeP-0066hH-0o; Wed, 25 Jan 2023 18:37:37 +0000
-Date: Wed, 25 Jan 2023 18:37:36 +0000
-From: Matthew Wilcox <willy@infradead.org>
-To: Suren Baghdasaryan <surenb@google.com>
-Cc: Peter Zijlstra <peterz@infradead.org>, akpm@linux-foundation.org,
-	michel@lespinasse.org, jglisse@google.com, mhocko@suse.com,
-	vbabka@suse.cz, hannes@cmpxchg.org, mgorman@techsingularity.net,
-	dave@stgolabs.net, liam.howlett@oracle.com, ldufour@linux.ibm.com,
-	paulmck@kernel.org, luto@kernel.org, songliubraving@fb.com,
-	peterx@redhat.com, david@redhat.com, dhowells@redhat.com,
-	hughd@google.com, bigeasy@linutronix.de, kent.overstreet@linux.dev,
-	punit.agrawal@bytedance.com, lstoakes@gmail.com,
-	peterjung1337@gmail.com, rientjes@google.com,
-	axelrasmussen@google.com, joelaf@google.com, minchan@google.com,
-	jannh@google.com, shakeelb@google.com, tatashin@google.com,
-	edumazet@google.com, gthelen@google.com, gurua@google.com,
-	arjunroy@google.com, soheil@google.com, hughlynch@google.com,
-	leewalsh@google.com, posk@google.com, will@kernel.org,
-	aneesh.kumar@linux.ibm.com, npiggin@gmail.com,
-	chenhuacai@kernel.org, tglx@linutronix.de, mingo@redhat.com,
-	bp@alien8.de, dave.hansen@linux.intel.com, richard@nod.at,
-	anton.ivanov@cambridgegreys.com, johannes@sipsolutions.net,
-	qianweili@huawei.com, wangzhou1@hisilicon.com,
-	herbert@gondor.apana.org.au, davem@davemloft.net, vkoul@kernel.org,
-	airlied@gmail.com, daniel@ffwll.ch,
-	maarten.lankhorst@linux.intel.com, mripard@kernel.org,
-	tzimmermann@suse.de, l.stach@pengutronix.de,
-	krzysztof.kozlowski@linaro.org, patrik.r.jakobsson@gmail.com,
-	matthias.bgg@gmail.com, robdclark@gmail.com,
-	quic_abhinavk@quicinc.com, dmitry.baryshkov@linaro.org,
-	tomba@kernel.org, hjc@rock-chips.com, heiko@sntech.de,
-	ray.huang@amd.com, kraxel@redhat.com, sre@kernel.org,
-	mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
-	tfiga@chromium.org, m.szyprowski@samsung.com, mchehab@kernel.org,
-	dimitri.sivanich@hpe.com, zhangfei.gao@linaro.org,
-	jejb@linux.ibm.com, martin.petersen@oracle.com,
-	dgilbert@interlog.com, hdegoede@redhat.com, mst@redhat.com,
-	jasowang@redhat.com, alex.williamson@redhat.com, deller@gmx.de,
-	jayalk@intworks.biz, viro@zeniv.linux.org.uk, nico@fluxnic.net,
-	xiang@kernel.org, chao@kernel.org, tytso@mit.edu,
-	adilger.kernel@dilger.ca, miklos@szeredi.hu,
-	mike.kravetz@oracle.com, muchun.song@linux.dev, bhe@redhat.com,
-	andrii@kernel.org, yoshfuji@linux-ipv6.org, dsahern@kernel.org,
-	kuba@kernel.org, pabeni@redhat.com, perex@perex.cz, tiwai@suse.com,
-	haojian.zhuang@gmail.com, robert.jarzmik@free.fr,
-	linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org,
-	linuxppc-dev@lists.ozlabs.org, x86@kernel.org,
-	linux-kernel@vger.kernel.org, linux-graphics-maintainer@vmware.com,
-	linux-ia64@vger.kernel.org, linux-arch@vger.kernel.org,
-	loongarch@lists.linux.dev, kvm@vger.kernel.org,
-	linux-s390@vger.kernel.org, linux-sgx@vger.kernel.org,
-	linux-um@lists.infradead.org, linux-acpi@vger.kernel.org,
-	linux-crypto@vger.kernel.org, nvdimm@lists.linux.dev,
-	dmaengine@vger.kernel.org, amd-gfx@lists.freedesktop.org,
-	dri-devel@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
-	linux-samsung-soc@vger.kernel.org, intel-gfx@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
-	linux-tegra@vger.kernel.org,
-	virtualization@lists.linux-foundation.org,
-	xen-devel@lists.xenproject.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-rdma@vger.kernel.org, linux-media@vger.kernel.org,
-	linux-accelerators@lists.ozlabs.org, sparclinux@vger.kernel.org,
-	linux-scsi@vger.kernel.org, linux-staging@lists.linux.dev,
-	target-devel@vger.kernel.org, linux-usb@vger.kernel.org,
-	netdev@vger.kernel.org, linux-fbdev@vger.kernel.org,
-	linux-aio@kvack.org, linux-fsdevel@vger.kernel.org,
-	linux-erofs@lists.ozlabs.org, linux-ext4@vger.kernel.org,
-	devel@lists.orangefs.org, kexec@lists.infradead.org,
-	linux-xfs@vger.kernel.org, bpf@vger.kernel.org,
-	linux-perf-users@vger.kernel.org, kasan-dev@googlegroups.com,
-	selinux@vger.kernel.org, alsa-devel@alsa-project.org,
-	kernel-team@android.com
-Subject: Re: [PATCH v2 1/6] mm: introduce vma->vm_flags modifier functions
-Message-ID: <Y9F28J9njAtwifuL@casper.infradead.org>
-References: <20230125083851.27759-1-surenb@google.com>
- <20230125083851.27759-2-surenb@google.com>
- <Y9Dx0cPXF2yoLwww@hirez.programming.kicks-ass.net>
- <CAJuCfpEcVCZaCGzc-Wim25eaV5e6YG1YJAAdKwZ6JHViB0z8aw@mail.gmail.com>
+	id 1pKl8w-008Qle-OW; Wed, 25 Jan 2023 19:09:12 +0000
+Received: by mail-wm1-x330.google.com with SMTP id m5-20020a05600c4f4500b003db03b2559eso2034218wmq.5;
+        Wed, 25 Jan 2023 11:09:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=5RAf+FoD3kD3uKp2a9aXTt0ztNoNqQfHHQT67AwEHFY=;
+        b=b6H4AGc9EcLzEpPx1uNxpDkYcPOiFlaHxDr1dtMOdeYAPKhbJX0M9HTALOa/5GWWPk
+         4KkMruQx7gIRtMa+nf670ZzvrfPJYOHUioW8A8fRWRwY4IPBliEFosyiKOJ1FjOf9Bk1
+         siz60TgzggOI4I2fMZl2Hot3etpGe3VykDi23cXOhcuxouCac0nrAcQqxUAJMYEx440P
+         vR2KOKNnnIKkgkcfFTGpABIswcbBF3vxsVFNVMmekAwzbmo2of95dYp6sSKNTWYFLQ7w
+         DDfKiFfXvHjApYrFYcW7ESGEJkwnIdK9TaNcUmMcUDwv1Uft6+xArMMyIxUSotu41N0Y
+         z6dw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=5RAf+FoD3kD3uKp2a9aXTt0ztNoNqQfHHQT67AwEHFY=;
+        b=onwRTk5LjuPYZAQHTuDej+RaZccp+BYgdAELd9XHuNChHokiS5fPmh8452HVlAo+jG
+         XsQGVwz634wuIFkQhTR8l08PEmEJP/T2yPxv9ZBAe3qn8Qsh3usUMZhu98f8Bzn+VIcz
+         qdDaEjGcVAoVrBpW7z/KmPMHacQ833itZaYhc9XeLSXM/bQV92Z8m3LTFsf4aYqORrXb
+         ulXOhbhFSWexw0HuBRh09F2s+P3L+v+fXu4peWBgMwbDbYDdsYRXXh/qnhoD3XYgsS/m
+         LpWFk2YGyRn3aaqeg9vAj4zMeTfG0hZrbFEl15P5mJrZnS01PpXlza360xDRGOViULNM
+         q9pQ==
+X-Gm-Message-State: AFqh2kq712ssJnX0SwP8UKL+6fad6BFNkxrXbfX6qUxH7upHZrxN0pCv
+	qAynX7L82AZlSltn/H+abZU=
+X-Google-Smtp-Source: AMrXdXvtMXyMvraIkniFaiTIvZWVgPXmcScLBOxVnQYgvmZhBJMkq+rEi0E9cvgaQW5EFnA9zYXaZQ==
+X-Received: by 2002:a7b:cb88:0:b0:3d9:f801:73bf with SMTP id m8-20020a7bcb88000000b003d9f80173bfmr32430098wmi.12.1674673746896;
+        Wed, 25 Jan 2023 11:09:06 -0800 (PST)
+Received: from [192.168.1.135] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id b5-20020a05600c150500b003dafb0c8dfbsm2998092wmg.14.2023.01.25.11.09.05
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 25 Jan 2023 11:09:06 -0800 (PST)
+Message-ID: <243ad9f8-76f6-3e60-91ae-21d04ba6f262@gmail.com>
+Date: Wed, 25 Jan 2023 20:09:04 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAJuCfpEcVCZaCGzc-Wim25eaV5e6YG1YJAAdKwZ6JHViB0z8aw@mail.gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v11 5/6] arm64/dts/mt8195: Add thermal zones and thermal
+ nodes
+Content-Language: en-US
+To: Balsam CHIHI <bchihi@baylibre.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: daniel.lezcano@linaro.org, rafael@kernel.org, amitk@kernel.org,
+ rui.zhang@intel.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ rdunlap@infradead.org, ye.xingchen@zte.com.cn, p.zabel@pengutronix.de,
+ linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com,
+ rex-bc.chen@mediatek.com
+References: <20230124131717.128660-1-bchihi@baylibre.com>
+ <20230124131717.128660-6-bchihi@baylibre.com>
+ <80ce4ea3-6ebd-c249-45bd-a2f04343690b@collabora.com>
+ <CAGuA+opCcdbPbasadEFbKw1nSy-kbK3WzKG=wXn6dtzynjrY1Q@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <CAGuA+opCcdbPbasadEFbKw1nSy-kbK3WzKG=wXn6dtzynjrY1Q@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20230125_110910_842308_EC76098F 
+X-CRM114-Status: GOOD (  15.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,30 +101,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 25, 2023 at 08:49:50AM -0800, Suren Baghdasaryan wrote:
-> On Wed, Jan 25, 2023 at 1:10 AM Peter Zijlstra <peterz@infradead.org> wrote:
-> > > +     /*
-> > > +      * Flags, see mm.h.
-> > > +      * WARNING! Do not modify directly.
-> > > +      * Use {init|reset|set|clear|mod}_vm_flags() functions instead.
-> > > +      */
-> > > +     unsigned long vm_flags;
-> >
-> > We have __private and ACCESS_PRIVATE() to help with enforcing this.
+
+
+On 25/01/2023 16:10, Balsam CHIHI wrote:
+> On Tue, Jan 24, 2023 at 4:37 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Il 24/01/23 14:17, bchihi@baylibre.com ha scritto:
+>>> From: Balsam CHIHI <bchihi@baylibre.com>
+>>>
+>>> Add thermal zones and thermal nodes for the mt8195.
+>>>
+>>> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+>>
+>> You should change the commit title to reflect the same syntax that you can find
+>> in a `git log --oneline arch/arm64/boot/dts/mediatek/`.
+>>
+>> arm64: dts: mediatek: mt8195: Add thermal zones and thermal nodes
+>>
+>> or
+>>
+>> arm64: dts: mt8195: Add thermal zones and thermal nodes
+>>
 > 
-> Thanks for pointing this out, Peter! I guess for that I'll need to
-> convert all read accesses and provide get_vm_flags() too? That will
-> cause some additional churt (a quick search shows 801 hits over 248
-> files) but maybe it's worth it? I think Michal suggested that too in
-> another patch. Should I do that while we are at it?
+> Hi Angelo,
+> 
+> Thank you for the review.
+> Should I resend with the fix?
+> Or you would fix it when applying it like Matthias did for "[PATCH v11
+> 3/6] arm64/dts/mt8195: Add efuse node to mt8195"?
+> 
 
-Here's a trick I saw somewhere in the VFS:
+If you need to send a new version for any reason, then please update. Otherwise 
+I'll fix it once I can take it.
 
-	union {
-		const vm_flags_t vm_flags;
-		vm_flags_t __private __vm_flags;
-	};
-
-Now it can be read by anybody but written only by those using
-ACCESS_PRIVATE.
+Regards,
+Matthias
 
