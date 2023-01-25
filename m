@@ -4,137 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 873CEC54E94
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jan 2023 17:08:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A08F2C54E94
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jan 2023 17:17:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FNzsO8QkHd4bwcFXjgFFOOBC/xElVC4T91KIaFtN0Io=; b=Sg6/6sDIPS3D7M1SF2UpCK1tV6
-	OU58ArFGsKvAtRf4aW/t0TwGbBMoclH5jdCsog4iP0QgraprG33ipZdRxXjeXtvC4GiwdL9w6S0hX
-	DADaWESM1rgEg/gKf8gXsr6QSnkoW6WNiXzZES9s9YiwEVyKhZ/rDgyGmc+TQkQe6Lz2qJ/KdZlVI
-	bxDOjh57NewrC+OBw27P8sWtQQ6YppL9L+Sh48jeIUCc9eQSJjA/fh1qzEE3VmF+0aLB+X6PQeGkT
-	p21cdxmNxa7xrbB/og6VJL339Qfn3KF1xzUcC7tlrbkHoaQnNfRxTEZRWweh/PhEGNTaK1qNzcwjI
-	2QLYC1Jw==;
+	bh=UVy49VwAMvNvfly1owkooWr3fc9DSt30v0h99b71T2M=; b=eBEMkEG4JRaKkZAYxsGxVpuJEW
+	Eoh8T3ekrXL8WW5IuSVVyAIVKub61Kub6Z+vU5n4C84WEi9eOrAahIxgBKTYmUB/CUIHuDw7vchim
+	aCzFd7PHN/AZ6PmQ6GoFOekVCTd0v+EVfTLJaSfIg1/pBd7eaiVGi+aH1M3HarmiObAk4cTiXU7I3
+	fOzpUJBT2tZy8b3f5iF0W8Toc33+ngaZvwtHo0hCWY/unPiaJMpDjzefgL6gx8nbGBIMiOKh/K4NT
+	X4T2MSBrPn2fwBBavUMWsf6Grig4DdJZE+pro98AtptD9F0bpaipyZ0wHmZoOTmCf1300m+grISTz
+	bmP46kNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKjFw-0088p6-78; Wed, 25 Jan 2023 17:08:16 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1pKjOK-008AQL-32; Wed, 25 Jan 2023 17:16:56 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKjFs-0088mU-Sa; Wed, 25 Jan 2023 17:08:14 +0000
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	id 1pKjO8-008AO4-Sl; Wed, 25 Jan 2023 17:16:46 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id C11031FD87;
-	Wed, 25 Jan 2023 17:08:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
-	t=1674666487; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=FNzsO8QkHd4bwcFXjgFFOOBC/xElVC4T91KIaFtN0Io=;
-	b=D/br1xSsxQfk6apBfZHBB6RWB236iiiYqtOZ2eZ95J8WjWhuYAEVV+tXTEh0QKRmA1b4xH
-	QN55Gxk1acvIRqe6qMTQwSbVuwI9C24RIc9UEoj8Q4rbZSCTfRh25I8IC+VWb1YjIErqcg
-	9b1EbAjGibksBO3NPm+wpmCzLKQPsIY=
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 7757F1358F;
-	Wed, 25 Jan 2023 17:08:07 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id T+qcHPdh0WP1JAAAMHmgww
-	(envelope-from <mhocko@suse.com>); Wed, 25 Jan 2023 17:08:07 +0000
-Date: Wed, 25 Jan 2023 18:08:06 +0100
-From: Michal Hocko <mhocko@suse.com>
-To: Suren Baghdasaryan <surenb@google.com>
-Cc: akpm@linux-foundation.org, michel@lespinasse.org, jglisse@google.com,
-	vbabka@suse.cz, hannes@cmpxchg.org, mgorman@techsingularity.net,
-	dave@stgolabs.net, willy@infradead.org, liam.howlett@oracle.com,
-	peterz@infradead.org, ldufour@linux.ibm.com, paulmck@kernel.org,
-	luto@kernel.org, songliubraving@fb.com, peterx@redhat.com,
-	david@redhat.com, dhowells@redhat.com, hughd@google.com,
-	bigeasy@linutronix.de, kent.overstreet@linux.dev,
-	punit.agrawal@bytedance.com, lstoakes@gmail.com,
-	peterjung1337@gmail.com, rientjes@google.com,
-	axelrasmussen@google.com, joelaf@google.com, minchan@google.com,
-	jannh@google.com, shakeelb@google.com, tatashin@google.com,
-	edumazet@google.com, gthelen@google.com, gurua@google.com,
-	arjunroy@google.com, soheil@google.com, hughlynch@google.com,
-	leewalsh@google.com, posk@google.com, will@kernel.org,
-	aneesh.kumar@linux.ibm.com, npiggin@gmail.com,
-	chenhuacai@kernel.org, tglx@linutronix.de, mingo@redhat.com,
-	bp@alien8.de, dave.hansen@linux.intel.com, richard@nod.at,
-	anton.ivanov@cambridgegreys.com, johannes@sipsolutions.net,
-	qianweili@huawei.com, wangzhou1@hisilicon.com,
-	herbert@gondor.apana.org.au, davem@davemloft.net, vkoul@kernel.org,
-	airlied@gmail.com, daniel@ffwll.ch,
-	maarten.lankhorst@linux.intel.com, mripard@kernel.org,
-	tzimmermann@suse.de, l.stach@pengutronix.de,
-	krzysztof.kozlowski@linaro.org, patrik.r.jakobsson@gmail.com,
-	matthias.bgg@gmail.com, robdclark@gmail.com,
-	quic_abhinavk@quicinc.com, dmitry.baryshkov@linaro.org,
-	tomba@kernel.org, hjc@rock-chips.com, heiko@sntech.de,
-	ray.huang@amd.com, kraxel@redhat.com, sre@kernel.org,
-	mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
-	tfiga@chromium.org, m.szyprowski@samsung.com, mchehab@kernel.org,
-	dimitri.sivanich@hpe.com, zhangfei.gao@linaro.org,
-	jejb@linux.ibm.com, martin.petersen@oracle.com,
-	dgilbert@interlog.com, hdegoede@redhat.com, mst@redhat.com,
-	jasowang@redhat.com, alex.williamson@redhat.com, deller@gmx.de,
-	jayalk@intworks.biz, viro@zeniv.linux.org.uk, nico@fluxnic.net,
-	xiang@kernel.org, chao@kernel.org, tytso@mit.edu,
-	adilger.kernel@dilger.ca, miklos@szeredi.hu,
-	mike.kravetz@oracle.com, muchun.song@linux.dev, bhe@redhat.com,
-	andrii@kernel.org, yoshfuji@linux-ipv6.org, dsahern@kernel.org,
-	kuba@kernel.org, pabeni@redhat.com, perex@perex.cz, tiwai@suse.com,
-	haojian.zhuang@gmail.com, robert.jarzmik@free.fr,
-	linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org,
-	linuxppc-dev@lists.ozlabs.org, x86@kernel.org,
-	linux-kernel@vger.kernel.org, linux-graphics-maintainer@vmware.com,
-	linux-ia64@vger.kernel.org, linux-arch@vger.kernel.org,
-	loongarch@lists.linux.dev, kvm@vger.kernel.org,
-	linux-s390@vger.kernel.org, linux-sgx@vger.kernel.org,
-	linux-um@lists.infradead.org, linux-acpi@vger.kernel.org,
-	linux-crypto@vger.kernel.org, nvdimm@lists.linux.dev,
-	dmaengine@vger.kernel.org, amd-gfx@lists.freedesktop.org,
-	dri-devel@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
-	linux-samsung-soc@vger.kernel.org, intel-gfx@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
-	linux-tegra@vger.kernel.org,
-	virtualization@lists.linux-foundation.org,
-	xen-devel@lists.xenproject.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-rdma@vger.kernel.org, linux-media@vger.kernel.org,
-	linux-accelerators@lists.ozlabs.org, sparclinux@vger.kernel.org,
-	linux-scsi@vger.kernel.org, linux-staging@lists.linux.dev,
-	target-devel@vger.kernel.org, linux-usb@vger.kernel.org,
-	netdev@vger.kernel.org, linux-fbdev@vger.kernel.org,
-	linux-aio@kvack.org, linux-fsdevel@vger.kernel.org,
-	linux-erofs@lists.ozlabs.org, linux-ext4@vger.kernel.org,
-	devel@lists.orangefs.org, kexec@lists.infradead.org,
-	linux-xfs@vger.kernel.org, bpf@vger.kernel.org,
-	linux-perf-users@vger.kernel.org, kasan-dev@googlegroups.com,
-	selinux@vger.kernel.org, alsa-devel@alsa-project.org,
-	kernel-team@android.com
-Subject: Re: [PATCH v2 4/6] mm: replace vma->vm_flags indirect modification
- in ksm_madvise
-Message-ID: <Y9Fh9joU3vTCwYbX@dhcp22.suse.cz>
-References: <20230125083851.27759-1-surenb@google.com>
- <20230125083851.27759-5-surenb@google.com>
- <Y9D4rWEsajV/WfNx@dhcp22.suse.cz>
- <CAJuCfpGd2eG0RSMte9OVgsRVWPo+Sj7+t8EOo8o_iKzZoh1MXA@mail.gmail.com>
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 669A561582;
+	Wed, 25 Jan 2023 17:16:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0338C433EF;
+	Wed, 25 Jan 2023 17:16:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1674667003;
+	bh=UVy49VwAMvNvfly1owkooWr3fc9DSt30v0h99b71T2M=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=uaD9EW7rjHHXbvhkf/mp5jKQdeoxq6Q82JD9py3lRSGJ6YjIVsjVf7GxAAoMMX+71
+	 +V10qssso3Ag4IW5LJ62BRHZ6e8cyVC07FyIyMZYeIbyRAjAAvf6GsruIDnUTnC4/d
+	 c0lYc2u21KEBjswd+mvjS6g5Zr6HragxahqZP77bUJULBm+k/nO1uOl93+N+0biEHb
+	 +fbH4heOSQtRyxm42Vsx7wZ24ppGvpxwnpp59CZnHdEvIWDOSDTiiNGSwZlQUUULWf
+	 6FuQj23lRCvsRdFFZlxl0YtYoEb42mzsWHjLvSiwAM7dAasHH3HYaF9mE+VoyQX0qB
+	 c6cGfGn2QbMLg==
+Received: by mail-vs1-f49.google.com with SMTP id p1so20444427vsr.5;
+        Wed, 25 Jan 2023 09:16:43 -0800 (PST)
+X-Gm-Message-State: AO0yUKWFc1mgZdQhJeFimHBR9zAp6hgZPFTemBQcCqNLqbk+l6u2v/z8
+	Af/TtDwbCjdpFi+ppqcrxhY0TlmNr7Jx7vg74Q==
+X-Google-Smtp-Source: AK7set/9MH2+8m/u8CsJY1QynMiZjKxMVjlsPnhguaIoTxMs8JGmoZA4y6kFqKQs9YuW49fZGC5DK93+2plS+rfNt00=
+X-Received: by 2002:a67:fe41:0:b0:3ea:c8c:48a5 with SMTP id
+ m1-20020a67fe41000000b003ea0c8c48a5mr91271vsr.53.1674667002782; Wed, 25 Jan
+ 2023 09:16:42 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAJuCfpGd2eG0RSMte9OVgsRVWPo+Sj7+t8EOo8o_iKzZoh1MXA@mail.gmail.com>
+References: <cover.1674409777.git.daniel@makrotopia.org> <7c680bf2502ddfd2077306a46c69728d212386f9.1674409777.git.daniel@makrotopia.org>
+ <20230123225943.GA2781371-robh@kernel.org> <Y88eMrwDmSZ2xovw@makrotopia.org>
+In-Reply-To: <Y88eMrwDmSZ2xovw@makrotopia.org>
+From: Rob Herring <robh@kernel.org>
+Date: Wed, 25 Jan 2023 11:16:31 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqLnuJKhm46dSShtkwW1o9tQNbHQ9bCd-9U5UqMij3J-0Q@mail.gmail.com>
+Message-ID: <CAL_JsqLnuJKhm46dSShtkwW1o9tQNbHQ9bCd-9U5UqMij3J-0Q@mail.gmail.com>
+Subject: Re: [PATCH 1/2] dt-bindings: pinctrl: add bindings for MT7981 SoC
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, Sean Wang <sean.wang@kernel.org>, 
+	Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sam Shih <sam.shih@mediatek.com>, 
+	Jianhui Zhao <zhaojh329@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230125_090813_090028_2EE0E57A 
-X-CRM114-Status: GOOD (  13.91  )
+X-CRM114-CacheID: sfid-20230125_091644_990018_48841B80 
+X-CRM114-Status: GOOD (  19.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,26 +84,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed 25-01-23 08:57:48, Suren Baghdasaryan wrote:
-> On Wed, Jan 25, 2023 at 1:38 AM 'Michal Hocko' via kernel-team
-> <kernel-team@android.com> wrote:
+On Mon, Jan 23, 2023 at 5:56 PM Daniel Golle <daniel@makrotopia.org> wrote:
+>
+> On Mon, Jan 23, 2023 at 04:59:43PM -0600, Rob Herring wrote:
+> > On Sun, Jan 22, 2023 at 06:23:55PM +0000, Daniel Golle wrote:
+> > > Add bindings for the MT7981 pinctrl driver, based on existing MT7986
+> > > pinctrl bindings.
 > >
-> > On Wed 25-01-23 00:38:49, Suren Baghdasaryan wrote:
-> > > Replace indirect modifications to vma->vm_flags with calls to modifier
-> > > functions to be able to track flag changes and to keep vma locking
-> > > correctness. Add a BUG_ON check in ksm_madvise() to catch indirect
-> > > vm_flags modification attempts.
-> >
-> > Those BUG_ONs scream to much IMHO. KSM is an MM internal code so I
-> > gueess we should be willing to trust it.
-> 
-> Yes, but I really want to prevent an indirect misuse since it was not
-> easy to find these. If you feel strongly about it I will remove them
-> or if you have a better suggestion I'm all for it.
+> > What existing bindings? A .txt file you need to remove, or undocumented,
+> > but in use somewhere (where?)?
+>
+> What I meant to express is that I used the existing
+> mediatek,mt7986-pinctrl.yaml file as the template to create a similar
+> document for MT7981. I guess my English was not clear enough.
 
-You can avoid that by making flags inaccesible directly, right?
+No, I just missed the 1 digit difference...
 
--- 
-Michal Hocko
-SUSE Labs
+> Maybe better like this?
+>
+> "Add bindings for the MT7981 pinctrl driver. As MT7981 is simiar to
+> MT7986, the existing mediatek,mt7986-pinctrl.yaml was used as an example
+> to create a similar document covering MT7981."
+
+Describe how the h/w is similar or different. Can they share the same
+schema doc? I'm guessing all the if/then schemas for pins/groups are
+different, so no. But I shouldn't have to guess.
+
+Rob
 
