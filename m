@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A579C54E94
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jan 2023 15:06:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E97F9C54EAA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jan 2023 15:14:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hZ+XWT7x3GIrVuC5smdu5kaGnAEgwF0jVXjRtih1Jog=; b=njVxIAj7Ji6nR9pThtj3hWGylU
-	7e7lMMUbQuumdNJsI6ZaMX5ItOoxUsCn1Wh02laONArEekGN2jH8pmKen0+1POizfwyxTVyMRgGP1
-	owRPbj81hl9qai64FncquWr1grOdnvDwTfBpXPa4vZ82ibvoXavigxdx4OqvfU2jbqt3KXFGIfreW
-	5cKd13FdVBo30nEnBEK9zk+1M+N+5GGImO8XPhGP9XpP+1u7vw1m8Fd3C9aZmzDz3cx9Uz/9VpEcp
-	Rby0PAvZEtbZYu01+GB7BDjZ6k+wg1GR6f2OTU6T56Zmb+652WgDgTFfsVn3lxbj3QSvD0oGyLHSa
-	EZZZdtMQ==;
+	bh=MK9Ce7LoyUpoHVdDI0Q6deRxLh9svgL/G7RdzcTDYaQ=; b=isTZCBZjfr9O+pZucFvdwGddNB
+	UHPkZs0vGQGS3kHuUgdWIRri47Ng40bbkxkPO3jCmBuQllxnKFDaVkOqCV9jN4rB/Z9Lt8C6nvuK/
+	b2OP8IUrtQeTars/aNhpaI6BtrZx9T0vdXLWK8BKTpLgEawJHEzVoFeZB1I08BnzJCq5juEXLj/L6
+	DABP4eeKK13kSauFP20ZSe2yqB1puxCvOd+t0gvzOw58hv6M+EuGu/XkydMCA9lxWLJIqkFeiudKE
+	XHwBmTyyb9r62/f7bh/8y6fFpDM5jIbx3AmKqcvnsbbAInw2XsRg72bMnQoIDXb8d3E/EUeo8AR1r
+	9pupD2bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKhMJ-007ib1-Si; Wed, 25 Jan 2023 15:06:43 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1pKhTe-007lNV-C0; Wed, 25 Jan 2023 15:14:18 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKhMH-007iYq-Ce
-	for linux-mediatek@lists.infradead.org; Wed, 25 Jan 2023 15:06:42 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id az20so48507369ejc.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Jan 2023 07:06:41 -0800 (PST)
+	id 1pKhQz-007kEk-R9
+	for linux-mediatek@lists.infradead.org; Wed, 25 Jan 2023 15:11:35 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id y11so22060681edd.6
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Jan 2023 07:11:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=hZ+XWT7x3GIrVuC5smdu5kaGnAEgwF0jVXjRtih1Jog=;
-        b=cH3hA1DNTFYYXcYv2dYsdfs/F0a4Fo0x393HAZwW7sg2/ZjfnFAD1GtMUOqjWL6CnP
-         ZvzRjkIG0subDN66xQFmo5RPvHMO3JcQFlvxD4ONkyFtfwzAB0ttmle/4y/TihRmks2S
-         QXEXCp8Wf6YgFDGr3UNW6Zg1acdhVDLA6TZFsp2afNANCN/FBWcfLjqRBqIzEzy0hs2+
-         Iu7AQIKZKCjwH1r3tr76JeJWLqDPeFtDwhkwh4CwUKs4fBH3dkJgQS9oXUFzIuRCTvAV
-         wz10ylaivnJCsis/1BoziUFwpkgIXGHitA8M5eSFjzZ2tVIZ5zMWatWzwaCmwmELkutj
-         aVZA==
+        bh=MK9Ce7LoyUpoHVdDI0Q6deRxLh9svgL/G7RdzcTDYaQ=;
+        b=LySUeIdtlIdpu5P4Kgo82re6kq4R6LXSHS8u8/LBIhHqCR82KIlhMlw5ymVaJpi70D
+         S+3hcT5ACjyUAC7ydHn+LbSTc8PYmMxWqbMHJOJZd09rbrTyxpGMKOy/FJ6TwGwawUO3
+         3gdBQg8cwgg+i7TwUr30ShHh8R9d3/c0tKmRTdBQ3UNP3FI2MQc0vwPloZMwM7C0R/y8
+         QDY+Cmg+3Jvoa6OPYSJdPzf1T8dI0MVldCHrlCW3jW0UvO506xUDHdLpqow7PADPcDLJ
+         a1uw6AJqUjW6Lqqxn0rDd+ilQCOzzhdDNxNQToiQPzqKUvFVHZQE1xQZ6FTnKxmmWNUi
+         ZdnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=hZ+XWT7x3GIrVuC5smdu5kaGnAEgwF0jVXjRtih1Jog=;
-        b=L0YUelUABC3ysMi9YTMAgQjmqyOFq/+xnP5iw6edE0Ydvl/4xU+4gyCalck2ibfqXr
-         1RxPvCdyQ6tqSEbNKeeUatjnSvrJTKoeglaPpOPM9HSjStc8ZyVPZFBSbOKyf9WIIZnQ
-         3zpQDBTbaIgJtv3NpKRL8WP9KsrgB7gzksR8yIRLW8WfYAD4pMepVq75Bn8915u3I+U5
-         QF19W5kCqHXtdvO9da2EbPxPfBOS/S7BqpYmFqRAmiX0Uscd/Gaa914V+c5V/CorJlKY
-         ULsquKUkR5yL3z3/8rlgYn6sXHbaMMeGQ6v1s9u7rrhdc/ZWJYWCu/ewPVTtp7ohTGMf
-         l+9w==
-X-Gm-Message-State: AFqh2kqNJ5nmtd2DnxWjPr9+g6y/HdPJqV5W4AhQN7Ng1C1z8JeMVdLo
-	u/4nJV0K5djMbSKFXrkmOTgfcCxC2lj6lMULt+Al4A==
-X-Google-Smtp-Source: AMrXdXvqJOlDJST3w87/gr/ZwRFOMtImwLKSDqGCZTr2eYhDs7UWmBPmEUcE54nfAXRo5cLYHmUUvd9VLSwpRS2TOrc=
-X-Received: by 2002:a17:907:c243:b0:7c0:e391:c548 with SMTP id
- tj3-20020a170907c24300b007c0e391c548mr5314680ejc.18.1674659200062; Wed, 25
- Jan 2023 07:06:40 -0800 (PST)
+        bh=MK9Ce7LoyUpoHVdDI0Q6deRxLh9svgL/G7RdzcTDYaQ=;
+        b=E7XbrDskw9zSxcJzyBG1D82RLJzMql57+2IOp0ASiHhKBGCMl771JDsbSEFk38xSgy
+         v0ynkUaiRAtFTP44k9pjhbovatJYeLERFnLVp9s1FPBokeEuFlsNbcw3kHkrJHJSXphS
+         dD+K2rXGSJVwiI1fmwFhm/RxC9UD5MRhw9SM3GncmQd3gW3cWSmQ23jN2kprI2M1Y0G4
+         rsBeyRSbfYmWuEdF7V0FARQqvRuayvBYh63ZuVNcynwqeCH5yqOTniIGKNY6Y8c+S17H
+         O7eZbWEscF1xXktGvgSqF2U9+o86DbbHLf0A3uOqBpm7JbadJCxOPJko6YbTEj9cmvY8
+         PczQ==
+X-Gm-Message-State: AO0yUKVw2gsPfggouD4oIZvCKFWcOsO+xIOOrFlLCg2f8lQzl1ItEzHD
+	syafX7p9OojIEsrrHmDCzHZFiIhO5MuLQxlL0LWJHg==
+X-Google-Smtp-Source: AK7set+/d6h1+icdov+3bpJCPxwXk9ybBiTH6QptRDsERwtuuR1OBU2F9WB1DSqGNVJB0APKd2JKhc35tLg6EYBsWtg=
+X-Received: by 2002:a05:6402:d59:b0:4a0:90da:4653 with SMTP id
+ ec25-20020a0564020d5900b004a090da4653mr768644edb.153.1674659489645; Wed, 25
+ Jan 2023 07:11:29 -0800 (PST)
 MIME-Version: 1.0
-References: <20230124131717.128660-1-bchihi@baylibre.com> <20230124131717.128660-5-bchihi@baylibre.com>
- <5dd5c795-5e67-146d-7132-30fc90171d4c@collabora.com>
-In-Reply-To: <5dd5c795-5e67-146d-7132-30fc90171d4c@collabora.com>
+References: <20230124131717.128660-1-bchihi@baylibre.com> <20230124131717.128660-6-bchihi@baylibre.com>
+ <80ce4ea3-6ebd-c249-45bd-a2f04343690b@collabora.com>
+In-Reply-To: <80ce4ea3-6ebd-c249-45bd-a2f04343690b@collabora.com>
 From: Balsam CHIHI <bchihi@baylibre.com>
-Date: Wed, 25 Jan 2023 16:06:04 +0100
-Message-ID: <CAGuA+oo6dV=Vs69PMPSpBSdqDa2ESHjiTzrH_ZYAyUgVmq9HJw@mail.gmail.com>
-Subject: Re: [PATCH v11 4/6] thermal/drivers/mediatek: Add the Low Voltage
- Thermal Sensor driver
+Date: Wed, 25 Jan 2023 16:10:53 +0100
+Message-ID: <CAGuA+opCcdbPbasadEFbKw1nSy-kbK3WzKG=wXn6dtzynjrY1Q@mail.gmail.com>
+Subject: Re: [PATCH v11 5/6] arm64/dts/mt8195: Add thermal zones and thermal nodes
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: daniel.lezcano@linaro.org, rafael@kernel.org, amitk@kernel.org, 
 	rui.zhang@intel.com, matthias.bgg@gmail.com, robh+dt@kernel.org, 
@@ -75,8 +74,8 @@ Cc: daniel.lezcano@linaro.org, rafael@kernel.org, amitk@kernel.org,
 	khilman@baylibre.com, james.lo@mediatek.com, rex-bc.chen@mediatek.com
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230125_070641_464088_C061FAC4 
-X-CRM114-Status: GOOD (  15.13  )
+X-CRM114-CacheID: sfid-20230125_071133_952343_D9645A26 
+X-CRM114-Status: GOOD (  12.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,44 +90,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 24, 2023 at 4:31 PM AngeloGioacchino Del Regno
+On Tue, Jan 24, 2023 at 4:37 PM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
 > Il 24/01/23 14:17, bchihi@baylibre.com ha scritto:
 > > From: Balsam CHIHI <bchihi@baylibre.com>
 > >
-> > The Low Voltage Thermal Sensor (LVTS) is a multiple sensors, multi
-> > controllers contained in a thermal domain.
-> >
-> > A thermal domains can be the MCU or the AP.
-> >
-> > Each thermal domains contain up to seven controllers, each thermal
-> > controller handle up to four thermal sensors.
-> >
-> > The LVTS has two Finite State Machines (FSM), one to handle the
-> > functionin temperatures range like hot or cold temperature and another
-> > one to handle monitoring trip point. The FSM notifies via interrupts
-> > when a trip point is crossed.
-> >
-> > The interrupt is managed at the thermal controller level, so when an
-> > interrupt occurs, the driver has to find out which sensor triggered
-> > such an interrupt.
-> >
-> > The sampling of the thermal can be filtered or immediate. For the
-> > former, the LVTS measures several points and applies a low pass
-> > filter.
+> > Add thermal zones and thermal nodes for the mt8195.
 > >
 > > Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
 >
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> You should change the commit title to reflect the same syntax that you can find
+> in a `git log --oneline arch/arm64/boot/dts/mediatek/`.
 >
-> On MT8195 Tomato Chromebook:
-> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> arm64: dts: mediatek: mt8195: Add thermal zones and thermal nodes
+>
+> or
+>
+> arm64: dts: mt8195: Add thermal zones and thermal nodes
+>
 
 Hi Angelo,
 
-Thank you for reviewing and testing it.
+Thank you for the review.
+Should I resend with the fix?
+Or you would fix it when applying it like Matthias did for "[PATCH v11
+3/6] arm64/dts/mt8195: Add efuse node to mt8195"?
 
 Best regards,
 Balsam
+
+>
+> ...otherwise:
+>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>
 
