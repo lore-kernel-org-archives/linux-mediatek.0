@@ -4,71 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A8D5C05027
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Jan 2023 15:34:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF4AEC05027
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Jan 2023 15:49:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uhouNw3IZj+0qfRSizZm4RYM+Wc2mkA2I42ElWlMfk0=; b=yHVC0hL7wdvt12DKfdlLIolTFK
-	8cH1Pc0Z43sR/bxHvi7E48qtmUEsLWZDzEMYAP7MWdCb772+9M3hVGv61mqQGSyUUbAK9PEXAwm5K
-	VVV9ty8qEtiKiuJ49LoaGhOy+AufAPVfD71BE9Otmbu+6z9ckU632aFMF4XbATJlFTpS5MpzbkjLb
-	c5/MiwWOaF2xzM2p3MOvFSKEYYfv/HZsOqBYzrEuwZO4H9/Eks7FpYQNzX9Z+cdsvB0jBbkImQoWj
-	HzG+eOrthPcH0wOBixJlTqhaNhm0i0F+3fsZOJR8BBX1CzrgjdfQnblbV8zJw97vb7U7MQXlctRAP
-	E1ZYzyAQ==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zAB4Qb1ufLF8DugBk2OJpjahUqc8w+2oka2zLrtWcME=; b=u5SG/MNFMzAqp0dyJNxZF5IObZ
+	5/Ytx5T+8m58CbSUMZzkdaIwpD8W7pHR4c7GZ/f6Bh0E9WZOQeVf2f7de7b1a1O4mQJ9pv5LAUqDy
+	v1KfirqtpvZb8/5Mp5xxfEvXOBTXfd+bLTJxnNEdf7I/qdZUcaQbfzovWrnQ/v4t98UoL6ZkPaSD7
+	N1C785K3hRl50t/afAF/4aFUHatCmWQHa4NYYua35vqlFbia1vVwVl5wGxLMEjNnnDudNMBArqzui
+	yNGwhEwn3wF8Z+o2PbdxHnBuRwXKT39dZ3i/RdbCWa2UoR9ecwhc/W0/vrKg07rIUSa/2RAO1GkJ1
+	Hvakg+Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pL4Gp-00BYKb-4k; Thu, 26 Jan 2023 15:34:35 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pL4VL-00BbeZ-TC; Thu, 26 Jan 2023 15:49:35 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pL4G7-00BXy6-8d; Thu, 26 Jan 2023 15:33:55 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1pL4V8-00Bbap-Dy; Thu, 26 Jan 2023 15:49:23 +0000
+Received: from notapiano.myfiosgateway.com (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7C93C66018E4;
-	Thu, 26 Jan 2023 15:33:46 +0000 (GMT)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9FB3B66018E4;
+	Thu, 26 Jan 2023 15:49:19 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1674747227;
-	bh=VnYSm26lDjICpca46d2eb6U+0j18mBaNjiTo5MgOy4o=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=atQpLK2zMnpEBIfIlflQpObHLU42AH/Wn7iusq6aqTlmUu6cjjl0IBEV0aHmiN4Ep
-	 gY5FCtFYMbjCNjQO7zrslGyQO2lROC7eAcVcR3BJWrioq06mkW6g0HTQQPZ6SrzAPB
-	 KfYOOAMv5T01Ka+CIoHXVv7irJ80exyDOO+fx4Sub/L1DJRzD7/UcdlXLdLZ4jROBj
-	 SaITmcxYb7AkeqoBcUYewXXq86LcP3HulhJ9C3OjWfDFlWt1Q7a9/U+yy/EAJs3hfx
-	 kBlrtDH+HxXDZ97dP8m62frujitf9Q4v8Tp5SezPWGD4tPkkgY/i2iqjqNy1xdq7Wd
-	 XL/kC3G3gthyw==
-Message-ID: <07eb3c04-c365-4ab2-7137-5fb37e4505c3@collabora.com>
-Date: Thu, 26 Jan 2023 16:33:44 +0100
+	s=mail; t=1674748160;
+	bh=g+Oj2+JQl5wV7jLxmGEkz6OGP2VZYC0NvlMxCkm94xI=;
+	h=From:To:Cc:Subject:Date:From;
+	b=asNQ0b0J1MLwPOIKDgPcba2oKj8VPzWFySGYMeZFS8KXv81NvKSKdOlAwDaweFTjk
+	 vf1rDfJwrlGAFnT5Ris2KvNGn6aVkWQg4bup5voNDOm3yh4UC8RtpEIwc4VRhuXSOV
+	 w0piSrktqdluSHKbi/buQUzpzrWpO82PqNTZ81sNMfJ4fdSRSNid1YmbYyw/EfOoz2
+	 JyfKeOXknVh7QF7/V42/sgDiPg1MBlLJA2LutnNMz9qpHdwMa2vDfvC+QQJyG5d6xR
+	 bxH3pFa3mV7WIy6dtQrE0UeoFn0ocCPA/w7JWVcLHzZdo0+qjpvgoxo/Yb3z5nmiI1
+	 8S0GFoynrGqpA==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	kernel@collabora.com,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-pm@vger.kernel.org
+Subject: [PATCH] cpufreq: mediatek-hw: Register to module device table
+Date: Thu, 26 Jan 2023 10:48:56 -0500
+Message-Id: <20230126154856.1322193-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.39.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v2 2/6] dt-bindings: clock: mediatek,mt8186-fhctl: Support
- MT6795, MT8173/92/95
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, sboyd@kernel.org
-Cc: mturquette@baylibre.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- edward-jw.yang@mediatek.com, johnson.wang@mediatek.com, wenst@chromium.org,
- miles.chen@mediatek.com, chun-jie.chen@mediatek.com,
- rex-bc.chen@mediatek.com, jose.exposito89@gmail.com,
- linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com
-References: <20230126085321.87267-1-angelogioacchino.delregno@collabora.com>
- <20230126085321.87267-3-angelogioacchino.delregno@collabora.com>
- <4bcf8191-fe6a-7229-9ebe-a79cebdce87e@linaro.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <4bcf8191-fe6a-7229-9ebe-a79cebdce87e@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230126_073351_577384_BCE5A3BF 
-X-CRM114-Status: UNSURE (   9.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230126_074922_626246_0D0692C1 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,25 +76,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/01/23 16:32, Krzysztof Kozlowski ha scritto:
-> On 26/01/2023 09:53, AngeloGioacchino Del Regno wrote:
->> MT6795, MT8173, MT8192 and MT8195 support Frequency Hopping: add the
->> compatibles for them.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
-> 
-> ... but you already had here an ack.
-> 
+Register the compatibles for this module on the module device table so
+it can be automatically loaded when a matching device is found on the
+system.
 
-Honest thanks for that. I'm sorry for missing it.
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-Regards,
-Angelo
+---
 
-> Best regards,
-> Krzysztof
-> 
-> 
+ drivers/cpufreq/mediatek-cpufreq-hw.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/cpufreq/mediatek-cpufreq-hw.c b/drivers/cpufreq/mediatek-cpufreq-hw.c
+index f80339779084..115b0eda38c1 100644
+--- a/drivers/cpufreq/mediatek-cpufreq-hw.c
++++ b/drivers/cpufreq/mediatek-cpufreq-hw.c
+@@ -324,6 +324,7 @@ static const struct of_device_id mtk_cpufreq_hw_match[] = {
+ 	{ .compatible = "mediatek,cpufreq-hw", .data = &cpufreq_mtk_offsets },
+ 	{}
+ };
++MODULE_DEVICE_TABLE(of, mtk_cpufreq_hw_match);
+ 
+ static struct platform_driver mtk_cpufreq_hw_driver = {
+ 	.probe = mtk_cpufreq_hw_driver_probe,
+-- 
+2.39.0
 
 
