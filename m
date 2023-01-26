@@ -4,65 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20D47C05027
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Jan 2023 13:22:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D304C05027
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Jan 2023 13:40:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZPvdfbiaBnzPJfah4ONGzijXEOAUS2p3wuJaFvaEGQI=; b=iJQPH2PkCAJBHW1FBcBocIeWgW
-	JOfcxr3808497cm/FOoVOfVtc/nMWn3cbw/GqoXcERI4C/PULGneG6tOeNAI5pdrqsy9lzIqekn6/
-	dVPyclxFmfF+oxD4tbKZmm2kqnDkA2tAcJjINUnCX7CCpbITmmmDYoGY1v/gckCzQxTEY8Rc3qnmS
-	1lxREBcx8VHGvt/vr3CZr9InLUXgRQ5swPGsW4Vk83uf3vIeQ/zIZnLW7scA/TvJivUXLvkiiZX9v
-	59kjsspjP2N9Z1dWzqEGNuxkYVZ+Bu8Xnjifn5j6vttsg7iUKjo2O0f0HAfHssIQC/+cy1j0iFgvo
-	qtaPBlow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3nA2n2CLTUWJ4vD9ZGbE+UeuAneXwldHq4cRkGDvQzA=; b=SE9H1SysxdLa+HmwtBT+eKPQ7d
+	5qLKtf8MdOlLYcvwP93sGanwjPkw6iyQH8cBZUsm+wUv6NosyPNyphv4gWS91tL7TpZYHOj8ohtz2
+	3J84WWY1knMIJWRoe/W3JHvl24/hOJzltD8A9I2wWaPN6HGH9c0g0QIEpCmDDfuXkwR9iLREHYzf2
+	soSnoBGsAepjg3rTHoST/qQVimpPj5wNnYsyDgdmLEnd62+5mPgAyMqMANRIQWj0x1F8kpSRXi+0J
+	SVUbNUetLl+3CJ2zMHAK03qoU6QnYKJKlIM/AZyZV6h6xVNVlsAnj8MikYdyg2oDKUzZ4TOcv0sYz
+	MI1sW+vA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pL2Cp-00AvPP-Ci; Thu, 26 Jan 2023 13:22:19 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pL2UO-00AyeR-OD; Thu, 26 Jan 2023 13:40:28 +0000
+Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pL2Cm-00AvOi-Vc
-	for linux-mediatek@lists.infradead.org; Thu, 26 Jan 2023 13:22:18 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 23F5C6602E70;
-	Thu, 26 Jan 2023 13:22:12 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1674739332;
-	bh=PFjk7Lwomgg5i2CpzGsGjt10RBQ/x3BeqMztijLbhMw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=L1rfx53K/+HWdvL1cFrlzGxZv387Xj8Ya90h3fuTz4wMoksDSXelcJszna55ZhRbL
-	 g4USt4nnYYxPHhEAHfCu8fQxK6Q8cfPl+A1FEMKC1MUNkbEBBYVhYcbM8hsLjRQmtc
-	 J0aHr59lUYz6GUfuZrH5I6yJAoJtJEV1kr0aGGPtn94D9nwsBgUYIRvQ31PffMO8HF
-	 EkgrUEk2lau+3IpH6suc9ngYFTg6cp5dWk7CbOnYXPbiTCRuHZdmcikQmU8lD5e12P
-	 7kFZniCswiQV0vwKifCAMoeMwEEnuTWVZ+GzvOCW11ZOkxyvrHGkZy8ULBaUAyBpfp
-	 a0PFtoVdaPJmA==
-Message-ID: <6f376bb9-2f44-b705-6843-795c0c1da742@collabora.com>
-Date: Thu, 26 Jan 2023 14:22:09 +0100
+	id 1pL2UE-00AyZY-CI
+	for linux-mediatek@lists.infradead.org; Thu, 26 Jan 2023 13:40:19 +0000
+Received: by mail-yb1-xb2c.google.com with SMTP id b1so1939074ybn.11
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 Jan 2023 05:40:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=3nA2n2CLTUWJ4vD9ZGbE+UeuAneXwldHq4cRkGDvQzA=;
+        b=h0d4/uB92ODoYzrZYmaVvUG1jvcTVC84b3cuC4xSkz94COWEqsOOr2IBowpVl0CpDk
+         6KzGggs+wRnLPePErIKjd+MObcWfYQbK5L7NhK8ilrbc9pL/EFAA4EQCKIk77bKIOEHh
+         P1q6wpH5pEuZZlVhMn9HMwfam7xVBuXARvfmkydFab+Hop7ms/oR01SaVcGEi8rWPCM4
+         mmE/TS4q48Lh9ZHr9oiqRtEoRe8n+NKmk1P3xds7mwVwfXG0lJnz2UDQOOrfNp1h23V2
+         DZQdPjse3MNVv2wq4ZgH5q97Fv1fknuS1qlKoQnW2UF0CzhzQvXorkqZfFt4FUkQCQ6r
+         +0jw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=3nA2n2CLTUWJ4vD9ZGbE+UeuAneXwldHq4cRkGDvQzA=;
+        b=RH/LTrNdQCk1jCdyMN5+YMgulOKGXsiBxoE6qNK72xqhdAqyLlX/L/6wMcwkEUXWtk
+         Gebh0BWESJKGLNFMq/vv7XGwZ6jsv4uotNZoh1oGEyhkaDknmO1HWG4KeTDuDGaQgtwM
+         y+76FPZDliXS9lkn/V76p9/k2rmbvIFwP8crMEJOrv//tKHMf+8MRlg765Jm4hWXeZQh
+         e2+VxviyjsTLPFQAWlPGTQ4XMqZJCYeFfqY4O/145JYRal1gRvOU0r54DQcHLRz2abu7
+         1uUgelCj+0geVWgzMZfViNPMWln3RRT83+EU/+MmKFa3qwpYIkNdskRsnA/rLiS3drEE
+         AR2A==
+X-Gm-Message-State: AO0yUKU5MNP/xnNwTatJnyOrm3Xax2t0CPtMCLsDiq9DXsVj0mEyoZHU
+	d22jThfsi05MBX9Yg23D0D0Aw3NFpdsvDw57LrWySw==
+X-Google-Smtp-Source: AK7set9S+ZAAT2EmYO2ZCACuwdKqYiWYHVPGt2d1pERtloAf8IObExq0V8YgsRI5XkikpiXSbqCjcrnLxbhCxfYYD2Y=
+X-Received: by 2002:a25:d884:0:b0:80b:66c5:9fc5 with SMTP id
+ p126-20020a25d884000000b0080b66c59fc5mr1253612ybg.210.1674740415100; Thu, 26
+ Jan 2023 05:40:15 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH] ASoC: mediatek: mt8188: remove some dead code
-Content-Language: en-US
-To: Dan Carpenter <error27@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>
-Cc: Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Trevor Wu <trevor.wu@mediatek.com>, Yang Li <yang.lee@linux.alibaba.com>,
- alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
- kernel-janitors@vger.kernel.org
-References: <Y9JHSwcfdNcfMjjt@kili>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <Y9JHSwcfdNcfMjjt@kili>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20230118062036.26258-1-Guodong.Liu@mediatek.com>
+In-Reply-To: <20230118062036.26258-1-Guodong.Liu@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Thu, 26 Jan 2023 14:40:04 +0100
+Message-ID: <CACRpkdZ626h9zzj8zjtqzVVp9=icRCzUts7+_SuUiuBatYBzcw@mail.gmail.com>
+Subject: Re: [PATCH 0/2] MediaTek pinctrl cleanups and improvements
+To: Guodong Liu <Guodong.Liu@mediatek.com>
+Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Light Hsieh <light.hsieh@mediatek.com>, Rob Herring <robh@kernel.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	Zhiyong Tao <zhiyong.tao@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230126_052217_173735_5F84D92A 
-X-CRM114-Status: UNSURE (   6.32  )
+X-CRM114-CacheID: sfid-20230126_054018_445941_E72ADCE7 
+X-CRM114-Status: UNSURE (   7.18  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,11 +89,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/01/23 10:26, Dan Carpenter ha scritto:
-> We know that "irq < 0", so delete the unnecessary check.
-> 
-> Signed-off-by: Dan Carpenter <error27@gmail.com>
+On Wed, Jan 18, 2023 at 7:20 AM Guodong Liu <Guodong.Liu@mediatek.com> wrote:
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Guodong Liu (2):
+>   pinctrl: mediatek: Initialize variable pullen and pullup to zero
+>   pinctrl: mediatek: Initialize variable *buf to zero
 
+Patches applied!
+
+Yours,
+Linus Walleij
 
