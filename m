@@ -4,77 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5E59C54E94
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Jan 2023 13:42:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D38A8C05027
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Jan 2023 13:56:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tpcudo7gJTTbbuTXM+JjARhwoG+S0cT/6fCk8EgJ3Lc=; b=rrzaCrCCPMpXSqlz8qMOOFU+XC
-	mDZJcmf/Vv6pC+F8v3DL1xtNAyvxxe8ACyHapLwLs0H7freUma1slhrRIOzb1AFkMBWd4wNfYUJo8
-	3aGAp9xondhGIAJRFBCWqiXbcz8T1R1iUrEG8ya45naQ0ha4MRM7iVj/uTo/TcVUo+9MszsW+8Dnq
-	AJQ0go61MKty+DziJLKuZvZ8SXNeAzFJ5UnR2/ZcqtAUCx3gGrsW2tvc0fK4vRUzARw190ccZtdG8
-	N5ELgT8XduqU4nYL4WI0vYBEhaNO2eY/DrpNQRv1IS2IMmtWo/jL4tcv2hK282wlCKQOPzV3Ew/8Y
-	8fhaxfXw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bpuj4csXn4X99vb3I/8s21NoXDHeQ/0SUOopiJHmpcA=; b=2y4Alrar2g/JOukaKg6pQRIDTa
+	717LnxFYGzP4KeMv3g2lV9wnME8TZ8kdH5OisVu243PGMIdKvOAymo+Hai4XGWRz68WMU695i4dHR
+	rZys2ALX/2E99a7zqad3Fxi9CfqGz8T3Ay3+ioLpq/3dJT8Yuw4SMLkekxtatwaCP62gHiUsuAQoh
+	vh04h/HN0BounQnLSNL7VkjwP93LCcpD8DEOt1VWkWV31DdmUHw2THGVcmnB64rVR0OqVs7aOaf3z
+	NQZG90FAEJ1mQX/DDjHBj9OoGh2Mdc7j7cfA7BshuLRth/FlTwGM/61mtG4LeXF+5h81/AY0ZfMwq
+	5lA9/a9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pL2Wh-00AzJz-3i; Thu, 26 Jan 2023 13:42:51 +0000
+	id 1pL2k9-00B4F4-G0; Thu, 26 Jan 2023 13:56:45 +0000
 Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pL2WR-00AzD9-Gq
-	for linux-mediatek@lists.infradead.org; Thu, 26 Jan 2023 13:42:37 +0000
-Received: by mail-yb1-xb2b.google.com with SMTP id x4so2001457ybp.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Jan 2023 05:42:32 -0800 (PST)
+	id 1pL2h8-00B2jr-P4
+	for linux-mediatek@lists.infradead.org; Thu, 26 Jan 2023 13:53:40 +0000
+Received: by mail-yb1-xb2b.google.com with SMTP id p141so1980226ybg.12
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 Jan 2023 05:53:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Tpcudo7gJTTbbuTXM+JjARhwoG+S0cT/6fCk8EgJ3Lc=;
-        b=NK0yPEUk/K6ONN9dNsc7JvUHaQ170Ni3OGZnighVNStfLllS5t/BteesuDgU0TUPjq
-         1JibIBpLF8B3H1QqiDDXr7Q2PvxrlVdt/PFFLxLQLlJNmaMMQUwl/4FFyDSzzGZDieKV
-         iL2rMydR6smmLgq9A0pnwS+2Qv15DqPrzx0oquj/Fdj02FgmAVcSvQrLcdw6GuzV6+CZ
-         lpN/PSxKvls8df7RSa6ZFYyCSlf513RU5e5D4rLwxCUoF6w6NQrFlcf3Go95U6yWnpcL
-         llWWxEfozzz30onyyGQpyx2Rz4bw2DdH7F8h8rRFdb/UMgmY6UUSy2yM0EBBAn/3Pcz8
-         y+sw==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=bpuj4csXn4X99vb3I/8s21NoXDHeQ/0SUOopiJHmpcA=;
+        b=T1OCixkhNVvyqIZG02I05yLXMmu0eRtoy7a1SbHSvmaUaNSxhw1D3/LIvUbLquayXB
+         yV+BtLGzuQfszCSBlQ9R2P2LmFDhBpW5QHj6vNoet2lRvFj8mHM/2tGpoJwDJnX6vfGq
+         9aG1wkd9GjOd0Qo5EMgr5y9lhqsZraSPNFYsOSMgJ90jdp8NZdl4VDBVh7+UXOdvYoUv
+         aLPu8JIpl49wnMfa+jFlLrcWSoWGWtDdAWA31H+OqdURvRn2fO1wKsC98OoirxOfs102
+         psM27Q4jO2ZFe+Mw/uTheQ0YXYL6e1JXsDMIYsioyjJA6+a0xudWPVol+9wiSlfZMCqZ
+         1Ykw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Tpcudo7gJTTbbuTXM+JjARhwoG+S0cT/6fCk8EgJ3Lc=;
-        b=3vpLMSLMeEdlpzSdFdV4PNsFR8M4levMaZi7xcQyflkiFXOTM6CGQbFep4lrBkWEWS
-         U0F6tCFUoe5aLkjDkPYyw5dsqaqQaVxYIvLERC8Yda6ztY9sE4VAaK0qj56e7QRv4D9j
-         4QKg02eHG6jRbuTzCn+WaYFwUXzAg0E6nrRMt89b7i/uTunCJCcZmPUTO9WNI/NcVvfX
-         flY+q5la4Frm928c/wwaQkvurHfP6WKxYznLbd97swKjohaDusIVAFIMKCdRsPrQJQiz
-         nmFanauJO+J8KMcLdrTJXQ4SlGjE26Sm9cnSSKn4VjOYTSP8M0V5tyqmUOgRAj2SWGz9
-         YDfA==
-X-Gm-Message-State: AO0yUKVq3H4MoLtCgxR1aBCLqk4sl6NurAWnTXNpqf/Wpb7x8QTzVR3f
-	bQSSk0lfsrdphOFBTfv03309L1hOMzoKm7ebKewUlQ==
-X-Google-Smtp-Source: AK7set8QbLRvblkAO9Y2WdUOE4AoqHwyG/MzmEgbUt/H7gmbHQ71M9dyBUWLCRrIyD1+N2KqvKysQXtvT1Hqg9ksT0M=
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=bpuj4csXn4X99vb3I/8s21NoXDHeQ/0SUOopiJHmpcA=;
+        b=XzLlfzcHczXe78MTScs7WYDts+60S0AfdEGIOf0ny2EhhF+GwY98PgtEt9FcWikFwP
+         lB2hYoyB7TwQOo6gWcdv2oQC/HresXh0ipxxi+ZtnGgdOIt4c05OBVpHgXgED/RCJpW3
+         fTEJbkNMNfQ+9iA7TSu/DspOP/5QoALDAto2Ri072DBXUGAVu11qgzPc1qJmNfkMnxe+
+         SvJja78/L/tBMc0tUOu249O5hIapec0tDUWQKWUIsEriM0Zzalekwyw4TVXOlc5GyNbw
+         h84AJZ1kXDKO3tvwPDOFzPG1nACsRQHuLJurrCBfSHMB0Os8StussJau2y98JzeHTd09
+         VEpQ==
+X-Gm-Message-State: AO0yUKVhDs5JvaDL+WU9Y70G5hcUhePsnc04tgRkdbUa6Uih9KTINq17
+	WwvQ+Br7CK79Swz+MtA0JRmsBwvGLWxJN8J4GvNWmw==
+X-Google-Smtp-Source: AK7set9K8VEvJWIIsQbzLpHPBdIj6YRdDIIsA2XTX+4WAVIQ5O4wlEhz7CX7+BOEhoz7cif/nbeZ9U+rSHTl2iHnGDQ=
 X-Received: by 2002:a25:f81b:0:b0:80b:821f:b621 with SMTP id
- u27-20020a25f81b000000b0080b821fb621mr750152ybd.24.1674740552288; Thu, 26 Jan
- 2023 05:42:32 -0800 (PST)
+ u27-20020a25f81b000000b0080b821fb621mr752679ybd.24.1674741217835; Thu, 26 Jan
+ 2023 05:53:37 -0800 (PST)
 MIME-Version: 1.0
-References: <20230118062116.26315-1-Guodong.Liu@mediatek.com>
-In-Reply-To: <20230118062116.26315-1-Guodong.Liu@mediatek.com>
+References: <20230125143503.1015424-1-bero@baylibre.com> <20230125143503.1015424-5-bero@baylibre.com>
+In-Reply-To: <20230125143503.1015424-5-bero@baylibre.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Thu, 26 Jan 2023 14:42:21 +0100
-Message-ID: <CACRpkdZeRPaYN2aN=kBskkLJ0VjFCRZc8ccf0bBW+0sposVn7A@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: mediatek: Fix the drive register definition of
- some Pins
-To: Guodong Liu <Guodong.Liu@mediatek.com>
-Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Light Hsieh <light.hsieh@mediatek.com>, Rob Herring <robh@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	Zhiyong Tao <zhiyong.tao@mediatek.com>
+Date: Thu, 26 Jan 2023 14:53:26 +0100
+Message-ID: <CACRpkdYMif0--zeKe-tccUJvjiQAkbzBq2nCYMS8qU_imZmCmg@mail.gmail.com>
+Subject: Re: [PATCH v9 4/9] dt-bindings: pinctrl: add bindings for Mediatek
+ MT8365 SoC
+To: =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>
+Cc: linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-serial@vger.kernel.org, 
+	linux-usb@vger.kernel.org, robh+dt@kernel.org, 
+	krzysztof.kozlowski+dt@linaro.org, tglx@linutronix.de, maz@kernel.org, 
+	lee@kernel.org, matthias.bgg@gmail.com, gregkh@linuxfoundation.org, 
+	daniel.lezcano@linaro.org, chunfeng.yun@mediatek.com, 
+	angelogioacchino.delregno@collabora.com, nfraprado@collabora.com, 
+	allen-kh.cheng@mediatek.com, sean.wang@mediatek.com, zhiyong.tao@mediatek.com
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230126_054235_600761_D8C6E33E 
-X-CRM114-Status: UNSURE (   8.44  )
+X-CRM114-CacheID: sfid-20230126_055338_849530_E8B592BC 
+X-CRM114-Status: UNSURE (   7.90  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,17 +95,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 18, 2023 at 7:21 AM Guodong Liu <Guodong.Liu@mediatek.com> wrote:
+On Wed, Jan 25, 2023 at 3:35 PM Bernhard Rosenkr=C3=A4nzer <bero@baylibre.c=
+om> wrote:
 
-> The drive adjustment register definition of gpio13 and gpio81 is wrong:
-> "the start address for the range" of gpio18 is corrected to 0x000,
-> "the start bit for the first register within the range" of gpio81 is
-> corrected to 24.
+> Add devicetree bindings for Mediatek MT8365 pinctrl driver.
 >
-> Fixes: 6cf5e9ef362a ("pinctrl: add pinctrl driver on mt8195")
-> Signed-off-by: Guodong Liu <Guodong.Liu@mediatek.com>
+> Signed-off-by: Bernhard Rosenkr=C3=A4nzer <bero@baylibre.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
 
-Patch applied for fixes.
+This patch applied to the pinctrl tree, decreasing the depth of your
+patch stack by 1!
 
 Yours,
 Linus Walleij
