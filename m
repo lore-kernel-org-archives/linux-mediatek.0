@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3C83C27C76
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Jan 2023 02:23:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 179F0C54E94
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Jan 2023 02:27:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
 	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jjNAM9W4SZ5gfByDEKlMibipoR8UaW3FD3evdIXnCIE=; b=F1lQvkKU9itehH5BNRAQ/9oWeE
-	qd/HE7UDi0QbNF0yRHwGPZ+MENlwTSwgLIO6ohTfbQQW8yvm92rqFKbyPUDQ5cSS8ESr7B31gVyUo
-	sQNvUOS/RJxxJVDwhgFayrubRhHFLwDD7hkQiLvyDWjXA9QqgTuRoRem3MPHzP6w9ISYq9ARmewac
-	9ynTih3N53CgNyCMfEi3Gvvc59uGqLQlshffjzjyY6m566fg4lIbghJKfbuJK2ofdDoTr3/nkK3WD
-	KxGgOkPVI43Ixi4qcxzWe7aDPB5Himc21eYLmmXiMs8Wbzj3dFXQL6BesXP6O/IuGrg4BLG5VVHF+
-	2jlzc7MA==;
+	bh=hRqabsnyUFGuScHCJ+vG+5iY/BKBmahVGELxsL9cqVI=; b=SRIO+ILOdxRiIojIeoqKWtxxaF
+	d46cWmj32KWw2Y2x6kEGQOOLBPxZ5P5GVLZM4m+j4l04FnIAMNnxN9rrA5oMPku+/bJ2xDZW37mBA
+	7gL8aUbPaEfAx09qkN/aWOVpoq5nxQbQ9Z2ksXlXL7KIX189QVpZitxtxyc4us37fYNtmFZWsTki8
+	LQFcEgMmITPEnErZ8AeXJHbc95VyIvcEn2LAoXTfu5+LW7lj4AWjergSrWs8JddUmvGfcagtnq5hw
+	z5GbmgzXzhNbkBZiCZR5Yf+Y0p+cWQ8S9BySTbMbq6FEjjfqpczCJqrHcHBtLfYcqBFRT/GQSpT60
+	sIJUpfJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKrvI-009ROm-T8; Thu, 26 Jan 2023 02:23:32 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pKryX-009S5K-7w; Thu, 26 Jan 2023 02:26:53 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKrv7-009RML-EL; Thu, 26 Jan 2023 02:23:23 +0000
+	id 1pKryK-009S2g-Vb; Thu, 26 Jan 2023 02:26:42 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id C43B4B81CBE;
-	Thu, 26 Jan 2023 02:23:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A29EC433D2;
-	Thu, 26 Jan 2023 02:23:18 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 06B1661588;
+	Thu, 26 Jan 2023 02:26:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 545B6C433EF;
+	Thu, 26 Jan 2023 02:26:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1674699798;
-	bh=ZSHEoYMnXHm5rkWCg89TQMnpvhrOeO4EoBPI9C32P/Q=;
+	s=k20201202; t=1674699999;
+	bh=hRqabsnyUFGuScHCJ+vG+5iY/BKBmahVGELxsL9cqVI=;
 	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=a0Y08YUGIL0u2+uGVr7wDmGY+mI+09SavJyLiLnrXvZgHXmBEO2WcHtIZcoN659PU
-	 kCgf5ywphPR99bNZFEurh7Ooye0RrfL2e1dBq3vNNh0pGGPIBR/BZhSWjR6P7hikmf
-	 jGSBxPG4diXM70dt0DVFNnQjsuQx4zr1ItiyITfhJifqifyW61vY8PwB9xdit8RfGE
-	 nU7tkNfvGsMaapGiLoRLCYn6Mcek9XMSzpJXeovPMM4PggJY2DnYxOoPNwi/ABerjV
-	 Z7NH7TA0+wXR84j4lv8ygILN512Q0+BeeXznOEkGWpngCopDTa4vpgu3Sxs8H2GSRq
-	 4Zv0T6y3HSbRw==
-Message-ID: <b204674234451a9ab81e834b90244d82.sboyd@kernel.org>
+	b=uOek77d+d4DOP0WXkE3uKIY7HGNkI3/B+pUaog8LdAfohV8dKQ/aHbC7R9zq3p1XC
+	 P9YUh9dlaTAAqpqBMoCzJjxFIyWgmdJ2AMkKEunyn7zP9ioKzE9t/W2Zd+elhxEQl7
+	 pEd3lG5q8HhpWeBj3/bj50JFeyADHfcpTFbumiGI+CgcOoxLWvcgebWAUWmfAdCiiv
+	 FDe9sy5LlYXhe1dViUHWmMJdA+UjjMLhrDJf/y7QVoyIpDj5CGHJjI0XZv92dsfqb5
+	 xvmR7mw5MmN95eSYT0OqfBtLaO88CRDR+zmXxdtBwB9rHJ401e/ILICWoc86jrAger
+	 Vs1k7y+42bSEg==
+Message-ID: <2fb3e7dcbedf22d054e3fb48596d41e2.sboyd@kernel.org>
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <367cf74b038281d235681f6e7fd6f3f7046c962b.1674401764.git.daniel@makrotopia.org>
-References: <cover.1674401764.git.daniel@makrotopia.org> <367cf74b038281d235681f6e7fd6f3f7046c962b.1674401764.git.daniel@makrotopia.org>
-Subject: Re: [PATCH v4 3/3] clk: mediatek: add MT7981 clock support
+In-Reply-To: <3dfa96e2dba814930445e8dcfae97e89.sboyd@kernel.org>
+References: <20230120092053.182923-1-angelogioacchino.delregno@collabora.com> <3dfa96e2dba814930445e8dcfae97e89.sboyd@kernel.org>
+Subject: Re: [PATCH v4 00/23] MediaTek clocks cleanups and improvements
 From: Stephen Boyd <sboyd@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Miles Chen <miles.chen@mediatek.com>, Edward-JW Yang <edward-jw.yang@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>, Fabien Parent <fparent@baylibre.com>, Chun-Jie Chen <chun-jie.chen@mediatek.com>, Sam Shih <sam.shih@mediatek.com>, Jianhui Zhao <zhaojh329@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Daniel Golle <daniel@makrotopia.org>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Date: Wed, 25 Jan 2023 18:23:16 -0800
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, angelogioacchino.delregno@collabora.com, wenst@chromium.org, johnson.wang@mediatek.com, miles.chen@mediatek.com, fparent@baylibre.com, chun-jie.chen@mediatek.com, sam.shih@mediatek.com, y.oudjana@protonmail.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com, ryder.lee@kernel.org, daniel@makrotopia.org, jose.exposito89@gmail.com, yangyingliang@huawei.com, pablo.sun@mediatek.com, msp@baylibre.com, weiyi.lu@mediatek.com, ikjn@chromium.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, kernel@collabora.com
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, mturquette@baylibre.com
+Date: Wed, 25 Jan 2023 18:26:37 -0800
 User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230125_182321_785645_9883EE81 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20230125_182641_081771_C2510968 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,82 +70,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Daniel Golle (2023-01-22 07:44:00)
-> +       GATE_SGMII1(CLK_SGM1_CK1_EN, "sgm1_ck1_en", "usb_ln0", 4),
-> +       GATE_SGMII1(CLK_SGM1_CDR_CK1_EN, "sgm1_cdr_ck1_en", "usb_cdr", 5),
-> +};
-> +
-> +static const struct mtk_gate_regs eth_cg_regs =3D {
-> +       .set_ofs =3D 0x30,
-> +       .clr_ofs =3D 0x30,
-> +       .sta_ofs =3D 0x30,
-> +};
-> +
-> +#define GATE_ETH(_id, _name, _parent, _shift) {        \
-> +               .id =3D _id,                              \
-> +               .name =3D _name,                          \
-> +               .parent_name =3D _parent,                 \
-> +               .regs =3D &eth_cg_regs,                   \
-> +               .shift =3D _shift,                        \
-> +               .ops =3D &mtk_clk_gate_ops_no_setclr_inv, \
-> +       }
-> +
-> +static const struct mtk_gate eth_clks[] __initconst =3D {
-> +       GATE_ETH(CLK_ETH_FE_EN, "eth_fe_en", "netsys_2x", 6),
-> +       GATE_ETH(CLK_ETH_GP2_EN, "eth_gp2_en", "sgm_325m", 7),
-> +       GATE_ETH(CLK_ETH_GP1_EN, "eth_gp1_en", "sgm_325m", 8),
-> +       GATE_ETH(CLK_ETH_WOCPU0_EN, "eth_wocpu0_en", "netsys_wed_mcu", 15=
-),
-> +};
-> +
-> +static const struct mtk_clk_desc eth_desc =3D {
-> +       .clks =3D eth_clks,
-> +       .num_clks =3D ARRAY_SIZE(eth_clks),
-> +};
-> +
-> +static const struct mtk_clk_desc sgmii0_desc =3D {
-> +       .clks =3D sgmii0_clks,
-> +       .num_clks =3D ARRAY_SIZE(sgmii0_clks),
-> +};
-> +
-> +static const struct mtk_clk_desc sgmii1_desc =3D {
-> +       .clks =3D sgmii1_clks,
-> +       .num_clks =3D ARRAY_SIZE(sgmii1_clks),
-> +};
-> +
-> +static const struct of_device_id of_match_clk_mt7981_eth[] =3D {
-> +       { .compatible =3D "mediatek,mt7981-ethsys", .data =3D &eth_desc },
-> +       { .compatible =3D "mediatek,mt7981-sgmiisys_0", .data =3D &sgmii0=
-_desc },
-> +       { .compatible =3D "mediatek,mt7981-sgmiisys_1", .data =3D &sgmii1=
-_desc },
-> +       { /* sentinel */ }
-> +};
+Quoting Stephen Boyd (2023-01-25 15:09:40)
+> Quoting AngeloGioacchino Del Regno (2023-01-20 01:20:30)
+> >=20
+> > * Some more spare cleanups here and there.
+> >=20
+> > All of this was manually tested on various Chromebooks (with different =
+MTK
+> > SoCs) and no regression was detected.
+> >=20
+>=20
+> Do you want me to pick this up directly? Or is there some mediatek
+> maintainer willing to send me a PR? If I don't hear anything soon I'll
+> go sweep my inbox for mediatek clk patches and start applying them.
 
-Actually not applied
-
-WARNING: DT compatible string "mediatek,mt7981-ethsys" appears un-documente=
-d -- check ./Documentation/devicetree/bindings/
-#291: FILE: drivers/clk/mediatek/clk-mt7981-eth.c:103:
-+       { .compatible =3D "mediatek,mt7981-ethsys", .data =3D &eth_desc },
-
-WARNING: DT compatible string "mediatek,mt7981-sgmiisys_0" appears un-docum=
-ented -- check ./Documentation/devicetree/bindings/
-#292: FILE: drivers/clk/mediatek/clk-mt7981-eth.c:104:
-+       { .compatible =3D "mediatek,mt7981-sgmiisys_0", .data =3D &sgmii0_d=
-esc },
-
-WARNING: DT compatible string "mediatek,mt7981-sgmiisys_1" appears un-docum=
-ented -- check ./Documentation/devicetree/bindings/
-#293: FILE: drivers/clk/mediatek/clk-mt7981-eth.c:105:
-+       { .compatible =3D "mediatek,mt7981-sgmiisys_1", .data =3D &sgmii1_d=
-esc },
-
-WARNING: DT compatible string "mediatek,mt7981-infracfg" appears un-documen=
-ted -- check ./Documentation/devicetree/bindings/
-#506: FILE: drivers/clk/mediatek/clk-mt7981-infracfg.c:195:
-+       { .compatible =3D "mediatek,mt7981-infracfg", .data =3D &infracfg_d=
-esc },
-
-Is there a binding update missing?
+I applied them all locally and will push out to next soonish.
 
