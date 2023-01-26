@@ -4,69 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CBB5C54E94
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Jan 2023 16:16:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6E3EC05027
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Jan 2023 16:43:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iHmh3jIgu3gJ5X5XJyol2T2r9Uf09jmGOhMtS3FzeP4=; b=XIL0RGy3AS6IWkYkmto2e5Dptg
-	4ZJ5DP13QEqws7mZkaNteQ5Qp90CGy/hyT+slJU5EaBif/101XHUvX8UL1ccAbdhbrGM26VW+vCkZ
-	4Qthqfv0igVAaf7FM6v+k7wbrgr3/8rPBfvwle75uc4lcmbdzkO17FJfpZKKmEoZZLI/SWGrSNF6l
-	n4PUBTgdbiVMl3fzW6YxK4WlakLgfH/ZxE+8V1o5JMKR3/vQcVv7HcGTfmEOTnXzvjXzCYVqko2sU
-	bN5BraYHBHrLHnZHgoG52+V1aUp8Ou5SJWcIcqnjZT/t2LIYCQJZyvUCI+sgFIbWU06Tsi899wwro
-	SQFPvWgg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rUFKXit/Slxp5jNkRtm2qJfbudUdkwg/5ym9L9/2xFg=; b=PaCqbdJj6AeWT9zv/a9pWU1ufP
+	E6iLn+FUTq0xuj7Xn1qiC/N1UYRkRlYWQSGsS6ffE8P+gTzipvJVmVldmzvOegJar8eSuBCdkolDt
+	gIPwL+TVxklrtjP9PrxBgHSsDbQTFUd2/tdF+3vZBMopCVaixufFs9eyPliZxTYpzO7IoYsQkRaIq
+	+tPdkFVKsGFd00u/p8ncmRH2UguSYLMDeePw4LqvK1+c6UGEbOfKZSyy6f0Dh0+2/f9PoesGDedIS
+	gYMf9N1mNqRluPNL4toq4P9+Vsq7DCVNw2Zu6Lg0qJ5UH7qiJvJxQ/FINg6SvffxtDNBdVKpo+tYX
+	R4n8mMug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pL4vN-00Bhrt-3d; Thu, 26 Jan 2023 16:16:29 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pL5Kv-00Bq2c-K0; Thu, 26 Jan 2023 16:42:53 +0000
+Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pL4v9-00Bhnv-Bt; Thu, 26 Jan 2023 16:16:17 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5CFAC6602E7A;
-	Thu, 26 Jan 2023 16:16:13 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1674749773;
-	bh=V0gLbpx5AMKGj7vJSigmDaOo8Wzyv86wPBOn8FimbE4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Q77sY0Tis2lsA5SbxnzsuZmN0xkug9r4USlDwoFZ5VBJDNVFhw5Ny0tsUW+wnByOx
-	 tbn5ToaTzOJjZrl2M087Zz8I2m+Z4DImVkC3sKjb8EQuWskUySmLVMs6IYAsQqfRB4
-	 APYWxGqowLryBr6RCJ6sDyJL8IltywJJOXVldYzOEjAKzVV9QsMf9MgN1MPyuOyDmu
-	 yHsOVE2ZSIN9CW2i8I//G1SXMqfcYs0oC+AR3j+vwJ5/5dNpYlD7OlUI3xcrWgW6vF
-	 2hMMxCZI4NE5DjVW31C8ZByEBt6zQIpAU3IBQSjaj/CYC4S2Uglg3GR1RxVfLX+pzk
-	 JODVKxntoMbjg==
-Message-ID: <e9fc3199-234e-911e-fff8-734225c3f346@collabora.com>
-Date: Thu, 26 Jan 2023 17:16:10 +0100
+	id 1pL53t-00BkXR-CT
+	for linux-mediatek@lists.infradead.org; Thu, 26 Jan 2023 16:25:20 +0000
+Received: by mail-yw1-x1131.google.com with SMTP id 00721157ae682-4a263c4ddbaso30858047b3.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 Jan 2023 08:25:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=rUFKXit/Slxp5jNkRtm2qJfbudUdkwg/5ym9L9/2xFg=;
+        b=BrNExWGHbV1NeR+vu2Js5zAqwDKTAmFhHgoWjYZ0a3qbH7rru8W3QViuclznskZkVo
+         6Q5eqrGX7jMOOdvE9K9lsVmJpHX9roidNQoqd4ah6qpZ3z5AR/LzfumpWsF7qxr+L/L7
+         2EeJAw9MATGkA5VBf2UwOc7KCg21F0CUspP8pGqPmL78PHbmYrJgHGcDXuiJf+tpyEq5
+         mYd3qiJmdB/mmqbT25mkgF6e/9yHOLIF4ZmJU2qiUjSg09+a1L9BOQF70sP/z/t1hEtG
+         N3QguNCw23qX8RL/9XVLJb/vAzwIwx19tcG6Myly1SJ+d6fdbBsCbrW+Wp9iSE9SLjFe
+         r7Zw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=rUFKXit/Slxp5jNkRtm2qJfbudUdkwg/5ym9L9/2xFg=;
+        b=ZDFHRt0Pp8wHxyhdJhiM5tVLxa5kwsPTYZ00HFNzsZqnMx+Jc84EZdpgvvaiF8l7Tg
+         Rbwn4OKardBiLhDOSGQem5YomKNqk1wYeE7YKL0TTf6+ZH394wencXbnEfgFQNtT2z5/
+         u0h5jMo45jgLz/9qTS3gOBrTkFYP5wILULvzrHRpT82VcrkPgIvgnpJpSijfLy3cP13w
+         bjL6+4tIrUKsFXDQ0+7e+XUYrAMymNB2dl2P2rkHyTD6IFFGK4kqfPeQRgi6TyFbNXOU
+         D4dJQGVyIHj2x+vi/sTXcTPHjH9IGN3kRxoL/1qaOWKDjpdU9zUAtW1Js/2XcSBuiqK5
+         1teQ==
+X-Gm-Message-State: AFqh2kpJ7gp9ZtPc79hpcZd4BQZnsMCqOMAUc6kHLNIM1epSda9He7xr
+	e7CgK+DbfZu9izmBJyqXAF3WxOyLd4O2pgalYYlOkw==
+X-Google-Smtp-Source: AMrXdXvRVLeaIi85wIrJBS5zRkOyr5/BQ66PCe0y1aLe9hmWIu7jqHBlhyy2SYPoXbE9x4WotKo1j1aRHLVU6Hd1LsI=
+X-Received: by 2002:a81:1b8b:0:b0:4ff:774b:7ffb with SMTP id
+ b133-20020a811b8b000000b004ff774b7ffbmr3541685ywb.218.1674750315051; Thu, 26
+ Jan 2023 08:25:15 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH 2/2] pwm: mtk-disp: Configure double buffering before
- reading in .get_state()
-Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: thierry.reding@gmail.com, u.kleine-koenig@pengutronix.de,
- matthias.bgg@gmail.com, weiqing.kong@mediatek.com, jitao.shi@mediatek.com,
- linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com
-References: <20230123160615.375969-1-angelogioacchino.delregno@collabora.com>
- <20230123160615.375969-3-angelogioacchino.delregno@collabora.com>
- <20230126151914.rhwhioz6yyhaq3z2@notapiano>
- <aa17fa46-0f16-2102-1bd3-6d76cee90ee1@collabora.com>
- <20230126160927.4hgifpmybvsgshro@notapiano>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230126160927.4hgifpmybvsgshro@notapiano>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20230125083851.27759-1-surenb@google.com> <20230125083851.27759-2-surenb@google.com>
+ <Y9JFFYjfJf9uDijE@kernel.org> <Y9KTUw/04FmBVplw@kernel.org> <Y9KXjLaFFUvqqdd4@casper.infradead.org>
+In-Reply-To: <Y9KXjLaFFUvqqdd4@casper.infradead.org>
+From: Suren Baghdasaryan <surenb@google.com>
+Date: Thu, 26 Jan 2023 08:25:03 -0800
+Message-ID: <CAJuCfpHs4wvQpitiAYc+PQX3LnitF=wvm=zVX7CzMozzmnbcnw@mail.gmail.com>
+Subject: Re: [PATCH v2 1/6] mm: introduce vma->vm_flags modifier functions
+To: Matthew Wilcox <willy@infradead.org>
+Cc: Mike Rapoport <rppt@kernel.org>, akpm@linux-foundation.org, michel@lespinasse.org, 
+	jglisse@google.com, mhocko@suse.com, vbabka@suse.cz, hannes@cmpxchg.org, 
+	mgorman@techsingularity.net, dave@stgolabs.net, liam.howlett@oracle.com, 
+	peterz@infradead.org, ldufour@linux.ibm.com, paulmck@kernel.org, 
+	luto@kernel.org, songliubraving@fb.com, peterx@redhat.com, david@redhat.com, 
+	dhowells@redhat.com, hughd@google.com, bigeasy@linutronix.de, 
+	kent.overstreet@linux.dev, punit.agrawal@bytedance.com, lstoakes@gmail.com, 
+	peterjung1337@gmail.com, rientjes@google.com, axelrasmussen@google.com, 
+	joelaf@google.com, minchan@google.com, jannh@google.com, shakeelb@google.com, 
+	tatashin@google.com, edumazet@google.com, gthelen@google.com, 
+	gurua@google.com, arjunroy@google.com, soheil@google.com, 
+	hughlynch@google.com, leewalsh@google.com, posk@google.com, will@kernel.org, 
+	aneesh.kumar@linux.ibm.com, npiggin@gmail.com, chenhuacai@kernel.org, 
+	tglx@linutronix.de, mingo@redhat.com, bp@alien8.de, 
+	dave.hansen@linux.intel.com, richard@nod.at, anton.ivanov@cambridgegreys.com, 
+	johannes@sipsolutions.net, qianweili@huawei.com, wangzhou1@hisilicon.com, 
+	herbert@gondor.apana.org.au, davem@davemloft.net, vkoul@kernel.org, 
+	airlied@gmail.com, daniel@ffwll.ch, maarten.lankhorst@linux.intel.com, 
+	mripard@kernel.org, tzimmermann@suse.de, l.stach@pengutronix.de, 
+	krzysztof.kozlowski@linaro.org, patrik.r.jakobsson@gmail.com, 
+	matthias.bgg@gmail.com, robdclark@gmail.com, quic_abhinavk@quicinc.com, 
+	dmitry.baryshkov@linaro.org, tomba@kernel.org, hjc@rock-chips.com, 
+	heiko@sntech.de, ray.huang@amd.com, kraxel@redhat.com, sre@kernel.org, 
+	mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com, tfiga@chromium.org, 
+	m.szyprowski@samsung.com, mchehab@kernel.org, dimitri.sivanich@hpe.com, 
+	zhangfei.gao@linaro.org, jejb@linux.ibm.com, martin.petersen@oracle.com, 
+	dgilbert@interlog.com, hdegoede@redhat.com, mst@redhat.com, 
+	jasowang@redhat.com, alex.williamson@redhat.com, deller@gmx.de, 
+	jayalk@intworks.biz, viro@zeniv.linux.org.uk, nico@fluxnic.net, 
+	xiang@kernel.org, chao@kernel.org, tytso@mit.edu, adilger.kernel@dilger.ca, 
+	miklos@szeredi.hu, mike.kravetz@oracle.com, muchun.song@linux.dev, 
+	bhe@redhat.com, andrii@kernel.org, yoshfuji@linux-ipv6.org, 
+	dsahern@kernel.org, kuba@kernel.org, pabeni@redhat.com, perex@perex.cz, 
+	tiwai@suse.com, haojian.zhuang@gmail.com, robert.jarzmik@free.fr, 
+	linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, 
+	linuxppc-dev@lists.ozlabs.org, x86@kernel.org, linux-kernel@vger.kernel.org, 
+	linux-graphics-maintainer@vmware.com, linux-ia64@vger.kernel.org, 
+	linux-arch@vger.kernel.org, loongarch@lists.linux.dev, kvm@vger.kernel.org, 
+	linux-s390@vger.kernel.org, linux-sgx@vger.kernel.org, 
+	linux-um@lists.infradead.org, linux-acpi@vger.kernel.org, 
+	linux-crypto@vger.kernel.org, nvdimm@lists.linux.dev, 
+	dmaengine@vger.kernel.org, amd-gfx@lists.freedesktop.org, 
+	dri-devel@lists.freedesktop.org, etnaviv@lists.freedesktop.org, 
+	linux-samsung-soc@vger.kernel.org, intel-gfx@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+	freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
+	linux-tegra@vger.kernel.org, virtualization@lists.linux-foundation.org, 
+	xen-devel@lists.xenproject.org, linux-stm32@st-md-mailman.stormreply.com, 
+	linux-rdma@vger.kernel.org, linux-media@vger.kernel.org, 
+	linux-accelerators@lists.ozlabs.org, sparclinux@vger.kernel.org, 
+	linux-scsi@vger.kernel.org, linux-staging@lists.linux.dev, 
+	target-devel@vger.kernel.org, linux-usb@vger.kernel.org, 
+	netdev@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-aio@kvack.org, 
+	linux-fsdevel@vger.kernel.org, linux-erofs@lists.ozlabs.org, 
+	linux-ext4@vger.kernel.org, devel@lists.orangefs.org, 
+	kexec@lists.infradead.org, linux-xfs@vger.kernel.org, bpf@vger.kernel.org, 
+	linux-perf-users@vger.kernel.org, kasan-dev@googlegroups.com, 
+	selinux@vger.kernel.org, alsa-devel@alsa-project.org, kernel-team@android.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230126_081615_694706_90020E86 
-X-CRM114-Status: GOOD (  29.20  )
+X-CRM114-CacheID: sfid-20230126_082517_460153_E72E698C 
+X-CRM114-Status: GOOD (  13.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,128 +141,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/01/23 17:09, Nícolas F. R. A. Prado ha scritto:
-> On Thu, Jan 26, 2023 at 04:24:29PM +0100, AngeloGioacchino Del Regno wrote:
->> Il 26/01/23 16:19, Nícolas F. R. A. Prado ha scritto:
->>> On Mon, Jan 23, 2023 at 05:06:15PM +0100, AngeloGioacchino Del Regno wrote:
->>>> The DISP_PWM controller's default behavior is to always use register
->>>> double buffering: all reads/writes are then performed on shadow
->>>> registers instead of working registers and this becomes an issue
->>>> in case our chosen configuration in Linux is different from the
->>>> default (or from the one that was pre-applied by the bootloader).
->>>>
->>>> An example of broken behavior is when the controller is configured
->>>> to use shadow registers, but this driver wants to configure it
->>>> otherwise: what happens is that the .get_state() callback is called
->>>> right after registering the pwmchip and checks whether the PWM is
->>>> enabled by reading the DISP_PWM_EN register;
->>>> At this point, if shadow registers are enabled but their content
->>>> was not committed before booting Linux, we are *not* reading the
->>>> current PWM enablement status, leading to the kernel knowing that
->>>> the hardware is actually enabled when, in reality, it's not.
->>>>
->>>> The aforementioned issue emerged since this driver was fixed with
->>>> commit 0b5ef3429d8f ("pwm: mtk-disp: Fix the parameters calculated
->>>> by the enabled flag of disp_pwm") making it to read the enablement
->>>> status from the right register.
->>>>
->>>> Configure the controller in the .get_state() callback to avoid
->>>> this desync issue and get the backlight properly working again.
->>>>
->>>> Fixes: 3f2b16734914 ("pwm: mtk-disp: Implement atomic API .get_state()")
->>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>> ---
->>>>    drivers/pwm/pwm-mtk-disp.c | 10 ++++++++++
->>>>    1 file changed, 10 insertions(+)
->>>>
->>>> diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
->>>> index 82b430d881a2..fe9593f968ee 100644
->>>> --- a/drivers/pwm/pwm-mtk-disp.c
->>>> +++ b/drivers/pwm/pwm-mtk-disp.c
->>>> @@ -196,6 +196,16 @@ static int mtk_disp_pwm_get_state(struct pwm_chip *chip,
->>>>    		return err;
->>>>    	}
->>>> +	/*
->>>> +	 * Apply DISP_PWM_DEBUG settings to choose whether to enable or disable
->>>> +	 * registers double buffer and manual commit to working register before
->>>> +	 * performing any read/write operation
->>>> +	 */
->>>> +	if (mdp->data->bls_debug)
->>>
->>> I feel like this condition should be the same as in the apply() callback, since
->>> they're doing the same write operation, so also have '&& !has_commit'.
->>>
->>
->> The bls_debug register is used to both enable and/or disable various features,
->> including the one that I'm targeting in this commit, which is disabling shadow
->> registers.
->>
->> As I explained in the commit message, we don't want to - and cannot - assume that
->> the bootloader doesn't *reset* the backlight controller before booting Linux: a
->> reset would re-enable the shadow registers, and this function being called as
->> first to check the backlight EN status may fail to do so.
->>
->> This is as well true in the opposite situation where, in the future, we may want
->> to set shadow registers ON, while the bootloader sets them OFF before booting:
->> adding a (x && !has_commit) check in this branch would defeat that purpose and
->> make this commit... well.. partially broken! :-)
-> 
-> Makes sense, but in that case shouldn't we drop the (&& !has_commit) in the
-> check of the previous commit too? I get that in the pwm's core current logic,
+On Thu, Jan 26, 2023 at 7:09 AM Matthew Wilcox <willy@infradead.org> wrote:
+>
+> On Thu, Jan 26, 2023 at 04:50:59PM +0200, Mike Rapoport wrote:
+> > On Thu, Jan 26, 2023 at 11:17:09AM +0200, Mike Rapoport wrote:
+> > > On Wed, Jan 25, 2023 at 12:38:46AM -0800, Suren Baghdasaryan wrote:
+> > > > +/* Use when VMA is not part of the VMA tree and needs no locking */
+> > > > +static inline void init_vm_flags(struct vm_area_struct *vma,
+> > > > +                          unsigned long flags)
+> > >
+> > > I'd suggest to make it vm_flags_init() etc.
+> >
+> > Thinking more about it, it will be even clearer to name these vma_flags_xyz()
+>
+> Perhaps vma_VERB_flags()?
+>
+> vma_init_flags()
+> vma_reset_flags()
+> vma_set_flags()
+> vma_clear_flags()
+> vma_mod_flags()
 
-No. The previous commit checks !has_commit to select a register write strategy
-between "shadow -> commit" and "working registers - no commit necessary".
+Due to excessive email bouncing I posted the v3 of this patchset using
+the original per-VMA patchset's distribution list. That might have
+dropped Mike from the list. Sorry about that Mike, I'll add you to my
+usual list of suspects :)
+The v3 is here:
+https://lore.kernel.org/all/20230125233554.153109-1-surenb@google.com/
+and Andrew did suggest the same renames, so I'll be posting v4 with
+those changes later today.
+Thanks for the feedback!
 
-If you drop that check from the previous commit, how can you choose the write
-strategy to use?! :-)
-
-You can't rely on reading the bls_debug register, either, because it may be
-holding different values compared to what we want due to, for example, a reset
-and you can't rely on checking bls_debug_mask because in the future this kind
-of selector may be residing in an entirely different register.
-
-> get_state() is run before apply(), but given that we also write the debug
-> register in apply(), we're not relying on that. So as it currently stands, if in
-> the future the bootloader sets shadow registers OFF, and we want to set them ON,
-> and we call apply() before having called get_state(), we'd be back to the broken
-> behavior.
-
-No, because the default BLS_DEBUG register value at IP reset is 0 - where 0 means
-"do not disable commit, do not disable shadow register read, do not disable shadow
-register write" :-)
-
-Cheers,
-Angelo
-
-> 
-> Thanks,
-> Nícolas
-> 
->>
->> Cheers!
->> Angelo
->>
->>> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
->>> Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
->>>
->>> On MT8192 Asurada Spherion.
->>>
->>> Thanks,
->>> Nícolas
->>>
->>>> +		mtk_disp_pwm_update_bits(mdp, mdp->data->bls_debug,
->>>> +					 mdp->data->bls_debug_mask,
->>>> +					 mdp->data->bls_debug_mask);
->>>> +
->>>>    	rate = clk_get_rate(mdp->clk_main);
->>>>    	con0 = readl(mdp->base + mdp->data->con0);
->>>>    	con1 = readl(mdp->base + mdp->data->con1);
->>>> -- 
->>>> 2.39.0
->>>>
->>>>
->>
->>
-
-
+>
 
