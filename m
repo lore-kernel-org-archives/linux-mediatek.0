@@ -4,59 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D40F3C27C76
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jan 2023 23:10:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0917C54E94
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Jan 2023 00:25:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
-	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hCZ1XZTCSjWNvYxTSWzJ96eH/+NdoV+UKJq6grJNktI=; b=E/cMUK8Ut1q8NHbJdzcQTwTur2
-	R3VN3TwXZGN/OR9UW2toM+QKsR2Dx9efFybcbzBWVyrPH/j/PNklLF7Rm7ndAstw9x1ZTTfsTZJhZ
-	KKoFUJVFcLmh4oGNwpCQ4AjGc4HTiPIHoFytQVLblsN15i1KkaJ2f7be3K1tgD5fr3uwDlq1Yf6Uh
-	+8YlXUP0JLEuY+h8oabaP/Hck9fIyraDEDVrIdCqweebyDtqHP6SV2/x3e+PVSPXiG+ZMBifMOEUo
-	Q8pn+lRzFGAJ+KrqtQSF08wBshUMF7ezr2td9gg/fvnLlldq/OfnKYTz2+VktVsC9KLUHqOhcDEsA
-	g5kN97vg==;
+	bh=8jJVbzqfpd/u3pdgtYSrMBE/uEVAbiFch2tCk7ZiZZU=; b=1bVWbyvwy6eGJd9OaaG+r+yWqc
+	JWOf8VTiuL574q5gwK63+FaGi3elqnutDwT4UouGzEbZ2zeFvKxwSiIzmwyZWH2vpY50Mc8lgwiLY
+	BdfIrNVoTteQSZAGOxH95nntD6Qe2C43+8dKuYt0CByV89tlynzIaCY2cEWClqGI8qxaBGdjtRx0T
+	ViPRBtjZqNlnAPOXS5YL7atvac/muBTBv09658boV+648LXyOH7uig6m6laabuQebT4SYRgUaeHww
+	ePGQsK5/UPrMvp2RHep531pERO8R1rxm2qkTmWsbkibvwvE7+ZPOCqflyACJ8MlDw0sBA4e06iBkC
+	N85iqRGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKotx-0092s4-AA; Wed, 25 Jan 2023 23:09:57 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pKq5G-009BBk-KX; Thu, 26 Jan 2023 00:25:42 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKotl-0092qs-TP; Wed, 25 Jan 2023 23:09:47 +0000
+	id 1pKq5D-009B9z-7h; Thu, 26 Jan 2023 00:25:40 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 07D03616CE;
-	Wed, 25 Jan 2023 23:09:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B6FCC433EF;
-	Wed, 25 Jan 2023 23:09:42 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id B913DB81C04;
+	Thu, 26 Jan 2023 00:25:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 39A33C433D2;
+	Thu, 26 Jan 2023 00:25:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1674688182;
-	bh=hCZ1XZTCSjWNvYxTSWzJ96eH/+NdoV+UKJq6grJNktI=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=XVVbEZ2kErRVnh97BqcWzoxJC5vh7Wn67EbUPoNnLYZUoz6EHueLMmDFG+xfpX8zY
-	 zp75rSQSDY21OrXuj1KKP/Xcnmh/EazCRNkl4y6RtS25VJAO4xEgIzo8lGTOM2hSRu
-	 FEoD2awLy5d1XvQ74PTQM24/JZamMA/zEYebtOqSJqHf0L31jqhGKk3zSy7oYNDt5b
-	 sKc/c5LQzbt4EUOCRrgwXQPX3b2ubDgh9Nfcl+7IE/xSPs21n87TS1fyLvv3dFmFji
-	 9pqXQX/d2fEAqoVaw5DZbrqDHZl1ma+UG1tIgWsrW/0qXXj+ry+cEfUNaTU6LXxqWy
-	 8RLQqhNcCCaIg==
-Message-ID: <3dfa96e2dba814930445e8dcfae97e89.sboyd@kernel.org>
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1674692736;
+	bh=rcUgsNadKKTYCHHFUAWb2M6WYShRxFqUqgbGPO0Ctyo=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=USfPHSeVEkf75rA9BZhlvuBgt3C7xXOJz8CoJRO6VnKLCjKvOAvSuVOAAHVjwSZuH
+	 JX2uNAzawrEKpN+IqKJBN8lZGMGtxJCIlcga2OR/Jokxood0zP+0bznprQUUG8DKwD
+	 QQ4K8QcBAABfVqaYdZkX1GDNvLDUpOqo8lT76FcMgCjtCOTzSgIuGkJP+fXUzUf6dD
+	 100h5T1y3ypmPfXHYY5ic0/FD44fBeYBRbgvrs6b+RGsQdN+Y9IGXhlnFK4zWS8fRh
+	 7XQZeHxve4rzsEvNEN1VoemmfZArPIZ/VVHfPgRMbQaX3uomO1YRRPxzlGNr8JKnr3
+	 01bMP8uE6lW7Q==
+From: Mark Brown <broonie@kernel.org>
+To: Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, 
+ Kamal Dasu <kdasu.kdev@gmail.com>, 
+ Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+ Han Xu <han.xu@nxp.com>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, Andy Gross <agross@kernel.org>, 
+ Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konrad.dybcio@linaro.org>, 
+ Serge Semin <fancer.lancer@gmail.com>, Haibo Chen <haibo.chen@nxp.com>, 
+ Yogesh Gaur <yogeshgaur.83@gmail.com>, 
+ Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Palmer Dabbelt <palmer@dabbelt.com>, 
+ Paul Walmsley <paul.walmsley@sifive.com>, Li-hao Kuo <lhjeff911@gmail.com>, 
+ Michal Simek <michal.simek@xilinx.com>, Orson Zhai <orsonzhai@gmail.com>, 
+ Baolin Wang <baolin.wang@linux.alibaba.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Maxime Ripard <mripard@kernel.org>, 
+ =?utf-8?q?=EF=BF=BDecki?= <rafal@milecki.pl>, 
+ Vaishnav Achath <vaishnav.a@ti.com>, 
+ Parshuram Thombare <pthombar@cadence.com>, 
+ Leilk Liu <leilk.liu@mediatek.com>, Gabor Juhos <juhosg@openwrt.org>, 
+ Bert Vermeulen <bert@biot.com>, Miquel Raynal <miquel.raynal@bootlin.com>, 
+ Marek Vasut <marex@denx.de>, Birger Koblitz <mail@birger-koblitz.de>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Anson Huang <Anson.Huang@nxp.com>, 
+ Chris Packham <chris.packham@alliedtelesis.co.nz>, 
+ Kuldeep Singh <singh.kuldeep87k@gmail.com>, 
+ Pragnesh Patel <pragnesh.patel@sifive.com>, 
+ Christophe Kerello <christophe.kerello@foss.st.com>, 
+ Patrice Chotard <patrice.chotard@foss.st.com>, 
+ Erwan Leray <erwan.leray@foss.st.com>, 
+ Fabrice Gasnier <fabrice.gasnier@foss.st.com>, linux-spi@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, 
+ linux-amlogic@lists.infradead.org, linux-aspeed@lists.ozlabs.org, 
+ openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org, 
+ linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, 
+ linux-stm32@st-md-mailman.stormreply.com, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Rob Herring <robh@kernel.org>
+In-Reply-To: <20230124083342.34869-1-krzysztof.kozlowski@linaro.org>
+References: <20230124083342.34869-1-krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v2 1/2] spi: dt-bindings: drop unneeded quotes
+Message-Id: <167469271489.2661317.15374060752399847689.b4-ty@kernel.org>
+Date: Thu, 26 Jan 2023 00:25:14 +0000
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20230120092053.182923-1-angelogioacchino.delregno@collabora.com>
-References: <20230120092053.182923-1-angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v4 00/23] MediaTek clocks cleanups and improvements
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, angelogioacchino.delregno@collabora.com, wenst@chromium.org, johnson.wang@mediatek.com, miles.chen@mediatek.com, fparent@baylibre.com, chun-jie.chen@mediatek.com, sam.shih@mediatek.com, y.oudjana@protonmail.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com, ryder.lee@kernel.org, daniel@makrotopia.org, jose.exposito89@gmail.com, yangyingliang@huawei.com, pablo.sun@mediatek.com, msp@baylibre.com, weiyi.lu@mediatek.com, ikjn@chromium.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, kernel@collabora.com
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, mturquette@baylibre.com
-Date: Wed, 25 Jan 2023 15:09:40 -0800
-User-Agent: alot/0.10
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.12.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230125_150946_006578_8333D6A3 
-X-CRM114-Status: UNSURE (   8.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230125_162539_589485_2F34E554 
+X-CRM114-Status: GOOD (  14.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,15 +124,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting AngeloGioacchino Del Regno (2023-01-20 01:20:30)
->=20
-> * Some more spare cleanups here and there.
->=20
-> All of this was manually tested on various Chromebooks (with different MTK
-> SoCs) and no regression was detected.
->=20
+On Tue, 24 Jan 2023 09:33:41 +0100, Krzysztof Kozlowski wrote:
+> Cleanup by removing unneeded quotes from refs and redundant blank lines.
+> No functional impact except adjusting to preferred coding style.
+> 
+> 
 
-Do you want me to pick this up directly? Or is there some mediatek
-maintainer willing to send me a PR? If I don't hear anything soon I'll
-go sweep my inbox for mediatek clk patches and start applying them.
+Applied to
+
+   broonie/spi.git for-next
+
+Thanks!
+
+[1/2] spi: dt-bindings: drop unneeded quotes
+      commit: 99a7fa0e75a3a595a577fb5efa4b84a491f664a2
+[2/2] spi: dt-bindings: cleanup examples - indentation, lowercase hex
+      commit: ee8d422c91d87ebe230769b2cb89f087e56b560a
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
