@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93EC3C54E94
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Jan 2023 02:07:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBFB7C27C76
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Jan 2023 02:19:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
 	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xIq2XNSv0yqdGYVBR9gJeJ3g2wDYMFascBPP14gWnV0=; b=JR1udjf8BmmURAcJi3ZmQNwlHz
-	QXMZk3ih//BDbzm4a9uh7LL1Lq5dFaa25h7IapGdBP8bEziRhJKTvYklDROkaz5HAxkqWrSpS9GZr
-	SXBdZX/A48SjiSf2u+afu5QyUHzzyUv3thg8IdMYn1MSX5477gyeErStBLpXAe5jQ9z0UxhVeaUMc
-	7mCJx+KskVGdxX0uRbqIa6oK/mFhrZ8nRKhG5bg7GxRFTaiIJGlTyNDDa+mq2suQUyELj0FSoxvUU
-	ikv2S9DA/EBOtqceTl7CZvZVqtjFq7zm1gUQ4TSin/WxePP9x+cCe6cfXtwGWE++/WXGhemPE8Euh
-	p5veMX/Q==;
+	bh=FzfcYhdvhhqXC92MQNxZiIt7bbyHYk0TCSvJiiZVLdw=; b=skX1/MNyGRIuNUKGBadsD0KDp/
+	Vq5uKMUFeQ7QQgoHOZHxsdwQbj78i+jpTI+6h5k6OEkWm3vssqvmmlNQBRdsJ9gG8sn2LJ3z7gtkv
+	EW4I0WGYAR64ecJoPmHl+FQX7BT2NDACKPr8Mx2BCaprlJcuDjdSkb8E61hjdSzu2wfzseWBuV4UW
+	VsubGi5wblI3jU03tXwXjpOezr2XZcocg5/bEaYUPCgfyq9ZX8qufmG4i+npREcvS3cUzmHQlHadd
+	PkLlZJGg6QJwwxcpPQFVrr91f7+fuo+mvFCc1gyi8EiVpD9soMo4CAl97zOBm+MyI2SitCCzU27FL
+	NJXuuIEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKrg4-009PQ6-7Z; Thu, 26 Jan 2023 02:07:48 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1pKrrV-009QZR-HX; Thu, 26 Jan 2023 02:19:37 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKrft-009PNz-8q; Thu, 26 Jan 2023 02:07:38 +0000
+	id 1pKrrL-009QXs-06; Thu, 26 Jan 2023 02:19:28 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 9CAB1B80DC0;
-	Thu, 26 Jan 2023 02:07:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42852C433D2;
-	Thu, 26 Jan 2023 02:07:34 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 53D8561707;
+	Thu, 26 Jan 2023 02:19:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A6B96C433EF;
+	Thu, 26 Jan 2023 02:19:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1674698854;
-	bh=F9namJy2H7fXeX9apQRVPaLcYLheAotswZx/3mZWdJk=;
+	s=k20201202; t=1674699565;
+	bh=FzfcYhdvhhqXC92MQNxZiIt7bbyHYk0TCSvJiiZVLdw=;
 	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=ffGT4D6kPViviUTwSZ8BlwETgHtu2rGL/6yh5gVjCjxwvq5fAmOpf31iXyHwljbIH
-	 jwC2R7OpQdOETNo8LAPlmA83wlpq/P818izEeyitg3d0IZPCEQA1Xy5jrQsJBRfTpe
-	 vBsBINStVguX31vOtvT6n6v5Da0W6DVF4W4fxZFKbsn7+SkzXdqQjdBRnlfyds5SeX
-	 A8nfdUnyGMOyPXEQhG7nx8Tl4i5eBYH9P0vO/aj2UWXZVUY3NosLUSVi6Te1Oxxm2i
-	 +ykZoT4gnyoub/b/5S+1iRyUo+BQoknb2cBUYI2lQe+/1N083eo8zEnrcSPVRgI0M9
-	 Wo0/iSIZPLAIw==
-Message-ID: <5036f36916e12429d6f853049a2e5836.sboyd@kernel.org>
+	b=HRCpRnhYRh0Ijd+5XIEqo+S33nWqvMqLgd3dDfR7mU+YdX6Pcu+3Ti3v4mCuTiCSa
+	 KCw7wEuYAQ62X1xP7/lQyOhQ//VBVWyTwiLGktbpInwYkZrcVSFShKSPfb/M7jSbw5
+	 Gzs0c+QNuPqnYHOps9TLa7wVvDEpuce0XLaqEFlrV1cXkqpV6YRnK2PIjqzZgwa0xk
+	 ips1BFWC0FLMc4Use//2QtU2aDpPFrJeYUFsBRSyGS2p53YIpuKheC0EUcVwOpPYbT
+	 mpwqLYL+0XJ+CbYAhhdTQDvAvKRcH86VdSCnBgd0oqL0FHyAJzjJLeCI6q9O1kWUTI
+	 krFHMVomsXrxg==
+Message-ID: <2b3a32bd490dbb55cbcd2cfdc5abffa3.sboyd@kernel.org>
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20221222155147.158837-1-angelogioacchino.delregno@collabora.com>
-References: <20221222155147.158837-1-angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v1 0/6] MediaTek Frequency Hopping: MT6795/8173/92/95
+In-Reply-To: <ae9acd210c1566b4bd72b09df4430bcad4a36c9b.1674401764.git.daniel@makrotopia.org>
+References: <cover.1674401764.git.daniel@makrotopia.org> <ae9acd210c1566b4bd72b09df4430bcad4a36c9b.1674401764.git.daniel@makrotopia.org>
+Subject: Re: [PATCH v4 1/3] dt-bindings: clock: Add apmixedsys/topckgen compatibles for MT7981
 From: Stephen Boyd <sboyd@kernel.org>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, edward-jw.yang@mediatek.com, johnson.wang@mediatek.com, wenst@chromium.org, miles.chen@mediatek.com, chun-jie.chen@mediatek.com, rex-bc.chen@mediatek.com, jose.exposito89@gmail.com, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, mturquette@baylibre.com
-Date: Wed, 25 Jan 2023 18:07:32 -0800
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Miles Chen <miles.chen@mediatek.com>, Edward-JW Yang <edward-jw.yang@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>, Fabien Parent <fparent@baylibre.com>, Chun-Jie Chen <chun-jie.chen@mediatek.com>, Sam Shih <sam.shih@mediatek.com>, Jianhui Zhao <zhaojh329@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Daniel Golle <daniel@makrotopia.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Date: Wed, 25 Jan 2023 18:19:23 -0800
 User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230125_180737_477583_A99B0B4F 
-X-CRM114-Status: GOOD (  12.53  )
+X-CRM114-CacheID: sfid-20230125_181927_113196_59579E63 
+X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,20 +71,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting AngeloGioacchino Del Regno (2022-12-22 07:51:41)
-> This series adds support for Frequency Hopping (FHCTL) on more MediaTek
-> SoCs, specifically, MT6795, MT8173, MT8192 and MT8195.
+Quoting Daniel Golle (2023-01-22 07:42:27)
+> Add compatible string for MT7981 to existing bindings
+> at mediatek,apmixedsys.yaml and mediatek,topckgen.yaml.
 >=20
-> In order to support older platforms like MT6795 and MT8173 it was
-> necessary to add a new register layout that is ever-so-slightly
-> different from the one that was previously introduced for MT8186.
->=20
-> Since the new layout refers to older SoCs, the one valid for MT8186
-> and newer SoCs was renamed to be a "v2" layout, while the new one
-> for older chips gets the "v1" name.
->=20
-> Note: These commits won't change any behavior unless FHCTL gets
->       explicitly enabled and configured in devicetrees.
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Signed-off-by: Jianhui Zhao <zhaojh329@gmail.com>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
 
-Can you resend this? It conflicts with your latest cleanup series.
+Applied to clk-next
 
