@@ -4,64 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADEA9C54EAA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Jan 2023 22:56:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57F8DC54EAA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 00:19:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=flnSuFJeK+89EVJtShaKVkqbEPxcP24JRQuCZ06H7Xc=; b=ZV9QGHBFY2e3dGH9aE8B0Wty0X
-	KSoK8Y1hASMUlumI0gWN12j/UFhMO6Bwm02c7pikrszNpAW2V+KT07m2AmbB0b7pBKX430uwzCfmQ
-	ER86ZwKBWrAfcFBf/8JVayJjaY8pVH5sHJmqH0Xr5GKcVmfo0CojXmJsZwjGN9f6UATaelq/GNlGB
-	xa5dTGlu0zRgMzLJmlcDern56uK1mWenVUk68lZPC57JFQzX0zeOHBZhDRmJAd9sHtUanbztRZUE6
-	6V+IMibzcbWMuW3OpuJAnJY5znBnFxbbRVdMK9AYx1so6v7WBubyX/lbXr46ywJQf9SRZ+KrABSfS
-	csa+VISg==;
+	bh=dJGIrmqkGdIpN+HGXx7sbRzZksOe3DfL3+Fc0MnKJVM=; b=XYTazogpJhBgFttPcg5rg+K7vp
+	etbgglpGko8LycvjRgJSBq2Usg0jXropcWRwvfjqeojoaHpfdo5DpltMMCAYKyDkS/NUCaOC9OuVY
+	uPpI96AZnhkMsoqaw4mzlNnloTKY7KMMjvfO2YhNHqLBXW9wuQ+aGcUzwSwyEo4WLpUo7oqv0UH//
+	l0D7kxyniKhNKG7sTsFnq70PPNSpX8bfDAHgSL3PemZI3nS3sID86W6WAcyJWNerfK6BHeB3198rf
+	Rj/tNZskFQyIRmqv4RBvB2YvKU+Xb6qZb69VqWz74/PDRd2B0xyby1TXQpHyb94Gg3qmltf2YJGfR
+	SU0OrcFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLBA5-00Chjk-9l; Thu, 26 Jan 2023 22:56:05 +0000
+	id 1pLCS5-00Cwph-9l; Fri, 27 Jan 2023 00:18:45 +0000
 Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLBA0-00ChjA-7q
-	for linux-mediatek@lists.infradead.org; Thu, 26 Jan 2023 22:56:01 +0000
+	id 1pLCMc-00CujG-8E; Fri, 27 Jan 2023 00:13:09 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id E526EB81C5E;
-	Thu, 26 Jan 2023 22:55:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3FBA7C433D2;
-	Thu, 26 Jan 2023 22:55:55 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 3C354B81F5D;
+	Fri, 27 Jan 2023 00:13:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71F4DC433A8;
+	Fri, 27 Jan 2023 00:13:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1674773757;
-	bh=lUlV7aiI0si0/W517FBDa/HeRq2i5wQgYiZ8e4/VPhs=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=NJ8I2pTHBLWb9hqw76GjVnV6JAeuMwrghH7OCL69Ywnzcw0hma9owHEn0ajjkcR+2
-	 LDPToCsgG14hdUcA1a71FHfrreEjFtpjY5lyDWaTsJp2yLsyJDgyMG36v/SwuT+D0a
-	 hXXGPROBCuaiQoTpNbVqWtw2TE/G3+H39NbPP91qI24Y9LGZrpht/e8kQXcx6jUp/V
-	 4OM2AJpgoMtuOjANAvLc3QL806WDoHVtRAu3jjbhqGgs+9I62knDXsh2kxSgtFqrH8
-	 Blumk/pfW4u8siG8Ljt3B/8XnxVu2GBLuAtuShCCoGgRFQxP3RlzKIusfqZ4ngyacJ
-	 qIKP5PQHppuEg==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Dan Carpenter <error27@gmail.com>
-Cc: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Trevor Wu <trevor.wu@mediatek.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Yang Li <yang.lee@linux.alibaba.com>, alsa-devel@alsa-project.org, 
- linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
-In-Reply-To: <Y9JHSwcfdNcfMjjt@kili>
-References: <Y9JHSwcfdNcfMjjt@kili>
-Subject: Re: [PATCH] ASoC: mediatek: mt8188: remove some dead code
-Message-Id: <167477375499.524795.3525968034845691950.b4-ty@kernel.org>
-Date: Thu, 26 Jan 2023 22:55:54 +0000
+	s=k20201202; t=1674778381;
+	bh=Dy2e0MZ3sBbbfQ1uJYMvKeZWrpufgehg6WjJ7Pz8zps=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=Y7VWTZHhu/NF7whDsrUsV7nhgna6BF9j9//ltrDZmUOizcuCspsdmQYYxA1ffKS3v
+	 1w5lJ/nimN3bp3F+uqjfNahY+wAv3Qt07i/Zahr+2PG6ZkdyrbP2KHL3FgNlr8SevZ
+	 /0xzOTNvuLNkkV06cnPRnJB7oIhnjhROzH4qa+LnBj8zZEw/gESXjB0UO9rIpwPoQg
+	 Gv+DVI/5wVA8QHALuuKmx/0ul2wjOEx40B3UlCmdgY69InTvfNA0SOklowRcWgDI+l
+	 mkVKMhXdWYcmLs27UT22/UtS79SInCkjhx/KtUd+dfucIvAb99EBu/Sd6iaapYm4of
+	 nzZMP1vfP9a9w==
+Received: by mail-lj1-f169.google.com with SMTP id t12so3796260lji.13;
+        Thu, 26 Jan 2023 16:13:01 -0800 (PST)
+X-Gm-Message-State: AFqh2krT1Up9t3ZMkQXdu883Z5PFoPtVl0AvL2NY+MlZuBduOdnmQURk
+	nXsYv4xK2WHgtzPgt1KTbNDYN0zQNBembAsDiQ==
+X-Google-Smtp-Source: AMrXdXu3+25tG1AX0tTAw3NUXePsMdfOctSjTiPoTIR7dx8NyyD2yH5l7oUNVibnGbCskGPI5hLrYcA5NRyzuh0kmsg=
+X-Received: by 2002:a2e:bd13:0:b0:287:4eeb:53dc with SMTP id
+ n19-20020a2ebd13000000b002874eeb53dcmr2191832ljq.27.1674778379356; Thu, 26
+ Jan 2023 16:12:59 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.12.0
+References: <1673330093-6771-1-git-send-email-xinlei.lee@mediatek.com> <1673330093-6771-2-git-send-email-xinlei.lee@mediatek.com>
+In-Reply-To: <1673330093-6771-2-git-send-email-xinlei.lee@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Fri, 27 Jan 2023 08:12:47 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__wuHgZmPKGxKPceHTcupUqKyxPb0CrG=ZB1c47T+Dohg@mail.gmail.com>
+Message-ID: <CAAOTY__wuHgZmPKGxKPceHTcupUqKyxPb0CrG=ZB1c47T+Dohg@mail.gmail.com>
+Subject: Re: [PATCH v2 1/3] drm/mediatek: dsi: Reduce the time of dsi from
+ LP11 to sending cmd
+To: xinlei.lee@mediatek.com
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie, 
+	daniel@ffwll.ch, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, jitao.shi@mediatek.com, 
+	thierry.reding@gmail.com, sam@ravnborg.org, dri-devel@lists.freedesktop.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230126_145600_619564_E50691A2 
-X-CRM114-Status: GOOD (  11.77  )
+X-CRM114-CacheID: sfid-20230126_161307_706885_E5F469B4 
+X-CRM114-Status: GOOD (  20.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,37 +85,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 26 Jan 2023 12:26:35 +0300, Dan Carpenter wrote:
-> We know that "irq < 0", so delete the unnecessary check.
-> 
-> 
+Hi, Xinlei:
 
-Applied to
+<xinlei.lee@mediatek.com> =E6=96=BC 2023=E5=B9=B41=E6=9C=8810=E6=97=A5 =E9=
+=80=B1=E4=BA=8C =E4=B8=8B=E5=8D=881:55=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> From: Xinlei Lee <xinlei.lee@mediatek.com>
+>
+> According to Figure 16 Turnaround Procedure on page 36 in [1], you
+> can see the status of LP-00 -> LP10 -> LP11. This state can correspond
+> to the state of DSI from LP00 -> LP11 in mtk_dsi_lane_ready function
+> in mtk_dsi.c.
+>
+> LP-00 -> LP10 -> LP11 takes about 2*TLPX time (refer to [1] page 51
+> to see that TLPX is 50ns)
+>
+> The delay at the end of the mtk_dsi_lane_ready function should be
+> greater than the 2*TLPX specified by the DSI spec, and less than
+> the time specified by the DSI_RX (generally 6ms to 40ms), to avoid
+> problems caused by the RX specification
 
-   broonie/sound.git for-next
+Applied to mediatek-drm-next [1], thanks.
 
-Thanks!
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-next
 
-[1/1] ASoC: mediatek: mt8188: remove some dead code
-      commit: aa326917f58fa577bfba8976da214080bdec2699
+Regards,
+Chun-Kuang.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+>
+> [1]:mipi_D-PHY_specification_v1-1
+>
+> Fixes: 39e8d062b03c ("drm/mediatek: Keep dsi as LP00 before dcs cmds tran=
+sfer")
+> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> Acked-by: Sam Ravnborg <sam@ravnborg.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediate=
+k/mtk_dsi.c
+> index 3b7d13028fb6..9e1363c9fcdb 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -721,7 +721,7 @@ static void mtk_dsi_lane_ready(struct mtk_dsi *dsi)
+>                 mtk_dsi_clk_ulp_mode_leave(dsi);
+>                 mtk_dsi_lane0_ulp_mode_leave(dsi);
+>                 mtk_dsi_clk_hs_mode(dsi, 0);
+> -               msleep(20);
+> +               usleep_range(1000, 3000);
+>                 /* The reaction time after pulling up the mipi signal for=
+ dsi_rx */
+>         }
+>  }
+> --
+> 2.18.0
+>
 
