@@ -4,86 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80A55C38142
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 22:39:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0997DC38142
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 22:52:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Q6iBoXpwgGR/ZVf0A5SekY8NMqe2gKVl+e0DSwe8dcg=; b=WLfUErZtSy9fNf4wZMxd9fNZGn
-	olNnvpRu1r3163tLQquFeNl39o4RRBr2y/hXmuShNuYdu3qGJP+GM1nMCau1D8/Jznp3IcwweqDyi
-	PDeZHfnmzzJzQ78UCHGMtrjUvVaWn8/5mTST0A2tQDUDCf+/kQj9luU/lhzLES+LRVJmUa9AhlMpB
-	r/HA1pvtADxbo4czbuHU25kubvxZT61Fskr+pqkCqizZyGxlxDWQhshKdcBRoVd/xBFS4YV4sdqU+
-	9V+5AbxZFW45lo8TeCs1qSHcH9Ylrn0qlnbxhrq3ScCOZEkqeO0W3vpKuH0ueczobeMfcrkw7wQOH
-	+iGaN9Jg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SeMy6+Yg2PGakm3qSiX1Tv0sKSod3nKYJ4AwEfDlcko=; b=qnDY/3p1V/rOE1dKh3i6AXDYzh
+	UF8m1+CMoyOoL+HH1vQEekyDoJd35LOBmTY1/M0ZXrCmF/YiihZLwqaLHgo/z52IhfXB3e6a6QBUQ
+	yNhmE5yhGT48I1oIkAbISCl/W3STYvsI21jyEaJdcetkuTNyLqqf9FAZ00tRZ0AZTFYntSHyONxbL
+	RV2dvoroB45oJT8nrGY048jE/QbJ6av7/pJijIpARDt3iDibNgTTS6WFswYlEjPhALI29fyhuqqoB
+	WmG1TEf7qtlki/YoaFJGmpMpnP0yZIqIIhmdlZ6UBzaTib7ykInTBrMISzCsY7DyMG6odWfGEj/d1
+	aNS/sOVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLXNE-00Gj1a-J3; Fri, 27 Jan 2023 22:39:08 +0000
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+	id 1pLXZt-00GjwT-Ne; Fri, 27 Jan 2023 22:52:13 +0000
+Received: from mail-dm6nam10on20615.outbound.protection.outlook.com ([2a01:111:f400:7e88::615] helo=NAM10-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLXN3-00Gizz-G7
-	for linux-mediatek@lists.infradead.org; Fri, 27 Jan 2023 22:38:58 +0000
-Received: by mail-pf1-x431.google.com with SMTP id z31so4253543pfw.4
-        for <linux-mediatek@lists.infradead.org>; Fri, 27 Jan 2023 14:38:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Q6iBoXpwgGR/ZVf0A5SekY8NMqe2gKVl+e0DSwe8dcg=;
-        b=cQRXyyWhjENY1EiRP7qhQP3wf+6XMReMMAZnfWe2Kur1YO8bKgprzMVIQHTQs2DG82
-         bpmy5tKTm5RBWsUwvT6HOsWbJR1SXZaIP93syx0Y1BvqG10wdKJrUXq/iYPkgUmUS6Z6
-         m3DmEvmavq2Fh5cIiGPWYfyC54a7ureEExsJ4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Q6iBoXpwgGR/ZVf0A5SekY8NMqe2gKVl+e0DSwe8dcg=;
-        b=bTQ+Z/db7MHd2rtyh5UGwrdRxH1Wy0BKrDF0HIGzvZ+jdjhQQvWUW990kNxshgdMsH
-         SxUn+hsrv1mCQ5Zpd1JND4bh4rHg1ANBsYFCQDuO5jfnO6xQd0rNhWuuE9Dfu+xII3ah
-         8FCwuwwW7EpnRJ5ixqHM2UKeUjJxzfwNtnHoaIXaXYcOSK2HyhsY0oUc5+mYUfTM1cTw
-         M8K4jc88dIDqaK1Th4L6WeobXl/6cmqbS0ViQ1MdBx4xpTO3miksJHa/kBGDVXo1ZQ0W
-         rV084qGTbslb/D6PyI+ue1r+S7e1sxtURK17Dvg9GsoWwUlc44sWaZs1SO9KWkqQ4DuP
-         n+yA==
-X-Gm-Message-State: AO0yUKVNvl+TKFZDNwKeuHXEV1fuh22k7loJaIwGM87G3bcDG60P7HaI
-	ZE4U345RoynbzCFw14uX5h4rDg==
-X-Google-Smtp-Source: AK7set9nEOp8oJvvITNyqKkOgdNSk+TAokzAcmXTUWbfu3zV7ISgRJfcLKUBqQSOq9XH0hqHE2L/bQ==
-X-Received: by 2002:a05:6a00:1d04:b0:592:7341:781f with SMTP id a4-20020a056a001d0400b005927341781fmr35668pfx.31.1674859136095;
-        Fri, 27 Jan 2023 14:38:56 -0800 (PST)
-Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
-        by smtp.gmail.com with ESMTPSA id br13-20020a056a00440d00b00581ad007a9fsm3088755pfb.153.2023.01.27.14.38.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Jan 2023 14:38:55 -0800 (PST)
-From: Kees Cook <keescook@chromium.org>
-To: Felix Fietkau <nbd@nbd.name>
-Cc: Kees Cook <keescook@chromium.org>,
-	John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-hardening@vger.kernel.org
-Subject: [PATCH] net: ethernet: mtk_eth_soc: Avoid truncating allocation
-Date: Fri, 27 Jan 2023 14:38:54 -0800
-Message-Id: <20230127223853.never.014-kees@kernel.org>
-X-Mailer: git-send-email 2.34.1
+	id 1pLXZi-00Gjsz-Kk; Fri, 27 Jan 2023 22:52:04 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=DPBO46Y+IzpSdMF3AppJqhDiJzrKusUWZAeYJfd+Fx88vNV+YkVJk5dj/7KXeIStqQvm9vknjsWsbp/aRujsA5ahxwORN+yZlbGeDeBhzsupQHu6a2xej8I2udbFephn6wCiO2XUe+BWlMmPo/oxksAMaw7cSjb9j6afQeN4OPcBL6mk8kI0+BB74GlVHshbKKD+3n2Kkh9X00GnRJusYlpq+oUHYm4/pVdU55hXdiO6c5BtPItkladw98FJXXoogPZB9yyXHn5i/+llhqWksv+lMkQMeuKs+p5vuavsoCkwNrri1/Y1J27aCW9mRb/uOADLO1eV5RguCu8tr0atCA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=SeMy6+Yg2PGakm3qSiX1Tv0sKSod3nKYJ4AwEfDlcko=;
+ b=PQbDF9soEbJQmmF1gkv3npyxYKbbxkH+C17V9MF8boNKfTi8gxdkjOWOK6P9eKFEpgQRrb7BVh3RWLimFKubSi9CME7HJJcMrQoqRrYGhhXG3gSDVVDnI6I98k5+4DZB7JiFTwrhr6ucrQd9HLqzsFtsEaWH7T7KNRXOGaePZ3uA6Tx0uM0DGRYQ7ZIWiqi+qg9o0apdoq+D9laqrVLlexC0ZYfv9eodzuolgZ34itRm2a6CZntQ5K8p9sTesFsQGEbKVM+4E37L8jgAbwlndTHNW+OSOlTmW4ptUKpw5ziKLx4T3D664TqWwqe+pHkuUWk3C7rDwH6fjtCdqaXg8g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=arm.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=SeMy6+Yg2PGakm3qSiX1Tv0sKSod3nKYJ4AwEfDlcko=;
+ b=KTCmQNFE8WENc+Pu4y63VdHQCBF/2wm1FZHt0MhtfHXyV+pOqI7PXTPnLscgM4aaIgCo/Hz27YG5Nk65eJIvr2XaC/mAYlmSL4DrFUjRPZVD1Pyoijzd2YO6kKPxT8pcACmOfQOxOPs0SAIls7JhAflNovRRVSYchLnZk/I3oPZEYpV6jXOfMKu6X1NofPvzu4SATnE8jUUm6xS6qScbXiUUQMFog/NURyuWoOreGNRheX6UW7INpy80NRYq5HM+w5NOFS+mW43z1TFVJM0VqlcgwoRPslDqhlM+Fve8z0PU/+NlslIfmHGepB6KPvq8sSneG04gydQRfkJMm1dYmg==
+Received: from BN9P223CA0014.NAMP223.PROD.OUTLOOK.COM (2603:10b6:408:10b::19)
+ by DS0PR12MB7899.namprd12.prod.outlook.com (2603:10b6:8:149::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.21; Fri, 27 Jan
+ 2023 22:51:59 +0000
+Received: from BL02EPF0000EE3C.namprd05.prod.outlook.com
+ (2603:10b6:408:10b:cafe::92) by BN9P223CA0014.outlook.office365.com
+ (2603:10b6:408:10b::19) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.23 via Frontend
+ Transport; Fri, 27 Jan 2023 22:51:58 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ BL02EPF0000EE3C.mail.protection.outlook.com (10.167.241.132) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6043.10 via Frontend Transport; Fri, 27 Jan 2023 22:51:58 +0000
+Received: from rnnvmail203.nvidia.com (10.129.68.9) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.36; Fri, 27 Jan
+ 2023 14:51:45 -0800
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by rnnvmail203.nvidia.com
+ (10.129.68.9) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.36; Fri, 27 Jan
+ 2023 14:51:45 -0800
+Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com (10.129.68.8)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.36 via Frontend
+ Transport; Fri, 27 Jan 2023 14:51:44 -0800
+Date: Fri, 27 Jan 2023 14:51:42 -0800
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Robin Murphy <robin.murphy@arm.com>
+CC: <jgg@nvidia.com>, <kevin.tian@intel.com>, <joro@8bytes.org>,
+	<will@kernel.org>, <agross@kernel.org>, <andersson@kernel.org>,
+	<konrad.dybcio@linaro.org>, <yong.wu@mediatek.com>, <matthias.bgg@gmail.com>,
+	<thierry.reding@gmail.com>, <alex.williamson@redhat.com>,
+	<cohuck@redhat.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
+	<iommu@lists.linux.dev>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-tegra@vger.kernel.org>,
+	<kvm@vger.kernel.org>
+Subject: Re: [PATCH 2/4] iommu/dma: Do not init domain if
+ broken_unmanaged_domain
+Message-ID: <Y9RVftHuARKQnfN1@Asurada-Nvidia>
+References: <cover.1674849118.git.nicolinc@nvidia.com>
+ <451e7beb57ec6de66ee0da5b38886105436f53d7.1674849118.git.nicolinc@nvidia.com>
+ <89da64c8-fef4-2cea-f15c-86264073500c@arm.com>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2447; h=from:subject:message-id; bh=yfJ1UtZNOwTETD8Al2XTKq5PIE5VchaJolozWYUefHY=; b=owEBbQKS/ZANAwAKAYly9N/cbcAmAcsmYgBj1FJ9hMXYGB04Nb8fnZvQFD8SaUvBjTtQlF3d5mZ8 JQnQwBqJAjMEAAEKAB0WIQSlw/aPIp3WD3I+bhOJcvTf3G3AJgUCY9RSfQAKCRCJcvTf3G3AJuk7D/ 98s7Y81Xj52PumgZDzo42yrLNHSRGuvMRYB0A/Q4Zt7FebJnq8KJmO1UKXey36nsJXuwoxCuFJw6VQ WoGAcBv3Xd6q2yO8GzMzPv/2JSTc8ATaSQaljNkd8bAbGvtpLTMwzLNW/JXYovBqgZzMRVzRvSogMF fA51JTFGlNoiZQjfsVIfnV9yVf0MeOJXx58PbH2hPftHeA63ZMVVgGZCzyWqrXqrPeiYtJ/oybWxhd X++53/jblEmlKNyhcpGxEmMnLtk7whId4NiXn+TECSGFOfGy/uwip6rvRdKSrjufQ0iNCHMQtN4L0Y t7Rrm+ldNKiGr2RfYhfk78//8keWFu7lfOEt7WcSsx+e07aSWGIYFxb3t99JktWxVGztvciwIE5irP bQos//ov2Bi7hRrZjt5mZKfpBlfB5MyparOnAE9nf3Wc4jRi9eYaPNg+9XAFAhO8oNCw5YEHsluu2i sCzLo3iPw7Se47jNfjm5JyIIu1rmL6M6w4E3jDDqyMPGsQ5Q4obMjaZJAuEicR5KpoTlcnLp3CJohC AChj0Z0ugQJ77+9dAAXUzahg5vmgs0HkmTqMtgaV3QmOvsla5A7NR1DYyvl18aAZJo9n4bcscCV850 5Mud8wqUAhE+EHIBq1qNLVa0ksoN2cUcOyVcYwv3IdiqilS9ndN263ArKt8g==
-X-Developer-Key: i=keescook@chromium.org; a=openpgp; fpr=A5C3F68F229DD60F723E6E138972F4DFDC6DC026
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <89da64c8-fef4-2cea-f15c-86264073500c@arm.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL02EPF0000EE3C:EE_|DS0PR12MB7899:EE_
+X-MS-Office365-Filtering-Correlation-Id: 24c33fe0-2cc5-4206-f232-08db00b918b5
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	4KiZt/HA766sIlkz0MQ1APNL/QmVhfGWlhRp/8iEVD3BDLqqF56Z8BkR3QbRlmtw5943DqclNXxg8oztgNvD3KwmtkDWVwZ0v05uW2vTDna/Sc2KM5y1tIjJDBe87YsEZEzoos4SnBOvDGcJ7q6C/IT+/IEC6Nsu97xzC1ffROnJL/gTn6VHk+6UMmI9QFYdrp73YefhfHXH3ozYnYj50j+xOy/Gdy9aRcqHuVlEoquqaBGAjECVQwddE1tb4/Osrgl5wm5ZLQ8yWYukbQSxfFcfDPoCw0crAp3Vzv3ikdt14XyYdyk6I1lAzjDFWfw+uBBLCQ/W7JnmBuLeZNaQz/JRNgpG1l9Pyy5MaNzt/t/8T+HaY2MNaW7Th+wsKHVZgoP4idYc5QSPx/6ZP8ZsXLcuwEnWtHccQrDkkSffWEjF7Xm1zk4d1KOsUPSTMHnmaRLANPlPStKOpmViwGMo2J30J1CKK5Xayj3MhTWfPOZxwDHurSxeEB3ryyFcJ4NSTD42TVjLIIF9dsjb4qy/wLS766kp2+6p3cSfu0n8sN24s/swsJbVrbM0p9bkR7/JilZSi36L8Ym1FJ7JKk18Ka0f9Y5pOvx2JS7LWFWjiZridg2jQkM/TRIvUD5gNSsWdyi7um8g/7DqeCohV68cFGq5LVXVy8g5kDLZzrErIqHdosf+vsZTA8fhpiBEaseg/TZNI74Tcun9X2yEF9dF9w==
+X-Forefront-Antispam-Report: 	CIP:216.228.117.160;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge1.nvidia.com;CAT:NONE;SFS:(13230025)(4636009)(396003)(39860400002)(136003)(346002)(376002)(451199018)(40470700004)(46966006)(36840700001)(47076005)(82310400005)(55016003)(86362001)(40480700001)(40460700003)(356005)(33716001)(36860700001)(54906003)(7416002)(82740400003)(7636003)(4744005)(2906002)(70206006)(8936002)(41300700001)(4326008)(186003)(8676002)(5660300002)(6916009)(9686003)(53546011)(70586007)(26005)(316002)(426003)(478600001)(336012);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jan 2023 22:51:58.4552
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 24c33fe0-2cc5-4206-f232-08db00b918b5
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.160];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: 	BL02EPF0000EE3C.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB7899
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230127_143857_543643_9D32A6A6 
-X-CRM114-Status: GOOD (  12.23  )
+X-CRM114-CacheID: sfid-20230127_145202_897215_374BD613 
+X-CRM114-Status: GOOD (  12.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,63 +130,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There doesn't appear to be a reason to truncate the allocation used for
-flow_info, so do a full allocation and remove the unused empty struct.
-GCC does not like having a reference to an object that has been
-partially allocated, as bounds checking may become impossible when
-such an object is passed to other code. Seen with GCC 13:
+On Fri, Jan 27, 2023 at 09:59:50PM +0000, Robin Murphy wrote:
+> External email: Use caution opening links or attachments
+> 
+> 
+> On 2023-01-27 20:04, Nicolin Chen wrote:
+> > Add a sanity of the broken_unmanaged_domain flag to reject the use of
+> > dma-iommu in the early stage, if the flag is set by the iommu driver.
+> 
+> Realistically, iommu-dma will never be enabled on PPC32, let alone used.
+> It will not be enabled on ARM until I've fixed any drivers which need
+> fixing to work with it. We don't need to add dead code here.
 
-../drivers/net/ethernet/mediatek/mtk_ppe.c: In function 'mtk_foe_entry_commit_subflow':
-../drivers/net/ethernet/mediatek/mtk_ppe.c:623:18: warning: array subscript 'struct mtk_flow_entry[0]' is partly outside array bounds of 'unsigned char[48]' [-Warray-bounds=]
-  623 |         flow_info->l2_data.base_flow = entry;
-      |                  ^~
+OK. Sounds like I can drop this patch.
 
-Cc: Felix Fietkau <nbd@nbd.name>
-Cc: John Crispin <john@phrozen.org>
-Cc: Sean Wang <sean.wang@mediatek.com>
-Cc: Mark Lee <Mark-MC.Lee@mediatek.com>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: "David S. Miller" <davem@davemloft.net>
-Cc: Eric Dumazet <edumazet@google.com>
-Cc: Jakub Kicinski <kuba@kernel.org>
-Cc: Paolo Abeni <pabeni@redhat.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: netdev@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Signed-off-by: Kees Cook <keescook@chromium.org>
----
- drivers/net/ethernet/mediatek/mtk_ppe.c | 3 +--
- drivers/net/ethernet/mediatek/mtk_ppe.h | 1 -
- 2 files changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
-index 451a87b1bc20..6883eb34cd8b 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
-@@ -615,8 +615,7 @@ mtk_foe_entry_commit_subflow(struct mtk_ppe *ppe, struct mtk_flow_entry *entry,
- 	u32 ib1_mask = mtk_get_ib1_pkt_type_mask(ppe->eth) | MTK_FOE_IB1_UDP;
- 	int type;
- 
--	flow_info = kzalloc(offsetof(struct mtk_flow_entry, l2_data.end),
--			    GFP_ATOMIC);
-+	flow_info = kzalloc(sizeof(*flow_info), GFP_ATOMIC);
- 	if (!flow_info)
- 		return;
- 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.h b/drivers/net/ethernet/mediatek/mtk_ppe.h
-index 16b02e1d4649..5e8bc48252b1 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.h
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.h
-@@ -279,7 +279,6 @@ struct mtk_flow_entry {
- 		struct {
- 			struct mtk_flow_entry *base_flow;
- 			struct hlist_node list;
--			struct {} end;
- 		} l2_data;
- 	};
- 	struct rhash_head node;
--- 
-2.34.1
-
+Thanks
+Nicolin
 
