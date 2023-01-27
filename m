@@ -4,84 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A1BDC54EAA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 18:02:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C0C1C54EAA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 20:15:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y2Q86j92pQ9q2wsMYUDefPiRAUR/rCfcZ3Y/y0U02v8=; b=dyZA0VvHBn+9B95NXnnGU4kXKa
-	jYprx3q2nU8squApkL2tmzPabkwjPNUjBu+SiLbxSSJBeaFmaWTDpceryAO392WM9UVntrOE0eAbc
-	MnWolft8FGue01kTMjQUE/FKWqYwjotFbbLGoEa5//F8qVJfF13dTr/6pfv6C5NXcs6qOGoGVQRLC
-	fwzzbfNWH703D8lJQUkHwC1PDHHZqo23myyNBhrk7IsL9vqq8Yw9aBVkHoJvq4V0mvFXjadd8sMFg
-	/SpUSqLDLl32sEisgFShBczW92IfEbE/UahRAnFD32SPhKZ3qZSv46AJcA+BijAOnmip9JCqBsSvc
-	nGEZotyA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=VZh7ZQsu6wXe71RiKkNG/LgBAOZ30KFVhwYqOJyWR/U=; b=3FfirF0ICSvrk6MfSpz0xb3CSt
+	PyXPcRGmhS1+DBfzpjOD+WkHwSgPk7Fj5WatJQDYj4y2ccVDCuburd9dDdj2mykzXgGaz6fXaahOd
+	jiUgJdgGfy8HncU3UYjQa/UYHHPJ2z3WA0HXsPOETXIIfv0M+aJkY0gtubRuAolC5eEr9pt4of2fx
+	bcmvsSdTfsq2cMpzhQBo6ZBkdKcT+88UxhvQOsQSDMrolxcQIcBafQ8lkZLtn04GFucDGKRw4wEF/
+	VMvxCyh5Zr02CW4NnQxjczw7gi1Uj0/m1sMa2r9vDENUs8WD9wPtu6eG2xaC3harNmRznlSOlPF2q
+	l1sGha5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLT3f-00Fyg2-Sr; Fri, 27 Jan 2023 18:02:39 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1pLV7w-00GLcX-18; Fri, 27 Jan 2023 20:15:12 +0000
+Received: from mail-dm3nam02on2057.outbound.protection.outlook.com ([40.107.95.57] helo=NAM02-DM3-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLT3d-00Fyed-05
-	for linux-mediatek@lists.infradead.org; Fri, 27 Jan 2023 18:02:38 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id v13so5417656eda.11
-        for <linux-mediatek@lists.infradead.org>; Fri, 27 Jan 2023 10:02:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Y2Q86j92pQ9q2wsMYUDefPiRAUR/rCfcZ3Y/y0U02v8=;
-        b=CdDAORiYi7i8Rh5tx0vLXUjR6M49l7zi6wYWbctYHIiW9d5EDVrOzpXzWHxCvweTiM
-         VsRE9D8RDYs6Gc07Ig3Gv2Goti67GkR3oaCqb91zHJ/hTw59daVB1+K0ukgP5parwwp9
-         GZPYuqHvTRS3J1F85pOsxMJNi9unlWXkqxle8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Y2Q86j92pQ9q2wsMYUDefPiRAUR/rCfcZ3Y/y0U02v8=;
-        b=ELkaJPSbFyeBV8cWCwQVOwUYDMNMRmbWjJUGa9brtYKUb2jc5Y1WH12unBX905vJBe
-         nk9058ErTfTK5DxwYZUeyhJNMKn3dnKCP6Zvq2QzzVBFk9/H9WR1rCJNZrSg/Wny+DVT
-         SBJNyMG2YqRh0DkgYBiNlV5i71smTV2DSmgEvf6SHyKf/evwDsLYgrnUfL2zGGGaNTaN
-         6wwCLYoFH9WWkQ6eBQlaJPZwOd39R1V4Qo4E+xrF+Hz16mP4UMyCe5aMN0PG3EpWvFGI
-         OcqCq/IGcDzsuilmH70Xe2siVgKGuJMFdcoER2o+ErFJA9p+9zja83vCp4TmMnuKgb/6
-         Tyiw==
-X-Gm-Message-State: AO0yUKVSSUn2mqLS4NbKSyLt5e26G6nD9cdT5nHjM+HjlH+v7yUAlHom
-	hwJ2hM6s2BW07lVgJSYkOWAXB4dSaCP+GNyVQY8=
-X-Google-Smtp-Source: AK7set8TVPDc4qZNJg5w6MKVsJVOX+ODbWsVY61spxYSfJ5HtfmrL6sMWKmM+0oEy5byfdpGOrttZw==
-X-Received: by 2002:a05:6402:430b:b0:4a0:afd5:df81 with SMTP id m11-20020a056402430b00b004a0afd5df81mr13289241edc.35.1674842553317;
-        Fri, 27 Jan 2023 10:02:33 -0800 (PST)
-Received: from mail-wr1-f54.google.com (mail-wr1-f54.google.com. [209.85.221.54])
-        by smtp.gmail.com with ESMTPSA id w25-20020aa7d299000000b0048789661fa2sm2634734edq.66.2023.01.27.10.02.31
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 27 Jan 2023 10:02:31 -0800 (PST)
-Received: by mail-wr1-f54.google.com with SMTP id t18so5719234wro.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 27 Jan 2023 10:02:31 -0800 (PST)
-X-Received: by 2002:a5d:6b51:0:b0:2bf:c5cc:e1d6 with SMTP id
- x17-20020a5d6b51000000b002bfc5cce1d6mr164739wrw.659.1674842551177; Fri, 27
- Jan 2023 10:02:31 -0800 (PST)
+	id 1pLUyC-00GHx3-CX; Fri, 27 Jan 2023 20:05:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=j/oJ/mjzoVJ9LYtmtKqnBfT6ykKG6CCwPi1fhWIWV/ECm6Fh5Lr1nZzkAHoV4zICg9oi91ydGHYOH7ofPw7SgDDCanVZF6KTOCf1ZAYMn5X7zwDjk0CadjtxpqGvOK1+qcbJmhZzoQW7ss9249YUM8O5Kw84JDFLKdrTMEUNdTt8Hdc6YLYTW4fDSbE8eGuukPyl7rUXV6AyinsiG+t+/migr5ZcjUt8ktGi+4/pbt9xlZhu426bp1XaMpj/91O5TxcvlBCkFGrjuPP4gFGONMzRcb3gCwEJC9ZFSLbTeoUtq/ss+NMIpKeiHKKx0j0QZqISQHiEnOJFBstJEraYOw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=VZh7ZQsu6wXe71RiKkNG/LgBAOZ30KFVhwYqOJyWR/U=;
+ b=ScnWR7Ko1/BRa3pJ4uQpM4pFy0H8DiFMmwgtlbmUaIPxLddQ0/sg0kG73us0Pw1rbeSFnAb4S17HdTIVkkq9xyZJsXwWTCqQlYkDvqx5njARdMI7erFm8c7S/hCtkXiK1t7nABgfZ1/g/HIJMk8sG+It9K10o03OVWmXSwEKBVEbGHNrvqJKI7CAcOGCplgBqVPfH5ZnRbRruNAGQ3YEEnHOx5W56Wbi+bq0ayqGLUmgnMi2jM9yS7+rf9U1PyoFL6mIWTqtiYVjm3s2Tz62wgkgglfj8Uv9mg1jARTLx966lE/tGtOg7PdjQ74PRGr+gvMvfP7nLfz58f8MD2hpLg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=lists.infradead.org
+ smtp.mailfrom=nvidia.com; dmarc=pass (p=reject sp=reject pct=100) action=none
+ header.from=nvidia.com; dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=VZh7ZQsu6wXe71RiKkNG/LgBAOZ30KFVhwYqOJyWR/U=;
+ b=ltVJGMly3csqZVMRnGuY1uGZbqFe5nFJ+c5K3UaSRuAcr+15gWbt27HHYFgQIDDUu/AG/Yu+oAVs4bTu3N5yBcMWMUvXppNG9L053v8JmPWnK3hfG1PRatZ/icnZL/zoF2FTfTdpkcGLUrWmvNWURmCewHEJWa330iHFHLk3fELr0L4W33tmhlV+yEbCqE5QHRmOu+cgi9UwIWUBm2nLWvRFX5spYvm2qP/rcUfa3XBN1wIy8vNPwDL7n9fmleAlAisdfqvbLqrnedShjun+qfNQRXXZAN3Fod3uNqq71yJTYJ80gLyVninyue4BGI8OgbXYyKbIzLX3owM9OdsZXw==
+Received: from BN1PR10CA0003.namprd10.prod.outlook.com (2603:10b6:408:e0::8)
+ by SJ1PR12MB6243.namprd12.prod.outlook.com (2603:10b6:a03:456::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.25; Fri, 27 Jan
+ 2023 20:05:04 +0000
+Received: from BN8NAM11FT110.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:408:e0:cafe::b6) by BN1PR10CA0003.outlook.office365.com
+ (2603:10b6:408:e0::8) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.22 via Frontend
+ Transport; Fri, 27 Jan 2023 20:05:03 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ BN8NAM11FT110.mail.protection.outlook.com (10.13.176.156) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6043.22 via Frontend Transport; Fri, 27 Jan 2023 20:05:03 +0000
+Received: from rnnvmail204.nvidia.com (10.129.68.6) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.36; Fri, 27 Jan
+ 2023 12:04:55 -0800
+Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail204.nvidia.com
+ (10.129.68.6) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.36; Fri, 27 Jan
+ 2023 12:04:54 -0800
+Received: from Asurada-Nvidia.nvidia.com (10.127.8.12) by mail.nvidia.com
+ (10.129.68.10) with Microsoft SMTP Server id 15.2.986.36 via Frontend
+ Transport; Fri, 27 Jan 2023 12:04:53 -0800
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: <jgg@nvidia.com>, <kevin.tian@intel.com>, <robin.murphy@arm.com>,
+	<joro@8bytes.org>, <will@kernel.org>, <agross@kernel.org>,
+	<andersson@kernel.org>, <konrad.dybcio@linaro.org>, <yong.wu@mediatek.com>,
+	<matthias.bgg@gmail.com>, <thierry.reding@gmail.com>,
+	<alex.williamson@redhat.com>, <cohuck@redhat.com>
+CC: <vdumpa@nvidia.com>, <jonathanh@nvidia.com>, <iommu@lists.linux.dev>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-tegra@vger.kernel.org>, <kvm@vger.kernel.org>
+Subject: [PATCH 0/4] iommu: Reject drivers with broken_unmanaged_domain
+Date: Fri, 27 Jan 2023 12:04:16 -0800
+Message-ID: <cover.1674849118.git.nicolinc@nvidia.com>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
-References: <20230127165409.3512501-1-robdclark@gmail.com>
-In-Reply-To: <20230127165409.3512501-1-robdclark@gmail.com>
-From: Doug Anderson <dianders@chromium.org>
-Date: Fri, 27 Jan 2023 10:02:19 -0800
-X-Gmail-Original-Message-ID: <CAD=FV=XL_KKB1vbU=gZVXYJzs4pLEnACysp0Q9DxhkHGTR9AgA@mail.gmail.com>
-Message-ID: <CAD=FV=XL_KKB1vbU=gZVXYJzs4pLEnACysp0Q9DxhkHGTR9AgA@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: Remove unused GEM DMA header include
-To: Rob Clark <robdclark@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Rob Clark <robdclark@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	"moderated list:DRM DRIVERS FOR MEDIATEK" <linux-mediatek@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	open list <linux-kernel@vger.kernel.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN8NAM11FT110:EE_|SJ1PR12MB6243:EE_
+X-MS-Office365-Filtering-Correlation-Id: e9962505-562e-442e-2012-08db00a1c760
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	E56bWi9f2cQ9RTOZidH+rfkRzUPcbmeNr4SvrFn/2bblSjf69HFQnSPr95Bg6wZU733fOHOoTi5mrGsOV6ulaVSeISYTUc1qb6vDsUXfdQncNDZNHr4y5biUb4W/sWtlXRwXkhpxNbmO/D/PPl6/3/fitpdbHtPA8c3Wa0t1xVifKdbkELSfQkj9IPU1XODtSEpyVN3R9JyfGxXaZCOMzQTZWlnBYDsyvXgLutcmMfIfprYlbXxqIN94WsXw1aNlLqEpt5pBGnGCCe9IU6C4utzkC71oJRRBsiULmcO3EsG2E0iDOUtrKKJznON4KkAn3YBF8FV7+etSjw2xVbBwoNZbEbqLIDjvCgiRR2CF23Dah759h1HU3QJgmkfAqbDUhNN7ZYI4/Py2QD7uSefvxrrjeTHe+6wpDZ62kbPeDfcGd2DJ5lxTypmYFZ3mOzhFUwe7lVpyHx2ansA18zkVktJ1kUwbwK0+rWmIb2q2X4vmzHnG0j60rG0IbVkW3KjoOPY3OOkPjybpXwUHRNCTHG4Fy0C5No6wnDltKnsO6LhCrOWdAB5WRBqKwVOo/wARLkiTq2Qf/EfeSwt6A3ycJ2xIlQzYv5PHYVccqGmX4wJrFSR9YxHcfIEY4xJLcFajzm/XkaIp0IE6XOAt78Bp7t7gVpzTmflx8QXPfe7ySzfzMUDpAYb2c4qR72YcgVmhl0d78CUl4hm8j9L3EsAFGVl/c6b4CkEkyInG9Tudn7K5eOIOePo8yGtvL9pC+T1Gv8ZQr9u54mu661I7khRBsGkxE5dOcAz63T3TYH9XpTrimc2MWvWwlfccpZi/hA0I
+X-Forefront-Antispam-Report: 	CIP:216.228.117.161;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge2.nvidia.com;CAT:NONE;SFS:(13230025)(4636009)(39860400002)(136003)(376002)(396003)(346002)(451199018)(40470700004)(46966006)(36840700001)(7696005)(26005)(186003)(6666004)(478600001)(2616005)(2906002)(336012)(966005)(47076005)(426003)(4326008)(110136005)(316002)(83380400001)(70586007)(8676002)(70206006)(54906003)(41300700001)(7416002)(8936002)(5660300002)(36860700001)(356005)(40460700003)(7636003)(82740400003)(921005)(82310400005)(86362001)(36756003)(40480700001);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jan 2023 20:05:03.5726
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: e9962505-562e-442e-2012-08db00a1c760
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.161];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: 	BN8NAM11FT110.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ1PR12MB6243
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230127_100237_057743_8E22525E 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20230127_120508_661380_D1665316 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,40 +124,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi all,
 
-On Fri, Jan 27, 2023 at 8:54 AM Rob Clark <robdclark@gmail.com> wrote:
->
-> From: Rob Clark <robdclark@chromium.org>
->
-> No longer needed since the removal of dependency on DMA helper.
->
-> Fixes: 2ea8aec56bf1 ("drm/mediatek: Remove dependency on GEM DMA helper")
-> Signed-off-by: Rob Clark <robdclark@chromium.org>
+Both IOMMU_DOMAIN_UNMANAGED and IOMMU_DOMAIN_DMA require the support
+of __IOMMU_DOMAIN_PAGING capability, i.e. iommu_map/unmap. However,
+some older iommu drivers do not fully support that, and these drivers
+also do not advertise support for dma-iommu.c via IOMMU_DOMAIN_DMA,
+or use arm_iommu_create_mapping(), so largely their implementations
+of IOMMU_DOMAIN_UNMANAGED are untested. This means that a user like
+vfio/iommufd does not likely work with them.
 
-Reported-by: Douglas Anderson <dianders@chromium.org>
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+Thus, mark all these drivers as having "broken" UNAMANGED domains and
+add a new device_iommu_unmanaged_supported() API for vfio/iommufd and
+dma-iommu to refuse to work with these drivers.
 
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index cd5b18ef7951..7e2fad8e8444 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -20,8 +20,8 @@
->  #include <drm/drm_fbdev_generic.h>
->  #include <drm/drm_fourcc.h>
->  #include <drm/drm_gem.h>
-> -#include <drm/drm_gem_dma_helper.h>
->  #include <drm/drm_gem_framebuffer_helper.h>
-> +#include <drm/drm_ioctl.h>
+These are preparatory changes for a new IOMMU API that will be used by
+iommufd. Having this flag allows us to prevent any use of the new API
+in iommufd, to keep things clean.
 
-It took me a little while to realize why you needed this extra
-include. I guess DEFINE_DRM_GEM_FOPS implicitly refers to drm_ioctl().
-Seems like really drm_gem.h ought to be the one including drm_ioctl.h,
-but maybe there's a good reason why we don't do that?
+You can also find this series on Github:
+https://github.com/nicolinc/iommufd/commits/broken_unmanaged_domain
 
--Doug
+Thank you
+Nicolin Chen
+
+Nicolin Chen (4):
+  iommu: Add a broken_unmanaged_domain flag in iommu_ops
+  iommu/dma: Do not init domain if broken_unmanaged_domain
+  iommufd: Do not allocate device object if broken_unmanaged_domain
+  vfio: Do not allocate domain if broken_unmanaged_domain
+
+ drivers/iommu/dma-iommu.c       |  3 +++
+ drivers/iommu/fsl_pamu_domain.c |  1 +
+ drivers/iommu/iommu.c           | 24 ++++++++++++++++++++++++
+ drivers/iommu/iommufd/device.c  |  3 +++
+ drivers/iommu/msm_iommu.c       |  1 +
+ drivers/iommu/mtk_iommu_v1.c    |  1 +
+ drivers/iommu/omap-iommu.c      |  1 +
+ drivers/iommu/tegra-gart.c      |  1 +
+ drivers/iommu/tegra-smmu.c      |  1 +
+ drivers/vfio/vfio_iommu_type1.c |  5 ++++-
+ include/linux/iommu.h           | 11 +++++++++++
+ 11 files changed, 51 insertions(+), 1 deletion(-)
+
+-- 
+2.39.1
+
 
