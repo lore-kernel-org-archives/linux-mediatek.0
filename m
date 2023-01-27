@@ -4,114 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51DD9C38142
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 20:21:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45448C54EAA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 21:04:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uWv5oShpOqmRwrYUOL8K7idqgxwF1nEJXKyGa5wWZYQ=; b=uvM39FSWjpqzKezh6QdO0fFvkq
-	BhkTT/zJtI3/xIEATNld7/5apyH1Mby/OblyTHgdtikFYfdSAhXjj5UTSzKC006vSevSBrd9qnH9Q
-	BJHWI37ecz9+UjGP40j40tH3xp3YPyra2hHGOoVwt+nKooJtnvqjgSmZORBhQjJpm+Oj48H7/JCqC
-	2huJiOe+xWTJC8gXLw3y6cGFnjKSh9cXYDonXUZ35Na7whRlqW5OJ7uLRTD7BbO/RtEcCozw/9mk9
-	QNwn+MTLIviaSRnQ7YwEC9yS7cOM9NDbX21c27ev3s8P5cxBU7cHfJoe0nnIlkmHaZXnVjsHW2niL
-	7LolIKJA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TkMgIg4fQzJfYGBpNPz1PQWebK98PEAd/0J55gUrVm0=; b=r0wmvBX13+JVq+67aPpPFlPZMF
+	OuRHfBqVnAfhImtlU3DtAUgjg62AVyOILAQ2oiWSY0Eey3abUfgw6F2TUZvqzuDE65lKPqfjxvxYu
+	+M3gdIV5KppAOEJzFRGrveBOtQIpc9bV7SLHH3bBJFMMIrOyzQe6xXVgD4K9ubqsTQTNqXUWpb6Qv
+	LL9RrbKunq44EX9vslUTUNu67LGLYbnPLo7KrDICb0u3d+XvEOQMNl2qlc9MGWsxLL+O64M27JeRL
+	tSVizPckTxj8s8Hf6Ersl0wCTuDq5561EVje45XHmt60XHoUzN7VHkNwSLZMICLkOvIz+asVZEsTS
+	zZNs/8FQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLVDW-00GNMS-Qv; Fri, 27 Jan 2023 20:20:58 +0000
-Received: from mail-bn8nam04on2060c.outbound.protection.outlook.com ([2a01:111:f400:7e8d::60c] helo=NAM04-BN8-obe.outbound.protection.outlook.com)
+	id 1pLVtA-00GTns-Nq; Fri, 27 Jan 2023 21:04:00 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLUyK-00GI1o-Tv; Fri, 27 Jan 2023 20:05:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=J3rcDnhsQSnEkly2N0k8HFUEjMZx6Thg5Duvku+27pNLvBmVNo1S8B9a+JxylOuhIcuWSNvb5ISMSzRxuz4oGhuxCQSALBfnPS8Q2JpMzfRmhrmHW5RdUuxuPd17ve2DHbFzQeIY7brqGtQztjl+YXl6gAFOu5Cl8f80dXCFmpKyeJLpLTgliXRORCa8Go7hNXGNavrfaZCZuU+hZpdPniQXjxS+svV2Qsk7lefJiKz60oIfG/wsYqFpgF86/HrDQEVO+GCaBZgB7kefr/SmEnLakgLFOUxIKYouKH/U3WJisdrcB5oBVkD+mjSzGkPdLmvowIWZzPjw6dFIxKMsWw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=uWv5oShpOqmRwrYUOL8K7idqgxwF1nEJXKyGa5wWZYQ=;
- b=Uks1od/m3EYbes9KqTCOgaPREUI5nlbUCTdT9JZBycOGEFLFh+durnv7/qtJcsSTgBbTAdJUrgQ9F77aQlltSODVpmON9X7qhsIQYaPwMw3QjecRCRqD5rnTbx/FCrv74ptbeRNia0Lk7g/1JsnaEjGz8dlo/f+C5tj6z0+eFiDT/ZuG8i5Ht6UPhQoHtCfsMXH/CvX1TcSAx1h+QDAduqd8uha2i4wWBBVsGjjYiqJxOYGBTc5tuqiD5yFt8HCSvtPaA+iEkovwP0M5f8iKeJu7QbJnzUwIIh1s18fJK3506ZR8qMfo38ewegRk4yfeU9tn72t7Cu84wJt/NvhI8A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=lists.infradead.org
- smtp.mailfrom=nvidia.com; dmarc=pass (p=reject sp=reject pct=100) action=none
- header.from=nvidia.com; dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=uWv5oShpOqmRwrYUOL8K7idqgxwF1nEJXKyGa5wWZYQ=;
- b=Xls7BTZayMdQxeMPSnGrHbQ3DzmIi+Ty97STYvPjY0jr3ZKU6NddUh2/MCt96kR7ygsC2AobfMavTQpJAzwKONelZrrHZcpEin8oYn3emXZ6IbW3JhG/niVdbVduEfUIg3Ahb7XNNkS96XXXzoRKME8SQiy2ajZbKeEkRkJ8H/k6V3Q61wRZeeCeboFz3xn7VHZu/O3g6JARQCLBzIxl7yNilnhp/WVImdN8/GrDtrU5y6VF/7uOg1+G6R1xo+/qKww3FzrE09vj5EhZp3AWXKlB7AnqwM0PIVpdmOxLmS+oDc959G86dHTK8WBM24xQwbGQ/kiMDTs4POU25z8CBg==
-Received: from BN0PR04CA0130.namprd04.prod.outlook.com (2603:10b6:408:ed::15)
- by PH0PR12MB5645.namprd12.prod.outlook.com (2603:10b6:510:140::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.22; Fri, 27 Jan
- 2023 20:05:11 +0000
-Received: from BN8NAM11FT112.eop-nam11.prod.protection.outlook.com
- (2603:10b6:408:ed:cafe::34) by BN0PR04CA0130.outlook.office365.com
- (2603:10b6:408:ed::15) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.23 via Frontend
- Transport; Fri, 27 Jan 2023 20:05:10 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- BN8NAM11FT112.mail.protection.outlook.com (10.13.176.210) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6043.22 via Frontend Transport; Fri, 27 Jan 2023 20:05:10 +0000
-Received: from rnnvmail204.nvidia.com (10.129.68.6) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.36; Fri, 27 Jan
- 2023 12:05:00 -0800
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail204.nvidia.com
- (10.129.68.6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.36; Fri, 27 Jan
- 2023 12:05:00 -0800
-Received: from Asurada-Nvidia.nvidia.com (10.127.8.12) by mail.nvidia.com
- (10.129.68.10) with Microsoft SMTP Server id 15.2.986.36 via Frontend
- Transport; Fri, 27 Jan 2023 12:04:58 -0800
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: <jgg@nvidia.com>, <kevin.tian@intel.com>, <robin.murphy@arm.com>,
-	<joro@8bytes.org>, <will@kernel.org>, <agross@kernel.org>,
-	<andersson@kernel.org>, <konrad.dybcio@linaro.org>, <yong.wu@mediatek.com>,
-	<matthias.bgg@gmail.com>, <thierry.reding@gmail.com>,
-	<alex.williamson@redhat.com>, <cohuck@redhat.com>
-CC: <vdumpa@nvidia.com>, <jonathanh@nvidia.com>, <iommu@lists.linux.dev>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-tegra@vger.kernel.org>, <kvm@vger.kernel.org>
-Subject: [PATCH 3/4] iommufd: Do not allocate device object if broken_unmanaged_domain
-Date: Fri, 27 Jan 2023 12:04:19 -0800
-Message-ID: <74f7033192488c472ca04b7d03e4dc5705f80cc0.1674849118.git.nicolinc@nvidia.com>
-X-Mailer: git-send-email 2.39.1
-In-Reply-To: <cover.1674849118.git.nicolinc@nvidia.com>
-References: <cover.1674849118.git.nicolinc@nvidia.com>
+	id 1pLVt7-00GTm6-7U
+	for linux-mediatek@lists.infradead.org; Fri, 27 Jan 2023 21:03:59 +0000
+Received: by mail-wm1-x331.google.com with SMTP id m15so4285969wms.4
+        for <linux-mediatek@lists.infradead.org>; Fri, 27 Jan 2023 13:03:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=TkMgIg4fQzJfYGBpNPz1PQWebK98PEAd/0J55gUrVm0=;
+        b=pIeiRMg6iet/r1JbKwx+ppFEX7mnWDj3z/GmW+2pjB7E/EPYLGB29PrD+iixK8ht10
+         7+/4l7qeZbTNIsFkNx0//SaoK4Jzz0NlNTUWSc/kgdMPrmxA0f70DLOtHtn4OOKr63dB
+         wW8ATi21Iw94Q35XHHSBWGOlMjPKy7dHbtSO7ELAzdQrsfbBIcePZc6bbd11ET0eBR10
+         ruipHy9HN9JSul9GQv28PDQAMHaqpr6rYvAa//IqivLeKP3sRJZAwIyY5TeMmPcaWNoW
+         e4ZBYUkZNyU6+yAPNlJCv+yOXHSqWJn1jccigMdVoiMtORSen/RiUs1PDGRKTjsbne1h
+         tXRw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=TkMgIg4fQzJfYGBpNPz1PQWebK98PEAd/0J55gUrVm0=;
+        b=0+t8YbKjQ5k81aadOL+UxCf1C3VEeZZcRxYMpGPH9xEFQLwH0rWH8q/0VT7rFSNiY5
+         WszrGPHyrNZENMCUCgAJNlNlhce7wGh7S/CiaQPsK2te+94+B5iCLijJMcD6DULU7sbG
+         tsmfGYRyIwoOqlM+hrE0+Ao1PkRkk6DhyMp/eGjAj8vBDcCScgPE4hpiMRwUTHVseUmm
+         tafmXRA7QF4pn4/L8C9kOVglfQxFR6IEBORLejonVi3AMeFJreDlsdwKHpkwdoxN8VdO
+         jsH4IMB+Tx1xlyuHqfKFpq+fuAT/Ung8prx1oGT4VV7X31Nr4XujyRgvkGPI5zFgne72
+         ODew==
+X-Gm-Message-State: AFqh2kr7qTrcbMGHTeeIn5T7GjURLS2DwJ5678pV0P3rm1XoskpzWve0
+	7qFiR9y7RRDLxHQ1utt+doRmgg==
+X-Google-Smtp-Source: AMrXdXsl90rZ6ZM9bYIrrvDZZ3ypzuTE9VNVL3N0wOe3smxl6WFD5ugsqSaWPbOjg6ZDMt5BvOe9tA==
+X-Received: by 2002:a05:600c:5d1:b0:3d0:761b:f86 with SMTP id p17-20020a05600c05d100b003d0761b0f86mr41605947wmd.28.1674853433500;
+        Fri, 27 Jan 2023 13:03:53 -0800 (PST)
+Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
+        by smtp.googlemail.com with ESMTPSA id x10-20020a05600c420a00b003c6b70a4d69sm5078137wmh.42.2023.01.27.13.03.51
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 27 Jan 2023 13:03:53 -0800 (PST)
+Message-ID: <7a01c3f6-3800-472e-e18f-82af1b3f8d9e@linaro.org>
+Date: Fri, 27 Jan 2023 22:03:51 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v9 5/5] thermal: mediatek: add delay after thermal banks
+ initialization
+Content-Language: en-US
+To: Amjad Ouled-Ameur <aouledameur@baylibre.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Amit Kucheria <amitk@kernel.org>,
+ Zhang Rui <rui.zhang@intel.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Fabien Parent <fparent@baylibre.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Rob Herring <robh@kernel.org>, Markus Schneider-Pargmann <msp@baylibre.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Michael Kao <michael.kao@mediatek.com>
+References: <20221018-up-i350-thermal-bringup-v9-0-55a1ae14af74@baylibre.com>
+ <20221018-up-i350-thermal-bringup-v9-5-55a1ae14af74@baylibre.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <20221018-up-i350-thermal-bringup-v9-5-55a1ae14af74@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN8NAM11FT112:EE_|PH0PR12MB5645:EE_
-X-MS-Office365-Filtering-Correlation-Id: b5919e60-d0da-458f-8b87-08db00a1cb75
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	NKSqk9o5cX9lKBL8HtamrIZthCOgEBSlEUpvnVlR9wTmUfTl88EPzEMe3v9wCj9U3mBZSPTZlOCr4w1VMKzuoxPCmv8npYN39kfCLPbzGCoFOxIuqRBECPjLw+M1DdvrI2E4I8arWSUiuIQx9pE8KSWzkH06xMNm5It4/aR1eS7LG/9vhWiRYwm/RT9UDyDE1Nu+mVIDnBBY8nVWkNRmHm3gqE3ffuDmXqVsAJgILGk9otOudH/7Qg7GTVfmC8bpfDumN8Wr/he34J/+GcM5W6A4nDjyGOIrstb+w47l0R0rbN4kmh38JxIWuc4ON2BuZo5cjz4/z9pu2QiB/dBecfrEpIuyWPg2O81IhVRQphY18txDd7UWiEVPLJNkwlB6vUyMrX3CQuosDmAXMV5UmwgC56V8dnmiRBrkI2nG2IjDDhg2LuR/Ou4igTFYuK7kRHB4jLDmk82+0r4J0J/pvYgYwfmmxe91SN1VH4TXaMaevXS6onhgP6Ws24NLKqmqUAAI2f8knrkrW9/K3LtpAYeAKwQ16brolz1mcEz2fMYN/ygnLqi4CN2kyFIMbgydl6tF3J1IOk1BTvh2SgQd4z6LjoRZpV/6imAbb5xMFNHMuRxCwjYq3h57wBGYZvfKxmmUOPRsScN/bCrxs3nYRuoVQaFE2e/EYtlAgM0e8xSysr+It+t2tdNR8K2vPRKBCgvI2iGaGULRd18L6G1IlTkkorPSHJYeKW8IxnVQuxM=
-X-Forefront-Antispam-Report: 	CIP:216.228.117.161;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge2.nvidia.com;CAT:NONE;SFS:(13230025)(4636009)(136003)(376002)(396003)(39860400002)(346002)(451199018)(46966006)(40470700004)(36840700001)(47076005)(82310400005)(8676002)(36756003)(40460700003)(40480700001)(336012)(7696005)(316002)(356005)(36860700001)(921005)(7636003)(426003)(2616005)(26005)(186003)(86362001)(5660300002)(4744005)(7416002)(110136005)(478600001)(6666004)(54906003)(70586007)(41300700001)(82740400003)(8936002)(2906002)(4326008)(70206006);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jan 2023 20:05:10.4238
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: b5919e60-d0da-458f-8b87-08db00a1cb75
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.161];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	BN8NAM11FT112.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR12MB5645
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230127_120517_038761_8EBACD43 
-X-CRM114-Status: GOOD (  10.05  )
+X-CRM114-CacheID: sfid-20230127_130357_330161_D5F4BD7B 
+X-CRM114-Status: GOOD (  19.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,30 +102,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a sanity of the broken_unmanaged_domain flag to reject the use of
-iommufd in the early stage, if the flag is set by the iommu driver.
+On 27/01/2023 16:44, Amjad Ouled-Ameur wrote:
+> Thermal sensor reads performed immediately after thermal bank
+> initialization returns bogus values. This is currently tackled by returning
+> 0 if the temperature is bogus (exceeding 200000).
+> 
+> Instead, add a delay between the bank init and the thermal zone device
+> register to properly fix this.
+> 
+> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>   drivers/thermal/mtk_thermal.c | 11 +++--------
+>   1 file changed, 3 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+> index b8e06f6c7c42..ab7db385afb3 100644
+> --- a/drivers/thermal/mtk_thermal.c
+> +++ b/drivers/thermal/mtk_thermal.c
+> @@ -730,14 +730,6 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
+>   
+>   		temp = mt->raw_to_mcelsius(mt, i, raw);
+>   
+> -		/*
+> -		 * The first read of a sensor often contains very high bogus
+> -		 * temperature value. Filter these out so that the system does
+> -		 * not immediately shut down.
+> -		 */
+> -		if (temp > 200000)
+> -			temp = 0;
+> -
+>   		if (temp > max)
+>   			max = temp;
+>   	}
+> @@ -1160,6 +1152,9 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+>   
+>   	platform_set_drvdata(pdev, mt);
+>   
+> +	// Delay for thermal banks to be ready
 
-Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
-Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
----
- drivers/iommu/iommufd/device.c | 3 +++
- 1 file changed, 3 insertions(+)
+Coding style for comments is : /* */
 
-diff --git a/drivers/iommu/iommufd/device.c b/drivers/iommu/iommufd/device.c
-index d81f93a321af..41b55615a693 100644
---- a/drivers/iommu/iommufd/device.c
-+++ b/drivers/iommu/iommufd/device.c
-@@ -73,6 +73,9 @@ struct iommufd_device *iommufd_device_bind(struct iommufd_ctx *ictx,
- 	if (!device_iommu_capable(dev, IOMMU_CAP_CACHE_COHERENCY))
- 		return ERR_PTR(-EINVAL);
- 
-+	if (!device_iommu_unmanaged_supported(dev))
-+		return ERR_PTR(-EINVAL);
-+
- 	group = iommu_group_get(dev);
- 	if (!group)
- 		return ERR_PTR(-ENODEV);
+No need to resend, I'll take care of changing the comment format.
+
+> +	msleep(30);
+> +
+>   	tzdev = devm_thermal_of_zone_register(&pdev->dev, 0, mt,
+>   					      &mtk_thermal_ops);
+>   	if (IS_ERR(tzdev)) {
+> 
+
 -- 
-2.39.1
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
 
 
