@@ -4,118 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0997DC38142
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 22:52:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C214AC54EAA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 23:02:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SeMy6+Yg2PGakm3qSiX1Tv0sKSod3nKYJ4AwEfDlcko=; b=qnDY/3p1V/rOE1dKh3i6AXDYzh
-	UF8m1+CMoyOoL+HH1vQEekyDoJd35LOBmTY1/M0ZXrCmF/YiihZLwqaLHgo/z52IhfXB3e6a6QBUQ
-	yNhmE5yhGT48I1oIkAbISCl/W3STYvsI21jyEaJdcetkuTNyLqqf9FAZ00tRZ0AZTFYntSHyONxbL
-	RV2dvoroB45oJT8nrGY048jE/QbJ6av7/pJijIpARDt3iDibNgTTS6WFswYlEjPhALI29fyhuqqoB
-	WmG1TEf7qtlki/YoaFJGmpMpnP0yZIqIIhmdlZ6UBzaTib7ykInTBrMISzCsY7DyMG6odWfGEj/d1
-	aNS/sOVg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mA1eEQId+fRadARgVpAGn3OX27BY/xF1SB4oOj5Sfcc=; b=0tLfjVo90LNj5AzYKPIibEjHGO
+	Cxjo4/+nwh/6d3n/9VVSnEHMsN1NvSrFSlLcUzqLJd1v8OIjxxrJLbbxZtb0eEaBIUQePKkozseVg
+	RUQ4jUgYE3AVCR82MODEqalaJp9ufFlX2KnLG8zhXB9SA55OJsF8nNRtEUTPWSr4ua7LGXx4tUAGi
+	hXEs2vpKoYTwxZ/ufmxhI++5/LExBCONGzGq/E67j4mWw/AGw6IbNVco4QW2uGWWe+XSWxKvo1Jea
+	H7CooaBBOlmTHB8109xrBjY+Fn5rJ2MWhWeb/5H3T/pxzvga8jIP05mEd8G1O71qKbAxjQvGCWgn9
+	V8rUq15w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLXZt-00GjwT-Ne; Fri, 27 Jan 2023 22:52:13 +0000
-Received: from mail-dm6nam10on20615.outbound.protection.outlook.com ([2a01:111:f400:7e88::615] helo=NAM10-DM6-obe.outbound.protection.outlook.com)
+	id 1pLXjJ-00GmCj-V3; Fri, 27 Jan 2023 23:01:57 +0000
+Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLXZi-00Gjsz-Kk; Fri, 27 Jan 2023 22:52:04 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=DPBO46Y+IzpSdMF3AppJqhDiJzrKusUWZAeYJfd+Fx88vNV+YkVJk5dj/7KXeIStqQvm9vknjsWsbp/aRujsA5ahxwORN+yZlbGeDeBhzsupQHu6a2xej8I2udbFephn6wCiO2XUe+BWlMmPo/oxksAMaw7cSjb9j6afQeN4OPcBL6mk8kI0+BB74GlVHshbKKD+3n2Kkh9X00GnRJusYlpq+oUHYm4/pVdU55hXdiO6c5BtPItkladw98FJXXoogPZB9yyXHn5i/+llhqWksv+lMkQMeuKs+p5vuavsoCkwNrri1/Y1J27aCW9mRb/uOADLO1eV5RguCu8tr0atCA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=SeMy6+Yg2PGakm3qSiX1Tv0sKSod3nKYJ4AwEfDlcko=;
- b=PQbDF9soEbJQmmF1gkv3npyxYKbbxkH+C17V9MF8boNKfTi8gxdkjOWOK6P9eKFEpgQRrb7BVh3RWLimFKubSi9CME7HJJcMrQoqRrYGhhXG3gSDVVDnI6I98k5+4DZB7JiFTwrhr6ucrQd9HLqzsFtsEaWH7T7KNRXOGaePZ3uA6Tx0uM0DGRYQ7ZIWiqi+qg9o0apdoq+D9laqrVLlexC0ZYfv9eodzuolgZ34itRm2a6CZntQ5K8p9sTesFsQGEbKVM+4E37L8jgAbwlndTHNW+OSOlTmW4ptUKpw5ziKLx4T3D664TqWwqe+pHkuUWk3C7rDwH6fjtCdqaXg8g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=arm.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=SeMy6+Yg2PGakm3qSiX1Tv0sKSod3nKYJ4AwEfDlcko=;
- b=KTCmQNFE8WENc+Pu4y63VdHQCBF/2wm1FZHt0MhtfHXyV+pOqI7PXTPnLscgM4aaIgCo/Hz27YG5Nk65eJIvr2XaC/mAYlmSL4DrFUjRPZVD1Pyoijzd2YO6kKPxT8pcACmOfQOxOPs0SAIls7JhAflNovRRVSYchLnZk/I3oPZEYpV6jXOfMKu6X1NofPvzu4SATnE8jUUm6xS6qScbXiUUQMFog/NURyuWoOreGNRheX6UW7INpy80NRYq5HM+w5NOFS+mW43z1TFVJM0VqlcgwoRPslDqhlM+Fve8z0PU/+NlslIfmHGepB6KPvq8sSneG04gydQRfkJMm1dYmg==
-Received: from BN9P223CA0014.NAMP223.PROD.OUTLOOK.COM (2603:10b6:408:10b::19)
- by DS0PR12MB7899.namprd12.prod.outlook.com (2603:10b6:8:149::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.21; Fri, 27 Jan
- 2023 22:51:59 +0000
-Received: from BL02EPF0000EE3C.namprd05.prod.outlook.com
- (2603:10b6:408:10b:cafe::92) by BN9P223CA0014.outlook.office365.com
- (2603:10b6:408:10b::19) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.23 via Frontend
- Transport; Fri, 27 Jan 2023 22:51:58 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- BL02EPF0000EE3C.mail.protection.outlook.com (10.167.241.132) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6043.10 via Frontend Transport; Fri, 27 Jan 2023 22:51:58 +0000
-Received: from rnnvmail203.nvidia.com (10.129.68.9) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.36; Fri, 27 Jan
- 2023 14:51:45 -0800
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by rnnvmail203.nvidia.com
- (10.129.68.9) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.36; Fri, 27 Jan
- 2023 14:51:45 -0800
-Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com (10.129.68.8)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.36 via Frontend
- Transport; Fri, 27 Jan 2023 14:51:44 -0800
-Date: Fri, 27 Jan 2023 14:51:42 -0800
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Robin Murphy <robin.murphy@arm.com>
-CC: <jgg@nvidia.com>, <kevin.tian@intel.com>, <joro@8bytes.org>,
-	<will@kernel.org>, <agross@kernel.org>, <andersson@kernel.org>,
-	<konrad.dybcio@linaro.org>, <yong.wu@mediatek.com>, <matthias.bgg@gmail.com>,
-	<thierry.reding@gmail.com>, <alex.williamson@redhat.com>,
-	<cohuck@redhat.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
-	<iommu@lists.linux.dev>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-tegra@vger.kernel.org>,
-	<kvm@vger.kernel.org>
-Subject: Re: [PATCH 2/4] iommu/dma: Do not init domain if
- broken_unmanaged_domain
-Message-ID: <Y9RVftHuARKQnfN1@Asurada-Nvidia>
-References: <cover.1674849118.git.nicolinc@nvidia.com>
- <451e7beb57ec6de66ee0da5b38886105436f53d7.1674849118.git.nicolinc@nvidia.com>
- <89da64c8-fef4-2cea-f15c-86264073500c@arm.com>
+	id 1pLXjG-00GmAt-Qu
+	for linux-mediatek@lists.infradead.org; Fri, 27 Jan 2023 23:01:57 +0000
+Received: by mail-oi1-x22a.google.com with SMTP id r9so5368813oig.12
+        for <linux-mediatek@lists.infradead.org>; Fri, 27 Jan 2023 15:01:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=mA1eEQId+fRadARgVpAGn3OX27BY/xF1SB4oOj5Sfcc=;
+        b=eDxsbIc99OM4JSDrGKol8A9E0+aFZeUVBPCZfDRI0UjRJ0LlcaUhkPhneOoRDnb/OP
+         RjuyJy6wMCOT6js7DO6hH8pGQZpiyTdCEVBxBl2jEb46Pt5OwjJwkiH3ZkIfevfAn4Ej
+         zGz/Zq+uHTD1vZmscC50OYHqY3K+jToDxUF0Q=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=mA1eEQId+fRadARgVpAGn3OX27BY/xF1SB4oOj5Sfcc=;
+        b=GUeDQYq1kFoAQ9rz3ox/AMkmJNw4MH+bBHblO4TVmVM0AAC2bIGvY3qTdgh9YAshu0
+         Cphaf4D3WSc+KsgxpESXRe1NifXrSXJK+IXQcZr+GT++5EwzXgDax9SGGQwHcs9MZdvS
+         K/GuV4RcjeN1UbJoDpbSUREbKPJ7cOyruVoKog9odigm0Zy+mqiOnng2Arx93a8afcN4
+         R3uElMEvaBi/dc2fSM5q8VViN3X7hn1xm7Ko0CFOpJdnhJ9hUkUQfm+k+owWB+dvqWJ1
+         uIXR/mMaMj6QPbPDlC05il1Navz2UdzJbp1o92eGNFZVG217oYzEDM3EfMam/o4VzvjA
+         gbXw==
+X-Gm-Message-State: AFqh2kr027hOW7MjJQPsfYyCsWAJLj2GvtRLnwlWa9faFyQ9dnzaDR8O
+	Sx7H+ziUJ1MV4R/5cEy8mzdj6H5oy1S3+9DP
+X-Google-Smtp-Source: AMrXdXvv/rYSpKFQ/LEDznU6ounhRBpLnDgiWgIPpjfHwMczW/2W6LO4MsR1ocQEgXff/puIUy8xUg==
+X-Received: by 2002:a05:6808:8f0:b0:361:105e:a7b9 with SMTP id d16-20020a05680808f000b00361105ea7b9mr17272451oic.18.1674860511524;
+        Fri, 27 Jan 2023 15:01:51 -0800 (PST)
+Received: from greenjustin3.nyc.corp.google.com ([2620:0:1003:314:64e8:5795:9a35:1a2c])
+        by smtp.gmail.com with ESMTPSA id e8-20020a05620a12c800b006fa22f0494bsm3711133qkl.117.2023.01.27.15.01.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 27 Jan 2023 15:01:51 -0800 (PST)
+From: Justin Green <greenjustin@chromium.org>
+X-Google-Original-From: Justin Green <greenjustin@google.com>
+To: linux-mediatek@lists.infradead.org,
+	dri-devel@lists.freedesktop.org
+Cc: angelogioacchino.delregno@collabora.com,
+	jason-jh.lin@mediatek.com,
+	justin.yeh@mediatek.com,
+	wenst@chromium.org,
+	chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de,
+	airlied@linux.ie,
+	matthias.bgg@gmail.com,
+	daniel@ffwll.ch,
+	daniel@fooishbar.org,
+	greenjustin@chromium.org,
+	Justin Green <greenjustin@google.com>
+Subject: [PATCH v3] drm/mediatek: Add support for AR30 and BA30
+Date: Fri, 27 Jan 2023 18:01:23 -0500
+Message-Id: <20230127230123.941930-1-greenjustin@google.com>
+X-Mailer: git-send-email 2.39.1.456.gfc5497dd1b-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <89da64c8-fef4-2cea-f15c-86264073500c@arm.com>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL02EPF0000EE3C:EE_|DS0PR12MB7899:EE_
-X-MS-Office365-Filtering-Correlation-Id: 24c33fe0-2cc5-4206-f232-08db00b918b5
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	4KiZt/HA766sIlkz0MQ1APNL/QmVhfGWlhRp/8iEVD3BDLqqF56Z8BkR3QbRlmtw5943DqclNXxg8oztgNvD3KwmtkDWVwZ0v05uW2vTDna/Sc2KM5y1tIjJDBe87YsEZEzoos4SnBOvDGcJ7q6C/IT+/IEC6Nsu97xzC1ffROnJL/gTn6VHk+6UMmI9QFYdrp73YefhfHXH3ozYnYj50j+xOy/Gdy9aRcqHuVlEoquqaBGAjECVQwddE1tb4/Osrgl5wm5ZLQ8yWYukbQSxfFcfDPoCw0crAp3Vzv3ikdt14XyYdyk6I1lAzjDFWfw+uBBLCQ/W7JnmBuLeZNaQz/JRNgpG1l9Pyy5MaNzt/t/8T+HaY2MNaW7Th+wsKHVZgoP4idYc5QSPx/6ZP8ZsXLcuwEnWtHccQrDkkSffWEjF7Xm1zk4d1KOsUPSTMHnmaRLANPlPStKOpmViwGMo2J30J1CKK5Xayj3MhTWfPOZxwDHurSxeEB3ryyFcJ4NSTD42TVjLIIF9dsjb4qy/wLS766kp2+6p3cSfu0n8sN24s/swsJbVrbM0p9bkR7/JilZSi36L8Ym1FJ7JKk18Ka0f9Y5pOvx2JS7LWFWjiZridg2jQkM/TRIvUD5gNSsWdyi7um8g/7DqeCohV68cFGq5LVXVy8g5kDLZzrErIqHdosf+vsZTA8fhpiBEaseg/TZNI74Tcun9X2yEF9dF9w==
-X-Forefront-Antispam-Report: 	CIP:216.228.117.160;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge1.nvidia.com;CAT:NONE;SFS:(13230025)(4636009)(396003)(39860400002)(136003)(346002)(376002)(451199018)(40470700004)(46966006)(36840700001)(47076005)(82310400005)(55016003)(86362001)(40480700001)(40460700003)(356005)(33716001)(36860700001)(54906003)(7416002)(82740400003)(7636003)(4744005)(2906002)(70206006)(8936002)(41300700001)(4326008)(186003)(8676002)(5660300002)(6916009)(9686003)(53546011)(70586007)(26005)(316002)(426003)(478600001)(336012);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jan 2023 22:51:58.4552
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 24c33fe0-2cc5-4206-f232-08db00b918b5
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.160];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	BL02EPF0000EE3C.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB7899
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230127_145202_897215_374BD613 
-X-CRM114-Status: GOOD (  12.35  )
+X-CRM114-CacheID: sfid-20230127_150154_913419_A10097ED 
+X-CRM114-Status: GOOD (  18.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,20 +95,270 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 27, 2023 at 09:59:50PM +0000, Robin Murphy wrote:
-> External email: Use caution opening links or attachments
-> 
-> 
-> On 2023-01-27 20:04, Nicolin Chen wrote:
-> > Add a sanity of the broken_unmanaged_domain flag to reject the use of
-> > dma-iommu in the early stage, if the flag is set by the iommu driver.
-> 
-> Realistically, iommu-dma will never be enabled on PPC32, let alone used.
-> It will not be enabled on ARM until I've fixed any drivers which need
-> fixing to work with it. We don't need to add dead code here.
+Add support for AR30 and BA30 pixel formats to the Mediatek DRM driver.
 
-OK. Sounds like I can drop this patch.
+Tested using "modetest -P" on an MT8195.
 
-Thanks
-Nicolin
+Signed-off-by: Justin Green <greenjustin@chromium.org>
+---
+v2:
+ * Rebase and resolve merge conflicts with the AFBC patch.
+v3:
+ * Moved 10-bit support detection to mtk_disk_ovl.c
+
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     |  1 +
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c     | 37 +++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |  3 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  1 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 10 ++++++
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c    | 37 ++++++++++++++++++---
+ drivers/gpu/drm/mediatek/mtk_drm_plane.h    |  2 +-
+ 7 files changed, 84 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index 33e61a136bbc..b75139da3032 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -96,6 +96,7 @@ void mtk_ovl_register_vblank_cb(struct device *dev,
+ void mtk_ovl_unregister_vblank_cb(struct device *dev);
+ void mtk_ovl_enable_vblank(struct device *dev);
+ void mtk_ovl_disable_vblank(struct device *dev);
++int mtk_ovl_supports_10bit(struct device *dev);
+ 
+ void mtk_rdma_bypass_shadow(struct device *dev);
+ int mtk_rdma_clk_enable(struct device *dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index 84daeaffab6a..412a749a509e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -41,6 +41,7 @@
+ #define DISP_REG_OVL_RDMA_CTRL(n)		(0x00c0 + 0x20 * (n))
+ #define DISP_REG_OVL_RDMA_GMC(n)		(0x00c8 + 0x20 * (n))
+ #define DISP_REG_OVL_ADDR_MT2701		0x0040
++#define DISP_REG_OVL_CLRFMT_EXT			0x02D0
+ #define DISP_REG_OVL_ADDR_MT8173		0x0f40
+ #define DISP_REG_OVL_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n))
+ #define DISP_REG_OVL_HDR_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n) + 0x04)
+@@ -61,6 +62,10 @@
+ 					0 : OVL_CON_CLRFMT_RGB)
+ #define OVL_CON_CLRFMT_RGB888(ovl)	((ovl)->data->fmt_rgb565_is_0 ? \
+ 					OVL_CON_CLRFMT_RGB : 0)
++#define OVL_CON_CLRFMT_BIT_DEPTH_MASK(ovl)	(0xFF << 4 * (ovl))
++#define OVL_CON_CLRFMT_BIT_DEPTH(depth, ovl)	(depth << 4 * (ovl))
++#define OVL_CON_CLRFMT_8_BIT			0x00
++#define OVL_CON_CLRFMT_10_BIT			0x01
+ #define	OVL_CON_AEN		BIT(8)
+ #define	OVL_CON_ALPHA		0xff
+ #define	OVL_CON_VIRT_FLIP	BIT(9)
+@@ -73,6 +78,7 @@ struct mtk_disp_ovl_data {
+ 	bool fmt_rgb565_is_0;
+ 	bool smi_id_en;
+ 	bool supports_afbc;
++	bool supports_10bit;
+ };
+ 
+ /*
+@@ -188,6 +194,26 @@ static void mtk_ovl_set_afbc(struct mtk_disp_ovl *ovl, struct cmdq_pkt *cmdq_pkt
+ 			   DISP_REG_OVL_DATAPATH_CON, OVL_LAYER_AFBC_EN(idx));
+ }
+ 
++static void mtk_ovl_set_bit_depth(struct device *dev, int idx, u32 format,
++				  struct cmdq_pkt *cmdq_pkt)
++{
++	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
++	unsigned int reg;
++	unsigned int bit_depth = OVL_CON_CLRFMT_8_BIT;
++
++	reg = readl(ovl->regs + DISP_REG_OVL_CLRFMT_EXT);
++	reg &= ~OVL_CON_CLRFMT_BIT_DEPTH_MASK(idx);
++
++	if (format == DRM_FORMAT_RGBA1010102 ||
++	    format == DRM_FORMAT_BGRA1010102 ||
++	    format == DRM_FORMAT_ARGB2101010)
++		bit_depth = OVL_CON_CLRFMT_10_BIT;
++
++	reg |= OVL_CON_CLRFMT_BIT_DEPTH(bit_depth, idx);
++
++	mtk_ddp_write(cmdq_pkt, reg, &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_CLRFMT_EXT);
++}
++
+ void mtk_ovl_config(struct device *dev, unsigned int w,
+ 		    unsigned int h, unsigned int vrefresh,
+ 		    unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+@@ -216,6 +242,13 @@ unsigned int mtk_ovl_supported_rotations(struct device *dev)
+ 	       DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y;
+ }
+ 
++int mtk_ovl_supports_10bit(struct device *dev)
++{
++	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
++
++	return ovl->data->supports_10bit;
++}
++
+ int mtk_ovl_layer_check(struct device *dev, unsigned int idx,
+ 			struct mtk_plane_state *mtk_state)
+ {
+@@ -302,9 +335,11 @@ static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt)
+ 		return OVL_CON_CLRFMT_ARGB8888;
+ 	case DRM_FORMAT_BGRX8888:
+ 	case DRM_FORMAT_BGRA8888:
++	case DRM_FORMAT_BGRA1010102:
+ 		return OVL_CON_CLRFMT_ARGB8888 | OVL_CON_BYTE_SWAP;
+ 	case DRM_FORMAT_XRGB8888:
+ 	case DRM_FORMAT_ARGB8888:
++	case DRM_FORMAT_ARGB2101010:
+ 		return OVL_CON_CLRFMT_RGBA8888;
+ 	case DRM_FORMAT_XBGR8888:
+ 	case DRM_FORMAT_ABGR8888:
+@@ -388,6 +423,7 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+ 				      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_PITCH_MSB(idx));
+ 	}
+ 
++	mtk_ovl_set_bit_depth(dev, idx, fmt, cmdq_pkt);
+ 	mtk_ovl_layer_on(dev, idx, cmdq_pkt);
+ }
+ 
+@@ -541,6 +577,7 @@ static const struct mtk_disp_ovl_data mt8195_ovl_driver_data = {
+ 	.fmt_rgb565_is_0 = true,
+ 	.smi_id_en = true,
+ 	.supports_afbc = true,
++	.supports_10bit = true,
+ };
+ 
+ static const struct of_device_id mtk_disp_ovl_driver_dt_match[] = {
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index 112615817dcb..9f162c9b504a 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -856,7 +856,8 @@ static int mtk_drm_crtc_init_comp_planes(struct drm_device *drm_dev,
+ 				BIT(pipe),
+ 				mtk_drm_crtc_plane_type(mtk_crtc->layer_nr,
+ 							num_planes),
+-				mtk_ddp_comp_supported_rotations(comp));
++				mtk_ddp_comp_supported_rotations(comp),
++				mtk_ddp_comp_supports_10bit(comp));
+ 		if (ret)
+ 			return ret;
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index 6b6d5335c834..708963c613d3 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -359,6 +359,7 @@ static const struct mtk_ddp_comp_funcs ddp_ovl = {
+ 	.layer_config = mtk_ovl_layer_config,
+ 	.bgclr_in_on = mtk_ovl_bgclr_in_on,
+ 	.bgclr_in_off = mtk_ovl_bgclr_in_off,
++	.supports_10bit = mtk_ovl_supports_10bit,
+ };
+ 
+ static const struct mtk_ddp_comp_funcs ddp_postmask = {
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+index 2d0052c23dcb..18ec5dca2337 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+@@ -71,6 +71,7 @@ struct mtk_ddp_comp_funcs {
+ 	void (*bgclr_in_off)(struct device *dev);
+ 	void (*ctm_set)(struct device *dev,
+ 			struct drm_crtc_state *state);
++	int (*supports_10bit)(struct device *dev);
+ };
+ 
+ struct mtk_ddp_comp {
+@@ -151,6 +152,15 @@ unsigned int mtk_ddp_comp_supported_rotations(struct mtk_ddp_comp *comp)
+ 	return 0;
+ }
+ 
++static inline
++int mtk_ddp_comp_supports_10bit(struct mtk_ddp_comp *comp)
++{
++	if (comp->funcs && comp->funcs->supports_10bit)
++		return comp->funcs->supports_10bit;
++
++        return 0;
++}
++
+ static inline unsigned int mtk_ddp_comp_layer_nr(struct mtk_ddp_comp *comp)
+ {
+ 	if (comp->funcs && comp->funcs->layer_nr)
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+index d54fbf34b000..e94a07cdda32 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+@@ -19,7 +19,7 @@
+ #include "mtk_drm_gem.h"
+ #include "mtk_drm_plane.h"
+ 
+-static const u32 formats[] = {
++static const u32 default_formats[] = {
+ 	DRM_FORMAT_XRGB8888,
+ 	DRM_FORMAT_ARGB8888,
+ 	DRM_FORMAT_BGRX8888,
+@@ -41,6 +41,22 @@ static const u64 modifiers[] = {
+ 	DRM_FORMAT_MOD_INVALID,
+ };
+ 
++static const u32 formats_with_10bit_cap[] = {
++	DRM_FORMAT_XRGB8888,
++	DRM_FORMAT_ARGB8888,
++	DRM_FORMAT_ARGB2101010,
++	DRM_FORMAT_BGRX8888,
++	DRM_FORMAT_BGRA8888,
++	DRM_FORMAT_BGRA1010102,
++	DRM_FORMAT_ABGR8888,
++	DRM_FORMAT_XBGR8888,
++	DRM_FORMAT_RGB888,
++	DRM_FORMAT_BGR888,
++	DRM_FORMAT_RGB565,
++	DRM_FORMAT_UYVY,
++	DRM_FORMAT_YUYV,
++};
++
+ static void mtk_plane_reset(struct drm_plane *plane)
+ {
+ 	struct mtk_plane_state *state;
+@@ -315,13 +331,24 @@ static const struct drm_plane_helper_funcs mtk_plane_helper_funcs = {
+ 
+ int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
+ 		   unsigned long possible_crtcs, enum drm_plane_type type,
+-		   unsigned int supported_rotations)
++		   unsigned int supported_rotations, bool supports_10bit)
+ {
+ 	int err;
+ 
+-	err = drm_universal_plane_init(dev, plane, possible_crtcs,
+-				       &mtk_plane_funcs, formats,
+-				       ARRAY_SIZE(formats), modifiers, type, NULL);
++	if (supports_10bit) {
++		err = drm_universal_plane_init(dev, plane, possible_crtcs,
++					       &mtk_plane_funcs,
++					       formats_with_10bit_cap,
++					       ARRAY_SIZE(formats_with_10bit_cap),
++					       modifiers, type, NULL);
++	} else {
++		err = drm_universal_plane_init(dev, plane, possible_crtcs,
++					       &mtk_plane_funcs,
++					       default_formats,
++					       ARRAY_SIZE(default_formats),
++					       modifiers, type, NULL);
++	}
++
+ 	if (err) {
+ 		DRM_ERROR("failed to initialize plane\n");
+ 		return err;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.h b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
+index 8f39011cdbfc..d3e6f29a1e25 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_plane.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
+@@ -48,6 +48,6 @@ to_mtk_plane_state(struct drm_plane_state *state)
+ 
+ int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
+ 		   unsigned long possible_crtcs, enum drm_plane_type type,
+-		   unsigned int supported_rotations);
++		   unsigned int supported_rotations, bool supports_10bit);
+ 
+ #endif
+-- 
+2.39.1.456.gfc5497dd1b-goog
+
 
