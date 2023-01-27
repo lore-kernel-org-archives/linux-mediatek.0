@@ -4,89 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EABCC54EAA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 22:23:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80A55C38142
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 22:39:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hw5WZV22kIf8LV4BYYD5zMZGL9QT6puKpKuaXbM0YSg=; b=12f4CF1nR4ihlV/uKRgv0Bci76
-	CotYyVljkM1WsGu0Hmrehi1JhXAvre85qkeYwQM/KLEvat7nrsJaiS3zEaivyNulWhlKakivit3cI
-	NKIOp62kEoptPEPO4nV5wDBp6iDTZzltC/Ghz6zIluFcxVHzN5g6UV6WwdEx7Pz3LJqFdUW15QrVe
-	agXoLLP+PF9aYqE3LXXhnNumyMnx0eTr9amyge8d3P7XasHHtw0VMnj1REeaAvbjKlBwO5POokUgn
-	gJGl/ZuN82afnf5E9ObIRkgy0hYuO/qLt+HIaC0TRe3Zsm3I/Nv/Wc3LYV2RjgcHMwFN1w53DNfyy
-	X/zJXkGQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Q6iBoXpwgGR/ZVf0A5SekY8NMqe2gKVl+e0DSwe8dcg=; b=WLfUErZtSy9fNf4wZMxd9fNZGn
+	olNnvpRu1r3163tLQquFeNl39o4RRBr2y/hXmuShNuYdu3qGJP+GM1nMCau1D8/Jznp3IcwweqDyi
+	PDeZHfnmzzJzQ78UCHGMtrjUvVaWn8/5mTST0A2tQDUDCf+/kQj9luU/lhzLES+LRVJmUa9AhlMpB
+	r/HA1pvtADxbo4czbuHU25kubvxZT61Fskr+pqkCqizZyGxlxDWQhshKdcBRoVd/xBFS4YV4sdqU+
+	9V+5AbxZFW45lo8TeCs1qSHcH9Ylrn0qlnbxhrq3ScCOZEkqeO0W3vpKuH0ueczobeMfcrkw7wQOH
+	+iGaN9Jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLX7w-00GhWE-5i; Fri, 27 Jan 2023 22:23:20 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1pLXNE-00Gj1a-J3; Fri, 27 Jan 2023 22:39:08 +0000
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLX7m-00GhSk-UF
-	for linux-mediatek@lists.infradead.org; Fri, 27 Jan 2023 22:23:12 +0000
-Received: by mail-wm1-x330.google.com with SMTP id m5-20020a05600c4f4500b003db03b2559eso4487171wmq.5
-        for <linux-mediatek@lists.infradead.org>; Fri, 27 Jan 2023 14:23:07 -0800 (PST)
+	id 1pLXN3-00Gizz-G7
+	for linux-mediatek@lists.infradead.org; Fri, 27 Jan 2023 22:38:58 +0000
+Received: by mail-pf1-x431.google.com with SMTP id z31so4253543pfw.4
+        for <linux-mediatek@lists.infradead.org>; Fri, 27 Jan 2023 14:38:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=hw5WZV22kIf8LV4BYYD5zMZGL9QT6puKpKuaXbM0YSg=;
-        b=07HB0DkOvEmzPwgdHTYPWBEwazvDvzxyXCvfZeEWHr7ZQVYrN23FroZHnqI9o3YYHb
-         nOWJYm863srNOIMCCwZ2mMY/KM8WhFtuv6NHRyWz2MbzQsVDPELd6js2CKsC4nrYRvI4
-         g8Y6/f2s6qoCR3kIyWQ3MO01DIQ7riQpvmCfRabBEjF2zCvpJv7i7FCTrehYbECTWJO3
-         qUHmBwjPcl7oPemz/n+ztbqiG6jcanAHYa5sIB4chD0sQ95oaUIX9Hx0AVlal7PEvguQ
-         VRlBBwN62OsA0Smn4ziJiYerSpQy3W3RdvWKeyMAlihnyK8qfl5qMQ3Kq+LPoM9VtcQt
-         Klow==
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Q6iBoXpwgGR/ZVf0A5SekY8NMqe2gKVl+e0DSwe8dcg=;
+        b=cQRXyyWhjENY1EiRP7qhQP3wf+6XMReMMAZnfWe2Kur1YO8bKgprzMVIQHTQs2DG82
+         bpmy5tKTm5RBWsUwvT6HOsWbJR1SXZaIP93syx0Y1BvqG10wdKJrUXq/iYPkgUmUS6Z6
+         m3DmEvmavq2Fh5cIiGPWYfyC54a7ureEExsJ4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=hw5WZV22kIf8LV4BYYD5zMZGL9QT6puKpKuaXbM0YSg=;
-        b=iPkUg1tLC7kHb4bhkUkINS1Bh+yqYzgp2jfM9f6QLI/LQGQeeIzfQNK9AuCQqyIHTb
-         94t83NpZ0EawW0FA+Tq8X3UTPT7e3Q3OZFLtoAmGUs5YaBBPYQb7Ejga8Gcz/9RerkuO
-         6/9g82HsYAOfoS/d4jwFDfMbPSBSSNfV/eIIj0WJnylz4hn0enqCirpBoPruBcfKyLk9
-         SlBZKn3rZ0fcAgGd0KOh5zXO6JOpZHZs7ncj0Xs4RwEpeQ/Gz1yFW1NfPPw1elpU0OGL
-         Ym5jth0rlTRhCpTuDRIl+ct+perlOB2rsu1GRrnBcATXJgJieH/xHGUGdKP/0wJ2JlKr
-         jtUw==
-X-Gm-Message-State: AFqh2kqMQDUHYuExFSyEvPNdIQ5iDcoppgE331s71Y92/pU6RJFC5Vst
-	z16HY3gGmnp4XK90iTcy1IBC+Q==
-X-Google-Smtp-Source: AMrXdXsAOA3YpQ4mwC7XEGlfoY6kbh9XeRRAB2vBaRPH37DPkopUrTvg7H0JBMp+rt9MvYA3N+zi/g==
-X-Received: by 2002:a05:600c:4d93:b0:3d9:efd1:214d with SMTP id v19-20020a05600c4d9300b003d9efd1214dmr41147873wmp.25.1674858186392;
-        Fri, 27 Jan 2023 14:23:06 -0800 (PST)
-Received: from [192.168.0.20] (62.213.132.195.rev.sfr.net. [195.132.213.62])
-        by smtp.gmail.com with ESMTPSA id j38-20020a05600c1c2600b003daff80f16esm12461874wms.27.2023.01.27.14.23.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 27 Jan 2023 14:23:05 -0800 (PST)
-Message-ID: <81989ddf-4439-c176-e003-891f80a4e291@baylibre.com>
-Date: Fri, 27 Jan 2023 23:23:04 +0100
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Q6iBoXpwgGR/ZVf0A5SekY8NMqe2gKVl+e0DSwe8dcg=;
+        b=bTQ+Z/db7MHd2rtyh5UGwrdRxH1Wy0BKrDF0HIGzvZ+jdjhQQvWUW990kNxshgdMsH
+         SxUn+hsrv1mCQ5Zpd1JND4bh4rHg1ANBsYFCQDuO5jfnO6xQd0rNhWuuE9Dfu+xII3ah
+         8FCwuwwW7EpnRJ5ixqHM2UKeUjJxzfwNtnHoaIXaXYcOSK2HyhsY0oUc5+mYUfTM1cTw
+         M8K4jc88dIDqaK1Th4L6WeobXl/6cmqbS0ViQ1MdBx4xpTO3miksJHa/kBGDVXo1ZQ0W
+         rV084qGTbslb/D6PyI+ue1r+S7e1sxtURK17Dvg9GsoWwUlc44sWaZs1SO9KWkqQ4DuP
+         n+yA==
+X-Gm-Message-State: AO0yUKVNvl+TKFZDNwKeuHXEV1fuh22k7loJaIwGM87G3bcDG60P7HaI
+	ZE4U345RoynbzCFw14uX5h4rDg==
+X-Google-Smtp-Source: AK7set9nEOp8oJvvITNyqKkOgdNSk+TAokzAcmXTUWbfu3zV7ISgRJfcLKUBqQSOq9XH0hqHE2L/bQ==
+X-Received: by 2002:a05:6a00:1d04:b0:592:7341:781f with SMTP id a4-20020a056a001d0400b005927341781fmr35668pfx.31.1674859136095;
+        Fri, 27 Jan 2023 14:38:56 -0800 (PST)
+Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
+        by smtp.gmail.com with ESMTPSA id br13-20020a056a00440d00b00581ad007a9fsm3088755pfb.153.2023.01.27.14.38.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 27 Jan 2023 14:38:55 -0800 (PST)
+From: Kees Cook <keescook@chromium.org>
+To: Felix Fietkau <nbd@nbd.name>
+Cc: Kees Cook <keescook@chromium.org>,
+	John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-hardening@vger.kernel.org
+Subject: [PATCH] net: ethernet: mtk_eth_soc: Avoid truncating allocation
+Date: Fri, 27 Jan 2023 14:38:54 -0800
+Message-Id: <20230127223853.never.014-kees@kernel.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.0
-Subject: Re: [PATCH v9 0/5] thermal: mediatek: Add support for MT8365 SoC
-Content-Language: en-US
-To: Daniel Lezcano <daniel.lezcano@linaro.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Amit Kucheria <amitk@kernel.org>,
- Zhang Rui <rui.zhang@intel.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Fabien Parent <fparent@baylibre.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Rob Herring <robh@kernel.org>, Markus Schneider-Pargmann <msp@baylibre.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Michael Kao <michael.kao@mediatek.com>
-References: <20221018-up-i350-thermal-bringup-v9-0-55a1ae14af74@baylibre.com>
- <afa4aacd-bacf-a545-3973-474286fd4b9c@linaro.org>
-From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
-In-Reply-To: <afa4aacd-bacf-a545-3973-474286fd4b9c@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2447; h=from:subject:message-id; bh=yfJ1UtZNOwTETD8Al2XTKq5PIE5VchaJolozWYUefHY=; b=owEBbQKS/ZANAwAKAYly9N/cbcAmAcsmYgBj1FJ9hMXYGB04Nb8fnZvQFD8SaUvBjTtQlF3d5mZ8 JQnQwBqJAjMEAAEKAB0WIQSlw/aPIp3WD3I+bhOJcvTf3G3AJgUCY9RSfQAKCRCJcvTf3G3AJuk7D/ 98s7Y81Xj52PumgZDzo42yrLNHSRGuvMRYB0A/Q4Zt7FebJnq8KJmO1UKXey36nsJXuwoxCuFJw6VQ WoGAcBv3Xd6q2yO8GzMzPv/2JSTc8ATaSQaljNkd8bAbGvtpLTMwzLNW/JXYovBqgZzMRVzRvSogMF fA51JTFGlNoiZQjfsVIfnV9yVf0MeOJXx58PbH2hPftHeA63ZMVVgGZCzyWqrXqrPeiYtJ/oybWxhd X++53/jblEmlKNyhcpGxEmMnLtk7whId4NiXn+TECSGFOfGy/uwip6rvRdKSrjufQ0iNCHMQtN4L0Y t7Rrm+ldNKiGr2RfYhfk78//8keWFu7lfOEt7WcSsx+e07aSWGIYFxb3t99JktWxVGztvciwIE5irP bQos//ov2Bi7hRrZjt5mZKfpBlfB5MyparOnAE9nf3Wc4jRi9eYaPNg+9XAFAhO8oNCw5YEHsluu2i sCzLo3iPw7Se47jNfjm5JyIIu1rmL6M6w4E3jDDqyMPGsQ5Q4obMjaZJAuEicR5KpoTlcnLp3CJohC AChj0Z0ugQJ77+9dAAXUzahg5vmgs0HkmTqMtgaV3QmOvsla5A7NR1DYyvl18aAZJo9n4bcscCV850 5Mud8wqUAhE+EHIBq1qNLVa0ksoN2cUcOyVcYwv3IdiqilS9ndN263ArKt8g==
+X-Developer-Key: i=keescook@chromium.org; a=openpgp; fpr=A5C3F68F229DD60F723E6E138972F4DFDC6DC026
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230127_142310_980441_33D7F940 
-X-CRM114-Status: GOOD (  14.49  )
+X-CRM114-CacheID: sfid-20230127_143857_543643_9D32A6A6 
+X-CRM114-Status: GOOD (  12.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,50 +98,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+There doesn't appear to be a reason to truncate the allocation used for
+flow_info, so do a full allocation and remove the unused empty struct.
+GCC does not like having a reference to an object that has been
+partially allocated, as bounds checking may become impossible when
+such an object is passed to other code. Seen with GCC 13:
 
-On 1/27/23 22:59, Daniel Lezcano wrote:
-> On 27/01/2023 16:44, Amjad Ouled-Ameur wrote:
->> This patchset adds thermal support for MT8365 SoC.
->>
->> MT8365 has 4 thermal sensors, one for CPUs and the rest for debug/dev
->> purposes. The CPU thermal zone uses passive cooling device with
->> CPU{0..3}.
->>
->> Changes in v9:
->> - Use delay between bank init and the thermal zone device register.
->> - Link to v8: https://lore.kernel.org/r/20221018-up-i350-thermal-bringup-v8-0-23e8fbb08837@baylibre.com
->>
->> Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
->> ---
->> Amjad Ouled-Ameur (2):
->>        thermal: mediatek: add callback for raw to mcelsius conversion
->>        thermal: mediatek: add delay after thermal banks initialization
->>
->> Fabien Parent (2):
->>        dt-bindings: thermal: mediatek: add binding documentation for MT8365 SoC
->>        thermal: mediatek: add support for MT8365 SoC
->>
->> Markus Schneider-Pargmann (1):
->>        thermal: mediatek: control buffer enablement tweaks
->>
->>   .../bindings/thermal/mediatek-thermal.txt          |   1 +
->>   drivers/thermal/mtk_thermal.c                      | 117 +++++++++++++++++----
->>   2 files changed, 96 insertions(+), 22 deletions(-)
->> ---
->
-> Applied, with some changes and the subject fixed:
->
-> Subject format for thermal is: thermal/drivers/<thedriver>: [A-Z]*.
->
-> Thanks
+../drivers/net/ethernet/mediatek/mtk_ppe.c: In function 'mtk_foe_entry_commit_subflow':
+../drivers/net/ethernet/mediatek/mtk_ppe.c:623:18: warning: array subscript 'struct mtk_flow_entry[0]' is partly outside array bounds of 'unsigned char[48]' [-Warray-bounds=]
+  623 |         flow_info->l2_data.base_flow = entry;
+      |                  ^~
 
-Thank you Daniel for applying the patchset.
+Cc: Felix Fietkau <nbd@nbd.name>
+Cc: John Crispin <john@phrozen.org>
+Cc: Sean Wang <sean.wang@mediatek.com>
+Cc: Mark Lee <Mark-MC.Lee@mediatek.com>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: "David S. Miller" <davem@davemloft.net>
+Cc: Eric Dumazet <edumazet@google.com>
+Cc: Jakub Kicinski <kuba@kernel.org>
+Cc: Paolo Abeni <pabeni@redhat.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: netdev@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Signed-off-by: Kees Cook <keescook@chromium.org>
+---
+ drivers/net/ethernet/mediatek/mtk_ppe.c | 3 +--
+ drivers/net/ethernet/mediatek/mtk_ppe.h | 1 -
+ 2 files changed, 1 insertion(+), 3 deletions(-)
 
-Kindly,
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
+index 451a87b1bc20..6883eb34cd8b 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe.c
++++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
+@@ -615,8 +615,7 @@ mtk_foe_entry_commit_subflow(struct mtk_ppe *ppe, struct mtk_flow_entry *entry,
+ 	u32 ib1_mask = mtk_get_ib1_pkt_type_mask(ppe->eth) | MTK_FOE_IB1_UDP;
+ 	int type;
+ 
+-	flow_info = kzalloc(offsetof(struct mtk_flow_entry, l2_data.end),
+-			    GFP_ATOMIC);
++	flow_info = kzalloc(sizeof(*flow_info), GFP_ATOMIC);
+ 	if (!flow_info)
+ 		return;
+ 
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.h b/drivers/net/ethernet/mediatek/mtk_ppe.h
+index 16b02e1d4649..5e8bc48252b1 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe.h
++++ b/drivers/net/ethernet/mediatek/mtk_ppe.h
+@@ -279,7 +279,6 @@ struct mtk_flow_entry {
+ 		struct {
+ 			struct mtk_flow_entry *base_flow;
+ 			struct hlist_node list;
+-			struct {} end;
+ 		} l2_data;
+ 	};
+ 	struct rhash_head node;
+-- 
+2.34.1
 
-Amjad
-
->
->   -- Daniel
->
 
