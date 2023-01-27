@@ -4,74 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB04AC54EAA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 22:00:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2938DC38142
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 22:11:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MleSlqBPzFKRTf0US9J7uS09Y4mRHY0IjYS38IETijI=; b=RiBCuTQbsA73qrCdWEH8am17yn
-	yUYvVdbhXcCHjxIYuW0Y77iu0Ht43vHrfF8COmHk6nr506BSiLXvKn56ja2yZxecn6ygnYbPoLgLo
-	PMxk4dqpTKwuAnYYVBznpED2m/Y4zJMfmKXLCQ794dbjjYt54tZ5ifpiZg1DTjvpsbaaMypBAOToL
-	a5CtHNfMACwkIk/IjYIu2bCSsPLwSDTWgX28S31JJiadCFGDyQn1s0YCCSGW9XlzToqC7z3Qp5Uq/
-	HhvVl+DjYEmMXEuSPEALiQZ9B7HuD4XiJgoe1xniXH0WUEwIRuS8NCkgBrnGyHMsGcFD4Ol/JIfb7
-	ONK4IbIQ==;
+	bh=idUqpMNtTKGKBzaSIni6XsWBLVfQJXf3RNZPZAEYBhY=; b=0ORYmLKEUfy6S31y6vSO3pBzhu
+	LEYbkdFBhtPqmLjHkkU2Xw5cvPeS+B1JkXIVA/ZdRyGUzrPt4XJho2twMRbxOERtc9rqgPiT1uBnv
+	IlIrpWKo/AlyeYz+UGW7rwjNOhnlsa2FnHPaBq6jlHnXpPDwK3YyTGFsPQYpfh9rpKhmYmEDfaYHx
+	UD//5jWeEf10EjfPMK3xcG25je5RGVjqK5KZtVFvtaBcs1NzHmuojtx21KiE1eMm/lWjVdTU6bNaj
+	rKnUVgaofccau9oHVPFWwQUl+FbBizl/igpclg91zqCIX7zAEixwM6ZYMd0Oi9PbwJEq3EjTO/Krb
+	JOVeXNMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLWlt-00GciP-7n; Fri, 27 Jan 2023 22:00:33 +0000
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+	id 1pLWvz-00GfIY-Sh; Fri, 27 Jan 2023 22:10:59 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLWlT-00GcWs-HI
-	for linux-mediatek@lists.infradead.org; Fri, 27 Jan 2023 22:00:10 +0000
-Received: by mail-pf1-x435.google.com with SMTP id cr11so2515620pfb.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 27 Jan 2023 14:00:04 -0800 (PST)
+	id 1pLWvq-00GfGh-5P
+	for linux-mediatek@lists.infradead.org; Fri, 27 Jan 2023 22:10:51 +0000
+Received: by mail-wm1-x332.google.com with SMTP id l8so4410563wms.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 27 Jan 2023 14:10:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=MleSlqBPzFKRTf0US9J7uS09Y4mRHY0IjYS38IETijI=;
-        b=TLB5hNxOR2xyTyxf7MbSt2T/+KpFqPHhG9dEJqdzJDYEck7/RRGajp4K0DRMB7PTD1
-         ZLLoZMCgjtSlnaHz1HH+kwPCxtg2vlT5UVodT7vraT/MIwZ7to1Dt4MvCnFnQ0tpF/jq
-         31lQ9EXgNn4/EOVm/OYEZFprXXl5XCpIMuFEs=
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=idUqpMNtTKGKBzaSIni6XsWBLVfQJXf3RNZPZAEYBhY=;
+        b=T+1Xoirx35CarTbZn/QmvccPCvLMX840tpf0yczBXlAWlyqzyTd31ZJy7EL1JzuBot
+         MMvKlI8Lmg3Uxplorrz1/KPq4NQ0C7WOxLRRRpDrs/jx7XSAXT82ujSaXdOKosXAjcyl
+         Ctv94KdNaK27hQGF6LK//ptWWXDbioBJvVSWjCvO/B2PiIBC4KlsWtTJVv4pQdmhCGdn
+         y99CPCdfoBzHqPF3UWNuvXHXjKDkLGD6qRpkkfHhutRVvlM1OHjOnFsEHuEpZ+x7+/mX
+         zJo2I3xvwhIyKR3WD69iyIK8b8D2J4XY3ThHEH9abilLTBdrbkb7fGcV64P7StoBr3dD
+         aRgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=MleSlqBPzFKRTf0US9J7uS09Y4mRHY0IjYS38IETijI=;
-        b=S9xiGJDOmUwP8mbG2mNNkPv2bGEdnBnih3mzZmmbSFn7md6vKvByDYqPVJQoJ/D4FF
-         7X76X4IOTX66Pw9fQJwLNs+kGAAWyRV12BTEr0HxgbE+A3NpBwN8vdAfPuGt6kLTEHmO
-         WCU5kHNxNMYXadge/E1b77+WtLTDKlSuTbJgY+OHzBhAQWTbyQ6T9AZHj0xYFFWdvJ20
-         K8LTT9Vkk+LKuiFt6LlluvaH7XMrvaq3POvCmpmN3KcFGousPpFifCKzWnD9oW6+tBIK
-         KE8hS1DEHsAar3GsJICX2qwtU4NtpyDvRWEx1lgQDf09B8OOakLfAgVLrAFbG/eeYP/n
-         zkUw==
-X-Gm-Message-State: AO0yUKXfaoEGzroCXnGErV2NdAYG+QR4CWzYPSEmk+8mRAR8laLYkF/4
-	odIWQBb91VqaznvAkhc7QHhxcvrBHyruiAXWa21Ueg==
-X-Google-Smtp-Source: AK7set+/wUE6nxoSYvbFiYWaYD+msKqtbVD4fY7+bMCU9kBMQDGJ3dZ0UGXXl5gFzgzMK/29iCDajl2pXRH4UlA5mQI=
-X-Received: by 2002:a63:5418:0:b0:4d7:fc60:7ec1 with SMTP id
- i24-20020a635418000000b004d7fc607ec1mr1887297pgb.106.1674856803489; Fri, 27
- Jan 2023 14:00:03 -0800 (PST)
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=idUqpMNtTKGKBzaSIni6XsWBLVfQJXf3RNZPZAEYBhY=;
+        b=zhO3BfWTwhayTM/zX5WMk7jD6HwdJ3ORuQzpiBNLeXBfz8UwYQMu/w8ad/0D5pqW1T
+         sEGOorP9q6L8YYXYh2GzCHgHPzmYdtYRfHGf4aluNTnRqG8ythbIO2Tiz1K9u6bCoY8J
+         sZdDtoOM3peqyzrYz1kSMmOeJC5kmBBto179c7ceZCfJuWmpBVJ/AYmInID6uG164dSv
+         NI9LvIKJ3yUihVRRvLG3B09WaIk5xWmWVY9czUn4ZvgJYDby+m0RfsUhYj24P9iqK4WR
+         XqX7JyVLA5dAvkcOLQyLi4Qn04JHZppNYKgwqjnJZPEL+LkFXL23b/0wx0jvf+kpWtny
+         XSFw==
+X-Gm-Message-State: AFqh2krfJXTgBezF99y3A3GIq00rjRqY5BZUxsfXZa2aP1nAc5Qm6U3H
+	hOiOGQsBSAb7Lb8J7/GLHtsiJA==
+X-Google-Smtp-Source: AMrXdXvzVxJFfhXedNSvA1alMBr7vxuLM/4Pb6ufanVh0GnvsBzODZIGkDDFJez7USS5+SGSr2E5xg==
+X-Received: by 2002:a05:600c:a13:b0:3db:1de2:af31 with SMTP id z19-20020a05600c0a1300b003db1de2af31mr33565874wmp.37.1674857446342;
+        Fri, 27 Jan 2023 14:10:46 -0800 (PST)
+Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
+        by smtp.googlemail.com with ESMTPSA id g11-20020a5d488b000000b002be5bdbe40csm5740301wrq.27.2023.01.27.14.10.44
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 27 Jan 2023 14:10:45 -0800 (PST)
+Message-ID: <2ce57abd-203f-04b9-f0de-8e524d6afaae@linaro.org>
+Date: Fri, 27 Jan 2023 23:10:44 +0100
 MIME-Version: 1.0
-References: <20230110204742.1354797-1-greenjustin@chromium.org> <CAAOTY_8iPJAku-SGgd3NoHA8LOWbXiKfNtfVt_oGuEJqA-=Q-w@mail.gmail.com>
-In-Reply-To: <CAAOTY_8iPJAku-SGgd3NoHA8LOWbXiKfNtfVt_oGuEJqA-=Q-w@mail.gmail.com>
-From: Justin Green <greenjustin@chromium.org>
-Date: Fri, 27 Jan 2023 16:59:52 -0500
-Message-ID: <CAHC42RdnQ_=XzufhQRonYE3mM+Nr_dO+x2PiS+7Ad-pN5pz0cA@mail.gmail.com>
-Subject: Re: [PATCH v2] drm/mediatek: Add support for AR30 and BA30
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
-	angelogioacchino.delregno@collabora.com, jason-jh.lin@mediatek.com, 
-	justin.yeh@mediatek.com, wenst@chromium.org, p.zabel@pengutronix.de, 
-	airlied@linux.ie, matthias.bgg@gmail.com, daniel@ffwll.ch, 
-	daniel@fooishbar.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v12 2/6] dt-bindings: thermal: mediatek: Add LVTS thermal
+ controllers dt-binding definition
+Content-Language: en-US
+To: bchihi@baylibre.com, angelogioacchino.delregno@collabora.com,
+ rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com,
+ matthias.bgg@gmail.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org,
+ ye.xingchen@zte.com.cn, p.zabel@pengutronix.de
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com,
+ rex-bc.chen@mediatek.com
+References: <20230124131717.128660-3-bchihi@baylibre.com>
+ <20230126161048.94089-1-bchihi@baylibre.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <20230126161048.94089-1-bchihi@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230127_140007_681537_4183412E 
-X-CRM114-Status: GOOD (  27.86  )
+X-CRM114-CacheID: sfid-20230127_141050_234995_13B6AE35 
+X-CRM114-Status: GOOD (  22.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,272 +100,204 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thanks for the suggestion! That's a lot cleaner than manually
-traversing the device tree. Will send out another patch.
 
-On Thu, Jan 26, 2023 at 7:36 PM Chun-Kuang Hu <chunkuang.hu@kernel.org> wro=
-te:
->
-> Hi, Justin:
->
-> Justin Green <greenjustin@chromium.org> =E6=96=BC 2023=E5=B9=B41=E6=9C=88=
-11=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8A=E5=8D=884:47=E5=AF=AB=E9=81=93=EF=
-=BC=9A
-> >
-> > Add support for AR30 and BA30 pixel formats to the Mediatek DRM driver.
-> >
-> > Tested using "modetest -P" on an MT8195.
-> >
-> > Signed-off-by: Justin Green <greenjustin@chromium.org>
-> > ---
-> > v2:
-> >  * Rebase and resolve merge conflicts with the AFBC patch.
-> >
-> >  drivers/gpu/drm/mediatek/mtk_disp_ovl.c  | 28 +++++++++++++++++
-> >  drivers/gpu/drm/mediatek/mtk_drm_crtc.c  | 19 +++++++++++-
-> >  drivers/gpu/drm/mediatek/mtk_drm_plane.c | 39 +++++++++++++++++++++---
-> >  drivers/gpu/drm/mediatek/mtk_drm_plane.h |  2 +-
-> >  4 files changed, 81 insertions(+), 7 deletions(-)
-> >
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/=
-mediatek/mtk_disp_ovl.c
-> > index 84daeaffab6a..667ae57c8754 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> > @@ -41,6 +41,7 @@
-> >  #define DISP_REG_OVL_RDMA_CTRL(n)              (0x00c0 + 0x20 * (n))
-> >  #define DISP_REG_OVL_RDMA_GMC(n)               (0x00c8 + 0x20 * (n))
-> >  #define DISP_REG_OVL_ADDR_MT2701               0x0040
-> > +#define DISP_REG_OVL_CLRFMT_EXT                        0x02D0
-> >  #define DISP_REG_OVL_ADDR_MT8173               0x0f40
-> >  #define DISP_REG_OVL_ADDR(ovl, n)              ((ovl)->data->addr + 0x=
-20 * (n))
-> >  #define DISP_REG_OVL_HDR_ADDR(ovl, n)          ((ovl)->data->addr + 0x=
-20 * (n) + 0x04)
-> > @@ -61,6 +62,10 @@
-> >                                         0 : OVL_CON_CLRFMT_RGB)
-> >  #define OVL_CON_CLRFMT_RGB888(ovl)     ((ovl)->data->fmt_rgb565_is_0 ?=
- \
-> >                                         OVL_CON_CLRFMT_RGB : 0)
-> > +#define OVL_CON_CLRFMT_BIT_DEPTH_MASK(ovl)     (0xFF << 4 * (ovl))
-> > +#define OVL_CON_CLRFMT_BIT_DEPTH(depth, ovl)   (depth << 4 * (ovl))
-> > +#define OVL_CON_CLRFMT_8_BIT                   0x00
-> > +#define OVL_CON_CLRFMT_10_BIT                  0x01
-> >  #define        OVL_CON_AEN             BIT(8)
-> >  #define        OVL_CON_ALPHA           0xff
-> >  #define        OVL_CON_VIRT_FLIP       BIT(9)
-> > @@ -188,6 +193,26 @@ static void mtk_ovl_set_afbc(struct mtk_disp_ovl *=
-ovl, struct cmdq_pkt *cmdq_pkt
-> >                            DISP_REG_OVL_DATAPATH_CON, OVL_LAYER_AFBC_EN=
-(idx));
-> >  }
-> >
-> > +static void mtk_ovl_set_bit_depth(struct device *dev, int idx, u32 for=
-mat,
-> > +                                 struct cmdq_pkt *cmdq_pkt)
-> > +{
-> > +       struct mtk_disp_ovl *ovl =3D dev_get_drvdata(dev);
-> > +       unsigned int reg;
-> > +       unsigned int bit_depth =3D OVL_CON_CLRFMT_8_BIT;
-> > +
-> > +       reg =3D readl(ovl->regs + DISP_REG_OVL_CLRFMT_EXT);
-> > +       reg &=3D ~OVL_CON_CLRFMT_BIT_DEPTH_MASK(idx);
-> > +
-> > +       if (format =3D=3D DRM_FORMAT_RGBA1010102 ||
-> > +           format =3D=3D DRM_FORMAT_BGRA1010102 ||
-> > +           format =3D=3D DRM_FORMAT_ARGB2101010)
-> > +               bit_depth =3D OVL_CON_CLRFMT_10_BIT;
-> > +
-> > +       reg |=3D OVL_CON_CLRFMT_BIT_DEPTH(bit_depth, idx);
-> > +
-> > +       mtk_ddp_write(cmdq_pkt, reg, &ovl->cmdq_reg, ovl->regs, DISP_RE=
-G_OVL_CLRFMT_EXT);
-> > +}
-> > +
-> >  void mtk_ovl_config(struct device *dev, unsigned int w,
-> >                     unsigned int h, unsigned int vrefresh,
-> >                     unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-> > @@ -302,9 +327,11 @@ static unsigned int ovl_fmt_convert(struct mtk_dis=
-p_ovl *ovl, unsigned int fmt)
-> >                 return OVL_CON_CLRFMT_ARGB8888;
-> >         case DRM_FORMAT_BGRX8888:
-> >         case DRM_FORMAT_BGRA8888:
-> > +       case DRM_FORMAT_BGRA1010102:
-> >                 return OVL_CON_CLRFMT_ARGB8888 | OVL_CON_BYTE_SWAP;
-> >         case DRM_FORMAT_XRGB8888:
-> >         case DRM_FORMAT_ARGB8888:
-> > +       case DRM_FORMAT_ARGB2101010:
-> >                 return OVL_CON_CLRFMT_RGBA8888;
-> >         case DRM_FORMAT_XBGR8888:
-> >         case DRM_FORMAT_ABGR8888:
-> > @@ -388,6 +415,7 @@ void mtk_ovl_layer_config(struct device *dev, unsig=
-ned int idx,
-> >                                       &ovl->cmdq_reg, ovl->regs, DISP_R=
-EG_OVL_PITCH_MSB(idx));
-> >         }
-> >
-> > +       mtk_ovl_set_bit_depth(dev, idx, fmt, cmdq_pkt);
-> >         mtk_ovl_layer_on(dev, idx, cmdq_pkt);
-> >  }
-> >
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/=
-mediatek/mtk_drm_crtc.c
-> > index 112615817dcb..d50379c97c4b 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > @@ -842,6 +842,21 @@ enum drm_plane_type mtk_drm_crtc_plane_type(unsign=
-ed int plane_idx,
-> >
-> >  }
-> >
-> > +static const char *ovls_with_10bit_cap[] =3D {
-> > +       "mediatek,mt8195-disp-ovl",
-> > +};
-> > +
-> > +static bool is_10bit_cap_device(void)
-> > +{
-> > +       for (int i =3D 0; i < ARRAY_SIZE(ovls_with_10bit_cap); i++) {
-> > +               if (of_find_compatible_node(NULL, NULL,
-> > +                                           ovls_with_10bit_cap[i]))
-> > +                       return true;
-> > +       }
-> > +
-> > +       return false;
-> > +}
-> > +
-> >  static int mtk_drm_crtc_init_comp_planes(struct drm_device *drm_dev,
-> >                                          struct mtk_drm_crtc *mtk_crtc,
-> >                                          int comp_idx, int pipe)
-> > @@ -849,6 +864,7 @@ static int mtk_drm_crtc_init_comp_planes(struct drm=
-_device *drm_dev,
-> >         int num_planes =3D mtk_drm_crtc_num_comp_planes(mtk_crtc, comp_=
-idx);
-> >         struct mtk_ddp_comp *comp =3D mtk_crtc->ddp_comp[comp_idx];
-> >         int i, ret;
-> > +       bool supports_10bit =3D is_10bit_cap_device();
-> >
-> >         for (i =3D 0; i < num_planes; i++) {
-> >                 ret =3D mtk_plane_init(drm_dev,
-> > @@ -856,7 +872,8 @@ static int mtk_drm_crtc_init_comp_planes(struct drm=
-_device *drm_dev,
-> >                                 BIT(pipe),
-> >                                 mtk_drm_crtc_plane_type(mtk_crtc->layer=
-_nr,
-> >                                                         num_planes),
-> > -                               mtk_ddp_comp_supported_rotations(comp))=
-;
-> > +                               mtk_ddp_comp_supported_rotations(comp),
-> > +                               supports_10bit);
-> >                 if (ret)
-> >                         return ret;
-> >
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm=
-/mediatek/mtk_drm_plane.c
-> > index d54fbf34b000..7fe5c47b4d50 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> > @@ -12,6 +12,8 @@
-> >  #include <drm/drm_framebuffer.h>
-> >  #include <drm/drm_gem_atomic_helper.h>
-> >  #include <linux/align.h>
-> > +#include <drm/drm_plane_helper.h>
-> > +#include <linux/of.h>
-> >
-> >  #include "mtk_drm_crtc.h"
-> >  #include "mtk_drm_ddp_comp.h"
-> > @@ -19,7 +21,7 @@
-> >  #include "mtk_drm_gem.h"
-> >  #include "mtk_drm_plane.h"
-> >
-> > -static const u32 formats[] =3D {
-> > +static const u32 default_formats[] =3D {
-> >         DRM_FORMAT_XRGB8888,
-> >         DRM_FORMAT_ARGB8888,
-> >         DRM_FORMAT_BGRX8888,
-> > @@ -41,6 +43,22 @@ static const u64 modifiers[] =3D {
-> >         DRM_FORMAT_MOD_INVALID,
-> >  };
-> >
-> > +static const u32 formats_with_10bit_cap[] =3D {
-> > +       DRM_FORMAT_XRGB8888,
-> > +       DRM_FORMAT_ARGB8888,
-> > +       DRM_FORMAT_ARGB2101010,
-> > +       DRM_FORMAT_BGRX8888,
-> > +       DRM_FORMAT_BGRA8888,
-> > +       DRM_FORMAT_BGRA1010102,
-> > +       DRM_FORMAT_ABGR8888,
-> > +       DRM_FORMAT_XBGR8888,
-> > +       DRM_FORMAT_RGB888,
-> > +       DRM_FORMAT_BGR888,
-> > +       DRM_FORMAT_RGB565,
-> > +       DRM_FORMAT_UYVY,
-> > +       DRM_FORMAT_YUYV,
-> > +};
->
-> I would like to move these array to ovl/rdma driver and query these
-> array with ovl/rdma driver (struct mtk_ddp_comp *comp in
-> mtk_drm_crtc_init_comp_planes()).
->
-> Regards,
-> Chun-Kuang.
->
-> > +
-> >  static void mtk_plane_reset(struct drm_plane *plane)
-> >  {
-> >         struct mtk_plane_state *state;
-> > @@ -315,13 +333,24 @@ static const struct drm_plane_helper_funcs mtk_pl=
-ane_helper_funcs =3D {
-> >
-> >  int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
-> >                    unsigned long possible_crtcs, enum drm_plane_type ty=
-pe,
-> > -                  unsigned int supported_rotations)
-> > +                  unsigned int supported_rotations, bool supports_10bi=
-t)
-> >  {
-> >         int err;
-> >
-> > -       err =3D drm_universal_plane_init(dev, plane, possible_crtcs,
-> > -                                      &mtk_plane_funcs, formats,
-> > -                                      ARRAY_SIZE(formats), modifiers, =
-type, NULL);
-> > +       if (supports_10bit) {
-> > +               err =3D drm_universal_plane_init(dev, plane, possible_c=
-rtcs,
-> > +                                              &mtk_plane_funcs,
-> > +                                              formats_with_10bit_cap,
-> > +                                              ARRAY_SIZE(formats_with_=
-10bit_cap),
-> > +                                              modifiers, type, NULL);
-> > +       } else {
-> > +               err =3D drm_universal_plane_init(dev, plane, possible_c=
-rtcs,
-> > +                                              &mtk_plane_funcs,
-> > +                                              default_formats,
-> > +                                              ARRAY_SIZE(default_forma=
-ts),
-> > +                                              modifiers, type, NULL);
-> > +       }
-> > +
-> >         if (err) {
-> >                 DRM_ERROR("failed to initialize plane\n");
-> >                 return err;
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.h b/drivers/gpu/drm=
-/mediatek/mtk_drm_plane.h
-> > index 8f39011cdbfc..d3e6f29a1e25 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-> > @@ -48,6 +48,6 @@ to_mtk_plane_state(struct drm_plane_state *state)
-> >
-> >  int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
-> >                    unsigned long possible_crtcs, enum drm_plane_type ty=
-pe,
-> > -                  unsigned int supported_rotations);
-> > +                  unsigned int supported_rotations, bool supports_10bi=
-t);
-> >
-> >  #endif
-> > --
-> > 2.39.0.314.g84b9a713c41-goog
-> >
+Hi Rob,
+
+I think Balsam took into account your comments. Is it fine for you ?
+
+
+On 26/01/2023 17:10, bchihi@baylibre.com wrote:
+> From: Balsam CHIHI <bchihi@baylibre.com>
+> 
+> Add LVTS thermal controllers dt-binding definition for mt8195.
+> 
+> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+> ---
+> Changelog:
+>    v12:
+>       - Fixed subject prefix
+>       - Fixed licences GPL-2.0+ to GPL-2.0
+>       - Added dual licenses
+>    v11:
+>       - Rebase on top of "thermal/linux-next" :
+>         base=0d568e144ead70189e7f16066dcb155b78ff9266
+>       - Remove unsupported SoC (mt8192) from dt-binding definition
+>    v10:
+>       - Rebase on top of "thermal/linux-next" : thermal-v6.3-rc1
+>    v9:
+>       - Rebase on top of 6.0.0-rc1
+>       - Update dt-bindings :
+>         - Add "allOf:if:then:"
+>         - Use mt8192 as example (instead of mt8195)
+>         - Fix dt-binding errors
+>         - Fix DTS errors
+>    v8:
+>       - Fix coding style issues
+>       - Rebase on top of next-20220803
+>       - Add multi-instance support :
+>         - Rewrite DT-binding and DTS :
+>           - Add DT-binding and DTS for LVTS_v4 (MT8192 and MT8195)
+>             - One LVTS node for each HW Domain (AP and MCU)
+>           - One SW Instance for each HW Domain
+>    v7:
+>       - Fix coding style issues
+>       - Rewrite dt bindings
+>         - was not accurate
+>         - Use mt8195 for example (instead of mt8192)
+>         - Rename mt6873 to mt8192
+>         - Remove clock name
+> ---
+> ---
+>   .../thermal/mediatek,lvts-thermal.yaml        | 107 ++++++++++++++++++
+>   include/dt-bindings/thermal/mediatek-lvts.h   |  19 ++++
+>   2 files changed, 126 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+>   create mode 100644 include/dt-bindings/thermal/mediatek-lvts.h
+> 
+> diff --git a/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+> new file mode 100644
+> index 000000000000..12bfbdd8ff89
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+> @@ -0,0 +1,107 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/thermal/mediatek,lvts-thermal.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek SoC Low Voltage Thermal Sensor (LVTS)
+> +
+> +maintainers:
+> +  - Balsam CHIHI <bchihi@baylibre.com>
+> +
+> +description: |
+> +  LVTS is a thermal management architecture composed of three subsystems,
+> +  a Sensing device - Thermal Sensing Micro Circuit Unit (TSMCU),
+> +  a Converter - Low Voltage Thermal Sensor converter (LVTS), and
+> +  a Digital controller (LVTS_CTRL).
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt8195-lvts-ap
+> +      - mediatek,mt8195-lvts-mcu
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    maxItems: 1
+> +
+> +  resets:
+> +    maxItems: 1
+> +    description: LVTS reset for clearing temporary data on AP/MCU.
+> +
+> +  nvmem-cells:
+> +    minItems: 1
+> +    items:
+> +      - description: Calibration eFuse data 1 for LVTS
+> +      - description: Calibration eFuse data 2 for LVTS
+> +
+> +  nvmem-cell-names:
+> +    minItems: 1
+> +    items:
+> +      - const: lvts-calib-data-1
+> +      - const: lvts-calib-data-2
+> +
+> +  "#thermal-sensor-cells":
+> +    const: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - clocks
+> +  - resets
+> +  - nvmem-cells
+> +  - nvmem-cell-names
+> +  - "#thermal-sensor-cells"
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/clock/mt8195-clk.h>
+> +    #include <dt-bindings/reset/mt8195-resets.h>
+> +    #include <dt-bindings/thermal/mediatek-lvts.h>
+> +
+> +    soc {
+> +      #address-cells = <2>;
+> +      #size-cells = <2>;
+> +
+> +      lvts_mcu: thermal-sensor@11278000 {
+> +        compatible = "mediatek,mt8195-lvts-mcu";
+> +        reg = <0 0x11278000 0 0x1000>;
+> +        interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH 0>;
+> +        clocks = <&infracfg_ao CLK_INFRA_AO_THERM>;
+> +        resets = <&infracfg_ao MT8195_INFRA_RST4_THERM_CTRL_MCU_SWRST>;
+> +        nvmem-cells = <&lvts_efuse_data1 &lvts_efuse_data2>;
+> +        nvmem-cell-names = "lvts-calib-data-1", "lvts-calib-data-2";
+> +        #thermal-sensor-cells = <1>;
+> +      };
+> +    };
+> +
+> +    thermal_zones: thermal-zones {
+> +      cpu0-thermal {
+> +        polling-delay = <1000>;
+> +        polling-delay-passive = <250>;
+> +        thermal-sensors = <&lvts_mcu MT8195_MCU_LITTLE_CPU0>;
+> +
+> +        trips {
+> +          cpu0_alert: trip-alert {
+> +            temperature = <85000>;
+> +            hysteresis = <2000>;
+> +            type = "passive";
+> +          };
+> +
+> +          cpu0_crit: trip-crit {
+> +            temperature = <100000>;
+> +            hysteresis = <2000>;
+> +            type = "critical";
+> +          };
+> +        };
+> +      };
+> +    };
+> diff --git a/include/dt-bindings/thermal/mediatek-lvts.h b/include/dt-bindings/thermal/mediatek-lvts.h
+> new file mode 100644
+> index 000000000000..902d5b1e4f43
+> --- /dev/null
+> +++ b/include/dt-bindings/thermal/mediatek-lvts.h
+> @@ -0,0 +1,19 @@
+> +/* SPDX-License-Identifier: (GPL-2.0 or MIT) */
+> +/*
+> + * Copyright (c) 2023 MediaTek Inc.
+> + * Author: Balsam CHIHI <bchihi@baylibre.com>
+> + */
+> +
+> +#ifndef __MEDIATEK_LVTS_DT_H
+> +#define __MEDIATEK_LVTS_DT_H
+> +
+> +#define MT8195_MCU_BIG_CPU0	0
+> +#define MT8195_MCU_BIG_CPU1	1
+> +#define MT8195_MCU_BIG_CPU2	2
+> +#define MT8195_MCU_BIG_CPU3	3
+> +#define MT8195_MCU_LITTLE_CPU0	4
+> +#define MT8195_MCU_LITTLE_CPU1	5
+> +#define MT8195_MCU_LITTLE_CPU2	6
+> +#define MT8195_MCU_LITTLE_CPU3	7
+> +
+> +#endif /* __MEDIATEK_LVTS_DT_H */
+
+-- 
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
+
 
