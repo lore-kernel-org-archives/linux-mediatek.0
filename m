@@ -4,81 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B279C61D97
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 16:54:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A1BDC54EAA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 18:02:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=tJHn8+pSpwglQ2ylL3huswEVRt2vpqL4jH6sVFjg9vY=; b=gGrHiqvZN39c3RBsVKP5OOD29N
-	cUMj2NGebAgAx/6WnDPFlO/9OoazCjpopbv2cvBPPrZFpKnDwUbKsP9odWZzxdnz3QFDjjIaSWOzh
-	w/tcLoDc3Pz7ZpcuSiVLgdAH4u7GzR/UbeUfXSIafwoQSmg5Sb8NGEQWuZEy/VsOGHun8/99xw8Ff
-	gagxKbSYcWBpFz3H1R/SeA5Bt9XJT0UG2RosDehW9/MvXkOij3HiuZ47Ll6LEy4eJ/3yWnXWvr7J6
-	lieIg+icHC+1dkvNyNRAHwRFI7nfTbDpfu+xvMsgU/xlGWf1qG0Kgz4y7UzHHrDsJQWsIQ9beHMxk
-	tF402YAw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Y2Q86j92pQ9q2wsMYUDefPiRAUR/rCfcZ3Y/y0U02v8=; b=dyZA0VvHBn+9B95NXnnGU4kXKa
+	jYprx3q2nU8squApkL2tmzPabkwjPNUjBu+SiLbxSSJBeaFmaWTDpceryAO392WM9UVntrOE0eAbc
+	MnWolft8FGue01kTMjQUE/FKWqYwjotFbbLGoEa5//F8qVJfF13dTr/6pfv6C5NXcs6qOGoGVQRLC
+	fwzzbfNWH703D8lJQUkHwC1PDHHZqo23myyNBhrk7IsL9vqq8Yw9aBVkHoJvq4V0mvFXjadd8sMFg
+	/SpUSqLDLl32sEisgFShBczW92IfEbE/UahRAnFD32SPhKZ3qZSv46AJcA+BijAOnmip9JCqBsSvc
+	nGEZotyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLRzQ-00Fpbm-On; Fri, 27 Jan 2023 16:54:12 +0000
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+	id 1pLT3f-00Fyg2-Sr; Fri, 27 Jan 2023 18:02:39 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLRzM-00FpZh-Ft; Fri, 27 Jan 2023 16:54:10 +0000
-Received: by mail-pj1-x1029.google.com with SMTP id o13so5152383pjg.2;
-        Fri, 27 Jan 2023 08:54:05 -0800 (PST)
+	id 1pLT3d-00Fyed-05
+	for linux-mediatek@lists.infradead.org; Fri, 27 Jan 2023 18:02:38 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id v13so5417656eda.11
+        for <linux-mediatek@lists.infradead.org>; Fri, 27 Jan 2023 10:02:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=tJHn8+pSpwglQ2ylL3huswEVRt2vpqL4jH6sVFjg9vY=;
-        b=kk0OOlr625FNfEaHBDqd0XDNDVjNqpiWEqLLgn/fC4Qrqb/VCsyTTtUlWSa9r/z5N0
-         jUo+S93D/xHrJiiUw5OlfRmg2Qb7eYqSrvqF+6vwqjzOjLXFxlR0y26v5ruRu8D9qPOu
-         AX97MQTJX3KX6JSnXTdwDgUxmp0ZPLguoQhSfCCouy1ha2VZdluDW4CoH7BK6EBpSus9
-         t9cmqkChU3WN8hsU2hwy2v4rJ2JQaKPeY8TuARXnsE+qEu3TVKRh6WvpwhN+4eMaTrrD
-         lZ6CyRcSEedX/rbGSxU02JgoCn20QKcs4fqzC5ZSSYeVL9CLzuQyPTD7dEtLUDPNkYu6
-         HZcA==
+        d=chromium.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=Y2Q86j92pQ9q2wsMYUDefPiRAUR/rCfcZ3Y/y0U02v8=;
+        b=CdDAORiYi7i8Rh5tx0vLXUjR6M49l7zi6wYWbctYHIiW9d5EDVrOzpXzWHxCvweTiM
+         VsRE9D8RDYs6Gc07Ig3Gv2Goti67GkR3oaCqb91zHJ/hTw59daVB1+K0ukgP5parwwp9
+         GZPYuqHvTRS3J1F85pOsxMJNi9unlWXkqxle8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=tJHn8+pSpwglQ2ylL3huswEVRt2vpqL4jH6sVFjg9vY=;
-        b=JH8iXgrPzMJ4uKGyf9ZqkDw87SaIYXfY516uZCUrM0lD4jjivNmvndszx5wL/PIdl5
-         c80uOCn0xnSrs8K+fH1Kf+OgCxv+w3uyU2QMtGOXiqObfh4dyrVg/KvdaA9NXKzdyGfo
-         Gs27aQ9PNqKLgB1l0fsVISyjrgZwAIzSjbjMuz5q/o2idBkIQPBlsEinOYWrY6Fy7chL
-         UyK6QDdF9iwORkqxLFB6gDbqL5ddcX8bM3y0Q4McnOdXEXZaV5W1cwNt6PLgdFUnuh4q
-         hWxGrmZkXX0H2IeOWoeYhwUTXzM3qXWthIaRatkXSnmLJKNFZr3V7GRpDe1OyJ23EsYY
-         fMKA==
-X-Gm-Message-State: AFqh2kpFXw32nbMM853+GmT5TNTwClBXNeGve0oWOzuU9vJQtQt3erFM
-	a24alXrsl+MjN7QcNprL64o=
-X-Google-Smtp-Source: AMrXdXvbJYAaCNdJ8tWPyVy0sutAAlq8id5Jor0UBuLb4ou1Ou/KYQMgNdG31Nv8a6j0csqDu9fGGQ==
-X-Received: by 2002:a17:903:2349:b0:195:e373:4c60 with SMTP id c9-20020a170903234900b00195e3734c60mr35905710plh.40.1674838444754;
-        Fri, 27 Jan 2023 08:54:04 -0800 (PST)
-Received: from localhost ([2a00:79e1:abd:4a00:2703:3c72:eb1a:cffd])
-        by smtp.gmail.com with ESMTPSA id q16-20020a170902edd000b00196503dba7bsm1904267plk.293.2023.01.27.08.54.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Jan 2023 08:54:04 -0800 (PST)
-From: Rob Clark <robdclark@gmail.com>
-To: dri-devel@lists.freedesktop.org
-Cc: Doug Anderson <dianders@chromium.org>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Rob Clark <robdclark@chromium.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-mediatek@lists.infradead.org (moderated list:DRM DRIVERS FOR MEDIATEK),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-kernel@vger.kernel.org (open list)
-Subject: [PATCH] drm/mediatek: Remove unused GEM DMA header include
-Date: Fri, 27 Jan 2023 08:54:09 -0800
-Message-Id: <20230127165409.3512501-1-robdclark@gmail.com>
-X-Mailer: git-send-email 2.38.1
+        bh=Y2Q86j92pQ9q2wsMYUDefPiRAUR/rCfcZ3Y/y0U02v8=;
+        b=ELkaJPSbFyeBV8cWCwQVOwUYDMNMRmbWjJUGa9brtYKUb2jc5Y1WH12unBX905vJBe
+         nk9058ErTfTK5DxwYZUeyhJNMKn3dnKCP6Zvq2QzzVBFk9/H9WR1rCJNZrSg/Wny+DVT
+         SBJNyMG2YqRh0DkgYBiNlV5i71smTV2DSmgEvf6SHyKf/evwDsLYgrnUfL2zGGGaNTaN
+         6wwCLYoFH9WWkQ6eBQlaJPZwOd39R1V4Qo4E+xrF+Hz16mP4UMyCe5aMN0PG3EpWvFGI
+         OcqCq/IGcDzsuilmH70Xe2siVgKGuJMFdcoER2o+ErFJA9p+9zja83vCp4TmMnuKgb/6
+         Tyiw==
+X-Gm-Message-State: AO0yUKVSSUn2mqLS4NbKSyLt5e26G6nD9cdT5nHjM+HjlH+v7yUAlHom
+	hwJ2hM6s2BW07lVgJSYkOWAXB4dSaCP+GNyVQY8=
+X-Google-Smtp-Source: AK7set8TVPDc4qZNJg5w6MKVsJVOX+ODbWsVY61spxYSfJ5HtfmrL6sMWKmM+0oEy5byfdpGOrttZw==
+X-Received: by 2002:a05:6402:430b:b0:4a0:afd5:df81 with SMTP id m11-20020a056402430b00b004a0afd5df81mr13289241edc.35.1674842553317;
+        Fri, 27 Jan 2023 10:02:33 -0800 (PST)
+Received: from mail-wr1-f54.google.com (mail-wr1-f54.google.com. [209.85.221.54])
+        by smtp.gmail.com with ESMTPSA id w25-20020aa7d299000000b0048789661fa2sm2634734edq.66.2023.01.27.10.02.31
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 27 Jan 2023 10:02:31 -0800 (PST)
+Received: by mail-wr1-f54.google.com with SMTP id t18so5719234wro.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 27 Jan 2023 10:02:31 -0800 (PST)
+X-Received: by 2002:a5d:6b51:0:b0:2bf:c5cc:e1d6 with SMTP id
+ x17-20020a5d6b51000000b002bfc5cce1d6mr164739wrw.659.1674842551177; Fri, 27
+ Jan 2023 10:02:31 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20230127165409.3512501-1-robdclark@gmail.com>
+In-Reply-To: <20230127165409.3512501-1-robdclark@gmail.com>
+From: Doug Anderson <dianders@chromium.org>
+Date: Fri, 27 Jan 2023 10:02:19 -0800
+X-Gmail-Original-Message-ID: <CAD=FV=XL_KKB1vbU=gZVXYJzs4pLEnACysp0Q9DxhkHGTR9AgA@mail.gmail.com>
+Message-ID: <CAD=FV=XL_KKB1vbU=gZVXYJzs4pLEnACysp0Q9DxhkHGTR9AgA@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: Remove unused GEM DMA header include
+To: Rob Clark <robdclark@gmail.com>
+Cc: dri-devel@lists.freedesktop.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Rob Clark <robdclark@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	"moderated list:DRM DRIVERS FOR MEDIATEK" <linux-mediatek@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	open list <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230127_085408_569197_5AFB9007 
-X-CRM114-Status: GOOD (  10.82  )
+X-CRM114-CacheID: sfid-20230127_100237_057743_8E22525E 
+X-CRM114-Status: GOOD (  14.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,31 +96,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rob Clark <robdclark@chromium.org>
+Hi,
 
-No longer needed since the removal of dependency on DMA helper.
+On Fri, Jan 27, 2023 at 8:54 AM Rob Clark <robdclark@gmail.com> wrote:
+>
+> From: Rob Clark <robdclark@chromium.org>
+>
+> No longer needed since the removal of dependency on DMA helper.
+>
+> Fixes: 2ea8aec56bf1 ("drm/mediatek: Remove dependency on GEM DMA helper")
+> Signed-off-by: Rob Clark <robdclark@chromium.org>
 
-Fixes: 2ea8aec56bf1 ("drm/mediatek: Remove dependency on GEM DMA helper")
-Signed-off-by: Rob Clark <robdclark@chromium.org>
----
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reported-by: Douglas Anderson <dianders@chromium.org>
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index cd5b18ef7951..7e2fad8e8444 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -20,8 +20,8 @@
- #include <drm/drm_fbdev_generic.h>
- #include <drm/drm_fourcc.h>
- #include <drm/drm_gem.h>
--#include <drm/drm_gem_dma_helper.h>
- #include <drm/drm_gem_framebuffer_helper.h>
-+#include <drm/drm_ioctl.h>
- #include <drm/drm_of.h>
- #include <drm/drm_probe_helper.h>
- #include <drm/drm_vblank.h>
--- 
-2.38.1
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> index cd5b18ef7951..7e2fad8e8444 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -20,8 +20,8 @@
+>  #include <drm/drm_fbdev_generic.h>
+>  #include <drm/drm_fourcc.h>
+>  #include <drm/drm_gem.h>
+> -#include <drm/drm_gem_dma_helper.h>
+>  #include <drm/drm_gem_framebuffer_helper.h>
+> +#include <drm/drm_ioctl.h>
 
+It took me a little while to realize why you needed this extra
+include. I guess DEFINE_DRM_GEM_FOPS implicitly refers to drm_ioctl().
+Seems like really drm_gem.h ought to be the one including drm_ioctl.h,
+but maybe there's a good reason why we don't do that?
+
+-Doug
 
