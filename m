@@ -4,59 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1FB6C54EAA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 23:21:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E018C54EAA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 23:40:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
-	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UyaO3WR5aL8yEkRqNVSm+n33GhHMoZg7aozy4Wia9d4=; b=Oie9cOTgr8NfIYiBxqT3jQ7akz
-	REJMFw2BRk8lmx0MwQ/8cVf4JRWUVrvxQ+fXt2w9vvNbzVq6XXdRBKOgCLzPovLfXKFzOJx7tPdw3
-	6iel/OXw/5zTQTZN0BHek0L/lw24MCVK3VVji1W2Sn3VF0hGhSGtjC9TwyPdMPcnxo0rUY7pHWWGd
-	WNuYGWe5hy0PzavDgcBY+6t7A2XMgSZpTHRe4N5DhD5yvrZ4pRUISZx1l1tCyWn6wEUAZVqfOEwst
-	bPMnFtCzMkY1QFOdjqpAtbkM8vUc04bmC+mX8Kvn6LNtdXbJlZ1OtBa1EuBagBWa/hOa3uTNIkedL
-	Ouj92J9Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MejMPe4SqMXIR5PkO5uOpdNlnYeezfagIFnSND5JyXk=; b=ys1Qqpp/Z0OcaYwiPX2zwvp17s
+	ig5nUUHStsqXkS6Ev9abzE8qC+2hXXi71JTxIxbJ0nD1oG736YE7ZtGmjzPGXDEDv+HvYhCmaQljx
+	b0cUwCmdaerEiqCB5BwZsIZwuEbbtRDtLiwE2/dyospEqwjM1VrDaf2K7iTpeAgKUpCqUgLW8GQ0C
+	ScVxkDqhP9BzmrtWJ9QjLlE5xfutvp9dT8W7Bb6Ie/phZxPJG6SuPkKbw1QNgmSqwUbQv54uMr853
+	9zk2kjq2sbKOOvgvKYJXEXE3Ni10hvAtz9r3afByXoaGqESe8BD24V+z9FThzpJO8G819gdAAWZhl
+	jCjyqtAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLY1e-00GpUb-Ip; Fri, 27 Jan 2023 23:20:54 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pLYKE-00Gs8T-3X; Fri, 27 Jan 2023 23:40:06 +0000
+Received: from mail-dm6nam04on2069.outbound.protection.outlook.com ([40.107.102.69] helo=NAM04-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLY1K-00GpL0-7u; Fri, 27 Jan 2023 23:20:35 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 89139B82147;
-	Fri, 27 Jan 2023 23:20:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 361A9C4339B;
-	Fri, 27 Jan 2023 23:20:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1674861631;
-	bh=UyaO3WR5aL8yEkRqNVSm+n33GhHMoZg7aozy4Wia9d4=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=R0iXXNKZTQq+HOgAa+/shUbeB1WBWpsW8L9+USEom4RNG2pjozXcEnmgYY6Wt7N23
-	 o7GNy095skW/Vm/0pZR/LZ//INSeeZin3QJOTWeDD6C3nWnZoK/xiz17D91KENnQDa
-	 fdLOVf+oZ4RPtWQkQ2mFGPaAGrMTbHf0yPpcU/PO4zEE/rV7nDNBUbS4UIZYs4wLTF
-	 9xNfqq5WOJjXe3b6IvLxGtsmTo05m4C6r9kjJtsK7GByEY/sKUAQqOcdQ0sMKKSKfL
-	 05k81wKBZB7Tp/fp3nxhrJpihKvCTOOcy/0Esk/qDAiFpnQJF6Si5ky0L5Bp7af+km
-	 /054vMYwSPYEg==
-Message-ID: <cb7ecbcfd5cebc81172003b77f2d2f3c.sboyd@kernel.org>
-Content-Type: text/plain; charset="utf-8"
+	id 1pLYK1-00Gs4u-Az; Fri, 27 Jan 2023 23:39:54 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=XXtmFrbPX3Rlhiz3SBLD8PS8kxz4N4LpqF4I75UDDQIakx0dZCtG+bIKoWx2zlRZaQK6xQ+6FwUh1tUQ47r6UQC2GpHoEX7079wb9HteTfF30H56fDckYDiTz3eOrE1v5lxnFSQNCeavT2E5YM5znqcqcEN6ZWKxQCFsMRS2zmsjG8hzDk7eGko9nIk4psKXJhbglDzsksS/8pG9bdT2R+wisTNVTSAYPxp5HewsySyHkdbT+YGu22g2RosoQFORBZTAv2A2mmHtnVvc4Ehl+KDLT0pV+pjBDP26isySo4U8cz1scTdUWshn5DtxRNnukpCVXGIzuor7fXG6l+0bhg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=MejMPe4SqMXIR5PkO5uOpdNlnYeezfagIFnSND5JyXk=;
+ b=X/F/lVcJFZPodQ1E3/3cQpisfntM/tvCOhv9GylI40CIJfNgUVSrnCM4FyCXsgX63gJp4r51LSJhF2JCtV3hhRFwnElBxU5hs42zh/TXhAlryNnssHoZUcVi6tkKzfTuKkX6gtS2EpT1vbPiVobAXNHuDd2VqAxZHyrM/3iq9xh55hzJAJ6oMA3fhfGby/UjDmh+ll7u/wcIQa6IpKhWNkSJWrISUBJ/FR3PZGdnLakK+pKRODMlWt1YtqsSb7SNSMoSp19KxKmIbS/RfaHTsV0QTugRPVYvYMEhQX8zYEEaSFVGuvtwQd1zo1C1Lll6wGJSPSQaEUdoGMMieINDEw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.118.232) smtp.rcpttodomain=lists.infradead.org
+ smtp.mailfrom=nvidia.com; dmarc=pass (p=reject sp=reject pct=100) action=none
+ header.from=nvidia.com; dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=MejMPe4SqMXIR5PkO5uOpdNlnYeezfagIFnSND5JyXk=;
+ b=XrH1T5B3A2qSMR7hcWB2kVA6RW9VXS3/5OuiT9aX4eDN1dXt3YmGjPU314YHqRRnGAdeiuGa265JTONSZPJt9l5c2pH+KeGbEBgCDy6Ul5tZgjNI1C5P+iYqnfxFtOuusI08eFBRSWs2F4NLDOjU8vE7ULQdHNvwonoaAMDChIAhdEdW2dZ5bJ8zs4C0mbi3VM1UTL0MxPVQc8wItOmsZ0XQ9ucA6qmVqPbxanuIVgBa6UEy/PLVYk4Iiws7PnwByF8FB5SuqC5ywIIWIucaO5+ca9braOqfwva1v9b1AG10W4IUWU+g1SrxvUWC681clMbeljsN5t/mfqU4TOiHWQ==
+Received: from BN8PR15CA0031.namprd15.prod.outlook.com (2603:10b6:408:c0::44)
+ by DM4PR12MB5937.namprd12.prod.outlook.com (2603:10b6:8:68::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.21; Fri, 27 Jan
+ 2023 23:39:49 +0000
+Received: from BN8NAM11FT085.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:408:c0:cafe::82) by BN8PR15CA0031.outlook.office365.com
+ (2603:10b6:408:c0::44) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.25 via Frontend
+ Transport; Fri, 27 Jan 2023 23:39:49 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.118.232) by
+ BN8NAM11FT085.mail.protection.outlook.com (10.13.176.100) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6043.25 via Frontend Transport; Fri, 27 Jan 2023 23:39:48 +0000
+Received: from drhqmail202.nvidia.com (10.126.190.181) by mail.nvidia.com
+ (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.36; Fri, 27 Jan
+ 2023 15:39:41 -0800
+Received: from drhqmail203.nvidia.com (10.126.190.182) by
+ drhqmail202.nvidia.com (10.126.190.181) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.36; Fri, 27 Jan 2023 15:39:41 -0800
+Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com
+ (10.126.190.182) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.36 via Frontend
+ Transport; Fri, 27 Jan 2023 15:39:40 -0800
+Date: Fri, 27 Jan 2023 15:39:38 -0800
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: <jgg@nvidia.com>, Robin Murphy <robin.murphy@arm.com>
+CC: <kevin.tian@intel.com>, <joro@8bytes.org>, <will@kernel.org>,
+	<agross@kernel.org>, <andersson@kernel.org>, <konrad.dybcio@linaro.org>,
+	<yong.wu@mediatek.com>, <matthias.bgg@gmail.com>, <thierry.reding@gmail.com>,
+	<alex.williamson@redhat.com>, <cohuck@redhat.com>, <vdumpa@nvidia.com>,
+	<jonathanh@nvidia.com>, <iommu@lists.linux.dev>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-tegra@vger.kernel.org>, <kvm@vger.kernel.org>
+Subject: Re: [PATCH 1/4] iommu: Add a broken_unmanaged_domain flag in
+ iommu_ops
+Message-ID: <Y9RgunVm+Gbec7a2@Asurada-Nvidia>
+References: <cover.1674849118.git.nicolinc@nvidia.com>
+ <0875479d24a53670e17db8a11945664a6bb4a25b.1674849118.git.nicolinc@nvidia.com>
+ <dfad6d75-6f4d-99ef-1c6a-4bf397dcaa13@arm.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20230118031509.29834-2-moudy.ho@mediatek.com>
-References: <20230118031509.29834-1-moudy.ho@mediatek.com> <20230118031509.29834-2-moudy.ho@mediatek.com>
-Subject: Re: [PATCH v6 1/4] dt-bindings: arm: mediatek: migrate MT8195 vppsys0/1 to mtk-mmsys driver
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Moudy Ho <moudy.ho@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Moudy Ho <moudy.ho@mediatek.com>, Rob Herring <robh+dt@kernel.org>
-Date: Fri, 27 Jan 2023 15:20:28 -0800
-User-Agent: alot/0.10
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <dfad6d75-6f4d-99ef-1c6a-4bf397dcaa13@arm.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN8NAM11FT085:EE_|DM4PR12MB5937:EE_
+X-MS-Office365-Filtering-Correlation-Id: 5bc398bf-c11a-49f5-09e4-08db00bfc7a0
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	fGTbHqIAr3MUlirte2Y5LOEq8T00RMe7f6ViRCYYRBuCFjI+mK+/lZmXbQngeHWpB9vgsMrzaPPVMzIm+cG9tNtIug8GpmXZ2WQKorlp9att19yD96FkLx4cRpUjIX6qoCR+QzS+mNMywhPdYBCNBmKwvYNebhf6Nj2wbkT5qLxNxzgbRx6K1dsOUyLmACBkgow0rrzt/aggINTe8+K4eA5u7hs//uuC2hcMGQqUbuPAewEDy5/hEstTfHQdSec5vaxTVFUWGvf2fGVgkuDg6A5PcSbwhat7G5IQLRabBgUeyPYWui6QFgvGLn2G3/huB6CooYL5DkvoD+yW11l7W68rvZ0wXwI0zMZMYltZA/bVo4bc6GL8eUtCzZJbIbPb3C6Gx0vZ0BwfM84D6hfqDFscPWtuLtsVPhNz6DWoHYXJlYZhB6Hg+BrJ4jib9u6dnx8bmccSid8tm0LPJYNtxE7CczGc1BTre7rGxx8+Cd/JDzjWx50sDkp0lBvAHhMbdT9SNUEAuUBIOvRE+olbVyG7IaSyxZdsFAPZNFcWo1vd0i4Bnox6lNhva6GqF89kEa9sbkXEwxReOzs/bBuCRgwWR9RjzRqKvzKPzM1FIl28UJQfSOZid3Xpbaaou8e0CH8z31PIoV2SijYGmaPqZVSjn4OoVHhwk4chON51kST4KXxm67Rcc7brRHq8e2DjZ10cNoXs8NwpKsFxIR0vAwIJq4zVeJfDRs9qULxBpd0=
+X-Forefront-Antispam-Report: 	CIP:216.228.118.232;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc7edge1.nvidia.com;CAT:NONE;SFS:(13230025)(4636009)(396003)(346002)(39860400002)(376002)(136003)(451199018)(40470700004)(36840700001)(46966006)(70586007)(82310400005)(26005)(186003)(86362001)(9686003)(478600001)(36860700001)(40460700003)(316002)(110136005)(40480700001)(54906003)(33716001)(8676002)(4326008)(55016003)(70206006)(356005)(336012)(41300700001)(47076005)(426003)(8936002)(53546011)(83380400001)(82740400003)(5660300002)(7416002)(2906002)(7636003)(67856001);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jan 2023 23:39:48.0496
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5bc398bf-c11a-49f5-09e4-08db00bfc7a0
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.118.232];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: 	BN8NAM11FT085.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB5937
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230127_152034_536628_3E653B59 
-X-CRM114-Status: UNSURE (   8.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230127_153953_407254_98441099 
+X-CRM114-Status: GOOD (  42.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,13 +129,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Moudy Ho (2023-01-17 19:15:06)
-> MT8195 VPPSYS 0/1 should be probed from mtk-mmsys driver to
-> populate device by platform_device_register_data then start
-> its own clock driver.
->=20
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> ---
+Hi Robin.
 
-Applied to clk-next
+On Fri, Jan 27, 2023 at 09:58:46PM +0000, Robin Murphy wrote:
+> External email: Use caution opening links or attachments
+> 
+> 
+> On 2023-01-27 20:04, Nicolin Chen wrote:
+> > Both IOMMU_DOMAIN_UNMANAGED and IOMMU_DOMAIN_DMA require the support
+> > of __IOMMU_DOMAIN_PAGING capability, i.e. iommu_map/unmap. However,
+> > some older iommu drivers do not fully support that, and these drivers
+> > also do not advertise support for dma-iommu.c via IOMMU_DOMAIN_DMA,
+> > or use arm_iommu_create_mapping(), so largely their implementations
+> > of IOMMU_DOMAIN_UNMANAGED are untested. This means that a user like
+> > vfio/iommufd does not likely work with them.
+> > 
+> > Several of them have obvious problems:
+> >    * fsl_pamu_domain.c
+> >      Without map/unmap ops in the default_domain_ops, it isn't an
+> >      unmanaged domain at all.
+> >    * mtk_iommu_v1.c
+> >      With a fixed 4M "pagetable", it can only map exactly 4G of
+> >      memory, but doesn't set the aperture.
+> 
+> The aperture is easily fixed (one could argue that what's broken there
+> are the ARM DMA ops for assuming every IOMMU has a 32-bit IOVA space and
+> not checking).
+>
+> >    * tegra-gart.c
+> >      Its notion of attach/detach and groups has to be a complete lie to
+> >      get around all the other API expectations.
+> 
+> That's true, and the domain is tiny and not isolated from the rest of
+> the address space outside the aperture, but the one thing it does do is
+> support iommu_map/unmap just fine, which is what this flag is documented
+> as saying it doesn't.
+> 
+> > Some others might work but have never been tested with vfio/iommufd:
+> >    * msm_iommu.c
+> >    * omap-iommu.c
+> >    * tegra-smmu.c
+> 
+> And yet they all have other in-tree users (GPUs on MSM and Tegra,
+> remoteproc on OMAP) that allocate unmanaged domains and use
+> iommu_map/unmap just fine, so they're clearly not broken either.
+> 
+> On the flipside, you're also missing cases like apple-dart, which can
+> have broken unmanaged domains by any definition, but only under certain
+> conditions (at least it "fails safe" and they will refuse attempts to
+> attach anything). I'd also question sprd-iommu, which hardly has a
+> generally-useful domain size, and has only just recently gained the
+> ability to unmap anything successfully. TBH none of the SoC IOMMUs are
+> likely to ever be of interest to VFIO or IOMMUFD, since the only things
+> they could assign to userspace are the individual devices - usually
+> graphics and media engines - that they're coupled to, whose useful
+> functionality tends to depend on clocks, phys, and random other
+> low-level stuff that would be somewhere between impractical and
+> downright unsafe to attempt to somehow expose as well.
+
+Thanks for all the inputs.
+
+> > Thus, mark all these drivers as having "broken" UNAMANGED domains and
+> > add a new device_iommu_unmanaged_supported() API for vfio/iommufd and
+> > dma-iommu to refuse to work with these drivers.
+> > 
+> > Co-developed-by: Jason Gunthorpe <jgg@nvidia.com>
+> > Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> > Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> 
+> [...]
+> 
+> > diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+> > index 46e1347bfa22..919a5dbad75b 100644
+> > --- a/include/linux/iommu.h
+> > +++ b/include/linux/iommu.h
+> > @@ -245,6 +245,10 @@ struct iommu_iotlb_gather {
+> >    *                    pasid, so that any DMA transactions with this pasid
+> >    *                    will be blocked by the hardware.
+> >    * @pgsize_bitmap: bitmap of all possible supported page sizes
+> > + * @broken_unmanaged_domain: IOMMU_DOMAIN_UNMANAGED is not fully functional; the
+> > + *                           driver does not really support iommu_map/unmap, but
+> > + *                           uses UNMANAGED domains for the IOMMU API, called by
+> > + *                           other SOC drivers.
+> 
+> "uses UNMANAGED domains for the IOMMU API" is literally the definition
+> of unmanaged domains :/
+> 
+> Some "other SOC drivers" use more of the IOMMU API than VFIO does :/
+> 
+> Please just add IOMMU_CAP_IOMMUFD to represent whatever the nebulous
+> requirements of IOMMUFD actually are (frankly it's no less informative
+> than calling domains "broken"), handle that in the drivers you care
+> about and have tested, and use device_iommu_capable(). What you're
+> describing in this series is a capability, and we have a perfectly good
+> API for drivers to express those already. Plus, as demonstrated above, a
+> positive capability based on empirical testing will be infinitely more
+> robust than a negative one based on guessing.
+
+OK. I can change to IOMMU_CAP_IOMMUFD, and add to the drivers that
+are tested. And an IOMMU driver that wants to use IOMMUFD can add
+such a CAP later whenever it's ready.
+
+Yet, "IOMMU_CAP_IOMMUFD" would make the VFIO change suspicious, so
+perhaps the next version is just one CAP patch + one IOMMUFD patch.
+@Jason, any concern?
+
+Thank you
+Nicolin
 
