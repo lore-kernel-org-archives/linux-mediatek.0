@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C85EDC38142
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 10:39:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37A62C38142
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 10:40:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FXAiAnqx717bRGeonWAKeaViFKaciCGQVW+5Eh1jhN8=; b=msB38Lu0zf0zDFHQ1bPZ4akSKX
-	khPyVwWI7cvsG03TXXDvocQhOnQPZ0oSpjGsUWpDHp8VriA5Ye5sVc4nW0JgkgTT8nkrzruvHE2HL
-	fE2ymjPbzMgotyXbSGwGCnOGw5D6hLqkReYEUgSvPc8AWZWorrTq1J3qgLG5IhH/f2jjbBbCbnQ8t
-	wX69PazXpLQCwqKe2iEyz28bK3VQ28mnqtuWUQQ/AHT+EIAWsJeI4xPXG9bi8XR7zcE2551aGZ2Rk
-	ijj6DnFvlR08MQx7rXCloO/hJU7ANXYmbWyiS8FvDTw2QupnPOe6DdiMZYO8wGUcXatOfeOLoOVUC
-	32T8RJVw==;
+	bh=woil+12cCxDARYtqm0G3bhtuIiQv4RbF3SsedckFqcc=; b=PqLckTZoS3SrUPSdrHX7tkjpSr
+	y08tVgTsa3A3IfiWFF6UET6hNVtq+nxQ5giRGGhjAfND/CPFhokNr1EWmQCD9d0fvt5E7J5GtRCqF
+	K4SQz3tRHanx2DjOAv5egBTEP+Gn4qE+fLaDBE8yQHNZaq1cGqkxlQ+S1JJPBcpmSeDtxQWGLglcW
+	rrhHitKaPTZ8VLySX/qlNRhjPnpFJLZgPMVWbmO0/sPT5kFdce1qBgzzpamJt3hxMebAO126ZC8JS
+	EAHccTtAAIVtxF4i9ha7tfZ3LOu0VDJeawigwnJFb33yKsDrsHW6+X588fbkMazedLT/vpFv8pHfg
+	TclpfV9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLM94-00DyFY-3x; Fri, 27 Jan 2023 10:39:46 +0000
-Received: from mga02.intel.com ([134.134.136.20])
+	id 1pLMA1-00Dyei-Nz; Fri, 27 Jan 2023 10:40:45 +0000
+Received: from mga12.intel.com ([192.55.52.136])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLM8q-00DyAt-6q; Fri, 27 Jan 2023 10:39:33 +0000
+	id 1pLM9j-00DyWz-Hl; Fri, 27 Jan 2023 10:40:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1674815972; x=1706351972;
+  t=1674816027; x=1706352027;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=AsZgpenLAU9xjhKqfjBX9R9XKFqTNtiIBho92RvLtSk=;
-  b=UjuXgAqVQlvKQu4C6ZUhQ6BGC0QBVxjjadiyUp2leXAbohDRjoF4Wkgh
-   2BfD74hEAOijnvfH/Lt4qdiYsHGkuMpcTXpM1MPZz9u++tkVDnV8qK2SN
-   mM3Qusg46T1dvZqSRwyRxtZFRVioRnlrs3vI2D1N4vJe+fK1oovnXQxND
-   CGHq3zrqBoaj5XF/Wr6+JpeYROH9a24AaJHWyXYErvLGR2kICSeTf3Hjm
-   Hx1+VPivaCqgRCHiMoUPVecDRSo1n4FI22qyOEXZFReqcfLJqsD3B5imH
-   fUPTPp29YWxv0KE5r2D4WMthEtYujyUop6cC4/JdWqB3Tx++zwks1+oc3
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10602"; a="315014118"
+  bh=pCLUqHrcYs/NeE2BNqrGmzOjvERZA/RdL1uGV47JSSE=;
+  b=jrj3YbUzar2RtFakPdhDVW0Gdx5b47B592VZIXlav4+m9msIftrX6rZw
+   srAWc4x+8/5hHTIHbo3L+KbprxFNRbdWS5QTAKTwXs/XAJfSFkB4xTZGd
+   nBuxLx0DAGsmb4RRwE0TK1dJX1GLiDT0/fL9ZeUzEupU7iXKDbgizoeL0
+   yESk905vzEVhiUmgLgSfjXNQJpViDa96lXmpHQKJ3da6sIhL1KiFKMQM5
+   UswTGNfcN0mHv8L23ZwJ78LvFytXIOjQfu8eb9mritEfJmCKtCqqttmyk
+   bClnymepehjH03znP3P1f+SaTcmqaUe8KhGpyXAG8Jm+WJEsJvtqAyt71
+   Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10602"; a="306711291"
 X-IronPort-AV: E=Sophos;i="5.97,250,1669104000"; 
-   d="scan'208";a="315014118"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Jan 2023 02:39:30 -0800
+   d="scan'208";a="306711291"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Jan 2023 02:40:22 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10602"; a="805757993"
+X-IronPort-AV: E=McAfee;i="6500,9779,10602"; a="613137946"
 X-IronPort-AV: E=Sophos;i="5.97,250,1669104000"; 
-   d="scan'208";a="805757993"
+   d="scan'208";a="613137946"
 Received: from smile.fi.intel.com ([10.237.72.54])
-  by fmsmga001.fm.intel.com with ESMTP; 27 Jan 2023 02:39:27 -0800
+  by orsmga003.jf.intel.com with ESMTP; 27 Jan 2023 02:40:18 -0800
 Received: from andy by smile.fi.intel.com with local (Exim 4.96)
 	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1pLM8j-00Fv0N-0c;
-	Fri, 27 Jan 2023 12:39:25 +0200
-Date: Fri, 27 Jan 2023 12:39:24 +0200
+	id 1pLM9Y-00Fv1Z-1p;
+	Fri, 27 Jan 2023 12:40:16 +0200
+Date: Fri, 27 Jan 2023 12:40:16 +0200
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Lee Jones <lee@kernel.org>
 Cc: ChiaEn Wu <chiaen@richtek.com>,
@@ -62,20 +62,21 @@ Cc: ChiaEn Wu <chiaen@richtek.com>,
 	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
 	szunichen@gmail.com, Alice Chen <alice_chen@richtek.com>,
 	ChiaEn Wu <chiaen_wu@richtek.com>
-Subject: Re: [PATCH v16 2/2] leds: flash: mt6370: Add MediaTek MT6370
- flashlight support
-Message-ID: <Y9Op3A746oHhgAxc@smile.fi.intel.com>
+Subject: Re: [PATCH v16 1/2] leds: rgb: mt6370: Add MediaTek MT6370 current
+ sink type LED Indicator support
+Message-ID: <Y9OqEC4A/PT2H83s@smile.fi.intel.com>
 References: <cover.1673886245.git.chiaen_wu@richtek.com>
- <7a6ac0051789831a7a53c2f3b66010fc0f1e5395.1673886245.git.chiaen_wu@richtek.com>
- <Y9OlXOJ31SUDNtPN@google.com>
+ <1c4cf50600bb0334bd03027f49d7511b394c6ced.1673886245.git.chiaen_wu@richtek.com>
+ <Y9OlmCZ+7NpKztee@google.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Y9OlXOJ31SUDNtPN@google.com>
+In-Reply-To: <Y9OlmCZ+7NpKztee@google.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230127_023932_318137_F140CA96 
-X-CRM114-Status: GOOD (  12.64  )
+X-CRM114-CacheID: sfid-20230127_024027_739621_C472AFE6 
+X-CRM114-Status: UNSURE (   9.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,15 +91,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 27, 2023 at 10:20:12AM +0000, Lee Jones wrote:
+On Fri, Jan 27, 2023 at 10:21:12AM +0000, Lee Jones wrote:
 > On Tue, 17 Jan 2023, ChiaEn Wu wrote:
 
 > I see that you guys have been super helpful reviewing this in the past.
-> 
+>
 > Have your queries now been addressed?
 
-I do not see any obvious issues that makes me suffer, if anything left
-it can be addressed in the followups.
+As per previous answer, not anything visible right now.
 
 -- 
 With Best Regards,
