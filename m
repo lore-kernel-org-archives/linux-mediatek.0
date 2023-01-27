@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C506FC38142
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 14:38:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46FEDC38142
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jan 2023 14:56:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ahTPIvNoGLx5rHnfbzBWuMSFpDkm5Kzs442yNpqblFM=; b=DG04KhU+lF4tWswLkGKUtt7BNU
-	xm+dHRM9/CccI0jPzQaorLAFTF8LYUG8QRpNnxMfbVH0t0xc8DE/sqKjHLGJ+AFnsDBOVVXnjgRbw
-	IjH6yPGyxOr46pZoCLKopO2VNp1+KVM22gXH4Mmuity8V/YAbEsNZ/E5aqfaZHnwGqQaiHXp9SSS0
-	s/6Muxr4q5Ay6S+SWDfV+hX3QIkfvWooL+WnTwwVK8V1fYCNy0rlWivJ6hau4Xx9MwnKnBNzy1zEy
-	lRUAlILydv+H47SDy0nn5VW6prx//YuliM452MWMNQTmwlxpDTKFh/ogoOdoNmB5N9zvjVy0yvnMb
-	x2Q7uvtQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HvNrME+MM8yn4e0AkTN+4TlH0dGTPBFUw82z5J9q42o=; b=uYf/b8U2UtWHERVpzPmdvKPsdC
+	DSv7C8Mgp5aAQ7gwKZX11oHoWH7b6Uee+6zxGPZly7rLbv/cpz4oSUDCqlNKB4UMO7EKUkKJukvni
+	ZAvlMJKDmuxQ1HOc02aX3lKMRpIQHvEZF1BB/Pd2Xr1QmXjlBk7ed5ecZVDzpgmrWZsZTl+JsVdWS
+	NDaxr3RUZz1fz/aNfmGpkpBQPduXvkoYjN+gFl7c9efCZ09j0AkOLs479JTYYPpPHGm0ej7sJYe2v
+	uSwqVwMmG6rKkTKoRyEcJfWmR+C414CW+zv4r7ui8JsRYxwL7sptbZn6TMmAgfnN+4fXgyT0jJ/1F
+	/rca8qHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLPs9-00FKFg-6m; Fri, 27 Jan 2023 14:38:33 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pLQ8x-00FNGn-Vy; Fri, 27 Jan 2023 14:55:55 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLPrv-00FKBX-HC; Fri, 27 Jan 2023 14:38:20 +0000
+	id 1pLQ8l-00FNDv-8H; Fri, 27 Jan 2023 14:55:44 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 192A8B82126;
-	Fri, 27 Jan 2023 14:38:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B39A1C433D2;
-	Fri, 27 Jan 2023 14:38:11 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id C7F0FB81F95;
+	Fri, 27 Jan 2023 14:55:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7BAFDC433D2;
+	Fri, 27 Jan 2023 14:55:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1674830296;
-	bh=bTSW7NmUsG8tgCcNy2Sa9snhAmKGyq9mToBUWqqSejs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=tPljhGE8A8JrC03p17PQpzYPtj3u75TC2O/cCxPLGk7/Pmz5E/ImwxNSE8X1ldeAo
-	 tTr7Y5V6jtLpeG/wzh6dpC6F4GtN0gucg5gzrvT7JOmJ++JYoUyGHXibvBBnZqorVM
-	 hB9wqE7Vg9ddwFl+Ux8p5/6zmkVBUM0MMt36rd2+Yg5qcg/OsOFCTEIGxMX8F8SfEf
-	 y36NhgZyoLpyXnJixgHK1oB/FMExUaFyk3A7kqqZKO1LrmDjqJA/SSBRw51/tNYBY9
-	 5jPeHU6lRheS1fMNKS8pl8HJeTIyXFJz8MzJhdNhcfsqkRB9gOjLofn8lhEOsvOcZM
-	 mHWz3+n54xWzw==
-Date: Fri, 27 Jan 2023 14:38:08 +0000
-From: Lee Jones <lee@kernel.org>
-To: Bernhard =?iso-8859-1?Q?Rosenkr=E4nzer?= <bero@baylibre.com>
-Cc: linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-serial@vger.kernel.org, linux-usb@vger.kernel.org,
-	linux-kernel@vger.kernel.org, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, tglx@linutronix.de,
-	maz@kernel.org, linus.walleij@linaro.org, matthias.bgg@gmail.com,
-	gregkh@linuxfoundation.org, daniel.lezcano@linaro.org,
-	chunfeng.yun@mediatek.com, angelogioacchino.delregno@collabora.com,
-	allen-kh.cheng@mediatek.com, nfraprado@collabora.com,
-	andrew@lunn.ch, gtk3@inbox.ru, sean.wang@mediatek.com,
-	zhiyong.tao@mediatek.com
-Subject: Re: [PATCH v8 3/9] dt-bindings: mfd: syscon: Add mt8365-syscfg
-Message-ID: <Y9Ph0E09GycQ20J4@google.com>
-References: <20230123163833.1007181-1-bero@baylibre.com>
- <20230123163833.1007181-4-bero@baylibre.com>
+	s=k20201202; t=1674831340;
+	bh=HvNrME+MM8yn4e0AkTN+4TlH0dGTPBFUw82z5J9q42o=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=BdOJeA81z8ETj4H1loxExyGMkjmJU71jtbn48u+zJKPN3npJkLLrD1DTEzUDyITfh
+	 HDqTrjXvFpiXuIEuPBw7xP+bQB9UR3OKcBZE0Wj/jO/o2DOm/GpsZdFzd+ezW+6aVY
+	 f7vkv2VfyHsdtcELdVnqBZgKL0QiRw8bCP2POSD0+CpoJrqlBwp8PfKmahn0PF+jjF
+	 HYYg55akVUd+tMg51h5/kAo8OV5jd8bVZJki/YUmBOxUtU7/k6Lgfiay4apwLTfT9S
+	 0QvmA/4vc5njTRfs5fd7yf1UrbXlYNPr4ZVd1HvysynF6AuxpKgStRD4NXfSxBX4CW
+	 6qEPoZsjkkPcg==
+Received: by mail-lf1-f53.google.com with SMTP id o20so8553591lfk.5;
+        Fri, 27 Jan 2023 06:55:40 -0800 (PST)
+X-Gm-Message-State: AFqh2kovW3DWLRyS/ebG1YGVQEPzK5FaDjhkrVOeMgWzZxssH1exifeL
+	SzmTJ83YN6d2Vp9n1W4OAIk7nZN7zj1iZe4mLQ==
+X-Google-Smtp-Source: AMrXdXt+OmlRKcer++n7fCu4l2zdWFvwQbkW53r+2SZjCqH0XMEpiXMeFESigK5NF723T8csDUcyNE8hgDt/kcl9nxk=
+X-Received: by 2002:a05:6512:1105:b0:4cb:f29:e2b0 with SMTP id
+ l5-20020a056512110500b004cb0f29e2b0mr3003381lfg.404.1674831338572; Fri, 27
+ Jan 2023 06:55:38 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230123163833.1007181-4-bero@baylibre.com>
+References: <20221205095115.2905090-1-ruanjinjie@huawei.com> <378232f4-5c2e-ad56-c4ec-4d9f72f08755@collabora.com>
+In-Reply-To: <378232f4-5c2e-ad56-c4ec-4d9f72f08755@collabora.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Fri, 27 Jan 2023 22:55:26 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9aQnkWvLjaoxRsHStpfeK5v72XkNd7aCw-MbCLVQewUA@mail.gmail.com>
+Message-ID: <CAAOTY_9aQnkWvLjaoxRsHStpfeK5v72XkNd7aCw-MbCLVQewUA@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: mtk_drm_crtc: Add checks for devm_kcalloc
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: ruanjinjie <ruanjinjie@huawei.com>, chunkuang.hu@kernel.org, p.zabel@pengutronix.de, 
+	airlied@gmail.com, daniel@ffwll.ch, matthias.bgg@gmail.com, 
+	seanpaul@chromium.org, ck.hu@mediatek.com, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230127_063819_748980_287A3A62 
-X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-CacheID: sfid-20230127_065543_463962_8B5CD8C5 
+X-CRM114-Status: UNSURE (   9.76  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,21 +83,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 23 Jan 2023, Bernhard Rosenkränzer wrote:
+Hi, Ruanjinjie:
 
-> Document Mediatek mt8365-syscfg
-> 
-> Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> 
-> ---
->  Documentation/devicetree/bindings/mfd/syscon.yaml | 1 +
->  1 file changed, 1 insertion(+)
+Applied to mediatek-drm-next [1], thanks.
 
-Applied, thanks
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-next
 
--- 
-Lee Jones [李琼斯]
+Regards,
+Chun-Kuang.
+
+AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =E6=96=
+=BC
+2022=E5=B9=B412=E6=9C=885=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=887:5=
+3=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> Il 05/12/22 10:51, ruanjinjie ha scritto:
+> > As the devm_kcalloc may return NULL, the return value needs to be check=
+ed
+> > to avoid NULL poineter dereference.
+> >
+> > Fixes: 31c5558dae05 ("drm/mediatek: Refactor plane init")
+> > Signed-off-by: ruanjinjie <ruanjinjie@huawei.com>
+>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+>
 
