@@ -4,84 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8FF3C38142
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jan 2023 18:58:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B19D4C38142
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jan 2023 22:38:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y1bCGBLgovi3q/v8ET4W8PyBl4sU90EbZek6jk/NEZw=; b=fEQXfaQ5sr665IELQI7zDCACrp
-	Te3GlK0hFakLK8rmlj4BcszD79Pnvp1bzImfP9ZSnpse682vn8rRefpc3GbVtFTA5vh2HRJMQRbzm
-	Ogj+FenC2s9wh1CqiMDmvwIcrjz8vRuXb5nDcD72ibuJX5Dfklz5wC00JjzQGileckIb1oNxfGqPi
-	J4m22viMqSmGilzMEZB2yFcCTbvxhU4o5ijGI+RWFxuU5x44n4DrVZ2RcJ23o+3Y04moaTm070IcQ
-	yNJcQxCJhAsYcSSBv7H0Dy3NyM2Uec0L70QR4FGVOqNS5s061/LclPSVHUjP85m6TdkEUxk7caHlk
-	+tJxmMiw==;
+	bh=g2fjqw/303bMNNUpoe3r4ayfN5p/kfqZGtLtAxKocJg=; b=VOevgozk+82JoY8IMRzS2NMokM
+	8ETaj+HYnepgSEkKxA/r6nCgY5BQdc+LRiTVvK5+e7v4IQGzgQAHlEHEoeQJSLr4IRC7j/wclai3J
+	xpEhCCymeHhiAcONssOBiFi+Evzm2ELzJeGyDeZPotj5dweSYsAlNZ6dPzR9Y9Ys2kSRiLjCMkM2Z
+	6gdgIOYY0Pz2pmw9NFONfWyFdQvj6IfIjfpeqhmgyxK4zUtpP45cf57XOPbw52mvY595xYJZDyEb6
+	Gx1x+Fa4FebzrktIwHMDJGYte1dMAxgZ73Ikp3b+AzxB+7cCbRwHVJ/3qfOlnZ/+hwV43uCWrxzNz
+	xKJBGDyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLqOl-000YIj-Sj; Sat, 28 Jan 2023 18:57:59 +0000
-Received: from mga11.intel.com ([192.55.52.93])
+	id 1pLtpl-000k21-TC; Sat, 28 Jan 2023 22:38:05 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLqOi-000YHr-LT; Sat, 28 Jan 2023 18:57:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1674932276; x=1706468276;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=C/Fj/U8MY72zX0xzMfuMhE7ROEG03cf3gcA25/GnMq4=;
-  b=ldLgtIu5X1m/oWzLfJVcfmijWVWsr8Im2uIA3x9AsxxFQfI7D4AvB4KS
-   B4LJKCJ3tZKHH8qNGUmOiIu+UEiBlIsGQP3DaNESGH5kLZdbb2BSTGI3y
-   CKLragBRlRpQzOCwGcMKn6auP7Z90Bv7WdrYSRCl29pv0p/Y6R1PxrCeS
-   DzFZadgIYFK9PLpNH9LUVwh9jp0DY+84xk95/sa/Yh9KJK97+6KX6plLd
-   x2+3DHCv7xtvQ3+v6Htwn2ZZuOqRZ7a4C7Wl7jV34vufpJVa5UcBkIC7o
-   Y/YZUYtVveqa8PtmK9bbOhSsWoFQp5QdO2mKxsWQbMtb9IZ9MYCYBLaU0
-   A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10604"; a="325015354"
-X-IronPort-AV: E=Sophos;i="5.97,254,1669104000"; 
-   d="scan'208";a="325015354"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Jan 2023 10:57:53 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10604"; a="771960911"
-X-IronPort-AV: E=Sophos;i="5.97,254,1669104000"; 
-   d="scan'208";a="771960911"
-Received: from lkp-server01.sh.intel.com (HELO ffa7f14d1d0f) ([10.239.97.150])
-  by fmsmga002.fm.intel.com with ESMTP; 28 Jan 2023 10:57:47 -0800
-Received: from kbuild by ffa7f14d1d0f with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1pLqOY-000109-2z;
-	Sat, 28 Jan 2023 18:57:46 +0000
-Date: Sun, 29 Jan 2023 02:57:39 +0800
-From: kernel test robot <lkp@intel.com>
-To: Guillaume Ranquet <granquet@baylibre.com>,
-	Vinod Koul <vkoul@kernel.org>, Jitao shi <jitao.shi@mediatek.com>,
-	Kishon Vijay Abraham I <kishon@ti.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	David Airlie <airlied@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Rob Herring <robh+dt@kernel.org>, CK Hu <ck.hu@mediatek.com>
-Cc: oe-kbuild-all@lists.linux.dev, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	mac.shen@mediatek.com, linux-phy@lists.infradead.org,
-	Guillaume Ranquet <granquet@baylibre.com>,
-	devicetree@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	stuart.lee@mediatek.com
-Subject: Re: [PATCH v5 3/3] phy: mediatek: add support for phy-mtk-hdmi-mt8195
-Message-ID: <202301290245.KWRXz5OS-lkp@intel.com>
-References: <20220919-v5-3-cfb0e5ad29b2@baylibre.com>
+	id 1pLtpX-000k0M-0R; Sat, 28 Jan 2023 22:37:56 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id cl23-20020a17090af69700b0022c745bfdc3so1334921pjb.3;
+        Sat, 28 Jan 2023 14:37:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=g2fjqw/303bMNNUpoe3r4ayfN5p/kfqZGtLtAxKocJg=;
+        b=gDrOrkXXN2+eZmzKxPlMyAE8toJamlTbn80o+fcvUjZ7VO1vm0sKjq19c1S+BkdkdX
+         YpgziqRqC4MRufwEoEaUI7YMs10JaBQcKikCH/u1puk5BHeHFPu10Q9r1hnnAnlJTqtw
+         W3nxPcuB2Xnj9vjSVt4nQhGUaFh35+1D9d9zZCr/T0Dmv7FzNbgXstcX959NB7q5lUoV
+         fpTDRjZprkBWXam5MdsaRqGICXHN6LzYJKvetKNY2N2uyxVFpNiqmj936HyDVXV2MG66
+         3vFIaWphhASTtmRFbVglFSfeaewYMCVxWAvbhzDUER8akBfzVaKyAThACtMtBldxr4S4
+         gVCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=g2fjqw/303bMNNUpoe3r4ayfN5p/kfqZGtLtAxKocJg=;
+        b=Svb2rJ4knLdTinh/YbQXTpmKIxTpiQDaBcRygSNGlwXaAv7fhXHWPHmVznj4j4hKmX
+         v7Du+bycsaYEuTu6cp9A8udfa3Q1wB3hUTPMTzdZniAJMB3YsR+hVYVaAUycv41bc1kO
+         0n8m5/nHMkNCCGJkaOkxh+2EtBQPINEXCEtzH33O+c85NQm7EpePRIlMFKzt7LZG5yTs
+         A0bSvyxSRLpfOQez3bx+ULcAN0KXI47W0r4Gomxsyh2Dbdfrw2QmLg79I+BNjFFzw/fp
+         ZnnYC5LMGMDMDWGmnOb3+PMcLNZI2i3JCyK3iZ2MTn8gThH0b4L5CCAteUnidZNI51jq
+         0jzw==
+X-Gm-Message-State: AFqh2kqKatdlTm+3dVwNZrMSkKXAmhNx1dlb4GLkctG//BnfRxIb2Iqz
+	J8BfHpPcrk+RmkeRqbzyNdFKy7Qq135YZkpf24E=
+X-Google-Smtp-Source: AMrXdXtbqhrkWuN3kvH3D0ysENqY7fYj+QQkOyLGPF9AvkSWJ0b3ZzL39F+bOKy1vdH+iKUE/aeoGMcYaqisLQQ+STw=
+X-Received: by 2002:a17:902:aa4b:b0:194:b3c6:18ee with SMTP id
+ c11-20020a170902aa4b00b00194b3c618eemr4707438plr.29.1674945466747; Sat, 28
+ Jan 2023 14:37:46 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220919-v5-3-cfb0e5ad29b2@baylibre.com>
+References: <20230128150025.14491-1-Kuan-Ying.Lee@mediatek.com>
+In-Reply-To: <20230128150025.14491-1-Kuan-Ying.Lee@mediatek.com>
+From: Andrey Konovalov <andreyknvl@gmail.com>
+Date: Sat, 28 Jan 2023 23:37:35 +0100
+Message-ID: <CA+fCnZdSvTR=Ug3P9ZVxq9AG9Dh+TqLxDMRVOhvE8Sr1a2Oq4w@mail.gmail.com>
+Subject: Re: [PATCH v3] kasan: infer allocation size by scanning metadata
+To: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>, Alexander Potapenko <glider@google.com>, 
+	Dmitry Vyukov <dvyukov@google.com>, Vincenzo Frascino <vincenzo.frascino@arm.com>, 
+	Andrew Morton <akpm@linux-foundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	chinwen.chang@mediatek.com, qun-wei.lin@mediatek.com, 
+	Andrey Konovalov <andreyknvl@google.com>, kasan-dev@googlegroups.com, linux-mm@kvack.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230128_105756_787645_27C34078 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20230128_143751_092435_F7FA0986 
+X-CRM114-Status: GOOD (  15.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,39 +88,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Guillaume,
+/On Sat, Jan 28, 2023 at 4:00 PM Kuan-Ying Lee
+<Kuan-Ying.Lee@mediatek.com> wrote:
+>
+> From: Andrey Konovalov <andreyknvl@google.com>
 
-Thank you for the patch! Yet something to improve:
+Ah, I think you need to reset the commit author before sending, so
+that the patch gets recorded as authored by you.
 
-[auto build test ERROR on e2f86c02fdc96ca29ced53221a3cbf50aa6f8b49]
+> Make KASAN scan metadata to infer the requested allocation size instead of
+> printing cache->object_size.
+>
+> This patch fixes confusing slab-out-of-bounds reports as reported in:
+>
+> https://bugzilla.kernel.org/show_bug.cgi?id=216457
+>
+> As an example of the confusing behavior, the report below hints that the
+> allocation size was 192, while the kernel actually called kmalloc(184):
+>
+> ==================================================================
+> BUG: KASAN: slab-out-of-bounds in _find_next_bit+0x143/0x160 lib/find_bit.c:109
+> Read of size 8 at addr ffff8880175766b8 by task kworker/1:1/26
+> ...
+> The buggy address belongs to the object at ffff888017576600
+>  which belongs to the cache kmalloc-192 of size 192
+> The buggy address is located 184 bytes inside of
+>  192-byte region [ffff888017576600, ffff8880175766c0)
+> ...
+> Memory state around the buggy address:
+>  ffff888017576580: fb fb fb fb fb fb fb fb fc fc fc fc fc fc fc fc
+>  ffff888017576600: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+> >ffff888017576680: 00 00 00 00 00 00 00 fc fc fc fc fc fc fc fc fc
+>                                         ^
+>  ffff888017576700: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+>  ffff888017576780: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+> ==================================================================
+>
+> With this patch, the report shows:
+>
+> ==================================================================
+> ...
+> The buggy address belongs to the object at ffff888017576600
+>  which belongs to the cache kmalloc-192 of size 192
+> The buggy address is located 0 bytes to the right of
+>  allocated 184-byte region [ffff888017576600, ffff8880175766b8)
+> ...
+> ==================================================================
+>
+> Also report slab use-after-free bugs as "slab-use-after-free" and print
+> "freed" instead of "allocated" in the report when describing the accessed
+> memory region.
+>
+> Also improve the metadata-related comment in kasan_find_first_bad_addr
+> and use addr_has_metadata across KASAN code instead of open-coding
+> KASAN_SHADOW_START checks.
+>
+> Link: https://bugzilla.kernel.org/show_bug.cgi?id=216457
+> Co-developed-by: Andrey Konovalov <andreyknvl@gmail.com>
+> Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Guillaume-Ranquet/dt-bindings-phy-mediatek-hdmi-phy-Add-mt8195-compatible/20230128-160522
-base:   e2f86c02fdc96ca29ced53221a3cbf50aa6f8b49
-patch link:    https://lore.kernel.org/r/20220919-v5-3-cfb0e5ad29b2%40baylibre.com
-patch subject: [PATCH v5 3/3] phy: mediatek: add support for phy-mtk-hdmi-mt8195
-config: arm-buildonly-randconfig-r005-20230129 (https://download.01.org/0day-ci/archive/20230129/202301290245.KWRXz5OS-lkp@intel.com/config)
-compiler: arm-linux-gnueabi-gcc (GCC) 12.1.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/2cc45518a7fd551117426c770070d93acb31166e
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Guillaume-Ranquet/dt-bindings-phy-mediatek-hdmi-phy-Add-mt8195-compatible/20230128-160522
-        git checkout 2cc45518a7fd551117426c770070d93acb31166e
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm SHELL=/bin/bash
+Or change the Co-developed-by/Signed-off-by tags.
 
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
+I don't mind either approach.
 
-All errors (new ones prefixed by >>, old ones prefixed by <<):
-
->> ERROR: modpost: "__aeabi_uldivmod" [drivers/phy/mediatek/phy-mtk-hdmi-drv.ko] undefined!
->> ERROR: modpost: "__aeabi_ldivmod" [drivers/phy/mediatek/phy-mtk-hdmi-drv.ko] undefined!
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+Thanks!
 
