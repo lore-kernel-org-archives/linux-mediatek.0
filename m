@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08DD4C38142
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jan 2023 09:43:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30B89C636D0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jan 2023 10:49:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+NVaJNsYOcpWsCC0UjHpjZYeJZxBoJYuUyff1fnBSQg=; b=rk0UWUbMeMBQRVCK/j2dTr6prO
-	Yo/RoU1I1wt1PHdCXQsbJneiHDu/LoNsF80c+8WEzcTfaLbO+Cc3huvJYV/VgvHzbdcc4e31ySyAd
-	LMuJA2Tp5PM/s+TXtBCrtJCYDaKr7jAUXiGOPjOuM0WXAsHYu/OV6O7TJklaa+5qXGT/Rt93fxwF1
-	rmefQH2udQ9rIIvgSehh871YZqSewQuIhe+X+q8Zttq/zGBBjjhzCEgW4/hjFv8XgYzi9ndEndCmU
-	TBeujJXzrKy2xDMCAf7ESUTYpRGcLcvRzgK6bZE4ru/rLB97QRoki6+1Wk4tl/rJ2F84vVlFUcJv2
-	Pp346lLg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BDMyuNY9y2+mLIY91GGCJaf3jR2VGlODgfIJsSjay2k=; b=2ZtS0ZvtnTmHwdHy0ebZNXBN3W
+	4wLT0iyK5NfWLzPLFqyWGtHrMOoKLRotyFdTl8FcuM3czxsn+WBTVY25nkgLx/JQSJlMjCHefxWWu
+	xaRQCI+oD/0dmQPN6oAQQH96mRxUJUS+qdffo3f53Z7mbewL/DFlXVVvDLXp3zRFqpPdwX7ZTQ9K+
+	SEtkxV11hCHlcsio9k099tQihmHQWbWqiTx2CjigoJzc9qaBU810AbFE3d9A5+R0mu/JcF3Hesa13
+	sa2B+9LltPPhrHMqRDsX+ovkICv0RclDpNOCDXE+fBEWHTXyawvsgqNZNpgZEOhYCZf18B+3LVuQK
+	Rssy7/WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLhk0-00HXs4-H5; Sat, 28 Jan 2023 09:43:20 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1pLilY-0002WN-PS; Sat, 28 Jan 2023 10:49:00 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLhjp-00HXpd-IB; Sat, 28 Jan 2023 09:43:11 +0000
-Received: by mail-ej1-x630.google.com with SMTP id p26so8390982ejx.13;
-        Sat, 28 Jan 2023 01:43:08 -0800 (PST)
+	id 1pLilV-0002Uc-7i
+	for linux-mediatek@lists.infradead.org; Sat, 28 Jan 2023 10:48:58 +0000
+Received: by mail-wm1-x333.google.com with SMTP id q8so5069432wmo.5
+        for <linux-mediatek@lists.infradead.org>; Sat, 28 Jan 2023 02:48:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=+NVaJNsYOcpWsCC0UjHpjZYeJZxBoJYuUyff1fnBSQg=;
-        b=Hmy5WkmGohJ9WVaWhgbfQE3weSi/D5Vwi6pPhpNnwzLVnBUQXutrArNwCNWo95bqX8
-         all8KFENU+kOTKTA6wgPQfYquikXVlVWsB6Sduae1vJwPXtmgLL/qDF2e4J3iXc25m2J
-         RD1qbCE4xSrPAM+SmO2a+R331lOCaxxoSPkuKimHehTC7/SP68n2sCwxrHTZWGzdUMa7
-         6OVWpF4+mlj3omOBFGySxeXBOBQYGsQi8ls4yQRAI5uqGigIwoFehmlIMwq+a1bINYsj
-         IImX+H/lhY1QVdapPuHHAxeZH2Lstk4mnUJU7VlQaV5FM7HkcMAoOJ0dlQkeoYGoRr1M
-         mUAw==
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=BDMyuNY9y2+mLIY91GGCJaf3jR2VGlODgfIJsSjay2k=;
+        b=hmFG1UC0xZDkKe8YXYtTsoSlN+mukQIUz+DjLBJydedkPIcvK8+eReW4WbgNupYvZt
+         otEbRmzGeNzYEdhfu5WWDr4pMIvYjLYxP6InEc0nUuCcaRf0SB/Y4aSWVyesWuExKx/z
+         U2lItJlcCAexXE1oyUeaEu2jwUYHH2FB54OL0XBD7MkMe2sqyALHhf+IVDik6zoqEA/O
+         9QIUe5775lSgBt5BwcqaOcoxUykdawfEypSNY1Ri7B8E7cuh9Dixjig1gfWl9m5hph33
+         pWybVYBJaz1U5+OhpUxD3/m7lbmdS9SiXu3hYg4/J1pIDsyAsE7t+v4Xk9Y9A5nM2yRE
+         bgbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=+NVaJNsYOcpWsCC0UjHpjZYeJZxBoJYuUyff1fnBSQg=;
-        b=Iy3eCT048ub72GJzmxuoTslagYu4M5LwVwdP9c2Yvg3WbNqcbUFcsyLa04WX5rgq0V
-         PJaM+QYZwWYVnC2q7TtLI6JIxmw24bPwrvAbgj0uTRu3c8zXuGsWzAthWhrPOlsScahA
-         ydAXr56ZxvdgAWlzsljHSQrhZSINmReZriuTheNuQJntFwzZ8RAEkZ1NuGDmJYsLD6Hq
-         2LgwDRtq73MFzO3Usn15VKB9DcrEUYz4+B+NFZS4rDAtJ70v0JpnL4HB0UaPSnsj7s6/
-         vJK8l1nxsVKq331iwEh1yO7KJq0M7XtxRco6de31MP1jM/j3dgnhz+b93DiIkvGwrMao
-         MZ4A==
-X-Gm-Message-State: AFqh2kr0q0hxcUrEEQ0x1B4/7MlWtqPwf8sDhb2PS04czJXGMYB8JDHT
-	0lnc1/2515KmuYnDSvxEa6g=
-X-Google-Smtp-Source: AMrXdXtkqnUY5Sa47hw9T1Zkd5PYap4RHk+CykKfG5lX93Cx6X/b7QG0F9HMIsbJZHdrNIgW0IkdAw==
-X-Received: by 2002:a17:907:9118:b0:7c1:22a6:818f with SMTP id p24-20020a170907911800b007c122a6818fmr35050341ejq.25.1674898986863;
-        Sat, 28 Jan 2023 01:43:06 -0800 (PST)
-Received: from arinc9-PC.lan ([37.120.152.236])
-        by smtp.gmail.com with ESMTPSA id z16-20020a170906435000b007b935641971sm3616723ejm.5.2023.01.28.01.43.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 28 Jan 2023 01:43:06 -0800 (PST)
-From: arinc9.unal@gmail.com
-X-Google-Original-From: arinc.unal@arinc9.com
-To: Felix Fietkau <nbd@nbd.name>,
-	John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	erkin.bozoglu@xeront.com
-Subject: [PATCH net] net: ethernet: mtk_eth_soc: disable hardware DSA untagging for second MAC
-Date: Sat, 28 Jan 2023 12:42:32 +0300
-Message-Id: <20230128094232.2451947-1-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.37.2
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=BDMyuNY9y2+mLIY91GGCJaf3jR2VGlODgfIJsSjay2k=;
+        b=rA+tE05ckdBL6zy1J6axV/fVi/saAhPF+kG0EeE24zMfNw5ZTAcW6AAi8AvW/tfu5g
+         gNyeskcBOv2iZy/DxYKQUaXqzOCEbsclBdRMhKesksTFk4/UHvy3veRhcPcuXNYMxwNf
+         7vrMppbNr1uYqpGeM+2kfHTpUp6Q7B9rsfthsidcw/Ihde6IOJMnstKolKy4nBKq9aeR
+         i5NPJ8K8j0tL+xYvSkML74ijhgEUUfIZ98w4jNo7U9r/80luRMC1S60RTMdTRQaaqm3f
+         EaxhZNBp1rw2IUnMs6GC0sn7It+KvsCJr8o3BZ4SslY2vUHCFnnUhmCACR6gtrcPwv0m
+         i/kg==
+X-Gm-Message-State: AFqh2kq55vLQx9ORfXX8DGtWL0+n/os4NMYCOikcPdvDR98d2WVoA/n9
+	HKF+LRHcZHY8U1WOfNNpqnMv5o7goJ4uPnJg
+X-Google-Smtp-Source: AMrXdXvzLKnPJzKgzaJo+Fihga+fGeShpAelemc3eeNsipvcvTqGS01hVJ+Ze/uvvnAp2CCmGSCNMQ==
+X-Received: by 2002:a05:600c:3b18:b0:3db:eab:3c5c with SMTP id m24-20020a05600c3b1800b003db0eab3c5cmr40476863wms.32.1674902934819;
+        Sat, 28 Jan 2023 02:48:54 -0800 (PST)
+Received: from [192.168.1.109] ([178.197.216.144])
+        by smtp.gmail.com with ESMTPSA id j6-20020a05600c42c600b003daf89e01d3sm6781867wme.11.2023.01.28.02.48.52
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 28 Jan 2023 02:48:54 -0800 (PST)
+Message-ID: <5ec49108-6ad8-daf7-54ec-104f0923a31d@linaro.org>
+Date: Sat, 28 Jan 2023 11:48:51 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH v12 2/6] dt-bindings: thermal: mediatek: Add LVTS thermal
+ controllers dt-binding definition
+Content-Language: en-US
+To: bchihi@baylibre.com, daniel.lezcano@linaro.org,
+ angelogioacchino.delregno@collabora.com, rafael@kernel.org,
+ amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ rdunlap@infradead.org, ye.xingchen@zte.com.cn, p.zabel@pengutronix.de
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com,
+ rex-bc.chen@mediatek.com
+References: <20230124131717.128660-3-bchihi@baylibre.com>
+ <20230126161048.94089-1-bchihi@baylibre.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230126161048.94089-1-bchihi@baylibre.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230128_014309_646566_BD18327D 
-X-CRM114-Status: GOOD (  15.68  )
+X-CRM114-CacheID: sfid-20230128_024857_313626_D5206273 
+X-CRM114-Status: GOOD (  12.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,58 +100,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+On 26/01/2023 17:10, bchihi@baylibre.com wrote:
+> From: Balsam CHIHI <bchihi@baylibre.com>
+> 
+> Add LVTS thermal controllers dt-binding definition for mt8195.
 
-According to my tests on MT7621AT and MT7623NI SoCs, hardware DSA untagging
-won't work on the second MAC. Therefore, disable this feature when the
-second MAC of the MT7621 and MT7623 SoCs is being used.
+Subject: drop second/last, redundant "dt-binding definition". The
+"dt-bindings" prefix is already stating that these are bindings.
 
-Fixes: 2d7605a72906 ("net: ethernet: mtk_eth_soc: enable hardware DSA untagging")
-Link: https://lore.kernel.org/netdev/6249fc14-b38a-c770-36b4-5af6d41c21d3@arinc9.com/
-Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
----
+Plus two comments at the end.
 
-Final send which should end up on the list. I tested this with Felix's
-upcoming patch series. This fix is still needed on top of it.
+> 
+> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+> ---
+> Changelog:
+>   v12:
+>      - Fixed subject prefix
+>      - Fixed licences GPL-2.0+ to GPL-2.0
+>      - Added dual licenses
 
-https://lore.kernel.org/netdev/20221230073145.53386-1-nbd@nbd.name/
 
-The MTK_GMAC1_TRGMII capability is only on the MT7621 and MT7623 SoCs which
-I see this problem on. I'm new to coding so I took an educated guess from
-the use of MTK_NETSYS_V2 to disable this feature altogether for MT7986 SoC.
+> +    };
+> diff --git a/include/dt-bindings/thermal/mediatek-lvts.h b/include/dt-bindings/thermal/mediatek-lvts.h
+> new file mode 100644
+> index 000000000000..902d5b1e4f43
+> --- /dev/null
+> +++ b/include/dt-bindings/thermal/mediatek-lvts.h
 
-Arınç
+Same filename as bindings.
 
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+> @@ -0,0 +1,19 @@
+> +/* SPDX-License-Identifier: (GPL-2.0 or MIT) */
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 801deac58bf7..f1cb1efc94cf 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -3243,7 +3243,8 @@ static int mtk_open(struct net_device *dev)
- 	struct mtk_eth *eth = mac->hw;
- 	int i, err;
- 
--	if (mtk_uses_dsa(dev) && !eth->prog) {
-+	if ((mtk_uses_dsa(dev) && !eth->prog) &&
-+	    !(mac->id == 1 && MTK_HAS_CAPS(eth->soc->caps, MTK_GMAC1_TRGMII))) {
- 		for (i = 0; i < ARRAY_SIZE(eth->dsa_meta); i++) {
- 			struct metadata_dst *md_dst = eth->dsa_meta[i];
- 
-@@ -3260,7 +3261,8 @@ static int mtk_open(struct net_device *dev)
- 		}
- 	} else {
- 		/* Hardware special tag parsing needs to be disabled if at least
--		 * one MAC does not use DSA.
-+		 * one MAC does not use DSA, or the second MAC of the MT7621 and
-+		 * MT7623 SoCs is being used.
- 		 */
- 		u32 val = mtk_r32(eth, MTK_CDMP_IG_CTRL);
- 		val &= ~MTK_CDMP_STAG_EN;
--- 
-2.37.2
+Although this is correct, any reason why not using exactly the same
+license as bindings?
+
+> +/*
+> + * Copyright (c) 2023 MediaTek Inc.
+> + * Author: Balsam CHIHI <bchihi@baylibre.com>
+> + */
+
+Best regards,
+Krzysztof
 
 
