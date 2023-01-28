@@ -4,92 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29993C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jan 2023 07:52:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08DD4C38142
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jan 2023 09:43:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AwT09QFvbeIdYBJsfcmVCJn9nySi46ioy4UiTZXOQBU=; b=V4l9ebXLuuk1g6zh9HTmte3Tdc
-	Kwu+csGFNSlarT7lodp0VFUu4TU3YGMpgAqb7Z67R+VZN6MQwFbVptIk3emGStQSiHgA+wmqzOtQE
-	jt0J8RiR6uD91jD8bl0DjmvLUKP0s9uc4pRp22JtE6Ke9vBo/hGyDU4QphBqYsdo3A10odKMRks6p
-	JBhCcajViqU0rDJ8ntXz5e0M6mOtIanCaMTD4FSxO/E3VnV5ILtpTqkVh6lAV32SmqSdZfFWAFA9B
-	7v7SrRYs+8HEisjQeUeQC8TPMo5d6hhH3DnrWqfgKf9+FpZEuuRc322hZPJ11T4RBYfWlw9tdI4N9
-	vtu20Kew==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+NVaJNsYOcpWsCC0UjHpjZYeJZxBoJYuUyff1fnBSQg=; b=rk0UWUbMeMBQRVCK/j2dTr6prO
+	Yo/RoU1I1wt1PHdCXQsbJneiHDu/LoNsF80c+8WEzcTfaLbO+Cc3huvJYV/VgvHzbdcc4e31ySyAd
+	LMuJA2Tp5PM/s+TXtBCrtJCYDaKr7jAUXiGOPjOuM0WXAsHYu/OV6O7TJklaa+5qXGT/Rt93fxwF1
+	rmefQH2udQ9rIIvgSehh871YZqSewQuIhe+X+q8Zttq/zGBBjjhzCEgW4/hjFv8XgYzi9ndEndCmU
+	TBeujJXzrKy2xDMCAf7ESUTYpRGcLcvRzgK6bZE4ru/rLB97QRoki6+1Wk4tl/rJ2F84vVlFUcJv2
+	Pp346lLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLg0Y-00HPjW-U3; Sat, 28 Jan 2023 07:52:18 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1pLhk0-00HXs4-H5; Sat, 28 Jan 2023 09:43:20 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLg0L-00HPhs-PD
-	for linux-mediatek@lists.infradead.org; Sat, 28 Jan 2023 07:52:07 +0000
-Received: by mail-wm1-x336.google.com with SMTP id fl24so4920163wmb.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 27 Jan 2023 23:52:04 -0800 (PST)
+	id 1pLhjp-00HXpd-IB; Sat, 28 Jan 2023 09:43:11 +0000
+Received: by mail-ej1-x630.google.com with SMTP id p26so8390982ejx.13;
+        Sat, 28 Jan 2023 01:43:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=AwT09QFvbeIdYBJsfcmVCJn9nySi46ioy4UiTZXOQBU=;
-        b=O9xMHDeSECxW7o24q/6NUFHzLv5SOU7LuUFzeYGUCKEUfx5ZJ3tE4pipR2JhWAP+jg
-         hPoesVW7rhnn9xzLRSskElx6CmZTetOAxdvriYZEZTJ3pb68iL6YW2YkYWFg4wHIA6W9
-         5xBJLfpPHq4CK6+Z536WA3f+hDRxMti0zb848BvE1aXs/kGND7eqyknPpj4d9vnu3vLK
-         OL3D+AkI/gJ0VG58PsxRDY1/OamUADlhthBOy+c2/99cAyHEiW1M+ZlMgAs4eYJusHOG
-         qhdU+mBXeUO9K12bPXjy8LTm0Wk86BNUNKc3vG8qiBAy+AmBL0E3kLLkVznbDvrsY/sc
-         OV2w==
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=+NVaJNsYOcpWsCC0UjHpjZYeJZxBoJYuUyff1fnBSQg=;
+        b=Hmy5WkmGohJ9WVaWhgbfQE3weSi/D5Vwi6pPhpNnwzLVnBUQXutrArNwCNWo95bqX8
+         all8KFENU+kOTKTA6wgPQfYquikXVlVWsB6Sduae1vJwPXtmgLL/qDF2e4J3iXc25m2J
+         RD1qbCE4xSrPAM+SmO2a+R331lOCaxxoSPkuKimHehTC7/SP68n2sCwxrHTZWGzdUMa7
+         6OVWpF4+mlj3omOBFGySxeXBOBQYGsQi8ls4yQRAI5uqGigIwoFehmlIMwq+a1bINYsj
+         IImX+H/lhY1QVdapPuHHAxeZH2Lstk4mnUJU7VlQaV5FM7HkcMAoOJ0dlQkeoYGoRr1M
+         mUAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=AwT09QFvbeIdYBJsfcmVCJn9nySi46ioy4UiTZXOQBU=;
-        b=YddM/rHfrA0PJinvE+245/YCMcpQYUIVc4/MGV7/GWSKTPreSB8lmX41QowHiacvi+
-         dp6o/PXZNEXluRRu6+Hg5NPtZwVv3J3WJPiWp6x3vXvV9jL3uPFFpuNV2ilaInS7R6y6
-         /1vWPRHWo9PUJFeUiELkgQJZlh/rpSYNlA0k8tayT/yCz+piOJRUaLAQZ4SklW2XR3PM
-         cFodKFZzgLtbhQ4DOctb04qMIvB8v+ahUl5UCFAPeQETI8qs15Fi3vngSxioO4xaza/R
-         LU9ENuHAMihQGxmIc1rmLAZpplGztM3D99fSl31HhnhT2/9TVJN0kMo1EHyhvVQnZn06
-         fLxw==
-X-Gm-Message-State: AFqh2kqL1AWoXg9XoEQLBppipl5+IxcHn2aHQdy/lN8jdB9v1YhxwJ7n
-	E3dsT4e/vmmAxend8OOW+mmKpw==
-X-Google-Smtp-Source: AMrXdXvSNekIIQS28DBo7WV5qCK0p341YhGJ92/g23fsqCqTUyMImv07j8DGXqwVqRJdkFHAGIuVOA==
-X-Received: by 2002:a05:600c:3ba9:b0:3da:b40f:7a55 with SMTP id n41-20020a05600c3ba900b003dab40f7a55mr48469547wms.6.1674892323044;
-        Fri, 27 Jan 2023 23:52:03 -0800 (PST)
-Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.googlemail.com with ESMTPSA id v1-20020a5d6781000000b002b9b9445149sm6701742wru.54.2023.01.27.23.52.01
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 27 Jan 2023 23:52:02 -0800 (PST)
-Message-ID: <64b7e7f1-44ff-09fe-c292-40eaa30a76a1@linaro.org>
-Date: Sat, 28 Jan 2023 08:52:00 +0100
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=+NVaJNsYOcpWsCC0UjHpjZYeJZxBoJYuUyff1fnBSQg=;
+        b=Iy3eCT048ub72GJzmxuoTslagYu4M5LwVwdP9c2Yvg3WbNqcbUFcsyLa04WX5rgq0V
+         PJaM+QYZwWYVnC2q7TtLI6JIxmw24bPwrvAbgj0uTRu3c8zXuGsWzAthWhrPOlsScahA
+         ydAXr56ZxvdgAWlzsljHSQrhZSINmReZriuTheNuQJntFwzZ8RAEkZ1NuGDmJYsLD6Hq
+         2LgwDRtq73MFzO3Usn15VKB9DcrEUYz4+B+NFZS4rDAtJ70v0JpnL4HB0UaPSnsj7s6/
+         vJK8l1nxsVKq331iwEh1yO7KJq0M7XtxRco6de31MP1jM/j3dgnhz+b93DiIkvGwrMao
+         MZ4A==
+X-Gm-Message-State: AFqh2kr0q0hxcUrEEQ0x1B4/7MlWtqPwf8sDhb2PS04czJXGMYB8JDHT
+	0lnc1/2515KmuYnDSvxEa6g=
+X-Google-Smtp-Source: AMrXdXtkqnUY5Sa47hw9T1Zkd5PYap4RHk+CykKfG5lX93Cx6X/b7QG0F9HMIsbJZHdrNIgW0IkdAw==
+X-Received: by 2002:a17:907:9118:b0:7c1:22a6:818f with SMTP id p24-20020a170907911800b007c122a6818fmr35050341ejq.25.1674898986863;
+        Sat, 28 Jan 2023 01:43:06 -0800 (PST)
+Received: from arinc9-PC.lan ([37.120.152.236])
+        by smtp.gmail.com with ESMTPSA id z16-20020a170906435000b007b935641971sm3616723ejm.5.2023.01.28.01.43.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 28 Jan 2023 01:43:06 -0800 (PST)
+From: arinc9.unal@gmail.com
+X-Google-Original-From: arinc.unal@arinc9.com
+To: Felix Fietkau <nbd@nbd.name>,
+	John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	erkin.bozoglu@xeront.com
+Subject: [PATCH net] net: ethernet: mtk_eth_soc: disable hardware DSA untagging for second MAC
+Date: Sat, 28 Jan 2023 12:42:32 +0300
+Message-Id: <20230128094232.2451947-1-arinc.unal@arinc9.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v9 2/5] thermal: mediatek: control buffer enablement
- tweaks
-Content-Language: en-US
-To: Amjad Ouled-Ameur <aouledameur@baylibre.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Amit Kucheria <amitk@kernel.org>,
- Zhang Rui <rui.zhang@intel.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Fabien Parent <fparent@baylibre.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Rob Herring <robh@kernel.org>, Markus Schneider-Pargmann <msp@baylibre.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Michael Kao <michael.kao@mediatek.com>
-References: <20221018-up-i350-thermal-bringup-v9-0-55a1ae14af74@baylibre.com>
- <20221018-up-i350-thermal-bringup-v9-2-55a1ae14af74@baylibre.com>
- <eb3b9439-172b-daea-8f0f-53c8fe7648f9@linaro.org>
- <df39cc8c-29db-f401-e1a2-1a3b7e962a7e@baylibre.com>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <df39cc8c-29db-f401-e1a2-1a3b7e962a7e@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230127_235205_903713_D1D8B67D 
-X-CRM114-Status: GOOD (  20.22  )
+X-CRM114-CacheID: sfid-20230128_014309_646566_BD18327D 
+X-CRM114-Status: GOOD (  15.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,112 +100,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27/01/2023 23:21, Amjad Ouled-Ameur wrote:
-> 
-> On 1/27/23 22:48, Daniel Lezcano wrote:
->> On 27/01/2023 16:44, Amjad Ouled-Ameur wrote:
->>> From: Markus Schneider-Pargmann <msp@baylibre.com>
->>>
->>> Add logic in order to be able to turn on the control buffer on MT8365.
->>> This change now allows to have control buffer support for 
->>> MTK_THERMAL_V1,
->>> and it allows to define the register offset, and mask used to enable it.
->>>
->>> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
->>> Signed-off-by: Fabien Parent <fparent@baylibre.com>
->>> Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
->>> Reviewed-by: AngeloGioacchino Del Regno 
->>> <angelogioacchino.delregno@collabora.com>
->>> ---
->>>   drivers/thermal/mtk_thermal.c | 25 ++++++++++++++++++-------
->>>   1 file changed, 18 insertions(+), 7 deletions(-)
->>>
->>> diff --git a/drivers/thermal/mtk_thermal.c 
->>> b/drivers/thermal/mtk_thermal.c
->>> index 8440692e3890..d8ddceb75372 100644
->>> --- a/drivers/thermal/mtk_thermal.c
->>> +++ b/drivers/thermal/mtk_thermal.c
->>> @@ -271,6 +271,9 @@ struct mtk_thermal_data {
->>>       bool need_switch_bank;
->>>       struct thermal_bank_cfg bank_data[MAX_NUM_ZONES];
->>>       enum mtk_thermal_version version;
->>> +    u32 apmixed_buffer_ctl_reg;
->>> +    u32 apmixed_buffer_ctl_mask;
->>> +    u32 apmixed_buffer_ctl_set;
->>>   };
->>>     struct mtk_thermal {
->>> @@ -514,6 +517,9 @@ static const struct mtk_thermal_data 
->>> mt7622_thermal_data = {
->>>       .adcpnp = mt7622_adcpnp,
->>>       .sensor_mux_values = mt7622_mux_values,
->>>       .version = MTK_THERMAL_V2,
->>> +    .apmixed_buffer_ctl_reg = APMIXED_SYS_TS_CON1,
->>> +    .apmixed_buffer_ctl_mask = GENMASK(31, 6) | BIT(3),
->>> +    .apmixed_buffer_ctl_set = BIT(0),
->>>   };
->>>     /*
->>> @@ -963,14 +969,18 @@ static const struct of_device_id 
->>> mtk_thermal_of_match[] = {
->>>   };
->>>   MODULE_DEVICE_TABLE(of, mtk_thermal_of_match);
->>>   -static void mtk_thermal_turn_on_buffer(void __iomem *apmixed_base)
->>> +static void mtk_thermal_turn_on_buffer(struct mtk_thermal *mt,
->>> +                       void __iomem *apmixed_base)
->>>   {
->>> -    int tmp;
->>> +    u32 tmp;
->>> +
->>> +    if (!mt->conf->apmixed_buffer_ctl_reg)
->>> +        return;
->>>   -    tmp = readl(apmixed_base + APMIXED_SYS_TS_CON1);
->>> -    tmp &= ~(0x37);
->>> -    tmp |= 0x1;
->>> -    writel(tmp, apmixed_base + APMIXED_SYS_TS_CON1);
->>> +    tmp = readl(apmixed_base + mt->conf->apmixed_buffer_ctl_reg);
->>> +    tmp &= mt->conf->apmixed_buffer_ctl_mask;
->>> +    tmp |= mt->conf->apmixed_buffer_ctl_set;
->>> +    writel(tmp, apmixed_base + mt->conf->apmixed_buffer_ctl_reg);
->>>       udelay(200);
->>>   }
->>>   @@ -1070,8 +1080,9 @@ static int mtk_thermal_probe(struct 
->>> platform_device *pdev)
->>>           goto err_disable_clk_auxadc;
->>>       }
->>>   +    mtk_thermal_turn_on_buffer(mt, apmixed_base);
->>> +
->>>       if (mt->conf->version == MTK_THERMAL_V2) {
->>> -        mtk_thermal_turn_on_buffer(apmixed_base);
->>>           mtk_thermal_release_periodic_ts(mt, auxadc_base);
->>>       }
->>
->> This change conflicts with commit 4f2ee0aa2e706
->>
->> I fixed it with:
->>
->> -       if (mt->conf->version != MTK_THERMAL_V1) {
->> -               mtk_thermal_turn_on_buffer(apmixed_base);
->> +       mtk_thermal_turn_on_buffer(apmixed_base);
->> +
->> +       if (mt->conf->version != MTK_THERMAL_V1)
->>                 mtk_thermal_release_periodic_ts(mt, auxadc_base);
->> -       }
->>
-> I think it's rather MTK_THERMAL_V2 and not MTK_THERMAL_V1. Other than 
-> that, it looks
+From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-It was before if (version == MTK_THERMAL_V2). Now there is a V3, so it 
-is replaced by if (version != MTK_THERMAL_V1) in order to include the V3
+According to my tests on MT7621AT and MT7623NI SoCs, hardware DSA untagging
+won't work on the second MAC. Therefore, disable this feature when the
+second MAC of the MT7621 and MT7623 SoCs is being used.
 
+Fixes: 2d7605a72906 ("net: ethernet: mtk_eth_soc: enable hardware DSA untagging")
+Link: https://lore.kernel.org/netdev/6249fc14-b38a-c770-36b4-5af6d41c21d3@arinc9.com/
+Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+---
 
->> Let me know if there is something wrong.
->>
->>
+Final send which should end up on the list. I tested this with Felix's
+upcoming patch series. This fix is still needed on top of it.
 
+https://lore.kernel.org/netdev/20221230073145.53386-1-nbd@nbd.name/
+
+The MTK_GMAC1_TRGMII capability is only on the MT7621 and MT7623 SoCs which
+I see this problem on. I'm new to coding so I took an educated guess from
+the use of MTK_NETSYS_V2 to disable this feature altogether for MT7986 SoC.
+
+Arınç
+
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 801deac58bf7..f1cb1efc94cf 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -3243,7 +3243,8 @@ static int mtk_open(struct net_device *dev)
+ 	struct mtk_eth *eth = mac->hw;
+ 	int i, err;
+ 
+-	if (mtk_uses_dsa(dev) && !eth->prog) {
++	if ((mtk_uses_dsa(dev) && !eth->prog) &&
++	    !(mac->id == 1 && MTK_HAS_CAPS(eth->soc->caps, MTK_GMAC1_TRGMII))) {
+ 		for (i = 0; i < ARRAY_SIZE(eth->dsa_meta); i++) {
+ 			struct metadata_dst *md_dst = eth->dsa_meta[i];
+ 
+@@ -3260,7 +3261,8 @@ static int mtk_open(struct net_device *dev)
+ 		}
+ 	} else {
+ 		/* Hardware special tag parsing needs to be disabled if at least
+-		 * one MAC does not use DSA.
++		 * one MAC does not use DSA, or the second MAC of the MT7621 and
++		 * MT7623 SoCs is being used.
+ 		 */
+ 		u32 val = mtk_r32(eth, MTK_CDMP_IG_CTRL);
+ 		val &= ~MTK_CDMP_STAG_EN;
 -- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+2.37.2
 
 
