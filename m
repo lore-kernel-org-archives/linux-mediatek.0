@@ -4,75 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22BA5C05027
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Jan 2023 11:31:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC395C61D97
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Jan 2023 16:46:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ApteKx9wq1DrUb3mDdRNoOD1fW0mloE8pfCK+VExzuc=; b=yN/megpHvJDICW/AgYHi4Oxiat
-	s76EeXdOikWR7orzj5HeCQymti2NCYPvcHU5yTCk4R5kgKG9lLFeFXYWRrjh+oitWdcyxNcOQYWqY
-	PxzID3v5C7EYEH2zgVpaX3jk8zxUhTuTgoiQFsS+8LW92lNcPoZ9cDirw+vrbUZvTZ30qXj9G64Pu
-	sht8MpDZmJbENWDcfV4nD3PTFybD1bQ7Md2LutZFSHKdN7+WcckuhWqr+O0RC/iCcujqBPnWNODOF
-	ebTvMTypviMfRuhdBdLyodSeThGtW6Y8ca0a51cAOYObEUb14sZ5qDRsHOeJpaJQk7b4rPYVditbd
-	4NggmM6g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EegtgDiZvPxg3XvKag87hiBCFOeNYXfSdU0ZYoRxSBw=; b=OKJYL8CmbHYgUnR5K/NIN1sMdd
+	mMRaa7CXguF85pxVksLJRwIoIwCatzgqwaxfMcMl6XGxRYdyU54bk568dVfhROav67oIhfeI7YFvq
+	oTH3pAAiim15g9QGkeiQEsj4SwYIypqhqM6EOr2cB+dQ9WnXLCUJSf2fgIGFb8cN2iP4qDMX1Sqc8
+	mBlcSyKXJUPgfxyc3vXrWUr0tdkqrL70xtGCQrgVdrP7gqqXjjJ5G/WIQZKL6QloXoj+DMGQQR79N
+	IrNOYSq8ItSM2TJ4Bkb/q7QpnN54U2b7KE+nyt4InLmCJFfOq0ntbf65lrVwUfhYGyfer3SCQdMEk
+	78JzapHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pM5ty-001Nex-MD; Sun, 29 Jan 2023 11:31:14 +0000
-Received: from mga02.intel.com ([134.134.136.20])
+	id 1pMApC-001ixy-MU; Sun, 29 Jan 2023 16:46:38 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pM5tv-001NeZ-CE
-	for linux-mediatek@lists.infradead.org; Sun, 29 Jan 2023 11:31:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1674991871; x=1706527871;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=941qYSAT8AewHuWw7L2KMhlt7LAztpslaoA8f27sugc=;
-  b=EjBVNm25cdLc0MgNZJzj4A5I2hCkz5QF35W2ZhdKvpR3Ohf2fGC3ceam
-   rFXhZmHl2Rx2W7lhdlHsQSPt8aM/0sbVGu+b5+xlzzHyEBdqO1O1fB+U+
-   7DOo3FQm3ljMhP2omqVoVfavQKS7/LeANYRANXsidetoLv2TpcUgMktvf
-   2qIAtKd9/aiLN2cZjGMCe9300bxbTyJPlz8sYTZYqjZSkuc+ez7ae1z6f
-   zXQA6qXCd4qn31kZFd1Dx1jgoerQZP2QOkZLK1Dg9yLRB04an0tAJGa+l
-   gyIzqK2R7ifHyr1k9UPhkfl3fFJmLtAamWKKM1rA8TO7TX0PL8mQ6xMo2
-   g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10604"; a="315346493"
-X-IronPort-AV: E=Sophos;i="5.97,256,1669104000"; 
-   d="scan'208";a="315346493"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
-  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Jan 2023 03:31:09 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10604"; a="909174613"
-X-IronPort-AV: E=Sophos;i="5.97,256,1669104000"; 
-   d="scan'208";a="909174613"
-Received: from lkp-server01.sh.intel.com (HELO ffa7f14d1d0f) ([10.239.97.150])
-  by fmsmga006.fm.intel.com with ESMTP; 29 Jan 2023 03:31:05 -0800
-Received: from kbuild by ffa7f14d1d0f with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1pM5tp-0002lG-0S;
-	Sun, 29 Jan 2023 11:31:05 +0000
-Date: Sun, 29 Jan 2023 19:30:18 +0800
-From: kernel test robot <lkp@intel.com>
-To: Justin Green <greenjustin@chromium.org>,
-	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org
-Cc: oe-kbuild-all@lists.linux.dev, chunkuang.hu@kernel.org,
-	greenjustin@chromium.org, airlied@linux.ie,
-	jason-jh.lin@mediatek.com, justin.yeh@mediatek.com,
-	wenst@chromium.org, matthias.bgg@gmail.com,
-	Justin Green <greenjustin@google.com>,
-	angelogioacchino.delregno@collabora.com
-Subject: Re: [PATCH v3] drm/mediatek: Add support for AR30 and BA30
-Message-ID: <202301291906.Az5NHf9w-lkp@intel.com>
-References: <20230127230123.941930-1-greenjustin@google.com>
+	id 1pMAp0-001iw1-TB; Sun, 29 Jan 2023 16:46:28 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id ml19so2206062ejb.0;
+        Sun, 29 Jan 2023 08:46:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=EegtgDiZvPxg3XvKag87hiBCFOeNYXfSdU0ZYoRxSBw=;
+        b=VdzR+cnOtJTwEvWU6Yiw5IVeGG3eLu4AyT2+ohh1pLLFbxBLHjtHzfbYHzZfYcpb1a
+         Pj5FjZ/MYPbbTGZ6Kot1DGB+CiltOWI3pRk3VwkIBz7WNknhqgw7x0dyBZuBXBH5GjrK
+         8/aq/tpabkdbL5C3uohhwT5nmnUZtRtgampiOrmYsLNwaFf+HvGowuAhJwziGjx8z1tY
+         dxtx28jDhS4rbWSfJZgI1WaIJZnVaYlrs4zYa6i8bgJaLvprd4QhhF9kG+kTgcjHNzVz
+         dGokq3nNks+LFdmRDKHuGo/z04twIU0RfpkS9fklE8KM1wollhsxYvfg4rAhjPRpkxTe
+         SJAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=EegtgDiZvPxg3XvKag87hiBCFOeNYXfSdU0ZYoRxSBw=;
+        b=8GXWBO8qKCkJfMf8SRCS0nPos03NC+6Inp61QxiVKcYRtz43pW7BCmIbhZgmmRjspd
+         HCFVLggqq06uYkcyQQFaZL6BpbZS/3lJ6jnD8KGqczVe32XHuIM67u9WbxcFHMTa+cum
+         rXUvlYJCG6JGLeh9DU+6itutBbXoPIBmEZ+6jXaZk17R9kfms/ZEVmSMGmxe/DXL4Xlu
+         R+Bawr8vkZBIeiomdC5o4CEmFIY6HtCJbYJVLfhi0XxhbMUFeA2ztJsHZ98H/T6itsP2
+         S9Co4m/wsyPu17hWnae0g6ah+iXocGHef4d/I0HbL3SWuVQ1LEOEquU38668TOpYk4LU
+         19yg==
+X-Gm-Message-State: AO0yUKWrsUkdrLAbhDOcz4Fnljg38vJn173Du1IqME1pSxVhAN3sxDUV
+	e2qQm1jVnKlKXo5IEp9mifI=
+X-Google-Smtp-Source: AK7set/wfa4/YB7Wk9XHH9KYPirORXWPAjxRN5Rp159iBOU50m4fZLx26H/r/3PbjZGo95JqDkqNPg==
+X-Received: by 2002:a17:907:9801:b0:888:6294:a1fa with SMTP id ji1-20020a170907980100b008886294a1famr1526677ejc.14.1675010783791;
+        Sun, 29 Jan 2023 08:46:23 -0800 (PST)
+Received: from [192.168.0.131] ([194.183.54.57])
+        by smtp.gmail.com with ESMTPSA id 21-20020a170906311500b0087045ae5935sm5541795ejx.1.2023.01.29.08.46.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 29 Jan 2023 08:46:23 -0800 (PST)
+Message-ID: <df0594dc-d3d6-2636-49e6-07488ec2b5c9@gmail.com>
+Date: Sun, 29 Jan 2023 17:46:21 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230127230123.941930-1-greenjustin@google.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH v16 1/2] leds: rgb: mt6370: Add MediaTek MT6370 current
+ sink type LED Indicator support
+Content-Language: en-US
+To: ChiaEn Wu <chiaen@richtek.com>, pavel@ucw.cz, lee@kernel.org,
+ matthias.bgg@gmail.com, andriy.shevchenko@linux.intel.com
+Cc: peterwu.pub@gmail.com, cy_huang@richtek.com, linux-leds@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, szunichen@gmail.com,
+ Alice Chen <alice_chen@richtek.com>, ChiaEn Wu <chiaen_wu@richtek.com>
+References: <cover.1673886245.git.chiaen_wu@richtek.com>
+ <1c4cf50600bb0334bd03027f49d7511b394c6ced.1673886245.git.chiaen_wu@richtek.com>
+From: Jacek Anaszewski <jacek.anaszewski@gmail.com>
+In-Reply-To: <1c4cf50600bb0334bd03027f49d7511b394c6ced.1673886245.git.chiaen_wu@richtek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230129_033111_540047_9818E2FF 
-X-CRM114-Status: GOOD (  14.45  )
+X-CRM114-CacheID: sfid-20230129_084626_996116_2B1EB9C3 
+X-CRM114-Status: GOOD (  20.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,61 +96,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Justin,
+Hi ChiaEn,
 
-Thank you for the patch! Perhaps something to improve:
+On 1/17/23 09:53, ChiaEn Wu wrote:
+> From: ChiYuan Huang <cy_huang@richtek.com>
+> 
+> The MediaTek MT6370 is a highly-integrated smart power management IC,
+> which includes a single cell Li-Ion/Li-Polymer switching battery
+> charger, a USB Type-C & Power Delivery (PD) controller, dual
+> Flash LED current sources, a RGB LED driver, a backlight WLED driver,
+> a display bias driver and a general LDO for portable devices.
+> 
+> Add support for the MediaTek MT6370 Current Sink Type LED Indicator
+> driver. It can control four channels current-sink RGB LEDs with 3 modes:
+> constant current, PWM, and breath mode.
+> 
+> Co-developed-by: Alice Chen <alice_chen@richtek.com>
+> Signed-off-by: Alice Chen <alice_chen@richtek.com>
+> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+> ---
+> 
+> v16
+> - Remove blank line in the head text.
+> - Move 'pwm_duty' to descrease the size of struct mt6370_pdata.
+> - Move the field 'F_RGB_EN' write out from if/else in
+>    'mt6370_isnk_brightness_set'.
+> - Remove 'dev' in struct mt6370_priv.
+> - Remove the proprety reading for 'linux,default-trigger', led core
+>    already did it.
+> - Change the module license from 'GPL v2' to 'GPL'
+>    In the head text, already deslcred SPDX license as 'GPL-2.0-only'.
+> ---
+>   drivers/leds/rgb/Kconfig           |   13 +
+>   drivers/leds/rgb/Makefile          |    1 +
+>   drivers/leds/rgb/leds-mt6370-rgb.c | 1009 ++++++++++++++++++++++++++++++++++++
+>   3 files changed, 1023 insertions(+)
+>   create mode 100644 drivers/leds/rgb/leds-mt6370-rgb.c
+[...]
+> +static int mt6370_gen_breath_pattern(struct mt6370_priv *priv,
+> +				     struct led_pattern *pattern, u32 len,
+> +				     u8 *pattern_val, u32 val_len)
+> +{
+> +	enum mt6370_led_ranges sel_range;
+> +	struct led_pattern *curr;
+> +	unsigned int sel;
+> +	u32 val = 0;
+> +	int i;
+> +
+> +	if (len < P_MAX_PATTERNS && val_len < P_MAX_PATTERNS / 2)
+> +		return -EINVAL;
+> +
+> +	/*
+> +	 * Pattern list
+> +	 * tr1:	 byte 0, b'[7: 4]
+> +	 * tr2:	 byte 0, b'[3: 0]
+> +	 * tf1:	 byte 1, b'[7: 4]
+> +	 * tf2:	 byte 1, b'[3: 0]
+> +	 * ton:	 byte 2, b'[7: 4]
+> +	 * toff: byte 2, b'[3: 0]
+> +	 */
 
-[auto build test WARNING on drm-misc/drm-misc-next]
-[also build test WARNING on drm/drm-next drm-exynos/exynos-drm-next drm-intel/for-linux-next drm-intel/for-linux-next-fixes drm-tip/drm-tip linus/master v6.2-rc5]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Please provide documentation for the hardware pattern format.
+Compare [0] and [1].
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Justin-Green/drm-mediatek-Add-support-for-AR30-and-BA30/20230128-112134
-base:   git://anongit.freedesktop.org/drm/drm-misc drm-misc-next
-patch link:    https://lore.kernel.org/r/20230127230123.941930-1-greenjustin%40google.com
-patch subject: [PATCH v3] drm/mediatek: Add support for AR30 and BA30
-config: arm-allyesconfig (https://download.01.org/0day-ci/archive/20230129/202301291906.Az5NHf9w-lkp@intel.com/config)
-compiler: arm-linux-gnueabi-gcc (GCC) 12.1.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/c32525cf66e7bbf4e798aef3aafbf88dee5d049c
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Justin-Green/drm-mediatek-Add-support-for-AR30-and-BA30/20230128-112134
-        git checkout c32525cf66e7bbf4e798aef3aafbf88dee5d049c
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm SHELL=/bin/bash drivers/gpu/drm/mediatek/ sound/soc/samsung/
+Otherwise looks good to me:
 
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
+Acked-by: Jacek Anaszewski <jacek.anaszewski@gmail.com>
 
-All warnings (new ones prefixed by >>):
-
-   In file included from drivers/gpu/drm/mediatek/mtk_drm_crtc.h:10,
-                    from drivers/gpu/drm/mediatek/mtk_disp_aal.c:15:
-   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h: In function 'mtk_ddp_comp_supports_10bit':
->> drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h:159:35: warning: returning 'int (*)(struct device *)' from a function with return type 'int' makes integer from pointer without a cast [-Wint-conversion]
-     159 |                 return comp->funcs->supports_10bit;
-         |                        ~~~~~~~~~~~^~~~~~~~~~~~~~~~
-
-
-vim +159 drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-
-   154	
-   155	static inline
-   156	int mtk_ddp_comp_supports_10bit(struct mtk_ddp_comp *comp)
-   157	{
-   158		if (comp->funcs && comp->funcs->supports_10bit)
- > 159			return comp->funcs->supports_10bit;
-   160	
-   161	        return 0;
-   162	}
-   163	
+[0] Documentation/leds/leds-sc27xx.rst
+[1] Documentation/leds/leds-qcom-lpg.rst
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+Best regards,
+Jacek Anaszewski
 
