@@ -4,87 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3027C54EAA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 15:47:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E6E9C54EED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 15:56:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OtnZbZJn7qNpx2WFbnWyJjOFxWWoyjTJRNSLs8byDPo=; b=w5AaDfJfEX2UyfEcJIhlyhrJFP
-	DYpn1aJWl2H4WSDTHDn6stQpILVVOeX599E7HneRfPRJCJepZgHnjUQ4I7b+bnG180e4E6BYrsIjP
-	fr9OBYx/u+T2Z2gTYlzF4kpkg/dEMcYyRP5HilieRgCghf1RmlG/3l7bnmOCyObKNJ6Bc0n9YJ9uk
-	KHU+aFC/s3eZPTIac6F9JlXslSPAO0hmqBmHACZnjYepYXHBkpOl8qxx6KuSu2VvJkzKSn6s70isD
-	ROqJfdtqyYYXSBxwoIoTvrB0KmclHAiQFN2VvwwBUpTz3jmDUBdVjwsIgOd+KkxzowMgvnBX0r0ac
-	z11+p8bg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=f3sFXOuMqveoRXd7c7rTvCNrAHt/0EUfBDQLk4NsWDU=; b=ozDWmQI//m3OfKO5cbU3rIeZoM
+	BKxNtVyQJgr2yaxwJ8L5/lJDKqAbuAO2pStjjfSQZx9NrhnfQV4qTcBhuxhusuzI9gUsBexjLmcXy
+	PPCmCjbf94VynLCJMH1U8qCc6kCEwR2ylLPYsZ8KWjGJ9q2/JXhhNlejCPujP4aVNnUd3xxKZOlIp
+	uA4imQTxtE358ANc6K5UnHpkcvnONK0i2UxmnjEm/UNr338qvz//FOV1Eq23D+Au5spfOWCSrLwab
+	p670ARTUP0gJN7zXBmix8+O5Km9T+m4xECJkWIaC6I55BNvIwW5Awzrfl7WYcPEvJBPxQAo+UxVul
+	AnjaTdgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMWNE-00460x-K6; Mon, 30 Jan 2023 15:47:12 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1pMWW0-0047dp-P3; Mon, 30 Jan 2023 15:56:16 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMWMB-0045jX-V4; Mon, 30 Jan 2023 15:46:09 +0000
-Received: by mail-ej1-x632.google.com with SMTP id mc11so10479054ejb.10;
-        Mon, 30 Jan 2023 07:46:05 -0800 (PST)
+	id 1pMWUm-0047Xs-Vr; Mon, 30 Jan 2023 15:55:02 +0000
+Received: by mail-ej1-x633.google.com with SMTP id hx15so13514241ejc.11;
+        Mon, 30 Jan 2023 07:54:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=OtnZbZJn7qNpx2WFbnWyJjOFxWWoyjTJRNSLs8byDPo=;
-        b=NiJunNOyCwnkCJjG0thYBSqZO7dQZMrPwN2Tyb8r1J+U6hjCLrVhiLiUFxzA0D2aFS
-         dLMgtLsw8t3DA1b0UJK9eU9e2Hl6EeY81QmYS6t1WU1JBmNDWMY3BLdYZhSttYwvBkBU
-         BEkXWdTBzeMtWby+7O30J8wCrf6CLxp/HyJK9owgQ59tjIP5PMC2SUMqbhEnxCw1r2IW
-         eZZ/YTKZT3NTpNMRkdypVNzuL/QEivLh3GaTb3SRlGiOIHUCil2FbXQrg04+icYa4+/r
-         rxRAO/i3JxrStsLkzpdmxoDbyLdmki9UjX18YLyA2zNw08YcjrICZ9HVvT4Ro/1lXwhy
-         Yfzw==
+        bh=f3sFXOuMqveoRXd7c7rTvCNrAHt/0EUfBDQLk4NsWDU=;
+        b=eBDJP3zeF2CAaV0hDs5MvtyoDr/wOEgmEWdDUxKIEuFmRz/dNOcgE6ZHva18qRQVpZ
+         C8GCVx3eWCu10vVpwL2r3KutFHUFC55AOTX4PklKY7UxKZd3wRDxT6aKe7cT0XmxgJoX
+         Ss4KHwtUNBBjxqJaUukTI4+WgDPL5riWQ4wavqeB+U6gNZjTIrBVCgOzMVi7ht93pmku
+         u0V9+44goKViY0qPYTns7eb9Btc/4k7/ED18rCeuJ5PMLq4999ZlHYG8obKkGnqwiXUs
+         P027f+Kl+XyyY4LaRmmpbV3BlP13SF9a+hKPYCmBXzknBrW7xZiY0fU7Gk3UqfT8n872
+         mzeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=OtnZbZJn7qNpx2WFbnWyJjOFxWWoyjTJRNSLs8byDPo=;
-        b=mM/EsdMgEbSItyGQZXvVXUiGRATfUTzxbu9Z1SK8dp2C/oakuikfAEDCww2OE8ik6c
-         wHhzFft3WyIs1krKz3tE7tN6p6hhmZAG2GISVz5c5O+luQx2ZBmnlCNkY2LtCOf3Nhg1
-         iRPZ2z8dTOpVHi71R/ZR1n8GO34KaXag8lKAtgrxUYxoNYcd2/gd/OrHEkljgFgXZAFO
-         00AgvLU/xX49CBKuTuL02hg2NwgcE3WcCaKxa8A0gXzP/VXjw54pqT1Ccal1sxy6Cjg1
-         emFjvCLj1HDu7afY7WypzaxZOooiWIWDhRWRJD8U1x1GqWHTJ46SlIGLiujLso8goSc+
-         eWSw==
-X-Gm-Message-State: AO0yUKXLIWUUYlF1qyWkpmH5FBY6RotWQl29DZlOJxwyX5nulU7H7DZW
-	BOuAexQNF/cS09BkN85c3o4=
-X-Google-Smtp-Source: AK7set8ONfiRFGonYBPV38i9/CXf+w/8U8FKS/LlLh/w/m8eq1UeosyR0ypAdVBUjF1v1S2NnK7q1Q==
-X-Received: by 2002:a17:906:2704:b0:887:dea8:b025 with SMTP id z4-20020a170906270400b00887dea8b025mr4786278ejc.65.1675093564226;
-        Mon, 30 Jan 2023 07:46:04 -0800 (PST)
-Received: from localhost (p200300e41f201d00f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f20:1d00:f22f:74ff:fe1f:3a53])
-        by smtp.gmail.com with ESMTPSA id p17-20020a170906b21100b00886c1a02d20sm2719108ejz.47.2023.01.30.07.46.03
+        bh=f3sFXOuMqveoRXd7c7rTvCNrAHt/0EUfBDQLk4NsWDU=;
+        b=czmFF/FBgIa4PKJLVrmg7/svm0y3aZl2hvHoTP6eUfJYPf0tHw02hrEoxtVQPQrqgm
+         Qp4q4H4NECjaw+sCifcTojr+VGWupZiYcA7A0nN+arTCAMjKJGMAzlJU9ka+WLGu+4np
+         /0+Ofy/n+gC7vUx/AhjL5WyLj0ieCXaTlUvbw5nrQ469WsvgdYoEXLWMSzQmD+PQazKs
+         gjnQAH1rr9S3PwPetEANlkfgNgI+bCLLwFPTA8+OxzhR1Y1T01kLYUdQiuNb9RsvVWON
+         57Hj/qXLJLESICunqZm6cRv/vDaAkuCQ51rCf/uy4E86hPHEQE0LfAJzD6aCOEUGhEl3
+         ZdUg==
+X-Gm-Message-State: AO0yUKVa8x+u9R5tTxG8Kix3LAjk26czKsea++DfbV3SiKZMbDfLOnkF
+	nODepKC9Zj/Ie7w28xqXjIE=
+X-Google-Smtp-Source: AK7set9zUUm0Jj+SonyVqg9785v4818CFDmFNQJTFN3ESMX3gDZbsqz/JP7M8gVpqikxOdzMlB1WWQ==
+X-Received: by 2002:a17:907:1c0e:b0:87a:6a63:9014 with SMTP id nc14-20020a1709071c0e00b0087a6a639014mr16454978ejc.20.1675094098604;
+        Mon, 30 Jan 2023 07:54:58 -0800 (PST)
+Received: from orome (p200300e41f201d00f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f20:1d00:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id p14-20020a170906784e00b0084d34eec68esm7055612ejm.213.2023.01.30.07.54.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 Jan 2023 07:46:03 -0800 (PST)
+        Mon, 30 Jan 2023 07:54:57 -0800 (PST)
+Date: Mon, 30 Jan 2023 16:54:56 +0100
 From: Thierry Reding <thierry.reding@gmail.com>
-To: krzysztof.kozlowski+dt@linaro.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org,
-	john@phrozen.org,
-	matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org,
-	robh+dt@kernel.org,
-	linux-kernel@vger.kernel.org,
-	u.kleine-koenig@pengutronix.de,
-	linux-pwm@vger.kernel.org,
-	sean.wang@mediatek.com,
-	devicetree@vger.kernel.org
-Subject: Re: (subset) [PATCH v1 0/2] pwm-mediatek: Convert to schema and fixes
-Date: Mon, 30 Jan 2023 16:46:03 +0100
-Message-Id: <167509354269.581356.8213728106190442559.b4-ty@gmail.com>
-X-Mailer: git-send-email 2.39.1
-In-Reply-To: <20221128112028.58021-1-angelogioacchino.delregno@collabora.com>
+To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+	matthias.bgg@gmail.com, john@phrozen.org, sean.wang@mediatek.com,
+	linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v1 1/2] arm64: dts: mediatek: mt7622: Add missing
+ pwm-cells to pwm node
+Message-ID: <Y9foUMtlMZfZ18nr@orome>
 References: <20221128112028.58021-1-angelogioacchino.delregno@collabora.com>
+ <20221128112028.58021-2-angelogioacchino.delregno@collabora.com>
+ <20221202180932.5k3vymrwds5ssivq@pengutronix.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="Tt+4zDA4srW5HLc6"
+Content-Disposition: inline
+In-Reply-To: <20221202180932.5k3vymrwds5ssivq@pengutronix.de>
+User-Agent: Mutt/2.2.9 (2022-11-12)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230130_074608_041431_F9FF8F26 
-X-CRM114-Status: UNSURE (   8.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230130_075501_066533_E70C400D 
+X-CRM114-Status: GOOD (  21.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,24 +97,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 28 Nov 2022 12:20:26 +0100, AngeloGioacchino Del Regno wrote:
-> This series converts pwm-mediatek.txt to schema and fixes
-> mt7622.dtsi to declare the needed #pwm-cells on the pwm node,
-> required to not trigger a dtbs_check warning... and to make
-> that node actually usable.
-> 
-> AngeloGioacchino Del Regno (2):
->   arm64: dts: mediatek: mt7622: Add missing pwm-cells to pwm node
->   dt-bindings: pwm: mediatek: Convert pwm-mediatek to dt schema
-> 
-> [...]
 
-Applied, thanks!
+--Tt+4zDA4srW5HLc6
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-[2/2] dt-bindings: pwm: mediatek: Convert pwm-mediatek to dt schema
-      (no commit info)
+On Fri, Dec 02, 2022 at 07:09:32PM +0100, Uwe Kleine-K=C3=B6nig wrote:
+> On Mon, Nov 28, 2022 at 12:20:27PM +0100, AngeloGioacchino Del Regno wrot=
+e:
+> > Specify #pwm-cells on pwm@11006000 to make it actually usable.
+> >=20
+> > Fixes: ae457b7679c4 ("arm64: dts: mt7622: add SoC and peripheral relate=
+d device nodes")
+> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@co=
+llabora.com>
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt7622.dtsi | 1 +
+> >  1 file changed, 1 insertion(+)
+> >=20
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot=
+/dts/mediatek/mt7622.dtsi
+> > index 146e18b5b1f4..f321c6d0fd7c 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> > @@ -435,6 +435,7 @@ uart3: serial@11005000 {
+> >  	pwm: pwm@11006000 {
+> >  		compatible =3D "mediatek,mt7622-pwm";
+> >  		reg =3D <0 0x11006000 0 0x1000>;
+> > +		#pwm-cells =3D <2>;
+>=20
+> 3 should be possible, too. The driver does only support one
+> polarity, so it's not really needed, but would be nice for consistency?
+>=20
+> Thierry, what's your take here?
 
-Best regards,
--- 
-Thierry Reding <thierry.reding@gmail.com>
+There's little point in setting this to 3 if the driver doesn't support
+it. The core should catch misconfiguration, but that's more of a fail-
+safe and if we can just avoid this from the start by not allowing anyone
+to specify inversed polarity that seems like a good idea.
+
+Thierry
+
+--Tt+4zDA4srW5HLc6
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmPX6FAACgkQ3SOs138+
+s6GHKg//ZEgZo9vAqHU2RnhvwzEqB5Lj0Ga0bH0vzXcHSsZDpr8YSGqWraBHHppV
+UJuzylMJGnmJnNkz6YsDWLiZaUgtGcUUxSMHeDC6iYvc+HjlZfvHf4xxEA7IQauE
+UwYDyXVHCKxsWtvRR4VO/l93LasCoA1Qt1CP4mfUOZ3gvbiFP6BR1iTKZ8balc6C
+izOytiVpiXsIUTiJN4dJvkEcTUgysLuUIRfYtVigBckcf8nmNEvfNHzTUJ2p8QTQ
+14PSEIsfJAkcOXIyl2PYajd5L6Nn72rxH8vgoF6aX4PhPSXMknjeIzNtMAebmmd4
+2tLGNaB0MliHCRmjDjcd7ELY9dNuzH8drODRsMzoIPG5HLSBftUmVhVC5elZKtjb
+xq069ysSwdSKEa2/emVmFWTgt+G7XQ67ZYOhUxPTJXgNq5J3HA7bKffOleXIaUvX
+Dqj83mJu6mE+dHsoGYyoIuV+YO74bsaKGqP3CK8xHHZUs2n28h2OIEGxQh2vLkja
+CH3d/T0Awdqr7VqUQp5rWGnwylKnx8RkjDC73tyVzTn5ld4NmJMqnfEpatuwvzjG
+iSowdQrNiyZIdofe+S8qiNy1vNBPOWio5miVRRfm30678h0hVYMEe+745wSBMkp/
+oidl1RGU72RmnK+ySUPPomygTW13jOimthZSfo3DIdpqRdMSJxI=
+=g4sq
+-----END PGP SIGNATURE-----
+
+--Tt+4zDA4srW5HLc6--
 
