@@ -4,79 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83F0FC54EAA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 11:41:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E3ADC54EED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 11:58:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qY2eQcF/uAcvNTYQk/je1BxohMNaBmCnW6600Wd4rz4=; b=WH5e1JaQxikIFSWUwzDzTBYu2t
-	cWoY3q6Hi77Z2iR/RZrKTQolk5zEVwotOiyhL7J5DQFWPQpIjCIlrYrfzdIxT6MJqDILP8D04WIrc
-	cKG/utZzVn8DZIJ4c6nWW46ZnCkXEcnRhK1sL/2u6+1jiE1cEKzoalsNq8IH5mhgFMz/WGhB5XlTj
-	M8ibXRx8exNt46A7Bpqv33olyo4eVMnGS47XQ32FKC6ddshpVwzuKKixP0z/ABfgeuHlZG9y+bNXx
-	IswE9eeX49+2Dk/2IqipzGLaQyVeNNmzzzBTzmA366eq1u74ftJNHPb/7DLvEuuV+GDLf+FOkCGXA
-	NJkmni4g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XmcsKjHOKYvrUOUyXFN2fyX5681YPhZugfu38EMuB08=; b=fqr3KF6hJ5id2LRzWy8DRbu9fZ
+	ZK1iheGXfCHEPApA6hHsCEYc2VYJWg1B1tXLImibxvOrceYpU//JubglvNwPgneHxsJn16/LEAqJf
+	OcGcT4YCOXJhHJiGoL5Mz1ecnCYUfa3iVaj5xGpN0F1CiwUAiGU0wgisKaGm+GFlQkYC5Q0Lw3kPE
+	wJy4rvPsCYhRo0m6sS9FogZydRToR8xN8y8+g8rTz5w/yKC03sdtou4QG6oUMUXnco48pXOg9L4M7
+	bZP9qJ0Xe6zFqOqY/HrTQQW/LsU/xZo67QjyWpMPvdL5Y8h82zE+A9YDPu8UvmS/iq8Zth22RQc70
+	MYR+TDxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMSWo-003Jrk-U7; Mon, 30 Jan 2023 11:40:50 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1pMSnj-003O4r-0J; Mon, 30 Jan 2023 11:58:19 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMSWF-003Jpp-T8
-	for linux-mediatek@lists.infradead.org; Mon, 30 Jan 2023 11:40:17 +0000
-Received: by mail-wm1-x334.google.com with SMTP id iv8-20020a05600c548800b003db04a0a46bso8635738wmb.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 30 Jan 2023 03:40:12 -0800 (PST)
+	id 1pMSmj-003Nus-KH
+	for linux-mediatek@lists.infradead.org; Mon, 30 Jan 2023 11:57:20 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id q10so10811320wrm.4
+        for <linux-mediatek@lists.infradead.org>; Mon, 30 Jan 2023 03:57:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=qY2eQcF/uAcvNTYQk/je1BxohMNaBmCnW6600Wd4rz4=;
-        b=YCGzP6+etMTFAZGEGJ0wr5wJKJ6GursVCMiCl4iTjjUvks4Wc+vwkge9YRs9sX4uNh
-         +teYysoROEQBHhVUwUk64roJYGp0TS/8rnB+Kg2hKOA2uPrs1HYf2VZeXRdXvN/kV7U6
-         R9aVBejJ3TaFgCk9ZiNScxApM32QsZtILy4rclBgUwHieku/LsUr5iUqzii9p7mXJVuX
-         RnDqeTzcI2JXcjsxiJlhnkp1+q/kwn3DyW1m9FWEjI3UHbX6NbjCVk2gKAtipYyA/UQ8
-         6KjjGaDlLmLxulYmq5dhcFffffXgS3vaO5RUbORPLd1QbJhrCdl03X76SeWIV6clklGd
-         E3gA==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=XmcsKjHOKYvrUOUyXFN2fyX5681YPhZugfu38EMuB08=;
+        b=H2FPuCMk/NF+fT6BAcIMqqiJEBfns65LIpOPsw5l2IRunMicVdx3XMV5/qZ+gvz80o
+         c2ym7rtY3PllyRlph6/nAcDVro7vxo5QN37nVetUJ8fnIhYKNcNYT36gON1zlwpkhfKm
+         TqyJLZKKFYc9gomPikcHOSM/Fh+IIAhxBYRllJTJ5B9ZarX1C4CLORSnT8Q9qWSyRx+M
+         SarrGtpFcNeORELwQaDTH87A9GuMt0YwGJKiBRYhjyZqi0/aPRb9w3/rPvoVSi0AM3td
+         qpRwW2J7Xg+vy7C8cVsDH0kwHXosXoncBm0nLFU/oaAdQdioTu2E/pc95qo4vOQ+CITZ
+         t+tA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=qY2eQcF/uAcvNTYQk/je1BxohMNaBmCnW6600Wd4rz4=;
-        b=694GxtxiNVZH/G20DfyRjnAqi0SyW0FIpaMWkaRS7wlOpZjvW6Oh72lWWTWCk1vVxn
-         UAsLww9+fRRveyEMeWMa2P7TqivX9D2y/PKaLeTGq3qYX/S1FdkMwXD2jFKPgCKzY0Ma
-         KOGEQ8/VNzahX2qDIhQ/f2v0o9w+oOWVw6XCgaCPh1U86n4vqtHdvZlNARYQPSbgGcCa
-         wq9pusLoM75FM1F5kB+oH4lfCpnfnkd0KSu+oS4t8gHLA6lZ7RPl9lcj1F/onTFo3YHF
-         vNAj5EnJ9/dElR9xobxhS7cdHZbmHSIF5ehUoSndnuTyNv9ZPxnrkWIIlANUagp0I1of
-         Zlsw==
-X-Gm-Message-State: AO0yUKXc6YRCQDwRCglGxogMU/raOjp3WymmN3BRGnLL0AXrHLESnwZZ
-	ne/v4Scwuxuam0BA436x59voGfLZDGI=
-X-Google-Smtp-Source: AK7set/plTj3nToxeSu5iL+yT3u0ztKJ3ozwPZCPZJR8eXHt2/EVQcaKN/ClDf3w8bwneh0ceKR5ug==
-X-Received: by 2002:a05:600c:1c83:b0:3dd:1a8b:7374 with SMTP id k3-20020a05600c1c8300b003dd1a8b7374mr63656wms.5.1675078811045;
-        Mon, 30 Jan 2023 03:40:11 -0800 (PST)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id 19-20020a05600c26d300b003dc50c38921sm5614243wmv.35.2023.01.30.03.40.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 Jan 2023 03:40:10 -0800 (PST)
-Date: Mon, 30 Jan 2023 14:40:07 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: Trevor Wu =?utf-8?B?KOWQs+aWh+iJryk=?= <Trevor.Wu@mediatek.com>
-Cc: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-Subject: Re: [bug report] ASoC: mediatek: mt8188: support etdm in platform
- driver
-Message-ID: <Y9esl7VQ6qW9wnIC@kadam>
-References: <Y9EdBg641tJDDrt/@kili>
- <8260fa7da639c118ec6757e6d3e25320924dcbca.camel@mediatek.com>
+        bh=XmcsKjHOKYvrUOUyXFN2fyX5681YPhZugfu38EMuB08=;
+        b=rApkrKe/hSfom74RLWXybyZePVAQsVotMKXRLAvRImt0BgLruM8xMJb3PbkaJPxzqG
+         drusoyGnWLw6Ku1BIPDHhEwTSyWwhTLvnOvooyoy7SepRbgBl6Rf2yp6DXsDUIov3P+S
+         1s4Nohh3glaturi/prnc1rCke+NbYQlra5Xz9ZWRx1WbgJb6sosv+fooxRaoaeP3cpq3
+         Bay8Zhuzsd2kg9nwRzi8wk0Xyc/cfSTOCEmNTSPxtvfcFhssV8VLZq//gTb95ikh4jVH
+         ixKWlnO25Fw0wE1W++T0lkhWSnBVCaqf1Ikho4YJ1qgVuRxCYH6T7Du8EwL8hiYu3GtP
+         nAXw==
+X-Gm-Message-State: AFqh2koiHl/jEXV1V0n+DOdw0mxa3o7xv82fiXKap/kdAjE4zP1OKp0x
+	fe93OCXRKNMZ144oLxiYoHaRCg==
+X-Google-Smtp-Source: AMrXdXvY1RmKLr2Gv1YwpANPagILR9MGIr+duSCkotDjClMAoKjRsaSW02r6KnsoxsJY+EfDL1FMlA==
+X-Received: by 2002:adf:8bd6:0:b0:2bf:95d0:fa5d with SMTP id w22-20020adf8bd6000000b002bf95d0fa5dmr32299686wra.9.1675079835446;
+        Mon, 30 Jan 2023 03:57:15 -0800 (PST)
+Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id m2-20020a056000180200b002bfb5618ee7sm11648461wrh.91.2023.01.30.03.57.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 30 Jan 2023 03:57:14 -0800 (PST)
+Message-ID: <921aa473-b2a6-0905-2b52-1acf84ed399a@baylibre.com>
+Date: Mon, 30 Jan 2023 12:57:13 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <8260fa7da639c118ec6757e6d3e25320924dcbca.camel@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH 1/3] dt-bindings: memory: mediatek: Add support of
+ unmanaged iommu domain
+To: Alexandre Bailon <abailon@baylibre.com>, yong.wu@mediatek.com,
+ joro@8bytes.org, will@kernel.org
+Cc: robin.murphy@arm.com, matthias.bgg@gmail.com,
+ krzysztof.kozlowski@linaro.org, robh+dt@kernel.org, iommu@lists.linux.dev,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+References: <20230130102722.133271-1-abailon@baylibre.com>
+ <20230130102722.133271-2-abailon@baylibre.com>
+Content-Language: en-US
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20230130102722.133271-2-abailon@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230130_034015_964069_1BBC9E67 
-X-CRM114-Status: GOOD (  18.39  )
+X-CRM114-CacheID: sfid-20230130_035717_922305_87B7DD3D 
+X-CRM114-Status: GOOD (  14.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,27 +97,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 30, 2023 at 09:25:52AM +0000, Trevor Wu (吳文良) wrote:
-> Hi Dan,
+On 30/01/2023 11:27, Alexandre Bailon wrote:
+> Currently, the only way to have an unmanaged domain for a device
+> is having a dedicated iova region or bank.
+> This adds a new bit to MTK_M4U_ID that allows defining devices
+> that needs unmanaged iommu domain.
 > 
-> Thank you for catching that.
-> I didn't notice that snprintf() never returns a negative value in
-> kernel code.
-> It is possible that I misunderstood the coverity error message, but I
-> can't find the original coverity scan result.
+> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> ---
+>   include/dt-bindings/memory/mtk-memory-port.h | 3 +++
+>   1 file changed, 3 insertions(+)
 > 
-> If I just remove the dead code, coverity will report some errors in the
-> future.
-> As a result, I prefer to keep the line and add another check "ret >=
-> sizeof(prop)", so that we can avoid the problem reported by coverity
-> and Smatch.
+> diff --git a/include/dt-bindings/memory/mtk-memory-port.h b/include/dt-bindings/memory/mtk-memory-port.h
+> index 2f68a0511a257..86896c776691a 100644
+> --- a/include/dt-bindings/memory/mtk-memory-port.h
+> +++ b/include/dt-bindings/memory/mtk-memory-port.h
+> @@ -7,11 +7,14 @@
+>   #define __DT_BINDINGS_MEMORY_MTK_MEMORY_PORT_H_
+>   
+>   #define MTK_LARB_NR_MAX			32
+> +#define MTK_UNMANAGED_DEVICE            (1 << 31)
+>   
+>   #define MTK_M4U_ID(larb, port)		(((larb) << 5) | (port))
+>   #define MTK_M4U_TO_LARB(id)		(((id) >> 5) & 0x1f)
+>   #define MTK_M4U_TO_PORT(id)		((id) & 0x1f)
+> +#define MTK_M4U_UNMANAGED(id)		((id) & MTK_UNMANAGED_DEVICE)
+>   
+>   #define MTK_IFAIOMMU_PERI_ID(port)	MTK_M4U_ID(0, port)
+> +#define MTK_M4U_UNMANAGED_ID(larb, port) (MTK_M4U_ID(larb, port) | MTK_UNMANAGED_DEVICE)
+>   
+>   #endif
 
-Generally, when static checkers print nonsense warnings you should just
-ignore them instead of adding dead code so I would encourage to delete
-the dead code even though Coverity complains.  Fix what is broken
-instead of just working around it.
-
-regards,
-dan carpenter
-
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
