@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAA14C54EED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 17:36:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A4A3C636D7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 17:37:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kr7hOd6c8hT924R9Kmj87tFZQb5RQTTidtVqB6Z9AKQ=; b=mKcDoCo99Ml+yDAKvlHuKzclyB
-	Ki9gnycMW3uSpxEDaNZqLjRdbr6E30u8QifGU0T7HO8VzL53D60bQ341QxOOOSn/Fy/vM7+kvZCBQ
-	HMEAmdHstmzltdsnASU6R82fI1F8s6FMcPa93IH1ohu4WJ9HhcXH7rJFrlN2ZSs2XXRVsTAktqG+6
-	1ZPyxooFiJpB8UijGjqM1D/NlwGb0V97BLAkQtSgfo3Dhn4tek28XZGeKxYpFn7U4749NaNuRMJ+A
-	3a7TNgvaVtCGo04teEOZv5xcT/c9X+E76+Ex5srpodV0JZg1Bw7Y5+FBoPL40D6KxSR4ua/oL+4a0
-	PmMvQCcw==;
+	bh=7XV41Cyly/JaM863AWPWwwkBejf01hRL2d9PlzpuIRg=; b=y7VA/8Wg0kwHhGpjmz96+/rDQ6
+	gueecOQ/Z2c1wfLFHodD2DR1tOHG2YpKlBe8qkFRWm6s8Cw5mBxJgKo4mkr8NgfBbuMzeFrkkFySo
+	z82fxyXppo1m0IlDybMQcA4PmruXfAcQ38jh7EGj6si/ON9thJlD5bx2hnLNsjPU/EK574gwHMuM0
+	k6Myo69KIHar4eYC5+9dtgmvna8LA+OeLEdhl5DQsVmMvGfWl68azYMJVOpbauP9BXqZ5juP7KUxn
+	lLp9NLbunaMyHnYLihTHWkPT3tMZ9ixoWOHQ7HhvpNFCTLrLtsklk+gng+yIA//yuOwee4SMNx5do
+	dMyP7ZRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMY5B-004cMI-GB; Mon, 30 Jan 2023 17:36:41 +0000
+	id 1pMY5Q-004cQt-7A; Mon, 30 Jan 2023 17:36:56 +0000
 Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMY4y-004cGB-W9; Mon, 30 Jan 2023 17:36:30 +0000
+	id 1pMY4y-004cGW-VU; Mon, 30 Jan 2023 17:36:31 +0000
 Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 286F11883875;
-	Mon, 30 Jan 2023 17:36:23 +0000 (UTC)
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id A269F1883820;
+	Mon, 30 Jan 2023 17:36:21 +0000 (UTC)
 Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id 1C58E250007B;
-	Mon, 30 Jan 2023 17:36:23 +0000 (UTC)
+	by mailout.gigahost.dk (Postfix) with ESMTP id 8684F250007B;
+	Mon, 30 Jan 2023 17:36:21 +0000 (UTC)
 Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id 0E6B29B403E6; Mon, 30 Jan 2023 17:36:22 +0000 (UTC)
+	id 7B4F69B403E5; Mon, 30 Jan 2023 17:36:21 +0000 (UTC)
 X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
 Received: from fujitsu.vestervang (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
-	by smtp.gigahost.dk (Postfix) with ESMTPSA id 27C7991201E4;
-	Mon, 30 Jan 2023 17:36:22 +0000 (UTC)
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id D19FB91201E4;
+	Mon, 30 Jan 2023 17:36:20 +0000 (UTC)
 From: "Hans J. Schultz" <netdev@kapio-technology.com>
 To: davem@davemloft.net,
 	kuba@kernel.org
@@ -68,9 +68,9 @@ Cc: netdev@vger.kernel.org,
 	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
 	linux-renesas-soc@vger.kernel.org (open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER),
 	bridge@lists.linux-foundation.org (moderated list:ETHERNET BRIDGE)
-Subject: [PATCH net-next 4/5] net: bridge: ensure FDB offloaded flag is handled as needed
-Date: Mon, 30 Jan 2023 18:34:28 +0100
-Message-Id: <20230130173429.3577450-5-netdev@kapio-technology.com>
+Subject: [PATCH net-next 2/5] net: dsa: propagate flags down towards drivers
+Date: Mon, 30 Jan 2023 18:34:26 +0100
+Message-Id: <20230130173429.3577450-3-netdev@kapio-technology.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230130173429.3577450-1-netdev@kapio-technology.com>
 References: <20230130173429.3577450-1-netdev@kapio-technology.com>
@@ -78,8 +78,8 @@ MIME-Version: 1.0
 Organization: Westermo Network Technologies AB
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230130_093629_216826_B02B6DBC 
-X-CRM114-Status: GOOD (  12.53  )
+X-CRM114-CacheID: sfid-20230130_093629_324994_7B8A1669 
+X-CRM114-Status: GOOD (  17.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,39 +94,321 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since user added entries in the bridge FDB will get the BR_FDB_OFFLOADED
-flag set, we do not want the bridge to age those entries and we want the
-entries to be deleted in the bridge upon an SWITCHDEV_FDB_DEL_TO_BRIDGE
-event.
+Dynamic FDB flag needs to be propagated through the DSA layer to be
+added to drivers.
+Use a u16 for fdb flags for future use, so that other flags can also be
+sent the same way without having to change function interfaces.
 
 Signed-off-by: Hans J. Schultz <netdev@kapio-technology.com>
 ---
- net/bridge/br_fdb.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ include/net/dsa.h |  2 ++
+ net/dsa/port.c    | 28 ++++++++++++++++------------
+ net/dsa/port.h    |  8 ++++----
+ net/dsa/slave.c   | 17 +++++++++++++----
+ net/dsa/switch.c  | 18 ++++++++++++------
+ net/dsa/switch.h  |  1 +
+ 6 files changed, 48 insertions(+), 26 deletions(-)
 
-diff --git a/net/bridge/br_fdb.c b/net/bridge/br_fdb.c
-index e69a872bfc1d..b0c23a72bc76 100644
---- a/net/bridge/br_fdb.c
-+++ b/net/bridge/br_fdb.c
-@@ -537,6 +537,7 @@ void br_fdb_cleanup(struct work_struct *work)
- 		unsigned long this_timer = f->updated + delay;
+diff --git a/include/net/dsa.h b/include/net/dsa.h
+index a15f17a38eca..ff95bf1cdd14 100644
+--- a/include/net/dsa.h
++++ b/include/net/dsa.h
+@@ -818,6 +818,8 @@ static inline bool dsa_port_tree_same(const struct dsa_port *a,
+ 	return a->ds->dst == b->ds->dst;
+ }
  
- 		if (test_bit(BR_FDB_STATIC, &f->flags) ||
-+		    test_bit(BR_FDB_OFFLOADED, &f->flags) ||
- 		    test_bit(BR_FDB_ADDED_BY_EXT_LEARN, &f->flags)) {
- 			if (test_bit(BR_FDB_NOTIFY, &f->flags)) {
- 				if (time_after(this_timer, now))
-@@ -1465,7 +1466,9 @@ int br_fdb_external_learn_del(struct net_bridge *br, struct net_bridge_port *p,
- 	spin_lock_bh(&br->hash_lock);
++#define DSA_FDB_FLAG_DYNAMIC		BIT(0)
++
+ typedef int dsa_fdb_dump_cb_t(const unsigned char *addr, u16 vid,
+ 			      bool is_static, void *data);
+ struct dsa_switch_ops {
+diff --git a/net/dsa/port.c b/net/dsa/port.c
+index 67ad1adec2a2..65b8c4470d59 100644
+--- a/net/dsa/port.c
++++ b/net/dsa/port.c
+@@ -976,12 +976,13 @@ int dsa_port_mtu_change(struct dsa_port *dp, int new_mtu)
+ }
  
- 	fdb = br_fdb_find(br, addr, vid);
--	if (fdb && test_bit(BR_FDB_ADDED_BY_EXT_LEARN, &fdb->flags))
-+	if (fdb &&
-+	    (test_bit(BR_FDB_ADDED_BY_EXT_LEARN, &fdb->flags) ||
-+	     test_bit(BR_FDB_OFFLOADED, &fdb->flags)))
- 		fdb_delete(br, fdb, swdev_notify);
- 	else
- 		err = -ENOENT;
+ int dsa_port_fdb_add(struct dsa_port *dp, const unsigned char *addr,
+-		     u16 vid)
++		     u16 vid, u16 fdb_flags)
+ {
+ 	struct dsa_notifier_fdb_info info = {
+ 		.dp = dp,
+ 		.addr = addr,
+ 		.vid = vid,
++		.fdb_flags = fdb_flags,
+ 		.db = {
+ 			.type = DSA_DB_BRIDGE,
+ 			.bridge = *dp->bridge,
+@@ -999,12 +1000,13 @@ int dsa_port_fdb_add(struct dsa_port *dp, const unsigned char *addr,
+ }
+ 
+ int dsa_port_fdb_del(struct dsa_port *dp, const unsigned char *addr,
+-		     u16 vid)
++		     u16 vid, u16 fdb_flags)
+ {
+ 	struct dsa_notifier_fdb_info info = {
+ 		.dp = dp,
+ 		.addr = addr,
+ 		.vid = vid,
++		.fdb_flags = fdb_flags,
+ 		.db = {
+ 			.type = DSA_DB_BRIDGE,
+ 			.bridge = *dp->bridge,
+@@ -1019,12 +1021,13 @@ int dsa_port_fdb_del(struct dsa_port *dp, const unsigned char *addr,
+ 
+ static int dsa_port_host_fdb_add(struct dsa_port *dp,
+ 				 const unsigned char *addr, u16 vid,
+-				 struct dsa_db db)
++				 u16 fdb_flags, struct dsa_db db)
+ {
+ 	struct dsa_notifier_fdb_info info = {
+ 		.dp = dp,
+ 		.addr = addr,
+ 		.vid = vid,
++		.fdb_flags = fdb_flags,
+ 		.db = db,
+ 	};
+ 
+@@ -1042,11 +1045,11 @@ int dsa_port_standalone_host_fdb_add(struct dsa_port *dp,
+ 		.dp = dp,
+ 	};
+ 
+-	return dsa_port_host_fdb_add(dp, addr, vid, db);
++	return dsa_port_host_fdb_add(dp, addr, vid, 0, db);
+ }
+ 
+-int dsa_port_bridge_host_fdb_add(struct dsa_port *dp,
+-				 const unsigned char *addr, u16 vid)
++int dsa_port_bridge_host_fdb_add(struct dsa_port *dp, const unsigned char *addr,
++				 u16 vid, u16 fdb_flags)
+ {
+ 	struct net_device *master = dsa_port_to_master(dp);
+ 	struct dsa_db db = {
+@@ -1065,17 +1068,18 @@ int dsa_port_bridge_host_fdb_add(struct dsa_port *dp,
+ 			return err;
+ 	}
+ 
+-	return dsa_port_host_fdb_add(dp, addr, vid, db);
++	return dsa_port_host_fdb_add(dp, addr, vid, fdb_flags, db);
+ }
+ 
+ static int dsa_port_host_fdb_del(struct dsa_port *dp,
+ 				 const unsigned char *addr, u16 vid,
+-				 struct dsa_db db)
++				 u16 fdb_flags, struct dsa_db db)
+ {
+ 	struct dsa_notifier_fdb_info info = {
+ 		.dp = dp,
+ 		.addr = addr,
+ 		.vid = vid,
++		.fdb_flags = fdb_flags,
+ 		.db = db,
+ 	};
+ 
+@@ -1093,11 +1097,11 @@ int dsa_port_standalone_host_fdb_del(struct dsa_port *dp,
+ 		.dp = dp,
+ 	};
+ 
+-	return dsa_port_host_fdb_del(dp, addr, vid, db);
++	return dsa_port_host_fdb_del(dp, addr, vid, 0, db);
+ }
+ 
+-int dsa_port_bridge_host_fdb_del(struct dsa_port *dp,
+-				 const unsigned char *addr, u16 vid)
++int dsa_port_bridge_host_fdb_del(struct dsa_port *dp, const unsigned char *addr,
++				 u16 vid, u16 fdb_flags)
+ {
+ 	struct net_device *master = dsa_port_to_master(dp);
+ 	struct dsa_db db = {
+@@ -1112,7 +1116,7 @@ int dsa_port_bridge_host_fdb_del(struct dsa_port *dp,
+ 			return err;
+ 	}
+ 
+-	return dsa_port_host_fdb_del(dp, addr, vid, db);
++	return dsa_port_host_fdb_del(dp, addr, vid, fdb_flags, db);
+ }
+ 
+ int dsa_port_lag_fdb_add(struct dsa_port *dp, const unsigned char *addr,
+diff --git a/net/dsa/port.h b/net/dsa/port.h
+index 9c218660d223..0a4f487e3c05 100644
+--- a/net/dsa/port.h
++++ b/net/dsa/port.h
+@@ -47,17 +47,17 @@ int dsa_port_vlan_msti(struct dsa_port *dp,
+ 		       const struct switchdev_vlan_msti *msti);
+ int dsa_port_mtu_change(struct dsa_port *dp, int new_mtu);
+ int dsa_port_fdb_add(struct dsa_port *dp, const unsigned char *addr,
+-		     u16 vid);
++		     u16 vid, u16 fdb_flags);
+ int dsa_port_fdb_del(struct dsa_port *dp, const unsigned char *addr,
+-		     u16 vid);
++		     u16 vid, u16 fdb_flags);
+ int dsa_port_standalone_host_fdb_add(struct dsa_port *dp,
+ 				     const unsigned char *addr, u16 vid);
+ int dsa_port_standalone_host_fdb_del(struct dsa_port *dp,
+ 				     const unsigned char *addr, u16 vid);
+ int dsa_port_bridge_host_fdb_add(struct dsa_port *dp, const unsigned char *addr,
+-				 u16 vid);
++				 u16 vid, u16 fdb_flags);
+ int dsa_port_bridge_host_fdb_del(struct dsa_port *dp, const unsigned char *addr,
+-				 u16 vid);
++				 u16 vid, u16 fdb_flags);
+ int dsa_port_lag_fdb_add(struct dsa_port *dp, const unsigned char *addr,
+ 			 u16 vid);
+ int dsa_port_lag_fdb_del(struct dsa_port *dp, const unsigned char *addr,
+diff --git a/net/dsa/slave.c b/net/dsa/slave.c
+index 6014ac3aad34..905791ed04f0 100644
+--- a/net/dsa/slave.c
++++ b/net/dsa/slave.c
+@@ -39,6 +39,7 @@ struct dsa_switchdev_event_work {
+ 	 */
+ 	unsigned char addr[ETH_ALEN];
+ 	u16 vid;
++	u16 fdb_flags;
+ 	bool host_addr;
+ };
+ 
+@@ -3332,6 +3333,7 @@ static void dsa_slave_switchdev_event_work(struct work_struct *work)
+ 		container_of(work, struct dsa_switchdev_event_work, work);
+ 	const unsigned char *addr = switchdev_work->addr;
+ 	struct net_device *dev = switchdev_work->dev;
++	u16 fdb_flags = switchdev_work->fdb_flags;
+ 	u16 vid = switchdev_work->vid;
+ 	struct dsa_switch *ds;
+ 	struct dsa_port *dp;
+@@ -3343,11 +3345,12 @@ static void dsa_slave_switchdev_event_work(struct work_struct *work)
+ 	switch (switchdev_work->event) {
+ 	case SWITCHDEV_FDB_ADD_TO_DEVICE:
+ 		if (switchdev_work->host_addr)
+-			err = dsa_port_bridge_host_fdb_add(dp, addr, vid);
++			err = dsa_port_bridge_host_fdb_add(dp, addr,
++							   vid, fdb_flags);
+ 		else if (dp->lag)
+ 			err = dsa_port_lag_fdb_add(dp, addr, vid);
+ 		else
+-			err = dsa_port_fdb_add(dp, addr, vid);
++			err = dsa_port_fdb_add(dp, addr, vid, fdb_flags);
+ 		if (err) {
+ 			dev_err(ds->dev,
+ 				"port %d failed to add %pM vid %d to fdb: %d\n",
+@@ -3359,11 +3362,12 @@ static void dsa_slave_switchdev_event_work(struct work_struct *work)
+ 
+ 	case SWITCHDEV_FDB_DEL_TO_DEVICE:
+ 		if (switchdev_work->host_addr)
+-			err = dsa_port_bridge_host_fdb_del(dp, addr, vid);
++			err = dsa_port_bridge_host_fdb_del(dp, addr,
++							   vid, fdb_flags);
+ 		else if (dp->lag)
+ 			err = dsa_port_lag_fdb_del(dp, addr, vid);
+ 		else
+-			err = dsa_port_fdb_del(dp, addr, vid);
++			err = dsa_port_fdb_del(dp, addr, vid, fdb_flags);
+ 		if (err) {
+ 			dev_err(ds->dev,
+ 				"port %d failed to delete %pM vid %d from fdb: %d\n",
+@@ -3401,6 +3405,7 @@ static int dsa_slave_fdb_event(struct net_device *dev,
+ 	struct dsa_port *dp = dsa_slave_to_port(dev);
+ 	bool host_addr = fdb_info->is_local;
+ 	struct dsa_switch *ds = dp->ds;
++	u16 fdb_flags = 0;
+ 
+ 	if (ctx && ctx != dp)
+ 		return 0;
+@@ -3447,6 +3452,9 @@ static int dsa_slave_fdb_event(struct net_device *dev,
+ 		   orig_dev->name, fdb_info->addr, fdb_info->vid,
+ 		   host_addr ? " as host address" : "");
+ 
++	if (fdb_info->is_dyn)
++		fdb_flags |= DSA_FDB_FLAG_DYNAMIC;
++
+ 	INIT_WORK(&switchdev_work->work, dsa_slave_switchdev_event_work);
+ 	switchdev_work->event = event;
+ 	switchdev_work->dev = dev;
+@@ -3455,6 +3463,7 @@ static int dsa_slave_fdb_event(struct net_device *dev,
+ 	ether_addr_copy(switchdev_work->addr, fdb_info->addr);
+ 	switchdev_work->vid = fdb_info->vid;
+ 	switchdev_work->host_addr = host_addr;
++	switchdev_work->fdb_flags = fdb_flags;
+ 
+ 	dsa_schedule_work(&switchdev_work->work);
+ 
+diff --git a/net/dsa/switch.c b/net/dsa/switch.c
+index d5bc4bb7310d..9b0d6ce0f7da 100644
+--- a/net/dsa/switch.c
++++ b/net/dsa/switch.c
+@@ -239,7 +239,7 @@ static int dsa_port_do_mdb_del(struct dsa_port *dp,
+ }
+ 
+ static int dsa_port_do_fdb_add(struct dsa_port *dp, const unsigned char *addr,
+-			       u16 vid, struct dsa_db db)
++			       u16 vid, u16 fdb_flags, struct dsa_db db)
+ {
+ 	struct dsa_switch *ds = dp->ds;
+ 	struct dsa_mac_addr *a;
+@@ -283,7 +283,7 @@ static int dsa_port_do_fdb_add(struct dsa_port *dp, const unsigned char *addr,
+ }
+ 
+ static int dsa_port_do_fdb_del(struct dsa_port *dp, const unsigned char *addr,
+-			       u16 vid, struct dsa_db db)
++			       u16 vid, u16 fdb_flags, struct dsa_db db)
+ {
+ 	struct dsa_switch *ds = dp->ds;
+ 	struct dsa_mac_addr *a;
+@@ -410,7 +410,9 @@ static int dsa_switch_host_fdb_add(struct dsa_switch *ds,
+ 								info->db);
+ 			} else {
+ 				err = dsa_port_do_fdb_add(dp, info->addr,
+-							  info->vid, info->db);
++							  info->vid,
++							  info->fdb_flags,
++							  info->db);
+ 			}
+ 			if (err)
+ 				break;
+@@ -438,7 +440,9 @@ static int dsa_switch_host_fdb_del(struct dsa_switch *ds,
+ 								info->db);
+ 			} else {
+ 				err = dsa_port_do_fdb_del(dp, info->addr,
+-							  info->vid, info->db);
++							  info->vid,
++							  info->fdb_flags,
++							  info->db);
+ 			}
+ 			if (err)
+ 				break;
+@@ -457,7 +461,8 @@ static int dsa_switch_fdb_add(struct dsa_switch *ds,
+ 	if (!ds->ops->port_fdb_add)
+ 		return -EOPNOTSUPP;
+ 
+-	return dsa_port_do_fdb_add(dp, info->addr, info->vid, info->db);
++	return dsa_port_do_fdb_add(dp, info->addr, info->vid,
++				   info->fdb_flags, info->db);
+ }
+ 
+ static int dsa_switch_fdb_del(struct dsa_switch *ds,
+@@ -469,7 +474,8 @@ static int dsa_switch_fdb_del(struct dsa_switch *ds,
+ 	if (!ds->ops->port_fdb_del)
+ 		return -EOPNOTSUPP;
+ 
+-	return dsa_port_do_fdb_del(dp, info->addr, info->vid, info->db);
++	return dsa_port_do_fdb_del(dp, info->addr, info->vid,
++				   info->fdb_flags, info->db);
+ }
+ 
+ static int dsa_switch_lag_fdb_add(struct dsa_switch *ds,
+diff --git a/net/dsa/switch.h b/net/dsa/switch.h
+index 15e67b95eb6e..824ad7950785 100644
+--- a/net/dsa/switch.h
++++ b/net/dsa/switch.h
+@@ -55,6 +55,7 @@ struct dsa_notifier_fdb_info {
+ 	const struct dsa_port *dp;
+ 	const unsigned char *addr;
+ 	u16 vid;
++	u16 fdb_flags;
+ 	struct dsa_db db;
+ };
+ 
 -- 
 2.34.1
 
