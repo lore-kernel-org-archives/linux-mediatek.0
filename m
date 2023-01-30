@@ -4,74 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8493C54EAA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 15:23:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3027C54EAA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 15:47:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y5xz1mpLLp0Q3nfC4uT/e4bvG501XPL6TyTs8e6lytE=; b=eIcm7xfepv0blRBftefnyp7/99
-	W/ekCdyNDSKRMWPm9J4rBHTGSaXNkRTEt+TtTO23yuyC26YB5L3h1wk1Qsg1lDhyUYYo598lxdm01
-	MRvHdmWY6ivgsRnyQ6B2T2xxjBdC4qnVbkC037ciw3btc6Th8vLzwhyrYp9HcqxYAidb52zCnKxFq
-	CD/DQC8Tsy0CujzQVo4aeNuIT0YrYq2vx4Xyi0CjLedj2EKPKmLgrJJrZibah3pRhl8vEsUvLBi94
-	HsCtcq82GC/ysspBNuoVBqp4lzO+/lDKZwS70TO1DfR4//3Q8laphsPFR2PkbqSosr7tXeXuNrrpL
-	1VSNTqLA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OtnZbZJn7qNpx2WFbnWyJjOFxWWoyjTJRNSLs8byDPo=; b=w5AaDfJfEX2UyfEcJIhlyhrJFP
+	DYpn1aJWl2H4WSDTHDn6stQpILVVOeX599E7HneRfPRJCJepZgHnjUQ4I7b+bnG180e4E6BYrsIjP
+	fr9OBYx/u+T2Z2gTYlzF4kpkg/dEMcYyRP5HilieRgCghf1RmlG/3l7bnmOCyObKNJ6Bc0n9YJ9uk
+	KHU+aFC/s3eZPTIac6F9JlXslSPAO0hmqBmHACZnjYepYXHBkpOl8qxx6KuSu2VvJkzKSn6s70isD
+	ROqJfdtqyYYXSBxwoIoTvrB0KmclHAiQFN2VvwwBUpTz3jmDUBdVjwsIgOd+KkxzowMgvnBX0r0ac
+	z11+p8bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMVzN-0040pH-BO; Mon, 30 Jan 2023 15:22:33 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pMWNE-00460x-K6; Mon, 30 Jan 2023 15:47:12 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMVyw-0040nz-Nw
-	for linux-mediatek@lists.infradead.org; Mon, 30 Jan 2023 15:22:08 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id BB0506117B;
-	Mon, 30 Jan 2023 15:14:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92B30C433EF;
-	Mon, 30 Jan 2023 15:14:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1675091697;
-	bh=a90xOxXdB9OfE6RDvIPeW0/Rs9qLjfMK4/iU5SQsr+M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Qhg7Gq0GRWzDG5WdtbKlYpHeurP+ox7s6RY3ZxVqgYy4MD+SlfNvlTqMud9BvVmgn
-	 toS83V+xCfsTDkxn6G+XbNfr+xoGIos68x1ytoBWb742IgNud/mWDZybq2qAo8pU5w
-	 j94Ed+1zOKFp+EUvby24Iig8Cp8L9HtfPoscQqn4=
-Date: Mon, 30 Jan 2023 15:01:23 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: =?utf-8?B?0JbQsNC90LTQsNGA0L7QstC40Ycg0J3QuNC60LjRgtCwINCY0LPQvtGA0LU=?=
-	=?utf-8?B?0LLQuNGH?= <n.zhandarovich@fintech.ru>
-Cc: "stable@vger.kernel.org" <stable@vger.kernel.org>,
-	Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Kalle Valo <kvalo@codeaurora.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Jakub Kicinski <kuba@kernel.org>,
-	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	Alexey Khoroshilov <khoroshilov@ispras.ru>,
-	"lvc-project@linuxtesting.org" <lvc-project@linuxtesting.org>
-Subject: Re: [PATCH 5.10 1/1] mt76: fix mt7615_init_tx_queues() return value
-Message-ID: <Y9fNs5QWbrJh+yH6@kroah.com>
-References: <20230130123655.86339-1-n.zhandarovich@fintech.ru>
- <20230130123655.86339-2-n.zhandarovich@fintech.ru>
- <Y9fAkt/5BRist//g@kroah.com>
- <b945bd5f3d414ac5bc589d65cf439f7b@fintech.ru>
- <Y9fIFirNHNP06e1L@kroah.com>
- <e17c785dbacf4605a726cc939bee6533@fintech.ru>
+	id 1pMWMB-0045jX-V4; Mon, 30 Jan 2023 15:46:09 +0000
+Received: by mail-ej1-x632.google.com with SMTP id mc11so10479054ejb.10;
+        Mon, 30 Jan 2023 07:46:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=OtnZbZJn7qNpx2WFbnWyJjOFxWWoyjTJRNSLs8byDPo=;
+        b=NiJunNOyCwnkCJjG0thYBSqZO7dQZMrPwN2Tyb8r1J+U6hjCLrVhiLiUFxzA0D2aFS
+         dLMgtLsw8t3DA1b0UJK9eU9e2Hl6EeY81QmYS6t1WU1JBmNDWMY3BLdYZhSttYwvBkBU
+         BEkXWdTBzeMtWby+7O30J8wCrf6CLxp/HyJK9owgQ59tjIP5PMC2SUMqbhEnxCw1r2IW
+         eZZ/YTKZT3NTpNMRkdypVNzuL/QEivLh3GaTb3SRlGiOIHUCil2FbXQrg04+icYa4+/r
+         rxRAO/i3JxrStsLkzpdmxoDbyLdmki9UjX18YLyA2zNw08YcjrICZ9HVvT4Ro/1lXwhy
+         Yfzw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=OtnZbZJn7qNpx2WFbnWyJjOFxWWoyjTJRNSLs8byDPo=;
+        b=mM/EsdMgEbSItyGQZXvVXUiGRATfUTzxbu9Z1SK8dp2C/oakuikfAEDCww2OE8ik6c
+         wHhzFft3WyIs1krKz3tE7tN6p6hhmZAG2GISVz5c5O+luQx2ZBmnlCNkY2LtCOf3Nhg1
+         iRPZ2z8dTOpVHi71R/ZR1n8GO34KaXag8lKAtgrxUYxoNYcd2/gd/OrHEkljgFgXZAFO
+         00AgvLU/xX49CBKuTuL02hg2NwgcE3WcCaKxa8A0gXzP/VXjw54pqT1Ccal1sxy6Cjg1
+         emFjvCLj1HDu7afY7WypzaxZOooiWIWDhRWRJD8U1x1GqWHTJ46SlIGLiujLso8goSc+
+         eWSw==
+X-Gm-Message-State: AO0yUKXLIWUUYlF1qyWkpmH5FBY6RotWQl29DZlOJxwyX5nulU7H7DZW
+	BOuAexQNF/cS09BkN85c3o4=
+X-Google-Smtp-Source: AK7set8ONfiRFGonYBPV38i9/CXf+w/8U8FKS/LlLh/w/m8eq1UeosyR0ypAdVBUjF1v1S2NnK7q1Q==
+X-Received: by 2002:a17:906:2704:b0:887:dea8:b025 with SMTP id z4-20020a170906270400b00887dea8b025mr4786278ejc.65.1675093564226;
+        Mon, 30 Jan 2023 07:46:04 -0800 (PST)
+Received: from localhost (p200300e41f201d00f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f20:1d00:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id p17-20020a170906b21100b00886c1a02d20sm2719108ejz.47.2023.01.30.07.46.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 30 Jan 2023 07:46:03 -0800 (PST)
+From: Thierry Reding <thierry.reding@gmail.com>
+To: krzysztof.kozlowski+dt@linaro.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+	john@phrozen.org,
+	matthias.bgg@gmail.com,
+	linux-mediatek@lists.infradead.org,
+	robh+dt@kernel.org,
+	linux-kernel@vger.kernel.org,
+	u.kleine-koenig@pengutronix.de,
+	linux-pwm@vger.kernel.org,
+	sean.wang@mediatek.com,
+	devicetree@vger.kernel.org
+Subject: Re: (subset) [PATCH v1 0/2] pwm-mediatek: Convert to schema and fixes
+Date: Mon, 30 Jan 2023 16:46:03 +0100
+Message-Id: <167509354269.581356.8213728106190442559.b4-ty@gmail.com>
+X-Mailer: git-send-email 2.39.1
+In-Reply-To: <20221128112028.58021-1-angelogioacchino.delregno@collabora.com>
+References: <20221128112028.58021-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <e17c785dbacf4605a726cc939bee6533@fintech.ru>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230130_072206_835744_4B84C54D 
-X-CRM114-Status: GOOD (  18.68  )
+X-CRM114-CacheID: sfid-20230130_074608_041431_F9FF8F26 
+X-CRM114-Status: UNSURE (   8.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,36 +99,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 30, 2023 at 01:48:24PM +0000, Жандарович Никита Игоревич wrote:
-> > On Mon, Jan 30, 2023 at 01:27:26PM +0000, Жандарович Никита Игоревич
-> > wrote:
-> > > > What is the git commit id of this upstream?
-> > > >
-> > > > And I can't apply this as-is for the obvious reason it would mess up
-> > > > the changelog, how did you create this?
-> > > >
-> > > > confused,
-> > > >
-> > > > greg k-h
-> > >
-> > > Commit in question is b671da33d1c5973f90f098ff66a91953691df582
-> > > upstream. I wasn't certain it makes sense to backport the whole patch
-> > > as only a small portion of it pertains to the fault at question.
-> > 
-> > What is the "fault"?
+On Mon, 28 Nov 2022 12:20:26 +0100, AngeloGioacchino Del Regno wrote:
+> This series converts pwm-mediatek.txt to schema and fixes
+> mt7622.dtsi to declare the needed #pwm-cells on the pwm node,
+> required to not trigger a dtbs_check warning... and to make
+> that node actually usable.
 > 
-> In 5.10.y "mt7615_init_tx_queues() returns 0 regardless of how final
-> mt7615_init_tx_queue() performs. If mt7615_init_tx_queue() fails (due to
-> memory issues, for instance), parent function will still erroneously
-> return 0."
+> AngeloGioacchino Del Regno (2):
+>   arm64: dts: mediatek: mt7622: Add missing pwm-cells to pwm node
+>   dt-bindings: pwm: mediatek: Convert pwm-mediatek to dt schema
+> 
+> [...]
 
-And how can memory issues actually be triggered in a real system?  Is
-this a fake problem or something you can validate and verify works
-properly?
+Applied, thanks!
 
-Don't worry about fake issues for stable backports please.
+[2/2] dt-bindings: pwm: mediatek: Convert pwm-mediatek to dt schema
+      (no commit info)
 
-thanks,
-
-greg k-h
+Best regards,
+-- 
+Thierry Reding <thierry.reding@gmail.com>
 
