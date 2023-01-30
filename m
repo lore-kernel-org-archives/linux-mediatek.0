@@ -4,55 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18F6DC54EED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 17:58:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A130C636D3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 19:36:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J+pItarPgfmoHngvNF9y49F+j/aJRIEzosv3oEEFNGw=; b=xa5dwzDbVzHu0Ksa9uxzJUNN4u
-	mQmNIVtYma8ysxxgl4wiEhXSNeSUzcuqOSgJfVDeOhTkkrWMqvieZNhKNalft/B8ddhOjfYnC2J1j
-	AfyC88cb4qlipiHPhjGhrnpw62gqfGP47R/6+f614NVeCytK37b13VMjoT/NXclTQQXudSLFzu5dt
-	MMdGe8+OQjUCar/bnSTA6AuSYJD0Ux21NYkemlvJMqaNGvhEDipNlpROs4WPf2pdXUxOyODJ7mOiP
-	LkgbZMyUZ3CCqxdg+oOSLTrQukuWMf3Z41rqKePzjIlNdax6NaC/QyHDC41jNg2Ms5dioSU/giI3w
-	YKSSo6pg==;
+	bh=cniiBDl1y+zqkOnOrL32lbve9hMgXoJ7efZaThZ1Wtk=; b=ZJdB3v4cAnJFv0qQs2qNgzS7FN
+	Rgr3Uc/3MpwnZLwpBsGLgGiZf6hRFy3SMt8ju2P2EmmnTQkIh59URzb3m8vmlS9ZLAUyG7nuFkqYl
+	ESaD21bIUoGJ+0ysGxBlZ8D34dtDshhW8JJYsJwts8TgOTAooewrJdNkxeQ9rfqs4tv/fhymo2QsS
+	MqCxHcJTmgR3impNSCDfkSn7PYwdjcK0prKsXlh6FFASv3krHqDTXs/fSPv2x4ePCazUlGjVhZLvJ
+	1eUBTap30joGJ8nqqzoC6CAeKTkpUIi7p1JpkQBIazvmOHRafh2GgfBTV+vzaYgSchshzzQA7pBIn
+	mUN8EKDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMYPy-004m5d-W7; Mon, 30 Jan 2023 17:58:11 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMYNm-004kux-Jw; Mon, 30 Jan 2023 17:55:56 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B027816F3;
-	Mon, 30 Jan 2023 03:59:26 -0800 (PST)
-Received: from [10.57.89.162] (unknown [10.57.89.162])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DF7853F71E;
-	Mon, 30 Jan 2023 03:58:42 -0800 (PST)
-Message-ID: <52254849-96fa-2882-d81d-d22fe3948405@arm.com>
-Date: Mon, 30 Jan 2023 11:58:38 +0000
+	id 1pMZx2-005E1O-Dp; Mon, 30 Jan 2023 19:36:24 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pMZws-005DzH-4h; Mon, 30 Jan 2023 19:36:15 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id C993461242;
+	Mon, 30 Jan 2023 19:36:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2CAF4C433D2;
+	Mon, 30 Jan 2023 19:36:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1675107371;
+	bh=sxcQJN3nO52mu5E7zYArOshdkoV/Yy47NYqmC/yXgMc=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=iGEDjJbTIJCG6wk51YNxxblRvJKJ5aHae5BywXrzG+wPODAcqzkjYRoAKOlsZq/CH
+	 TpYHquNsbvp5Web5wTPWvy5qXRQUAGfMXtdPa88sIcwyCvOjykciy+2nJzLsJNoZJf
+	 3RPKjEF+VYa8qJHt5dXN5XAh3lP0khElNyFfwZO3kJJ/YHuLUFy4oN5N63tyOxDQLR
+	 MVF6PKK3z1y3abGE0WzIKlFhXJPMNULyqQ4579gfAwpXvIMZ5rSBEHPqX3r0IJZUzT
+	 /PiW6Kf21xoWdIeRgo5tzc5/EampojjPZigKJwtsRGib8W1HuPQ7iuuQMNZq9hyPWv
+	 b47D52LTmG1cw==
+Message-ID: <fe49e8b642c4c33fee37e97d957c37a3.sboyd@kernel.org>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH 1/3] dt-bindings: memory: mediatek: Add support of
- unmanaged iommu domain
-Content-Language: en-GB
-To: Alexandre Bailon <abailon@baylibre.com>, yong.wu@mediatek.com,
- joro@8bytes.org, will@kernel.org
-Cc: matthias.bgg@gmail.com, krzysztof.kozlowski@linaro.org,
- robh+dt@kernel.org, iommu@lists.linux.dev,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
-References: <20230130102722.133271-1-abailon@baylibre.com>
- <20230130102722.133271-2-abailon@baylibre.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20230130102722.133271-2-abailon@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20230118031509.29834-4-moudy.ho@mediatek.com>
+References: <20230118031509.29834-1-moudy.ho@mediatek.com> <20230118031509.29834-4-moudy.ho@mediatek.com>
+Subject: Re: [PATCH v6 3/4] clk: mediatek: remove MT8195 vppsys/0/1 simple_probe
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Moudy Ho <moudy.ho@mediatek.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Moudy Ho <moudy.ho@mediatek.com>, Rob Herring <robh+dt@kernel.org>
+Date: Mon, 30 Jan 2023 11:36:09 -0800
+User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230130_095554_732799_8EBD6F94 
-X-CRM114-Status: GOOD (  13.81  )
+X-CRM114-CacheID: sfid-20230130_113614_256313_BC0F9879 
+X-CRM114-Status: GOOD (  15.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,42 +70,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023-01-30 10:27, Alexandre Bailon wrote:
-> Currently, the only way to have an unmanaged domain for a device
-> is having a dedicated iova region or bank.
-> This adds a new bit to MTK_M4U_ID that allows defining devices
-> that needs unmanaged iommu domain.
+Quoting Moudy Ho (2023-01-17 19:15:08)
+> diff --git a/drivers/clk/mediatek/clk-mt8195-vpp0.c b/drivers/clk/mediate=
+k/clk-mt8195-vpp0.c
+> index bf2939c3a023..6d5800f69f6c 100644
+> --- a/drivers/clk/mediatek/clk-mt8195-vpp0.c
+> +++ b/drivers/clk/mediatek/clk-mt8195-vpp0.c
+> @@ -86,26 +86,54 @@ static const struct mtk_gate vpp0_clks[] =3D {
+>         GATE_VPP0_2(CLK_VPP0_WARP1_MDP_DL_ASYNC, "vpp0_warp1_mdp_dl_async=
+", "top_wpe_vpp", 3),
+>  };
+> =20
+> -static const struct mtk_clk_desc vpp0_desc =3D {
+> -       .clks =3D vpp0_clks,
+> -       .num_clks =3D ARRAY_SIZE(vpp0_clks),
+> -};
+> +static int clk_mt8195_vpp0_probe(struct platform_device *pdev)
+> +{
+> +       struct device *dev =3D &pdev->dev;
+> +       struct device_node *node =3D dev->parent->of_node;
+> +       struct clk_onecell_data *clk_data;
+> +       int r;
+> =20
+> -static const struct of_device_id of_match_clk_mt8195_vpp0[] =3D {
+> -       {
+> -               .compatible =3D "mediatek,mt8195-vppsys0",
+> -               .data =3D &vpp0_desc,
+> -       }, {
+> -               /* sentinel */
+> -       }
+> -};
+> +       clk_data =3D mtk_alloc_clk_data(CLK_VPP0_NR_CLK);
+> +       if (!clk_data)
+> +               return -ENOMEM;
+> +
+> +       r =3D mtk_clk_register_gates(node, vpp0_clks, ARRAY_SIZE(vpp0_clk=
+s), clk_data);
 
-These are details of Linux-specific usage policy, so don't belong in DT 
-bindings. I believe the driver already has some internal data to make 
-its own assignment of particular devices into particular groups, so 
-please just add to that.
-
-Thanks,
-Robin.
-
-> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
-> ---
->   include/dt-bindings/memory/mtk-memory-port.h | 3 +++
->   1 file changed, 3 insertions(+)
-> 
-> diff --git a/include/dt-bindings/memory/mtk-memory-port.h b/include/dt-bindings/memory/mtk-memory-port.h
-> index 2f68a0511a257..86896c776691a 100644
-> --- a/include/dt-bindings/memory/mtk-memory-port.h
-> +++ b/include/dt-bindings/memory/mtk-memory-port.h
-> @@ -7,11 +7,14 @@
->   #define __DT_BINDINGS_MEMORY_MTK_MEMORY_PORT_H_
->   
->   #define MTK_LARB_NR_MAX			32
-> +#define MTK_UNMANAGED_DEVICE            (1 << 31)
->   
->   #define MTK_M4U_ID(larb, port)		(((larb) << 5) | (port))
->   #define MTK_M4U_TO_LARB(id)		(((id) >> 5) & 0x1f)
->   #define MTK_M4U_TO_PORT(id)		((id) & 0x1f)
-> +#define MTK_M4U_UNMANAGED(id)		((id) & MTK_UNMANAGED_DEVICE)
->   
->   #define MTK_IFAIOMMU_PERI_ID(port)	MTK_M4U_ID(0, port)
-> +#define MTK_M4U_UNMANAGED_ID(larb, port) (MTK_M4U_ID(larb, port) | MTK_UNMANAGED_DEVICE)
->   
->   #endif
+This API is wrecked by a patch from AngeloGioacchino. Can you resend, or
+tell me which device should be used here?
 
