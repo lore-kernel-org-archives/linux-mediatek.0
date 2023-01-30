@@ -4,72 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBE97C54EED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 16:15:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2EEAC54EED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 16:36:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zVigDApY7un8h6ML6ZZo1sBlsnNbAz456+hqa7hB+dw=; b=NKxtE0An/h+KjTGiXcu+8MdBji
-	P7YK0v86s1HBMJ6Gq+4PRDzc0PU3B/RecYJ9QAEZcgUrHkxuehR1zoezZrPNI9jzSb402yINSQKYR
-	iOhFMvEGXH6wxnZvETAJynDqSix4nh1BTyvmKiMBc9QP1vgXSO3CkUOVC+Kokqjai1ZUfOGmSCRGX
-	Qua8E07SMfIZV3ooqIFCvKjAjq1h7K9Y/fcshUMVa4cWXAbTMFMSYX+ze1q/2/9hj5X52T8vLrCxp
-	iRWYnSS0CCSs3d00nwo5BtyrdfkqcPeIFXzCGc/+GSjsJBgINyrecjouI112CJuz4drR/5Qnnlq0J
-	AnhLPKuw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EgN2oDAm7jnjRYWg9B2QaY9780SaXO7w1csXZxFZCmE=; b=IPtLVU8WzhiV4QE3coOTJ51Szs
+	XpdK4B42VO559eZYecrPDwVJMIRnMsKbIhTAoapopkkJgCGrNdTmd4awnH6sspr8p4pqWxUL8n52e
+	BjwAijMtAolGmlM8loD1j2zAlhjvf0SLqsQw263jYSrNv4V+CYULGErQr/6Uyba0jLGFauRH1uF7Y
+	FN0Q3mC43N7RRJlMDUMoZj0TwSDDcMLGqGLL4yjL7pq1hcVN7B3VYDFR10DJej/WyiUcKGOT3YAgB
+	fyb2HzTHS3eoFXmxXyDA4rQa7i/k3XPE4tlOYzs6JqyrvhTKLBMh42EaAKw/1Ba3yOIpV/jINCJ62
+	M2vmETjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMWnr-004BXw-5m; Mon, 30 Jan 2023 16:14:43 +0000
-Received: from e10edge.fintech.ru ([195.54.195.159] helo=exchange.fintech.ru)
+	id 1pMX7x-004Fbq-3T; Mon, 30 Jan 2023 16:35:29 +0000
+Received: from relay1-d.mail.gandi.net ([217.70.183.193])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMWmm-004BOw-SM
-	for linux-mediatek@lists.infradead.org; Mon, 30 Jan 2023 16:13:38 +0000
-Received: from Ex16-02.fintech.ru (10.0.10.19) by exchange.fintech.ru
- (195.54.195.169) with Microsoft SMTP Server (TLS) id 14.3.498.0; Mon, 30 Jan
- 2023 19:13:12 +0300
-Received: from Ex16-01.fintech.ru (10.0.10.18) by Ex16-02.fintech.ru
- (10.0.10.19) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4; Mon, 30 Jan
- 2023 19:13:11 +0300
-Received: from Ex16-01.fintech.ru ([fe80::2534:7600:5275:d3f9]) by
- Ex16-01.fintech.ru ([fe80::2534:7600:5275:d3f9%7]) with mapi id
- 15.01.2242.004; Mon, 30 Jan 2023 19:13:11 +0300
-From: =?utf-8?B?0JbQsNC90LTQsNGA0L7QstC40Ycg0J3QuNC60LjRgtCwINCY0LPQvtGA0LU=?=
- =?utf-8?B?0LLQuNGH?= <n.zhandarovich@fintech.ru>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-CC: "stable@vger.kernel.org" <stable@vger.kernel.org>, Felix Fietkau
-	<nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Ryder Lee
-	<ryder.lee@mediatek.com>, Kalle Valo <kvalo@codeaurora.org>, "David S.
- Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
-	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Alexey
- Khoroshilov" <khoroshilov@ispras.ru>, "lvc-project@linuxtesting.org"
-	<lvc-project@linuxtesting.org>
-Subject: RE: [PATCH 5.10 1/1] mt76: fix mt7615_init_tx_queues() return value
-Thread-Topic: [PATCH 5.10 1/1] mt76: fix mt7615_init_tx_queues() return value
-Thread-Index: AQHZNKePV9Tuf82zRk2tMrTfyN8UZK62u2sAgAA3O6D//9G7AIAANNZg///R24CAAFTb4A==
-Date: Mon, 30 Jan 2023 16:13:11 +0000
-Message-ID: <bbd1ce753d8144ee9d4d9da7f3033c68@fintech.ru>
-References: <20230130123655.86339-1-n.zhandarovich@fintech.ru>
- <20230130123655.86339-2-n.zhandarovich@fintech.ru>
- <Y9fAkt/5BRist//g@kroah.com> <b945bd5f3d414ac5bc589d65cf439f7b@fintech.ru>
- <Y9fIFirNHNP06e1L@kroah.com> <e17c785dbacf4605a726cc939bee6533@fintech.ru>
- <Y9fNs5QWbrJh+yH6@kroah.com>
-In-Reply-To: <Y9fNs5QWbrJh+yH6@kroah.com>
-Accept-Language: ru-RU, en-US
-Content-Language: ru-RU
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.0.253.138]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	id 1pMX6d-004FSJ-4v; Mon, 30 Jan 2023 16:34:09 +0000
+Received: (Authenticated sender: miquel.raynal@bootlin.com)
+	by mail.gandi.net (Postfix) with ESMTPSA id D06E924000D;
+	Mon, 30 Jan 2023 16:33:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1675096441;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=EgN2oDAm7jnjRYWg9B2QaY9780SaXO7w1csXZxFZCmE=;
+	b=EGoqFJy7VLLxtPtG+Wya2mCyjbxp+643c8y5pLlX380I8DJtrdlrDZRrZhOKRM+761zceH
+	pqCkFzSy24eJMD7GH4wCInBYfUWPUVL1yRcvkL4HbQ1Hd44JKzxwf5R/siXdsFF3jcKwJr
+	4tYTGnjV+gg9/tTvuc7OMeUp+zMjQezXKm6ENaO09tsoRx/s/2jmSN+mR4wR5eUz3Dy/o7
+	RDB6qNlo23Uv1bclo2LPgMz6c+Obp2J9ZdC0iysLvvKA7PT2Zysvk0Pb1jQGdICjeEHRIg
+	9clXkXZ1tNOnlmSNmaxUBjA9tqDMRaaxT5DmPPiQD8XdJMmAnVsutyYKp4fehQ==
+Date: Mon, 30 Jan 2023 17:33:55 +0100
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Mark Brown <broonie@kernel.org>
+Cc: Xiangsheng Hou <xiangsheng.hou@mediatek.com>, Richard Weinberger
+ <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Chuanhong Guo <gch981213@gmail.com>,
+ linux-mtd@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
+ benliang.zhao@mediatek.com, bin.zhang@mediatek.com
+Subject: Re: [RESEND PATCH v5 00/10] Add MediaTek MT7986 SPI NAND and ECC
+ support
+Message-ID: <20230130173355.5e65a1c5@xps-13>
+In-Reply-To: <Y9ft8BIzESLQ0TTh@sirena.org.uk>
+References: <20230130030656.12127-1-xiangsheng.hou@mediatek.com>
+	<20230130171145.2c844d34@xps-13>
+	<Y9ft8BIzESLQ0TTh@sirena.org.uk>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230130_081336_934623_45FCF7CB 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20230130_083407_342954_95D368C2 
+X-CRM114-Status: GOOD (  16.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,27 +80,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-PiA+ID4gV2hhdCBpcyB0aGUgImZhdWx0Ij8NCj4gPg0KPiA+IEluIDUuMTAueSAibXQ3NjE1X2lu
-aXRfdHhfcXVldWVzKCkgcmV0dXJucyAwIHJlZ2FyZGxlc3Mgb2YgaG93IGZpbmFsDQo+ID4gbXQ3
-NjE1X2luaXRfdHhfcXVldWUoKSBwZXJmb3Jtcy4gSWYgbXQ3NjE1X2luaXRfdHhfcXVldWUoKSBm
-YWlscyAoZHVlDQo+ID4gdG8gbWVtb3J5IGlzc3VlcywgZm9yIGluc3RhbmNlKSwgcGFyZW50IGZ1
-bmN0aW9uIHdpbGwgc3RpbGwNCj4gPiBlcnJvbmVvdXNseSByZXR1cm4gMC4iDQo+IA0KPiBBbmQg
-aG93IGNhbiBtZW1vcnkgaXNzdWVzIGFjdHVhbGx5IGJlIHRyaWdnZXJlZCBpbiBhIHJlYWwgc3lz
-dGVtPyAgSXMgdGhpcyBhDQo+IGZha2UgcHJvYmxlbSBvciBzb21ldGhpbmcgeW91IGNhbiB2YWxp
-ZGF0ZSBhbmQgdmVyaWZ5IHdvcmtzIHByb3Blcmx5Pw0KPiANCj4gRG9uJ3Qgd29ycnkgYWJvdXQg
-ZmFrZSBpc3N1ZXMgZm9yIHN0YWJsZSBiYWNrcG9ydHMgcGxlYXNlLg0KPiANCj4gdGhhbmtzLA0K
-PiANCj4gZ3JlZyBrLWgNCg0KbXQ3NjE1X2luaXRfdHhfcXVldWUoKSBjYWxscyBkZXZtX2t6YWxs
-b2MoKSAod2hpY2ggY2FuIHRocm93IC1FTk9NRU0pIGFuZCBtdDc2X3F1ZXVlX2FsbG9jKCkgKHdo
-aWNoIGNhbiBhbHNvIGZhaWwpLiBJdCdzIGhhcmQgZm9yIG1lIHRvIGdhdWdlIGhvdyBwcm9iYWJs
-ZSB0aGVzZSBmYWlsdXJlcyBjYW4gYmUuIEJ1dCBJIGZlZWwgbGlrZSBhdCB0aGUgdmVyeSBsZWFz
-dCBpdCdzIGEgbG9naWNhbCBzYW5pdHkgY2hlY2suIA0KDQpAQCAtODIsNyArODIsNyBAQCBtdDc2
-MTVfaW5pdF90eF9xdWV1ZXMoc3RydWN0IG10NzYxNV9kZXYgKmRldikNCiAJDQogICAgICAgIHJl
-dCA9IG10NzYxNV9pbml0X3R4X3F1ZXVlKGRldiwgTVRfVFhRX01DVSwgTVQ3NjE1X1RYUV9NQ1Us
-DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIE1UNzYxNV9UWF9NQ1VfUklOR19T
-SVpFKTsNCiAgICAgICByZXR1cm4gMDsNCg0KVGhlcmUgaXMgbm8gc3BlY2lhbCByZWFzb24gIGZv
-ciBtdDc2MTVfaW5pdF90eF9xdWV1ZXMoKSB0byBpZ25vcmUgbGFzdCAncmV0Jy4gSWYgbGFzdCBt
-dDc2MTVfaW5pdF90eF9xdWV1ZSgpLCBzbyBzaG91bGQgbXQ3NjE1X2luaXRfdHhfcXVldWVzKCku
-IEFuZCB1cHN0cmVhbSBwYXRjaCAoYjY3MWRhMzNkMWM1OTczZjkwZjA5OGZmNjZhOTE5NTM2OTFk
-ZjU4MikgYWRkcmVzc2VzIHRoaXMgYXMgd2VsbC4gDQpJZiB5b3UgZmVlbCBkaWZmZXJlbnRseSwg
-SSB3aWxsIG9mIGNvdXJzZSBiYWNrIGRvd24uDQoNCnJlZ2FyZHMsDQoNCk5pa2l0YQ0K
+Hi Xiangsheng,
+
+broonie@kernel.org wrote on Mon, 30 Jan 2023 16:18:56 +0000:
+
+> On Mon, Jan 30, 2023 at 05:11:45PM +0100, Miquel Raynal wrote:
+> > xiangsheng.hou@mediatek.com wrote on Mon, 30 Jan 2023 11:06:46 +0800: =
+=20
+>=20
+> > > This patch series add MediaTek MT7986 SPI NAND and ECC controller
+> > > support, split ECC engine with rawnand controller in bindings and
+> > > change to YAML schema. =20
+>=20
+> > I would like to pick-up patches 3, 7 and 10 and apply them in the mtd
+> > tree as they look completely orthogonal with all the other (spi/DT)
+> > changes, am I right? =20
+>=20
+> > Mark, is it okay for you? =20
+>=20
+> That's fine, assuming there's no dependency issues.  Xiangsheng, it's
+> generally best to avoid mixing patches for multiple subsystems into a
+> single series when it's not needed since it makes merging things more
+> complex.
+
+Well, kernel test robot just reported an issue with a wrong file name,
+so let's split the series. I now expect a series with the spi and
+relevant changes (for Mark) and another series with the three mtd
+patches -fixed, of course- which I'll apply on my side.
+
+Thanks, Miqu=C3=A8l
 
