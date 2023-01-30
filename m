@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E86BCC54EED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 13:48:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25414C54EED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 13:49:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qxoG6gV1rFEV8jUi3iioYWYa6LJ497ln+I6ZTMw2538=; b=gphMf/pqo7u35scuVWr5cgWHpi
-	ODLl2VrJcMLBifIIOkaFTYh2wCpSq5x0MzBlEKVHAxtE+F7y/ZATFNYHU+E47H8JJshx229aPYqh9
-	BCGV1FgVlpiYt6GeW2+s05EixDOoJV0ZANa6Y88vW671oZBunphh/rHuDo4ex1swXh12GhwkuETp0
-	1E1s36A3mZAgEixzkyrvJcjt5Y6CXT49RR4+4Eu+3u1L7kfwA1GLnjdYxAs8IT2cTnyFPGL6lYy8W
-	2DyFtDiZQyvNMjGdzgg/n799ennE2ead5ffcMjUoh6kRP9PjUFKZjai7YnDK+9sZ9VumDJhc2OPYq
-	YkmwXYGA==;
+	bh=7pagLYVryC/IKfDYHJLZVJQyihcuWQZnu77ByaJ+g7Y=; b=2vubuNAyKkIyU8pzj0cMSDIYjD
+	uazADpQ3pO5DNcjzVERV/enZ3/kSSGSM9aRKckw5M3P6hB/CMA9GN6ji/ReBNIVU/ICz01AFKa2mV
+	8PiVTJ/6bFzDGaQtxRixe09t0Vzzr5WdXpikP3Ecl1z7M7J47zN94SyyZcXtbtG/fupRC66HpJUaL
+	Zl0MW6T0HzmniI+Su+OIlXROnEzVeL/jsEkCIRZUFrPcY88sSSFXNopg8DgcR6HJ5pz88Gp/p3y6R
+	Z5yY9PPtn+PGX8IX85L7dblD7wrHqyZqAqXFGRWi2FhWSZjmqbbS70SEipM5hqgTfyOjlYpYsg9wn
+	uh3KOcOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMUVo-003k4C-Lv; Mon, 30 Jan 2023 13:47:56 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pMUX2-003kFp-IG; Mon, 30 Jan 2023 13:49:12 +0000
+Received: from e10edge.fintech.ru ([195.54.195.159] helo=exchange.fintech.ru)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMUV0-003k1o-RN
-	for linux-mediatek@lists.infradead.org; Mon, 30 Jan 2023 13:47:08 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 297F161008;
-	Mon, 30 Jan 2023 13:37:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ADFAFC4339E;
-	Mon, 30 Jan 2023 13:37:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1675085849;
-	bh=xVUKXbUIi6xLEiIYm55wmvp+1ETe+NKrYKfL39iZqjk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ZWhdZxNByqgLSw9ZeTKMACA5jYn4ulj+8bWVDJshVzFGSC7BiIUszBGzEsXnrQBZN
-	 Y6mR3+pWmnNoRqLRkrZHQtJj9e/k4IryR/3jnJpRPLqP9UWarUAFRJ83gj7OeH0Nbf
-	 x+vu/g0l6yctoaZ/DAaPY/eJt8CD6euDYXXQyicQ=
-Date: Mon, 30 Jan 2023 14:37:26 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: =?utf-8?B?0JbQsNC90LTQsNGA0L7QstC40Ycg0J3QuNC60LjRgtCwINCY0LPQvtGA0LU=?=
-	=?utf-8?B?0LLQuNGH?= <n.zhandarovich@fintech.ru>
-Cc: "stable@vger.kernel.org" <stable@vger.kernel.org>,
-	Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Kalle Valo <kvalo@codeaurora.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Jakub Kicinski <kuba@kernel.org>,
+	id 1pMUWJ-003kDi-Pv
+	for linux-mediatek@lists.infradead.org; Mon, 30 Jan 2023 13:48:29 +0000
+Received: from Ex16-01.fintech.ru (10.0.10.18) by exchange.fintech.ru
+ (195.54.195.159) with Microsoft SMTP Server (TLS) id 14.3.498.0; Mon, 30 Jan
+ 2023 16:48:24 +0300
+Received: from Ex16-01.fintech.ru (10.0.10.18) by Ex16-01.fintech.ru
+ (10.0.10.18) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4; Mon, 30 Jan
+ 2023 16:48:24 +0300
+Received: from Ex16-01.fintech.ru ([fe80::2534:7600:5275:d3f9]) by
+ Ex16-01.fintech.ru ([fe80::2534:7600:5275:d3f9%7]) with mapi id
+ 15.01.2242.004; Mon, 30 Jan 2023 16:48:24 +0300
+From: =?utf-8?B?0JbQsNC90LTQsNGA0L7QstC40Ycg0J3QuNC60LjRgtCwINCY0LPQvtGA0LU=?=
+ =?utf-8?B?0LLQuNGH?= <n.zhandarovich@fintech.ru>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+CC: "stable@vger.kernel.org" <stable@vger.kernel.org>, Felix Fietkau
+	<nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Ryder Lee
+	<ryder.lee@mediatek.com>, Kalle Valo <kvalo@codeaurora.org>, "David S.
+ Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
 	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
 	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
 	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	Alexey Khoroshilov <khoroshilov@ispras.ru>,
-	"lvc-project@linuxtesting.org" <lvc-project@linuxtesting.org>
-Subject: Re: [PATCH 5.10 1/1] mt76: fix mt7615_init_tx_queues() return value
-Message-ID: <Y9fIFirNHNP06e1L@kroah.com>
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Alexey
+ Khoroshilov" <khoroshilov@ispras.ru>, "lvc-project@linuxtesting.org"
+	<lvc-project@linuxtesting.org>
+Subject: RE: [PATCH 5.10 1/1] mt76: fix mt7615_init_tx_queues() return value
+Thread-Topic: [PATCH 5.10 1/1] mt76: fix mt7615_init_tx_queues() return value
+Thread-Index: AQHZNKePV9Tuf82zRk2tMrTfyN8UZK62u2sAgAA3O6D//9G7AIAANNZg
+Date: Mon, 30 Jan 2023 13:48:24 +0000
+Message-ID: <e17c785dbacf4605a726cc939bee6533@fintech.ru>
 References: <20230130123655.86339-1-n.zhandarovich@fintech.ru>
  <20230130123655.86339-2-n.zhandarovich@fintech.ru>
- <Y9fAkt/5BRist//g@kroah.com>
- <b945bd5f3d414ac5bc589d65cf439f7b@fintech.ru>
+ <Y9fAkt/5BRist//g@kroah.com> <b945bd5f3d414ac5bc589d65cf439f7b@fintech.ru>
+ <Y9fIFirNHNP06e1L@kroah.com>
+In-Reply-To: <Y9fIFirNHNP06e1L@kroah.com>
+Accept-Language: ru-RU, en-US
+Content-Language: ru-RU
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.0.253.138]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <b945bd5f3d414ac5bc589d65cf439f7b@fintech.ru>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230130_054706_946371_DE9A6C35 
-X-CRM114-Status: GOOD (  14.77  )
+X-CRM114-CacheID: sfid-20230130_054827_863001_75C2B53E 
+X-CRM114-Status: GOOD (  14.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,29 +83,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 30, 2023 at 01:27:26PM +0000, Жандарович Никита Игоревич wrote:
-> > What is the git commit id of this upstream?
-> > 
-> > And I can't apply this as-is for the obvious reason it would mess up the
-> > changelog, how did you create this?
-> > 
-> > confused,
-> > 
-> > greg k-h
-> 
-> Commit in question is b671da33d1c5973f90f098ff66a91953691df582
-> upstream. I wasn't certain it makes sense to backport the whole patch
-> as only a small portion of it pertains to the fault at question.
-
-What is the "fault"?
-
-And why not take the whole thing?  What's wrong with that?  We almost
-always want to take whatever is in Linus's tree because when we do not,
-we almost always cause bugs or other problems (later merge issues.)
-
-So always take the original fix please.
-
-thanks,
-
-greg k-h
+PiBPbiBNb24sIEphbiAzMCwgMjAyMyBhdCAwMToyNzoyNlBNICswMDAwLCDQltCw0L3QtNCw0YDQ
+vtCy0LjRhyDQndC40LrQuNGC0LAg0JjQs9C+0YDQtdCy0LjRhw0KPiB3cm90ZToNCj4gPiA+IFdo
+YXQgaXMgdGhlIGdpdCBjb21taXQgaWQgb2YgdGhpcyB1cHN0cmVhbT8NCj4gPiA+DQo+ID4gPiBB
+bmQgSSBjYW4ndCBhcHBseSB0aGlzIGFzLWlzIGZvciB0aGUgb2J2aW91cyByZWFzb24gaXQgd291
+bGQgbWVzcyB1cA0KPiA+ID4gdGhlIGNoYW5nZWxvZywgaG93IGRpZCB5b3UgY3JlYXRlIHRoaXM/
+DQo+ID4gPg0KPiA+ID4gY29uZnVzZWQsDQo+ID4gPg0KPiA+ID4gZ3JlZyBrLWgNCj4gPg0KPiA+
+IENvbW1pdCBpbiBxdWVzdGlvbiBpcyBiNjcxZGEzM2QxYzU5NzNmOTBmMDk4ZmY2NmE5MTk1MzY5
+MWRmNTgyDQo+ID4gdXBzdHJlYW0uIEkgd2Fzbid0IGNlcnRhaW4gaXQgbWFrZXMgc2Vuc2UgdG8g
+YmFja3BvcnQgdGhlIHdob2xlIHBhdGNoDQo+ID4gYXMgb25seSBhIHNtYWxsIHBvcnRpb24gb2Yg
+aXQgcGVydGFpbnMgdG8gdGhlIGZhdWx0IGF0IHF1ZXN0aW9uLg0KPiANCj4gV2hhdCBpcyB0aGUg
+ImZhdWx0Ij8NCg0KSW4gNS4xMC55ICJtdDc2MTVfaW5pdF90eF9xdWV1ZXMoKSByZXR1cm5zIDAg
+cmVnYXJkbGVzcyBvZiBob3cgZmluYWwNCm10NzYxNV9pbml0X3R4X3F1ZXVlKCkgcGVyZm9ybXMu
+IElmIG10NzYxNV9pbml0X3R4X3F1ZXVlKCkgZmFpbHMgKGR1ZSB0bw0KbWVtb3J5IGlzc3Vlcywg
+Zm9yIGluc3RhbmNlKSwgcGFyZW50IGZ1bmN0aW9uIHdpbGwgc3RpbGwgZXJyb25lb3VzbHkNCnJl
+dHVybiAwLiINCg0KVGhpcyB3YXMgZml4ZWQgdXBzdHJlYW0sIGFsdGhvdWdoIHRoYXQgcGFydGlj
+dWxhciBjb21taXQncyBzY29wZSB3YXMgYnJvYWRlci4NCg0KPiBBbmQgd2h5IG5vdCB0YWtlIHRo
+ZSB3aG9sZSB0aGluZz8gIFdoYXQncyB3cm9uZyB3aXRoIHRoYXQ/ICBXZSBhbG1vc3QNCj4gYWx3
+YXlzIHdhbnQgdG8gdGFrZSB3aGF0ZXZlciBpcyBpbiBMaW51cydzIHRyZWUgYmVjYXVzZSB3aGVu
+IHdlIGRvIG5vdCwgd2UNCj4gYWxtb3N0IGFsd2F5cyBjYXVzZSBidWdzIG9yIG90aGVyIHByb2Js
+ZW1zIChsYXRlciBtZXJnZSBpc3N1ZXMuKQ0KPiANCj4gU28gYWx3YXlzIHRha2UgdGhlIG9yaWdp
+bmFsIGZpeCBwbGVhc2UuDQo+IA0KPiB0aGFua3MsDQo+IA0KPiBncmVnIGstaA0KDQpUaGF0IG1h
+a2VzIHNlbnNlLCBvZiBjb3Vyc2UuIFRoYW5rcyBmb3IgeW91ciBwYXRpZW5jZSwgd2lsbCB3b3Jr
+IHRvd2FyZCBiYWNrcG9ydGluZyB0aGUgd2hvbGUgdGhpbmcuDQoNCnJlZ2FyZHMsDQoNCk5pa2l0
+YQ0K
 
