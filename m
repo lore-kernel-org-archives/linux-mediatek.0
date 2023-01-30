@@ -4,82 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E42AAC54EAA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 17:41:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55449C54EAA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 17:42:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nbl10jCc/EENjQvBE0LQM34MUMPbeia746ocrmOLgSQ=; b=HNKIgAh/NvPcqQFaCLJIYD36sV
-	+DN8S7F9sUaZvYrC1mxFbCK1vMrvLpBJ763ow5mkdtXBe3utgDp1y4+3+dL/PHpAb/I3Gk4o0HvTj
-	x6zv/A8vzciSVnasZDYU0eTbWg/o2xzDZ3nRatYVxjLTaBs1nZysromGm/y4V8klCv75GwLB+PX4P
-	RnH/GcXQsUEaugTOy7fyCM3qgCtyvIFCQIIKFKlcluZP7j1cVt7pHinfETT75Mc+6E+MsG6d741yc
-	10z3I8VhUIx9r7UcVi3lG+hSrQXvU4/YMvSw0AWRTlIdfiEF9M1iIPp99QJDbRptOGU8fBv4oE5k/
-	TTdTT0ew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IXlNApvurc/DrZWXxd0VZY95xDDmd5BxFQPMlQ/uT8g=; b=v/vEMfv3gw/6BxqfZ9KV6aig9F
+	w4hHjePMQa82z59gBf1JaieVgwo/WNfVnFfN+uYYOfYWFjyvVAbr3YJPcodUT/OpO+f8jPvq0iVRH
+	U/sSF10UhDuphy9dqXmrAfjx+ltqVwkwrxvml3+lzb/pF/HH/3BAeOO76YWxVKpZ7OeO31FDicp9g
+	bUJHBJ6n3iN4+ijh5p7JpX6A+PBAwNGYn/9hkIO6Qp3n911UqFQozRSLVnZJ0Wq8LVk+KbddVsaPu
+	VQtbUsIaJgwozuTmoV6DYs87nmh70gBS2yA/5vckHn71eQspQQi8TCjlujjff74Mfdtja/OkBaywC
+	gqlTBCaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMY9V-004eZk-0A; Mon, 30 Jan 2023 17:41:09 +0000
-Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
+	id 1pMYAZ-004f1f-8H; Mon, 30 Jan 2023 17:42:15 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMY6w-004cHK-R2; Mon, 30 Jan 2023 17:38:32 +0000
-Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id EF858188381E;
-	Mon, 30 Jan 2023 17:36:20 +0000 (UTC)
-Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id DF9C9250007B;
-	Mon, 30 Jan 2023 17:36:20 +0000 (UTC)
-Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id D6F879B403E5; Mon, 30 Jan 2023 17:36:20 +0000 (UTC)
-X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
-Received: from fujitsu.vestervang (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
-	by smtp.gigahost.dk (Postfix) with ESMTPSA id 350159B403E2;
-	Mon, 30 Jan 2023 17:36:20 +0000 (UTC)
-From: "Hans J. Schultz" <netdev@kapio-technology.com>
-To: davem@davemloft.net,
-	kuba@kernel.org
-Cc: netdev@vger.kernel.org,
-	"Hans J. Schultz" <netdev@kapio-technology.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com (maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER),
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
+	id 1pMY7G-004dRH-0d; Mon, 30 Jan 2023 17:38:51 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 53B2BB8125E;
+	Mon, 30 Jan 2023 16:19:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B38D2C433D2;
+	Mon, 30 Jan 2023 16:18:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1675095543;
+	bh=njr6W+Xwj/RIjnPwkPZx0WPEFYVoTi3RI/NZkQ71He0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=S4pV9f9QVf9hjJO00A1v6XCQxfx3XVceL2Og+/lnnm0Nb1idnuUlwNImdtKyDjoQy
+	 xPO3+WYVshtAzycehccoXY3U8yGDgleBYbqnLB9VMNOZLtUMbQUs140UaDu12+HkzT
+	 /eXZf8rra8k7G3b519MGLAU0Yb948BS3vzGE9Gw0VAqkbe9Eo/YXpniDWCWxQoTKhV
+	 Kdb1xyoVTjQ9Upq3kUTM0L6L7kHF4zY1V8nh073JfkVyxYBDhytNnjKzszIYD/Mkgw
+	 ympSumFq1JWmAyCTaA/i1M5yk1hdP+Gi3LLP/kKMtQmrjQYUdWzuuDUv6F6reHOb8/
+	 2ni4oaiuI7cGQ==
+Date: Mon, 30 Jan 2023 16:18:56 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Miquel Raynal <miquel.raynal@bootlin.com>
+Cc: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
+	Richard Weinberger <richard@nod.at>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	=?UTF-8?q?Cl=C3=A9ment=20L=C3=A9ger?= <clement.leger@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>,
-	Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Russell King <linux@armlinux.org.uk>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	linux-kernel@vger.kernel.org (open list),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-renesas-soc@vger.kernel.org (open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER),
-	bridge@lists.linux-foundation.org (moderated list:ETHERNET BRIDGE)
-Subject: [PATCH net-next 1/5] net: bridge: add dynamic flag to switchdev notifier
-Date: Mon, 30 Jan 2023 18:34:25 +0100
-Message-Id: <20230130173429.3577450-2-netdev@kapio-technology.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230130173429.3577450-1-netdev@kapio-technology.com>
-References: <20230130173429.3577450-1-netdev@kapio-technology.com>
+	Chuanhong Guo <gch981213@gmail.com>, linux-mtd@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-spi@vger.kernel.org, benliang.zhao@mediatek.com,
+	bin.zhang@mediatek.com
+Subject: Re: [RESEND PATCH v5 00/10] Add MediaTek MT7986 SPI NAND and ECC
+ support
+Message-ID: <Y9ft8BIzESLQ0TTh@sirena.org.uk>
+References: <20230130030656.12127-1-xiangsheng.hou@mediatek.com>
+ <20230130171145.2c844d34@xps-13>
 MIME-Version: 1.0
-Organization: Westermo Network Technologies AB
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="CMu4i+MTxKFAnMnD"
+Content-Disposition: inline
+In-Reply-To: <20230130171145.2c844d34@xps-13>
+X-Cookie: Some restrictions may apply.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230130_093831_054513_78FF72C7 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20230130_093850_286095_53A63AF2 
+X-CRM114-Status: GOOD (  16.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,41 +83,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To be able to add dynamic FDB entries to drivers from userspace, the
-dynamic flag must be added when sending RTM_NEWNEIGH events down.
 
-Signed-off-by: Hans J. Schultz <netdev@kapio-technology.com>
----
- include/net/switchdev.h   | 1 +
- net/bridge/br_switchdev.c | 2 ++
- 2 files changed, 3 insertions(+)
+--CMu4i+MTxKFAnMnD
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-diff --git a/include/net/switchdev.h b/include/net/switchdev.h
-index ca0312b78294..aaf918d4ba67 100644
---- a/include/net/switchdev.h
-+++ b/include/net/switchdev.h
-@@ -249,6 +249,7 @@ struct switchdev_notifier_fdb_info {
- 	u8 added_by_user:1,
- 	   is_local:1,
- 	   locked:1,
-+	   is_dyn:1,
- 	   offloaded:1;
- };
- 
-diff --git a/net/bridge/br_switchdev.c b/net/bridge/br_switchdev.c
-index 7eb6fd5bb917..4420fcbbfdb2 100644
---- a/net/bridge/br_switchdev.c
-+++ b/net/bridge/br_switchdev.c
-@@ -136,6 +136,8 @@ static void br_switchdev_fdb_populate(struct net_bridge *br,
- 	item->added_by_user = test_bit(BR_FDB_ADDED_BY_USER, &fdb->flags);
- 	item->offloaded = test_bit(BR_FDB_OFFLOADED, &fdb->flags);
- 	item->is_local = test_bit(BR_FDB_LOCAL, &fdb->flags);
-+	item->is_dyn = !test_bit(BR_FDB_STATIC, &fdb->flags) &&
-+		item->added_by_user;
- 	item->locked = false;
- 	item->info.dev = (!p || item->is_local) ? br->dev : p->dev;
- 	item->info.ctx = ctx;
--- 
-2.34.1
+On Mon, Jan 30, 2023 at 05:11:45PM +0100, Miquel Raynal wrote:
+> xiangsheng.hou@mediatek.com wrote on Mon, 30 Jan 2023 11:06:46 +0800:
 
+> > This patch series add MediaTek MT7986 SPI NAND and ECC controller
+> > support, split ECC engine with rawnand controller in bindings and
+> > change to YAML schema.
+
+> I would like to pick-up patches 3, 7 and 10 and apply them in the mtd
+> tree as they look completely orthogonal with all the other (spi/DT)
+> changes, am I right?
+
+> Mark, is it okay for you?
+
+That's fine, assuming there's no dependency issues.  Xiangsheng, it's
+generally best to avoid mixing patches for multiple subsystems into a
+single series when it's not needed since it makes merging things more
+complex.
+
+--CMu4i+MTxKFAnMnD
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmPX7e8ACgkQJNaLcl1U
+h9CP4Qf+Pd13QIe/NKJYmT5Ku/sdC2wKEgISZktdgp6nkJnezPBcHDPZMRAovciN
+tEkeKbKAngXsLPelmzMjY5z14PseLyy1afFboVV8Vz43LUE144H9WRx917uqatkP
+/QCJ0/l9/izHntwO0zWOPNIomAyoITzsO8Sk79DmtqEMjSx7GNMrr3xX1RaxHDam
+O2J/ho0Qt84u81akb1jCSR6yWcLO0AJ4gJ5FYby9GU/qIGpdSGYGppQ2uAVJUSsa
+Hn4knoLT4QarM9J+obdb1FQz6GHRB8hTRaqMrAy1reHcP6XEJgkaQkxP+cFc2RRS
+5o+l86XRsBjIv5jTxDO/VSl7U3kV/w==
+=fnzJ
+-----END PGP SIGNATURE-----
+
+--CMu4i+MTxKFAnMnD--
 
