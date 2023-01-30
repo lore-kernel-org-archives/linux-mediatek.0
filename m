@@ -4,55 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00843C54EAA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 16:52:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F32D9C54EAA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 16:57:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6vYoc7Pe5sR1g/PrYdzGMRLZ4mX8BYa0CARTE9NtiI4=; b=1SXE/StmM0ETjSAFOjM16tLjPo
-	6REty5ldRQGIFoGfaGwsYyJIwvfadAF0F9PS5lYvwfCCK6nDyjj9z5y7gpYBVivMh0Rjlo8aYoQw3
-	qBMk9+hMQp4OnZXmSNTI57+U57xHNGJm06juwICi3xM2LDDxutdhyNllvhocr/4vvcR1gquowAGjI
-	qgCxh/+QcCjKx5knFeP08S0zG5orF3ePzlAVVG8gQ7q97PlAOla8x2NhAKd3qyc4D/IZIFh6U6gIY
-	rLvgI1Dxb303H+wm0qWi3PQwcrdgxhjDChfPGJT9NkrkKqHcS3+U9Cc8XcLGLKGLyM4mfq45cuXkt
-	v9iMeR0g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EBqImMLIrbsOIkF6LegL05TrBF56HrV73xnEu8+sw6I=; b=NLW+87SC+3t06HokQvk+aXTlz+
+	JzCgEue6adeYi9qK/SzTmyhbVaY32OS19hV9OWeyzm3DAAL9mr4Z/2aOKblQLyeYQDh2RHHN7e7e0
+	EDajpj3KQDC+n5yWxQVjyJ5Ps6gD+Q9YARyBwZNsQnEjyl9SQgTdIpyRF5QjR833+Tgs8RNAnrBUt
+	eDg3/GQ/cJ6r+zZoXRxSUYeqnlRauSsjgvP3X4RWRp3iQSWtggbTzdzrry3DA9TEQGRgHbJSnBJZC
+	V2ZT/0qmRNCRjrw9NXVM9aWmO0VErM/lGa31Uk2e0tBfV628P6kvsox41WK5ghgopWn3N4AhpuMQ6
+	wovVPksA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMXO9-004JMW-Lp; Mon, 30 Jan 2023 16:52:13 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMXMv-004J6z-7W; Mon, 30 Jan 2023 16:50:59 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id AD01916F8;
-	Mon, 30 Jan 2023 04:04:50 -0800 (PST)
-Received: from [10.57.89.162] (unknown [10.57.89.162])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D7C0B3F71E;
-	Mon, 30 Jan 2023 04:04:06 -0800 (PST)
-Message-ID: <741920ba-8637-5e28-695c-699b46351590@arm.com>
-Date: Mon, 30 Jan 2023 12:04:05 +0000
+	id 1pMXT3-004Kyl-Kl; Mon, 30 Jan 2023 16:57:17 +0000
+Received: from mga03.intel.com ([134.134.136.65])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pMXQf-004KB3-HA; Mon, 30 Jan 2023 16:54:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1675097689; x=1706633689;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=F1ULbSw1MBsHWcGX+HC4GSetpggTnGdsHsr0Ru7tKp4=;
+  b=nMFM730HXecM27ePAg7HgnpjmmqH848cWoLL8E+o93W8UeaK0NV7Oz0C
+   g2vfT9DT479Vp/b/YAYwlTIzO/Mu+fxgzUqg7o9nMVm5EEQ1cRDFPDhcg
+   VvWWJdSccW6HlDVmmnOZOqwPyehP5sbWsl/xD0XPWAnWffpHVdw3IN6bo
+   m10vvtV2ttoWzSD86BOOizVkvGHf6xn8QWqatCHBjzS69fjmq5tOGlhWo
+   ipJU+xuOp4nYaWv6QOigam+mHVj2ItD1NCUIp4ikr3QgZIbvf+7PwBex2
+   7iS/tzaekwFexfjRPdttHdCRG8dmleXXQKmb5G9Gqefs2rnLqcJwdEkD1
+   A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10606"; a="329715481"
+X-IronPort-AV: E=Sophos;i="5.97,258,1669104000"; 
+   d="scan'208";a="329715481"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Jan 2023 08:29:13 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10606"; a="772570775"
+X-IronPort-AV: E=Sophos;i="5.97,258,1669104000"; 
+   d="scan'208";a="772570775"
+Received: from lkp-server01.sh.intel.com (HELO ffa7f14d1d0f) ([10.239.97.150])
+  by fmsmga002.fm.intel.com with ESMTP; 30 Jan 2023 08:29:08 -0800
+Received: from kbuild by ffa7f14d1d0f with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1pMX1o-0003kE-0N;
+	Mon, 30 Jan 2023 16:29:08 +0000
+Date: Tue, 31 Jan 2023 00:28:16 +0800
+From: kernel test robot <lkp@intel.com>
+To: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	Richard Weinberger <richard@nod.at>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Chuanhong Guo <gch981213@gmail.com>
+Cc: oe-kbuild-all@lists.linux.dev,
+	Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
+	linux-mtd@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-spi@vger.kernel.org, benliang.zhao@mediatek.com,
+	bin.zhang@mediatek.com
+Subject: Re: [RESEND PATCH v5 07/10] dt-bindings: mtd: Split ECC engine with
+ rawnand controller
+Message-ID: <202301310056.ZF1Yst4B-lkp@intel.com>
+References: <20230130030656.12127-8-xiangsheng.hou@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH 2/3] iommu: mediatek: Add support of unmanaged iommu
- domain
-Content-Language: en-GB
-To: Alexandre Bailon <abailon@baylibre.com>, yong.wu@mediatek.com,
- joro@8bytes.org, will@kernel.org
-Cc: matthias.bgg@gmail.com, krzysztof.kozlowski@linaro.org,
- robh+dt@kernel.org, iommu@lists.linux.dev,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
-References: <20230130102722.133271-1-abailon@baylibre.com>
- <20230130102722.133271-3-abailon@baylibre.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20230130102722.133271-3-abailon@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230130030656.12127-8-xiangsheng.hou@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230130_085057_353117_2BF098BE 
-X-CRM114-Status: GOOD (  18.73  )
+X-CRM114-CacheID: sfid-20230130_085449_650597_C52148BA 
+X-CRM114-Status: GOOD (  14.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,44 +95,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023-01-30 10:27, Alexandre Bailon wrote:
-> Currently, the driver can allocate an unmanaged iommu domain.
-> But, this only works for SoC having multiple bank or multiple iova region.
+Hi Xiangsheng,
 
-That is for good reason - there is only a single pagetable per bank, so 
-if there are multiple devices assigned to a single bank, they cannot 
-possibly be attached to different domains at the same time. Hence why 
-the banks are modelled as groups.
+Thank you for the patch! Perhaps something to improve:
 
-Thanks,
-Robin.
+[auto build test WARNING on broonie-spi/for-next]
+[also build test WARNING on robh/for-next mtd/mtd/next mtd/mtd/fixes linus/master v6.2-rc6 next-20230130]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-> This updates the driver to also support unmanaged iommu domain if
-> MTK_UNMANAGED_DEVICE is set in the iommu id.
-> 
-> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
-> ---
->   drivers/iommu/mtk_iommu.c | 6 ++++++
->   1 file changed, 6 insertions(+)
-> 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 2badd6acfb23d..5884a1ad409a0 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -858,9 +858,15 @@ static int mtk_iommu_get_group_id(struct device *dev, const struct mtk_iommu_pla
->   static struct iommu_group *mtk_iommu_device_group(struct device *dev)
->   {
->   	struct mtk_iommu_data *c_data = dev_iommu_priv_get(dev), *data;
-> +	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
->   	struct list_head *hw_list = c_data->hw_list;
->   	struct iommu_group *group;
->   	int groupid;
-> +	int i;
-> +
-> +	for (i = 0; i < fwspec->num_ids; i++)
-> +		if (MTK_M4U_UNMANAGED(fwspec->ids[i]))
-> +			return iommu_group_alloc();
->   
->   	data = mtk_iommu_get_frst_data(hw_list);
->   	if (!data)
+url:    https://github.com/intel-lab-lkp/linux/commits/Xiangsheng-Hou/spi-mtk-snfi-Change-default-page-format-to-setup-default-setting/20230130-111021
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+patch link:    https://lore.kernel.org/r/20230130030656.12127-8-xiangsheng.hou%40mediatek.com
+patch subject: [RESEND PATCH v5 07/10] dt-bindings: mtd: Split ECC engine with rawnand controller
+reproduce:
+        # https://github.com/intel-lab-lkp/linux/commit/f3a5f8d573b8be1d7a10224f0e10a699d9a0ea09
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Xiangsheng-Hou/spi-mtk-snfi-Change-default-page-format-to-setup-default-setting/20230130-111021
+        git checkout f3a5f8d573b8be1d7a10224f0e10a699d9a0ea09
+        make menuconfig
+        # enable CONFIG_COMPILE_TEST, CONFIG_WARN_MISSING_DOCUMENTS, CONFIG_WARN_ABI_ERRORS
+        make htmldocs
+
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+
+All warnings (new ones prefixed by >>):
+
+>> Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/mtd/mtk-nand.txt
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
