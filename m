@@ -4,88 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E684C54EED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 11:40:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83F0FC54EAA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 11:41:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T8FHcl8FQ7LWPsHGvishUG9eXa2hE3G0FJT29OwvLWE=; b=TZC6qXjC0yj2S+cDipQ8QCF4lU
-	YNNmRHax7RN4Jv33GUhdi3hEIxp3u/ucmLzX89gmrWPHmhK5HPH7GMhLQ6Je0uj+l5fpJgWrPNSbK
-	pLR8H8VTI/GQk20UpxIvMHjW/b+CnLClKA/01BmJFa/UC6aXDZIj37ZEqa4IqoWD3XPwr213Z8KUN
-	iVRqvUcXD1kWg7U5qIga7CMwuKoVm1PSREsrKz8ndpNyfv8bfckpZOKz/wWf15olNkeTwBHjRTe3R
-	XTgiuD9iXWAEeQJT4S2ieTWWI8Vb9wSmcfqcl3ZZ/e46/4o9rJhg1IwQGIq8y+DV6jhNSJIndzGM0
-	L+yyQYXw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qY2eQcF/uAcvNTYQk/je1BxohMNaBmCnW6600Wd4rz4=; b=WH5e1JaQxikIFSWUwzDzTBYu2t
+	cWoY3q6Hi77Z2iR/RZrKTQolk5zEVwotOiyhL7J5DQFWPQpIjCIlrYrfzdIxT6MJqDILP8D04WIrc
+	cKG/utZzVn8DZIJ4c6nWW46ZnCkXEcnRhK1sL/2u6+1jiE1cEKzoalsNq8IH5mhgFMz/WGhB5XlTj
+	M8ibXRx8exNt46A7Bpqv33olyo4eVMnGS47XQ32FKC6ddshpVwzuKKixP0z/ABfgeuHlZG9y+bNXx
+	IswE9eeX49+2Dk/2IqipzGLaQyVeNNmzzzBTzmA366eq1u74ftJNHPb/7DLvEuuV+GDLf+FOkCGXA
+	NJkmni4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMSVU-003JfA-6y; Mon, 30 Jan 2023 11:39:28 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1pMSWo-003Jrk-U7; Mon, 30 Jan 2023 11:40:50 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMSUl-003JeU-Ee; Mon, 30 Jan 2023 11:38:44 +0000
-Received: by mail-wm1-x330.google.com with SMTP id bg26so1923911wmb.0;
-        Mon, 30 Jan 2023 03:38:41 -0800 (PST)
+	id 1pMSWF-003Jpp-T8
+	for linux-mediatek@lists.infradead.org; Mon, 30 Jan 2023 11:40:17 +0000
+Received: by mail-wm1-x334.google.com with SMTP id iv8-20020a05600c548800b003db04a0a46bso8635738wmb.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 30 Jan 2023 03:40:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=T8FHcl8FQ7LWPsHGvishUG9eXa2hE3G0FJT29OwvLWE=;
-        b=dQObpp8mkgw/42GS/NWrS1KwKrtRCNvP2/fPxxIxLSF/hT7TAgV3UJkSyMtA30zsLe
-         XoUcFq7r80b4ooaQm1vxsrQNkLPa/vt0gd+g4d1GKY8WL2b9OmKDKDNX9cbExq971M8a
-         +ns184Q+LtV4AFmjvgoCTv1tx35k5mLvHzG1nTvScKzLeKxS8jTcRfWVFJ6MeUlwiO1G
-         M48j8JmIwT8Mo4l+4RkLwJi/uM8AaOfsh3RZvOzaWnuzt3gHlZNSUDd8NG3xeJpXsWVV
-         hF3D7wDuV9Xu2PwTtg3BpqR7oMgEzGYoeaUHdonZ9300YzdgRwL05QjnK0FWu6leMQKd
-         vEhg==
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=qY2eQcF/uAcvNTYQk/je1BxohMNaBmCnW6600Wd4rz4=;
+        b=YCGzP6+etMTFAZGEGJ0wr5wJKJ6GursVCMiCl4iTjjUvks4Wc+vwkge9YRs9sX4uNh
+         +teYysoROEQBHhVUwUk64roJYGp0TS/8rnB+Kg2hKOA2uPrs1HYf2VZeXRdXvN/kV7U6
+         R9aVBejJ3TaFgCk9ZiNScxApM32QsZtILy4rclBgUwHieku/LsUr5iUqzii9p7mXJVuX
+         RnDqeTzcI2JXcjsxiJlhnkp1+q/kwn3DyW1m9FWEjI3UHbX6NbjCVk2gKAtipYyA/UQ8
+         6KjjGaDlLmLxulYmq5dhcFffffXgS3vaO5RUbORPLd1QbJhrCdl03X76SeWIV6clklGd
+         E3gA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=T8FHcl8FQ7LWPsHGvishUG9eXa2hE3G0FJT29OwvLWE=;
-        b=bAMoKVwzUEmyLeq5ABpO+DKzXzr6+hI0OsvQ1AN6rRbt6cZLfm/euKHqGjZPBVN7lf
-         5xB/GYzB5dxUWeBdR+ZUkM9VS61N4a/FC4/XxBH9IDIlwcQM4Yb2/I83PZaFjZk4TK/K
-         oLDQUdkJayC2vpErbytmm+kNF6QYmSDKOfWoECrhrb1AonVUe1JmjcQU2PYRfEs4KoQr
-         9LfTS9ZEBu9vNodHs8hU2a18Rl7Q8NP33LrjamApl4jAcL3eXgJfJ00HsGRUg4F/pjGf
-         ujpvdpb3/ZaITuX3Mp51zvMyRq7wVVqVPh5KlT6aIFyu+ITgpODq4PFLP68/We9mYo+F
-         5nSQ==
-X-Gm-Message-State: AO0yUKUpwllVd/bre+/nbQhRC8dd3Pel6cXcrBKMWnNgwDU/zZC2S2FX
-	CgUx1XfwxMXKYnPsxtPlU0w=
-X-Google-Smtp-Source: AK7set9SBbhpGl1UMgZ6IK9FggJEYs30pNmfKdhBsS3neeguVhniJ62uvheSsRHchaEktAYjlQHmBw==
-X-Received: by 2002:a7b:c38a:0:b0:3da:2ba4:b97 with SMTP id s10-20020a7bc38a000000b003da2ba40b97mr4480397wmj.19.1675078720531;
-        Mon, 30 Jan 2023 03:38:40 -0800 (PST)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id j22-20020a05600c485600b003cffd3c3d6csm12228110wmo.12.2023.01.30.03.38.38
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 30 Jan 2023 03:38:39 -0800 (PST)
-Message-ID: <0dec66ce-424c-e682-3f73-594e5b1edb65@gmail.com>
-Date: Mon, 30 Jan 2023 12:38:38 +0100
+        bh=qY2eQcF/uAcvNTYQk/je1BxohMNaBmCnW6600Wd4rz4=;
+        b=694GxtxiNVZH/G20DfyRjnAqi0SyW0FIpaMWkaRS7wlOpZjvW6Oh72lWWTWCk1vVxn
+         UAsLww9+fRRveyEMeWMa2P7TqivX9D2y/PKaLeTGq3qYX/S1FdkMwXD2jFKPgCKzY0Ma
+         KOGEQ8/VNzahX2qDIhQ/f2v0o9w+oOWVw6XCgaCPh1U86n4vqtHdvZlNARYQPSbgGcCa
+         wq9pusLoM75FM1F5kB+oH4lfCpnfnkd0KSu+oS4t8gHLA6lZ7RPl9lcj1F/onTFo3YHF
+         vNAj5EnJ9/dElR9xobxhS7cdHZbmHSIF5ehUoSndnuTyNv9ZPxnrkWIIlANUagp0I1of
+         Zlsw==
+X-Gm-Message-State: AO0yUKXc6YRCQDwRCglGxogMU/raOjp3WymmN3BRGnLL0AXrHLESnwZZ
+	ne/v4Scwuxuam0BA436x59voGfLZDGI=
+X-Google-Smtp-Source: AK7set/plTj3nToxeSu5iL+yT3u0ztKJ3ozwPZCPZJR8eXHt2/EVQcaKN/ClDf3w8bwneh0ceKR5ug==
+X-Received: by 2002:a05:600c:1c83:b0:3dd:1a8b:7374 with SMTP id k3-20020a05600c1c8300b003dd1a8b7374mr63656wms.5.1675078811045;
+        Mon, 30 Jan 2023 03:40:11 -0800 (PST)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id 19-20020a05600c26d300b003dc50c38921sm5614243wmv.35.2023.01.30.03.40.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 30 Jan 2023 03:40:10 -0800 (PST)
+Date: Mon, 30 Jan 2023 14:40:07 +0300
+From: Dan Carpenter <error27@gmail.com>
+To: Trevor Wu =?utf-8?B?KOWQs+aWh+iJryk=?= <Trevor.Wu@mediatek.com>
+Cc: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
+Subject: Re: [bug report] ASoC: mediatek: mt8188: support etdm in platform
+ driver
+Message-ID: <Y9esl7VQ6qW9wnIC@kadam>
+References: <Y9EdBg641tJDDrt/@kili>
+ <8260fa7da639c118ec6757e6d3e25320924dcbca.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v9 8/9] dt-bindings: serial: mediatek,uart: add MT8365
-Content-Language: en-US
-To: =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-serial@vger.kernel.org,
- linux-usb@vger.kernel.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, tglx@linutronix.de, maz@kernel.org,
- lee@kernel.org, linus.walleij@linaro.org, gregkh@linuxfoundation.org,
- daniel.lezcano@linaro.org, chunfeng.yun@mediatek.com,
- angelogioacchino.delregno@collabora.com, nfraprado@collabora.com,
- allen-kh.cheng@mediatek.com, sean.wang@mediatek.com,
- zhiyong.tao@mediatek.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-References: <20230125143503.1015424-1-bero@baylibre.com>
- <20230125143503.1015424-9-bero@baylibre.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230125143503.1015424-9-bero@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <8260fa7da639c118ec6757e6d3e25320924dcbca.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230130_033843_532227_0E994E2D 
-X-CRM114-Status: GOOD (  12.62  )
+X-CRM114-CacheID: sfid-20230130_034015_964069_1BBC9E67 
+X-CRM114-Status: GOOD (  18.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,42 +91,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 25/01/2023 15:35, Bernhard Rosenkränzer wrote:
-> Add binding description for mediatek,mt8365-uart
+On Mon, Jan 30, 2023 at 09:25:52AM +0000, Trevor Wu (吳文良) wrote:
+> Hi Dan,
 > 
-> Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-Greg will you take 5,6 and 8 from this series through your branch or are you Ok 
-if I take them. They are all just adding a new compatible string to the 
-following files:
-Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-and
-Documentation/devicetree/bindings/serial/mediatek,uart.yaml
-
-Best regards,
-Matthias
-
-> ---
->   Documentation/devicetree/bindings/serial/mediatek,uart.yaml | 1 +
->   1 file changed, 1 insertion(+)
+> Thank you for catching that.
+> I didn't notice that snprintf() never returns a negative value in
+> kernel code.
+> It is possible that I misunderstood the coverity error message, but I
+> can't find the original coverity scan result.
 > 
-> diff --git a/Documentation/devicetree/bindings/serial/mediatek,uart.yaml b/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
-> index fe098d98af6ee..303d02ca4e1ba 100644
-> --- a/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
-> +++ b/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
-> @@ -45,6 +45,7 @@ properties:
->                 - mediatek,mt8188-uart
->                 - mediatek,mt8192-uart
->                 - mediatek,mt8195-uart
-> +              - mediatek,mt8365-uart
->                 - mediatek,mt8516-uart
->             - const: mediatek,mt6577-uart
->   
+> If I just remove the dead code, coverity will report some errors in the
+> future.
+> As a result, I prefer to keep the line and add another check "ret >=
+> sizeof(prop)", so that we can avoid the problem reported by coverity
+> and Smatch.
+
+Generally, when static checkers print nonsense warnings you should just
+ignore them instead of adding dead code so I would encourage to delete
+the dead code even though Coverity complains.  Fix what is broken
+instead of just working around it.
+
+regards,
+dan carpenter
+
 
