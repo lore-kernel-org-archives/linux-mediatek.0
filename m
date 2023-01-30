@@ -4,154 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25F1CC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 13:35:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D537C54EED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jan 2023 13:38:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XAhhV107UB0VuF+f/fGJNsIJGFV+V2cjcq1Mwehnpb0=; b=waL/gAr3AqV5WHBAL7NkORfLKT
-	nsTaghDF08VmlSBLBTSdr5Ao0jAklP9vmAzzY9MSNDBeAERKOsmUurIb321IMrxHZuMAuOqujyXVN
-	AcN0ZnN8LmOhShMquOvowlE+VaV5Ayu/CMOlZE28H2mhoUI9wXbixfDTv9C35cSAQqfkPJLagpOhx
-	SHXjMsQKfXmYq54JurOLDrI+cDnsCf5qYCQeRsj/Sl9LGF4eJtzEV9yfYEWJaKuFhixf7b66YYS9k
-	ZBm7tKXNuJzC5ywAbDYfwDpqDICJTdtSPMShLN8mXkQgyznb/UHVEJdTwRviLnNWuSpfgIBRCjWud
-	e6taEPCQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Subject:From:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=mR05keK3ynmmM3Zq8e1jTLmPIijO9N8YT0CgtjDOhxA=; b=eNnuwVkqYAwmgR
+	5FvmrDBe0fGTUmgzrIek7deSYf+jNbyenjlG2r0tbgc+buY9hIaQMu32yp0e4JVI9I5/9VVj24qBD
+	i/UllLO8m0WalKD+tOxs3gxgFRewHEGiVew++naXtgz2ArNAuYZ0RHCcg+9yOkmRERgZaFMf86J+L
+	HYAQ6JCrUcppcMDA18rJagH7NWjRehfl74EvDVTROt/CYHUB24jtfK594ffxu4MLKxhFQXjauh3J8
+	kPYXOTA2fiFDo3kyM+vhhzPcx61eFjcni8Diu3Soj8eb5J8JmmPdi8NmaZQ/WsNUOJ4IsOAkMYcez
+	Ulbz+rMp2tYmTlhs8h1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMUJc-003hp4-Sr; Mon, 30 Jan 2023 13:35:20 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pMUMQ-003iaT-88; Mon, 30 Jan 2023 13:38:14 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMUIB-003heK-Ru; Mon, 30 Jan 2023 13:33:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:In-Reply-To:Content-Type:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=XAhhV107UB0VuF+f/fGJNsIJGFV+V2cjcq1Mwehnpb0=; b=CGumFPNzkK8zE3FAM7TaY9CbxB
-	JshDy7pZnfZkDJxQ+c2HHxS3g+qMT1nvL/3p/Tl7oMRbr7LOs83ShBPreISNp5LEUjGj7BEd+nHEw
-	itOhcOADnmzFJlEBzQysW2o6zcfCHuG6EOqeWgYbvIMPHoGI/T8NcOSwM/GnPTRGO1rijtLyzLdNC
-	A7O6As/jpQ5b9IujOB8NV3oGST0c+dvD9NvnfZ6I8lckP7CEo9tY3c8A8Usj3cn1e6huwKzJ9G+1W
-	vYk3RXJQQs8/hRL3AGnSOiGXSrAOZOc/CshepK1LBLSmQpu9wHKKgY5duTMIing7juUqS/gSqAEoV
-	KBIBf/4w==;
-Received: from mail-bn8nam11on2041.outbound.protection.outlook.com ([40.107.236.41] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pMUHa-003xAR-19;
-	Mon, 30 Jan 2023 13:33:16 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ZSTNRBviEZ3lssLD3bMuswt496lPBoP4yk4AOtiWWrY13lXzQ7cHr6dUo+OcCAGPDMpRo9fUZSaEigHKZrVH5sGh2wt9zPrmZDlEbB95I6A1VkvYdbxGG/oqYTYUVSJGITTNhWb9jrwQgY+Ul3WsL+g3PD/tQwDROpetsOnkEL9fTUJw68oQEAGSiyGGpPrREzL627/WFdCjWPtJXelW51ZpHBRJl7UlsX7WTYXW+HIUCw4Sl6rS9TjHuDdVZNOxq/XAl0YNwjnWL1H0qJ0qgKJu1Srxe2KfLEldk7fHDSxuFTLoLFrH7iK2oVCmB21atm8qV+kYiYC0cFCLMU0wPQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=XAhhV107UB0VuF+f/fGJNsIJGFV+V2cjcq1Mwehnpb0=;
- b=EKKhIHQnWGAWxwv34NLZIxnPNG6nLpfaP/kbH9JRGnAgMpsxG12Ez8DVyQAvmYgpRnnh1oSxzYaWbKtO4agWXo9z4BvE/DhuL3CzgsCfdWxdlMK3cJLiVa3kY836qzujOUOBYBU0ltzuJ4lyibB1f3c79ph2tOMgPUpM431n12ubj40nOf3DyrkoMHt9ngfl0DhTb5EX1t7JFwy93FgH4Kgr6/hPbnyzddgse/9ff3XD6KTlXw49q/eGaaeKNma1QOgt4cyfhMUrU4rsLvLLMgQ9+PONXqd0HXb0/M0M2VXBEzNWIrcCkJMW6WSDmFnuEsioeWb/BLhR1a6vVmd9IA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=XAhhV107UB0VuF+f/fGJNsIJGFV+V2cjcq1Mwehnpb0=;
- b=KRgEbvN5YMX3eiMFMoF4xzNtI1Tzvq1MkEPEHVVHMU+MOii94mFTAq/KSv623rXKOpZH7WP5xv9MJ3kZ+D0IiPy39W7BpqMLRcZ4dPUtCClSHbAPZQOlA82V0cdsn38qxhssMUAEGMybjsVsiBTBxBt4TsUUwyXkmpd+/u0fxfOHq6KzEKzo8F9yyVKt4Y7U5bwQXnOh+sazadINF1i7zYuLc7wmzKxR1aTzyqERnfFMToWsVg6AcofjqBkSdiomoGJlTYmu4dtb23+/X1M2iVuME9Ny5aUA7sxXJxDz4Y76dVOs4kw9+8L3GcJOSmT9QYPxcg86/N3xBjSD/pIiLQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by LV2PR12MB5798.namprd12.prod.outlook.com (2603:10b6:408:17a::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.36; Mon, 30 Jan
- 2023 13:33:27 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::3cb3:2fce:5c8f:82ee]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::3cb3:2fce:5c8f:82ee%4]) with mapi id 15.20.6043.033; Mon, 30 Jan 2023
- 13:33:26 +0000
-Date: Mon, 30 Jan 2023 09:33:25 -0400
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: "Tian, Kevin" <kevin.tian@intel.com>
-Cc: Robin Murphy <robin.murphy@arm.com>, Nicolin Chen <nicolinc@nvidia.com>,
-	"joro@8bytes.org" <joro@8bytes.org>,
-	"will@kernel.org" <will@kernel.org>,
-	"agross@kernel.org" <agross@kernel.org>,
-	"andersson@kernel.org" <andersson@kernel.org>,
-	"konrad.dybcio@linaro.org" <konrad.dybcio@linaro.org>,
-	"yong.wu@mediatek.com" <yong.wu@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"thierry.reding@gmail.com" <thierry.reding@gmail.com>,
-	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
-	"cohuck@redhat.com" <cohuck@redhat.com>,
-	"vdumpa@nvidia.com" <vdumpa@nvidia.com>,
-	"jonathanh@nvidia.com" <jonathanh@nvidia.com>,
-	"iommu@lists.linux.dev" <iommu@lists.linux.dev>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
-	"kvm@vger.kernel.org" <kvm@vger.kernel.org>
-Subject: Re: [PATCH 1/4] iommu: Add a broken_unmanaged_domain flag in
- iommu_ops
-Message-ID: <Y9fHJSTIP6zXAStX@nvidia.com>
-References: <cover.1674849118.git.nicolinc@nvidia.com>
- <0875479d24a53670e17db8a11945664a6bb4a25b.1674849118.git.nicolinc@nvidia.com>
- <dfad6d75-6f4d-99ef-1c6a-4bf397dcaa13@arm.com>
- <Y9RkG2dejdXptUTB@nvidia.com>
- <BN9PR11MB5276C9BDCCA7FB295C25BC738CD29@BN9PR11MB5276.namprd11.prod.outlook.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <BN9PR11MB5276C9BDCCA7FB295C25BC738CD29@BN9PR11MB5276.namprd11.prod.outlook.com>
-X-ClientProxiedBy: BLAPR05CA0023.namprd05.prod.outlook.com
- (2603:10b6:208:36e::25) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+	id 1pMUL1-003iNz-W3; Mon, 30 Jan 2023 13:36:49 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1675085789; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Z/3GlH9NZCV6SjobVyTG8J8Jj6q7mv68y7HRhCxtLVGW6uEC14x8zdIrbiRbAqzGLO+azLs/c7vdgHrhQlvsMj9ZKA2oWRLqCF9BkZKhPhIpoBsQFXL2MuyFdTvJoHY2mwJGOJQi1ozYEsPBjyDE6fU1NykkHZZEETLhrrtx3ng=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1675085789; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:MIME-Version:Message-ID:Subject:To; 
+	bh=mR05keK3ynmmM3Zq8e1jTLmPIijO9N8YT0CgtjDOhxA=; 
+	b=XqIc/B806pk+XcJ1c+QgG/xPpOrdQw4ln4D8ruVT3cdG41ZeZn5RVwst8iGl8iEZg+ODQmbZTglEKACoMQm4bZz4wU4YXxNZLgNaMPfBkjBhQbPq5SG+KrSoZY+UsqvyGkvFAY2/uaLGDJof8JP1rYGJndjWQIc6mLDMD7snC0M=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1675085789;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:To:To:Cc:Cc:From:From:Subject:Subject:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=mR05keK3ynmmM3Zq8e1jTLmPIijO9N8YT0CgtjDOhxA=;
+	b=UoyHXt1wr4aZ4sUr5SSIZnPQLXJ2mpDdbW5vU5u6hBEItvIE1WWIu3XrYOV7K0xQ
+	HZYz/ycz/AU00AApVPODjLlnCyteKAi6z80IO4x4sv5pl0usK+r8vgWnBfspPzbLT9T
+	rUes/WG/NjdWObGTx1i/U84g5hBfMPqDiJ7g1R24=
+Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
+	with SMTPS id 1675085787600658.2593333343776; Mon, 30 Jan 2023 05:36:27 -0800 (PST)
+Message-ID: <883798d8-f7d9-eadc-1343-7d241741ff67@arinc9.com>
+Date: Mon, 30 Jan 2023 16:36:23 +0300
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|LV2PR12MB5798:EE_
-X-MS-Office365-Filtering-Correlation-Id: 708418db-0ec4-4df0-0723-08db02c6913b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	9MBjK1/eh6UghslJ1smQ+6bTcxDHJa709skUAgG0C89Uoj/lkoC/n0mBzphTzeMdQ0RboeCz3CwEUJmWJn5zy4bvBlSCKM5asRIzSJt+lvsbZVdpJbHL8QOOF7khebDAJk/1ljFzYsDzTccXLRUv+aX+nTggAFKV/zY0oO08OR0m7fya7tUCqFFu7YyFkV7yI0xUp5j6ec76O7XmwwyVP029ZQlwUugOq3FmOb/bsMmdWg79QOMOKnSYJN0EcEizTM0Z1u3FPPSdgWE3U6rmDk9ikJhKP9S/rvdoaly6+ynJYQZg4276n7jGAdatEH9oCVYMWq0YJEX2N8RcbDjdGwhCQDaewGKsWVHAVeeHsfx/bS/ETT/Nn/HgqCsp8POHSnaquJ1/3i0S9xfjgxXKtxqhBRq7JiDS//9Ju2ZOuHYCTIlbuBLsZKWUPo9ZFPQHjpKQ3h3ZcKUxD2rigcKsL1SCfJBDvPgcDgzFZh59fzpifS+A2M/kE9rLV7YS7G/ny7TaU2ZO2uXxzAGs/r6LuMWal9jdBCAiNwX3MsuSnkZz6xkeOA5aJ6fK1HhiL6oZae6uS4AHsSYHCGGB1qTk+R8ZwB8HSdM4RP6dIsA0X9DkkdXFrN+iPs5ysiT31foyHBemrAscWy7FBT4p0sBnBw==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(376002)(136003)(366004)(396003)(346002)(39860400002)(451199018)(83380400001)(7416002)(4744005)(86362001)(2616005)(38100700002)(2906002)(36756003)(6506007)(6512007)(26005)(186003)(478600001)(6486002)(8676002)(6916009)(8936002)(66476007)(41300700001)(4326008)(66556008)(54906003)(5660300002)(66946007)(316002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?3hcGwMgHWQU8pSEuUfzxLqe86woHr7bO7HXzYWcbCM4RHq17p1N3WEYSeo2J?=
- =?us-ascii?Q?c+oPphXJv/UJWPQhMT/uNold8T/+WbE+SgCYWdeE9X5uzf4gXYj9gVlmApfR?=
- =?us-ascii?Q?9KO3l4eTMUpcq6/tVXj6HkF82nPadraaePwK5iOzMTInuQIGyCkA6l3VrlJn?=
- =?us-ascii?Q?gC5jYqgXIjbDzOQdN4CwZcaOXZB6V4x9une7FGBkPqkvkEF3+anoWl3GIm7z?=
- =?us-ascii?Q?zC7bjDM5zu7j/EAT3/VEOALawr8WbuaAJYKSv5HlHXcUYblW8D9DPkxZucuE?=
- =?us-ascii?Q?tZiKmQrFNnA3Qqp1zL+EKscf44u5IvfOwJIHUBP3MhE95ibWbPLI7/73ystH?=
- =?us-ascii?Q?mltSeRrJQjQFWNoK40B3m4ZO7IB4X02+BhEogS+JcWidZA8s7pLRHAT1u3x/?=
- =?us-ascii?Q?oOhvBrvagyiyzdm98ZgbKgMRio1euYnWLUnuDTbzS+tnjzZW1J2dzxad3Xi6?=
- =?us-ascii?Q?yrZqEpQ1pMXO3tDWWhnfFG0bA7s7CbVbQE7oSy1yZHbj5BSFwbR++MBZcqun?=
- =?us-ascii?Q?VYnQN8KTyqxq9nX9CilB1og68BzG6MDjqtJrKEdcJ2avFcNj0tqt7fBr0t4m?=
- =?us-ascii?Q?aY/sERSjWthX+XRQwUAu3rK5A0SuzDVByrRYnRiBk8H4xw0ZhPIRPdd2qvnk?=
- =?us-ascii?Q?5A11765AGtlnrgsHOoCdlDapXN1GwzTwDNg+9It6RJSIvBymNbc+DJzoW2fi?=
- =?us-ascii?Q?EKAQ9me5bEFgZw+aX2rp1ZWZjbTezBQCRQnEyT8kRVcV/8GXZ0L2kepjPEKM?=
- =?us-ascii?Q?4KSZKyBwXTOChbNY4z2z8763WiEz8v/85YzIi5oYsJcJR1I7tXs0XMnz7ZR5?=
- =?us-ascii?Q?aFWHXZ/86yIr8Vud3VxeG1SHyjoM0nTvAC7T1T01kg58bl6QLbZmWqlno1jR?=
- =?us-ascii?Q?eqYHyf69b1X+B+uaYZWMKivMX3TEH2eO1O77IHdsFmENLQaG6+/BitewKiK1?=
- =?us-ascii?Q?y3YnQBCZ8+mhl/NRP3CTZd+5Djng2AGlcG9KvTs7Z7B6hUyczdomp72Tdoye?=
- =?us-ascii?Q?xty67GkY1DnK9/Y95H/M+Jc1L+Yo928DhQ4ksoQisZum7EVIQseMxexIkJ3b?=
- =?us-ascii?Q?TOsIy8wwyQNtzD9+4H7w/+mAyELcmaiYXQk5FIWnpGclL8RrFV3+AIjRYMMi?=
- =?us-ascii?Q?A0XZ2Gzv9OcSUHhzcwvl4gSpesM+5X0ROhKggYye9GPu5i4W813CL9v+2maH?=
- =?us-ascii?Q?fKt9wUh0lgnIWF4QSnXFe3tT5ykODvBi3XNUzn3wJaoE0YMY+7aFU+tsahpH?=
- =?us-ascii?Q?IIL01dYEB6t/nQkNGgbSRdee0cToAtSsxnNlXU2Ig0WHoJwGijUvnu+eNxb/?=
- =?us-ascii?Q?Aksa+fRrqePh/ap2dg/r9K8wkQiTwdPvV4T4j1xSVw5i/hF3rtyAcZCaj4fK?=
- =?us-ascii?Q?8CbRiiYZY03f0m+tAC2VXDha41tmtEaoVBRItw3dNprQ0q9QHsrR6J76DN1M?=
- =?us-ascii?Q?kAfIz6M27n7a+9jMktWZPRTnw2M0ooLg3Q+s48P5MAuTVsJCynY996Q/5Q5t?=
- =?us-ascii?Q?rOCthiUvKw4+dzoPWRZMpKGIYntK3Ja6kGHFPN0R8nPug+BY77SlJ5re+kC/?=
- =?us-ascii?Q?x46eT6NFBBau+wUOwWw4ZQo4lQhUInvPUzTKfhI+?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 708418db-0ec4-4df0-0723-08db02c6913b
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Jan 2023 13:33:26.8603
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: rBw0xrVgrjHNAHXIa6XlhtTB1Bs/nu3PMCB1bU8K4kohUHwEFY+gHPzi1Bjm9HO1
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV2PR12MB5798
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Content-Language: en-US
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Mattijs Korpershoek <mkorpershoek@baylibre.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Subject: mtk-pmic-keys: Ignore power button if pressed before driver loads
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230130_133314_700671_857DC8BC 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20230130_053648_089120_D7DBF9B9 
+X-CRM114-Status: UNSURE (   8.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -163,34 +75,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: linux-kernel <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-input@vger.kernel.org, erkin.bozoglu@xeront.com, Linux ARM <linux-arm-kernel@lists.infradead.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jan 29, 2023 at 08:11:48AM +0000, Tian, Kevin wrote:
+Hi all,
 
-> " I'd also question sprd-iommu, which hardly has a generally-useful
-> domain size, and has only just recently gained the ability to unmap
-> anything successfully."
+The power button on my Bananapi BPI-R2 (MT7623NI SoC, mt6323-keys) is 
+shorted, so the device automatically boots when there's power. This 
+causes the device to reboot when KEYBOARD_MTK_PMIC is loaded because the 
+driver sees the power button being pressed.
 
-So long as it has a correct kernel API and exposes the right (small)
-aperture then it is OK.
+I was wondering if it's possible to change the driver in a way that 
+doesn't break in this situation. Maybe don't do anything if the first 
+state of the the power button the driver sees is being pressed, and if 
+the state doesn't change.
 
-The device will not be useful for qemu, but it would run some dpdk
-configurations just fine.
+To address an edge case, if the power button was being pressed before 
+the driver loads, look for if it's ever released. Only after then start 
+working as usual.
 
-All the VFIO world is not VMs.
-
-> > @@ -4761,6 +4759,7 @@ static void intel_iommu_remove_dev_pasid(struct
-> > device *dev, ioasid_t pasid)
-> >  }
-> > 
-> >  const struct iommu_ops intel_iommu_ops = {
-> > +	.use_dma_iommu		= true,
-> 
-> missed:
-> +	.allow_dma_fq			= true,
-
-Yep
-
-Jason
+Looking forward to hearing your thoughts.
+Arınç
 
