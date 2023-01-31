@@ -4,80 +4,170 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D010C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 03:09:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 031A1C636CD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 05:55:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1ZOfd2zx+NjgQww/0mU3ZaJ9v79cmnQrDykMgvyCyxY=; b=oWEDFcgmAqxw4aQgi4t+29GMY/
-	hlWfcFvDF/gEQTs13j0f1HUrAevaOMziv3EVIOJcwDscWf7eyTBLJgZ2nJRLsuGJ3zGBrQ4pqNAkT
-	O5tpo/s4gilWf2hg/k2UFUAT9zm1fcTMoKnaUa746iUDzsdJBV4/Zk8CqIqhkjASorIwfvElBbUdf
-	Ni9kSmcd0l/BqUdOpIjV6jT/UcSUSHT5SO78GsnXZlHXl8Fb3Wt8q5jZYTWmJVlULcNzU2ghlDLaQ
-	r+jTjNGjTBX0MMVTCmXo5tjfp2mH/bRxLU/j63EMJCDanju5il2M76L7LKDZCpXr7rhM5OB6ak/Ji
-	1Y9EEuSQ==;
+	bh=B4y7xMymI1w+O0jkWE2oeRFBgf46BNBFGmP/9HzvREI=; b=Ao4A0XL1RjMEerrb7xA1xHHmG9
+	tWfACCsqHcH7lHu5s2kzOKY4KO8wa4rNx11cF4WTI8SNaWx4Oa3hYbHJytkyGCqkM+GkA5X5S1M2R
+	lm0eUiYzbFf1DwHcg5vvCuaoupTNBAXLXNVScIZQ0bDYZaFgG6I2BVK/ASwhjnx4erkDtvyRqSCRh
+	lLAyScaZbKszbtg20/1uQe9rVI6gAwvvl1UJZqZycWjXDUgGskbRLlfS+N7cDJz8EjPgrbaKlBmX+
+	1+n75vop7zyvakt0LRgTEzkY04ob9HP1VPdZetUaAnuY2wxwdsnyRbT79Y7JylvBWyA5W4cEehdru
+	JUDJRt3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMh1W-0068pt-Gq; Tue, 31 Jan 2023 03:09:30 +0000
-Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a])
+	id 1pMjbq-006MZj-Hh; Tue, 31 Jan 2023 05:55:10 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMh1L-0068oD-AZ; Tue, 31 Jan 2023 03:09:21 +0000
-Received: by mail-qk1-x72a.google.com with SMTP id pj1so6004721qkn.3;
-        Mon, 30 Jan 2023 19:09:18 -0800 (PST)
+	id 1pMjbc-006MXl-Em; Tue, 31 Jan 2023 05:54:59 +0000
+X-UUID: c7bddba6a12b11edbbe3f76fe852e059-20230130
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=B4y7xMymI1w+O0jkWE2oeRFBgf46BNBFGmP/9HzvREI=;
+	b=ANa5FieT0PialPe58WsF4ZFnjvNWZdy6FwS+aNKEEjsIZVEEfbBLvzGEzGFUCAd4L5z1tUxwSkGswNzIj4nCXATMq9zTdWAbfVHRB6KBylP4srH4133SnG7U4NPrKYOkhlC2JQtVkG1vsQRvj+NmdIKmS41w6V7XP+/CK0YAMtY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.18,REQID:e0a48dc9-1a0f-4413-96a9-3e090c67ba22,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:3ca2d6b,CLOUDID:d881d355-dd49-462e-a4be-2143a3ddc739,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+X-CID-BVR: 0
+X-UUID: c7bddba6a12b11edbbe3f76fe852e059-20230130
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <xiangsheng.hou@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 4138485; Mon, 30 Jan 2023 22:54:52 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Tue, 31 Jan 2023 13:54:17 +0800
+Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Tue, 31 Jan 2023 13:54:16 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=hyjwFzpEFm1vu9i6ExOir21/9xjhR7r/e5mUnX75vdVb7ayy3KMKRS/JLJ1B3v7+RUZFIH8hq2pDqrM9YRWp8vCU6i5ZAo8G8OuR44CM+shlYJiRdj2cpQHNPQlnHc8dS76kMTlbx9Gha+N9L/S1A8B+K5SUNWpwz7BGZeoSRQq3lLO7ftrZUKT336HIMM8aKnpuwXdk0631DjSsNbzwJlYO8AylMFH0TkAygsqa9HHZjlF78fp3mCvuoRxCP+K0NS7vVqu8V0YWjCsN1X++u1zEeg11aLyh3bMlpaKrjxQ45hQUBN6PZr7OKjs4ElLHP9vb71DM7m7BtIv8ccBeyg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=B4y7xMymI1w+O0jkWE2oeRFBgf46BNBFGmP/9HzvREI=;
+ b=jPl+2WMrXAlJo60/esvKyKm1Q7MyMepBGe9ofP8OFadidJCIH4iwKP93Lq4wBGByYF45bigOliJzLvZrVr53ZheJ02rXBa7SEvMjRqiiXk5JspQTtasa/yWj00NHQ2jSr6FbkvzPymYcBz4odTwicyhu+PWqUwFne136LvszaqgHBlVAew0IweOBinKEdnljUnWZF8if49SbJop5DodGtLv2espn9J18CPihTDBOzSDY3n3MUx8a2IzbeZzZg1FXlPyZf5SH9o6o4L/gvEq7Qazm+ysK7FJgx0Vbbb3gicw98x0mlSKNzxqv7BiN9NsgWvcgMCQBRbRB3gWJ6b2bdA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=1ZOfd2zx+NjgQww/0mU3ZaJ9v79cmnQrDykMgvyCyxY=;
-        b=mzAZo9UKt2apBG+a8Vk+YCpQ2F+UrwegjTc4F5sZHyb/tpmwnBW+FQVFlZv5cFkdTM
-         Fj5UP+IddswiXOskayD5RsC7RdozQ/oVuxzQjiEoFOv7RVpn5VlS+ML+LDykzx778FmC
-         /V2lnjbg+Ko3orxv1yk8tyX2llLuBqKo5OpnW8aKoMTvSPJRiTwVXKHWBqzzjnuuCWRx
-         8iix8Y9x9v4Ox26Zxcq6BJ0ROZyd8tJ254zafSXx08PxCm/dqdecN3l20K/42ZKXn4mQ
-         R9Lxt5ocxE65yPdm3kHMn2yRhfJuV4YCoutiqYVk/m3aJ6fpGygeHBrQjqS4CxJEzOmB
-         hBsA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=1ZOfd2zx+NjgQww/0mU3ZaJ9v79cmnQrDykMgvyCyxY=;
-        b=nNjVrTA6B03cKywOBdGcGo4kjuro81yC4EGavTRReAvR7Cg7m1/cOyxzagp5awrS5D
-         K5WbH8UPZGDURqn0yT3joj076yWk0oNPEVVTSJcvglnFjEmg0QtaQaWGn5svQfcRHF1k
-         WpY8A0/gssCaA5vRFvnQU92nCubcpraA0VLfr15x1MlLmNx00aWBe0czgLV5OD1LTfQZ
-         ezvsB7TRLQogzLrA2CUAmbtxnOA4C7WuYqrnYQjZMotbzrvNAM8kuGFQEi2hY3ndcas1
-         p8kE9xDw7oDaEkqvJGEkND1kUFYDawpZ3edmUwi39xQ2HdTUaZL+JlajIdtB4O8MA9dZ
-         yETg==
-X-Gm-Message-State: AO0yUKVtQMmFKfL3PwJI64ewzxClDJbmvVTSvQOzE78W+PL4aSpzS+9i
-	7gpOS/8+jVpBAk/ikRprGX0yVKrGiKuKqg4HsTg=
-X-Google-Smtp-Source: AK7set/0nBTFpX0vgIbgrVXsLzjuAA5v6zMOAXCuo7yTj9cK+cCPb3/FTeGJLfxyzfnTCHWhJu0cPJPDYnef62asg/Y=
-X-Received: by 2002:a05:620a:2042:b0:724:3c65:e6ee with SMTP id
- d2-20020a05620a204200b007243c65e6eemr206666qka.456.1675134557070; Mon, 30 Jan
- 2023 19:09:17 -0800 (PST)
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=B4y7xMymI1w+O0jkWE2oeRFBgf46BNBFGmP/9HzvREI=;
+ b=tJQujZsMOgP87NvjFSotsR3JZlkn5ubv+RCTlpyKDC5UF+FYDCBp1GVU2QZ4Uw2l2f78QWmJ2AYtQ0co71TICkV2/SatTlVTXRpXaQrP9azcto1tv+bacSbspGqoGTLG7Qk+FlwlvBii/r5UOeewlq0uNGXKL3ff7GutO4oTt/0=
+Received: from SG2PR03MB4565.apcprd03.prod.outlook.com (2603:1096:4:84::10) by
+ TYZPR03MB5341.apcprd03.prod.outlook.com (2603:1096:405:7::8) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6043.36; Tue, 31 Jan 2023 05:54:14 +0000
+Received: from SG2PR03MB4565.apcprd03.prod.outlook.com
+ ([fe80::e708:8bc4:ed9d:4037]) by SG2PR03MB4565.apcprd03.prod.outlook.com
+ ([fe80::e708:8bc4:ed9d:4037%3]) with mapi id 15.20.6043.036; Tue, 31 Jan 2023
+ 05:54:13 +0000
+From: =?utf-8?B?WGlhbmdzaGVuZyBIb3UgKOS+r+elpeiDnCk=?=
+	<Xiangsheng.Hou@mediatek.com>
+To: "miquel.raynal@bootlin.com" <miquel.raynal@bootlin.com>,
+	"broonie@kernel.org" <broonie@kernel.org>
+CC: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>,
+	"robh+dt@kernel.org" <robh+dt@kernel.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>,
+	=?utf-8?B?QmVubGlhbmcgWmhhbyAo6LW15pys5LquKQ==?=
+	<Benliang.Zhao@mediatek.com>, "linux-spi@vger.kernel.org"
+	<linux-spi@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "krzysztof.kozlowski+dt@linaro.org"
+	<krzysztof.kozlowski+dt@linaro.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, =?utf-8?B?QmluIFpoYW5nICjnq6Dmlowp?=
+	<bin.zhang@mediatek.com>, "gch981213@gmail.com" <gch981213@gmail.com>,
+	"vigneshr@ti.com" <vigneshr@ti.com>, "richard@nod.at" <richard@nod.at>
+Subject: Re: [RESEND PATCH v5 00/10] Add MediaTek MT7986 SPI NAND and ECC
+ support
+Thread-Topic: [RESEND PATCH v5 00/10] Add MediaTek MT7986 SPI NAND and ECC
+ support
+Thread-Index: AQHZNFfxIYva4XnKBkeaWbJ51T67n663ImiAgAACAgCAAAQwgIAA35eA
+Date: Tue, 31 Jan 2023 05:54:13 +0000
+Message-ID: <9d0a46a269268751538eb43db58473abab8315d0.camel@mediatek.com>
+References: <20230130030656.12127-1-xiangsheng.hou@mediatek.com>
+	 <20230130171145.2c844d34@xps-13> <Y9ft8BIzESLQ0TTh@sirena.org.uk>
+	 <20230130173355.5e65a1c5@xps-13>
+In-Reply-To: <20230130173355.5e65a1c5@xps-13>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SG2PR03MB4565:EE_|TYZPR03MB5341:EE_
+x-ms-office365-filtering-correlation-id: ee44cf4d-1df8-41d3-5c78-08db034f94d6
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: JMf/k2y0a0bGc4IguY/Diy9GXvID7XCDCt7JuxfzuenG66yYZmhMfCBoXwXSpZFMD976b1pNAPWQVImpZSeuYtVvfqZKXEgX5chKsqpgbdTRlo6bgJDGsGZ/8B1IK97xlmMc2uTqtgxyqL21k1GGZBVv03HrBvZFOF89jyKyu+obuviVc96gmzE8ytPYtQE1b7Wz6hAuyDocThfNRHsijHSZ2SfsIa0fhN6L1tjsNo+awHfeZodWM2E36iYEZlhLav/0aGznGMXbm0xSDT5zl3pAnWRmK9FQbjokbpBmTxDOxBZdOre+aAgVHBXRMZbeQJf8wkkomi/9LhQxIdsAY8yzBtQdlbE4uEMkz7fLO5GWPUrXcyer5QSKcgc2xLqG9Og0ZYn7q7zJuq229HXl20nFmX9XuSyJ87cdnozxEscCig/IBFG41PVR3Vy5hz+cYSLyDJnQlWQvwEtVd2PHceiVs1d75D+rnPQfnA0GMQrjEsZnZPUsmVdvEAhhdKpK0esNn2UK52uD3G2c71nD99Q4a0LKGtCqf5bOqo/9ImGU1yV3iDjeBWYV4YP5XTEAyscHYrc7mCQqaHjjKKlEulZP5uIy5vjADlojFjIPyr/Fey2CRZWhAAtjQGELTRVDBoSIsTFkfg9fKUTautaFbfeIkWAXL3cprVTJFfLwAgZ4Clq5cmpu2DvLsT0H3CTCzudhpjjwas4W3LF/2JwDsg==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SG2PR03MB4565.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(136003)(39860400002)(346002)(396003)(366004)(376002)(451199018)(54906003)(85182001)(36756003)(66446008)(316002)(66556008)(110136005)(4326008)(64756008)(76116006)(66946007)(66476007)(41300700001)(8936002)(5660300002)(38100700002)(122000001)(86362001)(38070700005)(8676002)(6506007)(71200400001)(6512007)(26005)(186003)(7416002)(2906002)(6486002)(478600001)(2616005);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?T0lPZlhnYWhVNitUNFdhRG9iTFN1TUN4eVg5OWJFeXVpZkxEbXlzQk9XVGR1?=
+ =?utf-8?B?OXZNMnpaSkVGVzNSWDFUZ0k4d1BHTmhYWjJtQ0s0R0dqZDRhNU0rNlRDbThp?=
+ =?utf-8?B?UHJwZkZzalJIVzdhWFA1NHNsRG8xNXNlcnpLOWczSHUxbHJXRkYzOUpVMnVi?=
+ =?utf-8?B?VnVNcnRXc3ovZ1h2eGtQbnR3TjcvYVBUQ2lLSXVOVEJWMnJLK2ZHTGVSTlZy?=
+ =?utf-8?B?eXhRNk9VcjRHOUFqZS82Z2dSRFJhaE9oTmU1b2J4cC9FUFRkOXFUb3hJOHRu?=
+ =?utf-8?B?OGVDK0VBcG1hU0M0dmNjRHhycGQ2L05qeEhmZmRoVHFqWnVNa3RSN21XSm9E?=
+ =?utf-8?B?RDlzZmhYQVh5eWNqcjhteTV0Z2F4SDFpa1JYRFpBQzNZYk9NTDUrTGhzNkh6?=
+ =?utf-8?B?MDNUUVN4eTBYbWJZcTBlenViUWM3VEpkUm0ySks5VzZmVWhCRDd2ZHVFZytB?=
+ =?utf-8?B?U2tXUXR3bUNDMW9hdDlpZWlBdlNROXlIUnlIRm1rcXoxcTdjdXNQQ0RrZGFV?=
+ =?utf-8?B?NFZsK0pSUFpTdWtmTXd5eGU0QUllb1VZbGRZZC9rVHdlYk5GUjlDR0d4YVlh?=
+ =?utf-8?B?WEFYQW9QMHFkMmR1QWJHc0NJc3VpK3daSzFzSzY3Y2h6Z3FweGdyd0J4N3B0?=
+ =?utf-8?B?ZHFPZ3NnaGhxcFMxUW0wOHZxOXBpOUx5amUyY1hkZEtNaytjdXFKTEh5dEJz?=
+ =?utf-8?B?eGdGalpGSlJEa2RZU3Y5cWxQMzVLTjExYXNSYXZ0MVF6bFQ5UUhrMGhla2dy?=
+ =?utf-8?B?czhOS0hqbFpVNXFvM0RXVm1SRmNsUnlmdWsrN2E0d0dFM3JxMWo3THdha29V?=
+ =?utf-8?B?YkEya255Tm8yYTVwZk51MkxFc01NVXBWaHBGcHlxWGt4TTZlRWdmUkdlUGZv?=
+ =?utf-8?B?RXUwQ3hHZDUrdU9vSE90dDlGUXN5V3Q4LzFyYXA0c3NCVk9pY1ZJbnI1NDdC?=
+ =?utf-8?B?VHRwOGVYc3hpZExWZ0xrZFFWaGRqYnpSWkNVTHF3akpTcU1NWHNmUS92YUdX?=
+ =?utf-8?B?eGVuN0RxYVhMc2pObDFQbDVjN3MxSk1NRWpjS2RHSEd0amhLRTNnUE9xY2FU?=
+ =?utf-8?B?N0pyQ3RNVVJJSGdlWldZa0plMVZZSUlCa1Z3OVVhN1pTT0J0SnFZS2pxQUto?=
+ =?utf-8?B?cGRsVjFhUE1abm5TYUI5ellUNm1rOS84RWg2ajBBZWZka3QzQ2JXMjd5VDho?=
+ =?utf-8?B?dlBxbnczRzVoc003aW5PL1RwT1M3aS8va1hmL01aRTQxTWZFdWlZaWFtMlM5?=
+ =?utf-8?B?NHBFTFhGUXhaUDIyS21COEJpbDNDMVBhMmRFYXkxVGxvQkNZYVdSK0ViZjd4?=
+ =?utf-8?B?aHJlOFh1dmZ1bi9Zd3M2ZU5kRzdRQmlaMmp2amxrR2ZlRDM2V1BWOEVQZW9R?=
+ =?utf-8?B?R3NKWFBQdzgvNVZ0VXZjY1dqakRDM0FKZEdsZk9Kdm11T1Bqak94c1hZbmIv?=
+ =?utf-8?B?ckRqK1F4NkYxOTJmakt1blhRYkpCN2V5WHBoMGE4YW95bnZTcWs1YkUvcWJl?=
+ =?utf-8?B?amxPOFgzNXNCclEyWnJ3RE9vT3pDMzBzRFY2WWNkekFOa0tYK0lyLzlZVWo0?=
+ =?utf-8?B?dHhhMXBxLytKVER3cVdqRWs1YnZFU3I5QjlYQXJBZWRzbEhoRWdiV1VPTzhI?=
+ =?utf-8?B?NEh0OVR1QlNSckZYYUdvMjI3cEg1SVBPSnVQb3NBSFVRVDBRbTVGaGhPQXZ3?=
+ =?utf-8?B?RWYyQzNsbjJlOGtnZkZHR3NiZzdlUGZKN291WXRFbGlidUV0NUJPTmtGMzlU?=
+ =?utf-8?B?U3Q1K2NaNmJmajdxUElvRTEvSTdwSjhSVGE4VVhHb3ZqbzhuNmZXZGJLTFZ0?=
+ =?utf-8?B?bkVzbEtJamxBMVhPQ2hWSEZIQS8ycy9oL2tBZXpFQlRsbTVTNmdiK3UzcDFN?=
+ =?utf-8?B?OFBTdDJmYU0xbzhMQm9KaU1yYUxQbllpZnRqVWtpeGhJNThscUhQdlJReWhB?=
+ =?utf-8?B?YXBtU1RJeTlGTFgzVHZQa2ZaK0k5OC9QQnJ0MFRidXFNcTl2ZWl3aTgySEdD?=
+ =?utf-8?B?MG8vcGtZM1JNN1lFK3dIY09oVDVSVnhJdmZoRDY3L3dRWmZVK0dxendNNFJh?=
+ =?utf-8?B?RE5QbTcyZE03YldJY091dmZvLzdXc0gxc3hYUTdhNjA5MnhaNnlFb0R5c210?=
+ =?utf-8?B?M2pWODIxYmpDZ0QxWktzN0ozNnRSTVpLV1NyQUt1TVdUMmpjZlI2d2IrUzRQ?=
+ =?utf-8?Q?0XqH/J+SDDdPwP/2PAeMkuI=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <E0DDB6C7659B40419769E288E7C2DF2B@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20230130064656.106793-1-michael@allwinnertech.com>
-In-Reply-To: <20230130064656.106793-1-michael@allwinnertech.com>
-From: Wenchao Chen <wenchao.chen666@gmail.com>
-Date: Tue, 31 Jan 2023 11:09:06 +0800
-Message-ID: <CA+Da2qzJBxn5up1YLiaguhMJ=W7JkVExyyiFco9KyPE+3jEn8w@mail.gmail.com>
-Subject: Re: [PATCH] mmc:mmc-cqhci:support interrupt coalescing
-To: Michael Wu <michael@allwinnertech.com>
-Cc: adrian.hunter@intel.com, riteshh@codeaurora.org, asutoshd@codeaurora.org, 
-	ulf.hansson@linaro.org, chaotian.jing@mediatek.com, matthias.bgg@gmail.com, 
-	kdasu.kdev@gmail.com, alcooperx@gmail.com, f.fainelli@gmail.com, 
-	haibo.chen@nxp.com, shawnguo@kernel.org, agross@kernel.org, 
-	andersson@kernel.org, michal.simek@xilinx.com, thierry.reding@gmail.com, 
-	jonathanh@nvidia.com, bcm-kernel-feedback-list@broadcom.com, 
-	kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com, 
-	konrad.dybcio@linaro.org, linux-mmc@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	linux-tegra@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SG2PR03MB4565.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ee44cf4d-1df8-41d3-5c78-08db034f94d6
+X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Jan 2023 05:54:13.6964
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: ilC8ZgKxJXpU6wsf5XmLbJYMYq4W1FTxRReC8dwQ2amtC6eaI0RLCw5QG4lx3FY/0XXu5suMIOWOFpDRkOzsQvzignezI1PXWtkrADbi3ZA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB5341
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230130_190919_428957_C3A643E3 
-X-CRM114-Status: GOOD (  22.88  )
+X-CRM114-CacheID: sfid-20230130_215456_547408_4AC1FCBF 
+X-CRM114-Status: GOOD (  19.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,241 +182,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 30, 2023 at 2:49 PM Michael Wu <michael@allwinnertech.com> wrote:
->
-> Support interrupt coalescing to reduce the frequency of mmc interrupts
->
-
-Hi Michael
-The CQIS register does not have any configuration.
-Usually ICCTH needs to be enabled.
-
-> Signed-off-by: Michael Wu <michael@allwinnertech.com>
-> ---
->  drivers/mmc/host/cqhci-core.c      | 20 +++++++++++++++-----
->  drivers/mmc/host/cqhci.h           |  5 ++++-
->  drivers/mmc/host/mtk-sd.c          |  2 +-
->  drivers/mmc/host/sdhci-brcmstb.c   |  2 +-
->  drivers/mmc/host/sdhci-esdhc-imx.c |  2 +-
->  drivers/mmc/host/sdhci-msm.c       |  2 +-
->  drivers/mmc/host/sdhci-of-arasan.c |  2 +-
->  drivers/mmc/host/sdhci-pci-core.c  |  2 +-
->  drivers/mmc/host/sdhci-pci-gli.c   |  2 +-
->  drivers/mmc/host/sdhci-tegra.c     |  2 +-
->  drivers/mmc/host/sdhci_am654.c     |  2 +-
->  11 files changed, 28 insertions(+), 15 deletions(-)
->
-> diff --git a/drivers/mmc/host/cqhci-core.c b/drivers/mmc/host/cqhci-core.c
-> index b3d7d6d8d654..f9cdf9f04bfc 100644
-> --- a/drivers/mmc/host/cqhci-core.c
-> +++ b/drivers/mmc/host/cqhci-core.c
-> @@ -420,7 +420,7 @@ static void cqhci_disable(struct mmc_host *mmc)
->  }
->
->  static void cqhci_prep_task_desc(struct mmc_request *mrq,
-> -                                struct cqhci_host *cq_host, int tag)
-> +                                struct cqhci_host *cq_host, int tag, int intr)
->  {
->         __le64 *task_desc = (__le64 __force *)get_desc(cq_host, tag);
->         u32 req_flags = mrq->data->flags;
-> @@ -428,7 +428,7 @@ static void cqhci_prep_task_desc(struct mmc_request *mrq,
->
->         desc0 = CQHCI_VALID(1) |
->                 CQHCI_END(1) |
-> -               CQHCI_INT(1) |
-> +               CQHCI_INT(intr) |
->                 CQHCI_ACT(0x5) |
->                 CQHCI_FORCED_PROG(!!(req_flags & MMC_DATA_FORCED_PRG)) |
->                 CQHCI_DATA_TAG(!!(req_flags & MMC_DATA_DAT_TAG)) |
-> @@ -621,7 +621,7 @@ static int cqhci_request(struct mmc_host *mmc, struct mmc_request *mrq)
->         }
->
->         if (mrq->data) {
-> -               cqhci_prep_task_desc(mrq, cq_host, tag);
-> +               cqhci_prep_task_desc(mrq, cq_host, tag, (cq_host->intr_clsc ? 0 : 1));
->
->                 err = cqhci_prep_tran_desc(mrq, cq_host, tag);
->                 if (err) {
-> @@ -812,7 +812,7 @@ static void cqhci_finish_mrq(struct mmc_host *mmc, unsigned int tag)
->  irqreturn_t cqhci_irq(struct mmc_host *mmc, u32 intmask, int cmd_error,
->                       int data_error)
->  {
-> -       u32 status;
-> +       u32 status, rval;
->         unsigned long tag = 0, comp_status;
->         struct cqhci_host *cq_host = mmc->cqe_private;
->
-> @@ -856,6 +856,15 @@ irqreturn_t cqhci_irq(struct mmc_host *mmc, u32 intmask, int cmd_error,
->                 spin_unlock(&cq_host->lock);
->         }
->
-> +       if (cq_host->intr_clsc) {
-> +               rval = cqhci_readl(cq_host, CQHCI_IC);
-> +               rval |= CQHCI_IC_RESET;
-> +               cqhci_writel(cq_host, rval, CQHCI_IC);
-> +               rval = cqhci_readl(cq_host, CQHCI_IC);
-> +               rval &= (~CQHCI_IC_RESET);
-> +               cqhci_writel(cq_host, rval, CQHCI_IC);
-> +       }
-> +
->         if (status & CQHCI_IS_TCL)
->                 wake_up(&cq_host->wait_queue);
->
-> @@ -1172,11 +1181,12 @@ static unsigned int cqhci_ver_minor(struct cqhci_host *cq_host)
->  }
->
->  int cqhci_init(struct cqhci_host *cq_host, struct mmc_host *mmc,
-> -             bool dma64)
-> +             bool dma64, bool intr_clsc)
->  {
->         int err;
->
->         cq_host->dma64 = dma64;
-> +       cq_host->intr_clsc = intr_clsc;
->         cq_host->mmc = mmc;
->         cq_host->mmc->cqe_private = cq_host;
->
-> diff --git a/drivers/mmc/host/cqhci.h b/drivers/mmc/host/cqhci.h
-> index ba9387ed90eb..acf90773c30a 100644
-> --- a/drivers/mmc/host/cqhci.h
-> +++ b/drivers/mmc/host/cqhci.h
-> @@ -227,6 +227,9 @@ struct cqhci_host {
->
->         /* 64 bit DMA */
->         bool dma64;
-> +
-> +       /* interrupt coalescing*/
-> +       bool intr_clsc;
->         int num_slots;
->         int qcnt;
->
-> @@ -312,7 +315,7 @@ struct platform_device;
->
->  irqreturn_t cqhci_irq(struct mmc_host *mmc, u32 intmask, int cmd_error,
->                       int data_error);
-> -int cqhci_init(struct cqhci_host *cq_host, struct mmc_host *mmc, bool dma64);
-> +int cqhci_init(struct cqhci_host *cq_host, struct mmc_host *mmc, bool dma64, bool intr_clsc);
->  struct cqhci_host *cqhci_pltfm_init(struct platform_device *pdev);
->  int cqhci_deactivate(struct mmc_host *mmc);
->  static inline int cqhci_suspend(struct mmc_host *mmc)
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index edade0e54a0c..2c18f954d4b8 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -2796,7 +2796,7 @@ static int msdc_drv_probe(struct platform_device *pdev)
->                 host->cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
->                 host->cq_host->mmio = host->base + 0x800;
->                 host->cq_host->ops = &msdc_cmdq_ops;
-> -               ret = cqhci_init(host->cq_host, mmc, true);
-> +               ret = cqhci_init(host->cq_host, mmc, true, false);
->                 if (ret)
->                         goto host_free;
->                 mmc->max_segs = 128;
-> diff --git a/drivers/mmc/host/sdhci-brcmstb.c b/drivers/mmc/host/sdhci-brcmstb.c
-> index f2cf3d70db79..4aeaeddbbf25 100644
-> --- a/drivers/mmc/host/sdhci-brcmstb.c
-> +++ b/drivers/mmc/host/sdhci-brcmstb.c
-> @@ -231,7 +231,7 @@ static int sdhci_brcmstb_add_host(struct sdhci_host *host,
->                 cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
->         }
->
-> -       ret = cqhci_init(cq_host, host->mmc, dma64);
-> +       ret = cqhci_init(cq_host, host->mmc, dma64, false);
->         if (ret)
->                 goto cleanup;
->
-> diff --git a/drivers/mmc/host/sdhci-esdhc-imx.c b/drivers/mmc/host/sdhci-esdhc-imx.c
-> index 9e73c34b6401..7aef7abe71f1 100644
-> --- a/drivers/mmc/host/sdhci-esdhc-imx.c
-> +++ b/drivers/mmc/host/sdhci-esdhc-imx.c
-> @@ -1712,7 +1712,7 @@ static int sdhci_esdhc_imx_probe(struct platform_device *pdev)
->                 cq_host->mmio = host->ioaddr + ESDHC_CQHCI_ADDR_OFFSET;
->                 cq_host->ops = &esdhc_cqhci_ops;
->
-> -               err = cqhci_init(cq_host, host->mmc, false);
-> +               err = cqhci_init(cq_host, host->mmc, false, false);
->                 if (err)
->                         goto disable_ahb_clk;
->         }
-> diff --git a/drivers/mmc/host/sdhci-msm.c b/drivers/mmc/host/sdhci-msm.c
-> index 4ac8651d0b29..b6549d1e43ec 100644
-> --- a/drivers/mmc/host/sdhci-msm.c
-> +++ b/drivers/mmc/host/sdhci-msm.c
-> @@ -2153,7 +2153,7 @@ static int sdhci_msm_cqe_add_host(struct sdhci_host *host,
->         if (ret)
->                 goto cleanup;
->
-> -       ret = cqhci_init(cq_host, host->mmc, dma64);
-> +       ret = cqhci_init(cq_host, host->mmc, dma64, false);
->         if (ret) {
->                 dev_err(&pdev->dev, "%s: CQE init: failed (%d)\n",
->                                 mmc_hostname(host->mmc), ret);
-> diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sdhci-of-arasan.c
-> index 89c431a34c43..811f8686532d 100644
-> --- a/drivers/mmc/host/sdhci-of-arasan.c
-> +++ b/drivers/mmc/host/sdhci-of-arasan.c
-> @@ -1610,7 +1610,7 @@ static int sdhci_arasan_add_host(struct sdhci_arasan_data *sdhci_arasan)
->         if (dma64)
->                 cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
->
-> -       ret = cqhci_init(cq_host, host->mmc, dma64);
-> +       ret = cqhci_init(cq_host, host->mmc, dma64, false);
->         if (ret)
->                 goto cleanup;
->
-> diff --git a/drivers/mmc/host/sdhci-pci-core.c b/drivers/mmc/host/sdhci-pci-core.c
-> index c359f867df0a..6f6cae6355a7 100644
-> --- a/drivers/mmc/host/sdhci-pci-core.c
-> +++ b/drivers/mmc/host/sdhci-pci-core.c
-> @@ -964,7 +964,7 @@ static int glk_emmc_add_host(struct sdhci_pci_slot *slot)
->         if (dma64)
->                 cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
->
-> -       ret = cqhci_init(cq_host, host->mmc, dma64);
-> +       ret = cqhci_init(cq_host, host->mmc, dma64, false);
->         if (ret)
->                 goto cleanup;
->
-> diff --git a/drivers/mmc/host/sdhci-pci-gli.c b/drivers/mmc/host/sdhci-pci-gli.c
-> index 633a8ee8f8c5..6917ba339aa9 100644
-> --- a/drivers/mmc/host/sdhci-pci-gli.c
-> +++ b/drivers/mmc/host/sdhci-pci-gli.c
-> @@ -908,7 +908,7 @@ static int gl9763e_add_host(struct sdhci_pci_slot *slot)
->         if (dma64)
->                 cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
->
-> -       ret = cqhci_init(cq_host, host->mmc, dma64);
-> +       ret = cqhci_init(cq_host, host->mmc, dma64, false);
->         if (ret)
->                 goto cleanup;
->
-> diff --git a/drivers/mmc/host/sdhci-tegra.c b/drivers/mmc/host/sdhci-tegra.c
-> index bff084f178c9..f98a468e8f43 100644
-> --- a/drivers/mmc/host/sdhci-tegra.c
-> +++ b/drivers/mmc/host/sdhci-tegra.c
-> @@ -1620,7 +1620,7 @@ static int sdhci_tegra_add_host(struct sdhci_host *host)
->         if (dma64)
->                 cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
->
-> -       ret = cqhci_init(cq_host, host->mmc, dma64);
-> +       ret = cqhci_init(cq_host, host->mmc, dma64, false);
->         if (ret)
->                 goto cleanup;
->
-> diff --git a/drivers/mmc/host/sdhci_am654.c b/drivers/mmc/host/sdhci_am654.c
-> index 7ef828942df3..8e7fbee70e16 100644
-> --- a/drivers/mmc/host/sdhci_am654.c
-> +++ b/drivers/mmc/host/sdhci_am654.c
-> @@ -568,7 +568,7 @@ static int sdhci_am654_cqe_add_host(struct sdhci_host *host)
->
->         host->mmc->caps2 |= MMC_CAP2_CQE;
->
-> -       return cqhci_init(cq_host, host->mmc, 1);
-> +       return cqhci_init(cq_host, host->mmc, 1, false);
->  }
->
->  static int sdhci_am654_get_otap_delay(struct sdhci_host *host,
-> --
-> 2.29.0
->
+SGkgTWlxdWVsLA0KDQpPbiBNb24sIDIwMjMtMDEtMzAgYXQgMTc6MzMgKzAxMDAsIE1pcXVlbCBS
+YXluYWwgd3JvdGU6DQo+IEhpIFhpYW5nc2hlbmcsDQo+IA0KPiBicm9vbmllQGtlcm5lbC5vcmcg
+d3JvdGUgb24gTW9uLCAzMCBKYW4gMjAyMyAxNjoxODo1NiArMDAwMDoNCj4gDQo+ID4gT24gTW9u
+LCBKYW4gMzAsIDIwMjMgYXQgMDU6MTE6NDVQTSArMDEwMCwgTWlxdWVsIFJheW5hbCB3cm90ZToN
+Cj4gPiA+IHhpYW5nc2hlbmcuaG91QG1lZGlhdGVrLmNvbSB3cm90ZSBvbiBNb24sIDMwIEphbiAy
+MDIzIDExOjA2OjQ2DQo+ID4gPiArMDgwMDogIA0KPiA+ID4gPiBUaGlzIHBhdGNoIHNlcmllcyBh
+ZGQgTWVkaWFUZWsgTVQ3OTg2IFNQSSBOQU5EIGFuZCBFQ0MNCj4gPiA+ID4gY29udHJvbGxlcg0K
+PiA+ID4gPiBzdXBwb3J0LCBzcGxpdCBFQ0MgZW5naW5lIHdpdGggcmF3bmFuZCBjb250cm9sbGVy
+IGluIGJpbmRpbmdzDQo+ID4gPiA+IGFuZA0KPiA+ID4gPiBjaGFuZ2UgdG8gWUFNTCBzY2hlbWEu
+ICANCj4gPiA+IEkgd291bGQgbGlrZSB0byBwaWNrLXVwIHBhdGNoZXMgMywgNyBhbmQgMTAgYW5k
+IGFwcGx5IHRoZW0gaW4gdGhlDQo+ID4gPiBtdGQNCj4gPiA+IHRyZWUgYXMgdGhleSBsb29rIGNv
+bXBsZXRlbHkgb3J0aG9nb25hbCB3aXRoIGFsbCB0aGUgb3RoZXINCj4gPiA+IChzcGkvRFQpDQo+
+ID4gPiBjaGFuZ2VzLCBhbSBJIHJpZ2h0PyAgDQo+ID4gPiBNYXJrLCBpcyBpdCBva2F5IGZvciB5
+b3U/ICANCj4gPiANCj4gPiBUaGF0J3MgZmluZSwgYXNzdW1pbmcgdGhlcmUncyBubyBkZXBlbmRl
+bmN5IGlzc3Vlcy4gIFhpYW5nc2hlbmcsDQo+ID4gaXQncw0KPiA+IGdlbmVyYWxseSBiZXN0IHRv
+IGF2b2lkIG1peGluZyBwYXRjaGVzIGZvciBtdWx0aXBsZSBzdWJzeXN0ZW1zIGludG8NCj4gPiBh
+DQo+ID4gc2luZ2xlIHNlcmllcyB3aGVuIGl0J3Mgbm90IG5lZWRlZCBzaW5jZSBpdCBtYWtlcyBt
+ZXJnaW5nIHRoaW5ncw0KPiA+IG1vcmUNCj4gPiBjb21wbGV4Lg0KPiANCj4gV2VsbCwga2VybmVs
+IHRlc3Qgcm9ib3QganVzdCByZXBvcnRlZCBhbiBpc3N1ZSB3aXRoIGEgd3JvbmcgZmlsZQ0KPiBu
+YW1lLA0KPiBzbyBsZXQncyBzcGxpdCB0aGUgc2VyaWVzLiBJIG5vdyBleHBlY3QgYSBzZXJpZXMg
+d2l0aCB0aGUgc3BpIGFuZA0KPiByZWxldmFudCBjaGFuZ2VzIChmb3IgTWFyaykgYW5kIGFub3Ro
+ZXIgc2VyaWVzIHdpdGggdGhlIHRocmVlIG10ZA0KPiBwYXRjaGVzIC1maXhlZCwgb2YgY291cnNl
+LSB3aGljaCBJJ2xsIGFwcGx5IG9uIG15IHNpZGUuDQoNCkkgd2lsbCBwaWNrLXVwIHBhdGNoZXMg
+MywgNywgMTAgYW5kIDgsIDkgYXMgYSBzZXJpZXMgZm9yIHlvdSwgc2luY2UNCnBhdGNoZXMgOCwg
+OSBjaGFuZ2UgdGhlIGV4aXN0aW5nIE5BTkQgY29udHJvbGxlciBub2RlIG5hbWUuIEFuZCBhbm90
+aGVyDQpwYXRjaGVzIGFzIGEgc2VyaWVzIGZvciBNYXJrLg0KDQpUaGFua3MNClhpYW5nc2hlbmcg
+SG91DQoNCg0K
 
