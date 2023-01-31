@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B412C636CC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 13:25:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59ACDC636CC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 13:26:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZxhhcNLD9sL5NmLXF8g0WapveH6yAh/sTiu1KtKU5hw=; b=YElyUhl9fjg1FSkKv8GWmE6pBM
-	/XUE4O6I6MNNols0TsIBXVT55a81/tKmHbSJlyI97jX/Ks84WQrhoerEV0Z8gLfvP+jLcuMu+FoSk
-	GMk6jvST+aKHxcIAltfUkBQYG4OcUdkj0tg9YW1cr2Lh6x6+JD5H5laWX/uUTRROk4rHlu+Ajrqr1
-	2Zr0lASXkswR4m+XtHj2m1p9iAaX3iFmuidXCdQH0x1FfE+pKQ8D4/3h1A43jcNx3d9Y8aRxC6n+K
-	pU8R+dA5KGXxDMfcP0uBCYQLlvloUztrPR6XUT5vX/1W/dCZ8zD5uGiHho4CmWVAYuoTuDb8VU77G
-	BKLU1Obg==;
+	bh=TfZfyT/Vvj+XVZkKWfK1JVlF+kIO3JnmZX9PXK0es3k=; b=LNRzRfOiQsxEs0HxDmRpA4T16R
+	d9hg4NLMWCdFa7AHnfZ1xMwBAAgwIEzGOFxPXvypwxrzlYEZVLwSZNVxVsmKHUjFzitwHSOw/2GEG
+	h6s5LQNbr/J+VoWM1X6nReH93rcK3iq2pudj9Rt2QfGFWG2Y8eOlQTWaUDqjpmeojE+QVAG2i2PeX
+	0v5Qw6usCIlx1r7anuQh27YEmCcbpvS/n/eEWS1PVPIRQdzoUd8MFKfdfKVWA5vwnqlvH/QWXMosz
+	0h/Kt6P/wz8dkW0xtMcz90GIWE9h528m46j4milCUFCjL1GSoF9TBwkrefREPxDZVIYIN4A0GQL8x
+	5DGuhsDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMqdU-0085FX-8l; Tue, 31 Jan 2023 13:25:20 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1pMqeC-0085Yf-1P; Tue, 31 Jan 2023 13:26:04 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMqcm-0084q3-Lc; Tue, 31 Jan 2023 13:24:38 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id c10-20020a05600c0a4a00b003db0636ff84so10608529wmq.0;
-        Tue, 31 Jan 2023 05:24:31 -0800 (PST)
+	id 1pMqd3-00853G-Co; Tue, 31 Jan 2023 13:24:54 +0000
+Received: by mail-wm1-x333.google.com with SMTP id n28-20020a05600c3b9c00b003ddca7a2bcbso591448wms.3;
+        Tue, 31 Jan 2023 05:24:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=ZxhhcNLD9sL5NmLXF8g0WapveH6yAh/sTiu1KtKU5hw=;
-        b=en3JHQMZLrTmM8qbHgMjJaXpvDU8yI8g7QuilWw5521Cam0BttosV4MMSnWLoHf5ws
-         DnpcwE1BRzEHnwoAl5B7voNCTJst5DU98sNh9/NaUCQ+XeZnFBYKHS0L8U2ZK85v3QkK
-         HFrH0aYdyG/Eq7dhcacKP272aJ+Dom75XIi9JCoDb+hJZYHEjgI7Yf5sGrzdPFFC9ybk
-         zxvYnyx90ZZOvHTfXHVCAXlU/H6c2I3VXwzUriaqMrefs7ROYUflXMUcg/sNSoChFsa6
-         62EEl/jWIabDEv+6emNcKdjzg92+oUSPlLT5Ce7OelY14JEM6z9YzmQUOkNaiX56R2zr
-         5FAw==
+        bh=TfZfyT/Vvj+XVZkKWfK1JVlF+kIO3JnmZX9PXK0es3k=;
+        b=YyzFmDzZYXunsXWpS+omE61fG+I6kwtrGZcleEGZjyd+s6DFwgv71lCGpJiqxrz7zC
+         4TLlZGft167i58+Bt5gDYp6LnQE6d9iBpyPUxdx7D0jRUlzervAz9045RtJJLjjkP7G+
+         h9cTDcoaiJ5mTCvg2ryGVIU7ID42L0En/eRnTQRdXyF5XQhZpVml1hdwDylNn4w4QNAw
+         +d92gCbkBnr3BQl2Eut9JhfSxsDgekSn+AHU4Wq3JBF2bFWPShApmA6ZoJaLmaLs/0Su
+         7dY0JuEDZvwVuJM9DwOWRc7rnc8SeY2yFQYWSflYRBi+pZgPiHo/Z6bb7XusKomPNyM2
+         Nj5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZxhhcNLD9sL5NmLXF8g0WapveH6yAh/sTiu1KtKU5hw=;
-        b=6ZPlIDRSj4/ibLo1uuP7BSUjnga96NC60E95HiVeUZvfkbLtxt3oKQWRjvV9UnnNYf
-         sfZS7F15bcG7ehM6Ccs4CM1xpRp/1f4lvyU2eEdwAyGgf7tkiWBzQE0qhk/JGwzlfoof
-         g0e05ldBAnNuAviJbX7Fu9ZmegbpJ1KgD718DruEF9xno2eCIdel2NhOBqr4DrEXL+QP
-         /ryTehqqG6nXWHhdK5OIIMZwVMRXk7VHzzjuB469S2wR6tKhcKkVaas3JkFW9MpxOpsz
-         fPUWMSDhGMm3B3iMnzQYAuAYhd05iMeplNF20UBVj/E/kFHVQoNCgNs0OiivR1q4hsLf
-         gOSA==
-X-Gm-Message-State: AO0yUKUP3ovUCUR1OpGwyqUZOgKEDi7b047KfK06XsKObc+PCvqza/Rt
-	i8WNqNqJl2KCRkKyKqmSObU=
-X-Google-Smtp-Source: AK7set+urS00mY19tuZGxh19k2nPNudaVX0PteOfgnQnWnR7Tf5PHTMazYdwKUobsbo6ou0QBDRGjw==
-X-Received: by 2002:a05:600c:4f06:b0:3dc:5321:8457 with SMTP id l6-20020a05600c4f0600b003dc53218457mr3680464wmq.5.1675171470151;
-        Tue, 31 Jan 2023 05:24:30 -0800 (PST)
+        bh=TfZfyT/Vvj+XVZkKWfK1JVlF+kIO3JnmZX9PXK0es3k=;
+        b=ULlDx088/J7Mk350cA6Pv8H6f2MQ6RVSvFl1NPD0tnVlDkg57vU61tqHrPgKTfb/ld
+         zn5C0uwPpqzUzYGGhXbTrn3eYab8zLCcMxAhcYna2it4ePt0qGugoEGKW4yf1Ayqfqi3
+         1WsqOTZvDJjU3eJO+WDInLxiUAGU47+qvqQXVfXZ1loz9x4fHwy3fVg6ZAJUDA/DLP+T
+         QirpGbvXv/cy/ZIJuX9Lkg7nzYhGTk4h5xVXcAA7qTokg999rpySCsDcRnikSvN2ATvI
+         PInbCxijBkF7RgBT7BZNfAXFcfWdVgLBMxliSsKhFunclWO1XROaEfAZTuYSWb2JROg8
+         bFTw==
+X-Gm-Message-State: AO0yUKXabo0Y3wjdel7w23M/wXic39mVLje6rvB3oLHZEc3jd4RIlWBB
+	zt7wGNcGJAb/ORSa4RLr7qM=
+X-Google-Smtp-Source: AK7set8VL7QkCMInXUnEBkwTl1JaZ0iii2TwwlogkxDEyM9c8pDA647tjls+yCjV36AYJJkRGVPCQQ==
+X-Received: by 2002:a05:600c:19d1:b0:3dc:1dc3:7a05 with SMTP id u17-20020a05600c19d100b003dc1dc37a05mr23396109wmq.10.1675171491939;
+        Tue, 31 Jan 2023 05:24:51 -0800 (PST)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id e10-20020a5d500a000000b002be0b1e556esm14549932wrt.59.2023.01.31.05.24.28
+        by smtp.gmail.com with ESMTPSA id e5-20020a05600c254500b003dc47fb33dasm11446087wma.18.2023.01.31.05.24.50
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 31 Jan 2023 05:24:29 -0800 (PST)
-Message-ID: <23de3e2e-81d9-5d23-748b-ee25cd5e39ba@gmail.com>
-Date: Tue, 31 Jan 2023 14:24:28 +0100
+        Tue, 31 Jan 2023 05:24:51 -0800 (PST)
+Message-ID: <6de52a34-2e59-4a9c-5c7f-b374676be987@gmail.com>
+Date: Tue, 31 Jan 2023 14:24:50 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH v4 08/14] soc: mediatek: mtk-svs: clean up platform
- probing
+Subject: Re: [PATCH v4 09/14] soc: mediatek: mtk-svs: improve readability of
+ platform_probe
 Content-Language: en-US
 To: Roger Lu <roger.lu@mediatek.com>,
  Enric Balletbo Serra <eballetbo@gmail.com>, Kevin Hilman
@@ -76,14 +76,14 @@ Cc: Fan Chen <fan.chen@mediatek.com>,
  linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20230111074528.29354-1-roger.lu@mediatek.com>
- <20230111074528.29354-9-roger.lu@mediatek.com>
+ <20230111074528.29354-10-roger.lu@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230111074528.29354-9-roger.lu@mediatek.com>
+In-Reply-To: <20230111074528.29354-10-roger.lu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_052436_770949_B49DCA46 
-X-CRM114-Status: GOOD (  16.94  )
+X-CRM114-CacheID: sfid-20230131_052453_477373_8BDAA7C6 
+X-CRM114-Status: GOOD (  16.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,9 +103,8 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 11/01/2023 08:45, Roger Lu wrote:
 > From: Matthias Brugger <matthias.bgg@gmail.com>
 > 
-> We only ever call the SoC specific probe function from
-> svs_platform_probe. No need to carry that function in a global
-> datastructure around.
+> If a compatible misses a match data entry, then something is wrong in
+> the development phase, we don't need to check for that at runtime.
 > 
 > Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
@@ -114,40 +113,22 @@ On 11/01/2023 08:45, Roger Lu wrote:
 Applied, thanks!
 
 > ---
->   drivers/soc/mediatek/mtk-svs.c | 5 +----
->   1 file changed, 1 insertion(+), 4 deletions(-)
+>   drivers/soc/mediatek/mtk-svs.c | 4 ----
+>   1 file changed, 4 deletions(-)
 > 
 > diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-> index 70ca9c9acae0..41c0ac5ed8d3 100644
+> index 41c0ac5ed8d3..354582825082 100644
 > --- a/drivers/soc/mediatek/mtk-svs.c
 > +++ b/drivers/soc/mediatek/mtk-svs.c
-> @@ -321,7 +321,6 @@ static const u32 svs_regs_v2[] = {
->    * @banks: svs banks that svs platform supports
->    * @rst: svs platform reset control
->    * @efuse_parsing: svs platform efuse parsing function pointer
-> - * @probe: svs platform probe function pointer
->    * @efuse_max: total number of svs efuse
->    * @tefuse_max: total number of thermal efuse
->    * @regs: svs platform registers map
-> @@ -339,7 +338,6 @@ struct svs_platform {
->   	struct svs_bank *banks;
->   	struct reset_control *rst;
->   	bool (*efuse_parsing)(struct svs_platform *svsp);
-> -	int (*probe)(struct svs_platform *svsp);
->   	size_t efuse_max;
->   	size_t tefuse_max;
->   	const u32 *regs;
-> @@ -2409,11 +2407,10 @@ static struct svs_platform *svs_platform_probe(struct platform_device *pdev)
->   	svsp->name = svsp_data->name;
->   	svsp->banks = svsp_data->banks;
->   	svsp->efuse_parsing = svsp_data->efuse_parsing;
-> -	svsp->probe = svsp_data->probe;
->   	svsp->regs = svsp_data->regs;
->   	svsp->bank_max = svsp_data->bank_max;
+> @@ -2394,10 +2394,6 @@ static struct svs_platform *svs_platform_probe(struct platform_device *pdev)
+>   	int ret;
 >   
-> -	ret = svsp->probe(svsp);
-> +	ret = svsp_data->probe(svsp);
->   	if (ret)
->   		return ERR_PTR(ret);
+>   	svsp_data = of_device_get_match_data(&pdev->dev);
+> -	if (!svsp_data) {
+> -		dev_err(&pdev->dev, "no svs platform data?\n");
+> -		return ERR_PTR(-EPERM);
+> -	}
 >   
+>   	svsp = devm_kzalloc(&pdev->dev, sizeof(*svsp), GFP_KERNEL);
+>   	if (!svsp)
 
