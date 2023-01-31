@@ -4,86 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57B1EC38142
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 11:55:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DC91C38142
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 12:59:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7T2E7YGZUxnQitNuZE0hLv5dl+y4GpbNZv5kH0Kb700=; b=AhwaSndWCSG7Mojy9CnuXrm8tp
-	lOXFJ7mxByvwJFD5x8YFYwsJC8HO7ypyXdFoL2yKmWmaZkRPIKWcOEdIHCvC7XQ3ldOp6mDmZwOqT
-	tfmCJbmo4K2Fd8N/1M9F6gQrwJUwFQ12lXL5lHAjwsgzBXqF8u8ZT8DHnVSqybO3yB50PDrYwO9fK
-	lPTlaGXU9vgcwObboDLsZCyxeLEilEyBYlRuf+1blTPEXTkHTCGkIxWhneFS0PNzC1T+XkvBgGskk
-	rP360ugZVg6J9UH4SRlg5UARPm8XgTSwlBD9h8gbcQFu4esDpkKsdGiWcIiqB1ukmO45+P9ouvzVi
-	4/iVnTmQ==;
+	bh=3UndeySbwJtYhBstLS+7W0sTuNpKqoxWhQG5bKCKu1E=; b=Rnvio0ine9+RgFeoMT++wlPNqK
+	cMJUmtzAcwGgWcdxaeSsOWI7ia6eZRO5L1UZo4dPEyfdGys8vGECl/fDUSbGTLbB2/SiRMdIF/eV0
+	atXGhWe9LxXMboD8IF62aEpVV45eSYAqoW7hdYZO02+GcNkLsaKd4A4obGiJw5xJOC4bXcWkMDNpj
+	6SxA9CMEXMoRCzaTpkD/P7AdM1SJQCWy45bkueLcw23l9VEEm5+ppUTvnkoydJXp9rwMOems92f33
+	YwFMBk+6kFDEMtrpIXXb3wTwcWu3hxHR/TpgZC1wMWcx176KuTIDLxMylyzrP3UHbMBDJwgZz7lkR
+	mv3sEfSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMpEX-007n2V-Do; Tue, 31 Jan 2023 11:55:29 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1pMqEn-007w3s-U5; Tue, 31 Jan 2023 12:59:49 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMpEL-007myJ-RU; Tue, 31 Jan 2023 11:55:19 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id m16-20020a05600c3b1000b003dc4050c94aso7570085wms.4;
-        Tue, 31 Jan 2023 03:55:17 -0800 (PST)
+	id 1pMqEd-007w2a-KQ; Tue, 31 Jan 2023 12:59:41 +0000
+Received: by mail-wr1-x432.google.com with SMTP id q5so14165520wrv.0;
+        Tue, 31 Jan 2023 04:59:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=7T2E7YGZUxnQitNuZE0hLv5dl+y4GpbNZv5kH0Kb700=;
-        b=QCtUdV+nxVMdpJAnGPdQSvt5DtG9XwOeCRtncRoCxjAXUus2HMQc1Ao+U8Vnzo2xJZ
-         TfQIEx5H2H0Aga7AXpeStNtqBRad+adVwfggxMC1VO9I8saFhOhw8Gr9R97ijwYK8UFz
-         1pFUd+WzT66AAlg+M2/xQJh9mHu1TwJGhqR3/TVDO5wOV27DC2mF9BswtlUAzzD9x4aF
-         oeyCM2CctTa4BGNAUD0+TZms15Suu/QtaBqB1NgaZGBUQt4oii63RG894XaJXcjU1042
-         sibft0fM0CHnHPhHXK6HH282KEPa8Dx6zjDvoa8DLURhUe6rgNR4dh4odk8yQmIu0Vad
-         4NCw==
+        bh=3UndeySbwJtYhBstLS+7W0sTuNpKqoxWhQG5bKCKu1E=;
+        b=kcA47SugyoASWc7ydEtwePhQFM0twx4+y19Z7wadyt7XQFZsZEJSpna+gvXiMiscEq
+         IFOkCKqb6zFJl8Hll5lSlYJu8amy7v6m6HNpc7AB9o177uxiIjaCKPFc5aRo5PGFxVyM
+         N23MA+9g8B+nUGHIW9Quq4A9Sveb1HSRp+4DNsKCP3RuIeVz14NU5O9RVD3WVhrkrhSi
+         cW4H8Mnj8bCiB/ngDAqhyGzFIbm3qfrp0Ki3vJdRZ8cyBKvwWmUFbvPcgGIxNETLk0ZI
+         gnslR4N/O0vXCZbyvSER8rWmxvarMbqbS+BGhLdFvPRPiNwKx0TUzkj0BOC1LoqtbaWw
+         d4tQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=7T2E7YGZUxnQitNuZE0hLv5dl+y4GpbNZv5kH0Kb700=;
-        b=qOUhgFDk9E0NBoqityZetnvlz1ETw8DaljQWdpFATTeQPAhn4Y8g8ZTAl+2HciZ6jS
-         SUN9N+cX3ECsDKl6ybi3p0hJN9KasP/eZd30zvMbgfuYr1pnxQXlYIRRCXF5mMYW3pv9
-         7rJpnie34bj7FUSFiZ7Lk1Ycgmg2sY7kmebTkAzNqIA4wRNsRRZZNwdVoJ6F/tvNWYCW
-         rPqwwmJ7GkfnO9ynLeWvJxRVh07IEOsbB42382nIIobwY9LjwI95Wkrg7PUtvylVpFKJ
-         U1Fk2WjrPxmSPrqlVgGR4gwt1GRmd5ZnIMBgEd5NdxACKQemzQTtl/S0TjN6o1ZVd3Fd
-         IW0A==
-X-Gm-Message-State: AFqh2kps0oxdipvamxszJjSXqKgz4nWJGXgc/+GZyd5adMCh+SUZuo7z
-	3Nc+pVOgsCUrBSWOvrX10zk=
-X-Google-Smtp-Source: AMrXdXvQTDWtQ2BfIU2sS6xGo/Q/5VUOHWqRtF42ZHbBXU1Lw+xJrn6/r0acAJZllhbPgT+JbH/Uww==
-X-Received: by 2002:a05:600c:a4c:b0:3dc:d5b:5f6a with SMTP id c12-20020a05600c0a4c00b003dc0d5b5f6amr28617250wmq.30.1675166116306;
-        Tue, 31 Jan 2023 03:55:16 -0800 (PST)
+        bh=3UndeySbwJtYhBstLS+7W0sTuNpKqoxWhQG5bKCKu1E=;
+        b=bre4flgVXH2vmBE+ngSo/6Oa47gUKzQcb+7l9rkKMOusUnkAmtGwZAPpqOEzZI2vDd
+         stXLwlVBBOZOpR+ahDe98VqlA8EHa6unltGx034DIjmUEHHoIqFUJEpBQZhvCAN0hwft
+         UddvB6mffeTdRxNKMclQgmK2/UMyGXDskorIg9YroLZKWFybXg+h+V8/ui/qQS/+TIG9
+         sE05LCDUMBeFvNOPMnh5vLqNjmbcESHgKWqmVV1LTfTsDEC1YP6Pj4Ssq6XhnT9qwAA3
+         9hLdTXyTTHgkfBDy+h0/DV/NCd9aNfRRqIcFvWMtlXSJeu/RJl5J+FXWMVJ1f4s48XRN
+         QkBg==
+X-Gm-Message-State: AFqh2kqd8ajAv9RU3VgBCgeHsHkLw4iH9NJNAWE4qV9cp+JsrMKCOkYP
+	utJyVEQZcPA2fsaAX4mSz58=
+X-Google-Smtp-Source: AMrXdXuQTnI7ooh6atfJ1l+iKecwB8hqvSyt3CFwVI9zZ+9rWAa4lGHia0YO6Ocu7iA5lZ7l35q2iw==
+X-Received: by 2002:adf:a31a:0:b0:2bf:96ae:7cc8 with SMTP id c26-20020adfa31a000000b002bf96ae7cc8mr33668033wrb.4.1675169977792;
+        Tue, 31 Jan 2023 04:59:37 -0800 (PST)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id p12-20020a05600c468c00b003dc22ee5a2bsm17949467wmo.39.2023.01.31.03.55.15
+        by smtp.gmail.com with ESMTPSA id b14-20020a05600010ce00b0029e1aa67fd2sm14798814wrx.115.2023.01.31.04.59.36
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 31 Jan 2023 03:55:15 -0800 (PST)
-Message-ID: <c78e2725-0be7-caa8-40db-2f355cc2cdec@gmail.com>
-Date: Tue, 31 Jan 2023 12:55:14 +0100
+        Tue, 31 Jan 2023 04:59:37 -0800 (PST)
+Message-ID: <561d9a97-64c7-6633-ff10-d85ae2c7f314@gmail.com>
+Date: Tue, 31 Jan 2023 13:59:35 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH 4/5] arm: dts: mt7623: mux phy0 on Bananapi BPI-R2
+Subject: Re: [PATCH v4 03/14] soc: mediatek: mtk-svs: enable the IRQ later
 Content-Language: en-US
-To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
- frank-w@public-files.de, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- erkin.bozoglu@xeront.com, Sean Wang <sean.wang@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>
-References: <20230120205318.519493-1-arinc.unal@arinc9.com>
- <20230120205318.519493-5-arinc.unal@arinc9.com>
- <9A7BD95A-F026-4EAB-96E1-12B1B0C6AAA4@public-files.de>
- <cf7d3247-4d21-98f0-819b-7653153ee4c0@arinc9.com>
+To: Roger Lu <roger.lu@mediatek.com>,
+ Enric Balletbo Serra <eballetbo@gmail.com>, Kevin Hilman
+ <khilman@kernel.org>, Nicolas Boichat <drinkcat@google.com>
+Cc: Fan Chen <fan.chen@mediatek.com>,
+ Jia-wei Chang <jia-wei.chang@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Ricardo Ribalda <ribalda@chromium.org>
+References: <20230111074528.29354-1-roger.lu@mediatek.com>
+ <20230111074528.29354-4-roger.lu@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <cf7d3247-4d21-98f0-819b-7653153ee4c0@arinc9.com>
+In-Reply-To: <20230111074528.29354-4-roger.lu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_035517_908042_24B1D157 
-X-CRM114-Status: GOOD (  11.56  )
+X-CRM114-CacheID: sfid-20230131_045939_700342_58846CCD 
+X-CRM114-Status: GOOD (  21.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,32 +100,80 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 25/01/2023 17:54, Arınç ÜNAL wrote:
-> On 25.01.2023 19:41, Frank Wunderlich wrote:
->> Am 20. Januar 2023 21:53:17 MEZ schrieb "Arınç ÜNAL" <arinc.unal@arinc9.com>:
->>
->>>         switch@1f {
->>>             compatible = "mediatek,mt7530";
->>>             reg = <0x1f>;
->>> @@ -199,11 +208,6 @@ ports {
->>>                 #address-cells = <1>;
->>>                 #size-cells = <0>;
->>>
->>> -                port@0 {
->>> -                    reg = <0>;
->>> -                    label = "wan";
->>> -                };
->>> -
->>
->> This will break existing userspace setups using wan as interface name.
+On 11/01/2023 08:45, Roger Lu wrote:
+> From: Ricardo Ribalda <ribalda@chromium.org>
 > 
-> Yup. The OS being used will have to either rename the interface or adapt to the 
-> new name, eth1.
+> If the system does not come from reset (like when is booted via
+> kexec(), the peripheral might trigger an IRQ before the data structures
+> are initialized.
+> 
+> Fixes:
+> 
+> [    0.227710] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000f08
+> [    0.227913] Call trace:
+> [    0.227918]  svs_isr+0x8c/0x538
 > 
 
-In that case please explain in the commit message why this is needed. We are 
-trying really hard to not break userspace by a device-tree update.
+This patch is different from
+https://lore.kernel.org/r/20221127-mtk-svs-v2-0-145b07663ea8@chromium.org
+
+If you think the patch from Ricardo is wrong, then you should have mentioned 
+that in the review.
 
 Regards,
 Matthias
+
+> Fixes: 681a02e95000 ("soc: mediatek: SVS: introduce MTK SVS engine")
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+> ---
+>   drivers/soc/mediatek/mtk-svs.c | 28 ++++++++++++++--------------
+>   1 file changed, 14 insertions(+), 14 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+> index a803b92afc3d..64d4d03ab71c 100644
+> --- a/drivers/soc/mediatek/mtk-svs.c
+> +++ b/drivers/soc/mediatek/mtk-svs.c
+> @@ -2403,20 +2403,6 @@ static int svs_probe(struct platform_device *pdev)
+>   		goto svs_probe_free_resource;
+>   	}
+>   
+> -	svsp_irq = platform_get_irq(pdev, 0);
+> -	if (svsp_irq < 0) {
+> -		ret = svsp_irq;
+> -		goto svs_probe_free_resource;
+> -	}
+> -
+> -	ret = devm_request_threaded_irq(svsp->dev, svsp_irq, NULL, svs_isr,
+> -					IRQF_ONESHOT, svsp->name, svsp);
+> -	if (ret) {
+> -		dev_err(svsp->dev, "register irq(%d) failed: %d\n",
+> -			svsp_irq, ret);
+> -		goto svs_probe_free_resource;
+> -	}
+> -
+>   	svsp->main_clk = devm_clk_get(svsp->dev, "main");
+>   	if (IS_ERR(svsp->main_clk)) {
+>   		dev_err(svsp->dev, "failed to get clock: %ld\n",
+> @@ -2438,6 +2424,20 @@ static int svs_probe(struct platform_device *pdev)
+>   		goto svs_probe_clk_disable;
+>   	}
+>   
+> +	svsp_irq = platform_get_irq(pdev, 0);
+> +	if (svsp_irq < 0) {
+> +		ret = svsp_irq;
+> +		goto svs_probe_iounmap;
+> +	}
+> +
+> +	ret = devm_request_threaded_irq(svsp->dev, svsp_irq, NULL, svs_isr,
+> +					IRQF_ONESHOT, svsp->name, svsp);
+> +	if (ret) {
+> +		dev_err(svsp->dev, "register irq(%d) failed: %d\n",
+> +			svsp_irq, ret);
+> +		goto svs_probe_iounmap;
+> +	}
+> +
+>   	ret = svs_start(svsp);
+>   	if (ret) {
+>   		dev_err(svsp->dev, "svs start fail: %d\n", ret);
 
