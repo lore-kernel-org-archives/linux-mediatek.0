@@ -4,93 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1896C38142
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 13:01:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64AFFC636CC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 13:07:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5LAlV4rwXGaZAkBT5gd6JtG7tn12Ct026ebSvrWPbW4=; b=09lbBdpsX4D8r7dvsMVRf3TaOD
-	/6XrwCsN4id8s9ZNfW9hszfjTuEAUqpFe4tmXFxMNwGQPin+3Qt+vvk8VPS1q5FpkK/UzIsxPlG8U
-	1ebBL+CTmN9LnhueX4q1PmQlo5u4Dnr9AXx1HkSjJeZ5XP9AtLWzx7DZbmc0SXT/nqzrA71pm9Gkz
-	Zlq8OfDn/7WtzRvec9rICvbDUHdU7t1CNhOWphQvPcFTRHDBmt734AvoDvRMJBuC0Wr3XCOwikhhn
-	6gi4a0U175hq4/0rQsCuQDR6XAe5JTiZPaCdJy14H74ZpEQt5wQ/eD5ToPRNxKtsAzVAfVU4NgYSP
-	o0aoL7fg==;
+	bh=rL3EQFVNMqM8HDiuib6fngQevhM4qWrd4VemXb3oWb4=; b=l2tIX6YH59lKxUsQEGQj7qQrda
+	zfCpIKFr77roUrKaKnqGUdkfVvOfY/8R1rnvnnNTBTfYiJx4Bh4Ojzys44RaGp1J68ByDhSj7qcQq
+	0r9teOobh7hJudLLpC4Y7jfg/szn6g0PiBKOiVxTEs96aJu2JZ7Ra/0Www2YDdXDjFdeSks8ipzV+
+	LbTfUFnFh3lxkl9XC/D35H3X5aemrF2dNHY04QkJ64z0m2fCb8f7ZmEtF7Am+9jz1x0M8NvtmpkxN
+	hg+Ya6feAQ8pJRbWpUSBWKcyWHrpm3fPJ5Wt2hmRWLyR9G+ejx/8zttERhU/AbRyf9++4Iul2uBKr
+	+2W01QWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMqGG-007wO9-T8; Tue, 31 Jan 2023 13:01:20 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1pMqMN-007zVl-UI; Tue, 31 Jan 2023 13:07:39 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMqGC-007wMf-ND
-	for linux-mediatek@lists.infradead.org; Tue, 31 Jan 2023 13:01:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1675170075;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5LAlV4rwXGaZAkBT5gd6JtG7tn12Ct026ebSvrWPbW4=;
-	b=i/VxNSx5ymA9Zv4R88sZv/gMjq2X2oGZpINcCeSg6uzzjS+/xF9mw7yt8UZa7Fk4UsGwZH
-	c6g+zfgzWglP2SqmfXxIx1MFq79S2U6QWLYCppjIadcgHs/7854fyOT5AS/yRjxKRpnHAb
-	PdJzwyAmU1gPmFzg6rJ2CSzxW6uoZQA=
-Received: from mail-oi1-f200.google.com (mail-oi1-f200.google.com
- [209.85.167.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-422-ZpgabItFOF6C1xNXAySSig-1; Tue, 31 Jan 2023 08:00:59 -0500
-X-MC-Unique: ZpgabItFOF6C1xNXAySSig-1
-Received: by mail-oi1-f200.google.com with SMTP id bi31-20020a056808189f00b0037804b06dd1so4146132oib.20
-        for <linux-mediatek@lists.infradead.org>; Tue, 31 Jan 2023 05:00:49 -0800 (PST)
+	id 1pMqM5-007zNu-0Z
+	for linux-mediatek@lists.infradead.org; Tue, 31 Jan 2023 13:07:23 +0000
+Received: by mail-wm1-x335.google.com with SMTP id n28-20020a05600c3b9c00b003ddca7a2bcbso553813wms.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 31 Jan 2023 05:07:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=rL3EQFVNMqM8HDiuib6fngQevhM4qWrd4VemXb3oWb4=;
+        b=OsCZwh80DbIiJbGFOR31nEMtf9nHLzgyrhH2i+JpftjhJcDu1oICvph8PQ8LsyaE7d
+         okaXH1d9iB1pdL/xj5YiEphleZ3390WqzZlYt1uGZqcCG271MxapUiBsmWIYw0Hz6Ds9
+         uPMNDk1VMf+V00ak/oYnVmWaEmnCDgz89B1zTe76dsZ3qBXTsT74Vy718ggwCHTGGUcM
+         tqvZ9H3DG+w7olkxX/jax1aac8kgNH63nxizH1nxdA/QMFy94qy1fgO2HTvYCGR1Yq2o
+         AXd8hqB6Ig1dQyHAuDSmrD6Zo7fToE/dvRVobC3rlvmEqXlhpiiH26aQlf3+zxJ20tA8
+         LNvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=5LAlV4rwXGaZAkBT5gd6JtG7tn12Ct026ebSvrWPbW4=;
-        b=QADScbZ7fIsF2PBCeqU8I5xylet3Uq1AuimBC0VveriGmjcsGttf6uwPwzI2XTBG4b
-         1ESSK4Wz1zoHcHt/klPhIZSYLII0+ZGG44SyBnQ2I8GDthzlt/GdSPRP2yT95PboF2HE
-         ls4Be1oMiuHbW9eA5DgNuI0ydJICwDNyG9FApH9Yw9Hj3p/Hy5YmQS6Ngvxf4B4axjfF
-         Sewxu3PPoroQlGlPID3pSvkVsfKvobj8++awBKlVGzX6xFtM8waVKgn5Miqo7cfZlOCL
-         09Wog+5lglWUXKvz8Vxz+QP8iMcx4TzFAAGsFtcXCSc95sOiK3bV0rTTpAPZTY1d/8Xf
-         w0Nw==
-X-Gm-Message-State: AO0yUKWjkZm2fl1oN1umy4tyfy2khXZI7JgJju84ennJ2D8S0FOd8m+y
-	kyC8UEWsJ/EbuzqrOvPMa4pfUq/d+vRh/uqhmS1hdNsK/iCQ9T+pblxWE3EzTidLlECotqjKAQu
-	TpjofUmjK8a3sJZC019z6Tpe5TQvpEImE
-X-Received: by 2002:a05:6870:ebc3:b0:163:758d:a6b7 with SMTP id cr3-20020a056870ebc300b00163758da6b7mr2880293oab.1.1675170048987;
-        Tue, 31 Jan 2023 05:00:48 -0800 (PST)
-X-Google-Smtp-Source: AK7set/3EcOyUfREamMpigitPUuOxl0q6+e2Sf3auXXnXQriycKTacCv8kCcq1zOOtoetgGsmXZm4Q==
-X-Received: by 2002:a05:6870:ebc3:b0:163:758d:a6b7 with SMTP id cr3-20020a056870ebc300b00163758da6b7mr2880278oab.1.1675170048723;
-        Tue, 31 Jan 2023 05:00:48 -0800 (PST)
-Received: from gerbillo.redhat.com (146-241-113-28.dyn.eolo.it. [146.241.113.28])
-        by smtp.gmail.com with ESMTPSA id dy31-20020a05620a60df00b0070531c5d655sm9925169qkb.90.2023.01.31.05.00.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 31 Jan 2023 05:00:48 -0800 (PST)
-Message-ID: <f753ad2b0c19e085867698f7bbbe37f6d172772e.camel@redhat.com>
-Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: disable hardware DSA
- untagging for second MAC
-From: Paolo Abeni <pabeni@redhat.com>
-To: arinc9.unal@gmail.com, Felix Fietkau <nbd@nbd.name>, John Crispin
- <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
- <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David
- S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>,  Matthias Brugger <matthias.bgg@gmail.com>
-Cc: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>, 
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	erkin.bozoglu@xeront.com
-Date: Tue, 31 Jan 2023 14:00:43 +0100
-In-Reply-To: <20230128094232.2451947-1-arinc.unal@arinc9.com>
-References: <20230128094232.2451947-1-arinc.unal@arinc9.com>
-User-Agent: Evolution 3.46.3 (3.46.3-1.fc37)
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=rL3EQFVNMqM8HDiuib6fngQevhM4qWrd4VemXb3oWb4=;
+        b=unYlQ2sKU3gMs9Z9oYqa8rRjnPfMxWWVhtQQU029gLpXs/dSconNbOAaufJMrbUaXO
+         /QZhaCGzOxbEa1lvsvb/1vlIdJHqL5RNf+96B6912nUWzqXPS1LlUtxfpys7ZaFP9CFN
+         IBnhkQzFPHRmhg4hvq3MPiz4e2EcmNNOhA2qBG2G+LOZNBEbq/7dFzzZAEmpCgIVQGig
+         KVDQ1BzF/qgOxsdTdTKm4zoweZzDrI5ZJlnhV5sEhwTx+YCjlPv0nfHUkB5KDdbZFWSg
+         cAzEKGGsU085J4vK9RvdfVwuglDLB4kRYEKh8lLMpREjLc5KZiFwsF7RrlROHyeHcdXY
+         rzeg==
+X-Gm-Message-State: AFqh2kr3zE2BQoqTwcz4LSF3uTha5irbUprerfNEnBYzn0SoZMVI6t3T
+	AAf1Oc2l1TkE4JuxoskhwEIpxQ==
+X-Google-Smtp-Source: AMrXdXtqRKjiaIS0GDz2pjKZ2gM3eUTTve3hy5/GvVfHu95hi65KBmWvdGv7irjGk/0J5baiC/v8kg==
+X-Received: by 2002:a05:600c:4f83:b0:3db:eab:a600 with SMTP id n3-20020a05600c4f8300b003db0eaba600mr49187536wmq.7.1675170437001;
+        Tue, 31 Jan 2023 05:07:17 -0800 (PST)
+Received: from [10.1.4.104] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+        by smtp.gmail.com with ESMTPSA id i27-20020a05600c4b1b00b003dc54d9aeeasm7529000wmp.36.2023.01.31.05.07.15
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 31 Jan 2023 05:07:16 -0800 (PST)
+Message-ID: <f126c61f-6373-d6c5-59c8-24dea9d9d168@baylibre.com>
+Date: Tue, 31 Jan 2023 14:08:04 +0100
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH 2/3] iommu: mediatek: Add support of unmanaged iommu
+ domain
+To: Robin Murphy <robin.murphy@arm.com>, yong.wu@mediatek.com,
+ joro@8bytes.org, will@kernel.org
+Cc: matthias.bgg@gmail.com, krzysztof.kozlowski@linaro.org,
+ robh+dt@kernel.org, iommu@lists.linux.dev,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+References: <20230130102722.133271-1-abailon@baylibre.com>
+ <20230130102722.133271-3-abailon@baylibre.com>
+ <741920ba-8637-5e28-695c-699b46351590@arm.com>
+Content-Language: en-US
+From: Alexandre Bailon <abailon@baylibre.com>
+In-Reply-To: <741920ba-8637-5e28-695c-699b46351590@arm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_050116_848286_8933B861 
-X-CRM114-Status: GOOD (  15.02  )
+X-CRM114-CacheID: sfid-20230131_050721_060616_34F27242 
+X-CRM114-Status: GOOD (  21.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,38 +98,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 2023-01-28 at 12:42 +0300, arinc9.unal@gmail.com wrote:
-> From: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
->=20
-> According to my tests on MT7621AT and MT7623NI SoCs, hardware DSA untaggi=
-ng
-> won't work on the second MAC. Therefore, disable this feature when the
-> second MAC of the MT7621 and MT7623 SoCs is being used.
->=20
-> Fixes: 2d7605a72906 ("net: ethernet: mtk_eth_soc: enable hardware DSA unt=
-agging")
-> Link: https://lore.kernel.org/netdev/6249fc14-b38a-c770-36b4-5af6d41c21d3=
-@arinc9.com/
-> Tested-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
-> Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
-> ---
->=20
-> Final send which should end up on the list. I tested this with Felix's
-> upcoming patch series. This fix is still needed on top of it.
->=20
-> https://lore.kernel.org/netdev/20221230073145.53386-1-nbd@nbd.name/
->=20
-> The MTK_GMAC1_TRGMII capability is only on the MT7621 and MT7623 SoCs whi=
-ch
-> I see this problem on. I'm new to coding so I took an educated guess from
-> the use of MTK_NETSYS_V2 to disable this feature altogether for MT7986 So=
-C.
+Hi Robin
 
-Keeping this one a little more on pw. It would be great is someone else
-could validate the above on the relevant H/W.
+On 1/30/23 13:04, Robin Murphy wrote:
+> On 2023-01-30 10:27, Alexandre Bailon wrote:
+>> Currently, the driver can allocate an unmanaged iommu domain.
+>> But, this only works for SoC having multiple bank or multiple iova 
+>> region.
+> 
+> That is for good reason - there is only a single pagetable per bank, so 
+> if there are multiple devices assigned to a single bank, they cannot 
+> possibly be attached to different domains at the same time. Hence why 
+> the banks are modelled as groups.
+I understand.
+I am trying to upstream a remoteproc driver but the remote processor is
+behind the iommu.
+remoteproc can manage the iommu but it requires an unmanaged domain.
+I tried a couple of things but this cause code duplication,
+implies many hacks and not always reliable.
+Do you have any suggestion ?
 
 Thanks,
-
-Paolo
-
+Alexandre
+> 
+> Thanks,
+> Robin.
+> 
+>> This updates the driver to also support unmanaged iommu domain if
+>> MTK_UNMANAGED_DEVICE is set in the iommu id.
+>>
+>> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+>> ---
+>>   drivers/iommu/mtk_iommu.c | 6 ++++++
+>>   1 file changed, 6 insertions(+)
+>>
+>> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+>> index 2badd6acfb23d..5884a1ad409a0 100644
+>> --- a/drivers/iommu/mtk_iommu.c
+>> +++ b/drivers/iommu/mtk_iommu.c
+>> @@ -858,9 +858,15 @@ static int mtk_iommu_get_group_id(struct device 
+>> *dev, const struct mtk_iommu_pla
+>>   static struct iommu_group *mtk_iommu_device_group(struct device *dev)
+>>   {
+>>       struct mtk_iommu_data *c_data = dev_iommu_priv_get(dev), *data;
+>> +    struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+>>       struct list_head *hw_list = c_data->hw_list;
+>>       struct iommu_group *group;
+>>       int groupid;
+>> +    int i;
+>> +
+>> +    for (i = 0; i < fwspec->num_ids; i++)
+>> +        if (MTK_M4U_UNMANAGED(fwspec->ids[i]))
+>> +            return iommu_group_alloc();
+>>       data = mtk_iommu_get_frst_data(hw_list);
+>>       if (!data)
 
