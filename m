@@ -4,86 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DC91C38142
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 12:59:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1896C38142
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 13:01:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3UndeySbwJtYhBstLS+7W0sTuNpKqoxWhQG5bKCKu1E=; b=Rnvio0ine9+RgFeoMT++wlPNqK
-	cMJUmtzAcwGgWcdxaeSsOWI7ia6eZRO5L1UZo4dPEyfdGys8vGECl/fDUSbGTLbB2/SiRMdIF/eV0
-	atXGhWe9LxXMboD8IF62aEpVV45eSYAqoW7hdYZO02+GcNkLsaKd4A4obGiJw5xJOC4bXcWkMDNpj
-	6SxA9CMEXMoRCzaTpkD/P7AdM1SJQCWy45bkueLcw23l9VEEm5+ppUTvnkoydJXp9rwMOems92f33
-	YwFMBk+6kFDEMtrpIXXb3wTwcWu3hxHR/TpgZC1wMWcx176KuTIDLxMylyzrP3UHbMBDJwgZz7lkR
-	mv3sEfSA==;
+	bh=5LAlV4rwXGaZAkBT5gd6JtG7tn12Ct026ebSvrWPbW4=; b=09lbBdpsX4D8r7dvsMVRf3TaOD
+	/6XrwCsN4id8s9ZNfW9hszfjTuEAUqpFe4tmXFxMNwGQPin+3Qt+vvk8VPS1q5FpkK/UzIsxPlG8U
+	1ebBL+CTmN9LnhueX4q1PmQlo5u4Dnr9AXx1HkSjJeZ5XP9AtLWzx7DZbmc0SXT/nqzrA71pm9Gkz
+	Zlq8OfDn/7WtzRvec9rICvbDUHdU7t1CNhOWphQvPcFTRHDBmt734AvoDvRMJBuC0Wr3XCOwikhhn
+	6gi4a0U175hq4/0rQsCuQDR6XAe5JTiZPaCdJy14H74ZpEQt5wQ/eD5ToPRNxKtsAzVAfVU4NgYSP
+	o0aoL7fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMqEn-007w3s-U5; Tue, 31 Jan 2023 12:59:49 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1pMqGG-007wO9-T8; Tue, 31 Jan 2023 13:01:20 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMqEd-007w2a-KQ; Tue, 31 Jan 2023 12:59:41 +0000
-Received: by mail-wr1-x432.google.com with SMTP id q5so14165520wrv.0;
-        Tue, 31 Jan 2023 04:59:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=3UndeySbwJtYhBstLS+7W0sTuNpKqoxWhQG5bKCKu1E=;
-        b=kcA47SugyoASWc7ydEtwePhQFM0twx4+y19Z7wadyt7XQFZsZEJSpna+gvXiMiscEq
-         IFOkCKqb6zFJl8Hll5lSlYJu8amy7v6m6HNpc7AB9o177uxiIjaCKPFc5aRo5PGFxVyM
-         N23MA+9g8B+nUGHIW9Quq4A9Sveb1HSRp+4DNsKCP3RuIeVz14NU5O9RVD3WVhrkrhSi
-         cW4H8Mnj8bCiB/ngDAqhyGzFIbm3qfrp0Ki3vJdRZ8cyBKvwWmUFbvPcgGIxNETLk0ZI
-         gnslR4N/O0vXCZbyvSER8rWmxvarMbqbS+BGhLdFvPRPiNwKx0TUzkj0BOC1LoqtbaWw
-         d4tQ==
+	id 1pMqGC-007wMf-ND
+	for linux-mediatek@lists.infradead.org; Tue, 31 Jan 2023 13:01:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1675170075;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5LAlV4rwXGaZAkBT5gd6JtG7tn12Ct026ebSvrWPbW4=;
+	b=i/VxNSx5ymA9Zv4R88sZv/gMjq2X2oGZpINcCeSg6uzzjS+/xF9mw7yt8UZa7Fk4UsGwZH
+	c6g+zfgzWglP2SqmfXxIx1MFq79S2U6QWLYCppjIadcgHs/7854fyOT5AS/yRjxKRpnHAb
+	PdJzwyAmU1gPmFzg6rJ2CSzxW6uoZQA=
+Received: from mail-oi1-f200.google.com (mail-oi1-f200.google.com
+ [209.85.167.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-422-ZpgabItFOF6C1xNXAySSig-1; Tue, 31 Jan 2023 08:00:59 -0500
+X-MC-Unique: ZpgabItFOF6C1xNXAySSig-1
+Received: by mail-oi1-f200.google.com with SMTP id bi31-20020a056808189f00b0037804b06dd1so4146132oib.20
+        for <linux-mediatek@lists.infradead.org>; Tue, 31 Jan 2023 05:00:49 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=3UndeySbwJtYhBstLS+7W0sTuNpKqoxWhQG5bKCKu1E=;
-        b=bre4flgVXH2vmBE+ngSo/6Oa47gUKzQcb+7l9rkKMOusUnkAmtGwZAPpqOEzZI2vDd
-         stXLwlVBBOZOpR+ahDe98VqlA8EHa6unltGx034DIjmUEHHoIqFUJEpBQZhvCAN0hwft
-         UddvB6mffeTdRxNKMclQgmK2/UMyGXDskorIg9YroLZKWFybXg+h+V8/ui/qQS/+TIG9
-         sE05LCDUMBeFvNOPMnh5vLqNjmbcESHgKWqmVV1LTfTsDEC1YP6Pj4Ssq6XhnT9qwAA3
-         9hLdTXyTTHgkfBDy+h0/DV/NCd9aNfRRqIcFvWMtlXSJeu/RJl5J+FXWMVJ1f4s48XRN
-         QkBg==
-X-Gm-Message-State: AFqh2kqd8ajAv9RU3VgBCgeHsHkLw4iH9NJNAWE4qV9cp+JsrMKCOkYP
-	utJyVEQZcPA2fsaAX4mSz58=
-X-Google-Smtp-Source: AMrXdXuQTnI7ooh6atfJ1l+iKecwB8hqvSyt3CFwVI9zZ+9rWAa4lGHia0YO6Ocu7iA5lZ7l35q2iw==
-X-Received: by 2002:adf:a31a:0:b0:2bf:96ae:7cc8 with SMTP id c26-20020adfa31a000000b002bf96ae7cc8mr33668033wrb.4.1675169977792;
-        Tue, 31 Jan 2023 04:59:37 -0800 (PST)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id b14-20020a05600010ce00b0029e1aa67fd2sm14798814wrx.115.2023.01.31.04.59.36
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 31 Jan 2023 04:59:37 -0800 (PST)
-Message-ID: <561d9a97-64c7-6633-ff10-d85ae2c7f314@gmail.com>
-Date: Tue, 31 Jan 2023 13:59:35 +0100
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=5LAlV4rwXGaZAkBT5gd6JtG7tn12Ct026ebSvrWPbW4=;
+        b=QADScbZ7fIsF2PBCeqU8I5xylet3Uq1AuimBC0VveriGmjcsGttf6uwPwzI2XTBG4b
+         1ESSK4Wz1zoHcHt/klPhIZSYLII0+ZGG44SyBnQ2I8GDthzlt/GdSPRP2yT95PboF2HE
+         ls4Be1oMiuHbW9eA5DgNuI0ydJICwDNyG9FApH9Yw9Hj3p/Hy5YmQS6Ngvxf4B4axjfF
+         Sewxu3PPoroQlGlPID3pSvkVsfKvobj8++awBKlVGzX6xFtM8waVKgn5Miqo7cfZlOCL
+         09Wog+5lglWUXKvz8Vxz+QP8iMcx4TzFAAGsFtcXCSc95sOiK3bV0rTTpAPZTY1d/8Xf
+         w0Nw==
+X-Gm-Message-State: AO0yUKWjkZm2fl1oN1umy4tyfy2khXZI7JgJju84ennJ2D8S0FOd8m+y
+	kyC8UEWsJ/EbuzqrOvPMa4pfUq/d+vRh/uqhmS1hdNsK/iCQ9T+pblxWE3EzTidLlECotqjKAQu
+	TpjofUmjK8a3sJZC019z6Tpe5TQvpEImE
+X-Received: by 2002:a05:6870:ebc3:b0:163:758d:a6b7 with SMTP id cr3-20020a056870ebc300b00163758da6b7mr2880293oab.1.1675170048987;
+        Tue, 31 Jan 2023 05:00:48 -0800 (PST)
+X-Google-Smtp-Source: AK7set/3EcOyUfREamMpigitPUuOxl0q6+e2Sf3auXXnXQriycKTacCv8kCcq1zOOtoetgGsmXZm4Q==
+X-Received: by 2002:a05:6870:ebc3:b0:163:758d:a6b7 with SMTP id cr3-20020a056870ebc300b00163758da6b7mr2880278oab.1.1675170048723;
+        Tue, 31 Jan 2023 05:00:48 -0800 (PST)
+Received: from gerbillo.redhat.com (146-241-113-28.dyn.eolo.it. [146.241.113.28])
+        by smtp.gmail.com with ESMTPSA id dy31-20020a05620a60df00b0070531c5d655sm9925169qkb.90.2023.01.31.05.00.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 31 Jan 2023 05:00:48 -0800 (PST)
+Message-ID: <f753ad2b0c19e085867698f7bbbe37f6d172772e.camel@redhat.com>
+Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: disable hardware DSA
+ untagging for second MAC
+From: Paolo Abeni <pabeni@redhat.com>
+To: arinc9.unal@gmail.com, Felix Fietkau <nbd@nbd.name>, John Crispin
+ <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
+ <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David
+ S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
+ Kicinski <kuba@kernel.org>,  Matthias Brugger <matthias.bgg@gmail.com>
+Cc: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>, 
+	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	erkin.bozoglu@xeront.com
+Date: Tue, 31 Jan 2023 14:00:43 +0100
+In-Reply-To: <20230128094232.2451947-1-arinc.unal@arinc9.com>
+References: <20230128094232.2451947-1-arinc.unal@arinc9.com>
+User-Agent: Evolution 3.46.3 (3.46.3-1.fc37)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v4 03/14] soc: mediatek: mtk-svs: enable the IRQ later
-Content-Language: en-US
-To: Roger Lu <roger.lu@mediatek.com>,
- Enric Balletbo Serra <eballetbo@gmail.com>, Kevin Hilman
- <khilman@kernel.org>, Nicolas Boichat <drinkcat@google.com>
-Cc: Fan Chen <fan.chen@mediatek.com>,
- Jia-wei Chang <jia-wei.chang@mediatek.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Ricardo Ribalda <ribalda@chromium.org>
-References: <20230111074528.29354-1-roger.lu@mediatek.com>
- <20230111074528.29354-4-roger.lu@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230111074528.29354-4-roger.lu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_045939_700342_58846CCD 
-X-CRM114-Status: GOOD (  21.27  )
+X-CRM114-CacheID: sfid-20230131_050116_848286_8933B861 
+X-CRM114-Status: GOOD (  15.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,82 +105,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 11/01/2023 08:45, Roger Lu wrote:
-> From: Ricardo Ribalda <ribalda@chromium.org>
-> 
-> If the system does not come from reset (like when is booted via
-> kexec(), the peripheral might trigger an IRQ before the data structures
-> are initialized.
-> 
-> Fixes:
-> 
-> [    0.227710] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000f08
-> [    0.227913] Call trace:
-> [    0.227918]  svs_isr+0x8c/0x538
-> 
-
-This patch is different from
-https://lore.kernel.org/r/20221127-mtk-svs-v2-0-145b07663ea8@chromium.org
-
-If you think the patch from Ricardo is wrong, then you should have mentioned 
-that in the review.
-
-Regards,
-Matthias
-
-> Fixes: 681a02e95000 ("soc: mediatek: SVS: introduce MTK SVS engine")
-> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+On Sat, 2023-01-28 at 12:42 +0300, arinc9.unal@gmail.com wrote:
+> From: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
+>=20
+> According to my tests on MT7621AT and MT7623NI SoCs, hardware DSA untaggi=
+ng
+> won't work on the second MAC. Therefore, disable this feature when the
+> second MAC of the MT7621 and MT7623 SoCs is being used.
+>=20
+> Fixes: 2d7605a72906 ("net: ethernet: mtk_eth_soc: enable hardware DSA unt=
+agging")
+> Link: https://lore.kernel.org/netdev/6249fc14-b38a-c770-36b4-5af6d41c21d3=
+@arinc9.com/
+> Tested-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
+> Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
 > ---
->   drivers/soc/mediatek/mtk-svs.c | 28 ++++++++++++++--------------
->   1 file changed, 14 insertions(+), 14 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-> index a803b92afc3d..64d4d03ab71c 100644
-> --- a/drivers/soc/mediatek/mtk-svs.c
-> +++ b/drivers/soc/mediatek/mtk-svs.c
-> @@ -2403,20 +2403,6 @@ static int svs_probe(struct platform_device *pdev)
->   		goto svs_probe_free_resource;
->   	}
->   
-> -	svsp_irq = platform_get_irq(pdev, 0);
-> -	if (svsp_irq < 0) {
-> -		ret = svsp_irq;
-> -		goto svs_probe_free_resource;
-> -	}
-> -
-> -	ret = devm_request_threaded_irq(svsp->dev, svsp_irq, NULL, svs_isr,
-> -					IRQF_ONESHOT, svsp->name, svsp);
-> -	if (ret) {
-> -		dev_err(svsp->dev, "register irq(%d) failed: %d\n",
-> -			svsp_irq, ret);
-> -		goto svs_probe_free_resource;
-> -	}
-> -
->   	svsp->main_clk = devm_clk_get(svsp->dev, "main");
->   	if (IS_ERR(svsp->main_clk)) {
->   		dev_err(svsp->dev, "failed to get clock: %ld\n",
-> @@ -2438,6 +2424,20 @@ static int svs_probe(struct platform_device *pdev)
->   		goto svs_probe_clk_disable;
->   	}
->   
-> +	svsp_irq = platform_get_irq(pdev, 0);
-> +	if (svsp_irq < 0) {
-> +		ret = svsp_irq;
-> +		goto svs_probe_iounmap;
-> +	}
-> +
-> +	ret = devm_request_threaded_irq(svsp->dev, svsp_irq, NULL, svs_isr,
-> +					IRQF_ONESHOT, svsp->name, svsp);
-> +	if (ret) {
-> +		dev_err(svsp->dev, "register irq(%d) failed: %d\n",
-> +			svsp_irq, ret);
-> +		goto svs_probe_iounmap;
-> +	}
-> +
->   	ret = svs_start(svsp);
->   	if (ret) {
->   		dev_err(svsp->dev, "svs start fail: %d\n", ret);
+>=20
+> Final send which should end up on the list. I tested this with Felix's
+> upcoming patch series. This fix is still needed on top of it.
+>=20
+> https://lore.kernel.org/netdev/20221230073145.53386-1-nbd@nbd.name/
+>=20
+> The MTK_GMAC1_TRGMII capability is only on the MT7621 and MT7623 SoCs whi=
+ch
+> I see this problem on. I'm new to coding so I took an educated guess from
+> the use of MTK_NETSYS_V2 to disable this feature altogether for MT7986 So=
+C.
+
+Keeping this one a little more on pw. It would be great is someone else
+could validate the above on the relevant H/W.
+
+Thanks,
+
+Paolo
+
 
