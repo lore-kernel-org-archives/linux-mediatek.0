@@ -4,69 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74F88C636D7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 10:28:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47DF2C636CD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 10:32:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vkO5aTZN1uf1h2I1D8925XdCyN6nmzdlQkdnQhsjLpU=; b=F7oXyxQGLPrHez5gc0LN3IhaHs
-	STcIpifRXQO5bY2BBtQtiP7aNnfcfTyOk3v8ECHwiAQnPCsNT1lOtnYFUGlqOyxxDAncBqZcCRi9D
-	dqGyw0U+KLz8dME4icjX/7uGdInThDYbccV88EbbcB78d23zYeuv6L/0kYpiWvdgYT2fdTMwaNvvx
-	wYEJj2P0KnpwoILF2xKMuSaeQILnz4B2DeTPmOx58qfIRK1pduP/a3cnNJIqko2UywrJipKPkksRo
-	UWly6U92GFYaF/7bcGoSZWc02tCFvHdN/tk5NvGbY3nfpRLxz+DSAJ99KUCgz4WjdC7PL0Cu6v8yq
-	UbWWO3wQ==;
+	bh=ay4JjzFOi8u8tMMqeo9ypRaHpCzMeD1s8ySg55sDfvA=; b=fwug4HN0Ixk4KGLXB7YyHzBS0p
+	rSEQetA6wbyQOT+OzWOwMUavud0CEiSxQcbOlaGQOg+W/gnQHy9WbVxhW749jZCemWz/lHr8IbyZV
+	GdYn+hpoclXF2TGGayWJxk/4lmRh0AL2Zd4YTtlARJlmLe/NfqUxG1IvFr3sKpTVsDI0zrb6HDxaM
+	dv5p5xGkkK/xeVklqj8IS/lkLrSoadVKUUYmIaTauak2iCxtolWgHLZdkgV5FvR5ibzkcnjAGTvAO
+	lXH8le2CYrJ6cGIxTRO8WhyFqoQpudJxNqSTdX/MEKr9VUtOZAY7toRjJdxwHTo92FJo1xGXhZ47n
+	Q2XHv6FQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMnsR-007PF8-LY; Tue, 31 Jan 2023 10:28:35 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pMnvt-007Qot-LR; Tue, 31 Jan 2023 10:32:09 +0000
+Received: from mail-vs1-xe2f.google.com ([2607:f8b0:4864:20::e2f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMnDp-0077Wg-8w
-	for linux-mediatek@lists.infradead.org; Tue, 31 Jan 2023 09:46:40 +0000
-X-UUID: 244961b8a14c11edbbe3f76fe852e059-20230131
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=vkO5aTZN1uf1h2I1D8925XdCyN6nmzdlQkdnQhsjLpU=;
-	b=Z5DUmPcbvmcVSL3GUf6w+YjtjYI16lz1sNE5z9lJ0FoAOECFkafa9JFpgibCTA6XQdMaXD4HfCtiACiIZuQHeemMk42f0EPeQ5sD0sEjBYB9+pZggEWNd18EvDAMBBpdw6ic5ARIEBi1boViGzlhP/yCl/+8XQYKyt0We3FtSK0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.18,REQID:846eca25-a8ff-4d64-bdcc-f6c48fcdb65a,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:3ca2d6b,CLOUDID:6075758d-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0
-X-UUID: 244961b8a14c11edbbe3f76fe852e059-20230131
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <shayne.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1692751654; Tue, 31 Jan 2023 02:46:31 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 31 Jan 2023 17:36:29 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Tue, 31 Jan 2023 17:36:29 +0800
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
-	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH v2 03/13] wifi: mt76: connac: add helpers for EHT capability
-Date: Tue, 31 Jan 2023 17:36:01 +0800
-Message-ID: <20230131093611.30914-4-shayne.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230131093611.30914-1-shayne.chen@mediatek.com>
-References: <20230131093611.30914-1-shayne.chen@mediatek.com>
+	id 1pMnHP-0078qV-43
+	for linux-mediatek@lists.infradead.org; Tue, 31 Jan 2023 09:50:21 +0000
+Received: by mail-vs1-xe2f.google.com with SMTP id 187so15424071vsv.10
+        for <linux-mediatek@lists.infradead.org>; Tue, 31 Jan 2023 01:50:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=ay4JjzFOi8u8tMMqeo9ypRaHpCzMeD1s8ySg55sDfvA=;
+        b=X7qkWyQt8Nmpyd8tODNC6MVvJAs6pPWPg4+UGaJtcp92pV5yFejhXVMlk9N6Ne0O/x
+         sJDx+ymPit1ElxTDAPp2M2NaD+94yYbcjDeTJeHkBQndJoaPQzDoh/O0k5kga8a0/02c
+         rvzmD7VHZTbrwQPOdYeJNYWMApcfFEkMQ96vo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ay4JjzFOi8u8tMMqeo9ypRaHpCzMeD1s8ySg55sDfvA=;
+        b=3rmqwISL6S/n1c3cUtDSptMvXhkHhm+L2sOiaO6XnkE4J6gkU7T2FY4P1b/t+hXwdi
+         67iZ3aQ3qCBe6PkGugizf2o5fhtHsHT/j9w9rJqV8raNpLpNDHK+xBfuyiigzIOpVOEl
+         2haT3es9diqSxkbpl6+zpIdvLnp+NzZ45aW7sDKg0mAQviHoRVSkUY4Gqdr+S8omJ3qR
+         4UpzdsdEEh1wFI33f3gFHvT+oTVkIP+UaF6eOjzuxPHs+KTRNpvejP4zDnMFOx9Xd6PG
+         VmWDPLINUNBnUvsJgij2enewtWM6w+VwfsOGMWztFDZWD7jS8ByFXUzpQ/ENgQMMCLkq
+         9RlQ==
+X-Gm-Message-State: AO0yUKWLFbYQ2DuT/SzokxRasRkSOPisbfVnZklMKmIKeaSEGGxhPOxK
+	TiaK5a7ABP2uoOZDfNG4Z+JRg71tOSL7VFQE7y3P4A==
+X-Google-Smtp-Source: AK7set+/qcQFjgwbi+Ocj+LtBVuICC7AYNVeLlyhaPp038xPLhOSZqARwYUNLiyEVrFfSwlzmO4Suik/9e/bTguM2EY=
+X-Received: by 2002:a67:d294:0:b0:3ed:89c7:4bd2 with SMTP id
+ z20-20020a67d294000000b003ed89c74bd2mr2766641vsi.26.1675158616078; Tue, 31
+ Jan 2023 01:50:16 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20230118031509.29834-1-moudy.ho@mediatek.com> <20230118031509.29834-4-moudy.ho@mediatek.com>
+In-Reply-To: <20230118031509.29834-4-moudy.ho@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 31 Jan 2023 17:50:05 +0800
+Message-ID: <CAGXv+5Gid0xT=Ru0G3d-z+ED_wKWpGYSbhwiFXRv5jqJL0vC_A@mail.gmail.com>
+Subject: Re: [PATCH v6 3/4] clk: mediatek: remove MT8195 vppsys/0/1 simple_probe
+To: Moudy Ho <moudy.ho@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, 
+	Stephen Boyd <sboyd@kernel.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-clk@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_014637_389338_EF2FFD19 
-X-CRM114-Status: GOOD (  12.65  )
+X-CRM114-CacheID: sfid-20230131_015019_239343_F2A0998E 
+X-CRM114-Status: GOOD (  23.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,97 +85,183 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add helpers to get eht cap and phymode on different bands and vifs.
-This is the preliminary patch to add EHT support for mt7996.
+On Wed, Jan 18, 2023 at 11:16 AM Moudy Ho <moudy.ho@mediatek.com> wrote:
+>
+> MT8195 VPPSYS0/1 will be probed by the compatible name in
+> the mtk-mmsys driver and then probe its own clock driver as
+> a platform driver.
+>
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> ---
+>  drivers/clk/mediatek/clk-mt8195-vpp0.c | 58 +++++++++++++++++++-------
+>  drivers/clk/mediatek/clk-mt8195-vpp1.c | 58 +++++++++++++++++++-------
+>  2 files changed, 86 insertions(+), 30 deletions(-)
+>
+> diff --git a/drivers/clk/mediatek/clk-mt8195-vpp0.c b/drivers/clk/mediatek/clk-mt8195-vpp0.c
+> index bf2939c3a023..6d5800f69f6c 100644
+> --- a/drivers/clk/mediatek/clk-mt8195-vpp0.c
+> +++ b/drivers/clk/mediatek/clk-mt8195-vpp0.c
+> @@ -86,26 +86,54 @@ static const struct mtk_gate vpp0_clks[] = {
+>         GATE_VPP0_2(CLK_VPP0_WARP1_MDP_DL_ASYNC, "vpp0_warp1_mdp_dl_async", "top_wpe_vpp", 3),
+>  };
+>
+> -static const struct mtk_clk_desc vpp0_desc = {
+> -       .clks = vpp0_clks,
+> -       .num_clks = ARRAY_SIZE(vpp0_clks),
+> -};
+> +static int clk_mt8195_vpp0_probe(struct platform_device *pdev)
+> +{
+> +       struct device *dev = &pdev->dev;
+> +       struct device_node *node = dev->parent->of_node;
+> +       struct clk_onecell_data *clk_data;
 
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
----
- .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 46 +++++++++++++++++++
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  4 ++
- 2 files changed, 50 insertions(+)
+mtk_alloc_clk_data() API changed a couple releases back. So:
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-index 5a047e630860..efb9bfaa187f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -1329,6 +1329,40 @@ u8 mt76_connac_get_phy_mode(struct mt76_phy *phy, struct ieee80211_vif *vif,
- }
- EXPORT_SYMBOL_GPL(mt76_connac_get_phy_mode);
- 
-+u8 mt76_connac_get_phy_mode_ext(struct mt76_phy *phy, struct ieee80211_vif *vif,
-+				enum nl80211_band band)
-+{
-+	const struct ieee80211_sta_eht_cap *eht_cap;
-+	struct ieee80211_supported_band *sband;
-+	u8 mode = 0;
-+
-+	if (band == NL80211_BAND_6GHZ)
-+		mode |= PHY_MODE_AX_6G;
-+
-+	sband = phy->hw->wiphy->bands[band];
-+	eht_cap = ieee80211_get_eht_iftype_cap(sband, vif->type);
-+
-+	if (!eht_cap || !eht_cap->has_eht)
-+		return mode;
-+
-+	switch (band) {
-+	case NL80211_BAND_6GHZ:
-+		mode |= PHY_MODE_BE_6G;
-+		break;
-+	case NL80211_BAND_5GHZ:
-+		mode |= PHY_MODE_BE_5G;
-+		break;
-+	case NL80211_BAND_2GHZ:
-+		mode |= PHY_MODE_BE_24G;
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return mode;
-+}
-+EXPORT_SYMBOL_GPL(mt76_connac_get_phy_mode_ext);
-+
- const struct ieee80211_sta_he_cap *
- mt76_connac_get_he_phy_cap(struct mt76_phy *phy, struct ieee80211_vif *vif)
- {
-@@ -1341,6 +1375,18 @@ mt76_connac_get_he_phy_cap(struct mt76_phy *phy, struct ieee80211_vif *vif)
- }
- EXPORT_SYMBOL_GPL(mt76_connac_get_he_phy_cap);
- 
-+const struct ieee80211_sta_eht_cap *
-+mt76_connac_get_eht_phy_cap(struct mt76_phy *phy, struct ieee80211_vif *vif)
-+{
-+	enum nl80211_band band = phy->chandef.chan->band;
-+	struct ieee80211_supported_band *sband;
-+
-+	sband = phy->hw->wiphy->bands[band];
-+
-+	return ieee80211_get_eht_iftype_cap(sband, vif->type);
-+}
-+EXPORT_SYMBOL_GPL(mt76_connac_get_eht_phy_cap);
-+
- #define DEFAULT_HE_PE_DURATION		4
- #define DEFAULT_HE_DURATION_RTS_THRES	1023
- static void
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index ebd64bec9f68..2c22f60cc56d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -1872,8 +1872,12 @@ void mt76_connac_mcu_reg_wr(struct mt76_dev *dev, u32 offset, u32 val);
- 
- const struct ieee80211_sta_he_cap *
- mt76_connac_get_he_phy_cap(struct mt76_phy *phy, struct ieee80211_vif *vif);
-+const struct ieee80211_sta_eht_cap *
-+mt76_connac_get_eht_phy_cap(struct mt76_phy *phy, struct ieee80211_vif *vif);
- u8 mt76_connac_get_phy_mode(struct mt76_phy *phy, struct ieee80211_vif *vif,
- 			    enum nl80211_band band, struct ieee80211_sta *sta);
-+u8 mt76_connac_get_phy_mode_ext(struct mt76_phy *phy, struct ieee80211_vif *vif,
-+				enum nl80211_band band);
- 
- int mt76_connac_mcu_add_key(struct mt76_dev *dev, struct ieee80211_vif *vif,
- 			    struct mt76_connac_sta_key_conf *sta_key_conf,
--- 
-2.25.1
+          struct clk_hw_onecell_data
 
+> +       int r;
+>
+> -static const struct of_device_id of_match_clk_mt8195_vpp0[] = {
+> -       {
+> -               .compatible = "mediatek,mt8195-vppsys0",
+> -               .data = &vpp0_desc,
+> -       }, {
+> -               /* sentinel */
+> -       }
+> -};
+> +       clk_data = mtk_alloc_clk_data(CLK_VPP0_NR_CLK);
+> +       if (!clk_data)
+> +               return -ENOMEM;
+> +
+> +       r = mtk_clk_register_gates(node, vpp0_clks, ARRAY_SIZE(vpp0_clks), clk_data);
+
+API changed.
+
+> +       if (r)
+> +               goto free_vpp0_data;
+> +
+> +       r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+
+              of_clk_add_provider(node, of_clk_hw_onecell_get, clk_data);
+
+Same for the other driver.
+
+
+ChenYu
+
+> +       if (r)
+> +               goto unregister_gates;
+> +
+> +       platform_set_drvdata(pdev, clk_data);
+> +
+> +       return r;
+> +
+> +unregister_gates:
+> +       mtk_clk_unregister_gates(vpp0_clks, ARRAY_SIZE(vpp0_clks), clk_data);
+> +free_vpp0_data:
+> +       mtk_free_clk_data(clk_data);
+> +       return r;
+> +}
+> +
+> +static int clk_mt8195_vpp0_remove(struct platform_device *pdev)
+> +{
+> +       struct device *dev = &pdev->dev;
+> +       struct device_node *node = dev->parent->of_node;
+> +       struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+> +
+> +       of_clk_del_provider(node);
+> +       mtk_clk_unregister_gates(vpp0_clks, ARRAY_SIZE(vpp0_clks), clk_data);
+> +       mtk_free_clk_data(clk_data);
+> +
+> +       return 0;
+> +}
+>
+>  static struct platform_driver clk_mt8195_vpp0_drv = {
+> -       .probe = mtk_clk_simple_probe,
+> -       .remove = mtk_clk_simple_remove,
+> +       .probe = clk_mt8195_vpp0_probe,
+> +       .remove = clk_mt8195_vpp0_remove,
+>         .driver = {
+>                 .name = "clk-mt8195-vpp0",
+> -               .of_match_table = of_match_clk_mt8195_vpp0,
+>         },
+>  };
+>  builtin_platform_driver(clk_mt8195_vpp0_drv);
+> diff --git a/drivers/clk/mediatek/clk-mt8195-vpp1.c b/drivers/clk/mediatek/clk-mt8195-vpp1.c
+> index ffd52c762890..3b88c69e96c9 100644
+> --- a/drivers/clk/mediatek/clk-mt8195-vpp1.c
+> +++ b/drivers/clk/mediatek/clk-mt8195-vpp1.c
+> @@ -84,26 +84,54 @@ static const struct mtk_gate vpp1_clks[] = {
+>         GATE_VPP1_1(CLK_VPP1_VPP_SPLIT_26M, "vpp1_vpp_split_26m", "clk26m", 26),
+>  };
+>
+> -static const struct mtk_clk_desc vpp1_desc = {
+> -       .clks = vpp1_clks,
+> -       .num_clks = ARRAY_SIZE(vpp1_clks),
+> -};
+> +static int clk_mt8195_vpp1_probe(struct platform_device *pdev)
+> +{
+> +       struct device *dev = &pdev->dev;
+> +       struct device_node *node = dev->parent->of_node;
+> +       struct clk_onecell_data *clk_data;
+> +       int r;
+>
+> -static const struct of_device_id of_match_clk_mt8195_vpp1[] = {
+> -       {
+> -               .compatible = "mediatek,mt8195-vppsys1",
+> -               .data = &vpp1_desc,
+> -       }, {
+> -               /* sentinel */
+> -       }
+> -};
+> +       clk_data = mtk_alloc_clk_data(CLK_VPP1_NR_CLK);
+> +       if (!clk_data)
+> +               return -ENOMEM;
+> +
+> +       r = mtk_clk_register_gates(node, vpp1_clks, ARRAY_SIZE(vpp1_clks), clk_data);
+> +       if (r)
+> +               goto free_vpp1_data;
+> +
+> +       r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+> +       if (r)
+> +               goto unregister_gates;
+> +
+> +       platform_set_drvdata(pdev, clk_data);
+> +
+> +       return r;
+> +
+> +unregister_gates:
+> +       mtk_clk_unregister_gates(vpp1_clks, ARRAY_SIZE(vpp1_clks), clk_data);
+> +free_vpp1_data:
+> +       mtk_free_clk_data(clk_data);
+> +       return r;
+> +}
+> +
+> +static int clk_mt8195_vpp1_remove(struct platform_device *pdev)
+> +{
+> +       struct device *dev = &pdev->dev;
+> +       struct device_node *node = dev->parent->of_node;
+> +       struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+> +
+> +       of_clk_del_provider(node);
+> +       mtk_clk_unregister_gates(vpp1_clks, ARRAY_SIZE(vpp1_clks), clk_data);
+> +       mtk_free_clk_data(clk_data);
+> +
+> +       return 0;
+> +}
+>
+>  static struct platform_driver clk_mt8195_vpp1_drv = {
+> -       .probe = mtk_clk_simple_probe,
+> -       .remove = mtk_clk_simple_remove,
+> +       .probe = clk_mt8195_vpp1_probe,
+> +       .remove = clk_mt8195_vpp1_remove,
+>         .driver = {
+>                 .name = "clk-mt8195-vpp1",
+> -               .of_match_table = of_match_clk_mt8195_vpp1,
+>         },
+>  };
+>  builtin_platform_driver(clk_mt8195_vpp1_drv);
+> --
+> 2.18.0
+>
 
