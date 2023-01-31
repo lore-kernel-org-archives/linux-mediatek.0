@@ -4,79 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CB2DC636CC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 13:33:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6FC4C38142
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 13:37:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=psb2IPRyN59UeR0OUMTo31WwH+Xp8CvVyFbZ16Izf7w=; b=wT6XmRjUzLHR1ZW3DQtc+iDbqn
-	vK2EENeO+zqadIvCPeXMB0/p9h6I4GoXt5LCrx78IzRLSOZyk38TnlpEq+DpeLjzhRYK2qnwgtuvt
-	3W19+bpabK44SLrp58RgvcyABeHPoIJ0wxrdI6WS660mp+zMtJe2pko0FFszvYqe/FfuunhySJ5hD
-	zvtY0fZFKYtAWpdUQaFnGjzulia3a4H+ek1LtS5E1wX3+GcfVEJyHa3VW5rIVab8TAO55cjDuqL/g
-	CnCsHRIdYuHq/9Pn1C0vpBM1r8Fpv4O+5ZuYNgTaHQUQNTndb2KjkZTaR0pecHZwb4ueZWWxwWc/V
-	PmD7DHgA==;
+	bh=gN8Wq5E0N3HaFBsHRV9eya7b4jMZgDEegEG0/7rxU6Y=; b=Gma5w8Xm0DtEiF0ww/admmEB2w
+	QDon6SbPJKiItX54qPbw7+DJRP6j464NnnbGOvUNm7cCwU9yuTBX4YHpy73RNasFMrQh6Xk4howTJ
+	QhgA/R1YdZg2TD9GLoaY28YTQq/hyTj4Kx4qpfIOgEOcPqx6uP9X6k5VhVQXoH8zuie8fyz1UmHdK
+	hFSJCEOez/XBrb+b8LX4Iht4olcF13B9Rrt37+9mMAFRXScpo3bOORHn5dauzNpkAWM0qPq42vbM5
+	bly30sFJ0twY6VyM+yM0zWE+35/CuDvzySLw4qs1zBEt117S4OL4f8C2StXVjeSB33IdhV70LkZxS
+	ocnVDYQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMql1-0088EA-PT; Tue, 31 Jan 2023 13:33:07 +0000
-Received: from mga11.intel.com ([192.55.52.93])
+	id 1pMqpZ-0089GM-0K; Tue, 31 Jan 2023 13:37:49 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMqky-0088Ci-EW; Tue, 31 Jan 2023 13:33:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1675171984; x=1706707984;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=mUK7D/U+8m6Bb2XIMJI03erNm6ros1fVSyKoc3cCQO0=;
-  b=eql/Q3FMhiCnEwCPUisGX4Hp8E60fkiWZWuB+gU3U1OjvT30PqocH54Q
-   bPSOyRciSgc1LaHOkzwdhDGhA0ewICYaALIXwQynjteO9vySy0QiEfZfj
-   BxPOC56iS4mGw1uNEopQKGwxzgX0ONwIUXJ4t18IBeoaGMLHvbnTwvkmZ
-   xj9Gw6cnnKrNu71qZLVGqVhrvG11r7OYI4hp4NdeLGJJCQ4F5taP2fR4a
-   fCW7+iHB6xbF3AYsOasoRiwgdg9Mr5OEBkoQ5tNQauuusTCMiIWUvB8ot
-   YK6g2dwar6868NxGzkiJxPjm/hTackz3/CrfAAlhUJvUKdg8uUhvS2HWt
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10606"; a="325537307"
-X-IronPort-AV: E=Sophos;i="5.97,261,1669104000"; 
-   d="scan'208";a="325537307"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Jan 2023 05:33:00 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10606"; a="694942600"
-X-IronPort-AV: E=Sophos;i="5.97,261,1669104000"; 
-   d="scan'208";a="694942600"
-Received: from ahunter6-mobl1.ger.corp.intel.com (HELO [10.0.2.15]) ([10.252.47.218])
-  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Jan 2023 05:32:53 -0800
-Message-ID: <28d3348d-82ec-988f-718a-2d73bce585f3@intel.com>
-Date: Tue, 31 Jan 2023 15:32:50 +0200
+	id 1pMqpO-0089E3-5w; Tue, 31 Jan 2023 13:37:39 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id q10-20020a1cf30a000000b003db0edfdb74so794492wmq.1;
+        Tue, 31 Jan 2023 05:37:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=gN8Wq5E0N3HaFBsHRV9eya7b4jMZgDEegEG0/7rxU6Y=;
+        b=M6fdQdSxkncaF2gGsMGmgwiRTx17JrkmhphINg4jzKeXIuUUE1NClOZlA7lVuWJSjN
+         v+SEeYL251vyLO2jJDt2liXop052ZSYklXuUYxSCDnEm/j+QWu6ecEzDtxaiXYvozVhP
+         GrYlTT9qUcHjJ7SKnGBvyPkvBFAga/Z5tWgD2xAENUFPlL6H5ne63PQ0IGYZeJDuKweG
+         +oMFYUHPIQ4bwSSfJ09zxZIqEREqJa8kfxaX17h+xwP5tBxPCocx6ANCbJdzFgk7oVwR
+         /QrcBX1MqLYpJSm45IIwP74qjZeF319LZw2WmJ5KRm1Xe+JtbsIVJ5PCSJ50n3+Z9KmN
+         zO5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=gN8Wq5E0N3HaFBsHRV9eya7b4jMZgDEegEG0/7rxU6Y=;
+        b=z6X8YiQXXuPyDrtT6rMonRYJJjXu9zSKEOCe4k2iYaowzsRFMmbgG7wn+qESTzVA7E
+         1/I58K3wOtHQCq6UPbneshSBF6Si1dFb6k6mfRJH3X3bLJg5f0jYCeV86hc80kxACOdt
+         84hU/fyWa5WFbH8jd+4eqVxPjhJiu/9HK9KhjPWTll422OojPPZU1vWOowZnpRlsqt97
+         FHT6FAAblhKQxBrL6zbwA/gvU2owoGw2OU33HExA2FxGqv7OGbWfmbM5NBOmmNiE7tCt
+         33ca8JNOQsd3u/0cclajeWrcycjJblN7ikMszGZIhVTlxoN2vhCj8RyJYGmvYqhmNYEu
+         LvZA==
+X-Gm-Message-State: AO0yUKUJ8cXWPPa8sijdNPC2FOON/SsIL/C897sN/a4LgeT2DbHLwD/v
+	Bu5y8lpd7BLPskrYEvxV1JoruiuzFsI=
+X-Google-Smtp-Source: AK7set++xleaE8Iw4YlNEsa+QphiRF4k9n4Zuxxob7UJsMazROSSd23CO1qgR/pRIHH2ikmmllOqcA==
+X-Received: by 2002:a05:600c:314f:b0:3dc:4aa6:a8a9 with SMTP id h15-20020a05600c314f00b003dc4aa6a8a9mr3641957wmo.7.1675172256417;
+        Tue, 31 Jan 2023 05:37:36 -0800 (PST)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id c3-20020a1c3503000000b003dc1d668866sm19247111wma.10.2023.01.31.05.37.35
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 31 Jan 2023 05:37:35 -0800 (PST)
+Message-ID: <2995be5e-88e9-f00d-7bce-2f7c9eb5724d@gmail.com>
+Date: Tue, 31 Jan 2023 14:37:34 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Firefox/102.0 Thunderbird/102.7.1
-Subject: Re: [PATCH] mmc:mmc-cqhci:support interrupt coalescing
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v4 12/14] soc: mediatek: mtk-svs: use svs get efuse common
+ function
 Content-Language: en-US
-To: Michael Wu <michael@allwinnertech.com>, riteshh@codeaurora.org,
- asutoshd@codeaurora.org, ulf.hansson@linaro.org, chaotian.jing@mediatek.com,
- matthias.bgg@gmail.com, kdasu.kdev@gmail.com, alcooperx@gmail.com,
- f.fainelli@gmail.com, haibo.chen@nxp.com, shawnguo@kernel.org,
- agross@kernel.org, andersson@kernel.org, michal.simek@xilinx.com,
- thierry.reding@gmail.com, jonathanh@nvidia.com
-Cc: bcm-kernel-feedback-list@broadcom.com, kernel@pengutronix.de,
- festevam@gmail.com, linux-imx@nxp.com, konrad.dybcio@linaro.org,
- linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
+To: Roger Lu <roger.lu@mediatek.com>,
+ Enric Balletbo Serra <eballetbo@gmail.com>, Kevin Hilman
+ <khilman@kernel.org>, Nicolas Boichat <drinkcat@google.com>
+Cc: Fan Chen <fan.chen@mediatek.com>,
+ Jia-wei Chang <jia-wei.chang@mediatek.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org
-References: <20230130064656.106793-1-michael@allwinnertech.com>
- <2463a92b-c180-87d4-0c96-2f549a397164@intel.com>
- <610b5f73-f9e3-deb2-2754-e8939ed00ec3@allwinnertech.com>
-From: Adrian Hunter <adrian.hunter@intel.com>
-Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
- Business Identity Code: 0357606 - 4, Domiciled in Helsinki
-In-Reply-To: <610b5f73-f9e3-deb2-2754-e8939ed00ec3@allwinnertech.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+ linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230111074528.29354-1-roger.lu@mediatek.com>
+ <20230111074528.29354-13-roger.lu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20230111074528.29354-13-roger.lu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_053304_522508_E1AE2082 
-X-CRM114-Status: GOOD (  25.44  )
+X-CRM114-CacheID: sfid-20230131_053738_275858_2160406D 
+X-CRM114-Status: GOOD (  20.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,231 +98,169 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 31/01/23 15:12, Michael Wu wrote:
-> Dear Adrian，
-> 
-> On 2023/1/30 23:59, Adrian Hunter wrote:
->> On 30/01/23 08:46, Michael Wu wrote:
->>> Support interrupt coalescing to reduce the frequency of mmc interrupts
->>
->> There doesn't seem to be any users.  The new parameter to
->> cqhci_init() is always false.  New features are not usually
->> accepted without users.
-> 
-> At present, I have only supported this feature on the Allwinner platform because I have not get enough information about other vendors.
->>
->> There needs to be an explanation of why the change is being made.
-> 
-> I consider reducing the number of interrupt context switches. Can you tell me why the community does not support this feature? I wonder whether I'm doing is correct. If it's correct, i will improve this patch and incorporate it
 
-AFAIK the community has not made any comment on supporting interrupt coalescing for CQHCI, one way or another.
-However, it is generally expected that new features will only be added if they demonstrate some benefit.
-Just assuming that there is a benefit is not enough.
 
->>
->> Also there doesn't seem to be any configuration of the CQIC
->> register.
+On 11/01/2023 08:45, Roger Lu wrote:
+> SVS might need to read both svs efuse and thermal efuse on the probe flow.
+> Therefore, add a common efuse read function to remove the superfluous
+> codes.
 > 
-> At present, I am working on the hook function .cqe_enable that the ICCTH of CQIC is set in enable
->>
->>>
->>> Signed-off-by: Michael Wu <michael@allwinnertech.com>
->>> ---
->>>   drivers/mmc/host/cqhci-core.c      | 20 +++++++++++++++-----
->>>   drivers/mmc/host/cqhci.h           |  5 ++++-
->>>   drivers/mmc/host/mtk-sd.c          |  2 +-
->>>   drivers/mmc/host/sdhci-brcmstb.c   |  2 +-
->>>   drivers/mmc/host/sdhci-esdhc-imx.c |  2 +-
->>>   drivers/mmc/host/sdhci-msm.c       |  2 +-
->>>   drivers/mmc/host/sdhci-of-arasan.c |  2 +-
->>>   drivers/mmc/host/sdhci-pci-core.c  |  2 +-
->>>   drivers/mmc/host/sdhci-pci-gli.c   |  2 +-
->>>   drivers/mmc/host/sdhci-tegra.c     |  2 +-
->>>   drivers/mmc/host/sdhci_am654.c     |  2 +-
->>>   11 files changed, 28 insertions(+), 15 deletions(-)
->>>
->>> diff --git a/drivers/mmc/host/cqhci-core.c b/drivers/mmc/host/cqhci-core.c
->>> index b3d7d6d8d654..f9cdf9f04bfc 100644
->>> --- a/drivers/mmc/host/cqhci-core.c
->>> +++ b/drivers/mmc/host/cqhci-core.c
->>> @@ -420,7 +420,7 @@ static void cqhci_disable(struct mmc_host *mmc)
->>>   }
->>>     static void cqhci_prep_task_desc(struct mmc_request *mrq,
->>> -                 struct cqhci_host *cq_host, int tag)
->>> +                 struct cqhci_host *cq_host, int tag, int intr)
->>>   {
->>>       __le64 *task_desc = (__le64 __force *)get_desc(cq_host, tag);
->>>       u32 req_flags = mrq->data->flags;
->>> @@ -428,7 +428,7 @@ static void cqhci_prep_task_desc(struct mmc_request *mrq,
->>>         desc0 = CQHCI_VALID(1) |
->>>           CQHCI_END(1) |
->>> -        CQHCI_INT(1) |
->>> +        CQHCI_INT(intr) |
->>>           CQHCI_ACT(0x5) |
->>>           CQHCI_FORCED_PROG(!!(req_flags & MMC_DATA_FORCED_PRG)) |
->>>           CQHCI_DATA_TAG(!!(req_flags & MMC_DATA_DAT_TAG)) |
->>> @@ -621,7 +621,7 @@ static int cqhci_request(struct mmc_host *mmc, struct mmc_request *mrq)
->>>       }
->>>         if (mrq->data) {
->>> -        cqhci_prep_task_desc(mrq, cq_host, tag);
->>> +        cqhci_prep_task_desc(mrq, cq_host, tag, (cq_host->intr_clsc ? 0 : 1));
->>>             err = cqhci_prep_tran_desc(mrq, cq_host, tag);
->>>           if (err) {
->>> @@ -812,7 +812,7 @@ static void cqhci_finish_mrq(struct mmc_host *mmc, unsigned int tag)
->>>   irqreturn_t cqhci_irq(struct mmc_host *mmc, u32 intmask, int cmd_error,
->>>                 int data_error)
->>>   {
->>> -    u32 status;
->>> +    u32 status, rval;
->>>       unsigned long tag = 0, comp_status;
->>>       struct cqhci_host *cq_host = mmc->cqe_private;
->>>   @@ -856,6 +856,15 @@ irqreturn_t cqhci_irq(struct mmc_host *mmc, u32 intmask, int cmd_error,
->>>           spin_unlock(&cq_host->lock);
->>>       }
->>>   +    if (cq_host->intr_clsc) {
->>> +        rval = cqhci_readl(cq_host, CQHCI_IC);
->>> +        rval |= CQHCI_IC_RESET;
->>> +        cqhci_writel(cq_host, rval, CQHCI_IC);
->>> +        rval = cqhci_readl(cq_host, CQHCI_IC);
->>> +        rval &= (~CQHCI_IC_RESET);
->>> +        cqhci_writel(cq_host, rval, CQHCI_IC);
->>> +    }
->>> +
->>>       if (status & CQHCI_IS_TCL)
->>>           wake_up(&cq_host->wait_queue);
->>>   @@ -1172,11 +1181,12 @@ static unsigned int cqhci_ver_minor(struct cqhci_host *cq_host)
->>>   }
->>>     int cqhci_init(struct cqhci_host *cq_host, struct mmc_host *mmc,
->>> -          bool dma64)
->>> +          bool dma64, bool intr_clsc)
->>>   {
->>>       int err;
->>>         cq_host->dma64 = dma64;
->>> +    cq_host->intr_clsc = intr_clsc;
->>>       cq_host->mmc = mmc;
->>>       cq_host->mmc->cqe_private = cq_host;
->>>   diff --git a/drivers/mmc/host/cqhci.h b/drivers/mmc/host/cqhci.h
->>> index ba9387ed90eb..acf90773c30a 100644
->>> --- a/drivers/mmc/host/cqhci.h
->>> +++ b/drivers/mmc/host/cqhci.h
->>> @@ -227,6 +227,9 @@ struct cqhci_host {
->>>         /* 64 bit DMA */
->>>       bool dma64;
->>> +
->>> +    /* interrupt coalescing*/
->>> +    bool intr_clsc;
->>>       int num_slots;
->>>       int qcnt;
->>>   @@ -312,7 +315,7 @@ struct platform_device;
->>>     irqreturn_t cqhci_irq(struct mmc_host *mmc, u32 intmask, int cmd_error,
->>>                 int data_error);
->>> -int cqhci_init(struct cqhci_host *cq_host, struct mmc_host *mmc, bool dma64);
->>> +int cqhci_init(struct cqhci_host *cq_host, struct mmc_host *mmc, bool dma64, bool intr_clsc);
->>>   struct cqhci_host *cqhci_pltfm_init(struct platform_device *pdev);
->>>   int cqhci_deactivate(struct mmc_host *mmc);
->>>   static inline int cqhci_suspend(struct mmc_host *mmc)
->>> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
->>> index edade0e54a0c..2c18f954d4b8 100644
->>> --- a/drivers/mmc/host/mtk-sd.c
->>> +++ b/drivers/mmc/host/mtk-sd.c
->>> @@ -2796,7 +2796,7 @@ static int msdc_drv_probe(struct platform_device *pdev)
->>>           host->cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
->>>           host->cq_host->mmio = host->base + 0x800;
->>>           host->cq_host->ops = &msdc_cmdq_ops;
->>> -        ret = cqhci_init(host->cq_host, mmc, true);
->>> +        ret = cqhci_init(host->cq_host, mmc, true, false);
->>>           if (ret)
->>>               goto host_free;
->>>           mmc->max_segs = 128;
->>> diff --git a/drivers/mmc/host/sdhci-brcmstb.c b/drivers/mmc/host/sdhci-brcmstb.c
->>> index f2cf3d70db79..4aeaeddbbf25 100644
->>> --- a/drivers/mmc/host/sdhci-brcmstb.c
->>> +++ b/drivers/mmc/host/sdhci-brcmstb.c
->>> @@ -231,7 +231,7 @@ static int sdhci_brcmstb_add_host(struct sdhci_host *host,
->>>           cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
->>>       }
->>>   -    ret = cqhci_init(cq_host, host->mmc, dma64);
->>> +    ret = cqhci_init(cq_host, host->mmc, dma64, false);
->>>       if (ret)
->>>           goto cleanup;
->>>   diff --git a/drivers/mmc/host/sdhci-esdhc-imx.c b/drivers/mmc/host/sdhci-esdhc-imx.c
->>> index 9e73c34b6401..7aef7abe71f1 100644
->>> --- a/drivers/mmc/host/sdhci-esdhc-imx.c
->>> +++ b/drivers/mmc/host/sdhci-esdhc-imx.c
->>> @@ -1712,7 +1712,7 @@ static int sdhci_esdhc_imx_probe(struct platform_device *pdev)
->>>           cq_host->mmio = host->ioaddr + ESDHC_CQHCI_ADDR_OFFSET;
->>>           cq_host->ops = &esdhc_cqhci_ops;
->>>   -        err = cqhci_init(cq_host, host->mmc, false);
->>> +        err = cqhci_init(cq_host, host->mmc, false, false);
->>>           if (err)
->>>               goto disable_ahb_clk;
->>>       }
->>> diff --git a/drivers/mmc/host/sdhci-msm.c b/drivers/mmc/host/sdhci-msm.c
->>> index 4ac8651d0b29..b6549d1e43ec 100644
->>> --- a/drivers/mmc/host/sdhci-msm.c
->>> +++ b/drivers/mmc/host/sdhci-msm.c
->>> @@ -2153,7 +2153,7 @@ static int sdhci_msm_cqe_add_host(struct sdhci_host *host,
->>>       if (ret)
->>>           goto cleanup;
->>>   -    ret = cqhci_init(cq_host, host->mmc, dma64);
->>> +    ret = cqhci_init(cq_host, host->mmc, dma64, false);
->>>       if (ret) {
->>>           dev_err(&pdev->dev, "%s: CQE init: failed (%d)\n",
->>>                   mmc_hostname(host->mmc), ret);
->>> diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sdhci-of-arasan.c
->>> index 89c431a34c43..811f8686532d 100644
->>> --- a/drivers/mmc/host/sdhci-of-arasan.c
->>> +++ b/drivers/mmc/host/sdhci-of-arasan.c
->>> @@ -1610,7 +1610,7 @@ static int sdhci_arasan_add_host(struct sdhci_arasan_data *sdhci_arasan)
->>>       if (dma64)
->>>           cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
->>>   -    ret = cqhci_init(cq_host, host->mmc, dma64);
->>> +    ret = cqhci_init(cq_host, host->mmc, dma64, false);
->>>       if (ret)
->>>           goto cleanup;
->>>   diff --git a/drivers/mmc/host/sdhci-pci-core.c b/drivers/mmc/host/sdhci-pci-core.c
->>> index c359f867df0a..6f6cae6355a7 100644
->>> --- a/drivers/mmc/host/sdhci-pci-core.c
->>> +++ b/drivers/mmc/host/sdhci-pci-core.c
->>> @@ -964,7 +964,7 @@ static int glk_emmc_add_host(struct sdhci_pci_slot *slot)
->>>       if (dma64)
->>>           cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
->>>   -    ret = cqhci_init(cq_host, host->mmc, dma64);
->>> +    ret = cqhci_init(cq_host, host->mmc, dma64, false);
->>>       if (ret)
->>>           goto cleanup;
->>>   diff --git a/drivers/mmc/host/sdhci-pci-gli.c b/drivers/mmc/host/sdhci-pci-gli.c
->>> index 633a8ee8f8c5..6917ba339aa9 100644
->>> --- a/drivers/mmc/host/sdhci-pci-gli.c
->>> +++ b/drivers/mmc/host/sdhci-pci-gli.c
->>> @@ -908,7 +908,7 @@ static int gl9763e_add_host(struct sdhci_pci_slot *slot)
->>>       if (dma64)
->>>           cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
->>>   -    ret = cqhci_init(cq_host, host->mmc, dma64);
->>> +    ret = cqhci_init(cq_host, host->mmc, dma64, false);
->>>       if (ret)
->>>           goto cleanup;
->>>   diff --git a/drivers/mmc/host/sdhci-tegra.c b/drivers/mmc/host/sdhci-tegra.c
->>> index bff084f178c9..f98a468e8f43 100644
->>> --- a/drivers/mmc/host/sdhci-tegra.c
->>> +++ b/drivers/mmc/host/sdhci-tegra.c
->>> @@ -1620,7 +1620,7 @@ static int sdhci_tegra_add_host(struct sdhci_host *host)
->>>       if (dma64)
->>>           cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
->>>   -    ret = cqhci_init(cq_host, host->mmc, dma64);
->>> +    ret = cqhci_init(cq_host, host->mmc, dma64, false);
->>>       if (ret)
->>>           goto cleanup;
->>>   diff --git a/drivers/mmc/host/sdhci_am654.c b/drivers/mmc/host/sdhci_am654.c
->>> index 7ef828942df3..8e7fbee70e16 100644
->>> --- a/drivers/mmc/host/sdhci_am654.c
->>> +++ b/drivers/mmc/host/sdhci_am654.c
->>> @@ -568,7 +568,7 @@ static int sdhci_am654_cqe_add_host(struct sdhci_host *host)
->>>         host->mmc->caps2 |= MMC_CAP2_CQE;
->>>   -    return cqhci_init(cq_host, host->mmc, 1);
->>> +    return cqhci_init(cq_host, host->mmc, 1, false);
->>>   }
->>>     static int sdhci_am654_get_otap_delay(struct sdhci_host *host,
-> 
+> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
 
+Looks good to me, could you please rebase.
+
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+> ---
+>   drivers/soc/mediatek/mtk-svs.c | 69 ++++++++++++----------------------
+>   1 file changed, 24 insertions(+), 45 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+> index bd23d1111d7b..a7f0a6f02d52 100644
+> --- a/drivers/soc/mediatek/mtk-svs.c
+> +++ b/drivers/soc/mediatek/mtk-svs.c
+> @@ -1758,26 +1758,28 @@ static int svs_bank_resource_setup(struct svs_platform *svsp)
+>   	return 0;
+>   }
+>   
+> -static int svs_thermal_efuse_get_data(struct svs_platform *svsp)
+> +static int svs_get_efuse_data(struct svs_platform *svsp,
+> +			      const char *nvmem_cell_name,
+> +			      u32 **svsp_efuse, size_t *svsp_efuse_max)
+>   {
+>   	struct nvmem_cell *cell;
+>   
+> -	/* Thermal efuse parsing */
+> -	cell = nvmem_cell_get(svsp->dev, "t-calibration-data");
+> +	cell = nvmem_cell_get(svsp->dev, nvmem_cell_name);
+>   	if (IS_ERR_OR_NULL(cell)) {
+> -		dev_err(svsp->dev, "no \"t-calibration-data\"? %ld\n", PTR_ERR(cell));
+> +		dev_err(svsp->dev, "no \"%s\"? %ld\n",
+> +			nvmem_cell_name, PTR_ERR(cell));
+>   		return PTR_ERR(cell);
+>   	}
+>   
+> -	svsp->tefuse = nvmem_cell_read(cell, &svsp->tefuse_max);
+> -	if (IS_ERR(svsp->tefuse)) {
+> -		dev_err(svsp->dev, "cannot read thermal efuse: %ld\n",
+> -			PTR_ERR(svsp->tefuse));
+> +	*svsp_efuse = nvmem_cell_read(cell, svsp_efuse_max);
+> +	if (IS_ERR(*svsp_efuse)) {
+> +		dev_err(svsp->dev, "cannot read \"%s\" efuse: %ld\n",
+> +			nvmem_cell_name, PTR_ERR(*svsp_efuse));
+>   		nvmem_cell_put(cell);
+> -		return PTR_ERR(svsp->tefuse);
+> +		return PTR_ERR(*svsp_efuse);
+>   	}
+>   
+> -	svsp->tefuse_max /= sizeof(u32);
+> +	*svsp_efuse_max /= sizeof(u32);
+>   	nvmem_cell_put(cell);
+>   
+>   	return 0;
+> @@ -1825,7 +1827,8 @@ static bool svs_mt8192_efuse_parsing(struct svs_platform *svsp)
+>   		svsb->vmax += svsb->dvt_fixed;
+>   	}
+>   
+> -	ret = svs_thermal_efuse_get_data(svsp);
+> +	ret = svs_get_efuse_data(svsp, "t-calibration-data",
+> +				 &svsp->tefuse, &svsp->tefuse_max);
+>   	if (ret)
+>   		return false;
+>   
+> @@ -1930,7 +1933,8 @@ static bool svs_mt8183_efuse_parsing(struct svs_platform *svsp)
+>   		}
+>   	}
+>   
+> -	ret = svs_thermal_efuse_get_data(svsp);
+> +	ret = svs_get_efuse_data(svsp, "t-calibration-data",
+> +				 &svsp->tefuse, &svsp->tefuse_max);
+>   	if (ret)
+>   		return false;
+>   
+> @@ -2039,32 +2043,6 @@ static bool svs_mt8183_efuse_parsing(struct svs_platform *svsp)
+>   	return true;
+>   }
+>   
+> -static bool svs_is_efuse_data_correct(struct svs_platform *svsp)
+> -{
+> -	struct nvmem_cell *cell;
+> -
+> -	/* Get svs efuse by nvmem */
+> -	cell = nvmem_cell_get(svsp->dev, "svs-calibration-data");
+> -	if (IS_ERR(cell)) {
+> -		dev_err(svsp->dev, "no \"svs-calibration-data\"? %ld\n",
+> -			PTR_ERR(cell));
+> -		return false;
+> -	}
+> -
+> -	svsp->efuse = nvmem_cell_read(cell, &svsp->efuse_max);
+> -	if (IS_ERR(svsp->efuse)) {
+> -		dev_err(svsp->dev, "cannot read svs efuse: %ld\n",
+> -			PTR_ERR(svsp->efuse));
+> -		nvmem_cell_put(cell);
+> -		return false;
+> -	}
+> -
+> -	svsp->efuse_max /= sizeof(u32);
+> -	nvmem_cell_put(cell);
+> -
+> -	return true;
+> -}
+> -
+>   static struct device *svs_get_subsys_device(struct svs_platform *svsp,
+>   					    const char *node_name)
+>   {
+> @@ -2404,8 +2382,9 @@ static int svs_probe(struct platform_device *pdev)
+>   	if (ret)
+>   		return ret;
+>   
+> -	if (!svs_is_efuse_data_correct(svsp)) {
+> -		dev_notice(svsp->dev, "efuse data isn't correct\n");
+> +	ret = svs_get_efuse_data(svsp, "svs-calibration-data",
+> +				 &svsp->efuse, &svsp->efuse_max);
+> +	if (ret) {
+>   		ret = -EPERM;
+>   		goto svs_probe_free_efuse;
+>   	}
+> @@ -2413,13 +2392,13 @@ static int svs_probe(struct platform_device *pdev)
+>   	if (!svsp_data->efuse_parsing(svsp)) {
+>   		dev_err(svsp->dev, "efuse data parsing failed\n");
+>   		ret = -EPERM;
+> -		goto svs_probe_free_resource;
+> +		goto svs_probe_free_tefuse;
+>   	}
+>   
+>   	ret = svs_bank_resource_setup(svsp);
+>   	if (ret) {
+>   		dev_err(svsp->dev, "svs bank resource setup fail: %d\n", ret);
+> -		goto svs_probe_free_resource;
+> +		goto svs_probe_free_tefuse;
+>   	}
+>   
+>   	svsp->main_clk = devm_clk_get(svsp->dev, "main");
+> @@ -2427,12 +2406,12 @@ static int svs_probe(struct platform_device *pdev)
+>   		dev_err(svsp->dev, "failed to get clock: %ld\n",
+>   			PTR_ERR(svsp->main_clk));
+>   		ret = PTR_ERR(svsp->main_clk);
+> -		goto svs_probe_free_resource;
+> +		goto svs_probe_free_tefuse;
+>   	}
+>   
+>   	ret = svs_clk_enable(svsp);
+>   	if (ret)
+> -		goto svs_probe_free_resource;
+> +		goto svs_probe_free_tefuse;
+>   
+>   	svsp->base = of_iomap(svsp->dev->of_node, 0);
+>   	if (IS_ERR_OR_NULL(svsp->base)) {
+> @@ -2477,7 +2456,7 @@ static int svs_probe(struct platform_device *pdev)
+>   svs_probe_clk_disable:
+>   	svs_clk_disable(svsp);
+>   
+> -svs_probe_free_resource:
+> +svs_probe_free_tefuse:
+>   	if (!IS_ERR_OR_NULL(svsp->tefuse))
+>   		kfree(svsp->tefuse);
+>   
 
