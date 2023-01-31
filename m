@@ -4,69 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6893BC636CD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 08:33:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B765C636D3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 08:33:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DqXy7fTBvNM2u5MEHqeap/HvV+T3KMcyiZIUQQgAtlk=; b=plKUKfv49KrAQNIQNVutA6khp6
-	hlc2IO2+pxkMWmK4L7ut1tMTAmgPEU/g2MjHZ4a6IIDwe4DIh370WtrjG8aOQiJ8xfx+jY2Ow3yml
-	pPwWMTeGDUENJnEVm2dqF8KVkQJk8eZOF/+JF3hh2UNj5X57HWyObgpXrtx4swrcOU+76+JfDYwkj
-	JNpLV+yu/x/Z7YynGEY1av7gBH/Ly6iqDKmB4KK+mCq2R8hEdM0VcGiUTr6LXx4nC/cXQwcDsTcQy
-	UY2W0ND1I8OpqRfffhwtMmxB27YGPTUXvCpb29w451z+LoOEtFKT6Z483LCw5Y3f3Gs9EVTmm0qjU
-	EeGvVJXQ==;
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Z0N5VlX9/JlryGOL5I747Le9USomZJCRNNGRT3LbbKc=; b=gbX7aWe0jMVU9kONYBS+aeW4jv
+	TvbYb5OS78vVDyNhUMyPYpb6JgufGuOXeN0Be2TsRVNTkZcAK3ULDWFhdVDR1v5riztv9xqB2OMrK
+	1sONfpl07qn/D4ner2ANg2TUPUMUwjbKhG6AlLgIpoHiJsjUF2LhNaisp+Na//62sR9lkWp1cT2Wo
+	PWUlPU74TpdEPkkMk2qIViIxg8RTl4IckREEN9XA7hKy+T+alsK9T/Uo9ZnJqshRQ5lrlD72OlycZ
+	5sTkMER13A7RIyLG4agz3zWCPGfYjy+Bn5hwVLHNNyH2vHQeIekh7mHc9UnQJ6Z0NzM/E7AJdgK+1
+	uzNcAUoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMm4v-006juq-S9; Tue, 31 Jan 2023 08:33:21 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pMm5J-006k75-32; Tue, 31 Jan 2023 08:33:45 +0000
+Received: from mail.lokoho.com ([217.61.105.98])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMm4j-006joq-NH; Tue, 31 Jan 2023 08:33:11 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id F017D6602EB0;
-	Tue, 31 Jan 2023 08:33:04 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1675153985;
-	bh=8znNGnB3SZ5cMbqV4jYJqOpR3KhVL1tOkUowpw7M7lI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=QR6WyMzjxsw8hGag04dgpgrY88QAtxbgvKqMCA7HAk5/4CKFfp3XFXPD4poTOry+3
-	 kBlxjC3qHq4r1EpXxJOqwqVrvjZgrZwfsxGxHCvi35GTktfsQ0wAVMvwta6LxYJMfL
-	 HRMov1gkLvu5WQVPQciv3i2IVl3rf/RWWY4urQh44lcU9nlfByExrMz0WTXabdqwol
-	 Ic4rI7pwy+xUhCSP2vSF8dWVY/NFCfFKwiadqRcJMmhGpamv+dpcGJZQGId6BMJiWN
-	 uMF9XVf16eOTtJsqqg+/WRNQPbSM8RAsO+7Bwt0hTkiqqnoCao81C7FyczQNSfx/b2
-	 NFp+/csgiCgew==
-Message-ID: <d3d913f3-d898-26c5-7c05-01b67826e662@collabora.com>
-Date: Tue, 31 Jan 2023 09:33:01 +0100
+	id 1pMm4z-006jwJ-AA
+	for linux-mediatek@lists.infradead.org; Tue, 31 Jan 2023 08:33:27 +0000
+Received: by mail.lokoho.com (Postfix, from userid 1001)
+	id 07BB2839F2; Tue, 31 Jan 2023 08:31:39 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=lokoho.com; s=mail;
+	t=1675154004; bh=Z0N5VlX9/JlryGOL5I747Le9USomZJCRNNGRT3LbbKc=;
+	h=Date:From:To:Subject:From;
+	b=Lb/u7CeiPNcV2IYEr99CYYJHF0PBHRK0YLtnlLPj+RTXe0+tjmlROgJw09FYDU7gx
+	 BFrTZ2OFqeFk6+OGQroo4F3tc/AbfaBAqxwaqxET/vyfzCZFrNlVn3cfROvKWDtDMl
+	 4QMRtapAV8JcpePDrZ6K5mIn/jq5KP3Sb9sLJsK14Agysyq42kohmcBPT81HmorxdA
+	 gJMAl2t47C1dICfEEgjyMNIOG72z9imUVVChcv5atoy1sjSRBK21YsgOpNxRQbFPNq
+	 klLKDzWELrXZ3/7NgqmMX8v0USWXZRVbCeLVaaBNR2taF7F6D6hDh1b5rr7ipvAXQ3
+	 vjHY/dj2srHqg==
+Received: by mail.lokoho.com for <linux-mediatek@lists.infradead.org>; Tue, 31 Jan 2023 08:30:34 GMT
+Message-ID: <20230131074501-0.1.3q.w0dm.0.vr203b7az1@lokoho.com>
+Date: Tue, 31 Jan 2023 08:30:34 GMT
+From: "Adam Charachuta" <adam.charachuta@lokoho.com>
+To: <linux-mediatek@lists.infradead.org>
+Subject: =?UTF-8?Q?S=C5=82owa_kluczowe_do_wypozycjonowania?=
+X-Mailer: mail.lokoho.com
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v6 3/4] clk: mediatek: remove MT8195 vppsys/0/1
- simple_probe
-To: Stephen Boyd <sboyd@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Michael Turquette <mturquette@baylibre.com>, Moudy Ho
- <moudy.ho@mediatek.com>, Rob Herring <robh+dt@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-clk@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20230118031509.29834-1-moudy.ho@mediatek.com>
- <20230118031509.29834-4-moudy.ho@mediatek.com>
- <fe49e8b642c4c33fee37e97d957c37a3.sboyd@kernel.org>
-Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <fe49e8b642c4c33fee37e97d957c37a3.sboyd@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_003310_001391_0A223EE8 
-X-CRM114-Status: GOOD (  13.77  )
+X-CRM114-CacheID: sfid-20230131_003325_506401_8DF0B0B7 
+X-CRM114-Status: UNSURE (   1.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,53 +64,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 30/01/23 20:36, Stephen Boyd ha scritto:
-> Quoting Moudy Ho (2023-01-17 19:15:08)
->> diff --git a/drivers/clk/mediatek/clk-mt8195-vpp0.c b/drivers/clk/mediatek/clk-mt8195-vpp0.c
->> index bf2939c3a023..6d5800f69f6c 100644
->> --- a/drivers/clk/mediatek/clk-mt8195-vpp0.c
->> +++ b/drivers/clk/mediatek/clk-mt8195-vpp0.c
->> @@ -86,26 +86,54 @@ static const struct mtk_gate vpp0_clks[] = {
->>          GATE_VPP0_2(CLK_VPP0_WARP1_MDP_DL_ASYNC, "vpp0_warp1_mdp_dl_async", "top_wpe_vpp", 3),
->>   };
->>   
->> -static const struct mtk_clk_desc vpp0_desc = {
->> -       .clks = vpp0_clks,
->> -       .num_clks = ARRAY_SIZE(vpp0_clks),
->> -};
->> +static int clk_mt8195_vpp0_probe(struct platform_device *pdev)
->> +{
->> +       struct device *dev = &pdev->dev;
->> +       struct device_node *node = dev->parent->of_node;
->> +       struct clk_onecell_data *clk_data;
->> +       int r;
->>   
->> -static const struct of_device_id of_match_clk_mt8195_vpp0[] = {
->> -       {
->> -               .compatible = "mediatek,mt8195-vppsys0",
->> -               .data = &vpp0_desc,
->> -       }, {
->> -               /* sentinel */
->> -       }
->> -};
->> +       clk_data = mtk_alloc_clk_data(CLK_VPP0_NR_CLK);
->> +       if (!clk_data)
->> +               return -ENOMEM;
->> +
->> +       r = mtk_clk_register_gates(node, vpp0_clks, ARRAY_SIZE(vpp0_clks), clk_data);
-> 
-> This API is wrecked by a patch from AngeloGioacchino. Can you resend, or
-> tell me which device should be used here?
+Dzie=C5=84 dobry,
 
-mtk_clk_register_gates(&pdev->dev, node, vpp0_clks, ......);
+zapozna=C5=82em si=C4=99 z Pa=C5=84stwa ofert=C4=85 i z przyjemno=C5=9Bci=
+=C4=85 przyznaj=C4=99, =C5=BCe przyci=C4=85ga uwag=C4=99 i zach=C4=99ca d=
+o dalszych rozm=C3=B3w.=20
+
+Pomy=C5=9Bla=C5=82em, =C5=BCe mo=C5=BCe m=C3=B3g=C5=82bym mie=C4=87 sw=C3=
+=B3j wk=C5=82ad w Pa=C5=84stwa rozw=C3=B3j i pom=C3=B3c dotrze=C4=87 z t=C4=
+=85 ofert=C4=85 do wi=C4=99kszego grona odbiorc=C3=B3w. Pozycjonuj=C4=99 =
+strony www, dzi=C4=99ki czemu generuj=C4=85 =C5=9Bwietny ruch w sieci.
+
+Mo=C5=BCemy porozmawia=C4=87 w najbli=C5=BCszym czasie?
 
 
-...with that change, for this patch:
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-P.S.: Next cleanup round will introduce mtk_clk_pdev_simple_probe()
-
-Cheers,
-Angelo
+Pozdrawiam
+Adam Charachuta
 
