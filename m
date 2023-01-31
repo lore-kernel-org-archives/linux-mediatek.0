@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 000E7C38142
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 13:23:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05466C38142
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 13:23:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YqCcxNM0oQ47CTFQk6ypa9uV7hhok/zL4Fnr5q3moYk=; b=jM56IUcmluBrYzMJl4HD/tBqXb
-	SLU7ct8cFCpaafrTEYAgtwJsEIcTM2V2SH4LrU7k2qGDwvSlAd0/0DqFKuH7D+PJwqmla9l6d6iDP
-	mEOK/2GWZmT4+s/2sIcvzFyW1FRsz5UnTfLuno3FITm1cwBLpcmleiZrPUO8XNbziD9J4qEtAg5un
-	Ur0LsiLJKHn+4hPeB9MLjeW9mzjh2fppOxq3182AC/udobjPvJYCwWbX8RxOpONHghiIAJJI6jAe8
-	8HTHXG0lYTOiCLjejTs3qEBz5196ANUDa34wmNjclx2TMuSLxS0eS0WXrDyo6dWaLiHTSQd65MKcG
-	TbhtPsNQ==;
+	bh=DxqT2eMiEuxRnBsmwUs2D0qkIojDueG3BR3ri/bN6+s=; b=m1gN/BkfUejS7dYrjjwzkRQriY
+	jp3sWa76lSvqhYIN3rvpHut7c2tlz5JwgDvjXMqoOiVkx6mx0xuKmAhhXc5wW14LU795oNNhwcivJ
+	CFNeH/axnu/RT414XskcG6Yos3EAZbpsS34ysB2MrEFoyDcaROok/l4RB+BTRi5REyF4nA0B3PzaA
+	5Ci0kYqMxtiw+oLWdNV4RPTSZ7tyHXTIDNFLGoaIB+0USsIdrkUsjZnnbCtKAeVh+okYgJn3+PLKN
+	SWvEvdBh5Cu46wrJUqxaz0D1NoVJSL6d+PiGbZOHEsTY0z8YZeWsr5eWiAgzNjur3Tkbvkj1sbrm3
+	Ue6TAmGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMqbA-0084AL-Hi; Tue, 31 Jan 2023 13:22:56 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1pMqbp-0084SI-Ua; Tue, 31 Jan 2023 13:23:37 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMqaw-00843o-Oj; Tue, 31 Jan 2023 13:22:44 +0000
-Received: by mail-wm1-x333.google.com with SMTP id n28-20020a05600c3b9c00b003ddca7a2bcbso586597wms.3;
-        Tue, 31 Jan 2023 05:22:41 -0800 (PST)
+	id 1pMqbX-0084Jn-AX; Tue, 31 Jan 2023 13:23:20 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id d4-20020a05600c3ac400b003db1de2aef0so10585802wms.2;
+        Tue, 31 Jan 2023 05:23:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=YqCcxNM0oQ47CTFQk6ypa9uV7hhok/zL4Fnr5q3moYk=;
-        b=Eb5Fa0y2PKje90ynik0qDiPK88YhdfznviATz7/qM/4FIz3xdlMVVEtd992UzgLXlJ
-         eWcHQG5o3DcWbVPUU4kQ3xiWQ5NfQwvPOore1j1lJ43bckFv7y+NPAFWJaj5Zt7NaFq+
-         dxWOgpTw+xYAijDfamE/4nvRI5khcW55ctYWqLhA2Vr7NVgIXnOtPvJH/CN0DxJ/3yse
-         wlTivATD30zwugRCrUiHvR/+x9iyXjKpQbDIAKasXiVvMv+O/gd/odXJ0lELg2Bj+EQY
-         mC5rIkLghhqpDaubEtmL96JwT1i0autyAEvmPq1TjmOncsLh1cV/yUz1gsUUCuYgqvU2
-         s3OA==
+        bh=DxqT2eMiEuxRnBsmwUs2D0qkIojDueG3BR3ri/bN6+s=;
+        b=T0r+CaGMfGweUThdfbzF9UjIdg+qzhzE/zYh6nJZNGdLSuF7rhGCe/sqWeFbbj9UXJ
+         6HZCUh2n4YYwdT8UM2o1P0Xa+C6cjlVSkEWjmbItKQkjkAbVI7aO8qMQAbA24Wu2CB1s
+         uhTKIHauaE3ecoVYwDuXKqEOWTObc1/frP630Iy7a7XDeOeXwh3yH/kXn5SYKkNZNk4C
+         SjxSpXbHuukH2d2s3HPUajJMdrOYIBeBxD1UjvcpCW56iMlg7wBWWJEwTIAvYdbiCAQd
+         0XAQ23FH7De3Nfuj4ocYEC64wfhy/hSD5neChPhTISOjBnYKplKF3A2Q7LeJBaK03wFV
+         KZig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=YqCcxNM0oQ47CTFQk6ypa9uV7hhok/zL4Fnr5q3moYk=;
-        b=pbAUEbWKdJO/7ypnFac09mUPXZxmc3GG2V6KdrDYUlJHTktK+NBvcCrwWIu+yToBgJ
-         8QvIwC9qI2D5FfKBPt4Do1EHnNFjEebGmgsCg6c2M22ID7prQY4dhJHv9jC2XA6dp+2c
-         m2TPNPPOM0jNTPwrVDdSXT3FtqtBRbBSQ5ZCn+wvgh1LsGSRweg2BZeYLOrrwaZN45hw
-         fXSY/5cbofCmXzotATw6JFG7tvMMRLiLbmn/9/aQLElQPIHPus9lP7rXWxZvSB6OfUJy
-         YRQlBRKMB6pGuvd9C2v3dOyPnWupryE4p5l/A70T4chLBNXFGR0QydHAeWT6P/FjzGoY
-         lUww==
-X-Gm-Message-State: AFqh2krFQjKL/OHLgdMh71xOsn/3v28sVsfITPqMnfFv62oCDPNJoxer
-	Lf3lzvUHYhcyAyu958qGB1s=
-X-Google-Smtp-Source: AMrXdXtixiVnQKlwB4dKIZTeavrQqJ0wcmz9Mhqv3aD7AfQaRe21JMjwNwp+cs2JCFFXcClem4ZelA==
-X-Received: by 2002:a05:600c:1d8e:b0:3d9:efe8:a42d with SMTP id p14-20020a05600c1d8e00b003d9efe8a42dmr54310562wms.21.1675171359958;
-        Tue, 31 Jan 2023 05:22:39 -0800 (PST)
+        bh=DxqT2eMiEuxRnBsmwUs2D0qkIojDueG3BR3ri/bN6+s=;
+        b=8OL6xY5NXlr9xcMX6Xyc4dSnoTEQvur/JdYn0FdHzoiSeSmkiu+CtlcoNx4T3h0fQk
+         ekep3YxYnswMetEjWcN2G/xcycdCt9s6FRFghJpObK4VoWKzAht6zRAZAfwHcL9fGH7j
+         00AvsM84hRc3uklakOtIQe7a+YCYVkhPtb7oGilO7/gbDQKMPjzLkMLvv1OjxQBKY1NV
+         3OTDdJ+UicXV2p9BXrS4zg9L5a3TBgxfQL7Efpmz23SfnY39gD95vLoc6c4JfmvSkXLx
+         QZrBwy2EtoCjGU2gT0+UNKHc44xqZX7+Q1Zh0QE/mGT3UZJhd+cdbuEElZeyGwmLfza3
+         Cgcw==
+X-Gm-Message-State: AFqh2kqhkC6L2SDWHhnPBTFg2v0zZcH/DWNWF9Ljtf66YsnMMghsGJY5
+	EPkPH0yVKVjF4keqwPkCqB0=
+X-Google-Smtp-Source: AMrXdXs90s3eq6X/sKbtmQ3mlK2owSJhgh00MP0sAFb6WKMS4+U9xyLsJ07GGTZiYY1iXwIChdaY+g==
+X-Received: by 2002:a1c:ed0a:0:b0:3d3:4a47:52e9 with SMTP id l10-20020a1ced0a000000b003d34a4752e9mr54149073wmh.15.1675171397941;
+        Tue, 31 Jan 2023 05:23:17 -0800 (PST)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id j22-20020a05600c485600b003cffd3c3d6csm15455120wmo.12.2023.01.31.05.22.38
+        by smtp.gmail.com with ESMTPSA id c1-20020a05600c0a4100b003d9fba3c7a4sm21354223wmq.16.2023.01.31.05.23.16
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 31 Jan 2023 05:22:39 -0800 (PST)
-Message-ID: <618fb1ea-4f26-a8e3-21b6-b6a2017aa73b@gmail.com>
-Date: Tue, 31 Jan 2023 14:22:38 +0100
+        Tue, 31 Jan 2023 05:23:17 -0800 (PST)
+Message-ID: <ad5e0eff-e043-2e27-d152-54f3047da0a3@gmail.com>
+Date: Tue, 31 Jan 2023 14:23:15 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH v4 02/14] soc: mediatek: mtk-svs: reset svs when
- svs_resume() fail
+Subject: Re: [PATCH v4 04/14] soc: mediatek: mtk-svs: Use
+ pm_runtime_resume_and_get() in svs_init01()
 Content-Language: en-US
 To: Roger Lu <roger.lu@mediatek.com>,
  Enric Balletbo Serra <eballetbo@gmail.com>, Kevin Hilman
@@ -74,16 +74,17 @@ Cc: Fan Chen <fan.chen@mediatek.com>,
  Jia-wei Chang <jia-wei.chang@mediatek.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Shang XiaoJing <shangxiaojing@huawei.com>
 References: <20230111074528.29354-1-roger.lu@mediatek.com>
- <20230111074528.29354-3-roger.lu@mediatek.com>
+ <20230111074528.29354-5-roger.lu@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230111074528.29354-3-roger.lu@mediatek.com>
+In-Reply-To: <20230111074528.29354-5-roger.lu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_052242_832171_6FBC53E6 
-X-CRM114-Status: GOOD (  14.58  )
+X-CRM114-CacheID: sfid-20230131_052319_401916_913461D3 
+X-CRM114-Status: GOOD (  16.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,37 +102,35 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 11/01/2023 08:45, Roger Lu wrote:
-> Add svs reset when svs_resume() fail.
+> From: Shang XiaoJing <shangxiaojing@huawei.com>
 > 
-> Fixes: a825d72f74a3 ("soc: mediatek: fix missing clk_disable_unprepare() on err in svs_resume()")
+> svs_init01() calls pm_runtime_get_sync() and added fail path as
+> svs_init01_finish to put usage_counter. However, pm_runtime_get_sync()
+> will increment usage_counter even it failed. Fix it by replacing it with
+> pm_runtime_resume_and_get() to keep usage counter balanced.
+> 
+> Fixes: 681a02e95000 ("soc: mediatek: SVS: introduce MTK SVS engine")
+> Signed-off-by: Shang XiaoJing <shangxiaojing@huawei.com>
 > Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 Applied, thanks!
 
 > ---
->   drivers/soc/mediatek/mtk-svs.c | 6 +++++-
->   1 file changed, 5 insertions(+), 1 deletion(-)
+>   drivers/soc/mediatek/mtk-svs.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
 > diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-> index 2df30a6bca28..a803b92afc3d 100644
+> index 64d4d03ab71c..9575aa645643 100644
 > --- a/drivers/soc/mediatek/mtk-svs.c
 > +++ b/drivers/soc/mediatek/mtk-svs.c
-> @@ -1614,12 +1614,16 @@ static int svs_resume(struct device *dev)
+> @@ -1324,7 +1324,7 @@ static int svs_init01(struct svs_platform *svsp)
+>   				svsb->pm_runtime_enabled_count++;
+>   			}
 >   
->   	ret = svs_init02(svsp);
->   	if (ret)
-> -		goto out_of_resume;
-> +		goto svs_resume_reset_assert;
->   
->   	svs_mon_mode(svsp);
->   
->   	return 0;
->   
-> +svs_resume_reset_assert:
-> +	dev_err(svsp->dev, "assert reset: %d\n",
-> +		reset_control_assert(svsp->rst));
-> +
->   out_of_resume:
->   	clk_disable_unprepare(svsp->main_clk);
->   	return ret;
+> -			ret = pm_runtime_get_sync(svsb->opp_dev);
+> +			ret = pm_runtime_resume_and_get(svsb->opp_dev);
+>   			if (ret < 0) {
+>   				dev_err(svsb->dev, "mtcmos on fail: %d\n", ret);
+>   				goto svs_init01_resume_cpuidle;
 
