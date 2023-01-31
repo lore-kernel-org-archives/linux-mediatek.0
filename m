@@ -4,101 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5088C38142
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 19:25:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA44BC38142
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 20:09:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=STVqW/t1lXxI625WVmdd6J2DgvpWtytdItQfHKSXdqQ=; b=o18NlOzMfY5uSrwxARpc7HdxNC
-	mPY1k/3LhcCf+RXtjs5EzwarZKwH2gUw2YsA1hWqCdRfz2o9SvS8PyQUOQqx5A0lYXUKirdN+sl9J
-	OL5TiJbX2DXRu0C47OCA2zRFIjTOZ++AnNMssoo34PnGydLiFRMJmcMyimbUWM516WrV7AntJqGIi
-	9OvPbzBv8+2CvH4LUi/+n6xexL0eetFLaNmlNzNskjMU2myG7Yc6vAAq/1ump9DUi3NL+Gzlli5nZ
-	5HLu2RWZjT/ciZZngbUL0qVY+70RfpqDna56zcoAakjuYTTgKsElnQ1V0WQ+I23WV+JJ6XAp0VD27
-	aQoKKtmw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zCsFrFxTu2Wx/3OnYl4yRwvfLp07q19BSTrZLYzDynI=; b=uayaqEcKBYhkj6xXKBS1egSK+Z
+	o1Aq/sFceIohXAzj0u6KJcBmbqupm1q+R0D5PI8YJRq9H868WNbvoU8nMd0d5aNCX/v2Q4CKn4CqK
+	Q1jxVTSt5zy0qyyQ+Vl3cl1pconqDhICXMdarA33HA3Yup1QtujGloGxv2Pm9NMJOxoWa1Ptee9uN
+	ZUuy7pDCRMHTsmMyLkFYfp2zI0hEMtxy/DKw4kzq2D+x4+aqn+ZxkY81pDUbZY5RF21I2R8dhicML
+	f0Im2HTOSmQmtb7BHZW8Yw7ctMQ2aqiTEfxu0LgN6DQXX/RtEO47IBwva7osLWi03TMCQ2tVjeush
+	6WiISjSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMwGL-0097Db-7c; Tue, 31 Jan 2023 19:25:49 +0000
-Received: from out2-smtp.messagingengine.com ([66.111.4.26])
+	id 1pMww9-009EAs-5x; Tue, 31 Jan 2023 20:09:01 +0000
+Received: from mail-qv1-xf31.google.com ([2607:f8b0:4864:20::f31])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMwG9-009789-4Z; Tue, 31 Jan 2023 19:25:38 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
-	by mailout.nyi.internal (Postfix) with ESMTP id 1AEC75C00FB;
-	Tue, 31 Jan 2023 14:25:29 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute6.internal (MEProxy); Tue, 31 Jan 2023 14:25:29 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
-	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:sender:subject:subject:to:to
-	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm3; t=1675193129; x=1675279529; bh=STVqW/t1lXxI625WVmdd6J2DgvpW
-	tytdItQfHKSXdqQ=; b=pvAHIV0eM4+QKb+ejy+48wcuW96qZLg2LoWcO+Sf7Lxg
-	VZJoYSj82GhuCyozzLD3KFXWvHH40MBt/bexAGwdIa1LJMHTELW4cOg5ZnmocBi8
-	3cwzJE2SUtQGCpVwade+fsQHhXDgnzkG+Qda6Rvx5LViZXs2fDZ6po75kbTeZ2UE
-	yhLV1AaFpX6Qc/SGWfw9rlnaByzqqgIRlLlVrYLrmCQfVhtGFQ/H5fjr1Z82BnNX
-	TotUIg0IysmBL8f1+ecvs++8qjZbuEqTGxc7re/XUExAz3oGsfgg74wDzLhTSx/o
-	CIl94gUrzR4CTdz5AOShMN0Fy9bpSlcwqGo8mkAqwQ==
-X-ME-Sender: <xms:J2vZY-fgvGVd1numoJYdraHNiA44MyNZBd8XssFWUa9aPug7QZBIRQ>
-    <xme:J2vZY4NoZfIQ5go5atuid8fEO7Kq_1TmYtjPgJ3NsbZhS50ck6Y654RrTixzDr5m6
-    a55mB7epka2JwA>
-X-ME-Received: <xmr:J2vZY_iJNzvx_cUkPjWHd0uzN1u4qnf5XJapsBpvTs22935ll2-_SVV0TLnVLIZctn2MmonKVR752X2hU9UW7TOxwbetMw>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrudefgedguddvhecutefuodetggdotefrod
-    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
-    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-    enucfjughrpeffhffvvefukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefkugho
-    ucfutghhihhmmhgvlhcuoehiughoshgthhesihguohhstghhrdhorhhgqeenucggtffrrg
-    htthgvrhhnpeejkeeltedttdfguedvffeiffdugeffteegtdetffevgfejjeevhfffhedt
-    vdeuveenucffohhmrghinhepphhorhhtrdhshhenucevlhhushhtvghrufhiiigvpedtne
-    curfgrrhgrmhepmhgrihhlfhhrohhmpehiughoshgthhesihguohhstghhrdhorhhg
-X-ME-Proxy: <xmx:J2vZY7_6HaIavvpYkeGgiDV1mJuRd2zwV7dCB5cUR40BkovErSn7uQ>
-    <xmx:J2vZY6shY_zfbnl_HDx7b6zJDOyICFeoQXgWImGGHrZFRgajAQSZZg>
-    <xmx:J2vZYyGU_1pOXteqlFTnZM_Gn137-3bCWCjn10yv2CaQ2EOnMa6ndg>
-    <xmx:KWvZYz74eQeBPwTWSbSfgzMWB0OZ4LzXoZdSbTgnAUoxhco6R5pLHg>
-Feedback-ID: i494840e7:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 31 Jan 2023 14:25:26 -0500 (EST)
-Date: Tue, 31 Jan 2023 21:25:21 +0200
-From: Ido Schimmel <idosch@idosch.org>
-To: "Hans J. Schultz" <netdev@kapio-technology.com>
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
-	Florian Fainelli <f.fainelli@gmail.com>,	Andrew Lunn <andrew@lunn.ch>,
- Vladimir Oltean <olteanv@gmail.com>,	Eric Dumazet <edumazet@google.com>,
- Paolo Abeni <pabeni@redhat.com>,	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	"maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER"
- <UNGLinuxDriver@microchip.com>,	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,	DENG Qingfang <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	=?iso-8859-1?Q?Cl=E9ment_L=E9ger?= <clement.leger@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Russell King <linux@armlinux.org.uk>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	open list <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
-	"open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER"
- <linux-renesas-soc@vger.kernel.org>,
-	"moderated list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>
-Subject: Re: [PATCH net-next 0/5] ATU and FDB synchronization on locked ports
-Message-ID: <Y9lrIWMnWLqGreZL@shredder>
-References: <20230130173429.3577450-1-netdev@kapio-technology.com>
+	id 1pMww7-009EAM-Ee
+	for linux-mediatek@lists.infradead.org; Tue, 31 Jan 2023 20:09:00 +0000
+Received: by mail-qv1-xf31.google.com with SMTP id x18so11964698qvl.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 31 Jan 2023 12:08:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=zCsFrFxTu2Wx/3OnYl4yRwvfLp07q19BSTrZLYzDynI=;
+        b=Tlq6vZ3Z+bOChVvdcjQhHB9km22BDOkkZ/qWueLyVRqyLF/yYjO5mWrVeLXmvQb9Hf
+         dKM4M8ZGRrZQ/dS3TmSu2sqPQR3T5tCBu6Kt24m6IvM6wKf20RvJstZ6r7/A3rXylWKt
+         RtYPf4cKcW09My0AGcaGdQQFGg6xotxnFBJxo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=zCsFrFxTu2Wx/3OnYl4yRwvfLp07q19BSTrZLYzDynI=;
+        b=oLbTXpi5o74bzhK7r4ecxgTifxBTCb79KCEhO+fbqDJznsNNp8ao2b+HOF0gZbc7Ry
+         Eq5hE+Lriqlol4ar+PoMfC1sg5Os0ggrBolq2/NImy9koucIvqvcOgRV55v/SKwO5STS
+         W2hFAk6MZ3hxgfERBYBiHrpTTmfEF/6248k1dqjco0abDVMyt2KuiqAxRVL+wB6R/VsU
+         /OlfJ4uehE3e/XCdEfEdU35aizPAmJ30+ZX9KMI+LOzCgzTMgyQ3UYsGOIAwsLNzlkdi
+         cx1tu51QmhKJQH6DSyAGmBUC0b0d2QEUUM5kaztAELXNFaHL9+oyyTDO4C0G4PUjjf5P
+         fJQg==
+X-Gm-Message-State: AO0yUKVZAqyzHwH53krwwV4SWNsf2Bb72Af1wFYqdNRUC18RVy3mdEzg
+	KL6B+oBQ2313VLWfjL5yyacG2qm0WilVZda8
+X-Google-Smtp-Source: AK7set85WIQ9wkzkoIEEQYoy3mBKFMptDGQsWp5LC2F/fasO0rQjL8HOj7i6LoFemKwmeMixeByhbQ==
+X-Received: by 2002:a0c:e909:0:b0:538:861f:cfd7 with SMTP id a9-20020a0ce909000000b00538861fcfd7mr255616qvo.42.1675195737469;
+        Tue, 31 Jan 2023 12:08:57 -0800 (PST)
+Received: from greenjustin3.nyc.corp.google.com ([2620:0:1003:314:502d:723:d741:14cd])
+        by smtp.gmail.com with ESMTPSA id m186-20020a37bcc3000000b007068b49b8absm10658782qkf.62.2023.01.31.12.08.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 31 Jan 2023 12:08:57 -0800 (PST)
+From: Justin Green <greenjustin@chromium.org>
+To: linux-mediatek@lists.infradead.org,
+	dri-devel@lists.freedesktop.org
+Cc: angelogioacchino.delregno@collabora.com,
+	jason-jh.lin@mediatek.com,
+	justin.yeh@mediatek.com,
+	wenst@chromium.org,
+	chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de,
+	airlied@linux.ie,
+	matthias.bgg@gmail.com,
+	daniel@ffwll.ch,
+	daniel@fooishbar.org,
+	Justin Green <greenjustin@chromium.org>
+Subject: [PATCH 0/2 v6] drm/mediatek: Add support for 10-bit overlays
+Date: Tue, 31 Jan 2023 15:08:40 -0500
+Message-Id: <20230131200842.341272-1-greenjustin@chromium.org>
+X-Mailer: git-send-email 2.39.1.456.gfc5497dd1b-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230130173429.3577450-1-netdev@kapio-technology.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_112537_480594_B1CF2C73 
-X-CRM114-Status: GOOD (  26.73  )
+X-CRM114-CacheID: sfid-20230131_120859_551332_FB6C53B3 
+X-CRM114-Status: GOOD (  11.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,59 +93,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 30, 2023 at 06:34:24PM +0100, Hans J. Schultz wrote:
-> This patch set makes it possible to have synchronized dynamic ATU and FDB
-> entries on locked ports. As locked ports are not able to automatically
-> learn, they depend on userspace added entries, where userspace can add
-> static or dynamic entries. The lifetime of static entries are completely
-> dependent on userspace intervention, and thus not of interest here. We
-> are only concerned with dynamic entries, which can be added with a
-> command like:
-> 
-> bridge fdb replace ADDR dev <DEV> master dynamic
-> 
-> We choose only to support this feature on locked ports, as it involves
-> utilizing the CPU to handle ATU related switchcore events (typically
-> interrupts) and thus can result in significant performance loss if
-> exposed to heavy traffic.
+This patch series adds support for 10-bit overlays to the Mediatek DRM driver.
+Specifically, we add support for AR30 and BA30 overlays on MT8195 devices and
+lay the groundwork for supporting more 10-bit formats on more devices.
 
-Not sure I understand this reasoning. I was under the impression that
-hostapd is installing dynamic entries instead of static ones since the
-latter are not flushed when carrier is lost. Therefore, with static
-entries it is possible to unplug a host (potentially plugging a
-different one) and not lose authentication.
+1. Refactor plane initialization logic to allow individual DDP components to
+provide their supported pixel formats.
 
-> 
-> On locked ports it is important for userspace to know when an authorized
-> station has become silent, hence not breaking the communication of a
-> station that has been authorized based on the MAC-Authentication Bypass
-> (MAB) scheme. Thus if the station keeps being active after authorization,
-> it will continue to have an open port as long as it is active. Only after
-> a silent period will it have to be reauthorized. As the ageing process in
-> the ATU is dependent on incoming traffic to the switchcore port, it is
-> necessary for the ATU to signal that an entry has aged out, so that the
-> FDB can be updated at the correct time.
+2. Add AR30 and BA30 support to the MT8195 overlay driver.
 
-Why mention MAB at all? Don't you want user space to always use dynamic
-entries to authenticate hosts regardless of 802.1X/MAB?
 
-> 
-> This patch set includes a solution for the Marvell mv88e6xxx driver, where
-> for this driver we use the Hold-At-One feature so that an age-out
-> violation interrupt occurs when a station has been silent for the
-> system-set age time. The age out violation interrupt allows the switchcore
-> driver to remove both the ATU and the FDB entry at the same time.
-> 
-> It is up to the maintainers of other switchcore drivers to implement the
-> feature for their specific driver.
-> 
-> Hans J. Schultz (5):
->   net: bridge: add dynamic flag to switchdev notifier
->   net: dsa: propagate flags down towards drivers
->   drivers: net: dsa: add fdb entry flags incoming to switchcore drivers
->   net: bridge: ensure FDB offloaded flag is handled as needed
->   net: dsa: mv88e6xxx: implementation of dynamic ATU entries
+Version history:
+v6:
+ * Refactor patch into patch series.
+ * Add formats directly to private data.
 
-Will try to review tomorrow, but it looks like this set is missing
-selftests. What about extending bridge_locked_port.sh?
+v5:
+* Removed some dead defines.
+* Refactored mtk_ovl_set_afbc().
+
+v4:
+* Move modifier validation to format_mod_supported function.
+* Add modifiers to drm_universal_plane_init() call.
+* Make comparisons to DRM_FORMAT_MOD_LINEAR explicit rather than relying on
+  DRM_FORMAT_LINEAR being equal to 0.
+* Gate AFBC control bit writes on device compatibility.
+
+v3:
+* Replaced pitch bitshift math with union based approach.
+* Refactored overlay register writes to shared code between non-AFBC and
+  AFBC.
+* Minor code cleanups.
+
+v2:
+* Marked mtk_ovl_set_afbc as static.
+* Reflowed some lines to fit column limit.
+
+
+Justin Green (2):
+  drm/mediatek: Refactor pixel format logic
+  drm/mediatek: Add support for AR30 and BA30 overlays
+
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     |  4 +
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c     | 89 +++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c    | 38 +++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |  4 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  4 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 20 +++++
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c    | 24 ++----
+ drivers/gpu/drm/mediatek/mtk_drm_plane.h    |  3 +-
+ 8 files changed, 168 insertions(+), 18 deletions(-)
+
+-- 
+2.39.1.456.gfc5497dd1b-goog
+
 
