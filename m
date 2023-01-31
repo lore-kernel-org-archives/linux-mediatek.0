@@ -4,160 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D42B3C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 02:39:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D010C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 03:09:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l/wLs71OQKXyoF12UwGjmfNRe/USiM+y/3Mvud1AyPw=; b=e3ajXjekXdp8kAfPs4p8CY5mQz
-	6Qw6LIkyhgcfKM/cj1wSM1L8ZKDm/yAzCAr9dEmzb0VFP+aizlHVQS6+iRkXwZ6RFUyyw4CV+MuKQ
-	bx+ngkWA4RdxZ8EmAq8qF/WJKpk59oFSujxL3lNbR0QCNT2B+8yK2GMXFaUUHizr1xfrLDGSCNYCX
-	QvdSOdfuaKU8n1FYTv9cxhOFZG/SsnwgQwBwmntLxAbEE7+TnwSywDzw5lYa7mSvmUA5t6gLpJ414
-	CLTUFpd2IcuG7fFY38dP0lLn/NV4biD8Q6/gwDWmdhrjoYCcNILrLrI3YC4Dv1+SLKaWLQa9SInlL
-	pmPQ7wmw==;
+	bh=1ZOfd2zx+NjgQww/0mU3ZaJ9v79cmnQrDykMgvyCyxY=; b=oWEDFcgmAqxw4aQgi4t+29GMY/
+	hlWfcFvDF/gEQTs13j0f1HUrAevaOMziv3EVIOJcwDscWf7eyTBLJgZ2nJRLsuGJ3zGBrQ4pqNAkT
+	O5tpo/s4gilWf2hg/k2UFUAT9zm1fcTMoKnaUa746iUDzsdJBV4/Zk8CqIqhkjASorIwfvElBbUdf
+	Ni9kSmcd0l/BqUdOpIjV6jT/UcSUSHT5SO78GsnXZlHXl8Fb3Wt8q5jZYTWmJVlULcNzU2ghlDLaQ
+	r+jTjNGjTBX0MMVTCmXo5tjfp2mH/bRxLU/j63EMJCDanju5il2M76L7LKDZCpXr7rhM5OB6ak/Ji
+	1Y9EEuSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMgYN-0066Wa-En; Tue, 31 Jan 2023 02:39:23 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pMh1W-0068pt-Gq; Tue, 31 Jan 2023 03:09:30 +0000
+Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMgYK-0066W9-Kl
-	for linux-mediatek@lists.infradead.org; Tue, 31 Jan 2023 02:39:22 +0000
-X-UUID: 737586b8a11011edbbe3f76fe852e059-20230130
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=l/wLs71OQKXyoF12UwGjmfNRe/USiM+y/3Mvud1AyPw=;
-	b=Uj0fb27Zt+zAcRFArmD789LogEPmSsh+6ykw00AUy9RrALjxqmWIGlDAa/YQ09Hyy9oylbd44z4vvSg0NzXuDwvFbAAluOfsINz9vPGJE7L+3QJgdCbPKt/g09yq8GrVEKwW5fTzOLMZxm7VqxrXBJcoSwVL9S0GPGL+QsRaJ6M=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.18,REQID:477683e6-011d-4c25-85bd-c5c73b46780e,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:3ca2d6b,CLOUDID:a2e7688d-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0,NGT
-X-UUID: 737586b8a11011edbbe3f76fe852e059-20230130
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 566151185; Mon, 30 Jan 2023 19:39:14 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 31 Jan 2023 10:18:40 +0800
-Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.239)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Tue, 31 Jan 2023 10:18:39 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jf+JLsUq/zRGfjYVlCZpbdMHBYtVF4PqsA0gQxAJVScBXqLtbnost2hUyxCqNafPnEirFIE7tA2evIVLdtkOktl9kgaSdipQtz2dWbAc4V5SXXrkOHrpuVTL76vfILDU3L5NoxaeEPzBIwLa3XwswI2mv4EjamQUhu6oGgQZRVk7USukNZqBHwgRuMnsu0LlrCzPlnFhhdxzxyaUKz6gKuZjj/tx9yTMTrl0hHRt5gy2SpWD7/0fUQtMcf0MqcQst08/Nd3oahtemlk1WWUzJvQv9bgRLBXrLnbK/ufcmDCWQLE/UUvI8ERb9xgtcnOMpV8Yq14MqF1zViO6hwGB7g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=l/wLs71OQKXyoF12UwGjmfNRe/USiM+y/3Mvud1AyPw=;
- b=ARtX6iZcjZsKCKFfh1bP6/mI6ooBOku6Nbb5mSlRnZGePVMjRHfHShK73lNiWChMoNS+1c2tuB2bRDRaCQ01jNkmK/882cXGhtcD0TIxKPGh0RQbes0l/MSHS+fn4iRJwE2FC9CA7QX0dkMI/RZEm/7XpZdmkVr1SRaV9KcAlYyTZSvRS+6qOEo+wJF8FlrGrxWlI6jlCuZS8kT7Q8HKShZFJBvAMRj3N6p/N3T3B63+2wDSCxeEjyjrIVmrUup/5b4eNGJBv24B6F9IIgUlNiVskVQNQ/+S5mbarH2zFP8fWcnprIs8cMyq56Y4DaMHl3SddP016KzdKqSdEorA4g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	id 1pMh1L-0068oD-AZ; Tue, 31 Jan 2023 03:09:21 +0000
+Received: by mail-qk1-x72a.google.com with SMTP id pj1so6004721qkn.3;
+        Mon, 30 Jan 2023 19:09:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=l/wLs71OQKXyoF12UwGjmfNRe/USiM+y/3Mvud1AyPw=;
- b=A8wnMnCyP+bbJvTovQYTtzTxH3mNneGcIqCPwo66y1pWZxRh2JK1rG8SbrPHXRjf5+xWgpDQMqWb6LtlNjE6ARrXSNEtY6zyRd4VKPMYu4qzcEMMufAZOmpO7JvxPg5qdaLbKoP4V4kXb/rHu193MG07AJgBBWg5gg/wrxMoQ6A=
-Received: from TY0PR03MB6356.apcprd03.prod.outlook.com (2603:1096:400:14c::9)
- by SI2PR03MB6590.apcprd03.prod.outlook.com (2603:1096:4:1e2::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.25; Tue, 31 Jan
- 2023 02:18:37 +0000
-Received: from TY0PR03MB6356.apcprd03.prod.outlook.com
- ([fe80::4eb5:3fc7:1e3:2f27]) by TY0PR03MB6356.apcprd03.prod.outlook.com
- ([fe80::4eb5:3fc7:1e3:2f27%7]) with mapi id 15.20.6043.036; Tue, 31 Jan 2023
- 02:18:37 +0000
-From: =?utf-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>
-To: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-CC: =?utf-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>
-Subject: Re: [PATCH v5 02/12] media: platform: mtk-mdp3: add chip
- configuration header file
-Thread-Topic: [PATCH v5 02/12] media: platform: mtk-mdp3: add chip
- configuration header file
-Thread-Index: AQHZJxoE2tKZVIYBWE+Y0Al5Aj+L066sKPCAgAu9gQA=
-Date: Tue, 31 Jan 2023 02:18:37 +0000
-Message-ID: <f3272192528535815049fed6e3ceafc48cb7138d.camel@mediatek.com>
-References: <20230113064104.22402-1-moudy.ho@mediatek.com>
-	 <20230113064104.22402-3-moudy.ho@mediatek.com>
-	 <068ee5ec-6863-2c1d-39a9-b18156d4e57d@xs4all.nl>
-In-Reply-To: <068ee5ec-6863-2c1d-39a9-b18156d4e57d@xs4all.nl>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TY0PR03MB6356:EE_|SI2PR03MB6590:EE_
-x-ms-office365-filtering-correlation-id: 102333e3-55e7-49ee-46e3-08db0331761d
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: vFT4mUEieZrC5sCP+9MsmF3hVbeLMG40BXso7SE2yoYNuTOt5etpQDK7B+hzz8tTmDaetROWKOrFx11FXIb8YxyMSTbF2PMguWcWXpaZTzV6cS3vI68J2I8NbVU+1hgXEHf9ClonsE9TiZTV5Mu34i7rZWlTThlJeTlwOWkL3nzQM9v4lzyIupkVqpebhKvXOZdK2erZZpl7K9AJ5obJZwRwg5s96Ocr7aDqBV63gWR3OSoLvhfuBZG3nDeumFrlhcbhK/sdNl/V0HCdJKSzAtT6zXOUT8AQEa0WsA/oqw5O8KqXCcq8/uRxorKv86gO5oCO/D5Rk6BlbwmTIUz3fTlacX551l/pm4WiBB2IuiDjbdo55QXbzUXjLsxA/ayH5EbjK6HVHexAps2zLIx29TCaWy6zzK6HRJFjOpcnGJv6fUdoQqj+rGZRqieq7YYL9hm6i+5ojcEJNGFZBKSfxaP+MWzcW9dhxF6KqaI9L6m5MJiebsiQnGCl7btEoErd0DySqia8RBYCJAe0NZ0cGLiRG12B0UgnfvoeKzGVRxV+9THajKUGR1QFgou4jm9q6kfy4q+WqQ/sDM7XPtH4SJYm5gyJq5MBOAuOAtJwaGZ3VHoItL+gVIU+KslPAdJeGEZ9o+gD4XzU+Aer39NLnVR+Sz0PBgml/UQhVF47vWm3xtWVEcXWLPnRBfWPk5WReXvgXhaMzrbS28EEUmYmG7yMrLPJqB0QVW7wuCNDaK+7effDtx3MRwjeiyzNVWTgOL2eLTJfxXvt8EFmJdg5vw==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR03MB6356.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(136003)(366004)(376002)(346002)(396003)(39860400002)(451199018)(86362001)(36756003)(85182001)(2906002)(26005)(186003)(66446008)(6916009)(76116006)(4326008)(64756008)(8676002)(2616005)(6512007)(53546011)(66556008)(66476007)(66946007)(71200400001)(107886003)(478600001)(316002)(38100700002)(6506007)(41300700001)(38070700005)(6486002)(5660300002)(122000001)(83380400001)(8936002)(99106002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?RzFub2NZUm1qUXFqeHA4ZWcwb2Q0MHNkLytUVzZPMlZsdEYzR0pVbHNnRHda?=
- =?utf-8?B?ZDIvbFNKcXl5WFNlazdpdEJkQ3NXZDNzQzQzVzV5VnVuZjhPTDhPYU1STmZk?=
- =?utf-8?B?TzJrQU5MZ0dZM1FXR0xxMUZ6RFk4VUhkZzI0QTJQWU1neG15cDd4bGpqL21M?=
- =?utf-8?B?eFAycTYwc21pbzZVb0ZQZ0xGOG1adndmaFEvS0lzbXN1di9GSVQ3Zmk5NkM5?=
- =?utf-8?B?bEkzZ0pHcnZjMFpMU2k5M0xQU0wrVytCOEV5ckRLWk4xOUdSWmhZVGVwZDFM?=
- =?utf-8?B?UmlETzdUa2ZwMDROWW5XRm5QYzlkQnVoYTdGUVZ5UmJTWUplYlJwSE91SGEw?=
- =?utf-8?B?MjFXZGtEK2QyUzVGYU1lbUttMDdYdkw3Y0c1aXp4dHpwbzBHYnRsVHFhcjZv?=
- =?utf-8?B?MDNlUzNTbjJ2dko2VXJOVUwxdXhSWnI5djI4SmtzWTRjVHBvbGxtY1ZFVVQ2?=
- =?utf-8?B?SmJGU0tCbmpNWXNlN0VVbXN2dDV6TldNUWwyUGhqdkVXRXlXNzdadnBGbXVQ?=
- =?utf-8?B?VFEyZytZb3hnMVBZMWZOZXlGN1JYNUEyS3MrbEdKaUtyLzJ0NXBrKzA3M3hC?=
- =?utf-8?B?MGpMRkxFTWJjUHRSNHB4ekhtRmg0T1dRRnY5SDFXbm9oTVF0cXoyZVFhSVZz?=
- =?utf-8?B?Q2xPbmZudjZhM0ljbnFZVkZpeFZDTWlGazQrSmZWaThSUGFlMHphbEs5aE1t?=
- =?utf-8?B?aDFGYXNjV3k1MnZsSnVTOVl4TlpWbjNlSEI2alNaTGRibUlmRURjT3A2UHNB?=
- =?utf-8?B?VlV3VDJscVhJVEsrbXJIUEVzZjgzK3BxTjFVUTNyOG93amJYWWU5anByRWpT?=
- =?utf-8?B?c3hacXNJQ2NXbTBEYzBGK1BsUEY0Sjh0M3VNRmw5MGw1QktZWFR4WFVrei9q?=
- =?utf-8?B?VzJ5WWFST084QVRwcUNKZDF5TkI1cTdWRUtDM1pzOHBCSmFlOWtFWUZxMmVO?=
- =?utf-8?B?dmh3YnVpbjl4bkFHSHpGb3lxS1Q2cWhuS1c4aGR5NkVSVTdGZFZMRmdBd2c2?=
- =?utf-8?B?UEhWblRkWWJ2aDJpZ1gvci9tVXZpelNxaVArU2QwUHNZRkZ1VWQzSy9ldUJx?=
- =?utf-8?B?OFVsUVh6WDNKcTlPWDM4MEh1Rk5HRW90NDd2L0xuUmZOL1l3a2wvc0wyOTB2?=
- =?utf-8?B?MGYzQkxVN0ZzeTY2S1hyR0F2c3Q5eXNWTm4yUVhzcTNIaWpoZklVUDQzaVlQ?=
- =?utf-8?B?Y3ZyRDg1cStsTjNJamd6OXRuemNqWHp3WHZnWVFKVG5IeDd0YlNEZmlKRjZP?=
- =?utf-8?B?UEJvRHFSREM1SWVmemUxRWp2SlcyZmEvSVFsVkZPbVFVN1ZNVnFaUDJaRnh0?=
- =?utf-8?B?YXUvaFNQRHlWNDhCR240YVdoYmJkQmNtcnN4Z3FuYlRzRUg0eGNvUTFPOFBq?=
- =?utf-8?B?R1pydGR0aGhlRjIveEpxYVp1NitZMk1vZi9xUEs3dkVXVTFzcGNkK09NVitp?=
- =?utf-8?B?dWowbGFIRUthd09mYnp0eFZOaExLM0xUa0RZbGdJNVpwMGpnbSs3eGpUWTlm?=
- =?utf-8?B?Y2lycS84V09FVzlZWE5OUE1rNElZZ3hLbXBxRjQ0VHBnTXUvMVI3L3VFakJq?=
- =?utf-8?B?UUJEWEVhVWVjMXdjcHpWLytLN1dCclhNeGF1RmxSYXZmSmtXZEE2Y1NzdXF0?=
- =?utf-8?B?MCtjU3Y5VmM5cHZOVnFxZnR2UEo3ZGVyWktPeUM4ZzJleFF0MlIxNnB3RWhF?=
- =?utf-8?B?ZzFHR0pzTDU0THBXVkJWbWNtS0w3QUVUL2g4bXg3QWlPN0pjc1gzZzZIWE5N?=
- =?utf-8?B?WnUrYVBQR0xDU3Btc0ZPYXQxTk5tbWhZMUgyMStXaDRoWkxqa1IreVJyMUFp?=
- =?utf-8?B?UmFvRFJWTXpBd2x3c09scUtFY2dVd3lEQ1ZERnJEdXQzeXIxTVBhbDI0N1Nh?=
- =?utf-8?B?dmdlZ2NXM2RGY2R0Q3VTek92VWZSWThnMVFrUnNvaGZtSVFWUysxeStqak1w?=
- =?utf-8?B?N0I0UTZQZzBuOXJIYnVrc3dhU2dxRW8zSUFTdmN6VHhmT3N0SzlJclVmYTBT?=
- =?utf-8?B?WmV6N3N4ZTA2djZONm1ETlJJdHBhMXptU0F6SXJIelZFNENDRlFOY2lvSjJV?=
- =?utf-8?B?ZEppMnM3VzFUWmRkdmNBaXM4QWlQRUY0NjVSSVhidWZpKzh4MzE2aDVYMWY0?=
- =?utf-8?B?S21KQnBFdHh1eFZvdjRLRHN3dUIrVjAxVzRXK2wyU3Y2cnVBcENEVXVlL1Vs?=
- =?utf-8?B?OVE9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <C0428C4BA829194DAF6DDEF45D6EFE0E@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=1ZOfd2zx+NjgQww/0mU3ZaJ9v79cmnQrDykMgvyCyxY=;
+        b=mzAZo9UKt2apBG+a8Vk+YCpQ2F+UrwegjTc4F5sZHyb/tpmwnBW+FQVFlZv5cFkdTM
+         Fj5UP+IddswiXOskayD5RsC7RdozQ/oVuxzQjiEoFOv7RVpn5VlS+ML+LDykzx778FmC
+         /V2lnjbg+Ko3orxv1yk8tyX2llLuBqKo5OpnW8aKoMTvSPJRiTwVXKHWBqzzjnuuCWRx
+         8iix8Y9x9v4Ox26Zxcq6BJ0ROZyd8tJ254zafSXx08PxCm/dqdecN3l20K/42ZKXn4mQ
+         R9Lxt5ocxE65yPdm3kHMn2yRhfJuV4YCoutiqYVk/m3aJ6fpGygeHBrQjqS4CxJEzOmB
+         hBsA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=1ZOfd2zx+NjgQww/0mU3ZaJ9v79cmnQrDykMgvyCyxY=;
+        b=nNjVrTA6B03cKywOBdGcGo4kjuro81yC4EGavTRReAvR7Cg7m1/cOyxzagp5awrS5D
+         K5WbH8UPZGDURqn0yT3joj076yWk0oNPEVVTSJcvglnFjEmg0QtaQaWGn5svQfcRHF1k
+         WpY8A0/gssCaA5vRFvnQU92nCubcpraA0VLfr15x1MlLmNx00aWBe0czgLV5OD1LTfQZ
+         ezvsB7TRLQogzLrA2CUAmbtxnOA4C7WuYqrnYQjZMotbzrvNAM8kuGFQEi2hY3ndcas1
+         p8kE9xDw7oDaEkqvJGEkND1kUFYDawpZ3edmUwi39xQ2HdTUaZL+JlajIdtB4O8MA9dZ
+         yETg==
+X-Gm-Message-State: AO0yUKVtQMmFKfL3PwJI64ewzxClDJbmvVTSvQOzE78W+PL4aSpzS+9i
+	7gpOS/8+jVpBAk/ikRprGX0yVKrGiKuKqg4HsTg=
+X-Google-Smtp-Source: AK7set/0nBTFpX0vgIbgrVXsLzjuAA5v6zMOAXCuo7yTj9cK+cCPb3/FTeGJLfxyzfnTCHWhJu0cPJPDYnef62asg/Y=
+X-Received: by 2002:a05:620a:2042:b0:724:3c65:e6ee with SMTP id
+ d2-20020a05620a204200b007243c65e6eemr206666qka.456.1675134557070; Mon, 30 Jan
+ 2023 19:09:17 -0800 (PST)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TY0PR03MB6356.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 102333e3-55e7-49ee-46e3-08db0331761d
-X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Jan 2023 02:18:37.2344
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 4TuvtNQjzcf3L9VEy8ix7jCpeRIrKNgei+JxDdEfRt/E884nvPR4ugC1JQUsMWxLTa5PJNFY1k+8QwlObGiOFQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB6590
-X-MTK: N
+References: <20230130064656.106793-1-michael@allwinnertech.com>
+In-Reply-To: <20230130064656.106793-1-michael@allwinnertech.com>
+From: Wenchao Chen <wenchao.chen666@gmail.com>
+Date: Tue, 31 Jan 2023 11:09:06 +0800
+Message-ID: <CA+Da2qzJBxn5up1YLiaguhMJ=W7JkVExyyiFco9KyPE+3jEn8w@mail.gmail.com>
+Subject: Re: [PATCH] mmc:mmc-cqhci:support interrupt coalescing
+To: Michael Wu <michael@allwinnertech.com>
+Cc: adrian.hunter@intel.com, riteshh@codeaurora.org, asutoshd@codeaurora.org, 
+	ulf.hansson@linaro.org, chaotian.jing@mediatek.com, matthias.bgg@gmail.com, 
+	kdasu.kdev@gmail.com, alcooperx@gmail.com, f.fainelli@gmail.com, 
+	haibo.chen@nxp.com, shawnguo@kernel.org, agross@kernel.org, 
+	andersson@kernel.org, michal.simek@xilinx.com, thierry.reding@gmail.com, 
+	jonathanh@nvidia.com, bcm-kernel-feedback-list@broadcom.com, 
+	kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com, 
+	konrad.dybcio@linaro.org, linux-mmc@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+	linux-tegra@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230130_183920_719470_BA442598 
-X-CRM114-Status: GOOD (  26.29  )
+X-CRM114-CacheID: sfid-20230130_190919_428957_C3A643E3 
+X-CRM114-Status: GOOD (  22.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -172,87 +92,241 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDIzLTAxLTIzIGF0IDE2OjAxICswMTAwLCBIYW5zIFZlcmt1aWwgd3JvdGU6DQo+
-IE9uIDEzLzAxLzIwMjMgMDc6NDAsIE1vdWR5IEhvIHdyb3RlOg0KPiA+IEluIG9yZGVyIHRvIGJl
-IGNvbXBhdGlibGUgd2l0aCBtb3JlIE1EUDMgY2hpcCBzZXR0aW5ncyBpbiB0aGUNCj4gPiBmdXR1
-cmUsDQo+ID4gbW92ZSB0aGUgY2hpcC1yZWxhdGVkIGNvbmZpZ3VyYXRpb24gdG8gYSBzZXBhcmF0
-ZSBoZWFkZXIgZmlsZS4NCj4gPiANCj4gPiBTaWduZWQtb2ZmLWJ5OiBNb3VkeSBIbyA8bW91ZHku
-aG9AbWVkaWF0ZWsuY29tPg0KPiA+IC0tLQ0KPiA+ICAuLi4vbWVkaWF0ZWsvbWRwMy9tdDgxODMv
-bWRwMy1wbGF0LW10ODE4My5oICAgfCAzNQ0KPiA+ICsrKysrKysrKysrKysrKysrKysNCj4gPiAg
-Li4uL3BsYXRmb3JtL21lZGlhdGVrL21kcDMvbXRrLW1kcDMtY29yZS5jICAgIHwgMjcgKystLS0t
-LS0tLS0tLS0NCj4gPiAgMiBmaWxlcyBjaGFuZ2VkLCAzNyBpbnNlcnRpb25zKCspLCAyNSBkZWxl
-dGlvbnMoLSkNCj4gPiAgY3JlYXRlIG1vZGUgMTAwNjQ0DQo+ID4gZHJpdmVycy9tZWRpYS9wbGF0
-Zm9ybS9tZWRpYXRlay9tZHAzL210ODE4My9tZHAzLXBsYXQtbXQ4MTgzLmgNCj4gPiANCj4gPiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tZWRpYXRlay9tZHAzL210ODE4My9t
-ZHAzLXBsYXQtDQo+ID4gbXQ4MTgzLmggYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlhdGVr
-L21kcDMvbXQ4MTgzL21kcDMtcGxhdC0NCj4gPiBtdDgxODMuaA0KPiA+IG5ldyBmaWxlIG1vZGUg
-MTAwNjQ0DQo+ID4gaW5kZXggMDAwMDAwMDAwMDAwLi4zMDg0ZjYyZTdkZjUNCj4gPiAtLS0gL2Rl
-di9udWxsDQo+ID4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tZWRpYXRlay9tZHAzL210
-ODE4My9tZHAzLXBsYXQtDQo+ID4gbXQ4MTgzLmgNCj4gPiBAQCAtMCwwICsxLDM1IEBADQo+ID4g
-Ky8qIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wLW9ubHkgKi8NCj4gPiArLyoNCj4g
-PiArICogQ29weXJpZ2h0IChjKSAyMDIyIE1lZGlhVGVrIEluYy4NCj4gPiArICogQXV0aG9yOiBQ
-aW5nLUhzdW4gV3UgPHBpbmctaHN1bi53dUBtZWRpYXRlay5jb20+DQo+ID4gKyAqLw0KPiA+ICsN
-Cj4gPiArI2lmbmRlZiBfX01EUDNfUExBVF9NVDgxODNfSF9fDQo+ID4gKyNkZWZpbmUgX19NRFAz
-X1BMQVRfTVQ4MTgzX0hfXw0KPiA+ICsNCj4gPiArc3RhdGljIGNvbnN0IHN0cnVjdCBtZHBfcGxh
-dGZvcm1fY29uZmlnIG10ODE4M19wbGF0X2NmZyA9IHsNCj4gPiArCS5yZG1hX3N1cHBvcnRfMTBi
-aXQJCT0gdHJ1ZSwNCj4gPiArCS5yZG1hX3JzejFfc3JhbV9zaGFyaW5nCQk9IHRydWUsDQo+ID4g
-KwkucmRtYV91cHNhbXBsZV9yZXBlYXRfb25seQk9IHRydWUsDQo+ID4gKwkucnN6X2Rpc2FibGVf
-ZGNtX3NtYWxsX3NhbXBsZQk9IGZhbHNlLA0KPiA+ICsJLndyb3RfZmlsdGVyX2NvbnN0cmFpbnQJ
-CT0gZmFsc2UsDQo+ID4gK307DQo+ID4gKw0KPiA+ICtzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2Rl
-dmljZV9pZA0KPiA+IG10ODE4M19tZHBfcHJvYmVfaW5mcmFbTURQX0lORlJBX01BWF0gPSB7DQo+
-ID4gKwlbTURQX0lORlJBX01NU1lTXSA9IHsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTgz
-LW1tc3lzIiB9LA0KPiA+ICsJW01EUF9JTkZSQV9NVVRFWF0gPSB7IC5jb21wYXRpYmxlID0gIm1l
-ZGlhdGVrLG10ODE4My1kaXNwLQ0KPiA+IG11dGV4IiB9LA0KPiA+ICsJW01EUF9JTkZSQV9TQ1Bd
-ID0geyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxODMtc2NwIiB9DQo+ID4gK307DQo+ID4g
-Kw0KPiA+ICtzdGF0aWMgY29uc3QgdTMyIG10ODE4M19tdXRleF9pZHhbTURQX01BWF9DT01QX0NP
-VU5UXSA9IHsNCj4gPiArCVtNRFBfQ09NUF9SRE1BMF0gPSBNVVRFWF9NT0RfSURYX01EUF9SRE1B
-MCwNCj4gPiArCVtNRFBfQ09NUF9SU1owXSA9IE1VVEVYX01PRF9JRFhfTURQX1JTWjAsDQo+ID4g
-KwlbTURQX0NPTVBfUlNaMV0gPSBNVVRFWF9NT0RfSURYX01EUF9SU1oxLA0KPiA+ICsJW01EUF9D
-T01QX1REU0hQMF0gPSBNVVRFWF9NT0RfSURYX01EUF9URFNIUDAsDQo+ID4gKwlbTURQX0NPTVBf
-V1JPVDBdID0gTVVURVhfTU9EX0lEWF9NRFBfV1JPVDAsDQo+ID4gKwlbTURQX0NPTVBfV0RNQV0g
-PSBNVVRFWF9NT0RfSURYX01EUF9XRE1BLA0KPiA+ICsJW01EUF9DT01QX0FBTDBdID0gTVVURVhf
-TU9EX0lEWF9NRFBfQUFMMCwNCj4gPiArCVtNRFBfQ09NUF9DQ09SUjBdID0gTVVURVhfTU9EX0lE
-WF9NRFBfQ0NPUlIwLA0KPiA+ICt9Ow0KPiANCj4gSSBhbSByZWFsbHkgbm90IGtlZW4gb24gc3Rv
-cmluZyB2YXJpYWJsZSBkZWNsYXJhdGlvbnMgaW4gYSBoZWFkZXIuDQo+IFRoaXMgYmVsb25ncw0K
-PiBpbiBhIHNvdXJjZS4NCj4gDQo+IFdoYXQgeW91IHR5cGljYWxseSBkbyBpcyBwdXQgdGhpcyBp
-biBhIHNvdXJjZSB0b2dldGhlciB3aXRoIHRoZQ0KPiBkZWNsYXJhdGlvbg0KPiBvZiB0aGUgbXQ4
-MTgzX21kcF9kcml2ZXJfZGF0YSBzdHJ1Y3QgZm9yIHRoZSBjaGlwIGNvbmZpZywgYW5kIGp1c3QN
-Cj4gZXhwb3J0IHRoYXQNCj4gdG9wLWxldmVsIHN0cnVjdCBhcyBhbiBleHRlcm4uDQo+IA0KPiBB
-biBleGFtcGxlIG9mIGhvdyB0byBkbyB0aGlzIGlzDQo+IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0v
-dmVyaXNpbGljb24vaW14OG1fdnB1X2h3LmMuDQo+IA0KPiBSZWdhcmRzLA0KPiANCj4gCUhhbnMN
-Cj4gDQoNCkhpIEhhbnMsDQogDQpUaGFua3MgZm9yIHRha2luZyB0aGUgdGltZSB0byBhZHZpc2Us
-IEknbGwgbWFrZSBjb3JyZXNwb25kaW5nDQphZGp1c3RtZW50cyBpbiB0aGUgbmV4dCB2ZXJzaW9u
-Lg0KIA0KU2luY2VyZWx5LA0KTW91ZHkNCg0KPiA+ICsNCj4gPiArI2VuZGlmICAvKiBfX01EUDNf
-UExBVF9NVDgxODNfSF9fICovDQo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvcGxhdGZv
-cm0vbWVkaWF0ZWsvbWRwMy9tdGstbWRwMy1jb3JlLmMNCj4gPiBiL2RyaXZlcnMvbWVkaWEvcGxh
-dGZvcm0vbWVkaWF0ZWsvbWRwMy9tdGstbWRwMy1jb3JlLmMNCj4gPiBpbmRleCAyZDFmNmFlOWYw
-ODAuLjY1ODAzN2QwNjI1MCAxMDA2NDQNCj4gPiAtLS0gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3Jt
-L21lZGlhdGVrL21kcDMvbXRrLW1kcDMtY29yZS5jDQo+ID4gKysrIGIvZHJpdmVycy9tZWRpYS9w
-bGF0Zm9ybS9tZWRpYXRlay9tZHAzL210ay1tZHAzLWNvcmUuYw0KPiA+IEBAIC0xMiwzMyArMTIs
-MTAgQEANCj4gPiAgI2luY2x1ZGUgPGxpbnV4L3JlbW90ZXByb2MuaD4NCj4gPiAgI2luY2x1ZGUg
-PGxpbnV4L3JlbW90ZXByb2MvbXRrX3NjcC5oPg0KPiA+ICAjaW5jbHVkZSA8bWVkaWEvdmlkZW9i
-dWYyLWRtYS1jb250aWcuaD4NCj4gPiArDQo+ID4gICNpbmNsdWRlICJtdGstbWRwMy1jb3JlLmgi
-DQo+ID4gICNpbmNsdWRlICJtdGstbWRwMy1tMm0uaCINCj4gPiAtDQo+ID4gLXN0YXRpYyBjb25z
-dCBzdHJ1Y3QgbWRwX3BsYXRmb3JtX2NvbmZpZyBtdDgxODNfcGxhdF9jZmcgPSB7DQo+ID4gLQku
-cmRtYV9zdXBwb3J0XzEwYml0CQk9IHRydWUsDQo+ID4gLQkucmRtYV9yc3oxX3NyYW1fc2hhcmlu
-ZwkJPSB0cnVlLA0KPiA+IC0JLnJkbWFfdXBzYW1wbGVfcmVwZWF0X29ubHkJPSB0cnVlLA0KPiA+
-IC0JLnJzel9kaXNhYmxlX2RjbV9zbWFsbF9zYW1wbGUJPSBmYWxzZSwNCj4gPiAtCS53cm90X2Zp
-bHRlcl9jb25zdHJhaW50CQk9IGZhbHNlLA0KPiA+IC19Ow0KPiA+IC0NCj4gPiAtc3RhdGljIGNv
-bnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQNCj4gPiBtdDgxODNfbWRwX3Byb2JlX2luZnJhW01EUF9J
-TkZSQV9NQVhdID0gew0KPiA+IC0JW01EUF9JTkZSQV9NTVNZU10gPSB7IC5jb21wYXRpYmxlID0g
-Im1lZGlhdGVrLG10ODE4My1tbXN5cyIgfSwNCj4gPiAtCVtNRFBfSU5GUkFfTVVURVhdID0geyAu
-Y29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxODMtZGlzcC0NCj4gPiBtdXRleCIgfSwNCj4gPiAt
-CVtNRFBfSU5GUkFfU0NQXSA9IHsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTgzLXNjcCIg
-fQ0KPiA+IC19Ow0KPiA+IC0NCj4gPiAtc3RhdGljIGNvbnN0IHUzMiBtdDgxODNfbXV0ZXhfaWR4
-W01EUF9NQVhfQ09NUF9DT1VOVF0gPSB7DQo+ID4gLQlbTURQX0NPTVBfUkRNQTBdID0gTVVURVhf
-TU9EX0lEWF9NRFBfUkRNQTAsDQo+ID4gLQlbTURQX0NPTVBfUlNaMF0gPSBNVVRFWF9NT0RfSURY
-X01EUF9SU1owLA0KPiA+IC0JW01EUF9DT01QX1JTWjFdID0gTVVURVhfTU9EX0lEWF9NRFBfUlNa
-MSwNCj4gPiAtCVtNRFBfQ09NUF9URFNIUDBdID0gTVVURVhfTU9EX0lEWF9NRFBfVERTSFAwLA0K
-PiA+IC0JW01EUF9DT01QX1dST1QwXSA9IE1VVEVYX01PRF9JRFhfTURQX1dST1QwLA0KPiA+IC0J
-W01EUF9DT01QX1dETUFdID0gTVVURVhfTU9EX0lEWF9NRFBfV0RNQSwNCj4gPiAtCVtNRFBfQ09N
-UF9BQUwwXSA9IE1VVEVYX01PRF9JRFhfTURQX0FBTDAsDQo+ID4gLQlbTURQX0NPTVBfQ0NPUlIw
-XSA9IE1VVEVYX01PRF9JRFhfTURQX0NDT1JSMCwNCj4gPiAtfTsNCj4gPiArI2luY2x1ZGUgIm10
-ODE4My9tZHAzLXBsYXQtbXQ4MTgzLmgiDQo+ID4gIA0KPiA+ICBzdGF0aWMgY29uc3Qgc3RydWN0
-IG10a19tZHBfZHJpdmVyX2RhdGEgbXQ4MTgzX21kcF9kcml2ZXJfZGF0YSA9IHsNCj4gPiAgCS5t
-ZHBfcHJvYmVfaW5mcmEgPSBtdDgxODNfbWRwX3Byb2JlX2luZnJhLA0KPiANCj4gDQo=
+On Mon, Jan 30, 2023 at 2:49 PM Michael Wu <michael@allwinnertech.com> wrote:
+>
+> Support interrupt coalescing to reduce the frequency of mmc interrupts
+>
+
+Hi Michael
+The CQIS register does not have any configuration.
+Usually ICCTH needs to be enabled.
+
+> Signed-off-by: Michael Wu <michael@allwinnertech.com>
+> ---
+>  drivers/mmc/host/cqhci-core.c      | 20 +++++++++++++++-----
+>  drivers/mmc/host/cqhci.h           |  5 ++++-
+>  drivers/mmc/host/mtk-sd.c          |  2 +-
+>  drivers/mmc/host/sdhci-brcmstb.c   |  2 +-
+>  drivers/mmc/host/sdhci-esdhc-imx.c |  2 +-
+>  drivers/mmc/host/sdhci-msm.c       |  2 +-
+>  drivers/mmc/host/sdhci-of-arasan.c |  2 +-
+>  drivers/mmc/host/sdhci-pci-core.c  |  2 +-
+>  drivers/mmc/host/sdhci-pci-gli.c   |  2 +-
+>  drivers/mmc/host/sdhci-tegra.c     |  2 +-
+>  drivers/mmc/host/sdhci_am654.c     |  2 +-
+>  11 files changed, 28 insertions(+), 15 deletions(-)
+>
+> diff --git a/drivers/mmc/host/cqhci-core.c b/drivers/mmc/host/cqhci-core.c
+> index b3d7d6d8d654..f9cdf9f04bfc 100644
+> --- a/drivers/mmc/host/cqhci-core.c
+> +++ b/drivers/mmc/host/cqhci-core.c
+> @@ -420,7 +420,7 @@ static void cqhci_disable(struct mmc_host *mmc)
+>  }
+>
+>  static void cqhci_prep_task_desc(struct mmc_request *mrq,
+> -                                struct cqhci_host *cq_host, int tag)
+> +                                struct cqhci_host *cq_host, int tag, int intr)
+>  {
+>         __le64 *task_desc = (__le64 __force *)get_desc(cq_host, tag);
+>         u32 req_flags = mrq->data->flags;
+> @@ -428,7 +428,7 @@ static void cqhci_prep_task_desc(struct mmc_request *mrq,
+>
+>         desc0 = CQHCI_VALID(1) |
+>                 CQHCI_END(1) |
+> -               CQHCI_INT(1) |
+> +               CQHCI_INT(intr) |
+>                 CQHCI_ACT(0x5) |
+>                 CQHCI_FORCED_PROG(!!(req_flags & MMC_DATA_FORCED_PRG)) |
+>                 CQHCI_DATA_TAG(!!(req_flags & MMC_DATA_DAT_TAG)) |
+> @@ -621,7 +621,7 @@ static int cqhci_request(struct mmc_host *mmc, struct mmc_request *mrq)
+>         }
+>
+>         if (mrq->data) {
+> -               cqhci_prep_task_desc(mrq, cq_host, tag);
+> +               cqhci_prep_task_desc(mrq, cq_host, tag, (cq_host->intr_clsc ? 0 : 1));
+>
+>                 err = cqhci_prep_tran_desc(mrq, cq_host, tag);
+>                 if (err) {
+> @@ -812,7 +812,7 @@ static void cqhci_finish_mrq(struct mmc_host *mmc, unsigned int tag)
+>  irqreturn_t cqhci_irq(struct mmc_host *mmc, u32 intmask, int cmd_error,
+>                       int data_error)
+>  {
+> -       u32 status;
+> +       u32 status, rval;
+>         unsigned long tag = 0, comp_status;
+>         struct cqhci_host *cq_host = mmc->cqe_private;
+>
+> @@ -856,6 +856,15 @@ irqreturn_t cqhci_irq(struct mmc_host *mmc, u32 intmask, int cmd_error,
+>                 spin_unlock(&cq_host->lock);
+>         }
+>
+> +       if (cq_host->intr_clsc) {
+> +               rval = cqhci_readl(cq_host, CQHCI_IC);
+> +               rval |= CQHCI_IC_RESET;
+> +               cqhci_writel(cq_host, rval, CQHCI_IC);
+> +               rval = cqhci_readl(cq_host, CQHCI_IC);
+> +               rval &= (~CQHCI_IC_RESET);
+> +               cqhci_writel(cq_host, rval, CQHCI_IC);
+> +       }
+> +
+>         if (status & CQHCI_IS_TCL)
+>                 wake_up(&cq_host->wait_queue);
+>
+> @@ -1172,11 +1181,12 @@ static unsigned int cqhci_ver_minor(struct cqhci_host *cq_host)
+>  }
+>
+>  int cqhci_init(struct cqhci_host *cq_host, struct mmc_host *mmc,
+> -             bool dma64)
+> +             bool dma64, bool intr_clsc)
+>  {
+>         int err;
+>
+>         cq_host->dma64 = dma64;
+> +       cq_host->intr_clsc = intr_clsc;
+>         cq_host->mmc = mmc;
+>         cq_host->mmc->cqe_private = cq_host;
+>
+> diff --git a/drivers/mmc/host/cqhci.h b/drivers/mmc/host/cqhci.h
+> index ba9387ed90eb..acf90773c30a 100644
+> --- a/drivers/mmc/host/cqhci.h
+> +++ b/drivers/mmc/host/cqhci.h
+> @@ -227,6 +227,9 @@ struct cqhci_host {
+>
+>         /* 64 bit DMA */
+>         bool dma64;
+> +
+> +       /* interrupt coalescing*/
+> +       bool intr_clsc;
+>         int num_slots;
+>         int qcnt;
+>
+> @@ -312,7 +315,7 @@ struct platform_device;
+>
+>  irqreturn_t cqhci_irq(struct mmc_host *mmc, u32 intmask, int cmd_error,
+>                       int data_error);
+> -int cqhci_init(struct cqhci_host *cq_host, struct mmc_host *mmc, bool dma64);
+> +int cqhci_init(struct cqhci_host *cq_host, struct mmc_host *mmc, bool dma64, bool intr_clsc);
+>  struct cqhci_host *cqhci_pltfm_init(struct platform_device *pdev);
+>  int cqhci_deactivate(struct mmc_host *mmc);
+>  static inline int cqhci_suspend(struct mmc_host *mmc)
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index edade0e54a0c..2c18f954d4b8 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -2796,7 +2796,7 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>                 host->cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+>                 host->cq_host->mmio = host->base + 0x800;
+>                 host->cq_host->ops = &msdc_cmdq_ops;
+> -               ret = cqhci_init(host->cq_host, mmc, true);
+> +               ret = cqhci_init(host->cq_host, mmc, true, false);
+>                 if (ret)
+>                         goto host_free;
+>                 mmc->max_segs = 128;
+> diff --git a/drivers/mmc/host/sdhci-brcmstb.c b/drivers/mmc/host/sdhci-brcmstb.c
+> index f2cf3d70db79..4aeaeddbbf25 100644
+> --- a/drivers/mmc/host/sdhci-brcmstb.c
+> +++ b/drivers/mmc/host/sdhci-brcmstb.c
+> @@ -231,7 +231,7 @@ static int sdhci_brcmstb_add_host(struct sdhci_host *host,
+>                 cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+>         }
+>
+> -       ret = cqhci_init(cq_host, host->mmc, dma64);
+> +       ret = cqhci_init(cq_host, host->mmc, dma64, false);
+>         if (ret)
+>                 goto cleanup;
+>
+> diff --git a/drivers/mmc/host/sdhci-esdhc-imx.c b/drivers/mmc/host/sdhci-esdhc-imx.c
+> index 9e73c34b6401..7aef7abe71f1 100644
+> --- a/drivers/mmc/host/sdhci-esdhc-imx.c
+> +++ b/drivers/mmc/host/sdhci-esdhc-imx.c
+> @@ -1712,7 +1712,7 @@ static int sdhci_esdhc_imx_probe(struct platform_device *pdev)
+>                 cq_host->mmio = host->ioaddr + ESDHC_CQHCI_ADDR_OFFSET;
+>                 cq_host->ops = &esdhc_cqhci_ops;
+>
+> -               err = cqhci_init(cq_host, host->mmc, false);
+> +               err = cqhci_init(cq_host, host->mmc, false, false);
+>                 if (err)
+>                         goto disable_ahb_clk;
+>         }
+> diff --git a/drivers/mmc/host/sdhci-msm.c b/drivers/mmc/host/sdhci-msm.c
+> index 4ac8651d0b29..b6549d1e43ec 100644
+> --- a/drivers/mmc/host/sdhci-msm.c
+> +++ b/drivers/mmc/host/sdhci-msm.c
+> @@ -2153,7 +2153,7 @@ static int sdhci_msm_cqe_add_host(struct sdhci_host *host,
+>         if (ret)
+>                 goto cleanup;
+>
+> -       ret = cqhci_init(cq_host, host->mmc, dma64);
+> +       ret = cqhci_init(cq_host, host->mmc, dma64, false);
+>         if (ret) {
+>                 dev_err(&pdev->dev, "%s: CQE init: failed (%d)\n",
+>                                 mmc_hostname(host->mmc), ret);
+> diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sdhci-of-arasan.c
+> index 89c431a34c43..811f8686532d 100644
+> --- a/drivers/mmc/host/sdhci-of-arasan.c
+> +++ b/drivers/mmc/host/sdhci-of-arasan.c
+> @@ -1610,7 +1610,7 @@ static int sdhci_arasan_add_host(struct sdhci_arasan_data *sdhci_arasan)
+>         if (dma64)
+>                 cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+>
+> -       ret = cqhci_init(cq_host, host->mmc, dma64);
+> +       ret = cqhci_init(cq_host, host->mmc, dma64, false);
+>         if (ret)
+>                 goto cleanup;
+>
+> diff --git a/drivers/mmc/host/sdhci-pci-core.c b/drivers/mmc/host/sdhci-pci-core.c
+> index c359f867df0a..6f6cae6355a7 100644
+> --- a/drivers/mmc/host/sdhci-pci-core.c
+> +++ b/drivers/mmc/host/sdhci-pci-core.c
+> @@ -964,7 +964,7 @@ static int glk_emmc_add_host(struct sdhci_pci_slot *slot)
+>         if (dma64)
+>                 cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+>
+> -       ret = cqhci_init(cq_host, host->mmc, dma64);
+> +       ret = cqhci_init(cq_host, host->mmc, dma64, false);
+>         if (ret)
+>                 goto cleanup;
+>
+> diff --git a/drivers/mmc/host/sdhci-pci-gli.c b/drivers/mmc/host/sdhci-pci-gli.c
+> index 633a8ee8f8c5..6917ba339aa9 100644
+> --- a/drivers/mmc/host/sdhci-pci-gli.c
+> +++ b/drivers/mmc/host/sdhci-pci-gli.c
+> @@ -908,7 +908,7 @@ static int gl9763e_add_host(struct sdhci_pci_slot *slot)
+>         if (dma64)
+>                 cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+>
+> -       ret = cqhci_init(cq_host, host->mmc, dma64);
+> +       ret = cqhci_init(cq_host, host->mmc, dma64, false);
+>         if (ret)
+>                 goto cleanup;
+>
+> diff --git a/drivers/mmc/host/sdhci-tegra.c b/drivers/mmc/host/sdhci-tegra.c
+> index bff084f178c9..f98a468e8f43 100644
+> --- a/drivers/mmc/host/sdhci-tegra.c
+> +++ b/drivers/mmc/host/sdhci-tegra.c
+> @@ -1620,7 +1620,7 @@ static int sdhci_tegra_add_host(struct sdhci_host *host)
+>         if (dma64)
+>                 cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+>
+> -       ret = cqhci_init(cq_host, host->mmc, dma64);
+> +       ret = cqhci_init(cq_host, host->mmc, dma64, false);
+>         if (ret)
+>                 goto cleanup;
+>
+> diff --git a/drivers/mmc/host/sdhci_am654.c b/drivers/mmc/host/sdhci_am654.c
+> index 7ef828942df3..8e7fbee70e16 100644
+> --- a/drivers/mmc/host/sdhci_am654.c
+> +++ b/drivers/mmc/host/sdhci_am654.c
+> @@ -568,7 +568,7 @@ static int sdhci_am654_cqe_add_host(struct sdhci_host *host)
+>
+>         host->mmc->caps2 |= MMC_CAP2_CQE;
+>
+> -       return cqhci_init(cq_host, host->mmc, 1);
+> +       return cqhci_init(cq_host, host->mmc, 1, false);
+>  }
+>
+>  static int sdhci_am654_get_otap_delay(struct sdhci_host *host,
+> --
+> 2.29.0
+>
 
