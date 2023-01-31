@@ -4,86 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1096EC38142
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 13:31:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CB2DC636CC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 13:33:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GlJgCog2Hv8jB8412B4wI1AwEbA0UN9A/8RVLd437gg=; b=FyLgL5eRGF2XOsZYmu4ZgyM6gL
-	gumb693Hn4jeNMr2qn7xHrQdZgPIz+JUpmSOkgFzpkGMVAw7y86X5UqKB38oV2kPqOkaovJB3LzxS
-	kp8AYvGFjFSHGctB6EAnk0zPjAyOoZghVqj3RysIq+qkgfmLYa0Z5H1hNqhAsuzTj6LvUgk19/o+6
-	gCwu/ozQss1KbixZCYrADuyByOV/CpHtCXSrnFqgKm3nwfnwyXUC+G43ElGvB2OVGsKyHGZOaEz4e
-	sFOSKTk2hfOmuVYT/i8vAy9g0WDjOOfbfd6M76uF3UoR2fF1im2Ub2PvzpegakU3m5UclyjGfg8HN
-	PS4dXfDQ==;
+	bh=psb2IPRyN59UeR0OUMTo31WwH+Xp8CvVyFbZ16Izf7w=; b=wT6XmRjUzLHR1ZW3DQtc+iDbqn
+	vK2EENeO+zqadIvCPeXMB0/p9h6I4GoXt5LCrx78IzRLSOZyk38TnlpEq+DpeLjzhRYK2qnwgtuvt
+	3W19+bpabK44SLrp58RgvcyABeHPoIJ0wxrdI6WS660mp+zMtJe2pko0FFszvYqe/FfuunhySJ5hD
+	zvtY0fZFKYtAWpdUQaFnGjzulia3a4H+ek1LtS5E1wX3+GcfVEJyHa3VW5rIVab8TAO55cjDuqL/g
+	CnCsHRIdYuHq/9Pn1C0vpBM1r8Fpv4O+5ZuYNgTaHQUQNTndb2KjkZTaR0pecHZwb4ueZWWxwWc/V
+	PmD7DHgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMqiz-0087WT-0P; Tue, 31 Jan 2023 13:31:01 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1pMql1-0088EA-PT; Tue, 31 Jan 2023 13:33:07 +0000
+Received: from mga11.intel.com ([192.55.52.93])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMqim-0087S3-Lz; Tue, 31 Jan 2023 13:30:50 +0000
-Received: by mail-wm1-x331.google.com with SMTP id j29-20020a05600c1c1d00b003dc52fed235so5035378wms.1;
-        Tue, 31 Jan 2023 05:30:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=GlJgCog2Hv8jB8412B4wI1AwEbA0UN9A/8RVLd437gg=;
-        b=lmUEaSQsWaxheHAZrGoD6GfSUA+RbAdbdhfinS5hw+aurNtAA90Wnh8auikxHeq4Ls
-         577MVNxMeg6DkKPS8Q894c48ZFihssvGG9cYaTB1ESrwBZCT4chLPszsO1ACGTR6Pl2j
-         VqrbKRa/S6u4ensww/+oBfYBFB2cMnxV3v3M6IJHdkLc1DAvarp1W8dE6/5Haxg4LINk
-         u4G1giaLslAjO9tVaezL2rzywjOay10Zg87QogUX3INl+qeWlzncVOzivNcs/VZiIAVK
-         PVqBo+U5bNT5DxvfV9BRO7UyXU9FwqsEe7hPGaoEtVN9hidmPezh6PJ5xDPmFPa1V4uT
-         FIWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=GlJgCog2Hv8jB8412B4wI1AwEbA0UN9A/8RVLd437gg=;
-        b=px/Z3V0hHP4zBpCOCeq89AL6ds7w9oR2FRKurzSNZtgNXUF0rYSM99fAzmyDDfZZXE
-         f/U1rvmO5zMMAX8yGgF9XjBTO2pOo08Gji+aHoUL1hNmNj6aw/PDOmdNLYdv2Gn5hifH
-         MEVM6gy/6YHOpCgMmNx6TxDKjMLcRzIV9B825ZTD/0mOO6OPbNwaJDygg5CuEsztGSZV
-         uPrEMHTzt3ZbETf9weE8pfHasL4z7kGy/KHf5rr07zU7qhhr2tfxVh4oAdMp5Uf1aeLO
-         QGgBZ2yWD+YqQdcxLmAXZkDRz/FLeoyagei4xLmSNXY5NO2pfPd8IGqSrMR3T5luNjo5
-         rz/g==
-X-Gm-Message-State: AO0yUKXoukJPEuJoZV1kVK8tdZGnaLWYI7EP+/N1nG84pyYqNRKaMSYg
-	XKCGps+yjWTJZtI/l3MVGdQ=
-X-Google-Smtp-Source: AK7set8/csf6Jb47rd2+WT8vJqeSqRgiZXGTv0gl7wmEt9eROuj0FoQXqNwIKgx+X51hhlnfWyt1hw==
-X-Received: by 2002:a1c:f014:0:b0:3dc:4318:d00d with SMTP id a20-20020a1cf014000000b003dc4318d00dmr14993723wmb.11.1675171846445;
-        Tue, 31 Jan 2023 05:30:46 -0800 (PST)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id h6-20020a05600c2ca600b003dd1bd66e0dsm2807447wmc.3.2023.01.31.05.30.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 31 Jan 2023 05:30:45 -0800 (PST)
-Message-ID: <bcb229bf-4243-05aa-93db-98af1c779880@gmail.com>
-Date: Tue, 31 Jan 2023 14:30:44 +0100
+	id 1pMqky-0088Ci-EW; Tue, 31 Jan 2023 13:33:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1675171984; x=1706707984;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=mUK7D/U+8m6Bb2XIMJI03erNm6ros1fVSyKoc3cCQO0=;
+  b=eql/Q3FMhiCnEwCPUisGX4Hp8E60fkiWZWuB+gU3U1OjvT30PqocH54Q
+   bPSOyRciSgc1LaHOkzwdhDGhA0ewICYaALIXwQynjteO9vySy0QiEfZfj
+   BxPOC56iS4mGw1uNEopQKGwxzgX0ONwIUXJ4t18IBeoaGMLHvbnTwvkmZ
+   xj9Gw6cnnKrNu71qZLVGqVhrvG11r7OYI4hp4NdeLGJJCQ4F5taP2fR4a
+   fCW7+iHB6xbF3AYsOasoRiwgdg9Mr5OEBkoQ5tNQauuusTCMiIWUvB8ot
+   YK6g2dwar6868NxGzkiJxPjm/hTackz3/CrfAAlhUJvUKdg8uUhvS2HWt
+   w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10606"; a="325537307"
+X-IronPort-AV: E=Sophos;i="5.97,261,1669104000"; 
+   d="scan'208";a="325537307"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Jan 2023 05:33:00 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10606"; a="694942600"
+X-IronPort-AV: E=Sophos;i="5.97,261,1669104000"; 
+   d="scan'208";a="694942600"
+Received: from ahunter6-mobl1.ger.corp.intel.com (HELO [10.0.2.15]) ([10.252.47.218])
+  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Jan 2023 05:32:53 -0800
+Message-ID: <28d3348d-82ec-988f-718a-2d73bce585f3@intel.com>
+Date: Tue, 31 Jan 2023 15:32:50 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v4 11/14] soc: mediatek: mtk-svs: delete superfluous
- platform data entries
+ Firefox/102.0 Thunderbird/102.7.1
+Subject: Re: [PATCH] mmc:mmc-cqhci:support interrupt coalescing
 Content-Language: en-US
-To: Roger Lu <roger.lu@mediatek.com>,
- Enric Balletbo Serra <eballetbo@gmail.com>, Kevin Hilman
- <khilman@kernel.org>, Nicolas Boichat <drinkcat@google.com>
-Cc: Fan Chen <fan.chen@mediatek.com>,
- Jia-wei Chang <jia-wei.chang@mediatek.com>, devicetree@vger.kernel.org,
+To: Michael Wu <michael@allwinnertech.com>, riteshh@codeaurora.org,
+ asutoshd@codeaurora.org, ulf.hansson@linaro.org, chaotian.jing@mediatek.com,
+ matthias.bgg@gmail.com, kdasu.kdev@gmail.com, alcooperx@gmail.com,
+ f.fainelli@gmail.com, haibo.chen@nxp.com, shawnguo@kernel.org,
+ agross@kernel.org, andersson@kernel.org, michal.simek@xilinx.com,
+ thierry.reding@gmail.com, jonathanh@nvidia.com
+Cc: bcm-kernel-feedback-list@broadcom.com, kernel@pengutronix.de,
+ festevam@gmail.com, linux-imx@nxp.com, konrad.dybcio@linaro.org,
+ linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20230111074528.29354-1-roger.lu@mediatek.com>
- <20230111074528.29354-12-roger.lu@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230111074528.29354-12-roger.lu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+ linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org
+References: <20230130064656.106793-1-michael@allwinnertech.com>
+ <2463a92b-c180-87d4-0c96-2f549a397164@intel.com>
+ <610b5f73-f9e3-deb2-2754-e8939ed00ec3@allwinnertech.com>
+From: Adrian Hunter <adrian.hunter@intel.com>
+Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
+ Business Identity Code: 0357606 - 4, Domiciled in Helsinki
+In-Reply-To: <610b5f73-f9e3-deb2-2754-e8939ed00ec3@allwinnertech.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_053048_776985_DD406F20 
-X-CRM114-Status: GOOD (  20.67  )
+X-CRM114-CacheID: sfid-20230131_053304_522508_E1AE2082 
+X-CRM114-Status: GOOD (  25.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,113 +91,231 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 11/01/2023 08:45, Roger Lu wrote:
-> From: Matthias Brugger <matthias.bgg@gmail.com>
+On 31/01/23 15:12, Michael Wu wrote:
+> Dear Adrian，
 > 
-> The platform name and efuse parsing function pointer are only used while
-> probing the device. Use them from the svs_platform_data struct instead.
+> On 2023/1/30 23:59, Adrian Hunter wrote:
+>> On 30/01/23 08:46, Michael Wu wrote:
+>>> Support interrupt coalescing to reduce the frequency of mmc interrupts
+>>
+>> There doesn't seem to be any users.  The new parameter to
+>> cqhci_init() is always false.  New features are not usually
+>> accepted without users.
 > 
-> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
-
-Applied, thanks!
-
-> ---
->   drivers/soc/mediatek/mtk-svs.c | 22 ++++++++++++----------
->   1 file changed, 12 insertions(+), 10 deletions(-)
+> At present, I have only supported this feature on the Allwinner platform because I have not get enough information about other vendors.
+>>
+>> There needs to be an explanation of why the change is being made.
 > 
-> diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-> index 9d9210c22289..bd23d1111d7b 100644
-> --- a/drivers/soc/mediatek/mtk-svs.c
-> +++ b/drivers/soc/mediatek/mtk-svs.c
-> @@ -313,14 +313,12 @@ static const u32 svs_regs_v2[] = {
->   
->   /**
->    * struct svs_platform - svs platform control
-> - * @name: svs platform name
->    * @base: svs platform register base
->    * @dev: svs platform device
->    * @main_clk: main clock for svs bank
->    * @pbank: svs bank pointer needing to be protected by spin_lock section
->    * @banks: svs banks that svs platform supports
->    * @rst: svs platform reset control
-> - * @efuse_parsing: svs platform efuse parsing function pointer
->    * @efuse_max: total number of svs efuse
->    * @tefuse_max: total number of thermal efuse
->    * @regs: svs platform registers map
-> @@ -330,14 +328,12 @@ static const u32 svs_regs_v2[] = {
->    * @clk_cnt: clock count shows the clk enable/disable times by svs driver
->    */
->   struct svs_platform {
-> -	char *name;
->   	void __iomem *base;
->   	struct device *dev;
->   	struct clk *main_clk;
->   	struct svs_bank *pbank;
->   	struct svs_bank *banks;
->   	struct reset_control *rst;
-> -	bool (*efuse_parsing)(struct svs_platform *svsp);
->   	size_t efuse_max;
->   	size_t tefuse_max;
->   	const u32 *regs;
-> @@ -2066,7 +2062,7 @@ static bool svs_is_efuse_data_correct(struct svs_platform *svsp)
->   	svsp->efuse_max /= sizeof(u32);
->   	nvmem_cell_put(cell);
->   
-> -	return svsp->efuse_parsing(svsp);
-> +	return true;
->   }
->   
->   static struct device *svs_get_subsys_device(struct svs_platform *svsp,
-> @@ -2400,9 +2396,7 @@ static int svs_probe(struct platform_device *pdev)
->   		return -ENOMEM;
->   
->   	svsp->dev = &pdev->dev;
-> -	svsp->name = svsp_data->name;
->   	svsp->banks = svsp_data->banks;
-> -	svsp->efuse_parsing = svsp_data->efuse_parsing;
->   	svsp->regs = svsp_data->regs;
->   	svsp->bank_max = svsp_data->bank_max;
->   
-> @@ -2413,6 +2407,12 @@ static int svs_probe(struct platform_device *pdev)
->   	if (!svs_is_efuse_data_correct(svsp)) {
->   		dev_notice(svsp->dev, "efuse data isn't correct\n");
->   		ret = -EPERM;
-> +		goto svs_probe_free_efuse;
-> +	}
-> +
-> +	if (!svsp_data->efuse_parsing(svsp)) {
-> +		dev_err(svsp->dev, "efuse data parsing failed\n");
-> +		ret = -EPERM;
->   		goto svs_probe_free_resource;
->   	}
->   
-> @@ -2448,7 +2448,7 @@ static int svs_probe(struct platform_device *pdev)
->   	}
->   
->   	ret = devm_request_threaded_irq(svsp->dev, svsp_irq, NULL, svs_isr,
-> -					IRQF_ONESHOT, svsp->name, svsp);
-> +					IRQF_ONESHOT, svsp_data->name, svsp);
->   	if (ret) {
->   		dev_err(svsp->dev, "register irq(%d) failed: %d\n",
->   			svsp_irq, ret);
-> @@ -2478,11 +2478,13 @@ static int svs_probe(struct platform_device *pdev)
->   	svs_clk_disable(svsp);
->   
->   svs_probe_free_resource:
-> -	if (!IS_ERR_OR_NULL(svsp->efuse))
-> -		kfree(svsp->efuse);
->   	if (!IS_ERR_OR_NULL(svsp->tefuse))
->   		kfree(svsp->tefuse);
->   
-> +svs_probe_free_efuse:
-> +	if (!IS_ERR_OR_NULL(svsp->efuse))
-> +		kfree(svsp->efuse);
-> +
->   	return ret;
->   }
->   
+> I consider reducing the number of interrupt context switches. Can you tell me why the community does not support this feature? I wonder whether I'm doing is correct. If it's correct, i will improve this patch and incorporate it
+
+AFAIK the community has not made any comment on supporting interrupt coalescing for CQHCI, one way or another.
+However, it is generally expected that new features will only be added if they demonstrate some benefit.
+Just assuming that there is a benefit is not enough.
+
+>>
+>> Also there doesn't seem to be any configuration of the CQIC
+>> register.
+> 
+> At present, I am working on the hook function .cqe_enable that the ICCTH of CQIC is set in enable
+>>
+>>>
+>>> Signed-off-by: Michael Wu <michael@allwinnertech.com>
+>>> ---
+>>>   drivers/mmc/host/cqhci-core.c      | 20 +++++++++++++++-----
+>>>   drivers/mmc/host/cqhci.h           |  5 ++++-
+>>>   drivers/mmc/host/mtk-sd.c          |  2 +-
+>>>   drivers/mmc/host/sdhci-brcmstb.c   |  2 +-
+>>>   drivers/mmc/host/sdhci-esdhc-imx.c |  2 +-
+>>>   drivers/mmc/host/sdhci-msm.c       |  2 +-
+>>>   drivers/mmc/host/sdhci-of-arasan.c |  2 +-
+>>>   drivers/mmc/host/sdhci-pci-core.c  |  2 +-
+>>>   drivers/mmc/host/sdhci-pci-gli.c   |  2 +-
+>>>   drivers/mmc/host/sdhci-tegra.c     |  2 +-
+>>>   drivers/mmc/host/sdhci_am654.c     |  2 +-
+>>>   11 files changed, 28 insertions(+), 15 deletions(-)
+>>>
+>>> diff --git a/drivers/mmc/host/cqhci-core.c b/drivers/mmc/host/cqhci-core.c
+>>> index b3d7d6d8d654..f9cdf9f04bfc 100644
+>>> --- a/drivers/mmc/host/cqhci-core.c
+>>> +++ b/drivers/mmc/host/cqhci-core.c
+>>> @@ -420,7 +420,7 @@ static void cqhci_disable(struct mmc_host *mmc)
+>>>   }
+>>>     static void cqhci_prep_task_desc(struct mmc_request *mrq,
+>>> -                 struct cqhci_host *cq_host, int tag)
+>>> +                 struct cqhci_host *cq_host, int tag, int intr)
+>>>   {
+>>>       __le64 *task_desc = (__le64 __force *)get_desc(cq_host, tag);
+>>>       u32 req_flags = mrq->data->flags;
+>>> @@ -428,7 +428,7 @@ static void cqhci_prep_task_desc(struct mmc_request *mrq,
+>>>         desc0 = CQHCI_VALID(1) |
+>>>           CQHCI_END(1) |
+>>> -        CQHCI_INT(1) |
+>>> +        CQHCI_INT(intr) |
+>>>           CQHCI_ACT(0x5) |
+>>>           CQHCI_FORCED_PROG(!!(req_flags & MMC_DATA_FORCED_PRG)) |
+>>>           CQHCI_DATA_TAG(!!(req_flags & MMC_DATA_DAT_TAG)) |
+>>> @@ -621,7 +621,7 @@ static int cqhci_request(struct mmc_host *mmc, struct mmc_request *mrq)
+>>>       }
+>>>         if (mrq->data) {
+>>> -        cqhci_prep_task_desc(mrq, cq_host, tag);
+>>> +        cqhci_prep_task_desc(mrq, cq_host, tag, (cq_host->intr_clsc ? 0 : 1));
+>>>             err = cqhci_prep_tran_desc(mrq, cq_host, tag);
+>>>           if (err) {
+>>> @@ -812,7 +812,7 @@ static void cqhci_finish_mrq(struct mmc_host *mmc, unsigned int tag)
+>>>   irqreturn_t cqhci_irq(struct mmc_host *mmc, u32 intmask, int cmd_error,
+>>>                 int data_error)
+>>>   {
+>>> -    u32 status;
+>>> +    u32 status, rval;
+>>>       unsigned long tag = 0, comp_status;
+>>>       struct cqhci_host *cq_host = mmc->cqe_private;
+>>>   @@ -856,6 +856,15 @@ irqreturn_t cqhci_irq(struct mmc_host *mmc, u32 intmask, int cmd_error,
+>>>           spin_unlock(&cq_host->lock);
+>>>       }
+>>>   +    if (cq_host->intr_clsc) {
+>>> +        rval = cqhci_readl(cq_host, CQHCI_IC);
+>>> +        rval |= CQHCI_IC_RESET;
+>>> +        cqhci_writel(cq_host, rval, CQHCI_IC);
+>>> +        rval = cqhci_readl(cq_host, CQHCI_IC);
+>>> +        rval &= (~CQHCI_IC_RESET);
+>>> +        cqhci_writel(cq_host, rval, CQHCI_IC);
+>>> +    }
+>>> +
+>>>       if (status & CQHCI_IS_TCL)
+>>>           wake_up(&cq_host->wait_queue);
+>>>   @@ -1172,11 +1181,12 @@ static unsigned int cqhci_ver_minor(struct cqhci_host *cq_host)
+>>>   }
+>>>     int cqhci_init(struct cqhci_host *cq_host, struct mmc_host *mmc,
+>>> -          bool dma64)
+>>> +          bool dma64, bool intr_clsc)
+>>>   {
+>>>       int err;
+>>>         cq_host->dma64 = dma64;
+>>> +    cq_host->intr_clsc = intr_clsc;
+>>>       cq_host->mmc = mmc;
+>>>       cq_host->mmc->cqe_private = cq_host;
+>>>   diff --git a/drivers/mmc/host/cqhci.h b/drivers/mmc/host/cqhci.h
+>>> index ba9387ed90eb..acf90773c30a 100644
+>>> --- a/drivers/mmc/host/cqhci.h
+>>> +++ b/drivers/mmc/host/cqhci.h
+>>> @@ -227,6 +227,9 @@ struct cqhci_host {
+>>>         /* 64 bit DMA */
+>>>       bool dma64;
+>>> +
+>>> +    /* interrupt coalescing*/
+>>> +    bool intr_clsc;
+>>>       int num_slots;
+>>>       int qcnt;
+>>>   @@ -312,7 +315,7 @@ struct platform_device;
+>>>     irqreturn_t cqhci_irq(struct mmc_host *mmc, u32 intmask, int cmd_error,
+>>>                 int data_error);
+>>> -int cqhci_init(struct cqhci_host *cq_host, struct mmc_host *mmc, bool dma64);
+>>> +int cqhci_init(struct cqhci_host *cq_host, struct mmc_host *mmc, bool dma64, bool intr_clsc);
+>>>   struct cqhci_host *cqhci_pltfm_init(struct platform_device *pdev);
+>>>   int cqhci_deactivate(struct mmc_host *mmc);
+>>>   static inline int cqhci_suspend(struct mmc_host *mmc)
+>>> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+>>> index edade0e54a0c..2c18f954d4b8 100644
+>>> --- a/drivers/mmc/host/mtk-sd.c
+>>> +++ b/drivers/mmc/host/mtk-sd.c
+>>> @@ -2796,7 +2796,7 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>>>           host->cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+>>>           host->cq_host->mmio = host->base + 0x800;
+>>>           host->cq_host->ops = &msdc_cmdq_ops;
+>>> -        ret = cqhci_init(host->cq_host, mmc, true);
+>>> +        ret = cqhci_init(host->cq_host, mmc, true, false);
+>>>           if (ret)
+>>>               goto host_free;
+>>>           mmc->max_segs = 128;
+>>> diff --git a/drivers/mmc/host/sdhci-brcmstb.c b/drivers/mmc/host/sdhci-brcmstb.c
+>>> index f2cf3d70db79..4aeaeddbbf25 100644
+>>> --- a/drivers/mmc/host/sdhci-brcmstb.c
+>>> +++ b/drivers/mmc/host/sdhci-brcmstb.c
+>>> @@ -231,7 +231,7 @@ static int sdhci_brcmstb_add_host(struct sdhci_host *host,
+>>>           cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+>>>       }
+>>>   -    ret = cqhci_init(cq_host, host->mmc, dma64);
+>>> +    ret = cqhci_init(cq_host, host->mmc, dma64, false);
+>>>       if (ret)
+>>>           goto cleanup;
+>>>   diff --git a/drivers/mmc/host/sdhci-esdhc-imx.c b/drivers/mmc/host/sdhci-esdhc-imx.c
+>>> index 9e73c34b6401..7aef7abe71f1 100644
+>>> --- a/drivers/mmc/host/sdhci-esdhc-imx.c
+>>> +++ b/drivers/mmc/host/sdhci-esdhc-imx.c
+>>> @@ -1712,7 +1712,7 @@ static int sdhci_esdhc_imx_probe(struct platform_device *pdev)
+>>>           cq_host->mmio = host->ioaddr + ESDHC_CQHCI_ADDR_OFFSET;
+>>>           cq_host->ops = &esdhc_cqhci_ops;
+>>>   -        err = cqhci_init(cq_host, host->mmc, false);
+>>> +        err = cqhci_init(cq_host, host->mmc, false, false);
+>>>           if (err)
+>>>               goto disable_ahb_clk;
+>>>       }
+>>> diff --git a/drivers/mmc/host/sdhci-msm.c b/drivers/mmc/host/sdhci-msm.c
+>>> index 4ac8651d0b29..b6549d1e43ec 100644
+>>> --- a/drivers/mmc/host/sdhci-msm.c
+>>> +++ b/drivers/mmc/host/sdhci-msm.c
+>>> @@ -2153,7 +2153,7 @@ static int sdhci_msm_cqe_add_host(struct sdhci_host *host,
+>>>       if (ret)
+>>>           goto cleanup;
+>>>   -    ret = cqhci_init(cq_host, host->mmc, dma64);
+>>> +    ret = cqhci_init(cq_host, host->mmc, dma64, false);
+>>>       if (ret) {
+>>>           dev_err(&pdev->dev, "%s: CQE init: failed (%d)\n",
+>>>                   mmc_hostname(host->mmc), ret);
+>>> diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sdhci-of-arasan.c
+>>> index 89c431a34c43..811f8686532d 100644
+>>> --- a/drivers/mmc/host/sdhci-of-arasan.c
+>>> +++ b/drivers/mmc/host/sdhci-of-arasan.c
+>>> @@ -1610,7 +1610,7 @@ static int sdhci_arasan_add_host(struct sdhci_arasan_data *sdhci_arasan)
+>>>       if (dma64)
+>>>           cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+>>>   -    ret = cqhci_init(cq_host, host->mmc, dma64);
+>>> +    ret = cqhci_init(cq_host, host->mmc, dma64, false);
+>>>       if (ret)
+>>>           goto cleanup;
+>>>   diff --git a/drivers/mmc/host/sdhci-pci-core.c b/drivers/mmc/host/sdhci-pci-core.c
+>>> index c359f867df0a..6f6cae6355a7 100644
+>>> --- a/drivers/mmc/host/sdhci-pci-core.c
+>>> +++ b/drivers/mmc/host/sdhci-pci-core.c
+>>> @@ -964,7 +964,7 @@ static int glk_emmc_add_host(struct sdhci_pci_slot *slot)
+>>>       if (dma64)
+>>>           cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+>>>   -    ret = cqhci_init(cq_host, host->mmc, dma64);
+>>> +    ret = cqhci_init(cq_host, host->mmc, dma64, false);
+>>>       if (ret)
+>>>           goto cleanup;
+>>>   diff --git a/drivers/mmc/host/sdhci-pci-gli.c b/drivers/mmc/host/sdhci-pci-gli.c
+>>> index 633a8ee8f8c5..6917ba339aa9 100644
+>>> --- a/drivers/mmc/host/sdhci-pci-gli.c
+>>> +++ b/drivers/mmc/host/sdhci-pci-gli.c
+>>> @@ -908,7 +908,7 @@ static int gl9763e_add_host(struct sdhci_pci_slot *slot)
+>>>       if (dma64)
+>>>           cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+>>>   -    ret = cqhci_init(cq_host, host->mmc, dma64);
+>>> +    ret = cqhci_init(cq_host, host->mmc, dma64, false);
+>>>       if (ret)
+>>>           goto cleanup;
+>>>   diff --git a/drivers/mmc/host/sdhci-tegra.c b/drivers/mmc/host/sdhci-tegra.c
+>>> index bff084f178c9..f98a468e8f43 100644
+>>> --- a/drivers/mmc/host/sdhci-tegra.c
+>>> +++ b/drivers/mmc/host/sdhci-tegra.c
+>>> @@ -1620,7 +1620,7 @@ static int sdhci_tegra_add_host(struct sdhci_host *host)
+>>>       if (dma64)
+>>>           cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+>>>   -    ret = cqhci_init(cq_host, host->mmc, dma64);
+>>> +    ret = cqhci_init(cq_host, host->mmc, dma64, false);
+>>>       if (ret)
+>>>           goto cleanup;
+>>>   diff --git a/drivers/mmc/host/sdhci_am654.c b/drivers/mmc/host/sdhci_am654.c
+>>> index 7ef828942df3..8e7fbee70e16 100644
+>>> --- a/drivers/mmc/host/sdhci_am654.c
+>>> +++ b/drivers/mmc/host/sdhci_am654.c
+>>> @@ -568,7 +568,7 @@ static int sdhci_am654_cqe_add_host(struct sdhci_host *host)
+>>>         host->mmc->caps2 |= MMC_CAP2_CQE;
+>>>   -    return cqhci_init(cq_host, host->mmc, 1);
+>>> +    return cqhci_init(cq_host, host->mmc, 1, false);
+>>>   }
+>>>     static int sdhci_am654_get_otap_delay(struct sdhci_host *host,
+> 
+
 
