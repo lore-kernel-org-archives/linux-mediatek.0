@@ -4,51 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B765C636D3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 08:33:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D253C636CD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Jan 2023 08:34:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Z0N5VlX9/JlryGOL5I747Le9USomZJCRNNGRT3LbbKc=; b=gbX7aWe0jMVU9kONYBS+aeW4jv
-	TvbYb5OS78vVDyNhUMyPYpb6JgufGuOXeN0Be2TsRVNTkZcAK3ULDWFhdVDR1v5riztv9xqB2OMrK
-	1sONfpl07qn/D4ner2ANg2TUPUMUwjbKhG6AlLgIpoHiJsjUF2LhNaisp+Na//62sR9lkWp1cT2Wo
-	PWUlPU74TpdEPkkMk2qIViIxg8RTl4IckREEN9XA7hKy+T+alsK9T/Uo9ZnJqshRQ5lrlD72OlycZ
-	5sTkMER13A7RIyLG4agz3zWCPGfYjy+Bn5hwVLHNNyH2vHQeIekh7mHc9UnQJ6Z0NzM/E7AJdgK+1
-	uzNcAUoQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Rx3WkbxOq68OLy+r6n5rzVdfc6xjpd8uAHsXlzRTS6I=; b=uTDjkLrtQQt+68AAmtD73vznoK
+	6an3ex/6H3o9ESZ0EOuAe0eTSkZoDryeA1JyjFByc6ft+vad9UYyNLccwzdH1Agyrr77HPXTDV84Y
+	eZc9qrL36Ckz62My7GFYbP/0xIey7GaqT/xPoTZeXcS96+8doa4mWG2FAgljVTLy+im6GwLKC4Hck
+	djxfmuGV2yk4/04afZBSiC/itJTiUtEkms3a3gfSJGFCkS/873QtzBj0cnK6MIfo7uJZgWskPpREK
+	eiM25r7OdO8UjdhoXzsV/Qag+idBhogwCzONdJPa5uNGwxIS5k0sKCpKThHPVXBMG01dx6XGe9E3T
+	iioUI/xQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMm5J-006k75-32; Tue, 31 Jan 2023 08:33:45 +0000
-Received: from mail.lokoho.com ([217.61.105.98])
+	id 1pMm67-006kXN-Q4; Tue, 31 Jan 2023 08:34:35 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMm4z-006jwJ-AA
-	for linux-mediatek@lists.infradead.org; Tue, 31 Jan 2023 08:33:27 +0000
-Received: by mail.lokoho.com (Postfix, from userid 1001)
-	id 07BB2839F2; Tue, 31 Jan 2023 08:31:39 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=lokoho.com; s=mail;
-	t=1675154004; bh=Z0N5VlX9/JlryGOL5I747Le9USomZJCRNNGRT3LbbKc=;
-	h=Date:From:To:Subject:From;
-	b=Lb/u7CeiPNcV2IYEr99CYYJHF0PBHRK0YLtnlLPj+RTXe0+tjmlROgJw09FYDU7gx
-	 BFrTZ2OFqeFk6+OGQroo4F3tc/AbfaBAqxwaqxET/vyfzCZFrNlVn3cfROvKWDtDMl
-	 4QMRtapAV8JcpePDrZ6K5mIn/jq5KP3Sb9sLJsK14Agysyq42kohmcBPT81HmorxdA
-	 gJMAl2t47C1dICfEEgjyMNIOG72z9imUVVChcv5atoy1sjSRBK21YsgOpNxRQbFPNq
-	 klLKDzWELrXZ3/7NgqmMX8v0USWXZRVbCeLVaaBNR2taF7F6D6hDh1b5rr7ipvAXQ3
-	 vjHY/dj2srHqg==
-Received: by mail.lokoho.com for <linux-mediatek@lists.infradead.org>; Tue, 31 Jan 2023 08:30:34 GMT
-Message-ID: <20230131074501-0.1.3q.w0dm.0.vr203b7az1@lokoho.com>
-Date: Tue, 31 Jan 2023 08:30:34 GMT
-From: "Adam Charachuta" <adam.charachuta@lokoho.com>
-To: <linux-mediatek@lists.infradead.org>
-Subject: =?UTF-8?Q?S=C5=82owa_kluczowe_do_wypozycjonowania?=
-X-Mailer: mail.lokoho.com
+	id 1pMm5t-006kPk-PB; Tue, 31 Jan 2023 08:34:23 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CCBC66602EB0;
+	Tue, 31 Jan 2023 08:34:19 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1675154060;
+	bh=YTDwGwfBFzyh04yq9kd12N21xcMUH+2G62M5xvhtgB0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=glgiKDV6E0zqSLzJqfUv4HNPK/4i0B3hHYBXcog8fqUYMD82r07E0DTjXVwGaEdDW
+	 CS1CfpfcK5a6OtbTivjP3gVimQLDHfVVnEEy78r3LL/wyWWZOq10JnvmfE7wVuzhdO
+	 ryCXFiZvpWNR9xqCTZjOebZI80LOrh0EJ3qvcMrE5yukEmy96e2khU1V7uyPGIilsn
+	 Z4vdsINZ3rZRZzNbA8xBuR0pkL0vdd5LklnIfs5i5A2dL9MrcM1cnh2oNqcIGzsDAc
+	 OoxNcKRD8XdkukwEoYw/mTXjHVyeVO6kWfVKXEA9bFYJqRlcLmmYYV0e905HPTvbav
+	 jOxONT4uTYDlA==
+Message-ID: <34593781-1bef-10cb-0816-b2833e9d35ad@collabora.com>
+Date: Tue, 31 Jan 2023 09:34:17 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v3 1/2] drm/panel: boe-tv101wum-nl6: Remove extra delay
+Content-Language: en-US
+To: xinlei.lee@mediatek.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
+ airlied@linux.ie, daniel@ffwll.ch, matthias.bgg@gmail.com,
+ jitao.shi@mediatek.com, thierry.reding@gmail.com, sam@ravnborg.org
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <1675130359-24459-1-git-send-email-xinlei.lee@mediatek.com>
+ <1675130359-24459-2-git-send-email-xinlei.lee@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <1675130359-24459-2-git-send-email-xinlei.lee@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_003325_506401_8DF0B0B7 
-X-CRM114-Status: UNSURE (   1.47  )
+X-CRM114-CacheID: sfid-20230131_003421_993493_D34471D9 
+X-CRM114-Status: UNSURE (   7.20  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -64,20 +78,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,
+Il 31/01/23 02:59, xinlei.lee@mediatek.com ha scritto:
+> From: Xinlei Lee <xinlei.lee@mediatek.com>
+> 
+> Reduce the delay after LCM reset by removing an extra delay in the
+> initialization commands array. The required delay of at least 6ms after
+> reset is guaranteed by boe_panel_prepare().
+> 
+> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
 
-zapozna=C5=82em si=C4=99 z Pa=C5=84stwa ofert=C4=85 i z przyjemno=C5=9Bci=
-=C4=85 przyznaj=C4=99, =C5=BCe przyci=C4=85ga uwag=C4=99 i zach=C4=99ca d=
-o dalszych rozm=C3=B3w.=20
-
-Pomy=C5=9Bla=C5=82em, =C5=BCe mo=C5=BCe m=C3=B3g=C5=82bym mie=C4=87 sw=C3=
-=B3j wk=C5=82ad w Pa=C5=84stwa rozw=C3=B3j i pom=C3=B3c dotrze=C4=87 z t=C4=
-=85 ofert=C4=85 do wi=C4=99kszego grona odbiorc=C3=B3w. Pozycjonuj=C4=99 =
-strony www, dzi=C4=99ki czemu generuj=C4=85 =C5=9Bwietny ruch w sieci.
-
-Mo=C5=BCemy porozmawia=C4=87 w najbli=C5=BCszym czasie?
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
-Pozdrawiam
-Adam Charachuta
 
