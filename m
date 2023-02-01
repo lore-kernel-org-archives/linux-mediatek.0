@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DD59C38142
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 02:17:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92BA2C636CC
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 02:18:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t/lJsNvA0uH9SgSwmdI1vH7I7ad8xh4M3pN5qXfTyqY=; b=DgbTqwwnxJ5tMXbG3btEiyTX7j
-	X7RbPqrSbKohRXQ7wRk2Qr8Y6n6jqJ/AKBlOO970qe4iSDU93kO+MLf2tdcX22gUjNbXHeZ/AgbEk
-	UL8kkBlVLwiXSAzvt5rl6hBLqr+I8nFKQwaabn46Fd1+ZjPqjVpFxn/Do2uZMjOH6Fv0vS9eyU/vU
-	m17aBBUJ/4oI8MLXtkna60XaroOHelJbnn1Gbfoh3aKVqpdsTwBr843LRHuSs3Rkrgl/MyTH0arqb
-	4iEdBRwQ4dm43vAxOlEb7FHFSSQZKVY+Zja5EUBCtFRgcOru6OboxIfoe+D7u6t626iD2E+hjGnbl
-	JWErpo3w==;
+	bh=AljLcemnKAdfrmjxC/s2CRMhH5DsQc4QT4V+1YYAYTU=; b=VP/11FgtioMdx3rsKhVl26BwE7
+	6JmxwHQOD4FppoZSja4sTbK/aJ7tnQQ3k4J3wRBKqseDB2Q4XKkGRf9DiSOcYexJ2Le3eKYfpBUIg
+	bK3mtvP6jSu4n13c90dtVdLoHhcEV7gD1/8FlnbhXISUzNSUmb49O+SAQEPhYpvIq1qZqa04uhlMp
+	ehN0pYb2eRljshXnNSt5oNnSnq0Zi5S295XGFSmfFih8BHHonCx4a1bBye99RX7r4Fowq+JU7VnI3
+	jEwh3BSW3SHKIbqilUm+EkdjujYyIAnYS6gzXVzgXnBtg23SXBctaYWPYYPF/RWzPdNBY6+1WcikQ
+	lGmSsoeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pN2gU-009wql-Nr; Wed, 01 Feb 2023 02:17:14 +0000
+	id 1pN2h9-009xD5-6F; Wed, 01 Feb 2023 02:17:55 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pN2f4-009wCT-Pi; Wed, 01 Feb 2023 02:15:48 +0000
-X-UUID: 54d18038a1d611eda08d4d6090ec5a5c-20230131
+	id 1pN2f5-009wEi-Gl; Wed, 01 Feb 2023 02:15:49 +0000
+X-UUID: 5547a952a1d611eda08d4d6090ec5a5c-20230131
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=t/lJsNvA0uH9SgSwmdI1vH7I7ad8xh4M3pN5qXfTyqY=;
-	b=SFC73X/2A/NwnnGrCHzFScYzkre+bWMGvKQS3jrmXv7BD38zTK/eGGPPksc2WP4bhxVQf5BvaJVzG/7DYqSMIaBqWdQbsvru5WQ32xJUJ+uY10sIw7SuKtyzs0y/X/5RjkWyvVeAYXR1B5o6AMj7pxy2zbe2QlPZRkWY1mIaRJQ=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=AljLcemnKAdfrmjxC/s2CRMhH5DsQc4QT4V+1YYAYTU=;
+	b=u0YmEQ/SvwqgDUH5J7kmK9g/HnYgub8R/uzE9WIekZBS70LHyC3Dc7XwksNEwOTon1V3Rpxv9be7eqEga1sdtl9uzk+s73B4BJNKo1RKIGXAGCGqf4d29U+u+ar/9BdRpWZ+SYgE1jjDYf7qWTyvk6uVrmDUVvekIjiuuF5gyic=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.18,REQID:c1b12594-edbd-4481-afc2-730b17cac45d,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:90
-X-CID-INFO: VERSION:1.1.18,REQID:c1b12594-edbd-4481-afc2-730b17cac45d,IP:0,URL
-	:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
-	N:quarantine,TS:90
-X-CID-META: VersionHash:3ca2d6b,CLOUDID:1c40858d-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:230201101510CM436Q13,BulkQuantity:3,Recheck:0,SF:38|29|28|17|19|48,T
+X-CID-O-INFO: VERSION:1.1.18,REQID:8764ca8b-7ae8-43af-a240-40dd284e884f,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:70
+X-CID-INFO: VERSION:1.1.18,REQID:8764ca8b-7ae8-43af-a240-40dd284e884f,IP:0,URL
+	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
+	ON:quarantine,TS:70
+X-CID-META: VersionHash:3ca2d6b,CLOUDID:4f75ea55-dd49-462e-a4be-2143a3ddc739,B
+	ulkID:230201101521IV0XRMIM,BulkQuantity:2,Recheck:0,SF:38|29|28|17|19|48,T
 	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
 	OSI:0,OSA:0
 X-CID-BVR: 0
-X-UUID: 54d18038a1d611eda08d4d6090ec5a5c-20230131
+X-UUID: 5547a952a1d611eda08d4d6090ec5a5c-20230131
 Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
 	(envelope-from <xiangsheng.hou@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 4203973; Tue, 31 Jan 2023 19:15:43 -0700
+	with ESMTP id 514138698; Tue, 31 Jan 2023 19:15:44 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 1 Feb 2023 10:15:08 +0800
+ 15.2.792.15; Wed, 1 Feb 2023 10:15:11 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 1 Feb 2023 10:15:06 +0800
+ 15.2.792.15 via Frontend Transport; Wed, 1 Feb 2023 10:15:09 +0800
 From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
 To: Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger
 	<richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Rob Herring
@@ -64,9 +64,9 @@ CC: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
 	<linux-kernel@vger.kernel.org>, <benliang.zhao@mediatek.com>,
 	<bin.zhang@mediatek.com>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v6 3/5] arm: dts: mediatek: Fix existing NAND controller node name
-Date: Wed, 1 Feb 2023 10:14:58 +0800
-Message-ID: <20230201021500.26769-4-xiangsheng.hou@mediatek.com>
+Subject: [PATCH v6 5/5] mtd: nand: ecc-mtk: Add ECC support fot MT7986 IC
+Date: Wed, 1 Feb 2023 10:15:00 +0800
+Message-ID: <20230201021500.26769-6-xiangsheng.hou@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230201021500.26769-1-xiangsheng.hou@mediatek.com>
 References: <20230201021500.26769-1-xiangsheng.hou@mediatek.com>
@@ -75,8 +75,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_181546_898176_04E8EA9D 
-X-CRM114-Status: GOOD (  11.36  )
+X-CRM114-CacheID: sfid-20230131_181547_603315_2E3F3C45 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,28 +91,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change the existing node name in order to match NAND controller DT
-bindings.
+Add ECC support fot MT7986 IC, and change err_mask value with
+GENMASK macro.
 
 Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm/boot/dts/mt2701.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/mtd/nand/ecc-mtk.c | 28 +++++++++++++++++++++++++---
+ 1 file changed, 25 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-index 0a0fe8c5a405..ce6a4015fed5 100644
---- a/arch/arm/boot/dts/mt2701.dtsi
-+++ b/arch/arm/boot/dts/mt2701.dtsi
-@@ -359,7 +359,7 @@ thermal: thermal@1100b000 {
- 		mediatek,apmixedsys = <&apmixedsys>;
- 	};
+diff --git a/drivers/mtd/nand/ecc-mtk.c b/drivers/mtd/nand/ecc-mtk.c
+index 9f9b201fe706..c75bb8b80cc1 100644
+--- a/drivers/mtd/nand/ecc-mtk.c
++++ b/drivers/mtd/nand/ecc-mtk.c
+@@ -40,6 +40,10 @@
+ #define ECC_IDLE_REG(op)	((op) == ECC_ENCODE ? ECC_ENCIDLE : ECC_DECIDLE)
+ #define ECC_CTL_REG(op)		((op) == ECC_ENCODE ? ECC_ENCCON : ECC_DECCON)
  
--	nandc: nfi@1100d000 {
-+	nandc: nand-controller@1100d000 {
- 		compatible = "mediatek,mt2701-nfc";
- 		reg = <0 0x1100d000 0 0x1000>;
- 		interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_LOW>;
++#define ECC_ERRMASK_MT7622	GENMASK(4, 0)
++#define ECC_ERRMASK_MT2701	GENMASK(5, 0)
++#define ECC_ERRMASK_MT2712	GENMASK(6, 0)
++
+ struct mtk_ecc_caps {
+ 	u32 err_mask;
+ 	u32 err_shift;
+@@ -79,6 +83,10 @@ static const u8 ecc_strength_mt7622[] = {
+ 	4, 6, 8, 10, 12
+ };
+ 
++static const u8 ecc_strength_mt7986[] = {
++	4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24
++};
++
+ enum mtk_ecc_regs {
+ 	ECC_ENCPAR00,
+ 	ECC_ENCIRQ_EN,
+@@ -451,7 +459,7 @@ unsigned int mtk_ecc_get_parity_bits(struct mtk_ecc *ecc)
+ EXPORT_SYMBOL(mtk_ecc_get_parity_bits);
+ 
+ static const struct mtk_ecc_caps mtk_ecc_caps_mt2701 = {
+-	.err_mask = 0x3f,
++	.err_mask = ECC_ERRMASK_MT2701,
+ 	.err_shift = 8,
+ 	.ecc_strength = ecc_strength_mt2701,
+ 	.ecc_regs = mt2701_ecc_regs,
+@@ -462,7 +470,7 @@ static const struct mtk_ecc_caps mtk_ecc_caps_mt2701 = {
+ };
+ 
+ static const struct mtk_ecc_caps mtk_ecc_caps_mt2712 = {
+-	.err_mask = 0x7f,
++	.err_mask = ECC_ERRMASK_MT2712,
+ 	.err_shift = 8,
+ 	.ecc_strength = ecc_strength_mt2712,
+ 	.ecc_regs = mt2712_ecc_regs,
+@@ -473,7 +481,7 @@ static const struct mtk_ecc_caps mtk_ecc_caps_mt2712 = {
+ };
+ 
+ static const struct mtk_ecc_caps mtk_ecc_caps_mt7622 = {
+-	.err_mask = 0x1f,
++	.err_mask = ECC_ERRMASK_MT7622,
+ 	.err_shift = 5,
+ 	.ecc_strength = ecc_strength_mt7622,
+ 	.ecc_regs = mt7622_ecc_regs,
+@@ -483,6 +491,17 @@ static const struct mtk_ecc_caps mtk_ecc_caps_mt7622 = {
+ 	.pg_irq_sel = 0,
+ };
+ 
++static const struct mtk_ecc_caps mtk_ecc_caps_mt7986 = {
++	.err_mask = ECC_ERRMASK_MT7622,
++	.err_shift = 8,
++	.ecc_strength = ecc_strength_mt7986,
++	.ecc_regs = mt2712_ecc_regs,
++	.num_ecc_strength = 11,
++	.ecc_mode_shift = 5,
++	.parity_bits = 14,
++	.pg_irq_sel = 1,
++};
++
+ static const struct of_device_id mtk_ecc_dt_match[] = {
+ 	{
+ 		.compatible = "mediatek,mt2701-ecc",
+@@ -493,6 +512,9 @@ static const struct of_device_id mtk_ecc_dt_match[] = {
+ 	}, {
+ 		.compatible = "mediatek,mt7622-ecc",
+ 		.data = &mtk_ecc_caps_mt7622,
++	}, {
++		.compatible = "mediatek,mt7986-ecc",
++		.data = &mtk_ecc_caps_mt7986,
+ 	},
+ 	{},
+ };
 -- 
 2.25.1
 
