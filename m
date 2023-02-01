@@ -4,89 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06BB5C38142
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 07:48:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5733AC05027
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 07:51:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BOAVtoDyGjZY+SIS62M9gmEfmVp9hRVMK35KqE9GNqU=; b=r4shuoK4KOaWCNL0PlbjWr9sCG
-	gU4aHQQq3pYhpy3+ED2uR3QDBwAooRZxfaZgiaFnGkCMtnjI0vr0DIL6encvtJLeB0X+MPgxdl9HV
-	r4NETrA8OiTPPbevY112VF3IhaYLUXb1H20rD4nuXyTiMdusiJ9pH5rntrIP3xBwuuT4jT6vg7TCX
-	oXa/Ml5M8VrYxG1y6IzSO1vLimJMqkFZmkBemyY+FsY54QK+HK6mWdlgzSSPfG+NWY597bhgZmojr
-	kST1FOn5nULtEm14xELtvtyZ57412gOK51KDJSNVH3BuVJeF1hJIHSmbhv/ELtBFm+aAMDSlISz55
-	Ir17ebzw==;
+	bh=glBN85Rt3ApOQsBFR19xGhWj23PUZkptYN1w7e3kzW4=; b=oLT0yrheOq4Oe8cZT249WfSu0l
+	ir4OGai7M9vFZQgEVgZgXFNf7byt3iF2f4Hk4i7iDyg2psm3IYUUuPrcuccxZuU9GikOepXwXmEaB
+	QlXM9KuygFXfXNMrUVAtDAtuAFSAJHm3llqatyAUavLBR94Vz/G3nPMBwd35Wrwa+3XIHXOBRhWdR
+	6+XtQOuRSIuB3Zj0ef0W5/bXaVtgSh9vnag3n4bgxId0UtHxO3y0U7IkM0VN3I+QPBi5oxYIkjisO
+	inpLaYwPYCrkgnIgAo9+7VG+yeaq4PGfISP+6js31Az++N/z+8kSjHzeQFinepnacY1UrBghjiL2q
+	dv9YNhMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pN7qf-00AggX-9D; Wed, 01 Feb 2023 07:48:05 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1pN7tM-00AhTX-D2; Wed, 01 Feb 2023 07:50:52 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pN7qQ-00AgZY-Ou
-	for linux-mediatek@lists.infradead.org; Wed, 01 Feb 2023 07:47:52 +0000
-Received: by mail-wr1-x430.google.com with SMTP id t18so16431766wro.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 31 Jan 2023 23:47:47 -0800 (PST)
+	id 1pN7tJ-00AhSE-7j; Wed, 01 Feb 2023 07:50:50 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id z11so16765452ede.1;
+        Tue, 31 Jan 2023 23:50:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=BOAVtoDyGjZY+SIS62M9gmEfmVp9hRVMK35KqE9GNqU=;
-        b=yC6P8rtKjMfxlizxYDpk/d0n8PxtFwRcGFMaE/6ViJqIJOj/ZHYf3WLGPgGl8ysq4a
-         9swcZrxrknGTH151pyA9IrCK7HPQUL0v0KNlojJl1fnTWRqqGmesLejCsdamaiiPCpux
-         rlXTfZD5lOwZA9WXaPe+CBBfaee1rr8mbsNM4aup2KO2LFd8HWOAkYXMfzOMcFMQax/t
-         XZvdqqYRtnJLyRn5D7q/4qDlIdJEj1KzoM4jjFFhwNje9X7+w+TKN0oCQaYWMdG1m1nb
-         BumzLKtdCVc66ch0kTVrWTCH5pedCpmkwU+/IeLIRtSMeHGWUu7dq79p/j+AKnOsbqcX
-         r/qA==
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=glBN85Rt3ApOQsBFR19xGhWj23PUZkptYN1w7e3kzW4=;
+        b=DRyUlm1zhhpn43neHrYjlg1b7J90De88ZvLd1hZBhVaMTp21J2NQ9m1HZ7w7kpp0VQ
+         NDDpw2l+K+2ZJEGSrD7XHt27GuJeipn56IqMuAKTXvqn7U9fBL9JwpgzlVja45KvQN5o
+         hAuKoBbDfOLSW5FaFeJB+gXrw4UziIvMc9Xff6MM4kZgDsnmfNlscfq+CZEj37TT7jzj
+         dDmO9SewftPPSYv41YLasOzkiNc48pZXo/G8Swq6HdSL2EfAk0Y1DJpPwrKTxUNWz+WG
+         y3BtbhV2F8SZ0Kjv1sBtNbEeu6JrGovtJe2oauq8vgytAt7i6t/+yDqBi2beNtO34/WZ
+         pgCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=BOAVtoDyGjZY+SIS62M9gmEfmVp9hRVMK35KqE9GNqU=;
-        b=WwijBn6BCuYVz+gj6by+c3g6GkOi0SQjcqz1CdxYa+NphQVXEJ279SE/4MSs0EdwmZ
-         dcPu7DpB6moDC1SUP1K7zGs0Xk4Rd57xOkUC/ujoeOxT1cW3RNwEcWLNI4sO8+F49zBB
-         9c1TWHrs/lzmxQc/PVyuB/BxHP/9DIQPR9FFZ8IVJcXY9BNFG7L5WBkxDiRQqvBI3VwE
-         jbM72U33TXCZDdYqqp0wjSZkQ6V61fFyBET55p6+PSst6L/65Ar+ro/9FjCUIQ7zOTyO
-         PkzMMGYl4wQgX/YCggFMCAD/nQ7py1areo63aatZpGmWEdgNdfsb5YFoI4CrLwj6w84C
-         IyXA==
-X-Gm-Message-State: AO0yUKUlQ+2hRpdNI1xXztll3Niy8C4v4QiWDClsHLbeI8q5ZexS82bX
-	Bfs/e4/Rrl3nNGON2kzzh6QCXg==
-X-Google-Smtp-Source: AK7set8nqFHJYo7a4eebozO/03eyo/4ffYBLaond3yaQAHgnPDfYSecbma2ZGvil1SD9M2ZBXsqNJQ==
-X-Received: by 2002:a5d:6906:0:b0:2bf:b7e3:7c82 with SMTP id t6-20020a5d6906000000b002bfb7e37c82mr1277533wru.57.1675237666253;
-        Tue, 31 Jan 2023 23:47:46 -0800 (PST)
-Received: from [192.168.1.109] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id e10-20020a5d500a000000b002be0b1e556esm16331729wrt.59.2023.01.31.23.47.43
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=glBN85Rt3ApOQsBFR19xGhWj23PUZkptYN1w7e3kzW4=;
+        b=4NgxxK5GtPO0symDQO440Q/8AgBS2UCQOZ10P+3qdz4XZFgF+V7hosxqgtOmF3Ylm5
+         MDgg3b22qRfN7mExG2QAHJrDPISpzosgVcCUghLIX9xj95p40s6zpaW6yofTXraD9z/H
+         mgLYWyrO99hBcBGxySVbEZoX+9BdmEXRLsov1xesMfJIwMnGa1Wd85DCz9xp4jmL8svk
+         4XXQ2uGn35t/X4hmNrBCNf8SoSwy4k+wRUDsI5XTfpxxWdrxuB/JaqbnbZDV7BETOOXQ
+         y6nSrV2zmd7pgM4v2Iga5irGpt9E4rJPkABTLxM1ANs2wvuM5waXnfZXWA/TNxQAyb6z
+         UgAw==
+X-Gm-Message-State: AO0yUKVZ2uo6ETCAsxiJ6H6L8yEkeK56kP30RsYtO8X6wy7QqgHhJ7Qo
+	jCBlPm3rS/wE/pEobqsWL9JV+HQwMWM=
+X-Google-Smtp-Source: AK7set9udwASp3rHYU+1pDsFfYldkdqc5fY3QHy8XaG+oyWra3rErQfyAuhCrcpz5D0ySJ2Dxu8iAQ==
+X-Received: by 2002:a50:d79b:0:b0:49e:5ffd:5be2 with SMTP id w27-20020a50d79b000000b0049e5ffd5be2mr867638edi.40.1675237845584;
+        Tue, 31 Jan 2023 23:50:45 -0800 (PST)
+Received: from [192.168.26.149] (ip-194-187-74-233.konfederacka.maverick.com.pl. [194.187.74.233])
+        by smtp.googlemail.com with ESMTPSA id j6-20020a170906474600b0088ba2de323csm2565358ejs.181.2023.01.31.23.50.44
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 31 Jan 2023 23:47:45 -0800 (PST)
-Message-ID: <17072296-c1fb-1e82-65fd-26b448167087@linaro.org>
-Date: Wed, 1 Feb 2023 08:47:43 +0100
+        Tue, 31 Jan 2023 23:50:45 -0800 (PST)
+Message-ID: <0750dcbe-6035-d49e-9d2d-93a937b5c15d@gmail.com>
+Date: Wed, 1 Feb 2023 08:50:43 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH v12] thermal: drivers: mediatek: Add the Low Voltage
- Thermal Sensor driver
-Content-Language: en-US
-To: kernel test robot <lkp@intel.com>, bchihi@baylibre.com,
- daniel.lezcano@linaro.org, angelogioacchino.delregno@collabora.com,
- rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com,
- matthias.bgg@gmail.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org,
- ye.xingchen@zte.com.cn, p.zabel@pengutronix.de
-Cc: oe-kbuild-all@lists.linux.dev, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- khilman@baylibre.com, james.lo@mediatek.com, rex-bc.chen@mediatek.com
-References: <20230131153816.21709-1-bchihi@baylibre.com>
- <202302011058.17Vvc1pN-lkp@intel.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <202302011058.17Vvc1pN-lkp@intel.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:96.0) Gecko/20100101
+ Thunderbird/96.0
+Subject: Re: [PATCH 0/4] nvmem: add and use generic MMIO NVMEM
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>
+References: <20230201064717.18410-1-zajec5@gmail.com>
+From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+In-Reply-To: <20230201064717.18410-1-zajec5@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_234750_828307_8B9D25D0 
-X-CRM114-Status: GOOD (  13.77  )
+X-CRM114-CacheID: sfid-20230131_235049_293571_B66ECD3D 
+X-CRM114-Status: GOOD (  11.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,47 +96,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 01/02/2023 04:09, kernel test robot wrote:
-> Hi Balsam,
+On 1.02.2023 07:47, Rafał Miłecki wrote:
+> From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> Thank you for the patch! Yet something to improve:
+> MMIO accessible NVMEM devices should be simple enough to allow using a
+> single binding & driver for them.
 > 
-> 
-> 
-> url:    https://github.com/intel-lab-lkp/linux/commits/UPDATE-20230131-234122/bchihi-baylibre-com/thermal-drivers-mediatek-Relocate-driver-to-mediatek-folder/20230124-211910
-> base:   the 4th patch of https://lore.kernel.org/r/20230124131717.128660-5-bchihi%40baylibre.com
-> patch link:    https://lore.kernel.org/r/20230131153816.21709-1-bchihi%40baylibre.com
-> patch subject: [PATCH v12] thermal: drivers: mediatek: Add the Low Voltage Thermal Sensor driver
-> config: s390-allyesconfig (https://download.01.org/0day-ci/archive/20230201/202302011058.17Vvc1pN-lkp@intel.com/config)
-> compiler: s390-linux-gcc (GCC) 12.1.0
-> reproduce (this is a W=1 build):
->         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
->         chmod +x ~/bin/make.cross
->         # https://github.com/intel-lab-lkp/linux/commit/5646ebf6f10ff0fc60c04d8c57523f7c44526b41
->         git remote add linux-review https://github.com/intel-lab-lkp/linux
->         git fetch --no-tags linux-review UPDATE-20230131-234122/bchihi-baylibre-com/thermal-drivers-mediatek-Relocate-driver-to-mediatek-folder/20230124-211910
->         git checkout 5646ebf6f10ff0fc60c04d8c57523f7c44526b41
->         # save the config file
->         mkdir build_dir && cp config build_dir/.config
->         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=s390 olddefconfig
->         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=s390 SHELL=/bin/bash
-> 
-> If you fix the issue, kindly add following tag where applicable
-> | Reported-by: kernel test robot <lkp@intel.com>
-> 
-> All errors (new ones prefixed by >>):
-> 
->>> drivers/thermal/mediatek/lvts_thermal.c:20:10: fatal error: dt-bindings/thermal/mediatek,lvts-thermal.h: No such file or directory
->       20 | #include <dt-bindings/thermal/mediatek,lvts-thermal.h>
->          |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> I already replaced two existing drivers. With NVMEM layouts introduced I
+> can also replace Broadcom's NVRAM driver but that work depends on my
+> pending U-Boot patchset (it provides required helpers).
 
-So here is your driver... and you decided not only to make reviewers
-life more difficult, but also to fail all automated tools.
+This was meant to be marked as V2.
 
-No, that's not how patchsets should be sent. You have here clear
-dependency, you cannot send them separately.
-
-Best regards,
-Krzysztof
-
+Changes:
+1. Replaced io with mmio to be clear
+2. Replaced 2 existing drivers with generic implementation
 
