@@ -4,61 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7504C38142
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 09:42:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59523C636D3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 10:46:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iI9O3y3GOPuZw5pUpJ25NN8bjF6uZzoYxuqkKYGUnus=; b=NWEoMqXkX9IzYtPMDz4nMDfMqu
-	a6ZzsII7WK20IGvMOxEVEEMpeItmvxIWrnfo+VeSOk47HqW4rKnEdQEJsKWLNLtCtjWgwbGc+i2ZA
-	qIyOyJWHZzI4L2H8zCXYlbz0LeWCfVYdjFIqxr3cTGO3jM+chI8Q99S4AJEVUPGbxUwLINXUwtr7t
-	GJKbSoHsu2Lr99SRaNNhrnzm7vRpnAwsgnAoLTPn9X3v4WFu8JMSYRumuqV+/23DLgn36ZqVksIyU
-	uVoJJJrMX6Hshpr4aABDl6enuo7dahrR343m3UFoxi5a358R7URxAMcVMKE3731k5VrXlcoUrmR0I
-	D4ACWU8Q==;
+	bh=j/Nn9vIhP684Dyg+/S9/KC+Ry8ajbwCM27GQszn7uBE=; b=IlTjmSygnzQIjZq9482nteTzR+
+	AArauECfH0asq7yh8C/YX5fmjzNaeaaOnfKTFxez/zSQ/FCNBCjjZjT/Q1g++iB/EzVT31c8c72SP
+	Jac5Rgry9azWDCncKmT2rEz1zRfDomZnTMMj8gail2OapJydjzmE9SZ8zpRXvMD+rjmAPo/H6/8Qb
+	sfdKSzaPr6HWrPmlUbCPgCL/YiR+vN3yRqOtGILkxHmOOIp/cIWuMqyMAJWISvTvO+dSILT9FOorF
+	wxmL4ndqlIKdgNDBttk1VRWcKsQF01RfCyZTv/TE1vxc1IBUf4so/eDCA9sncN/ShmEKeggTu+KG2
+	OvIW/8Gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pN9ct-00B47J-UX; Wed, 01 Feb 2023 09:41:59 +0000
-Received: from mx.socionext.com ([202.248.49.38])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pN9cj-00B43t-0m; Wed, 01 Feb 2023 09:41:51 +0000
-Received: from unknown (HELO iyokan2-ex.css.socionext.com) ([172.31.9.54])
-  by mx.socionext.com with ESMTP; 01 Feb 2023 18:41:43 +0900
-Received: from mail.mfilter.local (m-filter-1 [10.213.24.61])
-	by iyokan2-ex.css.socionext.com (Postfix) with ESMTP id 341DD2058B4F;
-	Wed,  1 Feb 2023 18:41:43 +0900 (JST)
-Received: from 172.31.9.51 (172.31.9.51) by m-FILTER with ESMTP; Wed, 1 Feb 2023 18:41:50 +0900
-Received: from [10.212.157.12] (unknown [10.212.157.12])
-	by kinkan2.css.socionext.com (Postfix) with ESMTP id 954C27366;
-	Wed,  1 Feb 2023 18:41:42 +0900 (JST)
-Message-ID: <bed0a57c-a880-0b6f-f97d-d2b40c7cb17f@socionext.com>
-Date: Wed, 1 Feb 2023 18:41:42 +0900
+	id 1pNAd8-00BJxw-3A; Wed, 01 Feb 2023 10:46:18 +0000
+Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pNAcu-00BJvH-Nz; Wed, 01 Feb 2023 10:46:08 +0000
+Received: from 3ffe.de (0001.3ffe.de [IPv6:2a01:4f8:c0c:9d57::1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 2D365126A;
+	Wed,  1 Feb 2023 11:46:02 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
+	t=1675248362;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=j/Nn9vIhP684Dyg+/S9/KC+Ry8ajbwCM27GQszn7uBE=;
+	b=FnLre03ttlykqOT5twpuMP6FFFU/GYDMLPiJbQ5x24R+62f9zZOmq2Hyk6bmnNBuzHTQfT
+	IZEEqRBz7xQlkCmBWiZEVNeTNOkuDofAWU8loul7jmBGWNDayoA9/BLmZAz5YL7r93SQoT
+	yRrLi2QTW0mlVV7Hjo8V5bojgKCJTzdq5rT6GFR3yXtCk6ludx6P5waPGvrPROTxmBHoGD
+	ZLK4g8TkisopCQZVl3P5jW97q+ZbA6Xh18Us3SqNelTexKVihoIW7/y/DLKpKl+zeOvxqN
+	7agL0pEnv+68qKRhnu34IBbhTqMid7TPcUAJzwT7mN6fNx6sf0N0PX4imDdcRA==
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH 2/4] nvmem: add generic driver for devices with MMIO
- access
-Content-Language: en-US
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Masami Hiramatsu <mhiramat@kernel.org>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
- <rafal@milecki.pl>
-References: <20230201064717.18410-1-zajec5@gmail.com>
- <20230201064717.18410-3-zajec5@gmail.com>
-From: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
-In-Reply-To: <20230201064717.18410-3-zajec5@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Date: Wed, 01 Feb 2023 11:46:01 +0100
+From: Michael Walle <michael@walle.cc>
+To: =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <zajec5@gmail.com>
+Cc: devicetree@vger.kernel.org, hayashi.kunihiko@socionext.com,
+ krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, mhiramat@kernel.org, rafal@milecki.pl,
+ robh+dt@kernel.org, srinivas.kandagatla@linaro.org
+Subject: Re: [PATCH 3/4] nvmem: mtk-efuse: replace driver with a generic MMIO
+ one
+In-Reply-To: <8452b341-8695-05d8-9d03-47c9aeca0ec7@gmail.com>
+References: <20230201064717.18410-4-zajec5@gmail.com>
+ <20230201084821.1719839-1-michael@walle.cc>
+ <8452b341-8695-05d8-9d03-47c9aeca0ec7@gmail.com>
+User-Agent: Roundcube Webmail/1.4.13
+Message-ID: <017a17eb99ac2b2c858d27b65c5dd372@walle.cc>
+X-Sender: michael@walle.cc
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230201_014149_208596_62D27D3D 
-X-CRM114-Status: GOOD (  31.98  )
+X-CRM114-CacheID: sfid-20230201_024604_983857_4A811599 
+X-CRM114-Status: GOOD (  16.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,162 +80,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+> Before I convert brcm,nvram to NVMEM layout I need some binding & 
+> driver
+> providing MMIO device access. How to handle that?
 
-On 2023/02/01 15:47, Rafał Miłecki wrote:
-> From: Rafał Miłecki <rafal@milecki.pl>
-> 
-> With nvmem layouts in place we should now work on plain content access
-> NVMEM drivers (e.g. MMIO one). Actual NVMEM content handling should go
-> to layout drivers.
-> 
-> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
-> ---
->   drivers/nvmem/Kconfig  | 10 ++++++
->   drivers/nvmem/Makefile |  2 ++
->   drivers/nvmem/mmio.c   | 80 ++++++++++++++++++++++++++++++++++++++++++
->   3 files changed, 92 insertions(+)
->   create mode 100644 drivers/nvmem/mmio.c
-> 
-> diff --git a/drivers/nvmem/Kconfig b/drivers/nvmem/Kconfig
-> index 789729ff7e50..9eb5e93f0455 100644
-> --- a/drivers/nvmem/Kconfig
-> +++ b/drivers/nvmem/Kconfig
-> @@ -170,6 +170,16 @@ config NVMEM_MICROCHIP_OTPC
->   	  This driver enable the OTP controller available on Microchip SAMA7G5
->   	  SoCs. It controls the access to the OTP memory connected to it.
-> 
-> +config NVMEM_MMIO
-> +	tristate "MMIO access based NVMEM support"
-> +	depends on HAS_IOMEM
-> +	help
-> +	  This driver provides support for NVMEM devices that can be accessed
-> +	  using MMIO.
-> +
-> +	  This driver can also be built as a module. If so, the module
-> +	  will be called nvmem-mmio.
-> +
->   config NVMEM_MTK_EFUSE
->   	tristate "Mediatek SoCs EFUSE support"
->   	depends on ARCH_MEDIATEK || COMPILE_TEST
-> diff --git a/drivers/nvmem/Makefile b/drivers/nvmem/Makefile
-> index 442f9a4876a5..2f2bed7cdf24 100644
-> --- a/drivers/nvmem/Makefile
-> +++ b/drivers/nvmem/Makefile
-> @@ -36,6 +36,8 @@ obj-$(CONFIG_NVMEM_MESON_MX_EFUSE)	+=
-> nvmem_meson_mx_efuse.o
->   nvmem_meson_mx_efuse-y			:= meson-mx-efuse.o
->   obj-$(CONFIG_NVMEM_MICROCHIP_OTPC)	+= nvmem-microchip-otpc.o
->   nvmem-microchip-otpc-y			:= microchip-otpc.o
-> +obj-$(CONFIG_NVMEM_MMIO)		+= nvmem-mmio.o
-> +nvmem-mmio-y				:= mmio.o
->   obj-$(CONFIG_NVMEM_MTK_EFUSE)		+= nvmem_mtk-efuse.o
->   nvmem_mtk-efuse-y			:= mtk-efuse.o
->   obj-$(CONFIG_NVMEM_MXS_OCOTP)		+= nvmem-mxs-ocotp.o
-> diff --git a/drivers/nvmem/mmio.c b/drivers/nvmem/mmio.c
-> new file mode 100644
-> index 000000000000..19c8880dc675
-> --- /dev/null
-> +++ b/drivers/nvmem/mmio.c
-> @@ -0,0 +1,80 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Copyright (C) 2023 Rafał Miłecki <rafal@milecki.pl>
-> + */
-> +
-> +#include <linux/io.h>
-> +#include <linux/mod_devicetable.h>
-> +#include <linux/module.h>
-> +#include <linux/nvmem-provider.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/property.h>
-> +#include <linux/slab.h>
-> +
-> +struct mmio_nvmem {
-> +	void __iomem *base;
-> +};
-> +
-> +static int mmio_nvmem_read(void *context, unsigned int offset, void *val,
-> size_t bytes)
-> +{
-> +	struct mmio_nvmem *priv = context;
-> +
-> +	memcpy_fromio(val, priv->base, bytes);
-> +
-> +	return 0;
-> +}
-> +
-> +static int mmio_nvmem_probe(struct platform_device *pdev)
-> +{
-> +	struct nvmem_config config = {
-> +		.name = "mmio-nvmem",
+I'm not arguing against having the mmio nvmem driver. But I don't
+think we should sacrifice possible write access with other drivers. And
+I presume write access won't be possible with your generic driver as it
+probably isn't just a memcpy_toio().
 
-The fixed name breaks sysfs for multiple nvmem instances.
+It is a great fallback for some nvmem peripherals which just maps a
+memory region, but doesn't replace a proper driver for an nvmem device.
 
-     sysfs: cannot create duplicate filename '/bus/nvmem/devices/mmio-nvmem0'
+What bothers me the most isn't the driver change. The driver can be
+resurrected once someone will do proper write access, but the generic
+"mediatek,efuse" compatible together with the comment above the older
+compatible string. These imply that you should use "mediatek,efuse",
+but we don't know if all mediatek efuse peripherals will be the
+same - esp. for writing which is usually more complex than the reading.
 
-> +		.read_only = true,
+nitpick btw: why not "nvmem-mmio"?
 
-As Michael said in the mediatek patch,
-I also think it's hard to make read-only fixed in the generic driver.
+So it's either:
+  (1) compatible = "mediatek,mt8173-efuse"
+  (2) compatible = "mediatek,mt8173-efuse", "mmio-nvmem"
 
-> +		.reg_read = mmio_nvmem_read,
-> +	};
-> +	struct device *dev = &pdev->dev;
-> +	struct mmio_nvmem *priv;
-> +	struct resource *res;
-> +
-> +	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-> +	if (!priv)
-> +		return -ENOMEM;
-> +
-> +	priv->base = devm_platform_get_and_ioremap_resource(pdev, 0, &res);
-> +	if (IS_ERR(priv->base))
-> +		return PTR_ERR(priv->base);
-> +
-> +	config.dev = dev;
-> +	config.size = resource_size(res);
-> +	config.word_size = sizeof(u8);
-> +	config.stride = sizeof(u8);
-> +	config.priv = priv;
-> +
-> +	if (!device_property_present(dev, "read-only"))
-> +		dev_warn(dev, "Writing is not supported yet");
+(1) will be supported any anyway for older dts and you need to add
+the specific compatibles to the nvmem-mmio driver - or keep the
+driver as is.
 
-Isn't the logic opposite?
-Anyway, the driver doesn't use "read-only" properties for selection.
+With (2) you wouldn't need to do that and the kernel can load the
+proper driver if available or fall back to the nvmem-mmio one. I'd
+even make that one "default y" so it will be available on future
+kernels and boards can already make use of the nvmem device even
+if there is no proper driver for them.
 
-> +
-> +	return PTR_ERR_OR_ZERO(devm_nvmem_register(dev, &config));
-> +}
-> +
-> +static const struct of_device_id mmio_nvmem_of_match_table[] = {
-> +	{ .compatible = "mmio-nvmem", },
-> +	{},
-> +};
-> +
-> +static struct platform_driver mmio_nvmem_driver = {
-> +	.probe = mmio_nvmem_probe,
-> +	.driver = {
-> +		.name = "mmio_nvmem",
-> +		.of_match_table = mmio_nvmem_of_match_table,
-> +	},
-> +};
-> +
-> +static int __init mmio_nvmem_init(void)
-> +{
-> +	return platform_driver_register(&mmio_nvmem_driver);
-> +}
-> +
-> +subsys_initcall_sync(mmio_nvmem_init);
-> +
-> +MODULE_AUTHOR("Rafał Miłecki");
-> +MODULE_LICENSE("GPL");
-> +MODULE_DEVICE_TABLE(of, mmio_nvmem_of_match_table);
+I'd prefer (2). Dunno what the dt maintainers agree.
 
-Thank you,
-
----
-Best Regards
-Kunihiko Hayashi
+-michael
 
