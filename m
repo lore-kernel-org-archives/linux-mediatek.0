@@ -4,80 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5325C05027
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 13:23:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7FC0C636CD
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 13:31:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YXh9Bl5IlPDLRFf6zXorjLZOfKA/sZ6eA3cRR5AR1ac=; b=rc7A0CUH65tLt0iiPfLiav4nxg
-	yZ1zKM9Piz0NtdX0sqC0ZEiCSPY8e2MGtYJ7kzlg+H2ECNv2nbm13KNLutse/BPXS+myKhNwmDbqw
-	Ju+DYhL8XqSXdtgWusAzCIHzfcB3Au0F0rsx5/lpi6L6EQzVYU12H6U+4HuKQnwM+KYkkuwuibTzO
-	usG0oQ+XpRTBeHL0Yfc+ifDGUTzy+0kXK8W1hoEZk0BpepMd0Wl9K2q6pUA3EH5Qo57aqsLnNHRFm
-	4c1cgbVZmZtFF2dYaiSec02Sn97EDwm2OW3EPLhm0NXLCf2KoN3Hw8BzhSR48F7TOWsC8BoTdhweb
-	MYKpMZ1Q==;
+	bh=Fh/jcCyht4qGjsnUTpbm2j8fXqThpPLNwYUK1bpzTdc=; b=4BWAv3y3MPxeBb+y0c9JqsfEHe
+	xMRABGP71oK8DGgesnwOYFNkqPzyA9el8+fkU1U4tdJVx9MB57ejoC0x9TAmVuS6fBStRck4cJFlJ
+	KSXzXK+ODInooGcCNqu1uCFMoMIzwR/bEp0WJ+hxPDX6LD7yH41oAMJgQu+maNSWL05q+qJeMG19Z
+	5iMjadlGTXOG7s/ariOXcp1V4SeYC6VkI0r1Sb4Jy64FiO+P4Lr05bYJTgAT/j0UzVsnO/2X3jiCm
+	7yLs/EeljI8IHbf9iOdxfAauBGo/5l83yXtVL9irSw9V3A2wDMGqOJ0uT7wx2tEMjVMLrK3wDH7wT
+	H7rHCrzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pND4t-00C20J-7V; Wed, 01 Feb 2023 13:23:07 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1pNDCx-00C4tB-KO; Wed, 01 Feb 2023 13:31:27 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pND4e-00C1sh-IK; Wed, 01 Feb 2023 13:22:54 +0000
-Received: by mail-wr1-x429.google.com with SMTP id h16so17263865wrz.12;
-        Wed, 01 Feb 2023 05:22:52 -0800 (PST)
+	id 1pNDCg-00C4ii-Km; Wed, 01 Feb 2023 13:31:12 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id ml19so27866372ejb.0;
+        Wed, 01 Feb 2023 05:31:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=YXh9Bl5IlPDLRFf6zXorjLZOfKA/sZ6eA3cRR5AR1ac=;
-        b=MBkzwzB5cIqpfo4uf9VGvAGPE4J+oDWOEOh4LaRsbqfUBgwavSl5ZFMXAk78HAY7sX
-         Xuz5YPADNH1fJiZUQ/pUa1Pg1JtbQUGShrfRCUWfRpV3K+6b6h8cnH87e3JQ5t9N1Smk
-         pF5Gm0f52xkU0ANVtL2Am0nJCQuEGwGOKC1EiEwXuD7YzWqYUnt+w9IUnVwLxxukW+RX
-         ecDXies8ED4YXhnE5c/Iq4P7da+ue5zxdmgEsJ+tF9jlaqATJnIgch8WaqVTELFd5LA+
-         CmyLQUhOlSjwZThN2fElwry16MmCHfIuEP+tSxF6eEsDJa28JzjG4PYZ7Z1cCwWSn6MO
-         QmSQ==
+        bh=Fh/jcCyht4qGjsnUTpbm2j8fXqThpPLNwYUK1bpzTdc=;
+        b=icO8OmZrMuzx2KUGJitcRn+N7c++c8nMwL7J/+uUCoy75ghJFTU1136MCuiwxS/TFC
+         C/hHvbhVm+fnmOifO1pqmOq1Esb2zn6gecY7gUrt7/0pphg61bIJH8fQHUIkSvGpad31
+         GbhAMTnQbeuLqMzYkKR/lNdSnUewl1nvJmbgnuMvfRFrUu7fR/RuJPJUXSUyJJP3ejLw
+         qQEOvCUQq2WcRP3CMC0vd04XXdGYsbVER/ZWet7F6jWjQITv57khxVZsaKf71tGUCc+l
+         MDFRqdtLnpPvA4Swec1l9lqBtxUKDBFLlQQ6IMgvvu8t5b6aPd+Beev6O5ACmhiSwuiR
+         yApg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=YXh9Bl5IlPDLRFf6zXorjLZOfKA/sZ6eA3cRR5AR1ac=;
-        b=yPlTN7KdckQ8FxLOITUtPd635PyJioECEIkm9MY7BxVg/fCsfl4kluYZD9SNhn0LqY
-         nRaC5RnVT6loWJfoo8PeHDQPSUbIuvgOnLnFxfu5gj2Nbn6WP3gHMMP1vWKd/rjP4s9t
-         H2kbVS+u+8CGaZiE7YO0aK/LvFgDtnwziNR8xlhfZoPVDa15KY61DpTT06FxJ2PcOdkD
-         sBgce5JlW2xqQQV6VRI720o6VagEevGy5BbgQL2Na9bX7bzTm2V9qyDiTulFduObCxx1
-         qT8tiaPetJyHl0vSAbCx1qwZFLlONUq3qfki89I+S6TOQqbUXgacnqICAHjcGLRgozh8
-         K4Uw==
-X-Gm-Message-State: AO0yUKWDUiKYw9mYGPpN57pTwEMDGoaodwqz5I5AEzmTcyKy7OH8Tw4g
-	EXOQ6bYWQ4TDlJIgv9nBMdk=
-X-Google-Smtp-Source: AK7set8YzROljVYpUMD7B3LLaCaYBj5PhZDEWhOO7u6nhd2XLVL+UL+VKfwcMlMCb8yU8lN1xZUQYQ==
-X-Received: by 2002:a5d:570b:0:b0:2bf:c01a:f24f with SMTP id a11-20020a5d570b000000b002bfc01af24fmr1651657wrv.5.1675257771086;
-        Wed, 01 Feb 2023 05:22:51 -0800 (PST)
+        bh=Fh/jcCyht4qGjsnUTpbm2j8fXqThpPLNwYUK1bpzTdc=;
+        b=b9RsRFsLWVvlbEMhGOjXR88wgcaUPOUIoBxGVZNahqUfQK3gvKp3x9BNb0lA5Dp/vr
+         2ROwJAwo0vh2UbzhZRpbE8poWiuKBn1KXg/fmyXY57yS/jDbhly4IX9P7hZMfYW2BnKx
+         JzCl8pOkkFUGN0/S60ipFEjgbDwbWwpSiGs2TA6ASe5wvNpfrpb6d5Qst92TWw7hId04
+         5j3rEHZcSKhsSCG9dPojYKNTpPK+9jxrj2l5526iFWd7s1K3S9noavUdgZYiUoJd6Sa6
+         48p3lmCqs+f7ipH5fKcGn7DowcR7zTwlqFrVZf5XzLlEqYe7oy0mYB6v/okFqNOLwufW
+         nXVA==
+X-Gm-Message-State: AO0yUKW24y4ThEkG8Z/y16pUAktTuctb8dbabUrySybWD23+Mq0dpjj8
+	HXQCg1fhK/Z1xF7cSwPQUUg=
+X-Google-Smtp-Source: AK7set/hM+ldTkI4tpY6x/QiTZ3kTYlEaoDvxKXKcg7/izE/dAtN2ZLYKSnTe9ofRB5utphli8gPHQ==
+X-Received: by 2002:a17:907:7e83:b0:878:6387:5d4f with SMTP id qb3-20020a1709077e8300b0087863875d4fmr1994602ejc.64.1675258266605;
+        Wed, 01 Feb 2023 05:31:06 -0800 (PST)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id a17-20020a5d53d1000000b0024cb961b6aesm16920717wrw.104.2023.02.01.05.22.50
+        by smtp.gmail.com with ESMTPSA id o2-20020a1709064f8200b0088a2aebb146sm3944348eju.52.2023.02.01.05.31.05
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 01 Feb 2023 05:22:50 -0800 (PST)
-Message-ID: <136b0d6f-0523-8019-35d9-792211e22d2a@gmail.com>
-Date: Wed, 1 Feb 2023 14:22:49 +0100
+        Wed, 01 Feb 2023 05:31:06 -0800 (PST)
+Message-ID: <f4d3e1b4-d4b2-9124-0d32-29182b155927@gmail.com>
+Date: Wed, 1 Feb 2023 14:31:04 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH] soc: mediatek: mtk-devapc: Switch to
- devm_clk_get_enabled()
+Subject: Re: [PATCH v3 1/2] media: dt-bindings: mediatek: Rename child node
+ names for decoder
 Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20221006110935.59695-1-angelogioacchino.delregno@collabora.com>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20220929131309.18337-1-allen-kh.cheng@mediatek.com>
+ <20220929131309.18337-2-allen-kh.cheng@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20221006110935.59695-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220929131309.18337-2-allen-kh.cheng@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230201_052252_670050_2474D41B 
-X-CRM114-Status: GOOD (  18.03  )
+X-CRM114-CacheID: sfid-20230201_053110_713225_3FC95FC9 
+X-CRM114-Status: GOOD (  16.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,58 +97,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Mauro,
 
+It seems this patch got overseen in your queue.
+Can you please check if there is still something that blocks it from getting merged?
 
-On 06/10/2022 13:09, AngeloGioacchino Del Regno wrote:
-> This driver does exactly devm_clk_get() and clk_prepare_enable() right
-> after, which is exactly what devm_clk_get_enabled() does: clean that
-> up by switching to the latter.
-> 
-> This commit brings no functional changes.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Applied, sorry for the delay.
-
+Regards,
 Matthias
 
-> ---
->   drivers/soc/mediatek/mtk-devapc.c | 11 ++---------
->   1 file changed, 2 insertions(+), 9 deletions(-)
+On 29/09/2022 15:13, Allen-KH Cheng wrote:
+> In order to make the names of the child nodes more generic, we rename
+> "vcodec" to "video-codec" for decoder in patternProperties and example.
 > 
-> diff --git a/drivers/soc/mediatek/mtk-devapc.c b/drivers/soc/mediatek/mtk-devapc.c
-> index fc13334db1b1..bad139cb117e 100644
-> --- a/drivers/soc/mediatek/mtk-devapc.c
-> +++ b/drivers/soc/mediatek/mtk-devapc.c
-> @@ -276,19 +276,14 @@ static int mtk_devapc_probe(struct platform_device *pdev)
->   	if (!devapc_irq)
->   		return -EINVAL;
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> ---
+>   .../bindings/media/mediatek,vcodec-subdev-decoder.yaml    | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+> index c4f20acdc1f8..67fde48f991c 100644
+> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+> @@ -91,7 +91,7 @@ properties:
 >   
-> -	ctx->infra_clk = devm_clk_get(&pdev->dev, "devapc-infra-clock");
-> +	ctx->infra_clk = devm_clk_get_enabled(&pdev->dev, "devapc-infra-clock");
->   	if (IS_ERR(ctx->infra_clk))
->   		return -EINVAL;
+>   # Required child node:
+>   patternProperties:
+> -  '^vcodec-lat@[0-9a-f]+$':
+> +  '^video-codec-lat@[0-9a-f]+$':
+>       type: object
 >   
-> -	if (clk_prepare_enable(ctx->infra_clk))
-> -		return -EINVAL;
-> -
->   	ret = devm_request_irq(&pdev->dev, devapc_irq, devapc_violation_irq,
->   			       IRQF_TRIGGER_NONE, "devapc", ctx);
-> -	if (ret) {
-> -		clk_disable_unprepare(ctx->infra_clk);
-> +	if (ret)
->   		return ret;
-> -	}
+>       properties:
+> @@ -145,7 +145,7 @@ patternProperties:
 >   
->   	platform_set_drvdata(pdev, ctx);
+>       additionalProperties: false
 >   
-> @@ -303,8 +298,6 @@ static int mtk_devapc_remove(struct platform_device *pdev)
+> -  '^vcodec-core@[0-9a-f]+$':
+> +  '^video-codec-core@[0-9a-f]+$':
+>       type: object
 >   
->   	stop_devapc(ctx);
+>       properties:
+> @@ -241,7 +241,7 @@ examples:
+>               #size-cells = <2>;
+>               ranges = <0 0 0 0x16000000 0 0x40000>;
+>               reg = <0 0x16000000 0 0x1000>;		/* VDEC_SYS */
+> -            vcodec-lat@10000 {
+> +            video-codec-lat@10000 {
+>                   compatible = "mediatek,mtk-vcodec-lat";
+>                   reg = <0 0x10000 0 0x800>;
+>                   interrupts = <GIC_SPI 426 IRQ_TYPE_LEVEL_HIGH 0>;
+> @@ -264,7 +264,7 @@ examples:
+>                   power-domains = <&spm MT8192_POWER_DOMAIN_VDEC>;
+>               };
 >   
-> -	clk_disable_unprepare(ctx->infra_clk);
-> -
->   	return 0;
->   }
->   
+> -            vcodec-core@25000 {
+> +            video-codec-core@25000 {
+>                   compatible = "mediatek,mtk-vcodec-core";
+>                   reg = <0 0x25000 0 0x1000>;
+>                   interrupts = <GIC_SPI 425 IRQ_TYPE_LEVEL_HIGH 0>;
 
