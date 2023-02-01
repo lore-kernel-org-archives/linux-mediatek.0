@@ -4,74 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CCEEC38142
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 18:24:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0604C38142
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 18:25:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=s4K1xGJV0XdXmmrYpx1babEqIgkFPBu2QhDaQJVAc4E=; b=WLOoJo6Tcph/Ajq9QmEeZxnXX5
-	jmHA+KvC94LRtnKzBnp7E0TjhOsjDrBMKz+U2HP9J0UlEVFZUTVB13Tdc9n3obQj2UVkKEiyO/Yl7
-	P3Br6ZAQsmiSlcjSTphgTslvd1p/940lAqRDRwCVte/NT35e6psL5x8Dz8LAFSdIn20Lel5p8ftfH
-	7brr827p5jL10WNeyYaOtoEIVqgK7oLzpJBTeRF10HAnmR9o2nR6Qw3H8huMVEhmAHGDfdOgvj+Tz
-	FzBha5ssPIW3iZ6wKZAoHgu8tTXaCCpymbS1JIDFEOZOIaXN3o8xqIwZxQN9Bkczo3xvKBd+VBMYm
-	R3ikHhlg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rdu/cSdrf95lHEkaUXGHj3bo8fqoVL5yH9BapQUMiuo=; b=la8PvdpcNSHhmVUAFaK+adiYmv
+	Tg5G8246jrN88L24F0i7SIjIWA/t8d7dbjmCKiei2u4MHcIo/lu1rBiHzjgDJU/zQr4Sse1VtArqT
+	rGY4natyYhcYeDZVnvdUJt4+e2FD+qJ0f6+HSbe0WCUyOil9L7hqgm0LoGaAMXaA8jmgPYsb4Snx1
+	bjQ3hASj06/OixCfUxzsgCLBa79DUi4SK3mtVPfm6W/KvidzSOFF8e89gVXjMeb/sfZGskhp6Rm7r
+	rYzFFjZICII7YJRHCLo5NqqiyOxcEHXsCfsIe4ju0cSn1M4g2mNAr6l39aVRjr/edFcccNUL5rql3
+	Reb05Unw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNHmf-00DBSm-I2; Wed, 01 Feb 2023 18:24:37 +0000
-Received: from dilbert.mork.no ([2a01:4f9:c010:a439::d])
+	id 1pNHnE-00DBgO-Dq; Wed, 01 Feb 2023 18:25:12 +0000
+Received: from wout3-smtp.messagingengine.com ([64.147.123.19])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNHma-00DBNb-E9; Wed, 01 Feb 2023 18:24:35 +0000
-Received: from canardo.dyn.mork.no ([IPv6:2a01:799:c9a:3200:0:0:0:1])
-	(authenticated bits=0)
-	by dilbert.mork.no (8.15.2/8.15.2) with ESMTPSA id 311INgS6648784
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
-	Wed, 1 Feb 2023 18:23:43 GMT
-Received: from canardo.dyn.mork.no (ip6-localhost [IPv6:0:0:0:0:0:0:0:1])
-	by canardo.dyn.mork.no (8.15.2/8.15.2) with ESMTPS id 311INaIB943472
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
-	Wed, 1 Feb 2023 19:23:36 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mork.no; s=b;
-	t=1675275817; bh=s4K1xGJV0XdXmmrYpx1babEqIgkFPBu2QhDaQJVAc4E=;
-	h=From:To:Cc:Subject:Date:Message-Id:From;
-	b=eemcd2kptDBwwV+pbimZXLHvrb6Db8x/V9Nt8fbE3l5K6cyAf67lDGWPd4DhE6Qa+
-	 VeGu1jN9ha95BShzRpPpDlahMJMGaEQ3++u94WdrRv4BPUaohu5XSd2lqcdGXNbfFW
-	 a3l4s1oP16WV6f7Z//teQsSgefCExtZL/+XRxN+g=
-Received: (from bjorn@localhost)
-	by canardo.dyn.mork.no (8.15.2/8.15.2/Submit) id 311INWCl943459;
-	Wed, 1 Feb 2023 19:23:32 +0100
-From: =?UTF-8?q?Bj=C3=B8rn=20Mork?= <bjorn@mork.no>
-To: netdev@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-        Sean Wang <sean.wang@mediatek.com>,
-        Mark Lee <Mark-MC.Lee@mediatek.com>,
-        Lorenzo Bianconi <lorenzo@kernel.org>,
-        Russell King <linux@armlinux.org.uk>,
-        Daniel Golle <daniel@makrotopia.org>,
-        Alexander Couzens <lynxis@fe80.eu>,
-        Simon Horman <simon.horman@corigine.com>,
-        Paolo Abeni <pabeni@redhat.com>,
-        "David S . Miller" <davem@davemloft.net>,
-        Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
-        linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-        =?UTF-8?q?Bj=C3=B8rn=20Mork?= <bjorn@mork.no>
-Subject: [PATCH v5 net 0/3] fixes for mtk_eth_soc
-Date: Wed,  1 Feb 2023 19:23:28 +0100
-Message-Id: <20230201182331.943411-1-bjorn@mork.no>
-X-Mailer: git-send-email 2.30.2
+	id 1pNHn2-00DBap-6Q; Wed, 01 Feb 2023 18:25:01 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+	by mailout.west.internal (Postfix) with ESMTP id 32BA732009B8;
+	Wed,  1 Feb 2023 13:24:57 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute5.internal (MEProxy); Wed, 01 Feb 2023 13:24:59 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
+	:mime-version:references:reply-to:sender:subject:subject:to:to
+	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm3; t=1675275896; x=1675362296; bh=rdu/cSdrf95lHEkaUXGHj3bo8fqo
+	VL5yH9BapQUMiuo=; b=CV7kgIE3AZZdHao+BNdk6vds8PWdGb3GcGOmZzU7IXG4
+	MRbrZZesw1p98Ub/ppz8lTBdsxADyPJkU3A9oOBRlmSLnUYYEfawHosLNeGs3Vvt
+	j4B92h9sAxP7TiHk+PTutosjwxnvfNEOmHLThojboAcyjXR/PMp5gTv4n/HbF2Jq
+	ixgm+8poal0ku5r9xnqFLtZFDEMxMCzHVsTJLmrqmPPxnaVCL3WJr5Drpsqo6ysq
+	VoAI/Zc8yXnKhBAWv+FKOW+a7rYlchL/I4Hq6+0/599vXq6rlD7ez8PQAsW/9nQZ
+	qo0Sx2oLBor+Jo8j9S37B16eohf7/INduBpNSUOUXQ==
+X-ME-Sender: <xms:d67aYy4qxwFGX87O-G2B7M5zxfNZ74Y9mtMbxo8516e9D8bhKTKFzQ>
+    <xme:d67aY75lEMCPrxc4H9pul-2v-J1jgKXwNmZZXLgBjL380mj4lQ3INXR-fJtD_gBjc
+    aqayBisF96gOgI>
+X-ME-Received: <xmr:d67aYxde7AhmFYf5geMb6OVzl7TZpePk5m93x3K5Karc8BF_O6hFyvRjtMlSh9bC0gMvlifcnI-6pA7b1CCjIPnZnTU>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrudefiedguddufecutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+    enucfjughrpeffhffvvefukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefkugho
+    ucfutghhihhmmhgvlhcuoehiughoshgthhesihguohhstghhrdhorhhgqeenucggtffrrg
+    htthgvrhhnpedvudefveekheeugeeftddvveefgfduieefudeifefgleekheegleegjeej
+    geeghfenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+    hiughoshgthhesihguohhstghhrdhorhhg
+X-ME-Proxy: <xmx:d67aY_IlRB3S5TvZlz0o0JCqGYk-kekSFXHC1k4gLs57JEDGrwOmHA>
+    <xmx:d67aY2JYd8Oqu_8vARdEyvRdvd2bj94vUMckvqhcmT51VKOrxJJe9w>
+    <xmx:d67aYwxKd2oRs3vn-UItsemryABabt3_l0YJN5FmVULsC7yP393h_w>
+    <xmx:eK7aY81CA2_3n8FClr5BuI9CkoGQUyvdWQ8klVgJX5u4IrRI1wOKpw>
+Feedback-ID: i494840e7:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 1 Feb 2023 13:24:54 -0500 (EST)
+Date: Wed, 1 Feb 2023 20:24:51 +0200
+From: Ido Schimmel <idosch@idosch.org>
+To: "Hans J. Schultz" <netdev@kapio-technology.com>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
+	Florian Fainelli <f.fainelli@gmail.com>,	Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>,	Eric Dumazet <edumazet@google.com>,
+ Paolo Abeni <pabeni@redhat.com>,	Kurt Kanzenbach <kurt@linutronix.de>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	"maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER"
+ <UNGLinuxDriver@microchip.com>,	Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,	DENG Qingfang <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	=?iso-8859-1?Q?Cl=E9ment_L=E9ger?= <clement.leger@bootlin.com>,
+	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
+	Russell King <linux@armlinux.org.uk>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	open list <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>,
+	"open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER"
+ <linux-renesas-soc@vger.kernel.org>,
+	"moderated list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>
+Subject: Re: [PATCH net-next 4/5] net: bridge: ensure FDB offloaded flag is
+ handled as needed
+Message-ID: <Y9qucziByvXsx5Q0@shredder>
+References: <20230130173429.3577450-1-netdev@kapio-technology.com>
+ <20230130173429.3577450-5-netdev@kapio-technology.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Virus-Scanned: clamav-milter 0.103.7 at canardo
-X-Virus-Status: Clean
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230130173429.3577450-5-netdev@kapio-technology.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230201_102433_111534_3E00B55C 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20230201_102500_288217_D6293711 
+X-CRM114-Status: GOOD (  18.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,47 +115,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes since v4:
- - use same field order for kernel-doc and code in patch 1
- - cc'ing full maintainer list from get_maintainer.pl
+On Mon, Jan 30, 2023 at 06:34:28PM +0100, Hans J. Schultz wrote:
+> Since user added entries in the bridge FDB will get the BR_FDB_OFFLOADED
+> flag set, we do not want the bridge to age those entries and we want the
+> entries to be deleted in the bridge upon an SWITCHDEV_FDB_DEL_TO_BRIDGE
+> event.
+> 
+> Signed-off-by: Hans J. Schultz <netdev@kapio-technology.com>
+> ---
+>  net/bridge/br_fdb.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/net/bridge/br_fdb.c b/net/bridge/br_fdb.c
+> index e69a872bfc1d..b0c23a72bc76 100644
+> --- a/net/bridge/br_fdb.c
+> +++ b/net/bridge/br_fdb.c
+> @@ -537,6 +537,7 @@ void br_fdb_cleanup(struct work_struct *work)
+>  		unsigned long this_timer = f->updated + delay;
+>  
+>  		if (test_bit(BR_FDB_STATIC, &f->flags) ||
+> +		    test_bit(BR_FDB_OFFLOADED, &f->flags) ||
+>  		    test_bit(BR_FDB_ADDED_BY_EXT_LEARN, &f->flags)) {
+>  			if (test_bit(BR_FDB_NOTIFY, &f->flags)) {
+>  				if (time_after(this_timer, now))
 
-Changes since v3:
- - fill hole in struct mtk_pcs with new interface field
- - improved patch 2 commit message
- - added fixes tags
- - updated review tags
- 
-Changes since v2:
- - use "true" for boolean
- - fix SoB typo
- - updated tags
+Looks correct
 
-Changes since v1:
- - only power down on changes, fix from Russel
- - dropped bogus uncondional in-band patch
- - added pcs poll patch from Alexander
- - updated tags
+> @@ -1465,7 +1466,9 @@ int br_fdb_external_learn_del(struct net_bridge *br, struct net_bridge_port *p,
+>  	spin_lock_bh(&br->hash_lock);
+>  
+>  	fdb = br_fdb_find(br, addr, vid);
+> -	if (fdb && test_bit(BR_FDB_ADDED_BY_EXT_LEARN, &fdb->flags))
+> +	if (fdb &&
+> +	    (test_bit(BR_FDB_ADDED_BY_EXT_LEARN, &fdb->flags) ||
+> +	     test_bit(BR_FDB_OFFLOADED, &fdb->flags)))
 
+This also looks correct, but the function name is not really accurate
+anymore. I guess you can keep it as-is unless someone has a better name
 
-Fix mtk_eth_soc sgmii configuration.
-
-This has been tested on a MT7986 with a Maxlinear GPY211C phy
-permanently attached to the second SoC mac.
-
-
-Alexander Couzens (2):
-  net: mediatek: sgmii: ensure the SGMII PHY is powered down on
-    configuration
-  mtk_sgmii: enable PCS polling to allow SFP work
-
-Bjørn Mork (1):
-  net: mediatek: sgmii: fix duplex configuration
-
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  4 +-
- drivers/net/ethernet/mediatek/mtk_sgmii.c   | 46 ++++++++++++++-------
- 2 files changed, 35 insertions(+), 15 deletions(-)
-
--- 
-2.30.2
-
+>  		fdb_delete(br, fdb, swdev_notify);
+>  	else
+>  		err = -ENOENT;
+> -- 
+> 2.34.1
+> 
 
