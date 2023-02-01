@@ -4,168 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59449C636CD
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 12:29:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC281C05027
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 12:53:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EO6EYUIDrvW7s10ulS3UYo0/OavRnuollGF2eEaxZ6o=; b=OuXch9zmjV2NfX0AqTVkq6drVP
-	yCwzPdyufWM3PP1JJkI1qYr+HrurrMQ7vkQbHBewpqdQNaHqugmq1z2iQYghL7pg84c+IaVGnn00t
-	1PiU1n9/jcYB6njElskc18BBxAOaUe0JPKDmoNqVY4neCe3KUt5Bi65+UrNjgJ1mNHWmEdtx81iJC
-	nmacNkEhTnD2S85OvktTOMR6PuBIvziQJjUcNVZNGd+2ZtAJfQ6HadMvVZ9NJaClXl/3cPNASnnj+
-	ztRl7M9UqbMSkm1vJTRoVVlkIZ5YW4dExxPEdpwUuhH5UFBwrjO7d87NZ+Q1lqyVNkjauAF5yCwRO
-	a+zEb5dQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=s73ifM/SGJg1qWbb1F0qGdO4iVeRR4zkqzeI/0R0Puw=; b=ijWqqu/e/s8JJvjgn1+nvqC7Ve
+	Xuq8kKhI7UmufjRT5prKRdium0pQxEmVzZOvNBHMGLU2URIqvNZGbAsYhDWa5HsDfjEStAOknp+V8
+	rZ7XDvUDHXzWv0l4cC1K6a6ZwjZPIJsS41lgmBoVt6H3V304w3byDVIf5gTB1oMwx9Zph8esYAu5Y
+	k2RpycawlkspFGv+uw3saOJTa5RcSVE/OvclezWMDP+mj7T3ZTKsc7OPh5wYm4DMSnRPT1zbhhIXS
+	PYKtXsYkDM39NGyQlbvwVC1mFzjHKMglHmfPHZPkARJpsve6fEQOce5xEUOrb/RRXqAs26N0nF0Oi
+	X+TiqRhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNCEq-00BiqK-Vm; Wed, 01 Feb 2023 12:29:20 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pNCbh-00BmSp-Rw; Wed, 01 Feb 2023 12:52:57 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNCEf-00Bina-Ms; Wed, 01 Feb 2023 12:29:11 +0000
-X-UUID: 01c58820a22c11eda08d4d6090ec5a5c-20230201
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=EO6EYUIDrvW7s10ulS3UYo0/OavRnuollGF2eEaxZ6o=;
-	b=BdFoFyRoZdI4+dlcyQzjfEKCNZFWlB1R1LNvMi07Yee0UofTCo9dW6WnDfv4q8towsX7RGof9W3GHKOqsX8Zi/lZkFNc6ppqCtHHkmlU9J6WShidq5OvHOtWk3vgNruM1rUOQ9cXsprH4IHfSCj7DrHS1E12Rim4Cer5JKAPdQQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.18,REQID:03221ae6-629c-4edf-a5fc-ed92074323ea,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:3ca2d6b,CLOUDID:faf326f7-ff42-4fb0-b929-626456a83c14,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0
-X-UUID: 01c58820a22c11eda08d4d6090ec5a5c-20230201
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <roger.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1992269429; Wed, 01 Feb 2023 05:29:01 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 1 Feb 2023 20:28:58 +0800
-Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.239)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Wed, 1 Feb 2023 20:28:58 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=LvfZ1yGOS3qP/T5eJ2xLvW9i1uRDNh4uXNqSwek4B8hXaixd6KBGHCm4F3dvcZ6x6Pagv0tuq6dDZu615dluB6Zxwf+gO/GZS9fsPpoayExr/JqfK1AVhTnoGHaluZFxVRIV6t0m3kZQux2sCeaJi2Glec1W41nKHTPUM9EvRbmAt6hIveS9G9836SJ5hwgl4tStLPLUS1F/jt4qXkfWgrbUN5yXgfDsH3HMN/amaq99el5STpIZhcLkaHarxTe+XcZvon4UAT76gdXXTGCyDbLaGn7ETgG33CW83xnKJoALJtoM3932Vpg2t0s+W08igh7s9im1d8jpRDj+dy9nkQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=EO6EYUIDrvW7s10ulS3UYo0/OavRnuollGF2eEaxZ6o=;
- b=K4LpdDJn4zdeyERGq4jw9xVqpMFT4b2fdPgV/6tSScAbJHoUCGDGSzUq9DiXxPABm9mGOD9mQi6pgpQ2b++wejoT5ngWrG4svba/V/IQUJO3NRZDChWgN6xQfsyocP64IN0mX5Pc+rwahzixfag0ZSmB9/rSXXAefQGhSxIvos5N2MXRpRvVOur5ESJqL4HEPacrYGFWEWnuAD+GK1E66HhRS/YIeh+SIK8zdkyH6V63YEFa6w95JEY05Y0KN1QeDXF1o5qfcsqVNWShbcke0N2e0VH8HXXhmIFLaGxEtigVUvKDVE7ocm1aRXC//kUVa0yDmZjCp1hJ3g202SuJKA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	id 1pNCbW-00BmOa-CJ; Wed, 01 Feb 2023 12:52:47 +0000
+Received: by mail-ej1-x629.google.com with SMTP id qw12so35190006ejc.2;
+        Wed, 01 Feb 2023 04:52:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=EO6EYUIDrvW7s10ulS3UYo0/OavRnuollGF2eEaxZ6o=;
- b=MvYqOROo6Jqa2pLnGsywXoeZQPHK4S+vgTwda59Dnu3OPL6VM/q3aaN99W9LP87KXRocP91lftRj4f0PpcZ8aYqJg3LqmC1Lf6V41ww4rq3inOTTsualf3FZVPpaaap9X1suXcGAEXobMgJx/gNBQEwU0HoVOtMZYSKy3cbbTZg=
-Received: from SG2PR03MB3434.apcprd03.prod.outlook.com (2603:1096:4:26::14) by
- SI2PR03MB5532.apcprd03.prod.outlook.com (2603:1096:4:12a::7) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6064.23; Wed, 1 Feb 2023 12:28:57 +0000
-Received: from SG2PR03MB3434.apcprd03.prod.outlook.com
- ([fe80::42eb:28a2:4d2e:d051]) by SG2PR03MB3434.apcprd03.prod.outlook.com
- ([fe80::42eb:28a2:4d2e:d051%5]) with mapi id 15.20.6043.036; Wed, 1 Feb 2023
- 12:28:56 +0000
-From: =?utf-8?B?Um9nZXIgTHUgKOmZuOeRnuWCkSk=?= <Roger.Lu@mediatek.com>
-To: "eballetbo@gmail.com" <eballetbo@gmail.com>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "khilman@kernel.org" <khilman@kernel.org>,
-	"sboyd@kernel.org" <sboyd@kernel.org>, "drinkcat@google.com"
-	<drinkcat@google.com>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
-	Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>,
-	=?utf-8?B?SmlhLXdlaSBDaGFuZyAo5by15L2z5YGJKQ==?=
-	<Jia-wei.Chang@mediatek.com>, =?utf-8?B?RmFuIENoZW4gKOmZs+WHoSk=?=
-	<fan.chen@mediatek.com>
-Subject: Re: [PATCH v4 05/14] soc: mediatek: mtk-svs: use svs clk control APIs
-Thread-Topic: [PATCH v4 05/14] soc: mediatek: mtk-svs: use svs clk control
- APIs
-Thread-Index: AQHZJZDHI+SQIEhX8UKhJMQ/hdyBe664ohSAgAGESoA=
-Date: Wed, 1 Feb 2023 12:28:56 +0000
-Message-ID: <546d7f2b3607310f0ebe11b3d4e0aac40ac44c7a.camel@mediatek.com>
-References: <20230111074528.29354-1-roger.lu@mediatek.com>
-	 <20230111074528.29354-6-roger.lu@mediatek.com>
-	 <5192bc94-12c7-dce4-c2e6-fa4b8c1ced9d@gmail.com>
-In-Reply-To: <5192bc94-12c7-dce4-c2e6-fa4b8c1ced9d@gmail.com>
-Accept-Language: en-US, zh-TW
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SG2PR03MB3434:EE_|SI2PR03MB5532:EE_
-x-ms-office365-filtering-correlation-id: 8bba8036-821d-4580-83df-08db044fe352
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: y9ZwWNgjkmB7ZEpil1hKc1y+HdsB1aIwKN6XJfaYZ55WGNoLAdQigPyO8miukK+lYpUZJaERz3cEZAcJ2CqQD0NXmiGQf+XNJWG8OqPF06d6G8cflseZwMwbkmZOOTg78EAGX6GpRq52XoM8Aa27iJDISiIzUsnw2TrV/0A0UlfV5b9s47VU05cElVEQkE+H44iYb+cYVPERuxpZJ1wdvlQ+fmUFdWTtZ4NCVHr3WUeSgw742erLEo5Q8w99kX0/no9PaWQsaeX+RQAhW0ygMkrxPmAs6YHSlDEZFAty3rYP0W3xklfvvEQYIvu+FRqh98RYbK2Yw5q/3FieIT/FyGFe/mlS4n9Uw69DJrCR5FGG2I0jsWG7TDVBsR/xKtwIHe4xalDm3evO5GmReDxfTyplK8+rpA/pY0BHd0s2XpJr/DIDF80oEn4x7L6BZy3m73Aph1uUWiqglxuHgeHM6ahf1HhiBb1LEbxOOux/mLw1qQCanE1uYoU8SAGHe2f8bvLklNfRRXksuQfbzdBokg/WNsTUVh7qUkk31grfI7k28nC+KvP/ZX6x7mfWRJTb+5JUGlkvQjGJ3l3pcBG6Zfb4sCB0+kwES9A8sGgiLduWUb1PvPlqENCh9S+WQtRobkKkvJ1GcSv4pvfwwnO4L6Q2Io4sqc4wJrPe8nw9Px6obFV+ruKJWvuf+rea1iTzvZRB3MosJfeSondasSbinA==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SG2PR03MB3434.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(396003)(136003)(366004)(376002)(346002)(39860400002)(451199018)(5660300002)(110136005)(54906003)(7416002)(85182001)(36756003)(316002)(8676002)(38100700002)(66476007)(66556008)(41300700001)(66446008)(66946007)(122000001)(64756008)(76116006)(4326008)(8936002)(38070700005)(53546011)(478600001)(2616005)(6512007)(26005)(6506007)(107886003)(186003)(86362001)(83380400001)(6486002)(2906002)(71200400001);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?MUpwWlp3QkpZbTA1VFA5REhOS3hvTG4rMVNua3gyY25VNVZsbWhkZ3AvNWtG?=
- =?utf-8?B?c1h5RmZ0S0RZNjN4QUpoQVZQNmVSVUN0M21HbEVZVmhtcUZYaE9XSFJmNkgz?=
- =?utf-8?B?c0dTem9wc0FWS05OMXNTVGFIK1JCZkNBSVJ4NlQ3QjkvQlk5NWVScVk4R29B?=
- =?utf-8?B?VFpIYkc4Vm56dVpZbS9aMGUwQWNnWDhEUGZnMElsMHNlbUFzY0VaZ1FGVWxW?=
- =?utf-8?B?MWltb2RJSWtvRE1RbTBpczdVUlduZW1JdDdrRld6UFNSRTFZTUp6RDlDRmZB?=
- =?utf-8?B?RnkwaExtbnhxSk5nY0dJTnlOVjlYcUhjdFVKY0JQbC9HbTdZeHVRN2RYR0Nh?=
- =?utf-8?B?dFNpaUVMRlE5MUFxOVlHeWJYV21xazg3c3J5enY4N1d5VUJxcGxuQzlqTkRx?=
- =?utf-8?B?MGFnek1hUDhhZ3RPcGJMTTVWY2k1cHNDT3VkMTVsbWYzMFB3RVdGY21qQVh5?=
- =?utf-8?B?UFVkTDUwZ2t3cE5QRjNHTG9DKzhOM0pLcnkxNHJNV1pwRWtIbDRVNVpVcFRJ?=
- =?utf-8?B?YkJpaklkTTZpWExEOVJCSzhjMTQ3VFVRblNieDF1cG90Qyt0c1piTkwrZ25n?=
- =?utf-8?B?T0VWd1krKzhZd2xGQ1I3NDBjQkIzRWJOUGkvVXpIeU1XUGxxTk00dzVNYUEz?=
- =?utf-8?B?dmVwMkxPVWpoS3Q5Vnk2T2RvVTlzQUFpdlduazgxZUNmaXBydXZVcHBUZ1Zm?=
- =?utf-8?B?RXZnU2VzemFMbERrTTFDbURVVTgwZ0puRUE4V29lQnJBWEtqd3h2NnB2OXBt?=
- =?utf-8?B?KytHVjZ0QWhqbDNCUzJTM1VNN2lVWVgrMFhsajBRbVBnOThhekpIaEY2d3J5?=
- =?utf-8?B?OHFHai9JS0g0dk9PbEYrZWRSN2h4MmlxclRZMmEreVFLUkJIZ242cXdXTTY0?=
- =?utf-8?B?ZnZibDU5dW5yMCtuME9ETko1SGc3TTc4TjI3MFY1MVRMWUJ5OXIyaitVWFJU?=
- =?utf-8?B?UDhyVWh5SlBUazJBTWhKZmcyUm8rRk5McU1XOVNwL2pUdjNLeXJFMVY4ZHNH?=
- =?utf-8?B?ZmQrMUkrZ3JULzBjT1E0NHdrUFNlOVYrRFFldEp1bXB0TmozQXF0VlhOSEVN?=
- =?utf-8?B?aTJ2R3AxLzVPOXVzSHBMTm9ZMG56MkpScTNSalhnTmYvdFdTVC9MRHc2OUFX?=
- =?utf-8?B?b2ZiRlZqMWFJT1hGZnh6VFIxb3RrbjlCai84OTY1WFkyZ3JyUzFiVjBaRGFj?=
- =?utf-8?B?cVNZeFBOcGxNSUtYV2RlT0ZiUTFlNDhuSzlBWFBpd0I3MUErVHNaVTJhY3k0?=
- =?utf-8?B?T2hsc09pdnBXcmZzanYvMjZvcEVZQ0RmdnkxZTJsdUFXakJuMUJGQlh6bUhP?=
- =?utf-8?B?ZXljZkU3a1NSaVV3SGx5b2dDbVlsSW52NkdxVHplUVZ6dmlLNXFWcXJ3aVRG?=
- =?utf-8?B?aVJmdVlURXR1MzF3Z1hyZDY4TkFyaldpWE5pbDZxRTZiZTBZZnZmcVFuZDFW?=
- =?utf-8?B?Z2o0UzIwZnIrYzBGSmhpazk2WktRVXU2eDVIVUg2QlBvTmJ3b1hHeDA1TCsv?=
- =?utf-8?B?bHZ5MDk5Yk53d1NoOXhZQ1RxQWhIZGhuaGgzVnV4MzZkaEZyRW5CbGRsN2xV?=
- =?utf-8?B?TnpQNkM2SFp3Y0dRUVRzMitrNGc3bmRIcGE5aUx2R2NPUWlQaGl1TXBRUlRo?=
- =?utf-8?B?TndKWVArVGRZSFpJUmMzOVpxcGJpTkpxd01LRkRPbndKMGgzL2lKeWd2TldR?=
- =?utf-8?B?NkZFRnE0bnB2bHNlSHpQM0x6Wko3TXpjckFaUXdnNktrYmlaNkt0QUFYdXZu?=
- =?utf-8?B?RmFWT2c2c2dTOHVqZHNWQ2hVbnd2SnRjcFYyVHNsdGlwSlRnNFhIcWZwRk1D?=
- =?utf-8?B?ZHpCV1dNQUx5SmRGM0N3ZCtuUWg0dzBLN1BxTlVIUmZiVlVWMDRFVDBXTDFv?=
- =?utf-8?B?b3lFWWVzRFZlMjRtWmpneVJaV3JLU3kyTnd2d0xGVWd5US9JbEpTMXJRcng4?=
- =?utf-8?B?cXJHYW9zOGFRQW9CNFhiTkxKVGpFSWYzeTZqS2VkS3NzT0dEL3dYOHViNkN0?=
- =?utf-8?B?RkhiaUNYL3d1OFpmSi9YQ2pyNUd4d1dBWWJndW13dEFaQTlJK1lyQmxtZVVF?=
- =?utf-8?B?SVdwd24rUVVtSUN1Y0RTMlVidTlXZHJzNk4raGJhUTA3V2l6YktYNFI2Y0xl?=
- =?utf-8?B?Rzk2RlZTb1RSTDZScDR1RGtIcjVUUGpBakhJVHArVC9ZQkl6TENVMXRrY3lQ?=
- =?utf-8?B?YXc9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <8593800D44B1814CA7D73FB406111AA3@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=s73ifM/SGJg1qWbb1F0qGdO4iVeRR4zkqzeI/0R0Puw=;
+        b=f6DK+bZhL+XeyPDJMXKNl+cQLLt+ITGl2bvjR+uAQva8eH/MW4ccF2RBviJ3pr13lg
+         XKMdz8aSkzbPWjIoMHSXrrBI7ZAuSbnKCx/B4uZ6GxmzBMrSKowQ3vSegozchswOKeH4
+         9ESaDVsZ9FMT6edFyi4AyVjPnRgLj27xT6SAihfLOm8NzSxEDVDHM8eyUBzUcKNmwVlK
+         8Q53G5jBXRKgqxIC3S7DiPSJ1lAY5Ec9bDB8JyFZhVaCsOev3ltYkrC33TSFz197e/Qd
+         jDkcEYtqqp10QL0xoPJAqdaOclalYuNWPYZYhR9/CUM9/uuBmrBcondYqCp7QfFncYnQ
+         yx1Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=s73ifM/SGJg1qWbb1F0qGdO4iVeRR4zkqzeI/0R0Puw=;
+        b=7cVvnpDmVCmJMYHmrVPNq+fXDzb7xrcj629iP08YBS5wRlbiWKuh4Ye+zDc9bzX4ly
+         zB6XMmNMaUSXHYzYbshtp0D/bYxWBuBkmKBPg5Qqw8D7sS+3nro4f9o5TOqA0Rlb+zk0
+         AIZ18HBE7YRE+aIu8DcxWZwHr1QqcvbrSy2UDv0L3siLIKm5SzSldkP13ijks3nU5Dd0
+         x9OK4b5E+8A4bO1h2y3Dh0qaf7VKoLJG323w2mzOcMG8dHNsUbBQ23FAVSyquLdZ7aYU
+         4duEnWwaiKbb13obKIHZa6AZ3Jfo/Uxa+/sFNHjlETZCUgyE07eV+VpOlO79TZZ3osR2
+         4H8A==
+X-Gm-Message-State: AO0yUKXgfQJWv/K+Y0r6PK4G7rGDd813+PdgwARl8lC3Lu0Z8RUTwYYb
+	cWZfxhVg+priEQHOrkYazaM=
+X-Google-Smtp-Source: AK7set8awN7Y3MaxfDGrUB6gIljlgp01+QdcLh12MEzoApuKmBvKlYENrQt6Rz0EOFT2k/2fZU9i1Q==
+X-Received: by 2002:a17:906:4c86:b0:87c:81ec:4cc with SMTP id q6-20020a1709064c8600b0087c81ec04ccmr2392941eju.55.1675255960860;
+        Wed, 01 Feb 2023 04:52:40 -0800 (PST)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id m21-20020a1709062b9500b0086621d9d9b0sm9919484ejg.81.2023.02.01.04.52.38
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 01 Feb 2023 04:52:40 -0800 (PST)
+Message-ID: <c834dc47-02f7-d6e0-60c6-ce42b3255c86@gmail.com>
+Date: Wed, 1 Feb 2023 13:52:38 +0100
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SG2PR03MB3434.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8bba8036-821d-4580-83df-08db044fe352
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Feb 2023 12:28:56.5664
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: i2tpvl39U02Bim/0rs/njRaAZWzpTM5Fp48vArtGbfRXZcN7ex17aZBhKbQ2SLLanqPozhbukGMw2dHwxhoyEQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB5532
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Content-Language: en-US
+To: Macpaul Lin <macpaul.lin@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+ Macpaul Lin <macpaul@gmail.com>, Miles Chen <miles.chen@mediatek.com>,
+ linux-usb@vger.kernel.org, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Tinghan Shen <tinghan.shen@mediatek.com>,
+ Rex-BC Chen <rex-bc.chen@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
+ yow-shin.liou@mediatek.com, ben.lok@mediatek.com
+References: <20230105092809.14214-1-macpaul.lin@mediatek.com>
+ <0ae6a31c-9a7b-ff05-08e1-eed96e672bd9@collabora.com>
+ <7851a7a2-a2bc-c460-a53a-52a8f94e3969@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 1/3] arm64: dts: mediatek: Introduce MT8195 LAPTOP and
+ IOT's USB configurations
+In-Reply-To: <7851a7a2-a2bc-c460-a53a-52a8f94e3969@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230201_042909_936986_71E44DE5 
-X-CRM114-Status: GOOD (  18.87  )
+X-CRM114-CacheID: sfid-20230201_045246_457179_A9891ABF 
+X-CRM114-Status: GOOD (  36.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -180,41 +103,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgTWF0dGhpYXMgU2lyLA0KDQpPbiBUdWUsIDIwMjMtMDEtMzEgYXQgMTQ6MTkgKzAxMDAsIE1h
-dHRoaWFzIEJydWdnZXIgd3JvdGU6DQo+IA0KPiBPbiAxMS8wMS8yMDIzIDA4OjQ1LCBSb2dlciBM
-dSB3cm90ZToNCj4gPiBJbiBNZWRpYVRlayBIVyBkZXNpZ24sIHN2cyBhbmQgdGhlcm1hbCBib3Ro
-IHVzZSB0aGUgc2FtZSBjbGsgc291cmNlLg0KPiA+IEl0IG1lYW5zIHRoYXQgc3ZzIGNsayByZWZl
-cmVuY2UgY291bnQgZnJvbSBDQ0YgaW5jbHVkZXMgdGhlcm1hbCBjb250cm9sDQo+ID4gY291bnRz
-LiBUaGF0IG1ha2VzIHN2cyBkcml2ZXIgY29uZnVzZSB3aGV0aGVyIGl0IGRpc2FibGVkIHN2cydz
-IG1haW4gY2xrDQo+ID4gb3Igbm90IGZyb20gQ0NGJ3MgcGVyc3BlY3RpdmUgYW5kIGxlYWQgdG8g
-dHVybiBvZmYgdGhlaXIgc2hhcmVkIGNsaw0KPiA+IHVuZXhwZWN0ZWRseS4gVGhlcmVmb3JlLCB3
-ZSBhZGQgc3ZzIGNsayBjb250cm9sIEFQSXMgdG8gbWFrZSBzdXJlIHN2cydzDQo+ID4gbWFpbiBj
-bGsgaXMgY29udHJvbGxlZCB3ZWxsIGJ5IHN2cyBkcml2ZXIgaXRzZWxmLg0KPiA+IA0KPiA+IEhl
-cmUgaXMgYSBORyBleGFtcGxlLiBSZWx5IG9uIENDRidzIHJlZmVyZW5jZSBjb3VudCBhbmQgY2F1
-c2UgcHJvYmxlbS4NCj4gPiANCj4gPiB0aGVybWFsIHByb2JlIChjbGsgcmVmID0gMSkNCj4gPiAt
-PiBzdnMgcHJvYmUgKGNsayByZWYgPSAyKQ0KPiA+ICAgICAtPiBzdnMgc3VzcGVuZCAoY2xrIHJl
-ZiA9IDEpDQo+ID4gICAgICAgIC0+IHRoZXJtYWwgc3VzcGVuZCAoY2xrIHJlZiA9IDApDQo+ID4g
-ICAgICAgIC0+IHRoZXJtYWwgcmVzdW1lIChjbGsgcmVmID0gMSkNCj4gPiAgICAgLT4gc3ZzIHJl
-c3VtZSAoZW5jb3VudGVyIGVycm9yLCBjbGsgcmVmID0gMSkNCj4gPiAgICAgLT4gc3ZzIHN1c3Bl
-bmQgKGNsayByZWYgPSAwKQ0KPiA+ICAgICAgICAtPiB0aGVybWFsIHN1c3BlbmQgKEZhaWwgaGVy
-ZSwgdGhlcm1hbCBIVyBjb250cm9sIHcvbyBjbGspDQo+ID4gDQo+ID4gRml4ZXM6IGE4MjVkNzJm
-NzRhMyAoInNvYzogbWVkaWF0ZWs6IGZpeCBtaXNzaW5nIGNsa19kaXNhYmxlX3VucHJlcGFyZSgp
-IG9uDQo+ID4gZXJyIGluIHN2c19yZXN1bWUoKSIpDQo+ID4gU2lnbmVkLW9mZi1ieTogUm9nZXIg
-THUgPHJvZ2VyLmx1QG1lZGlhdGVrLmNvbT4NCj4gDQo+IFRoYXQgbG9va3Mgd3JvbmcuIEFsdGhv
-dWdoIEkgZG9uJ3Qgb3V0IG9mIG15IG1pbmQsIHRoZXJlIHNob3VsZCBiZSBhIHdheSB0bw0KPiB0
-ZWxsIA0KPiB0aGUgY2xvY2sgZnJhbWV3b3JrIHRoYXQgdGhpcyBjbG9jayBpcyBzaGFyZWQgYmV0
-d2VlbiBzZXZlcmFsIGRldmljZXMuDQo+IA0KPiBJIHdvbmRlciBpZiB1c2luZyBjbGtfZW5hYmxl
-IGFuZCBjbGtfZGlzYWJsZSBpbiBzdnNfcmVzdW1lL3N1c3BlbmQgd291bGRuJ3QNCj4gYmUgDQo+
-IGVub3VnaC4NCg0KT2ggeWVzLCBDb21tb24gQ2xvY2sgRnJhbWV3b3JrIChDQ0YpIGtub3dzIHRo
-ZSBjbG9jayBzaGFyZWQgYmV0d2VlbiBzZXZlcmFsDQpkZXZpY2VzIGFuZCBtYWludGFpbnMgY2xv
-Y2sgIm9uL29mZiIgYnkgcmVmZXJlbmNlIGNvdW50Lg0KDQpXZSBjb25jZXJuIGhvdyB0byBzdG9w
-IHJ1bm5pbmcgc3ZzX3N1c3BlbmQoKSB3aGVuIHN2cyBjbGsgaXMgYWxyZWFkeSBkaXNhYmxlZCBi
-eQ0Kc3ZzX3Jlc3VtZSgpLiBUYWtlIGFuIGV4YW1wbGUgYXMgYmVsb3csIGlmIHdlIHJlZmVycyB0
-byBfX2Nsa19pc19lbmFibGVkKCkNCnJlc3VsdCBmb3Iga25vd2luZyBzdnMgY2xrIHN0YXR1cywg
-aXQgd2lsbCByZXR1cm4gInRydWUiIGFsbCB0aGUgdGltZSBiZWNhdXNlDQp0aGVybWFsIGNsayBp
-cyBzdGlsbCBvbi4gVGhpcyBjYXVzZXMgdGhlIHByb2JsZW0gbWVudGlvbmVkIGluIGNvbW1pdCBt
-ZXNzYWdlLg0KDQpzdGF0aWMgaW50IHN2c19zdXNwZW5kKHN0cnVjdCBkZXZpY2UgKmRldikNCnsN
-Ci4uLg0KCWlmICghX19jbGtfaXNfZW5hYmxlZChzdnNwLT5tYWluX2NsaykpIC8vYWx3YXlzIGdl
-dCBgdHJ1ZWANCgkJcmV0dXJuIDA7DQouLi4NCn0NCg0KPiANCj4gUmVnYXJkcywNCj4gTWF0dGhp
-YXMNCg0KLi4uIFtzbmlwXSAuLi4NCg==
+Hi all,
+
+On 11/01/2023 06:37, Macpaul Lin wrote:
+> 
+> 
+> On 1/9/23 23:13, AngeloGioacchino Del Regno wrote:
+>> Il 05/01/23 10:28, Macpaul Lin ha scritto:
+>>> Introduce the split MT8195 laptop and iot USB configurations.
+>>> The hardware specifications for LAPTOP devices is different from IOT
+>>> devices. The major differences include some hardware constrains for
+>>> dual-role switch for USB controllers in different configurations,
+>>> especially for power management and other control flows as well.
+>>>
+>>> Here are some hardware specifiction differences listed:
+>>>    1. LAPTOP (Cherry Tomato boards) don't support USB gadget (device mode).
+>>>    2. IOT devices must support multiple gadget devices and host mode.
+>>>    3. Dual-role switch is not fully supported. Only USB PORT0 support
+>>>       dual-role switch.
+>>>    4. Power management is designed in primary and secondary dominator.
+>>>       For a dual-role port, the device controller is the primary controller
+>>>       for power management; while the host controller is the secondary.
+>>>       LAPTOP devices should remove device nodes for avoiding abnormal
+>>>       behavior.
+>>>
+>>> This modifcation is to add USB configurations "mt8195-laptop-usb.dtsi"
+>>> for LAPTOP devices, and add "mt8195-iot-usb.dtsi" for IOT devices.
+>>>
+>>> To remove common USB configurations for mt8195.dtsi and switch includes
+>>> dtsi these new files for the boards will come in next patch.
+>>>
+>>> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+>>
+>> I'm mostly sure that there's no reason to split the two configurations.
+>>
+>> I agree in that Tomato doesn't support gadget mode on the Type-A port and I
+>> honestly don't currently know (and I'll test that later!) if it would be possible
+>> to act as gadget on any of the two Type-C ports.
+>> Of course I agree on the fact that a laptop acting as a gadget may not be useful,
+>> but that's not something that I want to judge, as someone may find a usecase.
+>>
+>> In any case, even if Tomato does *not* support gadget mode on *any* port at all,
+>> I wonder why we wouldn't be able to probe MTU3 (and correctly describe the SoC)
+>> on Chromebooks but only on MT8195-based IoT boards...
+>> ...and in case there's any real issue, we can always force host mode (with a
+>> generic  devicetree property!) on the MTU3 on Tomato.
+> 
+> We are sorry it cannot be achieved by even setting "force host mode" to usb 
+> device node. At least, it cannot be done on MT8195.
+> 
+> The basic reason is the power requirements for USB host on a LAPTOP are 
+> different from those on an IoT device.
+> 
+> The main cause is low power management. The hardware of each device port is 
+> different on MT8195. Even the bit fields definition in registers were different.
+> 
+> Some details such as sequence need to be coordinated with the SPM firmware. When 
+> a device hardware is involved in runtime PM, function like remote wakeup and 
+> other suspend/resume behavior will be abnormal for a LAPTOP device. If we split 
+> the dtsi for different devices, people can choose different configuration in SPM 
+> firmware in coreboot or in TF-A to meet the requirement. Hence we'd better not 
+> to get more messy code in Linux driver.
+> 
+
+I'm not sure I understand everything here. If the XHCI device is a child of the 
+mtu3 node then we have problems with some SPM firmware that is not coordinated 
+with the runtime PM functions of the kernel?
+
+Fixing that in the device tree sounds wrong here. I think the real fix would be, 
+to fix the SPM firmware, so that it can deal with that.
+
+Or is there more to it? If so what? In that case can we try to ignore the 
+runtime PM in the MTU3 kernel driver?
+
+I'm not an USB expert but to me it looks very strange that we can have the XHCI 
+devices nodes as 'standalone' or as children of mtu3. We should try to describe 
+the HW as it is in DT.
+
+Regards,
+Matthias
+
+>> Finally, if we're able to add MTU3 to Tomato boards, this means that we won't be
+>> seeing these two DTSI files and that USB nodes are still going to all lie in the
+>> main `mt8195.dtsi` file, without all this duplication that I'm seeing here.
+>>
+>> What do you think?
+>>
+>> Regards,
+>> Angelo
+>>
+> 
+> Thanks for the suggestion, we hope the next platform in the future could avoid 
+> this issue and reduce some duplicate dts.
+> 
+> Macpaul Lin
 
