@@ -4,49 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30BC1C05027
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 19:27:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73A02C05027
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 19:30:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=hmbJbzDNlN6WbohZyTgdwbbON8PQNzZ/sp/ZK7i4t+w=; b=F1fFam5BhcnVYCZx2uerCzENhl
-	uOWFImfF7NiqYljk2WnncX3uYUv0evuDinZGoJTljGJcVO5QnXbc8gWL6I3Yzv2/9iO5stJP+nLgX
-	jf1l/RRio+lG38FFLFYM8VtRPdtSQmdfSmfzOhbnxBHBG+j/58Eua3KIIlkWpntBgSuUV2HBph4Ng
-	QuR2yVRGu0+MMPqJ6ufNMBhGXIJKGj9lfWPVwZZxtHOw2JE/nnUVeaqiAghgrA6hxTn4yROpahjHn
-	G4xhZviIpXS/X/QF3ot5tgk5cMq0Tw22nIy8qu/76u5gVOyzGzznLiLiefbqJdoES3yKNZEtd1K/f
-	HPhTCGcg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4/9/kvKcBnbjLbCMecs3+ZfpAqoUPdBENEYsRUM7e44=; b=fX2YJy2cxm6oYBcAl36FKR1vzB
+	omJaacFXGjcs74leVVF9z0UdOSTC5BaG5/ZG1p4UsLghWonwoIXuKowMWgv/Cqw1L7xhuYvQbqi4E
+	5z0jgrDpBGZOavxRGuBTMzubHHesDt3+QiVQdDBVELf9u9+tteyuFZx5YKhMOkjpJy9Qrek7HzTv8
+	Cd787wbKSp+GyB1JLSyJhrllsl4ofW04CYH9aUmNRDWSQk9XNVT1Lcc5yJZfyzPqSPXxJlH+1/1zC
+	wpn1S3GKCE//8wCN9qsuP/CQehBXdmsqS/VjTpA6HUIor2ULUSRfbZvZBhlbcVpQQ0Xl7Ichfs66Z
+	wz5aPdCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNIln-00DMpg-Dj; Wed, 01 Feb 2023 19:27:47 +0000
+	id 1pNIoZ-00DNML-JZ; Wed, 01 Feb 2023 19:30:39 +0000
 Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNIlk-00DMor-JX; Wed, 01 Feb 2023 19:27:46 +0000
+	id 1pNIoP-00DNK2-Hh; Wed, 01 Feb 2023 19:30:30 +0000
 Received: from local
 	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1pNIle-000267-2N;
-	Wed, 01 Feb 2023 20:27:38 +0100
-Date: Wed, 1 Feb 2023 19:25:57 +0000
+	id 1pNIno-00027L-0u;
+	Wed, 01 Feb 2023 20:29:52 +0100
+Date: Wed, 1 Feb 2023 19:28:11 +0000
 From: Daniel Golle <daniel@makrotopia.org>
-To: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH] dt-bindings: pwm: mediatek: add mediatek,mt7986 compatible
-Message-ID: <70fe0b606d988958b87f89828b8728e2f68eaace.1675278958.git.daniel@makrotopia.org>
+To: =?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
+Cc: netdev@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
+	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Russell King <linux@armlinux.org.uk>,
+	Alexander Couzens <lynxis@fe80.eu>,
+	Simon Horman <simon.horman@corigine.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	=?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 net 0/3] fixes for mtk_eth_soc
+Message-ID: <Y9q9S9AxdsYMti3P@makrotopia.org>
+References: <20230201182331.943411-1-bjorn@mork.no>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230201182331.943411-1-bjorn@mork.no>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230201_112744_678632_B00EAACE 
-X-CRM114-Status: GOOD (  10.18  )
+X-CRM114-CacheID: sfid-20230201_113029_606040_231D35F2 
+X-CRM114-Status: GOOD (  15.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,37 +73,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since commit 241eab76657f ("pwm: mediatek: Add support for MT7986")
-support for the 2 PWM channels implemented in MediaTek MT7986 SoCs has
-been added. Also add the compatible string to dt-bindings now that
-they have been converted to YAML.
+On Wed, Feb 01, 2023 at 07:23:28PM +0100, Bjørn Mork wrote:
+> Changes since v4:
+>  - use same field order for kernel-doc and code in patch 1
+>  - cc'ing full maintainer list from get_maintainer.pl
+> 
+> Changes since v3:
+>  - fill hole in struct mtk_pcs with new interface field
+>  - improved patch 2 commit message
+>  - added fixes tags
+>  - updated review tags
+>  
+> Changes since v2:
+>  - use "true" for boolean
+>  - fix SoB typo
+>  - updated tags
+> 
+> Changes since v1:
+>  - only power down on changes, fix from Russel
+>  - dropped bogus uncondional in-band patch
+>  - added pcs poll patch from Alexander
+>  - updated tags
+> 
+> 
+> Fix mtk_eth_soc sgmii configuration.
+> 
+> This has been tested on a MT7986 with a Maxlinear GPY211C phy
+> permanently attached to the second SoC mac.
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
-This patch has previously been submitted, but we decided to deferr it until
-after the conversion to YAML which has now been done via commit
-3e98855ca0cf ("dt-bindings: pwm: mediatek: Convert pwm-mediatek to DT schema")
-See
-https://patchwork.ozlabs.org/project/devicetree-bindings/patch/Y39PjU1BqBB8tZ98@makrotopia.org/
+for the whole series:
+Acked-by: Daniel Golle <daniel@makrotopia.org>
+Tested-by: Daniel Golle <daniel@makrotopia.org>
 
-Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml b/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml
-index dbc974bff9e9..8e176ba7a525 100644
---- a/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml
-+++ b/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml
-@@ -22,6 +22,7 @@ properties:
-           - mediatek,mt7623-pwm
-           - mediatek,mt7628-pwm
-           - mediatek,mt7629-pwm
-+          - mediatek,mt7986-pwm
-           - mediatek,mt8183-pwm
-           - mediatek,mt8365-pwm
-           - mediatek,mt8516-pwm
-
-base-commit: 66eee64b235411d512bed4d672c2d00683239daf
--- 
-2.39.1
-
+> 
+> 
+> Alexander Couzens (2):
+>   net: mediatek: sgmii: ensure the SGMII PHY is powered down on
+>     configuration
+>   mtk_sgmii: enable PCS polling to allow SFP work
+> 
+> Bjørn Mork (1):
+>   net: mediatek: sgmii: fix duplex configuration
+> 
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.h |  4 +-
+>  drivers/net/ethernet/mediatek/mtk_sgmii.c   | 46 ++++++++++++++-------
+>  2 files changed, 35 insertions(+), 15 deletions(-)
+> 
+> -- 
+> 2.30.2
+> 
 
