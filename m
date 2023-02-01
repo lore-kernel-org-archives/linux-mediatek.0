@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73C25C05027
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 07:44:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 285D5C05027
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 07:44:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=c8zIgAIM9twVEzzFeO8jvD5x33i309731TYIWFJD0ec=; b=Qh7/Nf9ogcUiuaF8bv3+BT6RKt
-	0s1/jHRaIktNz2igMo5n5jpiq5CJw91Hkpp6dfY5I3SfmNzxLnr51jY/+XKOFcGkp3WmCxWCmUl9i
-	9a7A2ZhJjIEf9vemwvwm/AtX4nrq9e86wXIX7VVD2PU2LBMlh0vUQDe5j8ywQmxIeLv+fgGtvnQH4
-	wR1+xJGBcy8oeqUlBCS0nZxm/aaOW9TD5VyWuFjFLpE69DtRnAmKH/k8AW1mlYtKHnmX8dgZ+YMLw
-	5ZvhCfc9tjzOUBX7WOArB9wUh/QPaYafsd3yRu5WYxaDrOsiq30sk+w34zkwC8LBcc7hlWhmCnPBK
-	MYpIA4Wg==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gz7OdVfZErCQdXy+fRjQiUvbIcVWxDyhc2LsrCgb9is=; b=UTGE060SH968NLNtOpoRJHEY18
+	PLuZjmsnc4+M7Jiiwdz3OW5prHAtyip5dCywOR9wljnTtoONWu8gsm2YDzdAv1FUuAVutKFoNs4Fw
+	Ov9+BCriN/PifYQqA6qhuNlcdn6Jzu9kk6hZhKNubmGBQN56htd0MwRaJ6q2RsiAfPtEtp7h5pJ5O
+	tHuU27HbOAfioF+RfJO/LJ8I5fozgc86iLd4cmPzXIJX76Hyc729jJZgiBTiMaGzdT1MxovYWYPZ1
+	IyrP/R83aMKPvuqQu9QpWVYtPN1h6lQoj3qC+pMPG47jWGU5v0yqKhULY/B7WsrAwe3DRt4/Sbtc4
+	UTkSEImw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pN7mq-00AfOY-2m; Wed, 01 Feb 2023 07:44:08 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pN7n1-00AfRv-CB; Wed, 01 Feb 2023 07:44:19 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pN7mn-00AfMf-I6; Wed, 01 Feb 2023 07:44:07 +0000
-X-UUID: 2db875dca20411eda08d4d6090ec5a5c-20230201
+	id 1pN7mp-00AfNP-PF; Wed, 01 Feb 2023 07:44:09 +0000
+X-UUID: 2f938cb6a20411edbbe3f76fe852e059-20230201
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=c8zIgAIM9twVEzzFeO8jvD5x33i309731TYIWFJD0ec=;
-	b=U+USV6SU1X44gtZwSiitysIs4ogeNSZNXFHD+hLVw9W0ObNrzXKENaK9xtdi0sBjOfEoHrQFojwd8ikXOMNi57KXFlBqlaWGxNqmhmbZ/xc0HCXTzCmnj0L0wWtbp7CcZDLzgJvC/pZPsoG5WoGd5ZYz2GSAtVnnNkzIKocAUoA=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=gz7OdVfZErCQdXy+fRjQiUvbIcVWxDyhc2LsrCgb9is=;
+	b=rTxonek8ID5oMGsI+c48QCIVSehhumk1cnVy4C1kNU9ST4VlCOYbIMcJu60UyASOOI4hDpbkcmvOP9ksGGECC95aQzk+r8zYHRV2vaQ/D/txyyFkIlgzLsUpRObsdN7BKaWm+497Vtb3Ie7GG8fzAFpTAHJF84/Q3yEfA9DGbgk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.18,REQID:0813d975-01d3-49ef-9eaa-a9ab028715b5,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:3ca2d6b,CLOUDID:6818908d-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+X-CID-O-INFO: VERSION:1.1.18,REQID:7a00914c-c8bd-467f-83f2-837797648387,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-30
+X-CID-META: VersionHash:3ca2d6b,CLOUDID:fb171ff7-ff42-4fb0-b929-626456a83c14,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
+	L:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
 X-CID-BVR: 0
-X-UUID: 2db875dca20411eda08d4d6090ec5a5c-20230201
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: 2f938cb6a20411edbbe3f76fe852e059-20230201
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1756086184; Wed, 01 Feb 2023 00:43:54 -0700
+	with ESMTP id 1201450606; Wed, 01 Feb 2023 00:43:58 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 1 Feb 2023 15:33:18 +0800
+ 15.2.792.15; Wed, 1 Feb 2023 15:33:21 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 1 Feb 2023 15:33:17 +0800
+ 15.2.792.15 via Frontend Transport; Wed, 1 Feb 2023 15:33:20 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
 	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
@@ -61,17 +61,19 @@ CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v4,0/7] media: mediatek: vcodec: Fix power_VideoCall test fail
-Date: Wed, 1 Feb 2023 15:33:09 +0800
-Message-ID: <20230201073316.27923-1-yunfei.dong@mediatek.com>
+Subject: [PATCH v4,2/7] media: mediatek: vcodec: using each instance lat_buf count replace core ready list
+Date: Wed, 1 Feb 2023 15:33:11 +0800
+Message-ID: <20230201073316.27923-3-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230201073316.27923-1-yunfei.dong@mediatek.com>
+References: <20230201073316.27923-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_234405_614075_1AF319E5 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20230131_234407_833384_D68D666B 
+X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,51 +88,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Random getting below error message when test power_VideoCall/control.49_vp9:
-pc : __list_del_entry_valid+0xb0/0xfc
-lr : __list_del_entry_valid+0xac/0xfc
+Core Hardware decoder depends on each instance lat_buf count,
+calling queue_work decode again when the lat_buf count of each instance
+isn't zero.
 
-The lat_buf in core list won't be deleted when one instance decode done.
-Will access invalid released lat_buf list when queue work continue to decode.
-Firstly, remove all unused lat_buf to the top of core list, making sure
-these buffers can be decoded in highest priority; lastly, remove all unused
-lat_buf when the instance is freed.
-
-patch 1 add params to record lat and core lat_buf count.
-patch 2 using each instance lat_buf count replace core ready list.
-patch 3 move lat_buf to the top of core list.
-patch 4 add core decode done event.
-patch 5 remove unused lat_buf.
-patch 6 making sure queue_work successfully
-patch 7 change lat thread decode error condition
+Fixes: 365e4ba01df4 ("media: mtk-vcodec: Add work queue for core hardware decode")
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
-changed with v3:
-- forgot to add reviewed-by for patch: 1/2/4/5/7
-changed with v2:
-- fix seek fail for patch 3
-changed with v1:
-- remove mutex for atomic for patch 1
-- add patch 6 to make sure queue_work successfully
-- add patch 7 change lat thread decode error condition
----
-Yunfei Dong (7):
-  media: mediatek: vcodec: add params to record lat and core lat_buf
-    count
-  media: mediatek: vcodec: using each instance lat_buf count replace
-    core ready list
-  media: mediatek: vcodec: move lat_buf to the top of core list
-  media: mediatek: vcodec: add core decode done event
-  media: mediatek: vcodec: remove unused lat_buf
-  media: mediatek: vcodec: making sure queue_work successfully
-  media: mediatek: vcodec: change lat thread decode error condition
+ drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- .../vcodec/mtk_vcodec_dec_stateless.c         |  6 +-
- .../vcodec/vdec/vdec_h264_req_multi_if.c      |  2 +-
- .../vcodec/vdec/vdec_vp9_req_lat_if.c         |  2 +-
- .../platform/mediatek/vcodec/vdec_msg_queue.c | 95 ++++++++++++++++---
- .../platform/mediatek/vcodec/vdec_msg_queue.h | 12 +++
- 5 files changed, 100 insertions(+), 17 deletions(-)
-
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
+index 3f016c87d722..ad5002ca953e 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
+@@ -239,7 +239,7 @@ static void vdec_msg_queue_core_work(struct work_struct *work)
+ 	mtk_vcodec_dec_disable_hardware(ctx, MTK_VDEC_CORE);
+ 	vdec_msg_queue_qbuf(&ctx->msg_queue.lat_ctx, lat_buf);
+ 
+-	if (!list_empty(&dev->msg_queue_core_ctx.ready_queue)) {
++	if (atomic_read(&lat_buf->ctx->msg_queue.core_list_cnt)) {
+ 		mtk_v4l2_debug(3, "re-schedule to decode for core: %d",
+ 			       dev->msg_queue_core_ctx.ready_num);
+ 		queue_work(dev->core_workqueue, &msg_queue->core_work);
 -- 
 2.18.0
 
