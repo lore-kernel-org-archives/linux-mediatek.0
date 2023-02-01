@@ -4,61 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73A02C05027
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 19:30:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 639A9C05027
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 20:16:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4/9/kvKcBnbjLbCMecs3+ZfpAqoUPdBENEYsRUM7e44=; b=fX2YJy2cxm6oYBcAl36FKR1vzB
-	omJaacFXGjcs74leVVF9z0UdOSTC5BaG5/ZG1p4UsLghWonwoIXuKowMWgv/Cqw1L7xhuYvQbqi4E
-	5z0jgrDpBGZOavxRGuBTMzubHHesDt3+QiVQdDBVELf9u9+tteyuFZx5YKhMOkjpJy9Qrek7HzTv8
-	Cd787wbKSp+GyB1JLSyJhrllsl4ofW04CYH9aUmNRDWSQk9XNVT1Lcc5yJZfyzPqSPXxJlH+1/1zC
-	wpn1S3GKCE//8wCN9qsuP/CQehBXdmsqS/VjTpA6HUIor2ULUSRfbZvZBhlbcVpQQ0Xl7Ichfs66Z
-	wz5aPdCg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dw3R/I+yQHjbga5kkUsb3LzIPZtMRUNJ7Qu6UJsxVlc=; b=1vNu1FzmQEYWz+o/UsY0lfBuaH
+	J6DnqAYM/waJKygrb4usWVuZjcdUwolEZbeEdblVCVCp+lxMopJ3Pkv/qrRGvMQ9FFFjWfDb5HIwx
+	jGz0AFPV3flyt2URBKYnols/M+ZTxZn3AZC+IfUIeHE0vikq2awJg2QSfzfKyddeA9NkUnbzlsxrq
+	9tJm2JoeE/xGdoT78CPkHczVslmu7vBZSOSG3vnrmqSx2yJEBABlrvcXFdU+iN3b+R62VceXIn/PQ
+	m9a7O0W/EFUyumCUfFOPx58nOe57qfRAgoXAyKNUhd7Fp5Jg8Ew+DftGHrPWEkw3X9t6h2NwJR7g+
+	I/pDJHzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNIoZ-00DNML-JZ; Wed, 01 Feb 2023 19:30:39 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pNJWZ-00DVaX-VC; Wed, 01 Feb 2023 20:16:07 +0000
+Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNIoP-00DNK2-Hh; Wed, 01 Feb 2023 19:30:30 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pNIno-00027L-0u;
-	Wed, 01 Feb 2023 20:29:52 +0100
-Date: Wed, 1 Feb 2023 19:28:11 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: =?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
-Cc: netdev@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
-	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Russell King <linux@armlinux.org.uk>,
-	Alexander Couzens <lynxis@fe80.eu>,
-	Simon Horman <simon.horman@corigine.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	=?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 net 0/3] fixes for mtk_eth_soc
-Message-ID: <Y9q9S9AxdsYMti3P@makrotopia.org>
-References: <20230201182331.943411-1-bjorn@mork.no>
+	id 1pNJWP-00DVYN-AQ; Wed, 01 Feb 2023 20:15:59 +0000
+Received: from 3ffe.de (0001.3ffe.de [IPv6:2a01:4f8:c0c:9d57::1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.3ffe.de (Postfix) with ESMTPSA id B826F1257;
+	Wed,  1 Feb 2023 21:15:50 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
+	t=1675282550;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=dw3R/I+yQHjbga5kkUsb3LzIPZtMRUNJ7Qu6UJsxVlc=;
+	b=Ecugun7uzW1hw7a3z38sfJT+nhgz3Z1Q3neEokWdTu86aqzBtqesqoSFkhm3jA8Rvh/ftl
+	5dwia8olYcp67iwQ8YxIp1DiTo79YKVtrDC/IbFp2h9Z1EJSj9rCMLJle1/ZFdy4rzNA4o
+	6wMVHimniMcNaMjAI8i91cRTRD7Qm8Q/HrCDKcQykwB6dw4844dKiy5gjdzMjyQkT1GKWI
+	V71hCZexWpugNzXH8n8/Flbbpberea0MN08Zviv0ywthtaAxBolNtlqtEGvBHgV+3i/3CI
+	nGfoTZPsg0eikF19TNwkz1u+PsESr3ZCvjU6JidAD/Xoi//8ZbCBXFGHI3qnzA==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230201182331.943411-1-bjorn@mork.no>
+Date: Wed, 01 Feb 2023 21:15:50 +0100
+From: Michael Walle <michael@walle.cc>
+To: Rob Herring <robh@kernel.org>
+Cc: =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <zajec5@gmail.com>,
+ devicetree@vger.kernel.org, hayashi.kunihiko@socionext.com,
+ krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, mhiramat@kernel.org, rafal@milecki.pl,
+ srinivas.kandagatla@linaro.org
+Subject: Re: [PATCH 3/4] nvmem: mtk-efuse: replace driver with a generic MMIO
+ one
+In-Reply-To: <20230201185402.GA4084724-robh@kernel.org>
+References: <20230201064717.18410-4-zajec5@gmail.com>
+ <20230201084821.1719839-1-michael@walle.cc>
+ <8452b341-8695-05d8-9d03-47c9aeca0ec7@gmail.com>
+ <017a17eb99ac2b2c858d27b65c5dd372@walle.cc>
+ <20230201185402.GA4084724-robh@kernel.org>
+User-Agent: Roundcube Webmail/1.4.13
+Message-ID: <1b3024876259eab4464db9ca676a884f@walle.cc>
+X-Sender: michael@walle.cc
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230201_113029_606040_231D35F2 
-X-CRM114-Status: GOOD (  15.35  )
+X-CRM114-CacheID: sfid-20230201_121557_567218_0388FA6C 
+X-CRM114-Status: GOOD (  35.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,53 +83,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 01, 2023 at 07:23:28PM +0100, Bjørn Mork wrote:
-> Changes since v4:
->  - use same field order for kernel-doc and code in patch 1
->  - cc'ing full maintainer list from get_maintainer.pl
+Am 2023-02-01 19:54, schrieb Rob Herring:
+> On Wed, Feb 01, 2023 at 11:46:01AM +0100, Michael Walle wrote:
+>> > Before I convert brcm,nvram to NVMEM layout I need some binding & driver
+>> > providing MMIO device access. How to handle that?
+>> 
+>> I'm not arguing against having the mmio nvmem driver. But I don't
+>> think we should sacrifice possible write access with other drivers. 
+>> And
+>> I presume write access won't be possible with your generic driver as 
+>> it
+>> probably isn't just a memcpy_toio().
+>> 
+>> It is a great fallback for some nvmem peripherals which just maps a
+>> memory region, but doesn't replace a proper driver for an nvmem 
+>> device.
+>> 
+>> What bothers me the most isn't the driver change. The driver can be
+>> resurrected once someone will do proper write access, but the generic
+>> "mediatek,efuse" compatible together with the comment above the older
+>> compatible string. These imply that you should use "mediatek,efuse",
+>> but we don't know if all mediatek efuse peripherals will be the
+>> same - esp. for writing which is usually more complex than the 
+>> reading.
 > 
-> Changes since v3:
->  - fill hole in struct mtk_pcs with new interface field
->  - improved patch 2 commit message
->  - added fixes tags
->  - updated review tags
->  
-> Changes since v2:
->  - use "true" for boolean
->  - fix SoB typo
->  - updated tags
-> 
-> Changes since v1:
->  - only power down on changes, fix from Russel
->  - dropped bogus uncondional in-band patch
->  - added pcs poll patch from Alexander
->  - updated tags
-> 
-> 
-> Fix mtk_eth_soc sgmii configuration.
-> 
-> This has been tested on a MT7986 with a Maxlinear GPY211C phy
-> permanently attached to the second SoC mac.
+> Because the kernel can't pick the "best" driver when there are multiple
+> matches, it's all Mediatek platforms use the generic driver or all use
+> the Mediatek driver.
 
-for the whole series:
-Acked-by: Daniel Golle <daniel@makrotopia.org>
-Tested-by: Daniel Golle <daniel@makrotopia.org>
+Isn't that the whole point of having multiple compatible strings?
+   compatible = "fsl,imx27-mmc", "fsl,imx21-mmc";
+The OS might either load the driver for "fsl,imx21-mmc" or one for
+"fsl,imx27-mmc", with the latter considered to be the preferred one.
 
+> Personally, I think it is easy enough to revive the driver if needed
+> unless writing is a soon and likely feature.
+
+That what was actually triggered my initial reply. We are planning a
+new board with a mediatek SoC and we'll likely need the write support.
+
+But I thought the "mediatek,efuse" was a new compatible with this patch
+and the (new!) comment make it looks like these compatible are 
+deprecated
+in favor of "mmio-nvmem". Which would make it impossible to distinguish
+between the different efuse peripherals and thus make it impossible to
+add write support.
+
+> The other way to share is providing library functions for drivers to
+> use. Then the Mediatek driver can use the generic read functions and
+> custom write functions.
 > 
+>> nitpick btw: why not "nvmem-mmio"?
+>> 
+>> So it's either:
+>>  (1) compatible = "mediatek,mt8173-efuse"
+>>  (2) compatible = "mediatek,mt8173-efuse", "mmio-nvmem"
+>> 
+>> (1) will be supported any anyway for older dts and you need to add
+>> the specific compatibles to the nvmem-mmio driver - or keep the
+>> driver as is.
+>> 
+>> With (2) you wouldn't need to do that and the kernel can load the
+>> proper driver if available or fall back to the nvmem-mmio one. I'd
+>> even make that one "default y" so it will be available on future
+>> kernels and boards can already make use of the nvmem device even
+>> if there is no proper driver for them.
+>> 
+>> I'd prefer (2). Dunno what the dt maintainers agree.
 > 
-> Alexander Couzens (2):
->   net: mediatek: sgmii: ensure the SGMII PHY is powered down on
->     configuration
->   mtk_sgmii: enable PCS polling to allow SFP work
-> 
-> Bjørn Mork (1):
->   net: mediatek: sgmii: fix duplex configuration
-> 
->  drivers/net/ethernet/mediatek/mtk_eth_soc.h |  4 +-
->  drivers/net/ethernet/mediatek/mtk_sgmii.c   | 46 ++++++++++++++-------
->  2 files changed, 35 insertions(+), 15 deletions(-)
-> 
-> -- 
-> 2.30.2
-> 
+> No because you are changing the DT. The DT can't change when you want 
+> to
+> change drivers. This thinking is one reason why 'generic' bindings are
+> rejected.
+
+There is no change in the DT. Newer bindings will have
+
+   compatible = "vendor,ip-block", "mmio-nvmem"
+
+when the ip block is compatible with mmio-nvmem. Otherwise I don't get
+why there is a mmio-nvmem compatible at all. Just having
+
+   compatible = "mmio-nvmem"
+
+looks wrong as it would just work correctly in some minor cases, i.e.
+when write support is just a memcpy_toio() - or we deliberately ignore
+any write support. But even then, you always tell people to add specific
+compatibles for the case when quirks are needed..
+
+-michael
 
