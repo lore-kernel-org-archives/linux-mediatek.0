@@ -4,68 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59523C636D3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 10:46:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84F5EC636D3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 10:57:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j/Nn9vIhP684Dyg+/S9/KC+Ry8ajbwCM27GQszn7uBE=; b=IlTjmSygnzQIjZq9482nteTzR+
-	AArauECfH0asq7yh8C/YX5fmjzNaeaaOnfKTFxez/zSQ/FCNBCjjZjT/Q1g++iB/EzVT31c8c72SP
-	Jac5Rgry9azWDCncKmT2rEz1zRfDomZnTMMj8gail2OapJydjzmE9SZ8zpRXvMD+rjmAPo/H6/8Qb
-	sfdKSzaPr6HWrPmlUbCPgCL/YiR+vN3yRqOtGILkxHmOOIp/cIWuMqyMAJWISvTvO+dSILT9FOorF
-	wxmL4ndqlIKdgNDBttk1VRWcKsQF01RfCyZTv/TE1vxc1IBUf4so/eDCA9sncN/ShmEKeggTu+KG2
-	OvIW/8Gg==;
+	bh=LinfPfwdc69r+5MS9+W8GWtbQTG5CSXHZBHVy7HHbcc=; b=xTr7sexBYEzekZfXmYwjQT5ccr
+	V7RPRyGoxzQ3OKEWiob1BdCkdCM7qAz8eHBcghFS9dQYmVz9OJNmKtjXMIITrU8Gyr1Ned0nhdftI
+	RrCjf+6JtU58LqUo0FNDs33UJs+2U9np3L2u66J2s1BqkT+VoFR8YC6Y/jVrWWdjPFk9iFlc+UXTV
+	l6Ni1/CV9ROrhdxDUYzNAcHMGZ2/hPVd3XBtTWJFsLhcjAyP7ep0yDR5rnsRHbb+rJu8OPvv3pvKC
+	DghabD+hD1SlP4IXGdihO1CBI+Maeww0X32v3Uh/TKS4AsG5/S58aSsWJILWVjwF3VCDmfgFc9u1i
+	nEP8+40w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNAd8-00BJxw-3A; Wed, 01 Feb 2023 10:46:18 +0000
-Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
+	id 1pNAnk-00BMh6-UM; Wed, 01 Feb 2023 10:57:16 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNAcu-00BJvH-Nz; Wed, 01 Feb 2023 10:46:08 +0000
-Received: from 3ffe.de (0001.3ffe.de [IPv6:2a01:4f8:c0c:9d57::1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 2D365126A;
-	Wed,  1 Feb 2023 11:46:02 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1675248362;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=j/Nn9vIhP684Dyg+/S9/KC+Ry8ajbwCM27GQszn7uBE=;
-	b=FnLre03ttlykqOT5twpuMP6FFFU/GYDMLPiJbQ5x24R+62f9zZOmq2Hyk6bmnNBuzHTQfT
-	IZEEqRBz7xQlkCmBWiZEVNeTNOkuDofAWU8loul7jmBGWNDayoA9/BLmZAz5YL7r93SQoT
-	yRrLi2QTW0mlVV7Hjo8V5bojgKCJTzdq5rT6GFR3yXtCk6ludx6P5waPGvrPROTxmBHoGD
-	ZLK4g8TkisopCQZVl3P5jW97q+ZbA6Xh18Us3SqNelTexKVihoIW7/y/DLKpKl+zeOvxqN
-	7agL0pEnv+68qKRhnu34IBbhTqMid7TPcUAJzwT7mN6fNx6sf0N0PX4imDdcRA==
+	id 1pNAnX-00BMYv-Pl; Wed, 01 Feb 2023 10:57:05 +0000
+Received: by mail-wm1-x331.google.com with SMTP id m16-20020a05600c3b1000b003dc4050c94aso1079135wms.4;
+        Wed, 01 Feb 2023 02:56:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=LinfPfwdc69r+5MS9+W8GWtbQTG5CSXHZBHVy7HHbcc=;
+        b=d9PgESiUcaaRDq+WJ3qIgUQfDcb66ZTE97cDw7SP6ZgJ3dD3SeK72xuDAnSYhmTgnq
+         /wpB10A26l+EJ3cf+WDXXjHtkOZQX+0iGr4nLsuWOH6fZ3ADULkg0w6ayIs+izB5KSi3
+         BilQgqt1RChReSbl/E+QB82h9uyKf+ipLBKu2aLDxw1DHdtsRaKE6d9prSeFiURA7Sds
+         UpTOPVYZicbDAuMSU2Ajfb77KnWRDP3xSOClB6BFn7p2uYWGHRq8sf2qLel5NtGxWeRV
+         1Vpiht2CFIr3Y0u6shqlmXHt0q7gl47P+Hfu4euynXC9rExcBXgf1ooc3cr52Ta87HJ0
+         3F/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=LinfPfwdc69r+5MS9+W8GWtbQTG5CSXHZBHVy7HHbcc=;
+        b=fdukEhgCCIHzl1gKb4jgczt8hUybrZeEid4zT74W2nM673kawHPLwOUKOP03I1CRW5
+         0TqtPygkNlhIxKfBhlrwKe/UAIfUYF7p6yBP+zBPKcuGkiSD9/rquiZ9r92/HZ2KOYID
+         tIzEV0qGn0xBdZvEGbvYRkKZK2uy+Da8qeegEYHyx9nMm+PRxfGdE11HaGpIbQdBYNKH
+         ozUDY8QUEvFK9VigXCzJY8DH/eA2mmab4mjWIAEkd+FJ75cN+xFXbsO0x5RocslyUATC
+         TDduAWteT4pKPHHP6cgNWcGXsE1m3yOV0dkokLyfNSeINqoDKTqg/YN/kUSQF0rLdT32
+         0PTA==
+X-Gm-Message-State: AO0yUKUQnTnRwXVlhWdHvPn7WCd5MNY0bUXtAebbuM3bfTnQJ91bbGON
+	FMDFSG0EHibi/dZ62tHlQ3c=
+X-Google-Smtp-Source: AK7set/YIe/I+C+MEjw/u4XskuAdX7Srwo/ASJLfYgnYv2wbXKrk75N0foIaGyXaEO3k+QVkOVLCEQ==
+X-Received: by 2002:a05:600c:601b:b0:3dc:557f:6129 with SMTP id az27-20020a05600c601b00b003dc557f6129mr1566953wmb.2.1675249016755;
+        Wed, 01 Feb 2023 02:56:56 -0800 (PST)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id l16-20020a1c7910000000b003dc1d668866sm1357736wme.10.2023.02.01.02.56.55
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 01 Feb 2023 02:56:56 -0800 (PST)
+Message-ID: <f5e283bf-2cd2-779e-eb2d-ef36f4780153@gmail.com>
+Date: Wed, 1 Feb 2023 11:56:54 +0100
 MIME-Version: 1.0
-Date: Wed, 01 Feb 2023 11:46:01 +0100
-From: Michael Walle <michael@walle.cc>
-To: =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <zajec5@gmail.com>
-Cc: devicetree@vger.kernel.org, hayashi.kunihiko@socionext.com,
- krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, mhiramat@kernel.org, rafal@milecki.pl,
- robh+dt@kernel.org, srinivas.kandagatla@linaro.org
-Subject: Re: [PATCH 3/4] nvmem: mtk-efuse: replace driver with a generic MMIO
- one
-In-Reply-To: <8452b341-8695-05d8-9d03-47c9aeca0ec7@gmail.com>
-References: <20230201064717.18410-4-zajec5@gmail.com>
- <20230201084821.1719839-1-michael@walle.cc>
- <8452b341-8695-05d8-9d03-47c9aeca0ec7@gmail.com>
-User-Agent: Roundcube Webmail/1.4.13
-Message-ID: <017a17eb99ac2b2c858d27b65c5dd372@walle.cc>
-X-Sender: michael@walle.cc
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v1 1/2] arm64: dts: mediatek: mt7622: Add missing
+ pwm-cells to pwm node
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ krzysztof.kozlowski+dt@linaro.org
+Cc: thierry.reding@gmail.com, u.kleine-koenig@pengutronix.de,
+ robh+dt@kernel.org, john@phrozen.org, sean.wang@mediatek.com,
+ linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20221128112028.58021-1-angelogioacchino.delregno@collabora.com>
+ <20221128112028.58021-2-angelogioacchino.delregno@collabora.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20221128112028.58021-2-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230201_024604_983857_4A811599 
-X-CRM114-Status: GOOD (  16.51  )
+X-CRM114-CacheID: sfid-20230201_025703_880281_2DEEF8DD 
+X-CRM114-Status: GOOD (  14.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,42 +97,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Before I convert brcm,nvram to NVMEM layout I need some binding & 
-> driver
-> providing MMIO device access. How to handle that?
 
-I'm not arguing against having the mmio nvmem driver. But I don't
-think we should sacrifice possible write access with other drivers. And
-I presume write access won't be possible with your generic driver as it
-probably isn't just a memcpy_toio().
 
-It is a great fallback for some nvmem peripherals which just maps a
-memory region, but doesn't replace a proper driver for an nvmem device.
+On 28/11/2022 12:20, AngeloGioacchino Del Regno wrote:
+> Specify #pwm-cells on pwm@11006000 to make it actually usable.
+> 
+> Fixes: ae457b7679c4 ("arm64: dts: mt7622: add SoC and peripheral related device nodes")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-What bothers me the most isn't the driver change. The driver can be
-resurrected once someone will do proper write access, but the generic
-"mediatek,efuse" compatible together with the comment above the older
-compatible string. These imply that you should use "mediatek,efuse",
-but we don't know if all mediatek efuse peripherals will be the
-same - esp. for writing which is usually more complex than the reading.
+Applied, thanks!
 
-nitpick btw: why not "nvmem-mmio"?
-
-So it's either:
-  (1) compatible = "mediatek,mt8173-efuse"
-  (2) compatible = "mediatek,mt8173-efuse", "mmio-nvmem"
-
-(1) will be supported any anyway for older dts and you need to add
-the specific compatibles to the nvmem-mmio driver - or keep the
-driver as is.
-
-With (2) you wouldn't need to do that and the kernel can load the
-proper driver if available or fall back to the nvmem-mmio one. I'd
-even make that one "default y" so it will be available on future
-kernels and boards can already make use of the nvmem device even
-if there is no proper driver for them.
-
-I'd prefer (2). Dunno what the dt maintainers agree.
-
--michael
+> ---
+>   arch/arm64/boot/dts/mediatek/mt7622.dtsi | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> index 146e18b5b1f4..f321c6d0fd7c 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> @@ -435,6 +435,7 @@ uart3: serial@11005000 {
+>   	pwm: pwm@11006000 {
+>   		compatible = "mediatek,mt7622-pwm";
+>   		reg = <0 0x11006000 0 0x1000>;
+> +		#pwm-cells = <2>;
+>   		interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_LOW>;
+>   		clocks = <&topckgen CLK_TOP_PWM_SEL>,
+>   			 <&pericfg CLK_PERI_PWM_PD>,
 
