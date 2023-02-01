@@ -4,77 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C35E8C05027
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 18:26:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6243C38142
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 18:54:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GFp/X5eUiRxs39WBP/bBKYq6n8rAaordpE22XIcRs3o=; b=p1Xqs14fYLEOvUctp0OqV0xZ5L
-	w4cTxpcH8+28v4zw8STPm3MVulv/kgDSsVVF705OxqezL8+L4pMIh9TTkd0yJ3fBS8sH4NuKNSpxe
-	WxfxyNbZimRdORT31WPZ8G83gnr5sLZF5voEaXiGW8hgcUNW3bT/pbVIaBcj6yAou7T9YXGpzVBRb
-	fr1ldYPXKZjInvoVqcZBbh7UH8zEln9WlE37OXFk4sYb2p7lc8sp1RsJ3HiPOINhMxTTr6aRSdk8c
-	l3XXT/MTORJ0wdIBUuOCI0DdLZcrcjlUwcYTkTlcEu8atoyW0B8PbQhIsJTMcnJ0hIGJZ6jQ2ycrc
-	fNK1YVRQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0sMQc0PK6ObdJHfFL3hGtO0pIoGyC7nHbzdlT3Spl2Y=; b=Mzhod5PX9j7zkw/HcUyXNTpXWh
+	GtLwmUwiYjCH5AuKGm5TrGUNcqFVXKLORG2z7rHY0nqAqlg6azzkrVbI957eS7WwHR67xsl2anfdZ
+	PPRmMdibysjb7aATZx1En+9A70mpMwuSkUQclUdyjLuy9oP1v57LoxWkGsHqwktAT4IO904DWPy0F
+	dB+dARdFERr3cjCcz/mjW/EbUKp0kePAXl/l6Gr7ztv2YQ2lRLfVovOIjjUoa+dymP8vhcyMZTpbY
+	+sM/ZPoQB14G3SbquZfIJcjM7wOpRy+ojJsMDOZZqIH8M9YFzxjyy1ph1UZzHyElfcb4B2E1cMw+p
+	gi5N66ZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNHoY-00DCJt-He; Wed, 01 Feb 2023 18:26:34 +0000
-Received: from dilbert.mork.no ([2a01:4f9:c010:a439::d])
+	id 1pNIFL-00DH5G-Qy; Wed, 01 Feb 2023 18:54:15 +0000
+Received: from mail-oa1-f43.google.com ([209.85.160.43])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNHo5-00DC30-9P; Wed, 01 Feb 2023 18:26:08 +0000
-Received: from canardo.dyn.mork.no ([IPv6:2a01:799:c9a:3200:0:0:0:1])
-	(authenticated bits=0)
-	by dilbert.mork.no (8.15.2/8.15.2) with ESMTPSA id 311INgIH648786
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
-	Wed, 1 Feb 2023 18:23:44 GMT
-Received: from canardo.dyn.mork.no (ip6-localhost [IPv6:0:0:0:0:0:0:0:1])
-	by canardo.dyn.mork.no (8.15.2/8.15.2) with ESMTPS id 311INbnI943492
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
-	Wed, 1 Feb 2023 19:23:37 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mork.no; s=b;
-	t=1675275817; bh=GFp/X5eUiRxs39WBP/bBKYq6n8rAaordpE22XIcRs3o=;
-	h=From:To:Cc:Subject:Date:Message-Id:References:From;
-	b=hWBN14/2wzWOK+nFje/kXjMYvsUSle8vOEHyiepQkgr21Jm8Eut/PqaJg8/UqG8yy
-	 3u3/HKHiX3/pL9k0ut1bvwidn0bBcqglycX1udqOiIi0MmvRFyv+t7JvaFZgDFDYeW
-	 6q+4KSL052su2g5UUYOrMtZFMu3YDDx3c6xOW8Qs=
-Received: (from bjorn@localhost)
-	by canardo.dyn.mork.no (8.15.2/8.15.2/Submit) id 311INbIQ943491;
-	Wed, 1 Feb 2023 19:23:37 +0100
-From: =?UTF-8?q?Bj=C3=B8rn=20Mork?= <bjorn@mork.no>
-To: netdev@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-        Sean Wang <sean.wang@mediatek.com>,
-        Mark Lee <Mark-MC.Lee@mediatek.com>,
-        Lorenzo Bianconi <lorenzo@kernel.org>,
-        Russell King <linux@armlinux.org.uk>,
-        Daniel Golle <daniel@makrotopia.org>,
-        Alexander Couzens <lynxis@fe80.eu>,
-        Simon Horman <simon.horman@corigine.com>,
-        Paolo Abeni <pabeni@redhat.com>,
-        "David S . Miller" <davem@davemloft.net>,
-        Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
-        linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-        =?UTF-8?q?Bj=C3=B8rn=20Mork?= <bjorn@mork.no>,
-        Russell King <rmk+kernel@armlinux.org.uk>
-Subject: [PATCH v5 net 2/3] net: mediatek: sgmii: fix duplex configuration
-Date: Wed,  1 Feb 2023 19:23:30 +0100
-Message-Id: <20230201182331.943411-3-bjorn@mork.no>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20230201182331.943411-1-bjorn@mork.no>
-References: <20230201182331.943411-1-bjorn@mork.no>
+	id 1pNIFC-00DH35-1S; Wed, 01 Feb 2023 18:54:07 +0000
+Received: by mail-oa1-f43.google.com with SMTP id 586e51a60fabf-15f97c478a8so24721670fac.13;
+        Wed, 01 Feb 2023 10:54:04 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=0sMQc0PK6ObdJHfFL3hGtO0pIoGyC7nHbzdlT3Spl2Y=;
+        b=lOWcDkzuZ1kiNK5nQzUTWwjkqiM6rRoPVl5EciNpxJTJ/oJjymj4VQV6bvnag/Vxy2
+         CO4mjHBPKEOOCQrVL7CHqHrii9Q/5PeXXzfbl/TKVlZu8C3ne4eEQeECvQLzWwoYPkbD
+         hAzcQdVhazo2OEtHI6FxrdehswEu/mIjPBYXVMJlag2L6NJKXg1D6nA6VRH0tQy5j+MN
+         RYWknCDcaje0hFsrJ8Xhv4SJeD2jC+JLob0o69nmjr7+SlS5Z39u/78KuYJ2QCEUpzr/
+         9vg3WwCliQvYEx/9fajsH+CWUbTvm4wa4ddx6mi8DiD4D8TbEuS1W0CnJQuznktoGB0E
+         BQWQ==
+X-Gm-Message-State: AO0yUKUi32nMxIRrGGkB+kkM4q1xxkYzAmwMcXQE8zZNmxGXF67BRdbC
+	BQluH8mLrcZ7CWp2S8RIFw==
+X-Google-Smtp-Source: AK7set+x4JYggnZQEp7fWaOZYSgRM7McC3+rmo9BC9jTfy4gSLLBzuRh3gqarJNb/Hc9cF/IrLdkpg==
+X-Received: by 2002:a05:6870:ac20:b0:163:573b:3e8d with SMTP id kw32-20020a056870ac2000b00163573b3e8dmr1535116oab.30.1675277643870;
+        Wed, 01 Feb 2023 10:54:03 -0800 (PST)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id u16-20020a056870701000b0014fd7e7c3fesm7904092oae.27.2023.02.01.10.54.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 01 Feb 2023 10:54:03 -0800 (PST)
+Received: (nullmailer pid 4146388 invoked by uid 1000);
+	Wed, 01 Feb 2023 18:54:02 -0000
+Date: Wed, 1 Feb 2023 12:54:02 -0600
+From: Rob Herring <robh@kernel.org>
+To: Michael Walle <michael@walle.cc>
+Cc: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>, devicetree@vger.kernel.org, hayashi.kunihiko@socionext.com, krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, mhiramat@kernel.org, rafal@milecki.pl, srinivas.kandagatla@linaro.org
+Subject: Re: [PATCH 3/4] nvmem: mtk-efuse: replace driver with a generic MMIO
+ one
+Message-ID: <20230201185402.GA4084724-robh@kernel.org>
+References: <20230201064717.18410-4-zajec5@gmail.com>
+ <20230201084821.1719839-1-michael@walle.cc>
+ <8452b341-8695-05d8-9d03-47c9aeca0ec7@gmail.com>
+ <017a17eb99ac2b2c858d27b65c5dd372@walle.cc>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Virus-Scanned: clamav-milter 0.103.7 at canardo
-X-Virus-Status: Clean
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <017a17eb99ac2b2c858d27b65c5dd372@walle.cc>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230201_102605_697734_8E9282D5 
-X-CRM114-Status: GOOD (  12.80  )
+X-CRM114-CacheID: sfid-20230201_105406_105849_1C3AA61A 
+X-CRM114-Status: GOOD (  32.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,52 +81,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The logic of the duplex bit is inverted.  Setting it means half
-duplex, not full duplex.
+On Wed, Feb 01, 2023 at 11:46:01AM +0100, Michael Walle wrote:
+> > Before I convert brcm,nvram to NVMEM layout I need some binding & driver
+> > providing MMIO device access. How to handle that?
+> 
+> I'm not arguing against having the mmio nvmem driver. But I don't
+> think we should sacrifice possible write access with other drivers. And
+> I presume write access won't be possible with your generic driver as it
+> probably isn't just a memcpy_toio().
+> 
+> It is a great fallback for some nvmem peripherals which just maps a
+> memory region, but doesn't replace a proper driver for an nvmem device.
+> 
+> What bothers me the most isn't the driver change. The driver can be
+> resurrected once someone will do proper write access, but the generic
+> "mediatek,efuse" compatible together with the comment above the older
+> compatible string. These imply that you should use "mediatek,efuse",
+> but we don't know if all mediatek efuse peripherals will be the
+> same - esp. for writing which is usually more complex than the reading.
 
-Fix and rename macro to avoid confusion.
+Because the kernel can't pick the "best" driver when there are multiple 
+matches, it's all Mediatek platforms use the generic driver or all use 
+the Mediatek driver.
 
-Fixes: 7e538372694b ("net: ethernet: mediatek: Re-add support SGMII")
-Reviewed-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-Signed-off-by: Bjørn Mork <bjorn@mork.no>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.h | 2 +-
- drivers/net/ethernet/mediatek/mtk_sgmii.c   | 6 +++---
- 2 files changed, 4 insertions(+), 4 deletions(-)
+Personally, I think it is easy enough to revive the driver if needed 
+unless writing is a soon and likely feature.
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 01a38f5145b1..2d9186d32bc0 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -519,7 +519,7 @@
- #define SGMII_SPEED_10			FIELD_PREP(SGMII_SPEED_MASK, 0)
- #define SGMII_SPEED_100			FIELD_PREP(SGMII_SPEED_MASK, 1)
- #define SGMII_SPEED_1000		FIELD_PREP(SGMII_SPEED_MASK, 2)
--#define SGMII_DUPLEX_FULL		BIT(4)
-+#define SGMII_DUPLEX_HALF		BIT(4)
- #define SGMII_IF_MODE_BIT5		BIT(5)
- #define SGMII_REMOTE_FAULT_DIS		BIT(8)
- #define SGMII_CODE_SYNC_SET_VAL		BIT(9)
-diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii.c b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-index 0a06995099cf..c4261069b521 100644
---- a/drivers/net/ethernet/mediatek/mtk_sgmii.c
-+++ b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-@@ -154,11 +154,11 @@ static void mtk_pcs_link_up(struct phylink_pcs *pcs, unsigned int mode,
- 		else
- 			sgm_mode = SGMII_SPEED_1000;
- 
--		if (duplex == DUPLEX_FULL)
--			sgm_mode |= SGMII_DUPLEX_FULL;
-+		if (duplex != DUPLEX_FULL)
-+			sgm_mode |= SGMII_DUPLEX_HALF;
- 
- 		regmap_update_bits(mpcs->regmap, SGMSYS_SGMII_MODE,
--				   SGMII_DUPLEX_FULL | SGMII_SPEED_MASK,
-+				   SGMII_DUPLEX_HALF | SGMII_SPEED_MASK,
- 				   sgm_mode);
- 	}
- }
--- 
-2.30.2
+The other way to share is providing library functions for drivers to 
+use. Then the Mediatek driver can use the generic read functions and 
+custom write functions.
 
+> nitpick btw: why not "nvmem-mmio"?
+> 
+> So it's either:
+>  (1) compatible = "mediatek,mt8173-efuse"
+>  (2) compatible = "mediatek,mt8173-efuse", "mmio-nvmem"
+> 
+> (1) will be supported any anyway for older dts and you need to add
+> the specific compatibles to the nvmem-mmio driver - or keep the
+> driver as is.
+> 
+> With (2) you wouldn't need to do that and the kernel can load the
+> proper driver if available or fall back to the nvmem-mmio one. I'd
+> even make that one "default y" so it will be available on future
+> kernels and boards can already make use of the nvmem device even
+> if there is no proper driver for them.
+> 
+> I'd prefer (2). Dunno what the dt maintainers agree.
+
+No because you are changing the DT. The DT can't change when you want to 
+change drivers. This thinking is one reason why 'generic' bindings are 
+rejected.
+
+Rob
 
