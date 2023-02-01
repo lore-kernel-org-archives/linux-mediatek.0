@@ -4,71 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81A5FC05027
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 11:11:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19F86C636D3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 11:53:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UAdLTSx9aZVPgU2yXpW13ESsr057NA3ZhA2Ul60b64I=; b=yiDmluMPEtUxtL8BII2t+weQfY
-	x/Gs6To6gxPm82HXH6s2ikVBAASixk8kH0hBi46/G7NkWL9Vjc8tXveaJqhq5Vio6W1fXw9sqVGl+
-	VFzHls9SaNxaafohCeM7pHjNu5mzJLMFp09RBKXZMlA5bzaDs1G9apbtGfj5BPTaG3+pgJwltPnkX
-	t11ZVTy9ceK7qWj7b8xdK7LWG6K3i6yr6zJ9t3QcFzoAt8Ieo+UEJf92PHqFyuHLCwuCQCVzioKJE
-	s/47ufnXVwZPF0E8m0pdLmvRqcYm2M7wzJERx1R+n6avGy7MqzNUEPC+guUhKN7CwTgjvlBbhqn5A
-	wNZ3Hjfw==;
+	bh=qXmJjnvo/FFiDzkfMcuSjrP2rIaxNKinvpLHDM3lDcI=; b=vuXxTVBE3Dxc9q8nsJGqhvuXsa
+	+YxW7jHQPa3pTQHU4RtdwTQFfBafXZgx95nmJbS68EdCVtBgrNaWUUloCaGPvYUVz3E6r58rMSd69
+	cG9OXnVVmOT3HxL4JlfSuYI95XUNyUpWWLtkAYyAZnzi0tDh7K0RMHQa+wkeD6g9+BkNYun5UmhYs
+	8DtHQ0rx7hNR3UhYI3WcG0ZsPLwA7ibdwkTCKpitG7K7j++gyocA6N7IXh0TcZdp8A8blN6z2/cCa
+	i040J4rMli60eIYc+AVZha7/p7E6tvz0/fU8Un6Xf+qEAhD0eHPedRKuNuEWjpxwjViVyLIlwBI8h
+	xb7g0E/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNB1N-00BPwg-PC; Wed, 01 Feb 2023 11:11:21 +0000
-Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
+	id 1pNBff-00BbRD-BK; Wed, 01 Feb 2023 11:52:59 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNB1E-00BPsy-3f; Wed, 01 Feb 2023 11:11:13 +0000
-Received: from 3ffe.de (0001.3ffe.de [IPv6:2a01:4f8:c0c:9d57::1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 1AD52165B;
-	Wed,  1 Feb 2023 12:11:10 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1675249870;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=UAdLTSx9aZVPgU2yXpW13ESsr057NA3ZhA2Ul60b64I=;
-	b=2HqGAuAzLYYlhRsUU3EiKYIn/RqES/gaEF/Smvw1qlXTRS4rWCeA49iESbGNoMmJJw3vwb
-	fp0lq+m0UqYUxi6L6kIwZ/GY3u2vZa5QqiWj9zzJbMLnwYnN+gUePW3U9dnfTmHZsYuU4T
-	Bx18zZ+50cyykmEz3Unpt6uFTmTchoN3AqczpFcULJvWTn4CqusZyfqymhvTibbuV9DACI
-	lhMN57a8qJWGmxu4Udh+xuhlfDkJXFTJdPsiERjlFaE63jK/83RjQuXjd0jtcJQbr6yHlM
-	1Vfn9NUYmaoV3069OvHsKN3TN+dBLPDY10DJxgIh7TCyFGzz6YBEXA8bB4p+5w==
+	id 1pNBfc-00BbPX-5N
+	for linux-mediatek@lists.infradead.org; Wed, 01 Feb 2023 11:52:58 +0000
+Received: by mail-wm1-x331.google.com with SMTP id q8so12454788wmo.5
+        for <linux-mediatek@lists.infradead.org>; Wed, 01 Feb 2023 03:52:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=qXmJjnvo/FFiDzkfMcuSjrP2rIaxNKinvpLHDM3lDcI=;
+        b=N0elckNXjFQvKZibhvSoRRoSC9/x4UVe0mh+gY0BT4kJJKugTLMh0K6VMgpok4HIJg
+         Dh9YfRRKj7G+JSsy0KsMy9mVNhtsD5/IPKOB6anI8Se14qS79D09V4hamsOW7W/t/OUw
+         DC4NVKRG/X2iPQPw1qftU7ruSEcTu/xupnbN9rS5TwGTCnWbdXDL8UC1/XZ6ZarZhv0Y
+         NAXjvCIzkb4IXy/wYCE72TXZxoLBlSHjOlFmscy9bN8R5F8/s6W6eXSQo31vDJ1lN7aA
+         fOFXkQ9DVgjvVJ26zKfatj74owxN6YmXerbOrPEx09gofYTkwo0ldQGHGiSvH5BkWhcS
+         a8RQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=qXmJjnvo/FFiDzkfMcuSjrP2rIaxNKinvpLHDM3lDcI=;
+        b=uZ0/Hu5Lp8YUXKVa1UNG1mQNSylzDwb8OWC8catLucqPE+D0Inj4mWWMmDgGmhg98+
+         l3f9xgKM1my966vDxciHcoGFZytDT7Bhu9Wnmva0T4dxdWHqbHvLAuosnqRZ4GxnLsuP
+         gb4h1cD1bxcF2nBkiLD9L92gNEOuPn05nG605rfy0IcdmWrSeq6EClcyOaMznVVoRML5
+         8eP7uYx7LLcuOsuCBS3g8I7xxIIK3VW4XfqFbbrUctQdHkuGHqADRWu8HpvXsC8saF1K
+         KTBE2MzwBaoEDaAUC5G6p21oWZrzHAemBPKDXXZhRElHm6GKZMjGXulpFefCnrmkAY2x
+         eFCw==
+X-Gm-Message-State: AO0yUKVHyM/jUyefBJgksh+fP4ZKse8TcMqEoLnaQQoCtOppbNQAL/cg
+	4/yfL8LNulC2NLN7UbQr2fMoYA==
+X-Google-Smtp-Source: AK7set/dRg45qD9OzdP33C522mFyZvo9JvWq76eRC7vcFbhRZPDOFP+Yn/7YzjHOSNSVsebueHhhAA==
+X-Received: by 2002:a1c:7906:0:b0:3da:db4:6105 with SMTP id l6-20020a1c7906000000b003da0db46105mr1733058wme.37.1675252374488;
+        Wed, 01 Feb 2023 03:52:54 -0800 (PST)
+Received: from [192.168.1.195] ([5.133.47.210])
+        by smtp.googlemail.com with ESMTPSA id j25-20020a05600c1c1900b003daf6e3bc2fsm2977865wms.1.2023.02.01.03.52.53
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 01 Feb 2023 03:52:53 -0800 (PST)
+Message-ID: <88a8c2ef-8478-84b3-e4c9-6d3760313241@linaro.org>
+Date: Wed, 1 Feb 2023 11:52:52 +0000
 MIME-Version: 1.0
-Date: Wed, 01 Feb 2023 12:11:09 +0100
-From: Michael Walle <michael@walle.cc>
-To: =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <zajec5@gmail.com>
-Cc: devicetree@vger.kernel.org, hayashi.kunihiko@socionext.com,
- krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, mhiramat@kernel.org, rafal@milecki.pl,
- robh+dt@kernel.org, srinivas.kandagatla@linaro.org
-Subject: Re: [PATCH 3/4] nvmem: mtk-efuse: replace driver with a generic MMIO
- one
-In-Reply-To: <618392ed-7d20-a49f-1ec5-b27850d71dec@gmail.com>
-References: <20230201064717.18410-4-zajec5@gmail.com>
- <20230201084821.1719839-1-michael@walle.cc>
- <8452b341-8695-05d8-9d03-47c9aeca0ec7@gmail.com>
- <017a17eb99ac2b2c858d27b65c5dd372@walle.cc>
- <618392ed-7d20-a49f-1ec5-b27850d71dec@gmail.com>
-User-Agent: Roundcube Webmail/1.4.13
-Message-ID: <9c17f253542610da58f843b920e63f4a@walle.cc>
-X-Sender: michael@walle.cc
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH 2/4] nvmem: add generic driver for devices with MMIO
+ access
+Content-Language: en-US
+To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>
+References: <20230201064717.18410-1-zajec5@gmail.com>
+ <20230201064717.18410-3-zajec5@gmail.com>
+From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+In-Reply-To: <20230201064717.18410-3-zajec5@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230201_031112_352539_DA7F02E5 
-X-CRM114-Status: UNSURE (   6.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230201_035256_281959_1544E77F 
+X-CRM114-Status: GOOD (  32.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,23 +100,159 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->> nitpick btw: why not "nvmem-mmio"?
+
+
+On 01/02/2023 06:47, Rafał Miłecki wrote:
+> From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> Because I read from left to right ;)
+> With nvmem layouts in place we should now work on plain content access
+> NVMEM drivers (e.g. MMIO one). Actual NVMEM content handling should go
+> to layout drivers.
+> 
+> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+> ---
+>   drivers/nvmem/Kconfig  | 10 ++++++
+>   drivers/nvmem/Makefile |  2 ++
+>   drivers/nvmem/mmio.c   | 80 ++++++++++++++++++++++++++++++++++++++++++
+>   3 files changed, 92 insertions(+)
+>   create mode 100644 drivers/nvmem/mmio.c
+> 
+> diff --git a/drivers/nvmem/Kconfig b/drivers/nvmem/Kconfig
+> index 789729ff7e50..9eb5e93f0455 100644
+> --- a/drivers/nvmem/Kconfig
+> +++ b/drivers/nvmem/Kconfig
+> @@ -170,6 +170,16 @@ config NVMEM_MICROCHIP_OTPC
+>   	  This driver enable the OTP controller available on Microchip SAMA7G5
+>   	  SoCs. It controls the access to the OTP memory connected to it.
+>   
+> +config NVMEM_MMIO
+> +	tristate "MMIO access based NVMEM support"
+> +	depends on HAS_IOMEM
+> +	help
+> +	  This driver provides support for NVMEM devices that can be accessed
+> +	  using MMIO.
+> +
+> +	  This driver can also be built as a module. If so, the module
+> +	  will be called nvmem-mmio.
+> +
+>   config NVMEM_MTK_EFUSE
+>   	tristate "Mediatek SoCs EFUSE support"
+>   	depends on ARCH_MEDIATEK || COMPILE_TEST
+> diff --git a/drivers/nvmem/Makefile b/drivers/nvmem/Makefile
+> index 442f9a4876a5..2f2bed7cdf24 100644
+> --- a/drivers/nvmem/Makefile
+> +++ b/drivers/nvmem/Makefile
+> @@ -36,6 +36,8 @@ obj-$(CONFIG_NVMEM_MESON_MX_EFUSE)	+= nvmem_meson_mx_efuse.o
+>   nvmem_meson_mx_efuse-y			:= meson-mx-efuse.o
+>   obj-$(CONFIG_NVMEM_MICROCHIP_OTPC)	+= nvmem-microchip-otpc.o
+>   nvmem-microchip-otpc-y			:= microchip-otpc.o
+> +obj-$(CONFIG_NVMEM_MMIO)		+= nvmem-mmio.o
+> +nvmem-mmio-y				:= mmio.o
+>   obj-$(CONFIG_NVMEM_MTK_EFUSE)		+= nvmem_mtk-efuse.o
+>   nvmem_mtk-efuse-y			:= mtk-efuse.o
+>   obj-$(CONFIG_NVMEM_MXS_OCOTP)		+= nvmem-mxs-ocotp.o
+> diff --git a/drivers/nvmem/mmio.c b/drivers/nvmem/mmio.c
+> new file mode 100644
+> index 000000000000..19c8880dc675
+> --- /dev/null
+> +++ b/drivers/nvmem/mmio.c
+> @@ -0,0 +1,80 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +/*
+> + * Copyright (C) 2023 Rafał Miłecki <rafal@milecki.pl>
+> + */
+> +
+> +#include <linux/io.h>
+> +#include <linux/mod_devicetable.h>
+> +#include <linux/module.h>
+> +#include <linux/nvmem-provider.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/property.h>
+> +#include <linux/slab.h>
+> +
+> +struct mmio_nvmem {
+> +	void __iomem *base;
+> +};
+> +
+> +static int mmio_nvmem_read(void *context, unsigned int offset, void *val, size_t bytes)
+> +{
+> +	struct mmio_nvmem *priv = context;
+> +
+> +	memcpy_fromio(val, priv->base, bytes);
 
-if you have more compatibles do you prefer
+How does this work with different register strides?
 
-  a-grp
-  bcdef-grp
-  gh-grp
+> +
+> +	return 0;
+> +}
+> +
+> +static int mmio_nvmem_probe(struct platform_device *pdev)
+> +{
+> +	struct nvmem_config config = {
+> +		.name = "mmio-nvmem",
 
-or
 
-  grp-a
-  grp-bcdef
-  grp-gh
+you could use NVMEM_DEVID_AUTO.
 
-To my eyes the latter looks nicer, but it's just a matter of taste ;)
 
--michael
+But this is not great, this is going to break the existing abi for 
+converted drivers. Either we find a way to pass compatible specific data 
+and override the default values.
+
+Also there are going to be cases where access to registers will require 
+additional resources like clks or pd.
+
+
+--srini
+
+> +		.read_only = true,
+> +		.reg_read = mmio_nvmem_read,
+> +	};
+> +	struct device *dev = &pdev->dev;
+> +	struct mmio_nvmem *priv;
+> +	struct resource *res;
+> +
+> +	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
+> +	if (!priv)
+> +		return -ENOMEM;
+> +
+> +	priv->base = devm_platform_get_and_ioremap_resource(pdev, 0, &res);
+> +	if (IS_ERR(priv->base))
+> +		return PTR_ERR(priv->base);
+> +
+> +	config.dev = dev;
+> +	config.size = resource_size(res);
+> +	config.word_size = sizeof(u8);
+> +	config.stride = sizeof(u8);
+> +	config.priv = priv;
+> +
+> +	if (!device_property_present(dev, "read-only"))
+> +		dev_warn(dev, "Writing is not supported yet");
+> +
+> +	return PTR_ERR_OR_ZERO(devm_nvmem_register(dev, &config));
+> +}
+> +
+> +static const struct of_device_id mmio_nvmem_of_match_table[] = {
+> +	{ .compatible = "mmio-nvmem", },
+> +	{},
+> +};
+> +
+> +static struct platform_driver mmio_nvmem_driver = {
+> +	.probe = mmio_nvmem_probe,
+> +	.driver = {
+> +		.name = "mmio_nvmem",
+> +		.of_match_table = mmio_nvmem_of_match_table,
+> +	},
+> +};
+> +
+> +static int __init mmio_nvmem_init(void)
+> +{
+> +	return platform_driver_register(&mmio_nvmem_driver);
+> +}
+> +
+> +subsys_initcall_sync(mmio_nvmem_init);
+> +
+> +MODULE_AUTHOR("Rafał Miłecki");
+> +MODULE_LICENSE("GPL");
+> +MODULE_DEVICE_TABLE(of, mmio_nvmem_of_match_table);
 
