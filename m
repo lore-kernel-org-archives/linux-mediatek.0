@@ -4,84 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE9B4C05027
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 17:02:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BC19C38142
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 17:13:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/cc1vOdWtwzxjB8Itoebo3PGpOUY7+SB1sP8jgG5BLo=; b=Y2SohT+D/SHveF4snFh3H+SJfc
-	zKLTPLnDysYtrM4nJBkELPGHEH3BMXKWVW/6xe0F3mOcvm47i6UZdbD8T7OziaJ5fok2M/e4uL1Kl
-	Wc7XJ3UQLJkPSuXZaB2wbUnsxzWUtDAfulfKzqgbEFn27Rl9w+xBZqzpNEoeiCSwKB1OTTMGdlVtj
-	C0jn3OjnFKg9jbITuQIB4JZksHC/N0O90SFNrDlt++w2wn8TZoO8D63KT091sKFn9xAcaorI273+8
-	h+zB9d7l2NH3aQGCFrHoxRiNoygdHrgJHMmW9DuBAlG2opf5OnAQbkVcIn6mTtm60YC/aPcOpPgLB
-	kgXjUfMw==;
+	bh=i3v4lvgMJrNqsvAO9VMzJDJpTxWMbyB0Tj1uMZ3edH4=; b=0aTSoqCJlZ6+pMHEemjkfFtxqH
+	t2gyGqMFXr6QdCQomvFUqHiZzQ6oMKzjphmk1CbAb/0lMdVw71sF/MH2ET64CgK93UiXyFtb/iM/N
+	EXjcnQf+SbpkS5j8OXVhjsBF1H2/uLVXFHL9x8c27kk/tGFAhtDip4p7aVs14J/hO+LoqEqM54yU5
+	LiCjo5YXcm3kgbZOQcvz7G/fhf9Dir+8fUtUlG+gY+Fntzik8VjooDBGRW9Q0zH+7fwX+Xqwl/3IX
+	v48WYuFt5uKczgmg7ww7SgG3VJJd88SZn+SFPSaCdNKpiZM2vY6gQnXAAydNrh/YF4VEkb79iq90+
+	zLipdbSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNGVI-00Cws8-PG; Wed, 01 Feb 2023 17:02:36 +0000
-Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
+	id 1pNGfV-00Cz75-Fs; Wed, 01 Feb 2023 17:13:09 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNGVD-00CwlM-GJ
-	for linux-mediatek@lists.infradead.org; Wed, 01 Feb 2023 17:02:32 +0000
-Received: by mail-qt1-x82a.google.com with SMTP id bb40so10162349qtb.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 01 Feb 2023 09:02:26 -0800 (PST)
+	id 1pNGfI-00Cz24-LT
+	for linux-mediatek@lists.infradead.org; Wed, 01 Feb 2023 17:13:01 +0000
+Received: by mail-wr1-x432.google.com with SMTP id h12so17966985wrv.10
+        for <linux-mediatek@lists.infradead.org>; Wed, 01 Feb 2023 09:12:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=/cc1vOdWtwzxjB8Itoebo3PGpOUY7+SB1sP8jgG5BLo=;
-        b=Vx4yU+Sj4JFqsfCfjWK/W6R96a4AK2AznqfWmnIWtfkW6PsajbnDfuTpGP7tMZ04S/
-         M1/HXtoMh/wA9pivy2Rnw0Ac5NJBcq5mEJzJOjv2ZO0+CXMmGueor7lWFQtkDdvKJBy4
-         /4jnd6hpZP4eDq9yBZd4NQI0m0eyo5+ADvUrM=
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=i3v4lvgMJrNqsvAO9VMzJDJpTxWMbyB0Tj1uMZ3edH4=;
+        b=jveV7rE6VkRhavv5UZTPo6oGPvccJ5HfKD92qZWtbyJpxrqdRXX9MEY8T+XIZatBEa
+         Tvl8zhkPJuwdAzyExpZ1cDy7KuOnLUtg/lpOWt67jjBZfpR0tkSCpx+oLyOoIgKywKpN
+         GAb/zREN8Hav3nJAwOTimNAaI3a8s8/9nK0GEUa1pCQbt5uMIskVilVCQJSN887YJ5uJ
+         NqzTzPqmL8LAG5DtlM7klEOyEptCnKFM2/0V3Z3wfM/9t2l4B+3jE+Ofu3hiiDgDSdmk
+         KP3Q4GrbaVgEhXnR5yp9KWXgKP5fbGBk19wrb6VLPH0UCvB7A6j0nCXTFrisjv/rWDDu
+         cOaA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=/cc1vOdWtwzxjB8Itoebo3PGpOUY7+SB1sP8jgG5BLo=;
-        b=C7k1em1n++bi9h2i3PXvfLdQK7IbeAH1sP3SHved4EZBzaPUbkELzLCvDUnGeA+yCh
-         UePSrSIk2ixyT8QcBsyPue+3dPxNgTvklbnUT/Poy/S2h+Hn8lP+K2li3AwqpFAhReM8
-         1DsRVnm8LMmH1QPhz20YQ0+mpJcPnUZvmMgsgDOYsERQWTzmokNp4b4wMz25SxxmQbMO
-         ezt9esz3aavYgRXO7Z6ricSZXXhyXrS5WRAKffsN3dnuwp5Vh7xrQ6X1PDkuXquLUdrf
-         ARY9SYjLKyvVVs+1UynIfjaBgEnDllf3PvRQZKETq8NEoBPDxEujqxFJVY9N0V9Pqwt+
-         99VA==
-X-Gm-Message-State: AO0yUKXcn6Gu16x6O+Y8DvdYOGaLcR3YH9Di5uHFcUMArdhCULfIaZ+w
-	2Zt+5Hg8MdRf02S5sp4ZXtk7RqWheLHmJKeN
-X-Google-Smtp-Source: AK7set9RwiJUfNVKI3TuTIMqUyXDZ5F4xiGpr/SUlKizJWISqA3RG4SDl2/gk8bLulVeqTwUsZDSHg==
-X-Received: by 2002:a05:622a:134c:b0:3af:ba3b:db80 with SMTP id w12-20020a05622a134c00b003afba3bdb80mr5199215qtk.33.1675270945250;
-        Wed, 01 Feb 2023 09:02:25 -0800 (PST)
-Received: from greenjustin3.nyc.corp.google.com ([2620:0:1003:314:9334:99d8:1f91:70a])
-        by smtp.gmail.com with ESMTPSA id z15-20020ac8430f000000b003b646a99aa6sm5549543qtm.77.2023.02.01.09.02.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 01 Feb 2023 09:02:24 -0800 (PST)
-From: Justin Green <greenjustin@chromium.org>
-To: linux-mediatek@lists.infradead.org,
-	dri-devel@lists.freedesktop.org
-Cc: angelogioacchino.delregno@collabora.com,
-	jason-jh.lin@mediatek.com,
-	justin.yeh@mediatek.com,
-	wenst@chromium.org,
-	chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de,
-	airlied@linux.ie,
-	matthias.bgg@gmail.com,
-	daniel@ffwll.ch,
-	daniel@fooishbar.org,
-	Justin Green <greenjustin@chromium.org>
-Subject: [PATCH 2/3] drm/mediatek: Add support for AR30 and BA30 overlays
-Date: Wed,  1 Feb 2023 12:02:09 -0500
-Message-Id: <20230201170210.1253505-3-greenjustin@chromium.org>
-X-Mailer: git-send-email 2.39.1.456.gfc5497dd1b-goog
-In-Reply-To: <20230201170210.1253505-1-greenjustin@chromium.org>
-References: <20230201170210.1253505-1-greenjustin@chromium.org>
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=i3v4lvgMJrNqsvAO9VMzJDJpTxWMbyB0Tj1uMZ3edH4=;
+        b=qXMvo2sh+4mOzV4e8v1d8SHUzOjLu0qNzIt/eV/H0B92dAerZQie3eEWoevwUQt4uD
+         L4brUTIuJBIOqfSiFkZDj1/hSITfOU1rsC8tKlppiX+3S+Ss/EuiK+Gaw8wovLxTp9eU
+         XSzqLsLbE5dr0vmgshi8JzvzgPwrr/JY7zwzaS9e4FimfRx2qqWrnjJo/r4DTfAneST5
+         omah3zZ7YvCETBJXUqiXkE2jJZ+nK56qwsUttL0FlgoTJ9FKEISXoTaIBE1MQiA99gEN
+         p3kxnfhoFgxHIlzl3WGEtqad/trViKlIzNS6sKhH9mvciqWuqNF1p+J6P0wVfOMSXHUj
+         I0/w==
+X-Gm-Message-State: AO0yUKX+k1IYy4s2vCj2UuZgeghemv+dseXJwEuZEdhEVRkl6WvWYUdZ
+	hdn3M8s7Ecx98Ch3KUOc6ZKkLw==
+X-Google-Smtp-Source: AK7set9vFVx2h/65GJtKCAcoqYhL2uenVpmVGmEzti3KxJGPZTdKkO9JVCu2AFbygJ/RAySdrArmIw==
+X-Received: by 2002:a05:6000:a04:b0:2c3:bc42:2ff9 with SMTP id co4-20020a0560000a0400b002c3bc422ff9mr1145931wrb.25.1675271574640;
+        Wed, 01 Feb 2023 09:12:54 -0800 (PST)
+Received: from [192.168.1.109] ([178.197.216.144])
+        by smtp.gmail.com with ESMTPSA id m2-20020a056000180200b002bfb5618ee7sm17827215wrh.91.2023.02.01.09.12.52
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 01 Feb 2023 09:12:53 -0800 (PST)
+Message-ID: <8662c6bd-b32d-3d3d-b3b7-7f4aeb028309@linaro.org>
+Date: Wed, 1 Feb 2023 18:12:51 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH v12] thermal: drivers: mediatek: Add the Low Voltage
+ Thermal Sensor driver
+Content-Language: en-US
+To: Balsam CHIHI <bchihi@baylibre.com>
+Cc: daniel.lezcano@linaro.org, angelogioacchino.delregno@collabora.com,
+ rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com,
+ matthias.bgg@gmail.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org,
+ ye.xingchen@zte.com.cn, p.zabel@pengutronix.de, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ khilman@baylibre.com, james.lo@mediatek.com, rex-bc.chen@mediatek.com
+References: <20230124131717.128660-5-bchihi@baylibre.com>
+ <20230131153816.21709-1-bchihi@baylibre.com>
+ <ab1e4822-d5f4-79f6-ea38-47e2342ebe49@linaro.org>
+ <CAGuA+oqLiCxb1g7pwf+RwUTWHV37pXdAWUXHV51TnUy1-xUOXQ@mail.gmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <CAGuA+oqLiCxb1g7pwf+RwUTWHV37pXdAWUXHV51TnUy1-xUOXQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230201_090231_577080_B5C7EBA7 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20230201_091256_727597_6A8AFF06 
+X-CRM114-Status: GOOD (  19.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,96 +102,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Tested using "modetest -P" on an MT8195 device.
+On 01/02/2023 17:46, Balsam CHIHI wrote:
+>>> +#ifdef CONFIG_MTK_LVTS_THERMAL_DEBUGFS
+>>> +
+>>> +static struct dentry *root;
+>>
+>> How do you handle two instances of driver?
+> 
+> This root node is the topmost directory for debugfs called 'lvts', the
+> different driver instances are below this. It is a singleton.
 
-Signed-off-by: Justin Green <greenjustin@chromium.org>
----
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 33 +++++++++++++++++++++++++
- 1 file changed, 33 insertions(+)
+Indeed. What about removal? Aren't you remobing entire directory
+structure on first device removal?
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 8743c8047dc9..a6255e847104 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -41,6 +41,7 @@
- #define DISP_REG_OVL_RDMA_CTRL(n)		(0x00c0 + 0x20 * (n))
- #define DISP_REG_OVL_RDMA_GMC(n)		(0x00c8 + 0x20 * (n))
- #define DISP_REG_OVL_ADDR_MT2701		0x0040
-+#define DISP_REG_OVL_CLRFMT_EXT			0x02D0
- #define DISP_REG_OVL_ADDR_MT8173		0x0f40
- #define DISP_REG_OVL_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n))
- #define DISP_REG_OVL_HDR_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n) + 0x04)
-@@ -61,6 +62,10 @@
- 					0 : OVL_CON_CLRFMT_RGB)
- #define OVL_CON_CLRFMT_RGB888(ovl)	((ovl)->data->fmt_rgb565_is_0 ? \
- 					OVL_CON_CLRFMT_RGB : 0)
-+#define OVL_CON_CLRFMT_BIT_DEPTH_MASK(ovl)	(0xFF << 4 * (ovl))
-+#define OVL_CON_CLRFMT_BIT_DEPTH(depth, ovl)	(depth << 4 * (ovl))
-+#define OVL_CON_CLRFMT_8_BIT			0x00
-+#define OVL_CON_CLRFMT_10_BIT			0x01
- #define	OVL_CON_AEN		BIT(8)
- #define	OVL_CON_ALPHA		0xff
- #define	OVL_CON_VIRT_FLIP	BIT(9)
-@@ -89,6 +94,7 @@ struct mtk_disp_ovl_data {
- 	bool supports_afbc;
- 	const u32 *formats;
- 	size_t num_formats;
-+	bool supports_clrfmt_ext;
- };
- 
- /*
-@@ -218,6 +224,30 @@ static void mtk_ovl_set_afbc(struct mtk_disp_ovl *ovl, struct cmdq_pkt *cmdq_pkt
- 			   DISP_REG_OVL_DATAPATH_CON, OVL_LAYER_AFBC_EN(idx));
- }
- 
-+static void mtk_ovl_set_bit_depth(struct device *dev, int idx, u32 format,
-+				  struct cmdq_pkt *cmdq_pkt)
-+{
-+	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
-+	unsigned int reg;
-+	unsigned int bit_depth = OVL_CON_CLRFMT_8_BIT;
-+
-+	if (!ovl->data->supports_clrfmt_ext)
-+		return;
-+
-+	reg = readl(ovl->regs + DISP_REG_OVL_CLRFMT_EXT);
-+	reg &= ~OVL_CON_CLRFMT_BIT_DEPTH_MASK(idx);
-+
-+	if (format == DRM_FORMAT_RGBA1010102 ||
-+	    format == DRM_FORMAT_BGRA1010102 ||
-+	    format == DRM_FORMAT_ARGB2101010)
-+		bit_depth = OVL_CON_CLRFMT_10_BIT;
-+
-+	reg |= OVL_CON_CLRFMT_BIT_DEPTH(bit_depth, idx);
-+
-+	mtk_ddp_write(cmdq_pkt, reg, &ovl->cmdq_reg,
-+		      ovl->regs, DISP_REG_OVL_CLRFMT_EXT);
-+}
-+
- void mtk_ovl_config(struct device *dev, unsigned int w,
- 		    unsigned int h, unsigned int vrefresh,
- 		    unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-@@ -332,9 +362,11 @@ static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt)
- 		return OVL_CON_CLRFMT_ARGB8888;
- 	case DRM_FORMAT_BGRX8888:
- 	case DRM_FORMAT_BGRA8888:
-+	case DRM_FORMAT_BGRA1010102:
- 		return OVL_CON_CLRFMT_ARGB8888 | OVL_CON_BYTE_SWAP;
- 	case DRM_FORMAT_XRGB8888:
- 	case DRM_FORMAT_ARGB8888:
-+	case DRM_FORMAT_ARGB2101010:
- 		return OVL_CON_CLRFMT_RGBA8888;
- 	case DRM_FORMAT_XBGR8888:
- 	case DRM_FORMAT_ABGR8888:
-@@ -418,6 +450,7 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 				      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_PITCH_MSB(idx));
- 	}
- 
-+	mtk_ovl_set_bit_depth(dev, idx, fmt, cmdq_pkt);
- 	mtk_ovl_layer_on(dev, idx, cmdq_pkt);
- }
- 
--- 
-2.39.1.456.gfc5497dd1b-goog
+(...)
+
+>>> +
+>>> +     of_property_for_each_string(np, "nvmem-cell-names", prop, cell_name) {
+>>> +             size_t len;
+>>> +             u8 *efuse;
+>>> +
+>>> +             cell = of_nvmem_cell_get(np, cell_name);
+>>> +             if (IS_ERR(cell)) {
+>>> +                     dev_dbg(dev, "Failed to get cell '%s'\n", cell_name);
+>>
+>> Is this an error? If so, why debug? dbg is not for errors.
+> 
+> AFAIK using dev_dbg does not increase ELF size when DEBUG is disabled.
+> If this is not a good reason for you, then I will change it to dev_err.
+
+But also dev_dbg are not visible in error or warn level logs. If this is
+not an error, then indeed dev_dbg could be fine. But errors should be
+verbose.
+
+> 
+>>
+>>> +                     return PTR_ERR(cell);
+>>> +             }
+>>> +
+>>> +             efuse = nvmem_cell_read(cell, &len);
+>>> +
+>>> +             nvmem_cell_put(cell);
+>>> +
+>>> +             if (IS_ERR(efuse)) {
+>>> +                     dev_dbg(dev, "Failed to read cell '%s'\n", cell_name);
+>>> +                     return PTR_ERR(efuse);
+>>> +             }
+>>> +
+>>> +             lvts_td->calib = devm_krealloc(dev, lvts_td->calib,
+>>> +                                            lvts_td->calib_len + len, GFP_KERNEL);
+>>> +             if (!lvts_td->calib)
+>>> +                     return -ENOMEM;
+>>> +
+>>> +             memcpy(lvts_td->calib + lvts_td->calib_len, efuse, len);
+>>> +
+>>> +             lvts_td->calib_len += len;
+>>> +
+>>> +             kfree(efuse);
+>>> +     }
+>>> +
+>>> +     return 0;
+>>> +}
+>>> +
+>>> +static int __init lvts_golden_temp_init(struct device *dev, u32 *value)
+>>
+>> You did not test it, right? Build with section mismatch analysis...
+> 
+> I'm not sure to fully understand this comment.
+> Would you explain, please?
+
+git grep -i "section mismatch" leads to lib/Kconfig.debug and
+DEBUG_SECTION_MISMATCH
+
+(...)
+
+>>> +static struct lvts_ctrl_data mt8195_lvts_data_ctrl[] = {
+>>
+>> Why this cannot be const?
+> 
+> I've got the following warning when I added "const"
+> drivers/thermal/mediatek/lvts_thermal.c:1286:27: warning:
+> initialization discards ‘const’ qualifier from pointer target type
+> [-Wdiscarded-qualifiers]
+>  1286 |         .lvts_ctrl      = mt8195_lvts_data_ctrl,
+>       |                           ^~~~~~~~~~~~~~~~~~~~~~~~~
+
+As with every const... Do you need lvts_ctrl to be non-const? If yes,
+then how do you handle multiple devices (singleton)?
+
+Best regards,
+Krzysztof
 
 
