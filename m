@@ -4,90 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 764A1C38142
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 17:00:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6FC3C636D7
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 17:02:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vw3JMc60QFgf7Q8TTyiPs3L7+sJqYoWAEt2y6Foay18=; b=oB+roZUIGsDMuVDgaFtbBvqHBQ
-	+vry8OjZq32084XqmnpGs7aYttzTzSgLg3FEy/nglSku4ivSx2JYm7DA6Ug5EFMhxC76hdNFy4acn
-	HVIZDQ0IytvV/oUPwB7PJ4jWT4rLX1INZLLh7yKqdJdddAMPc+ql4rapREPueS1g182oJQeoAH47i
-	yWkV0/hIzGX+Ti80ANbt+ALmJG524aViPdIiGdPE826MTf4Bstp/3fyfISSUfAiFz7CCaOk+V0w4m
-	TUjF4E10d62o4qrdaPakfSyqpPn+QFjDKZhsLGYJh7Bgb9VSMWpv+GXkD+vCtAP9qvYsQdHg/k3tj
-	ufZaE+Rg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=rJPmzdZE4NSQdkz7wFZ0jochMCQuk6LumCoRhBy4k2I=; b=Sh8GYrlTYUL4m+tkvYT/R3avMN
+	j8+LY7Y2yydKJBZVezSz3JwmmFNMurL5s6wN1gqIE+30qAqMDBvCn/r6YXzFoN6PpfWL1MAdsfniQ
+	dvzsiSZkxyFYG3IXhoTyYZCkB8RKvwT1dYbMKM+kSJijMQmjwvzqvdlZInWBhu6KfNuN7YVQ66Pkh
+	xTQUQmqangXwMj11NW6c1xtXdJ+8TskJDdEpSJH3ve5A8TK3d93PxwgKiLGsIU5Gmk5F+VTR6ukNq
+	Zqy0rB84jc4y9e5KVjGm05a5QgB5T/3YB331IO7mKROU+eeD7ahgnO9Pk6oFcWUDzKaxDmH8aStAy
+	cnQ1Z5ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNGSx-00Cvtu-HS; Wed, 01 Feb 2023 17:00:11 +0000
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+	id 1pNGVB-00CwnE-Rs; Wed, 01 Feb 2023 17:02:29 +0000
+Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNGSk-00CvnD-Kk; Wed, 01 Feb 2023 17:00:00 +0000
-Received: by mail-ed1-x533.google.com with SMTP id x7so15125385edr.0;
-        Wed, 01 Feb 2023 08:59:53 -0800 (PST)
+	id 1pNGV9-00Cwku-3L
+	for linux-mediatek@lists.infradead.org; Wed, 01 Feb 2023 17:02:28 +0000
+Received: by mail-qt1-x831.google.com with SMTP id h24so9543097qtr.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 01 Feb 2023 09:02:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=vw3JMc60QFgf7Q8TTyiPs3L7+sJqYoWAEt2y6Foay18=;
-        b=NOxxBcabypwDw5ZsGpi0n57XKkq3s7dl1TJhJ1YbZuSXySUAeUNN3HkpUWxDfQAwWP
-         Pw11X6bZJfcZDEfg16jDhfot5imVcYeZTEmsAkz6hCo/6xNPicEwtgGIJOQJWKv9nrme
-         weu0cPYCeiN9Iy+dIHXphSUSaWwTfqzzdr1D37eTxqL2sYnbfmya/pLgZ33ninNGfzAh
-         RuPGwa84Y121hqN51U5wWpKqB5jaULV8zy0RQxHgNMWHeUFPmkDVZF6RMEjRg1Gf2Udw
-         VVJogT/Z+Watc02fy0qqYgFYouSroZed9xG8dddUa9xOkolXuWLh25DefyIW+sUlv1vy
-         qufQ==
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=rJPmzdZE4NSQdkz7wFZ0jochMCQuk6LumCoRhBy4k2I=;
+        b=NpNPwPTDHN3G1uFG9+p7tm8cd/KNENYKAmYFQUOyf08E0frMjYiYZfKX4mZsZ0cDpw
+         NLoXu0SWVmI5DdPr7w1WcuL4PAaYe4gHMVL0Zhj10V0urRokv4hUCXL99ZuUBRLDKKeU
+         J0KQpzYzERo6dDnlKT6Bp6HXhTrMrVx5ZO0CU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=vw3JMc60QFgf7Q8TTyiPs3L7+sJqYoWAEt2y6Foay18=;
-        b=nv/xrF0sT5wF3tTy7TJFPVNSOiANaWWWtBqiMzdNLwrYMsTernr/EilaCDNC7E7gCO
-         yoLWFxwZCUQseovCWZ8hZHzJEI1lFWX35G6fPU7ntes1TpgT/9u1Ffd1FTDVbuKjgJrv
-         bO6kuh3pAOMBpNZetDSMFUiYGvfj6nsx1hXbYdVynVt314QD3m3c3/fWykWhMEveslO1
-         CRyZZwjflFQlgtKFc78niJxLv8euGuk1xj6S6JB4PQ7jX/1J0rdBWNqtiOQBbtBCvPOf
-         aZ/YBKrJe3w7HcK/8IpgrwnoxnxEp3lQk4nuM3/yQkVAK+7eaTNs6bg++INqYt6V7Wr8
-         IayA==
-X-Gm-Message-State: AO0yUKU4AzelePhLKNoV6BtUA3wbTy+svKL3/PoUzkXvC6EIcr4LZkkD
-	Bbdv6wOSFvBQXrOlrcPRJJI=
-X-Google-Smtp-Source: AK7set9j544AAoQ+SvnPoWkjwfiPgAPXI/nWj+bLA78vW8zR9X8/TrGGt5wvGremyy49kaBIO5GPrw==
-X-Received: by 2002:a05:6402:22a3:b0:4a2:662a:841a with SMTP id cx3-20020a05640222a300b004a2662a841amr2675594edb.29.1675270792145;
-        Wed, 01 Feb 2023 08:59:52 -0800 (PST)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id h1-20020a1709062dc100b0087bd2924e74sm8853959eji.205.2023.02.01.08.59.50
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 01 Feb 2023 08:59:51 -0800 (PST)
-Message-ID: <68466850-ddb0-119a-ea82-636ec2c5368e@gmail.com>
-Date: Wed, 1 Feb 2023 17:59:49 +0100
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=rJPmzdZE4NSQdkz7wFZ0jochMCQuk6LumCoRhBy4k2I=;
+        b=CLxaEAQF/kcJZirXCAwCYPeqh+SlQw2eutn9oBcKO11Avkc/89KfC/kAugSg0xnZhi
+         /8tMMp2UMNfy7pH9ZN+Df5JtKIKz3yAL2WT2ABNR+NUbLdRS5tDtcvGbw9z8jRbtBnJl
+         eO/DXccnSScyxKhB7C1F2mBJiULPBbZONty9/VOz5LszSfWM7O+udf4s0TGUFHPaI+pG
+         vRzfvAC6qUzHTwS9iDCfR6lh2vi1ID23SFTFb0oDINUYznZ5LMCHQ7LkQ6bY1WagNgRz
+         kSzoe6NrrLWQq7a/hEC7gsI61X8wFdwpymw/8uefw2Bc4V9Le7QNfdEO1wzz19XpfM7L
+         s2ng==
+X-Gm-Message-State: AO0yUKUqpAwIZ4EpOlFR/HujakWcahNGNcC/uQI9Z+Vd0suZ7iy5IFGq
+	d2T1JVXy8zm1PYIB5Rx+1GMOnZ71zLgZK5N0
+X-Google-Smtp-Source: AK7set+lamIikr/kqNApkdCRwuHsSMZwS1FCEr1MBVspIUpKMXkXSsrzjcsl8UoPQDimWgcp/SqOxw==
+X-Received: by 2002:ac8:59d4:0:b0:3b9:a4ae:9d17 with SMTP id f20-20020ac859d4000000b003b9a4ae9d17mr5576168qtf.3.1675270943345;
+        Wed, 01 Feb 2023 09:02:23 -0800 (PST)
+Received: from greenjustin3.nyc.corp.google.com ([2620:0:1003:314:9334:99d8:1f91:70a])
+        by smtp.gmail.com with ESMTPSA id z15-20020ac8430f000000b003b646a99aa6sm5549543qtm.77.2023.02.01.09.02.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 01 Feb 2023 09:02:22 -0800 (PST)
+From: Justin Green <greenjustin@chromium.org>
+To: linux-mediatek@lists.infradead.org,
+	dri-devel@lists.freedesktop.org
+Cc: angelogioacchino.delregno@collabora.com,
+	jason-jh.lin@mediatek.com,
+	justin.yeh@mediatek.com,
+	wenst@chromium.org,
+	chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de,
+	airlied@linux.ie,
+	matthias.bgg@gmail.com,
+	daniel@ffwll.ch,
+	daniel@fooishbar.org,
+	Justin Green <greenjustin@chromium.org>
+Subject: [PATCH 0/3 v7] drm/mediatek: Add support for 10-bit overlays
+Date: Wed,  1 Feb 2023 12:02:07 -0500
+Message-Id: <20230201170210.1253505-1-greenjustin@chromium.org>
+X-Mailer: git-send-email 2.39.1.456.gfc5497dd1b-goog
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Content-Language: en-US
-To: Balsam CHIHI <bchihi@baylibre.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: daniel.lezcano@linaro.org, angelogioacchino.delregno@collabora.com,
- rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- rdunlap@infradead.org, ye.xingchen@zte.com.cn, p.zabel@pengutronix.de,
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com,
- rex-bc.chen@mediatek.com
-References: <20230124131717.128660-5-bchihi@baylibre.com>
- <20230131153816.21709-1-bchihi@baylibre.com>
- <ab1e4822-d5f4-79f6-ea38-47e2342ebe49@linaro.org>
- <CAGuA+oqLiCxb1g7pwf+RwUTWHV37pXdAWUXHV51TnUy1-xUOXQ@mail.gmail.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v12] thermal: drivers: mediatek: Add the Low Voltage
- Thermal Sensor driver
-In-Reply-To: <CAGuA+oqLiCxb1g7pwf+RwUTWHV37pXdAWUXHV51TnUy1-xUOXQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230201_085958_717888_8DCBEB25 
-X-CRM114-Status: GOOD (  18.22  )
+X-CRM114-CacheID: sfid-20230201_090227_176576_A98C3DFD 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,82 +93,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This patch series adds support for 10-bit overlays to the Mediatek DRM driver.
+Specifically, we add support for AR30 and BA30 overlays on MT8195 devices and
+lay the groundwork for supporting more 10-bit formats on more devices.
+
+1. Refactor plane initialization logic to allow individual DDP components to
+provide their supported pixel formats.
+
+2. Add AR30 and BA30 support to overlay driver.
+
+3. Enable AR30 and BA30 overlays on MT8195.
 
 
-On 01/02/2023 17:46, Balsam CHIHI wrote:
-> Hi Krzysztof,
-> 
-> Thank you very much for the review!
-> 
-> On Wed, Feb 1, 2023 at 8:55 AM Krzysztof Kozlowski
-> <krzysztof.kozlowski@linaro.org> wrote:
->>
->> On 31/01/2023 16:38, bchihi@baylibre.com wrote:
->>> From: Balsam CHIHI <bchihi@baylibre.com>
->>>
+Version history:
+v2:
+ * Rebase and resolve merge conflicts with the AFBC patch.
+v3:
+ * Moved 10-bit support detection to mtk_disk_ovl.c
+v4:
+ * Moved formats to mtk_disp_ovl.c and mtk_disp_rdma.c
+v5:
+ * Minor style adjustments per checkpatch.pl
+v6:
+ * Refactor patch into patch series.
+ * Add formats directly to private data.
+v7:
+ * Gate setting OVL_CLRFMT_EXT register on compatibility.
+ * Split patches for adding 10-bit support and enabling 10-bit support on
+   MT8195.
 
-[...]
 
->>> +
->>> +static irqreturn_t lvts_ctrl_irq_handler(struct lvts_ctrl *lvts_ctrl)
->>> +{
->>> +     irqreturn_t iret = IRQ_NONE;
->>> +     u32 value, masks[] = {
->>
->> Don't mix different types in one declaration. u32 and a pointer are
->> quite different types.
-> 
-> I'm not sure to understand.
-> LVTS_INT_SENSORx are not pointers but register values.
-> 
+Justin Green (3):
+  drm/mediatek: Refactor pixel format logic
+  drm/mediatek: Add support for AR30 and BA30 overlays
+  drm/mediatek: Enable AR30 and BA30 overlays on MT8195
 
-u32 mask[] is a pointer to a array of u32 values of undefined length.
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     |  4 +
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c     | 94 +++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c    | 38 +++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |  4 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  4 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 20 +++++
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c    | 24 ++----
+ drivers/gpu/drm/mediatek/mtk_drm_plane.h    |  3 +-
+ 8 files changed, 173 insertions(+), 18 deletions(-)
 
-[...]
+-- 
+2.39.1.456.gfc5497dd1b-goog
 
->>> +static int __init lvts_golden_temp_init(struct device *dev, u32 *value)
->>
->> You did not test it, right? Build with section mismatch analysis...
-> 
-> I'm not sure to fully understand this comment.
-> Would you explain, please?
-> 
-
-AFAIU:
-
-lvts_golden_temp_init() and lvts_ctrl_init() are called from a function that is 
-not in __init section:
-lvts_domain_init()
-
-So if you free up the first to functions after init but not the callers, things 
-can explote.
-
-[...]
-
->>> +
->>> +static int lvts_probe(struct platform_device *pdev)
->>> +{
->>> +     struct lvts_data *lvts_data;
->>> +     struct lvts_domain *lvts_td;
->>> +     struct device *dev = &pdev->dev;
->>> +     struct resource *res;
->>> +     int irq, ret;
->>> +
->>> +     lvts_td = devm_kzalloc(dev, sizeof(*lvts_td), GFP_KERNEL);
->>> +     if (!lvts_td)
->>> +             return -ENOMEM;
->>> +
->>> +     lvts_data = (struct lvts_data *)of_device_get_match_data(dev);
->>
->> Why do you need case?
-> 
-> Would you explain, please?
-> 
-
-Typo by Krysztof, he meant the cast.
-lvts_data = of_device_get_match_data(dev);
-should be good enough.
-
-Regards,
-Matthias
 
