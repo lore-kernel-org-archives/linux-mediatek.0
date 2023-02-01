@@ -4,58 +4,167 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70714C636CC
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 03:20:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFF33C05027
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 06:24:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xTcdE99TcQTNlc0Sc8sOfgvuwoyx0Fa/oqYqR+lzGXw=; b=T/EssDFY/xRRS3+S0Nug2uFjKa
-	UK5I94GcO5jux4ESDhjcHgj7PRjO4tQTW9KO8k3C1XUqpdH/Y+T+TIdwm7aBucmymi8X+9JkgKXNj
-	3i4SBGKkSF8yshyvp2INxcoiv71nwZi34gT16geLF1qxaD0HSPnuOiTtmokSbQi6fpjd5D25HiW9F
-	c5w64rycZkBeHkZnAFyURTKmTi+0mRhx7CXKer4MP64O3DoukpPlvYK9h0gvAb1RXatmYmMWR6lA9
-	XhQLu+QcRx+4R19Hyfc+ssZabYmCaM1a/yfka0JFgrFWy0j+7eH+Nptjg8kFbMHOR1jwXoRdhXkR9
-	+igAPAxw==;
+	bh=yzvs+YvZPWqNwv/4NYDDD2VPWghmfGCFkmwOGLsLv80=; b=vp/p8B+MTUEkLBgKvgAuofIkWO
+	7YDh/xZ3hr9jbEVrKFXmQAZgD5wK8WZlPw6w2SqZyiV9AIZjwVbFzLceNlKgLIL7jqj1LG50zj6G9
+	smuOurN98WNuonGuJCdXTnn5ApHhKukI7u//SkJV2GVfhPrUi1jN2WCc3+r8a5j4K3TFGANKICYs1
+	BqmqKA3baGY8CynE5caz8Vb+f2Zx9pNLcuX/klfPm0qPmelBE+P0yJotBGfp2uGd2gPMZA3n3hXvg
+	3X51gl+Tn99F6H6R9UjLy/KGEELMbbBNN92MQRMcsCyrAzvnqvVQnACH1Hq3APXymIeAF3d3VTjrH
+	M8nMNujw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pN3fA-00A7Ky-FE; Wed, 01 Feb 2023 03:19:56 +0000
-Received: from mg.richtek.com ([220.130.44.152])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pN3ea-00A73C-Tq; Wed, 01 Feb 2023 03:19:24 +0000
-X-MailGates: (flag:4,DYNAMIC,BADHELO,RELAY,NOHOST:PASS)(compute_score:DE
-	LIVER,40,3)
-Received: from 192.168.10.46
-	by mg.richtek.com with MailGates ESMTP Server V5.0(17481:0:AUTH_RELAY)
-	(envelope-from <chiaen_wu@richtek.com>); Wed, 01 Feb 2023 11:18:52 +0800 (CST)
-Received: from ex4.rt.l (192.168.10.47) by ex3.rt.l (192.168.10.46) with
+	id 1pN6Xs-00ASJS-7P; Wed, 01 Feb 2023 06:24:36 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pN6Xa-00ASFc-05; Wed, 01 Feb 2023 06:24:19 +0000
+X-UUID: 0961a2e0a1f911eda08d4d6090ec5a5c-20230131
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=yzvs+YvZPWqNwv/4NYDDD2VPWghmfGCFkmwOGLsLv80=;
+	b=Ia5xwtaPZzabpQtAtLr17Zd65MdHk9j20LQE4vRy6Glkf5Mgup9Qlupcq3Q4kSm57twDQKabz4v+RnoaQY8Wr4yLvdkb+oFYR0YDbJuy7NDhioQSxhp9dY/+P4nU+yGULhwPQzkpcmIA3jsK01K8UmWy+7KNuSN37XU3HEQmlHM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.18,REQID:0deed3c8-d0a9-4034-a2f7-803d582f3e42,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:3ca2d6b,CLOUDID:24d8f155-dd49-462e-a4be-2143a3ddc739,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+X-CID-BVR: 0,NGT
+X-UUID: 0961a2e0a1f911eda08d4d6090ec5a5c-20230131
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <lixiong.liu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1995200334; Tue, 31 Jan 2023 23:24:09 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 1 Feb 2023 14:04:06 +0800
+Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n1.mediatek.com (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 1 Feb 2023 14:04:06 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=CVOxFKSuIRagGHkwQhjMlZejDvhKXfmkqMUSEwqXDJusOmvvjUrwscQxdOR/sIVfjWkHCDygXMyVKCyWX02HWrr1CoOK7kVOhNwRr5qyNqIwAz6mWCMC0H3B8MsjgTI6aUbYj9m+PTll5zQW5FdykMoVlzVGgxl/Nn5vkugDqNNwfUPDxsBIQzyd7v2Lg+HtHmsinB7gbAhHq7hkOLBRpFsh2t/O9rJz6468M6NUC5N1IfB6rynGc+1+a2SMitG3mpK0fwrOR/hNh877FZrcEF5EDs3flEuig//pIvg7+lALjgA322QftLw8p7xg8OB97KFIMQ7sd9seJkDQ/jMsKg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=yzvs+YvZPWqNwv/4NYDDD2VPWghmfGCFkmwOGLsLv80=;
+ b=aMcLKX5DuWjBuhL26gfP072zOZFjbMZxJ2LiBlS2cOFbcaEYHh7yOMM5a5OU5HDBquqjLkRhcZQ5x9XqGlmWtckqIfoCTAtKFuTs5yMMWUdvUaJ5mxzn4YzQPisOfbJhvBeoTcIBjL8oYQDOBbSv6zkxLVDw2TIobL+KH/urbI8hIxZO6ebDHgDYjmesa2w61HS81Tl8jZroU5zrDLUZX1ond5BjdyGBWnGZkJwk3bTfkxGMGbdLFt+QlGaes2HREX7/VIxzB1+n2dkAp1pBdbyV9fROV0hs+xqh1fM22jVqrU+Ru8PrGAqHLv5fbIGK2B4f8OgJV61m+CcJZb+0lw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=yzvs+YvZPWqNwv/4NYDDD2VPWghmfGCFkmwOGLsLv80=;
+ b=iFFDfg9B/QexmaEKnag4XuFBs4a/g6a9JsZdss94cEnVWkWaVBZ5480dMXrmFCG3c9TWxbWVEuyf6vMeiVjV8N8jUFMChh5EEfiTY+S7cqxoI7MfrL7mrO3csTKkwHcoU9SyXsmdpcNEAR8AZDYHSmi5sJbXXzdHcbER0o87J00=
+Received: from SL2PR03MB3947.apcprd03.prod.outlook.com (2603:1096:100:45::15)
+ by SI2PR03MB5529.apcprd03.prod.outlook.com (2603:1096:4:128::10) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.20; Wed, 1 Feb
- 2023 11:18:51 +0800
-Received: from linuxcarl2.richtek.com (192.168.10.154) by ex4.rt.l
- (192.168.10.45) with Microsoft SMTP Server id 15.2.1118.20 via Frontend
- Transport; Wed, 1 Feb 2023 11:18:51 +0800
-From: ChiaEn Wu <chiaen_wu@richtek.com>
-To: <corbet@lwn.net>, <pavel@ucw.cz>, <lee@kernel.org>,
-	<matthias.bgg@gmail.com>, <andriy.shevchenko@linux.intel.com>,
-	<jacek.anaszewski@gmail.com>
-CC: <linux-doc@vger.kernel.org>, <peterwu.pub@gmail.com>,
-	<cy_huang@richtek.com>, <linux-leds@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <szunichen@gmail.com>, ChiaEn Wu
-	<chiaen_wu@richtek.com>
-Subject: [PATCH v17 3/3] docs: leds: Add MT6370 RGB LED pattern document
-Date: Wed, 1 Feb 2023 11:17:29 +0800
-Message-ID: <f2427b8c277bf7f310eaf9146cf843f32a65dc9e.1675246896.git.chiaen_wu@richtek.com>
-X-Mailer: git-send-email 1.8.3.1
-In-Reply-To: <cover.1675246896.git.chiaen_wu@richtek.com>
-References: <cover.1675246896.git.chiaen_wu@richtek.com>
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6064.24; Wed, 1 Feb
+ 2023 06:04:04 +0000
+Received: from SL2PR03MB3947.apcprd03.prod.outlook.com
+ ([fe80::cdc4:41f3:5ffc:d0dd]) by SL2PR03MB3947.apcprd03.prod.outlook.com
+ ([fe80::cdc4:41f3:5ffc:d0dd%5]) with mapi id 15.20.6043.036; Wed, 1 Feb 2023
+ 06:04:04 +0000
+From: =?utf-8?B?TGl4aW9uZyBMaXUgKOWImOWIqembhCk=?= <Lixiong.Liu@mediatek.com>
+To: "tj@kernel.org" <tj@kernel.org>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"cgroups@vger.kernel.org" <cgroups@vger.kernel.org>,
+	=?utf-8?B?V2VuanUgWHUgKOiuuOaWh+S4vik=?= <Wenju.Xu@mediatek.com>,
+	wsd_upstream <wsd_upstream@mediatek.com>,
+	=?utf-8?B?SmluZy1UaW5nIFd1ICjlkLPpnZzlqbcp?= <Jing-Ting.Wu@mediatek.com>,
+	"hannes@cmpxchg.org" <hannes@cmpxchg.org>,
+	=?utf-8?B?V0ogV2FuZyAo546L5YabKQ==?= <wj.wang@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>,
+	=?utf-8?B?QW5kcmVzcyBLdW8gKOmDreWtn+S/rik=?= <Andress.Kuo@mediatek.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
+Subject: Re: cgroup user-after-free
+Thread-Topic: cgroup user-after-free
+Thread-Index: AQHZJmsW9ZxsTkmTF0qxxstxXHzhsq6bi+8AgABKN4CAHeL7gA==
+Date: Wed, 1 Feb 2023 06:04:04 +0000
+Message-ID: <3bb8e65797b905e4e9d4fad93a8f4fe26b8958a4.camel@mediatek.com>
+References: <697032f2331a92eec0e03e85e46cb78bd975a788.camel@mediatek.com>
+	 <Y8Cwdsk5pYNd8fX8@slm.duckdns.org>
+	 <f8b24df3bd009d112479e9d5db36ec4afff9bb71.camel@mediatek.com>
+In-Reply-To: <f8b24df3bd009d112479e9d5db36ec4afff9bb71.camel@mediatek.com>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SL2PR03MB3947:EE_|SI2PR03MB5529:EE_
+x-ms-office365-filtering-correlation-id: 40ce1dca-71ce-43ea-9fed-08db041a1f4b
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: uF8+VTcGyjznmFbDHF875+a/ofBproZgOLpqmesbsSvsiAWtDQSbJTZHIM6KlJM8C4B4fzs4rPIeI2KBc30OjWjEsfav3u5TOxutDAI7o4yW3RRSY8Q7ziX+lnPOctHNg7rnNI9UK6JTUQ2hQRu8Js/szp4L+r8CVRGqteM9AdwmdZIVN7riCQKVz2oQrKUR8E9oCGePfpZAOlSOQFy9D17/WO+Ll1OIDjHlVLz3sRNJDaQGu8H0Ocwh5g4CZmZxNRY7+stfV6BbuhNAw5rZt6YiKdea6GuV3yBpXYBpA4UAFuixXBDviqBVH9w4hR0i7FIJw6oL0XIJuFu/EX1scdVFIt7iKxxSz6b0OAByD+Uwut0OyRpLEstc26lbFmKmtKD33P49NI85Epx4gqA/aEHXHMB4PNfYcQoNySuZwCIc8qAedKIQ0Q6+G0l8oGTbLA/JdqHk6oTmDyeqljn9kVT2ew9f4GEQpS7K8cgUAif5aZngjP7GOl/c0QzeiNgddN1nxN/Jvd5vpwnGwUpkqmfp/ADI9ytGe0TJ0AhHwyKx7uUely5KM66lFVQ4NNHFJ23smOZcAsuwdF0w7vLwBVwy8TLNMF9RE2GVRAE98isZsFGVCz5wUdo4JX6BZFkj6QH9zP/cIa/Hpn7m/exuXnh2eEsDanD4X3QOEv6EUWdVeuKSf3dPW83hWSceTLcGT/LCYFPqsGu6sb+t0lMMxg==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SL2PR03MB3947.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(346002)(376002)(136003)(39860400002)(396003)(366004)(451199018)(2906002)(6506007)(186003)(2616005)(4744005)(26005)(6512007)(76116006)(5660300002)(91956017)(66946007)(86362001)(66476007)(66556008)(85182001)(3480700007)(8936002)(83380400001)(66446008)(478600001)(6916009)(4326008)(36756003)(6486002)(71200400001)(8676002)(54906003)(41300700001)(122000001)(38070700005)(64756008)(316002)(38100700002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?T0xkMk1oMU9QVW5iSXhHM1pTcWpSYzAvdS9CWkFtMVJRTXFZMWlneXNGOStT?=
+ =?utf-8?B?TDlwZ3k5azRKMDZCK3haSzJ3QlgzUk96YnQrV3F0RGprOGU0SHgvYUFiMSsy?=
+ =?utf-8?B?dUpSZW9HY2F0Sm94STQ1a3FSU3BuNjF0bHNuRlFaUjNYQ2RGNU12UUZaNjhh?=
+ =?utf-8?B?YWE0empUSkxjMWpzWkxKWHU1V2ptY0paY0tRWFhiRHBsRGVKZmZ6ZnAwd3M5?=
+ =?utf-8?B?ZnZ2S0NMSUlLNEdSZU9LNDRVZzQyQnk2YXFDUjBxUHlMdzI1bWNnMU9weEZi?=
+ =?utf-8?B?c2tiM0Z6ZFpmT1RLYnE1QWZmVWovalR6L016SlEvSVM2MGNDbTh5dVAwVjhx?=
+ =?utf-8?B?TE00VUF3aFVYWmFyQTluTkh4cFNVbmo0dEt1UVJmTElJZzhWMU9vaVhYcWNN?=
+ =?utf-8?B?dXdQRWZoS2FVMWJ2RE9uQ3dXWitCM1IxQWF0cWJOMmthdGdzMmZLQkFkV1M4?=
+ =?utf-8?B?SVFnMDJuQnVQU0F4c2N6cTIzZ2xmSytnRHRWNkp0YzczbTQvYjB0RTZUb0pZ?=
+ =?utf-8?B?SGdiMEZDVHVCeWJXVExqcDVOSkcvMnJCU1l5eU1hYTkwZUc4Ri9IakFPZUdS?=
+ =?utf-8?B?N2U0a2ZJR2xOZGlHZG9ZUEpLaC9Hb0NNUHhUSWlIMGVIbndORGlQMWtwelA4?=
+ =?utf-8?B?Qy9telkxMmUrdnI1RXdKWUFVbDdvdGc2aHMrU3kwV1ExTEhNTHJWRlUwUitX?=
+ =?utf-8?B?VTQ1ODAvSElCdk1vMnM0MmRHUGRxb1R1TjhkUmdHYSsvY3ZkbExnRWQ3SG1l?=
+ =?utf-8?B?REtoTTZacnJHRDl6ZGtaSm4xeFFOS1hGa2tsZlFiMm9MUmxIRndPTUVPZWlJ?=
+ =?utf-8?B?RG5zM3hIMDRRejVRSEFqaG9TTXl6WkQ1M1oxcnl1SktWVStNZkp4eXlRNTJl?=
+ =?utf-8?B?RG5ad3VqUlptanRNdW1wY1BlbWpqTVl0S3JTdE5CZFlyZ3hLa1lNRmFXdERa?=
+ =?utf-8?B?UER3Mm1PWnVlVm5uN1BBMzJMRW5xSDhQdk00VHZQeTM5UkM5NUYvRHdnZVdn?=
+ =?utf-8?B?bGdiWXVJeFZSVDJ4OFhjM2lwRUx6bEtCN21GN2FJb0JRNHBQcHY1MGwyRGp2?=
+ =?utf-8?B?MlVMZmdWU2NkTEhrU1BrME9oOTlRK3NicDZpSGZ2TllXVll1RTBZVnZGTTNn?=
+ =?utf-8?B?YkJCYlBuWFpGeDVCUFJjRHpUQlAvWUlvb0dtOFZhbk8vTDdWU0hMRko3RENR?=
+ =?utf-8?B?SGkrWmY3NGliN3NWMkpqMXJWUGEweS9OeVBiQ0VIOUhDbk9TK1lJanVMWkxV?=
+ =?utf-8?B?dFArSnhwMklGcGtha2JydlY3QXVGQmhsS3ZJTHlkbGxFTzZiMXlYY0JlMC9W?=
+ =?utf-8?B?TXFjdWtTUURwUjJqY2I3NE5iOVNuRGtIbkFGQ29MVGQzTDZFV0FmOW9OTlU3?=
+ =?utf-8?B?dmhZMTdMam9RMDRTTExIR2E5Wm5XUHptOFFYdzE0MU42bkwyTE5QZ2tRb05X?=
+ =?utf-8?B?VkZZblRlUzUvaEk2UnA1S2NidGtPc213S3pYdStKbWZhTU5qNTBZcWs2SUF0?=
+ =?utf-8?B?dGU0REdMQjljc2pRbHlrckVoSmFLSGlWNGdybzYwc1BjbXFWa29VcFJKZlVZ?=
+ =?utf-8?B?T3NmcVpES29KVkRqakFXd1MzL2M5NWk3V2xTV3dQK2lsSmVUYS9KTWNycEl1?=
+ =?utf-8?B?U3JVTC96UGhFSnNLRnFqZnkwNndzR1Rydm5MYnBXdXdPK1dtVHhpNVZPTEtW?=
+ =?utf-8?B?eUxZQzQ0K0ZrZjhPeWFnbkxVVURnRXJwTkVvZHYrMXVldi9FK1Fra1NHenVp?=
+ =?utf-8?B?VHJ2R05Td0kxTlUvWUcrNUlrTGRXZW43MGNiczY3eFNLTFJqYi80dlBxTUt6?=
+ =?utf-8?B?UEdjZXc1TTUzVFcrbGxuT1g3RjBoUkN1SjAvdmZRWVYybjlqVWtoK3M3Vm93?=
+ =?utf-8?B?bk5pNlZHeERQV08vQ3NRUkRGUVhyWWIzVVlQd2RweTFhRWRUYjZoZElSQmQ2?=
+ =?utf-8?B?c3VlLzh3NWx5WnViMjF4QldKM0ZkU3U5ZVg0dVJ1bEc3cG01SVo1elprTFVj?=
+ =?utf-8?B?c2tBNmxUd2Q5a0Y5SEtJVzNIM0FhWktBcmtDZm9Ld1NFejhqVjMyTlJGQmNI?=
+ =?utf-8?B?am1Ed0ZnUEJwazVucWdvSTFtWm9PSXVBTEtRTTFSVmZMZWJ6ZTViMXIyTzBr?=
+ =?utf-8?B?RjFYMUtPNVF3QnBTSCtRSE9HT0JIemxpR2dpOHZySVFaUXAwcTdMdFVRVlQx?=
+ =?utf-8?B?SXc9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <07E3047408019941B471670B8603DAC7@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SL2PR03MB3947.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 40ce1dca-71ce-43ea-9fed-08db041a1f4b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Feb 2023 06:04:04.3611
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: RCvgzHp/R9eiqLSLj3V5/Ww1s0UKwEPDVhbHa3TpClzjl8wjkrX6x/XthnIFEsmcLJysXRmVjl7g8bmomz9gc9tF1f32U2YJnR/vYLBEsnM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB5529
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_191921_474005_F86A2296 
-X-CRM114-Status: GOOD (  12.56  )
+X-CRM114-CacheID: sfid-20230131_222418_070147_A64178D3 
+X-CRM114-Status: GOOD (  15.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,91 +179,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChiYuan Huang <cy_huang@richtek.com>
-
-Document the MT6370 RGB LED pattern trigger.
-
-This simply describe how the pattern works, each timing period, and the
-pattern diagram for MT6370 RGB LED.
-
-Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
-Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
----
- Documentation/leds/leds-mt6370-rgb.rst | 64 ++++++++++++++++++++++++++++++++++
- 1 file changed, 64 insertions(+)
- create mode 100644 Documentation/leds/leds-mt6370-rgb.rst
-
-diff --git a/Documentation/leds/leds-mt6370-rgb.rst b/Documentation/leds/leds-mt6370-rgb.rst
-new file mode 100644
-index 00000000..d1b2e4f
---- /dev/null
-+++ b/Documentation/leds/leds-mt6370-rgb.rst
-@@ -0,0 +1,64 @@
-+.. SPDX-License-Identifier: GPL-2.0
-+
-+=========================================
-+Kernel driver for Mediatek MT6370 RGB LED
-+=========================================
-+
-+Description
-+-----------
-+
-+The MT6370 integrates a four-channel RGB LED driver, designed to provide a
-+variety of lighting effect for mobile device applications. The RGB LED driver
-+includes a smart LED string controller and it can drive 3 channels of LEDs with
-+a sink current up to 24mA and a CHG_VIN power good indicator LED with sink
-+current up to 6mA. It provides three operation modes for RGB LEDs:
-+PWM Dimming mode, breath pattern mode, and constant current mode. The device
-+can increase or decrease the brightness of the RGB LED via I2C interface.
-+
-+The breath pattern for a channel can be programmed using the "pattern" trigger,
-+using the hw_pattern attribute.
-+
-+/sys/class/leds/<led>/hw_pattern
-+--------------------------------
-+
-+Specify a hardware breath pattern for a MT6370 RGB LED.
-+
-+The breath pattern is a series of timing pairs, with the hold-time expressed in
-+milliseconds. And the brightness is controlled by
-+'/sys/class/leds/<led>/brightness'. The pattern doesn't include the brightness
-+setting. Hardware pattern only controls the timing for each pattern stage
-+depending on the current brightness setting.
-+
-+Pattern diagram::
-+
-+     "0 Tr1 0 Tr2 0 Tf1 0 Tf2 0 Ton 0 Toff" --> '0' for dummy brightness code
-+
-+      ^
-+      |           ============
-+      |          /            \                                /
-+Icurr |         /              \                              /
-+      |        /                \                            /
-+      |       /                  \                          /   .....repeat
-+      |      /                    \                        /
-+      |   ---                      ---                  ---
-+      |---                            ---            ---
-+      +----------------------------------============------------> Time
-+       < Tr1><Tr2><   Ton    ><Tf1><Tf2 ><  Toff    >< Tr1><Tr2>
-+
-+Timing description::
-+
-+Tr1:    First rising time for duty 0 to 30%.
-+Tr2:    Second rising time for duty 31% to 100%.
-+Ton:    On time for duty 100%.
-+Tf1:    First falling time for duty 100% to 31%.
-+Tf2:    Second falling time for duty 30% to 0%.
-+Toff:   Off time for duty 0%.
-+
-+Tr1/Tr2/Tf1/Tf2/Ton: 125ms to 3125ms, 200ms per step.
-+Toff: 250ms to 6250ms, 400ms per step.
-+
-+Pattern example::
-+
-+       "0 125 0 125 0 125 0 125 0 625 0 1050"
-+
-+This Will configure Tr1/Tr2/Tf1/Tf2 to 125m, Ton to 625ms, and Toff to 1050ms.
--- 
-2.7.4
-
+T24gRnJpLCAyMDIzLTAxLTEzIGF0IDEzOjQwICswODAwLCBsaXhpb25nIGxpdSB3cm90ZToNCj4g
+PiA+IFJvb3QgY2F1c2U6IA0KPiA+ID4gY2dyb3VwX21pZ3JhdGVfZmluaXNoIGZyZWUgY3NldOKA
+mXMgY2dyb3VwLA0KPiA+ID4gDQo+ID4gPiBidXQgY2dyb3VwX3NrX2FsbG9jIHVzZSB0aGUgZnJl
+ZWQgY2dyb3VwLA0KPiA+ID4gDQo+ID4gPiB0aGVuIHVzZS1hZnRlci1mcmVlIGhhcHBlbmVkLg0K
+PiA+IA0KPiA+IFNvdW5kcyBzaW1pbGFyIHRvIHRoZSBwcm9ibGVtIGZpeGVkIGJ5IDA3ZmQ1YjZj
+ZGYzYyAoImNncm91cDogVXNlDQo+ID4gc2VwYXJhdGUNCj4gPiBzcmMvZHN0IG5vZGVzIHdoZW4g
+cHJlbG9hZGluZyBjc3Nfc2V0cyBmb3IgbWlncmF0aW9uIikuIENhbiB5b3UgdHJ5DQo+ID4gaXQg
+b3V0Pw0KPiA+IA0KPiA+IFRoYW5rcy4NCj4gPiANCj4gDQo+IA0KPiBUaGFua3MgZm9yIHlvdXIg
+cXVpY2sgZmVlZGJhY2suDQo+IA0KPiANCj4gICANCj4gQnV0IHdlIGVuY291bnRlcmVkIHVzZS1h
+ZnRlci1mcmVlIHZlcnNpb24NCj4gDQo+IGFscmVhZHkgY29udGFpbnMgdGhpcyBwYXRjaC4NCj4g
+DQo+IA0KPiANCj4gU28sIHdpdGggdGhpcyBwYXRjaCB3aWxsIGFsc28gZW5jb3VudGVyDQo+IA0K
+PiB0aGlzIHVzZS1hZnRlci1mcmVlLg0KPiANCj4gVGhhbmtzIQ0KPiANCj4gDQogIERvIHlvdSBo
+YXZlIGFueSBzdWdnZXN0aW9uIGZvciB0aGlzIGlzc3VlPw0KDQogIEJlc3QgcmVnYXJkcywNCiAg
+TGl4aW9uZyBMaXUNCg==
 
