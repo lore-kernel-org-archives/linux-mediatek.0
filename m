@@ -4,78 +4,171 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A7E3C636CC
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 03:10:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28B0FC636CC
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 03:14:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nkSxXlhkH1v1U9wCZ87QYjvvmJ1NgYyPaIpXA4/0Vms=; b=JGmgNXL3ARxN7pv0Jwp6UEH0Gl
-	u51YKDerGjDW5TkA5l+lGYdPzg8szxiukfrr4luqgEMW7jOr1GI7hJWSaVBC16BRf6OQ9w1ifVjMY
-	PEoIYRVsLzOdn66xrbRYRwVEuxIPyH6QF8vz5B+XeiyJdqdMBKvcNWR6ptbktbVl225HocSmOqhek
-	djwu6WhTltaC+lj7/pWh/1x4NvYD93/xB0WD5piV39QnX14N7niHDaOY8pl8488DRoN6nyutrvAhB
-	pWgJ0K0z5qF5LwMlJ9+mTlmv/pF/aI4y1b9vY8++tK8iOUD7R/ZILZn8EX6TGcyFO5vr4fP0+rBR0
-	sX1ISiqA==;
+	bh=FRvuarMZHFC7ydV5KnBS2kjUP6bBP7F0Tq6rP48poaA=; b=4zvFFlBHiZx2fNj4FEsli5Vk6C
+	WlXYfX6yWU/xV54tEsVMLUpeohp9bBrrQx8ux8sbKrEHg3nZeeEO/9E0/fnQEcU+AYwRuPVL2p8ZF
+	5gmUDHbvMIdSPig7+Y1BHtePARtIsc710xctOWzF7zBy88+sJQwHN2oSwg9s4V9WCUwpIUlebZmqV
+	yuNCLLVra0KAAQPoiD9nbAWhbN/TXPBykxDNgQOVxdqt+/oDmY8r493OQLkovRAmeCnL23xw41bxd
+	kYU0eEi3LUAI+tC3G6BMtzoTH/YpQipPGCpW2GokNzK9GJnmkHk+Esz/eDYTL6MZ/qmLb6lecrN8T
+	0irITtmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pN3Vs-00A5dK-Uo; Wed, 01 Feb 2023 03:10:20 +0000
-Received: from mga05.intel.com ([192.55.52.43])
+	id 1pN3Zk-00A6Fn-FL; Wed, 01 Feb 2023 03:14:20 +0000
+Received: from mga12.intel.com ([192.55.52.136])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pN3Vi-00A5bO-V9; Wed, 01 Feb 2023 03:10:12 +0000
+	id 1pN3ZZ-00A6Di-H0; Wed, 01 Feb 2023 03:14:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1675221010; x=1706757010;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=hG0Cqd9tAcf9bnbBhEdpsPgvTCJitgXKwvwPCaj9CO8=;
-  b=j78ziuZflrkpqK/kU5LeGC71SXyQBqi+PTyL27PLw1QLWgaPlxTS6UX/
-   hsLPk1WcdwA89QpFD/jFXmO/rn6G7uCBwNWL0ss/hUt1L+81xH+kzeEBZ
-   t9pPsnPAIbfapAu54B27vX5dYvYbuN6Y9vu+xz2EaoMSbhOF2cH9/xbWC
-   /ARLJ39e1ClARdFbPL0qu5zRqv4ryx9qZ5Tezs4JDQ9B8fgWUmuophKkr
-   KnRSuIYu6tqexd7jHkph0msdXL9qFjEn/Wu0PtiBWJ/chPhyiwTW5KJB2
-   pjDHIPCX5jjW9v5VH9U/eLQZPAyjW5u9LamA5gHK90qM3b2e0KaqdAjmP
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10607"; a="414233288"
+  t=1675221249; x=1706757249;
+  h=from:to:cc:subject:date:message-id:references:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=FRvuarMZHFC7ydV5KnBS2kjUP6bBP7F0Tq6rP48poaA=;
+  b=cNz2gGhstbRPDkafyvsbEckzjdEulfXpG1IJlCbM4bQZF4EKIcw+zUmz
+   nVt5nlNj5zDsnV1rzJL+Wwb8Lz4R+CzfHH+fQRvuNVzE5uFatz206aL1e
+   CAG9lWW/5cxV7nECtL2AlTxx+BbG6Wx6baxI6L9+35/1QdOJoFk7o3gwN
+   nQQb04UY8R780pG4VJ4sRD37vPPkZADCDWsMb0wkyRu5ZniBoSWSOv0bB
+   Wt0xEcASbKh9HFZ3i1kqCwCw5pmtG/uvMJSQf4uJh6oh/YZpC9eg8xTfm
+   lCCDt2d1fbsJq9hPy1/Qdq8TbUjL7sylSS2qsr8oHeP4Bhf8niVkzvz+J
+   g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10607"; a="307682357"
 X-IronPort-AV: E=Sophos;i="5.97,263,1669104000"; 
-   d="scan'208";a="414233288"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Jan 2023 19:09:47 -0800
+   d="scan'208";a="307682357"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Jan 2023 19:14:06 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10607"; a="695185072"
+X-IronPort-AV: E=McAfee;i="6500,9779,10607"; a="728205877"
 X-IronPort-AV: E=Sophos;i="5.97,263,1669104000"; 
-   d="scan'208";a="695185072"
-Received: from lkp-server01.sh.intel.com (HELO ffa7f14d1d0f) ([10.239.97.150])
-  by orsmga008.jf.intel.com with ESMTP; 31 Jan 2023 19:09:41 -0800
-Received: from kbuild by ffa7f14d1d0f with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1pN3VE-0004ys-1B;
-	Wed, 01 Feb 2023 03:09:40 +0000
-Date: Wed, 1 Feb 2023 11:09:28 +0800
-From: kernel test robot <lkp@intel.com>
-To: bchihi@baylibre.com, daniel.lezcano@linaro.org,
-	angelogioacchino.delregno@collabora.com, rafael@kernel.org,
-	amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com,
-	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	rdunlap@infradead.org, ye.xingchen@zte.com.cn,
-	p.zabel@pengutronix.de
-Cc: oe-kbuild-all@lists.linux.dev, linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	khilman@baylibre.com, james.lo@mediatek.com,
-	rex-bc.chen@mediatek.com
-Subject: Re: [PATCH v12] thermal: drivers: mediatek: Add the Low Voltage
- Thermal Sensor driver
-Message-ID: <202302011058.17Vvc1pN-lkp@intel.com>
-References: <20230131153816.21709-1-bchihi@baylibre.com>
+   d="scan'208";a="728205877"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+  by fmsmga008.fm.intel.com with ESMTP; 31 Jan 2023 19:14:05 -0800
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Tue, 31 Jan 2023 19:14:05 -0800
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Tue, 31 Jan 2023 19:14:05 -0800
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.168)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Tue, 31 Jan 2023 19:14:05 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Sf3DQ3Layoj79AAfFifN5Fo3R0wVj6qtyUTJrnMgmOPRjVkGLWFjienfeUiT36Q2exdgfi6lQ8JeGq888UC4w7wOE+hieJJbu+DQttnaOtRENj/kXgmX7I43vTCw3+bG4S2gp55nxKQq/peIBRPl+SQvaPif2TPL7Vt2dBMNzMJgBoPU7K/abiLu9UIu970Znj2Qzm/v5/UwUotl14lsVJZQTzl2hvduuz+MxxYujPc0pJShbwt6CDJTZOGAkddD45qPSJdzxMuUon4RxnpkQWXy1PSEBntFlaNcEyItjt0E2gZMklQ1L/Fi1l784UMrZc/8VAUaowpwV2eV9/CSkg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=FRvuarMZHFC7ydV5KnBS2kjUP6bBP7F0Tq6rP48poaA=;
+ b=VH4DcTbMd049eYkErxCsHUuiQ9NMthcUDmW+eaP2zbAcJJ6jdaNKRPborWr5bh+JUO4KFIXNGxXTc9+vpMyG5fe5f0rB61iTe8cHh4ybwfBFMqw71WJG+e5nbM96AsHeu2QsUhSsBpaHms6VUjwZqCOPG5RCQ0zYs1QNtRvQS5FuuGLc3ssTR5VWGkXCJYh8RHkaDITCezp73J4lA6e9GEmZXtEoiBaZcYUZFlJp6F1I3Ui5ML6GykQJ/1voUAFvPWLURFu59BL4qOUDAytGdANvQUbB3e6x14cl2egkHPudlRwHHzn6jBMxyA9JEIHh0Ufb8GG50RpRDHAp5zTY2g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by BL3PR11MB6313.namprd11.prod.outlook.com (2603:10b6:208:3b0::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.36; Wed, 1 Feb
+ 2023 03:14:03 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::6a8d:b95:e1b5:d79d]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::6a8d:b95:e1b5:d79d%8]) with mapi id 15.20.6043.038; Wed, 1 Feb 2023
+ 03:14:03 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+CC: Robin Murphy <robin.murphy@arm.com>, Nicolin Chen <nicolinc@nvidia.com>,
+	"joro@8bytes.org" <joro@8bytes.org>, "will@kernel.org" <will@kernel.org>,
+	"agross@kernel.org" <agross@kernel.org>, "andersson@kernel.org"
+	<andersson@kernel.org>, "konrad.dybcio@linaro.org"
+	<konrad.dybcio@linaro.org>, "yong.wu@mediatek.com" <yong.wu@mediatek.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "thierry.reding@gmail.com"
+	<thierry.reding@gmail.com>, "alex.williamson@redhat.com"
+	<alex.williamson@redhat.com>, "cohuck@redhat.com" <cohuck@redhat.com>,
+	"vdumpa@nvidia.com" <vdumpa@nvidia.com>, "jonathanh@nvidia.com"
+	<jonathanh@nvidia.com>, "iommu@lists.linux.dev" <iommu@lists.linux.dev>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-tegra@vger.kernel.org"
+	<linux-tegra@vger.kernel.org>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>
+Subject: RE: [PATCH 1/4] iommu: Add a broken_unmanaged_domain flag in
+ iommu_ops
+Thread-Topic: [PATCH 1/4] iommu: Add a broken_unmanaged_domain flag in
+ iommu_ops
+Thread-Index: AQHZMoqzsVwORV4fDkqb25GPYvi+2K6yz/kAgAAgNYCAAhsCEIAB7paAgAJ2Q5A=
+Date: Wed, 1 Feb 2023 03:14:03 +0000
+Message-ID: <BN9PR11MB52769E3A3DD09983C11677F88CD19@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <cover.1674849118.git.nicolinc@nvidia.com>
+ <0875479d24a53670e17db8a11945664a6bb4a25b.1674849118.git.nicolinc@nvidia.com>
+ <dfad6d75-6f4d-99ef-1c6a-4bf397dcaa13@arm.com> <Y9RkG2dejdXptUTB@nvidia.com>
+ <BN9PR11MB5276C9BDCCA7FB295C25BC738CD29@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <Y9fHJSTIP6zXAStX@nvidia.com>
+In-Reply-To: <Y9fHJSTIP6zXAStX@nvidia.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|BL3PR11MB6313:EE_
+x-ms-office365-filtering-correlation-id: c9dd0070-8ab8-4548-4755-08db04025f2d
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: KQ2wl9l9mHXVrjx5UageLe7oDXt9RgFJgVUBAQ/RHWXTEN33wwuai/6O/F7TH499xtAd5ZPdElldbST5E/qONPKhU/cQKRzw+JIQCuc7/EHs6O3jr16VHZzLWLdXXcTGd91ydOIchNobhCE7C/fNiT1YVtl+gnKRfEwT1MN4fo7/p1+ix06CfIgKZOjoBf1fqI5UEAYjLkDjtmWsQiv+cmeQ+g+KTBrxVxtzvNpoQuUcJTYxmFg7qy30vs3gaMkOhqx0LMVXCelhdSPhlMJsBHUrYiWecaIHcgf6cX3Xi4Ym9VmCheaYv7GdgQQSW4uWRmPYOxIBA1mRumANQQ+pBGGZXpU2JvLe53A6UICXoBH+lAk523xtyQM6nSvrj1k2eHZVyRDD3WW41upfaQ/ohY3R87a2XbWMuIn1R93Cstn6WMgAym7SnFvbVLGorf6VVfhiH8VXmew+PlKoBumvlWJGpOn9qeiRiOtdVDQwOqcUVgthHOyjQEJs/UpPxfbTjJBjArqCaT1BeuuXm/nznttxueM6e2KCkl63kynczHpp8tJZNrJ4UYdEGJuMJAXgvOJ8tUdIHIvSXj+XlO4dP+0Mqu/CNepGGcBtRjkuCXo8tXVMxo8xuUMkUZhN4koSK+alIu9J3LUReMhLdmQhw1/QN4pb93/zveLgo2PC9ID9d66v+hme4akZQOikPWoeFBQCMfX5L/vq17gNdrGImA==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BN9PR11MB5276.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(346002)(376002)(366004)(396003)(136003)(39860400002)(451199018)(7696005)(71200400001)(33656002)(66476007)(64756008)(66556008)(66446008)(6916009)(8676002)(41300700001)(76116006)(8936002)(66946007)(4326008)(83380400001)(478600001)(86362001)(82960400001)(2906002)(122000001)(52536014)(316002)(38100700002)(55016003)(38070700005)(5660300002)(4744005)(6506007)(9686003)(186003)(26005)(7416002)(54906003);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?o02RaQplbTVy/So7gAv2/JFJ2q9NPaj+FTV8NZy6hKaXgR6zWFoguwUIS8kr?=
+ =?us-ascii?Q?GvE10GekbiEXVGp5KE8NOS8wCjrpnQFy5R14ztFb2XH7nV8ZJS5pmO8fjdol?=
+ =?us-ascii?Q?vxmvbNOz4zz8K1ixUAl4wLrgHmXzx/pltL7ruTel9r/cvsC4tBGWu68wwlka?=
+ =?us-ascii?Q?uFsUeZ3YZRu11166NAInf2oIdz8f0Rp02Ewst8vewd/NHyFEQwi05MgYpi7d?=
+ =?us-ascii?Q?2964HVCtqNNgS8CFD7JA+E504ps9w3q9bZwS2UluO/Tlm0aruK5h14meMD5x?=
+ =?us-ascii?Q?7F//5100DW+lOh9JSa6e6DPRcfIxbl3HI1/8kr4SAmamjgAH8g1+YQqgcQEj?=
+ =?us-ascii?Q?A4FlpDVePbcjpDLyhNeGSe87qoag+qBiCb+jMsviBs1p9qMzMAWA4++X+7xu?=
+ =?us-ascii?Q?97eis2owt+cQ5RkfeBp6s8vlzVSGWstxb56UC2H3eggfAI9uL2o40liihP7S?=
+ =?us-ascii?Q?d8n2mfTGkoFpU7K3N8Z3Dch7g+bxFA7Ed+ZyQAF0YxcJTYg6fPSvdS95Ao+f?=
+ =?us-ascii?Q?Fysb8XNjHglI/hUEv0ignURBk0FxCf5xWzJk8+yuTXvfCa2GLfhB3lKDaGvw?=
+ =?us-ascii?Q?v0HL4cPaEJMWjtLjP3s3Bv6/bBVD4KWD6Z+IdslxqxaCkGMB329rLcTW1d22?=
+ =?us-ascii?Q?LrDmY8IO0/1CmEyZWiiekxb3yBdJJy/s79gEmIuIISyoabUpEJQut+S1iHnz?=
+ =?us-ascii?Q?O6ufmiIiBHxOsl5YIeBVATZZ4lZLBi0+3Ugdu1fZ5hFWvzaDqwRvJOwOzGlg?=
+ =?us-ascii?Q?uW5cLR+f05qq/wx/3iiqhRfjmakfbykD/cnbRTm5eqDQDMpIx6aPHLbDkBgp?=
+ =?us-ascii?Q?zFoynmcX7qxPPhNS0NcC05W/ZHz+dlytKIpsa3bTIL6mjodY1VNtWEbQGunB?=
+ =?us-ascii?Q?EcwpG89WGUhk2jrVfFLE5T6pRdaXKcgUvO4MQkn3EXX2Fi8hx4KzpLYdpczu?=
+ =?us-ascii?Q?F58FkwqDWl0V0ta+qktZBnRlXcs5dKWkb4xb+peGQgbngURZwZ1z4bibkqDg?=
+ =?us-ascii?Q?Y8YDLdrSKElx98S/B04+rECtBuuYGpVTuF+YW5Aj48NcGjI70EvfPQIUP+fN?=
+ =?us-ascii?Q?CLmkmnblo/Bm/BukZjHySiM60fjp+2LTXm651N4/awzT7QdjuyGadRL8fCjT?=
+ =?us-ascii?Q?RlPoSea1tJKkEGfET2PdIrADOPSMIsh3sYIgGIss8VCqRQQ4qmj/ghl1PoXM?=
+ =?us-ascii?Q?YSdap0/O1zsc5VXrgZBUQZenXNsC4B5Oh9HubtyFTvd0Sgv1eR9qroM9ixtx?=
+ =?us-ascii?Q?83UT0GX3scJLTsd2poOsX7ZsQdRnPBUtQUkXAaUQqPkHwj6WJIx6vvkL5O0e?=
+ =?us-ascii?Q?+F3rUnuwi79MPJ0i77kEIIwahmQYtR/PJ7XrY2AZogradmmASF4GoN07J13f?=
+ =?us-ascii?Q?Px39NBvun/aSZsaH8Gvmw6fq2uie9jeukEVWrR2gTcAqOA2/CWyalJDb72Vy?=
+ =?us-ascii?Q?TlhyGd+trTzzlbW2V3jGZ0jsy35dtGS+eJ5efmXuftv7C6TA3lCyHAQm8e+I?=
+ =?us-ascii?Q?e5H7o1+bPRHNSv5AsuCDDbUNUARx6/dihB63iGYW7yHQSm3PYWwY7MmAXIHT?=
+ =?us-ascii?Q?75fOh5uX828nzS25EPkXAuT3lFzm5M62Oway9BVY?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230131153816.21709-1-bchihi@baylibre.com>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c9dd0070-8ab8-4548-4755-08db04025f2d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Feb 2023 03:14:03.5680
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Q6U4j8QjWXXbAp195cCUJP0fet+rV9NbdgFkH7gU6oToOaABtJL6P8dV1KsrvYXLw94G+Ro0vb8WJOj8Ay9Ypw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL3PR11MB6313
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_191011_062512_8E7D08CC 
-X-CRM114-Status: GOOD (  11.49  )
+X-CRM114-CacheID: sfid-20230131_191409_625101_18F9E0C8 
+X-CRM114-Status: GOOD (  14.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,47 +183,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Balsam,
+> From: Jason Gunthorpe <jgg@nvidia.com>
+> Sent: Monday, January 30, 2023 9:33 PM
+>=20
+> On Sun, Jan 29, 2023 at 08:11:48AM +0000, Tian, Kevin wrote:
+>=20
+> > " I'd also question sprd-iommu, which hardly has a generally-useful
+> > domain size, and has only just recently gained the ability to unmap
+> > anything successfully."
+>=20
+> So long as it has a correct kernel API and exposes the right (small)
+> aperture then it is OK.
+>=20
+> The device will not be useful for qemu, but it would run some dpdk
+> configurations just fine.
 
-Thank you for the patch! Yet something to improve:
+I still didn't get the restriction here. Can you elaborate why it works
+with dpdk but not qemu?
 
-
-
-url:    https://github.com/intel-lab-lkp/linux/commits/UPDATE-20230131-234122/bchihi-baylibre-com/thermal-drivers-mediatek-Relocate-driver-to-mediatek-folder/20230124-211910
-base:   the 4th patch of https://lore.kernel.org/r/20230124131717.128660-5-bchihi%40baylibre.com
-patch link:    https://lore.kernel.org/r/20230131153816.21709-1-bchihi%40baylibre.com
-patch subject: [PATCH v12] thermal: drivers: mediatek: Add the Low Voltage Thermal Sensor driver
-config: s390-allyesconfig (https://download.01.org/0day-ci/archive/20230201/202302011058.17Vvc1pN-lkp@intel.com/config)
-compiler: s390-linux-gcc (GCC) 12.1.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/5646ebf6f10ff0fc60c04d8c57523f7c44526b41
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review UPDATE-20230131-234122/bchihi-baylibre-com/thermal-drivers-mediatek-Relocate-driver-to-mediatek-folder/20230124-211910
-        git checkout 5646ebf6f10ff0fc60c04d8c57523f7c44526b41
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=s390 olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=s390 SHELL=/bin/bash
-
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-
-All errors (new ones prefixed by >>):
-
->> drivers/thermal/mediatek/lvts_thermal.c:20:10: fatal error: dt-bindings/thermal/mediatek,lvts-thermal.h: No such file or directory
-      20 | #include <dt-bindings/thermal/mediatek,lvts-thermal.h>
-         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   compilation terminated.
-
-
-vim +20 drivers/thermal/mediatek/lvts_thermal.c
-
-  > 20	#include <dt-bindings/thermal/mediatek,lvts-thermal.h>
-    21	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+Can qemu verify this restriction via existing path or need new uAPI
+flag to communicate?
 
