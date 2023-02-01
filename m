@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07D0EC636D4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 18:58:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BCC6C05027
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 18:58:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yR+4t71uvOrNwbzfT6rMlJz6ZARDL9nMPAtxzDTp2O8=; b=dTP4/I3bcYBydF
-	6kiCt5bk1CqHaaCpN6G6gcpolez9d+73Z6S+92R7s7fNuAhcAeCOEYjsJ/KINqV7W5iJacndAi07l
-	hGk+tTN7OBV82G3dAFbZzP7WpsqDVV6q+FVMCzgOPU6IKIBOyD7gSR0lxBzp3gRI84JuihrKkKrHO
-	eiV0LTRdgQ/FsuDIvNLadrcGZrxlW1yI1nEeDNQORdJydN/rywjpkUEFlNL1gkf05GWEFnnKS57Fb
-	rMhOsFUw+pejHY8H+mo+wSk5PmQwumV5fI+FAKDKcfzT8iOD9qZOGk3Jk4uAUdr0Wrk648jGY75D0
-	tHpI5/qKL9mFlUXlBm0Q==;
+	List-Owner; bh=wCfu6pa2GszeTfCc5RgYlhyJYQ9sWCYCud+ludrzzVc=; b=qDIDrwGcoJ51Zs
+	U+3KhGc/SWimXKWJHnDhB8Eruu7T70xaZE3k30kz+eVs/QjjlBWpOADtN2/OsJOacnaGCNCmixO1m
+	ecSm/HimsyF9+dj1Q0O6S1umEYxhbe9TNmpk5tR/fxqxQ5NFaAJmb7tFoSoki3j5LzFHqYlFOSTAB
+	j/NOkinaHWUiMGBf7LaRFUzz7paPPpJosaVqygZpDEzxlHpo7KQhPMHJo4GgYfp/292MltURvHKnz
+	YsBK5s4ivp1kyGym035tdydesAn/qSx8TsHYAY2a/g5ftsosl87vs0EzbZ0DrbeRCmV7JCHsvFcax
+	3rRe6+jKzpjyia8RWX9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNIJB-00DI8t-Ba; Wed, 01 Feb 2023 18:58:13 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1pNIJd-00DIQl-Dm; Wed, 01 Feb 2023 18:58:41 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNIIE-00DHbM-Nd; Wed, 01 Feb 2023 18:57:15 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id k4so48808029eje.1;
-        Wed, 01 Feb 2023 10:57:11 -0800 (PST)
+	id 1pNIIF-00DHc3-Fm; Wed, 01 Feb 2023 18:57:16 +0000
+Received: by mail-ej1-x629.google.com with SMTP id mc11so31765615ejb.10;
+        Wed, 01 Feb 2023 10:57:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=yR+4t71uvOrNwbzfT6rMlJz6ZARDL9nMPAtxzDTp2O8=;
-        b=hAE9xFTNI1lnwpIuE40P7XM3zdPBSWs6oC1K4LIIIi3QjXVHNPzxV0kaKrVltoyw1a
-         nr3pcOkDNFrPu6kunubdEh0/jBS5AkgdI0jnU/1TadEQm4SFGN5nsqT9v90fjBmd/mU+
-         jK2DrE/mUYa5oJaoSnXXmTh3BpKMu3qRl2gegfK/I51wfNok4JCz0nijSTBHqkQJ1KMr
-         QC9X1Oj0ZBCu6aglye0rahH1MWdFaacyXZQOVt9GC7g0mGMOfYoxEJL/UtylpGx9nfA9
-         /0hqC4xxAMVvUIuY4PDD1KDCzYcgI1jUPwxHYRWBC/zfce2oh62xKctLUcE0wYrVyY2A
-         94Rw==
+        bh=wCfu6pa2GszeTfCc5RgYlhyJYQ9sWCYCud+ludrzzVc=;
+        b=ZWH6Ar7ilBCAgENdaD2nDd5SFGMw9TpK1MYhGrmFx0FRswNziyBZezdAFW4G+XihTV
+         DZTFZoQ6F6amvc+844+dV4hDBAQVK0rJpnLY6Zfd8w7t8Xpekbc4vRS5Cif/pnAOn12A
+         9VMA2AxbsvzsP70NjJv+QHn2ullhmx3dZpQOyClVYEC80pWyE7jJjrYRV72G7q337qZ7
+         hkqBviIq9wpmQfmH96wxi2bcAA0WU5gvEbosZ57vmUPm5pJN8/xOO67pb079zr2L3oHI
+         TLBt1VCUNGGw/SzhWc3cVaj3c6dE8mKNRi6N9IliDhvbXzlYmAS5MT9iTDdNNaJYZhpQ
+         vuvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=yR+4t71uvOrNwbzfT6rMlJz6ZARDL9nMPAtxzDTp2O8=;
-        b=sn7ksIhqwMw7qRKau6coYyQQwbLt+HlSDOy/1JA5jSaynCl3ApUhe1pHBFWY6kZSxo
-         P1c59vT2L/Zn8IBuaLieB0TMH7kLRwiYYlCtvNyLMQZr85kMisErHHweeI2YC2d3rpGq
-         7DXR+Xuz5gUbtpoYYZZUqKTpoBoKW1n2mhJjrJzD9/f8LtSPvUDl+F8ZNKla4YDPrwl+
-         5usTLfbEsHrFnXmKPK+EVB+R627CkjfxVAMdhEH3mk0mEjYdPuXMcgY+ghsg8LFXjgjx
-         v+ir+fB+2jzFIFTk3HboIm5zc1An+BCvcJnFnpxmMK4KFQb56uYampRBmCiHboUjzZHr
-         At0w==
-X-Gm-Message-State: AO0yUKUlH4qgzd/PukiM8z2mOaDD/ao1lXn6EGJYy84Je5pAMhPXe3Mm
-	GnEWBCKfuJziqfj0jup6swc=
-X-Google-Smtp-Source: AK7set8Vhjr4qyafeIDSZSc3Eb1qSQaqtTm5MaSmxLU9rQXRso14GgRsj8YWD3pwarp3ZDG7RMCdYw==
-X-Received: by 2002:a17:906:34d3:b0:82e:a57b:cc9b with SMTP id h19-20020a17090634d300b0082ea57bcc9bmr7270754ejb.24.1675277830106;
-        Wed, 01 Feb 2023 10:57:10 -0800 (PST)
+        bh=wCfu6pa2GszeTfCc5RgYlhyJYQ9sWCYCud+ludrzzVc=;
+        b=NOshmG7y16rJ0oTYiT98Ti6GDgEJLR9fNjoHGJjZUmdzKQUmQ/ZhPNX/mLDrRyvWJN
+         2YnYXx7+T+8e4uLpWMLfq7pZvEfk0uXfjdGA7VzZEIHJQj36gcamjqkCwCVOraJJMSYd
+         ccswUyzTZ64gElvpEKj4y4VTQj6HZoo5o/rjFDvhuKVdifuNNuZsiLGfNrVggqfaZ+KU
+         rJC+Pjj1SLDA2PqXVKvLFZP16PYf7uEFBwWaJHfF/ldfJDA8qqidpKNAfC8ipLK9tkGN
+         ixjt3SlPuGXA/2VXLZYGindCKL9JPHHDxaFjrx6Tv84iFF72uOXwAdZh8d0TQGOCt89N
+         n2zA==
+X-Gm-Message-State: AO0yUKUQCenMTOryT3/WwJG8ZvAwbciCUq1EVJR2ERQhFrq7FUlYjplp
+	WByBTtjaLcBz2pX0emUrWYE=
+X-Google-Smtp-Source: AK7set/SM3JG6I2M8EAecQOB0PUjU28U25qsAi1G9D05Ilp8bswF5flMqVIH6qRv0DQ3Sxo2vUYFlw==
+X-Received: by 2002:a17:907:2d28:b0:88d:f759:15ae with SMTP id gs40-20020a1709072d2800b0088df75915aemr4150126ejc.42.1675277831685;
+        Wed, 01 Feb 2023 10:57:11 -0800 (PST)
 Received: from arinc9-PC.lan ([37.120.152.236])
-        by smtp.gmail.com with ESMTPSA id dy25-20020a05640231f900b0049e210884dasm10100883edb.15.2023.02.01.10.57.08
+        by smtp.gmail.com with ESMTPSA id dy25-20020a05640231f900b0049e210884dasm10100883edb.15.2023.02.01.10.57.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 01 Feb 2023 10:57:09 -0800 (PST)
+        Wed, 01 Feb 2023 10:57:11 -0800 (PST)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v2 4/5] arm: dts: mt7623: mux phy0 on Bananapi BPI-R2
-Date: Wed,  1 Feb 2023 21:56:55 +0300
-Message-Id: <20230201185656.17164-5-arinc.unal@arinc9.com>
+Subject: [PATCH v2 5/5] arm: dts: mt7623: enable flow control on port@6
+Date: Wed,  1 Feb 2023 21:56:56 +0300
+Message-Id: <20230201185656.17164-6-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20230201185656.17164-1-arinc.unal@arinc9.com>
 References: <20230201185656.17164-1-arinc.unal@arinc9.com>
@@ -74,8 +74,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230201_105714_795080_8619D571 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20230201_105715_554553_04649E33 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,56 +93,39 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Mux the MT7530 switch's phy0 to gmac5 which is wired to the SoC's gmac1.
-This achieves 2 Gbps total bandwidth to the CPU using the second RGMII.
-
-With this, the interface name to access phy0 changes from wan to eth1.
+Flow control needs to be enabled on both sides to work.
+It is already enabled on gmac0, enable it on port@6 too.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 15 ++++++++++-----
- 1 file changed, 10 insertions(+), 5 deletions(-)
+ arch/arm/boot/dts/mt7623a.dtsi         | 1 +
+ arch/arm/boot/dts/mt7623n-rfb-emmc.dts | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-index dc9b4f99eb8b..64700253fd35 100644
---- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-+++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-@@ -182,6 +182,12 @@ fixed-link {
- 	};
- };
- 
-+&gmac1 {
-+	status = "okay";
-+	phy-mode = "rgmii";
-+	phy-handle = <&ethphy0>;
-+};
-+
- &eth {
- 	status = "okay";
- 
-@@ -189,6 +195,10 @@ mdio-bus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
- 
-+		ethphy0: ethernet-phy@0 {
-+			reg = <0>;
-+		};
-+
- 		switch@1f {
- 			compatible = "mediatek,mt7530";
- 			reg = <0x1f>;
-@@ -200,11 +210,6 @@ ports {
- 				#address-cells = <1>;
- 				#size-cells = <0>;
- 
--				port@0 {
--					reg = <0>;
--					label = "wan";
--				};
--
- 				port@1 {
- 					reg = <1>;
- 					label = "lan0";
+diff --git a/arch/arm/boot/dts/mt7623a.dtsi b/arch/arm/boot/dts/mt7623a.dtsi
+index dd522e508eb3..2a50b5c0c933 100644
+--- a/arch/arm/boot/dts/mt7623a.dtsi
++++ b/arch/arm/boot/dts/mt7623a.dtsi
+@@ -88,6 +88,7 @@ port@6 {
+ 					fixed-link {
+ 						speed = <1000>;
+ 						full-duplex;
++						pause;
+ 					};
+ 				};
+ 			};
+diff --git a/arch/arm/boot/dts/mt7623n-rfb-emmc.dts b/arch/arm/boot/dts/mt7623n-rfb-emmc.dts
+index 6b0c3d1006ab..34994f3f5a4b 100644
+--- a/arch/arm/boot/dts/mt7623n-rfb-emmc.dts
++++ b/arch/arm/boot/dts/mt7623n-rfb-emmc.dts
+@@ -230,6 +230,7 @@ port@6 {
+ 					fixed-link {
+ 						speed = <1000>;
+ 						full-duplex;
++						pause;
+ 					};
+ 				};
+ 			};
 -- 
 2.37.2
 
