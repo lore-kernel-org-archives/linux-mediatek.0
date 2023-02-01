@@ -4,80 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68ED3C38142
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 02:18:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A7E3C636CC
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 03:10:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=88IrPDewJMdiNmtnllWW1ZT8q7OVxFl9yffQnwnQCD4=; b=4OtufltGsIAYRZo5AAbo7QhTS+
-	TF079gC5tNhPAwXpt3WPr+SfqIFSZe+6yfccekJNMDkyvZ6QdHMAeOW9Kw613XZf1dlZE/fm5VKIx
-	DAtraiWVkIGWc/UohiaiMzh+E2TCQIAFhOTb98K8uCL1R5OOJ9ZkgTldbMYX698B81YctJ6qnvVZa
-	Hcj9vqAipA6cSo1lJrH36B1FtZirLLLhT06fbDetIVgHHOfiqUIEL9d2TaBXkmLVgNM0BWD5XYfAM
-	DfQSDL9NiMn7yGai4LtBnGFtTy9eiVYoSP4Sr3hYTxzQvEWYhf9AOI+UO2nn07qp6wiXzT4V7v/Z2
-	0413n5kw==;
+	bh=nkSxXlhkH1v1U9wCZ87QYjvvmJ1NgYyPaIpXA4/0Vms=; b=JGmgNXL3ARxN7pv0Jwp6UEH0Gl
+	u51YKDerGjDW5TkA5l+lGYdPzg8szxiukfrr4luqgEMW7jOr1GI7hJWSaVBC16BRf6OQ9w1ifVjMY
+	PEoIYRVsLzOdn66xrbRYRwVEuxIPyH6QF8vz5B+XeiyJdqdMBKvcNWR6ptbktbVl225HocSmOqhek
+	djwu6WhTltaC+lj7/pWh/1x4NvYD93/xB0WD5piV39QnX14N7niHDaOY8pl8488DRoN6nyutrvAhB
+	pWgJ0K0z5qF5LwMlJ9+mTlmv/pF/aI4y1b9vY8++tK8iOUD7R/ZILZn8EX6TGcyFO5vr4fP0+rBR0
+	sX1ISiqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pN2hZ-009xSl-Lc; Wed, 01 Feb 2023 02:18:21 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pN3Vs-00A5dK-Uo; Wed, 01 Feb 2023 03:10:20 +0000
+Received: from mga05.intel.com ([192.55.52.43])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pN2f9-009wGQ-FQ; Wed, 01 Feb 2023 02:15:52 +0000
-X-UUID: 55f35f54a1d611eda08d4d6090ec5a5c-20230131
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=88IrPDewJMdiNmtnllWW1ZT8q7OVxFl9yffQnwnQCD4=;
-	b=Qhcq45KwiZuNWe6Mq8r2+CiE/KVgrc23P0g4OcYGNV/LiyHLgEvZTPN5xkPWi6SEAq6u3bSbz7A+/1hLycsDt/8KcUqFjwukwAVuJ0hTatT+7OjxIWGb+zuvh9OkyHVavZ1strdX4ApnlFBED1NREtSPLRm7GZwkZNQS5xsILQ4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.18,REQID:613cca44-f696-4c9c-a00b-ea5984aad57f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:95
-X-CID-INFO: VERSION:1.1.18,REQID:613cca44-f696-4c9c-a00b-ea5984aad57f,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
-	:quarantine,TS:95
-X-CID-META: VersionHash:3ca2d6b,CLOUDID:4d4014f7-ff42-4fb0-b929-626456a83c14,B
-	ulkID:230201101521D8AGFRXA,BulkQuantity:2,Recheck:0,SF:38|29|28|17|19|48,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0
-X-CID-BVR: 0,NGT
-X-UUID: 55f35f54a1d611eda08d4d6090ec5a5c-20230131
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <xiangsheng.hou@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1393499576; Tue, 31 Jan 2023 19:15:45 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 1 Feb 2023 10:15:09 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 1 Feb 2023 10:15:08 +0800
-From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-To: Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger
-	<richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
-	<linux-mtd@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <benliang.zhao@mediatek.com>,
-	<bin.zhang@mediatek.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v6 4/5] dt-bindings: mtd: mediatek,nand-ecc-engine: Add compatible for MT7986
-Date: Wed, 1 Feb 2023 10:14:59 +0800
-Message-ID: <20230201021500.26769-5-xiangsheng.hou@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230201021500.26769-1-xiangsheng.hou@mediatek.com>
-References: <20230201021500.26769-1-xiangsheng.hou@mediatek.com>
+	id 1pN3Vi-00A5bO-V9; Wed, 01 Feb 2023 03:10:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1675221010; x=1706757010;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=hG0Cqd9tAcf9bnbBhEdpsPgvTCJitgXKwvwPCaj9CO8=;
+  b=j78ziuZflrkpqK/kU5LeGC71SXyQBqi+PTyL27PLw1QLWgaPlxTS6UX/
+   hsLPk1WcdwA89QpFD/jFXmO/rn6G7uCBwNWL0ss/hUt1L+81xH+kzeEBZ
+   t9pPsnPAIbfapAu54B27vX5dYvYbuN6Y9vu+xz2EaoMSbhOF2cH9/xbWC
+   /ARLJ39e1ClARdFbPL0qu5zRqv4ryx9qZ5Tezs4JDQ9B8fgWUmuophKkr
+   KnRSuIYu6tqexd7jHkph0msdXL9qFjEn/Wu0PtiBWJ/chPhyiwTW5KJB2
+   pjDHIPCX5jjW9v5VH9U/eLQZPAyjW5u9LamA5gHK90qM3b2e0KaqdAjmP
+   w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10607"; a="414233288"
+X-IronPort-AV: E=Sophos;i="5.97,263,1669104000"; 
+   d="scan'208";a="414233288"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Jan 2023 19:09:47 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10607"; a="695185072"
+X-IronPort-AV: E=Sophos;i="5.97,263,1669104000"; 
+   d="scan'208";a="695185072"
+Received: from lkp-server01.sh.intel.com (HELO ffa7f14d1d0f) ([10.239.97.150])
+  by orsmga008.jf.intel.com with ESMTP; 31 Jan 2023 19:09:41 -0800
+Received: from kbuild by ffa7f14d1d0f with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1pN3VE-0004ys-1B;
+	Wed, 01 Feb 2023 03:09:40 +0000
+Date: Wed, 1 Feb 2023 11:09:28 +0800
+From: kernel test robot <lkp@intel.com>
+To: bchihi@baylibre.com, daniel.lezcano@linaro.org,
+	angelogioacchino.delregno@collabora.com, rafael@kernel.org,
+	amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com,
+	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	rdunlap@infradead.org, ye.xingchen@zte.com.cn,
+	p.zabel@pengutronix.de
+Cc: oe-kbuild-all@lists.linux.dev, linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	khilman@baylibre.com, james.lo@mediatek.com,
+	rex-bc.chen@mediatek.com
+Subject: Re: [PATCH v12] thermal: drivers: mediatek: Add the Low Voltage
+ Thermal Sensor driver
+Message-ID: <202302011058.17Vvc1pN-lkp@intel.com>
+References: <20230131153816.21709-1-bchihi@baylibre.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230131153816.21709-1-bchihi@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_181551_564192_C8CDCE55 
-X-CRM114-Status: UNSURE (   8.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230131_191011_062512_8E7D08CC 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,28 +90,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add dt-bindings documentation of ECC for MediaTek MT7986 SoC
-platform.
+Hi Balsam,
 
-Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- .../devicetree/bindings/mtd/mediatek,nand-ecc-engine.yaml        | 1 +
- 1 file changed, 1 insertion(+)
+Thank you for the patch! Yet something to improve:
 
-diff --git a/Documentation/devicetree/bindings/mtd/mediatek,nand-ecc-engine.yaml b/Documentation/devicetree/bindings/mtd/mediatek,nand-ecc-engine.yaml
-index b13d801eda76..505baf1e8830 100644
---- a/Documentation/devicetree/bindings/mtd/mediatek,nand-ecc-engine.yaml
-+++ b/Documentation/devicetree/bindings/mtd/mediatek,nand-ecc-engine.yaml
-@@ -18,6 +18,7 @@ properties:
-       - mediatek,mt2701-ecc
-       - mediatek,mt2712-ecc
-       - mediatek,mt7622-ecc
-+      - mediatek,mt7986-ecc
- 
-   reg:
-     items:
+
+
+url:    https://github.com/intel-lab-lkp/linux/commits/UPDATE-20230131-234122/bchihi-baylibre-com/thermal-drivers-mediatek-Relocate-driver-to-mediatek-folder/20230124-211910
+base:   the 4th patch of https://lore.kernel.org/r/20230124131717.128660-5-bchihi%40baylibre.com
+patch link:    https://lore.kernel.org/r/20230131153816.21709-1-bchihi%40baylibre.com
+patch subject: [PATCH v12] thermal: drivers: mediatek: Add the Low Voltage Thermal Sensor driver
+config: s390-allyesconfig (https://download.01.org/0day-ci/archive/20230201/202302011058.17Vvc1pN-lkp@intel.com/config)
+compiler: s390-linux-gcc (GCC) 12.1.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/5646ebf6f10ff0fc60c04d8c57523f7c44526b41
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review UPDATE-20230131-234122/bchihi-baylibre-com/thermal-drivers-mediatek-Relocate-driver-to-mediatek-folder/20230124-211910
+        git checkout 5646ebf6f10ff0fc60c04d8c57523f7c44526b41
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=s390 olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=s390 SHELL=/bin/bash
+
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+
+All errors (new ones prefixed by >>):
+
+>> drivers/thermal/mediatek/lvts_thermal.c:20:10: fatal error: dt-bindings/thermal/mediatek,lvts-thermal.h: No such file or directory
+      20 | #include <dt-bindings/thermal/mediatek,lvts-thermal.h>
+         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   compilation terminated.
+
+
+vim +20 drivers/thermal/mediatek/lvts_thermal.c
+
+  > 20	#include <dt-bindings/thermal/mediatek,lvts-thermal.h>
+    21	
+
 -- 
-2.25.1
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
