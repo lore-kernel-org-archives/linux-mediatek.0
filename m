@@ -4,88 +4,168 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA22FC05027
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 07:55:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33B5AC38142
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 08:14:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aVxZFdF1hCS2UbZda9PBn3CwrJK3ry1tqpKZylwirLU=; b=3m5Z6ZCnr9RL5oXEayb2Vgu8Eo
-	49NDJ0G7ikVKHBEEQcVkJqa8BUkhrHtWFcfBEpjaFPVi49AS3HxygDFdfAnrGtULlGPW7BH4Xbwd+
-	bYG3fgKvg9rK2dOjl1mcL2+DJU6fHu9GSPuuo650MWgYn7+N920YbqzgyZjV5ukLL08gqUCjtOlzQ
-	BQ/pfxIez5PLJs/9MImuJwRAwm11TTUElqBJazbbKsgkK94o4bp/HsXuF6F8UmpVGT7hslIhVlDUT
-	Sn2PC7pQzmf91o6HZ32Z3tDLskyI5km5cZWA/rfncszTNrKig4oT01mtzpj8fy58Yh+74P9i2WLuJ
-	jVh33m0g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PlKgK13mEFviD5QIG3oSw4/N/raNUw4GIyvNWhFgc9o=; b=k71RwDtdC5Ha2FyuSRqN22yLOM
+	gJQ2LfYwUbnszZoO6lgeEUdJlgyM5Vdd6d7fSJJzWLMlAQWO9CSQAXtTdqhZk0hcQZVgcElStlJGF
+	4WefW2W/BeP7hpIbaHEqIUmksTCsZOiGu7jtXo7QRVEXy23KC1VnGGilhPh2sZyZ+zS5oPEzf/J4T
+	CT6rI+fFh2X6ucuuhy24kIia5K0KI6VOCy6pikBWS+xY9CZ5aU0iMR1SoFiSSqVOZFUgspR7qPwKn
+	1UmPRxW2xF9m0cn/FK4vEhJF8cgFRM1oadgM4Y+FwrdYNItOWuUG0SVP7FLcSd9peuzdSDoUD6x+8
+	df35zuOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pN7xm-00AiTz-94; Wed, 01 Feb 2023 07:55:26 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1pN8Fq-00Al0s-8E; Wed, 01 Feb 2023 08:14:06 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pN7xb-00AiQy-9z
-	for linux-mediatek@lists.infradead.org; Wed, 01 Feb 2023 07:55:19 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id q10so16424139wrm.4
-        for <linux-mediatek@lists.infradead.org>; Tue, 31 Jan 2023 23:55:12 -0800 (PST)
+	id 1pN8Ff-00AkyY-F2; Wed, 01 Feb 2023 08:13:57 +0000
+X-UUID: 5a831fb4a20811eda08d4d6090ec5a5c-20230201
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=PlKgK13mEFviD5QIG3oSw4/N/raNUw4GIyvNWhFgc9o=;
+	b=P5ovBK2LZbDix5apoo/5Gss5CNRZ3Vpguqvoc+E5/1KCLSYjGqOhhTA+uQaeV9jTyvklaa9tJ5oWgcpi9aaO2UVQZZg25FhRON7mTvTQv+2OuGf20tP8TXo/pZtfjxE6qQ9T6W0ndxeFmEXI1OQruX+XzkfnijAwZJ6oebDSRe8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.18,REQID:1919bad5-f94b-4270-8065-31a582a26e23,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:3ca2d6b,CLOUDID:654420f7-ff42-4fb0-b929-626456a83c14,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+X-CID-BVR: 0
+X-UUID: 5a831fb4a20811eda08d4d6090ec5a5c-20230201
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <roger.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1744447111; Wed, 01 Feb 2023 01:13:48 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 1 Feb 2023 16:13:45 +0800
+Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n1.mediatek.com (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 1 Feb 2023 16:13:45 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=A8iAOJD0Myo3cLlkIQwbYvbKPQ07HlyLEjQ7Gd/y8V7VcIfSmgsGS/nnHtuDChxAEnOHH0DS81fzhuRdwu3S2NouaIdfC/E2795fAJIPMOOvMXqudzltEgApdMCumVT5YjZSdnw+pXmirDSvCIJLRSS0fPG7f0Qnc3Iti2Ir94YXmPy0iVvnctrOd6UEKYtv8AFIm0MeLrAn7P+UoIDq0YZje44kbpfdfLCxaPSe/xNuPe5+HD0xRaEJSdXgNH8LcRjbt9CCr1LYJCsLZOSrAURr3X2EOp2fG1Sbwy5iwlPuHU6Gx8qNM7f8W20mH1nW3Ko4Adf6yAxisVfq3u9IPA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=PlKgK13mEFviD5QIG3oSw4/N/raNUw4GIyvNWhFgc9o=;
+ b=giyVWVSfzDqXU/uyZ6eU8tLnd4AGKMz1D5gKraxwPraidYyEnty1W1Qis6ROACE9IcylEKeD/KkiqrR5dyJ8wQ4QBexBiGg54QacOYpp4lnrNj85DJz9W6MZmcM4PV97rsVNNCvb/yfadLq5U70mhy1ncanGnv9X9qBkkjnXKajrXC+4fBpU+HMnVkkr1kPfOCwkSvV6AbapCyDdxCFNnqk2yVfhkxx5JnofdusuYi/+meOiKxUc5cCS0q9SCGQOIDv4WeXhtdn8vuhLU+trW6+g7yawmSGlsBokANs6NyFN9tNQ6FW2oIB6tYvADv9bqJpvNfMYMkD1R8aqDP32WQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=aVxZFdF1hCS2UbZda9PBn3CwrJK3ry1tqpKZylwirLU=;
-        b=u8UhG04DuHrunpW5N43pn4qC/fR/OTpwTIBSgOsCMseT83FYl5pp2lMTNhOslCS1K6
-         q6LA7zFe9t1LSQ19BGhJIVex9FVgroUD62k1yQw5wr2YA5u2dxlH/TkFfXhqHm850IwV
-         JUXO45hPLnM6aOh+faTTZzzsLxY/hch4RBeyo8mN9Lm8A4Pd0+0CJt0OXOfuO2Jio8ZM
-         7DveM2RNJ5j9N4tpj4byoKuETZje8h326KNOGpVvEzED6MJvPJTJaa0QF1G4htgAwtJY
-         T6ETxtRRfKq9iQ8jXehEr3p0Qjt9X0EI2hXhnz3d8V0JcYPPiAw6k78v4y7OFzBJxUzG
-         IeFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=aVxZFdF1hCS2UbZda9PBn3CwrJK3ry1tqpKZylwirLU=;
-        b=UlihgJUBWQgedpoGmojiVWCAKtQRidf41CKD0xge2zaSOSpxIJRR87uQP9qgMgBNvF
-         DC+CEXKN7EOwCiJzahYevNCrN5bbFV81dcYHTZroib5ycgz0JnFuOUK/1aiNUxWBPAH6
-         sd4XeWSwdsjuyQvRl0Lzf3E1+A2YJYl4T0oTGiDftKCWYkCnfascF4OCyCsyRDjbURdh
-         lHCbwjYRWcs1Igl4EO5ULjFhiXD+Njihb6TpXFMoeXNWslA7opevg5f8xCxq0OLySobm
-         8ZZGuq3AoR8S3+3XN5sOoMnd8kdB2KT405UzxIe+S6Kiae3kuuy9A9tHiWq9wbksm/Gb
-         H5TA==
-X-Gm-Message-State: AO0yUKVVqq9KYeTFbAJTPcf0h74SSwyzKjTn66+SS1ulKDNjg01BImqz
-	ulGA3NaYRGQd1QGxk+GSojUxQJz6CP6NrJDk
-X-Google-Smtp-Source: AK7set8yazM6D+3dM7DrFO5VD7S621EVOwakcxgbE9fnIP53fOiFialmXNbMPNBSVhp3Dxtf0QDUng==
-X-Received: by 2002:adf:9790:0:b0:2bf:d425:11ba with SMTP id s16-20020adf9790000000b002bfd42511bamr5661584wrb.22.1675238111305;
-        Tue, 31 Jan 2023 23:55:11 -0800 (PST)
-Received: from [192.168.1.109] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id d3-20020adfe2c3000000b002bc7fcf08ddsm16307298wrj.103.2023.01.31.23.55.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 31 Jan 2023 23:55:10 -0800 (PST)
-Message-ID: <ab1e4822-d5f4-79f6-ea38-47e2342ebe49@linaro.org>
-Date: Wed, 1 Feb 2023 08:55:07 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH v12] thermal: drivers: mediatek: Add the Low Voltage
- Thermal Sensor driver
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=PlKgK13mEFviD5QIG3oSw4/N/raNUw4GIyvNWhFgc9o=;
+ b=odA2MM4/E3OTAwewfU35IHdFrsKOk7uAtHjyFObhKAnxmj4A0dV+xmCiIP2kuq+LfIIjJdlH2SXznf2ayY+tou8CZRSdWwmT0b23RwZl8sCIPl9CSgzH7isMrVR6CxXFIZwdetAHRVf5uNlFdf1b+T0YfmjtGwUKd2qZ+paT3Xs=
+Received: from SG2PR03MB3434.apcprd03.prod.outlook.com (2603:1096:4:26::14) by
+ TYUPR03MB7111.apcprd03.prod.outlook.com (2603:1096:400:350::6) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6064.22; Wed, 1 Feb 2023 08:13:43 +0000
+Received: from SG2PR03MB3434.apcprd03.prod.outlook.com
+ ([fe80::42eb:28a2:4d2e:d051]) by SG2PR03MB3434.apcprd03.prod.outlook.com
+ ([fe80::42eb:28a2:4d2e:d051%5]) with mapi id 15.20.6043.036; Wed, 1 Feb 2023
+ 08:13:43 +0000
+From: =?utf-8?B?Um9nZXIgTHUgKOmZuOeRnuWCkSk=?= <Roger.Lu@mediatek.com>
+To: "eballetbo@gmail.com" <eballetbo@gmail.com>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "khilman@kernel.org" <khilman@kernel.org>,
+	"drinkcat@google.com" <drinkcat@google.com>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
+	Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>,
+	=?utf-8?B?SmlhLXdlaSBDaGFuZyAo5by15L2z5YGJKQ==?=
+	<Jia-wei.Chang@mediatek.com>, =?utf-8?B?RmFuIENoZW4gKOmZs+WHoSk=?=
+	<fan.chen@mediatek.com>
+Subject: Re: [PATCH v4 13/14] soc: mediatek: mtk-svs: use common function to
+ disable restore voltages
+Thread-Topic: [PATCH v4 13/14] soc: mediatek: mtk-svs: use common function to
+ disable restore voltages
+Thread-Index: AQHZJZDJksdHW0eyYkeOf8iPI5hbp664p/0AgAE3D4A=
+Date: Wed, 1 Feb 2023 08:13:42 +0000
+Message-ID: <b53a1c3cfc794e333a2d3e164a74f2e2c9bc6c7c.camel@mediatek.com>
+References: <20230111074528.29354-1-roger.lu@mediatek.com>
+	 <20230111074528.29354-14-roger.lu@mediatek.com>
+	 <64702a9b-6c78-3065-8335-28d31c6fc1ab@gmail.com>
+In-Reply-To: <64702a9b-6c78-3065-8335-28d31c6fc1ab@gmail.com>
+Accept-Language: en-US, zh-TW
 Content-Language: en-US
-To: bchihi@baylibre.com, daniel.lezcano@linaro.org,
- angelogioacchino.delregno@collabora.com, rafael@kernel.org,
- amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- rdunlap@infradead.org, ye.xingchen@zte.com.cn, p.zabel@pengutronix.de
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com,
- rex-bc.chen@mediatek.com
-References: <20230124131717.128660-5-bchihi@baylibre.com>
- <20230131153816.21709-1-bchihi@baylibre.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230131153816.21709-1-bchihi@baylibre.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SG2PR03MB3434:EE_|TYUPR03MB7111:EE_
+x-ms-office365-filtering-correlation-id: c555a5e0-8712-472c-8bc9-08db042c3bbb
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: yyorc6hLWKs1/b68VjEsDFXJ8WAxJI3ixdQFvFUhGPCPi7Px/V4BA9IV35tDWSACKjmwkgra4c0VIMJGWZNILRs9hzG7aMcr04fRVmrzYbXzqusPPMhfyBQDSlGavO2pFYmVLHeRXqSDagCvnn33sM/KZLBZ4CS2cw0C0KDVmjvUzdvF79IFufMRnn/DRG10ou6bpEnsi6yKlOnIXlgjZYsvTeNNoal1/uTL9Ip8txK67solt0nFUAP4zEyToo1kqZqFcjwX4EEpat5WQ39MpzXg2C3AHNnYH8/YCue5clvqVLf56BMphxQuIGNTIjarP82IrWtEujKMtCHh8tMqqoGXfUZ53muh7JwQsFcF8Ddh2uhtzeIPkdYqBsnLpwfS4k+oOG3jlrNz4Gw75QpKGygnKfIOKHGzD3UirCiL25YgraZuGj0BVn/qXK1HR6S5BSoFAiRgacQ/2O0O9lrbUipL+cX4NLkYGkQeXsbLo7FkyvLDtfii68yTQ5RiSuTraFw6iKhp9E+60YjUiWGPcbOZcTYl/C5Er6R88XbtBMo1SRv95xvSvHZP5uKFUIlLX/0ychJv3gRZ0/Y6BG/whlMw+I/JGpzNQCFNgnE6IeSi+0f73OObYKAienEmgH/3gcxHfZg/veEUG96Q2BgNQi7Yooc0h86zlSaVwude143Y+d9Zyx+CUt7ad0/hEDntbW4t7tRZQiEmFs24Tklm6A==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SG2PR03MB3434.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(396003)(346002)(136003)(39860400002)(376002)(366004)(451199018)(2906002)(38070700005)(4744005)(36756003)(85182001)(86362001)(5660300002)(6486002)(107886003)(6506007)(6512007)(26005)(2616005)(83380400001)(478600001)(186003)(41300700001)(8936002)(53546011)(122000001)(38100700002)(54906003)(110136005)(71200400001)(66446008)(66556008)(66946007)(76116006)(64756008)(316002)(4326008)(66476007)(8676002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Szd0K1N1TnRGSEVUZks1eWJHd1lETmxQckE0V1I3VU5jajhwSG5uZFVzd2dE?=
+ =?utf-8?B?cnN2ZUZSaWNzUkl2cFhWTFAzK3doSjI3a3dvamFVaHpOc2pSVzJ5OE53MHdh?=
+ =?utf-8?B?T3N4WjcvQ3ZXOElSWE9NTWx1MkdzUkhJdk5XQTlyNmoxM2JsalBlc1RtNnpm?=
+ =?utf-8?B?VzdtK2dOSDNESmNja2preDdIbVZuWDhWelgxelpneDJmNVdMY05kYTdpKzN4?=
+ =?utf-8?B?bmgvYXZzYUcyOWk5VzV1eFM2RUNVZzBBRENiRFdReTZJaUdCdWV0RDlNelU2?=
+ =?utf-8?B?KzViU1dFNTMvYmJjalNqb29VVURneVQ3eE9nZi96VTk0dmFkWlcvWUZaS2hn?=
+ =?utf-8?B?U1g3UkQvWTVoWU1OaWVvTHY3SmJvdVczdFFiYS9nNTJnWktBTzlqM1o0c1pt?=
+ =?utf-8?B?ZHhJMmUyUmlzZ0FvbWhYQWRtNWx4dnA2Z0pJWVVpNE5BaFN3aHlVdVN4M1lk?=
+ =?utf-8?B?R1N4N0xLYnh2dmE3UHR2d1A4aFRaOVZSMEwzMko0QW1WRnFsOEJFNmV6L0Fa?=
+ =?utf-8?B?VWFJaktPREVRQW1TbkJGSXM0SFRJMXN4MzRvbThPMjVuKys5RmNrOWxTazJ0?=
+ =?utf-8?B?bEVJRkFWMFNsMkY0ZDJ3VDFnTDdWbkJHL09TK0FqYWZQem5RMDJFMmR1dVZm?=
+ =?utf-8?B?K1FQY0JNZ21YYUc3VHNzK3dzcXNnL1NYVk1OWXlEcHVPbGxTYW0vSURLTHFV?=
+ =?utf-8?B?NnB6SFNQNDlUU3pxbThNdFhzZER2NXNUejR3a1dCMEk4bElCbmNRb2swb1F4?=
+ =?utf-8?B?V3pBZHVaN29NQnA4WVlTNk9MbTlaS0IxNG80ZkxuZWVaS1lQVkdEbVA2WkVC?=
+ =?utf-8?B?QjRCYk41YnRSNHdsOWxsZDVyOGNJcUpNU04vWitJd1NteXM2WENsUVVIejZI?=
+ =?utf-8?B?R0ZFYkp1bDNqOG5UUGNFTW9KSkdLa2pFaFRNKzNkY1NKTjJCcC9QSDNQN3A4?=
+ =?utf-8?B?NUMrdUx1VjI3RnVCbFE5QW9CZUFsOEhwTDNKdmpvNnJheHhSOUVBZGtxTmdK?=
+ =?utf-8?B?dnZSeU5UcVB0L2RsbnFtZGViSG8zcWUycG43YW5vSi9XdTlzc2lEdzVRR1lz?=
+ =?utf-8?B?ZzZiU3NGMlNwbTB0SzZkSEVIRzBrL0tmRm1jaHpMdTY0L2t4MGdialYzbEhx?=
+ =?utf-8?B?eXN5aHVseC83T0FzTWpjM2tSOWJhNHpJOWVFUFRUakNhK1J4cVJsWFU1eFZp?=
+ =?utf-8?B?dHpxK1V5cEF2MXBXRzlLQ1F6cFNCc3hHcGZabmUrNGw5RjA5MEQ1Zm95RkRn?=
+ =?utf-8?B?empmWHV1M3hpQ2ZjWDZjZ3MxdlF5YXc3WDVSWWphcEUwODhtQkRYS2hZdTdN?=
+ =?utf-8?B?S0l1SVJMT3drTFFuc3dlWkVhQUR3UTJ0SGIxNFExVDArTHB1R3E1cTdmVGZr?=
+ =?utf-8?B?bzk4NDh3OUxsTXJndjc5MXNiREt3Ylh0d1BNaHp4SFpvbHFMenk4QWo3UFZ6?=
+ =?utf-8?B?YnBrL0cwVFlaMFdCRlR1RFFwTkhHUzZjZmJ5WHdSbjFvRDk5T2ZYMnltOFlY?=
+ =?utf-8?B?dGd5OEdScHVsSmRtYVc4TUZjWjIxa1EzWDBpNmpDT2RDN3k4UTNrVXd1Nnhj?=
+ =?utf-8?B?UVNScng4QUFTZXRtWkNhTCs0STJjejNWdHV2VWJHV29pK1RPcERUOGdwUTl5?=
+ =?utf-8?B?WGlmYXB1MWVGa2FoTWxTMmFzWFYwc3ErbmlpSzE1dGRmUHZQMWNveWhkbXhp?=
+ =?utf-8?B?RWowZDlxeG14b1QyaGh2dk5tV08rLzlkcmZ4Y1RVUmFnL3JXR2dpUUN6ZVM0?=
+ =?utf-8?B?QU1GL3VQMW15SEc1aHAvNm05dFpzMWE1YWRFTjJqM3kyTUU0Q1FEN0hNd2hZ?=
+ =?utf-8?B?Ti9Xc2twM05VdWwvY1BILy8xSDlUankrMVR4RHl0M3pnRE1CRGp6NVFrOU11?=
+ =?utf-8?B?emp2dFhhZDdsa1JWQ3prdXFCL3JQZ1pBL25KamRzeDdVT2VlbU4wZUwvOVNM?=
+ =?utf-8?B?VDlOenh3Vk9mVmpsSEZhMEMxeWJKK1l2U1pMUkFtR2JvQ0NzQVUwRUtFL1o3?=
+ =?utf-8?B?VEh1WlZsTjBSRkp0RWEvNy9MUWZVa201d2NHY2kxb09LODNzempqTUdhWHRU?=
+ =?utf-8?B?eHNZR2ZTQ21SNmcxZDZ0M21IN1hFa2dOeVc0aXZoQUNTanpRc1J2c2h5bmdS?=
+ =?utf-8?B?MHJ5Q08zV1ZhTE9qd21CRmhnZzZWVXJvYWZOamNFeDl5eE54ZFJZNHQ2MEE2?=
+ =?utf-8?B?TWc9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <B336770E86034045B70BDEA023CEDAAC@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SG2PR03MB3434.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c555a5e0-8712-472c-8bc9-08db042c3bbb
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Feb 2023 08:13:42.9807
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: QH3Yg4/GC3VF8RE45g1cmAQcIi1eTknrfx715QjGxb/6mN+FJyMgw0mtcYRp72Vy8gF00EIGionMies1Kk3xag==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYUPR03MB7111
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_235515_375023_44879F8E 
-X-CRM114-Status: GOOD (  42.50  )
+X-CRM114-CacheID: sfid-20230201_001355_757739_DE1F8C64 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,885 +180,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 31/01/2023 16:38, bchihi@baylibre.com wrote:
-> From: Balsam CHIHI <bchihi@baylibre.com>
-> 
-> The Low Voltage Thermal Sensor (LVTS) is a multiple sensors, multi
-> controllers contained in a thermal domain.
-> 
-> A thermal domains can be the MCU or the AP.
-> 
-> Each thermal domains contain up to seven controllers, each thermal
-> controller handle up to four thermal sensors.
-> 
-> The LVTS has two Finite State Machines (FSM), one to handle the
-> functionin temperatures range like hot or cold temperature and another
-> one to handle monitoring trip point. The FSM notifies via interrupts
-> when a trip point is crossed.
-> 
-
-(...)
-
-> +
-> +struct lvts_domain {
-> +	struct lvts_ctrl *lvts_ctrl;
-> +	struct reset_control *reset;
-> +	struct clk *clk;
-> +	int num_lvts_ctrl;
-> +	void __iomem *base;
-> +	size_t calib_len;
-> +	u8 *calib;
-> +};
-> +
-> +#ifdef CONFIG_MTK_LVTS_THERMAL_DEBUGFS
-> +
-> +static struct dentry *root;
-
-How do you handle two instances of driver?
-
-> +
-> +#define LVTS_DEBUG_FS_REGS(__reg)		\
-> +{						\
-> +	.name = __stringify(__reg),		\
-> +	.offset = __reg(0),			\
-> +}
-> +
-
-(...)
-
-> +
-> +static int lvts_set_trips(struct thermal_zone_device *tz, int low, int high)
-> +{
-> +	struct lvts_sensor *lvts_sensor = tz->devdata;
-> +	void __iomem *base = lvts_sensor->base;
-> +	u32 raw_low = lvts_temp_to_raw(low);
-> +	u32 raw_high = lvts_temp_to_raw(high);
-> +
-> +	/*
-> +	 * Hot to normal temperature threshold
-> +	 *
-> +	 * LVTS_H2NTHRE
-> +	 *
-> +	 * Bits:
-> +	 *
-> +	 * 14-0 : Raw temperature for threshold
-> +	 */
-> +	if (low != -INT_MAX) {
-> +		dev_dbg(&tz->device, "Setting low limit temperature interrupt: %d\n", low);
-> +		writel(raw_low, LVTS_H2NTHRE(base));
-> +	}
-> +
-> +	/*
-> +	 * Hot temperature threshold
-> +	 *
-> +	 * LVTS_HTHRE
-> +	 *
-> +	 * Bits:
-> +	 *
-> +	 * 14-0 : Raw temperature for threshold
-> +	 */
-> +	dev_dbg(&tz->device, "Setting high limit temperature interrupt: %d\n", high);
-> +	writel(raw_high, LVTS_HTHRE(base));
-> +
-> +	return 0;
-> +}
-> +
-> +static irqreturn_t lvts_ctrl_irq_handler(struct lvts_ctrl *lvts_ctrl)
-> +{
-> +	irqreturn_t iret = IRQ_NONE;
-> +	u32 value, masks[] = {
-
-Don't mix different types in one declaration. u32 and a pointer are
-quite different types.
-
-> +		LVTS_INT_SENSOR0,
-> +		LVTS_INT_SENSOR1,
-> +		LVTS_INT_SENSOR2,
-> +		LVTS_INT_SENSOR3
-> +	};
-> +	int i;
-> +
-> +	/*
-> +	 * Interrupt monitoring status
-> +	 *
-> +	 * LVTS_MONINTST
-> +	 *
-> +	 * Bits:
-> +	 *
-> +	 * 31 : Interrupt for stage 3
-> +	 * 30 : Interrupt for stage 2
-> +	 * 29 : Interrupt for state 1
-> +	 * 28 : Interrupt using filter on sensor 3
-> +	 *
-> +	 * 27 : Interrupt using immediate on sensor 3
-> +	 * 26 : Interrupt normal to hot on sensor 3
-> +	 * 25 : Interrupt high offset on sensor 3
-> +	 * 24 : Interrupt low offset on sensor 3
-> +	 *
-> +	 * 23 : Interrupt hot threshold on sensor 3
-> +	 * 22 : Interrupt cold threshold on sensor 3
-> +	 * 21 : Interrupt using filter on sensor 2
-> +	 * 20 : Interrupt using filter on sensor 1
-> +	 *
-> +	 * 19 : Interrupt using filter on sensor 0
-> +	 * 18 : Interrupt using immediate on sensor 2
-> +	 * 17 : Interrupt using immediate on sensor 1
-> +	 * 16 : Interrupt using immediate on sensor 0
-> +	 *
-> +	 * 15 : Interrupt device access timeout interrupt
-> +	 * 14 : Interrupt normal to hot on sensor 2
-> +	 * 13 : Interrupt high offset interrupt on sensor 2
-> +	 * 12 : Interrupt low offset interrupt on sensor 2
-> +	 *
-> +	 * 11 : Interrupt hot threshold on sensor 2
-> +	 * 10 : Interrupt cold threshold on sensor 2
-> +	 *  9 : Interrupt normal to hot on sensor 1
-> +	 *  8 : Interrupt high offset interrupt on sensor 1
-> +	 *
-> +	 *  7 : Interrupt low offset interrupt on sensor 1
-> +	 *  6 : Interrupt hot threshold on sensor 1
-> +	 *  5 : Interrupt cold threshold on sensor 1
-> +	 *  4 : Interrupt normal to hot on sensor 0
-> +	 *
-> +	 *  3 : Interrupt high offset interrupt on sensor 0
-> +	 *  2 : Interrupt low offset interrupt on sensor 0
-> +	 *  1 : Interrupt hot threshold on sensor 0
-> +	 *  0 : Interrupt cold threshold on sensor 0
-> +	 *
-> +	 * We are interested in the sensor(s) responsible of the
-> +	 * interrupt event. We update the thermal framework with the
-> +	 * thermal zone associated with the sensor. The framework will
-> +	 * take care of the rest whatever the kind of interrupt, we
-> +	 * are only interested in which sensor raised the interrupt.
-> +	 *
-> +	 * sensor 3 interrupt: 0001 1111 1100 0000 0000 0000 0000 0000
-> +	 *                  => 0x1FC00000
-> +	 * sensor 2 interrupt: 0000 0000 0010 0100 0111 1100 0000 0000
-> +	 *                  => 0x00247C00
-> +	 * sensor 1 interrupt: 0000 0000 0001 0001 0000 0011 1110 0000
-> +	 *                  => 0X000881F0
-> +	 * sensor 0 interrupt: 0000 0000 0000 1001 0000 0000 0001 1111
-> +	 *                  => 0x0009001F
-> +	 */
-> +	value = readl(LVTS_MONINTSTS(lvts_ctrl->base));
-> +
-> +	/*
-> +	 * Let's figure out which sensors raised the interrupt
-> +	 *
-> +	 * NOTE: the masks array must be ordered with the index
-> +	 * corresponding to the sensor id eg. index=0, mask for
-> +	 * sensor0.
-> +	 */
-> +	for (i = 0; i < ARRAY_SIZE(masks); i++) {
-> +
-> +		if (!(value & masks[i]))
-> +			continue;
-> +
-> +		thermal_zone_device_update(lvts_ctrl->sensors[i].tz,
-> +					   THERMAL_TRIP_VIOLATED);
-> +		iret = IRQ_HANDLED;
-> +	}
-> +
-> +	/*
-> +	 * Write back to clear the interrupt status (W1C)
-> +	 */
-> +	writel(value, LVTS_MONINTSTS(lvts_ctrl->base));
-> +
-> +	return iret;
-> +}
-> +
-> +/*
-> + * Temperature interrupt handler. Even if the driver supports more
-> + * interrupt modes, we use the interrupt when the temperature crosses
-> + * the hot threshold the way up and the way down (modulo the
-> + * hysteresis).
-> + *
-> + * Each thermal domain has a couple of interrupts, one for hardware
-> + * reset and another one for all the thermal events happening on the
-> + * different sensors.
-> + *
-> + * The interrupt is configured for thermal events when crossing the
-> + * hot temperature limit. At each interrupt, we check in every
-> + * controller if there is an interrupt pending.
-> + */
-> +static irqreturn_t lvts_irq_handler(int irq, void *data)
-> +{
-> +	struct lvts_domain *lvts_td = data;
-> +	irqreturn_t aux, iret = IRQ_NONE;
-> +	int i;
-> +
-> +	for (i = 0; i < lvts_td->num_lvts_ctrl; i++) {
-> +
-> +		aux = lvts_ctrl_irq_handler(lvts_td->lvts_ctrl);
-> +		if (aux != IRQ_HANDLED)
-> +			continue;
-> +
-> +		iret = IRQ_HANDLED;
-> +	}
-> +
-> +	return iret;
-> +}
-> +
-> +static struct thermal_zone_device_ops lvts_ops = {
-> +	.get_temp = lvts_get_temp,
-> +	.set_trips = lvts_set_trips,
-> +};
-> +
-> +static int __init lvts_sensor_init(struct device *dev,
-> +				   struct lvts_ctrl *lvts_ctrl,
-> +				   struct lvts_ctrl_data *lvts_ctrl_data)
-> +{
-> +	struct lvts_sensor *lvts_sensor = lvts_ctrl->sensors;
-> +	void __iomem *msr_regs[] = {
-> +		LVTS_MSR0(lvts_ctrl->base),
-> +		LVTS_MSR1(lvts_ctrl->base),
-> +		LVTS_MSR2(lvts_ctrl->base),
-> +		LVTS_MSR3(lvts_ctrl->base)
-> +	};
-> +
-> +	void __iomem *imm_regs[] = {
-> +		LVTS_IMMD0(lvts_ctrl->base),
-> +		LVTS_IMMD1(lvts_ctrl->base),
-> +		LVTS_IMMD2(lvts_ctrl->base),
-> +		LVTS_IMMD3(lvts_ctrl->base)
-> +	};
-> +
-> +	int i;
-> +
-> +	for (i = 0; i < lvts_ctrl_data->num_lvts_sensor; i++) {
-> +
-> +		int dt_id = lvts_ctrl_data->lvts_sensor[i].dt_id;
-> +
-> +		/*
-> +		 * At this point, we don't know which id matches which
-> +		 * sensor. Let's set arbitrally the id from the index.
-> +		 */
-> +		lvts_sensor[i].id = i;
-> +
-> +		/*
-> +		 * The thermal zone registration will set the trip
-> +		 * point interrupt in the thermal controller
-> +		 * register. But this one will be reset in the
-> +		 * initialization after. So we need to post pone the
-> +		 * thermal zone creation after the controller is
-> +		 * setup. For this reason, we store the device tree
-> +		 * node id from the data in the sensor structure
-> +		 */
-> +		lvts_sensor[i].dt_id = dt_id;
-> +
-> +		/*
-> +		 * We assign the base address of the thermal
-> +		 * controller as a back pointer. So it will be
-> +		 * accessible from the different thermal framework ops
-> +		 * as we pass the lvts_sensor pointer as thermal zone
-> +		 * private data.
-> +		 */
-> +		lvts_sensor[i].base = lvts_ctrl->base;
-> +
-> +		/*
-> +		 * Each sensor has its own register address to read from.
-> +		 */
-> +		lvts_sensor[i].msr = lvts_ctrl_data->mode == LVTS_MSR_IMMEDIATE_MODE ?
-> +			imm_regs[i] : msr_regs[i];
-> +	};
-> +
-> +	lvts_ctrl->num_lvts_sensor = lvts_ctrl_data->num_lvts_sensor;
-> +
-> +	return 0;
-> +}
-> +
-> +/*
-> + * The efuse blob values follows the sensor enumeration per thermal
-> + * controller. The decoding of the stream is as follow:
-> + *
-> + *                        <--?-> <----big0 ???---> <-sensor0-> <-0->
-> + *                        ------------------------------------------
-> + * index in the stream: : | 0x0 | 0x1 | 0x2 | 0x3 | 0x4 | 0x5 | 0x6 |
-> + *                        ------------------------------------------
-> + *
-> + *                        <--sensor1--><-0-> <----big1 ???---> <-sen
-> + *                        ------------------------------------------
-> + *                        | 0x7 | 0x8 | 0x9 | 0xA | 0xB | OxC | OxD |
-> + *                        ------------------------------------------
-> + *
-> + *                        sor0-> <-0-> <-sensor1-> <-0-> ..........
-> + *                        ------------------------------------------
-> + *                        | 0x7 | 0x8 | 0x9 | 0xA | 0xB | OxC | OxD |
-> + *                        ------------------------------------------
-> + *
-> + * And so on ...
-> + *
-> + * The data description gives the offset of the calibration data in
-> + * this bytes stream for each sensor.
-> + *
-> + * Each thermal controller can handle up to 4 sensors max, we don't
-> + * care if there are less as the array of calibration is sized to 4
-> + * anyway. The unused sensor slot will be zeroed.
-> + */
-> +static int __init lvts_calibration_init(struct device *dev,
-> +					struct lvts_ctrl *lvts_ctrl,
-> +					struct lvts_ctrl_data *lvts_ctrl_data,
-> +					u8 *efuse_calibration)
-> +{
-> +	int i;
-> +
-> +	for (i = 0; i < lvts_ctrl_data->num_lvts_sensor; i++)
-> +		memcpy(&lvts_ctrl->calibration[i],
-> +		       efuse_calibration + lvts_ctrl_data->cal_offset[i], 2);
-> +
-> +	return 0;
-> +}
-> +
-> +/*
-> + * The efuse bytes stream can be split into different chunk of
-> + * nvmems. This function reads and concatenate those into a single
-> + * buffer so it can be read sequentially when initializing the
-> + * calibration data.
-> + */
-> +static int lvts_calibration_read(struct device *dev, struct lvts_domain *lvts_td,
-> +				 struct lvts_data *lvts_data)
-> +{
-> +	struct device_node *np = dev_of_node(dev);
-> +	struct nvmem_cell *cell;
-> +	struct property *prop;
-> +	const char *cell_name;
-> +
-> +	of_property_for_each_string(np, "nvmem-cell-names", prop, cell_name) {
-> +		size_t len;
-> +		u8 *efuse;
-> +
-> +		cell = of_nvmem_cell_get(np, cell_name);
-> +		if (IS_ERR(cell)) {
-> +			dev_dbg(dev, "Failed to get cell '%s'\n", cell_name);
-
-Is this an error? If so, why debug? dbg is not for errors.
-
-> +			return PTR_ERR(cell);
-> +		}
-> +
-> +		efuse = nvmem_cell_read(cell, &len);
-> +
-> +		nvmem_cell_put(cell);
-> +
-> +		if (IS_ERR(efuse)) {
-> +			dev_dbg(dev, "Failed to read cell '%s'\n", cell_name);
-> +			return PTR_ERR(efuse);
-> +		}
-> +
-> +		lvts_td->calib = devm_krealloc(dev, lvts_td->calib,
-> +					       lvts_td->calib_len + len, GFP_KERNEL);
-> +		if (!lvts_td->calib)
-> +			return -ENOMEM;
-> +
-> +		memcpy(lvts_td->calib + lvts_td->calib_len, efuse, len);
-> +
-> +		lvts_td->calib_len += len;
-> +
-> +		kfree(efuse);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int __init lvts_golden_temp_init(struct device *dev, u32 *value)
-
-You did not test it, right? Build with section mismatch analysis...
-
-> +{
-> +	u32 gt;
-> +
-> +	gt = (*value) >> 24;
-> +
-> +	if (gt && gt < LVTS_GOLDEN_TEMP_MAX)
-> +		golden_temp = gt;
-> +
-> +	coeff_b = golden_temp * 500 + LVTS_COEFF_B;
-> +
-> +	return 0;
-> +}
-> +
-> +static int __init lvts_ctrl_init(struct device *dev,
-
-Same problem.
-
-> +				 struct lvts_domain *lvts_td,
-> +				 struct lvts_data *lvts_data)
-> +{
-> +	size_t size = sizeof(*lvts_td->lvts_ctrl) * lvts_data->num_lvts_ctrl;
-> +	struct lvts_ctrl *lvts_ctrl;
-> +	int i, ret;
-> +
-
-> +
-> +static inline int lvts_ctrl_enable(struct device *dev, struct lvts_ctrl *lvts_ctrl)
-> +{
-> +	return lvts_ctrl_set_enable(lvts_ctrl, 1);
-
-Drop the wrapper, it's useless. true or false for enable are quite obvious.
-
-> +}
-> +
-> +static inline int lvts_ctrl_disable(struct device *dev, struct lvts_ctrl *lvts_ctrl)
-> +{
-> +	return lvts_ctrl_set_enable(lvts_ctrl, 0);
-
-Drop the wrapper.
-
-> +}
-> +
-> +static int lvts_ctrl_connect(struct device *dev, struct lvts_ctrl *lvts_ctrl)
-> +{
-> +	u32 id, cmds[] = { 0xC103FFFF, 0xC502FF55 };
-> +
-> +	lvts_write_config(lvts_ctrl, cmds, ARRAY_SIZE(cmds));
-> +
-> +	/*
-> +	 * LVTS_ID : Get ID and status of the thermal controller
-> +	 *
-> +	 * Bits:
-> +	 *
-> +	 * 0-5	: thermal controller id
-> +	 *   7	: thermal controller connection is valid
-> +	 */
-> +	id = readl(LVTS_ID(lvts_ctrl->base));
-> +	if (!(id & BIT(7)))
-> +		return -EIO;
-> +
-> +	return 0;
-> +}
-> +
-> +static int lvts_ctrl_initialize(struct device *dev, struct lvts_ctrl *lvts_ctrl)
-> +{
-> +	/*
-> +	 * Write device mask: 0xC1030000
-> +	 */
-> +	u32 cmds[] = {
-> +		0xC1030E01, 0xC1030CFC, 0xC1030A8C, 0xC103098D, 0xC10308F1,
-> +		0xC10307A6, 0xC10306B8, 0xC1030500, 0xC1030420, 0xC1030300,
-> +		0xC1030030, 0xC10300F6, 0xC1030050, 0xC1030060, 0xC10300AC,
-> +		0xC10300FC, 0xC103009D, 0xC10300F1, 0xC10300E1
-> +	};
-> +
-> +	lvts_write_config(lvts_ctrl, cmds, ARRAY_SIZE(cmds));
-> +
-> +	return 0;
-> +}
-> +
-> +static int lvts_ctrl_calibrate(struct device *dev, struct lvts_ctrl *lvts_ctrl)
-> +{
-> +	int i;
-> +	void __iomem *lvts_edata[] = {
-> +		LVTS_EDATA00(lvts_ctrl->base),
-> +		LVTS_EDATA01(lvts_ctrl->base),
-> +		LVTS_EDATA02(lvts_ctrl->base),
-> +		LVTS_EDATA03(lvts_ctrl->base)
-> +	};
-> +
-> +	/*
-> +	 * LVTS_EDATA0X : Efuse calibration reference value for sensor X
-> +	 *
-> +	 * Bits:
-> +	 *
-> +	 * 20-0 : Efuse value for normalization data
-> +	 */
-> +	for (i = 0; i < LVTS_SENSOR_MAX; i++)
-> +		writel(lvts_ctrl->calibration[i], lvts_edata[i]);
-> +
-> +	return 0;
-> +}
-> +
-> +static int lvts_ctrl_configure(struct device *dev, struct lvts_ctrl *lvts_ctrl)
-> +{
-> +	u32 value;
-> +
-> +	/*
-> +	 * LVTS_TSSEL : Sensing point index numbering
-> +	 *
-> +	 * Bits:
-> +	 *
-> +	 * 31-24: ADC Sense 3
-> +	 * 23-16: ADC Sense 2
-> +	 * 15-8	: ADC Sense 1
-> +	 * 7-0	: ADC Sense 0
-> +	 */
-> +	value = LVTS_TSSEL_CONF;
-> +	writel(value, LVTS_TSSEL(lvts_ctrl->base));
-> +
-> +	/*
-> +	 * LVTS_CALSCALE : ADC voltage round
-> +	 */
-> +	value = 0x300;
-> +	value = LVTS_CALSCALE_CONF;
-> +
-> +	/*
-> +	 * LVTS_MSRCTL0 : Sensor filtering strategy
-> +	 *
-> +	 * Filters:
-> +	 *
-> +	 * 000 : One sample
-> +	 * 001 : Avg 2 samples
-> +	 * 010 : 4 samples, drop min and max, avg 2 samples
-> +	 * 011 : 6 samples, drop min and max, avg 4 samples
-> +	 * 100 : 10 samples, drop min and max, avg 8 samples
-> +	 * 101 : 18 samples, drop min and max, avg 16 samples
-> +	 *
-> +	 * Bits:
-> +	 *
-> +	 * 0-2  : Sensor0 filter
-> +	 * 3-5  : Sensor1 filter
-> +	 * 6-8  : Sensor2 filter
-> +	 * 9-11 : Sensor3 filter
-> +	 */
-> +	value = LVTS_HW_FILTER << 9 |  LVTS_HW_FILTER << 6 |
-> +			LVTS_HW_FILTER << 3 | LVTS_HW_FILTER;
-> +	writel(value, LVTS_MSRCTL0(lvts_ctrl->base));
-> +
-> +	/*
-> +	 * LVTS_MSRCTL1 : Measurement control
-> +	 *
-> +	 * Bits:
-> +	 *
-> +	 * 9: Ignore MSRCTL0 config and do immediate measurement on sensor3
-> +	 * 6: Ignore MSRCTL0 config and do immediate measurement on sensor2
-> +	 * 5: Ignore MSRCTL0 config and do immediate measurement on sensor1
-> +	 * 4: Ignore MSRCTL0 config and do immediate measurement on sensor0
-> +	 *
-> +	 * That configuration will ignore the filtering and the delays
-> +	 * introduced below in MONCTL1 and MONCTL2
-> +	 */
-> +	if (lvts_ctrl->mode == LVTS_MSR_IMMEDIATE_MODE) {
-> +		value = BIT(9) | BIT(6) | BIT(5) | BIT(4);
-> +		writel(value, LVTS_MSRCTL1(lvts_ctrl->base));
-> +	}
-> +
-> +	/*
-> +	 * LVTS_MONCTL1 : Period unit and group interval configuration
-> +	 *
-> +	 * The clock source of LVTS thermal controller is 26MHz.
-> +	 *
-> +	 * The period unit is a time base for all the interval delays
-> +	 * specified in the registers. By default we use 12. The time
-> +	 * conversion is done by multiplying by 256 and 1/26.10^6
-> +	 *
-> +	 * An interval delay multiplied by the period unit gives the
-> +	 * duration in seconds.
-> +	 *
-> +	 * - Filter interval delay is a delay between two samples of
-> +	 * the same sensor.
-> +	 *
-> +	 * - Sensor interval delay is a delay between two samples of
-> +	 * different sensors.
-> +	 *
-> +	 * - Group interval delay is a delay between different rounds.
-> +	 *
-> +	 * For example:
-> +	 *     If Period unit = C, filter delay = 1, sensor delay = 2, group delay = 1,
-> +	 *     and two sensors, TS1 and TS2, are in a LVTS thermal controller
-> +	 *     and then
-> +	 *     Period unit time = C * 1/26M * 256 = 12 * 38.46ns * 256 = 118.149us
-> +	 *     Filter interval delay = 1 * Period unit = 118.149us
-> +	 *     Sensor interval delay = 2 * Period unit = 236.298us
-> +	 *     Group interval delay = 1 * Period unit = 118.149us
-> +	 *
-> +	 *     TS1    TS1 ... TS1    TS2    TS2 ... TS2    TS1...
-> +	 *        <--> Filter interval delay
-> +	 *                       <--> Sensor interval delay
-> +	 *                                             <--> Group interval delay
-> +	 * Bits:
-> +	 *      29 - 20 : Group interval
-> +	 *      16 - 13 : Send a single interrupt when crossing the hot threshold (1)
-> +	 *                or an interrupt everytime the hot threshold is crossed (0)
-> +	 *       9 - 0  : Period unit
-> +	 *
-> +	 */
-> +	value = LVTS_GROUP_INTERVAL << 20 | LVTS_PERIOD_UNIT;
-> +	writel(value, LVTS_MONCTL1(lvts_ctrl->base));
-> +
-> +	/*
-> +	 * LVTS_MONCTL2 : Filtering and sensor interval
-> +	 *
-> +	 * Bits:
-> +	 *
-> +	 *      25-16 : Interval unit in PERIOD_UNIT between sample on
-> +	 *              the same sensor, filter interval
-> +	 *       9-0  : Interval unit in PERIOD_UNIT between each sensor
-> +	 *
-> +	 */
-> +	value = LVTS_FILTER_INTERVAL << 16 | LVTS_SENSOR_INTERVAL;
-> +	writel(value, LVTS_MONCTL2(lvts_ctrl->base));
-> +
-> +	return lvts_irq_init(lvts_ctrl);
-> +}
-> +
-> +static int lvts_ctrl_start(struct device *dev, struct lvts_ctrl *lvts_ctrl)
-> +{
-> +	struct lvts_sensor *lvts_sensors = lvts_ctrl->sensors;
-> +	struct thermal_zone_device *tz;
-> +	u32 sensor_map = 0;
-> +	int i;
-> +
-> +	for (i = 0; i < lvts_ctrl->num_lvts_sensor; i++) {
-> +
-> +		int dt_id = lvts_sensors[i].dt_id;
-> +
-> +		tz = devm_thermal_of_zone_register(dev, dt_id, &lvts_sensors[i],
-> +						   &lvts_ops);
-> +		if (IS_ERR(tz)) {
-> +			/*
-> +			 * This thermal zone is not described in the
-> +			 * device tree. It is not an error from the
-> +			 * thermal OF code POV, we just continue.
-> +			 */
-> +			if (PTR_ERR(tz) == -ENODEV)
-> +				continue;
-> +
-> +			return PTR_ERR(tz);
-> +		}
-> +
-> +		/*
-> +		 * The thermal zone pointer will be needed in the
-> +		 * interrupt handler, we store it in the sensor
-> +		 * structure. The thermal domain structure will be
-> +		 * passed to the interrupt handler private data as the
-> +		 * interrupt is shared for all the controller
-> +		 * belonging to the thermal domain.
-> +		 */
-> +		lvts_sensors[i].tz = tz;
-> +
-> +		/*
-> +		 * This sensor was correctly associated with a thermal
-> +		 * zone, let's set the corresponding bit in the sensor
-> +		 * map, so we can enable the temperature monitoring in
-> +		 * the hardware thermal controller.
-> +		 */
-> +		sensor_map |= BIT(i);
-> +	}
-> +
-> +	/*
-> +	 * Bits:
-> +	 *      9: Single point access flow
-> +	 *    0-3: Enable sensing point 0-3
-> +	 *
-> +	 * The initialization of the thermal zones give us
-> +	 * which sensor point to enable. If any thermal zone
-> +	 * was not described in the device tree, it won't be
-> +	 * enabled here in the sensor map.
-> +	 */
-> +	writel(sensor_map | BIT(9), LVTS_MONCTL0(lvts_ctrl->base));
-> +
-> +	return 0;
-> +}
-> +
-> +static int lvts_domain_init(struct device *dev, struct lvts_domain *lvts_td,
-> +			    struct lvts_data *lvts_data)
-> +{
-> +	struct lvts_ctrl *lvts_ctrl;
-> +	int i, ret;
-> +
-> +	ret = lvts_ctrl_init(dev, lvts_td, lvts_data);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = lvts_domain_reset(dev, lvts_td->reset);
-> +	if (ret) {
-> +		dev_dbg(dev, "Failed to reset domain");
-> +		return ret;
-> +	}
-> +
-> +	for (i = 0; i < lvts_td->num_lvts_ctrl; i++) {
-> +
-> +		lvts_ctrl = &lvts_td->lvts_ctrl[i];
-> +
-> +		/*
-> +		 * Initialization steps:
-> +		 *
-> +		 * - Enable the clock
-> +		 * - Connect to the LVTS
-> +		 * - Initialize the LVTS
-> +		 * - Prepare the calibration data
-> +		 * - Select monitored sensors
-> +		 * [ Configure sampling ]
-> +		 * [ Configure the interrupt ]
-> +		 * - Start measurement
-> +		 */
-> +		ret = lvts_ctrl_enable(dev, lvts_ctrl);
-> +		if (ret) {
-> +			dev_dbg(dev, "Failed to enable LVTS clock");
-> +			return ret;
-> +		}
-> +
-> +		ret = lvts_ctrl_connect(dev, lvts_ctrl);
-> +		if (ret) {
-> +			dev_dbg(dev, "Failed to connect to LVTS controller");
-> +			return ret;
-> +		}
-> +
-> +		ret = lvts_ctrl_initialize(dev, lvts_ctrl);
-> +		if (ret) {
-> +			dev_dbg(dev, "Failed to initialize controller");
-> +			return ret;
-> +		}
-> +
-> +		ret = lvts_ctrl_calibrate(dev, lvts_ctrl);
-> +		if (ret) {
-> +			dev_dbg(dev, "Failed to calibrate controller");
-> +			return ret;
-> +		}
-> +
-> +		ret = lvts_ctrl_configure(dev, lvts_ctrl);
-> +		if (ret) {
-> +			dev_dbg(dev, "Failed to configure controller");
-> +			return ret;
-> +		}
-> +
-> +		ret = lvts_ctrl_start(dev, lvts_ctrl);
-> +		if (ret) {
-> +			dev_dbg(dev, "Failed to start controller");
-> +			return ret;
-> +		}
-> +	}
-> +
-> +	return lvts_debugfs_init(dev, lvts_td);
-> +}
-> +
-> +static int lvts_probe(struct platform_device *pdev)
-> +{
-> +	struct lvts_data *lvts_data;
-> +	struct lvts_domain *lvts_td;
-> +	struct device *dev = &pdev->dev;
-> +	struct resource *res;
-> +	int irq, ret;
-> +
-> +	lvts_td = devm_kzalloc(dev, sizeof(*lvts_td), GFP_KERNEL);
-> +	if (!lvts_td)
-> +		return -ENOMEM;
-> +
-> +	lvts_data = (struct lvts_data *)of_device_get_match_data(dev);
-
-Why do you need case?
-
-> +	if (!lvts_data) {
-> +		dev_dbg(dev, "No platforme 
-
-Drop. How is it even possible?
-
-> +		return -ENODATA;
-> +	};
-> +
-> +	lvts_td->clk = devm_clk_get_enabled(dev, NULL);
-> +	if (IS_ERR(lvts_td->clk)) {
-> +		dev_dbg(dev, "Failed to retrieve clock\n");
-
-Drop all debug statements. Either this is an error (so return
-dev_err_probe) or core handles messages.
-
-> +		return PTR_ERR(lvts_td->clk);
-> +	}
-> +
-> +	res = platform_get_mem_or_io(pdev, 0);
-> +	if (!res) {
-> +		dev_dbg(dev, "No IO resource\n");
-
-Ditto
-
-> +		return -ENXIO;
-> +	}
-> +
-> +	lvts_td->base = devm_ioremap_resource(dev, res);
-
-Why not using single wrapper for this?
-
-> +	if (IS_ERR(lvts_td->base)) {
-> +		dev_dbg(dev, "Failed to map io resource\n");
-
-Ditto
-
-> +		return PTR_ERR(lvts_td->base);
-> +	}
-> +
-> +	lvts_td->reset = devm_reset_control_get_by_index(dev, 0);
-> +	if (IS_ERR(lvts_td->reset)) {
-> +		dev_dbg(dev, "Failed to get reset control\n");
-
-Ditto
-
-> +		return PTR_ERR(lvts_td->reset);
-> +	}
-> +
-> +	irq = platform_get_irq(pdev, 0);
-> +	if (irq < 0) {
-> +		dev_dbg(dev, "No irq resource\n");
-
-Ditto
-
-> +		return irq;
-> +	}
-> +
-> +	ret = lvts_domain_init(dev, lvts_td, lvts_data);
-> +	if (ret) {
-> +		dev_dbg(dev, "Failed to initialize the lvts domain\n");
-
-Why this is debug?
-
-> +		return ret;
-> +	}
-> +
-> +	/*
-> +	 * At this point the LVTS is initialized and enabled. We can
-> +	 * safely enable the interrupt.
-> +	 */
-> +	ret = devm_request_threaded_irq(dev, irq, NULL, lvts_irq_handler,
-> +					IRQF_ONESHOT, dev_name(dev), lvts_td);
-> +	if (ret) {
-> +		dev_dbg(dev, "Failed to request interrupt\n");
-
-Ditto
-
-> +		return ret;
-> +	}
-> +
-> +	platform_set_drvdata(pdev, lvts_td);
-> +
-> +	return 0;
-> +}
-> +
-> +static int lvts_remove(struct platform_device *pdev)
-> +{
-> +	struct lvts_domain *lvts_td;
-> +	struct device *dev = &pdev->dev;
-> +	int i;
-> +
-> +	lvts_td = platform_get_drvdata(pdev);
-> +
-> +	for (i = 0; i < lvts_td->num_lvts_ctrl; i++)
-> +		lvts_ctrl_disable(dev, &lvts_td->lvts_ctrl[i]);
-> +
-> +	lvts_debugfs_exit();
-> +
-> +	return 0;
-> +}
-> +
-> +static struct lvts_ctrl_data mt8195_lvts_data_ctrl[] = {
-
-Why this cannot be const?
-
-> +	{
-> +		.cal_offset = { 0x4, 0x7 },
-> +		.lvts_sensor = {
-> +			{ .dt_id = MT8195_MCU_BIG_CPU0 },
-> +			{ .dt_id = MT8195_MCU_BIG_CPU1 }
-> +		},
-> +		.num_lvts_sensor = 2,
-> +		.offset = 0x0,
-> +		.hw_tshut_temp = LVTS_HW_SHUTDOWN_MT8195,
-> +	},
-> +
-
-Drop blank line
-
-> +	{
-
-Best regards,
-Krzysztof
-
+SGkgTWF0dGhpYXMgU2lyLA0KDQpPbiBUdWUsIDIwMjMtMDEtMzEgYXQgMTQ6NDAgKzAxMDAsIE1h
+dHRoaWFzIEJydWdnZXIgd3JvdGU6DQo+IA0KPiBPbiAxMS8wMS8yMDIzIDA4OjQ1LCBSb2dlciBM
+dSB3cm90ZToNCj4gPiBUaGUgdGltaW5nIG9mIGRpc2FibGluZyBTVlMgYmFuayBhbmQgcmVzdG9y
+ZSBkZWZhdWx0IHZvbHRhZ2UgaXMgbW9yZQ0KPiA+IHRoYW4gb25lIHBsYWNlLiBUaGVyZWZvcmUs
+IGFkZCBhIGNvbW1vbiBmdW5jdGlvbiB0byB1c2UgZm9yIHJlbW92aW5nDQo+ID4gdGhlIHN1cGVy
+Zmx1b3VzIGNvZGVzLg0KPiA+IA0KPiA+IFNpZ25lZC1vZmYtYnk6IFJvZ2VyIEx1IDxyb2dlci5s
+dUBtZWRpYXRlay5jb20+DQo+ID4gUmV2aWV3ZWQtYnk6IEFuZ2Vsb0dpb2FjY2hpbm8gRGVsIFJl
+Z25vIDwNCj4gPiBhbmdlbG9naW9hY2NoaW5vLmRlbHJlZ25vQGNvbGxhYm9yYS5jb20+DQo+IA0K
+PiBTYW1lIGhlcmUsIGNoYW5nZSBsb29rcyBnb29kLiBDb3VsZCB5b3UgcGxlYXNlIHJlYmFzZSBh
+bmQgcmVzZW5kOg0KDQpObyBQcm9ibGVtLCBJJ2xsIHJlYmFzZSBhbmQgcmVzZW5kIGl0LiBUaGFu
+a3MuDQoNCj4gDQo+IFJldmlld2VkLWJ5OiBNYXR0aGlhcyBCcnVnZ2VyIDxtYXR0aGlhcy5iZ2dA
+Z21haWwuY29tPg0KDQouLi4gW3NuaXBdIC4uLg0K
 
