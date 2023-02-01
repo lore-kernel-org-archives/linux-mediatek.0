@@ -4,74 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B622DC05027
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 08:24:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9172BC38142
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 08:48:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QxrSISGq+nm987pWEjhCXdxOzzXqLRcFMhyKMBMFxIs=; b=E9DN/sqdIQ6dzWmociYFMENaLQ
-	SZAbQ9CHuRPQdmX3jIW1/75TF4uGckzjfEKk4r6TM+s63KbPOxLL2jjPVyoclWWe13hXpk3gUJk1z
-	E8BQelhtnsc45XWJxPo/9QW3ZmOHuDLwGU5haa5zQ27NcI/mPS6T9Z7D68cgpXsFGETzw2ClqbgQc
-	6Ag6cci1mEk6VgiAgAdqQwkiuSjbgyqY0LR70JMwxAgC5Gr2D9GpPcofU/TDF4eBFBxNN7gdTcvru
-	5VPV9XmO3OtR9RIswM9Mj6pf7wmzCx5CqB0S5pNhEiG9I0lXRFc7PYy3s2GENDE9prW/9yK/O8Ug8
-	dTkAaIYw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5LVbd7jMGTqPofcbHc2TSxV+zHK32m9KszR9jNPn+f0=; b=vFIXYKk4gfRhN/9Z+GpF51k+Hb
+	wRoXJs92QNH/vlNRfIfoi8rCEpT7KoDXYQxVfEaePB9f/NYd8YmI+smB0WR42W/EMeKvnVipIzoWI
+	cIlk7psXyWxT0FyOHx+3Nll8JGl15k1cPqro4IDuMT9m2NfZDR1yPktZ4FScObisadqywxMIPonAi
+	oUDBNzr0tYuwHzQPrJzw2wlMLVWlVoShQ8fRMrhtN4PWOFzQhfZ5q5yi4BAmwsiWpnKzBtIsSKopz
+	rxISHxXFGB9PHhVZUG768WwOOyetVXOlIJIXG+lFsMj82rcaMVQetcPy45mVXSufFX1atAuFhK26V
+	wd6SVIMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pN8Pc-00Amc3-Iv; Wed, 01 Feb 2023 08:24:12 +0000
-Received: from mail-vs1-xe32.google.com ([2607:f8b0:4864:20::e32])
+	id 1pN8nN-00AsEA-O6; Wed, 01 Feb 2023 08:48:45 +0000
+Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pN8PS-00AmYq-2W
-	for linux-mediatek@lists.infradead.org; Wed, 01 Feb 2023 08:24:03 +0000
-Received: by mail-vs1-xe32.google.com with SMTP id h19so17031928vsv.13
-        for <linux-mediatek@lists.infradead.org>; Wed, 01 Feb 2023 00:23:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=QxrSISGq+nm987pWEjhCXdxOzzXqLRcFMhyKMBMFxIs=;
-        b=M7NIH1HYH98LP7pSFAXoZ89ifYgjXxayxeDyr95YBO+LdJYZ3gx4DJGhBeSRPS/3bO
-         BEyjEIIjI3GgSyi5sJJHumoQIWNIw+OpJS81aydLD93zjbk7A0r33jy/PsYi5k8FRPJ+
-         OIjSnkWY3wAvTGrhpbnK13wF4PxTcRfCvqo+0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=QxrSISGq+nm987pWEjhCXdxOzzXqLRcFMhyKMBMFxIs=;
-        b=kJ3pJSU/LsSwmY9B3whCGXTTr9/RWKq2Gncty9b/oslF5koV5RNc7ADD4DYQdb74d/
-         nGlmkh7zMlytfqRulwU9jcmgdKaoaOfiZtLX/chj1QoCJumV6IOHFEPxF4BtgvvTGlPx
-         Fj6dPma+m6v4gaNk7ktTgorv6Rj9DJAzyCkZFUNqr4HQH+Yrz9uPhEVjaPmEnjeprybw
-         lx+ZZEgQHMlNSGdaVYhClPRWfp2nGQHdzrZ3tXS2mgxcjfHGwcJ3G6u0FThp9QY4+ZRq
-         oGDp/bEdBOYhMIjwI4sFMypml3WSMFfj28b4xEOsilQzeZuPKws3uUcV8ixb49G7Zx9H
-         YiSQ==
-X-Gm-Message-State: AO0yUKUxQmmj2zB5eqCNPfoSWqwf+s0auh0UB5CFdbm74RnBsKLSK7yf
-	u12FaglRkoSqhoH9I+E88/INbEGVh642upcgbVmCMQ==
-X-Google-Smtp-Source: AK7set9FuoQIF0gvgaW2XnYZ7Gcfgt0mCFA74ijOGFQCMA+N2fIYaPkYKfEBXw+x5mqQ5DmuMj693skMwY6aFK0oNVM=
-X-Received: by 2002:a67:fc92:0:b0:3f7:93c4:9e56 with SMTP id
- x18-20020a67fc92000000b003f793c49e56mr335385vsp.85.1675239838728; Wed, 01 Feb
- 2023 00:23:58 -0800 (PST)
+	id 1pN8nD-00AsAN-VD; Wed, 01 Feb 2023 08:48:37 +0000
+Received: from mwalle01.kontron.local. (unknown [213.135.10.150])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.3ffe.de (Postfix) with ESMTPSA id CCDF1126A;
+	Wed,  1 Feb 2023 09:48:27 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
+	t=1675241308;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5LVbd7jMGTqPofcbHc2TSxV+zHK32m9KszR9jNPn+f0=;
+	b=IEe4l47u14uRCeFaJXl+EM8cQsUA0cu2Vny9UkvZ+jDGbBPGKzpJ5NOLJa8ellGSkAryB4
+	+XF1PYzyYHMc6V19ZfNi4sMaDV9NDoIDDfKLEjgU0nf+yiqkMrF2BKQkX91jXa4B1HH0sh
+	TXMwXVB/exdMbD0TEjqC6cNbzU9V1hI4w1y/jd169DsfglVKU7sZDlCY45bxm5eeC6ZteV
+	QY9dZEulLjmLZlIHcF3ta/6m7etnjvSvBSusnbWJYBfIIbFrE5ZV7Vb3a9aHRWTOmxV924
+	R3rtB9tUIY9RioDFMGqEs+0MKeYXGX9Qh+RE4u46lK4Cd2caU0AKkSRfORKA1Q==
+From: Michael Walle <michael@walle.cc>
+To: zajec5@gmail.com
+Cc: devicetree@vger.kernel.org,
+	hayashi.kunihiko@socionext.com,
+	krzysztof.kozlowski+dt@linaro.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	matthias.bgg@gmail.com,
+	mhiramat@kernel.org,
+	rafal@milecki.pl,
+	robh+dt@kernel.org,
+	srinivas.kandagatla@linaro.org,
+	Michael Walle <michael@walle.cc>
+Subject: Re: [PATCH 3/4] nvmem: mtk-efuse: replace driver with a generic MMIO one
+Date: Wed,  1 Feb 2023 09:48:21 +0100
+Message-Id: <20230201084821.1719839-1-michael@walle.cc>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20230201064717.18410-4-zajec5@gmail.com>
+References: <20230201064717.18410-4-zajec5@gmail.com>
 MIME-Version: 1.0
-References: <20230130033305.31830-1-allen-kh.cheng@mediatek.com>
-In-Reply-To: <20230130033305.31830-1-allen-kh.cheng@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 1 Feb 2023 16:23:47 +0800
-Message-ID: <CAGXv+5E2r5T+Okrsz4biksCRF7DfPkBSbbgeKCsidg1MgOL3FA@mail.gmail.com>
-Subject: Re: [PATCH 0/6] media: mediatek: Update video decoder nodes for
- MT8195 and MT8192
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, yunfei.dong@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230201_002402_122485_2336DD45 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20230201_004836_211351_88255226 
+X-CRM114-Status: GOOD (  12.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,32 +82,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+> From: Rafał Miłecki <rafal@milecki.pl>
+> 
+> Mediatek EFUSE uses a simple MMIO that can be handled with a generic
+> driver. Replace this driver to avoid code duplication.
 
-On Mon, Jan 30, 2023 at 11:33 AM Allen-KH Cheng
-<allen-kh.cheng@mediatek.com> wrote:
->
-> This series is based on matthias github, for-next. Since there is a
-> dependence in the following series, I send it for them.
-> https://patchwork.kernel.org/project/linux-mediatek/list/?series=702423
-> https://patchwork.kernel.org/project/linux-mediatek/list/?series=702078
->
-> Allen-KH Cheng (3):
->   media: dt-bindings: media: mediatek: Rename child node names for
->     decoder
->   media: dt-bindings: media: mediatek: Remove "dma-ranges" property for
->     decoder
->   arm64: dts: mt8192: Add video-codec nodes
->
-> Yunfei Dong (3):
->   media: dt-bindings: media: mediatek: vcodec: adapt to the
->     'clock-names' of different platforms
->   media: dt-bindings: media: mediatek: vcodec: Change the max reg value
->     to 2
->   arm64: dts: mt8195: Add video decoder node
+I don't think this is the correct approach. You'll restrict that driver
+to being read-only. I admit that right now, it's read only, but it can
+be extended to also support efuse writing. With this changes, it's not
+possible.
 
-Whole series is:
+> static const struct of_device_id mmio_nvmem_of_match_table[] = {
+> 	{ .compatible = "mmio-nvmem", },
+>+	/* Custom bindings that were introduced before the mmio one */
+>+	{ .compatible = "mediatek,mt8173-efuse", },
+>+	{ .compatible = "mediatek,efuse", },
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+Why do you assume that all mediatek efuses will be the same? This should
+rather be something like (in the dts/binding):
+
+compatible = "mediatek,mt8173-efuse", "mmio-nvmem";
+
+So if there is no driver for the particular efuse, it will fall back to the
+generic one.
+
+-michael
 
