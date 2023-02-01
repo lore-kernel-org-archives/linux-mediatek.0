@@ -4,90 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BC19C38142
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 17:13:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1379C38142
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 17:50:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i3v4lvgMJrNqsvAO9VMzJDJpTxWMbyB0Tj1uMZ3edH4=; b=0aTSoqCJlZ6+pMHEemjkfFtxqH
-	t2gyGqMFXr6QdCQomvFUqHiZzQ6oMKzjphmk1CbAb/0lMdVw71sF/MH2ET64CgK93UiXyFtb/iM/N
-	EXjcnQf+SbpkS5j8OXVhjsBF1H2/uLVXFHL9x8c27kk/tGFAhtDip4p7aVs14J/hO+LoqEqM54yU5
-	LiCjo5YXcm3kgbZOQcvz7G/fhf9Dir+8fUtUlG+gY+Fntzik8VjooDBGRW9Q0zH+7fwX+Xqwl/3IX
-	v48WYuFt5uKczgmg7ww7SgG3VJJd88SZn+SFPSaCdNKpiZM2vY6gQnXAAydNrh/YF4VEkb79iq90+
-	zLipdbSQ==;
+	bh=Xq2eN78p95kGg1hHWERLSXXwCSu24hkO+lemykEw+5o=; b=xHc1oQmI9xIaUxoNq2vS8LWXHN
+	1A0Ks/4SKLm41igYc2XhLyPa+/ptcTgPEwhBMoahY78S2ZQSLMm8MHkD+DkuQVdr8yH/Pvg1UwsoC
+	QHebwHVLAIuhTg8/KosV8BUQHVFxJkZpfs3G17UrKk319xWyFFCjD+2luqXW+O4CwIrEynUu5R3C1
+	G7UJg1h5etLdkcyj/oTSFSlvgnphm/NzcqHUiQtxD0REjwPe2lAmdMlIfNcopDP410FYPxB/7TePP
+	Yaysum6ELUUUELfSATMKduuTZZOpNuto+VAa4JqMwbeodeogTV6Gk9PeFFn6wio6k5ZXnBWm6LmEK
+	wUSxVewQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNGfV-00Cz75-Fs; Wed, 01 Feb 2023 17:13:09 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1pNHF3-00D4S6-1y; Wed, 01 Feb 2023 17:49:53 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNGfI-00Cz24-LT
-	for linux-mediatek@lists.infradead.org; Wed, 01 Feb 2023 17:13:01 +0000
-Received: by mail-wr1-x432.google.com with SMTP id h12so17966985wrv.10
-        for <linux-mediatek@lists.infradead.org>; Wed, 01 Feb 2023 09:12:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=i3v4lvgMJrNqsvAO9VMzJDJpTxWMbyB0Tj1uMZ3edH4=;
-        b=jveV7rE6VkRhavv5UZTPo6oGPvccJ5HfKD92qZWtbyJpxrqdRXX9MEY8T+XIZatBEa
-         Tvl8zhkPJuwdAzyExpZ1cDy7KuOnLUtg/lpOWt67jjBZfpR0tkSCpx+oLyOoIgKywKpN
-         GAb/zREN8Hav3nJAwOTimNAaI3a8s8/9nK0GEUa1pCQbt5uMIskVilVCQJSN887YJ5uJ
-         NqzTzPqmL8LAG5DtlM7klEOyEptCnKFM2/0V3Z3wfM/9t2l4B+3jE+Ofu3hiiDgDSdmk
-         KP3Q4GrbaVgEhXnR5yp9KWXgKP5fbGBk19wrb6VLPH0UCvB7A6j0nCXTFrisjv/rWDDu
-         cOaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=i3v4lvgMJrNqsvAO9VMzJDJpTxWMbyB0Tj1uMZ3edH4=;
-        b=qXMvo2sh+4mOzV4e8v1d8SHUzOjLu0qNzIt/eV/H0B92dAerZQie3eEWoevwUQt4uD
-         L4brUTIuJBIOqfSiFkZDj1/hSITfOU1rsC8tKlppiX+3S+Ss/EuiK+Gaw8wovLxTp9eU
-         XSzqLsLbE5dr0vmgshi8JzvzgPwrr/JY7zwzaS9e4FimfRx2qqWrnjJo/r4DTfAneST5
-         omah3zZ7YvCETBJXUqiXkE2jJZ+nK56qwsUttL0FlgoTJ9FKEISXoTaIBE1MQiA99gEN
-         p3kxnfhoFgxHIlzl3WGEtqad/trViKlIzNS6sKhH9mvciqWuqNF1p+J6P0wVfOMSXHUj
-         I0/w==
-X-Gm-Message-State: AO0yUKX+k1IYy4s2vCj2UuZgeghemv+dseXJwEuZEdhEVRkl6WvWYUdZ
-	hdn3M8s7Ecx98Ch3KUOc6ZKkLw==
-X-Google-Smtp-Source: AK7set9vFVx2h/65GJtKCAcoqYhL2uenVpmVGmEzti3KxJGPZTdKkO9JVCu2AFbygJ/RAySdrArmIw==
-X-Received: by 2002:a05:6000:a04:b0:2c3:bc42:2ff9 with SMTP id co4-20020a0560000a0400b002c3bc422ff9mr1145931wrb.25.1675271574640;
-        Wed, 01 Feb 2023 09:12:54 -0800 (PST)
-Received: from [192.168.1.109] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id m2-20020a056000180200b002bfb5618ee7sm17827215wrh.91.2023.02.01.09.12.52
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 01 Feb 2023 09:12:53 -0800 (PST)
-Message-ID: <8662c6bd-b32d-3d3d-b3b7-7f4aeb028309@linaro.org>
-Date: Wed, 1 Feb 2023 18:12:51 +0100
+	id 1pNHEs-00D4PK-G2; Wed, 01 Feb 2023 17:49:44 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1675273771; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=bESEIlN1fQOVl/HoozJhsy0lIplWS/QOY0zItYgeuWGo6Ho6HDHLwXhdPua0vsSr5B2bK0UVwm27H7JY2M97CXckMbNXoNHpPxmOjazVIsqe51TcSRdZVrwKWOHlFE3y5+N8z4yDQSsKI7GnCVxplBe1QF98D//m7U1JM9hsong=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1675273771; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=Xq2eN78p95kGg1hHWERLSXXwCSu24hkO+lemykEw+5o=; 
+	b=VDKvlPDeEEHk5L95hH91eYZEFC0o/jo0nTAJJGAQeHboxfNWZnH1L1tfSQAcdA9FOphvMCQcGdUeyN6c25uTqvKc0PuSp1iXop6EQ3tZiDeeH29ozywI4LCZze43/Ephq6odwX8l6KkMaml+UjXz4LuKGmJWYKunPhcaWQ3m6xg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1675273771;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=Xq2eN78p95kGg1hHWERLSXXwCSu24hkO+lemykEw+5o=;
+	b=I10+d9x1Rlm7I010Mabuzs3+Atw0J8WqJwav053YtR9XBEyDBDSmUvumQf5LW11A
+	HykGRxnBQ1AOMXhkW/360xJPxFfGDVDKSQPyd20pEkAiAuyvGKjJQWDBfhyGODQ7Pjn
+	WShkzEpY887CXYlPJQVvHK1htY46+jSxhtgD8Hdw=
+Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
+	with SMTPS id 1675273769829451.6386416386098; Wed, 1 Feb 2023 09:49:29 -0800 (PST)
+Message-ID: <fa6dd68a-7e6f-91c5-d065-ef909b05166b@arinc9.com>
+Date: Wed, 1 Feb 2023 20:49:25 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH v12] thermal: drivers: mediatek: Add the Low Voltage
- Thermal Sensor driver
+ Thunderbird/102.4.2
+Subject: Re: Aw: Re: [PATCH 4/5] arm: dts: mt7623: mux phy0 on Bananapi BPI-R2
 Content-Language: en-US
-To: Balsam CHIHI <bchihi@baylibre.com>
-Cc: daniel.lezcano@linaro.org, angelogioacchino.delregno@collabora.com,
- rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com,
- matthias.bgg@gmail.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org,
- ye.xingchen@zte.com.cn, p.zabel@pengutronix.de, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- khilman@baylibre.com, james.lo@mediatek.com, rex-bc.chen@mediatek.com
-References: <20230124131717.128660-5-bchihi@baylibre.com>
- <20230131153816.21709-1-bchihi@baylibre.com>
- <ab1e4822-d5f4-79f6-ea38-47e2342ebe49@linaro.org>
- <CAGuA+oqLiCxb1g7pwf+RwUTWHV37pXdAWUXHV51TnUy1-xUOXQ@mail.gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <CAGuA+oqLiCxb1g7pwf+RwUTWHV37pXdAWUXHV51TnUy1-xUOXQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
+To: Frank Wunderlich <frank-w@public-files.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ erkin.bozoglu@xeront.com, Sean Wang <sean.wang@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>
+References: <20230120205318.519493-1-arinc.unal@arinc9.com>
+ <20230120205318.519493-5-arinc.unal@arinc9.com>
+ <9A7BD95A-F026-4EAB-96E1-12B1B0C6AAA4@public-files.de>
+ <cf7d3247-4d21-98f0-819b-7653153ee4c0@arinc9.com>
+ <c78e2725-0be7-caa8-40db-2f355cc2cdec@gmail.com>
+ <trinity-a044d8eb-8bc2-4b96-9abf-874dcc10db54-1675183189634@3c-app-gmx-bs58>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <trinity-a044d8eb-8bc2-4b96-9abf-874dcc10db54-1675183189634@3c-app-gmx-bs58>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230201_091256_727597_6A8AFF06 
-X-CRM114-Status: GOOD (  19.64  )
+X-CRM114-CacheID: sfid-20230201_094942_624017_AC0FCA1C 
+X-CRM114-Status: GOOD (  15.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,95 +87,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 01/02/2023 17:46, Balsam CHIHI wrote:
->>> +#ifdef CONFIG_MTK_LVTS_THERMAL_DEBUGFS
->>> +
->>> +static struct dentry *root;
+On 31.01.2023 19:39, Frank Wunderlich wrote:
+> Hi
+>> Gesendet: Dienstag, 31. Januar 2023 um 12:55 Uhr
+>> Von: "Matthias Brugger" <matthias.bgg@gmail.com>
+>> An: "Arınç ÜNAL" <arinc.unal@arinc9.com>, frank-w@public-files.de, "Rob Herring" <robh+dt@kernel.org>, "Krzysztof Kozlowski" <krzysztof.kozlowski+dt@linaro.org>
+>> Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, erkin.bozoglu@xeront.com, "Sean Wang" <sean.wang@mediatek.com>, "DENG Qingfang" <dqfext@gmail.com>
+>> Betreff: Re: [PATCH 4/5] arm: dts: mt7623: mux phy0 on Bananapi BPI-R2
 >>
->> How do you handle two instances of driver?
-> 
-> This root node is the topmost directory for debugfs called 'lvts', the
-> different driver instances are below this. It is a singleton.
-
-Indeed. What about removal? Aren't you remobing entire directory
-structure on first device removal?
-
-(...)
-
->>> +
->>> +     of_property_for_each_string(np, "nvmem-cell-names", prop, cell_name) {
->>> +             size_t len;
->>> +             u8 *efuse;
->>> +
->>> +             cell = of_nvmem_cell_get(np, cell_name);
->>> +             if (IS_ERR(cell)) {
->>> +                     dev_dbg(dev, "Failed to get cell '%s'\n", cell_name);
 >>
->> Is this an error? If so, why debug? dbg is not for errors.
-> 
-> AFAIK using dev_dbg does not increase ELF size when DEBUG is disabled.
-> If this is not a good reason for you, then I will change it to dev_err.
-
-But also dev_dbg are not visible in error or warn level logs. If this is
-not an error, then indeed dev_dbg could be fine. But errors should be
-verbose.
-
-> 
 >>
->>> +                     return PTR_ERR(cell);
->>> +             }
->>> +
->>> +             efuse = nvmem_cell_read(cell, &len);
->>> +
->>> +             nvmem_cell_put(cell);
->>> +
->>> +             if (IS_ERR(efuse)) {
->>> +                     dev_dbg(dev, "Failed to read cell '%s'\n", cell_name);
->>> +                     return PTR_ERR(efuse);
->>> +             }
->>> +
->>> +             lvts_td->calib = devm_krealloc(dev, lvts_td->calib,
->>> +                                            lvts_td->calib_len + len, GFP_KERNEL);
->>> +             if (!lvts_td->calib)
->>> +                     return -ENOMEM;
->>> +
->>> +             memcpy(lvts_td->calib + lvts_td->calib_len, efuse, len);
->>> +
->>> +             lvts_td->calib_len += len;
->>> +
->>> +             kfree(efuse);
->>> +     }
->>> +
->>> +     return 0;
->>> +}
->>> +
->>> +static int __init lvts_golden_temp_init(struct device *dev, u32 *value)
+>> On 25/01/2023 17:54, Arınç ÜNAL wrote:
+>>> On 25.01.2023 19:41, Frank Wunderlich wrote:
+>>>> Am 20. Januar 2023 21:53:17 MEZ schrieb "Arınç ÜNAL" <arinc.unal@arinc9.com>:
+>>>>
+>>>>>          switch@1f {
+>>>>>              compatible = "mediatek,mt7530";
+>>>>>              reg = <0x1f>;
+>>>>> @@ -199,11 +208,6 @@ ports {
+>>>>>                  #address-cells = <1>;
+>>>>>                  #size-cells = <0>;
+>>>>>
+>>>>> -                port@0 {
+>>>>> -                    reg = <0>;
+>>>>> -                    label = "wan";
+>>>>> -                };
+>>>>> -
+>>>>
+>>>> This will break existing userspace setups using wan as interface name.
+>>>
+>>> Yup. The OS being used will have to either rename the interface or adapt to the
+>>> new name, eth1.
+>>>
 >>
->> You did not test it, right? Build with section mismatch analysis...
+>> In that case please explain in the commit message why this is needed. We are
+>> trying really hard to not break userspace by a device-tree update.
 > 
-> I'm not sure to fully understand this comment.
-> Would you explain, please?
-
-git grep -i "section mismatch" leads to lib/Kconfig.debug and
-DEBUG_SECTION_MISMATCH
-
-(...)
-
->>> +static struct lvts_ctrl_data mt8195_lvts_data_ctrl[] = {
->>
->> Why this cannot be const?
+> I understand the reason why Arınç wants to change it:
 > 
-> I've got the following warning when I added "const"
-> drivers/thermal/mediatek/lvts_thermal.c:1286:27: warning:
-> initialization discards ‘const’ qualifier from pointer target type
-> [-Wdiscarded-qualifiers]
->  1286 |         .lvts_ctrl      = mt8195_lvts_data_ctrl,
->       |                           ^~~~~~~~~~~~~~~~~~~~~~~~~
+> currently all ports including wan-port are routed via dsa over gmac0 (trgmii), Arınç enables the second gmac and port5 of switch to route wan-traffic over the other gmac. But unfortunately there is no mainline-way to rename the gmac1 interface (eth1) to wan...this would be a way to not break the userspace.
+> 
+> i had an older patch for mtk_eth_soc [1] which do it at driver level for mediatek ethernet driver, but afair a generic way to (re)name interfaces in dts (vendor independ) was requested as the right way.
+> 
+> regards Frank
+> 
+> [1] https://github.com/frank-w/BPI-Router-Linux/commit/5088c9c81e90014622a950fca38cfb29e0421155
 
-As with every const... Do you need lvts_ctrl to be non-const? If yes,
-then how do you handle multiple devices (singleton)?
+I tried this [0] before. It's not going to happen on mainline, and 
+that's fine. I'll just clearly mention on the patch log that the 
+interface name will change with this patch.
 
-Best regards,
-Krzysztof
+[0] 
+https://lore.kernel.org/netdev/20220404114000.3549-1-arinc.unal@arinc9.com/t/#u
 
+Arınç
 
