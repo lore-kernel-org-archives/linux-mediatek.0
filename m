@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 530D3C38142
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 18:57:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 398BBC05027
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Feb 2023 18:57:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XuwRMKnXVYShc3P97jDcb26qSE0+haHJPdzfJ4jdlqw=; b=m6zJpBc19g2jaV
-	48wclaBE9tV6+i1pWwdq+ue0jRCGDEQSroK5Inzyii0D69/GaRUhO/jmvAUhQWRXKhSEe5ZDk+Teu
-	ZFo+aFzr5jHiwOPkVNfAjt8jXndbiMj6gskeVSt717HU8rwY/iyK5VvarFac4sRoTLPbBO0tbaeML
-	iWqUTA1qNqDsoQiiMmtpZIZAbI1xvvaKaI/SusRtFBFkMrr05+nrJJ1WQFVEShkbEgHXidpPByZmr
-	KpzHu8DHZE52DmvynIWUYWBHjbfONPTI4iZrq2rcH4uAf1yTjNb44rQjVMNcBRir3XvOYfq7gdxzt
-	UzmQZPHIoNPOo8F1b72w==;
+	List-Owner; bh=zQ2TcNqdLFOAVmLP5M0cy768AQ+LH1yHfkoCaBZyfHc=; b=peEv08xJbGCuAq
+	5ruf0wR1plQrwy7q6JHhvXVno/t69xD+ncMkvOE4GbGV1MUQ0X/ZuO1SJLaq//UMbI9TwY7omXqDN
+	Rzjrta/ZiP5Zjhdlt2k5spnYUvhrjzCEEnSD1aIOXDJG7o9KM+rV8vhXNHONz0DCs8h375QXpVs/1
+	hKVdYR/F4KiLwmfT3jc90QMvhjvefSD2mKtih85oPU3RSLrJ1FP5I/UsQzxIolJcVeFlaqCUKOX5e
+	kAY2cGu8qdA5WHzhCENhB6lkOwZat8REarJPVeSrisLvSTa1Nnq7lpM151cuqtPstLysrxPkRJHvv
+	x27U6ryyU85wlaETQ/Pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNIIS-00DHiC-7t; Wed, 01 Feb 2023 18:57:28 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1pNIIb-00DHmX-8S; Wed, 01 Feb 2023 18:57:37 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNII8-00DHZM-Bw; Wed, 01 Feb 2023 18:57:09 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id be12so7454194edb.4;
-        Wed, 01 Feb 2023 10:57:06 -0800 (PST)
+	id 1pNII9-00DHaH-MW; Wed, 01 Feb 2023 18:57:11 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id v10so18700054edi.8;
+        Wed, 01 Feb 2023 10:57:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=XuwRMKnXVYShc3P97jDcb26qSE0+haHJPdzfJ4jdlqw=;
-        b=qmcO0TsXrFJNMB1blLN1OeISeDhx5W/vxRLQQfdyvpO7OLnUH8thmpVDbHr/FlRMJl
-         ABTEEI2YgQuyaKsB+ruF4q8sEkGGlJg0313P52N2Eo0QIIDXh7PGesqm/PBViVMWJOIK
-         nHPx6wtL7dTikU/IBhclK797ushAwPJ40cHnvE0Xk8hgcvG0fDOCpzz01Ic6Y+BunKM1
-         +58w+IsUC7Lg8/4xjj2/bJhJdL47W+rd1LALXI5l2alh0qSck5hdAWTRPczsSJzjR9o5
-         uMQzu3kaX2KYqupTPTiJrEG8sZyN2B9H43+U+CZYXxm0nKZ4xJVpeW/yszQVj1Si6Xsb
-         ObqQ==
+        bh=zQ2TcNqdLFOAVmLP5M0cy768AQ+LH1yHfkoCaBZyfHc=;
+        b=RdzQM9UxdzXFHlTygjnB05HaKkfeckDFaoC0sQILZA8OjUcHc46SFz7RLBKN/jXBE6
+         sBSjrAxxSLEPVES5uw9VQVE7SsY8rcvVATXQ/kOT+o6zRsoNLYMG9G9SEAd8qICEofgP
+         138j1q+gS5EwFUGWHaMPifgTEMUvZVPZZ+1qrZyStRMn8odP7pPH1oVDIxpNEtJkUA+1
+         SowWyQkWJ9cyG9mr+K6BQ0EvAjLWTbg4cYrNbCgHOfOhtocVQmQ+hmweRqQgbm1p3vdc
+         6Ioru6D1UEh4F7Vwk9mc/+pE/P2P44cnRJs3gVIGl0W9j+7jHF0M1g99hL+mdYFPUFW3
+         NJaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=XuwRMKnXVYShc3P97jDcb26qSE0+haHJPdzfJ4jdlqw=;
-        b=wq4D+K8qx0Go3y6CpOoWI2m1OU8r2ylw+dExroixIbSkcSSzLHBVbKC71qA/e4nqzQ
-         qjFjdxC85F1X0F24VsGOTH0TRdwP7GhCiMQP+HD2ZanWkEcSNxQJyYWqHXXTuIruuquF
-         abEOfHPYwvjhsUaOuKHd6CGsTQwhGYTFze37QckVHNmazJKChLynwbpfFVz+/LnjI1sC
-         UWn8r5GKXO3klqw6pNDdytC0QzPqfVFMVwPQiioqkjCBKeIN2KdO8iDf8Dh7DbHVO4/G
-         uupzskU6B+pMN/hOaQ4rFl13PnE4UoKqUZlZrNR5TDWQ2nqN24w8WUE8AmS5iodZez6e
-         2jZA==
-X-Gm-Message-State: AO0yUKWOCaz/7zWmaTnXJa+FQEkEhCz2lP42MA/OMdgcWA7zQBQ1tY67
-	wD4Ru0kXe+gJhVgbNQY9eQQ=
-X-Google-Smtp-Source: AK7set91GJkEZxaPNp8C1RCo1CWg9qYFPezo1BrwwNKJSy/zr2IdMXM+suS5sMEjj9ygXka+SU820Q==
-X-Received: by 2002:a50:fb81:0:b0:498:b9ea:1894 with SMTP id e1-20020a50fb81000000b00498b9ea1894mr3819082edq.15.1675277825071;
-        Wed, 01 Feb 2023 10:57:05 -0800 (PST)
+        bh=zQ2TcNqdLFOAVmLP5M0cy768AQ+LH1yHfkoCaBZyfHc=;
+        b=hUn1Fq/zp+/h4MErCfsyGcAwz+EV4orgiV9rgcP/d+TmUFckpu2JLtbKdSMdtuTUTx
+         E3e/bLsGddKAd7IE1fFxP/ED3KA52rq9rU5KjjzYcuKnI/pA1L75RGZwSAeO8smoQfIN
+         Pxm1PSxJGRv7T8jCJxpgmoCBhlhd+/SYx0A1WNPNv2jCFhVJpt1LahD1Qa1bcnWoofjW
+         En/932e+uRfZQwCU09RfL5MqJZ7eqDhuD3VfKTAnB4uipvOLCVsrxhDQ1a+o1pIg4r6Z
+         d/sRQO6G1kEdVvzqo82KUImCHrNbpsrkcsn17mlZCJJRr+I3ljARuL9E+Im9gNAiiWTL
+         0+Qw==
+X-Gm-Message-State: AO0yUKUJ7usba9zaO8nfSbZUdj1APwbTC0xYC1aGibVeM57s3y/HkLCd
+	ndj6JY4Q7puu17sUys9bJsU=
+X-Google-Smtp-Source: AK7set9skUgnmhi1dYpijfocB0rlZ+p6Q6V2+UCwzZI/enK59SfnsKbNtQF2gvImI2edWtLPb7F3Cg==
+X-Received: by 2002:a05:6402:35c7:b0:499:cc32:6a52 with SMTP id z7-20020a05640235c700b00499cc326a52mr8873964edc.16.1675277828527;
+        Wed, 01 Feb 2023 10:57:08 -0800 (PST)
 Received: from arinc9-PC.lan ([37.120.152.236])
-        by smtp.gmail.com with ESMTPSA id dy25-20020a05640231f900b0049e210884dasm10100883edb.15.2023.02.01.10.57.03
+        by smtp.gmail.com with ESMTPSA id dy25-20020a05640231f900b0049e210884dasm10100883edb.15.2023.02.01.10.57.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 01 Feb 2023 10:57:04 -0800 (PST)
+        Wed, 01 Feb 2023 10:57:08 -0800 (PST)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v2 1/5] arm: dts: mt7623: add gmacs to mt7623.dtsi
-Date: Wed,  1 Feb 2023 21:56:52 +0300
-Message-Id: <20230201185656.17164-2-arinc.unal@arinc9.com>
+Subject: [PATCH v2 3/5] arm: dts: mt7623: change mt7530 switch address
+Date: Wed,  1 Feb 2023 21:56:54 +0300
+Message-Id: <20230201185656.17164-4-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20230201185656.17164-1-arinc.unal@arinc9.com>
 References: <20230201185656.17164-1-arinc.unal@arinc9.com>
@@ -74,8 +74,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230201_105708_433363_8D51ED51 
-X-CRM114-Status: GOOD (  13.17  )
+X-CRM114-CacheID: sfid-20230201_105709_760876_30B09593 
+X-CRM114-Status: GOOD (  13.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,200 +93,68 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-There are two gigabit MACs on the MT7623AI and MT7623NI SoCs. Add them to
-mt7623.dtsi and adjust the DTs that call mt7623.dtsi.
+In the case of muxing phy0 of the MT7530 switch, the switch and the phy
+will have the same address on the mdio bus, 0. This causes the ethernet
+driver to fail since devices on the mdio bus cannot share an address.
 
-Now that there are labels for the MACs, remove them from under &eth on the
-DTs that call mt7623.dtsi. Remove the unnecessary mdio label from Bananapi
-BPI-R2.
+Any address can be used for the switch, therefore, change the switch
+address to 0x1f.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- arch/arm/boot/dts/mt7623.dtsi                 | 12 +++++++
- arch/arm/boot/dts/mt7623a-rfb-emmc.dts        | 21 ++++++------
- arch/arm/boot/dts/mt7623a-rfb-nand.dts        | 21 ++++++------
- arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 23 +++++++------
- arch/arm/boot/dts/mt7623n-rfb-emmc.dts        | 32 +++++++++----------
- 5 files changed, 58 insertions(+), 51 deletions(-)
+ arch/arm/boot/dts/mt7623a.dtsi                | 4 ++--
+ arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 4 ++--
+ arch/arm/boot/dts/mt7623n-rfb-emmc.dts        | 4 ++--
+ 3 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-index 25d31e40a553..2bc3c49dc3df 100644
---- a/arch/arm/boot/dts/mt7623.dtsi
-+++ b/arch/arm/boot/dts/mt7623.dtsi
-@@ -981,6 +981,18 @@ eth: ethernet@1b100000 {
+diff --git a/arch/arm/boot/dts/mt7623a.dtsi b/arch/arm/boot/dts/mt7623a.dtsi
+index fbb5731a3a53..dd522e508eb3 100644
+--- a/arch/arm/boot/dts/mt7623a.dtsi
++++ b/arch/arm/boot/dts/mt7623a.dtsi
+@@ -36,9 +36,9 @@ mdio: mdio-bus {
  		#address-cells = <1>;
  		#size-cells = <0>;
- 		status = "disabled";
-+
-+		gmac0: mac@0 {
-+			compatible = "mediatek,eth-mac";
-+			reg = <0>;
-+			status = "disabled";
-+		};
-+
-+		gmac1: mac@1 {
-+			compatible = "mediatek,eth-mac";
-+			reg = <1>;
-+			status = "disabled";
-+		};
- 	};
  
- 	crypto: crypto@1b240000 {
-diff --git a/arch/arm/boot/dts/mt7623a-rfb-emmc.dts b/arch/arm/boot/dts/mt7623a-rfb-emmc.dts
-index e8b4b6d30d19..a64d68b6e165 100644
---- a/arch/arm/boot/dts/mt7623a-rfb-emmc.dts
-+++ b/arch/arm/boot/dts/mt7623a-rfb-emmc.dts
-@@ -112,20 +112,19 @@ &crypto {
- 	status = "okay";
- };
- 
--&eth {
-+&gmac0 {
- 	status = "okay";
-+	phy-mode = "trgmii";
- 
--	gmac0: mac@0 {
--		compatible = "mediatek,eth-mac";
--		reg = <0>;
--		phy-mode = "trgmii";
--
--		fixed-link {
--			speed = <1000>;
--			full-duplex;
--			pause;
--		};
-+	fixed-link {
-+		speed = <1000>;
-+		full-duplex;
-+		pause;
- 	};
-+};
-+
-+&eth {
-+	status = "okay";
- 
- 	mdio-bus {
- 		#address-cells = <1>;
-diff --git a/arch/arm/boot/dts/mt7623a-rfb-nand.dts b/arch/arm/boot/dts/mt7623a-rfb-nand.dts
-index 61f5da68d4b0..fac3ca0322c8 100644
---- a/arch/arm/boot/dts/mt7623a-rfb-nand.dts
-+++ b/arch/arm/boot/dts/mt7623a-rfb-nand.dts
-@@ -116,20 +116,19 @@ &crypto {
- 	status = "okay";
- };
- 
--&eth {
-+&gmac0 {
- 	status = "okay";
-+	phy-mode = "trgmii";
- 
--	gmac0: mac@0 {
--		compatible = "mediatek,eth-mac";
--		reg = <0>;
--		phy-mode = "trgmii";
--
--		fixed-link {
--			speed = <1000>;
--			full-duplex;
--			pause;
--		};
-+	fixed-link {
-+		speed = <1000>;
-+		full-duplex;
-+		pause;
- 	};
-+};
-+
-+&eth {
-+	status = "okay";
- 
- 	mdio-bus {
- 		#address-cells = <1>;
+-		switch0: switch@0 {
++		switch0: switch@1f {
+ 			compatible = "mediatek,mt7530";
+-			reg = <0>;
++			reg = <0x1f>;
+ 			mediatek,mcm;
+ 			resets = <&ethsys MT2701_ETHSYS_MCM_RST>;
+ 			reset-names = "mcm";
 diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-index 5008115d2494..1e03a3de654f 100644
+index 1e03a3de654f..dc9b4f99eb8b 100644
 --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
 +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-@@ -171,22 +171,21 @@ dpi0_out: endpoint {
- 	};
- };
- 
--&eth {
-+&gmac0 {
- 	status = "okay";
-+	phy-mode = "trgmii";
- 
--	gmac0: mac@0 {
--		compatible = "mediatek,eth-mac";
--		reg = <0>;
--		phy-mode = "trgmii";
--
--		fixed-link {
--			speed = <1000>;
--			full-duplex;
--			pause;
--		};
-+	fixed-link {
-+		speed = <1000>;
-+		full-duplex;
-+		pause;
- 	};
-+};
-+
-+&eth {
-+	status = "okay";
- 
--	mdio: mdio-bus {
-+	mdio-bus {
+@@ -189,9 +189,9 @@ mdio-bus {
  		#address-cells = <1>;
  		#size-cells = <0>;
  
+-		switch@0 {
++		switch@1f {
+ 			compatible = "mediatek,mt7530";
+-			reg = <0>;
++			reg = <0x1f>;
+ 			reset-gpios = <&pio 33 0>;
+ 			core-supply = <&mt6323_vpa_reg>;
+ 			io-supply = <&mt6323_vemc3v3_reg>;
 diff --git a/arch/arm/boot/dts/mt7623n-rfb-emmc.dts b/arch/arm/boot/dts/mt7623n-rfb-emmc.dts
-index bf67a8e9be59..5e328c2a6a6e 100644
+index 5e328c2a6a6e..6b0c3d1006ab 100644
 --- a/arch/arm/boot/dts/mt7623n-rfb-emmc.dts
 +++ b/arch/arm/boot/dts/mt7623n-rfb-emmc.dts
-@@ -156,27 +156,25 @@ dpi0_out: endpoint {
- 	};
- };
+@@ -185,9 +185,9 @@ phy5: ethernet-phy@5 {
+ 			phy-mode = "rgmii-rxid";
+ 		};
  
--&eth {
-+&gmac0 {
- 	status = "okay";
-+	phy-mode = "trgmii";
- 
--	gmac0: mac@0 {
--		compatible = "mediatek,eth-mac";
--		reg = <0>;
--		phy-mode = "trgmii";
--
--		fixed-link {
--			speed = <1000>;
--			full-duplex;
--			pause;
--		};
-+	fixed-link {
-+		speed = <1000>;
-+		full-duplex;
-+		pause;
- 	};
-+};
- 
--	mac@1 {
--		compatible = "mediatek,eth-mac";
--		reg = <1>;
--		phy-mode = "rgmii";
--		phy-handle = <&phy5>;
--	};
-+&gmac1 {
-+	status = "okay";
-+	phy-mode = "rgmii";
-+	phy-handle = <&phy5>;
-+};
-+
-+&eth {
-+	status = "okay";
- 
- 	mdio-bus {
- 		#address-cells = <1>;
+-		switch@0 {
++		switch@1f {
+ 			compatible = "mediatek,mt7530";
+-			reg = <0>;
++			reg = <0x1f>;
+ 			reset-gpios = <&pio 33 0>;
+ 			core-supply = <&mt6323_vpa_reg>;
+ 			io-supply = <&mt6323_vemc3v3_reg>;
 -- 
 2.37.2
 
