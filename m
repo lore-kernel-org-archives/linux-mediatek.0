@@ -4,73 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEB41C05027
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 18:59:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F15B9C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 19:40:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=39BPbN0smWcDZ2lm4R39HPEK2re9Dz2vc9CevX7LcLA=; b=fOOYmQyeuHMASPJyxyO7VV7Ko8
-	PUysp+jzmvLGKeVaMlbngsTvwAHqBLiBN2xhoMaSGmzklSiG4m0ufrr72TSCnDitMvAECls9jIjX3
-	+0j0mNZewuHznzW+/C7CHgad9I1ZfbLVBEAFzE/vVXQ8jcQFPLNLJGjpmL2+fZ/omGDTvS2QRW4cG
-	LFFnIWMpwAvNeXnzR9RbTzy4H0WpLtK98/h0QjYfoRBcnAFMZyhcEzn/qQDm3fMRFAIOf6aZJluc8
-	XpwXyymUW/wz+PusY1nGHkWELLg+XMs4vJJDrRHw04+AE5NHdiykTRPy7ypyZXfBQdwFRo2VeOyaa
-	mmA2vSGQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vjlR70NvkbGXMCBCuj0r4CjDZA/9qqDgOr9AFyyE8ck=; b=zUxbfFb9Mxx4vzdcs/Gyttf8Xt
+	SmK8dWPZsGZ1OzVq5Y5/BbTuO2mz8+o85i69TCFLY/u85Kw750FOtEFkUHkN8Tm7OVO/LtRRYCdQP
+	pD5Ytg4mJ65XfrA3iXlsJSCoeCpZU7J138HTzDOqvc7KqYBWeoY/h/ywQ6gh/QllwyiqS7FvjRsmK
+	PHC/6id5v+HgWVF56nTZ59a95rNTFzqtthsJggqGPhXd70Jhjyctg6jAHO/KU+iKRzGT1qqP9LCbf
+	X4Zo/xancI7GC/Z4ww08fpLfR0CChEHnpph8mVcGMdm3NZEvfo1MuKAww8a5mTUW5wMXkUt8vL1De
+	j01ijU+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNeo7-00H1J5-2u; Thu, 02 Feb 2023 18:59:39 +0000
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
+	id 1pNfRg-00H533-D8; Thu, 02 Feb 2023 19:40:32 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNeo3-00H1Hv-Pm
-	for linux-mediatek@lists.infradead.org; Thu, 02 Feb 2023 18:59:37 +0000
-Received: by mail-pj1-x1032.google.com with SMTP id f16-20020a17090a9b1000b0023058bbd7b2so2118489pjp.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 02 Feb 2023 10:59:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=39BPbN0smWcDZ2lm4R39HPEK2re9Dz2vc9CevX7LcLA=;
-        b=bEOFscDKsWeiSBzpi36ddl+0X9WUI1rBgKUP+gIgKte2yJuqBAuN61dsDtqnG5RbT4
-         FY6so8Ax0l9cznfL7eX6g5uh89Zde819T1dwcvySrLxT8B/INbxsz6tNRRjtNnPtZbnE
-         0eW0N4yMVRoYa0O7j8OK7FvIc4+XUfyZ1Ty54=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=39BPbN0smWcDZ2lm4R39HPEK2re9Dz2vc9CevX7LcLA=;
-        b=Mlvrse/c3e7ujTHknVyhQhQUtBNFP3odJgyjxSngzCNv5y7J6iwLu3u0cTokZd7xO3
-         E9NuWf/YDu4RHjOKh/k9JCDWFCM80MuzqTJmVR5vh7gVlT7teUJFb5vX0K60lftdKepz
-         LVSuQ59tGAye3iXJ8l5F+hYK/aco5k0oZCMLJRR/C8emk8nmCmxHu6awyvD9UlfXXlcw
-         HXCXPKDgcuEaDfwE5SY3yic85bmjxcTHO3R+WFPlht7vOAtIRPd6iO8TaWfKCxS+V/NT
-         pe/e9DcRSA14/MwWm+YbfxFas+/DjeaqiCUPzIpFtY663WqPiI6S84JVP1dGQ2DKryF1
-         25Gw==
-X-Gm-Message-State: AO0yUKW0f9o/f7ZbX2okNici6rDrBfi+XgqNVdE3wYKpq4t9xj8ZEj3R
-	8qWjgntXKYwja3PTDcrmj7NAlIkIrxe4Z+AqQ8HWUugIZGwkdQ==
-X-Google-Smtp-Source: AK7set97b7VPGw7HhJiw6iQIHN0soW6YLRSRHIPLLIiJZM1ui9C2RKGR/kE/k35IIF810Iiq7vn4cCqX9gGHHGnP0XE=
-X-Received: by 2002:a17:90b:2342:b0:22b:fbc3:d3b1 with SMTP id
- ms2-20020a17090b234200b0022bfbc3d3b1mr795288pjb.102.1675364372222; Thu, 02
- Feb 2023 10:59:32 -0800 (PST)
+	id 1pNfRU-00H50E-K9; Thu, 02 Feb 2023 19:40:23 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 62EF861CC5;
+	Thu,  2 Feb 2023 19:40:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 4BD07C4339E;
+	Thu,  2 Feb 2023 19:40:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1675366818;
+	bh=RKhFRxkKw/oc1MHgIsGdTeY+HE5OfXv4GdCZPBtPHFc=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=CWjQW27d8ZOodn8t8hCYPfhIzr7DWRSeWLJSrYNvG/kc85m+oVH49B/BMG8qae5IB
+	 ryD8wDM/siHuB7f/pJYvfE8r2/2taraKp9E/iP688zTr4kqGBcWAVgOqa11I0OzpPG
+	 pFD3OxdYiiFEFXaNlWqsSDfCXZQPo5pds858biwK6wZ3HcmX4EY0vdgGO+EHrLZVj+
+	 +qZqps9sdeh2M/Js1vOlU5EXibMF6RbxbaCdOyZBY92fJQRXn+1yiBFE+kgDElvy1G
+	 Hm4yT4Bjuk3LET3gzHUtq1BcWLqxFDsVyDet2mK9a4hhfEIuElIrWu/Ur/9v1gp5zg
+	 a+i+tIswm1eRA==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 304FEE5254B;
+	Thu,  2 Feb 2023 19:40:18 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-References: <20230201170210.1253505-1-greenjustin@chromium.org>
- <20230201170210.1253505-2-greenjustin@chromium.org> <e96bd735-cf36-0dbd-cf93-446c1ab28778@gmail.com>
-In-Reply-To: <e96bd735-cf36-0dbd-cf93-446c1ab28778@gmail.com>
-From: Justin Green <greenjustin@chromium.org>
-Date: Thu, 2 Feb 2023 13:59:21 -0500
-Message-ID: <CAHC42Rf8+yS45VBUc_dDuvCydg4ttKYuGwdgFshZRUZWzGiXRQ@mail.gmail.com>
-Subject: Re: [PATCH 1/3] drm/mediatek: Refactor pixel format logic
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
-	angelogioacchino.delregno@collabora.com, jason-jh.lin@mediatek.com, 
-	justin.yeh@mediatek.com, wenst@chromium.org, chunkuang.hu@kernel.org, 
-	p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch, 
-	daniel@fooishbar.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: disable hardware DSA
+ untagging for second MAC
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id:  <167536681817.25016.12221190782721540650.git-patchwork-notify@kernel.org>
+Date: Thu, 02 Feb 2023 19:40:18 +0000
+References: <20230128094232.2451947-1-arinc.unal@arinc9.com>
+In-Reply-To: <20230128094232.2451947-1-arinc.unal@arinc9.com>
+To: None <arinc9.unal@gmail.com>
+Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
+ Mark-MC.Lee@mediatek.com, lorenzo@kernel.org, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, arinc.unal@arinc9.com, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, erkin.bozoglu@xeront.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230202_105935_872450_08CBD8BA 
-X-CRM114-Status: GOOD (  11.57  )
+X-CRM114-CacheID: sfid-20230202_114020_716850_2FF16DBB 
+X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,21 +79,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias,
+Hello:
 
-> mt8173_formats are the same as the old struct formats. Maybe we should use that
-> and only overwrite where we actually use a different array.
-I think this was sort of how the original patch worked, but we wanted
-to add some flexibility to allow different components to support
-different formats. In patch 3 of the series, we actually overwrite
-this field with mt8195_formats.
+This patch was applied to netdev/net.git (master)
+by Jakub Kicinski <kuba@kernel.org>:
 
-> Why can't we use ARRAY_SIZE(formats) here like we did before?
-I think ARRAY_SIZE is just a macro for getting the length of
-statically allocated arrays. Because we won't know until runtime which
-list of pixel formats we will be using, I'm not sure we can use that
-in this circumstance?
+On Sat, 28 Jan 2023 12:42:32 +0300 you wrote:
+> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+> 
+> According to my tests on MT7621AT and MT7623NI SoCs, hardware DSA untagging
+> won't work on the second MAC. Therefore, disable this feature when the
+> second MAC of the MT7621 and MT7623 SoCs is being used.
+> 
+> Fixes: 2d7605a72906 ("net: ethernet: mtk_eth_soc: enable hardware DSA untagging")
+> Link: https://lore.kernel.org/netdev/6249fc14-b38a-c770-36b4-5af6d41c21d3@arinc9.com/
+> Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> 
+> [...]
 
-Regards,
-Justin
+Here is the summary with links:
+  - [net] net: ethernet: mtk_eth_soc: disable hardware DSA untagging for second MAC
+    https://git.kernel.org/netdev/net/c/a1f47752fd62
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
