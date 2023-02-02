@@ -4,147 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47F71C05027
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 15:30:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CB49C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 15:44:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2pEjyARU/iDHF4qEL808MswcLI+5ZEPTvCc976Kw1g4=; b=tI+6xwv1adhmOdkLiKmc1nJNLa
-	bz7SsL/Jfw/fmV3sco1ca5cXqiwzYdAuf4hpJwU1YcQ+AZ28J+iEzxtH2dSiE4aMGriDPwhLIgf6Y
-	9CMLEOBoUugGx3hPInT7Hjq8N4xLcPP7xkObX/6yFbzkOaV3I0zhIqP1Ou3p/arZ74rZ/OpAch0mT
-	faEYeZCm0j2vbkRUmk2aTQj3UDCZVz7oF3Km6RpW7spLhomU6EWruJpOrbWEuxyc832CjLzdwFkYX
-	xz53TL+a8xSh/GsqQpvTInA37TbSAgpSri+brt6u1h0TEeo/Rmoz7rpUcuMj8getDZmG1HmQ19HYc
-	GMwtRYpQ==;
+	bh=JOJYIxLhKlqXLrEBq+v5LlENJBXu/0YMWzvW35tuScA=; b=3m5SDYItfwCszLTSESUpIJ8tgE
+	Qky3HoKO8nwzINiG+IMF+MymKLVSJgqdG1Iftum1/LdmXke0Rnl+aLzxKx2cpMEX/cIyqwIiUbJ7K
+	l2xvlWihX1anQhinlZ9rc3nYGrjmb3G3LCpyzmOewX02P/DUJZOOOruHHSAJgCSlWp4234tGPGg67
+	1JQqIgg+BsaKlN6yQPBHXJNSOD6HllF1Vi5sx8g3KyZY7Hk6EXlzYO6DjXnitpFS2fU47N8V0Dta1
+	xxGm18J1hy2qYI1Dps/GxoU6JgF2dO/xWt2NzT9rslb23RJO2/NXhn9QU4lgWcT6KTqSP7XRdIfjJ
+	rHCLasHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNbXv-00GOUi-PH; Thu, 02 Feb 2023 15:30:43 +0000
-Received: from mail-bn1nam02on2061f.outbound.protection.outlook.com ([2a01:111:f400:7eb2::61f] helo=NAM02-BN1-obe.outbound.protection.outlook.com)
+	id 1pNblY-00GVJ0-At; Thu, 02 Feb 2023 15:44:48 +0000
+Received: from out5-smtp.messagingengine.com ([66.111.4.29])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNbVs-00GN8B-7W; Thu, 02 Feb 2023 15:28:38 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ChyoQqSXhSnI7KoY5biInXOIJANssAPJrEvZH6mPHFvtP0lVOqeQidsJ4Uto1H6iquYZjLAaxDFcNqa2JU7ntt9CIYV0+A+wTqMkMObUCWZpPqoAgx0s52/VKSMFp3aUnply0g7COSTuobhfxGKlQten9DCIbEi3MDXySNM+ori5NHMEIIrY0sbF5aLACqNCumzvZHDbjV8KC+7rnpvEY0wh+StU1nFUAFXjUY9JBSDu4cZkBNeDjEMZV9+nbve1k6du4mK6lOjLD9FeZAjGpfMS0MMcfxtFsyLOcyQbnOMLiqvU/mP47ACKcWYURjbV6fpHAJYYsaJm5Gg5L7gs3A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=2pEjyARU/iDHF4qEL808MswcLI+5ZEPTvCc976Kw1g4=;
- b=ECbHH6DIKxNnbu7Ao6TpVUFAK+561mk7hftiWheVrhrhcHvlOyaYbUdMikCftUFGbuyuqB27emkT8sbKmuwtd4dLwI6ORXiU97+CT8dKEJZmWoV5yYwiPjYxx8d+3ki/+0ybP3OFT7yxci1eeHlLFbUwnk/b5YkPCx2ZF2Gvagxhjez9G2cgIBWFaje7mnUoyqXiEocllzTJ6K5qiuA93P/A1B36vLBopjSMao5BaLib+Y9aaEKZ4gbL8+C+XyjmXtKJ4fK0d50MqPjrIAg47O2W4oqcC3TsFqKLJrpTUqM28FBL0lPd6QA5/XHMDqlHLdpfIB01oWrMesL3eITibg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=kernel.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2pEjyARU/iDHF4qEL808MswcLI+5ZEPTvCc976Kw1g4=;
- b=HFvChiGMfTn/v0rutEii1Iz7VC8vZawQmS93vvsHzOOwopFciQroMfPUOv/t/y8UKLbhjfwEcqHzPBl5veOm3oduamJB4RksMKOZqhlwKZ29cW6djKM/7hmcrVnp1diDu9CZmx6WffJ3sdGLHjeznv/6hcYB1q5TWbNmsYwkR4E=
-Received: from BLAPR03CA0135.namprd03.prod.outlook.com (2603:10b6:208:32e::20)
- by SA1PR12MB6750.namprd12.prod.outlook.com (2603:10b6:806:257::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6064.27; Thu, 2 Feb
- 2023 15:28:29 +0000
-Received: from BL02EPF000108E8.namprd05.prod.outlook.com
- (2603:10b6:208:32e:cafe::d1) by BLAPR03CA0135.outlook.office365.com
- (2603:10b6:208:32e::20) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6064.24 via Frontend
- Transport; Thu, 2 Feb 2023 15:28:29 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
-Received: from SATLEXMB04.amd.com (165.204.84.17) by
- BL02EPF000108E8.mail.protection.outlook.com (10.167.241.201) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.6064.17 via Frontend Transport; Thu, 2 Feb 2023 15:28:29 +0000
-Received: from SATLEXMB06.amd.com (10.181.40.147) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.34; Thu, 2 Feb
- 2023 09:28:28 -0600
-Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB06.amd.com
- (10.181.40.147) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.34; Thu, 2 Feb
- 2023 09:28:28 -0600
-Received: from xhdsgoud40.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server id 15.1.2375.34 via Frontend
- Transport; Thu, 2 Feb 2023 09:28:05 -0600
-From: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
-To: <broonie@kernel.org>, <miquel.raynal@bootlin.com>, <richard@nod.at>,
-	<vigneshr@ti.com>, <jic23@kernel.org>, <tudor.ambarus@microchip.com>,
-	<pratyush@kernel.org>, <sanju.mehta@amd.com>, <chin-ting_kuo@aspeedtech.com>,
-	<clg@kaod.org>, <kdasu.kdev@gmail.com>, <f.fainelli@gmail.com>,
-	<rjui@broadcom.com>, <sbranden@broadcom.com>, <eajames@linux.ibm.com>,
-	<olteanv@gmail.com>, <han.xu@nxp.com>, <john.garry@huawei.com>,
-	<shawnguo@kernel.org>, <s.hauer@pengutronix.de>, <narmstrong@baylibre.com>,
-	<khilman@baylibre.com>, <matthias.bgg@gmail.com>, <haibo.chen@nxp.com>,
-	<linus.walleij@linaro.org>, <daniel@zonque.org>, <haojian.zhuang@gmail.com>,
-	<robert.jarzmik@free.fr>, <agross@kernel.org>, <bjorn.andersson@linaro.org>,
-	<heiko@sntech.de>, <krzysztof.kozlowski@linaro.org>, <andi@etezian.org>,
-	<mcoquelin.stm32@gmail.com>, <alexandre.torgue@foss.st.com>, <wens@csie.org>,
-	<jernej.skrabec@gmail.com>, <samuel@sholland.org>,
-	<masahisa.kojima@linaro.org>, <jaswinder.singh@linaro.org>,
-	<rostedt@goodmis.org>, <mingo@redhat.com>, <l.stelmach@samsung.com>,
-	<davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>,
-	<pabeni@redhat.com>, <alex.aring@gmail.com>, <stefan@datenfreihafen.org>,
-	<kvalo@kernel.org>
-CC: <git@amd.com>, <linux-spi@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <joel@jms.id.au>, <andrew@aj.id.au>,
-	<radu_nicolae.pirea@upb.ro>, <nicolas.ferre@microchip.com>,
-	<alexandre.belloni@bootlin.com>, <claudiu.beznea@microchip.com>,
-	<bcm-kernel-feedback-list@broadcom.com>, <fancer.lancer@gmail.com>,
-	<kernel@pengutronix.de>, <festevam@gmail.com>, <linux-imx@nxp.com>,
-	<jbrunet@baylibre.com>, <martin.blumenstingl@googlemail.com>,
-	<avifishman70@gmail.com>, <tmaimon77@gmail.com>, <tali.perry1@gmail.com>,
-	<venture@google.com>, <yuenn@google.com>, <benjaminfair@google.com>,
-	<yogeshgaur.83@gmail.com>, <konrad.dybcio@somainline.org>,
-	<alim.akhtar@samsung.com>, <ldewangan@nvidia.com>,
-	<thierry.reding@gmail.com>, <jonathanh@nvidia.com>, <michal.simek@amd.com>,
-	<linux-aspeed@lists.ozlabs.org>, <openbmc@lists.ozlabs.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<linux-rpi-kernel@lists.infradead.org>, <linux-amlogic@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-rockchip@lists.infradead.org>, <linux-samsung-soc@vger.kernel.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>, <linux-sunxi@lists.linux.dev>,
-	<linux-tegra@vger.kernel.org>, <netdev@vger.kernel.org>,
-	<linux-wpan@vger.kernel.org>, <libertas-dev@lists.infradead.org>,
-	<linux-wireless@vger.kernel.org>, <linux-mtd@lists.infradead.org>,
-	<lars@metafoo.de>, <Michael.Hennerich@analog.com>,
-	<linux-iio@vger.kernel.org>, <michael@walle.cc>, <palmer@dabbelt.com>,
-	<linux-riscv@lists.infradead.org>, <amitrkcian2002@gmail.com>, "Amit Kumar
- Mahapatra" <amit.kumar-mahapatra@amd.com>
-Subject: [PATCH v3 13/13] spi: spi-zynqmp-gqspi: Add parallel memories support in GQSPI driver
-Date: Thu, 2 Feb 2023 20:52:58 +0530
-Message-ID: <20230202152258.512973-14-amit.kumar-mahapatra@amd.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230202152258.512973-1-amit.kumar-mahapatra@amd.com>
-References: <20230202152258.512973-1-amit.kumar-mahapatra@amd.com>
+	id 1pNbkS-00GUpz-Fi; Thu, 02 Feb 2023 15:43:45 +0000
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
+	by mailout.nyi.internal (Postfix) with ESMTP id 31F625C01FA;
+	Thu,  2 Feb 2023 10:43:34 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute6.internal (MEProxy); Thu, 02 Feb 2023 10:43:34 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
+	:mime-version:references:reply-to:sender:subject:subject:to:to
+	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm3; t=1675352614; x=1675439014; bh=JOJYIxLhKlqXLrEBq+v5LlENJBXu
+	/0YMWzvW35tuScA=; b=m84jr8rKQV77Hb2CmakvgDV89DA0ahqSC9yuKDL6rjip
+	xqThy9a3EDhOe7S1QQXC/FOAlej+sJovhmyCI82ZlkzBXvfb0DKAvIr68wAA0zuT
+	lqyMTRCZaPCOfHTJFCDXNq+/G9cOttfUr+M34Ty0V6qCPeARAsRXDJKD7PD7q3Xk
+	bDVjhYjpnWTH21BRAtqa4cdgylS7bPRO/pN4REBryibmmeJPZ2Iq582Uhh7z7CfY
+	fyUxmXAqFRMj1pvmgaqi9YeXpMOq37zQo5tPy8GaWLs1MEJzdEHMQNJwQb9AYrD9
+	ROk/hoKvpk8yF52jkKzvAcLYB4qy1Dhjww3ZrMOMiQ==
+X-ME-Sender: <xms:JNrbY1-2B1Jauxz6iGZOPDh_1tGT9yVQ3s2KgkXEtW7DfSfyC0VFmQ>
+    <xme:JNrbY5scrKQaLiVv6D_8mJ-I0mWRjpVWOhkdQc5EASB60nIhDMa94q7nVjeru589L
+    jFQmbNEyJ8h7dU>
+X-ME-Received: <xmr:JNrbYzDIP3-XVCr5kihSOShCyU8ZyFodH-b1PUggVtVh_4JqYg4yMMLfc9lieothdALuf4dLCXL1_DrwOvKehccUe3U>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrudefkedgjeehucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepkfguohcu
+    ufgthhhimhhmvghluceoihguohhstghhsehiughoshgthhdrohhrgheqnecuggftrfgrth
+    htvghrnhepjeekleettddtgfeuvdffieffudegffetgedtteffvefgjeejvefhffehtddv
+    ueevnecuffhomhgrihhnpehpohhrthdrshhhnecuvehluhhsthgvrhfuihiivgeptdenuc
+    frrghrrghmpehmrghilhhfrhhomhepihguohhstghhsehiughoshgthhdrohhrgh
+X-ME-Proxy: <xmx:JNrbY5fIJu3RkR1-Z8e79Q7xoV9OaVLUEUwi_b44d8SeRnfvpVNsDQ>
+    <xmx:JNrbY6PWMusIRYARBSAajbLYQHtybAPmv1lHbV96nnrHdqKmyi-jIA>
+    <xmx:JNrbY7lxpopmegWbvsco-sGcH3kOUGGaYqwM6UDLv-IsjOW8EqaH7w>
+    <xmx:JtrbY_YdzL_72r4z2IEfXcoob5oPx8XHspmkBS7hMc9LAV-bALXVpg>
+Feedback-ID: i494840e7:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 2 Feb 2023 10:43:31 -0500 (EST)
+Date: Thu, 2 Feb 2023 17:43:28 +0200
+From: Ido Schimmel <idosch@idosch.org>
+To: netdev@kapio-technology.com
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
+	Florian Fainelli <f.fainelli@gmail.com>,	Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>,	Eric Dumazet <edumazet@google.com>,
+ Paolo Abeni <pabeni@redhat.com>,	Kurt Kanzenbach <kurt@linutronix.de>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	"maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER"
+ <UNGLinuxDriver@microchip.com>,	Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,	DENG Qingfang <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	=?iso-8859-1?Q?Cl=E9ment_L=E9ger?= <clement.leger@bootlin.com>,
+	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
+	Russell King <linux@armlinux.org.uk>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	open list <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>,
+	"open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER"
+ <linux-renesas-soc@vger.kernel.org>,
+	"moderated list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>
+Subject: Re: [PATCH net-next 0/5] ATU and FDB synchronization on locked ports
+Message-ID: <Y9vaIOefIf/gI0BR@shredder>
+References: <20230130173429.3577450-1-netdev@kapio-technology.com>
+ <Y9lrIWMnWLqGreZL@shredder>
+ <e2535b002be9044958ab0003d8bd6966@kapio-technology.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL02EPF000108E8:EE_|SA1PR12MB6750:EE_
-X-MS-Office365-Filtering-Correlation-Id: 64e877f6-3653-4e8d-acc9-08db053222c8
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	xGpiEMVI0Q79Sm8quNRd1PoYqX8Os2QrTQscMq54fZXySLuL5b5pypVhT9FwWTm6A8VP7CFpp1AuC3+JiGjP0zjzIqP0vyeZd9MGpGCFEx3I7SyCK4cKXlZFo8xlaVnLLLbnGg/O5reTo/v7lPPwUGXgHUOyBAJTY66fTr/SsbLyF6YqUa9WsU4KQ6Whksv3JKdG4ACqmx3HZDlmyEQZ9P2vYqIxDSpzgb3yl1Ez1WpYPU7WQoOG20L/F7uSCCjLFQopJUcTBq5f2z0EcONqSRiguyN/6nBIO6VRPo/hdapw90Drrz46kjFOm8phoINDvox4ZKMUCBFUnxN9OMXmMoomB+ybIxKWpHlSpOmxDxcfEVPeZY0dJidUgckyXU3U7RD2/u0yYGL0iCQqZr1SBWHtH4ROpjmX5CYBJJ8qbKlEgdp7It+ar2ldVuZFHg9z1j40dDoFTG2qaY1hPreqKsLZMGKk1/O6M9+qegWyG3UpdchLe6XTdTNSlgfIfkVPCgov0d5Ow1aYqio2RJxk6o9+GNkKF0KOTP7wqL7BtaUWaFwf5NhSOYY2iljvCfrAxFLI4InlWMwSn5+rk7IllvazKGbKsQQJ4MKrmSF+6AYBhNrLJsORzZW4CAhF8UzgWuDkVZTt74VGRwEyi9G+ME/CmSAYufpa8bTDfnFwDPUZK2rMObUCM3mRYj/4Ava/QJVreqb2LNwoLdjCdLU2m632Y2/AUB1UYK7QBgl0zdKBl+BzDHQgwGel0wwk1Na6st0GzkFOSyhMz1lm4HbalJaSFVoTgz7b/afIlLYjP8RzxNiECSTRue2blY1HJnMvlyTSX0s0cLcFXD85nXMJWw==
-X-Forefront-Antispam-Report: 	CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:SATLEXMB04.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230025)(4636009)(39860400002)(346002)(376002)(396003)(136003)(451199018)(46966006)(36840700001)(40470700004)(356005)(921005)(40480700001)(36756003)(36860700001)(47076005)(82310400005)(81166007)(40460700003)(426003)(82740400003)(8676002)(2906002)(4326008)(54906003)(70586007)(110136005)(7416002)(7406005)(7366002)(316002)(70206006)(6666004)(8936002)(86362001)(41300700001)(5660300002)(7276002)(7336002)(1076003)(478600001)(26005)(186003)(83380400001)(2616005)(336012)(36900700001)(41080700001)(2101003)(83996005);DIR:OUT;SFP:1101;
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Feb 2023 15:28:29.1575
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 64e877f6-3653-4e8d-acc9-08db053222c8
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[SATLEXMB04.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	BL02EPF000108E8.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB6750
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <e2535b002be9044958ab0003d8bd6966@kapio-technology.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230202_072836_351007_D7C4D6D5 
-X-CRM114-Status: GOOD (  18.91  )
+X-CRM114-CacheID: sfid-20230202_074340_665075_17A70041 
+X-CRM114-Status: GOOD (  13.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,108 +115,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-During GQSPI driver probe set ctlr->multi-cs-cap for enabling multi CS
-capability of the controller. In parallel mode the controller can either
-split the data between both the flash or can send the same data to both the
-flashes, this is determined by the STRIPE bit. While sending commands to
-the flashes the GQSPI driver send the same command to both the flashes by
-resetting the STRIPE bit, but while writing/reading data to & from the
-flash the GQSPI driver splits the data evenly between both the flashes by
-setting the STRIPE bit.
+On Thu, Feb 02, 2023 at 08:37:08AM +0100, netdev@kapio-technology.com wrote:
+> On 2023-01-31 20:25, Ido Schimmel wrote:
+> > 
+> > Will try to review tomorrow, but it looks like this set is missing
+> > selftests. What about extending bridge_locked_port.sh?
+> 
+> I knew you would take this up. :-)
+> But I am not sure that it's so easy to have selftests here as it is timing
+> based and it would take the 5+ minutes just waiting to test in the stadard
+> case, and there is opnly support for mv88e6xxx driver with this patch set.
 
-Signed-off-by: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
----
- drivers/spi/spi-zynqmp-gqspi.c | 39 +++++++++++++++++++++++++++++++++-
- 1 file changed, 38 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/spi/spi-zynqmp-gqspi.c b/drivers/spi/spi-zynqmp-gqspi.c
-index 4759f704bf5c..9e44371bfda2 100644
---- a/drivers/spi/spi-zynqmp-gqspi.c
-+++ b/drivers/spi/spi-zynqmp-gqspi.c
-@@ -23,6 +23,7 @@
- #include <linux/spinlock.h>
- #include <linux/workqueue.h>
- #include <linux/spi/spi-mem.h>
-+#include <linux/mtd/spi-nor.h>
- 
- /* Generic QSPI register offsets */
- #define GQSPI_CONFIG_OFST		0x00000100
-@@ -192,6 +193,7 @@ struct qspi_platform_data {
-  * @op_lock:		Operational lock
-  * @speed_hz:          Current SPI bus clock speed in hz
-  * @has_tapdelay:	Used for tapdelay register available in qspi
-+ * @is_parallel:		Used for multi CS support
-  */
- struct zynqmp_qspi {
- 	struct spi_controller *ctlr;
-@@ -214,8 +216,33 @@ struct zynqmp_qspi {
- 	struct mutex op_lock;
- 	u32 speed_hz;
- 	bool has_tapdelay;
-+	bool is_parallel;
- };
- 
-+/**
-+ * zynqmp_gqspi_update_stripe - For GQSPI controller data stripe capabilities
-+ * @op:	Pointer to mem ops
-+ * Return:      Status of the data stripe
-+ *
-+ * Returns true if data stripe need to be enabled, else returns false
-+ */
-+bool zynqmp_gqspi_update_stripe(const struct spi_mem_op *op)
-+{
-+	if (op->cmd.opcode ==  SPINOR_OP_BE_4K ||
-+	    op->cmd.opcode ==  SPINOR_OP_BE_32K ||
-+	    op->cmd.opcode ==  SPINOR_OP_CHIP_ERASE ||
-+	    op->cmd.opcode ==  SPINOR_OP_SE ||
-+	    op->cmd.opcode ==  SPINOR_OP_BE_32K_4B ||
-+	    op->cmd.opcode ==  SPINOR_OP_SE_4B ||
-+	    op->cmd.opcode == SPINOR_OP_BE_4K_4B ||
-+	    op->cmd.opcode ==  SPINOR_OP_WRSR ||
-+	    op->cmd.opcode ==  SPINOR_OP_BRWR ||
-+	    (op->cmd.opcode ==  SPINOR_OP_WRSR2 && !op->addr.nbytes))
-+		return false;
-+
-+	return true;
-+}
-+
- /**
-  * zynqmp_gqspi_read - For GQSPI controller read operation
-  * @xqspi:	Pointer to the zynqmp_qspi structure
-@@ -470,7 +497,14 @@ static void zynqmp_qspi_chipselect(struct spi_device *qspi, bool is_high)
- 
- 	genfifoentry |= GQSPI_GENFIFO_MODE_SPI;
- 
--	if (qspi->cs_index_mask & GQSPI_SELECT_UPPER_CS) {
-+	if ((qspi->cs_index_mask & GQSPI_SELECT_LOWER_CS) &&
-+	    (qspi->cs_index_mask & GQSPI_SELECT_UPPER_CS)) {
-+		zynqmp_gqspi_selectslave(xqspi,
-+					 GQSPI_SELECT_FLASH_CS_BOTH,
-+					 GQSPI_SELECT_FLASH_BUS_BOTH);
-+		if (!xqspi->is_parallel)
-+			xqspi->is_parallel = true;
-+	} else if (qspi->cs_index_mask & GQSPI_SELECT_UPPER_CS) {
- 		zynqmp_gqspi_selectslave(xqspi,
- 					 GQSPI_SELECT_FLASH_CS_UPPER,
- 					 GQSPI_SELECT_FLASH_BUS_LOWER);
-@@ -1139,6 +1173,8 @@ static int zynqmp_qspi_exec_op(struct spi_mem *mem,
- 	}
- 
- 	if (op->data.nbytes) {
-+		if (xqspi->is_parallel && zynqmp_gqspi_update_stripe(op))
-+			genfifoentry |= GQSPI_GENFIFO_STRIPE;
- 		reinit_completion(&xqspi->data_completion);
- 		if (op->data.dir == SPI_MEM_DATA_OUT) {
- 			xqspi->txbuf = (u8 *)op->data.buf.out;
-@@ -1334,6 +1370,7 @@ static int zynqmp_qspi_probe(struct platform_device *pdev)
- 	ctlr->bits_per_word_mask = SPI_BPW_MASK(8);
- 	ctlr->dev.of_node = np;
- 	ctlr->auto_runtime_pm = true;
-+	ctlr->multi_cs_cap = true;
- 
- 	ret = devm_spi_register_controller(&pdev->dev, ctlr);
- 	if (ret) {
--- 
-2.25.1
-
+The ageing time is configurable: See commit 081197591769 ("selftests:
+net: bridge: Parameterize ageing timeout"). Please add test cases in the
+next version.
 
