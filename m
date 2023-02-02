@@ -4,87 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E87FC05027
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 12:20:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CDF0C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 12:36:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0Obxz9fH35OWB4UXxiqSp3CJYqzK8VLJncs58vA/I1w=; b=x/tIHq4/x1Y6OXDweiDesWoeri
-	iyrqCRW3VJmkr34EfHnS5mNXLkdXhjpAXC3Qj+jm6/sUe2ZrVaPZ7e09qxi9Tht1Xsh5jDSxE8PzL
-	GUnDJnYqVBvpl3rqkLpwSro+PH5qlf3SZYMjY3ZDVstTCZUBAzHUPqjiYaAjS56BwgSJM0DrpzlFt
-	EcofRWTIed6AVBvBWyTSs4V1Rba8SRmXyHZDxgX00QGhf7P55nc7YsVI3mo6O62mbfWOkanyof/6q
-	1zk2CNx8Bect8TBKn+V7oKCeHmYfBbP/4roMjFNwv+4b/O3r868/aR/T9tAhXPo+GFZqplVlp56Tx
-	KYmp5U8w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mZpUTCzTOESHEsJ+JC7V0K5g6eGsyAIVNhopcWkbTBs=; b=E7eDkwyfDwrg2bs3dFFEc+0aY7
+	DYoUOblu/BgZugkKm/1uzJnpyqa4b7qwJGGO3cGePs39dVKRvYNaHBoMKMZvHkGTzKjFj28vBksrf
+	zcLE+DsDKKXGOxl/3HjSZPTacfxyhIhBRHqvvfktoNv/CXRc4tw8SE6wcW9ej5pT+OKbMTm/Mm4/7
+	cZgIV4hhcHTeEhGdZ0OLg9O7S3if1Q2xRxbcPNEGkunVfPMJqnF1vIPU9xU/uzIMRyLP3luZd7XcW
+	XcWArpNl9ITtXnp/dyI7WIWu64JfksHA2Y+EXz1ouT2Riek7L/KM8Z3j3jHy/V13hhkSsUNehTsvt
+	0zawh/5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNYZI-00FkAa-1L; Thu, 02 Feb 2023 12:19:56 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1pNYp8-00Folh-EL; Thu, 02 Feb 2023 12:36:18 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNYZ4-00Fk5j-OT; Thu, 02 Feb 2023 12:19:44 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id d14so1516613wrr.9;
-        Thu, 02 Feb 2023 04:19:39 -0800 (PST)
+	id 1pNYp4-00FokW-43
+	for linux-mediatek@lists.infradead.org; Thu, 02 Feb 2023 12:36:17 +0000
+Received: by mail-wm1-x335.google.com with SMTP id n28-20020a05600c3b9c00b003ddca7a2bcbso1271820wms.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 02 Feb 2023 04:36:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=0Obxz9fH35OWB4UXxiqSp3CJYqzK8VLJncs58vA/I1w=;
-        b=hGavQITnzkxfZqIrRHR/2XSpzp2m8GPHONYsjIwWEbYgAi16e05vrSDeaHsKjKvl5i
-         /93+b/uh8LPctsU7akwIsoOgqel3WzEGEvNTWJOnGj2ZEW2ZSpzNPkHI7XK0XLwxXEYF
-         +aJH6kyveI5s8zMSR/Gu+KJjDcPP8Rlh+zmLg6sS6Gb6b7Lp+9eLL5s4imARqnwE25VI
-         XLS+oxwfKS6P9KEQzINoe2iDh6DWCpKXOvVZyhSyLLpgdcdgomq6fXT6oVCbtMRLIYyK
-         x5bUFz/HnCo2n3xfKPTYnb7JK4+uLCVSSEsyNyyLG2ERESsIxWbVGoZBkk/q5txRdxB+
-         nkVw==
+        bh=mZpUTCzTOESHEsJ+JC7V0K5g6eGsyAIVNhopcWkbTBs=;
+        b=B0QKURtXzW8Thkl9H6uDO2+X0a+/gk2AiwN1VRPah6Cdemr/o6CKVdARu+5J/05Er1
+         3E2qREGbaEZS3be5JU/HBG4pdMI+aMhfcLjO1gRis/BM0hpF+2r2QYBHh2eY7sxdF3MB
+         UdajEmZf5o8p4HrqnCYk/pIj5BaylWOU40UgOQpoVP9MgJQz5UQlL9OR38QwulzqhFUl
+         6perm48qtzGEPdBZafPs92ykgv0OJsFWz3xclUWgIzG7v0RxrYKYa+NCID3LyKFekid0
+         GW83rXpND6yQ6tzzBy6GEXaLyfmhcNCcAevsjr8ijfJBi+7xZdtmMQQAPyHunSk4QCO3
+         3VUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0Obxz9fH35OWB4UXxiqSp3CJYqzK8VLJncs58vA/I1w=;
-        b=yawimwjLjVXiRkRm9JJhST8BKsJ96jRLrWVroKEvMl2PrRGgb6Aw88qRo67fRySDmv
-         sXKbNXjgEBDpO+G0hKokFqLSj1JmCI7/P7YsJAhaN/K6rk5cfLu8EkdPlR2gH1k0uUkM
-         Uct6ZS+J02MPhdDky0cxd9REbmDRjlcwBuAi3oJKmvG2m2FY0jz+J+65WAxhowf0nRLp
-         6FFMBeevMvOtEQTpnat7IL35YaPJFqa8Hmt31783hot1/THrmNXOTUMIU6bPIZs3WtA3
-         BP+VBdfJ2NgPGkjq6HPfvr6invbu0PTH+9ib5E2owKtk527BiPhUl6+mp/6aPbTtmg51
-         Rqzw==
-X-Gm-Message-State: AO0yUKUfpzG/IrW/gsfbdF/HdHNXSFXxucn6Y+vACyHHC6AGHhrtDOLN
-	Z169Jqj5OcEjx6+urKR74as=
-X-Google-Smtp-Source: AK7set/4lyENg811N/tf0ykVq/rm55qR04z2wrUgYTqv/PP7TDtGNwCZFpOJaeB9bXho9exywA3evQ==
-X-Received: by 2002:adf:fa07:0:b0:2c0:6217:8459 with SMTP id m7-20020adffa07000000b002c062178459mr4765480wrr.16.1675340378510;
-        Thu, 02 Feb 2023 04:19:38 -0800 (PST)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id h4-20020adfaa84000000b002bfbf4c3f9fsm19786807wrc.17.2023.02.02.04.19.37
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 02 Feb 2023 04:19:38 -0800 (PST)
-Message-ID: <27d1f8ae-4948-317d-b4a6-be7dc0dfe22a@gmail.com>
-Date: Thu, 2 Feb 2023 13:19:36 +0100
+        bh=mZpUTCzTOESHEsJ+JC7V0K5g6eGsyAIVNhopcWkbTBs=;
+        b=CtWZwkFXXShJcVE6uxS+Uj74nX2BZO6cTWTNWx9Pfig3wHxNzCgsKHhUBJCaQAL0Nl
+         1JfjxCMEuR+Kigeo089stgu+13pvMa35xhWoopfrZ+KgxQ0pTnUv3gVyzav+x6B2XyU4
+         e8WUgzNfv3EzdHUSh79zxV5kxzilR+aPcyHSq2vFIs1NrIHszOCPp4ycB+0Q0MfTr7kn
+         FnUDKN4wgQcmZ9LpU2aVmqNj+zbwFM1gy6+z2JabIiLLANvD+QCZ11rMZLQh/buLUaKc
+         vSuOqbSXOb7rbcjkZyr58Snc51nCrSwxz8nwEpRvwXH66E6PO0Pvdq7uOXqpEydc8tAK
+         7M3A==
+X-Gm-Message-State: AO0yUKXQnAuVr/NRoMciwQGsPjz/ftYeSRZ6IQ+dsQUqSnPSQ5h1jWe7
+	GF+Vj75AOPQmakULtyM5RiM=
+X-Google-Smtp-Source: AK7set8Bp5WyKUg1RlcnJMaK2qGTLQYAJpaMWkjadimizx/xPoiPWnKcHvmyAKao//8kX1IZEE8VAg==
+X-Received: by 2002:a05:600c:601b:b0:3db:1ab:b91b with SMTP id az27-20020a05600c601b00b003db01abb91bmr5897672wmb.15.1675341372431;
+        Thu, 02 Feb 2023 04:36:12 -0800 (PST)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id k32-20020a05600c1ca000b003ddf2865aeasm5144981wms.41.2023.02.02.04.36.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 02 Feb 2023 04:36:12 -0800 (PST)
+Date: Thu, 2 Feb 2023 15:36:07 +0300
+From: Dan Carpenter <error27@gmail.com>
+To: angelogioacchino.delregno@collabora.com
+Cc: linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: [bug report] clk: mediatek: mt8173: Break down clock drivers and
+ allow module build
+Message-ID: <Y9uuN4NNqjjdbAAU@kili>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v6 5/5] mtd: nand: ecc-mtk: Add ECC support fot MT7986 IC
-Content-Language: en-US
-To: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: linux-mtd@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, benliang.zhao@mediatek.com,
- bin.zhang@mediatek.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20230201021500.26769-1-xiangsheng.hou@mediatek.com>
- <20230201021500.26769-6-xiangsheng.hou@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230201021500.26769-6-xiangsheng.hou@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230202_041942_830041_4CD0DBB9 
-X-CRM114-Status: GOOD (  17.24  )
+X-CRM114-CacheID: sfid-20230202_043614_197050_2983ECB0 
+X-CRM114-Status: UNSURE (   7.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,100 +86,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello AngeloGioacchino Del Regno,
 
+The patch 4c02c9af3cb9: "clk: mediatek: mt8173: Break down clock
+drivers and allow module build" from Jan 20, 2023, leads to the
+following Smatch static checker warning:
 
-On 01/02/2023 03:15, Xiangsheng Hou wrote:
-> Add ECC support fot MT7986 IC, and change err_mask value with
-> GENMASK macro.
-> 
-> Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+	drivers/clk/mediatek/clk-mt8173-apmixedsys.c:95 clk_mt8173_apmixed_probe()
+	warn: passing zero to 'PTR_ERR'
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+drivers/clk/mediatek/clk-mt8173-apmixedsys.c
+    85 static int clk_mt8173_apmixed_probe(struct platform_device *pdev)
+    86 {
+    87         struct device_node *node = pdev->dev.of_node;
+    88         struct clk_hw_onecell_data *clk_data;
+    89         void __iomem *base;
+    90         struct clk_hw *hw;
+    91         int r;
+    92 
+    93         base = of_iomap(node, 0);
+    94         if (!base)
+--> 95                 return PTR_ERR(base);
 
-> ---
->   drivers/mtd/nand/ecc-mtk.c | 28 +++++++++++++++++++++++++---
->   1 file changed, 25 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/mtd/nand/ecc-mtk.c b/drivers/mtd/nand/ecc-mtk.c
-> index 9f9b201fe706..c75bb8b80cc1 100644
-> --- a/drivers/mtd/nand/ecc-mtk.c
-> +++ b/drivers/mtd/nand/ecc-mtk.c
-> @@ -40,6 +40,10 @@
->   #define ECC_IDLE_REG(op)	((op) == ECC_ENCODE ? ECC_ENCIDLE : ECC_DECIDLE)
->   #define ECC_CTL_REG(op)		((op) == ECC_ENCODE ? ECC_ENCCON : ECC_DECCON)
->   
-> +#define ECC_ERRMASK_MT7622	GENMASK(4, 0)
-> +#define ECC_ERRMASK_MT2701	GENMASK(5, 0)
-> +#define ECC_ERRMASK_MT2712	GENMASK(6, 0)
-> +
->   struct mtk_ecc_caps {
->   	u32 err_mask;
->   	u32 err_shift;
-> @@ -79,6 +83,10 @@ static const u8 ecc_strength_mt7622[] = {
->   	4, 6, 8, 10, 12
->   };
->   
-> +static const u8 ecc_strength_mt7986[] = {
-> +	4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24
-> +};
-> +
->   enum mtk_ecc_regs {
->   	ECC_ENCPAR00,
->   	ECC_ENCIRQ_EN,
-> @@ -451,7 +459,7 @@ unsigned int mtk_ecc_get_parity_bits(struct mtk_ecc *ecc)
->   EXPORT_SYMBOL(mtk_ecc_get_parity_bits);
->   
->   static const struct mtk_ecc_caps mtk_ecc_caps_mt2701 = {
-> -	.err_mask = 0x3f,
-> +	.err_mask = ECC_ERRMASK_MT2701,
->   	.err_shift = 8,
->   	.ecc_strength = ecc_strength_mt2701,
->   	.ecc_regs = mt2701_ecc_regs,
-> @@ -462,7 +470,7 @@ static const struct mtk_ecc_caps mtk_ecc_caps_mt2701 = {
->   };
->   
->   static const struct mtk_ecc_caps mtk_ecc_caps_mt2712 = {
-> -	.err_mask = 0x7f,
-> +	.err_mask = ECC_ERRMASK_MT2712,
->   	.err_shift = 8,
->   	.ecc_strength = ecc_strength_mt2712,
->   	.ecc_regs = mt2712_ecc_regs,
-> @@ -473,7 +481,7 @@ static const struct mtk_ecc_caps mtk_ecc_caps_mt2712 = {
->   };
->   
->   static const struct mtk_ecc_caps mtk_ecc_caps_mt7622 = {
-> -	.err_mask = 0x1f,
-> +	.err_mask = ECC_ERRMASK_MT7622,
->   	.err_shift = 5,
->   	.ecc_strength = ecc_strength_mt7622,
->   	.ecc_regs = mt7622_ecc_regs,
-> @@ -483,6 +491,17 @@ static const struct mtk_ecc_caps mtk_ecc_caps_mt7622 = {
->   	.pg_irq_sel = 0,
->   };
->   
-> +static const struct mtk_ecc_caps mtk_ecc_caps_mt7986 = {
-> +	.err_mask = ECC_ERRMASK_MT7622,
-> +	.err_shift = 8,
-> +	.ecc_strength = ecc_strength_mt7986,
-> +	.ecc_regs = mt2712_ecc_regs,
-> +	.num_ecc_strength = 11,
-> +	.ecc_mode_shift = 5,
-> +	.parity_bits = 14,
-> +	.pg_irq_sel = 1,
-> +};
-> +
->   static const struct of_device_id mtk_ecc_dt_match[] = {
->   	{
->   		.compatible = "mediatek,mt2701-ecc",
-> @@ -493,6 +512,9 @@ static const struct of_device_id mtk_ecc_dt_match[] = {
->   	}, {
->   		.compatible = "mediatek,mt7622-ecc",
->   		.data = &mtk_ecc_caps_mt7622,
-> +	}, {
-> +		.compatible = "mediatek,mt7986-ecc",
-> +		.data = &mtk_ecc_caps_mt7986,
->   	},
->   	{},
->   };
+return -ENOMEM;
+
+    96 
+    97         clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
+    98         if (IS_ERR_OR_NULL(clk_data))
+    99                 return -ENOMEM;
+
+mtk_alloc_clk_data() does not return error pointers.  This needs to
+call of_unmap(base);.  The ->remove() function doesn't unmap base either.
+
+    100 
+    101         r = mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
+    102         if (r)
+    103                 goto free_clk_data;
+    104 
+    105         hw = mtk_clk_register_ref2usb_tx("ref2usb_tx", "clk26m", base + REGOFF_REF2USB);
+    106         if (IS_ERR(hw)) {
+    107                 r = PTR_ERR(hw);
+    108                 dev_err(&pdev->dev, "Failed to register ref2usb_tx: %d\n", r);
+    109                 goto unregister_plls;
+    110         }
+    111         clk_data->hws[CLK_APMIXED_REF2USB_TX] = hw;
+    112 
+    113         hw = devm_clk_hw_register_divider(&pdev->dev, "hdmi_ref", "tvdpll_594m", 0,
+    114                                           base + REGOFF_HDMI_REF, 16, 3,
+    115                                           CLK_DIVIDER_POWER_OF_TWO, NULL);
+    116         clk_data->hws[CLK_APMIXED_HDMI_REF] = hw;
+    117 
+    118         r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+    119         if (r)
+    120                 goto unregister_ref2usb;
+    121 
+    122         return 0;
+    123 
+    124 unregister_ref2usb:
+    125         mtk_clk_unregister_ref2usb_tx(clk_data->hws[CLK_APMIXED_REF2USB_TX]);
+    126 unregister_plls:
+    127         mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
+    128 free_clk_data:
+    129         mtk_free_clk_data(clk_data);
+    130         return r;
+    131 }
+
+regards,
+dan carpenter
 
