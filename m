@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CB49C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 15:44:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 211F0C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 16:13:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JOJYIxLhKlqXLrEBq+v5LlENJBXu/0YMWzvW35tuScA=; b=3m5SDYItfwCszLTSESUpIJ8tgE
-	Qky3HoKO8nwzINiG+IMF+MymKLVSJgqdG1Iftum1/LdmXke0Rnl+aLzxKx2cpMEX/cIyqwIiUbJ7K
-	l2xvlWihX1anQhinlZ9rc3nYGrjmb3G3LCpyzmOewX02P/DUJZOOOruHHSAJgCSlWp4234tGPGg67
-	1JQqIgg+BsaKlN6yQPBHXJNSOD6HllF1Vi5sx8g3KyZY7Hk6EXlzYO6DjXnitpFS2fU47N8V0Dta1
-	xxGm18J1hy2qYI1Dps/GxoU6JgF2dO/xWt2NzT9rslb23RJO2/NXhn9QU4lgWcT6KTqSP7XRdIfjJ
-	rHCLasHg==;
+	bh=ObQsoYKIVUZK8T5LMlYjRR5D1GUZgLRpBI3oPI8zUtY=; b=T/Hjk7FqYprY46Bbmb03nATqNm
+	33VkDYbw7+ECeOP7xblZbbPhgAqjmjysxBgwf4NcPG6q+SxQpJyCDLmKvZafv3fCSXT997laqPTo+
+	M+iuJIsCGv+SSE9acUiVlgaN7Lxgc4XZz5WkHE9JtWEYZ9OsTf/QM6JGF/W87jbUYmczT3Gt61eik
+	/BEPrXri4eurCQGb/KZGsvOM87e46EN8oPFyuwvwDOnFH4PMo5S+m6PPNb+Am5m1O0GG6XZkFUYJ9
+	V4iQRXnt8BTykv/mgkhDoWuQ2FGQi2jg9TzSOPkNDtALd945+BdMiGWjipLUaphrCz9g+EKtI7vsA
+	snfyX6LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNblY-00GVJ0-At; Thu, 02 Feb 2023 15:44:48 +0000
+	id 1pNcDJ-00Gbrk-Q0; Thu, 02 Feb 2023 16:13:29 +0000
 Received: from out5-smtp.messagingengine.com ([66.111.4.29])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNbkS-00GUpz-Fi; Thu, 02 Feb 2023 15:43:45 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
-	by mailout.nyi.internal (Postfix) with ESMTP id 31F625C01FA;
-	Thu,  2 Feb 2023 10:43:34 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute6.internal (MEProxy); Thu, 02 Feb 2023 10:43:34 -0500
+	id 1pNcBy-00Gb1R-QS; Thu, 02 Feb 2023 16:12:08 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+	by mailout.nyi.internal (Postfix) with ESMTP id AEC345C0105;
+	Thu,  2 Feb 2023 11:12:05 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute5.internal (MEProxy); Thu, 02 Feb 2023 11:12:05 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
 	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
 	:mime-version:references:reply-to:sender:subject:subject:to:to
 	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm3; t=1675352614; x=1675439014; bh=JOJYIxLhKlqXLrEBq+v5LlENJBXu
-	/0YMWzvW35tuScA=; b=m84jr8rKQV77Hb2CmakvgDV89DA0ahqSC9yuKDL6rjip
-	xqThy9a3EDhOe7S1QQXC/FOAlej+sJovhmyCI82ZlkzBXvfb0DKAvIr68wAA0zuT
-	lqyMTRCZaPCOfHTJFCDXNq+/G9cOttfUr+M34Ty0V6qCPeARAsRXDJKD7PD7q3Xk
-	bDVjhYjpnWTH21BRAtqa4cdgylS7bPRO/pN4REBryibmmeJPZ2Iq582Uhh7z7CfY
-	fyUxmXAqFRMj1pvmgaqi9YeXpMOq37zQo5tPy8GaWLs1MEJzdEHMQNJwQb9AYrD9
-	ROk/hoKvpk8yF52jkKzvAcLYB4qy1Dhjww3ZrMOMiQ==
-X-ME-Sender: <xms:JNrbY1-2B1Jauxz6iGZOPDh_1tGT9yVQ3s2KgkXEtW7DfSfyC0VFmQ>
-    <xme:JNrbY5scrKQaLiVv6D_8mJ-I0mWRjpVWOhkdQc5EASB60nIhDMa94q7nVjeru589L
-    jFQmbNEyJ8h7dU>
-X-ME-Received: <xmr:JNrbYzDIP3-XVCr5kihSOShCyU8ZyFodH-b1PUggVtVh_4JqYg4yMMLfc9lieothdALuf4dLCXL1_DrwOvKehccUe3U>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrudefkedgjeehucetufdoteggodetrfdotf
+	fm3; t=1675354324; x=1675440724; bh=ObQsoYKIVUZK8T5LMlYjRR5D1GUZ
+	gLRpBI3oPI8zUtY=; b=b3LzJGL6jVprIAtYXbPj6MoE8W8TtEVEP5V/o8XUxFXe
+	oGbVI9nudMn7G2i+j6MIw134LG+mvHuWwfKHEhOM7MAvkxTi8sPp+Qn8ryv84DRf
+	sJQmDsVQpFRGYl20lDWf+uGHC9OApeaVIhJNHXyOcAJdaZfixjyTWNmHIzozJIGd
+	H19ARCpeZIIwmmsxZwsd5QZ8NNADoxsMVWQ6cmhA60oM7lW725UvIFo7hqQpMIeG
+	O89BeVAokiYFacMpESCPC4HCmGwwaAwTQpRgN37A27uSj3deIMQZYyIyRNaM+4h1
+	xe+DMq/bPFdqAJfuYS06saVH8Dy88eJgxi4n1RXewg==
+X-ME-Sender: <xms:0-DbY-EZs1kahAJmUcICVxo98Y5mAcqYjGEdaddShA3vritad3N1RA>
+    <xme:0-DbY_VG5FvXoZASimjx8L7hLFLO6q8Ka1XbHS1U3EJTItWgrSxYUrae_5dr9SSLP
+    XejnyIRHxLPazI>
+X-ME-Received: <xmr:0-DbY4KsLg8VUe6qhmvb-pki0TBwIgF2EpK-LKH7bKtQ1PDiFYenLPL2j08TAenxLaC7xSZnK29C1kyWw6ugJToFD-w>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrudefkedgkedtucetufdoteggodetrfdotf
     fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
     uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
     cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepkfguohcu
     ufgthhhimhhmvghluceoihguohhstghhsehiughoshgthhdrohhrgheqnecuggftrfgrth
-    htvghrnhepjeekleettddtgfeuvdffieffudegffetgedtteffvefgjeejvefhffehtddv
-    ueevnecuffhomhgrihhnpehpohhrthdrshhhnecuvehluhhsthgvrhfuihiivgeptdenuc
-    frrghrrghmpehmrghilhhfrhhomhepihguohhstghhsehiughoshgthhdrohhrgh
-X-ME-Proxy: <xmx:JNrbY5fIJu3RkR1-Z8e79Q7xoV9OaVLUEUwi_b44d8SeRnfvpVNsDQ>
-    <xmx:JNrbY6PWMusIRYARBSAajbLYQHtybAPmv1lHbV96nnrHdqKmyi-jIA>
-    <xmx:JNrbY7lxpopmegWbvsco-sGcH3kOUGGaYqwM6UDLv-IsjOW8EqaH7w>
-    <xmx:JtrbY_YdzL_72r4z2IEfXcoob5oPx8XHspmkBS7hMc9LAV-bALXVpg>
+    htvghrnhephefhtdejvdeiffefudduvdffgeetieeigeeugfduffdvffdtfeehieejtdfh
+    jeeknecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpe
+    dtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehiughoshgthhesihguohhstghhrdhorhhg
+X-ME-Proxy: <xmx:0-DbY4Grl27-Wviov3dYNm86QDWEZUIKpVKjJbfy7OCPUdYzcoQd3A>
+    <xmx:0-DbY0Ww2Y_nQxhgguzrRdE8iEYiYzR2-k3ALQLi_wXFlf0KTX5B7Q>
+    <xmx:0-DbY7OnkKpmgLwd7EJcHvBRllA0x6hPsQDOUEwJKaWOnUKXfnyDow>
+    <xmx:1ODbY2hWpglKZfHmzgQ5qH6wW8y9D6By7gnLxfQ4w0TGv96VzbW6Cg>
 Feedback-ID: i494840e7:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 2 Feb 2023 10:43:31 -0500 (EST)
-Date: Thu, 2 Feb 2023 17:43:28 +0200
+ 2 Feb 2023 11:12:02 -0500 (EST)
+Date: Thu, 2 Feb 2023 18:11:59 +0200
 From: Ido Schimmel <idosch@idosch.org>
 To: netdev@kapio-technology.com
 Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
@@ -89,18 +89,20 @@ Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
 	"open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER"
  <linux-renesas-soc@vger.kernel.org>,
 	"moderated list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>
-Subject: Re: [PATCH net-next 0/5] ATU and FDB synchronization on locked ports
-Message-ID: <Y9vaIOefIf/gI0BR@shredder>
+Subject: Re: [PATCH net-next 1/5] net: bridge: add dynamic flag to switchdev
+ notifier
+Message-ID: <Y9vgz4x/O+dIp+0/@shredder>
 References: <20230130173429.3577450-1-netdev@kapio-technology.com>
- <Y9lrIWMnWLqGreZL@shredder>
- <e2535b002be9044958ab0003d8bd6966@kapio-technology.com>
+ <20230130173429.3577450-2-netdev@kapio-technology.com>
+ <Y9qrAup9Xt/ZDEG0@shredder>
+ <f27dd18d9d0b7ff8b693af8a58ea8616@kapio-technology.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <e2535b002be9044958ab0003d8bd6966@kapio-technology.com>
+In-Reply-To: <f27dd18d9d0b7ff8b693af8a58ea8616@kapio-technology.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230202_074340_665075_17A70041 
-X-CRM114-Status: GOOD (  13.15  )
+X-CRM114-CacheID: sfid-20230202_081206_966839_A9EFF738 
+X-CRM114-Status: GOOD (  25.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,18 +117,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 02, 2023 at 08:37:08AM +0100, netdev@kapio-technology.com wrote:
-> On 2023-01-31 20:25, Ido Schimmel wrote:
+On Thu, Feb 02, 2023 at 08:28:36AM +0100, netdev@kapio-technology.com wrote:
+> On 2023-02-01 19:10, Ido Schimmel wrote:
+> > On Mon, Jan 30, 2023 at 06:34:25PM +0100, Hans J. Schultz wrote:
+> > > To be able to add dynamic FDB entries to drivers from userspace, the
+> > > dynamic flag must be added when sending RTM_NEWNEIGH events down.
+> > > 
+> > > Signed-off-by: Hans J. Schultz <netdev@kapio-technology.com>
+> > > ---
+> > >  include/net/switchdev.h   | 1 +
+> > >  net/bridge/br_switchdev.c | 2 ++
+> > >  2 files changed, 3 insertions(+)
+> > > 
+> > > diff --git a/include/net/switchdev.h b/include/net/switchdev.h
+> > > index ca0312b78294..aaf918d4ba67 100644
+> > > --- a/include/net/switchdev.h
+> > > +++ b/include/net/switchdev.h
+> > > @@ -249,6 +249,7 @@ struct switchdev_notifier_fdb_info {
+> > >  	u8 added_by_user:1,
+> > >  	   is_local:1,
+> > >  	   locked:1,
+> > > +	   is_dyn:1,
+> > >  	   offloaded:1;
+> > >  };
+> > > 
+> > > diff --git a/net/bridge/br_switchdev.c b/net/bridge/br_switchdev.c
+> > > index 7eb6fd5bb917..4420fcbbfdb2 100644
+> > > --- a/net/bridge/br_switchdev.c
+> > > +++ b/net/bridge/br_switchdev.c
+> > > @@ -136,6 +136,8 @@ static void br_switchdev_fdb_populate(struct
+> > > net_bridge *br,
+> > >  	item->added_by_user = test_bit(BR_FDB_ADDED_BY_USER, &fdb->flags);
+> > >  	item->offloaded = test_bit(BR_FDB_OFFLOADED, &fdb->flags);
+> > >  	item->is_local = test_bit(BR_FDB_LOCAL, &fdb->flags);
+> > > +	item->is_dyn = !test_bit(BR_FDB_STATIC, &fdb->flags) &&
 > > 
-> > Will try to review tomorrow, but it looks like this set is missing
-> > selftests. What about extending bridge_locked_port.sh?
+> > Why not 'is_static' and be consistent with the bridge flag like all the
+> > other fields?
+> > 
+> > Regardless of how you name this field, it is irrelevant for
+> > 'SWITCHDEV_FDB_ADD_TO_BRIDGE' notifications that all add FDB entries
+> > with the 'BR_FDB_ADDED_BY_EXT_LEARN' flag set, which makes
+> > 'BR_FDB_STATIC' irrelevant.
+> > 
+> > > +		item->added_by_user;
+> > 
+> > Unclear why this is needed...
+> > 
 > 
-> I knew you would take this up. :-)
-> But I am not sure that it's so easy to have selftests here as it is timing
-> based and it would take the 5+ minutes just waiting to test in the stadard
-> case, and there is opnly support for mv88e6xxx driver with this patch set.
+> The answer to those two questions lies in my earlier correspondences (with
+> Oltean) on the RFC version.
 
-The ageing time is configurable: See commit 081197591769 ("selftests:
-net: bridge: Parameterize ageing timeout"). Please add test cases in the
-next version.
+It is not up to me as a reviewer to dig up old versions of the patch and
+find out what was changed and why. It is up to you as the submitter of
+the patch to provide all this information in the patch posting. Please
+read:
+https://www.kernel.org/doc/html/latest/process/submitting-patches.html
+
+Specifically:
+
+"Review comments or questions that do not lead to a code change should
+almost certainly bring about a comment or changelog entry so that the
+next reviewer better understands what is going on."
+
+And:
+
+"Other comments relevant only to the moment or the maintainer, not
+suitable for the permanent changelog, should also go here. A good
+example of such comments might be patch changelogs which describe what
+has changed between the v1 and v2 version of the patch.
+
+Please put this information after the --- line which separates the
+changelog from the rest of the patch. The version information is not
+part of the changelog which gets committed to the git tree. It is
+additional information for the reviewers."
+
+Thanks
 
