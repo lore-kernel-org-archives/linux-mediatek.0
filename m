@@ -4,121 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0937CC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 07:07:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49A38C05027
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 07:31:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Message-ID:In-reply-to:Date:Subject:Cc:To:From:References:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ppIae5IBTTglfauzoAaIpc4AJk2kUCFj8uS2HMLcfF4=; b=aUBt1Ip3Gx5jx3w9rh2Adt5IoY
-	2gL4q29InyWbCRVHGMGyF2U02QFOV2t10ptJPCNBmmM2VRiPuBPvdyqxYHkHzLNvvNR01VJzdfiSE
-	or2YS6uW+J7H4j5C3id1QZxb4DdvK9frJqAY0c/af1p0uv/4csJknMxIzTkrPejORVDTwo7O8iEYI
-	OGLlHj8H/5JiHx6pGj427PwwWLBh24KCzVlzfqUheJFClL89vXIgxRp7Ll0vfuoJka+IRs/8qT73E
-	OD4XU4e8+C70QoSE1oeR+aLmlxOA6ryTY3Kx3nY4KCCCb6Xjqx2rX43r8UnPIhItoDFaalC0t9JIn
-	i2DTkwrQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NGvwhVYef90FBkxbwj1LVdsxrENkrogixmLNdsnMX9w=; b=X3N+oftrpyXHc4BdbhjX7Si6bW
+	2Pu+RfJPWfzGWtfx6igfhDJSrBcI34KktrBnpGdukSzasxCHVND/cQJmoxti6RFeXO4ZNMw9kIJSi
+	4kt/+jb3Tz3lcTrrjE3cud09Wn3sIk6K82PH0ieQv4L9L/Q8nFXV6eDaP3V3hXjl5pa7SpbIArwoj
+	B7ARwIyLHNtjBKfUldA9A2Z911Gm+HjyiHICVb+/eolICLRz+QBvVO/PWkht4+n6sifjBwH6Mi+l+
+	XoBLvCmeq+0rZvkWzXguCyY+PJS92oDDFhSpBIbIa5BrYnnRWBpuRfQLd7UtkbDrdU3crIIBBWL8/
+	MWhbWjNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNTgo-00EazJ-Ci; Thu, 02 Feb 2023 07:07:22 +0000
-Received: from mail-dm6nam10on20623.outbound.protection.outlook.com ([2a01:111:f400:7e88::623] helo=NAM10-DM6-obe.outbound.protection.outlook.com)
+	id 1pNU3f-00Edxm-1w; Thu, 02 Feb 2023 07:30:59 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNTgc-00EaxM-RU; Thu, 02 Feb 2023 07:07:12 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=EOFdjkaffo5oY79cXujI8sGJrzcu0VmBheLUNjpht2JVbFpL0T8M2u+OPxQNHr/vCxXSmdrIPhieELpG2bNWXZv4McqmLMq5HdY8S+J4+09JOV9BeI6Hfew2zbspR36zssfxdZAg5NXG3Jm9vuMLe/WzwYOi+NiN++SUFvJHoQxWn4Z7TiT+7fg1rVFt9CyOYlb/arTKTcJHtrXDWKbRlfXn+N3niBdY505KjRNFHZ1J6QefCZ5rQnzJ5x5b0s7IsfluNpKREz3KQd73eukUyKkKVq1NHn4ZwcozOcDmgpGgL6O8kaIVwV1gzNZHwGUL3ad+L80F0uqjrYgiWpVDTQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ppIae5IBTTglfauzoAaIpc4AJk2kUCFj8uS2HMLcfF4=;
- b=NlAAgNAEPhmKSmjHesfMKH8d5omuLvrqVPebiFPXSefPE9zdb7VWo5XUuQry2EjpSaZ1Vvz6TtAnAJgInpeZoxY7w6xsufJpRn0gXKkq7oe0kV4rTngHykbTZYTRaPHUl7oMzdubAwWHvlwF1xHr/7RoX9W51e/avTYPOWfBCVApvsC04oIAgcpdTv4hjYGwcbMZiJiubXszVIxID2JFkA0mp0yU8A0NItY44UhpZ6/qKae2wln7NEOPr/q9sOeO5Z+qA/GYN+3g1ZhmMqsTzrY/eXNG7I7U/d9b58oiyoGjFsInu+mi6ZdCt0nhapnRJlhdkeSV7AujqWALTmPEqg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ppIae5IBTTglfauzoAaIpc4AJk2kUCFj8uS2HMLcfF4=;
- b=mx1kDfvEywsMqbH+A2nejPgSKMykIGxNaHT5jP3v14EQB8yu29KkxQ2vYDzH7Izv0D3AqTOIMVo1JTMu60B2MctiefqcaLDt1SnQCfTdJuSUvpOOHedNeY7EeVJ4sKKd1slEVKSrSBWFBReRds93vCQ87t+R9X1kWhzTe4pU1dmpYgS0kWueRl+E54kQRpFCuVJskMeg2lOk05IufVdCaR0riuKrrbcJq2odv832bNle18Elvs8XD7C5LUXYomEyVtYBvTGFmpDIhrZ/K4Uot8iG9s3z9z2ZYzpIQ3iwbMHCkF9ZXDxkFu/1ZsRUYRBkRG/V9hXpPYcj5nHUjOoalw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from BYAPR12MB3176.namprd12.prod.outlook.com (2603:10b6:a03:134::26)
- by CH0PR12MB5107.namprd12.prod.outlook.com (2603:10b6:610:be::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6064.24; Thu, 2 Feb
- 2023 07:07:04 +0000
-Received: from BYAPR12MB3176.namprd12.prod.outlook.com
- ([fe80::465a:6564:6198:2f4e]) by BYAPR12MB3176.namprd12.prod.outlook.com
- ([fe80::465a:6564:6198:2f4e%4]) with mapi id 15.20.6043.023; Thu, 2 Feb 2023
- 07:07:04 +0000
-References: <20230131063206.28820-1-Kuan-Ying.Lee@mediatek.com>
- <20230131151742.df43c3fd11bda01b613234ef@linux-foundation.org>
-User-agent: mu4e 1.8.10; emacs 28.2
-From: Alistair Popple <apopple@nvidia.com>
-To: Andrew Morton <akpm@linux-foundation.org>
-Cc: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, John Hubbard <jhubbard@nvidia.com>,
- chinwen.chang@mediatek.com, andrew.yang@mediatek.com, linux-mm@kvack.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] mm/gup: Add folio to list when folio_isolate_lru() succeed
-Date: Thu, 02 Feb 2023 17:09:02 +1100
-In-reply-to: <20230131151742.df43c3fd11bda01b613234ef@linux-foundation.org>
-Message-ID: <87a61wmtpq.fsf@nvidia.com>
-Content-Type: text/plain
-X-ClientProxiedBy: SYBPR01CA0193.ausprd01.prod.outlook.com
- (2603:10c6:10:16::13) To BYAPR12MB3176.namprd12.prod.outlook.com
- (2603:10b6:a03:134::26)
+	id 1pNU3T-00Edgq-Ec; Thu, 02 Feb 2023 07:30:49 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id D7B7F1883955;
+	Thu,  2 Feb 2023 07:28:36 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id C6C2C250007B;
+	Thu,  2 Feb 2023 07:28:36 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id A3BBE9B403E3; Thu,  2 Feb 2023 07:28:36 +0000 (UTC)
+X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BYAPR12MB3176:EE_|CH0PR12MB5107:EE_
-X-MS-Office365-Filtering-Correlation-Id: 70680a7f-8772-4e99-5ebd-08db04ec1688
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	L8Q1YgwkFrU3nTTtfB74A/x4Lil1yhEhvOmx2wnVutZbs5OsQMibSbuXEqM8/icUi4RojAtyzw8mC4CNoAFoX5/iFGkwWgzU2jtcHjw34/P/3DzEz/3uSYoCCYRJ+gtnVM2vGFvC7GA+u7n6b+T3jnuoaUvZ6Bn/r3sZ0ieqMjiVxxq4FqhGoFEAJGjzy4Pfz8kS7//BBR1+wcXZBe/GH5UfJoc8M1Be+XP7EcRvAAjzmyVPBZs5O91+BjD6h4+Vcv4eaAnqq+YdkCe0GonuxDlDFSvcxvvc4NV3Lw4Y9BBKixsLtoB/uwlwXrgQjE65EMvr7q8MERQlmWfN5q+s6UvhcLKhMmJjK3on5KK+2/1ImYz3TJ3d6I8i2FgDjQlgpqqJwZeciJnhzalLziT7/xWyitFmmtnMKnHuYpU7znjmBZ2NfJhDB9+thMpZOgIAKQAxzjEFuLCdvV+XLF2jCW02FPfd63rbQum6PtL+wQV2XIQ9y52gJ9x6Tus3fUKor3PswTT1zcurgzTiVpgtUNGzeq99pMUAl7mpYTZfVeI6Lm/i2uR/xVOjGr8zynqxWry1o0v3tTrPkCgMrxghL3nTRNGz2VI9rpo5LcUdI9Dp2jhwTOVw07fNZ3Z7uWvUHtZSAGjaAKt88EDq16EZzg==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BYAPR12MB3176.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(376002)(366004)(346002)(396003)(39860400002)(136003)(451199018)(6506007)(6512007)(5660300002)(26005)(186003)(6486002)(316002)(478600001)(2616005)(54906003)(83380400001)(8676002)(4326008)(6916009)(41300700001)(8936002)(2906002)(66556008)(66476007)(66946007)(38100700002)(86362001)(36756003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?NVuhIST1PbW4XJIU0HJzxmcgnsS4EGOeOQlgvlwjQDoSTv74H/J68tvfLEdR?=
- =?us-ascii?Q?m3rWWYE+2a//AsDCQ8gn7qmgbr29K+EoXfaarALgq+cFA89+N4Dcqb3/qu7A?=
- =?us-ascii?Q?GtRk53Z2RJb0CTzIkBNLLCFwV3J5dejCDOl6dBymLQuV+/O6/VA+iikr1Kmt?=
- =?us-ascii?Q?FYI2cOcr+vOp2b5B0xkBaaduYfJZWXE7irVvRaetPUakc7pCcNGqhMVeS/II?=
- =?us-ascii?Q?rkB1VhwLHOieKfVWhwK5uhkrGrv+Ep0SxC1IQ5KzyXCRsq0PORdneTdH+0ma?=
- =?us-ascii?Q?zBY5ucgLXqnH4QpSOW62pZsyeRFzUdbhY2Gr3BAXxl2ehQoYhRJzlCyu+Hxh?=
- =?us-ascii?Q?Tw5EcbOTtK1JjWMGgjAcIdkUzQs0sho13RgAI3RwEJgNINbX11jNHjM0dMqE?=
- =?us-ascii?Q?BOj2RHxr8ZqnzgvlDeeh/e1mHsGXzwO9PeVgsjd/qVWwldwj3J3TN8FiGiPq?=
- =?us-ascii?Q?42sZEsQ/0ZEtx2nynWpy62GeidVDv5m31iwJG0QdTaoVDHHmLpU9DesKe0jI?=
- =?us-ascii?Q?2wp1N2+miGs8t4p31TiifcTmuQVaewRQsqdr202w4azOW9r7MZ1y3+hUaQDi?=
- =?us-ascii?Q?ETlTuLBIsCgr1puGjcEOEJa58a2joOoq3mWhsv8D4LIxQzXW2HOkLhulsI2V?=
- =?us-ascii?Q?5YZj0+ooFZro1MzsMP4up9nd6K1heCefNKU7HKarsB7aBnbCX97Z3lYpB1bD?=
- =?us-ascii?Q?lgWSpIREIbfSN+JNm07qWYMNLILatw59jYOXhEPT1y5IiXpYmaHa1/dmi9oY?=
- =?us-ascii?Q?X1Bd4n3oahRJKy/93xL8qdSYEc8NAvU9DIfLkz0nDaYT76fQa9B/PdgnXo+p?=
- =?us-ascii?Q?Qtz3vZndTHPKqSwWz9HdVOIcdWGGJ3OE4+h2EH6cXX10WMafsVKHQpFeiML4?=
- =?us-ascii?Q?1ctlX+BrtLX+X64EW3VOvjGmNc9TECN+1gzZPYxu5ZJ1vlm9Sj3P0CFvfURX?=
- =?us-ascii?Q?v8CPIbyAlHRdrPo1vscyEwBnntp4PIFH2TGUgHFv2eDBxsSJlcFSHLc4F5gJ?=
- =?us-ascii?Q?ierVfBWuOTduvPdTKsvsAv3i9go4rM0w48QGFOruO/CU0OWb9qhm+nVykHtZ?=
- =?us-ascii?Q?ghn7ES9Oo+LWwURh3PwJHdODp6EWlDrNpSqlAnCDJGpNDEj0kiEBpdIXWV+3?=
- =?us-ascii?Q?af6InV8FmQqXIHzout4zhroL13yAwQNDN73QiA83r0D6LApMiLfvSkighQw3?=
- =?us-ascii?Q?yTqsmsrS+eEXy15nuBanJgAuXkLGSlE4WKs+2CKBpR7LcoYKgs/ziVhsP3e3?=
- =?us-ascii?Q?eT1QVlGEiu9sE1OJNnt1v0f8EzKveym5HgxhXdgGoIOQmyAlMs3R0UhgbbZ6?=
- =?us-ascii?Q?yXzmkBOyFpxKCap0GvrmQQSDic+m+bmefVnWWcgy+DUWWlQhNDvqHJrVZKwY?=
- =?us-ascii?Q?Uui6hoaxN76J7lMqWPeLDWOPCeg6dvrEzuJfbpsBukeONWeR9DeRh0m1Q9pI?=
- =?us-ascii?Q?ldBPGeDX3ZNSek0SdlAdlpSSSn+/SZBvHEXfgarvFFZleq6IpmXz4PyUYY0F?=
- =?us-ascii?Q?xOvfLInCUELYSDR5XKkHoqDjpfSXII/eDFcnJReejfKnaNli5OE55xp+y6Eh?=
- =?us-ascii?Q?QUpGkKHy+MBJ1dmd3YiXysGffKOgqg3CRE50Zo0S?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 70680a7f-8772-4e99-5ebd-08db04ec1688
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR12MB3176.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Feb 2023 07:07:04.1917
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: NSsfzmj0Lqd77SQjmGVMknLLzvrfjILonPyT37/PWXBfS9XMZHcP733lnchvEEd72ej7nYyjsBbdbV0wdJd8RQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR12MB5107
+Date: Thu, 02 Feb 2023 08:28:36 +0100
+From: netdev@kapio-technology.com
+To: Ido Schimmel <idosch@idosch.org>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
+ Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vladimir
+ Oltean <olteanv@gmail.com>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, Kurt Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens
+ <hauke@hauke-m.de>, Woojung Huh <woojung.huh@microchip.com>,
+ "maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER"
+ <UNGLinuxDriver@microchip.com>, Sean Wang <sean.wang@mediatek.com>, Landen
+ Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Claudiu Manoil <claudiu.manoil@nxp.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, =?UTF-8?Q?Cl=C3=A9m?=
+ =?UTF-8?Q?ent_L=C3=A9ger?= <clement.leger@bootlin.com>, Jiri Pirko
+ <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>, Roopa Prabhu
+ <roopa@nvidia.com>, Nikolay Aleksandrov <razor@blackwall.org>, Russell King
+ <linux@armlinux.org.uk>, Christian Marangi <ansuelsmth@gmail.com>, open list
+ <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, "open list:RENESAS RZ/N1
+ A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>, "moderated
+ list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>
+Subject: Re: [PATCH net-next 1/5] net: bridge: add dynamic flag to switchdev
+ notifier
+In-Reply-To: <Y9qrAup9Xt/ZDEG0@shredder>
+References: <20230130173429.3577450-1-netdev@kapio-technology.com>
+ <20230130173429.3577450-2-netdev@kapio-technology.com>
+ <Y9qrAup9Xt/ZDEG0@shredder>
+User-Agent: Gigahost Webmail
+Message-ID: <f27dd18d9d0b7ff8b693af8a58ea8616@kapio-technology.com>
+X-Sender: netdev@kapio-technology.com
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230201_230710_937443_433AE863 
-X-CRM114-Status: GOOD (  16.13  )
+X-CRM114-CacheID: sfid-20230201_233047_686177_30423CD9 
+X-CRM114-Status: GOOD (  16.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,60 +85,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 2023-02-01 19:10, Ido Schimmel wrote:
+> On Mon, Jan 30, 2023 at 06:34:25PM +0100, Hans J. Schultz wrote:
+>> To be able to add dynamic FDB entries to drivers from userspace, the
+>> dynamic flag must be added when sending RTM_NEWNEIGH events down.
+>> 
+>> Signed-off-by: Hans J. Schultz <netdev@kapio-technology.com>
+>> ---
+>>  include/net/switchdev.h   | 1 +
+>>  net/bridge/br_switchdev.c | 2 ++
+>>  2 files changed, 3 insertions(+)
+>> 
+>> diff --git a/include/net/switchdev.h b/include/net/switchdev.h
+>> index ca0312b78294..aaf918d4ba67 100644
+>> --- a/include/net/switchdev.h
+>> +++ b/include/net/switchdev.h
+>> @@ -249,6 +249,7 @@ struct switchdev_notifier_fdb_info {
+>>  	u8 added_by_user:1,
+>>  	   is_local:1,
+>>  	   locked:1,
+>> +	   is_dyn:1,
+>>  	   offloaded:1;
+>>  };
+>> 
+>> diff --git a/net/bridge/br_switchdev.c b/net/bridge/br_switchdev.c
+>> index 7eb6fd5bb917..4420fcbbfdb2 100644
+>> --- a/net/bridge/br_switchdev.c
+>> +++ b/net/bridge/br_switchdev.c
+>> @@ -136,6 +136,8 @@ static void br_switchdev_fdb_populate(struct 
+>> net_bridge *br,
+>>  	item->added_by_user = test_bit(BR_FDB_ADDED_BY_USER, &fdb->flags);
+>>  	item->offloaded = test_bit(BR_FDB_OFFLOADED, &fdb->flags);
+>>  	item->is_local = test_bit(BR_FDB_LOCAL, &fdb->flags);
+>> +	item->is_dyn = !test_bit(BR_FDB_STATIC, &fdb->flags) &&
+> 
+> Why not 'is_static' and be consistent with the bridge flag like all the
+> other fields?
+> 
+> Regardless of how you name this field, it is irrelevant for
+> 'SWITCHDEV_FDB_ADD_TO_BRIDGE' notifications that all add FDB entries
+> with the 'BR_FDB_ADDED_BY_EXT_LEARN' flag set, which makes
+> 'BR_FDB_STATIC' irrelevant.
+> 
+>> +		item->added_by_user;
+> 
+> Unclear why this is needed...
+> 
 
-Andrew Morton <akpm@linux-foundation.org> writes:
-
-> On Tue, 31 Jan 2023 14:32:06 +0800 Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com> wrote:
->
->> If we call folio_isolate_lru() successfully, we will get
->> return value 0. We need to add this folio to the
->> movable_pages_list.
-
-Ugh, thanks for catching this:
-
-Reviewed-by: Alistair Popple <apopple@nvidia.com>
-
->> Fixes: 67e139b02d99 ("mm/gup.c: refactor check_and_migrate_movable_pages()")
->> Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
->>
->> ...
->>
->> --- a/mm/gup.c
->> +++ b/mm/gup.c
->> @@ -1914,7 +1914,7 @@ static unsigned long collect_longterm_unpinnable_pages(
->>  			drain_allow = false;
->>  		}
->>  
->> -		if (!folio_isolate_lru(folio))
->> +		if (folio_isolate_lru(folio))
->>  			continue;
->>  
->>  		list_add_tail(&folio->lru, movable_page_list);
->
-> Thanks.  What are the user-visible effects of this bug?
-
-In the common case none other than an extra loop through
-collect_longterm_unpinnable_pages():
-
-1. First call to collect_longterm_unpinnable_pages() will increment
-   collected and isolate the page but not add it to movable_page_list.
-
-2. migrate_longterm_unpinnable_pages() will return -EAGAIN and unpin all
-   the pages but they will remain LRU isolated.
-
-3. The next spin around __gup_longterm_locked() will re-pin the pages
-   and re-call collect_longterm_unpinnable_pages(). As the page has
-   already been isolated folio_isolate_lru() will return -EBUSY which
-   will add the page to movable_page_list and complete processing as
-   intended.
-
-However this assumes the page table still points to the same page when
-__get_user_pages_locked() is called the second time. That may not be the
-case in which case we would leave the page LRU isolated forever
-effectively leaving an unmovable page in a movable zone which is what we
-were trying to avoid in the first place.
-
-So I think Cc: stable is warranted.
-
- - Alistair
+The answer to those two questions lies in my earlier correspondences 
+(with Oltean) on the RFC version.
 
