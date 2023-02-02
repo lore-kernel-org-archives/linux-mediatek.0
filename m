@@ -4,89 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F22FC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 19:50:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D193DC636D7
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 20:16:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0XqCItSDIlA9UN2KgN+ixgTMg/eGZMlJcrANVyohEDY=; b=Xz9aQky2Vccxb4e8yFHAJJXDVJ
-	MARYakczdFEYjH5/KGyTLlOQFsYlUmD20vOybQ025APcK8rdOWkod4+ykq9702woXCNj8YNDPM2Fm
-	zlYBcnnrEWb+fzLYEvbaHy7cGm2o6RI4SZEJ5yqrR2nP3gukbUZ1TvS7IezEqSsda4mKi8Z+5bjqZ
-	eWQ3ALsHxGNQLtnYTvpguFBZRoZIMAc9tVykmpynywd0ypCtunuMzDcMEem740xVq6zdOz9677sLD
-	NJ2CShuOF7IwW/tjm/xue/7/IWl2A4AyNFuekU2OzsEn1VD+yN2Ux3jIhPY5ZT5ttTjiF88BKe7SN
-	0Cl2WfZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FC7A22kDDKm4iFJZCz/SFv4XLBhZwuNgB26sBiqqUIk=; b=CCfr5Dlt3w7E1GrZiiH9CSL9Tj
+	ugqipk9dM8ue7Alv4XM2zyhxEwK6T5EXs5a8cKy3nNWSl1XOUHBUya/JoMH4afReIjT8hJ5rfXybc
+	l2Fh4YvuuqOVgalaGLkmWasYrqW/wHh2EKPpSSkXcM18d7tI47YhvTDSQ+Fm0jQXRJJQdZuArhYjA
+	gMvAdxp1Y+WEbVxEM2gF9bXPzHQDcJo3DISHnHy/0FKetluDdt8IPItG8YNQFEb6THq13JhfSyBxv
+	v657djEn5jjjaqQieFcZbkiNMzfELsykHQV94UR4APRhsRzS+l9N+ka5DTRXzDJ6UU/BKpwk3NXhU
+	jHYyggRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNfbA-00H65l-1S; Thu, 02 Feb 2023 19:50:20 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1pNg0c-00H8cB-VQ; Thu, 02 Feb 2023 20:16:38 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNfb6-00H64e-K3; Thu, 02 Feb 2023 19:50:17 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id nm12-20020a17090b19cc00b0022c2155cc0bso2844806pjb.4;
-        Thu, 02 Feb 2023 11:50:11 -0800 (PST)
+	id 1pNg0a-00H8b6-T3
+	for linux-mediatek@lists.infradead.org; Thu, 02 Feb 2023 20:16:38 +0000
+Received: by mail-wm1-x334.google.com with SMTP id n13so2324901wmr.4
+        for <linux-mediatek@lists.infradead.org>; Thu, 02 Feb 2023 12:16:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:sender
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=0XqCItSDIlA9UN2KgN+ixgTMg/eGZMlJcrANVyohEDY=;
-        b=iNBaT8Z+Ig7zrOQHc1RHN6iLOys2Q0io9gpYMeH9LzsUki6o83huVNzd3aSQV5JEzL
-         QaQrK6iF24BTp/OaynHeDuVzOKVK72wVPLciBF0niO4O89anZ3czxsEFPo9KcbK3hZOt
-         xG4jzE2Scyetx+HzYrSSxtl9aOcoJWt7DO4NNuUYH0sVPe9PeEABvNn+l8pjQ4rYu3hh
-         1m/ogKgjMf6hFOFKPOWgr9Yndv0LRIChXjzkP0tt8mBZy2lLUtpjoTvaLh+fjVvLr1Kj
-         EyoozxTzk5b4ThayMM0cCuOkOqWvXk59XVYxSz5oynrw23D0jagogoyMumcW0Jk+MF/k
-         NQKw==
+        bh=FC7A22kDDKm4iFJZCz/SFv4XLBhZwuNgB26sBiqqUIk=;
+        b=MA3Uv8wS1+3DfUVRaW3sli5xx3tew+Vf3aZFl8o8QYZjElxZKMVhA3hH2qpWufFiQN
+         jjRThM+SFIestcZqSB1+s8zMREhlgzoTSLS1XG3DXoubsXZZG0A1Zwt6wgGOMH7XzzkV
+         pKmK6pOpsSC+94aqLczscoJiglLCZgqzk8qY4y8M/Wd0xFABFzwKvxTdVUiDJYyygLG2
+         iXqfczRdt7b+q5i/vMa8cjehZoG0+0ZJQfkUUI6y4e/cV11XJs/jn+mJHoXNt519rf+e
+         +Nd461aBv2am+/BeVW+k+APqja/cZY9+az6N0d5EMdUbGYndy33QCBC/DOWjNORGIZwq
+         SrNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:sender
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0XqCItSDIlA9UN2KgN+ixgTMg/eGZMlJcrANVyohEDY=;
-        b=cY2XYX2eVB8M1bdqSfmd3j5JObnzr3RsmXmPI1oY3OWGfmaAV5m7DpUe3FKs2q3MDM
-         w+aGJmz8xtwxEI89KQ/L0ib+pkI0uHh7jp8aeNhN8X3HdGJ4q3MTmhKJMISDWgdo1GDy
-         ZQj0UUKv4erRrCBh1IdRrUg8xTFpNFlMM0cXoNEITmtLpsgvTJ5oAkSyrymhNO8RPceV
-         /e2QCF0Bd5F47mE6VmPhbBSBgCagJ7wN9sUqR1s8B73CuU0p73uxRYFMXZLDBi44JUgj
-         63hEtc2LCynDiUptAdBjxkJBOc+6M4HyrelEqQb3qQ0yiKQI5Y07NNlkAI1J2adyrv/q
-         deGg==
-X-Gm-Message-State: AO0yUKWmdG6enU6dvmm+uwkjTL+AAPZpWxHH3VltMXGwz9FrK+8KcMHJ
-	2MRoONiZIxYRD4nk6C/lo5IAznutXb0=
-X-Google-Smtp-Source: AK7set8UdMNY7Vm2C0NqcIGMDxS2MwKLVQ9fsxr+QAUN2RaNXftZlJ9+zwp/GclwyjOof6sss5w9Qg==
-X-Received: by 2002:a05:6a21:33a7:b0:be:a9c7:5d12 with SMTP id yy39-20020a056a2133a700b000bea9c75d12mr9659198pzb.18.1675367410339;
-        Thu, 02 Feb 2023 11:50:10 -0800 (PST)
-Received: from localhost ([2620:10d:c090:400::5:48a9])
-        by smtp.gmail.com with ESMTPSA id d5-20020a170902654500b001892af9472esm37767pln.261.2023.02.02.11.50.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 Feb 2023 11:50:09 -0800 (PST)
-Date: Thu, 2 Feb 2023 09:50:08 -1000
-From: "tj@kernel.org" <tj@kernel.org>
-To: Lixiong Liu =?utf-8?B?KOWImOWIqembhCk=?= <Lixiong.Liu@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"cgroups@vger.kernel.org" <cgroups@vger.kernel.org>,
-	Wenju Xu =?utf-8?B?KOiuuOaWh+S4vik=?= <Wenju.Xu@mediatek.com>,
-	wsd_upstream <wsd_upstream@mediatek.com>,
-	Jing-Ting Wu =?utf-8?B?KOWQs+mdnOWptyk=?= <Jing-Ting.Wu@mediatek.com>,
-	"hannes@cmpxchg.org" <hannes@cmpxchg.org>,
-	WJ Wang =?utf-8?B?KOeOi+WGmyk=?= <wj.wang@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	Andress Kuo =?utf-8?B?KOmDreWtn+S/rik=?= <Andress.Kuo@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Subject: Re: cgroup user-after-free
-Message-ID: <Y9wT8At0MF1S5v0k@slm.duckdns.org>
-References: <697032f2331a92eec0e03e85e46cb78bd975a788.camel@mediatek.com>
- <Y8Cwdsk5pYNd8fX8@slm.duckdns.org>
- <f8b24df3bd009d112479e9d5db36ec4afff9bb71.camel@mediatek.com>
- <3bb8e65797b905e4e9d4fad93a8f4fe26b8958a4.camel@mediatek.com>
+        bh=FC7A22kDDKm4iFJZCz/SFv4XLBhZwuNgB26sBiqqUIk=;
+        b=suAM/IozP633PfR5hldTCIpsmDxJvmeTOJbcU8YltfR8f0+Z/ZQpH8Q/a/3xEP2f6y
+         PtHk/S/OdwRK8k/LrPHBTUrLVr8qULLysqhgRd3kKg7caxutq2eQxURfUnHSzZCrsPM6
+         Xb4LN7aU+sNYMldsIb2BRtpIrJb3Ufu9CmnOuKUeq5II12DFZ+2l/Nv2uXhNNfapVp7Q
+         GIDwSywUG1wQdA98rA6qvl1ja+3kWnJj2b9JqDVVxmPNm+7Nbhr2XKcyuMe7XNJxIwOx
+         vf0QkPdKOh8Vp5DhIwa59Fjt8mq/J9RKyXl7zC+jqkN3z2YWVtXMQGoIiqJZ4NoeKvEV
+         tGuQ==
+X-Gm-Message-State: AO0yUKWj85ECEK5ZVhzLH7KArASsbh7cEZmRidRzrvVL3I6EU3i3IybC
+	KNq4XVkqDye/3IdHhktazew=
+X-Google-Smtp-Source: AK7set9RCCOggsVsOTU+HQYsqzAOze3x49AbZ1gunvi2oPWfSNFOc6BFqCq2Z8l1VgPzLVxLZAGyPg==
+X-Received: by 2002:a05:600c:1c22:b0:3dc:37d0:e9df with SMTP id j34-20020a05600c1c2200b003dc37d0e9dfmr7221240wms.14.1675368995175;
+        Thu, 02 Feb 2023 12:16:35 -0800 (PST)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id w15-20020a05600c474f00b003db0bb81b6asm887846wmo.1.2023.02.02.12.16.33
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 02 Feb 2023 12:16:34 -0800 (PST)
+Message-ID: <15711c23-43c4-86c4-0f56-4a76b5ffea46@gmail.com>
+Date: Thu, 2 Feb 2023 21:16:32 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <3bb8e65797b905e4e9d4fad93a8f4fe26b8958a4.camel@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH 1/3] drm/mediatek: Refactor pixel format logic
+Content-Language: en-US
+To: Justin Green <greenjustin@chromium.org>
+Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ angelogioacchino.delregno@collabora.com, jason-jh.lin@mediatek.com,
+ justin.yeh@mediatek.com, wenst@chromium.org, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
+ daniel@fooishbar.org
+References: <20230201170210.1253505-1-greenjustin@chromium.org>
+ <20230201170210.1253505-2-greenjustin@chromium.org>
+ <e96bd735-cf36-0dbd-cf93-446c1ab28778@gmail.com>
+ <CAHC42Rf8+yS45VBUc_dDuvCydg4ttKYuGwdgFshZRUZWzGiXRQ@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <CAHC42Rf8+yS45VBUc_dDuvCydg4ttKYuGwdgFshZRUZWzGiXRQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230202_115016_681741_960A2216 
-X-CRM114-Status: GOOD (  19.63  )
+X-CRM114-CacheID: sfid-20230202_121636_984906_64760341 
+X-CRM114-Status: GOOD (  18.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,50 +98,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 01, 2023 at 06:04:04AM +0000, Lixiong Liu (刘利雄) wrote:
-> On Fri, 2023-01-13 at 13:40 +0800, lixiong liu wrote:
-> > > > Root cause: 
-> > > > cgroup_migrate_finish free cset’s cgroup,
-> > > > 
-> > > > but cgroup_sk_alloc use the freed cgroup,
-> > > > 
-> > > > then use-after-free happened.
-> > > 
-> > > Sounds similar to the problem fixed by 07fd5b6cdf3c ("cgroup: Use
-> > > separate
-> > > src/dst nodes when preloading css_sets for migration"). Can you try
-> > > it out?
-> > > 
-> > > Thanks.
-> > > 
-> > 
-> > 
-> > Thanks for your quick feedback.
-> > 
-> > 
-> >   
-> > But we encountered use-after-free version
-> > 
-> > already contains this patch.
-> > 
-> > 
-> > 
-> > So, with this patch will also encounter
-> > 
-> > this use-after-free.
-> > 
-> > Thanks!
-> > 
-> > 
->   Do you have any suggestion for this issue?
 
-Unfortunately, there isn't a lot to latch onto. It's on an older kernel and
-there's no reproducer. Refcnting in the path is tricky and it wouldn't be
-too surprising for some bugs to be there. If you can repro on a recent
-kernel, that'd help a lot.
 
-Thanks.
+On 02/02/2023 19:59, Justin Green wrote:
+> Hi Matthias,
+> 
+>> mt8173_formats are the same as the old struct formats. Maybe we should use that
+>> and only overwrite where we actually use a different array.
+> I think this was sort of how the original patch worked, but we wanted
+> to add some flexibility to allow different components to support
+> different formats. In patch 3 of the series, we actually overwrite
+> this field with mt8195_formats.
+> 
 
--- 
-tejun
+Yes, I had a comment on the naming in that patch. Never the less, I think if we 
+don't need to "overwrite" the value, we should use just one struct for the 
+values instead of copying them to the different .c files and give them SoC 
+specific names.
+
+
+>> Why can't we use ARRAY_SIZE(formats) here like we did before?
+> I think ARRAY_SIZE is just a macro for getting the length of
+> statically allocated arrays. Because we won't know until runtime which
+> list of pixel formats we will be using, I'm not sure we can use that
+> in this circumstance?
+> 
+
+You are probably right.
+
+Regards,
+Matthias
 
