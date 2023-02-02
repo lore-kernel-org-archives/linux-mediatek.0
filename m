@@ -4,66 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3E3EC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 10:38:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BC29C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 10:40:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=g3x9st1cLckpQozblUmO+23e1Rs2Ez5xAw9Nt8F6aEo=; b=K7XbB9bhxQswa2RrvuJRsv7tOL
-	i41PnNdxeHwKAhOxHECgc+9h+1HV9H4ODFYjcDXrqLb3Z8A4C9pwB4DYpWIGbl6OKURrLUkmiKu0E
-	OHs5BGw+RGVYdvkZHPykhxQ6He7vMVUwIFV0Goj8TlRBIyRtEJvdFuIX7D0AFbqYWTKCYi8qTRdcV
-	xdY21C8GbsJ3v79HlgPWwjfAdz6tq4GhojEcaeoxmEC1Ds6hvWb+nMfwzu1WBE6qjolTU0xL5Twjq
-	PeFN/TkYYZ0Y5W8yWAPbWtO1j/8eqdNDnlJaHKjVTsUollE3uO7zqxqG854e6UIdr2XXu0VAOzHUq
-	7FMGJE6g==;
+	bh=PexX/V0c+w21JwIUEKWHSc7QoYhjon5sMZqAPNZ76zo=; b=PXXjsTsjgAk6W4rByXH51d182b
+	qNjE6K16IdzmUY2syxwkmddVhU58l2UAMErPGJu9yZhJIpK1F23ssOVNN1KvOABiBqSdafysoMopO
+	maGPtmYAQbFhdwSt3OCrhQ6hsakjBTwsjaoL3TRq2hlh1q7+uI0knOUhf2L5MT1x6D8oDH6l9U3Z6
+	Oj6IP6wwN3r/ZId5XBjF8SDyKSmS0YHGx1QOcjJvuUPhBpi+VxpuX0tQfrsdNORb5IvUNB/EB+TjU
+	yU6dhhha5Cj60oS9yyK3oHpR794g/rnD3nbh3jrhBOtRb9Qk0ut6cBxmdMYKYqw55+FiZCXi0wned
+	sjniRI8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNWye-00FO4s-LD; Thu, 02 Feb 2023 10:38:00 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pNX18-00FOUN-GP; Thu, 02 Feb 2023 10:40:34 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNWyU-00FO3e-VA; Thu, 02 Feb 2023 10:37:52 +0000
-X-UUID: a0101662a2e511eda08d4d6090ec5a5c-20230202
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=g3x9st1cLckpQozblUmO+23e1Rs2Ez5xAw9Nt8F6aEo=;
-	b=pQ0gRocQzNTuHVw8JytTA+emifsmsjXq8AivScr1yZRwlkoJ/p4sNkGVVsOutxWwtljjapHx4i5P134px9r7+MmMGFqTj+Wxg3vy0VRGXlLXmMDXM5deQjNJdj2R5zLOh+u9j2JEUHOP2ZGlKYSvaFqMnF6MGUz8t14tXuolGlA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.18,REQID:933b5ca7-470f-43d2-a9bc-3cb36ae97f69,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:3ca2d6b,CLOUDID:919443f7-ff42-4fb0-b929-626456a83c14,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0,NGT
-X-UUID: a0101662a2e511eda08d4d6090ec5a5c-20230202
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <trevor.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1862191422; Thu, 02 Feb 2023 03:37:43 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 2 Feb 2023 18:37:09 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 2 Feb 2023 18:37:09 +0800
-From: Trevor Wu <trevor.wu@mediatek.com>
-To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
-	<perex@perex.cz>, <matthias.bgg@gmail.com>
-CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <error27@gmail.com>
-Subject: [PATCH] ASoC: mediatek: mt8188: remove etdm dead code
-Date: Thu, 2 Feb 2023 18:37:04 +0800
-Message-ID: <20230202103704.15626-1-trevor.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pNX16-00FOTV-0s
+	for linux-mediatek@lists.infradead.org; Thu, 02 Feb 2023 10:40:33 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id on9-20020a17090b1d0900b002300a96b358so1416339pjb.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 02 Feb 2023 02:40:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=PexX/V0c+w21JwIUEKWHSc7QoYhjon5sMZqAPNZ76zo=;
+        b=DSuetR/giXwCr7xl33WxRX4Hvfsvzbp00ZCg/YSjdN59Da6JVxqgvCvj75vLHYOwOH
+         ltR2lE/nv3y8xMordBsJkMhC+SwyN0Z4Lod37n8akuTFQ6P8lxDmG4ljBUXUe9IP+sU6
+         IB38AJQ9pTHm5zxM34c1mAK1pHIn9Y40T5m+0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=PexX/V0c+w21JwIUEKWHSc7QoYhjon5sMZqAPNZ76zo=;
+        b=Xz0icXbmah6/O7hSg2eL0k7hNC2KGfO3HoNHEjXJotiFjPUkHDdxGb7ilajS1SPgfP
+         /ydtepa/X+FLJvvn2Nj/b5BDvKMNgJNJPftVV7tkYR2U3tZ3SyiuuMyHBRmgijBjBt4H
+         lDBDuS/h5eclSpJHBKafDdmM/cDija+pGgr4h/c8tkJS4RFJIxoPPnsUVfSEfR3CeqUF
+         wZrqPbMIuKc52aOsMxhx/OLVRLBhKrdeNJQviSenqrOL+2uQc8d3jsVErqwdurl2WGEn
+         4WgsGm2pokGnmhF/KyO4UTPbdCtdIwxbrZRovVrqErvVuZmZl/1wNoYuI+tg3iiy8Pqb
+         GBeg==
+X-Gm-Message-State: AO0yUKXJYVc2QIrBSfcrLIFW+TCUVRLJIZpkF/Q62ErHNysAYAvYYKyQ
+	OlsPhi3sFZAluAQLsF4ECiRnSQ==
+X-Google-Smtp-Source: AK7set+sw1iMXd99AlKQYQp6TJaHlmdMupoaYMb79i2bbcIgiPzqroi3GNubMJIp+d05hWuhQI1HZw==
+X-Received: by 2002:a17:903:32c9:b0:196:2e92:e546 with SMTP id i9-20020a17090332c900b001962e92e546mr7508552plr.44.1675334430339;
+        Thu, 02 Feb 2023 02:40:30 -0800 (PST)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:68a6:9bbd:a36a:4d1f])
+        by smtp.gmail.com with ESMTPSA id jk22-20020a170903331600b00194c82c2a7bsm13365706plb.224.2023.02.02.02.40.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 02 Feb 2023 02:40:30 -0800 (PST)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
+	soc@kernel.org
+Subject: [PATCH] arm64: dts: mediatek: mt8195: Fix vdosys* compatible strings
+Date: Thu,  2 Feb 2023 18:40:14 +0800
+Message-Id: <20230202104014.2931517-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.39.1.456.gfc5497dd1b-goog
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230202_023751_029722_34AECF0D 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20230202_024032_114950_63C3E714 
+X-CRM114-Status: GOOD (  13.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,92 +91,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some Smatch static checker warning like below was found.
+When vdosys1 was initially added, it was incorrectly assumed to be
+compatible with vdosys0, and thus both had the same mt8195-mmsys
+compatible attached.
 
-sound/soc/mediatek/mt8188/mt8188-dai-etdm.c:2487
-mt8188_dai_etdm_parse_of()
-warn: 'ret' returned from snprintf() might be larger than 48
+This has since been corrected in commit b237efd47df7 ("dt-bindings:
+arm: mediatek: mmsys: change compatible for MT8195") and commit
+82219cfbef18 ("dt-bindings: arm: mediatek: mmsys: add vdosys1 compatible
+for MT8195"). The device tree needs to be fixed as well, otherwise
+the vdosys1 block fails to work, and causes its dependent power domain
+controller to not work either.
 
-    2479         for (i = 0; i < MT8188_AFE_IO_ETDM_NUM; i++) {
-    2480                 dai_id = ETDM_TO_DAI_ID(i);
-    2481                 etdm_data = afe_priv->dai_priv[dai_id];
-    2482
-    2483                 ret = snprintf(prop, sizeof(prop),
-    2484                                "mediatek,%s-multi-pin-mode",
-    2485                                of_afe_etdms[i].name);
-    2486                 if (ret < 0) {
---> 2487                         dev_err(afe->dev, "%s snprintf
-err=%d\n",
-    2488
+Change the compatible string of vdosys1 to "mediatek,mt8195-vdosys1".
+While at it, also add the new "mediatek,mt8195-vdosys0" compatible to
+vdosys0.
 
-In linux kernel, snprintf() never returns negatives. On the other hand,
-the format string like "mediatek,%s-multi-pin-mode" must be smaller
-than sizeof(prop)=48.
-
-After discussing in the mail thread[1], I remove the dead code to fix
-the Smatch warnings.
-
-[1]: https://lore.kernel.org/all/Y9EdBg641tJDDrt%2F@kili/
-
-Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+Fixes: 6aa5b46d1755 ("arm64: dts: mt8195: Add vdosys and vppsys clock nodes")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- sound/soc/mediatek/mt8188/mt8188-dai-etdm.c | 33 ++++++---------------
- 1 file changed, 9 insertions(+), 24 deletions(-)
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c b/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
-index 0b79c1cc293b..071841903c62 100644
---- a/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
-@@ -2480,24 +2480,14 @@ static void mt8188_dai_etdm_parse_of(struct mtk_base_afe *afe)
- 		dai_id = ETDM_TO_DAI_ID(i);
- 		etdm_data = afe_priv->dai_priv[dai_id];
+Since we are at -rc6 and Matthias already sent out pull requests, I've
+CC-ed soc@ so that this may be picked up directly on top of them. This
+should be merged for -next.
+
+Thanks
+
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 5ffcfd8da31d..93ba274c3f42 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -2439,7 +2439,7 @@ vencsys_core1: clock-controller@1b000000 {
+ 		};
  
--		ret = snprintf(prop, sizeof(prop),
--			       "mediatek,%s-multi-pin-mode",
--			       of_afe_etdms[i].name);
--		if (ret < 0) {
--			dev_err(afe->dev, "%s snprintf err=%d\n",
--				__func__, ret);
--			return;
--		}
-+		snprintf(prop, sizeof(prop), "mediatek,%s-multi-pin-mode",
-+			 of_afe_etdms[i].name);
-+
- 		etdm_data->data_mode = of_property_read_bool(of_node, prop);
+ 		vdosys0: syscon@1c01a000 {
+-			compatible = "mediatek,mt8195-mmsys", "syscon";
++			compatible = "mediatek,mt8195-vdosys0", "mediatek,mt8195-mmsys", "syscon";
+ 			reg = <0 0x1c01a000 0 0x1000>;
+ 			mboxes = <&gce0 0 CMDQ_THR_PRIO_4>;
+ 			#clock-cells = <1>;
+@@ -2625,7 +2625,7 @@ larb1: larb@1c019000 {
+ 		};
  
--		ret = snprintf(prop, sizeof(prop),
--			       "mediatek,%s-cowork-source",
--			       of_afe_etdms[i].name);
--		if (ret < 0) {
--			dev_err(afe->dev, "%s snprintf err=%d\n",
--				__func__, ret);
--			return;
--		}
-+		snprintf(prop, sizeof(prop), "mediatek,%s-cowork-source",
-+			 of_afe_etdms[i].name);
-+
- 		ret = of_property_read_u32(of_node, prop, &sel);
- 		if (ret == 0) {
- 			if (sel >= MT8188_AFE_IO_ETDM_NUM) {
-@@ -2516,14 +2506,9 @@ static void mt8188_dai_etdm_parse_of(struct mtk_base_afe *afe)
- 
- 	/* etdm in only */
- 	for (i = 0; i < 2; i++) {
--		ret = snprintf(prop, sizeof(prop),
--			       "mediatek,%s-chn-disabled",
--			       of_afe_etdms[i].name);
--		if (ret < 0) {
--			dev_err(afe->dev, "%s snprintf err=%d\n",
--				__func__, ret);
--			return;
--		}
-+		snprintf(prop, sizeof(prop), "mediatek,%s-chn-disabled",
-+			 of_afe_etdms[i].name);
-+
- 		ret = of_property_read_variable_u8_array(of_node, prop,
- 							 disable_chn,
- 							 1, max_chn);
+ 		vdosys1: syscon@1c100000 {
+-			compatible = "mediatek,mt8195-mmsys", "syscon";
++			compatible = "mediatek,mt8195-vdosys1", "syscon";
+ 			reg = <0 0x1c100000 0 0x1000>;
+ 			#clock-cells = <1>;
+ 		};
 -- 
-2.18.0
+2.39.1.456.gfc5497dd1b-goog
 
 
