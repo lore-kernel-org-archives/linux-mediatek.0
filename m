@@ -4,65 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5E9AC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 11:22:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8A4BC05027
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 11:42:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ov+EeSBehnZGgP10oz15Ph0AQVk7Z1fAlO/Gr24nPL4=; b=JfGetBpGFu6/xyy7fNrWXoyRJN
-	z2emvSpfElEARtgtC2wFdr4dd95Kx4VORnsIhKuqOM6qU/K6mV0h9wQIewkkTAHN8e12UFzhYH2Ca
-	QhUg9dL/EWhcFrdOABB9nNIMr8khYs9DAwj1xtenJUSaScINA1hQJmNB6NExAYW5PfLxuqpVct5Re
-	DBqX6Llc/VkB0G2E+9SK743fc3vDjkJ/FNXbc01Ng/6RJ2euQLqMkkLS+CxKuYn8ScD0O7aHgzDB9
-	xSF/NTn5pwsMYEQlBesei281CbW5H9tvhagIqIsbXA3VGC1Y4WCaDF+q8D75Ol4mstTO8vD7+MtSy
-	kc50vPqw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xLA8BhNKGG0nPNmbbvucAKf0Xu/gD6xmTn2V+YOUxFs=; b=uoCAIs2tey3ZZW7UoInZ3xjZH1
+	qfEiGnalbE6MzMrOd+YF6CcdhoqpydDA2p+AtVq6BO9AlhhzrJ68/o2YeB2FcI7SadkyhcLU8ELfe
+	rRSOvv2TNHX7DQHVcYEyKqZcIMRoaIsf50Ef3f7u/I9OKUB1MJ/ZNAUe3Wlefgi08wgt9A1/hia2p
+	IUX8OKucSE+atgL9E8Uhvl3b6GRNIaxUoJY2xIi1vwpxe8gNX6ahNh5yEBJAAOteRlFepNQnahFYO
+	WwQg/CpjWiaeMDJiTPseNXn+9HuWUj26E8xeI5NOk7dgV0094G4qDjrblC+3lgutpYoAgZxmiDpMG
+	9YSogncw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNXfk-00Fb6S-SN; Thu, 02 Feb 2023 11:22:32 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1pNXzQ-00Fe1x-Ko; Thu, 02 Feb 2023 11:42:52 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNXfh-00Fb5F-Hv
-	for linux-mediatek@lists.infradead.org; Thu, 02 Feb 2023 11:22:31 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pNXfg-0001dt-3R; Thu, 02 Feb 2023 12:22:28 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pNXfd-0029u4-Cq; Thu, 02 Feb 2023 12:22:26 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pNXfd-000GOV-Tw; Thu, 02 Feb 2023 12:22:25 +0100
-Date: Thu, 2 Feb 2023 12:22:25 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] dt-bindings: pwm: mediatek: add mediatek,mt7986
- compatible
-Message-ID: <20230202112225.r4wg2nqbcocbnmec@pengutronix.de>
-References: <70fe0b606d988958b87f89828b8728e2f68eaace.1675278958.git.daniel@makrotopia.org>
- <20230202095733.kxh6jd5hbshhif44@pengutronix.de>
+	id 1pNXzG-00Fe04-1b; Thu, 02 Feb 2023 11:42:43 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CB65A6602EED;
+	Thu,  2 Feb 2023 11:42:39 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1675338160;
+	bh=ptjOx1Sz/Aegw0n395roYj59RnSkl74upxkTKsW43E8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TWTzeL/eICovsuOm/RCxqmOM4YRvCVBBN/EB+Y2S9H4gBuFEAahGDEPPOcRdD5UPU
+	 SH6fEyribjAwVxU7TjhL5sIp68F9ImESvQlLMNKfXXfpnpYnDYcFGUAL/cF32ITEoh
+	 F7LlhLeN5Z0DLBMP7JXS3r7fXkxGqvPoAvUSO7RDw7DNMeqnFYPBhXRSrLfSqHzV0y
+	 xglcleEUmkvATKZ6R7J7YcpfdbQjIFBDTtCc/FHBwA34Yz1f/bzMTSFtr7wmQ8tp6K
+	 CeFe9p1KPzI06H2U5PNHanOt7EV0e6oBBjadluPSZaUT96VLkeihDQP49iVq9mZ2MQ
+	 ui9xkanezDwmQ==
+Message-ID: <4b5bb022-eb5d-2ed1-2123-eb9e502299dc@collabora.com>
+Date: Thu, 2 Feb 2023 12:42:36 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="mysq7dcqb7ly26qb"
-Content-Disposition: inline
-In-Reply-To: <20230202095733.kxh6jd5hbshhif44@pengutronix.de>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Fix vdosys* compatible
+ strings
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>,
+ soc@kernel.org
+References: <20230202104014.2931517-1-wenst@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230202104014.2931517-1-wenst@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230202_032229_610232_D2ECC546 
-X-CRM114-Status: GOOD (  24.24  )
+X-CRM114-CacheID: sfid-20230202_034242_249785_43D52750 
+X-CRM114-Status: GOOD (  16.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,64 +79,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 02/02/23 11:40, Chen-Yu Tsai ha scritto:
+> When vdosys1 was initially added, it was incorrectly assumed to be
+> compatible with vdosys0, and thus both had the same mt8195-mmsys
+> compatible attached.
+> 
+> This has since been corrected in commit b237efd47df7 ("dt-bindings:
+> arm: mediatek: mmsys: change compatible for MT8195") and commit
+> 82219cfbef18 ("dt-bindings: arm: mediatek: mmsys: add vdosys1 compatible
+> for MT8195"). The device tree needs to be fixed as well, otherwise
+> the vdosys1 block fails to work, and causes its dependent power domain
+> controller to not work either.
+> 
+> Change the compatible string of vdosys1 to "mediatek,mt8195-vdosys1".
+> While at it, also add the new "mediatek,mt8195-vdosys0" compatible to
+> vdosys0.
+> 
+> Fixes: 6aa5b46d1755 ("arm64: dts: mt8195: Add vdosys and vppsys clock nodes")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
---mysq7dcqb7ly26qb
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-On Thu, Feb 02, 2023 at 10:57:34AM +0100, Uwe Kleine-K=F6nig wrote:
-> Hello,
->=20
-> On Wed, Feb 01, 2023 at 07:25:57PM +0000, Daniel Golle wrote:
-> > Since commit 241eab76657f ("pwm: mediatek: Add support for MT7986")
-> > support for the 2 PWM channels implemented in MediaTek MT7986 SoCs has
-> > been added. Also add the compatible string to dt-bindings now that
-> > they have been converted to YAML.
-> >=20
-> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> > ---
-> > This patch has previously been submitted, but we decided to deferr it u=
-ntil
-> > after the conversion to YAML which has now been done via commit
-> > 3e98855ca0cf ("dt-bindings: pwm: mediatek: Convert pwm-mediatek to DT s=
-chema")
-> > See
-> > https://patchwork.ozlabs.org/project/devicetree-bindings/patch/Y39PjU1B=
-qBB8tZ98@makrotopia.org/
->=20
-> This commit is currently in next via the pwm tree. The easy options are
-> to take this commit via pwm, too, or wait till after tne next merge
-> window. I'm fine with the former.
->=20
-> Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+> ---
+> 
+> Since we are at -rc6 and Matthias already sent out pull requests, I've
+> CC-ed soc@ so that this may be picked up directly on top of them. This
+> should be merged for -next.
+> 
+> Thanks
+> 
 
-However it wasn't sent to the linux-pwm list, so it doesn't appear in
-the pwm patchwork :-\
-
-I bounced it, but not sure that will make it appear there.
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---mysq7dcqb7ly26qb
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmPbnO4ACgkQwfwUeK3K
-7AlNKwgAlGG0ra8OtKfzugGoSYMltYXKZt32d4XG1V7KBQMvvLHn7Yhs3zZXI/A0
-FFlpdyo0qBzFmmddOmKvh5yaA6oVNANGuRpBebxRvcJ9XQuGH84EHMvAaDRlZeN3
-5hSHfqAvXtrs8XqXRrvC2nKrJMrEwLnj5u4kX3EUWbibwHMsGfZw9NXERkQHU7Tv
-CoeQKCWJElp9H3JC7QxGpu7YUo9VNuJ6tIpjf/kpxkzOSFAAkXJJ2PPWsQG+zgfv
-HnUbrzkwd5S1kQqNW8EIdH5tmE566AnZUPzTkHXBSRCpZWnDdnFsIlVYkn5a6xNE
-TwIihOEGnlogkwybgio3Ugh0A5coNw==
-=btCZ
------END PGP SIGNATURE-----
-
---mysq7dcqb7ly26qb--
 
