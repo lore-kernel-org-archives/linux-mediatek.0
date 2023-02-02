@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21F00C63797
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 07:33:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E696BC636D4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 07:37:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TKUSoejtff77qU9EMHeAwp50PPUBaR6VmVDITAMw72M=; b=sks1QXkNEKm1oR6sj491BM5wvK
-	Q474x6ieYLL9ZhsC878eMb++Ur61gbJ9NsBqovU2cdlIfF8jnhasEbaxIsPoAi0rb0QZ5YlSNDhtT
-	hg5VXt7aQk7NdovlPWS2zjFEiaGr6PXt4QLkpW1cHPXAe5tUCXMxvSgFxexwOcioqHxUVjlZd90K1
-	c5mGABITdGOJBG4KnCBmEPdCHedK8S3oex+imDLeroCopC1gyoi9M3afDT0YoyOepcF+ya5aJ+w7K
-	3oqqIDfNJKZmtrbGk89Ys65deOlGZJ3G3oU619eMwz15q3a5npFLjalGsgOikEz/dGhkmMj/Tqn93
-	GKLbb6IQ==;
+	bh=nxBwWKpFykCpt8SnRb5Mmaur2lRPZ0PSxJhkyvbsWqM=; b=dB9KYGmYu2aHIpascY54Qryqcl
+	gJAGjkBgE/sdb/vYMPPz0PSizU0w9RBrWK0lcK0epAAj1ApH/GNh3ZmbhZkrUryzeKzWjFNS9RM7O
+	AA0RcMGhs/Enzpb6iSKeoQ2yxT2Fa7umWDXMLGTkOZiyArvbT0KYuMSNh3sLoSzwBCTm6vscoBGnj
+	pPofry0ycLY8UcetbNVTiYUhQ2pqFcTKGrvG8jckOq/DD70+OjOzNs/UjtG6915erM8+JPKZ7mWDg
+	A+0JrkRqZyhEdxVfH9amzVD/K9SDkzP25bW9PmnzXbU8m3/v2pt5we9A05Jtoa7imetEEcWEBulcm
+	/KWK7K5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNU5h-00EeVL-AZ; Thu, 02 Feb 2023 07:33:05 +0000
+	id 1pNU9r-00Efqx-9k; Thu, 02 Feb 2023 07:37:23 +0000
 Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNU5R-00EeNx-73; Thu, 02 Feb 2023 07:32:50 +0000
+	id 1pNU9e-00EfmI-MT; Thu, 02 Feb 2023 07:37:11 +0000
 Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 9AAA118841CA;
-	Thu,  2 Feb 2023 07:32:47 +0000 (UTC)
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 08E871883898;
+	Thu,  2 Feb 2023 07:37:09 +0000 (UTC)
 Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id 8B72C250007B;
-	Thu,  2 Feb 2023 07:32:47 +0000 (UTC)
+	by mailout.gigahost.dk (Postfix) with ESMTP id E85CB250007B;
+	Thu,  2 Feb 2023 07:37:08 +0000 (UTC)
 Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id 7A5E19B403E4; Thu,  2 Feb 2023 07:32:47 +0000 (UTC)
+	id DBA529B403E1; Thu,  2 Feb 2023 07:37:08 +0000 (UTC)
 X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
 MIME-Version: 1.0
-Date: Thu, 02 Feb 2023 08:32:47 +0100
+Date: Thu, 02 Feb 2023 08:37:08 +0100
 From: netdev@kapio-technology.com
 To: Ido Schimmel <idosch@idosch.org>
 Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
@@ -56,21 +56,20 @@ Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
  support" <linux-mediatek@lists.infradead.org>, "open list:RENESAS RZ/N1
  A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>, "moderated
  list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>
-Subject: Re: [PATCH net-next 4/5] net: bridge: ensure FDB offloaded flag is
- handled as needed
-In-Reply-To: <Y9qucziByvXsx5Q0@shredder>
+Subject: Re: [PATCH net-next 0/5] ATU and FDB synchronization on locked ports
+In-Reply-To: <Y9lrIWMnWLqGreZL@shredder>
 References: <20230130173429.3577450-1-netdev@kapio-technology.com>
- <20230130173429.3577450-5-netdev@kapio-technology.com>
- <Y9qucziByvXsx5Q0@shredder>
+ <Y9lrIWMnWLqGreZL@shredder>
 User-Agent: Gigahost Webmail
-Message-ID: <d972e76bed896b229d9df4da81ad8eb4@kapio-technology.com>
+Message-ID: <e2535b002be9044958ab0003d8bd6966@kapio-technology.com>
 X-Sender: netdev@kapio-technology.com
 Content-Type: text/plain; charset=US-ASCII;
  format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230201_233249_423546_317EC794 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20230201_233710_904229_80266F0F 
+X-CRM114-Status: UNSURE (   8.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,20 +84,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023-02-01 19:24, Ido Schimmel wrote:
+On 2023-01-31 20:25, Ido Schimmel wrote:
 > 
-> This also looks correct, but the function name is not really accurate
-> anymore. I guess you can keep it as-is unless someone has a better name
-> 
->>  		fdb_delete(br, fdb, swdev_notify);
->>  	else
->>  		err = -ENOENT;
->> --
->> 2.34.1
->> 
+> Will try to review tomorrow, but it looks like this set is missing
+> selftests. What about extending bridge_locked_port.sh?
 
-I have been wondering if it makes sense to have both external_learn and 
-offloaded flags as they now work pretty much the same seen from the 
-bridge. But as I don't know other switches, I guess there is some good 
-reason to have the two?
+I knew you would take this up. :-)
+But I am not sure that it's so easy to have selftests here as it is 
+timing based and it would take the 5+ minutes just waiting to test in 
+the stadard case, and there is opnly support for mv88e6xxx driver with 
+this patch set.
 
