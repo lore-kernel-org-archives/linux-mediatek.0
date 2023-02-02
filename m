@@ -4,74 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CE6FC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 20:41:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0799C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 21:00:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tk3RaGDRfRVv0tlpJCdq6gLxpXZLUoxuYeWx+eXPzUo=; b=HytwTXUH46HMRaqTk05QpxOQMD
-	DeRgx1zNJSKhxuscO0eZVxDKCqiDvF6ILzYvSichrpwuY0Cxm6YLEFgpItko9JANE5H+HEOjtN9+w
-	qMhgpxsXadcW6gWBoDvq5ojo7WGcsh4X1VscO4yCY1lRk6H1ZNtl4PYZsTx8s9T90N2avm2TF1m45
-	PG2UYrM/OcQAwfO6QbOh/yprI9utST+XWG8S+vGZikXHW+NPDGtPU4esQYs8kMZwFV4kiJypuXheS
-	FyzWf8KdUOY+4zOX5zH81076/xouGD7GehtsMtqwTm/IUV0JDZdUzqOO9YyIvEYbbq8s154KbRwlz
-	wAjwX4Pg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1DBGqdSzjllo0Rs4ppSVIqyB7RYR71PJdwUXcNcFDcg=; b=MgfZyGvICZGOM+9aLM7Eu0xvgG
+	TrLyGmFsNnKCRqdneYV+1sHKG1wLpWE7cYqq7k88IAmMXm+WUmeXpc95FyL1y1yMXtopbyKi5xvFc
+	vb8gkCdRPoBX3JfVKtYyMzPCRH1L20r8bDauvv2STZbD60saIX/hxCRWvN6AHIuHTraWsQwFHnHq7
+	S0y/jXXKVnslgASmbMCpQRGv1KXPJgqvldYnJ4NOC/xn82Xx9xgemunrWzPH/DaxjXqrx9WwoyRcd
+	X/+ZB7LXi8JQAZmxGwvEE60E3L0cYXYSXDvwLH8odk/SSUo6JDIaNq+dN5iHPJVOTLRiO8bjxTwY6
+	R0Sy+new==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNgOf-00HAXy-8w; Thu, 02 Feb 2023 20:41:29 +0000
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+	id 1pNgh6-00HCWA-Ly; Thu, 02 Feb 2023 21:00:32 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNgOc-00HAXS-V0
-	for linux-mediatek@lists.infradead.org; Thu, 02 Feb 2023 20:41:28 +0000
-Received: by mail-pl1-x62c.google.com with SMTP id r8so3142779pls.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 02 Feb 2023 12:41:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Tk3RaGDRfRVv0tlpJCdq6gLxpXZLUoxuYeWx+eXPzUo=;
-        b=MENKp873NXo9ALLlUOUDHg9jijpviObR/IUQ29GZLl1vem82P6QA8dis0ITSUgphAB
-         16LhCFBhrXHxAtYdGSTdO7GY/AjEnTjEbSdymoI1Yfj0C2ZTNP/GfGF4RqEJVb/bTGB8
-         PoFwztIJQLkrroZqHl8Aj27vPM4CPJ3iICg/g=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Tk3RaGDRfRVv0tlpJCdq6gLxpXZLUoxuYeWx+eXPzUo=;
-        b=eCTRLa3ZDXH77WCNirefBKxXZ0gakl8CNueXzUHGc3dEXMuhLCS8soHoSVeKdxGsuc
-         AbaBY2Q2taLlmgb6s0ezUjMOygHXoiINmpxxJFP6Lr9mJFO38nV30moKBk4n6L+8GMAV
-         La1VbZDUu49R1X3zfwyaTMwq72+quhgRvG5tZ40tP2DEhpSzK2uZK7MOSIKk6PrIZ5M2
-         Um5hl+GLy67p4AupEw1MgiEiQhG2s3tqFbgJD6pimtD2eqrwqWv4bRF3YroGCIXdjyfN
-         0pIc4BPo4B7WsGUVWT74PtScsDytcktsI6n4yFOiN2ygrBdR/CVFR/S9sqRLKQc/hZPq
-         M5vg==
-X-Gm-Message-State: AO0yUKXR/gUdaC2eADhi+PViWTpnS0I1nUHkkBCPG9ZjkVA2eQf9cj2W
-	ej/Q4CtWUvHrjf/iyPrURX68tlv0cM0OzeQtAUbxUA==
-X-Google-Smtp-Source: AK7set+VBvRA+LsX4oN7Bw9qtjkPlQ7I5Hxc6/6dJQv4z010NW4PdMvc+7/j3zrP/NSzeXIY6tYisvZeVynKKDhRGkY=
-X-Received: by 2002:a17:90a:540a:b0:22c:6223:d27a with SMTP id
- z10-20020a17090a540a00b0022c6223d27amr799859pjh.61.1675370485030; Thu, 02 Feb
- 2023 12:41:25 -0800 (PST)
+	id 1pNggw-00HCTq-3u; Thu, 02 Feb 2023 21:00:23 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 22F3D61C0A;
+	Thu,  2 Feb 2023 21:00:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 80966C4339B;
+	Thu,  2 Feb 2023 21:00:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1675371618;
+	bh=GKyRb/OSr7qk+73H0dw82Jo80xmQ59n36CiaFi8Yko4=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=RkZRIZqw7+QnrWQkR5RztulQAcFRdPmCVZAi8Mx3mY7q8QMFOyOym1RSgIP3Q1QwY
+	 RRZeEZ8018XqxTnUR2Y7evyVEOcpu50eNIQCEQW/6Fc3TMQPYMaQJpXKfAygZa6lGf
+	 +ivjVSTKJjcjjeGTjeh+a+8qlpqm7/271y++e1P0USS+UWkNejumgNQQ2eZDDrmCaN
+	 4cOFTNXImIfFAqp8AjcyKM0ZQ6AabaWMViIKPKNgdAkIa08BATALIPbx7LBWw0BKNb
+	 5mvPDpSLWhJwyWmd8OIq4YlvInkS/P720omv3KbVgcKFH1SV5wL9IqwE02HJv1M4oj
+	 1D+x7ldz10nQg==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 5E69FE50D67;
+	Thu,  2 Feb 2023 21:00:18 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-References: <20230201170210.1253505-1-greenjustin@chromium.org>
- <20230201170210.1253505-2-greenjustin@chromium.org> <e96bd735-cf36-0dbd-cf93-446c1ab28778@gmail.com>
- <CAHC42Rf8+yS45VBUc_dDuvCydg4ttKYuGwdgFshZRUZWzGiXRQ@mail.gmail.com> <15711c23-43c4-86c4-0f56-4a76b5ffea46@gmail.com>
-In-Reply-To: <15711c23-43c4-86c4-0f56-4a76b5ffea46@gmail.com>
-From: Justin Green <greenjustin@chromium.org>
-Date: Thu, 2 Feb 2023 15:41:14 -0500
-Message-ID: <CAHC42Rff5Xj_5bJNVozAYnG+ujjZ+R1DjDfWZn4GvsyQV+do_Q@mail.gmail.com>
-Subject: Re: [PATCH 1/3] drm/mediatek: Refactor pixel format logic
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
-	angelogioacchino.delregno@collabora.com, jason-jh.lin@mediatek.com, 
-	justin.yeh@mediatek.com, wenst@chromium.org, chunkuang.hu@kernel.org, 
-	p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch, 
-	daniel@fooishbar.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH v5 net 0/3] fixes for mtk_eth_soc
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id:  <167537161838.31793.11989786394773759034.git-patchwork-notify@kernel.org>
+Date: Thu, 02 Feb 2023 21:00:18 +0000
+References: <20230201182331.943411-1-bjorn@mork.no>
+In-Reply-To: <20230201182331.943411-1-bjorn@mork.no>
+To: =?utf-8?b?QmrDuHJuIE1vcmsgPGJqb3JuQG1vcmsubm8+?=@ci.codeaurora.org
+Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
+ sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, lorenzo@kernel.org,
+ linux@armlinux.org.uk, daniel@makrotopia.org, lynxis@fe80.eu,
+ simon.horman@corigine.com, pabeni@redhat.com, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, matthias.bgg@gmail.com,
+ opensource@vdorst.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230202_124127_035751_95A48C28 
-X-CRM114-Status: GOOD (  10.19  )
+X-CRM114-CacheID: sfid-20230202_130022_212514_BD81E453 
+X-CRM114-Status: GOOD (  10.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,13 +78,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Yes, I had a comment on the naming in that patch. Never the less, I think if we
-> don't need to "overwrite" the value, we should use just one struct for the
-> values instead of copying them to the different .c files and give them SoC
-> specific names.
-I don't have a very strong opinion about this, and in fact that is how
-v1 of the patch worked, but Chun-Kuang specifically suggested moving
-that struct into the .c files a few versions back. I think it makes
-sense if we expect additional skew between the different components
-and what pixel formats they support.
+Hello:
+
+This series was applied to netdev/net.git (master)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Wed,  1 Feb 2023 19:23:28 +0100 you wrote:
+> Changes since v4:
+>  - use same field order for kernel-doc and code in patch 1
+>  - cc'ing full maintainer list from get_maintainer.pl
+> 
+> Changes since v3:
+>  - fill hole in struct mtk_pcs with new interface field
+>  - improved patch 2 commit message
+>  - added fixes tags
+>  - updated review tags
+> 
+> [...]
+
+Here is the summary with links:
+  - [v5,net,1/3] net: mediatek: sgmii: ensure the SGMII PHY is powered down on configuration
+    https://git.kernel.org/netdev/net/c/7ff82416de82
+  - [v5,net,2/3] net: mediatek: sgmii: fix duplex configuration
+    https://git.kernel.org/netdev/net/c/9d32637122de
+  - [v5,net,3/3] mtk_sgmii: enable PCS polling to allow SFP work
+    https://git.kernel.org/netdev/net/c/3337a6e04ddf
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
