@@ -4,69 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72BD7C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 13:01:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24B1DC05027
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 13:05:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=58VVwq5R0SeVWSTuqEd+Zn7+PpfZGMiJHhHOV+5UOXU=; b=ldSb4inTgxnJXmFRUWJK3SqB6D
-	PQl954b9rzZN4MYVJB+7OoNiTwxDkHz14X4rwjBVy/Pjq+5k5oPe7FlHJJRmMfj13iZhkGZISbH1N
-	Os1TS1Ll20XS7H6OKD4LUarwaEjIh2qFXYt0OIt+voVVIS8x5otZNc55sWWxgc9e+Pio43oQCunQo
-	IXEE5hfFPJ2pjPQfZqjnPT6yXiUgle6fgQ51NCsb05JZysmkhseekViLIrvDp8VdvXc1IusKbMwCT
-	uhEXcZv8eZdAE8gnrs2uNMPH5mZne6jBLveVKVfW7+tY9hx3CLv+KqG2x1HP8wIHGLtTEV6wZYyT2
-	pTWDOqFw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NEynChfaHuKvTCoy9nPF6GPIOsYFK2PpjzZDdptWHC8=; b=YFjqsK+Fbqv8AiAkwh79gJyK9h
+	vRLJ1Qw1/fQ7EPLBO/N8llC6xRsX0XuZedPRAHE+nX+teJNjUfEeK7mXPAqt1TS5lPs9bWU2Qm/+Y
+	YG6YelVYRwZrqy0rBPQLiVl0hv29zz8h4W+Q4zpwl3+ZrIbxZZFPl4HrDfodC5n05aIDv0Un/Gcdj
+	xvj50yeZ56hlY1b12eM+urHdN5WzHwy6w7T+EZKni3dPOaL9E/oSbdFuyM0HND6R/7A3BD+Q0zaOa
+	imIZBGbjNL0k+nUQ1bzlqiubVh047pRpLff7cs8C8k6yYjAiz5bYam0i1fcpEf/YnkcM8pwu9j4/h
+	SyK5AcDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNZDL-00Fvg2-ML; Thu, 02 Feb 2023 13:01:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pNZHh-00FwjR-0N; Thu, 02 Feb 2023 13:05:49 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNZDI-00Fvet-5T; Thu, 02 Feb 2023 13:01:17 +0000
-X-UUID: aa3e7c14a2f911eda08d4d6090ec5a5c-20230202
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=58VVwq5R0SeVWSTuqEd+Zn7+PpfZGMiJHhHOV+5UOXU=;
-	b=GsA7nA++86YWeUqE+Gyy4LLCuolRv0C53a3gQitonVW04ldOQBoaKEyRsc7gG51TslDtCk8zIUkctABETenRRBaC4cfQUC9/fz3prl6X3wOB7KGELo9CH68NxyLpFWXmjOuIL53L8qe5NdQ8fIOTZV9qVEcf9Ud97DmEm2gtqNc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.18,REQID:afdbb8b3-91dd-454e-a757-1362f7edc776,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:3ca2d6b,CLOUDID:75381c56-dd49-462e-a4be-2143a3ddc739,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0,NGT
-X-UUID: aa3e7c14a2f911eda08d4d6090ec5a5c-20230202
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <roger.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 726641852; Thu, 02 Feb 2023 06:01:10 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 2 Feb 2023 20:41:05 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 2 Feb 2023 20:41:05 +0800
-From: Roger Lu <roger.lu@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
-	<eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Nicolas Boichat
-	<drinkcat@google.com>
-CC: Fan Chen <fan.chen@mediatek.com>, Roger Lu <roger.lu@mediatek.com>,
-	Jia-wei Chang <jia-wei.chang@mediatek.com>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-pm@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v5 0/3] Enhance SVS's robustness
-Date: Thu, 2 Feb 2023 20:41:01 +0800
-Message-ID: <20230202124104.16504-1-roger.lu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pNZHS-00FwgD-L6; Thu, 02 Feb 2023 13:05:39 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 0538E61B20;
+	Thu,  2 Feb 2023 13:05:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3600C433D2;
+	Thu,  2 Feb 2023 13:05:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1675343133;
+	bh=KfapbWZaHoGL2lh75PlRq+/iMY1cexe2VdJrOWRjZsk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=YK13koIN2gnXc469qf/9k9La3ph+csCibap5vcuqGJE+8Hy2LrBEf4B2yAPV/w7h6
+	 Nuf3QpHGm+Wn16/BIrp/mrc3meqhMvRZO/bPon0zGydLMWw2C6xzOQ2NkUD/+KGmut
+	 QWUIdocqn55FkMzRI5oY6y12uxx497Lkt4a9n1QvhzaWZOVBcg+lQ4tPqYALwL5pfY
+	 AORJMBJsJ1NmStBnwAAS1gaBjc5GwM4QQl2UsdlrS3kYdyy1N9dGEWAxIfEYs3Xu0E
+	 a3vvbscn8VK1P8ciiKCuUhUk54YdUGVOOzPI5TFTCbbiW6D175bmVkvb4nI3BCYHov
+	 AkChSan7JfKqw==
+Date: Thu, 2 Feb 2023 18:35:29 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Kishon Vijay Abraham I <kishon@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Nathan Chancellor <nathan@kernel.org>,
+	Nick Desaulniers <ndesaulniers@google.com>,
+	Tom Rix <trix@redhat.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+	linux-kernel@vger.kernel.org, llvm@lists.linux.dev,
+	Eddie Hung <eddie.hung@mediatek.com>,
+	kernel test robot <lkp@intel.com>
+Subject: Re: [PATCH v7 1/3] phy: mediatek: remove temporary variable @mask_
+Message-ID: <Y9u1GXaVJ0FKXWnu@matsya>
+References: <20230118084343.26913-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230118084343.26913-1-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230202_050116_247675_88B47C6A 
-X-CRM114-Status: UNSURE (   7.61  )
+X-CRM114-CacheID: sfid-20230202_050534_760559_01AECE42 
+X-CRM114-Status: UNSURE (   9.12  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,24 +80,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SVS driver got accepted upstream but still has room to be improved.
-Therefore, we add these patches to fix issues and coding style.
+On 18-01-23, 16:43, Chunfeng Yun wrote:
+> Remove the temporary @mask_, this may cause build warning when use clang
+> compiler for powerpc, but can't reproduce it when compile for arm64.
+> the build warning is caused by:
+> 
+> "warning: result of comparison of constant 18446744073709551615 with
+> expression of type (aka 'unsigned long') is always false
+> [-Wtautological-constant-out-of-range-compare]"
+> 
+> More information provided in below lore link.
+> 
+> After removing @mask_, there is a "CHECK:MACRO_ARG_REUSE" when run
+> checkpatch.pl, but due to @mask is constant, no reuse problem will happen.
 
-Change since v4:
-- Rebase unmerged patches and resend to patchwork
+Applied, thanks
 
-Tested on:
-MT8183 Platform (kernel v5.10)
-MT8192 Platform (kernel v5.4)
-
-Roger Lu (3):
-  soc: mediatek: mtk-svs: use svs get efuse common function
-  soc: mediatek: mtk-svs: use common function to disable restore
-    voltages
-  soc: mediatek: mtk-svs: add thermal voltage compensation if needed
-
- drivers/soc/mediatek/mtk-svs.c | 142 +++++++++++++--------------------
- 1 file changed, 56 insertions(+), 86 deletions(-)
-
-
+-- 
+~Vinod
 
