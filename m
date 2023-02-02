@@ -4,84 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2A3BC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 10:12:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2B7CC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 10:29:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M/O8m3Tu7QUrsruCqpFCy7yupD/hlwqyVYceONRYcvI=; b=AYQJgWubZzX3nanNgz7Pjtb9eu
-	5baZrYEQnAeThDbRHR5UgrzLzRxttPN424cRVzLR18aIz0cFjEibkn6j1WQdEx4RectyvChnqkjXX
-	n0zvvPX6ok4WIcsOZxKGwbijJw6U2aEc9jY5afm/C1luHURLC9yfy3pE8Wv4sUMinT2ZQJZmSGRJR
-	VoILg9Ksh42lrZFdTeIriJdWkd507bJYPtEy9ZbUHprTWcq48NxmHdOWWyPjLkxcTpFJZ+bwnjGBL
-	/FIjsuMdPS+JoHU3e6xkVPiX5Nm5VnF5O03ovDoBwCg5xmnaGGX5Y8sWxWhC6/1JcTk69+PoSQ/ZN
-	xyVCvqQQ==;
+	bh=PDczMK6QGEx7AYRb10cj/ES1Fdkv4zSuiKYZ9KoSqzc=; b=msy61rOqpziJlqwjGhA3ye9QP1
+	WUghewJLycFW1yWSXjI51pfQ8hHnUgxP7oo0rkZVC6HmeCZekiAA8NtfGxGYcljMi7TE9G+0O2pwh
+	6cYEAiCWAg/ElpvgUVPkl7SVYfzQzCfRVkEQ8ycxTRVd9aCoLRSVVlgmJfp4qFX8vtKueG2siv1Js
+	rSGP1f3YkwFf2kh6pi2KYq7sFtx19AvODgE/FKRNQgmarHW4WUUCvMQdylpPLTKTmzbDxwoqG2wkz
+	2rqaaB1ziOndBnr5gDqwZRgGSFGCZAC7vcOGwwD938sp7dPI5G44QdfsRn7fQVtLFc1B9BWV8Kd4m
+	l/SovCAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNWZi-00FKqY-VD; Thu, 02 Feb 2023 10:12:14 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1pNWqK-00FN4p-AU; Thu, 02 Feb 2023 10:29:24 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNWZg-00FKpS-2X
-	for linux-mediatek@lists.infradead.org; Thu, 02 Feb 2023 10:12:13 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id m7so1189337wru.8
-        for <linux-mediatek@lists.infradead.org>; Thu, 02 Feb 2023 02:12:11 -0800 (PST)
+	id 1pNWqG-00FN3j-Kl; Thu, 02 Feb 2023 10:29:22 +0000
+Received: by mail-ej1-x630.google.com with SMTP id mc11so4545882ejb.10;
+        Thu, 02 Feb 2023 02:29:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=M/O8m3Tu7QUrsruCqpFCy7yupD/hlwqyVYceONRYcvI=;
-        b=hW8BFD9Y0HleZOJn18fvxLUyprlrKHtILedP2aCNQxVNQ7lkb/QCJdzEw+Q6QGDJl2
-         hrY1Ad3uUhkNbCrBTt55J3FtrhTyMqG23Xow/3UWIJb52H6XNRmF9+BAXiE3HdIEKZMS
-         sNamuNi4fcEOrqO0ehj/GijImIubAM0XM295QV8XDqh8duQbfDIzVDvgtOJAOVinWGn8
-         zv5E+Rs7BUDDymtHYRN9+J57u6VWEM6ITGBDvx3jURovt31FKicKWWjWpAg5E5Z9tkpE
-         kzlFnbWVulhJSYXLcSPvZE1rcJTmgqziCklcEj6Yt7nmFogrmqa0j08vZRDuK6snEVCt
-         Zw+Q==
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=PDczMK6QGEx7AYRb10cj/ES1Fdkv4zSuiKYZ9KoSqzc=;
+        b=oP3VnnlVakoXFC9lbChPggPB9j9in358xpuyk+vcZBZb0NTWI7uVQV6KbF8KJpDRON
+         wLMVr1Cy4Zz7uAOqv0gKvGSs1VLJ0KCYgsNsycLnoo3XNlxE2kJ3YANyJhR24E+1zZH8
+         oOWYZQWjjV1hg08sOGZqLLGDH5m9w5QUhBA1fMdtzPoQpKmR3R2VI9ZvsiFkVp/jjtw1
+         KzQk92qeACoWACloKIe+kmukTTBgu7XA7Cjve+fwDYT1HqaNJRR3XG4EyODFVUNVm04Y
+         mOoBuz5EBw6HKJtI+oioBLPZTfU/eLUjwtCwhhwD0loUri9XqtS42zo3I6b5l6T/rqSY
+         FYHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=M/O8m3Tu7QUrsruCqpFCy7yupD/hlwqyVYceONRYcvI=;
-        b=VjxjL8Ir2IWCdE0xB+VYxWItsX7hJPUTq8EMaXNIfQsaNK5OPT5cgbBKdMQm73qs8i
-         nCmCmbqyHKwIzNw8ZzyyaDNjQ5g4iAQCRrie+XeJJxXXIHasPbZEWHFF0GG1tfW2fjuc
-         cPOrC/9awGHHj8QaVO0kaBxOYC7zOsD2Eh7bN7s5pF7OZSSGGfMmmXOBgRbFAPg9Y/Eg
-         VBkA/e3WH2++40KiIcixNfqR5Q6ZCdldb3mM5DipOXjj2BLe4BbSACRX+6PtNPUUDm02
-         N9Q1V5FnFFX8NsohY0R8zpwvk6PwL7vYXYtX0b1NUtGKcvFAmV4nyf1fRGKve4CRpv+y
-         KXPw==
-X-Gm-Message-State: AO0yUKV8c45H/LTeP8CpUKp/IXT9areUVF0Xl47dVmTPoewQeQxn8Tzu
-	GsFMkkEj15wGbG66ETsrlHE=
-X-Google-Smtp-Source: AK7set9qcgtdgwtBCY3bAUh8GE68YA23k6QCIv1vg30Gu+HIyXv2tpL3Z+BQyuAeCqdFXDcqDDzw0Q==
-X-Received: by 2002:a05:6000:1f0f:b0:2bf:bbd1:1db3 with SMTP id bv15-20020a0560001f0f00b002bfbbd11db3mr5187356wrb.44.1675332730446;
-        Thu, 02 Feb 2023 02:12:10 -0800 (PST)
+        bh=PDczMK6QGEx7AYRb10cj/ES1Fdkv4zSuiKYZ9KoSqzc=;
+        b=NNjIFos9KOt8AKSC6FMKTUci8ef4opnFe5DICFIC8Cahh5CgmNAivIz2NuyQNg6Olz
+         Z9Nu+KNmf7UIxVif6NJnW9zMbliGIK52pzQOVJFVHSCz9bD7CPI38AwB9sxUgbhALIZM
+         aqK7s+NjC/HSJ/i1lZMrg8//Sl+Jys6Uv17YwD7bJMYSmsLJ7cFdjLUABqCn979Z9BxN
+         7ezXZ3k7K9dxtSzm10EqoYHJ5iM7W6jJ0dHzsKBI4fxIMrfO7l1J5fPgyTNrAtQUHbbQ
+         SUj5xEeps4ckWQyQlSgZ5lRajOm1d+nDeAkGzhRoLUJNZnAnExxYZMZ95i6uAeiPWi3K
+         M+MA==
+X-Gm-Message-State: AO0yUKWNKPznmrdpMYyyOy0ymejh9+OTc6gxAEH98BirThou8jojYtJg
+	9QScB1owXKOe19rn/MzFnHM=
+X-Google-Smtp-Source: AK7set8z0SSifew38k/iqNDwEMvNSGdYPJ1KAUjZU2aBmDo8a+C3AQh/Oj8czl6jgs5LGPJXmyEGVA==
+X-Received: by 2002:a17:906:885:b0:87b:d3fa:79f2 with SMTP id n5-20020a170906088500b0087bd3fa79f2mr6259755eje.19.1675333757590;
+        Thu, 02 Feb 2023 02:29:17 -0800 (PST)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id v14-20020adfe4ce000000b002bfafadb22asm20143890wrm.87.2023.02.02.02.12.09
+        by smtp.gmail.com with ESMTPSA id t15-20020a170906268f00b008888f4120d4sm6114171ejc.129.2023.02.02.02.29.16
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 02 Feb 2023 02:12:09 -0800 (PST)
-Message-ID: <e938bbee-3a93-6e08-c5d7-5b5b346062b1@gmail.com>
-Date: Thu, 2 Feb 2023 11:12:08 +0100
+        Thu, 02 Feb 2023 02:29:16 -0800 (PST)
+Message-ID: <68d19d2b-0613-f1b4-08ff-9d86f5021f9f@gmail.com>
+Date: Thu, 2 Feb 2023 11:29:15 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH 3/3] drm/mediatek: Enable AR30 and BA30 overlays on MT8195
 Content-Language: en-US
-To: Justin Green <greenjustin@chromium.org>,
- linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org
-Cc: angelogioacchino.delregno@collabora.com, jason-jh.lin@mediatek.com,
- justin.yeh@mediatek.com, wenst@chromium.org, chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
- daniel@fooishbar.org
-References: <20230201170210.1253505-1-greenjustin@chromium.org>
- <20230201170210.1253505-4-greenjustin@chromium.org>
+To: =?UTF-8?B?Um9nZXIgTHUgKOmZuOeRnuWCkSk=?= <Roger.Lu@mediatek.com>,
+ "eballetbo@gmail.com" <eballetbo@gmail.com>,
+ "khilman@kernel.org" <khilman@kernel.org>,
+ "sboyd@kernel.org" <sboyd@kernel.org>,
+ "drinkcat@google.com" <drinkcat@google.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ =?UTF-8?B?SmlhLXdlaSBDaGFuZyAo5by15L2z5YGJKQ==?=
+ <Jia-wei.Chang@mediatek.com>, =?UTF-8?B?RmFuIENoZW4gKOmZs+WHoSk=?=
+ <fan.chen@mediatek.com>
+References: <20230111074528.29354-1-roger.lu@mediatek.com>
+ <20230111074528.29354-6-roger.lu@mediatek.com>
+ <5192bc94-12c7-dce4-c2e6-fa4b8c1ced9d@gmail.com>
+ <546d7f2b3607310f0ebe11b3d4e0aac40ac44c7a.camel@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230201170210.1253505-4-greenjustin@chromium.org>
+Subject: Re: [PATCH v4 05/14] soc: mediatek: mtk-svs: use svs clk control APIs
+In-Reply-To: <546d7f2b3607310f0ebe11b3d4e0aac40ac44c7a.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230202_021212_141974_E67DBF60 
-X-CRM114-Status: GOOD (  15.05  )
+X-CRM114-CacheID: sfid-20230202_022920_717844_9941FBDF 
+X-CRM114-Status: GOOD (  21.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,59 +107,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+你好，
 
-
-On 01/02/2023 18:02, Justin Green wrote:
-> Tested using "modetest -P" on an MT8195 device.
+On 01/02/2023 13:28, Roger Lu (陸瑞傑) wrote:
+> Hi Matthias Sir,
 > 
-> Signed-off-by: Justin Green <greenjustin@chromium.org>
-> ---
->   drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 21 +++++++++++++++++++--
->   1 file changed, 19 insertions(+), 2 deletions(-)
+> On Tue, 2023-01-31 at 14:19 +0100, Matthias Brugger wrote:
+>>
+>> On 11/01/2023 08:45, Roger Lu wrote:
+>>> In MediaTek HW design, svs and thermal both use the same clk source.
+>>> It means that svs clk reference count from CCF includes thermal control
+>>> counts. That makes svs driver confuse whether it disabled svs's main clk
+>>> or not from CCF's perspective and lead to turn off their shared clk
+>>> unexpectedly. Therefore, we add svs clk control APIs to make sure svs's
+>>> main clk is controlled well by svs driver itself.
+>>>
+>>> Here is a NG example. Rely on CCF's reference count and cause problem.
+>>>
+>>> thermal probe (clk ref = 1)
+>>> -> svs probe (clk ref = 2)
+>>>      -> svs suspend (clk ref = 1)
+>>>         -> thermal suspend (clk ref = 0)
+>>>         -> thermal resume (clk ref = 1)
+>>>      -> svs resume (encounter error, clk ref = 1)
+>>>      -> svs suspend (clk ref = 0)
+>>>         -> thermal suspend (Fail here, thermal HW control w/o clk)
+>>>
+>>> Fixes: a825d72f74a3 ("soc: mediatek: fix missing clk_disable_unprepare() on
+>>> err in svs_resume()")
+>>> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+>>
+>> That looks wrong. Although I don't out of my mind, there should be a way to
+>> tell
+>> the clock framework that this clock is shared between several devices.
+>>
+>> I wonder if using clk_enable and clk_disable in svs_resume/suspend wouldn't
+>> be
+>> enough.
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> index a6255e847104..7d26f7055751 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> @@ -85,6 +85,22 @@ static const u32 mt8173_formats[] = {
->   	DRM_FORMAT_YUYV,
->   };
->   
-> +static const u32 mt8195_formats[] = {
+> Oh yes, Common Clock Framework (CCF) knows the clock shared between several
+> devices and maintains clock "on/off" by reference count.
+> 
 
-I'd call it mt8195_ovl_formats, to make it explicit that it's only for the OVL.
+The thing is if you use clk_prepare_enable then the clock framework check's if 
+the clock is already prepared, which could happen like you described in the 
+svs_resume (encount error) case in the commit message. The question is, can't we 
+just use clk_enable and clk_disable in resume/suspend and only prepare the clock 
+in the probe function?
 
-Regards,
+> We concern how to stop running svs_suspend() when svs clk is already disabled by
+> svs_resume(). Take an example as below, if we refers to __clk_is_enabled()
+> result for knowing svs clk status, it will return "true" all the time because
+> thermal clk is still on. This causes the problem mentioned in commit message.
+> 
+
+I would expect that the kernel takes care that we can't enter a resume path for 
+a device before the suspend path has finished. Honestly I don't really 
+understand the problem here. It seems something different then what you 
+described in the commit message.
+
+Please help me understand better.
+
+谢谢，再见
+
 Matthias
 
-> +	DRM_FORMAT_XRGB8888,
-> +	DRM_FORMAT_ARGB8888,
-> +	DRM_FORMAT_ARGB2101010,
-> +	DRM_FORMAT_BGRX8888,
-> +	DRM_FORMAT_BGRA8888,
-> +	DRM_FORMAT_BGRA1010102,
-> +	DRM_FORMAT_ABGR8888,
-> +	DRM_FORMAT_XBGR8888,
-> +	DRM_FORMAT_RGB888,
-> +	DRM_FORMAT_BGR888,
-> +	DRM_FORMAT_RGB565,
-> +	DRM_FORMAT_UYVY,
-> +	DRM_FORMAT_YUYV,
-> +};
-> +
->   struct mtk_disp_ovl_data {
->   	unsigned int addr;
->   	unsigned int gmc_bits;
-> @@ -616,8 +632,9 @@ static const struct mtk_disp_ovl_data mt8195_ovl_driver_data = {
->   	.fmt_rgb565_is_0 = true,
->   	.smi_id_en = true,
->   	.supports_afbc = true,
-> -	.formats = mt8173_formats,
-> -	.num_formats = ARRAY_SIZE(mt8173_formats),
-> +	.formats = mt8195_formats,
-> +	.num_formats = ARRAY_SIZE(mt8195_formats),
-> +	.supports_clrfmt_ext = true,
->   };
->   
->   static const struct of_device_id mtk_disp_ovl_driver_dt_match[] = {
+> static int svs_suspend(struct device *dev)
+> {
+> ...
+> 	if (!__clk_is_enabled(svsp->main_clk)) //always get `true`
+> 		return 0;
+> ...
+> }
+> 
+>>
+>> Regards,
+>> Matthias
+> 
+> ... [snip] ...
 
