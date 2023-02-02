@@ -4,62 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22890C05027
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 09:08:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09FA6C05027
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Feb 2023 09:14:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h3ricIK9Ozt94pFcRiVdJZEpZ95QGCCglgpOuhvtSec=; b=AFfLpdqRQLu6q2daUI08dZEINi
-	XtiaAea3gkWXAwe9GGFFQVoFNf2j2WJ8FtlpNkzW96cKf5PPIdXl5McdVsAu1w6WOXrCs2IyoBKzY
-	fKulPSpGd5mj8M3V/HKrHb7s/DnNQMDItPmsna6i84wRPkqJtCSTZl4yGvyNVe9+R5AkPNgV07Zsi
-	RZG/boDn9ez6bJFRrJ3ckGfmfb96ed4WaSs4XoVK3f09iw2RVWHf5e1YCEUeLPQTKDAy96WsGCsFq
-	RuDNYlZw1n1vgnkkwiaP+AzEZ0yGlw7eLi9yxpTPjAhT9iqObyx7sWol9TWzUGI+DSru0Aiom7lI+
-	umzvAR1w==;
+	bh=++air7jTgnc2rN2S7QJhr+Ceh3kYZNrop+C6giJD+ts=; b=mwsCj47QEhJvBP56ZoJjlIicnV
+	xPpHDoOJlKSw0ZG9DwKTBJtCZjPhbdKsYx3JTEJOYr9hCZnCe55fuK9yR2Qly1PJHxz+1p6RkqJIR
+	4VunVWMraIqhuOkRMejo3Rp7LMLBtQouSjS8+lHdVXg0phuNPvk+vuwc10rC1l10w0hT9QTz/VAO0
+	4RNNp0/vq1Qw9wJT/KZg1oSGQwya32wv+rMX+Bf7LatTeUqHy3wsTNGiEjdx7rwQrStufI02ufAwc
+	Ew7PtiMVa5xUM7puFPSxHoJoo4BvLmbJph4BqJAgeKKbjZCPxrH00g0Zsg1sp32u5JIF2XW8vbqM8
+	UqLGjfSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNVa4-00F6Sp-Ao; Thu, 02 Feb 2023 09:08:32 +0000
+	id 1pNVg8-00F7lt-T2; Thu, 02 Feb 2023 09:14:48 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNVZu-00F6Qo-0x; Thu, 02 Feb 2023 09:08:23 +0000
+	id 1pNVg5-00F7lI-TO
+	for linux-mediatek@lists.infradead.org; Thu, 02 Feb 2023 09:14:47 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 719246602EDA;
-	Thu,  2 Feb 2023 09:08:19 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9A1F66602EDA;
+	Thu,  2 Feb 2023 09:14:43 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1675328899;
-	bh=5IakbPPTAHlstWlMaParv0t58Oe6vt85g0wiRgRU03M=;
+	s=mail; t=1675329284;
+	bh=kJVMCUJpyDJwkWtgM+hXBLW2SmGxN8YP7dAvyuM/vFY=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=AhJLb6xZ/WrXG051Pd9hnZMFZididw3HEhWfNcyYmcyYlxZorcpLJ43/xX4lHOkHm
-	 T7an22q8EKxOvfoZaT7MzjEC3zZr25DQC5iiTGrr76VQ6TWTSUcrSI8UIJ41lFUSan
-	 87WsaiLeOOB0TOOBeIswrszW2PdYwP/UNQPE8qJI3xFMoBv/U8FYkfSPVA2fJrGlEW
-	 f2oNjJi9cIwRguMO7le/Y7krXBonv6PjymZWsVyRelhDZgHTiztw/2U7ySsoTarioO
-	 ojIUAPMIdNcjCMIZOsQoIgP+DRyZrZRXMyiar+6GKNyFavbySmPJv/j6R/+FLXz/Io
-	 IR8ovNuCfoRPA==
-Message-ID: <4db8fb55-a02b-d98e-65f4-1a095c43104f@collabora.com>
-Date: Thu, 2 Feb 2023 10:08:16 +0100
+	b=igEIQVhUKu6p+1rwaQMxBD5dfVZSA+M5+dFbUB9seJEIJVHngm4ZW0R5n6CmoskBx
+	 6l0A57/6OsGLVAVP92hBy64sP0OndboXMpy6Bk4GkH69rTh3YOb9lCA1bd227XA/vx
+	 TXhNSGL/O5L7YO9sIrSUI4JmjN3ijhJHXe16AOJb/8uktexyHlsLVOvQ8L21RubloB
+	 TafxIXdNI673qvgUllCHWEU5J9d1UJXjkeXgjrU9+MP6qUfE2jXAR6TzWqB43DvQu4
+	 M3tSWTXjDlszi+AjzZjzt5IDnN05d5lgMXQ0FV9WKPvx6uJWKp1CMk9rJ2YDAGe8BF
+	 71E6bYGMCy8qg==
+Message-ID: <e2e02a7b-0e0c-e0f8-df49-ae2ea27c4440@collabora.com>
+Date: Thu, 2 Feb 2023 10:14:40 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH] MAINTAINERS: Update entry for MediaTek SoC support
-To: matthias.bgg@kernel.org, arm@kernel.org, soc@kernel.org, arnd@arndb.de,
- olof@lixom.net
-Cc: matthias.bgg@gmail.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230201152256.19514-1-matthias.bgg@kernel.org>
+Subject: Re: [PATCH v2] drm/mediatek: dp: Only trigger DRM HPD events if
+ bridge is attached
 Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Guillaume Ranquet <granquet@baylibre.com>
+References: <20230202045734.2773503-1-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230201152256.19514-1-matthias.bgg@kernel.org>
+In-Reply-To: <20230202045734.2773503-1-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230202_010822_224920_66311292 
-X-CRM114-Status: UNSURE (   8.86  )
+X-CRM114-CacheID: sfid-20230202_011446_102668_6C14CF52 
+X-CRM114-Status: UNSURE (   9.90  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,27 +78,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 01/02/23 16:22, matthias.bgg@kernel.org ha scritto:
-> From: Matthias Brugger <matthias.bgg@gmail.com>
+Il 02/02/23 05:57, Chen-Yu Tsai ha scritto:
+> The MediaTek DisplayPort interface bridge driver starts its interrupts
+> as soon as its probed. However when the interrupts trigger the bridge
+> might not have been attached to a DRM device. As drm_helper_hpd_irq_event()
+> does not check whether the passed in drm_device is valid or not, a NULL
+> pointer passed in results in a kernel NULL pointer dereference in it.
 > 
-> The linux-mediatek IRC channel has moved to liber.chat for quite some
-> time. Apart from that, not all patches are also send to LKML, so add
-> this ML explicitly.
+> Check whether the bridge is attached and only trigger an HPD event if
+> it is.
 > 
-> And last but not least:
-> Angelo does a wunderfull job in reviewing patches for all kind of
-> devices from MediaTek.
-> 
-> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-Is a R-b tag appropriate here to say "yes, go on with setting me as a reviewer"?
+> Fixes: f70ac097a2cf ("drm/mediatek: Add MT8195 Embedded DisplayPort driver")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Reviewed-by: Guillaume Ranquet <granquet@baylibre.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-P.S.: Thank you :-)
-
-Cheers,
-Angelo
 
 
