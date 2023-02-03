@@ -4,72 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60AB7C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Feb 2023 15:26:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F03FC05027
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Feb 2023 15:36:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u7jwLMXldmeJxhCcGr/15aDobf0TWv+r93C3ZJojfIk=; b=AQbnNVpUuFIDBO7HI223Q2fvwu
-	sAowT1JPv04Aa6lyA3oPdDMpvwMfppWD8Mab/EPco5gc+kZNldTXi2GzMY4N3ZFYf/azJe2TjADQ9
-	K+ST0OAzvyWo0/MRvntHnFBqDG9Am6MvTDS8xzFSYQys5/5mC4iOR7f8vJWJPjzktkecT6YxJVZiM
-	okW57m+iemMOZiHDnHNMUALcreqphUjLhb3ce7G/RA+rXJJmTW1y03Uz9icnoIHInPQGg/S+gCGne
-	WUqzdn0kpITtTDNy/UVeXIwslInxdCtLdyPafeSkFInJJ4DZ8wxZ/sD0t0iWEBILRJTkrFK54J0ng
-	NTiqZp5g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=huZq6Sjx4tNxiX7PW6tLz9SEUE4qxbxsk/5/KVFVrUE=; b=igGY7w1RVQNLzs
+	696reSETI8dtBlK9FUokRmECxfGTdxmJ24BU8ChMkMEp0fitsaQMOakPR8pg2Uo6rbZbHQ72dWmcb
+	v9eW7F3pipYVFXTgN2YsrdA1td9ixUhJ6assAinbWgWpVw5t2GNSSRifkQzEHrNPqRwevp+Pb5y3M
+	phPF6mbC8V05DZRE2D2UI1WER1kG7ZPpTuvXmnEUZxyfVRQkia8Np7tQCDO2ytHu8LzWPwMtWveau
+	yxn1AMkjTLWmCAormdqmNQjDuvF0DERnrTFuC0xWi+YUoGRgZVgvq6l43BkaMrX+9yZus4S15NhN8
+	yX0beKysgrFoSc3QCivg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNxx1-002iTT-FB; Fri, 03 Feb 2023 15:26:07 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1pNy74-002mpB-JO; Fri, 03 Feb 2023 15:36:30 +0000
+Received: from mout.gmx.net ([212.227.15.18])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNxsz-002fzb-R9; Fri, 03 Feb 2023 15:21:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=u7jwLMXldmeJxhCcGr/15aDobf0TWv+r93C3ZJojfIk=; b=3pb3nUWrNv8EtAjlU3Jf2bufFz
-	wpolZXfSNmIA+jXRDuE07Cza6yeXZB0ys4qHd43GYco99oA6Ipt7PE2lJ8GnT5M4E1RYinv1+/AGE
-	FcU/UPOrwdC+sfK0C7yyQenTc1QxZ4yrFboXQhQN/hTFhZ1Unmg9PjQJ+3C7QzjGEDMY=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1pNxsp-0041JE-Vy; Fri, 03 Feb 2023 16:21:47 +0100
-Date: Fri, 3 Feb 2023 16:21:47 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Russell King <linux@armlinux.org.uk>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Jianhui Zhao <zhaojh329@gmail.com>,
-	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
-Subject: Re: [PATCH 7/9] net: pcs: add driver for MediaTek SGMII PCS
-Message-ID: <Y90mi1dTmMkXdkPX@lunn.ch>
-References: <cover.1675407169.git.daniel@makrotopia.org>
- <30f3ff512a2082ba4cf58bf6098f2ed776051976.1675407169.git.daniel@makrotopia.org>
- <Y90Wxb8iuCRo06yr@lunn.ch>
- <20230203150014.ugkasp4rq5arqs6s@skbuf>
+	id 1pNy70-002mmm-Dt; Fri, 03 Feb 2023 15:36:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1675438571;
+	bh=P9k19nklnfp8zjyr98WNbqWJ3pcfo/IFbSsgLrUsy0k=;
+	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
+	 References;
+	b=T6h+QaHdfOlZU59CWJmZFrYc/pPROYjzeEQGH3qQYBFuEoVY/ngJkBaE18nek+RXE
+	 km1dHXLzOS6M9uRcPhF+IKIrn0mi6pFDNW2ZQKk9naknHdGZyYaABfRdsc07bNGM+O
+	 b5FI4a+ij1HKdqrIDJN7Euf04jY8fP8Vu/psEEdBoMdjoTkH0v9HtJS+VJ6o/5d00w
+	 2xIW3jv/2ojoMg0JUI61qgcDfXmGxPu2dJRv5A/14SduMQQ5A6+cNVFgGmGdCRaVVv
+	 sfOIlGQC32vcPcsCu7YO1W9bkHrXT2/ZCjCJFDmBnwfKjxjaJEubQ/O7RfGwhEoFQz
+	 L6JPNCpF2NO6g==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [127.0.0.1] ([80.245.79.254]) by mail.gmx.net (mrgmx004
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1M5fIW-1pHvhR0GK2-007Er5; Fri, 03
+ Feb 2023 16:36:11 +0100
+Date: Fri, 03 Feb 2023 16:36:09 +0100
+From: Frank Wunderlich <frank-w@public-files.de>
+To: arinc9.unal@gmail.com, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+CC: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ erkin.bozoglu@xeront.com, Sean Wang <sean.wang@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>
+Subject: Re: [PATCH v2 4/5] arm: dts: mt7623: mux phy0 on Bananapi BPI-R2
+User-Agent: K-9 Mail for Android
+In-Reply-To: <20230201185656.17164-5-arinc.unal@arinc9.com>
+References: <20230201185656.17164-1-arinc.unal@arinc9.com> <20230201185656.17164-5-arinc.unal@arinc9.com>
+Message-ID: <AC473057-266B-4403-9270-8007E0EC257C@public-files.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230203150014.ugkasp4rq5arqs6s@skbuf>
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:Fq66cXMQ7PDgT5kGmMVa//WAyfmtO+lqAVvGSRCIkiotxM+5zae
+ hpCM7/ymJTzxKiIsmZ6UpbzfhYiXdfLtEdDtKgf8FmprazS7xUlB0ORoHEy+s03zkrWMg49
+ 1oyG9cbnZ6tnVwWKSCh7rRQrOL/DDf1xem5g/86ZdiwtxAYzu0vzfO5YA+4NOPYLXIWnixt
+ AWKrr7bLrNMzZPbjoaPdA==
+UI-OutboundReport: notjunk:1;M01:P0:OaLRXKJrZrY=;m3lYOpzBzjojWR5/McbyO4NliuO
+ dhiQB6ATa4YIR3JTXFewyWafUnlOQiKIj2kNswENbzcshkDKsXHa6aD/9OT+hIgRrojAHUTXf
+ YoZkfV04uYiK7r9xWPq9Agc+Nv5yLbq6xw2uKENExfi23fgsm+nVUwDbyiX8cuBM3j/E9Slls
+ B88+YamCV/kz/+6ac+8Ti/Wg5ORaBRsrWp+7YR8bv6h2c/JlEgOZsgaPqt8qAei+h0Fb6LA5B
+ xueYNgIDSQFXT190ALitKA1qhi6hY9JF6CQmhIpt78kHNQWXvGt1pesA33mn+MqHxb4NKmfix
+ fEx+OJzicpd33qnFny2ME9GNvbM03NuBF/jNREVsgXiu8JrVrTKVU/x+pI8jeXoeEpOyWmlgA
+ 15M5TVFh7YUyHQZjjSxmm8JekrbfPFaYgi7TC+nEHHGJ05OFgK5ryIWhV3TQCHEdfOP2jQFGZ
+ 02Ol/9+36vZvfl7jHzManClEeN649f1wKji1HAOu9hajTCGtX2d1luUSipoevRFrif81S/srB
+ SEsvD1fJxvCcTCYCRBipCzExbD1K1eTdH5iujGs9aIj86g2eGGrrj3jbP1gonO29h57HAMi1T
+ P59e0g4J87y4enBerz7snXXgN46HCEWQTzgxoj6AswddqORuutUyzj2crN8E5MuBtoSXW3ahr
+ 75k3rZty7T9zpiPyIQOuqLYGqLHuebsNCNWLO8n/n5v25wY/q4RvDxr2yd6vHaDPjfZanZAQG
+ T2hqT3LXCPJ6QwBDNGaIQaRbyqLwsUtn6SYQEWVuJhgDTh8wN+nWs8wzsTE+6rbBG8zdECSQZ
+ OINg5bFPOJgs90g641uqpRQ8nx1h3TPgEiPEieHR2KCfZmATBEx5/Al85Xsa1Ow2JFJLzRPYg
+ 89T4V7YvtMn4axskqaQsKqLinIBqNubiovPCNt5pVKZcbryiAkLY7ia1ABr25CKlkLCIaLYuv
+ kX90uF0ipN6FMh9GqDzAYbS2Ljw=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230203_072157_901743_D4A7B2F4 
-X-CRM114-Status: GOOD (  15.16  )
+X-CRM114-CacheID: sfid-20230203_073626_870994_C7C490D3 
+X-CRM114-Status: GOOD (  12.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,33 +91,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 03, 2023 at 05:00:14PM +0200, Vladimir Oltean wrote:
-> On Fri, Feb 03, 2023 at 03:14:29PM +0100, Andrew Lunn wrote:
-> > > index 6e7e6c346a3e..cf65646656e9 100644
-> > > --- a/drivers/net/pcs/Kconfig
-> > > +++ b/drivers/net/pcs/Kconfig
-> > > @@ -18,6 +18,12 @@ config PCS_LYNX
-> > >  	  This module provides helpers to phylink for managing the Lynx PCS
-> > >  	  which is part of the Layerscape and QorIQ Ethernet SERDES.
-> > >  
-> > > +config PCS_MTK
-> > > +	tristate
-> > > +	help
-> > > +	  This module provides helpers to phylink for managing the LynxI PCS
-> > > +	  which is part of MediaTek's SoC and Ethernet switch ICs.
-> > 
-> > You should probably have a more specific name, for when MTK produces a
-> > new PCS which is completely different.
-> > 
-> > Also, how similar is this LynxI PCS to the Lynx PCS?
-> 
-> Probably not very similar. Here's the Mediatek 32-bit memory map,
-> translated by me to a 16-bit MDIO memory map:
+Am 1=2E Februar 2023 19:56:55 MEZ schrieb arinc9=2Eunal@gmail=2Ecom:
+>From: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc=2Eunal@arinc9=2Ecom>
+>
+>Mux the MT7530 switch's phy0 to gmac5 which is wired to the SoC's gmac1=
+=2E
+>This achieves 2 Gbps total bandwidth to the CPU using the second RGMII=2E
+>
+>With this, the interface name to access phy0 changes from wan to eth1=2E
+>
+>Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc=2Eunal@arinc9=2Ecom>
+>---
+> arch/arm/boot/dts/mt7623n-bananapi-bpi-r2=2Edts | 15 ++++++++++-----
+> 1 file changed, 10 insertions(+), 5 deletions(-)
+>
+>diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2=2Edts b/arch/arm/b=
+oot/dts/mt7623n-bananapi-bpi-r2=2Edts
+>index dc9b4f99eb8b=2E=2E64700253fd35 100644
+>--- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2=2Edts
+>+++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2=2Edts
+>@@ -182,6 +182,12 @@ fixed-link {
+> 	};
+> };
+>=20
+>+&gmac1 {
+>+	status =3D "okay";
+>+	phy-mode =3D "rgmii";
+>+	phy-handle =3D <&ethphy0>;
+>+};
+>+
+> &eth {
+> 	status =3D "okay";
+>=20
+>@@ -189,6 +195,10 @@ mdio-bus {
+> 		#address-cells =3D <1>;
+> 		#size-cells =3D <0>;
+>=20
+>+		ethphy0: ethernet-phy@0 {
+>+			reg =3D <0>;
+>+		};
+>+
+> 		switch@1f {
+> 			compatible =3D "mediatek,mt7530";
+> 			reg =3D <0x1f>;
+>@@ -200,11 +210,6 @@ ports {
+> 				#address-cells =3D <1>;
+> 				#size-cells =3D <0>;
+>=20
+>-				port@0 {
+>-					reg =3D <0>;
+>-					label =3D "wan";
+>-				};
+>-
+> 				port@1 {
+> 					reg =3D <1>;
+> 					label =3D "lan0";
 
-Thanks. Given the similarities in the name, i had to ask...
+Hi
 
-	Andrew
+I still see Problem with "renaming" the wan from users PoV=2E I got anothe=
+r way of using second gmac for wan some time ago using vlan-aware bridge (h=
+ave not tested with recent kernel versions)=2E
+
+Maybe this works for you too? If yes imho it will be a better way=2E
+
+https://github=2Ecom/frank-w/BPI-Router-Linux/commit/c92b648bac996b34dc75a=
+4fff15d7fb429bfe74b
+
+Have same for r64/mt7622 in my tree=2E=2E=2E
+
+It should use eth1 for wan-traffic too but is full userspace configuration=
+ without breaking userspace for users not wanting it=2E
+regards Frank
 
