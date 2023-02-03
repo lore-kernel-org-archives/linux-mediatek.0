@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D7F5C636CC
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Feb 2023 07:03:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F65BC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Feb 2023 07:04:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=77VPgCFuAAvnZ264+oejcofUyxGiSibbrJWbkMkqA5Y=; b=j1ij6YIomrSQ5Ovgp4vmTfJFz6
-	vBsWsDePzWq4aZytqKbAqsX1W3bwx21X26XF81lLSoFtacsTyLxiJ5fYMrKaEoE7MRbR9e/5kvAJi
-	CdFCnZB03vngSKUF4o1ZyQDbKc0h9VlpToeafhhkuL+EadpEEs/4quSVYrG1KNl3saqZWZiutCmsV
-	x84MDvVsHbfQOVJly2X88zy/GqCT5VrT+nizfzcfFmzNsxHBaAIMZiR4BrRPqEnNNyXS/tf/TcNKf
-	3VjgOWHBgGtzpWbMm/QMbF35ENTasKtHvNtGdA1vO2ouVSAuiBmvrxlnWX6IVVUyw/lNjdLQAtr69
-	/EQlCl4g==;
+	bh=Jlf4hobLyHbU0/3M0ScrKJ/4XN3z6Nk+WdjQzYU/2bI=; b=tIyzVAQZqDszdaPJ3qAWGwhzx4
+	Uz2imOFU9CTp98CooqHTqmPhyiF7CfYcU1lSJ8Ihhc7X+t4K1bnOdWtMQxuusp+GCzFCj9Dt7vVK9
+	c5F7S9ogUqEPmdIXNiy3rORhuCohvCKQLRQmIkln79BDA8IPVDA98tP/FUcNOF0EepApSZ7EyWoTF
+	MjgRi0bmsPdJDy8w9wx1bjDEWGvRKgRjOBOh27HR4c+jOp5DjxeB5fywRNruvugcwyYeKxipz1R+Y
+	FtvjKSpHzYn+5YXbZGmG//766GlikcK3U1DqxWoUX6kCP7cKL5mtbnXpKif7wXqP95YiFQCVbUA3k
+	nWDVbqQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNq6y-000fp4-Fj; Fri, 03 Feb 2023 07:03:52 +0000
+	id 1pNq7J-000g1O-L1; Fri, 03 Feb 2023 07:04:13 +0000
 Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNq6q-000fki-Le; Fri, 03 Feb 2023 07:03:49 +0000
+	id 1pNq7G-000fys-6j; Fri, 03 Feb 2023 07:04:11 +0000
 Received: from local
 	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1pNq6o-0000qD-0K;
-	Fri, 03 Feb 2023 08:03:42 +0100
-Date: Fri, 3 Feb 2023 07:02:01 +0000
+	id 1pNq7E-0000rX-35;
+	Fri, 03 Feb 2023 08:04:09 +0100
+Date: Fri, 3 Feb 2023 07:02:28 +0000
 From: Daniel Golle <daniel@makrotopia.org>
 To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
@@ -52,16 +52,16 @@ To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	Andrew Lunn <andrew@lunn.ch>
 Cc: Jianhui Zhao <zhaojh329@gmail.com>,
 	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
-Subject: [PATCH 4/9] net: ethernet: mtk_eth_soc: only write values if needed
-Message-ID: <f38c1b3bf555f505e0856bf76c0d65c9e1d15c53.1675407169.git.daniel@makrotopia.org>
+Subject: [PATCH 5/9] net: ethernet: mtk_eth_soc: fix RX data corruption issue
+Message-ID: <96c628df0991104d255e6d4696988686387bc2ef.1675407169.git.daniel@makrotopia.org>
 References: <cover.1675407169.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1675407169.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230202_230344_741608_E94FE800 
-X-CRM114-Status: GOOD (  13.62  )
+X-CRM114-CacheID: sfid-20230202_230410_279110_11FC7BCB 
+X-CRM114-Status: GOOD (  12.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,90 +76,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Only restart auto-negotiation and write link timer if actually
-necessary.
+Also set bit 12 when setting up MAC MCR, as MediaTek SDK did the same
+change stating:
+"If without this patch, kernel might receive invalid packets that are
+corrupted by GMAC."[1]
 
+[1]: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/d8a2975939a12686c4a95c40db21efdc3f821f63
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/net/ethernet/mediatek/mtk_sgmii.c | 24 +++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 +-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii.c b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-index f3cf66a23e72..58b5f2f70a66 100644
---- a/drivers/net/ethernet/mediatek/mtk_sgmii.c
-+++ b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-@@ -41,17 +41,13 @@ static int mtk_pcs_config(struct phylink_pcs *pcs, unsigned int mode,
- 	struct mtk_pcs *mpcs = pcs_to_mtk_pcs(pcs);
- 	unsigned int rgc3, sgm_mode, bmcr;
- 	int advertise, link_timer;
--	bool changed, use_an;
-+	bool mode_changed = false, changed, use_an;
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 9050423821dc..f09cd6a132c9 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -615,7 +615,7 @@ static int mtk_mac_finish(struct phylink_config *config, unsigned int mode,
+ 	/* Setup gmac */
+ 	mcr_cur = mtk_r32(mac->hw, MTK_MAC_MCR(mac->id));
+ 	mcr_new = mcr_cur;
+-	mcr_new |= MAC_MCR_IPG_CFG | MAC_MCR_FORCE_MODE |
++	mcr_new |= MAC_MCR_IPG_CFG | MAC_MCR_BIT_12 | MAC_MCR_FORCE_MODE |
+ 		   MAC_MCR_BACKOFF_EN | MAC_MCR_BACKPR_EN | MAC_MCR_FORCE_LINK;
  
- 	advertise = phylink_mii_c22_pcs_encode_advertisement(interface,
- 							     advertising);
- 	if (advertise < 0)
- 		return advertise;
- 
--	link_timer = phylink_get_link_timer_ns(interface);
--	if (link_timer < 0)
--		return link_timer;
--
- 	/* Clearing IF_MODE_BIT0 switches the PCS to BASE-X mode, and
- 	 * we assume that fixes it's speed at bitrate = line rate (in
- 	 * other words, 1000Mbps or 2500Mbps).
-@@ -77,8 +73,7 @@ static int mtk_pcs_config(struct phylink_pcs *pcs, unsigned int mode,
- 	}
- 
- 	if (use_an) {
--		/* FIXME: Do we need to set AN_RESTART here? */
--		bmcr = SGMII_AN_RESTART | SGMII_AN_ENABLE;
-+		bmcr = SGMII_AN_ENABLE;
- 	} else {
- 		bmcr = 0;
- 	}
-@@ -106,16 +101,21 @@ static int mtk_pcs_config(struct phylink_pcs *pcs, unsigned int mode,
- 		regmap_update_bits(mpcs->regmap, mpcs->ana_rgc3,
- 				   RG_PHY_SPEED_3_125G, rgc3);
- 
-+		/* Setup the link timer and QPHY power up inside SGMIISYS */
-+		link_timer = phylink_get_link_timer_ns(interface);
-+		if (link_timer < 0)
-+			return link_timer;
-+
-+		regmap_write(mpcs->regmap, SGMSYS_PCS_LINK_TIMER, link_timer / 2 / 8);
-+
- 		mpcs->interface = interface;
-+		mode_changed = true;
- 	}
- 
- 	/* Update the advertisement, noting whether it has changed */
- 	regmap_update_bits_check(mpcs->regmap, SGMSYS_PCS_ADVERTISE,
- 				 SGMII_ADVERTISE, advertise, &changed);
- 
--	/* Setup the link timer and QPHY power up inside SGMIISYS */
--	regmap_write(mpcs->regmap, SGMSYS_PCS_LINK_TIMER, link_timer / 2 / 8);
--
- 	/* Update the sgmsys mode register */
- 	regmap_update_bits(mpcs->regmap, SGMSYS_SGMII_MODE,
- 			   SGMII_REMOTE_FAULT_DIS | SGMII_SPEED_DUPLEX_AN |
-@@ -123,7 +123,7 @@ static int mtk_pcs_config(struct phylink_pcs *pcs, unsigned int mode,
- 
- 	/* Update the BMCR */
- 	regmap_update_bits(mpcs->regmap, SGMSYS_PCS_CONTROL_1,
--			   SGMII_AN_RESTART | SGMII_AN_ENABLE, bmcr);
-+			   SGMII_AN_ENABLE, bmcr);
- 
- 	/* Release PHYA power down state
- 	 * Only removing bit SGMII_PHYA_PWD isn't enough.
-@@ -137,7 +137,7 @@ static int mtk_pcs_config(struct phylink_pcs *pcs, unsigned int mode,
- 	usleep_range(50, 100);
- 	regmap_write(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL, 0);
- 
--	return changed;
-+	return changed || mode_changed;
- }
- 
- static void mtk_pcs_restart_an(struct phylink_pcs *pcs)
+ 	/* Only update control register when needed! */
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index d39717582a85..20d8ea20f164 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -402,6 +402,7 @@
+ #define MAC_MCR_FORCE_MODE	BIT(15)
+ #define MAC_MCR_TX_EN		BIT(14)
+ #define MAC_MCR_RX_EN		BIT(13)
++#define MAC_MCR_BIT_12		BIT(12)
+ #define MAC_MCR_BACKOFF_EN	BIT(9)
+ #define MAC_MCR_BACKPR_EN	BIT(8)
+ #define MAC_MCR_FORCE_RX_FC	BIT(5)
 -- 
 2.39.1
 
