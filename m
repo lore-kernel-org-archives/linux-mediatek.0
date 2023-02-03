@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 560ECC05027
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Feb 2023 22:35:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36BB7C636CC
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Feb 2023 22:35:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gZSj7NkMSla+GkyCGF3UqN19IfprqFMOCBTdRtc6Qng=; b=X2AebwLtaYLCBtq8vX+zsCrfTA
-	kFMqQLaAIKByHMaAvlU2ULlXPloB04UdVlbq82eJQM45zHRCPlzrm1epCvfowZPKyyDDae3SJoO1k
-	qVUjqUMFMB4hcOlzBi8MUwSjjYS+R+TuynyxaAP30Y6FZb8p57ekSjgM2IJZCjt8WoX7FJtXLInyg
-	AdaRINy08sKAmY/PT/HrbkVWEH27kHrkblFxg6iNiqOHWm+b1RvkHgxhhqr/aoGz5VMRbKmrG+ugO
-	2LAwM3w5oLzRTtcuO7l9XKCxxkUoikWpKCKcPJKCZq9l4QzuQ1s65p0/6KS/49+CHLcKYmGzK1Bzj
-	9KIHMr7g==;
+	bh=jurn9Xl39+lOyl7ynfR7764vZm+bPZub6GwDaU1WTio=; b=zRy8tMpilaldMCwz5x4lcxgAbk
+	mEgQpTCCQDL5sKqDMgdb9JnR36HsBW833xlfhc0BaHago/OFKO0m/O7bdHwmMUfsgwhIWyLyTlzSr
+	zM6Mk5ISqKgZUnr/sSgOICDLs71TlYfO9E8bpQbBBuG3TG63P/zucVZhJZITbN3FdU6L+ZF4z/7BV
+	s1cBgVXd8hBWF2+shPX8JR8V4B3MkX+a7nrCGz7qZmJWRH8XRxYguWDPao6VaWQrd93zxVxE92nQ/
+	KX1AAeNtxYEaQ+zj5CdxaAZCyBQELEZmtTAepn2W+RLj1ZtUTIbLdn9ncMf2aP2Y5abRWxOrcLwwv
+	fNJOKmOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pO4dz-003u2P-1i; Fri, 03 Feb 2023 22:34:55 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1pO4eX-003uIB-Ed; Fri, 03 Feb 2023 22:35:29 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pO4Ow-003okl-QY; Fri, 03 Feb 2023 22:19:24 +0000
-Received: by mail-wm1-x335.google.com with SMTP id n28-20020a05600c3b9c00b003ddca7a2bcbso4915511wms.3;
-        Fri, 03 Feb 2023 14:19:20 -0800 (PST)
+	id 1pO4WQ-003rD9-2i; Fri, 03 Feb 2023 22:27:07 +0000
+Received: by mail-wm1-x332.google.com with SMTP id q10-20020a1cf30a000000b003db0edfdb74so6219306wmq.1;
+        Fri, 03 Feb 2023 14:27:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=gZSj7NkMSla+GkyCGF3UqN19IfprqFMOCBTdRtc6Qng=;
-        b=fGo45Gg3GJfhVsnqXzTT5/hvGSWrGt74oj+smXLIngwC5m5OMcubaqXfnMtWQQl6Cb
-         B/XphNjWWIQ08bz9/Y2EuF9carLUvovnUdZHW8JN2gbfqohcz1fu+EECxDZfZzMXw0/I
-         5cM1UwJXH19bzovsSP2P0/AaBp0YnyOwp4Brhwr/VNIbLWhCjWH55Hbjs6CHgmSL1Anv
-         E5Js7/GotJJ/sIiaERCcPb4x/maWgsNjqqTxoO/KkPixhU0lH0ywSQQs1JQZhn2JlIAA
-         MN05tNo30BFNog/4F3V4V1IzDugRVsJVVsYe/xsrE8KFWgT1H//l+Jd6HOhhx+tPp2wl
-         tr7w==
+        bh=jurn9Xl39+lOyl7ynfR7764vZm+bPZub6GwDaU1WTio=;
+        b=iYjzenTqutnchFRPKwX069Lo8OCMSAnSdKZhm8TuPGub/Mba05GXm13GEKbRQgP+/D
+         gZQxqDAgqnPxtgms2QnozyCRD0AgKFsW6Eeu0TPie6OTGD29BNa6rrb8rLxMFPnlEh3Y
+         YaDk37QDaMw+TP4pM+Zx4pnANzFBahhNxXLTb4uxnwk3npOuCmzczbkLMCtWiLEKbqV0
+         /qxbig3R9W3uWHethRwpNlDzpznirjDBeXR12KKYu1o9GJWhHzODazGUZzA4Z/hoeV4E
+         UcMHRz4axOnpAu4AJ583f5G9JXE0uOVCiqkvnMU8lT9ME5ww6hnjiDwlXZWUdnFX9CSd
+         nEJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=gZSj7NkMSla+GkyCGF3UqN19IfprqFMOCBTdRtc6Qng=;
-        b=zug5ra57DhhuyIyvgeRHU6dbdIEtY7h2v5gN9NewwMahHh62IR5yGux9Hpz1ALOYCF
-         5xUQbsSn/IkMMmkKPKzysRxGwP9xfWheDCXkuDplsoHFl4mZ6H2vmalUSqFyYGtLhwPY
-         oEZEfe/Oz74+g1ATBeWnzJkja3FBprmT+obZG5ooJnnu0jLutHNllO9FSCOv9z6izO13
-         2Ad9Yi3u/OFFJnyCWOSa11YV4rlqFxQwpIuUEKxmZCLFl5361xubgmSMcKuFFPLnTOfS
-         oHkcGs/F/Il7KZ7pHPCpUc+65C+fWzk+MY1ESihj7fpj3KZb0uyvelS7GNyP9JmmJTyH
-         u0qw==
-X-Gm-Message-State: AO0yUKX9m0jmxVq2ZCP/+53fV6LRfeWRNitJYVoasx0ojtonsSdXcshh
-	74P+bioQCOK/NS7dyxOa7Dc=
-X-Google-Smtp-Source: AK7set8BQK81yNRXXBNQtdT+Ovom+nfIfvLxSS3qd30v6e2UwtfU8OZSjopvJ1LJUnNGgo+ogaqN1Q==
-X-Received: by 2002:a05:600c:3795:b0:3c6:e61e:ae71 with SMTP id o21-20020a05600c379500b003c6e61eae71mr12233725wmr.1.1675462758859;
-        Fri, 03 Feb 2023 14:19:18 -0800 (PST)
+        bh=jurn9Xl39+lOyl7ynfR7764vZm+bPZub6GwDaU1WTio=;
+        b=UlsJYeUjH7ESdWmiQrTeQHIMIxgHftHdDH6kZakBCuarxNlL7sMirgXcgwrg2dkptH
+         77k0t9btg1MzakAZ7MOZhTn3gz4Q0QvrHZm3wZaOYzNhAugMHdTbGVIJ68d+gOuY9EE2
+         JkKJoO6x+hysWGiTXAP2c/yJ9p30xmpntT6BPTjdjD+zktQxqkAffxUAkAmD07t8QZii
+         R8pxluygdw+V98lglruxfMnX9DaRYUEesnM08h+wYi8PzkjoXWkqPc8oWFgAzofuYejD
+         Puie3oq0FbY85pS0b46pv5QxssaN7ZecwM2TgpkkDtZM/lWXpp6uzrpqRbAzwX8Huu67
+         rRtg==
+X-Gm-Message-State: AO0yUKUdZ221KJOvXnD2yt5W7GV7Z4k/0zXprs8DzngXnPB8wH4jl7mv
+	sNcQpucuHr6FgAgpfafzPIg=
+X-Google-Smtp-Source: AK7set/ZNS0u1GzxheAwHXQZQ/S4Daj7aBkBSdtH4UG7XIyINkTzXTlsjMBri8WQnjjawyjOJz8GYg==
+X-Received: by 2002:a05:600c:1f10:b0:3db:742:cfe9 with SMTP id bd16-20020a05600c1f1000b003db0742cfe9mr11765807wmb.34.1675463219130;
+        Fri, 03 Feb 2023 14:26:59 -0800 (PST)
 Received: from skbuf ([188.26.57.116])
-        by smtp.gmail.com with ESMTPSA id t10-20020a5d690a000000b002bbedd60a9asm2935905wru.77.2023.02.03.14.19.17
+        by smtp.gmail.com with ESMTPSA id o2-20020a05600002c200b002bde537721dsm3017536wry.20.2023.02.03.14.26.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Feb 2023 14:19:18 -0800 (PST)
-Date: Sat, 4 Feb 2023 00:19:15 +0200
+        Fri, 03 Feb 2023 14:26:58 -0800 (PST)
+Date: Sat, 4 Feb 2023 00:26:55 +0200
 From: Vladimir Oltean <olteanv@gmail.com>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	Russell King <linux@armlinux.org.uk>,
 	Heiner Kallweit <hkallweit1@gmail.com>,
@@ -77,22 +78,24 @@ Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	Eric Dumazet <edumazet@google.com>,
 	"David S. Miller" <davem@davemloft.net>,
 	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
+	Jianhui Zhao <zhaojh329@gmail.com>,
 	=?utf-8?B?QmrDuHJu?= Mork <bjorn@mork.no>
-Subject: Re: [PATCH 9/9] net: dsa: mt7530: use external PCS driver
-Message-ID: <20230203221915.tvg4rrjv5cnkshuf@skbuf>
+Subject: Re: [PATCH 2/9] net: ethernet: mtk_eth_soc: set MDIO bus clock
+ frequency
+Message-ID: <20230203222655.gjfasxbw2je3r5pz@skbuf>
 References: <cover.1675407169.git.daniel@makrotopia.org>
  <cover.1675407169.git.daniel@makrotopia.org>
- <677a5e37aab97a4f992d35c41329733c5f3082fb.1675407169.git.daniel@makrotopia.org>
- <677a5e37aab97a4f992d35c41329733c5f3082fb.1675407169.git.daniel@makrotopia.org>
+ <a613b66b4872b5f3f09544138d03d5326a8f6f8b.1675407169.git.daniel@makrotopia.org>
+ <a613b66b4872b5f3f09544138d03d5326a8f6f8b.1675407169.git.daniel@makrotopia.org>
+ <20230203214844.jqvhcdyuvrjf5dxg@skbuf>
+ <Y92Hc++jn6M6AIBQ@lunn.ch>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <677a5e37aab97a4f992d35c41329733c5f3082fb.1675407169.git.daniel@makrotopia.org>
- <677a5e37aab97a4f992d35c41329733c5f3082fb.1675407169.git.daniel@makrotopia.org>
+In-Reply-To: <Y92Hc++jn6M6AIBQ@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230203_141922_921373_3E242C53 
-X-CRM114-Status: GOOD (  21.87  )
+X-CRM114-CacheID: sfid-20230203_142706_194412_A44E1383 
+X-CRM114-Status: GOOD (  11.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,111 +110,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 03, 2023 at 07:06:53AM +0000, Daniel Golle wrote:
-> @@ -2728,11 +2612,14 @@ mt753x_phylink_mac_select_pcs(struct dsa_switch *ds, int port,
->  
->  	switch (interface) {
->  	case PHY_INTERFACE_MODE_TRGMII:
-> +		return &priv->pcs[port].pcs;
->  	case PHY_INTERFACE_MODE_SGMII:
->  	case PHY_INTERFACE_MODE_1000BASEX:
->  	case PHY_INTERFACE_MODE_2500BASEX:
-> -		return &priv->pcs[port].pcs;
-> +		if (!mt753x_is_mac_port(port))
-> +			return ERR_PTR(-EINVAL);
+On Fri, Feb 03, 2023 at 11:15:15PM +0100, Andrew Lunn wrote:
+> > Checking for valid range? There should also probably be a dt-bindings
+> > patch for this.
+> 
+> This is a common mdio property in mdio.yaml. So there should not be
+> any need for a driver specific dt-binding.
 
-What is the reason for returning ERR_PTR(-EINVAL) to mac_select_pcs()?
-
->  
-> +		return priv->sgmii_pcs[port - 5];
-
-How about putting the pcs pointer in struct mt7530_port?
-
->  	default:
->  		return NULL;
->  	}
-> @@ -3088,8 +2934,6 @@ mt753x_setup(struct dsa_switch *ds)
->  		priv->pcs[i].pcs.ops = priv->info->pcs_ops;
->  		priv->pcs[i].priv = priv;
->  		priv->pcs[i].port = i;
-> -		if (mt753x_is_mac_port(i))
-> -			priv->pcs[i].pcs.poll = 1;
->  	}
->  
->  	ret = priv->info->sw_setup(ds);
-> @@ -3104,6 +2948,15 @@ mt753x_setup(struct dsa_switch *ds)
->  	if (ret && priv->irq)
->  		mt7530_free_irq_common(priv);
-
-You need to patch the previous code to "return ret".
-
->  
-> +	if (priv->id == ID_MT7531)
-
-if the code block below is multi-line (which it is), put braces here too
-
-or can return early if priv->id != ID_MT7531, and this reduces the
-indentation by one level.
-
-> +		for (i = 0; i < 2; ++i) {
-
-could also iterate over all ports and ignore those which have
-!mt753x_is_mac_port(port)
-
-> +			regmap = devm_regmap_init(ds->dev,
-> +						  &mt7531_regmap_bus, priv,
-> +						  &mt7531_pcs_config[i]);
-
-can fail
-
-> +			priv->sgmii_pcs[i] = mtk_pcs_create(ds->dev, regmap,
-> +							    0x128, 0);
-
-can fail
-
-Don't forget to do error teardown which isn't leaky
-
-0x128 comes from the old definition of MT7531_PHYA_CTRL_SIGNAL3(port),
-so please keep a macro of some sorts to denote the offset of ana_rgc3
-for MT7531, rather than just this obscure magic number.
-
-> +		}
-> +
->  	return ret;
->  }
->  
-> @@ -3199,7 +3052,7 @@ static const struct mt753x_info mt753x_table[] = {
->  	},
->  	[ID_MT7531] = {
->  		.id = ID_MT7531,
-> -		.pcs_ops = &mt7531_pcs_ops,
-> +		.pcs_ops = &mt7530_pcs_ops,
->  		.sw_setup = mt7531_setup,
->  		.phy_read_c22 = mt7531_ind_c22_phy_read,
->  		.phy_write_c22 = mt7531_ind_c22_phy_write,
-> @@ -3309,7 +3162,7 @@ static void
->  mt7530_remove(struct mdio_device *mdiodev)
->  {
->  	struct mt7530_priv *priv = dev_get_drvdata(&mdiodev->dev);
-> -	int ret = 0;
-> +	int ret = 0, i;
->  
->  	if (!priv)
->  		return;
-> @@ -3328,6 +3181,11 @@ mt7530_remove(struct mdio_device *mdiodev)
->  		mt7530_free_irq(priv);
->  
->  	dsa_unregister_switch(priv->ds);
-> +
-> +	for (i = 0; i < 2; ++i)
-
-There is no ++i in this driver and there are 11 i++, so please be
-consistent with what exists.
-
-> +		if (priv->sgmii_pcs[i])
-> +			mtk_pcs_destroy(priv->sgmii_pcs[i]);
-> +
->  	mutex_destroy(&priv->reg_mutex);
->  }
->  
+I meant it would probably be informative if the dt schema for this MDIO
+controller had a "default: $val", "minimum: $val" and "maximum: $val".
 
