@@ -4,82 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F03FC05027
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Feb 2023 15:36:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBA99C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Feb 2023 16:08:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=huZq6Sjx4tNxiX7PW6tLz9SEUE4qxbxsk/5/KVFVrUE=; b=igGY7w1RVQNLzs
-	696reSETI8dtBlK9FUokRmECxfGTdxmJ24BU8ChMkMEp0fitsaQMOakPR8pg2Uo6rbZbHQ72dWmcb
-	v9eW7F3pipYVFXTgN2YsrdA1td9ixUhJ6assAinbWgWpVw5t2GNSSRifkQzEHrNPqRwevp+Pb5y3M
-	phPF6mbC8V05DZRE2D2UI1WER1kG7ZPpTuvXmnEUZxyfVRQkia8Np7tQCDO2ytHu8LzWPwMtWveau
-	yxn1AMkjTLWmCAormdqmNQjDuvF0DERnrTFuC0xWi+YUoGRgZVgvq6l43BkaMrX+9yZus4S15NhN8
-	yX0beKysgrFoSc3QCivg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xsOJXGLbfzP71TUh7HGZHmnH27it70kEg3aQ8dGEbAY=; b=VAhjp/Ro4+SRnjgKkGJunx4eTW
+	4jjmDirWkeipVshjrgFmIJmVZxlpLaQJkRK8VCRV7wGWfJNYSTx4qFdmbfFjdzfm/DuUAxhCS3KLJ
+	yqTbZs28LhBvABxJRCmH/7/mSfUCYq2cENzTpLxjHEiZOoJieY1UC6NZkPMwNqvB25QPMJASYTOWu
+	DBF8wUSJj+W+io8GPu5bzzA3xkrEq2eUgmTPJagikWIMC9g2D4FpHfyS+/7vqqTDH/fSVjqsYf3Uj
+	VvTxi7wN10M5sKC6jZKnpeBjEcki9M0xiD95JkX6R+xw7P1hjvZDkL+RbzVGFhobupe1hzpFd31pv
+	iAkwv/EA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNy74-002mpB-JO; Fri, 03 Feb 2023 15:36:30 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1pNybQ-002s7w-Lc; Fri, 03 Feb 2023 16:07:52 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNy70-002mmm-Dt; Fri, 03 Feb 2023 15:36:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1675438571;
-	bh=P9k19nklnfp8zjyr98WNbqWJ3pcfo/IFbSsgLrUsy0k=;
-	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
-	 References;
-	b=T6h+QaHdfOlZU59CWJmZFrYc/pPROYjzeEQGH3qQYBFuEoVY/ngJkBaE18nek+RXE
-	 km1dHXLzOS6M9uRcPhF+IKIrn0mi6pFDNW2ZQKk9naknHdGZyYaABfRdsc07bNGM+O
-	 b5FI4a+ij1HKdqrIDJN7Euf04jY8fP8Vu/psEEdBoMdjoTkH0v9HtJS+VJ6o/5d00w
-	 2xIW3jv/2ojoMg0JUI61qgcDfXmGxPu2dJRv5A/14SduMQQ5A6+cNVFgGmGdCRaVVv
-	 sfOIlGQC32vcPcsCu7YO1W9bkHrXT2/ZCjCJFDmBnwfKjxjaJEubQ/O7RfGwhEoFQz
-	 L6JPNCpF2NO6g==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [127.0.0.1] ([80.245.79.254]) by mail.gmx.net (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1M5fIW-1pHvhR0GK2-007Er5; Fri, 03
- Feb 2023 16:36:11 +0100
-Date: Fri, 03 Feb 2023 16:36:09 +0100
-From: Frank Wunderlich <frank-w@public-files.de>
-To: arinc9.unal@gmail.com, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-CC: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- erkin.bozoglu@xeront.com, Sean Wang <sean.wang@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>
-Subject: Re: [PATCH v2 4/5] arm: dts: mt7623: mux phy0 on Bananapi BPI-R2
-User-Agent: K-9 Mail for Android
-In-Reply-To: <20230201185656.17164-5-arinc.unal@arinc9.com>
-References: <20230201185656.17164-1-arinc.unal@arinc9.com> <20230201185656.17164-5-arinc.unal@arinc9.com>
-Message-ID: <AC473057-266B-4403-9270-8007E0EC257C@public-files.de>
+	id 1pNybE-002s43-85; Fri, 03 Feb 2023 16:07:41 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id BB63861F82;
+	Fri,  3 Feb 2023 16:07:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2A323C433A0;
+	Fri,  3 Feb 2023 16:07:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1675440459;
+	bh=zKmjPVFEtNDSBXoOI9UXflM0Sd030QsBid++FCTj9a8=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=KCZFCV0l0H/S8DfZ12ZyuwUPpalMdOIG4AQnLd51yD76Q1ONGjslziezKEteefy5J
+	 baLG7VSVB92tcZvq3dvulixb2uBE3HK1OKHEOeA9MeGq70fY/dhGdTQ4LI1PCeHtka
+	 +qslJuriyAOi7B6Yxx0fDk9Ae27ItNvamV5bKoAIea26TgXdNFyhchbA0smWIgi0nE
+	 Ac23dx2EQNy67fPe+LBz6KinbcJo38qORfKMPBvyFN1wFKKwd5biXzgVtTIbQ8pAag
+	 ic03GSWR/aC8m3zE0g4cKFlAUlxjmnybkVfCtYPJPCpPK2S4V/aVy3hJmhBXEPFJZF
+	 rAOUVt1zzqzoA==
+Received: by mail-vs1-f43.google.com with SMTP id h19so5802975vsv.13;
+        Fri, 03 Feb 2023 08:07:39 -0800 (PST)
+X-Gm-Message-State: AO0yUKX8Jm2wepsQ3NxbFUkgLEJ6fPK23y8zwWE+Ch9ufBz8JcuRsQu0
+	kLCfMyWFrENwje/NLnQ2BeDO8up/8/2cHe9QdQ==
+X-Google-Smtp-Source: AK7set+p/4oE02Qtrd3KwUPO2TJMoCv7VYc0zIaV/SZKSXWLDPZxq/rLmvpgU5zF2KcbzmAfoLSdEu2R7mH3ELmM7nc=
+X-Received: by 2002:a67:eb03:0:b0:3ea:c8c:48a5 with SMTP id
+ a3-20020a67eb03000000b003ea0c8c48a5mr1730235vso.53.1675440457975; Fri, 03 Feb
+ 2023 08:07:37 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:Fq66cXMQ7PDgT5kGmMVa//WAyfmtO+lqAVvGSRCIkiotxM+5zae
- hpCM7/ymJTzxKiIsmZ6UpbzfhYiXdfLtEdDtKgf8FmprazS7xUlB0ORoHEy+s03zkrWMg49
- 1oyG9cbnZ6tnVwWKSCh7rRQrOL/DDf1xem5g/86ZdiwtxAYzu0vzfO5YA+4NOPYLXIWnixt
- AWKrr7bLrNMzZPbjoaPdA==
-UI-OutboundReport: notjunk:1;M01:P0:OaLRXKJrZrY=;m3lYOpzBzjojWR5/McbyO4NliuO
- dhiQB6ATa4YIR3JTXFewyWafUnlOQiKIj2kNswENbzcshkDKsXHa6aD/9OT+hIgRrojAHUTXf
- YoZkfV04uYiK7r9xWPq9Agc+Nv5yLbq6xw2uKENExfi23fgsm+nVUwDbyiX8cuBM3j/E9Slls
- B88+YamCV/kz/+6ac+8Ti/Wg5ORaBRsrWp+7YR8bv6h2c/JlEgOZsgaPqt8qAei+h0Fb6LA5B
- xueYNgIDSQFXT190ALitKA1qhi6hY9JF6CQmhIpt78kHNQWXvGt1pesA33mn+MqHxb4NKmfix
- fEx+OJzicpd33qnFny2ME9GNvbM03NuBF/jNREVsgXiu8JrVrTKVU/x+pI8jeXoeEpOyWmlgA
- 15M5TVFh7YUyHQZjjSxmm8JekrbfPFaYgi7TC+nEHHGJ05OFgK5ryIWhV3TQCHEdfOP2jQFGZ
- 02Ol/9+36vZvfl7jHzManClEeN649f1wKji1HAOu9hajTCGtX2d1luUSipoevRFrif81S/srB
- SEsvD1fJxvCcTCYCRBipCzExbD1K1eTdH5iujGs9aIj86g2eGGrrj3jbP1gonO29h57HAMi1T
- P59e0g4J87y4enBerz7snXXgN46HCEWQTzgxoj6AswddqORuutUyzj2crN8E5MuBtoSXW3ahr
- 75k3rZty7T9zpiPyIQOuqLYGqLHuebsNCNWLO8n/n5v25wY/q4RvDxr2yd6vHaDPjfZanZAQG
- T2hqT3LXCPJ6QwBDNGaIQaRbyqLwsUtn6SYQEWVuJhgDTh8wN+nWs8wzsTE+6rbBG8zdECSQZ
- OINg5bFPOJgs90g641uqpRQ8nx1h3TPgEiPEieHR2KCfZmATBEx5/Al85Xsa1Ow2JFJLzRPYg
- 89T4V7YvtMn4axskqaQsKqLinIBqNubiovPCNt5pVKZcbryiAkLY7ia1ABr25CKlkLCIaLYuv
- kX90uF0ipN6FMh9GqDzAYbS2Ljw=
+References: <20230111032830.20447-1-jian.yang@mediatek.com> <20230111032830.20447-3-jian.yang@mediatek.com>
+In-Reply-To: <20230111032830.20447-3-jian.yang@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Date: Fri, 3 Feb 2023 10:07:26 -0600
+X-Gmail-Original-Message-ID: <CAL_Jsq+eAQ-M9a+9g7Kk3GC9WjE_4mZXXrsdm4PucOJ4p2QYVQ@mail.gmail.com>
+Message-ID: <CAL_Jsq+eAQ-M9a+9g7Kk3GC9WjE_4mZXXrsdm4PucOJ4p2QYVQ@mail.gmail.com>
+Subject: Re: [PATCH 2/2] dt-bindings: PCI: mediatek-gen3: Add support for
+ controlling power and reset
+To: Jian Yang <jian.yang@mediatek.com>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, Jianjun Wang <jianjun.wang@mediatek.com>, 
+	Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Ryder Lee <ryder.lee@mediatek.com>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com, 
+	chuanjia.liu@mediatek.com, jieyy.yang@mediatek.com, 
+	qizhong.cheng@mediatek.com, rex-bc.chen@mediatek.com, 
+	david-yh.chiu@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230203_073626_870994_C7C490D3 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20230203_080740_403513_27EDFD78 
+X-CRM114-Status: GOOD (  19.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,80 +83,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 1=2E Februar 2023 19:56:55 MEZ schrieb arinc9=2Eunal@gmail=2Ecom:
->From: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc=2Eunal@arinc9=2Ecom>
+On Tue, Jan 10, 2023 at 9:28 PM Jian Yang <jian.yang@mediatek.com> wrote:
 >
->Mux the MT7530 switch's phy0 to gmac5 which is wired to the SoC's gmac1=
-=2E
->This achieves 2 Gbps total bandwidth to the CPU using the second RGMII=2E
+> From: "jian.yang" <jian.yang@mediatek.com>
 >
->With this, the interface name to access phy0 changes from wan to eth1=2E
+> Add new properties to support control power supplies and reset pin of
+> a downstream component.
 >
->Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc=2Eunal@arinc9=2Ecom>
->---
-> arch/arm/boot/dts/mt7623n-bananapi-bpi-r2=2Edts | 15 ++++++++++-----
-> 1 file changed, 10 insertions(+), 5 deletions(-)
+> Signed-off-by: jian.yang <jian.yang@mediatek.com>
+> ---
+>  .../bindings/pci/mediatek-pcie-gen3.yaml      | 23 +++++++++++++++++++
+>  1 file changed, 23 insertions(+)
 >
->diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2=2Edts b/arch/arm/b=
-oot/dts/mt7623n-bananapi-bpi-r2=2Edts
->index dc9b4f99eb8b=2E=2E64700253fd35 100644
->--- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2=2Edts
->+++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2=2Edts
->@@ -182,6 +182,12 @@ fixed-link {
-> 	};
-> };
->=20
->+&gmac1 {
->+	status =3D "okay";
->+	phy-mode =3D "rgmii";
->+	phy-handle =3D <&ethphy0>;
->+};
->+
-> &eth {
-> 	status =3D "okay";
->=20
->@@ -189,6 +195,10 @@ mdio-bus {
-> 		#address-cells =3D <1>;
-> 		#size-cells =3D <0>;
->=20
->+		ethphy0: ethernet-phy@0 {
->+			reg =3D <0>;
->+		};
->+
-> 		switch@1f {
-> 			compatible =3D "mediatek,mt7530";
-> 			reg =3D <0x1f>;
->@@ -200,11 +210,6 @@ ports {
-> 				#address-cells =3D <1>;
-> 				#size-cells =3D <0>;
->=20
->-				port@0 {
->-					reg =3D <0>;
->-					label =3D "wan";
->-				};
->-
-> 				port@1 {
-> 					reg =3D <1>;
-> 					label =3D "lan0";
+> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> index 7e8c7a2a5f9b..46149cc63989 100644
+> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> @@ -84,6 +84,29 @@ properties:
+>      items:
+>        enum: [ phy, mac ]
+>
+> +  pcie1v8-supply:
+> +    description:
+> +      The regulator phandle that provides 1.8V power to downstream component.
+> +
+> +  pcie3v3-supply:
+> +    description:
+> +      The regulator phandle that provides 3.3V power to downstream component.
+> +
+> +  pcie12v-supply:
+> +    description:
+> +      The regulator phandle that provides 12V power to downstream component.
 
-Hi
+While in some bindings we've allowed these in the host bridge node,
+that is a mistake. These should be in the root port node. You probably
+don't have one in DT, so add one.
 
-I still see Problem with "renaming" the wan from users PoV=2E I got anothe=
-r way of using second gmac for wan some time ago using vlan-aware bridge (h=
-ave not tested with recent kernel versions)=2E
+> +
+> +  dsc-reset-gpios:
+> +    description:
+> +      The reset GPIO of a downstream component.
+> +    maxItems: 1
+> +
+> +  dsc-reset-msleep:
 
-Maybe this works for you too? If yes imho it will be a better way=2E
+Doesn't the PCI spec define this time? We're talking about PERST#, right?
 
-https://github=2Ecom/frank-w/BPI-Router-Linux/commit/c92b648bac996b34dc75a=
-4fff15d7fb429bfe74b
-
-Have same for r64/mt7622 in my tree=2E=2E=2E
-
-It should use eth1 for wan-traffic too but is full userspace configuration=
- without breaking userspace for users not wanting it=2E
-regards Frank
+> +    description:
+> +      The delay time between assertion and de-assertion of a downstream
+> +      component's reset GPIO.
+> +    maxItems: 1
+> +
+>    clocks:
+>      minItems: 4
+>      maxItems: 6
+> --
+> 2.18.0
+>
 
