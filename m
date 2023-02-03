@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87073C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Feb 2023 14:23:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0ECDC05027
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Feb 2023 14:24:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+WH7VJ9ND/1v/0aCLXgBANRi0NIzyJ1wTqtN9ZDhZj0=; b=xvGA2mMi7iMMycxxHcoZzZiz75
-	nFVPJA4Wrb3ANi+jqpdqKB8g0BCjd4hFF5c0A0eHwDkoJwq34Ol00NVOO2sAxdMUZlo/qgTF9CP12
-	WHE0gDniiRhmCPEZZoshflhfsHryruhyvaCNjRf7BK4Iy0VZuOpB5j96GZOMLk+DeAMBFKuvS3TV7
-	gUw6uo8yy0n4qOuLMU1ckMxJx2wi5QRLU4iJ7q37B+JRpacShujduddM3ePlC9WljBNG4GyKFCBof
-	z3tNnbr0MX7AvSdfN6iZMld3ksMfcVEzC4PNo92eGEUeWfQ0JEDzl/DSSI22smcraO8bslD6bWAFj
-	VZAP0oYg==;
+	bh=+5r0JwlkwF0W5R7Dh3RpHn9R6byVUmGVJI5gSn97Wh4=; b=lpp+XQHwBlq8nviMjVkKbdOZdr
+	P/Te5BL/zOc5Q5XN9YYPDDN3I9aBmuC9h8ZL7bcyajamgvU1JnzFNopeZiSZ/z1AqJBhief+ws0bQ
+	0PIvmSFamrW8J9qVrIPrRQgW81M8CrNoktN6/dWMeg3g/eH+XFHVegzut9XqczI7kB7VwtVvAgsbA
+	nf4rDCw0292OeDCI2rFwuMeCOiQiPjSLqkVFJlS1o0SiQk/ig10J2DWUKI6JRGEjqh/gQyaDQM7Tc
+	YNnSV0NHwBXpCAHSP28tA2c1JcuuC624tvB4W/cdcqEWPF8TAW7huWbccHJKTWy5tZh/3fSPFg2pQ
+	O+/CurVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNwy4-002NsM-Mh; Fri, 03 Feb 2023 14:23:08 +0000
+	id 1pNwz7-002ORs-Pa; Fri, 03 Feb 2023 14:24:13 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNwcG-002Cuh-EI; Fri, 03 Feb 2023 14:00:37 +0000
+	id 1pNwiC-002FxK-PZ; Fri, 03 Feb 2023 14:06:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=+WH7VJ9ND/1v/0aCLXgBANRi0NIzyJ1wTqtN9ZDhZj0=; b=fIup/wPpDa41mxDnPJ8ns94Rbb
-	a0fBPiiaSoivpGrzzPyRj4l7XDxbmD577qMeTbQM/3yw0assltKmE8T8YjqrqKaZY2jUdsKUCYJMd
-	hELsL527i/b2Dhgdnjs1Ibq17La59+1+USIBHspASs2TXsyt8xJJyRysKGP3c1pMEhas=;
+	bh=+5r0JwlkwF0W5R7Dh3RpHn9R6byVUmGVJI5gSn97Wh4=; b=w7/csSHS6VJfiCZilLoEjy2Y71
+	nW0KNyVr5pHUV3umJE5GbaVZmV+ty/0ILVWJHnx18VBXeQ4PKiR0Qi2uXK4U9vP/h4QX1iZJ3YMbo
+	K5Ei6T6XJoxH6iUENFN7f7K5TQRdZkKedmMhkgd5sLfWyP2rD9DAW6iZSvT0XxrQshsI=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1pNwc1-0040Ke-IW; Fri, 03 Feb 2023 15:00:21 +0100
-Date: Fri, 3 Feb 2023 15:00:21 +0100
+	id 1pNwi7-0040Ot-M5; Fri, 03 Feb 2023 15:06:39 +0100
+Date: Fri, 3 Feb 2023 15:06:39 +0100
 From: Andrew Lunn <andrew@lunn.ch>
 To: Daniel Golle <daniel@makrotopia.org>
 Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
@@ -57,19 +57,18 @@ Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	Florian Fainelli <f.fainelli@gmail.com>,
 	Jianhui Zhao <zhaojh329@gmail.com>,
 	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
-Subject: Re: [PATCH 1/9] net: ethernet: mtk_eth_soc: add support for MT7981
- SoC
-Message-ID: <Y90TdTBPvQzV46H8@lunn.ch>
+Subject: Re: [PATCH 2/9] net: ethernet: mtk_eth_soc: set MDIO bus clock
+ frequency
+Message-ID: <Y90U7ydTIxox/Gey@lunn.ch>
 References: <cover.1675407169.git.daniel@makrotopia.org>
- <301fa3e888d686283090d58a060579d8c2a5bebb.1675407169.git.daniel@makrotopia.org>
+ <a613b66b4872b5f3f09544138d03d5326a8f6f8b.1675407169.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <301fa3e888d686283090d58a060579d8c2a5bebb.1675407169.git.daniel@makrotopia.org>
+In-Reply-To: <a613b66b4872b5f3f09544138d03d5326a8f6f8b.1675407169.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230203_060036_519281_D20F44D2 
-X-CRM114-Status: UNSURE (   9.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230203_060644_971100_B25AE2DF 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,16 +83,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 03, 2023 at 07:00:21AM +0000, Daniel Golle wrote:
-> The MediaTek MT7981 SoC comes two 1G/2.5G SGMII, just like MT7986.
-> 
-> In addition MT7981 comes with a built-in 1000Base-T PHY which can be
-> used with GMAC1.
-> 
-> As many MT7981 boards make use of swapping SGMII phase and neutral, add
-> new device-tree attribute 'mediatek,pn_swap' to support them.
+>  static int mtk_mdio_init(struct mtk_eth *eth)
+>  {
+>  	struct device_node *mii_np;
+> +	int clk = 25000000, max_clk = 2500000, divider = 1;
+>  	int ret;
+> +	u32 val;
 
-Is this new property documented in the device tree binding?
+Reverse Christmas tree please.
 
-   Andrew
+> +
+> +	if (!of_property_read_u32(mii_np, "clock-frequency", &val))
+> +		max_clk = val;
+> +
+> +	while (clk / divider > max_clk) {
+> +		if (divider >= 63)
+> +			break;
+> +
+> +		divider++;
+> +	};
+
+Please add some range checks here. Return -EINVAL if val > max_clock.
+Also, if divider = 63 indicating the requested clock is too slow.
+
+> +
+> +	val = mtk_r32(eth, MTK_PPSC);
+> +	val |= PPSC_MDC_TURBO;
+> +	mtk_w32(eth, val, MTK_PPSC);
+> +
+> +	/* Configure MDC Divider */
+> +	val = mtk_r32(eth, MTK_PPSC);
+> +	val &= ~PPSC_MDC_CFG;
+> +	val |= FIELD_PREP(PPSC_MDC_CFG, divider);
+> +	mtk_w32(eth, val, MTK_PPSC);
+
+Can these two writes to MTK_PPSC be combined into one? 
+
+val |= FIELD_PREP(PPSC_MDC_CFG, divider) | PPSC_MDC_TURBO;
+
+    Andrew
 
