@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 704D5C636CC
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Feb 2023 07:17:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DAF0C636D6
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Feb 2023 07:20:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WP6MW/AxTXjVByX3Tw5+ZQ2b+cfJfjcOdQtYVTAliZk=; b=T6UCiNvt+Dtj1fOre0pi6dgose
-	0SiEOEkAZcKOuFvjsRXof+vYEtyajE1IwZrW1Gx8cuPyhYUPNf6p5O0+cM3u1MgVGKYjIZ1rRnaMd
-	c0yMAPFfROhD4YPhRCRRLWrKAs+SeZRWNNMwNEVk0Wb9Ahvk1Gdf3QWWXO73GGkzCltAF9HbTj3s9
-	LNTQ07N2XxSw9idCxOl/YJc8owZBclLKhXgOtSna3VPS86UlgEQgfo2GTd0SCS/fU2STnqL3kza1E
-	ITi1gzHMSLb79ujwIplFOMsXlOqBLWb9tegHzutLQXpiK6yGYGHPrs7BrOe+1qYY+DRJWiyPWyLrV
-	fai8f1xA==;
+	bh=MOfBdQlx5iGO79hp8GsvnYFdh/l1zehQMo7xs4q/oVo=; b=TBhFaDx0CxjkpaYmOb2oH8/1Cn
+	LACZCbQWhCNVkF3oAOh1TTy4lQhY1n9kHbmhtiNulg/QqCm1zgWZW+6yTqzSu+UDktDeZTRJLyKpj
+	LJ3gWR/+/TbxnABJIpfB0SmmGvK9E6o/DZuDpT2cddXKV04ICA334EjyESh/S1j1UkFZ+v8K00wDo
+	/hbFu1D3ZDR07k1iE3pTfHuvA0KEswYfITo4Bjda2yr8bkaOnoFMzp9K4PPbSWQnYI/CDgmTvq2+t
+	EsrWeuObQjHyjFF6S83I0fF+o9lyoDemxdaFB9aNepkCdoKyiwavxO5giT0Z+dwAiAtWpne2oT/Tc
+	uOvYZ+cQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNqJv-000l2s-9q; Fri, 03 Feb 2023 07:17:15 +0000
-Received: from mail-vs1-xe35.google.com ([2607:f8b0:4864:20::e35])
+	id 1pNqMf-000leo-2C; Fri, 03 Feb 2023 07:20:05 +0000
+Received: from mail-ua1-x929.google.com ([2607:f8b0:4864:20::929])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNqJs-000l1f-6v
-	for linux-mediatek@lists.infradead.org; Fri, 03 Feb 2023 07:17:13 +0000
-Received: by mail-vs1-xe35.google.com with SMTP id h19so4429840vsv.13
-        for <linux-mediatek@lists.infradead.org>; Thu, 02 Feb 2023 23:17:11 -0800 (PST)
+	id 1pNqMc-000ldJ-BX
+	for linux-mediatek@lists.infradead.org; Fri, 03 Feb 2023 07:20:03 +0000
+Received: by mail-ua1-x929.google.com with SMTP id b11so812881uae.4
+        for <linux-mediatek@lists.infradead.org>; Thu, 02 Feb 2023 23:20:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=WP6MW/AxTXjVByX3Tw5+ZQ2b+cfJfjcOdQtYVTAliZk=;
-        b=aKRsAKk3/tQQjWAq76ElA8GyUDDyLbiVUpOBYDhOFOOpN39NDlJDp7QhfjWvqLF6gQ
-         NFl8GueeryM2GB3Cw+xJir/zhirD/tdS4tX5G3ZHNTtSvoCe6AW+fZ1qUD4b+wVAkylF
-         1I6x7t4VPdTQIxwtQ4Scq7d1g8zvIrmj7qWqo=
+        bh=MOfBdQlx5iGO79hp8GsvnYFdh/l1zehQMo7xs4q/oVo=;
+        b=bw9lxWd5kf3X9mhBe+WB1U+QwWcYI4VrH7OvmBQFXuoORIoxkZ3jr0gLLLSSxjPz4H
+         EQksKl9SXFqjvrLRMbTkV78zb8/E8qZwTFjxJzW8hdYpqcTNw2CJUFr8S2TVihsdAo9e
+         YhQ19YicgiTlK5DRjMxRBzVkgMmzcFWrjRqMk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=WP6MW/AxTXjVByX3Tw5+ZQ2b+cfJfjcOdQtYVTAliZk=;
-        b=kClbx1ZdZChfaDt8wrqaQupi+VwZ6f4iL9YW23J9sHZAD/ozVb0NIq+WZn93wG7p6C
-         UvV1NAM6XpVBRFUcj2frwdGXuqfH3eBW349BgY51taB2CU515j4rZI2VEJyMBJmXz93C
-         dcukbtrvtbnoGu7K92xLXzBzKDsnv1Sy2YwnrqNs9Xk6B7OoxcWafYrbmiqkik4rsb0L
-         KVRENqS9yvE0KLdUEOBM0t3KVebo+g/1wtSogKzkuunhUdiVcbDSheJOrLdNP7qh4ITk
-         P2+Q4uSeksCSjt1zJZ8Y/Lhl8A2KpHXHwYi+9/Y5+kn0LAIOprFQgeYiPFRipCsNJafe
-         X8Ww==
-X-Gm-Message-State: AO0yUKUzh5xWhnqGS9ZLK+aNsw+MMjth16D+jWVY+IQRj/M6H+ojh1Zi
-	FstR2xPDoteZzliW91orhALVkYTHtCDrawFdMfPF3A==
-X-Google-Smtp-Source: AK7set+SibYPv5VxOZavVaTXiZ4zOO474EeZunS1fpxZm92G7Fj+lArt7EhMvgZpDSSJrbsgV1bpwWy/kPckgN38X5s=
-X-Received: by 2002:a67:f551:0:b0:3e8:d5a8:3fbe with SMTP id
- z17-20020a67f551000000b003e8d5a83fbemr1543370vsn.9.1675408631029; Thu, 02 Feb
- 2023 23:17:11 -0800 (PST)
+        bh=MOfBdQlx5iGO79hp8GsvnYFdh/l1zehQMo7xs4q/oVo=;
+        b=FqxhVLWci+RPScOpSPzUd10LoCuUa51nVUSz3HbJ6q8IXUZbWj9VeRFkvbXv5yX+ej
+         vR3efOZOl8rx21jECN6dAsPlLFXf19Wo/5m+mY140tNiAmeLmIPjO3ArsJf8HhS4kqYj
+         gJj4fQbnJdo/L4/KecdlShMm8MXep/N58ubGM8zdrAfKSv1FyGfczKerHPboxYkQcrwE
+         G9MjcUKdNFNJmZwf7laQkcjJ3lf2C+WTeTezMNOjpXNAUXSAQ0A1mc1JIXmOV6gvdGjw
+         hSoA4P5oNXC4EJNq/h3jaONh3kp20d3oySwdAVgd4bloN1jqpaXaLjld+kKGuG0Lnvvv
+         aMRg==
+X-Gm-Message-State: AO0yUKV8XCmtqCFdC1o2vqWzPDSg+Ko9djnmPckdTXLafFo0wt6oc5kK
+	Mm/AIsuTgk2nNQ2464MFgIFVBqe8XODOXKP5QyKEsQ==
+X-Google-Smtp-Source: AK7set/xR1ke0jWZt68bY6r2crHse1vwXsGaqnSXeErrScT1IfzUL7oiEe6uQtdtx91KsG76eEPfb4WI2IpvFowxPtM=
+X-Received: by 2002:ab0:6ca4:0:b0:5f0:4676:e4f1 with SMTP id
+ j4-20020ab06ca4000000b005f04676e4f1mr1475913uaa.44.1675408800845; Thu, 02 Feb
+ 2023 23:20:00 -0800 (PST)
 MIME-Version: 1.0
-References: <20230119124848.26364-1-Garmin.Chang@mediatek.com> <20230119124848.26364-12-Garmin.Chang@mediatek.com>
-In-Reply-To: <20230119124848.26364-12-Garmin.Chang@mediatek.com>
+References: <20230119124848.26364-1-Garmin.Chang@mediatek.com> <20230119124848.26364-13-Garmin.Chang@mediatek.com>
+In-Reply-To: <20230119124848.26364-13-Garmin.Chang@mediatek.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 3 Feb 2023 15:17:00 +0800
-Message-ID: <CAGXv+5HtzbrA5dpzXSoSXMFooHXoeX7iwJA9A1HJKQ09qm+Umw@mail.gmail.com>
-Subject: Re: [PATCH v5 11/19] clk: mediatek: Add MT8188 vdecsys clock support
+Date: Fri, 3 Feb 2023 15:19:49 +0800
+Message-ID: <CAGXv+5Fysy4iCvHEXWtf5oXCHkaKezPqcrGd8QzhnaTrYdyecA@mail.gmail.com>
+Subject: Re: [PATCH v5 12/19] clk: mediatek: Add MT8188 vdosys0 clock support
 To: "Garmin.Chang" <Garmin.Chang@mediatek.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
@@ -68,11 +68,12 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
 	Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
 	linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, 
-	netdev@vger.kernel.org
+	netdev@vger.kernel.org, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230202_231712_303531_D624C251 
-X-CRM114-Status: GOOD (  19.59  )
+X-CRM114-CacheID: sfid-20230202_232002_444195_38EE70AB 
+X-CRM114-Status: GOOD (  20.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,37 +88,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 19, 2023 at 8:49 PM Garmin.Chang <Garmin.Chang@mediatek.com> wrote:
+On Thu, Jan 19, 2023 at 8:54 PM Garmin.Chang <Garmin.Chang@mediatek.com> wrote:
 >
-> Add MT8188 vdec clock controllers which provide clock gate
-> control for video decoder.
+> Add MT8188 vdosys0 clock controller which provides clock gate
+> control in video system. This is integrated with mtk-mmsys
+> driver which will populate device by platform_device_register_data
+> to start vdosys clock driver.
 >
 > Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
 > ---
->  drivers/clk/mediatek/Makefile          |  2 +-
->  drivers/clk/mediatek/clk-mt8188-vdec.c | 90 ++++++++++++++++++++++++++
->  2 files changed, 91 insertions(+), 1 deletion(-)
->  create mode 100644 drivers/clk/mediatek/clk-mt8188-vdec.c
+>  drivers/clk/mediatek/Makefile          |   3 +-
+>  drivers/clk/mediatek/clk-mt8188-vdo0.c | 134 +++++++++++++++++++++++++
+>  2 files changed, 136 insertions(+), 1 deletion(-)
+>  create mode 100644 drivers/clk/mediatek/clk-mt8188-vdo0.c
 >
 > diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-> index a0fd87a882b5..7d09e9fc6538 100644
+> index 7d09e9fc6538..df78c0777fef 100644
 > --- a/drivers/clk/mediatek/Makefile
 > +++ b/drivers/clk/mediatek/Makefile
-> @@ -86,7 +86,7 @@ obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o clk-mt8186-topckgen.o clk-mt
+> @@ -86,7 +86,8 @@ obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o clk-mt8186-topckgen.o clk-mt
 >  obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o clk-mt8188-topckgen.o \
 >                                    clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o \
 >                                    clk-mt8188-cam.o clk-mt8188-ccu.o clk-mt8188-img.o \
-> -                                  clk-mt8188-ipe.o clk-mt8188-mfg.o
-> +                                  clk-mt8188-ipe.o clk-mt8188-mfg.o clk-mt8188-vdec.o
+> -                                  clk-mt8188-ipe.o clk-mt8188-mfg.o clk-mt8188-vdec.o
+> +                                  clk-mt8188-ipe.o clk-mt8188-mfg.o clk-mt8188-vdec.o \
+> +                                  clk-mt8188-vdo0.o
 >  obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
 >  obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
 >  obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
-> diff --git a/drivers/clk/mediatek/clk-mt8188-vdec.c b/drivers/clk/mediatek/clk-mt8188-vdec.c
+> diff --git a/drivers/clk/mediatek/clk-mt8188-vdo0.c b/drivers/clk/mediatek/clk-mt8188-vdo0.c
 > new file mode 100644
-> index 000000000000..e05a27957136
+> index 000000000000..30dd64374ace
 > --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-mt8188-vdec.c
-> @@ -0,0 +1,90 @@
+> +++ b/drivers/clk/mediatek/clk-mt8188-vdo0.c
+> @@ -0,0 +1,134 @@
 > +// SPDX-License-Identifier: GPL-2.0-only
 > +//
 > +// Copyright (c) 2022 MediaTek Inc.
@@ -130,95 +134,92 @@ On Thu, Jan 19, 2023 at 8:49 PM Garmin.Chang <Garmin.Chang@mediatek.com> wrote:
 > +#include "clk-gate.h"
 > +#include "clk-mtk.h"
 > +
-> +static const struct mtk_gate_regs vde0_cg_regs = {
+> +static const struct mtk_gate_regs vdo0_0_cg_regs = {
+> +       .set_ofs = 0x104,
+> +       .clr_ofs = 0x108,
+> +       .sta_ofs = 0x100,
+> +};
+> +
+> +static const struct mtk_gate_regs vdo0_1_cg_regs = {
+> +       .set_ofs = 0x114,
+> +       .clr_ofs = 0x118,
+> +       .sta_ofs = 0x110,
+> +};
+> +
+> +static const struct mtk_gate_regs vdo0_2_cg_regs = {
+> +       .set_ofs = 0x124,
+> +       .clr_ofs = 0x128,
+> +       .sta_ofs = 0x120,
+> +};
+> +
+> +#define GATE_VDO0_0(_id, _name, _parent, _shift)                       \
+> +       GATE_MTK(_id, _name, _parent, &vdo0_0_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
+> +
+> +#define GATE_VDO0_1(_id, _name, _parent, _shift)                       \
+> +       GATE_MTK(_id, _name, _parent, &vdo0_1_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
+> +
+> +#define GATE_VDO0_2(_id, _name, _parent, _shift)                       \
+> +       GATE_MTK(_id, _name, _parent, &vdo0_2_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
+> +
+> +#define GATE_VDO0_2_FLAGS(_id, _name, _parent, _shift, _flags)         \
+> +       GATE_MTK_FLAGS(_id, _name, _parent, &vdo0_2_cg_regs, _shift,    \
+> +       &mtk_clk_gate_ops_setclr, _flags)
+> +
+> +static const struct mtk_gate vdo0_clks[] = {
+> +       /* VDO0_0 */
+> +       GATE_VDO0_0(CLK_VDO0_DISP_OVL0, "vdo0_disp_ovl0", "top_vpp", 0),
+> +       GATE_VDO0_0(CLK_VDO0_FAKE_ENG0, "vdo0_fake_eng0", "top_vpp", 2),
+> +       GATE_VDO0_0(CLK_VDO0_DISP_CCORR0, "vdo0_disp_ccorr0", "top_vpp", 4),
+> +       GATE_VDO0_0(CLK_VDO0_DISP_MUTEX0, "vdo0_disp_mutex0", "top_vpp", 6),
+> +       GATE_VDO0_0(CLK_VDO0_DISP_GAMMA0, "vdo0_disp_gamma0", "top_vpp", 8),
+> +       GATE_VDO0_0(CLK_VDO0_DISP_DITHER0, "vdo0_disp_dither0", "top_vpp", 10),
+> +       GATE_VDO0_0(CLK_VDO0_DISP_WDMA0, "vdo0_disp_wdma0", "top_vpp", 17),
+> +       GATE_VDO0_0(CLK_VDO0_DISP_RDMA0, "vdo0_disp_rdma0", "top_vpp", 19),
+> +       GATE_VDO0_0(CLK_VDO0_DSI0, "vdo0_dsi0", "top_vpp", 21),
+> +       GATE_VDO0_0(CLK_VDO0_DSI1, "vdo0_dsi1", "top_vpp", 22),
+> +       GATE_VDO0_0(CLK_VDO0_DSC_WRAP0, "vdo0_dsc_wrap0", "top_vpp", 23),
+> +       GATE_VDO0_0(CLK_VDO0_VPP_MERGE0, "vdo0_vpp_merge0", "top_vpp", 24),
+> +       GATE_VDO0_0(CLK_VDO0_DP_INTF0, "vdo0_dp_intf0", "top_vpp", 25),
+> +       GATE_VDO0_0(CLK_VDO0_DISP_AAL0, "vdo0_disp_aal0", "top_vpp", 26),
+> +       GATE_VDO0_0(CLK_VDO0_INLINEROT0, "vdo0_inlinerot0", "top_vpp", 27),
+> +       GATE_VDO0_0(CLK_VDO0_APB_BUS, "vdo0_apb_bus", "top_vpp", 28),
+> +       GATE_VDO0_0(CLK_VDO0_DISP_COLOR0, "vdo0_disp_color0", "top_vpp", 29),
+> +       GATE_VDO0_0(CLK_VDO0_MDP_WROT0, "vdo0_mdp_wrot0", "top_vpp", 30),
+> +       GATE_VDO0_0(CLK_VDO0_DISP_RSZ0, "vdo0_disp_rsz0", "top_vpp", 31),
+> +       /* VDO0_1 */
+> +       GATE_VDO0_1(CLK_VDO0_DISP_POSTMASK0, "vdo0_disp_postmask0", "top_vpp", 0),
+> +       GATE_VDO0_1(CLK_VDO0_FAKE_ENG1, "vdo0_fake_eng1", "top_vpp", 1),
+> +       GATE_VDO0_1(CLK_VDO0_DL_ASYNC2, "vdo0_dl_async2", "top_vpp", 5),
+> +       GATE_VDO0_1(CLK_VDO0_DL_RELAY3, "vdo0_dl_relay3", "top_vpp", 6),
+> +       GATE_VDO0_1(CLK_VDO0_DL_RELAY4, "vdo0_dl_relay4", "top_vpp", 7),
+> +       GATE_VDO0_1(CLK_VDO0_SMI_GALS, "vdo0_smi_gals", "top_vpp", 10),
+> +       GATE_VDO0_1(CLK_VDO0_SMI_COMMON, "vdo0_smi_common", "top_vpp", 11),
+> +       GATE_VDO0_1(CLK_VDO0_SMI_EMI, "vdo0_smi_emi", "top_vpp", 12),
+> +       GATE_VDO0_1(CLK_VDO0_SMI_IOMMU, "vdo0_smi_iommu", "top_vpp", 13),
+> +       GATE_VDO0_1(CLK_VDO0_SMI_LARB, "vdo0_smi_larb", "top_vpp", 14),
+> +       GATE_VDO0_1(CLK_VDO0_SMI_RSI, "vdo0_smi_rsi", "top_vpp", 15),
+> +       /* VDO0_2 */
+> +       GATE_VDO0_2(CLK_VDO0_DSI0_DSI, "vdo0_dsi0_dsi", "top_dsi_occ", 0),
+> +       GATE_VDO0_2(CLK_VDO0_DSI1_DSI, "vdo0_dsi1_dsi", "top_dsi_occ", 8),
+> +       GATE_VDO0_2_FLAGS(CLK_VDO0_DP_INTF0_DP_INTF, "vdo0_dp_intf0_dp_intf",
+> +               "top_edp", 16, CLK_SET_RATE_PARENT),
+> +};
+> +
+> +static int clk_mt8188_vdo0_probe(struct platform_device *pdev)
+> +{
+> +       struct device *dev = &pdev->dev;
+> +       struct device_node *node = dev->parent->of_node;
+> +       struct clk_hw_onecell_data *clk_data;
+> +       int r;
+> +
+> +       clk_data = mtk_alloc_clk_data(CLK_VDO0_NR_CLK);
+> +       if (!clk_data)
+> +               return -ENOMEM;
+> +
+> +       r = mtk_clk_register_gates(node, vdo0_clks, ARRAY_SIZE(vdo0_clks), clk_data);
 
-Could you replace all instances of "vde" (both upper and lower case)
-with "vdec" to be consistent with usages elsewhere?
+This API was changed. Please rebase onto the latest -next and update.
 
-> +       .set_ofs = 0x0,
-> +       .clr_ofs = 0x4,
-> +       .sta_ofs = 0x0,
-> +};
-> +
-> +static const struct mtk_gate_regs vde1_cg_regs = {
-> +       .set_ofs = 0x200,
-> +       .clr_ofs = 0x204,
-> +       .sta_ofs = 0x200,
-> +};
-> +
-> +static const struct mtk_gate_regs vde2_cg_regs = {
-> +       .set_ofs = 0x8,
-> +       .clr_ofs = 0xc,
-> +       .sta_ofs = 0x8,
-> +};
-> +
-> +#define GATE_VDE0(_id, _name, _parent, _shift)                 \
-> +       GATE_MTK(_id, _name, _parent, &vde0_cg_regs, _shift, &mtk_clk_gate_ops_setclr_inv)
-> +
-> +#define GATE_VDE1(_id, _name, _parent, _shift)                 \
-> +       GATE_MTK(_id, _name, _parent, &vde1_cg_regs, _shift, &mtk_clk_gate_ops_setclr_inv)
-> +
-> +#define GATE_VDE2(_id, _name, _parent, _shift)                 \
-> +       GATE_MTK(_id, _name, _parent, &vde2_cg_regs, _shift, &mtk_clk_gate_ops_setclr_inv)
-> +
-> +static const struct mtk_gate vde1_clks[] = {
-> +       /* VDE1_0 */
-> +       GATE_VDE0(CLK_VDE1_SOC_VDEC, "vde1_soc_vdec", "top_vdec", 0),
-> +       GATE_VDE0(CLK_VDE1_SOC_VDEC_ACTIVE, "vde1_soc_vdec_active", "top_vdec", 4),
-> +       GATE_VDE0(CLK_VDE1_SOC_VDEC_ENG, "vde1_soc_vdec_eng", "top_vdec", 8),
-> +       /* VDE1_1 */
-> +       GATE_VDE1(CLK_VDE1_SOC_LAT, "vde1_soc_lat", "top_vdec", 0),
-> +       GATE_VDE1(CLK_VDE1_SOC_LAT_ACTIVE, "vde1_soc_lat_active", "top_vdec", 4),
-> +       GATE_VDE1(CLK_VDE1_SOC_LAT_ENG, "vde1_soc_lat_eng", "top_vdec", 8),
-> +       /* VDE12 */
-
-Add an underscore like the above?
-
-ChenYu
-
-> +       GATE_VDE2(CLK_VDE1_SOC_LARB1, "vde1_soc_larb1", "top_vdec", 0),
-> +};
-> +
-> +static const struct mtk_gate vde2_clks[] = {
-> +       /* VDE2_0 */
-> +       GATE_VDE0(CLK_VDE2_VDEC, "vde2_vdec", "top_vdec", 0),
-> +       GATE_VDE0(CLK_VDE2_VDEC_ACTIVE, "vde2_vdec_active", "top_vdec", 4),
-> +       GATE_VDE0(CLK_VDE2_VDEC_ENG, "vde2_vdec_eng", "top_vdec", 8),
-> +       /* VDE2_1 */
-> +       GATE_VDE1(CLK_VDE2_LAT, "vde2_lat", "top_vdec", 0),
-> +       /* VDE2_2 */
-> +       GATE_VDE2(CLK_VDE2_LARB1, "vde2_larb1", "top_vdec", 0),
-> +};
-> +
-> +static const struct mtk_clk_desc vde1_desc = {
-> +       .clks = vde1_clks,
-> +       .num_clks = ARRAY_SIZE(vde1_clks),
-> +};
-> +
-> +static const struct mtk_clk_desc vde2_desc = {
-> +       .clks = vde2_clks,
-> +       .num_clks = ARRAY_SIZE(vde2_clks),
-> +};
-> +
-> +static const struct of_device_id of_match_clk_mt8188_vde[] = {
-> +       { .compatible = "mediatek,mt8188-vdecsys-soc", .data = &vde1_desc },
-> +       { .compatible = "mediatek,mt8188-vdecsys", .data = &vde2_desc },
-> +       { /* sentinel */ }
-> +};
-> +
-> +static struct platform_driver clk_mt8188_vde_drv = {
-> +       .probe = mtk_clk_simple_probe,
-> +       .remove = mtk_clk_simple_remove,
-> +       .driver = {
-> +               .name = "clk-mt8188-vde",
-> +               .of_match_table = of_match_clk_mt8188_vde,
-> +       },
-> +};
-> +
-> +builtin_platform_driver(clk_mt8188_vde_drv);
-> +MODULE_LICENSE("GPL");
-> --
-> 2.18.0
->
->
+Angelo (CC-ed) also mentioned a new simple probe variant for non-DT
+clock drivers is being developed. He didn't mention a timeline though.
 
