@@ -4,103 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 551E0C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Feb 2023 21:15:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13627C05027
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Feb 2023 21:49:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v8UifT5o8QIL+1ZOw+vxMKGXi/nfDw7qQB6T6ClS8Ic=; b=dd3NO9L7TW+kPRgAMKjpdXY1bb
-	KEhbPKcboTi52tT/zoet/poQ8Rjh9fNAqjYbt9l0hERLClRjyp050VqHUpRgoPj9sGcjpM32k1ndR
-	ZM2tOJu0fcTCIYnjkSvuiSKPHjJiiQt3qBRbVE7xXe17wolp8PnGbtHXEWausw4NmjGWAGOL8l4Qe
-	TIpgUWnbjjIEYeY2GSDHxrgJ9ZGesFQYBSkjWgSeOjDa53hNlRUAVJBCXpDP1ZWjAgkA8b8zAt+vF
-	7/UZCLfF1W7ddJchy20mQCLo+dyGRzwjkJBjLDILfZgDVuVly59sPTSf9FQ9sjz2InZoHa1VTregj
-	y9gCPiSA==;
+	bh=F2MGbg/8o+abIGc0E3O5T3MnuHPupls9EiKUA8fQhWs=; b=KsWvLTn1SxZUhLV61ENUkS1iwa
+	akOpmS/bJOXYDvXd+A4LvIQSmDeCCeUDtKP3zSTApXaBE+EuRpZeLB8tsH6n6bcPqW4xYPN5lZ/Pv
+	sQjhCslvgzWgfyWGdxC2Mp2KOc1EdiPXx4fdTKEB82xXkt/AxgDrDOpSXrXWVjCKlnB8KviZ+lSb4
+	NbWB4M5lFeKuHT2nV0rkJU0Tu5IoUgYnbjgDzd6MVrhqzViGurenbOtjNCIzUfKZXRGwBuG/kA4Az
+	JxJ3qSmWUIi5YLbS2hOvyytzoAciwr1esEkRSmzWc87mfrQEnvMnc3KHLCZzIhOMIh0u6FmyW4rSF
+	HqpXVluw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pO3Oo-003dHu-5D; Fri, 03 Feb 2023 21:15:10 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1pO3vV-003grT-Fe; Fri, 03 Feb 2023 21:48:57 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pO3Oc-003dDM-0x; Fri, 03 Feb 2023 21:14:59 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ba1so1706752wrb.5;
-        Fri, 03 Feb 2023 13:14:56 -0800 (PST)
+	id 1pO3vP-003gpr-Ec; Fri, 03 Feb 2023 21:48:54 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id m16-20020a05600c3b1000b003dc4050c94aso4868311wms.4;
+        Fri, 03 Feb 2023 13:48:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=v8UifT5o8QIL+1ZOw+vxMKGXi/nfDw7qQB6T6ClS8Ic=;
-        b=pd4JdGeGvQ+bwoWBkvvdDb0hhyE/Bxhta6bcG3jxt0dWu7ZCdJQHLjZUYh/neaf8kv
-         E2vN7hCsLGKW2de3K6muUrxk3KJCGwOsziVlBtiWxe9afhV1sVgLOZTGjzEZ986sCAQE
-         fKtMsX5U/ln9C0+q5QNHGuB2n94r0ojW3gCL6ueoVBlSVA0i1kk9DA76BLAopPpz5a+r
-         +w+xc49sVxrSI6XphvcS8f9anBNzfLSR2DfW9+hI22SIZJYNLUdgyFra+/+vBm50At92
-         l5Es6QjHbL5/d/8HlTu0B/cTjn6/Uqmc6dzhzy8HEN0z3ioILJcKrb0mAt/0BQo+hytZ
-         2vtA==
+        bh=F2MGbg/8o+abIGc0E3O5T3MnuHPupls9EiKUA8fQhWs=;
+        b=LqWK7bpbT4S9m5fLKLW7NM9LNTDKyFZAkMLH+YzTh4IS2z8utaMnRvo9mQnjhqwIdU
+         CEB4N+nrQ4zrJfRK57lRdROwzqMoLkfKzsD0QoZh5XE6Of8bBQDRvj8ry17gP733G+TF
+         r6OSL8JiNaCsD1zVicRF9MUlft9JdaTpbzNEZz1yFnb5FyIR3GKd98XLAkkenS6epiUX
+         YJqFfys5RLoyn/VkaW/SBfLsa8XjO2vUjdRO5n07hrxP/7TYx3bxTmHgJkTjzoSKZBeU
+         6CRMs2g5mp9cBzVy/lahNyx4bF68HuAGbWil4r4HARNnKEROdn32E35mlURQfWNYTUDD
+         7bCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=v8UifT5o8QIL+1ZOw+vxMKGXi/nfDw7qQB6T6ClS8Ic=;
-        b=bHpgp3ngtSsLncb6dhyJwm0AoSyrWwM0Vq9QNsrLhqWPUS6/gY8V+7/pl6hqxKPx1A
-         BbANKj0xBNU0CJjXFZGrD65qC7+fl/aksS8AEkI5zlWAdeta3mSHOA/ozXk9hqHEH7FK
-         c+awguBBPi0B42Cgdhaa+ipLPEo8H1wL1Wb4Dt9ZRwkOtqsD5377LntR6hV1K8qo98Dw
-         Q4fqYIIB12B0oyZ44odZDQ9h2Gvhl8nhKF19QJ4wXvf/fFlQUBza7h4F4CH7Lu4b1h7z
-         SO23Sa4zGE+vrfjvsd6w4N7+mT4rIN8YOS3ZK/7XMHU8RjMuuqPss36H7OmS/FP8LxfG
-         obhA==
-X-Gm-Message-State: AO0yUKWR0khqB6kNoFihVfUpMfvE0bB1jzFaxiNOQqmKGQi955edCBng
-	GTmZBOLvVlSNQn3KBh8VIrpxSAsFVZ2+RA==
-X-Google-Smtp-Source: AK7set+hBed4Vs81Op6a8Moc0ZYf2TGrkIyuIwn9zkILCDF+4akhZ0fn2PUit7H3sH6BdDxxPfJo6w==
-X-Received: by 2002:a05:6000:1f0f:b0:2bf:bbd1:1db3 with SMTP id bv15-20020a0560001f0f00b002bfbbd11db3mr10247467wrb.44.1675458895502;
-        Fri, 03 Feb 2023 13:14:55 -0800 (PST)
+        bh=F2MGbg/8o+abIGc0E3O5T3MnuHPupls9EiKUA8fQhWs=;
+        b=5BYETOEwtXRMn2VX0D4ShmgcBAKgcRL2LCZ6Y+WiyKIhYBKS5pSWAZR1EFiL4XCqSu
+         nSXSfKkeV07AWMLM6XEddaGCUjagt8xA+cPutTaB/Vw01APJCnoFFfPNrRSNB8SsHoVc
+         KVQIdbBeLP8CHEDGlE2DTMxOW/qRNLF88KlhUpMY3HtAw9JRcORprAJJ4l0hyp1rNbEG
+         V1ieCdmn1Pt9hri8jhXfiGz3H00YiiIXIFbCa3A82dyciCfau3YvR1u4XUqbzphkq8ji
+         UQNNVL1ZitMDfUe52CW406B+PYcpPOmFn9x9QTC2IGccJWyyL8qrwsMIagMb3kxHNkgA
+         oAOA==
+X-Gm-Message-State: AO0yUKVabID4dtpmxEyqKABNLje7VYhZCisjrCWRm/Nu1KApuEybvHdo
+	6KymBB7ewB2Dznn5AU9qQg0=
+X-Google-Smtp-Source: AK7set85lrCYKEyfy05TF6DM5Y8P3A0rWOxyikWBgI5c4wbWzr7wHvuYxoTOE7UBY+5RMD9l5GPfQg==
+X-Received: by 2002:a05:600c:288:b0:3dc:1054:3acd with SMTP id 8-20020a05600c028800b003dc10543acdmr10916930wmk.17.1675460927888;
+        Fri, 03 Feb 2023 13:48:47 -0800 (PST)
 Received: from skbuf ([188.26.57.116])
-        by smtp.gmail.com with ESMTPSA id w7-20020adff9c7000000b002be546f947asm2835380wrr.61.2023.02.03.13.14.53
+        by smtp.gmail.com with ESMTPSA id p16-20020a05600c469000b003a84375d0d1sm9596218wmo.44.2023.02.03.13.48.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Feb 2023 13:14:55 -0800 (PST)
-Date: Fri, 3 Feb 2023 23:14:51 +0200
+        Fri, 03 Feb 2023 13:48:47 -0800 (PST)
+Date: Fri, 3 Feb 2023 23:48:44 +0200
 From: Vladimir Oltean <olteanv@gmail.com>
-To: Ido Schimmel <idosch@idosch.org>
-Cc: netdev@kapio-technology.com, davem@davemloft.net, kuba@kernel.org,
-	netdev@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, Eric Dumazet <edumazet@google.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	"maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	Russell King <linux@armlinux.org.uk>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	open list <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	"open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>,
-	"moderated list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>
-Subject: Re: [PATCH net-next 0/5] ATU and FDB synchronization on locked ports
-Message-ID: <20230203211451.3rhg2kg6tjmmhfmp@skbuf>
-References: <20230130173429.3577450-1-netdev@kapio-technology.com>
- <Y9lrIWMnWLqGreZL@shredder>
- <e2535b002be9044958ab0003d8bd6966@kapio-technology.com>
- <Y9vaIOefIf/gI0BR@shredder>
- <3cecf4425b0e6f38646e25e40fd8f0fd@kapio-technology.com>
- <Y9vmfoaFxPdKvgxt@shredder>
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
+	=?utf-8?B?QmrDuHJu?= Mork <bjorn@mork.no>
+Subject: Re: [PATCH 2/9] net: ethernet: mtk_eth_soc: set MDIO bus clock
+ frequency
+Message-ID: <20230203214844.jqvhcdyuvrjf5dxg@skbuf>
+References: <cover.1675407169.git.daniel@makrotopia.org>
+ <cover.1675407169.git.daniel@makrotopia.org>
+ <a613b66b4872b5f3f09544138d03d5326a8f6f8b.1675407169.git.daniel@makrotopia.org>
+ <a613b66b4872b5f3f09544138d03d5326a8f6f8b.1675407169.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Y9vmfoaFxPdKvgxt@shredder>
+In-Reply-To: <a613b66b4872b5f3f09544138d03d5326a8f6f8b.1675407169.git.daniel@makrotopia.org>
+ <a613b66b4872b5f3f09544138d03d5326a8f6f8b.1675407169.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230203_131458_110036_BF608AE2 
-X-CRM114-Status: GOOD (  30.34  )
+X-CRM114-CacheID: sfid-20230203_134852_941187_B6E2A12F 
+X-CRM114-Status: GOOD (  23.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,55 +108,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 02, 2023 at 06:36:14PM +0200, Ido Schimmel wrote:
-> On Thu, Feb 02, 2023 at 05:19:07PM +0100, netdev@kapio-technology.com wrote:
-> > On 2023-02-02 16:43, Ido Schimmel wrote:
-> > > On Thu, Feb 02, 2023 at 08:37:08AM +0100, netdev@kapio-technology.com wrote:
-> > > > On 2023-01-31 20:25, Ido Schimmel wrote:
-> > > > >
-> > > > > Will try to review tomorrow, but it looks like this set is missing
-> > > > > selftests. What about extending bridge_locked_port.sh?
-> > > > 
-> > > > I knew you would take this up. :-)
-> > > > But I am not sure that it's so easy to have selftests here as it is timing
-> > > > based and it would take the 5+ minutes just waiting to test in the stadard
-> > > > case, and there is opnly support for mv88e6xxx driver with this
-> > > > patch set.
-> > > 
-> > > The ageing time is configurable: See commit 081197591769 ("selftests:
-> > > net: bridge: Parameterize ageing timeout"). Please add test cases in the
-> > > next version.
-> > 
-> > When I was looking at configuring the ageing time last time, my finding was
-> > that the ageing time could not be set very low as there was some part in the
-> > DSA layer etc, and confusion wrt units. I think the minimum secured was like
-> > around 2 min. (not validated), which is not that much of an improvement for
-> > fast testing. If you know what would be a good low timeout to set, I would
-> > like to know.
+On Fri, Feb 03, 2023 at 07:01:01AM +0000, Daniel Golle wrote:
+> Set MDIO bus clock frequency and allow setting a custom maximum
+> frequency from device tree.
 > 
-> My point is that the ageing time is parametrized via 'LOW_AGEING_TIME'
-> in forwarding.config so just use '$LOW_AGEING_TIME' in the selftest and
-> set it as high as it needs to be for mv88e6xxx in your own
-> forwarding.config.
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 25 +++++++++++++++++++++
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.h |  5 +++++
+>  2 files changed, 30 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index a44ffff48c7b..9050423821dc 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -790,7 +790,9 @@ static const struct phylink_mac_ops mtk_phylink_ops = {
+>  static int mtk_mdio_init(struct mtk_eth *eth)
+>  {
+>  	struct device_node *mii_np;
+> +	int clk = 25000000, max_clk = 2500000, divider = 1;
 
-FWIW, we have a forwarding.config file in tools/testing/selftests/drivers/net/dsa/.
-So you could cd to that folder, edit the file with your variable, and run the symlinked
-script from there.
+Would be good if constant values (clk) weren't put in variables.
 
-> as there was some part in the DSA layer etc
+>  	int ret;
+> +	u32 val;
+>  
+>  	mii_np = of_get_child_by_name(eth->dev->of_node, "mdio-bus");
+>  	if (!mii_np) {
+> @@ -818,6 +820,29 @@ static int mtk_mdio_init(struct mtk_eth *eth)
+>  	eth->mii_bus->parent = eth->dev;
+>  
+>  	snprintf(eth->mii_bus->id, MII_BUS_ID_SIZE, "%pOFn", mii_np);
+> +
+> +	if (!of_property_read_u32(mii_np, "clock-frequency", &val))
+> +		max_clk = val;
 
-	if (ds->ageing_time_min && ageing_time < ds->ageing_time_min)
-		return -ERANGE;
+Checking for valid range? There should also probably be a dt-bindings
+patch for this.
 
-High tech, advanced software.....
+> +
+> +	while (clk / divider > max_clk) {
+> +		if (divider >= 63)
+> +			break;
+> +
+> +		divider++;
+> +	};
 
-You could print the ds->ageing_time_min variable. For mv88e6xxx, my 6390
-and 6190 report 3750. I have to admit the ageing time units are confusing,
-but Tobias Waldekranz kindly explained in one of those commit messages
-that Ido linked to that these represent "centiseconds" (or 37.5 seconds).
-And I think we discussed the units with you before. And in general, it's
-not hard to find the answer if you search for it, I know I could find it.
+uhm, "divider = min(DIV_ROUND_UP(25000000, max_clk), 63);"? I don't
+think the compiler is smart enough to optimize away this loop.
 
-Please stop trying to find silly excuses to always go through the path
-of minimal resistance.
+> +
+> +	val = mtk_r32(eth, MTK_PPSC);
+> +	val |= PPSC_MDC_TURBO;
+> +	mtk_w32(eth, val, MTK_PPSC);
+
+What does "TURBO" do and why do you set it unconditionally?
+
+> +
+> +	/* Configure MDC Divider */
+> +	val = mtk_r32(eth, MTK_PPSC);
+> +	val &= ~PPSC_MDC_CFG;
+> +	val |= FIELD_PREP(PPSC_MDC_CFG, divider);
+> +	mtk_w32(eth, val, MTK_PPSC);
+> +
+> +	dev_dbg(eth->dev, "MDC is running on %d Hz\n", clk / divider);
+> +
+>  	ret = of_mdiobus_register(eth->mii_bus, mii_np);
+>  
+>  err_put_node:
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> index 7230dcb29315..724815ae18a0 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> @@ -363,6 +363,11 @@
+>  #define RX_DMA_VTAG_V2		BIT(0)
+>  #define RX_DMA_L4_VALID_V2	BIT(2)
+>  
+> +/* PHY Polling and SMI Master Control registers */
+> +#define MTK_PPSC		0x10000
+> +#define PPSC_MDC_CFG		GENMASK(29, 24)
+> +#define PPSC_MDC_TURBO		BIT(20)
+> +
+>  /* PHY Indirect Access Control registers */
+>  #define MTK_PHY_IAC		0x10004
+>  #define PHY_IAC_ACCESS		BIT(31)
+> -- 
+> 2.39.1
+> 
+
 
