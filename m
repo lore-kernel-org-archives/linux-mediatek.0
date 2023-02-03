@@ -4,96 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CFA4C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Feb 2023 14:29:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30CE8C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Feb 2023 14:56:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y5QSL2KQ7I6Qbye6De1VwL36uZ19OhoWx467Nfxob8I=; b=4r05c0xCg2L81HDhDDqQ58ZkGN
-	lv97778s6plIKAc+P8aYGIyKZv21cVsFlCNvxe5zxlht2WL0gtUZ2vBdGNg/jGvQXvI4rRG9shYX4
-	Wq2GxrLQRyr+rOLswSOKnX2MIEe4oq9/sFKqXJ07LgWml1a927URT6tY4ih1d8bPaiZmLxhisAkE+
-	PgddzGeNUFeFx+BsEC/3+cxLT/InJEfjUs7ZEmeo82AdFwGaFvTPqvnuSPHWFa1n3SI3PvTya2YwM
-	q/+Qy/2S8BeBp9mldV/Iu+ZtpPoml13864tNrRGeWTh824G4cWhN+SCjCZ8fvc52uGpC9PjR77xgZ
-	v8wgDLmw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kt/4G7lzjjpdwZqs9CmX3c69H4We+zvtJy9t78XbQJk=; b=AFldYg0AUgz9h8Ivrz+Pg+aYCE
+	FHk30NKZsi3fMHo1T0M9MH6dqQCk8gpoISYoVcEVN9zrtbZ8q4CpUmACrRjaYTk2TjWpeFBiHJ1EK
+	ljrwXJ7NduoTxYwey/lSDiPkXoG3cJ7Zi45yyx9cxcaxc0/BPXTypfnrNrOkkU3UnSTQw8BEIsqrQ
+	T1jBFtfEep6wcNQXuPOFYCZBN3Ep+bK9fvL+qjOFoN1h66Wyd3rHnMKJ77rqzr5j0hSKQU3KHEkyz
+	VCzfRznUJJTiCJrC6pQtygnBdNeTJ0MT2eGkdZ9Oi7Vm3gMhtZsX7S1dPg/5AfwT5Ngj1ayJM0I5B
+	FAdUn7uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNx3m-002QuX-Ch; Fri, 03 Feb 2023 14:29:02 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1pNxUI-002YlQ-2F; Fri, 03 Feb 2023 14:56:26 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNwtr-002LlB-Pt; Fri, 03 Feb 2023 14:18:49 +0000
-Received: by mail-ed1-x532.google.com with SMTP id be12so5324765edb.4;
-        Fri, 03 Feb 2023 06:18:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=Y5QSL2KQ7I6Qbye6De1VwL36uZ19OhoWx467Nfxob8I=;
-        b=oFKxvoCUuD0kdQrD8wLZOBSp4dHJc3BesofQGhdR7hhRNemcXWTuC9jlIJMSzYBv6J
-         HWsVLvltQhLxb2O0lC8FYLFaeo7pyIwbRKuD1kaGN16r9MZtpHmd0/208Al5d8lgaehP
-         SxTSa/gXboj+rMT6TaruMb4KyVGzEsJUU3gsAsCAhLnje1V8dMb5WDjsrieanlUJ+QnE
-         fhimA7zv+xBh6GNsEu4+yeUz/94V0Uw2dAsEucDF//vkBtOWM36Y9NEwBd/KJ8cAqqYM
-         /JMO04RD4Xz56hR45fxx6t+Mv9oW6qya25MeWIEpVcCq1h+xluL4//pKeBINs1uIow2l
-         BNVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Y5QSL2KQ7I6Qbye6De1VwL36uZ19OhoWx467Nfxob8I=;
-        b=wIXSq80qpowFPvid1Ry2B9GxePSUjKqN+1KPm7fdPtIHyB6Up5pKtWx1vsvl+i0Thp
-         uWtUZYMYhlxpo6WtsLwATKpAuPQhpbCv6ME3/QbKB1dtq3OZpidlWWdUG11J3sfyUb1x
-         tIfpfTSyMuQ0EJF7ZXIUK+8Dr+vyKxiH98U7X35rBpttk/rJg9X23gL7T2Ng6Sn5T+hE
-         Xx8aFKO3oY/8uRdtvBytrXCIPP/DmnSP6+7VWYmX7G4PZ8R8CdB3l9OOe6AWtOSBtf2v
-         1/0MTg/tkuipI1apwXV5qsLWeIB9BEIe6fCoK2AemunoOAVmeTg6vsjIFG3foUiHLRb3
-         0BSQ==
-X-Gm-Message-State: AO0yUKV4578GiJrnHCkWW39nNYLEI8Tp8ksD+KT9Py20oMaITSy4WMOx
-	njdm+wGXolfhMQNnyd9fQHVu2V4QOw9BAQ==
-X-Google-Smtp-Source: AK7set/lqhJkKG1jhrlMZ7tsVU350vT6gguJgctsAvHm76Udi3CWQAiKtESaORNQaAbHnXKFxJ2QPQ==
-X-Received: by 2002:a05:6402:124b:b0:49b:63ea:b5d8 with SMTP id l11-20020a056402124b00b0049b63eab5d8mr10962336edw.4.1675433923587;
-        Fri, 03 Feb 2023 06:18:43 -0800 (PST)
-Received: from skbuf ([188.26.57.116])
-        by smtp.gmail.com with ESMTPSA id h23-20020a170906855700b00872a726783dsm1408158ejy.217.2023.02.03.06.18.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Feb 2023 06:18:43 -0800 (PST)
-Date: Fri, 3 Feb 2023 16:18:40 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Russell King <linux@armlinux.org.uk>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
-	=?utf-8?B?QmrDuHJu?= Mork <bjorn@mork.no>
-Subject: Re: [PATCH 1/9] net: ethernet: mtk_eth_soc: add support for MT7981
- SoC
-Message-ID: <20230203141840.chljzf3opxbxyp33@skbuf>
-References: <cover.1675407169.git.daniel@makrotopia.org>
- <cover.1675407169.git.daniel@makrotopia.org>
- <301fa3e888d686283090d58a060579d8c2a5bebb.1675407169.git.daniel@makrotopia.org>
- <301fa3e888d686283090d58a060579d8c2a5bebb.1675407169.git.daniel@makrotopia.org>
+	id 1pNxU7-002YiH-KW; Fri, 03 Feb 2023 14:56:17 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id B7FFC61F65;
+	Fri,  3 Feb 2023 14:56:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5FF24C433A0;
+	Fri,  3 Feb 2023 14:56:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1675436174;
+	bh=HBW7gQQhXYjcv51yj9Mg8t0xqUMKWXdcmuW5/POrA4I=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=rJ69gpF9aipo4mKw2c/YxbUOTxC9hSsdzvi2N6dixE54ys38FTHnMDle5M9hPbvBr
+	 8X5xuBSYak2+bVBIEVqZVuA58z4qW6MOLZ3m0i0u7JxXMpL2ELo/TUQIr+5+h58ZJr
+	 JyWfj8hkOSE/FQuVgomrX2FA31hdMIwSuXIvzo9gAnGyXQdIhw4Ep6U411acOtIxOa
+	 Co4G1BXvJv89u/mItFYOI+nl1N53XLiDnONGLE1iPbP1xPYr2ZBJKwJ6YWu3F/ljL0
+	 GeW23JfwFjhz4kIpzLgplML4md+fwK2pGF++KLkRLPnw0ycYVR2zUfK92ZJCkA94FF
+	 VhSGrgIpOMXoQ==
+From: Mark Brown <broonie@kernel.org>
+To: lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, 
+ matthias.bgg@gmail.com, Trevor Wu <trevor.wu@mediatek.com>
+Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ error27@gmail.com
+In-Reply-To: <20230202103704.15626-1-trevor.wu@mediatek.com>
+References: <20230202103704.15626-1-trevor.wu@mediatek.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8188: remove etdm dead code
+Message-Id: <167543617210.928818.16034479848573995520.b4-ty@kernel.org>
+Date: Fri, 03 Feb 2023 14:56:12 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <301fa3e888d686283090d58a060579d8c2a5bebb.1675407169.git.daniel@makrotopia.org>
- <301fa3e888d686283090d58a060579d8c2a5bebb.1675407169.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.12.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230203_061847_889959_ED828B16 
-X-CRM114-Status: GOOD (  12.64  )
+X-CRM114-CacheID: sfid-20230203_065615_750188_4DCF0FE8 
+X-CRM114-Status: GOOD (  13.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,25 +73,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 03, 2023 at 07:00:21AM +0000, Daniel Golle wrote:
-> The MediaTek MT7981 SoC comes two 1G/2.5G SGMII, just like MT7986.
+On Thu, 02 Feb 2023 18:37:04 +0800, Trevor Wu wrote:
+> Some Smatch static checker warning like below was found.
 > 
-> In addition MT7981 comes with a built-in 1000Base-T PHY which can be
-> used with GMAC1.
+> sound/soc/mediatek/mt8188/mt8188-dai-etdm.c:2487
+> mt8188_dai_etdm_parse_of()
+> warn: 'ret' returned from snprintf() might be larger than 48
 > 
-> As many MT7981 boards make use of swapping SGMII phase and neutral, add
-> new device-tree attribute 'mediatek,pn_swap' to support them.
+>     2479         for (i = 0; i < MT8188_AFE_IO_ETDM_NUM; i++) {
+>     2480                 dai_id = ETDM_TO_DAI_ID(i);
+>     2481                 etdm_data = afe_priv->dai_priv[dai_id];
+>     2482
+>     2483                 ret = snprintf(prop, sizeof(prop),
+>     2484                                "mediatek,%s-multi-pin-mode",
+>     2485                                of_afe_etdms[i].name);
+>     2486                 if (ret < 0) {
+> --> 2487                         dev_err(afe->dev, "%s snprintf
+> err=%d\n",
+>     2488
 > 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
+> [...]
 
-Phase and neutral? What is this, a power plug?
-Since SGMII uses differential signaling, I wonder if this isn't about
-the polarity of the TX lane (which pin carries the Positive signal and
-which the Negative one).
+Applied to
 
-I think there is room for a more general device tree property name than
-"mediatek,pn_swap". The Designware XPCS also supports this, see
-DW_VR_MII_DIG_CTRL2_TX_POL_INV and the comments in
-nxp_sja1105_sgmii_pma_config().
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: mediatek: mt8188: remove etdm dead code
+      commit: 66b9e94cb7783d3c632e2c1b436b26ece8c14e5d
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
