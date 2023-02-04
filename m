@@ -4,85 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC098C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Feb 2023 10:28:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A3CBC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Feb 2023 11:11:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:
-	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TQm9ieRv5B09nA3PAa1PAhtz6bSCFkESNEOIL8L9PhM=; b=cjus43KGzCWDsIVC2NlopDjsEC
-	uhRmc8CXdX8yjPHoOgZclfMrXN04IIMOBrBSEkWLML84j1MlBdKEenXtTdADGSoZUa5UgjP+Q/+ju
-	4VF/pqlAeSLsOD5nbRFICLQHXk3o1xPEXUjFGee1LO0Bw1Y9MSW6eFOb6pgThaDaEgprbvkBgkqlG
-	wzLXiJkNqqLOhRKBBa2j9kW4fHqYf0+LR9UZ+MytytTAyOmcABVMeFSCus6eEiLWRnl7XZJQ45/4g
-	LxjurhyLF6ueSaSMSW/ZMUHRZ94TgmKvQS48tDOnK9mpeyjxiOKrSO+C34PXrvT9Q+UqVqmESl7z+
-	M7kupQBg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:In-Reply-To:Date:References:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Zqkm7aqyRCSQ+b3/N48+MN/w1oUlkwo8qxuzVoWUtTc=; b=ElI0jbOrQLW+yMKsjQ5zve+Kgm
+	QXwPp2jR8p9ggDnkiD/gNykorMYYVNWx2XeAPxVxj61WJYlK+RCBeMB8UddhjmHgOLtxAakNAXvmQ
+	mzYykZr5rip1QGP+wucMrwuutJIa6kpe1Aj+h+0qbak+rw6dUsJo4qNz73C0B2+mW/Ck0fn7OIv5u
+	fMlbQ+Ln+4f5OmeOwJjnfs87wH4GrFLRjfNbitMbfDGyg4oUKaadPsXl1zIwppdZJOXEzqI0G4j7R
+	aM/ybq7CVv2GsgrUvl7X3sUV79fk68J6AGtlZsIpUtvhFI8ILeI9suVYcp+lQ6Zx+oaNOhqRJhF7b
+	kzdbBbNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pOFm3-004sYB-9V; Sat, 04 Feb 2023 10:27:59 +0000
-Received: from mout.gmx.net ([212.227.15.15])
+	id 1pOGRq-004waE-HA; Sat, 04 Feb 2023 11:11:10 +0000
+Received: from dilbert.mork.no ([2a01:4f9:c010:a439::d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pOFlt-004sXQ-Fe; Sat, 04 Feb 2023 10:27:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1675506452;
-	bh=TQm9ieRv5B09nA3PAa1PAhtz6bSCFkESNEOIL8L9PhM=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=e/SqE1lDQs3/toO9p5vOPJdC+nVYg1tk+mDdWIkRWqESaHbI10EyG4a15OxEmQaVw
-	 hV4zkaBBobH6vXMtiPGt6+oevdRnE0xIhzKgRfznhthTySj7PDqz2MxkQxa+EV97z4
-	 NgsSZopxc+kzmHAaeugb8PIer69ytNC/NKHezHJTM+XxN6GcqKE9+xo6PUTBXVp2em
-	 9ENvh6jWupG3zD+IEGhhzTnv9DPdjWUAKvid6Tjjr/rU8FTU91oao91BITsSZfPuky
-	 iCxxGvN7DaVzmka/Xiwl+43iRieZWgWjG9vjLhyJykeFfLeBq0jHiqRFy81ifN1v0N
-	 GGygXljgpJybA==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [157.180.225.92] ([157.180.225.92]) by web-mail.gmx.net
- (3c-app-gmx-bs72.server.lan [172.19.170.208]) (via HTTP); Sat, 4 Feb 2023
- 11:27:32 +0100
+	id 1pOGRi-004wZ7-RU; Sat, 04 Feb 2023 11:11:08 +0000
+Received: from canardo.dyn.mork.no ([IPv6:2a01:799:c9a:3200:0:0:0:1])
+	(authenticated bits=0)
+	by dilbert.mork.no (8.15.2/8.15.2) with ESMTPSA id 314B8FHF850235
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
+	Sat, 4 Feb 2023 11:08:16 GMT
+Received: from miraculix.mork.no ([IPv6:2a01:799:c9a:3202:549f:9f7a:c9d8:875b])
+	(authenticated bits=0)
+	by canardo.dyn.mork.no (8.15.2/8.15.2) with ESMTPSA id 314B87aW2058955
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
+	Sat, 4 Feb 2023 12:08:07 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mork.no; s=b;
+	t=1675508890; bh=Zqkm7aqyRCSQ+b3/N48+MN/w1oUlkwo8qxuzVoWUtTc=;
+	h=From:To:Cc:Subject:References:Date:Message-ID:From;
+	b=aRwiujNJky7pS3rdcMSKtorVQnmE+A6HTkwloMysn9lY6nBqmh5kbPXvYrKkFu85I
+	 IVIKFgi5Pw2syLj82IVoml1cH4B9SCwxKUUZdYCuUcpoJ6tY5m4ynGb/0H9bsA+0E9
+	 Ctu8Suw96sjUS/neba+GLYHZFXQZQQY0RSzocDMw=
+Received: (nullmailer pid 392333 invoked by uid 1000);
+	Sat, 04 Feb 2023 11:08:07 -0000
+From: =?utf-8?Q?Bj=C3=B8rn_Mork?= <bjorn@mork.no>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+        linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+        Russell King <linux@armlinux.org.uk>,
+        Heiner Kallweit <hkallweit1@gmail.com>,
+        Lorenzo Bianconi <lorenzo@kernel.org>,
+        Mark Lee <Mark-MC.Lee@mediatek.com>, John Crispin <john@phrozen.org>,
+        Felix Fietkau <nbd@nbd.name>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        DENG Qingfang <dqfext@gmail.com>,
+        Landen Chao <Landen.Chao@mediatek.com>,
+        Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+        Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>,
+        "David S. Miller" <davem@davemloft.net>,
+        Vladimir Oltean <olteanv@gmail.com>,
+        Florian Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+        Jianhui Zhao <zhaojh329@gmail.com>
+Subject: Re: [PATCH 0/9] net: ethernet: mtk_eth_soc: various enhancements
+Organization: m
+References: <cover.1675407169.git.daniel@makrotopia.org>
+Date: Sat, 04 Feb 2023 12:08:07 +0100
+In-Reply-To: <cover.1675407169.git.daniel@makrotopia.org> (Daniel Golle's
+	message of "Fri, 3 Feb 2023 06:58:48 +0000")
+Message-ID: <87h6w1r8mg.fsf@miraculix.mork.no>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-Message-ID: <trinity-ec3920c5-a96a-4edf-9ff1-4bf07e7b4d07-1675506452617@3c-app-gmx-bs72>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
-Cc: arinc9.unal@gmail.com, Rob Herring <robh+dt@kernel.org>, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, erkin.bozoglu@xeront.com, Sean Wang
- <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>
-Subject: Aw: Re: [PATCH v2 4/5] arm: dts: mt7623: mux phy0 on Bananapi
- BPI-R2
-Content-Type: text/plain; charset=UTF-8
-Date: Sat, 4 Feb 2023 11:27:32 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <75d3758a-5502-03a4-b3a2-990f9339705b@arinc9.com>
-References: <20230201185656.17164-1-arinc.unal@arinc9.com>
- <20230201185656.17164-5-arinc.unal@arinc9.com>
- <AC473057-266B-4403-9270-8007E0EC257C@public-files.de>
- <75d3758a-5502-03a4-b3a2-990f9339705b@arinc9.com>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:c986fcPlX4Ooen57ZAsZI0v2Yr5gNsX/1CTe4qNxcW5X99bLBmBFzw1ZpGrQpvfYPoycP
- cVedJWKkyCyU1Tg73x1tq5Z8GGGgGFdLqq4CnoKY4CXtDCm+OdJ25BPx7WWfUjPaET4bkCXnQkBv
- VJKg0z3wBAN1WShT9ozrT69beX4iE5QVG/9IjTWASyoSq7OJpFBlHE3V78D1wgDHacV4YKPBAzzJ
- +53qy5TxXoiyrIrT2FpnDL350VoxN6UouGb2JdzxtY2jhCJGdyh2prXYm/i5XS7TH9l0DG1nKVZa
- ZU=
-UI-OutboundReport: notjunk:1;M01:P0:Bw/EWLX9TdI=;JrT8R8+e0Rj9R2TqIcm7voib42M
- J9cyBYh2rNxoAOlzMIJEezkbGbB+dtR3G1Sca/0txnIsvMVamGEixTZajJKkKQ7WWw5XhipaT
- STENGATDGymObLbTusXAdYfME2xgwwCdqgE7ANBl9ZPw4bw/Z/gWQ8v1Y/iQ1pqM8EHUjXR3D
- L5XdyhHhpY7R0grdQ/5R8jxPUCekbcUUu/FiOCxnlKuVm52ISypgEutXxdeauDYk6pr1LtN5b
- m7QU4DfG4gNoulZYyPHX+F0OqT0N8eY2tHhBCAvajWIcQRi4StvkY7hHAqhgZVyCKONUp+TEk
- 5b6QFUHmcQXAoLve0bsU02TUGTw99Kc8FLQZ8oMIWR2NKfnyqcrVs5w7wPdAR4JlRdpE3Qv5H
- 49a+mxT81epnsofuW1086MT3lIShxKkiRreThzIktrMOg0BaVDPafwSVGXiI7UbbWyFJO0kPh
- AaOyS/LQpslLYFdySQdU5XNMIpGPkHqJqksJBET1xP/Tnhabv1MPTt+KyVicEBYxhL95UMgAj
- /1Xi0VkaHGkOPzoIBOhKJtBN/H/ToYsqzzuZrWdWxzDXhw0GqvzpCTd7qA+rVgcbkJdG9gIf3
- 2MYb9TitSadMpVI/vNXVcFh6gssOddPt2UVookHzSlbcWtk/EZANeDgrUW8mW9rqjrauktiWp
- 9G/NTiSatChiMIPY69AT20PH/W5CHCSiMHNrguIQqAa/PJvgBBkTyZGpKGVsViTDUNp3NpTjw
- G0mKXu/dZqJemzM/LosyUV22lBjXxmOYRj3BFhVPJHUCYWZH/kPhzaHihEK/9HhYTZmlkBCIF
- ZlcJWXRfn7rE61Ky9jZ0WxEVJulbpQhbQhqM8GfcG6Q1Y=
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Virus-Scanned: clamav-milter 0.103.7 at canardo
+X-Virus-Status: Clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230204_022749_849936_5330875F 
-X-CRM114-Status: UNSURE (   7.31  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230204_031103_530878_D81EF68E 
+X-CRM114-Status: GOOD (  13.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,15 +91,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi aranc,
+Daniel Golle <daniel@makrotopia.org> writes:
 
-have tested this series, basicly it works, but i get only ~620 Mbits/sec (much more i will need on wan) in tx-mode of r2, rx-mode (iperf3 -c IP -R on r2) gets full 939 Mbits/sec. Both no retransmitts.
+> This series brings a variety of fixes and enhancements for mtk_eth_soc,
+> adds support for the MT7981 SoC and facilitates sharing the SGMII PCS
+> code between mtk_eth_soc and mt7530.
 
-tried with my laptop which gets 940Mbit/sec in tx mode too...other end is a R2 with 5.15 connected to lan0 (and eth1+aux enabled, dmesg clean so far...for the "kernel log flooded"-comment).
+Thanks! I've now successfully tested this on an MT7986 board with 2.5G
+phys (GPY211C) connected to one of the mtk_eth_soc macs and on port 5 of
+the the MT7531.  The series fixes a number of issues for me, including a
+mysterious packet drop at 1G only which I believe is related to the
+undocumented MAC_MCR_BIT_12 in patch 5.
 
-maybe gmac1 needs to be tweaked a bit (clock-settings)?
+With Vladimir's (WiP?) "PCS and PHY in-band sync" patch set and your
+related implementations in mxl-gpy, mt7530 and mtk_eth_soc to top of
+this series, both 2.5G ports are now usable at any speed.
 
-can you confirm this with your board?
+Note that the mt7530.c part of the series depends on=20
+https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regmap.git/commit/?=
+id=3D697c3892d825fb78f42ec8e53bed065dd728db3e
+which is not yet in net-next. It appears to be destined for v6.2 so this
+is not a problem.  Just mentioning it in case someone else is struggling
+with the testing of this series.
 
-regards Frank
+Feel free to add
+
+Tested-by: Bj=C3=B8rn Mork <bjorn@mork.no>
+
+to the complete series.
+
+
+Bj=C3=B8rn
 
