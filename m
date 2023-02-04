@@ -4,88 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC1C4C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Feb 2023 13:08:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 786D4C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Feb 2023 15:04:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4d6uDZEW3xj/itubMwviUpA+yDytdRhgIPQgLyFYiNw=; b=GQFet7SBXAB28WTsQiRgLrC/50
-	sRjGSSOjwwio9yjQ1sFTHT2ycWYN7v+SCZWwjqKmK7EsTxDsLs3fPVqM3ogkJNImubs6oG85E3oVi
-	IlJqjYcfbykWOqqv+EZtlHm2QeKo5r0no+Nswa+45RrDvNMEXdo32bxIHM+wNFNBkrBbDA7Pyt6ni
-	Mz+NKdIOGCYVD0ddwraf0QNXOrXZedeXFwzdoWMVb5bTNaoCoxc5M7hqLsMXjWY0uguTo62BlkqGx
-	CbHGwtEXSX1O41HIee+WvJAqMIjvwhiv5CloWRgYei3wSi38ZScceyLCK8Or1COt+cWdQOCahh/Bc
-	ab4K7yyQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZHLz7R1RA3UdYJZavlFPGvqWZxl/FwRnhvD96NQHXGo=; b=B016x4T7rSUPvdqhIFeS1VuKDs
+	qBSRqc7opBhwTlXwAM1e8gpN1UHy8kw0/VbbSaPZnl0VrpuJ3wlDXHCvOx6ebLLG9FCMyn9i9BzPL
+	F8Ya4BKbaKVrB9Fz12/PAd6SNprlT5b/MF+B4f017JQL/8oZ11KRiXulY+SzcTHtdobdVu/ESbbjl
+	FG0ZgkavqKOlIWSxf6ZIygitlutcL/g5mGDFYD003w5ko1V8MB/FzKKp9+rrYgSJ4AqMWFejAlVzs
+	ITxx0wJ2MVpGvQRmRzqIY4Eucqw6pPvF2b1/KbGOk/i4ikY1pCubH9s3FUdR5QEOIuzdK1sTSjKJ1
+	cntjn1Dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pOIGo-0056ux-7z; Sat, 04 Feb 2023 13:07:54 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1pOK56-005GJy-7v; Sat, 04 Feb 2023 15:03:56 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pOIGi-0056tx-Rv; Sat, 04 Feb 2023 13:07:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1675516042;
-	bh=4d6uDZEW3xj/itubMwviUpA+yDytdRhgIPQgLyFYiNw=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=k5r/S7UzGLA1U3fBnx5W7kjfmm5TCMeKoVVW3kTdtNDu3SXz39YjMhoaqNR3TcXfp
-	 J6p6R3D69BY/pBNWiQ1AB5/R7/zhWU/bgAg/DnD/pF2N1aRyQ5L2y7oQ35DNYbgNw+
-	 qmOuIE7Znvwmdi4UcbzCJqp8G48jH9xlYsQytbEuTrMS8smrJEJx3bNdPPasboAl3Y
-	 W3scERnjaF/I0+NHLPvLAWIhu9FQsHfoTwnc9QBDAxHwDPzYyP3kdL1d1LV7ZYPliS
-	 udIPW3ZdAQCgGhhd/44d+n7pEaPf3pmOYUfBHvj2ih5fNniVrOwgUsBnSaVfogUBxi
-	 rzDQEdlkRaDqw==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [157.180.225.92] ([157.180.225.92]) by web-mail.gmx.net
- (3c-app-gmx-bs72.server.lan [172.19.170.208]) (via HTTP); Sat, 4 Feb 2023
- 14:07:22 +0100
+	id 1pOK52-005GGJ-RC; Sat, 04 Feb 2023 15:03:54 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pOK4o-0004gO-0k;
+	Sat, 04 Feb 2023 16:03:38 +0100
+Date: Sat, 4 Feb 2023 15:02:00 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Russell King <linux@armlinux.org.uk>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
+Subject: Re: [PATCH 9/9] net: dsa: mt7530: use external PCS driver
+Message-ID: <Y95zaIJbCj3QIdqC@makrotopia.org>
+References: <cover.1675407169.git.daniel@makrotopia.org>
+ <cover.1675407169.git.daniel@makrotopia.org>
+ <677a5e37aab97a4f992d35c41329733c5f3082fb.1675407169.git.daniel@makrotopia.org>
+ <677a5e37aab97a4f992d35c41329733c5f3082fb.1675407169.git.daniel@makrotopia.org>
+ <20230203221915.tvg4rrjv5cnkshuf@skbuf>
 MIME-Version: 1.0
-Message-ID: <trinity-3c3b11eb-2503-4637-b8f6-05686bd1ad88-1675516042495@3c-app-gmx-bs72>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
-Cc: arinc9.unal@gmail.com, Rob Herring <robh+dt@kernel.org>, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, erkin.bozoglu@xeront.com, Sean Wang
- <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>
-Subject: Aw: Re:  Re: [PATCH v2 4/5] arm: dts: mt7623: mux phy0 on Bananapi
- BPI-R2
-Content-Type: text/plain; charset=UTF-8
-Date: Sat, 4 Feb 2023 14:07:22 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <f628db9c-cf61-e1bc-2160-0c8d1caa0fbe@arinc9.com>
-References: <20230201185656.17164-1-arinc.unal@arinc9.com>
- <20230201185656.17164-5-arinc.unal@arinc9.com>
- <AC473057-266B-4403-9270-8007E0EC257C@public-files.de>
- <75d3758a-5502-03a4-b3a2-990f9339705b@arinc9.com>
- <trinity-ec3920c5-a96a-4edf-9ff1-4bf07e7b4d07-1675506452617@3c-app-gmx-bs72>
- <trinity-a01f321e-0973-417e-9a25-9350f63ece37-1675511027203@3c-app-gmx-bs72>
- <f628db9c-cf61-e1bc-2160-0c8d1caa0fbe@arinc9.com>
-Content-Transfer-Encoding: quoted-printable
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:2f7IPHsaQ3ie6c1OE7RdMDBst8fc99xmyWkxGQE6mdqo3Q9nkhqgDxT2q2YVhWGBY+8f1
- g+JJx9fkzmOXlVO49aU2pPjHRK0SEhIGOjEgi74WgwpCnl9P+u3mPT9SNeAaacqq4zeSAQ/+6+Qz
- SZ4e7h1zFScV98n4fr1CUbOYsXBuKVs7ybmXfUoNR2PyCIXZ1Zp3fl2k+QJ9PnjpxFbvjSzGX8Ad
- NLCFWe75a+hjtzX9Lh+wRKEmilHv5ssDpQTphdtdU51du+6AwnZ7dMScQvxTh2pkFERcEuq7znyF
- Ls=
-UI-OutboundReport: notjunk:1;M01:P0:cJEiZ27hpLg=;y/wlEQMmdnR8E/AxCLSuhWSxKIS
- UfDyP6HUnDlHi3NsaCaauT0KK15iFA1Qw0XAHFNZzjnKyzWX+QEjxoHKTGf0XjwZb73PjYQeB
- TioacBowbdM5W9IcQJ/vlnybkg6+AlAI8z2cWmOXWOtRw5vSfpI9S94IIibqgbOa/h3ocHL7g
- 1WzHFUd4GPDGrVfv6XQnBvIL+b1tSIdlAiiyekbV/z53ukK+vtxK4uEVz/2lGVxJEPjs6o6gD
- H7UXTVAJ6dP1fXAM9vITmtAmt87M8unOQpAHwksdh09HVNqe3OaNtR2/xKNGmYGPCGW149H5+
- jOUpn9g8uErT6aZApGwf09u4legp9OkdvQL26hX/zbqlvDfWLRRYubUmAso4F9NjXcfqYIK6K
- mFmwmIE6m8gB+kRmD2Dfj5azf139Qu5Ys78/yf/ExxvU48kY6si5iC+7Bc9E7x7AZtqo2IFgz
- vMDaCB6FN5NbMEtNO7BdYIyb8zfB1zmgndYZt/z/4QoCfuQ5Wvjf1iKgVbBpaOdOBihne0ldI
- f9gn9jO2C7WfMBsQKxPucbVJIyV9XWDLQmvPnGHa8gtnSfT65Q708uWW9JeYLS64y31NxIRcN
- hgc2rbRSpUoHTcT8voSrlB7AeEzTJyHaSdrgXtMhrLjLteJ6GZEa+DCKRa6CbGbzt7ZENo/69
- jESVmMTCOQa1cL5Gg5a0KBJHTq9ryEM6J6xDuV085d6+1PkFWBVHzASeTQcyKLvaJqmDCMydG
- 8Ag7Y5FxcuyaZ6BYcOX64Y3J0tILrjqh9ZJ+m9za+vQAczx5LpSLiiaudFSpOS9a41PbGrUbu
- nhi4yCFGT6zjOBUfO66H11dQ==
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230203221915.tvg4rrjv5cnkshuf@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230204_050749_208684_8A44051D 
-X-CRM114-Status: GOOD (  22.11  )
+X-CRM114-CacheID: sfid-20230204_070352_924422_792EF081 
+X-CRM114-Status: GOOD (  31.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,104 +79,138 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+Hi Vladimir,
 
-> Gesendet: Samstag, 04=2E Februar 2023 um 13:12 Uhr
-> Von: "Ar=C4=B1n=C3=A7 =C3=9CNAL" <arinc=2Eunal@arinc9=2Ecom>
-> An: "Frank Wunderlich" <frank-w@public-files=2Ede>
-> Cc: arinc9=2Eunal@gmail=2Ecom, "Rob Herring" <robh+dt@kernel=2Eorg>, "Kr=
-zysztof Kozlowski" <krzysztof=2Ekozlowski+dt@linaro=2Eorg>, "Matthias Brugg=
-er" <matthias=2Ebgg@gmail=2Ecom>, devicetree@vger=2Ekernel=2Eorg, linux-arm=
--kernel@lists=2Einfradead=2Eorg, linux-mediatek@lists=2Einfradead=2Eorg, li=
-nux-kernel@vger=2Ekernel=2Eorg, erkin=2Ebozoglu@xeront=2Ecom, "Sean Wang" <=
-sean=2Ewang@mediatek=2Ecom>, "DENG Qingfang" <dqfext@gmail=2Ecom>
-> Betreff: Re: Aw: Re: [PATCH v2 4/5] arm: dts: mt7623: mux phy0 on Banana=
-pi BPI-R2
->
-> On 4=2E02=2E2023 14:43, Frank Wunderlich wrote:
-> >> Gesendet: Samstag, 04=2E Februar 2023 um 11:27 Uhr
-> >> Von: "Frank Wunderlich" <frank-w@public-files=2Ede>
-> >> An: "Ar=C4=B1n=C3=A7 =C3=9CNAL" <arinc=2Eunal@arinc9=2Ecom>
-> >> Cc: arinc9=2Eunal@gmail=2Ecom, "Rob Herring" <robh+dt@kernel=2Eorg>, =
-"Krzysztof Kozlowski" <krzysztof=2Ekozlowski+dt@linaro=2Eorg>, "Matthias Br=
-ugger" <matthias=2Ebgg@gmail=2Ecom>, devicetree@vger=2Ekernel=2Eorg, linux-=
-arm-kernel@lists=2Einfradead=2Eorg, linux-mediatek@lists=2Einfradead=2Eorg,=
- linux-kernel@vger=2Ekernel=2Eorg, erkin=2Ebozoglu@xeront=2Ecom, "Sean Wang=
-" <sean=2Ewang@mediatek=2Ecom>, "DENG Qingfang" <dqfext@gmail=2Ecom>
-> >> Betreff: Aw: Re: [PATCH v2 4/5] arm: dts: mt7623: mux phy0 on Bananap=
-i BPI-R2
-> >>
-> >> Hi aranc,
-> >>
-> >> have tested this series, basicly it works, but i get only ~620 Mbits/=
-sec (much more i will need on wan) in tx-mode of r2, rx-mode (iperf3 -c IP =
--R on r2) gets full 939 Mbits/sec=2E Both no retransmitts=2E
-> >>
-> >> tried with my laptop which gets 940Mbit/sec in tx mode too=2E=2E=2Eot=
-her end is a R2 with 5=2E15 connected to lan0 (and eth1+aux enabled, dmesg =
-clean so far=2E=2E=2Efor the "kernel log flooded"-comment)=2E
-> >>
-> >> maybe gmac1 needs to be tweaked a bit (clock-settings)?
-> >>
-> >> can you confirm this with your board?
-> >=20
-> > tested the vlan_aware way with 5=2E15=2E80 and got better result
-> >=20
-> > ip link add br0 type bridge vlan_filtering 1
-> > ip l set aux master br0
-> > ip l set wan master br0
-> > bridge vlan add vid 99 dev wan
-> > bridge vlan add vid 99 dev aux
-> > bridge vlan
-> > ip l s eth1 up
-> > ip l s wan up
-> > ip a a 192=2E168=2E0=2E11/24 dev eth1
-> > ip l s br0 up
-> > ip l s aux up
-> >=20
-> > i see traffic on eth1 increasing and iperf3 shows in both directions ~=
-940Mbit/s, no strange mesages in dmesg while testing=2E=2E=2Ewhere do you s=
-ee these?
->=20
-> You didn't put eth1 on a bridge=2E I suggest you read my mails with high=
-er=20
-> attention so both of our time is spent efficiently=2E
+thank you for the review!
 
-sorry if i misseed this detail, but it was not part of the instructions i =
-got from mtk and did not found it in our mail-conversion=2E why do i need t=
-o add the gmac into the bridge??
+On Sat, Feb 04, 2023 at 12:19:15AM +0200, Vladimir Oltean wrote:
+> On Fri, Feb 03, 2023 at 07:06:53AM +0000, Daniel Golle wrote:
+> > @@ -2728,11 +2612,14 @@ mt753x_phylink_mac_select_pcs(struct dsa_switch *ds, int port,
+> >  
+> >  	switch (interface) {
+> >  	case PHY_INTERFACE_MODE_TRGMII:
+> > +		return &priv->pcs[port].pcs;
+> >  	case PHY_INTERFACE_MODE_SGMII:
+> >  	case PHY_INTERFACE_MODE_1000BASEX:
+> >  	case PHY_INTERFACE_MODE_2500BASEX:
+> > -		return &priv->pcs[port].pcs;
+> > +		if (!mt753x_is_mac_port(port))
+> > +			return ERR_PTR(-EINVAL);
+> 
+> What is the reason for returning ERR_PTR(-EINVAL) to mac_select_pcs()?
 
-the gmac is connected physically to mt7531 p5, and my vlan_aware bridge br=
-idges this port (aux=3Dp5) with wan,=20
-so i see no need to add eth1 to this bridge too=2E=2E=2Etraffic on wan is =
-tagged with vlan 99 and leaving untagged
-on aux which is arriving eth1=2E=2E=2E
+The SerDes PCS units are only available for port 5 and 6. The code
+should make sure that the corresponding interface modes are only used
+on these two ports, so a BUG_ON(!mt753x_is_mac_port(port)) would also
+do the trick, I guess. However, as dsa_port_phylink_mac_select_pcs may
+also return ERR_PTR(-EOPNOTSUPP), returning ERR_PTR(-EINVAL) felt like
+the right thing to do in that case.
+Are you suggesting to use BUG_ON() instead or rather return
+ERR_PTR(-EOPNOTSUPP)?
 
-> > tested vlan-way with 6=2E2 and felix' Patches to more comparable with =
-your test=2E=2E=2Eand got same result (~625Mbit/s in tx and 940Mbit/s in rx=
--mode=3D-R on r2)=2E=2E=2Eso it seems anything between 5=2E15 and 6=2E2 red=
-uced gmac1 tx bandwidth=2E
->=20
-> I don't see an incentive to investigate unless the issue is confirmed on=
-=20
-> a daily netdev/net-next=2Egit main tree=2E
 
-have same result on net-next/main with your series, no additional patches =
-on top except adding my build-script and defconfig=2E
+> 
+> >  
+> > +		return priv->sgmii_pcs[port - 5];
+> 
+> How about putting the pcs pointer in struct mt7530_port?
 
-> >=20
-> > to summarize:
-> >=20
-> > i get same result with your patches and my old vlan_bridge way with sa=
-me codebase=2E=2E=2Ehow do i see your problem with the vlan-bridge-way? Do =
-you test with bpi-r2 or only any other board and change r2 to have same DT?
->=20
-> I tested this only on a Bananapi BPI-R2 using the devicetree with this=
-=20
-> series applied on a few days old netdev/net-next=2Egit main tree=2E
+There are only two SerDes units available, only for port 5 and port 6.
+Hence I wouldn't want to allocate additional unused sizeof(void*) for
+ports 0 to 4.
 
-btw=2E i do this in my currently very limited free time in short chunks, s=
-o please forgive me if i miss a detail=2E
+> 
+> >  	default:
+> >  		return NULL;
+> >  	}
+> > @@ -3088,8 +2934,6 @@ mt753x_setup(struct dsa_switch *ds)
+> >  		priv->pcs[i].pcs.ops = priv->info->pcs_ops;
+> >  		priv->pcs[i].priv = priv;
+> >  		priv->pcs[i].port = i;
+> > -		if (mt753x_is_mac_port(i))
+> > -			priv->pcs[i].pcs.poll = 1;
+> >  	}
+> >  
+> >  	ret = priv->info->sw_setup(ds);
+> > @@ -3104,6 +2948,15 @@ mt753x_setup(struct dsa_switch *ds)
+> >  	if (ret && priv->irq)
+> >  		mt7530_free_irq_common(priv);
+> 
+> You need to patch the previous code to "return ret".
+> 
+> >  
+> > +	if (priv->id == ID_MT7531)
+> 
+> if the code block below is multi-line (which it is), put braces here too
+> 
+> or can return early if priv->id != ID_MT7531, and this reduces the
+> indentation by one level.
+> 
+> > +		for (i = 0; i < 2; ++i) {
+> 
+> could also iterate over all ports and ignore those which have
+> !mt753x_is_mac_port(port)
+> 
+> > +			regmap = devm_regmap_init(ds->dev,
+> > +						  &mt7531_regmap_bus, priv,
+> > +						  &mt7531_pcs_config[i]);
+> 
+> can fail
+> 
+> > +			priv->sgmii_pcs[i] = mtk_pcs_create(ds->dev, regmap,
+> > +							    0x128, 0);
+> 
+> can fail
+> 
+> Don't forget to do error teardown which isn't leaky
+> 
+> 0x128 comes from the old definition of MT7531_PHYA_CTRL_SIGNAL3(port),
+> so please keep a macro of some sorts to denote the offset of ana_rgc3
+> for MT7531, rather than just this obscure magic number.
+> 
+> > +		}
+> > +
+> >  	return ret;
+> >  }
+> >  
+> > @@ -3199,7 +3052,7 @@ static const struct mt753x_info mt753x_table[] = {
+> >  	},
+> >  	[ID_MT7531] = {
+> >  		.id = ID_MT7531,
+> > -		.pcs_ops = &mt7531_pcs_ops,
+> > +		.pcs_ops = &mt7530_pcs_ops,
+> >  		.sw_setup = mt7531_setup,
+> >  		.phy_read_c22 = mt7531_ind_c22_phy_read,
+> >  		.phy_write_c22 = mt7531_ind_c22_phy_write,
+> > @@ -3309,7 +3162,7 @@ static void
+> >  mt7530_remove(struct mdio_device *mdiodev)
+> >  {
+> >  	struct mt7530_priv *priv = dev_get_drvdata(&mdiodev->dev);
+> > -	int ret = 0;
+> > +	int ret = 0, i;
+> >  
+> >  	if (!priv)
+> >  		return;
+> > @@ -3328,6 +3181,11 @@ mt7530_remove(struct mdio_device *mdiodev)
+> >  		mt7530_free_irq(priv);
+> >  
+> >  	dsa_unregister_switch(priv->ds);
+> > +
+> > +	for (i = 0; i < 2; ++i)
+> 
+> There is no ++i in this driver and there are 11 i++, so please be
+> consistent with what exists.
 
-> Ar=C4=B1n=C3=A7
+As most likely in all cases a pre-increment is sufficient and less
+resource consuming than a post-increment operation we should consider
+switching them all to ++i instead of i++.
+I will anyway use i++ in v2 for now.
+
+> 
+> > +		if (priv->sgmii_pcs[i])
+> > +			mtk_pcs_destroy(priv->sgmii_pcs[i]);
+> > +
+> >  	mutex_destroy(&priv->reg_mutex);
+> >  }
+> >  
 
