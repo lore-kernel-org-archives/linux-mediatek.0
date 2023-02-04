@@ -4,96 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2837C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Feb 2023 22:55:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E6D9C636CD
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Feb 2023 06:06:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YDuMqP7XDSUZ3yofb4uO/pMM7Aq3DbQpUK7pMF007rQ=; b=TpXbJ2WK6UT/XYa/gr8aVermRg
-	y5SzC4l5mSwVvLEXT7tLJZhBjzXowJksUtKOzWGwBIr73zIp6YfQCfMkRemB88NXMYgGKmGaN8+mj
-	8Shl3Pq4m2UtTlHBmFfc/k8XbpXKKKzuCyoDzqIUa0TWWzIPsfGU6HC9I7VyHpUaRe0oGCWAn+nYI
-	pEUoFPICRRd+h9eYriTCZuRjKaTlmoDNr0XmduYDz8yYUzoyCUBfVigsR57qxGEk4Hs+LnBkyPJXO
-	T8kwAs1s2pm+s3PQCUL9Po9URkRMi7Sd/QUQAMwn9ZZC8rOk0IBV+vXF/6zvthyRjDd1RrU45USM9
-	awBq49Tw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TIV+hIznz84N4DVJgUtKEEgWFemVMYcRCWbF2fpy1tI=; b=NTBDiDQW35TMQveAnOxt1G01yt
+	qdbJEt4ZwOZ97fxIfYwD1zSlX7qrAgisdGblrHkvs5p3oTBP7FMMe8W5jtdEDOjg1RzqVyuBpkbhu
+	0iPkKr2xi010EKsPdSPO2auk/613PeC2vQz86ogwVK+ttcv3LXjeIryJyhuTWysf9c6zC/ZkogNGy
+	yJ28nE+E9D109kpJD1W/Qj+2Xu1ltfFhwyZgxp4haXKhBm+QW2Y0p6WlDVF6fgdiJEVVbSKdbvExc
+	pBYNeOoJCjQUJpwdLacew63mzOq7QiYdG+nNpjwHiFmniCcd4J2OR3Hk6Wevg9NDuhCUQbqdoFf0i
+	YqCPxJng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pO4y0-003yxN-NW; Fri, 03 Feb 2023 22:55:36 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1pOBgO-004XS2-Tr; Sat, 04 Feb 2023 06:05:52 +0000
+Received: from out28-197.mail.aliyun.com ([115.124.28.197])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pO4xw-003ywD-VB; Fri, 03 Feb 2023 22:55:35 +0000
-Received: by mail-wm1-x330.google.com with SMTP id m5-20020a05600c4f4500b003db03b2559eso4947172wmq.5;
-        Fri, 03 Feb 2023 14:55:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=YDuMqP7XDSUZ3yofb4uO/pMM7Aq3DbQpUK7pMF007rQ=;
-        b=Y5Jg8jGVfS3iYO53ot5YQz6YoZiPTkYhZApO9M3g8PG1jRzNKDbT/Md5pEPVgjALJ1
-         4WSJwxBIxQfE82qYkqK9alJ2jmcG9Jl/e2uNeBs33NApqNDljl/wPxNvDosW+5motiou
-         l2WkudxLcE4HBB9ztQrfG49NoahXlQbSk1tP9JUiZvvIV7Fbp9Ri5HLykilmy75IdFHJ
-         zQ/8yfCtmuo3ro+Ia5u/wdaeDYk//BNuZ6j12YZexVJ/SKLJt+NSdKqPv5VREgp8R2eC
-         OJa3ZDqrLgtBgCGgp0s92/oUoEp2RdVOEBndh4nIQpeOvFaGhevduUOCsCW0ihUO+hNd
-         5jqA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YDuMqP7XDSUZ3yofb4uO/pMM7Aq3DbQpUK7pMF007rQ=;
-        b=B526ci8OD49Oq5h007E6XtlZzuRSpl7d1bg0rNoS7WarA/7YulK6azE9MSi0Bbq0rg
-         pmoA1r+uUJYWeFX1I8ah1WOsQ4a9XmCX2tRjuaqUVDBUkJ9y6Deci4bI0rl7E7l8paaM
-         5c0V2cKiaARr2qmxjZW1Q8YQTdwmHeqdoyzUhjfYwgw3lBBMzuY+La9etzsz8/pfVN3j
-         8IrBhf3fel4ST3urxVyy4pHSKLH83lWjIOlVV83H+KVWOeuO3LRbu3ELYI8+73Sw1XkS
-         BsOtI86/IIjxDo3LSgwGeEdW2dI/g4l0O3fIvOjqGpWmKA0Y0byE2WHY20I1Wnvl0eWH
-         Nr6g==
-X-Gm-Message-State: AO0yUKVDRG6XuuwX3H74gSWNr2jK28dMqTPLJckKXd4lFzMmJEayoJde
-	AC8DIy34np82lkqUhCWtPEk=
-X-Google-Smtp-Source: AK7set8stzNwpYl+F12xbFRrMaXYUnJzMWJk35x/p6xaTD2Hy3inuDAu4wZUMNQ2iS08NfkQvoBI0w==
-X-Received: by 2002:a7b:c8c6:0:b0:3dc:4296:6d56 with SMTP id f6-20020a7bc8c6000000b003dc42966d56mr5450237wml.30.1675464930210;
-        Fri, 03 Feb 2023 14:55:30 -0800 (PST)
-Received: from skbuf ([188.26.57.116])
-        by smtp.gmail.com with ESMTPSA id m40-20020a05600c3b2800b003dcc82ce53fsm4282505wms.38.2023.02.03.14.55.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Feb 2023 14:55:29 -0800 (PST)
-Date: Sat, 4 Feb 2023 00:55:27 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Russell King <linux@armlinux.org.uk>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
-	=?utf-8?B?QmrDuHJu?= Mork <bjorn@mork.no>
-Subject: Re: [PATCH 6/9] net: ethernet: mtk_eth_soc: ppe: add support for
- flow accounting
-Message-ID: <20230203225527.e3uyysmxmd463ani@skbuf>
-References: <cover.1675407169.git.daniel@makrotopia.org>
- <cover.1675407169.git.daniel@makrotopia.org>
- <7ce673e90b72e1a19b7657bebc2ca8d1ea596f96.1675407169.git.daniel@makrotopia.org>
- <7ce673e90b72e1a19b7657bebc2ca8d1ea596f96.1675407169.git.daniel@makrotopia.org>
+	id 1pOBgA-004XQK-UZ; Sat, 04 Feb 2023 06:05:43 +0000
+X-Alimail-AntiSpam: AC=CONTINUE;BC=0.07436261|-1;CH=green;DM=|CONTINUE|false|;DS=CONTINUE|ham_system_inform|0.0126545-0.000114283-0.987231;FP=0|0|0|0|0|-1|-1|-1;HT=ay29a033018047213;MF=michael@allwinnertech.com;NM=1;PH=DS;RN=27;RT=27;SR=0;TI=SMTPD_---.RAX9iuY_1675490723;
+Received: from 192.168.220.144(mailfrom:michael@allwinnertech.com fp:SMTPD_---.RAX9iuY_1675490723)
+          by smtp.aliyun-inc.com;
+          Sat, 04 Feb 2023 14:05:25 +0800
+Message-ID: <33ffa97c-5994-d6ac-da06-f998ee0071d8@allwinnertech.com>
+Date: Sat, 4 Feb 2023 14:05:23 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <7ce673e90b72e1a19b7657bebc2ca8d1ea596f96.1675407169.git.daniel@makrotopia.org>
- <7ce673e90b72e1a19b7657bebc2ca8d1ea596f96.1675407169.git.daniel@makrotopia.org>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Subject: Re: [PATCH] mmc:mmc-cqhci:support interrupt coalescing
+Content-Language: en-US
+To: Adrian Hunter <adrian.hunter@intel.com>, riteshh@codeaurora.org,
+ asutoshd@codeaurora.org, ulf.hansson@linaro.org, chaotian.jing@mediatek.com,
+ matthias.bgg@gmail.com, kdasu.kdev@gmail.com, alcooperx@gmail.com,
+ f.fainelli@gmail.com, haibo.chen@nxp.com, shawnguo@kernel.org,
+ agross@kernel.org, andersson@kernel.org, michal.simek@xilinx.com,
+ thierry.reding@gmail.com, jonathanh@nvidia.com
+Cc: bcm-kernel-feedback-list@broadcom.com, kernel@pengutronix.de,
+ festevam@gmail.com, linux-imx@nxp.com, konrad.dybcio@linaro.org,
+ linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org
+References: <20230130064656.106793-1-michael@allwinnertech.com>
+ <2463a92b-c180-87d4-0c96-2f549a397164@intel.com>
+ <610b5f73-f9e3-deb2-2754-e8939ed00ec3@allwinnertech.com>
+ <28d3348d-82ec-988f-718a-2d73bce585f3@intel.com>
+From: Michael Wu <michael@allwinnertech.com>
+In-Reply-To: <28d3348d-82ec-988f-718a-2d73bce585f3@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230203_145533_056533_7E58DA0F 
-X-CRM114-Status: GOOD (  30.86  )
+X-CRM114-CacheID: sfid-20230203_220539_397160_091AA931 
+X-CRM114-Status: GOOD (  20.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,240 +71,240 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 03, 2023 at 07:05:08AM +0000, Daniel Golle wrote:
-> The PPE units found in MT7622 and newer support packet and byte
-> accounting of hw-offloaded flows. Add support for reading those counters
-> as found in MediaTek's SDK[1], make them accessible via debugfs and add
-> them to the flow offload stats.
+Dear Adrian,
+
+On 2023/1/31 21:32, Adrian Hunter wrote:
+> On 31/01/23 15:12, Michael Wu wrote:
+>> Dear Adrian，
+>>
+>> On 2023/1/30 23:59, Adrian Hunter wrote:
+>>> On 30/01/23 08:46, Michael Wu wrote:
+>>>> Support interrupt coalescing to reduce the frequency of mmc interrupts
+>>>
+>>> There doesn't seem to be any users.  The new parameter to
+>>> cqhci_init() is always false.  New features are not usually
+>>> accepted without users.
+>>
+>> At present, I have only supported this feature on the Allwinner platform because I have not get enough information about other vendors.
+>>>
+>>> There needs to be an explanation of why the change is being made.
+>>
+>> I consider reducing the number of interrupt context switches. Can you tell me why the community does not support this feature? I wonder whether I'm doing is correct. If it's correct, i will improve this patch and incorporate it
 > 
-> [1]: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/bc6a6a375c800dc2b80e1a325a2c732d1737df92
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c   |   8 +-
->  drivers/net/ethernet/mediatek/mtk_eth_soc.h   |   1 +
->  drivers/net/ethernet/mediatek/mtk_ppe.c       | 110 +++++++++++++++++-
->  drivers/net/ethernet/mediatek/mtk_ppe.h       |  24 +++-
->  .../net/ethernet/mediatek/mtk_ppe_debugfs.c   |   9 +-
->  .../net/ethernet/mediatek/mtk_ppe_offload.c   |   7 ++
->  drivers/net/ethernet/mediatek/mtk_ppe_regs.h  |  14 +++
->  7 files changed, 168 insertions(+), 5 deletions(-)
+> AFAIK the community has not made any comment on supporting interrupt coalescing for CQHCI, one way or another.
+> However, it is generally expected that new features will only be added if they demonstrate some benefit.
+> Just assuming that there is a benefit is not enough.
 > 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index f09cd6a132c9..d50dea1f20f3 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -4708,7 +4708,9 @@ static int mtk_probe(struct platform_device *pdev)
->  			u32 ppe_addr = eth->soc->reg_map->ppe_base + i * 0x400;
->  
->  			eth->ppe[i] = mtk_ppe_init(eth, eth->base + ppe_addr,
-> -						   eth->soc->offload_version, i);
-> +						   eth->soc->offload_version, i,
-> +						   eth->soc->has_accounting);
 
-All arguments mtk_ppe_init() needs (this includes eth->soc->offload_version)
-are already available to it. See, first line in mtk_ppe_init() is:
+Okay,  I'll provide the performance data soon.
 
-	const struct mtk_soc_data *soc = eth->soc;
+>>>
+>>> Also there doesn't seem to be any configuration of the CQIC
+>>> register.
+>>
+>> At present, I am working on the hook function .cqe_enable that the ICCTH of CQIC is set in enable
+>>>
+>>>>
+>>>> Signed-off-by: Michael Wu <michael@allwinnertech.com>
+>>>> ---
+>>>>    drivers/mmc/host/cqhci-core.c      | 20 +++++++++++++++-----
+>>>>    drivers/mmc/host/cqhci.h           |  5 ++++-
+>>>>    drivers/mmc/host/mtk-sd.c          |  2 +-
+>>>>    drivers/mmc/host/sdhci-brcmstb.c   |  2 +-
+>>>>    drivers/mmc/host/sdhci-esdhc-imx.c |  2 +-
+>>>>    drivers/mmc/host/sdhci-msm.c       |  2 +-
+>>>>    drivers/mmc/host/sdhci-of-arasan.c |  2 +-
+>>>>    drivers/mmc/host/sdhci-pci-core.c  |  2 +-
+>>>>    drivers/mmc/host/sdhci-pci-gli.c   |  2 +-
+>>>>    drivers/mmc/host/sdhci-tegra.c     |  2 +-
+>>>>    drivers/mmc/host/sdhci_am654.c     |  2 +-
+>>>>    11 files changed, 28 insertions(+), 15 deletions(-)
+>>>>
+>>>> diff --git a/drivers/mmc/host/cqhci-core.c b/drivers/mmc/host/cqhci-core.c
+>>>> index b3d7d6d8d654..f9cdf9f04bfc 100644
+>>>> --- a/drivers/mmc/host/cqhci-core.c
+>>>> +++ b/drivers/mmc/host/cqhci-core.c
+>>>> @@ -420,7 +420,7 @@ static void cqhci_disable(struct mmc_host *mmc)
+>>>>    }
+>>>>      static void cqhci_prep_task_desc(struct mmc_request *mrq,
+>>>> -                 struct cqhci_host *cq_host, int tag)
+>>>> +                 struct cqhci_host *cq_host, int tag, int intr)
+>>>>    {
+>>>>        __le64 *task_desc = (__le64 __force *)get_desc(cq_host, tag);
+>>>>        u32 req_flags = mrq->data->flags;
+>>>> @@ -428,7 +428,7 @@ static void cqhci_prep_task_desc(struct mmc_request *mrq,
+>>>>          desc0 = CQHCI_VALID(1) |
+>>>>            CQHCI_END(1) |
+>>>> -        CQHCI_INT(1) |
+>>>> +        CQHCI_INT(intr) |
+>>>>            CQHCI_ACT(0x5) |
+>>>>            CQHCI_FORCED_PROG(!!(req_flags & MMC_DATA_FORCED_PRG)) |
+>>>>            CQHCI_DATA_TAG(!!(req_flags & MMC_DATA_DAT_TAG)) |
+>>>> @@ -621,7 +621,7 @@ static int cqhci_request(struct mmc_host *mmc, struct mmc_request *mrq)
+>>>>        }
+>>>>          if (mrq->data) {
+>>>> -        cqhci_prep_task_desc(mrq, cq_host, tag);
+>>>> +        cqhci_prep_task_desc(mrq, cq_host, tag, (cq_host->intr_clsc ? 0 : 1));
+>>>>              err = cqhci_prep_tran_desc(mrq, cq_host, tag);
+>>>>            if (err) {
+>>>> @@ -812,7 +812,7 @@ static void cqhci_finish_mrq(struct mmc_host *mmc, unsigned int tag)
+>>>>    irqreturn_t cqhci_irq(struct mmc_host *mmc, u32 intmask, int cmd_error,
+>>>>                  int data_error)
+>>>>    {
+>>>> -    u32 status;
+>>>> +    u32 status, rval;
+>>>>        unsigned long tag = 0, comp_status;
+>>>>        struct cqhci_host *cq_host = mmc->cqe_private;
+>>>>    @@ -856,6 +856,15 @@ irqreturn_t cqhci_irq(struct mmc_host *mmc, u32 intmask, int cmd_error,
+>>>>            spin_unlock(&cq_host->lock);
+>>>>        }
+>>>>    +    if (cq_host->intr_clsc) {
+>>>> +        rval = cqhci_readl(cq_host, CQHCI_IC);
+>>>> +        rval |= CQHCI_IC_RESET;
+>>>> +        cqhci_writel(cq_host, rval, CQHCI_IC);
+>>>> +        rval = cqhci_readl(cq_host, CQHCI_IC);
+>>>> +        rval &= (~CQHCI_IC_RESET);
+>>>> +        cqhci_writel(cq_host, rval, CQHCI_IC);
+>>>> +    }
+>>>> +
+>>>>        if (status & CQHCI_IS_TCL)
+>>>>            wake_up(&cq_host->wait_queue);
+>>>>    @@ -1172,11 +1181,12 @@ static unsigned int cqhci_ver_minor(struct cqhci_host *cq_host)
+>>>>    }
+>>>>      int cqhci_init(struct cqhci_host *cq_host, struct mmc_host *mmc,
+>>>> -          bool dma64)
+>>>> +          bool dma64, bool intr_clsc)
+>>>>    {
+>>>>        int err;
+>>>>          cq_host->dma64 = dma64;
+>>>> +    cq_host->intr_clsc = intr_clsc;
+>>>>        cq_host->mmc = mmc;
+>>>>        cq_host->mmc->cqe_private = cq_host;
+>>>>    diff --git a/drivers/mmc/host/cqhci.h b/drivers/mmc/host/cqhci.h
+>>>> index ba9387ed90eb..acf90773c30a 100644
+>>>> --- a/drivers/mmc/host/cqhci.h
+>>>> +++ b/drivers/mmc/host/cqhci.h
+>>>> @@ -227,6 +227,9 @@ struct cqhci_host {
+>>>>          /* 64 bit DMA */
+>>>>        bool dma64;
+>>>> +
+>>>> +    /* interrupt coalescing*/
+>>>> +    bool intr_clsc;
+>>>>        int num_slots;
+>>>>        int qcnt;
+>>>>    @@ -312,7 +315,7 @@ struct platform_device;
+>>>>      irqreturn_t cqhci_irq(struct mmc_host *mmc, u32 intmask, int cmd_error,
+>>>>                  int data_error);
+>>>> -int cqhci_init(struct cqhci_host *cq_host, struct mmc_host *mmc, bool dma64);
+>>>> +int cqhci_init(struct cqhci_host *cq_host, struct mmc_host *mmc, bool dma64, bool intr_clsc);
+>>>>    struct cqhci_host *cqhci_pltfm_init(struct platform_device *pdev);
+>>>>    int cqhci_deactivate(struct mmc_host *mmc);
+>>>>    static inline int cqhci_suspend(struct mmc_host *mmc)
+>>>> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+>>>> index edade0e54a0c..2c18f954d4b8 100644
+>>>> --- a/drivers/mmc/host/mtk-sd.c
+>>>> +++ b/drivers/mmc/host/mtk-sd.c
+>>>> @@ -2796,7 +2796,7 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>>>>            host->cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+>>>>            host->cq_host->mmio = host->base + 0x800;
+>>>>            host->cq_host->ops = &msdc_cmdq_ops;
+>>>> -        ret = cqhci_init(host->cq_host, mmc, true);
+>>>> +        ret = cqhci_init(host->cq_host, mmc, true, false);
+>>>>            if (ret)
+>>>>                goto host_free;
+>>>>            mmc->max_segs = 128;
+>>>> diff --git a/drivers/mmc/host/sdhci-brcmstb.c b/drivers/mmc/host/sdhci-brcmstb.c
+>>>> index f2cf3d70db79..4aeaeddbbf25 100644
+>>>> --- a/drivers/mmc/host/sdhci-brcmstb.c
+>>>> +++ b/drivers/mmc/host/sdhci-brcmstb.c
+>>>> @@ -231,7 +231,7 @@ static int sdhci_brcmstb_add_host(struct sdhci_host *host,
+>>>>            cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+>>>>        }
+>>>>    -    ret = cqhci_init(cq_host, host->mmc, dma64);
+>>>> +    ret = cqhci_init(cq_host, host->mmc, dma64, false);
+>>>>        if (ret)
+>>>>            goto cleanup;
+>>>>    diff --git a/drivers/mmc/host/sdhci-esdhc-imx.c b/drivers/mmc/host/sdhci-esdhc-imx.c
+>>>> index 9e73c34b6401..7aef7abe71f1 100644
+>>>> --- a/drivers/mmc/host/sdhci-esdhc-imx.c
+>>>> +++ b/drivers/mmc/host/sdhci-esdhc-imx.c
+>>>> @@ -1712,7 +1712,7 @@ static int sdhci_esdhc_imx_probe(struct platform_device *pdev)
+>>>>            cq_host->mmio = host->ioaddr + ESDHC_CQHCI_ADDR_OFFSET;
+>>>>            cq_host->ops = &esdhc_cqhci_ops;
+>>>>    -        err = cqhci_init(cq_host, host->mmc, false);
+>>>> +        err = cqhci_init(cq_host, host->mmc, false, false);
+>>>>            if (err)
+>>>>                goto disable_ahb_clk;
+>>>>        }
+>>>> diff --git a/drivers/mmc/host/sdhci-msm.c b/drivers/mmc/host/sdhci-msm.c
+>>>> index 4ac8651d0b29..b6549d1e43ec 100644
+>>>> --- a/drivers/mmc/host/sdhci-msm.c
+>>>> +++ b/drivers/mmc/host/sdhci-msm.c
+>>>> @@ -2153,7 +2153,7 @@ static int sdhci_msm_cqe_add_host(struct sdhci_host *host,
+>>>>        if (ret)
+>>>>            goto cleanup;
+>>>>    -    ret = cqhci_init(cq_host, host->mmc, dma64);
+>>>> +    ret = cqhci_init(cq_host, host->mmc, dma64, false);
+>>>>        if (ret) {
+>>>>            dev_err(&pdev->dev, "%s: CQE init: failed (%d)\n",
+>>>>                    mmc_hostname(host->mmc), ret);
+>>>> diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sdhci-of-arasan.c
+>>>> index 89c431a34c43..811f8686532d 100644
+>>>> --- a/drivers/mmc/host/sdhci-of-arasan.c
+>>>> +++ b/drivers/mmc/host/sdhci-of-arasan.c
+>>>> @@ -1610,7 +1610,7 @@ static int sdhci_arasan_add_host(struct sdhci_arasan_data *sdhci_arasan)
+>>>>        if (dma64)
+>>>>            cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+>>>>    -    ret = cqhci_init(cq_host, host->mmc, dma64);
+>>>> +    ret = cqhci_init(cq_host, host->mmc, dma64, false);
+>>>>        if (ret)
+>>>>            goto cleanup;
+>>>>    diff --git a/drivers/mmc/host/sdhci-pci-core.c b/drivers/mmc/host/sdhci-pci-core.c
+>>>> index c359f867df0a..6f6cae6355a7 100644
+>>>> --- a/drivers/mmc/host/sdhci-pci-core.c
+>>>> +++ b/drivers/mmc/host/sdhci-pci-core.c
+>>>> @@ -964,7 +964,7 @@ static int glk_emmc_add_host(struct sdhci_pci_slot *slot)
+>>>>        if (dma64)
+>>>>            cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+>>>>    -    ret = cqhci_init(cq_host, host->mmc, dma64);
+>>>> +    ret = cqhci_init(cq_host, host->mmc, dma64, false);
+>>>>        if (ret)
+>>>>            goto cleanup;
+>>>>    diff --git a/drivers/mmc/host/sdhci-pci-gli.c b/drivers/mmc/host/sdhci-pci-gli.c
+>>>> index 633a8ee8f8c5..6917ba339aa9 100644
+>>>> --- a/drivers/mmc/host/sdhci-pci-gli.c
+>>>> +++ b/drivers/mmc/host/sdhci-pci-gli.c
+>>>> @@ -908,7 +908,7 @@ static int gl9763e_add_host(struct sdhci_pci_slot *slot)
+>>>>        if (dma64)
+>>>>            cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+>>>>    -    ret = cqhci_init(cq_host, host->mmc, dma64);
+>>>> +    ret = cqhci_init(cq_host, host->mmc, dma64, false);
+>>>>        if (ret)
+>>>>            goto cleanup;
+>>>>    diff --git a/drivers/mmc/host/sdhci-tegra.c b/drivers/mmc/host/sdhci-tegra.c
+>>>> index bff084f178c9..f98a468e8f43 100644
+>>>> --- a/drivers/mmc/host/sdhci-tegra.c
+>>>> +++ b/drivers/mmc/host/sdhci-tegra.c
+>>>> @@ -1620,7 +1620,7 @@ static int sdhci_tegra_add_host(struct sdhci_host *host)
+>>>>        if (dma64)
+>>>>            cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+>>>>    -    ret = cqhci_init(cq_host, host->mmc, dma64);
+>>>> +    ret = cqhci_init(cq_host, host->mmc, dma64, false);
+>>>>        if (ret)
+>>>>            goto cleanup;
+>>>>    diff --git a/drivers/mmc/host/sdhci_am654.c b/drivers/mmc/host/sdhci_am654.c
+>>>> index 7ef828942df3..8e7fbee70e16 100644
+>>>> --- a/drivers/mmc/host/sdhci_am654.c
+>>>> +++ b/drivers/mmc/host/sdhci_am654.c
+>>>> @@ -568,7 +568,7 @@ static int sdhci_am654_cqe_add_host(struct sdhci_host *host)
+>>>>          host->mmc->caps2 |= MMC_CAP2_CQE;
+>>>>    -    return cqhci_init(cq_host, host->mmc, 1);
+>>>> +    return cqhci_init(cq_host, host->mmc, 1, false);
+>>>>    }
+>>>>      static int sdhci_am654_get_otap_delay(struct sdhci_host *host,
+>>
 
-> +
->  			if (!eth->ppe[i]) {
->  				err = -ENOMEM;
->  				goto err_deinit_ppe;
-> diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
-> index 6883eb34cd8b..26fa89afc69a 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_ppe.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
-> @@ -74,6 +74,46 @@ static int mtk_ppe_wait_busy(struct mtk_ppe *ppe)
->  	return ret;
->  }
->  
-> +static int mtk_ppe_mib_wait_busy(struct mtk_ppe *ppe)
-> +{
-> +	int ret;
-> +	u32 val;
-> +
-> +	ret = readl_poll_timeout(ppe->base + MTK_PPE_MIB_SER_CR, val,
-> +				 !(val & MTK_PPE_MIB_SER_CR_ST),
-> +				 20, MTK_PPE_WAIT_TIMEOUT_US);
-> +
-> +	if (ret)
-> +		dev_err(ppe->dev, "MIB table busy");
-> +
-> +	return ret;
-> +}
-> +
-> +static int mtk_mib_entry_read(struct mtk_ppe *ppe, u16 index, u64 *bytes, u64 *packets)
-> +{
-> +	u32 val, cnt_r0, cnt_r1, cnt_r2;
-> +	u32 byte_cnt_low, byte_cnt_high, pkt_cnt_low, pkt_cnt_high;
-> +
-> +	val = FIELD_PREP(MTK_PPE_MIB_SER_CR_ADDR, index) | MTK_PPE_MIB_SER_CR_ST;
-> +	ppe_w32(ppe, MTK_PPE_MIB_SER_CR, val);
-> +
-> +	if (mtk_ppe_mib_wait_busy(ppe))
-> +		return -ETIMEDOUT;
-
-err = mtk_ppe_mib_wait_busy();
-if (err)
-	return err;
-
-> +
-> +	cnt_r0 = readl(ppe->base + MTK_PPE_MIB_SER_R0);
-> +	cnt_r1 = readl(ppe->base + MTK_PPE_MIB_SER_R1);
-> +	cnt_r2 = readl(ppe->base + MTK_PPE_MIB_SER_R2);
-> +
-> +	byte_cnt_low = FIELD_GET(MTK_PPE_MIB_SER_R0_BYTE_CNT_LOW, cnt_r0);
-> +	byte_cnt_high = FIELD_GET(MTK_PPE_MIB_SER_R1_BYTE_CNT_HIGH, cnt_r1);
-> +	pkt_cnt_low = FIELD_GET(MTK_PPE_MIB_SER_R1_PKT_CNT_LOW, cnt_r1);
-> +	pkt_cnt_high = FIELD_GET(MTK_PPE_MIB_SER_R2_PKT_CNT_HIGH, cnt_r2);
-> +	*bytes = ((u64)byte_cnt_high << 32) | byte_cnt_low;
-> +	*packets = (pkt_cnt_high << 16) | pkt_cnt_low;
-> +
-> +	return 0;
-> +}
-> +
->  static void mtk_ppe_cache_clear(struct mtk_ppe *ppe)
->  {
->  	ppe_set(ppe, MTK_PPE_CACHE_CTL, MTK_PPE_CACHE_CTL_CLEAR);
->  struct mtk_ppe *mtk_ppe_init(struct mtk_eth *eth, void __iomem *base,
-> -			     int version, int index)
-> +			     int version, int index, bool accounting)
->  {
->  	const struct mtk_soc_data *soc = eth->soc;
->  	struct device *dev = eth->dev;
->  	struct mtk_ppe *ppe;
->  	u32 foe_flow_size;
->  	void *foe;
-> +	struct mtk_mib_entry *mib;
-> +	struct mtk_foe_accounting *acct;
->  
->  	ppe = devm_kzalloc(dev, sizeof(*ppe), GFP_KERNEL);
->  	if (!ppe)
-> @@ -778,6 +856,7 @@ struct mtk_ppe *mtk_ppe_init(struct mtk_eth *eth, void __iomem *base,
->  	ppe->eth = eth;
->  	ppe->dev = dev;
->  	ppe->version = version;
-> +	ppe->accounting = accounting;
->  
->  	foe = dmam_alloc_coherent(ppe->dev,
->  				  MTK_PPE_ENTRIES * soc->foe_entry_size,
-> @@ -793,6 +872,25 @@ struct mtk_ppe *mtk_ppe_init(struct mtk_eth *eth, void __iomem *base,
->  	if (!ppe->foe_flow)
->  		goto err_free_l2_flows;
->  
-> +	if (accounting) {
-> +		mib = dmam_alloc_coherent(ppe->dev, MTK_PPE_ENTRIES * sizeof(*mib),
-> +					  &ppe->mib_phys, GFP_KERNEL);
-> +		if (!mib)
-> +			return NULL;
-> +
-> +		memset(mib, 0, MTK_PPE_ENTRIES * sizeof(*mib));
-
-I remember Jakub pointing out in another email that consistent DMA
-memory is already zero-initialized, and it appears in
-scripts/coccinelle/api/alloc/zalloc-simple.cocci.
-
-> +
-> +		ppe->mib_table = mib;
-> +
-> +		acct = devm_kzalloc(dev, MTK_PPE_ENTRIES * sizeof(*acct),
-> +				    GFP_KERNEL);
-> +
-> +		if (!acct)
-> +			return NULL;
-> +
-> +		ppe->acct_table = acct;
-> +	}
-> +
->  	mtk_ppe_debugfs_init(ppe, index);
->  
->  	return ppe;
-> @@ -922,6 +1020,16 @@ void mtk_ppe_start(struct mtk_ppe *ppe)
->  		ppe_w32(ppe, MTK_PPE_DEFAULT_CPU_PORT1, 0xcb777);
->  		ppe_w32(ppe, MTK_PPE_SBW_CTRL, 0x7f);
->  	}
-> +
-> +	if (ppe->accounting && ppe->mib_phys) {
-> +		ppe_w32(ppe, MTK_PPE_MIB_TB_BASE, ppe->mib_phys);
-> +		ppe_m32(ppe, MTK_PPE_MIB_CFG, MTK_PPE_MIB_CFG_EN,
-> +			MTK_PPE_MIB_CFG_EN);
-> +		ppe_m32(ppe, MTK_PPE_MIB_CFG, MTK_PPE_MIB_CFG_RD_CLR,
-> +			MTK_PPE_MIB_CFG_RD_CLR);
-> +		ppe_m32(ppe, MTK_PPE_MIB_CACHE_CTL, MTK_PPE_MIB_CACHE_CTL_EN,
-> +			MTK_PPE_MIB_CFG_RD_CLR);
-> +	}
->  }
->  
->  int mtk_ppe_stop(struct mtk_ppe *ppe)
-> diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c b/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
-> index 391b071bcff3..39775740340b 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
-> @@ -82,6 +82,7 @@ mtk_ppe_debugfs_foe_show(struct seq_file *m, void *private, bool bind)
->  		struct mtk_foe_entry *entry = mtk_foe_get_entry(ppe, i);
->  		struct mtk_foe_mac_info *l2;
->  		struct mtk_flow_addr_info ai = {};
-> +		struct mtk_foe_accounting *acct;
->  		unsigned char h_source[ETH_ALEN];
->  		unsigned char h_dest[ETH_ALEN];
->  		int type, state;
-> @@ -95,6 +96,8 @@ mtk_ppe_debugfs_foe_show(struct seq_file *m, void *private, bool bind)
->  		if (bind && state != MTK_FOE_STATE_BIND)
->  			continue;
->  
-> +		acct = mtk_foe_entry_get_mib(ppe, i, NULL);
-
-might return NULL
-
-> +
->  		type = FIELD_GET(MTK_FOE_IB1_PACKET_TYPE, entry->ib1);
->  		seq_printf(m, "%05x %s %7s", i,
->  			   mtk_foe_entry_state_str(state),
-> @@ -153,9 +156,11 @@ mtk_ppe_debugfs_foe_show(struct seq_file *m, void *private, bool bind)
->  		*((__be16 *)&h_dest[4]) = htons(l2->dest_mac_lo);
->  
->  		seq_printf(m, " eth=%pM->%pM etype=%04x"
-> -			      " vlan=%d,%d ib1=%08x ib2=%08x\n",
-> +			      " vlan=%d,%d ib1=%08x ib2=%08x"
-> +			      " packets=%lld bytes=%lld\n",
-
-%llu
-
->  			   h_source, h_dest, ntohs(l2->etype),
-> -			   l2->vlan1, l2->vlan2, entry->ib1, ib2);
-> +			   l2->vlan1, l2->vlan2, entry->ib1, ib2,
-> +			   acct->packets, acct->bytes);
->  	}
->  
->  	return 0;
-> diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-> index 81afd5ee3fbf..832e11ad9a16 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-> @@ -497,6 +497,7 @@ static int
->  mtk_flow_offload_stats(struct mtk_eth *eth, struct flow_cls_offload *f)
->  {
->  	struct mtk_flow_entry *entry;
-> +	struct mtk_foe_accounting diff;
->  	u32 idle;
->  
->  	entry = rhashtable_lookup(&eth->flow_table, &f->cookie,
-> @@ -507,6 +508,12 @@ mtk_flow_offload_stats(struct mtk_eth *eth, struct flow_cls_offload *f)
->  	idle = mtk_foe_entry_idle_time(eth->ppe[entry->ppe_index], entry);
->  	f->stats.lastused = jiffies - idle * HZ;
->  
-> +	if (entry->hash != 0xFFFF) {
-> +		mtk_foe_entry_get_mib(eth->ppe[entry->ppe_index], entry->hash, &diff);
-
-If this returns NULL, you don't want to add diff.packets and diff.bytes
-to f->stats, because no one bothers to initialize "diff" to all-zeroes.
-So it contains junk from kernel stack memory. You might want to avoid this.
-
-> +		f->stats.pkts += diff.packets;
-> +		f->stats.bytes += diff.bytes;
-> +	}
-> +
->  	return 0;
->  }
->  
+-- 
+Regards,
+Michael Wu
 
