@@ -4,77 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 161DDC636CC
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Feb 2023 08:50:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC098C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Feb 2023 10:28:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5EkbE2y+vcbwJNNHd4DS465z4SjWr4DEGtHXtbcg2xw=; b=jSDb0ktq+HwXNpx+Yd3r27eyFW
-	iM2E3FG+KiONNp9kUfShkRnlAJ79B8QljPYvWox5cr5wQ5gf4t7zZbs85pBQuizG66gozl7RvFpEr
-	FqaWSBslEyUaLPd6q/MhHU2rtl3aEURT6zPbrymMPaEOpLLetqr+VTnO4kBSFFqsGUNwjQdKFu7MH
-	Q41MgZsMzUTjp7ln+uw/nSw3I9WFY2oXXIyaUD3gRNrwlg9g/k69r8z8TlsJgpLHI5FdEyrRhAMWX
-	Of6C3TMRBkPw/j7ZCk4yQvrAnjLn6g5n+Bpyt87PyxtDEW8d98dMIxYP8cEJv0JoLTaeXXBt3KJMI
-	VhZMhpXA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:
+	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TQm9ieRv5B09nA3PAa1PAhtz6bSCFkESNEOIL8L9PhM=; b=cjus43KGzCWDsIVC2NlopDjsEC
+	uhRmc8CXdX8yjPHoOgZclfMrXN04IIMOBrBSEkWLML84j1MlBdKEenXtTdADGSoZUa5UgjP+Q/+ju
+	4VF/pqlAeSLsOD5nbRFICLQHXk3o1xPEXUjFGee1LO0Bw1Y9MSW6eFOb6pgThaDaEgprbvkBgkqlG
+	wzLXiJkNqqLOhRKBBa2j9kW4fHqYf0+LR9UZ+MytytTAyOmcABVMeFSCus6eEiLWRnl7XZJQ45/4g
+	LxjurhyLF6ueSaSMSW/ZMUHRZ94TgmKvQS48tDOnK9mpeyjxiOKrSO+C34PXrvT9Q+UqVqmESl7z+
+	M7kupQBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pOEF4-004kyM-K5; Sat, 04 Feb 2023 08:49:50 +0000
-Received: from [46.183.139.199] (helo=mailout-taastrup.gigahost.dk)
+	id 1pOFm3-004sYB-9V; Sat, 04 Feb 2023 10:27:59 +0000
+Received: from mout.gmx.net ([212.227.15.15])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pOEDy-004kGY-4S; Sat, 04 Feb 2023 08:48:43 +0000
-Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 0664718839AA;
-	Sat,  4 Feb 2023 08:48:25 +0000 (UTC)
-Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id E1FE9250007B;
-	Sat,  4 Feb 2023 08:48:24 +0000 (UTC)
-Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id D3B8191201E4; Sat,  4 Feb 2023 08:48:24 +0000 (UTC)
-X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
+	id 1pOFlt-004sXQ-Fe; Sat, 04 Feb 2023 10:27:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1675506452;
+	bh=TQm9ieRv5B09nA3PAa1PAhtz6bSCFkESNEOIL8L9PhM=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=e/SqE1lDQs3/toO9p5vOPJdC+nVYg1tk+mDdWIkRWqESaHbI10EyG4a15OxEmQaVw
+	 hV4zkaBBobH6vXMtiPGt6+oevdRnE0xIhzKgRfznhthTySj7PDqz2MxkQxa+EV97z4
+	 NgsSZopxc+kzmHAaeugb8PIer69ytNC/NKHezHJTM+XxN6GcqKE9+xo6PUTBXVp2em
+	 9ENvh6jWupG3zD+IEGhhzTnv9DPdjWUAKvid6Tjjr/rU8FTU91oao91BITsSZfPuky
+	 iCxxGvN7DaVzmka/Xiwl+43iRieZWgWjG9vjLhyJykeFfLeBq0jHiqRFy81ifN1v0N
+	 GGygXljgpJybA==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [157.180.225.92] ([157.180.225.92]) by web-mail.gmx.net
+ (3c-app-gmx-bs72.server.lan [172.19.170.208]) (via HTTP); Sat, 4 Feb 2023
+ 11:27:32 +0100
 MIME-Version: 1.0
-Date: Sat, 04 Feb 2023 09:48:24 +0100
-From: netdev@kapio-technology.com
-To: Simon Horman <simon.horman@corigine.com>
-Cc: Vladimir Oltean <olteanv@gmail.com>, davem@davemloft.net,
- kuba@kernel.org, netdev@vger.kernel.org, Florian Fainelli
- <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Eric Dumazet
- <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt Kanzenbach
- <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung Huh
- <woojung.huh@microchip.com>, "maintainer:MICROCHIP KSZ SERIES ETHERNET
- SWITCH DRIVER" <UNGLinuxDriver@microchip.com>, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
- Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, =?UTF-8?Q?Cl=C3=A9ment_L=C3=A9ger?=
- <clement.leger@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
- <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
- <razor@blackwall.org>, Russell King <linux@armlinux.org.uk>, Christian
- Marangi <ansuelsmth@gmail.com>, open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>, "open list:RENESAS RZ/N1
- A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>, "moderated
- list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>
-Subject: Re: [PATCH net-next 5/5] net: dsa: mv88e6xxx: implementation of
- dynamic ATU entries
-In-Reply-To: <Y94TebdRQRHMMj/c@corigine.com>
-References: <20230130173429.3577450-1-netdev@kapio-technology.com>
- <20230130173429.3577450-6-netdev@kapio-technology.com>
- <Y9lkXlyXg1d1D0j3@corigine.com>
- <9b12275969a204739ccfab972d90f20f@kapio-technology.com>
- <Y9zDxlwSn1EfCTba@corigine.com> <20230203204422.4wrhyathxfhj6hdt@skbuf>
- <Y94TebdRQRHMMj/c@corigine.com>
-User-Agent: Gigahost Webmail
-Message-ID: <4abbe32d007240b9c3aea9c8ca936fa3@kapio-technology.com>
-X-Sender: netdev@kapio-technology.com
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
+Message-ID: <trinity-ec3920c5-a96a-4edf-9ff1-4bf07e7b4d07-1675506452617@3c-app-gmx-bs72>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
+Cc: arinc9.unal@gmail.com, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, erkin.bozoglu@xeront.com, Sean Wang
+ <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>
+Subject: Aw: Re: [PATCH v2 4/5] arm: dts: mt7623: mux phy0 on Bananapi
+ BPI-R2
+Content-Type: text/plain; charset=UTF-8
+Date: Sat, 4 Feb 2023 11:27:32 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <75d3758a-5502-03a4-b3a2-990f9339705b@arinc9.com>
+References: <20230201185656.17164-1-arinc.unal@arinc9.com>
+ <20230201185656.17164-5-arinc.unal@arinc9.com>
+ <AC473057-266B-4403-9270-8007E0EC257C@public-files.de>
+ <75d3758a-5502-03a4-b3a2-990f9339705b@arinc9.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:c986fcPlX4Ooen57ZAsZI0v2Yr5gNsX/1CTe4qNxcW5X99bLBmBFzw1ZpGrQpvfYPoycP
+ cVedJWKkyCyU1Tg73x1tq5Z8GGGgGFdLqq4CnoKY4CXtDCm+OdJ25BPx7WWfUjPaET4bkCXnQkBv
+ VJKg0z3wBAN1WShT9ozrT69beX4iE5QVG/9IjTWASyoSq7OJpFBlHE3V78D1wgDHacV4YKPBAzzJ
+ +53qy5TxXoiyrIrT2FpnDL350VoxN6UouGb2JdzxtY2jhCJGdyh2prXYm/i5XS7TH9l0DG1nKVZa
+ ZU=
+UI-OutboundReport: notjunk:1;M01:P0:Bw/EWLX9TdI=;JrT8R8+e0Rj9R2TqIcm7voib42M
+ J9cyBYh2rNxoAOlzMIJEezkbGbB+dtR3G1Sca/0txnIsvMVamGEixTZajJKkKQ7WWw5XhipaT
+ STENGATDGymObLbTusXAdYfME2xgwwCdqgE7ANBl9ZPw4bw/Z/gWQ8v1Y/iQ1pqM8EHUjXR3D
+ L5XdyhHhpY7R0grdQ/5R8jxPUCekbcUUu/FiOCxnlKuVm52ISypgEutXxdeauDYk6pr1LtN5b
+ m7QU4DfG4gNoulZYyPHX+F0OqT0N8eY2tHhBCAvajWIcQRi4StvkY7hHAqhgZVyCKONUp+TEk
+ 5b6QFUHmcQXAoLve0bsU02TUGTw99Kc8FLQZ8oMIWR2NKfnyqcrVs5w7wPdAR4JlRdpE3Qv5H
+ 49a+mxT81epnsofuW1086MT3lIShxKkiRreThzIktrMOg0BaVDPafwSVGXiI7UbbWyFJO0kPh
+ AaOyS/LQpslLYFdySQdU5XNMIpGPkHqJqksJBET1xP/Tnhabv1MPTt+KyVicEBYxhL95UMgAj
+ /1Xi0VkaHGkOPzoIBOhKJtBN/H/ToYsqzzuZrWdWxzDXhw0GqvzpCTd7qA+rVgcbkJdG9gIf3
+ 2MYb9TitSadMpVI/vNXVcFh6gssOddPt2UVookHzSlbcWtk/EZANeDgrUW8mW9rqjrauktiWp
+ 9G/NTiSatChiMIPY69AT20PH/W5CHCSiMHNrguIQqAa/PJvgBBkTyZGpKGVsViTDUNp3NpTjw
+ G0mKXu/dZqJemzM/LosyUV22lBjXxmOYRj3BFhVPJHUCYWZH/kPhzaHihEK/9HhYTZmlkBCIF
+ ZlcJWXRfn7rE61Ky9jZ0WxEVJulbpQhbQhqM8GfcG6Q1Y=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230204_004842_347140_11D3B327 
-X-CRM114-Status: GOOD (  19.19  )
+X-CRM114-CacheID: sfid-20230204_022749_849936_5330875F 
+X-CRM114-Status: UNSURE (   7.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,41 +97,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023-02-04 09:12, Simon Horman wrote:
-> On Fri, Feb 03, 2023 at 10:44:22PM +0200, Vladimir Oltean wrote:
->> On Fri, Feb 03, 2023 at 09:20:22AM +0100, Simon Horman wrote:
->> > > else if (someflag)
->> > >         dosomething();
->> > >
->> > > For now only one flag will actually be set and they are mutually exclusive,
->> > > as they will not make sense together with the potential flags I know, but
->> > > that can change at some time of course.
->> >
->> > Yes, I see that is workable. I do feel that checking for other flags would
->> > be a bit more robust. But as you say, there are none. So whichever
->> > approach you prefer is fine by me.
->> 
->> The model we have for unsupported bits in the 
->> SWITCHDEV_ATTR_ID_PORT_PRE_BRIDGE_FLAGS
->> and SWITCHDEV_ATTR_ID_PORT_BRIDGE_FLAGS handlers is essentially this:
->> 
->> 	if (flags & ~(supported_flag_mask))
->> 		return -EOPNOTSUPP;
->> 
->> 	if (flags & supported_flag_1)
->> 		...
->> 
->> 	if (flags & supported_flag_2)
->> 		...
->> 
->> I suppose applying this model here would address Simon's extensibility 
->> concern.
-> 
-> Yes, that is the model I had in mind.
+Hi aranc,
 
-The only thing is that we actually need to return both 0 and -EOPNOTSUPP 
-for unsupported flags. The dynamic flag requires 0 when not supported 
-(and supported) AFAICS.
-Setting a mask as 'supported' for a feature that is not really supported 
-defeats the notion of 'supported' IMHO.
+have tested this series, basicly it works, but i get only ~620 Mbits/sec (much more i will need on wan) in tx-mode of r2, rx-mode (iperf3 -c IP -R on r2) gets full 939 Mbits/sec. Both no retransmitts.
+
+tried with my laptop which gets 940Mbit/sec in tx mode too...other end is a R2 with 5.15 connected to lan0 (and eth1+aux enabled, dmesg clean so far...for the "kernel log flooded"-comment).
+
+maybe gmac1 needs to be tweaked a bit (clock-settings)?
+
+can you confirm this with your board?
+
+regards Frank
 
