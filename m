@@ -4,52 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96690C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Feb 2023 23:44:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2A67C636CC
+	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Feb 2023 12:13:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a1uYd+o29Q7pkVIXovCbwFOCc6DFqpbczL55lI14mQ8=; b=KWFTEhCZyzfNosaGMgwMGMIQCb
-	4VF87E4ZHRIvgLusO5FSdtsrcAjAsKYPq3AKNkXSnNkCmpB8ra7oLN7ANVw3M4aJDeJfJIiwdwRNa
-	HSXvTXnzK7pf4uIgPBZlj/9yJxLo9qN07oCuFj1r7zbft3BAGI7kPFjasnJWnVn0gDcp/okrQFp43
-	gyHtYkSwpqVFF0rs9nPusTRp+15k/XWWHgL7VVNM2eYeQMZXs/CshleHw6IMQ1bG16tPyvlD+V8XG
-	wPw0zkz7bHiqmr8F2ETL7O1l15/DcuydqxQ5y80EkbPfuQjbz+gBv+CGg/dX6EOBOSXyxtCfZ4cit
-	t8Sb9/ng==;
+	bh=kAAmRt3jcfod+Fg8h7tuu5DlJvKnp6xC/dkRDO8nz/M=; b=eYgYF19FzIsFfv8lOkPcodSF8U
+	oZ4iKiczqwRGIxb475SLvNYcGiiY/NiY3xHFi10dtZrbfhx52wA9KWmRq/33mgmxzGPJyf7rv6FKb
+	JuF7wTsiv0QiCxW+Ttf7Ks3223TPks1nT6z7GAbSWSj9zUIU/g6B+rQREzQXfERCnnpgj+rffA7/N
+	3rffFNMouZbUgFoiazI4MztsoD2xaWB6MZTnVswiNgUE5kPE5cedzbKcS0hH4Nq+GIk32FD6z3FO/
+	UjE4UKnm3QtujRjxudj2lTA+MwtYGkFh+aQmRjL6EEHz4qe839Gkiymurq8GQBSgW5ustBoyW2neM
+	hzu9/hBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pOSCo-005hxK-PZ; Sat, 04 Feb 2023 23:44:26 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1pOdtr-006JyE-9G; Sun, 05 Feb 2023 12:13:39 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pOSCk-005hqY-8g; Sat, 04 Feb 2023 23:44:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=a1uYd+o29Q7pkVIXovCbwFOCc6DFqpbczL55lI14mQ8=; b=0C68ALlUcoU31fLWmirm6nTXNK
-	eziccq64O+XT9NJ+tsVGYDy1ava4KWiVfMFvAe/zKBo3Em/RJBTEuJu3OoIiyFk6BPfo2Ysq92ybF
-	jQdxkSVHcRgnlizGQXQKoS4nwe9AmKI26hf9pAAZXUDfXqAWZsSy2T5iG1FMsz8w21D7kPxZuOT9q
-	BHu9Vn5WsnkfFq0oL+1yd1FEdaDyWjO7VSKW10fs4JfikKHMycBi+lf8lhQwFDVVbWsMSdMvpUnY5
-	pEhOPeDayTUo96PZ5HU539I69BZ58Cm5o3CbyIDYsMR7fm3tBpmiomlhH0w73lRnw66h4CqFGcP86
-	e5VKabtw==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:36428)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1pOSAV-0006xA-2u; Sat, 04 Feb 2023 23:42:02 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1pOSAL-0008Hp-W5; Sat, 04 Feb 2023 23:41:54 +0000
-Date: Sat, 4 Feb 2023 23:41:53 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+	id 1pOdto-006JwU-Os; Sun, 05 Feb 2023 12:13:38 +0000
+Received: by mail-wm1-x334.google.com with SMTP id j32-20020a05600c1c2000b003dc4fd6e61dso8947202wms.5;
+        Sun, 05 Feb 2023 04:13:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=kAAmRt3jcfod+Fg8h7tuu5DlJvKnp6xC/dkRDO8nz/M=;
+        b=I742z+RfnbvkgojmdXHbNkCvUNyrzvuV8qFacugqAkmBnWyXxul8+MCM/G+0cUnXAp
+         ShRg9Z0RJH1C1oqVCEJIXGRt6/ha1KkKCcqKqQD5B/Z+4SazsCHBUq6OHHiMgN7nr/ZZ
+         fBmTHSaofkSRnuDNo/6y5Y3BDskFPBtu5R5dzlj0ke7ZECG1L3KyL+kGgelGv/gXTWWU
+         C/xsPbrGwjX72WfFzEkCFgSlivkWysoeF0TsiW66mkq/9meYv1EXPfffMoRpA4yFkRAf
+         tNoxkT5tjbCeiDA61zl48eMvxjpJ/2RU+OvGmO/oC6h9zHCinwlZVbvpBJCgyR/R++nf
+         uCkg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kAAmRt3jcfod+Fg8h7tuu5DlJvKnp6xC/dkRDO8nz/M=;
+        b=gnh4h+8HG/B/OzKFYDJAW4ziWnpbPh1R8eA7Z3lQNj2Zjf7WOjVJbCXdnGX2u0+IBR
+         WsX5vPiM8enOz1h/m2pOea9XswuQZg24+t0GOTre792NaYEPVp3AgOnNW76AFhZcu5QM
+         2zepU9YFxxa4wiaIKYJp5UkCaE4d9ohythucviaoiNnkcd4dJ4s54kDaVm/5Ne4iV9nE
+         glVltlVVhwc39SSLgmxrU0dG/t+Ngyg+bd8T4ANFWHwPRVvmMd9vJDeKa0i1eZCbDqdK
+         YJrUK6sDrEqUM4qpmyULoHSvGfGdwu190i0ogr+cgs/Eev8S8tiiZnfsVGenK2zRw3s8
+         UnVQ==
+X-Gm-Message-State: AO0yUKURXN5XxkD9p/V1gKPJWhMQm5bbXhHpmvwd1pqB2ORRpQ941hcT
+	AcMQ3PmhLzx/WAlUbT4eFRE=
+X-Google-Smtp-Source: AK7set9bkIfJteTm9JoUtPZPOtkDJ5gNgWAED7jQCuTbU8Em/dyiZifnw4V+m+TvJbbNc/fKEoAiaw==
+X-Received: by 2002:a05:600c:2286:b0:3df:fbc7:5b10 with SMTP id 6-20020a05600c228600b003dffbc75b10mr1668757wmf.0.1675599207357;
+        Sun, 05 Feb 2023 04:13:27 -0800 (PST)
+Received: from skbuf ([188.26.185.183])
+        by smtp.gmail.com with ESMTPSA id hg15-20020a05600c538f00b003df7b40f99fsm10949027wmb.11.2023.02.05.04.13.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 05 Feb 2023 04:13:26 -0800 (PST)
+Date: Sun, 5 Feb 2023 14:13:24 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
 To: Daniel Golle <daniel@makrotopia.org>
-Cc: Vladimir Oltean <olteanv@gmail.com>, netdev@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
+Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Russell King <linux@armlinux.org.uk>,
 	Heiner Kallweit <hkallweit1@gmail.com>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
 	Mark Lee <Mark-MC.Lee@mediatek.com>,
@@ -64,9 +78,9 @@ Cc: Vladimir Oltean <olteanv@gmail.com>, netdev@vger.kernel.org,
 	"David S. Miller" <davem@davemloft.net>,
 	Florian Fainelli <f.fainelli@gmail.com>,
 	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
-	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
+	=?utf-8?B?QmrDuHJu?= Mork <bjorn@mork.no>
 Subject: Re: [PATCH 9/9] net: dsa: mt7530: use external PCS driver
-Message-ID: <Y97tQaMgU/aqEdN5@shell.armlinux.org.uk>
+Message-ID: <20230205121324.a7ah2upjpzij5rsc@skbuf>
 References: <cover.1675407169.git.daniel@makrotopia.org>
  <cover.1675407169.git.daniel@makrotopia.org>
  <677a5e37aab97a4f992d35c41329733c5f3082fb.1675407169.git.daniel@makrotopia.org>
@@ -78,8 +92,8 @@ Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <Y95zaIJbCj3QIdqC@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230204_154422_349830_C4BFF360 
-X-CRM114-Status: GOOD (  25.63  )
+X-CRM114-CacheID: sfid-20230205_041336_835536_61CC8A23 
+X-CRM114-Status: GOOD (  32.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,11 +107,6 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
-
-Hi Daniel,
-
-I haven't reviewed the patches yet, and probably won't for a while.
-(I'm recovering from Covid).
 
 On Sat, Feb 04, 2023 at 03:02:00PM +0000, Daniel Golle wrote:
 > Hi Vladimir,
@@ -129,35 +138,43 @@ On Sat, Feb 04, 2023 at 03:02:00PM +0000, Daniel Golle wrote:
 > Are you suggesting to use BUG_ON() instead or rather return
 > ERR_PTR(-EOPNOTSUPP)?
 
-Returning ERR_PTR(-EOPNOTSUPP) from mac_select_pcs() must not be done
-conditionally - it means that "this instance does not support the
-mac_select_pcs() interface" and phylink will never call it again.
+I was not suggesting anything, I was just asking why the inconsistency
+exists between the handling of SERDES protocols on ports != 5 or 6
+(return ERR_PTR(-EINVAL)), and the handling of unknown PHY modes
+(return NULL). If you don't want to convey any special message, then
+returning NULL to phylink should be sufficient to say there is no PCS.
+The driver already ensures that phylink validation fails with wrong PHY
+mode on wrong port due to the way in which it populates supported_interfaces
+in mt7531_mac_port_get_caps().
 
-It was implemented to provide DSA a way to tell phylink that the DSA
-driver doesn't implement this interface - phylink originally checked
-whether mac_ops->mac_select_pcs was NULL, but with DSA's layering,
-such a check can only be made by a runtime call.
+Also, no BUG_ON() for the reasons Andrew pointed out.
 
-Returning NULL means "there is no PCS for this interface mode", and
-returning any other error code essentially signifies that the
-interface mode is not supported (even e.g. GMII or INTERNAL)...
-which really *should* be handled by setting supported_interfaces
-correctly in the first place.
+> > > +		return priv->sgmii_pcs[port - 5];
+> > 
+> > How about putting the pcs pointer in struct mt7530_port?
+> 
+> There are only two SerDes units available, only for port 5 and port 6.
+> Hence I wouldn't want to allocate additional unused sizeof(void*) for
+> ports 0 to 4.
 
-I would much prefer drivers to just return NULL if they have no PCS,
-even for ports where it's not possible, or not implement the
-interface over returning some kind of error code.
+I asked the question fully knowing that there will be no more than 2
+ports with a non-NULL PCS pointer. There's a time and place for
+(premature) optimizations, but I don't think that the control path of a
+switch is one particular place that comes at the top. Between
+priv->ports[port].sgmii_pcs and priv->sgmii_pcs[port - 5], my personal
+sensibilities for simple and maintainable code would always choose the
+former. However I'm not going to cling onto this. Whichever way you prefer.
 
-The only time I would expect mac_select_pcs() to return an error is
-where it needed to do something in order to evaluate whether to
-return a PCS or not, and it encountered an error while trying to
-evaluate that or some truely bizarre situation. E.g. a failed
-memory allocation, or "we know that a PCS is required for this but
-we're missing it". Something of that ilk.
+> > > +	for (i = 0; i < 2; ++i)
+> > 
+> > There is no ++i in this driver and there are 11 i++, so please be
+> > consistent with what exists.
+> 
+> As most likely in all cases a pre-increment is sufficient and less
+> resource consuming than a post-increment operation we should consider
+> switching them all to ++i instead of i++.
+> I will anyway use i++ in v2 for now.
 
-Anyway, more rest needed.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+And what would you suggest is the difference in the compiled code between
+"for (i = 0; i < n; i++)" and "for (i = 0; i < n; ++i)"?
 
