@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C62A3C63797
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Feb 2023 10:01:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D95D6C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Feb 2023 10:02:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EGzEkqpKDDo867QjW/T3RO5njqVfregshHu6LOte9Ns=; b=CnDiaN+89XQCgZPuOgNmSWJ6+e
-	sSBIkd7BAoPv7AKt//7u9T+ipMiO5KkA6d11FCKe+yAX4dlLFKWZLjnHJ6Bixil/0qBTpva/TZQIK
-	wrS/Mrvb4nHpbQZ00b/uBLGUDXJmGlcLnt8imu1xuo9ObspSXLpgwsjdmD2Z0usesUif5ONRJQtOg
-	SLVRDOFBDLL6XCnOgYrrsp3GAAGa4g8sSxxYQVxXKXjGC32dXfP9+inrOdgUanlhW9DX8dao0vVRV
-	Gd6Trchkqm6qwLiymzF+DS5U7l5unMDPe1oQraUuM7OfdHYfDUvzP1xCJv5P4nTAMgR+ir6DiXVBh
-	4TydTQ7w==;
+	bh=v3NoKHmiWsyEHv9ud0FVk3EYyw/c0MZ18sFSgoiQkE8=; b=YCAfCh3BGegKyRDLRk6vVVnxOY
+	tRQFkonc8CsxVIJcGQUEm0nkJefk68S5bs/YI0pr1iTFIjViHtzQ02n6/APTPB6ibvQ3PBMabkiK3
+	fkD8qrKRYeHP93D45X/4PkekGHs+Yo+v5xHGvoaJkAxIIbxN/90WNxZiaxvTRADsVi2oFzzx7rxhM
+	CRpKhWgHHyr1jHnozji/gntRehNesyVZWzx9GH38xHulARr1NLYUX3UDCm46nmXpoelFkixrFtrjE
+	YmD+KYUQBdvLEmQT/DwTpo7jaI/pBvAFObVs4pHBuT+6B8pO2a+loxB8C+C06FEfEVTin6g2OgQbU
+	QLBoyuWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pOyJm-007zOS-Ve; Mon, 06 Feb 2023 10:01:46 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pOyKF-007zej-15; Mon, 06 Feb 2023 10:02:15 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pOyJM-007zC8-1U; Mon, 06 Feb 2023 10:01:21 +0000
+	id 1pOyJM-007zCP-Ru; Mon, 06 Feb 2023 10:01:23 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9490B6602F90;
-	Mon,  6 Feb 2023 10:01:15 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9E5F86602FAE;
+	Mon,  6 Feb 2023 10:01:16 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1675677676;
-	bh=JSh/wdVnPgjT9XpgJxJRzIiGnPbLZPZnhfU8/MKT0ag=;
+	s=mail; t=1675677677;
+	bh=SUI34CS1BrJFmIaipPdxWm70cNWYkj8EhbTlIi7RZKo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=GwT05yb7Fv6vqjZvaH15YcVpRxZZh8uajUpG9goYDGOs6UNzggUFJhwgzSDtrzmoz
-	 uXCVv+5ZNwrfHgsMmrbRsEK76h2rERW4CKrDc63DRiG7xu4xzMufAjVzeAZjXzak9C
-	 hIagdfxiyliaiBK3bZ0PR3flyy2C5zLggJJ3+NcU+D2vwNdYvJeg4RVRxtX3R+AG3I
-	 9+y2oahjtUdTmDuK5kG3/62SgI9wjUPgwoyVnhKhTRWLcnNTkmXarn1SmlVncMTnKX
-	 zx7MZE9+7MFEwbrLaGlpjCcEkl9pwUCyc2Nu/Tt6WehiCv1z6sDdWOJXvyEEHPTPB4
-	 OXN3ZsX5aRbhw==
+	b=iRYJBOAsI4wIgnf2YkdFZADBhOfijn33uRNwDyexhlxJw7+ZfNe4ELRmzUAGiAckl
+	 x/5869CPo/hg5dgqSijs1I2ggAIs1xzVw97/Ta/2FmLhYpWBzDkLm2aLXXi2iqrNi8
+	 csLUh+PB04G8Sg+0QfPGcgsd8GfSIyFlGfbH/Musk+0tLQNjYmLtFTlzjmfN4KWOuT
+	 TAx02L1Wv/C2eGZSfktGALCo/K130v25tUNyMHpxp99NiJwuMKRiOQwPWXeKRdtjzd
+	 ouiYnuvCsyaeoQMPPlajdcNHgUqcRxOjXEJQkKW4Nodhd72AXt1O6lASdZl8/iVno5
+	 Aii5GC4Cq85Hw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: sboyd@kernel.org
 Cc: mturquette@baylibre.com,
@@ -61,17 +61,18 @@ Cc: mturquette@baylibre.com,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH v3 1/7] clk: mediatek: fhctl: Add support for older fhctl register layout
-Date: Mon,  6 Feb 2023 11:00:59 +0100
-Message-Id: <20230206100105.861720-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 2/7] clk: mediatek: clk-pllfh: Export register/unregister/parse functions
+Date: Mon,  6 Feb 2023 11:01:00 +0100
+Message-Id: <20230206100105.861720-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230206100105.861720-1-angelogioacchino.delregno@collabora.com>
 References: <20230206100105.861720-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230206_020120_389310_0F0A3542 
-X-CRM114-Status: GOOD (  19.11  )
+X-CRM114-CacheID: sfid-20230206_020121_083590_9CBC5C02 
+X-CRM114-Status: UNSURE (   8.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,192 +87,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Frequency Hopping Controller (FHCTL) seems to have different
-versions, as it has a slightly different register layout on some
-older SoCs like MT6795, MT8173, MT8183 (and others).
-
-This driver is indeed compatible with at least some of those older
-IP revisions, so all we need to do is to add a way to select the
-right register layout at registration time.
+These functions are used by the various MediaTek apmixed clock drivers
+that may be built as modules: export the common functions used to parse
+related devicetree properties, register and unregister the PLLFH clocks.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/clk/mediatek/clk-fhctl.c             | 26 +++++++++++++++++---
- drivers/clk/mediatek/clk-fhctl.h             |  9 ++++++-
- drivers/clk/mediatek/clk-mt8186-apmixedsys.c |  2 ++
- drivers/clk/mediatek/clk-pllfh.c             | 23 +++++++++++++----
- drivers/clk/mediatek/clk-pllfh.h             |  1 +
- 5 files changed, 52 insertions(+), 9 deletions(-)
+ drivers/clk/mediatek/clk-pllfh.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/clk/mediatek/clk-fhctl.c b/drivers/clk/mediatek/clk-fhctl.c
-index 4f271acef5fe..45e4842cbf04 100644
---- a/drivers/clk/mediatek/clk-fhctl.c
-+++ b/drivers/clk/mediatek/clk-fhctl.c
-@@ -14,7 +14,20 @@
- #define PERCENT_TO_DDSLMT(dds, percent_m10) \
- 	((((dds) * (percent_m10)) >> 5) / 100)
- 
--static const struct fhctl_offset fhctl_offset = {
-+const struct fhctl_offset fhctl_offset_v1 = {
-+	.offset_hp_en = 0x0,
-+	.offset_clk_con = 0x4,
-+	.offset_rst_con = 0x8,
-+	.offset_slope0 = 0xc,
-+	.offset_slope1 = 0x10,
-+	.offset_cfg = 0x0,
-+	.offset_updnlmt = 0x4,
-+	.offset_dds = 0x8,
-+	.offset_dvfs = 0xc,
-+	.offset_mon = 0x10,
-+};
-+
-+const struct fhctl_offset fhctl_offset_v2 = {
- 	.offset_hp_en = 0x0,
- 	.offset_clk_con = 0x8,
- 	.offset_rst_con = 0xc,
-@@ -27,9 +40,16 @@ static const struct fhctl_offset fhctl_offset = {
- 	.offset_mon = 0x10,
- };
- 
--const struct fhctl_offset *fhctl_get_offset_table(void)
-+const struct fhctl_offset *fhctl_get_offset_table(enum fhctl_variant v)
- {
--	return &fhctl_offset;
-+	switch (v) {
-+	case FHCTL_PLLFH_V1:
-+		return &fhctl_offset_v1;
-+	case FHCTL_PLLFH_V2:
-+		return &fhctl_offset_v2;
-+	default:
-+		return ERR_PTR(-EINVAL);
-+	};
- }
- 
- static void dump_hw(struct mtk_clk_pll *pll, struct fh_pll_regs *regs,
-diff --git a/drivers/clk/mediatek/clk-fhctl.h b/drivers/clk/mediatek/clk-fhctl.h
-index 51275febf086..bfa6d281a3ee 100644
---- a/drivers/clk/mediatek/clk-fhctl.h
-+++ b/drivers/clk/mediatek/clk-fhctl.h
-@@ -7,6 +7,13 @@
- #ifndef __CLK_FHCTL_H
- #define __CLK_FHCTL_H
- 
-+#include "clk-pllfh.h"
-+
-+enum fhctl_variant {
-+	FHCTL_PLLFH_V1,
-+	FHCTL_PLLFH_V2,
-+};
-+
- struct fhctl_offset {
- 	u32 offset_hp_en;
- 	u32 offset_clk_con;
-@@ -19,7 +26,7 @@ struct fhctl_offset {
- 	u32 offset_dvfs;
- 	u32 offset_mon;
- };
--const struct fhctl_offset *fhctl_get_offset_table(void);
-+const struct fhctl_offset *fhctl_get_offset_table(enum fhctl_variant v);
- const struct fh_operation *fhctl_get_ops(void);
- void fhctl_hw_init(struct mtk_fh *fh);
- 
-diff --git a/drivers/clk/mediatek/clk-mt8186-apmixedsys.c b/drivers/clk/mediatek/clk-mt8186-apmixedsys.c
-index 1d673c6278a9..9fded5020ca4 100644
---- a/drivers/clk/mediatek/clk-mt8186-apmixedsys.c
-+++ b/drivers/clk/mediatek/clk-mt8186-apmixedsys.c
-@@ -7,6 +7,7 @@
- #include <linux/platform_device.h>
- #include <dt-bindings/clock/mt8186-clk.h>
- 
-+#include "clk-fhctl.h"
- #include "clk-mtk.h"
- #include "clk-pll.h"
- #include "clk-pllfh.h"
-@@ -98,6 +99,7 @@ enum fh_pll_id {
- 		.data = {						\
- 			.pll_id = _pllid,				\
- 			.fh_id = _fhid,					\
-+			.fh_ver = FHCTL_PLLFH_V2,			\
- 			.fhx_offset = _offset,				\
- 			.dds_mask = GENMASK(21, 0),			\
- 			.slope0_value = 0x6003c97,			\
 diff --git a/drivers/clk/mediatek/clk-pllfh.c b/drivers/clk/mediatek/clk-pllfh.c
-index f48780bec507..b9297726f5a0 100644
+index b9297726f5a0..7b6e051443f4 100644
 --- a/drivers/clk/mediatek/clk-pllfh.c
 +++ b/drivers/clk/mediatek/clk-pllfh.c
-@@ -104,14 +104,16 @@ void fhctl_parse_dt(const u8 *compatible_node, struct mtk_pllfh_data *pllfhs,
+@@ -103,6 +103,7 @@ void fhctl_parse_dt(const u8 *compatible_node, struct mtk_pllfh_data *pllfhs,
+ 		pllfh->state.base = base;
  	}
  }
++EXPORT_SYMBOL_GPL(fhctl_parse_dt);
  
--static void pllfh_init(struct mtk_fh *fh, struct mtk_pllfh_data *pllfh_data)
-+static int pllfh_init(struct mtk_fh *fh, struct mtk_pllfh_data *pllfh_data)
+ static int pllfh_init(struct mtk_fh *fh, struct mtk_pllfh_data *pllfh_data)
  {
- 	struct fh_pll_regs *regs = &fh->regs;
- 	const struct fhctl_offset *offset;
- 	void __iomem *base = pllfh_data->state.base;
- 	void __iomem *fhx_base = base + pllfh_data->data.fhx_offset;
+@@ -247,6 +248,7 @@ int mtk_clk_register_pllfhs(struct device_node *node,
  
--	offset = fhctl_get_offset_table();
-+	offset = fhctl_get_offset_table(pllfh_data->data.fh_ver);
-+	if (IS_ERR(offset))
-+		return PTR_ERR(offset);
- 
- 	regs->reg_hp_en = base + offset->offset_hp_en;
- 	regs->reg_clk_con = base + offset->offset_clk_con;
-@@ -129,6 +131,8 @@ static void pllfh_init(struct mtk_fh *fh, struct mtk_pllfh_data *pllfh_data)
- 	fh->lock = &pllfh_lock;
- 
- 	fh->ops = fhctl_get_ops();
-+
-+	return 0;
+ 	return PTR_ERR(hw);
  }
++EXPORT_SYMBOL_GPL(mtk_clk_register_pllfhs);
  
- static bool fhctl_is_supported_and_enabled(const struct mtk_pllfh_data *pllfh)
-@@ -142,20 +146,29 @@ mtk_clk_register_pllfh(const struct mtk_pll_data *pll_data,
- {
- 	struct clk_hw *hw;
- 	struct mtk_fh *fh;
-+	int ret;
+ void mtk_clk_unregister_pllfhs(const struct mtk_pll_data *plls, int num_plls,
+ 			       struct mtk_pllfh_data *pllfhs, int num_fhs,
+@@ -286,3 +288,4 @@ void mtk_clk_unregister_pllfhs(const struct mtk_pll_data *plls, int num_plls,
  
- 	fh = kzalloc(sizeof(*fh), GFP_KERNEL);
- 	if (!fh)
- 		return ERR_PTR(-ENOMEM);
- 
--	pllfh_init(fh, pllfh_data);
-+	ret = pllfh_init(fh, pllfh_data);
-+	if (ret) {
-+		hw = ERR_PTR(ret);
-+		goto out;
-+	}
- 
- 	hw = mtk_clk_register_pll_ops(&fh->clk_pll, pll_data, base,
- 				      &mtk_pllfh_ops);
- 
-+	if (IS_ERR(hw))
-+		goto out;
-+
-+	fhctl_hw_init(fh);
-+
-+out:
- 	if (IS_ERR(hw))
- 		kfree(fh);
--	else
--		fhctl_hw_init(fh);
- 
- 	return hw;
+ 	iounmap(base);
  }
-diff --git a/drivers/clk/mediatek/clk-pllfh.h b/drivers/clk/mediatek/clk-pllfh.h
-index c0a6e1537034..5f419c2ec01f 100644
---- a/drivers/clk/mediatek/clk-pllfh.h
-+++ b/drivers/clk/mediatek/clk-pllfh.h
-@@ -18,6 +18,7 @@ struct fh_pll_state {
- struct fh_pll_data {
- 	int pll_id;
- 	int fh_id;
-+	int fh_ver;
- 	u32 fhx_offset;
- 	u32 dds_mask;
- 	u32 slope0_value;
++EXPORT_SYMBOL_GPL(mtk_clk_unregister_pllfhs);
 -- 
 2.39.1
 
