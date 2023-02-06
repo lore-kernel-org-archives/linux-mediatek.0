@@ -4,54 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 762F1C636D3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Feb 2023 18:42:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 298B4C636D3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Feb 2023 19:42:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=arkdi84OlgD/8JIjBhprSNAS0S9dnuy2bKkOoDUEn7w=; b=IVt4cD4s9XNuhW
-	wWNJ8Z3M5KxO8WzlMH8K6JPmXCAXGv2t9To8w/yoh3YT9DsDRGeBXLAGPPD0qK8GoJk02M+VAk+hN
-	a59PRH7UXc53y0CIHS4XJqQEpNjG5iWIVNxld801aU2xkzpeAE311ShXRoL984ztfaAPTqDP4jYsv
-	09t6nJgGg1LfC/NNDmS0RkFiqDkohvfbanAAc5PIS2qAP+Aqj68nUI8Q6jnHSZ9HAf72IgOXMxrdr
-	c0cMLPnBVjw4XvOGfsLL27igpsT4B5/7lYGf13slF8gLv5KPGCIMMUO+ZWBNgSrhVoWhvCSuODbYg
-	oz9swGPAZYrlRWyo84tA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	References:To:From:Subject:MIME-Version:Date:Message-ID:Content-Type:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tKES81hgyd3uZmNg8dQBk10l3khfvFORuLOkdJzPJw4=; b=XKk/2xkoFOqNlImqHRPm1+Nq2l
+	uRkaeFx/yk5k+dFY/UCQjvq5nnlQ/L7iLbfWqJiltAwMlUmHSXw6HluGSoTLLrJdLqzSwWURED5PG
+	PoQLGSth/qHDjrOYkQI82tPDCgCMo2DTVjeeoyaN/MhVUFqqx1CZM2qXOz8u5/nQhV/Uj2Hb4cLhr
+	Ud3RwY7iIzJ3aektUwQBK0L58+5/rfZIsfqD3Qwl0+oR4uNiURzjBe7WUE29jVFVIE/52TlZH9gcO
+	L3O/3rhQUkPl+KG1/nz72EqzFUxHnoYagjqgGbkXWXVM8U/LOOrrmuOqY3GR7+IRirHNbljdKfEwP
+	+naospCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pP6R8-009dTP-BB; Mon, 06 Feb 2023 18:41:54 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1pP7Ns-009jVm-Mu; Mon, 06 Feb 2023 19:42:36 +0000
+Received: from sender4-op-o16.zoho.com ([136.143.188.16])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pP6Qx-009dSK-8v; Mon, 06 Feb 2023 18:41:44 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1675708875; cv=none; 
+	id 1pP7Nf-009jUV-VH; Mon, 06 Feb 2023 19:42:25 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1675712515; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=HvPZoRoztiFry6G8NNQ7DEovbjbJGM+glsPpptqwdg8j3l4zKnBZ9U0N4eGESqM9j2b5b0EToaQxa9LpkXSoIU5MvSjml2YLjChipQNex262mKxCKuZAjLa13p6T/ttnb/p0/fmzkErpMmPh2WaqFGCIurcpwt/Lg1+9wXlSA18=
+	b=MYmHxZrvHBbNoRD8edWQraW9/wPJAGVdB3JIp2nIhaa+OaqgXcmdGBjBkQFemXeAaUAw63tz81I89dBWRBRFdPmFvw1HyxuCIEdqxqppiUOTHJM5tp6cH03Vy1Rt+LTVzZ1N1HAp1ZQ/AGPa6BmhJxPRFQhsXUqSXi8uvb+T8QY=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1675708875; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=arkdi84OlgD/8JIjBhprSNAS0S9dnuy2bKkOoDUEn7w=; 
-	b=NumanfTudQLojOt9+t7fsi/8aciPlaLjk6QePC4LAhEPgIt6+RTiyjPAEsdL0OXAThjrr3kEX0Vc+muQNnOFvnZSS3yOEYkgrw58GlORscRuJLxtkBppYOWqLY5nUayJP3vEJH5esYZb+axN65ZPtm4eCIRPaO6I0YCr2z5ewWU=
+	t=1675712515; h=Content-Type:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=tKES81hgyd3uZmNg8dQBk10l3khfvFORuLOkdJzPJw4=; 
+	b=abNFaqNijcF70DAAuPPoD/r8tguVLsnyYDKNzpyXy1RfhfdQA96uul3414lrJWDElLjwKMNOq2Qb/+Kts8r7cS+2F/yuSszAtT8o+LIqZlQqTFhvpIEiQE3TKHOo9BRGWuU9N3Ea3nsezgImHmnTE4fixv0eScryU+6Kp77Olvw=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1675708875;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1675712515;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=arkdi84OlgD/8JIjBhprSNAS0S9dnuy2bKkOoDUEn7w=;
-	b=X6EWEHD41ZVIzuEsFLMgPG2WhnuB8iZY+XiFkS1SWsBTVtEJayB85MdhuHxD63iH
-	pRlt9CYWe6sBFGJ+jKQjt8nya/1Ap+WvwBrGxDVMk7/fk73Uwt+SF8xUPzgrjJZBR+h
-	Td6WXz+SrpXh9QNU7jShbpcQAhEiXr7/8h+80YrQ=
+	h=Content-Type:Message-ID:Date:Date:MIME-Version:Subject:Subject:From:From:To:To:Cc:Cc:References:In-Reply-To:Message-Id:Reply-To;
+	bh=tKES81hgyd3uZmNg8dQBk10l3khfvFORuLOkdJzPJw4=;
+	b=RCEzXkk2sIuxnqExl0V2PjwQSt0hl/u76xrsLS3Sq1JcIbHGURQH6XSoYzK6ITVv
+	hk64ZEQshLBghueTPcbwzeGEhwg9xqzHNRgXqAna1wji0QMFIXlZyXzeonFB8JrLPmO
+	0xu0WvQqu4/31rlvhJOWCwMgq744EMmyxaZkTDZE=
 Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1675708872711675.352353078918; Mon, 6 Feb 2023 10:41:12 -0800 (PST)
-Message-ID: <5e474cb7-446c-d44a-47f6-f679ae121335@arinc9.com>
-Date: Mon, 6 Feb 2023 21:41:07 +0300
+	with SMTPS id 1675712513787495.8395705964474; Mon, 6 Feb 2023 11:41:53 -0800 (PST)
+Content-Type: multipart/mixed; boundary="------------B2kTEFN8ZUTqa40kjsZFlmDv"
+Message-ID: <f297c2c4-6e7c-57ac-2394-f6025d309b9d@arinc9.com>
+Date: Mon, 6 Feb 2023 22:41:47 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
 Subject: Re: [PATCH net] net: dsa: mt7530: don't change PVC_EG_TAG when CPU
  port becomes VLAN-aware
 Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 To: Vladimir Oltean <vladimir.oltean@nxp.com>
 References: <20230205140713.1609281-1-vladimir.oltean@nxp.com>
  <3649b6f9-a028-8eaf-ac89-c4d0fce412da@arinc9.com>
@@ -60,14 +62,14 @@ References: <20230205140713.1609281-1-vladimir.oltean@nxp.com>
  <20230205235053.g5cttegcdsvh7uk3@skbuf>
  <116ff532-4ebc-4422-6599-1d5872ff9eb8@arinc9.com>
  <20230206174627.mv4ljr4gtkpr7w55@skbuf>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20230206174627.mv4ljr4gtkpr7w55@skbuf>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+ <5e474cb7-446c-d44a-47f6-f679ae121335@arinc9.com>
+In-Reply-To: <5e474cb7-446c-d44a-47f6-f679ae121335@arinc9.com>
+X-Zoho-Virus-Status: 1
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230206_104143_390111_4DC88835 
-X-CRM114-Status: GOOD (  13.85  )
+X-CRM114-CacheID: sfid-20230206_114224_122494_A6A90E74 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,37 +85,123 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Floria
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6.02.2023 20:46, Vladimir Oltean wrote:
-> Hi Arınç,
-> 
-> On Mon, Feb 06, 2023 at 07:41:06PM +0300, Arınç ÜNAL wrote:
->> Finally I got time. It's been a seismically active day where I'm from.
-> 
-> My deepest condolences to those who experienced tragedies after today's
-> earthquakes. A lot of people in neighboring countries are horrified
-> thinking when this will happen to them. Hopefully you aren't living in
-> Gaziantep or nearby cities.
+This is a multi-part message in MIME format.
+--------------B2kTEFN8ZUTqa40kjsZFlmDv
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 
-Thank you for asking, we're all fine as a family in İzmir. This region 
-is on a fault line as well so the same could happen here too like it did 
-in 2020. Thankfully our apartment is strong.
+One last thing. Specific to MT7530 switch in MT7621 SoC, if port@5 is 
+the only CPU port defined on the devicetree, frames sent from DSA master 
+appears malformed on the user port. Packet capture on computer connected 
+to the user port is attached.
 
-> 
->> # ping 192.168.2.2
->> PING 192.168.2.2
->> [   39.508013] mtk_soc_eth 1b100000.ethernet eth1: dsa_switch_rcv: there is no metadata dst attached to skb 0xc2dfecc0
->>
->> # ping 192.168.2.2
->> PING 192.168.2.2
->> [   22.674182] mtk_soc_eth 1b100000.ethernet eth1: mtk_poll_rx: received skb 0xc2d67840 without VLAN/DSA tag present
-> 
-> Thank you so much for testing. Would you mind cleaning everything up and
-> testing with this patch instead (formatted on top of net-next)?
-> Even if you need to adapt to your tree, hopefully you get the idea from
-> the commit message.
+The ARP frames on the pcapng file are received on the DSA master, I 
+captured them with tcpdump, and put it in the attachments. Then I start 
+pinging from the DSA master and the malformed frames appear on the 
+pcapng file.
 
-Applies cleanly and fixes the issue! You can add my tested-by tag. 
-Thanks a lot for the ridiculously fast fix Vladimir!
+It'd be great if you could take a look this final issue.
 
 Arınç
+--------------B2kTEFN8ZUTqa40kjsZFlmDv
+Content-Type: text/plain; charset=UTF-8; name="tcpdump-ping-output.txt"
+Content-Disposition: attachment; filename="tcpdump-ping-output.txt"
+Content-Transfer-Encoding: base64
+
+IyB0Y3BkdW1wIC1pIGV0aDAKdGNwZHVtcDogdmVyYm9zZSBvdXRwdXQgc3VwcHJlc3NlZCwg
+dXNlIC12W3ZdLi4uIGZvciBmdWxsIHByb3RvY29sIGRlY29kZQpsaXN0ZW5pbmcgb24gZXRo
+MCwgbGluay10eXBlIE5VTEwgKEJTRCBsb29wYmFjayksIHNuYXBzaG90IGxlbmd0aCAyNjIx
+NDQgYnl0ZXMKMDA6MDA6MTYuNzYzNjUzIEFGIFVua25vd24gKDQyOTQ5MjYwNzUpLCBsZW5n
+dGggNTY6IAoJMHgwMDAwOiAgOWExNyBlMGQ1IDVlYTQgZWRjYyAwODI2IGMwYTggMDIwMSAw
+MDAwICAuLi4uXi4uLi4mLi4uLi4uCgkweDAwMTA6ICAwMDAwIDAwMDAgMDAwMCAwMDAwIDAw
+MDAgMDAwMCAwMDAwIDAwMDAgIC4uLi4uLi4uLi4uLi4uLi4KCTB4MDAyMDogIDEyMDYgMDIw
+YyBkMTRiIDAwMDMgM2Q0ZiAzMDMwIDMwMzAgMTAzMCAgLi4uLi5LLi49TzAwMDAuMAoJMHgw
+MDMwOiAgMzEwMCAzMDMwICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAxLjAwCjAw
+OjAwOjE3Ljc4OTI0NiBBRiBVbmtub3duICg0Mjk0OTA5NjkxKSwgbGVuZ3RoIDE4NDogCgkw
+eDAwMDA6ICA5YTA3IGUwZDUgNWVhNCBlZGNjIDJkYWYgMDAwMSAwODAwIDA2MDQgIC4uLi5e
+Li4uLS4uLi4uLi4KCTB4MDAxMDogIDAwMDEgZTBkNSA1ZWE0IDRjY2MgODAwMCAwMjAyIDAw
+MDAgMDAwMCAgLi4uLl4uTC4uLi4uLi4uLgoJMHgwMDIwOiAgMDAyMCBjMGE4IDAyMDEgMDAw
+MCAwMDAwIDAwMDAgMDAwMCAwMDAwICAuLi4uLi4uLi4uLi4uLi4uCgkweDAwMzA6ICAwMDAw
+IDAwMDAgMDAwMCAwMDAwIDlhMDcgMDAwMCAwMDAwIDAwMDAgIC4uLi4uLi4uLi4uLi4uLi4K
+CTB4MDA0MDogIDIxMDMgMDAwMCAwMDAwIDAwMDAgMDAwNiAwMDAwIDAwMDMgMDAwMCAgIS4u
+Li4uLi4uLi4uLi4uLgoJMHgwMDUwOiAgMDExOCAwMDAwIDAxMmUgMDAwMCAwMDAyIDAwMDAg
+MDAwMCAwMDAwICAuLi4uLi4uLi4uLi4uLi4uCgkweDAwNjA6ICAwMDAwIDAwMDAgMDA1ZiAw
+MDAwIDAwMDMgMDAwMCAwMDAwIDAwMDAgIC4uLi4uXy4uLi4uLi4uLi4KCTB4MDA3MDogIDAw
+NDUgMDAwMCAwMDAzIDAwMDAgMDAwOCAwMDAwIDAwMzggMDAwMCAgLkUuLi4uLi4uLi4uLjgu
+LgoJMHgwMDgwOiAgMDIwMCAwMDAwIDAxMDAgMDAwMCAwMDAzIDAwMDAgMDAwNCAwMDAwICAu
+Li4uLi4uLi4uLi4uLi4uCgkweDAwOTA6ICAwMDAzIDAwMDAgMDAwMyAwMDAwIDAxMjMgMDAw
+MCAwMDBjIDAwMDAgIC4uLi4uLi4uLiMuLi4uLi4KCTB4MDBhMDogIDAwMDMgMDAwMCAwMDAw
+IDAwMDAgMDEwYyAwMDAwIDAwMDQgMDAwMCAgLi4uLi4uLi4uLi4uLi4uLgoJMHgwMGIwOiAg
+MDAwMyAwMDAwICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAuLi4uCjAwOjAwOjE4
+LjgxMzI0MSBBRiBVbmtub3duICg0Mjk0OTI2MDc1KSwgbGVuZ3RoIDU2OiAKCTB4MDAwMDog
+IDlhMTcgZTBkNSA1ZWE0IGVkY2MgMjlhNiBjMGE4IDAyMDEgMDAwMCAgLi4uLl4uLi4pLi4u
+Li4uLgoJMHgwMDEwOiAgMDAwMCAwMDAwIDAwMDAgMDAwMCAwMDAwIDAwMDAgMDAwMCAwMDAw
+ICAuLi4uLi4uLi4uLi4uLi4uCgkweDAwMjA6ICA5YTA3IDAyMGMgZTI1MSAwMDAzIDM5NGMg
+MzAzNSAyMDMxIDE0MzAgIC4uLi4uUS4uOUwwNS4xLjAKCTB4MDAzMDogIDNhOGUgMjAzMSAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgOi4uMQowMDowMDoxOS44MzcyMjMgQUYg
+VW5rbm93biAoNDI5NDkyNjA3OSksIGxlbmd0aCA3MDogCgkweDAwMDA6ICA5YTA3IGUwZDUg
+NWVhNCBlZGNjIDI5YWYgMDAwMSAwODAwIDA2MDQgIC4uLi5eLi4uKS4uLi4uLi4KCTB4MDAx
+MDogIDAwMDEgZTBkNSA1ZWE0IDRjY2MgODAwMCAwMjAyIDAwMDAgMDAwMCAgLi4uLl4uTC4u
+Li4uLi4uLgoJMHgwMDIwOiAgMDAwMCBjMGE4IDAyMDEgMDAwMCAwMDAwIDAwMDAgMDAwMCAw
+MDAwICAuLi4uLi4uLi4uLi4uLi4uCgkweDAwMzA6ICAwMDAwIDAwMDAgMDAwMCAwMDAwIDlh
+MDcgMDIwYyBhMzhhIDAwMDMgIC4uLi4uLi4uLi4uLi4uLi4KCTB4MDA0MDogIDIxMDMgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIS4KMDA6MDA6MjAuODYxMjE5IEFG
+IFVua25vd24gKDQyOTQ5MjYwNzkpLCBsZW5ndGggNTY6IAoJMHgwMDAwOiAgOWFkNyBlMGQ1
+IDVlYTQgZWRjYyAyZGFmIGMwYTggMDIwMSAwMDAwICAuLi4uXi4uLi0uLi4uLi4uCgkweDAw
+MTA6ICAwMDAwIDAwMDAgMDAwMCAwMDAwIDAwMDAgMDAwMCAwMDAwIDAwMDAgIC4uLi4uLi4u
+Li4uLi4uLi4KCTB4MDAyMDogIDlhMDcgMDA0YyBhYTIwIDAwMDMgMzk0OCAwMDAwIDAwMDAg
+MDAwMCAgLi4uTC4uLi45SC4uLi4uLgoJMHgwMDMwOiAgMjEwMCAwMDAwICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAhLi4uCjAwOjAwOjIxLjg4NTIxNyBBRiBVbmtub3duICg0
+Mjk0OTA5NjkxKSwgbGVuZ3RoIDU2OiAKCTB4MDAwMDogIDlhMDcgYzBhOCAwMjAxIDAwMDAg
+MjEyMSAwMDAwIDAwMDAgMDAwMCAgLi4uLi4uLi4hIS4uLi4uLgoJMHgwMDEwOiAgMDAwMCAw
+MDAwIDAwMDAgMDAwMCA5YTA3IDAyMGMgMjVhOSAwMDAzICAuLi4uLi4uLi4uLi4lLi4uCgkw
+eDAwMjA6ICAyMTA0IDAwMDAgMDE3MCA0ODMyIDAyMDAgMDAwMCAwMDAzIDAwMDAgICEuLi4u
+cEgyLi4uLi4uLi4KCTB4MDAzMDogIDIxMDQgMDAwMCAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIS4uLgpeQwo2IHBhY2tldHMgY2FwdHVyZWQKNiBwYWNrZXRzIHJlY2VpdmVk
+IGJ5IGZpbHRlcgowIHBhY2tldHMgZHJvcHBlZCBieSBrZXJuZWwKIyBwaW5nIDE5Mi4xNjgu
+Mi4yClBJTkcgMTkyLjE2OC4yLjIgKDE5Mi4xNjguMi4yKTogNTYgZGF0YSBieXRlcwpeQwot
+LS0gMTkyLjE2OC4yLjIgcGluZyBzdGF0aXN0aWNzIC0tLQo3IHBhY2tldHMgdHJhbnNtaXR0
+ZWQsIDAgcGFja2V0cyByZWNlaXZlZCwgMTAwJSBwYWNrZXQgbG9zcwojIAo=
+--------------B2kTEFN8ZUTqa40kjsZFlmDv
+Content-Type: application/x-pcapng; name="new-mt7530-port5-malformed.pcapng"
+Content-Disposition: attachment; filename="new-mt7530-port5-malformed.pcapng"
+Content-Transfer-Encoding: base64
+
+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
+AAAAAAAAAABsAAAA
+
+--------------B2kTEFN8ZUTqa40kjsZFlmDv--
 
