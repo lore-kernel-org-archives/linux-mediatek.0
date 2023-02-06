@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA8E7C05027
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Feb 2023 15:37:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D797EC636D3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Feb 2023 15:37:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CmHI+7CBPPkH5jwJcBKStxVAIwbP1QotPCgKvopoGFQ=; b=06T+EVztDzTm93rP3NxIdY3ogl
-	GELuzxuh920HkMCiPbjtjv+9W7uXa2YgVefJ1Q9fNNPkeOuF+Ty0m4nimBCzzSyfWj1AnPPc7P+Ns
-	8mG92fWKe90XZmXuCG6clxDzQOQvI8mVfnQB+FGCByfG6AKGzrgn0oZEXAWv7+8DG0/NZaICtE7Tf
-	gg91DfgH7vo/AtkRSpk2ro/rS81F3/E/UhtBdY+gSlxfyz6fNgl8gSrfRcFdeWpc3dbv2qIl0+NYF
-	o+HJVHi1yQ12I/h19BNEgQtTnlQG7teD9dBvyChu5GcNgae+zXObil9z7nQ7ztW402xamEvpFBld4
-	uKUtNk8A==;
+	bh=sglnJplQHU0Rb5rj4zRVC/j9T3q6wRNiEGnZ1qL99Og=; b=wc/x6SIJQ9oiMk3L1z/BMUU3OP
+	KfKUMBfEH+iN56Gwfu4hb53TYI/1qEdhlBfsY8kyV0KBaYwD00rvEScE09uB0+DN2AoMNwUpFRVbp
+	ZFcV9JBSYGzA/5gVwcLckahr/hI6K6Wo3f+zJtR1zDfMD+ebtBzlUiB4lnHAPNdt+CNZqY3X7LAz3
+	Yt/QOTmBqUMqa8SKt7A8Do/OG9j/LqVp4I74xTwXcmR0h7oDXY5EtghlTZctdEv56L2NCCgbg/0W+
+	N7oHo5uh/IT+nnt6IWMkbgu0jnZK6OEfzL/mhsWPQ7+N4O7jZTX5NbxxOvQqe4c9RAHgVMrm4scHS
+	hVokZBoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pP3Y5-008xd7-Ec; Mon, 06 Feb 2023 15:36:53 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pP3Yu-008y4e-C6; Mon, 06 Feb 2023 15:37:44 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pP3RV-008tqx-LT; Mon, 06 Feb 2023 15:30:07 +0000
+	id 1pP3RX-008trO-42; Mon, 06 Feb 2023 15:30:09 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 508506602F93;
-	Mon,  6 Feb 2023 15:30:03 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AC4D06602F9C;
+	Mon,  6 Feb 2023 15:30:04 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1675697404;
-	bh=mkbBbWYebgdFxhv1Yxn8HTTQtR6Vhd4o4rssC48MQ34=;
+	s=mail; t=1675697405;
+	bh=8kQyDdnC0/43MPsGIOYi17QeWkO96To6LjFOlxi/Lyo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=jFs+SXYiVnSZdJLTy6IIhlF529ucepOu6DlEbMwRYnkeYypwUdRb0I3oC6xb8ZHwo
-	 wfwJPhM3qpQ3ifSpkw6ZCVFrUjA65IW/F3AhA35DT10xWNT7FG0ueNU8ajnIccKkX0
-	 tvEkS4tMzIviI//V0yU8WszwroEh6NwGwJM21fxjGBD7bzJdu64uJpNHGIK47r9dK8
-	 quTGiS4ewuIhVHeGCAa1QZ5XJTzDYM8MvgY8lmlQJ3OfRq97+n9EmNkI8YSTU0eXwU
-	 ocigwoZ9iobno7ZgdfXlboFRtjzoDrYK/es1rme+k/aAxTRLrrhZQA6neXhCswBZFs
-	 0uBguxbwJzUVg==
+	b=HjlPD10FR/kMD9YXLMJ7/4XgOHfBinCwON7hZzjhgEe2hgCQfcZRs5Msr3hgQAft8
+	 x/b2B/J3rDy67BeAAAE8yR+36j0l2Z/7STWA4tT+IyGrZPyAVNS9Jgky8YtJBaQEHJ
+	 wXjIJ9lc8ljwxFp8LVIfM4CqTtrj0oiiwcUUAQ1z+a5MEMgWsHBHuuf4diZzVZQGUA
+	 nhNLGzKEJVhlRHqSYahlQAC+ey6cjFUQ77cWr1KGKRyrC3fndPke+o/Rz6USENAdB0
+	 g46WNW1+t9Fyla3B55TqjxCCA4KzBjYqef3XJgSYxS6lnOW2h76uliyb0glJccZ8iS
+	 eCGE82RA7hEjA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mturquette@baylibre.com
 Cc: sboyd@kernel.org,
@@ -67,18 +67,17 @@ Cc: sboyd@kernel.org,
 	linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v1 13/45] clk: mediatek: mt8167: Compress GATE_TOPx macros
-Date: Mon,  6 Feb 2023 16:28:56 +0100
-Message-Id: <20230206152928.918562-14-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 14/45] clk: mediatek: mt8167: Move apmixedsys as platform_driver in new file
+Date: Mon,  6 Feb 2023 16:28:57 +0100
+Message-Id: <20230206152928.918562-15-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230206152928.918562-1-angelogioacchino.delregno@collabora.com>
 References: <20230206152928.918562-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230206_073006_023476_E15FF2E2 
-X-CRM114-Status: UNSURE (   8.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230206_073007_464866_18764474 
+X-CRM114-Status: GOOD (  22.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,120 +92,305 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the GATE_MTK macro to compress the GATE_TOP{0..5} macros.
-No functional changes.
+In preparation for migrating all other MT8167 clocks to the common
+mtk_clk_simple_probe(), move apmixedsys clocks to a different file.
+While at it, also migrate away from the legacy CLK_OF_DECLARE and
+convert this clock driver to be a platform_driver instead.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/clk/mediatek/clk-mt8167.c | 88 +++++++++----------------------
- 1 file changed, 24 insertions(+), 64 deletions(-)
+ drivers/clk/mediatek/Makefile                |   2 +-
+ drivers/clk/mediatek/clk-mt8167-apmixedsys.c | 143 +++++++++++++++++++
+ drivers/clk/mediatek/clk-mt8167.c            | 102 -------------
+ 3 files changed, 144 insertions(+), 103 deletions(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt8167-apmixedsys.c
 
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index b004a47026d4..7fda42b76533 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -62,7 +62,7 @@ obj-$(CONFIG_COMMON_CLK_MT7986) += clk-mt7986-topckgen.o
+ obj-$(CONFIG_COMMON_CLK_MT7986) += clk-mt7986-infracfg.o
+ obj-$(CONFIG_COMMON_CLK_MT7986_ETHSYS) += clk-mt7986-eth.o
+ obj-$(CONFIG_COMMON_CLK_MT8135) += clk-mt8135.o
+-obj-$(CONFIG_COMMON_CLK_MT8167) += clk-mt8167.o
++obj-$(CONFIG_COMMON_CLK_MT8167) += clk-mt8167.o clk-mt8167-apmixedsys.o
+ obj-$(CONFIG_COMMON_CLK_MT8167_AUDSYS) += clk-mt8167-aud.o
+ obj-$(CONFIG_COMMON_CLK_MT8167_IMGSYS) += clk-mt8167-img.o
+ obj-$(CONFIG_COMMON_CLK_MT8167_MFGCFG) += clk-mt8167-mfgcfg.o
+diff --git a/drivers/clk/mediatek/clk-mt8167-apmixedsys.c b/drivers/clk/mediatek/clk-mt8167-apmixedsys.c
+new file mode 100644
+index 000000000000..ebd90365be5f
+--- /dev/null
++++ b/drivers/clk/mediatek/clk-mt8167-apmixedsys.c
+@@ -0,0 +1,143 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2020 MediaTek Inc.
++ * Copyright (c) 2020 BayLibre, SAS
++ * Copyright (c) 2023 Collabora, Ltd.
++ */
++
++#include <dt-bindings/clock/mt8167-clk.h>
++#include <linux/clk.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
++
++#include "clk-pll.h"
++#include "clk-mtk.h"
++
++static DEFINE_SPINLOCK(mt8167_apmixed_clk_lock);
++
++#define MT8167_PLL_FMAX		(2500UL * MHZ)
++
++#define CON0_MT8167_RST_BAR	BIT(27)
++
++#define PLL_B(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits,	\
++			_pd_reg, _pd_shift, _tuner_reg, _pcw_reg,	\
++			_pcw_shift, _div_table) {			\
++		.id = _id,						\
++		.name = _name,						\
++		.reg = _reg,						\
++		.pwr_reg = _pwr_reg,					\
++		.en_mask = _en_mask,					\
++		.flags = _flags,					\
++		.rst_bar_mask = CON0_MT8167_RST_BAR,			\
++		.fmax = MT8167_PLL_FMAX,				\
++		.pcwbits = _pcwbits,					\
++		.pd_reg = _pd_reg,					\
++		.pd_shift = _pd_shift,					\
++		.tuner_reg = _tuner_reg,				\
++		.pcw_reg = _pcw_reg,					\
++		.pcw_shift = _pcw_shift,				\
++		.div_table = _div_table,				\
++	}
++
++#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits,	\
++			_pd_reg, _pd_shift, _tuner_reg, _pcw_reg,	\
++			_pcw_shift)					\
++		PLL_B(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits, \
++			_pd_reg, _pd_shift, _tuner_reg, _pcw_reg, _pcw_shift, \
++			NULL)
++
++static const struct mtk_pll_div_table mmpll_div_table[] = {
++	{ .div = 0, .freq = MT8167_PLL_FMAX },
++	{ .div = 1, .freq = 1000000000 },
++	{ .div = 2, .freq = 604500000 },
++	{ .div = 3, .freq = 253500000 },
++	{ .div = 4, .freq = 126750000 },
++	{ /* sentinel */ }
++};
++
++static const struct mtk_pll_data plls[] = {
++	PLL(CLK_APMIXED_ARMPLL, "armpll", 0x0100, 0x0110, 0, 0,
++	    21, 0x0104, 24, 0, 0x0104, 0),
++	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x0120, 0x0130, 0,
++	    HAVE_RST_BAR, 21, 0x0124, 24, 0, 0x0124, 0),
++	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x0140, 0x0150, 0x30000000,
++	    HAVE_RST_BAR, 7, 0x0144, 24, 0, 0x0144, 0),
++	PLL_B(CLK_APMIXED_MMPLL, "mmpll", 0x0160, 0x0170, 0, 0,
++	      21, 0x0164, 24, 0, 0x0164, 0, mmpll_div_table),
++	PLL(CLK_APMIXED_APLL1, "apll1", 0x0180, 0x0190, 0, 0,
++	    31, 0x0180, 1, 0x0194, 0x0184, 0),
++	PLL(CLK_APMIXED_APLL2, "apll2", 0x01A0, 0x01B0, 0, 0,
++	    31, 0x01A0, 1, 0x01B4, 0x01A4, 0),
++	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x01C0, 0x01D0, 0, 0,
++	    21, 0x01C4, 24, 0, 0x01C4, 0),
++	PLL(CLK_APMIXED_LVDSPLL, "lvdspll", 0x01E0, 0x01F0, 0, 0,
++	    21, 0x01E4, 24, 0, 0x01E4, 0),
++};
++
++#define DIV_ADJ_FLAG(_id, _name, _parent, _reg, _shift, _width, _flag) { \
++		.id = _id,					\
++		.name = _name,					\
++		.parent_name = _parent,				\
++		.div_reg = _reg,				\
++		.div_shift = _shift,				\
++		.div_width = _width,				\
++		.clk_divider_flags = _flag,			\
++}
++
++static const struct mtk_clk_divider adj_divs[] = {
++	DIV_ADJ_FLAG(CLK_APMIXED_HDMI_REF, "hdmi_ref", "tvdpll",
++		     0x1c4, 24, 3, CLK_DIVIDER_POWER_OF_TWO),
++};
++
++static int clk_mt8167_apmixed_probe(struct platform_device *pdev)
++{
++	void __iomem *base;
++	struct clk_hw_onecell_data *clk_data;
++	struct device_node *node = pdev->dev.of_node;
++	struct device *dev = &pdev->dev;
++	int ret;
++
++	base = devm_platform_ioremap_resource(pdev, 0);
++	if (IS_ERR(base))
++		return PTR_ERR(base);
++
++	clk_data = mtk_devm_alloc_clk_data(dev, MT8167_CLK_APMIXED_NR_CLK);
++	if (!clk_data)
++		return -ENOMEM;
++
++	ret = mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
++	if (ret)
++		return ret;
++
++	ret = mtk_clk_register_dividers(adj_divs, ARRAY_SIZE(adj_divs), base,
++					&mt8167_apmixed_clk_lock, clk_data);
++	if (ret)
++		goto unregister_plls;
++
++	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
++	if (ret)
++		goto unregister_dividers;
++
++	return 0;
++
++unregister_dividers:
++	mtk_clk_unregister_dividers(adj_divs, ARRAY_SIZE(adj_divs), clk_data);
++unregister_plls:
++	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
++
++	return ret;
++}
++
++static const struct of_device_id of_match_clk_mt8167_apmixed[] = {
++	{ .compatible = "mediatek,mt8167-apmixedsys" },
++	{ /* sentinel */ }
++};
++
++static struct platform_driver clk_mt8167_apmixed_drv = {
++	.probe = clk_mt8167_apmixed_probe,
++	.driver = {
++		.name = "clk-mt8167-apmixed",
++		.of_match_table = of_match_clk_mt8167_apmixed,
++	},
++};
++builtin_platform_driver(clk_mt8167_apmixed_drv)
 diff --git a/drivers/clk/mediatek/clk-mt8167.c b/drivers/clk/mediatek/clk-mt8167.c
-index 91669ebafaf9..97a443fdfc77 100644
+index 97a443fdfc77..f49456a88c4a 100644
 --- a/drivers/clk/mediatek/clk-mt8167.c
 +++ b/drivers/clk/mediatek/clk-mt8167.c
-@@ -736,77 +736,37 @@ static const struct mtk_gate_regs top5_cg_regs = {
- 	.sta_ofs = 0x44,
+@@ -14,7 +14,6 @@
+ 
+ #include "clk-gate.h"
+ #include "clk-mtk.h"
+-#include "clk-pll.h"
+ 
+ #include <dt-bindings/clock/mt8167-clk.h>
+ 
+@@ -685,21 +684,6 @@ static const struct mtk_clk_divider top_adj_divs[] = {
+ 		0x0078, 0, 8),
  };
  
--#define GATE_TOP0(_id, _name, _parent, _shift) {	\
--		.id = _id,				\
--		.name = _name,				\
--		.parent_name = _parent,			\
--		.regs = &top0_cg_regs,			\
--		.shift = _shift,			\
--		.ops = &mtk_clk_gate_ops_setclr,	\
+-#define DIV_ADJ_FLAG(_id, _name, _parent, _reg, _shift, _width, _flag) {	\
+-		.id = _id,					\
+-		.name = _name,					\
+-		.parent_name = _parent,				\
+-		.div_reg = _reg,				\
+-		.div_shift = _shift,				\
+-		.div_width = _width,				\
+-		.clk_divider_flags = _flag,				\
+-}
+-
+-static const struct mtk_clk_divider apmixed_adj_divs[] = {
+-	DIV_ADJ_FLAG(CLK_APMIXED_HDMI_REF, "hdmi_ref", "tvdpll",
+-		0x1c4, 24, 3, CLK_DIVIDER_POWER_OF_TWO),
+-};
+-
+ static const struct mtk_gate_regs top0_cg_regs = {
+ 	.set_ofs = 0x50,
+ 	.clr_ofs = 0x80,
+@@ -937,89 +921,3 @@ static void __init mtk_infracfg_init(struct device_node *node)
+ 			__func__, r);
+ }
+ CLK_OF_DECLARE(mtk_infracfg, "mediatek,mt8167-infracfg", mtk_infracfg_init);
+-
+-#define MT8167_PLL_FMAX		(2500UL * MHZ)
+-
+-#define CON0_MT8167_RST_BAR	BIT(27)
+-
+-#define PLL_B(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits,	\
+-			_pd_reg, _pd_shift, _tuner_reg, _pcw_reg,	\
+-			_pcw_shift, _div_table) {			\
+-		.id = _id,						\
+-		.name = _name,						\
+-		.reg = _reg,						\
+-		.pwr_reg = _pwr_reg,					\
+-		.en_mask = _en_mask,					\
+-		.flags = _flags,					\
+-		.rst_bar_mask = CON0_MT8167_RST_BAR,			\
+-		.fmax = MT8167_PLL_FMAX,				\
+-		.pcwbits = _pcwbits,					\
+-		.pd_reg = _pd_reg,					\
+-		.pd_shift = _pd_shift,					\
+-		.tuner_reg = _tuner_reg,				\
+-		.pcw_reg = _pcw_reg,					\
+-		.pcw_shift = _pcw_shift,				\
+-		.div_table = _div_table,				\
 -	}
-+#define GATE_TOP0(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &top0_cg_regs,		\
-+		 _shift, &mtk_clk_gate_ops_setclr)
- 
--#define GATE_TOP0_I(_id, _name, _parent, _shift) {	\
--		.id = _id,				\
--		.name = _name,				\
--		.parent_name = _parent,			\
--		.regs = &top0_cg_regs,			\
--		.shift = _shift,			\
--		.ops = &mtk_clk_gate_ops_setclr_inv,	\
+-
+-#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits,	\
+-			_pd_reg, _pd_shift, _tuner_reg, _pcw_reg,	\
+-			_pcw_shift)					\
+-		PLL_B(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits, \
+-			_pd_reg, _pd_shift, _tuner_reg, _pcw_reg, _pcw_shift, \
+-			NULL)
+-
+-static const struct mtk_pll_div_table mmpll_div_table[] = {
+-	{ .div = 0, .freq = MT8167_PLL_FMAX },
+-	{ .div = 1, .freq = 1000000000 },
+-	{ .div = 2, .freq = 604500000 },
+-	{ .div = 3, .freq = 253500000 },
+-	{ .div = 4, .freq = 126750000 },
+-	{ } /* sentinel */
+-};
+-
+-static const struct mtk_pll_data plls[] = {
+-	PLL(CLK_APMIXED_ARMPLL, "armpll", 0x0100, 0x0110, 0, 0,
+-		21, 0x0104, 24, 0, 0x0104, 0),
+-	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x0120, 0x0130, 0,
+-		HAVE_RST_BAR, 21, 0x0124, 24, 0, 0x0124, 0),
+-	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x0140, 0x0150, 0x30000000,
+-		HAVE_RST_BAR, 7, 0x0144, 24, 0, 0x0144, 0),
+-	PLL_B(CLK_APMIXED_MMPLL, "mmpll", 0x0160, 0x0170, 0, 0,
+-		21, 0x0164, 24, 0, 0x0164, 0, mmpll_div_table),
+-	PLL(CLK_APMIXED_APLL1, "apll1", 0x0180, 0x0190, 0, 0,
+-		31, 0x0180, 1, 0x0194, 0x0184, 0),
+-	PLL(CLK_APMIXED_APLL2, "apll2", 0x01A0, 0x01B0, 0, 0,
+-		31, 0x01A0, 1, 0x01B4, 0x01A4, 0),
+-	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x01C0, 0x01D0, 0, 0,
+-		21, 0x01C4, 24, 0, 0x01C4, 0),
+-	PLL(CLK_APMIXED_LVDSPLL, "lvdspll", 0x01E0, 0x01F0, 0, 0,
+-		21, 0x01E4, 24, 0, 0x01E4, 0),
+-};
+-
+-static void __init mtk_apmixedsys_init(struct device_node *node)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	void __iomem *base;
+-	int r;
+-
+-	base = of_iomap(node, 0);
+-	if (!base) {
+-		pr_err("%s(): ioremap failed\n", __func__);
+-		return;
 -	}
-+#define GATE_TOP0_I(_id, _name, _parent, _shift)		\
-+	GATE_MTK(_id, _name, _parent, &top0_cg_regs,		\
-+		 _shift, &mtk_clk_gate_ops_setclr_inv)
- 
--#define GATE_TOP1(_id, _name, _parent, _shift) {	\
--		.id = _id,				\
--		.name = _name,				\
--		.parent_name = _parent,			\
--		.regs = &top1_cg_regs,			\
--		.shift = _shift,			\
--		.ops = &mtk_clk_gate_ops_setclr,	\
--	}
-+#define GATE_TOP1(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &top1_cg_regs,		\
-+		 _shift, &mtk_clk_gate_ops_setclr)
- 
--#define GATE_TOP2(_id, _name, _parent, _shift) {	\
--		.id = _id,				\
--		.name = _name,				\
--		.parent_name = _parent,			\
--		.regs = &top2_cg_regs,			\
--		.shift = _shift,			\
--		.ops = &mtk_clk_gate_ops_setclr,	\
--	}
-+#define GATE_TOP2(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &top2_cg_regs,		\
-+		 _shift, &mtk_clk_gate_ops_setclr)
- 
--#define GATE_TOP2_I(_id, _name, _parent, _shift) {	\
--		.id = _id,				\
--		.name = _name,				\
--		.parent_name = _parent,			\
--		.regs = &top2_cg_regs,			\
--		.shift = _shift,			\
--		.ops = &mtk_clk_gate_ops_setclr_inv,	\
--	}
-+#define GATE_TOP2_I(_id, _name, _parent, _shift)		\
-+	GATE_MTK(_id, _name, _parent, &top2_cg_regs,		\
-+		 _shift, &mtk_clk_gate_ops_setclr_inv)
- 
--#define GATE_TOP3(_id, _name, _parent, _shift) {	\
--		.id = _id,				\
--		.name = _name,				\
--		.parent_name = _parent,			\
--		.regs = &top3_cg_regs,			\
--		.shift = _shift,			\
--		.ops = &mtk_clk_gate_ops_setclr,	\
--	}
-+#define GATE_TOP3(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &top3_cg_regs,		\
-+		 _shift, &mtk_clk_gate_ops_setclr)
- 
--#define GATE_TOP4_I(_id, _name, _parent, _shift) {	\
--		.id = _id,				\
--		.name = _name,				\
--		.parent_name = _parent,			\
--		.regs = &top4_cg_regs,			\
--		.shift = _shift,			\
--		.ops = &mtk_clk_gate_ops_setclr_inv,	\
--	}
-+#define GATE_TOP4_I(_id, _name, _parent, _shift)		\
-+	GATE_MTK(_id, _name, _parent, &top4_cg_regs,		\
-+		 _shift, &mtk_clk_gate_ops_setclr_inv)
- 
--#define GATE_TOP5(_id, _name, _parent, _shift) {	\
--		.id = _id,				\
--		.name = _name,				\
--		.parent_name = _parent,			\
--		.regs = &top5_cg_regs,			\
--		.shift = _shift,			\
--		.ops = &mtk_clk_gate_ops_no_setclr,	\
--	}
-+#define GATE_TOP5(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &top5_cg_regs,		\
-+		 _shift, &mtk_clk_gate_ops_no_setclr)
- 
- static const struct mtk_gate top_clks[] __initconst = {
- 	/* TOP0 */
+-
+-	clk_data = mtk_alloc_clk_data(MT8167_CLK_APMIXED_NR_CLK);
+-
+-	mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
+-	mtk_clk_register_dividers(apmixed_adj_divs, ARRAY_SIZE(apmixed_adj_divs),
+-		base, &mt8167_clk_lock, clk_data);
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r)
+-		pr_err("%s(): could not register clock provider: %d\n",
+-			__func__, r);
+-
+-}
+-CLK_OF_DECLARE(mtk_apmixedsys, "mediatek,mt8167-apmixedsys",
+-		mtk_apmixedsys_init);
 -- 
 2.39.1
 
