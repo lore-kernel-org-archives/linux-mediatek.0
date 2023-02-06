@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D95D6C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Feb 2023 10:02:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0176C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Feb 2023 10:02:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v3NoKHmiWsyEHv9ud0FVk3EYyw/c0MZ18sFSgoiQkE8=; b=YCAfCh3BGegKyRDLRk6vVVnxOY
-	tRQFkonc8CsxVIJcGQUEm0nkJefk68S5bs/YI0pr1iTFIjViHtzQ02n6/APTPB6ibvQ3PBMabkiK3
-	fkD8qrKRYeHP93D45X/4PkekGHs+Yo+v5xHGvoaJkAxIIbxN/90WNxZiaxvTRADsVi2oFzzx7rxhM
-	CRpKhWgHHyr1jHnozji/gntRehNesyVZWzx9GH38xHulARr1NLYUX3UDCm46nmXpoelFkixrFtrjE
-	YmD+KYUQBdvLEmQT/DwTpo7jaI/pBvAFObVs4pHBuT+6B8pO2a+loxB8C+C06FEfEVTin6g2OgQbU
-	QLBoyuWg==;
+	bh=++g2z7tifs/5c9BeQPSRBI6nmsPXCVDUS/zMv8p8pnQ=; b=KCJ9da9jH+4vIMofmgszGWJwIQ
+	pptSddcmRXG8QdOOdqEJH+kplleJhXYUUvG5sOAupM+qdOx3ggt/5bUh+SvXwu5Qu3znlCh2AlH9F
+	HtR4ZzMq4peujYQo4jDGR84pCc8w4n0gsTm2PGuHOxZERQEIN8AA3m/jw9l3BQnLp15xVB0PmT+Hz
+	31EJIy+OToB4KXwY3GAWhludaVrNsOr8btG3nq4b4UwTW78JO0FvEWq+yrZtqZBPmZRNQj1E4zqJw
+	bOUpMg6SI6M3TrVoXo+/WPkjLoGlqQNypcsptyA9KTIpW2qV9wR53mDrXeTh4favFUEalTrrCgrpW
+	JcHH8k3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pOyKF-007zej-15; Mon, 06 Feb 2023 10:02:15 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pOyKl-00800E-Dj; Mon, 06 Feb 2023 10:02:47 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pOyJM-007zCP-Ru; Mon, 06 Feb 2023 10:01:23 +0000
+	id 1pOyJN-007zCX-BX; Mon, 06 Feb 2023 10:01:23 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9E5F86602FAE;
-	Mon,  6 Feb 2023 10:01:16 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A6ABA6602FA0;
+	Mon,  6 Feb 2023 10:01:17 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1675677677;
-	bh=SUI34CS1BrJFmIaipPdxWm70cNWYkj8EhbTlIi7RZKo=;
+	s=mail; t=1675677678;
+	bh=u7Y8n/T80FWNXiD40Mx6s06d8MGoJpyrDLmIqXuDbtM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=iRYJBOAsI4wIgnf2YkdFZADBhOfijn33uRNwDyexhlxJw7+ZfNe4ELRmzUAGiAckl
-	 x/5869CPo/hg5dgqSijs1I2ggAIs1xzVw97/Ta/2FmLhYpWBzDkLm2aLXXi2iqrNi8
-	 csLUh+PB04G8Sg+0QfPGcgsd8GfSIyFlGfbH/Musk+0tLQNjYmLtFTlzjmfN4KWOuT
-	 TAx02L1Wv/C2eGZSfktGALCo/K130v25tUNyMHpxp99NiJwuMKRiOQwPWXeKRdtjzd
-	 ouiYnuvCsyaeoQMPPlajdcNHgUqcRxOjXEJQkKW4Nodhd72AXt1O6lASdZl8/iVno5
-	 Aii5GC4Cq85Hw==
+	b=HbO+scaczhc4zrIb+JeSoZxSJKgzEGwFlMZVTp5fkRD8QgTGlHdx6c75PhiooPdcN
+	 5NZXcb5/yQawZjTfupEUvKMlflUiYTvC+aV7zXs441xF7s+OSQVGqaPpn+6PYXyRdF
+	 dei+PIFgU1UkGnU0YAKrVr38VzhnkaVcuyapDP/yMYhxEueH2q5QAPJneE+gXXjj6y
+	 X03gAD61BZup9byr8GUJJcnz8dLep2xSHjpHOUrv701ff+H3NWECBDroEG4Uw+Ip6X
+	 5XPLMeHA8wlNZIt9HS64jF/BIgvXQM0Bz2pq0VCTePA4FQUSMtCHpdNnrLETUN/UxY
+	 l2wn26x2rZJLg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: sboyd@kernel.org
 Cc: mturquette@baylibre.com,
@@ -61,17 +61,17 @@ Cc: mturquette@baylibre.com,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH v3 2/7] clk: mediatek: clk-pllfh: Export register/unregister/parse functions
-Date: Mon,  6 Feb 2023 11:01:00 +0100
-Message-Id: <20230206100105.861720-3-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 3/7] dt-bindings: clock: mediatek,mt8186-fhctl: Support MT6795, MT8173/92/95
+Date: Mon,  6 Feb 2023 11:01:01 +0100
+Message-Id: <20230206100105.861720-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230206100105.861720-1-angelogioacchino.delregno@collabora.com>
 References: <20230206100105.861720-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230206_020121_083590_9CBC5C02 
-X-CRM114-Status: UNSURE (   8.60  )
+X-CRM114-CacheID: sfid-20230206_020121_568763_34144A69 
+X-CRM114-Status: UNSURE (   7.47  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,40 +87,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-These functions are used by the various MediaTek apmixed clock drivers
-that may be built as modules: export the common functions used to parse
-related devicetree properties, register and unregister the PLLFH clocks.
+MT6795, MT8173, MT8192 and MT8195 support Frequency Hopping: add the
+compatibles for them.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/clk/mediatek/clk-pllfh.c | 3 +++
- 1 file changed, 3 insertions(+)
+ .../devicetree/bindings/clock/mediatek,mt8186-fhctl.yaml   | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/clk/mediatek/clk-pllfh.c b/drivers/clk/mediatek/clk-pllfh.c
-index b9297726f5a0..7b6e051443f4 100644
---- a/drivers/clk/mediatek/clk-pllfh.c
-+++ b/drivers/clk/mediatek/clk-pllfh.c
-@@ -103,6 +103,7 @@ void fhctl_parse_dt(const u8 *compatible_node, struct mtk_pllfh_data *pllfhs,
- 		pllfh->state.base = base;
- 	}
- }
-+EXPORT_SYMBOL_GPL(fhctl_parse_dt);
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8186-fhctl.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8186-fhctl.yaml
+index cfd042ac1e14..d00327d12e1e 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,mt8186-fhctl.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,mt8186-fhctl.yaml
+@@ -16,7 +16,12 @@ description: |
  
- static int pllfh_init(struct mtk_fh *fh, struct mtk_pllfh_data *pllfh_data)
- {
-@@ -247,6 +248,7 @@ int mtk_clk_register_pllfhs(struct device_node *node,
+ properties:
+   compatible:
+-    const: mediatek,mt8186-fhctl
++    enum:
++      - mediatek,mt6795-fhctl
++      - mediatek,mt8173-fhctl
++      - mediatek,mt8186-fhctl
++      - mediatek,mt8192-fhctl
++      - mediatek,mt8195-fhctl
  
- 	return PTR_ERR(hw);
- }
-+EXPORT_SYMBOL_GPL(mtk_clk_register_pllfhs);
- 
- void mtk_clk_unregister_pllfhs(const struct mtk_pll_data *plls, int num_plls,
- 			       struct mtk_pllfh_data *pllfhs, int num_fhs,
-@@ -286,3 +288,4 @@ void mtk_clk_unregister_pllfhs(const struct mtk_pll_data *plls, int num_plls,
- 
- 	iounmap(base);
- }
-+EXPORT_SYMBOL_GPL(mtk_clk_unregister_pllfhs);
+   reg:
+     maxItems: 1
 -- 
 2.39.1
 
