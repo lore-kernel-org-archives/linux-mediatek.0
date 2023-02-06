@@ -4,68 +4,151 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BB30C636D3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Feb 2023 16:09:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DD79C636D3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Feb 2023 16:15:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=562N9JT6j3bQ2ug5um49RQ4wnCjH9wUGAKTAhuR+isU=; b=4TPh2Agg0lasitHq2ojoqpHEMG
-	7xQAGpayYDaB9erJ4hHYToUOrpy5Xq1o1E/W6QAYOeAtuL74cka7mkZi3LsPi8sv/UuhB3c4hsXyB
-	NiGgcC11XFWDD/KbKEvZSqimRQ+pVxrJK8Zz3GuxqGHYRjTPlKGwjJYenZfUGphuQhU5fKAcaG1bw
-	/lRkhUouCmpwpHwQLPl9egl4FIveDve/H0xHRtDBOnz2e4Ly4ec6bwIhmmdzlNccMuV3AicyefoWw
-	qd34ckzs/kedAqIFBWcUPlm7CNm4SX6YkwHlAd1GfxIAydamt/8Pe3mG1Um/vASl0Aho7VGA/4M0b
-	WccyPKmg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ElbqQq3AfMbIofWiTsbPWBjKCmxBgVLCoQHIVzFfxX4=; b=2IFu+vCl5TMT9ggGGxDhJqFFYk
+	duAn8z6No4FPVQgC3GdbRwevkVJMIEMZzqxWt6dRpL0FixxUiBauP6giwE11zn4NX9wUK05EAhL60
+	Qt2y+e5oG4icBdr16mUqkOZa3X8NtBfhiDz2gTkpIShzE1xxUW9JWiSZ9VbZ5xYicZT8DCft2Pkui
+	zKp4UHTFrgrAaXk/tc31qrCB9FWGXdmxBHcG39hUfGcst6vmL+yDZRfbF8aDpDy9u0ALIIP10jKdl
+	pOyd8DHbhoEZUsNrCljp19eeVuzMIUDmkA8QYyWAAHT7Cjn78Ma6KDnql8jt84F34py5Ly4RoOJ2i
+	GTEfaLxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pP432-009CoW-HI; Mon, 06 Feb 2023 16:08:52 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pP494-009FW9-8k; Mon, 06 Feb 2023 16:15:06 +0000
+Received: from mail-bn7nam10on2071a.outbound.protection.outlook.com ([2a01:111:f400:7e8a::71a] helo=NAM10-BN7-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pP3Zb-008yRw-0Q; Mon, 06 Feb 2023 15:38:30 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1DC856602F97;
-	Mon,  6 Feb 2023 15:38:24 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1675697905;
-	bh=qVIc7imDFOW2v066vbnzDEs/l/xkYR/zUQRlfje/8hQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=CM8ItltkPDfdijsuE/IfOe1FpCuSJzNdSgjt2VjUnmCDRzWQaAlWL4ml4JJ0ARlVF
-	 JAlEFfPMxh7Pcq1tL8LHukFRx2+XfAruMNmZtEwrrXNeWbXjoBzybbjr27Guy9ZzJm
-	 ZtF4FTrTdj2/I9lUYoBviVhIw9KUUawIWRohdiptBMu7PHTuUAVB6nqusLMr+P/Uqe
-	 pUmVCOjCDNLMhVua87+oySr9weAU1Y65NoxswmjU7rgg2qS7QIirmKhiQB/yGrB5ft
-	 8FNH+07YzZsgrFwnQbYDUL1cgZMz0hqbJPBOAZhcjPSqFcNVAIU8bMLIEI6kKI7iST
-	 1IfOnqimfNfoQ==
-Message-ID: <847332fb-5f10-a8dd-4203-a1906973d0ff@collabora.com>
-Date: Mon, 6 Feb 2023 16:38:21 +0100
+	id 1pP3x4-0099mg-S3; Mon, 06 Feb 2023 16:02:44 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=W0lnpJ/VnuD84XOQfa+mghEnmDwG3nr9Mtoo2YZuL46PL00Wr3MnGSbOpiaVW3/htcETWx43FZvw7o2x5pHR304Rtw9vvXKhKws5Oj0FAXI21JSWcbYrm8sEV3bEud2E86daColNxSWtblAefPfx3eDs04W4y7yuCG1PP51nXN6BThlS0g7mTyFY/LUj+h9MHdkBGYTVTIKFD7Yt2GcYdiL25q7B/bHJCaeb4+hgIFtgngPkvOZLItLJhbKBu1xC+f96qaw7A3RvbNCktD0apL9vpj+vgsRhsMeJRZMIZzBd55VSjubAQUPxgKWkAL3CQjjTnlW9roGGmuEiC7W2LQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ElbqQq3AfMbIofWiTsbPWBjKCmxBgVLCoQHIVzFfxX4=;
+ b=C1rlvlr0MxlWVnfeL7TY/2oycQt+uCLXT8Tr/0yXiJDOE9SfNbIvoYnEvY+mbZOJA363XlJoBGcgxOPtpTs5F1m071742JKC9e+Mfn1AIxhW91SsNtdWtVYYvSwEiS+YZMICDabEmru41xF4+KSxfVLv0foXu3xa50ey2Sbd3zACc1DRkCa2Oqzz4piKgltWV5MbMixnjxFoNp/RSRyXaiFxT24xW13JOleeoMx/odPTi1PH9wz3sS3ll33uJZoOCQ38KJxuy4Mc4R4UBNqeVKl48SnbaewNqi8hTol4Y7O/ZxzCtAFl9mr+UN6BnVRy1ZA+2gZIFx6dWVIo7ybrvA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
+ dkim=pass header.d=corigine.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ElbqQq3AfMbIofWiTsbPWBjKCmxBgVLCoQHIVzFfxX4=;
+ b=q85Ir+LI4oAXYozXuoIHCLwOQJcXN+UQ+CzjP6NZA4JwW4jtqeM071+DdtJWM4Cm2Nm5iy/d0OJAUVO5/wmR0lyiVmrVbVeYd1cVU5UVQuYbFJ45c0bHUytQmbqidWIco8hKAMYoCsBlR9cNO0Vj1ky/NaBDyMQmOV+p6ui0C2Q=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=corigine.com;
+Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
+ by PH0PR13MB5668.namprd13.prod.outlook.com (2603:10b6:510:113::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6064.34; Mon, 6 Feb
+ 2023 16:02:36 +0000
+Received: from PH0PR13MB4842.namprd13.prod.outlook.com
+ ([fe80::85f5:bdb:fb9e:294c]) by PH0PR13MB4842.namprd13.prod.outlook.com
+ ([fe80::85f5:bdb:fb9e:294c%3]) with mapi id 15.20.6064.034; Mon, 6 Feb 2023
+ 16:02:36 +0000
+Date: Mon, 6 Feb 2023 17:02:16 +0100
+From: Simon Horman <simon.horman@corigine.com>
+To: netdev@kapio-technology.com
+Cc: Vladimir Oltean <olteanv@gmail.com>, davem@davemloft.net,
+	kuba@kernel.org, netdev@vger.kernel.org,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>, Eric Dumazet <edumazet@google.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	"maintainer:MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER" <UNGLinuxDriver@microchip.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
+	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
+	Russell King <linux@armlinux.org.uk>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	open list <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	"open list:RENESAS RZ/N1 A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>,
+	"moderated list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>
+Subject: Re: [PATCH net-next 5/5] net: dsa: mv88e6xxx: implementation of
+ dynamic ATU entries
+Message-ID: <Y+EkiAyexZrPoCpP@corigine.com>
+References: <20230130173429.3577450-1-netdev@kapio-technology.com>
+ <20230130173429.3577450-6-netdev@kapio-technology.com>
+ <Y9lkXlyXg1d1D0j3@corigine.com>
+ <9b12275969a204739ccfab972d90f20f@kapio-technology.com>
+ <Y9zDxlwSn1EfCTba@corigine.com>
+ <20230203204422.4wrhyathxfhj6hdt@skbuf>
+ <Y94TebdRQRHMMj/c@corigine.com>
+ <4abbe32d007240b9c3aea9c8ca936fa3@kapio-technology.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <4abbe32d007240b9c3aea9c8ca936fa3@kapio-technology.com>
+X-ClientProxiedBy: AS4P190CA0012.EURP190.PROD.OUTLOOK.COM
+ (2603:10a6:20b:5de::12) To PH0PR13MB4842.namprd13.prod.outlook.com
+ (2603:10b6:510:78::6)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v1 00/45] MediaTek clocks: full module build and cleanups
-To: mturquette@baylibre.com
-Cc: sboyd@kernel.org, matthias.bgg@gmail.com, wenst@chromium.org,
- johnson.wang@mediatek.com, miles.chen@mediatek.com,
- chun-jie.chen@mediatek.com, daniel@makrotopia.org, fparent@baylibre.com,
- msp@baylibre.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com,
- zhaojh329@gmail.com, sam.shih@mediatek.com, edward-jw.yang@mediatek.com,
- yangyingliang@huawei.com, granquet@baylibre.com, pablo.sun@mediatek.com,
- sean.wang@mediatek.com, chen.zhong@mediatek.com,
- linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230206152928.918562-1-angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230206152928.918562-1-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|PH0PR13MB5668:EE_
+X-MS-Office365-Filtering-Correlation-Id: 2e9b3a42-5728-4a9f-81ac-08db085b8fd6
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	UbNIGPC40yaAs0aW5MSN2UM3rNmYlfZNYUGIrxf1EbVeVQJjhnUGfcPQGBP6dSAuUHTWR3FrUopHN1rSUNtWC1MQEPie9LHsGP/ZoNnZmzxb+uBAnmyn9JlelJPxuTaM//upXgnI2/JCMgQ0gtwKWF0IbOLwsaKDYP2vnoMwohL/Md+u916m3/RbQ+NEA1UiLhG3QTNEgUJNjKPxb0enmB4PEcWCBFsXY++dXYGVN01/W5jSK3+n19uWoyqoou00lMkMjVaznLgfcE/gDE3tC2XJJLsX4M23hvQgEHP6MBZjIQFs7kWk/FkaByHISi8yjDwPmjLaIXL6yU3Sth9UKJPBerwUdNPz+/VXUnajltjkYinodxTwrJc8HhTOfDX+tqul467GMWCPrkSZejdvrc0y8hrYpTTKoAr2q82nJ5vCeYP++WwvOWZ6+MfEG3ySHqfMvzwBV6XKI89tN8p4VjjCkPuUIqNy7TYQF4us8QjKs6elIK8D3q5gfMF9QVAuJihpG5MHHF8DTkL9t5bjxHxi44rmfpUJ5X3KMkXJc5xv7n0R/bBfLkaRsDdTwcfS1YSTOmkN/k2diuVeHMzL/FmyH2pz3pcYDYdmvH1V3fqHpWZHcbobImHWoGvUV2qux7ODvCqj+7Of0CFt1exJRD8yAiYK1FQnI6Ng8eGoPPk4UJ3qqRxdh5Xt+Ve0i8QVhoJczDgSqRs8TgDd+3x6e9B2VrxSOGbCCS/BHkdkdzDlmV/2Z/Ne5Cw3rVfHb+em
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR13MB4842.namprd13.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(396003)(39840400004)(376002)(366004)(346002)(136003)(451199018)(83380400001)(8676002)(4326008)(66556008)(86362001)(36756003)(2906002)(6916009)(66476007)(66946007)(44832011)(54906003)(316002)(186003)(6512007)(6506007)(2616005)(6666004)(478600001)(53546011)(41300700001)(7406005)(7416002)(38100700002)(5660300002)(8936002)(6486002)(67856001);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?Uohi0R2nn4MGiB8KYcLVCOx15HxbrenCrQanlov0M/N1cX8v5IMIsW63JeJs?=
+ =?us-ascii?Q?1oAhDqp4UPyyIRzLzvlsomuACGAeEeYXhJT6ytE8wEXGa5II9styV2Tj+fG6?=
+ =?us-ascii?Q?4kFCqkgbsZIa4pBeCrBwJymq1NX6Tsi+8Xo1fK9tfkOhhmL5YNXGCH/1qRgQ?=
+ =?us-ascii?Q?ODSl9L096Vk/Px5H4roZ/0Hg3QETejROFa95UPtjdAOCLskdvFBvzZeDGDvs?=
+ =?us-ascii?Q?DAhHarVPFWDSBlpoxUQwAO51g/oqw73cF+MuUfKXzuKki/Kq2VncIVrVRH4Q?=
+ =?us-ascii?Q?Qq3Jd1NePoCPG8oR4eXF+0ms6ZeDXyvUQis+dETW+qFdEKplzvcen26QwDmK?=
+ =?us-ascii?Q?JAkyJUKwxCXZsCotozGIQ/A3R6hDBI0zqwp1Am/wbye+urvEiDgYHSgtW4fO?=
+ =?us-ascii?Q?aW4rLBSWOrli3+WCg3sazI7/ahHqw+zdUaYil6wqfAxCjK+UrcPfT7FHW5Nb?=
+ =?us-ascii?Q?X/WZzxjfKTMYXPQcbtFTP8BPmqKc4raKbKI4ZNoMrRL/qUojFzpeW4EFG0Ra?=
+ =?us-ascii?Q?rng6lQhUDvvdVURw5TYl1tj/xqoZnv52CtMAQpmtw35cduAJTmeSwogRlVDu?=
+ =?us-ascii?Q?IloWJcezW6vYod2CTqWaziCA3NseSAwc9/5n48GFbaqHpodht/k411q2Y58M?=
+ =?us-ascii?Q?QloX9KwW+5XMKgwT9qOSAjIRFWNtR2349CdC1UaDrO5Aiqa4Hb5WvgOLWPkh?=
+ =?us-ascii?Q?AZVnfvQbqlJnFJL8Ky2gH7fYRyY+gzloucY7RbahqNskVyNwjJZWZylXSUhm?=
+ =?us-ascii?Q?WU1syFGkjaVRxdRlkteAMIT59LpqKZOPG0sFJIW0yrIWEQjfEuoPq+4kAFPT?=
+ =?us-ascii?Q?GFLN8UF1v9gD6X5l0DCKFq7T3b6Al+OqYYDKvozBPV7LC/t07asTHYcYMlxP?=
+ =?us-ascii?Q?nMt/eqmW1WQFOSxiG4V0y/TThNaV+hYcjpjX2LTUDOaKwbiHIbvDYGiMQz5X?=
+ =?us-ascii?Q?IjJrzJD+NxnGUMQ8DWxnCGsrEuS/sSJCgvTBXCm4AHITINlVCMZ3YEHdSkej?=
+ =?us-ascii?Q?rZqu779fuRbHxcBqf2j4ASxU5i5mqs5QrYESesPKNk1y7y/RdG/xr6KIBirR?=
+ =?us-ascii?Q?DZwrIBlSsvEbzGmghiwsdHy9EpFForBJ1XcM4edNHRSqrG+Tb+mpxJWcGSo+?=
+ =?us-ascii?Q?8lrC+Hhn3Tg5Z+9KufbjfJkIvhDHhNaqmZRgXN1+mahfqKixLTVju6cgr2F7?=
+ =?us-ascii?Q?AbSRlTYWK3EKZRU08Bl7u/eAYupYFSsJThRI/GC2ciGO73oC11P52BQ8kCfO?=
+ =?us-ascii?Q?nU8k3NOATMbHAiBTEYGBidd0liJ9wMwaXNeIz5wOmB5R/PZ3xXQbsvHVZAmi?=
+ =?us-ascii?Q?3bxGDILPMdHLQOAKczuyvAjujbB0VG20eQbjXmaavcLFs+a7vIOBllotw5WS?=
+ =?us-ascii?Q?tvWOG7HntczabODbPKyXmBVOpI//7OFHC1i4O25Q2zD02/e8u2uRHDpwXaoh?=
+ =?us-ascii?Q?BW+FbKT+pK4ETKgKKgKPbRig/YlErZ+uKEDlaVaY/BCBJStUZtKAduSv41Si?=
+ =?us-ascii?Q?mRtacpOpd8SIzgCWze67BFgsaayf7ul8RrDWRn4hyQCIS+PmwLW7c/2AEYkm?=
+ =?us-ascii?Q?YAlpNzM7PYfvBl8CzMYQBneLoqLzRg14ZzbjJsnSdgn0KYvq7E2chH7JeqQm?=
+ =?us-ascii?Q?DF2aRZuNB7Wl5+zsQ8kTjAhHjm/V9zhk75Xez3c3lEoQqN2vOSvuUjSaNNkZ?=
+ =?us-ascii?Q?hOKcaA=3D=3D?=
+X-OriginatorOrg: corigine.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2e9b3a42-5728-4a9f-81ac-08db085b8fd6
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Feb 2023 16:02:36.0689
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: lQkLqqKGvJq2rlx33P83+HIXKrhRqfbgo3S4MzvXmdTWCz1LnNBe6CptuJ6CppV4ZrzNKz9feE1JnftOHW7CdRUk4GuQMPGkyCf3fxCMG5Q=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR13MB5668
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230206_073827_386259_737791B2 
-X-CRM114-Status: GOOD (  29.68  )
+X-CRM114-CacheID: sfid-20230206_080242_962909_27B4A852 
+X-CRM114-Status: GOOD (  28.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,277 +163,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/02/23 16:28, AngeloGioacchino Del Regno ha scritto:
-> This is part 2 of the "MediaTek clocks cleanups and improvements" series,
-> which was already picked.
+On Sat, Feb 04, 2023 at 09:48:24AM +0100, netdev@kapio-technology.com wrote:
+> On 2023-02-04 09:12, Simon Horman wrote:
+> > On Fri, Feb 03, 2023 at 10:44:22PM +0200, Vladimir Oltean wrote:
+> > > On Fri, Feb 03, 2023 at 09:20:22AM +0100, Simon Horman wrote:
+> > > > > else if (someflag)
+> > > > >         dosomething();
+> > > > >
+> > > > > For now only one flag will actually be set and they are mutually exclusive,
+> > > > > as they will not make sense together with the potential flags I know, but
+> > > > > that can change at some time of course.
+> > > >
+> > > > Yes, I see that is workable. I do feel that checking for other flags would
+> > > > be a bit more robust. But as you say, there are none. So whichever
+> > > > approach you prefer is fine by me.
+> > > 
+> > > The model we have for unsupported bits in the
+> > > SWITCHDEV_ATTR_ID_PORT_PRE_BRIDGE_FLAGS
+> > > and SWITCHDEV_ATTR_ID_PORT_BRIDGE_FLAGS handlers is essentially this:
+> > > 
+> > > 	if (flags & ~(supported_flag_mask))
+> > > 		return -EOPNOTSUPP;
+> > > 
+> > > 	if (flags & supported_flag_1)
+> > > 		...
+> > > 
+> > > 	if (flags & supported_flag_2)
+> > > 		...
+> > > 
+> > > I suppose applying this model here would address Simon's
+> > > extensibility concern.
+> > 
+> > Yes, that is the model I had in mind.
 > 
-> If reading this full cover letter is too boring for you, here's a short
-> summary of the changes of this series:
->   - Added mtk_clk_pdev_probe() for mtk-mmsys probed clocks;
->   - Added divider clock support to common probe mechanism;
->   - Various cleanups here and there;
->   - Converted most clock drivers to platform_driver;
->   - MediaTek clocks can now be built as modules.
-> 
-> NOTE: Applies on top of [1].
-> 
-> 
+> The only thing is that we actually need to return both 0 and -EOPNOTSUPP for
+> unsupported flags. The dynamic flag requires 0 when not supported (and
+> supported) AFAICS.
+> Setting a mask as 'supported' for a feature that is not really supported
+> defeats the notion of 'supported' IMHO.
 
-...and of course I forgot to paste the link.
+Just to clarify my suggestion one last time, it would be along the lines
+of the following (completely untested!). I feel that it robustly covers
+all cases for fdb_flags. And as a bonus doesn't need to be modified
+if other (unsupported) flags are added in future.
 
-[1]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=719067
+	if (fdb_flags & ~(DSA_FDB_FLAG_DYNAMIC))
+		return -EOPNOTSUPP;
 
-Cheers,
-Angelo
+	is_dynamic = !!(fdb_flags & DSA_FDB_FLAG_DYNAMIC)
+	if (is_dynamic)
+		state = MV88E6XXX_G1_ATU_DATA_STATE_UC_AGE_7_NEWEST;
 
 
-> Full blurb:
-> 
-> This huge series adds more cleanups on top, reducing size and adding more
-> commonization for clock drivers probe/remove, which also includes a new
-> common probe mechanism for multimedia clock drivers that are usually
-> probed by mtk-mmsys instead of a dt clock node: thanks to this, it was
-> finally possible to convert almost all clock drivers to the common probe
-> mechanism, which *finally again* makes us able to build all these drivers
-> as modules!
-> 
-> Since this looked like being *the* way forward, I went on converting some
-> more drivers away from OF_CLK_DECLARE_DRIVER to full platform_driver(s),
-> allowing for more (actually, almost all!) drivers to be built as modules.
-> 
-> While at it, I also added some more consistency in macros usage by
-> removing all of the duplicated full macro declaration for MediaTek gate
-> clocks and replacing all of those with using the GATE_MTK macro instead,
-> producing a nice reduction in amount of lines per file but, more
-> importantly, improving readability and eventual future batch changes.
-> 
-> This amount of commonization will also, in my opinion, greatly improve
-> the review process for new clock drivers, as they will be mostly just a
-> list of clocks and won't contain much new code, as it's all going to be
-> handled in the common places, which also reduces chances to see new clock
-> driver related bugs emerging on one SoC or the other.
-> 
-> Since I don't own devices with all of the supported MediaTek SoCs, I
-> could not test some of the conversions on real hardware... but I am
-> confident that this will work as the drivers are *very* similar on a
-> per-generation basis.
-> 
-> This series was build-tested for all (both module and built-in build)
-> and was manually tested on MT6795, MT8173, MT8192, MT8195.
-> 
-> AngeloGioacchino Del Regno (45):
->    clk: mediatek: clk-mtk: Switch to device_get_match_data()
->    clk: mediatek: clk-mtk: Introduce clk_mtk_pdev_{probe,remove}()
->    clk: mediatek: Migrate to mtk_clk_pdev_probe() for multimedia clocks
->    clk: mediatek: Add divider clocks to mtk_clk_simple_{probe,remove}()
->    clk: mediatek: mt2712: Migrate topckgen/mcucfg to
->      mtk_clk_simple_probe()
->    clk: mediatek: mt2712: Compress clock arrays entries to 90 columns
->    clk: mediatek: mt2712: Add error handling to
->      clk_mt2712_apmixed_probe()
->    clk: mediatek: mt2712: Move apmixedsys clock driver to its own file
->    clk: mediatek: mt2712: Change to use module_platform_driver macro
->    clk: mediatek: mt2712: Change Kconfig options to allow module build
->    clk: mediatek: mt8365: Move apmixedsys clock driver to its own file
->    clk: mediatek: mt8365: Convert to mtk_clk_simple_{probe,remove}()
->    clk: mediatek: mt8167: Compress GATE_TOPx macros
->    clk: mediatek: mt8167: Move apmixedsys as platform_driver in new file
->    clk: mediatek: mt8167: Remove __initconst annotation from arrays
->    clk: mediatek: mt8167: Convert to mtk_clk_simple_{probe,remove}()
->    clk: mediatek: mt8183: Move apmixedsys clock driver to its own file
->    clk: mediatek: mt8183: Compress clocks arrays entries where possible
->    clk: mediatek: mt8183: Convert all remaining clocks to common probe
->    clk: mediatek: Consistently use GATE_MTK() macro
->    clk: mediatek: mt7622: Properly use CLK_IS_CRITICAL flag
->    clk: mediatek: mt7622: Move apmixedsys clock driver to its own file
->    clk: mediatek: mt7622: Move infracfg to clk-mt7622-infracfg.c
->    clk: mediatek: mt7622: Convert to platform driver and simple probe
->    clk: mediatek: mt8516: Move apmixedsys clock driver to its own file
->    clk: mediatek: mt8516: Convert to platform driver and simple probe
->    clk: mediatek: mt8516: Allow building clock drivers as modules
->    clk: mediatek: Propagate struct device with
->      mtk_clk_register_dividers()
->    clk: mediatek: mt7986-apmixed: Use PLL_AO flag to set critical clock
->    clk: mediatek: mt7986-infracfg: Migrate to common probe mechanism
->    clk: mediatek: mt7986-eth: Migrate to common probe mechanism
->    clk: mediatek: mt8186-mcu: Migrate to common probe mechanism
->    clk: mediatek: Switch to module_platform_driver() where possible
->    clk: mediatek: Add MODULE_LICENSE() where missing
->    clk: mediatek: Split MT8195 clock drivers and allow module build
->    clk: mediatek: Allow building MT8192 non-critical clocks as modules
->    clk: mediatek: Allow MT7622 clocks to be built as modules
->    clk: mediatek: Allow all MT8167 clocks to be built as modules
->    clk: mediatek: Allow all MT8183 clocks to be built as modules
->    clk: mediatek: Allow building most MT6765 clock drivers as modules
->    clk: mediatek: Allow building most MT6797 clock drivers as modules
->    clk: mediatek: Split configuration options for MT8186 clock drivers
->    clk: mediatek: mt8192: Move apmixedsys clock driver to its own file
->    clk: mediatek: Kconfig: Allow module build for core mt8192 clocks
->    clk: mediatek: Add MODULE_DEVICE_TABLE() where appropriate
-> 
->   drivers/clk/mediatek/Kconfig                  |  282 +++--
->   drivers/clk/mediatek/Makefile                 |   53 +-
->   drivers/clk/mediatek/clk-mt2701-aud.c         |   49 +-
->   drivers/clk/mediatek/clk-mt2701-bdp.c         |   27 +-
->   drivers/clk/mediatek/clk-mt2701-eth.c         |   16 +-
->   drivers/clk/mediatek/clk-mt2701-g3d.c         |   16 +-
->   drivers/clk/mediatek/clk-mt2701-hif.c         |   16 +-
->   drivers/clk/mediatek/clk-mt2701-img.c         |   15 +-
->   drivers/clk/mediatek/clk-mt2701-mm.c          |   56 +-
->   drivers/clk/mediatek/clk-mt2701-vdec.c        |   27 +-
->   drivers/clk/mediatek/clk-mt2701.c             |   48 +-
->   drivers/clk/mediatek/clk-mt2712-apmixedsys.c  |  154 +++
->   drivers/clk/mediatek/clk-mt2712-bdp.c         |   16 +-
->   drivers/clk/mediatek/clk-mt2712-img.c         |   15 +-
->   drivers/clk/mediatek/clk-mt2712-jpgdec.c      |   16 +-
->   drivers/clk/mediatek/clk-mt2712-mfg.c         |   15 +-
->   drivers/clk/mediatek/clk-mt2712-mm.c          |   66 +-
->   drivers/clk/mediatek/clk-mt2712-vdec.c        |   27 +-
->   drivers/clk/mediatek/clk-mt2712-venc.c        |   16 +-
->   drivers/clk/mediatek/clk-mt2712.c             | 1016 +++++------------
->   drivers/clk/mediatek/clk-mt6765-audio.c       |   27 +-
->   drivers/clk/mediatek/clk-mt6765-cam.c         |   16 +-
->   drivers/clk/mediatek/clk-mt6765-img.c         |   15 +-
->   drivers/clk/mediatek/clk-mt6765-mipi0a.c      |   16 +-
->   drivers/clk/mediatek/clk-mt6765-mm.c          |   15 +-
->   drivers/clk/mediatek/clk-mt6765-vcodec.c      |   16 +-
->   drivers/clk/mediatek/clk-mt6765.c             |   90 +-
->   drivers/clk/mediatek/clk-mt6779-aud.c         |    1 +
->   drivers/clk/mediatek/clk-mt6779-cam.c         |    1 +
->   drivers/clk/mediatek/clk-mt6779-img.c         |    1 +
->   drivers/clk/mediatek/clk-mt6779-ipe.c         |    1 +
->   drivers/clk/mediatek/clk-mt6779-mfg.c         |    1 +
->   drivers/clk/mediatek/clk-mt6779-mm.c          |   25 +-
->   drivers/clk/mediatek/clk-mt6779-vdec.c        |    1 +
->   drivers/clk/mediatek/clk-mt6779-venc.c        |    1 +
->   drivers/clk/mediatek/clk-mt6779.c             |    1 +
->   drivers/clk/mediatek/clk-mt6795-apmixedsys.c  |    1 +
->   drivers/clk/mediatek/clk-mt6795-infracfg.c    |    1 +
->   drivers/clk/mediatek/clk-mt6795-mfg.c         |    1 +
->   drivers/clk/mediatek/clk-mt6795-mm.c          |   56 +-
->   drivers/clk/mediatek/clk-mt6795-pericfg.c     |    1 +
->   drivers/clk/mediatek/clk-mt6795-topckgen.c    |    1 +
->   drivers/clk/mediatek/clk-mt6795-vdecsys.c     |    1 +
->   drivers/clk/mediatek/clk-mt6795-vencsys.c     |    1 +
->   drivers/clk/mediatek/clk-mt6797-img.c         |   15 +-
->   drivers/clk/mediatek/clk-mt6797-mm.c          |   56 +-
->   drivers/clk/mediatek/clk-mt6797-vdec.c        |   27 +-
->   drivers/clk/mediatek/clk-mt6797-venc.c        |   16 +-
->   drivers/clk/mediatek/clk-mt6797.c             |   47 +-
->   drivers/clk/mediatek/clk-mt7622-apmixedsys.c  |  138 +++
->   drivers/clk/mediatek/clk-mt7622-aud.c         |   49 +-
->   drivers/clk/mediatek/clk-mt7622-eth.c         |   27 +-
->   drivers/clk/mediatek/clk-mt7622-hif.c         |   27 +-
->   drivers/clk/mediatek/clk-mt7622-infracfg.c    |  129 +++
->   drivers/clk/mediatek/clk-mt7622.c             |  375 +-----
->   drivers/clk/mediatek/clk-mt7629-eth.c         |   25 +-
->   drivers/clk/mediatek/clk-mt7629-hif.c         |   27 +-
->   drivers/clk/mediatek/clk-mt7629.c             |   46 +-
->   drivers/clk/mediatek/clk-mt7981-apmixed.c     |    2 +
->   drivers/clk/mediatek/clk-mt7981-eth.c         |    3 +-
->   drivers/clk/mediatek/clk-mt7981-infracfg.c    |    4 +-
->   drivers/clk/mediatek/clk-mt7981-topckgen.c    |    4 +-
->   drivers/clk/mediatek/clk-mt7986-apmixed.c     |    8 +-
->   drivers/clk/mediatek/clk-mt7986-eth.c         |  115 +-
->   drivers/clk/mediatek/clk-mt7986-infracfg.c    |   93 +-
->   drivers/clk/mediatek/clk-mt7986-topckgen.c    |    4 +-
->   drivers/clk/mediatek/clk-mt8135.c             |   31 +-
->   drivers/clk/mediatek/clk-mt8167-apmixedsys.c  |  145 +++
->   drivers/clk/mediatek/clk-mt8167-aud.c         |   47 +-
->   drivers/clk/mediatek/clk-mt8167-img.c         |   50 +-
->   drivers/clk/mediatek/clk-mt8167-mfgcfg.c      |   50 +-
->   drivers/clk/mediatek/clk-mt8167-mm.c          |   69 +-
->   drivers/clk/mediatek/clk-mt8167-vdec.c        |   59 +-
->   drivers/clk/mediatek/clk-mt8167.c             |  390 ++-----
->   drivers/clk/mediatek/clk-mt8173-apmixedsys.c  |    1 +
->   drivers/clk/mediatek/clk-mt8173-img.c         |    1 +
->   drivers/clk/mediatek/clk-mt8173-infracfg.c    |    1 +
->   drivers/clk/mediatek/clk-mt8173-mm.c          |   82 +-
->   drivers/clk/mediatek/clk-mt8173-pericfg.c     |    1 +
->   drivers/clk/mediatek/clk-mt8173-topckgen.c    |    1 +
->   drivers/clk/mediatek/clk-mt8173-vdecsys.c     |    1 +
->   drivers/clk/mediatek/clk-mt8173-vencsys.c     |    1 +
->   drivers/clk/mediatek/clk-mt8183-apmixedsys.c  |  194 ++++
->   drivers/clk/mediatek/clk-mt8183-audio.c       |    5 +-
->   drivers/clk/mediatek/clk-mt8183-cam.c         |    5 +-
->   drivers/clk/mediatek/clk-mt8183-img.c         |    5 +-
->   drivers/clk/mediatek/clk-mt8183-ipu0.c        |    5 +-
->   drivers/clk/mediatek/clk-mt8183-ipu1.c        |    5 +-
->   drivers/clk/mediatek/clk-mt8183-ipu_adl.c     |    5 +-
->   drivers/clk/mediatek/clk-mt8183-ipu_conn.c    |    5 +-
->   drivers/clk/mediatek/clk-mt8183-mfgcfg.c      |    5 +-
->   drivers/clk/mediatek/clk-mt8183-mm.c          |   29 +-
->   drivers/clk/mediatek/clk-mt8183-vdec.c        |    5 +-
->   drivers/clk/mediatek/clk-mt8183-venc.c        |    5 +-
->   drivers/clk/mediatek/clk-mt8183.c             |  747 +++---------
->   drivers/clk/mediatek/clk-mt8186-apmixedsys.c  |    4 +-
->   drivers/clk/mediatek/clk-mt8186-cam.c         |    4 +-
->   drivers/clk/mediatek/clk-mt8186-img.c         |    4 +-
->   .../clk/mediatek/clk-mt8186-imp_iic_wrap.c    |    4 +-
->   drivers/clk/mediatek/clk-mt8186-infra_ao.c    |    4 +-
->   drivers/clk/mediatek/clk-mt8186-ipe.c         |    4 +-
->   drivers/clk/mediatek/clk-mt8186-mcu.c         |   69 +-
->   drivers/clk/mediatek/clk-mt8186-mdp.c         |    4 +-
->   drivers/clk/mediatek/clk-mt8186-mfg.c         |    4 +-
->   drivers/clk/mediatek/clk-mt8186-mm.c          |   59 +-
->   drivers/clk/mediatek/clk-mt8186-topckgen.c    |    4 +-
->   drivers/clk/mediatek/clk-mt8186-vdec.c        |    4 +-
->   drivers/clk/mediatek/clk-mt8186-venc.c        |    4 +-
->   drivers/clk/mediatek/clk-mt8186-wpe.c         |    4 +-
->   drivers/clk/mediatek/clk-mt8192-apmixedsys.c  |  215 ++++
->   drivers/clk/mediatek/clk-mt8192-aud.c         |    5 +-
->   drivers/clk/mediatek/clk-mt8192-cam.c         |    5 +-
->   drivers/clk/mediatek/clk-mt8192-img.c         |    5 +-
->   .../clk/mediatek/clk-mt8192-imp_iic_wrap.c    |    5 +-
->   drivers/clk/mediatek/clk-mt8192-ipe.c         |    5 +-
->   drivers/clk/mediatek/clk-mt8192-mdp.c         |    5 +-
->   drivers/clk/mediatek/clk-mt8192-mfg.c         |    5 +-
->   drivers/clk/mediatek/clk-mt8192-mm.c          |   34 +-
->   drivers/clk/mediatek/clk-mt8192-msdc.c        |    5 +-
->   drivers/clk/mediatek/clk-mt8192-scp_adsp.c    |    5 +-
->   drivers/clk/mediatek/clk-mt8192-vdec.c        |    5 +-
->   drivers/clk/mediatek/clk-mt8192-venc.c        |    5 +-
->   drivers/clk/mediatek/clk-mt8192.c             |  223 +---
->   drivers/clk/mediatek/clk-mt8195-apmixedsys.c  |    4 +-
->   drivers/clk/mediatek/clk-mt8195-apusys_pll.c  |    4 +-
->   drivers/clk/mediatek/clk-mt8195-cam.c         |    4 +-
->   drivers/clk/mediatek/clk-mt8195-ccu.c         |    4 +-
->   drivers/clk/mediatek/clk-mt8195-img.c         |    4 +-
->   .../clk/mediatek/clk-mt8195-imp_iic_wrap.c    |    4 +-
->   drivers/clk/mediatek/clk-mt8195-infra_ao.c    |    4 +-
->   drivers/clk/mediatek/clk-mt8195-ipe.c         |    4 +-
->   drivers/clk/mediatek/clk-mt8195-mfg.c         |    4 +-
->   drivers/clk/mediatek/clk-mt8195-peri_ao.c     |    4 +-
->   drivers/clk/mediatek/clk-mt8195-scp_adsp.c    |    4 +-
->   drivers/clk/mediatek/clk-mt8195-topckgen.c    |    4 +-
->   drivers/clk/mediatek/clk-mt8195-vdec.c        |    4 +-
->   drivers/clk/mediatek/clk-mt8195-vdo0.c        |   59 +-
->   drivers/clk/mediatek/clk-mt8195-vdo1.c        |   61 +-
->   drivers/clk/mediatek/clk-mt8195-venc.c        |    4 +-
->   drivers/clk/mediatek/clk-mt8195-vpp0.c        |    4 +-
->   drivers/clk/mediatek/clk-mt8195-vpp1.c        |    4 +-
->   drivers/clk/mediatek/clk-mt8195-wpe.c         |    4 +-
->   drivers/clk/mediatek/clk-mt8365-apmixedsys.c  |  166 +++
->   drivers/clk/mediatek/clk-mt8365-apu.c         |    3 +-
->   drivers/clk/mediatek/clk-mt8365-cam.c         |    3 +-
->   drivers/clk/mediatek/clk-mt8365-mfg.c         |    3 +-
->   drivers/clk/mediatek/clk-mt8365-mm.c          |   42 +-
->   drivers/clk/mediatek/clk-mt8365-vdec.c        |    3 +-
->   drivers/clk/mediatek/clk-mt8365-venc.c        |    3 +-
->   drivers/clk/mediatek/clk-mt8365.c             |  605 ++--------
->   drivers/clk/mediatek/clk-mt8516-apmixedsys.c  |  122 ++
->   drivers/clk/mediatek/clk-mt8516-aud.c         |   47 +-
->   drivers/clk/mediatek/clk-mt8516.c             |  246 +---
->   drivers/clk/mediatek/clk-mtk.c                |   82 +-
->   drivers/clk/mediatek/clk-mtk.h                |    7 +-
->   155 files changed, 3292 insertions(+), 4355 deletions(-)
->   create mode 100644 drivers/clk/mediatek/clk-mt2712-apmixedsys.c
->   create mode 100644 drivers/clk/mediatek/clk-mt7622-apmixedsys.c
->   create mode 100644 drivers/clk/mediatek/clk-mt7622-infracfg.c
->   create mode 100644 drivers/clk/mediatek/clk-mt8167-apmixedsys.c
->   create mode 100644 drivers/clk/mediatek/clk-mt8183-apmixedsys.c
->   create mode 100644 drivers/clk/mediatek/clk-mt8192-apmixedsys.c
->   create mode 100644 drivers/clk/mediatek/clk-mt8365-apmixedsys.c
->   create mode 100644 drivers/clk/mediatek/clk-mt8516-apmixedsys.c
-> 
+And perhaps for other drivers:
+
+	if (fdb_flags & ~(DSA_FDB_FLAG_DYNAMIC))
+		return -EOPNOTSUPP;
+	if (fdb_flags)
+		return 0;
+
+Perhaps a helper would be warranted for the above.
+
+But in writing this I think that, perhaps drivers could return -EOPNOTSUPP
+for the DSA_FDB_FLAG_DYNAMIC case and the caller can handle, rather tha
+propagate, -EOPNOTSUPP.
+
+Returning -EOPNOTSUPP is the normal way to drivers to respond to requests
+for unsupported hardware offloads. Sticking to that may be clearner
+in the long run. That said, I do agree your current patch is correct
+given the flag that is defined (by your patchset).
 
