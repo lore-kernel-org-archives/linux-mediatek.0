@@ -4,57 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65B76C05027
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Feb 2023 20:42:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E875BC05027
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Feb 2023 21:00:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	In-Reply-To:Content-Transfer-Encoding:Content-Type:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:
+	References:To:Subject:MIME-Version:Date:Message-ID:Content-Type:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9joVZm7UgwgYJ1HM23tOhpqYb5UxdPz6bOdKopV5e7k=; b=26DNBdrwetIjg1SI8ekot6W/fF
-	p0qRcStG45MRknwj39OT+3uCCKrLwzohuWvvc9Vq21gK2wiHASwolgYgj4MIEfeGQz159plJyg2B8
-	zYZkYu9yW0b0udhaJ78YsEjPgCuGqUuCLfFVZBi8E/+AWp4cnM7eEymJh5W8jetnkG9TD/xkBgFkj
-	Q2EV7NDfGAD5Q5c+u7uNu7smgxGTmJ24ZCWrjFj+EysM6lxTT5NmEdRxW/KCbYow1zMLNtN8ADvO2
-	KgCJlCLMDzxxDkjl9UXjkwtPjPhMhk6oPTaE78/z5TIf2R8xgdyY0mhY5/2xOX/lfzvwSNhaVdMSb
-	5IoX7ojA==;
+	bh=/HPkf5YsTIOCnzVDtCplioRqVVDpwJJJeFUzxZkAr8c=; b=qYZAHXUXV7jlLiUUQL5qodA34y
+	4643uKdR+zvqoyRh499FoBhQOLR0n+wxWp3rC82Tc4wV/EPApGvH9vD3sQILyw8x9q9zvKZgOD4yQ
+	XMdsODiWIHlA3MYB1I3aJvUbhRymBa/VbR6DzyNGPFjwDoAsU8Etvl/54YqsJZV8j3i+MXzALBTGj
+	2rDRY9cdIWuZVA10veBUSOHsuBi4cC7NbJR2ApCFinypEdy3fjkR53cED6jC0wRf4iUlEuL7pvN8J
+	DW2Nfg7iUfa5bponaBDrH4rKf6ro1ckGnCSemfNR3Mv1Ug+DgaDMLlpRDMpyDo9cCUrKbDZ4dsThn
+	j5IttThw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pP8K0-009sxK-RY; Mon, 06 Feb 2023 20:42:40 +0000
-Received: from mail-db8eur05on2062b.outbound.protection.outlook.com ([2a01:111:f400:7e1a::62b] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
+	id 1pP8b4-009vSV-OV; Mon, 06 Feb 2023 21:00:18 +0000
+Received: from sender4-op-o16.zoho.com ([136.143.188.16])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pP8Jx-009swa-IM; Mon, 06 Feb 2023 20:42:38 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=FRYS7kMwaG+GQfkxuKjeiVgy5nvmo9quILsqM1eiLgHE4ATCtoKS1kY8ofNXxyCS/Iji96Z4jV21nEeERJPTwViZXF9onhjZzqlS26KiJ255lrdHfn554ZGuDMhEzlBGNhxxHuUydiX0RWEQ5hKoOHQpWqYc5p738ed+FCVRHVkl6WMqKIwcau3pJOJsJcw83w7rQi/utrYDL4nptZ7XCVpjmle8Q9UL/7NLmsCrGDUXMQkBT1jky6Nscx1vnCUQoJPTE8VFxa/IBHUU+4jhkjdpqJOnU/unGWTTd/V3c7FQbARSfKMY8ESbfaig/F2Kmid/+vC9vAqEMkkitUFZLw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=9joVZm7UgwgYJ1HM23tOhpqYb5UxdPz6bOdKopV5e7k=;
- b=SEDtx99eMGMl3m2Q8o55Yb5OX205Bo/sTAHVLHrydFgR7oWp1WHfdkPGXll2+V+FJsUiY07AMKeOkpLwRE0JRHvXpfbVgbJytLAXv++xWofxiTjd6TaAExveJqWTLIGefukaiZc+oAKtAsX3pPxOkmvfq/RBcxwLEJolov41sRsgxkkBX8wJdRYm8o+KqeIcKKKrIBEqa73gpIyZ8be86mJbeIbnoaiAAdwNKL7snmPNGQurjBToYHCIsNBgmyKLvp7xIiHqXkKUpnD6mR5+GjPYnxg5+yLwJbcH+rKTn5LR2AGqHRgp+7c+6scJJrNnX3cKy2T6bLdyhfVyN5Mfnw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9joVZm7UgwgYJ1HM23tOhpqYb5UxdPz6bOdKopV5e7k=;
- b=ZA2WaYqKC9ovP3Jbe3kB20roejvwyYtu6vXW/4bF3k9j4sOaQ84xt7tHCwD4Tv9pkqFvnB6FGODL12zHLFwMTosX21Jc0yceWqCTiDW+dfzOd3etCrGnPyXMs2dFyaLkEo6gnGqa5ou+hNLmPuUwGu59k9mLed/MDZTMfTBtdOQ=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from VI1PR04MB5136.eurprd04.prod.outlook.com (2603:10a6:803:55::19)
- by PA4PR04MB9437.eurprd04.prod.outlook.com (2603:10a6:102:2a9::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6064.29; Mon, 6 Feb
- 2023 20:42:33 +0000
-Received: from VI1PR04MB5136.eurprd04.prod.outlook.com
- ([fe80::3cfb:3ae7:1686:a68b]) by VI1PR04MB5136.eurprd04.prod.outlook.com
- ([fe80::3cfb:3ae7:1686:a68b%5]) with mapi id 15.20.6064.034; Mon, 6 Feb 2023
- 20:42:33 +0000
-Date: Mon, 6 Feb 2023 22:42:28 +0200
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+	id 1pP8at-009vPs-K5; Mon, 06 Feb 2023 21:00:09 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1675717183; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=YCWwRuDdHCFI3y42hfY/nbUOP+GanWFxDNmJj675CvfKJYeKzDxmVX9oJvxqfKmeAZxDrcnFxYn8jVmadHHq+hiQZ3hyQTOtNCihZxZX6+qnnjtqkp4tVcmQbgerJkSgsfJHur3cqS2Mi7xVr2s55rTALn9DUtOtKFufJo3XkmQ=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1675717183; h=Content-Type:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=/HPkf5YsTIOCnzVDtCplioRqVVDpwJJJeFUzxZkAr8c=; 
+	b=DJmiFPA1+izZIHd/MPAMDzKt1ScYlEM6Cj2tyDZUf4+4wi80rvXWjpUVbPbc0SYr+qLSa/YcvNPju40N86aGq1MwF1of00t1saksy76ZJuBViR4CkRcLLAjDL2AGCnt+9Z3ci2kYruWmsn17WzeZQLOlA/BWj7LyY/T/UHv90Z8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1675717183;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Content-Type:Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Message-Id:Reply-To;
+	bh=/HPkf5YsTIOCnzVDtCplioRqVVDpwJJJeFUzxZkAr8c=;
+	b=XSQBAMOHuPh/M8oUFzk9wiC7zF0vQIbHdqpMfrso1PMoPVtUqVtmH3Nc9kXWTZj9
+	V32atz5//fuBnfSowrL6am+NLoCKhjENflu3u3SY85+lYet8/fuA0+ksU3lDTh7GPtt
+	/2KS0+rHdGUcWw5ckspUJpNMcaT2u2b35Fc1AKTM=
+Received: from [10.10.10.3] (31.223.26.239 [31.223.26.239]) by mx.zohomail.com
+	with SMTPS id 1675717182038197.75552933950325; Mon, 6 Feb 2023 12:59:42 -0800 (PST)
+Content-Type: multipart/mixed; boundary="------------I37axy810XQiqT7HWyRq3zRz"
+Message-ID: <d160cc60-d62a-e1a9-5580-48a50a2568df@arinc9.com>
+Date: Mon, 6 Feb 2023 23:59:35 +0300
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
 Subject: Re: [PATCH net] net: dsa: mt7530: don't change PVC_EG_TAG when CPU
  port becomes VLAN-aware
-Message-ID: <20230206204228.sa45cvco6bltidwq@skbuf>
+To: Vladimir Oltean <vladimir.oltean@nxp.com>
 References: <20230205203906.i3jci4pxd6mw74in@skbuf>
  <b055e42f-ff0f-d05a-d462-961694b035c1@arinc9.com>
  <20230205235053.g5cttegcdsvh7uk3@skbuf>
@@ -65,74 +63,15 @@ References: <20230205203906.i3jci4pxd6mw74in@skbuf>
  <f297c2c4-6e7c-57ac-2394-f6025d309b9d@arinc9.com>
  <20230206203335.6uxfiylftyktut5u@skbuf>
  <4ee5df8d-618b-db78-9c14-17a45e383b67@arinc9.com>
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <4ee5df8d-618b-db78-9c14-17a45e383b67@arinc9.com>
-X-ClientProxiedBy: AS4P191CA0012.EURP191.PROD.OUTLOOK.COM
- (2603:10a6:20b:5d5::11) To VI1PR04MB5136.eurprd04.prod.outlook.com
- (2603:10a6:803:55::19)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: VI1PR04MB5136:EE_|PA4PR04MB9437:EE_
-X-MS-Office365-Filtering-Correlation-Id: a3522f80-2881-40e4-bf0b-08db0882ac32
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	ZZFI8eUkEc1bTL+Gx+HiwUGJAOhoOD44lnSn1HWTklsCrpHv4qPtq47ImGPMDMAsSpWLSqHYek+G4Lwhx3h/AU+y9NwhU+Aam+eFiW0vpsn77ndPQl0l59eoyC0l9YzYMFVHwaMZuPwFhj1MR3zem5YrZ3+tlJq1zi54rrM8+jtUukez7FWSz+pggt/5Kgk5D86epekfssZQCgT59TTsRBU2aOH1tQP+A2J6Bo4XsiNwsWtsw2lxFUb/IDN8rq0SrEImG1U9sEvSezP34/nzoC8+3m7CCE77tPzNTTE/EX0xTzwGLU7p0NaoOV9+rkBLi2gE2auc/o9AQa13CKsk+l3LylK3THthEN/ZzuyvKFnaJ6q3rmaB5jfppqkf81zMAmRBcTVdzhDpMRMeASXiIAPBW7GBvYfeI9BKeMlChLTU613QL2WjPdWaoZ/m9CfRXTXRC3kpeZq06rioqblrPkM4y6lc6Yg0xjq6AB/6Ii+/dRgkXeZrqkM7Gsh3Csg54Nlz8US89Bckn27RUaHxni1vyMwecA8oEYGTpFgfNSugsxHauPh/qOmvclK+0rSl/A6r20/y4veL5x+Aqu7fAa52dbQTv3UF2L6/6MyYn/Qz7G5P5Lw3uRnRbm8xRkwij3f0DkJXllHqxFfeKUWsiw==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:VI1PR04MB5136.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(7916004)(366004)(396003)(39860400002)(376002)(346002)(136003)(451199018)(1076003)(66476007)(66556008)(316002)(54906003)(66946007)(9686003)(41300700001)(6916009)(7416002)(33716001)(2906002)(86362001)(8676002)(38100700002)(26005)(53546011)(478600001)(6512007)(4326008)(186003)(44832011)(83380400001)(5660300002)(8936002)(6506007)(6666004)(66574015)(6486002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?SkM2RVBjNDNmbENGaVdUZW5IQkR4U0JtNjlpei9OYVNEb3RQbEZCdlVEMU5U?=
- =?utf-8?B?VzRldm1vWDhCNGF5cWxDRUx2Um1vSysvL0JYdTlXUklnaC9vREhadVFBZlBT?=
- =?utf-8?B?d0dQNWR0RlNnVi9pV2JBemNJL2M3MGgvTFBiM0p2Y3ZnR2ZqYnRsWnlPZTNX?=
- =?utf-8?B?T3gvOTBJWkN6U0RYS3F1MkJOc2VHNS9ZcXBjblJVbUJEVE5QZkw3cWwyOWFr?=
- =?utf-8?B?c0ZVN1hCSVBzZGwxVjJqZ3VaTVAwZGFjT2szdzVqTlhxVWpvZHBmTlZPVG4z?=
- =?utf-8?B?WmRVZFpScHVNVFpuQTJadWIxclMxNmhHWmQrdnpBTEJwQmFZOW5RUEZQS1VR?=
- =?utf-8?B?ZkZMYlpseFNUZ1NnTlFyd1M3TDgreko3VmJPekJEcEp0dEQwaHUxamNDVFVz?=
- =?utf-8?B?MjJ3S2dFMm0vdi9seVVZdjNrRXhFMlp5UHNzdVlwWmp6L3NRbHB1aTcxa3Jv?=
- =?utf-8?B?TVR1VTJGSTFRck56cXk0RDRwcHZvam9QWXY2UjFsVDd5WVRieVBYSU02alN1?=
- =?utf-8?B?TFI4dUdPL2pWRVErWWxSczVFSlFCbmlmRXhvSmxNNk5yYzNSanRkTXg2UGpn?=
- =?utf-8?B?VjBSMmUzQVZxNC9waWFLMmtSVHFGUS8xWVVRVlphTk1TaUdnciszMncxQ3Uz?=
- =?utf-8?B?ZlhSOCtaYWFxNVZndGxtbncrN3JMZlRSampuNTFMQmxObmtNOGdwNVlSdkNW?=
- =?utf-8?B?L21HL2pPbDBTclN5elJXaDJaaWkwcWJjdmY4Q1B6MUoxZkFuZWtuSllRR3kw?=
- =?utf-8?B?TUcxNFpuMGFuYU1VU2RKVmFyaVAybXl4WUM5bi85bXg0UnRLU0tLTytpMG4y?=
- =?utf-8?B?WURYVnRMMWVJYUxQNC82K1ErUHhESzRSdmRKU1MzZUplQ0tDZDVQcm9aZFBw?=
- =?utf-8?B?VFpIbWgvek9MZS9NRGFLMytCV3BXaGptWUJpZU01bnEya203V3ZSVjRpL3BD?=
- =?utf-8?B?NXpyVk5LYWVBU1FGNVBLWnZvRkN5S040b3NvaGNkei9WWERoTFVaZVBNcjVr?=
- =?utf-8?B?d1JhZTN0K21JdE9FTTlXenNBaU02ejNBbmE2L1IzSHE0eTkxQUp3TmF0OFA5?=
- =?utf-8?B?Y1pLMjlvUFVKRU5EQUYrS29mRWxFWjFJNnl1OGtHVHQwNzhCckJWdFFhKy8v?=
- =?utf-8?B?eUk5YVJQQ3Vubk1pbzhDM3MzTzFTTXFENkFuaEhrVWZJellLcjkvTkFWVVhk?=
- =?utf-8?B?V2hoU2kyUzA4NXI3YTk3MHlJQkpQaTVtY0VjcEdqK01IeFlRbDJZcmdhZ2s3?=
- =?utf-8?B?b1FBYVNFdG5mdVVWRnMwaElrK1JSUWFUdE1HSFV1V1JPWnRJbWhqYTg2RHVJ?=
- =?utf-8?B?Mm9VSEk5Vms1ZkI0eW1pMldmckhtOTJVTTVBL3FxU2dCK2VGMEhGdFVDZ3kz?=
- =?utf-8?B?RFZERGRiZTU5TkZNV1NVNWxwUGxBM3NoTmdqU0w5czQ0VGhZWWZYVGJ4eVJp?=
- =?utf-8?B?Unl5ZzBSVUNBR0p1eXRreG9FejdxdGpTWmRhZjlTY3h1dmNNb0RZbG1DODIy?=
- =?utf-8?B?YTYvYnA0VzlQeENhYy9VbThhWjBSRlBCakNRVnlDakl3bzBDOFA1eGo2ekJJ?=
- =?utf-8?B?Tjg5WHRXS3VhS0FIVDArOW5EemdYL2dtd1hwNmJ0MXQwRUZ4b0dxQmJGbWVw?=
- =?utf-8?B?dkNMRVBlanRZczRuZmVKeXBJT2lTT0Vudm54YjRjdkZUZkhJZnFyL0J5a1lH?=
- =?utf-8?B?M2J0bTY4NXpoN1REUFRMVENpRElMWXNjZkw4VTQwcm0rQnpHU1lzWGRmWDA1?=
- =?utf-8?B?ZUdCeWtkSml5QVJqSjhDSEtIUU9PMmczQVhkOU9ReUNBdEZNM2RjQm0rbjNL?=
- =?utf-8?B?TUdJZkRrRmJhTnBWV1orUndtcFI0NzVsWks4QnJVS3llOHdWYSttaWZNdzhP?=
- =?utf-8?B?NW5PMXRoYS9TdnQvNW9xN043OGhZZWR0MzlyeWJGSXdvOU1tSHdBdnhmSkJS?=
- =?utf-8?B?TlpFdngxY2tjMTU5N294RlM3YjNkaFBjWkdxNEpkMllpdys3R3ZZWjdnL3dk?=
- =?utf-8?B?OGtmT1hjemFxcGFKb3ptYTkrZS9jQkdiOU5GamhuUHdpOG9PUHBmQzlxZGtP?=
- =?utf-8?B?ZVdvbVpYc1R3QVo0MHhIMnd5Q0twdkloenRuSk9tL2VqeEhCNTZTa0crNjVq?=
- =?utf-8?B?cEdubUNNaUN3dk5kNXhhWHVxYXFzY2ozUU5oakZPQjd5dkJ4NHdJMjhhWmFP?=
- =?utf-8?B?bXc9PQ==?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a3522f80-2881-40e4-bf0b-08db0882ac32
-X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5136.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Feb 2023 20:42:33.3334
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 6iFOw9dihZ7eaUJW2UhV2x7qsOyFgVx5ZxRjipOOP0OSzUm/pRIn8RoTMQB/j9rCNcceQ/yptDJTAoHNy3rhkA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA4PR04MB9437
+ <20230206204228.sa45cvco6bltidwq@skbuf>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20230206204228.sa45cvco6bltidwq@skbuf>
+X-Zoho-Virus-Status: 1
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230206_124237_637391_371F92A9 
-X-CRM114-Status: GOOD (  19.36  )
+X-CRM114-CacheID: sfid-20230206_130007_745253_6CBDAB73 
+X-CRM114-Status: GOOD (  18.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,33 +87,144 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Floria
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 06, 2023 at 11:35:50PM +0300, Arınç ÜNAL wrote:
-> On 06/02/2023 23:33, Vladimir Oltean wrote:
-> > On Mon, Feb 06, 2023 at 10:41:47PM +0300, Arınç ÜNAL wrote:
-> > > One last thing. Specific to MT7530 switch in MT7621 SoC, if port@5 is the
-> > > only CPU port defined on the devicetree, frames sent from DSA master appears
-> > > malformed on the user port. Packet capture on computer connected to the user
-> > > port is attached.
-> > > 
-> > > The ARP frames on the pcapng file are received on the DSA master, I captured
-> > > them with tcpdump, and put it in the attachments. Then I start pinging from
-> > > the DSA master and the malformed frames appear on the pcapng file.
-> > > 
-> > > It'd be great if you could take a look this final issue.
-> > 
-> > What phy-mode does port@5 use when it doesn't work? What about the DSA master?
+This is a multi-part message in MIME format.
+--------------I37axy810XQiqT7HWyRq3zRz
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+
+On 6.02.2023 23:42, Vladimir Oltean wrote:
+> On Mon, Feb 06, 2023 at 11:35:50PM +0300, Arınç ÜNAL wrote:
+>> On 06/02/2023 23:33, Vladimir Oltean wrote:
+>>> On Mon, Feb 06, 2023 at 10:41:47PM +0300, Arınç ÜNAL wrote:
+>>>> One last thing. Specific to MT7530 switch in MT7621 SoC, if port@5 is the
+>>>> only CPU port defined on the devicetree, frames sent from DSA master appears
+>>>> malformed on the user port. Packet capture on computer connected to the user
+>>>> port is attached.
+>>>>
+>>>> The ARP frames on the pcapng file are received on the DSA master, I captured
+>>>> them with tcpdump, and put it in the attachments. Then I start pinging from
+>>>> the DSA master and the malformed frames appear on the pcapng file.
+>>>>
+>>>> It'd be great if you could take a look this final issue.
+>>>
+>>> What phy-mode does port@5 use when it doesn't work? What about the DSA master?
+>>
+>> It's rgmii on port@5 and gmac1.
 > 
-> It's rgmii on port@5 and gmac1.
+> What kind of RGMII? Plain "rgmii" on both ends, with no internal delays?
+> With RGMII, somebody must add a skew to the clock signal relative to the
+> data signals, so that setup/hold times at the other end are not violated.
+> Either the transmitter or the receiver can add RGMII delays in each
+> direction of communication, but someone must do it, and no more than one
+> entity should do it.
+> 
+> So my question would be: could you retry after replacing phy-mode = "rgmii"
+> with phy-mode = "rgmii-id" on port@5? And if that doesn't change anything
+> (unlikely but possible), also try "rgmii-txid" and "rgmii-rxid" in port@5?
+> Don't change the phy-mode on gmac1.
 
-What kind of RGMII? Plain "rgmii" on both ends, with no internal delays?
-With RGMII, somebody must add a skew to the clock signal relative to the
-data signals, so that setup/hold times at the other end are not violated.
-Either the transmitter or the receiver can add RGMII delays in each
-direction of communication, but someone must do it, and no more than one
-entity should do it.
+Still getting malformed frames. Packet capture for each phy-mode is 
+attached. Made sure the phy-mode with:
 
-So my question would be: could you retry after replacing phy-mode = "rgmii"
-with phy-mode = "rgmii-id" on port@5? And if that doesn't change anything
-(unlikely but possible), also try "rgmii-txid" and "rgmii-rxid" in port@5?
-Don't change the phy-mode on gmac1.
+# cat /proc/device-tree/ethernet@1e100000/mac@1/phy-mode
+rgmii
+
+# cat 
+/proc/device-tree/ethernet@1e100000/mdio-bus/switch@1f/ports/port@5/phy-mode
+rgmii-id
+
+# cat 
+/proc/device-tree/ethernet@1e100000/mdio-bus/switch@1f/ports/port@5/phy-mode
+rgmii-txid
+
+# cat 
+/proc/device-tree/ethernet@1e100000/mdio-bus/switch@1f/ports/port@5/phy-mode
+rgmii-rxid
+
+Arınç
+--------------I37axy810XQiqT7HWyRq3zRz
+Content-Type: application/x-pcapng; name="rgmii-id.pcapng"
+Content-Disposition: attachment; filename="rgmii-id.pcapng"
+Content-Transfer-Encoding: base64
+
+Cg0NCrgAAABNPCsaAQAAAP//////////AgA2AEludGVsKFIpIENvcmUoVE0pIGk3LTg3MDBL
+IENQVSBAIDMuNzBHSHogKHdpdGggU1NFNC4yKQAAAwAXAExpbnV4IDUuMTkuMC0yOS1nZW5l
+cmljAAQAOgBEdW1wY2FwIChXaXJlc2hhcmspIDMuNi43IChHaXQgdjMuNi43IHBhY2thZ2Vk
+IGFzIDMuNi43LTEpAAAAAAAAuAAAAAEAAABIAAAAAQAAAAAABAACAAYAZW5wOXMwAAAJAAEA
+CQAAAAwAFwBMaW51eCA1LjE5LjAtMjktZ2VuZXJpYwAAAAAASAAAAAYAAABcAAAAAAAAAIZX
+QRcJjCxpPAAAADwAAAD//17/mlc+eMWU+oItpwABCAAGAAABPnjFlNqCgKgCAQAAAAAAoMCo
+AgIAAAAAAAAAAAAAAAAAAKg7CMJcAAAABgAAAFwAAAAAAAAAhldBF1VSMKU8AAAAPAAAAP//
+//+f98CoAgIAAAAgAAAAAAAAAAAAAKg7GNIAAMUlNeOI8QgQKBicy8gTkRXjpE2mzAu1N5fC
+ZpsOEVwAAAAGAAAAXAAAAAAAAACGV0EXPGk54jwAAAA8AAAA/////5//PnjFlNqCKaYAAQgA
+hgAIAT54xZTagoCgAgEAAAAAACDAqAICAAAAAAAAAAAAAAAAAACoOxjWXAAAAAYAAABcAAAA
+AAAAAIdXQRemS31YPAAAADwAAAD////////AqAICAAAAIAAAAAAAAAAAAACoOxjWAAACDL7U
+AAMAAwAAAAQAAACEAAAAAQAAAKMAAAAEAABcAAAABgAAAFwAAAAAAAAAh1dBFx2PhZU8AAAA
+PAAAAP///v+f9z54xZTagimmAAEIAIYACAE+eMWUWoKAgAIBAAAAAAAgwKgCAgAAAAAAAAAA
+AAAAAAAAqDsY1lwAAAAGAAAAXAAAAAAAAACHV0EXWQaP0jwAAAA8AAAA///+/5//wKgCAgAA
+ACAAAAAAAAAAAAAAqDsYwgAAAgxA8wADAAQAAAFwSDICAAAAAAMAACEEAAAAAAAAXAAAAAYA
+AABcAAAAAAAAAIhXQRcL1d5HPAAAADwAAAD//17/mhc+eMWU2oIppgABCAAGAAABPnjFlNqC
+gKACAQAAAAAAqMCoAgIAAAAAAAAAAAAAAAAAAKg7GNJcAAAABgAAAFwAAAAAAAAAiFdBFwv8
+8oM8AAAAPAAAAP//Xv+aFz54xZTagimmAAEIAAYAAAE+eMWU2oKAqAIBAAAAAACgwKgCAgAA
+AAAAAAAAAAAAAAAAqDsY0lwAAAAGAAAAXAAAAAAAAACIV0EXmJT8wDwAAAA8AAAA///+/5/3
+wKgCAgAAACAAAAAAAAAAAAAAqDsY1gAAAAAADwAAAAAAAAABQnAQADAAAAAAACUDAAAABAAA
+XAAAAAUAAABsAAAAAAAAAA70BQA9YaQ3AQAcAENvdW50ZXJzIHByb3ZpZGVkIGJ5IGR1bXBj
+YXACAAgADvQFAD6QqTYDAAgADvQFAHlgpDcEAAgACQAAAAAAAAAFAAgAAAAAAAAAAAAAAAAA
+bAAAAA==
+--------------I37axy810XQiqT7HWyRq3zRz
+Content-Type: application/x-pcapng; name="rgmii-rxid.pcapng"
+Content-Disposition: attachment; filename="rgmii-rxid.pcapng"
+Content-Transfer-Encoding: base64
+
+Cg0NCrgAAABNPCsaAQAAAP//////////AgA2AEludGVsKFIpIENvcmUoVE0pIGk3LTg3MDBL
+IENQVSBAIDMuNzBHSHogKHdpdGggU1NFNC4yKQAAAwAXAExpbnV4IDUuMTkuMC0yOS1nZW5l
+cmljAAQAOgBEdW1wY2FwIChXaXJlc2hhcmspIDMuNi43IChHaXQgdjMuNi43IHBhY2thZ2Vk
+IGFzIDMuNi43LTEpAAAAAAAAuAAAAAEAAABIAAAAAQAAAAAABAACAAYAZW5wOXMwAAAJAAEA
+CQAAAAwAFwBMaW51eCA1LjE5LjAtMjktZ2VuZXJpYwAAAAAASAAAAAYAAADEAAAAAAAAAMBX
+QReEiPzzpAAAAKQAAAD//17/mleyZWfY8I8ppsCoAgIAAAAAAAAAAAAAAAAAAA6eHugAAH1M
+T36UCwIFhBg2/lTKHLbrDyHj2osMmkMN3Nmdf7s8mqk09L/dL5hiGMth+MQYbYLBPJ9WSoB2
+4KzC1wTictugSsWV2nvXIHxyvSOKKewscluykrxdEKTEgR1lK7Ug4YZ4UU4PrzCBoT715RUG
+gKzdMf/3sgByKPi5NocG0MQAAAAGAAAA3AAAAAAAAADBV0EX3lO4MLoAAAC6AAAA//9e/5v3
+smVn2PCPKaYAAQgABgQAAbJlZ9hQj4AAAgEAAAAAAKDAqAICAAAAAAAAAAAAAAAAAAAOnl7o
+AADFJTXjiPEIACgYnMuIE5kd46RNpkwLsTaXwmabDgGyhNUjnjAEOxykGGi5hMlQMYc8/GV5
+HBggo/o/wrEQETQGYQBv6rIbV9ZQ5Tn1AYJigtqtTpk4DbOD3VNgUgrXhsQ1qItcAhEiZmTS
+ND8fIhBAlC49vY+v9y8woTP8AADcAAAABgAAAFwAAAAAAAAAwVdBF3/twG08AAAAPAAAAP//
+Xv+aV7JlZ9jwjymmAAEIAAYEAAHAqAICAAAAAAAAAAAAAAAAAAAOng7oAACZoGH+gEoQA0vo
+WlEa0FwAAAAGAAAAXAAAAAAAAADBV0EX2N5L4zwAAAA8AAAA//9e/5pXwKgCAqAAIakAAAAA
+AAAAAAAADp7e6AAAAgyrhwADAAIAAAACAAAAAHJlZ3VMYRBHci0zdjIAXAAAAAYAAABcAAAA
+AAAAAMJXQRf4eCMfPAAAADwAAAD//17/m9fAqAICAAAhIAAAAAAAAAAAAAAOnl7oAAACDH78
+gAMAAwAAAAQAAAAEAAAAAQAAAKMAAAAEAABcAAAABgAAAFwAAAAAAAAAwldBF2xSK1w8AAAA
+PAAAAP//Xv+bV7JlZ9jwjymmAAEIAAYEAAGyZWfYAI+AAQIBAAAAAACowKgCAgAAAADAqAIC
+AAAAAAAAAAAAAFwAAAAFAAAAbAAAAAAAAAAO9AUAQ8J2RgEAHABDb3VudGVycyBwcm92aWRl
+ZCBieSBkdW1wY2FwAgAIAA70BQA1wqdFAwAIAA70BQCuwXZGBAAIAAYAAAAAAAAABQAIAAAA
+AAAAAAAAAAAAAGwAAAA=
+--------------I37axy810XQiqT7HWyRq3zRz
+Content-Type: application/x-pcapng; name="rgmii-txid.pcapng"
+Content-Disposition: attachment; filename="rgmii-txid.pcapng"
+Content-Transfer-Encoding: base64
+
+Cg0NCrgAAABNPCsaAQAAAP//////////AgA2AEludGVsKFIpIENvcmUoVE0pIGk3LTg3MDBL
+IENQVSBAIDMuNzBHSHogKHdpdGggU1NFNC4yKQAAAwAXAExpbnV4IDUuMTkuMC0yOS1nZW5l
+cmljAAQAOgBEdW1wY2FwIChXaXJlc2hhcmspIDMuNi43IChHaXQgdjMuNi43IHBhY2thZ2Vk
+IGFzIDMuNi43LTEpAAAAAAAAuAAAAAEAAABIAAAAAQAAAAAABAACAAYAZW5wOXMwAAAJAAEA
+CQAAAAwAFwBMaW51eCA1LjE5LjAtMjktZ2VuZXJpYwAAAAAASAAAAAYAAABcAAAAAAAAAKlX
+QRdItN2pPAAAADwAAAD//17/mlcSyYnwpeIppgABCAAGAAABEsmJ8KXigKgCAQAAAAAAqMCo
+AgIAAAAAAAAAAAAAAAAAAEg0FohcAAAABgAAAFwAAAAAAAAAqVdBF3R3Hec8AAAAPAAAAP//
+DvuaBxLJifCl4immAAEIAAYAAAESyYnwBOKAAAIBAAAAAACowKgCAgAAAAAAAAAAAAAAAAAA
+SDQWiFwAAAAGAAAAXAAAAAAAAACqV0EXn/YlJDwAAAA8AAAA//9e/5pXEsmJ8KXiKacAAQgA
+BgAIARLJifCl4sCoAgEAAAAAAKjAqAICAAAAAAAAAAAAAAAAAABINBaIXAAAAAYAAABcAAAA
+AAAAAKpXQRe38TaZPAAAADwAAAD//177mgcSyYnwpeIppgABCAAGAAABEsmJ8CTigKACAQAA
+AAAAoMCoAgIAAAAAAAAAAAAAAAAAAEg0FohcAAAABgAAAFwAAAAAAAAAqldBFwskh9U8AAAA
+PAAAAP//HvuaBxLJifCl4imnAAEIAAYAAAESyYnwBOKAoAIBAAAAAACowKgCAgAAAAAAAAAA
+AAAAAAAASDQWiFwAAAAGAAAAXAAAAAAAAACrV0EXY8OPEjwAAAA8AAAA//8e+5oHEsmJ8KXi
+KSYAAQgABgQAARLJifAE4oAAAgEAAAAAAKDAqAICAAAAAAAAAAAAAAAAAABINFaIXAAAAAYA
+AABcAAAAAAAAAKtXQRfUuZSIPAAAADwAAAD//x77mgfAqAICAAAhqQAAAAAAAAAAAABINFaI
+AAACDB9vAAMABAAAAXAIMgIAAAAAAwAAIQQAAAAAAABcAAAABgAAAFwAAAAAAAAAq1dBF8Lp
+2cU8AAAAPAAAAP//Xv+aVxLJifCl4imnAAEIAAYAAAESyYnwpeLAqAIBAAAAAACowKgCAgAA
+AAAAAAAAAAAAAAAASDQWiFwAAAAGAAAAXAAAAAAAAACsV0EXJefhAjwAAAA8AAAA//9e+5pH
+EsmJ8KXiKaYAAQgABgAAARLJifCl4oCgAgEAAAAAAKjAqAICAAAAAAAAAAAAAAAAAABINBaI
+XAAAAAUAAABsAAAAAAAAAA70BQCBXKVAAQAcAENvdW50ZXJzIHByb3ZpZGVkIGJ5IGR1bXBj
+YXACAAgADvQFAKnb2T8DAAgADvQFAO1bpUAEAAgACQAAAAAAAAAFAAgAAAAAAAAAAAAAAAAA
+bAAAAA==
+
+--------------I37axy810XQiqT7HWyRq3zRz--
 
