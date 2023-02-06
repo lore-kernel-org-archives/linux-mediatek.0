@@ -4,72 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 298B4C636D3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Feb 2023 19:42:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BD87C05027
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Feb 2023 20:21:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	References:To:From:Subject:MIME-Version:Date:Message-ID:Content-Type:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tKES81hgyd3uZmNg8dQBk10l3khfvFORuLOkdJzPJw4=; b=XKk/2xkoFOqNlImqHRPm1+Nq2l
-	uRkaeFx/yk5k+dFY/UCQjvq5nnlQ/L7iLbfWqJiltAwMlUmHSXw6HluGSoTLLrJdLqzSwWURED5PG
-	PoQLGSth/qHDjrOYkQI82tPDCgCMo2DTVjeeoyaN/MhVUFqqx1CZM2qXOz8u5/nQhV/Uj2Hb4cLhr
-	Ud3RwY7iIzJ3aektUwQBK0L58+5/rfZIsfqD3Qwl0+oR4uNiURzjBe7WUE29jVFVIE/52TlZH9gcO
-	L3O/3rhQUkPl+KG1/nz72EqzFUxHnoYagjqgGbkXWXVM8U/LOOrrmuOqY3GR7+IRirHNbljdKfEwP
-	+naospCQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Ex4e1gAMfKgJufavu50b5FPTNtgN9MMTywAYUVv/rSo=; b=dPfLfYbFRaxt5K
+	1RnrFTP/mu7unjsxHfjvO8+p4FQt98Fy0l6GzyArt3Kg2fmavtDZftsSRg8yOk0CzJJXfvm7B4qkZ
+	/dOkNym7u8RvnSK9vxKErZtEkoAK6mzb6PdW/wYoLcWYa1Oc52vjpflqIYfQKLdqxSvoCRjERk28B
+	X0eswrZpo88wd6m3vWA6RupeD4t9pQoIo8aOLnVdq+EHJ+OPA9jh/QQjuots77paWKjnfWay40Sbm
+	1ccvcIUczoKSAXVLjf13k1fjLG+p0O2UG3kqLchlnblvEdngHPEMpndObZzaVu+yVMjzfjcwW/JnB
+	O0HmgzAL3wsB3NpOaT+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pP7Ns-009jVm-Mu; Mon, 06 Feb 2023 19:42:36 +0000
-Received: from sender4-op-o16.zoho.com ([136.143.188.16])
+	id 1pP7z7-009phz-Hc; Mon, 06 Feb 2023 20:21:05 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pP7Nf-009jUV-VH; Mon, 06 Feb 2023 19:42:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1675712515; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=MYmHxZrvHBbNoRD8edWQraW9/wPJAGVdB3JIp2nIhaa+OaqgXcmdGBjBkQFemXeAaUAw63tz81I89dBWRBRFdPmFvw1HyxuCIEdqxqppiUOTHJM5tp6cH03Vy1Rt+LTVzZ1N1HAp1ZQ/AGPa6BmhJxPRFQhsXUqSXi8uvb+T8QY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1675712515; h=Content-Type:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=tKES81hgyd3uZmNg8dQBk10l3khfvFORuLOkdJzPJw4=; 
-	b=abNFaqNijcF70DAAuPPoD/r8tguVLsnyYDKNzpyXy1RfhfdQA96uul3414lrJWDElLjwKMNOq2Qb/+Kts8r7cS+2F/yuSszAtT8o+LIqZlQqTFhvpIEiQE3TKHOo9BRGWuU9N3Ea3nsezgImHmnTE4fixv0eScryU+6Kp77Olvw=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1675712515;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Content-Type:Message-ID:Date:Date:MIME-Version:Subject:Subject:From:From:To:To:Cc:Cc:References:In-Reply-To:Message-Id:Reply-To;
-	bh=tKES81hgyd3uZmNg8dQBk10l3khfvFORuLOkdJzPJw4=;
-	b=RCEzXkk2sIuxnqExl0V2PjwQSt0hl/u76xrsLS3Sq1JcIbHGURQH6XSoYzK6ITVv
-	hk64ZEQshLBghueTPcbwzeGEhwg9xqzHNRgXqAna1wji0QMFIXlZyXzeonFB8JrLPmO
-	0xu0WvQqu4/31rlvhJOWCwMgq744EMmyxaZkTDZE=
-Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1675712513787495.8395705964474; Mon, 6 Feb 2023 11:41:53 -0800 (PST)
-Content-Type: multipart/mixed; boundary="------------B2kTEFN8ZUTqa40kjsZFlmDv"
-Message-ID: <f297c2c4-6e7c-57ac-2394-f6025d309b9d@arinc9.com>
-Date: Mon, 6 Feb 2023 22:41:47 +0300
+	id 1pP7z4-009pgj-IT; Mon, 06 Feb 2023 20:21:03 +0000
+Received: by mail-wr1-x433.google.com with SMTP id o18so11595301wrj.3;
+        Mon, 06 Feb 2023 12:21:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Ex4e1gAMfKgJufavu50b5FPTNtgN9MMTywAYUVv/rSo=;
+        b=XPTSpZZrnTnEBrJw4RPKyn08rM4GwX0nBLt0S5ELlaniKrqUEXMWI1czxM8lXshVYC
+         CA8fh3a9gyig1DezP7p8WACDq29+5cWJ1FYsg+7cuS4msR4DzceIc86hNf98AsinqnhP
+         kWjPRJadddk+JOvcJgcd0YYGQDeu8QIw8RtNJF4OUZ36WhcUHWZ/mf1jw/yLXiESFcFq
+         K5kOwBwVgNLAMPwWbztGYqDrdYOGyQWq828mCP1m625n7MdqOnBwd5TPMf0BN1SwggH4
+         4ZXvr4MHB+KCVmSAN3kl+bOJ62eLkecyq4X7NfG6A7sJVzRFciXyTpxoc9bp9NjNmT/z
+         YVGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Ex4e1gAMfKgJufavu50b5FPTNtgN9MMTywAYUVv/rSo=;
+        b=MljRcO2JB2Ay7bVYDg66KTK357L1Z9WYm7j53qPaL2jZCNZ/p5HGDTaeQzUemeZZDL
+         3+N5gmjkQFLgtLRxz3b+x8pUV1VtJ6h13cXeB8q12vK+KaI9Rjm/rTIXuE6zizowgbUn
+         Ddkugtr15S7xQh8pQJ2360svcQRcw86NikdbNnhwgE/eD64ST2zS2dDc5rBaM3Rj6pno
+         VU5tmelOU2Zj5Ir6P15f2ma6wSIru8jeEBp/4ximYVhbGnJ9yo9ksUYzHIX7wjqUR3cT
+         FqT7NDv4GOJtMqKmSevnh1Dd/L7U9Pp4/D1ChDwnL/YhS4MWSLs3UxqlAL4Fbr64FYBs
+         XZNg==
+X-Gm-Message-State: AO0yUKUUWvbjaF0nTWMNMxvslCbFFbIeGfoT2PtWn8F5kbdmMqb1HveD
+	2856KOOeFZoX5e77VgPAbYU=
+X-Google-Smtp-Source: AK7set8ldoPFjqGbTtujwy62UUH+LAzHrfMrth501Gur6mUru2ZVCWISA8okhMGgHRUBkyYWSasiXQ==
+X-Received: by 2002:a5d:6a08:0:b0:2bf:de97:f3f8 with SMTP id m8-20020a5d6a08000000b002bfde97f3f8mr174292wru.28.1675714859909;
+        Mon, 06 Feb 2023 12:20:59 -0800 (PST)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id l13-20020a5d4bcd000000b002c3e9cce04csm3180724wrt.111.2023.02.06.12.20.58
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 06 Feb 2023 12:20:59 -0800 (PST)
+Message-ID: <8f04f2b5-320e-50d4-9517-6dac989f63b3@gmail.com>
+Date: Mon, 6 Feb 2023 21:20:57 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH net] net: dsa: mt7530: don't change PVC_EG_TAG when CPU
- port becomes VLAN-aware
+ Thunderbird/102.6.1
+Subject: Re: [PATCH] arm64: dts: mt7986: set Wifi Leds low-active for BPI-R3
 Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-References: <20230205140713.1609281-1-vladimir.oltean@nxp.com>
- <3649b6f9-a028-8eaf-ac89-c4d0fce412da@arinc9.com>
- <20230205203906.i3jci4pxd6mw74in@skbuf>
- <b055e42f-ff0f-d05a-d462-961694b035c1@arinc9.com>
- <20230205235053.g5cttegcdsvh7uk3@skbuf>
- <116ff532-4ebc-4422-6599-1d5872ff9eb8@arinc9.com>
- <20230206174627.mv4ljr4gtkpr7w55@skbuf>
- <5e474cb7-446c-d44a-47f6-f679ae121335@arinc9.com>
-In-Reply-To: <5e474cb7-446c-d44a-47f6-f679ae121335@arinc9.com>
-X-Zoho-Virus-Status: 1
-X-ZohoMailClient: External
+To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
+References: <20230205174833.107050-1-linux@fw-web.de>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20230205174833.107050-1-linux@fw-web.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230206_114224_122494_A6A90E74 
-X-CRM114-Status: UNSURE (   9.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230206_122102_637737_AFA617F0 
+X-CRM114-Status: GOOD (  14.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,127 +86,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, richard@routerhints.com, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, erkin.bozoglu@xeront.com, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is a multi-part message in MIME format.
---------------B2kTEFN8ZUTqa40kjsZFlmDv
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
 
-One last thing. Specific to MT7530 switch in MT7621 SoC, if port@5 is 
-the only CPU port defined on the devicetree, frames sent from DSA master 
-appears malformed on the user port. Packet capture on computer connected 
-to the user port is attached.
 
-The ARP frames on the pcapng file are received on the DSA master, I 
-captured them with tcpdump, and put it in the attachments. Then I start 
-pinging from the DSA master and the malformed frames appear on the 
-pcapng file.
+On 05/02/2023 18:48, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> Leds for Wifi are low-active, so add property to devicetree.
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 4 ++++
+>   1 file changed, 4 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+> index 33bd6febc160..2b028141f1f7 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+> @@ -446,5 +446,9 @@ &wifi {
+>   	pinctrl-names = "default", "dbdc";
+>   	pinctrl-0 = <&wf_2g_5g_pins>, <&wf_led_pins>;
+>   	pinctrl-1 = <&wf_dbdc_pins>, <&wf_led_pins>;
+> +
+> +	led {
+> +		led-active-low;
+> +	};
 
-It'd be great if you could take a look this final issue.
-
-Arınç
---------------B2kTEFN8ZUTqa40kjsZFlmDv
-Content-Type: text/plain; charset=UTF-8; name="tcpdump-ping-output.txt"
-Content-Disposition: attachment; filename="tcpdump-ping-output.txt"
-Content-Transfer-Encoding: base64
-
-IyB0Y3BkdW1wIC1pIGV0aDAKdGNwZHVtcDogdmVyYm9zZSBvdXRwdXQgc3VwcHJlc3NlZCwg
-dXNlIC12W3ZdLi4uIGZvciBmdWxsIHByb3RvY29sIGRlY29kZQpsaXN0ZW5pbmcgb24gZXRo
-MCwgbGluay10eXBlIE5VTEwgKEJTRCBsb29wYmFjayksIHNuYXBzaG90IGxlbmd0aCAyNjIx
-NDQgYnl0ZXMKMDA6MDA6MTYuNzYzNjUzIEFGIFVua25vd24gKDQyOTQ5MjYwNzUpLCBsZW5n
-dGggNTY6IAoJMHgwMDAwOiAgOWExNyBlMGQ1IDVlYTQgZWRjYyAwODI2IGMwYTggMDIwMSAw
-MDAwICAuLi4uXi4uLi4mLi4uLi4uCgkweDAwMTA6ICAwMDAwIDAwMDAgMDAwMCAwMDAwIDAw
-MDAgMDAwMCAwMDAwIDAwMDAgIC4uLi4uLi4uLi4uLi4uLi4KCTB4MDAyMDogIDEyMDYgMDIw
-YyBkMTRiIDAwMDMgM2Q0ZiAzMDMwIDMwMzAgMTAzMCAgLi4uLi5LLi49TzAwMDAuMAoJMHgw
-MDMwOiAgMzEwMCAzMDMwICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAxLjAwCjAw
-OjAwOjE3Ljc4OTI0NiBBRiBVbmtub3duICg0Mjk0OTA5NjkxKSwgbGVuZ3RoIDE4NDogCgkw
-eDAwMDA6ICA5YTA3IGUwZDUgNWVhNCBlZGNjIDJkYWYgMDAwMSAwODAwIDA2MDQgIC4uLi5e
-Li4uLS4uLi4uLi4KCTB4MDAxMDogIDAwMDEgZTBkNSA1ZWE0IDRjY2MgODAwMCAwMjAyIDAw
-MDAgMDAwMCAgLi4uLl4uTC4uLi4uLi4uLgoJMHgwMDIwOiAgMDAyMCBjMGE4IDAyMDEgMDAw
-MCAwMDAwIDAwMDAgMDAwMCAwMDAwICAuLi4uLi4uLi4uLi4uLi4uCgkweDAwMzA6ICAwMDAw
-IDAwMDAgMDAwMCAwMDAwIDlhMDcgMDAwMCAwMDAwIDAwMDAgIC4uLi4uLi4uLi4uLi4uLi4K
-CTB4MDA0MDogIDIxMDMgMDAwMCAwMDAwIDAwMDAgMDAwNiAwMDAwIDAwMDMgMDAwMCAgIS4u
-Li4uLi4uLi4uLi4uLgoJMHgwMDUwOiAgMDExOCAwMDAwIDAxMmUgMDAwMCAwMDAyIDAwMDAg
-MDAwMCAwMDAwICAuLi4uLi4uLi4uLi4uLi4uCgkweDAwNjA6ICAwMDAwIDAwMDAgMDA1ZiAw
-MDAwIDAwMDMgMDAwMCAwMDAwIDAwMDAgIC4uLi4uXy4uLi4uLi4uLi4KCTB4MDA3MDogIDAw
-NDUgMDAwMCAwMDAzIDAwMDAgMDAwOCAwMDAwIDAwMzggMDAwMCAgLkUuLi4uLi4uLi4uLjgu
-LgoJMHgwMDgwOiAgMDIwMCAwMDAwIDAxMDAgMDAwMCAwMDAzIDAwMDAgMDAwNCAwMDAwICAu
-Li4uLi4uLi4uLi4uLi4uCgkweDAwOTA6ICAwMDAzIDAwMDAgMDAwMyAwMDAwIDAxMjMgMDAw
-MCAwMDBjIDAwMDAgIC4uLi4uLi4uLiMuLi4uLi4KCTB4MDBhMDogIDAwMDMgMDAwMCAwMDAw
-IDAwMDAgMDEwYyAwMDAwIDAwMDQgMDAwMCAgLi4uLi4uLi4uLi4uLi4uLgoJMHgwMGIwOiAg
-MDAwMyAwMDAwICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAuLi4uCjAwOjAwOjE4
-LjgxMzI0MSBBRiBVbmtub3duICg0Mjk0OTI2MDc1KSwgbGVuZ3RoIDU2OiAKCTB4MDAwMDog
-IDlhMTcgZTBkNSA1ZWE0IGVkY2MgMjlhNiBjMGE4IDAyMDEgMDAwMCAgLi4uLl4uLi4pLi4u
-Li4uLgoJMHgwMDEwOiAgMDAwMCAwMDAwIDAwMDAgMDAwMCAwMDAwIDAwMDAgMDAwMCAwMDAw
-ICAuLi4uLi4uLi4uLi4uLi4uCgkweDAwMjA6ICA5YTA3IDAyMGMgZTI1MSAwMDAzIDM5NGMg
-MzAzNSAyMDMxIDE0MzAgIC4uLi4uUS4uOUwwNS4xLjAKCTB4MDAzMDogIDNhOGUgMjAzMSAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgOi4uMQowMDowMDoxOS44MzcyMjMgQUYg
-VW5rbm93biAoNDI5NDkyNjA3OSksIGxlbmd0aCA3MDogCgkweDAwMDA6ICA5YTA3IGUwZDUg
-NWVhNCBlZGNjIDI5YWYgMDAwMSAwODAwIDA2MDQgIC4uLi5eLi4uKS4uLi4uLi4KCTB4MDAx
-MDogIDAwMDEgZTBkNSA1ZWE0IDRjY2MgODAwMCAwMjAyIDAwMDAgMDAwMCAgLi4uLl4uTC4u
-Li4uLi4uLgoJMHgwMDIwOiAgMDAwMCBjMGE4IDAyMDEgMDAwMCAwMDAwIDAwMDAgMDAwMCAw
-MDAwICAuLi4uLi4uLi4uLi4uLi4uCgkweDAwMzA6ICAwMDAwIDAwMDAgMDAwMCAwMDAwIDlh
-MDcgMDIwYyBhMzhhIDAwMDMgIC4uLi4uLi4uLi4uLi4uLi4KCTB4MDA0MDogIDIxMDMgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIS4KMDA6MDA6MjAuODYxMjE5IEFG
-IFVua25vd24gKDQyOTQ5MjYwNzkpLCBsZW5ndGggNTY6IAoJMHgwMDAwOiAgOWFkNyBlMGQ1
-IDVlYTQgZWRjYyAyZGFmIGMwYTggMDIwMSAwMDAwICAuLi4uXi4uLi0uLi4uLi4uCgkweDAw
-MTA6ICAwMDAwIDAwMDAgMDAwMCAwMDAwIDAwMDAgMDAwMCAwMDAwIDAwMDAgIC4uLi4uLi4u
-Li4uLi4uLi4KCTB4MDAyMDogIDlhMDcgMDA0YyBhYTIwIDAwMDMgMzk0OCAwMDAwIDAwMDAg
-MDAwMCAgLi4uTC4uLi45SC4uLi4uLgoJMHgwMDMwOiAgMjEwMCAwMDAwICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAhLi4uCjAwOjAwOjIxLjg4NTIxNyBBRiBVbmtub3duICg0
-Mjk0OTA5NjkxKSwgbGVuZ3RoIDU2OiAKCTB4MDAwMDogIDlhMDcgYzBhOCAwMjAxIDAwMDAg
-MjEyMSAwMDAwIDAwMDAgMDAwMCAgLi4uLi4uLi4hIS4uLi4uLgoJMHgwMDEwOiAgMDAwMCAw
-MDAwIDAwMDAgMDAwMCA5YTA3IDAyMGMgMjVhOSAwMDAzICAuLi4uLi4uLi4uLi4lLi4uCgkw
-eDAwMjA6ICAyMTA0IDAwMDAgMDE3MCA0ODMyIDAyMDAgMDAwMCAwMDAzIDAwMDAgICEuLi4u
-cEgyLi4uLi4uLi4KCTB4MDAzMDogIDIxMDQgMDAwMCAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIS4uLgpeQwo2IHBhY2tldHMgY2FwdHVyZWQKNiBwYWNrZXRzIHJlY2VpdmVk
-IGJ5IGZpbHRlcgowIHBhY2tldHMgZHJvcHBlZCBieSBrZXJuZWwKIyBwaW5nIDE5Mi4xNjgu
-Mi4yClBJTkcgMTkyLjE2OC4yLjIgKDE5Mi4xNjguMi4yKTogNTYgZGF0YSBieXRlcwpeQwot
-LS0gMTkyLjE2OC4yLjIgcGluZyBzdGF0aXN0aWNzIC0tLQo3IHBhY2tldHMgdHJhbnNtaXR0
-ZWQsIDAgcGFja2V0cyByZWNlaXZlZCwgMTAwJSBwYWNrZXQgbG9zcwojIAo=
---------------B2kTEFN8ZUTqa40kjsZFlmDv
-Content-Type: application/x-pcapng; name="new-mt7530-port5-malformed.pcapng"
-Content-Disposition: attachment; filename="new-mt7530-port5-malformed.pcapng"
-Content-Transfer-Encoding: base64
-
-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
-AAAAAAAAAABsAAAA
-
---------------B2kTEFN8ZUTqa40kjsZFlmDv--
+The binding is missing this property also the driver implements it. Could you 
+please update the bindind description properly?
+Thanks
+Matthias
 
