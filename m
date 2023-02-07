@@ -4,58 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A1EAC636D6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 14:44:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35A47C636CD
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 15:17:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RdXqRodsT0KMBcr1Y+angUt5UdKnEnGifQwH1u2q9B0=; b=xljnHEUYPPwXzb+oXSYcp46RN1
-	5KbJeNMFD2vC5nU2xPJu1I1LzuUWpelgCAI8zy1tlIh1HfBZwNL8g4A+VNl4rwqpSacwxOpW9uTVC
-	CADa5ohAclh25O9NRfSyiXWD7NSIpnTanhlPqGAbeIAduCDVj8ZNp71iJlMxcXU52K9TiLwJwYkja
-	iFNxreQY6MlfrZxdZQZXdxGS+XcVXqLVjYJZl+cyu+gks6WW1KJH0eUqduJMybs+SItb16BGbm5OC
-	FMqJUBrrV0N3a1M38xV1OT27c+eEEecqn+D63ya0B9q86v5hBEwulxM+YiCAC2GuDrNFlmd2ynjWL
-	hXU2p+Zw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+lWOCdyhP4IWMLTRIybiMVm9pDWXI9jDC+/2VxVMMzQ=; b=QiN7ByOUNBATrP
+	a6+khC5l1cLLZcqCnfS0LboJ0m4a38Ka1bj4QNm2oxasiIrFhBBYof0+kWK84a/AURXEnUz6CzJM3
+	Yr4t7haqWOUFIGsELHCTyDuIcmjehdhBEQtYxBOJPEPVg46nlkOIZSeNZY7U9NF1vUjPI7NgvfJ01
+	dsgoRtu4nNXOkLWtlEZW3jzdg1JtbXzKr9j6IeUtNg57f+chAXoccKVIgRSr5xM2GzrfGFkbFHZ9y
+	ms4t7lftXfVkGr/G8qaEp19DTH3aO9whMFxCAiH4GTOqdcayOHiDSAqHx/heNXA8dbnSidLZ7bFOw
+	VArQP5WSbz3h1f602wKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPPCT-00CYSd-In; Tue, 07 Feb 2023 14:44:01 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pPPip-00CgJg-8Y; Tue, 07 Feb 2023 15:17:27 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPPCJ-00CYPc-6H; Tue, 07 Feb 2023 14:43:52 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pPPBv-0002K9-2P;
-	Tue, 07 Feb 2023 15:43:27 +0100
-Date: Tue, 7 Feb 2023 14:43:24 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
-	wenst@chromium.org, johnson.wang@mediatek.com,
-	miles.chen@mediatek.com, chun-jie.chen@mediatek.com,
-	fparent@baylibre.com, msp@baylibre.com, nfraprado@collabora.com,
-	rex-bc.chen@mediatek.com, zhaojh329@gmail.com,
-	sam.shih@mediatek.com, edward-jw.yang@mediatek.com,
-	yangyingliang@huawei.com, granquet@baylibre.com,
-	pablo.sun@mediatek.com, sean.wang@mediatek.com,
-	chen.zhong@mediatek.com, linux-kernel@vger.kernel.org,
-	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v1 29/45] clk: mediatek: mt7986-apmixed: Use PLL_AO flag
- to set critical clock
-Message-ID: <Y+JjjLLYoOgSlG55@makrotopia.org>
-References: <20230206152928.918562-1-angelogioacchino.delregno@collabora.com>
- <20230206152928.918562-30-angelogioacchino.delregno@collabora.com>
+	id 1pPPic-00CgE5-N9; Tue, 07 Feb 2023 15:17:16 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0854F6602077;
+	Tue,  7 Feb 2023 15:17:04 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1675783025;
+	bh=TEDT9pnGFqcTJVk9HH31+nHZjvOvS2XRc3rMOWGCeTs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=P7g1fXAmAgcVOMTYHowBNYIBsKGNnW6sSVRvf903qzu2Bfvlwt1ZMZRXpzC1PJOHF
+	 egWwoe/kzISIu4u9RpLEKEOQLn5173w4sRElcibvzq+JOcYeCUOgMYWRE5/wtwDY/w
+	 4mTonBQQXY3dkUZpffuySaClGfUlg01Ki3WMIqehYCVrBY6+4CaNt9jhF3/0WmmvwV
+	 w6XIGcKI6xErOUgwoseeD1y1lanoqGmvVAuHh/YZiDcxWRxn9YzgUPW3a3Dm8yl41T
+	 tXJQsfiJNH9naWSz7MJlyTktCYYf+1s0gc1FjyVU5JSTlib90IVh6KvmyEpmVa+TJM
+	 l1fPDXu2rnuNQ==
+Message-ID: <3a43ce55-ff6a-0cd2-b020-d5fefe8aca0a@collabora.com>
+Date: Tue, 7 Feb 2023 16:17:02 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230206152928.918562-30-angelogioacchino.delregno@collabora.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH] arm64: dts: mt7986: set Wifi Leds low-active for BPI-R3
+Content-Language: en-US
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+ Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
+References: <20230205174833.107050-1-linux@fw-web.de>
+ <8f04f2b5-320e-50d4-9517-6dac989f63b3@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <8f04f2b5-320e-50d4-9517-6dac989f63b3@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230207_064351_249291_6B207BFE 
-X-CRM114-Status: GOOD (  18.28  )
+X-CRM114-CacheID: sfid-20230207_071714_901014_C17130FB 
+X-CRM114-Status: GOOD (  14.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,51 +70,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Mon, Feb 06, 2023 at 04:29:12PM +0100, AngeloGioacchino Del Regno wrote:
-> Instead of calling clk_prepare_enable() at probe time, add the PLL_AO
-> flag to CLK_APMIXED_ARMPLL clock: this will set CLK_IS_CRITICAL.
-
-I've been preparing a similar change, but also splitting-off the
-apmixed part from dt headers into a file of its own, so that one of now
-identical drivers for MT7986 and MT7981 can be removed in favor of a
-shared driver.
-Should I propose this on top of this series or can you make this change?
-
-
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/clk/mediatek/clk-mt7986-apmixed.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/drivers/clk/mediatek/clk-mt7986-apmixed.c b/drivers/clk/mediatek/clk-mt7986-apmixed.c
-> index 62080ee4dbe3..227ca572056e 100644
-> --- a/drivers/clk/mediatek/clk-mt7986-apmixed.c
-> +++ b/drivers/clk/mediatek/clk-mt7986-apmixed.c
-> @@ -42,7 +42,7 @@
->  		 "clkxtal")
->  
->  static const struct mtk_pll_data plls[] = {
-> -	PLL(CLK_APMIXED_ARMPLL, "armpll", 0x0200, 0x020C, 0x0, 0, 32,
-> +	PLL(CLK_APMIXED_ARMPLL, "armpll", 0x0200, 0x020C, 0x0, PLL_AO, 32,
->  	    0x0200, 4, 0, 0x0204, 0),
->  	PLL(CLK_APMIXED_NET2PLL, "net2pll", 0x0210, 0x021C, 0x0, 0, 32,
->  	    0x0210, 4, 0, 0x0214, 0),
-> @@ -77,8 +77,6 @@ static int clk_mt7986_apmixed_probe(struct platform_device *pdev)
->  
->  	mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
->  
-> -	clk_prepare_enable(clk_data->hws[CLK_APMIXED_ARMPLL]->clk);
-> -
->  	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
->  	if (r) {
->  		pr_err("%s(): could not register clock provider: %d\n",
-> -- 
-> 2.39.1
+Il 06/02/23 21:20, Matthias Brugger ha scritto:
 > 
 > 
+> On 05/02/2023 18:48, Frank Wunderlich wrote:
+>> From: Frank Wunderlich <frank-w@public-files.de>
+>>
+>> Leds for Wifi are low-active, so add property to devicetree.
+>>
+>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+>> ---
+>>   arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 4 ++++
+>>   1 file changed, 4 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts 
+>> b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+>> index 33bd6febc160..2b028141f1f7 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+>> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+>> @@ -446,5 +446,9 @@ &wifi {
+>>       pinctrl-names = "default", "dbdc";
+>>       pinctrl-0 = <&wf_2g_5g_pins>, <&wf_led_pins>;
+>>       pinctrl-1 = <&wf_dbdc_pins>, <&wf_led_pins>;
+>> +
+>> +    led {
+>> +        led-active-low;
+>> +    };
+> 
+> The binding is missing this property also the driver implements it. Could you 
+> please update the bindind description properly?
+> Thanks
+> Matthias
+
+
+After and only after [1] is picked,
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+[1]: 
+https://patchwork.kernel.org/project/linux-mediatek/patch/20230207133504.21826-1-linux@fw-web.de/
 
