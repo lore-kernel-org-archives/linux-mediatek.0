@@ -4,74 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7A6AC636CD
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 04:29:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E033C636CD
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 06:00:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nF9vH3eaAbIKV4DBI82H+S0pnnuGeRGAzsQCfTN3QS4=; b=zWavEuj92AnlrnA8hYnyhsNO5Y
-	0ZOIrLF0xZeoEA5AkXDDO78op5KCtCO5T69bb+qrzga6Xsc8cpym0K9YoVP6e0qBbqlWQdDX9YSbp
-	0ENmCnbCKClTCeG41/fkff/nK8ppr0rngaMAlBQdp+j/0NnCat4QiQST7hy9+AXzectDVKcUXNnUm
-	fBWyfzvAMCVu7JLQQeFXlbOUzZbgxAtrLWF8jxA8wx1SVCnjoGAFWT+T/sGDokcVvI8aK3T/IAdFw
-	mxhRzOtNCgpXCWzE8ht93bshCx1M51jzuABj6iMIFffcE/r5HrpeDKTV3TTZBBGg0lVoFPbkUzSIA
-	ik+GE+eg==;
+	bh=zYCBrgiptcIccQaoR1yFr00IgFPMzrEIhu4IjEnhkgg=; b=BgtYtyIyaObdlU6Nbvo/uD4B7f
+	STGCEY5nKKNUd0F80fU+oNRtLVLooEwuBEPP2FBBmCgWJ1mg6jUeKbrqeEh71xgynIKxiB5krLYGN
+	x5aNehcG3AUS4zrCqwcv0rLkm4XF0v4jHSFSnAFrmL6N2bST2BzkPisYZs7Ogq/Iyeik0r2a5M9LX
+	5YZnVgS5Sm2NCGdl3GkcuodYzah1vrSh+rtnTvsTZdvy44/kvNAu9AGBHwhvegVHxOj9/7FQDQ0PB
+	ml5jIzD7E8JA+8u7fj8hi6voia1HkD4kBPJVdC5zCGODcYgamBsO61FFb5X/0x+/hqs9Cv2g0zrBC
+	+pqP+CKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPFc1-00Akhi-OI; Tue, 07 Feb 2023 04:29:45 +0000
-Received: from mail-vs1-xe34.google.com ([2607:f8b0:4864:20::e34])
+	id 1pPH1H-00AuJ3-Vg; Tue, 07 Feb 2023 05:59:55 +0000
+Received: from mail-vs1-xe33.google.com ([2607:f8b0:4864:20::e33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPFbr-00AkfP-UJ
-	for linux-mediatek@lists.infradead.org; Tue, 07 Feb 2023 04:29:37 +0000
-Received: by mail-vs1-xe34.google.com with SMTP id k4so15015864vsc.4
-        for <linux-mediatek@lists.infradead.org>; Mon, 06 Feb 2023 20:29:33 -0800 (PST)
+	id 1pPH1E-00AuHb-46
+	for linux-mediatek@lists.infradead.org; Tue, 07 Feb 2023 05:59:53 +0000
+Received: by mail-vs1-xe33.google.com with SMTP id d66so15114406vsd.9
+        for <linux-mediatek@lists.infradead.org>; Mon, 06 Feb 2023 21:59:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=nF9vH3eaAbIKV4DBI82H+S0pnnuGeRGAzsQCfTN3QS4=;
-        b=bJ47yYjUQmEPTekZ8RiGasn8rtdrty3yO15BKJASD1NpFZ7vgQMG9gmpBS5KhcXbLF
-         SDpj664sWXFR+t65gRALB8vDPBQwKaawXD2r1wmp8FA+JA8lsHRYjmtqigtLkEdYTWlz
-         ADyLL6YzWSEZIW2w2QsH9RHN9OQlO0q3dVLUY=
+        bh=zYCBrgiptcIccQaoR1yFr00IgFPMzrEIhu4IjEnhkgg=;
+        b=LlHXujmHCp9zs7IKT97LWrboG47EwQubQ7sfNVf5qAHR7BJ6WLHnXHsdYtwz5X0L7g
+         JKjtaDMFiTLvm8F3kXA94FuvEwMrHWfDOvPBUchFS9xIqdKB3B9J2ioNQmzUkTsGCk6w
+         UX9ughR6BhREXrhALLqD84j/T4ipl5ae+JCng=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=nF9vH3eaAbIKV4DBI82H+S0pnnuGeRGAzsQCfTN3QS4=;
-        b=v/5Xyh6bz4qhtycpeQoKosOxqSFZW8wtCTKWSMqjYPEH5WGc2srfTCxCwcYmoG5Rgz
-         renNXwXHFZ/Q+dR616kuPk7rEpGB8yxUgG9eLSFqR44BBfYUzUApxwX+Y2EfGxBC+kki
-         pbAsxvd0o+myFWWlDfitTU7yqv2ZgWlPd3oXY1gxs67igPYV3eQBrJjcn8YOOYOff0k2
-         zYwKJix9cEUeABe0CxYEJ81weIXsyqJYHnuhOKSD3xQMxI8/0MV7PW7tkmPbw8unSaF7
-         1DncNok5CTh6t35/VusInS5GyOrFReQql23FbzNaMY0DNflk+iEdn7q53d7Xs1lQHhLf
-         rs9Q==
-X-Gm-Message-State: AO0yUKWW2CNQQFghMxEfWuFL+iHIQ0GxVtf36puNAqiSQMLmk5mZvtxY
-	q91bHvYXPBqxYDsQaWR4Z6y3iISk60oz6W23GwHliA==
-X-Google-Smtp-Source: AK7set8YvobBI3oYuPbBjpEvQTcTwp7H9m+SkAWZ7KEqJ0FihXD8UHvdEcFi4s9T8+P2c7Tlv4z0bjXKUX1R2uRlp2U=
-X-Received: by 2002:a67:d206:0:b0:3ed:2cd6:deed with SMTP id
- y6-20020a67d206000000b003ed2cd6deedmr487539vsi.65.1675744172765; Mon, 06 Feb
- 2023 20:29:32 -0800 (PST)
+        bh=zYCBrgiptcIccQaoR1yFr00IgFPMzrEIhu4IjEnhkgg=;
+        b=vSAH+rxAUqaW767Avqel21cGbCj8egpg05YwPK7MMYrjT30duZw7dxRN3+iOCt2mKV
+         TlU9W77ffuoGjELNQIl/Cq4PP5Nu2rMCNGv9hUe840tpxe6LBw0un932RreiYIGnhuYj
+         f0qTB6OPTUiI58pKAB0C4Ij+o+3yluI/LHTDjFuVyNwsmnchs9fmDpRWE90fRGkqqQzO
+         UYlUS4e/QXkJYunIfembCJbmD0YeTirWpRbU3KahJQUAdMWo4bIvVTZ8wOq4isHfvZFQ
+         eIG8VDztltogYiNpxzrB5FriYXQbaHxbZYNohSbzW/gL7niRBXf6xIrAb53g9tu5pOEj
+         6pMw==
+X-Gm-Message-State: AO0yUKVJ28CPbllp2FmdWlb8uWqIwiLL7OGSUsP4KrUH0GbOQGrndv9a
+	MMXQfEo45T3LkEJ++vzFRzganFT7Ya7h/1thKwSMYg==
+X-Google-Smtp-Source: AK7set/0KGVG7XttQqf4/FRIWSRB4YO2NnGxWgc+i+WRT7rd5XTR77t3wZBV9Di5qnEkjLhLnkylNIoCRLfCU28oxWw=
+X-Received: by 2002:a67:1904:0:b0:3e8:d5a8:3fbe with SMTP id
+ 4-20020a671904000000b003e8d5a83fbemr441325vsz.9.1675749590556; Mon, 06 Feb
+ 2023 21:59:50 -0800 (PST)
 MIME-Version: 1.0
-References: <20230207014800.7619-1-moudy.ho@mediatek.com> <20230207014800.7619-2-moudy.ho@mediatek.com>
-In-Reply-To: <20230207014800.7619-2-moudy.ho@mediatek.com>
+References: <20230206152928.918562-1-angelogioacchino.delregno@collabora.com> <20230206152928.918562-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230206152928.918562-3-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 7 Feb 2023 12:29:21 +0800
-Message-ID: <CAGXv+5Eo4es6XF6m9LQDhHdrFs=18_S-VGGvn4wQF1KWmzGcEg@mail.gmail.com>
-Subject: Re: [PATCH v7 1/1] clk: mediatek: remove MT8195 vppsys/0/1 simple_probe
-To: Moudy Ho <moudy.ho@mediatek.com>, Stephen Boyd <sboyd@kernel.org>
-Cc: Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-clk@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com
+Date: Tue, 7 Feb 2023 13:59:39 +0800
+Message-ID: <CAGXv+5F3QqtjJ9n+OE0p+xT78Kau_KQ=dsU4=K3AEzCv_AEv7g@mail.gmail.com>
+Subject: Re: [PATCH v1 02/45] clk: mediatek: clk-mtk: Introduce clk_mtk_pdev_{probe,remove}()
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
+	johnson.wang@mediatek.com, miles.chen@mediatek.com, 
+	chun-jie.chen@mediatek.com, daniel@makrotopia.org, fparent@baylibre.com, 
+	msp@baylibre.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com, 
+	zhaojh329@gmail.com, sam.shih@mediatek.com, edward-jw.yang@mediatek.com, 
+	yangyingliang@huawei.com, granquet@baylibre.com, pablo.sun@mediatek.com, 
+	sean.wang@mediatek.com, chen.zhong@mediatek.com, linux-kernel@vger.kernel.org, 
+	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230206_202936_011828_5CB72553 
-X-CRM114-Status: UNSURE (   9.11  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230206_215952_199424_FBB9B7F7 
+X-CRM114-Status: GOOD (  11.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,21 +88,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 7, 2023 at 9:48 AM Moudy Ho <moudy.ho@mediatek.com> wrote:
+On Mon, Feb 6, 2023 at 11:29 PM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
 >
-> MT8195 VPPSYS0/1 will be probed by the compatible name in
-> the mtk-mmsys driver and then probe its own clock driver as
-> a platform driver.
+> Introduce functions clk_mtk_pdev_probe() and clk_mtk_pdev_remove():
+> these will be useful to commonize the probe and remove handlers for
+> multimedia (clk-mtxxxx-mm) drivers as these are registered by the
+> mtk-mmsys driver instead of having their own devicetree compatible.
 >
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> In order to do this, the main logic of clk_mtk_simple{probe,remove}()
+> was moved to new static __clk_mtk_simple_{probe,remove}() functions
+> that take as parameter a pointer to struct device_node because when
+> registering the clocks from mtk-mmsys we want to pass a pointer to
+> the clock driver's parent (which is, obviously, mtk-mmsys) struct
+> device_node instead.
+>
+> As for the clock driver's platform data: for the devicetree case, we
+> keep using the standard match_data mechanism, else we retrieve it
+> from an id_table.
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
-
-Stephen, could you pick this up for v6.3?  Otherwise we'll end up with
-two drivers targeting the same compatible strings.
-
-Thanks
 
