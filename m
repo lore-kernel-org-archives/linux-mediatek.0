@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD479C636CC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 06:16:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3657C636CD
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 06:17:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YTjQiyosWxthU58WlgDXThqF+F9aTUK0CMslx80hUwY=; b=OzLIq9U5xURiOFMMzApBIYlkTr
-	7Zgotrf9cRIlNpumcnzL98LdI3rQuNvIgD+2I5NGfg/oztafIefBAoPHTTCkT59rBFppcoPrhdqNJ
-	zJDI0Vw+N+amjN80UQoHrdHCD876VDk+SJLP078QsjZepBmfR0y1ay6TPCjM2CNMMx5WXqzdfNrlt
-	raciJ5uyROVbsJphXCQJNuzMm2pqFXObGa2JXMD1J/yoII2NWFictpNybrPg3RFTCAoWamZ35XT4w
-	hcSPUHjmuXLHoPpYYKmPfJ1FmbRBt4d3mDoGdckKOnvvQ+CbyaqExugk5YcWoNjxqGCe3eQCe7Mvm
-	H+DTvpBA==;
+	bh=BL5RDYzyjIW0mBHFqtPQ+SR8w2nC8B8+flvI5fBxZgw=; b=Z0gUnHEeFsxDwP9VzDbdNK4Wed
+	j7WkBuaQdZhtYMYO5qFeSwIQfNUrN4qPf7Azk6JGo3aTI3GHXLi2baypY+xbzTiyhpj5jfm3UId7X
+	FRULScDE4afCvAOx3WvY5blQYtijfLa8KuVguIp/sN7LLBBGBg5Ytg+lVjj0phpg2lYMwXmQAiQOq
+	sphFmq9tOM8dqgNUazvt6VmcFuol4eOCWa1RLv4ZMgTDordjPT03MYXNQfWIyv1RvjZ4fM06d8APt
+	GvaNSiG/WLmU9ZfPr1AUlZSaJuca18OX3KBuWT0ssMa3eqRhre/xnfyBTVeQjq/1Nvceu3P/8eo8K
+	E2s89WWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPHH4-00AxLR-9n; Tue, 07 Feb 2023 06:16:14 +0000
-Received: from mail-vk1-xa33.google.com ([2607:f8b0:4864:20::a33])
+	id 1pPHHq-00Axeb-RH; Tue, 07 Feb 2023 06:17:02 +0000
+Received: from mail-vs1-xe31.google.com ([2607:f8b0:4864:20::e31])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPHGo-00AxGL-F7
-	for linux-mediatek@lists.infradead.org; Tue, 07 Feb 2023 06:16:00 +0000
-Received: by mail-vk1-xa33.google.com with SMTP id l20so7313082vkm.11
-        for <linux-mediatek@lists.infradead.org>; Mon, 06 Feb 2023 22:15:57 -0800 (PST)
+	id 1pPHHo-00AxcI-AT
+	for linux-mediatek@lists.infradead.org; Tue, 07 Feb 2023 06:17:01 +0000
+Received: by mail-vs1-xe31.google.com with SMTP id k4so15189798vsc.4
+        for <linux-mediatek@lists.infradead.org>; Mon, 06 Feb 2023 22:16:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=YTjQiyosWxthU58WlgDXThqF+F9aTUK0CMslx80hUwY=;
-        b=Xc7lweU8aAZbcFpCkRSu5sKNXsTPygGVdzDK1iKRJYctzI2Ct4LJTUmZS/GxSapZS/
-         CWO303+bC3bUtepKEUhsg8ZgfX9ECndrkE8TmfW7yQOP4JeED3xsmX6qGZqHII2/e2fU
-         7J0ZvkCUGrErw1hvGOLplhM1MxOwr/Qjc+7hc=
+        bh=BL5RDYzyjIW0mBHFqtPQ+SR8w2nC8B8+flvI5fBxZgw=;
+        b=IuIPBVpgZ08hpK4xFIoKrvp98G7sGXKJZSPnLTiDktVAWL9NFTimGFlEOvkINklzzR
+         telGKhbhhmE+xk6vt37eV3miAfiOsAR+oVKDxq9wj992ZlhH444eFPLUIkkNrMwJJGaO
+         DYdfR3VLzz74L2mKpy/3al2NNCiHwl02TdcHI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=YTjQiyosWxthU58WlgDXThqF+F9aTUK0CMslx80hUwY=;
-        b=PLtBqvTmwvRZHBxjviHFFaCsfxLdLSqEWv0LiL8Zl/G2vAVR6GweHAfUKEkFb5fo6z
-         rMsmQziIb2+m49AdiOdBaR+WjYfwAKe0uKlRWC2NZSEpWPrZjQ3STj+bM96/swM6QER6
-         Q+lZnHaOT4r5eWtWLAEMIkJysuY6ZmpH/ftyxZnhqCjl4MkKy76BKyhjaad/aiSnwl3E
-         Mv/a+Thhe4GcZj8A+hoU+/5ccUjQdU1SnwSyYf0b7hiAa02F7DQWPTF4DvmGMoz7sjMz
-         M1TOzcT+Xfoyy5liP19bncyDPOTQgcF9gvK3692AixrFAy98D2gy23+dhZB3EoT8ldvF
-         jnYg==
-X-Gm-Message-State: AO0yUKXQCYfglYi7C3h7huCqXIVEeLfpq81pHwAl4l9fqP+TSBchFWcM
-	Z10xyj0OMloST0DdbL+7oGjFSqrc6CeaKEWHRgPswg==
-X-Google-Smtp-Source: AK7set8mjFUJySYXRimSiwIbHAy8wpkjAOcLOC+zyHxCXibLAi/1kue7IPAWcZTu+ytamq1HwE3isG1vaH6/UhR2pZk=
-X-Received: by 2002:a1f:a757:0:b0:3ea:94ea:110b with SMTP id
- q84-20020a1fa757000000b003ea94ea110bmr246643vke.22.1675750556666; Mon, 06 Feb
- 2023 22:15:56 -0800 (PST)
+        bh=BL5RDYzyjIW0mBHFqtPQ+SR8w2nC8B8+flvI5fBxZgw=;
+        b=WdpFFQqwaAf4SHpnfhmIPBaHY7GIEf8GWR6pfKfwq6Yh57MSjmO1JsdRfOovvilZkm
+         ukL6Az7pd+/ADDWQhPrh6mtVArRfDXIZKHJm86TCJatRR2q4g5S4oIqDUk5+2k+jclMY
+         4o6ph2F7Bsf7pQyTcz0PY2gi9wxVvBby9JipQtvJiYtc4KsprPVs+cthSFQtl6bF8gkz
+         2P811kvXQQlfKDM615OTPK007Em13YoTYG3BMiQCLd6Zgcg3nFNCme5IGo38wKdWkK88
+         oSY0yvdpnnsvAO1kCyJcGmgDt+j1VuZyKBr8syv9fXDSqOAxWcjqA27hMWN21h2rr+pi
+         gDpQ==
+X-Gm-Message-State: AO0yUKWuXmzwDIHOdycET6p8PB0KRz6fxaMNjF+ibqAIeOOdWIA5rZBA
+	RWBJOLQlt1lTAJX8HMZhxCydVUwILq6SIYLDECCNSZJz+YJWN569
+X-Google-Smtp-Source: AK7set9i8K1ex1GvgvpZt6KGbhoq9sUGJc6ymsZdnVtxGQNh9dKmWUVTJu+n4uH1wjcaZNmg0kj24+MMLo54M70VIbY=
+X-Received: by 2002:a05:6102:3d18:b0:3f7:93c4:9e56 with SMTP id
+ i24-20020a0561023d1800b003f793c49e56mr549289vsv.85.1675750617274; Mon, 06 Feb
+ 2023 22:16:57 -0800 (PST)
 MIME-Version: 1.0
-References: <20230206152928.918562-1-angelogioacchino.delregno@collabora.com> <20230206152928.918562-6-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230206152928.918562-6-angelogioacchino.delregno@collabora.com>
+References: <20230206152928.918562-1-angelogioacchino.delregno@collabora.com> <20230206152928.918562-8-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230206152928.918562-8-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 7 Feb 2023 14:15:45 +0800
-Message-ID: <CAGXv+5Gg60-4B29V9cYUw7b1OVcZvU+w9qdiiBbt10LJsAJiCA@mail.gmail.com>
-Subject: Re: [PATCH v1 05/45] clk: mediatek: mt2712: Migrate topckgen/mcucfg
- to mtk_clk_simple_probe()
+Date: Tue, 7 Feb 2023 14:16:46 +0800
+Message-ID: <CAGXv+5HVNSFyBncAepAhghHsjRdY=XyzsRY0Htm1KcRE7U9dfg@mail.gmail.com>
+Subject: Re: [PATCH v1 07/45] clk: mediatek: mt2712: Add error handling to clk_mt2712_apmixed_probe()
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
 	johnson.wang@mediatek.com, miles.chen@mediatek.com, 
@@ -73,8 +72,8 @@ Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
 	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230206_221558_549780_91E90552 
-X-CRM114-Status: GOOD (  20.18  )
+X-CRM114-CacheID: sfid-20230206_221700_383160_F9F12D0A 
+X-CRM114-Status: GOOD (  16.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,152 +91,55 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Mon, Feb 6, 2023 at 11:29 PM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> Now that the common mtk_clk_simple_{probe,remove}() functions can deal
-> with divider clocks it is possible to migrate more clock drivers to it:
-> in this case, it's about topckgen.
-> While at it, also perform a fast migration for mcucfg.
+> This function was completely missing error handling: add it.
 >
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Fixes tag?
+
+Code looks OK. So once the tag is added,
 
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  drivers/clk/mediatek/clk-mt2712.c | 127 +++++-------------------------
->  1 file changed, 21 insertions(+), 106 deletions(-)
+>  drivers/clk/mediatek/clk-mt2712.c | 18 ++++++++++++++----
+>  1 file changed, 14 insertions(+), 4 deletions(-)
 >
 > diff --git a/drivers/clk/mediatek/clk-mt2712.c b/drivers/clk/mediatek/clk-mt2712.c
-> index 94f8fc2a4f7b..db20c46e088b 100644
+> index ce28ee47f5cf..8aa361f0fa13 100644
 > --- a/drivers/clk/mediatek/clk-mt2712.c
 > +++ b/drivers/clk/mediatek/clk-mt2712.c
-> @@ -36,14 +36,11 @@ static const struct mtk_fixed_clk top_fixed_clks[] = {
->         FIXED_CLK(CLK_TOP_CVBSPLL, "cvbspll", NULL, 108000000),
->  };
+> @@ -1091,15 +1091,25 @@ static int clk_mt2712_apmixed_probe(struct platform_device *pdev)
+>         struct device_node *node = pdev->dev.of_node;
 >
-> -static const struct mtk_fixed_factor top_early_divs[] = {
-> +static const struct mtk_fixed_factor top_divs[] = {
->         FACTOR(CLK_TOP_SYS_26M, "sys_26m", "clk26m", 1,
->                 1),
->         FACTOR(CLK_TOP_CLK26M_D2, "clk26m_d2", "sys_26m", 1,
->                 2),
-> -};
-> -
-> -static const struct mtk_fixed_factor top_divs[] = {
->         FACTOR(CLK_TOP_ARMCA35PLL, "armca35pll_ck", "armca35pll", 1,
->                 1),
->         FACTOR(CLK_TOP_ARMCA35PLL_600M, "armca35pll_600m", "armca35pll_ck", 1,
-> @@ -1295,114 +1292,30 @@ static int clk_mt2712_apmixed_probe(struct platform_device *pdev)
+>         clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
+> +       if (!clk_data)
+> +               return -ENOMEM;
+>
+> -       mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
+> +       r = mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
+> +       if (r)
+> +               goto free_clk_data;
+>
+>         r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+> +       if (r) {
+> +               dev_err(&pdev->dev, "Cannot register clock provider: %d\n", r);
+> +               goto unregister_plls;
+> +       }
+>
+> -       if (r != 0)
+> -               pr_err("%s(): could not register clock provider: %d\n",
+> -                       __func__, r);
+> +       return 0;
+>
+> +unregister_plls:
+> +       mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
+> +free_clk_data:
+> +       mtk_free_clk_data(clk_data);
 >         return r;
 >  }
 >
-> -static struct clk_hw_onecell_data *top_clk_data;
-> -
-> -static void clk_mt2712_top_init_early(struct device_node *node)
-> -{
-> -       int r, i;
-> -
-> -       if (!top_clk_data) {
-> -               top_clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
-> -
-> -               for (i = 0; i < CLK_TOP_NR_CLK; i++)
-> -                       top_clk_data->hws[i] = ERR_PTR(-EPROBE_DEFER);
-> -       }
-> -
-> -       mtk_clk_register_factors(top_early_divs, ARRAY_SIZE(top_early_divs),
-> -                       top_clk_data);
-> -
-> -       r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, top_clk_data);
-> -       if (r)
-> -               pr_err("%s(): could not register clock provider: %d\n",
-> -                       __func__, r);
-> -}
-> -
-> -CLK_OF_DECLARE_DRIVER(mt2712_topckgen, "mediatek,mt2712-topckgen",
-> -                       clk_mt2712_top_init_early);
-> -
-> -static int clk_mt2712_top_probe(struct platform_device *pdev)
-> -{
-> -       int r, i;
-> -       struct device_node *node = pdev->dev.of_node;
-> -       void __iomem *base;
-> -
-> -       base = devm_platform_ioremap_resource(pdev, 0);
-> -       if (IS_ERR(base)) {
-> -               pr_err("%s(): ioremap failed\n", __func__);
-> -               return PTR_ERR(base);
-> -       }
-> -
-> -       if (!top_clk_data) {
-> -               top_clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
-> -       } else {
-> -               for (i = 0; i < CLK_TOP_NR_CLK; i++) {
-> -                       if (top_clk_data->hws[i] == ERR_PTR(-EPROBE_DEFER))
-> -                               top_clk_data->hws[i] = ERR_PTR(-ENOENT);
-> -               }
-> -       }
-> -
-> -       mtk_clk_register_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_fixed_clks),
-> -                       top_clk_data);
-> -       mtk_clk_register_factors(top_early_divs, ARRAY_SIZE(top_early_divs),
-> -                       top_clk_data);
-> -       mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), top_clk_data);
-> -       mtk_clk_register_composites(&pdev->dev, top_muxes,
-> -                                   ARRAY_SIZE(top_muxes), base,
-> -                                   &mt2712_clk_lock, top_clk_data);
-> -       mtk_clk_register_dividers(top_adj_divs, ARRAY_SIZE(top_adj_divs), base,
-> -                       &mt2712_clk_lock, top_clk_data);
-> -       mtk_clk_register_gates(&pdev->dev, node, top_clks,
-> -                              ARRAY_SIZE(top_clks), top_clk_data);
-> -
-> -       r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, top_clk_data);
-> -
-> -       if (r != 0)
-> -               pr_err("%s(): could not register clock provider: %d\n",
-> -                       __func__, r);
-> -
-> -       return r;
-> -}
-> -
-> -static int clk_mt2712_mcu_probe(struct platform_device *pdev)
-> -{
-> -       struct clk_hw_onecell_data *clk_data;
-> -       int r;
-> -       struct device_node *node = pdev->dev.of_node;
-> -       void __iomem *base;
-> -
-> -       base = devm_platform_ioremap_resource(pdev, 0);
-> -       if (IS_ERR(base)) {
-> -               pr_err("%s(): ioremap failed\n", __func__);
-> -               return PTR_ERR(base);
-> -       }
-> -
-> -       clk_data = mtk_alloc_clk_data(CLK_MCU_NR_CLK);
-> -
-> -       r = mtk_clk_register_composites(&pdev->dev, mcu_muxes,
-> -                                       ARRAY_SIZE(mcu_muxes), base,
-> -                                       &mt2712_clk_lock, clk_data);
-> -       if (r)
-> -               dev_err(&pdev->dev, "Could not register composites: %d\n", r);
-> -
-> -       r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
-> -
-> -       if (r != 0)
-> -               pr_err("%s(): could not register clock provider: %d\n",
-> -                       __func__, r);
-> +static const struct mtk_clk_desc topck_desc = {
-> +       .clks = top_clks,
-> +       .num_clks = ARRAY_SIZE(top_clks),
-> +       .fixed_clks = top_fixed_clks,
-> +       .num_fixed_clks = ARRAY_SIZE(top_fixed_clks),
-> +       .factor_clks = top_divs,
-> +       .num_factor_clks = ARRAY_SIZE(top_divs),
-> +       .composite_clks = top_muxes,
-> +       .num_composite_clks = ARRAY_SIZE(top_muxes),
-> +       .divider_clks = top_adj_divs,
-> +       .num_divider_clks = ARRAY_SIZE(top_adj_divs),
-> +       .clk_lock = &mt2712_clk_lock,
-
-At some point maybe we should look into splitting up the locks to one
-per block, or converting everything to regmap.
-
-ChenYu
+> --
+> 2.39.1
+>
 
