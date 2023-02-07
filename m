@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FC20C636CD
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 14:21:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 875A7C636CC
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 14:22:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2kKqHS2/RfkMDfcJWS9LkdIEljgm6B/2/QEI3d1vhac=; b=rcgag4aisJeWD8nUfv71tQtnQg
-	WWEj1satH+WvXLQSrVtSINxhbeaMjypLEo0F4CimfZchYoobrT0ujixxVGMTy5V1QVsfc+332rsMy
-	dQ2n8jQt8u8bbOprEMI4E9Mi226XcxNhaq/qlUCjhnKxc7H8MCN4TbJs8JFPU/Gr0mPdVLBaqIzl7
-	kef1GV3dLJxSVng6Eyhkbm/fHYnyc2ctz7pFGdEUE3GkjFC27X51zqOVqK5rf7Na62FLXkp+E/zBL
-	LA4PztGrh39afiu/C697+w8ZhuQA2Q5gbUT+kK0/5P13g8vYNvpTLsJs6e2gb3AmRx7rxA4+LQDLV
-	R4I8aRDQ==;
+	bh=42klP1MIgttAykklUZqiovmHkI/faTNi3FjdS7HHXgQ=; b=ORrvIe6s8/9D//xmwGk9Hc/ugD
+	BCZKd4NA7/C67VC4nMH768Gi/gKZD5bjtc7n3tViIMgimNgtzfp5BbBpPRTdIUYqRHXUYmYrEU/8X
+	My11GkRa176ZFJo/Ax/yw7S++JrT+0BcsHPVSuMi2oFRNDaZzrhXHQJsiOcU68NKCcAUT54MquRaT
+	fJ/IODuH9cMzN5yvAxrV7eWU+yUSdgP8FqFQyFMZ9K5IFEh+f2hvhcJiamu9+Z0aBwzWRVwU3/P+s
+	4xdhSgUXIXNyU011TSKZpiQDdH39vVz+6IsUk7jQCrzPYfvS3YYBcFNHhpCeXpzfTaRQ6uxMuEIl/
+	2BCmwYMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPOqn-00CREa-1W; Tue, 07 Feb 2023 14:21:37 +0000
+	id 1pPOrZ-00CRc3-2j; Tue, 07 Feb 2023 14:22:25 +0000
 Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPOqk-00CRCo-SE; Tue, 07 Feb 2023 14:21:36 +0000
+	id 1pPOrT-00CRYi-RL; Tue, 07 Feb 2023 14:22:24 +0000
 Received: from local
 	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1pPOqi-00028S-2a;
-	Tue, 07 Feb 2023 15:21:33 +0100
-Date: Tue, 7 Feb 2023 14:19:56 +0000
+	id 1pPOrQ-00029V-2y;
+	Tue, 07 Feb 2023 15:22:17 +0100
+Date: Tue, 7 Feb 2023 14:20:40 +0000
 From: Daniel Golle <daniel@makrotopia.org>
 To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
@@ -52,18 +52,17 @@ To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	Andrew Lunn <andrew@lunn.ch>
 Cc: Jianhui Zhao <zhaojh329@gmail.com>,
 	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
-Subject: [PATCH v2 03/11] dt-bindings: arm: mediatek: add 'mediatek,pn_swap'
- property
-Message-ID: <a8c567cf8c3ec6fef426b64fb1ab7f6e63a0cc07.1675779094.git.daniel@makrotopia.org>
+Subject: [PATCH v2 04/11] net: ethernet: mtk_eth_soc: set MDIO bus clock
+ frequency
+Message-ID: <4bd0d0c834b7e8852504f27fc2db586b3c95979e.1675779094.git.daniel@makrotopia.org>
 References: <cover.1675779094.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1675779094.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230207_062134_968594_D3E35250 
-X-CRM114-Status: UNSURE (   9.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230207_062219_917130_FD0F5F0B 
+X-CRM114-Status: GOOD (  13.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,29 +77,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add documentation for the newly introduced 'mediatek,pn_swap' property
-to mediatek,sgmiisys.txt.
+Set MDIO bus clock frequency and allow setting a custom maximum
+frquency from device tree.
 
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- .../devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt    | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 21 +++++++++++++++++++++
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |  7 +++++++
+ 2 files changed, 28 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
-index d2c24c277514..b38dd0fde21d 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
-@@ -14,6 +14,10 @@ Required Properties:
- 	- "mediatek,mt7986-sgmiisys_1", "syscon"
- - #clock-cells: Must be 1
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index fc5174f83ef1..4ee582e39c12 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -789,8 +789,10 @@ static const struct phylink_mac_ops mtk_phylink_ops = {
  
-+Optional Properties:
+ static int mtk_mdio_init(struct mtk_eth *eth)
+ {
++	unsigned int max_clk = 2500000, divider;
+ 	struct device_node *mii_np;
+ 	int ret;
++	u32 val;
+ 
+ 	mii_np = of_get_child_by_name(eth->dev->of_node, "mdio-bus");
+ 	if (!mii_np) {
+@@ -818,6 +820,25 @@ static int mtk_mdio_init(struct mtk_eth *eth)
+ 	eth->mii_bus->parent = eth->dev;
+ 
+ 	snprintf(eth->mii_bus->id, MII_BUS_ID_SIZE, "%pOFn", mii_np);
 +
-+- mediatek,pn_swap: Invert polarity of the SGMII data lanes.
++	if (!of_property_read_u32(mii_np, "clock-frequency", &val)) {
++		if (val > MDC_MAX_FREQ || val < MDC_MAX_FREQ / MDC_MAX_DIVIDER) {
++			dev_err(eth->dev, "MDIO clock frequency out of range");
++			ret = -EINVAL;
++			goto err_put_node;
++		}
++		max_clk = val;
++	}
++	divider = min_t(unsigned int, DIV_ROUND_UP(MDC_MAX_FREQ, max_clk), 63);
 +
- The SGMIISYS controller uses the common clk binding from
- Documentation/devicetree/bindings/clock/clock-bindings.txt
- The available clocks are defined in dt-bindings/clock/mt*-clk.h.
++	/* Configure MDC Divider */
++	val = mtk_r32(eth, MTK_PPSC);
++	val &= ~PPSC_MDC_CFG;
++	val |= FIELD_PREP(PPSC_MDC_CFG, divider) | PPSC_MDC_TURBO;
++	mtk_w32(eth, val, MTK_PPSC);
++
++	dev_dbg(eth->dev, "MDC is running on %d Hz\n", MDC_MAX_FREQ / divider);
++
+ 	ret = of_mdiobus_register(eth->mii_bus, mii_np);
+ 
+ err_put_node:
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 7230dcb29315..7014c02ba2d4 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -363,6 +363,13 @@
+ #define RX_DMA_VTAG_V2		BIT(0)
+ #define RX_DMA_L4_VALID_V2	BIT(2)
+ 
++/* PHY Polling and SMI Master Control registers */
++#define MTK_PPSC		0x10000
++#define PPSC_MDC_CFG		GENMASK(29, 24)
++#define PPSC_MDC_TURBO		BIT(20)
++#define MDC_MAX_FREQ		25000000
++#define MDC_MAX_DIVIDER		63
++
+ /* PHY Indirect Access Control registers */
+ #define MTK_PHY_IAC		0x10004
+ #define PHY_IAC_ACCESS		BIT(31)
 -- 
 2.39.1
 
