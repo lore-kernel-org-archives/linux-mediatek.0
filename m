@@ -4,79 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E090C636CC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 14:12:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45F67C636CD
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 14:20:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sZ5mpqE2ocgxdfOCGy+CSBqlukMgoxHcZxwHA7en+qo=; b=QKxf1L1zOJf8pzXy5l2Spi6AC6
-	zMDrLENHKaCvfHmWKcwLJbpkoKIZdW2nddeU5KRGSvPIJTTGiWKBYOUmiuJC+kYR2yborrep/r6ZG
-	BMHQ8ZUxobmG98mzVmj0MqMpEB0HUGOdu4g6rvP1+DDnJEcX6aUVKhhDKVMdcxFmMOvpWBp3tZtqY
-	eZmOiMh5sR3g3AlezE4F9EKa08XVSB2qZyl5u3ohWS2Ex7mMLRcumaj6etGzrvr2eMWTe79zVmOuP
-	0OcsBfSJ1ZAum7IjHVrem8+sP73B1EwMJfYkcJko+rTZePepDyU6DiXfVllZpbDrzNF/3H13tYUXL
-	Rdimxvng==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=A63t1eGn7h3dP88RqE91ydwXB9x89ILU1z9Hni2COg0=; b=T3i8mEPqAz7ly3+2yAg8XX8MU4
+	NvTg2woac8YFhjGVGQgT9AjdWgoS7t7Ek1lo/f8YL1Wu/U6OTfGrrRCoyYR38qXTSl3io0Kdqefsc
+	SRfZrOBkiIZEGO4Wd4rsnMhUh/BRIkPA2WpWDH0hjf/kW/gzkNQwjgkaAtQ9FrsA5eNmt5f7236zg
+	n5mX21TaP/iz7ZmBkDUBV2+dqEh9U0736QV/C5m5bPaPYTzZoC9SbAejs9YQY/YpDurvVM+1lfhqa
+	7XZjOFYch/tyhoQiendsr6ZsHdch8fvjo3ujeyJ4AtSrNTQ9e4ExQX4VUaE1apf52tSwbVL94UWeU
+	gKxdL1cA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPOhz-00CPDf-Oj; Tue, 07 Feb 2023 14:12:31 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1pPOpa-00CQcs-44; Tue, 07 Feb 2023 14:20:22 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPOhp-00CPAu-R2
-	for linux-mediatek@lists.infradead.org; Tue, 07 Feb 2023 14:12:23 +0000
-Received: by mail-ej1-x630.google.com with SMTP id c13so1657013ejz.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Feb 2023 06:12:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=sZ5mpqE2ocgxdfOCGy+CSBqlukMgoxHcZxwHA7en+qo=;
-        b=L5y670ucwvznmASN/AgU3Adj4DK9TRbO1/1YS+dn/0W79V62OSh3ZRPjtCulNArAWE
-         ivzFlnK2NeAwdYtafs0lMvGfiH6K7jW+0Que/knBzosItpl7clydO5JDQfAoD+SCMNWK
-         srqvl4iD1hYoDi36HJpgXDjxTHqXBnSjZNbu4692jQ9G5xa8usPfaPGDVtzDeMlX/rpT
-         qaSIopQsD6R+m7ErR4b+qrfgAcSl78f3JkYiC7AhQEZgeMGDFkTTjYESoNDoxMbN0cRr
-         odLHYw+6+82HUhV/gWdPCrf2cNxB0aO4vC70oa2SQlJflzZNMziU2XPjBThE/PSOd44z
-         +PxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=sZ5mpqE2ocgxdfOCGy+CSBqlukMgoxHcZxwHA7en+qo=;
-        b=nPWxLDVEwJYutd24hsaSZl8BijJtcYyU7Ws3+pn8pF3c//p83n53CGpFFMWKxCuIok
-         Gqn/gvYBpUHH8OZv/1JJuM3EUPDWjuuWy1c5I0AU8fpzXv8BXrrUlprMkxhfjKtnlok4
-         +e24zm03GAvBzlzaT8Tku5vTrR0pEpj19AJitxCkR+g/8p6RxfYNOlqrfgfoGWpGnph4
-         cKtqCRQuI6h7oZxyChv5UG7Y+NvbNBu/+JfPFNQnqgpUkdTt51joa8akTPrcY7w74gmT
-         Z6PBq861ZU7OVmiQDNPBNT8C8RbggLAww6ItOOp7hDgC7nSacqwCJfwuLjOeL0IzcMOJ
-         HoDg==
-X-Gm-Message-State: AO0yUKV0ZicKIaC3fgs70DgKOcibk63hZ+IVZH5AexRqlr3gZFgz2buI
-	z5qzn2yMvvjn4J9Sz9E4yB4HynEhVV+C9XO4K2AVug==
-X-Google-Smtp-Source: AK7set/oFiHS7dnqOHD5CRTN/KUIGukzO1ouxhtBnCV18RKKz15grDjDu1XvBQC50v14OV0tRya/fbXqJ7mbQOxpli4=
-X-Received: by 2002:a17:906:ca04:b0:7c0:f45e:22ff with SMTP id
- jt4-20020a170906ca0400b007c0f45e22ffmr999899ejb.104.1675779137174; Tue, 07
- Feb 2023 06:12:17 -0800 (PST)
+	id 1pPOpX-00CQbd-FM; Tue, 07 Feb 2023 14:20:20 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pPOpN-00026K-09;
+	Tue, 07 Feb 2023 15:20:09 +0100
+Date: Tue, 7 Feb 2023 14:18:23 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Russell King <linux@armlinux.org.uk>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>
+Cc: Jianhui Zhao <zhaojh329@gmail.com>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
+Subject: [PATCH v2 00/11] net: ethernet: mtk_eth_soc: various enhancements
+Message-ID: <cover.1675779094.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-References: <20230207130958.608305-1-bchihi@baylibre.com> <20230207130958.608305-3-bchihi@baylibre.com>
- <046b3b31-cbf7-674d-f05c-b825d6b46bf6@linaro.org>
-In-Reply-To: <046b3b31-cbf7-674d-f05c-b825d6b46bf6@linaro.org>
-From: Balsam CHIHI <bchihi@baylibre.com>
-Date: Tue, 7 Feb 2023 15:11:40 +0100
-Message-ID: <CAGuA+opvh95SXN-YGfxH0-NA8o4dBNkQJd9PfEXATFPbKHsHuA@mail.gmail.com>
-Subject: Re: [PATCH v13 2/6] dt-bindings: thermal: mediatek: Add LVTS thermal controllers
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: daniel.lezcano@linaro.org, angelogioacchino.delregno@collabora.com, 
-	rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com, 
-	matthias.bgg@gmail.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
-	rdunlap@infradead.org, ye.xingchen@zte.com.cn, p.zabel@pengutronix.de, 
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com, 
-	rex-bc.chen@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230207_061221_884521_41C3BBCE 
-X-CRM114-Status: GOOD (  18.07  )
+X-CRM114-CacheID: sfid-20230207_062019_526945_78B6E9AB 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,106 +74,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+This series brings a variety of fixes and enhancements for mtk_eth_soc,
+adds support for the MT7981 SoC and facilitates sharing the SGMII PCS
+code between mtk_eth_soc and mt7530.
 
-Thank you for the review.
+Note that this series depends on commit 697c3892d825
+("regmap: apply reg_base and reg_downshift for single register ops") to
+not break mt7530 pcs register access.
 
-On Tue, Feb 7, 2023 at 2:35 PM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
->
-> On 07/02/2023 14:09, bchihi@baylibre.com wrote:
-> > From: Balsam CHIHI <bchihi@baylibre.com>
-> >
-> > Add LVTS thermal controllers dt-binding definition for mt8192 and mt8195.
-> >
->
->
-> > +allOf:
-> > +  - $ref: thermal-sensor.yaml#
-> > +
-> > +  - if:
-> > +      properties:
-> > +        compatible:
-> > +          contains:
-> > +            enum:
-> > +              - mediatek,mt8192-lvts-ap
-> > +              - mediatek,mt8192-lvts-mcu
-> > +    then:
-> > +      properties:
-> > +        nvmem-cells:
-> > +          maxItems: 1
-> > +
-> > +        nvmem-cell-names:
-> > +          maxItems: 1
-> > +
-> > +  - if:
-> > +      properties:
-> > +        compatible:
-> > +          contains:
-> > +            enum:
-> > +              - mediatek,mt8195-lvts-ap
-> > +              - mediatek,mt8195-lvts-mcu
-> > +    then:
-> > +      properties:
-> > +        nvmem-cells:
->
-> minItems: 2
->
+Changes since v1:
+ * apply reverse xmas tree everywhere
+ * improve commit descriptions
+ * add dt bindings
+ * various small changes addressing all comments received for v1
 
-OK,
-I will do the change.
+Daniel Golle (11):
+  net: ethernet: mtk_eth_soc: add support for MT7981 SoC
+  dt-bindings: net: mediatek,net: add mt7981-eth binding
+  dt-bindings: arm: mediatek: add 'mediatek,pn_swap' property
+  net: ethernet: mtk_eth_soc: set MDIO bus clock frequency
+  net: ethernet: mtk_eth_soc: reset PCS state
+  net: ethernet: mtk_eth_soc: only write values if needed
+  net: ethernet: mtk_eth_soc: fix RX data corruption issue
+  net: ethernet: mtk_eth_soc: ppe: add support for flow accounting
+  net: pcs: add driver for MediaTek SGMII PCS
+  net: ethernet: mtk_eth_soc: switch to external PCS driver
+  net: dsa: mt7530: use external PCS driver
 
-> > +          maxItems: 2
-> > +
-> > +        nvmem-cell-names:
->
-> minItems: 2
->
+ .../arm/mediatek/mediatek,sgmiisys.txt        |   4 +
+ .../devicetree/bindings/net/mediatek,net.yaml |  42 +++
+ MAINTAINERS                                   |   7 +
+ drivers/net/dsa/Kconfig                       |   1 +
+ drivers/net/dsa/mt7530.c                      | 277 ++++-----------
+ drivers/net/dsa/mt7530.h                      |  47 +--
+ drivers/net/ethernet/mediatek/Kconfig         |   2 +
+ drivers/net/ethernet/mediatek/mtk_eth_path.c  |  14 +-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   |  65 +++-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h   | 100 ++----
+ drivers/net/ethernet/mediatek/mtk_ppe.c       | 114 ++++++-
+ drivers/net/ethernet/mediatek/mtk_ppe.h       |  25 +-
+ .../net/ethernet/mediatek/mtk_ppe_debugfs.c   |   9 +-
+ .../net/ethernet/mediatek/mtk_ppe_offload.c   |   8 +
+ drivers/net/ethernet/mediatek/mtk_ppe_regs.h  |  14 +
+ drivers/net/ethernet/mediatek/mtk_sgmii.c     | 192 ++---------
+ drivers/net/pcs/Kconfig                       |   8 +
+ drivers/net/pcs/Makefile                      |   1 +
+ drivers/net/pcs/pcs-mtk-lynxi.c               | 315 ++++++++++++++++++
+ include/linux/pcs/pcs-mtk-lynxi.h             |  13 +
+ 20 files changed, 756 insertions(+), 502 deletions(-)
+ create mode 100644 drivers/net/pcs/pcs-mtk-lynxi.c
+ create mode 100644 include/linux/pcs/pcs-mtk-lynxi.h
 
-OK,
-I will do this change too.
 
-> > +          maxItems: 2
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - interrupts
->
-> (...)
->
-> > diff --git a/include/dt-bindings/thermal/mediatek,lvts-thermal.h b/include/dt-bindings/thermal/mediatek,lvts-thermal.h
-> > new file mode 100644
-> > index 000000000000..4f2082065a31
-> > --- /dev/null
-> > +++ b/include/dt-bindings/thermal/mediatek,lvts-thermal.h
-> > @@ -0,0 +1,19 @@
-> > +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
-> > +/*
-> > + * Copyright (c) 2023 MediaTek Inc.
-> > + * Author: Balsam CHIHI <bchihi@baylibre.com>
-> > + */
-> > +
-> > +#ifndef __MEDIATEK_LVTS_DT_H
-> > +#define __MEDIATEK_LVTS_DT_H
-> > +
-> > +#define MT8195_MCU_BIG_CPU0          0
-> > +#define MT8195_MCU_BIG_CPU1          1
-> > +#define MT8195_MCU_BIG_CPU2          2
-> > +#define MT8195_MCU_BIG_CPU3          3
-> > +#define MT8195_MCU_LITTLE_CPU0       4
->
-> These changed for some reason. Why? The indentation is now broken
-> (although not visible above quote, but visible in diff and code).
-
-I thought that I fixed the indentation.
-I will restore it.
-
->
-> Best regards,
-> Krzysztof
->
-
-Best regards,
-Balsam
+base-commit: 129af770823407ee115a56c69a04b440fd2fbe61
+-- 
+2.39.1
 
