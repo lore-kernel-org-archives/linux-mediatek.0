@@ -4,91 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A86EC636CC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 12:26:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BC9EC636CC
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 12:40:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5xYnHX1Erl5u5KfXsFsM2CCOcYE1hgAFey0pHbtrlGw=; b=bnFmpO6ddP3y7wRUYtg4fW9NOH
-	7yXJeLPItndlcJsP66i0W0cJmEpLzSVxjtJhEF6pzWs/S4qwTSR7l/7SQIMKWWUEN5uD46ruxmftM
-	F5fQA+CuNSMujeAauiMrActq1vfS+puY5cg8CoeTPFI/ymdMRlYI/+RbHBLJ9i4VKV6e+7XOKRGqQ
-	nvOFWYt7Kb5nnFj9nxxgm5JPdVyUXAm9oLyckp0bLRSmOmgF9/LuL3eMno1yp1v3sHxPeV9GTBY8x
-	l25cXy88lwpJ4FtpfsXhVrkvfhRnQYGFPd1xM+9R4NpVTqRxCrdLsC6ROsU7CHMfdSseEh23uPauC
-	RQ5uBoeg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	In-Reply-To:Content-Type:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5JRczBktnn2FtmOXNN48i1slL0Txn4bFCkEV3njRP04=; b=3djCopGv99lbTppvkX51pYuc/1
+	9yzVYl+lWGQMkPtzlgAFb9vZY/WBC043YTn6wRe08h5wBjH4yp4Wxyyl+ws64FJI/0859umFxQC64
+	GehMlzGbkl+tgWAwstvZO+ewzMWY29Yxr++EO6sJp88WpakkHIgF+0+fdp1Dn3MAt3Iv665WlilG2
+	KPdgS63ed6WDomLGqF43MV/4CMS9+AQRRgno9R1ckxr+3kTsvzZ8wwk78Ml2mMOS1DqfNKtlWSHv5
+	2oqSW0M9sz/wVhSYxrzTpP/P3n9AlrXGUQCegxYi1Eo/kj7LtrpPAPm+D81r7k8WQtPKEA4WCjt0j
+	943VyR5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPN3P-00C5VD-F8; Tue, 07 Feb 2023 12:26:31 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1pPNGZ-00C7Hi-V0; Tue, 07 Feb 2023 12:40:07 +0000
+Received: from mail-he1eur04on0618.outbound.protection.outlook.com ([2a01:111:f400:fe0d::618] helo=EUR04-HE1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPN3F-00C5Ox-5b
-	for linux-mediatek@lists.infradead.org; Tue, 07 Feb 2023 12:26:22 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id bk16so13360619wrb.11
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Feb 2023 04:26:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=5xYnHX1Erl5u5KfXsFsM2CCOcYE1hgAFey0pHbtrlGw=;
-        b=a0bYF8vFZ81omWoSjjcDJcOsQPx0IJKXO2MNRiT9l9onGXaGU/wJv/i2K99OGIqcp7
-         ihdwgekxx34k/NvtSiaofvZjKIRkq1Gr46OJM4n4ysLojX6AZ2xR1xvSjnBut7H/2Mm5
-         8fi1YvW7KVgOJ1rXKQn7mg4bC89gcex54BUyX418qwHJ7IdMfDUxIXyFJ1oW3XbTbubd
-         /ieHDCdsL1zjj0I/unn0HAHeDghr6unOEfRIAlgeJ2dj8xHT/gk42owOCUPeMedXbbyz
-         j+AivNuy9YL3wEAIJ2NKTETQpyVQuPor+n9so2GzpBypaEyYTWGpIOrft7HAPnHDPCTc
-         IggQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5xYnHX1Erl5u5KfXsFsM2CCOcYE1hgAFey0pHbtrlGw=;
-        b=tVnLexc0mZhC0iO2yxhjLlpHNUkh5enWi7tJuieXhVCjzV08ynptCB17Du282iRF9H
-         ClzlWdpemf1oUl0pFGMrtpK8NWQRWCB42jrA8YdxsOfmneEfFC02gbXAfiAT9lD3BqU6
-         KrEsb+xsSVx/nOjC4oTdZNj+XH6/eTc1vvhTs1PO+y7OhDNr5257mTPVBU/ISLTCMHmb
-         cq59510jXxaWT1oxnj14CwoNcbK43exBi/heXI3B2xJqeyGhgMpzR7Vc/b1KOkXYgVET
-         hNtFnxghlU8zdS6AilxGI1XxZ9D+ujQoACu0V6ipnqBb81We930VBq+jGzDojpLFLvdn
-         6eHA==
-X-Gm-Message-State: AO0yUKWMEMJ+S4Yq0cFZJac25FMVZgs/2IBe/GFwznJRwcTY22acPuEp
-	gwqpqFEte2K3Vxna/EpUA//KBg==
-X-Google-Smtp-Source: AK7set88Lxl1qHumI/CfBw3/LLuxkMuEJHa+tXasBGB44CpUVlsBGzjZqivjRlNLNjNxDs0SM2+K5w==
-X-Received: by 2002:adf:efcc:0:b0:2c3:e07d:46cc with SMTP id i12-20020adfefcc000000b002c3e07d46ccmr2519530wrp.41.1675772776749;
-        Tue, 07 Feb 2023 04:26:16 -0800 (PST)
-Received: from [192.168.1.109] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id i14-20020a0560001ace00b002bfb8f829eesm11816006wry.71.2023.02.07.04.26.15
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 07 Feb 2023 04:26:16 -0800 (PST)
-Message-ID: <cd2f7933-6f51-5100-f7c1-cd9900e796e5@linaro.org>
-Date: Tue, 7 Feb 2023 13:26:14 +0100
+	id 1pPNGV-00C7FV-R8; Tue, 07 Feb 2023 12:40:05 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=AXfn368j7GA0wiut9ITNOHm4iTOFaStYSIOYoIaQSaBHHPcZIUmjK3rO+M6A92RCx40kkxhgdCM2uOM7lKt3sqpz0kHyQFi4r7lm8f0WN3Y9Spe0A7BbwVfiX2DnMr+QOfoOEGzBvHdYGBNStjDI2SgbGcIpb/ozI52aXIChrOrHv659xoXZnqM6UZETjhRKVoAS3ubLQ1bqKonu1idSuTebpS017vJyGrtWVQ7L+h90lpFH0I+4ueD/bCofO7KwshHZJLgjXF2Ap8Zrz2aY+KMEuaNiMX8sGtIerpKSfEHuBvNh6PJ7rhVqnM9pEOqFutUE4EBwofy7ohZ/PU/8yA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=5JRczBktnn2FtmOXNN48i1slL0Txn4bFCkEV3njRP04=;
+ b=nPx/hQFmjnmn4KRnnZrXGn+wYtsmX88MZzcQ97H5murx2Qm27ICSGusUjhUmC+vSMa9lG/vmaO1e3VYiexX4iE4BGUO9yVQv1eOP/8lyRRnZQFJWq+w+4O8uR4rWvTgxgZ47fnO+HyjtR5CVj+4TfRRl98ND/79213begFdw0605f8OqXbCTn3QBzjoZBPDX41qKg2qV6Va6laF9oUMK2ZBzkJ13PgEFmyU5uUruWTVlqvtnjDnlLGBIKmjOaKYXatDUYRuAzmY1Jp8Jcp8ia7nwjZ3uPi9YAe7gY1DN50nlwwDsjgpd83w0EFWvCgclIDOanQKRgsSaKWT3BrWXrQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5JRczBktnn2FtmOXNN48i1slL0Txn4bFCkEV3njRP04=;
+ b=REcZURD2AWPNWPyRqbFJhqK9Oq1Tq3KFaSY7z3vZjBQX2R7jMlZAtnlN5Qlmw7tCa69cR8dNau3KGiHOoK/NfaYnEnsC/Xnq3bjrhHvCN28nu5nBgY3Np2hZ4K2eAPXY9eap5XBLCL4gL+B+oqiVYZiEad6XTzCsqwAXUDO46d4=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from VI1PR04MB5136.eurprd04.prod.outlook.com (2603:10a6:803:55::19)
+ by VI1PR04MB7021.eurprd04.prod.outlook.com (2603:10a6:800:127::24) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6064.36; Tue, 7 Feb
+ 2023 12:39:58 +0000
+Received: from VI1PR04MB5136.eurprd04.prod.outlook.com
+ ([fe80::3cfb:3ae7:1686:a68b]) by VI1PR04MB5136.eurprd04.prod.outlook.com
+ ([fe80::3cfb:3ae7:1686:a68b%5]) with mapi id 15.20.6064.034; Tue, 7 Feb 2023
+ 12:39:58 +0000
+Date: Tue, 7 Feb 2023 14:39:52 +0200
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: Paolo Abeni <pabeni@redhat.com>
+Subject: Re: [PATCH net] net: dsa: mt7530: don't change PVC_EG_TAG when CPU
+ port becomes VLAN-aware
+Message-ID: <20230207123952.r2r7tnama3vcr7vt@skbuf>
+References: <20230205140713.1609281-1-vladimir.oltean@nxp.com>
+ <3649b6f9-a028-8eaf-ac89-c4d0fce412da@arinc9.com>
+ <20230205203906.i3jci4pxd6mw74in@skbuf>
+ <b055e42f-ff0f-d05a-d462-961694b035c1@arinc9.com>
+ <20230205235053.g5cttegcdsvh7uk3@skbuf>
+ <116ff532-4ebc-4422-6599-1d5872ff9eb8@arinc9.com>
+ <20230206174627.mv4ljr4gtkpr7w55@skbuf>
+ <c4c90e6576f1bc4ef9d634edda5862c5f003ae3c.camel@redhat.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <c4c90e6576f1bc4ef9d634edda5862c5f003ae3c.camel@redhat.com>
+X-ClientProxiedBy: AM0PR02CA0113.eurprd02.prod.outlook.com
+ (2603:10a6:20b:28c::10) To VI1PR04MB5136.eurprd04.prod.outlook.com
+ (2603:10a6:803:55::19)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: Aw: Re: [PATCH] dt-bindings: mt76: add active-low property to led
-Content-Language: en-US
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20230207102501.11418-1-linux@fw-web.de>
- <fe3673d9-b921-c445-0f5f-a6bc824e8582@linaro.org>
- <trinity-808b2619-4325-4d03-b2f5-1a7bc27d42ea-1675771928390@3c-app-gmx-bap02>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <trinity-808b2619-4325-4d03-b2f5-1a7bc27d42ea-1675771928390@3c-app-gmx-bap02>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: VI1PR04MB5136:EE_|VI1PR04MB7021:EE_
+X-MS-Office365-Filtering-Correlation-Id: 76407186-5e67-4c7e-afe3-08db09086bb9
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	dJI3DtPALIvn/DKTcQ1CrwP37hmO+beop/WXXJaGx1Co7p/jE4PZMIN4PJ6fVdON8zwiADU5+6ffeAfYuRaRWcsUng7577ecEkcic/UUoTWj3t12GrsQPoCsM34EmI+62a1e70escr6EoVj8fdEgSobeLpDn5pakBwTHJbQesL+NJvJZT4WSwaQMWpoKnRbJJHWMYnDoMbv7h2A7n/A7y+/CHEqfQ08UMmNs6Oj+6wc5BiR8UJqQzDgpIxotXBI3DVtb3Su9nrqSvM2CJcnewkW6DT3F2QRQwECkLH/ZHuU60sdetNW+by4wFpSw2Wt2FwshxPAzMRjfPEzYlTKoEQ4o7eT512Gg1Pp1woecG4CFJtYOtnF7kWbRGcS6Sx9ZxYhRXZuNxhRJsdIN36QN1z5esnFkwbtH4yaJlfnYWAKcywJcBC7+oJC5sDHzPLzvL+FQ/4hLmyASeYWgOHW4q/JnfrZE+Hqvf2CBebalPb54nl+T3XN9t6nD89eD5ovEYKIwmVlnFqU0Z+xBpl2EnS0v38xtjeWq2uBi3zSHusiKUEZz8G8/0BlEhbSMm2jxLnWoj3JY6A6rExk7Z4fhtYF5EmODaVlzz3uF4N5pQ7rIlGVYJr/lmPqBoZa+gVJj67lRoJf1dYChNoYTnuI05A==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:VI1PR04MB5136.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(7916004)(4636009)(39860400002)(396003)(346002)(366004)(136003)(376002)(451199018)(2906002)(316002)(8936002)(66556008)(66476007)(4326008)(8676002)(6916009)(66946007)(4744005)(44832011)(5660300002)(41300700001)(38100700002)(7416002)(1076003)(6666004)(6506007)(6486002)(9686003)(26005)(478600001)(6512007)(86362001)(33716001)(54906003)(186003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?q+ywLf6gXz/tevE8nGQytpDNq+aZzTEVvv6z0DWc6FKCoUJdE+4w2fQ8nBlr?=
+ =?us-ascii?Q?UjAu09ZQ6LTyDWloOmV442fpIexqLGlU15qLs6bPCPDlUw9WOmfQRIatCc7o?=
+ =?us-ascii?Q?gzEs1o6VkDMxsd3w3Bn0nisaBQZhWjDWEgYVHt95Mx3y5U8DVmxxffi76fb3?=
+ =?us-ascii?Q?6WSW11cofz4HzSLCIGmNd010YmUL0unXDY4l91/LGiuF34MSdmk5cggzdxwU?=
+ =?us-ascii?Q?xfKFSauV3DAHNjwSGpA2sUc3VboGXFYxnBDq+KlRM3+vKthBMNoau0XhaEC7?=
+ =?us-ascii?Q?8RJJshUb9B8eT4Ct0YFVtPA2JqARpa83u2eM43xs2jrC+5P+LUVBGnV4wofB?=
+ =?us-ascii?Q?hghIYcVB8xFlHoWFo+whfT/O5dnldwtVph7hRzEjUrwSh12fAGAdivJPD/0V?=
+ =?us-ascii?Q?RO0NIk9pwLW98swgEb6Vl7fRfLmixJKMSpICqCa/a8RZRoDYCWzejz5d0gIq?=
+ =?us-ascii?Q?xNBSZkSluQMqv/b/3dxAAK64WDSDmPpKgYAOeIWQlVn1dWtFa3xnb9JHqITj?=
+ =?us-ascii?Q?6P0KDffMSnxo+Rae4Q/zllZIucmsHa/FiDnxaSl/YQlt7o5B9CijAnjZNKEw?=
+ =?us-ascii?Q?J6fn7sl6QhUahSixmbidWUcSD1lbjKFsB9aGZlKsNQaYOjn97ZleoaeM8nud?=
+ =?us-ascii?Q?ii20Eu4ji4sXuTaFFP/Cm6szcZ96pJEXX0Ukkn5PTE5nd3XYSOavKI7k5x5A?=
+ =?us-ascii?Q?nRtSwh7ScxwocelFQayZjNIXSeHRlHOLLv9SxfnOOFZoOgbMvevR1kpMbtHB?=
+ =?us-ascii?Q?kvNF7Cs6s5O8oLfYrRwXoOe4vC3ftYoNh/LCMRJ6LLTxXb0rQKEcscDoGCZg?=
+ =?us-ascii?Q?a8G8YOSzIQ0eDVxtJQY4AAeso8qecuoNdgQ3WZQNsXcwWWq0dcGH6LJWi/tb?=
+ =?us-ascii?Q?UHhopjU/cHulKG3gpY35mib4c/oVGwP1jmwA59F+Zlyyjpmqa8t40wBmeKsA?=
+ =?us-ascii?Q?dZGPr7T97fuV86LJcXkXSy5MyNC0B+VkFGXJ25f3gPIXPEn9XXzikvu1gYpn?=
+ =?us-ascii?Q?B7ydHqyw86tp97EhS27FP8AC8EzNvgmmLm4+F468DKtVYnxR/G3ux4y4QzbJ?=
+ =?us-ascii?Q?7nsxEL7XqEguCEREDBiPGDqiLDbRY0VjAdeh59J0hC3oJG2Dt/oxpp4wlFav?=
+ =?us-ascii?Q?MNs1rnWG889ky+2EdE7+TW9sSwJTzJLBUpwvKXGJrEu4W7ty5GtMaNDxov5u?=
+ =?us-ascii?Q?gkRU1BS1DZZa2f1jwuDAvUOvBqZEQJgX9JrjQ94zx5jTz0Jfy30cQWNngSNK?=
+ =?us-ascii?Q?ddYxK8Ic9ruqT9twQcPK6s2PdWMNvXHfTTqrJsCZ1/0TgXrUCelKhNdrwSQq?=
+ =?us-ascii?Q?qzQaZEzCs0cN+SnVTimnk/3Em0tFRzH3SEj6B9DdleMgIv0ZqFBU+akJ1O2A?=
+ =?us-ascii?Q?Q8x7xWEeifwWHZ5IQY81u/r6Fam1beHK38FkRK4wM3J6fxMf0xsyP2SMtoXG?=
+ =?us-ascii?Q?8Ie4o26tq6kMsZIzvqrYzpDXZh7iw1v1gaq4rublwVa9W7XdlTulurR++PoR?=
+ =?us-ascii?Q?6b38hndw+FUPCNQg1i4bpvFeaHeEW86l76yuRFQfhGWH6S2KlQbd8EZn5G2E?=
+ =?us-ascii?Q?gn1UirT/fbvEkwuYPovGGGQ/qGaN+klC8XdkXvCs3HRjOVNMvUoMjvyBi9AD?=
+ =?us-ascii?Q?pg=3D=3D?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 76407186-5e67-4c7e-afe3-08db09086bb9
+X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5136.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Feb 2023 12:39:57.8526
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: q+lQYMnre43lqmQakZilXTX7LgwJnieh6pPVttuJpzSNYPzLM5VtMPE/fzlFXEp4cKafSpcPvQ6qTy7MGkiMFA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB7021
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230207_042621_226874_04F7AC0E 
-X-CRM114-Status: GOOD (  16.69  )
+X-CRM114-CacheID: sfid-20230207_044004_130018_6B644EB1 
+X-CRM114-Status: GOOD (  11.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,48 +132,25 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, richard@routerhints.com, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, erkin.bozoglu@xeront.com, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 07/02/2023 13:12, Frank Wunderlich wrote:
->> Gesendet: Dienstag, 07. Februar 2023 um 11:40 Uhr
->> Von: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>
->> On 07/02/2023 11:25, Frank Wunderlich wrote:
->>> From: Frank Wunderlich <frank-w@public-files.de>
->>>
->>> LEDs can be in low-active mode, so add dt property for it.
->>>
->>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
->>> ---
->>>  .../devicetree/bindings/net/wireless/mediatek,mt76.yaml      | 5 +++++
->>>  1 file changed, 5 insertions(+)
->>>
->>> diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
->>> index f0c78f994491..212508672979 100644
->>> --- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
->>> +++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
->>> @@ -112,6 +112,11 @@ properties:
->>>      $ref: /schemas/leds/common.yaml#
->>>      additionalProperties: false
->>>      properties:
->>> +      led-active-low:
->>> +        description:
->>> +          LED is enabled with ground signal.
->>
->> What does it mean? You set voltage of regulator to 0? Or you set GPIO as
->> 0? If the latter, it's not the property of LED...
-> 
-> basicly it is a gpio-led mapped into the mt76 driver, but not passing gpio itself in this property (like gpio-led does).
-> This gpio is set to 0 signal (gnd) to let the led go on ;) so imho it is a led-property, but below the wifi-node as
-> the trigger comes from mt76 hardware, not an external (soc) gpio controller.
-> 
-> mt76 driver supports it already like i post change here:
-> 
+Hi Paolo,
 
-If the driver supports it already and it was never documented, please
-state it. Your commit says you add a new property.
+On Tue, Feb 07, 2023 at 11:56:13AM +0100, Paolo Abeni wrote:
+> Thank you Vladimir for the quick turn-around! 
+> 
+> For future case, please avoid replying with new patches - tag area
+> included - to existing patch/thread, as it confuses tag propagation,
+> thanks!
 
-Best regards,
-Krzysztof
+Ah, yes, I see (and thanks for fixing it up).
 
+Although I need to ask, since I think I made legitimate use of the tools
+given to me. What should I have done instead? Post an RFC patch (even
+though I didn't know whether it worked or not) in a thread separate to
+the debugging session? I didn't want to diverge from the thread reporting
+the issue. Maybe we should have started a new thread, decoupled from the
+patch?
 
