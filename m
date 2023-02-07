@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42F14C636CD
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 07:28:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 270E4C636CD
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 07:31:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HzjdoXctNUchxC8lTyeO8JDrtbzbdeV99CaKuJ4JayI=; b=oBcmVdrOqhjfCnVp4Z5AL9QxBL
-	UFxlkyaKZPB3qsZzcyjKQF+Pl/yiMOmeLFcsV/AzJx1c6+FKCw7Min80fh9vrDbyaLn7EJgmK7jTu
-	/r9xdcM1wVUhEyVUHwUWMcbY5GoFKZTJGMeaIOMbpxijaNff8sh02YAUVzFw0lnAAzyQqDoHr83EL
-	np0gsCoPRN1YrA3XXgfCYP04j933wBE3kJs8TwEGTSr4Mr3FUpH59enAaxRbiVQM/FZWZ3kdwKw1V
-	lIksmHA1gPI5/y4/+IjjTGP+YyHXJn3Za+2pSzzz2GZGI4nNQOXJ1t3tWZNixzyzD3pe1wWP/Wh+L
-	cvIbP8Fg==;
+	bh=gCNAF49cUJ7MluixE59CxJOTxjhSyJFzlB7p666SLz0=; b=fMMaSZ1P7KD4DvTRqTy5+j7p1/
+	NWDHeWr1wFOzn0MeptdUzw8yVxNX4PlQR1aEY+VIOR+MaJF55uyKfjSFesa/byDeajLJOEvUH0plT
+	4U3ZXEDNVPhclpdqZRpm+DroPInI4fcCC7kmi5B4R8Gg89yTweUj+mOFsWhTtWmeCpSSDSalGPyvo
+	Ptuto2qljzZZpcZUyCEdvUvZbmEEP5CAHd8YixdwDuU5UvtHIrPEDyz5sj+7JaMuRrSTRlrtjnqQb
+	oBWdBfaw+H1HIGL5GhtBiHc+hb/xJpJDUt4Dp3Wj0V77wbfZQGrkdX0BmlePR/zwv77s4lroSe+ru
+	dQsR3AvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPIPK-00B8t6-Jd; Tue, 07 Feb 2023 07:28:50 +0000
-Received: from mail-ua1-x92b.google.com ([2607:f8b0:4864:20::92b])
+	id 1pPIRN-00B9Lo-U6; Tue, 07 Feb 2023 07:30:57 +0000
+Received: from mail-vs1-xe2c.google.com ([2607:f8b0:4864:20::e2c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPIPH-00B8rZ-Bv
-	for linux-mediatek@lists.infradead.org; Tue, 07 Feb 2023 07:28:48 +0000
-Received: by mail-ua1-x92b.google.com with SMTP id g12so2607849uae.6
-        for <linux-mediatek@lists.infradead.org>; Mon, 06 Feb 2023 23:28:47 -0800 (PST)
+	id 1pPIRL-00B9Kk-7X
+	for linux-mediatek@lists.infradead.org; Tue, 07 Feb 2023 07:30:56 +0000
+Received: by mail-vs1-xe2c.google.com with SMTP id g8so63099vso.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 06 Feb 2023 23:30:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=HzjdoXctNUchxC8lTyeO8JDrtbzbdeV99CaKuJ4JayI=;
-        b=VyL6/wHisq/CO8BrIHy/E1ZH+etzFmfEs6Fc0Xn26pS87rXRAGgbjDMCgy1VO9w2LD
-         53GSLXS0tjoqspDOrc2sbsMG1jvLGphbz02oHV+YVrY8i9vVqtA+aUZl65UDERtK1jfR
-         Wp/CP1B4JQ7BNsIMKRhf8hqg2ERetD+jUVZsY=
+        bh=gCNAF49cUJ7MluixE59CxJOTxjhSyJFzlB7p666SLz0=;
+        b=SpsTbPrXlrn0BMOnnB5WAx1mT3fGSu2PJ8hSRfX5+MeynLpKHjBMp2WYTFYXzfUlyU
+         t84xSFlVt36uQYH+euKczCPs/6PfnGOfgLpX97MxI5jtyqfO/xLoDBUeaSWL7GPQQYot
+         lK9C6fL7vDus9ucgKna/MVkAR98Rvu/GkBtyk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=HzjdoXctNUchxC8lTyeO8JDrtbzbdeV99CaKuJ4JayI=;
-        b=Cwm1n2pktGZ4WodHwkG+5ErfNKJwA/ljRjnKdvVXZUX4FEcZuxtt4xv1a6ibiCX12s
-         TWRl7j9ki0CxSgQL5yye72GBs8s2tOJk5mQGhxJttiEKosxJ5gZtR5GelA3jdCehRt0b
-         CfZgkxgG0wk5U0kboJgsOJ8oG99W4kfBoiHiBvcAuOcnLN9umvvwURV9TiOKtutKT/Mf
-         yS1XUlDxy84q6lLBAVC1DFu87faQBRHmzeg2gQ1derdvtnsDDoiqziGdW9Taw0Y49FV1
-         ifIo7DoLJgXqYGlU/rPERwLZvIFinOsyMxMFAEPNnwfbmwsYpTnssGJ0k25asfZqQMXE
-         b3WQ==
-X-Gm-Message-State: AO0yUKWy6E0L2nGZdqR/m1keDlFTk2AZOeiF0sD7DezrKAPua5RmZ1PG
-	RXASt6XKoM2PetDm0+h/QmFl/6r0ei6mWlxBqVtSCw==
-X-Google-Smtp-Source: AK7set8XFtuxBK35Pvm8tuc5v8uLTzBmZlvege+TNQdg4B3RZkkeRNjUNbCkF5kOjZv0eXvuVKh8HqhvTkURODvoF7g=
-X-Received: by 2002:ab0:76c4:0:b0:5f0:4676:e4f1 with SMTP id
- w4-20020ab076c4000000b005f04676e4f1mr433891uaq.44.1675754926331; Mon, 06 Feb
- 2023 23:28:46 -0800 (PST)
+        bh=gCNAF49cUJ7MluixE59CxJOTxjhSyJFzlB7p666SLz0=;
+        b=Cr5h98xh6/zAmx8IDG5T2bmloMgWEBM9seTuUFnjy8mQYPV6rLqKD0YFTMWiFPO/9x
+         1rTiGk09OMNaT68x51u1uEM10mm91Eg5CFD6c0rbD6CQflAEf296rpgIY9M4oo3+sNW+
+         0hjCtPTZPRlBkdFOSL2L2L+2Pm5HXE1SllQPkfFBqiFuvGbjzpzzfgBBj76S1swLgY7D
+         TcEYKi/soWf0tbw2nhofXv/6RFl4r+6voDCIo1vQ332jusoQ2SDfY1c+qYyIke703+7X
+         /VccCE6O7a5Krj81u18wKvi96owUxMp6Wa8nYJYVznTsiV9arsUlzmepg2cGjjDGBvtv
+         HFEQ==
+X-Gm-Message-State: AO0yUKV3iCs6l2ZVZ0sRoAGP1UghD+mYcE7YwkeheT8b4KE0+Mo7h/wL
+	g5UKGTd9qWuInk2ptUTmSo8dVjwkqTyDRBKzr+6aaA==
+X-Google-Smtp-Source: AK7set91DMXJxIvga9meSVc/G34kt/Sh+4idj85b3F2q+xpEyp8Wc9TZUP2+DE7MZ2Dt5/Fy22cI/k24gJN79sKGzIw=
+X-Received: by 2002:a05:6102:2445:b0:411:a162:c432 with SMTP id
+ g5-20020a056102244500b00411a162c432mr278129vss.26.1675755053286; Mon, 06 Feb
+ 2023 23:30:53 -0800 (PST)
 MIME-Version: 1.0
-References: <20230206152928.918562-1-angelogioacchino.delregno@collabora.com> <20230206152928.918562-13-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230206152928.918562-13-angelogioacchino.delregno@collabora.com>
+References: <20230206152928.918562-1-angelogioacchino.delregno@collabora.com> <20230206152928.918562-14-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230206152928.918562-14-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 7 Feb 2023 15:28:35 +0800
-Message-ID: <CAGXv+5G0+pbgz_6ajWOYNLYMOn4a9+pmPKFngUCrQEtwZe8vVg@mail.gmail.com>
-Subject: Re: [PATCH v1 12/45] clk: mediatek: mt8365: Convert to mtk_clk_simple_{probe,remove}()
+Date: Tue, 7 Feb 2023 15:30:42 +0800
+Message-ID: <CAGXv+5E8FoVN7HoOpawMhhsKab7qs2F5NcRrpTf5TQiti7XUVA@mail.gmail.com>
+Subject: Re: [PATCH v1 13/45] clk: mediatek: mt8167: Compress GATE_TOPx macros
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
 	johnson.wang@mediatek.com, miles.chen@mediatek.com, 
@@ -72,8 +72,8 @@ Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
 	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230206_232847_446222_4FE74B99 
-X-CRM114-Status: GOOD (  20.25  )
+X-CRM114-CacheID: sfid-20230206_233055_288455_F8F22935 
+X-CRM114-Status: GOOD (  12.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,63 +91,38 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Mon, Feb 6, 2023 at 11:30 PM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> Change the custom mt8365_simple_gate to be mtk_gate clocks and
-> audio clocks to be composites to be consistent with all of the
-> other MediaTek clock drivers, allowing to convert this entire
-> driver to use the common mtk_clk_simple_probe() mechanism that
-> also allows building this driver as module.
-
-I think this would be easier to follow if it were split in half:
-the first half migrating mt8365_simple_gate to mtk_gate, and the
-second half converting to mtk_clk_simple_probe.
-
-I assume git would generate better diffs after that.
-
-> While at it, also perform some macro compression cleanups and
-> switch to use module_platform_driver().
-
-This would get split in half as well. The macro cleanups go with the
-first half, and the switch to module_platform_driver goes with the
-second.
-
+> Use the GATE_MTK macro to compress the GATE_TOP{0..5} macros.
+> No functional changes.
+>
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  drivers/clk/mediatek/clk-mt8365.c | 460 ++++++++----------------------
->  1 file changed, 124 insertions(+), 336 deletions(-)
+>  drivers/clk/mediatek/clk-mt8167.c | 88 +++++++++----------------------
+>  1 file changed, 24 insertions(+), 64 deletions(-)
 >
-> diff --git a/drivers/clk/mediatek/clk-mt8365.c b/drivers/clk/mediatek/clk-mt8365.c
-> index 69f293497778..4bd624884b62 100644
-> --- a/drivers/clk/mediatek/clk-mt8365.c
-> +++ b/drivers/clk/mediatek/clk-mt8365.c
-> @@ -1,6 +1,7 @@
->  // SPDX-License-Identifier: GPL-2.0
->  /*
->   * Copyright (C) 2022 MediaTek Inc.
-> + * Copyright (C) 2023 Collabora Ltd.
->   */
->
->  #include <dt-bindings/clock/mediatek,mt8365-clk.h>
-> @@ -17,7 +18,6 @@
->  #include "clk-gate.h"
->  #include "clk-mtk.h"
->  #include "clk-mux.h"
-> -#include "clk-pll.h"
-
-This should be in the previous patch?
-
-Could you also remove some of the other inclusions that don't get
-referenced after this patch?
-
->  static DEFINE_SPINLOCK(mt8365_clk_lock);
->
-> @@ -383,31 +383,23 @@ static const char * const mbist_diag_parents[] = {
->         "univpll2_d8"
+> diff --git a/drivers/clk/mediatek/clk-mt8167.c b/drivers/clk/mediatek/clk-mt8167.c
+> index 91669ebafaf9..97a443fdfc77 100644
+> --- a/drivers/clk/mediatek/clk-mt8167.c
+> +++ b/drivers/clk/mediatek/clk-mt8167.c
+> @@ -736,77 +736,37 @@ static const struct mtk_gate_regs top5_cg_regs = {
+>         .sta_ofs = 0x44,
 >  };
 >
-> -static const char * const apll_i2s0_parents[] = {
-> +static const char * const apll_i2s_parents[] = {
+> -#define GATE_TOP0(_id, _name, _parent, _shift) {       \
+> -               .id = _id,                              \
+> -               .name = _name,                          \
+> -               .parent_name = _parent,                 \
+> -               .regs = &top0_cg_regs,                  \
+> -               .shift = _shift,                        \
+> -               .ops = &mtk_clk_gate_ops_setclr,        \
+> -       }
+> +#define GATE_TOP0(_id, _name, _parent, _shift)                 \
+> +       GATE_MTK(_id, _name, _parent, &top0_cg_regs,            \
+> +                _shift, &mtk_clk_gate_ops_setclr)
 
-Misc. unmentioned change. It makes sense, but please mention it.
+Nit: 100 characters should be enough to fit the whole GATE_MTK part in one
+line.
 
-ChenYu
+Otherwise,
+
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
