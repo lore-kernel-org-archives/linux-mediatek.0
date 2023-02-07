@@ -4,77 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94A25C636CC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 08:08:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E21B2C636CC
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 08:46:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bTuYq0wh0Ha5e/JZi49gtHl89wWgCPyAt0VAMeZNSPg=; b=4GN5HjzXLqn567qa+0peZDKSow
-	A1IFf6EfqFktuTk6OKF2DOPoJRMjdC50Ere5Gu+Lhg7jtQXm5ThRNELkCa8yxiVL3pdnbXNSKkeQb
-	BC6rVoxXwDRyJGLrAkxTtw5Rf1Zug3mxoCXXidNwCtl1LdA+rDki6ScUdiavJ+e1j4zy5BOFAkksQ
-	9tS+eEawM5R7WBytXSiC45Ss75T58VjeHjzic9isGaDUWbrfG8yMKlsmAUdb7ZemgY24SVI6vH6vX
-	n/EUswVcdGoDquyKdhGEobX9HYyY7qg6BpUM9/gg6jdby/LXuAL/D1ilel10xvoThs8yOgMV+ko0N
-	m4YXM99g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mDtB/GDC6BRjBqEL1ycw0/4EZaqWVRwa87NN2XJTUCg=; b=34gsePJJlJOvX/ZBObVUt/4d6N
+	QaC/la0XkiJ9W+MaLjDhIcWdhXETuXmGBNhTcxWAwrebJIet+pZbMgTg5vaoasWEHCxXRlhTN9snJ
+	RUjp6AoaPz5jlOIGV8Xx6z99ZX0vzIhoylcNKLQcPqnFlvajPS8UEKZLqvqpuldsDluoRjFBXhgQ8
+	TnkplyZ84HXaWYy6/U+zEFJqHQN2YSJ6cU30avaCWJ6HY0jfEaxfiaWj8KdrfrAgkKOYHERzusI9l
+	pae0xHAdKL1IAmtEodwhdjtcIpUNS3uSOQ/N2w+TEmVOphHQrZWWMFguphXgzrTS3cj8woYI6db71
+	rAf5YhJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPJ1Z-00BFSc-Gz; Tue, 07 Feb 2023 08:08:21 +0000
-Received: from mail-ua1-x936.google.com ([2607:f8b0:4864:20::936])
+	id 1pPJc3-00BJo7-Gy; Tue, 07 Feb 2023 08:46:03 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPJ1M-00BFNq-Rq
-	for linux-mediatek@lists.infradead.org; Tue, 07 Feb 2023 08:08:10 +0000
-Received: by mail-ua1-x936.google.com with SMTP id j21so2620076uap.5
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Feb 2023 00:08:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=bTuYq0wh0Ha5e/JZi49gtHl89wWgCPyAt0VAMeZNSPg=;
-        b=Uf0oqSFBef2a1mrodogZRfMbpWJvWhQbsNF0kPiXGDypT3gwD/NJmNxEgccU9mTWz8
-         ramu3CsFoylAZoLODo9U9uZPp+hwst32zLAVjX9NBqguoCVhvci7mqNn6hEN3+9bSdOa
-         2F3tmPUWUyI84TH12zzVQavTEli3Ric0YeEo0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=bTuYq0wh0Ha5e/JZi49gtHl89wWgCPyAt0VAMeZNSPg=;
-        b=IVuxr96uM8n6U9JP/HbHE07B+xCS5ilSQ639JV6qAluQ7U4EbYWyCXEHTlnIwFQI+1
-         OYlohq0kQQ1uAHnUCD8c6n4YAVBEVRNKJ2v3LQmm58VkeJeu/Fdm2A39FzlNQwxOK6Rv
-         sFCbkIvP8toe7HaZMKzbSH+Gq3bnYxnTnJMBzH8+VZ/7nrPLZDZoJe7T23T0BX9U/tmE
-         eAfQUtSVKjsrMr9VgrVenkRs4rF236qCfL8Xh9NDIcw4ghFLmVHYRkjhBr7EeQqxXT8G
-         qg9DVmfMtgE11RwVkWOevqnhS8CYKM3CgOuhY16Ywnxw9lgBLm0X1boG4zI6PCTnAdD7
-         3MSw==
-X-Gm-Message-State: AO0yUKXJAxpF2CX6x/yxKjFXEjtPq+pyH9Mopc7+kNLgW/8bXJlQ/HHF
-	JMFTIHgg6Ipijup1N0r1egWIRlJ+N9EXSBjT3GmYug==
-X-Google-Smtp-Source: AK7set/7W+6ki8pvexuyDYOumAa8CWiX97wy3VacbLOj5N7vZr1I9k2KRGuurkDuZjWbxhNPTH/KK6+YC18we+S4HoY=
-X-Received: by 2002:ab0:2bd5:0:b0:5e6:3536:22e4 with SMTP id
- s21-20020ab02bd5000000b005e6353622e4mr406815uar.55.1675757285570; Tue, 07 Feb
- 2023 00:08:05 -0800 (PST)
+	id 1pPJbs-00BJiU-CF; Tue, 07 Feb 2023 08:45:53 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6C62B6602063;
+	Tue,  7 Feb 2023 08:45:47 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1675759548;
+	bh=bqZiPDggGgpkRR/4QMaq8dEmj6yC7YxNan82FZ1HEg0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=m0Qt7Y7U4EDGztoWKbo7sR7qBF5kPURAE8Sle8wtvUxDCZJLfQ+4fFZRN5h2Dd8Kb
+	 DC7liY2X7Ik+9W+XK3hEcatLlNBAMiHORH66o/zTht6ju0WYhU7SpjLjzxN9IYG/TQ
+	 hyq9tbKeXtEUVFmr1d6fF1r+YMR3gv/AA8k3ePuvLeSycWYwEBvxP1vTLzl7wMjwV8
+	 82y2tIbdKCZDDYKJRAxAo1gb5D2ywScj/OmU3VOHTROOXeMR2pVp7fnRHh21SQlWKG
+	 Jc0bu9fIWcvRFk1H3DeFi3QZXaRV0nF8RRFgq6H2bzKItjORCZWQiMovLiG1IFef9c
+	 CPIMVU7mn+Ybw==
+Message-ID: <93d95309-84eb-16c6-b64e-b0c43d784900@collabora.com>
+Date: Tue, 7 Feb 2023 09:45:44 +0100
 MIME-Version: 1.0
-References: <20230206152928.918562-1-angelogioacchino.delregno@collabora.com> <20230206152928.918562-17-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230206152928.918562-17-angelogioacchino.delregno@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 7 Feb 2023 16:07:54 +0800
-Message-ID: <CAGXv+5Gb5S0k1c5EqPKoiBBHFyf7QBqyeWZkdAjQDCcTLYU_bw@mail.gmail.com>
-Subject: Re: [PATCH v1 16/45] clk: mediatek: mt8167: Convert to mtk_clk_simple_{probe,remove}()
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
-	johnson.wang@mediatek.com, miles.chen@mediatek.com, 
-	chun-jie.chen@mediatek.com, daniel@makrotopia.org, fparent@baylibre.com, 
-	msp@baylibre.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com, 
-	zhaojh329@gmail.com, sam.shih@mediatek.com, edward-jw.yang@mediatek.com, 
-	yangyingliang@huawei.com, granquet@baylibre.com, pablo.sun@mediatek.com, 
-	sean.wang@mediatek.com, chen.zhong@mediatek.com, linux-kernel@vger.kernel.org, 
-	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v1 05/45] clk: mediatek: mt2712: Migrate topckgen/mcucfg
+ to mtk_clk_simple_probe()
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
+ johnson.wang@mediatek.com, miles.chen@mediatek.com,
+ chun-jie.chen@mediatek.com, daniel@makrotopia.org, fparent@baylibre.com,
+ msp@baylibre.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com,
+ zhaojh329@gmail.com, sam.shih@mediatek.com, edward-jw.yang@mediatek.com,
+ yangyingliang@huawei.com, granquet@baylibre.com, pablo.sun@mediatek.com,
+ sean.wang@mediatek.com, chen.zhong@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230206152928.918562-1-angelogioacchino.delregno@collabora.com>
+ <20230206152928.918562-6-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5Gg60-4B29V9cYUw7b1OVcZvU+w9qdiiBbt10LJsAJiCA@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAGXv+5Gg60-4B29V9cYUw7b1OVcZvU+w9qdiiBbt10LJsAJiCA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230207_000808_913593_E5AD47A8 
-X-CRM114-Status: UNSURE (   8.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230207_004552_597726_6B4EA963 
+X-CRM114-Status: GOOD (  15.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,18 +83,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 6, 2023 at 11:30 PM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Convert topckgen and infracfg clock drivers to use the common
-> mtk_clk_simple_probe() mechanism and change this from the old
-> "static" CLK_OF_DECLARE to be a platform driver, allowing it
-> to eventually be built as a module.
->
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Il 07/02/23 07:15, Chen-Yu Tsai ha scritto:
+> On Mon, Feb 6, 2023 at 11:29 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Now that the common mtk_clk_simple_{probe,remove}() functions can deal
+>> with divider clocks it is possible to migrate more clock drivers to it:
+>> in this case, it's about topckgen.
+>> While at it, also perform a fast migration for mcucfg.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> 
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> 
+>> ---
+>>   drivers/clk/mediatek/clk-mt2712.c | 127 +++++-------------------------
+>>   1 file changed, 21 insertions(+), 106 deletions(-)
+>>
 
-Code looks OK, but vdecsys converted to builtin_platform_driver() while
-the others to module_platform_driver(). This deserves an explanation.
+..snip..
+                      __func__, r);
+>> +static const struct mtk_clk_desc topck_desc = {
+>> +       .clks = top_clks,
+>> +       .num_clks = ARRAY_SIZE(top_clks),
+>> +       .fixed_clks = top_fixed_clks,
+>> +       .num_fixed_clks = ARRAY_SIZE(top_fixed_clks),
+>> +       .factor_clks = top_divs,
+>> +       .num_factor_clks = ARRAY_SIZE(top_divs),
+>> +       .composite_clks = top_muxes,
+>> +       .num_composite_clks = ARRAY_SIZE(top_muxes),
+>> +       .divider_clks = top_adj_divs,
+>> +       .num_divider_clks = ARRAY_SIZE(top_adj_divs),
+>> +       .clk_lock = &mt2712_clk_lock,
+> 
+> At some point maybe we should look into splitting up the locks to one
+> per block, or converting everything to regmap.
+> 
 
-ChenYu
+I was thinking the same about the locks... but about regmap, that would
+actually add up some overhead at every R/W operation and I would really
+like to measure that precisely before doing any kind of regmap conversion
+for the MediaTek clocks.
+
+Perhaps I'll even find a way to avoid any kind of (even if small) overhead
+while doing that sometime in the future, which wouldn't be benefitting only
+MediaTek, but also other users like Qualcomm (as they have practically all
+clocks on regmap!).
+
+Cheers,
+Angelo
+
+
 
