@@ -4,53 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCE9EC636CC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 17:15:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5737BC636D3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 17:37:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=JLrL4iWympNnVNwAETpNE1kjBqSNjCEjKLn1CYJsz9g=; b=pZmoRsEXL4GiGL
-	VioDjyCFufGF0ICONXctCMpTB/xSSsRcWDAEsZU+YGnpKOTKcMMSkOJ9TER6cUIoSfNc4MEBCCDG7
-	WGTXpzHMUJ2FLFJwAErzTQEIiucOCFLEElgkvKo327UTUZzoxa6HFGA8D4QRj3UK0lYrLsmsvFUqQ
-	wLLe7dPWlmXv913Yusj949Lt6U0d+lqfL+8zhQ7cAbUmsM++D3zLs0RnH2q8/xoP+/0CPxtjI0sFy
-	CT+uvlMV1sATTGP7ONSLrhtacf48rLTFnDA3mfyY2l0Ktq274nk9/JH2OyZiyYwvxgVD5nBDtGl7V
-	NVEe79UA27PGwUfYWfMQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IAWhJgyBLCHktFlv45FppE+Kd52FqxZAt0WRBF70Yj8=; b=yvYr3HI1MaXQOaiVEtLDO18//C
+	zBKX3E25DxbBS3nYtCpzypMHgw87WyOo1TVqLz3k+UKM+safvPm80D00wCNr59YDuMILg/kubYmLp
+	DIMJT/agmZseZLYw77q1GRezzcWapC/X1lZy0hasOyKC6530WzLK/HU32AF36hAtOviEgO12MX93s
+	J3t/Tb2H1Q3c/3u6TZ4ydW4oplxcYbwhRq5yyDPRFyXVJxmmbQCGrgMTSe4dAfNI6cymwQEnqaeX2
+	MbvVgEg5aL9OpW4j38vaUqI7oP5FD/ehhybmHgEt5iTBKlwRjcnqxxUAAIH0+IQHQAxmgSzOmzbPs
+	xl7IUdoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPRZ6-00Ctgp-QA; Tue, 07 Feb 2023 17:15:32 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1pPRtp-00CweX-Pb; Tue, 07 Feb 2023 17:36:57 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPRYw-00Ctf1-L1; Tue, 07 Feb 2023 17:15:24 +0000
-Received: from mxbox4.masterlogin.de (unknown [192.168.10.79])
-	by mxout1.routing.net (Postfix) with ESMTP id E42B441A6D;
-	Tue,  7 Feb 2023 17:15:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1675790119;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=JLrL4iWympNnVNwAETpNE1kjBqSNjCEjKLn1CYJsz9g=;
-	b=s8/mNx/3hM5Z1BYZzXx5/GGPmL6fAfaQZV9DpVzN3oIYNqzMtl75EC9k/1Y8y/zd0bRaWX
-	CgAB6WfedG3wqUIB5pJxKlSjm4keFwfeeYJvkRapmLtnr8O7fbAGOEpFdmDoag7+LkCu4U
-	obWTm6EXVkSvv9RzF0AUXySe+yJj6g4=
-Received: from frank-G5.. (fttx-pool-217.61.159.155.bambit.de [217.61.159.155])
-	by mxbox4.masterlogin.de (Postfix) with ESMTPSA id 8A269802E7;
-	Tue,  7 Feb 2023 17:15:17 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-mediatek@lists.infradead.org
-Subject: [PATCH] dt-bindings: mt76: allow up to 4 interrupts for mt7986
-Date: Tue,  7 Feb 2023 18:15:12 +0100
-Message-Id: <20230207171512.35425-1-linux@fw-web.de>
-X-Mailer: git-send-email 2.34.1
+	id 1pPRtb-00CwbW-OS; Tue, 07 Feb 2023 17:36:45 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 42239B81A21;
+	Tue,  7 Feb 2023 17:36:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A72A4C433D2;
+	Tue,  7 Feb 2023 17:36:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1675791399;
+	bh=/z7E9+35HF++GNK97Y2nz1PXW/7n1/9S1ZZ+qdWSl5M=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=op88XA2u9kBjOqI/P+2tNgnm2OgpAsP4GWrYl4rwmnUDErHrls4fRQ8NjWuFids58
+	 aPeQv06oV4MxXSkbybNQc5od6f2lKjb/Pj3kuoh9+RA3NHUbKSzwHM03W7F8bVqHJh
+	 PTAv4UkW7VHxVysMGwPGM+7w5BUi88ErEbQCCtziiZBw0kczOyFlzuPUmoeByWclTo
+	 CBI6H/Yed6MbNHKDAkWTqxtRMXU56SuqNhVy/Um/wRTmDC9b2IMEbhSb6ShnVJyb1c
+	 ico9DdtpcJQJfJMCDdqvT4PL/ZdPJRMwsEf/T4sZbexTGnGgcGOA2ESm0EPhJ9O8Sn
+	 fdTLf3QQIaDaQ==
+Message-ID: <fbc306c1-8eef-3e71-c98d-3eb6d93879f0@kernel.org>
+Date: Tue, 7 Feb 2023 18:36:30 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mail-ID: 335c7e56-e374-4379-9b78-55056f0c79f6
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH v2 02/11] dt-bindings: net: mediatek,net: add mt7981-eth
+ binding
+To: Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Russell King <linux@armlinux.org.uk>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Lorenzo Bianconi
+ <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, DENG Qingfang <dqfext@gmail.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>,
+ Eric Dumazet <edumazet@google.com>, "David S. Miller" <davem@davemloft.net>,
+ Vladimir Oltean <olteanv@gmail.com>, Florian Fainelli
+ <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>
+Cc: Jianhui Zhao <zhaojh329@gmail.com>, =?UTF-8?Q?Bj=c3=b8rn_Mork?=
+ <bjorn@mork.no>
+References: <cover.1675779094.git.daniel@makrotopia.org>
+ <a48462893e76fc04dbb814b5ec6e79222ff90a78.1675779094.git.daniel@makrotopia.org>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzk@kernel.org>
+In-Reply-To: <a48462893e76fc04dbb814b5ec6e79222ff90a78.1675779094.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230207_091522_914113_2D008ED7 
-X-CRM114-Status: GOOD (  11.04  )
+X-CRM114-CacheID: sfid-20230207_093644_134913_73EE0329 
+X-CRM114-Status: GOOD (  18.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,46 +84,88 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, netdev@vger.kernel.org, Kalle Valo <kvalo@kernel.org>, Sean Wang <sean.wang@mediatek.com>, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Shayne Chen <shayne.chen@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+On 07/02/2023 15:19, Daniel Golle wrote:
+> Introduce DT bindings for the MT7981 SoC to mediatek,net.yaml.
+> 
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-Mt7986 needs 4 interrupts which are already defined in mt7986a.dtsi.
-Update binding to reflect it
+Please use scripts/get_maintainers.pl to get a list of necessary people
+and lists to CC.  It might happen, that command when run on an older
+kernel, gives you outdated entries.  Therefore please be sure you base
+your patches on recent Linux kernel.
 
-This fixes this error in dtbs_check (here only bpi-r3 example):
+Since this skipped also lists, there are no automated checks running on
+it, thus no point to review it.
 
-arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtb: wifi@18000000:
-interrupts: [[0, 213, 4], [0, 214, 4], [0, 215, 4], [0, 216, 4]] is too long
-	From schema: Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtb: wifi@18000000:
-Unevaluated properties are not allowed ('interrupts' was unexpected)
-	From schema: Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+Resend with proper address list, please.
 
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
- .../devicetree/bindings/net/wireless/mediatek,mt76.yaml      | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+> ---
+>  .../devicetree/bindings/net/mediatek,net.yaml | 42 +++++++++++++++++++
+>  1 file changed, 42 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+> index 7ef696204c5a..d17e2eb46118 100644
+> --- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
+> +++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+> @@ -21,6 +21,7 @@ properties:
+>        - mediatek,mt7623-eth
+>        - mediatek,mt7622-eth
+>        - mediatek,mt7629-eth
+> +      - mediatek,mt7981-eth
+>        - mediatek,mt7986-eth
+>        - ralink,rt5350-eth
+>  
+> @@ -206,6 +207,47 @@ allOf:
+>  
+>          mediatek,wed: false
+>  
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: mediatek,mt7981-eth
+> +    then:
+> +      properties:
+> +        interrupts:
+> +          minItems: 4
+> +
+> +        clocks:
+> +          minItems: 15
+> +          maxItems: 15
+> +
+> +        clock-names:
+> +          items:
+> +            - const: fe
+> +            - const: gp2
+> +            - const: gp1
+> +            - const: wocpu0
+> +            - const: sgmii_ck
+> +            - const: sgmii_tx250m
+> +            - const: sgmii_rx250m
+> +            - const: sgmii_cdr_ref
+> +            - const: sgmii_cdr_fb
+> +            - const: sgmii2_tx250m
+> +            - const: sgmii2_rx250m
+> +            - const: sgmii2_cdr_ref
+> +            - const: sgmii2_cdr_fb
+> +            - const: netsys0
+> +            - const: netsys1
+> +
+> +        mediatek,sgmiisys:
+> +          minItems: 2
+> +          maxItems: 2
+> +
+> +        mediatek,wed-pcie:
+> +          $ref: /schemas/types.yaml#/definitions/phandle
+> +          description:
+> +            Phandle to the mediatek wed-pcie controller.
 
-diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-index 212508672979..222b657fe4ea 100644
---- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-+++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-@@ -38,7 +38,10 @@ properties:
-       MT7986 should contain 3 regions consys, dcm, and sku, in this order.
- 
-   interrupts:
--    maxItems: 1
-+    minItems: 1
-+    maxItems: 4
-+    description:
-+      MT7986 should contain 4 items.
- 
-   power-domains:
-     maxItems: 1
--- 
-2.34.1
+Do not define properties in each variant.
+
+Best regards,
+Krzysztof
 
 
