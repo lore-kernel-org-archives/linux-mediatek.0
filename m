@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E875BC05027
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Feb 2023 21:00:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28499C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 01:49:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:
-	References:To:Subject:MIME-Version:Date:Message-ID:Content-Type:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/HPkf5YsTIOCnzVDtCplioRqVVDpwJJJeFUzxZkAr8c=; b=qYZAHXUXV7jlLiUUQL5qodA34y
-	4643uKdR+zvqoyRh499FoBhQOLR0n+wxWp3rC82Tc4wV/EPApGvH9vD3sQILyw8x9q9zvKZgOD4yQ
-	XMdsODiWIHlA3MYB1I3aJvUbhRymBa/VbR6DzyNGPFjwDoAsU8Etvl/54YqsJZV8j3i+MXzALBTGj
-	2rDRY9cdIWuZVA10veBUSOHsuBi4cC7NbJR2ApCFinypEdy3fjkR53cED6jC0wRf4iUlEuL7pvN8J
-	DW2Nfg7iUfa5bponaBDrH4rKf6ro1ckGnCSemfNR3Mv1Ug+DgaDMLlpRDMpyDo9cCUrKbDZ4dsThn
-	j5IttThw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=xfJdDHYM1kIjZH2oKMPB4Dv9VCfW1IAMgum+diCywO0=; b=PFcBPGs+2RCk2sC6GUQ7HXbbLb
+	RhFkbmmLKDkP2+qgH+/AvEKjIuxJHc0sTrTW0wlOJlm9pS+2PUOFz2F9trn7nh5TOapvqHrz/ie95
+	jl1YTqfE6Z6kJcP/qu6UDhkpRX7TPkZ1MgJbCrlLhzxmGZE9qmw/71QR5noQUiI6U2h0Qry7nCvwc
+	JxmSZhsJ1cpK9Cjs6BUMkp+hTTA4OBgrsL9bBp5Mp2aRi5gPQt7WDPotw5vMNlkdupChD+6ndrCFy
+	CKCerUbGmXu+cHYPoAXmtL7tQPyQdDnc4QWvYkuWNHAg2UL6tn2dM8rFWY74/gz1gykrSGig97On3
+	CVV4DYlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pP8b4-009vSV-OV; Mon, 06 Feb 2023 21:00:18 +0000
-Received: from sender4-op-o16.zoho.com ([136.143.188.16])
+	id 1pPD6K-00APZN-Lt; Tue, 07 Feb 2023 01:48:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pP8at-009vPs-K5; Mon, 06 Feb 2023 21:00:09 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1675717183; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=YCWwRuDdHCFI3y42hfY/nbUOP+GanWFxDNmJj675CvfKJYeKzDxmVX9oJvxqfKmeAZxDrcnFxYn8jVmadHHq+hiQZ3hyQTOtNCihZxZX6+qnnjtqkp4tVcmQbgerJkSgsfJHur3cqS2Mi7xVr2s55rTALn9DUtOtKFufJo3XkmQ=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1675717183; h=Content-Type:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=/HPkf5YsTIOCnzVDtCplioRqVVDpwJJJeFUzxZkAr8c=; 
-	b=DJmiFPA1+izZIHd/MPAMDzKt1ScYlEM6Cj2tyDZUf4+4wi80rvXWjpUVbPbc0SYr+qLSa/YcvNPju40N86aGq1MwF1of00t1saksy76ZJuBViR4CkRcLLAjDL2AGCnt+9Z3ci2kYruWmsn17WzeZQLOlA/BWj7LyY/T/UHv90Z8=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1675717183;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Content-Type:Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Message-Id:Reply-To;
-	bh=/HPkf5YsTIOCnzVDtCplioRqVVDpwJJJeFUzxZkAr8c=;
-	b=XSQBAMOHuPh/M8oUFzk9wiC7zF0vQIbHdqpMfrso1PMoPVtUqVtmH3Nc9kXWTZj9
-	V32atz5//fuBnfSowrL6am+NLoCKhjENflu3u3SY85+lYet8/fuA0+ksU3lDTh7GPtt
-	/2KS0+rHdGUcWw5ckspUJpNMcaT2u2b35Fc1AKTM=
-Received: from [10.10.10.3] (31.223.26.239 [31.223.26.239]) by mx.zohomail.com
-	with SMTPS id 1675717182038197.75552933950325; Mon, 6 Feb 2023 12:59:42 -0800 (PST)
-Content-Type: multipart/mixed; boundary="------------I37axy810XQiqT7HWyRq3zRz"
-Message-ID: <d160cc60-d62a-e1a9-5580-48a50a2568df@arinc9.com>
-Date: Mon, 6 Feb 2023 23:59:35 +0300
+	id 1pPD6F-00APYa-WD; Tue, 07 Feb 2023 01:48:49 +0000
+X-UUID: 8b0ff8c0a68911eda08d4d6090ec5a5c-20230206
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=xfJdDHYM1kIjZH2oKMPB4Dv9VCfW1IAMgum+diCywO0=;
+	b=JlsUz3jqlcpktPVP7ZsYLFi9uhriH2E7uV+sCeJNtEWWDPBLWwY0tr5M1L0hvh61+Oyzowjtk5uvFKXYbE/nQEBgwBMn/3qA+Y3muEpRx/D2gDh/rOq5S3lknV4oLqsMEhFeyK9bbTir8Fhi8PQ9Uqrlk99Q8Y3yTK5GDgD0vRk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.19,REQID:e7402d7c-e672-426a-9a67-a841ce01c8cf,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:90
+X-CID-INFO: VERSION:1.1.19,REQID:e7402d7c-e672-426a-9a67-a841ce01c8cf,IP:0,URL
+	:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:90
+X-CID-META: VersionHash:885ddb2,CLOUDID:02fca8f7-ff42-4fb0-b929-626456a83c14,B
+	ulkID:2302070948248JL1IL6H,BulkQuantity:2,Recheck:0,SF:38|29|28|17|19|48,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-UUID: 8b0ff8c0a68911eda08d4d6090ec5a5c-20230206
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 182089732; Mon, 06 Feb 2023 18:48:39 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 7 Feb 2023 09:48:01 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 7 Feb 2023 09:48:01 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>
+CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-clk@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
+	<moudy.ho@mediatek.com>
+Subject: [PATCH v7 0/1] Migrate MT8195 VPPSYS 0/1 to mtk-mmsys drive
+Date: Tue, 7 Feb 2023 09:47:59 +0800
+Message-ID: <20230207014800.7619-1-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH net] net: dsa: mt7530: don't change PVC_EG_TAG when CPU
- port becomes VLAN-aware
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-References: <20230205203906.i3jci4pxd6mw74in@skbuf>
- <b055e42f-ff0f-d05a-d462-961694b035c1@arinc9.com>
- <20230205235053.g5cttegcdsvh7uk3@skbuf>
- <116ff532-4ebc-4422-6599-1d5872ff9eb8@arinc9.com>
- <20230206174627.mv4ljr4gtkpr7w55@skbuf>
- <5e474cb7-446c-d44a-47f6-f679ae121335@arinc9.com>
- <f297c2c4-6e7c-57ac-2394-f6025d309b9d@arinc9.com>
- <f297c2c4-6e7c-57ac-2394-f6025d309b9d@arinc9.com>
- <20230206203335.6uxfiylftyktut5u@skbuf>
- <4ee5df8d-618b-db78-9c14-17a45e383b67@arinc9.com>
- <20230206204228.sa45cvco6bltidwq@skbuf>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20230206204228.sa45cvco6bltidwq@skbuf>
-X-Zoho-Virus-Status: 1
-X-ZohoMailClient: External
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230206_130007_745253_6CBDAB73 
-X-CRM114-Status: GOOD (  18.83  )
+X-CRM114-CacheID: sfid-20230206_174848_061692_F4D34558 
+X-CRM114-Status: GOOD (  10.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,148 +83,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, richard@routerhints.com, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, erkin.bozoglu@xeront.com, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is a multi-part message in MIME format.
---------------I37axy810XQiqT7HWyRq3zRz
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Change since v6:
+- Rebase on linux-next.
+- Drop applied patches [1/4], [2/4] and [4/4].
+- In response to the API changes of "mtk_clk_register_gates" and
+  "mtk_alloc_clk_data", the patch [3/4] has been modified accordingly.
 
-On 6.02.2023 23:42, Vladimir Oltean wrote:
-> On Mon, Feb 06, 2023 at 11:35:50PM +0300, Arınç ÜNAL wrote:
->> On 06/02/2023 23:33, Vladimir Oltean wrote:
->>> On Mon, Feb 06, 2023 at 10:41:47PM +0300, Arınç ÜNAL wrote:
->>>> One last thing. Specific to MT7530 switch in MT7621 SoC, if port@5 is the
->>>> only CPU port defined on the devicetree, frames sent from DSA master appears
->>>> malformed on the user port. Packet capture on computer connected to the user
->>>> port is attached.
->>>>
->>>> The ARP frames on the pcapng file are received on the DSA master, I captured
->>>> them with tcpdump, and put it in the attachments. Then I start pinging from
->>>> the DSA master and the malformed frames appear on the pcapng file.
->>>>
->>>> It'd be great if you could take a look this final issue.
->>>
->>> What phy-mode does port@5 use when it doesn't work? What about the DSA master?
->>
->> It's rgmii on port@5 and gmac1.
-> 
-> What kind of RGMII? Plain "rgmii" on both ends, with no internal delays?
-> With RGMII, somebody must add a skew to the clock signal relative to the
-> data signals, so that setup/hold times at the other end are not violated.
-> Either the transmitter or the receiver can add RGMII delays in each
-> direction of communication, but someone must do it, and no more than one
-> entity should do it.
-> 
-> So my question would be: could you retry after replacing phy-mode = "rgmii"
-> with phy-mode = "rgmii-id" on port@5? And if that doesn't change anything
-> (unlikely but possible), also try "rgmii-txid" and "rgmii-rxid" in port@5?
-> Don't change the phy-mode on gmac1.
+Change since v5:
+- Rebase on linux-next.
+- Correct the compatible enumeration order in "mediatek,mmsys.yaml".
 
-Still getting malformed frames. Packet capture for each phy-mode is 
-attached. Made sure the phy-mode with:
+Hi,
 
-# cat /proc/device-tree/ethernet@1e100000/mac@1/phy-mode
-rgmii
+This series splits patches from the original mailing list below:
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=711592
 
-# cat 
-/proc/device-tree/ethernet@1e100000/mdio-bus/switch@1f/ports/port@5/phy-mode
-rgmii-id
+Refer to the comments of 0/8 and 1/8 in the following series:
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=702518
+All about the MT8195 VPPSYS 0/1 should be probed from the "mtk-mmsys"
+driver, which then starts its own clock driver as the platform driver.
 
-# cat 
-/proc/device-tree/ethernet@1e100000/mdio-bus/switch@1f/ports/port@5/phy-mode
-rgmii-txid
+Moudy Ho (1):
+  clk: mediatek: remove MT8195 vppsys/0/1 simple_probe
 
-# cat 
-/proc/device-tree/ethernet@1e100000/mdio-bus/switch@1f/ports/port@5/phy-mode
-rgmii-rxid
+ drivers/clk/mediatek/clk-mt8195-vpp0.c | 58 +++++++++++++++++++-------
+ drivers/clk/mediatek/clk-mt8195-vpp1.c | 58 +++++++++++++++++++-------
+ 2 files changed, 86 insertions(+), 30 deletions(-)
 
-Arınç
---------------I37axy810XQiqT7HWyRq3zRz
-Content-Type: application/x-pcapng; name="rgmii-id.pcapng"
-Content-Disposition: attachment; filename="rgmii-id.pcapng"
-Content-Transfer-Encoding: base64
+-- 
+2.18.0
 
-Cg0NCrgAAABNPCsaAQAAAP//////////AgA2AEludGVsKFIpIENvcmUoVE0pIGk3LTg3MDBL
-IENQVSBAIDMuNzBHSHogKHdpdGggU1NFNC4yKQAAAwAXAExpbnV4IDUuMTkuMC0yOS1nZW5l
-cmljAAQAOgBEdW1wY2FwIChXaXJlc2hhcmspIDMuNi43IChHaXQgdjMuNi43IHBhY2thZ2Vk
-IGFzIDMuNi43LTEpAAAAAAAAuAAAAAEAAABIAAAAAQAAAAAABAACAAYAZW5wOXMwAAAJAAEA
-CQAAAAwAFwBMaW51eCA1LjE5LjAtMjktZ2VuZXJpYwAAAAAASAAAAAYAAABcAAAAAAAAAIZX
-QRcJjCxpPAAAADwAAAD//17/mlc+eMWU+oItpwABCAAGAAABPnjFlNqCgKgCAQAAAAAAoMCo
-AgIAAAAAAAAAAAAAAAAAAKg7CMJcAAAABgAAAFwAAAAAAAAAhldBF1VSMKU8AAAAPAAAAP//
-//+f98CoAgIAAAAgAAAAAAAAAAAAAKg7GNIAAMUlNeOI8QgQKBicy8gTkRXjpE2mzAu1N5fC
-ZpsOEVwAAAAGAAAAXAAAAAAAAACGV0EXPGk54jwAAAA8AAAA/////5//PnjFlNqCKaYAAQgA
-hgAIAT54xZTagoCgAgEAAAAAACDAqAICAAAAAAAAAAAAAAAAAACoOxjWXAAAAAYAAABcAAAA
-AAAAAIdXQRemS31YPAAAADwAAAD////////AqAICAAAAIAAAAAAAAAAAAACoOxjWAAACDL7U
-AAMAAwAAAAQAAACEAAAAAQAAAKMAAAAEAABcAAAABgAAAFwAAAAAAAAAh1dBFx2PhZU8AAAA
-PAAAAP///v+f9z54xZTagimmAAEIAIYACAE+eMWUWoKAgAIBAAAAAAAgwKgCAgAAAAAAAAAA
-AAAAAAAAqDsY1lwAAAAGAAAAXAAAAAAAAACHV0EXWQaP0jwAAAA8AAAA///+/5//wKgCAgAA
-ACAAAAAAAAAAAAAAqDsYwgAAAgxA8wADAAQAAAFwSDICAAAAAAMAACEEAAAAAAAAXAAAAAYA
-AABcAAAAAAAAAIhXQRcL1d5HPAAAADwAAAD//17/mhc+eMWU2oIppgABCAAGAAABPnjFlNqC
-gKACAQAAAAAAqMCoAgIAAAAAAAAAAAAAAAAAAKg7GNJcAAAABgAAAFwAAAAAAAAAiFdBFwv8
-8oM8AAAAPAAAAP//Xv+aFz54xZTagimmAAEIAAYAAAE+eMWU2oKAqAIBAAAAAACgwKgCAgAA
-AAAAAAAAAAAAAAAAqDsY0lwAAAAGAAAAXAAAAAAAAACIV0EXmJT8wDwAAAA8AAAA///+/5/3
-wKgCAgAAACAAAAAAAAAAAAAAqDsY1gAAAAAADwAAAAAAAAABQnAQADAAAAAAACUDAAAABAAA
-XAAAAAUAAABsAAAAAAAAAA70BQA9YaQ3AQAcAENvdW50ZXJzIHByb3ZpZGVkIGJ5IGR1bXBj
-YXACAAgADvQFAD6QqTYDAAgADvQFAHlgpDcEAAgACQAAAAAAAAAFAAgAAAAAAAAAAAAAAAAA
-bAAAAA==
---------------I37axy810XQiqT7HWyRq3zRz
-Content-Type: application/x-pcapng; name="rgmii-rxid.pcapng"
-Content-Disposition: attachment; filename="rgmii-rxid.pcapng"
-Content-Transfer-Encoding: base64
-
-Cg0NCrgAAABNPCsaAQAAAP//////////AgA2AEludGVsKFIpIENvcmUoVE0pIGk3LTg3MDBL
-IENQVSBAIDMuNzBHSHogKHdpdGggU1NFNC4yKQAAAwAXAExpbnV4IDUuMTkuMC0yOS1nZW5l
-cmljAAQAOgBEdW1wY2FwIChXaXJlc2hhcmspIDMuNi43IChHaXQgdjMuNi43IHBhY2thZ2Vk
-IGFzIDMuNi43LTEpAAAAAAAAuAAAAAEAAABIAAAAAQAAAAAABAACAAYAZW5wOXMwAAAJAAEA
-CQAAAAwAFwBMaW51eCA1LjE5LjAtMjktZ2VuZXJpYwAAAAAASAAAAAYAAADEAAAAAAAAAMBX
-QReEiPzzpAAAAKQAAAD//17/mleyZWfY8I8ppsCoAgIAAAAAAAAAAAAAAAAAAA6eHugAAH1M
-T36UCwIFhBg2/lTKHLbrDyHj2osMmkMN3Nmdf7s8mqk09L/dL5hiGMth+MQYbYLBPJ9WSoB2
-4KzC1wTictugSsWV2nvXIHxyvSOKKewscluykrxdEKTEgR1lK7Ug4YZ4UU4PrzCBoT715RUG
-gKzdMf/3sgByKPi5NocG0MQAAAAGAAAA3AAAAAAAAADBV0EX3lO4MLoAAAC6AAAA//9e/5v3
-smVn2PCPKaYAAQgABgQAAbJlZ9hQj4AAAgEAAAAAAKDAqAICAAAAAAAAAAAAAAAAAAAOnl7o
-AADFJTXjiPEIACgYnMuIE5kd46RNpkwLsTaXwmabDgGyhNUjnjAEOxykGGi5hMlQMYc8/GV5
-HBggo/o/wrEQETQGYQBv6rIbV9ZQ5Tn1AYJigtqtTpk4DbOD3VNgUgrXhsQ1qItcAhEiZmTS
-ND8fIhBAlC49vY+v9y8woTP8AADcAAAABgAAAFwAAAAAAAAAwVdBF3/twG08AAAAPAAAAP//
-Xv+aV7JlZ9jwjymmAAEIAAYEAAHAqAICAAAAAAAAAAAAAAAAAAAOng7oAACZoGH+gEoQA0vo
-WlEa0FwAAAAGAAAAXAAAAAAAAADBV0EX2N5L4zwAAAA8AAAA//9e/5pXwKgCAqAAIakAAAAA
-AAAAAAAADp7e6AAAAgyrhwADAAIAAAACAAAAAHJlZ3VMYRBHci0zdjIAXAAAAAYAAABcAAAA
-AAAAAMJXQRf4eCMfPAAAADwAAAD//17/m9fAqAICAAAhIAAAAAAAAAAAAAAOnl7oAAACDH78
-gAMAAwAAAAQAAAAEAAAAAQAAAKMAAAAEAABcAAAABgAAAFwAAAAAAAAAwldBF2xSK1w8AAAA
-PAAAAP//Xv+bV7JlZ9jwjymmAAEIAAYEAAGyZWfYAI+AAQIBAAAAAACowKgCAgAAAADAqAIC
-AAAAAAAAAAAAAFwAAAAFAAAAbAAAAAAAAAAO9AUAQ8J2RgEAHABDb3VudGVycyBwcm92aWRl
-ZCBieSBkdW1wY2FwAgAIAA70BQA1wqdFAwAIAA70BQCuwXZGBAAIAAYAAAAAAAAABQAIAAAA
-AAAAAAAAAAAAAGwAAAA=
---------------I37axy810XQiqT7HWyRq3zRz
-Content-Type: application/x-pcapng; name="rgmii-txid.pcapng"
-Content-Disposition: attachment; filename="rgmii-txid.pcapng"
-Content-Transfer-Encoding: base64
-
-Cg0NCrgAAABNPCsaAQAAAP//////////AgA2AEludGVsKFIpIENvcmUoVE0pIGk3LTg3MDBL
-IENQVSBAIDMuNzBHSHogKHdpdGggU1NFNC4yKQAAAwAXAExpbnV4IDUuMTkuMC0yOS1nZW5l
-cmljAAQAOgBEdW1wY2FwIChXaXJlc2hhcmspIDMuNi43IChHaXQgdjMuNi43IHBhY2thZ2Vk
-IGFzIDMuNi43LTEpAAAAAAAAuAAAAAEAAABIAAAAAQAAAAAABAACAAYAZW5wOXMwAAAJAAEA
-CQAAAAwAFwBMaW51eCA1LjE5LjAtMjktZ2VuZXJpYwAAAAAASAAAAAYAAABcAAAAAAAAAKlX
-QRdItN2pPAAAADwAAAD//17/mlcSyYnwpeIppgABCAAGAAABEsmJ8KXigKgCAQAAAAAAqMCo
-AgIAAAAAAAAAAAAAAAAAAEg0FohcAAAABgAAAFwAAAAAAAAAqVdBF3R3Hec8AAAAPAAAAP//
-DvuaBxLJifCl4immAAEIAAYAAAESyYnwBOKAAAIBAAAAAACowKgCAgAAAAAAAAAAAAAAAAAA
-SDQWiFwAAAAGAAAAXAAAAAAAAACqV0EXn/YlJDwAAAA8AAAA//9e/5pXEsmJ8KXiKacAAQgA
-BgAIARLJifCl4sCoAgEAAAAAAKjAqAICAAAAAAAAAAAAAAAAAABINBaIXAAAAAYAAABcAAAA
-AAAAAKpXQRe38TaZPAAAADwAAAD//177mgcSyYnwpeIppgABCAAGAAABEsmJ8CTigKACAQAA
-AAAAoMCoAgIAAAAAAAAAAAAAAAAAAEg0FohcAAAABgAAAFwAAAAAAAAAqldBFwskh9U8AAAA
-PAAAAP//HvuaBxLJifCl4imnAAEIAAYAAAESyYnwBOKAoAIBAAAAAACowKgCAgAAAAAAAAAA
-AAAAAAAASDQWiFwAAAAGAAAAXAAAAAAAAACrV0EXY8OPEjwAAAA8AAAA//8e+5oHEsmJ8KXi
-KSYAAQgABgQAARLJifAE4oAAAgEAAAAAAKDAqAICAAAAAAAAAAAAAAAAAABINFaIXAAAAAYA
-AABcAAAAAAAAAKtXQRfUuZSIPAAAADwAAAD//x77mgfAqAICAAAhqQAAAAAAAAAAAABINFaI
-AAACDB9vAAMABAAAAXAIMgIAAAAAAwAAIQQAAAAAAABcAAAABgAAAFwAAAAAAAAAq1dBF8Lp
-2cU8AAAAPAAAAP//Xv+aVxLJifCl4imnAAEIAAYAAAESyYnwpeLAqAIBAAAAAACowKgCAgAA
-AAAAAAAAAAAAAAAASDQWiFwAAAAGAAAAXAAAAAAAAACsV0EXJefhAjwAAAA8AAAA//9e+5pH
-EsmJ8KXiKaYAAQgABgAAARLJifCl4oCgAgEAAAAAAKjAqAICAAAAAAAAAAAAAAAAAABINBaI
-XAAAAAUAAABsAAAAAAAAAA70BQCBXKVAAQAcAENvdW50ZXJzIHByb3ZpZGVkIGJ5IGR1bXBj
-YXACAAgADvQFAKnb2T8DAAgADvQFAO1bpUAEAAgACQAAAAAAAAAFAAgAAAAAAAAAAAAAAAAA
-bAAAAA==
-
---------------I37axy810XQiqT7HWyRq3zRz--
 
