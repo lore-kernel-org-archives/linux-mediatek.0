@@ -4,70 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E24E6C05027
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 09:35:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BD6EC636CC
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 09:37:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pAjHxEsnyEoI0bt0L75RtJVBnjmbipaXcQ/p3RqlNjU=; b=wmAd/o8H3SiaYK2wl1e9xk+mne
-	wlrts+ZiTzKanlW9sV6ZNoHR4s0gc3qnOmTqeY9Hz/uaOI3NTf7KjonFYVV/Z8kYLGdW1ABnbxAos
-	dFSb2BUqQ95x7SSjgDjxlqNT4pNMIVKpTkkd6ZpY6PQJCiXNFIb2b17p5vWjvnrR8sQeHNgJNDy8i
-	JSqTPpTshjpTF78FrTpXasOs+/PbTLo6OvSnAOMbckaMjgYCYD6CkW4iuvHemzhynbKAr/IuWsBwL
-	M/qYkD1ZkD/2Ai6ftw3Twf1IxFWnWxChU+4HBRS7Y9P1cOxgU25efmRkBqQB8aJjNBSS+svN3k+VM
-	dtH/mE9w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MnSkljIpR8ATyKhVrygVxOMSwVCtcXa/ymKaXsWn3tA=; b=may0LAlQEL4Nqs0Gquwy+UYK44
+	QP7eRbSdNTeueKl+DdEOohE2hnOF/H2auaMQmp04iMDYzPfUpdMBFCV0Iq0HxY5NaKdOBuoyVxV06
+	ZOGvsFimq+G4RQlMFMn6BSPFR6nmM8kXWgUZz5WIYHwNAIqUHDBw6cuL9buY7S0tQvg/8Or7c4UR5
+	jh3kXDriRsvzMiuklEHMXYRQl9r+ljjNyN7Ybtzns5GehFNlSPjA3tKIaJM3hGrOgEzHaLMs+UpJ6
+	XZkmt/CsvONTt5/4d7Zp4UwJIcDzb73So6nmETx13pUARLM5uU2LG0j2n7pDSfoXjxIVHEMlT1Nud
+	UTnktCoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPgr4-00EtTO-DX; Wed, 08 Feb 2023 09:35:06 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pPgtZ-00EuXh-Vp; Wed, 08 Feb 2023 09:37:41 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPglo-00Er3v-66; Wed, 08 Feb 2023 09:29:41 +0000
-X-UUID: 18a367c6a79311eda08d4d6090ec5a5c-20230208
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=pAjHxEsnyEoI0bt0L75RtJVBnjmbipaXcQ/p3RqlNjU=;
-	b=J3B/IXY/Kyokhu3UYgwV04gAXL12q8+8+sb25o2eFoP1rwzhodD2ucdjuwKXF6wEMv7zNCCEGVrPnK0sz4OaE6nV7blOsnWJcoNgx6n3ZDqj6nVnSvGQnXm6cXmXcTR+Fy+NuXO1CpCQtCEqwhdykMk6gyGFBSGG0EgfhbOeUdo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.19,REQID:6243a9c5-0429-4057-b77f-d83f94240448,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:885ddb2,CLOUDID:7f10ab56-dd49-462e-a4be-2143a3ddc739,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-UUID: 18a367c6a79311eda08d4d6090ec5a5c-20230208
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1452115144; Wed, 08 Feb 2023 02:29:33 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 8 Feb 2023 17:08:57 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 8 Feb 2023 17:08:57 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Ping-Hsun
- Wu" <ping-hsun.wu@mediatek.com>
-CC: <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
-	<moudy.ho@mediatek.com>
-Subject: [PATCH v6 02/12] media: platform: mtk-mdp3: add files for chip configuration
-Date: Wed, 8 Feb 2023 17:08:45 +0800
-Message-ID: <20230208090855.18934-3-moudy.ho@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230208090855.18934-1-moudy.ho@mediatek.com>
-References: <20230208090855.18934-1-moudy.ho@mediatek.com>
+	id 1pPgp6-00Esb8-OK; Wed, 08 Feb 2023 09:33:09 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 40D3A61544;
+	Wed,  8 Feb 2023 09:33:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1595C433EF;
+	Wed,  8 Feb 2023 09:32:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1675848783;
+	bh=mtLAxODoZih5gt61pMFGV9SSfH5hXOAxrX2G4TD7tV8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=bFcBniOZqVPytRtBzGqthXxYKgChac/vlLk8nKkV4S9ps/uitnOruM83klgnrBVWX
+	 hlceJQRmodry2wCGOvSB6BnCFYfCo9/qC1sVlXtkGlOhbcF0kWlyJa/7KJWiSoL2SE
+	 RQh1v49CIUMk6mJ7vf60Nw9hlMote6tmWY/CUa0xeYdwBCqKm0W6f7Urh4vqXXt1IH
+	 hxxgCgQQm7gnzlexkhh+YRJdf4iTEnSttLRX+SEg6Hi7fjyt/WFZ2Gm14ThP+qN1Mw
+	 kPW7EOENnOAnc4c2TI2+U4END54wvsHRysVDYYN1ZefZLPfxE9dQVwMChs9DKrHcyw
+	 r3BFRPx/pBeYg==
+Message-ID: <b6d782ef-b375-1e73-a384-1ff37c1548a7@kernel.org>
+Date: Wed, 8 Feb 2023 10:32:53 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH v2 03/11] dt-bindings: arm: mediatek: add
+ 'mediatek,pn_swap' property
+Content-Language: en-US
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Russell King <linux@armlinux.org.uk>, Heiner Kallweit
+ <hkallweit1@gmail.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>, John Crispin <john@phrozen.org>,
+ Felix Fietkau <nbd@nbd.name>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, DENG Qingfang <dqfext@gmail.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>,
+ Eric Dumazet <edumazet@google.com>, "David S. Miller" <davem@davemloft.net>,
+ Vladimir Oltean <olteanv@gmail.com>, Florian Fainelli
+ <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ Jianhui Zhao <zhaojh329@gmail.com>, =?UTF-8?Q?Bj=c3=b8rn_Mork?=
+ <bjorn@mork.no>
+References: <cover.1675779094.git.daniel@makrotopia.org>
+ <a8c567cf8c3ec6fef426b64fb1ab7f6e63a0cc07.1675779094.git.daniel@makrotopia.org>
+ <ad09a065-c10d-3061-adbe-c58724cdfde0@kernel.org>
+ <Y+KR26aepqlfsjYG@makrotopia.org>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+In-Reply-To: <Y+KR26aepqlfsjYG@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230208_012940_258917_CEA913B9 
-X-CRM114-Status: GOOD (  19.27  )
+X-CRM114-CacheID: sfid-20230208_013304_917946_0B741E1E 
+X-CRM114-Status: GOOD (  30.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,140 +90,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to be compatible with more MDP3 chip settings in further,
-integrate and separate chip-related configurations into specific files.
+On 07/02/2023 19:00, Daniel Golle wrote:
+> Hi Krzysztof,
+> 
+> On Tue, Feb 07, 2023 at 06:38:23PM +0100, Krzysztof Kozlowski wrote:
+>> On 07/02/2023 15:19, Daniel Golle wrote:
+>>> Add documentation for the newly introduced 'mediatek,pn_swap' property
+>>> to mediatek,sgmiisys.txt.
+>>>
+>>
+>> Please use scripts/get_maintainers.pl to get a list of necessary people
+>> and lists to CC.  It might happen, that command when run on an older
+>> kernel, gives you outdated entries.  Therefore please be sure you base
+>> your patches on recent Linux kernel.
+>>
+>>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+>>> ---
+>>>  .../devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt    | 4 ++++
+>>>  1 file changed, 4 insertions(+)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+>>> index d2c24c277514..b38dd0fde21d 100644
+>>> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+>>> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+>>> @@ -14,6 +14,10 @@ Required Properties:
+>>>  	- "mediatek,mt7986-sgmiisys_1", "syscon"
+>>>  - #clock-cells: Must be 1
+>>>  
+>>> +Optional Properties:
+>>> +
+>>> +- mediatek,pn_swap: Invert polarity of the SGMII data lanes.
+>>
+>> No:
+>> 1. No new properties for TXT bindings,
+> 
+> So I'll have to convert the bindings to YAML, right?
 
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
----
- drivers/media/platform/mediatek/mdp3/Makefile |  2 +-
- .../platform/mediatek/mdp3/mdp_cfg_data.c     | 38 +++++++++++++++++++
- .../platform/mediatek/mdp3/mtk-mdp3-cfg.h     | 12 ++++++
- .../platform/mediatek/mdp3/mtk-mdp3-core.c    | 33 +---------------
- 4 files changed, 53 insertions(+), 32 deletions(-)
- create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
- create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h
+Yes, please.
 
-diff --git a/drivers/media/platform/mediatek/mdp3/Makefile b/drivers/media/platform/mediatek/mdp3/Makefile
-index 63e6c87e480b..2ee24195a2dd 100644
---- a/drivers/media/platform/mediatek/mdp3/Makefile
-+++ b/drivers/media/platform/mediatek/mdp3/Makefile
-@@ -1,5 +1,5 @@
- # SPDX-License-Identifier: GPL-2.0-only
--mtk-mdp3-y += mtk-mdp3-core.o mtk-mdp3-vpu.o mtk-mdp3-regs.o
-+mtk-mdp3-y += mdp_cfg_data.o mtk-mdp3-core.o mtk-mdp3-vpu.o mtk-mdp3-regs.o
- mtk-mdp3-y += mtk-mdp3-m2m.o
- mtk-mdp3-y += mtk-mdp3-comp.o mtk-mdp3-cmdq.o
- 
-diff --git a/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c b/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
-new file mode 100644
-index 000000000000..837b8202dcc7
---- /dev/null
-+++ b/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
-@@ -0,0 +1,38 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2023 MediaTek Inc.
-+ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-+ */
-+
-+#include "mtk-mdp3-core.h"
-+
-+static const struct of_device_id mt8183_mdp_probe_infra[MDP_INFRA_MAX] = {
-+	[MDP_INFRA_MMSYS] = { .compatible = "mediatek,mt8183-mmsys" },
-+	[MDP_INFRA_MUTEX] = { .compatible = "mediatek,mt8183-disp-mutex" },
-+	[MDP_INFRA_SCP] = { .compatible = "mediatek,mt8183-scp" }
-+};
-+
-+static const struct mdp_platform_config mt8183_plat_cfg = {
-+	.rdma_support_10bit		= true,
-+	.rdma_rsz1_sram_sharing		= true,
-+	.rdma_upsample_repeat_only	= true,
-+	.rsz_disable_dcm_small_sample	= false,
-+	.wrot_filter_constraint		= false,
-+};
-+
-+static const u32 mt8183_mutex_idx[MDP_MAX_COMP_COUNT] = {
-+	[MDP_COMP_RDMA0] = MUTEX_MOD_IDX_MDP_RDMA0,
-+	[MDP_COMP_RSZ0] = MUTEX_MOD_IDX_MDP_RSZ0,
-+	[MDP_COMP_RSZ1] = MUTEX_MOD_IDX_MDP_RSZ1,
-+	[MDP_COMP_TDSHP0] = MUTEX_MOD_IDX_MDP_TDSHP0,
-+	[MDP_COMP_WROT0] = MUTEX_MOD_IDX_MDP_WROT0,
-+	[MDP_COMP_WDMA] = MUTEX_MOD_IDX_MDP_WDMA,
-+	[MDP_COMP_AAL0] = MUTEX_MOD_IDX_MDP_AAL0,
-+	[MDP_COMP_CCORR0] = MUTEX_MOD_IDX_MDP_CCORR0,
-+};
-+
-+const struct mtk_mdp_driver_data mt8183_mdp_driver_data = {
-+	.mdp_probe_infra = mt8183_mdp_probe_infra,
-+	.mdp_cfg = &mt8183_plat_cfg,
-+	.mdp_mutex_table_idx = mt8183_mutex_idx,
-+};
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h
-new file mode 100644
-index 000000000000..e0a698cba6ff
---- /dev/null
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h
-@@ -0,0 +1,12 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (c) 2023 MediaTek Inc.
-+ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-+ */
-+
-+#ifndef __MTK_MDP3_CFG_H__
-+#define __MTK_MDP3_CFG_H__
-+
-+extern const struct mtk_mdp_driver_data mt8183_mdp_driver_data;
-+
-+#endif  /* __MTK_MDP3_CFG_H__ */
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-index 2d1f6ae9f080..207b54f84fc0 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-@@ -12,40 +12,11 @@
- #include <linux/remoteproc.h>
- #include <linux/remoteproc/mtk_scp.h>
- #include <media/videobuf2-dma-contig.h>
-+
- #include "mtk-mdp3-core.h"
-+#include "mtk-mdp3-cfg.h"
- #include "mtk-mdp3-m2m.h"
- 
--static const struct mdp_platform_config mt8183_plat_cfg = {
--	.rdma_support_10bit		= true,
--	.rdma_rsz1_sram_sharing		= true,
--	.rdma_upsample_repeat_only	= true,
--	.rsz_disable_dcm_small_sample	= false,
--	.wrot_filter_constraint		= false,
--};
--
--static const struct of_device_id mt8183_mdp_probe_infra[MDP_INFRA_MAX] = {
--	[MDP_INFRA_MMSYS] = { .compatible = "mediatek,mt8183-mmsys" },
--	[MDP_INFRA_MUTEX] = { .compatible = "mediatek,mt8183-disp-mutex" },
--	[MDP_INFRA_SCP] = { .compatible = "mediatek,mt8183-scp" }
--};
--
--static const u32 mt8183_mutex_idx[MDP_MAX_COMP_COUNT] = {
--	[MDP_COMP_RDMA0] = MUTEX_MOD_IDX_MDP_RDMA0,
--	[MDP_COMP_RSZ0] = MUTEX_MOD_IDX_MDP_RSZ0,
--	[MDP_COMP_RSZ1] = MUTEX_MOD_IDX_MDP_RSZ1,
--	[MDP_COMP_TDSHP0] = MUTEX_MOD_IDX_MDP_TDSHP0,
--	[MDP_COMP_WROT0] = MUTEX_MOD_IDX_MDP_WROT0,
--	[MDP_COMP_WDMA] = MUTEX_MOD_IDX_MDP_WDMA,
--	[MDP_COMP_AAL0] = MUTEX_MOD_IDX_MDP_AAL0,
--	[MDP_COMP_CCORR0] = MUTEX_MOD_IDX_MDP_CCORR0,
--};
--
--static const struct mtk_mdp_driver_data mt8183_mdp_driver_data = {
--	.mdp_probe_infra = mt8183_mdp_probe_infra,
--	.mdp_cfg = &mt8183_plat_cfg,
--	.mdp_mutex_table_idx = mt8183_mutex_idx,
--};
--
- static const struct of_device_id mdp_of_ids[] = {
- 	{ .compatible = "mediatek,mt8183-mdp3-rdma",
- 	  .data = &mt8183_mdp_driver_data,
--- 
-2.18.0
+> 
+>> 2. Underscore is not allowed.
+> 
+> Ack, will change the name of the property.
+> 
+>> 3. Does not look like property of this node. This is a clock controller
+>> or system controller, not SGMII/phy etc.
+> 
+> The register range referred to by this node *does* represent also an
+> SGMII phy. These sgmiisys nodes also carry the 'syscon' compatible, and
+> are referenced in the node of the Ethernet core, and then used by
+> drivers/net/ethernet/mediatek/mtk_sgmii.c using syscon_node_to_regmap.
+> (This is the current situation already, and not related to the patchset
+> now adding only a new property to support hardware which needs that)
+
+Just because a register is located in syscon block, does not mean that
+SGMII configuration is a property of this device.
+
+> 
+> So: Should I introduce a new binding for the same compatible strings
+> related to the SGMII PHY features? Or is it fine in this case to add
+> this property to the existing binding?
+
+The user of syscon should configure it. I don't think you need new
+binding. You just have to update the user of this syscon.
+
+Best regards,
+Krzysztof
 
 
