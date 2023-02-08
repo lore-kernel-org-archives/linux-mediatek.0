@@ -4,70 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1A5EC636D3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 10:41:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACFA9C636D3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 10:46:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x3vvJ7XZOA20TvNDOEdKj5AjGGsdTA4T+MDKg86IeZA=; b=1Plt5BvQZJLcpqzRZ2Y42PgbTh
-	kwsCBapmll+bs1nEFICvBIRYfExNIudl9X7Hc6aAmMCFcdYeN/voLRUW1r5SkKQ4g3ER7hK2E0YAW
-	Osm0GXGaHv+qzplb4TaNgKVwvVSJusZ4ixIlFOxvgvrEY/Mr2VyJ2Fypqo3QjDgYN/LZBWiJuSlTf
-	xTNCPJqoPFqetPHzzYew1Pu4PwSLv4uYP4WPM4NektCItLr15owmyBMPgpvi5rV/ERFpAIHwmm5bl
-	/RWnlRDnHWpCqcQY2s1HmZ4AL/H/sc/t624iLadSSmWn0RW5wCK9yBTyOkGVuy46R67P6V5Si9u8L
-	Tkvb8zyw==;
+	bh=Gs6A3xuh1wg0WbzcNgHtsf7usFbi1rf+zDWg/hjd3e0=; b=rT4Bk7pWrOQAu0AEZsMxxm58Wb
+	Pgu+FZLXPa8CAXEE6xZjxTiLYf5ihhScW/7ByT3NLugPS68ijoy7I+FRGbDSBYN70GqWR3pCQ76h7
+	Z+mEV7fOIZ6aFQ9Vswn52VrUjXq4jsae5XJs9ZmiNriKmpbnTOMxn1mj5JsfAumAVm8ytVu7ZCyDL
+	Cik/pOafgCdK+CoPV0Wenez4s5/S6niGXpX4wZXzMkC7MCmWq6fCSbZmVgoWZHTf0Ax/GqhqU+WS/
+	ONSTmjZO40VDWb5tCphZMPfi636JI2J8nITbb7ds2QPVulOhhwRlJR0XOGSRSJLclswdLJjFYD0LS
+	Uaovqz5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPhsu-00FFuB-12; Wed, 08 Feb 2023 10:41:04 +0000
+	id 1pPhy5-00FIGh-M1; Wed, 08 Feb 2023 10:46:25 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPhpW-00FDgU-Kf; Wed, 08 Feb 2023 10:37:36 +0000
+	id 1pPhxJ-00FHs8-8C; Wed, 08 Feb 2023 10:45:38 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9F71A660209D;
-	Wed,  8 Feb 2023 10:37:32 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 724466602091;
+	Wed,  8 Feb 2023 10:45:35 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1675852653;
-	bh=q67l6huNz6BOkkKA1cnX0CAnLFXPlSrwL9Q000QH1Ig=;
+	s=mail; t=1675853136;
+	bh=DG0Bfe4ArjgFwtknCIsWC7PDxg3CMEPnouLpXP/YXz4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=m0kZfEfI5WeuqtCvZPkgFg1ubv2kuTxppzd0P2D36SxeI3CRiPZSowKiJbtTwkzhs
-	 OaRLAHrFj7CHofTz6oWdZGwduxkSxC/c9Z6Kk0H2HwptSmHAlhQ6qYymiYHWt+YUO4
-	 oWteS3if3HIc3/sa4SJkvHRakxqd01DCTkigL7ld9ft5rQ7gSNvQLHnHFOQRZRLwfr
-	 1CTJgMT+7AzMPhOzzMZsQhDTbIHSxzjSWmtWraG2GYD6Nn8uBNrVui6TLns51QchEm
-	 xBgdPs0cMEQno20sygWAfXFn8lmtt4iL6Y7TzkStQ3HOICS6u7UNDhsC0JKvdQs9dy
-	 qovg2VcCIIm5A==
+	b=mbSIEeCx3m5ABKgI70bBZlZl72M3m+skFht303Hzt8fhtoCvG9St6GkUQpii7FiVr
+	 kBqJ1MkVDcoiZqE5iBf1rV9QCMXuA1r12odYfNycoB0KzRtt1byoEaEPV9AHwu8ZdU
+	 Kco5xghQWkzMyG0c4ZBLzZWELpCObGNygTH93Wdnseeuru6frEFZLEgeBAFdYBA6no
+	 OmW33r7rjrKw0mKEopkp19ulQQmjUBnIiOGolUcPeqKDoYDFLbBgksMDuUlB4uG7T1
+	 qwS29jePIo4NTFRXPqcbx2UVIJyx973ZDn4BdRRAT+UJVlhq7pBo/ZkJBWSIfNc/Kl
+	 7sbf726tnsoFw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: airlied@gmail.com
-Cc: daniel@ffwll.ch,
-	robh+dt@kernel.org,
+To: matthias.bgg@gmail.com
+Cc: robh+dt@kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
-	tomeu.vizoso@collabora.com,
-	steven.price@arm.com,
-	alyssa.rosenzweig@collabora.com,
-	matthias.bgg@gmail.com,
-	robh@kernel.org,
-	dri-devel@lists.freedesktop.org,
+	angelogioacchino.delregno@collabora.com,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 9/9] drm/panfrost: Add new compatible for Mali on the MT8183 SoC
-Date: Wed,  8 Feb 2023 11:37:09 +0100
-Message-Id: <20230208103709.116896-10-angelogioacchino.delregno@collabora.com>
+	wenst@chromium.org
+Subject: [PATCH 01/16] arm64: dts: mediatek: mt8183-kukui: Couple VGPU and VSRAM_GPU regulators
+Date: Wed,  8 Feb 2023 11:45:12 +0100
+Message-Id: <20230208104527.118929-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.1
-In-Reply-To: <20230208103709.116896-1-angelogioacchino.delregno@collabora.com>
-References: <20230208103709.116896-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230208104527.118929-1-angelogioacchino.delregno@collabora.com>
+References: <20230208104527.118929-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230208_023734_878493_4866CE0C 
-X-CRM114-Status: GOOD (  12.64  )
+X-CRM114-CacheID: sfid-20230208_024537_491936_ED775244 
+X-CRM114-Status: UNSURE (   9.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,69 +77,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The "mediatek,mt8183-mali" compatible uses platform data that calls for
-getting (and managing) two regulators ("mali" and "sram") but devfreq
-does not support this usecase, resulting in DVFS not working.
-
-Since a lot of MediaTek SoCs need to set the voltages for the GPU SRAM
-regulator in a specific relation to the GPU VCORE regulator, a MediaTek
-SoC specific driver was introduced to automatically satisfy, through
-coupling, these constraints: this means that there is at all no need to
-manage both regulators in panfrost but to otherwise just manage the main
-"mali" (-> gpu vcore) regulator instead.
-
-Keeping in mind that we cannot break the ABI, the most sensible route
-(avoiding hacks and uselessly overcomplicated code) to get a MT8183
-node with one power supply was to add a new "mediatek,mt8183b-mali"
-compatible, which effectively deprecates the former.
+Add coupling for these regulators, as they have a strict voltage output
+relation to satisfy in order to ensure GPU stable operation.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/panfrost/panfrost_drv.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
-index 5d25e77e1037..14cdeaeeb5c4 100644
---- a/drivers/gpu/drm/panfrost/panfrost_drv.c
-+++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-@@ -654,6 +654,14 @@ static const struct panfrost_compatible amlogic_data = {
- 	.vendor_quirk = panfrost_gpu_amlogic_quirk,
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index fbe14b13051a..de9778c85b94 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -294,7 +294,6 @@ dsi_out: endpoint {
+ 
+ &gpu {
+ 	mali-supply = <&mt6358_vgpu_reg>;
+-	sram-supply = <&mt6358_vsram_gpu_reg>;
  };
  
-+/*
-+ * The old data with two power supplies for MT8183 is here only to
-+ * keep retro-compatibility with older devicetrees, as DVFS will
-+ * not work with this one.
-+ *
-+ * On new devicetrees please use the _b variant with a single and
-+ * coupled regulators instead.
-+ */
- static const char * const mediatek_mt8183_supplies[] = { "mali", "sram", NULL };
- static const char * const mediatek_mt8183_pm_domains[] = { "core0", "core1", "core2" };
- static const struct panfrost_compatible mediatek_mt8183_data = {
-@@ -663,6 +671,14 @@ static const struct panfrost_compatible mediatek_mt8183_data = {
- 	.pm_domain_names = mediatek_mt8183_pm_domains,
+ &i2c0 {
+@@ -401,6 +400,11 @@ &mt6358codec {
+ 	Avdd-supply = <&mt6358_vaud28_reg>;
  };
  
-+static const char * const mediatek_mt8183_b_supplies[] = { "mali", NULL };
-+static const struct panfrost_compatible mediatek_mt8183_b_data = {
-+	.num_supplies = ARRAY_SIZE(mediatek_mt8183_b_supplies) - 1,
-+	.supply_names = mediatek_mt8183_b_supplies,
-+	.num_pm_domains = ARRAY_SIZE(mediatek_mt8183_pm_domains),
-+	.pm_domain_names = mediatek_mt8183_pm_domains,
++&mt6358_vgpu_reg {
++	regulator-coupled-with = <&mt6358_vsram_gpu_reg>;
++	regulator-coupled-max-spread = <100000>;
 +};
 +
- static const char * const mediatek_mt8192_supplies[] = { "mali", NULL };
- static const char * const mediatek_mt8192_pm_domains[] = { "core0", "core1", "core2",
- 							   "core3", "core4" };
-@@ -691,6 +707,7 @@ static const struct of_device_id dt_match[] = {
- 	{ .compatible = "arm,mali-bifrost", .data = &default_data, },
- 	{ .compatible = "arm,mali-valhall-jm", .data = &default_data, },
- 	{ .compatible = "mediatek,mt8183-mali", .data = &mediatek_mt8183_data },
-+	{ .compatible = "mediatek,mt8183b-mali", .data = &mediatek_mt8183_b_data },
- 	{ .compatible = "mediatek,mt8192-mali", .data = &mediatek_mt8192_data },
- 	{}
+ &mt6358_vsim1_reg {
+ 	regulator-min-microvolt = <2700000>;
+ 	regulator-max-microvolt = <2700000>;
+@@ -411,6 +415,11 @@ &mt6358_vsim2_reg {
+ 	regulator-max-microvolt = <2700000>;
  };
+ 
++&mt6358_vsram_gpu_reg {
++	regulator-coupled-with = <&mt6358_vgpu_reg>;
++	regulator-coupled-max-spread = <100000>;
++};
++
+ &pio {
+ 	aud_pins_default: audiopins {
+ 		pins_bus {
 -- 
 2.39.1
 
