@@ -4,86 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12BD6C636CC
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 07:46:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E821C636D4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 08:14:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:
-	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lJZsJu6FE/m8RkUXLIqO4+l2gX1b3XV9offgkGavorA=; b=armJOaV0MPkr+mA+rPuPHyfnUy
-	ZSgPc6CVORgn8ZnEiJ40phWETv+nfFfpf26IrQ/ed6wmeSssIoQiEviizJHSoT5OGKP4Xk5B8SsBl
-	rNV/YP+aKsSO0fP83ZOJwLByhb6se3Qhx2hg37zT390osp6Y3egnhb8XpyKEggCt1mlcq7w/W869J
-	m2dX02HorC+TKhyAhjCHV+sLXC6q+5XXlnCqXlmr9skKTLXSrPQyCSQcU3dD+goxgOSbfJePwMJF0
-	yfhndq4uFLpCQtRp4fp9fO7cowwiqUe+TrYDxgdj3LrrjfOVj3M+ZYfYzwpJ1HpCPVxzvSFbFeat3
-	lxBO1D8Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Tq7GEayWsvRw96cMHfok6bYt1VMpZwPrUFgKIuPy65s=; b=yaG3x/Uygtu+X+
+	A69YRdtCs3oZLpY5WzGMx+XORgRDjbql0JeJ5wXXW68LryS6m5HCVNg788q5pIQ4HMbAgSrwQ+sX9
+	zRYdv+78vocMVhLBKayeAomuzV0wAOP1roLHzPUHcp1alPNgJbk3xoiDIAv5LYmPxJ7JbJy3tzFJk
+	s/kls2b9tLgp6ecA+UF+f5kBpODmdq3CRxP+tXY+bZKdsjU/gB6gmN5/ZdzHPQ91O1/HYBcR6mVV0
+	sXXbUkgP88Y8ww5bAmfMi1okKOgbcMtHLeDDMkGUjniKx1v2XJqJ/pkmAFXirjWHKe+Z0pRxsOHVr
+	wrXUP3bT06HTj0S401oA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPfAE-00ETvD-8Q; Wed, 08 Feb 2023 07:46:46 +0000
-Received: from mout.gmx.net ([212.227.17.22])
+	id 1pPfb8-00EYSw-7T; Wed, 08 Feb 2023 08:14:34 +0000
+Received: from sender4-op-o16.zoho.com ([136.143.188.16])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPfAB-00ETu0-4T; Wed, 08 Feb 2023 07:46:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1675842373;
-	bh=lJZsJu6FE/m8RkUXLIqO4+l2gX1b3XV9offgkGavorA=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=Z1XqmXIrzpSMAkZ+Q0XE5W/aaZ0b3GDmOv9Uu1iprRwYmrXmGDDIA1nxIBDjyuzI3
-	 cdoIt1KRcWqN7baNK4TcI+yi7ZVr+Teprx2VIpIqXlpCYm34Dm3ZfxcIZePlDfRTdV
-	 Uj602Lf1KZsQpKmk2+jDr6+YSk9YQRlxeqOh6jiCIBJZSLpJi8cB0fEV+zaS+fxbNu
-	 DoGYCbY7bHbDPw2a5OGDNDARN+lqF+CysamJq1PyTQBcAofPV2fpdQPXOXcS1DZPYL
-	 Ft6tsaS789xJmM2kE1qv7Bsps/jp2oCXDIDKXuHCtO5vtc9hLjx4ML52OzYKPiDcAI
-	 FpAA/GVACFpRg==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [157.180.227.18] ([157.180.227.18]) by web-mail.gmx.net
- (3c-app-gmx-bap61.server.lan [172.19.172.131]) (via HTTP); Wed, 8 Feb 2023
- 08:46:13 +0100
+	id 1pPfax-00EYPk-1q; Wed, 08 Feb 2023 08:14:24 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1675844041; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=WeDIxqqukEHbNXOn/uBSj0kVXEhR97vE6zejJ+WfzvB1repQPM5ucfM8jCPyTWFhSeXTn9T0eIOx06N71IVqJmca2MLiHWcRKe01kgfX5we2MOXJOHpMYz0frdQPFcYEUTByCWm5nNMfDm2Fudy11OK76LUi2vfd0gac9leZy6M=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1675844041; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=Tq7GEayWsvRw96cMHfok6bYt1VMpZwPrUFgKIuPy65s=; 
+	b=ne6IDCfXBMNPAPGv1UsKN6Q/gp5D0txK4aGFhr3G8UM23w6wABMPyW5kcVCG3V387ZZrp6BZT7KQe8Q1bBaOrs7VNoRTWSVnifYr4tZ011LegnhzngJ09p8s2DzyP8qKCm1QBwjEJ7BHDkQup5LBHwmevsyCWrYVEFZzb1t9gdI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1675844041;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=Tq7GEayWsvRw96cMHfok6bYt1VMpZwPrUFgKIuPy65s=;
+	b=Cn+QHurTvKT5eFvMaxyl7rXMMSpuNNKSJpDnxZlHDLheoh/FT46dkphMeFBeYvG7
+	2BNjxdNJbMvT5s1JfmybdQ2WpeEv0Z/5zhRA7oHSGHTra12049wVYx21snHKPMZxnSI
+	9U5tlQ8i+vEXBKRhhAooTkFpA8b8gqIIvVWQ4GXU=
+Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
+	with SMTPS id 1675844038914268.9156197429097; Wed, 8 Feb 2023 00:13:58 -0800 (PST)
+Message-ID: <17958d10-80cb-b5a7-3a5b-97192de2266e@arinc9.com>
+Date: Wed, 8 Feb 2023 11:13:48 +0300
 MIME-Version: 1.0
-Message-ID: <trinity-e1125c6e-9b6c-4e34-82fd-d99d34661cb6-1675842373343@3c-app-gmx-bap61>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
-Cc: Felix Fietkau <nbd@nbd.name>, netdev@vger.kernel.org, John Crispin
- <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
- <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David
- S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, Russell King <linux@armlinux.org.uk>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, erkin.bozoglu@xeront.com
-Subject: Aw: Re: [PATCH net v3 4/5] net: ethernet: mtk_eth_soc: drop generic
- vlan rx offload, only use DSA untagging
-Content-Type: text/plain; charset=UTF-8
-Date: Wed, 8 Feb 2023 08:46:13 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <79506b27-d71a-c341-48fd-0e6d3a973f2e@arinc9.com>
-References: <20221230073145.53386-1-nbd@nbd.name>
- <20221230073145.53386-4-nbd@nbd.name>
- <79506b27-d71a-c341-48fd-0e6d3a973f2e@arinc9.com>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:be3w77Hl6YYRLG2Pfygnosn9NFEWYnMi66wjxQ4iLMaU706Pu0SKotAM8rWVzb05/cgeb
- UjMHM1GFVDZ82M7mSaTRl8PWr2yByQuuDJvFP/rhSniukSrojFgxOG/DSCdxcOW8Q1qU3IpOE7MC
- ASw5EGGWNjhysiJsZNs34RM8wO2/8Vh7o/8kUNsdH0eAz0Eoa7/Edvtv4WRkmatEVRwZDPa2p45u
- JB1CYxMlOSgZlQZpEIAhakF5W4XFdKu/hr66QUq22PfeJ1M3LdZTZPV3NiaaFZYpBXqzKPQGpwpe
- Kg=
-UI-OutboundReport: notjunk:1;M01:P0:yDiaRCpQi1g=;6amzwCNFap286wCSTAXysO5Rhpp
- O+UUFM2v/aTS8UCc0eVw8RHuIwGelQ76CmlCScX5w/kULvrbwzqdV6HfM8aX2HaLSJB8PVgOy
- V6QcEFHKSbhTK6PUxFDNTj34PNgNkS7I8acI40s2ppYdCpNWvQc1Em7rF2OBnpTtOSAo8VJPD
- ypNQeFMkP8JKKYBFnU3m8VIYq3dUzejVljBgnwcbe8NUgLZF1gzpYbtLUmIHgY2CwNmEGYGMF
- /1opsI8tiz5liYMHa8mvThM7yN3bVl/A4wqjQBUwYdZzk/BvAt/buJYqj2YjZdDiebTYaxLhF
- iWVrZLVzepCgUjz+eqcwta37aeMirJacjU/UogMkR5J/AqMXEY3HtCU3V8cL0uoGfGlUaiMYd
- kRAr+NyTfuxCuVUJjxxYHwGDXAvaMsR5BX1gqjTpdLly6zin+B0xxG6mnkoyp6/GZcdtn4UjN
- YALJ47I9/nf097nYqxAGQXiFPgnK+uLi167IyZ4YruTTNDuoaMdy+DfIvPrEsIUfJtxxCQYba
- i1oMbvEjg78akZJmkMOUnXPZY3B1jGZN3GzHyrlW68Z7yLqe1li3hb1CKh9L/28YhBA/w3RC2
- tR+J6IMcgssUzO94Ru2lehxVwaHBAkQdGzHqsJhEpjjOHQ9ZijgQxuuCcxs0RiSC4M3Tsf07I
- jFzDgHqgJ0lE0iFApc6YXXqsyeAewIAHT7B3UsqV3sJnZjhuel1Tqq4ZBcsIwyKrHeRvjc/YE
- Z1zw8RSUeEPuq9ZVqOllCtEeXRjZnf7zPJvfP5UmnRpfgLpStnlRux1bmpuav0Nhs4JFLBz0F
- d5PXOnVpwE0jW0gNT9iPTSqQ==
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: enable special tag when
+ any MAC uses DSA
+To: Jakub Kicinski <kuba@kernel.org>
+References: <20230205175331.511332-1-arinc.unal@arinc9.com>
+ <20230207105613.4f56b445@kernel.org>
+ <5d025125-77e4-cbfb-8caa-b71dd4adfc40@arinc9.com>
+ <52f8fc7f-9578-6873-61ae-b4bf85151c0f@arinc9.com>
+ <20230207155801.3e6295b0@kernel.org>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20230207155801.3e6295b0@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230207_234643_477751_C81BB43C 
-X-CRM114-Status: UNSURE (   7.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230208_001423_172343_13A86BCF 
+X-CRM114-Status: GOOD (  11.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,19 +77,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, erkin.bozoglu@xeront.com, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Richard van Schagen <richard@routerhints.com>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, arinc9.unal@gmail.com, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On 8.02.2023 02:58, Jakub Kicinski wrote:
+> On Tue, 7 Feb 2023 23:25:32 +0300 Arınç ÜNAL wrote:
+>>>> As Paolo pointed out to me off-list this is pretty much a revert of
+>>>> commit under Fixes. Is this an actual regression fix, or second MAC
+>>>> as DSA port never worked but now you found a way to make it work?
+>>>
+>>> Second MAC as DSA master after hardware DSA untagging was enabled never
+>>> worked. I first disabled it to make the communication work again, then,
+>>> with this patch, I found a way to make it work which is what should've
+>>> been done with the commit for adding hardware DSA untagging support.
+>>
+>> Should both commits be mentioned with Fixes tag?
+> 
+> No strong preference, TBH.
+> 
+> The motivation for my question was to try to figure out how long we
+> should wait with applying this patch. I applied the commit under Fixes
+> without waiting for a test from Frank, which made me feel a bit guilty
+> :)
 
-just to confirm, my issues were not caused by this series, it was there before and now fixed with [1]
+Oh that's fine, they were going to test on the same hardware I've got 
+anyway. You can apply this one whenever is convenient.
 
-at least one issue arinc is mention is fixed with [2]
-
-so please apply
-
-regards Frank
-
-[1] https://patchwork.kernel.org/project/linux-mediatek/patch/20230205140713.1609281-1-vladimir.oltean@nxp.com/
-[2] https://patchwork.kernel.org/project/linux-mediatek/patch/20230207103027.1203344-1-vladimir.oltean@nxp.com/
+Arınç
 
