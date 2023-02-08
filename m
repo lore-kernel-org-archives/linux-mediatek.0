@@ -4,88 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6EF8C636CC
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 05:05:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3430C636CC
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 05:38:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ya5gJFL+sholpFu2gVvhEQXkb61wVgNoGrsK8xi1Z7M=; b=mBA716zMD3fqVXSb+USyQlPoRQ
-	/BWN1mI+2HieHoL07B6iKBBNP7QUl5OINs3csnwHaciqCqmn2IAB90OHJYVkWDOHeASLkCTPDmca8
-	koYLprSSSrHUjDchxRiIYd2jcEHZeNara5g8T5x2sxHZsRtZe46zcpjttVmtdF7UTUyR4llw+UDLA
-	1csb631Avr8DdPV/liWXufavcpL+nrjTZassuhZMjxX88MBCFf9MvMQXMOWErjkD8vhOiboFisdl1
-	oaZVoEW29iqDvzP3c3iL3VF6TVQDiE7TO7YVQ2o0t+SYilepHL8xNvbyilqnINnXR9SP3i1tCUOl4
-	HPFKZkTQ==;
+	bh=VyiQSTtf/H+J6bLVY9o8xyIPf4F3imFPrSDWm8b80ZU=; b=OWYoe9Bd50IDcoMn8jAh0opOi1
+	hSCYH4DlfgxOe2NQOuSzyUt0fR1P5STVk6yCZefxL8oxBJno5zbBzGa9BUljFvelEIkQgXAUTEHkR
+	CMqMM98hqswUv7uUsKJqie/nPUD0BWVr6qDUkXRuXpOfX/b/oMW6HzVh5jFX5szsFbz+79j+T2Z44
+	z2iPYpse9nD923Bav98qbTb/CguHS38ExIOJxghv1Xj5IDHCL19ziuXkDR6TqxSC14bO3FaT2zbG4
+	JUH+KmWjq/yl5pPQnqTnKYImzvuYJldXlAInm7ceByCwpVxMIsU6J947FvhO8xpDMmcHnEyfX84MT
+	beayr+bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPceK-00E43N-L7; Wed, 08 Feb 2023 05:05:40 +0000
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
+	id 1pPd9a-00E8s4-Qc; Wed, 08 Feb 2023 05:37:58 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPce9-00E426-K9
-	for linux-mediatek@lists.infradead.org; Wed, 08 Feb 2023 05:05:30 +0000
-Received: by mail-pg1-x534.google.com with SMTP id u75so5312228pgc.10
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Feb 2023 21:05:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=ya5gJFL+sholpFu2gVvhEQXkb61wVgNoGrsK8xi1Z7M=;
-        b=YjTsp9kdEz13Y1GNS0O5pGEyWSuzSogMDi4e7ZZ7iv+IZANa948+CJPU+/06uYdiuI
-         Gghb9yPK7hJNXzFNQ8ZfboZrNIcDAIhcUwDk3RZYsxZsLFbj9LctlgfufzZINBRdA8Xb
-         SFapInnCj+0ungZBt7qV71G0MxFzBnw4U6krmO22nfdS7qe1F9BjFw3E5IXM7Aiyb3a1
-         VW0Nd6hy1INXQ8Sx3iNmy7sGVZ2LxS8Oq4s+Dudnzi6YcZIab79I78dHNFYysALOEQ/j
-         1sVe9PHlgzBQz1mAJURvaLQ5wJRIrFz6NP/d/9Q+cHPwjZVTkdIhguBLPi3UtOJy/ul1
-         CukQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ya5gJFL+sholpFu2gVvhEQXkb61wVgNoGrsK8xi1Z7M=;
-        b=c+Y0mb7s+NFiq7b/CsuzjGGxpT1ZBtVlF155xLr/QrR90qhedooYxwh5quXYE1uQae
-         m+E6jionp7k9eULKcDJCs5tipcpjgjw1ZxQb2KTQrMatpla18ukr3dfZKZ9/qkVt1rwf
-         1XSxhARwojRH4vVOpK/s2RKo9u9BKhlUoP+gB4sk9hukl5ZgJJz2amlseNB0BrQJlsoB
-         hc43H0eJDBPBaqB9WAXWwNOCsWxxpd8Dfv8kaQ13wnHyViYkNVavEBATqz4ENAj6nmUW
-         kiw4RNvgSYBWkuZRr0OjXeZfI09mDkTXj5k/5LabCZDip0tPjNANwtW5m9PL9rRrx/D9
-         ncKA==
-X-Gm-Message-State: AO0yUKXf0McWnsFxRVSQNmMvqTGJ5IIbRiWM3I0SAWdfJPv6OY+b37Gl
-	AMTc9uaN4+c7tGwTzrXTxNuTNQ==
-X-Google-Smtp-Source: AK7set9UuA7k0BjdlRO0q39ZKPIN4H6BAK2nzgdoKHGELVuwsO4MfgZ2/oEHq4b2N3zB9KZnbyJYyQ==
-X-Received: by 2002:a62:1a89:0:b0:594:26a7:cbd2 with SMTP id a131-20020a621a89000000b0059426a7cbd2mr875118pfa.8.1675832725646;
-        Tue, 07 Feb 2023 21:05:25 -0800 (PST)
-Received: from localhost ([122.172.83.155])
-        by smtp.gmail.com with ESMTPSA id x14-20020aa793ae000000b005a6cb51f240sm2867924pff.109.2023.02.07.21.05.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Feb 2023 21:05:25 -0800 (PST)
-Date: Wed, 8 Feb 2023 10:35:23 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
-	Markus Mayer <mmayer@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Kevin Hilman <khilman@kernel.org>, Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-omap@vger.kernel.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, kernel@pengutronix.de
-Subject: Re: [PATCH] cpufreq: Make cpufreq_unregister_driver() return void
-Message-ID: <20230208050523.p6437bes6cmpd33k@vireshk-i7>
-References: <20230207195909.474953-1-u.kleine-koenig@pengutronix.de>
+	id 1pPd9X-00E8pa-LQ; Wed, 08 Feb 2023 05:37:57 +0000
+X-UUID: b83d31fca77211edbbe3f76fe852e059-20230207
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=VyiQSTtf/H+J6bLVY9o8xyIPf4F3imFPrSDWm8b80ZU=;
+	b=K9SuRt+yiY6wvuZwKFW31Tuzil4jBBjRKKykfsAItZGc6yagZoDYXTdKypywcdaWfqGLrrWvO6k6hZmw8EOh0GLMjYqBtxkOg3khWXX6hAVnIaHSXfRDGsfNIQP1lNvzjgUdABrDiHkg/boZA1igVKMAxxG2/qdOSicnNPKBEYs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.19,REQID:f3038cbb-afb9-4e38-892a-dd265ecf1844,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:885ddb2,CLOUDID:1f1ccdf7-ff42-4fb0-b929-626456a83c14,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-UUID: b83d31fca77211edbbe3f76fe852e059-20230207
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <yong.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1421668114; Tue, 07 Feb 2023 22:37:47 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 8 Feb 2023 13:37:24 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 8 Feb 2023 13:37:23 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>
+CC: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
+	<hverkuil@xs4all.nl>, <nfraprado@collabora.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <iommu@lists.linux.dev>, AngeloGioacchino Del
+ Regno <angelogioacchino.delregno@collabora.com>, <mingyuan.ma@mediatek.com>,
+	<yf.wang@mediatek.com>, <libo.kang@mediatek.com>, Yunfei Dong
+	<yunfei.dong@mediatek.com>, kyrie wu
+	<kyrie.wu@mediatek.corp-partner.google.com>, <chengci.xu@mediatek.com>,
+	<youlin.pei@mediatek.com>, <anan.sun@mediatek.com>, Yong Wu
+	<yong.wu@mediatek.com>, Bin Liu <bin.liu@mediatek.com>, Xia Jiang
+	<xia.jiang@mediatek.com>
+Subject: [PATCH v2 02/10] dt-bindings: media: mediatek,jpeg: Remove dma-ranges property
+Date: Wed, 8 Feb 2023 13:36:35 +0800
+Message-ID: <20230208053643.28249-3-yong.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230208053643.28249-1-yong.wu@mediatek.com>
+References: <20230208053643.28249-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230207195909.474953-1-u.kleine-koenig@pengutronix.de>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230207_210529_688872_057A1398 
-X-CRM114-Status: GOOD (  15.00  )
+X-CRM114-CacheID: sfid-20230207_213755_718168_82888A5C 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,29 +90,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 07-02-23, 20:59, Uwe Kleine-König wrote:
-> All but a few drivers ignore the return value of
-> cpufreq_unregister_driver(). Those few that don't only call it after
-> cpufreq_register_driver() succeeded, in which case the call doesn't
-> fail.
-> 
-> Make the function return no value and add a WARN_ON for the case that
-> the function is called in an invalid situation (i.e. without a previous
-> successful call to cpufreq_register_driver()).
-> 
-> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
-> ---
->  drivers/cpufreq/brcmstb-avs-cpufreq.c | 5 +----
->  drivers/cpufreq/cpufreq.c             | 8 +++-----
->  drivers/cpufreq/davinci-cpufreq.c     | 4 +++-
->  drivers/cpufreq/mediatek-cpufreq-hw.c | 4 +++-
->  drivers/cpufreq/omap-cpufreq.c        | 4 +++-
->  drivers/cpufreq/qcom-cpufreq-hw.c     | 4 +++-
->  include/linux/cpufreq.h               | 2 +-
->  7 files changed, 17 insertions(+), 14 deletions(-)
+After commit f1ad5338a4d5 ("of: Fix "dma-ranges" handling for bus
+controllers"), the dma-ranges of the leaf node doesn't work. Remove
+it for jpeg here.
 
-Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+Currently there is only mt8195 jpeg node has this property in upstream,
+and it already uses parent-child node, this property did work. But instead,
+MediaTek iommu will control the masters' iova ranges by the master's
+larb/port id internally, then this property is unnecessary.
 
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Bin Liu <bin.liu@mediatek.com>
+Cc: kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>
+Cc: Xia Jiang <xia.jiang@mediatek.com>
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml | 7 -------
+ .../devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml | 7 -------
+ .../devicetree/bindings/media/mediatek-jpeg-encoder.yaml   | 5 -----
+ 3 files changed, 19 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
+index 71595c013dbb..e5448c60e3eb 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
+@@ -26,11 +26,6 @@ properties:
+       Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
+       Ports are according to the HW.
+ 
+-  dma-ranges:
+-    maxItems: 1
+-    description: |
+-      Describes the physical address space of IOMMU maps to memory.
+-
+   "#address-cells":
+     const: 2
+ 
+@@ -89,7 +84,6 @@ required:
+   - compatible
+   - power-domains
+   - iommus
+-  - dma-ranges
+   - ranges
+ 
+ additionalProperties: false
+@@ -115,7 +109,6 @@ examples:
+                      <&iommu_vpp M4U_PORT_L19_JPGDEC_BSDMA1>,
+                      <&iommu_vpp M4U_PORT_L19_JPGDEC_BUFF_OFFSET1>,
+                      <&iommu_vpp M4U_PORT_L19_JPGDEC_BUFF_OFFSET0>;
+-            dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
+             #address-cells = <2>;
+             #size-cells = <2>;
+             ranges;
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
+index 95990539f7c0..596186497b68 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
+@@ -26,11 +26,6 @@ properties:
+       Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
+       Ports are according to the HW.
+ 
+-  dma-ranges:
+-    maxItems: 1
+-    description: |
+-      Describes the physical address space of IOMMU maps to memory.
+-
+   "#address-cells":
+     const: 2
+ 
+@@ -89,7 +84,6 @@ required:
+   - compatible
+   - power-domains
+   - iommus
+-  - dma-ranges
+   - ranges
+ 
+ additionalProperties: false
+@@ -113,7 +107,6 @@ examples:
+                      <&iommu_vpp M4U_PORT_L20_JPGENC_C_RDMA>,
+                      <&iommu_vpp M4U_PORT_L20_JPGENC_Q_TABLE>,
+                      <&iommu_vpp M4U_PORT_L20_JPGENC_BSDMA>;
+-            dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
+             #address-cells = <2>;
+             #size-cells = <2>;
+             ranges;
+diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
+index c8412e8ab353..37800e1908cc 100644
+--- a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
+@@ -44,11 +44,6 @@ properties:
+       Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
+       Ports are according to the HW.
+ 
+-  dma-ranges:
+-    maxItems: 1
+-    description: |
+-      Describes the physical address space of IOMMU maps to memory.
+-
+ required:
+   - compatible
+   - reg
 -- 
-viresh
+2.18.0
+
 
