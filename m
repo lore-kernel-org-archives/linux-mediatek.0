@@ -4,65 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BEC7C05027
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 08:18:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31808C05027
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 08:24:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+tHCOo8sJZFp5flt13By50o4tNKKdblBZ0IURhBoSow=; b=Ka3QfzvOoPPTLNF8YyvyxzN5VV
-	HMgrj6IhsHWvxHLopNpsztADLK/wL4K2IjPHx6BdtqDqpqK/RlxZR4FB6+jsGcCFdJJtkALlpKQ5R
-	Cl9HnuEEve4BrLZfWXbXT1ndOcH1mmwZijzBH0qi460Q3RtCgjHgymcmdFCKgxCtQJbdEcXp60rbM
-	kdMdtsvaWplSWPvynrkpJubqHSvjHx2nyDz0GDR3/es8d2n2+oypBMlpM3+l7LzBXg2WtsBFDpiUe
-	EvMkglqxBnTERNEUMluq4ZJW6USNozfD4NtEqJ5NYM9eTeaAdCP6EAW6sdH+NakWdUELRjujexYxl
-	1hyBJL8A==;
+	bh=l4fNY1QmPgc1eDxWIcVEmeoLEE0WYG7olhyPqNb4FPA=; b=eyQhRQSfme+yaCdPxnfkqCywtG
+	Kdg04BQAToEeQtVy0er9zW7KoFJ6xY2x5vCRlUlblI5QBNY8Y//s4I5sHe0tUuS7RU0UOOKPljMaQ
+	Evz8bgmDlen6UzaXbP9Lv7tURBNofIkL7Uzxw3C5Hk2S8nXGAFYmZrfbjUPD6cyjFZYe/0mY1AQ2L
+	sKDQrMPEJraIcGc3nNj6SxZectE7+TdnGlatfUd4W/0YBAxK2AAEp7c2p+b6EZNqgCDdxzp9PkLSq
+	FkZGf8RXVLD4X8+UX8B4cDNQZQdp6pvVLnuR+HIB3oYj2iQ4PBQCYArvzj7bIxCFaGInrtNMv/Fbh
+	pFeYoDZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPfel-00EZRF-Jj; Wed, 08 Feb 2023 08:18:19 +0000
-Received: from mail-vs1-xe2b.google.com ([2607:f8b0:4864:20::e2b])
+	id 1pPfkf-00EaeZ-DX; Wed, 08 Feb 2023 08:24:25 +0000
+Received: from mail-vs1-xe36.google.com ([2607:f8b0:4864:20::e36])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPfeZ-00EZLq-TH
-	for linux-mediatek@lists.infradead.org; Wed, 08 Feb 2023 08:18:10 +0000
-Received: by mail-vs1-xe2b.google.com with SMTP id d66so19001122vsd.9
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Feb 2023 00:18:01 -0800 (PST)
+	id 1pPfkU-00EacA-Dt
+	for linux-mediatek@lists.infradead.org; Wed, 08 Feb 2023 08:24:17 +0000
+Received: by mail-vs1-xe36.google.com with SMTP id cz15so9431584vsb.6
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Feb 2023 00:24:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=+tHCOo8sJZFp5flt13By50o4tNKKdblBZ0IURhBoSow=;
-        b=DWoNKb7tfi9icZU4oIKLPqnab+Sj0mZeDxOTR23zSyVv7NUeoHIV9jah/FfcehBZT3
-         IvIRbnr6y0oAMomfg/Vi3ZeAh9tQS087u25cYyphjBfXSXgI1shgp9tVmT72JbqiP0dp
-         l87j3oZbJaWOEfU9eE25Kttipo2uV6TJwUUHA=
+        bh=l4fNY1QmPgc1eDxWIcVEmeoLEE0WYG7olhyPqNb4FPA=;
+        b=IcMXQ/M2g9B25Yan+ex4qiEFyvr/DLfBMCj/Ps2VNy2dCwYBQ8Xfk5ckQTCPWYjnZ+
+         0vwnnzDsnYI7MmW8ZWVOG1pOMYWyOiGsaI+QbFoeaMrIbwbMn73ti2t67wtyWy8RguGT
+         XSkdYHbsbxZYebvANHSkqQvDkevan1O/BFD+U=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=+tHCOo8sJZFp5flt13By50o4tNKKdblBZ0IURhBoSow=;
-        b=v4+gIGp9GkXAaMCcNKGuFUCY2g4YwU+3yre09EjMOcyZXE8vn7jK/Z5y8susgisMFx
-         6LOidVfe3FUaKrUky4gtB3pXPF7v2AtMKHQm0r9opKBAuk1/hU5d6fzZMDkUQG4iQA4U
-         s8RwxEFCten1TOnoyKemKNYIEQ0WxS4l9OtN3He7miomrhw7/XwITYxVnXFyskopqx+8
-         4P0i6ZLqxZRur8B5yiFnxaYbGRexUX70djoBZoD1n03B0unjtYdD89UGa3p0T3jfspVE
-         09YdL43PIZy9QZg4gfm6x4pi3AMIRFN0C6MkGGNzaswmyzNHgtShzCUgbixKqd05D5ZA
-         yzaQ==
-X-Gm-Message-State: AO0yUKUv4U3QuS9NSF2+jzyNpfI6YrJ0wcslndp1YLZEgJPSxITL6Lwb
-	HiM2C0M5i9tG2KdiSw9g0pmMnBykwS+wGHCjhOzknA==
-X-Google-Smtp-Source: AK7set/N9Zr6zqMMbyyTI+mcr75A04f7/sCiIHNtPyBlQMz3Kxdbrzdom/HO0bm0zxky0AHBLxotaH+PXfBWROHsdto=
-X-Received: by 2002:a67:1904:0:b0:3e8:d5a8:3fbe with SMTP id
- 4-20020a671904000000b003e8d5a83fbemr1650981vsz.9.1675844280469; Wed, 08 Feb
- 2023 00:18:00 -0800 (PST)
+        bh=l4fNY1QmPgc1eDxWIcVEmeoLEE0WYG7olhyPqNb4FPA=;
+        b=v2vUKIpbjAm3BgrVb7wABzZml7l4S646ico9axZaxJHMJpckkPJiofQhlCTimLnXZC
+         ZEiI7Se5VSLZNYCq1arfOXJshHeYz8xl3kEQismaXH9t0XcLoJPvd0AQbEz1WZVYvh0o
+         u8L4/V+50PiKB5YpDd51CaV3JDVgr+LM6OBQw1om7MMIlFer8xkdjgiwHNUPY4IbdUaj
+         +IGc0IaFRFSyT+Rw2p2Rzg7W3Sa9gTU0rbnaIQxxuRRwGnQTzQ3cRnn460Jw9jHuZnnF
+         NmAeHBFDpGXXjObvJz6TzpRpnupWLu8lRzela/BJSegzMO4tTy6tpKUu+Hin26umEnWn
+         bP+A==
+X-Gm-Message-State: AO0yUKWUlx7mKlI42IOl0/HKA3eeNsg+O8sBXh2016ujLQ8sP0OevunN
+	3nq4AqjEmm8ilClU2vmINo5joFpKbj9bBZM+ips0cA==
+X-Google-Smtp-Source: AK7set/lc8VtASNtxb17NapmM4msjQBcz/1VBanIWZdAGanrOgaYsuc2JpxRWYXCQehO9HTtrZ7t92NrGgP+qsH8+PI=
+X-Received: by 2002:a05:6102:4b8:b0:3fe:ae88:d22 with SMTP id
+ r24-20020a05610204b800b003feae880d22mr1519662vsa.65.1675844652747; Wed, 08
+ Feb 2023 00:24:12 -0800 (PST)
 MIME-Version: 1.0
 References: <20230206152928.918562-1-angelogioacchino.delregno@collabora.com>
- <20230206152928.918562-20-angelogioacchino.delregno@collabora.com>
- <CAGXv+5G0ksgGMXUGk-=CXUANtGQa2M5RLY+wG7c-0cMSKS5DJQ@mail.gmail.com> <7adadf24-c14f-6eb4-edfd-265dca93e907@collabora.com>
-In-Reply-To: <7adadf24-c14f-6eb4-edfd-265dca93e907@collabora.com>
+ <20230206152928.918562-10-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5GfwY2+55UupTUNYVudg3-YDQtkkfhT=M53CJwdqG=ERg@mail.gmail.com>
+ <b7b35901-59aa-5342-1bd1-5ed591a0469c@collabora.com> <CAGXv+5HNs-74COE_5V4O_ykLJN=K4YVR-5SNwcPTBcxFMoRm5g@mail.gmail.com>
+ <d07156bd-95e6-5c7d-b88e-1c4a5dfc3a07@collabora.com>
+In-Reply-To: <d07156bd-95e6-5c7d-b88e-1c4a5dfc3a07@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 8 Feb 2023 16:17:49 +0800
-Message-ID: <CAGXv+5Ftq6RfAHkF3KxZNPx17MMFBtpDWqg=DLVDWo1pJwVijg@mail.gmail.com>
-Subject: Re: [PATCH v1 19/45] clk: mediatek: mt8183: Convert all remaining
- clocks to common probe
+Date: Wed, 8 Feb 2023 16:24:01 +0800
+Message-ID: <CAGXv+5H07KEOhk_4BPU6Su5f2WmGygLEGSeCD9bqgdH3ix+=Rw@mail.gmail.com>
+Subject: Re: [PATCH v1 09/45] clk: mediatek: mt2712: Change to use
+ module_platform_driver macro
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
 	johnson.wang@mediatek.com, miles.chen@mediatek.com, 
@@ -75,8 +77,8 @@ Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
 	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230208_001807_969004_E791F20E 
-X-CRM114-Status: GOOD (  29.14  )
+X-CRM114-CacheID: sfid-20230208_002414_515139_17F0C9A8 
+X-CRM114-Status: GOOD (  58.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,89 +93,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 7, 2023 at 8:14 PM AngeloGioacchino Del Regno
+On Tue, Feb 7, 2023 at 6:50 PM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
-> Il 07/02/23 10:58, Chen-Yu Tsai ha scritto:
-> > On Mon, Feb 6, 2023 at 11:30 PM AngeloGioacchino Del Regno
+>
+> Il 07/02/23 10:30, Chen-Yu Tsai ha scritto:
+> > On Tue, Feb 7, 2023 at 5:00 PM AngeloGioacchino Del Regno
 > > <angelogioacchino.delregno@collabora.com> wrote:
 > >>
-> >> Switch to mtk_clk_simple_{probe,remove}() for infracfg and topckgen
-> >> clocks on MT8183 to allow full module build for clock drivers.
-> >> In order to do this, like done for other MediaTek clock drivers, it
-> >> was necessary to join top_early_divs with top_divs and to stop
-> >> registering the `clk13m` clock early.
+> >> Il 07/02/23 07:33, Chen-Yu Tsai ha scritto:
+> >>> On Mon, Feb 6, 2023 at 11:29 PM AngeloGioacchino Del Regno
+> >>> <angelogioacchino.delregno@collabora.com> wrote:
+> >>>>
+> >>>> Now that all of the clocks in clk-mt2712.c are using the common
+> >>>> mtk_clk_simple_{probe,remove}() callbacks we can safely migrate
+> >>>> to module_platform_driver.
+> >>>
+> >>> Instead of splitting the conversion into a module among many patches,
+> >>> I'd do it in one go. With one patch we get a working module instead
+> >>> of a half-baked one half way through the series.
+> >>>
 > >>
-> >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> >> ---
-> >>   drivers/clk/mediatek/clk-mt8183.c | 160 ++++++------------------------
-> >>   1 file changed, 28 insertions(+), 132 deletions(-)
-> >>
-> >> diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
-> >> index 0fad2cf7f41b..035fdd02f0be 100644
-> >> --- a/drivers/clk/mediatek/clk-mt8183.c
-> >> +++ b/drivers/clk/mediatek/clk-mt8183.c
-> >> @@ -25,11 +25,8 @@ static const struct mtk_fixed_clk top_fixed_clks[] = {
-> >>          FIXED_CLK(CLK_TOP_UNIVP_192M, "univpll_192m", "univpll", 192000000),
-> >>   };
-> >>
-> >> -static const struct mtk_fixed_factor top_early_divs[] = {
-> >> -       FACTOR(CLK_TOP_CLK13M, "clk13m", "clk26m", 1, 2),
-> >> -};
-> >> -
-> >>   static const struct mtk_fixed_factor top_divs[] = {
-> >> +       FACTOR(CLK_TOP_CLK13M, "clk13m", "clk26m", 1, 2),
+> >> If you really want I can eventually do that in one go - in any case, the
+> >> sense of having this split in multiple commits is:
+> >>    - Bisectability: topckgen/mcucfg migration being faulty would point at
+> >>                     one commit doing just that, making it easier for whoever
+> >>                     is trying to debug that to find what could've gone wrong;
 > >
-> > A clock with the same name is now present in the DT, and so this clock
-> > would fail to register. We should drop this one completely and point
-> > any references to it internally to "csw_f26m_ck_d2".
+> > This part I agree with.
 > >
-> >>          FACTOR(CLK_TOP_F26M_CK_D2, "csw_f26m_ck_d2", "clk26m", 1, 2),
+> >>    - Slow changes:  A driver being a platform_driver doesn't mean that it *has*
+> >>                     to be compiled as a module: infact, we can use the .remove()
+> >>                     callback even with built-in drivers (as you can remove one
+> >>                     and re-add it during runtime from sysfs)
 > >
-> > MT8192 and MT8195 aren't affected because they only have "csw_f26m_ck_d2",
-> > which systimer was referencing.
+> > I think the part that tripped me up was that in this patch's case it
+> > was already a platform driver, just a builtin one (without the
+> > builtin_platform_driver sugar).
 > >
-> >>          FACTOR_FLAGS(CLK_TOP_SYSPLL_CK, "syspll_ck", "mainpll", 1, 1, 0),
-> >>          FACTOR_FLAGS(CLK_TOP_SYSPLL_D2, "syspll_d2", "syspll_ck", 1, 2, 0),
-> >> @@ -809,26 +806,6 @@ static const struct mtk_clk_rst_desc clk_rst_desc = {
-> >>          .rst_bank_nr = ARRAY_SIZE(infra_rst_ofs),
-> >>   };
-> >>
-> >> -static struct clk_hw_onecell_data *top_clk_data;
-> >> -
-> >> -static void clk_mt8183_top_init_early(struct device_node *node)
-> >> -{
-> >> -       int i;
-> >> -
-> >> -       top_clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
-> >> -
-> >> -       for (i = 0; i < CLK_TOP_NR_CLK; i++)
-> >> -               top_clk_data->hws[i] = ERR_PTR(-EPROBE_DEFER);
-> >> -
-> >> -       mtk_clk_register_factors(top_early_divs, ARRAY_SIZE(top_early_divs),
-> >> -                       top_clk_data);
+> >>    - Signaling completion:
+> >>                     Saying "this is complete" in this case is performed in the
+> >>                     last patches of the series, where only the Kconfig is being
+> >>                     changed to allow the module build for (most)all.
 > >
-> > And since we used to not do error checking, the name conflict was OK.
-> > With the new common probe, it's not.
+> > I'm concerned about people randomly cherry-picking patches. Unfortunately
+> > not everyone lives on mainline, us included. (I'm sure Android has it
+> > worse.) Many won't see the complete patch series, doubly so if we merge
+> > it in stages. Better we give one complete patch that converts the
+> > boilerplate code from "can't work as module" to "can work as module".
+> > I do agree we should keep all the other cleanups and migration to
+> > simple/pdev_probe separate for bisectability.
 > >
 >
-> That makes me proud of my changes to extend the new common probe mechanism,
-> as this is one of (hopefully not) many wrongs that slipped through without
-> any apparent issue.
-> Anyway, there was no reference to this clk13m (nor CLK_TOP_CLK13M) anywhere
-> so I changed this commit to just "forget about this clock" (advertising the
-> reason in the commit description, of course).
+> One complete patch meaning that migrating to mtk_clk_simple_probe() should be
+> squashed with moving apmixedsys away?
+>
+> So one patch doing the *big* change, and then one changing the driver to use
+> the module_platform_driver() macro and tristate in Kconfig?
 
-I think I should send this as a separate patch as a follow-up to the systimer
-changes. And we should keep the CLK_TOP_CLK13M entry valid, since that's
-the entry referenced in old DTs, but change its name to "csw_f26m_ck_d2".
+I'd also add MOD_DEVICE_TABLE. Module autoloading doesn't work otherwise.
 
-In short we are actually merging CLK_TOP_CLK13M and CLK_TOP_F26M_CK_D2,
-with the former surviving but with a name change. CLK_TOP_F26M_CK_D2
-is only referenced internally in TOPCKGEN.
+The rest of the MODULE_INFO stuff I don't really have a preference on,
+but I don't know if there would be any issues with loading a module
+that doesn't have MODULE_LICENSE. Maybe the default is "GPL"?
 
-> Is MT8183's cpufreq working after this change, or is it still not behaving?
+> I would be more comfortable changing the order of commits at this point,
+> apmixedsys error handling Fixes -> apmixedsys moved in its own file ->
+> migrate others to mtk_clk_simple_probe() *and* Kconfig changes
+>
+> What do you think?
 
-Yes it's back.
+Sounds good. That way a) apmixed sys error handling could be cleanly
+backported if anyone cares, and b) code movement is contained in one patch.
 
+> Thing is, apmixedsys is not a simple_probe driver and will never be, so
+> it feels wrong to move that inside of a commit that converts to simple_probe()...
+
+Agreed.
+
+Thanks
 ChenYu
+
+> >>> The subject could say "Convert X driver from builtin to module". And
+> >>> instead of "migrate to module_platform_driver", the body could say
+> >>> "convert to module by switching to module_platform_driver, and adding
+> >>> missing MODULE_* statements". I believe this constitutes one logical
+> >>> change. Maybe the accompanying Kconfig change should be included as
+> >>> well?
+> >>>
+> >>
+> >> But again, I don't have *really strong* opinions on this, if not preferences
+> >> for how I'd like to see the changes getting in: this series brings big changes
+> >> that would be done in many more commits if they were scattered in more series.
+> >> Another point about having this conversion performed in multiple commits is
+> >> showing how it was done and how to replicate it for a different driver...
+> >
+> > In the past I've seen some comments from other maintainers about keeping
+> > (module|builtin)_X_driver consistent with its Kconfig entry. That sort of
+> > plays into my argument that this bit should be kept atomic.
+> >
+> > There are a couple patches where you convert directly from CLK_OF_DECLARE
+> > to module_platform_driver. We could work those out case by case?
+> >
+> >>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> >>>> ---
+> >>>>    drivers/clk/mediatek/clk-mt2712.c | 10 ++--------
+> >>>>    1 file changed, 2 insertions(+), 8 deletions(-)
+> >>>>
+> >>>> diff --git a/drivers/clk/mediatek/clk-mt2712.c b/drivers/clk/mediatek/clk-mt2712.c
+> >>>> index c5fd76d1b9df..65c1cbcbd54e 100644
+> >>>> --- a/drivers/clk/mediatek/clk-mt2712.c
+> >>>> +++ b/drivers/clk/mediatek/clk-mt2712.c
+> >>>> @@ -1028,7 +1028,7 @@ static const struct of_device_id of_match_clk_mt2712_simple[] = {
+> >>>>           { /* sentinel */ }
+> >>>>    };
+> >>>>
+> >>>> -static struct platform_driver clk_mt2712_simple_drv = {
+> >>>> +static struct platform_driver clk_mt2712_drv = {
+> >>>
+> >>> Why the name change? If you do change the name, could you also change
+> >>> the of match table's name as well to be consistent, and also mention
+> >>> the change in the commit log?
+> >>
+> >> It simply looked like being a good idea, as "simple" made sense when we had two
+> >> platform_driver in one file, one using simple_probe, one using a custom probe
+> >> function.
+> >> The latter going away forever means that there's no more distinction to do
+> >> between the two, hence my rename here...
+> >>
+> >> Regarding the of_match_table name change... I'm sorry, I genuinely forgot to
+> >> change it, my intention was infact to actually be consistent... :-)
+> >>
+> >>>
+> >>> I'd just leave it alone though.
+> >>
+> >> I had to explain my reasoning about all of the above, so I'll just wait for
+> >> your opinion again before going for a v2! :-)
+> >
+> > Thanks again for working on this.
+> >
+> > ChenYu
+>
+>
+>
 
