@@ -4,74 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A14E3C05027
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 05:57:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12BD6C636CC
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 07:46:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=X3cBszW/NxbtABNnIy79YxFnHPtmZaYNwTC7ihSL/WU=; b=UBGO8Gf98R/A7hXYOwTsYGrYC4
-	B029hVpz5d6QYehqZl02mUVO/IPDcYMXvZHD5oGAQKh2YkTkJbFAafFfyikEZwEzF1ml+HFJxobef
-	t2O2QrAz424Ewp9Dhzx6xqYb4RAavvLijs4qTrFNS63btpuqCyqGMz/sgu7PoYbgbBHQT0Lgmw8Dp
-	/Jv0nDpSmjdX7OMiH9iUpkcx10vBWCaCMj18EK8m8hFfFsj0F6ccnLHUmVwWQvQewdcvECXnBO50k
-	wg1455gXklzM6QwXctqGveg2adxQBrxz5RhCUNG1cM7qvpCUfNiRSvFUTItkhWZ7WaeH2HYdGACe/
-	mrH6Fc1g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:
+	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lJZsJu6FE/m8RkUXLIqO4+l2gX1b3XV9offgkGavorA=; b=armJOaV0MPkr+mA+rPuPHyfnUy
+	ZSgPc6CVORgn8ZnEiJ40phWETv+nfFfpf26IrQ/ed6wmeSssIoQiEviizJHSoT5OGKP4Xk5B8SsBl
+	rNV/YP+aKsSO0fP83ZOJwLByhb6se3Qhx2hg37zT390osp6Y3egnhb8XpyKEggCt1mlcq7w/W869J
+	m2dX02HorC+TKhyAhjCHV+sLXC6q+5XXlnCqXlmr9skKTLXSrPQyCSQcU3dD+goxgOSbfJePwMJF0
+	yfhndq4uFLpCQtRp4fp9fO7cowwiqUe+TrYDxgdj3LrrjfOVj3M+ZYfYzwpJ1HpCPVxzvSFbFeat3
+	lxBO1D8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPdSG-00EFBy-EV; Wed, 08 Feb 2023 05:57:16 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pPfAE-00ETvD-8Q; Wed, 08 Feb 2023 07:46:46 +0000
+Received: from mout.gmx.net ([212.227.17.22])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPdS2-00EF6H-VV; Wed, 08 Feb 2023 05:57:04 +0000
-X-UUID: 65a48ee2a77511edbbe3f76fe852e059-20230207
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=X3cBszW/NxbtABNnIy79YxFnHPtmZaYNwTC7ihSL/WU=;
-	b=rpWyBQqTOG6hLXSVFRs0rYMmHaAm9xONxK2jeV4Yp+WdKNjb8gyMMhHV32CTc7dcvVbCbfUJy8ji9mdrsxb0r6VJxESzKo2tmi5XfgvZTOxyYG3iKPqAezwhNMVb2Iv0xA+OAxs8cQuCnRnjHUZCAMgXcjHUt6oenREYx62l/BI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.19,REQID:353cb9e4-f0df-43ca-919d-a446fce8640f,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:885ddb2,CLOUDID:20e2cdf7-ff42-4fb0-b929-626456a83c14,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-UUID: 65a48ee2a77511edbbe3f76fe852e059-20230207
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <yong.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 712791422; Tue, 07 Feb 2023 22:56:57 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 8 Feb 2023 13:36:54 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 8 Feb 2023 13:36:53 +0800
-From: Yong Wu <yong.wu@mediatek.com>
-To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>
-CC: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
-	<hverkuil@xs4all.nl>, <nfraprado@collabora.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <iommu@lists.linux.dev>, AngeloGioacchino Del
- Regno <angelogioacchino.delregno@collabora.com>, <mingyuan.ma@mediatek.com>,
-	<yf.wang@mediatek.com>, <libo.kang@mediatek.com>, Yunfei Dong
-	<yunfei.dong@mediatek.com>, kyrie wu
-	<kyrie.wu@mediatek.corp-partner.google.com>, <chengci.xu@mediatek.com>,
-	<youlin.pei@mediatek.com>, <anan.sun@mediatek.com>
-Subject: [PATCH v2 00/10] Adjust the dma-ranges for MTK IOMMU
-Date: Wed, 8 Feb 2023 13:36:33 +0800
-Message-ID: <20230208053643.28249-1-yong.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pPfAB-00ETu0-4T; Wed, 08 Feb 2023 07:46:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1675842373;
+	bh=lJZsJu6FE/m8RkUXLIqO4+l2gX1b3XV9offgkGavorA=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=Z1XqmXIrzpSMAkZ+Q0XE5W/aaZ0b3GDmOv9Uu1iprRwYmrXmGDDIA1nxIBDjyuzI3
+	 cdoIt1KRcWqN7baNK4TcI+yi7ZVr+Teprx2VIpIqXlpCYm34Dm3ZfxcIZePlDfRTdV
+	 Uj602Lf1KZsQpKmk2+jDr6+YSk9YQRlxeqOh6jiCIBJZSLpJi8cB0fEV+zaS+fxbNu
+	 DoGYCbY7bHbDPw2a5OGDNDARN+lqF+CysamJq1PyTQBcAofPV2fpdQPXOXcS1DZPYL
+	 Ft6tsaS789xJmM2kE1qv7Bsps/jp2oCXDIDKXuHCtO5vtc9hLjx4ML52OzYKPiDcAI
+	 FpAA/GVACFpRg==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [157.180.227.18] ([157.180.227.18]) by web-mail.gmx.net
+ (3c-app-gmx-bap61.server.lan [172.19.172.131]) (via HTTP); Wed, 8 Feb 2023
+ 08:46:13 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Message-ID: <trinity-e1125c6e-9b6c-4e34-82fd-d99d34661cb6-1675842373343@3c-app-gmx-bap61>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
+Cc: Felix Fietkau <nbd@nbd.name>, netdev@vger.kernel.org, John Crispin
+ <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
+ <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David
+ S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
+ Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Russell King <linux@armlinux.org.uk>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, erkin.bozoglu@xeront.com
+Subject: Aw: Re: [PATCH net v3 4/5] net: ethernet: mtk_eth_soc: drop generic
+ vlan rx offload, only use DSA untagging
+Content-Type: text/plain; charset=UTF-8
+Date: Wed, 8 Feb 2023 08:46:13 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <79506b27-d71a-c341-48fd-0e6d3a973f2e@arinc9.com>
+References: <20221230073145.53386-1-nbd@nbd.name>
+ <20221230073145.53386-4-nbd@nbd.name>
+ <79506b27-d71a-c341-48fd-0e6d3a973f2e@arinc9.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:be3w77Hl6YYRLG2Pfygnosn9NFEWYnMi66wjxQ4iLMaU706Pu0SKotAM8rWVzb05/cgeb
+ UjMHM1GFVDZ82M7mSaTRl8PWr2yByQuuDJvFP/rhSniukSrojFgxOG/DSCdxcOW8Q1qU3IpOE7MC
+ ASw5EGGWNjhysiJsZNs34RM8wO2/8Vh7o/8kUNsdH0eAz0Eoa7/Edvtv4WRkmatEVRwZDPa2p45u
+ JB1CYxMlOSgZlQZpEIAhakF5W4XFdKu/hr66QUq22PfeJ1M3LdZTZPV3NiaaFZYpBXqzKPQGpwpe
+ Kg=
+UI-OutboundReport: notjunk:1;M01:P0:yDiaRCpQi1g=;6amzwCNFap286wCSTAXysO5Rhpp
+ O+UUFM2v/aTS8UCc0eVw8RHuIwGelQ76CmlCScX5w/kULvrbwzqdV6HfM8aX2HaLSJB8PVgOy
+ V6QcEFHKSbhTK6PUxFDNTj34PNgNkS7I8acI40s2ppYdCpNWvQc1Em7rF2OBnpTtOSAo8VJPD
+ ypNQeFMkP8JKKYBFnU3m8VIYq3dUzejVljBgnwcbe8NUgLZF1gzpYbtLUmIHgY2CwNmEGYGMF
+ /1opsI8tiz5liYMHa8mvThM7yN3bVl/A4wqjQBUwYdZzk/BvAt/buJYqj2YjZdDiebTYaxLhF
+ iWVrZLVzepCgUjz+eqcwta37aeMirJacjU/UogMkR5J/AqMXEY3HtCU3V8cL0uoGfGlUaiMYd
+ kRAr+NyTfuxCuVUJjxxYHwGDXAvaMsR5BX1gqjTpdLly6zin+B0xxG6mnkoyp6/GZcdtn4UjN
+ YALJ47I9/nf097nYqxAGQXiFPgnK+uLi167IyZ4YruTTNDuoaMdy+DfIvPrEsIUfJtxxCQYba
+ i1oMbvEjg78akZJmkMOUnXPZY3B1jGZN3GzHyrlW68Z7yLqe1li3hb1CKh9L/28YhBA/w3RC2
+ tR+J6IMcgssUzO94Ru2lehxVwaHBAkQdGzHqsJhEpjjOHQ9ZijgQxuuCcxs0RiSC4M3Tsf07I
+ jFzDgHqgJ0lE0iFApc6YXXqsyeAewIAHT7B3UsqV3sJnZjhuel1Tqq4ZBcsIwyKrHeRvjc/YE
+ Z1zw8RSUeEPuq9ZVqOllCtEeXRjZnf7zPJvfP5UmnRpfgLpStnlRux1bmpuav0Nhs4JFLBz0F
+ d5PXOnVpwE0jW0gNT9iPTSqQ==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230207_215703_030221_120DC9D5 
-X-CRM114-Status: GOOD (  13.25  )
+X-CRM114-CacheID: sfid-20230207_234643_477751_C81BB43C 
+X-CRM114-Status: UNSURE (   7.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,56 +98,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-After commit f1ad5338a4d5 ("of: Fix "dma-ranges" handling for bus
-controllers"), the dma-ranges is not allowed for dts leaf node.
-but we still would like to separate the different masters into
-different iova regions. Thus we adjust the internal flow, separate
-the 16GB iova range by the master HW larbid/portid and add the
-dma-ranges property in the parent "soc" node. This also could avoid
-the users forget/abuse the iova regions.
+Hi,
 
-The commit f1ad5338a4d5 did affect the mt8195 venc, But it is not
-a fatal issue, it could also work well at 0-4GB iova. thus I don't
-add "Fixes:" tag.
+just to confirm, my issues were not caused by this series, it was there before and now fixed with [1]
 
-In this series, I add functions for mt8192/mt8195/mt8186, mt8188 will
-be in its special patchset. and the previous mt8173/mt8183...support
-0-4GB only, no need this function.
+at least one issue arinc is mention is fixed with [2]
 
-Change note:
-v2:
-   a) Base on next-20230206 since mt8195 jpeg node was applied which
-      affect this patchset.
-   b) Reword the commit message [1/10][2/10] to explain effect.
+so please apply
 
-v1: https://lore.kernel.org/linux-mediatek/20230113060133.9394-1-yong.wu@mediatek.com/
-   Base on v6.2-rc3.
+regards Frank
 
-Yong Wu (10):
-  dt-bindings: media: mediatek,vcodec: Remove dma-ranges property
-  dt-bindings: media: mediatek,jpeg: Remove dma-ranges property
-  iommu/mediatek: Get regionid from larb/port id
-  iommu/mediatek: mt8195: Add larb_region_msk
-  iommu/mediatek: mt8186: add larb_region_msk
-  iommu/mediatek: mt8192: add larb_region_msk
-  iommu/mediatek: Add a gap for the iova regions
-  arm64: dts: mt8195: Add dma-ranges for the parent "soc" node
-  arm64: dts: mt8195: Remove the unnecessary dma-ranges
-  arm64: dts: mt8186: Add dma-ranges for the parent "soc" node
-
- .../media/mediatek,mt8195-jpegdec.yaml        |  7 --
- .../media/mediatek,mt8195-jpegenc.yaml        |  7 --
- .../media/mediatek,vcodec-decoder.yaml        |  5 -
- .../media/mediatek,vcodec-encoder.yaml        |  5 -
- .../media/mediatek,vcodec-subdev-decoder.yaml |  7 --
- .../bindings/media/mediatek-jpeg-encoder.yaml |  5 -
- arch/arm64/boot/dts/mediatek/mt8186.dtsi      |  1 +
- arch/arm64/boot/dts/mediatek/mt8195.dtsi      |  4 +-
- drivers/iommu/mtk_iommu.c                     | 95 ++++++++++++++-----
- 9 files changed, 72 insertions(+), 64 deletions(-)
-
--- 
-2.18.0
-
-
+[1] https://patchwork.kernel.org/project/linux-mediatek/patch/20230205140713.1609281-1-vladimir.oltean@nxp.com/
+[2] https://patchwork.kernel.org/project/linux-mediatek/patch/20230207103027.1203344-1-vladimir.oltean@nxp.com/
 
