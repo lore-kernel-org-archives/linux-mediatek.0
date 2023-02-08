@@ -4,86 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 597B4C05027
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 14:31:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3524AC636CC
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 15:12:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=23X5TX+ESt6P/v6NFPb3Xe184rfenm6WbYS+JlMi6jE=; b=qLnnAi8OovsUme
-	r3UqnDZ/5aStMYXD2FqvIm9uKAnVaerRHiJOS/NTn87p65uhTPN1MuuHtiJpfiLDSGeToqSULcI+z
-	YQ1wH+MHm/99qJV/5pa96+OVJM/7q6+t0pDVzL5v2WOjzRJcPwFAMj2LGi3d2EqArEQFZBnCYaN/C
-	SBpPbGrnyzwwU5jbXZX42N7t/hwfi1wJ5z78LUAVzTA6BuVUxHkVfhM1iZL1l20u6SW3He+1/2brR
-	AcQZwqk2w+5+SfetipUJsBQvF0oGJaEDcu/dG1yVEfcOhFlIZZOBWmq2pol+7FT8imOrGkjMo/pVM
-	R5+Si2WwEgZR2bDeLfrA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7ThuuZK4oNLUYk4rXoIAwsAeYd7jYxO56zCJ4oA5u5k=; b=j1QSxfuATs7vpQ1whumikRaKS2
+	GHlZGv3O5Z/Af4J1JO+ApQuJNX2P8Jir9ZUXdC7in6a3PIvQN6O1THl3mTYWjN6LbXlmjh3fyLll1
+	DUG420jWTOzYg5bu4v5RzRc5ROfedNgbBwjHARrc6NIpOS8p7rEmywmA1eXoAzrsVUveAYAidPlpo
+	uBWku1Qv/1U3B4sgCUFg0PmmWi4LtS5HMIgvDl39ZddVQrfqJnbgbzR8VpSk+uw8PO53e4RLZGZVy
+	WOEyXMpD60dkzRZ4wWRGOMj4IQOVg1w341D6dcx5/GXoGsCHjpR+RQnOxTN/IVJ/70QouVZwInDqZ
+	Byg0hNqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPlTx-00Fuwy-FX; Wed, 08 Feb 2023 14:31:33 +0000
-Received: from mout.gmx.net ([212.227.15.19])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPlTk-00FusP-M3; Wed, 08 Feb 2023 14:31:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1675866653;
-	bh=23X5TX+ESt6P/v6NFPb3Xe184rfenm6WbYS+JlMi6jE=;
-	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
-	 References;
-	b=hdYqMIiBNAf/HN7Pxx3BF4z56sGOwZ+HAkIGgRreOLjSYd3KBjc2T2vrqeAqVcj6A
-	 LX5q3AiAHGK82XxIqsCf+km7HnQOzdWvLnd7/0dfIbkUWRcbj4rul9OY16pe8my/K8
-	 mWBDXr9NPdzEDNo1xpTBMgMOFkZhuOMFRGVNRglSMPqZsJXuoV1p/QBy191E425Nho
-	 NWVXQCXUWMRBLGjANm9A3UtXe1mwEMho0b0lKU7VgU7rxNyp7bgeeCa38oEu1Gh9tg
-	 R62W8zrSsiy78mzGCOxff1288Yp4R3uroMmgMMjMUVB8Dp5IpaupAIHHLSTT8lUhNU
-	 as+e/D9UowduA==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [127.0.0.1] ([157.180.227.18]) by mail.gmx.net (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1Mnpns-1ondR84BFC-00pP73; Wed, 08
- Feb 2023 15:30:53 +0100
-Date: Wed, 08 Feb 2023 15:30:49 +0100
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Jakub Kicinski <kuba@kernel.org>,
- =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-CC: arinc9.unal@gmail.com, Felix Fietkau <nbd@nbd.name>,
- John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
- Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Richard van Schagen <richard@routerhints.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, erkin.bozoglu@xeront.com
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_net=5D_net=3A_ethernet=3A_mtk=5Feth=5Fsoc?= =?US-ASCII?Q?=3A_enable_special_tag_when_any_MAC_uses_DSA?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <20230207155801.3e6295b0@kernel.org>
-References: <20230205175331.511332-1-arinc.unal@arinc9.com> <20230207105613.4f56b445@kernel.org> <5d025125-77e4-cbfb-8caa-b71dd4adfc40@arinc9.com> <52f8fc7f-9578-6873-61ae-b4bf85151c0f@arinc9.com> <20230207155801.3e6295b0@kernel.org>
-Message-ID: <EAD9D5DE-571F-4D59-9F09-1B3C8F23ABCF@public-files.de>
+	id 1pPm7G-00G27q-4Z; Wed, 08 Feb 2023 15:12:10 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pPm74-00G24e-JK; Wed, 08 Feb 2023 15:12:00 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B54511477;
+	Wed,  8 Feb 2023 07:12:35 -0800 (PST)
+Received: from [10.57.12.246] (unknown [10.57.12.246])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D28A33F8C6;
+	Wed,  8 Feb 2023 07:11:49 -0800 (PST)
+Message-ID: <7e08656f-4908-43e3-57d6-2928b1eb12d5@arm.com>
+Date: Wed, 8 Feb 2023 15:11:47 +0000
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:EqlMNzwFUzUkFtQzw+PYkXe8Z7nZzAYLh3DyUnjXSbMS4TG9Q2B
- GpTBMhn+nciUSrAlKoUpi0W7L0ejEnQuf6mx9U6hcuyYrls/+ZcPObMLSZ1RKbc7rEben6B
- t98cuSi6LRkvFN/zLnCIvaPbVvbH5JEUzJjm86LWP4BURAIkPrcl8vTsmqe4z+SoPfvkXgc
- F+IXFV1e6yA1aWrrVtHRw==
-UI-OutboundReport: notjunk:1;M01:P0:leBRI6KhA0A=;SLewI2BJYjFVUaec1eIR4K21TPa
- CXaWujmp4/MCq15RQ6fElwypLw0s8OXmycTfj8oIcRcb131rwubDTlaat/3z8g3oBA8Cnui9r
- 5eeCx4R+PHOSG8qFv8QoYcjNR9iNezWvZrvAgp7kpE//fVCMWc00XY1PwcmnIv//6fNMMQEmV
- aOoWRwCGGI64BHI4tcSUyuV2/cqkWAd7VUtEPjG7nmBPeAGEzVnuyGxUnN5TWIAKhbMZPqtol
- GlBEzFrkpuZH0WiO+0lg/gM7QzmawwxzsnFBJqDUUwpjWjyV40/WeHX9NbOPWOiIQmy2sdD1w
- 7hRVKCi0ybpCxcj8+j9aVRKOGNvzUQ/OmSZTjuDb/wOmowwImmoSLLaCVdb7lkuc+KlXOT2bb
- Y4lUwPmRVel/nWnzo+DNrA3AGj+j9auf7H7MHuLnbfFsr7XxZTe0FKhgt4Yse2dMudySCTzLu
- nT2AW+9GLWDbtCuRTMfEBPkAYmVfmA+GzDjKwdr9FpSOYFp1dYoSWIzDlrl8QRYbDWE1g4Oi0
- wwgI5FLP6aBGSC0WTA6SG3hkNAZ1jBnfjYTwqcR+C9OnMi9tyQm9nUOMyRBHdnTnzw2ui1Ora
- euI9DOGdZg17YD0nPDATkFwnUIXo6c64S0DUeMlodDi1KB5B97E+8GhrdLx/UqNLAHfQ+ToDy
- eA+h+EZU+u/37wjDZ3GzUmvav0n5Q7hDxvrb2HAYnAHVUWrJ1PE15GYW5zWvo0R41BzufoJTO
- BkJ2FGBc26uQc4ZFqsyqmJNAtyd3hY/2/Oke9QwPrUrbrIrDXVoxA/7fFD8u1wdmLXHzwCab/
- Wj7EHDXhagxNd8b4ntzgLVFZgkSJ/efDpRt6HeFiVzk6BgfhPOOzmEt0gt4kZwNAmLZo5J7DH
- LaefLCP0EPSK4hsUNV4hcJXpqtEjmtq5V/v5Zw2GaY8zFPVUvvmez7fVb9bJyOEvIKxrTQ54d
- WdZDH4wd9rXHewKMlyBuFs9K6Hs=
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH 0/9] Panfrost: Improve and add MediaTek SoCs support
+Content-Language: en-GB
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ airlied@gmail.com
+Cc: daniel@ffwll.ch, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ tomeu.vizoso@collabora.com, alyssa.rosenzweig@collabora.com,
+ matthias.bgg@gmail.com, robh@kernel.org, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230208103709.116896-1-angelogioacchino.delregno@collabora.com>
+From: Steven Price <steven.price@arm.com>
+In-Reply-To: <20230208103709.116896-1-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230208_063121_135715_696B8728 
-X-CRM114-Status: UNSURE (   8.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230208_071158_689770_7BB31331 
+X-CRM114-Status: GOOD (  17.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,30 +63,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 8=2E Februar 2023 00:58:01 MEZ schrieb Jakub Kicinski <kuba@kernel=2Eorg=
->:
->
->No strong preference, TBH=2E
->
->The motivation for my question was to try to figure out how long we
->should wait with applying this patch=2E I applied the commit under Fixes
->without waiting for a test from Frank, which made me feel a bit guilty
->:)
+On 08/02/2023 10:37, AngeloGioacchino Del Regno wrote:
+> This series adds support for new MediaTek SoCs (MT8186/MT8192/MT8195)
+> and improves MT8183 support: since the mtk-regulator-coupler driver
+> was picked, it is now useless for Panfrost to look for, and manage,
+> two regulators (GPU Vcore and GPU SRAM) on MediaTek;
 
-No worry=2E You don't have to feel guilty for it=2E
+Yay! ;) I never did like Panfrost dealing with two regulators.
 
-My limited time currently does not allow test all patches in all circumsta=
-nces=2E=2E=2Ei trust arinc to make it better than before=2E=2E=2Ethere are =
-many patches floating around which fixing some corner cases in mtk eth driv=
-er=2E I hope these are applied i had tested and for the others i report a b=
-ug when i notice any problem :)
+> The aforementioned driver will take care of keeping the voltage
+> relation (/constraints) of the two regulators on its own when a
+> voltage change request is sent to the Vcore, solving the old time
+> issue with not working DVFS on Panfrost+MediaTek (due to devfreq
+> supporting only single regulator).
+> 
+> In the specific case of MT8183, in order to not break the ABI, it
+> was necessary to add a new compatible for enabling DVFS.
 
-Would be nice if felix' series can be merged for fixing sw vlan on non-dsa=
- mac and the one from vladimir fixing the vlan_aware bridge without breakin=
-g dsa port outside the bridge on same gmac=2E
-regards Frank
+It's a shame to need a new compatible, but it seems sensible to me.
+
+For the panfrost changes:
+
+Reviewed-by: Steven Price <steven.price@arm.com>
+
+I'll let others comment on the DT binding changes.
+
+Thanks,
+
+Steve
+
+> Alyssa Rosenzweig (3):
+>   drm/panfrost: Increase MAX_PM_DOMAINS to 5
+>   drm/panfrost: Add the MT8192 GPU ID
+>   drm/panfrost: Add mediatek,mt8192-mali compatible
+> 
+> AngeloGioacchino Del Regno (6):
+>   dt-bindings: gpu: mali-bifrost: Don't allow sram-supply by default
+>   dt-bindings: gpu: mali-bifrost: Allow up to 5 power domains for MT8192
+>   dt-bindings: gpu: mali-bifrost: Add compatible for MT8195 SoC
+>   dt-bindings: gpu: mali-bifrost: Add new MT8183 compatible
+>   dt-bindings: gpu: mali-bifrost: Add a compatible for MediaTek MT8186
+>   drm/panfrost: Add new compatible for Mali on the MT8183 SoC
+> 
+>  .../bindings/gpu/arm,mali-bifrost.yaml        | 68 +++++++++++++++++--
+>  drivers/gpu/drm/panfrost/panfrost_device.h    |  2 +-
+>  drivers/gpu/drm/panfrost/panfrost_drv.c       | 28 ++++++++
+>  drivers/gpu/drm/panfrost/panfrost_gpu.c       |  8 +++
+>  4 files changed, 99 insertions(+), 7 deletions(-)
+> 
+
 
