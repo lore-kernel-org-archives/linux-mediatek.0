@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC805C636CD
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Feb 2023 23:58:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE538C636CD
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 02:48:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sGXVaRq6vYQJqxYDtBacKqsMgua8qseAvNZKfXM4PXY=; b=py1lf/aC4ipLOr
-	iNF9v5t7NUHevNnIwe2Nw7bp8NuK7SZ7MkFefnATBi7txlp/ssHM4KakCG3ux+t5HK/rtmZofh4Dk
-	ec9CXyQnPbxKHSgHTA2n0QIjTnWwkwQtW1hW0cckU8gYWDkUgm+KDM3bpFfXZR4FcZqjv3shoYHIT
-	2Kn0MJtAUVvPxLXhQkvdKogPaLneQ43NyV3wb/sC0KKkjpW+5jH0dq3xkKA9c/U9LH7GbYJ2Okfia
-	d3hFjeSmXvAn8rmAXuYMo3hwjgbF2JS8mzKdzugIuwG+UC49PKFbU+Px5xqrQPoPB8JQ/hi/unrFG
-	6cz3/I9UE8knd28SF82w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Subject:Cc:To:
+	From:Mime-Version:Message-ID:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4SICOJ4kweqN7SFlfBoMnKVIbKjyXli+Q/9caVnN0io=; b=Mwzfoou6nDP2ioe1fFdb7u2+Yu
+	jlapvK9wwk09CZFwJJGCbETZofu5+9eZA3P3OJKB67om+wpy3H+Do2dBj3e63xP3hgRLHBowmEJxA
+	Gsfh34SRM4HmkQ5j8mFPLLPfnJcd1OFKpG0+/W6TBondZv88cglQTmtXfGaCHDYbsnd21fMd1nA1Y
+	QxliasglSty9xyAr78jmPFaPdRn53db4vyCOWPXuKrhp1qwO4qmfADAJBOLZvODKFUG4SeVl950g0
+	6KrFxAQg206rHszNz7CLN3eUYpvly5PRtInTi5m/jbBl+lRLL1ApFRn/CLft5zqxXXwMDoj4qD7nV
+	DAPJjWbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPXqo-00DhLk-Fu; Tue, 07 Feb 2023 23:58:14 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pPaVf-00Dsro-Un; Wed, 08 Feb 2023 02:48:35 +0000
+Received: from mxhk.zte.com.cn ([63.216.63.35])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPXqe-00DhKO-IZ; Tue, 07 Feb 2023 23:58:05 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	id 1pPaVT-00DspL-Ga; Wed, 08 Feb 2023 02:48:25 +0000
+Received: from mse-fl2.zte.com.cn (unknown [10.5.228.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id BD6CE6143F;
-	Tue,  7 Feb 2023 23:58:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88304C433D2;
-	Tue,  7 Feb 2023 23:58:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1675814283;
-	bh=sGXVaRq6vYQJqxYDtBacKqsMgua8qseAvNZKfXM4PXY=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=bqKCVz+Mave8Fx0zq4+M9qYMTm6ZlSWC2rAFunG41hjqgDqk5UJtVuwWBn03cGKRV
-	 aWvZUKFTvEPyFi2qOTONmDbuqbEXbZsXZQ97yHpL1TZ4I3lFk1h86CqtFFd72RvzRW
-	 pcOoPLGqq3pBRqMacLJWsYdNiWDBCKnfsagPYaksIY/CbUcZBC4Q0Wuv4EWyxePl39
-	 A9NlmcyS81s97RzyP3dE1U67sXxVIIgKcvG2twTQspMTepg2aOyQtpBfFH09X9vLxs
-	 QaxB0Etglbnv/xlu7YsIymkLms6gaxwJJbXl9erWtJzyLt1VU67qCped3nXH1ZcXOC
-	 +7Cpr2+cTmhPg==
-Date: Tue, 7 Feb 2023 15:58:01 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: enable special tag when
- any MAC uses DSA
-Message-ID: <20230207155801.3e6295b0@kernel.org>
-In-Reply-To: <52f8fc7f-9578-6873-61ae-b4bf85151c0f@arinc9.com>
-References: <20230205175331.511332-1-arinc.unal@arinc9.com>
-	<20230207105613.4f56b445@kernel.org>
-	<5d025125-77e4-cbfb-8caa-b71dd4adfc40@arinc9.com>
-	<52f8fc7f-9578-6873-61ae-b4bf85151c0f@arinc9.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+	by mxhk.zte.com.cn (FangMail) with ESMTPS id 4PBPZ56mMhz6FK2X;
+	Wed,  8 Feb 2023 10:48:13 +0800 (CST)
+Received: from xaxapp03.zte.com.cn ([10.88.97.17])
+	by mse-fl2.zte.com.cn with SMTP id 3182m21w077937;
+	Wed, 8 Feb 2023 10:48:02 +0800 (+08)
+	(envelope-from ye.xingchen@zte.com.cn)
+Received: from mapi (xaxapp01[null])
+	by mapi (Zmail) with MAPI id mid31;
+	Wed, 8 Feb 2023 10:48:03 +0800 (CST)
+Date: Wed, 8 Feb 2023 10:48:03 +0800 (CST)
+X-Zmail-TransId: 2af963e30d634e00a959
+X-Mailer: Zmail v1.0
+Message-ID: <202302081048037733713@zte.com.cn>
+Mime-Version: 1.0
+From: <ye.xingchen@zte.com.cn>
+To: <tsbogend@alpha.franken.de>
+Cc: <matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
+        <linux-mips@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>
+Subject: =?UTF-8?B?W1BBVENIXSBNSVBTOiBwY2ktbXQ3NjIwOiBVc2XCoGRldm1fcGxhdGZvcm1fZ2V0X2FuZF9pb3JlbWFwX3Jlc291cmNlKCk=?=
+Content-Type: text/plain;
+	charset="UTF-8"
+X-MAIL: mse-fl2.zte.com.cn 3182m21w077937
+X-Fangmail-Gw-Spam-Type: 0
+X-FangMail-Miltered: at cgslv5.04-192.168.250.138.novalocal with ID 63E30D6D.002 by FangMail milter!
+X-FangMail-Envelope: 1675824493/4PBPZ56mMhz6FK2X/63E30D6D.002/10.5.228.133/[10.5.228.133]/mse-fl2.zte.com.cn/<ye.xingchen@zte.com.cn>
+X-Fangmail-Anti-Spam-Filtered: true
+X-Fangmail-MID-QID: 63E30D6D.002/4PBPZ56mMhz6FK2X
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230207_155804_668329_AD7A71A3 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20230207_184823_768618_9F66BA93 
+X-CRM114-Status: GOOD (  10.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,30 +70,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, erkin.bozoglu@xeront.com, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, "David
- S. Miller" <davem@davemloft.net>, Richard van Schagen <richard@routerhints.com>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, arinc9.unal@gmail.com, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 7 Feb 2023 23:25:32 +0300 Ar=C4=B1n=C3=A7 =C3=9CNAL wrote:
-> >> As Paolo pointed out to me off-list this is pretty much a revert of
-> >> commit under Fixes. Is this an actual regression fix, or second MAC
-> >> as DSA port never worked but now you found a way to make it work? =20
-> >=20
-> > Second MAC as DSA master after hardware DSA untagging was enabled never=
-=20
-> > worked. I first disabled it to make the communication work again, then,=
-=20
-> > with this patch, I found a way to make it work which is what should've=
-=20
-> > been done with the commit for adding hardware DSA untagging support. =20
->=20
-> Should both commits be mentioned with Fixes tag?
+From: Ye Xingchen <ye.xingchen@zte.com.cn>
 
-No strong preference, TBH.
+Convert platform_get_resource(), devm_ioremap_resource() to a single
+call to devm_platform_get_and_ioremap_resource(), as this is exactly
+what this function does.
 
-The motivation for my question was to try to figure out how long we
-should wait with applying this patch. I applied the commit under Fixes
-without waiting for a test from Frank, which made me feel a bit guilty
-:)
+Signed-off-by: Ye Xingchen <ye.xingchen@zte.com.cn>
+---
+ arch/mips/pci/pci-mt7620.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/arch/mips/pci/pci-mt7620.c b/arch/mips/pci/pci-mt7620.c
+index e032932348d6..2700d75d41c5 100644
+--- a/arch/mips/pci/pci-mt7620.c
++++ b/arch/mips/pci/pci-mt7620.c
+@@ -282,21 +282,17 @@ static int mt7628_pci_hw_init(struct platform_device *pdev)
+
+ static int mt7620_pci_probe(struct platform_device *pdev)
+ {
+-	struct resource *bridge_res = platform_get_resource(pdev,
+-							    IORESOURCE_MEM, 0);
+-	struct resource *pcie_res = platform_get_resource(pdev,
+-							  IORESOURCE_MEM, 1);
+ 	u32 val = 0;
+
+ 	rstpcie0 = devm_reset_control_get_exclusive(&pdev->dev, "pcie0");
+ 	if (IS_ERR(rstpcie0))
+ 		return PTR_ERR(rstpcie0);
+
+-	bridge_base = devm_ioremap_resource(&pdev->dev, bridge_res);
++	bridge_base = devm_platform_get_and_ioremap_resource(pdev, 0, NULL);
+ 	if (IS_ERR(bridge_base))
+ 		return PTR_ERR(bridge_base);
+
+-	pcie_base = devm_ioremap_resource(&pdev->dev, pcie_res);
++	pcie_base = devm_platform_get_and_ioremap_resource(pdev, 1, NULL);
+ 	if (IS_ERR(pcie_base))
+ 		return PTR_ERR(pcie_base);
+
+-- 
+2.25.1
 
