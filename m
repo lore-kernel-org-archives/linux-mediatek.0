@@ -4,89 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 455F8C05027
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 22:23:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE98DC05027
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 22:31:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MotCSoryy538dU4sd/kPxvSQk611e3lP3KbTp/tMf6I=; b=09lEZGCsD6HbE+slt8Kg2yEzJY
-	M1wKhDwwZDwztjsIdwgQ0BOr3L8Gnm+CSnqedjn3wT1Q+zFSKjS3nw7AUaHz9NWpXCqv1BhAZyNII
-	vn0WufW4+lTXJbBI5Lcnwt1M+hi1NUlFOLt86V0Xgd7TydsyLduB9td9yglhcyp0VreQVrsRQC9O1
-	3Acx2OQbfZjOG2DuasumNGO/h2VtHSOR4T38/gBuz6ywB1hQuipGS0odeV4YQcVjKCDN4sd0nfn2q
-	RqiZuvN2kKPujoG0VG7AxlEY2nFj3JZGqW39woJPM6SOyFEp3D9EhSTOU5oUabXfZEP5fgDrgrQQP
-	8EcliDTA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=suNzSxczO5R4+ezF8SjRKGZxfNaOCi6nf8oTJ/dczhQ=; b=ToHcxmmUk+E0Gp+fVp6xNNPkvf
+	Xpkfn29salZOGBUdyK/t5l519FoVf4+dDnAslTbeKtc8qCXh9vBYxc76C5M8e9JUAijIs6lD8abOr
+	3V6M20UGyjT6hZaZWHv2dUSFR9VKEi7Ngn/6GEFjKnXDXzWDwtMs5zcxbjdV01pwbFlZjxsNlFiC7
+	J0aEqAznnkD1G50f8KSena6cyVQJMKPTGQUT63Iooxy60pmyEZLKGci8jTRQLzXSN7lL3MrxaUUd1
+	HSM1wpP4KG29jR2Rx5lw6sN4cv518J1m+up3R8Ljdtvf78iAiYHstvdAGQhIc46zg7ai5Mkj9tynV
+	XDpI3oZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPsqA-00H43c-05; Wed, 08 Feb 2023 22:22:58 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1pPsyV-00H5Po-6X; Wed, 08 Feb 2023 22:31:35 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPspz-00H41v-Ki; Wed, 08 Feb 2023 22:22:49 +0000
-Received: by mail-ej1-x636.google.com with SMTP id ud5so1171780ejc.4;
-        Wed, 08 Feb 2023 14:22:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=MotCSoryy538dU4sd/kPxvSQk611e3lP3KbTp/tMf6I=;
-        b=WAEy0xb6CZ9HX0fSxjBWNO3YpfUlG1EC4sjqWKhhRioOTgsftejtx4dU6u0d9COCSJ
-         9ZWAEYkL8/1+Fi3/S1TF2Uohgj3GCJ0X8wo900pw+vmp99WZUyPYW8DbnBp6PBTKlhrC
-         0uapyTl0x2KzhcdKiKmt8wfEk4YHVlVoC8mBkwR7bal+oP/hWSx0fBHggUo3K0tKwq9T
-         MpEsZFGHKVyMzshrh6eS90qdVTUg5gvU3GZ7b880+2PR/4Vxh9Z2PCDOL7kH/VtBlUs0
-         JCYgOoIeAHrnpe3ySH0iGe1R8L4Tp3KmHl1CaRtjTTNpPDqqf/X5r9W6YeJ0Kbhh9rSd
-         AXzQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=MotCSoryy538dU4sd/kPxvSQk611e3lP3KbTp/tMf6I=;
-        b=U2SY635tVytdEg2XnxdYvkK4PAK8/G31La5JFycvLqhc51pOeY5+AiEyaF5MzqaZqB
-         x2wUy5pfc2NehAT/fwkR+4i65Ag+6eZUaHYL5mknprs/bM4na2cAaA9xQTrxGe8jceH0
-         t0x6nxjg0FdU5AkLF5BexucMW5h3CPma8a96BsMUOvnrcGI/gVhuFXXAZrSJtpIjCmu7
-         2ZsbqQv1l3bQJoOAnCjuMNFoSoCDWOnNCJUU5LdTn3a8aOw+hcqcSUfLqf96s+KP0ebo
-         YdIo0xZqRKORa8FXi3FWiEWtY6S7KCLANekHCMX4Z/Qb49XfCSzbn1RIdjb28in46G3u
-         mh8g==
-X-Gm-Message-State: AO0yUKWtoBk7Igl21Yto8rCrrj3vCLTs1yP6rtEgXp0R9LUbZTlpsNJx
-	svD+LTl4zz9TbZYChpKX7sM=
-X-Google-Smtp-Source: AK7set+BZTkMVkd8cQ484owCwlv4swQ/ZhotrgNghCkCvzTyQSH7VGC9J9jY1hYBHyznSRGnKy9THw==
-X-Received: by 2002:a17:906:3009:b0:896:427b:148 with SMTP id 9-20020a170906300900b00896427b0148mr9298998ejz.1.1675894962898;
-        Wed, 08 Feb 2023 14:22:42 -0800 (PST)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id f20-20020a170906c09400b00872c0bccab2sm33928ejz.35.2023.02.08.14.22.41
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 08 Feb 2023 14:22:42 -0800 (PST)
-Message-ID: <a021950c-f3d8-8623-4b8f-76c70751c005@gmail.com>
-Date: Wed, 8 Feb 2023 23:22:40 +0100
+	id 1pPsyS-00H5NG-4m; Wed, 08 Feb 2023 22:31:33 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pPsyA-0007y7-1W;
+	Wed, 08 Feb 2023 23:31:14 +0100
+Date: Wed, 8 Feb 2023 22:30:52 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Russell King <linux@armlinux.org.uk>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
+Subject: Re: [PATCH v2 03/11] dt-bindings: arm: mediatek: add
+ 'mediatek,pn_swap' property
+Message-ID: <Y+QinJ9W8hIIF9Ni@makrotopia.org>
+References: <cover.1675779094.git.daniel@makrotopia.org>
+ <a8c567cf8c3ec6fef426b64fb1ab7f6e63a0cc07.1675779094.git.daniel@makrotopia.org>
+ <ad09a065-c10d-3061-adbe-c58724cdfde0@kernel.org>
+ <Y+KR26aepqlfsjYG@makrotopia.org>
+ <b6d782ef-b375-1e73-a384-1ff37c1548a7@kernel.org>
+ <Y+Oo9HaqPeNVUANR@makrotopia.org>
+ <514ec4b8-ef78-35c1-2215-22884fca87d4@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- walter.chang@mediatek.com, Daniel Lezcano <daniel.lezcano@linaro.org>,
- Thomas Gleixner <tglx@linutronix.de>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "Maciej W . Rozycki" <macro@orcam.me.uk>, John Stultz <jstultz@google.com>
-Cc: wsd_upstream@mediatek.com, stanley.chu@mediatek.com,
- Chun-hung.Wu@mediatek.com, Freddy.Hsin@mediatek.com,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230208094813.20874-1-walter.chang@mediatek.com>
- <20230208094813.20874-2-walter.chang@mediatek.com>
- <e1a89a4e-8a0d-47e1-a8fd-75ea152ef816@linaro.org>
- <ad3a5c30-5062-55ae-7908-c0a127bec5ee@gmail.com>
- <3bbc55b8-6b12-4e81-026d-75e0c9116a7b@linaro.org>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 1/3] time/sched_clock: Export sched_clock_register()
-In-Reply-To: <3bbc55b8-6b12-4e81-026d-75e0c9116a7b@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <514ec4b8-ef78-35c1-2215-22884fca87d4@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230208_142247_757083_A758AF40 
-X-CRM114-Status: GOOD (  17.66  )
+X-CRM114-CacheID: sfid-20230208_143132_207143_8C8C04CE 
+X-CRM114-Status: GOOD (  44.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,66 +83,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Krzysztof,
 
+thank you for taking the time to review and explain.
 
-On 08/02/2023 20:45, Krzysztof Kozlowski wrote:
-> On 08/02/2023 20:41, Matthias Brugger wrote:
->>
->>
->> On 08/02/2023 15:24, Krzysztof Kozlowski wrote:
->>> On 08/02/2023 10:48, walter.chang@mediatek.com wrote:
->>>> From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
->>>>
->>>> clocksource driver may use sched_clock_register()
->>>> to resigter itself as a sched_clock source.
->>>> Export it to support building such driver
->>>> as module, like timer-mediatek.c
->>>>
->>>> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
->>>> ---
->>>>    kernel/time/sched_clock.c | 4 ++--
->>>>    1 file changed, 2 insertions(+), 2 deletions(-)
->>>>
->>>> diff --git a/kernel/time/sched_clock.c b/kernel/time/sched_clock.c
->>>> index 8464c5acc913..8e49e87d1221 100644
->>>> --- a/kernel/time/sched_clock.c
->>>> +++ b/kernel/time/sched_clock.c
->>>> @@ -150,8 +150,7 @@ static enum hrtimer_restart sched_clock_poll(struct hrtimer *hrt)
->>>>    	return HRTIMER_RESTART;
->>>>    }
->>>>    
->>>> -void __init
->>>> -sched_clock_register(u64 (*read)(void), int bits, unsigned long rate)
->>>> +void sched_clock_register(u64 (*read)(void), int bits, unsigned long rate)
->>>
->>> Is there a non-init caller?
->>>
->>>>    {
->>>>    	u64 res, wrap, new_mask, new_epoch, cyc, ns;
->>>>    	u32 new_mult, new_shift;
->>>> @@ -223,6 +222,7 @@ sched_clock_register(u64 (*read)(void), int bits, unsigned long rate)
->>>>    
->>>>    	pr_debug("Registered %pS as sched_clock source\n", read);
->>>>    }
->>>> +EXPORT_SYMBOL_GPL(sched_clock_register);
->>>
->>> Where is the module using it?
->>>
->>> You need to bring users of these two changes, not just prepare something
->>> for your out of tree patches.
->>>
->>
->> I'd propose to add at least one driver that will need these changes, to make it
->> clear why you need that.
+On Wed, Feb 08, 2023 at 09:08:40PM +0100, Krzysztof Kozlowski wrote:
+> On 08/02/2023 14:51, Daniel Golle wrote:
+> > On Wed, Feb 08, 2023 at 10:32:53AM +0100, Krzysztof Kozlowski wrote:
+> >> On 07/02/2023 19:00, Daniel Golle wrote:
+> >>> ...
+> >>>> 3. Does not look like property of this node. This is a clock controller
+> >>>> or system controller, not SGMII/phy etc.
+> >>>
+> >>> The register range referred to by this node *does* represent also an
+> >>> SGMII phy. These sgmiisys nodes also carry the 'syscon' compatible, and
+> >>> are referenced in the node of the Ethernet core, and then used by
+> >>> drivers/net/ethernet/mediatek/mtk_sgmii.c using syscon_node_to_regmap.
+> >>> (This is the current situation already, and not related to the patchset
+> >>> now adding only a new property to support hardware which needs that)
+> >>
+> >> Just because a register is located in syscon block, does not mean that
+> >> SGMII configuration is a property of this device.
+> > 
+> > It's not just one register, the whole SGMII PCS is located in those
+> > mediatek,sgmiisys syscon nodes.
 > 
-> ... and actually test if the system works fine when booted from such
-> clocksource as a module. I have doubts that and unfortunately folks
-> working on GKI like to put whatever stuff from mainline into modules
-> even if it does not make sense for us (see long time ago discussion
-> about pinctrl drivers).
-> 
+> Then maybe this should be a PCS PHY device instead of adding properties
+> unrelated to clock/system controller? I don't know, currently this
+> binding says it is a provider of clocks...
 
-Yes thinking about it twice, it makes only sense if  the Arm architecture timer 
-is running. Otherwise the system will hang on boot. I know that older MediaTek 
-devices had problems with that...
+As in reality it is really a clock provider and also SGMII PCS at the
+same time, maybe we should just update the description of the binding
+to match that:
+
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+index d2c24c2775141..db6f75df200ba 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+@@ -2,6 +2,7 @@ MediaTek SGMIISYS controller
+ ============================
+ 
+ The MediaTek SGMIISYS controller provides various clocks to the system.
++It also represents the SGMII PCS used by the Ethernet core.
+ 
+ Required Properties:
+ 
+
+See
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/net/ethernet/mediatek/mtk_sgmii.c#n179
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/mediatek/mt7986a.dtsi#n409
+
+
+> 
+> > 
+> >>
+> >>>
+> >>> So: Should I introduce a new binding for the same compatible strings
+> >>> related to the SGMII PHY features? Or is it fine in this case to add
+> >>> this property to the existing binding?
+> >>
+> >> The user of syscon should configure it. I don't think you need new
+> >> binding. You just have to update the user of this syscon.
+> > 
+> > Excuse my confusion, but it's still not entirely clear to me.
+> > So in this case I should add the description of the added propterty of
+> > the individual SGMII units (there can be more than one) to
+> > Documentation/devicetree/bindings/net/mediatek,net.yaml
+> > eventhough the properties are in the sgmiisys syscon nodes?
+> 
+> I guess the property should be in the node representing the SGMII. You
+> add it now to the clock (or system) controller, so it does not look
+> right. It's not a property of a clock controller.
+
+Well maybe this node needs to be split then into one node representing
+only the clock controller and another node representing the SGMII PCS?
+I'm not sure if this is even possible, some registers in this range
+represent clocks, other registers are accessed using regmap API in
+mtk_sgmii.c.
+
+And (see the rest of this series) the exact same SGMII PCS can also be
+found in MT7531 switch IC which has it's own (a bit odd) way to access
+32-bit registers over MDIO, also in this case it is simply not easily
+possible to represent the SGMII PCS in device tree.
+
+> 
+> Now which node should have this property depends on your devices - which
+> I have no clue about, I read what is in the bindings.
+
+There isn't any other node exclusively representing the SGMII PCS.
+I guess the only other option would be to move the property to the
+Ethernet controller node, which imho complicates things as it is
+really a property of an individual SGMII PHY (of which there can be
+more than one).
+
+> 
+> > 
+> > If so I will have to figure out how to describe properties of other
+> > nodes in the binding of the node referencing them. Are there any
+> > good examples for that?
+> 
+> phys and pcs'es?
+
+Hm, none of the current PCS (or PHY) drivers are represented by a
+syscon node... (and maybe that's the mistake in first place?)
+
+> 
+> > 
+> > Or should the property itself be moved into yet another array of
+> > booleans which should be added in the node describing the ethernet
+> > controller and referencing these sgmiisys syscons using phandles?
+> 
+> Best regards,
+> Krzysztof
+> 
 
