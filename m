@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6839CC636D3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 09:27:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF32DC636CC
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 09:27:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FT0LWsd9AjDEQ7vWn5+ZXoEKaeXKNpvThm2222pl+LI=; b=trhi0Kba6+iP7clCcas29l+MT6
-	DCJVRnL8eSpvF/6vYYPQOpE36473AGO3w0UIyi9JXmg+54ey/zfcf1a0kUalBVyKPP5qUR7ZNDzLs
-	7PR+XFURSXmnJHiMn6pU9kgI+L6WgZgh2coJhjNcL9kcF8ExRsNzEg9CzVgyYY5tJnWXC4VLTGLj6
-	x/U/KIGb9rG/BzkkRKGb4iyZtQHcMgmFdoAFWS7stDckF2xnCYxlzo1pHzst5/K0O+X4iR/AzaHNl
-	hv8lo2nPtwzPlR7a14aYUnkH/0vTAvPrQOSpT9h65iC+3yhh9rFEJx8kFbBpQa3zwDCvmuUnNTfe1
-	5tGUxUtQ==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=FYqXzbvZnEJ7V9EG4NvhVW6FTKkDUIDBVcNLiTOQlqc=; b=qM7ncGLA6xQJwSZQp5nOz2zkxi
+	UY4YFa5Cl2kjWjhpMqBBDj7AAa2yuhAhfMmcEq85wkxvVt+fNubydnIwZIA3RPALUMJas0kaV/mes
+	IWtaEu0MbPfJeUaQlz0PXB9BH6+d2zR7PhFZbx2Lg8HAwFuZlxttqBWq5uBIauyr2YVpJupki2hzh
+	DEnElEPMI071MFgFPKl+LxdGyoERGnOD9iV1Dlywfdf2e+vvicyoQXbD62t98+ckpxpBZtwEDeDK1
+	5p3jHyxhq9w3UpKuwngWa0TMurs/OLooPB36GKYrjZjl87vvxsdKpxR5lJSmDBLIxg8mbXLIf9abo
+	6yXPyNjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPgjF-00Epnx-E2; Wed, 08 Feb 2023 09:27:01 +0000
+	id 1pPgjK-00EprM-2H; Wed, 08 Feb 2023 09:27:06 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPgfG-00Enuy-30; Wed, 08 Feb 2023 09:22:56 +0000
-X-UUID: 261c4a68a79211edbbe3f76fe852e059-20230208
+	id 1pPgfF-00EnxG-Mr; Wed, 08 Feb 2023 09:22:56 +0000
+X-UUID: 246a9602a79211edbbe3f76fe852e059-20230208
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FT0LWsd9AjDEQ7vWn5+ZXoEKaeXKNpvThm2222pl+LI=;
-	b=AP1rhTx589qTdqyf28NkYxh9I17ojNxxYFdG+boFEN6/tG1/yjxT+qe0ONX0vkMaINzAspnVPBEIZZZfnsOY7VL3WX4yyStA34yscC3ajQBXSnWZMGFuuoGKYGL7OpTcFRpcYEwWlRkVp6Wfk4/8XILoLQ8tGJybcqut+fHTJo0=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=FYqXzbvZnEJ7V9EG4NvhVW6FTKkDUIDBVcNLiTOQlqc=;
+	b=duN6O+QozSICLC1O6Tyd+50Dx5Ttn0G2pq0gQRmjWkqQ5wIlq56MLzsEq/D+syP4hbHdrFxqiQflQWo/0w4UrAcgH1wxwMtOA6ex0eYTHY1a4cq/GvzMAXIbY+lS/bF66G6hzYprezRpl3N5HxMch36zbldcF4TEOj5Yu7U0oXc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.19,REQID:e80a785b-8f78-4d6f-abe3-06e10c5d721b,IP:0,U
+X-CID-O-INFO: VERSION:1.1.19,REQID:dc0ad772-0d5d-4162-aa1e-31a688a751c9,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:885ddb2,CLOUDID:389ed4f7-ff42-4fb0-b929-626456a83c14,B
+X-CID-META: VersionHash:885ddb2,CLOUDID:7edcaa56-dd49-462e-a4be-2143a3ddc739,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0,NGT
-X-UUID: 261c4a68a79211edbbe3f76fe852e059-20230208
+X-UUID: 246a9602a79211edbbe3f76fe852e059-20230208
 Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1479387101; Wed, 08 Feb 2023 02:22:46 -0700
+	with ESMTP id 2136977129; Wed, 08 Feb 2023 02:22:43 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 8 Feb 2023 17:22:12 +0800
+ Wed, 8 Feb 2023 17:22:10 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 8 Feb 2023 17:22:11 +0800
+ 15.2.792.15 via Frontend Transport; Wed, 8 Feb 2023 17:22:10 +0800
 From: Moudy Ho <moudy.ho@mediatek.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
 	<robh+dt@kernel.org>, Krzysztof Kozlowski
@@ -58,18 +58,16 @@ CC: <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
 	<moudy.ho@mediatek.com>
-Subject: [PATCH v4 11/16] media: platform: mtk-mdp3: extend GCE event waiting in RDMA and WROT
-Date: Wed, 8 Feb 2023 17:22:04 +0800
-Message-ID: <20230208092209.19472-12-moudy.ho@mediatek.com>
+Subject: [PATCH v4 00/16] add support MDP3 on MT8195 platform
+Date: Wed, 8 Feb 2023 17:21:53 +0800
+Message-ID: <20230208092209.19472-1-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230208092209.19472-1-moudy.ho@mediatek.com>
-References: <20230208092209.19472-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230208_012254_206126_8E94DA9B 
-X-CRM114-Status: GOOD (  15.77  )
+X-CRM114-CacheID: sfid-20230208_012253_833302_AB833CD6 
+X-CRM114-Status: GOOD (  14.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,86 +82,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Support for multiple RDMA/WROT waits for GCE events.
+Changes since v3:
+- Depend on :
+  [1] https://patchwork.kernel.org/project/linux-media/list/?series=719841
+- Suggested by Krzysztof, integrating all newly added bindings for
+  the mt8195 MDP3 into the file "mediatek,mt8195-mdp3.yaml".
+- Revise MDP3 nodes with generic names.
 
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
----
- .../media/platform/mediatek/mdp3/mdp_cfg_data.c |  2 ++
- .../platform/mediatek/mdp3/mtk-mdp3-comp.c      | 17 +++++++++++------
- .../platform/mediatek/mdp3/mtk-mdp3-core.h      |  2 ++
- 3 files changed, 15 insertions(+), 6 deletions(-)
+Changes since v2:
+- Depend on :
+  [1] MMSYS/MUTEX: https://patchwork.kernel.org/project/linux-mediatek/list/?series=711592
+  [2] MDP3: https://patchwork.kernel.org/project/linux-mediatek/list/?series=711618
+- Suggested by Rob to revise MDP3 bindings to pass dtbs check
+- Add parallel paths feature.
+- Add blended components settings.
 
-diff --git a/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c b/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
-index 0c65b64c6266..eafb0c235867 100644
---- a/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
-+++ b/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
-@@ -56,8 +56,10 @@ static const struct mdp_platform_config mt8183_plat_cfg = {
- 	.rdma_support_10bit		= true,
- 	.rdma_rsz1_sram_sharing		= true,
- 	.rdma_upsample_repeat_only	= true,
-+	.rdma_event_num			= 1,
- 	.rsz_disable_dcm_small_sample	= false,
- 	.wrot_filter_constraint		= false,
-+	.wrot_event_num			= 1,
- };
- 
- static const u32 mt8183_mutex_idx[MDP_MAX_COMP_COUNT] = {
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-index 75c92e282fa2..3d6cf55153f1 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-@@ -251,14 +251,17 @@ static int config_rdma_subfrm(struct mdp_comp_ctx *ctx,
- 
- static int wait_rdma_event(struct mdp_comp_ctx *ctx, struct mdp_cmdq_cmd *cmd)
- {
-+	const struct mdp_platform_config *mdp_cfg = __get_plat_cfg(ctx);
- 	struct device *dev = &ctx->comp->mdp_dev->pdev->dev;
- 	phys_addr_t base = ctx->comp->reg_base;
- 	u8 subsys_id = ctx->comp->subsys_id;
- 
--	if (ctx->comp->alias_id == 0)
-+	if (ctx->comp->alias_id < mdp_cfg->rdma_event_num) {
- 		MM_REG_WAIT(cmd, ctx->comp->gce_event[MDP_GCE_EVENT_EOF]);
--	else
--		dev_err(dev, "Do not support RDMA1_DONE event\n");
-+	} else {
-+		dev_err(dev, "Invalid RDMA event %d\n", ctx->comp->alias_id);
-+		return -EINVAL;
-+	}
- 
- 	/* Disable RDMA */
- 	MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_EN, 0x0, BIT(0));
-@@ -553,10 +556,12 @@ static int wait_wrot_event(struct mdp_comp_ctx *ctx, struct mdp_cmdq_cmd *cmd)
- 	phys_addr_t base = ctx->comp->reg_base;
- 	u8 subsys_id = ctx->comp->subsys_id;
- 
--	if (ctx->comp->alias_id == 0)
-+	if (ctx->comp->alias_id < mdp_cfg->wrot_event_num) {
- 		MM_REG_WAIT(cmd, ctx->comp->gce_event[MDP_GCE_EVENT_EOF]);
--	else
--		dev_err(dev, "Do not support WROT1_DONE event\n");
-+	} else {
-+		dev_err(dev, "Invalid WROT event %d!\n", ctx->comp->alias_id);
-+		return -EINVAL;
-+	}
- 
- 	if (mdp_cfg && mdp_cfg->wrot_filter_constraint)
- 		MM_REG_WRITE(cmd, subsys_id, base, VIDO_MAIN_BUF_SIZE, 0x0,
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-index a063a655248c..b2a3e4b2ee1a 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-@@ -39,8 +39,10 @@ struct mdp_platform_config {
- 	bool	rdma_support_10bit;
- 	bool	rdma_rsz1_sram_sharing;
- 	bool	rdma_upsample_repeat_only;
-+	u32	rdma_event_num;
- 	bool	rsz_disable_dcm_small_sample;
- 	bool	wrot_filter_constraint;
-+	u32	wrot_event_num;
- };
- 
- /* indicate which mutex is used by each pipepline */
+Changes since v1:
+- Depend on :
+  [1] MDP3 : https://patchwork.kernel.org/project/linux-mediatek/list/?series=698872
+  [2] MMSYS/MUTEX: https://patchwork.kernel.org/project/linux-mediatek/list/?series=684959
+- Fix compilation failure due to use of undeclared identifier in file "mtk-mdp3-cmdq.c"
+
+Hello,
+
+This patch is used to add support for MDP3 on the MT8195 platform that
+contains more picture quality components, and can arrange more pipelines
+through two sets of MMSYS and MUTEX respectively.
+
+Moudy Ho (16):
+  dt-binding: mediatek: correct MDP3 node with generic names
+  arm64: dts: mediatek: mt8183: correct MDP3 DMA-related nodes
+  dt-binding: mediatek: add MediaTek mt8195 MDP3 components
+  arm64: dts: mediatek: mt8195: add MDP3 nodes
+  media: platform: mtk-mdp3: add support second sets of MMSYS
+  media: platform: mtk-mdp3: add support second sets of MUTEX
+  media: platform: mtk-mdp3: introduce more pipelines from MT8195
+  media: platform: mtk-mdp3: introduce more MDP3 components
+  media: platform: mtk-mdp3: add checks for dummy components
+  media: platform: mtk-mdp3: avoid multiple driver registrations
+  media: platform: mtk-mdp3: extend GCE event waiting in RDMA and WROT
+  media: platform: mtk-mdp3: add the blend of component in MUTEX MOD
+  media: platform: mtk-mdp3: add mt8195 platform configuration
+  media: platform: mtk-mdp3: add mt8195 shared memory configurations
+  media: platform: mtk-mdp3: add mt8195 MDP3 component settings
+  media: platform: mtk-mdp3: add support for parallel pipe to improve
+    FPS
+
+ .../bindings/media/mediatek,mdp3-rdma.yaml    |  59 +-
+ .../bindings/media/mediatek,mdp3-rsz.yaml     |   5 +-
+ .../bindings/media/mediatek,mdp3-wrot.yaml    |  23 +-
+ .../bindings/media/mediatek,mt8195-mdp3.yaml  | 174 ++++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      |   6 +-
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 426 +++++++++
+ .../platform/mediatek/mdp3/mdp_cfg_data.c     | 729 ++++++++++++++-
+ .../platform/mediatek/mdp3/mdp_reg_aal.h      |  25 +
+ .../platform/mediatek/mdp3/mdp_reg_color.h    |  31 +
+ .../media/platform/mediatek/mdp3/mdp_reg_fg.h |  23 +
+ .../platform/mediatek/mdp3/mdp_reg_hdr.h      |  31 +
+ .../platform/mediatek/mdp3/mdp_reg_merge.h    |  25 +
+ .../platform/mediatek/mdp3/mdp_reg_ovl.h      |  25 +
+ .../platform/mediatek/mdp3/mdp_reg_pad.h      |  21 +
+ .../platform/mediatek/mdp3/mdp_reg_rdma.h     |  24 +
+ .../platform/mediatek/mdp3/mdp_reg_rsz.h      |   2 +
+ .../platform/mediatek/mdp3/mdp_reg_tdshp.h    |  34 +
+ .../platform/mediatek/mdp3/mdp_reg_wrot.h     |   8 +
+ .../platform/mediatek/mdp3/mdp_sm_mt8195.h    | 283 ++++++
+ .../platform/mediatek/mdp3/mtk-img-ipi.h      |   4 +
+ .../platform/mediatek/mdp3/mtk-mdp3-cfg.h     |   2 +
+ .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 445 ++++++++--
+ .../platform/mediatek/mdp3/mtk-mdp3-cmdq.h    |   1 +
+ .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 840 +++++++++++++++++-
+ .../platform/mediatek/mdp3/mtk-mdp3-comp.h    |  92 +-
+ .../platform/mediatek/mdp3/mtk-mdp3-core.c    |  98 +-
+ .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  33 +-
+ .../platform/mediatek/mdp3/mtk-mdp3-m2m.c     |  15 +
+ .../platform/mediatek/mdp3/mtk-mdp3-regs.c    |  18 +
+ .../platform/mediatek/mdp3/mtk-mdp3-regs.h    |   1 +
+ .../platform/mediatek/mdp3/mtk-mdp3-vpu.c     |   3 +-
+ 31 files changed, 3301 insertions(+), 205 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8195-mdp3.yaml
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_aal.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_color.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_fg.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_hdr.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_merge.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_ovl.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_pad.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_tdshp.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_sm_mt8195.h
+
 -- 
 2.18.0
 
