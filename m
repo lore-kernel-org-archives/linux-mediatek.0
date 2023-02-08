@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 678DEC05027
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 10:38:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9CFAC636CC
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 10:39:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mzjBF2E75w1L7hmKJRlyRtNS2bCPZJqCosU6lkNkeOE=; b=pkFrZUeAmu6cCV7PHXUW08WU3d
-	0MZ/cMscddgT3hFeV/MbO93DAO9fgJWBmmi/cM3Df5dUYu5TrKlebTy/hqpOD1nkXuzUidJrFViUv
-	2dotYdKf20vGVmrTG6kLjpfNoiT2koP9rXbYLNwDDMgINnAuGOWCzGwHzuTte1a5Izp6lqj8zHF0o
-	Taan+nd9/mqmduLrV6V1/NHtJUsz9eOl5JHYtVfI+1ZIX7mgwhdyftoYJ8yQexDFDWUvdCPmzeNR6
-	Ac5qWlovn7QiPi9CHm8THJN2prt9eJsJyAub7F95FERQqNZ5TeKVAJ7UE9kZZASNu07CcawQabULo
-	kGuRvOfA==;
+	bh=cRe6ULsW8BvFwUQo7jPv+BqiozgvUWaZkrcSi+h1Zbs=; b=ymugCRK16/ohZQt3Jwjq342gze
+	cUmhA1Q05soap/KBI+1EBQp1+ittUx/QzSvOXX/RUVxAFC2dVqpNkEMHHv1J0C1AXstnWQz1ZEAvB
+	dFx2y6am57ax2Nkht1uPIr+CxtbByUlGMjCaBOq2oFLNZncjz1OdKiLbO/1t52nAAnOUZENiRKlcI
+	ECTwcSzU1wTCoLoGu7MTbLd76G3ehhG90ErFWC8K27ReTAXjsr87URltuwotYm5jkJHJVg44AvgWC
+	byG22XlbfwTu2njjZqjpz2jqcwDJOU2gV1+kBVLqceOVC9xcS9nEsqEC00onSV/+ZseNPy7WadNIi
+	zktl/ZZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPhqD-00FE6v-R0; Wed, 08 Feb 2023 10:38:17 +0000
+	id 1pPhqu-00FEYe-6C; Wed, 08 Feb 2023 10:39:00 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPhpR-00FDbq-Ce; Wed, 08 Feb 2023 10:37:30 +0000
+	id 1pPhpS-00FDdE-2V; Wed, 08 Feb 2023 10:37:32 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 619EE6602096;
-	Wed,  8 Feb 2023 10:37:26 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2EE74660209A;
+	Wed,  8 Feb 2023 10:37:28 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1675852647;
-	bh=c4XKOxPhUZU76+HjvxTFR5jXrHZr0pBaargwTPOI/Ss=;
+	s=mail; t=1675852648;
+	bh=d0G1BjjpzFctDZyjviGuYyWcI6wqWF1+NmTwUM5ryBs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=b2o9AxfFJM6QmX5gwpY5DMnWxdAumOp5mbUr7Q7fvp4LtZcJo7ZeSLuv3mLd+C4s+
-	 EhMyG5FTLJ0P/FzFbX4poNJLZ+aY9NKBZMrJOHw75Q7x8XCivHX5+i80gyBugOvUCo
-	 q1TfBGxcCMw7gD1XY0KVA8cMaPloi4d/EbUrZt6Bh3f+ggW1Bc9fsbug+FUAKJ+gCB
-	 ygg8qpkprBgyPpuNvYgm4G1uoc6IdlR8QM6iPieOjQNsI7bGHCenL8FzdfKbEtcyph
-	 lvwJ6MJthlfGqmtCrwpJraxp/g2qqQytxAD8GYFwj5KwMCyJQocKzv1kehB9ReTsrf
-	 AP5SAdEdzR9oA==
+	b=HMnBmVeQqM3mZa3JMdwTPCM9maPHuXoBCaIDUWShbjzXpN0eA48WHjqmpYxa7aaMe
+	 D0wGrLRwK3QCtWax+iZlRy5r99p3fpTLjRr3x0QGimaQwOmaN0n87rmvJNdf9ZRfSo
+	 0yV8I1/f8M2Pos7NY56XFij//aZNqD+xCBOoaWlGHaljDKiE+hDXYxaf07DStwoqlR
+	 6NNJqxJDMFgUWthCvBVtpLceUN9UePv0G1qWBFtutMLDqFaQq/LMMofUnW84uvNdGP
+	 DKMk4mjsdru1dalbYNUnauvsRFyAXt7rvkhCqzQWwBjV38NUkvplKzpt7ras7QWZ9D
+	 8qhv9z8+fKybQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: airlied@gmail.com
 Cc: daniel@ffwll.ch,
@@ -57,17 +57,17 @@ Cc: daniel@ffwll.ch,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 2/9] dt-bindings: gpu: mali-bifrost: Allow up to 5 power domains for MT8192
-Date: Wed,  8 Feb 2023 11:37:02 +0100
-Message-Id: <20230208103709.116896-3-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 4/9] dt-bindings: gpu: mali-bifrost: Add new MT8183 compatible
+Date: Wed,  8 Feb 2023 11:37:04 +0100
+Message-Id: <20230208103709.116896-5-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230208103709.116896-1-angelogioacchino.delregno@collabora.com>
 References: <20230208103709.116896-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230208_023729_613113_61FF4C27 
-X-CRM114-Status: UNSURE (   9.07  )
+X-CRM114-CacheID: sfid-20230208_023730_286489_834CE5F4 
+X-CRM114-Status: UNSURE (   7.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,68 +83,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MediaTek MT8192 (and similar) needs five power domains for the
-Mali GPU and no sram-supply: change the binding to allow so.
+Since new platform data was required in Panfrost for getting GPU DVFS
+finally working on MediaTek SoCs, add a new "mediatek,mt8183b-mali"
+compatible.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../bindings/gpu/arm,mali-bifrost.yaml        | 34 +++++++++++++++++--
- 1 file changed, 31 insertions(+), 3 deletions(-)
+ .../bindings/gpu/arm,mali-bifrost.yaml        | 20 +++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-index 69212f3b1328..e7aba66ddb8f 100644
+index 6bd0a5b3c5b7..8c57b89ee866 100644
 --- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
 +++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-@@ -61,7 +61,7 @@ properties:
- 
-   power-domains:
-     minItems: 1
--    maxItems: 3
-+    maxItems: 5
- 
-   resets:
-     minItems: 1
-@@ -141,6 +141,18 @@ allOf:
-         - power-domains
-         - resets
-         - reset-names
-+  - if:
-+      not:
-+        properties:
-+          compatible:
-+            contains:
-+              enum:
-+                - mediatek,mt8183-mali
-+                - mediatek,mt8192-mali
-+    then:
-+      properties:
-+        power-domains:
-+          maxItems: 1
-   - if:
+@@ -19,6 +19,7 @@ properties:
+           - enum:
+               - amlogic,meson-g12a-mali
+               - mediatek,mt8183-mali
++              - mediatek,mt8183b-mali
+               - realtek,rtd1619-mali
+               - renesas,r9a07g044-mali
+               - renesas,r9a07g054-mali
+@@ -153,6 +154,7 @@ allOf:
+             contains:
+               enum:
+                 - mediatek,mt8183-mali
++                - mediatek,mt8183b-mali
+                 - mediatek,mt8192-mali
+     then:
        properties:
-         compatible:
-@@ -161,10 +173,26 @@ allOf:
+@@ -178,6 +180,24 @@ allOf:
          - sram-supply
          - power-domains
          - power-domain-names
--    else:
 +  - if:
 +      properties:
 +        compatible:
 +          contains:
-+            const: mediatek,mt8192-mali
++            const: mediatek,mt8183b-mali
 +    then:
-       properties:
-         power-domains:
--          maxItems: 1
-+          minItems: 5
++      properties:
++        power-domains:
++          minItems: 3
 +        power-domain-names:
 +          items:
 +            - const: core0
 +            - const: core1
 +            - const: core2
-+            - const: core3
-+            - const: core4
 +
 +      required:
 +        - power-domains
