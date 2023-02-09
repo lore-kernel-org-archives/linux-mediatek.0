@@ -4,75 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D24CC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 11:17:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC912C6379F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 11:18:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SSLtTMF4xX+MGFebbGFlRzwOB0f/lB6ncF8M/CLxVoQ=; b=tnsqsvtZshU+JEx5nh5FC+ImC9
-	T584w+nU2yFsIJrOSkc/YvdDX25V8ynXEtfaD/2hboHAD2KNvmhQ1hCuzkxYIoJYc1EWAbI9QYctQ
-	6jsETTAC76LWyV0lAoubrlURvEWWPnNiVxNJWuA/+r1l2ptMtFBxwr78uD4j2rPuoRJmbOoEiGgBV
-	K7Bwh2LLoo/biEQU5dNIfmMCTuXU6anonfBR45qs7ADDIro8VZjoIsSnTt0EmmsaecT1NpKSDnyEp
-	kGVqePGysPJyeJFguezcl5YRLEG2lGNhay+64d8DsiIFIDdtW5ItM/fHH6TCLxdczhUdQf58cP/oj
-	lptLn64g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=VPkZSELNWhl1DucR6ZYjynm+OOU6VxGRQyu4+mAsdxg=; b=FsZimT3LTmz+SECryluuV8vewd
+	nz9UX1ViobVXXXP9+BVniubXXoSlVg1oSPZiyJXwM2gezibvAU+dfC3RdlIVfvAwia5wt1JF2JR/D
+	Qd0ZP8ilWP6XgCEiX35fI8JVjGtuSvN8zjqzcxCjK5TPNGaifYH1P7MXMkJnqdLcX9tz2tcEFaO35
+	REkE3mndG/qThfdDJx0mAgfV6IyFe3odZ4URAXT9pULMSS6p7W/u+bf94fZofGA0NWu1+SazPF/mh
+	RWGJOzozABIj22JcMQel3LogJgO66LdZ0oAlo6xBi5a8731AkhIIoDz+y49IwSOl5ZFt7vthqmpds
+	HRcIH+3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ4vN-001ERr-3X; Thu, 09 Feb 2023 11:17:09 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1pQ4w5-001Etm-9E; Thu, 09 Feb 2023 11:17:53 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ4ux-001EC3-Ec; Thu, 09 Feb 2023 11:16:45 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id C9099CE2456;
-	Thu,  9 Feb 2023 11:16:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C66A4C4339B;
-	Thu,  9 Feb 2023 11:16:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1675941396;
-	bh=Ae2pfdwW4VSlK8d73ruXk0NV6JvWEPEEHPJvO/t/3NE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=tKTOxqEcOG8vkABw32gcHd2L1uOTERTK65/fjtcpT76blLNmdLioGd1VovWrfODIv
-	 XpB2dplYCCEjXQefMFSX2J7wwGmhEYu8MC5UCBng/K+5QZhofz670t2f79e73omYgE
-	 J5TGaJrAiwoffsfe8wDkGgK/KwAD0DMKaq8kxc0PcCpsd/nqkgxbP5zMKssas1puOh
-	 y5udMESN14u/f8nEKZHK5NQLa64gW6IPu9xR/2hmKPbw2WAR2WlonWsKYVinJPUuzz
-	 TFrtHlN0wPRJ3MRmq7p62BmZMVMhm5R4g+Ud9ATt5Dq6jvljEhBGXzvEuucxunqBAo
-	 RHE6gDsNIay4g==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Kees Cook <keescook@chromium.org>,
-	Felix Fietkau <nbd@nbd.name>,
-	John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Simon Horman <simon.horman@corigine.com>,
-	Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 6.1 23/38] net: ethernet: mtk_eth_soc: Avoid truncating allocation
-Date: Thu,  9 Feb 2023 06:14:42 -0500
-Message-Id: <20230209111459.1891941-23-sashal@kernel.org>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230209111459.1891941-1-sashal@kernel.org>
-References: <20230209111459.1891941-1-sashal@kernel.org>
+	id 1pQ4va-001EZL-7O
+	for linux-mediatek@lists.infradead.org; Thu, 09 Feb 2023 11:17:27 +0000
+X-UUID: 4dd8cdb8a86b11eda08d4d6090ec5a5c-20230209
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=VPkZSELNWhl1DucR6ZYjynm+OOU6VxGRQyu4+mAsdxg=;
+	b=MupSM6y9LUQNM7LiCaMpWQVfgoEMpw9DQF28qj0LUydk+sNTjy0TbMS/mNXPFKMLm1QQPCBC1Bp0z0Glm9mBCzIY3pZeNoHNNzPgxua47CbUrk1S4S1ixFWVahkHi8wWqLBalYRyNDOp8wlJtkjsY21vxoLkpLItjtFgliZ5kUQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.19,REQID:631f972b-04da-434e-9428-bd527fba7740,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:885ddb2,CLOUDID:a200f6f7-ff42-4fb0-b929-626456a83c14,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-UUID: 4dd8cdb8a86b11eda08d4d6090ec5a5c-20230209
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <shayne.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1368057971; Thu, 09 Feb 2023 04:17:13 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 9 Feb 2023 19:07:11 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 9 Feb 2023 19:07:11 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: linux-wireless <linux-wireless@vger.kernel.org>
+CC: Johannes Berg <johannes@sipsolutions.net>, Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+	Evelyn Tsai <evelyn.tsai@mediatek.com>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH] wifi: mac80211: make rate u32 in sta_set_rate_info_rx()
+Date: Thu, 9 Feb 2023 19:06:59 +0800
+Message-ID: <20230209110659.25447-1-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230209_031643_906944_AB069F4B 
-X-CRM114-Status: GOOD (  14.28  )
+X-CRM114-CacheID: sfid-20230209_031722_342778_B675AD6B 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,71 +79,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Kees Cook <keescook@chromium.org>
+The value of last_rate in ieee80211_sta_rx_stats is degraded from u32 to
+u16 after being assigned to rate variable, which causes information loss
+in STA_STATS_FIELD_TYPE and later bitfields.
 
-[ Upstream commit f3eceaed9edd7c0e0d9fb057613131f92973626f ]
-
-There doesn't appear to be a reason to truncate the allocation used for
-flow_info, so do a full allocation and remove the unused empty struct.
-GCC does not like having a reference to an object that has been
-partially allocated, as bounds checking may become impossible when
-such an object is passed to other code. Seen with GCC 13:
-
-../drivers/net/ethernet/mediatek/mtk_ppe.c: In function 'mtk_foe_entry_commit_subflow':
-../drivers/net/ethernet/mediatek/mtk_ppe.c:623:18: warning: array subscript 'struct mtk_flow_entry[0]' is partly outside array bounds of 'unsigned char[48]' [-Warray-bounds=]
-  623 |         flow_info->l2_data.base_flow = entry;
-      |                  ^~
-
-Cc: Felix Fietkau <nbd@nbd.name>
-Cc: John Crispin <john@phrozen.org>
-Cc: Sean Wang <sean.wang@mediatek.com>
-Cc: Mark Lee <Mark-MC.Lee@mediatek.com>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: "David S. Miller" <davem@davemloft.net>
-Cc: Eric Dumazet <edumazet@google.com>
-Cc: Jakub Kicinski <kuba@kernel.org>
-Cc: Paolo Abeni <pabeni@redhat.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: netdev@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Signed-off-by: Kees Cook <keescook@chromium.org>
-Reviewed-by: Simon Horman <simon.horman@corigine.com>
-Link: https://lore.kernel.org/r/20230127223853.never.014-kees@kernel.org
-Signed-off-by: Paolo Abeni <pabeni@redhat.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- drivers/net/ethernet/mediatek/mtk_ppe.c | 3 +--
- drivers/net/ethernet/mediatek/mtk_ppe.h | 1 -
- 2 files changed, 1 insertion(+), 3 deletions(-)
+ net/mac80211/sta_info.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
-index 784ecb2dc9fbd..34ea8af48c3d0 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
-@@ -595,8 +595,7 @@ mtk_foe_entry_commit_subflow(struct mtk_ppe *ppe, struct mtk_flow_entry *entry,
- 	u32 ib1_mask = mtk_get_ib1_pkt_type_mask(ppe->eth) | MTK_FOE_IB1_UDP;
- 	int type;
+diff --git a/net/mac80211/sta_info.c b/net/mac80211/sta_info.c
+index 27c737fe7fb8..bd532d3f925d 100644
+--- a/net/mac80211/sta_info.c
++++ b/net/mac80211/sta_info.c
+@@ -2418,7 +2418,7 @@ static void sta_stats_decode_rate(struct ieee80211_local *local, u32 rate,
  
--	flow_info = kzalloc(offsetof(struct mtk_flow_entry, l2_data.end),
--			    GFP_ATOMIC);
-+	flow_info = kzalloc(sizeof(*flow_info), GFP_ATOMIC);
- 	if (!flow_info)
- 		return;
+ static int sta_set_rate_info_rx(struct sta_info *sta, struct rate_info *rinfo)
+ {
+-	u16 rate = READ_ONCE(sta_get_last_rx_stats(sta)->last_rate);
++	u32 rate = READ_ONCE(sta_get_last_rx_stats(sta)->last_rate);
  
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.h b/drivers/net/ethernet/mediatek/mtk_ppe.h
-index a09c32539bcc9..e66283b1bc79e 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.h
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.h
-@@ -277,7 +277,6 @@ struct mtk_flow_entry {
- 		struct {
- 			struct mtk_flow_entry *base_flow;
- 			struct hlist_node list;
--			struct {} end;
- 		} l2_data;
- 	};
- 	struct rhash_head node;
+ 	if (rate == STA_STATS_RATE_INVALID)
+ 		return -EINVAL;
 -- 
-2.39.0
+2.25.1
 
 
