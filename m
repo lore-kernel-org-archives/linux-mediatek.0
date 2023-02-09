@@ -4,70 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF9E0C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 09:09:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE610C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 09:10:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=RQg+zpyn9DAaiftSQz2qV2ccjJDow0L0tsi2rOaiSTU=; b=IMW/TDpMjY2ai7KvcLqykI69dT
-	sShPcZIov0CgXyIbawwPThY3vvcGAPPru4r9dPRJe5gkVoenFC2cpFGAh46/00BWSZZ9Z3AOT8/Bu
-	t34WVO4EUov1wXBc6B2+Q884yU43kA69Ol160SNcAUOpyjuX82DksaqJxKeUkmkGpVj4aSEAavBZV
-	jglv8Qd0C/WU2J31v7kw+nBXtANWC0wYPHcUqTL6QjCnDmx7E8H2wK+B1sDdrq70TxnUujX3lvbC8
-	sM18/2eIgZjkNwToDAw3oUDQQ77Ug0EoqP4uOWy/KnH11fv9BAM+WeJxACY0vTRgrXhANURSWNPjr
-	OVtjboPw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gUiV/qw4JVOOcTovWw+xyQ31ogBLTJYuBUEOiv2Lb9U=; b=h7t2ud6Vfsm3um+6osP+P0qbdO
+	A5bL6RhNEpHHjOoW/X712nvPl6n78yVu6YRYPRlP1jwzi8YRB9Twpvsmy7hZXp3KdA4M3vPW4e02r
+	eLoEPObq3hRvLKPWA/DivmeOCYiZyNbS2a8/eU1spZIO1XBdAU+d7ZXs6mObsnyjUjZXy5ys9Y8eS
+	oreYpAxgu2nk9LbVSJyWZxMewMMLt/GL/eXfMIGcYBl3LGRcK2bYu7MO3fwpp1sYj3CeWwPqjF2t7
+	2lEOuA4VRNn5u5O4V09GcF7KANHL4jeYuI9xrK4+iRZxG2mf8oWTlP8ht8LjqjHTfPIwGhRDBgCBz
+	0RVXbv9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ2w1-000g2F-DM; Thu, 09 Feb 2023 09:09:41 +0000
-Received: from smtp80.cstnet.cn ([159.226.251.80] helo=cstnet.cn)
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ2vp-000fyx-Ll; Thu, 09 Feb 2023 09:09:31 +0000
-Received: from localhost.localdomain (unknown [124.16.138.125])
-	by APP-01 (Coremail) with SMTP id qwCowAB3f89DuORjVuQzBA--.44164S2;
-	Thu, 09 Feb 2023 17:09:23 +0800 (CST)
-From: Jiasheng Jiang <jiasheng@iscas.ac.cn>
-To: mchehab@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	moudy.ho@mediatek.com,
-	daoyuan.huang@mediatek.com,
-	hverkuil-cisco@xs4all.nl
-Cc: linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Jiasheng Jiang <jiasheng@iscas.ac.cn>
-Subject: [PATCH v2] media: platform: mtk-mdp3: Add missing check and free for ida_alloc
-Date: Thu,  9 Feb 2023 17:09:22 +0800
-Message-Id: <20230209090922.8829-1-jiasheng@iscas.ac.cn>
-X-Mailer: git-send-email 2.25.1
+	id 1pQ2ws-000gKI-Ou; Thu, 09 Feb 2023 09:10:34 +0000
+Received: from mail-ua1-x933.google.com ([2607:f8b0:4864:20::933])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pQ2wn-000gH5-BY
+	for linux-mediatek@lists.infradead.org; Thu, 09 Feb 2023 09:10:32 +0000
+Received: by mail-ua1-x933.google.com with SMTP id x21so252294uaf.8
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Feb 2023 01:10:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=gUiV/qw4JVOOcTovWw+xyQ31ogBLTJYuBUEOiv2Lb9U=;
+        b=QIIdel1hmP8z81Hism+qg1TEwzk5Q4RapO0/kQvbT2plytwESYSceZGMKXLlsMHLnJ
+         aQwTjjAYJQpFz0W0Q9oBoHZAVdYNXekXiEQ69PeqGwM/y6MTkxHOr539NoK1u1ne5tJs
+         YzOWq9vDJkLexZVnCS4T9l4rHtNeFWP6KBsT8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=gUiV/qw4JVOOcTovWw+xyQ31ogBLTJYuBUEOiv2Lb9U=;
+        b=vY6OZpbNJIXNLtad6AqtwNni8W2aaamdxCbkWrclp/mCzwFU3L9fOl+bcuYLdK8tFE
+         zJFWM8iGS2aSvkOSrFQIvVSvqQyCBk17HgLlYIxN3U4EdX/vPx5A80X7/Qx+k2BT8zkY
+         EvAXMAV0KYm1K34y3A8GHvvfCLdGEhRSCLyCrPVq/zexxEakNoIWMCmLSazgDrKOFEjB
+         OBM/d6vIEEVnR9F4vilxT9sgF+mlSzBwQS939Va+76bFolimku1JF8F3HI3KPCPEE7xd
+         9vkGdQ5mlnrmqqK9FVs/Egf/r1onbrQXctqlKyNDG9yeYYdiD7NW5AiWD/JXO1L6XF7E
+         7LUQ==
+X-Gm-Message-State: AO0yUKW5hh7nMl5GadsdNhjcAv8cTEMuBbThhIjID7xcetneigxLi+nU
+	Ej/8waHZ3hQPOJZS8D/Ro8rUfw2pMHhKyVU7tJGJ9g==
+X-Google-Smtp-Source: AK7set9iFbENJrUNl+hKyQ+MIZq2ziVgQa1lldvrUJbRi6mBlcQ3E1DlqRIz/5dmXyM5bWmpsndHSjVSmc3EWCSsyvc=
+X-Received: by 2002:ab0:2bd5:0:b0:5e6:3536:22e4 with SMTP id
+ s21-20020ab02bd5000000b005e6353622e4mr2456477uar.55.1675933826994; Thu, 09
+ Feb 2023 01:10:26 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: qwCowAB3f89DuORjVuQzBA--.44164S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7uryUZFy8Kr4DAF4rKw45KFg_yoW8Gr1Upr
-	WIg3y7CrW5GFnrKF4Iy3W7uF45AwnY9ayUWFsavw4xAas8WrsrGryYkasYvrykJry8Ja47
-	tr4Utry3CrWYvaDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUUvC14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
-	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4j
-	6r4UJwA2z4x0Y4vEx4A2jsIE14v26F4UJVW0owA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Gc
-	CE3s1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E
-	2Ix0cI8IcVAFwI0_JrI_JrylYx0Ex4A2jsIE14v26r4j6F4UMcvjeVCFs4IE7xkEbVWUJV
-	W8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lFIxGxcIEc7CjxVA2
-	Y2ka0xkIwI1lc2xSY4AK67AK6r4fMxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r
-	1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CE
-	b7AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0x
-	vE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAI
-	cVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267AKxVW8JVW8JrUvcSsGvfC2Kf
-	nxnUUI43ZEXa7VUjC385UUUUU==
-X-Originating-IP: [124.16.138.125]
-X-CM-SenderInfo: pmld2xxhqjqxpvfd2hldfou0/
+References: <20230208103709.116896-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230208103709.116896-1-angelogioacchino.delregno@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 9 Feb 2023 17:10:15 +0800
+Message-ID: <CAGXv+5HkdWUWmq0Jk5F2ZuFVHN5T07CYwBdzSWR7Z0=pmkJ5Mw@mail.gmail.com>
+Subject: Re: [PATCH 0/9] Panfrost: Improve and add MediaTek SoCs support
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: airlied@gmail.com, tomeu.vizoso@collabora.com, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	steven.price@arm.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, 
+	alyssa.rosenzweig@collabora.com, krzysztof.kozlowski+dt@linaro.org, 
+	matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230209_010930_090088_902AE56A 
-X-CRM114-Status: UNSURE (   9.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230209_011029_435390_51155840 
+X-CRM114-Status: GOOD (  13.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,49 +84,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the check for the return value of the ida_alloc in order to avoid
-NULL pointer dereference.
-Moreover, free allocated "ctx->id" if mdp_m2m_open fails later in order
-to avoid memory leak.
+On Wed, Feb 8, 2023 at 6:37 PM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> This series adds support for new MediaTek SoCs (MT8186/MT8192/MT8195)
+> and improves MT8183 support: since the mtk-regulator-coupler driver
+> was picked, it is now useless for Panfrost to look for, and manage,
+> two regulators (GPU Vcore and GPU SRAM) on MediaTek;
+>
+> The aforementioned driver will take care of keeping the voltage
+> relation (/constraints) of the two regulators on its own when a
+> voltage change request is sent to the Vcore, solving the old time
+> issue with not working DVFS on Panfrost+MediaTek (due to devfreq
+> supporting only single regulator).
+>
+> In the specific case of MT8183, in order to not break the ABI, it
+> was necessary to add a new compatible for enabling DVFS.
 
-Fixes: 61890ccaefaf ("media: platform: mtk-mdp3: add MediaTek MDP3 driver")
-Signed-off-by: Jiasheng Jiang <jiasheng@iscas.ac.cn>
----
-Changelog:
+Tested on MT8183 Juniper (Kukui-based device), MT8192 Hayato (Asurada-based),
+and MT8195 Tomato (Cherry-based).
 
-v1 -> v2:
+GPU probed. When running glmark-es2-drm, observed state transitions in
+/sys/class/devfreq/13040000.gpu/trans_stat , as well as actual changes to
+values for regulators and clocks.
 
-1. Fix the check for the ida_alloc.
----
- drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
-index 5f74ea3b7a52..4785c897ee1d 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
-@@ -567,6 +567,11 @@ static int mdp_m2m_open(struct file *file)
- 	}
- 
- 	ctx->id = ida_alloc(&mdp->mdp_ida, GFP_KERNEL);
-+	if (ctx->id < 0) {
-+		ret = ctx->id;
-+		goto err_unlock_mutex;
-+	}
-+
- 	ctx->mdp_dev = mdp;
- 
- 	v4l2_fh_init(&ctx->fh, vdev);
-@@ -617,6 +622,8 @@ static int mdp_m2m_open(struct file *file)
- 	v4l2_fh_del(&ctx->fh);
- err_exit_fh:
- 	v4l2_fh_exit(&ctx->fh);
-+	ida_free(&mdp->mdp_ida, ctx->id);
-+err_unlock_mutext:
- 	mutex_unlock(&mdp->m2m_lock);
- err_free_ctx:
- 	kfree(ctx);
--- 
-2.25.1
-
+Also observed that sometimes when glmark terminated, the GPU would not be
+brought down to the lowest OPP.
 
