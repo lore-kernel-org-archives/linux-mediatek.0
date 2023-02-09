@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4052C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 19:06:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86060C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 19:07:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=urg+eaKblq3L8ne5lHKwBHgDVzOQbYqpVZVsI1JK9JU=; b=eqQmgWQRcOHvE/vchHSou79L2W
-	4WPvjhikVNVb77VOe55+WVrowuyG1Z8qm1Q2wJisl53xi4Z575EiXiHH8ScPhtV6WXyRyCYMwMPGM
-	tO6y5P8mZMSUwYU9+2d3VuJJIifbEtP46U2WimoY0ELJvrY/cd+uwzWeka9lav6H9hTgx6XS0UTOZ
-	PfWSh/FtjTQCZQSdirQ4RAmwJeVQASwS2G6Qm3swRqZr4pNxHl1IiZQc0Wr2mHIonLV1w1VHIsPqJ
-	OOt2MEh75mHX+0wiSr0dTp3ogDoShdoCkwljGjCqXFF43ugE8pt5yxd6iW0he+b2872OEuAXHJjju
-	seA/MSPQ==;
+	bh=ljNnToeTIL1TFk9BZIDWfKvJLhPyA6JgaKeGR7D+Uy8=; b=P+IgOys6S8IbDzXJMlMhU9zjxg
+	EM4t6jeoV9j3Rq9InJSTeA4JIwG3MU7wLAzPzhe1TfvrJM4i3bIDX4rC+uldT165MIuPCqg+RCoaJ
+	4CBI7wVfzHcjdrzhUT7nMdLXy3IQ+Vt5YwPEtEt5wN/Rry8UaPt2phX5pZJVvUdokSasRqwfvjOrB
+	qMlgGHDm+DNYUovSNkjEwuVXk+MuD72KxoIVCMXn/OG7Lgsj3OkJ3eawKk/7dvjlkiTtXzDkHyqhw
+	zln1dLRTyl7TMsqdTfYFOFRMAaOJO83zqGUGO9ExXtN8uJ/2472hfMaWqf5mB2P/6TkhAVT19Uo33
+	E3IPO3aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQCF8-002wOo-Re; Thu, 09 Feb 2023 19:06:02 +0000
-Received: from mail-oo1-f51.google.com ([209.85.161.51])
+	id 1pQCGj-002ws5-TU; Thu, 09 Feb 2023 19:07:41 +0000
+Received: from mail-oi1-f176.google.com ([209.85.167.176])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQCF5-002wNd-SY; Thu, 09 Feb 2023 19:06:01 +0000
-Received: by mail-oo1-f51.google.com with SMTP id i21-20020a4ad395000000b00517895ed15dso315116oos.0;
-        Thu, 09 Feb 2023 11:05:56 -0800 (PST)
+	id 1pQCGZ-002woF-Hc; Thu, 09 Feb 2023 19:07:32 +0000
+Received: by mail-oi1-f176.google.com with SMTP id bj22so2475803oib.11;
+        Thu, 09 Feb 2023 11:07:30 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=urg+eaKblq3L8ne5lHKwBHgDVzOQbYqpVZVsI1JK9JU=;
-        b=rf9z1nUbW3Z30/s38biptAgKP9dGtgPPazyP4VcOYZFJtlYtE7Z1PyrmFa/2lmEXS3
-         /uQtqSV8RXgx3N33egsfi8eCGbbJF7OmG5i6P8J9ec6IL4NADGQasA0ff/hSsgJ8HW7P
-         T4Qu80MXJ/Dc/VcxHHw/M8WPyuQeI7jRSfjoa8jN2Xe5J8KTWLV0j61d0SkhEOexvGqs
-         uA5YyKYbBe+fu51IoIUKOrTZsmK87YxvyPmnP6Yx0VZ0YT4E1bmBXhyBa+owcmx5QbCU
-         JNb1f/xY+Q4FhjihSl9dEWqJz/sTRDBw4VZk7bm2l6lfFejqSiLrq/BJPwByF60xar+T
-         UQcQ==
-X-Gm-Message-State: AO0yUKXqf5urN9rsqLPVXr3kyJU17yxXNl/uEbG+lrFmvVfQP8v8tAZT
-	NY0H5TQ57OqzO5W7xJhZng==
-X-Google-Smtp-Source: AK7set+X2fhODBsNXBrX5cbrghiX/x1jE483HtaRu+qBarbWD/hb6POuqdG0rL7h/UlsrX/sPKTFNQ==
-X-Received: by 2002:a4a:e385:0:b0:519:b605:9d78 with SMTP id l5-20020a4ae385000000b00519b6059d78mr5794383oov.7.1675969556165;
-        Thu, 09 Feb 2023 11:05:56 -0800 (PST)
+        bh=ljNnToeTIL1TFk9BZIDWfKvJLhPyA6JgaKeGR7D+Uy8=;
+        b=rJ95PHBRWHXHG4aut5ds4nSrK0yFSqcpNyvGOUVhHuXUECaVpv+AFY4+lV6CLaby8K
+         7ol3bPklasPSr1v3Vkx5yYnqBKKipQ6WRd+FXLvMNYCuSDLX9dUmh5eDU+6p0Y0mDriW
+         s1CPQMXx271ikHUYuS7TCL62oCMqAp3uetHN1TjJZaSv7Q5mnVRTfMlcI6l5BIoUWX20
+         Vrix0+kjXDezdXDKq9xO02V82JVewbE09NMR/XZJLqQyNQHATbfT236EQBYHfE7ONlbF
+         aNKw52bpM2GRfdA64mQdjEO1gAeWBaz1nJvBb84kNrPJ6HMILNEKCcAdyzcGFIe1KIwD
+         Suyw==
+X-Gm-Message-State: AO0yUKVaPLsCWCshd5vD321VVMzwY83P5Xy/UYJjmpI4auFlL48XmcZn
+	t5sYKCDvpDnolWv4nlSAEg==
+X-Google-Smtp-Source: AK7set9kNL5f2SUSoOcy3zcL5Ej8M7/ppJqU+XYT7yBpDlUf9vvh4vTus6vEzRSNOxkw8vmpoD8elw==
+X-Received: by 2002:a05:6808:6292:b0:378:1e37:ff44 with SMTP id du18-20020a056808629200b003781e37ff44mr6380288oib.33.1675969649382;
+        Thu, 09 Feb 2023 11:07:29 -0800 (PST)
 Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id w17-20020a9d6751000000b0067781a9292asm1089490otm.2.2023.02.09.11.05.55
+        by smtp.gmail.com with ESMTPSA id m128-20020acabc86000000b0037880fdb1f6sm1200297oif.24.2023.02.09.11.07.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Feb 2023 11:05:55 -0800 (PST)
-Received: (nullmailer pid 645960 invoked by uid 1000);
-	Thu, 09 Feb 2023 19:05:55 -0000
-Date: Thu, 9 Feb 2023 13:05:55 -0600
+        Thu, 09 Feb 2023 11:07:28 -0800 (PST)
+Received: (nullmailer pid 647682 invoked by uid 1000);
+	Thu, 09 Feb 2023 19:07:27 -0000
+Date: Thu, 9 Feb 2023 13:07:27 -0600
 From: Rob Herring <robh@kernel.org>
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh+dt@kernel.org>, Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-remoteproc@vger.kernel.org, Bjorn Andersson <andersson@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-mediatek@lists.infradead.org, Mathieu Poirier <mathieu.poirier@linaro.org>, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v4 03/12] dt-bindings: remoteproc: mediatek: Support
- MT8195 dual-core SCP
-Message-ID: <167596955460.645898.16236583347331840174.robh@kernel.org>
-References: <20230209074021.13936-1-tinghan.shen@mediatek.com>
- <20230209074021.13936-4-tinghan.shen@mediatek.com>
+To: bchihi@baylibre.com
+Cc: linux-arm-kernel@lists.infradead.org, khilman@baylibre.com, rdunlap@infradead.org, daniel.lezcano@linaro.org, devicetree@vger.kernel.org, p.zabel@pengutronix.de, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, james.lo@mediatek.com, rex-bc.chen@mediatek.com, linux-pm@vger.kernel.org, rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com, krzysztof.kozlowski+dt@linaro.org, ye.xingchen@zte.com.cn, linux-kernel@vger.kernel.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v14 2/6] dt-bindings: thermal: mediatek: Add LVTS thermal
+ controllers
+Message-ID: <167596964747.647630.15058465615417584783.robh@kernel.org>
+References: <20230209105628.50294-1-bchihi@baylibre.com>
+ <20230209105628.50294-3-bchihi@baylibre.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230209074021.13936-4-tinghan.shen@mediatek.com>
+In-Reply-To: <20230209105628.50294-3-bchihi@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230209_110559_937520_A837A0BD 
-X-CRM114-Status: GOOD (  11.49  )
+X-CRM114-CacheID: sfid-20230209_110731_603440_08C4E099 
+X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,17 +81,18 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 09 Feb 2023 15:40:12 +0800, Tinghan Shen wrote:
-> Extend the SCP binding to describe the MT8195 dual-core SCP.
+On Thu, 09 Feb 2023 11:56:24 +0100, bchihi@baylibre.com wrote:
+> From: Balsam CHIHI <bchihi@baylibre.com>
 > 
-> Under different applications, the MT8195 SCP can be used as single-core
-> or dual-core. This change keeps the single-core definition and
-> adds new definitions for dual-core use case.
+> Add LVTS thermal controllers dt-binding definition for mt8192 and mt8195.
 > 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
 > ---
->  .../bindings/remoteproc/mtk,scp.yaml          | 145 +++++++++++++++++-
->  1 file changed, 141 insertions(+), 4 deletions(-)
+>  .../thermal/mediatek,lvts-thermal.yaml        | 142 ++++++++++++++++++
+>  .../thermal/mediatek,lvts-thermal.h           |  19 +++
+>  2 files changed, 161 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+>  create mode 100644 include/dt-bindings/thermal/mediatek,lvts-thermal.h
 > 
 
 Reviewed-by: Rob Herring <robh@kernel.org>
