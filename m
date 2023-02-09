@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37339C636D4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 07:42:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06BE6C05027
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 07:42:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SOGG31q+O+/Pz6GrWiIsoHSd9f46vLgfVPDNWGwhamI=; b=UXtB6GX7jQwP51QT0unu/hQ4T5
-	/bympZT5qe/P3zPNa+0Txs9bpJTmUrfD4BYmZNcumKvk6rQeqzem6Qkv9mZLaWV+HMBUBkzQCXfjE
-	R9Sr1JFqXvxMXt4oLMk4IqOBYWdz6KHxbs1Unnmq15K23CZL/ifPT6QIjMHOkZMoiMpreLtSYBqDo
-	xLgkV29sCStJ9DlCf1pKpcmv3Xs+ljz2LVnUidPLWdts3WcxrI+Cw/a3GK+kt3wVLtwsIYrUJmjcq
-	/s+XKYPYOmMGpSy6RdMnPanOUOS1IusxSLlIfUSghFvk1DwvlQKC1zRcPSwTUIh7H9GPuXHlIfbmv
-	nIAD2Jgg==;
+	bh=S6Mq9pK7uzND1xJ/3DSsEG33Y6Jr24ocdvtiHLbAez4=; b=Tik1Zh4Jnfo8GFkv0Fg/cswpzy
+	sCjESyS11b0TpjLCney3qWIRrIhMOtDpyXzkpJbmPTrjaX1xtqutcIhNzqBNzM4RtTn6vwZ/9jeCT
+	JpryJvR1FiudUSitONflKQOScxYM2qWLaKcN/X6R99Mh65JiudR1ufl+b2DumBnjpQIRVuHPjDbmx
+	xe7IJmW/MpJgqAKYCieoGfUfUYNC5prbdZ5b80M3Np/wYc0hcIMaj3m3pv/RkUVJlhKBepCfCIFF9
+	VqD1DB9akYg435DaqfHILT7GHomPTPy6XM7JJebEso73780TsNjZ3nQgcAHwIwCpyjrJ0sqedu5AQ
+	urK0s+RQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ1Zb-000PS2-Qo; Thu, 09 Feb 2023 07:42:27 +0000
+	id 1pQ1Zd-000PTa-Nt; Thu, 09 Feb 2023 07:42:29 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ1Yf-000Oql-KN; Thu, 09 Feb 2023 07:41:31 +0000
-X-UUID: 27e32f5ea84d11eda08d4d6090ec5a5c-20230209
+	id 1pQ1Yf-000Oo1-Sr; Thu, 09 Feb 2023 07:41:31 +0000
+X-UUID: 2850c24ea84d11eda08d4d6090ec5a5c-20230209
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=SOGG31q+O+/Pz6GrWiIsoHSd9f46vLgfVPDNWGwhamI=;
-	b=pudEEpO5cMjttMyipwJAWCSPj29GnQXjosMBNxvY1aujw5MAaipRvHuqmDiG07CRgzhSKclPD3jma3UQO8qlmr8B42nj90AEAeHTz2qXNdAJSs5sV+/OZRlTj1vfIjOF1qVpX3S4ZkJpaLWR34blh9So9uMpN0WnFED/tLbbNW0=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=S6Mq9pK7uzND1xJ/3DSsEG33Y6Jr24ocdvtiHLbAez4=;
+	b=EpSHpAaM0QRH26Wnk04HqOSyJHhIah9bjxBaCBmV7UoyhQg2zYbMUbWFuQXa2U/Chcco05o9zTJu4forvWUIN3hMwqGL1H6ZXVic8Kb+HmbFO9UD7EZNJWiiVYiOfBaZ52IZ4K2UUa1Sae5Vmig/rVCz8pZwYNQlb0ctd2J3xws=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.19,REQID:70439d51-a854-4cb4-8a85-c7894f5f023f,IP:0,U
+X-CID-O-INFO: VERSION:1.1.19,REQID:eb86c5bd-361b-4cf3-925e-d82107618d54,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:885ddb2,CLOUDID:311feff7-ff42-4fb0-b929-626456a83c14,B
+X-CID-META: VersionHash:885ddb2,CLOUDID:7e5ac556-dd49-462e-a4be-2143a3ddc739,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-UUID: 27e32f5ea84d11eda08d4d6090ec5a5c-20230209
+X-CID-BVR: 0
+X-UUID: 2850c24ea84d11eda08d4d6090ec5a5c-20230209
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <tinghan.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 200899320; Thu, 09 Feb 2023 00:41:25 -0700
+	with ESMTP id 1852476657; Thu, 09 Feb 2023 00:41:26 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 9 Feb 2023 15:40:50 +0800
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 9 Feb 2023 15:40:50 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.792.15 via Frontend Transport; Thu, 9 Feb 2023 15:40:50 +0800
 From: Tinghan Shen <tinghan.shen@mediatek.com>
 To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
-	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>, Tinghan Shen
 	<tinghan.shen@mediatek.com>
@@ -59,9 +59,9 @@ CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v4 12/12] arm64: dts: mediatek: mt8195: Add SCP 2nd core
-Date: Thu, 9 Feb 2023 15:40:21 +0800
-Message-ID: <20230209074021.13936-13-tinghan.shen@mediatek.com>
+Subject: [PATCH v4 11/12] remoteproc: mediatek: Refine ipi handler error message
+Date: Thu, 9 Feb 2023 15:40:20 +0800
+Message-ID: <20230209074021.13936-12-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230209074021.13936-1-tinghan.shen@mediatek.com>
 References: <20230209074021.13936-1-tinghan.shen@mediatek.com>
@@ -69,8 +69,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230208_234129_735746_F18911D2 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20230208_234129_988784_D533F0CC 
+X-CRM114-Status: GOOD (  12.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,75 +85,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Rewrite the MT8195 SCP device node as a cluster and
-add the SCP 2nd core in it.
-
-Since the SCP device node is changed to multi-core structure,
-enable SCP cluster to enable probing SCP core 0.
+The error message doesn't accurately reflect the cause of
+the error. The error is due to a handler not being found,
+not an invalid IPI ID.
 
 Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../boot/dts/mediatek/mt8195-cherry.dtsi      |  4 +++
- arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 30 ++++++++++++++-----
- 2 files changed, 27 insertions(+), 7 deletions(-)
+ drivers/remoteproc/mtk_scp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index 56749cfe7c33..4f9bc7581adb 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -933,6 +933,10 @@
- 	interrupts-extended = <&pio 222 IRQ_TYPE_LEVEL_HIGH>;
- };
- 
-+&scp_cluster {
-+	status = "okay";
-+};
-+
- &scp {
- 	status = "okay";
- 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 8f1264d5290b..87e49f5fb7b3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -826,14 +826,30 @@
- 			clocks = <&infracfg_ao CLK_INFRA_AO_GCE2>;
- 		};
- 
--		scp: scp@10500000 {
--			compatible = "mediatek,mt8195-scp";
--			reg = <0 0x10500000 0 0x100000>,
--			      <0 0x10720000 0 0xe0000>,
--			      <0 0x10700000 0 0x8000>;
--			reg-names = "sram", "cfg", "l1tcm";
--			interrupts = <GIC_SPI 462 IRQ_TYPE_LEVEL_HIGH 0>;
-+		scp_cluster: scp@10500000 {
-+			compatible = "mediatek,mt8195-scp-dual";
-+			reg = <0 0x10720000 0 0xe0000>, <0 0x10700000 0 0x8000>;
-+			reg-names = "cfg", "l1tcm";
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+			ranges = <0 0 0x10500000 0x100000>;
- 			status = "disabled";
-+
-+			scp: scp@0 {
-+				compatible = "mediatek,scp-core";
-+				reg = <0x0 0xa0000>;
-+				reg-names = "sram";
-+				interrupts = <GIC_SPI 462 IRQ_TYPE_LEVEL_HIGH 0>;
-+				status = "disabled";
-+			};
-+
-+			scp_c1: scp@a0000 {
-+				compatible = "mediatek,scp-core";
-+				reg = <0xa0000 0x20000>;
-+				reg-names = "sram";
-+				interrupts = <GIC_SPI 463 IRQ_TYPE_LEVEL_HIGH 0>;
-+				status = "disabled";
-+			};
- 		};
- 
- 		scp_adsp: clock-controller@10720000 {
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index 9fbbc4751433..16b5de589d07 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -106,7 +106,7 @@ static void scp_ipi_handler(struct mtk_scp *scp)
+ 	scp_ipi_lock(scp, id);
+ 	handler = ipi_desc[id].handler;
+ 	if (!handler) {
+-		dev_err(scp->dev, "No such ipi id = %d\n", id);
++		dev_err(scp->dev, "No handler for ipi id = %d\n", id);
+ 		scp_ipi_unlock(scp, id);
+ 		return;
+ 	}
 -- 
 2.18.0
 
