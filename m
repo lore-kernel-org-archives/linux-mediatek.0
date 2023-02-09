@@ -4,77 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 391A6C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 19:51:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFC19C6379F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 23:26:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sQirvFkXJNys2L/QVLtaaVUPThdd0nYg4wfN1XkQF9k=; b=FhnbLCSUv0Tf/dX0BL3AYmgB1+
-	GfqqFJYOLk5qyala9LMwWCNwh+FCercWiYMbdsRfGwkzZOyXe0fq6pzzuM5v80Cfz4R3i0luAROLe
-	KJN4jv7gv9kE3tabC0V/reNIvqm+hxeouel3PNHBiNspB3S0v3DPn1tCQUpR8IQUrG5LXo5NytQBm
-	Jvw/rQ0vEvGJ+KRuAylWNc2OsP+G13U6NHTL2K+jfIxXTryhCZAeF5t6KDRTTKrEsIJYcNRikOW9y
-	LIf0lsdcda/ZUdrkFnQ3MUFe8hUpHrtk7EAAb8V7s3Rl/4Qlw+rV4cf8ITvJW1u3jvo6b8c7oZ/5P
-	iN7hIibw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Bd9rGD7aBsGlBlOileK5s1C6KlOLRt1YYbjdDA1VvE0=; b=zqoav2peeF/E91m+5tFOnXDH/0
+	nEo5TQ44CxTrtGxWOAPSMgrp8rVJpiOQUM1PHyfVmm4EfAw9gFKkV9ciJofX3CS7HF75xfky3MgnP
+	3Wi7LqBRUJOI9vBOi+xnVKaSpA/t16PP2Epqin/BP8Tzax1kIWiJOKYM0H1zvOZlW5u8Ig9MqepNY
+	P9tRU1gZp9LIJWtQiYIdfQ+VHHYwytI8guNaR4QSIlSb5tGie7HU6Vg9jUWZ9h3I/LwW6T/y2o77y
+	n9CrpXpbNypksuKWVXBJAql/EpkdUGeGWUR6AfqHOImK7uh1g4Ppfu0ayi7EA1t4ffpRnhtelTVdL
+	vXfmuwpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQCws-0033Af-Bc; Thu, 09 Feb 2023 19:51:14 +0000
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+	id 1pQGJU-003Vvu-RY; Thu, 09 Feb 2023 23:26:48 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQCwi-00338G-Qt
-	for linux-mediatek@lists.infradead.org; Thu, 09 Feb 2023 19:51:06 +0000
-Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-52bdbd30328so39486757b3.8
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Feb 2023 11:51:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=sQirvFkXJNys2L/QVLtaaVUPThdd0nYg4wfN1XkQF9k=;
-        b=TJcF2CUbuaWP2iDAiOYLqAAkSYwbwKGvbvBVFGLWm6YOtCZlzrSZhhje+1MAJUgGKt
-         DM3TUSgtiWWdKAnGIaiCAb5mmxEcfXcpS6hN7y8xEYoP0LVPqANMBoRFUYn/G/SBmMV6
-         NvEiIfMhuuIBXKQ8AsfgRyPgMJ3MEbqbTwkHj612+QFEc7UmlWegiziMU6NJT3jPq47+
-         Omm9MVnqFvUklKa0811m5IL8doDzl+mcBamcfd8bu+DSiwzTHPn9SVZq1p2xIzlINFHt
-         w8/4mc//+jMZ2ADKn4RsxqcWG8s7Ul/bB3B99UMK33KRuGNvcBUQu614BQYcsQcgmy88
-         EkIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=sQirvFkXJNys2L/QVLtaaVUPThdd0nYg4wfN1XkQF9k=;
-        b=IIc42PO/Ky14pulf1NjnVMdfB8JHgt2Kyb4gsDpb/2GObIg+gexENspty+fX26y+Gc
-         ofDGCK9jS0WQaxVbZ73E9qy7ORfZyXc/q9vqNYfIDgVSd6/5js4yIJU7sDEe6VnmeHFU
-         3rb5fB0dF3j0PrqdnP9iOs0pnpL0LZAjPocbG5FWiWtUYy6lIEHZB1BfWFesdyGZk1Wk
-         5fJphg7e5PT7rJksEHVSQjbu34YIm9eN06oOs5qbnMPbMMBx5DEKR84CS7xqALCCeq8I
-         GWYBKdXTlF+346kdH9RbrFZAWA25pCbw2sM+5AkftDunwcZi0Xo43B4MMA/LFuAwZNfI
-         bQwQ==
-X-Gm-Message-State: AO0yUKWklKUEryScdUyGgivPL83qwsn1FrgL1TEhiwrCULKkSe8k0gx0
-	kqKA0o1iFXFqFZaFYrTgoyNGMTD86MvjKmu4aEv9
-X-Google-Smtp-Source: AK7set/tuNoRXCYBdZYRG8v3DyGqWC26c5R3O53w8gFYK+KKegGlSCWqmDNDCSgAtMiDiDZsg4p551wirLwuT+nG8V0=
-X-Received: by 2002:a0d:d5ce:0:b0:506:6e0b:7441 with SMTP id
- x197-20020a0dd5ce000000b005066e0b7441mr1279691ywd.208.1675972261271; Thu, 09
- Feb 2023 11:51:01 -0800 (PST)
+	id 1pQGJR-003VuD-UE; Thu, 09 Feb 2023 23:26:47 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pQGJ4-0002Bc-0U;
+	Fri, 10 Feb 2023 00:26:22 +0100
+Date: Thu, 9 Feb 2023 23:24:42 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Russell King <linux@armlinux.org.uk>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>
+Cc: Jianhui Zhao <zhaojh329@gmail.com>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
+Subject: [PATCH v3 00/12] net: ethernet: mtk_eth_soc: various enhancements
+Message-ID: <cover.1675984550.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-References: <20230208094813.20874-1-walter.chang@mediatek.com> <fdcea75c-1ddf-c4f4-5d46-f32a6619b66d@linaro.org>
-In-Reply-To: <fdcea75c-1ddf-c4f4-5d46-f32a6619b66d@linaro.org>
-From: John Stultz <jstultz@google.com>
-Date: Thu, 9 Feb 2023 11:50:49 -0800
-Message-ID: <CANDhNCp6esdor4kDDTDowkKRfRN9QW8Au7uJMhsxyw0eAG4i8A@mail.gmail.com>
-Subject: Re: [PATCH 0/3] Support timer drivers as loadable modules
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: walter.chang@mediatek.com, Thomas Gleixner <tglx@linutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"Maciej W . Rozycki" <macro@orcam.me.uk>, wsd_upstream@mediatek.com, stanley.chu@mediatek.com, 
-	Chun-hung.Wu@mediatek.com, Freddy.Hsin@mediatek.com, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230209_115104_877126_C36243D2 
-X-CRM114-Status: GOOD (  16.29  )
+X-CRM114-CacheID: sfid-20230209_152645_992035_858ACBF8 
+X-CRM114-Status: GOOD (  12.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,30 +76,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 9, 2023 at 7:36 AM Daniel Lezcano <daniel.lezcano@linaro.org> wrote:
->
-> On 08/02/2023 10:48, walter.chang@mediatek.com wrote:
-> > From: Walter Chang <walter.chang@mediatek.com>
-> >
-> > This patch exports functions in kernel so that timer drivers,
-> > such as timer-mediatek.c can become loadable modules in GKI.
->
-> What for ?
+This series brings a variety of fixes and enhancements for mtk_eth_soc,
+adds support for the MT7981 SoC and facilitates sharing the SGMII PCS
+code between mtk_eth_soc and mt7530.
 
-In general, it's the same reason why modules exist: We want to be able
-to support a wide array of devices with a single kernel, but we don't
-want all devices to pay the memory cost of code that will never be
-used there. So being able to support loading device-specific bits like
-clocksources (along with other device specific logic) helps.
-Obviously it still has to make sense, and others have raised concerns
-of stability issues if the hardware support is needed before we can
-get to module loading, but I think if this allows drivers (such as
-timer-mediatek) to be loadable safely, I see it as beneficial.
+Note that this series depends on commit 697c3892d825
+("regmap: apply reg_base and reg_downshift for single register ops") to
+not break mt7530 pcs register access.
 
-(And as others pointed out:  this patch series is incomplete as it
-doesn't modularize the timer-mediatek driver, which would be a prereq
-to supporting it upstream)
+Changes since v2:
+ * improve dt-bindings, convert sgmisys bindings to dt-schema yaml
+ * fix typo
 
-thanks
--john
+Changes since v1:
+ * apply reverse xmas tree everywhere
+ * improve commit descriptions
+ * add dt binding documentation
+ * various small changes addressing all comments received for v1
+
+Daniel Golle (12):
+  net: ethernet: mtk_eth_soc: add support for MT7981 SoC
+  dt-bindings: net: mediatek,net: add mt7981-eth binding
+  dt-bindings: arm: mediatek: sgmiisys: Convert to DT schema
+  dt-bindings: arm: mediatek: sgmiisys: add MT7981 SoC
+  net: ethernet: mtk_eth_soc: set MDIO bus clock frequency
+  net: ethernet: mtk_eth_soc: reset PCS state
+  net: ethernet: mtk_eth_soc: only write values if needed
+  net: ethernet: mtk_eth_soc: fix RX data corruption issue
+  net: ethernet: mtk_eth_soc: ppe: add support for flow accounting
+  net: pcs: add driver for MediaTek SGMII PCS
+  net: ethernet: mtk_eth_soc: switch to external PCS driver
+  net: dsa: mt7530: use external PCS driver
+
+ .../arm/mediatek/mediatek,sgmiisys.txt        |  27 --
+ .../arm/mediatek/mediatek,sgmiisys.yaml       |  75 +++++
+ .../devicetree/bindings/net/mediatek,net.yaml |  43 ++-
+ MAINTAINERS                                   |   7 +
+ drivers/net/dsa/Kconfig                       |   1 +
+ drivers/net/dsa/mt7530.c                      | 277 ++++-----------
+ drivers/net/dsa/mt7530.h                      |  47 +--
+ drivers/net/ethernet/mediatek/Kconfig         |   2 +
+ drivers/net/ethernet/mediatek/mtk_eth_path.c  |  14 +-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   |  65 +++-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h   | 100 ++----
+ drivers/net/ethernet/mediatek/mtk_ppe.c       | 114 ++++++-
+ drivers/net/ethernet/mediatek/mtk_ppe.h       |  25 +-
+ .../net/ethernet/mediatek/mtk_ppe_debugfs.c   |   9 +-
+ .../net/ethernet/mediatek/mtk_ppe_offload.c   |   8 +
+ drivers/net/ethernet/mediatek/mtk_ppe_regs.h  |  14 +
+ drivers/net/ethernet/mediatek/mtk_sgmii.c     | 190 ++---------
+ drivers/net/pcs/Kconfig                       |   8 +
+ drivers/net/pcs/Makefile                      |   1 +
+ drivers/net/pcs/pcs-mtk-lynxi.c               | 315 ++++++++++++++++++
+ include/linux/pcs/pcs-mtk-lynxi.h             |  13 +
+ 21 files changed, 825 insertions(+), 530 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.yaml
+ create mode 100644 drivers/net/pcs/pcs-mtk-lynxi.c
+ create mode 100644 include/linux/pcs/pcs-mtk-lynxi.h
+
+
+base-commit: 20f513df926fac0594a3b65f79d856bd64251861
+-- 
+2.39.1
+
 
