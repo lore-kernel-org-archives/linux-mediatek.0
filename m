@@ -4,57 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09190C636D6
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 13:58:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B92FEC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 14:31:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SgJMYSTcwLM1ixgRLAPd5jJAf8M0pVTq8SAJXoBvwMk=; b=AWt4kZ2T7/xTWs25YRE5ySZY4n
-	0PsY0mlGkhu5BR0zazSv/5TC1kLqeFilRgJSYjwv51ob9bFJR+4wSeMIMw1o0FEBDZ7SZLWGUya7w
-	SQxUhmxqwtIcKnF2pVBhwBzstloQ9BjvfqX3Kg0UdM2ZlE0oMxR65H4ckM67DYZImB8QV2kjKV4/e
-	6YXdqarGawiWLtsIgSQ2quOI5TQ+kk7coHLPVzy6ciO/ao1TxL5ZdGlMJZ82dK+/OrxgcyTnpzL3/
-	KoM00V558Im9tUPs/7iYhD7pZhwBAi5ySxZNJfqOeTdjGuFEFey+gVY6oprCkmRVgK0Qr1/4ZKC29
-	oUdY5ylA==;
+	bh=Vw35z5ZLHGzEPckPTa+m11eifxqHngA1nWoifbo/TWg=; b=dS9Gc1vLTuyvWPCGezD0ELf1Gu
+	GrjBzcrAUjInBFm0cvHj7P4MZ5nwUxop00NjyNLJKqLxks8gFOxe4ZrXqNhM0uYzcifKibjhSa6Y1
+	9SlcLSHQF1tKvpyvRPmzcD0YRg5Mv1zV2lXAyJ4rCzkE40TZ6oQK2D0FjUSfTBfUdyjwwbCJtMJK8
+	6oKp1qPYh7fQncK4bbec+e/GY8hjoQTcHegpmMsfe9nizDJcl5nVBCVwbUYqehHF0/ilgb0XwgiAw
+	e0XlzW+jVvqLu8MRGaZI/HUPM9LsikA6L1v/7pirIhWuEMlGvXpLpQUKNswLQEY7shRN7Gh9Viwf5
+	iM8rkXqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ7RR-001srv-0U; Thu, 09 Feb 2023 13:58:25 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1pQ7wv-001z2q-Rr; Thu, 09 Feb 2023 14:30:57 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ7RI-001spK-2G; Thu, 09 Feb 2023 13:58:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=SgJMYSTcwLM1ixgRLAPd5jJAf8M0pVTq8SAJXoBvwMk=; b=JZUXBWPbQ00z8TXTU+ZxSGwxJ3
-	nn++ZtwCXNQ7i5ca8YILza2oM3JOdiT9EIubWY3IbWuZiJKxSvGFHSH0jViD0/QWLn+QEqWUxrXRQ
-	VYbos8eOlrsacOr3eWvZAhUCLDzUYehlDtcJCm2cyN3ExIX5Qy6fEhWXbWJeoW0Yp5D0VYRvSkGLd
-	/OdhUc4UVAtX/1g1bTk7M1Z7OIswzjACzDGIYdAcXysS/22aha7l/bvAjN2mlOHVHf4tTNPAqsaCC
-	p2af01D5ggKiN1y2EvmvqZeIoWpIN7XLISiwKiBqPT0TLBrgzhEmRayHsoE5Xeah58INu+DB9MPDZ
-	jAvvtrnw==;
-Received: from willy by casper.infradead.org with local (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ7RB-002F9j-E0; Thu, 09 Feb 2023 13:58:09 +0000
-Date: Thu, 9 Feb 2023 13:58:09 +0000
-From: Matthew Wilcox <willy@infradead.org>
-To: Mike Rapoport <rppt@kernel.org>
-Cc: Jonathan Corbet <corbet@lwn.net>,
-	Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	chinwen.chang@mediatek.com, andrew.yang@mediatek.com,
-	linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-mm@kvack.org
-Subject: Re: [PATCH] mm/doc: Replace isolate_lru_page with folio_isolate_lru
-Message-ID: <Y+T78Wzeg3BgwiuY@casper.infradead.org>
-References: <20230131062853.28449-1-Kuan-Ying.Lee@mediatek.com>
- <87a61wvtcs.fsf@meer.lwn.net>
- <Y+Twr+g8PPL3uKhL@kernel.org>
+	id 1pQ7ws-001z1T-7L; Thu, 09 Feb 2023 14:30:55 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 7820061AB9;
+	Thu,  9 Feb 2023 14:30:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83C41C433EF;
+	Thu,  9 Feb 2023 14:30:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1675953052;
+	bh=n5q92jtNB++4BoYIauYygzacB4DdXZvQYlYHsoaQZHo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=L4cNRE4MQxZhPNyBF/08CXXf/FWNQlzUwcRLG/0S65J/4ZChTqeAH+gdyIm7+puo/
+	 e1NMfqyqjToGWx/m2stUfU7oe9VJ+8njI+o0jyklZ6aQ10e0wIfN7idp96BYLv9Fv3
+	 QhfxNouUc0qZTgyD3UIjJF1eoI/sa7sYlEflw9jIrrOTdIfoFZo0OmH5vYc0Tjwjlg
+	 7k/6gJhmjkwo6pEOCZrEJ5FmUMlxfm8y1s7LLhR+jeJXraVBKucJ1jUqjs66gKI0qH
+	 XjavWBRymrRU2MvlL95tjkP7Fwb0aTwHP4DAbOFosKC6AT8CudX5DVtLZ+LDNj9wE2
+	 dDufUua3aqd7w==
+Date: Thu, 9 Feb 2023 14:30:29 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
+Cc: miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com,
+	jic23@kernel.org, tudor.ambarus@microchip.com, pratyush@kernel.org,
+	sanju.mehta@amd.com, chin-ting_kuo@aspeedtech.com, clg@kaod.org,
+	kdasu.kdev@gmail.com, f.fainelli@gmail.com, rjui@broadcom.com,
+	sbranden@broadcom.com, eajames@linux.ibm.com, olteanv@gmail.com,
+	han.xu@nxp.com, john.garry@huawei.com, shawnguo@kernel.org,
+	s.hauer@pengutronix.de, narmstrong@baylibre.com,
+	khilman@baylibre.com, matthias.bgg@gmail.com, haibo.chen@nxp.com,
+	linus.walleij@linaro.org, daniel@zonque.org,
+	haojian.zhuang@gmail.com, robert.jarzmik@free.fr, agross@kernel.org,
+	bjorn.andersson@linaro.org, heiko@sntech.de,
+	krzysztof.kozlowski@linaro.org, andi@etezian.org,
+	mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
+	wens@csie.org, jernej.skrabec@gmail.com, samuel@sholland.org,
+	masahisa.kojima@linaro.org, jaswinder.singh@linaro.org,
+	rostedt@goodmis.org, mingo@redhat.com, l.stelmach@samsung.com,
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, alex.aring@gmail.com, stefan@datenfreihafen.org,
+	kvalo@kernel.org, git@amd.com, linux-spi@vger.kernel.org,
+	linux-kernel@vger.kernel.org, joel@jms.id.au, andrew@aj.id.au,
+	radu_nicolae.pirea@upb.ro, nicolas.ferre@microchip.com,
+	alexandre.belloni@bootlin.com, claudiu.beznea@microchip.com,
+	bcm-kernel-feedback-list@broadcom.com, fancer.lancer@gmail.com,
+	kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
+	jbrunet@baylibre.com, martin.blumenstingl@googlemail.com,
+	avifishman70@gmail.com, tmaimon77@gmail.com, tali.perry1@gmail.com,
+	venture@google.com, yuenn@google.com, benjaminfair@google.com,
+	yogeshgaur.83@gmail.com, konrad.dybcio@somainline.org,
+	alim.akhtar@samsung.com, ldewangan@nvidia.com,
+	thierry.reding@gmail.com, jonathanh@nvidia.com,
+	michal.simek@amd.com, linux-aspeed@lists.ozlabs.org,
+	openbmc@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+	netdev@vger.kernel.org, linux-wpan@vger.kernel.org,
+	libertas-dev@lists.infradead.org, linux-wireless@vger.kernel.org,
+	linux-mtd@lists.infradead.org, lars@metafoo.de,
+	Michael.Hennerich@analog.com, linux-iio@vger.kernel.org,
+	michael@walle.cc, palmer@dabbelt.com,
+	linux-riscv@lists.infradead.org, amitrkcian2002@gmail.com,
+	Dhruva Gole <d-gole@ti.com>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	William Zhang <william.zhang@broadcom.com>
+Subject: Re: [PATCH v3 01/13] spi: Replace all spi->chip_select and
+ spi->cs_gpiod references with function call
+Message-ID: <Y+UDhWK6u9NkMTxv@sirena.org.uk>
+References: <20230202152258.512973-1-amit.kumar-mahapatra@amd.com>
+ <20230202152258.512973-2-amit.kumar-mahapatra@amd.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="iWU3nY956KPhZko1"
 Content-Disposition: inline
-In-Reply-To: <Y+Twr+g8PPL3uKhL@kernel.org>
+In-Reply-To: <20230202152258.512973-2-amit.kumar-mahapatra@amd.com>
+X-Cookie: Androphobia:
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20230209_063054_362427_0DA3B0CE 
+X-CRM114-Status: GOOD (  12.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,30 +120,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 09, 2023 at 03:10:07PM +0200, Mike Rapoport wrote:
-> On Thu, Feb 02, 2023 at 11:02:11AM -0700, Jonathan Corbet wrote:
-> > Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com> writes:
-> > 
-> > > Since we introduce folio, replace isolate_lru_page() with
-> > > folio_isolate_lru().
-> > >
-> > > Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-> > > ---
-> > >  Documentation/mm/page_migration.rst | 6 +++---
-> > >  1 file changed, 3 insertions(+), 3 deletions(-)
-> > 
-> > This seems like a good patch to copy to linux-mm - done now.
-> > 
-> > The patch perhaps is a closer match to what's in linux-next, but it
-> > seems that, if we're going to update this document, we should reflect
-> > the use folios throughout?
-> 
-> Most of the current users of migrate_pages() still use isolate_lru_page()
-> so I think that updating page_migration.rst to folios is premature.
-> But when we do the update it also should include the translations.
 
-It's a slim majority -- 9 of isolate_lru_pages() and 7 of
-folio_isolate_lru().  I don't think that changing the documentation is
-premature; we should document the functions we want people to use.
-I'd be surprised if isolate_lru_pages() still existed in six months.
+--iWU3nY956KPhZko1
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Feb 02, 2023 at 08:52:46PM +0530, Amit Kumar Mahapatra wrote:
+> Supporting multi-cs in spi drivers would require the chip_select & cs_gpi=
+od
+> members of struct spi_device to be an array. But changing the type of the=
+se
+> members to array would break the spi driver functionality. To make the
+> transition smoother introduced four new APIs to get/set the
+
+This break an arm multi_v7_defconfig build:
+
+/build/stage/linux/drivers/spi/spi-pl022.c: In function =E2=80=98pl022_tran=
+sfer_one_message=E2=80=99:
+/build/stage/linux/drivers/spi/spi-pl022.c:1592:31: error: =E2=80=98struct =
+spi_message=E2=80=99 has no member named =E2=80=98spi_get_csgpiod=E2=80=99
+ 1592 |         pl022->cur_gpiod =3D msg->spi_get_csgpiod(spi, 0);
+      |                               ^~
+/build/stage/linux/drivers/spi/spi-pl022.c:1592:49: error: =E2=80=98spi=E2=
+=80=99 undeclared (first use in this function)
+ 1592 |         pl022->cur_gpiod =3D msg->spi_get_csgpiod(spi, 0);
+      |                                                 ^~~
+/build/stage/linux/drivers/spi/spi-pl022.c:1592:49: note: each undeclared i=
+dentifier is reported only once for each function it appears in
+
+--iWU3nY956KPhZko1
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmPlA4QACgkQJNaLcl1U
+h9Ai+wf+IWbvrI/uIEjinXzailRkkSP40/uzdnv8AAKF5zA3laimeZYZPCoKfD4X
+GzBSQEjiZOJmPZ0wBaHHFFaxHSBlL6rtUoA6r+EEktjzWc6vOsmoUVRt74R+ZMHw
+1FyvWR07nFAstJD2rPfPhIZ5bt4yiRX/CmA2SxN1qW74IwjKYAy6jLvbpSAZ4byY
+KRnij11f/xqUuiao0L/PTya+dYLUOBEQvXm5JBAIqhZaQVH4G7Ppov0MR15cEMug
+OG9oMzu197RFh7WgO6lj8rI9Cssl4vvj6+3owDZ/nK+LFq62Z6AvBGbaP7SoHOOI
+Xcz8JdTcCAH0XAgza9flmPUQME9cmQ==
+=4wBC
+-----END PGP SIGNATURE-----
+
+--iWU3nY956KPhZko1--
 
