@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2792C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 17:46:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37B1AC636D6
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 17:47:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0DrSTVU0MouuPAPgDnH3bvO6W0mBoIKC+iPYe6f7yQ8=; b=bup6z4OQnReUrzPWrl4/I3i12O
-	1KXSODpvA/YYivGBXUAYwJa34PJgwIaw7IuUnCLeuzdjrZSjoqFQA+PPEHJ6sxB8rlw68AURz3NKE
-	Qx2L1oF3d534T+d6RgXKpeJ0LtX/3ZYJ/fmRMN3lqlbVZXsoRQzyb8KYvMhavQkQ4zZzHgLBjGxf7
-	5e5Ai7BCbsDxAnMRL4gyizcq7Va1gBOloRGbsi+zbcvBijDiQE3kqkCPH0CbYFKgwCPTdKx2jo7L+
-	hWS82thV7ED7R06bNGyxpibZChreOKuUukKFfubvLm4UJhbs8KHJgCH9v2EEozcHzzVSvcMCveWzN
-	E9ksWHmw==;
+	bh=nSXbtWoaGGp/BTK6eNZyW7mgvCIslW3pWGgTjKzsKzo=; b=uR5+y9szGSYRec1Tss/RUMB4jG
+	q6ODELVzNR+xQ4BKYajNPFSWq1vm3lOd4wN44u/l8GvQY44RNWGiR6K50d+Ctjo08iKt35882rdpX
+	pw+nKPVyMKsVLU1cprAtHYcQDPZ7ymjBl90XqOlHMtifbkVp77o1zsP1814W6f1309CjaaYZLHfbL
+	zGyUjweNXye1V343u6oL6l5pTRZU+opsUBGPt4n3oRuCNmFrz/Urd7rUBbBGgBCwL9uiLlp7TdqyL
+	ze1ABZcNfe4E6js3xl/TomnK6UCFE1c2eqbkaGtc1NJAbAxyNvM1tWdk4aT6Pcyt5TuOJcSY2qBS2
+	4qJ7s5gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQAze-002cHF-52; Thu, 09 Feb 2023 17:45:58 +0000
-Received: from mail-oi1-f169.google.com ([209.85.167.169])
+	id 1pQB0b-002cbe-K1; Thu, 09 Feb 2023 17:46:57 +0000
+Received: from mail-oo1-f50.google.com ([209.85.161.50])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQAzb-002cGG-D9; Thu, 09 Feb 2023 17:45:56 +0000
-Received: by mail-oi1-f169.google.com with SMTP id v15so2280609oie.9;
-        Thu, 09 Feb 2023 09:45:54 -0800 (PST)
+	id 1pQB0Q-002cWg-BL; Thu, 09 Feb 2023 17:46:47 +0000
+Received: by mail-oo1-f50.google.com with SMTP id w3-20020a4aa443000000b0051ac1e0f6b7so274751ool.11;
+        Thu, 09 Feb 2023 09:46:45 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=0DrSTVU0MouuPAPgDnH3bvO6W0mBoIKC+iPYe6f7yQ8=;
-        b=cLODX420G722ErvQNvDNQTYtgC0kH+lx+zhNLsU79STQdJODd5clhr+ec8CB/csn5p
-         BRyZ0fhi9OOxGN6juFwlkpUULCU3+I8w4YKSVccKHWZBzHPpyCvSdXdyiqiipOkzJfB/
-         6SqXbqu6XQPPT6f/ixYhUxpd46h6njGQbiQBQ60BP9aTF5x2SyYIIdKv6xb86H5md2OY
-         Hzm6Pc//XKAnw+fl4ASc4T4PO+obr+XtaEkC++zzYwi56aSvInk0idQJnzz4lvFl5euQ
-         mfkQvFdoBey95BwdzpXub/7e19Iwy1riGlyPS47qYEnr3jKXYhaCFesPRyely34UDsed
-         ZlaA==
-X-Gm-Message-State: AO0yUKWSLtpGMvuYMPGd/BtKI2qtlEdfgEqtkBfr13wcyc4NfRpm6gmG
-	fdQm/1V6Ct/9jQB08Gw35g==
-X-Google-Smtp-Source: AK7set9jyx6LMJhbcKNlh1fXP27jxIMoQEJ+KUbwmEZRPY53UW1ny3huB384noPvethCecih31RSAw==
-X-Received: by 2002:a05:6808:279a:b0:37b:3177:65c with SMTP id es26-20020a056808279a00b0037b3177065cmr5747500oib.28.1675964753686;
-        Thu, 09 Feb 2023 09:45:53 -0800 (PST)
+        bh=nSXbtWoaGGp/BTK6eNZyW7mgvCIslW3pWGgTjKzsKzo=;
+        b=lHWN8JQtuoi5Buh2fUEAszuJJOvKJGAYt+MRszbRWOyVC6hrrFaTErPoasN+7VgWnL
+         TVr2Gjd/qspqN9djMk7RjSHE95hoPBviGjhHvsUJtAZJaM/DkIz49UUoJTf0qxeQkQCi
+         ShQdTzlOPh9SL06kvjGuS2OZ+myTADktv6eSgyuiKIYpK7qLw44qkLAC5ZWV51eHCNRy
+         cED+lhYKtBVTPRtSwgBzgVE+7ERkrOJzFKBqRK8yfoCwBpWWEWXcHC5CJfM+RuTxJeCL
+         03iOuYuxcpnrbmcBMyL+Yom80+0psxZ/20nAEZm8bYyu9aHOwG242XJ1WLGFBDlekWg1
+         GzTA==
+X-Gm-Message-State: AO0yUKUnAzM/BRQS/eH9xiSPOeEx9Dm72YXTs7b7Uogf53s2j/2mYsJD
+	WABEOGyOzG8Aah0tPQNTDA==
+X-Google-Smtp-Source: AK7set/eXd6Yae5b5DJrkNsNG5JrvEE5wM9N1+YnsOlzDB7xG37bnt0BvLI1Wk6P5udfi3frUiEWpg==
+X-Received: by 2002:a4a:a34a:0:b0:51a:c9a:ee78 with SMTP id u10-20020a4aa34a000000b0051a0c9aee78mr1295818ool.1.1675964805065;
+        Thu, 09 Feb 2023 09:46:45 -0800 (PST)
 Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id z14-20020a0568301dae00b0068d56f93d73sm973117oti.26.2023.02.09.09.45.52
+        by smtp.gmail.com with ESMTPSA id p6-20020a4aac06000000b004f241603c49sm990419oon.20.2023.02.09.09.46.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Feb 2023 09:45:53 -0800 (PST)
-Received: (nullmailer pid 556291 invoked by uid 1000);
-	Thu, 09 Feb 2023 17:45:52 -0000
-Date: Thu, 9 Feb 2023 11:45:52 -0600
+        Thu, 09 Feb 2023 09:46:44 -0800 (PST)
+Received: (nullmailer pid 557296 invoked by uid 1000);
+	Thu, 09 Feb 2023 17:46:44 -0000
+Date: Thu, 9 Feb 2023 11:46:44 -0600
 From: Rob Herring <robh@kernel.org>
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: anan.sun@mediatek.com, Xia Jiang <xia.jiang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, yf.wang@mediatek.com, chengci.xu@mediatek.com, iommu@lists.linux.dev, devicetree@vger.kernel.org, Yunfei Dong <yunfei.dong@mediatek.com>, Robin Murphy <robin.murphy@arm.com>, mingyuan.ma@mediatek.com, Joerg Roedel <joro@8bytes.org>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, Mauro Carvalho Chehab <mchehab@kernel.org>, libo.kang@mediatek.com, kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>, youlin.pei@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, nfraprado@collabora.com, Will Deacon <will@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil <hverkuil@xs4all.nl>, Bin Liu <bin.liu@mediatek.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2 02/10] dt-bindings: media: mediatek,jpeg: Remove
- dma-ranges property
-Message-ID: <167596475165.556224.15663986433586946843.robh@kernel.org>
-References: <20230208053643.28249-1-yong.wu@mediatek.com>
- <20230208053643.28249-3-yong.wu@mediatek.com>
+To: Moudy Ho <moudy.ho@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, Mauro Carvalho Chehab <mchehab@kernel.org>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v4 01/16] dt-binding: mediatek: correct MDP3 node with
+ generic names
+Message-ID: <167596480328.557242.18288362631745115908.robh@kernel.org>
+References: <20230208092209.19472-1-moudy.ho@mediatek.com>
+ <20230208092209.19472-2-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230208053643.28249-3-yong.wu@mediatek.com>
+In-Reply-To: <20230208092209.19472-2-moudy.ho@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230209_094555_463186_6E322409 
-X-CRM114-Status: GOOD (  13.60  )
+X-CRM114-CacheID: sfid-20230209_094646_407730_5A738E0A 
+X-CRM114-Status: GOOD (  10.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,28 +80,16 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Wed, 08 Feb 2023 13:36:35 +0800, Yong Wu wrote:
-> After commit f1ad5338a4d5 ("of: Fix "dma-ranges" handling for bus
-> controllers"), the dma-ranges of the leaf node doesn't work. Remove
-> it for jpeg here.
+On Wed, 08 Feb 2023 17:21:54 +0800, Moudy Ho wrote:
+> The DMA-related nodes RDMA/WROT in MDP3 should be changed to generic names.
+> In addition, fix improper space indent in example.
 > 
-> Currently there is only mt8195 jpeg node has this property in upstream,
-> and it already uses parent-child node, this property did work. But instead,
-> MediaTek iommu will control the masters' iova ranges by the master's
-> larb/port id internally, then this property is unnecessary.
-> 
-> Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Bin Liu <bin.liu@mediatek.com>
-> Cc: kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>
-> Cc: Xia Jiang <xia.jiang@mediatek.com>
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Fixes: 4ad7b39623ab ("media: dt-binding: mediatek: add bindings for MediaTek MDP3 components")
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 > ---
->  .../devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml | 7 -------
->  .../devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml | 7 -------
->  .../devicetree/bindings/media/mediatek-jpeg-encoder.yaml   | 5 -----
->  3 files changed, 19 deletions(-)
+>  .../bindings/media/mediatek,mdp3-rdma.yaml    | 29 +++++++++++--------
+>  .../bindings/media/mediatek,mdp3-wrot.yaml    | 23 +++++++++------
+>  2 files changed, 31 insertions(+), 21 deletions(-)
 > 
 
 Acked-by: Rob Herring <robh@kernel.org>
