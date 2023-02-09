@@ -4,80 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36E5FC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 10:45:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81813C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 10:56:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DkedwfjcaQD4hYIWgCBqXCk7AYMg3rf0bUauXxMR93A=; b=QgqXzIwBF0Qe3kOTEv9f+RxkIR
-	RDYi2QboEYjPMrS7tsruhxOpUUHeiuHNN6SaBmFFclQnVFwJpp81IdEeT7wYoU0IDTBQVUur7zVjw
-	dhXkgjS4fsqtwohMsuFwz6Y36esjya/n2RHeR9FQDuKl4XPr7rmfIxrIRYLyVaHUHxQEf4+ZwoF1u
-	kFMfBcsXq6UQRUKZLGSsKDwBh9XW69aB6tewdJd3+pU31fJUK9sWacPl/T/FOhlVFlaDRtBAehI5s
-	Iz4BkHxCZosfHlxMBfAyf0oLJm+2fV0HPFiivP8qCBmT8JDmpcqWoAdGFnbN0/jo8HkprAIzJO0X2
-	74V7pi+Q==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=MnJlP6FIsmSatibefV/A+n1GcTw3yUSot7C1x8B79Wg=; b=P7RKWegl11PD2afxHVMIJIycce
+	Ol2YBlaGkHNSQmFfo8QOWfxjk0w8iS633BlDGbpWdstZXdXxHTei90xmjAYZFEnizjd5+/xtD1MhB
+	b4FrVQTltFxwSDw3PupSVXA06lEccEg5y0LVdoYwsX0D50FyDxoaM6j9DPAo89OnpFALfRAKybAk1
+	0Iyya3P4A9jEHWbarrCkt5x39z/C8nFthaNsq0AEzvlqvEW/IqIb/2uDmQ1QWb08JM45KRq0khtMx
+	3vZ47OTNozeaIxyTHemSi/jgncGgs9CQuxUEWM0EYV7ZXTR+WAFS11Q5loG5yLsr3FyLepi4tfWYE
+	fduJ5JBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ4QL-0014Gi-KS; Thu, 09 Feb 2023 10:45:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pQ4bc-00168r-R2; Thu, 09 Feb 2023 10:56:44 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ4Q7-0014CJ-L7; Thu, 09 Feb 2023 10:44:53 +0000
-X-UUID: c3cbb634a86611eda08d4d6090ec5a5c-20230209
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=DkedwfjcaQD4hYIWgCBqXCk7AYMg3rf0bUauXxMR93A=;
-	b=fyCR0Pn2xeP2XJgvDvJo6OZk/z8ih9fPXDVshlXnon2dxYs8oP6gNVD7y2TcJ1aPgIqIqYg7Yp6aThYsJ0Yj21brmkigbHnAao9auStFw29ouOvLogrKtb/aC2QpNWO6FAZVwDW3nR1J5AHL2r3UOxZTuFcd8J/m+Aor6Q25Zoo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.19,REQID:fa171c07-6029-4629-9ed7-ba026ca4495f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:885ddb2,CLOUDID:9727f5f7-ff42-4fb0-b929-626456a83c14,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-UUID: c3cbb634a86611eda08d4d6090ec5a5c-20230209
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 211621454; Thu, 09 Feb 2023 03:44:44 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 9 Feb 2023 18:44:41 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 9 Feb 2023 18:44:41 +0800
-Message-ID: <33b44e7c-eb2a-ae16-eb22-18adc874ee6a@mediatek.com>
-Date: Thu, 9 Feb 2023 18:44:39 +0800
+	id 1pQ4bV-00161V-9y
+	for linux-mediatek@lists.infradead.org; Thu, 09 Feb 2023 10:56:42 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id az4-20020a05600c600400b003dff767a1f1so1203124wmb.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Feb 2023 02:56:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=MnJlP6FIsmSatibefV/A+n1GcTw3yUSot7C1x8B79Wg=;
+        b=8CYR2izZzKIWxMMcI4QqNJOVocF01mhKauFQ3mKWR3Sdh5tRTyjEHaCsTAYHJXHrAe
+         AhPGYKXpVSVSfveCkvFBHGMbcCVjAQ2D16KXgWgEk5Sh1I7vVPCM9PJuVl9T9zwBm7J0
+         99pDBgUnSFDLwFkPCHdjoIOqQWLLWQEW9sU+jxxV/NyX/nkK2qkjNDzuup7EICvecPGG
+         yMY8189cnV+luki9d+PaIgfFxPqgt71dkFse9xaTFbBY4b7rM3Ot/wCsPOHrEBqdva/n
+         SvNpSJfJWjWiEMcY/rYOdQT3Uh8kdbupwnmwFurtomXNBOceEyZ6n23hJc3xmnIvq61i
+         7XFA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=MnJlP6FIsmSatibefV/A+n1GcTw3yUSot7C1x8B79Wg=;
+        b=cjlrvR8I987er0FUHwt3mliclmqEv4EgK3epxL01d04p8QCeYpYPwBRFZx3RUXoUa0
+         kJ1VS2lXizEFCh2awcKyiXO5hmcDybh7DCz+XBVjL3t43grxvZiOiWMoxknt8xBl4MjZ
+         Dmy95mF/eUtFGJ27ZnnQTRunozTH5wG8OUfqOoqu9hfzvwqx0AuGBVxSnWxyz2QY6/Xh
+         xNlXM2xmfEWSdUZH0GTdCBFSYRRdYkGItPtcnKqRmkT3a0fvSVKvBW5YK3cTteuAkCtp
+         YL5vgOVv9JUrCc3ZoF00ZqcuIQeLszy+KJodqKWYvt+7rLlky5Q1LHqSQPRx5qpM2XbT
+         Dn6A==
+X-Gm-Message-State: AO0yUKXkrsOQOEpVuB7XzaHgNfbey7QfTY6DzeeC1X/onUm+J4cPFa8B
+	3GcxNeqGtgaN+eb3zvSMUIxHFg==
+X-Google-Smtp-Source: AK7set8tOP9iTwEd+6cUk3vpT+CGnECqGIkgE7P8djG0ngexw+8xDH6nevDuggKs6lc7iefSLhmRPQ==
+X-Received: by 2002:a05:600c:996:b0:3df:f85a:4724 with SMTP id w22-20020a05600c099600b003dff85a4724mr9629994wmp.39.1675940191176;
+        Thu, 09 Feb 2023 02:56:31 -0800 (PST)
+Received: from t480-bl003.. (185.173.185.81.rev.sfr.net. [81.185.173.185])
+        by smtp.gmail.com with ESMTPSA id j37-20020a05600c1c2500b003daf6e3bc2fsm9140466wms.1.2023.02.09.02.56.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Feb 2023 02:56:30 -0800 (PST)
+From: bchihi@baylibre.com
+To: daniel.lezcano@linaro.org,
+	angelogioacchino.delregno@collabora.com,
+	rafael@kernel.org,
+	amitk@kernel.org,
+	rui.zhang@intel.com,
+	matthias.bgg@gmail.com,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	rdunlap@infradead.org,
+	ye.xingchen@zte.com.cn,
+	p.zabel@pengutronix.de
+Cc: linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	khilman@baylibre.com,
+	james.lo@mediatek.com,
+	rex-bc.chen@mediatek.com
+Subject: [PATCH v14 0/6] Add LVTS Thermal Architecture
+Date: Thu,  9 Feb 2023 11:56:22 +0100
+Message-Id: <20230209105628.50294-1-bchihi@baylibre.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH 1/3] arm64: dts: mediatek: Introduce MT8195 LAPTOP and
- IOT's USB configurations
-Content-Language: en-US
-To: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul@gmail.com>, Miles Chen <miles.chen@mediatek.com>,
-	<linux-usb@vger.kernel.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Tinghan Shen <tinghan.shen@mediatek.com>, Rex-BC Chen
-	<rex-bc.chen@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	<yow-shin.liou@mediatek.com>, <ben.lok@mediatek.com>
-References: <20230105092809.14214-1-macpaul.lin@mediatek.com>
- <0ae6a31c-9a7b-ff05-08e1-eed96e672bd9@collabora.com>
- <7851a7a2-a2bc-c460-a53a-52a8f94e3969@mediatek.com>
- <c834dc47-02f7-d6e0-60c6-ce42b3255c86@gmail.com>
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-In-Reply-To: <c834dc47-02f7-d6e0-60c6-ce42b3255c86@gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230209_024451_722292_9DDBE31F 
-X-CRM114-Status: GOOD (  37.69  )
+X-CRM114-CacheID: sfid-20230209_025637_694115_38D2067D 
+X-CRM114-Status: GOOD (  20.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,131 +102,170 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Balsam CHIHI <bchihi@baylibre.com>
+
+The LVTS (Low Voltage Thermal Sensor) driver is capable of monitoring
+multiple hot points. For that, it contains 7 thermal control blocks
+dedicated to specific devices on the die. Each control block can handle
+up to 4 sensors. 
+
+The thermal controller supports several interrupts. One for the cold
+trip point, the hot trip point, the return to the normal trip point,
+and a specific programmable trip point to monitor the temperature
+dynamically.
+
+The temperature measurement can be done in two ways, the immediate mode
+where the temperature read is instantaneous and the filtered mode where
+the controller uses, by configuration, an average of a set of values
+removing the minimum and the maximum.
+
+Finally, it is composed of 2 finite-state machines responsible for
+the state of the temperature (cold, hot, hot 2 normal, hot hot),
+the triggering of the interrupts, and the monitoring of the temperature.
+
+As requested, the thermal driver has been reworked to reduce
+the complexity of the code. At this time, the 4 little CPUs and
+the 4 big CPUs are supported by the thermal driver.They are described
+in a data structure and more devices can be added later.
+The calibration routine has been simplified also.
+
+The series provide the following changes:
+ - Move the Mediatek drivers inside a dedicated folder as their number
+   is increasing
+ - Add the DT bindings for the controller
+ - Add the efuse node for the mt8195
+ - The LVTS driver
+ - The thermal zones description in the DT
+
+Changelog:
+  v14:
+     - Fix dt-binding definition :
+       - Change "nvmem-cells" and "nvmem-cell-names" properties of
+         "mt8195" from "maxItems: 2" to  "minItems: 2"
+       - Fix "mediatek,lvts-thermal.h" indentation
+
+  v13:
+     - Rebase on top of "thermal/linux-next" :
+       base-commit: a2c81dc59d41e92362ab7d41d0c15471ea50637d
+     - Fix coding style issues
+       - Remove "__init" from all functions
+       - Remove "lvts_ctrl_enable" and "lvts_ctrl_disable" wrappers
+       - Use "dev_err_probe" instead of "dev_dbg" in "lvts_probe"
+     - Fix subject prefix
+     - Add "mt8192" to dt-binding definition
+     - Change dt-binding license to "GPL-2.0-only OR BSD-2-Clause"
+     - Fix debugfs mutli-instance support
+
+  v12:
+     - Fix subject prefix
+     - Add dual licenses to dt-binding
+     - Rename "include/dt-bindings/thermal/mediatek-lvts.h"
+       to "include/dt-bindings/thermal/mediatek,lvts-thermal.h"
+
+  v11:
+     - Rebase on top of "thermal/linux-next" :
+       base=0d568e144ead70189e7f16066dcb155b78ff9266
+     - Remove unsupported SoC (mt8192) from dt-binding definition
+     - Fix coding style issues :
+       - Move litterals to define
+       - Add interrupt macros
+       - Remove wildcard : only mt8195 is supported for now
+
+  v10:
+     - Rebase on top of "thermal/linux-next" : thermal-v6.3-rc1
+     - Rework the LVTS driver
+     - Add the thermal trip temperature and cooling devices
+       for the sensors supported by the driver
+
+  v9:
+     - Rebase on top of 6.0.0-rc1
+     - Fix coding style issues
+     - Fix commit titles and commit messages
+     - Update dt-bindings :
+     - Add "allOf:if:then:"
+     - Use mt8192 as example (instead of mt8195)
+     - Fix dt-binding errors
+     - Fix DTS errors
+
+  v8:
+     - Fix coding style issues
+     - Rebase on top of next-20220803
+     - Add multi-instance support :
+       - Rewrite DT-binding and DTS :
+         - Add DT-binding and DTS for LVTS_v4 (MT8192 and MT8195)
+           - One LVTS node for each HW Domain (AP and MCU)
+         - One SW Instance for each HW Domain
+         - Add a Kconfig sub-menu entry for LVTS and LVTS_v4 SoCs
+     - Replace platform_get_resource by platform_get_mem_or_io to get
+       Base Address
+     - Replace platform_get_resource by platform_get_irq to get
+       Interrupt Number
+     - Add "lvts_" prefix to functions and structs
+
+ v7:
+     - Fix coding style issues
+     - Rewrite dt bindings
+       - was not accurate
+       - Use mt8195 for example (instead of mt8192)
+       - Rename mt6873 to mt8192
+       - Remove clock name
+     - Rebased on top of to series:
+       - patchwork.kernel.org/project/linux-mediatek/list/?series=637849
+       - patchwork.kernel.org/project/linux-pm/list/?series=639386
+
+ v6:
+     - Remove temperature aggregation (it will be added in another
+       series)
+     - Update the way to read the temperature (read one sensor
+       instead of all)
+     - Add support of mt8195
+
+  v5:
+     - Use 'git mv' for the relocated file.
+
+  v4:
+     - Rebase to kernel-v5.13-rc1
+
+  v3:
+     - change the expression in the lvts_temp_to_raw to dev_s64.
+
+  v2:
+     - Rebase to kernel-5.11-rc1.
+     - sort headers
+     - remove initial value 0 of msr_raw in the lvts_temp_to_raw.
+     - disconstruct the api of lvts_read_tc_msr_raw.
+     - add the initial value max_temp = 0 and compare e.q.
+       in the lvts_read_all_tc_temperature.
+     - add the return with an invalid number in the lvts_init.
+
+Balsam CHIHI (6):
+  thermal: drivers: mediatek: Relocate driver to mediatek folder
+  dt-bindings: thermal: mediatek: Add LVTS thermal controllers
+  arm64: dts: mt8195: Add efuse node to mt8195
+  thermal: drivers: mediatek: Add the Low Voltage Thermal Sensor driver
+  arm64: dts: mediatek: mt8195: Add thermal zones and thermal nodes
+  arm64: dts: mediatek: mt8195: Add temperature mitigation threshold
+
+ .../thermal/mediatek,lvts-thermal.yaml        |  142 ++
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi      |  272 ++++
+ drivers/thermal/Kconfig                       |   14 +-
+ drivers/thermal/Makefile                      |    2 +-
+ drivers/thermal/mediatek/Kconfig              |   37 +
+ drivers/thermal/mediatek/Makefile             |    2 +
+ .../auxadc_thermal.c}                         |    2 +-
+ drivers/thermal/mediatek/lvts_thermal.c       | 1224 +++++++++++++++++
+ .../thermal/mediatek,lvts-thermal.h           |   19 +
+ 9 files changed, 1702 insertions(+), 12 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+ create mode 100644 drivers/thermal/mediatek/Kconfig
+ create mode 100644 drivers/thermal/mediatek/Makefile
+ rename drivers/thermal/{mtk_thermal.c => mediatek/auxadc_thermal.c} (99%)
+ create mode 100644 drivers/thermal/mediatek/lvts_thermal.c
+ create mode 100644 include/dt-bindings/thermal/mediatek,lvts-thermal.h
 
 
-On 2/1/23 20:52, Matthias Brugger wrote:
-> Hi all,
-> 
-> On 11/01/2023 06:37, Macpaul Lin wrote:
->>
->>
->> On 1/9/23 23:13, AngeloGioacchino Del Regno wrote:
->>> Il 05/01/23 10:28, Macpaul Lin ha scritto:
->>>> Introduce the split MT8195 laptop and iot USB configurations.
->>>> The hardware specifications for LAPTOP devices is different from IOT
->>>> devices. The major differences include some hardware constrains for
->>>> dual-role switch for USB controllers in different configurations,
->>>> especially for power management and other control flows as well.
->>>>
->>>> Here are some hardware specifiction differences listed:
->>>>    1. LAPTOP (Cherry Tomato boards) don't support USB gadget (device 
->>>> mode).
->>>>    2. IOT devices must support multiple gadget devices and host mode.
->>>>    3. Dual-role switch is not fully supported. Only USB PORT0 support
->>>>       dual-role switch.
->>>>    4. Power management is designed in primary and secondary dominator.
->>>>       For a dual-role port, the device controller is the primary 
->>>> controller
->>>>       for power management; while the host controller is the secondary.
->>>>       LAPTOP devices should remove device nodes for avoiding abnormal
->>>>       behavior.
->>>>
->>>> This modifcation is to add USB configurations "mt8195-laptop-usb.dtsi"
->>>> for LAPTOP devices, and add "mt8195-iot-usb.dtsi" for IOT devices.
->>>>
->>>> To remove common USB configurations for mt8195.dtsi and switch includes
->>>> dtsi these new files for the boards will come in next patch.
->>>>
->>>> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
->>>
->>> I'm mostly sure that there's no reason to split the two configurations.
->>>
->>> I agree in that Tomato doesn't support gadget mode on the Type-A port 
->>> and I
->>> honestly don't currently know (and I'll test that later!) if it would 
->>> be possible
->>> to act as gadget on any of the two Type-C ports.
->>> Of course I agree on the fact that a laptop acting as a gadget may 
->>> not be useful,
->>> but that's not something that I want to judge, as someone may find a 
->>> usecase.
->>>
->>> In any case, even if Tomato does *not* support gadget mode on *any* 
->>> port at all,
->>> I wonder why we wouldn't be able to probe MTU3 (and correctly 
->>> describe the SoC)
->>> on Chromebooks but only on MT8195-based IoT boards...
->>> ...and in case there's any real issue, we can always force host mode 
->>> (with a
->>> generic  devicetree property!) on the MTU3 on Tomato.
->>
->> We are sorry it cannot be achieved by even setting "force host mode" 
->> to usb device node. At least, it cannot be done on MT8195.
->>
->> The basic reason is the power requirements for USB host on a LAPTOP 
->> are different from those on an IoT device.
->>
->> The main cause is low power management. The hardware of each device 
->> port is different on MT8195. Even the bit fields definition in 
->> registers were different.
->>
->> Some details such as sequence need to be coordinated with the SPM 
->> firmware. When a device hardware is involved in runtime PM, function 
->> like remote wakeup and other suspend/resume behavior will be abnormal 
->> for a LAPTOP device. If we split the dtsi for different devices, 
->> people can choose different configuration in SPM firmware in coreboot 
->> or in TF-A to meet the requirement. Hence we'd better not to get more 
->> messy code in Linux driver.
->>
-> 
-> I'm not sure I understand everything here. If the XHCI device is a child 
-> of the mtu3 node then we have problems with some SPM firmware that is 
-> not coordinated with the runtime PM functions of the kernel?
+base-commit: a2c81dc59d41e92362ab7d41d0c15471ea50637d
+-- 
+2.34.1
 
-The behavior of runtime PM function, especially the behavior of USB 
-remote wake up will be different if mtu3 node is involved, for MT8195.
-
-> Fixing that in the device tree sounds wrong here. I think the real fix 
-> would be, to fix the SPM firmware, so that it can deal with that.
-> 
-> Or is there more to it? If so what? In that case can we try to ignore 
-> the runtime PM in the MTU3 kernel driver?
-> 
-> I'm not an USB expert but to me it looks very strange that we can have 
-> the XHCI devices nodes as 'standalone' or as children of mtu3. We should 
-> try to describe the HW as it is in DT.
-
-After a discussion with MTU3 maintainer Chunfeng, we think there might 
-be a way to give it a try to refactor the mtu3 driver.
-That is to create an extra USB platform device to handle mtu3 and 
-xhci-mtk as the children at the same level. Both mtu3 platform device 
-xhci-mtk platform device will become the children of a common USB 
-platform device. However, we are not sure if this could work and solved the
-dependencies. It requires some development time and MediaTek need
-to allocate some developer's resource to verify this approach.
-
-
-> Regards,
-> Matthias
-> 
->>> Finally, if we're able to add MTU3 to Tomato boards, this means that 
->>> we won't be
->>> seeing these two DTSI files and that USB nodes are still going to all 
->>> lie in the
->>> main `mt8195.dtsi` file, without all this duplication that I'm seeing 
->>> here.
->>>
->>> What do you think?
->>>
->>> Regards,
->>> Angelo
->>>
->>
->> Thanks for the suggestion, we hope the next platform in the future 
->> could avoid this issue and reduce some duplicate dts.
->>
->> Macpaul Lin
-
-Thanks
-Macpaul Lin
 
