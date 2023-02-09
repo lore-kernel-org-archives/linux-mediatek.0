@@ -4,74 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71B29C6379F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 12:57:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87CA9C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 13:10:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bSLuEY9TrtZkNP+N0SU2bcAGAZ4vP0Y8x9BpuvjX9ug=; b=NSNJZnhJpbhH8SRDUKdzfcuNp+
-	Z3HebjGF0HRIYE/m6Iv/o+RMhcB5ySMwqd7gaN363o3AgfpU3q+vbrrY1aC6w9Z+IYc+7TQkOTOkt
-	057nNbLJi8xc1GfVm4T4yBzx2UZJfNR4xIsgABKkY3ekiaO0lJy1xn5nFsKNVv+/piHiW1NqV9HBJ
-	9i9KhgYs8ODiSPQBOSBG4+RDUAjavY211sCVfebQPrE1K3iFdKJC9Iuf2iyJSGIewWl46aljMnQEk
-	Mnmg8QYS9aMSlKjrdVd2mVOqycfRx9aFcy+0LmL7W/WueG55wvN45gCiIzr9K4oPFRYY+/660W9SX
-	RRwweyqQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LawwaK/yAKjY5g+XV6BBxg8MJwf55RJqkRT68lynIdw=; b=ydqHYVuGTFn07yH/aPrUPeNF8D
+	KV9g4+kvczC4MOeqy5athd/A2FgxQQcWJu+NY1gNf4xp9NBk+ElASaWOwN9Oyi+fp7aduEKIhbDMK
+	f4K3XDIlBAD/JGDZhdGsp31PuugbI0y9iXSnGCPXcbkoMZ/lKUX+Rf2N2G8tFRwOJSjk5zyy5Phfp
+	UiqLktApDahWC0t9X1Z41rSrTv4vI5JLQ3KOXyYM+A7qm3t46LwY30W0zxLJ1Y8QRyrePHadMEic5
+	kzmXlYXavEsIbqXKdx7obd5FJCRkljSvvZqKE6zr6wmMiSbQFZvTgiUi/RY+MkiEZp/38oqv+rDL+
+	icAYwUAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ6U2-001Zaj-0E; Thu, 09 Feb 2023 12:57:02 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pQ6hB-001cTN-FZ; Thu, 09 Feb 2023 13:10:37 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ6Ts-001ZYU-2i; Thu, 09 Feb 2023 12:56:53 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1pQ6gy-001cQf-0v; Thu, 09 Feb 2023 13:10:28 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B4E7766020C1;
-	Thu,  9 Feb 2023 12:56:48 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1675947410;
-	bh=B5hP3G6FgIwkwEQg0vRoKUhdtFs0lIrWXYoejF8e8E8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=DpNy81Y8cZBUImPcWpwdydIZDClrhB11oZkdB51NOK1gdJxTSZKa17INB6Y1qOA/e
-	 1aBmlAIARNWb05savxMJ34bL1fEHn13Xxc2YLaIrQK8HWlxrjKDZij9GO45nzBQhjn
-	 YuxI0QTVwSzZKW62zvUvRnd5b1OwwIaIQd1LXWLo9UqM6F2Dg7DC1x4ApKe9+oBk4i
-	 loSoUCPgPnZO/w/0yMqrEpm7uOa3/TKrOhHzgLVSznM7Y8xdZqd9UvMzpOEZwyxxKg
-	 /YA1Dvjh27HhPl18JDBra/T38K5VUZLdfPcVnwlcnllMegylMsh3zyO8az1Q3genrP
-	 LELxvgOf5mSQA==
-Message-ID: <28f167b7-c468-8752-29d1-2a122e8142dd@collabora.com>
-Date: Thu, 9 Feb 2023 13:56:45 +0100
+	by dfw.source.kernel.org (Postfix) with ESMTPS id BF89961A51;
+	Thu,  9 Feb 2023 13:10:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ACE6DC433D2;
+	Thu,  9 Feb 2023 13:10:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1675948222;
+	bh=4SUmqquqGXJoK6fqr+/rMnpLfSjMEDdKWErLzFfQiqw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=IbxJAcxIY5aZSy8WxcV0uALiZbcIvWCMEUPDCaMmQmTjiQVyI8lF/94iQfqQkdCZM
+	 PZdv9ca/F5KivfuWiigTuT1SG4/YCVTOKKrjerMnwjdv13ix9huD/Qek9w27t8GKxv
+	 /0flF45ld1/3Dwvmb59C8wusQ0kkPeVcdiTwazc73m56FwcDU+91btuUha2TNEBd17
+	 sIBgdMUx69bJVjv8jLvPynF3Q0q+WWsdyDNFUw9M4nydY7VZwZ9zLcAjARLixKOl+k
+	 V9YQTg4QS7b+ll5deXaGt/mqSV2Tb1PLjcJkpxxw7BJ7Md1ZxYhttiprhhMKhtEUId
+	 DBKpdSpSELI1Q==
+Date: Thu, 9 Feb 2023 15:10:07 +0200
+From: Mike Rapoport <rppt@kernel.org>
+To: Jonathan Corbet <corbet@lwn.net>
+Cc: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	chinwen.chang@mediatek.com, andrew.yang@mediatek.com,
+	linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-mm@kvack.org
+Subject: Re: [PATCH] mm/doc: Replace isolate_lru_page with folio_isolate_lru
+Message-ID: <Y+Twr+g8PPL3uKhL@kernel.org>
+References: <20230131062853.28449-1-Kuan-Ying.Lee@mediatek.com>
+ <87a61wvtcs.fsf@meer.lwn.net>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH] media: mediatek: vcodec: Force capture queue format to
- MM21
-Content-Language: en-US
-To: Tommaso Merciai <tomm.merciai@gmail.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Nicolas Dufresne
- <nicolas@ndufresne.ca>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang
- <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
- Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20230209074025.1816-1-yunfei.dong@mediatek.com>
- <Y+S1cA4PXT1MVJm8@tom-HP-ZBook-Fury-15-G7-Mobile-Workstation>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <Y+S1cA4PXT1MVJm8@tom-HP-ZBook-Fury-15-G7-Mobile-Workstation>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <87a61wvtcs.fsf@meer.lwn.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230209_045652_362259_4002DA95 
-X-CRM114-Status: GOOD (  15.01  )
+X-CRM114-CacheID: sfid-20230209_051024_147058_EB81C1CB 
+X-CRM114-Status: GOOD (  30.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,34 +75,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/02/23 09:57, Tommaso Merciai ha scritto:
-> Hi Yunfei Dong,
+On Thu, Feb 02, 2023 at 11:02:11AM -0700, Jonathan Corbet wrote:
+> Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com> writes:
 > 
-> On Thu, Feb 09, 2023 at 03:40:25PM +0800, Yunfei Dong wrote:
->> In order to conver the format of capture queue from mediatek MM21 to
->> standard yuv420 with Libyuv, need to force capture queue format to
->> MM21 for Libyuv can't covert mediatek MT21 format.
+> > Since we introduce folio, replace isolate_lru_page() with
+> > folio_isolate_lru().
+> >
+> > Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+> > ---
+> >  Documentation/mm/page_migration.rst | 6 +++---
+> >  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
-> Sorry, just some clarifications on my side, just to understand :)
-> The problem is that libyuv can't convert mm21 format into yuv420
-> than you need to use mm21 (forcing this).
-> Did I understand correctly?
+> This seems like a good patch to copy to linux-mm - done now.
+> 
+> The patch perhaps is a closer match to what's in linux-next, but it
+> seems that, if we're going to update this document, we should reflect
+> the use folios throughout?
+
+Most of the current users of migrate_pages() still use isolate_lru_page()
+so I think that updating page_migration.rst to folios is premature.
+But when we do the update it also should include the translations.
+ 
+> Thanks,
+> 
+> jon
+> 
+> > diff --git a/Documentation/mm/page_migration.rst b/Documentation/mm/page_migration.rst
+> > index 11493bad7112..1f8cc175d770 100644
+> > --- a/Documentation/mm/page_migration.rst
+> > +++ b/Documentation/mm/page_migration.rst
+> > @@ -69,8 +69,8 @@ In kernel use of migrate_pages()
+> >  
+> >     Lists of pages to be migrated are generated by scanning over
+> >     pages and moving them into lists. This is done by
+> > -   calling isolate_lru_page().
+> > -   Calling isolate_lru_page() increases the references to the page
+> > +   calling folio_isolate_lru().
+> > +   Calling folio_isolate_lru() increases the references to the page
+> >     so that it cannot vanish while the page migration occurs.
+> >     It also prevents the swapper or other scans from encountering
+> >     the page.
+> > @@ -89,7 +89,7 @@ How migrate_pages() works
+> >  
+> >  migrate_pages() does several passes over its list of pages. A page is moved
+> >  if all references to a page are removable at the time. The page has
+> > -already been removed from the LRU via isolate_lru_page() and the refcount
+> > +already been removed from the LRU via folio_isolate_lru() and the refcount
+> >  is increased so that the page cannot be freed while page migration occurs.
+> >  
+> >  Steps:
+> > -- 
+> > 2.18.0
 > 
 
-vcodec can output either MM21 or MT21C; libyuv can't handle the MT21C format,
-at least for now, hence he is forcing vcodec to always give MM21 for things
-to actually work... at a later time, I hope and suppose that this driver will
-change to not force anything anymore.
-
-> Thanks in advance,
-> Tommaso
-> 
-
-Yunfei, since this is required to get "basic" functionality, this commit needs
-a Fixes tag: can you please add the right one?
-
-Thanks!
-Angelo
-
-
+-- 
+Sincerely yours,
+Mike.
 
