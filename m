@@ -4,67 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85A12C636CC
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 02:44:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE15DC636CC
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 02:50:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yrnF3sAxbRRNDa3kxp+/8GBxkm0uAx3CdNs5GG5aWfA=; b=1FqRI3UP1peJtp25G8Kc4PyjhQ
-	mAZ9el/k7p3VPI9ux4lDJa2c7tu4crIta7xMg15+T+jjozZPnB4bu++Ik8DqpvGshT6CMD+75t1hm
-	DMQdmT7fFT/0TaWaqn7OeCgRGHBYHTtiPWiqBqgErJnI3iqgcXgsKx/HZwJ9VwEwSGCqTSfzck1yx
-	ebX1YrlZKja6DEQ/fH4pYrvIsc009/zEsCRnWq+KU2pEcK9tGUWzGltReIGxgQZpUPR6Gier19IQr
-	/XNycmvBOPSsS1JOKMA5zu6/r6eJHqaZrs+WbBeVuV2k633CNOGc+wG3gT2yEJ07E7RbKMKbIpRjP
-	JQDRWoZg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BYIk4P2p6gp1gkykneVTXGgTOGI8BQeMJrJn0G8vBFQ=; b=AGZITqBNPT8krUVwaY+lgPangR
+	yMxvnH0N5bvlmD/MqvvxOxp3Nq08dgZWtZtUYLGWrUdOeQqnh/c0XZax8f6FMA65Lvsve6SmAtSHc
+	v6M6Mn2cbTn+vczIvSBHGoFYWPzy+vpSxVRxB9SqjmxHjefP0EgVhi/1W4C2Wg5O/aWyUgNC/MAMK
+	1mZ2U3n6ycD3PQNPk2DDiirmUbbkv1yN4jHgulf3XBrEQAnR9/X+utRyYpHoJoReiUtxhyBNgvhy3
+	RsK2r5z1nAwHwtAaJ4FfayiDeg2yzrWks3SEghm5wS4agrVOYv2ulsbPCOvb1czjiXT4inPoZKoAp
+	nQj1Bn9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPwuX-00HX0U-B0; Thu, 09 Feb 2023 02:43:45 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pPx1G-00HXiF-EK; Thu, 09 Feb 2023 02:50:42 +0000
+Received: from mail-io1-xd2f.google.com ([2607:f8b0:4864:20::d2f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPwuS-00HWzt-S7
-	for linux-mediatek@lists.infradead.org; Thu, 09 Feb 2023 02:43:43 +0000
-X-UUID: 8c86e8f8a82311eda08d4d6090ec5a5c-20230208
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=yrnF3sAxbRRNDa3kxp+/8GBxkm0uAx3CdNs5GG5aWfA=;
-	b=LX0EZWoJYF6u8lfCissCrV1lVo+X4NiAxUuGs1okbzPX+SNq+EnBpx5JoWcGn7sTMdtV5DdRwc8V4SGot+p4sKGLJqBk8T9npHgNEezEJLe2NaIXuwST1JuiiZu9a0VAcJroSSszS8aHezIUnBSu2ip5G2u2PJwTG9j4Bi7CjBQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.19,REQID:e9ca7362-8927-4ac3-a43d-5c3a5effdae5,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:885ddb2,CLOUDID:f206578e-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-UUID: 8c86e8f8a82311eda08d4d6090ec5a5c-20230208
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 420968569; Wed, 08 Feb 2023 19:43:35 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 9 Feb 2023 10:23:01 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 9 Feb 2023 10:23:01 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, MeiChia
- Chiu <meichia.chiu@mediatek.com>, <linux-mediatek@lists.infradead.org>, Ryder
- Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 1/2] wifi: mt76: mt7915: remove mt7915_mcu_beacon_check_caps()
-Date: Thu, 9 Feb 2023 10:22:59 +0800
-Message-ID: <067c3aef3c73e35ec9d633387e856db3ae66a81b.1675909168.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pPx15-00HXfm-8d
+	for linux-mediatek@lists.infradead.org; Thu, 09 Feb 2023 02:50:32 +0000
+Received: by mail-io1-xd2f.google.com with SMTP id y7so192701iob.6
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Feb 2023 18:50:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=BYIk4P2p6gp1gkykneVTXGgTOGI8BQeMJrJn0G8vBFQ=;
+        b=HtmNzDuqZVPNnKVKdiDx+Z3cYsXnlZoWJEZPqX81nlx4s12FG5mKWN7Iz8QgRroITS
+         uI/SE/a6wLxuTbZ2XqIIRFA0hAyZXeC//DLKyZBwhoYviw0jixTfnpdaGsaTmcSOV3n6
+         NcyRBoPWk0t+FdFXhhVMlviUuItG+Tvvb8OQg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=BYIk4P2p6gp1gkykneVTXGgTOGI8BQeMJrJn0G8vBFQ=;
+        b=LFO1DEF6Fmw0Pirm0XexR5qDk0YADtVmO26u+AUDFD9YlBeRSgiSeokPaExLIzI3J2
+         mTxA01pn6fHV/dfhRorJjecRxXv5sRUB9lwa7jDX7ErXRVuURd8pb3UOofBOn38rw4EB
+         eME/msryfe0fmBBqD6LKqrUqCGIDO9o7gcHszp8nyH6m+bEnffjooIn+bvrUZVrBS3Pp
+         pBSFcP/3RNBrNm4j7rr6W1CrPBFdD449gylRbB5eA7GxViOK+mWRNQep43COEeUQ2nSr
+         MCd28TyO6BU2OljEPhIrRWBXiIGMNEzfu/9zjfOSO4QK5GsFRIeatpuxy0lZKc9HTSUM
+         03XA==
+X-Gm-Message-State: AO0yUKV8DOHpJ64tkhmNWLLeberr5CPLNNqWkXEMV5eegL4jIcKCX820
+	AiEziuN6tRQvjgmuBnuaYGlJnQbhHTW+3QcdwA6TuQ==
+X-Google-Smtp-Source: AK7set+bvKsydzGygJFYL5iQOvjw3Jv58rqgkJyZjXTUoGYryQCk+flVM83OAnzthJ9iLUo6Kt6Ev143YXLr6ftrCik=
+X-Received: by 2002:a02:cc37:0:b0:3a9:6b85:41ed with SMTP id
+ o23-20020a02cc37000000b003a96b8541edmr6496673jap.57.1675911029590; Wed, 08
+ Feb 2023 18:50:29 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20230208103709.116896-1-angelogioacchino.delregno@collabora.com> <20230208103709.116896-2-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230208103709.116896-2-angelogioacchino.delregno@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 9 Feb 2023 10:50:18 +0800
+Message-ID: <CAGXv+5Gm=Onu2RK+skLgN4Kzo9yP1n5Zb48oQNkQ019838QeEQ@mail.gmail.com>
+Subject: Re: [PATCH 1/9] dt-bindings: gpu: mali-bifrost: Don't allow
+ sram-supply by default
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: airlied@gmail.com, tomeu.vizoso@collabora.com, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	steven.price@arm.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, 
+	alyssa.rosenzweig@collabora.com, krzysztof.kozlowski+dt@linaro.org, 
+	matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230208_184340_944322_7708C168 
-X-CRM114-Status: GOOD (  14.55  )
+X-CRM114-CacheID: sfid-20230208_185031_330905_9AAD2325 
+X-CRM114-Status: GOOD (  22.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,257 +85,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Those capabilities have been added into ieee80211_bss_conf.
+On Wed, Feb 8, 2023 at 6:37 PM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> The sram-supply is MediaTek-specific, it is and will ever be used
+> only for the mediatek,mt8183-mali compatible due to the addition of
+> the mediatek-regulator-coupler driver: change the binding to add
+> this supply when mediatek,mt8183-mali is present as a compatible
+> instead of disabling it when not present.
+>
+> This is done in preparation for adding new bindings for other
+> MediaTek SoCs, such as MT8192 and others.
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+>
+> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+> index 78964c140b46..69212f3b1328 100644
+> --- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+> @@ -57,8 +57,6 @@ properties:
+>
+>    mali-supply: true
+>
+> -  sram-supply: true
+> -
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
-This series depends on https://patchwork.kernel.org/project/linux-wireless/list/?series=720095
----
- .../net/wireless/mediatek/mt76/mt7915/main.c  |   1 -
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 107 ++----------------
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  14 ---
- 3 files changed, 12 insertions(+), 110 deletions(-)
+Have you tried actually validating the device trees against this?
+Based on my previous tests this gives out errors.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index 3bbccbdfc5eb..2ada2806de66 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -269,7 +269,6 @@ static int mt7915_add_interface(struct ieee80211_hw *hw,
- 	vif->offload_flags |= IEEE80211_OFFLOAD_ENCAP_4ADDR;
- 
- 	mt7915_init_bitrate_mask(vif);
--	memset(&mvif->cap, -1, sizeof(mvif->cap));
- 
- 	mt7915_mcu_add_bss_info(phy, vif, true);
- 	mt7915_mcu_add_sta(dev, vif, NULL, true);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 5545a8bdf1d0..dfcb13c9c7ac 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -706,7 +706,6 @@ static void
- mt7915_mcu_sta_he_tlv(struct sk_buff *skb, struct ieee80211_sta *sta,
- 		      struct ieee80211_vif *vif)
- {
--	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
- 	struct ieee80211_he_cap_elem *elem = &sta->deflink.he_cap.he_cap_elem;
- 	struct ieee80211_he_mcs_nss_supp mcs_map;
- 	struct sta_rec_he *he;
-@@ -740,7 +739,7 @@ mt7915_mcu_sta_he_tlv(struct sk_buff *skb, struct ieee80211_sta *sta,
- 	     IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_RU_MAPPING_IN_5G))
- 		cap |= STA_REC_HE_CAP_BW20_RU242_SUPPORT;
- 
--	if (mvif->cap.he_ldpc &&
-+	if (vif->bss_conf.he_ldpc &&
- 	    (elem->phy_cap_info[1] &
- 	     IEEE80211_HE_PHY_CAP1_LDPC_CODING_IN_PAYLOAD))
- 		cap |= STA_REC_HE_CAP_LDPC;
-@@ -849,7 +848,6 @@ static void
- mt7915_mcu_sta_muru_tlv(struct mt7915_dev *dev, struct sk_buff *skb,
- 			struct ieee80211_sta *sta, struct ieee80211_vif *vif)
- {
--	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
- 	struct ieee80211_he_cap_elem *elem = &sta->deflink.he_cap.he_cap_elem;
- 	struct sta_rec_muru *muru;
- 	struct tlv *tlv;
-@@ -862,9 +860,9 @@ mt7915_mcu_sta_muru_tlv(struct mt7915_dev *dev, struct sk_buff *skb,
- 
- 	muru = (struct sta_rec_muru *)tlv;
- 
--	muru->cfg.mimo_dl_en = mvif->cap.he_mu_ebfer ||
--			       mvif->cap.vht_mu_ebfer ||
--			       mvif->cap.vht_mu_ebfee;
-+	muru->cfg.mimo_dl_en = vif->bss_conf.he_mu_beamformer ||
-+			       vif->bss_conf.vht_mu_beamformer ||
-+			       vif->bss_conf.vht_mu_beamformee;
- 	if (!is_mt7915(&dev->mt76))
- 		muru->cfg.mimo_ul_en = true;
- 	muru->cfg.ofdma_dl_en = true;
-@@ -997,8 +995,8 @@ mt7915_mcu_sta_wtbl_tlv(struct mt7915_dev *dev, struct sk_buff *skb,
- 	mt76_connac_mcu_wtbl_hdr_trans_tlv(skb, vif, wcid, tlv, wtbl_hdr);
- 	if (sta)
- 		mt76_connac_mcu_wtbl_ht_tlv(&dev->mt76, skb, sta, tlv,
--					    wtbl_hdr, mvif->cap.ht_ldpc,
--					    mvif->cap.vht_ldpc);
-+					    wtbl_hdr, vif->bss_conf.ht_ldpc,
-+					    vif->bss_conf.vht_ldpc);
- 
- 	return 0;
- }
-@@ -1007,7 +1005,6 @@ static inline bool
- mt7915_is_ebf_supported(struct mt7915_phy *phy, struct ieee80211_vif *vif,
- 			struct ieee80211_sta *sta, bool bfee)
- {
--	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
- 	int tx_ant = hweight8(phy->mt76->chainmask) - 1;
- 
- 	if (vif->type != NL80211_IFTYPE_STATION &&
-@@ -1021,10 +1018,10 @@ mt7915_is_ebf_supported(struct mt7915_phy *phy, struct ieee80211_vif *vif,
- 		struct ieee80211_he_cap_elem *pe = &sta->deflink.he_cap.he_cap_elem;
- 
- 		if (bfee)
--			return mvif->cap.he_su_ebfee &&
-+			return vif->bss_conf.he_su_beamformee &&
- 			       HE_PHY(CAP3_SU_BEAMFORMER, pe->phy_cap_info[3]);
- 		else
--			return mvif->cap.he_su_ebfer &&
-+			return vif->bss_conf.he_su_beamformer &&
- 			       HE_PHY(CAP4_SU_BEAMFORMEE, pe->phy_cap_info[4]);
- 	}
- 
-@@ -1032,10 +1029,10 @@ mt7915_is_ebf_supported(struct mt7915_phy *phy, struct ieee80211_vif *vif,
- 		u32 cap = sta->deflink.vht_cap.cap;
- 
- 		if (bfee)
--			return mvif->cap.vht_su_ebfee &&
-+			return vif->bss_conf.vht_su_beamformee &&
- 			       (cap & IEEE80211_VHT_CAP_SU_BEAMFORMER_CAPABLE);
- 		else
--			return mvif->cap.vht_su_ebfer &&
-+			return vif->bss_conf.vht_su_beamformer &&
- 			       (cap & IEEE80211_VHT_CAP_SU_BEAMFORMEE_CAPABLE);
- 	}
- 
-@@ -1530,7 +1527,7 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
- 			cap |= STA_CAP_TX_STBC;
- 		if (sta->deflink.ht_cap.cap & IEEE80211_HT_CAP_RX_STBC)
- 			cap |= STA_CAP_RX_STBC;
--		if (mvif->cap.ht_ldpc &&
-+		if (vif->bss_conf.ht_ldpc &&
- 		    (sta->deflink.ht_cap.cap & IEEE80211_HT_CAP_LDPC_CODING))
- 			cap |= STA_CAP_LDPC;
- 
-@@ -1556,7 +1553,7 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
- 			cap |= STA_CAP_VHT_TX_STBC;
- 		if (sta->deflink.vht_cap.cap & IEEE80211_VHT_CAP_RXSTBC_1)
- 			cap |= STA_CAP_VHT_RX_STBC;
--		if (mvif->cap.vht_ldpc &&
-+		if (vif->bss_conf.vht_ldpc &&
- 		    (sta->deflink.vht_cap.cap & IEEE80211_VHT_CAP_RXLDPC))
- 			cap |= STA_CAP_VHT_LDPC;
- 
-@@ -1875,84 +1872,6 @@ mt7915_mcu_beacon_cont(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 	memcpy(buf + MT_TXD_SIZE, skb->data, skb->len);
- }
- 
--static void
--mt7915_mcu_beacon_check_caps(struct mt7915_phy *phy, struct ieee80211_vif *vif,
--			     struct sk_buff *skb)
--{
--	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
--	struct mt7915_vif_cap *vc = &mvif->cap;
--	const struct ieee80211_he_cap_elem *he;
--	const struct ieee80211_vht_cap *vht;
--	const struct ieee80211_ht_cap *ht;
--	struct ieee80211_mgmt *mgmt = (struct ieee80211_mgmt *)skb->data;
--	const u8 *ie;
--	u32 len, bc;
--
--	/* Check missing configuration options to allow AP mode in mac80211
--	 * to remain in sync with hostapd settings, and get a subset of
--	 * beacon and hardware capabilities.
--	 */
--	if (WARN_ON_ONCE(skb->len <= (mgmt->u.beacon.variable - skb->data)))
--		return;
--
--	memset(vc, 0, sizeof(*vc));
--
--	len = skb->len - (mgmt->u.beacon.variable - skb->data);
--
--	ie = cfg80211_find_ie(WLAN_EID_HT_CAPABILITY, mgmt->u.beacon.variable,
--			      len);
--	if (ie && ie[1] >= sizeof(*ht)) {
--		ht = (void *)(ie + 2);
--		vc->ht_ldpc = !!(le16_to_cpu(ht->cap_info) &
--				 IEEE80211_HT_CAP_LDPC_CODING);
--	}
--
--	ie = cfg80211_find_ie(WLAN_EID_VHT_CAPABILITY, mgmt->u.beacon.variable,
--			      len);
--	if (ie && ie[1] >= sizeof(*vht)) {
--		u32 pc = phy->mt76->sband_5g.sband.vht_cap.cap;
--
--		vht = (void *)(ie + 2);
--		bc = le32_to_cpu(vht->vht_cap_info);
--
--		vc->vht_ldpc = !!(bc & IEEE80211_VHT_CAP_RXLDPC);
--		vc->vht_su_ebfer =
--			(bc & IEEE80211_VHT_CAP_SU_BEAMFORMER_CAPABLE) &&
--			(pc & IEEE80211_VHT_CAP_SU_BEAMFORMER_CAPABLE);
--		vc->vht_su_ebfee =
--			(bc & IEEE80211_VHT_CAP_SU_BEAMFORMEE_CAPABLE) &&
--			(pc & IEEE80211_VHT_CAP_SU_BEAMFORMEE_CAPABLE);
--		vc->vht_mu_ebfer =
--			(bc & IEEE80211_VHT_CAP_MU_BEAMFORMER_CAPABLE) &&
--			(pc & IEEE80211_VHT_CAP_MU_BEAMFORMER_CAPABLE);
--		vc->vht_mu_ebfee =
--			(bc & IEEE80211_VHT_CAP_MU_BEAMFORMEE_CAPABLE) &&
--			(pc & IEEE80211_VHT_CAP_MU_BEAMFORMEE_CAPABLE);
--	}
--
--	ie = cfg80211_find_ext_ie(WLAN_EID_EXT_HE_CAPABILITY,
--				  mgmt->u.beacon.variable, len);
--	if (ie && ie[1] >= sizeof(*he) + 1) {
--		const struct ieee80211_sta_he_cap *pc =
--			mt76_connac_get_he_phy_cap(phy->mt76, vif);
--		const struct ieee80211_he_cap_elem *pe = &pc->he_cap_elem;
--
--		he = (void *)(ie + 3);
--
--		vc->he_ldpc =
--			HE_PHY(CAP1_LDPC_CODING_IN_PAYLOAD, pe->phy_cap_info[1]);
--		vc->he_su_ebfer =
--			HE_PHY(CAP3_SU_BEAMFORMER, he->phy_cap_info[3]) &&
--			HE_PHY(CAP3_SU_BEAMFORMER, pe->phy_cap_info[3]);
--		vc->he_su_ebfee =
--			HE_PHY(CAP4_SU_BEAMFORMEE, he->phy_cap_info[4]) &&
--			HE_PHY(CAP4_SU_BEAMFORMEE, pe->phy_cap_info[4]);
--		vc->he_mu_ebfer =
--			HE_PHY(CAP4_MU_BEAMFORMER, he->phy_cap_info[4]) &&
--			HE_PHY(CAP4_MU_BEAMFORMER, pe->phy_cap_info[4]);
--	}
--}
--
- static void
- mt7915_mcu_beacon_inband_discov(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 				struct sk_buff *rskb, struct bss_info_bcn *bcn,
-@@ -2063,8 +1982,6 @@ int mt7915_mcu_add_beacon(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	info = IEEE80211_SKB_CB(skb);
- 	info->hw_queue = FIELD_PREP(MT_TX_HW_QUEUE_PHY, ext_phy);
- 
--	mt7915_mcu_beacon_check_caps(phy, vif, skb);
--
- 	mt7915_mcu_beacon_cntdwn(vif, rskb, skb, bcn, &offs);
- 	mt7915_mcu_beacon_mbss(rskb, skb, vif, bcn, &offs);
- 	mt7915_mcu_beacon_cont(dev, vif, rskb, skb, bcn, &offs);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 3cbfb9b6a305..e4016cef9447 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -147,23 +147,9 @@ struct mt7915_sta {
- 	} twt;
- };
- 
--struct mt7915_vif_cap {
--	bool ht_ldpc:1;
--	bool vht_ldpc:1;
--	bool he_ldpc:1;
--	bool vht_su_ebfer:1;
--	bool vht_su_ebfee:1;
--	bool vht_mu_ebfer:1;
--	bool vht_mu_ebfee:1;
--	bool he_su_ebfer:1;
--	bool he_su_ebfee:1;
--	bool he_mu_ebfer:1;
--};
--
- struct mt7915_vif {
- 	struct mt76_vif mt76; /* must be first */
- 
--	struct mt7915_vif_cap cap;
- 	struct mt7915_sta sta;
- 	struct mt7915_phy *phy;
- 
--- 
-2.18.0
+The reason is that each conditional is a separate sub-schema, and the
+validator is run against each schema and sub-schema separately, instead
+of collapsing matching schemas and sub-schemas together and validating
+once. So we'll get a validation error on sram-supply not being a valid
+property when validating current mt8183 against the base schema.
 
+We have a similar issue with power-domain-names, for which I'll send
+a patch to fix. See the following for the fix:
+
+    http://git.kernel.org/wens/c/d1adb38ab2ad0442755607c2bcc726cc17cce2c7
+
+and the following for what I did for MT8192 on top of the previous patch:
+
+    http://git.kernel.org/wens/c/049bd164884398d7e5f72c710da6aaa9a95bc10a
+
+
+Regards
+ChenYu
+
+>    operating-points-v2: true
+>
+>    power-domains:
+> @@ -157,6 +155,7 @@ allOf:
+>              - const: core0
+>              - const: core1
+>              - const: core2
+> +        sram-supply: true
+>
+>        required:
+>          - sram-supply
+> @@ -166,7 +165,6 @@ allOf:
+>        properties:
+>          power-domains:
+>            maxItems: 1
+> -        sram-supply: false
+>    - if:
+>        properties:
+>          compatible:
+> --
+> 2.39.1
+>
 
