@@ -4,86 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D064C636D6
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 16:29:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D86CFC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 17:43:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FzF9eAogvOx6DhR2a91i2ZoPxlv9ZBFly+RK60Plfuc=; b=LA2vJKokbmdiPo8ZSbRbhT7GdG
-	LS+lFka8f3RMCl/gYWfCkPYCVsBJEYzweHZcw0Z3r58kHVagVz2Z+eE3SpB/JYkMtha+wGaAYZ+Zd
-	GTfZtO8KogpwSWGrYEazsIDuM5cs7ooDXVZcH7kL9kv9kyyPXCP+JX9U7VmDzMiTkHzgYYQpPWcT1
-	ApmQubIfg4pwWxAMtAWBv3fAX2wMhnrDr+PJzjXaDti6EvhhWaMI/pddJq41dU7rnyEN+wLc+ch/C
-	ZkguYJD0p0UiECuEzqQGvYoH9K8m4wWNYVpXoCVXkO8aO0rQ2XbbpAn+M9qnOF7MTtRglHSqJCbXQ
-	NxNVsLzw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zmWeTxm3eAR69llILe3yLFx61s6S09dltEYFO6LRpqs=; b=Ep6tOvSSZfVwtgfFiHO762Cka7
+	5Kqej3GoX8USYdKI6EC1KFGTQVvjx7ojbmw3XQaFkzKewYVWxA6mhUX3hZ+48N9NVSXafIfRj2cRI
+	9PnDhEgjYxsC82DNpcThCHrMv+NcMayL5ta1LM9bFDN5k9vslKPefp/2Gd67FzrsM5JSvaIFglX+Z
+	vxDRgRbNMHtqSwdElUAqAxHi930Q+WezC3WzAiodas+hxkTdW/2EHCzBCCEki5phnnzKpbgpLACXj
+	iBmkRvwKcsD2F/pVI5CNScNrlJSCJ4hS0A/ne5evNOX25K0fhI45rfVNZoV9tVYglllV870sogvSp
+	FZOnpGJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ9nN-002QYQ-LC; Thu, 09 Feb 2023 16:29:13 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1pQAx9-002br5-C9; Thu, 09 Feb 2023 17:43:23 +0000
+Received: from mail-oa1-f51.google.com ([209.85.160.51])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ9nB-002QSk-8m; Thu, 09 Feb 2023 16:29:02 +0000
-Received: by mail-wr1-x429.google.com with SMTP id r2so2334441wrv.7;
-        Thu, 09 Feb 2023 08:28:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=FzF9eAogvOx6DhR2a91i2ZoPxlv9ZBFly+RK60Plfuc=;
-        b=CGmKHpTe1n7CVdM6lIWmn0S2EacNl6DiIqfvZ46zXCE1t4ovO+Qfmt4890hCS/8Lw/
-         yHcDfmeDbgxaVNNhCP3DjynNzvL5awS89c88DyvPp+/w9v8asIij8kEVLFFQNntDjW2M
-         q94xpenOTSKkSQ7A2LYzv0JwU3q63TrLoks3cpDB4THv0AsMN4HYvUxpHI0qsd+k0qLZ
-         H/SghtYKfsORV2zUXNpFZ5UIWEp3p5h5OTveEO6jgbgDkCxjw2WWWNMVJT2CDPPsKAcp
-         SjZmMf9oulSx9PI91SiBa0uMsScv2/uVcSttlTix0yY4uVlnc4gudFOIjw+YpQ0+uvR1
-         ROtg==
+	id 1pQAwy-002boV-MO; Thu, 09 Feb 2023 17:43:13 +0000
+Received: by mail-oa1-f51.google.com with SMTP id 586e51a60fabf-1685cf2003aso3454595fac.12;
+        Thu, 09 Feb 2023 09:43:10 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=FzF9eAogvOx6DhR2a91i2ZoPxlv9ZBFly+RK60Plfuc=;
-        b=4LkvWcRs4pLhCDU/93vnUCkEWm62Las8SJ4hShZdCOgnZS3NjzQJbEdKmSGnejHk/Z
-         ccPK1IJO4LWlOSb0oUPilO6pDO603QSNOAAtByR2fw+V0x8qipt/Av/Z2iy+AsKpPt20
-         JWFW3NJExd7wzsPi1pwzh6JcjTCbBy0bYicomEo4c/1ZJCDIhg4VRJAiPZJU9rA7gpBb
-         yICAtx4yqB4RUagY7qCj4i3uwgyl0bJLFhUy395+WEiaBVCb0hi3+OjQonDbe4GP9h3J
-         SBcQPRtdwiXvcLvU/d28TKbLbOF3u+XvYNVVRlFOfAu4n2mQ+HrJ5YQsTPugUa6XMob+
-         GbkA==
-X-Gm-Message-State: AO0yUKUul3XmoB8jyqPvGipHuEGQTHFm/CY5MqPefx4zsfR1Z4U5Hq3m
-	xyJE82DMH+PhYzxfgHBPaUQ=
-X-Google-Smtp-Source: AK7set/aVmWH+3EhitjZ323M3nNLTEgTNM5fEVmtAeNYKcVFc3as2a5mvQv7SSu8LOsaNId3rbG5uA==
-X-Received: by 2002:a5d:595f:0:b0:2c3:db98:3e96 with SMTP id e31-20020a5d595f000000b002c3db983e96mr13264222wri.22.1675960137472;
-        Thu, 09 Feb 2023 08:28:57 -0800 (PST)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id l5-20020adfe9c5000000b002c3e7474b0fsm1655208wrn.13.2023.02.09.08.28.55
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 09 Feb 2023 08:28:56 -0800 (PST)
-Message-ID: <29a867d1-12a7-449f-8d52-aaac7a622c59@gmail.com>
-Date: Thu, 9 Feb 2023 17:28:55 +0100
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=zmWeTxm3eAR69llILe3yLFx61s6S09dltEYFO6LRpqs=;
+        b=68NN5GYgYFS6C9pZf2mgl1ZNiCcWSCbZF7jx+N0XnXfiei/VeCTz7DXO5wY4uKsuyg
+         ukIgeEhKKxqT8XCsYxzRPVrg3iooPrQAUoBuKHTzVPOyI0kQFAGknLwP6N2GKo5R8dyq
+         HkNmJFtf606W+U2txHA602GHRHv4sUEc73CDuvCH8EF0SDGDb2jJ6bAbHZ5kC59dIPHU
+         yDB8S2wJlf3m9jddevMGmYjOfOs5+2njqHnNgm3U1qiAV3MY90gN4bfWnlit8Jul4dRm
+         N0R9sFTFBVTS1+1SY9Np6bja6DHIAhouH7INxSkQFgRwLJyYbPVYnP6K0uSvzBsciG2y
+         KrGw==
+X-Gm-Message-State: AO0yUKUmtnMKL4S+ezFkJTEpi8wCKrQMTvBWKLqarjh7R83opcf50pFi
+	TSRt12smmCrM5hH78EiTVA==
+X-Google-Smtp-Source: AK7set9i8Yc0as8tcS+G5ABFmialaz9E/t1quo/d+glus4OAQlGXNCIBfTxURc1sXvd6sOHL45g/YQ==
+X-Received: by 2002:a05:6870:a11d:b0:163:d167:80bc with SMTP id m29-20020a056870a11d00b00163d16780bcmr2886406oae.49.1675964590032;
+        Thu, 09 Feb 2023 09:43:10 -0800 (PST)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id ky15-20020a056871404f00b0014fc049fc0asm900969oab.57.2023.02.09.09.43.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Feb 2023 09:43:09 -0800 (PST)
+Received: (nullmailer pid 553172 invoked by uid 1000);
+	Thu, 09 Feb 2023 17:43:08 -0000
+Date: Thu, 9 Feb 2023 11:43:08 -0600
+From: Rob Herring <robh@kernel.org>
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Tiffany Lin <tiffany.lin@mediatek.com>, linux-media@vger.kernel.org, kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>, youlin.pei@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Mauro Carvalho Chehab <mchehab@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, chengci.xu@mediatek.com, mingyuan.ma@mediatek.com, devicetree@vger.kernel.org, Joerg Roedel <joro@8bytes.org>, linux-arm-kernel@lists.infradead.org, anan.sun@mediatek.com, iommu@lists.linux.dev, libo.kang@mediatek.com, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, yf.wang@mediatek.com, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org, nfraprado@collabora.com, Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org, Yunfei Dong <yunfei.dong@mediatek.com>
+Subject: Re: [PATCH v2 01/10] dt-bindings: media: mediatek,vcodec: Remove
+ dma-ranges property
+Message-ID: <167596458765.553111.2698863120254622830.robh@kernel.org>
+References: <20230208053643.28249-1-yong.wu@mediatek.com>
+ <20230208053643.28249-2-yong.wu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v14 3/6] arm64: dts: mt8195: Add efuse node to mt8195
-To: bchihi@baylibre.com, daniel.lezcano@linaro.org,
- angelogioacchino.delregno@collabora.com, rafael@kernel.org,
- amitk@kernel.org, rui.zhang@intel.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org,
- ye.xingchen@zte.com.cn, p.zabel@pengutronix.de
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com,
- rex-bc.chen@mediatek.com
-References: <20230209105628.50294-1-bchihi@baylibre.com>
- <20230209105628.50294-4-bchihi@baylibre.com>
-Content-Language: en-US
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230209105628.50294-4-bchihi@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230208053643.28249-2-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230209_082901_316735_B7FF6C1D 
-X-CRM114-Status: GOOD (  14.37  )
+X-CRM114-CacheID: sfid-20230209_094312_754573_00FF3993 
+X-CRM114-Status: GOOD (  15.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,45 +80,39 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-
-On 09/02/2023 11:56, bchihi@baylibre.com wrote:
-> From: Balsam CHIHI <bchihi@baylibre.com>
+On Wed, 08 Feb 2023 13:36:34 +0800, Yong Wu wrote:
+> After commit f1ad5338a4d5 ("of: Fix "dma-ranges" handling for bus
+> controllers"), the dma-ranges of the leaf node doesn't work. Remove
+> it for vcodec here.
 > 
-> Add efuse node.
-> This will be required by the thermal driver to get the calibration data.
+> 1) For mediatek,vcodec-decoder.yaml and mediatek,vcodec-encoder.yaml,
+> this property is in the leaf node, it is invalid as the above comment.
 > 
-> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> Currently there is only mt8195 VENC node has this property in upstream.
+> Indeed, VENC is affected, but it is not a fatal issue. Originally it
+> expects its iova range locate at 4GB-8GB. However after that commit, its
+> expectation doesn't come true, it will fall back to 0-4GB iova and also
+> could work well.
+> 
+> 2) For mediatek,vcodec-subdev-decoder.yaml, It already uses parent-child
+> node, this property works. Instead, MediaTek iommu will control the
+> masters' iova ranges by the master's larb/port id internally, then the
+> dma-ranges property is unnecessary for the master's node.
+> 
+> Cc: Tiffany Lin <tiffany.lin@mediatek.com>
+> Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+> Cc: Yunfei Dong <yunfei.dong@mediatek.com>
+> Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Link: https://lore.kernel.org/r/20230124131717.128660-4-bchihi@baylibre.com
-> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-This patch is already accepted [1], please drop it from your list.
-
-Regards,
-Matthias
-
-[1] https://lore.kernel.org/lkml/104bb37e-55c3-8dd0-f501-0e8a142511e6@gmail.com/
-
 > ---
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 6 ++++++
->   1 file changed, 6 insertions(+)
+>  .../devicetree/bindings/media/mediatek,vcodec-decoder.yaml | 5 -----
+>  .../devicetree/bindings/media/mediatek,vcodec-encoder.yaml | 5 -----
+>  .../bindings/media/mediatek,vcodec-subdev-decoder.yaml     | 7 -------
+>  3 files changed, 17 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> index 5d31536f4c486..09df105f4606d 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -1380,6 +1380,12 @@ pciephy_glb_intr: pciephy-glb-intr@193 {
->   			dp_calibration: dp-data@1ac {
->   				reg = <0x1ac 0x10>;
->   			};
-> +			lvts_efuse_data1: lvts1-calib@1bc {
-> +				reg = <0x1bc 0x14>;
-> +			};
-> +			lvts_efuse_data2: lvts2-calib@1d0 {
-> +				reg = <0x1d0 0x38>;
-> +			};
->   		};
->   
->   		u3phy2: t-phy@11c40000 {
+
+Acked-by: Rob Herring <robh@kernel.org>
+
 
