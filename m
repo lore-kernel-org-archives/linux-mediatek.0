@@ -4,64 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED237C05027
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Feb 2023 23:48:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14219C05027
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 02:23:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=50e1Whr1p5O5BfXr1b5aKvoRaix0X3o5rBbjLfH/hl0=; b=xhqCX8hIJDUYwuUggI7cl3eqXu
-	D4ukDdV/aOUgcXvWeASQUAxGnJTCPaFYtWM2ryCEr+z18xXau9usMTHSS+TNR3DO9c47CvogCzKiq
-	fJM2uAtafM704vSt/tKREwy4TFu6GSD2SPYpfoke7ltHGEWRqcXTGxPptaCqokY4KKZnPPecb0Y68
-	6Af7an0GbLBXENlWxz+tgLJJEHlvqW+hoac/MvCobSpJE3lGoYVc4fgPsrwtKW6LvZKf1GEbF4qNF
-	ffEShH/7rtQpOODPfxRYrt7RfJaUY2aEwYdNLNpFEqmYSsxnPmvW3Toy/0gfUg0uBaWz7DL/G8PdE
-	Wjlv1ChA==;
+	bh=FsLrxYbj4krUiykEoQl14R+px2DW7Svt2kq3hcFg6VM=; b=3YJOenab31hJEYfh74qZS/kxfQ
+	cq80kt6/bc7yAeTp50O6cn3f76SZbNb99Ta5U8goI/OSAN4yqdr1q7bu8hO0ETBsQ8zPYAgVoLeeD
+	YgMW8qqdNkjvCPc8l4u4GUHoQOD00AWikjZl3Kipi3WsR64hADgepf4NafGXAu3dCwL0GEHQOXXQ+
+	j+Bc7g+CmArAm/zQfhUGbhGQKbfTqkVtzc5EuaGX2H6cpC+T349CYK9AfK29eRXT7lOshWPcH73kE
+	Ygg/HwukmGfpsNPsofS4t2MT5IC/G8FoFd5qJghJ3cZf8orgBpIq3G/u4l87Ao34HyjYDl4p7V2e/
+	5f8t6xJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPuAl-00HEmd-49; Wed, 08 Feb 2023 23:48:19 +0000
-Received: from mail-ot1-f50.google.com ([209.85.210.50])
+	id 1pPwai-00HVQG-0S; Thu, 09 Feb 2023 02:23:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPuAh-00HEjH-CH; Wed, 08 Feb 2023 23:48:16 +0000
-Received: by mail-ot1-f50.google.com with SMTP id d21-20020a056830005500b0068bd2e0b25bso80471otp.1;
-        Wed, 08 Feb 2023 15:48:13 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=50e1Whr1p5O5BfXr1b5aKvoRaix0X3o5rBbjLfH/hl0=;
-        b=lFMe20+sdhOapDfOlKl5RSxERuBkogaHPMkrvn3UKrjmrg6FBXNNOLokTl+UL+qwi3
-         hT+Gq15rKnoRwdRKucFOQ/U2L9zO30XLbYoSWK9Jo421yupxpGls70zYi0JXW+PDxE9c
-         A349wDZHTONi5RlgvK5YDSfRM6zb6HqliPoWXmlyhAiIHYfFtBE5Br88GLtIiFzd7N4S
-         q7/dH5km6RKjG/yfASkr54S3t00xbZ+/qB8eM1gs/WmtXlUN573+3pIM6fmnt/fbAis1
-         RISDCC5BEXtRRM5omgIJRye3kJxTFaEyComEVXjmawiDbrYpgjZGwlfnJjrYR1VIaoVC
-         dMeA==
-X-Gm-Message-State: AO0yUKXWIEn8b7C3nrxEf/jDcfYAnUeQttFL5VSzWuf754ZoQGIvfAy/
-	wrmfUakmmezBGvvY25Eqpg==
-X-Google-Smtp-Source: AK7set/MAs5BubHgfwo8YE/1H72/fOatEqJB6vH4FwLOvCDTyVaWJ99UtL9xSLK4cD2uvjP9j1qy6Q==
-X-Received: by 2002:a05:6830:2008:b0:68b:d347:2457 with SMTP id e8-20020a056830200800b0068bd3472457mr4177424otp.21.1675900092263;
-        Wed, 08 Feb 2023 15:48:12 -0800 (PST)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id z3-20020a05683010c300b0068d542f630fsm8717770oto.76.2023.02.08.15.48.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Feb 2023 15:48:11 -0800 (PST)
-Received: (nullmailer pid 2936796 invoked by uid 1000);
-	Wed, 08 Feb 2023 23:48:10 -0000
-Date: Wed, 8 Feb 2023 17:48:10 -0600
-From: Rob Herring <robh@kernel.org>
-To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [PATCH] dt-bindings: mt76: allow up to 4 interrupts for mt7986
-Message-ID: <20230208234810.GA2935682-robh@kernel.org>
-References: <20230207171512.35425-1-linux@fw-web.de>
+	id 1pPwae-00HVP1-Dh
+	for linux-mediatek@lists.infradead.org; Thu, 09 Feb 2023 02:23:14 +0000
+X-UUID: aee507d4a82011eda08d4d6090ec5a5c-20230208
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FsLrxYbj4krUiykEoQl14R+px2DW7Svt2kq3hcFg6VM=;
+	b=Fn2t2wBY1T5/3M47Z/eG9Xgm0kLm5cFyZ3gCV5QNJYJBz0ryfOZFMz4BcvIdiirmmGVxWVPwhkjLZlsmdq5SKMkYw2NpA5UzKkXukSZm11P2ZB5MnNzyX4g27K3/BKdlIVzgfzTpCCprMvGALAQOV0ICFko+ARDyjcLuwFwr5hg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.19,REQID:ab801f14-e8c5-4539-9b7c-cf4ddf762adf,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:90
+X-CID-INFO: VERSION:1.1.19,REQID:ab801f14-e8c5-4539-9b7c-cf4ddf762adf,IP:0,URL
+	:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:90
+X-CID-META: VersionHash:885ddb2,CLOUDID:e79cbb56-dd49-462e-a4be-2143a3ddc739,B
+	ulkID:230209102305MXZTIE50,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+	,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-UUID: aee507d4a82011eda08d4d6090ec5a5c-20230208
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1230867031; Wed, 08 Feb 2023 19:23:04 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 9 Feb 2023 10:23:02 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 9 Feb 2023 10:23:02 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, MeiChia
+ Chiu <meichia.chiu@mediatek.com>, <linux-mediatek@lists.infradead.org>, Ryder
+ Lee <ryder.lee@mediatek.com>
+Subject: [PATCH 2/2] wifi: mt76: mt7996: remove mt7996_mcu_beacon_check_caps()
+Date: Thu, 9 Feb 2023 10:23:00 +0800
+Message-ID: <b80c39ffbe4f866fc1afed1e05aedf6f2f709234.1675909168.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <067c3aef3c73e35ec9d633387e856db3ae66a81b.1675909168.git.ryder.lee@mediatek.com>
+References: <067c3aef3c73e35ec9d633387e856db3ae66a81b.1675909168.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230207171512.35425-1-linux@fw-web.de>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230208_154815_462704_C0BF9FE2 
-X-CRM114-Status: GOOD (  19.98  )
+X-CRM114-CacheID: sfid-20230208_182312_632046_3345E640 
+X-CRM114-Status: GOOD (  14.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,47 +82,242 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, netdev@vger.kernel.org, Kalle Valo <kvalo@kernel.org>, Sean Wang <sean.wang@mediatek.com>, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Shayne Chen <shayne.chen@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 07, 2023 at 06:15:12PM +0100, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Mt7986 needs 4 interrupts which are already defined in mt7986a.dtsi.
-> Update binding to reflect it
-> 
-> This fixes this error in dtbs_check (here only bpi-r3 example):
-> 
-> arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtb: wifi@18000000:
-> interrupts: [[0, 213, 4], [0, 214, 4], [0, 215, 4], [0, 216, 4]] is too long
-> 	From schema: Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-> arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtb: wifi@18000000:
-> Unevaluated properties are not allowed ('interrupts' was unexpected)
-> 	From schema: Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->  .../devicetree/bindings/net/wireless/mediatek,mt76.yaml      | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-> index 212508672979..222b657fe4ea 100644
-> --- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-> +++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-> @@ -38,7 +38,10 @@ properties:
->        MT7986 should contain 3 regions consys, dcm, and sku, in this order.
->  
->    interrupts:
-> -    maxItems: 1
-> +    minItems: 1
-> +    maxItems: 4
-> +    description:
-> +      MT7986 should contain 4 items.
+Those capabilities have been added into ieee80211_bss_conf.
 
-The schema and the description don't match.
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt7996/main.c  |   1 -
+ .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 115 ++----------------
+ .../wireless/mediatek/mt76/mt7996/mt7996.h    |  16 ---
+ 3 files changed, 8 insertions(+), 124 deletions(-)
 
-You need to define what each interrupt is.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index 3e4da0350d96..9d67fcaf2428 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -220,7 +220,6 @@ static int mt7996_add_interface(struct ieee80211_hw *hw,
+ 	vif->offload_flags |= IEEE80211_OFFLOAD_ENCAP_4ADDR;
+ 
+ 	mt7996_init_bitrate_mask(vif);
+-	memset(&mvif->cap, -1, sizeof(mvif->cap));
+ 
+ 	mt7996_mcu_add_bss_info(phy, vif, true);
+ 	mt7996_mcu_add_sta(dev, vif, NULL, true);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index dbe30832fd88..73395b8dfade 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -1053,7 +1053,6 @@ static inline bool
+ mt7996_is_ebf_supported(struct mt7996_phy *phy, struct ieee80211_vif *vif,
+ 			struct ieee80211_sta *sta, bool bfee)
+ {
+-	struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
+ 	int sts = hweight16(phy->mt76->chainmask);
+ 
+ 	if (vif->type != NL80211_IFTYPE_STATION &&
+@@ -1068,10 +1067,10 @@ mt7996_is_ebf_supported(struct mt7996_phy *phy, struct ieee80211_vif *vif,
+ 		struct ieee80211_eht_cap_elem_fixed *pe = &pc->eht_cap_elem;
+ 
+ 		if (bfee)
+-			return mvif->cap.eht_su_ebfee &&
++			return vif->bss_conf.eht_su_beamformee &&
+ 			       EHT_PHY(CAP0_SU_BEAMFORMEE, pe->phy_cap_info[0]);
+ 		else
+-			return mvif->cap.eht_su_ebfer &&
++			return vif->bss_conf.eht_su_beamformer &&
+ 			       EHT_PHY(CAP0_SU_BEAMFORMER, pe->phy_cap_info[0]);
+ 	}
+ 
+@@ -1079,10 +1078,10 @@ mt7996_is_ebf_supported(struct mt7996_phy *phy, struct ieee80211_vif *vif,
+ 		struct ieee80211_he_cap_elem *pe = &sta->deflink.he_cap.he_cap_elem;
+ 
+ 		if (bfee)
+-			return mvif->cap.he_su_ebfee &&
++			return vif->bss_conf.he_su_beamformee &&
+ 			       HE_PHY(CAP3_SU_BEAMFORMER, pe->phy_cap_info[3]);
+ 		else
+-			return mvif->cap.he_su_ebfer &&
++			return vif->bss_conf.he_su_beamformer &&
+ 			       HE_PHY(CAP4_SU_BEAMFORMEE, pe->phy_cap_info[4]);
+ 	}
+ 
+@@ -1090,10 +1089,10 @@ mt7996_is_ebf_supported(struct mt7996_phy *phy, struct ieee80211_vif *vif,
+ 		u32 cap = sta->deflink.vht_cap.cap;
+ 
+ 		if (bfee)
+-			return mvif->cap.vht_su_ebfee &&
++			return vif->bss_conf.vht_su_beamformee &&
+ 			       (cap & IEEE80211_VHT_CAP_SU_BEAMFORMER_CAPABLE);
+ 		else
+-			return mvif->cap.vht_su_ebfer &&
++			return vif->bss_conf.vht_su_beamformer &&
+ 			       (cap & IEEE80211_VHT_CAP_SU_BEAMFORMEE_CAPABLE);
+ 	}
+ 
+@@ -1572,7 +1571,7 @@ mt7996_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7996_dev *dev,
+ 			cap |= STA_CAP_TX_STBC;
+ 		if (sta->deflink.ht_cap.cap & IEEE80211_HT_CAP_RX_STBC)
+ 			cap |= STA_CAP_RX_STBC;
+-		if (mvif->cap.ht_ldpc &&
++		if (vif->bss_conf.ht_ldpc &&
+ 		    (sta->deflink.ht_cap.cap & IEEE80211_HT_CAP_LDPC_CODING))
+ 			cap |= STA_CAP_LDPC;
+ 
+@@ -1598,7 +1597,7 @@ mt7996_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7996_dev *dev,
+ 			cap |= STA_CAP_VHT_TX_STBC;
+ 		if (sta->deflink.vht_cap.cap & IEEE80211_VHT_CAP_RXSTBC_1)
+ 			cap |= STA_CAP_VHT_RX_STBC;
+-		if (mvif->cap.vht_ldpc &&
++		if (vif->bss_conf.vht_ldpc &&
+ 		    (sta->deflink.vht_cap.cap & IEEE80211_VHT_CAP_RXLDPC))
+ 			cap |= STA_CAP_VHT_LDPC;
+ 
+@@ -1911,102 +1910,6 @@ mt7996_mcu_beacon_cont(struct mt7996_dev *dev, struct ieee80211_vif *vif,
+ 	memcpy(buf + MT_TXD_SIZE, skb->data, skb->len);
+ }
+ 
+-static void
+-mt7996_mcu_beacon_check_caps(struct mt7996_phy *phy, struct ieee80211_vif *vif,
+-			     struct sk_buff *skb)
+-{
+-	struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
+-	struct mt7996_vif_cap *vc = &mvif->cap;
+-	const struct ieee80211_eht_cap_elem_fixed *eht;
+-	const struct ieee80211_he_cap_elem *he;
+-	const struct ieee80211_vht_cap *vht;
+-	const struct ieee80211_ht_cap *ht;
+-	struct ieee80211_mgmt *mgmt = (struct ieee80211_mgmt *)skb->data;
+-	const u8 *ie;
+-	u32 len, bc;
+-
+-	/* Check missing configuration options to allow AP mode in mac80211
+-	 * to remain in sync with hostapd settings, and get a subset of
+-	 * beacon and hardware capabilities.
+-	 */
+-	if (WARN_ON_ONCE(skb->len <= (mgmt->u.beacon.variable - skb->data)))
+-		return;
+-
+-	memset(vc, 0, sizeof(*vc));
+-
+-	len = skb->len - (mgmt->u.beacon.variable - skb->data);
+-
+-	ie = cfg80211_find_ie(WLAN_EID_HT_CAPABILITY, mgmt->u.beacon.variable,
+-			      len);
+-	if (ie && ie[1] >= sizeof(*ht)) {
+-		ht = (void *)(ie + 2);
+-		vc->ht_ldpc |= !!(le16_to_cpu(ht->cap_info) &
+-				  IEEE80211_HT_CAP_LDPC_CODING);
+-	}
+-
+-	ie = cfg80211_find_ie(WLAN_EID_VHT_CAPABILITY, mgmt->u.beacon.variable,
+-			      len);
+-	if (ie && ie[1] >= sizeof(*vht)) {
+-		u32 pc = phy->mt76->sband_5g.sband.vht_cap.cap;
+-
+-		vht = (void *)(ie + 2);
+-		bc = le32_to_cpu(vht->vht_cap_info);
+-
+-		vc->vht_ldpc |= !!(bc & IEEE80211_VHT_CAP_RXLDPC);
+-		vc->vht_su_ebfer =
+-			(bc & IEEE80211_VHT_CAP_SU_BEAMFORMER_CAPABLE) &&
+-			(pc & IEEE80211_VHT_CAP_SU_BEAMFORMER_CAPABLE);
+-		vc->vht_su_ebfee =
+-			(bc & IEEE80211_VHT_CAP_SU_BEAMFORMEE_CAPABLE) &&
+-			(pc & IEEE80211_VHT_CAP_SU_BEAMFORMEE_CAPABLE);
+-		vc->vht_mu_ebfer =
+-			(bc & IEEE80211_VHT_CAP_MU_BEAMFORMER_CAPABLE) &&
+-			(pc & IEEE80211_VHT_CAP_MU_BEAMFORMER_CAPABLE);
+-		vc->vht_mu_ebfee =
+-			(bc & IEEE80211_VHT_CAP_MU_BEAMFORMEE_CAPABLE) &&
+-			(pc & IEEE80211_VHT_CAP_MU_BEAMFORMEE_CAPABLE);
+-	}
+-
+-	ie = cfg80211_find_ext_ie(WLAN_EID_EXT_HE_CAPABILITY,
+-				  mgmt->u.beacon.variable, len);
+-	if (ie && ie[1] >= sizeof(*he) + 1) {
+-		const struct ieee80211_sta_he_cap *pc =
+-			mt76_connac_get_he_phy_cap(phy->mt76, vif);
+-		const struct ieee80211_he_cap_elem *pe = &pc->he_cap_elem;
+-
+-		he = (void *)(ie + 3);
+-
+-		vc->he_ldpc =
+-			HE_PHY(CAP1_LDPC_CODING_IN_PAYLOAD, pe->phy_cap_info[1]);
+-		vc->he_su_ebfer =
+-			HE_PHY(CAP3_SU_BEAMFORMER, he->phy_cap_info[3]) &&
+-			HE_PHY(CAP3_SU_BEAMFORMER, pe->phy_cap_info[3]);
+-		vc->he_su_ebfee =
+-			HE_PHY(CAP4_SU_BEAMFORMEE, he->phy_cap_info[4]) &&
+-			HE_PHY(CAP4_SU_BEAMFORMEE, pe->phy_cap_info[4]);
+-		vc->he_mu_ebfer =
+-			HE_PHY(CAP4_MU_BEAMFORMER, he->phy_cap_info[4]) &&
+-			HE_PHY(CAP4_MU_BEAMFORMER, pe->phy_cap_info[4]);
+-	}
+-
+-	ie = cfg80211_find_ext_ie(WLAN_EID_EXT_EHT_CAPABILITY,
+-				  mgmt->u.beacon.variable, len);
+-	if (ie && ie[1] >= sizeof(*eht) + 1) {
+-		const struct ieee80211_sta_eht_cap *pc =
+-			mt76_connac_get_eht_phy_cap(phy->mt76, vif);
+-		const struct ieee80211_eht_cap_elem_fixed *pe = &pc->eht_cap_elem;
+-
+-		eht = (void *)(ie + 3);
+-
+-		vc->eht_su_ebfer =
+-			EHT_PHY(CAP0_SU_BEAMFORMER, eht->phy_cap_info[0]) &&
+-			EHT_PHY(CAP0_SU_BEAMFORMER, pe->phy_cap_info[0]);
+-		vc->eht_su_ebfee =
+-			EHT_PHY(CAP0_SU_BEAMFORMEE, eht->phy_cap_info[0]) &&
+-			EHT_PHY(CAP0_SU_BEAMFORMEE, pe->phy_cap_info[0]);
+-	}
+-}
+-
+ int mt7996_mcu_add_beacon(struct ieee80211_hw *hw,
+ 			  struct ieee80211_vif *vif, int en)
+ {
+@@ -2045,8 +1948,6 @@ int mt7996_mcu_add_beacon(struct ieee80211_hw *hw,
+ 	info = IEEE80211_SKB_CB(skb);
+ 	info->hw_queue |= FIELD_PREP(MT_TX_HW_QUEUE_PHY, phy->mt76->band_idx);
+ 
+-	mt7996_mcu_beacon_check_caps(phy, vif, skb);
+-
+ 	mt7996_mcu_beacon_cont(dev, vif, rskb, skb, bcn, &offs);
+ 	/* TODO: subtag - 11v MBSSID */
+ 	mt7996_mcu_beacon_cntdwn(vif, rskb, skb, &offs);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+index 018dfd2b36b0..24572dd55fe0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+@@ -112,25 +112,9 @@ struct mt7996_sta {
+ 	} twt;
+ };
+ 
+-struct mt7996_vif_cap {
+-	bool ht_ldpc:1;
+-	bool vht_ldpc:1;
+-	bool he_ldpc:1;
+-	bool vht_su_ebfer:1;
+-	bool vht_su_ebfee:1;
+-	bool vht_mu_ebfer:1;
+-	bool vht_mu_ebfee:1;
+-	bool he_su_ebfer:1;
+-	bool he_su_ebfee:1;
+-	bool he_mu_ebfer:1;
+-	bool eht_su_ebfer:1;
+-	bool eht_su_ebfee:1;
+-};
+-
+ struct mt7996_vif {
+ 	struct mt76_vif mt76; /* must be first */
+ 
+-	struct mt7996_vif_cap cap;
+ 	struct mt7996_sta sta;
+ 	struct mt7996_phy *phy;
+ 
+-- 
+2.18.0
 
-Rob
 
