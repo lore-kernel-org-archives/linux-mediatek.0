@@ -4,79 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E477EC636D4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 11:01:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D24CC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 11:17:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dEiNvwdsh50/luN7kcdBw0tT4i5v1/6EEunHYjmNZXs=; b=Bj/I7rVeOmCr4QnrNcLQVzUivy
-	Qpygbc1uCEgQW99dWE9xMqXIDZleuKmSMpr0rkfKWYLU9VarQorSWoeTELPkz9+kLsIajZ5gRi4FP
-	en5nRBAABo2R77LJas5EWcgI6KWQo9+/1hXC0Mvrx8H6LfA4flLgML4vwsF+1he6eJvlZ8+bIW6AA
-	sEiSPt6SO4HHcNVzAGgPuz3j2dvnIyt3puOiF6NaonXLBuwlWvbNhsj5oSjhfqI/oYZkBDNU/xQF4
-	0/kQEsru04X4Sj0mXoUu7OO44MreS5Vkr7rT3sK4296nUdBxW4dYzx/9xYgQrDXA8uwuSVNYM7jfv
-	4X4Kf0bQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SSLtTMF4xX+MGFebbGFlRzwOB0f/lB6ncF8M/CLxVoQ=; b=tnsqsvtZshU+JEx5nh5FC+ImC9
+	T584w+nU2yFsIJrOSkc/YvdDX25V8ynXEtfaD/2hboHAD2KNvmhQ1hCuzkxYIoJYc1EWAbI9QYctQ
+	6jsETTAC76LWyV0lAoubrlURvEWWPnNiVxNJWuA/+r1l2ptMtFBxwr78uD4j2rPuoRJmbOoEiGgBV
+	K7Bwh2LLoo/biEQU5dNIfmMCTuXU6anonfBR45qs7ADDIro8VZjoIsSnTt0EmmsaecT1NpKSDnyEp
+	kGVqePGysPJyeJFguezcl5YRLEG2lGNhay+64d8DsiIFIDdtW5ItM/fHH6TCLxdczhUdQf58cP/oj
+	lptLn64g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ4ft-0018NF-CT; Thu, 09 Feb 2023 11:01:09 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1pQ4vN-001ERr-3X; Thu, 09 Feb 2023 11:17:09 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ4fV-0018AM-Ri
-	for linux-mediatek@lists.infradead.org; Thu, 09 Feb 2023 11:00:51 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id qb15so3108328ejc.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Feb 2023 03:00:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=dEiNvwdsh50/luN7kcdBw0tT4i5v1/6EEunHYjmNZXs=;
-        b=Cc5tn2CKinqZh1y6GDQOh3jtJ28lfw2AwbOsVKLtGeveXXSVLDmwew92x9ux+0z56F
-         OfAYNU/fNb6jcMpYuzPpdqEP+cy1mUVEFyu9uOmyx9g2lYIp4o9FqtnL+bv04Ojl193D
-         BUU/NFJ8GwOYJ8E7P2goc0AceLXUIIbs8jlTxm6w9sRRkXKfV1vviPHYRD543YgiL4Q4
-         pivztwB4TrK7gBRgy5u2ivXhVjbx3SNjI2kr+zn2GO8xZ7oLhCjtviVLKl66WkEaViyu
-         pujsrnKl/l5Z4xl0Dd1Wm+OgAfj7DVpTK6iyBB+gyKK9YmCSR27IIyhsIaAbHQGoTTLm
-         z1Rw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=dEiNvwdsh50/luN7kcdBw0tT4i5v1/6EEunHYjmNZXs=;
-        b=nCmEkt3rAtHHuW2vr8GfxQNiijVhYSRLMQCymst3Xrfbc1jhnGzuXyWIhy97g4XwTH
-         cT+ljDRg5iMwvduJ7OTmDRyN2UmfM0hwHAyS22f1dikjMUqKKvWR2w0Z633s0Wbms+ix
-         3yZIZSPTiUOvUS9XPE1Cr5k/w0BtpoXtk874d6JRjbm8yja240faUFh3Vst0Mf4wq0kf
-         BrwSnrQUEtb1dVw+IbdWfzfmA84HIJPZPpQBn8ddBxryeBp6yGwLfypOC3NIAZUMmiKG
-         un6PLco/MUe271Y/S6i4gXWfTozFi6/cIEzNxcrcStN628MTNc2mEN1yHfdRRFBRabpH
-         sgAw==
-X-Gm-Message-State: AO0yUKUdICE96Gi0Of905yW1Fj30+MaFRceR/FERlp9bH8ECqVNN9X0z
-	s7jqQfpW5iTbgXxLwCqjubF3hVDBBU9X8PiGvhOfVA==
-X-Google-Smtp-Source: AK7set+RaPbg+SOCzwGndo1Wa91cwrheg38QQCBg99GhoVwyzzAvFtOaofSU6Q5pBzPM0CXKp4JFifhFaFx0rd/k0bs=
-X-Received: by 2002:a17:906:ca04:b0:7c0:f45e:22ff with SMTP id
- jt4-20020a170906ca0400b007c0f45e22ffmr2702674ejb.104.1675940443471; Thu, 09
- Feb 2023 03:00:43 -0800 (PST)
+	id 1pQ4ux-001EC3-Ec; Thu, 09 Feb 2023 11:16:45 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sin.source.kernel.org (Postfix) with ESMTPS id C9099CE2456;
+	Thu,  9 Feb 2023 11:16:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C66A4C4339B;
+	Thu,  9 Feb 2023 11:16:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1675941396;
+	bh=Ae2pfdwW4VSlK8d73ruXk0NV6JvWEPEEHPJvO/t/3NE=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=tKTOxqEcOG8vkABw32gcHd2L1uOTERTK65/fjtcpT76blLNmdLioGd1VovWrfODIv
+	 XpB2dplYCCEjXQefMFSX2J7wwGmhEYu8MC5UCBng/K+5QZhofz670t2f79e73omYgE
+	 J5TGaJrAiwoffsfe8wDkGgK/KwAD0DMKaq8kxc0PcCpsd/nqkgxbP5zMKssas1puOh
+	 y5udMESN14u/f8nEKZHK5NQLa64gW6IPu9xR/2hmKPbw2WAR2WlonWsKYVinJPUuzz
+	 TFrtHlN0wPRJ3MRmq7p62BmZMVMhm5R4g+Ud9ATt5Dq6jvljEhBGXzvEuucxunqBAo
+	 RHE6gDsNIay4g==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Kees Cook <keescook@chromium.org>,
+	Felix Fietkau <nbd@nbd.name>,
+	John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Simon Horman <simon.horman@corigine.com>,
+	Sasha Levin <sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.1 23/38] net: ethernet: mtk_eth_soc: Avoid truncating allocation
+Date: Thu,  9 Feb 2023 06:14:42 -0500
+Message-Id: <20230209111459.1891941-23-sashal@kernel.org>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230209111459.1891941-1-sashal@kernel.org>
+References: <20230209111459.1891941-1-sashal@kernel.org>
 MIME-Version: 1.0
-References: <20230207130958.608305-2-bchihi@baylibre.com> <202302080018.wNeWiKqz-lkp@intel.com>
-In-Reply-To: <202302080018.wNeWiKqz-lkp@intel.com>
-From: Balsam CHIHI <bchihi@baylibre.com>
-Date: Thu, 9 Feb 2023 12:00:07 +0100
-Message-ID: <CAGuA+ori24xtbHnzYXGVSUOiU-T+V=33DPsHnsruGnP5Y_L7ZA@mail.gmail.com>
-Subject: Re: [PATCH v13 1/6] thermal: drivers: mediatek: Relocate driver to
- mediatek folder
-To: kernel test robot <lkp@intel.com>
-Cc: daniel.lezcano@linaro.org, angelogioacchino.delregno@collabora.com, 
-	rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com, 
-	matthias.bgg@gmail.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
-	rdunlap@infradead.org, ye.xingchen@zte.com.cn, p.zabel@pengutronix.de, 
-	oe-kbuild-all@lists.linux.dev, linux-pm@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
-	khilman@baylibre.com, james.lo@mediatek.com, rex-bc.chen@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
+X-stable: review
+X-Patchwork-Hint: Ignore
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230209_030045_954270_38C1C0B0 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20230209_031643_906944_AB069F4B 
+X-CRM114-Status: GOOD (  14.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,72 +87,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-this warning has been fixed by this patch :
-https://lore.kernel.org/all/20230113064449.15061-1-rdunlap@infradead.org/
+From: Kees Cook <keescook@chromium.org>
 
-On Tue, Feb 7, 2023 at 5:14 PM kernel test robot <lkp@intel.com> wrote:
->
-> Hi,
->
-> Thank you for the patch! Perhaps something to improve:
->
-> [auto build test WARNING on a2c81dc59d41e92362ab7d41d0c15471ea50637d]
->
-> url:    https://github.com/intel-lab-lkp/linux/commits/bchihi-baylibre-com/thermal-drivers-mediatek-Relocate-driver-to-mediatek-folder/20230207-211351
-> base:   a2c81dc59d41e92362ab7d41d0c15471ea50637d
-> patch link:    https://lore.kernel.org/r/20230207130958.608305-2-bchihi%40baylibre.com
-> patch subject: [PATCH v13 1/6] thermal: drivers: mediatek: Relocate driver to mediatek folder
-> config: sparc-allyesconfig (https://download.01.org/0day-ci/archive/20230208/202302080018.wNeWiKqz-lkp@intel.com/config)
-> compiler: sparc64-linux-gcc (GCC) 12.1.0
-> reproduce (this is a W=1 build):
->         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
->         chmod +x ~/bin/make.cross
->         # https://github.com/intel-lab-lkp/linux/commit/0eb89997925c0d7b47bbeee93016146fc660b259
->         git remote add linux-review https://github.com/intel-lab-lkp/linux
->         git fetch --no-tags linux-review bchihi-baylibre-com/thermal-drivers-mediatek-Relocate-driver-to-mediatek-folder/20230207-211351
->         git checkout 0eb89997925c0d7b47bbeee93016146fc660b259
->         # save the config file
->         mkdir build_dir && cp config build_dir/.config
->         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=sparc olddefconfig
->         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=sparc SHELL=/bin/bash drivers/thermal/mediatek/
->
-> If you fix the issue, kindly add following tag where applicable
-> | Reported-by: kernel test robot <lkp@intel.com>
->
-> All warnings (new ones prefixed by >>):
->
-> >> drivers/thermal/mediatek/auxadc_thermal.c:562: warning: expecting prototype for raw_to_mcelsius(). Prototype was for raw_to_mcelsius_v1() instead
->
->
-> vim +562 drivers/thermal/mediatek/auxadc_thermal.c
->
-> a4ffe6b52d27f4 drivers/thermal/mtk_thermal.c Michael Kao   2019-02-01  551
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  552  /**
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  553   * raw_to_mcelsius - convert a raw ADC value to mcelsius
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  554   * @mt:     The thermal controller
-> 3772bb422072d4 drivers/thermal/mtk_thermal.c Amit Kucheria 2019-11-20  555   * @sensno: sensor number
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  556   * @raw:    raw ADC value
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  557   *
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  558   * This converts the raw ADC value to mcelsius using the SoC specific
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  559   * calibration constants
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  560   */
-> 54bf1e5a629dfb drivers/thermal/mtk_thermal.c Henry Yen     2020-04-30  561  static int raw_to_mcelsius_v1(struct mtk_thermal *mt, int sensno, s32 raw)
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30 @562  {
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  563      s32 tmp;
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  564
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  565      raw &= 0xfff;
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  566
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  567      tmp = 203450520 << 3;
-> f84514766985d3 drivers/thermal/mtk_thermal.c Michael Kao   2019-02-01  568      tmp /= mt->conf->cali_val + mt->o_slope;
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  569      tmp /= 10000 + mt->adc_ge;
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  570      tmp *= raw - mt->vts[sensno] - 3350;
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  571      tmp >>= 3;
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  572
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  573      return mt->degc_cali * 500 - tmp;
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  574  }
-> a92db1c8089e82 drivers/thermal/mtk_thermal.c Sascha Hauer  2015-11-30  575
->
-> --
-> 0-DAY CI Kernel Test Service
-> https://github.com/intel/lkp-tests
+[ Upstream commit f3eceaed9edd7c0e0d9fb057613131f92973626f ]
+
+There doesn't appear to be a reason to truncate the allocation used for
+flow_info, so do a full allocation and remove the unused empty struct.
+GCC does not like having a reference to an object that has been
+partially allocated, as bounds checking may become impossible when
+such an object is passed to other code. Seen with GCC 13:
+
+../drivers/net/ethernet/mediatek/mtk_ppe.c: In function 'mtk_foe_entry_commit_subflow':
+../drivers/net/ethernet/mediatek/mtk_ppe.c:623:18: warning: array subscript 'struct mtk_flow_entry[0]' is partly outside array bounds of 'unsigned char[48]' [-Warray-bounds=]
+  623 |         flow_info->l2_data.base_flow = entry;
+      |                  ^~
+
+Cc: Felix Fietkau <nbd@nbd.name>
+Cc: John Crispin <john@phrozen.org>
+Cc: Sean Wang <sean.wang@mediatek.com>
+Cc: Mark Lee <Mark-MC.Lee@mediatek.com>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: "David S. Miller" <davem@davemloft.net>
+Cc: Eric Dumazet <edumazet@google.com>
+Cc: Jakub Kicinski <kuba@kernel.org>
+Cc: Paolo Abeni <pabeni@redhat.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: netdev@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Signed-off-by: Kees Cook <keescook@chromium.org>
+Reviewed-by: Simon Horman <simon.horman@corigine.com>
+Link: https://lore.kernel.org/r/20230127223853.never.014-kees@kernel.org
+Signed-off-by: Paolo Abeni <pabeni@redhat.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/net/ethernet/mediatek/mtk_ppe.c | 3 +--
+ drivers/net/ethernet/mediatek/mtk_ppe.h | 1 -
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
+index 784ecb2dc9fbd..34ea8af48c3d0 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe.c
++++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
+@@ -595,8 +595,7 @@ mtk_foe_entry_commit_subflow(struct mtk_ppe *ppe, struct mtk_flow_entry *entry,
+ 	u32 ib1_mask = mtk_get_ib1_pkt_type_mask(ppe->eth) | MTK_FOE_IB1_UDP;
+ 	int type;
+ 
+-	flow_info = kzalloc(offsetof(struct mtk_flow_entry, l2_data.end),
+-			    GFP_ATOMIC);
++	flow_info = kzalloc(sizeof(*flow_info), GFP_ATOMIC);
+ 	if (!flow_info)
+ 		return;
+ 
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.h b/drivers/net/ethernet/mediatek/mtk_ppe.h
+index a09c32539bcc9..e66283b1bc79e 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe.h
++++ b/drivers/net/ethernet/mediatek/mtk_ppe.h
+@@ -277,7 +277,6 @@ struct mtk_flow_entry {
+ 		struct {
+ 			struct mtk_flow_entry *base_flow;
+ 			struct hlist_node list;
+-			struct {} end;
+ 		} l2_data;
+ 	};
+ 	struct rhash_head node;
+-- 
+2.39.0
+
 
