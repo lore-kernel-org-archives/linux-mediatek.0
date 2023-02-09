@@ -4,64 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5678C636D3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 19:19:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 391A6C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 19:51:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QR+AMCekWs5rX00hK7X9a5BzDp72BlyuwXxEFWLSSEU=; b=MffeLQbMUbS2bFdIEVaiH5Fc7C
-	FTQxxzKT8RE62aSwUBh6W5RcBDxGBh0i0wsicco1tRjQNL3ky/B1yLdvjZUinkuO4KTclADIEGNc4
-	HoF/tFBTs78xDkYbu5Ei25mzAI4Sjij8vtYbnzMsrM4L+vvQtpdrCSDy7gpRR1wGM0JlUw4dx/73J
-	RNA2IbRr3gDOMc/9A88ra59Q4cBZCQ/PQcKkl7NZ0R1pA3Kij0OQflEGRJMkMFriifMprmDduswqa
-	PeqSpmACz77vIaiZ0+Ld0Csk4lMJcEJOt949LHlNQ7Og7iIdasB++rXlkbtmK8S2yznj+epcFFJ5M
-	YG7Ou/IA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sQirvFkXJNys2L/QVLtaaVUPThdd0nYg4wfN1XkQF9k=; b=FhnbLCSUv0Tf/dX0BL3AYmgB1+
+	GfqqFJYOLk5qyala9LMwWCNwh+FCercWiYMbdsRfGwkzZOyXe0fq6pzzuM5v80Cfz4R3i0luAROLe
+	KJN4jv7gv9kE3tabC0V/reNIvqm+hxeouel3PNHBiNspB3S0v3DPn1tCQUpR8IQUrG5LXo5NytQBm
+	Jvw/rQ0vEvGJ+KRuAylWNc2OsP+G13U6NHTL2K+jfIxXTryhCZAeF5t6KDRTTKrEsIJYcNRikOW9y
+	LIf0lsdcda/ZUdrkFnQ3MUFe8hUpHrtk7EAAb8V7s3Rl/4Qlw+rV4cf8ITvJW1u3jvo6b8c7oZ/5P
+	iN7hIibw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQCRc-002z0q-J7; Thu, 09 Feb 2023 19:18:56 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pQCws-0033Af-Bc; Thu, 09 Feb 2023 19:51:14 +0000
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQCRS-002yz6-BN; Thu, 09 Feb 2023 19:18:47 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id DBA22B82292;
-	Thu,  9 Feb 2023 19:18:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3CE50C433D2;
-	Thu,  9 Feb 2023 19:18:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1675970323;
-	bh=mDkzITMeQax7M/mdpkLZOTnU0VTywWzADEO1NFt7WtI=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=I5qAoAZlJ9ktZK+svpS08bNObcipk6QOo528BUt0+E0F/IbWtNriGeVTjYWXmhIi8
-	 xc9Q+c3W+39q0AnwG6PKz1lglgKQSdbOMz5x8L21aRTpLYqbmnn2AN9TYQ1f9dUHav
-	 KUj2fgjx0OzhFJwCR0RjuYkFcExiWDXSfSlxEkFptutZ99LeA4ds9f28eHkdcEueCM
-	 +RvxK5Wkk5mN5/y3nZgEyxHrE2vOGk/GE23D1c4qxvvAHw5gImOqMG04DkWMp9uedJ
-	 zEhwd6gzST5oXrtSowKOb7KZyZGBaIQcWZ5AEmeeVlElZsMnsyOrbfHgmUE9djggEC
-	 II+2tN3RKcm2A==
-From: Mark Brown <broonie@kernel.org>
-To: Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-Cc: Chuanhong Guo <gch981213@gmail.com>, linux-spi@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- benliang.zhao@mediatek.com, bin.zhang@mediatek.com
-In-Reply-To: <20230201020921.26712-1-xiangsheng.hou@mediatek.com>
-References: <20230201020921.26712-1-xiangsheng.hou@mediatek.com>
-Subject: Re: [PATCH v6 0/5] Add MediaTek MT7986 SPI NAND support
-Message-Id: <167597032096.933619.6758508358414336782.b4-ty@kernel.org>
-Date: Thu, 09 Feb 2023 19:18:40 +0000
+	id 1pQCwi-00338G-Qt
+	for linux-mediatek@lists.infradead.org; Thu, 09 Feb 2023 19:51:06 +0000
+Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-52bdbd30328so39486757b3.8
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Feb 2023 11:51:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=sQirvFkXJNys2L/QVLtaaVUPThdd0nYg4wfN1XkQF9k=;
+        b=TJcF2CUbuaWP2iDAiOYLqAAkSYwbwKGvbvBVFGLWm6YOtCZlzrSZhhje+1MAJUgGKt
+         DM3TUSgtiWWdKAnGIaiCAb5mmxEcfXcpS6hN7y8xEYoP0LVPqANMBoRFUYn/G/SBmMV6
+         NvEiIfMhuuIBXKQ8AsfgRyPgMJ3MEbqbTwkHj612+QFEc7UmlWegiziMU6NJT3jPq47+
+         Omm9MVnqFvUklKa0811m5IL8doDzl+mcBamcfd8bu+DSiwzTHPn9SVZq1p2xIzlINFHt
+         w8/4mc//+jMZ2ADKn4RsxqcWG8s7Ul/bB3B99UMK33KRuGNvcBUQu614BQYcsQcgmy88
+         EkIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=sQirvFkXJNys2L/QVLtaaVUPThdd0nYg4wfN1XkQF9k=;
+        b=IIc42PO/Ky14pulf1NjnVMdfB8JHgt2Kyb4gsDpb/2GObIg+gexENspty+fX26y+Gc
+         ofDGCK9jS0WQaxVbZ73E9qy7ORfZyXc/q9vqNYfIDgVSd6/5js4yIJU7sDEe6VnmeHFU
+         3rb5fB0dF3j0PrqdnP9iOs0pnpL0LZAjPocbG5FWiWtUYy6lIEHZB1BfWFesdyGZk1Wk
+         5fJphg7e5PT7rJksEHVSQjbu34YIm9eN06oOs5qbnMPbMMBx5DEKR84CS7xqALCCeq8I
+         GWYBKdXTlF+346kdH9RbrFZAWA25pCbw2sM+5AkftDunwcZi0Xo43B4MMA/LFuAwZNfI
+         bQwQ==
+X-Gm-Message-State: AO0yUKWklKUEryScdUyGgivPL83qwsn1FrgL1TEhiwrCULKkSe8k0gx0
+	kqKA0o1iFXFqFZaFYrTgoyNGMTD86MvjKmu4aEv9
+X-Google-Smtp-Source: AK7set/tuNoRXCYBdZYRG8v3DyGqWC26c5R3O53w8gFYK+KKegGlSCWqmDNDCSgAtMiDiDZsg4p551wirLwuT+nG8V0=
+X-Received: by 2002:a0d:d5ce:0:b0:506:6e0b:7441 with SMTP id
+ x197-20020a0dd5ce000000b005066e0b7441mr1279691ywd.208.1675972261271; Thu, 09
+ Feb 2023 11:51:01 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.12.0
+References: <20230208094813.20874-1-walter.chang@mediatek.com> <fdcea75c-1ddf-c4f4-5d46-f32a6619b66d@linaro.org>
+In-Reply-To: <fdcea75c-1ddf-c4f4-5d46-f32a6619b66d@linaro.org>
+From: John Stultz <jstultz@google.com>
+Date: Thu, 9 Feb 2023 11:50:49 -0800
+Message-ID: <CANDhNCp6esdor4kDDTDowkKRfRN9QW8Au7uJMhsxyw0eAG4i8A@mail.gmail.com>
+Subject: Re: [PATCH 0/3] Support timer drivers as loadable modules
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: walter.chang@mediatek.com, Thomas Gleixner <tglx@linutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	"Maciej W . Rozycki" <macro@orcam.me.uk>, wsd_upstream@mediatek.com, stanley.chu@mediatek.com, 
+	Chun-hung.Wu@mediatek.com, Freddy.Hsin@mediatek.com, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230209_111846_565726_A122D01F 
-X-CRM114-Status: GOOD (  14.75  )
+X-CRM114-CacheID: sfid-20230209_115104_877126_C36243D2 
+X-CRM114-Status: GOOD (  16.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,51 +89,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 01 Feb 2023 10:09:16 +0800, Xiangsheng Hou wrote:
-> This patch series split from bellow series which pick-up spi relevant patches
-> https://lore.kernel.org/all/20230130030656.12127-1-xiangsheng.hou@mediatek.com.
-> This series add MediaTek MT7986 SPI NAND controller support, add read latch
-> latency, smaple delay adjust and add optional nfi_hclk.
-> 
-> Changes since V5:
->  - Split spi relevant patches from previous series V4
-> 
-> [...]
+On Thu, Feb 9, 2023 at 7:36 AM Daniel Lezcano <daniel.lezcano@linaro.org> wrote:
+>
+> On 08/02/2023 10:48, walter.chang@mediatek.com wrote:
+> > From: Walter Chang <walter.chang@mediatek.com>
+> >
+> > This patch exports functions in kernel so that timer drivers,
+> > such as timer-mediatek.c can become loadable modules in GKI.
+>
+> What for ?
 
-Applied to
+In general, it's the same reason why modules exist: We want to be able
+to support a wide array of devices with a single kernel, but we don't
+want all devices to pay the memory cost of code that will never be
+used there. So being able to support loading device-specific bits like
+clocksources (along with other device specific logic) helps.
+Obviously it still has to make sense, and others have raised concerns
+of stability issues if the hardware support is needed before we can
+get to module loading, but I think if this allows drivers (such as
+timer-mediatek) to be loadable safely, I see it as beneficial.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+(And as others pointed out:  this patch series is incomplete as it
+doesn't modularize the timer-mediatek driver, which would be a prereq
+to supporting it upstream)
 
-Thanks!
-
-[1/5] spi: mtk-snfi: Change default page format to setup default setting
-      commit: 2b1e19811a8ecc776d15da4ca89df48db6974d66
-[2/5] spi: mtk-snfi: Add optional nfi_hclk which is needed for MT7986
-      commit: e40fa328551dd67d14e5dc3e4ed82b5b770f027f
-[3/5] dt-bindings: spi: mtk-snfi: Add compatible for MT7986
-      commit: 8aa2ef233fa3b985ced1ed31b86fddddfd6be4b2
-[4/5] spi: mtk-snfi: Add snfi sample delay and read latency adjustment
-      commit: 1d36c99062bf4e809271cc534486342442508d4a
-[5/5] dt-bindings: spi: mtk-snfi: Add read latch latency property
-      commit: 351c02cb740472c659145b0027e77a3353e58185
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+thanks
+-john
 
