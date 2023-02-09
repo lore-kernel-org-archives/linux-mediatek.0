@@ -4,67 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CB83C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 18:02:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB419C636D4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 18:13:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GCHbKK7aK3USBAo3gabRZIaR4yTklPH9pwvPUQckT04=; b=ZcsyDEVWUomFhNgG5VysZYbB+9
-	EdQJ/I6oG9g7UPs6OtUWnEKMPbh+bYikAfztw5zp9GuHntT5Zltg3wiXs6YQyFRDUVQM+2QK8I2aH
-	rc9fc617wxfTdrwFkTPHgM7ybxxSOiAkPfRBs6MK96TnMWRk+83RavNE4FzW6dALSDUY5ku/evsi6
-	Ys+lXpI+zxGIWvi7ndurLKtENSM3wJUt8cDEj+c/cww7UObOZBB3ksWHgYngxP9rGFTDu4YUFtaaJ
-	o+ppRYmoXXXZCMD9NM1Ez7OFJ0iSSayIW9lVhENvgSXChZuBuwsQPRctMiSjxdlXRLzl7qsymnQMJ
-	ERxHWyZQ==;
+	bh=Z6XnIAiAClL5oAiPclHzd+Qs8gc/SNlQ6u+IiIFu1NM=; b=DyMB/zRt2jniJc6hbv/ILiWg4a
+	xvkC1sQLOUQ8LKLhkoaiAsU7Iqte/fvn410ihYw9z3vnj74O5xX1/QXIiJmIUvL9kqM7MZeGhHVkE
+	AV02FmWVZQzxpHceNtAJN10L6l2yneWauIxeVVjPKemgfqJNWbG/0BijLt8UVyoSwNLzcaTypVoYd
+	uUDknSUamdZBvnSyCFGRa/bGngxV7hcyy9WfEHVepCRpcCH2HPFKr9qm0xKTZwxxQtyZXhYHr7MjN
+	me2kSPYgiqm1nUhapzyYubjF8JsYj573Q1P+cE2ikQMyDQFZk7/qkK14AcZ5/NByygMRf8/jMNIcB
+	bX6Q6u3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQBFO-002gHf-Qh; Thu, 09 Feb 2023 18:02:14 +0000
-Received: from mail-ot1-f42.google.com ([209.85.210.42])
+	id 1pQBQ6-002kpt-M3; Thu, 09 Feb 2023 18:13:18 +0000
+Received: from mail-oa1-f53.google.com ([209.85.160.53])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQBEf-002frU-DC; Thu, 09 Feb 2023 18:01:31 +0000
-Received: by mail-ot1-f42.google.com with SMTP id n25-20020a9d7119000000b0068bd8c1e836so784889otj.3;
-        Thu, 09 Feb 2023 10:01:27 -0800 (PST)
+	id 1pQBOi-002k5V-64; Thu, 09 Feb 2023 18:11:53 +0000
+Received: by mail-oa1-f53.google.com with SMTP id 586e51a60fabf-16aa71c1600so3586085fac.11;
+        Thu, 09 Feb 2023 10:11:50 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=GCHbKK7aK3USBAo3gabRZIaR4yTklPH9pwvPUQckT04=;
-        b=Br+klUgnZpNLjUsh7ZP04OUvhFHdNmGQL9f6qPcut5Sz/Mx2MPw0xXkUlLu8+4azvj
-         RhCJfV8xyejeVyGHS6cu5p3P453q47hIreHwhkI4jOxPEX/oGbqnTbfdXMHa1H9T8BXk
-         CklWMaHIroLJs3aSo1e6U+83B+0JPPJzGUkshrTDgR9N8/aaUDzsILNLuMzz8vXwYkSm
-         YDHK33Rgg9qeXRNj301jAYKhheR8hG2CqGOZ1f4v2qm82sKCuYj3RVa1XIme/qNBbmJL
-         TwripLSNnm4VpXP7VSfX98+U/vqTcqMPsWLPaZLcJaxvrXcVAFUwbanPwzHZSS5/w8Eo
-         CCIA==
-X-Gm-Message-State: AO0yUKX+HCBSwKzl8W0kNweMV1E4JhnnamWRv/XCl4BXf6bNDgzkha1Z
-	xvkW7B2/Ekt7S1hFbzZTMA==
-X-Google-Smtp-Source: AK7set/5ZR9OKv2z9uS3wgYrDsxQa7igQtzjUW9+VNf+t5Amf315wc8kBiWF6vYIzYzyfvUjblk2kA==
-X-Received: by 2002:a9d:6741:0:b0:68b:c04d:79ca with SMTP id w1-20020a9d6741000000b0068bc04d79camr6312281otm.33.1675965686735;
-        Thu, 09 Feb 2023 10:01:26 -0800 (PST)
+        bh=Z6XnIAiAClL5oAiPclHzd+Qs8gc/SNlQ6u+IiIFu1NM=;
+        b=aDqJjUHBflw/0z9fDpYviQPi0WKekVJ3KdJ2hPYSG/HR7o8rDRorWqpvkkq+o1UEAS
+         ownk1D8YTXukoFEUYFNokAxiSinTla1ZpXNnfMpv0uqu15931GAy7jIcZJ4NdFN5Eus/
+         toudZh58VqwnTsevbBlYLrLAgvciQGby0+x/Lj70ohcCQSLfBg/Umvg96twRKkHgqMjE
+         MrJtYWAhOlI/KPJ3NN7jl0+nIYY0T5s0xGvT/uTJbduGSfVjLV1yH/PxowHpypmCwrky
+         KOtruhaUIDIDwf+0ecXe4Nfen75JFT/rxfU/fN/cH/ZgpJYFL+QWNa5Jy7Prv77flgEG
+         Gq0Q==
+X-Gm-Message-State: AO0yUKUvfpzo+H6vanQroyCwzNa8vpOBKu/hmYUtf1zU5FaERON3Hv1z
+	NV+IExvkc+iok9Iw7TZiOZ6E9I3XIA==
+X-Google-Smtp-Source: AK7set8RezWLgO8rJBbJEYH7HXlrkAborpT0Rbl7VhLs+8Jkmk2Zcuf8wsK3c7crwWe+tqDB/W2o0A==
+X-Received: by 2002:a05:6870:e0cf:b0:163:3b10:d366 with SMTP id a15-20020a056870e0cf00b001633b10d366mr6740835oab.47.1675966309737;
+        Thu, 09 Feb 2023 10:11:49 -0800 (PST)
 Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id r13-20020a05683001cd00b0068be61a7ac6sm970781ota.56.2023.02.09.10.01.26
+        by smtp.gmail.com with ESMTPSA id v35-20020a056870956300b0016a9f1616b0sm998708oal.5.2023.02.09.10.11.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Feb 2023 10:01:26 -0800 (PST)
-Received: (nullmailer pid 572794 invoked by uid 1000);
-	Thu, 09 Feb 2023 18:01:25 -0000
-Date: Thu, 9 Feb 2023 12:01:25 -0600
+        Thu, 09 Feb 2023 10:11:49 -0800 (PST)
+Received: (nullmailer pid 584278 invoked by uid 1000);
+	Thu, 09 Feb 2023 18:11:48 -0000
+Date: Thu, 9 Feb 2023 12:11:48 -0600
 From: Rob Herring <robh@kernel.org>
-To: Moudy Ho <moudy.ho@mediatek.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v4 03/16] dt-binding: mediatek: add MediaTek mt8195 MDP3
- components
-Message-ID: <20230209180125.GA557423-robh@kernel.org>
-References: <20230208092209.19472-1-moudy.ho@mediatek.com>
- <20230208092209.19472-4-moudy.ho@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, airlied@gmail.com, tomeu.vizoso@collabora.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, steven.price@arm.com, linux-mediatek@lists.infradead.org, alyssa.rosenzweig@collabora.com, krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 1/9] dt-bindings: gpu: mali-bifrost: Don't allow
+ sram-supply by default
+Message-ID: <20230209181148.GA575482-robh@kernel.org>
+References: <20230208103709.116896-1-angelogioacchino.delregno@collabora.com>
+ <20230208103709.116896-2-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5Gm=Onu2RK+skLgN4Kzo9yP1n5Zb48oQNkQ019838QeEQ@mail.gmail.com>
+ <0faf89cb-4709-17c9-0d67-da7ef2ddb7e6@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230208092209.19472-4-moudy.ho@mediatek.com>
+In-Reply-To: <0faf89cb-4709-17c9-0d67-da7ef2ddb7e6@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230209_100129_489256_CB7C6A5F 
-X-CRM114-Status: GOOD (  24.32  )
+X-CRM114-CacheID: sfid-20230209_101152_255880_4A42428C 
+X-CRM114-Status: GOOD (  27.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,187 +81,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 08, 2023 at 05:21:56PM +0800, Moudy Ho wrote:
-> Adds support for MT8195 MDP3 RDMA, and introduce more MDP3 components
-> present in MT8195.
-
-I'm sure I asked this before, but how are these blocks different from 
-what we already have in bindings/display/mediatek/. It's all the same 
-block names. If they are the same/similar h/w, then it should be 1 
-binding even if you have different consumers in the kernel.
-
-If my questions aren't answered in the patches, then I'll just keep 
-asking because I won't remember...
-
+On Thu, Feb 09, 2023 at 10:15:33AM +0100, AngeloGioacchino Del Regno wrote:
+> Il 09/02/23 03:50, Chen-Yu Tsai ha scritto:
+> > On Wed, Feb 8, 2023 at 6:37 PM AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com> wrote:
+> > > 
+> > > The sram-supply is MediaTek-specific, it is and will ever be used
+> > > only for the mediatek,mt8183-mali compatible due to the addition of
+> > > the mediatek-regulator-coupler driver: change the binding to add
+> > > this supply when mediatek,mt8183-mali is present as a compatible
+> > > instead of disabling it when not present.
+> > > 
+> > > This is done in preparation for adding new bindings for other
+> > > MediaTek SoCs, such as MT8192 and others.
+> > > 
+> > > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > > ---
+> > >   Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml | 4 +---
+> > >   1 file changed, 1 insertion(+), 3 deletions(-)
+> > > 
+> > > diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+> > > index 78964c140b46..69212f3b1328 100644
+> > > --- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+> > > +++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+> > > @@ -57,8 +57,6 @@ properties:
+> > > 
+> > >     mali-supply: true
+> > > 
+> > > -  sram-supply: true
+> > > -
+> > 
+> > Have you tried actually validating the device trees against this?
+> > Based on my previous tests this gives out errors.
 > 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> ---
->  .../bindings/media/mediatek,mdp3-rdma.yaml    |  30 +--
->  .../bindings/media/mediatek,mdp3-rsz.yaml     |   5 +-
->  .../bindings/media/mediatek,mt8195-mdp3.yaml  | 174 ++++++++++++++++++
->  3 files changed, 197 insertions(+), 12 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8195-mdp3.yaml
+> I did... and I didn't get any complaint... but perhaps something went wrong
+> on my side?
 > 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-> index 46730687c662..abc3284b21d0 100644
-> --- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-> @@ -20,8 +20,9 @@ description: |
->  
->  properties:
->    compatible:
-> -    items:
-> -      - const: mediatek,mt8183-mdp3-rdma
-> +    enum:
-> +      - mediatek,mt8183-mdp3-rdma
-> +      - mediatek,mt8195-mdp3-rdma
->  
->    reg:
->      maxItems: 1
-> @@ -46,20 +47,28 @@ properties:
->      $ref: /schemas/types.yaml#/definitions/uint32-array
->  
->    power-domains:
-> -    maxItems: 1
-> +    oneOf:
-> +      - items:
-> +          - description: for RDMA
-> +      - items:
-> +          - description: for vppsys 0
-> +          - description: for vppsys 1
->  
->    clocks:
-> -    items:
-> -      - description: RDMA clock
-> -      - description: RSZ clock
-> +    minItems: 2
-> +    maxItems: 19
->  
->    iommus:
-> -    maxItems: 1
-> +    oneOf:
-> +      - items:
-> +          - description: RDMA port
-> +      - items:
-> +          - description: RDMA port
-> +          - description: RDMA to WROT DL port
->  
->    mboxes:
-> -    items:
-> -      - description: used for 1st data pipe from RDMA
-> -      - description: used for 2nd data pipe from RDMA
-> +    minItems: 1
-> +    maxItems: 5
->  
->    '#dma-cells':
->      const: 1
-> @@ -72,7 +81,6 @@ required:
->    - power-domains
->    - clocks
->    - iommus
-> -  - mboxes
->    - '#dma-cells'
->  
->  additionalProperties: false
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
-> index 78f9de6192ef..4bc5ac112d2a 100644
-> --- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
-> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
-> @@ -43,12 +43,15 @@ properties:
->  
->    clocks:
->      minItems: 1
-> +    maxItems: 2
-> +
-> +  power-domains:
-> +    maxItems: 1
->  
->  required:
->    - compatible
->    - reg
->    - mediatek,gce-client-reg
-> -  - mediatek,gce-events
->    - clocks
->  
->  additionalProperties: false
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-mdp3.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-mdp3.yaml
-> new file mode 100644
-> index 000000000000..d2b01456c495
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-mdp3.yaml
-> @@ -0,0 +1,174 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/mediatek,mt8195-mdp3.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek Media Data Path 3 display components
-> +
-> +maintainers:
-> +  - Matthias Brugger <matthias.bgg@gmail.com>
-> +  - Moudy Ho <moudy.ho@mediatek.com>
-> +
-> +description:
-> +  A group of display pipeline components for image quality adjustment,
-> +  color format conversion and data flow control, and the abbreviations
-> +  are explained below.
-> +  AAL    - Ambient-light Adaptive Luma.
-> +  Color  - Enhance or reduce color in Y/S/H channel.
-> +  FG     - Fime Grain for AV1 spec.
-> +  HDR    - Perform HDR to SDR.
-> +  MERGE  - Used to merge two slice-per-line into one side-by-side.
-> +  OVL    - Perform alpha blending.
-> +  PAD    - Predefined alpha or color value insertion.
-> +  SPLIT  - Split a HDMI stream into two ouptut.
-> +  STITCH - Combine multiple video frame with overlapping fields of view.
-> +  TCC    - HDR gamma curve conversion support.
-> +  TDSHP  - Sharpness and contrast improvement.
+> I mean, I can retry just to be sure.
 
-Each block likely needs its own schema.
+You should need unevaluatedProperties instead of additionalProperties 
+for this to work. The latter cannot 'see' into an if/then schema.
 
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt8195-mdp3-aal
-> +      - mediatek,mt8195-mdp3-color
-> +      - mediatek,mt8195-mdp3-fg
-> +      - mediatek,mt8195-mdp3-hdr
-> +      - mediatek,mt8195-mdp3-merge
-> +      - mediatek,mt8195-mdp3-ovl
-> +      - mediatek,mt8195-mdp3-pad
-> +      - mediatek,mt8195-mdp3-split
-> +      - mediatek,mt8195-mdp3-stitch
-> +      - mediatek,mt8195-mdp3-tcc
-> +      - mediatek,mt8195-mdp3-tdshp
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  mediatek,gce-client-reg:
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +    items:
-> +      items:
-> +        - description: phandle of GCE
-> +        - description: GCE subsys id
-> +        - description: register offset
-> +        - description: register size
-
-Given these match up to reg values, I'm really wondering why we have 
-this.
-
-> +    description:
-> +      Each GCE subsys id is mapping to a base address of display function blocks
-> +      register which is defined in <include/dt-bindings/gce/mt8195-gce.h>.
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    minItems: 1
-> +    maxItems: 7
-
-You have to define what each clock is which probably depends on each 
-block.
+But really we want the default top level to allow this and then disallow 
+it in an if/then schema.
 
 Rob
 
