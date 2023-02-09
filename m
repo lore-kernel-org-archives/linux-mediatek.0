@@ -4,66 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E663CC05027
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 14:31:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B264C636D6
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 15:35:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3SDDobNw8IhsSeHChXAxs++SOI6CGdHlnbv8CLYWp4w=; b=xhbrCeRkodyXN/VYuDh0yxp2DH
-	3jXuR7tCwFwQ1Ts3bq6KbareE3vxkXG5MRZ6tC4BjZUZd0nOSgDpnA1xf/9gWzXJmkLojGpNpl4NU
-	vDrxU4j/4wkZ5zq4OqC/cGau9+l+L7bpW+k4lvJFYdfH4XiwTCSAgEEEePGK7M+7kVizhHM+o8OFi
-	xyAxUKFrJzKxwL3VmvYvv2s5sjKpLzgtz2IKUCRpyYG9Jy/YjIa8vu9KFe0ZIDdcw0F0VK30czWXy
-	fLdcJThNKljogg6SsRN17HusyHhNaBx+BDbh3dLVyN0ei6RJ84uLRCEhlbOUVvDyrpf/Kso4DibxN
-	jmplsAyg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Tq8yGCw5g55228TSVXqVlwEC96LSIgCuU4gj18BrnfY=; b=xV3iNhVhSOEqM8Lw6g82pi5WgF
+	yrIFjyD0EkIe+FX6JDu64RQ2VT1X7bcOLYJ38c0ha8HQflnNwdNhOKPSPAMhYmfvLZMnQGo+SR/3C
+	6LmXY6tESMQMRFt1yBYMn99CaHIIvzP1NST6Qlwum+Px7oYZ3nyY9Qp3l2Ai5k9ac4JCoEcF3I9LC
+	PvBJt9caAkTFKPbE9a2ETTV34zzhp5sjTBMOUTSpsxcTSu/YtiyTYtuW+0rZG9V4FMa7OPxx50k8L
+	8HER5k5mouvfjZHEorkNi00Ld6j05K+CMA0KaWBsFtKrgtj6JdX3ioAcoEmffFwG+NfPCHunk51fh
+	+iEs4RPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ7xV-001zCr-F7; Thu, 09 Feb 2023 14:31:33 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pQ8x1-002EcN-UC; Thu, 09 Feb 2023 15:35:07 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ7xJ-001z8d-1j; Thu, 09 Feb 2023 14:31:23 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 6720A61A91;
-	Thu,  9 Feb 2023 14:31:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EAA0EC4339B;
-	Thu,  9 Feb 2023 14:31:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1675953080;
-	bh=zAwLjTfHZkA4Un8Wr96bawLWi9udk66aSBO3uZqtYAo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=VG5jFqXowBO4k3HxzeJWpfut2l0emYLJiIhkuZRgIavsBSTDTP8w9UHu5bMOwz6az
-	 KDhpEkzdmx8AzjN6VDm3d79kkWwGfKZ3zv15VslgJvIfWn3BckIIPOx26HRHPWsb7+
-	 JUSX7XenJnIUONq8rg7BC9rIb1aNamgywSg1Qtdtz4ZccT/Q+XGmD8xK8Rvo7PWZxM
-	 DZc+yN0yeqppujKqn3ectEj7YYmTNaWjfKoVbeZVsHfGgs9xz7l8BkQUfJC0oKeLG1
-	 no+cx8P3SwCP4tVqMjsVHdGRKJyNTjEFUN5PvJ3xy81FNkix+uaId+dWBihVWuzVgt
-	 ZNhw/sUJ5xMDQ==
-Date: Thu, 9 Feb 2023 16:31:07 +0200
-From: Mike Rapoport <rppt@kernel.org>
-To: Matthew Wilcox <willy@infradead.org>
-Cc: Jonathan Corbet <corbet@lwn.net>,
-	Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	chinwen.chang@mediatek.com, andrew.yang@mediatek.com,
-	linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-mm@kvack.org
-Subject: Re: [PATCH] mm/doc: Replace isolate_lru_page with folio_isolate_lru
-Message-ID: <Y+UDq2DYJJSA3L60@kernel.org>
-References: <20230131062853.28449-1-Kuan-Ying.Lee@mediatek.com>
- <87a61wvtcs.fsf@meer.lwn.net>
- <Y+Twr+g8PPL3uKhL@kernel.org>
- <Y+T78Wzeg3BgwiuY@casper.infradead.org>
+	id 1pQ8wy-002EZp-Rq
+	for linux-mediatek@lists.infradead.org; Thu, 09 Feb 2023 15:35:06 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id m14so2140154wrg.13
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Feb 2023 07:35:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Tq8yGCw5g55228TSVXqVlwEC96LSIgCuU4gj18BrnfY=;
+        b=tkeWbi9wJTc9MeRzDy7qt1yPzQkZQNYP6/bgOt9vpo8YMSazZ45GxT4G3k0vGuQKqG
+         3VMLzYSNoYmjAfnVkuHgGePIMkbxJ9V+pc+9mwmrBS+bCkAEknjI0NXxjQ3sf8hAgtlV
+         AWu2ZCfMG/1mQyG13CnD2A//AmEx1IcELAJqdb8DZJlhKZ2jRqlIwS+jBzUGX0SOrETz
+         UKcs8NkqrqRP1RUE/5Ac7ABvd86WoXCLgsBxsfYWsE2oKMqvsqXkYSTG7pLArmd22aW0
+         m4Isc8M48QrwUYMXDz6NGDj5kU0TySAdvfz7/hmwS7MrRNAmG4D+KKfDDWTpJwovGsY+
+         ml7g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Tq8yGCw5g55228TSVXqVlwEC96LSIgCuU4gj18BrnfY=;
+        b=ikcQSRswMRDK16gF2u0uM26iVr18LQLusQTyRGJBmdC7zlcsvicnJ2mzoM1gZt8DQs
+         y7ylXmudtFm4cGA2QnuQrq8i2qCfvJw6H0i5OQqfzoh+lyN4LIyuQBxD/VsCLrdwLkc6
+         WHIOz/wFGgwLTaNh9Wl1p6BYMYRHih4N1IbAKFwutfAmNEplzJk7UcV66/dmGdRQSQPw
+         gKIKrYt+6yoWCoeF+aCdEtJbW4gSwgswxnmEhu3NyGt9sfX1bBSy7oRvfroCzglapisY
+         jPoejrK9CL34RzSOT85IRgZ5FeHe7dT7ePeQbQWEEvqzPTx8ADhsa61acuJN/oCu3H34
+         EA/g==
+X-Gm-Message-State: AO0yUKWvylb/8JjdNucScPMO9nFFgYkX3TYa0jM54INEIDXkKnF77C7Q
+	ezLvC2O/m0yF+K6NjBPvEauicg==
+X-Google-Smtp-Source: AK7set8xTgUyE+Dwtou5d4+iZUWo5Vra04tsnSr6qBKJsukN5Tl3gL04SGtgKiJb8efwj/hPHlEgpg==
+X-Received: by 2002:adf:d847:0:b0:2c4:645:da29 with SMTP id k7-20020adfd847000000b002c40645da29mr4972638wrl.65.1675956899678;
+        Thu, 09 Feb 2023 07:34:59 -0800 (PST)
+Received: from [172.17.49.168] (wifi-eduroam-trans.univ-tlse3.fr. [195.220.58.237])
+        by smtp.googlemail.com with ESMTPSA id o26-20020a5d58da000000b002c3f1223059sm1525636wrf.36.2023.02.09.07.34.58
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 09 Feb 2023 07:34:59 -0800 (PST)
+Message-ID: <5821b2c6-0e50-5a75-0d11-c299e68cb200@linaro.org>
+Date: Thu, 9 Feb 2023 16:34:58 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Y+T78Wzeg3BgwiuY@casper.infradead.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH 1/3] time/sched_clock: Export sched_clock_register()
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, walter.chang@mediatek.com,
+ Thomas Gleixner <tglx@linutronix.de>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "Maciej W . Rozycki" <macro@orcam.me.uk>, John Stultz <jstultz@google.com>
+Cc: wsd_upstream@mediatek.com, stanley.chu@mediatek.com,
+ Chun-hung.Wu@mediatek.com, Freddy.Hsin@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230208094813.20874-1-walter.chang@mediatek.com>
+ <20230208094813.20874-2-walter.chang@mediatek.com>
+ <e1a89a4e-8a0d-47e1-a8fd-75ea152ef816@linaro.org>
+ <ad3a5c30-5062-55ae-7908-c0a127bec5ee@gmail.com>
+ <3bbc55b8-6b12-4e81-026d-75e0c9116a7b@linaro.org>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <3bbc55b8-6b12-4e81-026d-75e0c9116a7b@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230209_063121_151954_59A6A51C 
-X-CRM114-Status: GOOD (  30.42  )
+X-CRM114-CacheID: sfid-20230209_073504_924873_7EF1C4C7 
+X-CRM114-Status: GOOD (  12.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,43 +102,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 09, 2023 at 01:58:09PM +0000, Matthew Wilcox wrote:
-> On Thu, Feb 09, 2023 at 03:10:07PM +0200, Mike Rapoport wrote:
-> > On Thu, Feb 02, 2023 at 11:02:11AM -0700, Jonathan Corbet wrote:
-> > > Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com> writes:
-> > > 
-> > > > Since we introduce folio, replace isolate_lru_page() with
-> > > > folio_isolate_lru().
-> > > >
-> > > > Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-> > > > ---
-> > > >  Documentation/mm/page_migration.rst | 6 +++---
-> > > >  1 file changed, 3 insertions(+), 3 deletions(-)
-> > > 
-> > > This seems like a good patch to copy to linux-mm - done now.
-> > > 
-> > > The patch perhaps is a closer match to what's in linux-next, but it
-> > > seems that, if we're going to update this document, we should reflect
-> > > the use folios throughout?
-> > 
-> > Most of the current users of migrate_pages() still use isolate_lru_page()
-> > so I think that updating page_migration.rst to folios is premature.
-> > But when we do the update it also should include the translations.
-> 
-> It's a slim majority -- 9 of isolate_lru_pages() and 7 of
-> folio_isolate_lru().  I don't think that changing the documentation is
-> premature; we should document the functions we want people to use.
-> I'd be surprised if isolate_lru_pages() still existed in six months.
+On 08/02/2023 20:45, Krzysztof Kozlowski wrote:
+> On 08/02/2023 20:41, Matthias Brugger wrote:
+>>
+>>
+>> On 08/02/2023 15:24, Krzysztof Kozlowski wrote:
+>>> On 08/02/2023 10:48, walter.chang@mediatek.com wrote:
+>>>> From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+>>>>
+>>>> clocksource driver may use sched_clock_register()
+>>>> to resigter itself as a sched_clock source.
+>>>> Export it to support building such driver
+>>>> as module, like timer-mediatek.c
+>>>>
+>>>> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+>>>> ---
 
-That's a bit of a problem when documentation describes how things are done
-rather than how to do them, but I don't have a strong feeling about
-updating the docs while we are still in the transition period or postponing
-it until e.g. isolate_lru_page() is gone.
+[ ... ]
 
-But in any case, this should be much more comprehensive update rather than
-replacing two occurrences out of three in a single file.
+> ... and actually test if the system works fine when booted from such
+> clocksource as a module. I have doubts that and unfortunately folks
+> working on GKI like to put whatever stuff from mainline into modules
+> even if it does not make sense for us (see long time ago discussion
+> about pinctrl drivers).
+
++1
+
+It is not the first time there is a proposal to convert the timers to 
+modules. After asking, nobody came with a real study regarding the 
+impact of the modularization of these drivers vs the time core framework 
+and the benefit.
+
+My gut feeling is that is not that simple.
+
 
 -- 
-Sincerely yours,
-Mike.
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
+
 
