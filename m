@@ -4,62 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 179B7C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 09:25:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E5F1C05027
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 09:26:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8yGsy+D3K32EJZcd3XVuuYIfqTdsqaq1I5KLcvqf6iE=; b=f7BTdcuf0O3nXj
-	qM3RN40lZ4rW81U1MFaEdhGiVHev4o862D22DADlnvSJP2JukOC0KjpJU0Q9pTCdUEiuddHuxrhRW
-	IZfyFFXi8VDWF5ujOsaYgA+bf58anoFhBDu8U9PjRGA/OJT33B1844/25gmPLzjd/sX6oVF+Gs0cE
-	3poqx8Mv9RFVFPu2QB0dYdUE4a552tzuNwMCOcqv7pRN46TM/YU3LQYEoWdNwH6bDIw/Q2zPy1ePc
-	NZ/fag5G23nq76t6bTZ1QvP+VjlVz+JWgM+3+s+K77CMqfkYN5A7+71ux7NhJyJMQ/Zbkhz9kEvqa
-	o62VWpEKWNaLn/MBWrHg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=lBH1xliTXKQyulgtFrOAWKcw+PXjkAKSnrfNqBTlAok=; b=qcumsftebpg3kWEkPEffanVsUc
+	YM7mCV4hCgTkMS4THMPlFHC8VyqW/3h/SBHo0fYzmVz1PaifKz0REwa4wTBL9N1fu9rWKOOPk5h0h
+	YAM1if+2OURUqyiRCtS7NYmfQZdt86lG2jSJ5jcQ5rk6pmaMMWeTEF07EkUAtlN/1H4ldNB7vslZL
+	rMBdOrnbpQ0De2ELAzdRtxYQ9Dbi9rR13OLWSg75LAikT5g8UTqG8Vz00DjMYD/t8VXSfmshyMm4M
+	gjBSSaixh14ckZSTsrILkopeXK8jqpFHova3s1+jgM9Xeo44m1CpBNMSnOJhA7QOz4eSBmPQ35DQ5
+	xhJWqSDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ3Aq-000nCl-Uc; Thu, 09 Feb 2023 09:25:00 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ36q-000l2r-DL; Thu, 09 Feb 2023 09:20:53 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2093366020BC;
-	Thu,  9 Feb 2023 09:20:48 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1675934448;
-	bh=XK89DpHTkrbWesh1OFAIn18zG/r2PRgD+/v++LschwY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=lqtvD/mTT0Ly2chZp849w/RLuviHsFeOJD1cgW9SpALvw1pwRE8yT88jAUe2ufll4
-	 6AWlK77SBPAlnFztsCo9KFtM87fQTk1BcnhfYQfRponS3JVsPEpgsCy4Q9h3ivveI+
-	 LDmYQ5fL/rA2f4/vt9vHT4x2Z6ABhoBwABrXfRC6FT9Zbi12hasLs7uBhkL4FmZmGU
-	 5+yYxapS1gsYEQ2Mbs5gRHvt1+VTnABTwUboGxPgRv30vUFMx6Qtejs/lC1CKSNv7W
-	 uLkCvo1z3CZ936nCMnQqbqlbNLcj2vtMjQwD+Gxs/gkckCtgohqkcYYB/UcOmMszSp
-	 F/6dOiDm357Pg==
-Message-ID: <7784f5a2-3cfc-9999-0ad6-cb9cfc1f2822@collabora.com>
-Date: Thu, 9 Feb 2023 10:20:45 +0100
+	id 1pQ3Bp-000nhZ-81; Thu, 09 Feb 2023 09:26:01 +0000
+Received: from smtp80.cstnet.cn ([159.226.251.80] helo=cstnet.cn)
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pQ3Ay-000nFn-Lb; Thu, 09 Feb 2023 09:25:10 +0000
+Received: from localhost.localdomain (unknown [124.16.138.125])
+	by APP-01 (Coremail) with SMTP id qwCowAB3eETvu+RjIT40BA--.2876S2;
+	Thu, 09 Feb 2023 17:25:04 +0800 (CST)
+From: Jiasheng Jiang <jiasheng@iscas.ac.cn>
+To: mchehab@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	moudy.ho@mediatek.com,
+	daoyuan.huang@mediatek.com,
+	hverkuil-cisco@xs4all.nl
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Jiasheng Jiang <jiasheng@iscas.ac.cn>
+Subject: [PATCH v3] media: platform: mtk-mdp3: Add missing check and free for ida_alloc
+Date: Thu,  9 Feb 2023 17:25:02 +0800
+Message-Id: <20230209092502.34300-1-jiasheng@iscas.ac.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH 5/9] dt-bindings: gpu: mali-bifrost: Add a compatible for
- MediaTek MT8186
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-References: <20230208103709.116896-1-angelogioacchino.delregno@collabora.com>
- <20230208103709.116896-6-angelogioacchino.delregno@collabora.com>
- <CAGXv+5FZqrGzzG8FrmLVzMd7=a23ZJPYGSy5yhYWgH+BFHNmxw@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5FZqrGzzG8FrmLVzMd7=a23ZJPYGSy5yhYWgH+BFHNmxw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: qwCowAB3eETvu+RjIT40BA--.2876S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7uryUZFy8Kr4DAF4rKw45KFg_yoW8Gry7pr
+	WIgw47CFW5GFsrKF4Iy3W7uF45AwnY9ayUWFs2v3yxAas8WrsrGryUCasYvryktry8Ja47
+	tr4jqr1furWYvaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUU9K14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+	1l84ACjcxK6xIIjxv20xvE14v26r4j6ryUM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
+	6F4UM28EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwVC2z280aVCY1x0267AKxVW0oV
+	Cq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
+	I7IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAFwI0_Gr0_Cr1lOx8S6xCaFVCjc4AY6r1j6r
+	4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628v
+	n2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCY02Avz4vE14v_GFWl42xK82IYc2Ij64vIr4
+	1l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8GjcxK
+	67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r1q6r43MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI
+	8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I0E14v26r4j6F4UMIIF0xvE42xK8VAv
+	wI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14
+	v26r4j6r4UJbIYCTnIWIevJa73UjIFyTuYvjfU8CJmUUUUU
+X-Originating-IP: [124.16.138.125]
+X-CM-SenderInfo: pmld2xxhqjqxpvfd2hldfou0/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230209_012052_629187_7F48DC14 
-X-CRM114-Status: GOOD (  13.82  )
+X-CRM114-CacheID: sfid-20230209_012509_135447_C4491724 
+X-CRM114-Status: UNSURE (   9.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,32 +79,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, tomeu.vizoso@collabora.com, Nick Fan <Nick.Fan@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, steven.price@arm.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, alyssa.rosenzweig@collabora.com, krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, airlied@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/02/23 09:49, Chen-Yu Tsai ha scritto:
-> On Wed, Feb 8, 2023 at 6:37 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Get GPU support on MT8186 by adding its compatible.
-> 
-> I'd skip MT8186 for now. We have to work out some binning details for the
-> OPP, in particular how to deal with both Panfrost (or Mali) and SVS adding
-> the OPP table. We were just looking at the Mali driver today.
-> 
+Add the check for the return value of the ida_alloc in order to avoid
+NULL pointer dereference.
+Moreover, free allocated "ctx->id" if mdp_m2m_open fails later in order
+to avoid memory leak.
 
-Dealing with binning is fairly easy... I have something already done for
-that one, but I'm not sure that it would be the best option.
-My solution makes use of opp-supported-hw by "standard means", but perhaps
-let's have a separated conversation about it?
+Fixes: 61890ccaefaf ("media: platform: mtk-mdp3: add MediaTek MDP3 driver")
+Signed-off-by: Jiasheng Jiang <jiasheng@iscas.ac.cn>
+---
+Changelog:
 
-I don't think that skipping this would give any benefit though, because
-that is only adding a compatible and whatever binning support would have
-to be generic and 99% not bound to any mediatek specific compatible.
+v2 -> v3:
 
-Angelo
+1. Fix the goto label.
 
-> ChenYu
+v1 -> v2:
+
+1. Fix the check for the ida_alloc.
+---
+ drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
+index 5f74ea3b7a52..a2d204e90aa4 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
+@@ -567,6 +567,11 @@ static int mdp_m2m_open(struct file *file)
+ 	}
+ 
+ 	ctx->id = ida_alloc(&mdp->mdp_ida, GFP_KERNEL);
++	if (ctx->id < 0) {
++		ret = ctx->id;
++		goto err_unlock_mutex;
++	}
++
+ 	ctx->mdp_dev = mdp;
+ 
+ 	v4l2_fh_init(&ctx->fh, vdev);
+@@ -617,6 +622,8 @@ static int mdp_m2m_open(struct file *file)
+ 	v4l2_fh_del(&ctx->fh);
+ err_exit_fh:
+ 	v4l2_fh_exit(&ctx->fh);
++	ida_free(&mdp->mdp_ida, ctx->id);
++err_unlock_mutex:
+ 	mutex_unlock(&mdp->m2m_lock);
+ err_free_ctx:
+ 	kfree(ctx);
+-- 
+2.25.1
 
 
