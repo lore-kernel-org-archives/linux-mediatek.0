@@ -4,60 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27BC8C636D6
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 16:24:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D064C636D6
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 16:29:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=5nOJyxJwVyTDsDVXocGIO+17IABv/8jaO6RNufzijKY=; b=Tvqj9xLLToBonJC7CU2Kh1P23X
-	gDtEBMfwfE7QykD5dWCr4HnC6Mbk32b3gqItxKfeDk7Wyo7fsbRivyW97uyTJFZLzfeb2VOhOTjAS
-	8g2CcXzTo1n2UEEzPZ7Pbs7b/D05SYbrBKJB3ZFEjhknPAgJSd0IGHD4my53FQxg2CtZBB4qvAZ5e
-	PLqBpSZQAvNOopfGoxp2G04gVJOckAYG9ggBSKzt4kIxWH0S0B9vSdKvFImyDYtKbnN+70D2r9XkB
-	OCNMeQOhQYpViMgUE4silOCycfPuo7OUZvA7EbJP4BbCDTvolo9AErhmc4yp5m6pI226ZlVtJR0t0
-	h/h4K85A==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FzF9eAogvOx6DhR2a91i2ZoPxlv9ZBFly+RK60Plfuc=; b=LA2vJKokbmdiPo8ZSbRbhT7GdG
+	LS+lFka8f3RMCl/gYWfCkPYCVsBJEYzweHZcw0Z3r58kHVagVz2Z+eE3SpB/JYkMtha+wGaAYZ+Zd
+	GTfZtO8KogpwSWGrYEazsIDuM5cs7ooDXVZcH7kL9kv9kyyPXCP+JX9U7VmDzMiTkHzgYYQpPWcT1
+	ApmQubIfg4pwWxAMtAWBv3fAX2wMhnrDr+PJzjXaDti6EvhhWaMI/pddJq41dU7rnyEN+wLc+ch/C
+	ZkguYJD0p0UiECuEzqQGvYoH9K8m4wWNYVpXoCVXkO8aO0rQ2XbbpAn+M9qnOF7MTtRglHSqJCbXQ
+	NxNVsLzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ9in-002PJf-Nx; Thu, 09 Feb 2023 16:24:29 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pQ9nN-002QYQ-LC; Thu, 09 Feb 2023 16:29:13 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQ9id-002PFu-9h; Thu, 09 Feb 2023 16:24:20 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id D628561B11;
-	Thu,  9 Feb 2023 16:24:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BA9E3C433EF;
-	Thu,  9 Feb 2023 16:24:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1675959858;
-	bh=ylKCMMud2Zsh10OZZ6A3WtVHDEvxQmFf8psavqmf5og=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Sny2gS7ZYNfyI4GtLmyH+FcNKMId23prYAZLOUStaE3eMwh+J2MfIfdo3ms3wZh+U
-	 QtI8VFiTLOemvDMhLt9s/XnHGvp7Npxj8OoJjy99++imPHPj6CK7f3S9S1MFB6tlzF
-	 Ae1itnhlSaJH/szbTGshwlx9uVtBMb3ccBGe0vS5WP+gMTIhjeG7kcAQ0OWRAB2kqG
-	 L4m1Do7Gxwbqps57FO1yDF6cpZ5YYkN0F7KUokdbBdlGVSH0JxzRnDUgh3ifo42NpR
-	 6MwFXsNoyIZEQdctQcYa/09b6rNo6/GwegaB6zCviJPzuBeC2EhJLC4ArsMggEgDHc
-	 0t4+FZWvCmP+g==
-From: matthias.bgg@kernel.org
-To: matthias.bgg@gmail.com,
-	roger.lu@mediatek.com
-Cc: nfraprado@collabora.com,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	angelogioacchino.delregno@collabora.com
-Subject: [PATCH] soc: mediatek: mtk-svs: delete node name check
-Date: Thu,  9 Feb 2023 17:24:03 +0100
-Message-Id: <20230209162403.21113-1-matthias.bgg@kernel.org>
-X-Mailer: git-send-email 2.39.0
+	id 1pQ9nB-002QSk-8m; Thu, 09 Feb 2023 16:29:02 +0000
+Received: by mail-wr1-x429.google.com with SMTP id r2so2334441wrv.7;
+        Thu, 09 Feb 2023 08:28:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=FzF9eAogvOx6DhR2a91i2ZoPxlv9ZBFly+RK60Plfuc=;
+        b=CGmKHpTe1n7CVdM6lIWmn0S2EacNl6DiIqfvZ46zXCE1t4ovO+Qfmt4890hCS/8Lw/
+         yHcDfmeDbgxaVNNhCP3DjynNzvL5awS89c88DyvPp+/w9v8asIij8kEVLFFQNntDjW2M
+         q94xpenOTSKkSQ7A2LYzv0JwU3q63TrLoks3cpDB4THv0AsMN4HYvUxpHI0qsd+k0qLZ
+         H/SghtYKfsORV2zUXNpFZ5UIWEp3p5h5OTveEO6jgbgDkCxjw2WWWNMVJT2CDPPsKAcp
+         SjZmMf9oulSx9PI91SiBa0uMsScv2/uVcSttlTix0yY4uVlnc4gudFOIjw+YpQ0+uvR1
+         ROtg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=FzF9eAogvOx6DhR2a91i2ZoPxlv9ZBFly+RK60Plfuc=;
+        b=4LkvWcRs4pLhCDU/93vnUCkEWm62Las8SJ4hShZdCOgnZS3NjzQJbEdKmSGnejHk/Z
+         ccPK1IJO4LWlOSb0oUPilO6pDO603QSNOAAtByR2fw+V0x8qipt/Av/Z2iy+AsKpPt20
+         JWFW3NJExd7wzsPi1pwzh6JcjTCbBy0bYicomEo4c/1ZJCDIhg4VRJAiPZJU9rA7gpBb
+         yICAtx4yqB4RUagY7qCj4i3uwgyl0bJLFhUy395+WEiaBVCb0hi3+OjQonDbe4GP9h3J
+         SBcQPRtdwiXvcLvU/d28TKbLbOF3u+XvYNVVRlFOfAu4n2mQ+HrJ5YQsTPugUa6XMob+
+         GbkA==
+X-Gm-Message-State: AO0yUKUul3XmoB8jyqPvGipHuEGQTHFm/CY5MqPefx4zsfR1Z4U5Hq3m
+	xyJE82DMH+PhYzxfgHBPaUQ=
+X-Google-Smtp-Source: AK7set/aVmWH+3EhitjZ323M3nNLTEgTNM5fEVmtAeNYKcVFc3as2a5mvQv7SSu8LOsaNId3rbG5uA==
+X-Received: by 2002:a5d:595f:0:b0:2c3:db98:3e96 with SMTP id e31-20020a5d595f000000b002c3db983e96mr13264222wri.22.1675960137472;
+        Thu, 09 Feb 2023 08:28:57 -0800 (PST)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id l5-20020adfe9c5000000b002c3e7474b0fsm1655208wrn.13.2023.02.09.08.28.55
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 09 Feb 2023 08:28:56 -0800 (PST)
+Message-ID: <29a867d1-12a7-449f-8d52-aaac7a622c59@gmail.com>
+Date: Thu, 9 Feb 2023 17:28:55 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v14 3/6] arm64: dts: mt8195: Add efuse node to mt8195
+To: bchihi@baylibre.com, daniel.lezcano@linaro.org,
+ angelogioacchino.delregno@collabora.com, rafael@kernel.org,
+ amitk@kernel.org, rui.zhang@intel.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org,
+ ye.xingchen@zte.com.cn, p.zabel@pengutronix.de
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com,
+ rex-bc.chen@mediatek.com
+References: <20230209105628.50294-1-bchihi@baylibre.com>
+ <20230209105628.50294-4-bchihi@baylibre.com>
+Content-Language: en-US
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20230209105628.50294-4-bchihi@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230209_082419_395146_4D53C96D 
-X-CRM114-Status: GOOD (  11.90  )
+X-CRM114-CacheID: sfid-20230209_082901_316735_B7FF6C1D 
+X-CRM114-Status: GOOD (  14.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,36 +98,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Matthias Brugger <matthias.bgg@gmail.com>
 
-The function  svs_add_device_link is called only internally from the SoC
-specific probe functions. We don't need to check if the node_name is
-null because that would mean that we have a buggy SoC probe function in
-the first place.
 
-Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
----
+On 09/02/2023 11:56, bchihi@baylibre.com wrote:
+> From: Balsam CHIHI <bchihi@baylibre.com>
+> 
+> Add efuse node.
+> This will be required by the thermal driver to get the calibration data.
+> 
+> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Link: https://lore.kernel.org/r/20230124131717.128660-4-bchihi@baylibre.com
+> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
 
- drivers/soc/mediatek/mtk-svs.c | 5 -----
- 1 file changed, 5 deletions(-)
+This patch is already accepted [1], please drop it from your list.
 
-diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index 299f580847bdc..a7eb019b5157d 100644
---- a/drivers/soc/mediatek/mtk-svs.c
-+++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -2027,11 +2027,6 @@ static struct device *svs_add_device_link(struct svs_platform *svsp,
- 	struct device *dev;
- 	struct device_link *sup_link;
- 
--	if (!node_name) {
--		dev_err(svsp->dev, "node name cannot be null\n");
--		return ERR_PTR(-EINVAL);
--	}
--
- 	dev = svs_get_subsys_device(svsp, node_name);
- 	if (IS_ERR(dev))
- 		return dev;
--- 
-2.39.0
+Regards,
+Matthias
 
+[1] https://lore.kernel.org/lkml/104bb37e-55c3-8dd0-f501-0e8a142511e6@gmail.com/
+
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 6 ++++++
+>   1 file changed, 6 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> index 5d31536f4c486..09df105f4606d 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -1380,6 +1380,12 @@ pciephy_glb_intr: pciephy-glb-intr@193 {
+>   			dp_calibration: dp-data@1ac {
+>   				reg = <0x1ac 0x10>;
+>   			};
+> +			lvts_efuse_data1: lvts1-calib@1bc {
+> +				reg = <0x1bc 0x14>;
+> +			};
+> +			lvts_efuse_data2: lvts2-calib@1d0 {
+> +				reg = <0x1d0 0x38>;
+> +			};
+>   		};
+>   
+>   		u3phy2: t-phy@11c40000 {
 
