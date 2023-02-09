@@ -4,73 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE15DC636CC
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 02:50:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11ECAC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Feb 2023 03:46:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BYIk4P2p6gp1gkykneVTXGgTOGI8BQeMJrJn0G8vBFQ=; b=AGZITqBNPT8krUVwaY+lgPangR
-	yMxvnH0N5bvlmD/MqvvxOxp3Nq08dgZWtZtUYLGWrUdOeQqnh/c0XZax8f6FMA65Lvsve6SmAtSHc
-	v6M6Mn2cbTn+vczIvSBHGoFYWPzy+vpSxVRxB9SqjmxHjefP0EgVhi/1W4C2Wg5O/aWyUgNC/MAMK
-	1mZ2U3n6ycD3PQNPk2DDiirmUbbkv1yN4jHgulf3XBrEQAnR9/X+utRyYpHoJoReiUtxhyBNgvhy3
-	RsK2r5z1nAwHwtAaJ4FfayiDeg2yzrWks3SEghm5wS4agrVOYv2ulsbPCOvb1czjiXT4inPoZKoAp
-	nQj1Bn9w==;
+	bh=EmM543SraV9o9ha1YM1vALY7ObPvW/K+6GDnAjPWuvs=; b=Xx5mQVm95rpur2IhL4eAdhMzsi
+	8Gpq1W17nUJ2JqtKmQweVrPPNwPTt4B3vOwqyWpwxID4XmCqjiymgnWoS47j8V1itlUgrzxMq8NcI
+	6v38jLJH5tRyuOukdMRQ74kTpHepl7HW501GJyYtaooM1Kkj4epo8eycor8RT7xgov9YjwVMqW55Q
+	wHdCV5Vd/v9C+P/ksXZ4sFVgoE6NUrvAlb1Vs+zBAhoigpz6jPggGP7p1MqTRTC375bVEGMdL561T
+	5EMr93khCxwfDyijEGJdTAzkIpnyBjENDps9qIacqgtZgtMIA3t/aM7ktkExbEiSNFf0Ny91w+IJS
+	riTs+Nbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPx1G-00HXiF-EK; Thu, 09 Feb 2023 02:50:42 +0000
-Received: from mail-io1-xd2f.google.com ([2607:f8b0:4864:20::d2f])
+	id 1pPxtL-0003OM-5c; Thu, 09 Feb 2023 03:46:35 +0000
+Received: from mail-vk1-xa35.google.com ([2607:f8b0:4864:20::a35])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPx15-00HXfm-8d
-	for linux-mediatek@lists.infradead.org; Thu, 09 Feb 2023 02:50:32 +0000
-Received: by mail-io1-xd2f.google.com with SMTP id y7so192701iob.6
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Feb 2023 18:50:30 -0800 (PST)
+	id 1pPxtB-0003MM-93
+	for linux-mediatek@lists.infradead.org; Thu, 09 Feb 2023 03:46:26 +0000
+Received: by mail-vk1-xa35.google.com with SMTP id i38so343040vkd.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Feb 2023 19:46:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=BYIk4P2p6gp1gkykneVTXGgTOGI8BQeMJrJn0G8vBFQ=;
-        b=HtmNzDuqZVPNnKVKdiDx+Z3cYsXnlZoWJEZPqX81nlx4s12FG5mKWN7Iz8QgRroITS
-         uI/SE/a6wLxuTbZ2XqIIRFA0hAyZXeC//DLKyZBwhoYviw0jixTfnpdaGsaTmcSOV3n6
-         NcyRBoPWk0t+FdFXhhVMlviUuItG+Tvvb8OQg=
+        bh=EmM543SraV9o9ha1YM1vALY7ObPvW/K+6GDnAjPWuvs=;
+        b=hV2Bl2quJGDMv8WcOFW78Co3V9C483w8NksmhyOC0ub+Lk+KeZbdoh2ZshULAJ+HOc
+         YXXeGCFF+CsnZwq2/BL6geEnM3BBMt+vwJVBxLsV2UTPXpoH62VG0t/4rGWXk2SJ+L2l
+         hlr0e07DL0cmpVez+XpFQK74vEUpr2SrGye/A=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=BYIk4P2p6gp1gkykneVTXGgTOGI8BQeMJrJn0G8vBFQ=;
-        b=LFO1DEF6Fmw0Pirm0XexR5qDk0YADtVmO26u+AUDFD9YlBeRSgiSeokPaExLIzI3J2
-         mTxA01pn6fHV/dfhRorJjecRxXv5sRUB9lwa7jDX7ErXRVuURd8pb3UOofBOn38rw4EB
-         eME/msryfe0fmBBqD6LKqrUqCGIDO9o7gcHszp8nyH6m+bEnffjooIn+bvrUZVrBS3Pp
-         pBSFcP/3RNBrNm4j7rr6W1CrPBFdD449gylRbB5eA7GxViOK+mWRNQep43COEeUQ2nSr
-         MCd28TyO6BU2OljEPhIrRWBXiIGMNEzfu/9zjfOSO4QK5GsFRIeatpuxy0lZKc9HTSUM
-         03XA==
-X-Gm-Message-State: AO0yUKV8DOHpJ64tkhmNWLLeberr5CPLNNqWkXEMV5eegL4jIcKCX820
-	AiEziuN6tRQvjgmuBnuaYGlJnQbhHTW+3QcdwA6TuQ==
-X-Google-Smtp-Source: AK7set+bvKsydzGygJFYL5iQOvjw3Jv58rqgkJyZjXTUoGYryQCk+flVM83OAnzthJ9iLUo6Kt6Ev143YXLr6ftrCik=
-X-Received: by 2002:a02:cc37:0:b0:3a9:6b85:41ed with SMTP id
- o23-20020a02cc37000000b003a96b8541edmr6496673jap.57.1675911029590; Wed, 08
- Feb 2023 18:50:29 -0800 (PST)
+        bh=EmM543SraV9o9ha1YM1vALY7ObPvW/K+6GDnAjPWuvs=;
+        b=RDnfcfy/qvaO/BGRq0b/Pt9VTlZQUcchtOBY2ATC1dyYw09xr9+qZlg3cMAOKaiQqr
+         Sn2QZEEUJbJ6TT4YYsPET/NYe68iHaDVI/6O5mO49YKF+DL3hqbS5qnZMOYRW9nqJe4k
+         1dEngk/B065dP9pAU5SOxS1nB+BZdkBlzYzL+ke104qLKYD/qrHttvKEhf8fL76pMyrt
+         7bAl0GB66KsufjB1cj8YS8DQicXO0XUS1qoOfLFWJHfH0xZ2YEofxfRciUrahYDGgrBF
+         QL1fQuUD7QQ4uxWBKEk+2ZNAi3FwoPBW/dsF6aOM1QMg8iz/9GGbBp4FgVJU9Ee2R/J6
+         kpUg==
+X-Gm-Message-State: AO0yUKWDUCUSinlL8+pd2CUAxTjQeROeXhOrqiNTFdxQIRBtoIe8IyOs
+	GBwefkB3Ojb6KTu1mX0evYKVA35VTmxY4E/PBIeNJg==
+X-Google-Smtp-Source: AK7set/b/VaRTgbuyYYkPbkiLSlIY6vsoR42DhsiTFk3QMVSBVx/h84c6ihtp5HHzLDmT7LzEMygWe8zgKZdOPmQ0GY=
+X-Received: by 2002:a1f:a6c5:0:b0:3e1:a2f7:8b2a with SMTP id
+ p188-20020a1fa6c5000000b003e1a2f78b2amr2240269vke.18.1675914383329; Wed, 08
+ Feb 2023 19:46:23 -0800 (PST)
 MIME-Version: 1.0
-References: <20230208103709.116896-1-angelogioacchino.delregno@collabora.com> <20230208103709.116896-2-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230208103709.116896-2-angelogioacchino.delregno@collabora.com>
+References: <20230206152928.918562-1-angelogioacchino.delregno@collabora.com>
+ <20230206152928.918562-36-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5HTP0cLGEQ+qkAt8nsOp5DqCOgPyAOJ66fF91SKX=hZvw@mail.gmail.com> <45f8e284-8d56-898b-0897-94c576e09c2c@collabora.com>
+In-Reply-To: <45f8e284-8d56-898b-0897-94c576e09c2c@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 9 Feb 2023 10:50:18 +0800
-Message-ID: <CAGXv+5Gm=Onu2RK+skLgN4Kzo9yP1n5Zb48oQNkQ019838QeEQ@mail.gmail.com>
-Subject: Re: [PATCH 1/9] dt-bindings: gpu: mali-bifrost: Don't allow
- sram-supply by default
+Date: Thu, 9 Feb 2023 11:46:12 +0800
+Message-ID: <CAGXv+5FmmDx0Q_d17hv1gu+drfD12-vtgPoTpefExHGvdkcQyA@mail.gmail.com>
+Subject: Re: [PATCH v1 35/45] clk: mediatek: Split MT8195 clock drivers and
+ allow module build
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: airlied@gmail.com, tomeu.vizoso@collabora.com, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	steven.price@arm.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, 
-	alyssa.rosenzweig@collabora.com, krzysztof.kozlowski+dt@linaro.org, 
-	matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
+Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
+	johnson.wang@mediatek.com, miles.chen@mediatek.com, 
+	chun-jie.chen@mediatek.com, daniel@makrotopia.org, fparent@baylibre.com, 
+	msp@baylibre.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com, 
+	zhaojh329@gmail.com, sam.shih@mediatek.com, edward-jw.yang@mediatek.com, 
+	yangyingliang@huawei.com, granquet@baylibre.com, pablo.sun@mediatek.com, 
+	sean.wang@mediatek.com, chen.zhong@mediatek.com, linux-kernel@vger.kernel.org, 
+	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230208_185031_330905_9AAD2325 
-X-CRM114-Status: GOOD (  22.45  )
+X-CRM114-CacheID: sfid-20230208_194625_325361_6D363C6D 
+X-CRM114-Status: GOOD (  22.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,76 +91,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 8, 2023 at 6:37 PM AngeloGioacchino Del Regno
+On Wed, Feb 8, 2023 at 5:00 PM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> The sram-supply is MediaTek-specific, it is and will ever be used
-> only for the mediatek,mt8183-mali compatible due to the addition of
-> the mediatek-regulator-coupler driver: change the binding to add
-> this supply when mediatek,mt8183-mali is present as a compatible
-> instead of disabling it when not present.
+> Il 08/02/23 09:28, Chen-Yu Tsai ha scritto:
+> > On Mon, Feb 6, 2023 at 11:30 PM AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com> wrote:
+> >>
+> >> MT8195 clock drivers were encapsulated in one single (and big) Kconfig
+> >> option: there's no reason to do that, as it is totally unnecessary to
+> >> build in all or none of them.
+> >>
+> >> Split them out: keep boot-critical clocks as bool and allow choosing
+> >> non critical clocks as tristate.
+> >
+> > The power domain controller references vppsys*, vdecsys*, vdosys*, wpesys,
+> > imgsys and camsys. I'd argue that this makes these clock drivers
+> > semi-boot-critical. Maybe mfgcfg as well when we add the GPU?
 >
-> This is done in preparation for adding new bindings for other
-> MediaTek SoCs, such as MT8192 and others.
->
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
->
-> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-> index 78964c140b46..69212f3b1328 100644
-> --- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-> @@ -57,8 +57,6 @@ properties:
->
->    mali-supply: true
->
-> -  sram-supply: true
-> -
+> You don't need to power on additional power domains if you want to load modules
+> from a ramdisk! :-)
 
-Have you tried actually validating the device trees against this?
-Based on my previous tests this gives out errors.
+Right.
 
-The reason is that each conditional is a separate sub-schema, and the
-validator is run against each schema and sub-schema separately, instead
-of collapsing matching schemas and sub-schemas together and validating
-once. So we'll get a validation error on sram-supply not being a valid
-property when validating current mt8183 against the base schema.
+> Besides, you caught me: mtk-pm-domains will be my next target after clocks...
+> I don't like how it behaves in regard to probe deferrals. Specifically,
+> I dislike the fact that you either register *all domains* or *none at all*
+> (unless instantiating two different driver instances and that's ugly).
 
-We have a similar issue with power-domain-names, for which I'll send
-a patch to fix. See the following for the fix:
+I don't really like it either, but is it possible to split probe deferrals?
+I mean, if you skip a couple power domains because the clocks aren't
+available, how do you come back to them?
 
-    http://git.kernel.org/wens/c/d1adb38ab2ad0442755607c2bcc726cc17cce2c7
+And IIRC for a clock provider that is _not_ marked as disabled in the DT,
+trying to fetch a clock from it would just give -EPROBEDEFER until
+the provider is registered.
 
-and the following for what I did for MT8192 on top of the previous patch:
-
-    http://git.kernel.org/wens/c/049bd164884398d7e5f72c710da6aaa9a95bc10a
-
-
-Regards
 ChenYu
 
->    operating-points-v2: true
+> >
+> > They should be bundled together at the very least. The power domain
+> > controller not probing disables all display and multimedia capabilities.
+> >
+> > Also wondering if we should have "default COMMON_CLK_MT8195" ...
+> >
+> > I suppose the same questions apply to other SoCs.
+> >
+> > ChenYu
 >
->    power-domains:
-> @@ -157,6 +155,7 @@ allOf:
->              - const: core0
->              - const: core1
->              - const: core2
-> +        sram-supply: true
->
->        required:
->          - sram-supply
-> @@ -166,7 +165,6 @@ allOf:
->        properties:
->          power-domains:
->            maxItems: 1
-> -        sram-supply: false
->    - if:
->        properties:
->          compatible:
-> --
-> 2.39.1
 >
 
