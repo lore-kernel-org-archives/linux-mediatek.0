@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA3D6C05027
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 09:10:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E374EC64EC6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 09:13:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JO1AgozF/Zya9WC0NgRmz45Iqf3MdEInH4N2K136jyM=; b=m1udBy4Q866bukYCbEaHsHVj68
-	3a26lCmGi967LiVMW3d49eI2r42PVAKG0recGUdZlZT8Qr902UdHq4KSSoNjkT/a1runloNttXAUH
-	kbhl0ObbRoRoQ0CAjqXZOqXHNV237POtm+4dGFBrMQ9Sxpey6QOQS3Eji8K235hmsdlNPHbLCzudN
-	UaidxainGsEG819UnV5CXmmAcBdAuKZy6apOnsXKXHOJU6qL1fs8C5OppDNIdUFlkQZinAFF8mN+I
-	FYkLkJf0IODr/JEHN+fZqmuWfJo1cqVg0soYcmPOk46V+KtobX3040BWjCTt8p4CfCxVrWwIX6kWE
-	RnVXZx8Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8fZFf2yI4NiZ1ohXSbStbdFw0GfjyGPBHrzhVz49z0Y=; b=UNqbGeH64Cv8GYOzo4dQK2sea6
+	N4xcoZP8I4yGEDUp6jFqmXwymvc8tjxBSoSunqnBS4OtLvjSjd9BwJSS1vjDJIxrOMasB0VMjhFWN
+	HsJ7OpO1l+TLf8jWqP9cg/91hrJZccI5ypxR/E3gwL921T9axb8CtG1AW/r84gweIwDATA8fhWFvw
+	3Te6og2YTleM/rmEhrr/b5wRpjjNdsVIYp6T2c+3Z0NAmpolvzT9MtxjsNzmrNmRVQ7xQl/OLTkyP
+	DEvq80+2BwsVry7UrW5fK4C22uVe0emIXeKiDPzaV2BUIMC1njuRSsARwA/W+fdgIfSgDaxF0Fche
+	K7hkQAMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQPQZ-004yAX-R8; Fri, 10 Feb 2023 09:10:43 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1pQPTD-004zLI-A1; Fri, 10 Feb 2023 09:13:27 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQPQL-004y19-JD
-	for linux-mediatek@lists.infradead.org; Fri, 10 Feb 2023 09:10:32 +0000
-Received: by mail-ed1-x532.google.com with SMTP id q19so4206806edd.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 10 Feb 2023 01:10:28 -0800 (PST)
+	id 1pQPTA-004zIv-BK
+	for linux-mediatek@lists.infradead.org; Fri, 10 Feb 2023 09:13:25 +0000
+Received: by mail-ej1-x633.google.com with SMTP id m2so14021775ejb.8
+        for <linux-mediatek@lists.infradead.org>; Fri, 10 Feb 2023 01:13:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=JO1AgozF/Zya9WC0NgRmz45Iqf3MdEInH4N2K136jyM=;
-        b=ZyFniiCCjmt9CvFd63F1Zj3IXNi4mNYXxXKEnzHLxPlFTMzNhXgAL3mcNuX5cYUWEW
-         XLgUon3TpGuOxN5yFBKHZWe5rBLfxrjBjRkVxf8O9KheaOLF+XS9EoTuMNMEfPc1n0bG
-         MDJvJGNT7D3w1/12SrGKArBX/1Vntjt1I19b1FyqOOW2athWYZaaYf/6UDVjWsYb0lTn
-         YGVnI8UiVgl3HmOuryhDtX/pWrRHQJ9cfaT6GEsrsnD029W1HFFHZW9dhw34yvyh0u6u
-         qEbrE6+qN40u0WDcfwsWEk26o50aD4BioUHqSaOaj+Aj7nKGSWgBi/xYTszNMgBq0sv1
-         aJDg==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=8fZFf2yI4NiZ1ohXSbStbdFw0GfjyGPBHrzhVz49z0Y=;
+        b=b2tb5/OmuOTxoKVQ1J47Qg4rdMcs72fXWi2DfegMVNDSgLn/zmioHttGI9DFW+/qzO
+         96+2ePEG/zrjdP3GQl7vtsyP9kRPGLutO27ermYdpR0e4tHx7pko4FrB0tILW41i8pj+
+         lJC2lLEgiqa39+x8zVHZEfRw6ZyQwxKpS73UR37olSz5OGLmHnSbLV3yAGCIkezCx+bZ
+         3YKLECmvyv1A336QZ3mUaN3cQ2YSd2yz6iSe2D+ptr82EpDptxzhcW8pJ+sLw5hn2CGJ
+         yl7czinS3HoNadZ0i7ykVJoirTqSh+11oUPnlCzAIxf1R22L/6/bBQ//MSXFOy7yRTX/
+         5fvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=JO1AgozF/Zya9WC0NgRmz45Iqf3MdEInH4N2K136jyM=;
-        b=upWXAvKaC8voiaRe1oO/2L+HmucTm1rll9dZU2CdbXEl9XCOleTlUg7pylA5Y5BaHk
-         XZAAhgXR54igH8TjtCvmP507llLdIWN11AMybCR7kgHK6l7ZMSqLodCGKoQ2dmf1PU+J
-         DFmgdslvHYcuKfVs338lSRO0jzIMqJeKygubihhN48//qzepBdxbSFk5wfvl4rGiDjzi
-         M9z3SzjJ/SYZlQr6eQ/iGv9sKarP0h5/RrakTiVlVNqjP7DcyG4H/y/MFJPwA+FIl26Z
-         oMMa2AlBKXsB142+XlQbUsnBytTOaAnl3VUf9B0gFQ+8++tDqBEL1a4Q2TX4M4C8h9UM
-         r0Sg==
-X-Gm-Message-State: AO0yUKXshYJ9704NIutc9ScUzydNcKp+ZMSbkPS+iuINQgJ+oOh8t7nl
-	ZUnoRwINsjE01ZpK/MUNsdcT3GwwwkiBObZ18F3J0g==
-X-Google-Smtp-Source: AK7set+IPEknsk8g/iIkwkkIan5htfnLkZaV7RhcstO9zjt8469/p979SjeKGgF3Upg96TNj1/y34dRtZXAYJDOE77o=
-X-Received: by 2002:a50:d7c1:0:b0:4ab:2517:ca8 with SMTP id
- m1-20020a50d7c1000000b004ab25170ca8mr791593edj.7.1676020227744; Fri, 10 Feb
- 2023 01:10:27 -0800 (PST)
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=8fZFf2yI4NiZ1ohXSbStbdFw0GfjyGPBHrzhVz49z0Y=;
+        b=2x8aX4PWcF/q+FenKWoNfYW30Ct+ldUquKXhdRW51AQnQyubiw2boPKTQaCrnpnvj/
+         4iAbnxovlJuebSAoRsX5pIy8ANKjjcGMh/Pvg5fI/Je8AURiSZs+3I49jLJ9v4MLJzsA
+         LAPXSTgiEkYRhIpudpfD2DT5VCLR1DtTgU5PjK/4dKA7TXDpuQ/oyYoDy3dQVpEYo3wJ
+         C/yH9NvQJz2678SJB8CZ45OrnsUpPiyJ3h/vTzrWYQCW519mF4yGdetj68PTPvZQisGJ
+         D1Cl8doz5kNQ1QFJO8BSx0hxXrX4j3V3uNxbH+m3QMTjxDuoufnTZx1hL8cbx150LbKb
+         rK2g==
+X-Gm-Message-State: AO0yUKWLJ/HsCA0tTWgXzMNjJfKmEcAwmoKVunHHNsGdXzHK9WrZMY81
+	UXvABMCgbLSVJu4qW2D0N87c0V7TyhfukVARjcn6/A==
+X-Google-Smtp-Source: AK7set8z0VVs9Ynm8YK8/sg/s2hoilc5vUf32Iszp/v3ATNK4ku2TS/dWRb+ymTJE6AxLofb6FZhMsS0juAOG5sQLBU=
+X-Received: by 2002:a17:906:ca04:b0:7c0:f45e:22ff with SMTP id
+ jt4-20020a170906ca0400b007c0f45e22ffmr3467086ejb.104.1676020403067; Fri, 10
+ Feb 2023 01:13:23 -0800 (PST)
 MIME-Version: 1.0
-References: <20230209105628.50294-1-bchihi@baylibre.com> <20230209105628.50294-3-bchihi@baylibre.com>
- <167596964747.647630.15058465615417584783.robh@kernel.org>
-In-Reply-To: <167596964747.647630.15058465615417584783.robh@kernel.org>
+References: <20230209105628.50294-1-bchihi@baylibre.com> <b41930f9-89d9-1b12-b024-05fb12700769@linaro.org>
+In-Reply-To: <b41930f9-89d9-1b12-b024-05fb12700769@linaro.org>
 From: Balsam CHIHI <bchihi@baylibre.com>
-Date: Fri, 10 Feb 2023 10:09:52 +0100
-Message-ID: <CAGuA+oqjQPQoJOzXdNxO+831noyGmiLcvzG1sGv6SFkr92XFCg@mail.gmail.com>
-Subject: Re: [PATCH v14 2/6] dt-bindings: thermal: mediatek: Add LVTS thermal controllers
-To: Rob Herring <robh@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, khilman@baylibre.com, 
-	rdunlap@infradead.org, daniel.lezcano@linaro.org, devicetree@vger.kernel.org, 
-	p.zabel@pengutronix.de, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, james.lo@mediatek.com, 
-	rex-bc.chen@mediatek.com, linux-pm@vger.kernel.org, rafael@kernel.org, 
-	amitk@kernel.org, rui.zhang@intel.com, krzysztof.kozlowski+dt@linaro.org, 
-	ye.xingchen@zte.com.cn, linux-kernel@vger.kernel.org, robh+dt@kernel.org, 
-	linux-mediatek@lists.infradead.org
+Date: Fri, 10 Feb 2023 10:12:47 +0100
+Message-ID: <CAGuA+oo+1tSDhVkrc-2feH9e8wMpBgAa-N1VEOuGN8_c=uo1zw@mail.gmail.com>
+Subject: Re: [PATCH v14 0/6] Add LVTS Thermal Architecture
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: angelogioacchino.delregno@collabora.com, rafael@kernel.org, 
+	amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com, 
+	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org, 
+	ye.xingchen@zte.com.cn, p.zabel@pengutronix.de, linux-pm@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+	khilman@baylibre.com, james.lo@mediatek.com, rex-bc.chen@mediatek.com
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230210_011029_663503_3B99EB17 
-X-CRM114-Status: GOOD (  10.06  )
+X-CRM114-CacheID: sfid-20230210_011324_422784_D2A7A8BE 
+X-CRM114-Status: GOOD (  22.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,31 +91,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
+Hi Daniel,
 
-On Thu, Feb 9, 2023 at 8:07 PM Rob Herring <robh@kernel.org> wrote:
+On Fri, Feb 10, 2023 at 7:44 AM Daniel Lezcano
+<daniel.lezcano@linaro.org> wrote:
 >
->
-> On Thu, 09 Feb 2023 11:56:24 +0100, bchihi@baylibre.com wrote:
+> On 09/02/2023 11:56, bchihi@baylibre.com wrote:
 > > From: Balsam CHIHI <bchihi@baylibre.com>
 > >
-> > Add LVTS thermal controllers dt-binding definition for mt8192 and mt8195.
+> > The LVTS (Low Voltage Thermal Sensor) driver is capable of monitoring
+> > multiple hot points. For that, it contains 7 thermal control blocks
+> > dedicated to specific devices on the die. Each control block can handle
+> > up to 4 sensors.
 > >
-> > Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
-> > ---
-> >  .../thermal/mediatek,lvts-thermal.yaml        | 142 ++++++++++++++++++
-> >  .../thermal/mediatek,lvts-thermal.h           |  19 +++
-> >  2 files changed, 161 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
-> >  create mode 100644 include/dt-bindings/thermal/mediatek,lvts-thermal.h
+> > The thermal controller supports several interrupts. One for the cold
+> > trip point, the hot trip point, the return to the normal trip point,
+> > and a specific programmable trip point to monitor the temperature
+> > dynamically.
 > >
+> > The temperature measurement can be done in two ways, the immediate mode
+> > where the temperature read is instantaneous and the filtered mode where
+> > the controller uses, by configuration, an average of a set of values
+> > removing the minimum and the maximum.
+> >
+> > Finally, it is composed of 2 finite-state machines responsible for
+> > the state of the temperature (cold, hot, hot 2 normal, hot hot),
+> > the triggering of the interrupts, and the monitoring of the temperature=
+.
+> >
+> > As requested, the thermal driver has been reworked to reduce
+> > the complexity of the code. At this time, the 4 little CPUs and
+> > the 4 big CPUs are supported by the thermal driver.They are described
+> > in a data structure and more devices can be added later.
+> > The calibration routine has been simplified also.
+> >
+> > The series provide the following changes:
+> >   - Move the Mediatek drivers inside a dedicated folder as their number
+> >     is increasing
+> >   - Add the DT bindings for the controller
+> >   - Add the efuse node for the mt8195
+> >   - The LVTS driver
+> >   - The thermal zones description in the DT
 >
-> Reviewed-by: Rob Herring <robh@kernel.org>
+> Applied patch 1,2 and 4 for v6.3
 
-Thank you for the review!
+Thank you very much!
 
 >
+> Patches 5 and 6 should go through the Mediatek tree.
+>
+> Thanks!
+>
+>    -- Daniel
+>
+>
+> --
+> <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software for AR=
+M SoCs
+>
+> Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+> <http://twitter.com/#!/linaroorg> Twitter |
+> <http://www.linaro.org/linaro-blog/> Blog
+>
 
-Best Regards,
+Best regards,
 Balsam
 
