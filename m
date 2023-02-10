@@ -4,73 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 499C4C05027
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 09:21:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAB8CC636CD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 10:08:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SUD3fqkoCLZDULBrwrDENF0iMnUmbMM9p2CAPvcnOzM=; b=ZMaNXZR5Rw+iwZFQDLn1pee/aZ
-	Or65XtEbGCUmaN0dA5Qba4TZgZNMkVj8YY9nYcqi0RU6iF1dQ6HsGo15Rw5tvwWzEwSSaPfwdLqIp
-	UxNPbF4J4cL2kS+QjhUsIuREVLAIGb51XfPXnlNDQfi/ZL+kZteRq5R0U5Y4LVuz0i4wYXefKKesd
-	GMHDhZavL72cK6c+wjgEPUuX50NHWG5WYyUsTLbwQ1eGOUiC7MdCxSNT7xmVk1LPous8R1alo/8eh
-	U/vHWAySP1fhhXMYIX4s/kOrsnBiLLBcvV/3d1HoGXSsf7n4NNZocqfR0hBFTm2drt9ZhU1n4bLzE
-	ufcc4vUA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xyeCuJfMUCxy7EMAlPrLoxGULlONEfkh83Jz9dZ7UVA=; b=e30UhzSSMSApjjr/iUwnXV9Clm
+	FHF+6OdqhIgnpoKvmkoRAg/KCseFqkRE35MIwJlSG2xcylgelbhtlMg8eswxW4tfqqbpxs1E1856v
+	41ZL/um3NCtYPwdFThRe7TJqCcDoD4rhzRLVBnpVV8hD+SkVb4tvYLU1zgtA9APsD5vChyHm3HqfU
+	jI2cma3badmcOVE1WnMGMcJtLZN1sNsEWdQ21aMVZ2jKsCukmqGyI3VK3A7vmDi2g9CUwFfHCQh2V
+	8JQ8xZXXHA1Y3/4CRCc5Q+kyO95RkupX+J0lPZDj8WbyAJXHWjdtpmfuCYJaWN3rGU3EaY1Sg/YwS
+	PMT5hz2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQPb7-0052p0-Oe; Fri, 10 Feb 2023 09:21:37 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pQQK4-005DOK-Jw; Fri, 10 Feb 2023 10:08:04 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQPaI-0052LQ-5S; Fri, 10 Feb 2023 09:20:47 +0000
-X-UUID: 2f93af9ea92411eda08d4d6090ec5a5c-20230210
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=SUD3fqkoCLZDULBrwrDENF0iMnUmbMM9p2CAPvcnOzM=;
-	b=NK+FwcCgqGTLrpwy7UlKS0bjg6sgSL0/Z7kzVpIKh4JSNCBCqKePTgnvxHj0AzLemcv42EXZR6mb7LKpDJy3V7tyen1PKQy5bztLRbzuLJSnAgWEhlrkJak3N+5RBN1JmFiK1upl0ttm40vs2TDOCBCluKSY0y1Trk9VksC6wYg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.19,REQID:129f2b46-b3dd-4278-9937-ae2c32e99d12,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:885ddb2,CLOUDID:5875818e-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-UUID: 2f93af9ea92411eda08d4d6090ec5a5c-20230210
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 801143026; Fri, 10 Feb 2023 02:20:40 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 10 Feb 2023 16:59:34 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 10 Feb 2023 16:59:34 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
-	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Tinghan Shen
-	<tinghan.shen@mediatek.com>
-CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v5 08/12] remoteproc: mediatek: Control SCP core 1 by rproc subdevice
-Date: Fri, 10 Feb 2023 16:59:27 +0800
-Message-ID: <20230210085931.8941-9-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230210085931.8941-1-tinghan.shen@mediatek.com>
-References: <20230210085931.8941-1-tinghan.shen@mediatek.com>
+	id 1pQQK1-005DMw-SU
+	for linux-mediatek@lists.infradead.org; Fri, 10 Feb 2023 10:08:03 +0000
+Received: by mail-wm1-x332.google.com with SMTP id bg26so3464044wmb.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 10 Feb 2023 02:08:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=xyeCuJfMUCxy7EMAlPrLoxGULlONEfkh83Jz9dZ7UVA=;
+        b=sWR20SCgtf76y4U/XIEaxHkrP6ANvlICRLPwf45DL/wRqO9AIjvyexqqaKunEYLPSp
+         twdRk5vTtLGzN/+yzUKP3aluo8YqaDxegI0ZDJKD5YyhvDYD/1S/7O5zoj7BYWkmm3Wc
+         QwzWY28r0LmXD0xOYEAD221FfwBAK4GN4czv1GlDYgHF1hjPfu2QVQZAPaZiQNE/7cCc
+         ieQxCahwve30JSMn9J+VDIyhuOOzXdl+TXFWFi/9XeVlG53N+uIp/HFAwnyffLpKL3p3
+         KNhbNha3SZFUJDKaJwUSHASAv/d56iD0a1Zr8rxBC9icjBQcEDmoE0mdrT4GG8o5STeu
+         iSIA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=xyeCuJfMUCxy7EMAlPrLoxGULlONEfkh83Jz9dZ7UVA=;
+        b=vhWfur7O84BQ6AjIWav7KhwCDeqMmeuDYSjxhqs0aUftz3LoUalkeJqqHR45Q7SnyC
+         ij2qHoh5cA/LMQXtRO6nCrD8KgoZDgVeEIYoyx2jRKO6mMtdsPb/zIM+FIYwm8bvrIvI
+         GcjdGcVzjEN3rS/VjEL0rWFpX5QcVpa7QZy33BAcfqWkvfvMvqJONG2Fhx3ov/7+zl5G
+         K0U9Tdu2YKIrfcWLjbsrtp4hRMdsWnRVwhgwbjkoLoYkt1OyziLv8kR+LC1MJ2OAR/PB
+         PPzmgECd/rjJWo50zG3Z64QV7m2KJQgiiADpmJQIRxoAt0awDmksL6rkEHLo+iie9gMM
+         Gqqw==
+X-Gm-Message-State: AO0yUKXZ7WGrFQvhhT7B+SyANjlc7YcyOej63LGBa1JZzvHcuAlWrE4Z
+	o3C4cUi3uZ1verPW/x+OwJqHxQ==
+X-Google-Smtp-Source: AK7set+YPV0CpsKvCiPZ8Co1e2QSTIfLBE8j5nmk1vVG7I0oCvj1N8XbKvsgMCKYJ1AP/zV8i9vvQA==
+X-Received: by 2002:a05:600c:4386:b0:3df:94c3:4725 with SMTP id e6-20020a05600c438600b003df94c34725mr12427982wmn.38.1676023680549;
+        Fri, 10 Feb 2023 02:08:00 -0800 (PST)
+Received: from [192.168.1.109] ([178.197.216.144])
+        by smtp.gmail.com with ESMTPSA id n19-20020a05600c3b9300b003daf7721bb3sm8247140wms.12.2023.02.10.02.07.59
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 10 Feb 2023 02:08:00 -0800 (PST)
+Message-ID: <f2d66681-a7b6-2369-b9f7-f886f8ea6ae5@linaro.org>
+Date: Fri, 10 Feb 2023 11:07:58 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH] clocksource/drivers/timer-mediatek: Make timer-mediatek
+ become loadable module
+Content-Language: en-US
+To: walter.chang@mediatek.com, Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "Maciej W . Rozycki" <macro@orcam.me.uk>, John Stultz <jstultz@google.com>
+Cc: wsd_upstream@mediatek.com, stanley.chu@mediatek.com,
+ Chun-hung.Wu@mediatek.com, Freddy.Hsin@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230210100058.19861-1-walter.chang@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230210100058.19861-1-walter.chang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230210_012046_269008_FCB1212E 
-X-CRM114-Status: GOOD (  15.79  )
+X-CRM114-CacheID: sfid-20230210_020802_016778_96573B3E 
+X-CRM114-Status: GOOD (  25.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,137 +99,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Register SCP core 1 as a subdevice of core 0 for the boot sequence
-and watchdog timeout handling. The core 1 has to boot after core 0
-because the SCP clock and SRAM power is controlled by SCP core 0.
-As for watchdog timeout handling, the remoteproc framework helps to
-stop/start subdevices automatically when SCP driver receives watchdog
-timeout event.
+On 10/02/2023 11:00, walter.chang@mediatek.com wrote:
+> From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+> 
+> This patch makes the timer-mediatek driver which can
 
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
----
- drivers/remoteproc/mtk_common.h |  8 ++++
- drivers/remoteproc/mtk_scp.c    | 66 +++++++++++++++++++++++++++++++++
- 2 files changed, 74 insertions(+)
+Do not use "This commit/patch".
+https://elixir.bootlin.com/linux/v5.17.1/source/Documentation/process/submitting-patches.rst#L95
 
-diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
-index 0b2c4bbb55f0..e4ef97f2d3a1 100644
---- a/drivers/remoteproc/mtk_common.h
-+++ b/drivers/remoteproc/mtk_common.h
-@@ -123,6 +123,13 @@ struct mtk_scp_cluster {
- 	struct list_head cores;
- };
- 
-+struct mtk_scp_core_subdev {
-+	struct rproc_subdev subdev;
-+	struct mtk_scp *scp;
-+};
-+
-+#define to_core_subdev(d) container_of(d, struct mtk_scp_core_subdev, subdev)
-+
- struct mtk_scp {
- 	struct device *dev;
- 	struct rproc *rproc;
-@@ -154,6 +161,7 @@ struct mtk_scp {
- 
- 	struct list_head elem;
- 	struct mtk_scp_cluster *cluster;
-+	struct mtk_scp_core_subdev *core_subdev;
- };
- 
- /**
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index 8e2a82174e5f..f1dfe610dfb1 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -854,6 +854,60 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
- 	}
- }
- 
-+static int scp_core_subdev_start(struct rproc_subdev *subdev)
-+{
-+	struct mtk_scp_core_subdev *core_subdev = to_core_subdev(subdev);
-+	struct mtk_scp *scp = core_subdev->scp;
-+
-+	rproc_boot(scp->rproc);
-+
-+	return 0;
-+}
-+
-+static void scp_core_subdev_stop(struct rproc_subdev *subdev, bool crashed)
-+{
-+	struct mtk_scp_core_subdev *core_subdev = to_core_subdev(subdev);
-+	struct mtk_scp *scp = core_subdev->scp;
-+
-+	rproc_shutdown(scp->rproc);
-+}
-+
-+static int scp_core_subdev_register(struct mtk_scp *scp)
-+{
-+	struct device *dev = scp->dev;
-+	struct mtk_scp_core_subdev *core_subdev;
-+	struct mtk_scp *scp_c0;
-+
-+	scp_c0 = list_first_entry(&scp->cluster->cores, struct mtk_scp, elem);
-+	if (!scp_c0)
-+		return -ENODATA;
-+
-+	core_subdev = devm_kzalloc(dev, sizeof(*core_subdev), GFP_KERNEL);
-+	if (!core_subdev)
-+		return -ENOMEM;
-+
-+	core_subdev->scp = scp;
-+	core_subdev->subdev.start = scp_core_subdev_start;
-+	core_subdev->subdev.stop = scp_core_subdev_stop;
-+
-+	scp->core_subdev = core_subdev;
-+	rproc_add_subdev(scp_c0->rproc, &scp->core_subdev->subdev);
-+
-+	return 0;
-+}
-+
-+static void scp_core_subdev_unregister(struct mtk_scp *scp)
-+{
-+	struct mtk_scp *scp_c0;
-+
-+	if (scp->core_subdev) {
-+		scp_c0 = list_first_entry(&scp->cluster->cores, struct mtk_scp, elem);
-+		rproc_remove_subdev(scp_c0->rproc, &scp->core_subdev->subdev);
-+		devm_kfree(scp->dev, scp->core_subdev);
-+		scp->core_subdev = NULL;
-+	}
-+}
-+
- static int scp_rproc_init(struct platform_device *pdev,
- 			  struct mtk_scp_of_regs *of_regs,
- 			  const struct mtk_scp_of_data *of_data,
-@@ -954,6 +1008,7 @@ static void scp_rproc_free(struct mtk_scp *scp)
- {
- 	int i;
- 
-+	scp_core_subdev_unregister(scp);
- 	scp_remove_rpmsg_subdev(scp);
- 	scp_ipi_unregister(scp, SCP_IPI_INIT);
- 	scp_unmap_memory_region(scp);
-@@ -1018,6 +1073,17 @@ static int scp_cluster_init(struct platform_device *pdev,
- 	}
- 
- 	list_for_each_entry_safe_reverse(scp, temp, &cluster->cores, elem) {
-+		if (!list_is_first(&scp->elem, &scp->cluster->cores)) {
-+			ret = scp_core_subdev_register(scp);
-+			if (ret) {
-+				dev_err_probe(scp->dev, ret, "Failed to register as subdev\n");
-+				goto add_fail;
-+			}
-+
-+			/* sub cores are booted as subdevices of core 0 */
-+			scp->rproc->auto_boot = false;
-+		}
-+
- 		ret = rproc_add(scp->rproc);
- 		if (ret)
- 			goto add_fail;
--- 
-2.18.0
+> register an always-on timer as tick_broadcast_device
+> on MediaTek SoCs become loadable module in GKI.
+
+Are you planning to answer other parts of that discussion? IOW, does the
+system boot fine? What's the impact of this being a module?
+
+> 
+> This patch depends on the previous patch.
+> https://lore.kernel.org/lkml/20230208094813.20874-1-walter.chang@mediatek.com/T/#t
+
+This does not belong to commit msg. What's the point of keeping it in
+commit history forever?
+
+> 
+> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+> ---
+>  drivers/clocksource/Kconfig          |  2 +-
+>  drivers/clocksource/timer-mediatek.c | 43 ++++++++++++++++++++++++++++
+>  2 files changed, 44 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/clocksource/Kconfig b/drivers/clocksource/Kconfig
+> index 4469e7f555e9..41345827055b 100644
+> --- a/drivers/clocksource/Kconfig
+> +++ b/drivers/clocksource/Kconfig
+> @@ -472,7 +472,7 @@ config SYS_SUPPORTS_SH_CMT
+>  	bool
+>  
+>  config MTK_TIMER
+> -	bool "Mediatek timer driver" if COMPILE_TEST
+> +	tristate "Mediatek timer driver"
+>  	depends on HAS_IOMEM
+>  	select TIMER_OF
+>  	select CLKSRC_MMIO
+> diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
+> index d5b29fd03ca2..806044ef391c 100644
+> --- a/drivers/clocksource/timer-mediatek.c
+> +++ b/drivers/clocksource/timer-mediatek.c
+> @@ -13,6 +13,9 @@
+>  #include <linux/clocksource.h>
+>  #include <linux/interrupt.h>
+>  #include <linux/irqreturn.h>
+> +#include <linux/module.h>
+> +#include <linux/of_device.h>
+> +#include <linux/platform_device.h>
+>  #include <linux/sched_clock.h>
+>  #include <linux/slab.h>
+>  #include "timer-of.h"
+> @@ -450,6 +453,46 @@ static int __init mtk_gpt_init(struct device_node *node)
+>  
+>  	return 0;
+>  }
+> +
+> +#ifdef MODULE
+> +static int mtk_timer_probe(struct platform_device *pdev)
+> +{
+> +	int (*timer_init)(struct device_node *node);
+> +	struct device_node *np = pdev->dev.of_node;
+> +
+> +	timer_init = of_device_get_match_data(&pdev->dev);
+> +	return timer_init(np);
+> +}
+> +
+> +static const struct of_device_id mtk_timer_match_table[] = {
+> +	{
+> +		.compatible = "mediatek,mt6577-timer",
+> +		.data = mtk_gpt_init,
+> +	},
+> +	{
+> +		.compatible = "mediatek,mt6765-timer",
+> +		.data = mtk_syst_init,
+> +	},
+> +	{
+> +		.compatible = "mediatek,mt6795-systimer",
+> +		.data = mtk_cpux_init,
+> +	},
+> +	{}
+> +};
+> +
+> +static struct platform_driver mtk_timer_driver = {
+> +	.probe = mtk_timer_probe,
+> +	.driver = {
+> +		.name = "mtk-timer",
+> +		.of_match_table = mtk_timer_match_table,
+> +	},
+> +};
+> +MODULE_DESCRIPTION("MEDIATEK Module Timer driver");
+> +MODULE_LICENSE("GPL v2");
+
+I don't think you run checkpatch before sending... please do not use
+humans for review which is done by automatic tools.
+
+> +
+> +module_platform_driver(mtk_timer_driver);
+
+Follow coding convention like in very other driver, so this goes
+immediately after definition of driver structure.
+
+> +#else
+
+
+Best regards,
+Krzysztof
 
 
