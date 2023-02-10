@@ -4,153 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09B19C64ED6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 19:45:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2652C05027
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 19:58:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2pEjyARU/iDHF4qEL808MswcLI+5ZEPTvCc976Kw1g4=; b=bkK3e1S5rR84iW2loYhH4PV3Xg
-	s4cDDqfidrtVT1G2LF4HE4FUAiN63HCdesg2q9y2RAt11i1grIvtAJxESqcFoSCMidcVuCUbF5ILg
-	L3ErhIzaHddAhtJBGr7eK1pR8jJSVt6y3u2TZQto35Wm5SRccWlpBmIzjTcPkNUCbAQlvXR7hphTy
-	JUKmnw89jVR59Wo85jvksTa9MA9c2XyB5+XydKJiGZ1MRuTG+uv+jEUaCJ2gpMIIx+uHPFzwARn45
-	qMyflrsU8JwS0C6EGAiZGX2LfOADAKPYTHayZnAAQ++Q/GY0JWZhUHwLr9weEcTTsDaI2kvkpWZQm
-	2m2MP+wg==;
+	bh=vXCMZ6WE4tODcRGvNdx2XuDr0IcOSxL6CFkaFwIQevc=; b=vLyFJWtCyG/N6u2DxwWUvBbq0q
+	KXRwapg5HQfksV2pEtr9OP3ScwR5oOIx4OevbTncDhwZ6FHVbL+ZQZNF3wO3AVos6g+R/l5JCNirZ
+	AxD5yAw4AB5xpWHUQoHzGnXpck0Tjcl+D1AC19Z5/U5YQyh5OQrvD+NMr3gsBYQ0xoDXZS3Rw+zcM
+	M+6pg/WExaM7LnazlHYPXChdpIoQvXgu1x+DORuagFy12Zzp7zB4shjibtF3BMuNBvElCEnwVqBpJ
+	gxIFUzhde8woyQ9uj6uZnzL2bGDmrG7lnn6g7Lqx5AhSWcFsYz8Cg4eeEG76TFiOeUyz/YBE5LMmA
+	OUYZuFDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQZKZ-007CAA-Jk; Fri, 10 Feb 2023 19:45:11 +0000
-Received: from mail-dm3nam02on20611.outbound.protection.outlook.com ([2a01:111:f400:7e83::611] helo=NAM02-DM3-obe.outbound.protection.outlook.com)
+	id 1pQZXi-007FMf-DM; Fri, 10 Feb 2023 19:58:46 +0000
+Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQZJP-007BU4-Dw; Fri, 10 Feb 2023 19:44:01 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=RBh59YWoNUeJ0OV2NiLIPX+dOg1Hngkr/rOhAxBwrxarZVDHP0aVkEgslIXY3RJeupeWUl7u6i6/IZj34Jw8eCL5+RdarSsOuAnETe3cBAY3MT/7i8dTMxsbbcjvMYC3KO/anJ6VmrHTyvzx08RMF5Zl09Rx+H/1UQt7Qrl6nUdVoRgg0R00eK4d9Z1S41vGOI4AiYyGFdew1bDHCEwqWWg0nvocAn6bulklExr3d+LZQouUuOJ2nhFfVBuIvm6os91HLlh231Zd7n/0OOaMF+Sdt52vnQjEV2nTcsKy3lEwygR/Czc8R2npp0a/s+ujn9sFx1CCjpx2EwM/LgZlFQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=2pEjyARU/iDHF4qEL808MswcLI+5ZEPTvCc976Kw1g4=;
- b=kmMAulDukidVJBGfPA07XsMyS/r2FhQCdk4iBKdqk5C4+g18fKyXKOoos+3f1QdgzXheqTUtyCzHNkHQGY+oXSP2NP2QhOacXB15xP++pWzXKBZEc8p9D1/AJ9HrkbWv1uZ6xcADS+HlhSK4mJcMiuRvZKZavhIxB7xmpS59kCB0VWLMzcuEAhXaDvU0RIhs6Gmo2v2L6QYSOnHlpfu4UnjZImCqwR5sOgvdJ6bzqDV4Nrk80VRuqefJDrQ37bBAZ7vIjxmeYfqmxzvZ8FoVjv4yiDQKoEQAPWf8ZeRxq9s2+4klMcrDDC6ni5R1fFPVLpEJ01Ze5jvXishgf7I/6w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=kernel.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2pEjyARU/iDHF4qEL808MswcLI+5ZEPTvCc976Kw1g4=;
- b=nVKlxqAo4Bocpx2c+2xoaI1tTQxycj04jmV1zNZB6nWmgdE0XFcXqFY2Cmo4OHUaz/Yr4LixPFcEH+egWlP9lpwKQd6p9GG6+LOr4b5b3ykQt0rxsY9L5tbtQZJgEDeujORIkTKN6fwV3bMLqGmwzukuBPytpJMNNb9RbfsH8PM=
-Received: from MW4PR04CA0220.namprd04.prod.outlook.com (2603:10b6:303:87::15)
- by BL1PR12MB5030.namprd12.prod.outlook.com (2603:10b6:208:313::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6086.21; Fri, 10 Feb
- 2023 19:43:55 +0000
-Received: from CO1NAM11FT017.eop-nam11.prod.protection.outlook.com
- (2603:10b6:303:87:cafe::3c) by MW4PR04CA0220.outlook.office365.com
- (2603:10b6:303:87::15) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6086.21 via Frontend
- Transport; Fri, 10 Feb 2023 19:43:54 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
-Received: from SATLEXMB03.amd.com (165.204.84.17) by
- CO1NAM11FT017.mail.protection.outlook.com (10.13.175.108) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.6086.21 via Frontend Transport; Fri, 10 Feb 2023 19:43:54 +0000
-Received: from SATLEXMB06.amd.com (10.181.40.147) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.34; Fri, 10 Feb
- 2023 13:43:54 -0600
-Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB06.amd.com
- (10.181.40.147) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.34; Fri, 10 Feb
- 2023 13:43:53 -0600
-Received: from xhdsneeli40.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server id 15.1.2375.34 via Frontend
- Transport; Fri, 10 Feb 2023 13:43:27 -0600
-From: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
-To: <broonie@kernel.org>, <miquel.raynal@bootlin.com>, <richard@nod.at>,
-	<vigneshr@ti.com>, <jic23@kernel.org>, <tudor.ambarus@microchip.com>,
-	<pratyush@kernel.org>, <sanju.mehta@amd.com>, <chin-ting_kuo@aspeedtech.com>,
-	<clg@kaod.org>, <kdasu.kdev@gmail.com>, <f.fainelli@gmail.com>,
-	<rjui@broadcom.com>, <sbranden@broadcom.com>, <eajames@linux.ibm.com>,
-	<olteanv@gmail.com>, <han.xu@nxp.com>, <john.garry@huawei.com>,
-	<shawnguo@kernel.org>, <s.hauer@pengutronix.de>, <narmstrong@baylibre.com>,
-	<khilman@baylibre.com>, <matthias.bgg@gmail.com>, <haibo.chen@nxp.com>,
-	<linus.walleij@linaro.org>, <daniel@zonque.org>, <haojian.zhuang@gmail.com>,
-	<robert.jarzmik@free.fr>, <agross@kernel.org>, <bjorn.andersson@linaro.org>,
-	<heiko@sntech.de>, <krzysztof.kozlowski@linaro.org>, <andi@etezian.org>,
-	<mcoquelin.stm32@gmail.com>, <alexandre.torgue@foss.st.com>, <wens@csie.org>,
-	<jernej.skrabec@gmail.com>, <samuel@sholland.org>,
-	<masahisa.kojima@linaro.org>, <jaswinder.singh@linaro.org>,
-	<rostedt@goodmis.org>, <mingo@redhat.com>, <l.stelmach@samsung.com>,
-	<davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>,
-	<pabeni@redhat.com>, <alex.aring@gmail.com>, <stefan@datenfreihafen.org>,
-	<kvalo@kernel.org>, <james.schulman@cirrus.com>, <david.rhodes@cirrus.com>,
-	<tanureal@opensource.cirrus.com>, <rf@opensource.cirrus.com>,
-	<perex@perex.cz>, <tiwai@suse.com>, <npiggin@gmail.com>,
-	<christophe.leroy@csgroup.eu>, <mpe@ellerman.id.au>, <oss@buserror.net>,
-	<windhl@126.com>, <yangyingliang@huawei.com>
-CC: <git@amd.com>, <linux-spi@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <joel@jms.id.au>, <andrew@aj.id.au>,
-	<radu_nicolae.pirea@upb.ro>, <nicolas.ferre@microchip.com>,
-	<alexandre.belloni@bootlin.com>, <claudiu.beznea@microchip.com>,
-	<bcm-kernel-feedback-list@broadcom.com>, <fancer.lancer@gmail.com>,
-	<kernel@pengutronix.de>, <festevam@gmail.com>, <linux-imx@nxp.com>,
-	<jbrunet@baylibre.com>, <martin.blumenstingl@googlemail.com>,
-	<avifishman70@gmail.com>, <tmaimon77@gmail.com>, <tali.perry1@gmail.com>,
-	<venture@google.com>, <yuenn@google.com>, <benjaminfair@google.com>,
-	<yogeshgaur.83@gmail.com>, <konrad.dybcio@somainline.org>,
-	<alim.akhtar@samsung.com>, <ldewangan@nvidia.com>,
-	<thierry.reding@gmail.com>, <jonathanh@nvidia.com>, <michal.simek@amd.com>,
-	<linux-aspeed@lists.ozlabs.org>, <openbmc@lists.ozlabs.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<linux-rpi-kernel@lists.infradead.org>, <linux-amlogic@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-rockchip@lists.infradead.org>, <linux-samsung-soc@vger.kernel.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>, <linux-sunxi@lists.linux.dev>,
-	<linux-tegra@vger.kernel.org>, <netdev@vger.kernel.org>,
-	<linux-wpan@vger.kernel.org>, <libertas-dev@lists.infradead.org>,
-	<linux-wireless@vger.kernel.org>, <linux-mtd@lists.infradead.org>,
-	<lars@metafoo.de>, <Michael.Hennerich@analog.com>,
-	<linux-iio@vger.kernel.org>, <michael@walle.cc>, <palmer@dabbelt.com>,
-	<linux-riscv@lists.infradead.org>, <alsa-devel@alsa-project.org>,
-	<patches@opensource.cirrus.com>, <linuxppc-dev@lists.ozlabs.org>,
-	<amitrkcian2002@gmail.com>, Amit Kumar Mahapatra
-	<amit.kumar-mahapatra@amd.com>
-Subject: [PATCH v4 15/15] spi: spi-zynqmp-gqspi: Add parallel memories support in GQSPI driver
-Date: Sat, 11 Feb 2023 01:06:46 +0530
-Message-ID: <20230210193647.4159467-16-amit.kumar-mahapatra@amd.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230210193647.4159467-1-amit.kumar-mahapatra@amd.com>
-References: <20230210193647.4159467-1-amit.kumar-mahapatra@amd.com>
+	id 1pQZXU-007FFu-EI
+	for linux-mediatek@lists.infradead.org; Fri, 10 Feb 2023 19:58:34 +0000
+Received: by mail-yb1-xb31.google.com with SMTP id o66so1769087ybc.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 10 Feb 2023 11:58:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=vXCMZ6WE4tODcRGvNdx2XuDr0IcOSxL6CFkaFwIQevc=;
+        b=ZQ46cNexOgxmst8qwplIpGLZi3s5+TLLjrxjfsLv1Euw/lZxWc9rvbuME8m36XlM4/
+         ReEdeEkn1o1I4sAYe7y0JZqKaLLJUDw3BBQrA5hAslKcNN6TlTTOotRs1YQS3csQO6tL
+         juCCxWuVaVtGTLRm3XMq5FmwwC8CUqytXhjor0gW8UJ3V0/+wEfr6IxHCtqiFqbZ4Mr0
+         Y5PRkivce6SwZ313APl30PZWoYMn/4IK2waQeYACaVdMANMAJ5rzrFd0af3eDWDg+37o
+         hQsFbslCspXWzrKt1h1RP+4isED0Anj8DP6uwNQhNDm5t6O1KNa7fGq5sQqhGaFq3/0n
+         KomA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=vXCMZ6WE4tODcRGvNdx2XuDr0IcOSxL6CFkaFwIQevc=;
+        b=0MlYjowztEaXVJYj+zffb48u1IQ4ZvmfZ2f48nDrMEtsV80uq1k/AZeVPlX9abZksp
+         ALZe7dTArgdCAypOexMThLe9ftU+7984yOPL5HGoN8ciG83TxJPulxIXNwVsf2uHUgkO
+         nH7Fh6AduL3DlIMILwKIBXGGGtUPDEleyOLI2VW5gn78K+OYMgRqrisWy6yOjY773ZKr
+         eF0CnvGb971VfP7ee/57NM4CgBDUdRcnTbPaeA1iWzCRoRUOwHZZE0qFOFnRamFyhfEA
+         tma0UkMvf4nrk/KGixdc65QsHBx2Xd5mDMduX0u6sm06j8yzuNvfRqg3tD2wMI9kuh+i
+         IWNQ==
+X-Gm-Message-State: AO0yUKUuuaACLK4e6Urc0VZCQjRXvcylFEU85YYcmUvVXIim2cJceNFu
+	SjfNx0BY/UWtwV9pod8D4jHDZ3jLtGF6kcI8jtnc
+X-Google-Smtp-Source: AK7set9sFtmBqjvWy/xtSPdnpAgsT+2iHaHfmnAhgNvfJ7huuMcTol/DQdbfonvGO1dJekNppYaxUxDEJkdHIW5Z7yQ=
+X-Received: by 2002:a05:6902:503:b0:8bd:87c6:d7bc with SMTP id
+ x3-20020a056902050300b008bd87c6d7bcmr1127817ybs.49.1676059107373; Fri, 10 Feb
+ 2023 11:58:27 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1NAM11FT017:EE_|BL1PR12MB5030:EE_
-X-MS-Office365-Filtering-Correlation-Id: 5a41c5ad-c5cb-49d1-dec8-08db0b9f2497
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	ahkxxtplneOGUGnzkrkW4XoS/1TyIlwpHPNgptyHgBxYWr4qS0X91lcBWaJVeshoin3Cb6Svotu/t3O7pXJqpoz8oG/ZZEJP6ldNyex/OkvcNUwFpDdfeWrCMnIu5BLo8ovAA5UQC/B2k7c0OvSkL0hVdkA8zD5SjHJ3nIzv0qAdiVeIExAbxCD0KTJ7+z2qbDt7jde6svkhT5/c/adLWNPV+2c42LF/KBs188BCpvVjnAj26VoHAr48yGLYbIhfSZxoLsFM/q7VF1bZKgaced4rWChjTfR9p/3+j1Jec0KkIWvxVSwJ/57R8VufPbgJCXJchyC4uf32ngHbv3ah1dCAmQG1muIVSS80z2seh01n/8pjU/JAfxBqZ0NorI1ab6rwKogkU7i93dqSH/6w4XyCWppAFWzIxq0AMu1PlHk4RhjaP0GONHrd7N1zzxcu9YXxTYZlmRqx5yq+F+Off3a14mG4jb+J83NuuTt+36oHCkUuYwU22MUhqiOO35oEpmNHsKRqp23CZpc8XeQZmuwKhStzJTWe1nBV/GgXuqRB8wC+jxhvkbIUk781tW3sUb+xrGVS8ZxAWPJwvGADLRrO6XQw51xJSM5zuSSBOwfM5yv/WN6y3OzKmQ4VSyYjvmZg0aezXkHeSO9pyK2OzhbfsG+Q5budDqoRPoheM3nJgrgj/+KVo+2JdSUPuR7b5nQNW1RPncfC+In0hx0FI+bTQ/6S8yprEdVSdORnD1lXoC+kSeycZHBQkFiO78lBorEwYB6XaFf8w3zWKFErQmoJO6kRaFDHJPbmfX+s97KQU2mKhHsuws60hpNz8mecDYLbHvBKgTFBCTBQeBacocfSZKV6GrT5AHFCQHpQHDI=
-X-Forefront-Antispam-Report: 	CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:SATLEXMB03.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230025)(4636009)(346002)(376002)(39860400002)(396003)(136003)(451199018)(36840700001)(46966006)(40470700004)(8676002)(316002)(110136005)(5660300002)(4326008)(8936002)(54906003)(70206006)(41300700001)(70586007)(82740400003)(81166007)(356005)(36756003)(86362001)(921005)(26005)(1076003)(6666004)(186003)(2616005)(7276002)(7336002)(7406005)(7416002)(7366002)(40460700003)(40480700001)(47076005)(1191002)(82310400005)(478600001)(2906002)(426003)(36860700001)(83380400001)(336012)(36900700001)(2101003)(83996005)(84006005)(41080700001);DIR:OUT;SFP:1101;
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Feb 2023 19:43:54.2664
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5a41c5ad-c5cb-49d1-dec8-08db0b9f2497
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[SATLEXMB03.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	CO1NAM11FT017.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5030
+References: <20230208094813.20874-1-walter.chang@mediatek.com>
+ <fdcea75c-1ddf-c4f4-5d46-f32a6619b66d@linaro.org> <CANDhNCp6esdor4kDDTDowkKRfRN9QW8Au7uJMhsxyw0eAG4i8A@mail.gmail.com>
+ <20230210085157.GA175687@linaro.org>
+In-Reply-To: <20230210085157.GA175687@linaro.org>
+From: John Stultz <jstultz@google.com>
+Date: Fri, 10 Feb 2023 11:58:16 -0800
+Message-ID: <CANDhNComgUF+7UhG-MDjjm97AZRQb__4-1u++45UKfirdAMp+Q@mail.gmail.com>
+Subject: Re: [PATCH 0/3] Support timer drivers as loadable modules
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: walter.chang@mediatek.com, Thomas Gleixner <tglx@linutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	"Maciej W . Rozycki" <macro@orcam.me.uk>, wsd_upstream@mediatek.com, stanley.chu@mediatek.com, 
+	Chun-hung.Wu@mediatek.com, Freddy.Hsin@mediatek.com, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Todd Kjos <tkjos@google.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230210_114359_843739_2618DBA6 
-X-CRM114-Status: GOOD (  18.77  )
+X-CRM114-CacheID: sfid-20230210_115832_500582_D7E562E9 
+X-CRM114-Status: GOOD (  37.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -165,108 +92,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-During GQSPI driver probe set ctlr->multi-cs-cap for enabling multi CS
-capability of the controller. In parallel mode the controller can either
-split the data between both the flash or can send the same data to both the
-flashes, this is determined by the STRIPE bit. While sending commands to
-the flashes the GQSPI driver send the same command to both the flashes by
-resetting the STRIPE bit, but while writing/reading data to & from the
-flash the GQSPI driver splits the data evenly between both the flashes by
-setting the STRIPE bit.
+On Fri, Feb 10, 2023 at 12:52 AM Daniel Lezcano
+<daniel.lezcano@linaro.org> wrote:
+> On Thu, Feb 09, 2023 at 11:50:49AM -0800, John Stultz wrote:
+> > On Thu, Feb 9, 2023 at 7:36 AM Daniel Lezcano <daniel.lezcano@linaro.org> wrote:
+> > > What for ?
+> >
+> > In general, it's the same reason why modules exist: We want to be able
+> > to support a wide array of devices with a single kernel, but we don't
+> > want all devices to pay the memory cost of code that will never be
+> > used there. So being able to support loading device-specific bits like
+> > clocksources (along with other device specific logic) helps.
+>
+> Agree, that is why modules are for.
+>
+> > Obviously it still has to make sense, and others have raised concerns
+> > of stability issues if the hardware support is needed before we can
+> > get to module loading, but I think if this allows drivers (such as
+> > timer-mediatek) to be loadable safely, I see it as beneficial.
+>
+> From a technical point of view, it is arguable.
+>
+> But my main concern is the real reason of changing this to the module
+> format. I see that as a way to overcome the effort to upstream the
+> drivers. And the GKI is an alibi to justify the module conversion.
 
-Signed-off-by: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
----
- drivers/spi/spi-zynqmp-gqspi.c | 39 +++++++++++++++++++++++++++++++++-
- 1 file changed, 38 insertions(+), 1 deletion(-)
+[Putting on my Android Antennae for a moment]
 
-diff --git a/drivers/spi/spi-zynqmp-gqspi.c b/drivers/spi/spi-zynqmp-gqspi.c
-index 4759f704bf5c..9e44371bfda2 100644
---- a/drivers/spi/spi-zynqmp-gqspi.c
-+++ b/drivers/spi/spi-zynqmp-gqspi.c
-@@ -23,6 +23,7 @@
- #include <linux/spinlock.h>
- #include <linux/workqueue.h>
- #include <linux/spi/spi-mem.h>
-+#include <linux/mtd/spi-nor.h>
- 
- /* Generic QSPI register offsets */
- #define GQSPI_CONFIG_OFST		0x00000100
-@@ -192,6 +193,7 @@ struct qspi_platform_data {
-  * @op_lock:		Operational lock
-  * @speed_hz:          Current SPI bus clock speed in hz
-  * @has_tapdelay:	Used for tapdelay register available in qspi
-+ * @is_parallel:		Used for multi CS support
-  */
- struct zynqmp_qspi {
- 	struct spi_controller *ctlr;
-@@ -214,8 +216,33 @@ struct zynqmp_qspi {
- 	struct mutex op_lock;
- 	u32 speed_hz;
- 	bool has_tapdelay;
-+	bool is_parallel;
- };
- 
-+/**
-+ * zynqmp_gqspi_update_stripe - For GQSPI controller data stripe capabilities
-+ * @op:	Pointer to mem ops
-+ * Return:      Status of the data stripe
-+ *
-+ * Returns true if data stripe need to be enabled, else returns false
-+ */
-+bool zynqmp_gqspi_update_stripe(const struct spi_mem_op *op)
-+{
-+	if (op->cmd.opcode ==  SPINOR_OP_BE_4K ||
-+	    op->cmd.opcode ==  SPINOR_OP_BE_32K ||
-+	    op->cmd.opcode ==  SPINOR_OP_CHIP_ERASE ||
-+	    op->cmd.opcode ==  SPINOR_OP_SE ||
-+	    op->cmd.opcode ==  SPINOR_OP_BE_32K_4B ||
-+	    op->cmd.opcode ==  SPINOR_OP_SE_4B ||
-+	    op->cmd.opcode == SPINOR_OP_BE_4K_4B ||
-+	    op->cmd.opcode ==  SPINOR_OP_WRSR ||
-+	    op->cmd.opcode ==  SPINOR_OP_BRWR ||
-+	    (op->cmd.opcode ==  SPINOR_OP_WRSR2 && !op->addr.nbytes))
-+		return false;
-+
-+	return true;
-+}
-+
- /**
-  * zynqmp_gqspi_read - For GQSPI controller read operation
-  * @xqspi:	Pointer to the zynqmp_qspi structure
-@@ -470,7 +497,14 @@ static void zynqmp_qspi_chipselect(struct spi_device *qspi, bool is_high)
- 
- 	genfifoentry |= GQSPI_GENFIFO_MODE_SPI;
- 
--	if (qspi->cs_index_mask & GQSPI_SELECT_UPPER_CS) {
-+	if ((qspi->cs_index_mask & GQSPI_SELECT_LOWER_CS) &&
-+	    (qspi->cs_index_mask & GQSPI_SELECT_UPPER_CS)) {
-+		zynqmp_gqspi_selectslave(xqspi,
-+					 GQSPI_SELECT_FLASH_CS_BOTH,
-+					 GQSPI_SELECT_FLASH_BUS_BOTH);
-+		if (!xqspi->is_parallel)
-+			xqspi->is_parallel = true;
-+	} else if (qspi->cs_index_mask & GQSPI_SELECT_UPPER_CS) {
- 		zynqmp_gqspi_selectslave(xqspi,
- 					 GQSPI_SELECT_FLASH_CS_UPPER,
- 					 GQSPI_SELECT_FLASH_BUS_LOWER);
-@@ -1139,6 +1173,8 @@ static int zynqmp_qspi_exec_op(struct spi_mem *mem,
- 	}
- 
- 	if (op->data.nbytes) {
-+		if (xqspi->is_parallel && zynqmp_gqspi_update_stripe(op))
-+			genfifoentry |= GQSPI_GENFIFO_STRIPE;
- 		reinit_completion(&xqspi->data_completion);
- 		if (op->data.dir == SPI_MEM_DATA_OUT) {
- 			xqspi->txbuf = (u8 *)op->data.buf.out;
-@@ -1334,6 +1370,7 @@ static int zynqmp_qspi_probe(struct platform_device *pdev)
- 	ctlr->bits_per_word_mask = SPI_BPW_MASK(8);
- 	ctlr->dev.of_node = np;
- 	ctlr->auto_runtime_pm = true;
-+	ctlr->multi_cs_cap = true;
- 
- 	ret = devm_spi_register_controller(&pdev->dev, ctlr);
- 	if (ret) {
--- 
-2.25.1
+I can promise the GKI is no alibi - it is a real thing. Part of
+convincing vendors to ship the same kernel is that we have to be able
+to bring the security benefits of being able to update the unified
+kernel without major impact to memory. Utilizing modules (all over -
+as a lot of small cuts add up) is crucial for that.
 
+Some vendors haven't historically been great about upstreaming device
+support, and I understand the concern that allowing modules might
+enable vendors to keep modules out of tree. But vendors inclined to do
+that will find a way regardless (and because at a practical level,
+because the need to keep the GKI size down the android tree will have
+to carry a similar change to the one submitted here), so I don't think
+rejecting such patches is a real disincentive.
+
+Instead it just creates further needless fragmentation between
+upstream and android kernels, which makes it further difficult to
+justify and motivate upstream-hesitant vendors to submit their code to
+lkml.
+
+And again, there *has* to be upstream users, as we should not have any
+maintenance burden for out of tree code! But in this case the upstream
+timer-mediatek driver was named as a candidate module (obviously those
+patches are needed when this series is re-sent).
+
+Additionally, while I understand the concern and skepticism, for folks
+who are working on upstreaming (Mediatek along with folks at Collabora
+have done some great work!), having to deal with this meta-issue of
+questioning of one's purity-of-intent, when one is actually submitting
+patches I think makes the process of dealing with the community seem
+even more difficult (making some folks question why bother).
+
+The upstream kernel community is an amazing thing! And I understand
+why we want to be protective of it. But I also worry that if we get
+too wrapped up in suspicions of ill intent, we aren't going to be able
+to bring folks into the fold and grow the community.  The license
+doesn't require one to work with the community, so we should probably
+be using more carrots and fewer sticks.
+
+> Given the timers is a base brick of the core subsystems, without
+> proper support of the timer (eg. bug fixes), the platform support will
+> be wobbly.
+
+As for bug-fixes, it should be noted that with the GKI, not all
+modules are vendor modules!  There are GKI-modules, which are common
+drivers/subsystem-infrastructure used by many devices (such as NFC,
+Bluetooth, etc), and these in-tree drivers are updated with the GKI
+kernel as modules. So there is motivation to ensure bug fixes to those
+upstream drivers land upstream so they can be included when the GKI
+and GKI modules are updated.
+
+And to your point about it being a base-brick - Yes, obviously not
+everything can be loaded from a module safely, and that's fine. But in
+cases where devices can boot with a built in architected timer, then
+are able to switch to more device specific clocksources, we'd really
+like those device specific clocksources to be modules.
+
+thanks
+-john
 
