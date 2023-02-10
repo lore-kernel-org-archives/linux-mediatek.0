@@ -4,91 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03973C05027
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 07:27:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82BAAC636CD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 08:52:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gklS3FAiP8CjmVjxSYJByCBxxX2M8eLNPi6SGKg0SSU=; b=CYm7Y3wgDqSWM6UAdTBh2dpdMY
-	WzJxyD0gnrwfXJkDjDT5AriiJTsfhJVpgkaXQ4FwUlesdTYbabftDEmh/US9ofcyHJgR/2ORwWOk0
-	5KX6yhN8HkDTaOpfgVgAXNY3EWlAE/dnMUILdMp0Y3AG+Nxb1E+LHubqoeezcuq8zaGtztXBXR7gP
-	nuBKpNi2cJ5NyOO7uDL9dk303jC+4KoXtXp8TTwPY5HVa9gzunZIlMKD3FCAqYfb37A3OQ1/cOWLO
-	OhUTJ6hd2W25NCs5evNqLEKwXXzteFE9QCwwWQ+2Hvg8bO+kGPdV9DZPge3OwRfPapR/KOjFwQ3ZM
-	lDWrw0bQ==;
+	bh=YZAhfBQYquLF1qnZYO3CTH5oSKC+08iiTknQihvWDiA=; b=Lepv/DadiISCaz//avSl+XVxAg
+	0Ee3xilGqL+gSgTIVXKGGmvZHCD2kX00wEJDRkze3z+mGM3/AmnNZrx/R7UfU65Xl4RnCBHD9vjEV
+	0pYXy64f/l1xfgnCSXzkA0DT1HWHkQgakkPJ4RcUvtDNaJDDf+c0c5LjQiN2I7G8hLNU3OaoW3Yfj
+	kvghJXFIDphIlN4zS1zlbp8NqqgI4HZkhgTp93Wm1AZdrQe325OYQhKz9UcEQZNM+KHLVGuakUVNl
+	33D9M33a//AHC5rSfoNd0gzqkhTelMQNv/3i3eqgdYVvID71Qo2j2pch283xX9xExlrHhXgQW8uRI
+	cLsLSxkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQNoe-004bx9-Jp; Fri, 10 Feb 2023 07:27:28 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1pQP8X-004qZv-Hz; Fri, 10 Feb 2023 08:52:05 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQNoU-004buW-3L; Fri, 10 Feb 2023 07:27:19 +0000
-Received: by mail-ej1-x630.google.com with SMTP id hx15so13363113ejc.11;
-        Thu, 09 Feb 2023 23:27:14 -0800 (PST)
+	id 1pQP8T-004qYP-SK
+	for linux-mediatek@lists.infradead.org; Fri, 10 Feb 2023 08:52:03 +0000
+Received: by mail-wm1-x330.google.com with SMTP id z13so3279890wmp.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 10 Feb 2023 00:52:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=gklS3FAiP8CjmVjxSYJByCBxxX2M8eLNPi6SGKg0SSU=;
-        b=LP3fB0sauO/2tmXyRx85cBUpb6irgkVj5mLS6jLKWiSk2ijBn3h476Y6cPPmen71vX
-         sleFX7p1axeIlv5Q201fJy4FPuxsTA6z4zGwcnMHrWQCTqg96ECmIZrapmGYMUiIbTsg
-         b/az1LvPqX3Xef3uubTKxQPda6krQZ+a5xi4aWrdVZQQpRBjeuCSW0enPCVgZkdaO/7Q
-         W/+niQL6R0Ep4itcHj32QTrXV2p1/LGD3iFSezkPkPvhJtn8nNmnz8nEmWnGKX05VWNW
-         rTdm8YwYy+zKzk3TPLdTBO0JYi0XUHggOy4dv7bAEPfaC9evPxRTCe9bK05EA5KCh3P0
-         4New==
+        d=linaro.org; s=google;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=YZAhfBQYquLF1qnZYO3CTH5oSKC+08iiTknQihvWDiA=;
+        b=fwGE+8ZXY4Cqp7eooYZ0dYLd+1x3muucfpFXGjo9lEDwCb9aW536kfIl5wvOL9ukDK
+         ZPOW4f5iyqFYvMSxowTCoJKZebalcQT5tqGc4gg+WWV/O1Xlqhry3TsT/jfvogtix2ou
+         VsVh/c8fKkXC3yf2bGsdgSUScN0i1uIdjU2hgzAHyeRqmW0IAhHho218gODY5fUtUORK
+         /pSadvC4Q6tD01pE63iGs0cxFKNdc3CgZKIyKjPSTraWX//sx/g1A2eqBxAZa/1vCVc8
+         +KspIoqrJ4Weklwd0UDwAUv+/YQGT5bROiuQb1WBScSPXC6T2RBAqKqoJ2C2wihh9Bpy
+         BLkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gklS3FAiP8CjmVjxSYJByCBxxX2M8eLNPi6SGKg0SSU=;
-        b=YwStL7FspplSJSJz8ABusYQVtSqeRZ38SoabexFieY6+KOWw+SpLueTOIYFJMQBAsB
-         HIxk9ZUeTcd4+H+x8CiL8qZiJBaE1YCmromncJlCPdklROnse9vzJ0DIl9iXXesBFn3T
-         54GMTYY/9wRehsqhvze325EtJoU2/B77Y0wnQ2r2xeACDs8vgL1uT7QUkKx4sKJOa6Ry
-         q2gai9VMseF2Afm1UHD7cIvdA/Qa7QFWbqbcC1METiLMqNkY5NeEAL+9vAm4Pi8CeGVI
-         kmywsd1YERWY7NeurMrNMZtxPsCt97D23eqh5Aq9QJjkWKHci+MUpu0powAthlNjrJCb
-         YoHA==
-X-Gm-Message-State: AO0yUKUzJf15fSAZCXnanA2/3mHjPcXuDzUCT4CKPFXIt8xOTplsHg+0
-	KperT/HCO+6fkLhpQRW6ql4=
-X-Google-Smtp-Source: AK7set9ItifQev8+p52y0b5h6z/ngAGGDwVCaKSgu4+C6cUktAAmwUb53s5HzuzYJZGsMdxceXgSPw==
-X-Received: by 2002:a17:907:3ea2:b0:8aa:a802:adcd with SMTP id hs34-20020a1709073ea200b008aaa802adcdmr17054242ejc.30.1676014033423;
-        Thu, 09 Feb 2023 23:27:13 -0800 (PST)
-Received: from tom-HP-ZBook-Fury-15-G7-Mobile-Workstation (net-188-217-57-202.cust.vodafonedsl.it. [188.217.57.202])
-        by smtp.gmail.com with ESMTPSA id k6-20020a1709065fc600b0081bfc79beaesm1972542ejv.75.2023.02.09.23.27.09
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=YZAhfBQYquLF1qnZYO3CTH5oSKC+08iiTknQihvWDiA=;
+        b=n0WRFhUze3paYdq+McYbekRIGAyxmcblSBqcjEj8e/X7vTLt6xVsQjpHlUJrHejstI
+         uHL/C9kVUnWUtpmgSFSJehhjywkIIYG91EnjRVvK0Y7jG3N6i3OYyeHd9ERHhMEIr8OS
+         JMOezqN8OagitevQ6u25hd61153OIN2EJ1YvMgc+ea6xx349e441FHmmuqNUNhwMqN9N
+         Zzga+O9sOvZIELOi9lgt0rYN/2ChSHFuZOkLj9trzxuqai3mW5TQzHhSX5yPrSfHnS3p
+         syeasjBc39+e6uvha6cHjqRJo8YgjzAsi6e+s4dkLUj+qCy+VUch1YkpQENM8wpenooK
+         vKKg==
+X-Gm-Message-State: AO0yUKW7kYNR9EH9VoBiI11XJ8GIoej9KvV5dJ3zlY+DgVoX9CTPuuSN
+	BxtXvMhPGV1/l8r8xlsqPFkUXQ==
+X-Google-Smtp-Source: AK7set/OKo4yEv07P848igeq6Jgq0peHDJLiD5bvtcLGw5Ybo81esX+fCq4M7Yn6i8m3EQT/mZjzEA==
+X-Received: by 2002:a05:600c:4386:b0:3df:94c3:4725 with SMTP id e6-20020a05600c438600b003df94c34725mr12272914wmn.38.1676019120422;
+        Fri, 10 Feb 2023 00:52:00 -0800 (PST)
+Received: from linaro.org (wifi-eduroam-trans.univ-tlse3.fr. [195.220.58.237])
+        by smtp.gmail.com with ESMTPSA id n13-20020a05600c3b8d00b003dc434900e1sm4771255wms.34.2023.02.10.00.51.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Feb 2023 23:27:12 -0800 (PST)
-Date: Fri, 10 Feb 2023 08:27:07 +0100
-From: Tommaso Merciai <tomm.merciai@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Nicolas Dufresne <nicolas@ndufresne.ca>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
+        Fri, 10 Feb 2023 00:52:00 -0800 (PST)
+Date: Fri, 10 Feb 2023 09:51:57 +0100
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+To: John Stultz <jstultz@google.com>
+Cc: walter.chang@mediatek.com, Thomas Gleixner <tglx@linutronix.de>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Hsin-Yi Wang <hsinyi@chromium.org>,
-	Fritz Koenig <frkoenig@chromium.org>,
-	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH] media: mediatek: vcodec: Force capture queue format to
- MM21
-Message-ID: <Y+Xxy49JcqXlKADI@tom-HP-ZBook-Fury-15-G7-Mobile-Workstation>
-References: <20230209074025.1816-1-yunfei.dong@mediatek.com>
- <Y+S1cA4PXT1MVJm8@tom-HP-ZBook-Fury-15-G7-Mobile-Workstation>
- <28f167b7-c468-8752-29d1-2a122e8142dd@collabora.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Maciej W . Rozycki" <macro@orcam.me.uk>, wsd_upstream@mediatek.com,
+	stanley.chu@mediatek.com, Chun-hung.Wu@mediatek.com,
+	Freddy.Hsin@mediatek.com, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 0/3] Support timer drivers as loadable modules
+Message-ID: <20230210085157.GA175687@linaro.org>
+References: <20230208094813.20874-1-walter.chang@mediatek.com>
+ <fdcea75c-1ddf-c4f4-5d46-f32a6619b66d@linaro.org>
+ <CANDhNCp6esdor4kDDTDowkKRfRN9QW8Au7uJMhsxyw0eAG4i8A@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <28f167b7-c468-8752-29d1-2a122e8142dd@collabora.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CANDhNCp6esdor4kDDTDowkKRfRN9QW8Au7uJMhsxyw0eAG4i8A@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230209_232718_159820_131616A5 
-X-CRM114-Status: GOOD (  19.97  )
+X-CRM114-CacheID: sfid-20230210_005201_959664_C2AEA1D2 
+X-CRM114-Status: GOOD (  22.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,43 +98,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+On Thu, Feb 09, 2023 at 11:50:49AM -0800, John Stultz wrote:
+> On Thu, Feb 9, 2023 at 7:36 AM Daniel Lezcano <daniel.lezcano@linaro.org> wrote:
+> >
+> > On 08/02/2023 10:48, walter.chang@mediatek.com wrote:
+> > > From: Walter Chang <walter.chang@mediatek.com>
+> > >
+> > > This patch exports functions in kernel so that timer drivers,
+> > > such as timer-mediatek.c can become loadable modules in GKI.
+> >
+> > What for ?
+> 
+> In general, it's the same reason why modules exist: We want to be able
+> to support a wide array of devices with a single kernel, but we don't
+> want all devices to pay the memory cost of code that will never be
+> used there. So being able to support loading device-specific bits like
+> clocksources (along with other device specific logic) helps.
 
-On Thu, Feb 09, 2023 at 01:56:45PM +0100, AngeloGioacchino Del Regno wrote:
-> Il 09/02/23 09:57, Tommaso Merciai ha scritto:
-> > Hi Yunfei Dong,
-> > 
-> > On Thu, Feb 09, 2023 at 03:40:25PM +0800, Yunfei Dong wrote:
-> > > In order to conver the format of capture queue from mediatek MM21 to
-> > > standard yuv420 with Libyuv, need to force capture queue format to
-> > > MM21 for Libyuv can't covert mediatek MT21 format.
-> > 
-> > Sorry, just some clarifications on my side, just to understand :)
-> > The problem is that libyuv can't convert mm21 format into yuv420
-> > than you need to use mm21 (forcing this).
-> > Did I understand correctly?
-> > 
-> 
-> vcodec can output either MM21 or MT21C; libyuv can't handle the MT21C format,
-> at least for now, hence he is forcing vcodec to always give MM21 for things
-> to actually work... at a later time, I hope and suppose that this driver will
-> change to not force anything anymore.
+Agree, that is why modules are for.
 
-Thanks for the explanation!
+> Obviously it still has to make sense, and others have raised concerns
+> of stability issues if the hardware support is needed before we can
+> get to module loading, but I think if this allows drivers (such as
+> timer-mediatek) to be loadable safely, I see it as beneficial.
 
-Regards,
-Tommaso
+From a technical point of view, it is arguable.
 
-> 
-> > Thanks in advance,
-> > Tommaso
-> > 
-> 
-> Yunfei, since this is required to get "basic" functionality, this commit needs
-> a Fixes tag: can you please add the right one?
-> 
-> Thanks!
-> Angelo
-> 
-> 
+But my main concern is the real reason of changing this to the module
+format. I see that as a way to overcome the effort to upstream the
+drivers. And the GKI is an alibi to justify the module conversion.
+
+Given the timers is a base brick of the core subsystems, without
+proper support of the timer (eg. bug fixes), the platform support will
+be wobbly.
+
+-- 
+
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
 
