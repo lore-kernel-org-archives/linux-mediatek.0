@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7429DC05027
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 02:43:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DC36C05027
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 02:44:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=52xSp5wmYAd5hFLJ9WZGw8pChWVD+OAjWtck6oN5dzs=; b=v0MUbKBunidEmS4W8x3CozmcXB
-	7CmzJU6+T4KQtJjFn57ftPnyGVYutcpKlBGqQ2vrB+O4EJbnHILsqv6mVYBnHpQpCA2UI5JJUzA4W
-	uqqI5Z1JR6m4feHiyXBC7cAGoBhitSg5UNRQ7DxyFvYC5SWo6Mk71Ey1gX/2S95NF3kUsPFRYX1Wp
-	lFBFOFln4lEW6WGSXj5tV1II8rvLwR3DwfgTJ1Y0RHVak0+lCjsHzu9qjkRpA5qyMmx7XNafIRTCY
-	7TyX/B0PUzpT9X2TzUwIvNScrSzd9zBiY9OP3iIChShQNt5tr6npggrLwYzoAEdPZswrSoQwdee4q
-	iCiJb8RQ==;
+	bh=RxKcD5MHPeq8MW1BxCC2B2HCW247AyxiuibPeYpJLy0=; b=4xah8PApWuofUtLcO63bZQr4r/
+	FvmTaNogpPbMggZkdmJC1L0F8UwHfXJSdhfqZ+XEnNMBCZmttzkiiDqy2wP8eG7Njz4yzijQ+M8y6
+	m8nMebFhZwABORx1TbbZhNBlE+DOcOnLyqGOLUyY+PIwp4tBUmkFnoCAJczOZ6T3wnUwbHgH4+tNB
+	HS8+CLrA8lAghfj0YeqI6deht+zFVVQaP/bBKNI7O8xQpvFnOoW9WnM/bi1xrU9bnoYKyVv8U8z/c
+	AlzYyfDBG6erElZzxC0Q/qeKO8H8CbylxqZFln8iDJc5e0m2tr7xZzysjRFNNkaMkN73PKPJgLIn0
+	RHg4lI6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQJNJ-003y2m-OM; Fri, 10 Feb 2023 02:42:57 +0000
-Received: from mail-vk1-xa36.google.com ([2607:f8b0:4864:20::a36])
+	id 1pQJOy-003yc1-7z; Fri, 10 Feb 2023 02:44:40 +0000
+Received: from mail-vs1-xe2d.google.com ([2607:f8b0:4864:20::e2d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQJN8-003xwN-4S
-	for linux-mediatek@lists.infradead.org; Fri, 10 Feb 2023 02:42:47 +0000
-Received: by mail-vk1-xa36.google.com with SMTP id 6so1993515vko.7
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Feb 2023 18:42:44 -0800 (PST)
+	id 1pQJOv-003yaw-5O
+	for linux-mediatek@lists.infradead.org; Fri, 10 Feb 2023 02:44:38 +0000
+Received: by mail-vs1-xe2d.google.com with SMTP id p24so3433755vsn.12
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Feb 2023 18:44:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=52xSp5wmYAd5hFLJ9WZGw8pChWVD+OAjWtck6oN5dzs=;
-        b=U1fCU9dL7zEQQUng1tf5EwsK3VWDYVsNNyBj39FW19d1Mr7MMWDk3X92i8GTR2E/v0
-         47ufcXPTM+wllgKMkSh+S1EEpjBhwtLcJgqOur9mlxYBGhCpe05yzGcH6VqrQwTPoLAV
-         Rt9ONCKI6fv1m3JL4fhZrhRxitGMBVxaGnuHE=
+        bh=RxKcD5MHPeq8MW1BxCC2B2HCW247AyxiuibPeYpJLy0=;
+        b=WQkeb8HRZt6mt0Ws9HllUpsfUrgKa8s9at6qO+rVthEmiAc9amoTtOnzqJEmH1BFeZ
+         asqVFIfptZupwd2MwiZ2DDmlc/9w3dKQTrZnnsmQiigaSBMnimX0pciG3LuyWeI4fUjT
+         DCfgGNGZeXGPitNNKFNOaOJh6uI8dktnbgnGU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=52xSp5wmYAd5hFLJ9WZGw8pChWVD+OAjWtck6oN5dzs=;
-        b=G0vAgrxXmRqhqPfFnxFSorTnne8nfzqKfz7HNIxjooYEzVxyEd7FQmG6s0kxOtdkJ7
-         vWpWz4sVr062J53rLLvXROw0HVU/VcRa+SOCR9dKDXFN8j2GQzhc9cHzDU2g9ZmVfRpc
-         4k5IvlsXoMnIzwFu7Ro0mSgEuWM+weMTE35t+jSIlCB3SvYprIaFhbtzWdCuc1pq0M99
-         gGYyOYxlHdPLFchAILyrrueeLK7treV8SuqteFMqJvczNJj7wFhicO9Zpu8/6pSDWtNh
-         9LeaeX6spOHvwIs/8k1YsYs/XrAuw1L0yQ2+FJhJFlIQHAaLChLJriyzWMIIsFyAH2wM
-         TqNQ==
-X-Gm-Message-State: AO0yUKXjhPwyPqrvT/dNvSg8ZaIrbE5OHjKPn1Ar0uzuP+hn6FcRBdj3
-	T36eBccZI5HcDLRP/PNv/FZsWOh83rRpP7Xcr7b/7w==
-X-Google-Smtp-Source: AK7set/pFESZTcCKGsksw48p4w49A2qXmUP7rMlB1Od7HUbkX1rQ/0T8voev8FHMMturLnSAI+My622kXRWl2w49i/E=
-X-Received: by 2002:a1f:f242:0:b0:400:db86:64de with SMTP id
- q63-20020a1ff242000000b00400db8664demr2812373vkh.22.1675996964119; Thu, 09
- Feb 2023 18:42:44 -0800 (PST)
+        bh=RxKcD5MHPeq8MW1BxCC2B2HCW247AyxiuibPeYpJLy0=;
+        b=S/gF/wK/8mhQaOLwAVQEL3xY9xqcIkUixgWEiU6h1ciloxpT9AN0ZUEwKV1FgMDhq3
+         VRbZuwtMaI9EM/2CuuCuEp+bth09BxAXdQXXbPxlzWWr1Y+iXime8icCE5OBcP3TR08N
+         UnCwBKoyMJQmeazppAwmXu+1N+DNxyeA2pe2XcQD+wht3+GaFkjrmxPbzRDk48I8IY2M
+         F+dFIX8sA9oIl4FRn8MQW9NuOcLwnAdwLmMAllWvQXZPvp0ypEkFKamwGCUUu9yOFBOX
+         fwI1qGW1YUYz7bIRDCE1eDB6lpVuENkViUXdMjlq/cR35CfFN/cCyjtsMNgSQyTh0/0q
+         7x7A==
+X-Gm-Message-State: AO0yUKUt/sCnd38s9q019QfLzLTZS/MxUHvdicQzkzu81HfqG8sOWQ0o
+	WKEl/wPDkBrArw1XqrV2eqB60PkcFoWpeHBzfo9v9g==
+X-Google-Smtp-Source: AK7set8rmT5dBRiIMSgQxob4EVFEZikOUhOwE5/3kSmzkpF4EKHK+ockF47cKpiLEoE6PwJMZW4tFwy49H4pgkx46b8=
+X-Received: by 2002:a67:d202:0:b0:411:c830:e5b5 with SMTP id
+ y2-20020a67d202000000b00411c830e5b5mr952691vsi.65.1675997076332; Thu, 09 Feb
+ 2023 18:44:36 -0800 (PST)
 MIME-Version: 1.0
-References: <20230209160357.19307-1-matthias.bgg@kernel.org> <20230209160357.19307-3-matthias.bgg@kernel.org>
-In-Reply-To: <20230209160357.19307-3-matthias.bgg@kernel.org>
+References: <20230209160357.19307-1-matthias.bgg@kernel.org> <20230209160357.19307-4-matthias.bgg@kernel.org>
+In-Reply-To: <20230209160357.19307-4-matthias.bgg@kernel.org>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 10 Feb 2023 10:42:32 +0800
-Message-ID: <CAGXv+5HjnP6DC9RV9MUSatyuD0S64K+=kafifFJqYgOhSWu02Q@mail.gmail.com>
-Subject: Re: [PATCH v1 3/4] arm64: dts: mt8195: Align vppsys node to dtschema
+Date: Fri, 10 Feb 2023 10:44:25 +0800
+Message-ID: <CAGXv+5FnXtR+KP6GZ2ut1cUwo0z-SBs1zTPWMSvm9dF-NNn--g@mail.gmail.com>
+Subject: Re: [PATCH v1 4/4] Revert "arm64: dts: mt8173: add mmsel clocks for
+ 4K support"
 To: matthias.bgg@kernel.org
 Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
 	matthias.bgg@gmail.com, devicetree@vger.kernel.org, 
@@ -67,9 +68,8 @@ Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
 	linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230209_184246_217560_FEEC3DE8 
-X-CRM114-Status: UNSURE (   8.40  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230209_184437_220848_5EE63553 
+X-CRM114-Status: GOOD (  16.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,14 +84,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 10, 2023 at 12:04 AM <matthias.bgg@kernel.org> wrote:
+On Fri, Feb 10, 2023 at 12:05 AM <matthias.bgg@kernel.org> wrote:
 >
 > From: Matthias Brugger <matthias.bgg@gmail.com>
 >
-> As the node is a syscon, this has to be reflected in the compatible and
-> the node name.
+> This reverts commit fc6634ac0e5380aeb1063275a2e9a583d41b2306.
+>
+> The mmsys is a clock provider but does not have any clocks connected to
+> it. Therefore assigned-clock properties should be applied to the users of mmsys.
+
+If there are multiple users that need this, then it should be moved to
+the clock provider node topckgen.
+
+> This fixes the DT schema check:
+> mediatek/mt8173-elm.dtb: syscon@14000000: 'assigned-clock-rates', 'assigned-clocks' do not match any of the regexes: 'pinctrl-[0-9]+'
 >
 > Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+>
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 2 --
+>  1 file changed, 2 deletions(-)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index c47d7d900f283..b753547e250fe 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -988,8 +988,6 @@ mmsys: syscon@14000000 {
+>                         compatible = "mediatek,mt8173-mmsys", "syscon";
+>                         reg = <0 0x14000000 0 0x1000>;
+>                         power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+> -                       assigned-clocks = <&topckgen CLK_TOP_MM_SEL>;
+> -                       assigned-clock-rates = <400000000>;
+>                         #clock-cells = <1>;
+>                         #reset-cells = <1>;
+>                         mboxes = <&gce 0 CMDQ_THR_PRIO_HIGHEST>,
+> --
+> 2.39.0
+>
+>
 
