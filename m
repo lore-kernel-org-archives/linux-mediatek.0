@@ -4,74 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6729C636CD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 09:10:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA3D6C05027
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 09:10:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6HhKK4J2H3bm5JiXJDgPozBzQTQbRGkWm2dygfVNSZ0=; b=HatVk3EtO15Vabg2Ynq5H6VKfv
-	RDQsigCSnR1I4gOS5cHG9o9QUXeBkNTvqo4ckwwH/Y1KOufc/U0TlSkwn/w5uNOYv8inB5Lq9hmNZ
-	D57mHLxsCI36qzzdLyerKW5jFRCuyYwA7EvGJW6F4sM5QfZgg3bTVfAfDRlnSuJ3Xu8wgoLzofuNC
-	3Kq3j6X0ayGcPWpLSsYKVSymRbZhM3XOxOUweRwlO/klI2+WeeHiAQ+xmS3osh1PKxxnMqfBwNJGt
-	GSMhrRhvUK+glcfHFJVYSMO9C1FbPNJa5m2ADGDcVvBwgO+AGuLHArtfkdLNJipWraLArjodJYrc2
-	HR90m70w==;
+	bh=JO1AgozF/Zya9WC0NgRmz45Iqf3MdEInH4N2K136jyM=; b=m1udBy4Q866bukYCbEaHsHVj68
+	3a26lCmGi967LiVMW3d49eI2r42PVAKG0recGUdZlZT8Qr902UdHq4KSSoNjkT/a1runloNttXAUH
+	kbhl0ObbRoRoQ0CAjqXZOqXHNV237POtm+4dGFBrMQ9Sxpey6QOQS3Eji8K235hmsdlNPHbLCzudN
+	UaidxainGsEG819UnV5CXmmAcBdAuKZy6apOnsXKXHOJU6qL1fs8C5OppDNIdUFlkQZinAFF8mN+I
+	FYkLkJf0IODr/JEHN+fZqmuWfJo1cqVg0soYcmPOk46V+KtobX3040BWjCTt8p4CfCxVrWwIX6kWE
+	RnVXZx8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQPQ6-004xuk-QW; Fri, 10 Feb 2023 09:10:14 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pQPQZ-004yAX-R8; Fri, 10 Feb 2023 09:10:43 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQPQ3-004xsu-Tw; Fri, 10 Feb 2023 09:10:13 +0000
-X-UUID: b7a6c468a92211edbbe3f76fe852e059-20230210
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=6HhKK4J2H3bm5JiXJDgPozBzQTQbRGkWm2dygfVNSZ0=;
-	b=tytu3w6v3mv/Ojr7fO2DnKtdAys/JYCQ7905FDYsVkOIc8wl0+qKqiwFo+dMWqWTuun4ydYQw0EIGCiXv9r2bvLgvW8l59JZm8hH4ATWaeq16hDM5JRN0h9mexdt2JM11QQgVegh+EQxvVLNVQLV614IlERdfgLllhI0G1gvmYM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.19,REQID:4e8fdf2f-3e65-4aec-9a02-c6e69d163c2d,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:885ddb2,CLOUDID:052e10f8-ff42-4fb0-b929-626456a83c14,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-UUID: b7a6c468a92211edbbe3f76fe852e059-20230210
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1263585149; Fri, 10 Feb 2023 02:10:09 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 10 Feb 2023 16:59:34 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 10 Feb 2023 16:59:34 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
-	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Tinghan Shen
-	<tinghan.shen@mediatek.com>
-CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v5 04/12] remoteproc: mediatek: Add SCP core 1 register definitions
-Date: Fri, 10 Feb 2023 16:59:23 +0800
-Message-ID: <20230210085931.8941-5-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230210085931.8941-1-tinghan.shen@mediatek.com>
-References: <20230210085931.8941-1-tinghan.shen@mediatek.com>
+	id 1pQPQL-004y19-JD
+	for linux-mediatek@lists.infradead.org; Fri, 10 Feb 2023 09:10:32 +0000
+Received: by mail-ed1-x532.google.com with SMTP id q19so4206806edd.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 10 Feb 2023 01:10:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=JO1AgozF/Zya9WC0NgRmz45Iqf3MdEInH4N2K136jyM=;
+        b=ZyFniiCCjmt9CvFd63F1Zj3IXNi4mNYXxXKEnzHLxPlFTMzNhXgAL3mcNuX5cYUWEW
+         XLgUon3TpGuOxN5yFBKHZWe5rBLfxrjBjRkVxf8O9KheaOLF+XS9EoTuMNMEfPc1n0bG
+         MDJvJGNT7D3w1/12SrGKArBX/1Vntjt1I19b1FyqOOW2athWYZaaYf/6UDVjWsYb0lTn
+         YGVnI8UiVgl3HmOuryhDtX/pWrRHQJ9cfaT6GEsrsnD029W1HFFHZW9dhw34yvyh0u6u
+         qEbrE6+qN40u0WDcfwsWEk26o50aD4BioUHqSaOaj+Aj7nKGSWgBi/xYTszNMgBq0sv1
+         aJDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=JO1AgozF/Zya9WC0NgRmz45Iqf3MdEInH4N2K136jyM=;
+        b=upWXAvKaC8voiaRe1oO/2L+HmucTm1rll9dZU2CdbXEl9XCOleTlUg7pylA5Y5BaHk
+         XZAAhgXR54igH8TjtCvmP507llLdIWN11AMybCR7kgHK6l7ZMSqLodCGKoQ2dmf1PU+J
+         DFmgdslvHYcuKfVs338lSRO0jzIMqJeKygubihhN48//qzepBdxbSFk5wfvl4rGiDjzi
+         M9z3SzjJ/SYZlQr6eQ/iGv9sKarP0h5/RrakTiVlVNqjP7DcyG4H/y/MFJPwA+FIl26Z
+         oMMa2AlBKXsB142+XlQbUsnBytTOaAnl3VUf9B0gFQ+8++tDqBEL1a4Q2TX4M4C8h9UM
+         r0Sg==
+X-Gm-Message-State: AO0yUKXshYJ9704NIutc9ScUzydNcKp+ZMSbkPS+iuINQgJ+oOh8t7nl
+	ZUnoRwINsjE01ZpK/MUNsdcT3GwwwkiBObZ18F3J0g==
+X-Google-Smtp-Source: AK7set+IPEknsk8g/iIkwkkIan5htfnLkZaV7RhcstO9zjt8469/p979SjeKGgF3Upg96TNj1/y34dRtZXAYJDOE77o=
+X-Received: by 2002:a50:d7c1:0:b0:4ab:2517:ca8 with SMTP id
+ m1-20020a50d7c1000000b004ab25170ca8mr791593edj.7.1676020227744; Fri, 10 Feb
+ 2023 01:10:27 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20230209105628.50294-1-bchihi@baylibre.com> <20230209105628.50294-3-bchihi@baylibre.com>
+ <167596964747.647630.15058465615417584783.robh@kernel.org>
+In-Reply-To: <167596964747.647630.15058465615417584783.robh@kernel.org>
+From: Balsam CHIHI <bchihi@baylibre.com>
+Date: Fri, 10 Feb 2023 10:09:52 +0100
+Message-ID: <CAGuA+oqjQPQoJOzXdNxO+831noyGmiLcvzG1sGv6SFkr92XFCg@mail.gmail.com>
+Subject: Re: [PATCH v14 2/6] dt-bindings: thermal: mediatek: Add LVTS thermal controllers
+To: Rob Herring <robh@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, khilman@baylibre.com, 
+	rdunlap@infradead.org, daniel.lezcano@linaro.org, devicetree@vger.kernel.org, 
+	p.zabel@pengutronix.de, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, james.lo@mediatek.com, 
+	rex-bc.chen@mediatek.com, linux-pm@vger.kernel.org, rafael@kernel.org, 
+	amitk@kernel.org, rui.zhang@intel.com, krzysztof.kozlowski+dt@linaro.org, 
+	ye.xingchen@zte.com.cn, linux-kernel@vger.kernel.org, robh+dt@kernel.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230210_011011_993097_A7111657 
-X-CRM114-Status: UNSURE (   8.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230210_011029_663503_3B99EB17 
+X-CRM114-Status: GOOD (  10.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,55 +91,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8195 SCP core 1 related register definitions.
+Hi Rob,
 
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-Reviewed-by: Mathieu Poirier <mathieu.poirier@linaro.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/remoteproc/mtk_common.h | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+On Thu, Feb 9, 2023 at 8:07 PM Rob Herring <robh@kernel.org> wrote:
+>
+>
+> On Thu, 09 Feb 2023 11:56:24 +0100, bchihi@baylibre.com wrote:
+> > From: Balsam CHIHI <bchihi@baylibre.com>
+> >
+> > Add LVTS thermal controllers dt-binding definition for mt8192 and mt8195.
+> >
+> > Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+> > ---
+> >  .../thermal/mediatek,lvts-thermal.yaml        | 142 ++++++++++++++++++
+> >  .../thermal/mediatek,lvts-thermal.h           |  19 +++
+> >  2 files changed, 161 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+> >  create mode 100644 include/dt-bindings/thermal/mediatek,lvts-thermal.h
+> >
+>
+> Reviewed-by: Rob Herring <robh@kernel.org>
 
-diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
-index ea6fa1100a00..3778894c96f3 100644
---- a/drivers/remoteproc/mtk_common.h
-+++ b/drivers/remoteproc/mtk_common.h
-@@ -47,6 +47,7 @@
- #define MT8192_SCP2SPM_IPC_CLR		0x4094
- #define MT8192_GIPC_IN_SET		0x4098
- #define MT8192_HOST_IPC_INT_BIT		BIT(0)
-+#define MT8195_CORE1_HOST_IPC_INT_BIT	BIT(4)
- 
- #define MT8192_CORE0_SW_RSTN_CLR	0x10000
- #define MT8192_CORE0_SW_RSTN_SET	0x10004
-@@ -56,6 +57,26 @@
- 
- #define MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS		GENMASK(7, 4)
- 
-+#define MT8195_CPU1_SRAM_PD			0x1084
-+#define MT8195_SSHUB2APMCU_IPC_SET		0x4088
-+#define MT8195_SSHUB2APMCU_IPC_CLR		0x408C
-+#define MT8195_CORE1_SW_RSTN_CLR		0x20000
-+#define MT8195_CORE1_SW_RSTN_SET		0x20004
-+#define MT8195_CORE1_MEM_ATT_PREDEF		0x20008
-+#define MT8195_CORE1_WDT_IRQ			0x20030
-+#define MT8195_CORE1_WDT_CFG			0x20034
-+
-+#define MT8195_SEC_CTRL				0x85000
-+#define MT8195_CORE_OFFSET_ENABLE_D		BIT(13)
-+#define MT8195_CORE_OFFSET_ENABLE_I		BIT(12)
-+#define MT8195_L2TCM_OFFSET_RANGE_0_LOW		0x850b0
-+#define MT8195_L2TCM_OFFSET_RANGE_0_HIGH	0x850b4
-+#define MT8195_L2TCM_OFFSET			0x850d0
-+#define SCP_SRAM_REMAP_LOW			0
-+#define SCP_SRAM_REMAP_HIGH			1
-+#define SCP_SRAM_REMAP_OFFSET			2
-+#define SCP_SRAM_REMAP_SIZE			3
-+
- #define SCP_FW_VER_LEN			32
- #define SCP_SHARE_BUFFER_SIZE		288
- 
--- 
-2.18.0
+Thank you for the review!
 
+>
+
+Best Regards,
+Balsam
 
