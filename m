@@ -4,58 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E78CC05027
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 23:05:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12198C05027
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 23:37:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
-	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ynSaXkMrlyIwU3AUNaTVV6sq0corcvt0FuiZXolCPT8=; b=NdKmyRA6DMAPDf5tXWnM+VIN30
-	656hyxZPHfXYyaNAQ7edRBEcTYvoRdgxIL6nW2XWSox+Qk9a/VQ1PzDrERTtRAXFHvbJ0M945Q8y/
-	GiNrwNNj+b6hbK9fRGLyIvivjLJXfdcaFdzYKkTuGcEsOe175896/f66YP51TXW2JxeehxreM0ZOU
-	pMibg4JXgVWlG+NkTK8b/dzo0HfUHJhRxrHH/L6gFs+y4jrgGzEn9Wj6ziuV3NO+67DNRWXqhMJNs
-	Yy35c60zuI28b+FJnOUP2wvvFVFl8ts4SrkSW4nA6XO9KcaRQxfu0W83yYLwkc71y1cPWIINHZ0SE
-	19SXd41A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=WRwdeOIcQjiCsUGDJBosMNl5/An3lgATwKdnPHyrRlA=; b=mH/cQOi2XKFhbd1yqX0DNCJv+G
+	n35hfL1VqMpigTYAea9+1QexY7hs1rBJSRXjSZ/yv0hQQtmr+4EMXPJHU0MHgjFpRwc/JfkH/vtTI
+	deaEoghpaw2JXvBpCwota/1jKe1tBPntjtk8nSxepQQikn07Y3xu6Si4mBmehrcb2TpJghBuK8/t5
+	YvxgzspWZpsKWGHCKTFqFvW4i1BqyZtl1Un8FbsNu7Y+4YrdDfOkdvwp4aQXDIx1QUJnGFibXWAtM
+	7zXFpBEQDWpgZizRVPoQWEHvfD0ONNmOi4gd9xPVUfj0bQkAG3vn7FKd9mc2pQhf54UxFWb/U0kA9
+	0NB/CZ0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQcRx-007sFC-FI; Fri, 10 Feb 2023 23:05:01 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pQcxM-007wKU-WE; Fri, 10 Feb 2023 23:37:29 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQcRn-007sDQ-4A; Fri, 10 Feb 2023 23:04:52 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 8E1EDB825E4;
-	Fri, 10 Feb 2023 23:04:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 416C3C433D2;
-	Fri, 10 Feb 2023 23:04:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1676070288;
-	bh=ynSaXkMrlyIwU3AUNaTVV6sq0corcvt0FuiZXolCPT8=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=GhXyb2TxZ2alj4P6jiGoTXLb7HEbaoISdiqSHqJ1jT0uQmftFZ5zaO8+KdaICrhpc
-	 Cx4ZXVmupqGxJz1+n+TQ7eTZF0TSvjRbrtVV6KlwpSm1pZHiSh6C5IJuZlMpZciTZE
-	 PggBvBtOIbVWVjk+ww5bw4Dkd5486TDwkC68XAVFkolHDdJPeqhwjjbBtbp8jZU8cE
-	 Hs/IOZH6j/ll7MyDBcT10pxZjKe8XbMA8pM6T9epEekyL/u4mLbiWFr52zQLFvTs0I
-	 ngKah+wHawOrmOX/0FNOfqZv6x42uOE5pjY8Xyh4+dJNN4TmIHV4ld6gZq4KdbPNHM
-	 PV5pGh07wBNJg==
-Message-ID: <dceaba1f6d628e101430fa643110654b.sboyd@kernel.org>
-Content-Type: text/plain; charset="utf-8"
+	id 1pQcxJ-007wJK-6l; Fri, 10 Feb 2023 23:37:26 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pQcws-000492-12;
+	Sat, 11 Feb 2023 00:36:58 +0100
+Date: Fri, 10 Feb 2023 23:35:19 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Russell King <linux@armlinux.org.uk>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>
+Cc: Jianhui Zhao <zhaojh329@gmail.com>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
+Subject: [PATCH v4 00/12] net: ethernet: mtk_eth_soc: various enhancements
+Message-ID: <cover.1676071507.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20230103092330.494102-1-wenst@chromium.org>
-References: <20230103092330.494102-1-wenst@chromium.org>
-Subject: Re: [PATCH v3] clk: core: Honor CLK_OPS_PARENT_ENABLE in clk_core_is_enabled
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?q?N=C3=ADcolas?= F . R . A . Prado <nfraprado@collabora.com>, Alexander Stein <alexander.stein@ew.tq-group.com>, Marcel Ziswiler <marcel.ziswiler@toradex.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-To: Chen-Yu Tsai <wenst@chromium.org>, Michael Turquette <mturquette@baylibre.com>
-Date: Fri, 10 Feb 2023 15:04:44 -0800
-User-Agent: alot/0.10
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230210_150451_336121_7307F95E 
-X-CRM114-Status: GOOD (  17.62  )
+X-CRM114-CacheID: sfid-20230210_153725_286664_81CA0C15 
+X-CRM114-Status: GOOD (  13.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,35 +76,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Chen-Yu Tsai (2023-01-03 01:23:30)
-> In the previous commits that added CLK_OPS_PARENT_ENABLE, support for
-> this flag was only added to rate change operations (rate setting and
-> reparent) and disabling unused subtree. It was not added to the
-> clock gate related operations. Any hardware driver that needs it for
-> these operations will either see bogus results, or worse, hang.
->=20
-> This has been seen on MT8192 and MT8195, where the imp_ii2_* clk
-> drivers set this, but dumping debugfs clk_summary would cause it
-> to hang.
->=20
-> Prepare parent on prepare and enable parent on enable dependencies are
-> already handled automatically by the core as part of its sequencing.
-> Whether the case for "enable parent on prepare" should be supported by
-> this flag or not is not clear, and thus ignored for now.
->=20
-> This change solely fixes the handling of clk_core_is_enabled, i.e.
-> enabling the parent clock when reading the hardware state. Unfortunately
-> clk_core_is_enabled is called in a variety of places, sometimes with
-> the enable clock already held. To avoid deadlocking, the core will
-> ignore readouts and just return false if CLK_OPS_PARENT_ENABLE is set
-> but the parent isn't currently enabled.
->=20
-> Fixes: fc8726a2c021 ("clk: core: support clocks which requires parents en=
-able (part 2)")
-> Fixes: a4b3518d146f ("clk: core: support clocks which requires parents en=
-able (part 1)")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
+This series brings a variety of fixes and enhancements for mtk_eth_soc,
+adds support for the MT7981 SoC and facilitates sharing the SGMII PCS
+code between mtk_eth_soc and mt7530.
 
-Applied to clk-next
+Note that this series depends on commit 697c3892d825
+("regmap: apply reg_base and reg_downshift for single register ops") to
+not break mt7530 pcs register access.
+
+The whole series has been tested on MT7622+MT7531 (BPi-R64),
+MT7623+MT7530 (BPi-R2) and MT7981+GPY211 (GL.iNet GL-MT3000).
+
+Changes since v3:
+ * remove unused #define's
+ * use BMCR_* instead of #define'ing our own constants
+ * return before changing registers in case of invalid link timer
+
+Changes since v2:
+ * improve dt-bindings, convert sgmisys bindings to dt-schema yaml
+ * fix typo
+
+Changes since v1:
+ * apply reverse xmas tree everywhere
+ * improve commit descriptions
+ * add dt binding documentation
+ * various small changes addressing all comments received for v1
+
+Daniel Golle (12):
+  net: ethernet: mtk_eth_soc: add support for MT7981 SoC
+  dt-bindings: net: mediatek,net: add mt7981-eth binding
+  dt-bindings: arm: mediatek: sgmiisys: Convert to DT schema
+  dt-bindings: arm: mediatek: sgmiisys: add MT7981 SoC
+  net: ethernet: mtk_eth_soc: set MDIO bus clock frequency
+  net: ethernet: mtk_eth_soc: reset PCS state
+  net: ethernet: mtk_eth_soc: only write values if needed
+  net: ethernet: mtk_eth_soc: fix RX data corruption issue
+  net: ethernet: mtk_eth_soc: ppe: add support for flow accounting
+  net: pcs: add driver for MediaTek SGMII PCS
+  net: ethernet: mtk_eth_soc: switch to external PCS driver
+  net: dsa: mt7530: use external PCS driver
+
+ .../arm/mediatek/mediatek,sgmiisys.txt        |  27 --
+ .../arm/mediatek/mediatek,sgmiisys.yaml       |  75 +++++
+ .../devicetree/bindings/net/mediatek,net.yaml |  43 ++-
+ MAINTAINERS                                   |   7 +
+ drivers/net/dsa/Kconfig                       |   1 +
+ drivers/net/dsa/mt7530.c                      | 277 ++++------------
+ drivers/net/dsa/mt7530.h                      |  47 +--
+ drivers/net/ethernet/mediatek/Kconfig         |   2 +
+ drivers/net/ethernet/mediatek/mtk_eth_path.c  |  14 +-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   |  65 +++-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h   | 100 ++----
+ drivers/net/ethernet/mediatek/mtk_ppe.c       | 114 ++++++-
+ drivers/net/ethernet/mediatek/mtk_ppe.h       |  25 +-
+ .../net/ethernet/mediatek/mtk_ppe_debugfs.c   |   9 +-
+ .../net/ethernet/mediatek/mtk_ppe_offload.c   |   8 +
+ drivers/net/ethernet/mediatek/mtk_ppe_regs.h  |  14 +
+ drivers/net/ethernet/mediatek/mtk_sgmii.c     | 190 ++---------
+ drivers/net/pcs/Kconfig                       |   7 +
+ drivers/net/pcs/Makefile                      |   1 +
+ drivers/net/pcs/pcs-mtk-lynxi.c               | 303 ++++++++++++++++++
+ include/linux/pcs/pcs-mtk-lynxi.h             |  13 +
+ 21 files changed, 812 insertions(+), 530 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.yaml
+ create mode 100644 drivers/net/pcs/pcs-mtk-lynxi.c
+ create mode 100644 include/linux/pcs/pcs-mtk-lynxi.h
+
+
+base-commit: 6ba8a227fd19d19779005fb66ad7562608e1df83
+-- 
+2.39.1
+
 
