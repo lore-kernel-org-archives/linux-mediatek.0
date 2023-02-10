@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28629C636CD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 10:31:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E760C05027
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 10:34:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0Xo2ox37+Egn/6Ir107WQst5VTd3PA7umPp/8qxJ+cs=; b=Mk+YGTA25kCZ6dRBXYtFivxLWS
-	mAXIfZJ89nH8iRk0Hdk+eSWHJKndS4Y5ORtLrXxMqntqD2RQoJZZSUKT3BdDDrYszSpWpdOyP6jIf
-	tSYwIYNAYYrTCdZFY4qfYd68wFl+LJnHofCZIuzsF7nDeK0dMkYndM1+41jIWuKm3okUs7pUWpOVP
-	meq8Bkk5tKlhG/mW7FlbSX0FrY8+ZyzwSEcDa0XakthjlmdinzBmY+APah8PpnGixWmB8cU0UwVx4
-	jCiENBRNKsBp88kRoi6cJIzy1/88O7ucFWPUHt5vmUJo45pn42a3zOR+xJYQMGuDoB8XTY2HKy8oG
-	kHkRkEHg==;
+	bh=gAFsUUGecd2PZahjRe1w84p36VFhgyCGb6V13rC7A2U=; b=t5HF0SHN0FC3iEk3tdprpmw2xN
+	9iK4w4Qn68dkBc7yYO6J82ZvG6pQqqjWi6Kd2v6IA7cokTe8XvO1gd47LbyTRklzUGnXsJPZG8X1G
+	wyZwITar+vmvUNf+SpWGjXVIK/5z+1iaeNeEUwST8MZrbIePJW7oYWOVn/m6rfUg36EEi5PJ23tjr
+	STXX+oJgXk1DHorw2Lng0L6CesbvQxOuqlkSXe2wuGe1hn3QdFSajxz8ta1yE3x98d9Y2FaDhbIUY
+	7iB0W4Rtd5EG2qeCWW3x38uYawWwL7BFa2HZYBLinvQ07ZvmWhGmdSOCxRlxtFN8OPtqgeYLm4FoC
+	Hzfi5qSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQQgU-005Hdm-EP; Fri, 10 Feb 2023 10:31:14 +0000
+	id 1pQQjZ-005INu-Q4; Fri, 10 Feb 2023 10:34:25 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQQgR-005Hc0-Ac; Fri, 10 Feb 2023 10:31:12 +0000
+	id 1pQQjW-005IMT-UG; Fri, 10 Feb 2023 10:34:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
 	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=0Xo2ox37+Egn/6Ir107WQst5VTd3PA7umPp/8qxJ+cs=; b=dVIONNKXENZUqAvpuFHrmXFG2e
-	fHmIlPW51KDfwGRcaGVcZoIcokwoff4EYSfraJOO/w915PSODJsEZp2T7Rn/X1azgEWiJLtUTAVeJ
-	HVrBT1e/KqkjlaX6gjTecLCOtrtm0DPUf42QUd5tYSQ1Vpgg0Jg4v6Zq1dhyn+Jk0vEEJovyfr3Y3
-	L4hbIrYrUilM2i237GVRlfhkQeyRtzy2jvkoaq7fRIbpRgwo/bP7uotL79J1xS9lFBoNPZq2KrLZa
-	mbig1uAg2KZivRyzc5xvpZEgukY39vJPJfew/R62lXbCkhy+D7gXOdLZXA+Mp945YWDjTz6ezDJjd
-	5qpG5JOw==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:36500)
+	bh=gAFsUUGecd2PZahjRe1w84p36VFhgyCGb6V13rC7A2U=; b=NOfNM5sFbwpYn5HnQkbpw3RlvQ
+	3FfQuJp9bNctwhBYwzEAPh8WcBfNEHf+Xszakp5ad7nVdapvZLtwonmJwDMc3whqmSZnd35fF94bI
+	BUahACO7xG4Vj3CADD7lmmM4yKQkRK9Q18x7l1WMyQDTVwe+XIpvQVFmhBcgflt4x/cyvV4OxDiSU
+	I83xaW1zQDpYT3Rgd30w2TzKnlVr0YZ2QRy+rvzo4vU/F7K8BLjrN43+05y9pKZAFSoS1lyo29L0A
+	2Y68bs8s9F36kh+5xe2sc58vF25T6JMxADvIaFWTAUDf4BFjnS+pMu0Bl0fdFJ2qnMkVp7lqCFWru
+	RY4Yj4Eg==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:36502)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <linux@armlinux.org.uk>)
-	id 1pQQgB-0001G3-8k; Fri, 10 Feb 2023 10:30:54 +0000
+	id 1pQQjS-0001Gy-RS; Fri, 10 Feb 2023 10:34:18 +0000
 Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
 	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1pQQg4-0005UQ-Mt; Fri, 10 Feb 2023 10:30:48 +0000
-Date: Fri, 10 Feb 2023 10:30:48 +0000
+	id 1pQQjR-0005Ua-6I; Fri, 10 Feb 2023 10:34:17 +0000
+Date: Fri, 10 Feb 2023 10:34:17 +0000
 From: "Russell King (Oracle)" <linux@armlinux.org.uk>
 To: Krzysztof Kozlowski <krzk@kernel.org>
 Cc: Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
@@ -68,17 +68,23 @@ Cc: Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
 	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
 Subject: Re: [PATCH v2 03/11] dt-bindings: arm: mediatek: add
  'mediatek,pn_swap' property
-Message-ID: <Y+Yc2GlgQh415FWx@shell.armlinux.org.uk>
+Message-ID: <Y+YdqbJS4bDvTxuD@shell.armlinux.org.uk>
 References: <cover.1675779094.git.daniel@makrotopia.org>
  <a8c567cf8c3ec6fef426b64fb1ab7f6e63a0cc07.1675779094.git.daniel@makrotopia.org>
  <ad09a065-c10d-3061-adbe-c58724cdfde0@kernel.org>
+ <Y+KR26aepqlfsjYG@makrotopia.org>
+ <b6d782ef-b375-1e73-a384-1ff37c1548a7@kernel.org>
+ <Y+Oo9HaqPeNVUANR@makrotopia.org>
+ <514ec4b8-ef78-35c1-2215-22884fca87d4@kernel.org>
+ <Y+QinJ9W8hIIF9Ni@makrotopia.org>
+ <c29a3a22-cc23-35bf-c8e0-ebe1405a4d94@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ad09a065-c10d-3061-adbe-c58724cdfde0@kernel.org>
+In-Reply-To: <c29a3a22-cc23-35bf-c8e0-ebe1405a4d94@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230210_023111_387981_2778AE6F 
-X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-CacheID: sfid-20230210_023422_993788_ADE4952E 
+X-CRM114-Status: UNSURE (   9.02  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,23 +100,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 07, 2023 at 06:38:23PM +0100, Krzysztof Kozlowski wrote:
-> On 07/02/2023 15:19, Daniel Golle wrote:
-> > +Optional Properties:
-> > +
-> > +- mediatek,pn_swap: Invert polarity of the SGMII data lanes.
+On Thu, Feb 09, 2023 at 12:30:27PM +0100, Krzysztof Kozlowski wrote:
+> On 08/02/2023 23:30, Daniel Golle wrote:
+> > Hm, none of the current PCS (or PHY) drivers are represented by a
+> > syscon node... (and maybe that's the mistake in first place?)
 > 
-> No:
-> 3. Does not look like property of this node. This is a clock controller
-> or system controller, not SGMII/phy etc.
+> Yes.
 
-Wrong. Totally wrong.
-
-SGMII data lines consist of a "positive" and a "negative" signal.
-Clearly, this PHY supports swapping the sense of those.
-
-This CLEARLY has nothing to do with a clock controller. It's also not
-system-controller related either.
+Nos, it isn't.
 
 -- 
 RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
