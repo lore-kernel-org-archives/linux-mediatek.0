@@ -4,65 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE3DBC636D4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 22:17:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 663F9C636D4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 22:27:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1Am8Jfrk4NrQ9zdADgG0QLqDn0KuPRfKv5w/mlQOgDE=; b=NRW8f8hKuVOFxOgn8omm9vOBBI
-	3JK6JxQ3AsY1a3dH9FI2NO9guyG94MjbA6QJpU/I6/CslzDImci2wm+BIolwQY+EZHiHFvJFhbb5z
-	ytYZtjPxH3ZbILcgVAhRBI252oxlRttG1IBowzkp5bR8xQJuRE2Jgg6ywLDUVtd7oQvtpmH/wAdDo
-	pPKcvrfHRrb/QWBPGHdr/zUo779iT+IucGgRpkJ+8CwZIok+PilqGHGyhtKyziw+au/KDAZL8o/xk
-	zHO1sz1BvpHSL2Txk3tHJlOnlbyQzsr1n5rA/ny8bLMY76GF6Sb8VYuXSkNYUYKngPEvatfIVh1Tf
-	lCeLL03g==;
+	bh=dI3q7FYVCWjLDBVXxhDsYu3nYOANeG7+NTZx60qVe0o=; b=kld7qesPWEJDCnmHaSBXLcVfYn
+	oUVyNEuW1KZwlqYYyvMFuInhnBA+nTT9ye66za/fTUEx9kH4iasB0UIwQEcKINfCK7bu6exa3CVpF
+	4VFMGXnv9NSsYpoQwK+BaoYKSvqagyQQLkIj22VOAJjig6eDPn3i4oCPUo4aYW/ESgmxxVned8r4s
+	eX6J6zA0KRwRPG2AVvq2wuy15D2k6ln/Wy00DCqCzkJJrEjtQdF4BK2o0rAU9aNSMHPdsVDsbWMhD
+	BC+wn6tPmpERbOD8dxqsPVs09qBrx/KK7IF2jVWlZp0XwGUyt84hkmpY8tNonB0WQUbrzb4UgFt0V
+	9Jr8K0yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQbi1-007lOn-Jg; Fri, 10 Feb 2023 22:17:33 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pQbrm-007maj-U8; Fri, 10 Feb 2023 22:27:38 +0000
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQbhz-007lN9-AM; Fri, 10 Feb 2023 22:17:32 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pQbho-0003cY-06;
-	Fri, 10 Feb 2023 23:17:20 +0100
-Date: Fri, 10 Feb 2023 22:17:15 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	DENG Qingfang <dqfext@gmail.com>,
+	id 1pQbrb-007mYV-Po; Fri, 10 Feb 2023 22:27:30 +0000
+Received: by mail-ed1-x535.google.com with SMTP id fi26so6092976edb.7;
+        Fri, 10 Feb 2023 14:27:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=dI3q7FYVCWjLDBVXxhDsYu3nYOANeG7+NTZx60qVe0o=;
+        b=AWK1VR2Ulc1Zz9Y1ZjaVoZ8Ng3GfMjc7oz+4MS8bSMv2TWpy8BOWMc0jc4nfb2d9nE
+         MGBzxIyL27cvb72c8dmGClwJpltabtuKsKwtSP1KdzdgoB4Hrn7CJl9XcKw2u/gBnXZB
+         1rG9OzSwD/C93qAiug4uj0FMGRq8Nz/DC/f2tZ1nuTwJ7XuxXQRPB7RrTAVCmzRmANWR
+         XsJPgMiJjdURpzRflMctATgY35idz4XOVYY8QPF23NzE8CryTKvKD8yod08i2E+pX7fh
+         coJZN4UFJ/QYUsWwJP2YcN2EGCYbDYUix2qG87rswku9IefxCNLeJM88R/1PgbTvUBhI
+         UqVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=dI3q7FYVCWjLDBVXxhDsYu3nYOANeG7+NTZx60qVe0o=;
+        b=MSASdMnRbLYeobrb9CfVu96L8Qv+/764COLjKuLUVKVy1Bx7UHD3LAGTqa+jxd80P5
+         LEzlyCu2Q3SdFkw08imFEkiot2V+R37dKzvQXIwwRwXxuMuoZqvYMkS1TSfyDcLsunJo
+         fieVUBMnf3q1/XRhZHccTMDvtdTJBBNL7E/kEJp+zmrf8X6JgDzM2w0rJ1ybzFQ3bgbZ
+         8Q3rMItCMzKfEjnv9BM08ini9/w/978MXCYY9Y3AycxCAp9ZwS/uLDmGxp2Nz8DpWtNo
+         LSUNEt5RnMLyVGcgrYXKA3ECgGWOv+bt9BTVb6Al4fT7oNQye00l0PrZn3KuNL5fuKbs
+         LMVg==
+X-Gm-Message-State: AO0yUKUGiuFjk/IfzAQZq8TfH5uxSF/a3oV6/rEytryJCaP59BATN7Tq
+	kT0wH/ATCYBnu0E2Ou8MS80=
+X-Google-Smtp-Source: AK7set9HbCzSw0JmXpCiMALdNFeTBR42aGnutinBjZFU+0Uy2/jr9VXUSpHmGTXr4a1dGyt3kzBDbg==
+X-Received: by 2002:a50:d548:0:b0:4a2:223d:4514 with SMTP id f8-20020a50d548000000b004a2223d4514mr17918752edj.8.1676068044714;
+        Fri, 10 Feb 2023 14:27:24 -0800 (PST)
+Received: from skbuf ([188.26.185.183])
+        by smtp.gmail.com with ESMTPSA id w9-20020a50d789000000b004aacee2728dsm2847008edi.19.2023.02.10.14.27.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 10 Feb 2023 14:27:24 -0800 (PST)
+Date: Sat, 11 Feb 2023 00:27:21 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Richard van Schagen <richard@routerhints.com>
+Cc: "arinc9.unal@gmail.com" <arinc9.unal@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
 	Landen Chao <Landen.Chao@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Vladimir Oltean <olteanv@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
 	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
-	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
-Subject: Re: [PATCH v2 11/11] net: dsa: mt7530: use external PCS driver
-Message-ID: <Y+bCa7ekrREOpgid@makrotopia.org>
-References: <cover.1675779094.git.daniel@makrotopia.org>
- <dcda0a3a1bf89e27e600822df63009b2b10e136a.1675779094.git.daniel@makrotopia.org>
- <Y+Yi+ajKHaLo4Vvq@shell.armlinux.org.uk>
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"erkin.bozoglu@xeront.com" <erkin.bozoglu@xeront.com>
+Subject: Re: [PATCH net-next] net: dsa: mt7530: add support for changing DSA
+ master
+Message-ID: <20230210222721.3rbszzzjnrctjrnz@skbuf>
+References: <20230210172942.13290-1-richard@routerhints.com>
+ <20230210172942.13290-1-richard@routerhints.com>
+ <20230210185629.gfbaibewnc5u3tgs@skbuf>
+ <42C4F87B-520A-4F43-924D-9CDA577B04C7@routerhints.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Y+Yi+ajKHaLo4Vvq@shell.armlinux.org.uk>
+In-Reply-To: <42C4F87B-520A-4F43-924D-9CDA577B04C7@routerhints.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230210_141731_378143_524A6866 
-X-CRM114-Status: GOOD (  16.45  )
+X-CRM114-CacheID: sfid-20230210_142727_899673_C6C62D88 
+X-CRM114-Status: GOOD (  16.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,37 +105,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 10, 2023 at 10:56:57AM +0000, Russell King (Oracle) wrote:
-> On Tue, Feb 07, 2023 at 02:24:17PM +0000, Daniel Golle wrote:
-> > @@ -2728,11 +2612,11 @@ mt753x_phylink_mac_select_pcs(struct dsa_switch *ds, int port,
-> >  
-> >  	switch (interface) {
-> >  	case PHY_INTERFACE_MODE_TRGMII:
-> > +		return &priv->pcs[port].pcs;
-> >  	case PHY_INTERFACE_MODE_SGMII:
-> >  	case PHY_INTERFACE_MODE_1000BASEX:
-> >  	case PHY_INTERFACE_MODE_2500BASEX:
-> > -		return &priv->pcs[port].pcs;
-> > -
-> > +		return priv->ports[port].sgmii_pcs;
+On Fri, Feb 10, 2023 at 09:41:06PM +0000, Richard van Schagen wrote:
+> > I believe you need to reject LAG DSA masters.
 > 
-> My only concern here is that we also use the PCS when in TRGMII mode in
-> this driver, but the mtk pcs code from mtk_eth_soc doesn't handle
-> TRGMII (and getting the link timer will fail for this mode, causing
-> the pcs_config() method to fail.)
-> 
-> Thus, this driver will stop working in TRGMII mode.
+> Not sure what you mean: how is this different from the change_master in the Felix driver when using 8021q tags?
+> But. Can add a check if you prefer. It might be a good idea anyway to be future proof. The MT7531 has support for LAG in hw.
 
-I've just built and tested this on MT7623 BPi-R2 board with MT7530
-connnected to SoC via TRGMII and observed that it all works fine.
+I mean, like Documentation/networking/dsa/configuration.rst says, that the user can attempt
+to put the DSA masters in a LAG and create a larger DSA master which is that bonding device.
 
-However, on this platform we could safe some bytes by still allowing
-mt7530.c to be built without pcs-mtk-lynxi which isn't used on MT7623
-by either the ethernet or the switch driver.
+The difference from the Felix driver is that Felix supports LAG DSA masters and this driver doesn't.
 
-To me this is not a priority, and doing that would involve adding some
-ifdef'ery which isn't really nice. However, if anyone has a strong
-opinion in favor of allowing mt7530.c (or even mtk_eth_soc) to be built
-without pcs-mtk-lynxi, let me know and I will make the necessary
-changes.
+I don't believe there is any other restriction in the code which would prevent a driver which
+implements port_change_master() from accepting that as a valid configuration, so it's going to
+be the mt7530 driver who acts as the final frontier in this case.
+
+An "if (netif_is_lag_master(master)) return -EOPNOTSUPP" will do. But it would always be good
+to check if it's really needed :)
 
