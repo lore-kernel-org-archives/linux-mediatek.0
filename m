@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DC36C05027
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 02:44:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56CC4C05027
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 03:14:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RxKcD5MHPeq8MW1BxCC2B2HCW247AyxiuibPeYpJLy0=; b=4xah8PApWuofUtLcO63bZQr4r/
-	FvmTaNogpPbMggZkdmJC1L0F8UwHfXJSdhfqZ+XEnNMBCZmttzkiiDqy2wP8eG7Njz4yzijQ+M8y6
-	m8nMebFhZwABORx1TbbZhNBlE+DOcOnLyqGOLUyY+PIwp4tBUmkFnoCAJczOZ6T3wnUwbHgH4+tNB
-	HS8+CLrA8lAghfj0YeqI6deht+zFVVQaP/bBKNI7O8xQpvFnOoW9WnM/bi1xrU9bnoYKyVv8U8z/c
-	AlzYyfDBG6erElZzxC0Q/qeKO8H8CbylxqZFln8iDJc5e0m2tr7xZzysjRFNNkaMkN73PKPJgLIn0
-	RHg4lI6Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=e/esUzcar84LHIMU9mBAOMspAX9dxk9LWm7hHmIrJC8=; b=z6cxZtVIlhAkbAgS1qtP8uzipS
+	gEKFIhc4LSxzQLv8ZM0JkdOpXT3s+f7JKXSkDGHN859EpdCWNKdPqfryTiAOKvBYy6//AzyWMEoZF
+	8YD/vrZ5QhtpbYKG3Jsyjebh/JAToFMq3iCzIl3NMCsma5glcLcrERGZu+ufSMm4DHsDvHuoyiI0R
+	97RCq3ulqQs4v+qMNh2nmMQf9+1ZB0bltK2LAqH0GvrwKR7ZXAN8GtQBdbEgTS+XaBPlnCFCjbFg6
+	dw7FnoCpsoTvnGT+f6FMpR7+q22/5hdWEZiAt0Z1UvEnK9y3bJ6/2It9/u1RZMu4Cupb345brPakr
+	GLTlRp/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQJOy-003yc1-7z; Fri, 10 Feb 2023 02:44:40 +0000
-Received: from mail-vs1-xe2d.google.com ([2607:f8b0:4864:20::e2d])
+	id 1pQJre-0043lT-E5; Fri, 10 Feb 2023 03:14:18 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQJOv-003yaw-5O
-	for linux-mediatek@lists.infradead.org; Fri, 10 Feb 2023 02:44:38 +0000
-Received: by mail-vs1-xe2d.google.com with SMTP id p24so3433755vsn.12
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Feb 2023 18:44:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=RxKcD5MHPeq8MW1BxCC2B2HCW247AyxiuibPeYpJLy0=;
-        b=WQkeb8HRZt6mt0Ws9HllUpsfUrgKa8s9at6qO+rVthEmiAc9amoTtOnzqJEmH1BFeZ
-         asqVFIfptZupwd2MwiZ2DDmlc/9w3dKQTrZnnsmQiigaSBMnimX0pciG3LuyWeI4fUjT
-         DCfgGNGZeXGPitNNKFNOaOJh6uI8dktnbgnGU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=RxKcD5MHPeq8MW1BxCC2B2HCW247AyxiuibPeYpJLy0=;
-        b=S/gF/wK/8mhQaOLwAVQEL3xY9xqcIkUixgWEiU6h1ciloxpT9AN0ZUEwKV1FgMDhq3
-         VRbZuwtMaI9EM/2CuuCuEp+bth09BxAXdQXXbPxlzWWr1Y+iXime8icCE5OBcP3TR08N
-         UnCwBKoyMJQmeazppAwmXu+1N+DNxyeA2pe2XcQD+wht3+GaFkjrmxPbzRDk48I8IY2M
-         F+dFIX8sA9oIl4FRn8MQW9NuOcLwnAdwLmMAllWvQXZPvp0ypEkFKamwGCUUu9yOFBOX
-         fwI1qGW1YUYz7bIRDCE1eDB6lpVuENkViUXdMjlq/cR35CfFN/cCyjtsMNgSQyTh0/0q
-         7x7A==
-X-Gm-Message-State: AO0yUKUt/sCnd38s9q019QfLzLTZS/MxUHvdicQzkzu81HfqG8sOWQ0o
-	WKEl/wPDkBrArw1XqrV2eqB60PkcFoWpeHBzfo9v9g==
-X-Google-Smtp-Source: AK7set8rmT5dBRiIMSgQxob4EVFEZikOUhOwE5/3kSmzkpF4EKHK+ockF47cKpiLEoE6PwJMZW4tFwy49H4pgkx46b8=
-X-Received: by 2002:a67:d202:0:b0:411:c830:e5b5 with SMTP id
- y2-20020a67d202000000b00411c830e5b5mr952691vsi.65.1675997076332; Thu, 09 Feb
- 2023 18:44:36 -0800 (PST)
+	id 1pQJrZ-0043kh-4S; Fri, 10 Feb 2023 03:14:15 +0000
+X-UUID: fba74606a8f011edbbe3f76fe852e059-20230209
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=e/esUzcar84LHIMU9mBAOMspAX9dxk9LWm7hHmIrJC8=;
+	b=Xq3fxDkbf4Mb2MTbQi7aCzQ/E0WUywEoLjJ5S4A+BX8tiQgheFAGi1qbRbU9U1yO5EZkJjQKijUKMQ0m95vvLhPteNCqj+7PjTIutqDHeF67qukghGiwHcGmhOWkdUYTZTK38AVeb8MxIYhaukDYWSDDRDh77eV7i6vzC3TTTCM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.19,REQID:62e33293-03ff-4984-bd9a-6831e5517e6a,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:95
+X-CID-INFO: VERSION:1.1.19,REQID:62e33293-03ff-4984-bd9a-6831e5517e6a,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
+	:quarantine,TS:95
+X-CID-META: VersionHash:885ddb2,CLOUDID:1f55db56-dd49-462e-a4be-2143a3ddc739,B
+	ulkID:230210111408UIZKUZNV,BulkQuantity:1,Recheck:0,SF:38|29|28|17|19|48,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-UUID: fba74606a8f011edbbe3f76fe852e059-20230209
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1067588012; Thu, 09 Feb 2023 20:14:08 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 10 Feb 2023 11:14:05 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 10 Feb 2023 11:14:05 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: <linux-remoteproc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Tinghan Shen
+	<tinghan.shen@mediatek.com>
+Subject: [PATCH v1] remoteproc: mediatek: Check the SCP image format
+Date: Fri, 10 Feb 2023 11:13:54 +0800
+Message-ID: <20230210031354.1335-1-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20230209160357.19307-1-matthias.bgg@kernel.org> <20230209160357.19307-4-matthias.bgg@kernel.org>
-In-Reply-To: <20230209160357.19307-4-matthias.bgg@kernel.org>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 10 Feb 2023 10:44:25 +0800
-Message-ID: <CAGXv+5FnXtR+KP6GZ2ut1cUwo0z-SBs1zTPWMSvm9dF-NNn--g@mail.gmail.com>
-Subject: Re: [PATCH v1 4/4] Revert "arm64: dts: mt8173: add mmsel clocks for
- 4K support"
-To: matthias.bgg@kernel.org
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
-	matthias.bgg@gmail.com, devicetree@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230209_184437_220848_5EE63553 
-X-CRM114-Status: GOOD (  16.05  )
+X-CRM114-CacheID: sfid-20230209_191414_025747_FB21438C 
+X-CRM114-Status: UNSURE (   9.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,42 +85,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 10, 2023 at 12:05 AM <matthias.bgg@kernel.org> wrote:
->
-> From: Matthias Brugger <matthias.bgg@gmail.com>
->
-> This reverts commit fc6634ac0e5380aeb1063275a2e9a583d41b2306.
->
-> The mmsys is a clock provider but does not have any clocks connected to
-> it. Therefore assigned-clock properties should be applied to the users of mmsys.
+Do a sanity check on the SCP image before loading it to avoid
+driver crashes.
 
-If there are multiple users that need this, then it should be moved to
-the clock provider node topckgen.
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+---
+ drivers/remoteproc/mtk_scp.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-> This fixes the DT schema check:
-> mediatek/mt8173-elm.dtb: syscon@14000000: 'assigned-clock-rates', 'assigned-clocks' do not match any of the regexes: 'pinctrl-[0-9]+'
->
-> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
-> ---
->
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 2 --
->  1 file changed, 2 deletions(-)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index c47d7d900f283..b753547e250fe 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -988,8 +988,6 @@ mmsys: syscon@14000000 {
->                         compatible = "mediatek,mt8173-mmsys", "syscon";
->                         reg = <0 0x14000000 0 0x1000>;
->                         power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
-> -                       assigned-clocks = <&topckgen CLK_TOP_MM_SEL>;
-> -                       assigned-clock-rates = <400000000>;
->                         #clock-cells = <1>;
->                         #reset-cells = <1>;
->                         mboxes = <&gce 0 CMDQ_THR_PRIO_HIGHEST>,
-> --
-> 2.39.0
->
->
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index d421a2ccaa1e..0861b76f185f 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -649,6 +649,7 @@ static const struct rproc_ops scp_ops = {
+ 	.load		= scp_load,
+ 	.da_to_va	= scp_da_to_va,
+ 	.parse_fw	= scp_parse_fw,
++	.sanity_check	= rproc_elf_sanity_check,
+ };
+ 
+ /**
+-- 
+2.18.0
+
 
