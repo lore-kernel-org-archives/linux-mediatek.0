@@ -4,65 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2123C636CD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 12:54:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37BD4C05027
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 14:01:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pNySMdHju9Q8B3Qh74cP3XPbvSbjgMBrpNYBTpYnG1o=; b=VN9K4e2/atT2hknVzBN64TUX3N
-	S8OMPYFFFFQU1Ld4z+XkJI5PKQQQH6EDWtxCNizVFwiM66/WX46s2Sev4+auD4gWsJ5Ne49YGerxB
-	DEgmejE+YC6ZbrZjCZvhz1ShqUfKxG8YRoQsRprDZUuhlo03gvHDhbglqlvM8zFsP8zJh0HjPIVdf
-	mTTj4rHdJk2+ZwcL5EwV5YVUzJ/Vqc5oV/JsBj85zEEWjRJ5bEmf99fmSHEAey0RvivjM0pmPgvjh
-	w8pnlBlFM7REr4wty2ZBmMl0GjgCSm3qRT8RiAwQjcBz7uv2ySvimkRLyODbZ0rN8fAF80qD0Lie2
-	TUqrrGig==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CYj+jdLU32eYLjrkrRb5WNpkpnge8xxXeoLUO8cJ4QQ=; b=bf4B5XD/6VifKjomplwlMhqP2E
+	PQAdIv3p/v/cFExxwQGZb+vEvG3oHSLZfkX8yFxurOGy6DQw2D0+Z5R3BcexUm4y5ebwZs56Bns36
+	T/XtqfquPoAx9NhVy5hGJkY7ozbs3Mqb4GQu9tUb+qEAiWYieSvZ0WeYIJIKlyzp7QA3p2lFYG4Wf
+	grg/bbn8lYrn5B9IEdtjkE10ORYOucDGMDGRZXh8z6/eP12xNRgmjuyte9Ahc0WsrjcVmCWBwmcpb
+	9m5Pi4YmgcN2st4AUnuGDC0vbtdKu+DW+pYpvXC/jj2/MmR6eCYoScn4vGYrB/p+KBB9AWBo63saJ
+	p+LL8JPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQSuX-005kDz-Ma; Fri, 10 Feb 2023 12:53:53 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pQTyG-005vS8-1n; Fri, 10 Feb 2023 14:01:48 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQSuU-005kCE-OP; Fri, 10 Feb 2023 12:53:52 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pQStm-0007XU-0V;
-	Fri, 10 Feb 2023 13:53:06 +0100
-Date: Fri, 10 Feb 2023 12:52:56 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
-	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
-Subject: Re: [PATCH v2 11/11] net: dsa: mt7530: use external PCS driver
-Message-ID: <Y+Y+KHXnGUgroYQ/@makrotopia.org>
-References: <cover.1675779094.git.daniel@makrotopia.org>
- <dcda0a3a1bf89e27e600822df63009b2b10e136a.1675779094.git.daniel@makrotopia.org>
- <Y+Yi+ajKHaLo4Vvq@shell.armlinux.org.uk>
+	id 1pQTy6-005vJD-Aa; Fri, 10 Feb 2023 14:01:39 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BA70466020EA;
+	Fri, 10 Feb 2023 14:01:05 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1676037666;
+	bh=1nACN3toSy0bL2coCaCf797kOjg0fbtFmGw0pIIjUec=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=XwIoN4XWr/LgYYvHELLcVicMRL6rH8ofiB8rPR7eIYxCvOrPnNzn0fc8GHQyEEwyP
+	 75+9/rJn+tAKcrzp35XgjSrOFrpWZL1WYpT7uVPXrAxdoxdUdd4EDAP0GjqqRZZg08
+	 wzfj2uRj9xTzG0WE5o7xLGXQaNFASLbbXDGYJTPFycTphEp19K66Lwx4ZBYzQoBVZk
+	 oiCrpHILMLA1I0Ngn6B4BgHzHCEooJMXfrFAWbTRjWStUHF4PpjhTkEWYftN075E0T
+	 ZTNLRyQMmeHOxvE/slcsIeQ/ZQhP1YqEZihnWC0IULBNyBHuPbdw67rPkC+bxHMYGd
+	 iM7ym8W8sp3sw==
+Message-ID: <2318282b-c61d-3f86-2053-ee20c7f13e7f@collabora.com>
+Date: Fri, 10 Feb 2023 15:01:02 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Y+Yi+ajKHaLo4Vvq@shell.armlinux.org.uk>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.2
+Subject: Re: [PATCH v5 10/12] remoteproc: mediatek: Handle MT8195 SCP core 1
+ watchdog timeout
+Content-Language: en-US
+To: Tinghan Shen <tinghan.shen@mediatek.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230210085931.8941-1-tinghan.shen@mediatek.com>
+ <20230210085931.8941-11-tinghan.shen@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230210085931.8941-11-tinghan.shen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230210_045350_834768_FEEAD590 
-X-CRM114-Status: GOOD (  14.74  )
+X-CRM114-CacheID: sfid-20230210_060138_546830_8E7445BA 
+X-CRM114-Status: UNSURE (   8.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,36 +83,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 10, 2023 at 10:56:57AM +0000, Russell King (Oracle) wrote:
-> On Tue, Feb 07, 2023 at 02:24:17PM +0000, Daniel Golle wrote:
-> > @@ -2728,11 +2612,11 @@ mt753x_phylink_mac_select_pcs(struct dsa_switch *ds, int port,
-> >  
-> >  	switch (interface) {
-> >  	case PHY_INTERFACE_MODE_TRGMII:
-> > +		return &priv->pcs[port].pcs;
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-> >  	case PHY_INTERFACE_MODE_SGMII:
-> >  	case PHY_INTERFACE_MODE_1000BASEX:
-> >  	case PHY_INTERFACE_MODE_2500BASEX:
-> > -		return &priv->pcs[port].pcs;
-> > -
-> > +		return priv->ports[port].sgmii_pcs;
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Il 10/02/23 09:59, Tinghan Shen ha scritto:
+> The MT8195 SCP core 1 watchdog timeout needs to be handled in the
+> SCP core 0 IRQ handler because the MT8195 SCP core 1 watchdog timeout
+> IRQ is wired on the same IRQ entry for core 0 watchdog timeout.
+> MT8195 SCP has a watchdog status register to identify the watchdog
+> timeout source when IRQ triggered.
 > 
-> My only concern here is that we also use the PCS when in TRGMII mode in
-> this driver, but the mtk pcs code from mtk_eth_soc doesn't handle
-> TRGMII (and getting the link timer will fail for this mode, causing
-> the pcs_config() method to fail.)
-> 
-> Thus, this driver will stop working in TRGMII mode.
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 
-But in TRGMII mode we return &priv->pcs[port].pcs which is not the PCS
-code from mtk_eth_soc now moved to the new pcs-mtk-lynxi driver, but
-rather the old existing codepath from mt7530.c.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-The new PCS driver only replaces mt7531_sgmii_pcs_* functions, which
-were all nearly identical with what is now in pcs-mtk-lynxi.c.
 
-Or do I miss something here?
 
