@@ -4,86 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82BAAC636CD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 08:52:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32EDFC636CD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 09:00:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YZAhfBQYquLF1qnZYO3CTH5oSKC+08iiTknQihvWDiA=; b=Lepv/DadiISCaz//avSl+XVxAg
-	0Ee3xilGqL+gSgTIVXKGGmvZHCD2kX00wEJDRkze3z+mGM3/AmnNZrx/R7UfU65Xl4RnCBHD9vjEV
-	0pYXy64f/l1xfgnCSXzkA0DT1HWHkQgakkPJ4RcUvtDNaJDDf+c0c5LjQiN2I7G8hLNU3OaoW3Yfj
-	kvghJXFIDphIlN4zS1zlbp8NqqgI4HZkhgTp93Wm1AZdrQe325OYQhKz9UcEQZNM+KHLVGuakUVNl
-	33D9M33a//AHC5rSfoNd0gzqkhTelMQNv/3i3eqgdYVvID71Qo2j2pch283xX9xExlrHhXgQW8uRI
-	cLsLSxkg==;
+	bh=700dFM0xBya4gDvivRWURd2IJ5qIAFFZK66uwVFjox0=; b=c3VOL+9dBo7/ywj5kEzViDgVXk
+	TwoPkPDZyDXBsN7XNGZZHjlFCbRTGjWYz/Lz2EveJX95CArp6m/KQdYo19+yw9msQ2LcHnbP3s308
+	z7ZJxiUdsqrRlngCMkO+AzkqpLQgIapEw8kSricsEqF+ok1brhKNv54flq6/og5UjeDCkU721Mwoz
+	u0zuRb964BRgUb0UbDijPtJ1FoGTgpiU9rDlbqB2X8wzZFDsPd6cmOkmNR7et4Tew2AakP4Xd9E5J
+	zFfKqpx4G5pVmHJapY9W2B+mY9rlD3+BRnHp0RwYiKjK++izzcdDydldDlEigjA4qq8600SNZQ9Ov
+	z6aAR3/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQP8X-004qZv-Hz; Fri, 10 Feb 2023 08:52:05 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1pQPGw-004tG1-8R; Fri, 10 Feb 2023 09:00:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQP8T-004qYP-SK
-	for linux-mediatek@lists.infradead.org; Fri, 10 Feb 2023 08:52:03 +0000
-Received: by mail-wm1-x330.google.com with SMTP id z13so3279890wmp.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 10 Feb 2023 00:52:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=YZAhfBQYquLF1qnZYO3CTH5oSKC+08iiTknQihvWDiA=;
-        b=fwGE+8ZXY4Cqp7eooYZ0dYLd+1x3muucfpFXGjo9lEDwCb9aW536kfIl5wvOL9ukDK
-         ZPOW4f5iyqFYvMSxowTCoJKZebalcQT5tqGc4gg+WWV/O1Xlqhry3TsT/jfvogtix2ou
-         VsVh/c8fKkXC3yf2bGsdgSUScN0i1uIdjU2hgzAHyeRqmW0IAhHho218gODY5fUtUORK
-         /pSadvC4Q6tD01pE63iGs0cxFKNdc3CgZKIyKjPSTraWX//sx/g1A2eqBxAZa/1vCVc8
-         +KspIoqrJ4Weklwd0UDwAUv+/YQGT5bROiuQb1WBScSPXC6T2RBAqKqoJ2C2wihh9Bpy
-         BLkg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=YZAhfBQYquLF1qnZYO3CTH5oSKC+08iiTknQihvWDiA=;
-        b=n0WRFhUze3paYdq+McYbekRIGAyxmcblSBqcjEj8e/X7vTLt6xVsQjpHlUJrHejstI
-         uHL/C9kVUnWUtpmgSFSJehhjywkIIYG91EnjRVvK0Y7jG3N6i3OYyeHd9ERHhMEIr8OS
-         JMOezqN8OagitevQ6u25hd61153OIN2EJ1YvMgc+ea6xx349e441FHmmuqNUNhwMqN9N
-         Zzga+O9sOvZIELOi9lgt0rYN/2ChSHFuZOkLj9trzxuqai3mW5TQzHhSX5yPrSfHnS3p
-         syeasjBc39+e6uvha6cHjqRJo8YgjzAsi6e+s4dkLUj+qCy+VUch1YkpQENM8wpenooK
-         vKKg==
-X-Gm-Message-State: AO0yUKW7kYNR9EH9VoBiI11XJ8GIoej9KvV5dJ3zlY+DgVoX9CTPuuSN
-	BxtXvMhPGV1/l8r8xlsqPFkUXQ==
-X-Google-Smtp-Source: AK7set/OKo4yEv07P848igeq6Jgq0peHDJLiD5bvtcLGw5Ybo81esX+fCq4M7Yn6i8m3EQT/mZjzEA==
-X-Received: by 2002:a05:600c:4386:b0:3df:94c3:4725 with SMTP id e6-20020a05600c438600b003df94c34725mr12272914wmn.38.1676019120422;
-        Fri, 10 Feb 2023 00:52:00 -0800 (PST)
-Received: from linaro.org (wifi-eduroam-trans.univ-tlse3.fr. [195.220.58.237])
-        by smtp.gmail.com with ESMTPSA id n13-20020a05600c3b8d00b003dc434900e1sm4771255wms.34.2023.02.10.00.51.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Feb 2023 00:52:00 -0800 (PST)
-Date: Fri, 10 Feb 2023 09:51:57 +0100
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-To: John Stultz <jstultz@google.com>
-Cc: walter.chang@mediatek.com, Thomas Gleixner <tglx@linutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Maciej W . Rozycki" <macro@orcam.me.uk>, wsd_upstream@mediatek.com,
-	stanley.chu@mediatek.com, Chun-hung.Wu@mediatek.com,
-	Freddy.Hsin@mediatek.com, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 0/3] Support timer drivers as loadable modules
-Message-ID: <20230210085157.GA175687@linaro.org>
-References: <20230208094813.20874-1-walter.chang@mediatek.com>
- <fdcea75c-1ddf-c4f4-5d46-f32a6619b66d@linaro.org>
- <CANDhNCp6esdor4kDDTDowkKRfRN9QW8Au7uJMhsxyw0eAG4i8A@mail.gmail.com>
+	id 1pQPGt-004tDl-AM; Fri, 10 Feb 2023 09:00:44 +0000
+X-UUID: 635d9248a92111edbbe3f76fe852e059-20230210
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=700dFM0xBya4gDvivRWURd2IJ5qIAFFZK66uwVFjox0=;
+	b=IN+kMtJce1Fn330vn4qOStzUdpKJ7TyHq05Uk1/JZkIcypAQh8Rp/r+SZHF9sBzAEq4KVx7lhD5nMD8VUckIMBiEhUWJkmBmVngN/qnBRCtdCFLMy6u33xDmXUW1GbknRZaY0TCwqox1Zt5ZDNigd4m/nEyex9QSZ7PQ4czBuvk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.19,REQID:a65cc702-e498-42a5-8de5-42a2c1adbc58,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:885ddb2,CLOUDID:ba03e656-dd49-462e-a4be-2143a3ddc739,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-UUID: 635d9248a92111edbbe3f76fe852e059-20230210
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1768773725; Fri, 10 Feb 2023 02:00:38 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 10 Feb 2023 16:59:34 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 10 Feb 2023 16:59:34 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Tinghan Shen
+	<tinghan.shen@mediatek.com>
+CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v5 09/12] remoteproc: mediatek: Setup MT8195 SCP core 1 SRAM offset
+Date: Fri, 10 Feb 2023 16:59:28 +0800
+Message-ID: <20230210085931.8941-10-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230210085931.8941-1-tinghan.shen@mediatek.com>
+References: <20230210085931.8941-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CANDhNCp6esdor4kDDTDowkKRfRN9QW8Au7uJMhsxyw0eAG4i8A@mail.gmail.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230210_005201_959664_C2AEA1D2 
-X-CRM114-Status: GOOD (  22.32  )
+X-CRM114-CacheID: sfid-20230210_010043_385018_0D545A90 
+X-CRM114-Status: GOOD (  16.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,45 +85,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 09, 2023 at 11:50:49AM -0800, John Stultz wrote:
-> On Thu, Feb 9, 2023 at 7:36 AM Daniel Lezcano <daniel.lezcano@linaro.org> wrote:
-> >
-> > On 08/02/2023 10:48, walter.chang@mediatek.com wrote:
-> > > From: Walter Chang <walter.chang@mediatek.com>
-> > >
-> > > This patch exports functions in kernel so that timer drivers,
-> > > such as timer-mediatek.c can become loadable modules in GKI.
-> >
-> > What for ?
-> 
-> In general, it's the same reason why modules exist: We want to be able
-> to support a wide array of devices with a single kernel, but we don't
-> want all devices to pay the memory cost of code that will never be
-> used there. So being able to support loading device-specific bits like
-> clocksources (along with other device specific logic) helps.
+Because MT8195 SCP core 0 and core 1 both boot from head of SRAM and
+have the same viewpoint of SRAM, SCP has a "core 1 SRAM offset"
+configuration to control the access destination of SCP core 1 to boot
+core 1 from different SRAM location.
 
-Agree, that is why modules are for.
+The "core 1 SRAM offset" configuration is composed by a range
+and an offset. It works like a simple memory mapped mechanism.
+When SCP core 1 accesses a SRAM address located in the range,
+the SCP bus adds the configured offset to the address to
+shift the physical destination address on SCP SRAM. This shifting is
+transparent to the software running on SCP core 1.
 
-> Obviously it still has to make sense, and others have raised concerns
-> of stability issues if the hardware support is needed before we can
-> get to module loading, but I think if this allows drivers (such as
-> timer-mediatek) to be loadable safely, I see it as beneficial.
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+---
+ drivers/remoteproc/mtk_scp.c | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
 
-From a technical point of view, it is arguable.
-
-But my main concern is the real reason of changing this to the module
-format. I see that as a way to overcome the effort to upstream the
-drivers. And the GKI is an alibi to justify the module conversion.
-
-Given the timers is a base brick of the core subsystems, without
-proper support of the timer (eg. bug fixes), the platform support will
-be wobbly.
-
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index f1dfe610dfb1..569e915dfa0f 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -477,6 +477,9 @@ static int mt8195_scp_before_load(struct mtk_scp *scp)
+ 
+ static int mt8195_scp_c1_before_load(struct mtk_scp *scp)
+ {
++	u32 sec_ctrl;
++	struct mtk_scp *scp_c0;
++
+ 	scp_sram_power_on(scp->reg_base + MT8195_CPU1_SRAM_PD, 0);
+ 
+ 	/* hold SCP in reset while loading FW. */
+@@ -485,6 +488,30 @@ static int mt8195_scp_c1_before_load(struct mtk_scp *scp)
+ 	/* enable MPU for all memory regions */
+ 	writel(0xff, scp->reg_base + MT8195_CORE1_MEM_ATT_PREDEF);
+ 
++	/*
++	 * The L2TCM_OFFSET_RANGE and L2TCM_OFFSET shift the destination address
++	 * on SRAM when SCP core 1 accesses SRAM.
++	 *
++	 * This configuration solves booting the SCP core 0 and core 1 from
++	 * different SRAM address because core 0 and core 1 both boot from
++	 * the head of SRAM by default. this must be configured before boot SCP core 1.
++	 *
++	 * The value of L2TCM_OFFSET_RANGE is from the viewpoint of SCP core 1.
++	 * When SCP core 1 issues address within the range (L2TCM_OFFSET_RANGE),
++	 * the address will be added with a fixed offset (L2TCM_OFFSET) on the bus.
++	 * The shift action is tranparent to software.
++	 */
++	writel(0, scp->reg_base + MT8195_L2TCM_OFFSET_RANGE_0_LOW);
++	writel(scp->sram_size, scp->reg_base + MT8195_L2TCM_OFFSET_RANGE_0_HIGH);
++
++	scp_c0 = list_first_entry(&scp->cluster->cores, struct mtk_scp, elem);
++	writel(scp->sram_phys - scp_c0->sram_phys, scp->reg_base + MT8195_L2TCM_OFFSET);
++
++	/* enable SRAM offset when fetching instruction and data */
++	sec_ctrl = readl(scp->reg_base + MT8195_SEC_CTRL);
++	sec_ctrl |= MT8195_CORE_OFFSET_ENABLE_I | MT8195_CORE_OFFSET_ENABLE_D;
++	writel(sec_ctrl, scp->reg_base + MT8195_SEC_CTRL);
++
+ 	return 0;
+ }
+ 
 -- 
+2.18.0
 
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
 
