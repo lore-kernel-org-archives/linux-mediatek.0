@@ -4,49 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25F8EC636D4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 21:48:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE3DBC636D4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Feb 2023 22:17:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BjQumwk3nvQwR3Qjq3TUIc1Lnm3M+8mBL9xrBUbWiCU=; b=b/ivYIJZcHwD47sXgbG2tivsYJ
-	mF8u1jzDuN93v55GHd9QC3gxG4HiaWHa0jh2K8BUDQjEHNuAWnin5oxFdF9ct1MwXS4m3G5+n+i3F
-	cMwuPJPCn1dMj/WnJxCpp4pQfFBws2Zo4/4r49zJFCL/AbO2ZZVs8Fl2nyheEK9EN8hMfA3an2J2d
-	fdj6hg2nmJGRBbva1gIZ/XnkqqII3QV24dEk0fMGo800oG4fDc9x4dkWR5ch1g8uf/wN4XybfnZVy
-	vM256KKhe4yiuJsM7ONTBnwAApCTrvAfWNoaYVI0UH3tjo7qbBV4f1HDUPlAQOMbjsAmWN9Jd5jk4
-	gCSLZ4YQ==;
+	bh=1Am8Jfrk4NrQ9zdADgG0QLqDn0KuPRfKv5w/mlQOgDE=; b=NRW8f8hKuVOFxOgn8omm9vOBBI
+	3JK6JxQ3AsY1a3dH9FI2NO9guyG94MjbA6QJpU/I6/CslzDImci2wm+BIolwQY+EZHiHFvJFhbb5z
+	ytYZtjPxH3ZbILcgVAhRBI252oxlRttG1IBowzkp5bR8xQJuRE2Jgg6ywLDUVtd7oQvtpmH/wAdDo
+	pPKcvrfHRrb/QWBPGHdr/zUo779iT+IucGgRpkJ+8CwZIok+PilqGHGyhtKyziw+au/KDAZL8o/xk
+	zHO1sz1BvpHSL2Txk3tHJlOnlbyQzsr1n5rA/ny8bLMY76GF6Sb8VYuXSkNYUYKngPEvatfIVh1Tf
+	lCeLL03g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQbFU-007hO1-GU; Fri, 10 Feb 2023 21:48:04 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1pQbi1-007lOn-Jg; Fri, 10 Feb 2023 22:17:33 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQbFS-007h2C-CI; Fri, 10 Feb 2023 21:48:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=BjQumwk3nvQwR3Qjq3TUIc1Lnm3M+8mBL9xrBUbWiCU=; b=jME+vNuT0Oy/ihAHzQ1M6x8txM
-	S4MR7MKYXvMiJMf3QlkAmkhOGKXFs3rR2HTlJUp733H2zv2FFSN5jY6cSQe1UwTuAnOa9vJfG/yiu
-	ZbFJBvJDKdgkuNp5Ta/qDuFBH6v10Q1+nl++nRdBw++SNTwlPGH7lYy/S1eEOpBJJIIHXt6yW8/tW
-	5U/mDZMCA6XbJcbs/DRZaYdFOxeVpebG6dICNFdeM0Yjh44k84jhidJ+eZKGSh0FtIWxPo7TTwhlO
-	km4dWpSINKq2vedPR6k6d31FXJa0dbsWHeUiUZv6WVb+e2lSnrJqDX+xplYlypnK9nR6JYsMPQNsb
-	z4Xaqx+g==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:55920)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1pQbDR-0000i3-5A; Fri, 10 Feb 2023 21:45:57 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1pQbDP-0000VH-Rn; Fri, 10 Feb 2023 21:45:55 +0000
-Date: Fri, 10 Feb 2023 21:45:55 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Daniel Golle <daniel@makrotopia.org>
+	id 1pQbhz-007lN9-AM; Fri, 10 Feb 2023 22:17:32 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pQbho-0003cY-06;
+	Fri, 10 Feb 2023 23:17:20 +0100
+Date: Fri, 10 Feb 2023 22:17:15 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
 Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	Heiner Kallweit <hkallweit1@gmail.com>,
@@ -65,18 +51,18 @@ Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	Florian Fainelli <f.fainelli@gmail.com>,
 	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
 	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
-Subject: Re: [PATCH v3 10/12] net: pcs: add driver for MediaTek SGMII PCS
-Message-ID: <Y+a7E5n6QrD/Igdg@shell.armlinux.org.uk>
-References: <cover.1675984550.git.daniel@makrotopia.org>
- <70f9c17b694173cdef5f74901e5d0bc037c1eded.1675984550.git.daniel@makrotopia.org>
+Subject: Re: [PATCH v2 11/11] net: dsa: mt7530: use external PCS driver
+Message-ID: <Y+bCa7ekrREOpgid@makrotopia.org>
+References: <cover.1675779094.git.daniel@makrotopia.org>
+ <dcda0a3a1bf89e27e600822df63009b2b10e136a.1675779094.git.daniel@makrotopia.org>
+ <Y+Yi+ajKHaLo4Vvq@shell.armlinux.org.uk>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <70f9c17b694173cdef5f74901e5d0bc037c1eded.1675984550.git.daniel@makrotopia.org>
+In-Reply-To: <Y+Yi+ajKHaLo4Vvq@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230210_134802_452178_8D6F1E32 
-X-CRM114-Status: GOOD (  13.68  )
+X-CRM114-CacheID: sfid-20230210_141731_378143_524A6866 
+X-CRM114-Status: GOOD (  16.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,23 +77,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 09, 2023 at 11:34:47PM +0000, Daniel Golle wrote:
-> The SGMII core found in several MediaTek SoCs is identical to what can
-> also be found in MediaTek's MT7531 Ethernet switch IC.
-> As this has not always been clear, both drivers developed different
-> implementations to deal with the PCS.
+On Fri, Feb 10, 2023 at 10:56:57AM +0000, Russell King (Oracle) wrote:
+> On Tue, Feb 07, 2023 at 02:24:17PM +0000, Daniel Golle wrote:
+> > @@ -2728,11 +2612,11 @@ mt753x_phylink_mac_select_pcs(struct dsa_switch *ds, int port,
+> >  
+> >  	switch (interface) {
+> >  	case PHY_INTERFACE_MODE_TRGMII:
+> > +		return &priv->pcs[port].pcs;
+> >  	case PHY_INTERFACE_MODE_SGMII:
+> >  	case PHY_INTERFACE_MODE_1000BASEX:
+> >  	case PHY_INTERFACE_MODE_2500BASEX:
+> > -		return &priv->pcs[port].pcs;
+> > -
+> > +		return priv->ports[port].sgmii_pcs;
 > 
-> Add a dedicated driver, mostly by copying the code now found in the
-> Ethernet driver. The now redundant code will be removed by a follow-up
-> commit.
+> My only concern here is that we also use the PCS when in TRGMII mode in
+> this driver, but the mtk pcs code from mtk_eth_soc doesn't handle
+> TRGMII (and getting the link timer will fail for this mode, causing
+> the pcs_config() method to fail.)
 > 
-> Tested-by: Bjørn Mork <bjorn@mork.no>
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> Thus, this driver will stop working in TRGMII mode.
 
-Comments on v2 also apply to this version.
+I've just built and tested this on MT7623 BPi-R2 board with MT7530
+connnected to SoC via TRGMII and observed that it all works fine.
 
-(this is mainly for net-next tracking review purposes.)
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+However, on this platform we could safe some bytes by still allowing
+mt7530.c to be built without pcs-mtk-lynxi which isn't used on MT7623
+by either the ethernet or the switch driver.
+
+To me this is not a priority, and doing that would involve adding some
+ifdef'ery which isn't really nice. However, if anyone has a strong
+opinion in favor of allowing mt7530.c (or even mtk_eth_soc) to be built
+without pcs-mtk-lynxi, let me know and I will make the necessary
+changes.
 
