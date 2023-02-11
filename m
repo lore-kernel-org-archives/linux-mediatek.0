@@ -4,48 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D76E5C05027
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Feb 2023 00:27:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69F32C636D4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Feb 2023 00:27:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4Re++oyDEMba71nb92S6nq5Vfj5jUEiwV3pvuln/F4Y=; b=aUS9Hbi6SkIuJ9
-	DC4SoDlJCF30Aem5DKeU84JpMhR4TEoGFLSL54/VMKHK48FxtbK2jexfsgZ3f6WHWWBrYKztm0dTB
-	IqYGynFjyDIsl4pb4kPGffxlCGUx6WF68OXdF/ciFfsfpCCBoJ+d9K9bnDG/zAJIwKIFnEgckz3O+
-	StVyZY7RmQ9I55BR7az+KZAlz/s3wkvD1AzzUeEMdGryGTkRWGWeYhi4+bUAqcmPo2v8ykldWHD3M
-	pEK19R916YQO/x2MwvE52QMUh6doWWte63GJSk7/DPVNcS8xySZU7f4I+j/OIcPnlKqRw6209VP+m
-	71e64UrKI3/mpENKQEwQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iQM7FL6EiKup10JC4Ms09UWDjLJj+OzocZJygk79TAg=; b=ODRmbKRHbMjtXckAsOv8P70tub
+	nofo50rQqBcIEKbXOtAACIWMzMvrI3kHtAnT7efTZlkIbdHx49uguMXolvRtSsA8EIcFsa4N9XsfG
+	5nPEXibbfpC8qRCnT8vRn6PUfAbfHuEN+MmbsbXp+7BES3n0fzNMXsAr5Wyf/SgNbjcy6BIakrruW
+	8vr6gU5g2B++LBOIS26p+YR88cWuSDm8Hubkbi56B5AUWSZGWfFjmq/89hgLkTyjNpWj2Hoy8NcLS
+	QdpEuDK70pAkfcum9wZ9iHbO2CJmicRaLinKHJ6M0+ql3mJeH7JQrmEzPajaZMXFZrpJonA19Nm4s
+	4y3WxNBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQdjR-0086W8-St; Sat, 11 Feb 2023 00:27:09 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pQdjb-0086bY-G0; Sat, 11 Feb 2023 00:27:19 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQdj2-0086LZ-2Z; Sat, 11 Feb 2023 00:26:45 +0000
+	id 1pQdj3-0086Ms-Oz; Sat, 11 Feb 2023 00:26:47 +0000
 Received: from notapiano.myfiosgateway.com (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 60F92660211E;
-	Sat, 11 Feb 2023 00:26:40 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 539A06602117;
+	Sat, 11 Feb 2023 00:26:42 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676075202;
-	bh=0aZy7tt1Nff5CXL3+XhWnafCOr7nVPoVtqaoA2rqFJ8=;
+	s=mail; t=1676075204;
+	bh=Gm+Fv0Lf5OBMJRwMwPwUnakOGkSawtiyv5gR5vwnHEw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=MXpp2P2yxyJuIu6sGlvnvAlggd7My9Y5ZPh7SAvWSd9IzGaUNzYXsF7O+TVQmGz+d
-	 3JZYnrNWfJPYMgJnoFACZEPSbZLrC2g/wkHkGN+nMBL/r2NpyskndGo/R6+VBb8DzC
-	 Fg1GawKdS7ebDfROpdMwj59M+Py76CN2GsSlJhS2L4oai7+Mh039dliPYmUs4sOQ4l
-	 EmFKZReejfoYyvM/iyyWBxJi33v5WiRXeYbv4oY+vJLMw+aEX9Qyr/IAhRzUINBI7w
-	 gYKHS4vpKf6NF6iZiJFvE7H2aJwtZyDWvqWLjeYxC/QJQXSMYmL41yCKpuPZ7FfcWT
-	 KucsWZz53F33Q==
+	b=dq1zENlbIU6e5lYwBFr4/UN5m6eTJ6Xmij+S8+cTBbYx3YRotjypGtFE+qcRiNPOY
+	 8IGNecyKb1bejqcOdieI54NjCuXJujo+/Op2iqKYadboKbzIOTnVbd81dQBVIXARGN
+	 w34HSdKjWDUhTUyOuNBFZ5hNbLhiM4jZs1YFboziejhhWUzI5mJFLUpLfFafUxHisR
+	 EYDjJaNjEe+fyqfscxdPrqpQ9aFmKLBqXNt3YM/UOSxBGl6kIlQP9jIp/zzh4Tm6rb
+	 +aVEFDMS7dCivivaZ7bv8b1GWQRyuSdTGjNYstwabTqWZZhlBc9R5ZQZuntRcwRe4i
+	 OOowiptXPcDvQ==
 From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH 2/5] dt-bindings: arm64: dts: mediatek: Add rev4 of spherion
-Date: Fri, 10 Feb 2023 19:26:23 -0500
-Message-Id: <20230211002626.454844-3-nfraprado@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	kernel@collabora.com,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 3/5] arm64: dts: mediatek: Add dtsi files to use rt5682s on mt8192
+Date: Fri, 10 Feb 2023 19:26:24 -0500
+Message-Id: <20230211002626.454844-4-nfraprado@collabora.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230211002626.454844-1-nfraprado@collabora.com>
 References: <20230211002626.454844-1-nfraprado@collabora.com>
@@ -53,9 +63,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230210_162644_286142_19C27EEF 
-X-CRM114-Status: UNSURE (   8.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230210_162645_966726_B68AA892 
+X-CRM114-Status: GOOD (  15.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,35 +76,74 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>, =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add binding for newer version of Google Spherion (Acer Chromebook 514):
-rev4.
+Add a dtsi file for the rt5682s audio codec and another to wire it to be
+used by mt8192's sound card.
+
+These dtsi files will be used by Spherion rev4 and Hayato rev5-sku2,
+which make use of the rt5682s codec instead of the rt5682 used in
+previous revisions.
 
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
 
- Documentation/devicetree/bindings/arm/mediatek.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+ .../mt8192-asurada-audio-rt1015p-rt5682s.dtsi | 18 ++++++++++++++++++
+ .../mt8192-asurada-audio-rt5682s.dtsi         | 19 +++++++++++++++++++
+ 2 files changed, 37 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt1015p-rt5682s.dtsi
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt5682s.dtsi
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index 11458cd16109..fd6587253191 100644
---- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -144,6 +144,11 @@ properties:
-           - const: google,hayato-rev1
-           - const: google,hayato
-           - const: mediatek,mt8192
-+      - description: Google Spherion rev4 (Acer Chromebook 514)
-+        items:
-+          - const: google,spherion-rev4
-+          - const: google,spherion
-+          - const: mediatek,mt8192
-       - description: Google Spherion (Acer Chromebook 514)
-         items:
-           - const: google,spherion-rev3
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt1015p-rt5682s.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt1015p-rt5682s.dtsi
+new file mode 100644
+index 000000000000..8921f5e38586
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt1015p-rt5682s.dtsi
+@@ -0,0 +1,18 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright (C) 2022 MediaTek Inc.
++ */
++#include "mt8192-asurada-audio-rt5682s.dtsi"
++#include "mt8192-asurada-audio-rt1015p.dtsi"
++
++&sound {
++	compatible = "mediatek,mt8192_mt6359_rt1015p_rt5682s";
++
++	speaker-codecs {
++		sound-dai = <&rt1015p>;
++	};
++
++	headset-codec {
++		sound-dai = <&rt5682s 0>;
++	};
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt5682s.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt5682s.dtsi
+new file mode 100644
+index 000000000000..919035245b6e
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt5682s.dtsi
+@@ -0,0 +1,19 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright (C) 2022 MediaTek Inc.
++ */
++
++&i2c1 {
++	rt5682s: audio-codec@1a {
++		compatible = "realtek,rt5682s";
++		reg = <0x1a>;
++		interrupts-extended = <&pio 18 IRQ_TYPE_LEVEL_LOW>;
++		realtek,jd-src = <1>;
++		#sound-dai-cells = <1>;
++
++		AVDD-supply = <&mt6359_vio18_ldo_reg>;
++		DBVDD-supply = <&mt6359_vio18_ldo_reg>;
++		LDO1-IN-supply = <&mt6359_vio18_ldo_reg>;
++		MICVDD-supply = <&pp3300_g>;
++	};
++};
 -- 
 2.39.1
 
