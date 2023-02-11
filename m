@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1EBDC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Feb 2023 08:52:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 469C2C636CC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Feb 2023 08:54:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wmmJiKJL53i+TZlSkcVbMN9Oja1NVZJlipxL693QYvw=; b=P1BSP2djfDQVIQ7gz0Zt8clwtM
-	tPQZWNUzBQK171VLoGc+BWeUff4y/Ynx/87m2qbeM9pHMfD7URVbY2D5MwT43mpDc6zmYtPO28qF+
-	yFR3H1eCCepIYMZVPHobXFsSQ+vGODp6vo5pboe92UCU/WSFncnPe1B4E6dzFfvkGryi+uIkjoPf8
-	Y4tA3XPBWuvF/jYpbBRc7HKa7rgRS7fMIIzg8OIbx6h/XRve+LIEBW5VvCdFlM0fnCU9qcLZJPUAI
-	5AUAphcDAp+WTF133lJcpNi8Yq/arFSiobSzB/TQy4Cy3Mn1R4U+LGYgTmCAQ0m2Nc3rQklOuCB6u
-	d4Qcpz7g==;
+	bh=TZS14i5IjgmZQHKoml7yhko4M+eadgfkabvgggpIGa0=; b=avztyrGYnT4lOFXXHxgu8sUU8E
+	nvBBJMSIp/K8FpmrilXPogl92Q4Omsn4tnSP3vwNCFQAAOcn+hw1GZVTX8ExXGIVqxp1HaHjkyuuW
+	C6dka4wKWhbLbgUb9fljbRjkK34J5LnWkryFGLMWQgvRS1gNTPwdg/e9jnXihjOaF/X/ori9VG2hM
+	GFm/E7+/9J5heMUpu7xHbZdYWv5m5x4mt4/WaG6hY7wVZWccoHadonTZk+T8/oEmWdqSttweoOuof
+	TJwOBnjwlqyLXf/TNraZoZNL0P76H3oW4cI99RwAn8Qqm2xNw6Yak4q6XPC/0UN10dy4S/MgrZkNh
+	Z2XmrZHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQlc7-0094ZC-Qn; Sat, 11 Feb 2023 08:52:07 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pQldp-0094jh-2J; Sat, 11 Feb 2023 08:53:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQlc1-0094YS-6O
-	for linux-mediatek@lists.infradead.org; Sat, 11 Feb 2023 08:52:06 +0000
-X-UUID: 56b1ab88a9e911eda08d4d6090ec5a5c-20230211
+	id 1pQldi-0094iv-NE
+	for linux-mediatek@lists.infradead.org; Sat, 11 Feb 2023 08:53:51 +0000
+X-UUID: 943f3caea9e911edbbe3f76fe852e059-20230211
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=wmmJiKJL53i+TZlSkcVbMN9Oja1NVZJlipxL693QYvw=;
-	b=W6ZfP/SItEKaEPBrJBMhEXNqZCASe9XByFxR4uh9+qDliCNIcQ7CHCbQrCngB/VahzNZKljbfYwavIV8J/OGrAfux4EUKMNBBAkI6QtUQsXHMMvgiQwEtjlUWtuzvZZiLk0LKsEeQSJUoWuFmBmPvFpWBAMCxCg0L7K3jtS32xI=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=TZS14i5IjgmZQHKoml7yhko4M+eadgfkabvgggpIGa0=;
+	b=J7XBKo5z+19mzIY2PlECb1+Fp0/mgAX2RQIeUf9Uxf6ctviDiaHHGr7tIhDsZCZxqslXVORYElNY/5mGEgXZ7ZcEwEbiBHX8JEfpEif8liwWQb3ve4f7yYBK5lIPo+b7VIpuKrtlo75zjyQx2DvobGSe8APQj5sgIbvp0R8/xf8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.19,REQID:1183f53d-1e5b-4cb0-99c7-24be7b660004,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
-	ION:release,TS:-55
-X-CID-META: VersionHash:885ddb2,CLOUDID:016521f8-ff42-4fb0-b929-626456a83c14,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
-	L:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:1,OSI:0,OSA:0,AV:0
+X-CID-O-INFO: VERSION:1.1.19,REQID:a4cb6d65-0c53-45c2-b94a-3d83540c8e5d,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:885ddb2,CLOUDID:8b58928e-8530-4eff-9f77-222cf6e2895b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:1,OSI:0,OSA:0,AV:0
 X-CID-BVR: 2,OSH
-X-UUID: 56b1ab88a9e911eda08d4d6090ec5a5c-20230211
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: 943f3caea9e911edbbe3f76fe852e059-20230211
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yanchao.yang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 804862099; Sat, 11 Feb 2023 01:51:56 -0700
+	with ESMTP id 193027403; Sat, 11 Feb 2023 01:53:39 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Sat, 11 Feb 2023 16:41:52 +0800
+ 15.2.792.15; Sat, 11 Feb 2023 16:43:36 +0800
 Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Sat, 11 Feb 2023 16:41:50 +0800
+ 15.2.792.15 via Frontend Transport; Sat, 11 Feb 2023 16:43:34 +0800
 From: Yanchao Yang <yanchao.yang@mediatek.com>
 To: Loic Poulain <loic.poulain@linaro.org>, Sergey Ryazanov
 	<ryazanov.s.a@gmail.com>, Johannes Berg <johannes@sipsolutions.net>, "David S
@@ -65,9 +65,9 @@ CC: Intel experts <linuxwwan@intel.com>, Chetan <m.chetan.kumar@intel.com>,
  Yang <yanchao.yang@mediatek.com>, Lambert Wang <lambert.wang@mediatek.com>,
 	Mingchuang Qiao <mingchuang.qiao@mediatek.com>, Xiayu Zhang
 	<xiayu.zhang@mediatek.com>, Haozhe Chang <haozhe.chang@mediatek.com>
-Subject: [PATCH net-next v3 05/10] net: wwan: tmi: Add FSM thread
-Date: Sat, 11 Feb 2023 16:37:27 +0800
-Message-ID: <20230211083732.193650-6-yanchao.yang@mediatek.com>
+Subject: [PATCH net-next v3 07/10] net: wwan: tmi: Introduce data plane hardware interface
+Date: Sat, 11 Feb 2023 16:37:29 +0800
+Message-ID: <20230211083732.193650-8-yanchao.yang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230211083732.193650-1-yanchao.yang@mediatek.com>
 References: <20230211083732.193650-1-yanchao.yang@mediatek.com>
@@ -75,8 +75,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230211_005201_338252_28A38B94 
-X-CRM114-Status: GOOD (  25.57  )
+X-CRM114-CacheID: sfid-20230211_005346_953463_E9AC41FE 
+X-CRM114-Status: GOOD (  18.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,2097 +91,2233 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The FSM (Finite-state Machine) thread is responsible for synchronizing the
-actions of different modules. The asynchronous events from the device or the
-OS will trigger a state transition.
-
-The FSM thread will append it to the event queue when an event arrives. It
-handles the events sequentially. After processing the event, the FSM thread
-notifies other modules before and after the state transition.
-
-Seven FSM states are defined. They can transition from one state to another,
-self-transition in some states, and transition in some sub-states.
+Data Plane Modem AP Interface (DPMAIF) hardware layer provides hardware
+abstraction for the upper layer (DPMAIF HIF). It implements functions to do the
+data plane hardware's configuration, TX/RX control and interrupt handling.
 
 Signed-off-by: Yanchao Yang <yanchao.yang@mediatek.com>
-Signed-off-by: Mingliang Xu <mingliang.xu@mediatek.com>
+Signed-off-by: Hua Yang <hua.yang@mediatek.com>
 ---
- drivers/net/wwan/mediatek/Makefile            |   3 +-
- drivers/net/wwan/mediatek/mtk_cldma.c         |  20 +
- drivers/net/wwan/mediatek/mtk_cldma.h         |   2 +
- drivers/net/wwan/mediatek/mtk_ctrl_plane.c    | 264 ++++-
- drivers/net/wwan/mediatek/mtk_ctrl_plane.h    |   9 +
- drivers/net/wwan/mediatek/mtk_dev.c           |  17 +
- drivers/net/wwan/mediatek/mtk_dev.h           |   4 +
- drivers/net/wwan/mediatek/mtk_fsm.c           | 989 ++++++++++++++++++
- drivers/net/wwan/mediatek/mtk_fsm.h           | 153 +++
- drivers/net/wwan/mediatek/mtk_port.c          | 225 +++-
- drivers/net/wwan/mediatek/mtk_port.h          |   7 +
- drivers/net/wwan/mediatek/mtk_port_io.c       |   5 +-
- .../wwan/mediatek/pcie/mtk_cldma_drv_t800.h   |   2 +
- drivers/net/wwan/mediatek/pcie/mtk_pci.c      |   8 +
- drivers/net/wwan/mediatek/pcie/mtk_reg.h      |  11 +
- 15 files changed, 1689 insertions(+), 30 deletions(-)
- create mode 100644 drivers/net/wwan/mediatek/mtk_fsm.c
- create mode 100644 drivers/net/wwan/mediatek/mtk_fsm.h
+ drivers/net/wwan/mediatek/Makefile            |    1 +
+ drivers/net/wwan/mediatek/mtk_dpmaif_drv.h    |  202 ++
+ .../wwan/mediatek/pcie/mtk_dpmaif_drv_t800.c  | 1622 +++++++++++++++++
+ .../wwan/mediatek/pcie/mtk_dpmaif_reg_t800.h  |  357 ++++
+ 4 files changed, 2182 insertions(+)
+ create mode 100644 drivers/net/wwan/mediatek/mtk_dpmaif_drv.h
+ create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_dpmaif_drv_t800.c
+ create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_dpmaif_reg_t800.h
 
 diff --git a/drivers/net/wwan/mediatek/Makefile b/drivers/net/wwan/mediatek/Makefile
-index 1e83300eb6d7..a6c1252dfe46 100644
+index a6c1252dfe46..1049b0a0a339 100644
 --- a/drivers/net/wwan/mediatek/Makefile
 +++ b/drivers/net/wwan/mediatek/Makefile
-@@ -9,7 +9,8 @@ mtk_tmi-y = \
+@@ -8,6 +8,7 @@ mtk_tmi-y = \
+ 	mtk_ctrl_plane.o \
  	mtk_cldma.o \
  	pcie/mtk_cldma_drv_t800.o \
++	pcie/mtk_dpmaif_drv_t800.o \
  	mtk_port.o \
--	mtk_port_io.o
-+	mtk_port_io.o \
-+	mtk_fsm.o
- 
- ccflags-y += -I$(srctree)/$(src)/
- ccflags-y += -I$(srctree)/$(src)/pcie/
-diff --git a/drivers/net/wwan/mediatek/mtk_cldma.c b/drivers/net/wwan/mediatek/mtk_cldma.c
-index f9531f48f898..4fab9f58537f 100644
---- a/drivers/net/wwan/mediatek/mtk_cldma.c
-+++ b/drivers/net/wwan/mediatek/mtk_cldma.c
-@@ -252,9 +252,29 @@ static int mtk_cldma_trb_process(void *dev, struct sk_buff *skb)
- 	return err;
- }
- 
-+static void mtk_cldma_fsm_state_listener(struct mtk_fsm_param *param, struct mtk_ctrl_trans *trans)
-+{
-+	struct cldma_dev *cd = trans->dev[CLDMA_CLASS_ID];
-+	int i;
-+
-+	switch (param->to) {
-+	case FSM_STATE_BOOTUP:
-+		for (i = 0; i < NR_CLDMA; i++)
-+			cd->hw_ops.init(cd, i);
-+		break;
-+	case FSM_STATE_OFF:
-+		for (i = 0; i < NR_CLDMA; i++)
-+			cd->hw_ops.exit(cd, i);
-+		break;
-+	default:
-+		break;
-+	}
-+}
-+
- struct hif_ops cldma_ops = {
- 	.init = mtk_cldma_init,
- 	.exit = mtk_cldma_exit,
- 	.trb_process = mtk_cldma_trb_process,
- 	.submit_tx = mtk_cldma_submit_tx,
-+	.fsm_state_listener = mtk_cldma_fsm_state_listener,
- };
-diff --git a/drivers/net/wwan/mediatek/mtk_cldma.h b/drivers/net/wwan/mediatek/mtk_cldma.h
-index 4fd5f826bcf6..c9656aa31455 100644
---- a/drivers/net/wwan/mediatek/mtk_cldma.h
-+++ b/drivers/net/wwan/mediatek/mtk_cldma.h
-@@ -10,6 +10,7 @@
- 
- #include "mtk_ctrl_plane.h"
- #include "mtk_dev.h"
-+#include "mtk_fsm.h"
- 
- #define HW_QUEUE_NUM				8
- #define ALLQ					(0XFF)
-@@ -134,6 +135,7 @@ struct cldma_hw_ops {
- 	int (*txq_free)(struct cldma_hw *hw, int vqno);
- 	int (*rxq_free)(struct cldma_hw *hw, int vqno);
- 	int (*start_xfer)(struct cldma_hw *hw, int qno);
-+	void (*fsm_state_listener)(struct mtk_fsm_param *param, struct cldma_hw *hw);
- };
- 
- struct cldma_hw {
-diff --git a/drivers/net/wwan/mediatek/mtk_ctrl_plane.c b/drivers/net/wwan/mediatek/mtk_ctrl_plane.c
-index 0a855f94bf3c..dbd1e7629aa1 100644
---- a/drivers/net/wwan/mediatek/mtk_ctrl_plane.c
-+++ b/drivers/net/wwan/mediatek/mtk_ctrl_plane.c
-@@ -14,6 +14,11 @@
- #include "mtk_ctrl_plane.h"
- #include "mtk_port.h"
- 
-+static const struct virtq vq_tbl[] = {
-+	{VQ(0), CLDMA0, TXQ(0), RXQ(0), VQ_MTU_3_5K, VQ_MTU_3_5K, TX_REQ_NUM, RX_REQ_NUM},
-+	{VQ(1), CLDMA1, TXQ(0), RXQ(0), VQ_MTU_3_5K, VQ_MTU_3_5K, TX_REQ_NUM, RX_REQ_NUM},
-+};
-+
- static int mtk_ctrl_get_hif_id(unsigned char peer_id)
- {
- 	if (peer_id == MTK_PEER_ID_SAP)
-@@ -95,6 +100,160 @@ int mtk_ctrl_vq_color_cleanup(struct mtk_ctrl_blk *ctrl_blk, unsigned char peer_
- 	return 0;
- }
- 
-+static bool mtk_ctrl_vqs_is_empty(struct trb_srv *srv)
-+{
-+	int i;
-+
-+	for (i = srv->vq_start; i < srv->vq_cnt; i++) {
-+		if (!skb_queue_empty(&srv->trans->skb_list[i]))
-+			return false;
-+	}
-+
-+	return true;
-+}
-+
-+static void mtk_ctrl_vq_flush(struct trb_srv *srv, int vqno)
-+{
-+	struct mtk_ctrl_trans *trans = srv->trans;
-+	struct sk_buff *skb;
-+	struct trb *trb;
-+
-+	while (!skb_queue_empty(&trans->skb_list[vqno])) {
-+		skb = skb_dequeue(&trans->skb_list[vqno]);
-+		trb = (struct trb *)skb->cb;
-+		trb->status = -EIO;
-+		trb->trb_complete(skb);
-+	}
-+}
-+
-+static void mtk_ctrl_vqs_flush(struct trb_srv *srv)
-+{
-+	int i;
-+
-+	for (i = srv->vq_start; i < srv->vq_cnt; i++)
-+		mtk_ctrl_vq_flush(srv, i);
-+}
-+
-+static void mtk_ctrl_trb_process(struct trb_srv *srv)
-+{
-+	struct mtk_ctrl_trans *trans = srv->trans;
-+	struct sk_buff *skb, *skb_next;
-+	struct trb *trb, *trb_next;
-+	int tx_burst_cnt = 0;
-+	struct virtq *vq;
-+	int loop;
-+	int idx;
-+	int err;
-+	int i;
-+
-+	for (i = srv->vq_start; i < srv->vq_cnt; i++) {
-+		loop = 0;
-+		do {
-+			if (skb_queue_empty(&trans->skb_list[i]))
-+				break;
-+
-+			skb = skb_peek(&trans->skb_list[i]);
-+			trb = (struct trb *)skb->cb;
-+			vq = trans->vq_tbl + trb->vqno;
-+			idx = (vq->hif_id >> HIF_CLASS_SHIFT) & (HIF_CLASS_WIDTH - 1);
-+			if (idx < 0 || idx >= HIF_CLASS_NUM)
-+				break;
-+
-+			switch (trb->cmd) {
-+			case TRB_CMD_ENABLE:
-+			case TRB_CMD_DISABLE:
-+				skb_unlink(skb, &trans->skb_list[i]);
-+				err = mtk_port_mngr_vq_status_check(skb);
-+				if (!err && trb->cmd == TRB_CMD_DISABLE)
-+					mtk_ctrl_vq_flush(srv, i);
-+				break;
-+			case TRB_CMD_TX:
-+				mtk_port_add_header(skb);
-+				err = trans->ops[idx]->submit_tx(trans->dev[idx], skb);
-+				if (err)
-+					break;
-+
-+				tx_burst_cnt++;
-+				if (tx_burst_cnt >= TX_BURST_MAX_CNT ||
-+				    skb_queue_is_last(&trans->skb_list[i], skb)) {
-+					tx_burst_cnt = 0;
-+				} else {
-+					skb_next = skb_peek_next(skb, &trans->skb_list[i]);
-+					trb_next = (struct trb *)skb_next->cb;
-+					if (trb_next->cmd != TRB_CMD_TX)
-+						tx_burst_cnt = 0;
-+				}
-+
-+				skb_unlink(skb, &trans->skb_list[i]);
-+				err = tx_burst_cnt;
-+				break;
-+			default:
-+				err = -EFAULT;
-+			}
-+
-+			if (!err)
-+				trans->ops[idx]->trb_process(trans->dev[idx], skb);
-+
-+			loop++;
-+		} while (loop < TRB_NUM_PER_ROUND);
-+	}
-+}
-+
-+static int mtk_ctrl_trb_thread(void *args)
-+{
-+	struct trb_srv *srv = args;
-+
-+	while (!kthread_should_stop()) {
-+		if (mtk_ctrl_vqs_is_empty(srv))
-+			wait_event_freezable(srv->trb_waitq,
-+					     !mtk_ctrl_vqs_is_empty(srv) ||
-+					     kthread_should_stop() || kthread_should_park());
-+
-+		if (kthread_should_stop())
-+			break;
-+
-+		if (kthread_should_park())
-+			kthread_parkme();
-+
-+		do {
-+			mtk_ctrl_trb_process(srv);
-+			if (need_resched())
-+				cond_resched();
-+		} while (!mtk_ctrl_vqs_is_empty(srv) && !kthread_should_stop() &&
-+			 !kthread_should_park());
-+	}
-+	mtk_ctrl_vqs_flush(srv);
-+	return 0;
-+}
-+
-+static int mtk_ctrl_trb_srv_init(struct mtk_ctrl_trans *trans)
-+{
-+	struct trb_srv *srv;
-+
-+	srv = devm_kzalloc(trans->mdev->dev, sizeof(*srv), GFP_KERNEL);
-+	if (!srv)
-+		return -ENOMEM;
-+
-+	srv->trans = trans;
-+	srv->vq_start = 0;
-+	srv->vq_cnt = VQ_NUM;
-+
-+	init_waitqueue_head(&srv->trb_waitq);
-+	srv->trb_thread = kthread_run(mtk_ctrl_trb_thread, srv, "mtk_trb_srv_%s",
-+				      trans->mdev->dev_str);
-+	trans->trb_srv = srv;
-+
-+	return 0;
-+}
-+
-+static void mtk_ctrl_trb_srv_exit(struct mtk_ctrl_trans *trans)
-+{
-+	struct trb_srv *srv = trans->trb_srv;
-+
-+	kthread_stop(srv->trb_thread);
-+	devm_kfree(trans->mdev->dev, srv);
-+}
-+
- /**
-  * mtk_ctrl_trb_submit() - Submit TRB event.
-  * @blk: pointer to mtk_ctrl_blk
-@@ -123,12 +282,105 @@ int mtk_ctrl_trb_submit(struct mtk_ctrl_blk *blk, struct sk_buff *skb)
- 	if (VQ_LIST_FULL(trans, vqno) && trb->cmd != TRB_CMD_DISABLE)
- 		return -EAGAIN;
- 
--	/* This function will implement in next patch */
-+	if (trb->cmd == TRB_CMD_DISABLE)
-+		skb_queue_head(&trans->skb_list[vqno], skb);
-+	else
-+		skb_queue_tail(&trans->skb_list[vqno], skb);
-+
- 	wake_up(&trans->trb_srv->trb_waitq);
- 
- 	return 0;
- }
- 
-+static int mtk_ctrl_trans_init(struct mtk_ctrl_blk *ctrl_blk)
-+{
-+	struct mtk_ctrl_trans *trans;
-+	int err;
-+	int i;
-+
-+	trans = devm_kzalloc(ctrl_blk->mdev->dev, sizeof(*trans), GFP_KERNEL);
-+	if (!trans)
-+		return -ENOMEM;
-+
-+	trans->ctrl_blk = ctrl_blk;
-+	trans->vq_tbl = (struct virtq *)vq_tbl;
-+	trans->ops[CLDMA_CLASS_ID] = &cldma_ops;
-+	trans->mdev = ctrl_blk->mdev;
-+
-+	for (i = 0; i < VQ_NUM; i++)
-+		skb_queue_head_init(&trans->skb_list[i]);
-+
-+	for (i = 0; i < HIF_CLASS_NUM; i++) {
-+		err = trans->ops[i]->init(trans);
-+		if (err)
-+			goto err_exit;
-+	}
-+
-+	err = mtk_ctrl_trb_srv_init(trans);
-+	if (err)
-+		goto err_exit;
-+
-+	ctrl_blk->trans = trans;
-+	atomic_set(&trans->available, 1);
-+
-+	return 0;
-+
-+err_exit:
-+	for (i--; i >= 0; i--)
-+		trans->ops[i]->exit(trans);
-+
-+	devm_kfree(ctrl_blk->mdev->dev, trans);
-+	return err;
-+}
-+
-+static int mtk_ctrl_trans_exit(struct mtk_ctrl_blk *ctrl_blk)
-+{
-+	struct mtk_ctrl_trans *trans = ctrl_blk->trans;
-+	int i;
-+
-+	atomic_set(&trans->available, 0);
-+	mtk_ctrl_trb_srv_exit(trans);
-+
-+	for (i = 0; i < HIF_CLASS_NUM; i++)
-+		trans->ops[i]->exit(trans);
-+
-+	devm_kfree(ctrl_blk->mdev->dev, trans);
-+	return 0;
-+}
-+
-+static void mtk_ctrl_trans_fsm_state_handler(struct mtk_fsm_param *param,
-+					     struct mtk_ctrl_blk *ctrl_blk)
-+{
-+	int i;
-+
-+	switch (param->to) {
-+	case FSM_STATE_OFF:
-+		for (i = 0; i < HIF_CLASS_NUM; i++)
-+			ctrl_blk->trans->ops[i]->fsm_state_listener(param, ctrl_blk->trans);
-+		mtk_ctrl_trans_exit(ctrl_blk);
-+		break;
-+	case FSM_STATE_ON:
-+		mtk_ctrl_trans_init(ctrl_blk);
-+		fallthrough;
-+	default:
-+		for (i = 0; i < HIF_CLASS_NUM; i++)
-+			ctrl_blk->trans->ops[i]->fsm_state_listener(param, ctrl_blk->trans);
-+	}
-+}
-+
-+static void mtk_ctrl_fsm_state_listener(struct mtk_fsm_param *param, void *data)
-+{
-+	struct mtk_ctrl_blk *ctrl_blk = data;
-+
-+	if (param->to == FSM_STATE_BOOTUP) {
-+		mtk_ctrl_trans_fsm_state_handler(param, ctrl_blk);
-+		mtk_port_mngr_fsm_state_handler(param, ctrl_blk->port_mngr);
-+	} else {
-+		mtk_port_mngr_fsm_state_handler(param, ctrl_blk->port_mngr);
-+		mtk_ctrl_trans_fsm_state_handler(param, ctrl_blk);
-+	}
-+}
-+
- /**
-  * mtk_ctrl_init() - allocate ctrl plane control block and initialize it
-  * @mdev: pointer to mtk_md_dev
-@@ -151,8 +403,17 @@ int mtk_ctrl_init(struct mtk_md_dev *mdev)
- 	if (err)
- 		goto err_free_mem;
- 
-+	err = mtk_fsm_notifier_register(mdev, MTK_USER_CTRL, mtk_ctrl_fsm_state_listener,
-+					ctrl_blk, FSM_PRIO_1, false);
-+	if (err) {
-+		dev_err(mdev->dev, "Fail to register fsm notification(ret = %d)\n", err);
-+		goto err_port_exit;
-+	}
-+
- 	return 0;
- 
-+err_port_exit:
-+	mtk_port_mngr_exit(ctrl_blk);
- err_free_mem:
- 	devm_kfree(mdev->dev, ctrl_blk);
- 
-@@ -169,6 +430,7 @@ int mtk_ctrl_exit(struct mtk_md_dev *mdev)
- {
- 	struct mtk_ctrl_blk *ctrl_blk = mdev->ctrl_blk;
- 
-+	mtk_fsm_notifier_unregister(mdev, MTK_USER_CTRL);
- 	mtk_port_mngr_exit(ctrl_blk);
- 	devm_kfree(mdev->dev, ctrl_blk);
- 
-diff --git a/drivers/net/wwan/mediatek/mtk_ctrl_plane.h b/drivers/net/wwan/mediatek/mtk_ctrl_plane.h
-index 2e1f21d43644..0885a434616e 100644
---- a/drivers/net/wwan/mediatek/mtk_ctrl_plane.h
-+++ b/drivers/net/wwan/mediatek/mtk_ctrl_plane.h
-@@ -10,17 +10,25 @@
- #include <linux/skbuff.h>
- 
- #include "mtk_dev.h"
-+#include "mtk_fsm.h"
- 
- #define VQ(N)				(N)
- #define VQ_NUM				(2)
-+#define TX_REQ_NUM			(16)
-+#define RX_REQ_NUM			(TX_REQ_NUM)
- 
-+#define VQ_MTU_2K			(0x800)
- #define VQ_MTU_3_5K			(0xE00)
-+#define VQ_MTU_7K			(0x1C00)
- #define VQ_MTU_63K			(0xFC00)
- 
-+#define TRB_NUM_PER_ROUND		(16)
- #define SKB_LIST_MAX_LEN		(16)
-+#define TX_BURST_MAX_CNT		(5)
- 
- #define HIF_CLASS_NUM			(1)
- #define HIF_CLASS_SHIFT			(8)
-+#define HIF_CLASS_WIDTH			(8)
- #define HIF_ID_BITMASK			(0x01)
- 
- #define VQ_LIST_FULL(trans, vqno)	((trans)->skb_list[vqno].qlen >= SKB_LIST_MAX_LEN)
-@@ -70,6 +78,7 @@ struct hif_ops {
- 	int (*exit)(struct mtk_ctrl_trans *trans);
- 	int (*submit_tx)(void *dev, struct sk_buff *skb);
- 	int (*trb_process)(void *dev, struct sk_buff *skb);
-+	void (*fsm_state_listener)(struct mtk_fsm_param *param, struct mtk_ctrl_trans *trans);
- };
- 
- struct mtk_ctrl_trans {
-diff --git a/drivers/net/wwan/mediatek/mtk_dev.c b/drivers/net/wwan/mediatek/mtk_dev.c
-index f63c7e04df6a..4dcf381cc47d 100644
---- a/drivers/net/wwan/mediatek/mtk_dev.c
-+++ b/drivers/net/wwan/mediatek/mtk_dev.c
-@@ -5,21 +5,38 @@
- 
- #include "mtk_ctrl_plane.h"
- #include "mtk_dev.h"
-+#include "mtk_fsm.h"
- 
- int mtk_dev_init(struct mtk_md_dev *mdev)
- {
- 	int ret;
- 
-+	ret = mtk_fsm_init(mdev);
-+	if (ret)
-+		goto err_fsm_init;
-+
- 	ret = mtk_ctrl_init(mdev);
- 	if (ret)
- 		goto err_ctrl_init;
- 
- 	return 0;
- err_ctrl_init:
-+	mtk_fsm_exit(mdev);
-+err_fsm_init:
- 	return ret;
- }
- 
- void mtk_dev_exit(struct mtk_md_dev *mdev)
- {
-+	mtk_fsm_evt_submit(mdev, FSM_EVT_DEV_RM, 0, NULL, 0,
-+			   EVT_MODE_BLOCKING | EVT_MODE_TOHEAD);
- 	mtk_ctrl_exit(mdev);
-+	mtk_fsm_exit(mdev);
-+}
-+
-+int mtk_dev_start(struct mtk_md_dev *mdev)
-+{
-+	mtk_fsm_evt_submit(mdev, FSM_EVT_DEV_ADD, 0, NULL, 0, 0);
-+	mtk_fsm_start(mdev);
-+	return 0;
- }
-diff --git a/drivers/net/wwan/mediatek/mtk_dev.h b/drivers/net/wwan/mediatek/mtk_dev.h
-index e52de35ff44a..0717cf84cee9 100644
---- a/drivers/net/wwan/mediatek/mtk_dev.h
-+++ b/drivers/net/wwan/mediatek/mtk_dev.h
-@@ -102,6 +102,7 @@ struct mtk_hw_ops {
-  * @hw_ver:     to keep HW chip ID.
-  * @msi_nvecs:  to keep the amount of aollocated irq vectors.
-  * @dev_str:    to keep device B-D-F information.
-+ * @fsm:        pointer to the context of fsm submodule.
-  * @ctrl_blk:   pointer to the context of control plane submodule.
-  */
- struct mtk_md_dev {
-@@ -111,11 +112,14 @@ struct mtk_md_dev {
- 	u32 hw_ver;
- 	int msi_nvecs;
- 	char dev_str[MTK_DEV_STR_LEN];
-+
-+	struct mtk_md_fsm *fsm;
- 	void *ctrl_blk;
- };
- 
- int mtk_dev_init(struct mtk_md_dev *mdev);
- void mtk_dev_exit(struct mtk_md_dev *mdev);
-+int mtk_dev_start(struct mtk_md_dev *mdev);
- /**
-  * mtk_hw_read32() - Read dword from register.
-  * @mdev: Device instance.
-diff --git a/drivers/net/wwan/mediatek/mtk_fsm.c b/drivers/net/wwan/mediatek/mtk_fsm.c
+ 	mtk_port_io.o \
+ 	mtk_fsm.o
+diff --git a/drivers/net/wwan/mediatek/mtk_dpmaif_drv.h b/drivers/net/wwan/mediatek/mtk_dpmaif_drv.h
 new file mode 100644
-index 000000000000..2766925672a4
+index 000000000000..1e89fe2ba6e3
 --- /dev/null
-+++ b/drivers/net/wwan/mediatek/mtk_fsm.c
-@@ -0,0 +1,989 @@
-+// SPDX-License-Identifier: BSD-3-Clause-Clear
-+/*
-+ * Copyright (c) 2022, MediaTek Inc.
-+ */
-+
-+#include <linux/bitfield.h>
-+#include <linux/completion.h>
-+#include <linux/device.h>
-+#include <linux/kref.h>
-+#include <linux/kthread.h>
-+#include <linux/list.h>
-+#include <linux/pci.h>
-+#include <linux/sched/signal.h>
-+#include <linux/skbuff.h>
-+#include <linux/wait.h>
-+
-+#include "mtk_common.h"
-+#include "mtk_fsm.h"
-+#include "mtk_port.h"
-+#include "mtk_port_io.h"
-+#include "mtk_reg.h"
-+
-+#define EVT_TF_PAUSE (0)
-+#define EVT_TF_GATECLOSED (1)
-+
-+#define FSM_HS_START_MASK	(FSM_F_SAP_HS_START | FSM_F_MD_HS_START)
-+#define FSM_HS2_DONE_MASK	(FSM_F_SAP_HS2_DONE | FSM_F_MD_HS2_DONE)
-+
-+#define RTFT_DATA_SIZE		(3 * 1024)
-+
-+#define REGION_BITMASK		0xF
-+#define DEVICE_CFG_SHIFT	24
-+#define DEVICE_CFG_REGION_MASK	0x3
-+
-+enum device_stage {
-+	DEV_STAGE_INIT = 0,
-+	DEV_STAGE_LINUX = 4,
-+	DEV_STAGE_MAX
-+};
-+
-+enum device_cfg {
-+	DEV_CFG_NORMAL = 0,
-+	DEV_CFG_MD_ONLY,
-+};
-+
-+enum runtime_feature_support_type {
-+	RTFT_TYPE_NOT_EXIST = 0,
-+	RTFT_TYPE_NOT_SUPPORT = 1,
-+	RTFT_TYPE_MUST_SUPPORT = 2,
-+	RTFT_TYPE_OPTIONAL_SUPPORT = 3,
-+	RTFT_TYPE_SUPPORT_BACKWARD_COMPAT = 4,
-+};
-+
-+enum runtime_feature_id {
-+	RTFT_ID_MD_PORT_ENUM = 0,
-+	RTFT_ID_SAP_PORT_ENUM = 1,
-+	RTFT_ID_MD_PORT_CFG = 2,
-+	RTFT_ID_MAX
-+};
-+
-+enum ctrl_msg_id {
-+	CTRL_MSG_HS1 = 0,
-+	CTRL_MSG_HS2 = 1,
-+	CTRL_MSG_HS3 = 2,
-+};
-+
-+struct ctrl_msg_header {
-+	__le32 id;
-+	__le32 ex_msg;
-+	__le32 data_len;
-+	u8 reserved[];
-+} __packed;
-+
-+struct runtime_feature_entry {
-+	u8 feature_id;
-+	struct runtime_feature_info support_info;
-+	u8 reserved[2];
-+	__le32 data_len;
-+	u8 data[];
-+};
-+
-+struct feature_query {
-+	__le32 head_pattern;
-+	struct runtime_feature_info ft_set[FEATURE_CNT];
-+	__le32 tail_pattern;
-+};
-+
-+static int mtk_fsm_send_hs1_msg(struct fsm_hs_info *hs_info)
-+{
-+	struct mtk_md_fsm *fsm = container_of(hs_info, struct mtk_md_fsm, hs_info[hs_info->id]);
-+	struct ctrl_msg_header *ctrl_msg_h;
-+	struct feature_query *ft_query;
-+	struct sk_buff *skb;
-+	int ret, msg_size;
-+
-+	msg_size = sizeof(*ctrl_msg_h) + sizeof(*ft_query);
-+	skb = __dev_alloc_skb(msg_size, GFP_KERNEL);
-+	if (!skb) {
-+		ret = -ENOMEM;
-+		goto hs_err;
-+	}
-+
-+	skb_put(skb, msg_size);
-+	/* fill control message header */
-+	ctrl_msg_h = (struct ctrl_msg_header *)skb->data;
-+	ctrl_msg_h->id = cpu_to_le32(CTRL_MSG_HS1);
-+	ctrl_msg_h->ex_msg = 0;
-+	ctrl_msg_h->data_len = cpu_to_le32(sizeof(*ft_query));
-+
-+	/* fill feature query structure */
-+	ft_query = (struct feature_query *)(skb->data + sizeof(*ctrl_msg_h));
-+	ft_query->head_pattern = cpu_to_le32(FEATURE_QUERY_PATTERN);
-+	memcpy(ft_query->ft_set, hs_info->query_ft_set, sizeof(hs_info->query_ft_set));
-+	ft_query->tail_pattern = cpu_to_le32(FEATURE_QUERY_PATTERN);
-+
-+	/* send handshake1 message to device */
-+	ret = mtk_port_internal_write(hs_info->ctrl_port, skb);
-+	if (ret > 0)
-+		return 0;
-+hs_err:
-+	dev_err(fsm->mdev->dev, "Failed to send handshake1 message,ret=%d\n", ret);
-+	return ret;
-+}
-+
-+static int mtk_fsm_feature_set_match(enum runtime_feature_support_type *cur_ft_spt,
-+				     struct runtime_feature_info rtft_info_st,
-+				     struct runtime_feature_info rtft_info_cfg)
-+{
-+	int ret = 0;
-+
-+	switch (FIELD_GET(FEATURE_TYPE, rtft_info_st.feature)) {
-+	case RTFT_TYPE_NOT_EXIST:
-+		fallthrough;
-+	case RTFT_TYPE_NOT_SUPPORT:
-+		*cur_ft_spt = RTFT_TYPE_NOT_EXIST;
-+		break;
-+	case RTFT_TYPE_MUST_SUPPORT:
-+		if (FIELD_GET(FEATURE_TYPE, rtft_info_cfg.feature) == RTFT_TYPE_NOT_EXIST ||
-+		    FIELD_GET(FEATURE_TYPE, rtft_info_cfg.feature) == RTFT_TYPE_NOT_SUPPORT)
-+			ret = -EPROTO;
-+		else
-+			*cur_ft_spt = RTFT_TYPE_MUST_SUPPORT;
-+		break;
-+	case RTFT_TYPE_OPTIONAL_SUPPORT:
-+		if (FIELD_GET(FEATURE_TYPE, rtft_info_cfg.feature) == RTFT_TYPE_NOT_EXIST ||
-+		    FIELD_GET(FEATURE_TYPE, rtft_info_cfg.feature) == RTFT_TYPE_NOT_SUPPORT) {
-+			*cur_ft_spt = RTFT_TYPE_NOT_SUPPORT;
-+		} else {
-+			if (FIELD_GET(FEATURE_VER, rtft_info_st.feature) ==
-+			    FIELD_GET(FEATURE_VER, rtft_info_cfg.feature))
-+				*cur_ft_spt = RTFT_TYPE_MUST_SUPPORT;
-+			else
-+				*cur_ft_spt = RTFT_TYPE_NOT_SUPPORT;
-+		}
-+		break;
-+	case RTFT_TYPE_SUPPORT_BACKWARD_COMPAT:
-+		if (FIELD_GET(FEATURE_VER, rtft_info_st.feature) >=
-+		    FIELD_GET(FEATURE_VER, rtft_info_cfg.feature))
-+			*cur_ft_spt = RTFT_TYPE_MUST_SUPPORT;
-+		else
-+			*cur_ft_spt = RTFT_TYPE_NOT_EXIST;
-+		break;
-+	default:
-+		ret = -EPROTO;
-+	}
-+
-+	return ret;
-+}
-+
-+static int (*rtft_action[FEATURE_CNT])(struct mtk_md_dev *mdev, void *rt_data) = {
-+	[RTFT_ID_MD_PORT_ENUM] = mtk_port_status_update,
-+	[RTFT_ID_SAP_PORT_ENUM] = mtk_port_status_update,
-+};
-+
-+static int mtk_fsm_parse_hs2_msg(struct fsm_hs_info *hs_info)
-+{
-+	struct mtk_md_fsm *fsm = container_of(hs_info, struct mtk_md_fsm, hs_info[hs_info->id]);
-+	char *rt_data = ((struct sk_buff *)hs_info->rt_data)->data;
-+	enum runtime_feature_support_type cur_ft_spt;
-+	struct runtime_feature_entry *rtft_entry;
-+	int ft_id, ret = 0, offset;
-+
-+	offset = sizeof(struct feature_query);
-+	for (ft_id = 0; ft_id < FEATURE_CNT && offset < hs_info->rt_data_len; ft_id++) {
-+		rtft_entry = (struct runtime_feature_entry *)(rt_data + offset);
-+		ret = mtk_fsm_feature_set_match(&cur_ft_spt,
-+						rtft_entry->support_info,
-+						hs_info->query_ft_set[ft_id]);
-+		if (ret < 0)
-+			break;
-+
-+		if (cur_ft_spt == RTFT_TYPE_MUST_SUPPORT)
-+			if (rtft_action[ft_id])
-+				ret = rtft_action[ft_id](fsm->mdev, rtft_entry->data);
-+		if (ret < 0)
-+			break;
-+
-+		offset += sizeof(rtft_entry) + le32_to_cpu(rtft_entry->data_len);
-+	}
-+
-+	if (ft_id != FEATURE_CNT) {
-+		dev_err(fsm->mdev->dev, "Unable to handle mistake hs2 message,fd_id=%d\n", ft_id);
-+		ret = -EPROTO;
-+	}
-+
-+	return ret;
-+}
-+
-+static int mtk_fsm_append_rtft_entries(struct mtk_md_dev *mdev, void *feature_data,
-+				       unsigned int *len, struct fsm_hs_info *hs_info)
-+{
-+	char *rt_data = ((struct sk_buff *)hs_info->rt_data)->data;
-+	struct runtime_feature_entry *rtft_entry;
-+	int ft_id, ret = 0, rtdata_len = 0;
-+	struct feature_query *ft_query;
-+	u8 version;
-+
-+	ft_query = (struct feature_query *)rt_data;
-+	if (le32_to_cpu(ft_query->head_pattern) != FEATURE_QUERY_PATTERN ||
-+	    le32_to_cpu(ft_query->tail_pattern) != FEATURE_QUERY_PATTERN) {
-+		dev_err(mdev->dev,
-+			"Failed to match ft_query pattern: head=0x%x,tail=0x%x\n",
-+			le32_to_cpu(ft_query->head_pattern), le32_to_cpu(ft_query->tail_pattern));
-+		ret = -EPROTO;
-+		goto hs_err;
-+	}
-+
-+	/* parse runtime feature query and fill runtime feature entry */
-+	rtft_entry = feature_data;
-+	for (ft_id = 0; ft_id < FEATURE_CNT && rtdata_len < RTFT_DATA_SIZE; ft_id++) {
-+		rtft_entry->feature_id = ft_id;
-+		rtft_entry->data_len = 0;
-+
-+		switch (FIELD_GET(FEATURE_TYPE, ft_query->ft_set[ft_id].feature)) {
-+		case RTFT_TYPE_NOT_EXIST:
-+			fallthrough;
-+		case RTFT_TYPE_NOT_SUPPORT:
-+			fallthrough;
-+		case RTFT_TYPE_MUST_SUPPORT:
-+			rtft_entry->support_info = ft_query->ft_set[ft_id];
-+			break;
-+		case RTFT_TYPE_OPTIONAL_SUPPORT:
-+			if (FIELD_GET(FEATURE_VER, ft_query->ft_set[ft_id].feature) ==
-+			    FIELD_GET(FEATURE_VER, hs_info->supported_ft_set[ft_id].feature) &&
-+			    FIELD_GET(FEATURE_TYPE, hs_info->supported_ft_set[ft_id].feature) >=
-+			    RTFT_TYPE_MUST_SUPPORT)
-+				rtft_entry->support_info.feature =
-+					FIELD_PREP(FEATURE_TYPE, RTFT_TYPE_MUST_SUPPORT);
-+			else
-+				rtft_entry->support_info.feature =
-+					FIELD_PREP(FEATURE_TYPE, RTFT_TYPE_NOT_SUPPORT);
-+			version = FIELD_GET(FEATURE_VER, hs_info->supported_ft_set[ft_id].feature);
-+			rtft_entry->support_info.feature |= FIELD_PREP(FEATURE_VER, version);
-+			break;
-+		case RTFT_TYPE_SUPPORT_BACKWARD_COMPAT:
-+			if (FIELD_GET(FEATURE_VER, ft_query->ft_set[ft_id].feature) >=
-+			    FIELD_GET(FEATURE_VER, hs_info->supported_ft_set[ft_id].feature))
-+				rtft_entry->support_info.feature =
-+					FIELD_PREP(FEATURE_TYPE, RTFT_TYPE_MUST_SUPPORT);
-+			else
-+				rtft_entry->support_info.feature =
-+					FIELD_PREP(FEATURE_TYPE, RTFT_TYPE_NOT_SUPPORT);
-+			version = FIELD_GET(FEATURE_VER, hs_info->supported_ft_set[ft_id].feature);
-+			rtft_entry->support_info.feature |= FIELD_PREP(FEATURE_VER, version);
-+			break;
-+		}
-+
-+		if (FIELD_GET(FEATURE_TYPE, rtft_entry->support_info.feature) ==
-+		    RTFT_TYPE_MUST_SUPPORT) {
-+			if (rtft_action[ft_id]) {
-+				ret = rtft_action[ft_id](mdev, rtft_entry->data);
-+				if (ret < 0)
-+					goto hs_err;
-+			}
-+		}
-+
-+		rtdata_len += sizeof(*rtft_entry) + le32_to_cpu(rtft_entry->data_len);
-+		rtft_entry = (struct runtime_feature_entry *)(feature_data + rtdata_len);
-+	}
-+	*len = rtdata_len;
-+	return 0;
-+hs_err:
-+	*len = 0;
-+	return ret;
-+}
-+
-+static int mtk_fsm_send_hs3_msg(struct fsm_hs_info *hs_info)
-+{
-+	struct mtk_md_fsm *fsm = container_of(hs_info, struct mtk_md_fsm, hs_info[hs_info->id]);
-+	unsigned int data_len, msg_size = 0;
-+	struct ctrl_msg_header *ctrl_msg_h;
-+	struct sk_buff *skb;
-+	int ret;
-+
-+	skb = __dev_alloc_skb(RTFT_DATA_SIZE, GFP_KERNEL);
-+	if (!skb) {
-+		ret = -ENOMEM;
-+		goto hs_err;
-+	}
-+	/* fill control message header */
-+	msg_size += sizeof(*ctrl_msg_h);
-+	ctrl_msg_h = (struct ctrl_msg_header *)skb->data;
-+	ctrl_msg_h->id = cpu_to_le32(CTRL_MSG_HS3);
-+	ctrl_msg_h->ex_msg = 0;
-+	ret = mtk_fsm_append_rtft_entries(fsm->mdev,
-+					  skb->data + sizeof(*ctrl_msg_h),
-+					  &data_len, hs_info);
-+	if (ret)
-+		goto hs_err;
-+
-+	ctrl_msg_h->data_len = cpu_to_le32(data_len);
-+	msg_size += data_len;
-+	skb_put(skb, msg_size);
-+	/* send handshake3 message to device */
-+	ret = mtk_port_internal_write(hs_info->ctrl_port, skb);
-+	if (ret > 0)
-+		return 0;
-+hs_err:
-+	dev_err(fsm->mdev->dev, "Failed to send handshake3 message:ret=%d\n", ret);
-+	return ret;
-+}
-+
-+static int mtk_fsm_sap_ctrl_msg_handler(void *__fsm, struct sk_buff *skb)
-+{
-+	struct ctrl_msg_header *ctrl_msg_h;
-+	struct mtk_md_fsm *fsm = __fsm;
-+	struct fsm_hs_info *hs_info;
-+
-+	ctrl_msg_h = (struct ctrl_msg_header *)skb->data;
-+	skb_pull(skb, sizeof(*ctrl_msg_h));
-+
-+	hs_info = &fsm->hs_info[HS_ID_SAP];
-+	if (le32_to_cpu(ctrl_msg_h->id) != CTRL_MSG_HS2)
-+		return -EPROTO;
-+
-+	hs_info->rt_data = skb;
-+	hs_info->rt_data_len = skb->len;
-+	mtk_fsm_evt_submit(fsm->mdev, FSM_EVT_STARTUP,
-+			   hs_info->fsm_flag_hs2, hs_info, sizeof(*hs_info), 0);
-+
-+	return 0;
-+}
-+
-+static int mtk_fsm_md_ctrl_msg_handler(void *__fsm, struct sk_buff *skb)
-+{
-+	struct ctrl_msg_header *ctrl_msg_h;
-+	struct mtk_md_fsm *fsm = __fsm;
-+	struct fsm_hs_info *hs_info;
-+	bool need_free_data = true;
-+	int ret = 0;
-+
-+	ctrl_msg_h = (struct ctrl_msg_header *)skb->data;
-+	hs_info = &fsm->hs_info[HS_ID_MD];
-+	switch (le32_to_cpu(ctrl_msg_h->id)) {
-+	case CTRL_MSG_HS2:
-+		need_free_data = false;
-+		skb_pull(skb, sizeof(*ctrl_msg_h));
-+		hs_info->rt_data = skb;
-+		hs_info->rt_data_len = skb->len;
-+		mtk_fsm_evt_submit(fsm->mdev, FSM_EVT_STARTUP,
-+				   hs_info->fsm_flag_hs2, hs_info, sizeof(*hs_info), 0);
-+		break;
-+	default:
-+		dev_err(fsm->mdev->dev, "Invalid control message id\n");
-+	}
-+
-+	if (need_free_data)
-+		dev_kfree_skb(skb);
-+
-+	return ret;
-+}
-+
-+static int (*ctrl_msg_handler[HS_ID_MAX])(void *__fsm, struct sk_buff *skb) = {
-+	[HS_ID_MD] = mtk_fsm_md_ctrl_msg_handler,
-+	[HS_ID_SAP] = mtk_fsm_sap_ctrl_msg_handler,
-+};
-+
-+static void mtk_fsm_linux_evt_handler(struct mtk_md_dev *mdev,
-+				      u32 dev_state, struct mtk_md_fsm *fsm)
-+{
-+	u32 dev_cfg = dev_state >> DEVICE_CFG_SHIFT & DEVICE_CFG_REGION_MASK;
-+	int hs_id;
-+
-+	if (dev_cfg == DEV_CFG_MD_ONLY)
-+		fsm->hs_done_flag = FSM_F_MD_HS_START | FSM_F_MD_HS2_DONE;
-+	else
-+		fsm->hs_done_flag = FSM_HS_START_MASK | FSM_HS2_DONE_MASK;
-+
-+	for (hs_id = 0; hs_id < HS_ID_MAX; hs_id++)
-+		mtk_hw_unmask_ext_evt(mdev, fsm->hs_info[hs_id].mhccif_ch);
-+}
-+
-+static int mtk_fsm_early_bootup_handler(u32 status, void *__fsm)
-+{
-+	struct mtk_md_fsm *fsm = __fsm;
-+	struct mtk_md_dev *mdev;
-+	u32 dev_state, dev_stage;
-+
-+	mdev = fsm->mdev;
-+	mtk_hw_mask_ext_evt(mdev, status);
-+	mtk_hw_clear_ext_evt(mdev, status);
-+
-+	dev_state = mtk_hw_get_dev_state(mdev);
-+	dev_stage = dev_state & REGION_BITMASK;
-+	if (dev_stage >= DEV_STAGE_MAX) {
-+		dev_err(mdev->dev, "Invalid dev state 0x%x\n", dev_state);
-+		return -ENXIO;
-+	}
-+
-+	if (dev_state == fsm->last_dev_state)
-+		goto exit;
-+	dev_info(mdev->dev, "Device stage change 0x%x->0x%x\n", fsm->last_dev_state, dev_state);
-+	fsm->last_dev_state = dev_state;
-+
-+	if (dev_stage == DEV_STAGE_LINUX)
-+		mtk_fsm_linux_evt_handler(mdev, dev_state, fsm);
-+
-+exit:
-+	if (dev_stage != DEV_STAGE_LINUX)
-+		mtk_hw_unmask_ext_evt(mdev, EXT_EVT_D2H_BOOT_FLOW_SYNC);
-+
-+	return 0;
-+}
-+
-+static int mtk_fsm_ctrl_ch_start(struct mtk_md_fsm *fsm, struct fsm_hs_info *hs_info)
-+{
-+	if (!hs_info->ctrl_port) {
-+		hs_info->ctrl_port = mtk_port_internal_open(fsm->mdev, hs_info->port_name, 0);
-+		if (!hs_info->ctrl_port) {
-+			dev_err(fsm->mdev->dev, "Failed to open ctrl port(%s)\n",
-+				hs_info->port_name);
-+			return -ENODEV;
-+		}
-+		mtk_port_internal_recv_register(hs_info->ctrl_port,
-+						ctrl_msg_handler[hs_info->id], fsm);
-+	}
-+
-+	return 0;
-+}
-+
-+static void mtk_fsm_ctrl_ch_stop(struct mtk_md_fsm *fsm)
-+{
-+	struct fsm_hs_info *hs_info;
-+	int hs_id;
-+
-+	for (hs_id = 0; hs_id < HS_ID_MAX; hs_id++) {
-+		hs_info = &fsm->hs_info[hs_id];
-+		mtk_port_internal_close(hs_info->ctrl_port);
-+	}
-+}
-+
-+static void mtk_fsm_switch_state(struct mtk_md_fsm *fsm,
-+				 enum mtk_fsm_state to_state,
-+				 struct mtk_fsm_evt *event)
-+{
-+	char uevent_info[MTK_UEVENT_INFO_LEN];
-+	struct mtk_fsm_notifier *nt;
-+	struct mtk_fsm_param param;
-+
-+	param.from = fsm->state;
-+	param.to = to_state;
-+	param.evt_id = event->id;
-+	param.fsm_flag = event->fsm_flag;
-+
-+	list_for_each_entry(nt, &fsm->pre_notifiers, entry)
-+		nt->cb(&param, nt->data);
-+
-+	fsm->state = to_state;
-+	fsm->fsm_flag |= event->fsm_flag;
-+	dev_info(fsm->mdev->dev, "FSM transited to state=%d, fsm_flag=0x%x\n",
-+		 to_state, fsm->fsm_flag);
-+
-+	snprintf(uevent_info, MTK_UEVENT_INFO_LEN,
-+		 "state=%d, fsm_flag=0x%x", to_state, fsm->fsm_flag);
-+	mtk_uevent_notify(fsm->mdev->dev, MTK_UEVENT_FSM, uevent_info);
-+
-+	list_for_each_entry(nt, &fsm->post_notifiers, entry)
-+		nt->cb(&param, nt->data);
-+}
-+
-+static int mtk_fsm_startup_act(struct mtk_md_fsm *fsm, struct mtk_fsm_evt *event)
-+{
-+	enum mtk_fsm_state to_state = FSM_STATE_BOOTUP;
-+	struct fsm_hs_info *hs_info = event->data;
-+	struct mtk_md_dev *mdev = fsm->mdev;
-+	int ret = 0;
-+
-+	if (fsm->state != FSM_STATE_ON && fsm->state != FSM_STATE_BOOTUP) {
-+		ret = -EPROTO;
-+		goto hs_err;
-+	}
-+
-+	if (event->fsm_flag & FSM_HS_START_MASK) {
-+		mtk_fsm_switch_state(fsm, to_state, event);
-+
-+		ret = mtk_fsm_ctrl_ch_start(fsm, hs_info);
-+		if (!ret)
-+			ret = mtk_fsm_send_hs1_msg(hs_info);
-+		if (ret)
-+			goto hs_err;
-+	} else if (event->fsm_flag & FSM_HS2_DONE_MASK) {
-+		ret = mtk_fsm_parse_hs2_msg(hs_info);
-+		if (!ret) {
-+			mtk_fsm_switch_state(fsm, to_state, event);
-+			ret = mtk_fsm_send_hs3_msg(hs_info);
-+		}
-+		dev_kfree_skb(hs_info->rt_data);
-+		if (ret)
-+			goto hs_err;
-+	}
-+
-+	if (((fsm->fsm_flag | event->fsm_flag) & fsm->hs_done_flag) == fsm->hs_done_flag) {
-+		to_state = FSM_STATE_READY;
-+		mtk_fsm_switch_state(fsm, to_state, event);
-+	}
-+
-+	return 0;
-+hs_err:
-+	dev_err(mdev->dev, "Failed to handshake with device %d:0x%x", fsm->state, fsm->fsm_flag);
-+	return ret;
-+}
-+
-+static int mtk_fsm_dev_add_act(struct mtk_md_fsm *fsm, struct mtk_fsm_evt *event)
-+{
-+	struct mtk_md_dev *mdev = fsm->mdev;
-+
-+	if (fsm->state != FSM_STATE_OFF && fsm->state != FSM_STATE_INVALID) {
-+		dev_err(mdev->dev, "Unable to handle the event in the state %d\n", fsm->state);
-+		return -EPROTO;
-+	}
-+
-+	mtk_fsm_switch_state(fsm, FSM_STATE_ON, event);
-+	mtk_hw_unmask_ext_evt(mdev, EXT_EVT_D2H_BOOT_FLOW_SYNC);
-+
-+	return 0;
-+}
-+
-+static void mtk_fsm_evt_release(struct kref *kref)
-+{
-+	struct mtk_fsm_evt *event = container_of(kref, struct mtk_fsm_evt, kref);
-+
-+	devm_kfree(event->mdev->dev, event);
-+}
-+
-+static void mtk_fsm_evt_put(struct mtk_fsm_evt *event)
-+{
-+	kref_put(&event->kref, mtk_fsm_evt_release);
-+}
-+
-+static void mtk_fsm_evt_finish(struct mtk_md_fsm *fsm,
-+			       struct mtk_fsm_evt *event, int retval)
-+{
-+	if (event->mode & EVT_MODE_BLOCKING) {
-+		event->status = retval;
-+		wake_up_interruptible(&fsm->evt_waitq);
-+	}
-+	mtk_fsm_evt_put(event);
-+}
-+
-+static void mtk_fsm_evt_cleanup(struct mtk_md_fsm *fsm, struct list_head *evtq)
-+{
-+	struct mtk_fsm_evt *event, *tmp;
-+
-+	list_for_each_entry_safe(event, tmp, evtq, entry) {
-+		mtk_fsm_evt_finish(fsm, event, FSM_EVT_RET_FAIL);
-+		list_del(&event->entry);
-+	}
-+}
-+
-+static int mtk_fsm_enter_off_state(struct mtk_md_fsm *fsm, struct mtk_fsm_evt *event)
-+{
-+	struct mtk_md_dev *mdev = fsm->mdev;
-+
-+	if (fsm->state == FSM_STATE_OFF || fsm->state == FSM_STATE_INVALID) {
-+		dev_err(mdev->dev, "Unable to handle the event in the state %d\n", fsm->state);
-+		return -EPROTO;
-+	}
-+
-+	mtk_fsm_ctrl_ch_stop(fsm);
-+	mtk_fsm_switch_state(fsm, FSM_STATE_OFF, event);
-+
-+	return 0;
-+}
-+
-+static int mtk_fsm_dev_rm_act(struct mtk_md_fsm *fsm, struct mtk_fsm_evt *event)
-+{
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&fsm->evtq_lock, flags);
-+	set_bit(EVT_TF_GATECLOSED, &fsm->t_flag);
-+	mtk_fsm_evt_cleanup(fsm, &fsm->evtq);
-+	spin_unlock_irqrestore(&fsm->evtq_lock, flags);
-+
-+	return mtk_fsm_enter_off_state(fsm, event);
-+}
-+
-+static int mtk_fsm_hs1_handler(u32 status, void *__hs_info)
-+{
-+	struct fsm_hs_info *hs_info = __hs_info;
-+	struct mtk_md_dev *mdev;
-+	struct mtk_md_fsm *fsm;
-+
-+	fsm = container_of(hs_info, struct mtk_md_fsm, hs_info[hs_info->id]);
-+	mdev = fsm->mdev;
-+	mtk_fsm_evt_submit(mdev, FSM_EVT_STARTUP,
-+			   hs_info->fsm_flag_hs1, hs_info, sizeof(*hs_info), 0);
-+	mtk_hw_mask_ext_evt(mdev, hs_info->mhccif_ch);
-+	mtk_hw_clear_ext_evt(mdev, hs_info->mhccif_ch);
-+
-+	return 0;
-+}
-+
-+static void mtk_fsm_hs_info_init(struct mtk_md_fsm *fsm)
-+{
-+	struct mtk_md_dev *mdev = fsm->mdev;
-+	struct fsm_hs_info *hs_info;
-+	int hs_id;
-+
-+	for (hs_id = 0; hs_id < HS_ID_MAX; hs_id++) {
-+		hs_info = &fsm->hs_info[hs_id];
-+		hs_info->id = hs_id;
-+		hs_info->ctrl_port = NULL;
-+		switch (hs_id) {
-+		case HS_ID_MD:
-+			snprintf(hs_info->port_name, PORT_NAME_LEN, "MDCTRL");
-+			hs_info->mhccif_ch = EXT_EVT_D2H_ASYNC_HS_NOTIFY_MD;
-+			hs_info->fsm_flag_hs1 = FSM_F_MD_HS_START;
-+			hs_info->fsm_flag_hs2 = FSM_F_MD_HS2_DONE;
-+			hs_info->query_ft_set[RTFT_ID_MD_PORT_ENUM].feature =
-+				FIELD_PREP(FEATURE_TYPE, RTFT_TYPE_MUST_SUPPORT);
-+			hs_info->query_ft_set[RTFT_ID_MD_PORT_ENUM].feature |=
-+				FIELD_PREP(FEATURE_VER, 0);
-+			hs_info->query_ft_set[RTFT_ID_MD_PORT_CFG].feature =
-+				FIELD_PREP(FEATURE_TYPE, RTFT_TYPE_OPTIONAL_SUPPORT);
-+			hs_info->query_ft_set[RTFT_ID_MD_PORT_CFG].feature |=
-+				FIELD_PREP(FEATURE_VER, 0);
-+			break;
-+		case HS_ID_SAP:
-+			snprintf(hs_info->port_name, PORT_NAME_LEN, "SAPCTRL");
-+			hs_info->mhccif_ch = EXT_EVT_D2H_ASYNC_HS_NOTIFY_SAP;
-+			hs_info->fsm_flag_hs1 = FSM_F_SAP_HS_START;
-+			hs_info->fsm_flag_hs2 = FSM_F_SAP_HS2_DONE;
-+			hs_info->query_ft_set[RTFT_ID_SAP_PORT_ENUM].feature =
-+				FIELD_PREP(FEATURE_TYPE, RTFT_TYPE_MUST_SUPPORT);
-+			hs_info->query_ft_set[RTFT_ID_SAP_PORT_ENUM].feature |=
-+				FIELD_PREP(FEATURE_VER, 0);
-+			break;
-+		}
-+		mtk_hw_register_ext_evt(mdev, hs_info->mhccif_ch,
-+					mtk_fsm_hs1_handler, hs_info);
-+	}
-+}
-+
-+static void mtk_fsm_hs_info_exit(struct mtk_md_fsm *fsm)
-+{
-+	struct mtk_md_dev *mdev = fsm->mdev;
-+	struct fsm_hs_info *hs_info;
-+	int hs_id;
-+
-+	for (hs_id = 0; hs_id < HS_ID_MAX; hs_id++) {
-+		hs_info = &fsm->hs_info[hs_id];
-+		mtk_hw_unregister_ext_evt(mdev, hs_info->mhccif_ch);
-+	}
-+}
-+
-+static int (*evts_act_tbl[FSM_EVT_MAX])(struct mtk_md_fsm *__fsm, struct mtk_fsm_evt *event) = {
-+	[FSM_EVT_STARTUP] = mtk_fsm_startup_act,
-+	[FSM_EVT_DEV_RM] = mtk_fsm_dev_rm_act,
-+	[FSM_EVT_DEV_ADD] = mtk_fsm_dev_add_act,
-+};
-+
-+/**
-+ * mtk_fsm_start() - start FSM service
-+ * @mdev: mdev pointer to mtk_md_dev
-+ *
-+ * This function start a fsm service to handle fsm event.
-+ *
-+ * Return: return value is 0 on success, a negative error code on failure.
-+ */
-+int mtk_fsm_start(struct mtk_md_dev *mdev)
-+{
-+	struct mtk_md_fsm *fsm = mdev->fsm;
-+
-+	if (!fsm)
-+		return -EINVAL;
-+
-+	dev_info(mdev->dev, "Start fsm by %ps!\n", __builtin_return_address(0));
-+	clear_bit(EVT_TF_PAUSE, &fsm->t_flag);
-+	if (!fsm->fsm_handler)
-+		return -EFAULT;
-+
-+	wake_up_process(fsm->fsm_handler);
-+	return 0;
-+}
-+
-+static void mkt_fsm_notifier_cleanup(struct mtk_md_dev *mdev, struct list_head *ntq)
-+{
-+	struct mtk_fsm_notifier *nt, *tmp;
-+
-+	list_for_each_entry_safe(nt, tmp, ntq, entry) {
-+		list_del(&nt->entry);
-+		devm_kfree(mdev->dev, nt);
-+	}
-+}
-+
-+static void mtk_fsm_notifier_insert(struct mtk_fsm_notifier *notifier, struct list_head *head)
-+{
-+	struct mtk_fsm_notifier *nt;
-+
-+	list_for_each_entry(nt, head, entry) {
-+		if (notifier->prio > nt->prio) {
-+			list_add(&notifier->entry, nt->entry.prev);
-+			return;
-+		}
-+	}
-+	list_add_tail(&notifier->entry, head);
-+}
-+
-+/**
-+ * mtk_fsm_notifier_register() - register notifier callback
-+ * @mdev: pointer to mtk_md_dev
-+ * @id: user id
-+ * @cb: pointer to notification callback provided by user
-+ * @data: pointer to user data if any
-+ * @prio: PRIO_0, PRIO_1
-+ * @is_pre: 1: pre switch, 0: post switch
-+ *
-+ * Return: return value is 0 on success, a negative error code on failure.
-+ */
-+int mtk_fsm_notifier_register(struct mtk_md_dev *mdev,
-+			      enum mtk_user_id id,
-+			      void (*cb)(struct mtk_fsm_param *, void *data),
-+			      void *data,
-+			      enum mtk_fsm_prio prio,
-+			      bool is_pre)
-+{
-+	struct mtk_md_fsm *fsm = mdev->fsm;
-+	struct mtk_fsm_notifier *notifier;
-+
-+	if (!fsm)
-+		return -EINVAL;
-+
-+	if (id >= MTK_USER_MAX || !cb || prio >= FSM_PRIO_MAX)
-+		return -EINVAL;
-+
-+	notifier = devm_kzalloc(mdev->dev, sizeof(*notifier), GFP_KERNEL);
-+	if (!notifier)
-+		return -ENOMEM;
-+
-+	INIT_LIST_HEAD(&notifier->entry);
-+	notifier->id = id;
-+	notifier->cb = cb;
-+	notifier->data = data;
-+	notifier->prio = prio;
-+
-+	if (is_pre)
-+		mtk_fsm_notifier_insert(notifier, &fsm->pre_notifiers);
-+	else
-+		mtk_fsm_notifier_insert(notifier, &fsm->post_notifiers);
-+
-+	return 0;
-+}
-+
-+/**
-+ * mtk_fsm_notifier_unregister() - unregister notifier callback
-+ * @mdev: pointer to mtk_md_dev
-+ * @id: user id
-+ *
-+ * Return: return value is 0 on success, a negative error code on failure.
-+ */
-+int mtk_fsm_notifier_unregister(struct mtk_md_dev *mdev, enum mtk_user_id id)
-+{
-+	struct mtk_md_fsm *fsm = mdev->fsm;
-+	struct mtk_fsm_notifier *nt, *tmp;
-+
-+	if (!fsm)
-+		return -EINVAL;
-+
-+	list_for_each_entry_safe(nt, tmp, &fsm->pre_notifiers, entry) {
-+		if (nt->id == id) {
-+			list_del(&nt->entry);
-+			devm_kfree(mdev->dev, nt);
-+			break;
-+		}
-+	}
-+	list_for_each_entry_safe(nt, tmp, &fsm->post_notifiers, entry) {
-+		if (nt->id == id) {
-+			list_del(&nt->entry);
-+			devm_kfree(mdev->dev, nt);
-+			break;
-+		}
-+	}
-+	return 0;
-+}
-+
-+/**
-+ * mtk_fsm_evt_submit() - submit event
-+ * @mdev: pointer to mtk_md_dev
-+ * @id: event id
-+ * @flag: state flag
-+ * @data: user data
-+ * @len: data length
-+ * @mode: EVT_MODE_BLOCKING(1<<0) means that submit blocking until
-+ *        event is handled, EVT_MODE_TOHEAD(1<<1) means the event
-+ *        will be handled in high priority.
-+ *
-+ * Return: 0 will be returned, if the event is appended (non-blocking)
-+ *         or event is completed(blocking), -1 will be returned if
-+ *         timeout, 1 will be returned if it is finished.
-+ */
-+int mtk_fsm_evt_submit(struct mtk_md_dev *mdev,
-+		       enum mtk_fsm_evt_id id,
-+		       enum mtk_fsm_flag flag,
-+		       void *data, unsigned int len,
-+		       unsigned char mode)
-+{
-+	struct mtk_md_fsm *fsm = mdev->fsm;
-+	struct mtk_fsm_evt *event;
-+	unsigned long flags;
-+	int ret = 0;
-+
-+	if (!fsm || id >= FSM_EVT_MAX)
-+		return FSM_EVT_RET_FAIL;
-+
-+	event = devm_kzalloc(mdev->dev, sizeof(*event),
-+			     (in_irq() || in_softirq() || irqs_disabled()) ?
-+			     GFP_ATOMIC : GFP_KERNEL);
-+	if (!event)
-+		return FSM_EVT_RET_FAIL;
-+
-+	kref_init(&event->kref);
-+	event->mdev = mdev;
-+	event->id = id;
-+	event->fsm_flag = flag;
-+	event->status = FSM_EVT_RET_ONGOING;
-+	event->data = data;
-+	event->len = len;
-+	event->mode = mode;
-+	dev_info(mdev->dev, "Event%d(with mode 0x%x) is appended by %ps\n",
-+		 event->id, event->mode, __builtin_return_address(0));
-+
-+	spin_lock_irqsave(&fsm->evtq_lock, flags);
-+	if (!test_bit(EVT_TF_GATECLOSED, &fsm->t_flag)) {
-+		if (mode & EVT_MODE_TOHEAD)
-+			list_add(&event->entry, &fsm->evtq);
-+		else
-+			list_add_tail(&event->entry, &fsm->evtq);
-+		spin_unlock_irqrestore(&fsm->evtq_lock, flags);
-+	} else {
-+		spin_unlock_irqrestore(&fsm->evtq_lock, flags);
-+		mtk_fsm_evt_put(event);
-+		dev_err(mdev->dev, "Failed to add event, fsm dev has been removed!\n");
-+		return FSM_EVT_RET_FAIL;
-+	}
-+
-+	wake_up_process(fsm->fsm_handler);
-+	if (mode & EVT_MODE_BLOCKING) {
-+		kref_get(&event->kref);
-+		wait_event_interruptible(fsm->evt_waitq, (event->status != 0));
-+		ret = event->status;
-+		mtk_fsm_evt_put(event);
-+	}
-+	return ret;
-+}
-+
-+static int mtk_fsm_evt_handler(void *__fsm)
-+{
-+	struct mtk_md_fsm *fsm = __fsm;
-+	struct mtk_fsm_evt *event;
-+	unsigned long flags;
-+
-+wake_up:
-+	while (!kthread_should_stop() &&
-+	       !test_bit(EVT_TF_PAUSE, &fsm->t_flag) && !list_empty(&fsm->evtq)) {
-+		spin_lock_irqsave(&fsm->evtq_lock, flags);
-+		event = list_first_entry(&fsm->evtq, struct mtk_fsm_evt, entry);
-+		list_del(&event->entry);
-+		spin_unlock_irqrestore(&fsm->evtq_lock, flags);
-+
-+		dev_info(fsm->mdev->dev, "Event%d(0x%x) is under handling\n",
-+			 event->id, event->fsm_flag);
-+		if (event->id < FSM_EVT_MAX && evts_act_tbl[event->id](fsm, event) != 0)
-+			mtk_fsm_evt_finish(fsm, event, FSM_EVT_RET_FAIL);
-+		else
-+			mtk_fsm_evt_finish(fsm, event, FSM_EVT_RET_DONE);
-+	}
-+
-+	if (kthread_should_stop())
-+		return 0;
-+
-+	if (test_bit(EVT_TF_PAUSE, &fsm->t_flag))
-+		complete_all(&fsm->paused);
-+
-+	set_current_state(TASK_INTERRUPTIBLE);
-+	schedule();
-+
-+	if (fatal_signal_pending(current)) {
-+		/* event handler thread is killed by fatal signal,
-+		 * all the waiters will be waken up.
-+		 */
-+		complete_all(&fsm->paused);
-+		mtk_fsm_evt_cleanup(fsm, &fsm->evtq);
-+		return -ERESTARTSYS;
-+	}
-+	goto wake_up;
-+}
-+
-+/**
-+ * mtk_fsm_init() - allocate FSM control block and initialize it
-+ * @mdev: pointer to mtk_md_dev
-+ *
-+ * This function creates a mtk_md_fsm structure dynamically and hook
-+ * it up to mtk_md_dev. When you are finished with this structure,
-+ * call mtk_fsm_exit() and the structure will be dynamically freed.
-+ *
-+ * Return: return value is 0 on success, a negative error code on failure.
-+ */
-+int mtk_fsm_init(struct mtk_md_dev *mdev)
-+{
-+	struct mtk_md_fsm *fsm;
-+	int ret;
-+
-+	fsm = devm_kzalloc(mdev->dev, sizeof(*fsm), GFP_KERNEL);
-+	if (!fsm)
-+		return -ENOMEM;
-+
-+	fsm->fsm_handler = kthread_create(mtk_fsm_evt_handler, fsm, "fsm_evt_thread%d_%s",
-+					  mdev->hw_ver, mdev->dev_str);
-+	if (IS_ERR(fsm->fsm_handler)) {
-+		ret = PTR_ERR(fsm->fsm_handler);
-+		goto err_create;
-+	}
-+
-+	fsm->mdev = mdev;
-+	init_completion(&fsm->paused);
-+	fsm->state = FSM_STATE_INVALID;
-+	fsm->fsm_flag = FSM_F_DFLT;
-+
-+	INIT_LIST_HEAD(&fsm->evtq);
-+	spin_lock_init(&fsm->evtq_lock);
-+	init_waitqueue_head(&fsm->evt_waitq);
-+
-+	INIT_LIST_HEAD(&fsm->pre_notifiers);
-+	INIT_LIST_HEAD(&fsm->post_notifiers);
-+
-+	mtk_fsm_hs_info_init(fsm);
-+	mtk_hw_register_ext_evt(mdev, EXT_EVT_D2H_BOOT_FLOW_SYNC,
-+				mtk_fsm_early_bootup_handler, fsm);
-+	mdev->fsm = fsm;
-+	return 0;
-+err_create:
-+	devm_kfree(mdev->dev, fsm);
-+	return ret;
-+}
-+
-+/**
-+ * mtk_fsm_exit() - free FSM control block
-+ * @mdev: pointer to mtk_md_dev
-+ *
-+ * Return: return value is 0 on success, a negative error code on failure.
-+ */
-+int mtk_fsm_exit(struct mtk_md_dev *mdev)
-+{
-+	struct mtk_md_fsm *fsm = mdev->fsm;
-+	unsigned long flags;
-+
-+	if (!fsm)
-+		return -EINVAL;
-+
-+	if (fsm->fsm_handler) {
-+		kthread_stop(fsm->fsm_handler);
-+		fsm->fsm_handler = NULL;
-+	}
-+	complete_all(&fsm->paused);
-+
-+	spin_lock_irqsave(&fsm->evtq_lock, flags);
-+	if (WARN_ON(!list_empty(&fsm->evtq)))
-+		mtk_fsm_evt_cleanup(fsm, &fsm->evtq);
-+	spin_unlock_irqrestore(&fsm->evtq_lock, flags);
-+
-+	mkt_fsm_notifier_cleanup(mdev, &fsm->pre_notifiers);
-+	mkt_fsm_notifier_cleanup(mdev, &fsm->post_notifiers);
-+
-+	mtk_hw_unregister_ext_evt(mdev, EXT_EVT_D2H_BOOT_FLOW_SYNC);
-+	mtk_fsm_hs_info_exit(fsm);
-+
-+	devm_kfree(mdev->dev, fsm);
-+	return 0;
-+}
-diff --git a/drivers/net/wwan/mediatek/mtk_fsm.h b/drivers/net/wwan/mediatek/mtk_fsm.h
-new file mode 100644
-index 000000000000..32b479a7b764
---- /dev/null
-+++ b/drivers/net/wwan/mediatek/mtk_fsm.h
-@@ -0,0 +1,153 @@
++++ b/drivers/net/wwan/mediatek/mtk_dpmaif_drv.h
+@@ -0,0 +1,202 @@
 +/* SPDX-License-Identifier: BSD-3-Clause-Clear
 + *
 + * Copyright (c) 2022, MediaTek Inc.
 + */
 +
-+#ifndef __MTK_FSM_H__
-+#define __MTK_FSM_H__
++#ifndef __MTK_DPMAIF_DRV_H__
++#define __MTK_DPMAIF_DRV_H__
++
++enum dpmaif_drv_dir {
++	DPMAIF_TX,
++	DPMAIF_RX,
++};
++
++struct dpmaif_drv_intr {
++	enum dpmaif_drv_dir dir;
++	unsigned int q_mask;
++	unsigned int mode;
++};
++
++enum mtk_drv_err {
++	DATA_ERR_STOP_MAX = 10,
++	DATA_HW_REG_TIMEOUT,
++	DATA_HW_REG_CHK_FAIL,
++	DATA_FLOW_CHK_ERR,
++	DATA_DMA_MAP_ERR,
++	DATA_DL_ONCE_MORE,
++	DATA_PIT_SEQ_CHK_FAIL,
++	DATA_LOW_MEM_DRB,
++	DATA_LOW_MEM_SKB,
++};
++
++#define DPMAIF_RXQ_CNT_MAX 2
++#define DPMAIF_TXQ_CNT_MAX 5
++#define DPMAIF_IRQ_CNT_MAX 3
++
++#define DPMAIF_PIT_SEQ_MAX 251
++
++#define DPMAIF_HW_PKT_ALIGN	64
++#define DPMAIF_HW_BAT_RSVLEN	0
++
++enum {
++	DPMAIF_CLEAR_INTR,
++	DPMAIF_UNMASK_INTR,
++};
++
++enum dpmaif_drv_dlq_id {
++	DPMAIF_DLQ0 = 0,
++	DPMAIF_DLQ1,
++};
++
++struct dpmaif_drv_dlq {
++	bool q_started;
++	dma_addr_t pit_base;
++	u32 pit_size;
++};
++
++struct dpmaif_drv_ulq {
++	bool q_started;
++	dma_addr_t drb_base;
++	u32 drb_size;
++};
++
++struct dpmaif_drv_data_ring {
++	dma_addr_t normal_bat_base;
++	u32 normal_bat_size;
++	u32 normal_bat_remain_size;
++	u32 normal_bat_pkt_bufsz;
++	u32 normal_bat_rsv_length;
++	u32 pkt_bid_max_cnt;
++	u32 pkt_alignment;
++	u32 mtu;
++	u32 chk_pit_num;
++	u32 chk_normal_bat_num;
++};
++
++struct dpmaif_drv_property {
++	u32 features;
++	struct dpmaif_drv_dlq dlq[DPMAIF_RXQ_CNT_MAX];
++	struct dpmaif_drv_ulq ulq[DPMAIF_TXQ_CNT_MAX];
++	struct dpmaif_drv_data_ring ring;
++};
++
++enum dpmaif_drv_ring_type {
++	DPMAIF_PIT,
++	DPMAIF_BAT,
++	DPMAIF_DRB,
++};
++
++enum dpmaif_drv_ring_idx {
++	DPMAIF_PIT_WIDX,
++	DPMAIF_PIT_RIDX,
++	DPMAIF_BAT_WIDX,
++	DPMAIF_BAT_RIDX,
++	DPMAIF_DRB_WIDX,
++	DPMAIF_DRB_RIDX,
++};
++
++struct dpmaif_drv_irq_en_mask {
++	u32 ap_ul_l2intr_en_mask;
++	u32 ap_dl_l2intr_en_mask;
++	u32 ap_udl_ip_busy_en_mask;
++};
++
++struct dpmaif_drv_info {
++	struct mtk_md_dev *mdev;
++	bool ulq_all_enable, dlq_all_enable;
++	struct dpmaif_drv_property drv_property;
++	struct dpmaif_drv_irq_en_mask drv_irq_en_mask;
++	struct dpmaif_drv_ops *drv_ops;
++};
++
++struct dpmaif_drv_cfg {
++	dma_addr_t drb_base[DPMAIF_TXQ_CNT_MAX];
++	u32 drb_cnt[DPMAIF_TXQ_CNT_MAX];
++	dma_addr_t pit_base[DPMAIF_RXQ_CNT_MAX];
++	u32 pit_cnt[DPMAIF_RXQ_CNT_MAX];
++	dma_addr_t normal_bat_base;
++	u32 normal_bat_cnt;
++	u32 normal_bat_buf_size;
++	u32 max_mtu;
++	u32 features;
++};
++
++enum dpmaif_drv_intr_type {
++	DPMAIF_INTR_MIN = 0,
++	DPMAIF_INTR_UL_DONE,
++	DPMAIF_INTR_DL_DONE,
++	DPMAIF_INTR_MAX
++};
++
++#define DPMAIF_INTR_COUNT ((DPMAIF_INTR_MAX) - (DPMAIF_INTR_MIN) - 1)
++
++struct dpmaif_drv_intr_info {
++	unsigned char intr_cnt;
++	enum dpmaif_drv_intr_type intr_types[DPMAIF_INTR_COUNT];
++	u32 intr_queues[DPMAIF_INTR_COUNT];
++};
++
++struct dpmaif_drv_ops {
++	int (*init)(struct dpmaif_drv_info *drv_info, void *data);
++	int (*start_queue)(struct dpmaif_drv_info *drv_info, enum dpmaif_drv_dir dir);
++	int (*stop_queue)(struct dpmaif_drv_info *drv_info, enum dpmaif_drv_dir dir);
++	int (*intr_handle)(struct dpmaif_drv_info *drv_info, void *data, u8 irq_id);
++	int (*intr_complete)(struct dpmaif_drv_info *drv_info, enum dpmaif_drv_intr_type type,
++			     u8 q_id, u64 data);
++	int (*clear_ip_busy)(struct dpmaif_drv_info *drv_info);
++	int (*send_doorbell)(struct dpmaif_drv_info *drv_info, enum dpmaif_drv_ring_type type,
++			     u8 q_id, u32 cnt);
++	int (*get_ring_idx)(struct dpmaif_drv_info *drv_info, enum dpmaif_drv_ring_idx index,
++			    u8 q_id);
++	void (*dump)(struct dpmaif_drv_info *drv_info);
++};
++
++static inline int mtk_dpmaif_drv_init(struct dpmaif_drv_info *drv_info, void *data)
++{
++	return drv_info->drv_ops->init(drv_info, data);
++}
++
++static inline int mtk_dpmaif_drv_start_queue(struct dpmaif_drv_info *drv_info,
++					     enum dpmaif_drv_dir dir)
++{
++	return drv_info->drv_ops->start_queue(drv_info, dir);
++}
++
++static inline int mtk_dpmaif_drv_stop_queue(struct dpmaif_drv_info *drv_info,
++					    enum dpmaif_drv_dir dir)
++{
++	return drv_info->drv_ops->stop_queue(drv_info, dir);
++}
++
++static inline int mtk_dpmaif_drv_intr_handle(struct dpmaif_drv_info *drv_info,
++					     void *data, u8 irq_id)
++{
++	return drv_info->drv_ops->intr_handle(drv_info, data, irq_id);
++}
++
++static inline int mtk_dpmaif_drv_intr_complete(struct dpmaif_drv_info *drv_info,
++					       enum dpmaif_drv_intr_type type, u8 q_id, u64 data)
++{
++	return drv_info->drv_ops->intr_complete(drv_info, type, q_id, data);
++}
++
++static inline int mtk_dpmaif_drv_clear_ip_busy(struct dpmaif_drv_info *drv_info)
++{
++	return drv_info->drv_ops->clear_ip_busy(drv_info);
++}
++
++static inline int mtk_dpmaif_drv_send_doorbell(struct dpmaif_drv_info *drv_info,
++					       enum dpmaif_drv_ring_type type, u8 q_id, u32 cnt)
++{
++	return drv_info->drv_ops->send_doorbell(drv_info, type, q_id, cnt);
++}
++
++static inline int mtk_dpmaif_drv_get_ring_idx(struct dpmaif_drv_info *drv_info,
++					      enum dpmaif_drv_ring_idx index, u8 q_id)
++{
++	return drv_info->drv_ops->get_ring_idx(drv_info, index, q_id);
++}
++
++extern struct dpmaif_drv_ops dpmaif_drv_ops_t800;
++
++#endif
+diff --git a/drivers/net/wwan/mediatek/pcie/mtk_dpmaif_drv_t800.c b/drivers/net/wwan/mediatek/pcie/mtk_dpmaif_drv_t800.c
+new file mode 100644
+index 000000000000..fb7d70b25910
+--- /dev/null
++++ b/drivers/net/wwan/mediatek/pcie/mtk_dpmaif_drv_t800.c
+@@ -0,0 +1,1622 @@
++// SPDX-License-Identifier: BSD-3-Clause-Clear
++/*
++ * Copyright (c) 2022, MediaTek Inc.
++ */
++
++#include <linux/delay.h>
++#include <linux/random.h>
 +
 +#include "mtk_dev.h"
++#include "mtk_dpmaif_drv.h"
++#include "mtk_dpmaif_reg_t800.h"
 +
-+#define FEATURE_CNT		(64)
-+#define FEATURE_QUERY_PATTERN	(0x49434343)
++#define DRV_TO_MDEV(__drv_info) ((__drv_info)->mdev)
 +
-+#define FEATURE_TYPE		GENMASK(3, 0)
-+#define FEATURE_VER		GENMASK(7, 4)
++#define POLL_MAX_TIMES		200
++#define POLL_INTERVAL_US	10
 +
-+#define EVT_MODE_BLOCKING	(0x01)
-+#define EVT_MODE_TOHEAD		(0x02)
-+
-+#define FSM_EVT_RET_FAIL	(-1)
-+#define FSM_EVT_RET_ONGOING	(0)
-+#define FSM_EVT_RET_DONE	(1)
-+
-+enum mtk_fsm_flag {
-+	FSM_F_DFLT = 0,
-+	FSM_F_SAP_HS_START	= BIT(0),
-+	FSM_F_SAP_HS2_DONE	= BIT(1),
-+	FSM_F_MD_HS_START	= BIT(2),
-+	FSM_F_MD_HS2_DONE	= BIT(3),
-+};
-+
-+enum mtk_fsm_state {
-+	FSM_STATE_INVALID = 0,
-+	FSM_STATE_OFF,
-+	FSM_STATE_ON,
-+	FSM_STATE_BOOTUP,
-+	FSM_STATE_READY,
-+};
-+
-+enum mtk_fsm_evt_id {
-+	FSM_EVT_STARTUP = 0,
-+	FSM_EVT_DEV_RM,
-+	FSM_EVT_DEV_ADD,
-+	FSM_EVT_MAX
-+};
-+
-+enum mtk_fsm_prio {
-+	FSM_PRIO_0 = 0,
-+	FSM_PRIO_1 = 1,
-+	FSM_PRIO_MAX
-+};
-+
-+struct mtk_fsm_param {
-+	enum mtk_fsm_state from;
-+	enum mtk_fsm_state to;
-+	enum mtk_fsm_evt_id evt_id;
-+	enum mtk_fsm_flag fsm_flag;
-+};
-+
-+#define PORT_NAME_LEN 20
-+
-+enum handshake_info_id {
-+	HS_ID_MD = 0,
-+	HS_ID_SAP,
-+	HS_ID_MAX
-+};
-+
-+struct runtime_feature_info {
-+	u8 feature;
-+};
-+
-+struct fsm_hs_info {
-+	unsigned char id;
-+	void *ctrl_port;
-+	char port_name[PORT_NAME_LEN];
-+	unsigned int mhccif_ch;
-+	unsigned int fsm_flag_hs1;
-+	unsigned int fsm_flag_hs2;
-+	/* the feature that the device should support */
-+	struct runtime_feature_info query_ft_set[FEATURE_CNT];
-+	/* the feature that the host has supported */
-+	struct runtime_feature_info supported_ft_set[FEATURE_CNT];
-+	/* runtime data from device need to be parsed by host */
-+	void *rt_data;
-+	unsigned int rt_data_len;
-+};
-+
-+struct mtk_md_fsm {
-+	struct mtk_md_dev *mdev;
-+	struct task_struct *fsm_handler;
-+	struct fsm_hs_info hs_info[HS_ID_MAX];
-+	unsigned int hs_done_flag;
-+	unsigned long t_flag;
-+	/* completion for event thread paused */
-+	struct completion paused;
-+	u32 last_dev_state;
-+	/* fsm current state & flag */
-+	enum mtk_fsm_state state;
-+	unsigned int fsm_flag;
-+	struct list_head evtq;
-+	/* protect evtq */
-+	spinlock_t evtq_lock;
-+	/* waitq for fsm blocking submit */
-+	wait_queue_head_t evt_waitq;
-+	/* notifiers before state transition */
-+	struct list_head pre_notifiers;
-+	/* notifiers after state transition */
-+	struct list_head post_notifiers;
-+};
-+
-+struct mtk_fsm_evt {
-+	struct list_head entry;
-+	struct kref kref;
-+	struct mtk_md_dev *mdev;
-+	enum mtk_fsm_evt_id id;
-+	unsigned int fsm_flag;
-+	/* event handling status
-+	 * -1: fail,
-+	 * 0: on-going,
-+	 * 1: successfully
-+	 */
-+	int status;
-+	unsigned char mode;
-+	unsigned int len;
-+	void *data;
-+};
-+
-+struct mtk_fsm_notifier {
-+	struct list_head entry;
-+	enum mtk_user_id id;
-+	void (*cb)(struct mtk_fsm_param *param, void *data);
-+	void *data;
-+	enum mtk_fsm_prio prio;
-+};
-+
-+int mtk_fsm_init(struct mtk_md_dev *mdev);
-+int mtk_fsm_exit(struct mtk_md_dev *mdev);
-+int mtk_fsm_start(struct mtk_md_dev *mdev);
-+int mtk_fsm_notifier_register(struct mtk_md_dev *mdev,
-+			      enum mtk_user_id id,
-+			      void (*cb)(struct mtk_fsm_param *, void *data),
-+			      void *data,
-+			      enum mtk_fsm_prio prio,
-+			      bool is_pre);
-+int mtk_fsm_notifier_unregister(struct mtk_md_dev *mdev,
-+				enum mtk_user_id id);
-+int mtk_fsm_evt_submit(struct mtk_md_dev *mdev,
-+		       enum mtk_fsm_evt_id id,
-+		       enum mtk_fsm_flag flag,
-+		       void *data, unsigned int len,
-+		       unsigned char mode);
-+
-+#endif /* __MTK_FSM_H__ */
-diff --git a/drivers/net/wwan/mediatek/mtk_port.c b/drivers/net/wwan/mediatek/mtk_port.c
-index c86e4e836c0f..57dddab950bb 100644
---- a/drivers/net/wwan/mediatek/mtk_port.c
-+++ b/drivers/net/wwan/mediatek/mtk_port.c
-@@ -14,6 +14,10 @@
- #include "mtk_port.h"
- #include "mtk_port_io.h"
- 
-+#define MTK_PORT_ENUM_VER			(0)
-+/* this is an empirical value, negotiate with device designer */
-+#define MTK_PORT_ENUM_HEAD_PATTERN		(0x5a5a5a5a)
-+#define MTK_PORT_ENUM_TAIL_PATTERN		(0xa5a5a5a5)
- #define MTK_DFLT_TRB_TIMEOUT			(5 * HZ)
- #define MTK_DFLT_TRB_STATUS			(0x1)
- #define MTK_CHECK_RX_SEQ_MASK			(0x7fff)
-@@ -457,8 +461,10 @@ static int mtk_port_open_trb_complete(struct sk_buff *skb)
- 	port->rx_mtu = port_mngr->vq_info[trb->vqno].rx_mtu;
- 
- 	/* Minus the len of the header */
--	port->tx_mtu -= MTK_CCCI_H_ELEN;
--	port->rx_mtu -= MTK_CCCI_H_ELEN;
-+	if (!(port->info.flags & PORT_F_RAW_DATA)) {
-+		port->tx_mtu -= MTK_CCCI_H_ELEN;
-+		port->rx_mtu -= MTK_CCCI_H_ELEN;
-+	}
- 
- out:
- 	wake_up_interruptible_all(&port->trb_wq);
-@@ -636,31 +642,36 @@ static int mtk_port_rx_dispatch(struct sk_buff *skb, int len, void *priv)
- 	skb_reset_tail_pointer(skb);
- 	skb_put(skb, len);
- 
--	ccci_h = mtk_port_strip_header(skb);
--	if (unlikely(!ccci_h)) {
--		dev_warn(port_mngr->ctrl_blk->mdev->dev,
--			 "Unsupported: skb length(%d) is less than ccci header\n",
--			 skb->len);
--		goto drop_data;
--	}
-+	/* If ccci header field has been loaded in skb data,
-+	 * the data should be dispatched by port manager
-+	 */
-+	if (!(port->info.flags & PORT_F_RAW_DATA)) {
-+		ccci_h = mtk_port_strip_header(skb);
-+		if (unlikely(!ccci_h)) {
-+			dev_warn(port_mngr->ctrl_blk->mdev->dev,
-+				 "Unsupported: skb length(%d) is less than ccci header\n",
-+				 skb->len);
-+			goto drop_data;
-+		}
- 
--	dev_dbg(port_mngr->ctrl_blk->mdev->dev,
--		"RX header:%08x %08x\n", ccci_h->packet_len, ccci_h->status);
-+		dev_dbg(port_mngr->ctrl_blk->mdev->dev,
-+			"RX header:%08x %08x\n", ccci_h->packet_len, ccci_h->status);
- 
--	channel = FIELD_GET(MTK_HDR_FLD_CHN, le32_to_cpu(ccci_h->status));
--	port = mtk_port_search_by_id(port_mngr, channel);
--	if (unlikely(!port)) {
--		dev_warn(port_mngr->ctrl_blk->mdev->dev,
--			 "Failed to find port by channel:%d\n", channel);
--		goto drop_data;
--	}
-+		channel = FIELD_GET(MTK_HDR_FLD_CHN, le32_to_cpu(ccci_h->status));
-+		port = mtk_port_search_by_id(port_mngr, channel);
-+		if (unlikely(!port)) {
-+			dev_warn(port_mngr->ctrl_blk->mdev->dev,
-+				 "Failed to find port by channel:%d\n", channel);
-+			goto drop_data;
-+		}
- 
--	/* The sequence number must be continuous */
--	ret = mtk_port_check_rx_seq(port, ccci_h);
--	if (unlikely(ret))
--		goto drop_data;
-+		/* The sequence number must be continuous */
-+		ret = mtk_port_check_rx_seq(port, ccci_h);
-+		if (unlikely(ret))
-+			goto drop_data;
- 
--	port->rx_seq = FIELD_GET(MTK_HDR_FLD_SEQ, le32_to_cpu(ccci_h->status));
-+		port->rx_seq = FIELD_GET(MTK_HDR_FLD_SEQ, le32_to_cpu(ccci_h->status));
-+	}
- 
- 	ret = ports_ops[port->info.type]->recv(port, skb);
- 
-@@ -672,6 +683,43 @@ static int mtk_port_rx_dispatch(struct sk_buff *skb, int len, void *priv)
- 	return ret;
- }
- 
-+static int mtk_port_enable(struct mtk_port_mngr *port_mngr)
++static void mtk_dpmaif_drv_reset(struct dpmaif_drv_info *drv_info)
 +{
-+	int tbl_type = PORT_TBL_SAP;
-+	struct radix_tree_iter iter;
-+	struct mtk_port *port;
-+	void __rcu **slot;
-+
-+	do {
-+		radix_tree_for_each_slot(slot, &port_mngr->port_tbl[tbl_type], &iter, 0) {
-+			MTK_PORT_SEARCH_FROM_RADIX_TREE(port, slot);
-+			MTK_PORT_INTERNAL_NODE_CHECK(port, slot, iter);
-+			if (port->enable)
-+				ports_ops[port->info.type]->enable(port);
-+		}
-+		tbl_type++;
-+	} while (tbl_type < PORT_TBL_MAX);
-+	return 0;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_AP_AO_RGU_ASSERT, DPMAIF_AP_AO_RST_BIT);
++	udelay(2);
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_AP_RGU_ASSERT, DPMAIF_AP_RST_BIT);
++	udelay(2);
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_AP_AO_RGU_DEASSERT, DPMAIF_AP_AO_RST_BIT);
++	udelay(2);
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_AP_RGU_DEASSERT, DPMAIF_AP_RST_BIT);
++	udelay(2);
 +}
 +
-+static void mtk_port_disable(struct mtk_port_mngr *port_mngr)
++static bool mtk_dpmaif_drv_sram_init(struct dpmaif_drv_info *drv_info)
 +{
-+	int tbl_type = PORT_TBL_SAP;
-+	struct radix_tree_iter iter;
-+	struct mtk_port *port;
-+	void __rcu **slot;
++	u32 val, cnt = 0;
++	bool ret = true;
++
++	val = mtk_hw_read32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AP_MISC_RSTR_CLR);
++	val |= DPMAIF_MEM_CLR_MASK;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AP_MISC_RSTR_CLR, val);
 +
 +	do {
-+		radix_tree_for_each_slot(slot, &port_mngr->port_tbl[tbl_type], &iter, 0) {
-+			MTK_PORT_SEARCH_FROM_RADIX_TREE(port, slot);
-+			MTK_PORT_INTERNAL_NODE_CHECK(port, slot, iter);
-+			port->enable = false;
-+			ports_ops[port->info.type]->disable(port);
-+		}
-+		tbl_type++;
-+	} while (tbl_type < PORT_TBL_MAX);
-+}
++		if (!(mtk_hw_read32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AP_MISC_RSTR_CLR) &
++		     DPMAIF_MEM_CLR_MASK))
++			break;
 +
- /**
-  * mtk_port_add_header() - Add mtk_ccci_header to TX packet.
-  * @skb: pointer to socket buffer
-@@ -741,6 +789,71 @@ struct mtk_ccci_header *mtk_port_strip_header(struct sk_buff *skb)
- 	return ccci_h;
- }
- 
-+/**
-+ * mtk_port_status_update() - Update ports enumeration information.
-+ * @mdev: pointer to mtk_md_dev.
-+ * @data: pointer to mtk_port_enum_msg, which brings enumeration information.
-+ *
-+ * This function called when host driver is doing handshake.
-+ * Structure mtk_port_enum_msg brings ports' enumeration information
-+ * from modem, and this function handles it and set "enable" of mtk_port
-+ * to "true" or "false".
-+ *
-+ * This function can sleep or can be called from interrupt context.
-+ *
-+ * Return:
-+ * * 0:		success to update ports' status
-+ * * -EINVAL:	input parameter or members in input structure is illegal
-+ */
-+int mtk_port_status_update(struct mtk_md_dev *mdev, void *data)
-+{
-+	struct mtk_port_enum_msg *msg = data;
-+	struct mtk_port_info *port_info;
-+	struct mtk_port_mngr *port_mngr;
-+	struct mtk_ctrl_blk *ctrl_blk;
-+	struct mtk_port *port;
-+	int port_id;
-+	int ret = 0;
-+	u16 ch_id;
++		cnt++;
++		udelay(POLL_INTERVAL_US);
++	} while (cnt < POLL_MAX_TIMES);
 +
-+	if (unlikely(!mdev || !msg)) {
-+		ret = -EINVAL;
-+		goto err;
++	if (cnt >= POLL_MAX_TIMES) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Failed to initialize sram.\n");
++		return false;
 +	}
-+
-+	ctrl_blk = mdev->ctrl_blk;
-+	port_mngr = ctrl_blk->port_mngr;
-+	if (le16_to_cpu(msg->version) != MTK_PORT_ENUM_VER) {
-+		ret = -EPROTO;
-+		goto err;
-+	}
-+
-+	if (le32_to_cpu(msg->head_pattern) != MTK_PORT_ENUM_HEAD_PATTERN ||
-+	    le32_to_cpu(msg->tail_pattern) != MTK_PORT_ENUM_TAIL_PATTERN) {
-+		ret = -EPROTO;
-+		goto err;
-+	}
-+
-+	for (port_id = 0; port_id < le16_to_cpu(msg->port_cnt); port_id++) {
-+		port_info = (struct mtk_port_info *)(msg->data +
-+						   (sizeof(*port_info) * port_id));
-+		if (!port_info) {
-+			dev_err(mdev->dev, "Invalid port info, the index %d\n", port_id);
-+			ret = -EINVAL;
-+			goto err;
-+		}
-+		ch_id = FIELD_GET(MTK_INFO_FLD_CHID, le16_to_cpu(port_info->channel));
-+		port = mtk_port_search_by_id(port_mngr, ch_id);
-+		if (!port) {
-+			dev_err(mdev->dev, "Failed to find the port 0x%x\n", ch_id);
-+			continue;
-+		}
-+		port->enable = FIELD_GET(MTK_INFO_FLD_EN, le16_to_cpu(port_info->channel));
-+	}
-+err:
 +	return ret;
 +}
 +
- /**
-  * mtk_port_mngr_vq_status_check() - Checking VQ status before enable or disable VQ.
-  * @skb: pointer to socket buffer
-@@ -901,6 +1014,70 @@ int mtk_port_vq_disable(struct mtk_port *port)
- 	return ret;
- }
- 
-+/**
-+ * mtk_port_mngr_fsm_state_handler() - Handle fsm event after state has been changed.
-+ * @fsm_param: pointer to mtk_fsm_param, which including fsm state and event.
-+ * @arg: fsm will pass mtk_port_mngr structure back by using this parameter.
-+ *
-+ * This function will be registered to fsm by control block. If registered successful,
-+ * after fsm state has been changed, the fsm will call this function.
-+ *
-+ * This function can sleep or can be called from interrupt context.
-+ *
-+ * Return: No return value.
-+ */
-+void mtk_port_mngr_fsm_state_handler(struct mtk_fsm_param *fsm_param, void *arg)
++static bool mtk_dpmaif_drv_config(struct dpmaif_drv_info *drv_info)
 +{
-+	struct mtk_port_mngr *port_mngr;
-+	struct mtk_port *port;
-+	int flag;
++	u32 val;
 +
-+	if (!fsm_param || !arg) {
-+		pr_err("[TMI] Invalid input fsm_param or arg\n");
++	mtk_dpmaif_drv_reset(drv_info);
++
++	if (!mtk_dpmaif_drv_sram_init(drv_info))
++		return false;
++
++	val = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_RDY_CHK_THRES);
++	val &= ~DPMAIF_PORT_MODE_MSK;
++	val |= DPMAIF_PORT_MODE_PCIE;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_RDY_CHK_THRES, val);
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AP_MISC_CG_EN, 0x7f);
++	return true;
++}
++
++static bool mtk_dpmaif_drv_init_intr(struct dpmaif_drv_info *drv_info)
++{
++	struct dpmaif_drv_irq_en_mask *irq_en_mask;
++	u32 cnt = 0, cfg;
++
++	irq_en_mask = &drv_info->drv_irq_en_mask;
++
++	irq_en_mask->ap_ul_l2intr_en_mask = DPMAIF_AP_UL_L2INTR_EN_MASK;
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_UL_L2TISAR0, 0xFFFFFFFF);
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_UL_L2TICR0,
++		       irq_en_mask->ap_ul_l2intr_en_mask);
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_UL_L2TISR0,
++		       ~(irq_en_mask->ap_ul_l2intr_en_mask));
++	mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_UL_L2TISR0);
++
++	do {
++		if (!((mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_UL_L2TIMR0) &
++		     irq_en_mask->ap_ul_l2intr_en_mask) == irq_en_mask->ap_ul_l2intr_en_mask))
++			break;
++
++		cnt++;
++		udelay(POLL_INTERVAL_US);
++	} while (cnt < POLL_MAX_TIMES);
++
++	if (cnt >= POLL_MAX_TIMES) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Failed to set UL interrupt mask.\n");
++		return false;
++	}
++
++	irq_en_mask->ap_dl_l2intr_en_mask = DPMAIF_AP_DL_L2INTR_EN_MASK;
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_DL_L2TISAR0, 0xFFFFFFFF);
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_DL_L2TISR0,
++		       ~(irq_en_mask->ap_dl_l2intr_en_mask));
++	mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_DL_L2TISR0);
++
++	cnt = 0;
++	do {
++		if (!((mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_DL_L2TIMR0) &
++		    irq_en_mask->ap_dl_l2intr_en_mask) == irq_en_mask->ap_dl_l2intr_en_mask))
++			break;
++
++		cnt++;
++		udelay(POLL_INTERVAL_US);
++	} while (cnt < POLL_MAX_TIMES);
++
++	if (cnt >= POLL_MAX_TIMES) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Failed to set DL interrupt mask\n");
++		return false;
++	}
++
++	irq_en_mask->ap_udl_ip_busy_en_mask = DPMAIF_AP_UDL_IP_BUSY_EN_MASK;
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_IP_BUSY, 0xFFFFFFFF);
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_DLUL_IP_BUSY_MASK,
++		       irq_en_mask->ap_udl_ip_busy_en_mask);
++
++	cfg = mtk_hw_read32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AO_UL_AP_L1TIMR0);
++	cfg |= DPMAIF_DL_INT_Q2APTOP_MSK | DPMAIF_DL_INT_Q2TOQ1_MSK | DPMAIF_UL_TOP0_INT_MSK;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AO_UL_AP_L1TIMR0, cfg);
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_HPC_INTR_MASK, 0xffff);
++
++	dev_info(DRV_TO_MDEV(drv_info)->dev,
++		 "ul_mask=0x%08x, dl_mask=0x%08x, busy_mask=0x%08x\n",
++		 irq_en_mask->ap_ul_l2intr_en_mask,
++		 irq_en_mask->ap_dl_l2intr_en_mask,
++		 irq_en_mask->ap_udl_ip_busy_en_mask);
++	return true;
++}
++
++static void mtk_dpmaif_drv_set_property(struct dpmaif_drv_info *drv_info,
++					struct dpmaif_drv_cfg *drv_cfg)
++{
++	struct dpmaif_drv_property *drv_property = &drv_info->drv_property;
++	struct dpmaif_drv_data_ring *ring;
++	struct dpmaif_drv_dlq *dlq;
++	struct dpmaif_drv_ulq *ulq;
++	u32 i;
++
++	drv_property->features = drv_cfg->features;
++
++	for (i = 0; i < DPMAIF_DLQ_NUM; i++) {
++		dlq = &drv_property->dlq[i];
++		dlq->pit_base = drv_cfg->pit_base[i];
++		dlq->pit_size = drv_cfg->pit_cnt[i];
++		dlq->q_started = true;
++	}
++
++	for (i = 0; i < DPMAIF_ULQ_NUM; i++) {
++		ulq = &drv_property->ulq[i];
++		ulq->drb_base = drv_cfg->drb_base[i];
++		ulq->drb_size = drv_cfg->drb_cnt[i];
++		ulq->q_started = true;
++	}
++
++	ring = &drv_property->ring;
++
++	ring->normal_bat_base = drv_cfg->normal_bat_base;
++	ring->normal_bat_size = drv_cfg->normal_bat_cnt;
++	ring->normal_bat_pkt_bufsz = drv_cfg->normal_bat_buf_size;
++	ring->normal_bat_remain_size = DPMAIF_HW_BAT_REMAIN;
++	ring->normal_bat_rsv_length = DPMAIF_HW_BAT_RSVLEN;
++	ring->chk_normal_bat_num = DPMAIF_HW_CHK_BAT_NUM;
++
++	ring->mtu = drv_cfg->max_mtu;
++	ring->pkt_bid_max_cnt = DPMAIF_HW_PKT_BIDCNT;
++	ring->pkt_alignment = DPMAIF_HW_PKT_ALIGN;
++	ring->chk_pit_num = DPMAIF_HW_CHK_PIT_NUM;
++}
++
++static void mtk_dpmaif_drv_init_common_hw(struct dpmaif_drv_info *drv_info)
++{
++	u32 val;
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_UL_RESERVE_AO_RW,
++		       DPMAIF_PCIE_MODE_SET_VALUE);
++
++	val = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_INIT_CON1);
++	val |= DPMAIF_DL_BAT_CACHE_PRI;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_INIT_CON1, val);
++
++	val = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_RDY_CHK_THRES);
++	val |= DPMAIF_DL_BURST_PIT_EN;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_RDY_CHK_THRES, val);
++}
++
++static void mtk_dpmaif_drv_set_hpc_cntl(struct dpmaif_drv_info *drv_info)
++{
++	u32 cfg = 0;
++
++	cfg = (DPMAIF_HPC_LRO_PATH_DF & 0x3) << 0;
++	cfg |= (DPMAIF_HPC_ADD_MODE_DF & 0x3) << 2;
++	cfg |= (DPMAIF_HASH_PRIME_DF & 0xf) << 4;
++	cfg |= (DPMAIF_HPC_TOTAL_NUM & 0xff) << 8;
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AO_DL_HPC_CNTL, cfg);
++}
++
++static void mtk_dpmaif_drv_set_agg_cfg(struct dpmaif_drv_info *drv_info)
++{
++	u32 cfg;
++
++	cfg = (DPMAIF_AGG_MAX_LEN_DF & 0xffff) << 0;
++	cfg |= (DPMAIF_AGG_TBL_ENT_NUM_DF & 0xffff) << 16;
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AO_DL_LRO_AGG_CFG, cfg);
++
++	cfg = mtk_hw_read32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AO_DL_RDY_CHK_FRG_THRES);
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info),
++		       NRL2_DPMAIF_AO_DL_RDY_CHK_FRG_THRES, cfg & 0xf00fffff);
++}
++
++static void mtk_dpmaif_drv_set_hash_bit_choose(struct dpmaif_drv_info *drv_info)
++{
++	u32 cfg;
++
++	cfg = (DPMAIF_LRO_HASH_BIT_CHOOSE_DF & 0x7) << 0;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AO_DL_LROPIT_INIT_CON5, cfg);
++}
++
++static void mtk_dpmaif_drv_set_mid_pit_timeout_threshold(struct dpmaif_drv_info *drv_info)
++{
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AO_DL_LROPIT_TIMEOUT0,
++		       DPMAIF_MID_TIMEOUT_THRES_DF);
++}
++
++static void mtk_dpmaif_drv_set_dlq_timeout_threshold(struct dpmaif_drv_info *drv_info)
++{
++	u32 val, i;
++
++	for (i = 0; i < DPMAIF_HPC_MAX_TOTAL_NUM; i++) {
++		val = mtk_hw_read32(DRV_TO_MDEV(drv_info),
++				    NRL2_DPMAIF_AO_DL_LROPIT_TIMEOUT1 + 4 * (i / 2));
++
++		if (i % 2)
++			val = (val & 0xFFFF) | (DPMAIF_LRO_TIMEOUT_THRES_DF << 16);
++		else
++			val = (val & 0xFFFF0000) | (DPMAIF_LRO_TIMEOUT_THRES_DF);
++
++		mtk_hw_write32(DRV_TO_MDEV(drv_info),
++			       NRL2_DPMAIF_AO_DL_LROPIT_TIMEOUT1 + (4 * (i / 2)), val);
++	}
++}
++
++static void mtk_dpmaif_drv_set_dlq_start_prs_threshold(struct dpmaif_drv_info *drv_info)
++{
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AO_DL_LROPIT_TRIG_THRES,
++		       DPMAIF_LRO_PRS_THRES_DF & 0x3FFFF);
++}
++
++static void mtk_dpmaif_drv_toeplitz_hash_enable(struct dpmaif_drv_info *drv_info, u32 enable)
++{
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_REG_TOE_HASH_EN, enable);
++}
++
++static void mtk_dpmaif_drv_hash_default_value_set(struct dpmaif_drv_info *drv_info, u32 hash)
++{
++	u32 val = mtk_hw_read32(DRV_TO_MDEV(drv_info), NRL2_REG_HASH_CFG_CON);
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_REG_HASH_CFG_CON,
++		       (val & DPMAIF_HASH_DEFAULT_V_MASK) | hash);
++}
++
++static int mtk_dpmaif_drv_hash_sec_key_set(struct dpmaif_drv_info *drv_info, u8 *hash_key)
++{
++	u32 i, cnt = 0;
++	u32 index;
++	u32 val;
++
++	for (i = 0; i < DPMAIF_HASH_SEC_KEY_NUM / 4; i++) {
++		index = i << 2;
++		val = hash_key[index] << 24 | hash_key[index + 1] << 16 |
++			hash_key[index + 2] << 8 | hash_key[index + 3];
++		mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_REG_HASH_SEC_KEY_0 + index, val);
++	}
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_REG_HASH_SEC_KEY_UPD, 1);
++
++	do {
++		if (!(mtk_hw_read32(DRV_TO_MDEV(drv_info), NRL2_REG_HASH_SEC_KEY_UPD)))
++			break;
++
++		cnt++;
++		udelay(POLL_INTERVAL_US);
++	} while (cnt < POLL_MAX_TIMES);
++
++	if (cnt >= POLL_MAX_TIMES)
++		return -DATA_HW_REG_TIMEOUT;
++
++	return 0;
++}
++
++static void mtk_dpmaif_drv_hash_bit_mask_set(struct dpmaif_drv_info *drv_info, u32 mask)
++{
++	u32 val = mtk_hw_read32(DRV_TO_MDEV(drv_info), NRL2_REG_HASH_CFG_CON);
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_REG_HASH_CFG_CON,
++		       (val & DPMAIF_HASH_BIT_MASK) | (mask << 8));
++}
++
++static void mtk_dpmaif_drv_hash_indir_mask_set(struct dpmaif_drv_info *drv_info, u32 mask)
++{
++	u32 val = mtk_hw_read32(DRV_TO_MDEV(drv_info), NRL2_REG_HASH_CFG_CON);
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_REG_HASH_CFG_CON,
++		       (val & DPMAIF_HASH_INDR_MASK) | (mask << 16));
++}
++
++static void mtk_dpmaif_drv_hpc_stats_thres_set(struct dpmaif_drv_info *drv_info, u32 thres)
++{
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_REG_HPC_STATS_THRES, thres);
++}
++
++static void mtk_dpmaif_drv_hpc_stats_time_cfg_set(struct dpmaif_drv_info *drv_info, u32 time_cfg)
++{
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_REG_HPC_STATS_TIMER_CFG, time_cfg);
++}
++
++static void mtk_dpmaif_drv_init_dl_hpc_hw(struct dpmaif_drv_info *drv_info)
++{
++	u8 hash_key[DPMAIF_HASH_SEC_KEY_NUM];
++
++	mtk_dpmaif_drv_set_hpc_cntl(drv_info);
++	mtk_dpmaif_drv_set_agg_cfg(drv_info);
++	mtk_dpmaif_drv_set_hash_bit_choose(drv_info);
++	mtk_dpmaif_drv_set_mid_pit_timeout_threshold(drv_info);
++	mtk_dpmaif_drv_set_dlq_timeout_threshold(drv_info);
++	mtk_dpmaif_drv_set_dlq_start_prs_threshold(drv_info);
++	mtk_dpmaif_drv_toeplitz_hash_enable(drv_info, DPMAIF_TOEPLITZ_HASH_EN);
++	mtk_dpmaif_drv_hash_default_value_set(drv_info, DPMAIF_HASH_DEFAULT_VALUE);
++	get_random_bytes(hash_key, sizeof(hash_key));
++	mtk_dpmaif_drv_hash_sec_key_set(drv_info, hash_key);
++	mtk_dpmaif_drv_hash_bit_mask_set(drv_info, DPMAIF_HASH_BIT_MASK_DF);
++	mtk_dpmaif_drv_hash_indir_mask_set(drv_info, DPMAIF_HASH_INDR_MASK_DF);
++	mtk_dpmaif_drv_hpc_stats_thres_set(drv_info, DPMAIF_HPC_STATS_THRESHOLD);
++	mtk_dpmaif_drv_hpc_stats_time_cfg_set(drv_info, DPMAIF_HPC_STATS_TIMER_CFG);
++}
++
++static void mtk_dpmaif_drv_dl_set_ao_remain_minsz(struct dpmaif_drv_info *drv_info, u32 sz)
++{
++	u32 val;
++
++	val = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_PKTINFO_CONO);
++	val &= ~DPMAIF_BAT_REMAIN_MINSZ_MSK;
++	val |= ((sz / DPMAIF_BAT_REMAIN_SZ_BASE) << 8) & DPMAIF_BAT_REMAIN_MINSZ_MSK;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_PKTINFO_CONO, val);
++}
++
++static void mtk_dpmaif_drv_dl_set_ao_bat_bufsz(struct dpmaif_drv_info *drv_info, u32 buf_sz)
++{
++	u32 val;
++
++	val = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_PKTINFO_CON2);
++	val &= ~DPMAIF_BAT_BUF_SZ_MSK;
++	val |= ((buf_sz / DPMAIF_BAT_BUFFER_SZ_BASE) << 8) & DPMAIF_BAT_BUF_SZ_MSK;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_PKTINFO_CON2, val);
++}
++
++static void mtk_dpmaif_drv_dl_set_ao_bat_rsv_length(struct dpmaif_drv_info *drv_info, u32 length)
++{
++	u32 val;
++
++	val = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_PKTINFO_CON2);
++	val &= ~DPMAIF_BAT_RSV_LEN_MSK;
++	val |= length & DPMAIF_BAT_RSV_LEN_MSK;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_PKTINFO_CON2, val);
++}
++
++static void mtk_dpmaif_drv_dl_set_ao_bid_maxcnt(struct dpmaif_drv_info *drv_info, u32 cnt)
++{
++	u32 val;
++
++	val = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_PKTINFO_CONO);
++	val &= ~DPMAIF_BAT_BID_MAXCNT_MSK;
++	val |= (cnt << 16) & DPMAIF_BAT_BID_MAXCNT_MSK;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_PKTINFO_CONO, val);
++}
++
++static void mtk_dpmaif_drv_dl_set_pkt_alignment(struct dpmaif_drv_info *drv_info,
++						bool enable, u32 mode)
++{
++	u32 val;
++
++	val = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_RDY_CHK_THRES);
++	val &= ~DPMAIF_PKT_ALIGN_MSK;
++	if (enable) {
++		val |= DPMAIF_PKT_ALIGN_EN;
++		val |= (mode << 22) & DPMAIF_PKT_ALIGN_MSK;
++	}
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_RDY_CHK_THRES, val);
++}
++
++static void mtk_dpmaif_drv_dl_set_pit_seqnum(struct dpmaif_drv_info *drv_info, u32 seq)
++{
++	u32 val;
++
++	val = mtk_hw_read32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AO_DL_PIT_SEQ_END);
++	val &= ~DPMAIF_DL_PIT_SEQ_MSK;
++	val |= seq & DPMAIF_DL_PIT_SEQ_MSK;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AO_DL_PIT_SEQ_END, val);
++}
++
++static void mtk_dpmaif_drv_dl_set_ao_mtu(struct dpmaif_drv_info *drv_info, u32 mtu_sz)
++{
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_PKTINFO_CON1, mtu_sz);
++}
++
++static void mtk_dpmaif_drv_dl_set_ao_pit_chknum(struct dpmaif_drv_info *drv_info, u32 number)
++{
++	u32 val;
++
++	val = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_PKTINFO_CON2);
++	val &= ~DPMAIF_PIT_CHK_NUM_MSK;
++	val |= (number << 24) & DPMAIF_PIT_CHK_NUM_MSK;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_PKTINFO_CON2, val);
++}
++
++static void mtk_dpmaif_drv_dl_set_ao_bat_check_threshold(struct dpmaif_drv_info *drv_info, u32 size)
++{
++	u32 val;
++
++	val = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_RDY_CHK_THRES);
++	val &= ~DPMAIF_BAT_CHECK_THRES_MSK;
++	val |= (size << 16) & DPMAIF_BAT_CHECK_THRES_MSK;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_RDY_CHK_THRES, val);
++}
++
++static void mtk_dpmaif_drv_dl_set_bat_base_addr(struct dpmaif_drv_info *drv_info, u64 addr)
++{
++	u32 lb_addr = (u32)(addr & 0xFFFFFFFF);
++	u32 hb_addr = (u32)(addr >> 32);
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_INIT_CON0, lb_addr);
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_INIT_CON3, hb_addr);
++}
++
++static void mtk_dpmaif_drv_dl_set_bat_size(struct dpmaif_drv_info *drv_info, u32 size)
++{
++	u32 val;
++
++	val = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_INIT_CON1);
++	val &= ~DPMAIF_BAT_SIZE_MSK;
++	val |= size & DPMAIF_BAT_SIZE_MSK;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_INIT_CON1, val);
++}
++
++static void mtk_dpmaif_drv_dl_bat_en(struct dpmaif_drv_info *drv_info, bool enable)
++{
++	u32 val;
++
++	val = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_INIT_CON1);
++	if (enable)
++		val |= DPMAIF_BAT_EN_MSK;
++	else
++		val &= ~DPMAIF_BAT_EN_MSK;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_INIT_CON1, val);
++}
++
++static void mtk_dpmaif_drv_dl_bat_init_done(struct dpmaif_drv_info *drv_info, bool frag_en)
++{
++	u32 cnt = 0, dl_bat_init;
++
++	dl_bat_init = DPMAIF_DL_BAT_INIT_ALLSET;
++	dl_bat_init |= DPMAIF_DL_BAT_INIT_EN;
++
++	do {
++		if (!(mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_INIT) &
++		      DPMAIF_DL_BAT_INIT_NOT_READY)) {
++			mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_INIT, dl_bat_init);
++			break;
++		}
++		cnt++;
++		udelay(POLL_INTERVAL_US);
++	} while (cnt < POLL_MAX_TIMES);
++
++	if (cnt >= POLL_MAX_TIMES) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Failed to initialize bat.\n");
 +		return;
 +	}
 +
-+	port_mngr = arg;
-+	flag = fsm_param->fsm_flag;
++	cnt = 0;
++	do {
++		if (!((mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_INIT) &
++		    DPMAIF_DL_BAT_INIT_NOT_READY) == DPMAIF_DL_BAT_INIT_NOT_READY))
++			break;
 +
-+	dev_info(port_mngr->ctrl_blk->mdev->dev, "Fsm state %d & fsm flag 0x%x\n",
-+		 fsm_param->to, flag);
++		cnt++;
++		udelay(POLL_INTERVAL_US);
++	} while (cnt < POLL_MAX_TIMES);
 +
-+	switch (fsm_param->to) {
-+	case FSM_STATE_BOOTUP:
-+		if (flag & FSM_F_MD_HS_START) {
-+			port = mtk_port_search_by_id(port_mngr, CCCI_CONTROL_RX);
-+			if (!port) {
-+				dev_err(port_mngr->ctrl_blk->mdev->dev,
-+					"Failed to find MD ctrl port\n");
-+				goto err;
-+			}
-+			ports_ops[port->info.type]->enable(port);
-+		} else if (flag & FSM_F_SAP_HS_START) {
-+			port = mtk_port_search_by_id(port_mngr, CCCI_SAP_CONTROL_RX);
-+			if (!port) {
-+				dev_err(port_mngr->ctrl_blk->mdev->dev,
-+					"Failed to find sAP ctrl port\n");
-+				goto err;
-+			}
-+			ports_ops[port->info.type]->enable(port);
-+		}
-+		break;
-+	case FSM_STATE_READY:
-+		mtk_port_enable(port_mngr);
-+		break;
-+	case FSM_STATE_OFF:
-+		mtk_port_disable(port_mngr);
-+		break;
-+	default:
-+		dev_warn(port_mngr->ctrl_blk->mdev->dev,
-+			 "Unsupported fsm state %d & fsm flag 0x%x\n", fsm_param->to, flag);
-+		break;
++	if (cnt >= POLL_MAX_TIMES) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Initialize bat is not ready.\n");
++		return;
 +	}
-+err:
-+	return;
 +}
 +
- /**
-  * mtk_port_mngr_init() - Initialize mtk_port_mngr and mtk_stale_list.
-  * @ctrl_blk: pointer to mtk_ctrl_blk.
-@@ -910,7 +1087,7 @@ int mtk_port_vq_disable(struct mtk_port *port)
-  * and this function alloc memory for it.
-  * If port manager can't find stale list in stale list group by
-  * using dev_str, it will also alloc memory for structure mtk_stale_list.
-- * And then it will initialize port table.
-+ * And then it will initialize port table and register fsm callback.
-  *
-  * Return:
-  * * 0:			-success to initialize mtk_port_mngr
-diff --git a/drivers/net/wwan/mediatek/mtk_port.h b/drivers/net/wwan/mediatek/mtk_port.h
-index 6f591aadb06a..9ab1c392cde9 100644
---- a/drivers/net/wwan/mediatek/mtk_port.h
-+++ b/drivers/net/wwan/mediatek/mtk_port.h
-@@ -14,6 +14,7 @@
- 
- #include "mtk_ctrl_plane.h"
- #include "mtk_dev.h"
-+#include "mtk_fsm.h"
- 
- #define MTK_PEER_ID_MASK	(0xF000)
- #define MTK_PEER_ID_SHIFT	(12)
-@@ -22,6 +23,7 @@
- #define MTK_PEER_ID_MD		(0x2)
- #define MTK_CH_ID_MASK		(0x0FFF)
- #define MTK_CH_ID(ch)		((ch) & MTK_CH_ID_MASK)
-+#define MTK_PORT_NAME_HDR	"wwanD"
- #define MTK_DFLT_MAX_DEV_CNT	(10)
- #define MTK_DFLT_PORT_NAME_LEN	(20)
- 
-@@ -67,6 +69,7 @@ enum mtk_ccci_ch {
- 
- enum mtk_port_flag {
- 	PORT_F_DFLT = 0,
-+	PORT_F_RAW_DATA = BIT(0),
- 	PORT_F_BLOCKING = BIT(1),
- 	PORT_F_ALLOW_DROP = BIT(2),
- };
-@@ -89,9 +92,11 @@ struct mtk_internal_port {
- 
- /**
-  * union mtk_port_priv - Contains private data for different type of ports.
-+ * @cdev: private data for character device port.
-  * @i_priv: private data for internal other user.
-  */
- union mtk_port_priv {
-+	struct cdev *cdev;
- 	struct mtk_internal_port i_priv;
- };
- 
-@@ -219,8 +224,10 @@ void mtk_port_stale_list_grp_cleanup(void);
- int mtk_port_add_header(struct sk_buff *skb);
- struct mtk_ccci_header *mtk_port_strip_header(struct sk_buff *skb);
- int mtk_port_send_data(struct mtk_port *port, void *data);
-+int mtk_port_status_update(struct mtk_md_dev *mdev, void *data);
- int mtk_port_vq_enable(struct mtk_port *port);
- int mtk_port_vq_disable(struct mtk_port *port);
-+void mtk_port_mngr_fsm_state_handler(struct mtk_fsm_param *fsm_param, void *arg);
- int mtk_port_mngr_vq_status_check(struct sk_buff *skb);
- int mtk_port_mngr_init(struct mtk_ctrl_blk *ctrl_blk);
- void mtk_port_mngr_exit(struct mtk_ctrl_blk *ctrl_blk);
-diff --git a/drivers/net/wwan/mediatek/mtk_port_io.c b/drivers/net/wwan/mediatek/mtk_port_io.c
-index 2fd681eed9c8..050ec0a1bb04 100644
---- a/drivers/net/wwan/mediatek/mtk_port_io.c
-+++ b/drivers/net/wwan/mediatek/mtk_port_io.c
-@@ -205,10 +205,7 @@ void *mtk_port_internal_open(struct mtk_md_dev *mdev, char *name, int flag)
- 		goto err;
- 	}
- 
--	if (flag & O_NONBLOCK)
--		port->info.flags &= ~PORT_F_BLOCKING;
--	else
--		port->info.flags |= PORT_F_BLOCKING;
-+	port->info.flags |= PORT_F_BLOCKING;
- err:
- 	return port;
- }
-diff --git a/drivers/net/wwan/mediatek/pcie/mtk_cldma_drv_t800.h b/drivers/net/wwan/mediatek/pcie/mtk_cldma_drv_t800.h
-index b89d45a81c4f..470a40015f77 100644
---- a/drivers/net/wwan/mediatek/pcie/mtk_cldma_drv_t800.h
-+++ b/drivers/net/wwan/mediatek/pcie/mtk_cldma_drv_t800.h
-@@ -9,6 +9,7 @@
- #include <linux/skbuff.h>
- 
- #include "mtk_cldma.h"
-+#include "mtk_fsm.h"
- 
- int mtk_cldma_hw_init_t800(struct cldma_dev *cd, int hif_id);
- int mtk_cldma_hw_exit_t800(struct cldma_dev *cd, int hif_id);
-@@ -17,4 +18,5 @@ int mtk_cldma_txq_free_t800(struct cldma_hw *hw, int vqno);
- struct rxq *mtk_cldma_rxq_alloc_t800(struct cldma_hw *hw, struct sk_buff *skb);
- int mtk_cldma_rxq_free_t800(struct cldma_hw *hw, int vqno);
- int mtk_cldma_start_xfer_t800(struct cldma_hw *hw, int qno);
-+void mtk_cldma_fsm_state_listener_t800(struct mtk_fsm_param *param, struct cldma_hw *hw);
- #endif
-diff --git a/drivers/net/wwan/mediatek/pcie/mtk_pci.c b/drivers/net/wwan/mediatek/pcie/mtk_pci.c
-index b41e740121b6..e96fc2e65390 100644
---- a/drivers/net/wwan/mediatek/pcie/mtk_pci.c
-+++ b/drivers/net/wwan/mediatek/pcie/mtk_pci.c
-@@ -13,6 +13,7 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- 
-+#include "mtk_fsm.h"
- #include "mtk_pci.h"
- #include "mtk_port_io.h"
- #include "mtk_reg.h"
-@@ -889,9 +890,16 @@ static int mtk_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 		goto err_save_state;
- 	}
- 
-+	ret = mtk_dev_start(mdev);
-+	if (ret) {
-+		dev_err(mdev->dev, "Failed to start dev.\n");
-+		goto err_dev_start;
-+	}
- 	dev_info(mdev->dev, "Probe done hw_ver=0x%x\n", mdev->hw_ver);
- 	return 0;
- 
-+err_dev_start:
-+	pci_load_and_free_saved_state(pdev, &priv->saved_state);
- err_save_state:
- 	pci_disable_pcie_error_reporting(pdev);
- 	pci_clear_master(pdev);
-diff --git a/drivers/net/wwan/mediatek/pcie/mtk_reg.h b/drivers/net/wwan/mediatek/pcie/mtk_reg.h
-index 23fa7fd9518e..1159c29685c5 100644
---- a/drivers/net/wwan/mediatek/pcie/mtk_reg.h
-+++ b/drivers/net/wwan/mediatek/pcie/mtk_reg.h
-@@ -18,6 +18,17 @@ enum mtk_ext_evt_h2d {
- 	EXT_EVT_H2D_DEVICE_RESET           = 1 << 13,
- };
- 
-+enum mtk_ext_evt_d2h {
-+	EXT_EVT_D2H_PCIE_DS_LOCK_ACK       = 1 << 0,
-+	EXT_EVT_D2H_EXCEPT_INIT            = 1 << 1,
-+	EXT_EVT_D2H_EXCEPT_INIT_DONE       = 1 << 2,
-+	EXT_EVT_D2H_EXCEPT_CLEARQ_DONE     = 1 << 3,
-+	EXT_EVT_D2H_EXCEPT_ALLQ_RESET      = 1 << 4,
-+	EXT_EVT_D2H_BOOT_FLOW_SYNC         = 1 << 5,
-+	EXT_EVT_D2H_ASYNC_HS_NOTIFY_SAP    = 1 << 15,
-+	EXT_EVT_D2H_ASYNC_HS_NOTIFY_MD     = 1 << 16,
-+};
++static void mtk_dpmaif_drv_dl_set_pit_base_addr(struct dpmaif_drv_info *drv_info, u64 addr)
++{
++	u32 lb_addr = (u32)(addr & 0xFFFFFFFF);
++	u32 hb_addr = (u32)(addr >> 32);
 +
- #define REG_PCIE_SW_TRIG_INT			0x00BC
- #define REG_PCIE_LTSSM_STATUS			0x0150
- #define REG_IMASK_LOCAL				0x0180
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_DL_LROPIT_INIT_CON0, lb_addr);
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_DL_LROPIT_INIT_CON4, hb_addr);
++}
++
++static void mtk_dpmaif_drv_dl_set_pit_size(struct dpmaif_drv_info *drv_info, u32 size)
++{
++	u32 val;
++
++	val = mtk_hw_read32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_DL_LROPIT_INIT_CON1);
++	val &= ~DPMAIF_PIT_SIZE_MSK;
++	val |= size & DPMAIF_PIT_SIZE_MSK;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_DL_LROPIT_INIT_CON1, val);
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_DL_LROPIT_INIT_CON2, 0);
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_DL_LROPIT_INIT_CON3, 0);
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_DL_LROPIT_INIT_CON5, 0);
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_DL_LROPIT_INIT_CON6, 0);
++}
++
++static void mtk_dpmaif_drv_dl_pit_en(struct dpmaif_drv_info *drv_info, bool enable)
++{
++	u32 val;
++
++	val = mtk_hw_read32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_DL_LROPIT_INIT_CON3);
++	if (enable)
++		val |= DPMAIF_LROPIT_EN_MSK;
++	else
++		val &= ~DPMAIF_LROPIT_EN_MSK;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_DL_LROPIT_INIT_CON3, val);
++}
++
++static void mtk_dpmaif_drv_dl_pit_init_done(struct dpmaif_drv_info *drv_info, u32 pit_idx)
++{
++	int cnt = 0, dl_pit_init;
++
++	dl_pit_init = DPMAIF_DL_PIT_INIT_ALLSET;
++	dl_pit_init |= pit_idx << DPMAIF_LROPIT_CHAN_OFS;
++	dl_pit_init |= DPMAIF_DL_PIT_INIT_EN;
++
++	do {
++		if (!(mtk_hw_read32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_DL_LROPIT_INIT) &
++			DPMAIF_DL_PIT_INIT_NOT_READY)) {
++			mtk_hw_write32(DRV_TO_MDEV(drv_info),
++				       NRL2_DPMAIF_DL_LROPIT_INIT, dl_pit_init);
++			break;
++		}
++		udelay(POLL_INTERVAL_US);
++		cnt++;
++	} while (cnt < POLL_MAX_TIMES);
++
++	if (cnt >= POLL_MAX_TIMES) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Failed to initialize pit.\n");
++		return;
++	}
++
++	cnt = 0;
++	do {
++		if (!((mtk_hw_read32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_DL_LROPIT_INIT) &
++		    DPMAIF_DL_PIT_INIT_NOT_READY) == DPMAIF_DL_PIT_INIT_NOT_READY))
++			break;
++
++		udelay(POLL_INTERVAL_US);
++		cnt++;
++	} while (cnt < POLL_MAX_TIMES);
++
++	if (cnt >= POLL_MAX_TIMES) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Initialize pit is not ready.\n");
++		return;
++	}
++}
++
++static void mtk_dpmaif_drv_config_dlq_pit_hw(struct dpmaif_drv_info *drv_info, u8 q_num,
++					     struct dpmaif_drv_dlq *dlq)
++{
++	mtk_dpmaif_drv_dl_set_pit_base_addr(drv_info, (u64)dlq->pit_base);
++	mtk_dpmaif_drv_dl_set_pit_size(drv_info, dlq->pit_size);
++	mtk_dpmaif_drv_dl_pit_en(drv_info, true);
++	mtk_dpmaif_drv_dl_pit_init_done(drv_info, q_num);
++}
++
++static int mtk_dpmaif_drv_dlq_all_en(struct dpmaif_drv_info *drv_info, bool enable)
++{
++	u32 val, dl_bat_init, cnt = 0;
++
++	val = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_INIT_CON1);
++
++	if (enable)
++		val |= DPMAIF_BAT_EN_MSK;
++	else
++		val &= ~DPMAIF_BAT_EN_MSK;
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_INIT_CON1, val);
++	mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_INIT_CON1);
++
++	dl_bat_init = DPMAIF_DL_BAT_INIT_ONLY_ENABLE_BIT;
++	dl_bat_init |= DPMAIF_DL_BAT_INIT_EN;
++
++	do {
++		if (!(mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_INIT) &
++			DPMAIF_DL_BAT_INIT_NOT_READY)) {
++			mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_INIT, dl_bat_init);
++			break;
++		}
++		udelay(POLL_INTERVAL_US);
++		cnt++;
++	} while (cnt < POLL_MAX_TIMES);
++
++	if (cnt >= POLL_MAX_TIMES) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Failed to enable all dl queue.\n");
++		return -DATA_HW_REG_TIMEOUT;
++	}
++
++	cnt = 0;
++	do {
++		if (!((mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_INIT) &
++		    DPMAIF_DL_BAT_INIT_NOT_READY) == DPMAIF_DL_BAT_INIT_NOT_READY))
++			break;
++
++		udelay(POLL_INTERVAL_US);
++		cnt++;
++	} while (cnt < POLL_MAX_TIMES);
++
++	if (cnt >= POLL_MAX_TIMES) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Enable all dl queue is not ready.\n");
++		return -DATA_HW_REG_TIMEOUT;
++	}
++
++	return 0;
++}
++
++static bool mtk_dpmaif_drv_dl_idle_check(struct dpmaif_drv_info *drv_info)
++{
++	bool is_idle = false;
++	u32 dl_dbg_sta;
++
++	dl_dbg_sta = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_DBG_STA1);
++
++	if ((dl_dbg_sta & DPMAIF_DL_IDLE_STS) == DPMAIF_DL_IDLE_STS)
++		is_idle = true;
++
++	return is_idle;
++}
++
++static u32 mtk_dpmaif_drv_dl_get_wridx(struct dpmaif_drv_info *drv_info)
++{
++	return ((mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_PIT_STA3)) &
++		DPMAIF_DL_PIT_WRIDX_MSK);
++}
++
++static u32 mtk_dpmaif_drv_dl_get_pit_ridx(struct dpmaif_drv_info *drv_info)
++{
++	return ((mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_PIT_STA2)) &
++		DPMAIF_DL_PIT_WRIDX_MSK);
++}
++
++static void mtk_dpmaif_drv_dl_set_pkt_checksum(struct dpmaif_drv_info *drv_info)
++{
++	u32 val;
++
++	val = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_RDY_CHK_THRES);
++	val |= DPMAIF_DL_PKT_CHECKSUM_EN;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_RDY_CHK_THRES, val);
++}
++
++static bool mtk_dpmaif_drv_config_dlq_hw(struct dpmaif_drv_info *drv_info)
++{
++	struct dpmaif_drv_property *drv_property = &drv_info->drv_property;
++	struct dpmaif_drv_data_ring *ring = &drv_property->ring;
++	struct dpmaif_drv_dlq *dlq;
++	u32 i;
++
++	mtk_dpmaif_drv_init_dl_hpc_hw(drv_info);
++	mtk_dpmaif_drv_dl_set_ao_remain_minsz(drv_info, ring->normal_bat_remain_size);
++	mtk_dpmaif_drv_dl_set_ao_bat_bufsz(drv_info, ring->normal_bat_pkt_bufsz);
++	mtk_dpmaif_drv_dl_set_ao_bat_rsv_length(drv_info, ring->normal_bat_rsv_length);
++	mtk_dpmaif_drv_dl_set_ao_bid_maxcnt(drv_info, ring->pkt_bid_max_cnt);
++
++	if (ring->pkt_alignment == 64)
++		mtk_dpmaif_drv_dl_set_pkt_alignment(drv_info, true, DPMAIF_PKT_ALIGN64_MODE);
++	else if (ring->pkt_alignment == 128)
++		mtk_dpmaif_drv_dl_set_pkt_alignment(drv_info, true, DPMAIF_PKT_ALIGN128_MODE);
++	else
++		mtk_dpmaif_drv_dl_set_pkt_alignment(drv_info, false, 0);
++
++	mtk_dpmaif_drv_dl_set_pit_seqnum(drv_info, DPMAIF_PIT_SEQ_MAX);
++	mtk_dpmaif_drv_dl_set_ao_mtu(drv_info, ring->mtu);
++	mtk_dpmaif_drv_dl_set_ao_pit_chknum(drv_info, ring->chk_pit_num);
++	mtk_dpmaif_drv_dl_set_ao_bat_check_threshold(drv_info, ring->chk_normal_bat_num);
++
++	mtk_dpmaif_drv_dl_set_bat_base_addr(drv_info, (u64)ring->normal_bat_base);
++	mtk_dpmaif_drv_dl_set_bat_size(drv_info, ring->normal_bat_size);
++	mtk_dpmaif_drv_dl_bat_en(drv_info, false);
++	mtk_dpmaif_drv_dl_bat_init_done(drv_info, false);
++
++	for (i = 0; i < DPMAIF_DLQ_NUM; i++) {
++		dlq = &drv_property->dlq[i];
++		mtk_dpmaif_drv_config_dlq_pit_hw(drv_info, i, dlq);
++	}
++
++	if (mtk_dpmaif_drv_dlq_all_en(drv_info, true))
++		return false;
++	mtk_dpmaif_drv_dl_set_pkt_checksum(drv_info);
++	return true;
++}
++
++static void mtk_dpmaif_drv_ul_update_drb_size(struct dpmaif_drv_info *drv_info, u8 q_num, u32 size)
++{
++	u32 old_size;
++	u64 addr;
++
++	addr = DPMAIF_UL_DRBSIZE_ADDRH_N(q_num);
++
++	old_size = mtk_hw_read32(DRV_TO_MDEV(drv_info), addr);
++	old_size &= ~DPMAIF_DRB_SIZE_MSK;
++	old_size |= size & DPMAIF_DRB_SIZE_MSK;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), addr, old_size);
++}
++
++static void mtk_dpmaif_drv_ul_update_drb_base_addr(struct dpmaif_drv_info *drv_info,
++						   u8 q_num, u64 addr)
++{
++	u32 lb_addr = (u32)(addr & 0xFFFFFFFF);
++	u32 hb_addr = (u32)(addr >> 32);
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_ULQSAR_N(q_num), lb_addr);
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_UL_DRB_ADDRH_N(q_num), hb_addr);
++}
++
++static void mtk_dpmaif_drv_ul_rdy_en(struct dpmaif_drv_info *drv_info, u8 q_num, bool ready)
++{
++	u32 ul_rdy_en;
++
++	ul_rdy_en = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_UL_CHNL_ARB0);
++	if (ready)
++		ul_rdy_en |= (1 << q_num);
++	else
++		ul_rdy_en &= ~(1 << q_num);
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_UL_CHNL_ARB0, ul_rdy_en);
++}
++
++static void mtk_dpmaif_drv_ul_arb_en(struct dpmaif_drv_info *drv_info, u8 q_num, bool enable)
++{
++	u32 ul_arb_en;
++
++	ul_arb_en = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_UL_CHNL_ARB0);
++	if (enable)
++		ul_arb_en |= (1 << (q_num + 8));
++	else
++		ul_arb_en &= ~(1 << (q_num + 8));
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_UL_CHNL_ARB0, ul_arb_en);
++}
++
++static void mtk_dpmaif_drv_config_ulq_hw(struct dpmaif_drv_info *drv_info)
++{
++	struct dpmaif_drv_ulq *ulq;
++	u32 i;
++
++	for (i = 0; i < DPMAIF_ULQ_NUM; i++) {
++		ulq = &drv_info->drv_property.ulq[i];
++		mtk_dpmaif_drv_ul_update_drb_size(drv_info, i,
++						  (ulq->drb_size * DPMAIF_UL_DRB_ENTRY_WORD));
++		mtk_dpmaif_drv_ul_update_drb_base_addr(drv_info, i, (u64)ulq->drb_base);
++		mtk_dpmaif_drv_ul_rdy_en(drv_info, i, true);
++		mtk_dpmaif_drv_ul_arb_en(drv_info, i, true);
++	}
++}
++
++static bool mtk_dpmaif_drv_init_done(struct dpmaif_drv_info *drv_info)
++{
++	u32 val, cnt = 0;
++
++	val = mtk_hw_read32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AP_MISC_OVERWRITE_CFG);
++	val |= DPMAIF_SRAM_SYNC_MASK;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AP_MISC_OVERWRITE_CFG, val);
++	do {
++		if (!(mtk_hw_read32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AP_MISC_OVERWRITE_CFG) &
++		    DPMAIF_SRAM_SYNC_MASK))
++			break;
++
++		udelay(POLL_INTERVAL_US);
++		cnt++;
++	} while (cnt < POLL_MAX_TIMES);
++
++	if (cnt >= POLL_MAX_TIMES) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Failed to sync default value to sram\n");
++		return false;
++	}
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AO_UL_INIT_SET, DPMAIF_UL_INIT_DONE_MASK);
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AO_DL_INIT_SET, DPMAIF_DL_INIT_DONE_MASK);
++	return true;
++}
++
++static bool mtk_dpmaif_drv_cfg_hw(struct dpmaif_drv_info *drv_info)
++{
++	mtk_dpmaif_drv_init_common_hw(drv_info);
++	if (!mtk_dpmaif_drv_config_dlq_hw(drv_info))
++		return false;
++	mtk_dpmaif_drv_config_ulq_hw(drv_info);
++	if (!mtk_dpmaif_drv_init_done(drv_info))
++		return false;
++
++	drv_info->ulq_all_enable = true;
++	drv_info->dlq_all_enable = true;
++
++	return true;
++}
++
++static void mtk_dpmaif_drv_clr_ul_all_intr(struct dpmaif_drv_info *drv_info)
++{
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_UL_L2TISAR0, 0xFFFFFFFF);
++}
++
++static void mtk_dpmaif_drv_clr_dl_all_intr(struct dpmaif_drv_info *drv_info)
++{
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_DL_L2TISAR0, 0xFFFFFFFF);
++}
++
++static int mtk_dpmaif_drv_init_t800(struct dpmaif_drv_info *drv_info, void *data)
++{
++	struct dpmaif_drv_cfg *drv_cfg = data;
++
++	if (!drv_cfg) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Invalid parameter\n");
++		return -DATA_FLOW_CHK_ERR;
++	}
++
++	if (!mtk_dpmaif_drv_config(drv_info))
++		return DATA_HW_REG_CHK_FAIL;
++
++	if (!mtk_dpmaif_drv_init_intr(drv_info))
++		return DATA_HW_REG_CHK_FAIL;
++
++	mtk_dpmaif_drv_set_property(drv_info, drv_cfg);
++
++	if (!mtk_dpmaif_drv_cfg_hw(drv_info))
++		return DATA_HW_REG_CHK_FAIL;
++
++	mtk_dpmaif_drv_clr_ul_all_intr(drv_info);
++	mtk_dpmaif_drv_clr_dl_all_intr(drv_info);
++
++	return 0;
++}
++
++static int mtk_dpmaif_drv_ulq_all_en(struct dpmaif_drv_info *drv_info, bool enable)
++{
++	u32 ul_arb_en;
++
++	ul_arb_en = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_UL_CHNL_ARB0);
++	if (enable)
++		ul_arb_en |= DPMAIF_UL_ALL_QUE_ARB_EN;
++	else
++		ul_arb_en &= ~DPMAIF_UL_ALL_QUE_ARB_EN;
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_UL_CHNL_ARB0, ul_arb_en);
++	mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_UL_CHNL_ARB0);
++
++	return 0;
++}
++
++static bool mtk_dpmaif_drv_ul_all_idle_check(struct dpmaif_drv_info *drv_info)
++{
++	bool is_idle = false;
++	u32 ul_dbg_sta;
++
++	ul_dbg_sta = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_UL_DBG_STA2);
++	/* If all the queues are idle, UL idle is true. */
++	if ((ul_dbg_sta & DPMAIF_UL_IDLE_STS_MSK) == DPMAIF_UL_IDLE_STS)
++		is_idle = true;
++
++	return is_idle;
++}
++
++static int mtk_dpmaif_drv_unmask_ulq_intr(struct dpmaif_drv_info *drv_info, u32 q_num)
++{
++	u32 ui_que_done_mask;
++
++	ui_que_done_mask = (1 << (q_num + DP_UL_INT_DONE_OFFSET)) & DPMAIF_UL_INT_QDONE_MSK;
++	drv_info->drv_irq_en_mask.ap_ul_l2intr_en_mask |= ui_que_done_mask;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_UL_L2TICR0, ui_que_done_mask);
++
++	return 0;
++}
++
++static int mtk_dpmaif_drv_ul_unmask_all_tx_done_intr(struct dpmaif_drv_info *drv_info)
++{
++	int ret;
++	u8 i;
++
++	for (i = 0; i < DPMAIF_ULQ_NUM; i++) {
++		ret = mtk_dpmaif_drv_unmask_ulq_intr(drv_info, i);
++		if (ret < 0)
++			break;
++	}
++
++	return ret;
++}
++
++static int mtk_dpmaif_drv_dl_unmask_rx_done_intr(struct dpmaif_drv_info *drv_info, u8 qno)
++{
++	u32 di_que_done_mask;
++
++	if (qno == DPMAIF_DLQ0)
++		di_que_done_mask = DPMAIF_DL_INT_DLQ0_QDONE_MSK;
++	else
++		di_que_done_mask = DPMAIF_DL_INT_DLQ1_QDONE_MSK;
++
++	drv_info->drv_irq_en_mask.ap_dl_l2intr_en_mask |= di_que_done_mask;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_DL_L2TICR0, di_que_done_mask);
++
++	return 0;
++}
++
++static int mtk_dpmaif_drv_dl_unmask_all_rx_done_intr(struct dpmaif_drv_info *drv_info)
++{
++	int ret;
++	u8 i;
++
++	for (i = 0; i < DPMAIF_DLQ_NUM; i++) {
++		ret = mtk_dpmaif_drv_dl_unmask_rx_done_intr(drv_info, i);
++		if (ret < 0)
++			break;
++	}
++
++	return ret;
++}
++
++static int mtk_dpmaif_drv_dlq_mask_rx_done_intr(struct dpmaif_drv_info *drv_info, u8 qno)
++{
++	u32 cnt = 0, di_que_done_mask;
++
++	if (qno == DPMAIF_DLQ0)
++		di_que_done_mask = DPMAIF_DL_INT_DLQ0_QDONE_MSK;
++	else
++		di_que_done_mask = DPMAIF_DL_INT_DLQ1_QDONE_MSK;
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_DL_L2TISR0, di_que_done_mask);
++	mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_DL_L2TISR0);
++
++	do {
++		if (!((mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_DL_L2TIMR0) &
++		    di_que_done_mask) != di_que_done_mask))
++			break;
++
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Failed to mask dlq%u interrupt done-0x%08x\n",
++			qno, mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_DL_L2TIMR0));
++		udelay(POLL_INTERVAL_US);
++		cnt++;
++	} while (cnt < POLL_MAX_TIMES);
++
++	if (cnt >= POLL_MAX_TIMES) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Failed to mask dlq0 interrupt done\n");
++		return -DATA_HW_REG_TIMEOUT;
++	}
++
++	drv_info->drv_irq_en_mask.ap_dl_l2intr_en_mask &= ~di_que_done_mask;
++
++	return 0;
++}
++
++static int mtk_dpmaif_drv_dl_mask_all_rx_done_intr(struct dpmaif_drv_info *drv_info)
++{
++	int ret;
++	u8 i;
++
++	for (i = 0; i < DPMAIF_DLQ_NUM; i++) {
++		ret = mtk_dpmaif_drv_dlq_mask_rx_done_intr(drv_info, i);
++		if (ret < 0)
++			break;
++	}
++
++	return ret;
++}
++
++static int mtk_dpmaif_drv_start_queue_t800(struct dpmaif_drv_info *drv_info,
++					   enum dpmaif_drv_dir dir)
++{
++	int ret;
++
++	if (dir == DPMAIF_TX) {
++		if (unlikely(drv_info->ulq_all_enable)) {
++			dev_info(DRV_TO_MDEV(drv_info)->dev, "ulq all enabled\n");
++			return 0;
++		}
++
++		ret = mtk_dpmaif_drv_ulq_all_en(drv_info, true);
++		if (ret < 0)
++			return ret;
++
++		ret = mtk_dpmaif_drv_ul_unmask_all_tx_done_intr(drv_info);
++		if (ret < 0)
++			return ret;
++
++		drv_info->ulq_all_enable = true;
++	} else {
++		if (unlikely(drv_info->dlq_all_enable)) {
++			dev_info(DRV_TO_MDEV(drv_info)->dev, "dlq all enabled\n");
++			return 0;
++		}
++
++		ret = mtk_dpmaif_drv_dlq_all_en(drv_info, true);
++		if (ret < 0)
++			return ret;
++
++		ret = mtk_dpmaif_drv_dl_unmask_all_rx_done_intr(drv_info);
++		if (ret < 0)
++			return ret;
++
++		drv_info->dlq_all_enable = true;
++	}
++
++	return 0;
++}
++
++static int mtk_dpmaif_drv_stop_ulq(struct dpmaif_drv_info *drv_info)
++{
++	int cnt = 0;
++
++	mtk_dpmaif_drv_ulq_all_en(drv_info, false);
++	do {
++		if (++cnt >= POLL_MAX_TIMES) {
++			dev_err(DRV_TO_MDEV(drv_info)->dev, "Failed to stop ul queue, 0x%x\n",
++				mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_UL_DBG_STA2));
++			return -DATA_HW_REG_TIMEOUT;
++		}
++		udelay(POLL_INTERVAL_US);
++	} while (!mtk_dpmaif_drv_ul_all_idle_check(drv_info));
++
++	return 0;
++}
++
++static int mtk_dpmaif_drv_mask_ulq_intr(struct dpmaif_drv_info *drv_info, u32 q_num)
++{
++	u32 cnt = 0, ui_que_done_mask;
++
++	ui_que_done_mask = (1 << (q_num + DP_UL_INT_DONE_OFFSET)) & DPMAIF_UL_INT_QDONE_MSK;
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_UL_L2TISR0, ui_que_done_mask);
++	mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_UL_L2TISR0);
++
++	do {
++		if (!((mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_UL_L2TIMR0) &
++		    ui_que_done_mask) != ui_que_done_mask))
++			break;
++
++		dev_err(DRV_TO_MDEV(drv_info)->dev,
++			"Failed to mask ul%u interrupt done-0x%08x\n", q_num,
++			mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_UL_L2TIMR0));
++		udelay(POLL_INTERVAL_US);
++		cnt++;
++	} while (cnt < POLL_MAX_TIMES);
++
++	if (cnt >= POLL_MAX_TIMES) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Failed to mask dlq0 interrupt done\n");
++		return -DATA_HW_REG_TIMEOUT;
++	}
++	drv_info->drv_irq_en_mask.ap_ul_l2intr_en_mask &= ~ui_que_done_mask;
++
++	return 0;
++}
++
++static void mtk_dpmaif_drv_ul_mask_multi_tx_done_intr(struct dpmaif_drv_info *drv_info, u8 q_mask)
++{
++	u32 i;
++
++	for (i = 0; i < DPMAIF_ULQ_NUM; i++) {
++		if (q_mask & (1 << i))
++			mtk_dpmaif_drv_mask_ulq_intr(drv_info, i);
++	}
++}
++
++static int mtk_dpmaif_drv_ul_mask_all_tx_done_intr(struct dpmaif_drv_info *drv_info)
++{
++	int ret;
++	u8 i;
++
++	for (i = 0; i < DPMAIF_ULQ_NUM; i++) {
++		ret = mtk_dpmaif_drv_mask_ulq_intr(drv_info, i);
++		if (ret < 0)
++			break;
++	}
++
++	return ret;
++}
++
++static int mtk_dpmaif_drv_stop_dlq(struct dpmaif_drv_info *drv_info)
++{
++	u32 cnt = 0, wridx, ridx;
++
++	mtk_dpmaif_drv_dlq_all_en(drv_info, false);
++	do {
++		if (++cnt >= POLL_MAX_TIMES) {
++			dev_err(DRV_TO_MDEV(drv_info)->dev, "Failed to stop dl queue, 0x%x\n",
++				mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_DBG_STA1));
++			return -DATA_HW_REG_TIMEOUT;
++		}
++		udelay(POLL_INTERVAL_US);
++	} while (!mtk_dpmaif_drv_dl_idle_check(drv_info));
++
++	cnt = 0;
++	do {
++		wridx = mtk_dpmaif_drv_dl_get_wridx(drv_info);
++		ridx = mtk_dpmaif_drv_dl_get_pit_ridx(drv_info);
++		if (wridx == ridx)
++			break;
++
++		udelay(POLL_INTERVAL_US);
++		cnt++;
++	} while (cnt < POLL_MAX_TIMES);
++
++	if (cnt >= POLL_MAX_TIMES) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Failed to check middle pit sync\n");
++		return -DATA_HW_REG_TIMEOUT;
++	}
++
++	return 0;
++}
++
++static int mtk_dpmaif_drv_stop_queue_t800(struct dpmaif_drv_info *drv_info, enum dpmaif_drv_dir dir)
++{
++	int ret;
++
++	if (dir == DPMAIF_TX) {
++		if (unlikely(!drv_info->ulq_all_enable)) {
++			dev_info(DRV_TO_MDEV(drv_info)->dev, "ulq all disabled\n");
++			return 0;
++		}
++
++		ret = mtk_dpmaif_drv_stop_ulq(drv_info);
++		if (ret < 0)
++			return ret;
++
++		ret = mtk_dpmaif_drv_ul_mask_all_tx_done_intr(drv_info);
++		if (ret < 0)
++			return ret;
++
++		drv_info->ulq_all_enable = false;
++	} else {
++		if (unlikely(!drv_info->dlq_all_enable)) {
++			dev_info(DRV_TO_MDEV(drv_info)->dev, "dlq all disabled\n");
++			return 0;
++		}
++
++		ret = mtk_dpmaif_drv_stop_dlq(drv_info);
++		if (ret < 0)
++			return ret;
++
++		ret = mtk_dpmaif_drv_dl_mask_all_rx_done_intr(drv_info);
++		if (ret < 0)
++			return ret;
++
++		drv_info->dlq_all_enable = false;
++	}
++
++	return 0;
++}
++
++static u32 mtk_dpmaif_drv_get_dl_lv2_sts(struct dpmaif_drv_info *drv_info)
++{
++	return mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_DL_L2TISAR0);
++}
++
++static u32 mtk_dpmaif_drv_get_ul_lv2_sts(struct dpmaif_drv_info *drv_info)
++{
++	return mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_UL_L2TISAR0);
++}
++
++static u32 mtk_dpmaif_drv_get_ul_intr_mask(struct dpmaif_drv_info *drv_info)
++{
++	return mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_UL_L2TIMR0);
++}
++
++static u32 mtk_dpmaif_drv_get_dl_intr_mask(struct dpmaif_drv_info *drv_info)
++{
++	return mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_DL_L2TIMR0);
++}
++
++static bool mtk_dpmaif_drv_check_clr_ul_done_status(struct dpmaif_drv_info *drv_info, u8 qno)
++{
++	u32 val, l2tisar0;
++	bool ret = false;
++	l2tisar0 = mtk_dpmaif_drv_get_ul_lv2_sts(drv_info);
++	val = l2tisar0 & DPMAIF_UL_INT_QDONE  & (1 << (DP_UL_INT_DONE_OFFSET + qno));
++
++	if (val) {
++		mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_UL_L2TISAR0, val);
++		ret = true;
++	}
++
++	return ret;
++}
++
++static u32 mtk_dpmaif_drv_irq_src0_dl_filter(struct dpmaif_drv_info *drv_info, u32 l2risar0,
++					     u32 l2rimr0)
++{
++	if (l2rimr0 & DPMAIF_DL_INT_DLQ0_QDONE_MSK)
++		l2risar0 &= ~DPMAIF_DL_INT_DLQ0_QDONE;
++
++	return l2risar0;
++}
++
++static u32 mtk_dpmaif_drv_irq_src1_dl_filter(struct dpmaif_drv_info *drv_info, u32 l2risar0,
++					     u32 l2rimr0)
++{
++	if (l2rimr0 & DPMAIF_DL_INT_DLQ1_QDONE_MSK)
++		l2risar0 &= ~DPMAIF_DL_INT_DLQ1_QDONE;
++
++	return l2risar0;
++}
++
++static int mtk_dpmaif_drv_irq_src0(struct dpmaif_drv_info *drv_info,
++				   struct dpmaif_drv_intr_info *intr_info)
++{
++	u32 val, l2risar0, l2rimr0;
++
++	l2risar0 = mtk_dpmaif_drv_get_dl_lv2_sts(drv_info);
++	l2rimr0 = mtk_dpmaif_drv_get_dl_intr_mask(drv_info);
++
++	l2risar0 &= DPMAIF_SRC0_DL_STATUS_MASK;
++	if (l2risar0) {
++		l2risar0 = mtk_dpmaif_drv_irq_src0_dl_filter(drv_info, l2risar0, l2rimr0);
++
++		val = l2risar0 & DPMAIF_DL_INT_DLQ0_QDONE;
++		if (val) {
++			if (!mtk_dpmaif_drv_dlq_mask_rx_done_intr(drv_info, DPMAIF_DLQ0)) {
++				intr_info->intr_types[intr_info->intr_cnt] = DPMAIF_INTR_DL_DONE;
++				intr_info->intr_queues[intr_info->intr_cnt] = 0x01 << DPMAIF_DLQ0;
++				intr_info->intr_cnt++;
++			}
++		}
++
++		mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_DL_L2TISAR0, l2risar0);
++	}
++
++	return 0;
++}
++
++static int mtk_dpmaif_drv_irq_src1(struct dpmaif_drv_info *drv_info,
++				   struct dpmaif_drv_intr_info *intr_info)
++{
++	u32 val, l2risar0, l2rimr0;
++
++	l2risar0 = mtk_dpmaif_drv_get_dl_lv2_sts(drv_info);
++	l2rimr0 = mtk_dpmaif_drv_get_dl_intr_mask(drv_info);
++
++	l2risar0 &= DPMAIF_SRC1_DL_STATUS_MASK;
++	if (l2risar0) {
++		l2risar0 = mtk_dpmaif_drv_irq_src1_dl_filter(drv_info, l2risar0, l2rimr0);
++
++		val = l2risar0 & DPMAIF_DL_INT_DLQ1_QDONE;
++		if (val) {
++			if (!mtk_dpmaif_drv_dlq_mask_rx_done_intr(drv_info, DPMAIF_DLQ1)) {
++				intr_info->intr_types[intr_info->intr_cnt] = DPMAIF_INTR_DL_DONE;
++				intr_info->intr_queues[intr_info->intr_cnt] = 0x01 << DPMAIF_DLQ1;
++				intr_info->intr_cnt++;
++			}
++		}
++
++		mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_DL_L2TISAR0, l2risar0);
++	}
++
++	return 0;
++}
++
++static int mtk_dpmaif_drv_irq_src2(struct dpmaif_drv_info *drv_info,
++				   struct dpmaif_drv_intr_info *intr_info)
++{
++	u32 l2tisar0, l2timr0;
++	u8 q_mask;
++	u32 val;
++
++	l2tisar0 = mtk_dpmaif_drv_get_ul_lv2_sts(drv_info);
++	l2timr0 = mtk_dpmaif_drv_get_ul_intr_mask(drv_info);
++
++	l2tisar0 &= (~l2timr0);
++	if (l2tisar0) {
++		val = l2tisar0 & DPMAIF_UL_INT_QDONE;
++		if (val) {
++			q_mask = val >> DP_UL_INT_DONE_OFFSET & DPMAIF_ULQS;
++			mtk_dpmaif_drv_ul_mask_multi_tx_done_intr(drv_info, q_mask);
++			intr_info->intr_types[intr_info->intr_cnt] = DPMAIF_INTR_UL_DONE;
++			intr_info->intr_queues[intr_info->intr_cnt] = val >> DP_UL_INT_DONE_OFFSET;
++			intr_info->intr_cnt++;
++		}
++
++		mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_UL_L2TISAR0, l2tisar0);
++	}
++
++	return 0;
++}
++
++static int mtk_dpmaif_drv_intr_handle_t800(struct dpmaif_drv_info *drv_info, void *data, u8 irq_id)
++{
++	switch (irq_id) {
++	case MTK_IRQ_SRC_DPMAIF:
++		mtk_dpmaif_drv_irq_src0(drv_info, data);
++		break;
++	case MTK_IRQ_SRC_DPMAIF2:
++		mtk_dpmaif_drv_irq_src1(drv_info, data);
++		break;
++	case MTK_IRQ_SRC_DPMAIF3:
++		mtk_dpmaif_drv_irq_src2(drv_info, data);
++		break;
++	default:
++		break;
++	}
++
++	return 0;
++}
++
++static int mtk_dpmaif_drv_intr_complete_t800(struct dpmaif_drv_info *drv_info,
++					     enum dpmaif_drv_intr_type type, u8 q_id, u64 data)
++{
++	int ret = 0;
++
++	switch (type) {
++	case DPMAIF_INTR_UL_DONE:
++		if (data == DPMAIF_CLEAR_INTR)
++			mtk_dpmaif_drv_check_clr_ul_done_status(drv_info, q_id);
++		else
++			ret = mtk_dpmaif_drv_unmask_ulq_intr(drv_info, q_id);
++		break;
++	case DPMAIF_INTR_DL_DONE:
++		ret = mtk_dpmaif_drv_dl_unmask_rx_done_intr(drv_info, q_id);
++		break;
++	default:
++		break;
++	}
++
++	return ret;
++}
++
++static int mtk_dpmaif_drv_clr_ip_busy_sts_t800(struct dpmaif_drv_info *drv_info)
++{
++	u32 ip_busy_sts;
++
++	ip_busy_sts = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_IP_BUSY);
++
++	mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_AP_IP_BUSY, ip_busy_sts);
++
++	return 0;
++}
++
++static int mtk_dpmaif_drv_dl_add_pit_cnt(struct dpmaif_drv_info *drv_info,
++					 u32 qno, u32 pit_remain_cnt)
++{
++	u32 cnt = 0, dl_update;
++
++	dl_update = pit_remain_cnt & 0x0003ffff;
++	dl_update |= DPMAIF_DL_ADD_UPDATE | (qno << DPMAIF_ADD_LRO_PIT_CHAN_OFS);
++
++	do {
++		if ((mtk_hw_read32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_DL_LROPIT_ADD) &
++			DPMAIF_DL_ADD_NOT_READY) == 0) {
++			mtk_hw_write32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_DL_LROPIT_ADD, dl_update);
++			break;
++		}
++
++		udelay(POLL_INTERVAL_US);
++		cnt++;
++	} while (cnt < POLL_MAX_TIMES);
++
++	if (cnt >= POLL_MAX_TIMES) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Failed to add dlq%u pit-1, cnt=%u\n",
++			qno, pit_remain_cnt);
++		return -DATA_HW_REG_TIMEOUT;
++	}
++
++	cnt = 0;
++	do {
++		if (!((mtk_hw_read32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_DL_LROPIT_ADD) &
++		     DPMAIF_DL_ADD_NOT_READY) == DPMAIF_DL_ADD_NOT_READY))
++			break;
++
++		cnt++;
++		udelay(POLL_INTERVAL_US);
++	} while (cnt < POLL_MAX_TIMES);
++
++	if (cnt >= POLL_MAX_TIMES) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Failed to add dlq%u pit-2, cnt=%u\n",
++			qno, pit_remain_cnt);
++		return false;
++	}
++
++	return 0;
++}
++
++static int mtk_dpmaif_drv_dl_add_bat_cnt(struct dpmaif_drv_info *drv_info, u32 bat_entry_cnt)
++{
++	u32 cnt = 0, dl_bat_update;
++
++	dl_bat_update = bat_entry_cnt & 0xffff;
++	dl_bat_update |= DPMAIF_DL_ADD_UPDATE;
++	do {
++		if ((mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_ADD) &
++			DPMAIF_DL_ADD_NOT_READY) == 0) {
++			mtk_hw_write32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_ADD, dl_bat_update);
++			break;
++		}
++
++		udelay(POLL_INTERVAL_US);
++		cnt++;
++	} while (cnt < POLL_MAX_TIMES);
++
++	if (cnt >= POLL_MAX_TIMES) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev,
++			"Failed to add bat-1, cnt=%u\n", bat_entry_cnt);
++		return -DATA_HW_REG_TIMEOUT;
++	}
++
++	cnt = 0;
++	do {
++		if (!((mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_PD_DL_BAT_ADD) &
++		       DPMAIF_DL_ADD_NOT_READY) == DPMAIF_DL_ADD_NOT_READY))
++			break;
++
++		cnt++;
++		udelay(POLL_INTERVAL_US);
++	} while (cnt < POLL_MAX_TIMES);
++
++	if (cnt >= POLL_MAX_TIMES) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Failed to add bat-2, cnt=%u\n",
++			bat_entry_cnt);
++		return -DATA_HW_REG_TIMEOUT;
++	}
++	return 0;
++}
++
++static int mtk_dpmaif_drv_ul_add_drb(struct dpmaif_drv_info *drv_info, u8 q_num, u32 drb_cnt)
++{
++	u32 drb_entry_cnt = drb_cnt * DPMAIF_UL_DRB_ENTRY_WORD;
++	u32 cnt = 0, ul_update;
++	u64 addr;
++
++	ul_update = drb_entry_cnt & 0x0000ffff;
++	ul_update |= DPMAIF_UL_ADD_UPDATE;
++
++	if (q_num == 4)
++		addr = NRL2_DPMAIF_UL_ADD_DESC_CH4;
++	else
++		addr = DPMAIF_ULQ_ADD_DESC_CH_N(q_num);
++
++	do {
++		if (!(mtk_hw_read32(DRV_TO_MDEV(drv_info), addr) & DPMAIF_UL_ADD_NOT_READY)) {
++			mtk_hw_write32(DRV_TO_MDEV(drv_info), addr, ul_update);
++			break;
++		}
++
++		udelay(POLL_INTERVAL_US);
++		cnt++;
++	} while (cnt < POLL_MAX_TIMES);
++
++	if (cnt >= POLL_MAX_TIMES) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Failed to add ulq%u drb-1, cnt=%u\n",
++			q_num, drb_cnt);
++		return -DATA_HW_REG_TIMEOUT;
++	}
++
++	cnt = 0;
++	do {
++		if (!((mtk_hw_read32(DRV_TO_MDEV(drv_info), addr) &
++		       DPMAIF_UL_ADD_NOT_READY) == DPMAIF_UL_ADD_NOT_READY))
++			break;
++
++		cnt++;
++		udelay(POLL_INTERVAL_US);
++	} while (cnt < POLL_MAX_TIMES);
++
++	if (cnt >= POLL_MAX_TIMES) {
++		dev_err(DRV_TO_MDEV(drv_info)->dev, "Failed to add ulq%u drb-2, cnt=%u\n",
++			q_num, drb_cnt);
++		return -DATA_HW_REG_TIMEOUT;
++	}
++	return 0;
++}
++
++static int mtk_dpmaif_drv_send_doorbell_t800(struct dpmaif_drv_info *drv_info,
++					     enum dpmaif_drv_ring_type type,
++					     u8 q_id, u32 cnt)
++{
++	int ret = 0;
++
++	switch (type) {
++	case DPMAIF_PIT:
++		ret = mtk_dpmaif_drv_dl_add_pit_cnt(drv_info, q_id, cnt);
++		break;
++	case DPMAIF_BAT:
++		ret = mtk_dpmaif_drv_dl_add_bat_cnt(drv_info, cnt);
++		break;
++	case DPMAIF_DRB:
++		ret = mtk_dpmaif_drv_ul_add_drb(drv_info, q_id, cnt);
++		break;
++	default:
++		break;
++	}
++
++	return ret;
++}
++
++static int mtk_dpmaif_drv_dl_get_pit_wridx(struct dpmaif_drv_info *drv_info, u32 qno)
++{
++	u32 pit_wridx;
++
++	pit_wridx = (mtk_hw_read32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AO_DL_LRO_STA5 + qno * 0x20))
++		    & DPMAIF_DL_PIT_WRIDX_MSK;
++	if (unlikely(pit_wridx >= drv_info->drv_property.dlq[qno].pit_size))
++		return -DATA_HW_REG_CHK_FAIL;
++
++	return pit_wridx;
++}
++
++static int mtk_dpmaif_drv_dl_get_pit_rdidx(struct dpmaif_drv_info *drv_info, u32 qno)
++{
++	u32 pit_rdidx;
++
++	pit_rdidx = (mtk_hw_read32(DRV_TO_MDEV(drv_info), NRL2_DPMAIF_AO_DL_LRO_STA6 + qno * 0x20))
++		    & DPMAIF_DL_PIT_WRIDX_MSK;
++	if (unlikely(pit_rdidx >= drv_info->drv_property.dlq[qno].pit_size))
++		return -DATA_HW_REG_CHK_FAIL;
++
++	return pit_rdidx;
++}
++
++static int mtk_dpmaif_drv_dl_get_bat_ridx(struct dpmaif_drv_info *drv_info)
++{
++	u32 bat_ridx;
++
++	bat_ridx = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_BAT_STA2) &
++		   DPMAIF_DL_BAT_WRIDX_MSK;
++
++	if (unlikely(bat_ridx >= drv_info->drv_property.ring.normal_bat_size))
++		return -DATA_HW_REG_CHK_FAIL;
++
++	return bat_ridx;
++}
++
++static int mtk_dpmaif_drv_dl_get_bat_wridx(struct dpmaif_drv_info *drv_info)
++{
++	u32 bat_wridx;
++
++	bat_wridx = mtk_hw_read32(DRV_TO_MDEV(drv_info), DPMAIF_AO_DL_BAT_STA3) &
++		    DPMAIF_DL_BAT_WRIDX_MSK;
++	if (unlikely(bat_wridx >= drv_info->drv_property.ring.normal_bat_size))
++		return -DATA_HW_REG_CHK_FAIL;
++
++	return bat_wridx;
++}
++
++static int mtk_dpmaif_drv_ul_get_drb_ridx(struct dpmaif_drv_info *drv_info, u8 q_num)
++{
++	u32 drb_ridx;
++	u64 addr;
++
++	addr = DPMAIF_ULQ_STA0_N(q_num);
++
++	drb_ridx = mtk_hw_read32(DRV_TO_MDEV(drv_info), addr) >> 16;
++	drb_ridx = drb_ridx / DPMAIF_UL_DRB_ENTRY_WORD;
++
++	if (unlikely(drb_ridx >= drv_info->drv_property.ulq[q_num].drb_size))
++		return -DATA_HW_REG_CHK_FAIL;
++
++	return drb_ridx;
++}
++
++static int mtk_dpmaif_drv_get_ring_idx_t800(struct dpmaif_drv_info *drv_info,
++					    enum dpmaif_drv_ring_idx index, u8 q_id)
++{
++	int ret = 0;
++
++	switch (index) {
++	case DPMAIF_PIT_WIDX:
++		ret = mtk_dpmaif_drv_dl_get_pit_wridx(drv_info, q_id);
++		break;
++	case DPMAIF_PIT_RIDX:
++		ret = mtk_dpmaif_drv_dl_get_pit_rdidx(drv_info, q_id);
++		break;
++	case DPMAIF_BAT_WIDX:
++		ret = mtk_dpmaif_drv_dl_get_bat_wridx(drv_info);
++		break;
++	case DPMAIF_BAT_RIDX:
++		ret = mtk_dpmaif_drv_dl_get_bat_ridx(drv_info);
++		break;
++	case DPMAIF_DRB_RIDX:
++		ret = mtk_dpmaif_drv_ul_get_drb_ridx(drv_info, q_id);
++		break;
++	default:
++		break;
++	}
++
++	return ret;
++}
++
++struct dpmaif_drv_ops dpmaif_drv_ops_t800 = {
++	.init = mtk_dpmaif_drv_init_t800,
++	.start_queue = mtk_dpmaif_drv_start_queue_t800,
++	.stop_queue = mtk_dpmaif_drv_stop_queue_t800,
++	.intr_handle = mtk_dpmaif_drv_intr_handle_t800,
++	.intr_complete = mtk_dpmaif_drv_intr_complete_t800,
++	.clear_ip_busy = mtk_dpmaif_drv_clr_ip_busy_sts_t800,
++	.send_doorbell = mtk_dpmaif_drv_send_doorbell_t800,
++	.get_ring_idx = mtk_dpmaif_drv_get_ring_idx_t800,
++};
+diff --git a/drivers/net/wwan/mediatek/pcie/mtk_dpmaif_reg_t800.h b/drivers/net/wwan/mediatek/pcie/mtk_dpmaif_reg_t800.h
+new file mode 100644
+index 000000000000..a87cf22849a5
+--- /dev/null
++++ b/drivers/net/wwan/mediatek/pcie/mtk_dpmaif_reg_t800.h
+@@ -0,0 +1,357 @@
++/* SPDX-License-Identifier: BSD-3-Clause-Clear
++ *
++ * Copyright (c) 2022, MediaTek Inc.
++ */
++
++#ifndef __MTK_DPMAIF_DRV_T800_H__
++#define __MTK_DPMAIF_DRV_T800_H__
++
++#define DPMAIF_DEV_PD_BASE		(0x1022D000)
++#define DPMAIF_DEV_AO_BASE		(0x10011000)
++
++#define DPMAIF_PD_BASE			DPMAIF_DEV_PD_BASE
++#define DPMAIF_AO_BASE			DPMAIF_DEV_AO_BASE
++
++#define BASE_NADDR_NRL2_DPMAIF_UL	((unsigned long)(DPMAIF_PD_BASE))
++#define BASE_NADDR_NRL2_DPMAIF_DL	((unsigned long)(DPMAIF_PD_BASE + 0x100))
++#define BASE_NADDR_NRL2_DPMAIF_AP_MISC	((unsigned long)(DPMAIF_PD_BASE + 0x400))
++#define BASE_NADDR_NRL2_DPMAIF_PD_SRAM_UL	((unsigned long)(DPMAIF_PD_BASE + 0xD00))
++#define BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL	((unsigned long)(DPMAIF_PD_BASE + 0xC00))
++#define BASE_NADDR_NRL2_DPMAIF_DL_LRO_REMOVEAO_IDX	((unsigned long)(DPMAIF_PD_BASE + 0x900))
++#define BASE_NADDR_NRL2_DPMAIF_MMW_HPC		((unsigned long)(DPMAIF_PD_BASE + 0x600))
++#define BASE_NADDR_NRL2_DPMAIF_PD_SRAM_MISC2	((unsigned long)(DPMAIF_PD_BASE + 0xF00))
++#define BASE_NADDR_NRL2_DPMAIF_AO_UL		((unsigned long)(DPMAIF_AO_BASE))
++#define BASE_NADDR_NRL2_DPMAIF_AO_DL		((unsigned long)(DPMAIF_AO_BASE + 0x400))
++
++/* dpmaif uplink part registers. */
++#define NRL2_DPMAIF_UL_ADD_DESC		(BASE_NADDR_NRL2_DPMAIF_UL + 0x00)
++#define NRL2_DPMAIF_UL_DBG_STA2		(BASE_NADDR_NRL2_DPMAIF_UL + 0x88)
++#define NRL2_DPMAIF_UL_RESERVE_AO_RW	(BASE_NADDR_NRL2_DPMAIF_UL + 0xAC)
++#define NRL2_DPMAIF_UL_ADD_DESC_CH0	(BASE_NADDR_NRL2_DPMAIF_UL + 0xB0)
++#define NRL2_DPMAIF_UL_ADD_DESC_CH4	(BASE_NADDR_NRL2_DPMAIF_UL + 0xE0)
++
++/* dpmaif downlink part registers. */
++#define NRL2_DPMAIF_DL_BAT_INIT			(BASE_NADDR_NRL2_DPMAIF_DL + 0x00)
++#define NRL2_DPMAIF_DL_BAT_INIT			(BASE_NADDR_NRL2_DPMAIF_DL + 0x00)
++#define NRL2_DPMAIF_DL_BAT_ADD			(BASE_NADDR_NRL2_DPMAIF_DL + 0x04)
++#define NRL2_DPMAIF_DL_BAT_INIT_CON0		(BASE_NADDR_NRL2_DPMAIF_DL + 0x08)
++#define NRL2_DPMAIF_DL_BAT_INIT_CON1		(BASE_NADDR_NRL2_DPMAIF_DL + 0x0C)
++#define NRL2_DPMAIF_DL_BAT_INIT_CON3		(BASE_NADDR_NRL2_DPMAIF_DL + 0x50)
++#define NRL2_DPMAIF_DL_DBG_STA1			(BASE_NADDR_NRL2_DPMAIF_DL + 0xB4)
++
++/* dpmaif ap misc part registers. */
++#define NRL2_DPMAIF_AP_MISC_AP_L2TISAR0		(BASE_NADDR_NRL2_DPMAIF_AP_MISC + 0x00)
++#define NRL2_DPMAIF_AP_MISC_APDL_L2TISAR0	(BASE_NADDR_NRL2_DPMAIF_AP_MISC + 0x50)
++#define NRL2_DPMAIF_AP_MISC_AP_IP_BUSY		(BASE_NADDR_NRL2_DPMAIF_AP_MISC + 0x60)
++#define NRL2_DPMAIF_AP_MISC_CG_EN		(BASE_NADDR_NRL2_DPMAIF_AP_MISC + 0x68)
++#define NRL2_DPMAIF_AP_MISC_OVERWRITE_CFG	(BASE_NADDR_NRL2_DPMAIF_AP_MISC + 0x90)
++#define NRL2_DPMAIF_AP_MISC_RSTR_CLR		(BASE_NADDR_NRL2_DPMAIF_AP_MISC + 0x94)
++
++/* dpmaif uplink ao part registers. */
++#define NRL2_DPMAIF_AO_UL_INIT_SET		(BASE_NADDR_NRL2_DPMAIF_AO_UL + 0x0)
++#define NRL2_DPMAIF_AO_UL_CHNL_ARB0		(BASE_NADDR_NRL2_DPMAIF_AO_UL + 0x1C)
++#define NRL2_DPMAIF_AO_UL_AP_L2TIMR0		(BASE_NADDR_NRL2_DPMAIF_AO_UL + 0x80)
++#define NRL2_DPMAIF_AO_UL_AP_L2TIMCR0		(BASE_NADDR_NRL2_DPMAIF_AO_UL + 0x84)
++#define NRL2_DPMAIF_AO_UL_AP_L2TIMSR0		(BASE_NADDR_NRL2_DPMAIF_AO_UL + 0x88)
++#define NRL2_DPMAIF_AO_UL_AP_L1TIMR0		(BASE_NADDR_NRL2_DPMAIF_AO_UL + 0x8C)
++#define NRL2_DPMAIF_AO_UL_APDL_L2TIMR0		(BASE_NADDR_NRL2_DPMAIF_AO_UL + 0x90)
++#define NRL2_DPMAIF_AO_UL_APDL_L2TIMCR0		(BASE_NADDR_NRL2_DPMAIF_AO_UL + 0x94)
++#define NRL2_DPMAIF_AO_UL_APDL_L2TIMSR0		(BASE_NADDR_NRL2_DPMAIF_AO_UL + 0x98)
++#define NRL2_DPMAIF_AO_UL_AP_DL_UL_IP_BUSY_MASK	(BASE_NADDR_NRL2_DPMAIF_AO_UL + 0x9C)
++
++/* dpmaif uplink pd sram part registers. */
++#define NRL2_DPMAIF_AO_UL_CHNL0_CON0		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_UL + 0x10)
++#define NRL2_DPMAIF_AO_UL_CHNL0_CON1		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_UL + 0x14)
++#define NRL2_DPMAIF_AO_UL_CHNL0_CON2		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_UL + 0x18)
++#define NRL2_DPMAIF_DLY_IRQ_TIMER3		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_UL + 0x1C)
++#define NRL2_DPMAIF_DLY_IRQ_TIMER4		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_UL + 0x2C)
++#define NRL2_DPMAIF_DLY_IRQ_TIMER5		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_UL + 0x3C)
++#define NRL2_DPMAIF_DLY_IRQ_TIMER6		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_UL + 0x60)
++#define NRL2_DPMAIF_DLY_IRQ_TIMER7		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_UL + 0x64)
++#define NRL2_DPMAIF_AO_UL_CH0_STA		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_UL + 0xE0)
++
++/* dpmaif downlink ao part registers. */
++#define NRL2_DPMAIF_AO_DL_INIT_SET		(BASE_NADDR_NRL2_DPMAIF_AO_DL + 0x0)
++#define NRL2_DPMAIF_AO_DL_LROPIT_INIT_CON5	(BASE_NADDR_NRL2_DPMAIF_AO_DL + 0x28)
++#define NRL2_DPMAIF_AO_DL_LROPIT_TRIG_THRES	(BASE_NADDR_NRL2_DPMAIF_AO_DL + 0x34)
++
++/* dpmaif downlink pd sram part registers. */
++#define NRL2_DPMAIF_AO_DL_PKTINFO_CON0		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL + 0x0)
++#define NRL2_DPMAIF_AO_DL_PKTINFO_CON1		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL + 0x4)
++#define NRL2_DPMAIF_AO_DL_PKTINFO_CON2		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL + 0x8)
++#define NRL2_DPMAIF_AO_DL_RDY_CHK_THRES		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL + 0xC)
++#define NRL2_DPMAIF_AO_DL_RDY_CHK_FRG_THRES	(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL + 0x10)
++#define NRL2_DPMAIF_AO_DL_LRO_AGG_CFG		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL + 0x20)
++#define NRL2_DPMAIF_AO_DL_LROPIT_TIMEOUT0	(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL + 0x24)
++#define NRL2_DPMAIF_AO_DL_LROPIT_TIMEOUT1	(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL + 0x28)
++#define NRL2_DPMAIF_AO_DL_HPC_CNTL		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL + 0x38)
++#define NRL2_DPMAIF_AO_DL_PIT_SEQ_END		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL + 0x40)
++#define NRL2_DPMAIF_AO_DL_DLY_IRQ_TIMER1	(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL + 0x58)
++#define NRL2_DPMAIF_AO_DL_DLY_IRQ_TIMER2	(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL + 0x5C)
++#define NRL2_DPMAIF_AO_DL_BAT_STA2		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL + 0xD8)
++#define NRL2_DPMAIF_AO_DL_BAT_STA3		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL + 0xDC)
++#define NRL2_DPMAIF_AO_DL_PIT_STA2		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL + 0xEC)
++#define NRL2_DPMAIF_AO_DL_PIT_STA3		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL + 0x60)
++#define NRL2_DPMAIF_AO_DL_FRGBAT_STA2		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL + 0x78)
++#define NRL2_DPMAIF_AO_DL_LRO_STA5		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL + 0xA4)
++#define NRL2_DPMAIF_AO_DL_LRO_STA6		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_DL + 0xA8)
++
++/* dpmaif hpc part registers. */
++#define NRL2_DPMAIF_HPC_SW_5TUPLE_TRIG		(BASE_NADDR_NRL2_DPMAIF_MMW_HPC + 0x030)
++#define NRL2_DPMAIF_HPC_5TUPLE_STS		(BASE_NADDR_NRL2_DPMAIF_MMW_HPC + 0x034)
++#define NRL2_DPMAIF_HPC_SW_ADD_RULE0		(BASE_NADDR_NRL2_DPMAIF_MMW_HPC + 0x060)
++#define NRL2_DPMAIF_HPC_INTR_MASK		(BASE_NADDR_NRL2_DPMAIF_MMW_HPC + 0x0F4)
++
++/* dpmaif LRO part registers. */
++#define NRL2_DPMAIF_DL_LROPIT_INIT		(BASE_NADDR_NRL2_DPMAIF_DL_LRO_REMOVEAO_IDX + 0x0)
++#define NRL2_DPMAIF_DL_LROPIT_ADD		(BASE_NADDR_NRL2_DPMAIF_DL_LRO_REMOVEAO_IDX + 0x10)
++#define NRL2_DPMAIF_DL_LROPIT_INIT_CON0		(BASE_NADDR_NRL2_DPMAIF_DL_LRO_REMOVEAO_IDX + 0x14)
++#define NRL2_DPMAIF_DL_LROPIT_INIT_CON1		(BASE_NADDR_NRL2_DPMAIF_DL_LRO_REMOVEAO_IDX + 0x18)
++#define NRL2_DPMAIF_DL_LROPIT_INIT_CON2		(BASE_NADDR_NRL2_DPMAIF_DL_LRO_REMOVEAO_IDX + 0x1C)
++#define NRL2_DPMAIF_DL_LROPIT_INIT_CON5		(BASE_NADDR_NRL2_DPMAIF_DL_LRO_REMOVEAO_IDX + 0x28)
++#define NRL2_DPMAIF_DL_LROPIT_INIT_CON3		(BASE_NADDR_NRL2_DPMAIF_DL_LRO_REMOVEAO_IDX + 0x20)
++#define NRL2_DPMAIF_DL_LROPIT_INIT_CON4		(BASE_NADDR_NRL2_DPMAIF_DL_LRO_REMOVEAO_IDX + 0x24)
++#define NRL2_DPMAIF_DL_LROPIT_INIT_CON6		(BASE_NADDR_NRL2_DPMAIF_DL_LRO_REMOVEAO_IDX + 0x2C)
++
++/* dpmaif pd sram misc2 part registers. */
++#define NRL2_REG_TOE_HASH_EN		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_MISC2 + 0x0)
++#define NRL2_REG_HASH_CFG_CON		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_MISC2 + 0x4)
++#define NRL2_REG_HASH_SEC_KEY_0		(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_MISC2 + 0x8)
++#define NRL2_REG_HPC_STATS_THRES	(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_MISC2 + 0x30)
++#define NRL2_REG_HPC_STATS_TIMER_CFG	(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_MISC2 + 0x34)
++#define NRL2_REG_HASH_SEC_KEY_UPD	(BASE_NADDR_NRL2_DPMAIF_PD_SRAM_MISC2 + 0X70)
++
++/* dpmaif pd ul, ao ul config. */
++#define DPMAIF_PD_UL_CHNL_ARB0		NRL2_DPMAIF_AO_UL_CHNL_ARB0
++#define DPMAIF_PD_UL_CHNL0_CON0		NRL2_DPMAIF_AO_UL_CHNL0_CON0
++#define DPMAIF_PD_UL_CHNL0_CON1		NRL2_DPMAIF_AO_UL_CHNL0_CON1
++#define DPMAIF_PD_UL_CHNL0_CON2		NRL2_DPMAIF_AO_UL_CHNL0_CON2
++#define DPMAIF_PD_UL_ADD_DESC_CH	NRL2_DPMAIF_UL_ADD_DESC_CH0
++#define DPMAIF_PD_UL_DBG_STA2		NRL2_DPMAIF_UL_DBG_STA2
++
++/* dpmaif pd dl config. */
++#define DPMAIF_PD_DL_BAT_INIT		NRL2_DPMAIF_DL_BAT_INIT
++#define DPMAIF_PD_DL_BAT_ADD		NRL2_DPMAIF_DL_BAT_ADD
++#define DPMAIF_PD_DL_BAT_INIT_CON0	NRL2_DPMAIF_DL_BAT_INIT_CON0
++#define DPMAIF_PD_DL_BAT_INIT_CON1	NRL2_DPMAIF_DL_BAT_INIT_CON1
++#define DPMAIF_PD_DL_BAT_INIT_CON3	NRL2_DPMAIF_DL_BAT_INIT_CON3
++#define DPMAIF_PD_DL_DBG_STA1		NRL2_DPMAIF_DL_DBG_STA1
++
++/* dpmaif pd ap misc, ao ul misc config. */
++#define DPMAIF_PD_AP_UL_L2TISAR0	NRL2_DPMAIF_AP_MISC_AP_L2TISAR0
++#define DPMAIF_PD_AP_UL_L2TIMR0		NRL2_DPMAIF_AO_UL_AP_L2TIMR0
++#define DPMAIF_PD_AP_UL_L2TICR0		NRL2_DPMAIF_AO_UL_AP_L2TIMCR0
++#define DPMAIF_PD_AP_UL_L2TISR0		NRL2_DPMAIF_AO_UL_AP_L2TIMSR0
++#define DPMAIF_PD_AP_DL_L2TISAR0	NRL2_DPMAIF_AP_MISC_APDL_L2TISAR0
++#define DPMAIF_PD_AP_DL_L2TIMR0		NRL2_DPMAIF_AO_UL_APDL_L2TIMR0
++#define DPMAIF_PD_AP_DL_L2TICR0		NRL2_DPMAIF_AO_UL_APDL_L2TIMCR0
++#define DPMAIF_PD_AP_DL_L2TISR0		NRL2_DPMAIF_AO_UL_APDL_L2TIMSR0
++#define DPMAIF_PD_AP_IP_BUSY		NRL2_DPMAIF_AP_MISC_AP_IP_BUSY
++#define DPMAIF_PD_AP_DLUL_IP_BUSY_MASK	NRL2_DPMAIF_AO_UL_AP_DL_UL_IP_BUSY_MASK
++
++/* dpmaif ao dl config. */
++#define DPMAIF_AO_DL_PKTINFO_CONO	NRL2_DPMAIF_AO_DL_PKTINFO_CON0
++#define DPMAIF_AO_DL_PKTINFO_CON1	NRL2_DPMAIF_AO_DL_PKTINFO_CON1
++#define DPMAIF_AO_DL_PKTINFO_CON2	NRL2_DPMAIF_AO_DL_PKTINFO_CON2
++#define DPMAIF_AO_DL_RDY_CHK_THRES	NRL2_DPMAIF_AO_DL_RDY_CHK_THRES
++#define DPMAIF_AO_DL_BAT_STA2		NRL2_DPMAIF_AO_DL_BAT_STA2
++#define DPMAIF_AO_DL_BAT_STA3		NRL2_DPMAIF_AO_DL_BAT_STA3
++#define DPMAIF_AO_DL_PIT_STA2		NRL2_DPMAIF_AO_DL_PIT_STA2
++#define DPMAIF_AO_DL_PIT_STA3		NRL2_DPMAIF_AO_DL_PIT_STA3
++#define DPMAIF_AO_DL_FRG_CHK_THRES	NRL2_DPMAIF_AO_DL_RDY_CHK_FRG_THRES
++#define DPMAIF_AO_DL_FRG_STA2		NRL2_DPMAIF_AO_DL_FRGBAT_STA2
++
++/* DPMAIF AO register */
++#define DPMAIF_AP_RGU_ASSERT		0x10001120
++#define DPMAIF_AP_RGU_DEASSERT		0x10001124
++#define DPMAIF_AP_RST_BIT		BIT(4)
++#define DPMAIF_AP_AO_RGU_ASSERT		0x10001140
++#define DPMAIF_AP_AO_RGU_DEASSERT	0x10001144
++#define DPMAIF_AP_AO_RST_BIT		BIT(3)
++
++/* hw configuration */
++#define DPMAIF_ULQSAR_N(q_num)\
++	((DPMAIF_PD_UL_CHNL0_CON0) + (0x10 * (q_num)))
++
++#define DPMAIF_UL_DRBSIZE_ADDRH_N(q_num)\
++	((DPMAIF_PD_UL_CHNL0_CON1) + (0x10 * (q_num)))
++
++#define DPMAIF_UL_DRB_ADDRH_N(q_num)\
++	((DPMAIF_PD_UL_CHNL0_CON2) + (0x10 * (q_num)))
++
++#define DPMAIF_ULQ_STA0_N(q_num)\
++	((NRL2_DPMAIF_AO_UL_CH0_STA) + (0x04 * (q_num)))
++
++#define DPMAIF_ULQ_ADD_DESC_CH_N(q_num)\
++	((DPMAIF_PD_UL_ADD_DESC_CH) + (0x04 * (q_num)))
++
++#define DPMAIF_ULQS			0x1F
++
++#define DPMAIF_UL_ADD_NOT_READY		BIT(31)
++#define DPMAIF_UL_ADD_UPDATE		BIT(31)
++#define DPMAIF_UL_ALL_QUE_ARB_EN	(DPMAIF_ULQS << 8)
++
++#define DPMAIF_DL_ADD_UPDATE		BIT(31)
++#define DPMAIF_DL_ADD_NOT_READY		BIT(31)
++#define DPMAIF_DL_FRG_ADD_UPDATE	BIT(16)
++
++#define DPMAIF_DL_BAT_INIT_ALLSET	BIT(0)
++#define DPMAIF_DL_BAT_FRG_INIT		BIT(16)
++#define DPMAIF_DL_BAT_INIT_EN		BIT(31)
++#define DPMAIF_DL_BAT_INIT_NOT_READY	BIT(31)
++#define DPMAIF_DL_BAT_INIT_ONLY_ENABLE_BIT	0
++
++#define DPMAIF_DL_PIT_INIT_ALLSET	BIT(0)
++#define DPMAIF_DL_PIT_INIT_EN		BIT(31)
++#define DPMAIF_DL_PIT_INIT_NOT_READY	BIT(31)
++
++#define DPMAIF_PKT_ALIGN64_MODE		0
++#define DPMAIF_PKT_ALIGN128_MODE	1
++
++#define DPMAIF_BAT_REMAIN_SZ_BASE	16
++#define DPMAIF_BAT_BUFFER_SZ_BASE	128
++#define DPMAIF_FRG_BUFFER_SZ_BASE	128
++
++#define DPMAIF_PIT_SIZE_MSK		0x3FFFF
++
++#define DPMAIF_BAT_EN_MSK		BIT(16)
++#define DPMAIF_FRG_EN_MSK		BIT(28)
++#define DPMAIF_BAT_SIZE_MSK		0xFFFF
++
++#define DPMAIF_BAT_BID_MAXCNT_MSK	0xFFFF0000
++#define DPMAIF_BAT_REMAIN_MINSZ_MSK	0x0000FF00
++#define DPMAIF_PIT_CHK_NUM_MSK		0xFF000000
++#define DPMAIF_BAT_BUF_SZ_MSK		0x0001FF00
++#define DPMAIF_FRG_BUF_SZ_MSK		0x0001FF00
++#define DPMAIF_BAT_RSV_LEN_MSK		0x000000FF
++#define DPMAIF_PKT_ALIGN_MSK		(0x3 << 22)
++
++#define DPMAIF_BAT_CHECK_THRES_MSK	(0x3F << 16)
++#define DPMAIF_FRG_CHECK_THRES_MSK	0xFF
++#define DPMAIF_PKT_ALIGN_EN		BIT(23)
++#define DPMAIF_DRB_SIZE_MSK		0x0000FFFF
++
++#define DPMAIF_DL_PIT_WRIDX_MSK		0x3FFFF
++#define DPMAIF_DL_BAT_WRIDX_MSK		0x3FFFF
++#define DPMAIF_DL_FRG_WRIDX_MSK		0x3FFFF
++
++/* DPMAIF_PD_UL_DBG_STA2 */
++#define DPMAIF_UL_IDLE_STS_MSK		BIT(11)
++#define DPMAIF_UL_IDLE_STS		BIT(11)
++
++/* DPMAIF_PD_DL_DBG_STA1 */
++#define DPMAIF_DL_IDLE_STS		BIT(23)
++#define DPMAIF_DL_PKT_CHECKSUM_EN	BIT(31)
++#define DPMAIF_PORT_MODE_MSK		BIT(30)
++#define DPMAIF_PORT_MODE_PCIE		BIT(30)
++
++/* BASE_NADDR_NRL2_DPMAIF_WDMA */
++#define DPMAIF_DL_BAT_CACHE_PRI		BIT(22)
++#define DPMAIF_DL_BURST_PIT_EN		BIT(13)
++#define DPMAIF_MEM_CLR_MASK		BIT(0)
++#define DPMAIF_SRAM_SYNC_MASK		BIT(0)
++#define DPMAIF_UL_INIT_DONE_MASK	BIT(0)
++#define DPMAIF_DL_INIT_DONE_MASK	BIT(0)
++
++#define DPMAIF_DL_PIT_SEQ_MSK		0xFF
++#define DPMAIF_PCIE_MODE_SET_VALUE	0x55
++
++#define DPMAIF_UDL_IP_BUSY_MSK		BIT(0)
++
++#define DP_UL_INT_DONE_OFFSET		0
++#define DP_UL_INT_EMPTY_OFFSET		5
++#define DP_UL_INT_MD_NOTRDY_OFFSET	10
++#define DP_UL_INT_PWR_NOTRDY_OFFSET	15
++#define DP_UL_INT_LEN_ERR_OFFSET	20
++
++/* Enable and mask/unmaks UL interrupt */
++#define DPMAIF_UL_INT_QDONE_MSK			(DPMAIF_ULQS << DP_UL_INT_DONE_OFFSET)
++#define DPMAIF_UL_TOP0_INT_MSK			BIT(9)
++
++/* UL interrupt status */
++#define DPMAIF_UL_INT_QDONE		(DPMAIF_ULQS << DP_UL_INT_DONE_OFFSET)
++
++/* Enable and  Mask/unmask DL interrupt */
++#define DPMAIF_DL_INT_DLQ0_QDONE_MSK		BIT(8)
++#define DPMAIF_DL_INT_DLQ1_QDONE_MSK		BIT(9)
++#define DPMAIF_DL_INT_Q2TOQ1_MSK		BIT(24)
++#define DPMAIF_DL_INT_Q2APTOP_MSK		BIT(25)
++
++/* DL interrupt status */
++#define DPMAIF_DL_INT_DUMMY_STATUS		BIT(0)
++#define DPMAIF_DL_INT_DLQ0_QDONE		BIT(13)
++#define DPMAIF_DL_INT_DLQ1_QDONE		BIT(14)
++
++/* DPMAIF LRO HW configure */
++#define DPMAIF_HPC_LRO_PATH_DF			3
++/* 0: HPC rules add by HW; 1: HPC rules add by Host */
++#define DPMAIF_HPC_ADD_MODE_DF			0
++#define DPMAIF_HPC_TOTAL_NUM			8
++#define DPMAIF_HPC_MAX_TOTAL_NUM		8
++#define DPMAIF_AGG_MAX_LEN_DF			65535
++#define DPMAIF_AGG_TBL_ENT_NUM_DF		50
++#define DPMAIF_HASH_PRIME_DF			13
++#define DPMAIF_MID_TIMEOUT_THRES_DF		100
++#define DPMAIF_LRO_TIMEOUT_THRES_DF		100
++#define DPMAIF_LRO_PRS_THRES_DF			10
++#define DPMAIF_LRO_HASH_BIT_CHOOSE_DF		0
++
++#define DPMAIF_LROPIT_EN_MSK			0x100000
++#define DPMAIF_LROPIT_CHAN_OFS			16
++#define DPMAIF_ADD_LRO_PIT_CHAN_OFS		20
++
++#define DPMAIF_DL_PIT_BYTE_SIZE		16
++#define DPMAIF_DL_BAT_BYTE_SIZE		8
++#define DPMAIF_DL_FRG_BYTE_SIZE		8
++#define DPMAIF_UL_DRB_BYTE_SIZE		16
++
++#define DPMAIF_UL_DRB_ENTRY_WORD	(DPMAIF_UL_DRB_BYTE_SIZE >> 2)
++#define DPMAIF_DL_PIT_ENTRY_WORD	(DPMAIF_DL_PIT_BYTE_SIZE >> 2)
++#define DPMAIF_DL_BAT_ENTRY_WORD	(DPMAIF_DL_BAT_BYTE_SIZE >> 2)
++
++#define DPMAIF_HW_BAT_REMAIN		64
++#define DPMAIF_HW_PKT_BIDCNT		1
++
++#define DPMAIF_HW_CHK_BAT_NUM		62
++#define DPMAIF_HW_CHK_FRG_NUM		3
++#define DPMAIF_HW_CHK_PIT_NUM		(2 * DPMAIF_HW_CHK_BAT_NUM)
++
++#define DPMAIF_DLQ_NUM			2
++#define DPMAIF_ULQ_NUM			5
++#define DPMAIF_PKT_BIDCNT		1
++
++#define DPMAIF_TOEPLITZ_HASH_EN		1
++
++/* word num */
++#define DPMAIF_HASH_SEC_KEY_NUM		40
++#define DPMAIF_HASH_DEFAULT_VALUE	0
++#define DPMAIF_HASH_BIT_MASK_DF		0x7
++#define DPMAIF_HASH_INDR_MASK_DF	0xF0
++
++/* 10k */
++#define DPMAIF_HPC_STATS_THRESHOLD	0x2800
++
++/* 0x7A1- 1s: unit:512us */
++#define DPMAIF_HPC_STATS_TIMER_CFG	0
++
++#define DPMAIF_HASH_INDR_SIZE		(DPMAIF_HASH_BIT_MASK_DF + 1)
++#define DPMAIF_HASH_INDR_MASK		0xFF00FFFF
++#define DPMAIF_HASH_DEFAULT_V_MASK	0xFFFFFF00
++#define DPMAIF_HASH_BIT_MASK		0xFFFFF0FF
++
++/* dpmaif interrupt configuration */
++#define DPMAIF_AP_UL_L2INTR_EN_MASK DPMAIF_UL_INT_QDONE_MSK
++
++#define DPMAIF_AP_DL_L2INTR_EN_MASK\
++	(DPMAIF_DL_INT_DLQ0_QDONE_MSK | DPMAIF_DL_INT_DLQ1_QDONE_MSK)
++
++#define DPMAIF_AP_UDL_IP_BUSY_EN_MASK (DPMAIF_UDL_IP_BUSY_MSK)
++
++/* dpmaif interrupt mask status by interrupt source */
++#define DPMAIF_SRC0_DL_STATUS_MASK\
++	(DPMAIF_DL_INT_DLQ0_QDONE | DPMAIF_DL_INT_DUMMY_STATUS)
++
++#define DPMAIF_SRC1_DL_STATUS_MASK\
++	(DPMAIF_DL_INT_DLQ1_QDONE)
++
++#endif
 -- 
 2.32.0
 
