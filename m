@@ -4,81 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 096C1C636CC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Feb 2023 11:43:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0AF7C636CC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Feb 2023 12:46:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZbEkkR9nvAU97/4Y+LuXIp9nLp3oMVuz++HgxVysnT8=; b=x5gcoXSYEZ5Nfc
-	aiiDryBTZUU0gVsBh3VQSHyI+jzIDB1+qTlce2DAjR3U4M7WPXSXM9OWy8fSecRL8WFevRWzboPVj
-	hfgkNU9OGCtI1FVm0zVTKD404K7i/zynfPLkXC7SHkt/G/JkeTrzkhH1O2wQ2Yt3MNw/9wnB1K1jh
-	aLb54M7pDSRpxTPmex1D3dyUKfbZ/bk5SkZgsZhY1BaF3AFonwZJZEwXkNNczmeWeaNPbGVNTl5Fk
-	qv9fwbtVb7X628m7kHPxFE8q2h4VuTG2lNbai2yX36qtKaOl8ws+To0gd1vk3mug7I7V4S3mpw87G
-	GMVzH5yZ5sX2p5DLMXDQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BLTpt9NribeB5KMCID04Kp1GCZg75vTmz/0Yqc7IzK8=; b=QCjPrA4A0uzKF5QBFzz8nO9yEp
+	67dweXABJ59XqDQLzWRwP9zY0s725NxwOoOuXAdq70Zg3MzpeHpeJOconbVUs62deNV6etYmga35e
+	EuWuOGSCV1SSgvCooi17Ynww01FbSTS9F1CVbHDv3cl4Xbt+48RD/ZfPJxRCPvx1foc1GAx3DeGIv
+	6/l4VpTs91cKKEb7Zs6/JPrVokxOYGM7+BnSqOJ0wGXIqqtHE+8UNesmZUTcSgdFROHzA/Mwqo0ig
+	RbQaAjvrmjyOiN4oNwpmiBioFWDp2PNLFmFd8Xjz7lBJl9Wzov8qbpr0ocfN8uhsauU5Et8HyYvhD
+	9/PSpAFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQoI5-009L9G-2o; Sat, 11 Feb 2023 11:43:37 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1pQpGx-009SwC-SO; Sat, 11 Feb 2023 12:46:31 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQoHz-009L6p-9o
-	for linux-mediatek@lists.infradead.org; Sat, 11 Feb 2023 11:43:32 +0000
-Received: by mail-wr1-x434.google.com with SMTP id k3so27923wrv.5
-        for <linux-mediatek@lists.infradead.org>; Sat, 11 Feb 2023 03:43:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ZbEkkR9nvAU97/4Y+LuXIp9nLp3oMVuz++HgxVysnT8=;
-        b=XWPMKRudURMymzIF/gXm57vpMavb5AQQwD9lazHSDhOrNkuKEFD3Q1za4eXp6dzk8u
-         1H6uU8ZUQuywwk6NeipUB4Q1BOM5RcgRPP3Iiv7fvzEYvclG8+K0nqS9VIse+XMpDqCg
-         APwt16JoWa9YuG14tu2zQPXNni4lNmaKNo8ivxHaiXkZkgCBKT3mogAAG4HqnUyE84OA
-         64TudziPfM2yrt6xsKsXQaoRLkV92XUgRsQdsXL6rYwp46BX4D6zEHd4DCZ+p2XEAEFG
-         MlEBjVwGp13zXm5HVD7FMUNwr1X2XxDoFvSF/Nr0uD4xE+w6wd97c1bzALxOHC07CQFn
-         CvaQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZbEkkR9nvAU97/4Y+LuXIp9nLp3oMVuz++HgxVysnT8=;
-        b=4S7ooomHPyPP06v+xjuSRGpdfa/N5YKuvVv5EPAveDeYJ8oxBCqzXKdknAYlegaORY
-         rY9qnppRFF6z3iabKAln0/9+6DPH+tgbb0A0NaR2SHMstBEixo+lRFb99Em++vQkHHLl
-         HMKZhSOPzqO0lsNoblB28q+clxx3dSHZQdwVpPrs9tK+uhh8B+1UgNX4+joYavLwGcJZ
-         az7H7gJLsAlrHk8j0gifiPRzW0Y63t9zC3rOZsJjVhLavg0/xWib6Rx1lqtOi9/pnyZH
-         Ux7RPOb3NEcCGdOV+4zoo4tHJWfjXPrpKv1GOCZd15U3afBADycO8QCqfmJsngELMlxw
-         ls5g==
-X-Gm-Message-State: AO0yUKXb4cGZ/F9k5bqIY5DOUr+KY6JUpPBsm9y0lyjVPdZQ3c4dO+wO
-	hRHAuC/JGnlIbqdCSMxLBmathw==
-X-Google-Smtp-Source: AK7set+AjZeAj5VRJRyZxpiwq2ZVhwNwNv5wzpMoz4GSz+5ElqCHNWci0n6sGer4zEtrfPcP41qJhA==
-X-Received: by 2002:adf:e7ca:0:b0:2c5:4b22:bce9 with SMTP id e10-20020adfe7ca000000b002c54b22bce9mr3942693wrn.47.1676115809166;
-        Sat, 11 Feb 2023 03:43:29 -0800 (PST)
-Received: from [192.168.1.109] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id n8-20020a5d4208000000b002b9b9445149sm5960625wrq.54.2023.02.11.03.43.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 11 Feb 2023 03:43:28 -0800 (PST)
-Message-ID: <b2511c2e-a261-1af6-653d-6cde27c8327a@linaro.org>
-Date: Sat, 11 Feb 2023 12:43:26 +0100
+	id 1pQpGu-009SuL-Ep; Sat, 11 Feb 2023 12:46:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=BLTpt9NribeB5KMCID04Kp1GCZg75vTmz/0Yqc7IzK8=; b=SYdAdt329gXs0IyLorGGnNrYdS
+	DiDXFkDFWfxgHN3HJC5FK/t2HW2KvLZkhzruaFkR2Pcf4qf6KMOR+mto7EY92Gruhe/BTtRiFCL2h
+	sp2wW+5rsLboE6bTcfE7fnViX6xGGVT3Ua/+nhB/VO2+7jiPTkEY64zzXDCB/Uidq18tbLbQ7er9+
+	hueOkzq+yPWOuu2Xa7Bi9CWzYWyD+7Y0hZClKdV3mNMr05nqCYDYiXHzOZgOpWHM/ErFUnbsQzefn
+	LL3JOtDQSva9o74ZvNnaO5ieglQUUgFrf6cUjeckaQyeKnMhvPzNh/7IWf0X6f7EDVKWC7rGqLEgx
+	KsLL4OVA==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:60042)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1pQpGk-0001av-9g; Sat, 11 Feb 2023 12:46:18 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1pQpGd-00017Z-BF; Sat, 11 Feb 2023 12:46:11 +0000
+Date: Sat, 11 Feb 2023 12:46:11 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
+Subject: Re: [PATCH v4 07/12] net: ethernet: mtk_eth_soc: only write values
+ if needed
+Message-ID: <Y+eOEx2KqvfV4TNo@shell.armlinux.org.uk>
+References: <cover.1676071507.git.daniel@makrotopia.org>
+ <ca95a266578bc52df44b432dfb2de7410d5202d9.1676071508.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH 2/5] dt-bindings: arm64: dts: mediatek: Add rev4 of
- spherion
-Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-References: <20230211002626.454844-1-nfraprado@collabora.com>
- <20230211002626.454844-3-nfraprado@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230211002626.454844-3-nfraprado@collabora.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <ca95a266578bc52df44b432dfb2de7410d5202d9.1676071508.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230211_034331_366438_037A50E7 
-X-CRM114-Status: UNSURE (   6.75  )
+X-CRM114-CacheID: sfid-20230211_044628_518902_B622305F 
+X-CRM114-Status: UNSURE (   7.26  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,21 +90,21 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/02/2023 01:26, Nícolas F. R. A. Prado wrote:
-> Add binding for newer version of Google Spherion (Acer Chromebook 514):
-> rev4.
+On Fri, Feb 10, 2023 at 11:38:36PM +0000, Daniel Golle wrote:
+> Only restart auto-negotiation and write link timer if actually
+> necessary.
 > 
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> ---
+> Tested-by: Bj�rn Mork <bjorn@mork.no>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
+Reviewed-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Thanks!
 
-Best regards,
-Krzysztof
-
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
