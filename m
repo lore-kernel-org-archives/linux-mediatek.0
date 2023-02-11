@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCA0AC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Feb 2023 09:03:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA637C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Feb 2023 09:05:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l0c2KDcyT1vykfuP7Isfn/CzzToyFH/T2uGSDvtrEWQ=; b=VxelWx/xa2LZpScJl0evEBMT6v
-	ibCqTj2aaB9gnQ0feUISsdLhnFikqp97CGsVzrl3Y4RSUzVD+2k9hqrcKdE+ItXVdcFRo7QwkOn26
-	7DDN1DaWBEIC18FJjTcKgfPtGgItjNO1rBPu2QvOUfHvcyQ2GREU/Vayq5nQuG0PF8HjAVh670OJk
-	cxdnZ0Nx7LZuZnFA5qhDa41YHqESivJ8dDdrBMjiYiYc3DS3KtYydWRwLEikyIjXqH+T1nkBcfhcj
-	sPtue7kNZ9mtqUrzU0rJItpqSwCEINA1OFCni/REOZ4qfZKaFkHkNfOFkHtDNMGd0gg5A67VGBlEI
-	CRazlupQ==;
+	bh=giOZWMea9NeArDizvXVeZbpn2CI1IBx9j6TNvzgo88g=; b=Ia1Id9lCPbVweHmkq/tpACI8wC
+	ONCMibfdQTTc2OZDvXX7LhMMcnTBo9iAMReJnGWKu16uAQi/dGY4lCpNwFGrgBIrvmJ+1M3jNlxka
+	rBIRtzAmbFstu5Hvpu/Rm+JI20M3z0ZXPaCNmitceFxjdrxeuFK6lG9w1Jn1+Ioh+YBtTAs+EsxPY
+	m5UH9S+4W/dqHgNlVR+4An5dRl2dYQBlMnAGXI5/QlYKBG43xy6heYMseDAl3QESK7cRJMP27yrcZ
+	wgO9EMY97hHjZpWJxbfCSOSJr6DvMSYpQ8p25EMyZK094x81lCXYBAHnhaWG17Kv4b+3LLK5qu7xt
+	7tXjj6lA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQlmW-0095Rq-LC; Sat, 11 Feb 2023 09:02:52 +0000
+	id 1pQlpH-0095q1-4Y; Sat, 11 Feb 2023 09:05:43 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQlmS-0095RK-T2
-	for linux-mediatek@lists.infradead.org; Sat, 11 Feb 2023 09:02:52 +0000
-X-UUID: d9555ac0a9ea11eda08d4d6090ec5a5c-20230211
+	id 1pQlpD-0095oa-KC
+	for linux-mediatek@lists.infradead.org; Sat, 11 Feb 2023 09:05:42 +0000
+X-UUID: 3be48af8a9eb11eda08d4d6090ec5a5c-20230211
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=l0c2KDcyT1vykfuP7Isfn/CzzToyFH/T2uGSDvtrEWQ=;
-	b=SAPyT64ZeLZoS5bF5Z7jXj7bNQ2NLCoQu9EVrWzXmyguki4xQCSGQCIxlbQB2I8rNnlrGB+ykqP7i/vUwOOUoorbs7/xkysShHP48aKgSToZASWgclsP7vL3uW+nSLDJdZI0hAtOp45ls8G4/x3DOPFNyonZAlDSJlMU6TBnMT8=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=giOZWMea9NeArDizvXVeZbpn2CI1IBx9j6TNvzgo88g=;
+	b=cL0akxnLdXx+SkhFAabn/5G1jSKQh54Z1ZkJX9KBunYYBfwfWn5EbmPZ8pCDP4wMwj5dGl+gSsrkMbPWucpBDsnnKj86cXy/MFmyyABKOCCHZZeeykHyi+n0YagNnkwC23rvv0qswRiSF5iotA7hvbfu/8bhzphhq5sa+mPje1Q=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.19,REQID:c71f2051-6f15-4539-827a-da8072c095e6,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
-	ION:release,TS:-55
-X-CID-META: VersionHash:885ddb2,CLOUDID:15bef756-dd49-462e-a4be-2143a3ddc739,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
-	L:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-O-INFO: VERSION:1.1.19,REQID:b55da9bb-1e82-49c2-8323-5fea3e0c0122,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:885ddb2,CLOUDID:6876928e-8530-4eff-9f77-222cf6e2895b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
-X-UUID: d9555ac0a9ea11eda08d4d6090ec5a5c-20230211
+X-UUID: 3be48af8a9eb11eda08d4d6090ec5a5c-20230211
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <yanchao.yang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 316318864; Sat, 11 Feb 2023 02:02:45 -0700
+	with ESMTP id 1435122679; Sat, 11 Feb 2023 02:05:30 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Sat, 11 Feb 2023 16:42:41 +0800
+ 15.2.792.15; Sat, 11 Feb 2023 16:44:54 +0800
 Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Sat, 11 Feb 2023 16:42:39 +0800
+ 15.2.792.15 via Frontend Transport; Sat, 11 Feb 2023 16:44:52 +0800
 From: Yanchao Yang <yanchao.yang@mediatek.com>
 To: Loic Poulain <loic.poulain@linaro.org>, Sergey Ryazanov
 	<ryazanov.s.a@gmail.com>, Johannes Berg <johannes@sipsolutions.net>, "David S
@@ -65,9 +65,9 @@ CC: Intel experts <linuxwwan@intel.com>, Chetan <m.chetan.kumar@intel.com>,
  Yang <yanchao.yang@mediatek.com>, Lambert Wang <lambert.wang@mediatek.com>,
 	Mingchuang Qiao <mingchuang.qiao@mediatek.com>, Xiayu Zhang
 	<xiayu.zhang@mediatek.com>, Haozhe Chang <haozhe.chang@mediatek.com>
-Subject: [PATCH net-next v3 06/10] net: wwan: tmi: Add AT & MBIM WWAN ports
-Date: Sat, 11 Feb 2023 16:37:28 +0800
-Message-ID: <20230211083732.193650-7-yanchao.yang@mediatek.com>
+Subject: [PATCH net-next v3 09/10] net: wwan: tmi: Introduce WWAN interface
+Date: Sat, 11 Feb 2023 16:37:31 +0800
+Message-ID: <20230211083732.193650-10-yanchao.yang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230211083732.193650-1-yanchao.yang@mediatek.com>
 References: <20230211083732.193650-1-yanchao.yang@mediatek.com>
@@ -75,8 +75,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230211_010249_117673_3E3A4D01 
-X-CRM114-Status: GOOD (  28.19  )
+X-CRM114-CacheID: sfid-20230211_010539_712811_8FC9F286 
+X-CRM114-Status: GOOD (  25.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,793 +91,825 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adds AT & MBIM ports to the port infrastructure.
-The WWAN initialization method is responsible for creating the
-corresponding ports using the WWAN framework infrastructure. The
-implemented WWAN port operations are start, stop, tx, tx_blocking
-and tx_poll.
+Creates the WWAN interface which implements the wwan_ops for registration with
+the WWAN framework. WWAN interface also implements the net_device_ops functions
+used by the network devices. Network device operations include open, stop,
+start transmission and get states.
 
 Signed-off-by: Yanchao Yang <yanchao.yang@mediatek.com>
-Signed-off-by: Felix Chen <felix.chen@mediatek.com>
-Reported-by: kernel test robot <lkp@intel.com>
+Signed-off-by: Hua Yang <hua.yang@mediatek.com>
 ---
- drivers/net/wwan/mediatek/mtk_ctrl_plane.c |   3 +
- drivers/net/wwan/mediatek/mtk_ctrl_plane.h |   2 +-
- drivers/net/wwan/mediatek/mtk_fsm.c        |   9 +
- drivers/net/wwan/mediatek/mtk_port.c       |  98 ++++++-
- drivers/net/wwan/mediatek/mtk_port.h       |  68 ++++-
- drivers/net/wwan/mediatek/mtk_port_io.c    | 326 ++++++++++++++++++++-
- drivers/net/wwan/mediatek/mtk_port_io.h    |  11 +
- drivers/net/wwan/mediatek/pcie/mtk_pci.c   |  18 +-
- 8 files changed, 526 insertions(+), 9 deletions(-)
+ drivers/net/wwan/mediatek/Makefile         |   3 +-
+ drivers/net/wwan/mediatek/mtk_data_plane.h |  12 +
+ drivers/net/wwan/mediatek/mtk_dpmaif.c     |  63 ++-
+ drivers/net/wwan/mediatek/mtk_wwan.c       | 589 +++++++++++++++++++++
+ 4 files changed, 662 insertions(+), 5 deletions(-)
+ create mode 100644 drivers/net/wwan/mediatek/mtk_wwan.c
 
-diff --git a/drivers/net/wwan/mediatek/mtk_ctrl_plane.c b/drivers/net/wwan/mediatek/mtk_ctrl_plane.c
-index dbd1e7629aa1..0ad370d3427d 100644
---- a/drivers/net/wwan/mediatek/mtk_ctrl_plane.c
-+++ b/drivers/net/wwan/mediatek/mtk_ctrl_plane.c
-@@ -17,6 +17,9 @@
- static const struct virtq vq_tbl[] = {
- 	{VQ(0), CLDMA0, TXQ(0), RXQ(0), VQ_MTU_3_5K, VQ_MTU_3_5K, TX_REQ_NUM, RX_REQ_NUM},
- 	{VQ(1), CLDMA1, TXQ(0), RXQ(0), VQ_MTU_3_5K, VQ_MTU_3_5K, TX_REQ_NUM, RX_REQ_NUM},
-+	{VQ(2), CLDMA1, TXQ(2), RXQ(2), VQ_MTU_3_5K, VQ_MTU_3_5K, TX_REQ_NUM, RX_REQ_NUM},
-+	{VQ(3), CLDMA1, TXQ(5), RXQ(5), VQ_MTU_3_5K, VQ_MTU_3_5K, TX_REQ_NUM, RX_REQ_NUM},
-+	{VQ(4), CLDMA1, TXQ(7), RXQ(7), VQ_MTU_3_5K, VQ_MTU_63K, TX_REQ_NUM, RX_REQ_NUM},
+diff --git a/drivers/net/wwan/mediatek/Makefile b/drivers/net/wwan/mediatek/Makefile
+index 8c37a7f9d598..9fa5ee39b4a9 100644
+--- a/drivers/net/wwan/mediatek/Makefile
++++ b/drivers/net/wwan/mediatek/Makefile
+@@ -12,7 +12,8 @@ mtk_tmi-y = \
+ 	mtk_port.o \
+ 	mtk_port_io.o \
+ 	mtk_fsm.o \
+-	mtk_dpmaif.o
++	mtk_dpmaif.o \
++	mtk_wwan.o
+ 
+ ccflags-y += -I$(srctree)/$(src)/
+ ccflags-y += -I$(srctree)/$(src)/pcie/
+diff --git a/drivers/net/wwan/mediatek/mtk_data_plane.h b/drivers/net/wwan/mediatek/mtk_data_plane.h
+index f6d665c6b84b..ba7ff25c2001 100644
+--- a/drivers/net/wwan/mediatek/mtk_data_plane.h
++++ b/drivers/net/wwan/mediatek/mtk_data_plane.h
+@@ -23,6 +23,7 @@ enum mtk_data_feature {
+ 
+ struct mtk_data_blk {
+ 	struct mtk_md_dev *mdev;
++	struct mtk_wwan_ctlb *wcb;
+ 	struct mtk_dpmaif_ctlb *dcb;
  };
  
- static int mtk_ctrl_get_hif_id(unsigned char peer_id)
-diff --git a/drivers/net/wwan/mediatek/mtk_ctrl_plane.h b/drivers/net/wwan/mediatek/mtk_ctrl_plane.h
-index 0885a434616e..f8216020448f 100644
---- a/drivers/net/wwan/mediatek/mtk_ctrl_plane.h
-+++ b/drivers/net/wwan/mediatek/mtk_ctrl_plane.h
-@@ -13,7 +13,7 @@
- #include "mtk_fsm.h"
- 
- #define VQ(N)				(N)
--#define VQ_NUM				(2)
-+#define VQ_NUM				(5)
- #define TX_REQ_NUM			(16)
- #define RX_REQ_NUM			(TX_REQ_NUM)
- 
-diff --git a/drivers/net/wwan/mediatek/mtk_fsm.c b/drivers/net/wwan/mediatek/mtk_fsm.c
-index 2766925672a4..3bdc4807c6e9 100644
---- a/drivers/net/wwan/mediatek/mtk_fsm.c
-+++ b/drivers/net/wwan/mediatek/mtk_fsm.c
-@@ -62,6 +62,7 @@ enum ctrl_msg_id {
- 	CTRL_MSG_HS1 = 0,
- 	CTRL_MSG_HS2 = 1,
- 	CTRL_MSG_HS3 = 2,
-+	CTRL_MSG_UNIFIED_PORT_CFG = 11,
+@@ -83,9 +84,20 @@ struct mtk_data_trans_info {
+ 	struct napi_struct **napis;
  };
  
- struct ctrl_msg_header {
-@@ -360,6 +361,14 @@ static int mtk_fsm_md_ctrl_msg_handler(void *__fsm, struct sk_buff *skb)
- 		mtk_fsm_evt_submit(fsm->mdev, FSM_EVT_STARTUP,
- 				   hs_info->fsm_flag_hs2, hs_info, sizeof(*hs_info), 0);
- 		break;
-+	case CTRL_MSG_UNIFIED_PORT_CFG:
-+		mtk_port_tbl_update(fsm->mdev, skb->data + sizeof(*ctrl_msg_h));
-+		ret = mtk_port_internal_write(hs_info->ctrl_port, skb);
-+		if (ret <= 0)
-+			dev_err(fsm->mdev->dev, "Unable to send port config ack message.\n");
-+		else
-+			need_free_data = false;
-+		break;
- 	default:
- 		dev_err(fsm->mdev->dev, "Invalid control message id\n");
++struct mtk_data_port_ops {
++	int (*init)(struct mtk_data_blk *data_blk, struct mtk_data_trans_info *trans_info);
++	void (*exit)(struct mtk_data_blk *data_blk);
++	int (*recv)(struct mtk_data_blk *data_blk, struct sk_buff *skb,
++		    unsigned char q_id, unsigned char if_id);
++	void (*notify)(struct mtk_data_blk *data_blk, enum mtk_data_evt evt, u64 data);
++};
++
++int mtk_wwan_cmd_execute(struct net_device *dev, enum mtk_data_cmd_type cmd, void *data);
++u16 mtk_wwan_select_queue(struct net_device *dev, struct sk_buff *skb, struct net_device *sb_dev);
+ int mtk_data_init(struct mtk_md_dev *mdev);
+ int mtk_data_exit(struct mtk_md_dev *mdev);
+ 
++extern struct mtk_data_port_ops data_port_ops;
+ extern struct mtk_data_trans_ops data_trans_ops;
+ 
+ #endif /* __MTK_DATA_PLANE_H__ */
+diff --git a/drivers/net/wwan/mediatek/mtk_dpmaif.c b/drivers/net/wwan/mediatek/mtk_dpmaif.c
+index e5696ee0fd6e..ae7b6966d325 100644
+--- a/drivers/net/wwan/mediatek/mtk_dpmaif.c
++++ b/drivers/net/wwan/mediatek/mtk_dpmaif.c
+@@ -343,13 +343,14 @@ enum dpmaif_dump_flag {
+ 
+ struct mtk_dpmaif_ctlb {
+ 	struct mtk_data_blk *data_blk;
++	struct mtk_data_port_ops *port_ops;
+ 	struct dpmaif_drv_info *drv_info;
+ 	struct napi_struct *napi[DPMAIF_RXQ_CNT_MAX];
+ 
+ 	enum dpmaif_state dpmaif_state;
+ 	bool dpmaif_user_ready;
+ 	bool trans_enabled;
+-	struct mutex trans_ctl_lock; /* protect structure fields */
++	struct mutex trans_ctl_lock;/* protect structure fields */
+ 	const struct dpmaif_res_cfg *res_cfg;
+ 
+ 	struct dpmaif_cmd_srv cmd_srv;
+@@ -1158,6 +1159,8 @@ static int mtk_dpmaif_tx_rel_internal(struct dpmaif_txq *txq,
+ 		txq->drb_rel_rd_idx = cur_idx;
+ 
+ 		atomic_inc(&txq->budget);
++		if (atomic_read(&txq->budget) > txq->drb_cnt / 8)
++			dcb->port_ops->notify(dcb->data_blk, DATA_EVT_TX_START, (u64)1 << txq->id);
  	}
-diff --git a/drivers/net/wwan/mediatek/mtk_port.c b/drivers/net/wwan/mediatek/mtk_port.c
-index 57dddab950bb..e3b85dc87098 100644
---- a/drivers/net/wwan/mediatek/mtk_port.c
-+++ b/drivers/net/wwan/mediatek/mtk_port.c
-@@ -45,6 +45,8 @@ DEFINE_MUTEX(port_mngr_grp_mtx);
- static DEFINE_IDA(ccci_dev_ids);
  
- static const struct mtk_port_cfg port_cfg[] = {
-+	{CCCI_UART2_TX, CCCI_UART2_RX, VQ(3), PORT_TYPE_WWAN, "AT", PORT_F_ALLOW_DROP},
-+	{CCCI_MBIM_TX, CCCI_MBIM_RX, VQ(2), PORT_TYPE_WWAN, "MBIM", PORT_F_ALLOW_DROP},
- 	{CCCI_CONTROL_TX, CCCI_CONTROL_RX, VQ(1), PORT_TYPE_INTERNAL, "MDCTRL", PORT_F_ALLOW_DROP},
- 	{CCCI_SAP_CONTROL_TX, CCCI_SAP_CONTROL_RX, VQ(0), PORT_TYPE_INTERNAL, "SAPCTRL",
- 	 PORT_F_ALLOW_DROP},
-@@ -302,11 +304,101 @@ static void mtk_port_tbl_destroy(struct mtk_port_mngr *port_mngr, struct mtk_sta
- 	} while (tbl_type < PORT_TBL_MAX);
- }
- 
-+/**
-+ * mtk_port_tbl_update() - Update port radix tree table.
-+ * @mdev: pointer to mtk_md_dev.
-+ * @data: pointer to config data from device.
-+ *
-+ * This function called when host driver received a control message from device.
-+ *
-+ * Return: 0 on success and failure value on error.
-+ */
-+int mtk_port_tbl_update(struct mtk_md_dev *mdev, void *data)
-+{
-+	struct mtk_port_cfg_header *cfg_hdr = data;
-+	struct mtk_port_cfg_hif_info *hif_info;
-+	struct mtk_port_cfg_ch_info *ch_info;
-+	struct mtk_port_mngr *port_mngr;
-+	struct mtk_ctrl_blk *ctrl_blk;
-+	int parsed_data_len = 0;
-+	struct mtk_port *port;
-+	int ret = 0;
-+
-+	if (unlikely(!mdev || !cfg_hdr)) {
-+		ret = -EINVAL;
-+		goto end;
-+	}
-+
-+	ctrl_blk = mdev->ctrl_blk;
-+	port_mngr = ctrl_blk->port_mngr;
-+
-+	if (cfg_hdr->msg_type != PORT_CFG_MSG_REQUEST) {
-+		dev_warn(mdev->dev, "Invalid msg_type: %d\n", cfg_hdr->msg_type);
-+		ret = -EPROTO;
-+		goto end;
-+	}
-+
-+	if (cfg_hdr->is_enable != 1) {
-+		dev_warn(mdev->dev, "Invalid enable flag: %d\n", cfg_hdr->is_enable);
-+		ret = -EPROTO;
-+		goto end;
-+	}
-+	switch (cfg_hdr->cfg_type) {
-+	case PORT_CFG_CH_INFO:
-+		while (parsed_data_len < le16_to_cpu(cfg_hdr->port_config_len)) {
-+			ch_info = (struct mtk_port_cfg_ch_info *)(cfg_hdr->data + parsed_data_len);
-+			parsed_data_len += sizeof(*ch_info);
-+
-+			port = mtk_port_search_by_id(port_mngr, le16_to_cpu(ch_info->dl_ch_id));
-+			if (port) {
-+				continue;
-+			} else {
-+				dev_warn(mdev->dev,
-+					 "It's not supported the extended port(%s),ch: 0x%x\n",
-+					 ch_info->port_name, le16_to_cpu(ch_info->dl_ch_id));
-+			}
-+		}
-+		cfg_hdr->msg_type = PORT_CFG_MSG_RESPONSE;
-+		break;
-+	case PORT_CFG_HIF_INFO:
-+		hif_info = (struct mtk_port_cfg_hif_info *)cfg_hdr->data;
-+		/* Clean up all the mark of the vqs before next paint, because if
-+		 * clean up at end of case PORT_CFG_CH_INFO, the ch_info may be
-+		 * NULL when cfg_hdr->port_config_len is 0, that will lead to can
-+		 * not get peer_id.
-+		 */
-+		mtk_ctrl_vq_color_cleanup(port_mngr->ctrl_blk, hif_info->peer_id);
-+
-+		while (parsed_data_len < le16_to_cpu(cfg_hdr->port_config_len)) {
-+			hif_info = (struct mtk_port_cfg_hif_info *)
-+				   (cfg_hdr->data + parsed_data_len);
-+			parsed_data_len += sizeof(*hif_info);
-+			/* Color vq means that mark the vq to configure to the port */
-+			mtk_ctrl_vq_color_paint(port_mngr->ctrl_blk,
-+						hif_info->peer_id,
-+						hif_info->ul_hw_queue_id,
-+						hif_info->dl_hw_queue_id,
-+						le32_to_cpu(hif_info->ul_hw_queue_mtu),
-+						le32_to_cpu(hif_info->dl_hw_queue_mtu));
-+		}
-+		cfg_hdr->msg_type = PORT_CFG_MSG_RESPONSE;
-+		break;
-+	default:
-+		dev_warn(mdev->dev, "Unsupported cfg_type: %d\n", cfg_hdr->cfg_type);
-+		cfg_hdr->is_enable = 0;
-+		ret = -EPROTO;
-+		break;
-+	}
-+
-+end:
-+	return ret;
-+}
-+
- static struct mtk_stale_list *mtk_port_stale_list_create(struct mtk_port_mngr *port_mngr)
- {
- 	struct mtk_stale_list *s_list;
- 
--	/* cannot use devm_kzalloc here, because should pair with the free operation which
-+	/* can not use devm_kzalloc here, because should pair with the free operation which
- 	 * may be no dev pointer.
- 	 */
- 	s_list = kzalloc(sizeof(*s_list), GFP_KERNEL);
-@@ -508,7 +600,7 @@ static int mtk_port_tx_complete(struct sk_buff *skb)
+ 	*real_rel_cnt = i;
+@@ -2180,6 +2183,38 @@ static int mtk_dpmaif_irq_exit(struct mtk_dpmaif_ctlb *dcb)
  	return 0;
  }
  
--static int mtk_port_status_check(struct mtk_port *port)
-+int mtk_port_status_check(struct mtk_port *port)
- {
- 	/* If port is enable, it must on port_mngr's port_tbl, so the mdev must exist. */
- 	if (!test_bit(PORT_S_ENABLE, &port->status)) {
-@@ -1090,7 +1182,7 @@ void mtk_port_mngr_fsm_state_handler(struct mtk_fsm_param *fsm_param, void *arg)
-  * And then it will initialize port table and register fsm callback.
-  *
-  * Return:
-- * * 0:			-success to initialize mtk_port_mngr
-+ * * 0:		-success to initialize mtk_port_mngr
-  * * -ENOMEM:	-alloc memory for structure failed
-  */
- int mtk_port_mngr_init(struct mtk_ctrl_blk *ctrl_blk)
-diff --git a/drivers/net/wwan/mediatek/mtk_port.h b/drivers/net/wwan/mediatek/mtk_port.h
-index 9ab1c392cde9..f2c1ab292f70 100644
---- a/drivers/net/wwan/mediatek/mtk_port.h
-+++ b/drivers/net/wwan/mediatek/mtk_port.h
-@@ -26,6 +26,7 @@
- #define MTK_PORT_NAME_HDR	"wwanD"
- #define MTK_DFLT_MAX_DEV_CNT	(10)
- #define MTK_DFLT_PORT_NAME_LEN	(20)
-+#define MTK_DFLT_FULL_NAME_LEN	(50)
- 
- /* Mapping MTK_PEER_ID and mtk_port_tbl index */
- #define MTK_PORT_TBL_TYPE(ch)	(MTK_PEER_ID(ch) - 1)
-@@ -65,6 +66,10 @@ enum mtk_ccci_ch {
- 	/* to MD */
- 	CCCI_CONTROL_RX = 0x2000,
- 	CCCI_CONTROL_TX = 0x2001,
-+	CCCI_UART2_RX = 0x200A,
-+	CCCI_UART2_TX = 0x200C,
-+	CCCI_MBIM_RX = 0x20D0,
-+	CCCI_MBIM_TX = 0x20D1,
- };
- 
- enum mtk_port_flag {
-@@ -82,6 +87,7 @@ enum mtk_port_tbl {
- 
- enum mtk_port_type {
- 	PORT_TYPE_INTERNAL,
-+	PORT_TYPE_WWAN,
- 	PORT_TYPE_MAX
- };
- 
-@@ -90,14 +96,21 @@ struct mtk_internal_port {
- 	int (*recv_cb)(void *arg, struct sk_buff *skb);
- };
- 
-+struct mtk_wwan_port {
-+	/* w_lock Protect wwan_port when recv data and disable port at the same time */
-+	struct mutex w_lock;
-+	int w_type;
-+	void *w_port;
-+};
-+
- /**
-  * union mtk_port_priv - Contains private data for different type of ports.
-- * @cdev: private data for character device port.
-  * @i_priv: private data for internal other user.
-+ * @w_priv: private data for wwan port.
-  */
- union mtk_port_priv {
--	struct cdev *cdev;
- 	struct mtk_internal_port i_priv;
-+	struct mtk_wwan_port w_priv;
- };
- 
- /**
-@@ -209,6 +222,55 @@ struct mtk_port_enum_msg {
- 	u8 data[];
- } __packed;
- 
-+enum mtk_port_cfg_type {
-+	PORT_CFG_CH_INFO = 4,
-+	PORT_CFG_HIF_INFO,
-+};
-+
-+enum mtk_port_cfg_msg_type {
-+	PORT_CFG_MSG_REQUEST = 1,
-+	PORT_CFG_MSG_RESPONSE,
-+};
-+
-+struct mtk_port_cfg_ch_info {
-+	__le16 dl_ch_id;
-+	u8 dl_hw_queue_id;
-+	u8 ul_hw_queue_id;
-+	u8 reserve[2];
-+	u8 peer_id;
-+	u8 reserved;
-+	u8 port_name_len;
-+	char port_name[20];
-+} __packed;
-+
-+struct mtk_port_cfg_hif_info {
-+	u8 dl_hw_queue_id;
-+	u8 ul_hw_queue_id;
-+	u8 peer_id;
-+	u8 reserved;
-+	__le32 dl_hw_queue_mtu;
-+	__le32 ul_hw_queue_mtu;
-+} __packed;
-+
-+/**
-+ * struct mtk_port_cfg_header - Message from device to configure unified port
-+ * @port_config_len: data length.
-+ * @cfg_type:  4:Channel info/ 5:Hif info
-+ * @msg_type:  1:request/ 2:response
-+ * @is_enable: 0:disable/ 1:enable
-+ * @reserve: reserve bytes.
-+ * @data: the data is channel config information @ref mtk_port_cfg_ch_info or
-+ * hif config information @ref mtk_port_cfg_hif_info, following the cfg_type value.
-+ */
-+struct mtk_port_cfg_header {
-+	__le16 port_config_len;
-+	u8 cfg_type;
-+	u8 msg_type;
-+	u8 is_enable;
-+	u8 reserve[3];
-+	u8 data[];
-+} __packed;
-+
- struct mtk_ccci_header {
- 	__le32 packet_header;
- 	__le32 packet_len;
-@@ -223,8 +285,10 @@ struct mtk_port *mtk_port_search_by_name(struct mtk_port_mngr *port_mngr, char *
- void mtk_port_stale_list_grp_cleanup(void);
- int mtk_port_add_header(struct sk_buff *skb);
- struct mtk_ccci_header *mtk_port_strip_header(struct sk_buff *skb);
-+int mtk_port_status_check(struct mtk_port *port);
- int mtk_port_send_data(struct mtk_port *port, void *data);
- int mtk_port_status_update(struct mtk_md_dev *mdev, void *data);
-+int mtk_port_tbl_update(struct mtk_md_dev *mdev, void *data);
- int mtk_port_vq_enable(struct mtk_port *port);
- int mtk_port_vq_disable(struct mtk_port *port);
- void mtk_port_mngr_fsm_state_handler(struct mtk_fsm_param *fsm_param, void *arg);
-diff --git a/drivers/net/wwan/mediatek/mtk_port_io.c b/drivers/net/wwan/mediatek/mtk_port_io.c
-index 050ec0a1bb04..60cb4015cd54 100644
---- a/drivers/net/wwan/mediatek/mtk_port_io.c
-+++ b/drivers/net/wwan/mediatek/mtk_port_io.c
-@@ -3,10 +3,24 @@
-  * Copyright (c) 2022, MediaTek Inc.
-  */
- 
-+#ifdef CONFIG_COMPAT
-+#include <linux/compat.h>
-+#endif
-+#include <linux/debugfs.h>
-+#include <linux/kernel.h>
-+#include <linux/poll.h>
-+#include <linux/relay.h>
-+#include <linux/slab.h>
-+#include <linux/wait.h>
-+#include <linux/wwan.h>
-+
- #include "mtk_port_io.h"
- 
-+#define MTK_CCCI_CLASS_NAME		"ccci_node"
- #define MTK_DFLT_READ_TIMEOUT		(1 * HZ)
- 
-+static void *ccci_class;
-+
- static int mtk_port_get_locked(struct mtk_port *port)
- {
- 	int ret = 0;
-@@ -34,6 +48,34 @@ static void mtk_port_put_locked(struct mtk_port *port)
- 	mutex_unlock(&port_mngr_grp_mtx);
- }
- 
-+/**
-+ * mtk_port_io_init() - Function for initialize device driver.
-+ * Create ccci_class and register each type of device driver into kernel.
-+ * This function called at driver module initialize.
-+ *
-+ * Return:.
-+ * * 0:	success
-+ * * error value if initialization failed
-+ */
-+int mtk_port_io_init(void)
++static int mtk_dpmaif_port_init(struct mtk_dpmaif_ctlb *dcb)
 +{
-+	ccci_class = class_create(THIS_MODULE, MTK_CCCI_CLASS_NAME);
-+	if (IS_ERR(ccci_class))
-+		return PTR_ERR(ccci_class);
++	struct mtk_data_trans_info trans_info;
++	struct dpmaif_rxq *rxq;
++	int ret;
++	int i;
++
++	memset(&trans_info, 0x00, sizeof(struct mtk_data_trans_info));
++	trans_info.txq_cnt = dcb->res_cfg->txq_cnt;
++	trans_info.rxq_cnt = dcb->res_cfg->rxq_cnt;
++	trans_info.max_mtu = dcb->bat_info.max_mtu;
++
++	for (i = 0; i < trans_info.rxq_cnt; i++) {
++		rxq = &dcb->rxqs[i];
++		dcb->napi[i] = &rxq->napi;
++	}
++	trans_info.napis = dcb->napi;
++
++	dcb->port_ops = &data_port_ops;
++	ret = dcb->port_ops->init(dcb->data_blk, &trans_info);
++	if (ret < 0)
++		dev_err(DCB_TO_DEV(dcb),
++			"Failed to initialize data port layer, ret=%d\n", ret);
++
++	return ret;
++}
++
++static void mtk_dpmaif_port_exit(struct mtk_dpmaif_ctlb *dcb)
++{
++	dcb->port_ops->exit(dcb->data_blk);
++}
++
+ static int mtk_dpmaif_hw_init(struct mtk_dpmaif_ctlb *dcb)
+ {
+ 	struct dpmaif_bat_ring *bat_ring;
+@@ -2284,9 +2319,14 @@ static int mtk_dpmaif_stop(struct mtk_dpmaif_ctlb *dcb)
+ 
+ 	dcb->dpmaif_state = DPMAIF_STATE_PWROFF;
+ 
++	dcb->port_ops->notify(dcb->data_blk, DATA_EVT_TX_STOP, 0xff);
++
+ 	mtk_dpmaif_tx_srvs_stop(dcb);
+ 
+ 	mtk_dpmaif_trans_ctl(dcb, false);
++
++	dcb->port_ops->notify(dcb->data_blk, DATA_EVT_RX_STOP, 0xff);
++
+ out:
+ 	return 0;
+ }
+@@ -2304,6 +2344,8 @@ static void mtk_dpmaif_fsm_callback(struct mtk_fsm_param *fsm_param, void *data)
+ 	case FSM_STATE_OFF:
+ 		mtk_dpmaif_stop(dcb);
+ 
++		dcb->port_ops->notify(dcb->data_blk, DATA_EVT_UNREG_DEV, 0);
++
+ 		flush_work(&dcb->cmd_srv.work);
+ 
+ 		mtk_dpmaif_sw_reset(dcb);
+@@ -2313,6 +2355,7 @@ static void mtk_dpmaif_fsm_callback(struct mtk_fsm_param *fsm_param, void *data)
+ 			mtk_dpmaif_start(dcb);
+ 		break;
+ 	case FSM_STATE_READY:
++		dcb->port_ops->notify(dcb->data_blk, DATA_EVT_REG_DEV, 0);
+ 		break;
+ 	default:
+ 		break;
+@@ -2385,6 +2428,12 @@ static int mtk_dpmaif_sw_init(struct mtk_data_blk *data_blk, const struct dpmaif
+ 		goto err_init_drv_res;
+ 	}
+ 
++	ret = mtk_dpmaif_port_init(dcb);
++	if (ret < 0) {
++		dev_err(DCB_TO_DEV(dcb), "Failed to initialize data port, ret=%d\n", ret);
++		goto err_init_port;
++	}
++
+ 	ret = mtk_dpmaif_fsm_init(dcb);
+ 	if (ret < 0) {
+ 		dev_err(DCB_TO_DEV(dcb), "Failed to initialize dpmaif fsm, ret=%d\n", ret);
+@@ -2402,6 +2451,8 @@ static int mtk_dpmaif_sw_init(struct mtk_data_blk *data_blk, const struct dpmaif
+ err_init_irq:
+ 	mtk_dpmaif_fsm_exit(dcb);
+ err_init_fsm:
++	mtk_dpmaif_port_exit(dcb);
++err_init_port:
+ 	mtk_dpmaif_drv_res_exit(dcb);
+ err_init_drv_res:
+ 	mtk_dpmaif_cmd_srvs_exit(dcb);
+@@ -2429,6 +2480,8 @@ static int mtk_dpmaif_sw_exit(struct mtk_data_blk *data_blk)
+ 
+ 	mtk_dpmaif_irq_exit(dcb);
+ 	mtk_dpmaif_fsm_exit(dcb);
++
++	mtk_dpmaif_port_exit(dcb);
+ 	mtk_dpmaif_drv_res_exit(dcb);
+ 	mtk_dpmaif_cmd_srvs_exit(dcb);
+ 	mtk_dpmaif_tx_srvs_exit(dcb);
+@@ -2568,7 +2621,6 @@ static int mtk_dpmaif_rx_set_data_to_skb(struct dpmaif_rxq *rxq, struct dpmaif_p
+ 	if (FIELD_GET(PIT_PD_HD_OFFSET, le32_to_cpu(pit_info->pd_footer)) != 0)
+ 		data_len += (FIELD_GET(PIT_PD_HD_OFFSET, le32_to_cpu(pit_info->pd_footer)) * 4);
+ 
+-	/* Check and rebuild skb. */
+ 	new_skb->len = 0;
+ 	skb_reset_tail_pointer(new_skb);
+ 	skb_reserve(new_skb, data_offset);
+@@ -2686,6 +2738,7 @@ static int mtk_dpmaif_rx_skb(struct dpmaif_rxq *rxq, struct dpmaif_rx_record *rx
+ 
+ 	skb_record_rx_queue(new_skb, rxq->id);
+ 
++	ret = dcb->port_ops->recv(dcb->data_blk, new_skb, rxq->id, rx_record->cur_ch_id);
+ 	dcb->traffic_stats.rx_packets[rxq->id]++;
+ out:
+ 	return ret;
+@@ -2917,10 +2970,12 @@ static int mtk_dpmaif_send_pkt(struct mtk_dpmaif_ctlb *dcb, struct sk_buff *skb,
+ 
+ 	vq = &dcb->tx_vqs[vq_id];
+ 	srv_id = dcb->res_cfg->tx_vq_srv_map[vq_id];
+-	if (likely(skb_queue_len(&vq->list) < vq->max_len))
++	if (likely(skb_queue_len(&vq->list) < vq->max_len)) {
+ 		skb_queue_tail(&vq->list, skb);
+-	else
++	} else {
++		dcb->port_ops->notify(dcb->data_blk, DATA_EVT_TX_STOP, (u64)1 << vq_id);
+ 		ret = -EBUSY;
++	}
+ 
+ 	mtk_dpmaif_wake_up_tx_srv(&dcb->tx_srvs[srv_id]);
+ 
+diff --git a/drivers/net/wwan/mediatek/mtk_wwan.c b/drivers/net/wwan/mediatek/mtk_wwan.c
+new file mode 100644
+index 000000000000..a9249758edd0
+--- /dev/null
++++ b/drivers/net/wwan/mediatek/mtk_wwan.c
+@@ -0,0 +1,589 @@
++// SPDX-License-Identifier: BSD-3-Clause-Clear
++/*
++ * Copyright (c) 2022, MediaTek Inc.
++ */
++
++#include <linux/completion.h>
++#include <linux/etherdevice.h>
++#include <linux/netdevice.h>
++#include <linux/skbuff.h>
++#include <linux/types.h>
++#include <linux/wwan.h>
++#include <net/pkt_sched.h>
++#include <uapi/linux/if.h>
++#include <uapi/linux/if_arp.h>
++#include <uapi/linux/if_link.h>
++
++#include "mtk_data_plane.h"
++#include "mtk_dev.h"
++
++#define MTK_NETDEV_MAX		20
++#define MTK_DFLT_INTF_ID	0
++#define MTK_NETDEV_WDT (HZ)
++#define MTK_CMD_WDT (HZ)
++#define MTK_MAX_INTF_ID (MTK_NETDEV_MAX - 1)
++#define MTK_NAPI_POLL_WEIGHT	128
++
++static unsigned int napi_budget = MTK_NAPI_POLL_WEIGHT;
++
++struct mtk_wwan_instance {
++	struct mtk_wwan_ctlb *wcb;
++	struct rtnl_link_stats64 stats;
++	unsigned long long tx_busy;
++	struct net_device *netdev;
++	unsigned int intf_id;
++};
++
++struct mtk_wwan_ctlb {
++	struct mtk_data_blk *data_blk;
++	struct mtk_md_dev *mdev;
++	struct mtk_data_trans_ops *trans_ops;
++	struct mtk_wwan_instance __rcu *wwan_inst[MTK_NETDEV_MAX];
++	struct napi_struct **napis;
++	struct net_device dummy_dev;
++
++	u32 cap;
++	atomic_t napi_enabled;
++	unsigned int max_mtu;
++	unsigned int active_cnt;
++	unsigned char txq_num;
++	unsigned char rxq_num;
++	bool reg_done;
++};
++
++static void mtk_wwan_set_skb(struct sk_buff *skb, struct net_device *netdev)
++{
++	unsigned int pkt_type;
++
++	pkt_type = skb->data[0] & 0xF0;
++
++	if (pkt_type == IPV4_VERSION)
++		skb->protocol = htons(ETH_P_IP);
++	else
++		skb->protocol = htons(ETH_P_IPV6);
++
++	skb->dev = netdev;
++}
++
++static int mtk_wwan_data_recv(struct mtk_data_blk *data_blk, struct sk_buff *skb,
++			      unsigned char q_id, unsigned char intf_id)
++{
++	struct mtk_wwan_instance *wwan_inst;
++	struct net_device *netdev;
++	struct napi_struct *napi;
++
++	if (unlikely(!data_blk || !data_blk->wcb))
++		goto err_rx;
++
++	if (intf_id > MTK_MAX_INTF_ID) {
++		dev_err(data_blk->mdev->dev, "Invalid interface id=%d\n", intf_id);
++		goto err_rx;
++	}
++
++	rcu_read_lock();
++	wwan_inst = rcu_dereference(data_blk->wcb->wwan_inst[intf_id]);
++
++	if (unlikely(!wwan_inst)) {
++		dev_err(data_blk->mdev->dev, "Invalid pointer wwan_inst is NULL\n");
++		rcu_read_unlock();
++		goto err_rx;
++	}
++
++	napi = data_blk->wcb->napis[q_id];
++	netdev = wwan_inst->netdev;
++
++	mtk_wwan_set_skb(skb, netdev);
++
++	wwan_inst->stats.rx_packets++;
++	wwan_inst->stats.rx_bytes += skb->len;
++
++	napi_gro_receive(napi, skb);
++
++	rcu_read_unlock();
++	return 0;
++
++err_rx:
++	dev_kfree_skb_any(skb);
++	return -EINVAL;
++}
++
++static void mtk_wwan_napi_enable(struct mtk_wwan_ctlb *wcb)
++{
++	int i;
++
++	if (atomic_cmpxchg(&wcb->napi_enabled, 0, 1) == 0) {
++		for (i = 0; i < wcb->rxq_num; i++)
++			napi_enable(wcb->napis[i]);
++	}
++}
++
++static void mtk_wwan_napi_disable(struct mtk_wwan_ctlb *wcb)
++{
++	int i;
++
++	if (atomic_cmpxchg(&wcb->napi_enabled, 1, 0) == 1) {
++		for (i = 0; i < wcb->rxq_num; i++) {
++			napi_synchronize(wcb->napis[i]);
++			napi_disable(wcb->napis[i]);
++		}
++	}
++}
++
++static int mtk_wwan_open(struct net_device *dev)
++{
++	struct mtk_wwan_instance *wwan_inst = wwan_netdev_drvpriv(dev);
++	struct mtk_wwan_ctlb *wcb = wwan_inst->wcb;
++	struct mtk_data_trans_ctl trans_ctl;
++	int ret;
++
++	if (wcb->active_cnt == 0) {
++		mtk_wwan_napi_enable(wcb);
++		trans_ctl.enable = true;
++		ret = mtk_wwan_cmd_execute(dev, DATA_CMD_TRANS_CTL, &trans_ctl);
++		if (ret < 0) {
++			dev_err(wcb->mdev->dev, "Failed to enable trans\n");
++			goto err_ctl;
++		}
++	}
++
++	wcb->active_cnt++;
++
++	netif_tx_start_all_queues(dev);
++	netif_carrier_on(dev);
++
++	return 0;
++
++err_ctl:
++	mtk_wwan_napi_disable(wcb);
++	return ret;
++}
++
++static int mtk_wwan_stop(struct net_device *dev)
++{
++	struct mtk_wwan_instance *wwan_inst = wwan_netdev_drvpriv(dev);
++	struct mtk_wwan_ctlb *wcb = wwan_inst->wcb;
++	struct mtk_data_trans_ctl trans_ctl;
++	int ret;
++
++	netif_carrier_off(dev);
++	netif_tx_disable(dev);
++
++	if (wcb->active_cnt == 1) {
++		trans_ctl.enable = false;
++		ret = mtk_wwan_cmd_execute(dev, DATA_CMD_TRANS_CTL, &trans_ctl);
++		if (ret < 0)
++			dev_err(wcb->mdev->dev, "Failed to disable trans\n");
++		mtk_wwan_napi_disable(wcb);
++	}
++	wcb->active_cnt--;
++
 +	return 0;
 +}
 +
-+/**
-+ * mtk_port_io_exit() - Function for delete device driver.
-+ * Unregister each type of device driver from kernel, and destroyccci_class.
-+ *
-+ * This function called at driver module exit.
-+ */
-+void mtk_port_io_exit(void)
++static netdev_tx_t mtk_wwan_start_xmit(struct sk_buff *skb, struct net_device *dev)
 +{
-+	class_destroy(ccci_class);
++	struct mtk_wwan_instance *wwan_inst = wwan_netdev_drvpriv(dev);
++	unsigned int intf_id = wwan_inst->intf_id;
++	unsigned int skb_len = skb->len;
++	int ret;
++
++	if (unlikely(skb->len > dev->mtu)) {
++		dev_err(wwan_inst->wcb->mdev->dev,
++			"Failed to write skb,netdev=%s,len=0x%x,MTU=0x%x\n",
++			dev->name, skb->len, dev->mtu);
++		goto err_tx;
++	}
++
++	skb_set_queue_mapping(skb, 0);
++
++	ret = wwan_inst->wcb->trans_ops->send(wwan_inst->wcb->data_blk, DATA_PKT, skb, intf_id);
++	if (ret == -EBUSY) {
++		wwan_inst->tx_busy++;
++		return NETDEV_TX_BUSY;
++	} else if (ret == -EINVAL) {
++		goto err_tx;
++	}
++
++	wwan_inst->stats.tx_packets++;
++	wwan_inst->stats.tx_bytes += skb_len;
++	goto out;
++
++err_tx:
++	wwan_inst->stats.tx_errors++;
++	wwan_inst->stats.tx_dropped++;
++	dev_kfree_skb_any(skb);
++out:
++	return NETDEV_TX_OK;
 +}
 +
- static void mtk_port_struct_init(struct mtk_port *port)
- {
- 	port->tx_seq = 0;
-@@ -45,6 +87,23 @@ static void mtk_port_struct_init(struct mtk_port *port)
- 	init_waitqueue_head(&port->trb_wq);
- 	init_waitqueue_head(&port->rx_wq);
- 	mutex_init(&port->read_buf_lock);
-+	mutex_init(&port->write_lock);
++static void mtk_wwan_get_stats(struct net_device *dev, struct rtnl_link_stats64 *stats)
++{
++	struct mtk_wwan_instance *wwan_inst = wwan_netdev_drvpriv(dev);
++
++	memcpy(stats, &wwan_inst->stats, sizeof(*stats));
 +}
 +
-+static int mtk_port_copy_data_from(void *to, union user_buf from, unsigned int len,
-+				   unsigned int offset, bool from_user_space)
++static const struct net_device_ops mtk_netdev_ops = {
++	.ndo_open = mtk_wwan_open,
++	.ndo_stop = mtk_wwan_stop,
++	.ndo_start_xmit = mtk_wwan_start_xmit,
++	.ndo_get_stats64 = mtk_wwan_get_stats,
++};
++
++static void mtk_wwan_cmd_complete(void *data)
++{
++	struct mtk_data_cmd *event;
++	struct sk_buff *skb = data;
++
++	event = (struct mtk_data_cmd *)skb->data;
++	complete(&event->done);
++}
++
++static int mtk_wwan_cmd_check(struct net_device *dev, enum mtk_data_cmd_type cmd)
 +{
 +	int ret = 0;
 +
-+	if (from_user_space) {
-+		ret = copy_from_user(to, from.ubuf + offset, len);
-+		if (ret)
-+			ret = -EFAULT;
-+	} else {
-+		memcpy(to, from.kbuf + offset, len);
++	switch (cmd) {
++	case DATA_CMD_TRANS_DUMP:
++		fallthrough;
++	case DATA_CMD_TRANS_CTL:
++		break;
++	default:
++		ret = -EOPNOTSUPP;
++		break;
 +	}
 +
 +	return ret;
- }
- 
- static int mtk_port_internal_init(struct mtk_port *port)
-@@ -77,7 +136,7 @@ static int mtk_port_internal_enable(struct mtk_port *port)
- 
- 	if (test_bit(PORT_S_ENABLE, &port->status)) {
- 		dev_info(port->port_mngr->ctrl_blk->mdev->dev,
--			 "Skip to enable port( %s )\n", port->info.name);
-+			 "Skip to enable port(%s)\n", port->info.name);
- 		return 0;
- 	}
- 
-@@ -171,6 +230,56 @@ static void mtk_port_common_close(struct mtk_port *port)
- 	skb_queue_purge(&port->rx_skb_list);
- }
- 
-+static int mtk_port_common_write(struct mtk_port *port, union user_buf buf, unsigned int len,
-+				 bool from_user_space)
++}
++
++static struct sk_buff *mtk_wwan_cmd_alloc(enum mtk_data_cmd_type cmd, unsigned int len)
++
 +{
-+	unsigned int tx_cnt, left_cnt = len;
++	struct mtk_data_cmd *event;
++	struct sk_buff *skb;
++
++	skb = dev_alloc_skb(sizeof(*event) + len);
++	if (unlikely(!skb))
++		return NULL;
++
++	skb_put(skb, len + sizeof(*event));
++	event = (struct mtk_data_cmd *)skb->data;
++	event->cmd = cmd;
++	event->len = len;
++
++	init_completion(&event->done);
++	event->data_complete = mtk_wwan_cmd_complete;
++
++	return skb;
++}
++
++static int mtk_wwan_cmd_send(struct net_device *dev, struct sk_buff *skb)
++{
++	struct mtk_wwan_instance *wwan_inst = wwan_netdev_drvpriv(dev);
++	struct mtk_data_cmd *event = (struct mtk_data_cmd *)skb->data;
++	int ret;
++
++	ret = wwan_inst->wcb->trans_ops->send(wwan_inst->wcb->data_blk, DATA_CMD, skb, 0);
++	if (ret < 0)
++		return ret;
++
++	if (!wait_for_completion_timeout(&event->done, MTK_CMD_WDT))
++		return -ETIMEDOUT;
++
++	if (event->ret < 0)
++		return event->ret;
++
++	return 0;
++}
++
++int mtk_wwan_cmd_execute(struct net_device *dev,
++			 enum mtk_data_cmd_type cmd, void *data)
++{
++	struct mtk_wwan_instance *wwan_inst;
 +	struct sk_buff *skb;
 +	int ret;
 +
-+start_write:
-+	ret = mtk_port_status_check(port);
-+	if (ret)
-+		goto end_write;
++	if (mtk_wwan_cmd_check(dev, cmd))
++		return -EOPNOTSUPP;
 +
-+	skb = __dev_alloc_skb(port->tx_mtu, GFP_KERNEL);
-+	if (!skb) {
-+		dev_err(port->port_mngr->ctrl_blk->mdev->dev,
-+			"Failed to alloc skb for port(%s)\n", port->info.name);
-+		ret = -ENOMEM;
-+		goto end_write;
++	skb = mtk_wwan_cmd_alloc(cmd, sizeof(void *));
++	if (unlikely(!skb))
++		return -ENOMEM;
++
++	SKB_TO_CMD_DATA(skb) = data;
++
++	ret = mtk_wwan_cmd_send(dev, skb);
++	if (ret < 0) {
++		wwan_inst = wwan_netdev_drvpriv(dev);
++		dev_err(wwan_inst->wcb->mdev->dev,
++			"Failed to excute command:ret=%d,cmd=%d\n", ret, cmd);
 +	}
 +
-+	if (!(port->info.flags & PORT_F_RAW_DATA)) {
-+		/* Reserve enough buf len for ccci header */
-+		skb_reserve(skb, sizeof(struct mtk_ccci_header));
-+	}
-+
-+	tx_cnt = min(left_cnt, port->tx_mtu);
-+	ret = mtk_port_copy_data_from(skb_put(skb, tx_cnt), buf, tx_cnt, len - left_cnt,
-+				      from_user_space);
-+	if (ret) {
-+		dev_err(port->port_mngr->ctrl_blk->mdev->dev,
-+			"Failed to copy data for port(%s)\n", port->info.name);
++	if (likely(skb))
 +		dev_kfree_skb_any(skb);
-+		goto end_write;
-+	}
-+
-+	ret = mtk_port_send_data(port, skb);
-+	if (ret < 0)
-+		goto end_write;
-+
-+	left_cnt -= ret;
-+	if (left_cnt) {
-+		dev_dbg(port->port_mngr->ctrl_blk->mdev->dev,
-+			"Port(%s) send %dBytes, but still left %dBytes to send\n",
-+			port->info.name, ret, left_cnt);
-+		goto start_write;
-+	}
-+end_write:
-+	return (len > left_cnt) ? (len - left_cnt) : ret;
-+}
-+
- /**
-  * mtk_port_internal_open() - Function for open internal port.
-  * @mdev: pointer to mtk_md_dev.
-@@ -205,7 +314,10 @@ void *mtk_port_internal_open(struct mtk_md_dev *mdev, char *name, int flag)
- 		goto err;
- 	}
- 
--	port->info.flags |= PORT_F_BLOCKING;
-+	if (flag & O_NONBLOCK)
-+		port->info.flags &= ~PORT_F_BLOCKING;
-+	else
-+		port->info.flags |= PORT_F_BLOCKING;
- err:
- 	return port;
- }
-@@ -289,6 +401,206 @@ void mtk_port_internal_recv_register(void *i_port,
- 	priv->recv_cb = cb;
- }
- 
-+static int mtk_port_wwan_open(struct wwan_port *w_port)
-+{
-+	struct mtk_port *port;
-+	int ret;
-+
-+	port = wwan_port_get_drvdata(w_port);
-+	ret = mtk_port_get_locked(port);
-+	if (ret)
-+		return ret;
-+
-+	ret = mtk_port_common_open(port);
-+	if (ret)
-+		mtk_port_put_locked(port);
 +
 +	return ret;
 +}
 +
-+static void mtk_port_wwan_close(struct wwan_port *w_port)
++static int mtk_wwan_start_txq(struct mtk_wwan_ctlb *wcb, u32 qmask)
 +{
-+	struct mtk_port *port = wwan_port_get_drvdata(w_port);
++	struct mtk_wwan_instance *wwan_inst;
++	struct net_device *dev;
++	int i;
 +
-+	mtk_port_common_close(port);
-+	mtk_port_put_locked(port);
++	rcu_read_lock();
++	for (i = 0; i < MTK_NETDEV_MAX; i++) {
++		wwan_inst = rcu_dereference(wcb->wwan_inst[i]);
++		if (!wwan_inst)
++			continue;
++
++		dev = wwan_inst->netdev;
++
++		if (!(dev->flags & IFF_UP))
++			continue;
++
++		netif_tx_wake_all_queues(dev);
++		netif_carrier_on(dev);
++	}
++	rcu_read_unlock();
++
++	return 0;
 +}
 +
-+static int mtk_port_wwan_write(struct wwan_port *w_port, struct sk_buff *skb)
++static int mtk_wwan_stop_txq(struct mtk_wwan_ctlb *wcb, u32 qmask)
 +{
-+	struct mtk_port *port = wwan_port_get_drvdata(w_port);
-+	union user_buf user_buf;
++	struct mtk_wwan_instance *wwan_inst;
++	struct net_device *dev;
++	int i;
 +
-+	port->info.flags &= ~PORT_F_BLOCKING;
-+	user_buf.kbuf = (void *)skb->data;
-+	return mtk_port_common_write(port, user_buf, skb->len, false);
++	rcu_read_lock();
++	for (i = 0; i < MTK_NETDEV_MAX; i++) {
++		wwan_inst = rcu_dereference(wcb->wwan_inst[i]);
++		if (!wwan_inst)
++			continue;
++
++		dev = wwan_inst->netdev;
++
++		if (!(dev->flags & IFF_UP))
++			continue;
++
++		netif_carrier_off(dev);
++		netif_tx_stop_all_queues(dev);
++	}
++	rcu_read_unlock();
++
++	return 0;
 +}
 +
-+static int mtk_port_wwan_write_blocking(struct wwan_port *w_port, struct sk_buff *skb)
++static void mtk_wwan_napi_exit(struct mtk_wwan_ctlb *wcb)
 +{
-+	struct mtk_port *port = wwan_port_get_drvdata(w_port);
-+	union user_buf user_buf;
++	int i;
 +
-+	port->info.flags |= PORT_F_BLOCKING;
-+	user_buf.kbuf = (void *)skb->data;
-+	return mtk_port_common_write(port, user_buf, skb->len, false);
++	for (i = 0; i < wcb->rxq_num; i++) {
++		if (!wcb->napis[i])
++			continue;
++		netif_napi_del(wcb->napis[i]);
++	}
 +}
 +
-+static __poll_t mtk_port_wwan_poll(struct wwan_port *w_port, struct file *file,
-+				   struct poll_table_struct *poll)
++static int mtk_wwan_napi_init(struct mtk_wwan_ctlb *wcb, struct net_device *dev)
 +{
-+	struct mtk_port *port = wwan_port_get_drvdata(w_port);
-+	struct mtk_ctrl_blk *ctrl_blk;
-+	__poll_t mask = 0;
++	int i;
 +
-+	if (mtk_port_status_check(port))
-+		goto end_poll;
++	for (i = 0; i < wcb->rxq_num; i++) {
++		if (!wcb->napis[i]) {
++			dev_err(wcb->mdev->dev, "Invalid napi pointer, napi=%d", i);
++			goto err;
++		}
++		netif_napi_add_weight(dev, wcb->napis[i], wcb->trans_ops->poll, napi_budget);
++	}
 +
-+	ctrl_blk = port->port_mngr->ctrl_blk;
-+	poll_wait(file, &port->trb_wq, poll);
-+	if (!VQ_LIST_FULL(ctrl_blk->trans, port->info.vq_id))
-+		mask |= EPOLLOUT | EPOLLWRNORM;
-+	else
-+		dev_info(ctrl_blk->mdev->dev, "VQ(%d) skb_list_len is %d\n",
-+			 port->info.vq_id, ctrl_blk->trans->skb_list[port->info.vq_id].qlen);
++	return 0;
 +
-+end_poll:
-+	return mask;
++err:
++	for (--i; i >= 0; i--)
++		netif_napi_del(wcb->napis[i]);
++	return -EINVAL;
 +}
 +
-+static const struct wwan_port_ops wwan_ops = {
-+	.start = mtk_port_wwan_open,
-+	.stop = mtk_port_wwan_close,
-+	.tx = mtk_port_wwan_write,
-+	.tx_blocking = mtk_port_wwan_write_blocking,
-+	.tx_poll = mtk_port_wwan_poll,
++static void mtk_wwan_setup(struct net_device *dev)
++{
++	dev->watchdog_timeo = MTK_NETDEV_WDT;
++	dev->mtu = ETH_DATA_LEN;
++	dev->min_mtu = ETH_MIN_MTU;
++
++	dev->features = NETIF_F_SG;
++	dev->hw_features = NETIF_F_SG;
++
++	dev->features |= NETIF_F_HW_CSUM;
++	dev->hw_features |= NETIF_F_HW_CSUM;
++
++	dev->features |= NETIF_F_RXCSUM;
++	dev->hw_features |= NETIF_F_RXCSUM;
++
++	dev->features |= NETIF_F_GRO;
++	dev->hw_features |= NETIF_F_GRO;
++
++	dev->features |= NETIF_F_RXHASH;
++	dev->hw_features |= NETIF_F_RXHASH;
++
++	dev->addr_len = ETH_ALEN;
++	dev->tx_queue_len = DEFAULT_TX_QUEUE_LEN;
++
++	dev->flags = IFF_NOARP;
++	dev->type = ARPHRD_NONE;
++
++	dev->needs_free_netdev = true;
++
++	dev->netdev_ops = &mtk_netdev_ops;
++}
++
++static int mtk_wwan_newlink(void *ctxt, struct net_device *dev, u32 intf_id,
++			    struct netlink_ext_ack *extack)
++{
++	struct mtk_wwan_instance *wwan_inst = wwan_netdev_drvpriv(dev);
++	struct mtk_wwan_ctlb *wcb = ctxt;
++	int ret;
++
++	if (intf_id > MTK_MAX_INTF_ID) {
++		ret = -EINVAL;
++		goto err;
++	}
++
++	dev->max_mtu = wcb->max_mtu;
++
++	wwan_inst->wcb = wcb;
++	wwan_inst->netdev = dev;
++	wwan_inst->intf_id = intf_id;
++
++	if (rcu_access_pointer(wcb->wwan_inst[intf_id])) {
++		ret = -EBUSY;
++		goto err;
++	}
++
++	ret = register_netdevice(dev);
++	if (ret)
++		goto err;
++
++	rcu_assign_pointer(wcb->wwan_inst[intf_id], wwan_inst);
++
++	netif_device_attach(dev);
++
++	return 0;
++err:
++	return ret;
++}
++
++static void mtk_wwan_dellink(void *ctxt, struct net_device *dev,
++			     struct list_head *head)
++{
++	struct mtk_wwan_instance *wwan_inst = wwan_netdev_drvpriv(dev);
++	int intf_id = wwan_inst->intf_id;
++	struct mtk_wwan_ctlb *wcb = ctxt;
++
++	if (WARN_ON(rcu_access_pointer(wcb->wwan_inst[intf_id]) != wwan_inst))
++		return;
++
++	RCU_INIT_POINTER(wcb->wwan_inst[intf_id], NULL);
++	unregister_netdevice_queue(dev, head);
++}
++
++static const struct wwan_ops mtk_wwan_ops = {
++	.priv_size = sizeof(struct mtk_wwan_instance),
++	.setup = mtk_wwan_setup,
++	.newlink = mtk_wwan_newlink,
++	.dellink = mtk_wwan_dellink,
 +};
 +
-+static int mtk_port_wwan_init(struct mtk_port *port)
++static void mtk_wwan_notify(struct mtk_data_blk *data_blk, enum mtk_data_evt evt, u64 data)
 +{
-+	mtk_port_struct_init(port);
-+	port->enable = false;
++	struct mtk_wwan_ctlb *wcb;
 +
-+	mutex_init(&port->priv.w_priv.w_lock);
++	if (unlikely(!data_blk || !data_blk->wcb))
++		return;
 +
-+	switch (port->info.rx_ch) {
-+	case CCCI_MBIM_RX:
-+		port->priv.w_priv.w_type = WWAN_PORT_MBIM;
++	wcb = data_blk->wcb;
++
++	switch (evt) {
++	case DATA_EVT_TX_START:
++		mtk_wwan_start_txq(wcb, data);
 +		break;
-+	case CCCI_UART2_RX:
-+		port->priv.w_priv.w_type = WWAN_PORT_AT;
++	case DATA_EVT_TX_STOP:
++		mtk_wwan_stop_txq(wcb, data);
++		break;
++	case DATA_EVT_RX_STOP:
++		mtk_wwan_napi_disable(wcb);
++		break;
++	case DATA_EVT_REG_DEV:
++		if (!wcb->reg_done) {
++			wwan_register_ops(wcb->mdev->dev, &mtk_wwan_ops, wcb, MTK_DFLT_INTF_ID);
++			wcb->reg_done = true;
++		}
++		break;
++	case DATA_EVT_UNREG_DEV:
++		if (wcb->reg_done) {
++			wwan_unregister_ops(wcb->mdev->dev);
++			wcb->reg_done = false;
++		}
 +		break;
 +	default:
-+		port->priv.w_priv.w_type = WWAN_PORT_UNKNOWN;
 +		break;
 +	}
-+
-+	return 0;
 +}
 +
-+static int mtk_port_wwan_exit(struct mtk_port *port)
++static int mtk_wwan_init(struct mtk_data_blk *data_blk, struct mtk_data_trans_info *trans_info)
 +{
-+	if (test_bit(PORT_S_ENABLE, &port->status))
-+		ports_ops[port->info.type]->disable(port);
-+
-+	pr_err("[TMI] WWAN port(%s) exit is complete\n", port->info.name);
-+
-+	return 0;
-+}
-+
-+static int mtk_port_wwan_enable(struct mtk_port *port)
-+{
-+	struct mtk_port_mngr *port_mngr;
-+	int ret = 0;
-+
-+	port_mngr = port->port_mngr;
-+
-+	if (test_bit(PORT_S_ENABLE, &port->status)) {
-+		dev_err(port_mngr->ctrl_blk->mdev->dev,
-+			"Skip to enable port( %s )\n", port->info.name);
-+		goto end;
-+	}
-+
-+	ret = mtk_port_vq_enable(port);
-+	if (ret && ret != -EBUSY)
-+		goto end;
-+
-+	port->priv.w_priv.w_port = wwan_create_port(port_mngr->ctrl_blk->mdev->dev,
-+						    port->priv.w_priv.w_type, &wwan_ops, port);
-+	if (IS_ERR(port->priv.w_priv.w_port)) {
-+		dev_err(port_mngr->ctrl_blk->mdev->dev,
-+			"Failed to create wwan port for (%s)\n", port->info.name);
-+		ret = PTR_ERR(port->priv.w_priv.w_port);
-+		goto end;
-+	}
-+
-+	set_bit(PORT_S_RDWR, &port->status);
-+	set_bit(PORT_S_ENABLE, &port->status);
-+	dev_info(port_mngr->ctrl_blk->mdev->dev,
-+		 "Port(%s) enable is complete\n", port->info.name);
-+
-+	return 0;
-+end:
-+	return ret;
-+}
-+
-+static int mtk_port_wwan_disable(struct mtk_port *port)
-+{
-+	struct wwan_port *w_port;
-+
-+	if (!test_and_clear_bit(PORT_S_ENABLE, &port->status)) {
-+		dev_info(port->port_mngr->ctrl_blk->mdev->dev,
-+			 "Skip to disable port(%s)\n", port->info.name);
-+		return 0;
-+	}
-+
-+	clear_bit(PORT_S_RDWR, &port->status);
-+	w_port = port->priv.w_priv.w_port;
-+	/* When the port is being disabled, port manager may receive RX data
-+	 * and try to call wwan_port_rx(). So the w_lock is to protect w_port
-+	 * from using by disable flow and receive flow at the same time.
-+	 */
-+	mutex_lock(&port->priv.w_priv.w_lock);
-+	port->priv.w_priv.w_port = NULL;
-+	mutex_unlock(&port->priv.w_priv.w_lock);
-+
-+	wwan_remove_port(w_port);
-+
-+	mtk_port_vq_disable(port);
-+
-+	dev_info(port->port_mngr->ctrl_blk->mdev->dev,
-+		 "Port(%s) disable is complete\n", port->info.name);
-+
-+	return 0;
-+}
-+
-+static int mtk_port_wwan_recv(struct mtk_port *port, struct sk_buff *skb)
-+{
-+	if (!test_bit(PORT_S_OPEN, &port->status)) {
-+		/* If current port is not opened by any user, the received data will be dropped */
-+		dev_warn_ratelimited(port->port_mngr->ctrl_blk->mdev->dev,
-+				     "Unabled to recv: (%s) not opened\n", port->info.name);
-+		goto drop_data;
-+	}
-+
-+	/* Protect w_port from using by disable flow and receive flow at the same time. */
-+	mutex_lock(&port->priv.w_priv.w_lock);
-+	if (!port->priv.w_priv.w_port) {
-+		mutex_unlock(&port->priv.w_priv.w_lock);
-+		dev_warn_ratelimited(port->port_mngr->ctrl_blk->mdev->dev,
-+				     "Invalid (%s) wwan_port, drop packet\n", port->info.name);
-+		goto drop_data;
-+	}
-+
-+	wwan_port_rx(port->priv.w_priv.w_port, skb);
-+	mutex_unlock(&port->priv.w_priv.w_lock);
-+	return 0;
-+
-+drop_data:
-+	dev_kfree_skb_any(skb);
-+	return -ENXIO;
-+}
-+
- static const struct port_ops port_internal_ops = {
- 	.init = mtk_port_internal_init,
- 	.exit = mtk_port_internal_exit,
-@@ -298,6 +610,16 @@ static const struct port_ops port_internal_ops = {
- 	.recv = mtk_port_internal_recv,
- };
- 
-+static const struct port_ops port_wwan_ops = {
-+	.init = mtk_port_wwan_init,
-+	.exit = mtk_port_wwan_exit,
-+	.reset = mtk_port_reset,
-+	.enable = mtk_port_wwan_enable,
-+	.disable = mtk_port_wwan_disable,
-+	.recv = mtk_port_wwan_recv,
-+};
-+
- const struct port_ops *ports_ops[PORT_TYPE_MAX] = {
- 	&port_internal_ops,
-+	&port_wwan_ops,
- };
-diff --git a/drivers/net/wwan/mediatek/mtk_port_io.h b/drivers/net/wwan/mediatek/mtk_port_io.h
-index 30e1d4149881..034b5a2d8f12 100644
---- a/drivers/net/wwan/mediatek/mtk_port_io.h
-+++ b/drivers/net/wwan/mediatek/mtk_port_io.h
-@@ -9,9 +9,12 @@
- #include <linux/netdevice.h>
- #include <linux/skbuff.h>
- 
-+#include "mtk_ctrl_plane.h"
-+#include "mtk_dev.h"
- #include "mtk_port.h"
- 
- #define MTK_RX_BUF_SIZE			(1024 * 1024)
-+#define MTK_RX_BUF_MAX_SIZE		(2 * 1024 * 1024)
- 
- extern struct mutex port_mngr_grp_mtx;
- 
-@@ -24,6 +27,14 @@ struct port_ops {
- 	int (*recv)(struct mtk_port *port, struct sk_buff *skb);
- };
- 
-+union user_buf {
-+	void __user *ubuf;
-+	void *kbuf;
-+};
-+
-+int mtk_port_io_init(void);
-+void mtk_port_io_exit(void);
-+
- void *mtk_port_internal_open(struct mtk_md_dev *mdev, char *name, int flag);
- int mtk_port_internal_close(void *i_port);
- int mtk_port_internal_write(void *i_port, struct sk_buff *skb);
-diff --git a/drivers/net/wwan/mediatek/pcie/mtk_pci.c b/drivers/net/wwan/mediatek/pcie/mtk_pci.c
-index e96fc2e65390..67a897426f68 100644
---- a/drivers/net/wwan/mediatek/pcie/mtk_pci.c
-+++ b/drivers/net/wwan/mediatek/pcie/mtk_pci.c
-@@ -984,13 +984,29 @@ static struct pci_driver mtk_pci_drv = {
- 
- static int __init mtk_drv_init(void)
- {
--	return pci_register_driver(&mtk_pci_drv);
++	struct mtk_wwan_ctlb *wcb;
 +	int ret;
 +
-+	ret = mtk_port_io_init();
-+	if (ret)
-+		goto err_init_devid;
++	if (unlikely(!data_blk || !trans_info))
++		return -EINVAL;
 +
-+	ret = pci_register_driver(&mtk_pci_drv);
-+	if (ret)
-+		goto err_pci_drv;
++	wcb = devm_kzalloc(data_blk->mdev->dev, sizeof(*wcb), GFP_KERNEL);
++	if (unlikely(!wcb))
++		return -ENOMEM;
++
++	wcb->trans_ops = &data_trans_ops;
++	wcb->mdev = data_blk->mdev;
++	wcb->data_blk = data_blk;
++	wcb->napis = trans_info->napis;
++	wcb->max_mtu = trans_info->max_mtu;
++	wcb->cap = trans_info->cap;
++	wcb->rxq_num = trans_info->rxq_cnt;
++	wcb->txq_num = trans_info->txq_cnt;
++	atomic_set(&wcb->napi_enabled, 0);
++	init_dummy_netdev(&wcb->dummy_dev);
++
++	data_blk->wcb = wcb;
++
++	ret = mtk_wwan_napi_init(wcb, &wcb->dummy_dev);
++	if (ret < 0)
++		goto err_napi_init;
 +
 +	return 0;
-+err_pci_drv:
-+	mtk_port_io_exit();
-+err_init_devid:
++err_napi_init:
++	devm_kfree(data_blk->mdev->dev, wcb);
++	data_blk->wcb = NULL;
 +
 +	return ret;
- }
- module_init(mtk_drv_init);
- 
- static void __exit mtk_drv_exit(void)
- {
- 	pci_unregister_driver(&mtk_pci_drv);
-+	mtk_port_io_exit();
- 	mtk_port_stale_list_grp_cleanup();
- }
- module_exit(mtk_drv_exit);
++}
++
++static void mtk_wwan_exit(struct mtk_data_blk *data_blk)
++{
++	struct mtk_wwan_ctlb *wcb;
++
++	if (unlikely(!data_blk || !data_blk->wcb))
++		return;
++
++	wcb = data_blk->wcb;
++	mtk_wwan_napi_exit(wcb);
++	devm_kfree(data_blk->mdev->dev, wcb);
++	data_blk->wcb = NULL;
++}
++
++struct mtk_data_port_ops data_port_ops = {
++	.init = mtk_wwan_init,
++	.exit = mtk_wwan_exit,
++	.recv = mtk_wwan_data_recv,
++	.notify = mtk_wwan_notify,
++};
 -- 
 2.32.0
 
