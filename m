@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69F32C636D4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Feb 2023 00:27:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72FA5C636D4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Feb 2023 00:27:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iQM7FL6EiKup10JC4Ms09UWDjLJj+OzocZJygk79TAg=; b=ODRmbKRHbMjtXckAsOv8P70tub
-	nofo50rQqBcIEKbXOtAACIWMzMvrI3kHtAnT7efTZlkIbdHx49uguMXolvRtSsA8EIcFsa4N9XsfG
-	5nPEXibbfpC8qRCnT8vRn6PUfAbfHuEN+MmbsbXp+7BES3n0fzNMXsAr5Wyf/SgNbjcy6BIakrruW
-	8vr6gU5g2B++LBOIS26p+YR88cWuSDm8Hubkbi56B5AUWSZGWfFjmq/89hgLkTyjNpWj2Hoy8NcLS
-	QdpEuDK70pAkfcum9wZ9iHbO2CJmicRaLinKHJ6M0+ql3mJeH7JQrmEzPajaZMXFZrpJonA19Nm4s
-	4y3WxNBA==;
+	bh=efUIT41m/vSNhrXVcWHkqGPDzJaOoC84InQplcVn13s=; b=yS7Svo+CGM14FKj1Vwgv+il92f
+	7Zfc3qTpw15V4bopCcWR5v71+hDqektOHgg763GQhPOLQ0JSg0HM6OL4g3bhkd0cfrW7pZhRaXfs8
+	bfGGeJ3nUFYmOd3IoqBOimONkUWketvWYjLQfaskkZvgW6LHxEtILjBoy2LlLqM3p4ECub2lNhK6v
+	7xz80vvR3CDOXw+ACPwuaNQEv8CRBtaVLpYVujqmztreWtFXjsRZdP6K8TFbOjqrEQQYfatEY+QOF
+	GBuZMwMdvLM5JRdOkk/wWAS/h6GOcI5ZG8K1Yqi8wyXcRjHDwpCzDB5MqmYZZrdm/ZPhDcHQsZZP2
+	ORavWk4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQdjb-0086bY-G0; Sat, 11 Feb 2023 00:27:19 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pQdjm-0086j4-Uv; Sat, 11 Feb 2023 00:27:30 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQdj3-0086Ms-Oz; Sat, 11 Feb 2023 00:26:47 +0000
+	id 1pQdj6-0086Nu-Cj; Sat, 11 Feb 2023 00:26:49 +0000
 Received: from notapiano.myfiosgateway.com (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 539A06602117;
-	Sat, 11 Feb 2023 00:26:42 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4C7B56602137;
+	Sat, 11 Feb 2023 00:26:45 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676075204;
-	bh=Gm+Fv0Lf5OBMJRwMwPwUnakOGkSawtiyv5gR5vwnHEw=;
+	s=mail; t=1676075207;
+	bh=u/Pr3DhxNBpEqqdJfKoFRXtR2Uvs7ZRGDDazPyOIVEg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=dq1zENlbIU6e5lYwBFr4/UN5m6eTJ6Xmij+S8+cTBbYx3YRotjypGtFE+qcRiNPOY
-	 8IGNecyKb1bejqcOdieI54NjCuXJujo+/Op2iqKYadboKbzIOTnVbd81dQBVIXARGN
-	 w34HSdKjWDUhTUyOuNBFZ5hNbLhiM4jZs1YFboziejhhWUzI5mJFLUpLfFafUxHisR
-	 EYDjJaNjEe+fyqfscxdPrqpQ9aFmKLBqXNt3YM/UOSxBGl6kIlQP9jIp/zzh4Tm6rb
-	 +aVEFDMS7dCivivaZ7bv8b1GWQRyuSdTGjNYstwabTqWZZhlBc9R5ZQZuntRcwRe4i
-	 OOowiptXPcDvQ==
+	b=e3oK8jsXuhZB75qmw4F8vbHumsZk4CaL5DnXhNcrcA5poa9HEJtCSvM/jUqwi85ng
+	 iFI0wokijPusxSFxQh8Aqc9W7MW3wIJw2LJLYg7w15BvGH0IPIq4pLY7bqCiadeJB5
+	 jyv1eXrLypVWA+JyTqhyUvMtm3sPFaRhWd58fVK95bO4ylcuCMVqOsI3Qsy7cbPsj/
+	 JBDXe5xFM10ApFl4ArRn5WiRvJF3CiZQ4nC51yWCUK3ligbcFV9uCwSi3g2KtmncZU
+	 61eGn5l8w2Fb7RoPNYzde7lnslOkux18CfhN9Bxbkt0VIh9kzOEVPxKvwOydAh0GKa
+	 0YL62a1iRwdNA==
 From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>
 Cc: Chen-Yu Tsai <wenst@chromium.org>,
@@ -53,9 +53,9 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 3/5] arm64: dts: mediatek: Add dtsi files to use rt5682s on mt8192
-Date: Fri, 10 Feb 2023 19:26:24 -0500
-Message-Id: <20230211002626.454844-4-nfraprado@collabora.com>
+Subject: [PATCH 4/5] arm64: dts: mediatek: Add hayato-rev5-sku2
+Date: Fri, 10 Feb 2023 19:26:25 -0500
+Message-Id: <20230211002626.454844-5-nfraprado@collabora.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230211002626.454844-1-nfraprado@collabora.com>
 References: <20230211002626.454844-1-nfraprado@collabora.com>
@@ -63,8 +63,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230210_162645_966726_B68AA892 
-X-CRM114-Status: GOOD (  15.43  )
+X-CRM114-CacheID: sfid-20230210_162648_591596_A2DF6713 
+X-CRM114-Status: GOOD (  14.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,70 +79,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a dtsi file for the rt5682s audio codec and another to wire it to be
-used by mt8192's sound card.
-
-These dtsi files will be used by Spherion rev4 and Hayato rev5-sku2,
-which make use of the rt5682s codec instead of the rt5682 used in
-previous revisions.
+Add a devicetree for rev5-sku2 of Hayato. It uses the rt5682s audio
+codec instead of the rt5682 used in the previous revision.
 
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
 
- .../mt8192-asurada-audio-rt1015p-rt5682s.dtsi | 18 ++++++++++++++++++
- .../mt8192-asurada-audio-rt5682s.dtsi         | 19 +++++++++++++++++++
- 2 files changed, 37 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt1015p-rt5682s.dtsi
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt5682s.dtsi
+ arch/arm64/boot/dts/mediatek/Makefile         |  1 +
+ .../mt8192-asurada-hayato-r5-sku2.dts         | 49 +++++++++++++++++++
+ 2 files changed, 50 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt1015p-rt5682s.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt1015p-rt5682s.dtsi
+diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+index 813e735c5b96..b349c4805e4c 100644
+--- a/arch/arm64/boot/dts/mediatek/Makefile
++++ b/arch/arm64/boot/dts/mediatek/Makefile
+@@ -40,6 +40,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-pumpkin.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-hayato-r1.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-hayato-r5-sku2.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-spherion-r0.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-cherry-tomato-r1.dtb
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts
 new file mode 100644
-index 000000000000..8921f5e38586
+index 000000000000..d8f32c5f2b65
 --- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt1015p-rt5682s.dtsi
-@@ -0,0 +1,18 @@
++++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts
+@@ -0,0 +1,49 @@
 +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
 +/*
-+ * Copyright (C) 2022 MediaTek Inc.
++ * Copyright 2022 Google LLC
 + */
-+#include "mt8192-asurada-audio-rt5682s.dtsi"
-+#include "mt8192-asurada-audio-rt1015p.dtsi"
++/dts-v1/;
++#include "mt8192-asurada.dtsi"
++#include "mt8192-asurada-audio-rt1015p-rt5682s.dtsi"
 +
-+&sound {
-+	compatible = "mediatek,mt8192_mt6359_rt1015p_rt5682s";
-+
-+	speaker-codecs {
-+		sound-dai = <&rt1015p>;
-+	};
-+
-+	headset-codec {
-+		sound-dai = <&rt5682s 0>;
-+	};
++/ {
++	model = "Google Hayato rev5";
++	compatible = "google,hayato-rev5-sku2", "google,hayato-sku2",
++		     "google,hayato", "mediatek,mt8192";
 +};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt5682s.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt5682s.dtsi
-new file mode 100644
-index 000000000000..919035245b6e
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-audio-rt5682s.dtsi
-@@ -0,0 +1,19 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (C) 2022 MediaTek Inc.
-+ */
 +
-+&i2c1 {
-+	rt5682s: audio-codec@1a {
-+		compatible = "realtek,rt5682s";
-+		reg = <0x1a>;
-+		interrupts-extended = <&pio 18 IRQ_TYPE_LEVEL_LOW>;
-+		realtek,jd-src = <1>;
-+		#sound-dai-cells = <1>;
++&keyboard_controller {
++	function-row-physmap = <
++		MATRIX_KEY(0x00, 0x02, 0)	/* T1 */
++		MATRIX_KEY(0x03, 0x02, 0)	/* T2 */
++		MATRIX_KEY(0x02, 0x02, 0)	/* T3 */
++		MATRIX_KEY(0x01, 0x02, 0)	/* T4 */
++		MATRIX_KEY(0x03, 0x04, 0)	/* T5 */
++		MATRIX_KEY(0x02, 0x04, 0)	/* T6 */
++		MATRIX_KEY(0x01, 0x04, 0)	/* T7 */
++		MATRIX_KEY(0x02, 0x09, 0)	/* T8 */
++		MATRIX_KEY(0x01, 0x09, 0)	/* T9 */
++		MATRIX_KEY(0x00, 0x04, 0)	/* T10 */
++	>;
++	linux,keymap = <
++		MATRIX_KEY(0x00, 0x02, KEY_BACK)
++		MATRIX_KEY(0x03, 0x02, KEY_FORWARD)
++		MATRIX_KEY(0x02, 0x02, KEY_REFRESH)
++		MATRIX_KEY(0x01, 0x02, KEY_FULL_SCREEN)
++		MATRIX_KEY(0x03, 0x04, KEY_SCALE)
++		MATRIX_KEY(0x02, 0x04, KEY_BRIGHTNESSDOWN)
++		MATRIX_KEY(0x01, 0x04, KEY_BRIGHTNESSUP)
++		MATRIX_KEY(0x02, 0x09, KEY_MUTE)
++		MATRIX_KEY(0x01, 0x09, KEY_VOLUMEDOWN)
++		MATRIX_KEY(0x00, 0x04, KEY_VOLUMEUP)
 +
-+		AVDD-supply = <&mt6359_vio18_ldo_reg>;
-+		DBVDD-supply = <&mt6359_vio18_ldo_reg>;
-+		LDO1-IN-supply = <&mt6359_vio18_ldo_reg>;
-+		MICVDD-supply = <&pp3300_g>;
-+	};
++		CROS_STD_MAIN_KEYMAP
++	>;
++};
++
++&touchscreen {
++	compatible = "hid-over-i2c";
++	post-power-on-delay-ms = <10>;
++	hid-descr-addr = <0x0001>;
++	vdd-supply = <&pp3300_u>;
 +};
 -- 
 2.39.1
