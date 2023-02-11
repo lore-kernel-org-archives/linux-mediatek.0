@@ -4,91 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66F6AC636CC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Feb 2023 10:50:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2FCBC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Feb 2023 11:10:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tT3cifnR/+tF3ipaHkd5EngPDjJXOxPeEMnt+INTFqo=; b=OMpF1YlRHxgMYM2TqA30DPRUnD
-	VbdwykOkzD3mxKkLpZzu1z+3rFGkAjuWQrLGBGZrj4WgmzRMbLppofKenKdnVt4770EHEq/rq0J1s
-	0+K6P9K3yfsnzn8SsWezXS0H8DiwfiO/CFBZ272t127GJbB0SlwitX2iHSIwjZzpq9sHCSymFoVMj
-	am1BN3y0A0xwC6WgXSD7hfPGh9Y1u5ss3Oga+eRXttFmsslk88OKZRxpB9l1DPXRc3A9fe6fNc8gC
-	g6DcVbGLcKyOulXD0DYpMrsR9LtGHIrg0X1bgFoJj1jJT41M5AdEZ7Ybcs4UUCzAcAfB3obX1gEOm
-	ikHBnV2Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0cX/KtHqdJqb6Rrw059A36ailM7NF0OlYLzCM1/MQlg=; b=w3WcQCoT9tAbgP/eIojLfX/c9Q
+	A8lQ596bfPMaX5Vi2fuCF/wS/jw00JEXqs3BFG/VJt4HgJSiuIg4G4/m5kcCLHpP0hdc2R18tFH1K
+	+j7pkXPELa0op9Zk5zNdsQFuK2OGWpJB9oEJnzvjB7XJrHvBeltLU5uXVFW2mNl6dikarOujCHlQG
+	22XMeNqZ/oVS8+3seP5tMFgxbri8kzjDnzoZmYbe+YFarSaVCTM0fpWQO1U5Z/bLS37MGT6QoctTk
+	ILW3brvi92DQtspfne6Y8ghQXwyOF8ABaN9xAce/xn9IEBlzJGNGuxNzV97GTfj1jOuKOnYwpTSjG
+	Tqpv4sQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQnSj-009ETU-NE; Sat, 11 Feb 2023 10:50:33 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1pQnlx-009GXF-8K; Sat, 11 Feb 2023 11:10:25 +0000
+Received: from msg-2.mailo.com ([213.182.54.12])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQnSO-009EPU-WC; Sat, 11 Feb 2023 10:50:14 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id bt8so1388061edb.12;
-        Sat, 11 Feb 2023 02:50:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=tT3cifnR/+tF3ipaHkd5EngPDjJXOxPeEMnt+INTFqo=;
-        b=W0zeHcrj8kI2dG485h6uY8dJc5EVSp5fpK/HzIBRGOCRRynJf6YJ8mxmCImqC+soX2
-         jYl4EZjR3cF+3KOUbhAAI12oXZFrCjOUqNug/g6V0WugPhC2W69Eh+O5rt1T74Lq/d/Y
-         z9ZEflzjw6PKG12iH7nkrI8zIzfAEyJ01JGrAhoD86vOejsAulG6yDtbB/MwoW+apuqR
-         tdfER9fo3BdXvz5GvOHSfy2+qXCKqtNqdp5ZDhrwoMOha/hqD9i6Zqx8o6Z6O1/TpYnu
-         S3xrgUyI2x4vKh4cRspdJeqKfEQFeB4RsjNH/u2pX2Vvswf2FnTNE3Wr956BYiyLfkHD
-         K8CA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=tT3cifnR/+tF3ipaHkd5EngPDjJXOxPeEMnt+INTFqo=;
-        b=WMui5HRxys9TWp4SGSdTiqDAufEG/fRHz4zOVMLR9gRYtGWYqU/4Au8K35qOJ6Yl6g
-         XoGOuqtmgAZ/xv+KcJ5ijncYbt56gMt2HfHKRo8E/RYfo2EcMuVRGO2G6hl64LGnmqmx
-         oKzF3nBFXWnlBy//hvAP91qA2MAxSZWKNZUwa1CUt3RJLt4sLkAbhko/Q9tKfY7drLOB
-         NK32efIKeDNLS+rKfKlyPhIdOo2Dqt2bFe0C/SjEGJzFsAarUgg9Wz2z8rrdduDf8m9G
-         l8FTBGv9CgcKL/uAIUWXLpEGOU1Pm5MAQfqEe3VTbhRxcoMOEhkdX9SLIKT9KTFeqRnq
-         y/qw==
-X-Gm-Message-State: AO0yUKVwupq+Lfr7KBmU5xHOeHeeOfA/85970WWjn4nzGUc9i6DDPrXJ
-	p+7Vrb4iXuSf/l6Za4j4sLQ=
-X-Google-Smtp-Source: AK7set+vWANpOv+9r2aKr1AJCvpXhOs6xKzfgiHggmDBe08EXAg/m5cVy203kP8Q+XiK4tfxqRllXQ==
-X-Received: by 2002:a05:6402:5297:b0:4ab:4410:ae1a with SMTP id en23-20020a056402529700b004ab4410ae1amr1274232edb.15.1676112611049;
-        Sat, 11 Feb 2023 02:50:11 -0800 (PST)
-Received: from arinc9-PC.lan ([37.120.152.236])
-        by smtp.gmail.com with ESMTPSA id cb10-20020a0564020b6a00b004ac54d4da22sm1597911edb.71.2023.02.11.02.50.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 11 Feb 2023 02:50:10 -0800 (PST)
-From: arinc9.unal@gmail.com
-X-Google-Original-From: arinc.unal@arinc9.com
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	Paul Cercueil <paul@crapouillou.net>,
+	id 1pQnli-009GRB-C0; Sat, 11 Feb 2023 11:10:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
+	t=1676113794; bh=5yApPz7ebuShtxrTuVWINA4sOPX+XYKVeOohcbcuehk=;
+	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:MIME-Version:
+	 Content-Type;
+	b=ZGzOiTTqV4La4J5DQSAtgRFeWjt0e52Q3jNl0ztbPToIl0sHOpl3Wsnl3j+aaON95
+	 KYLzJDwwygq9Fpfx4R95gdsCSVG4o9U8E2fH6SBZHqTX/pH9j3Y5JZPhjCM/gmN4et
+	 3vMXwCuhXC+56uPZnftbWtaPwQCCIX9Ix91w8ecA=
+Received: by b-2.in.mailobj.net [192.168.90.12] with ESMTP
+	via ip-206.mailobj.net [213.182.55.206]
+	Sat, 11 Feb 2023 12:09:54 +0100 (CET)
+X-EA-Auth: +b2O3JVJUDbTIbrBSTNVB6zRG+uUfXCvDhDTmkEoMe3IMbabFQNeu7b99bIpT+wXnTRI+9dz+M00r4LxxZQH+pA4Vr7R4788
+Date: Sat, 11 Feb 2023 16:39:50 +0530
+From: Deepak R Varma <drv@mailo.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>
-Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	devicetree@vger.kernel.org,
-	linux-mips@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	erkin.bozoglu@xeront.com
-Subject: [PATCH 2/2] mips: dts: ralink: mt7621: add port@5 as CPU port
-Date: Sat, 11 Feb 2023 13:49:15 +0300
-Message-Id: <20230211104915.116253-2-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20230211104915.116253-1-arinc.unal@arinc9.com>
-References: <20230211104915.116253-1-arinc.unal@arinc9.com>
+	linux-mediatek@lists.infradead.org
+Cc: Saurabh Singh Sengar <ssengar@microsoft.com>,
+	Praveen Kumar <kumarpraveen@linux.microsoft.com>,
+	Deepak R Varma <drv@mailo.com>
+Subject: [PATCH] media: platform: mtk-mdp3: release node reference before
+ returning
+Message-ID: <Y+d3fqRG1OoYKpLB@ubun2204.myguest.virtualbox.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230211_025013_078051_2330CE25 
-X-CRM114-Status: GOOD (  11.61  )
+X-CRM114-CacheID: sfid-20230211_031010_553714_32800ADB 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,121 +69,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+The iterator for_each_child_of_node() increments the refcount of the
+child node it is processing. Release such a reference when the loop
+needs to break due to an error during its execution.
+Issue identified using for_each_child.cocci Coccinelle semantic patch.
 
-On MT7621AT, MT7621DAT, and MT7621ST SoCs, port 5 of the MT7530 switch is
-connected to the second MAC of the SoC as a CPU port. Add the port and set
-up the second MAC on the bindings. Revert PHY muxing on GB-PC1.
-
-There's an external PHY connected to the second MAC of the SoC on GB-PC2,
-therefore, disable port@5 for this device.
-
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Signed-off-by: Deepak R Varma <drv@mailo.com>
 ---
- .../boot/dts/ralink/mt7621-gnubee-gb-pc1.dts  | 16 +++++-----------
- .../boot/dts/ralink/mt7621-gnubee-gb-pc2.dts  |  9 ++++++++-
- arch/mips/boot/dts/ralink/mt7621.dtsi         | 19 ++++++++++++++++++-
- 3 files changed, 31 insertions(+), 13 deletions(-)
+Please note: The proposed change is compile tested only. I do not have the
+necessary hardware to perform additional testing. Please suggest if there is an
+alternate means available to further test this change.
 
-diff --git a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
-index 4314aee97e18..129b6710b699 100644
---- a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
-+++ b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
-@@ -91,22 +91,16 @@ &pcie {
- 	status = "okay";
- };
+
+ .../media/platform/mediatek/mdp3/mtk-mdp3-comp.c  | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
+index 7bc05f42a23c..2c50a73bbf23 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
+@@ -898,6 +898,7 @@ static int mdp_comp_sub_create(struct mdp_dev *mdp)
+ {
+ 	struct device *dev = &mdp->pdev->dev;
+ 	struct device_node *node, *parent;
++	int ret = 0;
  
--&gmac1 {
--	status = "okay";
--	phy-handle = <&ethphy4>;
--};
--
--&mdio {
--	ethphy4: ethernet-phy@4 {
--		reg = <4>;
--	};
--};
--
- &switch0 {
- 	ports {
- 		port@0 {
- 			status = "okay";
- 			label = "ethblack";
- 		};
-+
-+		port@4 {
-+			status = "okay";
-+			label = "ethblue";
-+		};
- 	};
- };
-diff --git a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
-index 3ebbf933f644..f810cd10f4f4 100644
---- a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
-+++ b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
-@@ -112,9 +112,12 @@ &pcie {
- };
+ 	parent = dev->of_node->parent;
  
- &gmac1 {
--	status = "okay";
- 	phy-mode = "rgmii-rxid";
- 	phy-handle = <&ethphy5>;
-+
-+	fixed-link {
-+		status = "disabled";
-+	};
- };
+@@ -923,16 +924,22 @@ static int mdp_comp_sub_create(struct mdp_dev *mdp)
+ 			dev_err(dev,
+ 				"Fail to get sub comp. id: type %d alias %d\n",
+ 				type, alias_id);
+-			return -EINVAL;
++			ret = -EINVAL;
++			goto err_free_node;
+ 		}
+ 		mdp_comp_alias_id[type]++;
  
- &mdio {
-@@ -134,5 +137,9 @@ port@4 {
- 			status = "okay";
- 			label = "ethblue";
- 		};
-+
-+		port@5 {
-+			status = "disabled";
-+		};
- 	};
- };
-diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts/ralink/mt7621.dtsi
-index aec85c779359..290d47fbcfbb 100644
---- a/arch/mips/boot/dts/ralink/mt7621.dtsi
-+++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
-@@ -332,8 +332,13 @@ fixed-link {
- 		gmac1: mac@1 {
- 			compatible = "mediatek,eth-mac";
- 			reg = <1>;
--			status = "disabled";
- 			phy-mode = "rgmii";
-+
-+			fixed-link {
-+				speed = <1000>;
-+				full-duplex;
-+				pause;
-+			};
- 		};
+ 		comp = mdp_comp_create(mdp, node, id);
+-		if (IS_ERR(comp))
+-			return PTR_ERR(comp);
++		if (IS_ERR(comp)) {
++			ret = PTR_ERR(comp);
++			goto err_free_node;
++		}
+ 	}
++	return ret;
  
- 		mdio: mdio-bus {
-@@ -384,6 +389,18 @@ port@4 {
- 						label = "swp4";
- 					};
+-	return 0;
++err_free_node:
++	of_node_put(node);
++	return ret;
+ }
  
-+					port@5 {
-+						reg = <5>;
-+						ethernet = <&gmac1>;
-+						phy-mode = "rgmii";
-+
-+						fixed-link {
-+							speed = <1000>;
-+							full-duplex;
-+							pause;
-+						};
-+					};
-+
- 					port@6 {
- 						reg = <6>;
- 						ethernet = <&gmac0>;
+ void mdp_comp_destroy(struct mdp_dev *mdp)
 -- 
-2.37.2
+2.34.1
+
+
 
 
