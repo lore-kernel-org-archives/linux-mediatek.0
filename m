@@ -4,138 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29905C636CC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Feb 2023 18:44:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B34EC636CC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Feb 2023 19:02:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ojblXnJZtQ5Nuzx6m+joOQlP2UKppSKbvBR1vJPNz8s=; b=27eLaJYEgFqbj7E93kamvuR3p/
-	Z36IZarF8lOe8IsTWFDApSiicoqOk/baa/JdOQUEpP3VqBGpiVcIqaSezApBRT7pNCG65EtWn7ybD
-	ri367MEuxQyfaCeS6IQhS9b51kmZ+ydYU79lWavuRzSQE9gFiHfTEhdKnR+/OMLRkGJ5BNrxGpOO3
-	K6NtgAEOXZGp8hegxTzGb54zCvf2GdIcUaEjgU27w9uiKm3rLMMpQiDWJGDd43yl+/rYLL1Wa8xoV
-	XyO+NSTrWKqb/uxIljannsJx96XYJ2b6bs2JOE061ONF6jB8lFzTP4IRVhblho3KTm90ujjaX2KmU
-	NdWnq8UQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NJbnX4TeRlxTIlcfI4XS2zn0dkZIIquLuK4YVej9afg=; b=2nu2mwpITRkAakDyvk0HoMk5wA
+	LE9uFdf6AtJVlAHIlpf3zsTVnXk3S0MeDU3igqSn3zLczkrEm2uaZbIYizTFLf4R0qejk3qC+xvm2
+	y26ChCgrs3puCzhR6JNTJPh8+HZ41KlkEPaS7tglnaKrA89ilvnUMtvrCB9CFoHV1GU5pLyJHm6Hb
+	chk7aKOj/+AsAUBuR/32tkDbOUxXPlOoiz8/o805TITUpa+33a+ZpQKrUQDN2BpzJYTIEHbkP26W9
+	Xy6Nsdc60Evy23wloCDddBlWynb8yc81i6p4iji3mWcZhkFFxuBC7tYu7G7j6T9o1YIQb+tzLjO8J
+	GoilzkaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQuqz-00A687-Go; Sat, 11 Feb 2023 18:44:05 +0000
-Received: from mail-vi1eur05on20614.outbound.protection.outlook.com ([2a01:111:f400:7d00::614] helo=EUR05-VI1-obe.outbound.protection.outlook.com)
+	id 1pQv90-00A7k2-P8; Sat, 11 Feb 2023 19:02:42 +0000
+Received: from mail-am6eur05on2062a.outbound.protection.outlook.com ([2a01:111:f400:7e1b::62a] helo=EUR05-AM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQuqo-00A65d-Pf; Sat, 11 Feb 2023 18:43:56 +0000
+	id 1pQv8o-00A7gT-HR; Sat, 11 Feb 2023 19:02:32 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Kj38hfv+wbX/FLZhtUDVuAXUbUmdSHftim0WDNIQnf1H/Ub7jTSvCKIoCT1UQ8q8yKtLy/IrXjNmXfipQt1AhphpHjTWT+9roi08QUXLBGGrT2UdNNg7xoy/A7p6ecEstqyTFhjB/mwWR5yBETVGuJMtCR4y4m9YKzynwxxqCGjQn4A01LsYm8P7ly5PnkUpKIUOaMe6LvbXMbjYvCdxWV9E9ssALO72DWrMm7ttgClKsvnNu5MqnKHYsSCn1ccNNX4plHSKQoExV0I5eZzlSchfoByhslZDWstIDi4BVzAsRE0GnaO9IcuCKiaF/aKHz6fnXTptPzxQEr45O4517A==
+ b=lCFPEZxAVJF6pQaaSAexr1nnrq1fXdHZpnsnRp+HeND5S9ll7bXKk0h6KX0nOwsMNEgSbm3B5rH/+IiIXODge34DQ43+FhmOyUX8Lf9/2yJOaAkz07K0spPbhM7Tf2GQwtH6b3ydyD7iszIWK+dZRPMSjtH7PAaDa7nU4jo6yWiXEZnIcfqLCPh0zkFlvwdPhG1RTT3/SymgTGPQMh5N8tbkjYL48NSss3WXu6K1n12gj4SUMFjp46XVZYYd3ohWA6F0k4ZbQxY4cTRci8tws162zRDvyWq1L4FHZbes/E+x7p1MFC59tqFAgnou9vu4Smjb4uZTnbFInU46L3v8Iw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ojblXnJZtQ5Nuzx6m+joOQlP2UKppSKbvBR1vJPNz8s=;
- b=i1bkE1d6bqQklSPyJ6C3v23AXFtw/nhCYAPnAzbUEvLrO5kTWczX3UVd5XO6EXvmWIebwJUdREAUpAtRQ0W9WPdOl23fFEC49O7KNaibmzuovYkvUObkYVMQb1qFJ4651Ctbd20pskCbHySMXnaxa7JWqwfxFYgebY2i3hnTcbPmUgRAGAQXxFx7gHhBUVwnMG4P9LeFaFsZMdUbuIZgfm95n+6Un0S7ocL2ydTh8x9BRzhWJmQ+dsacSDCCrGte0Wb5wywRJBx5Wh8/EdpY1VHmxS5jpZiiC7wON7W2KzLUEbkq925SuQK53tHgSQk+b2CHDyha4kZsiqY8iOCxxg==
+ bh=NJbnX4TeRlxTIlcfI4XS2zn0dkZIIquLuK4YVej9afg=;
+ b=fnMqdZv4MSqYKyQb9wbP3R2VmZ9SIaGdgCThhVwKJQBEOhs7XudEOcdJTbJn1TC3fA/c8FXchB1yKA6/XhJ88nFGGGPVd413t5MO1qfAA55AnBUna+4X2JiMyBl1wl+jlsNOIP2lHvI9EGlQ8rbWE1jjhzf1KhwbMYYUXndEuA5MFJG5PXT4LX+omT+MhoVLCOKjnMx3hVgi4CNb4MmPVAaAM9A3e4EBw+Gu4RqT1MgTwbr9J0m+Zz86ffYNRHvy5SpznZaGqyw+3aLTDO1swo/pln2rSya24jS1WMbK/rtkp4tHp1hTCulnkiXUBmynY7Rv6JnX4OAO17kzwRs7yQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=routerhints.com; dmarc=pass action=none
  header.from=routerhints.com; dkim=pass header.d=routerhints.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=routerhints.com;
 Received: from VE1PR04MB7454.eurprd04.prod.outlook.com (2603:10a6:800:1a8::7)
- by AM9PR04MB8413.eurprd04.prod.outlook.com (2603:10a6:20b:3b5::20) with
+ by AM7PR04MB6839.eurprd04.prod.outlook.com (2603:10a6:20b:103::9) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6086.22; Sat, 11 Feb
- 2023 18:43:50 +0000
+ 2023 19:02:20 +0000
 Received: from VE1PR04MB7454.eurprd04.prod.outlook.com
  ([fe80::e4a3:a727:5246:a5cd]) by VE1PR04MB7454.eurprd04.prod.outlook.com
  ([fe80::e4a3:a727:5246:a5cd%7]) with mapi id 15.20.6086.022; Sat, 11 Feb 2023
- 18:43:50 +0000
+ 19:02:20 +0000
 From: Richard van Schagen <richard@routerhints.com>
-To: Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Arinc Unal <arinc.unal@arinc9.com>,
-	Frank Wunderlich <frank-w@public-files.de>
-Cc: Richard van Schagen <richard@routerhints.com>,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v2] net: dsa: mt7530: add support for changing DSA master
-Date: Sat, 11 Feb 2023 19:41:01 +0100
-Message-Id: <20230211184101.651462-1-richard@routerhints.com>
-X-Mailer: git-send-email 2.30.2
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: AM0PR02CA0224.eurprd02.prod.outlook.com
- (2603:10a6:20b:28f::31) To VE1PR04MB7454.eurprd04.prod.outlook.com
- (2603:10a6:800:1a8::7)
+To: Vladimir Oltean <vladimir.oltean@nxp.com>
+Subject: Re: [PATCH net] net: dsa: mt7530: don't change PVC_EG_TAG when CPU
+ port becomes VLAN-aware
+Thread-Topic: [PATCH net] net: dsa: mt7530: don't change PVC_EG_TAG when CPU
+ port becomes VLAN-aware
+Thread-Index: AQHZPktX+C8b3oVL10yg7TqKJRr3Yw==
+Date: Sat, 11 Feb 2023 19:02:20 +0000
+Message-ID: <F60ED8DB-C0DF-4C28-8D40-A91DE698C165@routerhints.com>
+References: <20230205140713.1609281-1-vladimir.oltean@nxp.com>
+ <1C64196D-371F-41AC-B357-41100DC66C2D@public-files.de>
+ <20230211183143.2jb26kljgpwyc2jb@skbuf>
+In-Reply-To: <20230211183143.2jb26kljgpwyc2jb@skbuf>
+Accept-Language: nl-NL, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=routerhints.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: VE1PR04MB7454:EE_|AM7PR04MB6839:EE_
+x-ms-office365-filtering-correlation-id: 075087a2-45ae-488b-e1e1-08db0c628093
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info:  zAplOeC8wrzcFif7gBHxu93WUbUTkWu25wlW3pdMGeN5WkPRny2pOqu0XpXXbmjLQzpMbW5M/Q+jSK+sDTlWqmNW8GP7xEzovCMgQNZkTfRNLRBiXxvzweH4daRByqrMMbZgPgbF+CH2/tL6DvY6E2zMLtlkqgjs91qtqeoX/3/WQElshSzQIJ74W4xiG99UkoMNs56ZOCSdmGJjEPP+Yg0ZgwgokpggAz2Vojicm1+DGrdJNSqjMEGtsBihnu8iI0OJOsLY63yFC+tUdiAZRCHw3m65V2I+EgILRiJm3pMiAqhl519/eyQk7c2nG3+k/+x/ZzQBfQ6gCpzIgxQQ8/ljtj3benuAdn837KqLx5MC/3JhSINxdyjjidMN9ZggD6AVWjt3tvjxBJeLqQL35jgaF+PXH4XD+gkz40Fy/biHgopsBkGWfA/sHk8Nu6m9BMpCHcaf+czooDR/t6IUdpeCPIUzh0Ekt1S2lJuWUIrfEImiKG50h3jVA0Vw641/TqyxoE4sdDFIMerWRWiOCj5pW9Wg5NTxAkEWaaDq7kTD2hkKVi2PoEhdBm+XHYZtHuBK+NoTzrkOcuZuL8A6anm4wTwoZ2hZD1708IO07Kb4bbWdGDMm2cC+vE3IK/8VllNHlH1cb9twjjSppubt0K5HJD8fcJ4L9G44yEDL8/W6d/Vk8SqbJeY8pgwpZpVceH/GeMf+MV3IHXF8rlw9c4LXRvqE7wobgDxTE5MfC1l16fLk00rN4rO6eP9/teGUGH794WsERYo+5FMtn0DL/g==
+x-forefront-antispam-report:  CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:VE1PR04MB7454.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(346002)(366004)(396003)(376002)(136003)(39830400003)(451199018)(66476007)(66446008)(8676002)(66556008)(64756008)(6916009)(4326008)(41300700001)(76116006)(66946007)(91956017)(36756003)(38070700005)(6512007)(6506007)(53546011)(186003)(316002)(2616005)(122000001)(8936002)(38100700002)(5660300002)(54906003)(6486002)(478600001)(33656002)(966005)(4744005)(7416002)(71200400001)(2906002)(86362001)(45980500001);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0:  =?us-ascii?Q?GH/XS1UDkzlOh+TIr85v3GUugzkq1iIjFGYwe7zYpsdXNL834SvV+yho9Kpx?=
+ =?us-ascii?Q?k8Okxx1c51Gv3yQx3RsCKzhx3U2lVg5ismH5JNs9LnAOr9UkTR5EqtGXALHi?=
+ =?us-ascii?Q?UZchcohqKNIfyYKyNFvDaNoamCijm9tKGc3742kzC4NZKjHwAA1yqB9lHh/p?=
+ =?us-ascii?Q?ML7EHR96F/js/ragZyYZpN8wq781A6KvtB7EAOY4ZWzlTJPKGV5x+sTaIRww?=
+ =?us-ascii?Q?PD7LaeeFrlMDcw+OIkMZbG9/v6chY6gmbE7Lgd5xW9ZTxguBUPGdLZTmZ727?=
+ =?us-ascii?Q?LMHctlZCizxhbFzc3ZrNzU59tJaDVzPnrWRU/rt1DsBfvVsyNTGM+kK+SHWq?=
+ =?us-ascii?Q?gau1kqURVCtVb+m4osBiOpmSZ3wopOf7lIl5jGytf8a3VcQNkOoZRHRh75j3?=
+ =?us-ascii?Q?BqahFn62FNPktSkKKft7PZDSlacPDpauRzXQiNzgCmODPNTVZB/90aypjae5?=
+ =?us-ascii?Q?zI5jDCI49H2uCvjPJ+nfsUFobTPn6qyD0h9a1mbV3kQf8u7NZodRYV+RDjAj?=
+ =?us-ascii?Q?KpF3SFuxs1mVFaMK5O0DYpx/K5NUxPOdYKsqUtliSlEu/bvV4qoAdLOpym6c?=
+ =?us-ascii?Q?bh4aBXA+uNF3WhOit7bf4+ua8fAtPg+VGWfb1dr3UXu2YwUMJ96lc19jvGsk?=
+ =?us-ascii?Q?+d96ZIHKefLUxVThhsGH/2v0LYhiYZnf95jD63im6ijGE0y0ZTpA8QKtA9tc?=
+ =?us-ascii?Q?Pw9BBivh0xGTrZXl/3J3w/TJvs4TXkpmPdG2eIFzSYNbwci8+XRfpj1nq1Op?=
+ =?us-ascii?Q?zQI1XCtlCHp0ce3Tag8JUST+GDsTBiK/f4mzf3gzj1AAMxJLfBMRwEMndmFt?=
+ =?us-ascii?Q?hlilCEO8yPaeRqBIN9ifDPePKYfNZ0m+7ymJjr9zK5RloPS+g6HuCKBtb/hP?=
+ =?us-ascii?Q?Z1rg3BU8E6sdxi+qmr6e8gFitNrB1fKWHpN/xSrjgUW+2OAseMKy3euXOlpB?=
+ =?us-ascii?Q?RgYAAORwpgnAFrSnURfDIUBDO0IPBCfBG33KIb1rNc3RbZGlauqPS9vn3iqV?=
+ =?us-ascii?Q?F0NHpzf81Bbz9kYnw+PgrQ8BGCcckk+H8tjlashk48VSHH8oMwvGuhrbqfoA?=
+ =?us-ascii?Q?UY6rO/ps5pKWfJYkCiHZCUeKrmMzKdTXaE0ld79TwfYhaNN76Be7FzfsldHd?=
+ =?us-ascii?Q?13VmpSNj/MDqSqCcfGEX5tdwyDxXjjbHSsD28mDfMGbQymATVzHOVOtlhNFs?=
+ =?us-ascii?Q?XadU3QwFnR5DzxKHnBXebnpE1bAXLKKOFfK1i9XH4BNoZZs/9Qm8urjqUFXM?=
+ =?us-ascii?Q?3DZECW/uEtwOr1OpmyW+oIxkg5KDBhvXDVpzP/BHRKbnN2INdL2KBjfPp0lj?=
+ =?us-ascii?Q?h85oLnwix+Izr48P5RRemgpGsd5qJeT9YKd2do9XjWKrUl6Mty2XuDLbZRdL?=
+ =?us-ascii?Q?7lgwp07ljctcvQTZuFOiZ7M1Fb0iwvt8ldN0Qt3BCIOQ22Pkkda3YhMLVu+0?=
+ =?us-ascii?Q?XKo31DLWVyBOfLFMyA+DAQUflV+tqrWB2oI+Nd0J8csgxfxi5xEnguosYoQq?=
+ =?us-ascii?Q?EHSbx6CfW3iaZGL7O9I/AL5ns/tdslZQy2PU3g6p74Vf+gH8hO0W6SzNH3Hb?=
+ =?us-ascii?Q?ssX8fdXc9I7C47gm+1RMqZk+o282XPqjkOOGcmuXQEJwUrvRp7W4YxWdRqBW?=
+ =?us-ascii?Q?NUeBzeGa8IWrrzTmRNAbuXzWMjZckDNg+tD6Wul5mhFGr/6NInQZ4PDMvaA9?=
+ =?us-ascii?Q?cVp7wg=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-ID: <EE9E92790DE5E9418533758236EFF904@eurprd04.prod.outlook.com>
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: VE1PR04MB7454:EE_|AM9PR04MB8413:EE_
-X-MS-Office365-Filtering-Correlation-Id: da0f8893-9450-48e7-174f-08db0c5fea61
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	PRcxnX1m7rRzmO6EMr3LzKLCEkdyYOU4TBttahFlBKIgBUNxM/lbM3JmG1EV4rNh5WW8zb/m2qVSZ2nFRwBEt5kJQwoNEjLenwkLLRoC6IsBb34Q+yUHORdNkE+r9Dvzg9B4L5G4iaxlMoHjfb/fhaXmVaf8St8j7iP6f/Vd3rG3el4t1jfelV0zXBA8+e6V/Oh7pcXLx2LUvCK+/pLVEgbxHEBBw3PNdeJbwg+hynAxcdQb1QeRvRLze2obYktBX8GNzEafnxA9iJzFCWBgktxbKMkuJQDHWG/a/ze+ZVz3kML4JIfLm1MVd9MSz0KIp2me+CHCU6M7GpBflksqCGp2QK1v0nEO1J+8xPlkCwRNUQLVnVs55Vj+TtQw5/nHcxJLJSbBrIpYpgMFlQR7FhkkosZyfk4VWnjLWCPxtEByd7TuzEaSPw5hb6Kcbw/S682HIRuFAJ+5Tw9Swe6uK99/e5IuSITHuF0p9tZdk3BO6gKv+zi9VilEtCzLlDa4Lw9m/ZeUq5iKve2wuK8jira0/rS4ysPQCphKMdHiQF2tMsOWLsk6QAcg2KniCTY0OilIUqyG3gdM098BBQwC56N8K+H6U+HsyzM+1IMRNBZTzducYsUgZl3n4EvTQ1hc1ZofBO60d8cRXUwqJ3mUzBCWBvDWt+YQJXqP/Oz19q7VvJKyBPgJLHLz2Mf32v4d
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:VE1PR04MB7454.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(376002)(366004)(39830400003)(396003)(136003)(346002)(451199018)(186003)(6512007)(52116002)(5660300002)(6486002)(2616005)(478600001)(66476007)(66946007)(66556008)(66574015)(83380400001)(6506007)(6666004)(1076003)(8676002)(4326008)(7416002)(2906002)(41300700001)(8936002)(38100700002)(921005)(86362001)(36756003)(110136005)(316002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?S21Pbkt5SUpQWnV0NUFaNjlBbjk0NlJPekJpR25iSG8wOVhCSWpLZ2U0ekF5?=
- =?utf-8?B?V2RkSDIvL2RUUzkwa04vSEVCR29TdnRCblJFT0tXSVZWRG1LczRIL2dDRElz?=
- =?utf-8?B?dEJjb2cvZGh6Q1B3cXhIR2RmdHlLTklZd0pSQVgxOWowVVdkdjE3OFBCQWh5?=
- =?utf-8?B?d091cEdkNEM1RmlIeEFzbXo5VG1aZ2dkcEFhRjJIRTUxSDRTWXRScGxHOWRt?=
- =?utf-8?B?Y1EvY0J3eXhWdzNLRU93VVJ0bFAvQytXMlVBdkhiWVhrclRVN2hpd3pqYmYv?=
- =?utf-8?B?MHBlRUlPSUJBeGVmZ21GTmNYbnFYSXZEc1diYmhBeDZEc1A4MXBMUXg3WitG?=
- =?utf-8?B?WTVZR3RQRmd5bEVhWVR4UUl2RFFneEhtMC9QaE1aQWhVMlR2aDUybkFONzN5?=
- =?utf-8?B?M3F1VjNGcmp2bVZDa3d4Ni9XWkNGQXhYVTU0V2Y3d2pLZXZqNE1wQ2lka1lh?=
- =?utf-8?B?NzY2ZW9NSGtOcEZIcklhMUhBYktkZFlMMldsWDlTdTJ5OGh2Qkd1dFp4SXdL?=
- =?utf-8?B?NmxtSitYODB6aFFEWGd1dzNBZVBTeU5IMTZseGVkZXp4bkxxeHNBckhPYW5Z?=
- =?utf-8?B?QXB5QTR0U0JFNXREV0dadTlYTUMrWjhZZkh0N2xaQ0I2M1llRXFXbzg1K25i?=
- =?utf-8?B?MXJWNWpKM2VtUWJYTzNWWjdrbXB3MUFqWHhFbkZxdUJ0aU9lZUZSRGpRdHA2?=
- =?utf-8?B?OXRxaEptZFJ1L0taeXNZaVdBRGpPenYvdVkxblJza3kwN1JNcko4WnZaeldX?=
- =?utf-8?B?NVpZQVpmZWNmaGlRdW9LNGFiWkRZMFFNL0o5Qk1NdWtJYUFsSFBlVmpYQUVG?=
- =?utf-8?B?bEJsNld6OElMSHZWWDM1UUxsaHFBb0FmTDFXcDhjQU03cjZZOVZXNWZEcFlQ?=
- =?utf-8?B?ODhoVGVJcUg5emxKMndMTEgyNVZIeHNWNmxQMm16ZFpWT1M1c0daVlNaV3p4?=
- =?utf-8?B?WGdkdDdMTHBhdkNmcXdJTXVBSUgrVlBMRHZnSzk4N3Z4dmFRb1RZL0k4QlFa?=
- =?utf-8?B?M1RmWERucjk0RGZXSHhOdW5yU2d1TnFZVG1ZZHIvVVcvL1BGeVlSNHZIb2dn?=
- =?utf-8?B?cmhKZmp4UVNwUVhsMmVCa09hTm9Da1hNVlg5MktzS3BNVmpzQjlHMiswSzJX?=
- =?utf-8?B?QVNyN3ZZcnhyQnZlNWNZNG85R0pBbGVRWW1wVU1HNldETzdoeThvOWloVXNU?=
- =?utf-8?B?aHhsbkRhRlNWd3B0eXIwTkhmcklRdlBDeUpBOXhQdEV0N1J3azd3WlA5T3hC?=
- =?utf-8?B?MU9FK0VxUlFpRUNIS1U5OUlrMzE2TSsyUTdteDJWak0vN0kyejI5a2psY2hy?=
- =?utf-8?B?T2FMYWFkRVVveXRGcjJIRStSM01BZUUyK1lCM0U2UUF4WXMwWG1RUm01eCtu?=
- =?utf-8?B?YWoxVWYvS1duT0I3QTh2VWVuZktMQllVOXdZMlhiTFBDV3JJZU9GWmplblBS?=
- =?utf-8?B?VGwzdzJsTFNjYmZCNmpxdkM3cTRuLzEzVkEwUHBrN1Y1a0RidEFoSnFpdDd1?=
- =?utf-8?B?c0lPUnVtSi9FeFFOU2NhcHI0SGtGVjBheHpERk9wdHNYWFNyRTY3NWlLeHNJ?=
- =?utf-8?B?UDM4MmV6R041THVzZ3Q1RkdFa2l6MXJPU2JpTUhjbDFvYzlrZFBJSkh4Y1Rv?=
- =?utf-8?B?SDNLSm5nREF6NnFhbFBMeEtMVSs4dll1eDF1RW41TTF3T1FuTXpXY2xRemNq?=
- =?utf-8?B?SURYZlFtUzB0TWM0eStLZm1LWFRna2k2SXFVVm5najJGOThkMXdNYmRPV3Ex?=
- =?utf-8?B?cWVXaUk1d0RObWQ2cWdJdExUT09wRTd4dzRJMWlKRkc2c0pLeVJIRC9rRzRr?=
- =?utf-8?B?R09ZSGhOT0s4WlBybXlEaXJWcURrWU05dGl4ei8xYk9mYzhMREFjRXU5a1Y1?=
- =?utf-8?B?Y0djZmkyNDVMSUF4V2FlbjUrNTNGMWJPd3dhRmNYWll1czV4b0JxU1JrK2d0?=
- =?utf-8?B?dTVZbjdvL1J4V1hUS3J4eDlFdVBGOElqcVE2d2N6UGJQbG55cFhRQnlkUnYv?=
- =?utf-8?B?MW5WZVVBS25FbVdHcVUrUXgzVXhqeFlKZU04a005S2VzY05ydWxEbFlkOFN3?=
- =?utf-8?B?OVRTTUY5anB5dXRLQ0NWc0hoT1pQNmdJVFlkUmhNZFJnbmFmemVsZVBtZzBr?=
- =?utf-8?B?U1RCS3A2QS9BOFpYdVRDVjBPUU92dFVtK1VvWUxwYTBnSmZNeEFzVzVKSmR3?=
- =?utf-8?B?VVZDZ2hmTDhuVGFES3RkTGtEWlYvRlgzdVVqa0VmTElBTW9XdGkxNXNpclhS?=
- =?utf-8?B?dkMycVdRZi85SFRVZDFuY21LNG9BPT0=?=
 X-OriginatorOrg: routerhints.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: da0f8893-9450-48e7-174f-08db0c5fea61
-X-MS-Exchange-CrossTenant-AuthSource: VE1PR04MB7454.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Feb 2023 18:43:49.9214
+X-MS-Exchange-CrossTenant-AuthSource: VE1PR04MB7454.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 075087a2-45ae-488b-e1e1-08db0c628093
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Feb 2023 19:02:20.5935
  (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 28838f2d-4c9a-459e-ada0-2a4216caa4fd
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 6ZdTjZ8Nw9iqiyP+TmjjUiUtH6lumvKjzjHK3Xq/NKF338CJSH/hQzNgdE4117VhYMx5pgLVe9z/22QTnjJ3Eg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9PR04MB8413
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 28838f2d-4c9a-459e-ada0-2a4216caa4fd
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: rdVAaBoDrp35L3ubshPkgK8Bt7hmrnY9gyf/pc3gvAMhH8dOlnuU6gwQu6RNmFVkw2J8UuVom6Egb8PEMPqgKw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM7PR04MB6839
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230211_104354_881897_0E98A0FF 
-X-CRM114-Status: GOOD (  12.18  )
+X-CRM114-CacheID: sfid-20230211_110231_352960_4169CED8 
+X-CRM114-Status: GOOD (  10.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,68 +129,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, Sean Wang <sean.wang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for changing the master of a port on the MT7530 DSA subdriver.
 
 
-Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-Signed-off-by: Richard van Schagen <richard@routerhints.com>
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
----
- drivers/net/dsa/mt7530.c | 30 ++++++++++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+> On 11 Feb 2023, at 19:31, Vladimir Oltean <vladimir.oltean@nxp.com> wrote=
+:
+>=20
+> On Sat, Feb 11, 2023 at 07:04:14PM +0100, Frank Wunderlich wrote:
+>> Hi,
+>>=20
+>> Can this be applied to next too?
+>>=20
+>> It looks like discussion about different issues in mt7530 driver prevent=
+s it picking it up.
+>> regards Frank
+>=20
+> https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/commi=
+t/?id=3D0b6d6425103a676e2b6a81f3fd35d7ea4f9b90ec
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index b5ad4b4fc00c..2374166c4858 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -1072,6 +1072,35 @@ mt7530_port_disable(struct dsa_switch *ds, int port)
- 	mutex_unlock(&priv->reg_mutex);
- }
- 
-+static int
-+mt7530_port_change_master(struct dsa_switch *ds, int port,
-+			  struct net_device *master,
-+			  struct netlink_ext_ack *extack)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+	struct dsa_port *dp = dsa_to_port(ds, port);
-+	struct dsa_port *cpu_dp = master->dsa_ptr;
-+
-+	if (netif_is_lag_master(master)) {
-+		NL_SET_ERR_MSG_MOD(extack,
-+				   "LAG DSA master not supported");
-+		return -EOPNOTSUPP;
-+	}
-+
-+	mutex_lock(&priv->reg_mutex);
-+
-+	/* Move old to new cpu on User port */
-+	priv->ports[port].pm &= ~PCR_MATRIX(BIT(dp->cpu_dp->index));
-+	priv->ports[port].pm |= PCR_MATRIX(BIT(cpu_dp->index));
-+
-+	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
-+		   priv->ports[port].pm);
-+
-+	mutex_unlock(&priv->reg_mutex);
-+
-+	return 0;
-+}
-+
- static int
- mt7530_port_change_mtu(struct dsa_switch *ds, int port, int new_mtu)
- {
-@@ -3157,6 +3186,7 @@ static const struct dsa_switch_ops mt7530_switch_ops = {
- 	.set_ageing_time	= mt7530_set_ageing_time,
- 	.port_enable		= mt7530_port_enable,
- 	.port_disable		= mt7530_port_disable,
-+	.port_change_master	= mt7530_port_change_master,
- 	.port_change_mtu	= mt7530_port_change_mtu,
- 	.port_max_mtu		= mt7530_port_max_mtu,
- 	.port_stp_state_set	= mt7530_stp_state_set,
--- 
-2.30.2
+Sorry, that patch is wrong. In the shared tree with Arinc I have a differen=
+t version. One without any need to set / change anything on the CPU port.
 
+Let me check with Arinc before I send that one.
+
+Richard=
 
