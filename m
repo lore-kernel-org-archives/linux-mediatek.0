@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0AF7C636CC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Feb 2023 12:46:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A014DC636CC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Feb 2023 12:53:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BLTpt9NribeB5KMCID04Kp1GCZg75vTmz/0Yqc7IzK8=; b=QCjPrA4A0uzKF5QBFzz8nO9yEp
-	67dweXABJ59XqDQLzWRwP9zY0s725NxwOoOuXAdq70Zg3MzpeHpeJOconbVUs62deNV6etYmga35e
-	EuWuOGSCV1SSgvCooi17Ynww01FbSTS9F1CVbHDv3cl4Xbt+48RD/ZfPJxRCPvx1foc1GAx3DeGIv
-	6/l4VpTs91cKKEb7Zs6/JPrVokxOYGM7+BnSqOJ0wGXIqqtHE+8UNesmZUTcSgdFROHzA/Mwqo0ig
-	RbQaAjvrmjyOiN4oNwpmiBioFWDp2PNLFmFd8Xjz7lBJl9Wzov8qbpr0ocfN8uhsauU5Et8HyYvhD
-	9/PSpAFg==;
+	bh=nHf5K/3CxkfPe8qKwrnhaJIdaQB3d06R8C9LSCDVA9Q=; b=JUjv2Fppnoa7ZNkNZug10tbgzU
+	C+nZksUB4EU1cN+GhvyOcd+lkRBZJkKytfaAcfq4p+HQ7lWR3+O4KsD64w1d2kC3aL0MTDSa3JEZH
+	M1VnbFZkM6ZYwD51HL5y5YTdG0p2zAf0cx9OMMa9ksZOiG1ODUd8oBFcTyAWFaKDC8vOL3iHgnVHr
+	9hchUbHMVt3VFE4BN2oyADwB6tAP5cz9ZYDoGexrwSM+cpiqq5+MSmFc4mPNX1CMXr2DUCNhROoQG
+	6seQRRTqCJ5usztWRlulBrKFsG5dIwUPNzScdz9bl+7h/MAM9zsi/K2737O/j7FxyEs+mCDS/7pcC
+	ppGjuzTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQpGx-009SwC-SO; Sat, 11 Feb 2023 12:46:31 +0000
+	id 1pQpNQ-009UCT-Pp; Sat, 11 Feb 2023 12:53:12 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pQpGu-009SuL-Ep; Sat, 11 Feb 2023 12:46:29 +0000
+	id 1pQpNN-009UAZ-Qn; Sat, 11 Feb 2023 12:53:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
 	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=BLTpt9NribeB5KMCID04Kp1GCZg75vTmz/0Yqc7IzK8=; b=SYdAdt329gXs0IyLorGGnNrYdS
-	DiDXFkDFWfxgHN3HJC5FK/t2HW2KvLZkhzruaFkR2Pcf4qf6KMOR+mto7EY92Gruhe/BTtRiFCL2h
-	sp2wW+5rsLboE6bTcfE7fnViX6xGGVT3Ua/+nhB/VO2+7jiPTkEY64zzXDCB/Uidq18tbLbQ7er9+
-	hueOkzq+yPWOuu2Xa7Bi9CWzYWyD+7Y0hZClKdV3mNMr05nqCYDYiXHzOZgOpWHM/ErFUnbsQzefn
-	LL3JOtDQSva9o74ZvNnaO5ieglQUUgFrf6cUjeckaQyeKnMhvPzNh/7IWf0X6f7EDVKWC7rGqLEgx
-	KsLL4OVA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:60042)
+	bh=nHf5K/3CxkfPe8qKwrnhaJIdaQB3d06R8C9LSCDVA9Q=; b=urQL6xNx2HjJhmtsqQyY908gKl
+	comEalff9Uut+3IQksKlW0ut1njxVu6fkf61ncyQgk6KUkxzae4ldRdHD9QG14DMGi8Rr+8jQH6Vl
+	Zi/A4Anp3XgqWROgf6cPthHpJH3HeqNFVO60AswahpR38ELW/mRLNtE4WpiVbeveMNi7h0dMPLgl7
+	khNwe+hQfguR06pD2fXNjZfkQZPUet/a2ithDrWvS3CeCurfSKpFDqfGg88ePagiAMgyiOmGm6FNa
+	y5oEDruz8vlQJXRxBpZbX2f/nv+mUscYzNhrybocVD3Pn2aBdr6YvhpPfrfatRc78NrgIJmZGlqZd
+	xvTtojog==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:48374)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <linux@armlinux.org.uk>)
-	id 1pQpGk-0001av-9g; Sat, 11 Feb 2023 12:46:18 +0000
+	id 1pQpNJ-0001bb-EX; Sat, 11 Feb 2023 12:53:05 +0000
 Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
 	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1pQpGd-00017Z-BF; Sat, 11 Feb 2023 12:46:11 +0000
-Date: Sat, 11 Feb 2023 12:46:11 +0000
+	id 1pQpNG-00017o-Lo; Sat, 11 Feb 2023 12:53:02 +0000
+Date: Sat, 11 Feb 2023 12:53:02 +0000
 From: "Russell King (Oracle)" <linux@armlinux.org.uk>
 To: Daniel Golle <daniel@makrotopia.org>
 Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
@@ -65,20 +65,17 @@ Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	Florian Fainelli <f.fainelli@gmail.com>,
 	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
 	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
-Subject: Re: [PATCH v4 07/12] net: ethernet: mtk_eth_soc: only write values
- if needed
-Message-ID: <Y+eOEx2KqvfV4TNo@shell.armlinux.org.uk>
+Subject: Re: [PATCH v4 10/12] net: pcs: add driver for MediaTek SGMII PCS
+Message-ID: <Y+ePrq4pTLOuTNIc@shell.armlinux.org.uk>
 References: <cover.1676071507.git.daniel@makrotopia.org>
- <ca95a266578bc52df44b432dfb2de7410d5202d9.1676071508.git.daniel@makrotopia.org>
+ <1df6229f353a093279d707f8841d71b65aec4d90.1676071508.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <ca95a266578bc52df44b432dfb2de7410d5202d9.1676071508.git.daniel@makrotopia.org>
+In-Reply-To: <1df6229f353a093279d707f8841d71b65aec4d90.1676071508.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230211_044628_518902_B622305F 
-X-CRM114-Status: UNSURE (   7.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230211_045309_903968_E3915426 
+X-CRM114-Status: GOOD (  13.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,16 +90,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 10, 2023 at 11:38:36PM +0000, Daniel Golle wrote:
-> Only restart auto-negotiation and write link timer if actually
-> necessary.
-> 
-> Tested-by: Bjørn Mork <bjorn@mork.no>
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Hi Daniel,
 
-Reviewed-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+On Fri, Feb 10, 2023 at 11:39:59PM +0000, Daniel Golle wrote:
+> +	if (mpcs->interface != interface) {
+> +		/* PHYA power down */
+> +		regmap_update_bits(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL,
+> +				   SGMII_PHYA_PWD, SGMII_PHYA_PWD);
+> +
+> +		/* Reset SGMII PCS state */
+> +		regmap_update_bits(mpcs->regmap, SGMII_RESERVED_0,
+> +				   SGMII_SW_RESET, SGMII_SW_RESET);
+> +
+> +		if (mpcs->flags & MTK_SGMII_FLAG_PN_SWAP)
+> +			regmap_update_bits(mpcs->regmap, SGMSYS_QPHY_WRAP_CTRL,
+> +					   SGMII_PN_SWAP_MASK,
+> +					   SGMII_PN_SWAP_TX_RX);
+> +
+> +		if (interface == PHY_INTERFACE_MODE_2500BASEX)
+> +			rgc3 = RG_PHY_SPEED_3_125G;
+> +		else
+> +			rgc3 = 0;
+> +
+> +		/* Configure the underlying interface speed */
+> +		regmap_update_bits(mpcs->regmap, mpcs->ana_rgc3,
+> +				   RG_PHY_SPEED_MASK, rgc3);
+> +
+> +		/* Setup the link timer and QPHY power up inside SGMIISYS */
+> +		link_timer = phylink_get_link_timer_ns(interface);
+> +		if (link_timer < 0)
+> +			return link_timer;
 
-Thanks!
+The change in patch 7 needs to be propagated to this patch (moving this
+to the beginning of this block of code.)
+
+Otherwise, LGTM. Thanks.
 
 -- 
 RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
