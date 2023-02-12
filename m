@@ -4,81 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E377DC636D3
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Feb 2023 20:24:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63E80C636D3
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Feb 2023 21:42:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HWFilNanFTJVAlWw1g+V6egLGtcyns2owNf2QnUOtlw=; b=O1Hn1McsDFIl+5x0iIWcYqOhP2
-	VAF7rKq+0CaunsxGKJ0w/JjH9KwIUkdlks4t+eRYWYi/QAwAIyLin4YEvARWL/TG3rQf1iEi4HxfO
-	mO5/InOSxJP2AE9yJy5kNux6dKH79A7U+m4PJapTie+8fDn4sAzwtri4pcUKUmQRiVxD/qaWVNKcn
-	3Suuksqh6LWvCXSYk33m5m8s5yLnC72R/wHUqNwHstxeaLSmbzrAlzX3bI/kN4+ZV+Sciot9juQBQ
-	xOw4qugqnvgaPLD9waFaTXnLm2zLXu6qiKpV7lgiuOQbsqZ5+rf/1AibkrTuk2rxyftEx1zncYK/1
-	X9LwuXYQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=lqEZbnWlQOqLMsymQrXzwDxWrFiiFGuJ1rqroX7iqhg=; b=cOzwUlSM9Zaos7LQPzUJ/SciaP
+	YWa1Rys4h17vtOBsZtiT41sD7qSVm+b1UlkplvjOyPiRhVjfj4TQOcWNxiFKzDWjuIM135l2ci0bn
+	qpyq2nZUjyLiwZJJevp+jWaohZhb4e5oQonYmdyB3a0KXRNWMyN+3GugbDMNIhRWqlKVTFbzbTUs+
+	s0UYCeUUtuNthZSzBKIS6BzlFjCy91C1OjJLLmu4o78aiHckfBb6cSFL64P+DLd5hVdp1t1tY8yzu
+	B0/S3TC4zuUaPLLwKQIlLv0ZBixDSXZXvQSSDHAqS3UL1f/Surru417NrbmSJJ3I4aGu1K9DuMkJ8
+	wYzid0FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRItS-00CGZg-S8; Sun, 12 Feb 2023 20:24:15 +0000
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
+	id 1pRK70-00COtJ-QA; Sun, 12 Feb 2023 21:42:18 +0000
+Received: from mail-he1eur04on0618.outbound.protection.outlook.com ([2a01:111:f400:fe0d::618] helo=EUR04-HE1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRItQ-00CGYn-2I
-	for linux-mediatek@lists.infradead.org; Sun, 12 Feb 2023 20:24:13 +0000
-Received: by mail-pj1-x1036.google.com with SMTP id f16-20020a17090a9b1000b0023058bbd7b2so10359845pjp.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 12 Feb 2023 12:24:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=HWFilNanFTJVAlWw1g+V6egLGtcyns2owNf2QnUOtlw=;
-        b=xIoeiysSVuOwzvHR2WqylR52/VFPJD8QO7aSMzAG3vsUdQ6ku/KCjEFhbvyOi7gp+F
-         ehZP+1uD9OGRznzjLNGSNa8MFEGCMwr+AKeEDDDDTslECNoGkaVzzYqYD4AHo0Y/T17K
-         3sRYUcwc0rvCF7OAwrk26/m9l87ytWMQoYaVv5PqPmW0VAiP3KqNg9kj4OJTFWKffF/k
-         uMVXczGpvPNo7ev/VDa5mc2NXgrO3LUNogegQacTyz0nXFCNdpeDkDqidwZPS9KmUNGi
-         mXVdRSnshsnkHqv56iV0s+RL1fYO6+v3AzKQapq0R4kSA+rGTU4iL23+zXFEtrLPe98a
-         SDZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=HWFilNanFTJVAlWw1g+V6egLGtcyns2owNf2QnUOtlw=;
-        b=vm4sqx8RQzKn1fRH26dtLrtb5IAF+7MmE0l355CDmWMGgs1PC+Tlpra9Hv3mu6kxli
-         cPwJ2fqXkdv+ekyhtb6BLAhXq3t0QpiWRPNFCgqR0dBH45tJwjZ0Yy4vYpSfLfeO73bw
-         mCJt4L+fIKkj3/ILqkx0KYQ4p/oHDpRr+7vhHYBy0xUwKDVEiuOfKSZn0bPlbxBV5vUc
-         /hpyFHjvvpFimTFgRLFVRzJa3bs9woFMn2pWuICFUvtWpqL7M7zEPViKhdUnx+V1QyB+
-         Gc+WRwFjyLfCeY3h2kQKqh0w5wQUA6hmGIR6hv7Vs+5zGOf9PBMYHothvdGHvAx33W0R
-         hwVg==
-X-Gm-Message-State: AO0yUKXAaZcOZ1yWwyqLPafyd24gGlZgP2vanId7GD2OqoHp1x+S3ziD
-	sBPK+7n/nk7uLxG8s6xq60le5w==
-X-Google-Smtp-Source: AK7set8zTR5ia6k+GSss5gMoHr+xULpIqmDtvcfml6k8ThLqQ/yaeMPpmag80oG2dnErsUif+Th3vQ==
-X-Received: by 2002:a05:6a20:1453:b0:c2:4766:2b59 with SMTP id a19-20020a056a20145300b000c247662b59mr25045910pzi.21.1676233449184;
-        Sun, 12 Feb 2023 12:24:09 -0800 (PST)
-Received: from p14s ([2604:3d09:148c:c800:ee79:a5b1:b638:330c])
-        by smtp.gmail.com with ESMTPSA id j14-20020aa7928e000000b0058d8db0e4adsm6705528pfa.171.2023.02.12.12.24.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 12 Feb 2023 12:24:08 -0800 (PST)
-Date: Sun, 12 Feb 2023 13:24:06 -0700
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: Bjorn Andersson <andersson@kernel.org>,
+	id 1pRK6o-00COrP-Jk; Sun, 12 Feb 2023 21:42:08 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=OWM2rjMfHX2zbIHge9XwgN4NyEHbItvn79FvOvIRdXZGCa9NiY4vzWaqtvt2wO6Qhy47zhqORuLOLp2UehTww0uBcSZY0ZPH/l2Y5jgxaQSoB7hRXjc3TZ4RTnhI5XxNBceLram6GzSEbB48pcn0CJ3jErvCLdO3/TF2WeNKXoWADKB+hsjJYDzrqTSfb2X3UM0itXguSrghLh4hTkG4WEGHAkUYQgA/qz59UP2DzfNSsqNx5Ji+gr2ekbwM/HIDMgqmN8U8b6X0FdT98cNnWyRkJbvF8jXqUJcT+SPc3Mx9ttK1kULjN7RVpaRPFp7lLLKRq2B8T+vwuA2AWEgp+w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=lqEZbnWlQOqLMsymQrXzwDxWrFiiFGuJ1rqroX7iqhg=;
+ b=NP6yI4tbIq1hQmLiAItMfTyVoYNNAWyikvkRcKr1PIp7/B96K3nNzgEPsWDK5gbZGJY+FD99xhFWEOJYPcyQX99j1oo/mz3voO7pNp8hNDR+Vpn3o8YVRhmUOMGXZ5m2XHFYv0Sbmfnc+oSxL8iWy+uaW1WwiYD7L/9WZWovG/7DOEOAeodDdh0uQn/vbmop+kGYPJ5ixdoRnhN/TxA0m+lQg5LT7fqL5IxpXDiep/C69ViA4EAnuOXuFQXTHgya1MIcBNEK+qb9cKT2hjqd/pC4zeC3SULvx6S8r5faVoID7VgoqXElwj2hvhbPD/XpExHDMJ3FfYW8xoCE9ag8sQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=routerhints.com; dmarc=pass action=none
+ header.from=routerhints.com; dkim=pass header.d=routerhints.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=routerhints.com;
+Received: from VE1PR04MB7454.eurprd04.prod.outlook.com (2603:10a6:800:1a8::7)
+ by VI1PR04MB7149.eurprd04.prod.outlook.com (2603:10a6:800:12e::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6086.23; Sun, 12 Feb
+ 2023 21:41:58 +0000
+Received: from VE1PR04MB7454.eurprd04.prod.outlook.com
+ ([fe80::e4a3:a727:5246:a5cd]) by VE1PR04MB7454.eurprd04.prod.outlook.com
+ ([fe80::e4a3:a727:5246:a5cd%9]) with mapi id 15.20.6086.023; Sun, 12 Feb 2023
+ 21:41:58 +0000
+From: Richard van Schagen <richard@routerhints.com>
+To: Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
+	Arinc Unal <arinc.unal@arinc9.com>,
+	Frank Wunderlich <frank-w@public-files.de>
+Cc: Richard van Schagen <richard@routerhints.com>,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v1] remoteproc: mediatek: Check the SCP image format
-Message-ID: <20230212202406.GA236598@p14s>
-References: <20230210031354.1335-1-tinghan.shen@mediatek.com>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] Fix setting up CPU and User ports to be in the correct mode during setup and when toggling vlan_filtering on a bridge port.
+Date: Sun, 12 Feb 2023 22:39:49 +0100
+Message-Id: <20230212213949.672443-1-richard@routerhints.com>
+X-Mailer: git-send-email 2.30.2
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: AM0P190CA0001.EURP190.PROD.OUTLOOK.COM
+ (2603:10a6:208:190::11) To VE1PR04MB7454.eurprd04.prod.outlook.com
+ (2603:10a6:800:1a8::7)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230210031354.1335-1-tinghan.shen@mediatek.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: VE1PR04MB7454:EE_|VI1PR04MB7149:EE_
+X-MS-Office365-Filtering-Correlation-Id: e6621a02-39cb-4f19-31b7-08db0d41f757
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	1Z77X2P7JYrhmvEAlz2AgQ5YLCCAg4hL6immVhj7N1wPQ+qh+rvdT1AYaRvoWyBHtqZngGo7aKYmyHqeFrtJNQlXsDMbDG9HlC80uIKzK0DxMdmgWV2Z4GYTDr6eQ04+bhwLG7tlhkEOqJBvsFBH9rZW4riMUFwXVCtj9FzMjdu3mL1PDt2cmUrgdlrj2FkER1rcFA8Ze3zL3XbXCTxDvE9ruJYScqsUG0MBlUq0/YRj88zbLzvB7R9XKGUM5v7AYmfrbHPkUP9i2pSXRx1i8K4p1iJw/JoaLjlTCWSrFebA01QFEsOj1NW39DQpmLzmPye4ZZK7K6Hf4zZLF87GVUYrIzkWmSwoeD8r9gZyRXyGoLPvj1Evq8HxOiJKU+HXe81sbTaTB5peMklSRhkAOS0/vZksatoZA08CySL2TFj5TbA+eF9Tc34yr/LPx0iawKBJ3T45icQc4ZAZtYdWaKmQY+zHYZdZl/4Xtpg94nSJKfBzZm9IBAyfdyF0gVs1ZAfrB2gTkEQq4JPz3h9KdlX53CIdnz/02w4GoifnQyb4LnC8rXmPt+tpQzO34U9aifCb8O4PFbm+idg+76jDdbLyLXzjBdRE4AG/KfsF5baYHoDjsSSOENnwgUUNngVHLE6r1QutOb4swa02iGt33lbIYoVUmD9dySgBY4YqpNVopozh8TKDXVAOSen6kOXo
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:VE1PR04MB7454.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(346002)(39830400003)(396003)(366004)(136003)(376002)(451199018)(86362001)(478600001)(2616005)(6512007)(186003)(4326008)(8676002)(66946007)(66556008)(66476007)(6486002)(6666004)(52116002)(1076003)(6506007)(110136005)(316002)(921005)(5660300002)(7416002)(83380400001)(38100700002)(41300700001)(36756003)(8936002)(2906002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?Wr5qMSBC00GjZjlXSE4blMVMwhsYsaeukgY7XezRYd1JmpnosHBhywI+EC0S?=
+ =?us-ascii?Q?ZmEIZo7NZ/zQiNHxc20flAJHP7skSAi0Nb4Kc5TrXe+5QjennkW0T6Yk/cxL?=
+ =?us-ascii?Q?ZGy5PpF50bmZ1vTKBHx6MondsLAK7iDQWgniwADj1nwqfngI+v9woRVop2TT?=
+ =?us-ascii?Q?quVpiLJQeMJ5qfyV8Oe0bAgeV5tvZ4ORac25e1kbht0vkkFkJFqLLmBpuzTc?=
+ =?us-ascii?Q?RSXmiADtYIej4uKOs23PZhk/Y8J/0an7bsG6UxbDOpMGL1wBWU9ccU+U2vjz?=
+ =?us-ascii?Q?GIbv7JLmethFp/l7qGeH7f0m/Wa8v9c4ScXvGj9vU9/CIKoJ1GV1IUhurqWe?=
+ =?us-ascii?Q?o6AiA0vE/ZAQdUzjNNB11JL00OXwoDdC5mRxP+YSFO3FPbO/MQsRMzLbQ4d9?=
+ =?us-ascii?Q?3KzcD/Gn4ZNfkNA1HB13izc4qcGem3kA9jMsaq9GrVk02ZZx63wmrbbX9stC?=
+ =?us-ascii?Q?M9drpmsrXIX7DE5cvwmfociJVLS/X+s71iNFBrII/ykm96n+XWAmND2GF/v9?=
+ =?us-ascii?Q?O9eTvEIoZgFDqip0obGlwR2I2+jTCAEXzYXBXZL9L50HjWckzLXwR+bCKMlH?=
+ =?us-ascii?Q?/qvwT1Spwx8/Bds+MGG35rjpBJmOOGaJ/ggQ6vw+w8rZT/L8JtjlZlPJpI/G?=
+ =?us-ascii?Q?z+kCfxycEyfpPGkz71VLhUYjXHHBseYhbu5ipQoCP9Bs3uUrQFMiNc0W1UPY?=
+ =?us-ascii?Q?IZmVcmMkMQ/H+r0AgJdJZse5qZBhywHrO9LL9wd5vlnHsL2+fzfWeUtjKMXw?=
+ =?us-ascii?Q?aTF/4/4SaVWs0l8T63pyY8nyFCmgVuWEDbrczshezkNTK3O+seHCf1chIsuU?=
+ =?us-ascii?Q?bslyb3euZvPgoRjYZmW6sco7x0hn3bWScHKbUdE+D64TfSiNW8BSk+lGOPf/?=
+ =?us-ascii?Q?MSjZ78NOIIcob1SzVm43TsHNakhs7FUY2i5xTPBYLTNDUnNi7sVg0exQGzcS?=
+ =?us-ascii?Q?FIv5FV/omiG0/uZPo0kTIve9LBp7b1ESeeNjAcrDB8LSZfIJLThLSg+NiKwR?=
+ =?us-ascii?Q?/7l1cScCXNjXNKr71xqwykY1ZUKudxhPkTfDf50IHbmxkPEhFjbdoVoJNAmr?=
+ =?us-ascii?Q?LJKlQuGKyjSRrx1IxuRTSfL3ld/RWZFAy3Mf4eQUdU5MKvTstNzfLbzhKOFb?=
+ =?us-ascii?Q?bY/5Snq6TSkbEyCFm7anp44TTL2/laix+pj5Ex3YfgdsZOeUcab05Gbv3tsV?=
+ =?us-ascii?Q?if4zpi0nL3YDjxF76NySU3mEvzT1EOFejbLINiGQSmNbr0qw7i7WeVVa1R2L?=
+ =?us-ascii?Q?qpCy139jRwPK5I/OLG4AYPcBBqaiKxdhfShI8/ZuGHUkL5aYYR9YgiawuuhM?=
+ =?us-ascii?Q?3nODHz36cD0YPBBgy4FCZbv8JqOt+OitKSlX2Q4mVmTgTNM32Cs0P6OPl8h8?=
+ =?us-ascii?Q?0Z6ln9udQbniGQWSCOGM7Wu7cV8r6nBVQQ0IcEJe2a2jVSCQFBepKV4BZeTp?=
+ =?us-ascii?Q?gbaJoV9XChei0/In/1vbN/iRgSnp5DKaOGyoAtJBYpWcbo8x8Xe3VfimepoI?=
+ =?us-ascii?Q?RAiq/vOlDMIa2k0Q1rMAStkVI4HuW7aSDoFHHh3KZUd+fM8bE5oFIyAaNNsp?=
+ =?us-ascii?Q?wYMtZPeX4NOpA6VsLQzw7bJrSIgfhqELrZ8H2hkyDBp0t7LBNWjF3Lc16czJ?=
+ =?us-ascii?Q?QWNayFnqPit59Fm9hqZUvP9epOCjzZT/PM13e9iaOxLOOTo0dpb9dzAleG+P?=
+ =?us-ascii?Q?xoKFAg=3D=3D?=
+X-OriginatorOrg: routerhints.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e6621a02-39cb-4f19-31b7-08db0d41f757
+X-MS-Exchange-CrossTenant-AuthSource: VE1PR04MB7454.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Feb 2023 21:41:58.0372
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 28838f2d-4c9a-459e-ada0-2a4216caa4fd
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Qcr/jNfGzAPmCBRvZYxG5aMteZ6mDuo8Ew73jF+pyuDl7oAeuyGtwGeCLrdxRc8npnofPp79ItZ3o+pXzV1KMA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB7149
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230212_122412_165761_B88763A9 
-X-CRM114-Status: GOOD (  14.72  )
+X-CRM114-CacheID: sfid-20230212_134206_696514_F73B1265 
+X-CRM114-Status: GOOD (  22.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,34 +141,201 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 10, 2023 at 11:13:54AM +0800, Tinghan Shen wrote:
-> Do a sanity check on the SCP image before loading it to avoid
-> driver crashes.
-> 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> ---
->  drivers/remoteproc/mtk_scp.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
+---
+ drivers/net/dsa/mt7530.c | 124 ++++++++++++++-------------------------
+ 1 file changed, 43 insertions(+), 81 deletions(-)
 
-I have applied this patch.
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 3a15015bc409..f98a94361c84 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -1027,6 +1027,12 @@ mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
+ 	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
+ 		   MT7530_PORT_FALLBACK_MODE);
+ 
++	mt7530_rmw(priv, MT7530_PVC_P(port),
++		VLAN_ATTR_MASK | PVC_EG_TAG_MASK | ACC_FRM_MASK,
++		VLAN_ATTR(MT7530_VLAN_USER) |
++		PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT) |
++		MT7530_VLAN_ACC_ALL);
++
+ 	return 0;
+ }
+ 
+@@ -1229,10 +1235,6 @@ mt7530_port_bridge_join(struct dsa_switch *ds, int port,
+ 			   PCR_MATRIX_MASK, PCR_MATRIX(port_bitmap));
+ 	priv->ports[port].pm |= PCR_MATRIX(port_bitmap);
+ 
+-	/* Set to fallback mode for independent VLAN learning */
+-	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
+-		   MT7530_PORT_FALLBACK_MODE);
+-
+ 	mutex_unlock(&priv->reg_mutex);
+ 
+ 	return 0;
+@@ -1242,15 +1244,6 @@ static void
+ mt7530_port_set_vlan_unaware(struct dsa_switch *ds, int port)
+ {
+ 	struct mt7530_priv *priv = ds->priv;
+-	bool all_user_ports_removed = true;
+-	int i;
+-
+-	/* This is called after .port_bridge_leave when leaving a VLAN-aware
+-	 * bridge. Don't set standalone ports to fallback mode.
+-	 */
+-	if (dsa_port_bridge_dev_get(dsa_to_port(ds, port)))
+-		mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
+-			   MT7530_PORT_FALLBACK_MODE);
+ 
+ 	mt7530_rmw(priv, MT7530_PVC_P(port),
+ 		   VLAN_ATTR_MASK | PVC_EG_TAG_MASK | ACC_FRM_MASK,
+@@ -1261,27 +1254,6 @@ mt7530_port_set_vlan_unaware(struct dsa_switch *ds, int port)
+ 	/* Set PVID to 0 */
+ 	mt7530_rmw(priv, MT7530_PPBV1_P(port), G0_PORT_VID_MASK,
+ 		   G0_PORT_VID_DEF);
+-
+-	for (i = 0; i < MT7530_NUM_PORTS; i++) {
+-		if (dsa_is_user_port(ds, i) &&
+-		    dsa_port_is_vlan_filtering(dsa_to_port(ds, i))) {
+-			all_user_ports_removed = false;
+-			break;
+-		}
+-	}
+-
+-	/* CPU port also does the same thing until all user ports belonging to
+-	 * the CPU port get out of VLAN filtering mode.
+-	 */
+-	if (all_user_ports_removed) {
+-		struct dsa_port *dp = dsa_to_port(ds, port);
+-		struct dsa_port *cpu_dp = dp->cpu_dp;
+-
+-		mt7530_write(priv, MT7530_PCR_P(cpu_dp->index),
+-			     PCR_MATRIX(dsa_user_ports(priv->ds)));
+-		mt7530_write(priv, MT7530_PVC_P(cpu_dp->index), PORT_SPEC_TAG
+-			     | PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT));
+-	}
+ }
+ 
+ static void
+@@ -1292,36 +1264,24 @@ mt7530_port_set_vlan_aware(struct dsa_switch *ds, int port)
+ 	/* Trapped into security mode allows packet forwarding through VLAN
+ 	 * table lookup.
+ 	 */
+-	if (dsa_is_user_port(ds, port)) {
+-		mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
+-			   MT7530_PORT_SECURITY_MODE);
+-		mt7530_rmw(priv, MT7530_PPBV1_P(port), G0_PORT_VID_MASK,
+-			   G0_PORT_VID(priv->ports[port].pvid));
++	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
++		   MT7530_PORT_SECURITY_MODE);
++	mt7530_rmw(priv, MT7530_PPBV1_P(port), G0_PORT_VID_MASK,
++		   G0_PORT_VID(priv->ports[port].pvid));
+ 
+-		/* Only accept tagged frames if PVID is not set */
+-		if (!priv->ports[port].pvid)
+-			mt7530_rmw(priv, MT7530_PVC_P(port), ACC_FRM_MASK,
+-				   MT7530_VLAN_ACC_TAGGED);
++	/* Only accept tagged frames if PVID is not set */
++	if (!priv->ports[port].pvid)
++		mt7530_rmw(priv, MT7530_PVC_P(port), ACC_FRM_MASK,
++			   MT7530_VLAN_ACC_TAGGED);
+ 
+-		/* Set the port as a user port which is to be able to recognize
+-		 * VID from incoming packets before fetching entry within the
+-		 * VLAN table.
+-		 */
+-		mt7530_rmw(priv, MT7530_PVC_P(port),
+-			   VLAN_ATTR_MASK | PVC_EG_TAG_MASK,
+-			   VLAN_ATTR(MT7530_VLAN_USER) |
+-			   PVC_EG_TAG(MT7530_VLAN_EG_DISABLED));
+-	} else {
+-		/* Also set CPU ports to the "user" VLAN port attribute, to
+-		 * allow VLAN classification, but keep the EG_TAG attribute as
+-		 * "consistent" (i.o.w. don't change its value) for packets
+-		 * received by the switch from the CPU, so that tagged packets
+-		 * are forwarded to user ports as tagged, and untagged as
+-		 * untagged.
+-		 */
+-		mt7530_rmw(priv, MT7530_PVC_P(port), VLAN_ATTR_MASK,
+-			   VLAN_ATTR(MT7530_VLAN_USER));
+-	}
++	/* Set the port as a user port which is to be able to recognize
++	 * VID from incoming packets before fetching entry within the
++	 * VLAN table.
++	 */
++	mt7530_rmw(priv, MT7530_PVC_P(port),
++		   VLAN_ATTR_MASK | PVC_EG_TAG_MASK,
++		   VLAN_ATTR(MT7530_VLAN_USER) |
++		   PVC_EG_TAG(MT7530_VLAN_EG_DISABLED));
+ }
+ 
+ static void
+@@ -1526,20 +1486,11 @@ static int
+ mt7530_port_vlan_filtering(struct dsa_switch *ds, int port, bool vlan_filtering,
+ 			   struct netlink_ext_ack *extack)
+ {
+-	struct dsa_port *dp = dsa_to_port(ds, port);
+-	struct dsa_port *cpu_dp = dp->cpu_dp;
+-
+-	if (vlan_filtering) {
+-		/* The port is being kept as VLAN-unaware port when bridge is
+-		 * set up with vlan_filtering not being set, Otherwise, the
+-		 * port and the corresponding CPU port is required the setup
+-		 * for becoming a VLAN-aware port.
+-		 */
++	if (vlan_filtering)
+ 		mt7530_port_set_vlan_aware(ds, port);
+-		mt7530_port_set_vlan_aware(ds, cpu_dp->index);
+-	} else {
++	else
+ 		mt7530_port_set_vlan_unaware(ds, port);
+-	}
++
+ 
+ 	return 0;
+ }
+@@ -2225,10 +2176,16 @@ mt7530_setup(struct dsa_switch *ds)
+ 			/* Set default PVID to 0 on all user ports */
+ 			mt7530_rmw(priv, MT7530_PPBV1_P(i), G0_PORT_VID_MASK,
+ 				   G0_PORT_VID_DEF);
++
++			mt7530_rmw(priv, MT7530_PVC_P(i),
++				   VLAN_ATTR_MASK | PVC_EG_TAG_MASK | ACC_FRM_MASK,
++				   VLAN_ATTR(MT7530_VLAN_TRANSPARENT) |
++				   PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT) |
++				   MT7530_VLAN_ACC_ALL);
++
++			mt7530_rmw(priv, MT7530_PCR_P(i), PCR_PORT_VLAN_MASK,
++				   MT7530_PORT_MATRIX_MODE);
+ 		}
+-		/* Enable consistent egress tag */
+-		mt7530_rmw(priv, MT7530_PVC_P(i), PVC_EG_TAG_MASK,
+-			   PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT));
+ 	}
+ 
+ 	/* Setup VLAN ID 0 for VLAN-unaware bridges */
+@@ -2412,11 +2369,16 @@ mt7531_setup(struct dsa_switch *ds)
+ 			/* Set default PVID to 0 on all user ports */
+ 			mt7530_rmw(priv, MT7530_PPBV1_P(i), G0_PORT_VID_MASK,
+ 				   G0_PORT_VID_DEF);
+-		}
+ 
+-		/* Enable consistent egress tag */
+-		mt7530_rmw(priv, MT7530_PVC_P(i), PVC_EG_TAG_MASK,
+-			   PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT));
++			mt7530_rmw(priv, MT7530_PVC_P(i),
++				   VLAN_ATTR_MASK | PVC_EG_TAG_MASK | ACC_FRM_MASK,
++				   VLAN_ATTR(MT7530_VLAN_TRANSPARENT) |
++				   PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT) |
++				   MT7530_VLAN_ACC_ALL);
++
++			mt7530_rmw(priv, MT7530_PCR_P(i), PCR_PORT_VLAN_MASK,
++				   MT7530_PORT_MATRIX_MODE);
++		}
+ 	}
+ 
+ 	/* Setup VLAN ID 0 for VLAN-unaware bridges */
+-- 
+2.30.2
 
-Thanks,
-Mathieu
-
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index d421a2ccaa1e..0861b76f185f 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -649,6 +649,7 @@ static const struct rproc_ops scp_ops = {
->  	.load		= scp_load,
->  	.da_to_va	= scp_da_to_va,
->  	.parse_fw	= scp_parse_fw,
-> +	.sanity_check	= rproc_elf_sanity_check,
->  };
->  
->  /**
-> -- 
-> 2.18.0
-> 
 
