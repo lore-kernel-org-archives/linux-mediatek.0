@@ -4,68 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8A73C05027
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Feb 2023 11:29:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B6DBC636D3
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Feb 2023 12:14:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sdKiqtHN6nftFsRpB9ipKjZhb69tnZdSxehkWarvD8A=; b=o0pBlo/jbvtroh
-	99neujM7uW3ePHEIAwpTmUbJ+TlM2NX2hag+AJPWmBx62b/uWi1V1uYZxbzLplnGtZNQzGkTtkWqQ
-	LKdyyPHkbMiT4ODp/bxbp5DDPca3oQEYkkddWV53Eh25aVYRCDT7/dcEs71TyfdMAskl/Zd9miAWK
-	984L8j/zTo77yLL8kbt3gJddv7QuJHi3n8KvL71dOfpwsydhzzNx9ZezjGnz7nKYOErkckMuWpz4A
-	ixzdhYmmAz5n84ITyPU3PvP/xAyW5GVWDyeBHqxkkNAIheh7VIBeNySbKynxyHXpN97NaBqJEhnid
-	FeDCc3VWSOChC2iVqx6A==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=lkVRJ9xqkrjXW8zGj3W60LSQ5OKgvmhXVCbi/Dr6uXo=; b=eRlGBWEtl54tTG
+	XSRe4s07PWLKLFMuHRuQqaGiv72+xfjMLST/8z/i0Nws3U6PwS7RpWoH76MN4zQshlSHEGYp+V7vb
+	EAi5J90fKuLO0mgAwVXpVVTS5D/9CkcTJIRp2+U2Uz2P7nhynMQQ0OuWQIE1YXvL2ueP0cHBebzX6
+	BVI0kAO5SLxW4C1YFWdRNm2OW+kM+ODcRIW+eDBYFV6Fdxz4YWJV9DYR9FUpFSC3HCjNt/STMmTjq
+	VLeLWJyoCfR1UP5BeGx5d/wKc6xF/J2Wec1Nm3JSVdyTIe/odMn4vtBWX465FNkL0gk84m1m1edw1
+	HunAPjk+TLobK/3887/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRAY3-00BMeR-97; Sun, 12 Feb 2023 11:29:35 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1pRBFl-00BQco-92; Sun, 12 Feb 2023 12:14:45 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRAXr-00BMcC-Me; Sun, 12 Feb 2023 11:29:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1676201355; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=HkGFvJeUk+bE6QufNRZaCyMbx8qdTD+HFi8LSv+UOmkHny7AG8XaN324TSs4Dg0pF3nDxkXzbrECXAltiWoQ+NHskdXpSvArmDfmMeRNapbGN6V9TSjxlMkefulJwHLLanftEYBedzBdyQ8LeHMG7t0Mgjo944/PlTl1QheS/II=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1676201355; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=sdKiqtHN6nftFsRpB9ipKjZhb69tnZdSxehkWarvD8A=; 
-	b=g5t+LEH6QDCe1Q2Gv348lXJ0xgpnfeyAjK+eGkfbhKm1NC3BBJtsiVHDjKCUe0aWi14ZzPIMUX1n4ihrciirbo8Un46IYqlssCsQ//rt78FN1RPpIDF6QGQUoSlvvnsAslwljMGh6ez3R6isuUGpohFC/YGkeF/F9R/8B9tG4FM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1676201355;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=sdKiqtHN6nftFsRpB9ipKjZhb69tnZdSxehkWarvD8A=;
-	b=Hy8r1v89SG4Sv6Rol2/5mOrhOgIBDRCDTziw4D9gbmI/n2eA2cJVVuq5zNKGn0MC
-	9heT0NnuuP1e6KnuCwvksZBuuQ0f4wZE626HeQ+G97lu6kapMJ3Rl2L1LoSG5T+wwpT
-	tg8opL5fsiHMGfoRO+VVSWOMrRlO1sQwNu9xZHMQ=
-Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1676201354267603.4220221328939; Sun, 12 Feb 2023 03:29:14 -0800 (PST)
-Message-ID: <ffc0f65b-8bdc-3353-8fb8-6e60582c2412@arinc9.com>
-Date: Sun, 12 Feb 2023 14:29:10 +0300
+	id 1pRBFa-00BQbA-9F; Sun, 12 Feb 2023 12:14:35 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id u21so9557612edv.3;
+        Sun, 12 Feb 2023 04:14:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=lkVRJ9xqkrjXW8zGj3W60LSQ5OKgvmhXVCbi/Dr6uXo=;
+        b=TS3G1yE/apRlRoXVSwpEfjuqpPQlZmaIH/tRFqKpIP3AeMFB9G7cb5qODKZ9JXAk8c
+         IkS18fCvKP/EkcJEuwInxnr6l0O2kTOBmlQ4eCVx/JjUcAsvYPYLccDterVJNDc8Iun8
+         6FOZhiwPvPvzqf20mq+gTl8C6JW0Z8njMGvPA0WmUicZFh8AZTlb0Bb9xvU5ReySprfX
+         ycOdFuAwcCw5+fhbrmEAlCI5rzK7xVNaWuHG3VxySLRp2GE2Qf1SnKoICpL54e5137uy
+         tavVZKvWyxcZ2hRbRxV5BTtukk0lmDttNpcXQ3mt0iwx8y1WuOyoTX0TTYxt02I1546K
+         HKCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=lkVRJ9xqkrjXW8zGj3W60LSQ5OKgvmhXVCbi/Dr6uXo=;
+        b=KDFeoS0J+gYyHKI9HuLtrpRYCwO9SZofNVC1007V5SaOzpP8m2tfZGREg3eVeuci14
+         8rXu5U9PjT8GEM3Pf5eX+QQGyPjypllbhAjIR5mPNTxHD8GZZLTJlWX5fhjyyN0e00u5
+         C1Tbn2wwJW3mfirliFM+vojOoY58M70ENp0l//6r57p1LWgiTl1wWLM93WhyZ0TritQx
+         gLEZdWPlRFnn/KpcpVpsInjZWRF9w9/dXZxLwbD8zfPHfXAshu4JWTt5fmegw9gH2vxn
+         +9nGfF3l5p1h/LF2CTWq7Ju2smzRuKTuKnhrw5faKFDgoA8QXjf/F85W+9S86gamw7Vf
+         VexA==
+X-Gm-Message-State: AO0yUKUBdJHTH4KTrVlqAUDhjkM17AHS6FDPPQL3D3WF2bxtbKas8HWa
+	3Nqv4zeXMN70gXryt3hZmst1024DJuCfG2i3
+X-Google-Smtp-Source: AK7set9DUjDRrLSFJk9iyTooW+hGLFtMZQ1i/na/cPtoXKwQn43tVDK7EiCsSnmEB7z8BRUOTuRwEQ==
+X-Received: by 2002:a50:aad4:0:b0:4ab:4d55:6f74 with SMTP id r20-20020a50aad4000000b004ab4d556f74mr7792798edc.13.1676204068620;
+        Sun, 12 Feb 2023 04:14:28 -0800 (PST)
+Received: from arinc9-PC.lan ([37.120.152.236])
+        by smtp.gmail.com with ESMTPSA id a14-20020a50c30e000000b004ab4c28a967sm2976320edb.44.2023.02.12.04.14.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 12 Feb 2023 04:14:28 -0800 (PST)
+From: arinc9.unal@gmail.com
+X-Google-Original-From: arinc.unal@arinc9.com
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] arm: dts: mt7623: disable home key on Bananapi BPI-R2
+Date: Sun, 12 Feb 2023 15:13:54 +0300
+Message-Id: <20230212121354.44590-1-arinc.unal@arinc9.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: mtk-pmic-keys: Ignore power button if pressed before driver loads
-To: Mattijs Korpershoek <mkorpershoek@baylibre.com>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>
-References: <883798d8-f7d9-eadc-1343-7d241741ff67@arinc9.com>
- <87r0vcc51b.fsf@baylibre.com>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <87r0vcc51b.fsf@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230212_032923_902140_7EBBB2D9 
-X-CRM114-Status: GOOD (  28.12  )
+X-CRM114-CacheID: sfid-20230212_041434_349167_D22022E8 
+X-CRM114-Status: UNSURE (   8.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,96 +86,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-input@vger.kernel.org, erkin.bozoglu@xeront.com, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Cc: devicetree@vger.kernel.org, =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hey Mattijs,
+From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Sorry for the late response.
+There's no home key on Bananapi BPI-R2. Disable it.
 
-On 30.01.2023 20:21, Mattijs Korpershoek wrote:
-> Hi Arınç,
-> 
-> On lun., janv. 30, 2023 at 16:36, Arınç ÜNAL <arinc.unal@arinc9.com> wrote:
-> 
->> Hi all,
->>
->> The power button on my Bananapi BPI-R2 (MT7623NI SoC, mt6323-keys) is
->> shorted, so the device automatically boots when there's power. This
->> causes the device to reboot when KEYBOARD_MTK_PMIC is loaded because the
->> driver sees the power button being pressed.
-> 
-> What evidence do you have that there is actually a "press" event being
-> received by userspace? Did you tested this with evtest or something
-> similar?
-> 
-> If a "power button press" is generated, than I imagine that a userspace
-> process must receive it and halt the system, right?
-> 
-> The PMIC also has a feature to shutdown in case detect a long key-press,
-> which is controlled by the mediatek,long-press-mode device-tree
-> property.
-> So is it the pmic that shutdown your board (probably no evidence in
-> logs, just a "power cut" behaviour) or is it userspace?
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+---
+ arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-Nothing appears on the kernel log and evtest doesn't detect anything. 
-The input device appears only after loading mtk-pmic-keys.ko so I have 
-to run evtest after the driver is loaded. After that, I see nothing 
-noticeable running evtest:
+diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+index 642b1c0a96ba..a37f3fa223c7 100644
+--- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
++++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+@@ -345,6 +345,12 @@ &mmc1 {
+ 	vqmmc-supply = <&reg_3p3v>;
+ };
+ 
++&mt6323keys {
++	home {
++		status = "disabled";
++	};
++};
++
+ &mt6323_leds {
+ 	status = "okay";
+ 
+-- 
+2.37.2
 
-# evtest
-No device specified, trying to scan all of /dev/input/event*
-Available devices:
-/dev/input/event0:	mtk_cir
-/dev/input/event1:	mtk-pmic-keys
-Select the device event number [0-1]: 1
-Input driver version is 1.0.1
-Input device ID: bus 0x19 vendor 0x1 product 0x1 version 0x1
-Input device name: "mtk-pmic-keys"
-Supported events:
-   Event type 0 (EV_SYN)
-   Event type 1 (EV_KEY)
-     Event code 114 (KEY_VOLUMEDOWN)
-     Event code 116 (KEY_POWER)
-Properties:
-Testing ... (interrupt to exit)
-(Device reboots)
-
-I've set this on the devicetree of Bananapi BPI-R2:
-
-&mt6323keys {
-	mediatek,long-press-mode = <0>;
-};
-
-This prevents the device from rebooting after the driver is loaded so I 
-believe this proves that it's the driver that tries to shutdown the board.
-
-> 
->>
->> I was wondering if it's possible to change the driver in a way that
->> doesn't break in this situation. Maybe don't do anything if the first
->> state of the the power button the driver sees is being pressed, and if
->> the state doesn't change.
-> 
-> If the driver is an issue, can't we blacklist it from being probed
-> instead? or do you want to use the home key feature that that same
-> driver provides?
-
-Since it's a special case, specific to my own board, I just disabled the 
-key.
-
-&mt6323keys {
-	power {
-		status = "disabled";
-	};
-};
-
-I also see there's no home key on this board so I may submit a patch to 
-disable the home button for this device.
-
-Thanks for your help!
-
-Cheers.
-Arınç
 
