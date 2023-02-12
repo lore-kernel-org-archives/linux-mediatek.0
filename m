@@ -4,76 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B6DBC636D3
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Feb 2023 12:14:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95CD5C05027
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Feb 2023 12:33:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=lkVRJ9xqkrjXW8zGj3W60LSQ5OKgvmhXVCbi/Dr6uXo=; b=eRlGBWEtl54tTG
-	XSRe4s07PWLKLFMuHRuQqaGiv72+xfjMLST/8z/i0Nws3U6PwS7RpWoH76MN4zQshlSHEGYp+V7vb
-	EAi5J90fKuLO0mgAwVXpVVTS5D/9CkcTJIRp2+U2Uz2P7nhynMQQ0OuWQIE1YXvL2ueP0cHBebzX6
-	BVI0kAO5SLxW4C1YFWdRNm2OW+kM+ODcRIW+eDBYFV6Fdxz4YWJV9DYR9FUpFSC3HCjNt/STMmTjq
-	VLeLWJyoCfR1UP5BeGx5d/wKc6xF/J2Wec1Nm3JSVdyTIe/odMn4vtBWX465FNkL0gk84m1m1edw1
-	HunAPjk+TLobK/3887/w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iW6NHJ1DaKHka9lsuwgtqKchiHTmHzr1YJDtg/h1ekM=; b=f/avFVm5NliPmG6XfbUxu6XpQe
+	GHBCC4ML/WVHjg8FsZiAM6DD2iFaaMaE/xmVbVDao3nWZfixTwkhnqu4BY8P5Rwhrogr9mZWDiEo7
+	oJK3fKZ6ti1JV44BvmKyGaMAZCKEKrBGJo+xOC8TwXYfqCc6GbEQIHO/IpAaMF2saq43pX5zU7VgI
+	OIm1O3fK8ndgqZD+mBlJj0mWtiv8OJICDIdMOe294XodBa0Hhu5w4iIl2/5GBmsVXd+jZg1h/k2eP
+	k6OjGlIPjtAEa7/uM37mo8qFqOxyj0t9eDKkA9MYvlB5pYsiuYFA8PiIidgvAV/OB03Wp/JgTlLIN
+	5K77SL3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRBFl-00BQco-92; Sun, 12 Feb 2023 12:14:45 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1pRBXz-00BSGo-SP; Sun, 12 Feb 2023 12:33:35 +0000
+Received: from mout.gmx.net ([212.227.17.20])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRBFa-00BQbA-9F; Sun, 12 Feb 2023 12:14:35 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id u21so9557612edv.3;
-        Sun, 12 Feb 2023 04:14:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=lkVRJ9xqkrjXW8zGj3W60LSQ5OKgvmhXVCbi/Dr6uXo=;
-        b=TS3G1yE/apRlRoXVSwpEfjuqpPQlZmaIH/tRFqKpIP3AeMFB9G7cb5qODKZ9JXAk8c
-         IkS18fCvKP/EkcJEuwInxnr6l0O2kTOBmlQ4eCVx/JjUcAsvYPYLccDterVJNDc8Iun8
-         6FOZhiwPvPvzqf20mq+gTl8C6JW0Z8njMGvPA0WmUicZFh8AZTlb0Bb9xvU5ReySprfX
-         ycOdFuAwcCw5+fhbrmEAlCI5rzK7xVNaWuHG3VxySLRp2GE2Qf1SnKoICpL54e5137uy
-         tavVZKvWyxcZ2hRbRxV5BTtukk0lmDttNpcXQ3mt0iwx8y1WuOyoTX0TTYxt02I1546K
-         HKCA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=lkVRJ9xqkrjXW8zGj3W60LSQ5OKgvmhXVCbi/Dr6uXo=;
-        b=KDFeoS0J+gYyHKI9HuLtrpRYCwO9SZofNVC1007V5SaOzpP8m2tfZGREg3eVeuci14
-         8rXu5U9PjT8GEM3Pf5eX+QQGyPjypllbhAjIR5mPNTxHD8GZZLTJlWX5fhjyyN0e00u5
-         C1Tbn2wwJW3mfirliFM+vojOoY58M70ENp0l//6r57p1LWgiTl1wWLM93WhyZ0TritQx
-         gLEZdWPlRFnn/KpcpVpsInjZWRF9w9/dXZxLwbD8zfPHfXAshu4JWTt5fmegw9gH2vxn
-         +9nGfF3l5p1h/LF2CTWq7Ju2smzRuKTuKnhrw5faKFDgoA8QXjf/F85W+9S86gamw7Vf
-         VexA==
-X-Gm-Message-State: AO0yUKUBdJHTH4KTrVlqAUDhjkM17AHS6FDPPQL3D3WF2bxtbKas8HWa
-	3Nqv4zeXMN70gXryt3hZmst1024DJuCfG2i3
-X-Google-Smtp-Source: AK7set9DUjDRrLSFJk9iyTooW+hGLFtMZQ1i/na/cPtoXKwQn43tVDK7EiCsSnmEB7z8BRUOTuRwEQ==
-X-Received: by 2002:a50:aad4:0:b0:4ab:4d55:6f74 with SMTP id r20-20020a50aad4000000b004ab4d556f74mr7792798edc.13.1676204068620;
-        Sun, 12 Feb 2023 04:14:28 -0800 (PST)
-Received: from arinc9-PC.lan ([37.120.152.236])
-        by smtp.gmail.com with ESMTPSA id a14-20020a50c30e000000b004ab4c28a967sm2976320edb.44.2023.02.12.04.14.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 12 Feb 2023 04:14:28 -0800 (PST)
-From: arinc9.unal@gmail.com
-X-Google-Original-From: arinc.unal@arinc9.com
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH] arm: dts: mt7623: disable home key on Bananapi BPI-R2
-Date: Sun, 12 Feb 2023 15:13:54 +0300
-Message-Id: <20230212121354.44590-1-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.37.2
+	id 1pRBXo-00BSEw-7S; Sun, 12 Feb 2023 12:33:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1676205191;
+	bh=mfAdWlTjwfH3+nbkJ+Eo3z223mI2t25YvKplATELZCg=;
+	h=X-UI-Sender-Class:Date:From:To:CC:Subject:In-Reply-To:References;
+	b=LSu98A3PnyIOMpVWltOiGOe7kDBOmvwPKPdDzC7BbP3w6y89RWXsRjLQ9Bv6SWAsx
+	 F+AMUStMG/rIB/5dMeqtqRU2uxHabKyfumtLhImNZKUHIAN68bAiJSdLiSAnXUoyTr
+	 5lfgVz8/NvvzigRg1XCJubEyZJkWe2G8dIaq+yh3R2yvgo2VIdNI2L/th8nAqn+AYC
+	 NAKu0TNDNYWemI5RPVTx3Iis1uWcOlkcST2SX6T0imk56lbR8x97u38VIDWJDAOdJQ
+	 uuIP2NJRMnpEOXr+26TIz8pHoGQvPasEhg9ADK3n50iqSSvhrdrOUZ4NRvFQOHuc/K
+	 Ko6ahi7aeiSjA==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [127.0.0.1] ([217.61.147.13]) by mail.gmx.net (mrgmx105
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1M6lpG-1pV0Uz210g-008GgB; Sun, 12
+ Feb 2023 13:33:11 +0100
+Date: Sun, 12 Feb 2023 13:33:10 +0100
+From: Frank Wunderlich <frank-w@public-files.de>
+To: arinc9.unal@gmail.com, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ erkin.bozoglu@xeront.com
+Subject: Re: [PATCH] arm: dts: mt7623: disable home key on Bananapi BPI-R2
+User-Agent: K-9 Mail for Android
+In-Reply-To: <20230212121354.44590-1-arinc.unal@arinc9.com>
+References: <20230212121354.44590-1-arinc.unal@arinc9.com>
+Message-ID: <C18B89E3-7B54-47B4-98B3-B2D74AB29A54@public-files.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:3v1Q0P2cM0SvTy/PY8QCQf/wi4JtkA7j6Mx04xrx2ALTl8Wi53i
+ lgYIJ8+mPhkrWdz49Fq4lS48iPxOm9ytmTDYqBDmlyGVS1a2IiNiBPyb4RJ+b9O/Q8Teuit
+ vhkIr+f6w0aHU/R1UBLNvuAFEAzEgCVx7BppKgsvABifOSwUeHacW7oLaYj2gBsmbCfQRFr
+ NiX/DvDj1pHSacJgtZfTg==
+UI-OutboundReport: notjunk:1;M01:P0:kJHbSfdxVZU=;Zmqx7cMp7mXYWAwrv8kftavGJZd
+ 0yYsnF7Xsm9b+kSicIf+rvVxdx3h2WPVe8Lkj5fBi+Ewm8wAcKh00KaDHL2i+I7nOfNrtXzG5
+ /CeZ3q06BwYCV9lrJPvAXvSEAqhcDaGNGc/O3OWe/zz33s51CMFo4KaLuJ5fgafAsJ90Z2Thc
+ lxUScrUFp5g7TjvEZGSbymGAjmWCDUA043NNDsdP/gFXvCR2dYOxzYWYFzDJbH5htvZa1N6SZ
+ e+tEuWPmyiGQUp5YqoB7GuYAS01m6AZ2yMUvpdGG9mRjgtlI2BUqu4P7QhvgzRUKCOjZvgAFi
+ upFs6CGy/ih7b6VVmuTS9MLLenGOO7zZBs5vFDkm6qPNONKpGrgZB5MrrttLx3pfzNn/KOz+R
+ reg1dVc7FCW895a2+Ee9KWneLWaoBMN5pMAeUOJzd8hDk4bovQMJ16EdASKBI0pPVM96DJwHR
+ qXOFJm+qgYywlFIpZmbbysNb1a7sFocnH7Sex0J8yJ6D4IftB66NZ8nV5lj+HMjovu6Sj2WHU
+ a7nLz7zsImDSu7lp3U3w/9wc+kIQC3fTasHyyWfUQO9wvuxqE/DB/nAJHoHmB/m/xmmBgGxTI
+ d1oQCbw4HVSDrFtc54+n2MFJ64y/nFXYIRnmzOPr7SylY2FBqx660ibKcaoBdWMbT0Me+KCCs
+ 3Y2yB6CmllpC+cFq3LsAXgNlEiyh4cAfqtib5obK8DLrkgXQCX0dFXG0Am3Z43FQUabX3t37s
+ cOAMSEGEHEJ8RIuuQDmTxN20xOYB/USFVZBhhVlLiKVZ5ic9F0YXiv6hu2upZ2z4DqwprufJj
+ 4qEar5pvIhkxVYFj5lUm0sI8VFnZmXVaMYKPwHJMjdhYKsfUfI7RUnyZ2Hwk9LPra/QOvr6lW
+ 7eiKNUVfJsWFXI4eN2ZtR7JbusnMl3N6eiB0uF9lHPVx3+HfAdcnN1dCpI1UfSi9W6Ib0ogRC
+ yLGjfguf3Yo2Aht6tCWzdVa67tI=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230212_041434_349167_D22022E8 
-X-CRM114-Status: UNSURE (   8.70  )
+X-CRM114-CacheID: sfid-20230212_043324_576200_CE911342 
+X-CRM114-Status: UNSURE (   4.97  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,37 +91,22 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+Am 12=2E Februar 2023 13:13:54 MEZ schrieb arinc9=2Eunal@gmail=2Ecom:
+>From: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc=2Eunal@arinc9=2Ecom>
+>
+>There's no home key on Bananapi BPI-R2=2E Disable it=2E
 
-There's no home key on Bananapi BPI-R2. Disable it.
+>=20
+>+&mt6323keys {
+>+	home {
+>+		status =3D "disabled";
+>+	};
+>+};
+>=20
 
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
----
- arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-index 642b1c0a96ba..a37f3fa223c7 100644
---- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-+++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-@@ -345,6 +345,12 @@ &mmc1 {
- 	vqmmc-supply = <&reg_3p3v>;
- };
- 
-+&mt6323keys {
-+	home {
-+		status = "disabled";
-+	};
-+};
-+
- &mt6323_leds {
- 	status = "okay";
- 
--- 
-2.37.2
-
+Acked-by: Frank Wunderlich <frank-w@public-files=2Ede>
+regards Frank
 
