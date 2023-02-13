@@ -4,72 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCB88C636D4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Feb 2023 12:24:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DE7DC636CC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Feb 2023 12:24:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=IyCEBDYX76aYk2yRW5lF1MmaueH2bNdB8Ayjh3jOrPk=; b=fFE2SNK6em0J/E89DhKphNsAj4
-	gYaAG6FXaWQTk0dOnAPCeSF7v8AmtTRn7fPaTR6DKAQJ9RhV2x1XnEio++5BRYUlsbMX/tRGcnkVF
-	qpQfC4oA98WuHTxPXjfbdc6yg2bhFoSgGeu196WRHW3fE5q1zGB6pj3mJurB/2sR9tH0aDrVU0N7j
-	B2FE4ZPLfLp0pBIbRognEWEWP3ocvZfaLI63W6V7Xv5N1kC+yaM+hNVcTH0gx3l6CO1N0uJF4b1xo
-	P4yHMJnh/wnqte/FlUFn/0dLXB97mxMFZeqG1Br1WMwQb5T6wY9oLvHVis/rb8LELf2ykdgB95tl1
-	zmS47IAg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gOEavSKobxzkNUwIbNjE6psRFHrp/W2anCwg7BkkLCc=; b=rp8MaccKFTpK11F7hG/NXE+m0e
+	QCAMSNzKQkYYftzXSHFIZ/h9dDU31PtxQok3kGiNJS56JCJY9/+Pun7/UTisTm0eV/Stunybp45uH
+	VHGlby5GFKErK2w6N8cq3MO5h5M/MOEbxZWlD3hjLU7ks/ShgApWthogEHummER5x2RX86Ax2L6RZ
+	2oFa93+IMzf3941Z3Bv+Gse2iiGjXnjvuUBlYhp5NLmE/ctH60q/V5+cCVImUqZDx1K13V1jSyU8u
+	lFXtRXmtULhVDIQLIGYahQTXNjM9QgY+3ZlQp2P3ibtp53tVcE1+0lPGrP9dCSsyyG1Lb5gMWmHd5
+	nG/xoJxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRXsE-00Ecg9-TM; Mon, 13 Feb 2023 12:23:58 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pRXsX-00Ecjq-32; Mon, 13 Feb 2023 12:24:17 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRXsC-00Ecdz-Mh
-	for linux-mediatek@lists.infradead.org; Mon, 13 Feb 2023 12:23:58 +0000
-X-UUID: 3e14c5d6ab9911edbbe3f76fe852e059-20230213
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=IyCEBDYX76aYk2yRW5lF1MmaueH2bNdB8Ayjh3jOrPk=;
-	b=RYS0mlcc4iMWIkA7xSxkrra+8EqTHt0khGkdFa/fmmuwqcAGSrW/A7A5AxjrO4muE0NlDDUIREOZ1Gr93IwXvUvFn1GRb+NUc9CxjeuJCfzXwoRwg/bCeFWC0OtSY7CarTY/xq6j6u+VJTBNP2q1UFuyGymoeo9XP2s5mML4evY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.19,REQID:3a965f05-f056-4ddb-a675-c4bdf676361b,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:885ddb2,CLOUDID:d28fbe8e-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-UUID: 3e14c5d6ab9911edbbe3f76fe852e059-20230213
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <deren.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1456993385; Mon, 13 Feb 2023 05:23:37 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 13 Feb 2023 20:23:00 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Mon, 13 Feb 2023 20:23:00 +0800
-From: Deren Wu <deren.wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
-	YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, Eric-SY
- Chang <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>, KM Lin
-	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
-	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Stella Chang
-	<Stella.Chang@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder
- Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
-	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7921: fix PCI DMA hang after reboot
-Date: Mon, 13 Feb 2023 20:22:40 +0800
-Message-ID: <a416aae35ea1a77dd0da3922de3dd295000be4ed.1676290076.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pRXsU-00EchW-Ds; Mon, 13 Feb 2023 12:24:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=gOEavSKobxzkNUwIbNjE6psRFHrp/W2anCwg7BkkLCc=; b=ObDVlDbZLK9iuH4F+Lz0ntxyzW
+	4s555KAxM8FkX5eXfRjE0I/9j9dVWUeM69v2YVi9jDwHrTban4YD0k5PRV3XgTNRBhcDW8OIxkIaS
+	MAlOagHiPjt1Y32EREWUz7m7PNcgoELK8FNv3iF96qEe1MELulK6Q0lN2aYSBNgt8miKyUHCEE4vq
+	KZT3KL94ZnJBbZ7NCiJgkO4vfbCFdJ9ADBriaX4hap1BU1ECSlzsEBW+E7/MqcIFZ0HIzqiIArLu6
+	HmdVIexH0CKP+5F2PZlwOy+KnaW3PC7MZ4CM0O+e2Zm1OQIl78bSDqKveQNeVQaJeE9W7z5Hex7mo
+	6Hdvp+Lw==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:58250)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1pRXsF-00041Z-RT; Mon, 13 Feb 2023 12:23:59 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1pRXs8-0002xY-TH; Mon, 13 Feb 2023 12:23:52 +0000
+Date: Mon, 13 Feb 2023 12:23:52 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
+Subject: Re: [PATCH v5 10/12] net: pcs: add driver for MediaTek SGMII PCS
+Message-ID: <Y+or2P8K+BzDL7vi@shell.armlinux.org.uk>
+References: <cover.1676128246.git.daniel@makrotopia.org>
+ <ea7658198d2a1480746882a7e31adf0f37793086.1676128247.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <ea7658198d2a1480746882a7e31adf0f37793086.1676128247.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230213_042356_790767_1167782D 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20230213_042414_497755_B7F74574 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,41 +91,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt7921 just stop some workers and clean up chip status before reboot.
-In stress test, there are working activities still running at the period
-of .shutdown callback and that would cause some hosts cannot recover
-DMA after reboot. To avoid the floating state in reboot, we use
-mt7921_pci_remove() to fully deinit all resources.
+On Sat, Feb 11, 2023 at 04:04:51PM +0000, Daniel Golle wrote:
+> The SGMII core found in several MediaTek SoCs is identical to what can
+> also be found in MediaTek's MT7531 Ethernet switch IC.
+> As this has not always been clear, both drivers developed different
+> implementations to deal with the PCS.
+> 
+> Add a dedicated driver, mostly by copying the code now found in the
+> Ethernet driver. The now redundant code will be removed by a follow-up
+> commit.
+> 
+> Tested-by: Bjørn Mork <bjorn@mork.no>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 12 +-----------
- 1 file changed, 1 insertion(+), 11 deletions(-)
+Reviewed-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index cb72ded37256..1a8a54a46dcc 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -509,17 +509,7 @@ static int mt7921_pci_resume(struct device *device)
- 
- static void mt7921_pci_shutdown(struct pci_dev *pdev)
- {
--	struct mt76_dev *mdev = pci_get_drvdata(pdev);
--	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
--	struct mt76_connac_pm *pm = &dev->pm;
--
--	cancel_delayed_work_sync(&pm->ps_work);
--	cancel_work_sync(&pm->wake_work);
--
--	/* chip cleanup before reboot */
--	mt7921_mcu_drv_pmctrl(dev);
--	mt7921_dma_cleanup(dev);
--	mt7921_wfsys_reset(dev);
-+	mt7921_pci_remove(pdev);
- }
- 
- static DEFINE_SIMPLE_DEV_PM_OPS(mt7921_pm_ops, mt7921_pci_suspend, mt7921_pci_resume);
+Thanks!
+
 -- 
-2.18.0
-
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
