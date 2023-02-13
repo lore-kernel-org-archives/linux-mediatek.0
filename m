@@ -4,57 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66209C636CC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Feb 2023 07:15:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A3D9C636CC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Feb 2023 08:06:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Subject:Cc:To:
+	From:Date:References:In-Reply-To:Message-Id:Mime-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rqHKaFpBaYV5IA8dxSlzzDAzoZA4YyFZKcjo68RFyoA=; b=puSCtE3MK5N8sFqQD7DXXV1oyu
-	YRCsXeaV7BKxTEJ0qv7zSwW/WBXRzFoWHWOjhg5ETkm42dtTgew/pwqLzf8XFs0sv6rloD3bWLx49
-	Mq8ax3b8Ad3+Ox2+JwhQji2H096t5hvkEtXeN0H0GZ+FY5D54DMd2BBafRad8Uf7caNi5mazFc7t4
-	3g78puxhEhhXZU6xtO5LCW7pSgKqorhLa0Hzv0+z3qbVtzM58pa7QeuAFEsqy1l94Gg5mawhEXaAA
-	y2RPxwFuDR5th18EJ80Vq8KS/3XUEmHB9VaGCcFyfWReaPMfO1C/wfRpFrNKNu+bMwBt2IqJIR2l5
-	fBbfq5AA==;
+	bh=PneGRKGzzqPYOheQ2SeW0ZVjFQxDgBZMJk96e1F96vU=; b=3XTnksuOpSJ8iLr6KBxb2ekP9e
+	BY/p36NvhlZxisCQtVZZOkx/iiTlhyB3zc4ZVXNAHa1HJyhaTZUgV1CEdjb5YQbyc/1w3g/QTMFKq
+	YbJtNGeZOjAeHMELU+1rpimC5cuUsNxOwmIVcREbnOUN7DXy0+CGl5vbuTU6Cx+tC/RXieTkmQPU+
+	b7/H40jzMDBKYnNbsBEQ93GLkQTMi2gTWZpjvSN9oEsf3iDgMs3b+Kg6AvQ0Agn3gKmq7Pu3O1PD5
+	DALh3PYoxv7UtJssSqs6P9Cwvc1Csjy9+XnnIlXK9vMqlqQk024mfGTzly65BWpcnrue2PB+Cl4/7
+	2KXAcBVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRT3q-00DQGv-2P; Mon, 13 Feb 2023 07:15:38 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pRTqa-00DWww-4f; Mon, 13 Feb 2023 08:06:00 +0000
+Received: from out1-smtp.messagingengine.com ([66.111.4.25])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRT3e-00DQFM-VC; Mon, 13 Feb 2023 07:15:28 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 51B1C60DEF;
-	Mon, 13 Feb 2023 07:15:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34B09C433D2;
-	Mon, 13 Feb 2023 07:15:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1676272525;
-	bh=kXKrIKkF4Pu9CcKWI5PNeLrNZKIdxo0dgi5K9xPGp/w=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=O1yz/Yv6oTPAWaNRVpj1JnF9ZBDsXPAH1RWSCKsTeeKJah/JH7Lr/zIowbs5fEi5j
-	 7i8RmsI8DPJ/Jj1iRLkUBXjhEkn67FZrgpWqQYnbPpj45/tpj557qXkCNo+4Gysp1B
-	 G7B/HUGPKl7EgRCYzyqnzIis8D21Fiw4GZ6IA6Z1SCTXs4OLEY73IlUNVGu6ck8K4U
-	 2MEAH0k/MluhGWWKoan2mnkQVfN0T4UMl4KzH4MVcQNKp2S+2G3f+ALGzmGcX21a7I
-	 m67tPhyzSgudF6E5ZmXwS4WHc5cVgfuqx8DNC6wUhmSKx5mvqirbuenklI5RH/6wXU
-	 TNitnH2k+DmCQ==
-Date: Mon, 13 Feb 2023 09:15:21 +0200
-From: Leon Romanovsky <leon@kernel.org>
-To: Richard van Schagen <richard@routerhints.com>
-Subject: Re: [PATCH] Fix setting up CPU and User ports to be in the correct
- mode during setup and when toggling vlan_filtering on a bridge port.
-Message-ID: <Y+njic6vxAlGp72l@unreal>
-References: <20230212213949.672443-1-richard@routerhints.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230212213949.672443-1-richard@routerhints.com>
+	id 1pRTqN-00DWrD-Em; Mon, 13 Feb 2023 08:05:50 +0000
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
+	by mailout.nyi.internal (Postfix) with ESMTP id 915805C00D9;
+	Mon, 13 Feb 2023 03:05:42 -0500 (EST)
+Received: from imap51 ([10.202.2.101])
+  by compute6.internal (MEProxy); Mon, 13 Feb 2023 03:05:42 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:sender:subject
+	:subject:to:to; s=fm3; t=1676275542; x=1676361942; bh=PneGRKGzzq
+	PYOheQ2SeW0ZVjFQxDgBZMJk96e1F96vU=; b=ISRz0Ae0bepULqIirvjXr/V+Cu
+	jUWhSiVca/0RBp52DfSwBliPDAw8Pq8hswj7R2rgZXzXZrytQ3Fp8bVBHvp61B7d
+	Hc3ELl22FwEfEB+mYggExZkOMr/FFy/XLNX4UXoVVcsqDSLJyDydXgCvEc+URdAi
+	iAsH9k/OsKSUVe2JPrQxiblcHeh3C8bV8x187RVKLsQjFwAd8SYUcNjsS1GS0fuw
+	vyVrORNdQUzc1ny3+yyyfOmkgDQEdY5W9c9LdE2toxjYnPJOljupK9LHCe6+A2up
+	u+PIbGRR2/vJ1/znn4E++UHEqPZV2dmJXQX0fTcY/+Eox+CJrYhxJCKtrCsA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
+	:mime-version:references:reply-to:sender:subject:subject:to:to
+	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm1; t=1676275542; x=1676361942; bh=PneGRKGzzqPYOheQ2SeW0ZVjFQxD
+	gBZMJk96e1F96vU=; b=sZnOQjadNTLVnQV6lJipH3DxSKzklKx4nyio7wtzj6RK
+	vB9vFEJrci8VKYcMz9OBvCURKoPK4aaysbvgZrJwgy+U3V5m3jsyovjf62YDkLhj
+	zmSVjWAUdhN2Xr1AaGFQ7utWCgoHb3P0NwvHQIqnO0gGsthhSGVe7hB9wN6IouUG
+	TKpEhyEo7CQr1sh17TR/+kv5zxRbHXF8QhZMbV42pP0L9z17BJXIAUlQLIrjBGy2
+	1ed99w8cudVCtxS2i/d11V2Hcf2n5Bif0BTlgcszYD6RayDqH3TTIHMAMIFLMmyT
+	WXWyrR78j+aDKBU27cgCK7EYRGbp84s0g/Vwfkh9pQ==
+X-ME-Sender: <xms:Ve_pY32NDfwtw-Tfs8yKDSn_gNMRvb3VIm3Rhz01xmh51z689I54lA>
+    <xme:Ve_pY2GoFZwlQaTkL-iKlufKZhdNU4RjUQO2knZTI2me12snbsSC9mCLZ8oN27wkb
+    _Uq-axaW6QLg3gLi58>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrudeitddguddugecutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+    enucfjughrpefofgggkfgjfhffhffvvefutgesthdtredtreertdenucfhrhhomhepfdet
+    rhhnugcuuegvrhhgmhgrnhhnfdcuoegrrhhnugesrghrnhgusgdruggvqeenucggtffrrg
+    htthgvrhhnpeffheeugeetiefhgeethfejgfdtuefggeejleehjeeutefhfeeggefhkedt
+    keetffenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+    grrhhnugesrghrnhgusgdruggv
+X-ME-Proxy: <xmx:Ve_pY34vTDlza4J4eNyCWo5VTAi01-dXLPScXbTtPGtpoVebVAzxJQ>
+    <xmx:Ve_pY83YJil3BG00-dNtigyFx_8p_OldSmBlDOmNnR2YeOcNuyWFeQ>
+    <xmx:Ve_pY6FBkksVIkW0wzfLsXyyrCiF8UK-xpQjz72PMiDjHCMGTWZ2PQ>
+    <xmx:Vu_pY4UIgVkZZagG-p2s30ANgOLK2TB7gVWlCqW87zh9F62vE8n6Lw>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+	id 26A52B60086; Mon, 13 Feb 2023 03:05:41 -0500 (EST)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.9.0-alpha0-156-g081acc5ed5-fm-20230206.001-g081acc5e
+Mime-Version: 1.0
+Message-Id: <b8fb48b9-349d-4723-9b35-6471cb65b6b5@app.fastmail.com>
+In-Reply-To: <20230213041535.12083-1-rdunlap@infradead.org>
+References: <20230213041535.12083-1-rdunlap@infradead.org>
+Date: Mon, 13 Feb 2023 09:05:12 +0100
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: "Randy Dunlap" <rdunlap@infradead.org>, linux-kernel@vger.kernel.org
+Cc: "MyungJoo Ham" <myungjoo.ham@samsung.com>,
+ "Chanwoo Choi" <cw00.choi@samsung.com>,
+ "Donggeun Kim" <dg77.kim@samsung.com>, "Marc Zyngier" <maz@kernel.org>,
+ "Philipp Zabel" <p.zabel@pengutronix.de>, "Peter Rosin" <peda@axentia.se>,
+ "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>,
+ "Geert Uytterhoeven" <geert@linux-m68k.org>, "Rob Herring" <robh@kernel.org>,
+ "Eddie Huang" <eddie.huang@mediatek.com>,
+ "Sean Wang" <sean.wang@mediatek.com>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "Alessandro Zummo" <a.zummo@towertech.it>,
+ "Alexandre Belloni" <alexandre.belloni@bootlin.com>,
+ linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 0/3] IRQ_DOMAIN: remove all "depends on", use only "select"
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230212_231527_085288_01848C73 
-X-CRM114-Status: GOOD (  10.19  )
+X-CRM114-CacheID: sfid-20230213_000548_064329_5B5012F6 
+X-CRM114-Status: GOOD (  13.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,16 +107,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, Arinc Unal <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Feb 12, 2023 at 10:39:49PM +0100, Richard van Schagen wrote:
-> ---
->  drivers/net/dsa/mt7530.c | 124 ++++++++++++++-------------------------
->  1 file changed, 43 insertions(+), 81 deletions(-)
+On Mon, Feb 13, 2023, at 05:15, Randy Dunlap wrote:
+> IRQ_DOMAIN is a hidden (not user visible) symbol. Users cannot set
+> it directly thru "make *config", so drivers should select it instead
+> of depending on it if they need it.
+> Relying on it being set for a dependency is risky.
+>
+> Consistently using "select" or "depends on" can also help reduce
+> Kconfig circular dependency issues.
+>
+> IRQ_DOMAIN is selected 109 times and is depended on 3 times in
+> current linux-next. Eliminate the uses of "depends on" by
+> converting them to "select".
+>
+>  [PATCH 1/3] extcon: max8997: select IRQ_DOMAIN instead of depending on it
+>  [PATCH 2/3] of: OF_IRQ: select IRQ_DOMAIN instead of depending on it
+>  [PATCH 3/3] rtc: mt6397: select IRQ_DOMAIN instead of depending on it
 
-Please read Documentation/process/submitting-patches.rst
+From a Kconfig perspective, your reasoning makes a lot of sense.
 
-Thanks
+Looking at the bigger picture, I wonder if we should just remove the
+option and make it unconditional. It is enabled in ever architecture
+defconfig other than alpha and sparc, and it's selected by a lot of
+very common options such as I2C,  GENERIC_MSI_IRQ, GENERIC_IRQ_CHIP,
+and PCI_HOST_GENERIC. Enabling the option on Alpha grows the kernel
+image from 9010KB to 9023KB, or on m68k Coldfire from 3346KB to
+3351KB.
+
+      Arnd
 
