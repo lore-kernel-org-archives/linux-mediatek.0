@@ -4,76 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3E3AC636D4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Feb 2023 15:10:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDF63C636CC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Feb 2023 16:50:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g+6NiBwrzMzY0iFEj5SAkgnlwVcJ6rcWHigS8pEBF38=; b=cgQrKe4NmHoHBP9hMCXWTlgvfn
-	ivHaaftcm3g9SdnWopDSeGw6vnUzG12JQ5Y29gz2nCH/Hq5dXaVAdvMZBNhODzx0TTlZHjhCELgiR
-	Tekz85j2cTAsQKETkh4Gr5VpPL+V3Nng6EH85IIc000zM05F+j1yfJze0dLDW/2U+C1kJZQW06tFr
-	/K5hb94vAlQTORP4j4lqVwZPnvD/xbos7V2G3JagUIRqpQ3B6x1oP68IxRiZwjy8LC2xIywCO2bcI
-	9rg5klvTgCMi0Aj2Gl/8MsQO2UpkALrMyuiT5mhgkdvNYPvnNfl89OmwECviAvOqbb7msaXH4Mh+M
-	ulrK77Lw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-ID:Cc:To:
+	References:In-Reply-To:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4hXnRCNzLg/YGPBSkRZXcs4vNUQXmT/Z+uZ7x2H+Zco=; b=OamN5VbEFCIpYX6auoCyQeU2OQ
+	k8vciNWgrBPsRTCCT45YfgD2X2VGadO6iYW6CBkCtvgNVM/8NK8nYJ0n/vv5SoobHc4k9WbYO2Ayy
+	J+LuAvknGrNB1OXbszIntnKslI7cVJECSOo/8FSGuJIXpiNMQ6kZXqrvKeWq2WHxRnBan3VXzFJvr
+	QWb7LgPixl4F1B54F1vKFlFrePgOmWimrYbMC/vRhxspR6/HyZF3jYTN1dkOVrf/Yik/OplWiecAI
+	xnRQVOMwgwrsOe0RY48NvwZCCvE8/WaVr7ejwvrzBaM9LtggQFyPuFFgJI/19JVSAi4vdDaSDCt6u
+	EKGFKo6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRaTQ-00F8Yg-RZ; Mon, 13 Feb 2023 15:10:32 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1pRc2H-00FZrc-Vj; Mon, 13 Feb 2023 16:50:40 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRaTE-00F8Tm-CT; Mon, 13 Feb 2023 15:10:21 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id eq11so13330290edb.6;
-        Mon, 13 Feb 2023 07:10:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=g+6NiBwrzMzY0iFEj5SAkgnlwVcJ6rcWHigS8pEBF38=;
-        b=ZfieTwOr+sqn+dobtezHop/Fmo/rAXS7NAUx17hb6ZFQ5lExV/uPWzDbSekJbgGzh1
-         yzM0lucIFOolljnvXTuxvddj2Kx73gj+Zg7wwniJwgUAsumoATRyJkS2l4z/DXexakZK
-         VaRndjH8zowNttv0SiX+3eEsf0dzhhqHfVv6ThsyWaPUd4b2NkLcVKo+BJw+zb8RHcQw
-         TaAqG0phoMsaEeUkztCN5Dw5QsIRQjyG3PvGAt7fqFLWRmxh3ZW8IGf+WTs4zejlZtYv
-         g1N7fID74/I9rvNKTMVugbhaUdLt1LVMwy5ZrnYrlPyxcXvwoGse0ePgm9iJlh2C3sM0
-         2Wfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=g+6NiBwrzMzY0iFEj5SAkgnlwVcJ6rcWHigS8pEBF38=;
-        b=A6FPrvbi6BhPgK+6fxrNaIaHgWwvFICnXVwfoMUT4IGgyx7QwTq91P5S5Xc+1BW8sA
-         BV4LQ698Zuj2NPXOb5HzGUwI02DTwk7tkyrTkSlep+gjGz5PiasKQeTy/RTLmffFN+NJ
-         QZZc+9+NJCRk8LbILSKjiOEJdHx8yNdO0jYaGFiWBnXRoT39SURoOSxQrjoxf07Wfilc
-         Ab+iYzJlPPnDZlVe5mt0np2YNMa0VB5LRTmH3LYKy7wBbFcl2R0TWvTMIEOkZ3YeJpqZ
-         zBLtpDYxZEqRqcZmEpP7121Fz3F+qtUBQwMoKyJuzspRpHKVGPVEpqVBy/JyvYOJn0oS
-         S9SQ==
-X-Gm-Message-State: AO0yUKX3eNlrBv3KzPvfq5awclWjf8gfzBtG47SQwOWKyn4lWqNtg/mP
-	UQwahQy/1DhmAfLAlcB2xKI=
-X-Google-Smtp-Source: AK7set8dTFfz1dPwGhl7i63pU30D2uHBEKusrO2akXLuxI/IZLMqDbz8FAEr1pKDGkrrvDaYZgrjWg==
-X-Received: by 2002:a50:d601:0:b0:4ac:bce7:370e with SMTP id x1-20020a50d601000000b004acbce7370emr7674377edi.14.1676301018078;
-        Mon, 13 Feb 2023 07:10:18 -0800 (PST)
-Received: from skbuf ([188.26.185.183])
-        by smtp.gmail.com with ESMTPSA id g22-20020a170906199600b0087bd629e9e4sm6924576ejd.179.2023.02.13.07.10.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Feb 2023 07:10:17 -0800 (PST)
-Date: Mon, 13 Feb 2023 17:10:15 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Richard van Schagen <richard@routerhints.com>
-Subject: Re: [PATCH net-next v2] net: dsa: mt7530: add support for changing
- DSA master
-Message-ID: <20230213151015.pstwqpcpjk7vr4xq@skbuf>
-References: <20230211184101.651462-1-richard@routerhints.com>
+	id 1pRc24-00FZmu-Qx; Mon, 13 Feb 2023 16:50:26 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 62C4E611DC;
+	Mon, 13 Feb 2023 16:50:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AEC7DC433D2;
+	Mon, 13 Feb 2023 16:50:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1676307023;
+	bh=Rj4b5OcNcUEi5G0PXsOiV12Dhn98uCWgxCg+T++ejCI=;
+	h=Subject:From:In-Reply-To:References:To:Cc:Date:From;
+	b=j9mnAfY33kOYp1aEXfqKhjBSTcecFDWKKpag1CJabG2XcUzUDPARmvil8fop/LYAi
+	 N+z3B/WUT5E+yEqZKt0oQefjPuniz0XZzWOCCVpDG98eZtmT+t8SYsnhpvvXxUnOO5
+	 gBHCby+4stmRtAYK8k/szM9bentQSj6765/O/i4uXsrHgVGoJCZIDMGlybAsaM3pkg
+	 ooqCeyseBW2dnFQeUZvHEhuNxexfwBNzKwCPq1Y6dcyAsG9ikdM5nKyzXMgdQxqGUo
+	 ZDARxWX2fRqFYDFa1vTXwIrB4fn0FGJ6lbIcOJYeJggi9QcL64C8pn7Soai2IfQcvE
+	 amaXGKuIULFng==
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230211184101.651462-1-richard@routerhints.com>
+Content-Transfer-Encoding: 7bit
+Subject: Re: [PATCH] dt-bindings: net: wireless: minor whitespace and name
+ cleanups
+From: Kalle Valo <kvalo@kernel.org>
+In-Reply-To: <20230118175413.360153-1-krzysztof.kozlowski@linaro.org>
+References: <20230118175413.360153-1-krzysztof.kozlowski@linaro.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, =?utf-8?b?SsOpcsO0bWUgUG91aWxs?=
+	=?utf-8?b?ZXI=?=  <jerome.pouiller@silabs.com>,
+ de Goede <hdegoede@redhat.com>, Tony Lindgren <tony@atomide.com>,
+ linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ ath11k@lists.infradead.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+User-Agent: pwcli/0.1.1-git (https://github.com/kvalo/pwcli/) Python/3.7.3
+Message-ID: <167630701594.12830.46272053415017973.kvalo@kernel.org>
+Date: Mon, 13 Feb 2023 16:50:18 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230213_071020_473880_2087ABF7 
-X-CRM114-Status: GOOD (  11.93  )
+X-CRM114-CacheID: sfid-20230213_085024_945985_187BC4E0 
+X-CRM114-Status: UNSURE (   8.39  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,32 +83,29 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, Arinc Unal <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Feb 11, 2023 at 07:41:01PM +0100, Richard van Schagen wrote:
-> Add support for changing the master of a port on the MT7530 DSA subdriver.
+Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> wrote:
+
+> Minor cleanups:
+>  - Drop redundant blank lines,
+>  - Correct indentaion in examples,
+>  - Correct node names in examples to drop underscore and use generic
+>    name.
 > 
+> No functional impact except adjusting to preferred coding style.
 > 
-> Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> Signed-off-by: Richard van Schagen <richard@routerhints.com>
-> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> ---
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Acked-by: Rob Herring <robh@kernel.org>
 
-Currently with this driver, the only way for a frame to reach the CPU is
-via flooding. The DSA framework can do better: it can configure the driver
-to only accept certain whitelisted MAC addresses, which reduces unwanted
-traffic to the CPU. But it needs driver level support for some prerequisites,
-namely FDB isolation, se see dsa_switch_supports_uc_filtering() and
-dsa_switch_supports_mc_filtering().
+Patch applied to wireless-next.git, thanks.
 
-If somebody decides to add support for RX filtering later to the mt7530 driver,
-he might not have access to a setup with multiple CPU ports. So this
-might become a blocking issue for him.
+1c30e9c0c8eb dt-bindings: net: wireless: minor whitespace and name cleanups
 
-Would it make more sense to unlock RX filtering for the mt7530 driver
-now, and to make the FDB entries added on the CPU ports work when
-multiple CPU ports exist, too? Now seems like the most logical moment to
-do that, not later.
+-- 
+https://patchwork.kernel.org/project/linux-wireless/patch/20230118175413.360153-1-krzysztof.kozlowski@linaro.org/
+
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+
 
