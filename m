@@ -4,49 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1FE4C636D7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Feb 2023 04:16:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66209C636CC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Feb 2023 07:15:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b2TQAFC9pQ+rFyre5LGzTHnEk3iqoypnovZvNJTJtgQ=; b=dgNd8sBB2pMmVkSEMCbuuokNEb
-	AHBYamG1U1zBYj3/5FyB2QisxmzgvC0HZ3E44PP3/GQ0kwY1X5Ux39ar8Mm+gToSRb5kvf6SHCtuA
-	D702a7TgRa8m2FxSJlFglbnnilTyh1mQC8RJI47IRMvucR4OX1ld90UTKosTletxVetaLF2rC2hl/
-	HjNss3ObfqYD7QzR1UNDl4KpiAcVkMnFg8e3HWCUENZYBnPC22r6Ehk90Y+EQeMm+/mhSJqfcXTDn
-	idPmzFlX/gYS69Ots0nqoQuFY8DMajHAUR+/J3LfsPnZbJTtCqzN4nVmEvD5GisR8q0VMmvflAaAJ
-	EpsQI4eA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rqHKaFpBaYV5IA8dxSlzzDAzoZA4YyFZKcjo68RFyoA=; b=puSCtE3MK5N8sFqQD7DXXV1oyu
+	YRCsXeaV7BKxTEJ0qv7zSwW/WBXRzFoWHWOjhg5ETkm42dtTgew/pwqLzf8XFs0sv6rloD3bWLx49
+	Mq8ax3b8Ad3+Ox2+JwhQji2H096t5hvkEtXeN0H0GZ+FY5D54DMd2BBafRad8Uf7caNi5mazFc7t4
+	3g78puxhEhhXZU6xtO5LCW7pSgKqorhLa0Hzv0+z3qbVtzM58pa7QeuAFEsqy1l94Gg5mawhEXaAA
+	y2RPxwFuDR5th18EJ80Vq8KS/3XUEmHB9VaGCcFyfWReaPMfO1C/wfRpFrNKNu+bMwBt2IqJIR2l5
+	fBbfq5AA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRQFz-00D5AA-2P; Mon, 13 Feb 2023 04:15:59 +0000
-Received: from [2601:1c2:980:9ec0::df2f] (helo=bombadil.infradead.org)
-	by bombadil.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRQFh-00D56G-7X; Mon, 13 Feb 2023 04:15:41 +0000
-From: Randy Dunlap <rdunlap@infradead.org>
-To: linux-kernel@vger.kernel.org
-Cc: Randy Dunlap <rdunlap@infradead.org>,
-	Arnd Bergmann <arnd@arndb.de>,
-	Eddie Huang <eddie.huang@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Alessandro Zummo <a.zummo@towertech.it>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	linux-rtc@vger.kernel.org,
-	Marc Zyngier <maz@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Peter Rosin <peda@axentia.se>
-Subject: [PATCH 3/3] rtc: mt6397: select IRQ_DOMAIN instead of depending on it
-Date: Sun, 12 Feb 2023 20:15:35 -0800
-Message-Id: <20230213041535.12083-4-rdunlap@infradead.org>
-X-Mailer: git-send-email 2.39.1
-In-Reply-To: <20230213041535.12083-1-rdunlap@infradead.org>
-References: <20230213041535.12083-1-rdunlap@infradead.org>
+	id 1pRT3q-00DQGv-2P; Mon, 13 Feb 2023 07:15:38 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pRT3e-00DQFM-VC; Mon, 13 Feb 2023 07:15:28 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 51B1C60DEF;
+	Mon, 13 Feb 2023 07:15:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34B09C433D2;
+	Mon, 13 Feb 2023 07:15:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1676272525;
+	bh=kXKrIKkF4Pu9CcKWI5PNeLrNZKIdxo0dgi5K9xPGp/w=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=O1yz/Yv6oTPAWaNRVpj1JnF9ZBDsXPAH1RWSCKsTeeKJah/JH7Lr/zIowbs5fEi5j
+	 7i8RmsI8DPJ/Jj1iRLkUBXjhEkn67FZrgpWqQYnbPpj45/tpj557qXkCNo+4Gysp1B
+	 G7B/HUGPKl7EgRCYzyqnzIis8D21Fiw4GZ6IA6Z1SCTXs4OLEY73IlUNVGu6ck8K4U
+	 2MEAH0k/MluhGWWKoan2mnkQVfN0T4UMl4KzH4MVcQNKp2S+2G3f+ALGzmGcX21a7I
+	 m67tPhyzSgudF6E5ZmXwS4WHc5cVgfuqx8DNC6wUhmSKx5mvqirbuenklI5RH/6wXU
+	 TNitnH2k+DmCQ==
+Date: Mon, 13 Feb 2023 09:15:21 +0200
+From: Leon Romanovsky <leon@kernel.org>
+To: Richard van Schagen <richard@routerhints.com>
+Subject: Re: [PATCH] Fix setting up CPU and User ports to be in the correct
+ mode during setup and when toggling vlan_filtering on a bridge port.
+Message-ID: <Y+njic6vxAlGp72l@unreal>
+References: <20230212213949.672443-1-richard@routerhints.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230212213949.672443-1-richard@routerhints.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20230212_231527_085288_01848C73 
+X-CRM114-Status: GOOD (  10.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,51 +66,16 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, Arinc Unal <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-IRQ_DOMAIN is a hidden (not user visible) symbol. Users cannot set
-it directly thru "make *config", so drivers should select it instead
-of depending on it if they need it.
-Relying on it being set for a dependency is risky.
+On Sun, Feb 12, 2023 at 10:39:49PM +0100, Richard van Schagen wrote:
+> ---
+>  drivers/net/dsa/mt7530.c | 124 ++++++++++++++-------------------------
+>  1 file changed, 43 insertions(+), 81 deletions(-)
 
-Consistently using "select" or "depends on" can also help reduce
-Kconfig circular dependency issues.
+Please read Documentation/process/submitting-patches.rst
 
-Therefore, change the use of "depends on" for IRQ_DOMAIN to
-"select" for RTC_DRV_MT6397.
-
-Fixes: 04d3ba70a3c9 ("rtc: mt6397: add IRQ domain dependency")
-Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
-Cc: Arnd Bergmann <arnd@arndb.de>
-Cc: Eddie Huang <eddie.huang@mediatek.com>
-Cc: Sean Wang <sean.wang@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: Alessandro Zummo <a.zummo@towertech.it>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>
-Cc: linux-rtc@vger.kernel.org
-Cc: Marc Zyngier <maz@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Peter Rosin <peda@axentia.se>
----
-I have a similar patch (should be a series) for REGMAP.
-
- drivers/rtc/Kconfig |    3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff -- a/drivers/rtc/Kconfig b/drivers/rtc/Kconfig
---- a/drivers/rtc/Kconfig
-+++ b/drivers/rtc/Kconfig
-@@ -1814,7 +1814,8 @@ config RTC_DRV_MT2712
- 
- config RTC_DRV_MT6397
- 	tristate "MediaTek PMIC based RTC"
--	depends on MFD_MT6397 || (COMPILE_TEST && IRQ_DOMAIN)
-+	depends on MFD_MT6397 || COMPILE_TEST
-+	select IRQ_DOMAIN
- 	help
- 	  This selects the MediaTek(R) RTC driver. RTC is part of MediaTek
- 	  MT6397 PMIC. You should enable MT6397 PMIC MFD before select
+Thanks
 
