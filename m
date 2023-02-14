@@ -4,73 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E46CEC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Feb 2023 21:55:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E6FDC05027
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Feb 2023 22:21:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vySWJ6MN7022l7oLRpZ2ZjFOTGdUlfBsedw6emUG1O4=; b=IN0de31Z0ZxToaUBdgNvsFNgED
-	EwaXfIDLwM2AOvMPVXMQK25qrAYPxsW81d1ShCnf/T8UKcex9cnWadus/57gxnPy9P/Dx8FhGyUHX
-	nOGy01yZ9rKiYZiXXvWgM8ms2xy9SZDDQ4/CTx1BvNNPUEyNt6Ve7OQaTdQ1EZ08AP24cfyx30eMh
-	gZG4HKpEOgLVDTtjr5HUSJP7UF7/eqRofqSiCoIwO6dd3Z48UrwMeH4zpuFibXe4G/wKq0+C8yh+k
-	74YJALni+pHCw/K005S/1FW1033jxFwzuZq7psvOp+DL0asrYXGZDZU19sLH2sngvM3wZqxavnVUz
-	9gk7GbOQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WGnA9jwDaDDLSr1eBeIR/5J4TwbRXrY/EA9j1cSV0VI=; b=skmybW62fyh5ddkOoHf933jsHO
+	dbVDHY8tkZVAiDULvAZjlAjccYWdF+Xi6rs2Vkbzcfgnh+SPDG8qVNeH8x6ePg0vcVwN+yk6Z03a3
+	1vwuw1//TVejjlZ3s7C8mUKlrBVIrDh2IOo/Js6vf8DBcyngvHfi8ZNXPpvtRha+rh2/hzQDdI2NG
+	t+DnqQr1NDWfZly9hqEIAGAKo7P8SDXsR3pIYrlw6qfkAFOT+VCJJplQlRatzoUfWybxMm7890NcH
+	k4x+5ndamZaWWYFYi86sHU/mwQzOn+RYFmSOVbLjLvBnSsPX7zbDiAdEJ/Dcve8cAxSF8QwokgeEc
+	zJnxWDvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pS3HC-003hiE-Cz; Tue, 14 Feb 2023 21:55:50 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pS3H2-003hgJ-EN; Tue, 14 Feb 2023 21:55:41 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1676411735; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Ca/TggrF2spbW8pMsdJvQthh73Cj9ui7TX9h4Ts4FoBXxMiH6Hts2WOnpoMstcylavAvDL1tu9lR9zJhB9Ovp9gw9HoTW6/ods2PbtaHuKDagLg4Qq3F5QpyO3kHgkbVcw/2Nz6lvy1Awx/gN3wq2ZwnaDp6hiYQLBsXs2M6Tr4=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1676411735; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=vySWJ6MN7022l7oLRpZ2ZjFOTGdUlfBsedw6emUG1O4=; 
-	b=Zwqm7OmXoHxtZvgHa2/pUq1iRirvi9dcfAVHbkMliZfcGRmeBB8zIzju6AKZDpu7KyoIK+AhZRtz5Ufk1V3icIwlTT2wEKeh7Am3pBP5WhLBPyHsOkR1sccH7j1TNbW6jaLhHjus6/43LhFm+7RUoX5OZwrbylMGziC92LuvMb0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1676411735;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=vySWJ6MN7022l7oLRpZ2ZjFOTGdUlfBsedw6emUG1O4=;
-	b=Di5jnN9soUnGjJdR/O7p+IrPvwh+BCFYmxAd+xdPOhAwkkYELy8sjacA87Z450a2
-	P5OB9yDUlso9h1rdQzX/jrL98upH6zSvN/R57MPEepNi1ber+l9HthibJ3jpEYutJNe
-	v44UgNwL7o5qW5XWT0ziksNDISF72+b3UbqcmqGU=
-Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1676411732227685.6659792892178; Tue, 14 Feb 2023 13:55:32 -0800 (PST)
-Message-ID: <551f3ca9-d919-0eef-844b-8925c94ee236@arinc9.com>
-Date: Wed, 15 Feb 2023 00:55:28 +0300
+	id 1pS3fN-003lHv-9V; Tue, 14 Feb 2023 22:20:49 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pS3f8-003lEu-Cx; Tue, 14 Feb 2023 22:20:36 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 45ADFFEC;
+	Tue, 14 Feb 2023 14:21:11 -0800 (PST)
+Received: from bogus (unknown [10.57.10.143])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DB0F13F663;
+	Tue, 14 Feb 2023 14:20:24 -0800 (PST)
+Date: Tue, 14 Feb 2023 22:20:21 +0000
+From: Sudeep Holla <sudeep.holla@arm.com>
+To: walter.chang@mediatek.com
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Maciej W . Rozycki" <macro@orcam.me.uk>,
+	John Stultz <jstultz@google.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	wsd_upstream@mediatek.com, stanley.chu@mediatek.com,
+	Chun-hung.Wu@mediatek.com, Freddy.Hsin@mediatek.com,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 4/4] clocksource/drivers/timer-mediatek: Make
+ timer-mediatek become loadable module
+Message-ID: <20230214222021.k3tsfwezhnh7tdlx@bogus>
+References: <20230214105412.5856-1-walter.chang@mediatek.com>
+ <20230214105412.5856-5-walter.chang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH] arm: dts: mt7623: disable home key on Bananapi BPI-R2
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- Frank Wunderlich <frank-w@public-files.de>, arinc9.unal@gmail.com,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- erkin.bozoglu@xeront.com
-References: <20230212121354.44590-1-arinc.unal@arinc9.com>
- <C18B89E3-7B54-47B4-98B3-B2D74AB29A54@public-files.de>
- <fbc7cb4e-0424-f9c7-aa99-d8d9f7674175@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <fbc7cb4e-0424-f9c7-aa99-d8d9f7674175@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230214105412.5856-5-walter.chang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230214_135540_578150_49AA86B4 
-X-CRM114-Status: UNSURE (   8.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230214_142034_528010_A88A1204 
+X-CRM114-Status: GOOD (  17.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,33 +71,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14.02.2023 21:09, Matthias Brugger wrote:
+On Tue, Feb 14, 2023 at 06:53:14PM +0800, walter.chang@mediatek.com wrote:
+> From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
 > 
+> Make the timer-mediatek driver which can register
+> an always-on timer as tick_broadcast_device on
+> MediaTek SoCs become loadable module in GKI.
 > 
-> On 12/02/2023 13:33, Frank Wunderlich wrote:
->> Am 12. Februar 2023 13:13:54 MEZ schrieb arinc9.unal@gmail.com:
->>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>>
->>> There's no home key on Bananapi BPI-R2. Disable it.
->>
->>>
->>> +&mt6323keys {
->>> +    home {
->>> +        status = "disabled";
->>> +    };
->>> +};
->>>
->>
->> Acked-by: Frank Wunderlich <frank-w@public-files.de>
->> regards Frank
-> 
-> 
-> Applied, thanks!
+> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+> ---
+>  drivers/clocksource/Kconfig          |  2 +-
+>  drivers/clocksource/timer-mediatek.c | 43 ++++++++++++++++++++++++++++
+>  2 files changed, 44 insertions(+), 1 deletion(-)
 
-Efkaristo poli! (I'm learning Greek, I'm trying to practice wherever I 
-can ;))
+[...]
 
-I'd like to remind my v3 patch series for the mt7623 DTs.
+> diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
+> index d5b29fd03ca2..3358758ea694 100644
+> --- a/drivers/clocksource/timer-mediatek.c
+> +++ b/drivers/clocksource/timer-mediatek.c
 
-Arınç
+[...]
+
+> +static const struct of_device_id mtk_timer_match_table[] = {
+> +	{
+> +		.compatible = "mediatek,mt6577-timer",
+> +		.data = mtk_gpt_init,
+> +	},
+> +	{
+> +		.compatible = "mediatek,mt6765-timer",
+> +		.data = mtk_syst_init,
+> +	},
+> +	{
+> +		.compatible = "mediatek,mt6795-systimer",
+> +		.data = mtk_cpux_init,
+> +	},
+> +	{}
+> +};
+> +
+> +static struct platform_driver mtk_timer_driver = {
+> +	.probe = mtk_timer_probe,
+> +	.driver = {
+> +		.name = "mtk-timer",
+> +		.of_match_table = mtk_timer_match_table,
+> +	},
+> +};
+> +module_platform_driver(mtk_timer_driver);
+> +
+> +MODULE_DESCRIPTION("MediaTek Module Timer driver");
+> +MODULE_LICENSE("GPL v2");
+> +#else
+>  TIMER_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_gpt_init);
+>  TIMER_OF_DECLARE(mtk_mt6765, "mediatek,mt6765-timer", mtk_syst_init);
+>  TIMER_OF_DECLARE(mtk_mt6795, "mediatek,mt6795-systimer", mtk_cpux_init);
+
+Why do you need these ? If this driver can work as a module, it can be
+built-in module and doesn't need to be initialised early using of_timer_init
+(can't recall the exact name)
+
+
+-- 
+Regards,
+Sudeep
 
