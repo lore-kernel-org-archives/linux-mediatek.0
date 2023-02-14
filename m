@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 392D1C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Feb 2023 13:43:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E0D6C6379F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Feb 2023 13:44:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7Ip9B6+gioiyo6SZ/raVVy5iaubJNXYv6TA895xO3I8=; b=1PrlSOuvzKdFhTX6isuN4LWg+l
-	RKRgnyXjWPzPIDv7ArBk/cImt76geveIRiOoNWGO3NTeYV6LjkbYU5qZW8SWkU2d2r4LoWv+NNfT6
-	SbPWbfEVy3VVc0VLrzewPzsXLwXMXAQJfcQR7744TAllI/Td3Mgbq0vbGiPstajHo0uGrct+fgf7r
-	UcS8Pz+Q14axXE0xjcoL1bos9mWHWmQnZr7FHTKkPRouh4eSg0UFCsJycohaJ/072+SmrwxqqGgcC
-	t479/wKaSfugGBUWfr2aMCEIv+eLVvXYbpxu5Rj9/qeU0d/hFWUdJF1wwmhs6hGBcht9nNkQSgemu
-	csKIBqww==;
+	bh=LFxUZjIm71pXTh5SzqmZC1q9w0m8M7gJBz8jF8n+1RY=; b=xSKeSG6+D6P4m2JaPQn6GlYsnR
+	Wwi0MX7HIEkuDm1HQSeqxLOJDlG9/dD0DDRJSuSv4+UPQUYUOohFc+QeTd8Vy263jytmCRA5AoWfn
+	5RgkJlnW5+LBF9FJK+q+yu5n3CucJh5kdb+0F4mKYo+x0tbte2kDMG3IuaTHkFV9Od8jVx6Rc4U3w
+	HJvjDwm+I8JaIPyjayVtdmwchTE05yYOmN1qv4QKshwkL27UsW87xOZf1u0Z9ZrAMt/f6IpIkkWID
+	nOZFkuFaZQvgOXqHf23p+XO/h1S7Fa6kP7HAd9iVqKLJNWgYjjE8getv1Ai3W7PMJ0XDW6lEVvB9n
+	fAp4aExw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRvaS-001mM4-Fw; Tue, 14 Feb 2023 13:43:12 +0000
+	id 1pRvbJ-001mnL-Ku; Tue, 14 Feb 2023 13:44:05 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRvZ8-001laM-61; Tue, 14 Feb 2023 13:41:52 +0000
+	id 1pRvZ5-001lYo-IV; Tue, 14 Feb 2023 13:41:52 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A7CCC660216D;
-	Tue, 14 Feb 2023 13:41:47 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0B13F6602173;
+	Tue, 14 Feb 2023 13:41:45 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676382108;
-	bh=8FCYMfAOFtesOuQgR23iEJsH5DFbnIHYEwIdqw3++KI=;
+	s=mail; t=1676382106;
+	bh=P3W6+B36W4E9DtgYTRH6j92qmH82MuwCqGFuyNJSHpI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=at+zjfObYId55dsjFa2epZ2YBlBrOIbCSJHQzUWQu3uwbKgpJcK//h6snfs1Uh3kW
-	 6qly4csplWhZGjEZWrQriD7YCEdhs8Q66g11EEuIQVoSbC4gS2dmlljPOGfrOSzBBY
-	 3OvPsLQcRfd2UeOYz7DTh2MhZg+A1lsbLjfg64khr37aapnWcF/S9l5XpYN9EHksw7
-	 /2KA6PRAOvCb97Wr1YX4K44A+Cj1iY3/HKZd2MCHlQegfd2OepUCzyrfH393ElOerJ
-	 SOisBXl3bLHRaTSrCEy66dSo7on1kmrdj7OaHs79tet/D8Rvxr6V/3AuVqVdCPTlCt
-	 cSMNrEinzSN9A==
+	b=W0KTKDORkc9Hul7jv/uUu1TFuROix1XLBvDmhMXMQ2x1BilJ9yLZocjvtndyWIlJi
+	 7bfajgUAGBVn4ZCf07k2BZYIUagWbI1qo10VF58SWvSb59R7yAH5QYyTAzmeoaYJcj
+	 HGfIe22gW3wyECJz3iKz45msPwVkd6eiwdwr9NzlYnxOjdf+6DkYsdmu1WiCj+sBm6
+	 zBBl3ZSgJQj3YckC7HhxtD+fEP3ePkG0ZaRIWt0N1OaDq4g6BDjJ63k9i6jIyZl2eK
+	 5+/2QiJsLz/CrpkUp1Omu1zdpVdokp2UmkaGO92q8Hq8p2Z9d8paqXuA/j0cQ39L15
+	 9DJJSwk9iWLCQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mturquette@baylibre.com
 Cc: sboyd@kernel.org,
@@ -68,17 +68,17 @@ Cc: sboyd@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v2 05/47] clk: mediatek: mt2712: Migrate topckgen/mcucfg to mtk_clk_simple_probe()
-Date: Tue, 14 Feb 2023 14:40:45 +0100
-Message-Id: <20230214134127.59273-6-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 03/47] clk: mediatek: Migrate to mtk_clk_pdev_probe() for multimedia clocks
+Date: Tue, 14 Feb 2023 14:40:43 +0100
+Message-Id: <20230214134127.59273-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230214134127.59273-1-angelogioacchino.delregno@collabora.com>
 References: <20230214134127.59273-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230214_054150_499911_23854F89 
-X-CRM114-Status: GOOD (  14.77  )
+X-CRM114-CacheID: sfid-20230214_054147_914011_DD898F33 
+X-CRM114-Status: GOOD (  15.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,180 +93,934 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Now that the common mtk_clk_simple_{probe,remove}() functions can deal
-with divider clocks it is possible to migrate more clock drivers to it:
-in this case, it's about topckgen.
-While at it, also perform a fast migration for mcucfg.
+Reduce duplication and simplify all MediaTek multimedia clock drivers
+by migrating away from defining custom probe functions for each driver
+and instead use mtk_clk_pdev_probe().
+
+While at it, also add a .remove() callback to all of the multimedia
+clock drivers where missing.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/clk/mediatek/clk-mt2712.c | 127 +++++-------------------------
- 1 file changed, 21 insertions(+), 106 deletions(-)
+ drivers/clk/mediatek/clk-mt2701-mm.c   | 31 +++++---------
+ drivers/clk/mediatek/clk-mt2712-mm.c   | 31 +++++---------
+ drivers/clk/mediatek/clk-mt6779-mm.c   | 24 +++++------
+ drivers/clk/mediatek/clk-mt6795-mm.c   | 55 +++++-------------------
+ drivers/clk/mediatek/clk-mt6797-mm.c   | 31 +++++---------
+ drivers/clk/mediatek/clk-mt8167-mm.c   | 47 +++++----------------
+ drivers/clk/mediatek/clk-mt8173-mm.c   | 58 +++++---------------------
+ drivers/clk/mediatek/clk-mt8183-mm.c   | 24 +++++------
+ drivers/clk/mediatek/clk-mt8186-mm.c   | 56 +++++--------------------
+ drivers/clk/mediatek/clk-mt8192-mm.c   | 29 +++++--------
+ drivers/clk/mediatek/clk-mt8195-vdo0.c | 55 +++++-------------------
+ drivers/clk/mediatek/clk-mt8195-vdo1.c | 57 ++++++-------------------
+ drivers/clk/mediatek/clk-mt8195-vpp0.c | 54 +++++-------------------
+ drivers/clk/mediatek/clk-mt8195-vpp1.c | 54 +++++-------------------
+ drivers/clk/mediatek/clk-mt8365-mm.c   | 39 +++++------------
+ 15 files changed, 165 insertions(+), 480 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt2712.c b/drivers/clk/mediatek/clk-mt2712.c
-index 94f8fc2a4f7b..db20c46e088b 100644
---- a/drivers/clk/mediatek/clk-mt2712.c
-+++ b/drivers/clk/mediatek/clk-mt2712.c
-@@ -36,14 +36,11 @@ static const struct mtk_fixed_clk top_fixed_clks[] = {
- 	FIXED_CLK(CLK_TOP_CVBSPLL, "cvbspll", NULL, 108000000),
+diff --git a/drivers/clk/mediatek/clk-mt2701-mm.c b/drivers/clk/mediatek/clk-mt2701-mm.c
+index 23d5ddcc1d37..a8d94ca0eefd 100644
+--- a/drivers/clk/mediatek/clk-mt2701-mm.c
++++ b/drivers/clk/mediatek/clk-mt2701-mm.c
+@@ -79,32 +79,23 @@ static const struct mtk_gate mm_clks[] = {
+ 	GATE_DISP1(CLK_MM_TVE_FMM, "mm_tve_fmm", "mm_sel", 14),
  };
  
--static const struct mtk_fixed_factor top_early_divs[] = {
-+static const struct mtk_fixed_factor top_divs[] = {
- 	FACTOR(CLK_TOP_SYS_26M, "sys_26m", "clk26m", 1,
- 		1),
- 	FACTOR(CLK_TOP_CLK26M_D2, "clk26m_d2", "sys_26m", 1,
- 		2),
--};
--
--static const struct mtk_fixed_factor top_divs[] = {
- 	FACTOR(CLK_TOP_ARMCA35PLL, "armca35pll_ck", "armca35pll", 1,
- 		1),
- 	FACTOR(CLK_TOP_ARMCA35PLL_600M, "armca35pll_600m", "armca35pll_ck", 1,
-@@ -1295,114 +1292,30 @@ static int clk_mt2712_apmixed_probe(struct platform_device *pdev)
- 	return r;
- }
- 
--static struct clk_hw_onecell_data *top_clk_data;
--
--static void clk_mt2712_top_init_early(struct device_node *node)
+-static int clk_mt2701_mm_probe(struct platform_device *pdev)
 -{
--	int r, i;
--
--	if (!top_clk_data) {
--		top_clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
--
--		for (i = 0; i < CLK_TOP_NR_CLK; i++)
--			top_clk_data->hws[i] = ERR_PTR(-EPROBE_DEFER);
--	}
--
--	mtk_clk_register_factors(top_early_divs, ARRAY_SIZE(top_early_divs),
--			top_clk_data);
--
--	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, top_clk_data);
--	if (r)
--		pr_err("%s(): could not register clock provider: %d\n",
--			__func__, r);
--}
--
--CLK_OF_DECLARE_DRIVER(mt2712_topckgen, "mediatek,mt2712-topckgen",
--			clk_mt2712_top_init_early);
--
--static int clk_mt2712_top_probe(struct platform_device *pdev)
--{
--	int r, i;
--	struct device_node *node = pdev->dev.of_node;
--	void __iomem *base;
--
--	base = devm_platform_ioremap_resource(pdev, 0);
--	if (IS_ERR(base)) {
--		pr_err("%s(): ioremap failed\n", __func__);
--		return PTR_ERR(base);
--	}
--
--	if (!top_clk_data) {
--		top_clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
--	} else {
--		for (i = 0; i < CLK_TOP_NR_CLK; i++) {
--			if (top_clk_data->hws[i] == ERR_PTR(-EPROBE_DEFER))
--				top_clk_data->hws[i] = ERR_PTR(-ENOENT);
--		}
--	}
--
--	mtk_clk_register_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_fixed_clks),
--			top_clk_data);
--	mtk_clk_register_factors(top_early_divs, ARRAY_SIZE(top_early_divs),
--			top_clk_data);
--	mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), top_clk_data);
--	mtk_clk_register_composites(&pdev->dev, top_muxes,
--				    ARRAY_SIZE(top_muxes), base,
--				    &mt2712_clk_lock, top_clk_data);
--	mtk_clk_register_dividers(top_adj_divs, ARRAY_SIZE(top_adj_divs), base,
--			&mt2712_clk_lock, top_clk_data);
--	mtk_clk_register_gates(&pdev->dev, node, top_clks,
--			       ARRAY_SIZE(top_clks), top_clk_data);
--
--	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, top_clk_data);
--
--	if (r != 0)
--		pr_err("%s(): could not register clock provider: %d\n",
--			__func__, r);
--
--	return r;
--}
--
--static int clk_mt2712_mcu_probe(struct platform_device *pdev)
--{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
 -	struct clk_hw_onecell_data *clk_data;
 -	int r;
--	struct device_node *node = pdev->dev.of_node;
--	void __iomem *base;
 -
--	base = devm_platform_ioremap_resource(pdev, 0);
--	if (IS_ERR(base)) {
--		pr_err("%s(): ioremap failed\n", __func__);
--		return PTR_ERR(base);
--	}
+-	clk_data = mtk_alloc_clk_data(CLK_MM_NR);
 -
--	clk_data = mtk_alloc_clk_data(CLK_MCU_NR_CLK);
+-	mtk_clk_register_gates(&pdev->dev, node, mm_clks,
+-			       ARRAY_SIZE(mm_clks), clk_data);
 -
--	r = mtk_clk_register_composites(&pdev->dev, mcu_muxes,
--					ARRAY_SIZE(mcu_muxes), base,
--					&mt2712_clk_lock, clk_data);
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
 -	if (r)
--		dev_err(&pdev->dev, "Could not register composites: %d\n", r);
+-		dev_err(&pdev->dev,
+-			"could not register clock provider: %s: %d\n",
+-			pdev->name, r);
++static const struct mtk_clk_desc mm_desc = {
++	.clks = mm_clks,
++	.num_clks = ARRAY_SIZE(mm_clks),
++};
+ 
+-	return r;
+-}
++static const struct platform_device_id clk_mt2701_mm_id_table[] = {
++	{ .name = "clk-mt2701-mm", .driver_data = (kernel_ulong_t)&mm_desc },
++	{ /* sentinel */ }
++};
+ 
+ static struct platform_driver clk_mt2701_mm_drv = {
+-	.probe = clk_mt2701_mm_probe,
++	.probe = mtk_clk_pdev_probe,
++	.remove = mtk_clk_pdev_remove,
+ 	.driver = {
+ 		.name = "clk-mt2701-mm",
+ 	},
++	.id_table = clk_mt2701_mm_id_table,
+ };
+ 
+ builtin_platform_driver(clk_mt2701_mm_drv);
+diff --git a/drivers/clk/mediatek/clk-mt2712-mm.c b/drivers/clk/mediatek/clk-mt2712-mm.c
+index 25b8af640c12..615f6b0fe96e 100644
+--- a/drivers/clk/mediatek/clk-mt2712-mm.c
++++ b/drivers/clk/mediatek/clk-mt2712-mm.c
+@@ -126,32 +126,23 @@ static const struct mtk_gate mm_clks[] = {
+ 	GATE_MM2(CLK_MM_DSI3_DIGITAL, "mm_dsi3_digital", "dsi1_lntc", 6),
+ };
+ 
+-static int clk_mt2712_mm_probe(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
+-
+-	mtk_clk_register_gates(&pdev->dev, node, mm_clks,
+-			       ARRAY_SIZE(mm_clks), clk_data);
 -
 -	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
 -
 -	if (r != 0)
 -		pr_err("%s(): could not register clock provider: %d\n",
 -			__func__, r);
-+static const struct mtk_clk_desc topck_desc = {
-+	.clks = top_clks,
-+	.num_clks = ARRAY_SIZE(top_clks),
-+	.fixed_clks = top_fixed_clks,
-+	.num_fixed_clks = ARRAY_SIZE(top_fixed_clks),
-+	.factor_clks = top_divs,
-+	.num_factor_clks = ARRAY_SIZE(top_divs),
-+	.composite_clks = top_muxes,
-+	.num_composite_clks = ARRAY_SIZE(top_muxes),
-+	.divider_clks = top_adj_divs,
-+	.num_divider_clks = ARRAY_SIZE(top_adj_divs),
-+	.clk_lock = &mt2712_clk_lock,
++static const struct mtk_clk_desc mm_desc = {
++	.clks = mm_clks,
++	.num_clks = ARRAY_SIZE(mm_clks),
 +};
  
 -	return r;
 -}
-+static const struct mtk_clk_desc mcu_desc = {
-+	.composite_clks = mcu_muxes,
-+	.num_composite_clks = ARRAY_SIZE(mcu_muxes),
-+	.clk_lock = &mt2712_clk_lock,
++static const struct platform_device_id clk_mt2712_mm_id_table[] = {
++	{ .name = "clk-mt2712-mm", .driver_data = (kernel_ulong_t)&mm_desc },
++	{ /* sentinel */ }
 +};
  
- static const struct of_device_id of_match_clk_mt2712[] = {
- 	{
- 		.compatible = "mediatek,mt2712-apmixedsys",
- 		.data = clk_mt2712_apmixed_probe,
--	}, {
--		.compatible = "mediatek,mt2712-topckgen",
--		.data = clk_mt2712_top_probe,
--	}, {
--		.compatible = "mediatek,mt2712-mcucfg",
--		.data = clk_mt2712_mcu_probe,
- 	}, {
- 		/* sentinel */
- 	}
-@@ -1440,7 +1353,9 @@ static const struct mtk_clk_desc peri_desc = {
- 
- static const struct of_device_id of_match_clk_mt2712_simple[] = {
- 	{ .compatible = "mediatek,mt2712-infracfg", .data = &infra_desc },
-+	{ .compatible = "mediatek,mt2712-mcucfg", .data = &mcu_desc },
- 	{ .compatible = "mediatek,mt2712-pericfg", .data = &peri_desc, },
-+	{ .compatible = "mediatek,mt2712-topckgen", .data = &topck_desc },
- 	{ /* sentinel */ }
+ static struct platform_driver clk_mt2712_mm_drv = {
+-	.probe = clk_mt2712_mm_probe,
++	.probe = mtk_clk_pdev_probe,
++	.remove = mtk_clk_pdev_remove,
+ 	.driver = {
+ 		.name = "clk-mt2712-mm",
+ 	},
++	.id_table = clk_mt2712_mm_id_table,
  };
  
+ builtin_platform_driver(clk_mt2712_mm_drv);
+diff --git a/drivers/clk/mediatek/clk-mt6779-mm.c b/drivers/clk/mediatek/clk-mt6779-mm.c
+index 2cccf62d3b36..219a3a7920cd 100644
+--- a/drivers/clk/mediatek/clk-mt6779-mm.c
++++ b/drivers/clk/mediatek/clk-mt6779-mm.c
+@@ -85,25 +85,23 @@ static const struct mtk_gate mm_clks[] = {
+ 	GATE_MM1(CLK_MM_DISP_OVL_FBDC, "mm_disp_ovl_fbdc", "mm_sel", 16),
+ };
+ 
+-static int clk_mt6779_mm_probe(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	struct clk_hw_onecell_data *clk_data;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
+-
+-	mtk_clk_register_gates(&pdev->dev, node, mm_clks,
+-			       ARRAY_SIZE(mm_clks), clk_data);
++static const struct mtk_clk_desc mm_desc = {
++	.clks = mm_clks,
++	.num_clks = ARRAY_SIZE(mm_clks),
++};
+ 
+-	return of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-}
++static const struct platform_device_id clk_mt6779_mm_id_table[] = {
++	{ .name = "clk-mt6779-mm", .driver_data = (kernel_ulong_t)&mm_desc },
++	{ /* sentinel */ }
++};
+ 
+ static struct platform_driver clk_mt6779_mm_drv = {
+-	.probe = clk_mt6779_mm_probe,
++	.probe = mtk_clk_pdev_probe,
++	.remove = mtk_clk_pdev_remove,
+ 	.driver = {
+ 		.name = "clk-mt6779-mm",
+ 	},
++	.id_table = clk_mt6779_mm_id_table,
+ };
+ 
+ module_platform_driver(clk_mt6779_mm_drv);
+diff --git a/drivers/clk/mediatek/clk-mt6795-mm.c b/drivers/clk/mediatek/clk-mt6795-mm.c
+index eebb6143ada2..c0c61a08cd72 100644
+--- a/drivers/clk/mediatek/clk-mt6795-mm.c
++++ b/drivers/clk/mediatek/clk-mt6795-mm.c
+@@ -76,56 +76,23 @@ static const struct mtk_gate mm_gates[] = {
+ 	GATE_MM1(CLK_MM_DPI_ENGINE, "mm_dpi_engine", "mm_sel", 9),
+ };
+ 
+-static int clk_mt6795_mm_probe(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	struct clk_hw_onecell_data *clk_data;
+-	int ret;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
+-	if (!clk_data)
+-		return -ENOMEM;
+-
+-	ret = mtk_clk_register_gates(&pdev->dev, node, mm_gates,
+-				     ARRAY_SIZE(mm_gates), clk_data);
+-	if (ret)
+-		goto free_clk_data;
+-
+-	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (ret)
+-		goto unregister_gates;
+-
+-	platform_set_drvdata(pdev, clk_data);
+-
+-	return 0;
+-
+-unregister_gates:
+-	mtk_clk_unregister_gates(mm_gates, ARRAY_SIZE(mm_gates), clk_data);
+-free_clk_data:
+-	mtk_free_clk_data(clk_data);
+-	return ret;
+-}
+-
+-static int clk_mt6795_mm_remove(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+-
+-	of_clk_del_provider(node);
+-	mtk_clk_unregister_gates(mm_gates, ARRAY_SIZE(mm_gates), clk_data);
+-	mtk_free_clk_data(clk_data);
++static const struct mtk_clk_desc mm_desc = {
++	.clks = mm_gates,
++	.num_clks = ARRAY_SIZE(mm_gates),
++};
+ 
+-	return 0;
+-}
++static const struct platform_device_id clk_mt6795_mm_id_table[] = {
++	{ .name = "clk-mt6795-mm", .driver_data = (kernel_ulong_t)&mm_desc },
++	{ /* sentinel */ }
++};
+ 
+ static struct platform_driver clk_mt6795_mm_drv = {
+ 	.driver = {
+ 		.name = "clk-mt6795-mm",
+ 	},
+-	.probe = clk_mt6795_mm_probe,
+-	.remove = clk_mt6795_mm_remove,
++	.id_table = clk_mt6795_mm_id_table,
++	.probe = mtk_clk_pdev_probe,
++	.remove = mtk_clk_pdev_remove,
+ };
+ module_platform_driver(clk_mt6795_mm_drv);
+ 
+diff --git a/drivers/clk/mediatek/clk-mt6797-mm.c b/drivers/clk/mediatek/clk-mt6797-mm.c
+index deb16a6b16a5..706c9775646d 100644
+--- a/drivers/clk/mediatek/clk-mt6797-mm.c
++++ b/drivers/clk/mediatek/clk-mt6797-mm.c
+@@ -92,32 +92,23 @@ static const struct mtk_gate mm_clks[] = {
+ 		 "clk26m", 3),
+ };
+ 
+-static int clk_mt6797_mm_probe(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_MM_NR);
+-
+-	mtk_clk_register_gates(&pdev->dev, node, mm_clks,
+-			       ARRAY_SIZE(mm_clks), clk_data);
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r)
+-		dev_err(&pdev->dev,
+-			"could not register clock provider: %s: %d\n",
+-			pdev->name, r);
++static const struct mtk_clk_desc mm_desc = {
++	.clks = mm_clks,
++	.num_clks = ARRAY_SIZE(mm_clks),
++};
+ 
+-	return r;
+-}
++static const struct platform_device_id clk_mt6797_mm_id_table[] = {
++	{ .name = "clk-mt6797-mm", .driver_data = (kernel_ulong_t)&mm_desc },
++	{ /* sentinel */ }
++};
+ 
+ static struct platform_driver clk_mt6797_mm_drv = {
+-	.probe = clk_mt6797_mm_probe,
++	.probe = mtk_clk_pdev_probe,
++	.remove = mtk_clk_pdev_remove,
+ 	.driver = {
+ 		.name = "clk-mt6797-mm",
+ 	},
++	.id_table = clk_mt6797_mm_id_table,
+ };
+ 
+ builtin_platform_driver(clk_mt6797_mm_drv);
+diff --git a/drivers/clk/mediatek/clk-mt8167-mm.c b/drivers/clk/mediatek/clk-mt8167-mm.c
+index c0b44104c765..78c023b0565a 100644
+--- a/drivers/clk/mediatek/clk-mt8167-mm.c
++++ b/drivers/clk/mediatek/clk-mt8167-mm.c
+@@ -86,47 +86,22 @@ static const struct mtk_gate mm_clks[] = {
+ 	GATE_MM1(CLK_MM_HDMI_PLL, "mm_hdmi_pll", "hdmtx_dig_cts", 21),
+ };
+ 
+-struct clk_mt8167_mm_driver_data {
+-	const struct mtk_gate *gates_clk;
+-	int gates_num;
++static const struct mtk_clk_desc mm_desc = {
++	.clks = mm_clks,
++	.num_clks = ARRAY_SIZE(mm_clks),
+ };
+ 
+-static const struct clk_mt8167_mm_driver_data mt8167_mmsys_driver_data = {
+-	.gates_clk = mm_clks,
+-	.gates_num = ARRAY_SIZE(mm_clks),
++static const struct platform_device_id clk_mt8167_mm_id_table[] = {
++	{ .name = "clk-mt8167-mm", .driver_data = (kernel_ulong_t)&mm_desc },
++	{ /* sentinel */ }
+ };
+ 
+-static int clk_mt8167_mm_probe(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	const struct clk_mt8167_mm_driver_data *data;
+-	struct clk_hw_onecell_data *clk_data;
+-	int ret;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
+-	if (!clk_data)
+-		return -ENOMEM;
+-
+-	data = &mt8167_mmsys_driver_data;
+-
+-	ret = mtk_clk_register_gates(&pdev->dev, node, data->gates_clk,
+-				     data->gates_num, clk_data);
+-	if (ret)
+-		return ret;
+-
+-	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (ret)
+-		return ret;
+-
+-	return 0;
+-}
+-
+-static struct platform_driver clk_mt8173_mm_drv = {
++static struct platform_driver clk_mt8167_mm_drv = {
++	.probe = mtk_clk_pdev_probe,
++	.remove = mtk_clk_pdev_remove,
+ 	.driver = {
+ 		.name = "clk-mt8167-mm",
+ 	},
+-	.probe = clk_mt8167_mm_probe,
++	.id_table = clk_mt8167_mm_id_table,
+ };
+-
+-builtin_platform_driver(clk_mt8173_mm_drv);
++builtin_platform_driver(clk_mt8167_mm_drv);
+diff --git a/drivers/clk/mediatek/clk-mt8173-mm.c b/drivers/clk/mediatek/clk-mt8173-mm.c
+index 315430ad1581..ffec2d917661 100644
+--- a/drivers/clk/mediatek/clk-mt8173-mm.c
++++ b/drivers/clk/mediatek/clk-mt8173-mm.c
+@@ -44,6 +44,7 @@ static const struct mtk_gate_regs mm1_cg_regs = {
+ 	}
+ 
+ static const struct mtk_gate mt8173_mm_clks[] = {
++	GATE_DUMMY(CLK_DUMMY, "mm_dummy"),
+ 	/* MM0 */
+ 	GATE_MM0(CLK_MM_SMI_COMMON, "mm_smi_common", "mm_sel", 0),
+ 	GATE_MM0(CLK_MM_SMI_LARB0, "mm_smi_larb0", "mm_sel", 1),
+@@ -100,62 +101,23 @@ static const struct mtk_gate mt8173_mm_clks[] = {
+ 	GATE_MM1(CLK_MM_HDMI_HDCP24M, "mm_hdmi_hdcp24m", "hdcp_24m_sel", 20),
+ };
+ 
+-struct clk_mt8173_mm_driver_data {
+-	const struct mtk_gate *gates_clk;
+-	int gates_num;
++static const struct mtk_clk_desc mm_desc = {
++	.clks = mt8173_mm_clks,
++	.num_clks = ARRAY_SIZE(mt8173_mm_clks),
+ };
+ 
+-static const struct clk_mt8173_mm_driver_data mt8173_mmsys_driver_data = {
+-	.gates_clk = mt8173_mm_clks,
+-	.gates_num = ARRAY_SIZE(mt8173_mm_clks),
++static const struct platform_device_id clk_mt8173_mm_id_table[] = {
++	{ .name = "clk-mt8173-mm", .driver_data = (kernel_ulong_t)&mm_desc },
++	{ /* sentinel */ }
+ };
+ 
+-static int clk_mt8173_mm_probe(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	const struct clk_mt8173_mm_driver_data *data;
+-	struct clk_hw_onecell_data *clk_data;
+-	int ret;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
+-	if (!clk_data)
+-		return -ENOMEM;
+-
+-	data = &mt8173_mmsys_driver_data;
+-
+-	ret = mtk_clk_register_gates(&pdev->dev, node, data->gates_clk,
+-				     data->gates_num, clk_data);
+-	if (ret)
+-		return ret;
+-
+-	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (ret)
+-		return ret;
+-
+-	return 0;
+-}
+-
+-static int clk_mt8173_mm_remove(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+-	const struct clk_mt8173_mm_driver_data *data = &mt8173_mmsys_driver_data;
+-
+-	of_clk_del_provider(node);
+-	mtk_clk_unregister_gates(data->gates_clk, data->gates_num, clk_data);
+-	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+-}
+-
+ static struct platform_driver clk_mt8173_mm_drv = {
+ 	.driver = {
+ 		.name = "clk-mt8173-mm",
+ 	},
+-	.probe = clk_mt8173_mm_probe,
+-	.remove = clk_mt8173_mm_remove,
++	.id_table = clk_mt8173_mm_id_table,
++	.probe = mtk_clk_pdev_probe,
++	.remove = mtk_clk_pdev_remove,
+ };
+ 
+ builtin_platform_driver(clk_mt8173_mm_drv);
+diff --git a/drivers/clk/mediatek/clk-mt8183-mm.c b/drivers/clk/mediatek/clk-mt8183-mm.c
+index 358031530913..669dcdd66efb 100644
+--- a/drivers/clk/mediatek/clk-mt8183-mm.c
++++ b/drivers/clk/mediatek/clk-mt8183-mm.c
+@@ -82,25 +82,23 @@ static const struct mtk_gate mm_clks[] = {
+ 	GATE_MM1(CLK_MM_DBI_IF, "mm_dbi_if", "dpi0_sel", 13),
+ };
+ 
+-static int clk_mt8183_mm_probe(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	struct clk_hw_onecell_data *clk_data;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
+-
+-	mtk_clk_register_gates(&pdev->dev, node, mm_clks,
+-			       ARRAY_SIZE(mm_clks), clk_data);
++static const struct mtk_clk_desc mm_desc = {
++	.clks = mm_clks,
++	.num_clks = ARRAY_SIZE(mm_clks),
++};
+ 
+-	return of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-}
++static const struct platform_device_id clk_mt8183_mm_id_table[] = {
++	{ .name = "clk-mt8183-mm", .driver_data = (kernel_ulong_t)&mm_desc },
++	{ /* sentinel */ }
++};
+ 
+ static struct platform_driver clk_mt8183_mm_drv = {
+-	.probe = clk_mt8183_mm_probe,
++	.probe = mtk_clk_pdev_probe,
++	.remove = mtk_clk_pdev_remove,
+ 	.driver = {
+ 		.name = "clk-mt8183-mm",
+ 	},
++	.id_table = clk_mt8183_mm_id_table,
+ };
+ 
+ builtin_platform_driver(clk_mt8183_mm_drv);
+diff --git a/drivers/clk/mediatek/clk-mt8186-mm.c b/drivers/clk/mediatek/clk-mt8186-mm.c
+index 0b72607777fa..6506a8b848a9 100644
+--- a/drivers/clk/mediatek/clk-mt8186-mm.c
++++ b/drivers/clk/mediatek/clk-mt8186-mm.c
+@@ -58,55 +58,21 @@ static const struct mtk_gate mm_clks[] = {
+ 	GATE_MM1(CLK_MM_DISP_26M, "mm_disp_26m_ck", "top_disp", 10),
+ };
+ 
+-static int clk_mt8186_mm_probe(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
+-	if (!clk_data)
+-		return -ENOMEM;
+-
+-	r = mtk_clk_register_gates(&pdev->dev, node, mm_clks,
+-				   ARRAY_SIZE(mm_clks), clk_data);
+-	if (r)
+-		goto free_mm_data;
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r)
+-		goto unregister_gates;
+-
+-	platform_set_drvdata(pdev, clk_data);
+-
+-	return r;
+-
+-unregister_gates:
+-	mtk_clk_unregister_gates(mm_clks, ARRAY_SIZE(mm_clks), clk_data);
+-free_mm_data:
+-	mtk_free_clk_data(clk_data);
+-	return r;
+-}
+-
+-static int clk_mt8186_mm_remove(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+-
+-	of_clk_del_provider(node);
+-	mtk_clk_unregister_gates(mm_clks, ARRAY_SIZE(mm_clks), clk_data);
+-	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+-}
++static const struct mtk_clk_desc mm_desc = {
++	.clks = mm_clks,
++	.num_clks = ARRAY_SIZE(mm_clks),
++};
+ 
++static const struct platform_device_id clk_mt8186_mm_id_table[] = {
++	{ .name = "clk-mt8186-mm", .driver_data = (kernel_ulong_t)&mm_desc },
++	{ /* sentinel */ }
++};
+ static struct platform_driver clk_mt8186_mm_drv = {
+-	.probe = clk_mt8186_mm_probe,
+-	.remove = clk_mt8186_mm_remove,
++	.probe = mtk_clk_pdev_probe,
++	.remove = mtk_clk_pdev_remove,
+ 	.driver = {
+ 		.name = "clk-mt8186-mm",
+ 	},
++	.id_table = clk_mt8186_mm_id_table,
+ };
+ builtin_platform_driver(clk_mt8186_mm_drv);
+diff --git a/drivers/clk/mediatek/clk-mt8192-mm.c b/drivers/clk/mediatek/clk-mt8192-mm.c
+index e9eb4cf8349a..638e6faae84c 100644
+--- a/drivers/clk/mediatek/clk-mt8192-mm.c
++++ b/drivers/clk/mediatek/clk-mt8192-mm.c
+@@ -80,30 +80,23 @@ static const struct mtk_gate mm_clks[] = {
+ 	GATE_MM2(CLK_MM_32KHZ, "mm_32khz", "clk32k", 25),
+ };
+ 
+-static int clk_mt8192_mm_probe(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
+-	if (!clk_data)
+-		return -ENOMEM;
+-
+-	r = mtk_clk_register_gates(&pdev->dev, node, mm_clks,
+-			       ARRAY_SIZE(mm_clks), clk_data);
+-	if (r)
+-		return r;
++static const struct mtk_clk_desc mm_desc = {
++	.clks = mm_clks,
++	.num_clks = ARRAY_SIZE(mm_clks),
++};
+ 
+-	return of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-}
++static const struct platform_device_id clk_mt8192_mm_id_table[] = {
++	{ .name = "clk-mt8192-mm", .driver_data = (kernel_ulong_t)&mm_desc },
++	{ /* sentinel */ }
++};
+ 
+ static struct platform_driver clk_mt8192_mm_drv = {
+-	.probe = clk_mt8192_mm_probe,
++	.probe = mtk_clk_pdev_probe,
++	.remove = mtk_clk_pdev_remove,
+ 	.driver = {
+ 		.name = "clk-mt8192-mm",
+ 	},
++	.id_table = clk_mt8192_mm_id_table,
+ };
+ 
+ builtin_platform_driver(clk_mt8192_mm_drv);
+diff --git a/drivers/clk/mediatek/clk-mt8195-vdo0.c b/drivers/clk/mediatek/clk-mt8195-vdo0.c
+index 839b730688ac..492c1e133d0d 100644
+--- a/drivers/clk/mediatek/clk-mt8195-vdo0.c
++++ b/drivers/clk/mediatek/clk-mt8195-vdo0.c
+@@ -93,55 +93,22 @@ static const struct mtk_gate vdo0_clks[] = {
+ 			  "top_edp", 16, CLK_SET_RATE_PARENT),
+ };
+ 
+-static int clk_mt8195_vdo0_probe(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_VDO0_NR_CLK);
+-	if (!clk_data)
+-		return -ENOMEM;
+-
+-	r = mtk_clk_register_gates(&pdev->dev, node, vdo0_clks,
+-				   ARRAY_SIZE(vdo0_clks), clk_data);
+-	if (r)
+-		goto free_vdo0_data;
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r)
+-		goto unregister_gates;
+-
+-	platform_set_drvdata(pdev, clk_data);
+-
+-	return r;
+-
+-unregister_gates:
+-	mtk_clk_unregister_gates(vdo0_clks, ARRAY_SIZE(vdo0_clks), clk_data);
+-free_vdo0_data:
+-	mtk_free_clk_data(clk_data);
+-	return r;
+-}
+-
+-static int clk_mt8195_vdo0_remove(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+-
+-	of_clk_del_provider(node);
+-	mtk_clk_unregister_gates(vdo0_clks, ARRAY_SIZE(vdo0_clks), clk_data);
+-	mtk_free_clk_data(clk_data);
++static const struct mtk_clk_desc vdo0_desc = {
++	.clks = vdo0_clks,
++	.num_clks = ARRAY_SIZE(vdo0_clks),
++};
+ 
+-	return 0;
+-}
++static const struct platform_device_id clk_mt8195_vdo0_id_table[] = {
++	{ .name = "clk-mt8195-vdo0", .driver_data = (kernel_ulong_t)&vdo0_desc },
++	{ /* sentinel */ }
++};
+ 
+ static struct platform_driver clk_mt8195_vdo0_drv = {
+-	.probe = clk_mt8195_vdo0_probe,
+-	.remove = clk_mt8195_vdo0_remove,
++	.probe = mtk_clk_pdev_probe,
++	.remove = mtk_clk_pdev_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-vdo0",
+ 	},
++	.id_table = clk_mt8195_vdo0_id_table,
+ };
+ builtin_platform_driver(clk_mt8195_vdo0_drv);
+diff --git a/drivers/clk/mediatek/clk-mt8195-vdo1.c b/drivers/clk/mediatek/clk-mt8195-vdo1.c
+index 7df695b28925..76e9f4496e43 100644
+--- a/drivers/clk/mediatek/clk-mt8195-vdo1.c
++++ b/drivers/clk/mediatek/clk-mt8195-vdo1.c
+@@ -120,55 +120,22 @@ static const struct mtk_gate vdo1_clks[] = {
+ 	GATE_VDO1_4(CLK_VDO1_DPI1_HDMI, "vdo1_dpi1_hdmi", "hdmi_txpll", 0),
+ };
+ 
+-static int clk_mt8195_vdo1_probe(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_VDO1_NR_CLK);
+-	if (!clk_data)
+-		return -ENOMEM;
+-
+-	r = mtk_clk_register_gates(&pdev->dev, node, vdo1_clks,
+-				   ARRAY_SIZE(vdo1_clks), clk_data);
+-	if (r)
+-		goto free_vdo1_data;
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r)
+-		goto unregister_gates;
+-
+-	platform_set_drvdata(pdev, clk_data);
+-
+-	return r;
+-
+-unregister_gates:
+-	mtk_clk_unregister_gates(vdo1_clks, ARRAY_SIZE(vdo1_clks), clk_data);
+-free_vdo1_data:
+-	mtk_free_clk_data(clk_data);
+-	return r;
+-}
+-
+-static int clk_mt8195_vdo1_remove(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+-
+-	of_clk_del_provider(node);
+-	mtk_clk_unregister_gates(vdo1_clks, ARRAY_SIZE(vdo1_clks), clk_data);
+-	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+-}
++static const struct mtk_clk_desc vdo1_desc = {
++	.clks = vdo1_clks,
++	.num_clks = ARRAY_SIZE(vdo1_clks),
++};
++
++static const struct platform_device_id clk_mt8195_vdo1_id_table[] = {
++	{ .name = "clk-mt8195-vdo1", .driver_data = (kernel_ulong_t)&vdo1_desc },
++	{ /* sentinel */ }
++};
+ 
+ static struct platform_driver clk_mt8195_vdo1_drv = {
+-	.probe = clk_mt8195_vdo1_probe,
+-	.remove = clk_mt8195_vdo1_remove,
++	.probe = mtk_clk_pdev_probe,
++	.remove = mtk_clk_pdev_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-vdo1",
+ 	},
++	.id_table = clk_mt8195_vdo1_id_table,
+ };
+ builtin_platform_driver(clk_mt8195_vdo1_drv);
+diff --git a/drivers/clk/mediatek/clk-mt8195-vpp0.c b/drivers/clk/mediatek/clk-mt8195-vpp0.c
+index debff9a8c071..15f1a081358a 100644
+--- a/drivers/clk/mediatek/clk-mt8195-vpp0.c
++++ b/drivers/clk/mediatek/clk-mt8195-vpp0.c
+@@ -86,54 +86,22 @@ static const struct mtk_gate vpp0_clks[] = {
+ 	GATE_VPP0_2(CLK_VPP0_WARP1_MDP_DL_ASYNC, "vpp0_warp1_mdp_dl_async", "top_wpe_vpp", 3),
+ };
+ 
+-static int clk_mt8195_vpp0_probe(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_VPP0_NR_CLK);
+-	if (!clk_data)
+-		return -ENOMEM;
+-
+-	r = mtk_clk_register_gates(&pdev->dev, node, vpp0_clks, ARRAY_SIZE(vpp0_clks), clk_data);
+-	if (r)
+-		goto free_vpp0_data;
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r)
+-		goto unregister_gates;
+-
+-	platform_set_drvdata(pdev, clk_data);
+-
+-	return r;
+-
+-unregister_gates:
+-	mtk_clk_unregister_gates(vpp0_clks, ARRAY_SIZE(vpp0_clks), clk_data);
+-free_vpp0_data:
+-	mtk_free_clk_data(clk_data);
+-	return r;
+-}
+-
+-static int clk_mt8195_vpp0_remove(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+-
+-	of_clk_del_provider(node);
+-	mtk_clk_unregister_gates(vpp0_clks, ARRAY_SIZE(vpp0_clks), clk_data);
+-	mtk_free_clk_data(clk_data);
++static const struct mtk_clk_desc vpp0_desc = {
++	.clks = vpp0_clks,
++	.num_clks = ARRAY_SIZE(vpp0_clks),
++};
+ 
+-	return 0;
+-}
++static const struct platform_device_id clk_mt8195_vpp0_id_table[] = {
++	{ .name = "clk-mt8195-vpp0", .driver_data = (kernel_ulong_t)&vpp0_desc },
++	{ /* sentinel */ }
++};
+ 
+ static struct platform_driver clk_mt8195_vpp0_drv = {
+-	.probe = clk_mt8195_vpp0_probe,
+-	.remove = clk_mt8195_vpp0_remove,
++	.probe = mtk_clk_pdev_probe,
++	.remove = mtk_clk_pdev_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-vpp0",
+ 	},
++	.id_table = clk_mt8195_vpp0_id_table,
+ };
+ builtin_platform_driver(clk_mt8195_vpp0_drv);
+diff --git a/drivers/clk/mediatek/clk-mt8195-vpp1.c b/drivers/clk/mediatek/clk-mt8195-vpp1.c
+index beacbd94ef02..794f21cf5e65 100644
+--- a/drivers/clk/mediatek/clk-mt8195-vpp1.c
++++ b/drivers/clk/mediatek/clk-mt8195-vpp1.c
+@@ -84,54 +84,22 @@ static const struct mtk_gate vpp1_clks[] = {
+ 	GATE_VPP1_1(CLK_VPP1_VPP_SPLIT_26M, "vpp1_vpp_split_26m", "clk26m", 26),
+ };
+ 
+-static int clk_mt8195_vpp1_probe(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_VPP1_NR_CLK);
+-	if (!clk_data)
+-		return -ENOMEM;
+-
+-	r = mtk_clk_register_gates(&pdev->dev, node, vpp1_clks, ARRAY_SIZE(vpp1_clks), clk_data);
+-	if (r)
+-		goto free_vpp1_data;
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r)
+-		goto unregister_gates;
+-
+-	platform_set_drvdata(pdev, clk_data);
+-
+-	return r;
+-
+-unregister_gates:
+-	mtk_clk_unregister_gates(vpp1_clks, ARRAY_SIZE(vpp1_clks), clk_data);
+-free_vpp1_data:
+-	mtk_free_clk_data(clk_data);
+-	return r;
+-}
+-
+-static int clk_mt8195_vpp1_remove(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+-
+-	of_clk_del_provider(node);
+-	mtk_clk_unregister_gates(vpp1_clks, ARRAY_SIZE(vpp1_clks), clk_data);
+-	mtk_free_clk_data(clk_data);
++static const struct mtk_clk_desc vpp1_desc = {
++	.clks = vpp1_clks,
++	.num_clks = ARRAY_SIZE(vpp1_clks),
++};
+ 
+-	return 0;
+-}
++static const struct platform_device_id clk_mt8195_vpp1_id_table[] = {
++	{ .name = "clk-mt8195-vpp1", .driver_data = (kernel_ulong_t)&vpp1_desc },
++	{ /* sentinel */ }
++};
+ 
+ static struct platform_driver clk_mt8195_vpp1_drv = {
+-	.probe = clk_mt8195_vpp1_probe,
+-	.remove = clk_mt8195_vpp1_remove,
++	.probe = mtk_clk_pdev_probe,
++	.remove = mtk_clk_pdev_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-vpp1",
+ 	},
++	.id_table = clk_mt8195_vpp1_id_table,
+ };
+ builtin_platform_driver(clk_mt8195_vpp1_drv);
+diff --git a/drivers/clk/mediatek/clk-mt8365-mm.c b/drivers/clk/mediatek/clk-mt8365-mm.c
+index 22c75a03a645..9569be54127c 100644
+--- a/drivers/clk/mediatek/clk-mt8365-mm.c
++++ b/drivers/clk/mediatek/clk-mt8365-mm.c
+@@ -72,40 +72,23 @@ static const struct mtk_gate mm_clks[] = {
+ 	GATE_MM1(CLK_MM_LVDSTX_CTS, "mm_flvdstx_cts", "lvdstx_dig_cts", 3),
+ };
+ 
+-static int clk_mt8365_mm_probe(struct platform_device *pdev)
+-{
+-	struct device *dev = &pdev->dev;
+-	struct device_node *node = dev->parent->of_node;
+-	struct clk_hw_onecell_data *clk_data;
+-	int ret;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
+-
+-	ret = mtk_clk_register_gates(dev, node, mm_clks,
+-				     ARRAY_SIZE(mm_clks), clk_data);
+-	if (ret)
+-		goto err_free_clk_data;
+-
+-	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (ret)
+-		goto err_unregister_gates;
+-
+-	return 0;
+-
+-err_unregister_gates:
+-	mtk_clk_unregister_gates(mm_clks, ARRAY_SIZE(mm_clks), clk_data);
+-
+-err_free_clk_data:
+-	mtk_free_clk_data(clk_data);
++static const struct mtk_clk_desc mm_desc = {
++	.clks = mm_clks,
++	.num_clks = ARRAY_SIZE(mm_clks),
++};
+ 
+-	return ret;
+-}
++static const struct platform_device_id clk_mt8365_mm_id_table[] = {
++	{ .name = "clk-mt8365-mm", .driver_data = (kernel_ulong_t)&mm_desc },
++	{ /* sentinel */ }
++};
+ 
+ static struct platform_driver clk_mt8365_mm_drv = {
+-	.probe = clk_mt8365_mm_probe,
++	.probe = mtk_clk_pdev_probe,
++	.remove = mtk_clk_pdev_remove,
+ 	.driver = {
+ 		.name = "clk-mt8365-mm",
+ 	},
++	.id_table = clk_mt8365_mm_id_table,
+ };
+ builtin_platform_driver(clk_mt8365_mm_drv);
+ MODULE_LICENSE("GPL");
 -- 
 2.39.1
 
