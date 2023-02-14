@@ -4,82 +4,178 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E25EC05027
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Feb 2023 04:25:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9875C05027
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Feb 2023 05:34:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1y4f1OhTuT+Dx2rs79aJ04UgsmTZm4+YxI6nJoM84qo=; b=QFvkTOMwu4gH0rgI0VjvWuzYRE
-	Z42TY7Gh9hSyQuj1Hr5aXzPSBhrS6IyNrfb9XRsHx+T+53U/vJQgrVSyaexTIJexLo4+JXIK5uYsU
-	JN74aHzgK0XUDeTAwmgMHhm0v6XEZaOrBHt0vHsbvgZzVCCxCA7o+yLWGoHriY7CkvZrqPA4VRq8+
-	2EHgfnXLGGgnmOmc2Ado9yjM4kBUw0FXChJDNmt8y3xl0HyL9tNZAQqKfodczAm8/dxqWfLFuU0K6
-	G3R5rYbVmlMX2g66L3N3Vw8WXr07ADNVndXwmerNnV3UgC59ss66cQWpNRn/aXycqJjwmGhaNzVEJ
-	0Hjllp9A==;
+	bh=5CLNVnLIJmqGnO7nRtEKzFceh1J2uVMphcfh3LLuNCc=; b=ukDj0hwoDY58YSrIDuRgeQtazG
+	+s0xCNrdjqUEhNI3OT/btk1oO9rGZJHdSy+qYAM0qYagHdcHvV1MO3IkWrB9btMyqQciWI8A/btIS
+	WqfIUXnXiq8McGRN2B+VY48bhq0GPNgUfQZLhu3XoLdZ4+nM0qUonhZPEb0hfRISufY6S7W6MoFkW
+	QulidmgaEfMp/iChZ9U/HOAkYuWuRJ80knapIUB1tkxUGD5Qh0H4s50W6YyDYYke6C5B+877AZNZ5
+	Z9LoQCs5IRH1+eD7V0oBH8u0SngqUDqZOcEyycAggvKlqidfugqC3T7+2jYPr5I+heAt1Zeo1sU7N
+	FPz4QSzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRmsZ-00HPtY-IW; Tue, 14 Feb 2023 04:25:19 +0000
-Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
+	id 1pRnxH-00HYM2-04; Tue, 14 Feb 2023 05:34:15 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRmsO-00HPsC-V3; Tue, 14 Feb 2023 04:25:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1676348708; x=1707884708;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=qS9r1+DDeebaYhT1Tf6BMORix1uHV7srDyqZtYE5TnQ=;
-  b=PgKK3twkC++HqqTc1Pp03IMHXvoLj72oY6rzyUjCdGCVOgvclH+kc82x
-   iExufEQfd/rBw8cd2It8Kw2c8inUxmW3kSetxkrvzeujbK0x/DJC8+lAD
-   egT3g9kluMHlaBPMtzwmgg9j8YVl7zbVM/jBFJZBdcM/AWSvSK4lo2Z7U
-   9KopezFEhJ6LfmaysoH5hQ0f1vrJfyvl8VPTwR7KzhoyaZRFatfgTGkTD
-   SXF9g5kN1c4NJ/gjcVLxOZWNib2JWpxzfpZIZlBCxWcfplGLSgKE/Ou4x
-   v4lU/ZBJK3bl1sYmr9romF+S4SFmKaZWyw6C7rMEveViRXtPE3Bih+iTW
-   Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10620"; a="393475391"
-X-IronPort-AV: E=Sophos;i="5.97,294,1669104000"; 
-   d="scan'208";a="393475391"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Feb 2023 20:25:00 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10620"; a="701522522"
-X-IronPort-AV: E=Sophos;i="5.97,294,1669104000"; 
-   d="scan'208";a="701522522"
-Received: from lkp-server01.sh.intel.com (HELO 4455601a8d94) ([10.239.97.150])
-  by orsmga001.jf.intel.com with ESMTP; 13 Feb 2023 20:24:54 -0800
-Received: from kbuild by 4455601a8d94 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1pRmsA-0008DA-0U;
-	Tue, 14 Feb 2023 04:24:54 +0000
-Date: Tue, 14 Feb 2023 12:24:45 +0800
-From: kernel test robot <lkp@intel.com>
-To: Guillaume Ranquet <granquet@baylibre.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Kishon Vijay Abraham I <kishon@ti.com>,
-	Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-	CK Hu <ck.hu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>
-Cc: oe-kbuild-all@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	mac.shen@mediatek.com, stuart.lee@mediatek.com,
-	Guillaume Ranquet <granquet@baylibre.com>
-Subject: Re: [PATCH v7 3/3] phy: mediatek: add support for phy-mtk-hdmi-mt8195
-Message-ID: <202302141253.tAssz6h3-lkp@intel.com>
-References: <20220919-v7-3-b5b58c5ccc07@baylibre.com>
+	id 1pRnxE-00HYKo-C0; Tue, 14 Feb 2023 05:34:14 +0000
+X-UUID: 32faa6f8ac2911edbbe3f76fe852e059-20230213
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=5CLNVnLIJmqGnO7nRtEKzFceh1J2uVMphcfh3LLuNCc=;
+	b=QWazMzCZHp9DKqE2VSAzLfm83aPyT6XEaqf4FuvpMYwuA/lnuzOfNhuWF+Q+J6TJSPKj4WCfHoy5Yx+DkWYPj1A4IzDShrlruS8IqFRwjezXnX8nv5oig1bxRaI+DXgiUC+spZzlsy0GQPPbbXZcF0lkFKp5KFM56UhKbZHNjq0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.19,REQID:a1307ece-95e3-4b18-9743-b68f86066e89,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:885ddb2,CLOUDID:381c60f8-ff42-4fb0-b929-626456a83c14,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-UUID: 32faa6f8ac2911edbbe3f76fe852e059-20230213
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <yong.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1734712500; Mon, 13 Feb 2023 22:34:06 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 14 Feb 2023 13:33:31 +0800
+Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Tue, 14 Feb 2023 13:33:31 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=A8y9sMP6VuO2cDCI6/7jkh6unO7BF74DICR3WPqDWbVLo9ZMzCPLPelhwB41Iz/8lVxylGzCEQ1NX6RKv9dtCzdPgdDcgVdiSGpUrQMnnbBk7aHeuNtEdWhO9XQkZrQTh6S3423ITmGGn3/H/l7OzvDDLdQan/6Xt7dQEUftIevJ4lXSuV/Lbt/J5HqvE6LCoT97uVh/hna2VHlMgTmeeB3tF7Wc6xV7wEtX6aF0nhH2teLE1Dp3GtlOvIAj0DeQwSDWvMDjHBsUqUtNX17LDwHyg6Yk1TXPHDZ4EoBxcp5jtX9bmevQSW2gw+8hz/1dKaUrnSRA7YWGFpZWgbt9+g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=5CLNVnLIJmqGnO7nRtEKzFceh1J2uVMphcfh3LLuNCc=;
+ b=QlqPSHzDlrTjhL3NNQbl/HHs5apQleHqkMwKx+/UHcp+dm04BY78Gp/gMcbaf+Z0ul7AzK+k1fbeV3gCaFbwsXT5HChtvXlNbLmcErgpOIxusEZSWSA5i1GOtSXaLJwX6FgQWxmpKDvFa1qbGNJnIsdj4QP0MMFyQ6Q1LYIG/IPIQTrox8lpCOmWFYNdQKge6PLeVFWes+HjSFDSarRpuFLjD3qzT7pU+GsstVSVSTWc6jAk0hqkvWZfk9JfrwhiQBRWAVd8wLTT7iXmiXhgEW1Knx6PkdBlO5UPs//tFYAiv8SjesY1OT6jDBsfIxfX/5D9/G9FUJf8vyAuTyc1xA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5CLNVnLIJmqGnO7nRtEKzFceh1J2uVMphcfh3LLuNCc=;
+ b=XozmxNPlFoZ+B8heAM/qdwsENhx5fOHY2r/s6lM9++xI70kc+8JKDe60UupjtuYOOyl2E5DT9rbtLfFVAiG56aACmFA//1OhaCYpfSFwM81PiiNsBRKHxHQQFe18wAWTh6QIZZlwTMTCz6X3vzoz07/dRcKgbsGuW2t5kmjyt8w=
+Received: from SI2PR03MB5885.apcprd03.prod.outlook.com (2603:1096:4:142::7) by
+ PSAPR03MB5304.apcprd03.prod.outlook.com (2603:1096:301:42::10) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6086.24; Tue, 14 Feb 2023 05:33:29 +0000
+Received: from SI2PR03MB5885.apcprd03.prod.outlook.com
+ ([fe80::4e0a:24eb:3ed8:b49c]) by SI2PR03MB5885.apcprd03.prod.outlook.com
+ ([fe80::4e0a:24eb:3ed8:b49c%7]) with mapi id 15.20.6086.024; Tue, 14 Feb 2023
+ 05:33:28 +0000
+From: =?utf-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>
+To: "joro@8bytes.org" <joro@8bytes.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "mchehab@kernel.org" <mchehab@kernel.org>,
+	"angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "robh+dt@kernel.org"
+	<robh+dt@kernel.org>
+CC: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	=?utf-8?B?WW91bGluIFBlaSAo6KO05Y+L5p6XKQ==?= <youlin.pei@mediatek.com>,
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	=?utf-8?B?QW5hbiBTdW4gKOWtmeWuieWuiSk=?= <Anan.Sun@mediatek.com>,
+	=?utf-8?B?TGlibyBLYW5nICjlurfliKnms6Ip?= <Libo.Kang@mediatek.com>,
+	"kyrie.wu@mediatek.corp-partner.google.com"
+	<kyrie.wu@mediatek.corp-partner.google.com>, "robin.murphy@arm.com"
+	<robin.murphy@arm.com>, "hverkuil@xs4all.nl" <hverkuil@xs4all.nl>,
+	=?utf-8?B?Q2hlbmdjaSBYdSAo6K645om/6LWQKQ==?= <Chengci.Xu@mediatek.com>,
+	=?utf-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>,
+	=?utf-8?B?WUYgV2FuZyAo546L5LqR6aOeKQ==?= <YF.Wang@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "krzysztof.kozlowski+dt@linaro.org"
+	<krzysztof.kozlowski+dt@linaro.org>, "iommu@lists.linux.dev"
+	<iommu@lists.linux.dev>, =?utf-8?B?TWluZ3l1YW4gTWEgKOmprOm4o+i/nCk=?=
+	<Mingyuan.Ma@mediatek.com>, "will@kernel.org" <will@kernel.org>,
+	"nfraprado@collabora.com" <nfraprado@collabora.com>
+Subject: Re: [PATCH 07/10] iommu/mediatek: Add a gap for the iova regions
+Thread-Topic: [PATCH 07/10] iommu/mediatek: Add a gap for the iova regions
+Thread-Index: AQHZJxTOuH8NMp5lsEGAJuHBVALjHa6g0JcAgAEdKQA=
+Date: Tue, 14 Feb 2023 05:33:28 +0000
+Message-ID: <35937e036d7d62f048b84c0f1ea6e98136e7ad5c.camel@mediatek.com>
+References: <20230113060133.9394-1-yong.wu@mediatek.com>
+	 <20230113060133.9394-8-yong.wu@mediatek.com>
+	 <1a9a09d5-58e2-badc-6d1c-fe2008c305f9@collabora.com>
+In-Reply-To: <1a9a09d5-58e2-badc-6d1c-fe2008c305f9@collabora.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SI2PR03MB5885:EE_|PSAPR03MB5304:EE_
+x-ms-office365-filtering-correlation-id: 8735313c-0335-433e-7b83-08db0e4d0049
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: HTUAJWhM5lZppvjBgQwT0wiFn09lejDdjATY/3xFyipwiFx6ny897MuFL4KzbMBwgri7E/LtxAJUSwj/3QiFMp+ClW6p7jEc+FlPHdCBDByASL81Th65Y2x3JHJv0xwkkaXs7kHswuIz9BuQFOv73vzVMtjTHxQKq8CIbNRv0mRC8Pm+CkaX4SuTejWG+R89YwHx08sqUQTwf1vu9s86Medmz6HAOUAIJtO4amCHeNpxxsXk9+Nyqj1Uz0NocRlGhpqh2K1qMIpOKprONQRzHcaQcp8NJbb61IxiOaXYTfJRqq1t4C9FTKpU6ohvuA9SRNCSYd8y+bXvcCN2mMHnxWwzYA9Omz/sVUAf+PzmVDTgsf07Pr+sVRh0RoC+FvXCNc4qS1Qa5Bo8OQyQSsijwkhj85KmBXva8kDwgchmDgZCS8e8rod0W5nqcu1SfdM9NoP+gWJQniwTU5ZMj9vaVauXD3em22WbLQfxOC1FdIyFsx8YaCN7G04DiU70SFg8sJBZCoNHHW3bp7+n/5PKeM5RLgVuf0j3Dr3Z4U7liejAgAFmlKYLqX5bMrs3NDuwWTyuKKnFH7kpUa3cTGL7Ox2GZIHyhBVhhytZtjeJmikkPQhteh95vGoj53sjKO9OUVSfP6WQhRnKBm9XhekcFC2yXgC3gw0cE1M13fnsVJMbS0WWD8QYjp2sKEutYwUgnB/SPJh13g/QzSpvY+N8J1K5KfX2+tRUS9nxn4A3cg43bAXYAX0JWwgFnTaXsTzx2k/d+Wfq2VlVf/jnr27xeQ==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR03MB5885.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(136003)(396003)(366004)(346002)(376002)(39860400002)(451199018)(6486002)(2906002)(122000001)(86362001)(478600001)(71200400001)(2616005)(38100700002)(38070700005)(7416002)(5660300002)(8936002)(4326008)(66556008)(110136005)(8676002)(66446008)(66476007)(64756008)(83380400001)(54906003)(6506007)(41300700001)(66946007)(186003)(85182001)(316002)(36756003)(26005)(6512007)(76116006)(99106002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?c3lYNllidVU2WFRQVkIrZERmajlmUkxCeVExT0tNbGg0SkFNK3ROWWlScWdy?=
+ =?utf-8?B?SUhuYk5WSGFiQ01jR3F6c2xqQ0tMUDRDU2VQMG9xcmFDM201MXBnU01vdU43?=
+ =?utf-8?B?Snlhem5GL2ZRS0V5Sm1jOTJDN0dqUHhldmJZRHFIRWRsVElQRUx6bVF1N0h2?=
+ =?utf-8?B?ZjJ6RGE4Rk9nM244Y214NHd5czdwQjM4emk4Q0krRUtocGU4d0tVbVdFeGtz?=
+ =?utf-8?B?UU5aY0s1UzYweGtXYjV4M0RKU2RmalZhN1FHcFdTT3Q1dlFxNENlQ3BPM3NJ?=
+ =?utf-8?B?QnBNQ1Y4VE4ydGg0RVhHUWZCOXhrWSs3QTluUFpiSzlEUTNVbDB4V3J5ZTMy?=
+ =?utf-8?B?VXUxbjRvTTNsbUcwakphRnZnZW1seXFvenhQazNJbW1LSU9rMmwrSEF2RlBt?=
+ =?utf-8?B?YjFManNBei9JaCsyUjY3SkV6c0V6ODVZc2xBekpwbkp4Rk5VSzkxVXJiM3hC?=
+ =?utf-8?B?N2NWcVhpOXpSVjRZeGk1YnhlOXBBY295b1ZFb0REcWY2N1ZGVGF5RGR3alQ1?=
+ =?utf-8?B?ZVRrUGk3cXlpZ3dmcFpUaTA0THl0NTVneGxQaUdMNDYrVUNTNUxzaitjM0hS?=
+ =?utf-8?B?aDFoZnRjcU1ORE1KeC9rVGxWdWJGdzdmQVptVzV0U1BVYW5WZThuYlFFOFhH?=
+ =?utf-8?B?MkpGL2hGSEV3aFJhOGlDeWY2ZTVnaVBxWDdPNTAvdlFnYXgwdXVnQ1dPSW1I?=
+ =?utf-8?B?Tkt3OHgxR1BNeDdlczZMc3ZDbjZxWDc4SnpMazh2eS9WWmpweVNOOWV4RTdu?=
+ =?utf-8?B?N2gwajd2ZWdGd2xua2JCRHE4eHU5T0J5Mkx3ZlhPcU9Bek5OUVZWaWUrSG1w?=
+ =?utf-8?B?dFRlYVhOb3d2OSt1bUZSRmFRR2lVcGNWUmluc2t0eTR2YmV3VlRDZTg4NEY4?=
+ =?utf-8?B?bE81N0diNEY2QUpPd2ZIM2xIMzk2VmU5ZTR1QVZIRTEraHZlRWR2SW9SQlVD?=
+ =?utf-8?B?b0tJWERzKzM3dWg0UGx2WkJFRjEyZmQ2SWZEQUZ1YTU2Uklnc2NBOWZBZEhG?=
+ =?utf-8?B?SXRqVVJsSWhYQ05BWFAvZExJVlNzdU0wbVI4RlpQM1hXTVNFbFFYTStrb3Nm?=
+ =?utf-8?B?b2lzNWpiZWVJVjEwNXlKR0xCUkNybGUrQ01qcFIzRTRIS2ZMNmZCVi9DeU9W?=
+ =?utf-8?B?TUxwZnVYeTdnZExhdjJTckFmdjhGdDM5WEFpcUQyRzFPaHQ3WTBrbnJ5L2Y5?=
+ =?utf-8?B?b1hnSDkzYnhOQWZNdjV4eVFFL3d4MklIWVZVa2tNNkdUQ04zaTRTbUFKL0pB?=
+ =?utf-8?B?eDZvRVpuUjNWYkRGVCtrWGRQR2pVZnpkdlVNNzYzdGRQSnQzR2R6UkY1QXdD?=
+ =?utf-8?B?WjhQbFBrZ2hzeTMrSFZqZ2FBekV3c3VpTVVXVmFTd0ZCb0dkQmpXMEgvMkR1?=
+ =?utf-8?B?MnN6RjF5eTVhdVhGU3BnYWpSUFVyT0cwd0VlQjIzeS9BUENyY1ZJdnFvT2xl?=
+ =?utf-8?B?S3VsN1BpK0RrVGE2M1JzQncwQ0MzUVRyQXZ6VmhJNVh0QUtBb0FXcnBQUGlw?=
+ =?utf-8?B?ZEdqYjV5R3RWK3FnUkloTlIwNHNxbmY1bFJ3Tlh6bzJLd2t5OUhhc2JlRzBo?=
+ =?utf-8?B?UVMrcTJZb2JOeVJvR2ZaVTkzNXJtSkgrS1RVcWcyUDh5aU4wUU5UT3dtUysy?=
+ =?utf-8?B?cmV2elYyV1JIT2Mybk1KL0VSaEdqOHpkMGhHb1pUSkV3SFphMXZNZzU4Mm0x?=
+ =?utf-8?B?RXhOUktVaWhHWFFEWGM4ZUhpY2xGZWFnTTNXaE9DNVVnOUw4VnFoaDlCMWEz?=
+ =?utf-8?B?aDdoZC9zb3MvelBEMjJ6bjhqeW9ydkkrL3BZNk13TitIbVViNGlDalpGdk05?=
+ =?utf-8?B?b3dXOEJ3SzhZS0xRcFQxRGpNdXF5S1YrZWJLcVVMNFBwb3RkWDJzcmxraDBX?=
+ =?utf-8?B?UEhTN1NPdXYrUVpSMzcxbjhpVTc1YWV2M2RWaFJ6UmdoTTA3aWMrZkpMZWo1?=
+ =?utf-8?B?WGJOR0dGMkdZYXZvKzd1bnJRMWk1a05BOFd4VXNmbjNDbm1CcDV0VmJtUzlV?=
+ =?utf-8?B?cnZPdlNvdlhnVFBJNXhlSHZrYW5YeGNFa1lLMWlaVDViN0FpalVXbVp3YThB?=
+ =?utf-8?B?ZEF6cDlkRmNabkRKVnhpYUZUdUtYM1FtTXNDd2FuMm9ocVUydnBuYXBCQ1Nx?=
+ =?utf-8?B?ZERmc0RSSGNNUi93SUtXNnFBQjNWTm5PUTlraXhDMGZTaUpRK3N2Q0hFM2No?=
+ =?utf-8?B?QUE9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <7FE394A41C9BBE46ADD9FB2F202CAC05@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220919-v7-3-b5b58c5ccc07@baylibre.com>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SI2PR03MB5885.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8735313c-0335-433e-7b83-08db0e4d0049
+X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Feb 2023 05:33:28.2831
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: XVPXx8RQ6OSHjqGY0jnWFV4dJU0SmEsItYAGangY0tfU3LQV9pLzJpvcQAUT+EUvbYvomTXzEtPq/PO5fdWa7A==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PSAPR03MB5304
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230213_202509_066929_5D0F13B9 
-X-CRM114-Status: GOOD (  11.37  )
+X-CRM114-CacheID: sfid-20230213_213412_423748_73C6B685 
+X-CRM114-Status: GOOD (  20.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,45 +190,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Guillaume,
-
-Thank you for the patch! Yet something to improve:
-
-[auto build test ERROR on 09e41676e35ab06e4bce8870ea3bf1f191c3cb90]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Guillaume-Ranquet/dt-bindings-phy-mediatek-hdmi-phy-Add-mt8195-compatible/20230213-193958
-base:   09e41676e35ab06e4bce8870ea3bf1f191c3cb90
-patch link:    https://lore.kernel.org/r/20220919-v7-3-b5b58c5ccc07%40baylibre.com
-patch subject: [PATCH v7 3/3] phy: mediatek: add support for phy-mtk-hdmi-mt8195
-config: m68k-allmodconfig (https://download.01.org/0day-ci/archive/20230214/202302141253.tAssz6h3-lkp@intel.com/config)
-compiler: m68k-linux-gcc (GCC) 12.1.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/94dbdd48a9476284394fe686b9d3f8d9277281db
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Guillaume-Ranquet/dt-bindings-phy-mediatek-hdmi-phy-Add-mt8195-compatible/20230213-193958
-        git checkout 94dbdd48a9476284394fe686b9d3f8d9277281db
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=m68k olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=m68k SHELL=/bin/bash
-
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202302141253.tAssz6h3-lkp@intel.com/
-
-All errors (new ones prefixed by >>, old ones prefixed by <<):
-
->> ERROR: modpost: "__udivdi3" [drivers/phy/mediatek/phy-mtk-hdmi-drv.ko] undefined!
-
-Kconfig warnings: (for reference only)
-   WARNING: unmet direct dependencies detected for PM
-   Depends on [n]: !MMU [=y]
-   Selected by [y]:
-   - SUN20I_PPU [=y] && (ARCH_SUNXI || COMPILE_TEST [=y])
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+T24gTW9uLCAyMDIzLTAxLTE2IGF0IDEwOjQ2ICswMTAwLCBBbmdlbG9HaW9hY2NoaW5vIERlbCBS
+ZWdubyB3cm90ZToNCj4gSWwgMTMvMDEvMjMgMDc6MDEsIFlvbmcgV3UgaGEgc2NyaXR0bzoNCj4g
+PiBDdXJyZW5seSBtYXN0ZXJzIGNhbiBub3QgaW5kaWNhdGUgaXRzIHNwZWNpYWwgZG1hLXJhbmdl
+cy4gUHJlcGFyZQ0KPiA+IGZvciB2Y29kZWMuIHNvbWUgdmNvZGVjIGVuZCBhZGRyZXNzIGlzIGFk
+ZHJlc3MgKyBzaXplLCBpZiBvdXIgc2l6ZQ0KPiA+IGlzIDRHLCB0aGUgZW5kIGFkZHJlc3MgbWF5
+IGJlIDB4Ml8wMDAwXzAwMDAuIGFuZCB0aGUNCj4gPiByZWdpc3RlciBpcyB1MzIsIHRoZW4gaXQg
+bWF5IGdldCB6ZXJvLiB0aHVzIGFkZCBhIGdhcCg4TSkgZm9yDQo+ID4gYWxsIHRoZSByZWdpb25z
+Lg0KPiA+IA0KPiA+IFNpZ25lZC1vZmYtYnk6IFlvbmcgV3UgPHlvbmcud3VAbWVkaWF0ZWsuY29t
+Pg0KPiANCj4gSSBkZWZpbml0ZWx5IGFncmVlIG9uIHRoZSBmYWN0IHRoYXQgd2UgZG8gKm5lZWQq
+IHRoaXMgc2VyaWVzLi4uIA0KDQpUaGFua3MgdmVyeSBtdWNoIGZvciB5b3VyIHJldmlldy4NCg0K
+PiBidXQgdGhpcyBwYXJ0aWN1bGFyIGNvbW1pdCBsb29rcyBsaWtlIGEgaGFjay4NCj4gDQo+IEkn
+bSBub3QgY29udmluY2VkOiBJIGhhdmUgYSBodW5jaCB0aGF0IHRoaXMgb25lIHdpbGwgc29vbmVy
+IG9yIGxhdGVyDQo+IGJhY2tmaXJlDQo+IG9uIHVzIGFuZCBicmVhayB0aGluZ3MgYWdhaW4uLi4g
+YXQgdGhlIHNhbWUgdGltZSwgSSdtIG5vdCBzdXJlIGhvdyB0bw0KPiBkbyB0aGlzDQo+IHByb3Bl
+cmx5IGF0IHRoaXMgcG9pbnQgKEkgZGlkbid0IGRvIGFueSByZXNlYXJjaCwgYW55d2F5KS4NCg0K
+SSBnb3QgYSByZWFsIHZjb2RlYyBpc3N1ZSBkZXNjcmliZWQgaW4gdGhlIGNvbW1pdCBtZXNzYWdl
+LiBBcyB5b3UgbWF5DQpzZWUgaW4gdGhlIHZjb2RlYydzIGR0LWJpbmRpbmcgZXhhbXBsZVsxLzEw
+XSBvciB0aGUgZHRzIG5vZGVbOS8xMF0sDQp0aGVpciBsZW5ndGggaXMgMHhmZmYwMDAwMCB0aGF0
+IG1lYW5zIHRoZXkgdXNlIDFNIGFzIHRoZSBnYXAuIFZjb2RlYw0KdXNlIHRoaXMgZm9yIGEgbG9u
+ZyB0aW1lLiBBZnRlciB0aGlzIHBhdGNoc2V0LCB0aGlzIHByb3BlcnR5IGlzIHVudXNlZCwNCnRo
+ZW4gSSBoYXZlIHRvIHRha2UgY2FyZSB0aGlzIGluIHRoZSBpb21tdSwgdGhlcmVmb3JlIHRoaXMg
+cGF0Y2ggaXMNCnJlcXVpcmVkLCBhbmQgSSBqdXN0IGdpdmUgYSBiaWdnZXIgZ2FwKDhNKSBoZXJl
+Lg0KDQo+IA0KPiBJZGVhcz8NCj4gDQo+IFJlZ2FyZHMsDQo+IEFuZ2Vsbw0KPiANCg==
 
