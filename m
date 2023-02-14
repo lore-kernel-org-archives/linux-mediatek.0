@@ -4,88 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B2F1C05027
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Feb 2023 19:56:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B98CC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Feb 2023 21:21:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Subject:Cc:To:From:Message-ID:Date:Reply-To:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GV8mJPgS2ZQNWFcqE7IOXY0aH4PZW2ziBLTk/17HnCg=; b=FkVbkmp5timLGFkG+VtJHcI4oQ
-	ffxpM6KyhTJp7XLK4+I0x5cimq75l5O+++wZlJWDVbmcN7m6kzoayzpI3d+uZHWOZjFYKYEOn1mVq
-	OuH1tRE2BJJlGQuaDV5ei9K0vQmAWAs+qyASQ/AymZhJO8wWtuQ60X2QujEzQI8lpuK3/nI8jn6+6
-	oPt1UPP1FjUz90gC3zWHprKmtV+udD0nztt8cExX+dI+Ymqkg2WN0+1SIjshtgqvqDReLdSkyPMrd
-	D0mDVzw0zptUfx5jV0HK92MKr7A3wHNK+DgOJondK7tlPSMiLSL+3Vu0MigkVnJyjmkhguTOu47oB
-	WvdhDDyw==;
+	bh=oem0kLrvjEQjjsGM1nGawakjK2aV40DEUoiUUktuvzo=; b=UCY1ahK/jRSGeYcKj7yLtQ4S7q
+	LEHlRMjLeJDXA0sP6b/V8wmQHqhxzTwwMyywnSMbQ6UvAPqW8u5FVKWj+eds5qlqX82GUsvj0j7Fz
+	zJC3kE3JWKuK5ibUYLfItPcce7WZzZ9mNSkEuIBJZB5YLJ9zK7CFByZ3ioMEsu76cxhcLtYZ8fLZk
+	NXvBlYOmpXweehRl3XMjmDeIGREitAohBEXpWOm66196B7NEHlLwWWYHNuDKtt5ur6cMjKTahX0Us
+	gvUrCkoh4NoD4Bf9dvT2q923YYjqDDq5DDxkOI27vnRnmOHw3xZp3zAzK6nfkUzTK8yTT3aDSYqSo
+	0WpPZdiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pS1Pf-003KJK-RO; Tue, 14 Feb 2023 19:56:27 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pS2jl-003VLi-3d; Tue, 14 Feb 2023 21:21:17 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pS1PV-003KGz-1B; Tue, 14 Feb 2023 19:56:18 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 8BA3D61881;
-	Tue, 14 Feb 2023 19:56:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C682CC433EF;
-	Tue, 14 Feb 2023 19:56:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1676404574;
-	bh=nenirYH6JT1v2xofluffwL9ZIVuSs2mhAzmCSU/YVhE=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=KH+aFB6lRF/GKFtvJkUyaD3cXeSzzQVE4nxnzSsemRHITLeXJ6FsBwfWv7ExoFLxw
-	 5jV3tS1rggS0EOYzE8gl0qPhPQDd+eqVZz+w9pXk3tmLhcwk9RPoFwFsJJGUOjOyH/
-	 4N8ZYHM+M2uozJujpCpJ0SrtQ2TdNpe7NNCMzh85vqNJZNAjJ8XJ9gP5niGpvHWF3J
-	 PIiRhZwx6fuPL0o7Klgy0koBDAKXW/ullpXAKxnnv1eNevDP9h27RdEV+1JWtgvtxq
-	 nT+Yto+iXI3z1KxcDc/UsvipbxGrVgsnFZvwC2Cr7RyXXK9tpFcLiL83lKskHIXgN+
-	 Ik27aEBum7jSA==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1pS1PP-00AP9I-DJ;
-	Tue, 14 Feb 2023 19:56:11 +0000
-Date: Tue, 14 Feb 2023 19:56:10 +0000
-Message-ID: <86y1p0xbqd.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Randy Dunlap <rdunlap@infradead.org>
-Cc: Arnd Bergmann <arnd@arndb.de>,
-	linux-kernel@vger.kernel.org,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Donggeun Kim <dg77.kim@samsung.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Peter Rosin <peda@axentia.se>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Geert Uytterhoeven <geert@linux-m68k.org>,
-	Rob Herring <robh@kernel.org>,
-	Eddie Huang <eddie.huang@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Alessandro Zummo <a.zummo@towertech.it>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	linux-rtc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 0/3] IRQ_DOMAIN: remove all "depends on", use only "select"
-In-Reply-To: <8e6977b8-d256-4e51-82b7-e36d6ca259dc@infradead.org>
-References: <20230213041535.12083-1-rdunlap@infradead.org>
-	<b8fb48b9-349d-4723-9b35-6471cb65b6b5@app.fastmail.com>
-	<8e6977b8-d256-4e51-82b7-e36d6ca259dc@infradead.org>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/28.2
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: rdunlap@infradead.org, arnd@arndb.de, linux-kernel@vger.kernel.org, myungjoo.ham@samsung.com, cw00.choi@samsung.com, dg77.kim@samsung.com, p.zabel@pengutronix.de, peda@axentia.se, gregkh@linuxfoundation.org, geert@linux-m68k.org, robh@kernel.org, eddie.huang@mediatek.com, sean.wang@mediatek.com, matthias.bgg@gmail.com, a.zummo@towertech.it, alexandre.belloni@bootlin.com, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+	id 1pS2jh-003UMG-G8
+	for linux-mediatek@lists.infradead.org; Tue, 14 Feb 2023 21:21:15 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 53CD71884412;
+	Tue, 14 Feb 2023 21:16:59 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id 48AD725002E1;
+	Tue, 14 Feb 2023 21:16:59 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id 407DC9B403E3; Tue, 14 Feb 2023 21:16:59 +0000 (UTC)
+X-Screener-Id: e32ae469fa6e394734d05373d3a705875723cf1e
+Received: from fujitsu (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id 8F0F391201E3;
+	Tue, 14 Feb 2023 21:16:58 +0000 (UTC)
+From: Hans Schultz <netdev@kapio-technology.com>
+To: Simon Horman <simon.horman@corigine.com>
+Cc: Vladimir Oltean <olteanv@gmail.com>, davem@davemloft.net,
+ kuba@kernel.org, netdev@vger.kernel.org, Florian Fainelli
+ <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Eric Dumazet
+ <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt Kanzenbach
+ <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung Huh
+ <woojung.huh@microchip.com>, "maintainer:MICROCHIP KSZ SERIES ETHERNET
+ SWITCH DRIVER" <UNGLinuxDriver@microchip.com>, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
+ Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, =?utf-8?Q?Cl=C3=A9ment_L=C3=A9ger?=
+ <clement.leger@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Russell King <linux@armlinux.org.uk>, Christian
+ Marangi <ansuelsmth@gmail.com>, open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, "open list:RENESAS RZ/N1
+ A5PSW SWITCH DRIVER" <linux-renesas-soc@vger.kernel.org>, "moderated
+ list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>
+Subject: Re: [PATCH net-next 5/5] net: dsa: mv88e6xxx: implementation of
+ dynamic ATU entries
+In-Reply-To: <Y+EkiAyexZrPoCpP@corigine.com>
+References: <20230130173429.3577450-1-netdev@kapio-technology.com>
+ <20230130173429.3577450-6-netdev@kapio-technology.com>
+ <Y9lkXlyXg1d1D0j3@corigine.com>
+ <9b12275969a204739ccfab972d90f20f@kapio-technology.com>
+ <Y9zDxlwSn1EfCTba@corigine.com> <20230203204422.4wrhyathxfhj6hdt@skbuf>
+ <Y94TebdRQRHMMj/c@corigine.com>
+ <4abbe32d007240b9c3aea9c8ca936fa3@kapio-technology.com>
+ <Y+EkiAyexZrPoCpP@corigine.com>
+Date: Tue, 14 Feb 2023 22:14:55 +0100
+Message-ID: <87fsb83q5s.fsf@kapio-technology.com>
+MIME-Version: 1.0
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230214_115617_159533_20C269A9 
-X-CRM114-Status: GOOD (  39.35  )
+X-CRM114-CacheID: sfid-20230214_132113_721723_4907D41B 
+X-CRM114-Status: GOOD (  16.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,239 +91,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 14 Feb 2023 18:30:54 +0000,
-Randy Dunlap <rdunlap@infradead.org> wrote:
-> 
-> 
-> 
-> On 2/13/23 00:05, Arnd Bergmann wrote:
-> > On Mon, Feb 13, 2023, at 05:15, Randy Dunlap wrote:
-> >> IRQ_DOMAIN is a hidden (not user visible) symbol. Users cannot set
-> >> it directly thru "make *config", so drivers should select it instead
-> >> of depending on it if they need it.
-> >> Relying on it being set for a dependency is risky.
-> >>
-> >> Consistently using "select" or "depends on" can also help reduce
-> >> Kconfig circular dependency issues.
-> >>
-> >> IRQ_DOMAIN is selected 109 times and is depended on 3 times in
-> >> current linux-next. Eliminate the uses of "depends on" by
-> >> converting them to "select".
-> >>
-> >>  [PATCH 1/3] extcon: max8997: select IRQ_DOMAIN instead of depending on it
-> >>  [PATCH 2/3] of: OF_IRQ: select IRQ_DOMAIN instead of depending on it
-> >>  [PATCH 3/3] rtc: mt6397: select IRQ_DOMAIN instead of depending on it
-> > 
-> > From a Kconfig perspective, your reasoning makes a lot of sense.
-> > 
-> > Looking at the bigger picture, I wonder if we should just remove the
-> > option and make it unconditional. It is enabled in ever architecture
-> > defconfig other than alpha and sparc, and it's selected by a lot of
-> > very common options such as I2C,  GENERIC_MSI_IRQ, GENERIC_IRQ_CHIP,
-> > and PCI_HOST_GENERIC. Enabling the option on Alpha grows the kernel
-> > image from 9010KB to 9023KB, or on m68k Coldfire from 3346KB to
-> > 3351KB.
-> 
-> Marc, what do you think about this suggestion?
+On Mon, Feb 06, 2023 at 17:02, Simon Horman <simon.horman@corigine.com> wrote:
+>
+> Just to clarify my suggestion one last time, it would be along the lines
+> of the following (completely untested!). I feel that it robustly covers
+> all cases for fdb_flags. And as a bonus doesn't need to be modified
+> if other (unsupported) flags are added in future.
+>
+> 	if (fdb_flags & ~(DSA_FDB_FLAG_DYNAMIC))
+> 		return -EOPNOTSUPP;
+>
+> 	is_dynamic = !!(fdb_flags & DSA_FDB_FLAG_DYNAMIC)
+> 	if (is_dynamic)
+> 		state = MV88E6XXX_G1_ATU_DATA_STATE_UC_AGE_7_NEWEST;
+>
+>
+> And perhaps for other drivers:
+>
+> 	if (fdb_flags & ~(DSA_FDB_FLAG_DYNAMIC))
+> 		return -EOPNOTSUPP;
+> 	if (fdb_flags)
+> 		return 0;
+>
+> Perhaps a helper would be warranted for the above.
 
-Seems sensible enough to me.
+How would such a helper look? Inline function is not clean.
 
-I'd also get rid of the IRQ_DOMAIN_HIERARCHY option, which is used by
-a ton of things. Architectures that are not using it are either dead,
-or at least terminally comatose.
+>
+> But in writing this I think that, perhaps drivers could return -EOPNOTSUPP
+> for the DSA_FDB_FLAG_DYNAMIC case and the caller can handle, rather tha
+> propagate, -EOPNOTSUPP.
 
-I'm half-tempted to put the following patch into -next. Maybe after
--rc1 though. And then the option can go as well.
+I looked at that, but changing the caller is also a bit ugly.
 
-	M.
-
-diff --git a/include/linux/irqdomain.h b/include/linux/irqdomain.h
-index a372086750ca..b701569a6237 100644
---- a/include/linux/irqdomain.h
-+++ b/include/linux/irqdomain.h
-@@ -95,7 +95,6 @@ struct irq_domain_ops {
- 	int (*xlate)(struct irq_domain *d, struct device_node *node,
- 		     const u32 *intspec, unsigned int intsize,
- 		     unsigned long *out_hwirq, unsigned int *out_type);
--#ifdef	CONFIG_IRQ_DOMAIN_HIERARCHY
- 	/* extended V2 interfaces to support hierarchy irq_domains */
- 	int (*alloc)(struct irq_domain *d, unsigned int virq,
- 		     unsigned int nr_irqs, void *arg);
-@@ -105,7 +104,6 @@ struct irq_domain_ops {
- 	void (*deactivate)(struct irq_domain *d, struct irq_data *irq_data);
- 	int (*translate)(struct irq_domain *d, struct irq_fwspec *fwspec,
- 			 unsigned long *out_hwirq, unsigned int *out_type);
--#endif
- #ifdef CONFIG_GENERIC_IRQ_DEBUGFS
- 	void (*debug_show)(struct seq_file *m, struct irq_domain *d,
- 			   struct irq_data *irqd, int ind);
-@@ -160,9 +158,7 @@ struct irq_domain {
- 	struct irq_domain_chip_generic	*gc;
- 	struct device			*dev;
- 	struct device			*pm_dev;
--#ifdef	CONFIG_IRQ_DOMAIN_HIERARCHY
- 	struct irq_domain		*parent;
--#endif
- #ifdef CONFIG_GENERIC_MSI_IRQ
- 	const struct msi_parent_ops	*msi_parent_ops;
- #endif
-@@ -472,7 +468,6 @@ extern void irq_domain_set_info(struct irq_domain *domain, unsigned int virq,
- 				void *chip_data, irq_flow_handler_t handler,
- 				void *handler_data, const char *handler_name);
- extern void irq_domain_reset_irq_data(struct irq_data *irq_data);
--#ifdef	CONFIG_IRQ_DOMAIN_HIERARCHY
- extern struct irq_domain *irq_domain_create_hierarchy(struct irq_domain *parent,
- 			unsigned int flags, unsigned int size,
- 			struct fwnode_handle *fwnode,
-@@ -576,64 +571,6 @@ static inline bool irq_domain_is_msi_device(struct irq_domain *domain)
- 	return domain->flags & IRQ_DOMAIN_FLAG_MSI_DEVICE;
- }
- 
--#else	/* CONFIG_IRQ_DOMAIN_HIERARCHY */
--static inline int irq_domain_alloc_irqs(struct irq_domain *domain,
--			unsigned int nr_irqs, int node, void *arg)
--{
--	return -1;
--}
--
--static inline void irq_domain_free_irqs(unsigned int virq,
--					unsigned int nr_irqs) { }
--
--static inline bool irq_domain_is_hierarchy(struct irq_domain *domain)
--{
--	return false;
--}
--
--static inline bool irq_domain_is_ipi(struct irq_domain *domain)
--{
--	return false;
--}
--
--static inline bool irq_domain_is_ipi_per_cpu(struct irq_domain *domain)
--{
--	return false;
--}
--
--static inline bool irq_domain_is_ipi_single(struct irq_domain *domain)
--{
--	return false;
--}
--
--static inline bool irq_domain_is_msi(struct irq_domain *domain)
--{
--	return false;
--}
--
--static inline bool irq_domain_is_msi_remap(struct irq_domain *domain)
--{
--	return false;
--}
--
--static inline bool
--irq_domain_hierarchical_is_msi_remap(struct irq_domain *domain)
--{
--	return false;
--}
--
--static inline bool irq_domain_is_msi_parent(struct irq_domain *domain)
--{
--	return false;
--}
--
--static inline bool irq_domain_is_msi_device(struct irq_domain *domain)
--{
--	return false;
--}
--
--#endif	/* CONFIG_IRQ_DOMAIN_HIERARCHY */
--
- #else /* CONFIG_IRQ_DOMAIN */
- static inline void irq_dispose_mapping(unsigned int virq) { }
- static inline struct irq_domain *irq_find_matching_fwnode(
-diff --git a/kernel/irq/irqdomain.c b/kernel/irq/irqdomain.c
-index 798a9042421f..57fe065ecd5a 100644
---- a/kernel/irq/irqdomain.c
-+++ b/kernel/irq/irqdomain.c
-@@ -730,10 +730,8 @@ static int irq_domain_translate(struct irq_domain *d,
- 				struct irq_fwspec *fwspec,
- 				irq_hw_number_t *hwirq, unsigned int *type)
- {
--#ifdef CONFIG_IRQ_DOMAIN_HIERARCHY
- 	if (d->ops->translate)
- 		return d->ops->translate(d, fwspec, hwirq, type);
--#endif
- 	if (d->ops->xlate)
- 		return d->ops->xlate(d, to_of_node(fwspec->fwnode),
- 				     fwspec->param, fwspec->param_count,
-@@ -1076,7 +1074,6 @@ void irq_domain_reset_irq_data(struct irq_data *irq_data)
- }
- EXPORT_SYMBOL_GPL(irq_domain_reset_irq_data);
- 
--#ifdef	CONFIG_IRQ_DOMAIN_HIERARCHY
- /**
-  * irq_domain_create_hierarchy - Add a irqdomain into the hierarchy
-  * @parent:	Parent irq domain to associate with the new domain
-@@ -1829,46 +1826,6 @@ bool irq_domain_hierarchical_is_msi_remap(struct irq_domain *domain)
- 	}
- 	return false;
- }
--#else	/* CONFIG_IRQ_DOMAIN_HIERARCHY */
--/**
-- * irq_domain_get_irq_data - Get irq_data associated with @virq and @domain
-- * @domain:	domain to match
-- * @virq:	IRQ number to get irq_data
-- */
--struct irq_data *irq_domain_get_irq_data(struct irq_domain *domain,
--					 unsigned int virq)
--{
--	struct irq_data *irq_data = irq_get_irq_data(virq);
--
--	return (irq_data && irq_data->domain == domain) ? irq_data : NULL;
--}
--EXPORT_SYMBOL_GPL(irq_domain_get_irq_data);
--
--/**
-- * irq_domain_set_info - Set the complete data for a @virq in @domain
-- * @domain:		Interrupt domain to match
-- * @virq:		IRQ number
-- * @hwirq:		The hardware interrupt number
-- * @chip:		The associated interrupt chip
-- * @chip_data:		The associated interrupt chip data
-- * @handler:		The interrupt flow handler
-- * @handler_data:	The interrupt flow handler data
-- * @handler_name:	The interrupt handler name
-- */
--void irq_domain_set_info(struct irq_domain *domain, unsigned int virq,
--			 irq_hw_number_t hwirq, const struct irq_chip *chip,
--			 void *chip_data, irq_flow_handler_t handler,
--			 void *handler_data, const char *handler_name)
--{
--	irq_set_chip_and_handler_name(virq, chip, handler, handler_name);
--	irq_set_chip_data(virq, chip_data);
--	irq_set_handler_data(virq, handler_data);
--}
--
--static void irq_domain_check_hierarchy(struct irq_domain *domain)
--{
--}
--#endif	/* CONFIG_IRQ_DOMAIN_HIERARCHY */
- 
- #ifdef CONFIG_GENERIC_IRQ_DEBUGFS
- static struct dentry *domain_dir;
-@@ -1882,12 +1839,10 @@ irq_domain_debug_show_one(struct seq_file *m, struct irq_domain *d, int ind)
- 	seq_printf(m, "%*sflags:  0x%08x\n", ind +1 , "", d->flags);
- 	if (d->ops && d->ops->debug_show)
- 		d->ops->debug_show(m, d, NULL, ind + 1);
--#ifdef	CONFIG_IRQ_DOMAIN_HIERARCHY
- 	if (!d->parent)
- 		return;
- 	seq_printf(m, "%*sparent: %s\n", ind + 1, "", d->parent->name);
- 	irq_domain_debug_show_one(m, d->parent, ind + 4);
--#endif
- }
- 
- static int irq_domain_debug_show(struct seq_file *m, void *p)
-
--- 
-Without deviation from the norm, progress is not possible.
+>
+> Returning -EOPNOTSUPP is the normal way to drivers to respond to requests
+> for unsupported hardware offloads. Sticking to that may be clearner
+> in the long run. That said, I do agree your current patch is correct
+> given the flag that is defined (by your patchset).
 
