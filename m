@@ -4,65 +4,178 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C1CCC636CC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Feb 2023 21:40:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1723FC636D4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Feb 2023 02:30:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YuAenNDEGdWkfoC7+wjc0yl/pWnbSIvMc9R3D2DH3QQ=; b=nw92iTUyOwrAczA5nNfJMtv77d
-	SDHLdrvRzJLVhEBg+NqSsUpdurHu8tu/lGidp/4na/L6Et7GZirGoKX8x/jA22UH7BzLD02FgPPJC
-	FObdjv+Dgfj9vD+lDBCM4/nQB9mJwVFi82mHInSxVpZy/AhiR12de9zUQqe2XLcmYh2s5gmBkSBbe
-	PCMYiZmXE9tzr0otFOd+bBa4plh8zV1teY5eQpmr5C53tETyHgINbgI2prxI/BdM+vb+s7OZIPAQC
-	9NbSxOvOT6y2RlimeSdhn+S3aBezqdRLm3oWlZHp7RYjCsdPRysVcw+oqXoaRcqwm+U2A2v1MRg4S
-	ybBaZteQ==;
+	bh=m2lUaAzsoS3UMQhehsgLv2yKw7D171s4I+4qtjDaFx4=; b=lhdgDe1SzDXiJAMRA8WD5IQdZi
+	HdcSSQtqtuWhIex61jcVRvGh4/R05nI76R3+Zvp1MwLHIDzq1icWoaMmLrjWTvnTvk/gnCw5XJYed
+	+jKMoHGPR02MZ3Y/dNtWGR8B5pcjnfIbJpUeVkbKWo/14KRVWDCMQ/g6pLLqtttM4zjjykIVnZ+lq
+	a2Zj4Q3x8kiYqJHy853Gadiyfv7upgAbAJZf6I1Y1ZGu+MWl9M1acbYdDIFnbs/ot0aDHM1DEdt/J
+	7ofIbSLPmzpfMRz3BU88DAI+dJRtCa/nHMnUZ5QjJ8bvbrQtwpW5RfRzKOM1ItnUzZJYwlROkSFcR
+	ccYqsmzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRgYs-00GPj1-OM; Mon, 13 Feb 2023 21:40:34 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pRl5I-00H81n-Eo; Tue, 14 Feb 2023 02:30:20 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRgXI-00GOi7-6E; Mon, 13 Feb 2023 21:38:58 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pRgXG-0006kp-2m;
-	Mon, 13 Feb 2023 22:38:55 +0100
-Date: Mon, 13 Feb 2023 21:37:18 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Russell King <linux@armlinux.org.uk>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>
-Cc: Jianhui Zhao <zhaojh329@gmail.com>,
-	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
-Subject: [PATCH v6 12/12] net: dsa: mt7530: use external PCS driver
-Message-ID: <b87bfb9052f6a62c15f825521027119f00b2b853.1676323692.git.daniel@makrotopia.org>
-References: <cover.1676323692.git.daniel@makrotopia.org>
+	id 1pRl57-00H7zO-EI; Tue, 14 Feb 2023 02:30:11 +0000
+X-UUID: 796fa346ac0f11eda08d4d6090ec5a5c-20230213
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=m2lUaAzsoS3UMQhehsgLv2yKw7D171s4I+4qtjDaFx4=;
+	b=QtLmOT3zgMDbMkrdc7Dw5QVhanBKlXEcJppcFkCMfhtLUesH7Z/loyehW2UcocJ167Ya+JLOjFqq7W9JeHCKF/cKYjpUYYsX1eygiZxPx1EWT891fQBCuMft66iuDos1EwSxhllEji9E6JgkbwoaueWq+DqDdBxMP1f3da4FXm4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.19,REQID:dcbdd26d-23bd-4a72-8292-b1f8bfb22067,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:-5,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-INFO: VERSION:1.1.19,REQID:dcbdd26d-23bd-4a72-8292-b1f8bfb22067,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:-5,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:-5
+X-CID-META: VersionHash:885ddb2,CLOUDID:de3c5af8-ff42-4fb0-b929-626456a83c14,B
+	ulkID:230214102824KM0OBT5U,BulkQuantity:6,Recheck:0,SF:38|17|19|102,TC:nil
+	,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,OSI:0
+	,OSA:0,AV:0
+X-CID-BVR: 0
+X-UUID: 796fa346ac0f11eda08d4d6090ec5a5c-20230213
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1303691070; Mon, 13 Feb 2023 19:29:58 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 14 Feb 2023 10:29:23 +0800
+Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n1.mediatek.com (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 14 Feb 2023 10:29:22 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=C6HgtIF3/qU0imCXsg/WBImkA519KMyOkmYVeuAWCCjuoJrNStR1+TLQfG5QaRV9aTP43btyUq7ymfZTxBB4eJdzajtpHQsXquRljpka9VJLtWiyBQhG8hWwr7Emb2Qw27e6y11A/c5NfhqbNPNPIWbXHqO4HZ7GmKIiE0vWbrNZPWNuX2BlDGIfalhaUdcZQQysntM96qCRFEV/aijCW96hh5MCJr62D0932d+0K5CKINlrxa0FIkY/gqN7EQhbISoVtpAiQWcFzyBDHv63REcxJKixw1Tdqjazx9otimbFlQ5p0Rpdd+u2fL6eH75Kzubv5mMwmhukuWGHHtSK5g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=m2lUaAzsoS3UMQhehsgLv2yKw7D171s4I+4qtjDaFx4=;
+ b=lTQE0AgwkaHtXcoDsj7DicLYEi+ihcy77sA5gW9gQ6SFFMdyZkn35cXNk/11b/S8eXWLhr/08gP+whk50Feb6CF2PD8H7iy7rCH9cmNyNisZvpI/ZKbcSglrcltJgRJLpZW5OE5TInPESyTGVM/COv30D+N3Gc+PgbxGYcRfx5cJOzhNZlunuzvHQuCfcjdroyLYmZGNvI8xNqet+KWO88qZuVvV2lYGrizvhUH6q9fsudHIAsB28+8J02EYaYDZQ6CekKaHR2GLeS++AcoIP3CX4DmpfTQo9nX2y/t0aWnfxuoPngZH+Z3A5PylGIOVFM54tSW+dt65bBmj+DRQvQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=m2lUaAzsoS3UMQhehsgLv2yKw7D171s4I+4qtjDaFx4=;
+ b=MR1Yhp3+/rh+Fo0oSu4AVvz3InwFjq5fCHvtwWw9UL0IHCvrI2Xpg1y9dbSqd0+sdALW7a7r7BnRUwu3SiAH4d9Y29XTaSQZEf4TDqldZUxXZoK7MTx0Ssm1KOsxZHbYa87R277tAUiUVaeQr2vEdLqo291uhTic8/PeXY5OSog=
+Received: from SL2PR03MB4153.apcprd03.prod.outlook.com (2603:1096:100:4e::10)
+ by TY0PR03MB6386.apcprd03.prod.outlook.com (2603:1096:400:14e::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6086.24; Tue, 14 Feb
+ 2023 02:29:20 +0000
+Received: from SL2PR03MB4153.apcprd03.prod.outlook.com
+ ([fe80::5a1c:8321:d329:db44]) by SL2PR03MB4153.apcprd03.prod.outlook.com
+ ([fe80::5a1c:8321:d329:db44%7]) with mapi id 15.20.6086.024; Tue, 14 Feb 2023
+ 02:29:20 +0000
+From: =?utf-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>
+To: "wenst@chromium.org" <wenst@chromium.org>,
+	=?utf-8?B?VGlmZmFueSBMaW4gKOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>,
+	"nicolas@ndufresne.ca" <nicolas@ndufresne.ca>,
+	"angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "benjamin.gaignard@collabora.com"
+	<benjamin.gaignard@collabora.com>, "hverkuil-cisco@xs4all.nl"
+	<hverkuil-cisco@xs4all.nl>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"frkoenig@chromium.org" <frkoenig@chromium.org>, "stevecho@chromium.org"
+	<stevecho@chromium.org>, "linux-media@vger.kernel.org"
+	<linux-media@vger.kernel.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, "mchehab@kernel.org" <mchehab@kernel.org>,
+	"daniel@ffwll.ch" <daniel@ffwll.ch>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "hsinyi@chromium.org"
+	<hsinyi@chromium.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2] media: mediatek: vcodec: Force capture queue format to
+ MM21
+Thread-Topic: [PATCH v2] media: mediatek: vcodec: Force capture queue format
+ to MM21
+Thread-Index: AQHZPRRh7fZS99I5qEegpearM3gM+67IULWAgAVtZYA=
+Date: Tue, 14 Feb 2023 02:29:20 +0000
+Message-ID: <e647eb5f8a3bda455db839f0672aa77f984d4e9b.camel@mediatek.com>
+References: <20230210055518.6017-1-yunfei.dong@mediatek.com>
+	 <e972c2ac1a7a6f0ce258c8056b82bdc87e4d8ceb.camel@ndufresne.ca>
+In-Reply-To: <e972c2ac1a7a6f0ce258c8056b82bdc87e4d8ceb.camel@ndufresne.ca>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SL2PR03MB4153:EE_|TY0PR03MB6386:EE_
+x-ms-office365-filtering-correlation-id: 0afdd87f-998b-42bb-3539-08db0e334744
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: w6gEbluHvUv55LM3RZ9OLkAVXRHDKkQ5vxoO19Uc5hPcSWo3BN0TaP/7gM0EV9KGjPz49NLPI5NBotK1UZzyI+djpQIjocbXjMv+dnDQwQB+jgoWI8/F5K23YpBYlA1zLRymxiV5MwQPaX3+YlvI+iK7W20Kk3V2doq+x2qdWHyLT658a+LyMsW48eocd2jBjWPKM3qgGKQ9SBuP1Zl0ovoE5svcDU3VKSWfHnIR2RePRZFXv3Y0R/vgTc0ENfpjBdRgPw9cMJRYVTsF+fym5F7UU7jqacIqlzkKcxfLjz/aJ7ifW1cRju7CtHA4hHTT2qKMXalbnYB2cfnm+jNB0CTbHBOlN6SBty+7qWju1Zy5UwKuZFmnV7HDPCucrfvflIXqd6I/6K/yvJf0mNR74C//rQLiRp1FCxWVram6l6TQrGcmUNXYvuqI/BtCu0dJ0TxaRIirhxCVCD6VBm7eQqkJgEOM/kx/ZPQcptJuJWorsstk7wD6pzNIc484fZHQl6zVb0iCOtr6XDk/SPa+qy9PDXXLw9d5Efz2HwKALFNebfMbioaXM52BnjbjNovxNNtjMQqER4UpWcq6jLlaI97dANqdPMVZ+7Bhnrn7KtdMsR8E85WAXUtfwOdZ6NilGpaBMjWRaPsDbOR5t0cHjXJ71+H5qYZzWvNS8/wAvN4/PtI4ZJnZg6uoeNbFWsadhFCIoc/27RccGrkQDmPbcKfPKWSmj2DIcOGiQZR/4A1c5fPssaI83V2ZXRKec7tPfpbAjfCEwp5MdZUpy+y7Ww==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SL2PR03MB4153.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(136003)(39860400002)(376002)(346002)(366004)(396003)(451199018)(71200400001)(478600001)(2616005)(6486002)(66574015)(54906003)(6506007)(110136005)(186003)(316002)(6512007)(26005)(91956017)(66946007)(66556008)(76116006)(83380400001)(8676002)(66476007)(4326008)(66446008)(64756008)(41300700001)(7416002)(36756003)(8936002)(85182001)(5660300002)(2906002)(38100700002)(122000001)(86362001)(38070700005)(99106002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?UTk3Z0UzWXA3aU5wTmhtZ2VpbkNaN0NHRll4YVdESGpBNDl1ZnZGYkR5ejdx?=
+ =?utf-8?B?Z2VhaGVwVFZIK3F1Z0xJeThUczZwVlZUS2tIMVYvUkxPd01rTzFqRTdTT25N?=
+ =?utf-8?B?dlB6V1ZqWXNqNUpRcHM0d3Nra29aMGd3MEtqbDUwNTRZMU9Kb3hiRkpKcER1?=
+ =?utf-8?B?K1pIN0lUSTZGa2ZwYVBleVNzL2F1Q1JZa2pXTTVhWkdLb2kwVmc5S1duaUVL?=
+ =?utf-8?B?L00ra2tPV09jQld4OGNsckExSG16TWRUcVVlditYb1F5ZGp3N2F0ZTk3MGZj?=
+ =?utf-8?B?V2o3aEFOQ1ZhNXZNTEhGT05WUExVR2hHSXNydDhHUHQvN2FISDRqYlNyUlp0?=
+ =?utf-8?B?bEFwV0xMWkdsQWtJYkd4VFh1MFl0VURxZ2g5RVRDQ2s1U01xeFFkV1ZxWmJH?=
+ =?utf-8?B?UWlLVmxNcXdRODBXUmZmS0tZYjhra3A5RG5CQmZwWXRlekMyVmlpVlpTUHNK?=
+ =?utf-8?B?blVyck1aUDNwU2Y1SWxpR0x2OHk2TmdBSXRvZ0laY1lpRHZlOEhHRjVuTDVN?=
+ =?utf-8?B?anRsRGZQM1lzdFVsdzU3bDNjaFBWZHVoNkNBTlkvOVR4ZytUTk9ObzgrRDBu?=
+ =?utf-8?B?S3ZTVG90T01mNEk3UFdyNVQzMk5mZzNBNlg2TlNGNTZsY09uUzNyVUI4NlMy?=
+ =?utf-8?B?T0Q2TzFQRlFFczF0aWhZSHQ1N1lYbkk2QXNGcFpINFJ5aEdIWkhRUWdsNnpF?=
+ =?utf-8?B?UlNJTmlBaGdTL0NKNm5mSGVSK0kxb3U1V3laVzJlengrZ2thenRiLzMyTGdD?=
+ =?utf-8?B?ajIxWEg2TzBwYm5mdlR6blFITGhxMWtrVTQwZXZQZno3ZHdzcGdMenZSbXFh?=
+ =?utf-8?B?SDc2UTBpTTJCN1hpMmxpVjYrQjNrQmdRV3BJNzJRY2sraVRuc2JHNm1wdk93?=
+ =?utf-8?B?RldQei9FK1RnTys3Y1lYeDNCZUVkV1JUVlJOQ1R1aGlSSlhtOThMTUpoSGlM?=
+ =?utf-8?B?L0NIcUN5NTJ5amZFcEU2L1NKZGdvaFZDQmN6NmxwdHZWaVlCSDg3dzNORDM1?=
+ =?utf-8?B?R1ZBTHFOWGxRMjN1QWx2T1RpakJRYndoWlRmMW1Ka3dhaGJtVldMbmdLczNh?=
+ =?utf-8?B?NHd5djA5bG9ndkFHUTF3TmhnWFloTWY3TEZqQXR2b0hBZ0szeDdGbFI4UERt?=
+ =?utf-8?B?Zk82U2VkeTRWYkFwaW9TeCtmRjVlTExaL1FydDYxa0xpTk95TTRSdnB5blNy?=
+ =?utf-8?B?dkJzeGZEUU9ESG15R0RUUWEzRGJxVjNUdWJuQ2ljNFZEMThTUzVUSVdVTXNR?=
+ =?utf-8?B?azFGNjZUN0ZkZ1JJUXJ4a1h2b3NNMXErN3FhSU14Q25UYzIxR2dzNlh6T3RJ?=
+ =?utf-8?B?VGVMb2JvOExCZ2RlZ2ZqbTRWVXpOVWttK3p5RTI3K0I4UVpuOEV0TFd6NkxE?=
+ =?utf-8?B?TWY3eFQyRzl3WGZyVWNNZzM1QmV2RUdLWUdDb2p4dXZwbURydjNDUGc0N0or?=
+ =?utf-8?B?Y0tlMW0yMmlEbHR0QjAxbkI0aXcrRDFYdGFJVjR2SVFjUU9XZXRWUWUyRjRE?=
+ =?utf-8?B?Qnp1NzFvZ2wvWGYwVDdNYUNUOWxIT1MyeWVyZHhJcUNrcEp1Mk12NmJjYUJw?=
+ =?utf-8?B?OGRXRElaSHlTaE42STJYY2thTVpmWVlpQU1DT2EzaFNLdUZWMFpoTHZpdjhn?=
+ =?utf-8?B?ZDdCZmk0Yy83TExKSjJBOGptTDVVbzlVa0F4blVNaFlQZndzVm5abU1wVHlJ?=
+ =?utf-8?B?VCtWTnNCZ0N4M2kxYnRCSXdZOXMrV3NsazJXMFRzclhjbm81RXZFRWVGcDQ3?=
+ =?utf-8?B?aFhWejk3aERIbEhRS2NwZThtMEkxdmRPWlBCazF6Yk4wSFVrUE42c0dZenFh?=
+ =?utf-8?B?c3BMWTRwb2lZUzVxT1BWcGY2QUMxWmFBUjFXTUI4MWFHakdJTzdTMXp5UWFa?=
+ =?utf-8?B?UlVmMlB1ZzhQN3VXSGgxdUtwei9QMnpxZkRuSmdRMUNSNnJCY1VJeTF0RDVt?=
+ =?utf-8?B?UlVydVFUVC9GZzZ3THlBcDk2Mng0S1NiMlJRSDJsK2xielhLV25NU2h0VDFa?=
+ =?utf-8?B?NUlkSUpkZ3BQZ1ArT2lSUGVDZldYZHFRendyYWcxT21mYkZzY2dTMW8wakhL?=
+ =?utf-8?B?Mm16Y28xVmFVRHN1S2ltd05UdWgzbmJERFRWVFdCWTZWRGRneUcvKzB5KzBP?=
+ =?utf-8?B?aUU5SmhSb3pTUGo5Q2wrWVlrNGlxY1FVQ1hzZFZVakxrNnhqUkRsb2pvdjht?=
+ =?utf-8?B?eXc9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <E2441FEB7B250642A75FE165D73C0DCF@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <cover.1676323692.git.daniel@makrotopia.org>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SL2PR03MB4153.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0afdd87f-998b-42bb-3539-08db0e334744
+X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Feb 2023 02:29:20.4518
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: x0QIY4e44EmqHhgpI6QCont7dTUxit8rUfded9hKA0eUcY8PoClGOfKd2zlAtGSzJaZuG4wpeSDfsW21sgvv4AhBLI1SOaSQ2sFqLXI88TE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR03MB6386
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230213_133856_576772_53D18C49 
-X-CRM114-Status: GOOD (  25.22  )
+X-CRM114-CacheID: sfid-20230213_183009_500066_2137E795 
+X-CRM114-Status: GOOD (  26.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,480 +190,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Implement regmap access wrappers, for now only to be used by the
-pcs-mtk driver.
-Make use of external PCS driver and drop the reduntant implementation
-in mt7530.c.
-As a nice side effect the SGMII registers can now also more easily be
-inspected for debugging via /sys/kernel/debug/regmap.
-
-Reviewed-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-Tested-by: Bjørn Mork <bjorn@mork.no>
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- drivers/net/dsa/Kconfig  |   1 +
- drivers/net/dsa/mt7530.c | 277 ++++++++++-----------------------------
- drivers/net/dsa/mt7530.h |  47 +------
- 3 files changed, 71 insertions(+), 254 deletions(-)
-
-diff --git a/drivers/net/dsa/Kconfig b/drivers/net/dsa/Kconfig
-index f6f3b43dfb06..6b45fa8b6907 100644
---- a/drivers/net/dsa/Kconfig
-+++ b/drivers/net/dsa/Kconfig
-@@ -38,6 +38,7 @@ config NET_DSA_MT7530
- 	tristate "MediaTek MT7530 and MT7531 Ethernet switch support"
- 	select NET_DSA_TAG_MTK
- 	select MEDIATEK_GE_PHY
-+	select PCS_MTK_LYNXI
- 	help
- 	  This enables support for the MediaTek MT7530 and MT7531 Ethernet
- 	  switch chips. Multi-chip module MT7530 in MT7621AT, MT7621DAT,
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 3a15015bc409..582ba30374c8 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -14,6 +14,7 @@
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
- #include <linux/of_platform.h>
-+#include <linux/pcs/pcs-mtk-lynxi.h>
- #include <linux/phylink.h>
- #include <linux/regmap.h>
- #include <linux/regulator/consumer.h>
-@@ -2567,128 +2568,11 @@ static int mt7531_rgmii_setup(struct mt7530_priv *priv, u32 port,
- 	return 0;
- }
- 
--static void mt7531_pcs_link_up(struct phylink_pcs *pcs, unsigned int mode,
--			       phy_interface_t interface, int speed, int duplex)
--{
--	struct mt7530_priv *priv = pcs_to_mt753x_pcs(pcs)->priv;
--	int port = pcs_to_mt753x_pcs(pcs)->port;
--	unsigned int val;
--
--	/* For adjusting speed and duplex of SGMII force mode. */
--	if (interface != PHY_INTERFACE_MODE_SGMII ||
--	    phylink_autoneg_inband(mode))
--		return;
--
--	/* SGMII force mode setting */
--	val = mt7530_read(priv, MT7531_SGMII_MODE(port));
--	val &= ~MT7531_SGMII_IF_MODE_MASK;
--
--	switch (speed) {
--	case SPEED_10:
--		val |= MT7531_SGMII_FORCE_SPEED_10;
--		break;
--	case SPEED_100:
--		val |= MT7531_SGMII_FORCE_SPEED_100;
--		break;
--	case SPEED_1000:
--		val |= MT7531_SGMII_FORCE_SPEED_1000;
--		break;
--	}
--
--	/* MT7531 SGMII 1G force mode can only work in full duplex mode,
--	 * no matter MT7531_SGMII_FORCE_HALF_DUPLEX is set or not.
--	 *
--	 * The speed check is unnecessary as the MAC capabilities apply
--	 * this restriction. --rmk
--	 */
--	if ((speed == SPEED_10 || speed == SPEED_100) &&
--	    duplex != DUPLEX_FULL)
--		val |= MT7531_SGMII_FORCE_HALF_DUPLEX;
--
--	mt7530_write(priv, MT7531_SGMII_MODE(port), val);
--}
--
- static bool mt753x_is_mac_port(u32 port)
- {
- 	return (port == 5 || port == 6);
- }
- 
--static int mt7531_sgmii_setup_mode_force(struct mt7530_priv *priv, u32 port,
--					 phy_interface_t interface)
--{
--	u32 val;
--
--	if (!mt753x_is_mac_port(port))
--		return -EINVAL;
--
--	mt7530_set(priv, MT7531_QPHY_PWR_STATE_CTRL(port),
--		   MT7531_SGMII_PHYA_PWD);
--
--	val = mt7530_read(priv, MT7531_PHYA_CTRL_SIGNAL3(port));
--	val &= ~MT7531_RG_TPHY_SPEED_MASK;
--	/* Setup 2.5 times faster clock for 2.5Gbps data speeds with 10B/8B
--	 * encoding.
--	 */
--	val |= (interface == PHY_INTERFACE_MODE_2500BASEX) ?
--		MT7531_RG_TPHY_SPEED_3_125G : MT7531_RG_TPHY_SPEED_1_25G;
--	mt7530_write(priv, MT7531_PHYA_CTRL_SIGNAL3(port), val);
--
--	mt7530_clear(priv, MT7531_PCS_CONTROL_1(port), MT7531_SGMII_AN_ENABLE);
--
--	/* MT7531 SGMII 1G and 2.5G force mode can only work in full duplex
--	 * mode, no matter MT7531_SGMII_FORCE_HALF_DUPLEX is set or not.
--	 */
--	mt7530_rmw(priv, MT7531_SGMII_MODE(port),
--		   MT7531_SGMII_IF_MODE_MASK | MT7531_SGMII_REMOTE_FAULT_DIS,
--		   MT7531_SGMII_FORCE_SPEED_1000);
--
--	mt7530_write(priv, MT7531_QPHY_PWR_STATE_CTRL(port), 0);
--
--	return 0;
--}
--
--static int mt7531_sgmii_setup_mode_an(struct mt7530_priv *priv, int port,
--				      phy_interface_t interface)
--{
--	if (!mt753x_is_mac_port(port))
--		return -EINVAL;
--
--	mt7530_set(priv, MT7531_QPHY_PWR_STATE_CTRL(port),
--		   MT7531_SGMII_PHYA_PWD);
--
--	mt7530_rmw(priv, MT7531_PHYA_CTRL_SIGNAL3(port),
--		   MT7531_RG_TPHY_SPEED_MASK, MT7531_RG_TPHY_SPEED_1_25G);
--
--	mt7530_set(priv, MT7531_SGMII_MODE(port),
--		   MT7531_SGMII_REMOTE_FAULT_DIS |
--		   MT7531_SGMII_SPEED_DUPLEX_AN);
--
--	mt7530_rmw(priv, MT7531_PCS_SPEED_ABILITY(port),
--		   MT7531_SGMII_TX_CONFIG_MASK, 1);
--
--	mt7530_set(priv, MT7531_PCS_CONTROL_1(port), MT7531_SGMII_AN_ENABLE);
--
--	mt7530_set(priv, MT7531_PCS_CONTROL_1(port), MT7531_SGMII_AN_RESTART);
--
--	mt7530_write(priv, MT7531_QPHY_PWR_STATE_CTRL(port), 0);
--
--	return 0;
--}
--
--static void mt7531_pcs_an_restart(struct phylink_pcs *pcs)
--{
--	struct mt7530_priv *priv = pcs_to_mt753x_pcs(pcs)->priv;
--	int port = pcs_to_mt753x_pcs(pcs)->port;
--	u32 val;
--
--	/* Only restart AN when AN is enabled */
--	val = mt7530_read(priv, MT7531_PCS_CONTROL_1(port));
--	if (val & MT7531_SGMII_AN_ENABLE) {
--		val |= MT7531_SGMII_AN_RESTART;
--		mt7530_write(priv, MT7531_PCS_CONTROL_1(port), val);
--	}
--}
--
- static int
- mt7531_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- 		  phy_interface_t interface)
-@@ -2711,11 +2595,11 @@ mt7531_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- 		phydev = dp->slave->phydev;
- 		return mt7531_rgmii_setup(priv, port, interface, phydev);
- 	case PHY_INTERFACE_MODE_SGMII:
--		return mt7531_sgmii_setup_mode_an(priv, port, interface);
- 	case PHY_INTERFACE_MODE_NA:
- 	case PHY_INTERFACE_MODE_1000BASEX:
- 	case PHY_INTERFACE_MODE_2500BASEX:
--		return mt7531_sgmii_setup_mode_force(priv, port, interface);
-+		/* handled in SGMII PCS driver */
-+		return 0;
- 	default:
- 		return -EINVAL;
- 	}
-@@ -2740,11 +2624,11 @@ mt753x_phylink_mac_select_pcs(struct dsa_switch *ds, int port,
- 
- 	switch (interface) {
- 	case PHY_INTERFACE_MODE_TRGMII:
-+		return &priv->pcs[port].pcs;
- 	case PHY_INTERFACE_MODE_SGMII:
- 	case PHY_INTERFACE_MODE_1000BASEX:
- 	case PHY_INTERFACE_MODE_2500BASEX:
--		return &priv->pcs[port].pcs;
--
-+		return priv->ports[port].sgmii_pcs;
- 	default:
- 		return NULL;
- 	}
-@@ -2982,86 +2866,6 @@ static void mt7530_pcs_get_state(struct phylink_pcs *pcs,
- 		state->pause |= MLO_PAUSE_TX;
- }
- 
--static int
--mt7531_sgmii_pcs_get_state_an(struct mt7530_priv *priv, int port,
--			      struct phylink_link_state *state)
--{
--	u32 status, val;
--	u16 config_reg;
--
--	status = mt7530_read(priv, MT7531_PCS_CONTROL_1(port));
--	state->link = !!(status & MT7531_SGMII_LINK_STATUS);
--	state->an_complete = !!(status & MT7531_SGMII_AN_COMPLETE);
--	if (state->interface == PHY_INTERFACE_MODE_SGMII &&
--	    (status & MT7531_SGMII_AN_ENABLE)) {
--		val = mt7530_read(priv, MT7531_PCS_SPEED_ABILITY(port));
--		config_reg = val >> 16;
--
--		switch (config_reg & LPA_SGMII_SPD_MASK) {
--		case LPA_SGMII_1000:
--			state->speed = SPEED_1000;
--			break;
--		case LPA_SGMII_100:
--			state->speed = SPEED_100;
--			break;
--		case LPA_SGMII_10:
--			state->speed = SPEED_10;
--			break;
--		default:
--			dev_err(priv->dev, "invalid sgmii PHY speed\n");
--			state->link = false;
--			return -EINVAL;
--		}
--
--		if (config_reg & LPA_SGMII_FULL_DUPLEX)
--			state->duplex = DUPLEX_FULL;
--		else
--			state->duplex = DUPLEX_HALF;
--	}
--
--	return 0;
--}
--
--static void
--mt7531_sgmii_pcs_get_state_inband(struct mt7530_priv *priv, int port,
--				  struct phylink_link_state *state)
--{
--	unsigned int val;
--
--	val = mt7530_read(priv, MT7531_PCS_CONTROL_1(port));
--	state->link = !!(val & MT7531_SGMII_LINK_STATUS);
--	if (!state->link)
--		return;
--
--	state->an_complete = state->link;
--
--	if (state->interface == PHY_INTERFACE_MODE_2500BASEX)
--		state->speed = SPEED_2500;
--	else
--		state->speed = SPEED_1000;
--
--	state->duplex = DUPLEX_FULL;
--	state->pause = MLO_PAUSE_NONE;
--}
--
--static void mt7531_pcs_get_state(struct phylink_pcs *pcs,
--				 struct phylink_link_state *state)
--{
--	struct mt7530_priv *priv = pcs_to_mt753x_pcs(pcs)->priv;
--	int port = pcs_to_mt753x_pcs(pcs)->port;
--
--	if (state->interface == PHY_INTERFACE_MODE_SGMII) {
--		mt7531_sgmii_pcs_get_state_an(priv, port, state);
--		return;
--	} else if ((state->interface == PHY_INTERFACE_MODE_1000BASEX) ||
--		   (state->interface == PHY_INTERFACE_MODE_2500BASEX)) {
--		mt7531_sgmii_pcs_get_state_inband(priv, port, state);
--		return;
--	}
--
--	state->link = false;
--}
--
- static int mt753x_pcs_config(struct phylink_pcs *pcs, unsigned int mode,
- 			     phy_interface_t interface,
- 			     const unsigned long *advertising,
-@@ -3081,18 +2885,57 @@ static const struct phylink_pcs_ops mt7530_pcs_ops = {
- 	.pcs_an_restart = mt7530_pcs_an_restart,
- };
- 
--static const struct phylink_pcs_ops mt7531_pcs_ops = {
--	.pcs_validate = mt753x_pcs_validate,
--	.pcs_get_state = mt7531_pcs_get_state,
--	.pcs_config = mt753x_pcs_config,
--	.pcs_an_restart = mt7531_pcs_an_restart,
--	.pcs_link_up = mt7531_pcs_link_up,
-+static int mt7530_regmap_read(void *context, unsigned int reg, unsigned int *val)
-+{
-+	struct mt7530_priv *priv = context;
-+
-+	*val = mt7530_read(priv, reg);
-+	return 0;
-+};
-+
-+static int mt7530_regmap_write(void *context, unsigned int reg, unsigned int val)
-+{
-+	struct mt7530_priv *priv = context;
-+
-+	mt7530_write(priv, reg, val);
-+	return 0;
-+};
-+
-+static int mt7530_regmap_update_bits(void *context, unsigned int reg,
-+				     unsigned int mask, unsigned int val)
-+{
-+	struct mt7530_priv *priv = context;
-+
-+	mt7530_rmw(priv, reg, mask, val);
-+	return 0;
-+};
-+
-+static const struct regmap_bus mt7531_regmap_bus = {
-+	.reg_write = mt7530_regmap_write,
-+	.reg_read = mt7530_regmap_read,
-+	.reg_update_bits = mt7530_regmap_update_bits,
-+};
-+
-+#define MT7531_PCS_REGMAP_CONFIG(_name, _reg_base) \
-+	{				\
-+		.name = _name,		\
-+		.reg_bits = 16,		\
-+		.val_bits = 32,		\
-+		.reg_stride = 4,	\
-+		.reg_base = _reg_base,	\
-+		.max_register = 0x17c,	\
-+	}
-+
-+static const struct regmap_config mt7531_pcs_config[] = {
-+	MT7531_PCS_REGMAP_CONFIG("port5", MT7531_SGMII_REG_BASE(5)),
-+	MT7531_PCS_REGMAP_CONFIG("port6", MT7531_SGMII_REG_BASE(6)),
- };
- 
- static int
- mt753x_setup(struct dsa_switch *ds)
- {
- 	struct mt7530_priv *priv = ds->priv;
-+	struct regmap *regmap;
- 	int i, ret;
- 
- 	/* Initialise the PCS devices */
-@@ -3100,8 +2943,6 @@ mt753x_setup(struct dsa_switch *ds)
- 		priv->pcs[i].pcs.ops = priv->info->pcs_ops;
- 		priv->pcs[i].priv = priv;
- 		priv->pcs[i].port = i;
--		if (mt753x_is_mac_port(i))
--			priv->pcs[i].pcs.poll = 1;
- 	}
- 
- 	ret = priv->info->sw_setup(ds);
-@@ -3116,6 +2957,16 @@ mt753x_setup(struct dsa_switch *ds)
- 	if (ret && priv->irq)
- 		mt7530_free_irq_common(priv);
- 
-+	if (priv->id == ID_MT7531)
-+		for (i = 0; i < 2; i++) {
-+			regmap = devm_regmap_init(ds->dev,
-+						  &mt7531_regmap_bus, priv,
-+						  &mt7531_pcs_config[i]);
-+			priv->ports[5 + i].sgmii_pcs =
-+				mtk_pcs_lynxi_create(ds->dev, regmap,
-+						     MT7531_PHYA_CTRL_SIGNAL3, 0);
-+		}
-+
- 	return ret;
- }
- 
-@@ -3211,7 +3062,7 @@ static const struct mt753x_info mt753x_table[] = {
- 	},
- 	[ID_MT7531] = {
- 		.id = ID_MT7531,
--		.pcs_ops = &mt7531_pcs_ops,
-+		.pcs_ops = &mt7530_pcs_ops,
- 		.sw_setup = mt7531_setup,
- 		.phy_read_c22 = mt7531_ind_c22_phy_read,
- 		.phy_write_c22 = mt7531_ind_c22_phy_write,
-@@ -3321,7 +3172,7 @@ static void
- mt7530_remove(struct mdio_device *mdiodev)
- {
- 	struct mt7530_priv *priv = dev_get_drvdata(&mdiodev->dev);
--	int ret = 0;
-+	int ret = 0, i;
- 
- 	if (!priv)
- 		return;
-@@ -3340,6 +3191,10 @@ mt7530_remove(struct mdio_device *mdiodev)
- 		mt7530_free_irq(priv);
- 
- 	dsa_unregister_switch(priv->ds);
-+
-+	for (i = 0; i < 2; ++i)
-+		mtk_pcs_lynxi_destroy(priv->ports[5 + i].sgmii_pcs);
-+
- 	mutex_destroy(&priv->reg_mutex);
- }
- 
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 6b2fc6290ea8..c5d29f3fc1d8 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -364,47 +364,8 @@ enum mt7530_vlan_port_acc_frm {
- 					 CCR_TX_OCT_CNT_BAD)
- 
- /* MT7531 SGMII register group */
--#define MT7531_SGMII_REG_BASE		0x5000
--#define MT7531_SGMII_REG(p, r)		(MT7531_SGMII_REG_BASE + \
--					((p) - 5) * 0x1000 + (r))
--
--/* Register forSGMII PCS_CONTROL_1 */
--#define MT7531_PCS_CONTROL_1(p)		MT7531_SGMII_REG(p, 0x00)
--#define  MT7531_SGMII_LINK_STATUS	BIT(18)
--#define  MT7531_SGMII_AN_ENABLE		BIT(12)
--#define  MT7531_SGMII_AN_RESTART	BIT(9)
--#define  MT7531_SGMII_AN_COMPLETE	BIT(21)
--
--/* Register for SGMII PCS_SPPED_ABILITY */
--#define MT7531_PCS_SPEED_ABILITY(p)	MT7531_SGMII_REG(p, 0x08)
--#define  MT7531_SGMII_TX_CONFIG_MASK	GENMASK(15, 0)
--#define  MT7531_SGMII_TX_CONFIG		BIT(0)
--
--/* Register for SGMII_MODE */
--#define MT7531_SGMII_MODE(p)		MT7531_SGMII_REG(p, 0x20)
--#define  MT7531_SGMII_REMOTE_FAULT_DIS	BIT(8)
--#define  MT7531_SGMII_IF_MODE_MASK	GENMASK(5, 1)
--#define  MT7531_SGMII_FORCE_DUPLEX	BIT(4)
--#define  MT7531_SGMII_FORCE_SPEED_MASK	GENMASK(3, 2)
--#define  MT7531_SGMII_FORCE_SPEED_1000	BIT(3)
--#define  MT7531_SGMII_FORCE_SPEED_100	BIT(2)
--#define  MT7531_SGMII_FORCE_SPEED_10	0
--#define  MT7531_SGMII_SPEED_DUPLEX_AN	BIT(1)
--
--enum mt7531_sgmii_force_duplex {
--	MT7531_SGMII_FORCE_FULL_DUPLEX = 0,
--	MT7531_SGMII_FORCE_HALF_DUPLEX = 0x10,
--};
--
--/* Fields of QPHY_PWR_STATE_CTRL */
--#define MT7531_QPHY_PWR_STATE_CTRL(p)	MT7531_SGMII_REG(p, 0xe8)
--#define  MT7531_SGMII_PHYA_PWD		BIT(4)
--
--/* Values of SGMII SPEED */
--#define MT7531_PHYA_CTRL_SIGNAL3(p)	MT7531_SGMII_REG(p, 0x128)
--#define  MT7531_RG_TPHY_SPEED_MASK	(BIT(2) | BIT(3))
--#define  MT7531_RG_TPHY_SPEED_1_25G	0x0
--#define  MT7531_RG_TPHY_SPEED_3_125G	BIT(2)
-+#define MT7531_SGMII_REG_BASE(p)	(0x5000 + ((p) - 5) * 0x1000)
-+#define MT7531_PHYA_CTRL_SIGNAL3	0x128
- 
- /* Register for system reset */
- #define MT7530_SYS_CTRL			0x7000
-@@ -703,13 +664,13 @@ struct mt7530_fdb {
-  * @pm:		The matrix used to show all connections with the port.
-  * @pvid:	The VLAN specified is to be considered a PVID at ingress.  Any
-  *		untagged frames will be assigned to the related VLAN.
-- * @vlan_filtering: The flags indicating whether the port that can recognize
-- *		    VLAN-tagged frames.
-+ * @sgmii_pcs:	Pointer to PCS instance for SerDes ports
-  */
- struct mt7530_port {
- 	bool enable;
- 	u32 pm;
- 	u16 pvid;
-+	struct phylink_pcs *sgmii_pcs;
- };
- 
- /* Port 5 interface select definitions */
--- 
-2.39.1
-
+SGkgTmljb2xhcywNCg0KVGhhbmtzIGZvciB5b3VyIHN1Z2dlc3Rpb24uDQpPbiBGcmksIDIwMjMt
+MDItMTAgYXQgMTA6MzYgLTA1MDAsIE5pY29sYXMgRHVmcmVzbmUgd3JvdGU6DQo+IExlIHZlbmRy
+ZWRpIDEwIGbDqXZyaWVyIDIwMjMgw6AgMTM6NTUgKzA4MDAsIFl1bmZlaSBEb25nIGEgw6ljcml0
+IDoNCj4gPiBJbiBvcmRlciB0byBjb252ZXIgdGhlIGZvcm1hdCBvZiBjYXB0dXJlIHF1ZXVlIGZy
+b20gbWVkaWF0ZWsgTU0yMQ0KPiA+IHRvDQo+ID4gc3RhbmRhcmQgeXV2NDIwIHdpdGggTGlieXV2
+LCBuZWVkIHRvIGZvcmNlIGNhcHR1cmUgcXVldWUgZm9ybWF0IHRvDQo+ID4gTU0yMSBmb3IgTGli
+eXV2IGNhbid0IGNvdmVydCBtZWRpYXRlayBNVDIxIGZvcm1hdCBhdCBjdXJyZW50DQo+ID4gcGVy
+aW9kLg0KPiANCj4gUGxlYXNlIHJld29yayB0aGlzIHRleHQsIGl0IGlzIGhhcmQgdG8gdW5kZXJz
+dGFuZC4NCj4gDQoNCldpbGwgcmUtd3JpdGUgdGhlIGNvbW1pdCBtZXNzYWdlIGluIG5leHQgdmVy
+c2lvbiBhcyBiZWxvdywgY291bGQgeW91DQpwbGVhc2UgaGVscCB0byByZXZpZXcgd2hldGhlciBp
+dCdzIHdlbGwgdG8gYmUgdXNlZCA/DQoNCkxpYnl1diBpcyBvbmUgc29mdHdhcmUgbGlicmFyeSB1
+c2VkIHRvIGNvdmVydCBmb3JtYXQuIE9ubHkgY292ZXJ0DQptZWRpYXRlayBNTTIxIHRvIHN0YW5k
+YXJkIHl1djQyMCBmb3IgTVQyMSBpcyBjb21wcmVzc2VkIG1vZGUgYW5kIE1NMjENCmlzIHVuY29t
+cHJlc3NlZCBtb2RlIGF0IGN1cnJlbnQgcGVyaW9kLiBOZWVkIHRvIHNldCBjYXB0dXJlIHF1ZXVl
+DQpmb3JtYXQgdG8gTU0yMSBpbiBvcmRlciB0byB1c2UgTGlieXV2Lg0KDQo+ID4gDQo+ID4gRml4
+ZXM6IDc1MDFlZGVmNmIxZiAoIm1lZGlhOiBtZWRpYXRlazogdmNvZGVjOiBEaWZmZXJlbnQgY29k
+ZWMNCj4gPiB1c2luZyBkaWZmZXJlbnQgY2FwdHVyZSBmb3JtYXQiKQ0KPiA+IFNpZ25lZC1vZmYt
+Ynk6IFl1bmZlaSBEb25nIDx5dW5mZWkuZG9uZ0BtZWRpYXRlay5vcmc+DQo+ID4gLS0tDQo+ID4g
+Y2hhbmdlZCB3aXRoIHYxOg0KPiA+IC0gYWRkIEZpeGVzIHRhZy4NCj4gPiAtLS0NCj4gPiAgZHJp
+dmVycy9tZWRpYS9wbGF0Zm9ybS9tZWRpYXRlay92Y29kZWMvbXRrX3Zjb2RlY19kZWMuYyB8IDQg
+KystLQ0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygt
+KQ0KPiA+IA0KPiA+IGRpZmYgLS1naXQNCj4gPiBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbWVk
+aWF0ZWsvdmNvZGVjL210a192Y29kZWNfZGVjLmMNCj4gPiBiL2RyaXZlcnMvbWVkaWEvcGxhdGZv
+cm0vbWVkaWF0ZWsvdmNvZGVjL210a192Y29kZWNfZGVjLmMNCj4gPiBpbmRleCA2NDFmNTMzYzQx
+N2YuLjRmNWU5YzIwMjE0ZiAxMDA2NDQNCj4gPiAtLS0gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3Jt
+L21lZGlhdGVrL3Zjb2RlYy9tdGtfdmNvZGVjX2RlYy5jDQo+ID4gKysrIGIvZHJpdmVycy9tZWRp
+YS9wbGF0Zm9ybS9tZWRpYXRlay92Y29kZWMvbXRrX3Zjb2RlY19kZWMuYw0KPiA+IEBAIC00MSw3
+ICs0MSw3IEBAIHN0YXRpYyBib29sIG10a192ZGVjX2dldF9jYXBfZm10KHN0cnVjdA0KPiA+IG10
+a192Y29kZWNfY3R4ICpjdHgsIGludCBmb3JtYXRfaW5kZXgpDQo+ID4gIAljb25zdCBzdHJ1Y3Qg
+bXRrX3ZpZGVvX2ZtdCAqZm10Ow0KPiA+ICAJc3RydWN0IG10a19xX2RhdGEgKnFfZGF0YTsNCj4g
+PiAgCWludCBudW1fZnJhbWVfY291bnQgPSAwLCBpOw0KPiA+IC0JYm9vbCByZXQgPSB0cnVlOw0K
+PiA+ICsJYm9vbCByZXQgPSBmYWxzZTsNCj4gPiAgDQo+ID4gIAlmb3IgKGkgPSAwOyBpIDwgKmRl
+Y19wZGF0YS0+bnVtX2Zvcm1hdHM7IGkrKykgew0KPiA+ICAJCWlmIChkZWNfcGRhdGEtPnZkZWNf
+Zm9ybWF0c1tpXS50eXBlICE9IE1US19GTVRfRlJBTUUpDQo+ID4gQEAgLTYzLDcgKzYzLDcgQEAg
+c3RhdGljIGJvb2wgbXRrX3ZkZWNfZ2V0X2NhcF9mbXQoc3RydWN0DQo+ID4gbXRrX3Zjb2RlY19j
+dHggKmN0eCwgaW50IGZvcm1hdF9pbmRleCkNCj4gPiAgCWNhc2UgVjRMMl9QSVhfRk1UX0gyNjRf
+U0xJQ0U6DQo+ID4gIAljYXNlIFY0TDJfUElYX0ZNVF9WUDlfRlJBTUU6DQo+ID4gIAkJaWYgKGZt
+dC0+Zm91cmNjID09IFY0TDJfUElYX0ZNVF9NTTIxKQ0KPiA+IC0JCQlyZXQgPSBmYWxzZTsNCj4g
+PiArCQkJcmV0ID0gdHJ1ZTsNCj4gDQo+IFRoaXMgbWFrZXMgdGhlIFZQOCBhbmQgdGhlIG90aGVy
+IGNhc2VzIGlkZW50aWNhbCwgbGVhdmluZyBhbnl0aGluZw0KPiB0aGF0IHRvdWNoZXMNCj4gTVQy
+MSBhcyBkZWFkIGNvZGUuIEknbSBub3Qgc3VyZSwgY2F1c2UgSSBjYW5ub3QgdGVzdCBpdCwgYnV0
+IGl0DQo+IHNob3VsZCBpbiB0aGVvcnkNCj4gcmVuZGVyIE1UODE5MiB1bnVzYWJsZSwgdW5sZXNz
+IGEgbmV3IGZpcm13YXJlIGhhcyBiZWVuIHN1Ym1pdHRlZCB0bw0KPiBsaW51eC0NCj4gZmlybXdh
+cmUgd2l0aCBNTTIxIHN1cHBvcnQgPw0KPiANCg0KSWYgdGhlIGZpcm13YXJlIG9ubHkgc3VwcG9y
+dCBNVDIxID0+IHdvbid0IGV4aXN0IGZvciB2cDggbmVlZCB0byB1c2UNCk1NMjEuDQoNCklmIHRo
+ZSBmaXJtd2FyZSBvbmx5IHN1cHBvcnQgTU0yMSwgd2lsbCB1c2luZyBNTTIxLg0KSWYgdGhlIGZp
+cm13YXJlIHN1cHBvcnQgTVQyMSAmIE1NMjEsIHdpbGwgZm9yY2UgVlA4IHRvIHVzZSBNTTIxLA0K
+SDI2NC9WUDkvQVYxIHdpbGwgdXNlIE1UMjEgYmVmb3JlIHRoaXMgY2hhbmdlLiANCg0KV2lsbCBm
+b3JjZSBhbGwgZHJpdmVyIHRvIHVzZSBNTTIxIGFmdGVyIGFkZGluZyB0aGlzIGNoYW5nZS4gDQoN
+CkJlc3QgUmVnYXJkcywNCll1bmZlaSBEb25nDQo+ID4gIAkJYnJlYWs7DQo+ID4gIAlkZWZhdWx0
+Og0KPiA+ICAJCXJldCA9IHRydWU7DQo+IA0KPiANCg==
 
