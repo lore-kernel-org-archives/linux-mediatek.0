@@ -4,82 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95D55C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Feb 2023 06:17:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FA86C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Feb 2023 09:07:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5ulMfUWUhlkCXGFx0HUB6mhvRRwkBi6ngLZ9kQu8i6M=; b=Wp+W06+IiayyIr6ZaRrfw49t6z
-	qQMYyz+7ZkANGAd5Q6yOeqNzeDlU0GCtyJtJsEd+XKsnB3d4yHzgHL6Rwz2cdk4+zuuSRFE0add4F
-	97DBOzQd5rOIKLRfFUi6Znxyb8S8cA20+2aRV4hn4wnIvWk21nggb/ItsUpeuHruX9rQC6LwFS+yl
-	jCAS+FZ5z1+64PEBUarjEh3L/wM3CkwMoZS7qA2SJqgLG5v2bPTNwk7H/LPPwh6bKxDOXPZvaHJ1h
-	XOul9CU8y4Ft/vHqOeyyZq5pAdagA2mCwUo6qvXOjKTSNK7bEOtjjaDh6kFUQJ33ZB4tJUvY8tkmL
-	M2CWh5YA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=crtzXV/RrfG1d0HMbDSRvxYt2KftZb/UW3cQkDfqDeA=; b=1432eoRTfjP503IojEo/XvIrfA
+	9PPkg+2mfxUEN5hwLxkmlofGeb9SPfcmKvamTxzTmbxGaepdHsRz+D98E2T8GEjG36JajygFHpxcP
+	YNGcHNoVN+G6i5MU90ju3iq7ZXlzsqKPZr/AQ1yvVgBbaBOtTj9KyRFVYGLtPrhck5lPNGNXn9jyV
+	XWg/MB55+qm1nS5UaYogt3+mPXPolctKI/2i4RVZciSd9xFk/5A/uXw8Fat/bEIrD7bsJfsXcmYSl
+	kx5iYJkTw7VMP5gbuC4WYlXTO0EnLLhMDbn3ZqJoMCuJ3nerQ1dUULMtnCpJJMLWbCsA1pcc0D+mC
+	UDLO7kFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRocr-00023R-Oe; Tue, 14 Feb 2023 06:17:13 +0000
-Received: from mga07.intel.com ([134.134.136.100])
+	id 1pRrHr-000eDp-JW; Tue, 14 Feb 2023 09:07:43 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRoch-00020r-DI; Tue, 14 Feb 2023 06:17:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1676355423; x=1707891423;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=03gfl7nTjTP9LJuGUTYnI/DE/HmA7cJs/uy9X6zRFt0=;
-  b=OHUSG18lLw3qaD/f2TiQRtZYogrTVOMo1ZtzfhIiW4D21N6rnPu/rYgW
-   4bQb9xwKql9wxBKaCwqGB4YCQf8bsLMOq/Y47aY1gJlNSOTBixK7PE5bS
-   TYzCHyG6aEehalYwv3bSFoRXjbLwnLBwCzmITiruedg3jdkUfavOEhmLC
-   JxAt5y40UVtU7doweJTEKZ/hiUseoGZK8xDp1VlCaRdEiTk3TXBrq/WzO
-   88cK9f9uO/Ng5o0aMNRJoLby4rcLId2ymRU1fjV0rIUdkKGrvJsdkVmch
-   Ih1XlBZLldIlf72J430V1TIHq6YDphAzi/S6K5cUvMulINWdW6bmXlGxJ
-   g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10620"; a="395705130"
-X-IronPort-AV: E=Sophos;i="5.97,294,1669104000"; 
-   d="scan'208";a="395705130"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
-  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Feb 2023 22:17:02 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10620"; a="671122290"
-X-IronPort-AV: E=Sophos;i="5.97,294,1669104000"; 
-   d="scan'208";a="671122290"
-Received: from lkp-server01.sh.intel.com (HELO 4455601a8d94) ([10.239.97.150])
-  by fmsmga007.fm.intel.com with ESMTP; 13 Feb 2023 22:16:58 -0800
-Received: from kbuild by 4455601a8d94 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1pRocb-0008GS-1Q;
-	Tue, 14 Feb 2023 06:16:57 +0000
-Date: Tue, 14 Feb 2023 14:16:27 +0800
-From: kernel test robot <lkp@intel.com>
-To: Guillaume Ranquet <granquet@baylibre.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Kishon Vijay Abraham I <kishon@ti.com>,
-	Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-	CK Hu <ck.hu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>
-Cc: oe-kbuild-all@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	mac.shen@mediatek.com, stuart.lee@mediatek.com,
-	Guillaume Ranquet <granquet@baylibre.com>
-Subject: Re: [PATCH v7 3/3] phy: mediatek: add support for phy-mtk-hdmi-mt8195
-Message-ID: <202302141356.VMQ4kOvN-lkp@intel.com>
-References: <20220919-v7-3-b5b58c5ccc07@baylibre.com>
+	id 1pRrHa-000e0z-8q; Tue, 14 Feb 2023 09:07:29 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0F042660216A;
+	Tue, 14 Feb 2023 09:07:16 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1676365637;
+	bh=exml4rk8nqwZKBNU5UVCpjJdwJUrGJx/1QP9f2Pscz0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ElAUuXnIEuGj+oHHRkeho+XGKOxgC9yqdGkGy2tGbAIG8xbFjE5dtadhKMCD5dC9M
+	 Keux8qe+dMHe1Fwr0osNgSZRdqXq/kHIWLcaJY6f0tDyMIjNgKUD3ErAqK1wxT/LRg
+	 oZqwTfxDUmEHc6YgYxZ83s/pXKx1HMwpB62BRrIZI0oe1zxp57SEX/EiFhB93vEnDP
+	 RpvvOd5cr16Qf9cTyedRrskLH07xQSH/IUVNjgGKWp8xCUu3evk0z+02OCyrR4qw+5
+	 Pr1OPcRjUHi6XDiEG9lhaO2iljeLK3i9gGLpHiUg2sagLDoJ/0IN9PpVauJ2DH70Bt
+	 0q9+dUmbALnMw==
+Message-ID: <ab778f16-3cda-6c06-c5a5-6a4b4d1b3974@collabora.com>
+Date: Tue, 14 Feb 2023 10:07:13 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220919-v7-3-b5b58c5ccc07@baylibre.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.2
+Subject: Re: [PATCH v3 04/11] iommu/mediatek: Get regionid from larb/port id
+Content-Language: en-US
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>
+Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Hans Verkuil <hverkuil@xs4all.nl>, nfraprado@collabora.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, iommu@lists.linux.dev,
+ mingyuan.ma@mediatek.com, yf.wang@mediatek.com, jianjiao.zeng@mediatek.com,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>,
+ chengci.xu@mediatek.com, youlin.pei@mediatek.com, anan.sun@mediatek.com
+References: <20230214031114.926-1-yong.wu@mediatek.com>
+ <20230214031114.926-5-yong.wu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230214031114.926-5-yong.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230213_221703_509973_95D3AD9A 
-X-CRM114-Status: GOOD (  10.50  )
+X-CRM114-CacheID: sfid-20230214_010726_461260_5CDD2EC7 
+X-CRM114-Status: GOOD (  21.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,57 +84,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Guillaume,
+Il 14/02/23 04:11, Yong Wu ha scritto:
+> After commit f1ad5338a4d5 ("of: Fix "dma-ranges" handling for bus
+> controllers"), the dma-ranges is not allowed for dts leaf node.
+> but we still would like to separate to different masters
+> into different iova regions.
+> 
+> Thus we have to separate it by the HW larbid and portid. For example,
+> larb1/2 are in region2 and larb3 is in region3. The problem is that
+> some ports inside a larb are in region4 while some ports inside this
+> larb are in region5. Therefore I define a "iova_region_larb_msk" to help
+> record the information for each a port. Take a example for a larb:
+>   [1] = ~0: means all ports in this larb are in region1;
+>   [2] = BIT(3) | BIT(4): means port3/4 in this larb are region2;
+>   [3] = ~(BIT(3) | BIT(4)): means all the other ports except port3/4
+>                             in this larb are region3.
+> 
+> This method also avoids the users forget/abuse the iova regions.
+> 
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>   drivers/iommu/mtk_iommu.c | 47 ++++++++++++++++++++++-----------------
+>   1 file changed, 27 insertions(+), 20 deletions(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index ab53edcb221f..7e2cb3b8cac8 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -8,7 +8,6 @@
+>   #include <linux/clk.h>
+>   #include <linux/component.h>
+>   #include <linux/device.h>
+> -#include <linux/dma-direct.h>
+>   #include <linux/err.h>
+>   #include <linux/interrupt.h>
+>   #include <linux/io.h>
+> @@ -212,6 +211,11 @@ struct mtk_iommu_plat_data {
+>   	struct {
+>   		unsigned int	iova_region_nr;
+>   		const struct mtk_iommu_iova_region	*iova_region;
+> +		/*
+> +		 * Indicate the correspondence between larbs/ports and regions.
+> +		 * The index is same with iova_region.
 
-Thank you for the patch! Yet something to improve:
+* The index is the same as iova_region and larb port numbers are
+* described as bit positions.
+* For example, storing BIT(0) at index 2 means "port 0 is in region 2".
 
-[auto build test ERROR on 09e41676e35ab06e4bce8870ea3bf1f191c3cb90]
+That's most probably the best short explanation that we can give, so that nobody
+goes crazy with understanding this one.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Guillaume-Ranquet/dt-bindings-phy-mediatek-hdmi-phy-Add-mt8195-compatible/20230213-193958
-base:   09e41676e35ab06e4bce8870ea3bf1f191c3cb90
-patch link:    https://lore.kernel.org/r/20220919-v7-3-b5b58c5ccc07%40baylibre.com
-patch subject: [PATCH v7 3/3] phy: mediatek: add support for phy-mtk-hdmi-mt8195
-config: mips-allyesconfig (https://download.01.org/0day-ci/archive/20230214/202302141356.VMQ4kOvN-lkp@intel.com/config)
-compiler: mips-linux-gcc (GCC) 12.1.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/94dbdd48a9476284394fe686b9d3f8d9277281db
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Guillaume-Ranquet/dt-bindings-phy-mediatek-hdmi-phy-Add-mt8195-compatible/20230213-193958
-        git checkout 94dbdd48a9476284394fe686b9d3f8d9277281db
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=mips olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=mips SHELL=/bin/bash
+After fixing that comment, you totally deserve my
 
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202302141356.VMQ4kOvN-lkp@intel.com/
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-All errors (new ones prefixed by >>):
+Cheers!
 
-   arch/mips/kernel/head.o: in function `kernel_entry':
-   (.ref.text+0xac): relocation truncated to fit: R_MIPS_26 against `start_kernel'
-   init/main.o: in function `set_reset_devices':
-   main.c:(.init.text+0x20): relocation truncated to fit: R_MIPS_26 against `_mcount'
-   main.c:(.init.text+0x30): relocation truncated to fit: R_MIPS_26 against `__sanitizer_cov_trace_pc'
-   init/main.o: in function `debug_kernel':
-   main.c:(.init.text+0xa4): relocation truncated to fit: R_MIPS_26 against `_mcount'
-   main.c:(.init.text+0xb4): relocation truncated to fit: R_MIPS_26 against `__sanitizer_cov_trace_pc'
-   init/main.o: in function `quiet_kernel':
-   main.c:(.init.text+0x128): relocation truncated to fit: R_MIPS_26 against `_mcount'
-   main.c:(.init.text+0x138): relocation truncated to fit: R_MIPS_26 against `__sanitizer_cov_trace_pc'
-   init/main.o: in function `warn_bootconfig':
-   main.c:(.init.text+0x1ac): relocation truncated to fit: R_MIPS_26 against `_mcount'
-   main.c:(.init.text+0x1bc): relocation truncated to fit: R_MIPS_26 against `__sanitizer_cov_trace_pc'
-   init/main.o: in function `init_setup':
-   main.c:(.init.text+0x234): relocation truncated to fit: R_MIPS_26 against `_mcount'
-   main.c:(.init.text+0x254): additional relocation overflows omitted from the output
-   mips-linux-ld: drivers/phy/mediatek/phy-mtk-hdmi-mt8195.o: in function `mtk_hdmi_pll_set_rate':
->> phy-mtk-hdmi-mt8195.c:(.text.mtk_hdmi_pll_set_rate+0x450): undefined reference to `__udivdi3'
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
 
