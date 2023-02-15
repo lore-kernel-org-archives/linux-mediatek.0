@@ -4,65 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1647BC636CC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Feb 2023 13:20:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EB36C636D4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Feb 2023 13:22:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CnoNN6tKAOoa2VHxAaD4jz93vnLmnMtUmJhjlhgp7G8=; b=sVZmyPkCTQvRRdQ33DhFyK39vo
-	Vmkp+YmpIXJ9Kq45PBgrxlLx31ga8V0Gs2ln73/SCZk4ebkezGnWEFYH2gbNAnI7z2L6Wt0uW+Va9
-	Q3CRRPYBqpzyf9zdXxYpKHwEb6TzEktoVEIoO0aN0D/XmQ0VuYkq4aGglXJDMmrkghphXvA0ragpZ
-	en61yt98fOLUCt/d/B7JDhhglFhWhgJ5zq2bomXbY9iYYaneIrB5hXKqyd0c6pdrqzKi8Q6DLtWww
-	/BGvj2yPzLRNWpn1MoGLeNLkikfmIZt0Vokh2wmjL4GXtevsPGshyRg/ykmkhJhogfUktMfgb9bNw
-	gJOAofoQ==;
+	bh=8H8mu9i21nD9T/tLzphFD5xIasNjV5ytwds1TrKkMF8=; b=S3rOViNz4uLToiiuTLiNbeX4sR
+	U2mgibBzHMy/oM7z+CDTnUM0zRjCgIMAEI14wBy5Y5hlgL3IKcZI7l2um4GbxGQRfJeWzxHka2UFh
+	OM+Egfgdb1EcK/A1xlVlT51wbgUIpB/l5rDdKffJgMekHl/2hKzjJQCrEkKZPpjUlstzxVJd17066
+	Vlm7/yQ1RDH+QAEE2M5LU8r46KInpZTvMhbd+Jz4Dm0HlVl/3Bio3eHb5oRyxIjbxvWTVvkBJiqS0
+	3jUGOBI8KUhBRPqKyPFgCuKNg4SZy316y+6Q3zHJMtUvZBWiylYxFTuypqOWMjsotsOwiNTnTVxbv
+	qp93Gg2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSHiG-005xnh-EY; Wed, 15 Feb 2023 13:20:44 +0000
+	id 1pSHk5-005yFW-IQ; Wed, 15 Feb 2023 13:22:37 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSHi2-005xkU-6E; Wed, 15 Feb 2023 13:20:33 +0000
+	id 1pSHju-005yCT-O6; Wed, 15 Feb 2023 13:22:28 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A33E16602181;
-	Wed, 15 Feb 2023 13:20:27 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E47DE660218A;
+	Wed, 15 Feb 2023 13:22:24 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676467228;
-	bh=TYzhCq0RKGP5tpidHzO4VKVYdmJ57P4wYdGQAji5b0o=;
+	s=mail; t=1676467345;
+	bh=8H8mu9i21nD9T/tLzphFD5xIasNjV5ytwds1TrKkMF8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Bu+48H/hM7AnP9NpE/sqVa6pKdlign6Ms3WEA4LvK7cSBn+NTpLnxRXaSbtKrLfV5
-	 ZSgbV+MJKryaWFxrTMlex8xOLMpfcgvSum9n/ZPxwW5cEKlosnu+UcRfG/SPP0Yx6z
-	 00aiMh0FoZBaMrdy6hHnojBWBNN2p0bJgiB2oxDvARo8iF7Yrvg+damxYA+RZvIINw
-	 gkgUJJahKoxfkkMwhHh7fnNkv9BK7+W5NzeoJLfedpyJTparfSWBaXaOYhAZk+81sk
-	 0BEvtZuRlPBZTwocn0h4Q8YFXX+qCwFV6KFlqdUGaOrDnfe+5VtdnfGZA26jqGksA1
-	 e2K2VEBuv89zQ==
-Message-ID: <c6b23a24-4799-2b71-0bf3-f2545980ae3d@collabora.com>
-Date: Wed, 15 Feb 2023 14:20:24 +0100
+	b=AbxZjP977pQ/LXxUFxyMTCiOvBm/px39yNUb1Y3KW3ZAVWR6J68paW4DXlhBbKMWY
+	 J6vKmbagRTSzfYpSaBbPru77XJBbDx0AGbnMRH28c0C9GRGXts9kV9U9uYl+L4ap6L
+	 52DhYbhF4TlJ4ZcM5kGSL47eM++uQsoZ0xuJRCF90DzfA2NFQ/twU0Y1sYx4HJWRdb
+	 p/7QX1TPo9mNq58MfAuBeSu4SKnRxHwm5qb+yt5q3FSronItrUGvk17nst7lTtHyIk
+	 VaOUFyIG+5FstrwqYY/qO1AE/yJts4kMAD8VU918pE23VTcFkl7yKoHm72uTShhEpa
+	 5MnYDKNXfIYug==
+Message-ID: <6ebab3c9-915d-0655-6ef9-6bf0ed2eeccd@collabora.com>
+Date: Wed, 15 Feb 2023 14:22:22 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.7.2
-Subject: Re: [PATCH -next v2] wifi: mt76: mt7996: Remove unneeded semicolon
+Subject: Re: [PATCH -next] thermal/drivers/mediatek: Remove unneeded semicolon
 Content-Language: en-US
-To: Yang Li <yang.lee@linux.alibaba.com>, kuba@kernel.org
-Cc: pabeni@redhat.com, matthias.bgg@gmail.com, ryder.lee@mediatek.com,
- lorenzo@kernel.org, nbd@nbd.name, shayne.chen@mediatek.com,
- sean.wang@mediatek.com, kvalo@kernel.org, davem@davemloft.net,
- edumazet@google.com, linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Abaci Robot <abaci@linux.alibaba.com>
-References: <20230215055650.88538-1-yang.lee@linux.alibaba.com>
+To: Yang Li <yang.lee@linux.alibaba.com>, matthias.bgg@gmail.com
+Cc: rafael@kernel.org, daniel.lezcano@linaro.org, amitk@kernel.org,
+ rui.zhang@intel.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Abaci Robot <abaci@linux.alibaba.com>
+References: <20230215005457.21242-1-yang.lee@linux.alibaba.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230215055650.88538-1-yang.lee@linux.alibaba.com>
+In-Reply-To: <20230215005457.21242-1-yang.lee@linux.alibaba.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230215_052030_386249_E4381389 
-X-CRM114-Status: UNSURE (   5.70  )
+X-CRM114-CacheID: sfid-20230215_052226_940656_E1BA210B 
+X-CRM114-Status: UNSURE (   6.13  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,13 +76,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/02/23 06:56, Yang Li ha scritto:
-> ./drivers/net/wireless/mediatek/mt76/mt7996/mcu.c:3136:3-4: Unneeded semicolon
-> 
-> Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-> Link: https://bugzilla.openanolis.cn/show_bug.cgi?id=4059
-> Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
+Il 15/02/23 01:54, Yang Li ha scritto:
+
+Please fix the commit description:
+
+Remove an unneeded semicolon to solve the following warning:
+drivers/thermal/mediatek/lvts_thermal.c:520:2-3: Unneeded semicolon
+
+After which,
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
