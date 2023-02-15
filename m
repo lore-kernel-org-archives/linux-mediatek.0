@@ -4,55 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2067CC6379F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Feb 2023 13:29:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B5DEC636CC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Feb 2023 13:31:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MSMPkWyjIoGOy2ttBCZV00bjpKccjsu3EX/wfKuDA/g=; b=cPNeAQA5V4NwfxEEEVHziQB4VT
-	RWF1caz7WaK5uAc027wSMy06ME45pWKoRSWSAGT5BUTeW7i+vHhPpCjpSfdVF9/wxoNMqvWfAgSMN
-	monUkdcpwn6a6tTCm/9u0tnCiXScnW3eECr4NCXmoBxJZhFt5fKv1XwMtFRcsBgkgPwgpxhDV6CR7
-	XRIDObeDLMh24+Wyr4VMlHMFoVkzhjtez0H1fn79iLNctHpn4mv/ZvlLhR+6oeJroiTpoI7J4DDmt
-	RhbdFxtVVJlLyMpP69nEMVPbcqE+bStEpIMS/nHqUe5eT+ahN/2h3Fkh+dHIlvq3ygroKu8llAiLp
-	mKg9GmTg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZUY33vwnY9EV0PLO8Yr4MUMAcSnT2a6HKvPmDD16AGA=; b=UFRnvxCcLr9z9Smaa47NcuMOrr
+	PEa9JCtvmucBSl6hZodrSsyPUAHYHorm0KqUUS/VOZ2Wp0ZkowcJykQyGImDXI7Tsdpeaj9nsckm7
+	GKWQK7t3em+ZHeNpDEV8PfryMd+ffHwcdsnjqmPMjo79t6VN31zWHYM6A6j2uetH6vpuDB0963Wqj
+	+BWhijnpjdJNNIZlndPpg62A6+o1KVFWKGYSMHd5KVLNiHbwF+KsWWwskdzkszlxXzwP7n0fkCpbj
+	K+XzZtuK1t0dld+Ngtct4spg5mGpY4BT40B4CkaUZhJGhee1pMzE3AkYnG32y4JsWu+1/dGZYj7Z6
+	DIDwN0UQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSHqr-005zz4-FI; Wed, 15 Feb 2023 13:29:37 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pSHsK-0060XF-82; Wed, 15 Feb 2023 13:31:08 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSHqi-005zv6-Gu; Wed, 15 Feb 2023 13:29:29 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pSHqN-0005qp-0A;
-	Wed, 15 Feb 2023 14:29:07 +0100
-Date: Wed, 15 Feb 2023 13:27:30 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
-	Olivia Mackall <olivia@selenic.com>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Mingming Su <Mingming.Su@mediatek.com>,
-	linux-crypto@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 2/2] dt-bindings: rng: Add MediaTek MT7981 TRNG
-Message-ID: <c750e786ad0f529d2ae63c8f766d3c294808ff53.1676467500.git.daniel@makrotopia.org>
-References: <89865515728cb937b6591160ad9c30b4bcc8dd41.1676467500.git.daniel@makrotopia.org>
+	id 1pSHs7-0060SH-UM; Wed, 15 Feb 2023 13:30:57 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A680F6602181;
+	Wed, 15 Feb 2023 13:30:53 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1676467854;
+	bh=4S1WQba0JD7XAPBod8AxUdkmD30ZD+yesX7r+1i66B8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ne9ApZnuW3dpqROHsWnugIDFNxkOLSyTMd4GB4w6pGQ2stCfVR7w3JxmTVBwLLBtL
+	 7QZCpKNbzGiPP0TIN+NOt8F3TzCwKycax+TCIK6onbOUHYx3bSP/y9i/XHWW2bjgIb
+	 rGBn6V207Ui00X8ArYcso4bnWIbOSvql2bbtIj63DKpwQSu9aUJisFDRPJq6jVCsf/
+	 iyr+wQQ7f9dr4r8OD2XXRnUJG3h834XomhJLmM9zpTStwSrGMnxzhXePWLRG4SNmvr
+	 7d1a1JGw4Y1hQapt3QCeVZ37qjLgtjXXPAo5o6/YYOOuWlqVklNhDrTuLeX4eU5hjB
+	 btAJL3tPl/XHw==
+Message-ID: <53f0e612-b5cc-262e-df98-add1e8a06573@collabora.com>
+Date: Wed, 15 Feb 2023 14:30:51 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <89865515728cb937b6591160ad9c30b4bcc8dd41.1676467500.git.daniel@makrotopia.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.2
+Subject: Re: [PATCH v2 4/4] clocksource/drivers/timer-mediatek: Make
+ timer-mediatek become loadable module
+Content-Language: en-US
+To: Sudeep Holla <sudeep.holla@arm.com>
+Cc: walter.chang@mediatek.com, Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "Maciej W . Rozycki" <macro@orcam.me.uk>, John Stultz <jstultz@google.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ wsd_upstream@mediatek.com, stanley.chu@mediatek.com,
+ Chun-hung.Wu@mediatek.com, Freddy.Hsin@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230214105412.5856-1-walter.chang@mediatek.com>
+ <20230214105412.5856-5-walter.chang@mediatek.com>
+ <20230214222021.k3tsfwezhnh7tdlx@bogus>
+ <996b4e61-8486-d939-7367-1240b3c5c5fa@collabora.com>
+ <20230215131849.mcgz53jf24atialp@bogus>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230215131849.mcgz53jf24atialp@bogus>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230215_052928_575727_CAF32B07 
-X-CRM114-Status: GOOD (  15.12  )
+X-CRM114-CacheID: sfid-20230215_053056_263191_E6DA98B1 
+X-CRM114-Status: GOOD (  28.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,74 +85,124 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add documentation to describe the MediaTek true random number generator
-which is provided by ARM TrustedFirmware-A of the MT7981.
+Il 15/02/23 14:18, Sudeep Holla ha scritto:
+> On Wed, Feb 15, 2023 at 01:43:19PM +0100, AngeloGioacchino Del Regno wrote:
+>> Il 14/02/23 23:20, Sudeep Holla ha scritto:
+>>> On Tue, Feb 14, 2023 at 06:53:14PM +0800, walter.chang@mediatek.com wrote:
+>>>> From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+>>>>
+>>>> Make the timer-mediatek driver which can register
+>>>> an always-on timer as tick_broadcast_device on
+>>>> MediaTek SoCs become loadable module in GKI.
+>>>>
+>>>> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+>>>> ---
+>>>>    drivers/clocksource/Kconfig          |  2 +-
+>>>>    drivers/clocksource/timer-mediatek.c | 43 ++++++++++++++++++++++++++++
+>>>>    2 files changed, 44 insertions(+), 1 deletion(-)
+>>>
+>>> [...]
+>>>
+>>>> diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
+>>>> index d5b29fd03ca2..3358758ea694 100644
+>>>> --- a/drivers/clocksource/timer-mediatek.c
+>>>> +++ b/drivers/clocksource/timer-mediatek.c
+>>>
+>>> [...]
+>>>
+>>>> +static const struct of_device_id mtk_timer_match_table[] = {
+>>>> +	{
+>>>> +		.compatible = "mediatek,mt6577-timer",
+>>>> +		.data = mtk_gpt_init,
+>>>> +	},
+>>>> +	{
+>>>> +		.compatible = "mediatek,mt6765-timer",
+>>>> +		.data = mtk_syst_init,
+>>>> +	},
+>>>> +	{
+>>>> +		.compatible = "mediatek,mt6795-systimer",
+>>>> +		.data = mtk_cpux_init,
+>>>> +	},
+>>>> +	{}
+>>>> +};
+>>>> +
+>>>> +static struct platform_driver mtk_timer_driver = {
+>>>> +	.probe = mtk_timer_probe,
+>>>> +	.driver = {
+>>>> +		.name = "mtk-timer",
+>>>> +		.of_match_table = mtk_timer_match_table,
+>>>> +	},
+>>>> +};
+>>>> +module_platform_driver(mtk_timer_driver);
+>>>> +
+>>>> +MODULE_DESCRIPTION("MediaTek Module Timer driver");
+>>>> +MODULE_LICENSE("GPL v2");
+>>>> +#else
+>>>>    TIMER_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_gpt_init);
+>>>>    TIMER_OF_DECLARE(mtk_mt6765, "mediatek,mt6765-timer", mtk_syst_init);
+>>>>    TIMER_OF_DECLARE(mtk_mt6795, "mediatek,mt6795-systimer", mtk_cpux_init);
+>>>
+>>> Why do you need these ? If this driver can work as a module, it can be
+>>> built-in module and doesn't need to be initialised early using of_timer_init
+>>> (can't recall the exact name)
+>>>
+>>
+>> Some platforms need early initialization; this is seen on ones for which the
+>> bootloader does not initialize the "CPUXGPT" timer, which is used as the ARM
+>> arch timer. (No, on those platforms you can't upgrade the bootloader, as it's
+>> signed with a OEM key which is not obtainable, and signature verified earlier
+>> in the bootchain).
+>>
+> 
+> Is this arm32 or arm64 platform? Do you mean that these platforms don't have
+> working architected timers ?
+> 
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- .../bindings/rng/mediatek,mt7981-rng.yaml     | 39 +++++++++++++++++++
- MAINTAINERS                                   |  1 +
- 2 files changed, 40 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/rng/mediatek,mt7981-rng.yaml
+Both. I mean that these platforms do have architected timers, but they are stopped
+before the bootloader jumps to the kernel, or they are never started at all.
 
-diff --git a/Documentation/devicetree/bindings/rng/mediatek,mt7981-rng.yaml b/Documentation/devicetree/bindings/rng/mediatek,mt7981-rng.yaml
-new file mode 100644
-index 000000000000..d577d60538d8
---- /dev/null
-+++ b/Documentation/devicetree/bindings/rng/mediatek,mt7981-rng.yaml
-@@ -0,0 +1,39 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/rng/mediatek,mt7981-rng.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek Random number generator (v2/SMC)
-+
-+maintainers:
-+  - Daniel Golle <daniel@makrotopia.org>
-+
-+properties:
-+  $nodename:
-+    pattern: "^rng$"
-+
-+  compatible:
-+    enum:
-+      - mediatek,mt7981-rng
-+
-+  reg:
-+    maxItems: 1
-+
-+  clocks:
-+    maxItems: 1
-+
-+  clock-names:
-+    items:
-+      - const: rng
-+
-+required:
-+  - compatible
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    rng {
-+      compatible = "mediatek,mt7981-rng";
-+    };
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 90d82aba6d73..523f1abf00d5 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -13148,6 +13148,7 @@ F:	drivers/leds/leds-mt6323.c
- MEDIATEK RANDOM NUMBER GENERATOR SUPPORT
- M:	Sean Wang <sean.wang@mediatek.com>
- S:	Maintained
-+F:	Documentation/devicetree/bindings/rng/mediatek,*
- F:	drivers/char/hw_random/mtk-rng-v2.c
- F:	drivers/char/hw_random/mtk-rng.c
- 
--- 
-2.39.1
+Please refer to:
+
+https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/drivers/clocksource/timer-mediatek.c?h=next-20230215&id=327e93cf9a59b0d04eb3a31a7fdbf0f11cf13ecb
+
+For a nice explanation.
+
+> Quick grep suggests the below list of platforms/SoC:
+> 
+>   | arch/arm64/boot/dts/mediatek/mt6795.dtsi
+>   | arch/arm64/boot/dts/mediatek/mt8173.dtsi
+>   | arch/arm64/boot/dts/mediatek/mt8183.dtsi
+>   | arch/arm64/boot/dts/mediatek/mt8186.dtsi
+>   | arch/arm64/boot/dts/mediatek/mt8192.dtsi
+>   | arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>   | arch/arm64/boot/dts/mediatek/mt8516.dtsi
+>   | arch/arm/boot/dts/mt7623.dtsi
+>   | arch/arm/boot/dts/mt7629.dtsi
+>   | arch/arm/boot/dts/mt8127.dtsi
+>   | arch/arm/boot/dts/mt8135.dtsi
+> 
+> All the above has architected timers and can have the other timer initialised
+> at module_initcall level.
+> 
+>   | arch/arm/boot/dts/mt2701.dtsi
+>   | arch/arm/boot/dts/mt6580.dtsi
+>   | arch/arm/boot/dts/mt6582.dtsi
+>   | arch/arm/boot/dts/mt6589.dtsi
+>   | arch/arm/boot/dts/mt6592.dtsi
+> 
+> The above ones have cortex-a7 but still don't have architected timers listed
+> in the DT. Anyways all use "mediatek,mt6577-timer", so except that other
+> 2 can be dropped from the else and force them to be initialised later.
+> 
+>> As a matter of fact (and somehow obvious), on those platforms (for example,
+>> MT6795.. but many other as well, really), you *need* this driver to be
+>> built-in and, well, initialize the CPUX timer as early as possible :-)
+>>
+> 
+> Built-in is not a problem, you can still remove TIMER_OF_DECLARE as
+> the initialisation happens later at module_initcall level.
+> 
+
+
 
 
