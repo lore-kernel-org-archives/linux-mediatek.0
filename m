@@ -4,67 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACB68C636CC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Feb 2023 20:43:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3E8EC636D4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Feb 2023 20:45:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bt0frRzR+llEQZaK/DO0XkpInRvQORs9L/8JhGVHFqc=; b=z0pJo+TvfWYTQT81Ag0rvCyDXL
-	JENIaMBpKQ3AKY/ndPxilwfyjghRA50oX6aD8wSFX0kGKSuiVLB7FUpbY6TcXaIdmxFUpvCPbBevc
-	+BQxUzpt9yKXN53zGA1qsu/aIYRJqhUAQhUv4Gxva79buvLWW6bWkW7nEUw/vD8Zw4WiWy2wYcEi5
-	knzPmlgq0oIRFA1KkJRExrFZyC8MZJMld/bn87MgMCOFAnV65Ld+PyykKhY3TA5/GmlhM5kMAiz7F
-	HkRXOxrVrQ+gW9H9kOtPfOCUKLy7EwlQGBDafO+0BZlZ3T7vQrIlB7whv8u9hS2YZ9OvQPwN1RHJE
-	yljJQ9TQ==;
+	bh=CjYSoaJSwu59aHW+FhFNZJJcMSOvVpdvL5abf/3v/FA=; b=W2lQocm/isBjSs+C4bEGp/gD7B
+	NDjAVW5N7gLMpxwD1BHKvM07oesitOwswi/3Sq8IdlPBdwPvvaV8XTFTO8U1FbZoBR5eY5F/sZXIh
+	n3MEOGiUI4Zl7SMBxgUDn6G5GKemKJf5XYnuU0VvlLdVFSIJle/+0wKixIM2MPjVy/wBFwuHK7eF/
+	pxG8gkSKFTH5bxdN1/jEBmWpUcVxD7ONQwQuKmEBHVrClxnssukMy+V15I7r97ArGG22nyPgRDYSI
+	qAbDfqDUHxBCwuPlzC6NYeLJpQY5emGcE+2Py/+osoc/1OOSZz6Q/VRDiLQPSuP5Xs5/qoTCLqtpC
+	S3i98uLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSOcg-007BZR-Qt; Wed, 15 Feb 2023 20:43:26 +0000
-Received: from mail-oa1-f52.google.com ([209.85.160.52])
+	id 1pSOe6-007CGH-Ju; Wed, 15 Feb 2023 20:44:54 +0000
+Received: from mail-ot1-f51.google.com ([209.85.210.51])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSOcc-007BWv-J7; Wed, 15 Feb 2023 20:43:23 +0000
-Received: by mail-oa1-f52.google.com with SMTP id 586e51a60fabf-16346330067so231435fac.3;
-        Wed, 15 Feb 2023 12:43:21 -0800 (PST)
+	id 1pSOe3-007CDw-Tp; Wed, 15 Feb 2023 20:44:53 +0000
+Received: by mail-ot1-f51.google.com with SMTP id x26-20020a056830115a00b0068bbc0ee3eeso46193otq.0;
+        Wed, 15 Feb 2023 12:44:50 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=bt0frRzR+llEQZaK/DO0XkpInRvQORs9L/8JhGVHFqc=;
-        b=mwtT4dSl4sgJ5JrglQ5ySJW7hHHLiOK7CJD+SpavOPPV3ddd/PCmnPdLG3KTVZe2SP
-         iOiy6pTsokvfmnKOl4T4duQuTRH8mpKF+/IW7jyKPkYTeAKDQHA1F5LtUVRqow2ldQnH
-         Nm1hDseMA2gktj4F3HY6CmmznSw9JiZfPpcGS1mwnLbrsJkyOy+yiwn73olbM9CDgmLY
-         FRlKhKBktnzfCALajhAXOdd/bWFaL3ujBT1c10ZfwhyXCftCHxrleJAx47ZGJrxeTabr
-         nfnTt21NwuVkfjeAMf2yqtebVQyrSiw8qXuN+Dii+4pthRZ3p3NYYX7tzDEkmdi0baSt
-         zlWg==
-X-Gm-Message-State: AO0yUKX3KTjZBkKCgYxmBBvOyjQJ1N1oziHupwVWRWcTj782RZ4j6ezj
-	d3d6TSTYtTd22InX37M2GQ==
-X-Google-Smtp-Source: AK7set/50GBdop8VIc7s3EAxwGBGWbyNcA539gq34/FMTl1ZDlaTwOVNjvWSnEXsfwQb/NQwOO/gYw==
-X-Received: by 2002:a05:6870:c0c6:b0:16d:f177:1a1a with SMTP id e6-20020a056870c0c600b0016df1771a1amr1659946oad.46.1676493800394;
-        Wed, 15 Feb 2023 12:43:20 -0800 (PST)
+        bh=CjYSoaJSwu59aHW+FhFNZJJcMSOvVpdvL5abf/3v/FA=;
+        b=BS733VSGL/oAprPWUOPC3Pzq4iNzNdOnQUzePg6ebDfM0nPlEp1WFjApz1M9SrV7Zz
+         DAebCwkAOplHGntosCgu/mQjt7i2uept4NieYZWhZqT8VtSpqKPhyWDWynNhp8hH26Mc
+         ZwHdrzsGJhitLi6mdOjkFs1qJFEdJYheoL6dWE0TtwwqWA9HpJG/L1dYS6lhg8o2LRKl
+         GtOv74KPWbdeWdX1+ib45Zy5wOvqwjcjNd/mEbcRAh22MA8/m4qtkrFcinebTnJUnkPy
+         /DGQf2okAnPbEhSej26n6kQ0oLxmhSIc7iBML0jo6lmhlimkwrrHHctLSqPwU06ddMoU
+         tNsw==
+X-Gm-Message-State: AO0yUKWobhvb96rCeaP/sHVx8dmXlH6iUvd3rxVxVw8K05AcEsbbmGmh
+	iiveYtNPpHsjqGH7IPTrAg==
+X-Google-Smtp-Source: AK7set8sEc2kDElwfrMygyUx7E7ji1I2dSyRJfp/5XbG5mUpm8RGvjm1PzPmau0b1qFq288NTP8ddw==
+X-Received: by 2002:a05:6830:22d9:b0:68b:cb3c:c924 with SMTP id q25-20020a05683022d900b0068bcb3cc924mr1787699otc.10.1676493889974;
+        Wed, 15 Feb 2023 12:44:49 -0800 (PST)
 Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id p1-20020a056870a54100b0015f83e16a10sm7374482oal.44.2023.02.15.12.43.19
+        by smtp.gmail.com with ESMTPSA id j16-20020a9d7690000000b0068663820588sm8099720otl.44.2023.02.15.12.44.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Feb 2023 12:43:20 -0800 (PST)
-Received: (nullmailer pid 521661 invoked by uid 1000);
-	Wed, 15 Feb 2023 20:43:18 -0000
-Date: Wed, 15 Feb 2023 14:43:18 -0600
+        Wed, 15 Feb 2023 12:44:49 -0800 (PST)
+Received: (nullmailer pid 523312 invoked by uid 1000);
+	Wed, 15 Feb 2023 20:44:48 -0000
+Date: Wed, 15 Feb 2023 14:44:48 -0600
 From: Rob Herring <robh@kernel.org>
 To: Daniel Golle <daniel@makrotopia.org>
-Cc: devicetree@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Russell King <linux@armlinux.org.uk>, Heiner Kallweit <hkallweit1@gmail.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Matthias Brugger <matthias.bgg@gmail.com>, DENG Qingfang <dqfext@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>, "David S. Miller" <davem@davemloft.net>, Vladimir Oltean <olteanv@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>, =?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
-Subject: Re: [PATCH v6 03/12] dt-bindings: arm: mediatek: sgmiisys: Convert
- to DT schema
-Message-ID: <20230215204318.GA517744-robh@kernel.org>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Heiner Kallweit <hkallweit1@gmail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, =?UTF-8?Q?Bj=C3=B8rn_Mork?= <bjorn@mork.no>, 
+	Vladimir Oltean <olteanv@gmail.com>, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, Mark Lee <Mark-MC.Lee@mediatek.com>, 
+	Jianhui Zhao <zhaojh329@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
+	"David S. Miller" <davem@davemloft.net>, John Crispin <john@phrozen.org>, 
+	Florian Fainelli <f.fainelli@gmail.com>, Eric Dumazet <edumazet@google.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	DENG Qingfang <dqfext@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Rob Herring <robh+dt@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
+	Landen Chao <Landen.Chao@mediatek.com>, netdev@vger.kernel.org, 
+	Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>, 
+	Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>
+Subject: Re: [PATCH v6 04/12] dt-bindings: arm: mediatek: sgmiisys: add
+ MT7981 SoC
+Message-ID: <167649388793.523273.6752500904610456591.robh@kernel.org>
 References: <cover.1676323692.git.daniel@makrotopia.org>
- <f4b378f4b19064df85d529973ed6c73ae7aa9f2d.1676323692.git.daniel@makrotopia.org>
+ <0c80e1dafc55a75f3a13327005ce23efb60451eb.1676323692.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <f4b378f4b19064df85d529973ed6c73ae7aa9f2d.1676323692.git.daniel@makrotopia.org>
+In-Reply-To: <0c80e1dafc55a75f3a13327005ce23efb60451eb.1676323692.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230215_124322_696649_2FE760CD 
-X-CRM114-Status: GOOD (  15.03  )
+X-CRM114-CacheID: sfid-20230215_124452_026468_1C007696 
+X-CRM114-Status: GOOD (  11.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,22 +92,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 13, 2023 at 09:34:43PM +0000, Daniel Golle wrote:
-> Convert mediatek,sgmiiisys bindings to DT schema format.
-> Add maintainer Matthias Brugger, no maintainers were listed in the
-> original documentation.
-> As this node is also referenced by the Ethernet controller and used
-> as SGMII PCS add this fact to the description.
+
+On Mon, 13 Feb 2023 21:34:58 +0000, Daniel Golle wrote:
+> Add mediatek,pnswap boolean property as well as an example for the
+> MediaTek MT7981 SoC making use of that new property.
 > 
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 > ---
->  .../arm/mediatek/mediatek,sgmiisys.txt        | 27 ----------
->  .../arm/mediatek/mediatek,sgmiisys.yaml       | 49 +++++++++++++++++++
->  2 files changed, 49 insertions(+), 27 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.yaml
-
-If you respin or as a follow-up, can you move this to bindings/clock/?
+>  .../devicetree/bindings/arm/mediatek/mediatek,sgmiisys.yaml | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
 
 Reviewed-by: Rob Herring <robh@kernel.org>
+
 
