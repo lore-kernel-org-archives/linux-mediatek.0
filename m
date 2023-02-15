@@ -4,76 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D80FC6379F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Feb 2023 12:38:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECD4FC636CC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Feb 2023 12:43:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f9EBWwssS/YFeyn8xKypBqeYW3Z1Yj/I0JqpK089PLs=; b=Xx7ZehaWVD9+wZe4H042HPNt07
-	Oasr2RDycJrEakf3rBmzgNmIOQiss21MgjjitceagE/zn9QXRGLmKXd3IZZdSCy3WOeZ51jE4/1XY
-	gzmswFxGApibxGjKBh5lcvQnCpOnJz7YpcNWYPD/iQ6tBvcNqZlkZYIi8wxMGWGGMUrb10u68nrWP
-	SG1Af2jNXhu27vYmApmS6TX4VYNABYuOvQu6YJUKNo4FLMU8NsLX0kqO2Xq6HJVS22b7/FzaweA5X
-	HioVAswUxmg8Dnr+Ce4+ySfcsV+foJScOSORksuMpKx/Oub7E8ikQNkrVy1+1BJgEC0W7atNdSfUA
-	2dI7oxlg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yusYi2FAiD6ZBqVjV9Pi4vjAzKiGTHpBtiT6/ae6X38=; b=RJna9Vz6M68cGPS/Rm4eQnqLlQ
+	wbqellhnCLOdZvzpOdzQMhhDlB2Hv0wR4tb6pwHoxIvP8hf1/1rXBDoSEhvLBncPUoL0l+n8j+EST
+	UgXoOXxiib925c2mNi53h6GjI6eRscJK1iAad53KzXJakeLNAA4EjFg6+ykmTg4JndByBlvSzIuhz
+	YRDnevGRaoYOoiqAGLkM39pFN6BjmImvZ1+H21sRsh/2H+mn+PZNIWH9y2o8r0DBnU9eu/z6Yy+/J
+	otgTQixLHBOOMlMSPwgWxj+gC+YdrYyUP99h34k6eTi1XLEPvR+dohIv17KSSTv6und+6QaClCgBW
+	kSPB/BvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSH3O-005nn8-8n; Wed, 15 Feb 2023 12:38:30 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pSH8J-005pEb-5O; Wed, 15 Feb 2023 12:43:35 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSH3B-005ne8-3E; Wed, 15 Feb 2023 12:38:18 +0000
-X-UUID: 9b1fb84aad2d11eda08d4d6090ec5a5c-20230215
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=f9EBWwssS/YFeyn8xKypBqeYW3Z1Yj/I0JqpK089PLs=;
-	b=aMFe+e6jgv0jFr3pUAgzxN6I9U0SCTrcvPzyHILbn9Rx8IsQNDb9RHiisTW/XmcgSBNTBZYqnxyzFKNEfBJrH7EQuHy15dxb4lTUnQvzyiEJSGwdQn7zijunfQuAxsRsViFSu5keGW7c47YDHz0ScZ58Ku4wdTpu48nTi9MBYZo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.19,REQID:7a8e7441-3ce8-4fd6-8245-843d47c96a45,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:885ddb2,CLOUDID:1b4da925-564d-42d9-9875-7c868ee415ec,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-UUID: 9b1fb84aad2d11eda08d4d6090ec5a5c-20230215
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <powen.kao@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1188390933; Wed, 15 Feb 2023 05:38:10 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 15 Feb 2023 20:38:07 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 15 Feb 2023 20:38:07 +0800
-From: Po-Wen Kao <powen.kao@mediatek.com>
-To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>, "James E.J. Bottomley"
-	<jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
-	<stanley.chu@mediatek.com>, <powen.kao@mediatek.com>,
-	<alice.chao@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<cc.chou@mediatek.com>, <chaotian.jing@mediatek.com>,
-	<jiajie.hao@mediatek.com>, <mason.zhang@mediatek.com>,
-	<quic_asutoshd@quicinc.com>, <linux-scsi@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH 2/2] scsi: ufs: core: Export symbol ufshcd_mcq_read_cqis()
-Date: Wed, 15 Feb 2023 20:37:46 +0800
-Message-ID: <20230215123750.15785-2-powen.kao@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230215123750.15785-1-powen.kao@mediatek.com>
-References: <20230215123750.15785-1-powen.kao@mediatek.com>
+	id 1pSH89-005pBd-1g; Wed, 15 Feb 2023 12:43:26 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D40236602181;
+	Wed, 15 Feb 2023 12:43:22 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1676465003;
+	bh=S7nLX3IZonOhS+d8LFEoYzIH1ZLb+irQXxGjTuxZ/Qc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=hJ0fsacMsLzm6uMaaC3kOr4xo3yAPNVADj80sx9LHvDtST9SFgCXijXdd2hSEIIyF
+	 dylSHaNgnB+r/Dxe4N2HBSJjJHRI0PsD8uulRDE4db4Mj7YCWA3z/aPRCjtTDSiB6d
+	 utj5G/y1Cyr/+8P09Yfo+BWu3yWxLIXXt01PgQDcC+QHoO58T/WGC/xzklAVXzw5Jn
+	 ZmDg/92w8S+5kBANeZX58kPNshwkMmu5CK2xjuTsFlM9FGUgO1eCLhT77AZtVEA4Jn
+	 XjZpfvZqTazeYXby39ASm+Zd7z3D6mlvu2nzjUbSwYUDP80gfFiHD8Vw/Dd3O4z/H2
+	 ggdYken7G3JtQ==
+Message-ID: <996b4e61-8486-d939-7367-1240b3c5c5fa@collabora.com>
+Date: Wed, 15 Feb 2023 13:43:19 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.2
+Subject: Re: [PATCH v2 4/4] clocksource/drivers/timer-mediatek: Make
+ timer-mediatek become loadable module
+Content-Language: en-US
+To: Sudeep Holla <sudeep.holla@arm.com>, walter.chang@mediatek.com
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "Maciej W . Rozycki" <macro@orcam.me.uk>, John Stultz <jstultz@google.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ wsd_upstream@mediatek.com, stanley.chu@mediatek.com,
+ Chun-hung.Wu@mediatek.com, Freddy.Hsin@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230214105412.5856-1-walter.chang@mediatek.com>
+ <20230214105412.5856-5-walter.chang@mediatek.com>
+ <20230214222021.k3tsfwezhnh7tdlx@bogus>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230214222021.k3tsfwezhnh7tdlx@bogus>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230215_043817_157829_255600EC 
-X-CRM114-Status: UNSURE (   9.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230215_044325_248087_5019238B 
+X-CRM114-Status: GOOD (  22.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,40 +83,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Export symbol for driver module
+Il 14/02/23 23:20, Sudeep Holla ha scritto:
+> On Tue, Feb 14, 2023 at 06:53:14PM +0800, walter.chang@mediatek.com wrote:
+>> From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+>>
+>> Make the timer-mediatek driver which can register
+>> an always-on timer as tick_broadcast_device on
+>> MediaTek SoCs become loadable module in GKI.
+>>
+>> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+>> ---
+>>   drivers/clocksource/Kconfig          |  2 +-
+>>   drivers/clocksource/timer-mediatek.c | 43 ++++++++++++++++++++++++++++
+>>   2 files changed, 44 insertions(+), 1 deletion(-)
+> 
+> [...]
+> 
+>> diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
+>> index d5b29fd03ca2..3358758ea694 100644
+>> --- a/drivers/clocksource/timer-mediatek.c
+>> +++ b/drivers/clocksource/timer-mediatek.c
+> 
+> [...]
+> 
+>> +static const struct of_device_id mtk_timer_match_table[] = {
+>> +	{
+>> +		.compatible = "mediatek,mt6577-timer",
+>> +		.data = mtk_gpt_init,
+>> +	},
+>> +	{
+>> +		.compatible = "mediatek,mt6765-timer",
+>> +		.data = mtk_syst_init,
+>> +	},
+>> +	{
+>> +		.compatible = "mediatek,mt6795-systimer",
+>> +		.data = mtk_cpux_init,
+>> +	},
+>> +	{}
+>> +};
+>> +
+>> +static struct platform_driver mtk_timer_driver = {
+>> +	.probe = mtk_timer_probe,
+>> +	.driver = {
+>> +		.name = "mtk-timer",
+>> +		.of_match_table = mtk_timer_match_table,
+>> +	},
+>> +};
+>> +module_platform_driver(mtk_timer_driver);
+>> +
+>> +MODULE_DESCRIPTION("MediaTek Module Timer driver");
+>> +MODULE_LICENSE("GPL v2");
+>> +#else
+>>   TIMER_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_gpt_init);
+>>   TIMER_OF_DECLARE(mtk_mt6765, "mediatek,mt6765-timer", mtk_syst_init);
+>>   TIMER_OF_DECLARE(mtk_mt6795, "mediatek,mt6795-systimer", mtk_cpux_init);
+> 
+> Why do you need these ? If this driver can work as a module, it can be
+> built-in module and doesn't need to be initialised early using of_timer_init
+> (can't recall the exact name)
+> 
+> 
 
-Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
----
- drivers/ufs/core/ufs-mcq.c | 1 +
- include/ufs/ufshcd.h       | 2 ++
- 2 files changed, 3 insertions(+)
+Some platforms need early initialization; this is seen on ones for which the
+bootloader does not initialize the "CPUXGPT" timer, which is used as the ARM
+arch timer. (No, on those platforms you can't upgrade the bootloader, as it's
+signed with a OEM key which is not obtainable, and signature verified earlier
+in the bootchain).
 
-diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-index 3a27fa4b0024..c97b45cd94ee 100644
---- a/drivers/ufs/core/ufs-mcq.c
-+++ b/drivers/ufs/core/ufs-mcq.c
-@@ -241,6 +241,7 @@ u32 ufshcd_mcq_read_cqis(struct ufs_hba *hba, int i)
- {
- 	return readl(mcq_opr_base(hba, OPR_CQIS, i) + REG_CQIS);
- }
-+EXPORT_SYMBOL_GPL(ufshcd_mcq_read_cqis);
- 
- void ufshcd_mcq_write_cqis(struct ufs_hba *hba, u32 val, int i)
- {
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index ed9e3d5addb3..57e3b9524b1b 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -1243,6 +1243,8 @@ void ufshcd_update_evt_hist(struct ufs_hba *hba, u32 id, u32 val);
- void ufshcd_hba_stop(struct ufs_hba *hba);
- void ufshcd_schedule_eh_work(struct ufs_hba *hba);
- void ufshcd_mcq_write_cqis(struct ufs_hba *hba, u32 val, int i);
-+u32 ufshcd_mcq_read_cqis(struct ufs_hba *hba, int i);
-+
- unsigned long ufshcd_mcq_poll_cqe_nolock(struct ufs_hba *hba,
- 					 struct ufs_hw_queue *hwq);
- void ufshcd_mcq_enable_esi(struct ufs_hba *hba);
--- 
-2.18.0
+As a matter of fact (and somehow obvious), on those platforms (for example,
+MT6795.. but many other as well, really), you *need* this driver to be
+built-in and, well, initialize the CPUX timer as early as possible :-)
+
+Regards,
+Angelo
 
 
