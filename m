@@ -4,62 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A3F4C636CC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Feb 2023 14:46:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D11D4C636CC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Feb 2023 17:34:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=05AYT9WzrcgpxTEGkWOq5ICd5qBQiyqX9M6zxOAiPYs=; b=L8N5i6S1M/I+Xnve1QxDwt3czP
-	m4NkC4sekdfQuYgCkBY3wF0k4dFAiDRr4sIz3ZSlEmjMq+pb4CvFYJGqYi1QspkwDvuShpzhFseg4
-	TKy+wvPjORgtANH8+Bwj8Y420cnpNdx/9S9lfCnSpTxKAh6EDzRjaAPrWst/yNKSP8BGS7pjzi7jj
-	CqMWVLRKn1tPKuasbzfmlEzorcnAAzpb5iLSAM+hx8q+cWiWFoyn3hIWS0nJe++gi2sVYsTqnbYkm
-	hfIcgx30dBjZgOt7C+/v4PXxAd71/YuTKSA42qMZRyJFHwk4W2HnzSzOmd4Y2zkLgu7WvNY9E60O1
-	A/G9Ptkw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+7RJUFWr8yFaYxrhdiEcn2oKMmIGGDkUJslynTZp+P4=; b=40nP5X/2O55qSuicIlLlQvtI0E
+	7HxFObTPY8MyXWl6lFeG8O44LpV3kPXD38xZFji/Q2SiT3GJOFcA/Wvg+sTkXg3GS/nzfj0Nx0jXJ
+	9T1LHdEhtfikvhkdtoEOhLmyikPBWHeys55AqWcsSNBDYEXoyaPrmKaHNa6KnK78hahlVabaPbVIc
+	ZBfK3jZBrgC7fMaHZKFp56Z9PW8CbVfRCy9UOf2DRqSnZykpMLtEYgUsoKZL6ugxHde3bR6MnsHbc
+	yPR7ACdEpV9Sbl6q6MMpyJfDIw6uPJG8i4iTwyHD3c2ifVDNuS32wkW6Pq9cHhSP+O7vzRxLKAGN6
+	cJtXw4rQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSJ3a-006GEW-Ou; Wed, 15 Feb 2023 14:46:50 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSJ3O-006GB3-Hj; Wed, 15 Feb 2023 14:46:40 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 30A1A1042;
-	Wed, 15 Feb 2023 06:47:17 -0800 (PST)
-Received: from bogus (unknown [10.57.10.143])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 282553F703;
-	Wed, 15 Feb 2023 06:46:30 -0800 (PST)
-Date: Wed, 15 Feb 2023 14:46:27 +0000
-From: Sudeep Holla <sudeep.holla@arm.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: walter.chang@mediatek.com, Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Sudeep Holla <sudeep.holla@arm.com>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	"Maciej W . Rozycki" <macro@orcam.me.uk>,
-	John Stultz <jstultz@google.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	wsd_upstream@mediatek.com, stanley.chu@mediatek.com,
-	Chun-hung.Wu@mediatek.com, Freddy.Hsin@mediatek.com,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 4/4] clocksource/drivers/timer-mediatek: Make
- timer-mediatek become loadable module
-Message-ID: <20230215144627.ddjc7x365qdnhymi@bogus>
-References: <20230214105412.5856-1-walter.chang@mediatek.com>
- <20230214105412.5856-5-walter.chang@mediatek.com>
- <20230214222021.k3tsfwezhnh7tdlx@bogus>
- <996b4e61-8486-d939-7367-1240b3c5c5fa@collabora.com>
- <20230215131849.mcgz53jf24atialp@bogus>
- <53f0e612-b5cc-262e-df98-add1e8a06573@collabora.com>
+	id 1pSLfk-006huV-OP; Wed, 15 Feb 2023 17:34:24 +0000
+Received: from mail-pj1-f47.google.com ([209.85.216.47])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pSLfZ-006hqJ-UM; Wed, 15 Feb 2023 17:34:15 +0000
+Received: by mail-pj1-f47.google.com with SMTP id d8-20020a17090ad98800b002344fa17c8bso2535392pjv.5;
+        Wed, 15 Feb 2023 09:34:11 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=+7RJUFWr8yFaYxrhdiEcn2oKMmIGGDkUJslynTZp+P4=;
+        b=McVrKIqel2sGMhljIOl+3uw230BLyiIFTJJn07gx7Cvn/+EqGQdswtsO4jPVKTSwha
+         A0V4nHG6iNiSxE2OpgyIx0gaWU6sN7KhKWsWLW+ulZsaJXTJYDfHDN7tAQJ+S+vMvBY/
+         bTmHwvyd3FPErcrYOrk2kjLiOO+6YNF1drbU9yDPWDoivm7nmyM6n5ZRGpZKXuZOu2F1
+         W7Ua2BLEF7K5rE/59ybjHP0W63jg0Audz+CFF1E26JH+wH9QX8T5MAkwrGPNDfO2A7+t
+         k9Vv8B8pv6JPxMVnXur+PsZOO/bGcNBI26JQU4oP83Mj1Biu5rzRsAT/p7xMP3c1yr5T
+         /8UA==
+X-Gm-Message-State: AO0yUKVE+w2i/QIt6hwFV9GzXscKdt7Wo9SBvj9Nzaxy6XTwT9tzC0Of
+	CrV1uWIHAv7RHed33ZyHbQA=
+X-Google-Smtp-Source: AK7set8KLjD29nGYSoiZcDjoRn7yIAWLQdb0khrbWiYyRjTHemXuKmGovegMmhMZOXZujT+FAiP9yg==
+X-Received: by 2002:a17:903:24f:b0:19a:b2ee:cf41 with SMTP id j15-20020a170903024f00b0019ab2eecf41mr3717131plh.59.1676482451156;
+        Wed, 15 Feb 2023 09:34:11 -0800 (PST)
+Received: from ?IPV6:2620:15c:211:201:f2b7:9a62:c95d:fb83? ([2620:15c:211:201:f2b7:9a62:c95d:fb83])
+        by smtp.gmail.com with ESMTPSA id l5-20020a170902d34500b0019a6fe0f975sm5076016plk.267.2023.02.15.09.34.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 15 Feb 2023 09:34:10 -0800 (PST)
+Message-ID: <fef343fb-42e3-501a-709e-f1c0b74a84c8@acm.org>
+Date: Wed, 15 Feb 2023 09:34:07 -0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <53f0e612-b5cc-262e-df98-add1e8a06573@collabora.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH 1/2] scsi: ufs: core: Fix mcq tag calcualtion
+Content-Language: en-US
+To: Po-Wen Kao <powen.kao@mediatek.com>, Alim Akhtar
+ <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: wsd_upstream@mediatek.com, peter.wang@mediatek.com,
+ stanley.chu@mediatek.com, alice.chao@mediatek.com,
+ chun-hung.wu@mediatek.com, cc.chou@mediatek.com, chaotian.jing@mediatek.com,
+ jiajie.hao@mediatek.com, mason.zhang@mediatek.com,
+ quic_asutoshd@quicinc.com, linux-scsi@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230215123750.15785-1-powen.kao@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20230215123750.15785-1-powen.kao@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230215_064638_658640_914B48D4 
-X-CRM114-Status: GOOD (  17.25  )
+X-CRM114-CacheID: sfid-20230215_093414_012471_F8D624A5 
+X-CRM114-Status: GOOD (  15.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,34 +88,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 15, 2023 at 02:30:51PM +0100, AngeloGioacchino Del Regno wrote:
+On 2/15/23 04:37, Po-Wen Kao wrote:
+> Transfer command descriptor is allocated in ufshcd_memory_alloc()
+> and referenced by transfer request descriptor with stride size
+> sizeof_utp_transfer_cmd_desc()
+> instead of
+> sizeof(struct utp_transfer_cmd_desc).
 > 
-> Both. I mean that these platforms do have architected timers, but they are stopped
-> before the bootloader jumps to the kernel, or they are never started at all.
+> Consequently, computing tag by address offset should also refer to the
+> same stride.
 > 
-> Please refer to:
+> Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
+> ---
+>   drivers/ufs/core/ufs-mcq.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/drivers/clocksource/timer-mediatek.c?h=next-20230215&id=327e93cf9a59b0d04eb3a31a7fdbf0f11cf13ecb
-> 
-> For a nice explanation.
-> 
+> diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+> index 31df052fbc41..3a27fa4b0024 100644
+> --- a/drivers/ufs/core/ufs-mcq.c
+> +++ b/drivers/ufs/core/ufs-mcq.c
+> @@ -265,7 +265,7 @@ static int ufshcd_mcq_get_tag(struct ufs_hba *hba,
+>   	addr = (le64_to_cpu(cqe->command_desc_base_addr) & CQE_UCD_BA) -
+>   		hba->ucdl_dma_addr;
+>   
+> -	return div_u64(addr, sizeof(struct utp_transfer_cmd_desc));
+> +	return div_u64(addr, sizeof_utp_transfer_cmd_desc(hba));
+>   }
+>   
+>   static void ufshcd_mcq_process_cqe(struct ufs_hba *hba,
 
-Thanks for that. Well then I see no point in making these modules if you
-can't have generic Image that boots on all the platform. I now tend to think
-that these are made modules just because GKI demands and it *might* work
-on one or 2 platforms. One we move this as modules, how will be know the
-Image without these timers or with them built as modules will boot or not
-on a given mediatek platform. Sorry, I initially saw some point in making
-these timers as modules but if they are required for boot on some systems
-then I see no point. So if that is the case, NACK for these as it just
-creates more confusion after these are merged as why some Images or
-even why defconfig image(if we push the config change as well) is not
-booting on these platforms.
-
-It is no longer just for system timer useful in low power CPU idle states
-as I initial thought.
-
--- 
-Regards,
-Sudeep
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
