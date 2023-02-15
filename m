@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E45EC636CC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Feb 2023 04:22:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FC82C636CC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Feb 2023 04:23:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y6o276IEZLol5xUL4LJZSpdogBgJynRNGNbRkNEKb1c=; b=tGFhQXypV4VLFnvuJdunr5ZGDX
-	amknqOq28+bIOyKUS2N8vvrdx1YpTMOgNflselqex28LvkgDBAS53vJNzfgLs5n66PzJgvC3Qkc7g
-	mmg/GQYbAOUSX0NeHuY3/s6+lB6xcpNDEBv2rTNsEWvzNd8uxWDGjbfolJISVd4QJwVtRgt48CF6G
-	8ZHRfVKqBEHp6T9L/YgBPcmu9CNc922g5CVpHIRp4ltUeTPEsW4myfFH0zZDz7T1mNn1cThbSDSx/
-	OSOFLvf5BhnZjFAIe63Dm9puIueWMyPTSDJ2ZYIzwRFjN7NWNhQiCcfIn9l4VvZnQdEwcgONsJGvA
-	XkF8PCtQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wLykTSuS4LOn7yeT2/ovRf1YfA33Qvph81779tT4mJ8=; b=GennaYNXSR8j7Gb++gJ1U+iatA
+	Mk7s5jFypR3H28Va05OpZ9R0klkCJCw/B7o71M4F1yGaJRwRpTZIUFFmRSRPZnh2Ak9nmnzaaj4Id
+	ZPRlUWlY4yLxoGh5q9ONa+lnUBfP1IalQTINnC9fSMDxunyE4NzaWqCuSQigNA3aq5JeR3Rj60WAP
+	K7J3R7g8HeFqIKM7d8VD5tBB1JJS3gD3s0hnB35KQXLOjvz7EA5sTuGouZOvOQKi8fie8WxwHUQNS
+	JXOgUd6AZz+cPczmCbjghTaHkfvH9UmsMzImXtXf6/I3SceIYKv91SJ03Km95X6CbRFqxiu2cRiDR
+	A5RlNOKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pS9JU-004fDC-MF; Wed, 15 Feb 2023 04:22:36 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pS9K4-004fR9-UP; Wed, 15 Feb 2023 04:23:12 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pS9JR-004fBP-4e
-	for linux-mediatek@lists.infradead.org; Wed, 15 Feb 2023 04:22:35 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 53901614AE;
-	Wed, 15 Feb 2023 04:22:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B37D3C433EF;
-	Wed, 15 Feb 2023 04:22:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1676434951;
-	bh=9RFklybEaUQCRSm7AZF4dRJ8fp78b9j9QQOI0bJxijE=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=kEctVT6iKodBlNPJ0zxVNQBDmc3iFsxN95yWTc3BImSEQWweWMrywn73u8rI5J72p
-	 MbxIAn458iekfmfj7UlQ5SVm5IPhegUlUQvnhz2eb/rWjRTWvBdnofQZt/ZMKIy2Z0
-	 3GqaZQf71f/YVb90Hxj+LZK4y1hWD+z9JnOEE68C7D400pS+AVwWLwXnig46/EnAMh
-	 MJ7STrBJkQ+707WSc5xj9npwTCFzFNr1IBzbxIuyQHSF5mAYqxqRgGDyrXcImAUrsR
-	 ahnEBND8SY0WkdIjPZljIm8KTPIxH/9KzLguvvwLlLp7wImN5p8Ij2yGKZ04NT8FyM
-	 ylvyCyDGnH7sg==
-Date: Tue, 14 Feb 2023 20:22:29 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Yanchao Yang <yanchao.yang@mediatek.com>
-Cc: Loic Poulain <loic.poulain@linaro.org>, Sergey Ryazanov
- <ryazanov.s.a@gmail.com>, Johannes Berg <johannes@sipsolutions.net>, "David
- S . Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Paolo Abeni <pabeni@redhat.com>, netdev ML <netdev@vger.kernel.org>, kernel
- ML <linux-kernel@vger.kernel.org>, Intel experts <linuxwwan@intel.com>,
- Chetan <m.chetan.kumar@intel.com>, MTK ML
- <linux-mediatek@lists.infradead.org>, Liang Lu <liang.lu@mediatek.com>,
- Haijun Liu <haijun.liu@mediatek.com>, Hua Yang <hua.yang@mediatek.com>,
- Ting Wang <ting.wang@mediatek.com>, Felix Chen <felix.chen@mediatek.com>,
- Mingliang Xu <mingliang.xu@mediatek.com>, Min Dong <min.dong@mediatek.com>,
- Aiden Wang <aiden.wang@mediatek.com>, Guohao Zhang
- <guohao.zhang@mediatek.com>, Chris Feng <chris.feng@mediatek.com>, Lambert
- Wang <lambert.wang@mediatek.com>, Mingchuang Qiao
- <mingchuang.qiao@mediatek.com>, Xiayu Zhang <xiayu.zhang@mediatek.com>,
- Haozhe Chang <haozhe.chang@mediatek.com>
-Subject: Re: [PATCH net-next v3 01/10] net: wwan: tmi: Add PCIe core
-Message-ID: <20230214202229.50d07b89@kernel.org>
-In-Reply-To: <20230211083732.193650-2-yanchao.yang@mediatek.com>
-References: <20230211083732.193650-1-yanchao.yang@mediatek.com>
-	<20230211083732.193650-2-yanchao.yang@mediatek.com>
+	id 1pS9K1-004fPS-1p; Wed, 15 Feb 2023 04:23:10 +0000
+X-UUID: 700546c4ace811edbbe3f76fe852e059-20230214
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=wLykTSuS4LOn7yeT2/ovRf1YfA33Qvph81779tT4mJ8=;
+	b=GRg+eakD0zL8HHat4tklzxv20CIxm+Qg92EFkyrVlAaTdqxt+vbiqW1gHg/XbjTGMWoL1BVL/PTd54GFPTWSXBWziFDe4WfZ7n/kNSU5czWZTidBhyMUkI62b+9v604+Vt/C6/kk0zVYhzpc3eZzIKPF+cXrS6JgHhAttDR9RaE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.19,REQID:d03604c2-f6e3-4e03-aad4-ca6872942151,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:885ddb2,CLOUDID:e2cc09f3-ddba-41c3-91d9-10eeade8eac7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-UUID: 700546c4ace811edbbe3f76fe852e059-20230214
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 42946835; Tue, 14 Feb 2023 21:23:03 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 15 Feb 2023 12:12:59 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 15 Feb 2023 12:12:59 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Tinghan Shen
+	<tinghan.shen@mediatek.com>
+CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v7 07/12] remoteproc: mediatek: Probe multi-core SCP
+Date: Wed, 15 Feb 2023 12:12:52 +0800
+Message-ID: <20230215041257.14548-8-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230215041257.14548-1-tinghan.shen@mediatek.com>
+References: <20230215041257.14548-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230214_202233_322593_5CD61309 
-X-CRM114-Status: GOOD (  27.72  )
+X-CRM114-CacheID: sfid-20230214_202309_128193_DF9E2DCA 
+X-CRM114-Status: GOOD (  24.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,375 +85,276 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 11 Feb 2023 16:37:23 +0800 Yanchao Yang wrote:
-> +ccflags-y += -I$(srctree)/$(src)/
-> +ccflags-y += -I$(srctree)/$(src)/pcie/
+The difference of single-core SCP and multi-core SCP device tree is
+the presence of child device nodes described SCP cores. The SCP
+driver populates the platform device and checks the child nodes
+to identify whether it's a single-core SCP or a multi-core SCP.
 
-Do you really need these flags?
+The resource structure of the multi-core SCP is a list of remoteproc
+instances which is different to the single-core SCP. The corresponding
+resource releasing action is based on the type of SCP.
 
-> +#ifndef _MTK_COMMON_H
-> +#define _MTK_COMMON_H
-> +
-> +#include <linux/device.h>
-> +
-> +#define MTK_UEVENT_INFO_LEN 128
-> +
-> +/* MTK uevent */
-> +enum mtk_uevent_id {
-> +	MTK_UEVENT_FSM = 1,
-> +	MTK_UEVENT_MAX
-> +};
-> +
-> +static inline void mtk_uevent_notify(struct device *dev, enum mtk_uevent_id id, const char *info)
-> +{
-> +	char buf[MTK_UEVENT_INFO_LEN];
-> +	char *ext[2] = {NULL, NULL};
-> +
-> +	snprintf(buf, MTK_UEVENT_INFO_LEN, "%s:event_id=%d, info=%s",
-> +		 dev->kobj.name, id, info);
-> +	ext[0] = buf;
-> +	kobject_uevent_env(&dev->kobj, KOBJ_CHANGE, ext);
-> +}
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+---
+ drivers/remoteproc/mtk_common.h |   4 +
+ drivers/remoteproc/mtk_scp.c    | 179 +++++++++++++++++++++++++++++---
+ 2 files changed, 168 insertions(+), 15 deletions(-)
 
-What is this for? It's not used in this patch.
+diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
+index 3778894c96f3..7821cb15d6fd 100644
+--- a/drivers/remoteproc/mtk_common.h
++++ b/drivers/remoteproc/mtk_common.h
+@@ -140,6 +140,10 @@ struct mtk_scp {
+ 	size_t dram_size;
+ 
+ 	struct rproc_subdev *rpmsg_subdev;
++
++	struct list_head elem;
++	struct list_head cluster_cores;
++	struct list_head *cluster;
+ };
+ 
+ /**
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index 6270c388727a..6588e5acb159 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -862,7 +862,9 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
+ }
+ 
+ static int scp_rproc_init(struct platform_device *pdev,
+-			  struct mtk_scp_of_regs *of_regs)
++			  struct mtk_scp_of_regs *of_regs,
++			  const struct mtk_scp_of_data *of_data,
++			  bool is_multi_core)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *np = dev->of_node;
+@@ -883,7 +885,7 @@ static int scp_rproc_init(struct platform_device *pdev,
+ 	scp = (struct mtk_scp *)rproc->priv;
+ 	scp->rproc = rproc;
+ 	scp->dev = dev;
+-	scp->data = of_device_get_match_data(dev);
++	scp->data = of_data;
+ 	platform_set_drvdata(pdev, scp);
+ 
+ 	scp->reg_base = of_regs->reg_base;
+@@ -932,9 +934,11 @@ static int scp_rproc_init(struct platform_device *pdev,
+ 		goto remove_subdev;
+ 	}
+ 
+-	ret = rproc_add(rproc);
+-	if (ret)
+-		goto remove_subdev;
++	if (!is_multi_core) {
++		ret = rproc_add(rproc);
++		if (ret)
++			goto remove_subdev;
++	}
+ 
+ 	return 0;
+ 
+@@ -950,9 +954,125 @@ static int scp_rproc_init(struct platform_device *pdev,
+ 	return ret;
+ }
+ 
++static void scp_rproc_free(struct mtk_scp *scp)
++{
++	int i;
++
++	scp_remove_rpmsg_subdev(scp);
++	scp_ipi_unregister(scp, SCP_IPI_INIT);
++	scp_unmap_memory_region(scp);
++	for (i = 0; i < SCP_IPI_MAX; i++)
++		mutex_destroy(&scp->ipi_desc[i].lock);
++	mutex_destroy(&scp->send_lock);
++}
++
++static void scp_rproc_exit(struct platform_device *pdev)
++{
++	struct mtk_scp *scp = platform_get_drvdata(pdev);
++
++	rproc_del(scp->rproc);
++	scp_rproc_free(scp);
++}
++
++static int scp_cluster_init(struct platform_device *pdev,
++			    struct mtk_scp_of_regs *of_regs)
++{
++	struct device *dev = &pdev->dev;
++	struct device_node *np = dev_of_node(dev);
++	struct platform_device *cpdev;
++	struct device_node *child;
++	const struct mtk_scp_of_data **cluster_of_data;
++	struct list_head *cluster;
++	struct mtk_scp *scp, *temp;
++	int core_id, num_cores;
++	int ret;
++
++	cluster_of_data = (const struct mtk_scp_of_data **)of_device_get_match_data(dev);
++
++	for (num_cores = 0; cluster_of_data[num_cores]; num_cores++)
++		;
++
++	cluster = NULL;
++	core_id = 0;
++	for_each_available_child_of_node(np, child) {
++		if (core_id >= num_cores) {
++			ret = -EINVAL;
++			dev_err(dev, "Not support core %d\n", core_id);
++			of_node_put(child);
++			goto init_fail;
++		}
++
++		cpdev = of_find_device_by_node(child);
++		if (!cpdev) {
++			ret = -ENODEV;
++			dev_err(dev, "Not found platform device for core %d\n", core_id);
++			of_node_put(child);
++			goto init_fail;
++		}
++
++		ret = scp_rproc_init(cpdev, of_regs, cluster_of_data[core_id], true);
++		if (ret) {
++			dev_err(dev, "Failed to initialize core %d rproc\n", core_id);
++			put_device(&cpdev->dev);
++			of_node_put(child);
++			goto init_fail;
++		}
++
++		scp = platform_get_drvdata(cpdev);
++		put_device(&cpdev->dev);
++		if (core_id == 0) {
++			INIT_LIST_HEAD(&scp->cluster_cores);
++			cluster = &scp->cluster_cores;
++			platform_set_drvdata(pdev, cluster);
++		}
++
++		list_add_tail(&scp->elem, cluster);
++		scp->cluster = cluster;
++
++		of_node_put(child);
++		core_id++;
++	}
++
++	list_for_each_entry_safe_reverse(scp, temp, cluster, elem) {
++		ret = rproc_add(scp->rproc);
++		if (ret)
++			goto add_fail;
++	}
++
++	return 0;
++
++add_fail:
++	list_for_each_entry_continue(scp, cluster, elem) {
++		rproc_del(scp->rproc);
++	}
++init_fail:
++	if (cluster) {
++		list_for_each_entry_safe_reverse(scp, temp, cluster, elem) {
++			list_del(&scp->elem);
++			scp_rproc_free(scp);
++		}
++	}
++	return ret;
++}
++
++static void scp_cluster_exit(struct platform_device *pdev)
++{
++	struct list_head *cluster = platform_get_drvdata(pdev);
++	struct platform_device *cpdev;
++	struct mtk_scp *scp, *temp;
++
++	list_for_each_entry_safe_reverse(scp, temp, cluster, elem) {
++		list_del(&scp->elem);
++		cpdev = to_platform_device(scp->dev);
++		scp_rproc_exit(cpdev);
++	}
++}
++
+ static int scp_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
++	struct device_node *np = dev->of_node;
++	struct device_node *core_node;
+ 	struct resource *res;
+ 	struct mtk_scp_of_regs scp_regs;
+ 	int ret;
+@@ -975,21 +1095,43 @@ static int scp_probe(struct platform_device *pdev)
+ 		scp_regs.l1tcm_phys = res->start;
+ 	}
+ 
+-	return scp_rproc_init(pdev, &scp_regs);
++	ret = devm_of_platform_populate(dev);
++	if (ret)
++		return dev_err_probe(dev, ret, "Failed to populate platform devices\n");
++
++	core_node = of_get_child_by_name(np, "scp");
++	of_node_put(core_node);
++
++	if (!core_node) {
++		dev_info(dev, "single-core scp\n");
++
++		ret = scp_rproc_init(pdev, &scp_regs, of_device_get_match_data(dev), false);
++		if (ret)
++			return dev_err_probe(dev, ret, "Failed to initialize single-core scp\n");
++	} else {
++		dev_info(dev, "multi-core scp\n");
++
++		ret = scp_cluster_init(pdev, &scp_regs);
++		if (ret)
++			return dev_err_probe(dev, ret, "Failed to initialize scp cluster\n");
++	}
++
++	return 0;
+ }
+ 
+ static int scp_remove(struct platform_device *pdev)
+ {
+-	struct mtk_scp *scp = platform_get_drvdata(pdev);
+-	int i;
++	struct device *dev = &pdev->dev;
++	struct device_node *np = dev->of_node;
++	struct device_node *core_node;
+ 
+-	rproc_del(scp->rproc);
+-	scp_remove_rpmsg_subdev(scp);
+-	scp_ipi_unregister(scp, SCP_IPI_INIT);
+-	scp_unmap_memory_region(scp);
+-	for (i = 0; i < SCP_IPI_MAX; i++)
+-		mutex_destroy(&scp->ipi_desc[i].lock);
+-	mutex_destroy(&scp->send_lock);
++	core_node = of_get_child_by_name(np, "scp");
++	of_node_put(core_node);
++
++	if (!core_node)
++		scp_rproc_exit(pdev);
++	else
++		scp_cluster_exit(pdev);
+ 
+ 	return 0;
+ }
+@@ -1068,12 +1210,19 @@ static const struct mtk_scp_of_data mt8195_of_data_c1 = {
+ 	.host_to_scp_int_bit = MT8195_CORE1_HOST_IPC_INT_BIT,
+ };
+ 
++static const struct mtk_scp_of_data *mt8195_of_data_cores[] = {
++	&mt8195_of_data,
++	&mt8195_of_data_c1,
++	NULL
++};
++
+ static const struct of_device_id mtk_scp_of_match[] = {
+ 	{ .compatible = "mediatek,mt8183-scp", .data = &mt8183_of_data },
+ 	{ .compatible = "mediatek,mt8186-scp", .data = &mt8186_of_data },
+ 	{ .compatible = "mediatek,mt8188-scp", .data = &mt8188_of_data },
+ 	{ .compatible = "mediatek,mt8192-scp", .data = &mt8192_of_data },
+ 	{ .compatible = "mediatek,mt8195-scp", .data = &mt8195_of_data },
++	{ .compatible = "mediatek,mt8195-scp-dual", .data = &mt8195_of_data_cores },
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, mtk_scp_of_match);
+-- 
+2.18.0
 
-> +static int mtk_mhccif_register_evt(struct mtk_md_dev *mdev, u32 chs,
-> +				   int (*evt_cb)(u32 status, void *data), void *data)
-> +{
-> +	struct mtk_pci_priv *priv = mdev->hw_priv;
-> +	struct mtk_mhccif_cb *cb;
-> +	unsigned long flag;
-> +	int ret = 0;
-> +
-> +	if (!chs || !evt_cb)
-> +		return -EINVAL;
-
-avoid defensive programming
-
-> +	spin_lock_irqsave(&priv->mhccif_lock, flag);
-> +	list_for_each_entry(cb, &priv->mhccif_cb_list, entry) {
-> +		if (cb->chs & chs) {
-> +			ret = -EFAULT;
-> +			dev_err(mdev->dev,
-> +				"Unable to register evt, chs=0x%08X&0x%08X registered_cb=%ps\n",
-> +				chs, cb->chs, cb->evt_cb);
-> +			goto err;
-> +		}
-> +	}
-> +	cb = devm_kzalloc(mdev->dev, sizeof(*cb), GFP_ATOMIC);
-> +	if (!cb) {
-> +		ret = -ENOMEM;
-> +		goto err;
-> +	}
-> +	cb->evt_cb = evt_cb;
-> +	cb->data = data;
-> +	cb->chs = chs;
-> +	list_add_tail(&cb->entry, &priv->mhccif_cb_list);
-> +
-> +err:
-> +	spin_unlock_irqrestore(&priv->mhccif_lock, flag);
-> +
-> +	return ret;
-> +}
-> +
-> +static int mtk_mhccif_unregister_evt(struct mtk_md_dev *mdev, u32 chs)
-> +{
-> +	struct mtk_pci_priv *priv = mdev->hw_priv;
-> +	struct mtk_mhccif_cb *cb, *next;
-> +	unsigned long flag;
-> +	int ret = 0;
-> +
-> +	if (!chs)
-> +		return -EINVAL;
-
-avoid defensive programming
-
-> +	spin_lock_irqsave(&priv->mhccif_lock, flag);
-> +	list_for_each_entry_safe(cb, next, &priv->mhccif_cb_list, entry) {
-> +		if (cb->chs == chs) {
-> +			list_del(&cb->entry);
-> +			devm_kfree(mdev->dev, cb);
-> +			goto out;
-> +		}
-> +	}
-> +	ret = -EFAULT;
-> +	dev_warn(mdev->dev, "Unable to unregister evt, no chs=0x%08X has been registered.\n", chs);
-> +out:
-> +	spin_unlock_irqrestore(&priv->mhccif_lock, flag);
-> +
-> +	return ret;
-> +}
-
-> +static void mtk_mhccif_clear_evt(struct mtk_md_dev *mdev, u32 chs)
-> +{
-> +	struct mtk_pci_priv *priv = mdev->hw_priv;
-> +
-> +	mtk_pci_write32(mdev, priv->cfg->mhccif_rc_base_addr
-> +		+ MHCCIF_EP2RC_SW_INT_ACK, chs);
-
-+ goes at the end of the previous line, and the continuation line
-should be aligned to (
-Please fix everywhere.
-
-> +}
-> +
-> +static int mtk_mhccif_send_evt(struct mtk_md_dev *mdev, u32 ch)
-> +{
-> +	struct mtk_pci_priv *priv = mdev->hw_priv;
-> +	u32 rc_base;
-> +
-> +	rc_base = priv->cfg->mhccif_rc_base_addr;
-> +	/* Only allow one ch to be triggered at a time */
-> +	if ((ch & (ch - 1)) || !ch) {
-
-is_power_of_2() ?
-
-> +		dev_err(mdev->dev, "Unsupported ext evt ch=0x%08X\n", ch);
-> +		return -EINVAL;
-> +	}
-> +
-> +	mtk_pci_write32(mdev, rc_base + MHCCIF_RC2EP_SW_BSY, ch);
-> +	mtk_pci_write32(mdev, rc_base + MHCCIF_RC2EP_SW_TCHNUM, ffs(ch) - 1);
-> +
-> +	return 0;
-> +}
-> +
-> +static u32 mtk_mhccif_get_evt_status(struct mtk_md_dev *mdev)
-> +{
-> +	struct mtk_pci_priv *priv = mdev->hw_priv;
-> +
-> +	return mtk_pci_read32(mdev, priv->cfg->mhccif_rc_base_addr + MHCCIF_EP2RC_SW_INT_STS);
-> +}
-> +
-> +static int mtk_pci_acpi_reset(struct mtk_md_dev *mdev, char *fn_name)
-> +{
-> +#ifdef CONFIG_ACPI
-> +	struct acpi_buffer buffer = { ACPI_ALLOCATE_BUFFER, NULL };
-> +	acpi_status acpi_ret;
-> +	acpi_handle handle;
-> +	int ret = 0;
-> +
-> +	handle = ACPI_HANDLE(mdev->dev);
-> +	if (!handle) {
-> +		dev_err(mdev->dev, "Unsupported, acpi handle isn't found\n");
-> +		ret = -ENODEV;
-> +		goto err;
-> +	}
-> +	if (!acpi_has_method(handle, fn_name)) {
-> +		dev_err(mdev->dev, "Unsupported, _RST method isn't found\n");
-> +		ret = -ENODEV;
-> +		goto err;
-> +	}
-> +	acpi_ret = acpi_evaluate_object(handle, fn_name, NULL, &buffer);
-> +	if (ACPI_FAILURE(acpi_ret)) {
-> +		dev_err(mdev->dev, "Failed to execute %s method: %s\n",
-> +			fn_name,
-> +			acpi_format_exception(acpi_ret));
-> +		ret = -EFAULT;
-> +		goto err;
-> +	}
-> +	dev_info(mdev->dev, "FLDR execute successfully\n");
-> +	acpi_os_free(buffer.pointer);
-> +err:
-> +	return ret;
-> +#else
-> +	dev_err(mdev->dev, "Unsupported, CONFIG ACPI hasn't been set to 'y'\n");
-> +	return -ENODEV;
-
-If driver needs ACPI it should be a dependency in Kconfig.
-
-> +#endif
-> +}
-
-> +static irqreturn_t mtk_pci_irq_msix(int irq, void *data)
-> +{
-> +	struct mtk_pci_irq_desc *irq_desc = data;
-> +	struct mtk_md_dev *mdev = irq_desc->mdev;
-> +	struct mtk_pci_priv *priv;
-> +	u32 irq_state, irq_enable;
-> +
-> +	priv = mdev->hw_priv;
-> +	irq_state = mtk_pci_mac_read32(priv, REG_MSIX_ISTATUS_HOST_GRP0_0);
-> +	irq_enable = mtk_pci_mac_read32(priv, REG_IMASK_HOST_MSIX_GRP0_0);
-> +	dev_dbg(mdev->dev, "irq_state=0x%08X, irq_enable=0x%08X, msix_bits=0x%08X\n",
-> +		irq_state, irq_enable, irq_desc->msix_bits);
-> +	irq_state &= irq_enable;
-> +
-> +	if (unlikely(!irq_state) ||
-> +	    unlikely(!((irq_state % GENMASK(priv->irq_cnt - 1, 0)) & irq_desc->msix_bits)))
-
-Are you sure the modulo is correct here?
-
-> +		return IRQ_NONE;
-> +
-> +	/* Mask the bit and user needs to unmask by itself */
-> +	mtk_pci_mac_write32(priv, REG_IMASK_HOST_MSIX_CLR_GRP0_0, irq_state & (~BIT(30)));
-
-parenthesis unnecessary
-
-> +
-> +	return mtk_pci_irq_handler(mdev, irq_state);
-> +}
-> +
-> +static int mtk_pci_request_irq_msix(struct mtk_md_dev *mdev, int irq_cnt_allocated)
-> +{
-> +	struct mtk_pci_priv *priv = mdev->hw_priv;
-> +	struct mtk_pci_irq_desc *irq_desc;
-> +	struct pci_dev *pdev;
-> +	int irq_cnt;
-> +	int ret, i;
-> +
-> +	/* calculate the nearest 2's power number */
-> +	irq_cnt = BIT(fls(irq_cnt_allocated) - 1);
-> +	pdev = to_pci_dev(mdev->dev);
-> +	irq_desc = priv->irq_desc;
-> +	for (i = 0; i < irq_cnt; i++) {
-> +		irq_desc[i].mdev = mdev;
-> +		irq_desc[i].msix_bits = BIT(i);
-> +		snprintf(irq_desc[i].name, MTK_IRQ_NAME_LEN, "msix%d-%s", i, mdev->dev_str);
-
-please use pci_name() instead of your custom format stored in dev_str.
-
-> +		ret = pci_request_irq(pdev, i, mtk_pci_irq_msix, NULL,
-> +				      &irq_desc[i], irq_desc[i].name);
-> +		if (ret) {
-> +			dev_err(mdev->dev, "Failed to request %s: ret=%d\n", irq_desc[i].name, ret);
-> +			for (i--; i >= 0; i--)
-> +				pci_free_irq(pdev, i, &irq_desc[i]);
-> +			return ret;
-> +		}
-> +	}
-> +	priv->irq_cnt = irq_cnt;
-> +	priv->irq_type = PCI_IRQ_MSIX;
-> +
-> +	if (irq_cnt != MTK_IRQ_CNT_MAX)
-> +		mtk_pci_set_msix_merged(priv, irq_cnt);
-> +
-> +	return 0;
-> +}
-> +
-> +static int mtk_pci_request_irq(struct mtk_md_dev *mdev, int max_irq_cnt, int irq_type)
-
-irq_type is always PCI_IRQ_MSIX in this series
-and max_irq_cnt is MTK_IRQ_CNT_MAX. Use those directly.
-
-> +{
-> +	struct pci_dev *pdev = to_pci_dev(mdev->dev);
-> +	int irq_cnt;
-> +
-> +	irq_cnt = pci_alloc_irq_vectors(pdev, MTK_IRQ_CNT_MIN, max_irq_cnt, irq_type);
-> +	mdev->msi_nvecs = irq_cnt;
-> +
-> +	if (irq_cnt < MTK_IRQ_CNT_MIN) {
-> +		dev_err(mdev->dev,
-> +			"Unable to alloc pci irq vectors. ret=%d maxirqcnt=%d irqtype=0x%x\n",
-> +			irq_cnt, max_irq_cnt, irq_type);
-> +		return -EFAULT;
-> +	}
-> +
-> +	return mtk_pci_request_irq_msix(mdev, irq_cnt);
-> +}
-> +
-> +static void mtk_pci_free_irq(struct mtk_md_dev *mdev)
-> +{
-> +	struct pci_dev *pdev = to_pci_dev(mdev->dev);
-> +	struct mtk_pci_priv *priv = mdev->hw_priv;
-> +	int i;
-> +
-> +	for (i = 0; i < priv->irq_cnt; i++)
-> +		pci_free_irq(pdev, i, &priv->irq_desc[i]);
-> +
-> +	pci_free_irq_vectors(pdev);
-> +}
-> +
-> +static void mtk_pci_save_state(struct mtk_md_dev *mdev)
-> +{
-> +	struct pci_dev *pdev = to_pci_dev(mdev->dev);
-> +	struct mtk_pci_priv *priv = mdev->hw_priv;
-> +	int ltr, l1ss;
-> +
-> +	pci_save_state(pdev);
-> +	/* save ltr */
-> +	ltr = pci_find_ext_capability(pdev, PCI_EXT_CAP_ID_LTR);
-> +	if (ltr) {
-> +		pci_read_config_word(pdev, ltr + PCI_LTR_MAX_SNOOP_LAT,
-> +				     &priv->ltr_max_snoop_lat);
-> +		pci_read_config_word(pdev, ltr + PCI_LTR_MAX_NOSNOOP_LAT,
-> +				     &priv->ltr_max_nosnoop_lat);
-> +	}
-> +	/* save l1ss */
-> +	l1ss = pci_find_ext_capability(pdev, PCI_EXT_CAP_ID_L1SS);
-> +	if (l1ss) {
-> +		pci_read_config_dword(pdev, l1ss + PCI_L1SS_CTL1, &priv->l1ss_ctl1);
-> +		pci_read_config_dword(pdev, l1ss + PCI_L1SS_CTL2, &priv->l1ss_ctl2);
-> +	}
-> +}
-
-> +	dev_info(mdev->dev, "Probe done hw_ver=0x%x\n", mdev->hw_ver);
-> +	return 0;
-> +
-> +err_save_state:
-
-Labels should be named after action they perform, not where they jump
-from. Please fix this everywhere.
-
-> +	pci_disable_pcie_error_reporting(pdev);
-> +	pci_clear_master(pdev);
-> +	mtk_pci_free_irq(mdev);
-> +err_request_irq:
-> +	mtk_mhccif_exit(mdev);
-> +err_mhccif_init:
-> +err_atr_init:
-> +	mtk_pci_bar_exit(mdev);
-> +err_bar_init:
-> +err_set_dma_mask:
-> +	pci_disable_device(pdev);
-> +err_enable_pdev:
-> +	devm_kfree(dev, priv);
-> +err_alloc_priv:
-> +	devm_kfree(dev, mdev);
-> +err_alloc_mdev:
-> +	dev_err(dev, "Failed to probe device, ret=%d\n", ret);
-
-I believe core already prints this sort of a message. 
-Please double check.
-
-> +	return ret;
-> +}
-> +
-> +static void mtk_pci_remove(struct pci_dev *pdev)
-> +{
-> +	struct mtk_md_dev *mdev = pci_get_drvdata(pdev);
-> +	struct mtk_pci_priv *priv = mdev->hw_priv;
-> +	struct device *dev = &pdev->dev;
-> +	int ret;
-> +
-> +	mtk_pci_mask_irq(mdev, priv->mhccif_irq_id);
-> +	pci_disable_pcie_error_reporting(pdev);
-
-The explicit error reporting calls should be removed, please 
-see f26e58bf6f54
-
-> +	ret = mtk_pci_fldr(mdev);
-> +	if (ret)
-> +		mtk_mhccif_send_evt(mdev, EXT_EVT_H2D_DEVICE_RESET);
-> +
-> +	pci_clear_master(pdev);
-> +	mtk_mhccif_exit(mdev);
-> +	mtk_pci_free_irq(mdev);
-> +	mtk_pci_bar_exit(mdev);
-> +	pci_disable_device(pdev);
-> +	pci_load_and_free_saved_state(pdev, &priv->saved_state);
-> +	devm_kfree(dev, priv);
-> +	devm_kfree(dev, mdev);
-
-Why are you using devm_ if you call kfree explicitly anyway?
-You can save some memory by using kfree() directly.
-
-> +	u16 ltr_max_snoop_lat;
-> +	u16 ltr_max_nosnoop_lat;
-> +	u32 l1ss_ctl1;
-> +	u32 l1ss_ctl2;
-
-These 4 registers seem to be saved but never used.
 
