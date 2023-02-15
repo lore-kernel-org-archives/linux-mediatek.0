@@ -4,66 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76B03C636D4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Feb 2023 12:50:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E60EC636D4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Feb 2023 12:50:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=q5UcyJ/aXUNEK20OKjGWiM1tft1sqvEVwCIYOxp3oRw=; b=RjHmqbLqtXfOl0relvLLvjtSA9
-	4RYspSntACk2exgF5FfwgguphG54M149kdF4vFqLQhjmUTEKFDXC5VrNhVCXQadFT626vbD7t7ibO
-	QDDdqzEGdoxIPKeRlq/3kuFTR2K4WS38jGfvHEzf73JTJhyvb3twTaUAziLgnTr0L4kxUP/wmgWdo
-	JWyUbIXJbKGSgF5U6dcK5FHbRbehATW0T1DlDyRD+7jJ/izT6rmxAUpVBUVeP1RjQPwIYSM7VZIjo
-	7FmoXjyPBe+9wqAfFXdIg/k9gYrP8x20EoV23yoIUVFiiMlZIcy/JV9fyznQvv8RzxwvaCSe0alxJ
-	oEXkh32A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=50uqWVCgVpXnGOnog2Uxr5jYdOEAtqh21qpJyNRiVcU=; b=z3RzLd2EhpxwYAS5aqXDWuS3Id
+	9785hMIn1EbDYgQlQfpD4VmVOIqKUP8WcNOrBzMzJ510F5xDSnb5r3bi8OjGLEcx6ChQ6bZVuNDGc
+	jPgDdpFEoB5tNntTA+ANxdqtlx0Yl60qRJ7Xw/4zHEH4725sXTLj5HgLawAdLLPZdbkCSgb72PTsP
+	CPZv+EsFOWqXItK3WljSmam68REDPNuQo48e+S/cVjVRd6aFifaIo/rtJHpzLfCTqfdo0owU88PcB
+	I7xYDjzVH+LrqGODclNEUB+xZt2+jGj83ACKowI4WlA5Ialk/igcyloj86mJ7ds9rmP+wrVhS8xkr
+	oxIa1m9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSHF8-005r1t-OX; Wed, 15 Feb 2023 12:50:38 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pSHFI-005r6A-QJ; Wed, 15 Feb 2023 12:50:48 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSHEx-005qx2-BS; Wed, 15 Feb 2023 12:50:28 +0000
-X-UUID: 4e8ef110ad2f11edbbe3f76fe852e059-20230215
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=q5UcyJ/aXUNEK20OKjGWiM1tft1sqvEVwCIYOxp3oRw=;
-	b=rfQBwC1FRAegN4TG9xZtstNkB0l1+3easYFx++ITMA7ob7OrTvQQJsOUw5pT05slWCBnk7G8/78QyO/E6Az5P2YIsGJamFXPV+JtjXr5kP3Ii8Fh4j8Oa15nUJ5TtOQ94LqsgQUbwOi0dclRsei/ptn7A2sPsAw7Hf5OOciAoTQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.19,REQID:e409c334-5985-47eb-a7d3-acdb6f280957,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:885ddb2,CLOUDID:de74a925-564d-42d9-9875-7c868ee415ec,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-UUID: 4e8ef110ad2f11edbbe3f76fe852e059-20230215
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <trevor.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 974903921; Wed, 15 Feb 2023 05:50:21 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 15 Feb 2023 20:50:18 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 15 Feb 2023 20:50:18 +0800
-From: Trevor Wu <trevor.wu@mediatek.com>
-To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
-	<perex@perex.cz>, <matthias.bgg@gmail.com>
-CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>
-Subject: [PATCH] ASoC: mediatek: mt8188: correct etdm control return value
-Date: Wed, 15 Feb 2023 20:50:16 +0800
-Message-ID: <20230215125017.16044-1-trevor.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pSHEy-005qxc-JD; Wed, 15 Feb 2023 12:50:29 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4B4B66602181;
+	Wed, 15 Feb 2023 12:50:26 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1676465427;
+	bh=qT7FVzm6XK8tCKeDe2rLup/JS7HhXYm37IBT1713P7Q=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=n5Sa5yQbLAyZlLdbKM0nuUTpSpAlmcoVgYTN741oN6XhBYAJQCZx5nFBDYoWjlIgN
+	 +rke1O1rvOQmxISnqxiIBqZxXPc1sKiTZN7Nau3n2ZWvImrHwvzJwzppGFNRzgAGqb
+	 J55j1iKJ431A/YAxH73wHTY4hNJsKiSC1fdqt2fc6pv+3szJ+pwD2fDflU0jwKVdhs
+	 ifYqw0aRdbyhjNW9K5ATM7UmUaKWg1OdSlZSqnxgNumB+Z3pKDe8+rPcM8LE/iAUE6
+	 2ZU7LbXCGQDc8cV3iGIThLAk8QJHS/zWnKM+qNv1MrYgdEPrHcpliFpNp+yhZw4bH6
+	 cuUvGIQ9DXObg==
+Message-ID: <80c60f09-56eb-cb84-43f0-7b055ea4b32c@collabora.com>
+Date: Wed, 15 Feb 2023 13:50:23 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.2
+Subject: Re: [PATCH v14 6/6] arm64: dts: mediatek: mt8195: Add temperature
+ mitigation threshold
+Content-Language: en-US
+To: Balsam CHIHI <bchihi@baylibre.com>, daniel.lezcano@linaro.org,
+ rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com,
+ matthias.bgg@gmail.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org,
+ ye.xingchen@zte.com.cn, p.zabel@pengutronix.de
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com,
+ rex-bc.chen@mediatek.com
+References: <20230209105628.50294-1-bchihi@baylibre.com>
+ <20230209105628.50294-7-bchihi@baylibre.com>
+ <CAGuA+oqOgprdu0dVcmB=qJd5HJjada3d8ZazMpoG-SBPizzuPQ@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAGuA+oqOgprdu0dVcmB=qJd5HJjada3d8ZazMpoG-SBPizzuPQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230215_045027_420549_39D81B1B 
-X-CRM114-Status: GOOD (  11.26  )
+X-CRM114-CacheID: sfid-20230215_045028_799068_C0DBB288 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,70 +82,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mt8188_etdm_clk_src_sel_put() function, val retrieved by FIELD_PREP
-is shifted to the corresponding bit filed, so it can compare with the
-register value directly.
+Il 14/02/23 15:43, Balsam CHIHI ha scritto:
+> Hi Matthias, Angelo,
+> 
+> Would you please confirm if this patch can be applied?
+> and, if it is the case, to which tree it will be applied?
+> 
+> Best regards,
+> Balsam
 
-Originally, the redundant bit shift of the register value results in
-the wrong comparison result, so we remove bit shift operation in the
-patch.
+I think it's fine to apply 5/6 and 6/6, as you're adding pre-Tjunction
+max temperature - this is not board specific, but rather SoC-specific.
+In reality it's practically the same for most SoCs, even.
 
-Fixes: 2babb4777489 ("ASoC: mediatek: mt8188: support etdm in platform driver")
-Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
----
- sound/soc/mediatek/mt8188/mt8188-dai-etdm.c | 8 --------
- 1 file changed, 8 deletions(-)
+Each board will define extensions (that are thermal envelope dependant)
+to these "please-dont-burn-my-device" initial thresholds, but that's a
+story for another day, and for other people anyway (including me).
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c b/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
-index 071841903c62..1c53d4cb19bb 100644
---- a/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
-@@ -679,7 +679,6 @@ static int mt8188_etdm_clk_src_sel_put(struct snd_kcontrol *kcontrol,
- 	unsigned int old_val;
- 	unsigned int mask;
- 	unsigned int reg;
--	unsigned int shift;
- 
- 	if (source >= e->items)
- 		return -EINVAL;
-@@ -687,27 +686,22 @@ static int mt8188_etdm_clk_src_sel_put(struct snd_kcontrol *kcontrol,
- 	if (!strcmp(kcontrol->id.name, "ETDM_OUT1_Clock_Source")) {
- 		reg = ETDM_OUT1_CON4;
- 		mask = ETDM_OUT_CON4_CLOCK_MASK;
--		shift = ETDM_OUT_CON4_CLOCK_SHIFT;
- 		val = FIELD_PREP(ETDM_OUT_CON4_CLOCK_MASK, source);
- 	} else if (!strcmp(kcontrol->id.name, "ETDM_OUT2_Clock_Source")) {
- 		reg = ETDM_OUT2_CON4;
- 		mask = ETDM_OUT_CON4_CLOCK_MASK;
--		shift = ETDM_OUT_CON4_CLOCK_SHIFT;
- 		val = FIELD_PREP(ETDM_OUT_CON4_CLOCK_MASK, source);
- 	} else if (!strcmp(kcontrol->id.name, "ETDM_OUT3_Clock_Source")) {
- 		reg = ETDM_OUT3_CON4;
- 		mask = ETDM_OUT_CON4_CLOCK_MASK;
--		shift = ETDM_OUT_CON4_CLOCK_SHIFT;
- 		val = FIELD_PREP(ETDM_OUT_CON4_CLOCK_MASK, source);
- 	} else if (!strcmp(kcontrol->id.name, "ETDM_IN1_Clock_Source")) {
- 		reg = ETDM_IN1_CON2;
- 		mask = ETDM_IN_CON2_CLOCK_MASK;
--		shift = ETDM_IN_CON2_CLOCK_SHIFT;
- 		val = FIELD_PREP(ETDM_IN_CON2_CLOCK_MASK, source);
- 	} else if (!strcmp(kcontrol->id.name, "ETDM_IN2_Clock_Source")) {
- 		reg = ETDM_IN2_CON2;
- 		mask = ETDM_IN_CON2_CLOCK_MASK;
--		shift = ETDM_IN_CON2_CLOCK_SHIFT;
- 		val = FIELD_PREP(ETDM_IN_CON2_CLOCK_MASK, source);
- 	} else {
- 		return -EINVAL;
-@@ -715,8 +709,6 @@ static int mt8188_etdm_clk_src_sel_put(struct snd_kcontrol *kcontrol,
- 
- 	regmap_read(afe->regmap, reg, &old_val);
- 	old_val &= mask;
--	old_val >>= shift;
--
- 	if (old_val == val)
- 		return 0;
- 
--- 
-2.18.0
-
+Matthias, over to you!
 
