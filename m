@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A070C6379F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Feb 2023 21:08:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 118D5C636D4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Feb 2023 21:09:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sbE1b6/paaaxbulTaJz2mq3TqjFckUHbjoytuAm8bn0=; b=clUzIAsjzpd0Ql/xOPqpjDeHvt
-	Ez2NtPOf8dR8PkoaIUG6RrzCfZHIMOLS4g1Dwd7DIS4534o+5YcYt3da7RuwrAZe8q1+CQ0iKjJ7l
-	fNK95veXNbB4mTeBuODBzSXhixe08zvzQAvgjHCZ4UO6im6yQ9XXQulhP9yLxuexIkvx0TQXcCX1t
-	k6a/SNj7GaoJgIKTmFZphf1itoJjYDn1f30zQcxuqMtgQ+NK21XNgVdeJ2i0Djd+8m0asTV2H3AW2
-	A7rhhlLQ9oRw/H3h52rXAvCotnMKJ1zZmfUOPPm2Atrq7MsdIuqFdM5l4pY68AzY80WWeZ75XjBgT
-	aOdWbYnw==;
+	bh=uE/ekTDGQ4ibMsQv4IDqnqBVFJA9WKlbHa4+Pd/326A=; b=dAncgx4bkwAaarMjukcH5EsIwM
+	S+DvqkId97Z6ZolEosvHCiG8H5+4/zeahwgvS/F/WvaNfXem0mp6ZZkIW+QODqnRfe80S4iio8fnR
+	vgGZzU14d9vTrTGJ/emTz5csMmLbJkyMWzrDq0CXZXQ3IEWEjIQAWyZQl1drewYidrqlUgKACNZqX
+	xzrc3oBdn4T8qG1ERDIzpm1+OjeWun3XKL+BO30mhXM5E7MjgTaExx1fpyKDdXPwRhyvlO9feJSbC
+	ayedswF6VuNqSxJKhaogslHEBO88V5+8alVZYvMvzBxfLTJivScgVNZlvo4NC1GUrrbUUfHfQVhzD
+	9bnG7QBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSP1F-007PWG-O7; Wed, 15 Feb 2023 21:08:49 +0000
+	id 1pSP1y-007Pte-EP; Wed, 15 Feb 2023 21:09:34 +0000
 Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSOuU-007LmY-Gk; Wed, 15 Feb 2023 21:01:52 +0000
+	id 1pSOvT-007MJu-PG; Wed, 15 Feb 2023 21:02:53 +0000
 Received: from local
 	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1pSOuO-0003cW-0d;
-	Wed, 15 Feb 2023 22:01:44 +0100
-Date: Wed, 15 Feb 2023 21:00:08 +0000
+	id 1pSOvO-0003dQ-0J;
+	Wed, 15 Feb 2023 22:02:46 +0100
+Date: Wed, 15 Feb 2023 21:01:11 +0000
 From: Daniel Golle <daniel@makrotopia.org>
 To: devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -54,18 +54,17 @@ To: devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
 	Andrew Lunn <andrew@lunn.ch>
 Cc: Jianhui Zhao <zhaojh329@gmail.com>,
 	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
-Subject: [PATCH v7 02/12] dt-bindings: net: mediatek,net: add mt7981-eth
- binding
-Message-ID: <df6cc25b914f7671546b605271408796981fcea6.1676491901.git.daniel@makrotopia.org>
+Subject: [PATCH v7 03/12] dt-bindings: arm: mediatek: sgmiisys: Convert to DT
+ schema
+Message-ID: <dffc63175d9d3d85cd910f68a6719139a06e4d8a.1676491901.git.daniel@makrotopia.org>
 References: <cover.1676491901.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1676491901.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230215_130150_591179_E1770EED 
-X-CRM114-Status: UNSURE (   9.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230215_130251_852976_55F1CF4F 
+X-CRM114-Status: GOOD (  16.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,105 +79,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce DT bindings for the MT7981 SoC to mediatek,net.yaml.
+Convert mediatek,sgmiiisys bindings to DT schema format.
+Add maintainer Matthias Brugger, no maintainers were listed in the
+original documentation.
+As this node is also referenced by the Ethernet controller and used
+as SGMII PCS add this fact to the description.
 
 Reviewed-by: Rob Herring <robh@kernel.org>
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- .../devicetree/bindings/net/mediatek,net.yaml | 52 +++++++++++++++++--
- 1 file changed, 47 insertions(+), 5 deletions(-)
+ .../arm/mediatek/mediatek,sgmiisys.txt        | 27 ----------
+ .../bindings/clock/mediatek,sgmiisys.yaml     | 49 +++++++++++++++++++
+ 2 files changed, 49 insertions(+), 27 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+ create mode 100644 Documentation/devicetree/bindings/clock/mediatek,sgmiisys.yaml
 
-diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-index 7ef696204c5a..925ab2982d54 100644
---- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
-+++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-@@ -21,6 +21,7 @@ properties:
-       - mediatek,mt7623-eth
-       - mediatek,mt7622-eth
-       - mediatek,mt7629-eth
-+      - mediatek,mt7981-eth
-       - mediatek,mt7986-eth
-       - ralink,rt5350-eth
- 
-@@ -78,6 +79,11 @@ properties:
-     description:
-       List of phandles to wireless ethernet dispatch nodes.
- 
-+  mediatek,wed-pcie:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Phandle to the mediatek wed-pcie controller.
-+
-   dma-coherent: true
- 
-   mdio-bus:
-@@ -123,6 +129,8 @@ allOf:
- 
-         mediatek,wed: false
- 
-+        mediatek,wed-pci: false
-+
-   - if:
-       properties:
-         compatible:
-@@ -206,6 +214,45 @@ allOf:
- 
-         mediatek,wed: false
- 
-+        mediatek,wed-pci: false
-+
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: mediatek,mt7981-eth
-+    then:
-+      properties:
-+        interrupts:
-+          minItems: 4
-+
-+        clocks:
-+          minItems: 15
-+          maxItems: 15
-+
-+        clock-names:
-+          items:
-+            - const: fe
-+            - const: gp2
-+            - const: gp1
-+            - const: wocpu0
-+            - const: sgmii_ck
-+            - const: sgmii_tx250m
-+            - const: sgmii_rx250m
-+            - const: sgmii_cdr_ref
-+            - const: sgmii_cdr_fb
-+            - const: sgmii2_tx250m
-+            - const: sgmii2_rx250m
-+            - const: sgmii2_cdr_ref
-+            - const: sgmii2_cdr_fb
-+            - const: netsys0
-+            - const: netsys1
-+
-+        mediatek,sgmiisys:
-+          minItems: 2
-+          maxItems: 2
-+
-+
-   - if:
-       properties:
-         compatible:
-@@ -242,11 +289,6 @@ allOf:
-           minItems: 2
-           maxItems: 2
- 
--        mediatek,wed-pcie:
--          $ref: /schemas/types.yaml#/definitions/phandle
--          description:
--            Phandle to the mediatek wed-pcie controller.
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+deleted file mode 100644
+index d2c24c277514..000000000000
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
++++ /dev/null
+@@ -1,27 +0,0 @@
+-MediaTek SGMIISYS controller
+-============================
 -
- patternProperties:
-   "^mac@[0-1]$":
-     type: object
+-The MediaTek SGMIISYS controller provides various clocks to the system.
+-
+-Required Properties:
+-
+-- compatible: Should be:
+-	- "mediatek,mt7622-sgmiisys", "syscon"
+-	- "mediatek,mt7629-sgmiisys", "syscon"
+-	- "mediatek,mt7981-sgmiisys_0", "syscon"
+-	- "mediatek,mt7981-sgmiisys_1", "syscon"
+-	- "mediatek,mt7986-sgmiisys_0", "syscon"
+-	- "mediatek,mt7986-sgmiisys_1", "syscon"
+-- #clock-cells: Must be 1
+-
+-The SGMIISYS controller uses the common clk binding from
+-Documentation/devicetree/bindings/clock/clock-bindings.txt
+-The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+-
+-Example:
+-
+-sgmiisys: sgmiisys@1b128000 {
+-	compatible = "mediatek,mt7622-sgmiisys", "syscon";
+-	reg = <0 0x1b128000 0 0x1000>;
+-	#clock-cells = <1>;
+-};
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,sgmiisys.yaml b/Documentation/devicetree/bindings/clock/mediatek,sgmiisys.yaml
+new file mode 100644
+index 000000000000..6bb84fe23de4
+--- /dev/null
++++ b/Documentation/devicetree/bindings/clock/mediatek,sgmiisys.yaml
+@@ -0,0 +1,49 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,sgmiisys.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek SGMIISYS Controller
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++description:
++  The MediaTek SGMIISYS controller provides SGMII related clocks to the system
++  and is used by the Ethernet controller as SGMII PCS.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt7622-sgmiisys
++          - mediatek,mt7629-sgmiisys
++          - mediatek,mt7986-sgmiisys_0
++          - mediatek,mt7986-sgmiisys_1
++      - const: syscon
++
++  reg:
++    maxItems: 1
++
++  '#clock-cells':
++    const: 1
++
++required:
++  - compatible
++  - reg
++  - '#clock-cells'
++
++additionalProperties: false
++
++examples:
++  - |
++    soc {
++      #address-cells = <2>;
++      #size-cells = <2>;
++      sgmiisys: syscon@1b128000 {
++        compatible = "mediatek,mt7622-sgmiisys", "syscon";
++        reg = <0 0x1b128000 0 0x1000>;
++        #clock-cells = <1>;
++      };
++    };
 -- 
 2.39.1
 
