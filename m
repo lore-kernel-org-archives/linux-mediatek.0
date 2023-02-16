@@ -4,65 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1268C636CC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Feb 2023 10:04:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DE3BC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Feb 2023 10:05:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bo0JtxclGxD7ozfvJ8g1hJuS70nmLNCYzQIAUtZWca4=; b=pKYCF8YbcjLHPKR8fuuuJxfHGf
-	StaumFQRE6w4QHf4Sts1bBhcCU4C6iVcwhuq7cnRhBvf3opPvCURQpFX5B3azJg5Ur5EqqtEJiZGs
-	rlicE5brFN5mY7pDdtGBiwi8JfxGScZgIRqnYFsDxd7mHGod5U+3S5O1Uh/6qOAvBARUCw8/k5qnH
-	1eIOMde1g9HtEG5dVh8AgrzMoR6w7eY6+7lk7ZtrG5BLNMxhs+NaK8sjxX/Z9tQ1WEYalHTOfty2I
-	yA27NJe/7Myh6eRG3P3jvIO7dXIwPcpTyHaOI6RTVpJ5oc/13UG8Rvh2WMTn8f0g/uLmUCCCLZEqt
-	CuhGYLWQ==;
+	bh=lN+Q7nM6/KgL9LKmJ5zQ2yEGLg6vRFer2YFr722zFIY=; b=39v0YxQwoYMFhOiFZBU0iVSfYj
+	23U5Dm7/yBmIjQkvWNu7ui4Uk5CUHj2Vaebgcida9cb50IXDVcd8jiP/rOLhJzKmoefR65TSAC/SY
+	IOdh6fEYpUp+XdMdornxmVJ4/X7Jizr+KmMu+QyRTSeEH4Xg890eo0CB/FMTe2Hes9bzcBONo0Lfx
+	QH2V3+qqDHuNzGLOYOmjYuoaLvRrtDuENC6+HEMSyTU/vG/LRs68HVAf9zH9nrWCP2F3Efho55rPX
+	cRIlZ29V25A9U3ujIHKVRoukGcwy5lsDBiSDBfkOpit+RwuxmslTRpEo5EUuGYx2EzARlQZwK/Lyn
+	A/zAqckQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSb7l-009SBf-QR; Thu, 16 Feb 2023 10:04:21 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pSb8e-009SYf-QI; Thu, 16 Feb 2023 10:05:16 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSb7V-009S58-KJ; Thu, 16 Feb 2023 10:04:07 +0000
+	id 1pSb8P-009SQQ-3r; Thu, 16 Feb 2023 10:05:02 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E6A99660219B;
-	Thu, 16 Feb 2023 10:04:00 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1392666021A0;
+	Thu, 16 Feb 2023 10:04:57 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676541841;
-	bh=dtOc+ZZc2I4hPdN4XFqAP28l1JSPbCkDmYJF5WgaDoI=;
+	s=mail; t=1676541897;
+	bh=Vb8SaZM73jWuHJvZxkrtKegP9d55uT0IZ/zsS5ZMtJY=;
 	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=TQ9IdzWUsFTqwnTox4KdvD3IMxJsZNshsfb6VkT8iXkrIAmYXqwclrICzx0/s8Wov
-	 MO08Wo0DXh73HxcZC5k0IC/u8Ehx39eEYM1KHKNAqqYErEba9ZYncaIaLy4RnSs62g
-	 hYrzresK+58n3oWCOADtWZdb0ljKm6hfUwXpYKJtUaBMIxvlPwB0JYOdMXR1nWgHWL
-	 g+YNWQpNS5Ue5IHCxJpiJRv+jdHnD6pErIc0RZg5LYyYYnsPs2BaOQrh1Wu99cuSIS
-	 hFr0dE0bF2nN8WvscdxT4fj9V2MEyMlXIxv/9IG8GYxj6XAF0DExw5AMVlXOhj6bEx
-	 CZUyVJ35VrFFA==
-Message-ID: <84de90f5-da77-d3f2-c14a-d2e5c53bbf1c@collabora.com>
-Date: Thu, 16 Feb 2023 11:03:58 +0100
+	b=i4mzY9hpGDSvNwDyRGvNXHlFtxM1Y4IQN1mBJrjkE+nJCZB0aIvLSf4n8/Za0y4gl
+	 0rx9Gp1cT8A00TOyCbg8LmTaZ78xxPDThQYniFtfgGMvmfL7yQqW6hHwqdijiNOZGV
+	 YnY7ESzPR9E2EMFM/3Cybflnu+Jzg8/yJEl/Qja7C1hMEaqe1A3RIyadgjnc/r4LZC
+	 r3da7hxsbwEgr0/LPug4angA4QNsR3MSdLnVX4uvLYsPl1sTGy3i262l+LxxwZmCib
+	 b5UbaopGi6JED4MrsRxKOpOB/7s8eNacbKwOuMHQyDQOgQZtE/KIQg4kczHd5AkA4G
+	 QrqGdwgwYLZ3A==
+Message-ID: <b260ad62-58a0-0945-483a-5a8d81ecf428@collabora.com>
+Date: Thu, 16 Feb 2023 11:04:53 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.7.2
-Subject: Re: [PATCH 1/2] hwrng: add driver for MediaTek TRNG SMC
-To: Daniel Golle <daniel@makrotopia.org>, Sean Wang <sean.wang@mediatek.com>,
- Olivia Mackall <olivia@selenic.com>, Herbert Xu
- <herbert@gondor.apana.org.au>, Matthias Brugger <matthias.bgg@gmail.com>,
- Conor Dooley <conor.dooley@microchip.com>,
- Mingming Su <Mingming.Su@mediatek.com>, linux-crypto@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <89865515728cb937b6591160ad9c30b4bcc8dd41.1676467500.git.daniel@makrotopia.org>
+Subject: Re: [PATCH RESEND] dt-bindings: pwm: mediatek: add mediatek,mt7986
+ compatible
 Content-Language: en-US
+To: Daniel Golle <daniel@makrotopia.org>, devicetree@vger.kernel.org,
+ linux-pwm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Thierry Reding <thierry.reding@gmail.com>,
+ =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <john@phrozen.org>
+References: <Y+zfb2uQyKHng0kS@makrotopia.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <89865515728cb937b6591160ad9c30b4bcc8dd41.1676467500.git.daniel@makrotopia.org>
+In-Reply-To: <Y+zfb2uQyKHng0kS@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230216_020405_935156_E1A49952 
-X-CRM114-Status: GOOD (  18.24  )
+X-CRM114-CacheID: sfid-20230216_020501_350491_FB8B03BC 
+X-CRM114-Status: GOOD (  10.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,49 +79,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/02/23 14:27, Daniel Golle ha scritto:
-> Add driver providing kernel-side support for the Random Number
-> Generator hardware found on Mediatek SoCs which have a driver in ARM
-> TrustedFirmware-A allowing Linux to read random numbers using a
-> non-standard vendor-defined Secure Monitor Call.
+Il 15/02/23 14:34, Daniel Golle ha scritto:
+> Since commit 241eab76657f ("pwm: mediatek: Add support for MT7986")
+> support for the 2 PWM channels implemented in MediaTek MT7986 SoCs has
+> been added. Also add the compatible string to dt-bindings now that
+> they have been converted to YAML.
 > 
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Acked-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-Hello Daniel,
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-incidentally, I've also done some research on this one some months ago, when
-I was deep in adding support for the Helio X10 SoC (MT6795) on Xperia M5.
-
-The rng-v2 is simply the same rng but hypervised by the TF-A... and the only
-difference is, well, as you're also pointing out, that we're using secure
-monitor calls instead of direct MMIO handling.
-
-There's also not much more than what you've implemented here and the only kind
-of addition that we will ever see on this one will be about changing the SIP
-command (as some older SoCs use a different one)... so...
-
-...I don't think that adding an entirely new driver is worth the noise, hence
-I propose to simply add handling for the Secure RNG to mtk-rng.c instead: it's
-shorter and we would only need to address one if branch on that probe function
-to set a different callback.
-
-The clock should then be optional for *some* of those "v2 handling" devices,
-as if I recall correctly, some do need the clock to be handled from Linux
-anyway... otherwise this v2 driver will be "soon" looking bloody similar to
-the "v1", adding a bit of code duplication around.
-
-What do you think?
-
-Regards,
-Angelo
-
-> ---
->   MAINTAINERS                         |  1 +
->   drivers/char/hw_random/Kconfig      | 16 +++++++
->   drivers/char/hw_random/Makefile     |  1 +
->   drivers/char/hw_random/mtk-rng-v2.c | 74 +++++++++++++++++++++++++++++
->   4 files changed, 92 insertions(+)
->   create mode 100644 drivers/char/hw_random/mtk-rng-v2.c
-> 
 
 
