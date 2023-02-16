@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84A77C636CC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Feb 2023 08:00:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A178BC636CC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Feb 2023 08:01:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HwDQyziQcnL3/qYobk2rERtbLb6UKPgXAiYWHCJ3ci0=; b=Ii6cggtRHjsnqcpi6aUgOwbhrc
-	ElL7FHiiVS3xMgXBXY7j94qZJ0JxNfve+vpXi45eijlRxohDtTwPRfrx/C7cUYlW2mtIEPBxokxY4
-	l2U5aY9EYtkcqB7bdmd7fhpk1CoBvze1KcnkXkSMgH5VynXnhq1FXZSttaZIgG/s7+ROgMsM11nNv
-	aSWT7dQ+DOnhFPWA/VFc4JR8uLQnPz2BPbtVEL2bZIqxFo61t3upSvSrjgrJLlB5CYbObH+rAoOpg
-	EtJheRUuQg54cAR4sTXDjkruOc86mffsAKM5sAQo380Yp9NEtdbUsz60IVTEoiyVPdZUF8k78QGUp
-	B6UxyWfg==;
+	bh=Yeus9HGhMFXg91Mu8k0KRBkqLS/oz0WZH65lxIAAuJ4=; b=d6+VdPwBx2lCalNnOZlOXIZyzF
+	EOsgu5I6PAVpTxALJQZrZ5Vt6pU0Qv507ESFwbNVVPUDSr1Z204zRYc/JCnJWNnnJYJAZo9hbVpph
+	CBaCdfcu+O8zATMX+/soFO/NzspzQn5L+SobiZf6Mp8vTkbvrgGrPOeZdbDHBVKbbgATrR/8YV+/U
+	day1LhqkbxgkhH923cv8cmT+Q8bzExPpyCgHBk5F1jQDG7HLSg0jrRGGGmKX+brb9YKlKpNB7ZYFF
+	+elpRoge8IShSeTeYL+c+zDP5n2ZRSk6atQhT/+yEvhtDPg8DYrzBGWdH61zUOesr5ZOLBSg90Bgi
+	RLD/v8+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSZBu-008u60-8N; Thu, 16 Feb 2023 08:00:30 +0000
-Received: from mail-ua1-x933.google.com ([2607:f8b0:4864:20::933])
+	id 1pSZD4-008uPW-0D; Thu, 16 Feb 2023 08:01:42 +0000
+Received: from mail-vk1-xa31.google.com ([2607:f8b0:4864:20::a31])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSZBi-008u2Y-Ed
-	for linux-mediatek@lists.infradead.org; Thu, 16 Feb 2023 08:00:19 +0000
-Received: by mail-ua1-x933.google.com with SMTP id 30so246654uab.8
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Feb 2023 00:00:17 -0800 (PST)
+	id 1pSZD0-008uNq-Lt
+	for linux-mediatek@lists.infradead.org; Thu, 16 Feb 2023 08:01:39 +0000
+Received: by mail-vk1-xa31.google.com with SMTP id i4so771080vkn.13
+        for <linux-mediatek@lists.infradead.org>; Thu, 16 Feb 2023 00:01:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=HwDQyziQcnL3/qYobk2rERtbLb6UKPgXAiYWHCJ3ci0=;
-        b=nIRE8j59PqoJX7PnFaxwLXJvnpib/xw1mMdiCqZXNqoyJ4kCmBlKo72Y8fDay0MHP6
-         /dPlbBTBI7i9OTV+q26ngG0OlG2vv0nTzUQJ5c55Xob85LG9DRKP/pgLdeZPYzrP34LJ
-         1GT1+Tuy6HtrXbhUi5nN3KhOapekzucC/V988=
+        bh=Yeus9HGhMFXg91Mu8k0KRBkqLS/oz0WZH65lxIAAuJ4=;
+        b=fTLKg5kLU68Zmml8hKrfx4b3q25rkw8FQ3LD2kEO+bvOdm5i9zCH+LVNaofNI86K/b
+         44ssSWiBlkNTF0SFpRSG0JfsJXnR8OWbE0Dsp+JZ5IAa4kN5/OoxHKZFg4DNSwMvFkxd
+         W2NPydnU3jvW614Q+PZI0H+NpYLfDLZ/L0TeI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=HwDQyziQcnL3/qYobk2rERtbLb6UKPgXAiYWHCJ3ci0=;
-        b=Bou7JxaIA+M3cGAsnfb+fRCtHcOfd9CotD69Xap+BzgniS9s/CZyxnOCqUznH6R3hj
-         Fr6njasg/RnYQ9heUlGz5FsL+OoRBSCs5udZY6HVTmloua+0UHXqvqZvvAh+1o+yGUkA
-         ETOdKw/GHNowmVMKBPsWdLI97CsZLhikfdhNcZfAmdmehQiEkXwtenOAB29kNQm4QQRi
-         OtPsFLwLWgZTGPN+XTGGRfqr6/3jLrMnTWhYfhfv3B8jRS/wYYzS2V0v4LZsiV7FcRmj
-         fFai7wJ3eU8WwbpwD9qB606hfsxuvnZ7h4HsAJH2iSce24Ran5IDRgTRexujIsJzv0O7
-         U6bg==
-X-Gm-Message-State: AO0yUKVApdapQsA97a559T2Bcn2UGtbf2T1j2YoIwK0KCOIoX8y00LIm
-	b9ipzeaefFTQHG1nYJAH+xNK6FOZURpq+m11D4Y+dMJesS0Mn+HH
-X-Google-Smtp-Source: AK7set/WvM64Q5fol97RcKyUBZadppjKf6uZsIOu4uAc5MszrxY6orAb3miq/PyxHEIgF7hbx7+7gJfDgZu4bM62Fio=
-X-Received: by 2002:ab0:1045:0:b0:68b:728c:cf35 with SMTP id
- g5-20020ab01045000000b0068b728ccf35mr144924uab.1.1676534416768; Thu, 16 Feb
- 2023 00:00:16 -0800 (PST)
+        bh=Yeus9HGhMFXg91Mu8k0KRBkqLS/oz0WZH65lxIAAuJ4=;
+        b=O24SLVw6IfoCJPt5TVTwfpI3bkrV6flZjuzVokNuTu2hfp3Uv2ydwifnXNsOjsPHS1
+         TOYerYACZaTylDvMCQTmhZQIdrrH8ozbo+IPKIj4CWVU1UUGJ7lhBHBghZQY3phEKBJG
+         QiYIbd1rZoYvjD43QxbopplF1e+zYCerxOT2A123CmOfjzDX87A2ktlFyktLPKWbs9Bo
+         KfxRGoOkZNSv1FqW3VGZhEuA9fnCTu48Uuy59V1IQXZ9O0jxpeHOWMbGSE7RzvJZeh5V
+         l5xGRuNH0EUngD7acUDDq7ojnmcbMwbldSFhiy7pbX1XKeIK5tIHos5Mtx23Y4iDs8o0
+         pkUA==
+X-Gm-Message-State: AO0yUKVZElRPyi9Dc+Ce+oT2CLSIetoQVX7r9R/Cir+8JxT6ADIzRiKw
+	NIkM2GwNNiBgAu8R831w8judAWk4YA10YwAFHoOgMQ==
+X-Google-Smtp-Source: AK7set8MjxO55yFgtHWdPlTTau1K5AmbjLybjRWoEF/cRynJ0TSRLk4s+xuSxJmb3mqmZlt+EtAJ2do0nFQHLfogWFE=
+X-Received: by 2002:a1f:a447:0:b0:3e8:66ce:a639 with SMTP id
+ n68-20020a1fa447000000b003e866cea639mr782890vke.2.1676534497366; Thu, 16 Feb
+ 2023 00:01:37 -0800 (PST)
 MIME-Version: 1.0
-References: <20230214134127.59273-1-angelogioacchino.delregno@collabora.com> <20230214134127.59273-17-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230214134127.59273-17-angelogioacchino.delregno@collabora.com>
+References: <20230214134127.59273-1-angelogioacchino.delregno@collabora.com> <20230214134127.59273-18-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230214134127.59273-18-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 16 Feb 2023 16:00:05 +0800
-Message-ID: <CAGXv+5F+v=Sh+NaqKKcrzABS96fRqc97gq2YVWabjH7Amo0AVA@mail.gmail.com>
-Subject: Re: [PATCH v2 16/47] clk: mediatek: mt8167: Remove __initconst
- annotation from arrays
+Date: Thu, 16 Feb 2023 16:01:26 +0800
+Message-ID: <CAGXv+5H1Nz6Z4h4qbiuxxZEQJwDjMw4JykbDoNRGEkN3LS69Cg@mail.gmail.com>
+Subject: Re: [PATCH v2 17/47] clk: mediatek: mt8167: Convert to mtk_clk_simple_{probe,remove}()
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
 	johnson.wang@mediatek.com, miles.chen@mediatek.com, 
@@ -73,8 +72,8 @@ Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
 	linux-mediatek@lists.infradead.org, kernel@collabora.com
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230216_000018_535479_A92D933F 
-X-CRM114-Status: UNSURE (   7.82  )
+X-CRM114-CacheID: sfid-20230216_000138_729073_A308706F 
+X-CRM114-Status: UNSURE (   8.27  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,10 +92,10 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Tue, Feb 14, 2023 at 9:42 PM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> In preparation for converting the MT8167 clock drivers to be proper
-> platform_driver(s), drop the __initconst annotation from all of the
-> clock arrays since they will be used not only during init but also
-> during runtime.
+> Convert topckgen and infracfg clock drivers to use the common
+> mtk_clk_simple_probe() mechanism and change this from the old
+> "static" CLK_OF_DECLARE to be a platform driver, allowing it
+> to eventually be built as a module.
 >
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
