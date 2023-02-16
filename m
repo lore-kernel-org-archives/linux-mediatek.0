@@ -4,91 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB820C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Feb 2023 17:16:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4624C636CC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Feb 2023 18:10:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7Uam+EfbMJvYSMYj1PNEm4eMKYS9JSHriCql+8aR0/Y=; b=V7Mza1VBKxlA/x096Qnvbc7z87
-	OoAfnuE4/QA+i9gmo2+s4N/OstKiVQxkxW+8vbBORHj8xZF0wI7cEnnozHddC9s9N5eCJA1JN4+ev
-	i98Cul7mqaqsAffMbIhg52Y+5qT7SbJf+0N4AoTpKeWX+57plQvIjc0Rj39+aDzbGZV1XJD7YaN8x
-	5LOL9U40JzMv8l0di3KsOMLTG/xbncXpw3C+UL0b+Ja1CaJPKLFuprkgQsWzZyR4Treo0EZSy0UwW
-	33wbzq7TUvDl+TZReg9fqCOaw7SlEcHFE01610wkDuQc9aTUJSxsH7fC/iGm6s0idCS54Q9SIPuOC
-	YxGjogGg==;
+	bh=13lh7FK6sSGjwHfRkTN4AJWdNr9SQDHletqVLj15aiU=; b=O4yzJP2VYhiFQt0etkiFOIhmtm
+	MjPm/H2vYSlAEYg+U8Mwujpdo3zVZMGc8LG6e47TGX/J/MpFm3aAAKtAy9wkMtmfSKi+r0w/HfBgy
+	NrU4/Dcd+6NV+r1RGnkn1tpR8QkRdFvVlecjcWYwF4t8+GgDtGXxfxqghfIpY0vTrZiIrHF6w4Wpj
+	lIw7ncxPDe9iWp3srN6Iy+r1J9y2v+MgCieic9qtEhpNleQtbYJpSRzduxKmAeq5Wy+xH6hKdN4QJ
+	bGVfU+LVemM2kU7OMIzSC5x3WjcZe0MmOGnicdzQWbaiQbn9XqreEeseXDGE1Yjed6CW6Y3cd/RLA
+	pgvLfkkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pShrU-00BJIV-KL; Thu, 16 Feb 2023 17:16:00 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1pSiiR-00BRiS-Db; Thu, 16 Feb 2023 18:10:43 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSgru-00B6TB-My
-	for linux-mediatek@lists.infradead.org; Thu, 16 Feb 2023 16:12:25 +0000
-Received: by mail-wr1-x430.google.com with SMTP id h16so2326924wrz.12
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Feb 2023 08:12:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=7Uam+EfbMJvYSMYj1PNEm4eMKYS9JSHriCql+8aR0/Y=;
-        b=uG6JP4J5s4VgCLeaaSMrrYpMUkz7e4/+QoqIn2zymNuW8AGZIWurM14kCbo0hv7w8C
-         xiAFyM3gIPNHLY7UQRPNKfQpab5CBmhzgBs1147o4xL3s9XEebMW0/EW5HEqg3T4i5cw
-         lcj5Qt0nvvUeJJACn73GWUboKFIVQZfcAlCLEY4oTgbUTDXVdKOPcDZeEc8VbAH4lCGj
-         QMfEqX7nU10RTyrofs6XrHhFJXHYh9fNfeoH2bz5i42bZW2GC02X/OfNXNzz37faNxPs
-         kWes3m0nHyJq9xgQNTXRNPOM3XiuefIl4RVcOy6E8COMZiQQHmKL7zTKPZKSPbow/hjk
-         ycRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=7Uam+EfbMJvYSMYj1PNEm4eMKYS9JSHriCql+8aR0/Y=;
-        b=COLpWf6ZjR8+QGZesGZJCS0iweKDpioxBhIsvtpT+Fmi8W3drTafJ7cU0jDulJkBxc
-         UDPHr3qx8dhodaySfE9k2b3VocxSFceL3/5FasvcSGYnkLZD+6ru6qZ0sqKfRN+gFwes
-         24NZG7lIKeNaz97y8rVVs0UI/9Lc1kGDWisxHZqgW0lxKeg31Zvj1L5kjZyljgRkSd+H
-         4AIZVzuPkoj3F3xe8T/nPvGSAKH1njCn8qB90MUCcRmJaYnnhtw49DAbbr13bFTAwNzR
-         vG7z2u7pepxEJ3zjByEfJbUfPEmTbWW8ruT5pqY1Bc3WI2A0N31B9PF/Ab60KFDt6efe
-         ogOw==
-X-Gm-Message-State: AO0yUKUggBEiWJpx8J/GIpijqrALkI4vhBY3289WjP5+Dp0H/O8Y6CoI
-	LBSi21TNY/b/OjF1TXFSo5PJGw==
-X-Google-Smtp-Source: AK7set/JKqI19u8VBblreToMVeV9IFpXFUeRASqKuwKNy3pTpYRD6UdiZmFXkRth/8vgC4ASzyhEgg==
-X-Received: by 2002:a5d:688c:0:b0:2bf:1ec:a068 with SMTP id h12-20020a5d688c000000b002bf01eca068mr4816134wru.53.1676563936902;
-        Thu, 16 Feb 2023 08:12:16 -0800 (PST)
-Received: from [127.0.0.1] ([82.66.159.240])
-        by smtp.gmail.com with ESMTPSA id m16-20020adff390000000b002c56a1a5a95sm1845586wro.30.2023.02.16.08.12.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 Feb 2023 08:12:16 -0800 (PST)
-From: Guillaume Ranquet <granquet@baylibre.com>
-Date: Thu, 16 Feb 2023 17:02:25 +0100
-Subject: [PATCH v8 1/3] dt-bindings: phy: mediatek: hdmi-phy: Add mt8195
- compatible
+	id 1pSiiO-00BRgb-VW
+	for linux-mediatek@lists.infradead.org; Thu, 16 Feb 2023 18:10:42 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 535E0B826BA;
+	Thu, 16 Feb 2023 18:10:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E7E4C433D2;
+	Thu, 16 Feb 2023 18:10:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1676571036;
+	bh=uzqucx/LrtONslFI6zFbkjiUdWhRDsYoF6uZqjKaGG4=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=H/uqcPeB8dbJbIn7D3f3VvPmx47rdnEYXZcG/1/Lpz42f35J943dmqEqXlx0ix2+u
+	 r6tju1d882rjR9BYYS8VLBVynl+DskaRVSNsrxtS2vvXSScZgMMMEsiielqf6DM6Pw
+	 f1a/47K1E8Q3qx6AfFicoDeltN/tqcTjboJkTd3cVzQQP4C1mmSH1/WmUC5cl8Hvdg
+	 FKCmPpBys0M8KwplZRU5KyVvj97Lel/qufBoO7hF4AiSewxB924Hzs5xX4aQsxRM/b
+	 ULW5Gy2bTk6eHH+2nJ5SwKnCQDYRFcmhQ3+Q9gB/RVSH1dcGfjspq1Y1GpBgGRZxpL
+	 C/2ZKBfTNN/LA==
+Date: Thu, 16 Feb 2023 10:10:34 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: "Yanchao Yang (=?UTF-8?B?5p2o5b2m6LaF?=)" <Yanchao.Yang@mediatek.com>
+Cc: "Chris Feng (=?UTF-8?B?5Yav5L+d5p6X?=)" <Chris.Feng@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "Mingliang Xu (=?UTF-8?B?5b6Q5piO5Lqu?=)" <mingliang.xu@mediatek.com>, "Min
+ Dong (=?UTF-8?B?6JGj5pWP?=)" <min.dong@mediatek.com>, "linuxwwan@intel.com"
+ <linuxwwan@intel.com>, "m.chetan.kumar@intel.com"
+ <m.chetan.kumar@intel.com>, "Liang Lu (=?UTF-8?B?5ZCV5Lqu?=)"
+ <liang.lu@mediatek.com>, "Haijun Liu (=?UTF-8?B?5YiY5rW35Yab?=)"
+ <haijun.liu@mediatek.com>, "Haozhe Chang (=?UTF-8?B?5bi45rWp5ZOy?=)"
+ <Haozhe.Chang@mediatek.com>, "Hua Yang (=?UTF-8?B?5p2o5Y2O?=)"
+ <Hua.Yang@mediatek.com>, "ryazanov.s.a@gmail.com" <ryazanov.s.a@gmail.com>,
+ "Xiayu Zhang (=?UTF-8?B?5byg5aSP5a6H?=)" <Xiayu.Zhang@mediatek.com>,
+ "loic.poulain@linaro.org" <loic.poulain@linaro.org>, "pabeni@redhat.com"
+ <pabeni@redhat.com>, "edumazet@google.com" <edumazet@google.com>, "Ting
+ Wang (=?UTF-8?B?546L5oy6?=)" <ting.wang@mediatek.com>,
+ "johannes@sipsolutions.net" <johannes@sipsolutions.net>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Aiden Wang (
+ =?UTF-8?B?546L5ZKP6bqS?=)" <Aiden.Wang@mediatek.com>, "Felix Chen (
+ =?UTF-8?B?6ZmI6Z2e?=)" <Felix.Chen@mediatek.com>, "Lambert Wang (
+ =?UTF-8?B?546L5Lyf?=)" <Lambert.Wang@mediatek.com>, "davem@davemloft.net"
+ <davem@davemloft.net>, "Mingchuang Qiao (=?UTF-8?B?5LmU5piO6Zev?=)"
+ <Mingchuang.Qiao@mediatek.com>, "Guohao Zhang (=?UTF-8?B?5byg5Zu96LGq?=)"
+ <Guohao.Zhang@mediatek.com>
+Subject: Re: [PATCH net-next v3 01/10] net: wwan: tmi: Add PCIe core
+Message-ID: <20230216101034.3f742834@kernel.org>
+In-Reply-To: <2e518c17bf54298a2108de75fcd35aaf2b3397d3.camel@mediatek.com>
+References: <20230211083732.193650-1-yanchao.yang@mediatek.com>
+	<20230211083732.193650-2-yanchao.yang@mediatek.com>
+	<20230214202229.50d07b89@kernel.org>
+	<2e518c17bf54298a2108de75fcd35aaf2b3397d3.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20220919-v8-1-a84c80468fe9@baylibre.com>
-References: <20220919-v8-0-a84c80468fe9@baylibre.com>
-In-Reply-To: <20220919-v8-0-a84c80468fe9@baylibre.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
- Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
- Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>, 
- Jitao shi <jitao.shi@mediatek.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- mac.shen@mediatek.com, stuart.lee@mediatek.com, 
- Guillaume Ranquet <granquet@baylibre.com>
-X-Mailer: b4 0.13-dev
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230216_081222_831563_F0B10F38 
-X-CRM114-Status: UNSURE (   8.20  )
+X-CRM114-CacheID: sfid-20230216_101041_180882_ECB5A5C0 
+X-CRM114-Status: UNSURE (   9.64  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -104,30 +96,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a compatible for the HDMI PHY on MT8195
+On Thu, 16 Feb 2023 12:50:44 +0000 Yanchao Yang (=E6=9D=A8=E5=BD=A6=E8=B6=
+=85) wrote:
+> > > +	pci_clear_master(pdev);
+> > > +	mtk_mhccif_exit(mdev);
+> > > +	mtk_pci_free_irq(mdev);
+> > > +	mtk_pci_bar_exit(mdev);
+> > > +	pci_disable_device(pdev);
+> > > +	pci_load_and_free_saved_state(pdev, &priv->saved_state);
+> > > +	devm_kfree(dev, priv);
+> > > +	devm_kfree(dev, mdev); =20
+> >=20
+> > Why are you using devm_ if you call kfree explicitly anyway?
+> > You can save some memory by using kfree() directly. =20
+> devm_kzalloc(), devm_ioremap_resource(), devm_request_irq(),
+> devm_gpio_request(), devm_clk_get()=E2=80=A6..
+> They will be freed automatically
+> when corresponding device is freed, so you don=E2=80=99t have to free them
+> explicitly. This also make probe error easier to handle. Is it ok?
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
----
- Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml
-index 6cfdaadec085..f3a8b0b745d1 100644
---- a/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml
-+++ b/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml
-@@ -28,6 +28,7 @@ properties:
-           - const: mediatek,mt2701-hdmi-phy
-       - const: mediatek,mt2701-hdmi-phy
-       - const: mediatek,mt8173-hdmi-phy
-+      - const: mediatek,mt8195-hdmi-phy
- 
-   reg:
-     maxItems: 1
-
--- 
-2.39.0
-
+Yes.
 
