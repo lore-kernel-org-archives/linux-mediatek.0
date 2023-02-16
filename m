@@ -4,77 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C01FCC636D7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Feb 2023 08:56:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4C1BC636CC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Feb 2023 09:14:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SHowq6DBf2cQJTeoPMKiGvKAjNuUb3fl52JbQ7+XiTQ=; b=ehEAbZg/9zgSa8OPDKbHS4/90T
-	KDxHVPdanh1IFGnzdp17932jgWrMJvwEzEqO8Sp9hSidxg7KYKpiC7AZ9dpU0ozz8NsYXgfCdE70j
-	BgYRkMnZ/S2S+KAnPl4Jh8gSmQ1CP15jYQ+stHXKXcIBiSxcdqnkVm3KBqHL/yF4iUmknKD+Z6RjM
-	GVtWaGbNDibx/FhVKt3TpXObLNWPKjRQGGyPZebMQ41MkB5J4QO+8Z9sBU7Aexow5JoKAvLDPG5kM
-	CF/oiATYKHwx0E2B3yj6pOEZSVlcwSsbSg0ZQta38tkZ3+bpaMF/73FyTYQtDZo6XKNWim7weeEaY
-	JJPj7ucw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fva50b8GrxlgxldYtMJBliwxYf7DEDUsjT9ufEpVuWs=; b=a0DdvkpNS0k0HXJqevdNOy+tre
+	0x1vMchWeg8l6e1l4yBDtIBDRBTgTjD8muNxd7ntF2y+CW+hEh1WACnS1bitWdRne9uK7XT6/pMFC
+	erI2DyeBKqOhW8StKyodP1c85d5Ipy1q6zRKdFZ2U4KglZctggMGMTZ+DP6vKHouzLhEDIMk4el23
+	NAiaSWm+Mp72ABbT93kfGbGZmB5uLHpU/PAWbiwvf8F9RppMF88+az7V8Cq2kxJoBgk4hLnE5hLBI
+	M41vWu8iGEsIdF4RjyLQ3U1B6PTw3bhzdVra016/4dx5n58mIws5Y6hmHWrpSfJ64ie//NTenhpRs
+	oK9utI6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSa3p-0098VP-R6; Thu, 16 Feb 2023 08:56:13 +0000
-Received: from mail-vs1-xe32.google.com ([2607:f8b0:4864:20::e32])
+	id 1pSaLo-009BrL-37; Thu, 16 Feb 2023 09:14:48 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSa3k-0098TP-2g
-	for linux-mediatek@lists.infradead.org; Thu, 16 Feb 2023 08:56:13 +0000
-Received: by mail-vs1-xe32.google.com with SMTP id q190so1174889vsa.13
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Feb 2023 00:56:07 -0800 (PST)
+	id 1pSaLd-009BnR-6P
+	for linux-mediatek@lists.infradead.org; Thu, 16 Feb 2023 09:14:39 +0000
+Received: by mail-ej1-x636.google.com with SMTP id jg8so3561124ejc.6
+        for <linux-mediatek@lists.infradead.org>; Thu, 16 Feb 2023 01:14:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=SHowq6DBf2cQJTeoPMKiGvKAjNuUb3fl52JbQ7+XiTQ=;
-        b=fhvc6hUjWFRQPnJCbs+gDum3iHeWp5QtJVemXtboy3T9nV+apTLF+hpD6+8Q3K2E6i
-         yL5qd4ZnxGbaHgUyFVVUCZi9pKI4I5Q6t3tqURU6rWctfCtScC5nsVIAd1XrmNBgbxaq
-         jXSSbyO+OpNzI61O85gfJbT1Feed2X+YxFxpI=
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=fva50b8GrxlgxldYtMJBliwxYf7DEDUsjT9ufEpVuWs=;
+        b=sMpHhFntXLyf3Jmld4QJX2eireDFCwQQBDBI2jY8bPjcAMN2ZHhutIKyFktb5S6PlV
+         HEokQ7CW+nKEDlYPDP5tZr7VEITH/0Zx359EJ8GCekCBnunuWOcWABiGHtqjMLt0UX9c
+         ik4nglpIBLWtAGoUcpXE2lQ8YAmqiBP6QVt//6+j2fyB4gjGtj0cUGKa4X0rdCyuPXtu
+         LdCcZ468MwpYGNdZ+diXyQDYCAdbcLA3UKa0Ml9eFyWKIJEidfRuZPAZJMhgrdIGPzkI
+         tI2GGGT67SF7JCDvLRZoqOhHNbYErSZUJLWK0c4moESSFf85KQ6uAU/S14VcnfAhqjqR
+         HjHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=SHowq6DBf2cQJTeoPMKiGvKAjNuUb3fl52JbQ7+XiTQ=;
-        b=XO5MnqFMdErdJfSZnWyg9gwu8oEvr82RXZ/vrZtj3zSgQuIQgoVHKgN2kDEwDiw2ML
-         WD4AZ1OpkqHr6Pe9KbkkxHDOlmqdkj1pDtLVDhZgPo+wU77/ZSpqf9BS24eDeo5xNC38
-         Bjm1PZvqczCn4SZXwDycD/h6hUhStwxzUqnObzYqILo7dKMzRLQxfsOfCSRunMT6mTGF
-         Gt2xuHBRBbBz+kjZzOIaoeDzb7Pt5/ImbxAXiCrPSql9msFHxKZl33NYDVg0A5kYx8YC
-         eUPuHzlX/iy45GdlNeGrVCF9CqpMxXY0yGPcYX0wCbSbiPDk45yQLDAJ6sQyOI1EoI2k
-         VU8A==
-X-Gm-Message-State: AO0yUKVn2nv461sB9iYy1I8Px0BwAsUXr9Dml7l3PHgl0XvCasmPBbH+
-	McEZ1P+xdzWw9qqJYDpr2fNVZju/AZ7zcOprbYXhvQ==
-X-Google-Smtp-Source: AK7set+vp6162xHF8teoDckEkkowi9+9lSlBTLWUQzkpE/prNx60QCTqa0FZ8/nPJQXtuohzL5bzLLspqVQH4Bpkn+g=
-X-Received: by 2002:a67:f749:0:b0:3fc:58d:f90f with SMTP id
- w9-20020a67f749000000b003fc058df90fmr965643vso.60.1676537766972; Thu, 16 Feb
- 2023 00:56:06 -0800 (PST)
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=fva50b8GrxlgxldYtMJBliwxYf7DEDUsjT9ufEpVuWs=;
+        b=IU4Xyia3GpBxQL6oC8ojzsp3AGqOXRIYlPzLGRCnNeA0pbVywSh8bX4vWHwzuVGlCO
+         rbqqeeWbya2TdIDXn0zG1rI4KHMaOT1RfITqouYo3zeja3uHNhyL9/7ef0BUY/HYqbON
+         UuTgVywrVB8OMH0WNF2CHCyLK7+4yQ8zwXbug05lR5MckOuUaWCc0vMRJKX1Ftw52rS1
+         luwDCCkUiXvFkaxPmq8RuZXhBCM8HFiH5iybkbtttV2TTKkrF+gdbmou48kImyjtyfYn
+         kgY4zA949Nw+7MLR5rN4onpRN/pMDMGt/IGVix7J5vkAVygt6xGntnroMJvGQ3FwtRcJ
+         LLww==
+X-Gm-Message-State: AO0yUKW18yeC2vnyozDjAzEVOQjhHdePhLSkmOPp0RY0sCtgZrIPnGpW
+	n0RdAet7cSGjCXnbnblX7HKcMg==
+X-Google-Smtp-Source: AK7set+yGgy9zHqyv9fI0T0DsAMPct9xvmoV8QwrREKROJoG352EmfWtwXagqgHQklpXsy91twxdqg==
+X-Received: by 2002:a17:907:174d:b0:880:3129:d84a with SMTP id lf13-20020a170907174d00b008803129d84amr5500539ejc.60.1676538875587;
+        Thu, 16 Feb 2023 01:14:35 -0800 (PST)
+Received: from [192.168.1.109] ([178.197.216.144])
+        by smtp.gmail.com with ESMTPSA id kj9-20020a170907764900b008b163745b7dsm447510ejc.120.2023.02.16.01.14.33
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 16 Feb 2023 01:14:35 -0800 (PST)
+Message-ID: <5341d0fa-1415-b711-30f0-f0a867af0bc4@linaro.org>
+Date: Thu, 16 Feb 2023 10:14:33 +0100
 MIME-Version: 1.0
-References: <20230214134127.59273-1-angelogioacchino.delregno@collabora.com> <20230214134127.59273-21-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230214134127.59273-21-angelogioacchino.delregno@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 16 Feb 2023 16:55:55 +0800
-Message-ID: <CAGXv+5EepjwoVSZA=XFgwy_qiL3A2eZ7ZPBy-9Mb=D7OHYCjLQ@mail.gmail.com>
-Subject: Re: [PATCH v2 20/47] clk: mediatek: mt8183: Convert all remaining
- clocks to common probe
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
-	johnson.wang@mediatek.com, miles.chen@mediatek.com, 
-	chun-jie.chen@mediatek.com, daniel@makrotopia.org, fparent@baylibre.com, 
-	msp@baylibre.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com, 
-	zhaojh329@gmail.com, sam.shih@mediatek.com, edward-jw.yang@mediatek.com, 
-	yangyingliang@huawei.com, granquet@baylibre.com, pablo.sun@mediatek.com, 
-	sean.wang@mediatek.com, chen.zhong@mediatek.com, linux-kernel@vger.kernel.org, 
-	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH 2/2] dt-bindings: rng: Add MediaTek MT7981 TRNG
+Content-Language: en-US
+To: Daniel Golle <daniel@makrotopia.org>, devicetree@vger.kernel.org,
+ Sean Wang <sean.wang@mediatek.com>, Olivia Mackall <olivia@selenic.com>,
+ Herbert Xu <herbert@gondor.apana.org.au>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Conor Dooley <conor.dooley@microchip.com>,
+ Mingming Su <Mingming.Su@mediatek.com>, linux-crypto@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <89865515728cb937b6591160ad9c30b4bcc8dd41.1676467500.git.daniel@makrotopia.org>
+ <c750e786ad0f529d2ae63c8f766d3c294808ff53.1676467500.git.daniel@makrotopia.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <c750e786ad0f529d2ae63c8f766d3c294808ff53.1676467500.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230216_005608_362642_6ADDEADC 
-X-CRM114-Status: GOOD (  13.48  )
+X-CRM114-CacheID: sfid-20230216_011437_355924_74FA25F4 
+X-CRM114-Status: GOOD (  17.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,24 +100,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 14, 2023 at 9:42 PM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Switch to mtk_clk_simple_{probe,remove}() for infracfg and topckgen
-> clocks on MT8183 to allow full module build for clock drivers.
->
-> Differently from other MediaTek clock drivers, it was necessary to
-> change the name of the `clk13m` clock, as that is already declared
-> in the SoC's devicetree as a "fixed-factor-clock" (with the same
-> name) and redeclaring it here would obviously fail to register the
-> entire clock controller; this clock wasn't dropped only to retain
-> compatibility with older devicetrees
->
-> As a note, the `clk13m` clock is not mentioned in any parent names
-> array(s) as the correct one (csw_f26m_d2) is already used in place
-> of that.
->
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On 15/02/2023 14:27, Daniel Golle wrote:
+> Add documentation to describe the MediaTek true random number generator
+> which is provided by ARM TrustedFirmware-A of the MT7981.
+> 
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+>  .../bindings/rng/mediatek,mt7981-rng.yaml     | 39 +++++++++++++++++++
+>  MAINTAINERS                                   |  1 +
+>  2 files changed, 40 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/rng/mediatek,mt7981-rng.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/rng/mediatek,mt7981-rng.yaml b/Documentation/devicetree/bindings/rng/mediatek,mt7981-rng.yaml
+> new file mode 100644
+> index 000000000000..d577d60538d8
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/rng/mediatek,mt7981-rng.yaml
+> @@ -0,0 +1,39 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/rng/mediatek,mt7981-rng.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek Random number generator (v2/SMC)
+> +
+> +maintainers:
+> +  - Daniel Golle <daniel@makrotopia.org>
+> +
+> +properties:
+> +  $nodename:
+> +    pattern: "^rng$"
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+1. We don't enforce it in device bindings, so drop it.
+2. It's not even correct. You have reg.
+
+
+> +
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt7981-rng
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    maxItems: 1
+> +
+> +  clock-names:
+> +    items:
+> +      - const: rng
+
+Drop clock-names and rely on index.
+
+> +
+> +required:
+> +  - compatible
+
+and reg?
+
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    rng {
+> +      compatible = "mediatek,mt7981-rng";
+> +    };
+
+Best regards,
+Krzysztof
+
 
