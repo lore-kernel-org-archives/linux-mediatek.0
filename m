@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDDCEC636CC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Feb 2023 13:26:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E887C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Feb 2023 13:51:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=jC/44U9ggSgBJrhBDKLr2l+gbCEuEsIxD9KWU3fY9AI=; b=qgwFSqKSiIShf11YO5J18Rw+qZ
-	xPKAIVPT2Ebl7zHRxqEV90oB057uwrZoH4M9qA/ZqQzo/D6fRAYBiu0CCdDl2KPV1sOBON0QK8cPK
-	pBytxUDUfj353qYezmN3ocFPI10h4s7c3zggIQUF8ysOikY9nwxwUF13PzA6O9A1ef07bAsDAmqIF
-	HfUikl+jMhnaLPMMlKXfmKhp45K4B/AkcE7nLTITI0KJWZppkdgH4ArALZW+LkQyQ0S2xNnZqmMHj
-	FlIn7XrxQsvW/RadYu5cRZCv0Oh/tPtjn78s+RShisguwtQN+xkV36mcURTM7zLhTRp9MZ4ELewvv
-	HoxypB8Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oLQJFu/YeHJZ+e6PfLY6thqunBy9QxUaZpPGg1FO/6c=; b=UW/3w9pe9IoFlZfEwiw3Y2PZEa
+	y86/eRkKlWdG+Mf8TGsy3wI/BAHsn37GTOjV4PUqGoNUgnvMzjNt6riLomGOp8d/pAIREH11UyVcf
+	vaGqoZ7m+1JAn4W9oA1IGF+Tkd4eh3dNREIgSNDX8aChlS8VfFFBz9c9lRFcG4tstHTu3lAlN+7oy
+	19UuVbHuwKn6bWF9q9JESamriAHutpzSuPUSGtiW0WFQ8AQEYUbjHUX6od0AyfuRcnGXFUadCCTUp
+	hRg/gdq5KiGrlerDBVeq0Trrtf+FhB4+UZodQMayUZSLbumGsIIzdJxDDRIw4dxgDOVFrYfXdwOqv
+	fsk5VGIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSeGx-00AKS7-Nx; Thu, 16 Feb 2023 13:26:03 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pSefW-00ARLo-JM; Thu, 16 Feb 2023 13:51:26 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSeGu-00AKQZ-9K; Thu, 16 Feb 2023 13:26:01 +0000
-X-UUID: 6c145238adfd11edbbe3f76fe852e059-20230216
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=jC/44U9ggSgBJrhBDKLr2l+gbCEuEsIxD9KWU3fY9AI=;
-	b=Grlid5vj+MrP6NoXWfg17r07PKVghwWOEit2u0SzbQ6FQVBtAxFIOYC0wPKMyyOhCqMBqCXF3CRxHNah+NMYbuLNJUsuqG6JBB9vlD1/0TVJwzEWUaCzUi0y8hSKI1uXHBS5thlM/i9HaVBSI3oaDbpkrKnakSscREePQ/caRWg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.19,REQID:d3a45620-335b-49ae-9a63-057e8e3e4808,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:90
-X-CID-INFO: VERSION:1.1.19,REQID:d3a45620-335b-49ae-9a63-057e8e3e4808,IP:0,URL
-	:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
-	N:quarantine,TS:90
-X-CID-META: VersionHash:885ddb2,CLOUDID:6ab136f3-ddba-41c3-91d9-10eeade8eac7,B
-	ulkID:230216212548Y2VVW4HZ,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-	,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-UUID: 6c145238adfd11edbbe3f76fe852e059-20230216
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <roger.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 859673882; Thu, 16 Feb 2023 06:25:46 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 16 Feb 2023 21:25:44 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 16 Feb 2023 21:25:44 +0800
-From: Roger Lu <roger.lu@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
-	<eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Nicolas Boichat
-	<drinkcat@google.com>
-CC: Fan Chen <fan.chen@mediatek.com>, Roger Lu <roger.lu@mediatek.com>,
-	Jia-wei Chang <jia-wei.chang@mediatek.com>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-pm@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: soc: mediatek: mtk-svs: fix passing zero to 'PTR_ERR'
-Date: Thu, 16 Feb 2023 21:25:43 +0800
-Message-ID: <20230216132543.814-1-roger.lu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pSefT-00ARHn-FN; Thu, 16 Feb 2023 13:51:24 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1676555471; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=n3e6V0OoPliLCxnynkYX1BT0oz7+TNyIk8cvea0eiqe4uhM7lO/JuA1xYU4LF6Pmu849emz0P83ccBnCu9I8xfoeNLdO31As5D7so3LUl6ajWqeLvaYfNll8kW6Am9AQVQ7oAMehd5swybxSegfKpfRmCOzHxAt3eC8p6j+9NYc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1676555471; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=oLQJFu/YeHJZ+e6PfLY6thqunBy9QxUaZpPGg1FO/6c=; 
+	b=TZjmtyk4aNX8lmMDa8z05GXFEswC/XBFhHCG7FcGwH+yGYwufq4MqXV1qUL3rJvrt+cbW0eITS/EX9lqq/1YARtTPQ08KQXu/wvpzqS+mgA4we6WbNKGoUbK9Ca+ZY5atYQCyRGVuL7dRuPaoxJkd1YvmBgcYfkKdgHme+J6jqM=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1676555471;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=oLQJFu/YeHJZ+e6PfLY6thqunBy9QxUaZpPGg1FO/6c=;
+	b=gpemIUQvj1NFOsbN+oIYoYJhtN85CpnezhoiwOevE2FgZUTT82C5P0v41oOomAth
+	5+e/V+j7szwyaemk5Z0DndHE5YFJt0orAMRyHIdwzjg3Kk/kAnY/hXCXTYV3x1X9Rne
+	zbN+TM9mUbHjGtk1euDfw9IYlekPufisbh5I22b0=
+Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
+	with SMTPS id 1676555466955976.4479803295967; Thu, 16 Feb 2023 05:51:06 -0800 (PST)
+Message-ID: <88ef812b-b8e8-f640-f9f7-a1579ea69d31@arinc9.com>
+Date: Thu, 16 Feb 2023 16:50:57 +0300
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH v2 2/2] pinctrl: add mt7981 pinctrl driver
+To: Daniel Golle <daniel@makrotopia.org>, linux-gpio@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Sean Wang <sean.wang@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Miles Chen <miles.chen@mediatek.com>,
+ Edward-JW Yang <edward-jw.yang@mediatek.com>,
+ Johnson Wang <johnson.wang@mediatek.com>,
+ Fabien Parent <fparent@baylibre.com>, Sam Shih <sam.shih@mediatek.com>,
+ Jianhui Zhao <zhaojh329@gmail.com>
+References: <cover.1674693008.git.daniel@makrotopia.org>
+ <ef5112946d16cacc67e65e439ba7b52a9950c1bb.1674693008.git.daniel@makrotopia.org>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <ef5112946d16cacc67e65e439ba7b52a9950c1bb.1674693008.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230216_052600_354170_7B504D2A 
-X-CRM114-Status: GOOD (  11.44  )
+X-CRM114-CacheID: sfid-20230216_055123_607024_73772E17 
+X-CRM114-Status: GOOD (  15.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,31 +85,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-nvmem_cell_get() cannot return NULL so checking for NULL is wrong here.
+Hi Daniel,
 
-Signed-off-by: Roger Lu <roger.lu@mediatek.com>
-Fixes: 6c7174fd90a4690 ("soc: mediatek: mtk-svs: use svs get efuse common function")
-Reported-by: kernel test robot <lkp@intel.com>
-Reported-by: Dan Carpenter <error27@gmail.com>
-Link: https://lore.kernel.org/r/202302160720.N64SWT4l-lkp@intel.com/
----
- drivers/soc/mediatek/mtk-svs.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On 26.01.2023 03:34, Daniel Golle wrote:
+> Add pinctrl driver for the MediaTek MT7981 SoC, based on the driver
+> which can also be found the SDK.
+> 
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+>   drivers/pinctrl/mediatek/Kconfig          |    5 +
+>   drivers/pinctrl/mediatek/Makefile         |    1 +
+>   drivers/pinctrl/mediatek/pinctrl-mt7981.c | 1048 +++++++++++++++++++++
+>   3 files changed, 1054 insertions(+)
+>   create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt7981.c
+> 
+> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
+> index fed02c6fea062..f20c28334bcbf 100644
+> --- a/drivers/pinctrl/mediatek/Kconfig
+> +++ b/drivers/pinctrl/mediatek/Kconfig
+> @@ -127,6 +127,11 @@ config PINCTRL_MT7622
+>   	default ARM64 && ARCH_MEDIATEK
+>   	select PINCTRL_MTK_MOORE
+>   
+> +config PINCTRL_MT7981
+> +	bool "Mediatek MT7981 pin control"
+> +	depends on OF
+> +	select PINCTRL_MTK_MOORE
+> +
 
-diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index a7eb019b5157..8127fb6d587b 100644
---- a/drivers/soc/mediatek/mtk-svs.c
-+++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -1726,7 +1726,7 @@ static int svs_get_efuse_data(struct svs_platform *svsp,
- 	struct nvmem_cell *cell;
- 
- 	cell = nvmem_cell_get(svsp->dev, nvmem_cell_name);
--	if (IS_ERR_OR_NULL(cell)) {
-+	if (IS_ERR(cell)) {
- 		dev_err(svsp->dev, "no \"%s\"? %ld\n",
- 			nvmem_cell_name, PTR_ERR(cell));
- 		return PTR_ERR(cell);
--- 
-2.18.0
+Is there a reason why you removed these lines from v1?
 
++	depends on ARM64 || COMPILE_TEST
++	default ARM64 && ARCH_MEDIATEK
+
+Arınç
 
