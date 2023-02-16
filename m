@@ -4,71 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7533C636CC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Feb 2023 07:41:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E839C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Feb 2023 07:54:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XfwT9jIm5vIA6k5YbOkqQAeIeIMG7LNP0etjeksjkTw=; b=Py+PJk9Ws2hOju05RRCnwCw+gt
-	A6rAFuFUjOrtN59IvL5R3Jz1zGQIwDjniBNqyWnG9ml6zbPGRMvitjOMou3QwOL2hKEY0rJJ2AIHW
-	Zl32TSMt5eQqDPOIYpv269n8mPV9lN55D1Qmoo6NkCI09HVG1v2za1IdVa/GCzNr09E+CH6jWzxie
-	uCp/iuoezb5n8uKzpxdQ0vN9EjlMxbnFhhyTTAgnO/V0W+RLcwXVUF3wdjO8B8pRzRmXKQhij6BFN
-	nduGygm565MZSADv4P4nKOlN9brrcshjNPqQ4Mlu/mGt+QAlrJr+kzVUglSHFhNSjSMWfEXFbX0Of
-	HxbUY+dQ==;
+	bh=xONmYBw6JTvrmLO+BA4K5ITh/kiXRq2fHlncM+ovzGs=; b=jMnUYeFFnlpV79g2Gqhfs3kRfw
+	Eaxus06mWZ6mtYFNF5MB6YFGkvBh5I3LRrI8/4UAY8p6uBPUe8z3zzgPvsNcxQXkH++x6fKtLctOy
+	uXd4NT0whNPb8DeX4Y2rVk4zGJWxEe6BPehOWGFG9oNBbwZxEnn59owcrL1hU+eh+XBLcDLnbZG1J
+	+xODiuVj6kvJFH4KTB+nzslX7NrSIJkig14Rs4k/y3wh8WpuR1CIwqnLsdXeKSRi3wqKNRq+L14hl
+	rpF3UzTTjBGGzj7AGjCw8+PAP4O8b7x0rViFtq2ne/aY6Y4xgznkV9PvOuQ6t1WnOaxhK0liZxC+D
+	KgYIVKdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSYtC-008pz4-6i; Thu, 16 Feb 2023 07:41:10 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pSZ6F-008shB-6r; Thu, 16 Feb 2023 07:54:39 +0000
+Received: from mail-vk1-xa2e.google.com ([2607:f8b0:4864:20::a2e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSYt2-008pxF-3e; Thu, 16 Feb 2023 07:41:01 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id DD7EA61EA3;
-	Thu, 16 Feb 2023 07:40:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 46F04C433D2;
-	Thu, 16 Feb 2023 07:40:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1676533258;
-	bh=CsjYBJv3KoyajR+dTDD6EPW6J8/wsE97iPGoBTCmLjQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=asoBJcP4g5hiqe6+H63ficVX5ZhIUHvvvRqgP/o21FJASYhO+1Q0dELVGFI3Of2+7
-	 czmYWZd+RqRnQRT8PJJgScEeKS5aJvlxx9qiuL2z5NOfeNUy5RQBmeB4oyrK47Y78B
-	 WTL+PMlJkVxcIqKoy1977rXuV7I5EOtKreScHcDwtPEQkfyMeItcPiDFIwVttVBmpN
-	 zcssRomtuKczYGSQc/jBu4qOGj/TocjNzf4eqYd/Vlo5GWaNY0BAh+SRYORWX2BHpj
-	 gqsOC9hKXvLPXIIxuWP6NTtO5EyRmSUcVgloTCQxaI3rqUZ0EIrSurOeM2AQ1PLPNc
-	 li1Edq5IRJ7KQ==
-Date: Thu, 16 Feb 2023 13:10:40 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Po-Wen Kao <powen.kao@mediatek.com>
-Cc: Alim Akhtar <alim.akhtar@samsung.com>,
-	Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>,
-	"James E.J. Bottomley" <jejb@linux.ibm.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	wsd_upstream@mediatek.com, peter.wang@mediatek.com,
-	stanley.chu@mediatek.com, alice.chao@mediatek.com,
-	chun-hung.wu@mediatek.com, cc.chou@mediatek.com,
-	chaotian.jing@mediatek.com, jiajie.hao@mediatek.com,
-	mason.zhang@mediatek.com, quic_asutoshd@quicinc.com,
-	linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/2] scsi: ufs: core: Fix mcq tag calcualtion
-Message-ID: <20230216074040.GB2420@thinkpad>
-References: <20230215123750.15785-1-powen.kao@mediatek.com>
+	id 1pSZ6B-008sgC-Up
+	for linux-mediatek@lists.infradead.org; Thu, 16 Feb 2023 07:54:37 +0000
+Received: by mail-vk1-xa2e.google.com with SMTP id f17so804167vkm.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 Feb 2023 23:54:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=xONmYBw6JTvrmLO+BA4K5ITh/kiXRq2fHlncM+ovzGs=;
+        b=hjpwgbhflizIPQ8Ei73NkCuu8TvOmmoAobeCoLPA8SxjBaAmOI0B61L5Vu8/4mGSHs
+         Lpj/DzyA7JzX3tlFL+FZC60MNAFU2i+wAXx0StOQFyjZ7YFVlfidBhpRZM5ZzF2NeYcC
+         aQYiYAUH7/8kxnBUvc40ECxmm13ILwd5m0ZCE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=xONmYBw6JTvrmLO+BA4K5ITh/kiXRq2fHlncM+ovzGs=;
+        b=IS0Lt1xkkA6KLavqiWD/l/6ukvC4gv1LG+qSOyc+LnlMZyjO7EMrZvU9xK/16XVxql
+         oG40aWpxcx0nBZJ8iuyb7NN/x/ryFUs/SRJ6/Xxr/5mMneyTJTBdDkO44CeZt40F8YW7
+         +ZhtDQanrRT30soRYER9xWVG3F4+9rsxkx7zGOH5k8wvhS1c+Q6R4xIrhtu0Dkbc+C5X
+         Sal/dj15XZSxAd8yyHzuMSBoyGVbjCH/qmbEFWe8RoiXkliby7OtE21X9TB3bKky1o0D
+         kgSwkMOPOcFuywyoOst4RDHEwvjMonA04HCfT2/lJM3qMYNNmK1WrqlcVR76mK/CVBI+
+         45sA==
+X-Gm-Message-State: AO0yUKXq/2gVnotDO5XL9vE7h7tL9VBZY0MNO0FkMFEDmASusekSzT1F
+	zP3DXxNambrSdiQOvJ47G3qSWYOoym3uQ+7/QryeDw==
+X-Google-Smtp-Source: AK7set/28STVRdRWXGf4bMCmP2aoX0xrfMB9bmkBz4FxvyVRel7OQwwriFZLqi7THD11no6OYGV4osSvAvDXEdCPURo=
+X-Received: by 2002:a1f:a447:0:b0:3e8:66ce:a639 with SMTP id
+ n68-20020a1fa447000000b003e866cea639mr780129vke.2.1676534074560; Wed, 15 Feb
+ 2023 23:54:34 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230215123750.15785-1-powen.kao@mediatek.com>
+References: <20230214134127.59273-1-angelogioacchino.delregno@collabora.com> <20230214134127.59273-12-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230214134127.59273-12-angelogioacchino.delregno@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 16 Feb 2023 15:54:23 +0800
+Message-ID: <CAGXv+5HpWTTqrFKhkUDoZWa4h1wm=OuDHgFyMQsL-C4xKVfqOg@mail.gmail.com>
+Subject: Re: [PATCH v2 11/47] clk: mediatek: mt8365: Convert simple_gate to
+ mtk_gate clocks
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
+	johnson.wang@mediatek.com, miles.chen@mediatek.com, 
+	chun-jie.chen@mediatek.com, daniel@makrotopia.org, fparent@baylibre.com, 
+	msp@baylibre.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com, 
+	zhaojh329@gmail.com, sam.shih@mediatek.com, edward-jw.yang@mediatek.com, 
+	yangyingliang@huawei.com, granquet@baylibre.com, pablo.sun@mediatek.com, 
+	sean.wang@mediatek.com, chen.zhong@mediatek.com, linux-kernel@vger.kernel.org, 
+	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230215_234100_225941_AB80F3B6 
-X-CRM114-Status: GOOD (  19.95  )
+X-CRM114-CacheID: sfid-20230215_235436_047122_E8B3E488 
+X-CRM114-Status: GOOD (  10.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,54 +89,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 15, 2023 at 08:37:45PM +0800, Po-Wen Kao wrote:
-> Transfer command descriptor is allocated in ufshcd_memory_alloc()
-> and referenced by transfer request descriptor with stride size
-> sizeof_utp_transfer_cmd_desc()
-> instead of
-> sizeof(struct utp_transfer_cmd_desc).
-> 
-> Consequently, computing tag by address offset should also refer to the
-> same stride.
-> 
-> Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
+On Tue, Feb 14, 2023 at 9:41 PM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> On this SoC some clocks apparently don't have different offsets for
+> set/clr/sta registers hence they can be set, cleared and status-read
+> on one register: this means that it was possible to use simpler gate
+> clocks instead of custom mtk_gate ones.
+>
+> In preparation for converting this clock driver to the common probe
+> mechanism for MediaTek clocks, perform a conversion from simple_gate
+> to mtk_gate clocks since the latter does provide implicit support
+> for simple gate clocks as well.
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Fixes tag?
-
-> ---
->  drivers/ufs/core/ufs-mcq.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-> index 31df052fbc41..3a27fa4b0024 100644
-> --- a/drivers/ufs/core/ufs-mcq.c
-> +++ b/drivers/ufs/core/ufs-mcq.c
-> @@ -265,7 +265,7 @@ static int ufshcd_mcq_get_tag(struct ufs_hba *hba,
->  	addr = (le64_to_cpu(cqe->command_desc_base_addr) & CQE_UCD_BA) -
->  		hba->ucdl_dma_addr;
->  
-> -	return div_u64(addr, sizeof(struct utp_transfer_cmd_desc));
-> +	return div_u64(addr, sizeof_utp_transfer_cmd_desc(hba));
-
-I think it is not a good practice to name variables after the standard
-operators like sizeof(). It is confusing at its best.
-
-How about renaming this function to get_ucd_size() or something relevant?
-
-But the change itself LGTM!
-
-Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
-
-Thanks,
-Mani
-
->  }
->  
->  static void ufshcd_mcq_process_cqe(struct ufs_hba *hba,
-> -- 
-> 2.18.0
-> 
-
--- 
-மணிவண்ணன் சதாசிவம்
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
