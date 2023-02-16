@@ -4,62 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FF36C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Feb 2023 16:48:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6BABC636D7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Feb 2023 17:15:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k2ijWtXMOgMb8bkuKkoRFa17eDnNJw7kYRhWMsOPsVk=; b=h6ESfkXQZNTGQikrETyr6hSxG/
-	j/Z8ei3f0STY0stj7Bgn1y4N4VTSb0c3cmbfQoaR4WzkNr9CnkUSKa2YXbpK/Ci5Ys29JcY8D1Bmq
-	PjGwdIvZ7vELIjG3Zjw1l0+wsYU1IJGrNaPr+dUjpA5nN2SZMRCIJi/nihyPyBbbaGMy9N9Hb9H6s
-	wuhxV6N6o6TzdXilqZCdsXvjZA7ulShl6W7EIZvQaa1TEqv/x4r0oioxrcUjbQVGUNPNXRsnZ8mm3
-	Bm/yxYd74jWRyMPS2g1pDIDiHA5UqfpwO3G2hKV+n8ZBsRbb3HJr+L3GpweJO8fEStAdvaCaC9KQm
-	2SnH5LIQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=op30N8VplB3ypI088BE1DuG6HdC3ZVERGlwL+v56hF8=; b=c65xRr8ZOJWnw0+2ZkaEhXEw3Y
+	yFptnfAR5TeCPEfFgGenXP2VzY70YLWLHoutFpgFiCFmvxPOwfKcFpTW0rYXQ19vWK/J6ND/deghl
+	tyj5Mk4DliB+RvcYIlFwFokg3tGiGp4+QWm1JXuj+mzf8hXLiXoGeTJnIWB0VHyKnILJRIlMFADEU
+	NUZQT26MJGL+JHFgqIx2kR0H9oCq4nEl82J0mPYaTdvJFm0gROSOOTjmeYQvfDokMCIdwg24WDAa/
+	Ume4mpfGSO/39NxJDG92g9viWqXtr4Bv4afGkYTlFp29WAcGMvdu8NjU057GnymNSe+F4iXwFjuWt
+	PPYqIUkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pShQz-00BFrn-Cu; Thu, 16 Feb 2023 16:48:37 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pShrM-00BJFX-H8; Thu, 16 Feb 2023 17:15:52 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pShQw-00BFqe-65; Thu, 16 Feb 2023 16:48:35 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pShQp-0004xf-1J;
-	Thu, 16 Feb 2023 17:48:27 +0100
-Date: Thu, 16 Feb 2023 16:48:25 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Sean Wang <sean.wang@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Miles Chen <miles.chen@mediatek.com>,
-	Edward-JW Yang <edward-jw.yang@mediatek.com>,
-	Johnson Wang <johnson.wang@mediatek.com>,
-	Fabien Parent <fparent@baylibre.com>,
-	Sam Shih <sam.shih@mediatek.com>,
-	Jianhui Zhao <zhaojh329@gmail.com>
-Subject: Re: [PATCH v2 2/2] pinctrl: add mt7981 pinctrl driver
-Message-ID: <Y+5eWWoZzMej6N4I@makrotopia.org>
-References: <cover.1674693008.git.daniel@makrotopia.org>
- <ef5112946d16cacc67e65e439ba7b52a9950c1bb.1674693008.git.daniel@makrotopia.org>
- <88ef812b-b8e8-f640-f9f7-a1579ea69d31@arinc9.com>
- <Y+5ZSUURaK/hq1iq@makrotopia.org>
- <765313c2-c2d7-9450-aabd-29c471f82ce5@arinc9.com>
+	id 1pSgru-00B6Tz-N4
+	for linux-mediatek@lists.infradead.org; Thu, 16 Feb 2023 16:12:25 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id by3so2339881wrb.10
+        for <linux-mediatek@lists.infradead.org>; Thu, 16 Feb 2023 08:12:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=op30N8VplB3ypI088BE1DuG6HdC3ZVERGlwL+v56hF8=;
+        b=jgEXZWlfDe4qtHQuf4Jd+qS29NFxdCuq99gX2oiiomDmkUZCmAcArwOHwSs5Mzn/Zq
+         tw6EtSU0kn3JCd/gaeg879yxoUrkkQImAHoishjoNLUj136ChpytIYKH8S6t5/5fvxz/
+         hm5Nfc8mjClJTK0zlD7h9LWNLOc5bdZJ57z1LFhTgYNwrWFuL3g9n1Sqz/Vsq7c4A6Ms
+         sn+hhJ3dl7YYFMH42vKkBmoUL0Dwe5inEgawgt8QdgRlLUtK8m1z18OVqnv+jG4ReuFz
+         tKIHfitIXwG+jDhP2hRrroCjiUlONtCkUugswqX3mz2VIrhoMFczqVRLoxqVKFNf2GH5
+         3vDQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=op30N8VplB3ypI088BE1DuG6HdC3ZVERGlwL+v56hF8=;
+        b=KYQeCtT4/DlbPp4L6XJ7wDbKfLULaDzOM/6pRHX48hSjd+Oj9biAtaAjTrvjwlNcjy
+         LmJ+CJi6wjwOddB+SwEbJIYNSz0BGifCcKkoN7jugVlCNSb9grAbTRjYTcUXMy58/0HW
+         9XRmXHDbDdkb2RuEDg9KqHzceS3ShShnxzByFoimO0MtOZz5bLeQ3nHB+gii8y03AMRM
+         qci6Uu7xIOs3IMPzVgw9M8Nfw2tcJ7YoGo1huV26i/4DZuc2aRzyQzO2JmnDKLifCDhK
+         BTBNmdriGCEqtnxhzv2Oa1VM8jxyiOnpIBb+gLVKgxiQC7zO5UvVHFoXtchGAuhb5J+V
+         V58A==
+X-Gm-Message-State: AO0yUKU+YGSW/vVmHDZGqSE5xw4Ms7v9KkVPIEwlvYEQL1KCC68czsEB
+	Ndc8xbYKRBHsIJOMU7aChFcY8A==
+X-Google-Smtp-Source: AK7set8xSzpv3cwcbk4SfxFIeaHGJO04GQ3q7uEVVcm5jY6xK/M9RbXRhAsTmApjfVv92Og00YaeNg==
+X-Received: by 2002:a5d:518b:0:b0:2bd:d9b5:8191 with SMTP id k11-20020a5d518b000000b002bdd9b58191mr5262191wrv.61.1676563937909;
+        Thu, 16 Feb 2023 08:12:17 -0800 (PST)
+Received: from [127.0.0.1] ([82.66.159.240])
+        by smtp.gmail.com with ESMTPSA id m16-20020adff390000000b002c56a1a5a95sm1845586wro.30.2023.02.16.08.12.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 16 Feb 2023 08:12:17 -0800 (PST)
+From: Guillaume Ranquet <granquet@baylibre.com>
+Date: Thu, 16 Feb 2023 17:02:26 +0100
+Subject: [PATCH v8 2/3] phy: phy-mtk-hdmi: Add generic phy configure
+ callback
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <765313c2-c2d7-9450-aabd-29c471f82ce5@arinc9.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20220919-v8-2-a84c80468fe9@baylibre.com>
+References: <20220919-v8-0-a84c80468fe9@baylibre.com>
+In-Reply-To: <20220919-v8-0-a84c80468fe9@baylibre.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>, 
+ Jitao shi <jitao.shi@mediatek.com>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ mac.shen@mediatek.com, stuart.lee@mediatek.com, 
+ Guillaume Ranquet <granquet@baylibre.com>
+X-Mailer: b4 0.13-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230216_084834_241201_87FA7AC8 
-X-CRM114-Status: GOOD (  26.00  )
+X-CRM114-CacheID: sfid-20230216_081222_850677_394C3C6A 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,47 +103,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 16, 2023 at 07:32:13PM +0300, Arınç ÜNAL wrote:
-> On 16.02.2023 19:26, Daniel Golle wrote:
-> > On Thu, Feb 16, 2023 at 04:50:57PM +0300, Arınç ÜNAL wrote:
-> > > Hi Daniel,
-> > > 
-> > > On 26.01.2023 03:34, Daniel Golle wrote:
-> > > > Add pinctrl driver for the MediaTek MT7981 SoC, based on the driver
-> > > > which can also be found the SDK.
-> > > > 
-> > > > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> > > > ---
-> > > >    drivers/pinctrl/mediatek/Kconfig          |    5 +
-> > > >    drivers/pinctrl/mediatek/Makefile         |    1 +
-> > > >    drivers/pinctrl/mediatek/pinctrl-mt7981.c | 1048 +++++++++++++++++++++
-> > > >    3 files changed, 1054 insertions(+)
-> > > >    create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt7981.c
-> > > > 
-> > > > diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-> > > > index fed02c6fea062..f20c28334bcbf 100644
-> > > > --- a/drivers/pinctrl/mediatek/Kconfig
-> > > > +++ b/drivers/pinctrl/mediatek/Kconfig
-> > > > @@ -127,6 +127,11 @@ config PINCTRL_MT7622
-> > > >    	default ARM64 && ARCH_MEDIATEK
-> > > >    	select PINCTRL_MTK_MOORE
-> > > > +config PINCTRL_MT7981
-> > > > +	bool "Mediatek MT7981 pin control"
-> > > > +	depends on OF
-> > > > +	select PINCTRL_MTK_MOORE
-> > > > +
-> > > 
-> > > Is there a reason why you removed these lines from v1?
-> > 
-> > Oh, that seemed to have happened by accident. Imho it'd be better
-> > to have these two lines there as well.
-> 
-> Agreed. I'm preparing some patches to move the pinctrl driver for the
-> MediaTek MIPS SoCs here, this driver appears on the menuconfig even though
-> it shouldn't. Will you fix this yourself, or I can do it and add it to my
-> upcoming patch series.
+Some phys, such as mt8195, needs to have a configure callback defined.
 
-If you are anyway planning to send out a series of patches for pinctrl
-please include a patch adding these two lines as well, I will Ack that
-patch.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+---
+ drivers/phy/mediatek/phy-mtk-hdmi.c | 12 ++++++++++++
+ drivers/phy/mediatek/phy-mtk-hdmi.h |  1 +
+ 2 files changed, 13 insertions(+)
+
+diff --git a/drivers/phy/mediatek/phy-mtk-hdmi.c b/drivers/phy/mediatek/phy-mtk-hdmi.c
+index b16d437d6721..32f713301768 100644
+--- a/drivers/phy/mediatek/phy-mtk-hdmi.c
++++ b/drivers/phy/mediatek/phy-mtk-hdmi.c
+@@ -8,10 +8,12 @@
+ 
+ static int mtk_hdmi_phy_power_on(struct phy *phy);
+ static int mtk_hdmi_phy_power_off(struct phy *phy);
++static int mtk_hdmi_phy_configure(struct phy *phy, union phy_configure_opts *opts);
+ 
+ static const struct phy_ops mtk_hdmi_phy_dev_ops = {
+ 	.power_on = mtk_hdmi_phy_power_on,
+ 	.power_off = mtk_hdmi_phy_power_off,
++	.configure = mtk_hdmi_phy_configure,
+ 	.owner = THIS_MODULE,
+ };
+ 
+@@ -43,6 +45,16 @@ static int mtk_hdmi_phy_power_off(struct phy *phy)
+ 	return 0;
+ }
+ 
++static int mtk_hdmi_phy_configure(struct phy *phy, union phy_configure_opts *opts)
++{
++	struct mtk_hdmi_phy *hdmi_phy = phy_get_drvdata(phy);
++
++	if (hdmi_phy->conf->hdmi_phy_configure)
++		return hdmi_phy->conf->hdmi_phy_configure(phy, opts);
++
++	return 0;
++}
++
+ static const struct phy_ops *
+ mtk_hdmi_phy_dev_get_ops(const struct mtk_hdmi_phy *hdmi_phy)
+ {
+diff --git a/drivers/phy/mediatek/phy-mtk-hdmi.h b/drivers/phy/mediatek/phy-mtk-hdmi.h
+index c7fa65cff989..f5aac9d352d8 100644
+--- a/drivers/phy/mediatek/phy-mtk-hdmi.h
++++ b/drivers/phy/mediatek/phy-mtk-hdmi.h
+@@ -24,6 +24,7 @@ struct mtk_hdmi_phy_conf {
+ 	const struct clk_ops *hdmi_phy_clk_ops;
+ 	void (*hdmi_phy_enable_tmds)(struct mtk_hdmi_phy *hdmi_phy);
+ 	void (*hdmi_phy_disable_tmds)(struct mtk_hdmi_phy *hdmi_phy);
++	int (*hdmi_phy_configure)(struct phy *phy, union phy_configure_opts *opts);
+ };
+ 
+ struct mtk_hdmi_phy {
+
+-- 
+2.39.0
+
 
