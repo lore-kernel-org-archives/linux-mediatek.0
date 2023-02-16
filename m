@@ -4,79 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42094C636D4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Feb 2023 00:52:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64507C636CC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Feb 2023 01:04:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CE4xiLmA9VQyI91JLYE61lSZLDddIMxME/1xb4rDChM=; b=fK1ltvn6AKSjJWtBKICYj4/Hd5
-	ETkkNG8uX0l9/w9jMhKM55UE04F9ldv13PVYHLuZrJG9r52Td/O25cVdY4JIUsKucMr4G5qRT8zXU
-	nCMI2Q8ZbG6BydGJsjRouCL1idKHBaLEkItWi0Qx+PIVRsIqVRlIQHG1k7r0w2IDOt7Hvzv6Co2eC
-	bwUXq7Lr4eV49KFwAJ1jYRuL8tGrol2cmP+iH+1PQWCM+YYUAMm7dUCuYGukBGwqYDQOOeaOPzkU3
-	jXUF6Mwk6Fr/zS6YI1MEe0LNWlchzJQnDfv3HdY2ts3r4YCpzs1ru1/RErgJVorej5m4Pte0q/hWV
-	IKxc5/Hw==;
+	bh=6sbx1hW5VzBmek1B42kG2jNw+TNnTEb8gapatcR73rQ=; b=k718PGcd58AIh6fUBs89kO+DD5
+	VP6Xadk/r+1hrIwY3xAVULqfbm76Haxt3C7RuEjU5ILB7caFRN/Si+NEr3BHzp806lHCxYSCNUqV9
+	Vb8v0Ff6eVmnhAnWDpJQao3z83RFAAMRKlrZWVmIJGB/TfA8SSYmiwxw8LjSAirSKUwkrlmi+FRlv
+	V2hwAjiaykDW5AnSt0ri+5o1R+08fdu2r3OHcl3q0cSbjJDBdZxdYz54YWjc4+WGeHF4BdsfArLuk
+	6nBodKuNHMryWbz8oGY4Gk28N8jJ4iQ8Hm5oE56L+VrHFyF0bHOTsZUWslupwT3TKMQM+ktANetZ/
+	Lr76hFRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSSVD-0088mz-83; Thu, 16 Feb 2023 00:51:59 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1pSSgm-0089uc-Uz; Thu, 16 Feb 2023 01:03:56 +0000
+Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSSV3-0088lN-9P; Thu, 16 Feb 2023 00:51:50 +0000
-Received: by mail-lf1-x132.google.com with SMTP id cf42so872218lfb.1;
-        Wed, 15 Feb 2023 16:51:47 -0800 (PST)
+	id 1pSSgc-0089ru-0f
+	for linux-mediatek@lists.infradead.org; Thu, 16 Feb 2023 01:03:47 +0000
+Received: by mail-yw1-x112c.google.com with SMTP id 00721157ae682-52ee632329dso4168997b3.6
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 Feb 2023 17:03:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
+        d=google.com; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=CE4xiLmA9VQyI91JLYE61lSZLDddIMxME/1xb4rDChM=;
-        b=FFLdjQhRgM6nTbQB//R6Ov520KvRlsMBttV4XYizVX39hkJ17stscJ2kC/2F2SsrCq
-         zzq01UwVC+BCJMnRmPiD03D5wBwCb9Bp63al7ELpY7QH9RQGTii1g8BQqZW/Lef5ONzy
-         cXb4Q+LhJcxSCgw7uqtQ3qcW9cr0H1CXxR/xnYulcpcdtUi1a0gUYbO5xhkapjocfD3N
-         pHMPw6tua4wDOimnbnizgpTuLSb3lU9PMlgjWvPspCi5NcyFw7ilbD8F1apRwhPaeR18
-         QsNtyYsZlwFP5S2G8irueAl/C/1zyZlwQmGKbuJ5NoR+7lr64oL36LY8xUStwa6D6a3G
-         M97Q==
+        bh=6sbx1hW5VzBmek1B42kG2jNw+TNnTEb8gapatcR73rQ=;
+        b=IQdPhHQWN1Mt145dmwZHfSnqOTPplWy+0Uh7hqLuKSPHUyCNzYh9Ei5+6VQdLmwPUl
+         W/P38BNiBRxJb1Kc6k5wIR8xvIP3ouuwAc1RfVjEoMBK0+GlSJtvkKJMzaX44waCvn8w
+         sG7/gDMZlZmC5As20/72/ZFwMYmR5PY8no8ko6AfUnaso85NG2rC2VkMuvS2MbVKK/rv
+         rgbp0vQ4C3b1/cP8Nra/1Wt+ll0E4EiJ/uML2YavzOwBrRIOhAcD882sC+f+WoxVAnBw
+         d9OYLVFfkmsD2P+TJomOjLWQpKimJNdfKKaUnCql6eYdNOW93J6THqnQtH2lNJz8Eu5i
+         tZqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=CE4xiLmA9VQyI91JLYE61lSZLDddIMxME/1xb4rDChM=;
-        b=YyS3OIXbCyutHNwj5ylpX7cr+jfhelDsgsJcvfmHrCcyP2N7clr7vmmU4JVks2nvg6
-         05x0mvIii6+E+a9TLPYPOoQwBl08vtW0eBGplThB/fh2Ci+ax20Xw10MoZ3DctCJBaOq
-         tA5zvmpXzhyQDbtOl6EkGPlVA/zduxi5ARs5skrjqVOJo6JllmPDhREKQ6jGzcI8lER+
-         1pv5psWX/6zvRupAnkKIjA4yLri2oVFYw5lSJBbFVkJuSiXxjbDMemCPfr6c4BHUYSv1
-         cG2CT5dtAG9djfOc9mUH3x5OxYMNI07ra/1WBIRcAQNoc5c+y6yiZn5Uguz0YRhdUQ6Z
-         1tSw==
-X-Gm-Message-State: AO0yUKUuKuNiT5EvWrMTq4hnm3vMl/VHHSMs9DcuiORFiA/e9St+szgg
-	67bvlXroDo5qjiFmaYSyzD7MPCAWppZ05GQ1kA==
-X-Google-Smtp-Source: AK7set8xhRSu9owX2yBWOpqwdcAalnQf6+Nf6OvAqzeeso7SajB/K2u/G+Hz53aTuLqRNuI6D5TYWnUmksvLC5x4tl0=
-X-Received: by 2002:a05:6512:4c6:b0:4d5:ca32:6ae0 with SMTP id
- w6-20020a05651204c600b004d5ca326ae0mr1100720lfq.0.1676508705519; Wed, 15 Feb
- 2023 16:51:45 -0800 (PST)
+        bh=6sbx1hW5VzBmek1B42kG2jNw+TNnTEb8gapatcR73rQ=;
+        b=Wxzo0Fap86FDmYk3LBGHnJWNhAkwc4d0/tDEULZQgWl0QF9s6Bup8yLcbTxDJ/XEFz
+         UjxatHCmSVfOxhSmtT9VJv+T0phQoJL4jZTQw12ojzbI14RfRE8rEPbVKsRBZjxSuLNb
+         RXnvT3m6EMLCPsPxpsRnStKelKEQybpS6TIoQ4v4Z2gcuGf7rt4aQ6F+T2l4lHerKHCk
+         V9dZD/DEF6cYQNIfGwiXzq5WDwyQ7Vn9a0/jEkbwLt973MyFwS4odMo3HFyHHx7vZjN1
+         IWzEpEIMz4BweNLD2pxc3L93atNZMquY74ruYr9M+yQFcxBgHkFnfchd7vANjdCGVpn+
+         ybUw==
+X-Gm-Message-State: AO0yUKXlDhVTRXtZNNqQ9iCRBWmOG2AIbq6g3jfebNlHdVlsCBbhknTY
+	HnjxPVGoUtUfNgFoE9cGhk+/kYh2tpX/B2XZT584
+X-Google-Smtp-Source: AK7set/a3D76VIQ6uqfP8dSDpe3YyTWLZcyOkqHzXDV7Vwy5x0vpX70x8tNd4rZXaulxq3wMQpKOAhQ/ron9T2BhAaQ=
+X-Received: by 2002:a0d:d346:0:b0:52e:fb6b:fd61 with SMTP id
+ v67-20020a0dd346000000b0052efb6bfd61mr510219ywd.271.1676509422706; Wed, 15
+ Feb 2023 17:03:42 -0800 (PST)
 MIME-Version: 1.0
-References: <20230215123750.15785-1-powen.kao@mediatek.com>
-In-Reply-To: <20230215123750.15785-1-powen.kao@mediatek.com>
-From: Stanley Chu <chu.stanley@gmail.com>
-Date: Thu, 16 Feb 2023 08:51:33 +0800
-Message-ID: <CAGaU9a83SfYsShOOTPTQCCHCSt=4E0WuVg6K0OipAyUq73pbrQ@mail.gmail.com>
-Subject: Re: [PATCH 1/2] scsi: ufs: core: Fix mcq tag calcualtion
-To: Po-Wen Kao <powen.kao@mediatek.com>
-Cc: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>, 
-	Bart Van Assche <bvanassche@acm.org>, "James E.J. Bottomley" <jejb@linux.ibm.com>, 
-	"Martin K. Petersen" <martin.petersen@oracle.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	wsd_upstream@mediatek.com, peter.wang@mediatek.com, stanley.chu@mediatek.com, 
-	alice.chao@mediatek.com, chun-hung.wu@mediatek.com, cc.chou@mediatek.com, 
-	chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, mason.zhang@mediatek.com, 
-	quic_asutoshd@quicinc.com, linux-scsi@vger.kernel.org, 
+References: <20230214105412.5856-1-walter.chang@mediatek.com>
+ <20230214105412.5856-5-walter.chang@mediatek.com> <20230214222021.k3tsfwezhnh7tdlx@bogus>
+ <996b4e61-8486-d939-7367-1240b3c5c5fa@collabora.com> <20230215131849.mcgz53jf24atialp@bogus>
+ <53f0e612-b5cc-262e-df98-add1e8a06573@collabora.com> <20230215144627.ddjc7x365qdnhymi@bogus>
+In-Reply-To: <20230215144627.ddjc7x365qdnhymi@bogus>
+From: John Stultz <jstultz@google.com>
+Date: Wed, 15 Feb 2023 17:03:30 -0800
+Message-ID: <CANDhNCrWh2=0758eObCKzHmAzqWMsn7EUV9FhEPXUSnCze_Kcw@mail.gmail.com>
+Subject: Re: [PATCH v2 4/4] clocksource/drivers/timer-mediatek: Make
+ timer-mediatek become loadable module
+To: Sudeep Holla <sudeep.holla@arm.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, walter.chang@mediatek.com, 
+	Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, "Maciej W . Rozycki" <macro@orcam.me.uk>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, wsd_upstream@mediatek.com, 
+	stanley.chu@mediatek.com, Chun-hung.Wu@mediatek.com, Freddy.Hsin@mediatek.com, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230215_165149_366055_2123D216 
-X-CRM114-Status: UNSURE (   9.11  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230215_170346_083157_DBF941BE 
+X-CRM114-Status: GOOD (  25.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,18 +93,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 15, 2023 at 8:38 PM Po-Wen Kao <powen.kao@mediatek.com> wrote:
+On Wed, Feb 15, 2023 at 6:46 AM Sudeep Holla <sudeep.holla@arm.com> wrote:
 >
-> Transfer command descriptor is allocated in ufshcd_memory_alloc()
-> and referenced by transfer request descriptor with stride size
-> sizeof_utp_transfer_cmd_desc()
-> instead of
-> sizeof(struct utp_transfer_cmd_desc).
+> On Wed, Feb 15, 2023 at 02:30:51PM +0100, AngeloGioacchino Del Regno wrote:
+> >
+> > Both. I mean that these platforms do have architected timers, but they are stopped
+> > before the bootloader jumps to the kernel, or they are never started at all.
+> >
+> > Please refer to:
+> >
+> > https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/drivers/clocksource/timer-mediatek.c?h=next-20230215&id=327e93cf9a59b0d04eb3a31a7fdbf0f11cf13ecb
+> >
+> > For a nice explanation.
+> >
 >
-> Consequently, computing tag by address offset should also refer to the
-> same stride.
->
-> Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
+> Thanks for that. Well then I see no point in making these modules if you
+> can't have generic Image that boots on all the platform. I now tend to think
+> that these are made modules just because GKI demands and it *might* work
+> on one or 2 platforms. One we move this as modules, how will be know the
+> Image without these timers or with them built as modules will boot or not
+> on a given mediatek platform. Sorry, I initially saw some point in making
+> these timers as modules but if they are required for boot on some systems
+> then I see no point. So if that is the case, NACK for these as it just
+> creates more confusion after these are merged as why some Images or
+> even why defconfig image(if we push the config change as well) is not
+> booting on these platforms.
 
-Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+Indeed, if some hardware does have a hard requirement then the
+timer-mediatek driver probably isn't a good candidate for being a
+module.
+
+Though I wonder if it would make sense to "virtually" split the driver
+in two? Have one config for hardware where it is safe to be modular,
+and another for the problematic hardware that forces it to be built
+in?
+That way we can support the safe approach (ends up built in if both
+options are selected), but for GKI devices where the hardware isn't
+problematic we can still leave it as a module?
+
+thanks
+-john
 
