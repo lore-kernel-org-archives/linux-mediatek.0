@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1EA5C636D4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Feb 2023 11:19:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31DE4C636D4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Feb 2023 11:26:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=diVbxx203IJGIrnKY6E0lfW1qYDGb4mOEMWZeEVnrPA=; b=E2UZfrC/17qK10O0HWTNn4KwLT
-	Vy3jRdtB9dNBFalrJqpLUVdsNmfH0d7gmJh9zOkyFU9XZ1cshdKjlYmSJXwZ/nG4RcZIx/KiU4IN1
-	qT0zTJGGbpCDlXD/erQnio5J90MDti+airM46GiORaWn035QeIJtu3O9jSMo0T4cZUEMu+N6s+7ue
-	hS7atMeeaJ8vtFSGoZKUyRm7lTkecDNb0cceUfh0e98R0FqBUkrKtBm+SuscypFuUOgPBTkBkMYYc
-	7kKp3G0R2dr/GbVsUUPDcF8rFzNvvP3qxH8exrSFnaSajEltkxThxzgkClhSlVB5jeFDBsg18MZwF
-	KJr5sTCw==;
+	bh=KMHk9zfTnHqTqtiJZuw4eK9TicmsC5Psbvh/IR3cFZw=; b=xxL2NczR3q58zV/M1oml/YE0kz
+	mNOeaImtOPedSp/+8X3fxkQiRuQfFh7onRqBWToHLa7JdtwrvYoK00ufCexQ2UqTSLONONPbnbZzj
+	1Um6kXiPnMfWkcFqNwmbI/TBRBy36F+crxaivsnIISD2OwxBAOT8XkFuRRm0of0L6VC4qoMfFUxLp
+	fXdC3cuSrW9CA100B4x252LMCnQOP1xcX++tnSld+PmmZvE+2g9zNXCPGbwFiDlnuCyxncS4wg8Jk
+	c9UxsixYnhvE/Nv5ZT6L3sfXXELIVBoQi10tEeFXmN8tlyiFGXdfqg9R/hK6dde+MaUjKCRolkPQ1
+	JOFpVhRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSylu-00Dttd-FD; Fri, 17 Feb 2023 11:19:22 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pSysI-00Dvx5-65; Fri, 17 Feb 2023 11:25:58 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSylY-00Dtjw-Ri; Fri, 17 Feb 2023 11:19:03 +0000
+	id 1pSys4-00DvtG-Qa; Fri, 17 Feb 2023 11:25:47 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 780AC660212C;
-	Fri, 17 Feb 2023 11:18:57 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id ECB78660212C;
+	Fri, 17 Feb 2023 11:25:41 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676632738;
-	bh=SK5YF4VJ5EozXIVUN6qmnCrFlh18Ax8TQqauGjRXIGQ=;
+	s=mail; t=1676633143;
+	bh=4B8vcRp+/G7dib7UnrzeCjN2VVDp840D9A86W/R5f4Y=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=WMyE8gviyZndoO2l8tpuskyHMQ2zeb8xNOuaCrpD4DDz+XXhwouR/u4ihRVForz3G
-	 1eVJZPom2MjwqK51ftNdhkAccq9aKziiF/9sEQODFrRA/cGww2o3zyQ8mViV4UaCpN
-	 mhmFpGWEKiE7y/LDTSW3ImDAxziUzqo5ry3ztMpHbsy1+2y0THrbG7LgMbxhXOsnGz
-	 7+kfGsrrIOOwqmHVT3KdVgLOabyLTpqlf/4Cadmm+lPtX8Cs9clMyFeJaRLPNjaVPx
-	 zl0leqSafApgLfbUvCmh4TLJlQFHa414xFXgarx5fw4j5p8zy7BF3Ar7m9ugoPlxVH
-	 Zays9ND768Pfw==
-Message-ID: <6ed4ca9f-bb75-2698-6c8a-2008b1320570@collabora.com>
-Date: Fri, 17 Feb 2023 12:18:55 +0100
+	b=aY83TVk19/9m6Yy4p4ed8gGcHeO+HVvphEoUmEMIa3ApIJ7V3WNAAo37XKCznH8nE
+	 8VwH45CLKV2R8/flxPH3AFTX+9Jo0jiUTkmYFOv62RjgUgIS8V0uWMipYcdubKTkw5
+	 7/HBHyMz44hGcf4yhLrZdVY60/s7pCATwNSn+BBG4PEucoKTcXk8e3SgKomK9iwv2T
+	 5aK8weNwvjW6SqDaQYCKQhdMzKevLjDhoOcHVNDJWeF0OFUaoCRf/5130JbhdD8FO/
+	 5fyozGcXlj1dbugFtn67eBwYK3DuWO2nMNvzVxk9ve18XgdlVShEI6ju7bZdIO/tE/
+	 bJ9Ch2qYJAK/w==
+Message-ID: <37690521-4d24-ce55-f81e-30ad931dfe95@collabora.com>
+Date: Fri, 17 Feb 2023 12:25:39 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.7.2
-Subject: Re: [PATCH v2 34/47] clk: mediatek: Switch to
- module_platform_driver() where possible
+Subject: Re: [PATCH v2 36/47] clk: mediatek: mt2712: Change Kconfig options to
+ allow module build
 Content-Language: en-US
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
@@ -61,15 +61,15 @@ Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  kernel@collabora.com
 References: <20230214134127.59273-1-angelogioacchino.delregno@collabora.com>
- <20230214134127.59273-35-angelogioacchino.delregno@collabora.com>
- <CAGXv+5E3KCRyaRpkYab0XmT8XDZQO21RYBpKVgCcGtWmZ+dv3g@mail.gmail.com>
+ <20230214134127.59273-37-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5FxnsJaVw2MzeH+-Z3yEPzPCRtTukp7FDhsBoKHfx=m=g@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5E3KCRyaRpkYab0XmT8XDZQO21RYBpKVgCcGtWmZ+dv3g@mail.gmail.com>
+In-Reply-To: <CAGXv+5FxnsJaVw2MzeH+-Z3yEPzPCRtTukp7FDhsBoKHfx=m=g@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230217_031901_093275_619630AD 
-X-CRM114-Status: GOOD (  14.19  )
+X-CRM114-CacheID: sfid-20230217_032545_053066_4A0AFFB1 
+X-CRM114-Status: GOOD (  16.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,64 +84,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/02/23 05:19, Chen-Yu Tsai ha scritto:
+Il 17/02/23 05:24, Chen-Yu Tsai ha scritto:
 > On Tue, Feb 14, 2023 at 9:42 PM AngeloGioacchino Del Regno
 > <angelogioacchino.delregno@collabora.com> wrote:
 >>
->> Lots of clock drivers have got both .probe() and a .remove() callbacks:
->> switch from builtin_platform_driver() to module_platform_driver() so
->> that we actually register the .remove() callback.
+>> All of the mt2712 drivers have been converted to platform drivers!
+>> Change the Kconfig options for all MT2712 clocks to tristate to allow
+>> building all clock drivers as modules.
 >>
 >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 >> ---
->>   drivers/clk/mediatek/clk-mt2701-aud.c          | 3 +--
->>   drivers/clk/mediatek/clk-mt2701-bdp.c          | 3 +--
->>   drivers/clk/mediatek/clk-mt2701-eth.c          | 3 +--
->>   drivers/clk/mediatek/clk-mt2701-g3d.c          | 3 +--
->>   drivers/clk/mediatek/clk-mt2701-hif.c          | 3 +--
->>   drivers/clk/mediatek/clk-mt2701-img.c          | 3 +--
->>   drivers/clk/mediatek/clk-mt2701-mm.c           | 3 +--
->>   drivers/clk/mediatek/clk-mt2701-vdec.c         | 3 +--
->>   drivers/clk/mediatek/clk-mt2712-bdp.c          | 3 +--
->>   drivers/clk/mediatek/clk-mt2712-img.c          | 3 +--
->>   drivers/clk/mediatek/clk-mt2712-jpgdec.c       | 3 +--
->>   drivers/clk/mediatek/clk-mt2712-mfg.c          | 3 +--
->>   drivers/clk/mediatek/clk-mt2712-mm.c           | 3 +--
->>   drivers/clk/mediatek/clk-mt2712-vdec.c         | 3 +--
->>   drivers/clk/mediatek/clk-mt2712-venc.c         | 3 +--
->>   drivers/clk/mediatek/clk-mt6765-audio.c        | 3 +--
->>   drivers/clk/mediatek/clk-mt6765-cam.c          | 3 +--
->>   drivers/clk/mediatek/clk-mt6765-img.c          | 3 +--
->>   drivers/clk/mediatek/clk-mt6765-mipi0a.c       | 3 +--
->>   drivers/clk/mediatek/clk-mt6765-mm.c           | 3 +--
->>   drivers/clk/mediatek/clk-mt6765-vcodec.c       | 3 +--
->>   drivers/clk/mediatek/clk-mt6797-img.c          | 3 +--
->>   drivers/clk/mediatek/clk-mt6797-mm.c           | 3 +--
->>   drivers/clk/mediatek/clk-mt6797-vdec.c         | 3 +--
->>   drivers/clk/mediatek/clk-mt6797-venc.c         | 3 +--
->>   drivers/clk/mediatek/clk-mt7622-aud.c          | 3 +--
->>   drivers/clk/mediatek/clk-mt7622-eth.c          | 3 +--
->>   drivers/clk/mediatek/clk-mt7622-hif.c          | 3 +--
->>   drivers/clk/mediatek/clk-mt7629-eth.c          | 1 -
+>>   drivers/clk/mediatek/Kconfig | 16 ++++++++--------
+>>   1 file changed, 8 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+>> index b9c0a9e21cf1..45b7aea7648d 100644
+>> --- a/drivers/clk/mediatek/Kconfig
+>> +++ b/drivers/clk/mediatek/Kconfig
+>> @@ -75,7 +75,7 @@ config COMMON_CLK_MT2701_G3DSYS
+>>            This driver supports MediaTek MT2701 g3dsys clocks.
+>>
+>>   config COMMON_CLK_MT2712
+>> -       bool "Clock driver for MediaTek MT2712"
+>> +       tristate "Clock driver for MediaTek MT2712"
 > 
-> This one looks fishy. It wasn't converted to the simple probe library.
+> Hmm... How does that work out if mt2712-apmixedsys is a
+> builtin_platform_driver?
 > 
-> Otherwise,
-> 
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> ChenYu
 
+That doesn't. Thanks for catching that, I've added a .remove() callback
+and changed it to module_platform_driver() for v3!
 
-Oh wow. Thanks for making me notice. Yeah you're right, mt7629-eth was not
-converted to simple probe.... and I need to split sgmiisys and sgmiisys1.
-This means that I need to change bindings and devicetree to add a new
-compatible "mediatek,mt7629-sgmiisys1".
-
-I won't do that in this series as I don't want to spam this huge amount of
-patches to the devicetree list... but I'll do that as a separated series
-that depends on this one.
-
-So, for this one, I will simply drop the mt7629-eth change (as it's useless).
-
-Thanks again!
+Cheers,
 Angelo
 
