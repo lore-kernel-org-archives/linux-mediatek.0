@@ -4,72 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C4A8C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Feb 2023 12:57:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9813DC05027
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Feb 2023 14:54:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PHwQ3pqnqTwFDRILQd1HKWCkeGB4M/6TBnzYzndAGv8=; b=1o7I3cQ7I4OTS/yQFHnZfn4Cou
-	PAOU75QWrIKWx4g5vUCDEVRmH+A1g2dk7lSMZ04FvJRaR8/UFWS0p+gAcl96XGZfGFzw4MerV5Ih1
-	JjGXwFWOWjk7eUM7UPp0cCqYRAS+8W3qN0TtHKv3hjuyFUvqAFn/DGgdq0xzPVONFOuXrIoGA9q+d
-	QQF45Sbgs/rKiQFsKOgm4Peg/KCebeOSbxs/5KuFJt+STP8mSGBulQRJQ957I7d5dqGZEteMJoy24
-	YJw2FtBNnwjLJa7moLWPWBlLcVwaz7qjVx9yYmy4zOR7a5W8BcQJNXkCxAFlEF16203XBcRoi4Y1I
-	IviIsUBw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+byKAnTyRh/M2xreJ74zOAGcCD62qBz8++jnTKDGnbc=; b=eSAnlipGHnPRWh62y5nbPiPxr5
+	6UAuIVDgc7ML1Z3hDVfUmTXN0YWdeFaI51bvYRduM3GoWREAdRtFUod97sF4UPloVICzj/ohiWf/s
+	uel9H7jjFocOG0u5r1Z/PhLngew1Xxzysbhov9d/PIwJ3p27k2SCANpXbgYS8rd0DYj/HdIOXJV0Y
+	lsDdpgdwAOd0HK1whZZ7kXJXcGgLGg0vS6o5Jk4o/i94G8Ol/ZIjULhBjkdwAA6sttY3IKV1TWOH4
+	Ti2IDfb39zIJj0oYFaScbMY1xrT64Pp/PEXXaNxmLUB0scq9Fey5CXsMwNZSBldFl4fviYRsN4eHS
+	34q+YEWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pT0Ia-00ECIp-CL; Fri, 17 Feb 2023 12:57:12 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pT28R-00EdqL-5i; Fri, 17 Feb 2023 14:54:51 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pT0IP-00ECGm-Bw; Fri, 17 Feb 2023 12:57:03 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B43D266003AF;
-	Fri, 17 Feb 2023 12:56:54 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676638616;
-	bh=1uMyMzusRsK9sVv25EojrYQNhsBuXP/sllRyPTR8+5w=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=UXK2QT1Yzp4lGU3SFbxfXUpO2p8O3XxLF/QmuMK75o/FD41Ioh6PZ6LuZm2ZeNdFU
-	 RRz8INhsaSUBa2tfqEMWSHGEg10tykwlvnE/5tmEu+mR6xCTdMxap61bkvGz5jqUwe
-	 KBZiEtAVcezNL7apcOdhUnwKOAp0H7RGOMHQh4bTUzIyF/DQ9+xA5EWbGWpaHM62oN
-	 pa5uwqzqwgjdQpHUCzMVEcG06uInl9MsO6j6YyEiPU8h5xOxXzTQLSSJwU1GsTbPIA
-	 aoipkvC1qmP0ksT1KCwceChlMwdCR4q2t4vcjFVweg+kwvjEMTdn/HooDYswMVal5w
-	 CMek6dUszn+qg==
-Message-ID: <f12eff8f-7f6f-cd93-2c3e-4390d42f98ee@collabora.com>
-Date: Fri, 17 Feb 2023 13:56:52 +0100
+	id 1pT28M-00Ednl-Te; Fri, 17 Feb 2023 14:54:48 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pT286-0005HG-34;
+	Fri, 17 Feb 2023 15:54:31 +0100
+Date: Fri, 17 Feb 2023 14:52:53 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Russell King <linux@armlinux.org.uk>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>
+Cc: Jianhui Zhao <zhaojh329@gmail.com>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
+Subject: [PATCH v8 00/12] net: ethernet: mtk_eth_soc: various enhancements
+Message-ID: <cover.1676645203.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.2
-Subject: Re: [PATCH v2 37/47] clk: mediatek: Split MT8195 clock drivers and
- allow module build
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>, Arnd Bergmann <arnd@kernel.org>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
- johnson.wang@mediatek.com, miles.chen@mediatek.com,
- chun-jie.chen@mediatek.com, daniel@makrotopia.org, fparent@baylibre.com,
- msp@baylibre.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com,
- zhaojh329@gmail.com, sam.shih@mediatek.com, edward-jw.yang@mediatek.com,
- yangyingliang@huawei.com, granquet@baylibre.com, pablo.sun@mediatek.com,
- sean.wang@mediatek.com, chen.zhong@mediatek.com,
- linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-References: <20230214134127.59273-1-angelogioacchino.delregno@collabora.com>
- <20230214134127.59273-38-angelogioacchino.delregno@collabora.com>
- <CAGXv+5Gf6idN3LMkei503cXnuxo7HNc8=8fG0jENVHDtxDg5jQ@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5Gf6idN3LMkei503cXnuxo7HNc8=8fG0jENVHDtxDg5jQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230217_045701_780246_88A02775 
-X-CRM114-Status: GOOD (  24.21  )
+X-CRM114-CacheID: sfid-20230217_065446_973537_4C66F2DD 
+X-CRM114-Status: GOOD (  14.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,118 +76,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/02/23 08:37, Chen-Yu Tsai ha scritto:
-> On Tue, Feb 14, 2023 at 9:42 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> MT8195 clock drivers were encapsulated in one single (and big) Kconfig
->> option: there's no reason to do that, as it is totally unnecessary to
->> build in all or none of them.
->>
->> Split them out: keep boot-critical clocks as bool and allow choosing
->> non critical clocks as tristate.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/clk/mediatek/Kconfig  | 86 +++++++++++++++++++++++++++++++++++
->>   drivers/clk/mediatek/Makefile | 20 +++++---
->>   2 files changed, 99 insertions(+), 7 deletions(-)
->>
->> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
->> index 45b7aea7648d..88937d111e98 100644
->> --- a/drivers/clk/mediatek/Kconfig
->> +++ b/drivers/clk/mediatek/Kconfig
->> @@ -692,6 +692,92 @@ config COMMON_CLK_MT8195
->>           help
->>             This driver supports MediaTek MT8195 clocks.
->>
->> +config COMMON_CLK_MT8195_APUSYS
->> +       tristate "Clock driver for MediaTek MT8195 apusys"
->> +       depends on COMMON_CLK_MT8195
->> +       help
->> +         This driver supports MediaTek MT8195 AI Processor Unit System clocks.
->> +
->> +config COMMON_CLK_MT8195_AUDSYS
->> +       tristate "Clock driver for MediaTek MT8195 audsys"
->> +       depends on COMMON_CLK_MT8195
->> +       help
->> +         This driver supports MediaTek MT8195 audsys clocks.
->> +
->> +config COMMON_CLK_MT8195_CAMSYS
->> +       tristate "Clock driver for MediaTek MT8195 camsys"
->> +       depends on COMMON_CLK_MT8195_VPPSYS
-> 
-> One other thing. If a Kconfig option immediately follows its dependency,
-> then it gets indented nicely in menuconfig, but only if.
-> If other options are interspersed, then the indentation gets reset.
-> 
-> So could you reorder the options to follow the dependency graph?
-> 
+This series brings a variety of fixes and enhancements for mtk_eth_soc,
+adds support for the MT7981 SoC and facilitates sharing the SGMII PCS
+code between mtk_eth_soc and mt7530.
 
-Sure, I will!
+Note that this series depends on commit 697c3892d825
+("regmap: apply reg_base and reg_downshift for single register ops") to
+not break mt7530 pcs register access.
 
-> Also how you chose the dependencies should be mentioned in the commit log.
-> These are pure run time dependencies, not compile time nor link/load ones.
-> 
+The whole series has been tested on MT7622+MT7531 (BPi-R64),
+MT7623+MT7530 (BPi-R2) and MT7981+GPY211 (GL.iNet GL-MT3000).
 
-Right.
+Changes since v7:
+ * move mediatek,sgmiisys.yaml to more appropriate folder
+ * don't include <linux/phylink.h> twice in PCS driver, sort includes
 
-> Last, I think an argument could be made against the proliferation of
-> Kconfig options, as it dramatically increases the combinations of
-> allrandconfigs. Maybe Arnd (who IIRC frequently runs allrandconfig)
-> could chime in on whether this is actually a concern or not.
-> 
+Changes since v6:
+ * label MAC MCR bit 12 in 08/12, MediaTek replied explaining its function
 
-I understand, but I don't see any way around that.
-In my opinion, we shall give flexibility, and this is the only way to achieve
-that: if you don't use IMGSYS, CAMSYS, WPESYS and IPESYS you should *not* be
-forced to add that to the mix, as this would result in a footprint increase
-for no *final* practical reason.
+Changes since v5:
+ * drop dev pointer also from struct mtk_sgmii, pass it as function
+   paramter instead
+ * address comments left for dt-bindings
+ * minor improvements to commit messages
 
-It's true, today we have big storage capacities and fast machines, but we can
-still see a reduction in boot times (bootloader kernel load time, other than
-actual kernel boot time), even if minimal, with this added flexibility.
+Changes since v4:
+ * remove unused dev pointer in struct pcs_mtk_lynxi
+ * squash link timer check into correct follow-up patch
 
-Save a few milliseconds here, a few milliseconds there (not necessarily on
-clock drivers, expand this to others) and you start reaching a meaningful
-increase in boot performance.
+Changes since v3:
+ * remove unused #define's
+ * use BMCR_* instead of #define'ing our own constants
+ * return before changing registers in case of invalid link timer
 
->> +       help
->> +         This driver supports MediaTek MT8195 camsys and camsys_raw clocks.
->> +
->> +config COMMON_CLK_MT8195_IMGSYS
->> +       tristate "Clock driver for MediaTek MT8195 imgsys"
->> +       depends on COMMON_CLK_MT8195_VPPSYS
->> +       help
->> +         This driver supports MediaTek MT8195 imgsys and imgsys2 clocks.
->> +
->> +config COMMON_CLK_MT8195_IMP_IIC_WRAP
->> +       tristate "Clock driver for MediaTek MT8195 imp_iic_wrap"
->> +       depends on COMMON_CLK_MT8195
->> +       help
->> +         This driver supports MediaTek MT8195 I2C/I3C clocks.
->> +
->> +config COMMON_CLK_MT8195_IPESYS
->> +       tristate "Clock driver for MediaTek MT8195 ipesys"
->> +       depends on COMMON_CLK_MT8195_IMGSYS
->> +       help
->> +         This driver supports MediaTek MT8195 ipesys clocks.
->> +
->> +config COMMON_CLK_MT8195_MFGCFG
->> +       tristate "Clock driver for MediaTek MT8195 mfgcfg"
->> +       depends on COMMON_CLK_MT8195
->> +       help
->> +         This driver supports MediaTek MT8195 mfgcfg clocks.
->> +
->> +config COMMON_CLK_MT8195_VDOSYS
->> +       tristate "Clock driver for MediaTek MT8195 vdosys"
->> +       depends on COMMON_CLK_MT8195
-> 
-> Not sure why this option is here, out of order?
+Changes since v2:
+ * improve dt-bindings, convert sgmisys bindings to dt-schema yaml
+ * fix typo
 
-My alphabet skills finally failed me, lol.
-I'll fix that for v3 :-)
+Changes since v1:
+ * apply reverse xmas tree everywhere
+ * improve commit descriptions
+ * add dt binding documentation
+ * various small changes addressing all comments received for v1
 
-Thanks!
-Angelo
+
+Daniel Golle (12):
+  net: ethernet: mtk_eth_soc: add support for MT7981 SoC
+  dt-bindings: net: mediatek,net: add mt7981-eth binding
+  dt-bindings: arm: mediatek: sgmiisys: Convert to DT schema
+  dt-bindings: arm: mediatek: sgmiisys: add MT7981 SoC
+  net: ethernet: mtk_eth_soc: set MDIO bus clock frequency
+  net: ethernet: mtk_eth_soc: reset PCS state
+  net: ethernet: mtk_eth_soc: only write values if needed
+  net: ethernet: mtk_eth_soc: fix RX data corruption issue
+  net: ethernet: mtk_eth_soc: ppe: add support for flow accounting
+  net: pcs: add driver for MediaTek SGMII PCS
+  net: ethernet: mtk_eth_soc: switch to external PCS driver
+  net: dsa: mt7530: use external PCS driver
+
+ .../arm/mediatek/mediatek,sgmiisys.txt        |  27 --
+ .../devicetree/bindings/net/mediatek,net.yaml |  52 ++-
+ .../bindings/pcs/mediatek,sgmiisys.yaml       |  55 ++++
+ MAINTAINERS                                   |   7 +
+ drivers/net/dsa/Kconfig                       |   1 +
+ drivers/net/dsa/mt7530.c                      | 277 ++++------------
+ drivers/net/dsa/mt7530.h                      |  47 +--
+ drivers/net/ethernet/mediatek/Kconfig         |   2 +
+ drivers/net/ethernet/mediatek/mtk_eth_path.c  |  14 +-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   |  67 +++-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h   | 105 +++---
+ drivers/net/ethernet/mediatek/mtk_ppe.c       | 114 ++++++-
+ drivers/net/ethernet/mediatek/mtk_ppe.h       |  25 +-
+ .../net/ethernet/mediatek/mtk_ppe_debugfs.c   |   9 +-
+ .../net/ethernet/mediatek/mtk_ppe_offload.c   |   8 +
+ drivers/net/ethernet/mediatek/mtk_ppe_regs.h  |  14 +
+ drivers/net/ethernet/mediatek/mtk_sgmii.c     | 192 ++---------
+ drivers/net/pcs/Kconfig                       |   7 +
+ drivers/net/pcs/Makefile                      |   1 +
+ drivers/net/pcs/pcs-mtk-lynxi.c               | 302 ++++++++++++++++++
+ include/linux/pcs/pcs-mtk-lynxi.h             |  13 +
+ 21 files changed, 801 insertions(+), 538 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+ create mode 100644 Documentation/devicetree/bindings/pcs/mediatek,sgmiisys.yaml
+ create mode 100644 drivers/net/pcs/pcs-mtk-lynxi.c
+ create mode 100644 include/linux/pcs/pcs-mtk-lynxi.h
+
+
+base-commit: c068f40300a0eaa34f7105d137a5560b86951aa9
+-- 
+2.39.2
+
 
