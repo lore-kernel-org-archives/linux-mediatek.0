@@ -4,63 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94C60C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Feb 2023 02:52:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C108AC636D4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Feb 2023 04:10:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Subject:Cc:To:
-	From:Mime-Version:Message-ID:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=x6ayAk2MA0k9aAkL5cbO/QXfzUc2TcgV9okQxI0pHc0=; b=IFwf1Zu+2G3T2CTZbla5QWo7fP
-	fI5f2A9VROiSExZ+BpZEl9SqkU4zjoEpGpM2XrfJpsVEddElBZT0r7ZGeny0b2IStYED35o9P7qHs
-	ezOFoS78DExjqe1kSMayyb5YVQu44VFv9Uq/XLQl32kTauaMlg2wOI1j2b+qkuvwgRCcr5NzBOPgi
-	n9UfhaA3LwvphnEb0e8rw84vdGQDpqXOwvyPzXuStEW8/p173u9vs9tzaATXE0XpsEpxxz3rOPk5v
-	EBq6AzHQe2XRRS2fW15cczRXDeX2TEQkLxeY0ZXJLeJ9R8ke/g49yMXPwQZHgAf5hIhayvGj22QHC
-	MXP13tug==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oGBLPshZPGMrS1uWiQyc0lNEwV+H+9iGELbs6/oqYEE=; b=M2bv47HcdWaWSIDSgFrAULyVko
+	3ZBsfPzWGA8jCrkeD4qeez6Yuwtb9bFbtXrH9QXY8+ZXy5bZvDEPxOaan2z4njTsYV/12Ob91qp6k
+	mDsHtx0xzG/wpwAabqIzA0j3zlCXowZoJjzJBPKhihmQWt86oyfB8+ZOrwYy0FcKwcPukPWkCXFva
+	VAw0hGyPw3KbDvgPC5BkOMu7QTB+NagwraUGros8MR2HQahMX/auU1NSxSOSWXKe8TyBm1vwaBMjI
+	QfnwCr24CTUdpmEkZ/ATyFxpVcZ5MQVXEjOglW+R4ZgL/R7FlrXEjiCjlPkgC/a5LzlHr6IHJqNle
+	bHhNHjfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSqrb-00CRcY-UQ; Fri, 17 Feb 2023 02:52:43 +0000
-Received: from mxhk.zte.com.cn ([63.216.63.40])
+	id 1pSs4c-00CZ4A-5f; Fri, 17 Feb 2023 04:10:14 +0000
+Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSqrR-00CRaq-J6; Fri, 17 Feb 2023 02:52:34 +0000
-Received: from mse-fl1.zte.com.cn (unknown [10.5.228.132])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mxhk.zte.com.cn (FangMail) with ESMTPS id 4PHxDs51LYz8R042;
-	Fri, 17 Feb 2023 10:52:29 +0800 (CST)
-Received: from xaxapp01.zte.com.cn ([10.88.99.176])
-	by mse-fl1.zte.com.cn with SMTP id 31H2qGcS089971;
-	Fri, 17 Feb 2023 10:52:16 +0800 (+08)
-	(envelope-from ye.xingchen@zte.com.cn)
-Received: from mapi (xaxapp01[null])
-	by mapi (Zmail) with MAPI id mid31;
-	Fri, 17 Feb 2023 10:52:17 +0800 (CST)
-Date: Fri, 17 Feb 2023 10:52:17 +0800 (CST)
-X-Zmail-TransId: 2af963eeebe1ffffffffca4f417e
-X-Mailer: Zmail v1.0
-Message-ID: <202302171052175449856@zte.com.cn>
-Mime-Version: 1.0
-From: <ye.xingchen@zte.com.cn>
-To: <broonie@kernel.org>
-Cc: <lgirdwood@gmail.com>, <perex@perex.cz>, <tiwai@suse.com>,
-        <matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-        <chunxu.li@mediatek.com>, <jiaxin.yu@mediatek.com>,
-        <alsa-devel@alsa-project.org>, <linux-kernel@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>
-Subject: =?UTF-8?B?W1BBVENIXSBBU29DOiBtZWRpYXRlazogbXQ4MTg2OiBVc2UgZGV2bV9wbGF0Zm9ybV9pb3JlbWFwX3Jlc291cmNlKCk=?=
-Content-Type: text/plain;
-	charset="UTF-8"
-X-MAIL: mse-fl1.zte.com.cn 31H2qGcS089971
-X-Fangmail-Gw-Spam-Type: 0
-X-FangMail-Miltered: at cgslv5.04-192.168.250.137.novalocal with ID 63EEEBED.002 by FangMail milter!
-X-FangMail-Envelope: 1676602349/4PHxDs51LYz8R042/63EEEBED.002/10.5.228.132/[10.5.228.132]/mse-fl1.zte.com.cn/<ye.xingchen@zte.com.cn>
-X-Fangmail-Anti-Spam-Filtered: true
-X-Fangmail-MID-QID: 63EEEBED.002/4PHxDs51LYz8R042
+	id 1pSs4Z-00CZ3S-SY
+	for linux-mediatek@lists.infradead.org; Fri, 17 Feb 2023 04:10:13 +0000
+Received: by mail-ua1-x92a.google.com with SMTP id s21so676322uac.13
+        for <linux-mediatek@lists.infradead.org>; Thu, 16 Feb 2023 20:10:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=oGBLPshZPGMrS1uWiQyc0lNEwV+H+9iGELbs6/oqYEE=;
+        b=AcI0DMBS+/8O38CDGd3KCIk92zOU6tfwU6NbqMhu2JUhWe77Vhh81T2y1DTRAiwgx+
+         2hnqx+Sgd4LCgmOmMAd3UYsr+V98siDYvfRf0eT80lANMitKBGpnwvDiQ3bD7bY3Arbn
+         BMkMTihpdrBeQjYAbmMW1a26t+ktCH4Yb5T5w=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=oGBLPshZPGMrS1uWiQyc0lNEwV+H+9iGELbs6/oqYEE=;
+        b=an/DytTLwxYUMtfU0doMGnvfLKPOXz1tlDD1RqBUPy/M2OI57krE3LlEPePrDJw1LX
+         2WIeeoEDPbRHPlIaeZoYcAaoC6SGFjiPGwo7B6R3+6nFYubfLXgSfthan0ASZ2tLr3U4
+         5LuwQ9lv30J1lXGshP6r3y6ktf+6cSH14e28rd1kkaH0z1wbsOyLCWl2gGInIqqZ/ZER
+         Z1LhF3zKYlfL/PLXBsYRrO9LkLONNMemKRLzDf5wZF+v03S5hcr7HbcpAZBYje/oeCpf
+         ILexjsnrLaLJ3SOn4hsTZx6BQFksOOr1zmla5WVNsML0weBpPDXSBONrDaGkTjreFBRx
+         ADsw==
+X-Gm-Message-State: AO0yUKX/Yhsb4SI1fIUkESCoZkOD4r+YLROBSMSprxm616g8BTyyk/aX
+	pFTzMGCv3IC7bqaFvhFa14OpTL42n4OyKLqh0oNgIQ==
+X-Google-Smtp-Source: AK7set98SeNGl96EZizNQbwyR9dDOavG0wqLsoG9BX82J6+26nzoNTPbkoI/Xm8xERtgLUXiCG8Vl/Crx/a2DbTjOIo=
+X-Received: by 2002:ab0:318e:0:b0:688:c23f:c22f with SMTP id
+ d14-20020ab0318e000000b00688c23fc22fmr1246817uan.1.1676607010310; Thu, 16 Feb
+ 2023 20:10:10 -0800 (PST)
+MIME-Version: 1.0
+References: <20230214134127.59273-1-angelogioacchino.delregno@collabora.com> <20230214134127.59273-30-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230214134127.59273-30-angelogioacchino.delregno@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 17 Feb 2023 12:09:57 +0800
+Message-ID: <CAGXv+5EEO2RMzwkknMEwYZmtO7PbDhOTj_=yRrU0UHeCdc==iw@mail.gmail.com>
+Subject: Re: [PATCH v2 29/47] clk: mediatek: Propagate struct device with mtk_clk_register_dividers()
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
+	johnson.wang@mediatek.com, miles.chen@mediatek.com, 
+	chun-jie.chen@mediatek.com, daniel@makrotopia.org, fparent@baylibre.com, 
+	msp@baylibre.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com, 
+	zhaojh329@gmail.com, sam.shih@mediatek.com, edward-jw.yang@mediatek.com, 
+	yangyingliang@huawei.com, granquet@baylibre.com, pablo.sun@mediatek.com, 
+	sean.wang@mediatek.com, chen.zhong@mediatek.com, linux-kernel@vger.kernel.org, 
+	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230216_185233_801266_E1B2BD64 
-X-CRM114-Status: GOOD (  10.79  )
+X-CRM114-CacheID: sfid-20230216_201011_990918_449EC9A1 
+X-CRM114-Status: UNSURE (   8.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,39 +89,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ye Xingchen <ye.xingchen@zte.com.cn>
+On Tue, Feb 14, 2023 at 9:42 PM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Propagate struct device for divider clocks registered through clk-mtk
+> helpers to be able to get runtime PM support for MTK clocks.
 
-Convert platform_get_resource(), devm_ioremap_resource() to a single
-call to Use devm_platform_ioremap_resource(), as this is exactly
-what this function does.
+Sidenote: I think we still need to call pm_runtime_enable() (or some other
+function) on the underlying device before any clk_hw_register() calls are
+made for the clk core to pick up runtime PM support?
 
-Signed-off-by: Ye Xingchen <ye.xingchen@zte.com.cn>
----
- sound/soc/mediatek/mt8186/mt8186-afe-pcm.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c b/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
-index 41172a82103e..96be444d1000 100644
---- a/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
-@@ -2815,7 +2815,6 @@ static int mt8186_afe_pcm_dev_probe(struct platform_device *pdev)
- {
- 	struct mtk_base_afe *afe;
- 	struct mt8186_afe_private *afe_priv;
--	struct resource *res;
- 	struct reset_control *rstc;
- 	struct device *dev = &pdev->dev;
- 	int i, ret, irq_id;
-@@ -2836,8 +2835,7 @@ static int mt8186_afe_pcm_dev_probe(struct platform_device *pdev)
- 	afe_priv = afe->platform_priv;
- 	afe->dev = &pdev->dev;
-
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	afe->base_addr = devm_ioremap_resource(dev, res);
-+	afe->base_addr = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(afe->base_addr))
- 		return PTR_ERR(afe->base_addr);
-
--- 
-2.25.1
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
