@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B115C636D4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Feb 2023 04:33:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DEC7C636D4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Feb 2023 05:01:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/MeUKjw33jpqilmmYXQEGFRb0OCD/4Vq8XY4qGuBOYE=; b=BwflZUfGnf7PmXtnH16Y24WaRH
-	32wcdRbeuTkkvZaEo/RXBFP2lLus6+84ptCzhM8J2PCvjCJUDZ+EonzWAyqq9Cmwhasy4dFDt7q4i
-	LO21iC/UEtYLpIfAYqGgBWGJarha1IfiFM24MObImefHOj/IN74UO28Rqv6FsPBc5pSPzHwsEliUi
-	19R83pH5vTt5kI94uXSQowInNcdwP2Y6Hsf6X7c1CMex+5OVSUmbWPG8BHryWYnXcKAz/nkBZR9TK
-	hb3/nb6AG9n7ZvkZuCFGnH/JJRydtvLcms1pkHsyOB/aUXJwUBCDpgbqICnNP/bnKo5sp4sI3Y1OU
-	clY7edWw==;
+	bh=Lmq1AX4l7BfT40HlVrRZjM9eenWjOvLvEux3RFmEoWg=; b=jNtaYm3D77IRbvKPBa4+MM8Tiu
+	GsYQ4YsTdMl/AqSau7jWsgjtFcy0oVHgyRyB6UEYLBMSVH2XolBekY9JbNrcqJXXA+CBnDCQy6uFf
+	Ciz5RIAlWyvUlBP9zf4+1c2gUI+ShK+q4y1VYAnIe1P95Hl5mR+VlbFKzDzNfN1rk0r+Vy4NpZNlt
+	LbZsVW2wpQmJOWuxJAnmU81CLRvVaPxzLMdl5zk+j5OtatKfrmOEQWYyeiflRjUdHkhfb1zw3D5V9
+	ULtN23OkGsrgdExiemwtDAo06GKoMdaKNpszwSHFoYGJheVOKG1Vplbng5qg6yHS7R+iXLEsNgcol
+	XwHdlS9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSsQk-00ChJf-55; Fri, 17 Feb 2023 04:33:06 +0000
-Received: from mail-vs1-xe34.google.com ([2607:f8b0:4864:20::e34])
+	id 1pSssD-00ClSp-8d; Fri, 17 Feb 2023 05:01:29 +0000
+Received: from mail-vs1-xe33.google.com ([2607:f8b0:4864:20::e33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSsQZ-00ChFg-T0
-	for linux-mediatek@lists.infradead.org; Fri, 17 Feb 2023 04:32:57 +0000
-Received: by mail-vs1-xe34.google.com with SMTP id k4so4355787vsc.4
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Feb 2023 20:32:55 -0800 (PST)
+	id 1pSss4-00ClQW-Az
+	for linux-mediatek@lists.infradead.org; Fri, 17 Feb 2023 05:01:21 +0000
+Received: by mail-vs1-xe33.google.com with SMTP id j40so2388998vsv.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 16 Feb 2023 21:01:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=/MeUKjw33jpqilmmYXQEGFRb0OCD/4Vq8XY4qGuBOYE=;
-        b=S3awRWKrbCT7SjUcPzd0fvwXvqP30sAmcHpK21MWzkpsEU2B2urrTaswMUoqohl8ga
-         INOvkTG37BexzEthZigt9wfPn9w957TxMGKzEkEKfWRbUOA0LGE9fQ4hAEwSqECPuPkA
-         MyRSsGcuD4OR3nHWt3NkGIuU3DUpogrjTdmVo=
+        bh=Lmq1AX4l7BfT40HlVrRZjM9eenWjOvLvEux3RFmEoWg=;
+        b=mzfynhcgrkOoplyuqlL2AI4eBdkAFhrskPqgnwuDnkU6xR9Fyn93xP2Mhe52MNdxeB
+         YbOAgDZoZ5AnITUtUgQtg6cilK0KeJfJKi2P/7sN3sJAOfcaPCdJNQdAyJ/eRGWVsFcP
+         Zngo++3RtvgTitafOGLblUpXpCW7gPqR4iyCg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=/MeUKjw33jpqilmmYXQEGFRb0OCD/4Vq8XY4qGuBOYE=;
-        b=KAtxrco4F8NI2NLYUb0rrWBNnz9oYlLVwzN/cHfMexpCV4+4SYamCqD/yJ0jNEOiqt
-         r1dUJTlE0eJxoEV6KRJONYpxORv5bU6ejL0R0m7oolOnYWQdp+Zi13LvqqEnXGeq65Mc
-         /PQXzcKGZ/zUhfsvNrMBhpvNoXLZy/++eKCUGmQ0EHngUfNyyAh5v4R5MCUjuYgCSFGU
-         qmcdOtgrQkcqqEpuwy51Jf/k6l39AO+03Mxkqk5IOt5OM9yUMkD3fxSrzUGzcylGcc00
-         2qocMwAcUI9k9zECw6a9ihNhSaQzoaO2irQxOjpI0hzeaPI54tmmFYS/ZVRk1x4tEQIM
-         Z2Kg==
-X-Gm-Message-State: AO0yUKUbKgdcVcfwoTfxp50MjaijUJrcBEchTQWHRSXDSTt0qaiQxrZh
-	SspI2b1Ql6Vv6DEtqoM8+DzlCqK3thhlDZXT1+d48A==
-X-Google-Smtp-Source: AK7set/cSGuBVDTCxSmRRGsS41MgtBnX0pHCKDtmZOdivWOY+N/IZzhla6F8qP11ESwesqemFfp/tlEhHshfqZsRNsc=
+        bh=Lmq1AX4l7BfT40HlVrRZjM9eenWjOvLvEux3RFmEoWg=;
+        b=JsFYRb64Q+9GQUZXbx/MV0mLc56Dfg1gVdoixoQ+ssheId7GArsrUF/J3OE9Wdbrgm
+         cmIpO7CLu9zJ5qV1ubzUdjLyH+V08UiT4cb8je10iJ4u169DisA47ngz/a1E4RvluG3q
+         0IeuVuI2d1LJITLqx2X9Ng8cxvNSXWtJ+yZWtnX9DJPo/UJLOTd8l7LYUVOoTh2uRc8b
+         j049FBG4zGKXA0WkSA0Wog35QLFaJE2dBglnZP+dLG2MNisTsBJISZAYjL6Db9PiPrH7
+         Ydo2sBFPMmaDrRXmyRy1Z9nKoAAILpILT9RuntNHxGcnP8kmiAo+BS09syArFkmFX0XZ
+         +KLw==
+X-Gm-Message-State: AO0yUKWmC6InYZYzori4C+hJwDKLxWck+yifpGZE2aTRxbYtjuiH0env
+	gku41Jz9o0nejsrNozVaHECpqPpos2zxR1wqw1uorg==
+X-Google-Smtp-Source: AK7set+rIxXTdLszssQwjrPl/zffBSJASXRC2NxpmWZXPFmaNCb2uW0LmSshMzR+1Jfc6cjYctj08T5+Ubbk9qYPm0g=
 X-Received: by 2002:a67:f749:0:b0:3fc:58d:f90f with SMTP id
- w9-20020a67f749000000b003fc058df90fmr1532091vso.60.1676608374852; Thu, 16 Feb
- 2023 20:32:54 -0800 (PST)
+ w9-20020a67f749000000b003fc058df90fmr1542200vso.60.1676610077504; Thu, 16 Feb
+ 2023 21:01:17 -0800 (PST)
 MIME-Version: 1.0
-References: <20230214134127.59273-1-angelogioacchino.delregno@collabora.com> <20230214134127.59273-40-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230214134127.59273-40-angelogioacchino.delregno@collabora.com>
+References: <20230214134127.59273-1-angelogioacchino.delregno@collabora.com>
+ <20230214134127.59273-37-angelogioacchino.delregno@collabora.com> <CAGXv+5FxnsJaVw2MzeH+-Z3yEPzPCRtTukp7FDhsBoKHfx=m=g@mail.gmail.com>
+In-Reply-To: <CAGXv+5FxnsJaVw2MzeH+-Z3yEPzPCRtTukp7FDhsBoKHfx=m=g@mail.gmail.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 17 Feb 2023 12:32:44 +0800
-Message-ID: <CAGXv+5FtWp8BvLHJmJvXe=eXvM10-LTjQo9PkH1xKMvzY6YiHA@mail.gmail.com>
-Subject: Re: [PATCH v2 39/47] clk: mediatek: Allow MT7622 clocks to be built
- as modules
+Date: Fri, 17 Feb 2023 13:01:06 +0800
+Message-ID: <CAGXv+5E_kwn+9HLt0Y0BOyk-msXiU3W0N5woKenqVzK-GG_yQQ@mail.gmail.com>
+Subject: Re: [PATCH v2 36/47] clk: mediatek: mt2712: Change Kconfig options to
+ allow module build
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
 	johnson.wang@mediatek.com, miles.chen@mediatek.com, 
@@ -73,8 +74,8 @@ Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
 	linux-mediatek@lists.infradead.org, kernel@collabora.com
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230216_203255_960498_2C30B806 
-X-CRM114-Status: GOOD (  13.95  )
+X-CRM114-CacheID: sfid-20230216_210120_382997_858BDA4C 
+X-CRM114-Status: GOOD (  17.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,29 +90,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 14, 2023 at 9:42 PM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
+On Fri, Feb 17, 2023 at 12:24 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
 >
-> Now that all drivers are using the simple probe mechanism change the
-> MT7622 clock drivers to tristate in Kconfig to allow module build.
+> On Tue, Feb 14, 2023 at 9:42 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+> >
+> > All of the mt2712 drivers have been converted to platform drivers!
+> > Change the Kconfig options for all MT2712 clocks to tristate to allow
+> > building all clock drivers as modules.
+> >
+> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > ---
+> >  drivers/clk/mediatek/Kconfig | 16 ++++++++--------
+> >  1 file changed, 8 insertions(+), 8 deletions(-)
+> >
+> > diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+> > index b9c0a9e21cf1..45b7aea7648d 100644
+> > --- a/drivers/clk/mediatek/Kconfig
+> > +++ b/drivers/clk/mediatek/Kconfig
+> > @@ -75,7 +75,7 @@ config COMMON_CLK_MT2701_G3DSYS
+> >           This driver supports MediaTek MT2701 g3dsys clocks.
+> >
+> >  config COMMON_CLK_MT2712
+> > -       bool "Clock driver for MediaTek MT2712"
+> > +       tristate "Clock driver for MediaTek MT2712"
 >
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/clk/mediatek/Kconfig | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-> index b5636b3225e8..55727889ebf5 100644
-> --- a/drivers/clk/mediatek/Kconfig
-> +++ b/drivers/clk/mediatek/Kconfig
-> @@ -336,7 +336,7 @@ config COMMON_CLK_MT6797_VENCSYS
->           This driver supports MediaTek MT6797 vencsys clocks.
->
->  config COMMON_CLK_MT7622
-> -       bool "Clock driver for MediaTek MT7622"
-> +       tristate "Clock driver for MediaTek MT7622"
+> Hmm... How does that work out if mt2712-apmixedsys is a
+> builtin_platform_driver?
 
-Same as MT2712, mt7622-apmixedsys is builtin_platform_driver.
+Nevermind. I figured it out.
 
-ChenYu
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
