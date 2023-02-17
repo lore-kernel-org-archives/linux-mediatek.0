@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7B9FC636D4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Feb 2023 04:25:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10EDAC636D4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Feb 2023 04:31:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cQTI4GIY7xWZk9axi5Tzvy8kZ0pqgNhEH02uqsyNGWY=; b=upamOtHoUd2uS+BMxWHU8Y01TF
-	iKHpYlqd/5c3y/3/2p7x56KlB+xG05Nh6Rb6Yf2hYmFCwCgQU3MI+olS0pQcsSkZG+yMTe28hE3BW
-	7udhLeW96FMt6l8UEn5GjNcP+lEocXdgYh556W6t30kbGPnKwRqpVN6IUe4ZLAEcuhwSSDxM/RKpP
-	Euk7FNe/V+2jbfzl+UyV9+NWIvEbQfh8YBAw0v0qLeneq7Dv0G+jr6uvzs/PYsaso18hG9S//Iu9R
-	9TiUbd3RKgw1jY7T+Y/C8NeWgnPCRUjf+qaiYoGewIox1ISQnFI1vKmvArqITP249p1p03x3OvFIC
-	SZFly4Jw==;
+	bh=rn/OmYfGz3HlNF4zZ6zIKzHGJ/JlR0OYd4bSBBLtvEA=; b=HAtsx9pL5MN0H2EyRmqABrze1s
+	WBjnvQgzW8H1R9RFmjZMQgssJsK46WClrdhfL7fMKp06VMcdXt0yxJ46ls+HeQqBK1+loaVlFeuJL
+	g+dT2/8YeCboMn9h8cEraza9ygV61MFibuyNX33aV1Ii8PoYpsJECDAH/qBtBZbvJCSGtQepffEHR
+	D5BEjAcpnzZefQoeo8tzCJUQfdkVBV2PCxGVZsSTLMl3P03ioQXNsgfpHPN7uda0FRnEWLN6XVEFq
+	i+jCHuiAcy4uFOwR9APUDo8KYpNugXyslxUPBLG6xQElg28EJ/Qq5yRvZLeWNb8PbRBbdmbIoW3OX
+	IhjdNyfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSsIv-00Cf8l-JQ; Fri, 17 Feb 2023 04:25:01 +0000
-Received: from mail-vs1-xe35.google.com ([2607:f8b0:4864:20::e35])
+	id 1pSsPK-00Cgvu-8M; Fri, 17 Feb 2023 04:31:38 +0000
+Received: from mail-vs1-f45.google.com ([209.85.217.45])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSsIn-00Cf5j-DH
-	for linux-mediatek@lists.infradead.org; Fri, 17 Feb 2023 04:24:54 +0000
-Received: by mail-vs1-xe35.google.com with SMTP id d66so4313674vsd.9
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Feb 2023 20:24:53 -0800 (PST)
+	id 1pSsPH-00CguR-Ab
+	for linux-mediatek@lists.infradead.org; Fri, 17 Feb 2023 04:31:36 +0000
+Received: by mail-vs1-f45.google.com with SMTP id d66so4325697vsd.9
+        for <linux-mediatek@lists.infradead.org>; Thu, 16 Feb 2023 20:31:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=cQTI4GIY7xWZk9axi5Tzvy8kZ0pqgNhEH02uqsyNGWY=;
-        b=Oa+puq2gNoC0CrMJaOehGJxh8+6CiCwgDdIgBCfKbo7A1stwFpVgLYUjxzgVbDaLmX
-         38LaXqdmRU4oXC2dtiZ6AhinNyAyytLuwKuz++0xgShjcw63lV3iR+arFRl6YTuFJDPv
-         u8/ZLFw4Z+GM7AOohKrhqUIH1TnKI7wrPNYGQ=
+        bh=rn/OmYfGz3HlNF4zZ6zIKzHGJ/JlR0OYd4bSBBLtvEA=;
+        b=UXYLlZtdc5jXdgeXyTyGujX2S8FoYZoQki0xcU8Uu2kOhKFR9Mi3/cT2XW2RuZ9Dox
+         LcAyX9DfJJ5dOAYEk05t8jzQjcYMmcfHbRHfgy227juzjnLMlOax7DphA1tX6lVmwTuP
+         5RTrc+W1w6A7qsHRPWTwfsD8PudbfnOx9L3IA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=cQTI4GIY7xWZk9axi5Tzvy8kZ0pqgNhEH02uqsyNGWY=;
-        b=dwveQHYA5wP1zej5peg8UwIgfb/sMXEKDMWLPcy4ETCFz567nKMZFzT/6q5VouZ/3P
-         Pj0Hh0FXGf+A99s7wRxicTddBRyA6YHSKJyXhfj56+yMNynBhYDEHnXdM67T/4McEMW4
-         R7Kc7wdHn1vzmxeEY8q6o6Ur9zxuUpcBedujZNiEHCpKkJhbEw7vnC8mTHP7nTSDpqjU
-         zGKYAeZASnLyYl3MXznUvySF/krnHIvNOijdZ3E8ZhC2JqaIn37Elw1EEHVwRLhtPx+G
-         7pNP/j/jQCf/cUHfHA4xwrqJ7zrOj37XcUHGkkJIDnLrp88CLfKQ184sqC1oKYJjp9vi
-         8PdQ==
-X-Gm-Message-State: AO0yUKUbOnV1aoRJW1n5/ivQsvr+aG5yUIfaVcx7JvjyYLIBT0P/5s/V
-	XIOJch7ndhhdUuRC4v8QBgOUKKCS1v3giSU4MNzcdA==
-X-Google-Smtp-Source: AK7set9KlM3Eli5ccJEfH1OYtj4vfRx7YRy4pEPzZGC/oWqWNj5Lm4wd5sN6Pa2zdobSA2U7pU1eefIjJ+LIz5vYe8Q=
+        bh=rn/OmYfGz3HlNF4zZ6zIKzHGJ/JlR0OYd4bSBBLtvEA=;
+        b=Sq/7B7r/sLY6Kmc8oFb95bKs4hWBm0F0D22ECpn9jTAmJmjOWhn2zDmU97RrKP3SET
+         o9HqM6fX4AGLlH+KMN1it6mMU48OZnIKzaWFuzP6dp/PV2h9EgnJRyZuhG8B3qn7iL87
+         6mdNoe01sXkiDOlaDoG7mOBCsazf0AL7lcipOtEZAWfuMVgc1qlwZrcz/8DRw45P+4Ua
+         SAPxAwW5YOnmXLt8YIQfuzpwmx/EcMCJcwmWibxSe6TDRotzOMf/PYmC0fT2EF5ouqvk
+         TRfOcTy/NRmTymVaQoZm52ElacZn0Nxj42cXi11DKTTrB9Okq2OUisjCYngY+cyIe5Gt
+         YRmA==
+X-Gm-Message-State: AO0yUKWbc+eO368xGMNvCYjbmac9IURlDnMZTQ6m4OW2ebMX3i9UafEf
+	QBSokjKgiM+fzS/QZxsPFPcwi1YWcn8Sj8i5QFbp3w==
+X-Google-Smtp-Source: AK7set+RpbyryePA3PgFybbN8hipd8wGwv4jo+RuWVcM6nO3ydmFwiScewRsMc4d2x4qF7+myO9dlYpU5kECAXb2nOI=
 X-Received: by 2002:a67:f749:0:b0:3fc:58d:f90f with SMTP id
- w9-20020a67f749000000b003fc058df90fmr1529570vso.60.1676607892320; Thu, 16 Feb
- 2023 20:24:52 -0800 (PST)
+ w9-20020a67f749000000b003fc058df90fmr1531710vso.60.1676608293769; Thu, 16 Feb
+ 2023 20:31:33 -0800 (PST)
 MIME-Version: 1.0
-References: <20230214134127.59273-1-angelogioacchino.delregno@collabora.com> <20230214134127.59273-37-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230214134127.59273-37-angelogioacchino.delregno@collabora.com>
+References: <20230214134127.59273-1-angelogioacchino.delregno@collabora.com> <20230214134127.59273-38-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230214134127.59273-38-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 17 Feb 2023 12:24:41 +0800
-Message-ID: <CAGXv+5FxnsJaVw2MzeH+-Z3yEPzPCRtTukp7FDhsBoKHfx=m=g@mail.gmail.com>
-Subject: Re: [PATCH v2 36/47] clk: mediatek: mt2712: Change Kconfig options to
+Date: Fri, 17 Feb 2023 12:31:22 +0800
+Message-ID: <CAGXv+5H7=rOwVK2SapqyeKHKnRJMwXFf1OSD-qhgjkbkoR=Zmw@mail.gmail.com>
+Subject: Re: [PATCH v2 37/47] clk: mediatek: Split MT8195 clock drivers and
  allow module build
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
@@ -73,8 +73,8 @@ Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
 	linux-mediatek@lists.infradead.org, kernel@collabora.com
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230216_202453_472339_E31DA78E 
-X-CRM114-Status: GOOD (  14.65  )
+X-CRM114-CacheID: sfid-20230216_203135_421850_1049C683 
+X-CRM114-Status: GOOD (  14.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,28 +92,45 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Tue, Feb 14, 2023 at 9:42 PM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> All of the mt2712 drivers have been converted to platform drivers!
-> Change the Kconfig options for all MT2712 clocks to tristate to allow
-> building all clock drivers as modules.
+> MT8195 clock drivers were encapsulated in one single (and big) Kconfig
+> option: there's no reason to do that, as it is totally unnecessary to
+> build in all or none of them.
+>
+> Split them out: keep boot-critical clocks as bool and allow choosing
+> non critical clocks as tristate.
 >
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  drivers/clk/mediatek/Kconfig | 16 ++++++++--------
->  1 file changed, 8 insertions(+), 8 deletions(-)
+>  drivers/clk/mediatek/Kconfig  | 86 +++++++++++++++++++++++++++++++++++
+>  drivers/clk/mediatek/Makefile | 20 +++++---
+>  2 files changed, 99 insertions(+), 7 deletions(-)
 >
 > diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-> index b9c0a9e21cf1..45b7aea7648d 100644
+> index 45b7aea7648d..88937d111e98 100644
 > --- a/drivers/clk/mediatek/Kconfig
 > +++ b/drivers/clk/mediatek/Kconfig
-> @@ -75,7 +75,7 @@ config COMMON_CLK_MT2701_G3DSYS
->           This driver supports MediaTek MT2701 g3dsys clocks.
+> @@ -692,6 +692,92 @@ config COMMON_CLK_MT8195
+>          help
+>            This driver supports MediaTek MT8195 clocks.
 >
->  config COMMON_CLK_MT2712
-> -       bool "Clock driver for MediaTek MT2712"
-> +       tristate "Clock driver for MediaTek MT2712"
+> +config COMMON_CLK_MT8195_APUSYS
+> +       tristate "Clock driver for MediaTek MT8195 apusys"
+> +       depends on COMMON_CLK_MT8195
 
-Hmm... How does that work out if mt2712-apmixedsys is a
-builtin_platform_driver?
+Would something like
+
+          default COMMON_CLK_MT8195
+
+help with the transition?
+
+Otherwise we'd need to add a whole lot more stuff to arm64's defconfig,
+and anyone running `make olddefconfig` would have many of their clock
+drivers no longer available.
+
+Same applies to the MT8186 split.
+
+Seems like not all MediaTek SoCs apply this pattern, but at least MT7986,
+MT8167, MT8173, MT8183 do this.
 
 ChenYu
 
