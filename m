@@ -4,65 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2E5BC6379F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Feb 2023 15:00:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7240C05027
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Feb 2023 15:16:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u0Z7qoZzchFS6x9WaKZ/RHV+jq4BMXSd1fKwQTs6nPQ=; b=RSGSc1076dB0uFTySH1H79Cr4R
-	eKDKdI0BbaTyBkAE9fhULA+V4R3dNlxcBw6Rc2da0gKx2DHCHbxBJSMabYQUJp2AUsIo3kL7KJHc/
-	ZA9QrvLOeYkKAtaDbE8DoKLYruBrbYh9EJxEm/vYtQZpbOBXhGOZW1xLkWpTKBXavKDbQ0mjx0Jzd
-	lJh2njDit+g3vNoIBxGzs/I4erjQ57rf5M4H5VslzNB1y6g4mBXKiDsFdEaU0OFSB8L4quVuHR8t4
-	FLcGWiDkemns1La+4Vq4gw0dIp4xLOSVbhM8jH3ZX3yKf2+ndmaw/Z3qQyeCk27wtCALGUGBTxRbR
-	GO25sraw==;
+	bh=y6tSzB6GogvHu+/Sj0xL4Z/TCcT8KX/q0mTJTQsyK7Q=; b=V1lfpl1JZ+qS4A/bbatH4R6wCM
+	XXtj+aOyf/wrKrmmy4n89ipoYMGi2Y1n9D+GSuDZuWDLCojwY1LNfRFJdwn7WkU2rmGge3CwEaV/2
+	xGCXkqq4Qqpu7EWA1ZH5TeVlPouxm/6k9Nz/iJLoLGKZ+AQM9sWuGc1CQcQwJkm0QVXTBzC4NoZuE
+	CmZl2AEpnnkkbu+u1ExW0EbN+BZLR0wRi2W2IoayBIckA677c/nnaOZjANd17lffJL+76Zu7Kn/ZP
+	l9A6voKwzlWySF51ujsx/AZsXf1O4ENMpK4av4wwD8jAzAFjjgivXgbn/ZU0+jSIUz1pLqRXRvo2s
+	jgVJ6qoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pT2DS-00Eh01-FY; Fri, 17 Feb 2023 15:00:02 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pT2Te-00EpJO-Ab; Fri, 17 Feb 2023 15:16:46 +0000
+Received: from mail-io1-xd30.google.com ([2607:f8b0:4864:20::d30])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pT2AS-00Ef6v-8I; Fri, 17 Feb 2023 14:56:58 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pT2AQ-0005N8-0y;
-	Fri, 17 Feb 2023 15:56:54 +0100
-Date: Fri, 17 Feb 2023 14:55:19 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Russell King <linux@armlinux.org.uk>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>
-Cc: Jianhui Zhao <zhaojh329@gmail.com>,
-	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
-Subject: [PATCH v8 12/12] net: dsa: mt7530: use external PCS driver
-Message-ID: <247c07af1bc7824039748b92bf16ca4a4a175c2d.1676645204.git.daniel@makrotopia.org>
-References: <cover.1676645203.git.daniel@makrotopia.org>
+	id 1pT2TJ-00Ep8y-PW
+	for linux-mediatek@lists.infradead.org; Fri, 17 Feb 2023 15:16:28 +0000
+Received: by mail-io1-xd30.google.com with SMTP id s10so507128iop.4
+        for <linux-mediatek@lists.infradead.org>; Fri, 17 Feb 2023 07:16:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=y6tSzB6GogvHu+/Sj0xL4Z/TCcT8KX/q0mTJTQsyK7Q=;
+        b=OfLZ+n93gBE6JvkCeqIGlnC8EIWeE8iaemwIwdZO4mH8UCtTnPE7WBlzR0w48SrvVA
+         lWlf7c9NRg0a4o1ixTNkNXrxTq301dM7B1noIBSe5AIIU4tqwWWtR+92s1zlFLwdkG2A
+         hRFzbk1CV2c7DL0f0FGcIgHJjv/5hBFBO8gck=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=y6tSzB6GogvHu+/Sj0xL4Z/TCcT8KX/q0mTJTQsyK7Q=;
+        b=Zld4WmHMgVt6MJHyAUsvSbHRWHAqiaWUimCHWHTGTSBR6H9baaASfr2FxWsj5zfzJT
+         0rKkGgA/mM/1pejhxl3HZL5xqPAKSYbv6LUf5hM+WRVrBI+LcrI8ao422jbky8/t4VqS
+         T4pdQ0Y8tTvsmPkmhDlr5q95gDjxXLQ82F7ShqXA1u29WoMWhpnQ69WjMDSDnQH3Kywz
+         QkV9h9R6pfIyFmw2HFf6oLVy3gcALP2+8uIH+fEsdNFGDL8s8ZCI8opiYOanjMz93eHJ
+         pp46mSiqnjNcYG7LUHHYcgKSuGrxeuu0jHoPP1Ra7wsuPO9bSiSYdGG7XKythLItobQ+
+         peGw==
+X-Gm-Message-State: AO0yUKVMrYaXymZHnyf043gMY77x+XMzK6IFK8w1LCDBYpXl++GD1cNL
+	7qKy3DrmkliY6NXFE8jHh+jZ+ax3ABhV/nB97vZDog==
+X-Google-Smtp-Source: AK7set8VgsRphz5Zi8p+HUY1vqyOrAxOOrq9Nf9k7JovWnJ/H3Qd2Ajyc+oIGlzTDEOE6C0axpa5HWHEqdT2NLOEaS8=
+X-Received: by 2002:a02:2907:0:b0:3a9:6e13:781b with SMTP id
+ p7-20020a022907000000b003a96e13781bmr544032jap.3.1676646982352; Fri, 17 Feb
+ 2023 07:16:22 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <cover.1676645203.git.daniel@makrotopia.org>
+References: <20230214134127.59273-1-angelogioacchino.delregno@collabora.com>
+ <20230214134127.59273-38-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5H7=rOwVK2SapqyeKHKnRJMwXFf1OSD-qhgjkbkoR=Zmw@mail.gmail.com> <c9bd53f9-7d5a-6e2d-4062-297158661422@collabora.com>
+In-Reply-To: <c9bd53f9-7d5a-6e2d-4062-297158661422@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 17 Feb 2023 23:16:10 +0800
+Message-ID: <CAGXv+5GigndbJ2rfpRUfti-9DO1gyfOQ-difX-oOqSTF2dup_g@mail.gmail.com>
+Subject: Re: [PATCH v2 37/47] clk: mediatek: Split MT8195 clock drivers and
+ allow module build
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
+	johnson.wang@mediatek.com, miles.chen@mediatek.com, 
+	chun-jie.chen@mediatek.com, daniel@makrotopia.org, fparent@baylibre.com, 
+	msp@baylibre.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com, 
+	zhaojh329@gmail.com, sam.shih@mediatek.com, edward-jw.yang@mediatek.com, 
+	yangyingliang@huawei.com, granquet@baylibre.com, pablo.sun@mediatek.com, 
+	sean.wang@mediatek.com, chen.zhong@mediatek.com, linux-kernel@vger.kernel.org, 
+	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230217_065656_657688_20DC3485 
-X-CRM114-Status: GOOD (  25.46  )
+X-CRM114-CacheID: sfid-20230217_071625_929003_1FCA5B7D 
+X-CRM114-Status: GOOD (  27.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,480 +91,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Implement regmap access wrappers, for now only to be used by the
-pcs-mtk driver.
-Make use of external PCS driver and drop the reduntant implementation
-in mt7530.c.
-As a nice side effect the SGMII registers can now also more easily be
-inspected for debugging via /sys/kernel/debug/regmap.
+On Fri, Feb 17, 2023 at 7:29 PM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 17/02/23 05:31, Chen-Yu Tsai ha scritto:
+> > On Tue, Feb 14, 2023 at 9:42 PM AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com> wrote:
+> >>
+> >> MT8195 clock drivers were encapsulated in one single (and big) Kconfig
+> >> option: there's no reason to do that, as it is totally unnecessary to
+> >> build in all or none of them.
+> >>
+> >> Split them out: keep boot-critical clocks as bool and allow choosing
+> >> non critical clocks as tristate.
+> >>
+> >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> >> ---
+> >>   drivers/clk/mediatek/Kconfig  | 86 +++++++++++++++++++++++++++++++++++
+> >>   drivers/clk/mediatek/Makefile | 20 +++++---
+> >>   2 files changed, 99 insertions(+), 7 deletions(-)
+> >>
+> >> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+> >> index 45b7aea7648d..88937d111e98 100644
+> >> --- a/drivers/clk/mediatek/Kconfig
+> >> +++ b/drivers/clk/mediatek/Kconfig
+> >> @@ -692,6 +692,92 @@ config COMMON_CLK_MT8195
+> >>           help
+> >>             This driver supports MediaTek MT8195 clocks.
+> >>
+> >> +config COMMON_CLK_MT8195_APUSYS
+> >> +       tristate "Clock driver for MediaTek MT8195 apusys"
+> >> +       depends on COMMON_CLK_MT8195
+> >
+> > Would something like
+> >
+> >            default COMMON_CLK_MT8195
+> >
+> > help with the transition?
+> >
+> > Otherwise we'd need to add a whole lot more stuff to arm64's defconfig,
+> > and anyone running `make olddefconfig` would have many of their clock
+> > drivers no longer available.
+> >
+> > Same applies to the MT8186 split.
+> >
+> > Seems like not all MediaTek SoCs apply this pattern, but at least MT7986,
+> > MT8167, MT8173, MT8183 do this.
+> >
+> > ChenYu
+>
+> Right. Since MT8195 machines have been out in the wild for a bit of time now,
+> I think it's worth following your advice and add `default COMMON_CLK_MT8195`
+> to the new configuration options.
+>
+> As for MT8186, currently, there's only one board supported upstream, which
+> is the "unobtainable" EVB so I would rather not do that for MT8186, unless
+> you have any strong opinions on that.
 
-Reviewed-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-Tested-by: Bjørn Mork <bjorn@mork.no>
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- drivers/net/dsa/Kconfig  |   1 +
- drivers/net/dsa/mt7530.c | 277 ++++++++++-----------------------------
- drivers/net/dsa/mt7530.h |  47 +------
- 3 files changed, 71 insertions(+), 254 deletions(-)
+I'd like something that provides a reasonable working machine if possible.
+If people need to customize to shrink their kernel, they could disable the
+options later on. At least for ChromeOS we'll probably start off with them
+all built-in, and later on maybe experiment a bit with modules.
 
-diff --git a/drivers/net/dsa/Kconfig b/drivers/net/dsa/Kconfig
-index f6f3b43dfb06..6b45fa8b6907 100644
---- a/drivers/net/dsa/Kconfig
-+++ b/drivers/net/dsa/Kconfig
-@@ -38,6 +38,7 @@ config NET_DSA_MT7530
- 	tristate "MediaTek MT7530 and MT7531 Ethernet switch support"
- 	select NET_DSA_TAG_MTK
- 	select MEDIATEK_GE_PHY
-+	select PCS_MTK_LYNXI
- 	help
- 	  This enables support for the MediaTek MT7530 and MT7531 Ethernet
- 	  switch chips. Multi-chip module MT7530 in MT7621AT, MT7621DAT,
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 3a15015bc409..582ba30374c8 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -14,6 +14,7 @@
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
- #include <linux/of_platform.h>
-+#include <linux/pcs/pcs-mtk-lynxi.h>
- #include <linux/phylink.h>
- #include <linux/regmap.h>
- #include <linux/regulator/consumer.h>
-@@ -2567,128 +2568,11 @@ static int mt7531_rgmii_setup(struct mt7530_priv *priv, u32 port,
- 	return 0;
- }
- 
--static void mt7531_pcs_link_up(struct phylink_pcs *pcs, unsigned int mode,
--			       phy_interface_t interface, int speed, int duplex)
--{
--	struct mt7530_priv *priv = pcs_to_mt753x_pcs(pcs)->priv;
--	int port = pcs_to_mt753x_pcs(pcs)->port;
--	unsigned int val;
--
--	/* For adjusting speed and duplex of SGMII force mode. */
--	if (interface != PHY_INTERFACE_MODE_SGMII ||
--	    phylink_autoneg_inband(mode))
--		return;
--
--	/* SGMII force mode setting */
--	val = mt7530_read(priv, MT7531_SGMII_MODE(port));
--	val &= ~MT7531_SGMII_IF_MODE_MASK;
--
--	switch (speed) {
--	case SPEED_10:
--		val |= MT7531_SGMII_FORCE_SPEED_10;
--		break;
--	case SPEED_100:
--		val |= MT7531_SGMII_FORCE_SPEED_100;
--		break;
--	case SPEED_1000:
--		val |= MT7531_SGMII_FORCE_SPEED_1000;
--		break;
--	}
--
--	/* MT7531 SGMII 1G force mode can only work in full duplex mode,
--	 * no matter MT7531_SGMII_FORCE_HALF_DUPLEX is set or not.
--	 *
--	 * The speed check is unnecessary as the MAC capabilities apply
--	 * this restriction. --rmk
--	 */
--	if ((speed == SPEED_10 || speed == SPEED_100) &&
--	    duplex != DUPLEX_FULL)
--		val |= MT7531_SGMII_FORCE_HALF_DUPLEX;
--
--	mt7530_write(priv, MT7531_SGMII_MODE(port), val);
--}
--
- static bool mt753x_is_mac_port(u32 port)
- {
- 	return (port == 5 || port == 6);
- }
- 
--static int mt7531_sgmii_setup_mode_force(struct mt7530_priv *priv, u32 port,
--					 phy_interface_t interface)
--{
--	u32 val;
--
--	if (!mt753x_is_mac_port(port))
--		return -EINVAL;
--
--	mt7530_set(priv, MT7531_QPHY_PWR_STATE_CTRL(port),
--		   MT7531_SGMII_PHYA_PWD);
--
--	val = mt7530_read(priv, MT7531_PHYA_CTRL_SIGNAL3(port));
--	val &= ~MT7531_RG_TPHY_SPEED_MASK;
--	/* Setup 2.5 times faster clock for 2.5Gbps data speeds with 10B/8B
--	 * encoding.
--	 */
--	val |= (interface == PHY_INTERFACE_MODE_2500BASEX) ?
--		MT7531_RG_TPHY_SPEED_3_125G : MT7531_RG_TPHY_SPEED_1_25G;
--	mt7530_write(priv, MT7531_PHYA_CTRL_SIGNAL3(port), val);
--
--	mt7530_clear(priv, MT7531_PCS_CONTROL_1(port), MT7531_SGMII_AN_ENABLE);
--
--	/* MT7531 SGMII 1G and 2.5G force mode can only work in full duplex
--	 * mode, no matter MT7531_SGMII_FORCE_HALF_DUPLEX is set or not.
--	 */
--	mt7530_rmw(priv, MT7531_SGMII_MODE(port),
--		   MT7531_SGMII_IF_MODE_MASK | MT7531_SGMII_REMOTE_FAULT_DIS,
--		   MT7531_SGMII_FORCE_SPEED_1000);
--
--	mt7530_write(priv, MT7531_QPHY_PWR_STATE_CTRL(port), 0);
--
--	return 0;
--}
--
--static int mt7531_sgmii_setup_mode_an(struct mt7530_priv *priv, int port,
--				      phy_interface_t interface)
--{
--	if (!mt753x_is_mac_port(port))
--		return -EINVAL;
--
--	mt7530_set(priv, MT7531_QPHY_PWR_STATE_CTRL(port),
--		   MT7531_SGMII_PHYA_PWD);
--
--	mt7530_rmw(priv, MT7531_PHYA_CTRL_SIGNAL3(port),
--		   MT7531_RG_TPHY_SPEED_MASK, MT7531_RG_TPHY_SPEED_1_25G);
--
--	mt7530_set(priv, MT7531_SGMII_MODE(port),
--		   MT7531_SGMII_REMOTE_FAULT_DIS |
--		   MT7531_SGMII_SPEED_DUPLEX_AN);
--
--	mt7530_rmw(priv, MT7531_PCS_SPEED_ABILITY(port),
--		   MT7531_SGMII_TX_CONFIG_MASK, 1);
--
--	mt7530_set(priv, MT7531_PCS_CONTROL_1(port), MT7531_SGMII_AN_ENABLE);
--
--	mt7530_set(priv, MT7531_PCS_CONTROL_1(port), MT7531_SGMII_AN_RESTART);
--
--	mt7530_write(priv, MT7531_QPHY_PWR_STATE_CTRL(port), 0);
--
--	return 0;
--}
--
--static void mt7531_pcs_an_restart(struct phylink_pcs *pcs)
--{
--	struct mt7530_priv *priv = pcs_to_mt753x_pcs(pcs)->priv;
--	int port = pcs_to_mt753x_pcs(pcs)->port;
--	u32 val;
--
--	/* Only restart AN when AN is enabled */
--	val = mt7530_read(priv, MT7531_PCS_CONTROL_1(port));
--	if (val & MT7531_SGMII_AN_ENABLE) {
--		val |= MT7531_SGMII_AN_RESTART;
--		mt7530_write(priv, MT7531_PCS_CONTROL_1(port), val);
--	}
--}
--
- static int
- mt7531_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- 		  phy_interface_t interface)
-@@ -2711,11 +2595,11 @@ mt7531_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- 		phydev = dp->slave->phydev;
- 		return mt7531_rgmii_setup(priv, port, interface, phydev);
- 	case PHY_INTERFACE_MODE_SGMII:
--		return mt7531_sgmii_setup_mode_an(priv, port, interface);
- 	case PHY_INTERFACE_MODE_NA:
- 	case PHY_INTERFACE_MODE_1000BASEX:
- 	case PHY_INTERFACE_MODE_2500BASEX:
--		return mt7531_sgmii_setup_mode_force(priv, port, interface);
-+		/* handled in SGMII PCS driver */
-+		return 0;
- 	default:
- 		return -EINVAL;
- 	}
-@@ -2740,11 +2624,11 @@ mt753x_phylink_mac_select_pcs(struct dsa_switch *ds, int port,
- 
- 	switch (interface) {
- 	case PHY_INTERFACE_MODE_TRGMII:
-+		return &priv->pcs[port].pcs;
- 	case PHY_INTERFACE_MODE_SGMII:
- 	case PHY_INTERFACE_MODE_1000BASEX:
- 	case PHY_INTERFACE_MODE_2500BASEX:
--		return &priv->pcs[port].pcs;
--
-+		return priv->ports[port].sgmii_pcs;
- 	default:
- 		return NULL;
- 	}
-@@ -2982,86 +2866,6 @@ static void mt7530_pcs_get_state(struct phylink_pcs *pcs,
- 		state->pause |= MLO_PAUSE_TX;
- }
- 
--static int
--mt7531_sgmii_pcs_get_state_an(struct mt7530_priv *priv, int port,
--			      struct phylink_link_state *state)
--{
--	u32 status, val;
--	u16 config_reg;
--
--	status = mt7530_read(priv, MT7531_PCS_CONTROL_1(port));
--	state->link = !!(status & MT7531_SGMII_LINK_STATUS);
--	state->an_complete = !!(status & MT7531_SGMII_AN_COMPLETE);
--	if (state->interface == PHY_INTERFACE_MODE_SGMII &&
--	    (status & MT7531_SGMII_AN_ENABLE)) {
--		val = mt7530_read(priv, MT7531_PCS_SPEED_ABILITY(port));
--		config_reg = val >> 16;
--
--		switch (config_reg & LPA_SGMII_SPD_MASK) {
--		case LPA_SGMII_1000:
--			state->speed = SPEED_1000;
--			break;
--		case LPA_SGMII_100:
--			state->speed = SPEED_100;
--			break;
--		case LPA_SGMII_10:
--			state->speed = SPEED_10;
--			break;
--		default:
--			dev_err(priv->dev, "invalid sgmii PHY speed\n");
--			state->link = false;
--			return -EINVAL;
--		}
--
--		if (config_reg & LPA_SGMII_FULL_DUPLEX)
--			state->duplex = DUPLEX_FULL;
--		else
--			state->duplex = DUPLEX_HALF;
--	}
--
--	return 0;
--}
--
--static void
--mt7531_sgmii_pcs_get_state_inband(struct mt7530_priv *priv, int port,
--				  struct phylink_link_state *state)
--{
--	unsigned int val;
--
--	val = mt7530_read(priv, MT7531_PCS_CONTROL_1(port));
--	state->link = !!(val & MT7531_SGMII_LINK_STATUS);
--	if (!state->link)
--		return;
--
--	state->an_complete = state->link;
--
--	if (state->interface == PHY_INTERFACE_MODE_2500BASEX)
--		state->speed = SPEED_2500;
--	else
--		state->speed = SPEED_1000;
--
--	state->duplex = DUPLEX_FULL;
--	state->pause = MLO_PAUSE_NONE;
--}
--
--static void mt7531_pcs_get_state(struct phylink_pcs *pcs,
--				 struct phylink_link_state *state)
--{
--	struct mt7530_priv *priv = pcs_to_mt753x_pcs(pcs)->priv;
--	int port = pcs_to_mt753x_pcs(pcs)->port;
--
--	if (state->interface == PHY_INTERFACE_MODE_SGMII) {
--		mt7531_sgmii_pcs_get_state_an(priv, port, state);
--		return;
--	} else if ((state->interface == PHY_INTERFACE_MODE_1000BASEX) ||
--		   (state->interface == PHY_INTERFACE_MODE_2500BASEX)) {
--		mt7531_sgmii_pcs_get_state_inband(priv, port, state);
--		return;
--	}
--
--	state->link = false;
--}
--
- static int mt753x_pcs_config(struct phylink_pcs *pcs, unsigned int mode,
- 			     phy_interface_t interface,
- 			     const unsigned long *advertising,
-@@ -3081,18 +2885,57 @@ static const struct phylink_pcs_ops mt7530_pcs_ops = {
- 	.pcs_an_restart = mt7530_pcs_an_restart,
- };
- 
--static const struct phylink_pcs_ops mt7531_pcs_ops = {
--	.pcs_validate = mt753x_pcs_validate,
--	.pcs_get_state = mt7531_pcs_get_state,
--	.pcs_config = mt753x_pcs_config,
--	.pcs_an_restart = mt7531_pcs_an_restart,
--	.pcs_link_up = mt7531_pcs_link_up,
-+static int mt7530_regmap_read(void *context, unsigned int reg, unsigned int *val)
-+{
-+	struct mt7530_priv *priv = context;
-+
-+	*val = mt7530_read(priv, reg);
-+	return 0;
-+};
-+
-+static int mt7530_regmap_write(void *context, unsigned int reg, unsigned int val)
-+{
-+	struct mt7530_priv *priv = context;
-+
-+	mt7530_write(priv, reg, val);
-+	return 0;
-+};
-+
-+static int mt7530_regmap_update_bits(void *context, unsigned int reg,
-+				     unsigned int mask, unsigned int val)
-+{
-+	struct mt7530_priv *priv = context;
-+
-+	mt7530_rmw(priv, reg, mask, val);
-+	return 0;
-+};
-+
-+static const struct regmap_bus mt7531_regmap_bus = {
-+	.reg_write = mt7530_regmap_write,
-+	.reg_read = mt7530_regmap_read,
-+	.reg_update_bits = mt7530_regmap_update_bits,
-+};
-+
-+#define MT7531_PCS_REGMAP_CONFIG(_name, _reg_base) \
-+	{				\
-+		.name = _name,		\
-+		.reg_bits = 16,		\
-+		.val_bits = 32,		\
-+		.reg_stride = 4,	\
-+		.reg_base = _reg_base,	\
-+		.max_register = 0x17c,	\
-+	}
-+
-+static const struct regmap_config mt7531_pcs_config[] = {
-+	MT7531_PCS_REGMAP_CONFIG("port5", MT7531_SGMII_REG_BASE(5)),
-+	MT7531_PCS_REGMAP_CONFIG("port6", MT7531_SGMII_REG_BASE(6)),
- };
- 
- static int
- mt753x_setup(struct dsa_switch *ds)
- {
- 	struct mt7530_priv *priv = ds->priv;
-+	struct regmap *regmap;
- 	int i, ret;
- 
- 	/* Initialise the PCS devices */
-@@ -3100,8 +2943,6 @@ mt753x_setup(struct dsa_switch *ds)
- 		priv->pcs[i].pcs.ops = priv->info->pcs_ops;
- 		priv->pcs[i].priv = priv;
- 		priv->pcs[i].port = i;
--		if (mt753x_is_mac_port(i))
--			priv->pcs[i].pcs.poll = 1;
- 	}
- 
- 	ret = priv->info->sw_setup(ds);
-@@ -3116,6 +2957,16 @@ mt753x_setup(struct dsa_switch *ds)
- 	if (ret && priv->irq)
- 		mt7530_free_irq_common(priv);
- 
-+	if (priv->id == ID_MT7531)
-+		for (i = 0; i < 2; i++) {
-+			regmap = devm_regmap_init(ds->dev,
-+						  &mt7531_regmap_bus, priv,
-+						  &mt7531_pcs_config[i]);
-+			priv->ports[5 + i].sgmii_pcs =
-+				mtk_pcs_lynxi_create(ds->dev, regmap,
-+						     MT7531_PHYA_CTRL_SIGNAL3, 0);
-+		}
-+
- 	return ret;
- }
- 
-@@ -3211,7 +3062,7 @@ static const struct mt753x_info mt753x_table[] = {
- 	},
- 	[ID_MT7531] = {
- 		.id = ID_MT7531,
--		.pcs_ops = &mt7531_pcs_ops,
-+		.pcs_ops = &mt7530_pcs_ops,
- 		.sw_setup = mt7531_setup,
- 		.phy_read_c22 = mt7531_ind_c22_phy_read,
- 		.phy_write_c22 = mt7531_ind_c22_phy_write,
-@@ -3321,7 +3172,7 @@ static void
- mt7530_remove(struct mdio_device *mdiodev)
- {
- 	struct mt7530_priv *priv = dev_get_drvdata(&mdiodev->dev);
--	int ret = 0;
-+	int ret = 0, i;
- 
- 	if (!priv)
- 		return;
-@@ -3340,6 +3191,10 @@ mt7530_remove(struct mdio_device *mdiodev)
- 		mt7530_free_irq(priv);
- 
- 	dsa_unregister_switch(priv->ds);
-+
-+	for (i = 0; i < 2; ++i)
-+		mtk_pcs_lynxi_destroy(priv->ports[5 + i].sgmii_pcs);
-+
- 	mutex_destroy(&priv->reg_mutex);
- }
- 
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 6b2fc6290ea8..c5d29f3fc1d8 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -364,47 +364,8 @@ enum mt7530_vlan_port_acc_frm {
- 					 CCR_TX_OCT_CNT_BAD)
- 
- /* MT7531 SGMII register group */
--#define MT7531_SGMII_REG_BASE		0x5000
--#define MT7531_SGMII_REG(p, r)		(MT7531_SGMII_REG_BASE + \
--					((p) - 5) * 0x1000 + (r))
--
--/* Register forSGMII PCS_CONTROL_1 */
--#define MT7531_PCS_CONTROL_1(p)		MT7531_SGMII_REG(p, 0x00)
--#define  MT7531_SGMII_LINK_STATUS	BIT(18)
--#define  MT7531_SGMII_AN_ENABLE		BIT(12)
--#define  MT7531_SGMII_AN_RESTART	BIT(9)
--#define  MT7531_SGMII_AN_COMPLETE	BIT(21)
--
--/* Register for SGMII PCS_SPPED_ABILITY */
--#define MT7531_PCS_SPEED_ABILITY(p)	MT7531_SGMII_REG(p, 0x08)
--#define  MT7531_SGMII_TX_CONFIG_MASK	GENMASK(15, 0)
--#define  MT7531_SGMII_TX_CONFIG		BIT(0)
--
--/* Register for SGMII_MODE */
--#define MT7531_SGMII_MODE(p)		MT7531_SGMII_REG(p, 0x20)
--#define  MT7531_SGMII_REMOTE_FAULT_DIS	BIT(8)
--#define  MT7531_SGMII_IF_MODE_MASK	GENMASK(5, 1)
--#define  MT7531_SGMII_FORCE_DUPLEX	BIT(4)
--#define  MT7531_SGMII_FORCE_SPEED_MASK	GENMASK(3, 2)
--#define  MT7531_SGMII_FORCE_SPEED_1000	BIT(3)
--#define  MT7531_SGMII_FORCE_SPEED_100	BIT(2)
--#define  MT7531_SGMII_FORCE_SPEED_10	0
--#define  MT7531_SGMII_SPEED_DUPLEX_AN	BIT(1)
--
--enum mt7531_sgmii_force_duplex {
--	MT7531_SGMII_FORCE_FULL_DUPLEX = 0,
--	MT7531_SGMII_FORCE_HALF_DUPLEX = 0x10,
--};
--
--/* Fields of QPHY_PWR_STATE_CTRL */
--#define MT7531_QPHY_PWR_STATE_CTRL(p)	MT7531_SGMII_REG(p, 0xe8)
--#define  MT7531_SGMII_PHYA_PWD		BIT(4)
--
--/* Values of SGMII SPEED */
--#define MT7531_PHYA_CTRL_SIGNAL3(p)	MT7531_SGMII_REG(p, 0x128)
--#define  MT7531_RG_TPHY_SPEED_MASK	(BIT(2) | BIT(3))
--#define  MT7531_RG_TPHY_SPEED_1_25G	0x0
--#define  MT7531_RG_TPHY_SPEED_3_125G	BIT(2)
-+#define MT7531_SGMII_REG_BASE(p)	(0x5000 + ((p) - 5) * 0x1000)
-+#define MT7531_PHYA_CTRL_SIGNAL3	0x128
- 
- /* Register for system reset */
- #define MT7530_SYS_CTRL			0x7000
-@@ -703,13 +664,13 @@ struct mt7530_fdb {
-  * @pm:		The matrix used to show all connections with the port.
-  * @pvid:	The VLAN specified is to be considered a PVID at ingress.  Any
-  *		untagged frames will be assigned to the related VLAN.
-- * @vlan_filtering: The flags indicating whether the port that can recognize
-- *		    VLAN-tagged frames.
-+ * @sgmii_pcs:	Pointer to PCS instance for SerDes ports
-  */
- struct mt7530_port {
- 	bool enable;
- 	u32 pm;
- 	u16 pvid;
-+	struct phylink_pcs *sgmii_pcs;
- };
- 
- /* Port 5 interface select definitions */
--- 
-2.39.2
-
+ChenYu
 
