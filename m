@@ -4,68 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 261E2C05027
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Feb 2023 18:00:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4EF0C636D6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Feb 2023 18:01:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tMcnGa3U3EjcvxM880Qvd1d5nOYqaSAgka7dmP9myKc=; b=kuoghNVcJf8VFE1kg9Q6kbuJHE
-	ArHmXvQxq9+iYcliCwpUk6G3FTQTsL33x446oiO6qZ4QFJBtScv/hj+M0dKeFlTcHZmWVrHshfuTe
-	mW5Tmrm45uSP+1uO//ThuG1DKJ29Vywt4vUFJ7p4vQyrRJZFCYf/iXoGMnpM35Ahh6yt8z0T1dUPh
-	JzYwfxzCa15xrSJApDzRAfztUf06vpQY5fTk4k+aSJOnn/fvLL2aBKPfQFgrE4CHyMl/eBUgA43w3
-	1yV7CvV0gg3vgtMlYeIR9/6418chbyCXwaVv6r7kjWdEuRmlqJDqxSsQehOlLsstC1VJXNqjPOmBR
-	+xOtkKqA==;
+	bh=xG89Mz9pj4E3T/EI2ryZS5Oc9+f4DJBf5248lLVypVI=; b=rAzqbG0HXPprEeXgjlsmGR2LD/
+	4PbeLNDN75HcBpQ5KdF4ffWXKbAngUJ5oCuEBV+Pkv5h5Uk7QSMQ0nguq9nDWyfsD8EOyKKoo5sZ8
+	kulwbW9oDXHyzUv83+r+Y2P9Qxe74YPK48PfuDvnuP08cJxaLkSvUnqXx1N7jkvCJlzI9sWmcrUFO
+	uKc3rKZowngszVJSbKbd8E91tysG193qwzo4dNIvq+JO7tWQxSjRcG0eubRVj56JGSnekEsrlQTcB
+	N3HKqLT9ZMIT+6s1QUUIvRpPcUJnlO3N8gxO9beKsZsmY6SpYKt29E5ya/oH6Igo0ogs3qsWpMfpZ
+	gSdkdxXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pT52O-00FLLS-NS; Fri, 17 Feb 2023 18:00:48 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pT535-00FLRF-DS; Fri, 17 Feb 2023 18:01:31 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:191:4433::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pT52M-00FLL7-6w
-	for linux-mediatek@lists.infradead.org; Fri, 17 Feb 2023 18:00:47 +0000
-X-UUID: fedf5a32aeec11eda08d4d6090ec5a5c-20230217
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=tMcnGa3U3EjcvxM880Qvd1d5nOYqaSAgka7dmP9myKc=;
-	b=WEi/DBXKJrHh0AzL8dx9hhwjl49XJ3Uughqb7CVjBLXE14ZOydMNy891uCbnetVJLe4rfk+L1KraNR6FY78fWRfCsGWrlw7MrBpPkfyN0OrUSu7GenmZuGc07wH5lkeaR27OrAqVduhveRzTmr04buWXxc5U+RWP4Po36p+XAo0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.19,REQID:e222db68-6b34-420b-adc1-5e2a77167a90,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:885ddb2,CLOUDID:9ac858f3-ddba-41c3-91d9-10eeade8eac7,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-UUID: fedf5a32aeec11eda08d4d6090ec5a5c-20230217
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 17977381; Fri, 17 Feb 2023 11:00:42 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Sat, 18 Feb 2023 01:50:39 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Sat, 18 Feb 2023 01:50:39 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 2/2] wifi: mt76: connac: refresh tx session timer for WED device
-Date: Sat, 18 Feb 2023 01:50:38 +0800
-Message-ID: <63513d0d570ddfda327714ff15bbf9de7b31c8ce.1676616450.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pT532-00FLOx-6k
+	for linux-mediatek@lists.infradead.org; Fri, 17 Feb 2023 18:01:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+	Resent-Cc:Resent-Message-ID; bh=xG89Mz9pj4E3T/EI2ryZS5Oc9+f4DJBf5248lLVypVI=;
+	t=1676656881; x=1677866481; b=G15hEshllAobsVI3SpAx4+bm97CedHBc7SP4SEMmwpoe9GM
+	Y9lCkQrhtdiv9Kvs2V9cmr+7TjhAQZNXPaW0FSV6mPc7b/+fm+xiq2jOm9S/ZkkAqKnVlF/Hx7/iJ
+	RHewCh1mSM0wkRiiC39IruZ6y9r7pF5JNnnnQRqa1ixmjdFW5g6qP+REOAPm6r28lMliZffd4Qbvu
+	NLQdXmSufMZ1xi4vAOOLlE7dP7LRw3CUhr0wAIE7NChcBID5dcOiasyaO2QsJOt0eiG3C4Dvcd421
+	J0HGvId/oSTox27EUWfCabwdN55eTjEH1tDMLFfb9xyFh8v+E8cTJGqQS6suiy/Q==;
+Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.96)
+	(envelope-from <johannes@sipsolutions.net>)
+	id 1pT52l-00F90e-0k;
+	Fri, 17 Feb 2023 19:01:11 +0100
+Message-ID: <44f956b493e33bf394b2947b77e7c86f394b28ed.camel@sipsolutions.net>
+Subject: Re: [PATCH 1/2] wifi: mac80211: introduce
+ ieee80211_refresh_tx_agg_session_timer()
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
+	 <evelyn.tsai@mediatek.com>, linux-wireless@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Date: Fri, 17 Feb 2023 19:01:10 +0100
 In-Reply-To: <7c3f72eac1c34921cd84a462e60d71e125862152.1676616450.git.ryder.lee@mediatek.com>
-References: <7c3f72eac1c34921cd84a462e60d71e125862152.1676616450.git.ryder.lee@mediatek.com>
+References: 	<7c3f72eac1c34921cd84a462e60d71e125862152.1676616450.git.ryder.lee@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.3 (3.46.3-1.fc37) 
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230217_100046_298195_90F075DA 
-X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-CacheID: sfid-20230217_100128_261724_47646099 
+X-CRM114-Status: UNSURE (   8.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,39 +74,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There's no keep-alive packet being received by mac80211 stack when WED
-is enabled, which leads to tx BA session timeout. This patch calls
-ieee80211_refresh_tx_agg_session_timer() to refresh timer according
-to tx status reporting.
+On Sat, 2023-02-18 at 01:50 +0800, Ryder Lee wrote:
+> This allows low level drivers to refresh the tx agg session timer, based =
+on
+> querying stats from the firmware usually. Especially for some mt76 device=
+s
+> support .net_fill_forward_path would bypass mac80211, which leads to tx B=
+A
+> session timeout for certain clients.
+>=20
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+Does it even matter? We could just request sessions without a timeout in
+the first place.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-index aed4ee95fb2e..8d316d3aab8f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-@@ -582,6 +582,17 @@ bool mt76_connac2_mac_fill_txs(struct mt76_dev *dev, struct mt76_wcid *wcid,
- 			le32_get_bits(txs_data[6], MT_TXS6_MPDU_FAIL_CNT);
- 		stats->tx_retries +=
- 			le32_get_bits(txs_data[7], MT_TXS7_MPDU_RETRY_CNT);
-+
-+		if (wcid->sta) {
-+			struct ieee80211_sta *sta;
-+			u8 tid;
-+
-+			sta = container_of((void *)wcid, struct ieee80211_sta,
-+					   drv_priv);
-+			tid = FIELD_GET(MT_TXS0_TID, txs);
-+
-+			ieee80211_refresh_tx_agg_session_timer(sta, tid);
-+		}
- 	}
- 
- 	txrate = FIELD_GET(MT_TXS0_TX_RATE, txs);
--- 
-2.18.0
+Or do you have a strong reason to need the timeout, such as limited
+hardware resources for (TX) aggregation sessions?
 
+But then maybe you should just time them out based on FW statistics
+directly, rather than having to periodically refresh the timer in
+mac80211?
+
+I don't mind the patch, and I'll happily take it if it's needed, I'm
+just wondering if that isn't a very roundabout way of achieving things.
+
+johannes
 
