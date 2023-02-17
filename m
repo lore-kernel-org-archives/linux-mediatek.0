@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65744C636D4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Feb 2023 07:39:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6C3BC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Feb 2023 08:02:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c30mjTplJEZCVESp0l+woRR+5rw1LWREDQPh7nVR91M=; b=sIitTpr5cOhItseJiETpYMxgM5
-	t6jQPGWY6NkdS0MjgtbPllQvrQuuSfHmMGIG+uZI+UY1n7fGGwaT2W6rcMfBhULfVTsoRt0sKnK4h
-	0w2HKPrHEHYiIyKEUwRoaNV6+MwNnsNISC8cF8ghbL/gM24KXbk3iWbxJBFVHf8wJQVV2Qbrd84ip
-	j7ruGB0CP1blOju10hWFNWg8C5FhNBd7Sqos9BmhmLn8I8zkFpSuXiQ4YY+qNAQkYotThepUw4o7K
-	ofefhfQOxyi4SmRuEp2G2+SlNyFLq5HQeySBy7QVy8k4S/WEKh2V8PFP0zCUFMS1Ru1uVRjnCii77
-	wz88LE3A==;
+	bh=VcW8AG2TyLkBNE4Hu3VEFQ3wFgGW5n9M9IjZpHAujXM=; b=OZwb1Apden9I8pi/Y7qb3hUCxy
+	YIwwIs7k7rvSHEUc1rS5CqTDjRbNOspJN5NFm93E6TUWEzvad3iB+O1aMpY5o5zKpuV+Kc/6ZMCyL
+	AsXXL4O+FDfMFzH/9cMkIx4XOYODbeDNnosBq927R1mWLanqpt0byEOQlWpLXx1H+tAaAs7eQqPkD
+	ZYJ8M5sUD4ATKh37ITstJ4jyGZpc6QS01KvzmP2zJTqoMUlGU9mj6Huc/YxgVN3rEB5rTGGKL5HCr
+	B5c50u04fKO4Exdifp1QfSyUu0xjurZFpGR2LIItdPSI7cjVZ4f+UOSHnZc0T+zGO3YPTktXhJehy
+	nAK+QfMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSvKd-00D878-I8; Fri, 17 Feb 2023 07:38:59 +0000
-Received: from mail-vs1-xe30.google.com ([2607:f8b0:4864:20::e30])
+	id 1pSvhe-00DC8f-IT; Fri, 17 Feb 2023 08:02:46 +0000
+Received: from mail-vs1-xe2a.google.com ([2607:f8b0:4864:20::e2a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSvKa-00D85d-Vs
-	for linux-mediatek@lists.infradead.org; Fri, 17 Feb 2023 07:38:58 +0000
-Received: by mail-vs1-xe30.google.com with SMTP id c22so1850359vsk.12
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Feb 2023 23:38:56 -0800 (PST)
+	id 1pSvhP-00DC1J-BW
+	for linux-mediatek@lists.infradead.org; Fri, 17 Feb 2023 08:02:32 +0000
+Received: by mail-vs1-xe2a.google.com with SMTP id k6so4772288vsk.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 17 Feb 2023 00:02:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=c30mjTplJEZCVESp0l+woRR+5rw1LWREDQPh7nVR91M=;
-        b=jgBL5pLOWF0bt/V7p0vyAKPNedZTYjko/ej1YVM8IHMozlVAr/TRUr5SV8h+CDpvIP
-         z1mRNrUl7+/DUrmCW5Hnv1bHsuioOdZ+F9451vgyWTCDs/gdjpIm21AVOHs/fMpMu4eB
-         QzpPZtnXdVNV4kwv6LGjiV+kExHEcdG+cVU+8=
+        bh=VcW8AG2TyLkBNE4Hu3VEFQ3wFgGW5n9M9IjZpHAujXM=;
+        b=Ufr+SXBAXOeAF3Pfn6zF2CYkJbX5X9kEu0PnrJRw8Vz/YhPa9j9LzIw7wkJKS/xlFO
+         U1PkKAWNRZDY6MEPwPjsaaYl27rcXPLkGE3MrQOMc18aB6Gr0nb8DyDprYWppiz56arD
+         QEvvMi1JOOjHdf9OnoaOuKHCCUy5aFDgXhTL4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=c30mjTplJEZCVESp0l+woRR+5rw1LWREDQPh7nVR91M=;
-        b=0ccKf4Z76FsyGpu4pYBQtVP2gbdqvq3xS/XJaa9WsQ4IV/nordoB0uWyDjadfP5sKw
-         G7nj/fxOXZ+bhjlQkI7qJG2rX6mo88cz0Pe9XB3gjWnQs+mCsCQgNoSbwI2u+ahBkBjk
-         XKxc4rImJFY1lOvypVzS8yz7M6fF1rdhXGZM3y0FA0U14TV0vhU5QtFp2Y8LZjDv3Fxm
-         uNIyeGfnQXlIgC0l4+NbxmiSgfVicjjGqN25B9rtQhBOqK05eEFYS6hI9ZuNXiuXWEFA
-         O9F1h/0lUkTha57i/ZMtejkCtAEU86X87Ilbx/CpIMo5tUiWqFRpeBXGKJQJHo5cgG6k
-         zP6w==
-X-Gm-Message-State: AO0yUKVz2VwH5qBAHvYs5VWrLuNQpwGiAbtF/I5i0OsEjRc8WjmV1d32
-	kxLWgAsTrc8t2wsFQMOr7yz2DV/PVC3FsxGdkIRC9g==
-X-Google-Smtp-Source: AK7set+a/WKTyAayUh0Dmoeuwng+9YTTbcpU0sI9/QmluIB8LgvKUXYa8Ks+i/UTyvD+529Nrl36N5JZ+oj2i66+wKk=
+        bh=VcW8AG2TyLkBNE4Hu3VEFQ3wFgGW5n9M9IjZpHAujXM=;
+        b=i6GGShe+iVaR0o6Kwfobof/5gWHIKZOzMxQoUSRGcG/lPK7EohsuFbc2eLPzlIShWu
+         +Lj/E0xNd3QY339QOV2OYWMfwTkVaaj3Fm79Bz+ip0SdWtw959Op11z/AeUHSf4iBglF
+         xRBy1Vwec82zoJbfHUE7xpHHF4dQGgMu84dXkX4YICLQLEEkLL5cfPmC6G97P3lLZty5
+         HMdGkNtpbz0cYa0DmGJi0Dcd3SI6C+9HbCqYQAK9qTC+k9x7PML9mKAdlobRidfAwu/v
+         dtcMk3BtsXt+3XVnOcP5b3e+Xu0FC3Npz0llqY1nVwM+h0RMHK7+I5BjECad79MKZs+0
+         5vjw==
+X-Gm-Message-State: AO0yUKVflMh58mAlRaqP8vy06ABdDRZ+7gwh1eQmDuboo+ErvG2hXwp+
+	h+GGl0Msgyo9HJte18rcO8kaEP16aphdzuZjSHlW7g==
+X-Google-Smtp-Source: AK7set/dcXJQTdYoBFqpLsFuJwG80t02UFy21lpWoaeP0BlAHVzzkYwngm6oaJzSjA7yR666ENfUJS7byME7bnLyZw8=
 X-Received: by 2002:a67:f749:0:b0:3fc:58d:f90f with SMTP id
- w9-20020a67f749000000b003fc058df90fmr1604164vso.60.1676619535343; Thu, 16 Feb
- 2023 23:38:55 -0800 (PST)
+ w9-20020a67f749000000b003fc058df90fmr1614101vso.60.1676620946419; Fri, 17 Feb
+ 2023 00:02:26 -0800 (PST)
 MIME-Version: 1.0
-References: <20230214134127.59273-1-angelogioacchino.delregno@collabora.com> <20230214134127.59273-45-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230214134127.59273-45-angelogioacchino.delregno@collabora.com>
+References: <20230214134127.59273-1-angelogioacchino.delregno@collabora.com> <20230214134127.59273-46-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230214134127.59273-46-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 17 Feb 2023 15:38:44 +0800
-Message-ID: <CAGXv+5EPU+SGhWmRCiZUNGR=JNBX71dybEq8FEZ-+CCrkHBaUA@mail.gmail.com>
-Subject: Re: [PATCH v2 44/47] clk: mediatek: Split configuration options for
- MT8186 clock drivers
+Date: Fri, 17 Feb 2023 16:02:15 +0800
+Message-ID: <CAGXv+5E+mkxNDc8kV+DwKVjmmF65555Pogh1OauwwKKqbrBz7A@mail.gmail.com>
+Subject: Re: [PATCH v2 45/47] clk: mediatek: mt8192: Move apmixedsys clock
+ driver to its own file
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
 	johnson.wang@mediatek.com, miles.chen@mediatek.com, 
@@ -73,8 +73,8 @@ Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
 	linux-mediatek@lists.infradead.org, kernel@collabora.com
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230216_233857_048470_D1EAE183 
-X-CRM114-Status: GOOD (  18.52  )
+X-CRM114-CacheID: sfid-20230217_000231_445167_AD1C86A1 
+X-CRM114-Status: GOOD (  12.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,65 +92,24 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Tue, Feb 14, 2023 at 9:42 PM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> When building clock drivers for MT8186, some may want to build in only
-> some of them to, for example, get CPUFreq up faster, and some may want
-> to leave out some clock drivers entirely as a machine may not need the
-> Warp Engine or the camera ISP (hence, their clock drivers).
+> This is the last man standing in clk-mt8192.c that won't allow us to
+> use the module_platform_driver() macro, and for *no* good reason.
+> Move it to clk-mt8192-apmixedsys.c and while at it, also add a
+> .remove() callback for it.
 >
-> Split the various clock drivers in their own configuration options,
-> keeping MT8186 configuration options consistent with other MediaTek
-> SoCs.
->
-> While at it, also allow building the remaining clock drivers as modules
-> by switching COMMON_CLK_MT8186 to tristate.
->
+> Also, since the need for "clk-mt8192-simple" and "clk-mt8192" was
+> just due to them being in the same file and probing different clocks,
+> and since now there's just one platform_driver struct per file, it
+> seemed natural to rename the `-simple` variant to just "clk-mt8192".
+
+All the above combined, I think this patch is doing a bit too much, but
+splitting it probably doesn't make much sense either :/
+
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/clk/mediatek/Kconfig  | 68 ++++++++++++++++++++++++++++++++++-
->  drivers/clk/mediatek/Makefile | 18 +++++++---
->  2 files changed, 80 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-> index 1497171a65ef..706a7cf86ce0 100644
-> --- a/drivers/clk/mediatek/Kconfig
-> +++ b/drivers/clk/mediatek/Kconfig
-> @@ -596,7 +596,7 @@ config COMMON_CLK_MT8183_VENCSYS
->           This driver supports MediaTek MT8183 vencsys clocks.
->
->  config COMMON_CLK_MT8186
-> -       bool "Clock driver for MediaTek MT8186"
-> +       tristate "Clock driver for MediaTek MT8186"
->         depends on ARM64 || COMPILE_TEST
->         select COMMON_CLK_MEDIATEK
->         select COMMON_CLK_MEDIATEK_FHCTL
-> @@ -604,6 +604,72 @@ config COMMON_CLK_MT8186
->         help
->           This driver supports MediaTek MT8186 clocks.
->
-> +config COMMON_CLK_MT8186_CAMSYS
-> +       tristate "Clock driver for MediaTek MT8186 camsys"
-> +       depends on COMMON_CLK_MT8186
-> +       help
-> +         This driver supports MediaTek MT8186 camsys and camsys_raw clocks.
-> +
-> +config COMMON_CLK_MT8186_IMGSYS
-> +       tristate "Clock driver for MediaTek MT8186 imgsys"
-> +       depends on COMMON_CLK_MT8186
-> +       help
-> +         This driver supports MediaTek MT8186 imgsys and imgsys2 clocks.
-> +
-> +config COMMON_CLK_MT8186_IMP_IIC_WRAP
-> +       tristate "Clock driver for MediaTek MT8186 imp_iic_wrap"
-> +       depends on COMMON_CLK_MT8186
-> +       help
-> +         This driver supports MediaTek MT8186 imp_iic_wrap clocks.
-> +
-> +config COMMON_CLK_MT8186_IPESYS
-> +       tristate "Clock driver for MediaTek MT8186 ipesys"
-> +       depends on COMMON_CLK_MT8186_IMGSYS
 
-Same comments as MT8195 about the ordering and mentioning dependency
-reasoning in the commit log.
+So a weak
 
-ChenYu
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+
+in case anyone objects.
 
