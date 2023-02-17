@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31DE4C636D4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Feb 2023 11:26:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8A54C05027
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Feb 2023 11:29:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KMHk9zfTnHqTqtiJZuw4eK9TicmsC5Psbvh/IR3cFZw=; b=xxL2NczR3q58zV/M1oml/YE0kz
-	mNOeaImtOPedSp/+8X3fxkQiRuQfFh7onRqBWToHLa7JdtwrvYoK00ufCexQ2UqTSLONONPbnbZzj
-	1Um6kXiPnMfWkcFqNwmbI/TBRBy36F+crxaivsnIISD2OwxBAOT8XkFuRRm0of0L6VC4qoMfFUxLp
-	fXdC3cuSrW9CA100B4x252LMCnQOP1xcX++tnSld+PmmZvE+2g9zNXCPGbwFiDlnuCyxncS4wg8Jk
-	c9UxsixYnhvE/Nv5ZT6L3sfXXELIVBoQi10tEeFXmN8tlyiFGXdfqg9R/hK6dde+MaUjKCRolkPQ1
-	JOFpVhRw==;
+	bh=KFcuWu+a/0jQAq13Z8shQrsHb9dMGb1Gt76WHS2404k=; b=GMI86SndNLbAGA++qrpVUkVtk1
+	4jG+eqUp+G9BebuBtzUyLrs9PW4RQklVkqf07895zxAxcQ204NF3KavZO0w58M0TSq2LsflXMr3jH
+	QortVuDy2ub1UN6xU1DOYQO2ZDWP1mstsmilDAMu6G0/XfxeRlcYVO+9JqaQmAH1eUXDAdZjfhN3m
+	6f900k+nlFLxXSxftq/sdEXhItxbvkTL8rRh+Hy28bJ5Br1z166znDkJWy1a4ebMkDxktcVg4k1aB
+	0OvtLLgaGEZ01wj1/7/Q4Rm1MXd0dOACvTejnqiezNezn9Bfr89qxH6IPZhQe8klzPc0mfmx0JftH
+	CEOPG0EQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSysI-00Dvx5-65; Fri, 17 Feb 2023 11:25:58 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pSyvx-00Dwxx-Ig; Fri, 17 Feb 2023 11:29:45 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSys4-00DvtG-Qa; Fri, 17 Feb 2023 11:25:47 +0000
+	id 1pSyvg-00DwsB-TC; Fri, 17 Feb 2023 11:29:30 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id ECB78660212C;
-	Fri, 17 Feb 2023 11:25:41 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E457A660212C;
+	Fri, 17 Feb 2023 11:29:25 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676633143;
-	bh=4B8vcRp+/G7dib7UnrzeCjN2VVDp840D9A86W/R5f4Y=;
+	s=mail; t=1676633367;
+	bh=8erMMp/b3F39tRE2R/nCGBBfR4DFmaNqkX8xwNyUHvg=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aY83TVk19/9m6Yy4p4ed8gGcHeO+HVvphEoUmEMIa3ApIJ7V3WNAAo37XKCznH8nE
-	 8VwH45CLKV2R8/flxPH3AFTX+9Jo0jiUTkmYFOv62RjgUgIS8V0uWMipYcdubKTkw5
-	 7/HBHyMz44hGcf4yhLrZdVY60/s7pCATwNSn+BBG4PEucoKTcXk8e3SgKomK9iwv2T
-	 5aK8weNwvjW6SqDaQYCKQhdMzKevLjDhoOcHVNDJWeF0OFUaoCRf/5130JbhdD8FO/
-	 5fyozGcXlj1dbugFtn67eBwYK3DuWO2nMNvzVxk9ve18XgdlVShEI6ju7bZdIO/tE/
-	 bJ9Ch2qYJAK/w==
-Message-ID: <37690521-4d24-ce55-f81e-30ad931dfe95@collabora.com>
-Date: Fri, 17 Feb 2023 12:25:39 +0100
+	b=Ad/BDNeLml9CtjYisoMhW31GApcs5Se7olS8xAvVAbfNdCx3xOjcsd3yKKGxAj3uH
+	 +o37+8T2w6NHR7gCrRvK8l0XYX1s3JLL4rYsV6+86XXuFOg+Y48zPc4T3xcIBlWZHt
+	 YcZwM81Gk41I5BOX54P3RBZcF92B7Bqbt8Egrqu7IYnmSXzl2t4PZMxpjkYOF/4Yeq
+	 hqV3gz6IzBgVTh95pmd/P65bJrmTch+LFdDv3crW13kPBLVh74udPPQ1jsz4rIhFge
+	 wHALU9fOsWUFXPynqCu4GjMVgM3vcbMsGOXZjLx8H8pFe4/cn0z51D1l+aFOyf9jHz
+	 Kqb6cy7IbRs2Q==
+Message-ID: <c9bd53f9-7d5a-6e2d-4062-297158661422@collabora.com>
+Date: Fri, 17 Feb 2023 12:29:22 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.7.2
-Subject: Re: [PATCH v2 36/47] clk: mediatek: mt2712: Change Kconfig options to
+Subject: Re: [PATCH v2 37/47] clk: mediatek: Split MT8195 clock drivers and
  allow module build
 Content-Language: en-US
 To: Chen-Yu Tsai <wenst@chromium.org>
@@ -61,15 +61,15 @@ Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  kernel@collabora.com
 References: <20230214134127.59273-1-angelogioacchino.delregno@collabora.com>
- <20230214134127.59273-37-angelogioacchino.delregno@collabora.com>
- <CAGXv+5FxnsJaVw2MzeH+-Z3yEPzPCRtTukp7FDhsBoKHfx=m=g@mail.gmail.com>
+ <20230214134127.59273-38-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5H7=rOwVK2SapqyeKHKnRJMwXFf1OSD-qhgjkbkoR=Zmw@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5FxnsJaVw2MzeH+-Z3yEPzPCRtTukp7FDhsBoKHfx=m=g@mail.gmail.com>
+In-Reply-To: <CAGXv+5H7=rOwVK2SapqyeKHKnRJMwXFf1OSD-qhgjkbkoR=Zmw@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230217_032545_053066_4A0AFFB1 
-X-CRM114-Status: GOOD (  16.61  )
+X-CRM114-CacheID: sfid-20230217_032929_119105_1089B650 
+X-CRM114-Status: GOOD (  21.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,38 +84,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/02/23 05:24, Chen-Yu Tsai ha scritto:
+Il 17/02/23 05:31, Chen-Yu Tsai ha scritto:
 > On Tue, Feb 14, 2023 at 9:42 PM AngeloGioacchino Del Regno
 > <angelogioacchino.delregno@collabora.com> wrote:
 >>
->> All of the mt2712 drivers have been converted to platform drivers!
->> Change the Kconfig options for all MT2712 clocks to tristate to allow
->> building all clock drivers as modules.
+>> MT8195 clock drivers were encapsulated in one single (and big) Kconfig
+>> option: there's no reason to do that, as it is totally unnecessary to
+>> build in all or none of them.
+>>
+>> Split them out: keep boot-critical clocks as bool and allow choosing
+>> non critical clocks as tristate.
 >>
 >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 >> ---
->>   drivers/clk/mediatek/Kconfig | 16 ++++++++--------
->>   1 file changed, 8 insertions(+), 8 deletions(-)
+>>   drivers/clk/mediatek/Kconfig  | 86 +++++++++++++++++++++++++++++++++++
+>>   drivers/clk/mediatek/Makefile | 20 +++++---
+>>   2 files changed, 99 insertions(+), 7 deletions(-)
 >>
 >> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
->> index b9c0a9e21cf1..45b7aea7648d 100644
+>> index 45b7aea7648d..88937d111e98 100644
 >> --- a/drivers/clk/mediatek/Kconfig
 >> +++ b/drivers/clk/mediatek/Kconfig
->> @@ -75,7 +75,7 @@ config COMMON_CLK_MT2701_G3DSYS
->>            This driver supports MediaTek MT2701 g3dsys clocks.
+>> @@ -692,6 +692,92 @@ config COMMON_CLK_MT8195
+>>           help
+>>             This driver supports MediaTek MT8195 clocks.
 >>
->>   config COMMON_CLK_MT2712
->> -       bool "Clock driver for MediaTek MT2712"
->> +       tristate "Clock driver for MediaTek MT2712"
+>> +config COMMON_CLK_MT8195_APUSYS
+>> +       tristate "Clock driver for MediaTek MT8195 apusys"
+>> +       depends on COMMON_CLK_MT8195
 > 
-> Hmm... How does that work out if mt2712-apmixedsys is a
-> builtin_platform_driver?
+> Would something like
+> 
+>            default COMMON_CLK_MT8195
+> 
+> help with the transition?
+> 
+> Otherwise we'd need to add a whole lot more stuff to arm64's defconfig,
+> and anyone running `make olddefconfig` would have many of their clock
+> drivers no longer available.
+> 
+> Same applies to the MT8186 split.
+> 
+> Seems like not all MediaTek SoCs apply this pattern, but at least MT7986,
+> MT8167, MT8173, MT8183 do this.
 > 
 > ChenYu
 
-That doesn't. Thanks for catching that, I've added a .remove() callback
-and changed it to module_platform_driver() for v3!
+Right. Since MT8195 machines have been out in the wild for a bit of time now,
+I think it's worth following your advice and add `default COMMON_CLK_MT8195`
+to the new configuration options.
 
-Cheers,
+As for MT8186, currently, there's only one board supported upstream, which
+is the "unobtainable" EVB so I would rather not do that for MT8186, unless
+you have any strong opinions on that.
+
+Regards,
 Angelo
 
