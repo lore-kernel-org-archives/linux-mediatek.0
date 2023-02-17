@@ -4,84 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4624C636CC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Feb 2023 18:10:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94C60C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Feb 2023 02:52:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=13lh7FK6sSGjwHfRkTN4AJWdNr9SQDHletqVLj15aiU=; b=O4yzJP2VYhiFQt0etkiFOIhmtm
-	MjPm/H2vYSlAEYg+U8Mwujpdo3zVZMGc8LG6e47TGX/J/MpFm3aAAKtAy9wkMtmfSKi+r0w/HfBgy
-	NrU4/Dcd+6NV+r1RGnkn1tpR8QkRdFvVlecjcWYwF4t8+GgDtGXxfxqghfIpY0vTrZiIrHF6w4Wpj
-	lIw7ncxPDe9iWp3srN6Iy+r1J9y2v+MgCieic9qtEhpNleQtbYJpSRzduxKmAeq5Wy+xH6hKdN4QJ
-	bGVfU+LVemM2kU7OMIzSC5x3WjcZe0MmOGnicdzQWbaiQbn9XqreEeseXDGE1Yjed6CW6Y3cd/RLA
-	pgvLfkkA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Subject:Cc:To:
+	From:Mime-Version:Message-ID:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=x6ayAk2MA0k9aAkL5cbO/QXfzUc2TcgV9okQxI0pHc0=; b=IFwf1Zu+2G3T2CTZbla5QWo7fP
+	fI5f2A9VROiSExZ+BpZEl9SqkU4zjoEpGpM2XrfJpsVEddElBZT0r7ZGeny0b2IStYED35o9P7qHs
+	ezOFoS78DExjqe1kSMayyb5YVQu44VFv9Uq/XLQl32kTauaMlg2wOI1j2b+qkuvwgRCcr5NzBOPgi
+	n9UfhaA3LwvphnEb0e8rw84vdGQDpqXOwvyPzXuStEW8/p173u9vs9tzaATXE0XpsEpxxz3rOPk5v
+	EBq6AzHQe2XRRS2fW15cczRXDeX2TEQkLxeY0ZXJLeJ9R8ke/g49yMXPwQZHgAf5hIhayvGj22QHC
+	MXP13tug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSiiR-00BRiS-Db; Thu, 16 Feb 2023 18:10:43 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pSqrb-00CRcY-UQ; Fri, 17 Feb 2023 02:52:43 +0000
+Received: from mxhk.zte.com.cn ([63.216.63.40])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSiiO-00BRgb-VW
-	for linux-mediatek@lists.infradead.org; Thu, 16 Feb 2023 18:10:42 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	id 1pSqrR-00CRaq-J6; Fri, 17 Feb 2023 02:52:34 +0000
+Received: from mse-fl1.zte.com.cn (unknown [10.5.228.132])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 535E0B826BA;
-	Thu, 16 Feb 2023 18:10:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E7E4C433D2;
-	Thu, 16 Feb 2023 18:10:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1676571036;
-	bh=uzqucx/LrtONslFI6zFbkjiUdWhRDsYoF6uZqjKaGG4=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=H/uqcPeB8dbJbIn7D3f3VvPmx47rdnEYXZcG/1/Lpz42f35J943dmqEqXlx0ix2+u
-	 r6tju1d882rjR9BYYS8VLBVynl+DskaRVSNsrxtS2vvXSScZgMMMEsiielqf6DM6Pw
-	 f1a/47K1E8Q3qx6AfFicoDeltN/tqcTjboJkTd3cVzQQP4C1mmSH1/WmUC5cl8Hvdg
-	 FKCmPpBys0M8KwplZRU5KyVvj97Lel/qufBoO7hF4AiSewxB924Hzs5xX4aQsxRM/b
-	 ULW5Gy2bTk6eHH+2nJ5SwKnCQDYRFcmhQ3+Q9gB/RVSH1dcGfjspq1Y1GpBgGRZxpL
-	 C/2ZKBfTNN/LA==
-Date: Thu, 16 Feb 2023 10:10:34 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: "Yanchao Yang (=?UTF-8?B?5p2o5b2m6LaF?=)" <Yanchao.Yang@mediatek.com>
-Cc: "Chris Feng (=?UTF-8?B?5Yav5L+d5p6X?=)" <Chris.Feng@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "Mingliang Xu (=?UTF-8?B?5b6Q5piO5Lqu?=)" <mingliang.xu@mediatek.com>, "Min
- Dong (=?UTF-8?B?6JGj5pWP?=)" <min.dong@mediatek.com>, "linuxwwan@intel.com"
- <linuxwwan@intel.com>, "m.chetan.kumar@intel.com"
- <m.chetan.kumar@intel.com>, "Liang Lu (=?UTF-8?B?5ZCV5Lqu?=)"
- <liang.lu@mediatek.com>, "Haijun Liu (=?UTF-8?B?5YiY5rW35Yab?=)"
- <haijun.liu@mediatek.com>, "Haozhe Chang (=?UTF-8?B?5bi45rWp5ZOy?=)"
- <Haozhe.Chang@mediatek.com>, "Hua Yang (=?UTF-8?B?5p2o5Y2O?=)"
- <Hua.Yang@mediatek.com>, "ryazanov.s.a@gmail.com" <ryazanov.s.a@gmail.com>,
- "Xiayu Zhang (=?UTF-8?B?5byg5aSP5a6H?=)" <Xiayu.Zhang@mediatek.com>,
- "loic.poulain@linaro.org" <loic.poulain@linaro.org>, "pabeni@redhat.com"
- <pabeni@redhat.com>, "edumazet@google.com" <edumazet@google.com>, "Ting
- Wang (=?UTF-8?B?546L5oy6?=)" <ting.wang@mediatek.com>,
- "johannes@sipsolutions.net" <johannes@sipsolutions.net>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Aiden Wang (
- =?UTF-8?B?546L5ZKP6bqS?=)" <Aiden.Wang@mediatek.com>, "Felix Chen (
- =?UTF-8?B?6ZmI6Z2e?=)" <Felix.Chen@mediatek.com>, "Lambert Wang (
- =?UTF-8?B?546L5Lyf?=)" <Lambert.Wang@mediatek.com>, "davem@davemloft.net"
- <davem@davemloft.net>, "Mingchuang Qiao (=?UTF-8?B?5LmU5piO6Zev?=)"
- <Mingchuang.Qiao@mediatek.com>, "Guohao Zhang (=?UTF-8?B?5byg5Zu96LGq?=)"
- <Guohao.Zhang@mediatek.com>
-Subject: Re: [PATCH net-next v3 01/10] net: wwan: tmi: Add PCIe core
-Message-ID: <20230216101034.3f742834@kernel.org>
-In-Reply-To: <2e518c17bf54298a2108de75fcd35aaf2b3397d3.camel@mediatek.com>
-References: <20230211083732.193650-1-yanchao.yang@mediatek.com>
-	<20230211083732.193650-2-yanchao.yang@mediatek.com>
-	<20230214202229.50d07b89@kernel.org>
-	<2e518c17bf54298a2108de75fcd35aaf2b3397d3.camel@mediatek.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+	by mxhk.zte.com.cn (FangMail) with ESMTPS id 4PHxDs51LYz8R042;
+	Fri, 17 Feb 2023 10:52:29 +0800 (CST)
+Received: from xaxapp01.zte.com.cn ([10.88.99.176])
+	by mse-fl1.zte.com.cn with SMTP id 31H2qGcS089971;
+	Fri, 17 Feb 2023 10:52:16 +0800 (+08)
+	(envelope-from ye.xingchen@zte.com.cn)
+Received: from mapi (xaxapp01[null])
+	by mapi (Zmail) with MAPI id mid31;
+	Fri, 17 Feb 2023 10:52:17 +0800 (CST)
+Date: Fri, 17 Feb 2023 10:52:17 +0800 (CST)
+X-Zmail-TransId: 2af963eeebe1ffffffffca4f417e
+X-Mailer: Zmail v1.0
+Message-ID: <202302171052175449856@zte.com.cn>
+Mime-Version: 1.0
+From: <ye.xingchen@zte.com.cn>
+To: <broonie@kernel.org>
+Cc: <lgirdwood@gmail.com>, <perex@perex.cz>, <tiwai@suse.com>,
+        <matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
+        <chunxu.li@mediatek.com>, <jiaxin.yu@mediatek.com>,
+        <alsa-devel@alsa-project.org>, <linux-kernel@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>
+Subject: =?UTF-8?B?W1BBVENIXSBBU29DOiBtZWRpYXRlazogbXQ4MTg2OiBVc2UgZGV2bV9wbGF0Zm9ybV9pb3JlbWFwX3Jlc291cmNlKCk=?=
+Content-Type: text/plain;
+	charset="UTF-8"
+X-MAIL: mse-fl1.zte.com.cn 31H2qGcS089971
+X-Fangmail-Gw-Spam-Type: 0
+X-FangMail-Miltered: at cgslv5.04-192.168.250.137.novalocal with ID 63EEEBED.002 by FangMail milter!
+X-FangMail-Envelope: 1676602349/4PHxDs51LYz8R042/63EEEBED.002/10.5.228.132/[10.5.228.132]/mse-fl1.zte.com.cn/<ye.xingchen@zte.com.cn>
+X-Fangmail-Anti-Spam-Filtered: true
+X-Fangmail-MID-QID: 63EEEBED.002/4PHxDs51LYz8R042
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230216_101041_180882_ECB5A5C0 
-X-CRM114-Status: UNSURE (   9.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230216_185233_801266_E1B2BD64 
+X-CRM114-Status: GOOD (  10.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,24 +75,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 16 Feb 2023 12:50:44 +0000 Yanchao Yang (=E6=9D=A8=E5=BD=A6=E8=B6=
-=85) wrote:
-> > > +	pci_clear_master(pdev);
-> > > +	mtk_mhccif_exit(mdev);
-> > > +	mtk_pci_free_irq(mdev);
-> > > +	mtk_pci_bar_exit(mdev);
-> > > +	pci_disable_device(pdev);
-> > > +	pci_load_and_free_saved_state(pdev, &priv->saved_state);
-> > > +	devm_kfree(dev, priv);
-> > > +	devm_kfree(dev, mdev); =20
-> >=20
-> > Why are you using devm_ if you call kfree explicitly anyway?
-> > You can save some memory by using kfree() directly. =20
-> devm_kzalloc(), devm_ioremap_resource(), devm_request_irq(),
-> devm_gpio_request(), devm_clk_get()=E2=80=A6..
-> They will be freed automatically
-> when corresponding device is freed, so you don=E2=80=99t have to free them
-> explicitly. This also make probe error easier to handle. Is it ok?
+From: Ye Xingchen <ye.xingchen@zte.com.cn>
 
-Yes.
+Convert platform_get_resource(), devm_ioremap_resource() to a single
+call to Use devm_platform_ioremap_resource(), as this is exactly
+what this function does.
+
+Signed-off-by: Ye Xingchen <ye.xingchen@zte.com.cn>
+---
+ sound/soc/mediatek/mt8186/mt8186-afe-pcm.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c b/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
+index 41172a82103e..96be444d1000 100644
+--- a/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
++++ b/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
+@@ -2815,7 +2815,6 @@ static int mt8186_afe_pcm_dev_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_base_afe *afe;
+ 	struct mt8186_afe_private *afe_priv;
+-	struct resource *res;
+ 	struct reset_control *rstc;
+ 	struct device *dev = &pdev->dev;
+ 	int i, ret, irq_id;
+@@ -2836,8 +2835,7 @@ static int mt8186_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	afe_priv = afe->platform_priv;
+ 	afe->dev = &pdev->dev;
+
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	afe->base_addr = devm_ioremap_resource(dev, res);
++	afe->base_addr = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(afe->base_addr))
+ 		return PTR_ERR(afe->base_addr);
+
+-- 
+2.25.1
 
