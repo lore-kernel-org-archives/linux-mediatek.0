@@ -4,86 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BAA8C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Feb 2023 12:18:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A07A8C6379F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Feb 2023 17:03:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OP3X0Px61zMcqd95TfNq9/R7u4UHsIlHqoTH3i/TdQQ=; b=VOO9IFk7LnfuPK9T4zY3e+SRi+
-	YvMRJh+MgwhSRB1sqW7oUuwX9WHQkl5Q8tOF/lmyhfzLgqDQ28oi/Pqu8Z52LUZ9JtYOH/l4BgzY1
-	lTBm09uQsEgO5xqD/u2sGr96dH6FbCf/uSMTO7YbyNxdIhPdX6Rwv+XFYYcEmzdpsaQp4E65VQGHd
-	CBJhDZEcJMAY95LK1BD7X4NPKk3Pn78PChAenxmHiO8WDJJf7Ei2MdBSYmvBoJH6A1LOt6LNr/4fF
-	23fc0pQV1yaFNrEb50+y42386tBlKku3eaX8R91zf5puvTw0CaAnxklgvEijpbtsIk2Vv3mZVLzZR
-	PvsuiKmw==;
+	bh=OU76lksV218JbmTGP0WWsGt/RPb9VxwBOFGAGP4HBCA=; b=svO5Q1PFPG+gLWILpvwZnc2GjU
+	uOfViXMaSAIkxNLWjaue9nxtC8BrmFchrapXzuUuq9z691FjEqlq0d5IpgeXnkiF9tZblxNklFHm0
+	tQ5qwJIXKnHQA4LBKjD75VBh2XEtnqX6LiDRM/1YT0Loo4UA4ks92QcA4zfbcQqhfopOs0g2Q1U+0
+	ZlD+mQdnLPaQAM5invPcoVf2wz+tmOdjSiXbDlxBq1qBNES54HyvGWcPtiVDUVKKknq44fqi0JWNI
+	PaeaKy8vK7jiUo4p0fKxdgWSPtiH+/OgxfHLCQ7/usgqy1nDNvXGOlteQwObGFgf2riy7ME473pre
+	Rj3cvj+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pTMAw-00Gy5e-8w; Sat, 18 Feb 2023 12:18:46 +0000
-Received: from mout.gmx.net ([212.227.17.20])
+	id 1pTQbb-00HJxi-Aw; Sat, 18 Feb 2023 17:02:35 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pTMAt-00Gy50-1j
-	for linux-mediatek@lists.infradead.org; Sat, 18 Feb 2023 12:18:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1676722706; i=frank-w@public-files.de;
-	bh=OP3X0Px61zMcqd95TfNq9/R7u4UHsIlHqoTH3i/TdQQ=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=KQRJu0DQuXUY6MhyMywcwbwVVVnh93d+Qk4nG3A0J0BdpxX0zS1k/4YMLQ1jVI4iH
-	 DylkaUjRJ7ql9gavffrcws+s4sHGg84KYcZ2MyzOP0PUV9ETqm6sz8baINzTgLoqdV
-	 F50SedxLHOvVsJaU+5N7dDVLnBbiLetgEFIxkMiWxca9UutoOtemX5hAYQsUDS23Av
-	 yJCUTwS+sanp+Ws7Byk70BaTmggOHXbdE0rMqYppISwMNLoNQy5wAshTJtrJgRz1sc
-	 l8Iy1FLmSxYT35OvVcrtTRtLH45RrJ7QqfA3mMPy/ZXr9XG5YT7A0JS96e1P7buh5H
-	 FTeIfRDEBonPg==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.153.5] ([217.61.153.5]) by web-mail.gmx.net
- (3c-app-gmx-bap53.server.lan [172.19.172.123]) (via HTTP); Sat, 18 Feb 2023
- 13:18:25 +0100
+	id 1pTQbP-00HJwi-0w; Sat, 18 Feb 2023 17:02:24 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1676739735; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=IrY6+2wmINrLPE1OjKcB2ftD4ccOzw5BpiBi0R0gVKen+POoOX0nRyc4CbF3R2Ecq47LsgrmnA9i8sXIjQarXb+fShvX9hzARLAUr9NAV8p6EEC8aEww2673Dib2GPdZ8B+M0oIgBuuejETKnc4oApmkVTCukLVpSLV8SqLPvxk=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1676739735; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=OU76lksV218JbmTGP0WWsGt/RPb9VxwBOFGAGP4HBCA=; 
+	b=T/Gwn/cJQNPVDf+K9lHzvHk9mlqIvuXpQjl5H7L3tpfHnMqG0VM6WUz8ugfPctJfrg8FG6qUZCUUbopeHDhFgeL+Oi5iBIH3hcOB0uD2N/WDUocnqrJT06MQU0+/AnRebVuPHRQ+kPeXHi4GR2iFctXdUfYOeAt098TBg4jA6x8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1676739735;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=OU76lksV218JbmTGP0WWsGt/RPb9VxwBOFGAGP4HBCA=;
+	b=TK/dPcM+saXOQFgC1mGPenDl9cpY35A0E2N06iX4HcZkXM7Pt8UDqv+lKo6zjz82
+	Zw/dOIYkZEpF5nag1CxoSVOWtn6YgCgYtfSqvpOJMhnLcjgHXoPglLleahoElc6xk55
+	t6wihmgIAKvkH3ILcdSEHCoAqwR4TWeCicfCjmG4=
+Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
+	with SMTPS id 1676739734907626.1261199347749; Sat, 18 Feb 2023 09:02:14 -0800 (PST)
+Message-ID: <2dc2fc39-b0d5-c872-36bf-fde851debe4b@arinc9.com>
+Date: Sat, 18 Feb 2023 20:02:11 +0300
 MIME-Version: 1.0
-Message-ID: <trinity-dd260791-3637-4193-8f93-a9fcdb013dcb-1676722705920@3c-app-gmx-bap53>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, erkin.bozoglu@xeront.com
-Subject: Aw: Re:  Re: [PATCH v3 0/5] arm: dts: mt7623: relocate gmacs,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: Aw: Re: Re: [PATCH v3 0/5] arm: dts: mt7623: relocate gmacs,
  mt7530 switch, and add port@5
-Content-Type: text/plain; charset=UTF-8
-Date: Sat, 18 Feb 2023 13:18:25 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <27a26da8-8297-5327-7493-54d8359b6970@arinc9.com>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ erkin.bozoglu@xeront.com
 References: <20230210182505.24597-1-arinc.unal@arinc9.com>
  <c3ab9a9b-3eb2-8fb0-d5d7-c0b7c684d3a7@arinc9.com>
  <trinity-dab715b9-3953-40da-bc25-c4c2a5e9b7c3-1676715866453@3c-app-gmx-bap53>
  <27a26da8-8297-5327-7493-54d8359b6970@arinc9.com>
-Content-Transfer-Encoding: quoted-printable
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:v1DPPWM6A9oy60/IsAqYGoZGjhlhPcE08EPlTUQ7a9wHeBrXGvS7GB2Y1anKzv/dSghU8
- Q8g0r6DYi4VxL6MFqP0JSqYMC7v/f5utL4W4CO41vRcaabsvBGCd360RQh5Mu0DPSp6+DIE9RLuf
- 1mquoXx3bvRPzdGhvbMx9JKyF9OEMFQ7pD+LQDieF1dnrQCqTMjPP3EJQvkl6e/ftYnJ36cI3DOG
- 5K4/9eQxYMUlyafuIaF6/HvP2E9olsJtfEDi1TwwbKRRV0Oc5DAvh+cAybTZ2bnAMTCgsAyLtT03
- BE=
-UI-OutboundReport: notjunk:1;M01:P0:VZV6dh1A5Ag=;Buw383pPwakwuXb/1j7tqGijIUR
- 3iem6oEThCQ7VPv417sYU4cqM8eTKTxf9CiPBWZj0UVIEx5YqUC6qyjWfwzTKiFG9DV6fsCyW
- 1L08OdWZk/WFkwhx+Yzszcl4xykEjrxGIe9VEaLQjGrSvQwvipUtUGKrLdz5zvz7RLpui7KEZ
- hZnyJoOlgB2HZPMz64EMhCfSHtraXEtk2yWOYPlaGFs+eN4BpBfsv6zpW+xJoN/dG3dAiagpK
- XeNygMNdfrW/l6umEVQpTfo2TKRkWsnnHbX9EVLLS4/7WfMsrh29cuG992KgIv0FS+BuNmnih
- cP3U/caOvlESKH1WGzpRzgavmcshBpvwPpNnjAepRmcg0iV28gm2yNefK/e5qVb4JbywWffsQ
- HD7xWCYpEl3gadxP8CeL3z0mdS0HlTFtjFEel0m4M2czy0XfrMNRFSSQ2gGafpbb11hHFaN1j
- g+eYQ1nep7Azz9tLxOzbjqPVZYCoEL4zrNU8lQ2MMl2gNJt9iOam7b55cwWcw4dob6OywGJwn
- 6NS7i67/Xxmo7Jc46EfAUfXknUUZ8Pi27MFTruBIJnJNXr6kuG8Filbkqx8GZ3Sx5h6gWm8m5
- Pv2+qw9lTrqAksnDCEdeiYPqf2xekLAy7qpASheFkUDT65rPp+0wgeMqzkyNnaLXVPK6TY0AJ
- 1eXEIIuRuW8O+KX3RbZm1XYUFWXD6w54jjw3hE4aRUr8pphpjd4PUKe3ofQ4ZwFe+yiyblyZa
- aLIMOsTfgmS7DeEwmowaJLIe+FPwC17LO5SS3OHxkYjh3G9mHGW8jhApjrtQU+/FCI0r1Jqij
- yf1y7MbtJcYwQvuRzjjL4J1wNpgKglbhp6PlrKMdzew3M=
+ <trinity-dd260791-3637-4193-8f93-a9fcdb013dcb-1676722705920@3c-app-gmx-bap53>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <trinity-dd260791-3637-4193-8f93-a9fcdb013dcb-1676722705920@3c-app-gmx-bap53>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230218_041843_423495_7FE473EE 
-X-CRM114-Status: GOOD (  26.02  )
+X-CRM114-CacheID: sfid-20230218_090223_170783_6C5F5508 
+X-CRM114-Status: GOOD (  32.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,85 +87,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On 18.02.2023 15:18, Frank Wunderlich wrote:
+> Hi,
+> 
+>> Gesendet: Samstag, 18. Februar 2023 um 11:49 Uhr
+>> Von: "Arınç ÜNAL" <arinc.unal@arinc9.com>
+>> An: "Frank Wunderlich" <frank-w@public-files.de>
+> 
+>> On 18.02.2023 13:24, Frank Wunderlich wrote:
+>>> Hi,
+>>>
+>>> finally get some time to bootup with this series on my r2.
+>>>
+>>> I see that inserting the port@5 as cpu-port maps this as default-cpu because dsa-core uses first found cpu-port as
+>>> default (dsa_tree_setup_cpu_ports in dsa.c) and because of lower bandwidth (rgmii instead of trgmii) not the best choice.
+>>>
+>>> But it look worse...network is currently broken (set both gmacs up).
+>>> I see arp-packets reaching remote side, but reponse is not received by r2
+>>>
+>>> I have tested it on 6.2-rc8 (wan-port), maybe additional patches are needed?...userspace setup should be right.
+>>>
+>>> so i added series on top of net-next (no additional patches except some basic like build-script,defconfig and such)...same result...
+>>>
+>>> i'm not sure if i change the mapping from userspace back to eth0, so disabled port@5 in switch, now port6 is
+>>> cpu-port again and it works...so something is wrong with port5 of switch or gmac1.
+>>
+>> That's a driver issue and will be fixed once an accepted version of
+>> these patches [0] [1] [2] are applied to net-next. You should have them
+>> on your inbox, I specifically told Richard to CC you.
+> 
+> yes, i've got them, but not applied when starting these tests. Not thought, that this change is necessary
+> as we use both gmac on mt7531/bpi-r3 with out problems.
+> 
+> with these 3 Patches network-connection works, but only at ~624 Mbit/s in TX-Mode (started iperf3-client on r2 without -R) and massive retransmitts on first run, other direction is clean.
 
-> Gesendet: Samstag, 18=2E Februar 2023 um 11:49 Uhr
-> Von: "Ar=C4=B1n=C3=A7 =C3=9CNAL" <arinc=2Eunal@arinc9=2Ecom>
-> An: "Frank Wunderlich" <frank-w@public-files=2Ede>
+Ok, so according to your tests, traffic through gmac1 is not very good. 
+gmac0 should be the default DSA master.
 
-> On 18=2E02=2E2023 13:24, Frank Wunderlich wrote:
-> > Hi,
-> >=20
-> > finally get some time to bootup with this series on my r2=2E
-> >=20
-> > I see that inserting the port@5 as cpu-port maps this as default-cpu b=
-ecause dsa-core uses first found cpu-port as
-> > default (dsa_tree_setup_cpu_ports in dsa=2Ec) and because of lower ban=
-dwidth (rgmii instead of trgmii) not the best choice=2E
-> >=20
-> > But it look worse=2E=2E=2Enetwork is currently broken (set both gmacs =
-up)=2E
-> > I see arp-packets reaching remote side, but reponse is not received by=
- r2
-> >=20
-> > I have tested it on 6=2E2-rc8 (wan-port), maybe additional patches are=
- needed?=2E=2E=2Euserspace setup should be right=2E
-> >=20
-> > so i added series on top of net-next (no additional patches except som=
-e basic like build-script,defconfig and such)=2E=2E=2Esame result=2E=2E=2E
-> >=20
-> > i'm not sure if i change the mapping from userspace back to eth0, so d=
-isabled port@5 in switch, now port6 is
-> > cpu-port again and it works=2E=2E=2Eso something is wrong with port5 o=
-f switch or gmac1=2E
->=20
-> That's a driver issue and will be fixed once an accepted version of=20
-> these patches [0] [1] [2] are applied to net-next=2E You should have the=
-m=20
-> on your inbox, I specifically told Richard to CC you=2E
+By the way, did you make a bug report of this, by sending a mail to 
+netdev mailing list or some other way?
 
-yes, i've got them, but not applied when starting these tests=2E Not thoug=
-ht, that this change is necessary=20
-as we use both gmac on mt7531/bpi-r3 with out problems=2E
+> 
+> and these Patches need to be applied first (when fixed up) else network is broken.
 
-with these 3 Patches network-connection works, but only at ~624 Mbit/s in =
-TX-Mode (started iperf3-client on r2 without -R) and massive retransmitts o=
-n first run, other direction is clean=2E
+That's true.
 
-and these Patches need to be applied first (when fixed up) else network is=
- broken=2E
+> 
+>> This is devicetree bindings. We're here to describe the hardware. The
+>> way a driver works should not affect describing the hardware.
+> 
+> thats right, but it should not break/change behaviour like now all ports have only ~600Mbit because of
+> moving them all to the other gmac which has obvious issues.
 
-> This is devicetree bindings=2E We're here to describe the hardware=2E Th=
-e=20
-> way a driver works should not affect describing the hardware=2E
+Makes sense.
 
-thats right, but it should not break/change behaviour like now all ports h=
-ave only ~600Mbit because of
-moving them all to the other gmac which has obvious issues=2E
+> 
+>> To address the lower bandwidth situation you mentioned, a devicetree
+>> property to designate a CPU port as the default CPU port could be
+>> introduced. I'm not aware of a similar conversation so I'll send a mail
+>> to netdev to discuss this. Will CC you.
+> 
+> isn't there a way to leave ports by default on the the better gmac (gmac0=trgmii)?
+> maybe moving port5 below port6...not nice, but then port6 is the first cpu found.
 
-> To address the lower bandwidth situation you mentioned, a devicetree=20
-> property to designate a CPU port as the default CPU port could be=20
-> introduced=2E I'm not aware of a similar conversation so I'll send a mai=
-l=20
-> to netdev to discuss this=2E Will CC you=2E
+This could be done but it comes off as an improper way to me.
 
-isn't there a way to leave ports by default on the the better gmac (gmac0=
-=3Dtrgmii)?
-maybe moving port5 below port6=2E=2E=2Enot nice, but then port6 is the fir=
-st cpu found=2E
-or maybe defined the default cpu in driver which gets picked up by core (d=
-efine port6 if available as default)=2E
-Imho additional dts-propperty is wrong approch=2E=2E=2Eit should be handle=
-d by driver=2E But cpu-port-selection is=20
-currently done in dsa-core which makes it a bit difficult=2E
+> or maybe defined the default cpu in driver which gets picked up by core (define port6 if available as default).
+> Imho additional dts-propperty is wrong approch...it should be handled by driver. But cpu-port-selection is
+> currently done in dsa-core which makes it a bit difficult.
+> 
+> I'm not sure how the multi-cpu support in dsa-core ended and how you use the other gmac not used by dsa-core
+> 
+> set master in userspace-config? i remember you've sent a patch adding callback for it.
 
-I'm not sure how the multi-cpu support in dsa-core ended and how you use t=
-he other gmac not used by dsa-core
+You can change the DSA master using iproute2-6.1.0 and above with this 
+patch which should be in your inbox as well.
 
-set master in userspace-config? i remember you've sent a patch adding call=
-back for it=2E
+https://lore.kernel.org/netdev/20230211184101.651462-1-richard@routerhints.com/
 
-imho dts change should be applied if these points are cleared=2E=2E=2E
+> 
+> imho dts change should be applied if these points are cleared...
 
-regards Frank
+The only issue I see here is that, with this patch series, port5 becomes 
+the default CPU port which is not preferred for the reasons you explained.
+
+So once we can have port6 to be the default CPU port of the DSA slaves, 
+there's no issues left.
+
+Arınç
 
