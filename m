@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76521C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Feb 2023 11:17:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AC4AC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Feb 2023 11:18:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tRUarQyWTXy/UaQ+aTCiS9aEshqx6SrntwaJME4vnY0=; b=o+owAsZe5cMD/55WO/F9pAgWen
-	lyy7+33VQmSG7lIoWqlRzl02VGSkhZPOiqZ4ocvtZMja3CjWD+ONbtj4hik59GO3Heo+XlmdHeMOt
-	oz40yMeZW9ged56rA+GY3LtYNLmOjylJnQR2DovmlHf1ARVhxCoHPytAjWWZJ3zS0C+NrF6fjrppq
-	VWV2lFwPsxR9oPvvvSEaGxuv6sOKgYtXZfou6onTmxVqm/6qrsgQg7y+oUzaD8/s4QihJeJLcf+z6
-	SnLJ8nQJCNMYWwVkaoyui6hTapGL71nYgfXGwqmMvWaJ7Vy1asCGrV2LOJbH3zxwt5YNm3OhmbaoR
-	CE7XBMXg==;
+	bh=s6dHGa2Xgzvsmpkv1OMI3GGLXSZg9rQflTYWwQPQ1MY=; b=mOdDXdXNaeQ4OL+gUzTdtyjhR3
+	jovyOvSB4Fao5SKiDUUBdJriRY6EhjC3Se0ngJ2c1pZdowYILzkqDmJsyZiae6PEZCRgkimScxsOk
+	MWSsKt53oxKkzpfi522O7hyWdtKFt7RrO7zNFqKqF8oWfsc4IAfYgdnjqCv2gr5RAhS9vJ6dOVdbH
+	34ZR85V3tD0qSwlk8g6Ql/TYFgb6HrhSKVDICi5mQz50qhsgtmMA5gDy52HDi5n6HQFkOtWgO3SOr
+	W9vkmgT3RsT6EAPQlzuHW40a9gzy7M4DZ9oYmy0HbcfIiSDbKWcXcoM5BYhe1NuLnF8hKWiNQMK3/
+	zEAIie+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pTLDs-00Gqco-I7; Sat, 18 Feb 2023 11:17:44 +0000
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+	id 1pTLEJ-00GqqQ-JS; Sat, 18 Feb 2023 11:18:11 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pTLDf-00GqVp-TM
-	for linux-mediatek@lists.infradead.org; Sat, 18 Feb 2023 11:17:37 +0000
-Received: by mail-pl1-x635.google.com with SMTP id e14so1831321plg.8
-        for <linux-mediatek@lists.infradead.org>; Sat, 18 Feb 2023 03:17:30 -0800 (PST)
+	id 1pTLDj-00GqX2-Qk
+	for linux-mediatek@lists.infradead.org; Sat, 18 Feb 2023 11:17:39 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id rm14-20020a17090b3ece00b00229ca6a4636so594296pjb.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 18 Feb 2023 03:17:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=tRUarQyWTXy/UaQ+aTCiS9aEshqx6SrntwaJME4vnY0=;
-        b=FhaH7iwlgirzBhkctvbPIaE33nUBelcGHAF8fq0lsjOkQ+cusRFz/4cccjVw6NEftK
-         PpoX0TZ8w3vqQVGe5P/lYxblKHcsFlSVpBKNCV54TFjvgawSpSzJc1EE02sPm2cIp82b
-         392DVfxuznUnL2wiI4prL2FfCxja2ElN7chAA=
+        bh=s6dHGa2Xgzvsmpkv1OMI3GGLXSZg9rQflTYWwQPQ1MY=;
+        b=JY77n9tlE/HK4ICl9GMTuT3xOecSN1t2rBwKN2r6bw9DpB3ugVZniqFJmEP/ZS6pdn
+         FZrSdrEN79gLPWOMUK+L66wCzzs3r3Q8uln5PXzclN7b87DKiNVjqYU3DiNx/XLz0qPb
+         Of7YZ4EvDZl+ErstHa8fMnpIbvTchMOkO2RII=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=tRUarQyWTXy/UaQ+aTCiS9aEshqx6SrntwaJME4vnY0=;
-        b=3i9FYov8PeBoCXHcSrhJC+DVsHUZJgZhaJSnj7+6Kme/8WH61E3CSFYPurUDIKQqbG
-         X0ILwnqybLdsARFjI84gJlmMDPc2/Fh6ejZ1Hb+lTlkKUxtFFg5WkKVjKSKO9xDnDvRf
-         55Yz+hKFFPLSLzP08dR4Pr538CljWEp3hGtJ6nlI/yUhR8R8B2rVtqpTuFFjxXwIUy0d
-         oDUIzAfU5AwAAqRvuXzippaVxlis4cfAinQ6mX3PMhN1GYe6kOuVD1C3kZ4b/AJ052p9
-         20o0s7ZzuQxDROtoo7f+bZCy/SJ0MDgLSkGYZ+FMVAEsW6/nCrx7sGsoTbuCeP5fLWg0
-         h7HA==
-X-Gm-Message-State: AO0yUKVAUUxqug9m3yoEWq0QsfIKee5ovWwpBzNV8MGRPultwRgSbgkL
-	8n/Lpe5USZg8D9Q37OVycuV0Yg==
-X-Google-Smtp-Source: AK7set+FohWYixBOFWTvodfYG9ONEn4rCbUp2cY1CE91qYHZ6E0/D4C1ES2aYaY6oImj8VUL+8mG8A==
-X-Received: by 2002:a05:6a20:1610:b0:c7:5983:7a82 with SMTP id l16-20020a056a20161000b000c759837a82mr7002881pzj.27.1676719049830;
-        Sat, 18 Feb 2023 03:17:29 -0800 (PST)
+        bh=s6dHGa2Xgzvsmpkv1OMI3GGLXSZg9rQflTYWwQPQ1MY=;
+        b=WWDmwBk0kdhxjfyieeECZQmjmRRd8fjVOmkVsTWJtlyLAStLYoMJxJDTI2x774XwLi
+         fcB07Nq6NJjImPLQhMQFCz4wIpLTsgGi8Gzk0QCEfBYCZaFxBTyBWD0Bq45HkUlfRABe
+         t5okuO2I4a3OGj7jAPfSRxIsx3OIkJCGCsSXXSaQTEIUJVbTSttXxDui5v8BH6Fn6xHR
+         pSQB7s+SgUy6CCNIJ25lr4hAp7tYANsutxQJKVohtJnRiIG8uX6I6EpmBlxOrLuaXvNX
+         VdRZ4jxkGNFEq6/F4htpFPPr3h0LmeNTfjezQ1c57Q5pU1w5uA6tidTMQWhaqCgBsRJD
+         +1dg==
+X-Gm-Message-State: AO0yUKX4LvRiJ50UvsmUkSrc/J2zzLJBmxwuntHgX7SIPrB8N/OXE/FK
+	CxsoHs9Mi+Cx+AiaBSpY2+D1wQ==
+X-Google-Smtp-Source: AK7set/hFbuR6/pwEBTsgMDjBxXuhNwX/DV7X+3lXNMmHiMnzFAlbjwwtNwH3GYu9AIwOZM3LSHFcw==
+X-Received: by 2002:a05:6a20:4e27:b0:c6:858d:81b7 with SMTP id gk39-20020a056a204e2700b000c6858d81b7mr3115816pzb.25.1676719054085;
+        Sat, 18 Feb 2023 03:17:34 -0800 (PST)
 Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:88dd:be84:8f65:fec2])
-        by smtp.gmail.com with ESMTPSA id 23-20020aa79157000000b005a8686b72fcsm4457829pfi.75.2023.02.18.03.17.26
+        by smtp.gmail.com with ESMTPSA id 23-20020aa79157000000b005a8686b72fcsm4457829pfi.75.2023.02.18.03.17.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 18 Feb 2023 03:17:29 -0800 (PST)
+        Sat, 18 Feb 2023 03:17:33 -0800 (PST)
 From: Pin-yen Lin <treapking@chromium.org>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -81,17 +81,17 @@ Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	Philipp Zabel <p.zabel@pengutronix.de>,
 	linux-arm-kernel@lists.infradead.org,
 	Pin-yen Lin <treapking@chromium.org>
-Subject: [PATCH v3 1/5] dt-bindings: display: bridge: Add ddc-i2c-bus for anx7688
-Date: Sat, 18 Feb 2023 19:17:08 +0800
-Message-Id: <20230218111712.2380225-2-treapking@chromium.org>
+Subject: [PATCH v3 2/5] drm/bridge: Add .get_edid callback for anx7688 driver
+Date: Sat, 18 Feb 2023 19:17:09 +0800
+Message-Id: <20230218111712.2380225-3-treapking@chromium.org>
 X-Mailer: git-send-email 2.39.2.637.g21b0678d19-goog
 In-Reply-To: <20230218111712.2380225-1-treapking@chromium.org>
 References: <20230218111712.2380225-1-treapking@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230218_031732_787062_8EC14819 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20230218_031736_835976_4A556188 
+X-CRM114-Status: GOOD (  13.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,8 +106,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce a optional "ddc-i2c-bus" property for anx7688 bridge. This
-allows the bridge to register a .get_edid callback.
+Allow the driver to read EDID when ddc-i2c-bus phandle is present in
+the device node.
 
 Signed-off-by: Pin-yen Lin <treapking@chromium.org>
 ---
@@ -115,32 +115,66 @@ Signed-off-by: Pin-yen Lin <treapking@chromium.org>
 Changes in v3:
 - New in v3
 
- .../bindings/display/bridge/google,cros-ec-anx7688.yaml      | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/gpu/drm/bridge/cros-ec-anx7688.c | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/bridge/google,cros-ec-anx7688.yaml b/Documentation/devicetree/bindings/display/bridge/google,cros-ec-anx7688.yaml
-index a44d025d33bd..9d5ce8172e88 100644
---- a/Documentation/devicetree/bindings/display/bridge/google,cros-ec-anx7688.yaml
-+++ b/Documentation/devicetree/bindings/display/bridge/google,cros-ec-anx7688.yaml
-@@ -25,6 +25,10 @@ properties:
-     maxItems: 1
-     description: I2C address of the device.
+diff --git a/drivers/gpu/drm/bridge/cros-ec-anx7688.c b/drivers/gpu/drm/bridge/cros-ec-anx7688.c
+index fa91bdeddef0..a16294c87940 100644
+--- a/drivers/gpu/drm/bridge/cros-ec-anx7688.c
++++ b/drivers/gpu/drm/bridge/cros-ec-anx7688.c
+@@ -6,6 +6,7 @@
+  */
  
-+  ddc-i2c-bus:
-+    description: phandle link to the I2C controller used for DDC EDID probing
-+    $ref: /schemas/types.yaml#/definitions/phandle
+ #include <drm/drm_bridge.h>
++#include <drm/drm_edid.h>
+ #include <drm/drm_print.h>
+ #include <linux/i2c.h>
+ #include <linux/module.h>
+@@ -91,14 +92,24 @@ static bool cros_ec_anx7688_bridge_mode_fixup(struct drm_bridge *bridge,
+ 	return totalbw >= requiredbw;
+ }
+ 
++static struct edid *cros_ec_anx7688_get_edid(struct drm_bridge *bridge,
++					     struct drm_connector *connector)
++{
++	struct cros_ec_anx7688 *anx7688 = bridge_to_cros_ec_anx7688(bridge);
 +
-   ports:
-     $ref: /schemas/graph.yaml#/properties/ports
++	return drm_get_edid(connector, anx7688->bridge.ddc);
++}
++
+ static const struct drm_bridge_funcs cros_ec_anx7688_bridge_funcs = {
+ 	.mode_fixup = cros_ec_anx7688_bridge_mode_fixup,
++	.get_edid = cros_ec_anx7688_get_edid,
+ };
  
-@@ -59,6 +63,7 @@ examples:
-         anx7688: anx7688@2c {
-             compatible = "google,cros-ec-anx7688";
-             reg = <0x2c>;
-+            ddc-i2c-bus = <&hdmiddc0>;
+ static int cros_ec_anx7688_bridge_probe(struct i2c_client *client)
+ {
+ 	struct device *dev = &client->dev;
+ 	struct cros_ec_anx7688 *anx7688;
++	struct device_node *phandle;
+ 	u16 vendor, device, fw_version;
+ 	u8 buffer[4];
+ 	int ret;
+@@ -153,6 +164,19 @@ static int cros_ec_anx7688_bridge_probe(struct i2c_client *client)
+ 		DRM_WARN("Old ANX7688 FW version (0x%04x), not filtering\n",
+ 			 fw_version);
  
-             ports {
-                 #address-cells = <1>;
++
++	phandle = of_parse_phandle(dev->of_node, "ddc-i2c-bus", 0);
++	if (phandle) {
++		anx7688->bridge.ddc = of_get_i2c_adapter_by_node(phandle);
++		of_node_put(phandle);
++		if (!anx7688->bridge.ddc)
++			return -EPROBE_DEFER;
++	} else {
++		dev_dbg(dev, "No I2C bus specified, disabling EDID readout\n");
++	}
++	if (anx7688->bridge.ddc)
++		anx7688->bridge.ops |= DRM_BRIDGE_OP_EDID;
++
+ 	anx7688->bridge.funcs = &cros_ec_anx7688_bridge_funcs;
+ 	drm_bridge_add(&anx7688->bridge);
+ 
 -- 
 2.39.2.637.g21b0678d19-goog
 
