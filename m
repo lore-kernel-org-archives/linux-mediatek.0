@@ -4,73 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76794C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Feb 2023 10:49:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A72AC636CC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Feb 2023 11:17:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bjWvJA7jye8dKxGeIaACDeBj5ieOquYarDMgtwo/Pgc=; b=ysCinJRYrvuvN6VdDIVRXhiG3j
-	Vvrz6HkatWg5i4q6lr5uT7kWHt49LcYJ3OlqOu29iQeOFAeS9Zcu9fAC4x0k7NNMYgTUTrRjSY8NA
-	+jLbo8I2DZ8on9IjCupiPCizaCkxsyWasryh1dDnR3K4FZu98UTs4LxPLEpnlhDBNPjBe1fXl3QSC
-	GYbRmh46EjW4GXzAsqvfEo+Sw8M0iO91uaSdgc5s44aykYJli/EFZlQOMMsMVeM+Tow/bAGMgedW8
-	YDtgIm/DrRImvyEEOQL/A5W+K3oX3Zjg8Eoh96+bUt7+QkcyGBEX8/dwOaSN49LM2IXCQd7MaODsf
-	foMmTXRA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=gEF8FEuNLVayQdE5QI9MaMd8Q/7gQJSqUO9M+81Oa5M=; b=jDC8oFc6flFToBLJ6/D5FN7cuc
+	ZM9P4AoRZ7A6Nwl0iFPl+3J1mKUgbPe3br0vmc55WDSeaA9pZOjx7Rft1k7T6REq46P0dRrNkgGon
+	mpxLZcdcAgTt8xgp/HxdJfJoqGfo+aZX4VvLIG5f1feCNsf6nFDXpxrQwJlI4xI6Mx93EDMOVmNGv
+	haEteLNeff3/lQQ6AvWqIcAAF6N1g4DnSf9ym3mGLHDK+YkDUfzLs1Xsmk60vu9dnWgIW7WZPFz31
+	XDcLEbE1P30GZxtvnFcADNAAM+8WhcMxm2ojD+wwiOsFwnHAmtvOUMNLOysx40aFwH45s++bOuKvH
+	dfDIeH3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pTKml-00Go0o-9M; Sat, 18 Feb 2023 10:49:43 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1pTLDa-00GqUv-OK; Sat, 18 Feb 2023 11:17:26 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pTKmZ-00Gnzn-1f; Sat, 18 Feb 2023 10:49:32 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1676717364; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=DsffZtaWvZuCbaZE5EHJ1vFswNstU37dTPw6i3RIq9xufQXDTJw1TPliygnNW+4X0diwWvdgonV2JvzNiMzMKz8JL+MxiOwnDADAsQwZT51g4MaqTKMaZPJg8QqOrYkpQ8+hzwgOPNXrIPikh7zogmluD0efw3ZIjpY0mSGnpWw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1676717364; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=bjWvJA7jye8dKxGeIaACDeBj5ieOquYarDMgtwo/Pgc=; 
-	b=MIWFN+x7mBIZh5b+dAG0WC4DSuDmuFYhUnH1nLQijjm8jnO4g0Qp+HKhwg0QmH1cTBzlCngJfHFJ1UgC3o8NEfQ9vnHIrfTagsTRi8P3P/HYRkqKr8wNoCnHi4lXFGd/R8LzRC6yBbD/ZlDrVFGyZFQFGO79yNkLP/AdmlE+aA8=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1676717364;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=bjWvJA7jye8dKxGeIaACDeBj5ieOquYarDMgtwo/Pgc=;
-	b=AN2iUkq6iC19pz4UBX2M5jGu37WIRJY+mJXpBYTD7hHatDjFHUUU12YJSO1q34UF
-	HOhZZemPJRVTcTNEBuydB7oe/g0YLcg+RxZ67YZQOIDip9j5M9XSoYbeQpFm9LTCm+V
-	kHm4FIz17yqNjM1w9WkCTjfnfsOYnNomWj71xOEA=
-Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1676717363028260.89467269078705; Sat, 18 Feb 2023 02:49:23 -0800 (PST)
-Message-ID: <27a26da8-8297-5327-7493-54d8359b6970@arinc9.com>
-Date: Sat, 18 Feb 2023 13:49:13 +0300
+	id 1pTLDX-00GqSk-Tz
+	for linux-mediatek@lists.infradead.org; Sat, 18 Feb 2023 11:17:25 +0000
+Received: by mail-pf1-x430.google.com with SMTP id e4so187017pfi.8
+        for <linux-mediatek@lists.infradead.org>; Sat, 18 Feb 2023 03:17:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=gEF8FEuNLVayQdE5QI9MaMd8Q/7gQJSqUO9M+81Oa5M=;
+        b=IaruHdGy8cyFLDUGIOX5pZOCfDLvKQZpLOUwXva2yFbitViwuTKQidiLFpOtPWhzcu
+         suiJ6uJgAz2TngEijk5zQdejLa23H2xeo9jIswDVjTdRDMV/LGUV9eYlX3+ou4kJqg+8
+         Pi9/8dmPnYdds+GD+VqOdlM6LCxjqZ45E1Hbo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=gEF8FEuNLVayQdE5QI9MaMd8Q/7gQJSqUO9M+81Oa5M=;
+        b=7qBXe4x8zbEKdU0omotBBOxGaTSqt/C+ug22AH/PqCPOyrOPEAUn4UFmRA/j/0idIG
+         FnHZdoaHqNqXgwaajM1LW+eSa/8xi6otvIbGF1AePni//iYRTM+YoEdPRaKzMW2BtBcH
+         3L/jm+sBhEAalYLiRJYUe8jnGqcJEqBtNqFfQM4uAnOqVy+LFrXZDoqjKu7kjTyl5mU3
+         2ZYB/iUWqOzH8WEhadljcDYWaDGPa1SVwOeSqwRMP+hf5KvqtUf8J8aJyfck6p1o86MS
+         MV81P8ViZPaqt75SVweno74alDfgdlvzUBpu6guBWqDL/nYRBi0OYbzGRorbOmCLM43G
+         uzmA==
+X-Gm-Message-State: AO0yUKX9wmtM2yfPLv+JKnts9P9mxsSwZSsWZLFJSZnwN8AjimFKG9S5
+	n8afj+i8dXhm+QLu8ZUL5/5bpw==
+X-Google-Smtp-Source: AK7set+WyXQ3bNUcWSBc3Z7xIjr8Et8u/2+vAwZMWp1xbM5SWXK9wjjgnemRxkn9IVSvnVIBAgswew==
+X-Received: by 2002:a62:1b48:0:b0:5ab:bf5d:a0d1 with SMTP id b69-20020a621b48000000b005abbf5da0d1mr2435384pfb.7.1676719041279;
+        Sat, 18 Feb 2023 03:17:21 -0800 (PST)
+Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:88dd:be84:8f65:fec2])
+        by smtp.gmail.com with ESMTPSA id 23-20020aa79157000000b005a8686b72fcsm4457829pfi.75.2023.02.18.03.17.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 18 Feb 2023 03:17:20 -0800 (PST)
+From: Pin-yen Lin <treapking@chromium.org>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Benson Leung <bleung@chromium.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	devicetree@vger.kernel.org,
+	Nicolas Boichat <drinkcat@chromium.org>,
+	chrome-platform@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	Guenter Roeck <groeck@chromium.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	linux-arm-kernel@lists.infradead.org,
+	Pin-yen Lin <treapking@chromium.org>
+Subject: [PATCH v3 0/5] Add generic-display-mux driver and bindings
+Date: Sat, 18 Feb 2023 19:17:07 +0800
+Message-Id: <20230218111712.2380225-1-treapking@chromium.org>
+X-Mailer: git-send-email 2.39.2.637.g21b0678d19-goog
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: Aw: Re: [PATCH v3 0/5] arm: dts: mt7623: relocate gmacs, mt7530
- switch, and add port@5
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- erkin.bozoglu@xeront.com
-References: <20230210182505.24597-1-arinc.unal@arinc9.com>
- <c3ab9a9b-3eb2-8fb0-d5d7-c0b7c684d3a7@arinc9.com>
- <trinity-dab715b9-3953-40da-bc25-c4c2a5e9b7c3-1676715866453@3c-app-gmx-bap53>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <trinity-dab715b9-3953-40da-bc25-c4c2a5e9b7c3-1676715866453@3c-app-gmx-bap53>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230218_024931_187606_EA352B5A 
-X-CRM114-Status: GOOD (  17.10  )
+X-CRM114-CacheID: sfid-20230218_031724_053087_3C25F301 
+X-CRM114-Status: GOOD (  12.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,42 +103,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18.02.2023 13:24, Frank Wunderlich wrote:
-> Hi,
-> 
-> finally get some time to bootup with this series on my r2.
-> 
-> I see that inserting the port@5 as cpu-port maps this as default-cpu because dsa-core uses first found cpu-port as
-> default (dsa_tree_setup_cpu_ports in dsa.c) and because of lower bandwidth (rgmii instead of trgmii) not the best choice.
-> 
-> But it look worse...network is currently broken (set both gmacs up).
-> I see arp-packets reaching remote side, but reponse is not received by r2
-> 
-> I have tested it on 6.2-rc8 (wan-port), maybe additional patches are needed?...userspace setup should be right.
-> 
-> so i added series on top of net-next (no additional patches except some basic like build-script,defconfig and such)...same result...
-> 
-> i'm not sure if i change the mapping from userspace back to eth0, so disabled port@5 in switch, now port6 is
-> cpu-port again and it works...so something is wrong with port5 of switch or gmac1.
+This series is developed for and tested on MT8173 board, and the layout is:
 
-That's a driver issue and will be fixed once an accepted version of 
-these patches [0] [1] [2] are applied to net-next. You should have them 
-on your inbox, I specifically told Richard to CC you.
+                                  /-- anx7688
+-- MT8173 HDMI bridge -- GPIO mux
+                                  \-- native HDMI
 
-This is devicetree bindings. We're here to describe the hardware. The 
-way a driver works should not affect describing the hardware.
+v2: https://lore.kernel.org/all/20230116110820.2615650-1-treapking@chromium.org/
+v1: https://patchwork.kernel.org/project/dri-devel/cover/20191211061911.238393-1-hsinyi@chromium.org/
 
-To address the lower bandwidth situation you mentioned, a devicetree 
-property to designate a CPU port as the default CPU port could be 
-introduced. I'm not aware of a similar conversation so I'll send a mail 
-to netdev to discuss this. Will CC you.
+Changes in v3:
+- Removed ddc-i2c-bus in the gpio-mux bridge bindings
+- Added .get_edid callback in generic-gpio-mux driver
+- Removed .get_edid callback in mtk_hdmi.c
+- Modified anx7688 driver and binding to add a .get_edid callback
 
-[0] 
-https://lore.kernel.org/netdev/20230212213949.672443-1-richard@routerhints.com/
-[1] 
-https://lore.kernel.org/netdev/20230212214027.672501-1-richard@routerhints.com/
-[2] 
-https://lore.kernel.org/netdev/20230212215152.673221-1-richard@routerhints.com/
+Changes in v2:
+- Referenced existing dt-binding schemas from graph.yaml
+- Added ddc-i2c-bus into the bindings
+- Dropped attach/mode_set/enable/disable callbacks
+- Fixed style issues
+- Removed the special case for the HDMI connector
+- Made the driver only read the GPIO status in IRQ handler
+- Rebased to drm-misc-next
+- Update the license: "GPL v2" --> "GPL"
 
-Arınç
+Nicolas Boichat (2):
+  dt-bindings: display: bridge: Add GPIO display mux binding
+  drm: bridge: Generic GPIO mux driver
+
+Pin-yen Lin (3):
+  dt-bindings: display: bridge: Add ddc-i2c-bus for anx7688
+  drm/bridge: Add .get_edid callback for anx7688 driver
+  drm/mediatek: Remove .get_edid callback
+
+ .../bridge/google,cros-ec-anx7688.yaml        |   5 +
+ .../bindings/display/bridge/gpio-mux.yaml     |  90 +++++++
+ drivers/gpu/drm/bridge/Kconfig                |  10 +
+ drivers/gpu/drm/bridge/Makefile               |   1 +
+ drivers/gpu/drm/bridge/cros-ec-anx7688.c      |  24 ++
+ drivers/gpu/drm/bridge/generic-gpio-mux.c     | 222 ++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_hdmi.c           |  53 +----
+ 7 files changed, 365 insertions(+), 40 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/gpio-mux.yaml
+ create mode 100644 drivers/gpu/drm/bridge/generic-gpio-mux.c
+
+-- 
+2.39.2.637.g21b0678d19-goog
+
 
