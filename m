@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6880DC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Feb 2023 14:56:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48169C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Feb 2023 15:07:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MRWzUiIkZMN/8VwTf3/WG02TOz303pOTBThE0ISU9KA=; b=D55Qq787xB5CIlgmzXSjXQCE65
-	/J3ZbFGB78P2RInlrVPz/8s6R4RQF/EwXB1JtAVyBEfbvlZEjA6ZQTdjUV6+nI5m2+8Ag3LtQmUOf
-	idJiCDkmmtDtJZt3wtZtmNpSWjlNssDgNAU6v4dK0imBWPHMCd3EfqOmxCoVZXnL6XAHFjGgi/iGo
-	6BcjsojVNiIEEXZqqycKE6UW0P0ycO9uIEDdkzDvLtxGZY2LCsvkUaQpQ1HAWnaP5u2F+hpncqZ1s
-	2NJSix1EeqO7toO6HBQk4oqGzac+8AOt7pvMS5XezMCH/OFYrCPO8pSPWMFDt/xUYJNBPCvWAy/lV
-	bv+myr6w==;
+	bh=vfvHBPjFD3fnJEXsEdcPBmeh9w1ZDPtCXMtTzNwUMP4=; b=sMrUnHUllMth7DQP5+Wi9j9wll
+	BmbstzmBst50mJaHJuBZV0WRspDgAaqMyyKOuo4Je7zCxQ2KS+rYL1jUe6DjHHWFnl7u4kcjOUSCO
+	hu6waL362SzhGK9ekBCxhSG3bt69GgDiskmnLwp5P/x9LEsoLciugCAP9rnJp5kqHTiA4q570uhSY
+	CnzegLJrhfjMPMaq87Gxh8ObN+EIhlQ/mLqMC7myEDUEFbAMDi4Ser/PBvx4rBFCSzTDBYSpVVm+W
+	Tnd0mv7t9rXtLQ2E+DPKDiSbpoHTnbxSur9Yf1Oz5TXu5zbdlAUVfToCHAItEETzvcG3FrsTFVnLJ
+	rYFkM+Fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pTl7N-001jee-D9; Sun, 19 Feb 2023 14:56:45 +0000
-Received: from mail-il1-x130.google.com ([2607:f8b0:4864:20::130])
+	id 1pTlHp-001kue-Vu; Sun, 19 Feb 2023 15:07:33 +0000
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pTl7I-001jcb-JB; Sun, 19 Feb 2023 14:56:42 +0000
-Received: by mail-il1-x130.google.com with SMTP id v8so200974iln.6;
-        Sun, 19 Feb 2023 06:56:39 -0800 (PST)
+	id 1pTlHl-001krc-LQ
+	for linux-mediatek@lists.infradead.org; Sun, 19 Feb 2023 15:07:31 +0000
+Received: by mail-lj1-x236.google.com with SMTP id r10so716347ljp.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 19 Feb 2023 07:07:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=MRWzUiIkZMN/8VwTf3/WG02TOz303pOTBThE0ISU9KA=;
-        b=OBp/XQAU5Q471JJAcxBMgqa6dD4Dp32mVwrDrvC1tRuFffnp8TdtHAw/E8heX1RCnn
-         mZ0zJ/aWl+G8TXYcKZuS0Gx/77yQV9MyRVZhYGfgTIwQgi1f+S7jIWw21vvn+0IyeUFX
-         rdGxpxTfynV5AOlzLbnmYCLi82W9sEgiqT7rTWjNkuCAl/kE3OPW30GwGFZqwI+/03tU
-         y7wSgIhnwQY0CXiY+UKDIT1n/bfXzXdmCFVT9lWQ/dd9grtj5iw3PduSsmfni1mS1tZT
-         HOvxd60YwrOlZZkXi8ODkZ40ZdpjvMDWGoKx4Vf2pWX9kbUlwTVQq817YlKAqQz5NLhr
-         k9lw==
+        d=ragnatech-se.20210112.gappssmtp.com; s=20210112;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=vfvHBPjFD3fnJEXsEdcPBmeh9w1ZDPtCXMtTzNwUMP4=;
+        b=2MT453GERnVCOXc+pZDXjhNske3WayAQFfKvKJjkTaSXaH9ypTF1xoFmHts7lcs6Tu
+         8awMK4Po/ABZ5dh9w4kEV1FldjJxMrBZVoiOQuoO90QinuTnKOP01zHiWmaOtrj+nQvd
+         F+ZaO4uYXLhJM+VztPHntmkaf7c2ZT1Q0aPQ00s5xppJj7swa9G6CIbKQNlCxZ/w13pb
+         K749pLo5Tg+B9AZJIM2QgMhbSb1PATOb59v0crPXiX4ae6edrBvt+0E1yX/NUh/mJvXP
+         jtQvKiAA2OdtGon53LBFrgDiJMJWAudwD546mUhHoHUTb6TiVX8ddk95TiBrWGbr05LD
+         zGSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=MRWzUiIkZMN/8VwTf3/WG02TOz303pOTBThE0ISU9KA=;
-        b=5HTCr/pbzNpTqrhESgxCP1+Q4cShFJBDOOyVUeIwujZNaXvlX1rb3GtKV2dmBh+CYe
-         lQX0BhQTg+36FSjoHAzifjWZAxywRJH0mxVNPJ2xc7mavdRHx2X2PNThGGYd/86bWF0a
-         KJClttZDsmDjOUgztSje7quMAPeGHumZXwh6Ui09E1wFo2abTaI7LkLmvCpEMTOp0HOM
-         fYm+ywACy0RsPrDxtd07Ke1kmkYja0Il9MUEAx69Hexg9ySKyt2cah5J6q1hVp1AKSag
-         Rjf9uinR6zoR2sk0/M1lKsKCb7SEsXbcNSMcIgOEOhFgT3nnpoMfNpNUXqUQuJIlpRJa
-         8w0w==
-X-Gm-Message-State: AO0yUKWIgq40jP2iQtJwaZm0XFr8nTAP08Q//3bUcDT7cii3VDLTwctk
-	SYn07Jk5LtywpHb1HWZmdGo=
-X-Google-Smtp-Source: AK7set/tBdHvgZ9GFY6tgVICfvLzFe6RtqLrm+n2c8aFQ5ip61CmdhaCQUFruBwYDgn3guOUu59kmw==
-X-Received: by 2002:a92:1a41:0:b0:315:4350:9c09 with SMTP id z1-20020a921a41000000b0031543509c09mr1511617ill.16.1676818598543;
-        Sun, 19 Feb 2023 06:56:38 -0800 (PST)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
-        by smtp.gmail.com with ESMTPSA id c8-20020a92cf08000000b003153cdd03a3sm501663ilo.61.2023.02.19.06.56.37
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=vfvHBPjFD3fnJEXsEdcPBmeh9w1ZDPtCXMtTzNwUMP4=;
+        b=ap+DPid782jpskMcTXUneqTjzDgEBJHVUTpCD7mtwpeN/FgNaPf+DytsVsXp/jT+6x
+         j2bdxU7o8io+FuEwtsJtZRfVrrcrqa93oHN/mFDosll91eI/rIDOUQGw+MkXclIv1KEq
+         vouHc47XxbadusftweaUnxQ6J4jI73WsBBv7rzX5pJWvz0E/OaEQyCE1iTP/+d5/8EBr
+         P75rTtyj14kM5YQhzzbCzhTc1KvSXvhkyTqZ5IOzcCmcz9jWhx70Hbo9RcaB4nubYHcA
+         kr0jVFU1/uhX13qQwDCF3MSi5BdkwnjHCMJkGTVpzfol6hvqstdKU9iCmy36bI9ijxo9
+         /s1A==
+X-Gm-Message-State: AO0yUKX6rBAB24qjokzJ+ER9D3IiNX0LDkBRClxwkVztXwZ1vlMmvFR/
+	76//866f3dv9vjIqRV6Ig3rq+w==
+X-Google-Smtp-Source: AK7set9/3IywPw1ycXkXfjTE1BOHzIfMRekgiKErVRCZRj2jjMurZbyZpbHyyTOgbRvkntf1piSbOg==
+X-Received: by 2002:a05:651c:1541:b0:293:14c8:f588 with SMTP id y1-20020a05651c154100b0029314c8f588mr403194ljp.27.1676819242130;
+        Sun, 19 Feb 2023 07:07:22 -0800 (PST)
+Received: from localhost (h-46-59-89-207.A463.priv.bahnhof.se. [46.59.89.207])
+        by smtp.gmail.com with ESMTPSA id f23-20020a2e9517000000b0029355185926sm1245807ljh.137.2023.02.19.07.07.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 19 Feb 2023 06:56:38 -0800 (PST)
-Date: Sun, 19 Feb 2023 06:56:36 -0800
-From: Guenter Roeck <linux@roeck-us.net>
+        Sun, 19 Feb 2023 07:07:21 -0800 (PST)
+Date: Sun, 19 Feb 2023 16:07:20 +0100
+From: Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>
 To: Daniel Lezcano <daniel.lezcano@linaro.org>
 Cc: rafael@kernel.org, linux-pm@vger.kernel.org,
 	linux-kernel@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>,
@@ -72,6 +73,7 @@ Cc: rafael@kernel.org, linux-pm@vger.kernel.org,
 	Fabio Estevam <festevam@gmail.com>,
 	NXP Linux Team <linux-imx@nxp.com>,
 	Jean Delvare <jdelvare@suse.com>,
+	Guenter Roeck <linux@roeck-us.net>,
 	Jonathan Cameron <jic23@kernel.org>,
 	Lars-Peter Clausen <lars@metafoo.de>, Chen-Yu Tsai <wens@csie.org>,
 	Jernej Skrabec <jernej.skrabec@gmail.com>,
@@ -97,7 +99,6 @@ Cc: rafael@kernel.org, linux-pm@vger.kernel.org,
 	Bjorn Andersson <andersson@kernel.org>,
 	Konrad Dybcio <konrad.dybcio@linaro.org>,
 	Thara Gopinath <thara.gopinath@gmail.com>,
-	Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund@ragnatech.se>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Bartlomiej Zolnierkiewicz <bzolnier@gmail.com>,
 	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
@@ -147,16 +148,17 @@ Cc: rafael@kernel.org, linux-pm@vger.kernel.org,
 	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 Subject: Re: [PATCH v1 01/17] thermal/core: Add a thermal zone 'devdata'
  accessor
-Message-ID: <20230219145636.GB4084160@roeck-us.net>
+Message-ID: <Y/I7KA2Uqqk7ib6L@oden.dyn.berto.se>
 References: <20230219143657.241542-1-daniel.lezcano@linaro.org>
  <20230219143657.241542-2-daniel.lezcano@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 In-Reply-To: <20230219143657.241542-2-daniel.lezcano@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230219_065640_667278_5C281D7C 
-X-CRM114-Status: GOOD (  15.98  )
+X-CRM114-CacheID: sfid-20230219_070729_777745_4511578A 
+X-CRM114-Status: GOOD (  21.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -171,7 +173,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Feb 19, 2023 at 03:36:41PM +0100, Daniel Lezcano wrote:
+Hi Daniel,
+
+Thanks for your work.
+
+On 2023-02-19 15:36:41 +0100, Daniel Lezcano wrote:
 > The thermal zone device structure is exposed to the different drivers
 > and obviously they access the internals while that should be
 > restricted to the core thermal code.
@@ -187,15 +193,41 @@ On Sun, Feb 19, 2023 at 03:36:41PM +0100, Daniel Lezcano wrote:
 > 
 > Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
 > ---
+
 ...
->  drivers/hwmon/hwmon.c                            |  4 ++--
->  drivers/hwmon/pmbus/pmbus_core.c                 |  2 +-
->  drivers/hwmon/scmi-hwmon.c                       |  2 +-
->  drivers/hwmon/scpi-hwmon.c                       |  2 +-
 
-For hwmon:
+>  drivers/thermal/rcar_gen3_thermal.c              |  4 ++--
+>  drivers/thermal/rcar_thermal.c                   |  3 +--
 
-Acked-by: Guenter Roeck <linux@roeck-us.net>
+For R-Car,
 
-Guenter
+Reviewed-by: Niklas Söderlund <niklas.soderlund+renesas@ragnatech.se>
+
+...
+
+
+> diff --git a/include/linux/thermal.h b/include/linux/thermal.h
+> index 2bb4bf33f4f3..724b95662da9 100644
+> --- a/include/linux/thermal.h
+> +++ b/include/linux/thermal.h
+> @@ -365,6 +365,8 @@ thermal_zone_device_register_with_trips(const char *, struct thermal_trip *, int
+>  					void *, struct thermal_zone_device_ops *,
+>  					struct thermal_zone_params *, int, int);
+>  
+> +void *thermal_zone_device_get_data(struct thermal_zone_device *tzd);
+> +
+
+bikeshedding:
+
+Would it make sens to name this thermal_zone_device_get_priv_data(), 
+thermal_zone_device_get_priv() or something like that? To make it more 
+explicitly when reading the driver code this fetches the drivers private 
+data, and not some data belonging to the zone itself.
+
+>  int thermal_zone_bind_cooling_device(struct thermal_zone_device *, int,
+>  				     struct thermal_cooling_device *,
+
+-- 
+Kind Regards,
+Niklas Söderlund
 
