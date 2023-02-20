@@ -4,81 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09F9DC05027
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 15:44:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1B58C05027
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 16:40:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S0Hx1aaU0KHwWfS7oPpxNKsK2RKEPxPrRkqesSGGTdc=; b=eR7CtHVrKhbQ/aY9jUrvtWWfas
-	ucKPphY5y5mgrlE1/0yJzLl6R5SuYx4QL706nk+W0YPCulztQRXpjubAPSangZKPZ4kdacweqvI+z
-	W33UZdDfOQfSx9MYpM/n/ltYxxIV5mFKLw+LjkA8V19S7dvccbhfd5n9F7DwC5lj+GWn2rWyUggRD
-	DDHtZmE5GjWtJZe2GHZIlr/YGskOv66PqrHZK7GvPXF4RYMcmi+2GNf7TIeRaQ70DZEX/kp4BOyN6
-	+8w+udVye5+8x7PK8Hdw3f4t9TL83bXEO8Rl9f3KuiJSQuV8Vc862LK6FW2VG3Wpd4Y69BR2H48AQ
-	UY6Z2DZQ==;
+	bh=i3CakrJQFkm65YXyhehgRdoeBRtU8OyX2oDLK++gsBY=; b=UlZBallkqxqIywBXoDaADMt+tD
+	3oe1qoRWTfQGq+pHN5mpBnvhy5g7DljjM75LIbtiNZ9vLxy4t+Tf3U2lAXjmfXrVdwB+JYQO5Zawo
+	W4EW72QBbrOcwdBr4Wr/Qq8FzCW9FMqaolKxm03FXwGPpfierS3PSfElvYwo5fDYtJ2zkSeJqhplc
+	WWD1YpRLRPd/JRqj8Yw/O2elMwL/xOfESGv0QmicdcMpxgfNu6Q8DxOuZNMV5hHX/Y9Rw2IyYRWNl
+	w/K94LI7JmG10Id06ZA+wyAatoeqKLNksJ/rT59wPSF4A2g2D+cKFvdGb//j9imD6AM/Hi1jha30E
+	X0tqdRDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU8L5-004inT-7G; Mon, 20 Feb 2023 15:44:27 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pU9DK-004txR-O8; Mon, 20 Feb 2023 16:40:31 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU7gY-004Nxy-QY; Mon, 20 Feb 2023 15:02:37 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1pU9Cq-004tsT-N5; Mon, 20 Feb 2023 16:40:02 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 466F366021CF;
-	Mon, 20 Feb 2023 15:02:32 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676905353;
-	bh=x3v3ueWOU/hk/L+2Q5luAzeuPeuM010GE3F0ZFfFFVw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=mv9A/Ypm8oMn5cGlIzlxk2pQ3vQl8a5YX3ccuOzMB8J7GMT4vveUHDKNW6nU+ARhD
-	 ldBtEX/7H/VngcWNl7JslMrn0eW3RrOwmEXakaYo++Ry7fejlj6yYZ2aT/SBBnYA3b
-	 ehKOUTMpt8pmo8kLNO12heQ6Kov4LjWPL9cuV7ZPU749vlf20EEd+9MXlNCtgTDUbt
-	 e+29rQ58KauRWFcXtAiIkzyH24En+GXAp0sV+R2xBiuQS5/v4aBqWHgTOB8A7g6wZI
-	 aRqTQxumsclX8LpB/T9WHI6gr+MziEcjsFBI91t8xNcr52iQgACypZFOkyRWVOhUqi
-	 pHlSh5ITisuOA==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: mturquette@baylibre.com
-Cc: sboyd@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	wenst@chromium.org,
-	johnson.wang@mediatek.com,
-	miles.chen@mediatek.com,
-	chun-jie.chen@mediatek.com,
-	daniel@makrotopia.org,
-	fparent@baylibre.com,
-	msp@baylibre.com,
-	nfraprado@collabora.com,
-	rex-bc.chen@mediatek.com,
-	zhaojh329@gmail.com,
-	sam.shih@mediatek.com,
-	edward-jw.yang@mediatek.com,
-	yangyingliang@huawei.com,
-	granquet@baylibre.com,
-	pablo.sun@mediatek.com,
-	sean.wang@mediatek.com,
-	chen.zhong@mediatek.com,
-	linux-kernel@vger.kernel.org,
-	linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 55/55] clk: mediatek: mt8135: Remove __initconst annotation from clock arrays
-Date: Mon, 20 Feb 2023 16:01:11 +0100
-Message-Id: <20230220150111.77897-56-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.39.1
-In-Reply-To: <20230220150111.77897-1-angelogioacchino.delregno@collabora.com>
-References: <20230220150111.77897-1-angelogioacchino.delregno@collabora.com>
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 7E13860EDF;
+	Mon, 20 Feb 2023 16:39:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E120AC433A1;
+	Mon, 20 Feb 2023 16:39:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1676911196;
+	bh=i3CakrJQFkm65YXyhehgRdoeBRtU8OyX2oDLK++gsBY=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=bI9ADxHVdLO03aK8NOrCaGWY2YoFDs2a3EPlDq7AUHL2O6K+8RwisxFqgxrnMmS+i
+	 iJnIQ7FxYw4Cgz99zyEZLICxZFiaHASQr1NihMYu157vqCNyU8OLvUES3VLfjGEtV5
+	 jht3flOOJONEVxcZ4AsTmv+cQIf3xLrDCBtPqcGxAfD0gPwC88qLErhgKxqYGOauzG
+	 QFAFX1hsUvChb24nl09j+j/lDG5fGA7scrkqO7UZJAEanVjEumJTi7ypx83vv8RUNF
+	 984mIeGuYr9NWw42x39qMT+OUg+BacEQrnskRhE9wEXVjR5l1jH6jTAVTZzxGUDPE/
+	 j38UGWkWI7lhg==
+Received: by mail-lf1-f53.google.com with SMTP id w27so2456228lfu.4;
+        Mon, 20 Feb 2023 08:39:56 -0800 (PST)
+X-Gm-Message-State: AO0yUKUYdQfHWCv9fIcbbSG8zJa3SEBN7hv1yJA6sar3rVOFMDeSJVU4
+	W6KCyvFqq1EaEFCmb7djMod35MaX9cyrNYYV8w==
+X-Google-Smtp-Source: AK7set+2kJBOAKEpxRGpK8KOJwvlu/ZWPTWd/d0PjSOJYzKrSDyF+z8L7LKeT5FGF52CAVPsomQ/d58pI0EpLGJYPGE=
+X-Received: by 2002:ac2:5495:0:b0:4d5:ca32:68a2 with SMTP id
+ t21-20020ac25495000000b004d5ca3268a2mr881249lfk.7.1676911194865; Mon, 20 Feb
+ 2023 08:39:54 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20230219233439.3157-1-chunkuang.hu@kernel.org> <437c0c5c-9a71-253e-eb2d-39e167e35099@collabora.com>
+In-Reply-To: <437c0c5c-9a71-253e-eb2d-39e167e35099@collabora.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Tue, 21 Feb 2023 00:39:43 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8wQxEHGiPrWc+JuNWKzEfk4=Fe17P3tCrY2jW-dQCYPA@mail.gmail.com>
+Message-ID: <CAAOTY_8wQxEHGiPrWc+JuNWKzEfk4=Fe17P3tCrY2jW-dQCYPA@mail.gmail.com>
+Subject: Re: [PATCH] soc: mediatek: cmdq: Remove unused helper funciton
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230220_070235_168417_C5F4F4A8 
-X-CRM114-Status: UNSURE (   9.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230220_084000_810766_7167547C 
+X-CRM114-Status: GOOD (  14.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,294 +80,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Being this a platform driver, these arrays are not only used during
-init anymore, but also during runtime: remove the __initconst annotation
-from all of them.
+Hi, Angelo:
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/clk/mediatek/clk-mt8135.c | 66 +++++++++++++++----------------
- 1 file changed, 33 insertions(+), 33 deletions(-)
+AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =E6=96=
+=BC
+2023=E5=B9=B42=E6=9C=8820=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=887:3=
+1=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> Il 20/02/23 00:34, Chun-Kuang Hu ha scritto:
+> > cmdq_pkt_create(), cmdq_pkt_destroy(), and cmdq_pkt_flush_async()
+> > are not used by all client drivers (MediaTek drm driver and
+> > MediaTek mdp3 driver), so remove them.
+> >
+> > Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+>
+> My next cleanup step would be to migrate both the MediaTek DRM driver
+> and MDP3 to use the common functions present in mtk-cmdq-helper.
+> Function mtk_drm_cmdq_pkt_create() is (almost) a clone of cmdq_pkt_create=
+().
 
-diff --git a/drivers/clk/mediatek/clk-mt8135.c b/drivers/clk/mediatek/clk-mt8135.c
-index 39fd919900e5..084e48a554c2 100644
---- a/drivers/clk/mediatek/clk-mt8135.c
-+++ b/drivers/clk/mediatek/clk-mt8135.c
-@@ -19,7 +19,7 @@
- 
- static DEFINE_SPINLOCK(mt8135_clk_lock);
- 
--static const struct mtk_fixed_factor top_divs[] __initconst = {
-+static const struct mtk_fixed_factor top_divs[] = {
- 	FACTOR(CLK_DUMMY, "top_divs_dummy", "clk_null", 1, 1),
- 	FACTOR(CLK_TOP_DSI0_LNTC_DSICLK, "dsi0_lntc_dsiclk", "clk_null", 1, 1),
- 	FACTOR(CLK_TOP_HDMITX_CLKDIG_CTS, "hdmitx_clkdig_cts", "clk_null", 1, 1),
-@@ -101,7 +101,7 @@ static const struct mtk_fixed_factor top_divs[] __initconst = {
- 	FACTOR(CLK_TOP_MEMPLL_MCK_D4, "mempll_mck_d4", "clkph_mck", 1, 4),
- };
- 
--static const char * const axi_parents[] __initconst = {
-+static const char * const axi_parents[] = {
- 	"clk26m",
- 	"syspll_d3",
- 	"syspll_d4",
-@@ -111,7 +111,7 @@ static const char * const axi_parents[] __initconst = {
- 	"syspll_d3p5"
- };
- 
--static const char * const smi_parents[] __initconst = {
-+static const char * const smi_parents[] = {
- 	"clk26m",
- 	"clkph_mck",
- 	"syspll_d2p5",
-@@ -129,7 +129,7 @@ static const char * const smi_parents[] __initconst = {
- 	"lvdspll"
- };
- 
--static const char * const mfg_parents[] __initconst = {
-+static const char * const mfg_parents[] = {
- 	"clk26m",
- 	"univpll1_d4",
- 	"syspll_d2",
-@@ -145,13 +145,13 @@ static const char * const mfg_parents[] __initconst = {
- 	"mmpll_d7"
- };
- 
--static const char * const irda_parents[] __initconst = {
-+static const char * const irda_parents[] = {
- 	"clk26m",
- 	"univpll2_d8",
- 	"univpll1_d6"
- };
- 
--static const char * const cam_parents[] __initconst = {
-+static const char * const cam_parents[] = {
- 	"clk26m",
- 	"syspll_d3",
- 	"syspll_d3p5",
-@@ -162,13 +162,13 @@ static const char * const cam_parents[] __initconst = {
- 	"univpll1_d4"
- };
- 
--static const char * const aud_intbus_parents[] __initconst = {
-+static const char * const aud_intbus_parents[] = {
- 	"clk26m",
- 	"syspll_d6",
- 	"univpll_d10"
- };
- 
--static const char * const jpg_parents[] __initconst = {
-+static const char * const jpg_parents[] = {
- 	"clk26m",
- 	"syspll_d5",
- 	"syspll_d4",
-@@ -178,7 +178,7 @@ static const char * const jpg_parents[] __initconst = {
- 	"univpll_d5"
- };
- 
--static const char * const disp_parents[] __initconst = {
-+static const char * const disp_parents[] = {
- 	"clk26m",
- 	"syspll_d3p5",
- 	"syspll_d3",
-@@ -189,7 +189,7 @@ static const char * const disp_parents[] __initconst = {
- 	"vdecpll"
- };
- 
--static const char * const msdc30_parents[] __initconst = {
-+static const char * const msdc30_parents[] = {
- 	"clk26m",
- 	"syspll_d6",
- 	"syspll_d5",
-@@ -198,13 +198,13 @@ static const char * const msdc30_parents[] __initconst = {
- 	"msdcpll"
- };
- 
--static const char * const usb20_parents[] __initconst = {
-+static const char * const usb20_parents[] = {
- 	"clk26m",
- 	"univpll2_d6",
- 	"univpll1_d10"
- };
- 
--static const char * const venc_parents[] __initconst = {
-+static const char * const venc_parents[] = {
- 	"clk26m",
- 	"syspll_d3",
- 	"syspll_d8",
-@@ -215,7 +215,7 @@ static const char * const venc_parents[] __initconst = {
- 	"mmpll_d6"
- };
- 
--static const char * const spi_parents[] __initconst = {
-+static const char * const spi_parents[] = {
- 	"clk26m",
- 	"syspll_d6",
- 	"syspll_d8",
-@@ -224,17 +224,17 @@ static const char * const spi_parents[] __initconst = {
- 	"univpll1_d8"
- };
- 
--static const char * const uart_parents[] __initconst = {
-+static const char * const uart_parents[] = {
- 	"clk26m",
- 	"univpll2_d8"
- };
- 
--static const char * const mem_parents[] __initconst = {
-+static const char * const mem_parents[] = {
- 	"clk26m",
- 	"clkph_mck"
- };
- 
--static const char * const camtg_parents[] __initconst = {
-+static const char * const camtg_parents[] = {
- 	"clk26m",
- 	"univpll_d26",
- 	"univpll1_d6",
-@@ -242,12 +242,12 @@ static const char * const camtg_parents[] __initconst = {
- 	"syspll_d8"
- };
- 
--static const char * const audio_parents[] __initconst = {
-+static const char * const audio_parents[] = {
- 	"clk26m",
- 	"syspll_d24"
- };
- 
--static const char * const fix_parents[] __initconst = {
-+static const char * const fix_parents[] = {
- 	"rtc32k",
- 	"clk26m",
- 	"univpll_d5",
-@@ -258,7 +258,7 @@ static const char * const fix_parents[] __initconst = {
- 	"univpll1_d8"
- };
- 
--static const char * const vdec_parents[] __initconst = {
-+static const char * const vdec_parents[] = {
- 	"clk26m",
- 	"vdecpll",
- 	"clkph_mck",
-@@ -277,13 +277,13 @@ static const char * const vdec_parents[] __initconst = {
- 	"lvdspll"
- };
- 
--static const char * const ddrphycfg_parents[] __initconst = {
-+static const char * const ddrphycfg_parents[] = {
- 	"clk26m",
- 	"axi_sel",
- 	"syspll_d12"
- };
- 
--static const char * const dpilvds_parents[] __initconst = {
-+static const char * const dpilvds_parents[] = {
- 	"clk26m",
- 	"lvdspll",
- 	"lvdspll_d2",
-@@ -291,7 +291,7 @@ static const char * const dpilvds_parents[] __initconst = {
- 	"lvdspll_d8"
- };
- 
--static const char * const pmicspi_parents[] __initconst = {
-+static const char * const pmicspi_parents[] = {
- 	"clk26m",
- 	"univpll2_d6",
- 	"syspll_d8",
-@@ -302,14 +302,14 @@ static const char * const pmicspi_parents[] __initconst = {
- 	"syspll_d24"
- };
- 
--static const char * const smi_mfg_as_parents[] __initconst = {
-+static const char * const smi_mfg_as_parents[] = {
- 	"clk26m",
- 	"smi_sel",
- 	"mfg_sel",
- 	"mem_sel"
- };
- 
--static const char * const gcpu_parents[] __initconst = {
-+static const char * const gcpu_parents[] = {
- 	"clk26m",
- 	"syspll_d4",
- 	"univpll_d7",
-@@ -317,14 +317,14 @@ static const char * const gcpu_parents[] __initconst = {
- 	"syspll_d6"
- };
- 
--static const char * const dpi1_parents[] __initconst = {
-+static const char * const dpi1_parents[] = {
- 	"clk26m",
- 	"tvhdmi_h_ck",
- 	"tvhdmi_d2",
- 	"tvhdmi_d4"
- };
- 
--static const char * const cci_parents[] __initconst = {
-+static const char * const cci_parents[] = {
- 	"clk26m",
- 	"mainpll_537p3m",
- 	"univpll_d3",
-@@ -333,7 +333,7 @@ static const char * const cci_parents[] __initconst = {
- 	"syspll_d5"
- };
- 
--static const char * const apll_parents[] __initconst = {
-+static const char * const apll_parents[] = {
- 	"clk26m",
- 	"apll_ck",
- 	"apll_d4",
-@@ -342,14 +342,14 @@ static const char * const apll_parents[] __initconst = {
- 	"apll_d24"
- };
- 
--static const char * const hdmipll_parents[] __initconst = {
-+static const char * const hdmipll_parents[] = {
- 	"clk26m",
- 	"hdmitx_clkdig_cts",
- 	"hdmitx_clkdig_d2",
- 	"hdmitx_clkdig_d3"
- };
- 
--static const struct mtk_composite top_muxes[] __initconst = {
-+static const struct mtk_composite top_muxes[] = {
- 	/* CLK_CFG_0 */
- 	MUX_GATE(CLK_TOP_AXI_SEL, "axi_sel", axi_parents,
- 		0x0140, 0, 3, INVALID_MUX_GATE_BIT),
-@@ -409,7 +409,7 @@ static const struct mtk_gate_regs infra_cg_regs = {
- 	GATE_MTK_FLAGS(_id, _name, _parent, &infra_cg_regs, _shift,	\
- 		       &mtk_clk_gate_ops_setclr, CLK_IS_CRITICAL)
- 
--static const struct mtk_gate infra_clks[] __initconst = {
-+static const struct mtk_gate infra_clks[] = {
- 	GATE_DUMMY(CLK_DUMMY, "infra_dummy"),
- 	GATE_ICG(CLK_INFRA_PMIC_WRAP, "pmic_wrap_ck", "axi_sel", 23),
- 	GATE_ICG(CLK_INFRA_PMICSPI, "pmicspi_ck", "pmicspi_sel", 22),
-@@ -444,7 +444,7 @@ static const struct mtk_gate_regs peri1_cg_regs = {
- #define GATE_PERI1(_id, _name, _parent, _shift)	\
- 	GATE_MTK(_id, _name, _parent, &peri1_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
- 
--static const struct mtk_gate peri_gates[] __initconst = {
-+static const struct mtk_gate peri_gates[] = {
- 	GATE_DUMMY(CLK_DUMMY, "peri_dummy"),
- 	/* PERI0 */
- 	GATE_PERI0(CLK_PERI_I2C5, "i2c5_ck", "axi_sel", 31),
-@@ -491,12 +491,12 @@ static const struct mtk_gate peri_gates[] __initconst = {
- 	GATE_PERI1(CLK_PERI_I2C6, "i2c6_ck", "axi_sel", 0),
- };
- 
--static const char * const uart_ck_sel_parents[] __initconst = {
-+static const char * const uart_ck_sel_parents[] = {
- 	"clk26m",
- 	"uart_sel",
- };
- 
--static const struct mtk_composite peri_clks[] __initconst = {
-+static const struct mtk_composite peri_clks[] = {
- 	MUX(CLK_PERI_UART0_SEL, "uart0_ck_sel", uart_ck_sel_parents, 0x40c, 0, 1),
- 	MUX(CLK_PERI_UART1_SEL, "uart1_ck_sel", uart_ck_sel_parents, 0x40c, 1, 1),
- 	MUX(CLK_PERI_UART2_SEL, "uart2_ck_sel", uart_ck_sel_parents, 0x40c, 2, 1),
--- 
-2.39.1
+It's good to hear that you have plan to refine cmdq_pkt_create(). I
+have one plan and wish you may consider in your patch. The plan is to
+remove cl in struct cmdq_pkt because cl is used for channel
+information and the client would have the channel information, so it's
+not necessary to store the channel information in every packet. In
+cmdq_pkt_jump() and cmdq_pkt_finalize() use cl to get
+cmdq_get_shift_pa(), I think it's not necessary to get shift pa every
+cmdq_pkt_jump() and every cmdq_pkt_finalize(), so client could
+cmdq_get_shift_pa() once and pass this information to cmdq_pkt_jump()
+and cmdq_pkt_finalize().
 
+Regards,
+Chun-Kuang.
+
+>
+> NACK.
+>
+> Regards,
+> Angelo
 
