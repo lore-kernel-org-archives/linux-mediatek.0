@@ -4,59 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D9C8C05027
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Feb 2023 23:35:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F15EC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 02:19:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=2wDpPJkfT2YIwWWbiyfi4z1aOfCgfNG2q7Yxjg6WS/w=; b=TafTeqIUDInok2eWh5n8pwoTUM
-	1vHjk55EZYCbzuFCp8eINZC8djSRRwSqke1U7NQOzOi2HIpMNmz9UQZPKw2I64hrx9qX70giu44X+
-	Z2jpcKVo1EucQBsoxIyH8MmqxVzsnYBXAkGqeoUe9tLyYDJYue2ggXEDNOekRi/sAKmHlhWL1jD1C
-	07seRtZL69jAgqR9iziPoSesqXtf/e/Z8LP7clOGTU2rn3GaT/ZTY4MZBTpzKSFSAlJOv8/6KXyeV
-	PaLBd+JUiPZWyOCAc96oEQghElKwmGrBdKZzM/ZRMLNIZF0ofGcPpNZEwOQQ7MFn/QmnnpuNgJ8t9
-	4NYZ2LWQ==;
+	bh=eg7ULP2yOFlXcGh70ikESc8dnbS10xi+rzil4Da2hjo=; b=HSnZmKLweSwsk9EhiF/d//ow1M
+	+L8fgMiZjYxBAphCrv6bwZKVKCOCLhv798vGIsdZhazreRGMMuVLCwHo+yO7zeBzRnkM7s8K6Tmbl
+	hI6OMKCR1hp4Vd+RGE5dC95jqoLKMuzVUqlZ2cu1q2ukRj8kXpX03egbf3ATgQZLdMSZGRuJqNPFS
+	oNhcNOBerurTBzQFiKY07trVYsUjJHvRLQ2wbMsmOzsL3saleLOhsgfMRrqggn3r9X/7n3npez+IY
+	Pum8mKA+//ITH3bawOpFHJHEnESbpYko8m7OuL7es+4wM0sVTzIlOB3QC2T16yMxT2X6EtYs9f6cz
+	rdSMCDOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pTtD8-002VLm-DH; Sun, 19 Feb 2023 23:35:14 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pTvm8-002k9h-1s; Mon, 20 Feb 2023 02:19:32 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pTtCu-002VKL-IL; Sun, 19 Feb 2023 23:35:02 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id BB37DB80ABC;
-	Sun, 19 Feb 2023 23:34:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 23564C433D2;
-	Sun, 19 Feb 2023 23:34:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1676849695;
-	bh=HpPijLAkeZBcfgpuO4krVSl+jKWdeWQmrUDYyhPWGcQ=;
-	h=From:To:Cc:Subject:Date:From;
-	b=NsGjE+1Lp+eCe7wYIRJcHYd1KJ1QXkrs8uba2KgCXiVTVm9VfHlSxqhqsFKyYx3nH
-	 ZW+5Gfxa5m95Cn0o3sn4WT/vHujk83q4/vwkiMj2eORE8Df1Nn7y3S+CqitnfLAIQY
-	 VxIHWE8FFSnAzr4wY9Ypjstyr2KJDN14XMHLyUPLY2i1fjazCq4rLT/E3IitW4fZg2
-	 lTT0Gdp0gVvnpOYKwAceBoN0h0It0DBDjK8YtaoiMU6OCRWpQvCeR5uJfSmAQuw2pV
-	 GQcVFDgQRYW8aCWY8TRG88kwMEkx8Ea4sANyThy9uiNQZc3QEMnbNG3wuhngg70aI+
-	 5KlzsgpCVrVTg==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Subject: [PATCH] soc: mediatek: cmdq: Remove unused helper funciton
-Date: Sun, 19 Feb 2023 23:34:39 +0000
-Message-Id: <20230219233439.3157-1-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.34.1
+	id 1pTvm5-002k8B-NU; Mon, 20 Feb 2023 02:19:31 +0000
+X-UUID: fe3e923ab0c411eda08d4d6090ec5a5c-20230219
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=eg7ULP2yOFlXcGh70ikESc8dnbS10xi+rzil4Da2hjo=;
+	b=HG6XHcfhCa/Vd45eedD0pqbI+SmS9mVlxRUyAYLCU/x6F9/zlzSmXcK/qKCGlq+CmilI484yypDKnElgKc/yVi8oYcgLdsnhOeC1nLylzRVGPHk4tnEJBzymLwRZsHOWzNZWxrJ/oolgvyL1mhoFmwxdPwkUNBIE0mp/OpA3UN8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.19,REQID:476107b7-64b3-426b-989b-7e5f5b8b4cd4,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:885ddb2,CLOUDID:296cefb0-beed-4dfc-bd9c-e1b22fa6ccc4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-UUID: fe3e923ab0c411eda08d4d6090ec5a5c-20230219
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <allen-kh.cheng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 450778787; Sun, 19 Feb 2023 19:19:24 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Mon, 20 Feb 2023 10:19:20 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Mon, 20 Feb 2023 10:19:20 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Subject: [PATCH] arm64: dts: mediatek: Add cpufreq nodes for MT8192
+Date: Mon, 20 Feb 2023 10:19:15 +0800
+Message-ID: <20230220021915.9473-1-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230219_153500_965912_36978B14 
-X-CRM114-Status: GOOD (  14.38  )
+X-CRM114-CacheID: sfid-20230219_181929_819426_4D1F3081 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,135 +83,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-cmdq_pkt_create(), cmdq_pkt_destroy(), and cmdq_pkt_flush_async()
-are not used by all client drivers (MediaTek drm driver and
-MediaTek mdp3 driver), so remove them.
+Add the cpufreq nodes for MT8192 SoC.
 
-Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-cmdq-helper.c | 59 --------------------------
- include/linux/soc/mediatek/mtk-cmdq.h  | 28 ------------
- 2 files changed, 87 deletions(-)
+Fix a address warning on dtbs_check
+https://patchwork.kernel.org/project/linux-mediatek/patch/1609223471-24325-1-git-send-email-andrew-sh.cheng@mediatek.com/
+[Allen-KH Cheng <allen-kh.cheng@mediatek.com>]
+---
+---
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-index c1837a468267..d4ab39236c79 100644
---- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-+++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-@@ -104,50 +104,6 @@ void cmdq_mbox_destroy(struct cmdq_client *client)
- }
- EXPORT_SYMBOL(cmdq_mbox_destroy);
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index 424fc89cc6f7..181ec2db7a69 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -55,6 +55,7 @@ cpu0: cpu@0 {
+ 			clock-frequency = <1701000000>;
+ 			cpu-idle-states = <&cpu_sleep_l &cluster_sleep_l>;
+ 			next-level-cache = <&l2_0>;
++			performance-domains = <&performance 1>;
+ 			capacity-dmips-mhz = <530>;
+ 		};
  
--struct cmdq_pkt *cmdq_pkt_create(struct cmdq_client *client, size_t size)
--{
--	struct cmdq_pkt *pkt;
--	struct device *dev;
--	dma_addr_t dma_addr;
--
--	pkt = kzalloc(sizeof(*pkt), GFP_KERNEL);
--	if (!pkt)
--		return ERR_PTR(-ENOMEM);
--	pkt->va_base = kzalloc(size, GFP_KERNEL);
--	if (!pkt->va_base) {
--		kfree(pkt);
--		return ERR_PTR(-ENOMEM);
--	}
--	pkt->buf_size = size;
--	pkt->cl = (void *)client;
--
--	dev = client->chan->mbox->dev;
--	dma_addr = dma_map_single(dev, pkt->va_base, pkt->buf_size,
--				  DMA_TO_DEVICE);
--	if (dma_mapping_error(dev, dma_addr)) {
--		dev_err(dev, "dma map failed, size=%u\n", (u32)(u64)size);
--		kfree(pkt->va_base);
--		kfree(pkt);
--		return ERR_PTR(-ENOMEM);
--	}
--
--	pkt->pa_base = dma_addr;
--
--	return pkt;
--}
--EXPORT_SYMBOL(cmdq_pkt_create);
--
--void cmdq_pkt_destroy(struct cmdq_pkt *pkt)
--{
--	struct cmdq_client *client = (struct cmdq_client *)pkt->cl;
--
--	dma_unmap_single(client->chan->mbox->dev, pkt->pa_base, pkt->buf_size,
--			 DMA_TO_DEVICE);
--	kfree(pkt->va_base);
--	kfree(pkt);
--}
--EXPORT_SYMBOL(cmdq_pkt_destroy);
--
- static int cmdq_pkt_append_command(struct cmdq_pkt *pkt,
- 				   struct cmdq_instruction inst)
- {
-@@ -425,19 +381,4 @@ int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
- }
- EXPORT_SYMBOL(cmdq_pkt_finalize);
+@@ -66,6 +67,7 @@ cpu1: cpu@100 {
+ 			clock-frequency = <1701000000>;
+ 			cpu-idle-states = <&cpu_sleep_l &cluster_sleep_l>;
+ 			next-level-cache = <&l2_0>;
++			performance-domains = <&performance 1>;
+ 			capacity-dmips-mhz = <530>;
+ 		};
  
--int cmdq_pkt_flush_async(struct cmdq_pkt *pkt)
--{
--	int err;
--	struct cmdq_client *client = (struct cmdq_client *)pkt->cl;
--
--	err = mbox_send_message(client->chan, pkt);
--	if (err < 0)
--		return err;
--	/* We can send next packet immediately, so just call txdone. */
--	mbox_client_txdone(client->chan, 0);
--
--	return 0;
--}
--EXPORT_SYMBOL(cmdq_pkt_flush_async);
--
- MODULE_LICENSE("GPL v2");
-diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-index 2b498f4f3946..60e4c0ca52a1 100644
---- a/include/linux/soc/mediatek/mtk-cmdq.h
-+++ b/include/linux/soc/mediatek/mtk-cmdq.h
-@@ -57,21 +57,6 @@ struct cmdq_client *cmdq_mbox_create(struct device *dev, int index);
-  */
- void cmdq_mbox_destroy(struct cmdq_client *client);
+@@ -77,6 +79,7 @@ cpu2: cpu@200 {
+ 			clock-frequency = <1701000000>;
+ 			cpu-idle-states = <&cpu_sleep_l &cluster_sleep_l>;
+ 			next-level-cache = <&l2_0>;
++			performance-domains = <&performance 1>;
+ 			capacity-dmips-mhz = <530>;
+ 		};
  
--/**
-- * cmdq_pkt_create() - create a CMDQ packet
-- * @client:	the CMDQ mailbox client
-- * @size:	required CMDQ buffer size
-- *
-- * Return: CMDQ packet pointer
-- */
--struct cmdq_pkt *cmdq_pkt_create(struct cmdq_client *client, size_t size);
--
--/**
-- * cmdq_pkt_destroy() - destroy the CMDQ packet
-- * @pkt:	the CMDQ packet
-- */
--void cmdq_pkt_destroy(struct cmdq_pkt *pkt);
--
- /**
-  * cmdq_pkt_write() - append write command to the CMDQ packet
-  * @pkt:	the CMDQ packet
-@@ -264,17 +249,4 @@ int cmdq_pkt_jump(struct cmdq_pkt *pkt, dma_addr_t addr);
-  */
- int cmdq_pkt_finalize(struct cmdq_pkt *pkt);
+@@ -88,6 +91,7 @@ cpu3: cpu@300 {
+ 			clock-frequency = <1701000000>;
+ 			cpu-idle-states = <&cpu_sleep_l &cluster_sleep_l>;
+ 			next-level-cache = <&l2_0>;
++			performance-domains = <&performance 1>;
+ 			capacity-dmips-mhz = <530>;
+ 		};
  
--/**
-- * cmdq_pkt_flush_async() - trigger CMDQ to asynchronously execute the CMDQ
-- *                          packet and call back at the end of done packet
-- * @pkt:	the CMDQ packet
-- *
-- * Return: 0 for success; else the error code is returned
-- *
-- * Trigger CMDQ to asynchronously execute the CMDQ packet and call back
-- * at the end of done packet. Note that this is an ASYNC function. When the
-- * function returned, it may or may not be finished.
-- */
--int cmdq_pkt_flush_async(struct cmdq_pkt *pkt);
--
- #endif	/* __MTK_CMDQ_H__ */
+@@ -99,6 +103,7 @@ cpu4: cpu@400 {
+ 			clock-frequency = <2171000000>;
+ 			cpu-idle-states = <&cpu_sleep_b &cluster_sleep_b>;
+ 			next-level-cache = <&l2_1>;
++			performance-domains = <&performance 1>;
+ 			capacity-dmips-mhz = <1024>;
+ 		};
+ 
+@@ -110,6 +115,7 @@ cpu5: cpu@500 {
+ 			clock-frequency = <2171000000>;
+ 			cpu-idle-states = <&cpu_sleep_b &cluster_sleep_b>;
+ 			next-level-cache = <&l2_1>;
++			performance-domains = <&performance 1>;
+ 			capacity-dmips-mhz = <1024>;
+ 		};
+ 
+@@ -121,6 +127,7 @@ cpu6: cpu@600 {
+ 			clock-frequency = <2171000000>;
+ 			cpu-idle-states = <&cpu_sleep_b &cluster_sleep_b>;
+ 			next-level-cache = <&l2_1>;
++			performance-domains = <&performance 1>;
+ 			capacity-dmips-mhz = <1024>;
+ 		};
+ 
+@@ -132,6 +139,7 @@ cpu7: cpu@700 {
+ 			clock-frequency = <2171000000>;
+ 			cpu-idle-states = <&cpu_sleep_b &cluster_sleep_b>;
+ 			next-level-cache = <&l2_1>;
++			performance-domains = <&performance 1>;
+ 			capacity-dmips-mhz = <1024>;
+ 		};
+ 
+@@ -254,6 +262,12 @@ soc {
+ 		compatible = "simple-bus";
+ 		ranges;
+ 
++		performance: performance-controller@11bc10 {
++			compatible = "mediatek,cpufreq-hw";
++			reg = <0 0x0011bc10 0 0x120>, <0 0x0011bd30 0 0x120>;
++			#performance-domain-cells = <1>;
++		};
++
+ 		gic: interrupt-controller@c000000 {
+ 			compatible = "arm,gic-v3";
+ 			#interrupt-cells = <4>;
 -- 
 2.34.1
 
