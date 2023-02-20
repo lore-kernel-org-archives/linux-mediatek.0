@@ -4,70 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05895C636D6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 17:50:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5016C05027
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 17:50:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eYysLJXvP9mYglJ31HIpsvOQhg4h8Mi9CzF+8wwY+VA=; b=0f3lsyWmGxVbJh7asoPJ1kT/VU
-	wNiv3deOws+YLxVIP7WHl/soeiB/3cVU3zFy55lYkahIGoBOjLpsPSdewz1M2/puinvRHegm/bn/F
-	KnMuZyEcrtnuynD78pgj5Xh3hpgidW8bhNoK+KUwwO2KlEgmmgvS253RTqPMQc71cyW1/qpRbQ1Ns
-	ydbetECjCtleg3CdY8r55Zwi2vO7/yLFwRBy5Hy9Gzo0/nfLNkDvKtWVcpF6uRlXOuPRvmW0xwRXW
-	v6QBHkjBiCsjYJ6qxUGGRgXpHQp0Zz0Kqgn+7GOSWaIgOEvxH3A/pmVYHiwF7FeSnSiEvJJw4L5Bs
-	+DfNcG2A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BFDJegi5uTYwdkZXr42aNBwxRD/vvuGUyK4suapHfLE=; b=iJykzWoRZSWEzs3LgkfqaLp6ga
+	mXlWwdD8HYYVKyPdBPr/BWB7CvDBc5zGOqvrHr4nPmOtfS2dHnQnyjndaNdxB/7EAapqyookehofF
+	1ZeG/JFS5Mt7qvD6iKaByl8c2zz9CvS9eQh04ZcwADWPTo8ag7O5YoKyZNPctE1WxdY8tUbiLEh0z
+	mtutKL4BbfGBsvvdQAlwt/CaIFrvEU5Hx+JPtr+4L1g9BbjmcK/dtvRMo+OEemdfQG03F/DkuO6M9
+	ilcDebm6eheI+36LfnExJBxhTATi/uswXsvkEEUADf//kvMmEnRNJPZBmG/LUD1jc9WKCqXsuVrOK
+	jrwu2O6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUAIL-0056hF-1e; Mon, 20 Feb 2023 17:49:45 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pUAIh-0056np-Dd; Mon, 20 Feb 2023 17:50:07 +0000
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUAIA-0056dj-Ul; Mon, 20 Feb 2023 17:49:36 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pUAHy-00031I-00;
-	Mon, 20 Feb 2023 18:49:22 +0100
-Date: Mon, 20 Feb 2023 17:49:14 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Florian Fainelli <f.fainelli@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jianhui Zhao <zhaojh329@gmail.com>, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
-	Vladimir Oltean <olteanv@gmail.com>, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, Felix Fietkau <nbd@nbd.name>,
-	Russell King <linux@armlinux.org.uk>,
-	Landen Chao <Landen.Chao@mediatek.com>,
+	id 1pUAIJ-0056gF-Fq; Mon, 20 Feb 2023 17:49:45 +0000
+Received: by mail-lj1-x22d.google.com with SMTP id x41so2113291ljq.13;
+        Mon, 20 Feb 2023 09:49:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=BFDJegi5uTYwdkZXr42aNBwxRD/vvuGUyK4suapHfLE=;
+        b=pNp4F+WC3OYbrn5ogI5MzgDCG/M7DsThUP1JveuJQchDIP5pr5gJjrONCAEm5MCqJ6
+         0mBiEWGY46umgI+IlFdYRaS5MTRSpJUFNUe+xvnDAl+8vDi99y8Q2A1AZG1xHQzYz2x3
+         hR6HOaZ1fdpqnGjv9Sm46+HtmEffVa4Be2BeaVcJw/5LHmzf61gj0dY+KkLayoJkSyNa
+         oyfyQCi+vLKoWyAqNd6ZSxZ6+z2jrLoW9p3dBXdVm+zc6ddqsGfAp8zkX7utEKpQ4MIp
+         KpYDrFrUx4v9+fRGS/N3FEAHWFq1KIKJ9pr6VVjYuhjomasoHeKG0VDVwE94iWwKTEMh
+         QHTQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=BFDJegi5uTYwdkZXr42aNBwxRD/vvuGUyK4suapHfLE=;
+        b=eg0dcGFvYTVncF/eVssXHXRvUi0gASiCJYY/LltNvfbOQIpYtSwetmqqiRd+Nxe7AA
+         GW/zTDrpfAjj70AL2wzEPvPkJYtcufG4Ic07lVzKfSojoX8BMYBH6+ArxxsOLo8m+VLp
+         +s9reKBkOXNs7i80ru6a1IiOL2667FxmypPOfiq2omQeiz8ZYZ1We89DU7Ool+MSoVv3
+         Vw/aHPbuQVhaUZF2Vjt22DqY4aAZ04o34H4As6MlNcMok4y6/umeLDgKwoWR7Zxsm448
+         E2kSirDnbKO5vpJjvZDY9m9PQSB+FbbZxCFvybJIxhGRqAVWuyGTbGkqO5xS/2wkLbhl
+         h1Dw==
+X-Gm-Message-State: AO0yUKX7y3yLnUW+lVIkIzIhfyomx43OtGNvLY4oeJvCRXXUXok0aFu5
+	ZvG+MNp3COnUH5iCXkKALVM=
+X-Google-Smtp-Source: AK7set+Sh6RcNPNBI8AkSmYzzOk7NOMz/GoQ61Hr+5GGqp7LrngcaXhxl712WiDfdg5IZOKgCEhe0w==
+X-Received: by 2002:a05:651c:10aa:b0:28e:a8aa:6f95 with SMTP id k10-20020a05651c10aa00b0028ea8aa6f95mr832063ljn.8.1676915380580;
+        Mon, 20 Feb 2023 09:49:40 -0800 (PST)
+Received: from localhost.lan (ip-194-187-74-233.konfederacka.maverick.com.pl. [194.187.74.233])
+        by smtp.gmail.com with ESMTPSA id u22-20020a2e9f16000000b0029353491df6sm294695ljk.48.2023.02.20.09.49.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Feb 2023 09:49:40 -0800 (PST)
+From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
 	Rob Herring <robh+dt@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	John Crispin <john@phrozen.org>, Paolo Abeni <pabeni@redhat.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v9 03/12] dt-bindings: arm: mediatek: sgmiisys: Convert
- to DT schema
-Message-ID: <Y/OymoWRP2pcikXy@makrotopia.org>
-References: <cover.1676910958.git.daniel@makrotopia.org>
- <03f9d40849dd2d563a93b27732a7b5d7dd1defc5.1676910958.git.daniel@makrotopia.org>
- <167691325732.3971281.4378006887073697625.robh@kernel.org>
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
+Subject: [PATCH V3 1/2] dt-bindings: nvmem: mmio: new binding for MMIO accessible NVMEM devices
+Date: Mon, 20 Feb 2023 18:49:29 +0100
+Message-Id: <20230220174930.7440-2-zajec5@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230220174930.7440-1-zajec5@gmail.com>
+References: <20230220174930.7440-1-zajec5@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <167691325732.3971281.4378006887073697625.robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230220_094935_024979_E5C932B1 
-X-CRM114-Status: GOOD (  24.37  )
+X-CRM114-CacheID: sfid-20230220_094943_557509_7C88469F 
+X-CRM114-Status: GOOD (  17.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,96 +97,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
+From: Rafał Miłecki <rafal@milecki.pl>
 
-On Mon, Feb 20, 2023 at 11:15:53AM -0600, Rob Herring wrote:
-> 
-> On Mon, 20 Feb 2023 16:41:16 +0000, Daniel Golle wrote:
-> > Convert mediatek,sgmiiisys bindings to DT schema format.
-> > Add maintainer Matthias Brugger, no maintainers were listed in the
-> > original documentation.
-> > As this node is also referenced by the Ethernet controller and used
-> > as SGMII PCS add this fact to the description.
-> > Move the file to Documentation/devicetree/bindings/pcs/ which seems more
-> > appropriate given that the great majority of registers are related to
-> > SGMII PCS functionality and only one register represents clock bits.
-> > 
-> > Reviewed-by: Rob Herring <robh@kernel.org>
-> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> > ---
-> >  .../arm/mediatek/mediatek,sgmiisys.txt        | 25 ----------
-> >  .../bindings/net/pcs/mediatek,sgmiisys.yaml   | 49 +++++++++++++++++++
-> >  2 files changed, 49 insertions(+), 25 deletions(-)
-> >  delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
-> >  create mode 100644 Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml
-> > 
-> 
-> My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-> on your patch (DT_CHECKER_FLAGS is new in v5.13):
-> 
-> yamllint warnings/errors:
-> 
-> dtschema/dtc warnings/errors:
-> ./Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml: $id: relative path/filename doesn't match actual path or filename
-> 	expected: http://devicetree.org/schemas/net/pcs/mediatek,sgmiisys.yaml#
+Content of some NVMEM devices can be read using MMIO. Some of them
+(probably very few though) may be also programmable that way. Add
+generic binding to allow describing such hardware.
 
-I simply didn't even consider that moving the file to its correct
-location may cause this kind of havoc. Please apologize, I'm quite new
-to this whole dt-schema game and still learning...
+This *doesn't* apply to any more complicated devices that need more
+complex interface e.g. for writing. While such devices could be
+supported for reading purposes by the same driver - they should get
+their own binding.
 
-> 
-> doc reference errors (make refcheckdocs):
-> 
-> See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/03f9d40849dd2d563a93b27732a7b5d7dd1defc5.1676910958.git.daniel@makrotopia.org
-> 
-> The base for the series is generally the latest rc1. A different dependency
-> should be noted in *this* patch.
-> 
-> If you already ran 'make dt_binding_check' and didn't see the above
-> error(s), then make sure 'yamllint' is installed and dt-schema is up to
-> date:
-> 
-> pip3 install dtschema --upgrade
-> 
-> Please check and re-submit after running the above command yourself. Note
-> that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-> your schema. However, it must be unset to test all examples with your schema.
-> 
+This binding will gain even more usability once we fully support NVMEM
+layouts (describing content of NVMEM devices in an independent way).
 
-I've fixed the wrong path now also within mediatek,sgmiisys.yaml itself.
-Result:
+Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+---
+V3: Make it clear this binding should NOT be used for more complex devices
+---
+ .../devicetree/bindings/nvmem/mmio.yaml       | 50 +++++++++++++++++++
+ 1 file changed, 50 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/nvmem/mmio.yaml
 
-[daniel@box linux.git]$ make dt_binding_check DT_SCHEMA_FILES=mediatek,sgmiisys
-  HOSTCC  scripts/dtc/util.o
-  LEX     scripts/dtc/dtc-lexer.lex.c
-  YACC    scripts/dtc/dtc-parser.tab.[ch]
-  HOSTCC  scripts/dtc/dtc-lexer.lex.o
-  HOSTCC  scripts/dtc/dtc-parser.tab.o
-  HOSTCC  scripts/dtc/checks.o
-  HOSTLD  scripts/dtc/dtc
-  HOSTCC  scripts/dtc/libfdt/fdt.o
-  HOSTCC  scripts/dtc/libfdt/fdt_ro.o
-  HOSTCC  scripts/dtc/libfdt/fdt_wip.o
-  HOSTCC  scripts/dtc/libfdt/fdt_sw.o
-  HOSTCC  scripts/dtc/libfdt/fdt_rw.o
-  HOSTCC  scripts/dtc/libfdt/fdt_strerror.o
-  HOSTCC  scripts/dtc/libfdt/fdt_empty_tree.o
-  HOSTCC  scripts/dtc/libfdt/fdt_addresses.o
-  HOSTCC  scripts/dtc/libfdt/fdt_overlay.o
-  HOSTCC  scripts/dtc/fdtoverlay.o
-  HOSTLD  scripts/dtc/fdtoverlay
-  LINT    Documentation/devicetree/bindings
-  CHKDT   Documentation/devicetree/bindings/processed-schema.json
-  SCHEMA  Documentation/devicetree/bindings/processed-schema.json
-  DTEX    Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.example.dts
-  DTC_CHK Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.example.dtb
+diff --git a/Documentation/devicetree/bindings/nvmem/mmio.yaml b/Documentation/devicetree/bindings/nvmem/mmio.yaml
+new file mode 100644
+index 000000000000..9ca96b7a4856
+--- /dev/null
++++ b/Documentation/devicetree/bindings/nvmem/mmio.yaml
+@@ -0,0 +1,50 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/nvmem/mmio.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MMIO access based NVMEM
++
++description: |
++  This binding describes simple NVMEM devices with content that can be accessed
++  using MMIO (memory-mapped I/O access).
++
++  More complex devices that support any other access than a simple memory
++  mapping should use a custom binding. In such cases this binding's compatible
++  should NOT be used even as a fallback.
++
++  This binding is designed to describe just an NVMEM content access method. The
++  way of handling actual content should be described independently (on top of
++  this binding).
++
++maintainers:
++  - Rafał Miłecki <rafal@milecki.pl>
++
++allOf:
++  - $ref: nvmem.yaml#
++
++properties:
++  compatible:
++    const: mmio-nvmem
++
++  reg:
++    maxItems: 1
++
++  reg-io-width:
++    description: |
++      The size (in bytes) of the IO accesses that should be performed
++      on the device.
++    enum: [1, 2, 4, 8]
++
++required:
++  - reg
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    nvmem@10000 {
++        compatible = "mmio-nvmem";
++        reg = <0x10000000 0x10000>;
++    };
+-- 
+2.34.1
 
-
-I'll wait for more potentials comments on the series and re-submit tomorrow.
-
-
-Thank you!
-
-
-Daniel
 
