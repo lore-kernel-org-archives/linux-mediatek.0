@@ -4,133 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 930FAC636CC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 08:23:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65857C636D6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 08:33:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wiBuoVT6cCflWomRymDRCiO7uVmklNqEroZtUhzy/PY=; b=ZTcy8Z7nyrKvoLLxs7FPnhBY4d
-	musvAkSHBHLrPUrl9BtZ++8GgBN+1wBzd/U1bKQaYQmTAFr+ElEPaMyESROXPEsdoJ3i4IkJXme8L
-	KvaKKrMfAmQOBSMwX//NJyH/r6fg+rHh55LdEO/InbpF6LQ6dElv4fteUZ7COw/DJztOGh4//3Qpy
-	ioNcIYzlmH1YIhkZ94j2a2GPRR+/N/qF656BMFC3jwXweSjllt/MB72X0zy9D+Cse2z9n7VwwI7Kl
-	/PqX69SZUCImEYr0PiNjj9/Gg3etOErGGPG+d2Uz85S6dX/PY6T/lpaK/ggnPTLj3o1YuEqwX7i7M
-	iK4O6nQw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GFBa48sXBDbj4YHZ7A6RoYE/J3Q/GJfTSzCGCVG6MtQ=; b=VFVavQjivOlyQqdtSpC+Isl8Lg
+	53CggNXI2jWkMcf6HjhV0/xt5W3eI1MWbY/MUK962pcWaseL9yWq6h/S2mmLc84jct6IPnP3HRR7t
+	Wv4KxSjQwX0H2YDve8TU/wTHvM13IDTfcNekvET8zcNmz2JfpqQmph+wy/nkJ5FQSpMbUNUsKsPqb
+	WFQri63kBvmgYNQoBOMAS4ak0VsWposcUI6TVJwORjgi1HPMZ8+zLWpB1tI4QY2/iyfwAYSk5sRlt
+	/WfqpstXnRR51uWYCDR80ZsLOqYWVZ7AvtcHW9sRox3DAe6tVtSCiPTtzuji4y24Pn+CLatZ4X8Oa
+	DvqBuY3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU1Re-003Ind-Br; Mon, 20 Feb 2023 08:22:59 +0000
-Received: from mail-bn8nam12on20626.outbound.protection.outlook.com ([2a01:111:f400:fe5b::626] helo=NAM12-BN8-obe.outbound.protection.outlook.com)
+	id 1pU1bv-003KqK-48; Mon, 20 Feb 2023 08:33:23 +0000
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU1RT-003Ikv-5p; Mon, 20 Feb 2023 08:22:36 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jWjlZ4ulAnp0DwKrZCi2CgH10wUyflHFn19IHIKR8YoIzyhKjOSOQjD2X9UPV1+UNEDi6DSH6hAGKeda38bxD9nPdnlIz6R3l8RWv3v9Xrv2nMDmlmbsuxYBnGxtzkXECG9xB//geubZorgWNc55a6bD00gcMFBVWyOWpkI5AACkxKXj6jYcJFK5Dy/p4HFciBI7y60IeYYjCvYGknLSgVchqpQ1IcIugs1XmM+Iwy0mBzee48qHDF1DueFFVBf7bKRu0hwedXLqyZqUgIUcfEwlPi/F8ElN744mVX/kK9LTSiMms3Fiygb8iMjdlXlrawpfaYRYJrRwM4VTV1N1HA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=wiBuoVT6cCflWomRymDRCiO7uVmklNqEroZtUhzy/PY=;
- b=iykv7nBQVaPTRIbiLt6YUtHlCdipWYbpXKU+IG5L5YRvQjYmmUi28hp5dDHvmcUBWXgad9XQFo8PGe4V3SFoeY3X5wAScaa5cO4BpV4yeHQ67uDvzdkAAqXa+Dd+Bj/GlnD9Wbd1EL6mesIHzGvlwnMTi+AjRGOB5eqk5X1wEtcsIYAPytNiZGzpWdiD9oLGawjMJW5pC3TT1mv8TtPDQAP+nNEPAV+ah9n8YvJkfuItmj/T4kpH9py4N0LUz+xYHuAFCaCPIHQz9BHPXLaTdAoyk1tLkwZNXKudRh+VkBvllGF/+P6jz0XFnG5XcW3thHt2bfwzEE5woWYwLKFjyA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=wiBuoVT6cCflWomRymDRCiO7uVmklNqEroZtUhzy/PY=;
- b=mCTq80TjtsAedj5bEnORz+bdjwRuEq7s9WTedmaqN7P6omRNd3f7JV8VPOfj1Frzy69TbBD9znRBHq7/PdVFRrIHpCx47Lak8XGrJqcEaIDs4vFcsCgnoVrYy4kx2001iYuLWckA1kfO8hfbOB93Q47dn4ZWkG2JDjiJ4tdJVocxs9kgOtvKT7VZS3+GrdJ0KARMRPI85wm6tjq7NPZld6q2fExPjN71arxm5lj67xtqThSjKZuYsiktJJqLnts7aDbxDZ6ezGFPf7gT8hSueVwxfdbrwawVOf+qTC11RxkzW75ygj4/wG1rlCn3JEml7S5VnxMP8fEExNOGcccC0w==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CY5PR12MB6179.namprd12.prod.outlook.com (2603:10b6:930:24::22)
- by DM4PR12MB5040.namprd12.prod.outlook.com (2603:10b6:5:38b::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6111.19; Mon, 20 Feb
- 2023 08:22:31 +0000
-Received: from CY5PR12MB6179.namprd12.prod.outlook.com
- ([fe80::7d2c:828f:5cae:7eab]) by CY5PR12MB6179.namprd12.prod.outlook.com
- ([fe80::7d2c:828f:5cae:7eab%9]) with mapi id 15.20.6111.019; Mon, 20 Feb 2023
- 08:22:30 +0000
-Date: Mon, 20 Feb 2023 10:22:25 +0200
-From: Ido Schimmel <idosch@nvidia.com>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: rafael@kernel.org, linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>,
-	Len Brown <lenb@kernel.org>, Petr Machata <petrm@nvidia.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Amit Kucheria <amitk@kernel.org>,
-	Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Balsam CHIHI <bchihi@baylibre.com>,
-	"open list:ACPI THERMAL DRIVER" <linux-acpi@vger.kernel.org>,
-	"open list:MELLANOX ETHERNET SWITCH DRIVERS" <netdev@vger.kernel.org>,
-	"open list:TI BANDGAP AND THERMAL DRIVER" <linux-omap@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v1 10/17] thermal: Do not access 'type' field, use the tz
- id instead
-Message-ID: <Y/MtwTIuVDrt8PaP@shredder>
-References: <20230219143657.241542-1-daniel.lezcano@linaro.org>
- <20230219143657.241542-11-daniel.lezcano@linaro.org>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230219143657.241542-11-daniel.lezcano@linaro.org>
-X-ClientProxiedBy: LO4P123CA0620.GBRP123.PROD.OUTLOOK.COM
- (2603:10a6:600:294::16) To CY5PR12MB6179.namprd12.prod.outlook.com
- (2603:10b6:930:24::22)
+	id 1pU1bh-003Klx-5K; Mon, 20 Feb 2023 08:33:12 +0000
+Received: by mail-pg1-x529.google.com with SMTP id c32so327289pgc.7;
+        Mon, 20 Feb 2023 00:33:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=GFBa48sXBDbj4YHZ7A6RoYE/J3Q/GJfTSzCGCVG6MtQ=;
+        b=QiUcrPfxgKD+5q3ALl/lOuFVzOJcTZC7K5IiCerpvNeEzTHhkLJAtsAGxZCridaoiP
+         Dn/f6Op75kYzxMoalBkyelvmuv/sTWPaU51Xba0mSsvQUrAqrKUrxa6bnLJNww7NpGem
+         CN15v5dj73LqG4corFZfNaceGSS6OaCbYeW6evESbNYeTvl2gBoKCZa/BNOHztrU+Crd
+         hQY8DPpRTbR45YbM9C1fe/CYfeY+2FAcfH3QKIAXFgIu+Hg4MVtzE5u0n6+zxI9rGY4e
+         RcGa6WiYqv40CFwC1hKFe1/9Zt77flZ4WEB/dFouUbtkqhEjz6CM66JqrZkmO9jypV9F
+         Zqjw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=GFBa48sXBDbj4YHZ7A6RoYE/J3Q/GJfTSzCGCVG6MtQ=;
+        b=74vShYNCr9hMxLzWDvCBOF4GjxYu742Kw09Me3cWllLk4T/56gUwRZz07dFg9YYIl/
+         M9ZMSDYEWaeMfsXdeE+Jwpd/Cyg71c5CPlREI5cpYfOlWGv4oQGf6Oe/ecAk+6zDn6Uc
+         gxPA38LQhq0qqcfgo19p7n+Afmv+Cf34qHKIO4n6Kjp1RXhb/U3NgNxIoIScBmJbDqAs
+         /gov4IilpfZz0xk0xRu/gYclCfHSmxo1XY76M5kva74Bfq+scxy/lWRGYd0X/rDRHmrn
+         tNVXWgCPhMwmQhZXnbleaPN4jOvTidMKzrJXTDh4P2MBDDq1XPLUPDCZ5ZPwS2Im/7QX
+         kWUg==
+X-Gm-Message-State: AO0yUKVD7FkXMRkwm3wrQxEy4phrzxXl1hxKPgxCNmBvFCqBfWIvvaoW
+	KFr1/93FKTOAVRGsXWyTpMA=
+X-Google-Smtp-Source: AK7set+YToDYV4Izb/jZxviAHuXroIAJkOz1iTk+abnTni9uRvIEInNq+T7ft/+SmK/2O+fZijj6YQ==
+X-Received: by 2002:a05:6a00:1ca7:b0:5a8:bff4:c058 with SMTP id y39-20020a056a001ca700b005a8bff4c058mr620815pfw.3.1676881985615;
+        Mon, 20 Feb 2023 00:33:05 -0800 (PST)
+Received: from localhost.localdomain ([2407:cdc0:a660:5592:a29:e1e:7240:e225])
+        by smtp.gmail.com with ESMTPSA id c2-20020aa78802000000b005a817973a81sm7118369pfo.43.2023.02.20.00.33.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Feb 2023 00:33:05 -0800 (PST)
+From: Stephen Zhang <starzhangzsd@gmail.com>
+X-Google-Original-From: Stephen Zhang <zhangshida@kylinos.cn>
+To: jejb@linux.ibm.com,
+	artin.petersen@oracle.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	beanhuo@micron.com,
+	bvanassche@acm.org,
+	avri.altman@wdc.com,
+	yoshihiro.shimoda.uh@renesas.com
+Cc: linux-scsi@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	zhangshida@kylinos.cn,
+	starzhangzsd@gmail.com,
+	k2ci <kernel-bot@kylinos.cn>
+Subject: [PATCH] scsi: ufs: Add select to CONFIG_PM in Kconfig
+Date: Mon, 20 Feb 2023 16:32:56 +0800
+Message-Id: <20230220083256.997470-1-zhangshida@kylinos.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY5PR12MB6179:EE_|DM4PR12MB5040:EE_
-X-MS-Office365-Filtering-Correlation-Id: 88fdae44-0087-4777-b125-08db131b9be2
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	WGdT1FYYOwWu5p76rw0OAO676W+NnzO5ENZjCEXTZYaqrbz1RbUmdlDZmX8d4fSvR0xFshybJZEFMgBOX1MT4FTg0GHiU59xLoikvjZXySfGTPV/NBQULcjhkbbebhArDS04kGFrmcj7hBBY/IWPJ7MnV0xGwCJspXnihsSRlPldYrCok0QtrOd6VduSPiWf6S+pO39JynXpjbAdOMXuMDzfB7py8jBR+nww0BUDX3qTlscTjtarOZ7zWuT1Jy53I06GusTQZRS2WYk4DAr998M4tqXu+IMdAz5qHwkBMhobCxFAptiu8uUB/MX5HI3uHrlN6aHRkS98MEtRICGRC7XqVZiewGYIzIO6moFMWE9NHnKYNTK2MTngjqGkMob0VzylGRfVhxaxxgwm5IQpg8jhPGsETCEozvLEZND+Yl7sQtfZl8HM7Am5FX0mAZLxuKPIo3sXLMIXptLikMeb/KXEBn+pkF2tcgmdSeMgVSyrU+18cpX+b9KiYs/8VKFs+kHY1ivclg1gPLGINMmoDBn4qg1ziPxnIuR2NdvrmiOcUxxse5yilKbVNLq2M4nGm88S21cv5UdkeG4M0V8w34bS+u7ROuJBTVHi6Q2Gk1mhei8rgHkZgviYG8K8Sop9v85L9ZLpUwUWvDRZREHIkw==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY5PR12MB6179.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(7916004)(136003)(39860400002)(346002)(396003)(366004)(376002)(451199018)(9686003)(26005)(8936002)(186003)(33716001)(6512007)(6506007)(86362001)(38100700002)(6666004)(2906002)(4744005)(5660300002)(6486002)(7416002)(4326008)(6916009)(41300700001)(54906003)(66476007)(66556008)(8676002)(66946007)(83380400001)(478600001)(316002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?brvGlaw9nvCsgfmPzQqdGW20NRoT03nuITeV0eGYV2UxcDALvFktdJX22eJh?=
- =?us-ascii?Q?8WYl3CXZP+0tSVe7VOx4plqwXLdUd7DKOwPf+zoJNZVOc9QIUjDCbziAX/u+?=
- =?us-ascii?Q?9kAoBXkTI7/9c87/0vfgTxy06u/QqqSAHousylPWwwgUYpadw1+r6EJwmJ8N?=
- =?us-ascii?Q?CIeIXNvnV+sGdka4LpMyYJIgaEDEPvbRDl1X0Lb/BcsM/u/yThpLl11XA3Me?=
- =?us-ascii?Q?36itsX2tA68Hxyg8BA9gsrgIlMzXJ4H1QxSsRj/oGHoTHqNy69ORa/azJbNC?=
- =?us-ascii?Q?Ya+S5aoovDMyqfPwM/yQoZg6s2H8e7GbWiD1IjnzrkczYPqyRR+w1abeVSWB?=
- =?us-ascii?Q?J9iD3nHvGwCU9Jsud18/5YL+bPF71hbao9BPf4b4OOgS+jXOdGG3IvsgMm2I?=
- =?us-ascii?Q?Tua5j3zZcMJ94SX48DSG6BgJ+i+3hnVYEL/tbqLiZDho6mGvS5xJI+TfkKjH?=
- =?us-ascii?Q?j+d8cQRKPshLQ25HBchv97M3E7jt/rOEjhRxNqDAr+akk+6y5DYU0a0lCd3E?=
- =?us-ascii?Q?+mWtSixyA/4hQbbu6N9/AI8mDdXVwf/S5XwBzj3yDcJbp0FNtia3ZrWwjqVB?=
- =?us-ascii?Q?8AGrwRfgpYyVRicPknezjL0H13iJycPn9qIe0fI4v5DyQd3aOs0V9vY3Isvr?=
- =?us-ascii?Q?0QI4Lj7rSy6J/C6tQMrUcuzlOuKOW+Oeqj4CBtIeTOOzd7Pc2k3reD3+deBz?=
- =?us-ascii?Q?bCDUbRgL0RP8CgAGmh2W37iRI9NS5CRKdX7eAzEPuBjVkY5N2ErdA4YkBIsX?=
- =?us-ascii?Q?wt7PcqbZAYXUKJtcH8LWfoivC0dmp8unzQx1IcHxsJQ23Cy+5/mQ+8Dra/fs?=
- =?us-ascii?Q?J/5BHohDY/XnN4Emg+frTqAzN9/msQtrkWo74zDIGm+YBiMeVzqloF3KVWpE?=
- =?us-ascii?Q?WHXSCEiKolcSl3GK8pA4z4OysJa1+quvUUE2gvxqj/PjMwsvwqcO0Hz3G72U?=
- =?us-ascii?Q?v47oiNBg9a5gGE8RXR5z8SrNpHfTjfxkplN7O4dcEZ9C3yMnEL3+bBIs2nwE?=
- =?us-ascii?Q?1KcPzgYkSq/QH0k1AnrlTObttYjLBPMLyrs7oX1k0EjqhdGGCxSdUWOdLoVc?=
- =?us-ascii?Q?aUF7LzwTQogxmxQ/pPIcAkkcHjbsuS1l7m5ibM1iY2WLJ9I1YQrMUsqTDTty?=
- =?us-ascii?Q?tNOsXJCOXVkvxpiMWbaGWskReGShegz63aEqIQKK+QGP8HWr+K1Aw+ky2viS?=
- =?us-ascii?Q?4sCVPXwJfeVO+bbrtX35El0PtbDiGpc6bBwQcEb4KuciDdDhEazWnx1fh5hi?=
- =?us-ascii?Q?bB8QIyxPJKP5TcAegec77TByyuzv9vDaICbJ8BNldE+1QDm6jw74nKThvWJg?=
- =?us-ascii?Q?LQRHMOpLhs3WakJJ9BIrYRpuqmMu4TKEX/jPKeCejU6rHNdnYWpyxk1ektEJ?=
- =?us-ascii?Q?b4LsP/NdJMpa1ONL1pZiGnJSOoldvwRdy9/Ij2fTkMS/MI1LcT5KrtNPaRUo?=
- =?us-ascii?Q?4n/B5q+sO3OTNM0xIfDQ+p4v1TF5BzaK0kc2PqiithZMpGbg3Jr0XmfJxVz4?=
- =?us-ascii?Q?S9M5czDhP+b41AKli1yoUu21vvTz7TpFW2kGD3spBj76TbtHr6SHW8UhZJHi?=
- =?us-ascii?Q?MLtYmI7hSi2dbF7e/Unck2i7OtOU9pQVWj6t3PvM?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 88fdae44-0087-4777-b125-08db131b9be2
-X-MS-Exchange-CrossTenant-AuthSource: CY5PR12MB6179.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Feb 2023 08:22:30.5313
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: pssYh0A1vBG/2EBCb8vFtsq54jlid6iQ8akX9knHzVmCCf+RYba9MrCn17NmTxAWKL6WH0BSIlP98c8Xj5ffJQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB5040
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230220_002235_238733_30EA117A 
-X-CRM114-Status: GOOD (  11.76  )
+X-CRM114-CacheID: sfid-20230220_003309_330067_DFB2D944 
+X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,19 +100,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Feb 19, 2023 at 03:36:50PM +0100, Daniel Lezcano wrote:
-> The 'type' field is used as a name in the message. However we can have
-> multiple thermal zone with the same type. The information is not
-> accurate.
-> 
-> Moreover, the thermal zone device structure is directly accessed while
-> we want to improve the self-encapsulation of the code.
-> 
-> Replace the 'type' in the message by the thermal zone id.
-> 
-> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+From: Shida Zhang <zhangshida@kylinos.cn>
 
-For mlxsw:
+From: Shida Zhang <zhangshida@kylinos.cn>
 
-Reviewed-by: Ido Schimmel <idosch@nvidia.com>
+In a configuration with CONFIG_SCSI_UFS_MEDIATEK set to 'm' and
+CONFIG_PM set to 'n', errors occur at compile time:
+
+====
+../drivers/ufs/host/ufs-mediatek.c: In function ‘ufs_mtk_runtime_suspend’:
+../drivers/ufs/host/ufs-mediatek.c:1621:8: error: implicit declaration of function ‘ufshcd_runtime_suspend’; did you mean ‘ufs_mtk_runtime_suspend’? [-Werror=implicit-function-declaration]
+../drivers/ufs/host/ufs-mediatek.c: In function ‘ufs_mtk_runtime_resume’:
+../drivers/ufs/host/ufs-mediatek.c:1636:9: error: implicit declaration of function ‘ufshcd_runtime_resume’; did you mean ‘ufs_mtk_runtime_resume’? [-Werror=implicit-function-declaration]
+====
+
+This patch fixes these by selecting CONFIG_PM from CONFIG_SCSI_UFS_MEDIATEK.
+
+Reported-by: k2ci <kernel-bot@kylinos.cn>
+Signed-off-by: Shida Zhang <zhangshida@kylinos.cn>
+---
+ drivers/ufs/host/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/ufs/host/Kconfig b/drivers/ufs/host/Kconfig
+index 4cc2dbd79ed0..f9786f085b54 100644
+--- a/drivers/ufs/host/Kconfig
++++ b/drivers/ufs/host/Kconfig
+@@ -71,6 +71,7 @@ config SCSI_UFS_QCOM
+ config SCSI_UFS_MEDIATEK
+ 	tristate "Mediatek specific hooks to UFS controller platform driver"
+ 	depends on SCSI_UFSHCD_PLATFORM && ARCH_MEDIATEK
++	select PM
+ 	select PHY_MTK_UFS
+ 	select RESET_TI_SYSCON
+ 	help
+-- 
+2.27.0
+
 
