@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 752FFC636CC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 15:26:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35985C636CC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 15:27:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x+Z+gPvVm/sjElHyKXrgv2vUzSvBWqw69SWlNUQvKaE=; b=2OVY7VkHMHfmxxKKjj5pbUXH3G
-	uP0Ghhshwkzocdm8IqZJlWHRHIr1Ns19udA1QwlkJ/Ur+AtIl5bNvmV46M66EZWKowfs+yaqtnLqp
-	hCpoMA5eb0jqzS9f1MdO4Kx8jAOP/yVBcOtwc6ZAR7FgCLn4gWY4qSDq8u9xOxlWVJuscFjKRMCB/
-	hWBRdZQ0Fk6erWGf/fDbh2uAPcj5kH1+wR86ypzXfUN7wU3tLrHIY/mhdZ6+ZCxbAdGdmB/BRlhdo
-	i8FIdKDN6kqYzbwPqmS/SiqnnnSw1uCF2Jq9f6hrz81MjZDBcrfXhUR/pufLOQXC7s6ka2YQbypjE
-	Pywh8Kjg==;
+	bh=1CWEfB+rD9ktJtR3XY9MJDh3tAlSd8zEN6Dedx0C+10=; b=0AFbG3PkqKLHniVLpbnGcktrgZ
+	flpmbZFffS1ZJKD+o95T4iRWQOCyqfvPLExSMMr0U7bca2kXnLsc4kHCCU7WCsNH+zFONdAo6XXjl
+	8rVt3HYsEUy/WB6MTQyQyrKVszzrikL0fjGcuLY3APDacxBwmrb1CacnSk87pjd+Sra9FzNnTC/6l
+	oGIfADZX3hHnrzhWAoWhNpE8kX2WQDN9GnvY+cuyLrzmefdDkl7RfCrOpnJajeJO3A9pomuG2pUtY
+	/VkHDQg9mnCONSQFjcxY7MUwxfpZgOq5fJGXZ+YujU/MjtGrhI/bxq8L3bti6l4mBl+7dUDZG5TnH
+	5hjbKpaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU83k-004a88-6h; Mon, 20 Feb 2023 15:26:32 +0000
+	id 1pU84X-004aWo-EW; Mon, 20 Feb 2023 15:27:21 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU7g3-004NbI-OK; Mon, 20 Feb 2023 15:02:05 +0000
+	id 1pU7g5-004NcU-3Z; Mon, 20 Feb 2023 15:02:07 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4B471660217C;
-	Mon, 20 Feb 2023 15:02:01 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B33A1660216B;
+	Mon, 20 Feb 2023 15:02:02 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676905322;
-	bh=nMAANSk/UU2xOIRce888SbMKzruYSYk/80xNpYz3QzM=;
+	s=mail; t=1676905323;
+	bh=wjEUtgV2dUeTl5IMzfSzsq0GbF+vXUsOW/+em9uek+4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Q8mlHYT8MoU2+0Q1UdFtn+JqCIcJxZOtnO/VzVdQWoJYpCWpgSAswePEeOmau9c2O
-	 wx/hD+1ByATJfL31LrzG5EUE/YC5R1HSrqHx63D82kDI6UHTDv9lUb8cDoJ9eLAGpP
-	 ++Q9dqgQynoGs1gcbSiiVRw5ilJI3qfKNU5/U1w0f6KCfftVMpZGxpNWxuZQSMFj9B
-	 J1tRdblkdU9JdDdh7d98fHFSvsGeOL5P2pGt3UocB3oLFGN25OF3wVZDnDYwsukICf
-	 XpAJYhxdVUN9UG+ni/GgGT3TbGIHhnVEo2NI3y5XKcGJz1CrmtjtNErF299cdB6VlB
-	 RU+NrjH/DmGiw==
+	b=e6N3VplNu288eHct3tIIpUnqutJ5Es2UPyb2fPd0Nn1QIUPEJ+zgD+lGu3jInZQcN
+	 zPmdLbc7WU2wd7ZZ7NSMnUCEwHznoSGlskxtVJ0MvDRVyr3aM4hc9se/K724hj9V2+
+	 rbp88Khy5JLAUGJwfzU/jSTGaeD3mHR7jERUIEvX63Q0wwACJSC46N5e8fBUI5xvKx
+	 KW1/qbGlpp1CekZ4z8kXFvfkKFIS28Pj5uRVHgYngvQXqvEpScYdvSHGJCMno7tGLy
+	 QlFt61dVjudozGMkAYNxF+Ub1hQDoUAuhQda1VELb8C1/C0B9bxr6tPZe3wmr3/8P6
+	 XmnDvW+Cxgqcg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mturquette@baylibre.com
 Cc: sboyd@kernel.org,
@@ -67,17 +67,17 @@ Cc: sboyd@kernel.org,
 	linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 33/55] clk: mediatek: mt7986-infracfg: Migrate to common probe mechanism
-Date: Mon, 20 Feb 2023 16:00:49 +0100
-Message-Id: <20230220150111.77897-34-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 34/55] clk: mediatek: mt7986-eth: Migrate to common probe mechanism
+Date: Mon, 20 Feb 2023 16:00:50 +0100
+Message-Id: <20230220150111.77897-35-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230220150111.77897-1-angelogioacchino.delregno@collabora.com>
 References: <20230220150111.77897-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230220_070204_114471_C80E6DB2 
-X-CRM114-Status: GOOD (  14.11  )
+X-CRM114-CacheID: sfid-20230220_070205_466767_9706E15A 
+X-CRM114-Status: GOOD (  12.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,93 +93,131 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Convert this driver to use the common mtk_clk_simple_probe() mechanism.
-While at it, also use module_platform_driver() instead, as this driver
-just gained a .remove() callback during the conversion.
+While at it, also remove __initconst annotations (as these structures
+are used also at runtime).
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/clk/mediatek/clk-mt7986-infracfg.c | 61 ++++++----------------
- 1 file changed, 17 insertions(+), 44 deletions(-)
+ drivers/clk/mediatek/clk-mt7986-eth.c | 83 +++++++++++----------------
+ 1 file changed, 32 insertions(+), 51 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt7986-infracfg.c b/drivers/clk/mediatek/clk-mt7986-infracfg.c
-index 0a4bf87ee160..0299faad0733 100644
---- a/drivers/clk/mediatek/clk-mt7986-infracfg.c
-+++ b/drivers/clk/mediatek/clk-mt7986-infracfg.c
-@@ -157,57 +157,30 @@ static const struct mtk_gate infra_clks[] = {
- 	GATE_INFRA2(CLK_INFRA_IPCIEB_CK, "infra_ipcieb", "sysaxi_sel", 15),
+diff --git a/drivers/clk/mediatek/clk-mt7986-eth.c b/drivers/clk/mediatek/clk-mt7986-eth.c
+index e04bc6845ea6..138ba0a47221 100644
+--- a/drivers/clk/mediatek/clk-mt7986-eth.c
++++ b/drivers/clk/mediatek/clk-mt7986-eth.c
+@@ -25,7 +25,7 @@ static const struct mtk_gate_regs sgmii0_cg_regs = {
+ #define GATE_SGMII0(_id, _name, _parent, _shift)		\
+ 	GATE_MTK(_id, _name, _parent, &sgmii0_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
+ 
+-static const struct mtk_gate sgmii0_clks[] __initconst = {
++static const struct mtk_gate sgmii0_clks[] = {
+ 	GATE_SGMII0(CLK_SGMII0_TX250M_EN, "sgmii0_tx250m_en", "top_xtal", 2),
+ 	GATE_SGMII0(CLK_SGMII0_RX250M_EN, "sgmii0_rx250m_en", "top_xtal", 3),
+ 	GATE_SGMII0(CLK_SGMII0_CDR_REF, "sgmii0_cdr_ref", "top_xtal", 4),
+@@ -41,7 +41,7 @@ static const struct mtk_gate_regs sgmii1_cg_regs = {
+ #define GATE_SGMII1(_id, _name, _parent, _shift)		\
+ 	GATE_MTK(_id, _name, _parent, &sgmii1_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
+ 
+-static const struct mtk_gate sgmii1_clks[] __initconst = {
++static const struct mtk_gate sgmii1_clks[] = {
+ 	GATE_SGMII1(CLK_SGMII1_TX250M_EN, "sgmii1_tx250m_en", "top_xtal", 2),
+ 	GATE_SGMII1(CLK_SGMII1_RX250M_EN, "sgmii1_rx250m_en", "top_xtal", 3),
+ 	GATE_SGMII1(CLK_SGMII1_CDR_REF, "sgmii1_cdr_ref", "top_xtal", 4),
+@@ -57,7 +57,7 @@ static const struct mtk_gate_regs eth_cg_regs = {
+ #define GATE_ETH(_id, _name, _parent, _shift)			\
+ 	GATE_MTK(_id, _name, _parent, &eth_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
+ 
+-static const struct mtk_gate eth_clks[] __initconst = {
++static const struct mtk_gate eth_clks[] = {
+ 	GATE_ETH(CLK_ETH_FE_EN, "eth_fe_en", "netsys_2x_sel", 6),
+ 	GATE_ETH(CLK_ETH_GP2_EN, "eth_gp2_en", "sgm_325m_sel", 7),
+ 	GATE_ETH(CLK_ETH_GP1_EN, "eth_gp1_en", "sgm_325m_sel", 8),
+@@ -65,56 +65,37 @@ static const struct mtk_gate eth_clks[] __initconst = {
+ 	GATE_ETH(CLK_ETH_WOCPU0_EN, "eth_wocpu0_en", "netsys_mcu_sel", 15),
  };
  
--static int clk_mt7986_infracfg_probe(struct platform_device *pdev)
+-static void __init mtk_sgmiisys_0_init(struct device_node *node)
 -{
 -	struct clk_hw_onecell_data *clk_data;
--	struct device_node *node = pdev->dev.of_node;
 -	int r;
--	void __iomem *base;
--	int nr = ARRAY_SIZE(infra_divs) + ARRAY_SIZE(infra_muxes) +
--		 ARRAY_SIZE(infra_clks);
 -
--	base = of_iomap(node, 0);
--	if (!base) {
--		pr_err("%s(): ioremap failed\n", __func__);
--		return -ENOMEM;
--	}
+-	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(sgmii0_clks));
 -
--	clk_data = mtk_alloc_clk_data(nr);
--
--	if (!clk_data)
--		return -ENOMEM;
--
--	mtk_clk_register_factors(infra_divs, ARRAY_SIZE(infra_divs), clk_data);
--	mtk_clk_register_muxes(&pdev->dev, infra_muxes,
--			       ARRAY_SIZE(infra_muxes), node,
--			       &mt7986_clk_lock, clk_data);
--	mtk_clk_register_gates(&pdev->dev, node, infra_clks,
--			       ARRAY_SIZE(infra_clks), clk_data);
+-	mtk_clk_register_gates(NULL, node, sgmii0_clks,
+-			       ARRAY_SIZE(sgmii0_clks), clk_data);
 -
 -	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
--	if (r) {
+-	if (r)
 -		pr_err("%s(): could not register clock provider: %d\n",
 -		       __func__, r);
--		goto free_infracfg_data;
--	}
--	return r;
--
--free_infracfg_data:
--	mtk_free_clk_data(clk_data);
--	return r;
--
 -}
-+static const struct mtk_clk_desc infra_desc = {
-+	.clks = infra_clks,
-+	.num_clks = ARRAY_SIZE(infra_clks),
-+	.factor_clks = infra_divs,
-+	.num_factor_clks = ARRAY_SIZE(infra_divs),
-+	.mux_clks = infra_muxes,
-+	.num_mux_clks = ARRAY_SIZE(infra_muxes),
-+	.clk_lock = &mt7986_clk_lock,
+-CLK_OF_DECLARE(mtk_sgmiisys_0, "mediatek,mt7986-sgmiisys_0",
+-	       mtk_sgmiisys_0_init);
+-
+-static void __init mtk_sgmiisys_1_init(struct device_node *node)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-
+-	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(sgmii1_clks));
+-
+-	mtk_clk_register_gates(NULL, node, sgmii1_clks,
+-			       ARRAY_SIZE(sgmii1_clks), clk_data);
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-
+-	if (r)
+-		pr_err("%s(): could not register clock provider: %d\n",
+-		       __func__, r);
+-}
+-CLK_OF_DECLARE(mtk_sgmiisys_1, "mediatek,mt7986-sgmiisys_1",
+-	       mtk_sgmiisys_1_init);
++static const struct mtk_clk_desc eth_desc = {
++	.clks = eth_clks,
++	.num_clks = ARRAY_SIZE(eth_clks),
 +};
  
- static const struct of_device_id of_match_clk_mt7986_infracfg[] = {
--	{ .compatible = "mediatek,mt7986-infracfg", },
--	{}
-+	{ .compatible = "mediatek,mt7986-infracfg", .data = &infra_desc },
-+	{ /* sentinel */ }
- };
+-static void __init mtk_ethsys_init(struct device_node *node)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
++static const struct mtk_clk_desc sgmii0_desc = {
++	.clks = sgmii0_clks,
++	.num_clks = ARRAY_SIZE(sgmii0_clks),
++};
  
- static struct platform_driver clk_mt7986_infracfg_drv = {
--	.probe = clk_mt7986_infracfg_probe,
- 	.driver = {
- 		.name = "clk-mt7986-infracfg",
- 		.of_match_table = of_match_clk_mt7986_infracfg,
- 	},
+-	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(eth_clks));
++static const struct mtk_clk_desc sgmii1_desc = {
++	.clks = sgmii1_clks,
++	.num_clks = ARRAY_SIZE(sgmii1_clks),
++};
+ 
+-	mtk_clk_register_gates(NULL, node, eth_clks, ARRAY_SIZE(eth_clks), clk_data);
++static const struct of_device_id of_match_clk_mt7986_eth[] = {
++	{ .compatible = "mediatek,mt7986-ethsys", .data = &eth_desc },
++	{ .compatible = "mediatek,mt7986-sgmiisys_0", .data = &sgmii0_desc },
++	{ .compatible = "mediatek,mt7986-sgmiisys_1", .data = &sgmii1_desc },
++	{ /* sentinel */ }
++};
+ 
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
++static struct platform_driver clk_mt7986_eth_drv = {
++	.driver = {
++		.name = "clk-mt7986-eth",
++		.of_match_table = of_match_clk_mt7986_eth,
++	},
 +	.probe = mtk_clk_simple_probe,
 +	.remove = mtk_clk_simple_remove,
- };
--builtin_platform_driver(clk_mt7986_infracfg_drv);
-+module_platform_driver(clk_mt7986_infracfg_drv);
-+
-+MODULE_DESCRIPTION("MediaTek MT7986 infracfg clocks driver");
++};
++module_platform_driver(clk_mt7986_eth_drv);
+ 
+-	if (r)
+-		pr_err("%s(): could not register clock provider: %d\n",
+-		       __func__, r);
+-}
+-CLK_OF_DECLARE(mtk_ethsys, "mediatek,mt7986-ethsys", mtk_ethsys_init);
++MODULE_DESCRIPTION("MediaTek MT7986 Ethernet clocks driver");
 +MODULE_LICENSE("GPL");
 -- 
 2.39.1
