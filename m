@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 960E1C636CC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 15:05:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4242EC636CC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 15:06:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u7EPf/bu/wWvAfxwWOvitKGpOVpu+iOkwmV/eQCMYP8=; b=l6JC8DyqQYoBRh+3bbQC1J5WBY
-	jvmxcM8uu9RqluTnWmBWZm3jZyGUS6kS1cTcYDqkV0PgOeXNBO49qFTE2L5ImkXRrZQsh0ZqXD9AW
-	5UXpDIjYKrxS20ZLvGEO+ngnMtpMB1Rl0C8OSaVZNN3pKva2mI+8SbqAjs+TUPdturGB85jbZiCqk
-	M0vqvIL8tPzHzNAsBdD6hek5teQ7FSqxoiTDuRydiTdsw0z8f7KycrjOCcXZafqmG65HEjmAcrfYw
-	Zd4OLxGFTF2qHpfQzuSgaphG/Yvnb8wMXVpXsIZj1FDCzrZnFj6InzZikd1jXWVkQs3qtnQYBWgFo
-	fROsssoQ==;
+	bh=FCHbid1ecGDCGEXBltzdI6M1fmgwciOel2p07kKVbRg=; b=atzwFfeOXvOfLEau1iCftQdnuf
+	hKUcucxqJl0Xua1Aq6Mm6ryoxGvOYx/GufB88S3z33ilMDY+XJV43y2ZvvFThJGIjb2/6o1c1ej7h
+	fjYkBh9KeWxYjd7WFyENtt97a3k6kdUvv4oKnYOMfZaHUOHK7jofE8A7T7Vb0qSMvdGCdtm1uA22f
+	T2ey2BbdOGVKnCdNMyhJ8b3zjiD5pgKOublm5q1w6Q8jwMSj38IiDW2adKjgzwiu79jdWzPRj6Oyj
+	dAoEoHgwIs2bCAuWl9ibf+wQaZ1OVI4TOJcV5ulrisnJIfX6m099CrICY2h4a8FaBeC8IKEN9iduy
+	MHNgsIRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU7jd-004PhY-GQ; Mon, 20 Feb 2023 15:05:45 +0000
+	id 1pU7kB-004Q4P-R7; Mon, 20 Feb 2023 15:06:19 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU7fW-004NFt-53; Mon, 20 Feb 2023 15:01:31 +0000
+	id 1pU7fX-004NGh-Gg; Mon, 20 Feb 2023 15:01:32 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B3B946602176;
-	Mon, 20 Feb 2023 15:01:27 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 215EB6602179;
+	Mon, 20 Feb 2023 15:01:29 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676905288;
-	bh=1HjfxwBN9RMNJRVz4a+nf3R3egMM6Q1nEwSqqRs4zLo=;
+	s=mail; t=1676905290;
+	bh=Jd0WSEgoMoiyLJ/JPwWzI6i2w8ARgz466SU1nHCnAdI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=X8jz3DF7JRSNqwlW0P6Qkg172fLy3cQRNCIhmLdsgg5oRi4wXUsxUZK97lBLE2ZMQ
-	 +FUsZuFVRoRl3aHgFYbl1j48qYx4FgBViu08oYHjzh6U+f5TAKUEdwGnn8xmpbLhgz
-	 otYwtMb/nnVy50Z+fWgTApME6HxWeUkff4XZ+Yi19MtStO4yHcy/ItU1KVj3njiaag
-	 /fSt3DXsv7jMUT047dC+vpRyn94Vrn2ryD92vn+xhQyBTjRmGJgoNgx5TQ7ZqUYdqQ
-	 ZOW35mSeJj5VzRhSoK2Lg2sE4mGyLNLzifA7KBkg1HwYoUnvoUw9B5P1D7KZ0S7gmh
-	 nD2CEe+qQZCkw==
+	b=fF77HQ/0wexUKQO+Um9twd15V+8MkmbBJYlqBgT2eA21g72cgtze+YLA7i7+7hbMv
+	 fKRgjKF3MeYOO0IUClCLuqYLf4/sBpwJ5jltaJUC2qkQbM25BzIdLyWwiLn6K03bwy
+	 imlEpx+Hh48IPsoXLmXlfSdZyg86WocMcwCP1wrfQj8j4pjZUHl0PEWqToVsu6DZHi
+	 ROflXO8TTNpQGZekRJIn1x64mc9UiQ6Hal4ipYAgbWQKLKoKPqnO8Ch+Cc/mBle3lQ
+	 ymZPrI8xtjJSOX+wz9hpK7owTuCHxLoj/uPKpsDE35xwNTHz5sYgX9LWrTWxNRQ1fm
+	 HuwpSFioQ1vZQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mturquette@baylibre.com
 Cc: sboyd@kernel.org,
@@ -67,17 +67,17 @@ Cc: sboyd@kernel.org,
 	linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 09/55] clk: mediatek: mt2712-apmixedsys: Add .remove() callback for module build
-Date: Mon, 20 Feb 2023 16:00:25 +0100
-Message-Id: <20230220150111.77897-10-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 10/55] clk: mediatek: mt2712: Change to use module_platform_driver macro
+Date: Mon, 20 Feb 2023 16:00:26 +0100
+Message-Id: <20230220150111.77897-11-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230220150111.77897-1-angelogioacchino.delregno@collabora.com>
 References: <20230220150111.77897-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230220_070130_366281_872197B9 
-X-CRM114-Status: GOOD (  14.21  )
+X-CRM114-CacheID: sfid-20230220_070131_738033_97D5FA98 
+X-CRM114-Status: GOOD (  12.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,50 +92,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a .remove() callback to the apmixedsys driver to allow full module
-build; while at it, also change the usage of builtin_platform_driver()
-to module_platform_driver() to actually make use of the new callback.
+Now that all of the clocks in clk-mt2712.c are using the common
+mtk_clk_simple_{probe,remove}() callbacks we can safely migrate
+to module_platform_driver.
+While at it, also drop all references to `simple` in the specific
+context of mt2712 as that was used in the past only to allow us
+to have two platform_driver(s) in one file.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/clk/mediatek/clk-mt2712-apmixedsys.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
+ drivers/clk/mediatek/clk-mt2712.c | 16 +++++-----------
+ 1 file changed, 5 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt2712-apmixedsys.c b/drivers/clk/mediatek/clk-mt2712-apmixedsys.c
-index 1e1a8272a4ac..2f4061c9a59e 100644
---- a/drivers/clk/mediatek/clk-mt2712-apmixedsys.c
-+++ b/drivers/clk/mediatek/clk-mt2712-apmixedsys.c
-@@ -138,6 +138,18 @@ static int clk_mt2712_apmixed_probe(struct platform_device *pdev)
- 	return r;
- }
+diff --git a/drivers/clk/mediatek/clk-mt2712.c b/drivers/clk/mediatek/clk-mt2712.c
+index c5fd76d1b9df..937c370d6765 100644
+--- a/drivers/clk/mediatek/clk-mt2712.c
++++ b/drivers/clk/mediatek/clk-mt2712.c
+@@ -1020,7 +1020,7 @@ static const struct mtk_clk_desc peri_desc = {
+ 	.rst_desc = &clk_rst_desc[1],
+ };
  
-+static int clk_mt2712_apmixed_remove(struct platform_device *pdev)
-+{
-+	struct device_node *node = pdev->dev.of_node;
-+	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
-+
-+	of_clk_del_provider(node);
-+	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
-+	mtk_free_clk_data(clk_data);
-+
-+	return 0;
-+}
-+
- static const struct of_device_id of_match_clk_mt2712_apmixed[] = {
- 	{ .compatible = "mediatek,mt2712-apmixedsys" },
+-static const struct of_device_id of_match_clk_mt2712_simple[] = {
++static const struct of_device_id of_match_clk_mt2712[] = {
+ 	{ .compatible = "mediatek,mt2712-infracfg", .data = &infra_desc },
+ 	{ .compatible = "mediatek,mt2712-mcucfg", .data = &mcu_desc },
+ 	{ .compatible = "mediatek,mt2712-pericfg", .data = &peri_desc, },
+@@ -1028,18 +1028,12 @@ static const struct of_device_id of_match_clk_mt2712_simple[] = {
  	{ /* sentinel */ }
-@@ -145,9 +157,10 @@ static const struct of_device_id of_match_clk_mt2712_apmixed[] = {
+ };
  
- static struct platform_driver clk_mt2712_apmixed_drv = {
- 	.probe = clk_mt2712_apmixed_probe,
-+	.remove = clk_mt2712_apmixed_remove,
+-static struct platform_driver clk_mt2712_simple_drv = {
++static struct platform_driver clk_mt2712_drv = {
+ 	.probe = mtk_clk_simple_probe,
+ 	.remove = mtk_clk_simple_remove,
  	.driver = {
- 		.name = "clk-mt2712-apmixed",
- 		.of_match_table = of_match_clk_mt2712_apmixed,
+-		.name = "clk-mt2712-simple",
+-		.of_match_table = of_match_clk_mt2712_simple,
++		.name = "clk-mt2712",
++		.of_match_table = of_match_clk_mt2712,
  	},
  };
--builtin_platform_driver(clk_mt2712_apmixed_drv)
-+module_platform_driver(clk_mt2712_apmixed_drv)
+-
+-static int __init clk_mt2712_init(void)
+-{
+-	return platform_driver_register(&clk_mt2712_simple_drv);
+-}
+-
+-arch_initcall(clk_mt2712_init);
++module_platform_driver(clk_mt2712_drv);
 -- 
 2.39.1
 
