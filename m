@@ -4,85 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A6CEC05027
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 17:50:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E2BEC636D6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 19:27:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JhssXeqm+u6yl3pDx1ZAyAVMMEL8ZFFRhcJTQvtxCBI=; b=TWy6oebJfEyaJsziZjnuBTdt/q
-	ceMlqnvlJ2nunC9uXHSl4fnpaCjCEHXnFdnkjlm3U0lRsMnA3IEdB42T52qmI8lfDec+DmG6ZGOOO
-	zgWnU6ZRKPtsV2L5XAY5SkAVA7GcTaO0WW+fWz2dWcVXtzIFRDzrc2au38BOD++JyLyUjba+OJmE+
-	U38G4PXr2MwWESR5WEm6AMOc962UQBqroYxGnLmEyCx6zxcXX7zjUE3KQnmvePePhv4XCvmy56hUX
-	zgSqvi5ccmDAVuvLhrYD1hy4yCLj0Jc/DErPWFHUliEvpOL+BTVnQp/tX7I3p2yKJhyp58nHqdr+D
-	snZCI49A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Q/ujLiTDivDh82aT2dp44ayibONAhx6Nv1BzL1DRz6o=; b=ELd0LZptWix5kJc0K4nGsuBHzD
+	Ar7G6r9EEfN3pwkVBIrI2nPpK37zEuwJfHwHj+Kr9lrEpm02cd5NOixdWqSpEso+S8QleODsA7h6S
+	bH2Y7pRhELslwRJBB4drUVmGHu190u+JO5TFe3SSOBw9JAebxO4S/W4fQM3QHwGEIZRiFPJ69xj9m
+	Utnrhbd+un29Z4hU7QvdJ1UjZuWsBoegEcBwsuOPL2iAkdoGUDXtiL2ey8fkrpHxVt+0w8n1MQ1HT
+	RKgGo+4n4H7K1VOTSmgpKEaW3wmpawai5UJ/Xn9I6t7Ue59hU3YY8204vCFYfeOKD2uIMsiuVgr8b
+	1hseejYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUAIx-0056wT-H9; Mon, 20 Feb 2023 17:50:23 +0000
-Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
+	id 1pUBow-005MOi-Rc; Mon, 20 Feb 2023 19:27:30 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUAIM-0056ge-OY; Mon, 20 Feb 2023 17:50:04 +0000
-Received: by mail-lj1-x236.google.com with SMTP id h9so1837834ljq.2;
-        Mon, 20 Feb 2023 09:49:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=JhssXeqm+u6yl3pDx1ZAyAVMMEL8ZFFRhcJTQvtxCBI=;
-        b=hSUvjOtME4HgSAQKag2+v/BtCpNfKz8hzOD5kqu+liLI1J5DuDG1cxlX9HU0ru5HyJ
-         zH8YRWlNlsUQbzDU19zR0XPL+wan25qyhe5DOVV1Hu4xB5v5m0LgViiEvxHh1OWVlQ0O
-         NsflWNicEeMBKj5DDTWTAyM+A/O9Q/Fe6tXslTKRq4++1sRvgUZbfSJPpx0IKiHo6oh/
-         nVgUmmDbiSZZ4l2V6BOOt/xkAxUgSNcfl+5kfnkD5VZYV5nj4f3SZ/YxU8X+Vx/I9p91
-         dIjoEC3tFzjfnYF/Fxnhj7DwnuHVvxzvBwscxKsi3Lnmwmz8r81KxPn3p3k5R8GlR9xE
-         o0OA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=JhssXeqm+u6yl3pDx1ZAyAVMMEL8ZFFRhcJTQvtxCBI=;
-        b=2qnpgITVdS0RTs5BoTNQK8xd9r3h5H0GmSUWyhMVDEWmh+hba3QuSrTA9BDQ5rCApX
-         XrtAVy1dt+VDuOg6/VSUQ9nGXGGHYn2+cDO0ediZkxDXIrECaX3GQoMs95APDRDHAypi
-         lSO3o+daxncokeBNHRioZip/orTgHCFCZunebxCl2lTWbV5ei5Ictb/Ro2NQn+t6gAKU
-         9ig1HQ70BBVd2pYzUVRB0PjpzJmqxXMxO2flph6Ug0BGKGiGfK//mlSld2tgfKN2siZg
-         GRGoy9jHQZATindrF03F7c6+YZlJfEPXO6WG3DIMN0Dmvi0N8tzjbZmgpGuoZu85Yfq4
-         Zp5w==
-X-Gm-Message-State: AO0yUKVlUbBNMuxwg4oNJrg0IPxZyJaz4tNuh/ySMIS1HUPkY6uXdr7w
-	yLNC5Vq/VL/ysWcNBv2litE=
-X-Google-Smtp-Source: AK7set9BeWUmq3qyME/gGxXjti3Uxi1/rFzuL0jJolvPeOuhsOqSX9jChGIUxLIWp+xuC4bWBPMK1Q==
-X-Received: by 2002:a05:651c:1505:b0:293:341f:a62 with SMTP id e5-20020a05651c150500b00293341f0a62mr962640ljf.21.1676915382724;
-        Mon, 20 Feb 2023 09:49:42 -0800 (PST)
-Received: from localhost.lan (ip-194-187-74-233.konfederacka.maverick.com.pl. [194.187.74.233])
-        by smtp.gmail.com with ESMTPSA id u22-20020a2e9f16000000b0029353491df6sm294695ljk.48.2023.02.20.09.49.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Feb 2023 09:49:42 -0800 (PST)
-From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH V3 2/2] nvmem: add generic driver for devices with MMIO access
-Date: Mon, 20 Feb 2023 18:49:30 +0100
-Message-Id: <20230220174930.7440-3-zajec5@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230220174930.7440-1-zajec5@gmail.com>
-References: <20230220174930.7440-1-zajec5@gmail.com>
+	id 1pUBos-005MMo-P6; Mon, 20 Feb 2023 19:27:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=Q/ujLiTDivDh82aT2dp44ayibONAhx6Nv1BzL1DRz6o=; b=t1f5MEJNixSUTuamgKBEWE3e4a
+	N0uAHpGIek34d65r98q8WM95aItzvwbkEuf0Yw2MwCMHMM/8Y7+eMrT7GOqa8dU2BVjtpZlhGZUXf
+	0wTZiFrQHWVvrTM4pir5/cj4PhGJpn1oBsGBXRwLd0lRxBZ7s0YT9mzbAqfuca+gzQnTdsJ12l120
+	lb6LdD7k2AjlLP0+3JjJzc5CppvYOVRmanKUVS49Kq4W8cBXvcGamxsMA4tMpHIF7cXYUvhIeG6rW
+	Kjo/DvswY1XQ3MFdbcRfSzcF2TGBrciZ4ZeHWpYc5cq63D0LMn/I5+aw2SunZ8lsVFsASsxLFgCzk
+	62JVow9Q==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:60282)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1pUBod-0004vw-IK; Mon, 20 Feb 2023 19:27:11 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1pUBoW-0001Ug-UR; Mon, 20 Feb 2023 19:27:04 +0000
+Date: Mon, 20 Feb 2023 19:27:04 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
+Subject: Re: [PATCH v9 00/12] net: ethernet: mtk_eth_soc: various enhancements
+Message-ID: <Y/PJiM/ZVljnMl6m@shell.armlinux.org.uk>
+References: <cover.1676910958.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1676910958.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230220_094950_035089_09B8EED2 
-X-CRM114-Status: GOOD (  25.30  )
+X-CRM114-CacheID: sfid-20230220_112726_841235_A6393618 
+X-CRM114-Status: GOOD (  26.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,198 +91,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rafał Miłecki <rafal@milecki.pl>
+Hi Daniel,
 
-Some NVMEM devices can be accessed by simply mapping memory and reading
-from / writing to it. This driver adds support for a generic
-"mmio-nvmem" DT binding used by such devices.
+A couple of procedural points.
 
-One of such devices is Broadcom's NVRAM. It's already supported (see
-NVMEM_BRCM_NVRAM) but existing driver covers both:
-1. NVMEM device access
-2. NVMEM content parsing
+Firstly, please include the tree that you want the patch series applied
+to in the subject line thusly:
 
-Once we get support for NVMEM layouts then existing NVRAM driver will
-get converted into a layout and generic driver will take over
-responsibility for data access. That's why it claims "brcm,nvram"
-(conditionally for now).
+[PATCH net-next v10 0/12] ...
 
-Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
----
-V3: Support "reg-io-width", basic writing & "brcm,nvram" string
----
- drivers/nvmem/Kconfig  |  10 ++++
- drivers/nvmem/Makefile |   2 +
- drivers/nvmem/mmio.c   | 125 +++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 137 insertions(+)
- create mode 100644 drivers/nvmem/mmio.c
+Secondly, it's likely that net-next will be closed if not already for
+your v10, so this won't make it into the 6.3 merge window. Please repost
+after 6.3-rc1 has been released, or alternatively if you want further
+reviews, post as RFC - [PATCH RFC net-next ...]
 
-diff --git a/drivers/nvmem/Kconfig b/drivers/nvmem/Kconfig
-index 6dec38805041..189ea85bd67d 100644
---- a/drivers/nvmem/Kconfig
-+++ b/drivers/nvmem/Kconfig
-@@ -166,6 +166,16 @@ config NVMEM_MICROCHIP_OTPC
- 	  This driver enable the OTP controller available on Microchip SAMA7G5
- 	  SoCs. It controls the access to the OTP memory connected to it.
- 
-+config NVMEM_MMIO
-+	tristate "MMIO access based NVMEM support"
-+	depends on HAS_IOMEM
-+	help
-+	  This driver provides support for NVMEM devices that can be accessed
-+	  using MMIO.
-+
-+	  This driver can also be built as a module. If so, the module
-+	  will be called nvmem-mmio.
-+
- config NVMEM_MTK_EFUSE
- 	tristate "Mediatek SoCs EFUSE support"
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
-diff --git a/drivers/nvmem/Makefile b/drivers/nvmem/Makefile
-index 6a1efffa88f0..767a9db2bfc1 100644
---- a/drivers/nvmem/Makefile
-+++ b/drivers/nvmem/Makefile
-@@ -35,6 +35,8 @@ obj-$(CONFIG_NVMEM_MESON_MX_EFUSE)	+= nvmem_meson_mx_efuse.o
- nvmem_meson_mx_efuse-y			:= meson-mx-efuse.o
- obj-$(CONFIG_NVMEM_MICROCHIP_OTPC)	+= nvmem-microchip-otpc.o
- nvmem-microchip-otpc-y			:= microchip-otpc.o
-+obj-$(CONFIG_NVMEM_MMIO)		+= nvmem-mmio.o
-+nvmem-mmio-y				:= mmio.o
- obj-$(CONFIG_NVMEM_MTK_EFUSE)		+= nvmem_mtk-efuse.o
- nvmem_mtk-efuse-y			:= mtk-efuse.o
- obj-$(CONFIG_NVMEM_MXS_OCOTP)		+= nvmem-mxs-ocotp.o
-diff --git a/drivers/nvmem/mmio.c b/drivers/nvmem/mmio.c
-new file mode 100644
-index 000000000000..e247c943eea2
---- /dev/null
-+++ b/drivers/nvmem/mmio.c
-@@ -0,0 +1,125 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (C) 2023 Rafał Miłecki <rafal@milecki.pl>
-+ */
-+
-+#include <linux/io.h>
-+#include <linux/mod_devicetable.h>
-+#include <linux/module.h>
-+#include <linux/nvmem-provider.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+#include <linux/property.h>
-+#include <linux/slab.h>
-+
-+struct mmio_nvmem {
-+	void __iomem *base;
-+	u32 io_width;
-+};
-+
-+static int mmio_nvmem_read(void *context, unsigned int offset, void *val, size_t bytes)
-+{
-+	struct mmio_nvmem *priv = context;
-+	u32 *dst32;
-+	u16 *dst16;
-+	u8 *dst8;
-+
-+	if (priv->io_width && WARN_ON(bytes % priv->io_width))
-+		return -EINVAL;
-+
-+	switch (priv->io_width) {
-+	case 1:
-+		for (dst8 = val; bytes; bytes -= 1, offset += 1)
-+			*dst8++ = readb(priv->base + offset);
-+		break;
-+	case 2:
-+		for (dst16 = val; bytes; bytes -= 2, offset += 2)
-+			*dst16++ = readw(priv->base + offset);
-+		break;
-+	case 4:
-+		for (dst32 = val; bytes; bytes -= 4, offset += 4)
-+			*dst32++ = readl(priv->base + offset);
-+		break;
-+	default:
-+		memcpy_fromio(val, priv->base + offset, bytes);
-+	}
-+
-+	return 0;
-+}
-+
-+static int mmio_nvmem_write(void *context, unsigned int offset, void *val, size_t bytes)
-+{
-+	struct mmio_nvmem *priv = context;
-+
-+	switch (priv->io_width) {
-+	case 1:
-+	case 2:
-+	case 4:
-+		return -EOPNOTSUPP;
-+	default:
-+		memcpy_toio(priv->base + offset, val, bytes);
-+	}
-+
-+	return 0;
-+}
-+
-+static int mmio_nvmem_probe(struct platform_device *pdev)
-+{
-+	struct nvmem_config config = {
-+		.name = "mmio-nvmem",
-+		.id = NVMEM_DEVID_AUTO,
-+		.read_only = true,
-+		.reg_read = mmio_nvmem_read,
-+	};
-+	struct device *dev = &pdev->dev;
-+	struct mmio_nvmem *priv;
-+	struct resource *res;
-+
-+	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	priv->base = devm_platform_get_and_ioremap_resource(pdev, 0, &res);
-+	if (IS_ERR(priv->base))
-+		return PTR_ERR(priv->base);
-+
-+	of_property_read_u32(dev->of_node, "reg-io-width", &priv->io_width);
-+
-+	config.dev = dev;
-+	config.size = resource_size(res);
-+	config.word_size = priv->io_width;
-+	config.stride = priv->io_width;
-+	config.priv = priv;
-+	if (!device_property_present(dev, "read-only"))
-+		config.reg_write = mmio_nvmem_write;
-+
-+	return PTR_ERR_OR_ZERO(devm_nvmem_register(dev, &config));
-+}
-+
-+static const struct of_device_id mmio_nvmem_of_match_table[] = {
-+	{ .compatible = "mmio-nvmem", },
-+	/* Custom bindings */
-+#if !IS_ENABLED(CONFIG_NVMEM_BRCM_NVRAM)
-+	{ .compatible = "brcm,nvram", },
-+#endif
-+	{},
-+};
-+
-+static struct platform_driver mmio_nvmem_driver = {
-+	.probe = mmio_nvmem_probe,
-+	.driver = {
-+		.name = "mmio_nvmem",
-+		.of_match_table = mmio_nvmem_of_match_table,
-+	},
-+};
-+
-+static int __init mmio_nvmem_init(void)
-+{
-+	return platform_driver_register(&mmio_nvmem_driver);
-+}
-+
-+subsys_initcall_sync(mmio_nvmem_init);
-+
-+MODULE_AUTHOR("Rafał Miłecki");
-+MODULE_LICENSE("GPL");
-+MODULE_DEVICE_TABLE(of, mmio_nvmem_of_match_table);
+Thanks.
+
+On Mon, Feb 20, 2023 at 04:40:43PM +0000, Daniel Golle wrote:
+> This series brings a variety of fixes and enhancements for mtk_eth_soc,
+> adds support for the MT7981 SoC and facilitates sharing the SGMII PCS
+> code between mtk_eth_soc and mt7530.
+> 
+> Note that this series depends on commit 697c3892d825
+> ("regmap: apply reg_base and reg_downshift for single register ops") to
+> not break mt7530 pcs register access.
+> 
+> The whole series has been tested on MT7622+MT7531 (BPi-R64),
+> MT7623+MT7530 (BPi-R2) and MT7981+GPY211 (GL.iNet GL-MT3000).
+> 
+> Changes since v8:
+>  * move mediatek,sgmiisys dt-bindings to correct net/pcs folder
+>  * rebase on top of net-next/main so series applies cleanly again
+> 
+> Changes since v7:
+>  * move mediatek,sgmiisys.yaml to more appropriate folder
+>  * don't include <linux/phylink.h> twice in PCS driver, sort includes
+> 
+> Changes since v6:
+>  * label MAC MCR bit 12 in 08/12, MediaTek replied explaining its function
+> 
+> Changes since v5:
+>  * drop dev pointer also from struct mtk_sgmii, pass it as function
+>    paramter instead
+>  * address comments left for dt-bindings
+>  * minor improvements to commit messages
+> 
+> Changes since v4:
+>  * remove unused dev pointer in struct pcs_mtk_lynxi
+>  * squash link timer check into correct follow-up patch
+> 
+> Changes since v3:
+>  * remove unused #define's
+>  * use BMCR_* instead of #define'ing our own constants
+>  * return before changing registers in case of invalid link timer
+> 
+> Changes since v2:
+>  * improve dt-bindings, convert sgmisys bindings to dt-schema yaml
+>  * fix typo
+> 
+> Changes since v1:
+>  * apply reverse xmas tree everywhere
+>  * improve commit descriptions
+>  * add dt binding documentation
+>  * various small changes addressing all comments received for v1
+> 
+> 
+> Daniel Golle (12):
+>   net: ethernet: mtk_eth_soc: add support for MT7981 SoC
+>   dt-bindings: net: mediatek,net: add mt7981-eth binding
+>   dt-bindings: arm: mediatek: sgmiisys: Convert to DT schema
+>   dt-bindings: arm: mediatek: sgmiisys: add MT7981 SoC
+>   net: ethernet: mtk_eth_soc: set MDIO bus clock frequency
+>   net: ethernet: mtk_eth_soc: reset PCS state
+>   net: ethernet: mtk_eth_soc: only write values if needed
+>   net: ethernet: mtk_eth_soc: fix RX data corruption issue
+>   net: ethernet: mtk_eth_soc: ppe: add support for flow accounting
+>   net: pcs: add driver for MediaTek SGMII PCS
+>   net: ethernet: mtk_eth_soc: switch to external PCS driver
+>   net: dsa: mt7530: use external PCS driver
+> 
+>  .../arm/mediatek/mediatek,sgmiisys.txt        |  25 --
+>  .../devicetree/bindings/net/mediatek,net.yaml |  52 ++-
+>  .../bindings/net/pcs/mediatek,sgmiisys.yaml   |  55 ++++
+>  MAINTAINERS                                   |   7 +
+>  drivers/net/dsa/Kconfig                       |   1 +
+>  drivers/net/dsa/mt7530.c                      | 277 ++++------------
+>  drivers/net/dsa/mt7530.h                      |  47 +--
+>  drivers/net/ethernet/mediatek/Kconfig         |   2 +
+>  drivers/net/ethernet/mediatek/mtk_eth_path.c  |  14 +-
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c   |  67 +++-
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.h   | 105 +++---
+>  drivers/net/ethernet/mediatek/mtk_ppe.c       | 114 ++++++-
+>  drivers/net/ethernet/mediatek/mtk_ppe.h       |  25 +-
+>  .../net/ethernet/mediatek/mtk_ppe_debugfs.c   |   9 +-
+>  .../net/ethernet/mediatek/mtk_ppe_offload.c   |   8 +
+>  drivers/net/ethernet/mediatek/mtk_ppe_regs.h  |  14 +
+>  drivers/net/ethernet/mediatek/mtk_sgmii.c     | 192 ++---------
+>  drivers/net/pcs/Kconfig                       |   7 +
+>  drivers/net/pcs/Makefile                      |   1 +
+>  drivers/net/pcs/pcs-mtk-lynxi.c               | 302 ++++++++++++++++++
+>  include/linux/pcs/pcs-mtk-lynxi.h             |  13 +
+>  21 files changed, 801 insertions(+), 536 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+>  create mode 100644 Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml
+>  create mode 100644 drivers/net/pcs/pcs-mtk-lynxi.c
+>  create mode 100644 include/linux/pcs/pcs-mtk-lynxi.h
+> 
+> 
+> base-commit: 3fcdf2dfefb6313ea0395519d1784808c0b6559b
+> -- 
+> 2.39.2
+> 
+> 
+
 -- 
-2.34.1
-
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
