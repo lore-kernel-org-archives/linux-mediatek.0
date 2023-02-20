@@ -4,73 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4838C636CC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 13:58:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 000DEC64EC7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 13:58:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SSLtTMF4xX+MGFebbGFlRzwOB0f/lB6ncF8M/CLxVoQ=; b=Bpqje2GebIn+2Oj2sCg5afqrql
-	LS1/ox3sOhZpzLjnqRt68G69F8ngAa+kfIofuWnrmeKUJqTObP3LdsQHgAFD809zY7EfGQB/ofbKp
-	t2yj/quTRZCaO7jYJtWuH5AZbS2lNpQXlnQ6qbIZ4mmQxADHnNmXwOHOKhSKE7Z25NKqxlPoehZ0G
-	D2YEiAsu4pyroFcE7LUbQZLmF7BH+PrMi5p+fbk1EPHyh5dMCnOnN4aS/DOjFwafT+ViD+2mp9TNZ
-	mwFcYQsFg55+gt8JPmrHSjubOEBosOUZdoSPe+ILvp/br6fUM6NNZ/0tKXb5Q/wI+aHdCQK1aeZtA
-	Sk3nB+ng==;
+	bh=OPCHjNqeuLu9vw91rGChYQ3hMNzpRgz5gYKIqzFkF5I=; b=AtJDHxZWrIjFW6EP3Zo01xnQcT
+	ALmxmndsfIwgrBvFD8On9D/cHtEVUCOiTMyFi6gtzQRkgfUmgq20L7fJ9g2mP2I/KHOA8bJ4x8no9
+	9Rc0aX+LiJ6mlQvKnSs3Ck2V/r7RJoAodiU4B+ckF5NzNwPamyeYW1siUpmyNVg57iP2q9bTtlwWJ
+	bLnfPkI3o9Qn/D/C0c5pNDltJOCOc9tAcTYorAqfoVgCDJZ/5cWpibuYROfXu3kijAgUK8H6pDT1T
+	GskccnBtRQPpM9makVLviVpmZxGPK14aopDo5BwuTINzIlNINIWSs+BjBqR9jsbvXqA9BItoYYMmN
+	/xD7Hkjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU6g3-004FAk-27; Mon, 20 Feb 2023 13:57:59 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pU6gm-004FMu-3n; Mon, 20 Feb 2023 13:58:44 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU6fr-004F8x-O2; Mon, 20 Feb 2023 13:57:49 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1pU6ga-004FJd-QK; Mon, 20 Feb 2023 13:58:34 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 6F70E60EB3;
-	Mon, 20 Feb 2023 13:57:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 538BDC433EF;
-	Mon, 20 Feb 2023 13:57:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1676901465;
-	bh=Ae2pfdwW4VSlK8d73ruXk0NV6JvWEPEEHPJvO/t/3NE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=mQTprpN3GCS6ND3z4fkA4RYy+j8nOZJdTqz3lnsey2QMHzahFSmVFjh8OXVSSu+uF
-	 2lpTNvD+95fl47nkRAUwOKJr0OfrhNL/o1eJZkHEUzT/YMjUaehYzz/IxmlAnU9OtS
-	 geJOzki6z9PZIKMMdjpqFbXZI6jhBrwuLYfz3c1w=
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: stable@vger.kernel.org
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	patches@lists.linux.dev,
-	Felix Fietkau <nbd@nbd.name>,
-	John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Kees Cook <keescook@chromium.org>,
-	Simon Horman <simon.horman@corigine.com>,
-	Sasha Levin <sashal@kernel.org>
-Subject: [PATCH 6.1 027/118] net: ethernet: mtk_eth_soc: Avoid truncating allocation
-Date: Mon, 20 Feb 2023 14:35:43 +0100
-Message-Id: <20230220133601.519288059@linuxfoundation.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230220133600.368809650@linuxfoundation.org>
-References: <20230220133600.368809650@linuxfoundation.org>
-User-Agent: quilt/0.67
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5CF246602149;
+	Mon, 20 Feb 2023 13:58:30 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1676901511;
+	bh=SsOeXt+P4iwbX9REZy4GabzaEzha82/twxsj56mbnP0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ApwaLqnSxqZSACmOYBRcautqtgPCym4zXwmdQy3gJ8+JNxQGjJZz79agFwnCkU8qO
+	 68q3OZBddtmNffxG7S29M9BYVR13x5iZcc8tBQ/uqzbg4s4vsceyZyI5gLMFlCBnXK
+	 Q5uo2o3jWuosSwCatSLGMt981Q9+dHxZqEFBCJH3HuH2XJsLum95myMvAcU9hn7+vV
+	 RNo6NQOwouOekReWXxCnO12RdNJZNvtBuxA+jantW3I2fsKKMgeAQnz8j4QdcIinBj
+	 BDJLh9wQ19ZPmHBmDpghBon1bzqvglddr95ejGgiWlWhJmPg3G6E9nTuGFBkI2BcyT
+	 fFjQdUfgJb0tA==
+Message-ID: <c6058eb2-0cb5-4cbd-e7d9-5ae5975be86f@collabora.com>
+Date: Mon, 20 Feb 2023 14:58:27 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.2
+Subject: Re: [PATCH] scsi: ufs: Add select to CONFIG_PM in Kconfig
+Content-Language: en-US
+To: Stephen Zhang <starzhangzsd@gmail.com>, jejb@linux.ibm.com,
+ artin.petersen@oracle.com, matthias.bgg@gmail.com, beanhuo@micron.com,
+ bvanassche@acm.org, avri.altman@wdc.com, yoshihiro.shimoda.uh@renesas.com
+Cc: linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ zhangshida@kylinos.cn, k2ci <kernel-bot@kylinos.cn>
+References: <20230220083256.997470-1-zhangshida@kylinos.cn>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230220083256.997470-1-zhangshida@kylinos.cn>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230220_055747_886806_EB9A156D 
-X-CRM114-Status: GOOD (  14.81  )
+X-CRM114-CacheID: sfid-20230220_055833_069389_6E5B8D92 
+X-CRM114-Status: GOOD (  15.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,73 +76,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Kees Cook <keescook@chromium.org>
+Il 20/02/23 09:32, Stephen Zhang ha scritto:
+> From: Shida Zhang <zhangshida@kylinos.cn>
+> 
+> From: Shida Zhang <zhangshida@kylinos.cn>
+> 
+> In a configuration with CONFIG_SCSI_UFS_MEDIATEK set to 'm' and
+> CONFIG_PM set to 'n', errors occur at compile time:
+> 
+> ====
+> ../drivers/ufs/host/ufs-mediatek.c: In function ‘ufs_mtk_runtime_suspend’:
+> ../drivers/ufs/host/ufs-mediatek.c:1621:8: error: implicit declaration of function ‘ufshcd_runtime_suspend’; did you mean ‘ufs_mtk_runtime_suspend’? [-Werror=implicit-function-declaration]
+> ../drivers/ufs/host/ufs-mediatek.c: In function ‘ufs_mtk_runtime_resume’:
+> ../drivers/ufs/host/ufs-mediatek.c:1636:9: error: implicit declaration of function ‘ufshcd_runtime_resume’; did you mean ‘ufs_mtk_runtime_resume’? [-Werror=implicit-function-declaration]
+> ====
+> 
 
-[ Upstream commit f3eceaed9edd7c0e0d9fb057613131f92973626f ]
+That's wrong. This driver should be made to compile for both !CONFIG_PM
+and CONFIG_PM.
 
-There doesn't appear to be a reason to truncate the allocation used for
-flow_info, so do a full allocation and remove the unused empty struct.
-GCC does not like having a reference to an object that has been
-partially allocated, as bounds checking may become impossible when
-such an object is passed to other code. Seen with GCC 13:
+Regards,
+Angelo
 
-../drivers/net/ethernet/mediatek/mtk_ppe.c: In function 'mtk_foe_entry_commit_subflow':
-../drivers/net/ethernet/mediatek/mtk_ppe.c:623:18: warning: array subscript 'struct mtk_flow_entry[0]' is partly outside array bounds of 'unsigned char[48]' [-Warray-bounds=]
-  623 |         flow_info->l2_data.base_flow = entry;
-      |                  ^~
-
-Cc: Felix Fietkau <nbd@nbd.name>
-Cc: John Crispin <john@phrozen.org>
-Cc: Sean Wang <sean.wang@mediatek.com>
-Cc: Mark Lee <Mark-MC.Lee@mediatek.com>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: "David S. Miller" <davem@davemloft.net>
-Cc: Eric Dumazet <edumazet@google.com>
-Cc: Jakub Kicinski <kuba@kernel.org>
-Cc: Paolo Abeni <pabeni@redhat.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: netdev@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Signed-off-by: Kees Cook <keescook@chromium.org>
-Reviewed-by: Simon Horman <simon.horman@corigine.com>
-Link: https://lore.kernel.org/r/20230127223853.never.014-kees@kernel.org
-Signed-off-by: Paolo Abeni <pabeni@redhat.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/net/ethernet/mediatek/mtk_ppe.c | 3 +--
- drivers/net/ethernet/mediatek/mtk_ppe.h | 1 -
- 2 files changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
-index 784ecb2dc9fbd..34ea8af48c3d0 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
-@@ -595,8 +595,7 @@ mtk_foe_entry_commit_subflow(struct mtk_ppe *ppe, struct mtk_flow_entry *entry,
- 	u32 ib1_mask = mtk_get_ib1_pkt_type_mask(ppe->eth) | MTK_FOE_IB1_UDP;
- 	int type;
- 
--	flow_info = kzalloc(offsetof(struct mtk_flow_entry, l2_data.end),
--			    GFP_ATOMIC);
-+	flow_info = kzalloc(sizeof(*flow_info), GFP_ATOMIC);
- 	if (!flow_info)
- 		return;
- 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.h b/drivers/net/ethernet/mediatek/mtk_ppe.h
-index a09c32539bcc9..e66283b1bc79e 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.h
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.h
-@@ -277,7 +277,6 @@ struct mtk_flow_entry {
- 		struct {
- 			struct mtk_flow_entry *base_flow;
- 			struct hlist_node list;
--			struct {} end;
- 		} l2_data;
- 	};
- 	struct rhash_head node;
--- 
-2.39.0
-
+> This patch fixes these by selecting CONFIG_PM from CONFIG_SCSI_UFS_MEDIATEK.
+> 
+> Reported-by: k2ci <kernel-bot@kylinos.cn>
+> Signed-off-by: Shida Zhang <zhangshida@kylinos.cn>
+> ---
+>   drivers/ufs/host/Kconfig | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/ufs/host/Kconfig b/drivers/ufs/host/Kconfig
+> index 4cc2dbd79ed0..f9786f085b54 100644
+> --- a/drivers/ufs/host/Kconfig
+> +++ b/drivers/ufs/host/Kconfig
+> @@ -71,6 +71,7 @@ config SCSI_UFS_QCOM
+>   config SCSI_UFS_MEDIATEK
+>   	tristate "Mediatek specific hooks to UFS controller platform driver"
+>   	depends on SCSI_UFSHCD_PLATFORM && ARCH_MEDIATEK
+> +	select PM
+>   	select PHY_MTK_UFS
+>   	select RESET_TI_SYSCON
+>   	help
 
 
 
