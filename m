@@ -4,69 +4,136 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11727C05027
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 09:05:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 547F6C636CC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 09:09:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r03vOJafeW8bLrIlYeef5dwlOQUUAiC1FpEOzDghrq4=; b=NCmReir/7r8abudNghC79GUn/m
-	hLAqd3jGzPsEp/yR+PH/qytbyZeaOVIJ2GvlA7GO3opEw1uRbC4wRKQtlyT+j/AwvPwNKzDVqkwqm
-	XYH2Nfy9PkQvWDld04sC7TjbJjomwhV5NxUhdXTRaMEHdHZvMyXocRMfK2k7N/AZXnAC8AaDbmgla
-	YxPewpOlOZysqM0nHgKZPBpt1HSUn7qo6KmJExLSxgA5GlFfv+fbRYBSDs8/HKM4Pfd53tvJrVKrf
-	ggtoMeAYx4JjqLxM/CEGUffp5gX8L3iR8ox75fJ2qivhV+FVZx0cXtDEhr19TIp5syMJ0PZcd7Dge
-	KWYSG+PQ==;
+	bh=EUB3veHF6Yw8WQ3NLxuQA+MMGkImfYwWY19COFV3KcA=; b=ijtTy7uBvGtS16JZzNN2+Nb5/V
+	0c2XEPIgZyV/3XYbtXsHaPRewbBDDD14Mgade6hf76haD2Sias8tQ3YxgWGic7VRaVlNn8U8/p10g
+	F6jMBEkEdla8gmGYt7FDhwcvorNuAkJdPwctE33fwBrypqQ0yGCPv91w5MKbScgThhwQlKfEiU2n7
+	TB1RmkoP3cnus4vspPtui4lKR2GP/KDq6qwV2jxYPbq5Jc9BG0WJVdltEOrzqQJuvIPN9a0AFLHWx
+	h9+GzPgLCnPOGeCbF1PN3Bg82+sxhpzNRAyfdLaBzZItjhUDVXiDz6nlWmRbsNX0J/DW600WWyQQa
+	XPF0oddg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU26f-003RW7-HQ; Mon, 20 Feb 2023 09:05:09 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pU2B2-003T4E-3k; Mon, 20 Feb 2023 09:09:40 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU26R-003RRd-8w; Mon, 20 Feb 2023 09:04:57 +0000
+	id 1pU2Ao-003SyQ-9t; Mon, 20 Feb 2023 09:09:32 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E66026600872;
-	Mon, 20 Feb 2023 09:04:52 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3E8BA660213E;
+	Mon, 20 Feb 2023 09:09:19 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676883893;
-	bh=6pMjB3CwfdxT0lcoBj6rbLitJri1o6cACyPKXzc0sMI=;
+	s=mail; t=1676884163;
+	bh=CcTg7ASDuP93bA3Rq45SQJeq89x8G+dp6U70KNUsMPE=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=dRU1TbHgVoJ3/QskG6P40PtEurbE7EFYxSln9fuV05r4Om8/FzVIs5CLSDC/nx5oG
-	 CvNL+ae8p8pFMoa2kdA3L+EqUfqZFkk5vNK60JvMC2K0r+23tjSecqX3OlLIBD8Q49
-	 jXNsb8VkRIUxrGze9sIxSwatCW+1Bwibnq72sqeTJJXHigUl5o6i9WJNiJ3mUJ7wzw
-	 ZLIe6awyeFIXTcDall9sq8vCRxmSiujh1jpY6hxj1e6LJbejXrxp6KHKvfMxuA6fRF
-	 tKSgROVZH1QO6NLgjUXXZkQwHMJ3SiXEmQDPNGbMZEEi4285IKUqk7IdCtvGPGtekC
-	 nTE+iCMAqGo8A==
-Message-ID: <d67a960a-5a24-3744-276b-bf65bdddebfb@collabora.com>
-Date: Mon, 20 Feb 2023 10:04:50 +0100
+	b=hJka8ss87wnQqdZEpCLiQcXMdci2VjXO/ExBxWNd2u3NQv77pVKCv+DGHYQubq0/o
+	 jOR1Q9V8fiDUdLUie9ZgAWAm2ZS3SUyTJtxh8d6pVVh99Gr3ejUZL6i9kC3bBz/ibR
+	 4leGEmi7b30mDq5fBsiprHv3BwcOXyvhPyjnHM9WLt2ciyCmXLOgawlXk3rZAPCCqO
+	 ayFqXWG5eOvRXt8snq6HqCK7P4pk8nwQ8Ekb0YXVJwQKcbaks6FZeHSLPNr2hy20ng
+	 rBEuqKxU6Xm2BcKhPUt1DFa6cukGDfP/GXtAZgoeuEt0eguqDnFCt0KOiWbA1373Vz
+	 JoFgV86+K/1GA==
+Message-ID: <516d9af5-41cc-94a9-4b35-677672101d9c@collabora.com>
+Date: Mon, 20 Feb 2023 10:09:16 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.7.2
-Subject: Re: [PATCH] mt76: mt7915: expose device tree match table
+Subject: Re: [PATCH v1 01/17] thermal/core: Add a thermal zone 'devdata'
+ accessor
 Content-Language: en-US
-To: Lorenz Brun <lorenz@brun.one>, Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Kalle Valo <kvalo@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+To: Daniel Lezcano <daniel.lezcano@linaro.org>, rafael@kernel.org
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Zhang Rui <rui.zhang@intel.com>, Len Brown <lenb@kernel.org>,
+ Damien Le Moal <damien.lemoal@opensource.wdc.com>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>,
+ Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, Raju Rangoju
+ <rajur@chelsio.com>, "David S. Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Bo Jiao <Bo.Jiao@mediatek.com>, Peter Chiu <chui-hao.chiu@mediatek.com>,
- Sujuan Chen <sujuan.chen@mediatek.com>
-Cc: linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230218112946.3039855-1-lorenz@brun.one>
+ Paolo Abeni <pabeni@redhat.com>, Ido Schimmel <idosch@nvidia.com>,
+ Petr Machata <petrm@nvidia.com>,
+ Gregory Greenman <gregory.greenman@intel.com>, Kalle Valo
+ <kvalo@kernel.org>, Sebastian Reichel <sre@kernel.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Miquel Raynal <miquel.raynal@bootlin.com>, Amit Kucheria <amitk@kernel.org>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>,
+ Scott Branden <sbranden@broadcom.com>, Markus Mayer <mmayer@broadcom.com>,
+ Support Opensource <support.opensource@diasemi.com>,
+ Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Thara Gopinath <thara.gopinath@gmail.com>,
+ =?UTF-8?Q?Niklas_S=c3=b6derlund?= <niklas.soderlund@ragnatech.se>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Bartlomiej Zolnierkiewicz <bzolnier@gmail.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>, Vasily Khoruzhick
+ <anarsoul@gmail.com>, Yangtao Li <tiny.windzz@gmail.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Talel Shenhar <talel@amazon.com>,
+ Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Stefan Wahren <stefan.wahren@i2se.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ ye xingchen <ye.xingchen@zte.com.cn>,
+ Zheng Yongjun <zhengyongjun3@huawei.com>, Tim Zimmermann <tim@linux4.de>,
+ Yang Li <yang.lee@linux.alibaba.com>,
+ Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
+ Ricardo Neri <ricardo.neri-calderon@linux.intel.com>,
+ Jiang Jian <jiangjian@cdjrlc.com>, Daniel Golle <daniel@makrotopia.org>,
+ Balsam CHIHI <bchihi@baylibre.com>, Randy Dunlap <rdunlap@infradead.org>,
+ Mikko Perttunen <mperttunen@nvidia.com>,
+ "open list:ACPI THERMAL DRIVER" <linux-acpi@vger.kernel.org>,
+ "open list:LIBATA SUBSYSTEM (Serial and Parallel ATA drivers)"
+ <linux-ide@vger.kernel.org>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:HARDWARE MONITORING" <linux-hwmon@vger.kernel.org>,
+ "open list:IIO SUBSYSTEM AND DRIVERS" <linux-iio@vger.kernel.org>,
+ "open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>,
+ "open list:INPUT (KEYBOARD, MOUSE, JOYSTICK, TOUCHSCREEN)..."
+ <linux-input@vger.kernel.org>,
+ "open list:CXGB4 ETHERNET DRIVER (CXGB4)" <netdev@vger.kernel.org>,
+ "open list:INTEL WIRELESS WIFI LINK (iwlwifi)"
+ <linux-wireless@vger.kernel.org>,
+ "moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE"
+ <linux-rpi-kernel@lists.infradead.org>,
+ "open list:ARM/QUALCOMM SUPPORT" <linux-arm-msm@vger.kernel.org>,
+ "open list:RENESAS R-CAR THERMAL DRIVERS"
+ <linux-renesas-soc@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+ "open list:SAMSUNG THERMAL DRIVER" <linux-samsung-soc@vger.kernel.org>,
+ "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
+ "open list:TI BANDGAP AND THERMAL DRIVER" <linux-omap@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+References: <20230219143657.241542-1-daniel.lezcano@linaro.org>
+ <20230219143657.241542-2-daniel.lezcano@linaro.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230218112946.3039855-1-lorenz@brun.one>
+In-Reply-To: <20230219143657.241542-2-daniel.lezcano@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230220_010455_468037_AF2B35C4 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20230220_010926_638928_3AFB9AB8 
+X-CRM114-Status: GOOD (  14.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,21 +148,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/02/23 12:29, Lorenz Brun ha scritto:
-> On MT7986 the WiFi driver currently does not get automatically loaded,
-> requiring manual modprobing because the device tree compatibles are not
-> exported into metadata.
+Il 19/02/23 15:36, Daniel Lezcano ha scritto:
+> The thermal zone device structure is exposed to the different drivers
+> and obviously they access the internals while that should be
+> restricted to the core thermal code.
 > 
-> Add the missing MODULE_DEVICE_TABLE macro to fix this.
+> In order to self-encapsulate the thermal core code, we need to prevent
+> the drivers accessing directly the thermal zone structure and provide
+> accessor functions to deal with.
 > 
-> Fixes: 99ad32a4ca3a2 ("mt76: mt7915: add support for MT7986")
-> Signed-off-by: Lorenz Brun <lorenz@brun.one>
+> Provide an accessor to the 'devdata' structure and make use of it in
+> the different drivers.
+> 
+> No functional changes intended.
+> 
+> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> ---
 
-I don't think that this commit needs a Fixes tag, as you're only adding (good)
-auto-load commodity.
 
-Regardless of that:
+>   drivers/thermal/mediatek/auxadc_thermal.c        |  2 +-
+>   drivers/thermal/mediatek/lvts_thermal.c          |  4 ++--
+
+For MediaTek auxadc and lvts:
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
