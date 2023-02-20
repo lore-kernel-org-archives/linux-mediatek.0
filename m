@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA0ABC636D6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 15:43:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A41E1C636D6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 15:44:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Vr0rSHj74FJCEU+LN+qZ1nHPrwauM15rNLf68zVlLzA=; b=gBY8+esTuC7ai7cuhy6pYE3BvB
-	2EhIobTtqVyqrWVgMgmP4KNBiolTYkqhuvmihOd9R3oeFDxUiSDGT0qhvTHUnc1iBHUubL2UGQsQK
-	JnvmZjK/07UlTFQzYi6GbUgmEqp+oWAP6EWm0yGlQ6cn68nUT3J+8aEU4+iKcQNbhMC6skM6kDsVQ
-	NCpL9pVvw5ctcf/rQmssTDlQdVeUBH8+/VfOvoH5Z5usTk/enDjQVhe2WhvP/MMdDNXslgfg4awVD
-	4nB1SbN1lEDSpFdb+VkdA4UYnHQuJJd0q3x7u3zjMDCRKEzCKSdgYr/hpAnLj6T8IUlLj31U4FLlz
-	jpVc7udA==;
+	bh=RcQIJVZN0bfTtWTcFuXPY5JLPTyS0TeFlL26BSS8yJ4=; b=i1HxGj5pgy+9+NWCzBIWQJEk1Y
+	lVJyM+JfR6EhYr4msm3RJJTLCoOh660JaI5a/kFnxjqobL4QM5grq1TFopakKoLL4baIgkaJyIOw+
+	irpXSRB074SfTSXNbDSoBnZfK86rvg5pkhxgFuMBN+lMIrjxHy7xHRkuSSMGcftnc221lDXKRylpd
+	Jpsj82XzCdpdieSpri5FoxaiU5WSh91ljyjqYLVnH3L+8YPbeCx1fcLjMBjakABJE8T5SBGPxG3dZ
+	fD56yCnjkklWjE/FEApj1pf3W0/kM13/Z0/fQwFSUJXUj9GAjTkmbQ/NL2+9WEXqqlx/4AIBpIO7T
+	7kd+BC9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU8KM-004iOK-SF; Mon, 20 Feb 2023 15:43:42 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pU8L0-004ikr-Te; Mon, 20 Feb 2023 15:44:23 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU7gU-004NvV-Jo; Mon, 20 Feb 2023 15:02:33 +0000
+	id 1pU7gX-004NxD-EW; Mon, 20 Feb 2023 15:02:35 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1D52A6602169;
-	Mon, 20 Feb 2023 15:02:28 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D9F2F6602136;
+	Mon, 20 Feb 2023 15:02:30 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676905349;
-	bh=M5hdGMuzmKCUIv2g12dDgcyuK136Nce3uLfpDQsboOQ=;
+	s=mail; t=1676905352;
+	bh=h+DBC5isCqQIqQmrUysGMFQN8g+3IzpdI5PPG7viLGE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=aaVL1z4+bFi5k5Pm92LtPA2oZYmKSVXIi3EpYw3kN79tgEJDKZQpUPOZMXcx/gGFe
-	 QrxLcIQqhx+lUCUjuA4FYxZT5+sUJjV76Ydum6eJOXq7xNCXInW04Go9fZDJmIUuxK
-	 MI2i4Wg+35RAQ9aDRns6YEC2T1n+JH/xjybUtH78yuDtMWRLf3F3NimAk6/Pg88PX4
-	 2nDq4p0k8jhdpkGZwyRVupxsZZpFaVRHkz4PNLyn76mrOG3o2jqzWihjmY5Lh01KdS
-	 cvQFE447RQXMyaf1zDnKPv/Sja6+JIz3YeGWFdBu2H+rFx4tKoJC344SNSMwEshH44
-	 ggLC9Nmgl5VIQ==
+	b=A2ceCJbfBSKEmQFDH+EWebqM9Cc93iP8qNiN0OkED5GaFGGa5zicJcBmk5rOr4Sth
+	 TlijcFbIjwCDa8v23aV3eZwwFU1HWYcHoPacf4v8AWwDecyw3MlwAJdnP0mAKvFmrj
+	 SO5pZz8tqTcs4Sn3W0arqz3zcP77Czj3DcFybzy1gyjxIcXJYdKfB0X1/863VC+L+p
+	 LWrXjRJ+MfVn7d+tLjpzCmW2aIoAhSn0y7hcAaqNi4uwJtVoGZnLeTC/SbT/b9Er5C
+	 F0IPJrEdpP1x4LXObTojyNundP0m/fugvq97mxTyw8tZYWBl7CC+kwMgxSGrGSnFyM
+	 JGpSg3Am/BxUw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mturquette@baylibre.com
 Cc: sboyd@kernel.org,
@@ -67,17 +67,17 @@ Cc: sboyd@kernel.org,
 	linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 52/55] clk: mediatek: mt8135-apmixedsys: Convert to platform_driver and module
-Date: Mon, 20 Feb 2023 16:01:08 +0100
-Message-Id: <20230220150111.77897-53-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 54/55] clk: mediatek: mt8135: Convert to simple probe and enable module build
+Date: Mon, 20 Feb 2023 16:01:10 +0100
+Message-Id: <20230220150111.77897-55-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230220150111.77897-1-angelogioacchino.delregno@collabora.com>
 References: <20230220150111.77897-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230220_070230_881308_AA82074A 
-X-CRM114-Status: GOOD (  15.85  )
+X-CRM114-CacheID: sfid-20230220_070233_845224_28EA7409 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,85 +92,185 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert apmixedsys clocks to be a platform driver; while at it, also
-add necessary error handling to the probe function, add a remove
-callback and provide a MODULE_DESCRIPTION().
+Convert the MT8135 clock drivers to platform_driver using the common
+simple probe mechanism.
 
-This driver is now compatible with an eventual module build.
+Now that all of the MT8135 clock drivers (including apmixedsys) can
+be compiled as modules, change the COMMON_CLK_MT8135 configuration
+option to tristate to enable module build.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/clk/mediatek/clk-mt8135-apmixedsys.c | 53 ++++++++++++++++++--
- 1 file changed, 48 insertions(+), 5 deletions(-)
+ drivers/clk/mediatek/Kconfig      |   2 +-
+ drivers/clk/mediatek/clk-mt8135.c | 110 ++++++++++++------------------
+ 2 files changed, 43 insertions(+), 69 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt8135-apmixedsys.c b/drivers/clk/mediatek/clk-mt8135-apmixedsys.c
-index 2b4d379300fc..744aae092281 100644
---- a/drivers/clk/mediatek/clk-mt8135-apmixedsys.c
-+++ b/drivers/clk/mediatek/clk-mt8135-apmixedsys.c
-@@ -47,16 +47,59 @@ static const struct mtk_pll_data plls[] = {
- 	PLL(CLK_APMIXED_VDECPLL, "vdecpll", 0x304, 0x31c, 0x80000000, 0, 21, 0x2b0, 6, 0x0, 0x308, 0),
+diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+index 90691261cddb..a15fbdfd3a53 100644
+--- a/drivers/clk/mediatek/Kconfig
++++ b/drivers/clk/mediatek/Kconfig
+@@ -423,7 +423,7 @@ config COMMON_CLK_MT7986_ETHSYS
+ 	  required on MediaTek MT7986 SoC.
+ 
+ config COMMON_CLK_MT8135
+-	bool "Clock driver for MediaTek MT8135"
++	tristate "Clock driver for MediaTek MT8135"
+ 	depends on (ARCH_MEDIATEK && ARM) || COMPILE_TEST
+ 	select COMMON_CLK_MEDIATEK
+ 	default ARCH_MEDIATEK && ARM
+diff --git a/drivers/clk/mediatek/clk-mt8135.c b/drivers/clk/mediatek/clk-mt8135.c
+index 8785d58cb3a5..39fd919900e5 100644
+--- a/drivers/clk/mediatek/clk-mt8135.c
++++ b/drivers/clk/mediatek/clk-mt8135.c
+@@ -5,8 +5,10 @@
+  */
+ 
+ #include <linux/clk.h>
++#include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/of_address.h>
++#include <linux/platform_device.h>
+ #include <linux/slab.h>
+ #include <linux/mfd/syscon.h>
+ #include <dt-bindings/clock/mt8135-clk.h>
+@@ -18,6 +20,7 @@
+ static DEFINE_SPINLOCK(mt8135_clk_lock);
+ 
+ static const struct mtk_fixed_factor top_divs[] __initconst = {
++	FACTOR(CLK_DUMMY, "top_divs_dummy", "clk_null", 1, 1),
+ 	FACTOR(CLK_TOP_DSI0_LNTC_DSICLK, "dsi0_lntc_dsiclk", "clk_null", 1, 1),
+ 	FACTOR(CLK_TOP_HDMITX_CLKDIG_CTS, "hdmitx_clkdig_cts", "clk_null", 1, 1),
+ 	FACTOR(CLK_TOP_CLKPH_MCK, "clkph_mck", "clk_null", 1, 1),
+@@ -407,6 +410,7 @@ static const struct mtk_gate_regs infra_cg_regs = {
+ 		       &mtk_clk_gate_ops_setclr, CLK_IS_CRITICAL)
+ 
+ static const struct mtk_gate infra_clks[] __initconst = {
++	GATE_DUMMY(CLK_DUMMY, "infra_dummy"),
+ 	GATE_ICG(CLK_INFRA_PMIC_WRAP, "pmic_wrap_ck", "axi_sel", 23),
+ 	GATE_ICG(CLK_INFRA_PMICSPI, "pmicspi_ck", "pmicspi_sel", 22),
+ 	GATE_ICG(CLK_INFRA_CCIF1_AP_CTRL, "ccif1_ap_ctrl", "axi_sel", 21),
+@@ -441,6 +445,7 @@ static const struct mtk_gate_regs peri1_cg_regs = {
+ 	GATE_MTK(_id, _name, _parent, &peri1_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
+ 
+ static const struct mtk_gate peri_gates[] __initconst = {
++	GATE_DUMMY(CLK_DUMMY, "peri_dummy"),
+ 	/* PERI0 */
+ 	GATE_PERI0(CLK_PERI_I2C5, "i2c5_ck", "axi_sel", 31),
+ 	GATE_PERI0(CLK_PERI_I2C4, "i2c4_ck", "axi_sel", 30),
+@@ -516,77 +521,46 @@ static const struct mtk_clk_rst_desc clk_rst_desc[] = {
+ 	}
  };
  
--static void __init mtk_apmixedsys_init(struct device_node *node)
-+static int clk_mt8135_apmixed_probe(struct platform_device *pdev)
- {
- 	struct clk_hw_onecell_data *clk_data;
-+	struct device_node *node = pdev->dev.of_node;
-+	int ret;
- 
- 	clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
- 	if (!clk_data)
+-static void __init mtk_topckgen_init(struct device_node *node)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	void __iomem *base;
+-	int r;
+-
+-	base = of_iomap(node, 0);
+-	if (!base) {
+-		pr_err("%s(): ioremap failed\n", __func__);
 -		return;
-+		return -ENOMEM;
+-	}
++static const struct mtk_clk_desc infra_desc = {
++	.clks = infra_clks,
++	.num_clks = ARRAY_SIZE(infra_clks),
++	.rst_desc = &clk_rst_desc[0],
++};
  
--	mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
-+	ret = mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
-+	if (ret)
-+		return ret;
-+
-+	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
-+	if (ret)
-+		goto unregister_plls;
-+
-+	return 0;
-+
-+unregister_plls:
-+	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
-+
-+	return ret;
-+}
-+
-+static int clk_mt8135_apmixed_remove(struct platform_device *pdev)
-+{
-+	struct device_node *node = pdev->dev.of_node;
-+	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
-+
-+	of_clk_del_provider(node);
-+	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
-+	mtk_free_clk_data(clk_data);
-+
-+	return 0;
- }
--CLK_OF_DECLARE(mtk_apmixedsys, "mediatek,mt8135-apmixedsys",
--		mtk_apmixedsys_init);
-+
-+static const struct of_device_id of_match_clk_mt8135_apmixed[] = {
-+	{ .compatible = "mediatek,mt8135-apmixedsys" },
+-	clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
+-
+-	mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), clk_data);
+-	mtk_clk_register_composites(NULL, top_muxes,
+-				    ARRAY_SIZE(top_muxes), base,
+-				    &mt8135_clk_lock, clk_data);
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r)
+-		pr_err("%s(): could not register clock provider: %d\n",
+-			__func__, r);
+-}
+-CLK_OF_DECLARE(mtk_topckgen, "mediatek,mt8135-topckgen", mtk_topckgen_init);
+-
+-static void __init mtk_infrasys_init(struct device_node *node)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_INFRA_NR_CLK);
+-
+-	mtk_clk_register_gates(NULL, node, infra_clks,
+-			       ARRAY_SIZE(infra_clks), clk_data);
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r)
+-		pr_err("%s(): could not register clock provider: %d\n",
+-			__func__, r);
+-
+-	mtk_register_reset_controller(node, &clk_rst_desc[0]);
+-}
+-CLK_OF_DECLARE(mtk_infrasys, "mediatek,mt8135-infracfg", mtk_infrasys_init);
+-
+-static void __init mtk_pericfg_init(struct device_node *node)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-	void __iomem *base;
+-
+-	base = of_iomap(node, 0);
+-	if (!base) {
+-		pr_err("%s(): ioremap failed\n", __func__);
+-		return;
+-	}
++static const struct mtk_clk_desc peri_desc = {
++	.clks = peri_gates,
++	.num_clks = ARRAY_SIZE(peri_gates),
++	.composite_clks = peri_clks,
++	.num_composite_clks = ARRAY_SIZE(peri_clks),
++	.clk_lock = &mt8135_clk_lock,
++	.rst_desc = &clk_rst_desc[1],
++};
+ 
+-	clk_data = mtk_alloc_clk_data(CLK_PERI_NR_CLK);
++static const struct mtk_clk_desc topck_desc = {
++	.factor_clks = top_divs,
++	.num_factor_clks = ARRAY_SIZE(top_divs),
++	.composite_clks = top_muxes,
++	.num_composite_clks = ARRAY_SIZE(top_muxes),
++	.clk_lock = &mt8135_clk_lock,
++};
+ 
+-	mtk_clk_register_gates(NULL, node, peri_gates,
+-			       ARRAY_SIZE(peri_gates), clk_data);
+-	mtk_clk_register_composites(NULL, peri_clks,
+-				    ARRAY_SIZE(peri_clks), base,
+-				    &mt8135_clk_lock, clk_data);
++static const struct of_device_id of_match_clk_mt8135[] = {
++	{ .compatible = "mediatek,mt8135-infracfg", .data = &infra_desc },
++	{ .compatible = "mediatek,mt8135-pericfg", .data = &peri_desc },
++	{ .compatible = "mediatek,mt8135-topckgen", .data = &topck_desc },
 +	{ /* sentinel */ }
 +};
-+MODULE_DEVICE_TABLE(of, of_match_clk_mt8135_apmixed);
-+
-+static struct platform_driver clk_mt8135_apmixed_drv = {
-+	.probe = clk_mt8135_apmixed_probe,
-+	.remove = clk_mt8135_apmixed_remove,
++MODULE_DEVICE_TABLE(of, of_match_clk_mt8135);
+ 
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r)
+-		pr_err("%s(): could not register clock provider: %d\n",
+-			__func__, r);
++static struct platform_driver clk_mt8135_drv = {
 +	.driver = {
-+		.name = "clk-mt8135-apmixed",
-+		.of_match_table = of_match_clk_mt8135_apmixed,
++		.name = "clk-mt8135",
++		.of_match_table = of_match_clk_mt8135,
 +	},
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
 +};
-+module_platform_driver(clk_mt8135_apmixed_drv)
-+
-+MODULE_DESCRIPTION("MediaTek MT8135 apmixedsys clocks driver");
++module_platform_driver(clk_mt8135_drv);
+ 
+-	mtk_register_reset_controller(node, &clk_rst_desc[1]);
+-}
+-CLK_OF_DECLARE(mtk_pericfg, "mediatek,mt8135-pericfg", mtk_pericfg_init);
++MODULE_DESCRIPTION("MediaTek MT8135 clocks driver");
  MODULE_LICENSE("GPL");
 -- 
 2.39.1
