@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A69F2C64EC7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 15:01:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9A76C64EC4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 15:01:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F4PBi2mvqWqsHQPg9K9rk+oelG9TcjukgW7WIAxwFds=; b=RNTfYPjvHXXqykAuy2Ixk/l7a/
-	rkD/73zLTelTU/ZFawBBmRth5vbs+0alJ4KoVN+JkwpeP/r2orQ6X23d7siBP9Vr38OlxXCuuZmwk
-	DCAt9Py6zCejPSw3jAkYVCQej/Cvsj9lA7p0c5O7XABoug/kB+1yzMBR6POTFNCMNWuKCHG6hcq3i
-	jlwQC4FXvGRx9WCkaxrP8UsZzCZhBoOo8fhkbGnAaxdZGOHmU5pg6A2SZkbw0WpbAMTvXlFkPIFPD
-	QIHfjtETkVXzS8RIGsC1fKfIh7V1ZE3i3G8Q72tSsJyaZRZ1NAJNw/NG7KTIVr5lNH9VIKR2HK4j7
-	dYozaHFQ==;
+	bh=BIUe/urSrw8UKNlFpYwM/jHzYq59djlpkvIdsXh3rRU=; b=JZ4pb+0DWOF/g8OFL3RqYAziOH
+	JW6mPsUPaGHn2eR4gCd6MzT5INCUIqmiIVBtuu2CM9i0P7SmdB2rvYWEEo85uutYg6mbUWDuU+M8e
+	vq7/N0hVDFO1b8Dt6natLpwV87KVsNVmxqZZmcMN55+IrQGb0bDIKLhOji1LVi1lazUp3i2dl5Koi
+	wpsaFYoO/SVYJNrYWSJQkgzq9rNJBI5WrVSJ7kYHIFIdY4z27nc/lE9nItNQgzPobgm/iBbpxOIax
+	ZlKurdAnru7RdMTWsgMzKAlQf84hR8Gh3ZyBrZep9wYgHFy6ogO6OTYMbXciVvAmZ0jcTdqlzBu+g
+	kPj+wGJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU7fc-004NJf-4K; Mon, 20 Feb 2023 15:01:36 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pU7fm-004NPY-As; Mon, 20 Feb 2023 15:01:46 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU7fO-004NC3-Ue; Mon, 20 Feb 2023 15:01:24 +0000
+	id 1pU7fO-004NC4-Tx; Mon, 20 Feb 2023 15:01:24 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6F54F6602166;
-	Mon, 20 Feb 2023 15:01:16 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D24F36602168;
+	Mon, 20 Feb 2023 15:01:17 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676905277;
-	bh=l5BdwmfyxbZlaujYTSJF7PTIlSpQy1drDejxx2IavtU=;
+	s=mail; t=1676905279;
+	bh=iO2EFs+uVUr3LJJKJ1mXQIFQpij+PavyEEfSYdwBwPs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Q9k3WpRwohnh0ddpZBv2F8RzE2vZ8ybMmqPZ3Ol+zbDQ8DevqOR15+5wuoRGu/L/X
-	 hOowa9m7SNzaY51EuCVlT17vgVyhGWbWGEogWs076oXe6Fp21dWj576jUOFVaMM1ed
-	 Q+Xtl27e0I5oWtH+ZWCh3up7LxbSqAYsYP2Py3Vdho7H+U8/i4U12Xel5vfX90Vx3f
-	 V7z4B1Et8q3j86dr5yXgY/udJTrGa8IxpG7LWaLjbpoxpKa8GnNzvGvcPhSVHHy9YN
-	 Y6nkeZvlH0yQxC/e0dzYE+QibiSHiWAUaMteXYqnTUrU+MtAGyPuavQk3xIhYmDEci
-	 3f7vka0niC4xg==
+	b=d9mVk9to/vBTsg168Vu8lh5qODN0aJ/6bDATohmPNx3tVcTwVohtWvTkDKUQ5FD2g
+	 7RBWzwHqfOCy6Z/L1PF/3Zdbe1JfC6JNV2LG51N7C89mPsUKU3yYZId42HrRcR9eaY
+	 TmDXNYH6Qn8hYh31yBtCRUcKIIxYpRoXj+2mhZf1toUqPtVwYlLEjZd8xB+hNsOO3y
+	 7UBo9VwvIq29IFLgqDmm7Z/tZLTqDubJJMg0iAjIo44dO1gP7QeWuphaKMpudVXprf
+	 DwLdbw0rQ7oSlqBfdAkb5rDjgQ53YhuUkFN5he+7nxa6FvtxWEDBnBWeAXG7AVqdFt
+	 zYMzO/wvtwfIw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mturquette@baylibre.com
 Cc: sboyd@kernel.org,
@@ -67,17 +67,17 @@ Cc: sboyd@kernel.org,
 	linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 01/55] clk: mediatek: clk-mtk: Switch to device_get_match_data()
-Date: Mon, 20 Feb 2023 16:00:17 +0100
-Message-Id: <20230220150111.77897-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 02/55] clk: mediatek: clk-mtk: Introduce clk_mtk_pdev_{probe,remove}()
+Date: Mon, 20 Feb 2023 16:00:18 +0100
+Message-Id: <20230220150111.77897-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230220150111.77897-1-angelogioacchino.delregno@collabora.com>
 References: <20230220150111.77897-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230220_070123_238831_42B9DB4E 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20230220_070123_428607_30CE5F95 
+X-CRM114-Status: GOOD (  15.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,44 +92,130 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Instead of using of_device_get_match_data(), switch to the generic
-device_get_match_data().
+Introduce functions clk_mtk_pdev_probe() and clk_mtk_pdev_remove():
+these will be useful to commonize the probe and remove handlers for
+multimedia (clk-mtxxxx-mm) drivers as these are registered by the
+mtk-mmsys driver instead of having their own devicetree compatible.
+
+In order to do this, the main logic of clk_mtk_simple{probe,remove}()
+was moved to new static __clk_mtk_simple_{probe,remove}() functions
+that take as parameter a pointer to struct device_node because when
+registering the clocks from mtk-mmsys we want to pass a pointer to
+the clock driver's parent (which is, obviously, mtk-mmsys) struct
+device_node instead.
+
+As for the clock driver's platform data: for the devicetree case, we
+keep using the standard match_data mechanism, else we retrieve it
+from an id_table.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/clk/mediatek/clk-mtk.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ drivers/clk/mediatek/clk-mtk.c | 54 +++++++++++++++++++++++++++++-----
+ drivers/clk/mediatek/clk-mtk.h |  2 ++
+ 2 files changed, 48 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-index c90c0a6b501b..71eb591cd00c 100644
+index 71eb591cd00c..a69d3f0a38c7 100644
 --- a/drivers/clk/mediatek/clk-mtk.c
 +++ b/drivers/clk/mediatek/clk-mtk.c
-@@ -12,7 +12,6 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
+@@ -462,17 +462,25 @@ void mtk_clk_unregister_dividers(const struct mtk_clk_divider *mcds, int num,
+ }
+ EXPORT_SYMBOL_GPL(mtk_clk_unregister_dividers);
  
-@@ -471,7 +470,7 @@ int mtk_clk_simple_probe(struct platform_device *pdev)
+-int mtk_clk_simple_probe(struct platform_device *pdev)
++static int __mtk_clk_simple_probe(struct platform_device *pdev,
++				  struct device_node *node)
+ {
++	const struct platform_device_id *id;
+ 	const struct mtk_clk_desc *mcd;
+ 	struct clk_hw_onecell_data *clk_data;
+-	struct device_node *node = pdev->dev.of_node;
  	void __iomem *base;
  	int num_clks, r;
  
--	mcd = of_device_get_match_data(&pdev->dev);
-+	mcd = device_get_match_data(&pdev->dev);
- 	if (!mcd)
- 		return -EINVAL;
+ 	mcd = device_get_match_data(&pdev->dev);
+-	if (!mcd)
+-		return -EINVAL;
++	if (!mcd) {
++		/* Clock driver wasn't registered from devicetree */
++		id = platform_get_device_id(pdev);
++		if (id)
++			mcd = (const struct mtk_clk_desc *)id->driver_data;
++
++		if (!mcd)
++			return -EINVAL;
++	}
  
-@@ -586,7 +585,7 @@ EXPORT_SYMBOL_GPL(mtk_clk_simple_probe);
+ 	/* Composite clocks needs us to pass iomem pointer */
+ 	if (mcd->composite_clks) {
+@@ -581,13 +589,12 @@ int mtk_clk_simple_probe(struct platform_device *pdev)
+ 		iounmap(base);
+ 	return r;
+ }
+-EXPORT_SYMBOL_GPL(mtk_clk_simple_probe);
  
- int mtk_clk_simple_remove(struct platform_device *pdev)
+-int mtk_clk_simple_remove(struct platform_device *pdev)
++static int __mtk_clk_simple_remove(struct platform_device *pdev,
++				   struct device_node *node)
  {
--	const struct mtk_clk_desc *mcd = of_device_get_match_data(&pdev->dev);
-+	const struct mtk_clk_desc *mcd = device_get_match_data(&pdev->dev);
+-	const struct mtk_clk_desc *mcd = device_get_match_data(&pdev->dev);
  	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
- 	struct device_node *node = pdev->dev.of_node;
+-	struct device_node *node = pdev->dev.of_node;
++	const struct mtk_clk_desc *mcd = device_get_match_data(&pdev->dev);
+ 
+ 	of_clk_del_provider(node);
+ 	if (mcd->clks)
+@@ -608,6 +615,37 @@ int mtk_clk_simple_remove(struct platform_device *pdev)
+ 
+ 	return 0;
+ }
++
++int mtk_clk_pdev_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct device_node *node = dev->parent->of_node;
++
++	return __mtk_clk_simple_probe(pdev, node);
++}
++EXPORT_SYMBOL_GPL(mtk_clk_pdev_probe);
++
++int mtk_clk_simple_probe(struct platform_device *pdev)
++{
++	struct device_node *node = pdev->dev.of_node;
++
++	return __mtk_clk_simple_probe(pdev, node);
++}
++EXPORT_SYMBOL_GPL(mtk_clk_simple_probe);
++
++int mtk_clk_pdev_remove(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct device_node *node = dev->parent->of_node;
++
++	return __mtk_clk_simple_remove(pdev, node);
++}
++EXPORT_SYMBOL_GPL(mtk_clk_pdev_remove);
++
++int mtk_clk_simple_remove(struct platform_device *pdev)
++{
++	return __mtk_clk_simple_remove(pdev, pdev->dev.of_node);
++}
+ EXPORT_SYMBOL_GPL(mtk_clk_simple_remove);
+ 
+ MODULE_LICENSE("GPL");
+diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+index 41f4fa3b0c21..b8e0ff8f52fa 100644
+--- a/drivers/clk/mediatek/clk-mtk.h
++++ b/drivers/clk/mediatek/clk-mtk.h
+@@ -236,6 +236,8 @@ struct mtk_clk_desc {
+ 	unsigned int mfg_clk_idx;
+ };
+ 
++int mtk_clk_pdev_probe(struct platform_device *pdev);
++int mtk_clk_pdev_remove(struct platform_device *pdev);
+ int mtk_clk_simple_probe(struct platform_device *pdev);
+ int mtk_clk_simple_remove(struct platform_device *pdev);
  
 -- 
 2.39.1
