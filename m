@@ -4,68 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1B58C05027
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 16:40:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33662C05027
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Feb 2023 16:41:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i3CakrJQFkm65YXyhehgRdoeBRtU8OyX2oDLK++gsBY=; b=UlZBallkqxqIywBXoDaADMt+tD
-	3oe1qoRWTfQGq+pHN5mpBnvhy5g7DljjM75LIbtiNZ9vLxy4t+Tf3U2lAXjmfXrVdwB+JYQO5Zawo
-	W4EW72QBbrOcwdBr4Wr/Qq8FzCW9FMqaolKxm03FXwGPpfierS3PSfElvYwo5fDYtJ2zkSeJqhplc
-	WWD1YpRLRPd/JRqj8Yw/O2elMwL/xOfESGv0QmicdcMpxgfNu6Q8DxOuZNMV5hHX/Y9Rw2IyYRWNl
-	w/K94LI7JmG10Id06ZA+wyAatoeqKLNksJ/rT59wPSF4A2g2D+cKFvdGb//j9imD6AM/Hi1jha30E
-	X0tqdRDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aj6fpMyQUAVJgpBuBK0am4EQGxHRGyI+Jv16ul8BJho=; b=ir+MMyaUJVil1VsUHR4hYAQZ5c
+	zOxEH7hjoaRbPahH3u90XA8AcbdtGobuamsfjTM46RPXYqnGmmtn4b9xk/DKBNeRE/y0I11ixTSO7
+	r9dM8BwFyrSTv/cisyUeS2WTob6JVh8lMlNHnu7yjNwb7MTP9FM6KGrpxUtNev4D81/5fKep685/F
+	HKeYpcTSnd5BZlzZypL81nggqvkjIG/GfKhB+Hej5pchXbcGtlahWvJf3JGPLWb40PisNWS10JnKw
+	hShsVeb/bZ25Y27/w7LFzMbIWolEBUGqiHg6AnV4VBmUzEOeFtbEr3XMBC8bq5oF+G7+J5WlSTWQ1
+	4IP8m96w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU9DK-004txR-O8; Mon, 20 Feb 2023 16:40:31 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pU9E1-004uA2-14; Mon, 20 Feb 2023 16:41:13 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU9Cq-004tsT-N5; Mon, 20 Feb 2023 16:40:02 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 7E13860EDF;
-	Mon, 20 Feb 2023 16:39:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E120AC433A1;
-	Mon, 20 Feb 2023 16:39:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1676911196;
-	bh=i3CakrJQFkm65YXyhehgRdoeBRtU8OyX2oDLK++gsBY=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=bI9ADxHVdLO03aK8NOrCaGWY2YoFDs2a3EPlDq7AUHL2O6K+8RwisxFqgxrnMmS+i
-	 iJnIQ7FxYw4Cgz99zyEZLICxZFiaHASQr1NihMYu157vqCNyU8OLvUES3VLfjGEtV5
-	 jht3flOOJONEVxcZ4AsTmv+cQIf3xLrDCBtPqcGxAfD0gPwC88qLErhgKxqYGOauzG
-	 QFAFX1hsUvChb24nl09j+j/lDG5fGA7scrkqO7UZJAEanVjEumJTi7ypx83vv8RUNF
-	 984mIeGuYr9NWw42x39qMT+OUg+BacEQrnskRhE9wEXVjR5l1jH6jTAVTZzxGUDPE/
-	 j38UGWkWI7lhg==
-Received: by mail-lf1-f53.google.com with SMTP id w27so2456228lfu.4;
-        Mon, 20 Feb 2023 08:39:56 -0800 (PST)
-X-Gm-Message-State: AO0yUKUYdQfHWCv9fIcbbSG8zJa3SEBN7hv1yJA6sar3rVOFMDeSJVU4
-	W6KCyvFqq1EaEFCmb7djMod35MaX9cyrNYYV8w==
-X-Google-Smtp-Source: AK7set+2kJBOAKEpxRGpK8KOJwvlu/ZWPTWd/d0PjSOJYzKrSDyF+z8L7LKeT5FGF52CAVPsomQ/d58pI0EpLGJYPGE=
-X-Received: by 2002:ac2:5495:0:b0:4d5:ca32:68a2 with SMTP id
- t21-20020ac25495000000b004d5ca3268a2mr881249lfk.7.1676911194865; Mon, 20 Feb
- 2023 08:39:54 -0800 (PST)
+	id 1pU9Ds-004u65-0S; Mon, 20 Feb 2023 16:41:08 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pU9Dn-0002bj-27;
+	Mon, 20 Feb 2023 17:40:59 +0100
+Date: Mon, 20 Feb 2023 16:40:56 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Russell King <linux@armlinux.org.uk>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>
+Cc: Jianhui Zhao <zhaojh329@gmail.com>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
+Subject: [PATCH v9 01/12] net: ethernet: mtk_eth_soc: add support for MT7981
+ SoC
+Message-ID: <905c5d68f707f5af92d095130de3e8295f0a797d.1676910958.git.daniel@makrotopia.org>
+References: <cover.1676910958.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-References: <20230219233439.3157-1-chunkuang.hu@kernel.org> <437c0c5c-9a71-253e-eb2d-39e167e35099@collabora.com>
-In-Reply-To: <437c0c5c-9a71-253e-eb2d-39e167e35099@collabora.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 21 Feb 2023 00:39:43 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_8wQxEHGiPrWc+JuNWKzEfk4=Fe17P3tCrY2jW-dQCYPA@mail.gmail.com>
-Message-ID: <CAAOTY_8wQxEHGiPrWc+JuNWKzEfk4=Fe17P3tCrY2jW-dQCYPA@mail.gmail.com>
-Subject: Re: [PATCH] soc: mediatek: cmdq: Remove unused helper funciton
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1676910958.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230220_084000_810766_7167547C 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20230220_084104_314555_4B4A53A9 
+X-CRM114-Status: GOOD (  18.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,42 +77,215 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Angelo:
+The MediaTek MT7981 SoC comes with two 1G/2.5G SGMII ports, just like
+MT7986.
 
-AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =E6=96=
-=BC
-2023=E5=B9=B42=E6=9C=8820=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=887:3=
-1=E5=AF=AB=E9=81=93=EF=BC=9A
->
-> Il 20/02/23 00:34, Chun-Kuang Hu ha scritto:
-> > cmdq_pkt_create(), cmdq_pkt_destroy(), and cmdq_pkt_flush_async()
-> > are not used by all client drivers (MediaTek drm driver and
-> > MediaTek mdp3 driver), so remove them.
-> >
-> > Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
->
-> My next cleanup step would be to migrate both the MediaTek DRM driver
-> and MDP3 to use the common functions present in mtk-cmdq-helper.
-> Function mtk_drm_cmdq_pkt_create() is (almost) a clone of cmdq_pkt_create=
-().
+In addition MT7981 is equipped with a built-in 1000Base-T PHY which can
+be used with GMAC1.
 
-It's good to hear that you have plan to refine cmdq_pkt_create(). I
-have one plan and wish you may consider in your patch. The plan is to
-remove cl in struct cmdq_pkt because cl is used for channel
-information and the client would have the channel information, so it's
-not necessary to store the channel information in every packet. In
-cmdq_pkt_jump() and cmdq_pkt_finalize() use cl to get
-cmdq_get_shift_pa(), I think it's not necessary to get shift pa every
-cmdq_pkt_jump() and every cmdq_pkt_finalize(), so client could
-cmdq_get_shift_pa() once and pass this information to cmdq_pkt_jump()
-and cmdq_pkt_finalize().
+As many MT7981 boards make use of inverting SGMII signal polarity, add
+new device-tree attribute 'mediatek,pn_swap' to support them.
 
-Regards,
-Chun-Kuang.
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_path.c | 14 +++++++--
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c  | 21 +++++++++++++
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h  | 31 ++++++++++++++++++++
+ drivers/net/ethernet/mediatek/mtk_sgmii.c    | 10 +++++++
+ 4 files changed, 73 insertions(+), 3 deletions(-)
 
->
-> NACK.
->
-> Regards,
-> Angelo
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_path.c b/drivers/net/ethernet/mediatek/mtk_eth_path.c
+index 72648535a14dc..317e447f49916 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_path.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_path.c
+@@ -96,12 +96,20 @@ static int set_mux_gmac2_gmac0_to_gephy(struct mtk_eth *eth, int path)
+ 
+ static int set_mux_u3_gmac2_to_qphy(struct mtk_eth *eth, int path)
+ {
+-	unsigned int val = 0;
++	unsigned int val = 0, mask = 0, reg = 0;
+ 	bool updated = true;
+ 
+ 	switch (path) {
+ 	case MTK_ETH_PATH_GMAC2_SGMII:
+-		val = CO_QPHY_SEL;
++		if (MTK_HAS_CAPS(eth->soc->caps, MTK_U3_COPHY_V2)) {
++			reg = USB_PHY_SWITCH_REG;
++			val = SGMII_QPHY_SEL;
++			mask = QPHY_SEL_MASK;
++		} else {
++			reg = INFRA_MISC2;
++			val = CO_QPHY_SEL;
++			mask = val;
++		}
+ 		break;
+ 	default:
+ 		updated = false;
+@@ -109,7 +117,7 @@ static int set_mux_u3_gmac2_to_qphy(struct mtk_eth *eth, int path)
+ 	}
+ 
+ 	if (updated)
+-		regmap_update_bits(eth->infra, INFRA_MISC2, CO_QPHY_SEL, val);
++		regmap_update_bits(eth->infra, reg, mask, val);
+ 
+ 	dev_dbg(eth->dev, "path %s in %s updated = %d\n",
+ 		mtk_eth_path_name(path), __func__, updated);
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 14be6ea51b889..cfb15a84b894f 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -4860,6 +4860,26 @@ static const struct mtk_soc_data mt7629_data = {
+ 	},
+ };
+ 
++static const struct mtk_soc_data mt7981_data = {
++	.reg_map = &mt7986_reg_map,
++	.ana_rgc3 = 0x128,
++	.caps = MT7981_CAPS,
++	.hw_features = MTK_HW_FEATURES,
++	.required_clks = MT7981_CLKS_BITMAP,
++	.required_pctl = false,
++	.offload_version = 2,
++	.hash_offset = 4,
++	.foe_entry_size = sizeof(struct mtk_foe_entry),
++	.txrx = {
++		.txd_size = sizeof(struct mtk_tx_dma_v2),
++		.rxd_size = sizeof(struct mtk_rx_dma_v2),
++		.rx_irq_done_mask = MTK_RX_DONE_INT_V2,
++		.rx_dma_l4_valid = RX_DMA_L4_VALID_V2,
++		.dma_max_len = MTK_TX_DMA_BUF_LEN_V2,
++		.dma_len_offset = 8,
++	},
++};
++
+ static const struct mtk_soc_data mt7986_data = {
+ 	.reg_map = &mt7986_reg_map,
+ 	.ana_rgc3 = 0x128,
+@@ -4902,6 +4922,7 @@ const struct of_device_id of_mtk_match[] = {
+ 	{ .compatible = "mediatek,mt7622-eth", .data = &mt7622_data},
+ 	{ .compatible = "mediatek,mt7623-eth", .data = &mt7623_data},
+ 	{ .compatible = "mediatek,mt7629-eth", .data = &mt7629_data},
++	{ .compatible = "mediatek,mt7981-eth", .data = &mt7981_data},
+ 	{ .compatible = "mediatek,mt7986-eth", .data = &mt7986_data},
+ 	{ .compatible = "ralink,rt5350-eth", .data = &rt5350_data},
+ 	{},
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index afc9d52e79bfc..7230dcb293152 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -551,11 +551,22 @@
+ #define SGMSYS_QPHY_PWR_STATE_CTRL 0xe8
+ #define	SGMII_PHYA_PWD		BIT(4)
+ 
++/* Register to QPHY wrapper control */
++#define SGMSYS_QPHY_WRAP_CTRL	0xec
++#define SGMII_PN_SWAP_MASK	GENMASK(1, 0)
++#define SGMII_PN_SWAP_TX_RX	(BIT(0) | BIT(1))
++#define MTK_SGMII_FLAG_PN_SWAP	BIT(0)
++
+ /* Infrasys subsystem config registers */
+ #define INFRA_MISC2            0x70c
+ #define CO_QPHY_SEL            BIT(0)
+ #define GEPHY_MAC_SEL          BIT(1)
+ 
++/* Top misc registers */
++#define USB_PHY_SWITCH_REG	0x218
++#define QPHY_SEL_MASK		GENMASK(1, 0)
++#define SGMII_QPHY_SEL		0x2
++
+ /* MT7628/88 specific stuff */
+ #define MT7628_PDMA_OFFSET	0x0800
+ #define MT7628_SDM_OFFSET	0x0c00
+@@ -736,6 +747,17 @@ enum mtk_clks_map {
+ 				 BIT(MTK_CLK_SGMII2_CDR_FB) | \
+ 				 BIT(MTK_CLK_SGMII_CK) | \
+ 				 BIT(MTK_CLK_ETH2PLL) | BIT(MTK_CLK_SGMIITOP))
++#define MT7981_CLKS_BITMAP	(BIT(MTK_CLK_FE) | BIT(MTK_CLK_GP2) | BIT(MTK_CLK_GP1) | \
++				 BIT(MTK_CLK_WOCPU0) | \
++				 BIT(MTK_CLK_SGMII_TX_250M) | \
++				 BIT(MTK_CLK_SGMII_RX_250M) | \
++				 BIT(MTK_CLK_SGMII_CDR_REF) | \
++				 BIT(MTK_CLK_SGMII_CDR_FB) | \
++				 BIT(MTK_CLK_SGMII2_TX_250M) | \
++				 BIT(MTK_CLK_SGMII2_RX_250M) | \
++				 BIT(MTK_CLK_SGMII2_CDR_REF) | \
++				 BIT(MTK_CLK_SGMII2_CDR_FB) | \
++				 BIT(MTK_CLK_SGMII_CK))
+ #define MT7986_CLKS_BITMAP	(BIT(MTK_CLK_FE) | BIT(MTK_CLK_GP2) | BIT(MTK_CLK_GP1) | \
+ 				 BIT(MTK_CLK_WOCPU1) | BIT(MTK_CLK_WOCPU0) | \
+ 				 BIT(MTK_CLK_SGMII_TX_250M) | \
+@@ -849,6 +871,7 @@ enum mkt_eth_capabilities {
+ 	MTK_NETSYS_V2_BIT,
+ 	MTK_SOC_MT7628_BIT,
+ 	MTK_RSTCTRL_PPE1_BIT,
++	MTK_U3_COPHY_V2_BIT,
+ 
+ 	/* MUX BITS*/
+ 	MTK_ETH_MUX_GDM1_TO_GMAC1_ESW_BIT,
+@@ -883,6 +906,7 @@ enum mkt_eth_capabilities {
+ #define MTK_NETSYS_V2		BIT(MTK_NETSYS_V2_BIT)
+ #define MTK_SOC_MT7628		BIT(MTK_SOC_MT7628_BIT)
+ #define MTK_RSTCTRL_PPE1	BIT(MTK_RSTCTRL_PPE1_BIT)
++#define MTK_U3_COPHY_V2		BIT(MTK_U3_COPHY_V2_BIT)
+ 
+ #define MTK_ETH_MUX_GDM1_TO_GMAC1_ESW		\
+ 	BIT(MTK_ETH_MUX_GDM1_TO_GMAC1_ESW_BIT)
+@@ -955,6 +979,11 @@ enum mkt_eth_capabilities {
+ 		      MTK_MUX_U3_GMAC2_TO_QPHY | \
+ 		      MTK_MUX_GMAC12_TO_GEPHY_SGMII | MTK_QDMA)
+ 
++#define MT7981_CAPS  (MTK_GMAC1_SGMII | MTK_GMAC2_SGMII | MTK_GMAC2_GEPHY | \
++		      MTK_MUX_GMAC12_TO_GEPHY_SGMII | MTK_QDMA | \
++		      MTK_MUX_U3_GMAC2_TO_QPHY | MTK_U3_COPHY_V2 | \
++		      MTK_NETSYS_V2 | MTK_RSTCTRL_PPE1)
++
+ #define MT7986_CAPS  (MTK_GMAC1_SGMII | MTK_GMAC2_SGMII | \
+ 		      MTK_MUX_GMAC12_TO_GEPHY_SGMII | MTK_QDMA | \
+ 		      MTK_NETSYS_V2 | MTK_RSTCTRL_PPE1)
+@@ -1068,12 +1097,14 @@ struct mtk_soc_data {
+  * @ana_rgc3:          The offset refers to register ANA_RGC3 related to regmap
+  * @interface:         Currently configured interface mode
+  * @pcs:               Phylink PCS structure
++ * @flags:             Flags indicating hardware properties
+  */
+ struct mtk_pcs {
+ 	struct regmap	*regmap;
+ 	u32             ana_rgc3;
+ 	phy_interface_t	interface;
+ 	struct phylink_pcs pcs;
++	u32		flags;
+ };
+ 
+ /* struct mtk_sgmii -  This is the structure holding sgmii regmap and its
+diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii.c b/drivers/net/ethernet/mediatek/mtk_sgmii.c
+index bb00de1003ac4..d7ffaaeaf9ab5 100644
+--- a/drivers/net/ethernet/mediatek/mtk_sgmii.c
++++ b/drivers/net/ethernet/mediatek/mtk_sgmii.c
+@@ -88,6 +88,11 @@ static int mtk_pcs_config(struct phylink_pcs *pcs, unsigned int mode,
+ 		regmap_update_bits(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL,
+ 				   SGMII_PHYA_PWD, SGMII_PHYA_PWD);
+ 
++		if (mpcs->flags & MTK_SGMII_FLAG_PN_SWAP)
++			regmap_update_bits(mpcs->regmap, SGMSYS_QPHY_WRAP_CTRL,
++					   SGMII_PN_SWAP_MASK,
++					   SGMII_PN_SWAP_TX_RX);
++
+ 		if (interface == PHY_INTERFACE_MODE_2500BASEX)
+ 			rgc3 = RG_PHY_SPEED_3_125G;
+ 		else
+@@ -182,6 +187,11 @@ int mtk_sgmii_init(struct mtk_sgmii *ss, struct device_node *r, u32 ana_rgc3)
+ 
+ 		ss->pcs[i].ana_rgc3 = ana_rgc3;
+ 		ss->pcs[i].regmap = syscon_node_to_regmap(np);
++
++		ss->pcs[i].flags = 0;
++		if (of_property_read_bool(np, "mediatek,pnswap"))
++			ss->pcs[i].flags |= MTK_SGMII_FLAG_PN_SWAP;
++
+ 		of_node_put(np);
+ 		if (IS_ERR(ss->pcs[i].regmap))
+ 			return PTR_ERR(ss->pcs[i].regmap);
+-- 
+2.39.2
+
 
