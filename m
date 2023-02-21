@@ -4,58 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20EBBC636D6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 00:15:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67CF7C61DA3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 01:45:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZbRbfOg+dBTkdgD8ZibaoS2Qloqzj6jzK3SK0/a4F8c=; b=bVZPt+JIX4vRoJNevroHX98Qcs
-	VrMyUSwb4sBDuoXLoH5ZRyXCzpNNUcRLRnH+Xcr/bz+e2gIdVdL2C20LoPFtTJ9CVpOTr0IAS49+2
-	3beXXi2M+0GZF5MhL+ks9ts3Z1z32Sgxrs8w2EOPYQsnRWmV4iVL2DCjwAXR1OTw/MF5VxJb9ztB7
-	VXs1E3dC8e+q8M3+VTD8K46Z1bhQ6Dzo4ORaEtGu+qcoF4lQ8wQ/1BQZUH2W4f8gB9Buq2sbBcZ76
-	ohZ9/hRutVJn5lcOLTL1wRBauYMacI5rqQONqUrTCTLVCGO+a2Ro7/GrqmOYSn3t7oTfwXXM+LAqI
-	hap+0rpA==;
+	bh=34lDDydAwAjd3gUwJRFbQoccKORNig7o9dp+cyLAa44=; b=yjgFuPe17XZ+V5hH2AyDlR7ZNP
+	az9viyK+M0wxziT8oTs3HndfacWGGH224djDveexz6+KdljWMuN/e1OUPKCwilc1CeXcNK0KZ7CFx
+	tFdJnDqNADaCngwGImnGOF7ymjKv5fgGBwsob4+B+srlvWXlLgyY41tmLHbAyW9WZ5veT6r7nJLEk
+	icBbPEsiqo1EXAY2cOAnbePslIRoY4o1sYS4MHfteNrsD/FBCOke00YfbS3b4UOjAVk0Y2G1VYL75
+	x6GWmQQsIWW5hhoXqvzdNlBEFGjLkkqVyALpBQH3iFxc2e6tPCH/m8l0skU/QSYksGfmC6YOtKqQn
+	6r2Oopgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUGJB-0063j6-5m; Tue, 21 Feb 2023 00:15:01 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pUHiK-006Dks-RT; Tue, 21 Feb 2023 01:45:04 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUGJ8-0063h7-3m; Tue, 21 Feb 2023 00:14:59 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pUGIh-0005aB-1e;
-	Tue, 21 Feb 2023 01:14:31 +0100
-Date: Tue, 21 Feb 2023 00:14:25 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Olivia Mackall <olivia@selenic.com>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Mingming Su <Mingming.Su@mediatek.com>,
-	linux-crypto@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/2] hwrng: add driver for MediaTek TRNG SMC
-Message-ID: <Y/QM4YtDWocpY9hb@makrotopia.org>
-References: <89865515728cb937b6591160ad9c30b4bcc8dd41.1676467500.git.daniel@makrotopia.org>
- <84de90f5-da77-d3f2-c14a-d2e5c53bbf1c@collabora.com>
- <0d5d5d00-8569-a642-cca7-798c8d24a986@gmail.com>
- <20230220235811.GA618419-robh@kernel.org>
+	id 1pUHiI-006Dk3-IQ; Tue, 21 Feb 2023 01:45:03 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id s22so3699803lfi.9;
+        Mon, 20 Feb 2023 17:45:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=34lDDydAwAjd3gUwJRFbQoccKORNig7o9dp+cyLAa44=;
+        b=hhBJOZuMVo1ePfb3/3F68gF6BC3ON4xQ3y3JcnWFv09WbtqsPLa5Mb3U7Zh+cKDKCF
+         kvO9182b9JjrjENaevcIEelP/puJZI7VtplNpyOE8UrLFtbRdBDMwal8hE7xPL0PEt7k
+         ZzST/MOdeg29aK5EoPZ/TyX/hWQ2BHChevLsdy5Eo1smhAM/ZP0OoU8VYV154M60PXzR
+         0icNAm/PmkJQuQDMoZm+QfP340RnMnd+p4qZ96mVU81UR7LAHyMEUPvTu7ckzT2+krv/
+         K+GxG8mVqKyyAnQmuwOA5+8cO2/eUrt2Jj1bar1F4NjWhFPNYsec7Q0J4qkt+EPEFtQu
+         SAlQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=34lDDydAwAjd3gUwJRFbQoccKORNig7o9dp+cyLAa44=;
+        b=TgHVO/hbiX9K2DEecmgDL2wyk+skpoT5UjSW5Vmr1bNctlxtffCG2LNhbIBLBxSmEW
+         HIOeEVMNRp7kHuooKr39GJIvaqlFFnKH7C7AGi0T08EWHA3jOambhnCDxNZHRpRSInPH
+         Rsh36HyQOZDJFwNtHc6d+epQg6x3kNaBAhuxvUhPszfOwhig7IHIBCFecLpdudDhNvw2
+         rRMcxrVbIxpfLJj3xXvWf+9bjywn941SdYOER5GbvOCn0bpgG9LYMN3fPk171G6OB2RL
+         Kr0CZ9VZfvOSa9YRSw2N6h4I3HWgtaUvPzIiX5hbsEv120XFaeNzVsFKK+1pDUH7mhBF
+         WRdQ==
+X-Gm-Message-State: AO0yUKULaJAIEMLhrGEaMhrtsNvoQyg2GN7S4Rt/NESKMAdNcWEP6rHH
+	6EfwOOa+VaGNsH94gfhLjFVI0xN5kvB22MHN7w==
+X-Google-Smtp-Source: AK7set9Iu6OicBYAy8yoZbvlxVUSUKcFs1DOnRErdCLJJTpX8gi0u3toSKpGGdcUc5c9tHFS+Lce1M8lfxi7dHbnRJc=
+X-Received: by 2002:ac2:5e8c:0:b0:4db:38a7:f32f with SMTP id
+ b12-20020ac25e8c000000b004db38a7f32fmr1165437lfq.4.1676943898660; Mon, 20 Feb
+ 2023 17:44:58 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230220235811.GA618419-robh@kernel.org>
+References: <20230220142431.54589-1-frank.li@vivo.com>
+In-Reply-To: <20230220142431.54589-1-frank.li@vivo.com>
+From: Stanley Chu <chu.stanley@gmail.com>
+Date: Tue, 21 Feb 2023 09:44:47 +0800
+Message-ID: <CAGaU9a-xmWFhXSZ0Zt7O2xvVz4xd-AY1giFAeKFnAxHAgUx5pw@mail.gmail.com>
+Subject: Re: [PATCH] scsi: ufs: ufs-mediatek: guard ufs_mtk_runtime_suspend()
+ and ufs_mtk_runtime_resume() w/ CONFIG_PM
+To: Yangtao Li <frank.li@vivo.com>
+Cc: stanley.chu@mediatek.com, jejb@linux.ibm.com, martin.petersen@oracle.com, 
+	linux-scsi@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	zhangshida@kylinos.cn, k2ci <kernel-bot@kylinos.cn>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230220_161458_171204_BDB4A6B4 
-X-CRM114-Status: GOOD (  38.36  )
+X-CRM114-CacheID: sfid-20230220_174502_648592_2EC12A4D 
+X-CRM114-Status: UNSURE (   9.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,86 +87,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 20, 2023 at 05:58:11PM -0600, Rob Herring wrote:
-> On Thu, Feb 16, 2023 at 12:32:10PM +0100, Matthias Brugger wrote:
-> > 
-> > 
-> > On 16/02/2023 11:03, AngeloGioacchino Del Regno wrote:
-> > > Il 15/02/23 14:27, Daniel Golle ha scritto:
-> > > > Add driver providing kernel-side support for the Random Number
-> > > > Generator hardware found on Mediatek SoCs which have a driver in ARM
-> > > > TrustedFirmware-A allowing Linux to read random numbers using a
-> > > > non-standard vendor-defined Secure Monitor Call.
-> > > > 
-> > > > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> > > 
-> > > Hello Daniel,
-> > > 
-> > > incidentally, I've also done some research on this one some months ago, when
-> > > I was deep in adding support for the Helio X10 SoC (MT6795) on Xperia M5.
-> > > 
-> > > The rng-v2 is simply the same rng but hypervised by the TF-A... and the only
-> > > difference is, well, as you're also pointing out, that we're using secure
-> > > monitor calls instead of direct MMIO handling.
-> > > 
-> > > There's also not much more than what you've implemented here and the only kind
-> > > of addition that we will ever see on this one will be about changing the SIP
-> > > command (as some older SoCs use a different one)... so...
-> > > 
-> > > ...I don't think that adding an entirely new driver is worth the noise, hence
-> > > I propose to simply add handling for the Secure RNG to mtk-rng.c instead: it's
-> > > shorter and we would only need to address one if branch on that probe function
-> > > to set a different callback.
-> > > 
-> > > The clock should then be optional for *some* of those "v2 handling" devices,
-> > > as if I recall correctly, some do need the clock to be handled from Linux
-> > > anyway... otherwise this v2 driver will be "soon" looking bloody similar to
-> > > the "v1", adding a bit of code duplication around.
-> > > 
-> > > What do you think?
-> > > 
-> > 
-> > That was exactly what I was thinking as well when I had a look at the
-> > driver. I propose to add it to mtk-rng.c. I don't see any value having a
-> > second driver for this.
-> 
-> Or fix the firmware to use the already defined SMC TRNG interface...
+Hi Yangtao,
 
-I agree that this would obviously be the best solution of all, and it's
-also not completely impossible as TF-A for this platform can quite easily
-be built from source. However, for devices already out there it may still
-not be an option.
+On Mon, Feb 20, 2023 at 10:44 PM Yangtao Li <frank.li@vivo.com> wrote:
+>
+> To fix below compile error(CONFIG_PM set to 'n'):
+>
+> drivers/ufs/host/ufs-mediatek.c: In function `ufs_mtk_runtime_suspend`:
+> drivers/ufs/host/ufs-mediatek.c:1623:8: error: implicit declaration of
+>         function `ufshcd_runtime_suspend`; did you mean `ufs_mtk_runtime_suspend`?
+>         [-Werror=implicit-function-declaration]
+>  1623 |  ret = ufshcd_runtime_suspend(dev);
+>       |        ^~~~~~~~~~~~~~~~~~~~~~
+>       |        ufs_mtk_runtime_suspend
+> drivers/ufs/host/ufs-mediatek.c: In function `ufs_mtk_runtime_resume`:
+> drivers/ufs/host/ufs-mediatek.c:1638:9: error: implicit declaration of function
+>         `ufshcd_runtime_resume`; did you mean `ufs_mtk_runtime_resume`?
+>         [-Werror=implicit-function-declaration]
+>  1638 |  return ufshcd_runtime_resume(dev);
+>       |         ^~~~~~~~~~~~~~~~~~~~~
+>       |         ufs_mtk_runtime_resume
+> At top level:
+> drivers/ufs/host/ufs-mediatek.c:1632:12: error: `ufs_mtk_runtime_resume`
+>         defined but not used [-Werror=unused-function]
+>  1632 | static int ufs_mtk_runtime_resume(struct device *dev)
+>       |            ^~~~~~~~~~~~~~~~~~~~~~
+> drivers/ufs/host/ufs-mediatek.c:1618:12: error: `ufs_mtk_runtime_suspend`
+>         defined but not used [-Werror=unused-function]
+>  1618 | static int ufs_mtk_runtime_suspend(struct device *dev)
+>
+> Reported-by: k2ci <kernel-bot@kylinos.cn>
+> Reported-by: Shida Zhang <zhangshida@kylinos.cn>
+> Signed-off-by: Yangtao Li <frank.li@vivo.com>
 
-> 
-> In any case, like the SMC TRNG, you don't need a DT binding. The 
-> firmware interface is discoverable. Try the SMC call and if it succeeds, 
-> you have a TRNG.
+Thanks for this fix.
 
-I'll try that and let you know how it goes ;)
-
-
-Cheers
-
-
-Daniel
-
-> 
-> Rob
-> 
-> > 
-> > Regards,
-> > Matthias
-> > 
-> > > Regards,
-> > > Angelo
-> > > 
-> > > > ---
-> > > >   MAINTAINERS                         |  1 +
-> > > >   drivers/char/hw_random/Kconfig      | 16 +++++++
-> > > >   drivers/char/hw_random/Makefile     |  1 +
-> > > >   drivers/char/hw_random/mtk-rng-v2.c | 74 +++++++++++++++++++++++++++++
-> > > >   4 files changed, 92 insertions(+)
-> > > >   create mode 100644 drivers/char/hw_random/mtk-rng-v2.c
-> > > > 
-> > > 
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
 
