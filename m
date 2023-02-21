@@ -4,68 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B9F6C61DA3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 18:35:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C39DAC61DA3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 18:59:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wEduu8lG576J1PT74GPwcOiZm9fPXyVi3oiEJ3RNdS8=; b=gsHrSPi8JLIZ5GLzYT/ywwf2g3
-	8SHdpK4jde2U4ynywq3z9f+rt8nXLcG3ENTMrTs61pzJE2k5rouGFtxRH/+pxSz/jZatPKEvZoxKp
-	ElZZV9HIVN6TOcv47+0Tj7lRjA7MAlw9fYgIBbeH5oS53vegzKpor6H2IFO2be25u9UIdcpYeRZVz
-	nypw6ArWZ2tfgvyP7dV3ji88jyE9bAi8Lw1taxHbmjiOrwYIRv+b+pJGP7xHyfNbJh6+ybfXWwJ6K
-	FA4BKenUuEAtSd1nqboxdjmneEDJPZnJIc2dO2n+z40JRhvvBTQ99SdLk17sWqGcUqG62B9wF4HMJ
-	HkuDL5fw==;
+	bh=2cL3ZFx6aC3gkxJxvOMXx9WjSRbCkQiOWXyY6yTANeM=; b=h/ltZ15vlaT8McDmAEhc7Re2QU
+	ZquskdL8zo0DWHCt3jLV/iVMqTGftTdGDYdc9bxgzrM7PHuRWClVIZmeixWLRXICCx8JgruEeDX9p
+	qvbyrtKg5W+ZLT/zeexPnKBTHQkkLirqWLLyT9VnqgC9nF57nNbdcDI+LZ0mfkMxDYGd0PzwbFvgN
+	tFwCobvf2w4dAN+gHO5s1Jo2p9v3KCx8x+z31fGjdeQE7nYylfHKLUKjMgFPcdXP4yoel0aY3Dmda
+	pCMKhz6O0E1wi5L9A+WEgipxUYWiID1iw1kirWRRxlK+KGx1urbyF45EoiTfc6d6Mqb8ceaWYjqJP
+	ZqgNcjmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUXTw-009OY5-W8; Tue, 21 Feb 2023 18:35:17 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pUXrY-009SvI-JK; Tue, 21 Feb 2023 18:59:40 +0000
+Received: from mail-pl1-f177.google.com ([209.85.214.177])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUXTm-009OVp-UN; Tue, 21 Feb 2023 18:35:08 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id CCDEB60FBC;
-	Tue, 21 Feb 2023 18:35:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44575C433D2;
-	Tue, 21 Feb 2023 18:35:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1677004504;
-	bh=dgnjcSUG5w1/UXY20oy7pA67rk5DpCFG+LKqSztlm2U=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=JaHaknMQH94f0Ouz7x7+bJIIjbqP/1A+lf0z1r07/7u31jA6NOMhkjW7+NQyvj35e
-	 r/jQRM84dkmgFx+I10T1+lXThjNBjateNxycYIcs8ndkx+83AY7RtGGDH1RDlxKsfx
-	 F0ElKYH0Wx72EtvnPAl2tSazAPHRHXzUqgYigzELtugc3AHpiPANpZvByCujdPkOTF
-	 w0dPFwyDldQNFWCLQNnI2VnKaMG/a15VZoIU6XlPnNlL9JqQDQxANx9QltdGXZU71M
-	 Dl2ye6B6QBHGkFlvvHhMbYXijeMmxJYK1eg3IOhRUo8lxsPqfw5aljOdgLV50q/zFN
-	 Y/WQZlhgK3iOA==
-From: SeongJae Park <sj@kernel.org>
-To: Andrew Yang <andrew.yang@mediatek.com>
-Cc: SeongJae Park <sj@kernel.org>,
-	Andrew Morton <akpm@linux-foundation.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	wsd_upstream@mediatek.com,
-	casper.lin@mediatek.com,
-	damon@lists.linux.dev,
-	linux-mm@kvack.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	stable@vger.kernel.org
-Subject: Re: [PATCH] mm/damon/paddr: fix pin page problem
-Date: Tue, 21 Feb 2023 18:35:01 +0000
-Message-Id: <20230221183501.132024-1-sj@kernel.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230221090313.15396-1-andrew.yang@mediatek.com>
-References: 
+	id 1pUXrM-009SrY-Nb; Tue, 21 Feb 2023 18:59:30 +0000
+Received: by mail-pl1-f177.google.com with SMTP id bh1so6132348plb.11;
+        Tue, 21 Feb 2023 10:59:24 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=2cL3ZFx6aC3gkxJxvOMXx9WjSRbCkQiOWXyY6yTANeM=;
+        b=S2e6NTuwXewYq3/EazPUzOhuMQvi7lHkKzBKFaP0WpilNP8h2mVzz7OF6P7HVGp/jy
+         CsyzI3V5xbc/VpdIRzb1yYuN/wDBqGuAuRtAX0GUYvAcdO5HB0WcyZQjw7taKPdq3yAW
+         muPswFpcd0ti3T+Abeu8A0fojEwN/YRf1e8Li1J9Ql8binu/ICiizl4ibMYdktgpCV+h
+         8hZO8Irfsg0IV+si0imBc2zkAY3NRP67luGiEQus5b/nDOtYHYRiiR8v9p5pAc5QRNtm
+         MEZaLwBAtga0vcuek2dC565fS2udNM4tvmYwMRwgD8Cv7hwDqhKyGh6rV6iwg3hTXdV3
+         WfTg==
+X-Gm-Message-State: AO0yUKXm2mHvp7bhFft6p9ET3wXeIQQ+L22jq/T64dzLoj/xaaIrsv+S
+	HP946Mom2cKAkOMBaKu6NiM=
+X-Google-Smtp-Source: AK7set9lPF6cFg2TrDVnvULDaoSMrKvHt5cnFIbWmkWdEjEjRHpTKCF9iv2Q8wwA/KX5Nq0Lme09Rw==
+X-Received: by 2002:a17:902:ec8e:b0:196:89bc:7100 with SMTP id x14-20020a170902ec8e00b0019689bc7100mr10171339plg.16.1677005963782;
+        Tue, 21 Feb 2023 10:59:23 -0800 (PST)
+Received: from ?IPV6:2620:0:1000:2514:6f67:63f5:599a:2f4c? ([2620:0:1000:2514:6f67:63f5:599a:2f4c])
+        by smtp.gmail.com with ESMTPSA id bf3-20020a170902b90300b0019aa4c00ff4sm10231070plb.206.2023.02.21.10.59.21
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 21 Feb 2023 10:59:23 -0800 (PST)
+Message-ID: <8268452f-cc33-81cb-32be-a9e37f97894f@acm.org>
+Date: Tue, 21 Feb 2023 10:59:20 -0800
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH 1/4] scsi: ufs: core: Fix mcq tag calcualtion
+Content-Language: en-US
+To: Po-Wen Kao <powen.kao@mediatek.com>, Alim Akhtar
+ <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: wsd_upstream@mediatek.com, peter.wang@mediatek.com,
+ stanley.chu@mediatek.com, alice.chao@mediatek.com, naomi.chu@mediatek.com,
+ chun-hung.wu@mediatek.com, cc.chou@mediatek.com, eddie.huang@mediatek.com,
+ mason.zhang@mediatek.com, chaotian.jing@mediatek.com,
+ jiajie.hao@mediatek.com, linux-scsi@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230221152919.25837-1-powen.kao@mediatek.com>
+ <20230221152919.25837-2-powen.kao@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20230221152919.25837-2-powen.kao@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230221_103507_056838_AA9E096A 
-X-CRM114-Status: GOOD (  23.41  )
+X-CRM114-CacheID: sfid-20230221_105928_798901_82656E72 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,67 +89,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andrew,
-
-
-On Tue, 21 Feb 2023 17:03:13 +0800 Andrew Yang <andrew.yang@mediatek.com> wrote:
-
-> From: "andrew.yang" <andrew.yang@mediatek.com>
+On 2/21/23 07:29, Po-Wen Kao wrote:
+> Transfer command descriptor is allocated in ufshcd_memory_alloc()
+> and referenced by transfer request descriptor with stride size
+> sizeof_utp_transfer_cmd_desc()
+> instead of
+> sizeof(struct utp_transfer_cmd_desc).
 > 
-> damon_get_page() would always increase page _refcount and
-> isolate_lru_page() would increase page _refcount if the page's lru
-> flag is set.
+> Consequently, computing tag by address offset should also refer to the
+> same stride.
 > 
-> If a unevictable page isolated successfully, there will be two more
-> _refcount. The one from isolate_lru_page() will be decreased in
-> putback_lru_page(), but the other one from damon_get_page() will be
-> left behind. This causes a pin page.
-> 
-> Whatever the case, the _refcount from damon_get_page() should be
-> decreased.
+> As suggested, sizeof_utp_transfer_cmd_desc() is further renamed to
+> ufshcd_get_ucd_size().
 
-Thank you for finding this issue!  I think the David suggested subject[1] is
-better, though.
+This patch includes two changes:
+(1) a bug fix.
+(2) a name change for a function.
 
-I think we could add below Fixes: and Cc: tags?
-
-Fixes: 57223ac29584 ("mm/damon/paddr: support the pageout scheme")
-Cc: <stable@vger.kernel.org> # 5.16.x
-
-> 
-> Signed-off-by: andrew.yang <andrew.yang@mediatek.com>
-> ---
->  mm/damon/paddr.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/mm/damon/paddr.c b/mm/damon/paddr.c
-> index e1a4315c4be6..56d8abd08fb1 100644
-> --- a/mm/damon/paddr.c
-> +++ b/mm/damon/paddr.c
-> @@ -223,8 +223,8 @@ static unsigned long damon_pa_pageout(struct damon_region *r)
->  			putback_lru_page(page);
->  		} else {
->  			list_add(&page->lru, &page_list);
-> -			put_page(page);
->  		}
-> +		put_page(page);
-
-Seems your patch is not based on mm-unstable tree[2].  Could you please rebase
-on it?
-
-Also, let's remove the braces for the single statements[3].
-
-[1] https://lore.kernel.org/damon/1b3e8e88-ed5c-7302-553f-4ddb3400d466@redhat.com/
-[2] https://docs.kernel.org/next/mm/damon/maintainer-profile.html#scm-trees
-[3] https://docs.kernel.org/process/coding-style.html?highlight=coding+style#placing-braces-and-spaces
-
+A Linux kernel patch should include only one logical change. Please 
+split this patch.
 
 Thanks,
-SJ
 
->  	}
->  	applied = reclaim_pages(&page_list);
->  	cond_resched();
-> -- 
-> 2.18.0
+Bart.
 
