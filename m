@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 931A6C6379F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 12:26:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F512C61DA3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 12:27:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DFpngxQwC+uXd6EWSoJSaXrqYl4NwNl0tytYfM0G4YY=; b=Tt0ZoPFumCqGOdz+3T+KawoOlQ
-	/FKdJhogCHufljf3bFmeuP7/x2khL9IYUKs7Tj3TOp3tpljQuLBlr+1cCba/wkq82/puK06oUOYSY
-	LDMt46eYwVDN7tzFnkhJauek7opGVImUOova26RwaplRq0CC3pklak37H08Kl1Oxw3rDZ0levs21b
-	KUjJYD9h5a+d7FoPfYJ2c9GPJw72gyPjgEEl4v/qGTO6F+H/0l8W/rzjHn/UUyQbwfE9nm+tUugQl
-	lJhTeyUlobFHtotTVgdc7iIkXmMfnPnCRjYhEnwxZigf2XZhlWCvMNEPxDO+plzgje+a1LmudTYA7
-	dXwpysfA==;
+	bh=EkSV88ek7Z/KGX8qvKaUUqReHXiihihqUuf07BkCKnk=; b=0OG88w3D39EVIbu9I2FhPJjYFb
+	7ew4OB6q1fkcfz3cuXTjavaqNTE/za+97EVWkxCM04i6z+/Y7qf2DQblilOI1piukr4uQI/AHE/V8
+	lToNpKbl1Baqm4Uu18Dh32tSv9QFRF/qU0HTH7FvcFIVF1AUlm9VJrzrFxhvDMNf6t/XkWUoWctFo
+	/fmbN3AjI1uzNdOgh2cEdeDo+P5uHhehhWsTi5iQU3uIwtmzQ5qDv3WMr0udzlIC6ycmpIn2uzO44
+	rdlZpz5uGMm+hUoHo/uPnZob46ZkaA6/XPA+xA6pQ7tgjDm1MeFn/4/+h9IeQwrStSY1m+VyKByt+
+	1d717oqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pURjI-007z92-4b; Tue, 21 Feb 2023 12:26:44 +0000
+	id 1pURkN-007ziZ-6j; Tue, 21 Feb 2023 12:27:51 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pURGK-007k0t-1z; Tue, 21 Feb 2023 11:56:52 +0000
+	id 1pURGM-007k2D-Li; Tue, 21 Feb 2023 11:56:53 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 96E4E66021CE;
-	Tue, 21 Feb 2023 11:56:45 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 385A166021D0;
+	Tue, 21 Feb 2023 11:56:48 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676980606;
-	bh=DH2A/qvYdrLnvqYgaqCPxD51KBMJ8ctJ5JWdFYQCl3M=;
+	s=mail; t=1676980609;
+	bh=eeiHEsUa1T8pazV6udb38+IWdGn7nYU56qZHrE+N45Q=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=hXyqAjKOptHKhouspQ8/4j0S/jU/sVtmmRss6iKzeOGSuOcxaZWLPyzyaKY+8tT8z
-	 RKKmEFz//xGRxi9sVB4jNSMNMulEaYMpSR3TFheGaQC+TIXg+X5QK8tTov+ug5QZMw
-	 MEn+7PCfyhjMwsUiMh5o/H/Ec7yaNkK1DuGgXzYzXPjk+QXsEeL3whmRXzkiGTxHGL
-	 QT+gC6dn2ZgMsdxyRHT7o7/WldmHwmNKpKdlAVc92S3Q3zE68YHZRtRugm6GsgmY50
-	 fbFUURhg6C6jXFlBAFStuRtKDvBsqdVrowXdmep/LeQYGD4fwATCxXghRrUYesCGAc
-	 BX836wejgqJPg==
+	b=j/jlV4xs/k//ZP/tw49TU44HqshlekYTU4Z7nLRwfnpCX2s3M/0/KHJa0dFpH7t0a
+	 Av6HJhjbeWGMnIG9LhkeZroWqTlqVsE5EN7H6WuKGBn3Fw3I5sFC3k9xtFtT3d0lUG
+	 UTzw1F1yZBdRsyPXv6Wz5QsLNVt5SFeb0CyezLldaa4/NJb6SJkYTHyy6gd0oSuE8v
+	 JqPip7JJvGXgbrNSHF+F28jx0QfWMnRWVMTlgna3Lm4PA1ZuTZvXcrd+ZE/uXXZPJ1
+	 oD+PNdstQJW/vX/ObVzWZNLWnhcF3fvvAVRIdwdoBHdQiyHoh/xg2uJZL1unQ237df
+	 r23tAW+lku+tA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mturquette@baylibre.com
 Cc: sboyd@kernel.org,
@@ -67,17 +67,17 @@ Cc: sboyd@kernel.org,
 	linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 39/54] clk: mediatek: Split MT8195 clock drivers and allow module build
-Date: Tue, 21 Feb 2023 12:55:34 +0100
-Message-Id: <20230221115549.360132-40-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v4 41/54] clk: mediatek: Allow MT7622 clocks to be built as modules
+Date: Tue, 21 Feb 2023 12:55:36 +0100
+Message-Id: <20230221115549.360132-42-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230221115549.360132-1-angelogioacchino.delregno@collabora.com>
 References: <20230221115549.360132-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230221_035648_421081_78FB927A 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20230221_035650_897714_908D933C 
+X-CRM114-Status: GOOD (  10.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,166 +92,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8195 clock drivers were encapsulated in one single (and big) Kconfig
-option: there's no reason to do that, as it is totally unnecessary to
-build in all or none of them.
-
-Split them out: keep boot-critical clocks as bool and allow choosing
-non critical clocks as tristate.
-
-As a note, the dependencies of VDEC/VENCSYS and CAM/IMG/IPE/WPESYS
-are not for build-time but rather for runtime, as clocks registered
-by those have runtime dependencies on either or both VPP and IMGSYS.
+Now that all drivers are using the simple probe mechanism change the
+MT7622 clock drivers to tristate in Kconfig to allow module build.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/clk/mediatek/Kconfig  | 100 ++++++++++++++++++++++++++++++++++
- drivers/clk/mediatek/Makefile |  20 ++++---
- 2 files changed, 113 insertions(+), 7 deletions(-)
+ drivers/clk/mediatek/Kconfig | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index 45b7aea7648d..ab47b9ec64af 100644
+index fc073e5be4eb..d089806789ee 100644
 --- a/drivers/clk/mediatek/Kconfig
 +++ b/drivers/clk/mediatek/Kconfig
-@@ -692,6 +692,106 @@ config COMMON_CLK_MT8195
-         help
-           This driver supports MediaTek MT8195 clocks.
+@@ -336,7 +336,7 @@ config COMMON_CLK_MT6797_VENCSYS
+ 	  This driver supports MediaTek MT6797 vencsys clocks.
  
-+config COMMON_CLK_MT8195_APUSYS
-+	tristate "Clock driver for MediaTek MT8195 apusys"
-+	depends on COMMON_CLK_MT8195
-+	default COMMON_CLK_MT8195
-+	help
-+	  This driver supports MediaTek MT8195 AI Processor Unit System clocks.
-+
-+config COMMON_CLK_MT8195_AUDSYS
-+	tristate "Clock driver for MediaTek MT8195 audsys"
-+	depends on COMMON_CLK_MT8195
-+	default COMMON_CLK_MT8195
-+	help
-+	  This driver supports MediaTek MT8195 audsys clocks.
-+
-+config COMMON_CLK_MT8195_IMP_IIC_WRAP
-+	tristate "Clock driver for MediaTek MT8195 imp_iic_wrap"
-+	depends on COMMON_CLK_MT8195
-+	default COMMON_CLK_MT8195
-+	help
-+	  This driver supports MediaTek MT8195 I2C/I3C clocks.
-+
-+config COMMON_CLK_MT8195_MFGCFG
-+	tristate "Clock driver for MediaTek MT8195 mfgcfg"
-+	depends on COMMON_CLK_MT8195
-+	default COMMON_CLK_MT8195
-+	help
-+	  This driver supports MediaTek MT8195 mfgcfg clocks.
-+
-+config COMMON_CLK_MT8195_MSDC
-+	tristate "Clock driver for MediaTek MT8195 msdc"
-+	depends on COMMON_CLK_MT8195
-+	default COMMON_CLK_MT8195
-+	help
-+	  This driver supports MediaTek MT8195 MMC and SD Controller's
-+	  msdc and msdc_top clocks.
-+
-+config COMMON_CLK_MT8195_SCP_ADSP
-+	tristate "Clock driver for MediaTek MT8195 scp_adsp"
-+	depends on COMMON_CLK_MT8195
-+	default COMMON_CLK_MT8195
-+	help
-+	  This driver supports MediaTek MT8195 System Companion Processor
-+	  Audio DSP clocks.
-+
-+config COMMON_CLK_MT8195_VDOSYS
-+	tristate "Clock driver for MediaTek MT8195 vdosys"
-+	depends on COMMON_CLK_MT8195
-+	default COMMON_CLK_MT8195
-+	help
-+	  This driver supports MediaTek MT8195 vdosys0/1 (multimedia) clocks.
-+
-+config COMMON_CLK_MT8195_VPPSYS
-+	tristate "Clock driver for MediaTek MT8195 vppsys"
-+	depends on COMMON_CLK_MT8195
-+	default COMMON_CLK_MT8195
-+	help
-+	  This driver supports MediaTek MT8195 vppsys0/1 clocks.
-+
-+config COMMON_CLK_MT8195_CAMSYS
-+	tristate "Clock driver for MediaTek MT8195 camsys"
-+	depends on COMMON_CLK_MT8195_VPPSYS
-+	default COMMON_CLK_MT8195_VPPSYS
-+	help
-+	  This driver supports MediaTek MT8195 camsys and camsys_raw clocks.
-+
-+config COMMON_CLK_MT8195_IMGSYS
-+	tristate "Clock driver for MediaTek MT8195 imgsys"
-+	depends on COMMON_CLK_MT8195_VPPSYS
-+	default COMMON_CLK_MT8195_VPPSYS
-+	help
-+	  This driver supports MediaTek MT8195 imgsys and imgsys2 clocks.
-+
-+config COMMON_CLK_MT8195_IPESYS
-+	tristate "Clock driver for MediaTek MT8195 ipesys"
-+	depends on COMMON_CLK_MT8195_IMGSYS
-+	default COMMON_CLK_MT8195_IMGSYS
-+	help
-+	  This driver supports MediaTek MT8195 ipesys clocks.
-+
-+config COMMON_CLK_MT8195_WPESYS
-+	tristate "Clock driver for MediaTek MT8195 wpesys"
-+	depends on COMMON_CLK_MT8195_IMGSYS
-+	default COMMON_CLK_MT8195_IMGSYS
-+	help
-+	  This driver supports MediaTek MT8195 Warp Engine clocks.
-+
-+config COMMON_CLK_MT8195_VDECSYS
-+	tristate "Clock driver for MediaTek MT8195 vdecsys"
-+	depends on COMMON_CLK_MT8195_VPPSYS
-+	default COMMON_CLK_MT8195_VPPSYS
-+	help
-+	  This driver supports MediaTek MT8195 vdecsys and vdecsys_soc clocks.
-+
-+config COMMON_CLK_MT8195_VENCSYS
-+	tristate "Clock driver for MediaTek MT8195 vencsys"
-+	depends on COMMON_CLK_MT8195_VPPSYS
-+	default COMMON_CLK_MT8195_VPPSYS
-+	help
-+	  This driver supports MediaTek MT8195 vencsys clocks.
-+
- config COMMON_CLK_MT8365
- 	tristate "Clock driver for MediaTek MT8365"
+ config COMMON_CLK_MT7622
+-	bool "Clock driver for MediaTek MT7622"
++	tristate "Clock driver for MediaTek MT7622"
  	depends on ARCH_MEDIATEK || COMPILE_TEST
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 3133ad8c2028..63351957f862 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -106,13 +106,19 @@ obj-$(CONFIG_COMMON_CLK_MT8192_SCP_ADSP) += clk-mt8192-scp_adsp.o
- obj-$(CONFIG_COMMON_CLK_MT8192_VDECSYS) += clk-mt8192-vdec.o
- obj-$(CONFIG_COMMON_CLK_MT8192_VENCSYS) += clk-mt8192-venc.o
- obj-$(CONFIG_COMMON_CLK_MT8195) += clk-mt8195-apmixedsys.o clk-mt8195-topckgen.o \
--				   clk-mt8195-peri_ao.o clk-mt8195-infra_ao.o \
--				   clk-mt8195-cam.o clk-mt8195-ccu.o clk-mt8195-img.o \
--				   clk-mt8195-ipe.o clk-mt8195-mfg.o clk-mt8195-scp_adsp.o \
--				   clk-mt8195-vdec.o clk-mt8195-vdo0.o clk-mt8195-vdo1.o \
--				   clk-mt8195-venc.o clk-mt8195-vpp0.o clk-mt8195-vpp1.o \
--				   clk-mt8195-wpe.o clk-mt8195-imp_iic_wrap.o \
--				   clk-mt8195-apusys_pll.o
-+				   clk-mt8195-peri_ao.o clk-mt8195-infra_ao.o
-+obj-$(CONFIG_COMMON_CLK_MT8195_APUSYS) += clk-mt8195-apusys_pll.o
-+obj-$(CONFIG_COMMON_CLK_MT8195_CAMSYS) += clk-mt8195-cam.o clk-mt8195-ccu.o
-+obj-$(CONFIG_COMMON_CLK_MT8195_IMGSYS) += clk-mt8195-img.o
-+obj-$(CONFIG_COMMON_CLK_MT8195_IMP_IIC_WRAP) += clk-mt8195-imp_iic_wrap.o
-+obj-$(CONFIG_COMMON_CLK_MT8195_IPESYS) += clk-mt8195-ipe.o
-+obj-$(CONFIG_COMMON_CLK_MT8195_MFGCFG) += clk-mt8195-mfg.o
-+obj-$(CONFIG_COMMON_CLK_MT8195_SCP_ADSP) += clk-mt8195-scp_adsp.o
-+obj-$(CONFIG_COMMON_CLK_MT8195_VDECSYS) += clk-mt8195-vdec.o
-+obj-$(CONFIG_COMMON_CLK_MT8195_VDOSYS) += clk-mt8195-vdo0.o clk-mt8195-vdo1.o
-+obj-$(CONFIG_COMMON_CLK_MT8195_VENCSYS) += clk-mt8195-venc.o
-+obj-$(CONFIG_COMMON_CLK_MT8195_VPPSYS) += clk-mt8195-vpp0.o clk-mt8195-vpp1.o
-+obj-$(CONFIG_COMMON_CLK_MT8195_WPESYS) += clk-mt8195-wpe.o
- obj-$(CONFIG_COMMON_CLK_MT8365) += clk-mt8365.o clk-mt8365-apmixedsys.o
- obj-$(CONFIG_COMMON_CLK_MT8365_APU) += clk-mt8365-apu.o
- obj-$(CONFIG_COMMON_CLK_MT8365_CAM) += clk-mt8365-cam.o
+ 	select COMMON_CLK_MEDIATEK
+ 	default ARCH_MEDIATEK
+@@ -345,21 +345,21 @@ config COMMON_CLK_MT7622
+ 	  required for various periperals found on MediaTek.
+ 
+ config COMMON_CLK_MT7622_ETHSYS
+-	bool "Clock driver for MediaTek MT7622 ETHSYS"
++	tristate "Clock driver for MediaTek MT7622 ETHSYS"
+ 	depends on COMMON_CLK_MT7622
+ 	help
+ 	  This driver add support for clocks for Ethernet and SGMII
+ 	  required on MediaTek MT7622 SoC.
+ 
+ config COMMON_CLK_MT7622_HIFSYS
+-	bool "Clock driver for MediaTek MT7622 HIFSYS"
++	tristate "Clock driver for MediaTek MT7622 HIFSYS"
+ 	depends on COMMON_CLK_MT7622
+ 	help
+ 	  This driver supports MediaTek MT7622 HIFSYS clocks providing
+ 	  to PCI-E and USB.
+ 
+ config COMMON_CLK_MT7622_AUDSYS
+-	bool "Clock driver for MediaTek MT7622 AUDSYS"
++	tristate "Clock driver for MediaTek MT7622 AUDSYS"
+ 	depends on COMMON_CLK_MT7622
+ 	help
+ 	  This driver supports MediaTek MT7622 AUDSYS clocks providing
 -- 
 2.39.1
 
