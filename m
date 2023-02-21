@@ -4,75 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67CF7C61DA3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 01:45:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AAAAC61DA3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 02:43:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=34lDDydAwAjd3gUwJRFbQoccKORNig7o9dp+cyLAa44=; b=yjgFuPe17XZ+V5hH2AyDlR7ZNP
-	az9viyK+M0wxziT8oTs3HndfacWGGH224djDveexz6+KdljWMuN/e1OUPKCwilc1CeXcNK0KZ7CFx
-	tFdJnDqNADaCngwGImnGOF7ymjKv5fgGBwsob4+B+srlvWXlLgyY41tmLHbAyW9WZ5veT6r7nJLEk
-	icBbPEsiqo1EXAY2cOAnbePslIRoY4o1sYS4MHfteNrsD/FBCOke00YfbS3b4UOjAVk0Y2G1VYL75
-	x6GWmQQsIWW5hhoXqvzdNlBEFGjLkkqVyALpBQH3iFxc2e6tPCH/m8l0skU/QSYksGfmC6YOtKqQn
-	6r2Oopgw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3Z9XstlmW3LgKWVrU6Kb51CuDUUWk7EEvQ9L8T83Bak=; b=VHqkMvL5AsD4EqkeHuyuBKMK4C
+	DI0PFYs7K9TuvZ/c7Lf0H/gQb/fWMCCJrhO+Uddxr/kZcZt6+L6H1Lt26Ehql3z27L0yeT/wKMvVd
+	ErM5S9o9lQAFRGRBPqXluPuPi2tHNI4TajJaF93da4IPcqpZT4vivbs6CwfOHj0jOPrHR7vdyeLKS
+	RtvzVdSrXpL4Nw9q1Uf9fzvEIn5Sp1ErjxwsWJTbm05Xlfuki815wDI26Gy3/55UUcsSsy94Dm/r/
+	Y6xzW63KUX7hJEAo4dsAzkDiyib8v4hWP11YE9LW+yHEFgjfrTAPZlYT5+JO245wSCdeKmpu7YEvq
+	xPIdM5Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUHiK-006Dks-RT; Tue, 21 Feb 2023 01:45:04 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1pUId1-006Kf6-Bk; Tue, 21 Feb 2023 02:43:39 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUHiI-006Dk3-IQ; Tue, 21 Feb 2023 01:45:03 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id s22so3699803lfi.9;
-        Mon, 20 Feb 2023 17:45:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=34lDDydAwAjd3gUwJRFbQoccKORNig7o9dp+cyLAa44=;
-        b=hhBJOZuMVo1ePfb3/3F68gF6BC3ON4xQ3y3JcnWFv09WbtqsPLa5Mb3U7Zh+cKDKCF
-         kvO9182b9JjrjENaevcIEelP/puJZI7VtplNpyOE8UrLFtbRdBDMwal8hE7xPL0PEt7k
-         ZzST/MOdeg29aK5EoPZ/TyX/hWQ2BHChevLsdy5Eo1smhAM/ZP0OoU8VYV154M60PXzR
-         0icNAm/PmkJQuQDMoZm+QfP340RnMnd+p4qZ96mVU81UR7LAHyMEUPvTu7ckzT2+krv/
-         K+GxG8mVqKyyAnQmuwOA5+8cO2/eUrt2Jj1bar1F4NjWhFPNYsec7Q0J4qkt+EPEFtQu
-         SAlQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=34lDDydAwAjd3gUwJRFbQoccKORNig7o9dp+cyLAa44=;
-        b=TgHVO/hbiX9K2DEecmgDL2wyk+skpoT5UjSW5Vmr1bNctlxtffCG2LNhbIBLBxSmEW
-         HIOeEVMNRp7kHuooKr39GJIvaqlFFnKH7C7AGi0T08EWHA3jOambhnCDxNZHRpRSInPH
-         Rsh36HyQOZDJFwNtHc6d+epQg6x3kNaBAhuxvUhPszfOwhig7IHIBCFecLpdudDhNvw2
-         rRMcxrVbIxpfLJj3xXvWf+9bjywn941SdYOER5GbvOCn0bpgG9LYMN3fPk171G6OB2RL
-         Kr0CZ9VZfvOSa9YRSw2N6h4I3HWgtaUvPzIiX5hbsEv120XFaeNzVsFKK+1pDUH7mhBF
-         WRdQ==
-X-Gm-Message-State: AO0yUKULaJAIEMLhrGEaMhrtsNvoQyg2GN7S4Rt/NESKMAdNcWEP6rHH
-	6EfwOOa+VaGNsH94gfhLjFVI0xN5kvB22MHN7w==
-X-Google-Smtp-Source: AK7set9Iu6OicBYAy8yoZbvlxVUSUKcFs1DOnRErdCLJJTpX8gi0u3toSKpGGdcUc5c9tHFS+Lce1M8lfxi7dHbnRJc=
-X-Received: by 2002:ac2:5e8c:0:b0:4db:38a7:f32f with SMTP id
- b12-20020ac25e8c000000b004db38a7f32fmr1165437lfq.4.1676943898660; Mon, 20 Feb
- 2023 17:44:58 -0800 (PST)
+	id 1pUIcy-006Kcw-G1
+	for linux-mediatek@lists.infradead.org; Tue, 21 Feb 2023 02:43:38 +0000
+X-UUID: 83126e1ab19111eda08d4d6090ec5a5c-20230220
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=3Z9XstlmW3LgKWVrU6Kb51CuDUUWk7EEvQ9L8T83Bak=;
+	b=W2o94xpG5hb9LF4MHANx+wh9KpSKRz50lQtJIVPF5tRGD0PDc6xkqX+GuzL8ouJMEcajPuhxpYxIsGvo/sJBQaD8eTPdrXgsNlL630fXjVRmQU/ZiXyBB5+IJ+6XLWlJd+2YMMIEq+n7CVfRBBKyQl42hGDb1vh3Q8+fUvWqrQc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.19,REQID:179fa583-c221-4928-a3bb-4b1aa1f565a1,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:885ddb2,CLOUDID:07892d26-564d-42d9-9875-7c868ee415ec,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-UUID: 83126e1ab19111eda08d4d6090ec5a5c-20230220
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <howard-yh.hsu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1258000137; Mon, 20 Feb 2023 19:43:24 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 21 Feb 2023 10:43:22 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 21 Feb 2023 10:43:22 +0800
+From: Howard Hsu <howard-yh.hsu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
+	<ryder.Lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Howard Hsu <howard-yh.hsu@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7915: rework init flow in mt7915_thermal_init()
+Date: Tue, 21 Feb 2023 10:43:17 +0800
+Message-ID: <20230221024317.3218-1-howard-yh.hsu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20230220142431.54589-1-frank.li@vivo.com>
-In-Reply-To: <20230220142431.54589-1-frank.li@vivo.com>
-From: Stanley Chu <chu.stanley@gmail.com>
-Date: Tue, 21 Feb 2023 09:44:47 +0800
-Message-ID: <CAGaU9a-xmWFhXSZ0Zt7O2xvVz4xd-AY1giFAeKFnAxHAgUx5pw@mail.gmail.com>
-Subject: Re: [PATCH] scsi: ufs: ufs-mediatek: guard ufs_mtk_runtime_suspend()
- and ufs_mtk_runtime_resume() w/ CONFIG_PM
-To: Yangtao Li <frank.li@vivo.com>
-Cc: stanley.chu@mediatek.com, jejb@linux.ibm.com, martin.petersen@oracle.com, 
-	linux-scsi@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	zhangshida@kylinos.cn, k2ci <kernel-bot@kylinos.cn>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230220_174502_648592_2EC12A4D 
-X-CRM114-Status: UNSURE (   9.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230220_184337_357809_49F52FBF 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,40 +79,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yangtao,
+If kernel do not enable CONFIG_HWMON, it may cause thermal
+initialization to be done with temperature value 0 and then can not
+transmit. This commit fixes it by setting trigger/restore temperature
+before checking CONFIG_HWMON.
 
-On Mon, Feb 20, 2023 at 10:44 PM Yangtao Li <frank.li@vivo.com> wrote:
->
-> To fix below compile error(CONFIG_PM set to 'n'):
->
-> drivers/ufs/host/ufs-mediatek.c: In function `ufs_mtk_runtime_suspend`:
-> drivers/ufs/host/ufs-mediatek.c:1623:8: error: implicit declaration of
->         function `ufshcd_runtime_suspend`; did you mean `ufs_mtk_runtime_suspend`?
->         [-Werror=implicit-function-declaration]
->  1623 |  ret = ufshcd_runtime_suspend(dev);
->       |        ^~~~~~~~~~~~~~~~~~~~~~
->       |        ufs_mtk_runtime_suspend
-> drivers/ufs/host/ufs-mediatek.c: In function `ufs_mtk_runtime_resume`:
-> drivers/ufs/host/ufs-mediatek.c:1638:9: error: implicit declaration of function
->         `ufshcd_runtime_resume`; did you mean `ufs_mtk_runtime_resume`?
->         [-Werror=implicit-function-declaration]
->  1638 |  return ufshcd_runtime_resume(dev);
->       |         ^~~~~~~~~~~~~~~~~~~~~
->       |         ufs_mtk_runtime_resume
-> At top level:
-> drivers/ufs/host/ufs-mediatek.c:1632:12: error: `ufs_mtk_runtime_resume`
->         defined but not used [-Werror=unused-function]
->  1632 | static int ufs_mtk_runtime_resume(struct device *dev)
->       |            ^~~~~~~~~~~~~~~~~~~~~~
-> drivers/ufs/host/ufs-mediatek.c:1618:12: error: `ufs_mtk_runtime_suspend`
->         defined but not used [-Werror=unused-function]
->  1618 | static int ufs_mtk_runtime_suspend(struct device *dev)
->
-> Reported-by: k2ci <kernel-bot@kylinos.cn>
-> Reported-by: Shida Zhang <zhangshida@kylinos.cn>
-> Signed-off-by: Yangtao Li <frank.li@vivo.com>
+Fixes: 7d12b38 ("wifi: mt76: mt7915: call mt7915_mcu_set_thermal_throttling() only after init_work")
+Signed-off-by: Howard Hsu <howard-yh.hsu@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/init.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-Thanks for this fix.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index 1ab768feccaa..c48dcb928649 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -202,6 +202,10 @@ static int mt7915_thermal_init(struct mt7915_phy *phy)
+ 			phy->cdev = cdev;
+ 	}
+ 
++	/* initialize critical/maximum high temperature */
++	phy->throttle_temp[MT7915_CRIT_TEMP_IDX] = MT7915_CRIT_TEMP;
++	phy->throttle_temp[MT7915_MAX_TEMP_IDX] = MT7915_MAX_TEMP;
++
+ 	if (!IS_REACHABLE(CONFIG_HWMON))
+ 		return 0;
+ 
+@@ -210,10 +214,6 @@ static int mt7915_thermal_init(struct mt7915_phy *phy)
+ 	if (IS_ERR(hwmon))
+ 		return PTR_ERR(hwmon);
+ 
+-	/* initialize critical/maximum high temperature */
+-	phy->throttle_temp[MT7915_CRIT_TEMP_IDX] = MT7915_CRIT_TEMP;
+-	phy->throttle_temp[MT7915_MAX_TEMP_IDX] = MT7915_MAX_TEMP;
+-
+ 	return 0;
+ }
+ 
+-- 
+2.18.0
 
-Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
 
