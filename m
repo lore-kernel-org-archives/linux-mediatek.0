@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A89F4C6379F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 12:35:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 043CEC6379F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 12:37:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wwm1+AVwOnMW7DOlD6BZJCtbffpyAbazROQ5Srrwv2g=; b=oCDI/aOseJRxH0mTkBvhB5ed1n
-	VDFVfsilkNPTqylu5UcJzwHlcVZk6PbEKOghTGYz6HbrkuW4wedcNp96QieQ8KL8UR2bdrhqXjLL0
-	2c4lcFO5zBMsyl1Mb7o+N7qjNo3npSQpG/gm1ZEpQx3eMVBiFuxR/bgXo4Tjzby2qrTyP4qH0gMOk
-	yCpCaE/hHW356nMtvF0L7fhxYlc/1DHjPYfFkquKcYyxuVXduOy28/VN/OvBvcHu7j+2KBl0PTl8r
-	MoYng4Gb57xpU6nnK6Yvi57rTtAfsprY04yOgRi4CWEEZPLge3ASP+quTlHllSQ9LX0HtbfY6Qzrk
-	hBlIASKQ==;
+	bh=Bk95CJF0m6OcWNfX/qPHBHZcbzcXowTBKXplHjKkPHo=; b=QlWGP6RW5I+Mw6H0gVkVxn9D7w
+	GPFM1eELvLaTZemIVaRVUy4aOYswo28VbuSeEGyMaRJlOLjGys69bTLAnBV9NVL89o0ROdMaJ9GwB
+	echhETC0RQVJHiefTlKBX3XHjNYF0j6J+TA4hLozc3DbEh/1YOLHAcx4erddBpZjavlgno/978Nvy
+	mrHAnMrThAJm6iSpzqi0/Tn076z32C5hbAKTFfCtAZqvJ7D1Picds5MPgIezkngHE2f3F86DMaU18
+	iyZdw6CCCiwXk+n+QF355JoYnVbr/AeRhuZ42Xew7UtGp2qmWcWjYtHkDSE2HOBE64FGlTzPgIu/o
+	uS7+7dYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pURrU-0083Qt-UX; Tue, 21 Feb 2023 12:35:12 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pURtB-0084Ho-Qg; Tue, 21 Feb 2023 12:36:57 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pURGU-007k7P-ED; Tue, 21 Feb 2023 11:57:03 +0000
+	id 1pURGY-007kAg-Fi; Tue, 21 Feb 2023 11:57:04 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 091E366021E9;
-	Tue, 21 Feb 2023 11:56:55 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E89A366021EA;
+	Tue, 21 Feb 2023 11:56:59 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676980617;
-	bh=icsavTwrDqIH6RiZC0arodFRjMxY0YRQtj8Fgou62kY=;
+	s=mail; t=1676980621;
+	bh=t0BhqFhgFrOhfZhgO4PCkH5Vfx6Hcb7s3uSV/Xzx0PA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KGmRTkD1bgsg/+alQSLAcgjyHJ0ovZ1wVhhDBnhRFyJ37jg7SxpCAsqwpQy0jaMaa
-	 rlbDhaGb7PgYIQ+dlg3CX8JdoTzeWNOdZOqCrzY8MLnW033L9A7QvfzFZ0d5s3Wrcp
-	 XiIdlcA50rp1By/4PgTqifTC4AnSZJHmQ30jwYpGUV/fwu5BEQkQOu+CFAUfKEChub
-	 DJxC1aFtaib5vLrPH2RI7FDgTx3Qgr5cqqIG9S1h15RM2dp658FLsmc/HnlGL/8ggb
-	 NBv+VYP9H9BaOZjzHa98YvfSWAVQG6rXPyX2GyHqExBQNRWYH4yu24ZfHCt+ZzSQOu
-	 B02JKzLbmOPAg==
+	b=Uq1D8AjF0R92Lpg2+1h0QjoRN2yER3k0vjfMyghk5+lcZVRKlmTd6XNNiLwc3Ehir
+	 9mz3k/mkFEptoCTnk/Y1tFDG5RlBiepg8V7ImXwTqwFGn0vt+wAhKkTXGPAW8Aj0q/
+	 IlA4MCLMnPkZ5m2igRV+a711m9TdbUlTVhamsAtHap1kdxjVox42n3O6kel5+733t8
+	 uuF7YGzoGIHzgpKdDQvMl4ZXyhaEiAB4Z8LKpC+5STYPz6dQywiT7Lq3vVpOQZLc5u
+	 bKpeyRF+Qo/QpRTRVQKAJiD1d6/QTVnhipedzuiSnX12l9Z2+YziQJpsifC+XFShpd
+	 Fmz6V/Ysyewag==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mturquette@baylibre.com
 Cc: sboyd@kernel.org,
@@ -67,17 +67,17 @@ Cc: sboyd@kernel.org,
 	linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 47/54] clk: mediatek: mt8192: Move apmixedsys clock driver to its own file
-Date: Tue, 21 Feb 2023 12:55:42 +0100
-Message-Id: <20230221115549.360132-48-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v4 50/54] clk: mediatek: mt8135: Move apmixedsys to its own file
+Date: Tue, 21 Feb 2023 12:55:45 +0100
+Message-Id: <20230221115549.360132-51-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230221115549.360132-1-angelogioacchino.delregno@collabora.com>
 References: <20230221115549.360132-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230221_035658_793330_66F869E9 
-X-CRM114-Status: GOOD (  22.72  )
+X-CRM114-CacheID: sfid-20230221_035702_832516_D9DF9BD1 
+X-CRM114-Status: GOOD (  15.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,530 +92,153 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is the last man standing in clk-mt8192.c that won't allow us to
-use the module_platform_driver() macro, and for *no* good reason.
-Move it to clk-mt8192-apmixedsys.c and while at it, also add a
-.remove() callback for it.
-
-Also, since the need for "clk-mt8192-simple" and "clk-mt8192" was
-just due to them being in the same file and probing different clocks,
-and since now there's just one platform_driver struct per file, it
-seemed natural to rename the `-simple` variant to just "clk-mt8192".
+In preparation for migrating mt8135 clocks to the common simple
+probe mechanism, move the apmixedsys clocks to a different file.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/clk/mediatek/Makefile                |   2 +-
- drivers/clk/mediatek/clk-mt8192-apmixedsys.c | 214 ++++++++++++++++++
- drivers/clk/mediatek/clk-mt8192.c            | 221 +------------------
- 3 files changed, 219 insertions(+), 218 deletions(-)
- create mode 100644 drivers/clk/mediatek/clk-mt8192-apmixedsys.c
+ drivers/clk/mediatek/Makefile                |  2 +-
+ drivers/clk/mediatek/clk-mt8135-apmixedsys.c | 62 ++++++++++++++++++++
+ drivers/clk/mediatek/clk-mt8135.c            | 46 ---------------
+ 3 files changed, 63 insertions(+), 47 deletions(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt8135-apmixedsys.c
 
 diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 6204ad17b7ca..5facbe93141e 100644
+index 5facbe93141e..228cb3e3a4c4 100644
 --- a/drivers/clk/mediatek/Makefile
 +++ b/drivers/clk/mediatek/Makefile
-@@ -100,7 +100,7 @@ obj-$(CONFIG_COMMON_CLK_MT8186_MMSYS) += clk-mt8186-mm.o
- obj-$(CONFIG_COMMON_CLK_MT8186_VDECSYS) += clk-mt8186-vdec.o
- obj-$(CONFIG_COMMON_CLK_MT8186_VENCSYS) += clk-mt8186-venc.o
- obj-$(CONFIG_COMMON_CLK_MT8186_WPESYS) += clk-mt8186-wpe.o
--obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
-+obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o clk-mt8192-apmixedsys.o
- obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
- obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
- obj-$(CONFIG_COMMON_CLK_MT8192_IMGSYS) += clk-mt8192-img.o
-diff --git a/drivers/clk/mediatek/clk-mt8192-apmixedsys.c b/drivers/clk/mediatek/clk-mt8192-apmixedsys.c
+@@ -62,7 +62,7 @@ obj-$(CONFIG_COMMON_CLK_MT7986) += clk-mt7986-apmixed.o
+ obj-$(CONFIG_COMMON_CLK_MT7986) += clk-mt7986-topckgen.o
+ obj-$(CONFIG_COMMON_CLK_MT7986) += clk-mt7986-infracfg.o
+ obj-$(CONFIG_COMMON_CLK_MT7986_ETHSYS) += clk-mt7986-eth.o
+-obj-$(CONFIG_COMMON_CLK_MT8135) += clk-mt8135.o
++obj-$(CONFIG_COMMON_CLK_MT8135) += clk-mt8135-apmixedsys.o clk-mt8135.o
+ obj-$(CONFIG_COMMON_CLK_MT8167) += clk-mt8167.o clk-mt8167-apmixedsys.o
+ obj-$(CONFIG_COMMON_CLK_MT8167_AUDSYS) += clk-mt8167-aud.o
+ obj-$(CONFIG_COMMON_CLK_MT8167_IMGSYS) += clk-mt8167-img.o
+diff --git a/drivers/clk/mediatek/clk-mt8135-apmixedsys.c b/drivers/clk/mediatek/clk-mt8135-apmixedsys.c
 new file mode 100644
-index 000000000000..1e6988d5289a
+index 000000000000..2b4d379300fc
 --- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8192-apmixedsys.c
-@@ -0,0 +1,214 @@
++++ b/drivers/clk/mediatek/clk-mt8135-apmixedsys.c
+@@ -0,0 +1,62 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +/*
-+ * Copyright (c) 2021 MediaTek Inc.
-+ *               Chun-Jie Chen <chun-jie.chen@mediatek.com>
-+ * Copyright (c) 2023 Collabora Ltd.
++ * Copyright (c) 2014 MediaTek Inc.
++ *               James Liao <jamesjj.liao@mediatek.com>
++ * Copyright (c) 2023 Collabora, Ltd.
 + *               AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 + */
 +
-+#include <dt-bindings/clock/mt8192-clk.h>
-+#include <linux/module.h>
++#include <dt-bindings/clock/mt8135-clk.h>
++#include <linux/clk.h>
++#include <linux/of.h>
 +#include <linux/platform_device.h>
-+#include "clk-fhctl.h"
-+#include "clk-gate.h"
++
 +#include "clk-mtk.h"
 +#include "clk-pll.h"
-+#include "clk-pllfh.h"
 +
-+static const struct mtk_gate_regs apmixed_cg_regs = {
-+	.set_ofs = 0x14,
-+	.clr_ofs = 0x14,
-+	.sta_ofs = 0x14,
-+};
++#define MT8135_PLL_FMAX		(2000 * MHZ)
++#define CON0_MT8135_RST_BAR	BIT(27)
 +
-+#define GATE_APMIXED(_id, _name, _parent, _shift)	\
-+	GATE_MTK(_id, _name, _parent, &apmixed_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
-+
-+static const struct mtk_gate apmixed_clks[] = {
-+	GATE_APMIXED(CLK_APMIXED_MIPID26M, "mipid26m", "clk26m", 16),
-+};
-+
-+#define MT8192_PLL_FMAX		(3800UL * MHZ)
-+#define MT8192_PLL_FMIN		(1500UL * MHZ)
-+#define MT8192_INTEGER_BITS	8
-+
-+#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags,		\
-+			_rst_bar_mask, _pcwbits, _pd_reg, _pd_shift,	\
-+			_tuner_reg, _tuner_en_reg, _tuner_en_bit,	\
-+			_pcw_reg, _pcw_shift, _pcw_chg_reg,		\
-+			_en_reg, _pll_en_bit) {				\
++#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits, _pd_reg, _pd_shift, _tuner_reg, _pcw_reg, _pcw_shift) { \
 +		.id = _id,						\
 +		.name = _name,						\
 +		.reg = _reg,						\
 +		.pwr_reg = _pwr_reg,					\
 +		.en_mask = _en_mask,					\
 +		.flags = _flags,					\
-+		.rst_bar_mask = _rst_bar_mask,				\
-+		.fmax = MT8192_PLL_FMAX,				\
-+		.fmin = MT8192_PLL_FMIN,				\
++		.rst_bar_mask = CON0_MT8135_RST_BAR,			\
++		.fmax = MT8135_PLL_FMAX,				\
 +		.pcwbits = _pcwbits,					\
-+		.pcwibits = MT8192_INTEGER_BITS,			\
 +		.pd_reg = _pd_reg,					\
 +		.pd_shift = _pd_shift,					\
 +		.tuner_reg = _tuner_reg,				\
-+		.tuner_en_reg = _tuner_en_reg,				\
-+		.tuner_en_bit = _tuner_en_bit,				\
 +		.pcw_reg = _pcw_reg,					\
 +		.pcw_shift = _pcw_shift,				\
-+		.pcw_chg_reg = _pcw_chg_reg,				\
-+		.en_reg = _en_reg,					\
-+		.pll_en_bit = _pll_en_bit,				\
 +	}
-+
-+#define PLL_B(_id, _name, _reg, _pwr_reg, _en_mask, _flags,		\
-+			_rst_bar_mask, _pcwbits, _pd_reg, _pd_shift,	\
-+			_tuner_reg, _tuner_en_reg, _tuner_en_bit,	\
-+			_pcw_reg, _pcw_shift)				\
-+		PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags,	\
-+			_rst_bar_mask, _pcwbits, _pd_reg, _pd_shift,	\
-+			_tuner_reg, _tuner_en_reg, _tuner_en_bit,	\
-+			_pcw_reg, _pcw_shift, 0, 0, 0)
 +
 +static const struct mtk_pll_data plls[] = {
-+	PLL_B(CLK_APMIXED_MAINPLL, "mainpll", 0x0340, 0x034c, 0xff000000,
-+	      HAVE_RST_BAR, BIT(23), 22, 0x0344, 24, 0, 0, 0, 0x0344, 0),
-+	PLL_B(CLK_APMIXED_UNIVPLL, "univpll", 0x0308, 0x0314, 0xff000000,
-+	      HAVE_RST_BAR, BIT(23), 22, 0x030c, 24, 0, 0, 0, 0x030c, 0),
-+	PLL(CLK_APMIXED_USBPLL, "usbpll", 0x03c4, 0x03cc, 0x00000000,
-+	    0, 0, 22, 0x03c4, 24, 0, 0, 0, 0x03c4, 0, 0x03c4, 0x03cc, 2),
-+	PLL_B(CLK_APMIXED_MSDCPLL, "msdcpll", 0x0350, 0x035c, 0x00000000,
-+	      0, 0, 22, 0x0354, 24, 0, 0, 0, 0x0354, 0),
-+	PLL_B(CLK_APMIXED_MMPLL, "mmpll", 0x0360, 0x036c, 0xff000000,
-+	      HAVE_RST_BAR, BIT(23), 22, 0x0364, 24, 0, 0, 0, 0x0364, 0),
-+	PLL_B(CLK_APMIXED_ADSPPLL, "adsppll", 0x0370, 0x037c, 0xff000000,
-+	      HAVE_RST_BAR, BIT(23), 22, 0x0374, 24, 0, 0, 0, 0x0374, 0),
-+	PLL_B(CLK_APMIXED_MFGPLL, "mfgpll", 0x0268, 0x0274, 0x00000000,
-+	      0, 0, 22, 0x026c, 24, 0, 0, 0, 0x026c, 0),
-+	PLL_B(CLK_APMIXED_TVDPLL, "tvdpll", 0x0380, 0x038c, 0x00000000,
-+	      0, 0, 22, 0x0384, 24, 0, 0, 0, 0x0384, 0),
-+	PLL_B(CLK_APMIXED_APLL1, "apll1", 0x0318, 0x0328, 0x00000000,
-+	      0, 0, 32, 0x031c, 24, 0x0040, 0x000c, 0, 0x0320, 0),
-+	PLL_B(CLK_APMIXED_APLL2, "apll2", 0x032c, 0x033c, 0x00000000,
-+	      0, 0, 32, 0x0330, 24, 0, 0, 0, 0x0334, 0),
++	PLL(CLK_APMIXED_ARMPLL1, "armpll1", 0x200, 0x218, 0x80000000, 0, 21, 0x204, 24, 0x0, 0x204, 0),
++	PLL(CLK_APMIXED_ARMPLL2, "armpll2", 0x2cc, 0x2e4, 0x80000000, 0, 21, 0x2d0, 24, 0x0, 0x2d0, 0),
++	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x21c, 0x234, 0xf0000000, HAVE_RST_BAR, 21, 0x21c, 6, 0x0, 0x220, 0),
++	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x238, 0x250, 0xf3000000, HAVE_RST_BAR, 7, 0x238, 6, 0x0, 0x238, 9),
++	PLL(CLK_APMIXED_MMPLL, "mmpll", 0x254, 0x26c, 0xf0000000, HAVE_RST_BAR, 21, 0x254, 6, 0x0, 0x258, 0),
++	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x278, 0x290, 0x80000000, 0, 21, 0x278, 6, 0x0, 0x27c, 0),
++	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x294, 0x2ac, 0x80000000, 0, 31, 0x294, 6, 0x0, 0x298, 0),
++	PLL(CLK_APMIXED_LVDSPLL, "lvdspll", 0x2b0, 0x2c8, 0x80000000, 0, 21, 0x2b0, 6, 0x0, 0x2b4, 0),
++	PLL(CLK_APMIXED_AUDPLL, "audpll", 0x2e8, 0x300, 0x80000000, 0, 31, 0x2e8, 6, 0x2f8, 0x2ec, 0),
++	PLL(CLK_APMIXED_VDECPLL, "vdecpll", 0x304, 0x31c, 0x80000000, 0, 21, 0x2b0, 6, 0x0, 0x308, 0),
 +};
 +
-+enum fh_pll_id {
-+	FH_ARMPLL_LL,
-+	FH_ARMPLL_BL0,
-+	FH_ARMPLL_BL1,
-+	FH_ARMPLL_BL2,
-+	FH_ARMPLL_BL3,
-+	FH_CCIPLL,
-+	FH_MFGPLL,
-+	FH_MEMPLL,
-+	FH_MPLL,
-+	FH_MMPLL,
-+	FH_MAINPLL,
-+	FH_MSDCPLL,
-+	FH_ADSPPLL,
-+	FH_APUPLL,
-+	FH_TVDPLL,
-+	FH_NR_FH,
-+};
-+
-+#define FH(_pllid, _fhid, _offset) {					\
-+		.data = {						\
-+			.pll_id = _pllid,				\
-+			.fh_id = _fhid,					\
-+			.fh_ver = FHCTL_PLLFH_V2,			\
-+			.fhx_offset = _offset,				\
-+			.dds_mask = GENMASK(21, 0),			\
-+			.slope0_value = 0x6003c97,			\
-+			.slope1_value = 0x6003c97,			\
-+			.sfstrx_en = BIT(2),				\
-+			.frddsx_en = BIT(1),				\
-+			.fhctlx_en = BIT(0),				\
-+			.tgl_org = BIT(31),				\
-+			.dvfs_tri = BIT(31),				\
-+			.pcwchg = BIT(31),				\
-+			.dt_val = 0x0,					\
-+			.df_val = 0x9,					\
-+			.updnlmt_shft = 16,				\
-+			.msk_frddsx_dys = GENMASK(23, 20),		\
-+			.msk_frddsx_dts = GENMASK(19, 16),		\
-+		},							\
-+	}
-+
-+static struct mtk_pllfh_data pllfhs[] = {
-+	FH(CLK_APMIXED_MFGPLL, FH_MFGPLL, 0xb4),
-+	FH(CLK_APMIXED_MMPLL, FH_MMPLL, 0xf0),
-+	FH(CLK_APMIXED_MAINPLL, FH_MAINPLL, 0x104),
-+	FH(CLK_APMIXED_MSDCPLL, FH_MSDCPLL, 0x118),
-+	FH(CLK_APMIXED_ADSPPLL, FH_ADSPPLL, 0x12c),
-+	FH(CLK_APMIXED_TVDPLL, FH_TVDPLL, 0x154),
-+};
-+
-+static const struct of_device_id of_match_clk_mt8192_apmixed[] = {
-+	{ .compatible = "mediatek,mt8192-apmixedsys" },
-+	{ /* sentinel */ }
-+};
-+
-+static int clk_mt8192_apmixed_probe(struct platform_device *pdev)
++static void __init mtk_apmixedsys_init(struct device_node *node)
 +{
 +	struct clk_hw_onecell_data *clk_data;
-+	struct device_node *node = pdev->dev.of_node;
-+	const u8 *fhctl_node = "mediatek,mt8192-fhctl";
-+	int r;
 +
 +	clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
 +	if (!clk_data)
-+		return -ENOMEM;
++		return;
 +
-+	fhctl_parse_dt(fhctl_node, pllfhs, ARRAY_SIZE(pllfhs));
-+
-+	r = mtk_clk_register_pllfhs(node, plls, ARRAY_SIZE(plls),
-+				    pllfhs, ARRAY_SIZE(pllfhs), clk_data);
-+	if (r)
-+		goto free_clk_data;
-+
-+	r = mtk_clk_register_gates(&pdev->dev, node, apmixed_clks,
-+				   ARRAY_SIZE(apmixed_clks), clk_data);
-+	if (r)
-+		goto unregister_plls;
-+
-+	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
-+	if (r)
-+		goto unregister_gates;
-+
-+	return r;
-+
-+unregister_gates:
-+	mtk_clk_unregister_gates(apmixed_clks, ARRAY_SIZE(apmixed_clks), clk_data);
-+unregister_plls:
-+	mtk_clk_unregister_pllfhs(plls, ARRAY_SIZE(plls), pllfhs,
-+				  ARRAY_SIZE(pllfhs), clk_data);
-+free_clk_data:
-+	mtk_free_clk_data(clk_data);
-+	return r;
++	mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
 +}
-+
-+static int clk_mt8192_apmixed_remove(struct platform_device *pdev)
-+{
-+	struct device_node *node = pdev->dev.of_node;
-+	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
-+
-+	of_clk_del_provider(node);
-+	mtk_clk_unregister_gates(apmixed_clks, ARRAY_SIZE(apmixed_clks), clk_data);
-+	mtk_clk_unregister_pllfhs(plls, ARRAY_SIZE(plls), pllfhs,
-+				  ARRAY_SIZE(pllfhs), clk_data);
-+	mtk_free_clk_data(clk_data);
-+
-+	return 0;
-+}
-+
-+static struct platform_driver clk_mt8192_apmixed_drv = {
-+	.driver = {
-+		.name = "clk-mt8192-apmixed",
-+		.of_match_table = of_match_clk_mt8192_apmixed,
-+	},
-+	.probe = clk_mt8192_apmixed_probe,
-+	.remove = clk_mt8192_apmixed_remove,
-+};
-+module_platform_driver(clk_mt8192_apmixed_drv);
-+MODULE_DESCRIPTION("MediaTek MT8192 apmixed clocks driver");
++CLK_OF_DECLARE(mtk_apmixedsys, "mediatek,mt8135-apmixedsys",
++		mtk_apmixedsys_init);
 +MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/mediatek/clk-mt8192.c b/drivers/clk/mediatek/clk-mt8192.c
-index 35afe496b1c1..45eccda51471 100644
---- a/drivers/clk/mediatek/clk-mt8192.c
-+++ b/drivers/clk/mediatek/clk-mt8192.c
-@@ -12,12 +12,9 @@
- #include <linux/platform_device.h>
- #include <linux/slab.h>
- 
--#include "clk-fhctl.h"
- #include "clk-gate.h"
- #include "clk-mtk.h"
- #include "clk-mux.h"
--#include "clk-pll.h"
--#include "clk-pllfh.h"
- 
- #include <dt-bindings/clock/mt8192-clk.h>
- #include <dt-bindings/reset/mt8192-resets.h>
-@@ -714,19 +711,6 @@ static struct mtk_composite top_muxes[] = {
- 	DIV_GATE(CLK_TOP_APLL12_DIV9, "apll12_div9", "apll_i2s9_m_sel", 0x320, 10, 0x338, 8, 16),
- };
- 
--static const struct mtk_gate_regs apmixed_cg_regs = {
--	.set_ofs = 0x14,
--	.clr_ofs = 0x14,
--	.sta_ofs = 0x14,
--};
+diff --git a/drivers/clk/mediatek/clk-mt8135.c b/drivers/clk/mediatek/clk-mt8135.c
+index 98165b1f7c97..2a9405b552c6 100644
+--- a/drivers/clk/mediatek/clk-mt8135.c
++++ b/drivers/clk/mediatek/clk-mt8135.c
+@@ -592,50 +592,4 @@ static void __init mtk_pericfg_init(struct device_node *node)
+ 	mtk_register_reset_controller(node, &clk_rst_desc[1]);
+ }
+ CLK_OF_DECLARE(mtk_pericfg, "mediatek,mt8135-pericfg", mtk_pericfg_init);
 -
--#define GATE_APMIXED(_id, _name, _parent, _shift)	\
--	GATE_MTK(_id, _name, _parent, &apmixed_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
+-#define MT8135_PLL_FMAX		(2000 * MHZ)
+-#define CON0_MT8135_RST_BAR	BIT(27)
 -
--static const struct mtk_gate apmixed_clks[] = {
--	GATE_APMIXED(CLK_APMIXED_MIPID26M, "mipid26m", "clk26m", 16),
--};
--
- static const struct mtk_gate_regs infra0_cg_regs = {
- 	.set_ofs = 0x80,
- 	.clr_ofs = 0x84,
-@@ -980,121 +964,6 @@ static const struct mtk_clk_rst_desc clk_rst_desc = {
- 	.rst_idx_map_nr = ARRAY_SIZE(infra_ao_idx_map),
- };
- 
--#define MT8192_PLL_FMAX		(3800UL * MHZ)
--#define MT8192_PLL_FMIN		(1500UL * MHZ)
--#define MT8192_INTEGER_BITS	8
--
--#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags,		\
--			_rst_bar_mask, _pcwbits, _pd_reg, _pd_shift,	\
--			_tuner_reg, _tuner_en_reg, _tuner_en_bit,	\
--			_pcw_reg, _pcw_shift, _pcw_chg_reg,		\
--			_en_reg, _pll_en_bit) {				\
+-#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits, _pd_reg, _pd_shift, _tuner_reg, _pcw_reg, _pcw_shift) { \
 -		.id = _id,						\
 -		.name = _name,						\
 -		.reg = _reg,						\
 -		.pwr_reg = _pwr_reg,					\
 -		.en_mask = _en_mask,					\
 -		.flags = _flags,					\
--		.rst_bar_mask = _rst_bar_mask,				\
--		.fmax = MT8192_PLL_FMAX,				\
--		.fmin = MT8192_PLL_FMIN,				\
+-		.rst_bar_mask = CON0_MT8135_RST_BAR,			\
+-		.fmax = MT8135_PLL_FMAX,				\
 -		.pcwbits = _pcwbits,					\
--		.pcwibits = MT8192_INTEGER_BITS,			\
 -		.pd_reg = _pd_reg,					\
 -		.pd_shift = _pd_shift,					\
 -		.tuner_reg = _tuner_reg,				\
--		.tuner_en_reg = _tuner_en_reg,				\
--		.tuner_en_bit = _tuner_en_bit,				\
 -		.pcw_reg = _pcw_reg,					\
 -		.pcw_shift = _pcw_shift,				\
--		.pcw_chg_reg = _pcw_chg_reg,				\
--		.en_reg = _en_reg,					\
--		.pll_en_bit = _pll_en_bit,				\
 -	}
--
--#define PLL_B(_id, _name, _reg, _pwr_reg, _en_mask, _flags,		\
--			_rst_bar_mask, _pcwbits, _pd_reg, _pd_shift,	\
--			_tuner_reg, _tuner_en_reg, _tuner_en_bit,	\
--			_pcw_reg, _pcw_shift)				\
--		PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags,	\
--			_rst_bar_mask, _pcwbits, _pd_reg, _pd_shift,	\
--			_tuner_reg, _tuner_en_reg, _tuner_en_bit,	\
--			_pcw_reg, _pcw_shift, 0, 0, 0)
 -
 -static const struct mtk_pll_data plls[] = {
--	PLL_B(CLK_APMIXED_MAINPLL, "mainpll", 0x0340, 0x034c, 0xff000000,
--	      HAVE_RST_BAR, BIT(23), 22, 0x0344, 24, 0, 0, 0, 0x0344, 0),
--	PLL_B(CLK_APMIXED_UNIVPLL, "univpll", 0x0308, 0x0314, 0xff000000,
--	      HAVE_RST_BAR, BIT(23), 22, 0x030c, 24, 0, 0, 0, 0x030c, 0),
--	PLL(CLK_APMIXED_USBPLL, "usbpll", 0x03c4, 0x03cc, 0x00000000,
--	    0, 0, 22, 0x03c4, 24, 0, 0, 0, 0x03c4, 0, 0x03c4, 0x03cc, 2),
--	PLL_B(CLK_APMIXED_MSDCPLL, "msdcpll", 0x0350, 0x035c, 0x00000000,
--	      0, 0, 22, 0x0354, 24, 0, 0, 0, 0x0354, 0),
--	PLL_B(CLK_APMIXED_MMPLL, "mmpll", 0x0360, 0x036c, 0xff000000,
--	      HAVE_RST_BAR, BIT(23), 22, 0x0364, 24, 0, 0, 0, 0x0364, 0),
--	PLL_B(CLK_APMIXED_ADSPPLL, "adsppll", 0x0370, 0x037c, 0xff000000,
--	      HAVE_RST_BAR, BIT(23), 22, 0x0374, 24, 0, 0, 0, 0x0374, 0),
--	PLL_B(CLK_APMIXED_MFGPLL, "mfgpll", 0x0268, 0x0274, 0x00000000,
--	      0, 0, 22, 0x026c, 24, 0, 0, 0, 0x026c, 0),
--	PLL_B(CLK_APMIXED_TVDPLL, "tvdpll", 0x0380, 0x038c, 0x00000000,
--	      0, 0, 22, 0x0384, 24, 0, 0, 0, 0x0384, 0),
--	PLL_B(CLK_APMIXED_APLL1, "apll1", 0x0318, 0x0328, 0x00000000,
--	      0, 0, 32, 0x031c, 24, 0x0040, 0x000c, 0, 0x0320, 0),
--	PLL_B(CLK_APMIXED_APLL2, "apll2", 0x032c, 0x033c, 0x00000000,
--	      0, 0, 32, 0x0330, 24, 0, 0, 0, 0x0334, 0),
+-	PLL(CLK_APMIXED_ARMPLL1, "armpll1", 0x200, 0x218, 0x80000000, 0, 21, 0x204, 24, 0x0, 0x204, 0),
+-	PLL(CLK_APMIXED_ARMPLL2, "armpll2", 0x2cc, 0x2e4, 0x80000000, 0, 21, 0x2d0, 24, 0x0, 0x2d0, 0),
+-	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x21c, 0x234, 0xf0000000, HAVE_RST_BAR, 21, 0x21c, 6, 0x0, 0x220, 0),
+-	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x238, 0x250, 0xf3000000, HAVE_RST_BAR, 7, 0x238, 6, 0x0, 0x238, 9),
+-	PLL(CLK_APMIXED_MMPLL, "mmpll", 0x254, 0x26c, 0xf0000000, HAVE_RST_BAR, 21, 0x254, 6, 0x0, 0x258, 0),
+-	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x278, 0x290, 0x80000000, 0, 21, 0x278, 6, 0x0, 0x27c, 0),
+-	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x294, 0x2ac, 0x80000000, 0, 31, 0x294, 6, 0x0, 0x298, 0),
+-	PLL(CLK_APMIXED_LVDSPLL, "lvdspll", 0x2b0, 0x2c8, 0x80000000, 0, 21, 0x2b0, 6, 0x0, 0x2b4, 0),
+-	PLL(CLK_APMIXED_AUDPLL, "audpll", 0x2e8, 0x300, 0x80000000, 0, 31, 0x2e8, 6, 0x2f8, 0x2ec, 0),
+-	PLL(CLK_APMIXED_VDECPLL, "vdecpll", 0x304, 0x31c, 0x80000000, 0, 21, 0x2b0, 6, 0x0, 0x308, 0),
 -};
 -
--enum fh_pll_id {
--	FH_ARMPLL_LL,
--	FH_ARMPLL_BL0,
--	FH_ARMPLL_BL1,
--	FH_ARMPLL_BL2,
--	FH_ARMPLL_BL3,
--	FH_CCIPLL,
--	FH_MFGPLL,
--	FH_MEMPLL,
--	FH_MPLL,
--	FH_MMPLL,
--	FH_MAINPLL,
--	FH_MSDCPLL,
--	FH_ADSPPLL,
--	FH_APUPLL,
--	FH_TVDPLL,
--	FH_NR_FH,
--};
--
--#define FH(_pllid, _fhid, _offset) {					\
--		.data = {						\
--			.pll_id = _pllid,				\
--			.fh_id = _fhid,					\
--			.fh_ver = FHCTL_PLLFH_V2,			\
--			.fhx_offset = _offset,				\
--			.dds_mask = GENMASK(21, 0),			\
--			.slope0_value = 0x6003c97,			\
--			.slope1_value = 0x6003c97,			\
--			.sfstrx_en = BIT(2),				\
--			.frddsx_en = BIT(1),				\
--			.fhctlx_en = BIT(0),				\
--			.tgl_org = BIT(31),				\
--			.dvfs_tri = BIT(31),				\
--			.pcwchg = BIT(31),				\
--			.dt_val = 0x0,					\
--			.df_val = 0x9,					\
--			.updnlmt_shft = 16,				\
--			.msk_frddsx_dys = GENMASK(23, 20),		\
--			.msk_frddsx_dts = GENMASK(19, 16),		\
--		},							\
--	}
--
--static struct mtk_pllfh_data pllfhs[] = {
--	FH(CLK_APMIXED_MFGPLL, FH_MFGPLL, 0xb4),
--	FH(CLK_APMIXED_MMPLL, FH_MMPLL, 0xf0),
--	FH(CLK_APMIXED_MAINPLL, FH_MAINPLL, 0x104),
--	FH(CLK_APMIXED_MSDCPLL, FH_MSDCPLL, 0x118),
--	FH(CLK_APMIXED_ADSPPLL, FH_ADSPPLL, 0x12c),
--	FH(CLK_APMIXED_TVDPLL, FH_TVDPLL, 0x154),
--};
--
- /* Register mux notifier for MFG mux */
- static int clk_mt8192_reg_mfg_mux_notifier(struct device *dev, struct clk *clk)
- {
-@@ -1117,70 +986,6 @@ static int clk_mt8192_reg_mfg_mux_notifier(struct device *dev, struct clk *clk)
- 	return devm_mtk_clk_mux_notifier_register(dev, clk, mfg_mux_nb);
- }
- 
--static int clk_mt8192_apmixed_probe(struct platform_device *pdev)
+-static void __init mtk_apmixedsys_init(struct device_node *node)
 -{
 -	struct clk_hw_onecell_data *clk_data;
--	struct device_node *node = pdev->dev.of_node;
--	const u8 *fhctl_node = "mediatek,mt8192-fhctl";
--	int r;
 -
 -	clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
 -	if (!clk_data)
--		return -ENOMEM;
+-		return;
 -
--	fhctl_parse_dt(fhctl_node, pllfhs, ARRAY_SIZE(pllfhs));
--
--	r = mtk_clk_register_pllfhs(node, plls, ARRAY_SIZE(plls),
--				    pllfhs, ARRAY_SIZE(pllfhs), clk_data);
--	if (r)
--		goto free_clk_data;
--
--	r = mtk_clk_register_gates(&pdev->dev, node, apmixed_clks,
--				   ARRAY_SIZE(apmixed_clks), clk_data);
--	if (r)
--		goto unregister_plls;
--
--	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
--	if (r)
--		goto unregister_gates;
--
--	return r;
--
--unregister_gates:
--	mtk_clk_unregister_gates(apmixed_clks, ARRAY_SIZE(apmixed_clks), clk_data);
--unregister_plls:
--	mtk_clk_unregister_pllfhs(plls, ARRAY_SIZE(plls), pllfhs,
--				  ARRAY_SIZE(pllfhs), clk_data);
--free_clk_data:
--	mtk_free_clk_data(clk_data);
--	return r;
+-	mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
 -}
--
--static const struct of_device_id of_match_clk_mt8192[] = {
--	{
--		.compatible = "mediatek,mt8192-apmixedsys",
--		.data = clk_mt8192_apmixed_probe,
--	}, {
--		/* sentinel */
--	}
--};
--
--static int clk_mt8192_probe(struct platform_device *pdev)
--{
--	int (*clk_probe)(struct platform_device *pdev);
--	int r;
--
--	clk_probe = of_device_get_match_data(&pdev->dev);
--	if (!clk_probe)
--		return -EINVAL;
--
--	r = clk_probe(pdev);
--	if (r)
--		dev_err(&pdev->dev, "could not register clock provider: %s: %d\n", pdev->name, r);
--
--	return r;
--}
--
- static const struct mtk_clk_desc infra_desc = {
- 	.clks = infra_clks,
- 	.num_clks = ARRAY_SIZE(infra_clks),
-@@ -1208,38 +1013,20 @@ static const struct mtk_clk_desc topck_desc = {
- 	.mfg_clk_idx = CLK_TOP_MFG_PLL_SEL,
- };
- 
--static const struct of_device_id of_match_clk_mt8192_simple[] = {
-+static const struct of_device_id of_match_clk_mt8192[] = {
- 	{ .compatible = "mediatek,mt8192-infracfg", .data = &infra_desc },
- 	{ .compatible = "mediatek,mt8192-pericfg", .data = &peri_desc },
- 	{ .compatible = "mediatek,mt8192-topckgen", .data = &topck_desc },
- 	{ /* sentinel */ }
- };
- 
--static struct platform_driver clk_mt8192_simple_drv = {
--	.probe = mtk_clk_simple_probe,
--	.remove = mtk_clk_simple_remove,
--	.driver = {
--		.name = "clk-mt8192-simple",
--		.of_match_table = of_match_clk_mt8192_simple,
--	},
--};
--
- static struct platform_driver clk_mt8192_drv = {
--	.probe = clk_mt8192_probe,
- 	.driver = {
- 		.name = "clk-mt8192",
- 		.of_match_table = of_match_clk_mt8192,
- 	},
-+	.probe = mtk_clk_simple_probe,
-+	.remove = mtk_clk_simple_remove,
- };
--
--static int __init clk_mt8192_init(void)
--{
--	int ret = platform_driver_register(&clk_mt8192_drv);
--
--	if (ret)
--		return ret;
--	return platform_driver_register(&clk_mt8192_simple_drv);
--}
--
--arch_initcall(clk_mt8192_init);
-+module_platform_driver(clk_mt8192_drv);
+-CLK_OF_DECLARE(mtk_apmixedsys, "mediatek,mt8135-apmixedsys",
+-		mtk_apmixedsys_init);
  MODULE_LICENSE("GPL");
 -- 
 2.39.1
