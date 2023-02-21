@@ -4,67 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A14EC636D7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 15:43:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26C77C636D7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 15:51:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yAmFGspOZMSPZfnaoWYmVR2MjZajqXp66cfwHSIQL14=; b=Xw8lCoWBrlGw1jMIWXAIPwfMOf
-	/tyciFVcgj7bd43Z5dKGGrqdko0IwNNxymF9yv+TuPKXnd8fch+pJcrpoqVl6FKNhZMgkuyXdfDiP
-	cd+mx2d5tR9e8iRkwU+yfES8CVZy+Ur11QuKEAPIsSFXywzjs3aSnVOA1zJgaoC8ivfssZXgQDMeY
-	zNPufg5N1XBYMWT+ih91dLsfo8LKoaFkWs/NlyqPRABkm0X1RSXn1YyWSA7J8TZVayJUXaPrJJAAW
-	h8tAusF4tNceAfag7DKYGQ30fr2oCXCeGmdQ/pl/RuHGrcrI8shY/IUbsg5nVxn/kj5vWVtTzF0Sd
-	uZEqgCSA==;
+	bh=IG8aI0nGKdxJQh9EKmucgj/bqMabnyUzB4U4Conf2wY=; b=xuTBpzr4EBqa9iCL8YE3FiXkaz
+	TyluxfwNmOxWwdywhcwF49oztNDu38KNAojMYfA1+kt9ltkn6Byzvt68AQlrRj4eik/xzqWGgARA0
+	Ppq5KAJFkLww0miktOGSbXi2najBoVBBVaUpI4rS7ARrzzqKBwTF/jPVHfyhFALlI51H6fXkm9tOD
+	Jj8n02Ji+L23+kl57G6xvFemsTgR8XSRsid1+/y1vfwBankLEkHAbbpSdnDNdiIaA5F+7rkJcMiKg
+	O8cG50KhOd/TpOIdSo8Z8NgBc0r4JiVYLTCdbPoofyMhdTRHmU9XptVmKdaRGIcMY7kFE7MiU2ddZ
+	Rl9SJUNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUUnj-008lZe-GD; Tue, 21 Feb 2023 15:43:31 +0000
-Received: from mail-oo1-f44.google.com ([209.85.161.44])
+	id 1pUUvT-008p4Q-5B; Tue, 21 Feb 2023 15:51:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUUlj-008kM8-Gq; Tue, 21 Feb 2023 15:41:28 +0000
-Received: by mail-oo1-f44.google.com with SMTP id m39-20020a4a952a000000b00524f932a4baso171260ooi.13;
-        Tue, 21 Feb 2023 07:41:26 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=yAmFGspOZMSPZfnaoWYmVR2MjZajqXp66cfwHSIQL14=;
-        b=DAR/6IhByYwU2bm+lhNnuqr8y2zdUBIkIbxfeGxbpIi2g0AAagr14UOvHfjbT37wMt
-         sN8yciJGQ+uapqmZJ/e66j6xZk25+5Pjomibyf08KmCZJ5P//aOl9+rSw9DE1P5QN4Ne
-         N3WE59mJM1ZBa02x8AwRGeGnD8yXaXPDyfe6FekSzvZFCuYv79efptbF7/gZmJNkDYoF
-         /AewsiIezvZiFt8Qri5HMTCnImR14UoYfYOGb+74EHN9gav96efh1rib2nE/A7j83o/L
-         7ckoy2ElLpE/5k/j+fHd39oMUmXWGiK+aToKzs8NYwWx15deYL7aMOICjfGPB2SHKFPi
-         CV1g==
-X-Gm-Message-State: AO0yUKWCJjXf5Lu9JsALQNXYocG5mAwQJuTzrIcXAyU7dPHRuX9/rsrS
-	mUMOPxWhpgoLf3XmgCMCBA==
-X-Google-Smtp-Source: AK7set85VAFntiNHIDjGtfCC2oOT1/ixiwDzGmV6KZlRV3vcVPs11dYw0ZIvaGYFHStwN8BXxG0AZg==
-X-Received: by 2002:a4a:b6c3:0:b0:51f:e966:e3b7 with SMTP id w3-20020a4ab6c3000000b0051fe966e3b7mr1792287ooo.3.1676994086229;
-        Tue, 21 Feb 2023 07:41:26 -0800 (PST)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id bf7-20020a056820174700b0051ff746e2b2sm293867oob.8.2023.02.21.07.41.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Feb 2023 07:41:25 -0800 (PST)
-Received: (nullmailer pid 2586813 invoked by uid 1000);
-	Tue, 21 Feb 2023 15:41:24 -0000
-Date: Tue, 21 Feb 2023 09:41:24 -0600
-From: Rob Herring <robh@kernel.org>
-To: Pin-yen Lin <treapking@chromium.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Benson Leung <bleung@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>, chrome-platform@lists.linux.dev, linux-kernel@vger.kernel.org, Guenter Roeck <groeck@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v3 1/5] dt-bindings: display: bridge: Add ddc-i2c-bus for
- anx7688
-Message-ID: <20230221154124.GA2584323-robh@kernel.org>
-References: <20230218111712.2380225-1-treapking@chromium.org>
- <20230218111712.2380225-2-treapking@chromium.org>
+	id 1pUUvQ-008p37-LF; Tue, 21 Feb 2023 15:51:29 +0000
+X-UUID: 97d438f6b1ff11edbbe3f76fe852e059-20230221
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=IG8aI0nGKdxJQh9EKmucgj/bqMabnyUzB4U4Conf2wY=;
+	b=kFgoh1dg/4UeMlTYAwqCXrhqAz3PxNK91H/tFD58YBFFXO5CTIE5VeGo4LegDJuXq6nckbBLBRiKbjetZKSax8FkeiKvt9TYWIdemGwO2JeWHzL+wey6QfESxbtIborizwXHwP5eaZB8snb5us/YO6q8bjQGoKgUvlJjylZiLJI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.20,REQID:af485bde-d403-4e46-9a80-40c94235ed3f,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:25b5999,CLOUDID:6e56b0f3-ddba-41c3-91d9-10eeade8eac7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-UUID: 97d438f6b1ff11edbbe3f76fe852e059-20230221
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <powen.kao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1088969054; Tue, 21 Feb 2023 08:51:24 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Tue, 21 Feb 2023 23:30:17 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 21 Feb 2023 23:30:17 +0800
+From: Po-Wen Kao <powen.kao@mediatek.com>
+To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+	Bart Van Assche <bvanassche@acm.org>, "James E.J. Bottomley"
+	<jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
+	<stanley.chu@mediatek.com>, <powen.kao@mediatek.com>,
+	<alice.chao@mediatek.com>, <naomi.chu@mediatek.com>,
+	<chun-hung.wu@mediatek.com>, <cc.chou@mediatek.com>,
+	<eddie.huang@mediatek.com>, <mason.zhang@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH 2/4] scsi: ufs: core: Fix mcq nr_hw_queues
+Date: Tue, 21 Feb 2023 23:29:15 +0800
+Message-ID: <20230221152919.25837-3-powen.kao@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230221152919.25837-1-powen.kao@mediatek.com>
+References: <20230221152919.25837-1-powen.kao@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230218111712.2380225-2-treapking@chromium.org>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230221_074127_588759_C8A41584 
-X-CRM114-Status: GOOD (  17.04  )
+X-CRM114-CacheID: sfid-20230221_075128_736648_267D0B27 
+X-CRM114-Status: GOOD (  12.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,37 +87,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Feb 18, 2023 at 07:17:08PM +0800, Pin-yen Lin wrote:
-> Introduce a optional "ddc-i2c-bus" property for anx7688 bridge. This
-> allows the bridge to register a .get_edid callback.
+Need to add one to QMAX to obtain number of hardware queue.
 
-What's .get_edid? This is a binding and is independent of Linux.
+Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
+---
+ drivers/ufs/core/ufs-mcq.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> 
-> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-> ---
-> 
-> Changes in v3:
-> - New in v3
-> 
->  .../bindings/display/bridge/google,cros-ec-anx7688.yaml      | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/display/bridge/google,cros-ec-anx7688.yaml b/Documentation/devicetree/bindings/display/bridge/google,cros-ec-anx7688.yaml
-> index a44d025d33bd..9d5ce8172e88 100644
-> --- a/Documentation/devicetree/bindings/display/bridge/google,cros-ec-anx7688.yaml
-> +++ b/Documentation/devicetree/bindings/display/bridge/google,cros-ec-anx7688.yaml
-> @@ -25,6 +25,10 @@ properties:
->      maxItems: 1
->      description: I2C address of the device.
->  
-> +  ddc-i2c-bus:
-> +    description: phandle link to the I2C controller used for DDC EDID probing
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +
+diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+index a39746b2a8be..5d5bc0bc6e88 100644
+--- a/drivers/ufs/core/ufs-mcq.c
++++ b/drivers/ufs/core/ufs-mcq.c
+@@ -150,7 +150,7 @@ static int ufshcd_mcq_config_nr_queues(struct ufs_hba *hba)
+ 	u32 hba_maxq, rem, tot_queues;
+ 	struct Scsi_Host *host = hba->host;
+ 
+-	hba_maxq = FIELD_GET(MAX_QUEUE_SUP, hba->mcq_capabilities);
++	hba_maxq = FIELD_GET(MAX_QUEUE_SUP, hba->mcq_capabilities) + 1 ;
+ 
+ 	tot_queues = UFS_MCQ_NUM_DEV_CMD_QUEUES + read_queues + poll_queues +
+ 			rw_queues;
+-- 
+2.18.0
 
-No, this belongs in the connector node. The DDC signals are routed to 
-the connector, not the bridge chip.
-
-Rob
 
