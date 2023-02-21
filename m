@@ -4,97 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61384C61DA3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 09:01:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3EF5C6379F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 09:24:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=alEius1H4Y8w76WB7xmYU0Ggwjx3hA9AGAhRmkeiUTc=; b=Vkx7frwdo+I5QPlxD92E1gb5Cl
-	nGlwK4BrIAsysntSyODhhBt/U24ShMaDDXg0OfBO+XA0ImBTpEbJHwFYIYtCiXBazys+rThaF+lEo
-	wsgF/cmSRpW8CoyZQSHlUc/6yhz/byxjfHv6iBfx1w0syvqRL6XWmzQbrXkgM4Z7pzrOVPnA9+FiH
-	CzZVpFSUhvy1WFUgPNcRxL5l7XGJt+sydChDHQ8muq76oUsZerQPJ1q2njcQzcTwUBOuG/0+Zv7EK
-	3TS+mTvUtvhCdX9nMHA3CoEJcqMkBy0ZA0YCYrR4sDugD8RgLwO7kN+TLlIdn9JLq6nuqqLYi2YA8
-	DNyfgUVQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DZiCKkXRKaBMEPM33tFzlW1XDIvB4CcSTT6creyaUOs=; b=I1n/99uBw6N6HVQb72IzpZ1r+A
+	5X2A63LUAlnfRpvS0k0SsEPDr4SQ39quXBqBQJsCOcJeIEA1SxxfGQANTdGWROfu3GvQ1hloFzdqX
+	hioiORtJhsznPfebaR1aWX6w5PO1FwKi1mPjWCu8ztqHbFbLNPzmTh2zWRBCA1kK9zbRppYAXnv6t
+	jtjsc05BJxM1j2SLji+/7SbDewKhK9zU/bw7GPFQ0Cdh/FSruNuV2aMEkq1KJZyY3pdu1HUrbRAZC
+	v/psluAhmyDkiqVhcG1dqK5T0vhyuokY6JHQyPX/HHjXNkaoEUnzFXDSzURGQQbIpGJc+2cLravKV
+	SIfOnisg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUOWT-0077Av-O8; Tue, 21 Feb 2023 09:01:17 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1pUOsb-007BUR-7B; Tue, 21 Feb 2023 09:24:09 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUOWJ-00778S-Kc
-	for linux-mediatek@lists.infradead.org; Tue, 21 Feb 2023 09:01:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1676970066;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=alEius1H4Y8w76WB7xmYU0Ggwjx3hA9AGAhRmkeiUTc=;
-	b=Lvurwr4AA2r3yhQTBDJyF/tPEk223Sg6c0BxK3/ROiD9jhQSVgWghhVv0Ci+MomcSNqXdS
-	tOBQUZqbppoNLQYmqTWKQVfNiI3OVS2W942a+RLqO/AClmVPpCpCxpI4RndimvGfNMJbnT
-	b25bi09lBS1vu/Ogx86pUxrgfYc8joA=
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-365-v72fB8UJOteJe5q_xlGNww-1; Tue, 21 Feb 2023 04:01:03 -0500
-X-MC-Unique: v72fB8UJOteJe5q_xlGNww-1
-Received: by mail-qt1-f198.google.com with SMTP id k19-20020ac86053000000b003bd0d4e3a50so1420948qtm.9
-        for <linux-mediatek@lists.infradead.org>; Tue, 21 Feb 2023 01:01:03 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1676970062;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=alEius1H4Y8w76WB7xmYU0Ggwjx3hA9AGAhRmkeiUTc=;
-        b=MxW5kHmwv+7eBDlELQRfYuDJg2JwRgq9qto+hMZ327zchkvUSJtugktafKmp9kMtCg
-         VWBfTbAQuS5OkyR8t3GHwKglmbdsbmoBEnUo1SuoD+F68BsjVwEuhJqjT7nzsb7pEn3N
-         hrGhTIUUVYgI7mnvipp2iNJBAKfSNj275lHnpc4+U1iccAtyAlYJrqjNwpQ/xExKDWG8
-         sTStyOYkFr2L8lDBmQnWY6YKxkBP/iZ1VgPFoKA3+f8ZKwBo147LTKezeZfzTrQPNfka
-         SOFqSlo4DNVD7kjgPsGbRnBDDXxkKgYywYtWovdkDbX9OYnG0s8vfmhb01l4BExgJTtw
-         IqZw==
-X-Gm-Message-State: AO0yUKXzJkQtQogF1jZBU//ssr5HwnWYJMokLEtosBbQTKZQWEQkduTL
-	utOamL3NNiV2RyhWC/U0AK8y88y6DrTnNZX5Qo4sXP8SmoFrJv8jWU04R3j/uQohoZ5UbvmMjET
-	EiwgYte89WjTqukc7C1WdAAZ9SRmM/+I1
-X-Received: by 2002:a0c:f2ce:0:b0:56e:b6f0:e102 with SMTP id c14-20020a0cf2ce000000b0056eb6f0e102mr5321087qvm.0.1676970062647;
-        Tue, 21 Feb 2023 01:01:02 -0800 (PST)
-X-Google-Smtp-Source: AK7set9bNxSgvAs/GHzQpOohJLTvtYH+L3tWy9vURFBZyZVmzfwSmBF/kXeV3JS4/e2m+VqWWWGB3w==
-X-Received: by 2002:a0c:f2ce:0:b0:56e:b6f0:e102 with SMTP id c14-20020a0cf2ce000000b0056eb6f0e102mr5321046qvm.0.1676970062276;
-        Tue, 21 Feb 2023 01:01:02 -0800 (PST)
-Received: from gerbillo.redhat.com (146-241-121-8.dyn.eolo.it. [146.241.121.8])
-        by smtp.gmail.com with ESMTPSA id z131-20020a376589000000b007186c9e167esm2077680qkb.52.2023.02.21.01.00.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Feb 2023 01:01:01 -0800 (PST)
-Message-ID: <e9269e140d0027534e91368475155d83ccbe66fb.camel@redhat.com>
-Subject: Re: [PATCH] dt-bindings: net: dsa: mediatek,mt7530: change some
- descriptions to literal
-From: Paolo Abeni <pabeni@redhat.com>
-To: arinc9.unal@gmail.com, Andrew Lunn <andrew@lunn.ch>, Florian Fainelli
- <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David S.
- Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Sean Wang
- <sean.wang@mediatek.com>
-Cc: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>, 
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,  erkin.bozoglu@xeront.com
-Date: Tue, 21 Feb 2023 10:00:56 +0100
-In-Reply-To: <20230218072348.13089-1-arinc.unal@arinc9.com>
-References: <20230218072348.13089-1-arinc.unal@arinc9.com>
-User-Agent: Evolution 3.46.4 (3.46.4-1.fc37)
+	id 1pUOsY-007BSh-1b; Tue, 21 Feb 2023 09:24:07 +0000
+X-UUID: 7901fbd8b1c911edbbe3f76fe852e059-20230221
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=DZiCKkXRKaBMEPM33tFzlW1XDIvB4CcSTT6creyaUOs=;
+	b=Ke7xi24zxJ4Fc0DrdI8y4+RFQ3//kqLq0/lcATVL19t65+Qz27ioUGdEr67dGpreLRVR9jCR9Y/iYD3yvWyzjbhnnkNyrqyzshw+izTCkqwzQl6afvc6QX50rxevcrI6MCTOgGOqsRacFbr4uPjWxFa+H1xuWLVAMVcZfQ9TMJs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.20,REQID:9b412b9f-89fd-4935-985c-544fcc23d9f8,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:25b5999,CLOUDID:61441cb1-beed-4dfc-bd9c-e1b22fa6ccc4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-UUID: 7901fbd8b1c911edbbe3f76fe852e059-20230221
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <andrew.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1663150472; Tue, 21 Feb 2023 02:23:59 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Tue, 21 Feb 2023 17:03:24 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 21 Feb 2023 17:03:24 +0800
+From: Andrew Yang <andrew.yang@mediatek.com>
+To: SeongJae Park <sj@kernel.org>, Andrew Morton <akpm@linux-foundation.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <wsd_upstream@mediatek.com>, <casper.lin@mediatek.com>, andrew.yang
+	<andrew.yang@mediatek.com>, <damon@lists.linux.dev>, <linux-mm@kvack.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH] mm/damon/paddr: fix pin page problem
+Date: Tue, 21 Feb 2023 17:03:13 +0800
+Message-ID: <20230221090313.15396-1-andrew.yang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230221_010107_750855_8EBC75B3 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20230221_012406_141494_6C0E53CB 
+X-CRM114-Status: GOOD (  13.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,26 +80,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 2023-02-18 at 10:23 +0300, arinc9.unal@gmail.com wrote:
-> From: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
->=20
-> The line endings must be preserved on gpio-controller, io-supply, and
-> reset-gpios properties to look proper when the YAML file is parsed.
->=20
-> Currently it's interpreted as a single line when parsed. Change the style
-> of the description of these properties to literal style to preserve the
-> line endings.
->=20
-> Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
+From: "andrew.yang" <andrew.yang@mediatek.com>
 
-# Form letter - net-next is closed
+damon_get_page() would always increase page _refcount and
+isolate_lru_page() would increase page _refcount if the page's lru
+flag is set.
 
-The merge window for v6.3 has begun and therefore net-next is closed
-for new drivers, features, code refactoring and optimizations.
-We are currently accepting bug fixes only.
+If a unevictable page isolated successfully, there will be two more
+_refcount. The one from isolate_lru_page() will be decreased in
+putback_lru_page(), but the other one from damon_get_page() will be
+left behind. This causes a pin page.
 
-Please repost when net-next reopens after Mar 6th.
+Whatever the case, the _refcount from damon_get_page() should be
+decreased.
 
-RFC patches sent for review only are obviously welcome at any time.
+Signed-off-by: andrew.yang <andrew.yang@mediatek.com>
+---
+ mm/damon/paddr.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mm/damon/paddr.c b/mm/damon/paddr.c
+index e1a4315c4be6..56d8abd08fb1 100644
+--- a/mm/damon/paddr.c
++++ b/mm/damon/paddr.c
+@@ -223,8 +223,8 @@ static unsigned long damon_pa_pageout(struct damon_region *r)
+ 			putback_lru_page(page);
+ 		} else {
+ 			list_add(&page->lru, &page_list);
+-			put_page(page);
+ 		}
++		put_page(page);
+ 	}
+ 	applied = reclaim_pages(&page_list);
+ 	cond_resched();
+-- 
+2.18.0
 
 
