@@ -4,68 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3EF5C6379F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 09:24:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BBECC6379F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 09:57:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DZiCKkXRKaBMEPM33tFzlW1XDIvB4CcSTT6creyaUOs=; b=I1n/99uBw6N6HVQb72IzpZ1r+A
-	5X2A63LUAlnfRpvS0k0SsEPDr4SQ39quXBqBQJsCOcJeIEA1SxxfGQANTdGWROfu3GvQ1hloFzdqX
-	hioiORtJhsznPfebaR1aWX6w5PO1FwKi1mPjWCu8ztqHbFbLNPzmTh2zWRBCA1kK9zbRppYAXnv6t
-	jtjsc05BJxM1j2SLji+/7SbDewKhK9zU/bw7GPFQ0Cdh/FSruNuV2aMEkq1KJZyY3pdu1HUrbRAZC
-	v/psluAhmyDkiqVhcG1dqK5T0vhyuokY6JHQyPX/HHjXNkaoEUnzFXDSzURGQQbIpGJc+2cLravKV
-	SIfOnisg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jLyDkkCJVTxe9e+wCAF7kAPYPDh+jvwGVi3AdFN6hFI=; b=IchCIQE7FyheogRR1RMn2P2QI1
+	wJ1G2y13XmTMn15GTWkWcVTRnLGFQc2jDVETZUy+s5bOUgLr0OHTll0qIl77nG/abb+pZ8aJmFMRR
+	fkpKvkjOJ6RfbcxKBhx3KkU6mYrVQIgnV99kbv4HhdfYfyeSul3/um1ga2Bt/6VuOP+1eVJIpL+u4
+	fhGLL6NiGLB3rQ+06k8DSmanaoO0mceivLw5qkDKxOEPVvzuUocZCgXILnLhgIjERztcqA6iQyx9O
+	CNZy6kAgA2a5GOHiYV3f+/2+uwy3vHHUnfz78tm2jaB+8Q8VMn9OC7QJEXEy2illa1VoV/7I+rbPx
+	SwjNuMsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUOsb-007BUR-7B; Tue, 21 Feb 2023 09:24:09 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pUPPA-007IeD-02; Tue, 21 Feb 2023 09:57:48 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:191:4433::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUOsY-007BSh-1b; Tue, 21 Feb 2023 09:24:07 +0000
-X-UUID: 7901fbd8b1c911edbbe3f76fe852e059-20230221
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=DZiCKkXRKaBMEPM33tFzlW1XDIvB4CcSTT6creyaUOs=;
-	b=Ke7xi24zxJ4Fc0DrdI8y4+RFQ3//kqLq0/lcATVL19t65+Qz27ioUGdEr67dGpreLRVR9jCR9Y/iYD3yvWyzjbhnnkNyrqyzshw+izTCkqwzQl6afvc6QX50rxevcrI6MCTOgGOqsRacFbr4uPjWxFa+H1xuWLVAMVcZfQ9TMJs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.20,REQID:9b412b9f-89fd-4935-985c-544fcc23d9f8,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:25b5999,CLOUDID:61441cb1-beed-4dfc-bd9c-e1b22fa6ccc4,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-UUID: 7901fbd8b1c911edbbe3f76fe852e059-20230221
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <andrew.yang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1663150472; Tue, 21 Feb 2023 02:23:59 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 21 Feb 2023 17:03:24 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Tue, 21 Feb 2023 17:03:24 +0800
-From: Andrew Yang <andrew.yang@mediatek.com>
-To: SeongJae Park <sj@kernel.org>, Andrew Morton <akpm@linux-foundation.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <wsd_upstream@mediatek.com>, <casper.lin@mediatek.com>, andrew.yang
-	<andrew.yang@mediatek.com>, <damon@lists.linux.dev>, <linux-mm@kvack.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH] mm/damon/paddr: fix pin page problem
-Date: Tue, 21 Feb 2023 17:03:13 +0800
-Message-ID: <20230221090313.15396-1-andrew.yang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pUPP6-007Ib7-5I
+	for linux-mediatek@lists.infradead.org; Tue, 21 Feb 2023 09:57:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+	Resent-Cc:Resent-Message-ID; bh=jLyDkkCJVTxe9e+wCAF7kAPYPDh+jvwGVi3AdFN6hFI=;
+	t=1676973461; x=1678183061; b=m6zBnqrj/vYzfbcREUpYJGjs4ANjwNznv6fXB2EXntyTNB2
+	0dde1A19eit+yXavdAw9iWJsp2NxjuhiH1FW7n/YMbRTKHlqBJANVj/E15ssp/vwudJ4ZUGCJqTep
+	udUbPx9fdOmLLWd7UMvXTZIe9Vhq0+wdY0G9WD0/nU4Ve43FbBVDSyXWUygen/ffAw3U/NDvJ7no6
+	8TQzqGwyrue81HlKOnhIiJqR7OwMLk7pc2ZmamkOA5k7R//gSgG50NTfm+RcQiIJCsYy5MESZTpW1
+	F41oa/KmS3Zr+7veEZIuavGf9Nk8ywHga7kPMuGS6yJS30afiC1Sv7x560I7kRTw==;
+Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.96)
+	(envelope-from <johannes@sipsolutions.net>)
+	id 1pUPOz-001Axm-0o;
+	Tue, 21 Feb 2023 10:57:37 +0100
+Message-ID: <a3f50c4b4e75ff53a5611c3ef2d6345d4324cedb.camel@sipsolutions.net>
+Subject: Re: [PATCH 1/2] wifi: mac80211: introduce
+ ieee80211_refresh_tx_agg_session_timer()
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Ryder Lee <Ryder.Lee@mediatek.com>
+Cc: Shayne Chen =?UTF-8?Q?=28=E9=99=B3=E8=BB=92=E4=B8=9E=29?=
+	 <Shayne.Chen@mediatek.com>, "linux-wireless@vger.kernel.org"
+	 <linux-wireless@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	 <linux-mediatek@lists.infradead.org>, Evelyn Tsai
+	=?UTF-8?Q?=28=E8=94=A1=E7=8F=8A=E9=88=BA=29?=
+	 <Evelyn.Tsai@mediatek.com>
+Date: Tue, 21 Feb 2023 10:57:36 +0100
+In-Reply-To: <ed37dd9cfba8d0ec7b50f932742156aaa57843e9.camel@mediatek.com>
+References: 	<7c3f72eac1c34921cd84a462e60d71e125862152.1676616450.git.ryder.lee@mediatek.com>
+	 <44f956b493e33bf394b2947b77e7c86f394b28ed.camel@sipsolutions.net>
+	 <fea6defb05d0f39d99bce96ea22e8c92d1a939ab.camel@mediatek.com>
+	 <fb3ab2d925fdeae2e7cc778419c1476102b9f85f.camel@sipsolutions.net>
+	 <56190740441a6740e9edf761ab2167edc51f20c3.camel@mediatek.com>
+	 <c05a8b20b5d4429b1c42ef2398ff2bf760bd7eae.camel@mediatek.com>
+	 <ed37dd9cfba8d0ec7b50f932742156aaa57843e9.camel@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.3 (3.46.3-1.fc37) 
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230221_012406_141494_6C0E53CB 
-X-CRM114-Status: GOOD (  13.12  )
+X-CRM114-CacheID: sfid-20230221_015744_243553_5E3CBBCC 
+X-CRM114-Status: UNSURE (   8.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,40 +83,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "andrew.yang" <andrew.yang@mediatek.com>
+Hi,
 
-damon_get_page() would always increase page _refcount and
-isolate_lru_page() would increase page _refcount if the page's lru
-flag is set.
+> > > Since there's no any keep alive packet being received by host
+> > > stack, leads to mac80211 destrory BA sesion.
+> > >=20
+> >=20
+> > More specifically, the BA session relies on client side's Tx data to
+>=20
+> Typo... I mean *our side*. Something like this
 
-If a unevictable page isolated successfully, there will be two more
-_refcount. The one from isolate_lru_page() will be decreased in
-putback_lru_page(), but the other one from damon_get_page() will be
-left behind. This causes a pin page.
+Sorry. I'm just totally confused - I thought the initiator only set the
+timeout, but I see now that it's negotiated and the actual value used is
+from the client.
 
-Whatever the case, the _refcount from damon_get_page() should be
-decreased.
+Which explains basically everything.
 
-Signed-off-by: andrew.yang <andrew.yang@mediatek.com>
----
- mm/damon/paddr.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/mm/damon/paddr.c b/mm/damon/paddr.c
-index e1a4315c4be6..56d8abd08fb1 100644
---- a/mm/damon/paddr.c
-+++ b/mm/damon/paddr.c
-@@ -223,8 +223,8 @@ static unsigned long damon_pa_pageout(struct damon_region *r)
- 			putback_lru_page(page);
- 		} else {
- 			list_add(&page->lru, &page_list);
--			put_page(page);
- 		}
-+		put_page(page);
- 	}
- 	applied = reclaim_pages(&page_list);
- 	cond_resched();
--- 
-2.18.0
-
+johannes
 
