@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C796BC61DA3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 03:54:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C07AC64EC7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 03:56:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4HqN3egQulWxDOUwNgXIKkCpD9Uq1nJcsXGny14J0gE=; b=SKoPKCqh5bhBEPe9s9DQuh+M3f
-	sGhllPog8DbTROrsx70foxcQYrLP90oAF73xOymU3ED9SaeKzlvdr4e3EUhVlZClb5Mj+shAHpMmq
-	2FDl9D5f+EmiY1A56p90fL1V43boIg27P/youvdXXRM9bRU5M2i8+42x25dq9XDfxHvm962Eotntg
-	QgNQn84ac4/D0gRNm6IxGfRN8KLxcj7NdLGMsSyBheVQfszus2vAz6nDyPwR63NVSl62CjUqknSXb
-	aXjIkhNRDlBMaGLEH+syKMFRk4SHuryNhsEA22WrsiBp+uAecn8Tt5vi+cQNs85Rfw5t/85tP+eaI
-	wrRUefHQ==;
+	bh=yTTUfpY5FBze/ZdJsTMclUwYRTvL4mC8YWDC0HHBaDo=; b=DWCAF4oKEmzzzaUi7T262UMsP2
+	sEDnNKaddd3H5DHDMCrin9HpvalybnM9ZtUR1gJ0qd2CDtKLbQOnLFtT+e+ObcrGJUQol6tLc0OJ4
+	AeRKhf7kyySET9sjR91sn4PaJYq2grAPPNnCbJ/R5ZCqTDiEY0TVASiuomQvCnoj+IcMGFrwK4ywM
+	JAfwcJslgWZ652WAMqqm9H8UHqN9hfuZ7aCHvVoqJfPJYp+k5wtdCjC0sCfkhwpcGEoPouNqXk3tS
+	fdd8e30dC/utkrcpFTyfCq+1vDhZdmHZPWATN6ZFQNKdLQozg6qqcrPJOFfJCInu1v9yeNIXBusOt
+	8Y6yDACA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUJjJ-006W70-C2; Tue, 21 Feb 2023 03:54:13 +0000
-Received: from mail-ua1-x936.google.com ([2607:f8b0:4864:20::936])
+	id 1pUJl0-006WTk-Is; Tue, 21 Feb 2023 03:55:58 +0000
+Received: from mail-vk1-xa31.google.com ([2607:f8b0:4864:20::a31])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUJjG-006W5p-KT
-	for linux-mediatek@lists.infradead.org; Tue, 21 Feb 2023 03:54:12 +0000
-Received: by mail-ua1-x936.google.com with SMTP id n4so56102ual.13
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 Feb 2023 19:54:09 -0800 (PST)
+	id 1pUJkx-006WSp-EU
+	for linux-mediatek@lists.infradead.org; Tue, 21 Feb 2023 03:55:56 +0000
+Received: by mail-vk1-xa31.google.com with SMTP id g17so2319419vkl.8
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 Feb 2023 19:55:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=4HqN3egQulWxDOUwNgXIKkCpD9Uq1nJcsXGny14J0gE=;
-        b=nz9jUt8OFkg3LTE5XyHfvNLcLPEcdH+d2oKGyNiF8DBCPym8hQLkx8EO+jIyirTxLb
-         JQ/SnkiLoxAq6+NSOFkr77vfbqJtU3e7UoUJHdb9pYYS6sLnoaQfv78wz24lauqjgpDN
-         vC6tBvAmTrWYgtJYP8ZcLof3pEFpu2eH34PBk=
+        bh=yTTUfpY5FBze/ZdJsTMclUwYRTvL4mC8YWDC0HHBaDo=;
+        b=LdWHnd2Swi3aDPIeLDYDnQy/SdWrk5WWezojEhx3GNTFL/Z3ampZ38AUjhpG7kOPLh
+         a2zMHNXGNT59i9PFUvBYLBzBWZKMsmXxWEjLKmjLWdGY0KyrntMpaqMf/pB1xiF1gfwU
+         Sjsi5pSdY2BAlMpDKBiPt/GxCIuqAPEGEqQZE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=4HqN3egQulWxDOUwNgXIKkCpD9Uq1nJcsXGny14J0gE=;
-        b=fddsrRMPJ45odS82B7OPujYl4UKBeMqxjLSgKtVE4odPamMf+8NOdEmuha0GWDTpFu
-         lFMIhGanZmgIMBf75lsI2f77fDRQ9dl1Deop79uYhyHcvgFOMKM0lns57QYvVF3bglzJ
-         TC1aVOwu47dzw8KoiaxeeVv7VbEFIec2KajHo/LEQy7FgITukn6epVU4MDJIZ3w9E5qz
-         +EMiXmeB8p+9u3rbDuNZ2ATYvcSX7Wiqvaj/rqo++Dzxzdwrx4QlfRYO9OENOxDpwcJc
-         XYuljSlhCBzeV8pXGOa4y+d60XnDNTUaUt0J9QVn6gVrh0Vlx9JnAfvFtnvIHJw0gTHA
-         BOxg==
-X-Gm-Message-State: AO0yUKUbwdeTt2c9NcuyE1M6WBMKMrR798GQ87QHYvN1o9Cczd42AaFt
-	kIFWbolHwVK2pzEiih2OqYLFPzdljAM3Ej1h5EF/Gg==
-X-Google-Smtp-Source: AK7set9VIEmauTPBD0SMjR0QxGvm+9nNLdQn9B6VZ+5eVqn4o4DG2LcQLdFEh2mEqFdkXQe+mLUs2kvbeIH7LU5AouI=
-X-Received: by 2002:ab0:1014:0:b0:68b:90f4:1d8c with SMTP id
- f20-20020ab01014000000b0068b90f41d8cmr663799uab.1.1676951648551; Mon, 20 Feb
- 2023 19:54:08 -0800 (PST)
+        bh=yTTUfpY5FBze/ZdJsTMclUwYRTvL4mC8YWDC0HHBaDo=;
+        b=31J5gVDCPxzdJne4/CH0dUeLI6mXiEIwEk6AyVd33997/TUv7NXZwFUyjUgPuarKbQ
+         YC0nkcS+wbfaUkgY93sb1h/GLE4f42r9EoeCHVE13WA2+DoxryqPepwMmTj0F2a6tQ0+
+         li/2VnFP9WDm6XtcrLnNf4braFou2U0uBw1tJeFE99i9zRNtcqLdi64lcuM/7DAr1yyS
+         fN/LewiictQFoedPEwhb3V92upJP8Jb0w7o3rBHQq7k0Z3DiixLjZrEtIdNE3dX07Pan
+         c75MbmN4BYMBhMz7FlK6U14vchqBtlCWAffWQSkiEa5rjO7gFUwh2mU3zf4Nb8+OZzuD
+         DutA==
+X-Gm-Message-State: AO0yUKUZ6BHZh0vCbth8dGpKytJAZ4UgnanNtRew8ZWVHMuqZSiAO4+o
+	pf/MZY1Ic7BXS+ddUUEUTIlVEY1ode3B+TFkvR6NJQ==
+X-Google-Smtp-Source: AK7set8Jj9rIJ0M1z0qzvgZyXsHbOHSifaxMAF2WDRHnciHO2wQ0GHx1+ow3JKQ1jckTrglgegfQO/AUz+jddSbN0Vw=
+X-Received: by 2002:a1f:a3c8:0:b0:40b:9:82fd with SMTP id m191-20020a1fa3c8000000b0040b000982fdmr813692vke.18.1676951754153;
+ Mon, 20 Feb 2023 19:55:54 -0800 (PST)
 MIME-Version: 1.0
-References: <20230220150111.77897-1-angelogioacchino.delregno@collabora.com> <20230220150111.77897-40-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230220150111.77897-40-angelogioacchino.delregno@collabora.com>
+References: <20230220150111.77897-1-angelogioacchino.delregno@collabora.com> <20230220150111.77897-47-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230220150111.77897-47-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 21 Feb 2023 11:53:57 +0800
-Message-ID: <CAGXv+5Eztv3RuXPXSYFd2qH_Wd18OcLNaqO+Lcp4hytjkBarfA@mail.gmail.com>
-Subject: Re: [PATCH v3 39/55] clk: mediatek: Split MT8195 clock drivers and
- allow module build
+Date: Tue, 21 Feb 2023 11:55:43 +0800
+Message-ID: <CAGXv+5FHQG6CBcRVUYdNXdxRQVRpmnVN_EiQ=knm48B_7ugHqA@mail.gmail.com>
+Subject: Re: [PATCH v3 46/55] clk: mediatek: Split configuration options for
+ MT8186 clock drivers
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
 	johnson.wang@mediatek.com, miles.chen@mediatek.com, 
@@ -73,8 +72,8 @@ Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
 	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230220_195410_709673_E0114D45 
-X-CRM114-Status: GOOD (  17.67  )
+X-CRM114-CacheID: sfid-20230220_195555_505416_641967AB 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,58 +91,19 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Mon, Feb 20, 2023 at 11:02 PM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> MT8195 clock drivers were encapsulated in one single (and big) Kconfig
-> option: there's no reason to do that, as it is totally unnecessary to
-> build in all or none of them.
+> When building clock drivers for MT8186, some may want to build in only
+> some of them to, for example, get CPUFreq up faster, and some may want
+> to leave out some clock drivers entirely as a machine may not need the
+> Warp Engine or the camera ISP (hence, their clock drivers).
 >
-> Split them out: keep boot-critical clocks as bool and allow choosing
-> non critical clocks as tristate.
+> Split the various clock drivers in their own configuration options,
+> keeping MT8186 configuration options consistent with other MediaTek
+> SoCs.
 >
-> As a note, the dependencies of VDEC/VENCSYS and CAM/IMG/IPE/WPESYS
-> are not for build-time but rather for runtime, as clocks registered
-> by those have runtime dependencies on either or both VPP and IMGSYS.
+> While at it, also allow building the remaining clock drivers as modules
+> by switching COMMON_CLK_MT8186 to tristate.
 >
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/clk/mediatek/Kconfig  | 100 ++++++++++++++++++++++++++++++++++
->  drivers/clk/mediatek/Makefile |  20 ++++---
->  2 files changed, 113 insertions(+), 7 deletions(-)
->
-> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-> index 45b7aea7648d..49919da2be26 100644
-> --- a/drivers/clk/mediatek/Kconfig
-> +++ b/drivers/clk/mediatek/Kconfig
-> @@ -692,6 +692,106 @@ config COMMON_CLK_MT8195
->          help
->            This driver supports MediaTek MT8195 clocks.
->
-> +config COMMON_CLK_MT8195_APUSYS
-> +       tristate "Clock driver for MediaTek MT8195 apusys"
-> +       depends on COMMON_CLK_MT8195
-> +       default COMMON_CLK_MT8195
-> +       help
-> +         This driver supports MediaTek MT8195 AI Processor Unit System clocks.
-> +
-> +config COMMON_CLK_MT8195_AUDSYS
-> +       tristate "Clock driver for MediaTek MT8195 audsys"
-> +       depends on COMMON_CLK_MT8195
-> +       default COMMON_CLK_MT8195
-> +       help
-> +         This driver supports MediaTek MT8195 audsys clocks.
-> +
-> +config COMMON_CLK_MT8195_IMP_IIC_WRAP
-> +       tristate "Clock driver for MediaTek MT8195 imp_iic_wrap"
-> +       depends on COMMON_CLK_MT8195
-> +       default COMMON_CLK_MT8195
-> +       help
-> +         This driver supports MediaTek MT8195 I2C/I3C clocks.
-> +
-> +config COMMON_CLK_MT8195_IPESYS
-> +       tristate "Clock driver for MediaTek MT8195 ipesys"
-> +       depends on COMMON_CLK_MT8195_IMGSYS
-
-This should also be moved to just after IMGSYS.
-This is the only one that is not ordered right, so after it is fixed,
 
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
