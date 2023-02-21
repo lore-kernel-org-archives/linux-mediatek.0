@@ -4,75 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26C77C636D7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 15:51:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B9CDC61DA3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 17:02:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IG8aI0nGKdxJQh9EKmucgj/bqMabnyUzB4U4Conf2wY=; b=xuTBpzr4EBqa9iCL8YE3FiXkaz
-	TyluxfwNmOxWwdywhcwF49oztNDu38KNAojMYfA1+kt9ltkn6Byzvt68AQlrRj4eik/xzqWGgARA0
-	Ppq5KAJFkLww0miktOGSbXi2najBoVBBVaUpI4rS7ARrzzqKBwTF/jPVHfyhFALlI51H6fXkm9tOD
-	Jj8n02Ji+L23+kl57G6xvFemsTgR8XSRsid1+/y1vfwBankLEkHAbbpSdnDNdiIaA5F+7rkJcMiKg
-	O8cG50KhOd/TpOIdSo8Z8NgBc0r4JiVYLTCdbPoofyMhdTRHmU9XptVmKdaRGIcMY7kFE7MiU2ddZ
-	Rl9SJUNQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oRRbmSQ3Rq/4N4LJOPHJPIMC9cy1PqF0Em/E+4AfhBU=; b=E1CgAHjXhAUE+L25Nx7uut9dQf
+	hTU0LxSarSDVrUyCp22xPTuT31Z2k3la1MU7iEQGTJO/j3cySdoNsEt+4hpdnERtgepTl/fjcnDnX
+	adU3yGYA8sSR11OaFerdcv2XyvZtz/RA/Uy344R8SoBgfy9oXAkf238zqQ1P4hz9ikMaq34PGO5Yv
+	VpOG5GB3KQyYjJmG56b+cAKv+jTXdMBQnVLBoW4cu/j7u4JOKUMe5zu1pN9TPWlwS8dX/THGG0s06
+	gQbLzd1VksC6jaeXXvM99V/nFZIjWui61IwvxAI+dVN1WWbFSfRXmFoMUYlSv6ypUo81bkhn7soWT
+	ALSgIujw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUUvT-008p4Q-5B; Tue, 21 Feb 2023 15:51:31 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pUW1x-0093Qh-9l; Tue, 21 Feb 2023 17:02:17 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUUvQ-008p37-LF; Tue, 21 Feb 2023 15:51:29 +0000
-X-UUID: 97d438f6b1ff11edbbe3f76fe852e059-20230221
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=IG8aI0nGKdxJQh9EKmucgj/bqMabnyUzB4U4Conf2wY=;
-	b=kFgoh1dg/4UeMlTYAwqCXrhqAz3PxNK91H/tFD58YBFFXO5CTIE5VeGo4LegDJuXq6nckbBLBRiKbjetZKSax8FkeiKvt9TYWIdemGwO2JeWHzL+wey6QfESxbtIborizwXHwP5eaZB8snb5us/YO6q8bjQGoKgUvlJjylZiLJI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.20,REQID:af485bde-d403-4e46-9a80-40c94235ed3f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:25b5999,CLOUDID:6e56b0f3-ddba-41c3-91d9-10eeade8eac7,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-UUID: 97d438f6b1ff11edbbe3f76fe852e059-20230221
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <powen.kao@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1088969054; Tue, 21 Feb 2023 08:51:24 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 21 Feb 2023 23:30:17 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Tue, 21 Feb 2023 23:30:17 +0800
-From: Po-Wen Kao <powen.kao@mediatek.com>
-To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>, "James E.J. Bottomley"
-	<jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
-	<stanley.chu@mediatek.com>, <powen.kao@mediatek.com>,
-	<alice.chao@mediatek.com>, <naomi.chu@mediatek.com>,
-	<chun-hung.wu@mediatek.com>, <cc.chou@mediatek.com>,
-	<eddie.huang@mediatek.com>, <mason.zhang@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 2/4] scsi: ufs: core: Fix mcq nr_hw_queues
-Date: Tue, 21 Feb 2023 23:29:15 +0800
-Message-ID: <20230221152919.25837-3-powen.kao@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230221152919.25837-1-powen.kao@mediatek.com>
-References: <20230221152919.25837-1-powen.kao@mediatek.com>
+	id 1pUW1o-0093OC-Ge; Tue, 21 Feb 2023 17:02:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=oRRbmSQ3Rq/4N4LJOPHJPIMC9cy1PqF0Em/E+4AfhBU=; b=FkYGQR5y89lOzMeoACkA4MSBlE
+	E1rtKWgt9ZuBIkYcXVjASjrizmHUUE9KOUi2DAP8vznN56E3WynDaRr1sLVCjVKA2dSUvN3ajqMys
+	2mul1pa8zJ/o53pdtKL+78oi0BxMiGaVv2M6XrWVqfO9lJ43hqdnwwkCb1VtigB/soubgc3ODpMI0
+	lHj+DD+6iraVL+QGE6Lo7nX6ikHIlgHsfG3l4cK8dj9/dWXL5NNhZ4KLDFOlLbHSlqVbu/+mRhss4
+	Akg6Sh/dbIaTMBWNNd/xrovUwQDbLIiKHUwQHltYiiuXaE7+JBH6LsM/APZS/LAI06sKobc9UKBHG
+	P8MaTXNA==;
+Received: from madras.collabora.co.uk ([46.235.227.172])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pUUiJ-00CCaz-2r;
+	Tue, 21 Feb 2023 15:37:58 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 29E9266021CF;
+	Tue, 21 Feb 2023 15:37:51 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1676993871;
+	bh=HedQD3Ilc5pEnx8vhQO81s7TTNK+oqpJPvaglDZ6DvY=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=mzSAB68huZi2FWdjCmbPQLcRx/D12xji2dNq7yFIsN0pLXxptw/dMPR76n0abG8lz
+	 xcx+ldXx+RYzOJ0Z/EyrgyjHYxS4dTBHPe2puZUkPf/pqMKV8sRY1BqdI0UsmEnFg0
+	 yzMHNEuaeXf5jQBw+Psxdkt5mOTiW3OzmMMjwCSCoDv9X+G8ZnMwlqAH994GT/GuCR
+	 dmmBdZCS+Sv+N6O0da+H4/DQgL+2F7TAHQL6yqMcObaqIG7Z2q5RBfSXyZSsn9DdWZ
+	 LVGdO2sQLN7DPcdiZnyMxP6vAvdeKXavJeqC495UgF84b0OOVHDvdQ88rKmu6hSnYm
+	 9OL2oeVX36WjA==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: airlied@gmail.com
+Cc: daniel@ffwll.ch,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	steven.price@arm.com,
+	alyssa.rosenzweig@collabora.com,
+	matthias.bgg@gmail.com,
+	robh@kernel.org,
+	dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	wenst@chromium.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 08/10] drm/panfrost: Add the MT8192 GPU ID
+Date: Tue, 21 Feb 2023 16:37:38 +0100
+Message-Id: <20230221153740.1620529-9-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230221153740.1620529-1-angelogioacchino.delregno@collabora.com>
+References: <20230221153740.1620529-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230221_075128_736648_267D0B27 
-X-CRM114-Status: GOOD (  12.23  )
+X-CRM114-CacheID: sfid-20230221_153756_428260_1E6981EB 
+X-CRM114-Status: GOOD (  11.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,27 +96,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Need to add one to QMAX to obtain number of hardware queue.
+From: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
 
-Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
+MediaTek MT8192 has a Mali-G57 with a special GPU ID. Add its GPU ID,
+but treat it as otherwise identical to a standard Mali-G57.
+
+We do _not_ fix up the GPU ID here -- userspace needs to be aware of the
+special GPU ID, in case we find functional differences between
+MediaTek's implementation and the standard Mali-G57 down the line.
+
+Signed-off-by: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Steven Price <steven.price@arm.com>
 ---
- drivers/ufs/core/ufs-mcq.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/panfrost/panfrost_gpu.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-index a39746b2a8be..5d5bc0bc6e88 100644
---- a/drivers/ufs/core/ufs-mcq.c
-+++ b/drivers/ufs/core/ufs-mcq.c
-@@ -150,7 +150,7 @@ static int ufshcd_mcq_config_nr_queues(struct ufs_hba *hba)
- 	u32 hba_maxq, rem, tot_queues;
- 	struct Scsi_Host *host = hba->host;
+diff --git a/drivers/gpu/drm/panfrost/panfrost_gpu.c b/drivers/gpu/drm/panfrost/panfrost_gpu.c
+index 6452e4e900dd..d28b99732dde 100644
+--- a/drivers/gpu/drm/panfrost/panfrost_gpu.c
++++ b/drivers/gpu/drm/panfrost/panfrost_gpu.c
+@@ -204,6 +204,14 @@ static const struct panfrost_model gpu_models[] = {
  
--	hba_maxq = FIELD_GET(MAX_QUEUE_SUP, hba->mcq_capabilities);
-+	hba_maxq = FIELD_GET(MAX_QUEUE_SUP, hba->mcq_capabilities) + 1 ;
+ 	GPU_MODEL(g57, 0x9001,
+ 		GPU_REV(g57, 0, 0)),
++
++	/* MediaTek MT8192 has a Mali-G57 with a different GPU ID from the
++	 * standard. Arm's driver does not appear to handle this model.
++	 * ChromeOS has a hack downstream for it. Treat it as equivalent to
++	 * standard Mali-G57 for now.
++	 */
++	GPU_MODEL(g57, 0x9003,
++		GPU_REV(g57, 0, 0)),
+ };
  
- 	tot_queues = UFS_MCQ_NUM_DEV_CMD_QUEUES + read_queues + poll_queues +
- 			rw_queues;
+ static void panfrost_gpu_init_features(struct panfrost_device *pfdev)
 -- 
-2.18.0
+2.39.2
 
 
