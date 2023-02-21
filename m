@@ -4,71 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24070C61DA3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 11:07:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0878DC61DA3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 11:38:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0gww5730AIS5my3DaZyyra2jli29IXOhsN7YnHTErT4=; b=VNimtO5MMaE8l7i0G5oPXhTgj6
-	WDMmv6gQCU0KHkn20HXX22wsQSwqqJWbu2ZGWS3pnHlj0Rq5svlzCkjDtIiVS2JBJqzmweo97aBoQ
-	URMq2C4s8vZbFR0Kx34KJkhe6Jflcay59cxcrcecIbhRWvTFRr/ecazHOvSlYOTcEbVIOc3rgEOAx
-	4G7pemI3H/vOYvNQ0elPNpijFI4HnISegA/8WBiSC8Q85PnjjdZSI5Dss6ZCbHU6eVQ+VSXrkCgBX
-	fE5D0dKYN3X99Sfk8aEdLr1PBBX/b5HF19dPtvxg+6eZEr/3aUyCkXgxC5yLTKrUoag8un/gFI+PZ
-	CevH+4pA==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=lT7KU5u76ZaOabr9iIs8mD/MfFalpxr1uqwCWT7GsWE=; b=j9qS/A5ifGX4vPhVAH02E04qdA
+	2zHVhn4mhJVk3Yrp80gCjHstvve4V9en17jI9BHF1ypylhXkLCK0PQqtnI6SX2bOobkd+rh7tAc/0
+	6MPq7dWJ/3Ur51v+53R9j6W371ZFG7f4b6i/dbqN0AAVTCstd4uQ3k1HbmZfy2KvBMIJEmEdFm08B
+	8ciWpvKDlBB//vxgbMc4Zw5gJm0NkCnXJXl4KkN38Eaotun73dnxpdgL9U9EDWBdznaFxRLMKyP/2
+	yCoYJ3wUuDYd+Gnln2rWkPvN3fnKW9nTGGl0uRNye3EFR7VWJgaGR4huXFYC3qfM20cLZtY/q6gCO
+	NVZte73A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUQUB-007VP1-Vk; Tue, 21 Feb 2023 11:07:03 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pUQye-007c8V-Im; Tue, 21 Feb 2023 11:38:32 +0000
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUQTz-007VMN-Ml; Tue, 21 Feb 2023 11:06:55 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 20996660087C;
-	Tue, 21 Feb 2023 11:06:47 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676977608;
-	bh=PMnNGjPvWftnPBnMRvQt50qzmTHbAhshh3s2urxuXwc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=eUyminmoBQKwOMgFYfsku8UgYGtzivSZAatwk2TUILx4JcfaZCGhc9o/vMpZD/uUu
-	 P5/ZsGU8+WXaDz4WVXyjFr2ytyStSTvgGq5050n7D++vPdPp2RwVLRyjKLWdrTl4k+
-	 pclKrO6otdKc6mx56gLFJDKIgSNMiuHOHOO8TxdKljbgieN5bAEfyC3l9Q8oGiFCeH
-	 RpffElpyxAmTirjQdKcgNkOJLL2vYm35JfuyhACyLbTZhFtSmNxCONKq9gGTfkHUYp
-	 mOivYiessym9uWjAv4UrGs3otnsTxfdxBKCeVyyPn6MOihSEKvPXcnNtmyTpOuZQdq
-	 d8v63Rz/MocTQ==
-Message-ID: <6dd97011-9ea1-6276-6589-9dd97ccff8d6@collabora.com>
-Date: Tue, 21 Feb 2023 12:06:44 +0100
+	id 1pUQyT-007c3e-Cg; Tue, 21 Feb 2023 11:38:22 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id b20so3000915pfo.6;
+        Tue, 21 Feb 2023 03:38:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=lT7KU5u76ZaOabr9iIs8mD/MfFalpxr1uqwCWT7GsWE=;
+        b=DtOruHx3pwisbupRIpkcPOrfCZ0HJk0zQFJami8KqDQdWt6QGmW32vbL8zks+tgH+j
+         rIH7qXFbdb9xKCvxTRj59+GcZE34yBDEKTr5oUNyUNGOC7mcQ5npCjrKWi9h94AFKboq
+         i/Ki9bRUvScPtdDUh7RO92kkywdGWtTn+UtuwKXFgf0Nl4Sdiax9dopyp0woXR0a9lqQ
+         P5T4Pk827cmfgFwRVcuBLkaZSHjaE0DuQo79KhwDWag7UZtIaaj6N6xsW0Df8ionCT2O
+         aS/TY/UHRHvI5qp1Y7ljznLiR3b/kp3G+7b4CWHenVQ8ou0cQz/OeV1QvFaeQc8xP4NS
+         S8Pg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=lT7KU5u76ZaOabr9iIs8mD/MfFalpxr1uqwCWT7GsWE=;
+        b=VM++wM/J3qCmcy91EX24zOIQnnUcKqnZ2El8uXH0hnUyEO7TiS/bNVAr1uB10o/LuX
+         MSwUZRjjkx+L22lmNXHG2TmtAmo8fHmYL1bkS+QUa9OtpxhC2UPQhqQroKwNQR2QzdPV
+         gUCGJ2St8jq335jrCy0GIBkvbmshKl+D46TeeXzfVqqXgpqZbnlRSeyZdz+LSxClwSks
+         AodT8XtTMRL3CxofB7n4bHyPqYSuMLmVUL3l+wJNkIYkRspavUKlajElFij+M12Ybnqd
+         AsEzulQ9JoYZ46CmSR8bQ93SBOEV6pzjLqFed/QrtWaFcvW98JgwX5lvBfPSX2qFseJ/
+         NIVg==
+X-Gm-Message-State: AO0yUKUC6fzkDrpyG+1FOr8qylSrm+srTyCavum70J3p/p9J+HXs/dGo
+	koQrMDbV6lLEmKG+l/6His0=
+X-Google-Smtp-Source: AK7set8p7ToYqsJam5Lf7cxvXqufRwjHDrXEX/ApOQ9jClAkopI136jo6KH9h7VVVtIbZIFjrozQjw==
+X-Received: by 2002:a62:5290:0:b0:596:15de:ea1e with SMTP id g138-20020a625290000000b0059615deea1emr4845938pfb.9.1676979497577;
+        Tue, 21 Feb 2023 03:38:17 -0800 (PST)
+Received: from localhost.localdomain ([2407:cdc0:ace7:f724:6709:5adc:1970:16fc])
+        by smtp.gmail.com with ESMTPSA id p14-20020a62ab0e000000b005825b8e0540sm9357758pff.204.2023.02.21.03.38.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 21 Feb 2023 03:38:17 -0800 (PST)
+From: Stephen Zhang <starzhangzsd@gmail.com>
+X-Google-Original-From: Stephen Zhang <zhangshida@kylinos.cn>
+To: stanley.chu@mediatek.com,
+	martin.petersen@oracle.com,
+	jejb@linux.ibm.com,
+	artin.petersen@oracle.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	beanhuo@micron.com,
+	bvanassche@acm.org,
+	avri.altman@wdc.com,
+	yoshihiro.shimoda.uh@renesas.com
+Cc: linux-scsi@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	zhangshida@kylinos.cn,
+	starzhangzsd@gmail.com,
+	k2ci <kernel-bot@kylinos.cn>,
+	Manivannan Sadhasivam <mani@kernel.org>
+Subject: [PATCH v3] scsi: ufs: mediatek: Guard runtime PM functions
+Date: Tue, 21 Feb 2023 19:38:08 +0800
+Message-Id: <20230221113808.1050790-1-zhangshida@kylinos.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.2
-Subject: Re: [PATCH v3 39/55] clk: mediatek: Split MT8195 clock drivers and
- allow module build
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
- johnson.wang@mediatek.com, miles.chen@mediatek.com,
- chun-jie.chen@mediatek.com, daniel@makrotopia.org, fparent@baylibre.com,
- msp@baylibre.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com,
- zhaojh329@gmail.com, sam.shih@mediatek.com, edward-jw.yang@mediatek.com,
- yangyingliang@huawei.com, granquet@baylibre.com, pablo.sun@mediatek.com,
- sean.wang@mediatek.com, chen.zhong@mediatek.com,
- linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230220150111.77897-1-angelogioacchino.delregno@collabora.com>
- <20230220150111.77897-40-angelogioacchino.delregno@collabora.com>
- <CAGXv+5Eztv3RuXPXSYFd2qH_Wd18OcLNaqO+Lcp4hytjkBarfA@mail.gmail.com>
-Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5Eztv3RuXPXSYFd2qH_Wd18OcLNaqO+Lcp4hytjkBarfA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230221_030651_920978_33723107 
-X-CRM114-Status: GOOD (  17.64  )
+X-CRM114-CacheID: sfid-20230221_033821_450516_CA6533BF 
+X-CRM114-Status: GOOD (  11.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,66 +102,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/02/23 04:53, Chen-Yu Tsai ha scritto:
-> On Mon, Feb 20, 2023 at 11:02 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> MT8195 clock drivers were encapsulated in one single (and big) Kconfig
->> option: there's no reason to do that, as it is totally unnecessary to
->> build in all or none of them.
->>
->> Split them out: keep boot-critical clocks as bool and allow choosing
->> non critical clocks as tristate.
->>
->> As a note, the dependencies of VDEC/VENCSYS and CAM/IMG/IPE/WPESYS
->> are not for build-time but rather for runtime, as clocks registered
->> by those have runtime dependencies on either or both VPP and IMGSYS.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/clk/mediatek/Kconfig  | 100 ++++++++++++++++++++++++++++++++++
->>   drivers/clk/mediatek/Makefile |  20 ++++---
->>   2 files changed, 113 insertions(+), 7 deletions(-)
->>
->> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
->> index 45b7aea7648d..49919da2be26 100644
->> --- a/drivers/clk/mediatek/Kconfig
->> +++ b/drivers/clk/mediatek/Kconfig
->> @@ -692,6 +692,106 @@ config COMMON_CLK_MT8195
->>           help
->>             This driver supports MediaTek MT8195 clocks.
->>
->> +config COMMON_CLK_MT8195_APUSYS
->> +       tristate "Clock driver for MediaTek MT8195 apusys"
->> +       depends on COMMON_CLK_MT8195
->> +       default COMMON_CLK_MT8195
->> +       help
->> +         This driver supports MediaTek MT8195 AI Processor Unit System clocks.
->> +
->> +config COMMON_CLK_MT8195_AUDSYS
->> +       tristate "Clock driver for MediaTek MT8195 audsys"
->> +       depends on COMMON_CLK_MT8195
->> +       default COMMON_CLK_MT8195
->> +       help
->> +         This driver supports MediaTek MT8195 audsys clocks.
->> +
->> +config COMMON_CLK_MT8195_IMP_IIC_WRAP
->> +       tristate "Clock driver for MediaTek MT8195 imp_iic_wrap"
->> +       depends on COMMON_CLK_MT8195
->> +       default COMMON_CLK_MT8195
->> +       help
->> +         This driver supports MediaTek MT8195 I2C/I3C clocks.
->> +
->> +config COMMON_CLK_MT8195_IPESYS
->> +       tristate "Clock driver for MediaTek MT8195 ipesys"
->> +       depends on COMMON_CLK_MT8195_IMGSYS
-> 
-> This should also be moved to just after IMGSYS.
-> This is the only one that is not ordered right, so after it is fixed,
-> 
+From: Shida Zhang <zhangshida@kylinos.cn>
 
-Big embarassing oops. Done for v4.
+In a configuration with CONFIG_SCSI_UFS_MEDIATEK set to 'm' and
+CONFIG_PM set to 'n', errors occur at compile time:
 
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-Thanks!
+====
+../drivers/ufs/host/ufs-mediatek.c: In function ‘ufs_mtk_runtime_suspend’:
+../drivers/ufs/host/ufs-mediatek.c:1621:8: error: implicit declaration of function ‘ufshcd_runtime_suspend’; did you mean ‘ufs_mtk_runtime_suspend’? [-Werror=implicit-function-declaration]
+../drivers/ufs/host/ufs-mediatek.c: In function ‘ufs_mtk_runtime_resume’:
+../drivers/ufs/host/ufs-mediatek.c:1636:9: error: implicit declaration of function ‘ufshcd_runtime_resume’; did you mean ‘ufs_mtk_runtime_resume’? [-Werror=implicit-function-declaration]
+====
+
+Fix these errors by guarding the runtime PM functions with CONFIG_PM.
+
+Reported-by: k2ci <kernel-bot@kylinos.cn>
+Signed-off-by: Shida Zhang <zhangshida@kylinos.cn>
+Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
+---
+Changes in v3
+  Reword the subject and the commit message.
+Changes in v2:
+  Guard these functions with CONFIG_PM instead of selecting it.
+
+ drivers/ufs/host/ufs-mediatek.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index 21d9b047539f..73e217260390 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -1613,6 +1613,7 @@ static int ufs_mtk_system_resume(struct device *dev)
+ }
+ #endif
+ 
++#ifdef CONFIG_PM
+ static int ufs_mtk_runtime_suspend(struct device *dev)
+ {
+ 	struct ufs_hba *hba = dev_get_drvdata(dev);
+@@ -1635,6 +1636,7 @@ static int ufs_mtk_runtime_resume(struct device *dev)
+ 
+ 	return ufshcd_runtime_resume(dev);
+ }
++#endif
+ 
+ static const struct dev_pm_ops ufs_mtk_pm_ops = {
+ 	SET_SYSTEM_SLEEP_PM_OPS(ufs_mtk_system_suspend,
+-- 
+2.25.1
+
 
