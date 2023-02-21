@@ -4,109 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F17B5C61DA3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 18:23:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B9F6C61DA3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 18:35:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dWBuZuItO82IFqyz0MCKd6UQRtN+LPDLboXi20Lorqc=; b=32c7DDG4f5TBueqQOac4gzSD05
-	cFh05z20CWU5AL7I4zKL69oW9ChdV3baD3EZMz2djoF/MI3fqyIUFgQ53jscb7FbZU+DKaG/STjf7
-	HkNc9k+5/VPVQ0N0Qw4kPoJWVX2/6zEsfVx9nJz9Yq6Fp+udugR9X/F5w6lEWw9coYW5YXgBcrhZ3
-	p8td3v4lTgq4xpx1dwcJ6kdGsG96kYpITgYpgXitClSezKvZ7zxpe+4bquZuojxxokBGu/5bsJsQ+
-	X3GA8jUwSh3oemmdLWOdhTeuqt98hQFCXRA7ncfuBdV93DG8lrET6hM2V5/vrt+rEqZvpdZJuCSEb
-	wNvr+72Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wEduu8lG576J1PT74GPwcOiZm9fPXyVi3oiEJ3RNdS8=; b=gsHrSPi8JLIZ5GLzYT/ywwf2g3
+	8SHdpK4jde2U4ynywq3z9f+rt8nXLcG3ENTMrTs61pzJE2k5rouGFtxRH/+pxSz/jZatPKEvZoxKp
+	ElZZV9HIVN6TOcv47+0Tj7lRjA7MAlw9fYgIBbeH5oS53vegzKpor6H2IFO2be25u9UIdcpYeRZVz
+	nypw6ArWZ2tfgvyP7dV3ji88jyE9bAi8Lw1taxHbmjiOrwYIRv+b+pJGP7xHyfNbJh6+ybfXWwJ6K
+	FA4BKenUuEAtSd1nqboxdjmneEDJPZnJIc2dO2n+z40JRhvvBTQ99SdLk17sWqGcUqG62B9wF4HMJ
+	HkuDL5fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUXIC-009ML5-U9; Tue, 21 Feb 2023 18:23:08 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1pUXTw-009OY5-W8; Tue, 21 Feb 2023 18:35:17 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUXI2-009MI9-4o; Tue, 21 Feb 2023 18:22:59 +0000
-Received: by mail-ed1-x532.google.com with SMTP id ee7so5819588edb.2;
-        Tue, 21 Feb 2023 10:22:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=dWBuZuItO82IFqyz0MCKd6UQRtN+LPDLboXi20Lorqc=;
-        b=nHxfMRu41wzUAs9PMVxmCTZM+TTzDTKp6U8xb3FCFk8OCHPjt0O/eHNa+0iXdsMjze
-         fw0AK2OeVI0wt+Wxrk0mLbc+JHeEo0Y9rAMUnzYHJ45WIA7nS5GmcfYlMhPD6eLhzEbs
-         /03ULvS4qjrv80E3qAv72cLm83yyFAV7GckeDgAgU2gOcChGvbgMKYOgJmAtzuMvs8qe
-         1rugqInJKPI2dPHXBOjdHpSf3EnfxiXv6rbaXRYMwvxtemLT9NAOzZLO4CQouNdHO1Ny
-         EFU2g8Qb6p6UWUDeIED19Oqy6Faq2uJZ18mohAJeGIzW60Vl6EiqtTwe102l/joXzyOs
-         w/Tg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=dWBuZuItO82IFqyz0MCKd6UQRtN+LPDLboXi20Lorqc=;
-        b=Nsg6s6Yk5hu6Fhw7y8M3eTh3nLFI+LnsTQYm4jkEg0WwNNWIdUJB1S2irdXI4P+Wqs
-         g7cbHDMQzxhfoGM3G08cjptx9WCUY6iteOt4BVgwTDO8DId1kWdC7fWmr4bMjWlCj1By
-         10A1fNticwCC6zwd4bYbZHwoI/qaxNznZDIHT1TKBU6icTLMqRJT0BcfhHQ0JyCxURUy
-         V7/y6xxjGKYwF+Hty32/x4K5zpPK/5f/44m0eXyk82pv3XhEsxZZt6uuN1kQniHRiF9G
-         21Yp9xwVTDbDh46Q7tVXk5/+W5ZQbtZXI7OEPmNZ0Z7sFgvsPMEfgEpdkGi1IgT9JT7g
-         otBg==
-X-Gm-Message-State: AO0yUKVIfnxK3730M0Oa3iKB2hZaefxxO3WdDLN2edBBCWnsc1jmDh1U
-	LHrZ645yL3yb92mdCHxTv0c=
-X-Google-Smtp-Source: AK7set9RRyalSHH8Rnrhw+wG3j5tvzZjg2pF8az9E56fflvH6AQziI48YwaJ9r11hqsK2UbALLkZKg==
-X-Received: by 2002:a05:6402:35c1:b0:49e:1f0e:e209 with SMTP id z1-20020a05640235c100b0049e1f0ee209mr5617045edc.10.1677003775806;
-        Tue, 21 Feb 2023 10:22:55 -0800 (PST)
-Received: from jernej-laptop.localnet (82-149-1-233.dynamic.telemach.net. [82.149.1.233])
-        by smtp.gmail.com with ESMTPSA id i14-20020a50d74e000000b004acbde59e64sm3031509edj.8.2023.02.21.10.22.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Feb 2023 10:22:55 -0800 (PST)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: rafael@kernel.org, daniel.lezcano@linaro.org,
- Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Guillaume La Roque <glaroque@baylibre.com>, Amit Kucheria <amitk@kernel.org>,
- Zhang Rui <rui.zhang@intel.com>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>,
- Thara Gopinath <thara.gopinath@gmail.com>,
- Vasily Khoruzhick <anarsoul@gmail.com>, Yangtao Li <tiny.windzz@gmail.com>,
- Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Balsam CHIHI <bchihi@baylibre.com>, Daniel Golle <daniel@makrotopia.org>,
- Niklas =?ISO-8859-1?Q?S=F6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
- ye xingchen <ye.xingchen@zte.com.cn>, Randy Dunlap <rdunlap@infradead.org>,
- Adam Ward <DLG-Adam.Ward.opensource@dm.renesas.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Mark Brown <broonie@kernel.org>,
- "open list:THERMAL DRIVER FOR AMLOGIC SOCS"
- <linux-amlogic@lists.infradead.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/QUALCOMM SUPPORT" <linux-arm-msm@vger.kernel.org>,
- "open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>,
- "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
- "open list:TI BANDGAP AND THERMAL DRIVER" <linux-omap@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-Subject:  Re: [PATCH v2 05/16] thermal/hwmon: Use the right device for
- devm_thermal_add_hwmon_sysfs()
-Date: Tue, 21 Feb 2023 19:22:53 +0100
-Message-ID: <4462258.LvFx2qVVIh@jernej-laptop>
-In-Reply-To: <20230221180710.2781027-6-daniel.lezcano@linaro.org>
-References:  <20230221180710.2781027-1-daniel.lezcano@linaro.org>
- <20230221180710.2781027-6-daniel.lezcano@linaro.org>
+	id 1pUXTm-009OVp-UN; Tue, 21 Feb 2023 18:35:08 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id CCDEB60FBC;
+	Tue, 21 Feb 2023 18:35:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44575C433D2;
+	Tue, 21 Feb 2023 18:35:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1677004504;
+	bh=dgnjcSUG5w1/UXY20oy7pA67rk5DpCFG+LKqSztlm2U=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=JaHaknMQH94f0Ouz7x7+bJIIjbqP/1A+lf0z1r07/7u31jA6NOMhkjW7+NQyvj35e
+	 r/jQRM84dkmgFx+I10T1+lXThjNBjateNxycYIcs8ndkx+83AY7RtGGDH1RDlxKsfx
+	 F0ElKYH0Wx72EtvnPAl2tSazAPHRHXzUqgYigzELtugc3AHpiPANpZvByCujdPkOTF
+	 w0dPFwyDldQNFWCLQNnI2VnKaMG/a15VZoIU6XlPnNlL9JqQDQxANx9QltdGXZU71M
+	 Dl2ye6B6QBHGkFlvvHhMbYXijeMmxJYK1eg3IOhRUo8lxsPqfw5aljOdgLV50q/zFN
+	 Y/WQZlhgK3iOA==
+From: SeongJae Park <sj@kernel.org>
+To: Andrew Yang <andrew.yang@mediatek.com>
+Cc: SeongJae Park <sj@kernel.org>,
+	Andrew Morton <akpm@linux-foundation.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	wsd_upstream@mediatek.com,
+	casper.lin@mediatek.com,
+	damon@lists.linux.dev,
+	linux-mm@kvack.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	stable@vger.kernel.org
+Subject: Re: [PATCH] mm/damon/paddr: fix pin page problem
+Date: Tue, 21 Feb 2023 18:35:01 +0000
+Message-Id: <20230221183501.132024-1-sj@kernel.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230221090313.15396-1-andrew.yang@mediatek.com>
+References: 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230221_102258_223074_1BA09542 
-X-CRM114-Status: GOOD (  14.07  )
+X-CRM114-CacheID: sfid-20230221_103507_056838_AA9E096A 
+X-CRM114-Status: GOOD (  23.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,43 +80,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dne torek, 21. februar 2023 ob 19:06:59 CET je Daniel Lezcano napisal(a):
-> The devres variant of thermal_add_hwmon_sysfs() only takes the thermal
-> zone structure pointer as parameter.
+Hi Andrew,
+
+
+On Tue, 21 Feb 2023 17:03:13 +0800 Andrew Yang <andrew.yang@mediatek.com> wrote:
+
+> From: "andrew.yang" <andrew.yang@mediatek.com>
 > 
-> Actually, it uses the tz->device to add it in the devres list.
+> damon_get_page() would always increase page _refcount and
+> isolate_lru_page() would increase page _refcount if the page's lru
+> flag is set.
 > 
-> It is preferable to use the device registering the thermal zone
-> instead of the thermal zone device itself. That prevents the driver
-> accessing the thermal zone structure internals and it is from my POV
-> more correct regarding how devm_ is used.
+> If a unevictable page isolated successfully, there will be two more
+> _refcount. The one from isolate_lru_page() will be decreased in
+> putback_lru_page(), but the other one from damon_get_page() will be
+> left behind. This causes a pin page.
 > 
-> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-> Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-> #amlogic_thermal ---
->  drivers/thermal/amlogic_thermal.c                  | 2 +-
->  drivers/thermal/imx8mm_thermal.c                   | 2 +-
->  drivers/thermal/imx_sc_thermal.c                   | 2 +-
->  drivers/thermal/k3_bandgap.c                       | 2 +-
->  drivers/thermal/mediatek/auxadc_thermal.c          | 2 +-
->  drivers/thermal/qcom/qcom-spmi-adc-tm5.c           | 2 +-
->  drivers/thermal/qcom/qcom-spmi-temp-alarm.c        | 2 +-
->  drivers/thermal/qcom/tsens.c                       | 2 +-
->  drivers/thermal/qoriq_thermal.c                    | 2 +-
->  drivers/thermal/sun8i_thermal.c                    | 2 +-
+> Whatever the case, the _refcount from damon_get_page() should be
+> decreased.
 
-For sun8i_thermal:
-Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+Thank you for finding this issue!  I think the David suggested subject[1] is
+better, though.
 
-Best regards,
-Jernej
+I think we could add below Fixes: and Cc: tags?
 
->  drivers/thermal/tegra/tegra30-tsensor.c            | 2 +-
->  drivers/thermal/thermal_hwmon.c                    | 4 ++--
->  drivers/thermal/thermal_hwmon.h                    | 4 ++--
->  drivers/thermal/ti-soc-thermal/ti-thermal-common.c | 2 +-
->  14 files changed, 16 insertions(+), 16 deletions(-)
+Fixes: 57223ac29584 ("mm/damon/paddr: support the pageout scheme")
+Cc: <stable@vger.kernel.org> # 5.16.x
+
+> 
+> Signed-off-by: andrew.yang <andrew.yang@mediatek.com>
+> ---
+>  mm/damon/paddr.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/mm/damon/paddr.c b/mm/damon/paddr.c
+> index e1a4315c4be6..56d8abd08fb1 100644
+> --- a/mm/damon/paddr.c
+> +++ b/mm/damon/paddr.c
+> @@ -223,8 +223,8 @@ static unsigned long damon_pa_pageout(struct damon_region *r)
+>  			putback_lru_page(page);
+>  		} else {
+>  			list_add(&page->lru, &page_list);
+> -			put_page(page);
+>  		}
+> +		put_page(page);
+
+Seems your patch is not based on mm-unstable tree[2].  Could you please rebase
+on it?
+
+Also, let's remove the braces for the single statements[3].
+
+[1] https://lore.kernel.org/damon/1b3e8e88-ed5c-7302-553f-4ddb3400d466@redhat.com/
+[2] https://docs.kernel.org/next/mm/damon/maintainer-profile.html#scm-trees
+[3] https://docs.kernel.org/process/coding-style.html?highlight=coding+style#placing-braces-and-spaces
 
 
+Thanks,
+SJ
 
+>  	}
+>  	applied = reclaim_pages(&page_list);
+>  	cond_resched();
+> -- 
+> 2.18.0
 
