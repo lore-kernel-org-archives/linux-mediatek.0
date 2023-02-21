@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BAF9C636D6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 03:26:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05CB2C636D7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 03:39:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ULibvphzro1D/98vWvfLMdiA81XUXKtqF+j4eYxfmic=; b=hl8S+6VnpsrZ24m8c3a6SgwwNB
-	X2jQ9oRJsWpa/ZCdLLLrBluc7Poe40VIaBjo2lKd7gHPxhZwZoDnXYxWGt9Dv742Tp5b8FUbW0Zq6
-	63fURjvv3l8nix853h5IBZguhzjCBR36II5Zc6/Z1ViGMXCpH169zM57KJNGhfUkftmWHE4kvUGLm
-	mjN1BmhwTd6B6QUNkXJgGVIJYpq7sonR+NN4CtXbJFt/toKxsBINCZkKEyV/myK1Qak9MfsGQTvBA
-	yEgcZQsBQNfg/Xcausr58Lu29g/WqcStLXF9zWfLK1XXOorwRTABAuZTxDzmhh6nSf1I6B1PDrvgU
-	j3V4dGmg==;
+	bh=eyR7hb6+4nnohx1Os+xJuDUE4j0WlgtLqxQEIptIJGc=; b=DL3n6oZrbSE27/Tf5jMp1iS+Hi
+	CXohNyjgT+Khd9RNvUjotvvOWfbDcMsJar1Z2vXEHCTC4U+snxw+RLjQNwqHLYDyDddt/l7NN8f1R
+	67Jbh1vy4cmbzG3EfmKten4sFSWh3vHL1mFHoVbM+mrBI5D1GvTwPhQdR2KyOAL4C4oNum/s+VL31
+	zuZFNGmzZQM4vn++5OvjZw/NqnwtCtBZYfVSLVK5S3Irto0UpeL1Aqi5gKb84zBrjXmTSbObD+I9t
+	W0u1ym1faBE/yzb1Hz0bdZfj7YAhaFtXPamJLVfCiD2yO4fNc1uY2RVM0pXT+5R7jeeZWjvY45umK
+	d7SC+Ixg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUJIF-006QqV-Vu; Tue, 21 Feb 2023 03:26:15 +0000
-Received: from mail-ua1-x92d.google.com ([2607:f8b0:4864:20::92d])
+	id 1pUJVL-006SId-VD; Tue, 21 Feb 2023 03:39:48 +0000
+Received: from mail-vs1-xe36.google.com ([2607:f8b0:4864:20::e36])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUJI6-006QnW-8u
-	for linux-mediatek@lists.infradead.org; Tue, 21 Feb 2023 03:26:07 +0000
-Received: by mail-ua1-x92d.google.com with SMTP id d12so206500uak.10
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 Feb 2023 19:26:05 -0800 (PST)
+	id 1pUJVI-006SHa-Kx
+	for linux-mediatek@lists.infradead.org; Tue, 21 Feb 2023 03:39:46 +0000
+Received: by mail-vs1-xe36.google.com with SMTP id v3so2582917vse.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 Feb 2023 19:39:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
+        d=chromium.org; s=google; t=1676950783;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=ULibvphzro1D/98vWvfLMdiA81XUXKtqF+j4eYxfmic=;
-        b=RrKZTF1jnLdV3a0kGJHaExjDHfO20XWEcPPkfAhXPb2Vk02cA7AfXQDSNzMx7JMS6B
-         Uo5GVpZuNhRm/1SzVdI3tCMfZpZBvFKsNt3d3OBy+AhdIoDfcMPu16K4z8LfvvhmrveN
-         wXw0WewUMcbD7nsvM9PKjAAJvwI6UplrjSS4Q=
+        bh=eyR7hb6+4nnohx1Os+xJuDUE4j0WlgtLqxQEIptIJGc=;
+        b=EH9Gs94+bMfCqoMpwo0blYpUtwBOlTqv5J56zeGIbkMnPE2IWzW0qkSqhNjrmciPj5
+         NinIep+5pkpc1/y6LpPdT66tfyHugn+Tbcr2qiB5AZggTM4yT/xmLE1T5if0wKxoFZgJ
+         GfNpN1vpgHOjyrQtbH5Reh1C1Hu8vyf19mdx8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
+        d=1e100.net; s=20210112; t=1676950783;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=ULibvphzro1D/98vWvfLMdiA81XUXKtqF+j4eYxfmic=;
-        b=daqQWLvmGyhrhY3kXerAaT9APjBdRftJcOC4xIn3yX693nVg3Ztlcaiumx+19bctmQ
-         PB0b9ly3vO4ID8s6Q0rrQqYzzeg5rtz76ypLNCSStF34fEoqQ5TxWoTKRQvgYzAYog6d
-         qokVmk0sOKexcpBklUJtdvNWgUN3TbaYtYF0jq6SoKw4OD2OzwHIAAEJF77LOznihYV8
-         m6+5LzIvUJbieVJROc7AR3E6bBm1+hrgtP22x5Q1y1gS2+1qNz9N6Nb/hISvpa2aWILr
-         WJ6Yhb8ouEe3RyjRRLA9OL19ADzGlP0eaRZaoAOhkCUG3CfU4p+EAUGp6lvIl7mEX+dZ
-         lsQQ==
-X-Gm-Message-State: AO0yUKXeS8aE9FLNiyP79wqWxh522pCCaOwD5JG3PrN1Lw4zMZV+vTf6
-	AhbAmVTZYUocmlFMw5zTzshDditSb1jovT8Zywrb+g==
-X-Google-Smtp-Source: AK7set8xWP4VDK1zpzVf35dhRjpPCPCvPMYTxP1UoLD3FNmbqHdbOhuvm16GTBZ9oS4Ysc0oQtkHPSJYnmTdH4nHLSs=
-X-Received: by 2002:ab0:53d5:0:b0:68a:5c52:7f2b with SMTP id
- l21-20020ab053d5000000b0068a5c527f2bmr531329uaa.1.1676949964782; Mon, 20 Feb
- 2023 19:26:04 -0800 (PST)
+        bh=eyR7hb6+4nnohx1Os+xJuDUE4j0WlgtLqxQEIptIJGc=;
+        b=peSBSmgw0gu6Wi/G/Bf3Sxw+o0Ne9Jun1jU+Rqe7ObXF1fJi6tI09fFhVV7HEmyHOu
+         zrM2au48O5+fFXBnqWOecn09fpjCAVkrFwF14lq41px8sgmWRLdgjxgHgyRapb97hqvE
+         0JbqI7wfKMTrwljcZkySHaFUdCcDpIQa43DqO/XFI0UBtfOFwhmOidh415A4FrvK623z
+         HrZCZ8+b1ZVPEfT/vArS12x0owQ90V7dnPrI7h1QUlcXSrX4etlyMSrLfJAlrHUp1YCB
+         C8fUj/67C7r69Juh6r3u+gCTtd4EDkn9imvDidJJfDrNHgeA3zb/cNzlvr8klxMRQVqo
+         ot1A==
+X-Gm-Message-State: AO0yUKXlpxljGOBdVxL8c8HW9th7bvGBNKYhyehFn8tAlkwFfDYX3mk4
+	mh826yYtpPVsDzgerNo1zI+Frg31qjHh71UxeE2oJQ==
+X-Google-Smtp-Source: AK7set+D349/5265yL0xKdvrfFIsomu5l6hLeBBkm5qE9AONzbCuJgnYXdR0E3W2E+MqupsPm0Wi6fjuhGasUAmEV/k=
+X-Received: by 2002:a67:f6c1:0:b0:411:a14d:6bac with SMTP id
+ v1-20020a67f6c1000000b00411a14d6bacmr828458vso.44.1676950783217; Mon, 20 Feb
+ 2023 19:39:43 -0800 (PST)
 MIME-Version: 1.0
-References: <20230220150111.77897-1-angelogioacchino.delregno@collabora.com> <20230220150111.77897-10-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230220150111.77897-10-angelogioacchino.delregno@collabora.com>
+References: <20230220150111.77897-1-angelogioacchino.delregno@collabora.com> <20230220150111.77897-20-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230220150111.77897-20-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 21 Feb 2023 11:25:53 +0800
-Message-ID: <CAGXv+5GJqu_xE4EOTFmeNJxLPM7zL-z3Cg22t9mFd=-Yp8B9mw@mail.gmail.com>
-Subject: Re: [PATCH v3 09/55] clk: mediatek: mt2712-apmixedsys: Add .remove()
- callback for module build
+Date: Tue, 21 Feb 2023 11:39:32 +0800
+Message-ID: <CAGXv+5FhOnGfCOuWfNY8EgSzJ9Su7peukJh5YGQWJ4ZFV9u0Bw@mail.gmail.com>
+Subject: Re: [PATCH v3 19/55] clk: mediatek: mt8183: Move apmixedsys clock
+ driver to its own file
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
 	johnson.wang@mediatek.com, miles.chen@mediatek.com, 
@@ -73,8 +73,8 @@ Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
 	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230220_192606_333243_3C91393E 
-X-CRM114-Status: UNSURE (   8.36  )
+X-CRM114-CacheID: sfid-20230220_193944_719855_2AFF6A1F 
+X-CRM114-Status: UNSURE (   9.72  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,9 +93,13 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Mon, Feb 20, 2023 at 11:01 PM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> Add a .remove() callback to the apmixedsys driver to allow full module
-> build; while at it, also change the usage of builtin_platform_driver()
-> to module_platform_driver() to actually make use of the new callback.
+> In preparation for migrating all other mt8183 clocks to the common
+> mtk_clk_simple_probe(), move apmixedsys clocks to a different file.
+> While at it, use the builtin_platform_driver() macro for it and fix
+> some indentation issues in the PLLs table.
+>
+> During the conversion, error handling was added to the apmixedsys
+> probe function.
 >
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
