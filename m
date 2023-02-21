@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F512C61DA3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 12:27:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E72F2C64EC4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 12:28:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EkSV88ek7Z/KGX8qvKaUUqReHXiihihqUuf07BkCKnk=; b=0OG88w3D39EVIbu9I2FhPJjYFb
-	7ew4OB6q1fkcfz3cuXTjavaqNTE/za+97EVWkxCM04i6z+/Y7qf2DQblilOI1piukr4uQI/AHE/V8
-	lToNpKbl1Baqm4Uu18Dh32tSv9QFRF/qU0HTH7FvcFIVF1AUlm9VJrzrFxhvDMNf6t/XkWUoWctFo
-	/fmbN3AjI1uzNdOgh2cEdeDo+P5uHhehhWsTi5iQU3uIwtmzQ5qDv3WMr0udzlIC6ycmpIn2uzO44
-	rdlZpz5uGMm+hUoHo/uPnZob46ZkaA6/XPA+xA6pQ7tgjDm1MeFn/4/+h9IeQwrStSY1m+VyKByt+
-	1d717oqA==;
+	bh=OOqZh91dzhZ5eiSoqgW3TxLbAWxwer6D9c7c2w0s8Qw=; b=A7rFtJY2hQAdGeSEmuu6wSuPFm
+	/KpovThlGMawc/GIWbA7zgqlZD4VYm8X/ahCOYaDrrQqy4ihSjECR9LhX1O59i+rmXWI25Uaum8Za
+	wlRDeoQCavqmu+ZEJvI1NfYCOcOSQ7AzdyJ2a5Pubv8+jGbFyAw69PwgS8e5WP0RCj/zHHFY0YCKP
+	+jPJN8jWnodZ3Q1jjhWe0mgmaLXCSkGFZ7HUgpLFEKcbOAAr8yC1IawMn40NbvLBaWkpjy2799x46
+	navRkH5bEPaoRSzw5FeZKLhfqttNcyklWVN124NkkDV0m9hp3VuSd0lrvzAp677xs8rDupjbnw5Qc
+	UbvTgIbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pURkN-007ziZ-6j; Tue, 21 Feb 2023 12:27:51 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pURkv-00800z-8O; Tue, 21 Feb 2023 12:28:25 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pURGM-007k2D-Li; Tue, 21 Feb 2023 11:56:53 +0000
+	id 1pURGO-007k34-2O; Tue, 21 Feb 2023 11:56:55 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 385A166021D0;
-	Tue, 21 Feb 2023 11:56:48 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 86EA366021D1;
+	Tue, 21 Feb 2023 11:56:49 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676980609;
-	bh=eeiHEsUa1T8pazV6udb38+IWdGn7nYU56qZHrE+N45Q=;
+	s=mail; t=1676980610;
+	bh=0i5i38gD2RAIMo8EuAyRh4KkstFXZ0Qog17NmX0YKGU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=j/jlV4xs/k//ZP/tw49TU44HqshlekYTU4Z7nLRwfnpCX2s3M/0/KHJa0dFpH7t0a
-	 Av6HJhjbeWGMnIG9LhkeZroWqTlqVsE5EN7H6WuKGBn3Fw3I5sFC3k9xtFtT3d0lUG
-	 UTzw1F1yZBdRsyPXv6Wz5QsLNVt5SFeb0CyezLldaa4/NJb6SJkYTHyy6gd0oSuE8v
-	 JqPip7JJvGXgbrNSHF+F28jx0QfWMnRWVMTlgna3Lm4PA1ZuTZvXcrd+ZE/uXXZPJ1
-	 oD+PNdstQJW/vX/ObVzWZNLWnhcF3fvvAVRIdwdoBHdQiyHoh/xg2uJZL1unQ237df
-	 r23tAW+lku+tA==
+	b=okwWEKdRCrCN+ocQMi38lY4B/L1QmhDlKOH6gL+UiPY/+G9WSz4TtFCaii1DEv0N4
+	 y0pAVHYKbLXKX5JhIiVdML4fQBGRA2ZSoasg4ouTZIP8/jJBTlT+ya8uuEmepI+I3X
+	 iZ9z1eEGJ1K+0F0JyvVypr4TtPfQqaFYg8KrTxAFwkgF83l17f52GTn+1TFrxlmNtl
+	 lrZXXlEogyk1tTZuY/2JoJW7HOAtH5uc7gwpIF7ihFTq3+4t1pwgelrNWPCkvhedOC
+	 icxol8FhEmHvqdePN/5oniYU9werZDk9Tho4nlJasvj5RA5sPJxPP51KIC4MfrEvt6
+	 1UxOPL/eHMYYQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mturquette@baylibre.com
 Cc: sboyd@kernel.org,
@@ -67,17 +67,18 @@ Cc: sboyd@kernel.org,
 	linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 41/54] clk: mediatek: Allow MT7622 clocks to be built as modules
-Date: Tue, 21 Feb 2023 12:55:36 +0100
-Message-Id: <20230221115549.360132-42-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v4 42/54] clk: mediatek: Allow all MT8167 clocks to be built as modules
+Date: Tue, 21 Feb 2023 12:55:37 +0100
+Message-Id: <20230221115549.360132-43-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230221115549.360132-1-angelogioacchino.delregno@collabora.com>
 References: <20230221115549.360132-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230221_035650_897714_908D933C 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20230221_035652_302028_5F8C044B 
+X-CRM114-Status: UNSURE (   8.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,53 +93,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Now that all drivers are using the simple probe mechanism change the
-MT7622 clock drivers to tristate in Kconfig to allow module build.
+Almost all MT8167 clocks have been converted to use the common probe
+mechanism, moreover, now all of them are platform drivers: allow
+building as modules.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/clk/mediatek/Kconfig | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/clk/mediatek/Kconfig | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index fc073e5be4eb..d089806789ee 100644
+index d089806789ee..9f81ffc0876a 100644
 --- a/drivers/clk/mediatek/Kconfig
 +++ b/drivers/clk/mediatek/Kconfig
-@@ -336,7 +336,7 @@ config COMMON_CLK_MT6797_VENCSYS
- 	  This driver supports MediaTek MT6797 vencsys clocks.
+@@ -406,7 +406,7 @@ config COMMON_CLK_MT7981_ETHSYS
+ 	  required on MediaTek MT7981 SoC.
  
- config COMMON_CLK_MT7622
--	bool "Clock driver for MediaTek MT7622"
-+	tristate "Clock driver for MediaTek MT7622"
+ config COMMON_CLK_MT7986
+-	bool "Clock driver for MediaTek MT7986"
++	tristate "Clock driver for MediaTek MT7986"
  	depends on ARCH_MEDIATEK || COMPILE_TEST
  	select COMMON_CLK_MEDIATEK
  	default ARCH_MEDIATEK
-@@ -345,21 +345,21 @@ config COMMON_CLK_MT7622
- 	  required for various periperals found on MediaTek.
+@@ -415,7 +415,7 @@ config COMMON_CLK_MT7986
+ 	  required for various peripherals found on MediaTek.
  
- config COMMON_CLK_MT7622_ETHSYS
--	bool "Clock driver for MediaTek MT7622 ETHSYS"
-+	tristate "Clock driver for MediaTek MT7622 ETHSYS"
- 	depends on COMMON_CLK_MT7622
+ config COMMON_CLK_MT7986_ETHSYS
+-	bool "Clock driver for MediaTek MT7986 ETHSYS"
++	tristate "Clock driver for MediaTek MT7986 ETHSYS"
+ 	depends on COMMON_CLK_MT7986
+ 	default COMMON_CLK_MT7986
  	help
- 	  This driver add support for clocks for Ethernet and SGMII
- 	  required on MediaTek MT7622 SoC.
+@@ -431,7 +431,7 @@ config COMMON_CLK_MT8135
+ 	  This driver supports MediaTek MT8135 clocks.
  
- config COMMON_CLK_MT7622_HIFSYS
--	bool "Clock driver for MediaTek MT7622 HIFSYS"
-+	tristate "Clock driver for MediaTek MT7622 HIFSYS"
- 	depends on COMMON_CLK_MT7622
- 	help
- 	  This driver supports MediaTek MT7622 HIFSYS clocks providing
- 	  to PCI-E and USB.
+ config COMMON_CLK_MT8167
+-	bool "Clock driver for MediaTek MT8167"
++	tristate "Clock driver for MediaTek MT8167"
+ 	depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
+ 	select COMMON_CLK_MEDIATEK
+ 	default ARCH_MEDIATEK
+@@ -439,35 +439,35 @@ config COMMON_CLK_MT8167
+ 	  This driver supports MediaTek MT8167 basic clocks.
  
- config COMMON_CLK_MT7622_AUDSYS
--	bool "Clock driver for MediaTek MT7622 AUDSYS"
-+	tristate "Clock driver for MediaTek MT7622 AUDSYS"
- 	depends on COMMON_CLK_MT7622
+ config COMMON_CLK_MT8167_AUDSYS
+-	bool "Clock driver for MediaTek MT8167 audsys"
++	tristate "Clock driver for MediaTek MT8167 audsys"
+ 	depends on COMMON_CLK_MT8167
+ 	default COMMON_CLK_MT8167
  	help
- 	  This driver supports MediaTek MT7622 AUDSYS clocks providing
+ 	  This driver supports MediaTek MT8167 audsys clocks.
+ 
+ config COMMON_CLK_MT8167_IMGSYS
+-	bool "Clock driver for MediaTek MT8167 imgsys"
++	tristate "Clock driver for MediaTek MT8167 imgsys"
+ 	depends on COMMON_CLK_MT8167
+ 	default COMMON_CLK_MT8167
+ 	help
+ 	  This driver supports MediaTek MT8167 imgsys clocks.
+ 
+ config COMMON_CLK_MT8167_MFGCFG
+-	bool "Clock driver for MediaTek MT8167 mfgcfg"
++	tristate "Clock driver for MediaTek MT8167 mfgcfg"
+ 	depends on COMMON_CLK_MT8167
+ 	default COMMON_CLK_MT8167
+ 	help
+ 	  This driver supports MediaTek MT8167 mfgcfg clocks.
+ 
+ config COMMON_CLK_MT8167_MMSYS
+-	bool "Clock driver for MediaTek MT8167 mmsys"
++	tristate "Clock driver for MediaTek MT8167 mmsys"
+ 	depends on COMMON_CLK_MT8167
+ 	default COMMON_CLK_MT8167
+ 	help
+ 	  This driver supports MediaTek MT8167 mmsys clocks.
+ 
+ config COMMON_CLK_MT8167_VDECSYS
+-	bool "Clock driver for MediaTek MT8167 vdecsys"
++	tristate "Clock driver for MediaTek MT8167 vdecsys"
+ 	depends on COMMON_CLK_MT8167
+ 	default COMMON_CLK_MT8167
+ 	help
 -- 
 2.39.1
 
