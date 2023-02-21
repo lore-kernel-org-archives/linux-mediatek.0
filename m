@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C324C61DA3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 12:23:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23AF7C61DA3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 12:25:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1CWEfB+rD9ktJtR3XY9MJDh3tAlSd8zEN6Dedx0C+10=; b=yzB5MvRL5APVxEF27Y7lt8Tsum
-	qCoCFuLwCu7XktVrNy2/VNmmGspTQ/7M4VIj0E0vpScjkdc5S33pg6ojRRnIoyfpYykx1+JjK0AU9
-	J4Hco0/FyfrnbGdefLRlFfJHideqHuBic0gHnX9dHJ6nLjISRRPeZQqY3WLbBoKBpZMOXl6ompUi/
-	Tt43Uo+ml6+RyyiXeuC3SjPJjC+MfDHCYMffyab/Mpqf1vhdaC1W2j404KcE12CzczyIgtG8t0L9T
-	WfwM2DGxeRQZt2mW1azzP+x7wZpfOyxiNzQVXfyV1FKSInKPAG3nX2nF0W/aG7hI0ziWVmvRCdKyz
-	9evwn4ww==;
+	bh=4Xb9vp/zDMtbZnyHS5vs1FS1ZUEni0RKX8ZdXR21Rzo=; b=0AZac03X3osT72tsYuuvlbPjzR
+	hP5dZQICluaeXlDo6M8tnUxglR3Jlu6vR85Bbw7i0j+9tV/FtnBzEaeRcA8fl3p7qKrUMBep1hbU7
+	/rQXqmG2qUbKKIOMFZkLAoTunxGZxO1zYfpgo09gOjOzZ+bmyIfatSoPcHB2QTA/y2576YKgHiNwx
+	iwCH9yONuOWPjJ8K3+gh6zwuFQfU0GFQ0m2laeHYvF8Ijn04f8j4cFwg7psR1LaBDHE+lNxP7/mlb
+	3kAzWOD0JIAaAs3E8evb7pHjCelLYwnxjmmcdFErqI9XNYdkqk0zf40zI/rkOR+N4ywsRc3R345XI
+	t6uNvopQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pURg0-007xSp-ED; Tue, 21 Feb 2023 12:23:20 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pURhu-007yTE-An; Tue, 21 Feb 2023 12:25:18 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pURGD-007jwG-D0; Tue, 21 Feb 2023 11:56:44 +0000
+	id 1pURGI-007jzP-PI; Tue, 21 Feb 2023 11:56:50 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 12A4066021E4;
-	Tue, 21 Feb 2023 11:56:39 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5270866021CD;
+	Tue, 21 Feb 2023 11:56:44 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676980600;
-	bh=wjEUtgV2dUeTl5IMzfSzsq0GbF+vXUsOW/+em9uek+4=;
+	s=mail; t=1676980605;
+	bh=vmZboqnY88zhAaEwDm8Q0/dnSl1U3JPvdAiFCCN2+8o=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=bnfo7WoOfSUIKUvp/PGdcyUX4oisqN2l2bjTPBnUIeyfXOmKxjI6SRCyL141qRBOY
-	 UO3wPcwtnT4GVLmZXSliXOrRy0yWWuSH3aq0isj9+70M60gJ47EZKnjrd2hpLup50Y
-	 o9GYTv0xtr6zBeNG/WBUpBAlkvDFvc4xAorAC5ECd23qZR3rEEFCKb+RIheMwf6d02
-	 tKzo3WESp/eaSkdjBvWkfr9espPlVosWssHQpRmzrvIUSFk6379jBzdiCOZbheVXbm
-	 aRrQFcr+yw83OoQb5x8GnOcfhsmrUx3YXc3iaVtiAFnVCfV2+ztLKP3MxRffFY8jVc
-	 Shl5fLPd4g9xA==
+	b=GWYLhBp8gA/bQCkvnxxiK0M2DN4dkYlxYta9+2aMHHXYwNpy+qVzwQIFDmUICgl7S
+	 Uvc0otvCAMJOa1c20UiRNJodM8cCnI04pR73O5Cu+jryegoOM8PlItUPJxswXql+Zi
+	 So9A7hxu/qGih/iWK0tzDEjjK7+xD8EA4JbGuedalrHWuToD3Jd8YiWNeVVuS3vhef
+	 AqBjT2DawoFkUXf3qtkf5WYi6cRoNa1Dwbz/3jQoGAkrGiC1rD08JeyQNlGCYFa/je
+	 Wsnbs2fWUERgG2xbJSAzw8gXF9DW0IlosPBVMGR/yEX6Oet+G4dFWvLZG1KYbkVeD0
+	 KnwxNR6GnUmCg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mturquette@baylibre.com
 Cc: sboyd@kernel.org,
@@ -67,17 +67,18 @@ Cc: sboyd@kernel.org,
 	linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 34/54] clk: mediatek: mt7986-eth: Migrate to common probe mechanism
-Date: Tue, 21 Feb 2023 12:55:29 +0100
-Message-Id: <20230221115549.360132-35-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v4 38/54] clk: mediatek: mt2712: Change Kconfig options to allow module build
+Date: Tue, 21 Feb 2023 12:55:33 +0100
+Message-Id: <20230221115549.360132-39-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230221115549.360132-1-angelogioacchino.delregno@collabora.com>
 References: <20230221115549.360132-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230221_035641_747657_0F98D822 
-X-CRM114-Status: GOOD (  12.76  )
+X-CRM114-CacheID: sfid-20230221_035647_053915_ECFB0DD4 
+X-CRM114-Status: UNSURE (   9.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,133 +93,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert this driver to use the common mtk_clk_simple_probe() mechanism.
-While at it, also remove __initconst annotations (as these structures
-are used also at runtime).
+All of the mt2712 drivers have been converted to platform drivers!
+Change the Kconfig options for all MT2712 clocks to tristate to allow
+building all clock drivers as modules.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/clk/mediatek/clk-mt7986-eth.c | 83 +++++++++++----------------
- 1 file changed, 32 insertions(+), 51 deletions(-)
+ drivers/clk/mediatek/Kconfig | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt7986-eth.c b/drivers/clk/mediatek/clk-mt7986-eth.c
-index e04bc6845ea6..138ba0a47221 100644
---- a/drivers/clk/mediatek/clk-mt7986-eth.c
-+++ b/drivers/clk/mediatek/clk-mt7986-eth.c
-@@ -25,7 +25,7 @@ static const struct mtk_gate_regs sgmii0_cg_regs = {
- #define GATE_SGMII0(_id, _name, _parent, _shift)		\
- 	GATE_MTK(_id, _name, _parent, &sgmii0_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
+diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+index b9c0a9e21cf1..45b7aea7648d 100644
+--- a/drivers/clk/mediatek/Kconfig
++++ b/drivers/clk/mediatek/Kconfig
+@@ -75,7 +75,7 @@ config COMMON_CLK_MT2701_G3DSYS
+ 	  This driver supports MediaTek MT2701 g3dsys clocks.
  
--static const struct mtk_gate sgmii0_clks[] __initconst = {
-+static const struct mtk_gate sgmii0_clks[] = {
- 	GATE_SGMII0(CLK_SGMII0_TX250M_EN, "sgmii0_tx250m_en", "top_xtal", 2),
- 	GATE_SGMII0(CLK_SGMII0_RX250M_EN, "sgmii0_rx250m_en", "top_xtal", 3),
- 	GATE_SGMII0(CLK_SGMII0_CDR_REF, "sgmii0_cdr_ref", "top_xtal", 4),
-@@ -41,7 +41,7 @@ static const struct mtk_gate_regs sgmii1_cg_regs = {
- #define GATE_SGMII1(_id, _name, _parent, _shift)		\
- 	GATE_MTK(_id, _name, _parent, &sgmii1_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
+ config COMMON_CLK_MT2712
+-	bool "Clock driver for MediaTek MT2712"
++	tristate "Clock driver for MediaTek MT2712"
+ 	depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
+ 	select COMMON_CLK_MEDIATEK
+ 	default ARCH_MEDIATEK && ARM64
+@@ -83,43 +83,43 @@ config COMMON_CLK_MT2712
+ 	  This driver supports MediaTek MT2712 basic clocks.
  
--static const struct mtk_gate sgmii1_clks[] __initconst = {
-+static const struct mtk_gate sgmii1_clks[] = {
- 	GATE_SGMII1(CLK_SGMII1_TX250M_EN, "sgmii1_tx250m_en", "top_xtal", 2),
- 	GATE_SGMII1(CLK_SGMII1_RX250M_EN, "sgmii1_rx250m_en", "top_xtal", 3),
- 	GATE_SGMII1(CLK_SGMII1_CDR_REF, "sgmii1_cdr_ref", "top_xtal", 4),
-@@ -57,7 +57,7 @@ static const struct mtk_gate_regs eth_cg_regs = {
- #define GATE_ETH(_id, _name, _parent, _shift)			\
- 	GATE_MTK(_id, _name, _parent, &eth_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
+ config COMMON_CLK_MT2712_BDPSYS
+-	bool "Clock driver for MediaTek MT2712 bdpsys"
++	tristate "Clock driver for MediaTek MT2712 bdpsys"
+ 	depends on COMMON_CLK_MT2712
+ 	help
+ 	  This driver supports MediaTek MT2712 bdpsys clocks.
  
--static const struct mtk_gate eth_clks[] __initconst = {
-+static const struct mtk_gate eth_clks[] = {
- 	GATE_ETH(CLK_ETH_FE_EN, "eth_fe_en", "netsys_2x_sel", 6),
- 	GATE_ETH(CLK_ETH_GP2_EN, "eth_gp2_en", "sgm_325m_sel", 7),
- 	GATE_ETH(CLK_ETH_GP1_EN, "eth_gp1_en", "sgm_325m_sel", 8),
-@@ -65,56 +65,37 @@ static const struct mtk_gate eth_clks[] __initconst = {
- 	GATE_ETH(CLK_ETH_WOCPU0_EN, "eth_wocpu0_en", "netsys_mcu_sel", 15),
- };
+ config COMMON_CLK_MT2712_IMGSYS
+-	bool "Clock driver for MediaTek MT2712 imgsys"
++	tristate "Clock driver for MediaTek MT2712 imgsys"
+ 	depends on COMMON_CLK_MT2712
+ 	help
+ 	  This driver supports MediaTek MT2712 imgsys clocks.
  
--static void __init mtk_sgmiisys_0_init(struct device_node *node)
--{
--	struct clk_hw_onecell_data *clk_data;
--	int r;
--
--	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(sgmii0_clks));
--
--	mtk_clk_register_gates(NULL, node, sgmii0_clks,
--			       ARRAY_SIZE(sgmii0_clks), clk_data);
--
--	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
--	if (r)
--		pr_err("%s(): could not register clock provider: %d\n",
--		       __func__, r);
--}
--CLK_OF_DECLARE(mtk_sgmiisys_0, "mediatek,mt7986-sgmiisys_0",
--	       mtk_sgmiisys_0_init);
--
--static void __init mtk_sgmiisys_1_init(struct device_node *node)
--{
--	struct clk_hw_onecell_data *clk_data;
--	int r;
--
--	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(sgmii1_clks));
--
--	mtk_clk_register_gates(NULL, node, sgmii1_clks,
--			       ARRAY_SIZE(sgmii1_clks), clk_data);
--
--	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
--
--	if (r)
--		pr_err("%s(): could not register clock provider: %d\n",
--		       __func__, r);
--}
--CLK_OF_DECLARE(mtk_sgmiisys_1, "mediatek,mt7986-sgmiisys_1",
--	       mtk_sgmiisys_1_init);
-+static const struct mtk_clk_desc eth_desc = {
-+	.clks = eth_clks,
-+	.num_clks = ARRAY_SIZE(eth_clks),
-+};
+ config COMMON_CLK_MT2712_JPGDECSYS
+-	bool "Clock driver for MediaTek MT2712 jpgdecsys"
++	tristate "Clock driver for MediaTek MT2712 jpgdecsys"
+ 	depends on COMMON_CLK_MT2712
+ 	help
+ 	  This driver supports MediaTek MT2712 jpgdecsys clocks.
  
--static void __init mtk_ethsys_init(struct device_node *node)
--{
--	struct clk_hw_onecell_data *clk_data;
--	int r;
-+static const struct mtk_clk_desc sgmii0_desc = {
-+	.clks = sgmii0_clks,
-+	.num_clks = ARRAY_SIZE(sgmii0_clks),
-+};
+ config COMMON_CLK_MT2712_MFGCFG
+-	bool "Clock driver for MediaTek MT2712 mfgcfg"
++	tristate "Clock driver for MediaTek MT2712 mfgcfg"
+ 	depends on COMMON_CLK_MT2712
+ 	help
+ 	  This driver supports MediaTek MT2712 mfgcfg clocks.
  
--	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(eth_clks));
-+static const struct mtk_clk_desc sgmii1_desc = {
-+	.clks = sgmii1_clks,
-+	.num_clks = ARRAY_SIZE(sgmii1_clks),
-+};
+ config COMMON_CLK_MT2712_MMSYS
+-	bool "Clock driver for MediaTek MT2712 mmsys"
++	tristate "Clock driver for MediaTek MT2712 mmsys"
+ 	depends on COMMON_CLK_MT2712
+ 	help
+ 	  This driver supports MediaTek MT2712 mmsys clocks.
  
--	mtk_clk_register_gates(NULL, node, eth_clks, ARRAY_SIZE(eth_clks), clk_data);
-+static const struct of_device_id of_match_clk_mt7986_eth[] = {
-+	{ .compatible = "mediatek,mt7986-ethsys", .data = &eth_desc },
-+	{ .compatible = "mediatek,mt7986-sgmiisys_0", .data = &sgmii0_desc },
-+	{ .compatible = "mediatek,mt7986-sgmiisys_1", .data = &sgmii1_desc },
-+	{ /* sentinel */ }
-+};
+ config COMMON_CLK_MT2712_VDECSYS
+-	bool "Clock driver for MediaTek MT2712 vdecsys"
++	tristate "Clock driver for MediaTek MT2712 vdecsys"
+ 	depends on COMMON_CLK_MT2712
+ 	help
+ 	  This driver supports MediaTek MT2712 vdecsys clocks.
  
--	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
-+static struct platform_driver clk_mt7986_eth_drv = {
-+	.driver = {
-+		.name = "clk-mt7986-eth",
-+		.of_match_table = of_match_clk_mt7986_eth,
-+	},
-+	.probe = mtk_clk_simple_probe,
-+	.remove = mtk_clk_simple_remove,
-+};
-+module_platform_driver(clk_mt7986_eth_drv);
- 
--	if (r)
--		pr_err("%s(): could not register clock provider: %d\n",
--		       __func__, r);
--}
--CLK_OF_DECLARE(mtk_ethsys, "mediatek,mt7986-ethsys", mtk_ethsys_init);
-+MODULE_DESCRIPTION("MediaTek MT7986 Ethernet clocks driver");
-+MODULE_LICENSE("GPL");
+ config COMMON_CLK_MT2712_VENCSYS
+-	bool "Clock driver for MediaTek MT2712 vencsys"
++	tristate "Clock driver for MediaTek MT2712 vencsys"
+ 	depends on COMMON_CLK_MT2712
+ 	help
+ 	  This driver supports MediaTek MT2712 vencsys clocks.
 -- 
 2.39.1
 
