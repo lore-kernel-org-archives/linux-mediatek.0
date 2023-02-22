@@ -4,171 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31B53C6379F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Feb 2023 23:15:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F8ADC61DA3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 03:05:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Date:References:Message-ID:In-Reply-To:From:Subject:Cc:To:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=usXzotv/Uc1FbJNQJIM3TLoF8mvHgfZLBTFIltWf/ic=; b=cpl1R16T+ylJTTPdRKNWw4IRIQ
-	kcYunoc2ilQGdCyk/6RPyZpgGAsoMyRSJe3jVKqCYce08I1bY/90UmkmoKz8eLsKB3X0OnES89CPF
-	8BIGdqESUi4iGgX8iuldrZ1MM40M3e763mrIluPeFxgqdyjb2859/LWyUtb206QlNZc4SX9qV0ehg
-	oCpvVHtCHndC+VDgJMYPi6CmdD86Zkst8zbxnQ6tWtDrpXxoTfVlpAN0hiVZfdLa5q4LzsiZOKbK0
-	tw2V6G0HL/hw23tZ5MvESmVqHFAbsqcVelhFb/W3mLY2RSNT1fcOvyFmPIgWvaN4bELTnF37Y/O13
-	ZsVonJ+g==;
+	bh=GaWmCxt+Dw41XTac/0Ur6QXchMwV0v0SFhhMyOxT5gI=; b=SRF5pmjfjk8rjWaKfFy71lNHCr
+	+QoIguTTJstuAU2pslpoVlJnhArvdZ8e93bAHXtquln2FwQhERCSwIX9X99l7yjEWITKIDbP1ghbq
+	Ae8c6lPy7sxz13mMTcZztOxNC/+HHKIQwwEg8T7DRpdth9bZjPJM5wv+imEnaY3dACjq7oax4YfRY
+	CSHIucfPvciIxsp7V1Vrfk9cXzUdCF8hJSf87zyWFeGl3LpuhX9q8RewJIC65BG6SS8Iz3/UvXlxr
+	T5fOtrehnN0spMwR8VcPKz3g7uWADryIRKZeNpKP62BVWN3w03dc0jB2tRsW/hbgR4UtQFdVuvXoi
+	+MtAPbnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUbrH-00A6FL-RT; Tue, 21 Feb 2023 23:15:39 +0000
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+	id 1pUfR9-00AV3R-Io; Wed, 22 Feb 2023 03:04:55 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUbrF-00A6ET-Do; Tue, 21 Feb 2023 23:15:38 +0000
-Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 31LMiK7o027553;
-	Tue, 21 Feb 2023 23:15:28 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=to : cc : subject :
- from : in-reply-to : message-id : references : date : content-type :
- mime-version; s=corp-2022-7-12;
- bh=usXzotv/Uc1FbJNQJIM3TLoF8mvHgfZLBTFIltWf/ic=;
- b=tLBL2Q1gYwxTp5l3FOBo8hZCzn/PlkM9q8olHZtW9yDVIdFioNDVYOMMX6f+snMzsNCp
- 5EpEPrAeU0+nZrjWB0ke3w6cHBZXEJHtLZsWr+sdHU9WEqSCrQE0u11yLyXAnrsF4yIc
- 0SWNrkdOmamuH31LlNb4rwSXorSPyelzUgN9WH1DipJCEd1+fhMQsAKpQqJdCHsQVpB0
- XiP6XU5tdFO8COLtG1eRWYY8591Ee0UW/aoan7qwEYzw0faxnSpOmKu/aMdZTKYKYVag
- 5kpzbozPd/NNBHam1qMG59+rDouoKWJFOMIuAEXK7Os7EWXFHck3qzUd6X9PxYQPJf5r Vw== 
-Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3ntq7uehwn-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 21 Feb 2023 23:15:28 +0000
-Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.5/8.17.1.5) with ESMTP id 31LLEwoW023254;
-	Tue, 21 Feb 2023 23:15:27 GMT
-Received: from nam11-dm6-obe.outbound.protection.outlook.com (mail-dm6nam11lp2170.outbound.protection.outlook.com [104.47.57.170])
-	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 3ntn45va80-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 21 Feb 2023 23:15:26 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=YR+frjQjNBvzXzoRWllu3RvKR+rPNB1R7xasYAEJdPvPL+KE+I4LHgjAH424YOjdW1lli/LouU9OO7rs3eRD6f4FcNeBSOroAjnsWfZgXBTnnnb5hBaU55SobKkY8rQS/j5tdQqfYJBWjsKQftWxpp40LznxYoQI7OjxPyBoTYIlkqaytzFp+KEL4TBkElELweacCZW+lT2FwAN1eWBe+wsJyMIrrmNZSrUyqcsIMOxyRIU81Mf70iaUFD7X2kjDke/wAbtHm/Ozng/KKJKPeec44kalh8aAg3+rf8cfdDiBjMxS/WUsHkkDSM3AwmmXNqKiurCf7572GlQwoHSIvQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=usXzotv/Uc1FbJNQJIM3TLoF8mvHgfZLBTFIltWf/ic=;
- b=W+0eFlk/3RJsGCkvK8IpC0sysjs0+3MMdL2aZvzPqvDlDzJCUh1mSxFulA3p1h+aGOIY7t3NPxUBJAsQ+7m2Z1gHRJMyt7Y272vklrh6QWquzBRScOEINY+Fix0od9LFh5FclH9gpjuFKUr/Mnyo0U+L3Jmyra4BGWolp9PokrwKnUexX0Ftz6+WDg/55A7AZxHgLvyfu7/T+UGNDT9dBG7FrrSd2tcq21sWH2kL7b0h+SIpgf3FMOh8sgqPjxiGYnFaqcUToXySn1vpyXy0DpUeqIl5UHsrAw8TO4zDYsPpPWOZRxfrY4VmToBVU/l9IB5oYBoZyqFNUWFw7qquFw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=usXzotv/Uc1FbJNQJIM3TLoF8mvHgfZLBTFIltWf/ic=;
- b=DA5oShY0SBSTevGZ5/AsaV2R/dlNsgT+6VK5Ymy9mJWJdQiP4meI5d2MjNBVIJRN7dpY4ekCjvtAbXCxpuhUXuqsY89hylHsQHB5o+MjApXhvXzTztevRFnNjXwONc92RZXMzaNHTz8qEPsngGbK7WFdVPlt3q0R2qt9rfKA/bM=
-Received: from PH0PR10MB4759.namprd10.prod.outlook.com (2603:10b6:510:3d::12)
- by CY8PR10MB6876.namprd10.prod.outlook.com (2603:10b6:930:87::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6134.17; Tue, 21 Feb
- 2023 23:15:25 +0000
-Received: from PH0PR10MB4759.namprd10.prod.outlook.com
- ([fe80::8ef9:5939:13aa:d6a2]) by PH0PR10MB4759.namprd10.prod.outlook.com
- ([fe80::8ef9:5939:13aa:d6a2%8]) with mapi id 15.20.6134.017; Tue, 21 Feb 2023
- 23:15:25 +0000
-To: Yangtao Li <frank.li@vivo.com>
-Cc: stanley.chu@mediatek.com, jejb@linux.ibm.com, martin.petersen@oracle.com,
-        linux-scsi@vger.kernel.org, linux-mediatek@lists.infradead.org,
-        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        zhangshida@kylinos.cn, k2ci
- <kernel-bot@kylinos.cn>
-Subject: Re: [PATCH] scsi: ufs: ufs-mediatek: guard
- ufs_mtk_runtime_suspend() and ufs_mtk_runtime_resume() w/ CONFIG_PM
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-In-Reply-To: <20230220142431.54589-1-frank.li@vivo.com> (Yangtao Li's message
-	of "Mon, 20 Feb 2023 22:24:31 +0800")
-Organization: Oracle Corporation
-Message-ID: <yq1zg96r4pd.fsf@ca-mkp.ca.oracle.com>
-References: <20230220142431.54589-1-frank.li@vivo.com>
-Date: Tue, 21 Feb 2023 18:15:21 -0500
-Content-Type: text/plain
-X-ClientProxiedBy: BL6PEPF00013DFA.NAMP222.PROD.OUTLOOK.COM
- (2603:10b6:22e:400:0:1001:0:d) To PH0PR10MB4759.namprd10.prod.outlook.com
- (2603:10b6:510:3d::12)
+	id 1pUfR5-00AV1P-UW; Wed, 22 Feb 2023 03:04:53 +0000
+X-UUID: aa0f1ac8b25d11edbbe3f76fe852e059-20230221
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=GaWmCxt+Dw41XTac/0Ur6QXchMwV0v0SFhhMyOxT5gI=;
+	b=JMGH2bv87a5R7E6oMdVeHYt8vjuG4Cd6pyIfXwp4ozASq4goensGv1oqGh4g3rBkW5iUkU2fk5Ol4BW7nbRgn0V8J08aPio0Xp2k5sEzt298k7O2Sd+0AN0IP8uzFTfTFVRHJkpcNl+sZcK/Wwrpyav/+G07G3ZhlSc4qepF30w=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.20,REQID:b666f655-fcbc-460c-9f5d-b6d5788b1d2b,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:70
+X-CID-INFO: VERSION:1.1.20,REQID:b666f655-fcbc-460c-9f5d-b6d5788b1d2b,IP:0,URL
+	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
+	ON:quarantine,TS:70
+X-CID-META: VersionHash:25b5999,CLOUDID:a0c1bcf3-ddba-41c3-91d9-10eeade8eac7,B
+	ulkID:230222110449CYZX4U3F,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+	,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-UUID: aa0f1ac8b25d11edbbe3f76fe852e059-20230221
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <powen.kao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 107063045; Tue, 21 Feb 2023 20:04:47 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Wed, 22 Feb 2023 11:04:43 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 22 Feb 2023 11:04:43 +0800
+From: Po-Wen Kao <powen.kao@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Stanley Chu <stanley.chu@mediatek.com>, "James E.J. Bottomley"
+	<jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
+	<powen.kao@mediatek.com>, <alice.chao@mediatek.com>,
+	<naomi.chu@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<cc.chou@mediatek.com>, <eddie.huang@mediatek.com>,
+	<mason.zhang@mediatek.com>, <chaotian.jing@mediatek.com>,
+	<jiajie.hao@mediatek.com>
+Subject: [PATCH v2 7/7] scsi: ufs: mtk-host: Add MCQ support for MTK platform
+Date: Wed, 22 Feb 2023 11:04:24 +0800
+Message-ID: <20230222030427.957-8-powen.kao@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230222030427.957-1-powen.kao@mediatek.com>
+References: <20230222030427.957-1-powen.kao@mediatek.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR10MB4759:EE_|CY8PR10MB6876:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2a77bd4a-35e4-4edc-01c0-08db146182e7
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	/Po6acwtd50X7ZCmjIdtYdIvD3BlPgZNRcL71/Uof93hQxHc8s19gFuJF1qztXvP/sxQnVI+NwCZkAdz4iRr2h82BbDNtjeWxHwbscbjYigBWMfyYe4MWRErfMn0phiJG7gaOtVxMLWbRUXQo8t1O01osqpTPOzER0EemlGE6A+EJlbzD6sM+2CuSE2ykSQ6+jXCWYdC5jMoNWiZchbct/76pNhJEcaBA+pwrzhY6dNtOzgF8CcsgEQeA9H/tNZXcDtLZMBIO9YLj7tAGuH9FpB2EHuXbPR1kNHk4pBEZ7BZRr28m4xy2oChlbC6YJ0dsz3P4yC3i8eD6jJepXTTYbB71LcebunHtUzr8M5dH0SsCodIZSAJLE3cHF1V24Gn9hm5o7CoIKwbMhZJqohnSLX75lTocQMJqXDVFTVGbUVQ9ut0qo6vnzl4h6nf6L6X2/fI6Qx61n5FzZTMhYUTMzkgDo+0TiDW0416+p2Lyvevxlyl82j+goyJeEx4QW+ZOkRs3afY7To/V+QZLlmbXpPzCUGcnwBtsSRpKQHuV266t+YwlqqerSqkVI80vAtBTBGbtPsdMBpo/iivO0+OfY/9rmu/VFZulxNsO+zI7g5fzmL17YAf4IorbS9XTgyndLuAvApalA+Ac9duNnkvbg==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR10MB4759.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(39860400002)(366004)(396003)(136003)(346002)(376002)(451199018)(6506007)(6512007)(558084003)(6666004)(6486002)(86362001)(36916002)(478600001)(316002)(66946007)(8676002)(66476007)(66556008)(186003)(26005)(4326008)(6916009)(41300700001)(8936002)(5660300002)(2906002)(38100700002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?bCFXo1f3fxjPoFLF0HJzXjI+xmS/h3GPl04r4GTyp8P4RrXkmkEpsbogR4ne?=
- =?us-ascii?Q?ds6x1Kzvr1lLmTuzji1KiiPgP8AqmYHSpBwptyaBg77BfN860yy76aAj5cb3?=
- =?us-ascii?Q?B3RKEXdJlJo06U/jMAUmf30zL60RQObZT90r2vtYc0mQQUBfQqY4SwzEjzge?=
- =?us-ascii?Q?o6NUDJbGiLknhl9Svj7ceA7NPGnKRgNsHSv63ptafYni5FNKMiRhWH2Yew+7?=
- =?us-ascii?Q?bfMWCQo+JyKKeit4HdrdRjU8E7q9IRHoh7CcxZAGpdsfN29hqtRu/Yaak7sQ?=
- =?us-ascii?Q?MC7zAoaT+5vrMsxknCLkNjy4fC9rkXKUJEQw5fFpfBOeVVA7cODazWoU8eYE?=
- =?us-ascii?Q?sNJp5XadX1Yuxu2L3KJuMGqwzorRtP7m0alFj9fQb1gWqO7HAc9t2CePP+hk?=
- =?us-ascii?Q?42qR34xT+HuvRC9LQBiS0HxGbGZd4bQgUF9aTT/4YDTdWnn4GGSUOll/qzsz?=
- =?us-ascii?Q?pFRUgzsiAFYVo6x3xirjqrRx4xJmSlPY8xC4phAyYirGvDZhP5Z/FIGzbY5k?=
- =?us-ascii?Q?ae/nURkaXP++6VP6ekr9iVoTl2LoHhGYGEhFv5dMXFhQqPqCzynI4J596vcB?=
- =?us-ascii?Q?ZWsBi+vJBs495BKYHgM+6SpcXJ8ua0zxB3s5x5pDRVbIAww0Kk3egrWe2krH?=
- =?us-ascii?Q?Nn7y6wIKkj9FM3TX16TVVHLZiiSpl7BqxVklyQorNcXB0QEQs8w7HCcwHaz6?=
- =?us-ascii?Q?5+AlIBE88OMS30zaeeGWv6NwJKfHVCkoKE4m1mfrJb57sLMWt7P5F3j+P666?=
- =?us-ascii?Q?ue4ulelnDIdaRYNoYFZvbJHB1ppPpzPd/oWdNdvzFEi7PCV5AhVdxamLv+j5?=
- =?us-ascii?Q?6Sd0NpyfssRnzsb79iFPmUyQ+aCiKiQd9RBgKfxNMYQlfsL1AynffEOXQDjI?=
- =?us-ascii?Q?eQua35pbRyoD0+KkuOeYTDz3bi0qhoynSp5MGfjNEOI2JnrRv42R8JcGYquQ?=
- =?us-ascii?Q?OrZnws5Y3YuW4mrp1vQvJAefcFq3cZisC6bhnQpkJ0hSgDnZHWqfQkWrENsC?=
- =?us-ascii?Q?gw9SrT/oaUgqPaZBt5w+DQgeepcn72d0QjSGghQJTq6VvfE1rAqr4ajg+n7l?=
- =?us-ascii?Q?T02JLCNVQlsYSZLj2iONundIxjaVd1nQ7kIRZkFLW0b0Wk1/52u9WIODK8Lt?=
- =?us-ascii?Q?pitx790RY4vrZD/mnp4PeuCq5hVwQPge1cYPcMg18zo44Bqc2TR53F6zzGKT?=
- =?us-ascii?Q?Ex8k2U65yIVRHbB9XzBFUxWiPkpWv2C6xrkhFTCpuiNz+gbqtM7QVtBQ36YC?=
- =?us-ascii?Q?GrnbqO22lm/cxVTnulJtQapM31z54/K7+SXWvkASH5BoMcni2Z6xWgRu5nI+?=
- =?us-ascii?Q?JXULgugnhGpyGmLRuQpIrPagyQEGPBR7YUFT0rzz38TJEiH6DN7wrEvzlgKp?=
- =?us-ascii?Q?LKhYtxKI6ICgQZI3LYSOj0mPJrZpUY1zn+Fyf6AEAUQ9Px/I3qDswk38ITuY?=
- =?us-ascii?Q?qKVLtPt3pNKKwUmLuhN62QTvk9CzJsOxHVO3/9lAv+pcMHw9RnzyNUnvgdXz?=
- =?us-ascii?Q?SaTPDQcbSllK37AhKW/l4YjmgAi9xcKQcrRolDFk9KsFdJz2qen2E+FIu7yX?=
- =?us-ascii?Q?MLBZqS1P2X92qLkGsWZjpdRNKGVVzdhRjGRCi7KWDYz1vFvgI3hiJqN8SynG?=
- =?us-ascii?Q?Vg=3D=3D?=
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: 	=?us-ascii?Q?+vWviEVO3Bgl6AW8iQGTA76xbps0ZztnyTKPc0sAjkVlk5VqvSzf0r3Q5ihk?=
- =?us-ascii?Q?2z3YISxZ8sWHA3cW5IZwDd+ls26XvxGug8pJhRculnPaSXRK93apj6vE6dxw?=
- =?us-ascii?Q?I1e+0i3POXgxQyoGoVXuud2jTkpq9sGkxUuyJWt/sPNaoAGTNLKutL3hnjfp?=
- =?us-ascii?Q?Ton8gbY1FCyTLAUFHy5d9ARifyooRL1HMW1+ViKKX3mbSsEqRkFxHIppHEh0?=
- =?us-ascii?Q?lZBRDIQdIuUnO/zL0grCyGLXzR/0zPVh7+ovOHvg720j9zPrX+taoqb6izSc?=
- =?us-ascii?Q?c5B3mj4HrOaNfnzPKiztYTQfEsuKcEpIZzHCSiTxJnB1+9CwCsD7eqHOBIlp?=
- =?us-ascii?Q?dm4mq1VmDtZ/RRg+efixHKEZDA+pzZY5A5+e/gr0xAXb6kBzyqFB1e+25lrU?=
- =?us-ascii?Q?c+Ve0CldFTZSvVqVr9ZUVzsHzzpcukxXeVPdc8MgmUR1O66mLQonw2yCRVPf?=
- =?us-ascii?Q?iXPiPFJ2Fz8hyvrLQbuj+fEkxQaR+HEEjwEaajG3BdmZB1QwnYyZ4xH6LAi0?=
- =?us-ascii?Q?rj+Dw2+l4zbX6DyWoeivzeztWgm714zc/M+tMSW1WYCqsFe7o2fjwIydKrHl?=
- =?us-ascii?Q?0Xn/cZCOYLqURMb0Rt1YFQCFqvjq6hZFfeYaDKDpnIuVZ73DqslfJJDJcJLe?=
- =?us-ascii?Q?Md/+u4IjIbpYhNWlO9BpVJyDZvt1yhP7TtDLAtqfBp9q/cC8lbhnkug6vhRn?=
- =?us-ascii?Q?N42zT4PH8HEnFK21EMNhOtH5rPnmb7A+Qn1vPtiQZokO+OuO9CKPZByXmUEE?=
- =?us-ascii?Q?mNs++tRzX5YTN/TfOisCuYoLkmy4Jup93BId8VrC670mJB0pAyfeSUGrG68P?=
- =?us-ascii?Q?1OrUgMA0IL27I98gmANSacRwGhuF1aW+/FTl+fWbZb+o/XUTx4wcylqoFq2g?=
- =?us-ascii?Q?4fYc6QLKlUW87dg5U/ICGKZxlzbYqDwWh0N4UnFHWU3CKPSHmGXnGHvlFYlm?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2a77bd4a-35e4-4edc-01c0-08db146182e7
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB4759.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Feb 2023 23:15:24.8772
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: XH8zPyveu7QepUlze00MnnUR0N7O1vjRIfi+P4hzN2sXQ64yFJMD7RX8V8FAnmX1rbynyLJMuq5qoJwlrrunyjXkfdDPaNOzJJ/HyyR5w/c=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR10MB6876
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.219,Aquarius:18.0.930,Hydra:6.0.562,FMLib:17.11.170.22
- definitions=2023-02-21_12,2023-02-20_02,2023-02-09_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999 phishscore=0
- malwarescore=0 mlxscore=0 spamscore=0 adultscore=0 bulkscore=0
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2212070000 definitions=main-2302210199
-X-Proofpoint-GUID: nEb21C9TRB3wzb1Fo_RGltbD1W_4a_Ar
-X-Proofpoint-ORIG-GUID: nEb21C9TRB3wzb1Fo_RGltbD1W_4a_Ar
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230221_151537_494784_31BF63A5 
-X-CRM114-Status: UNSURE (   9.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230221_190452_017516_870D357B 
+X-CRM114-Status: GOOD (  26.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -183,13 +90,347 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Changes
+- Implement vops and setup irq
+- Fix pm flow under mcq mode
 
-Yangtao,
+Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
+---
+ drivers/ufs/host/ufs-mediatek.c | 193 +++++++++++++++++++++++++++++++-
+ drivers/ufs/host/ufs-mediatek.h |  33 ++++++
+ 2 files changed, 224 insertions(+), 2 deletions(-)
 
-> To fix below compile error(CONFIG_PM set to 'n'):
-
-Applied to 6.3/scsi-staging, thanks!
-
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index 21d9b047539f..162bbde675aa 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -30,6 +30,14 @@
+ #define CREATE_TRACE_POINTS
+ #include "ufs-mediatek-trace.h"
+ 
++static int  ufs_mtk_config_mcq(struct ufs_hba *hba, bool irq);
++static void ufs_mtk_dbg_register_dump(struct ufs_hba *hba);
++
++#define MAX_SUPP_MAC 64
++#define MCQ_QUEUE_OFFSET(c) ((((c) >> 16) & 0xFF) * 0x200)
++
++static unsigned int mtk_mcq_irq[UFSHCD_MAX_Q_NR];
++
+ static const struct ufs_dev_quirk ufs_mtk_dev_fixups[] = {
+ 	{ .wmanufacturerid = UFS_ANY_VENDOR,
+ 	  .model = UFS_ANY_MODEL,
+@@ -843,6 +851,19 @@ static void ufs_mtk_vreg_fix_vccqx(struct ufs_hba *hba)
+ 	}
+ }
+ 
++static void ufs_mtk_init_interrupt(struct ufs_hba *hba)
++{
++	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
++	int i;
++
++	host->mcq_nr_intr = UFSHCD_MAX_Q_NR;
++
++	for (i = 0; i < host->mcq_nr_intr; i++) {
++		host->mcq_intr_info[i].hba = hba;
++		host->mcq_intr_info[i].intr = mtk_mcq_irq[i];
++	}
++}
++
+ /**
+  * ufs_mtk_init - find other essential mmio bases
+  * @hba: host controller instance
+@@ -879,6 +900,8 @@ static int ufs_mtk_init(struct ufs_hba *hba)
+ 	/* Initialize host capability */
+ 	ufs_mtk_init_host_caps(hba);
+ 
++	ufs_mtk_init_interrupt(hba);
++
+ 	err = ufs_mtk_bind_mphy(hba);
+ 	if (err)
+ 		goto out_variant_clear;
+@@ -1174,7 +1197,16 @@ static int ufs_mtk_link_set_hpm(struct ufs_hba *hba)
+ 	else
+ 		return err;
+ 
+-	err = ufshcd_make_hba_operational(hba);
++	if (!hba->mcq_enabled)
++		err = ufshcd_make_hba_operational(hba);
++	else {
++		ufs_mtk_config_mcq(hba, false);
++		ufshcd_mcq_make_queues_operational(hba);
++		ufshcd_mcq_config_mac(hba, hba->nutrs);
++		ufshcd_writel(hba, ufshcd_readl(hba, REG_UFS_MEM_CFG) | 0x1,
++			REG_UFS_MEM_CFG);
++	}
++
+ 	if (err)
+ 		return err;
+ 
+@@ -1361,6 +1393,12 @@ static int ufs_mtk_apply_dev_quirks(struct ufs_hba *hba)
+ 		ufshcd_dme_set(hba, UIC_ARG_MIB(PA_HIBERN8TIME), 10);
+ 	}
+ 
++	/*
++	 * Disable MCQ_CQ_EVENT interrupt.
++	 * Use CQ Tail Entry Push Status instead.
++	 */
++	ufshcd_disable_intr(hba, MCQ_CQ_EVENT_STATUS);
++
+ 	/*
+ 	 * Decide waiting time before gating reference clock and
+ 	 * after ungating reference clock according to vendors'
+@@ -1498,6 +1536,116 @@ static int ufs_mtk_clk_scale_notify(struct ufs_hba *hba, bool scale_up,
+ 	return 0;
+ }
+ 
++static int ufs_mtk_get_hba_mac(struct ufs_hba *hba)
++{
++	return MAX_SUPP_MAC;
++}
++
++static int ufs_mtk_op_runtime_config(struct ufs_hba *hba)
++{
++	struct ufshcd_mcq_opr_info_t *opr;
++	int i;
++
++	for (i = 0; i < OPR_MAX; i++) {
++		opr = &hba->mcq_opr[i];
++		opr->stride = REG_UFS_MCQ_STRIDE;
++	}
++
++	hba->mcq_opr[OPR_SQD].offset = REG_UFS_MTK_SQD;
++	hba->mcq_opr[OPR_SQIS].offset = REG_UFS_MTK_SQIS;
++	hba->mcq_opr[OPR_CQD].offset = REG_UFS_MTK_CQD;
++	hba->mcq_opr[OPR_CQIS].offset = REG_UFS_MTK_CQIS;
++
++	hba->mcq_opr[OPR_SQD].base = hba->mmio_base + REG_UFS_MTK_SQD;
++	hba->mcq_opr[OPR_SQIS].base = hba->mmio_base + REG_UFS_MTK_SQIS;
++	hba->mcq_opr[OPR_CQD].base = hba->mmio_base + REG_UFS_MTK_CQD;
++	hba->mcq_opr[OPR_CQIS].base = hba->mmio_base + REG_UFS_MTK_CQIS;
++
++	return 0;
++}
++
++static int ufs_mtk_mcq_config_resource(struct ufs_hba *hba)
++{
++	hba->mcq_base = hba->mmio_base + MCQ_QUEUE_OFFSET(hba->mcq_capabilities);
++	return 0;
++}
++
++static irqreturn_t ufs_mtk_mcq_intr(int irq, void *__intr_info)
++{
++	struct ufs_mtk_mcq_intr_info *mcq_intr_info = __intr_info;
++	struct ufs_hba *hba = mcq_intr_info->hba;
++	struct ufs_hw_queue *hwq;
++	u32 events;
++	int i = mcq_intr_info->qid;
++
++	hwq = &hba->uhq[i];
++
++	events = ufshcd_mcq_read_cqis(hba, i);
++	if (events)
++		ufshcd_mcq_write_cqis(hba, events, i);
++
++	if (events & UFSHCD_MCQ_CQIS_TAIL_ENT_PUSH_STS)
++		ufshcd_mcq_poll_cqe_nolock(hba, hwq);
++
++	return IRQ_HANDLED;
++}
++
++static int ufs_mtk_config_mcq_irq(struct ufs_hba *hba)
++{
++	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
++	u32 irq, i;
++	int ret;
++
++	for (i = 0; i < host->mcq_nr_intr; i++) {
++		irq = host->mcq_intr_info[i].intr;
++		if (irq == MTK_MCQ_INVALID_IRQ) {
++			dev_err(hba->dev, "invalid irq. %d\n", i);
++			return -ENOPARAM;
++		}
++
++		host->mcq_intr_info[i].qid = i;
++		ret = devm_request_irq(hba->dev, irq, ufs_mtk_mcq_intr, 0, UFSHCD,
++									&host->mcq_intr_info[i]);
++
++		dev_info(hba->dev, "request irq %d intr %s\n", irq, ret ? "failed": "");
++
++		if (ret)
++			return ret;
++	}
++
++	return 0;
++}
++
++static int ufs_mtk_config_mcq(struct ufs_hba *hba, bool irq)
++{
++	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
++	int ret = 0;
++
++	if (!host->mcq_set_intr) {
++
++		/* Disable irq option register */
++		ufshcd_rmwl(hba, MCQ_INTR_EN_MSK, 0, REG_UFS_MMIO_OPT_CTRL_0);
++
++		if (irq)
++			ret = ufs_mtk_config_mcq_irq(hba);
++
++		if (ret)
++			return ret;
++
++		host->mcq_set_intr = true;
++	}
++
++	ufshcd_rmwl(hba, MCQ_AH8, MCQ_AH8, REG_UFS_MMIO_OPT_CTRL_0);
++	ufshcd_rmwl(hba, MCQ_INTR_EN_MSK, MCQ_MULTI_INTR_EN, REG_UFS_MMIO_OPT_CTRL_0);
++
++	return 0;
++}
++
++static int ufs_mtk_config_esi(struct ufs_hba *hba)
++{
++	return ufs_mtk_config_mcq(hba, true);
++}
++
+ /*
+  * struct ufs_hba_mtk_vops - UFS MTK specific variant operations
+  *
+@@ -1521,8 +1669,43 @@ static const struct ufs_hba_variant_ops ufs_hba_mtk_vops = {
+ 	.event_notify        = ufs_mtk_event_notify,
+ 	.config_scaling_param = ufs_mtk_config_scaling_param,
+ 	.clk_scale_notify    = ufs_mtk_clk_scale_notify,
++	/* mcq vops */
++	.get_hba_mac         = ufs_mtk_get_hba_mac,
++	.op_runtime_config   = ufs_mtk_op_runtime_config,
++	.mcq_config_resource = ufs_mtk_mcq_config_resource,
++	.config_esi          = ufs_mtk_config_esi,
+ };
+ 
++static int ufs_mtk_mcq_get_irq(struct platform_device *pdev)
++{
++	int i, irq, cnt;
++
++	for (i = 0; i < UFSHCD_MAX_Q_NR; i++)
++		mtk_mcq_irq[i] = MTK_MCQ_INVALID_IRQ;
++
++	cnt = platform_irq_count(pdev);
++
++	if (cnt < 0)
++		return cnt;
++
++	/* no irq for mcq */
++	if (cnt == 1)
++		return 0;
++
++	for (i = 0; i < UFSHCD_MAX_Q_NR; i++) {
++		/* irq index 0 is ufshcd system irq, sq, cq irq start from index 1 */
++		irq = platform_get_irq(pdev, i + 1);
++		if (irq < 0) {
++			dev_err(&pdev->dev, "get platform mcq irq fail: %d\n", i);
++			return irq;
++		}
++		mtk_mcq_irq[i] = irq;
++		dev_info(&pdev->dev, "get platform mcq irq: %d, %d\n", i, irq);
++	}
++
++	return 0;
++}
++
+ /**
+  * ufs_mtk_probe - probe routine of the driver
+  * @pdev: pointer to Platform device handle
+@@ -1562,12 +1745,18 @@ static int ufs_mtk_probe(struct platform_device *pdev)
+ 	}
+ 
+ skip_reset:
++	err = ufs_mtk_mcq_get_irq(pdev);
++	if (err) {
++		dev_err(dev, "get irq failed %d\n", err);
++		goto out;
++	}
++
+ 	/* perform generic probe */
+ 	err = ufshcd_pltfrm_init(pdev, &ufs_hba_mtk_vops);
+ 
+ out:
+ 	if (err)
+-		dev_info(dev, "probe failed %d\n", err);
++		dev_err(dev, "probe failed %d\n", err);
+ 
+ 	of_node_put(reset_node);
+ 	return err;
+diff --git a/drivers/ufs/host/ufs-mediatek.h b/drivers/ufs/host/ufs-mediatek.h
+index 2fc6d7b87694..542b4c3a763c 100644
+--- a/drivers/ufs/host/ufs-mediatek.h
++++ b/drivers/ufs/host/ufs-mediatek.h
+@@ -10,11 +10,27 @@
+ #include <linux/pm_qos.h>
+ #include <linux/soc/mediatek/mtk_sip_svc.h>
+ 
++/*
++ * MCQ define and struct
++ */
++#define UFSHCD_MAX_Q_NR 8
++#define MTK_MCQ_INVALID_IRQ	0xFFFF
++
++/* REG_UFS_MMIO_OPT_CTRL_0 160h */
++#define EHS_EN                  0x1
++#define PFM_IMPV                0x2
++#define MCQ_MULTI_INTR_EN       0x4
++#define MCQ_CMB_INTR_EN         0x8
++#define MCQ_AH8                 0x10
++
++#define MCQ_INTR_EN_MSK         (MCQ_MULTI_INTR_EN | MCQ_CMB_INTR_EN)
++
+ /*
+  * Vendor specific UFSHCI Registers
+  */
+ #define REG_UFS_XOUFS_CTRL          0x140
+ #define REG_UFS_REFCLK_CTRL         0x144
++#define REG_UFS_MMIO_OPT_CTRL_0     0x160
+ #define REG_UFS_EXTREG              0x2100
+ #define REG_UFS_MPHYCTRL            0x2200
+ #define REG_UFS_MTK_IP_VER          0x2240
+@@ -26,6 +42,13 @@
+ #define REG_UFS_DEBUG_SEL_B2        0x22D8
+ #define REG_UFS_DEBUG_SEL_B3        0x22DC
+ 
++#define REG_UFS_MTK_SQD             0x2800
++#define REG_UFS_MTK_SQIS            0x2814
++#define REG_UFS_MTK_CQD             0x281C
++#define REG_UFS_MTK_CQIS            0x2824
++
++#define REG_UFS_MCQ_STRIDE          0x30
++
+ /*
+  * Ref-clk control
+  *
+@@ -136,6 +159,12 @@ struct ufs_mtk_hw_ver {
+ 	u8 major;
+ };
+ 
++struct ufs_mtk_mcq_intr_info {
++	struct ufs_hba *hba;
++	u32 intr;
++	u8 qid;
++};
++
+ struct ufs_mtk_host {
+ 	struct phy *mphy;
+ 	struct pm_qos_request pm_qos_req;
+@@ -155,6 +184,10 @@ struct ufs_mtk_host {
+ 	u16 ref_clk_ungating_wait_us;
+ 	u16 ref_clk_gating_wait_us;
+ 	u32 ip_ver;
++
++	bool mcq_set_intr;
++	int mcq_nr_intr;
++	struct ufs_mtk_mcq_intr_info mcq_intr_info[UFSHCD_MAX_Q_NR];
+ };
+ 
+ /*
 -- 
-Martin K. Petersen	Oracle Linux Engineering
+2.18.0
+
 
