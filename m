@@ -4,78 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7794C64EC7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 03:17:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44393C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 03:24:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zjix5hHmRg1gnpTeSvqiWXkay4LiEwf0MpYeRg42JtU=; b=qSFuMjWCgM60IBxFPcJ+YMvKz8
-	mYeJ5+I20q/zBtVMqKPspW/xfDJ3c71k1Rm3Pvh4BMMlW1IDgirNwdcOyCxKZXtMgxvpuVnKMOTHd
-	9o8FP+c9myr4kjqHbJHolIO4P2+On96c4wIfT7pckqjAKw6QonKkb5DQhH46UgX1EZhdC+L8JYKhp
-	feuUpL6LuQ6/0/XfKNHA40KO8X/3Z8q0taMhLNa7zCCWBcZvzldcBy0UJ1nj+w147kWCHhzgTJ0+Q
-	zDWT9U8SLvLqub+N80dD99N6xa2+V3mSt6SptebEJVpB+GxNAoHumx2pWi4P7SorT0iAXAwt4+EDb
-	UhdsL6Dw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=iZDnSTAwSwS5YygcvAX7evJZgTWzUfa5p+Ju9s2xDIg=; b=n8wNQRB+PLXTBYOQ8II/hPgEFl
+	6jJgNSQhtipWEu0ycxRyIaUNLemRZAGXl0GjjfDtHFxZVEsvIXmPac5mIT6LlY5gq/gdy15C03qFL
+	JI/R4GU0zaGZkKzZ32kSisrOpBsS85P66tS7ENBWLQuZetA6exEeCan5m8HXOvch5vBf1mjHNEu9b
+	mvMiB8K+kLK9DAYHksXOzU9/9/Y/jM4y5bXHXOM5LMQ++8jwPpx2wBQBgV1KYmKHJTL3xh2n5MGdb
+	XDbRNAy8tpCBgkh+YQEv4iIjdX0aq/KgxzuY6RZ+qVMYtNHoRjp+Yf2Co2+LaaqoXfr5Gqrapr1ek
+	pC2kDrmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUfcx-00AZDQ-Io; Wed, 22 Feb 2023 03:17:07 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1pUfkO-00AaJe-EK; Wed, 22 Feb 2023 03:24:48 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUfcm-00AZB9-R7; Wed, 22 Feb 2023 03:16:58 +0000
-Received: by mail-lf1-x134.google.com with SMTP id x24so8421771lfr.1;
-        Tue, 21 Feb 2023 19:16:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=zjix5hHmRg1gnpTeSvqiWXkay4LiEwf0MpYeRg42JtU=;
-        b=jsfRdr+kWUxp+JSuWOhyMf2DgmTyC81KmIi94ElAmd4jVlFb1ItgeZ5toC4vejyhFM
-         KLDOefgUya0UG3F8aw64bx4lmoMYk1tD8mW2I0HCSputvZkRa4gJltI5ssLQK6Th3HN5
-         lphga6gcPXm6v6v4Go7HxAnpnWU+8dGfLt6A8vugqjpCpL570WtyMUfoaENpDyYtW8ya
-         tiwzVcEmqSp4CyKiMOVFpgNoGNwnA2BE1o94h3NyyuAg27KkAljAUiYToOILf/KLJAbi
-         u4sUXiKPcARYizm++3kiLaGyJA5vTv3Alsa/5bs+tEz/96o3hCiCA8Mz90x81Y8DvbBo
-         CnJA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=zjix5hHmRg1gnpTeSvqiWXkay4LiEwf0MpYeRg42JtU=;
-        b=CRWyFsv2osW7xN/njQE7546VrMCq81ybvpu/KAHjNOOoYzf+FsmiRfLVJ0oaEAny4z
-         fJSB5FFMV0z7R2Ode6CuM9k0RhA06RMACwxaIr1eDG+6Mh9C/Ke3AcBsWx9HeJhVVEp5
-         nFFTSU2iEn8A5r2No3WmCouQecdM4GlvFCKp124n/eog5KkwRkevc2Jcya47O8VR/4oZ
-         0nnEJML2kbjovcyjGuqfZRqs3Oa87MshHK9f7/6Y3QpVjQopq5gOVcFNTipKHRhKqfhJ
-         hYAC/YG3pYdHpO80NhBuSXg4b9CL31wnawAnSLRbtrqXODbpApEZbmhA/H/56UNcCA4S
-         trxA==
-X-Gm-Message-State: AO0yUKXPf0srnyD2teJIIRNxCLxAVbeShHi+i1sX8Bt+zvY0nYyzjFKm
-	33I7CAFLbI0l54OsDR/wWVHYkEoQWGULuOXHhSZOlX9mUEXk
-X-Google-Smtp-Source: AK7set/3OD7E1WKxGGmZLHWOzKUAYuvDvrVESkKv/Ae9by3eSpTZN/UJX08073sf6Ku8mTNdE+Qroaj2UXoEaJwqcSM=
-X-Received: by 2002:ac2:53a7:0:b0:4d5:ca32:689b with SMTP id
- j7-20020ac253a7000000b004d5ca32689bmr2302409lfh.0.1677035814323; Tue, 21 Feb
- 2023 19:16:54 -0800 (PST)
+	id 1pUfkL-00AaJ2-MU; Wed, 22 Feb 2023 03:24:46 +0000
+X-UUID: 70fc368cb26011edbbe3f76fe852e059-20230221
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=iZDnSTAwSwS5YygcvAX7evJZgTWzUfa5p+Ju9s2xDIg=;
+	b=XhUhG/V5axryGi6dJv0l9iR+eIfrEMEb1v0rE4gbUEJ5JfJblhbjtrI88hSrS5RfFoWVGqv7MpsIjTKEBxAKuyMpBkFhpG/lT08ZsQJZ4pSUU1K4tL9sLNAsfGSOONQTBuzaoGm363AoxRz6z3vzXy4shb067mqgBsz36ITIOyg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.20,REQID:195bb351-4185-4840-b61b-506153b66059,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:25b5999,CLOUDID:cb7b4f26-564d-42d9-9875-7c868ee415ec,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-UUID: 70fc368cb26011edbbe3f76fe852e059-20230221
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <powen.kao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1152624418; Tue, 21 Feb 2023 20:24:40 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 22 Feb 2023 11:04:36 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 22 Feb 2023 11:04:36 +0800
+From: Po-Wen Kao <powen.kao@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
+	<stanley.chu@mediatek.com>, <powen.kao@mediatek.com>,
+	<alice.chao@mediatek.com>, <naomi.chu@mediatek.com>,
+	<chun-hung.wu@mediatek.com>, <cc.chou@mediatek.com>,
+	<eddie.huang@mediatek.com>, <mason.zhang@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>
+Subject: [PATCH v2 0/7] Several UFS MCQ Code Changes
+Date: Wed, 22 Feb 2023 11:04:17 +0800
+Message-ID: <20230222030427.957-1-powen.kao@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20230222030427.957-1-powen.kao@mediatek.com> <20230222030427.957-4-powen.kao@mediatek.com>
-In-Reply-To: <20230222030427.957-4-powen.kao@mediatek.com>
-From: Stanley Chu <chu.stanley@gmail.com>
-Date: Wed, 22 Feb 2023 11:16:30 +0800
-Message-ID: <CAGaU9a-X5JYKGp-jjKV8MRxoBnD=ffHa3iBshemRikpOHynitQ@mail.gmail.com>
-Subject: Re: [PATCH v2 3/7] scsi: ufs: core: Fix mcq nr_hw_queues
-To: Po-Wen Kao <powen.kao@mediatek.com>
-Cc: linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>, 
-	Bart Van Assche <bvanassche@acm.org>, "James E.J. Bottomley" <jejb@linux.ibm.com>, 
-	"Martin K. Petersen" <martin.petersen@oracle.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	wsd_upstream@mediatek.com, peter.wang@mediatek.com, stanley.chu@mediatek.com, 
-	alice.chao@mediatek.com, naomi.chu@mediatek.com, chun-hung.wu@mediatek.com, 
-	cc.chou@mediatek.com, eddie.huang@mediatek.com, mason.zhang@mediatek.com, 
-	chaotian.jing@mediatek.com, jiajie.hao@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230221_191656_894135_6D46DFD1 
-X-CRM114-Status: UNSURE (   7.86  )
+X-CRM114-CacheID: sfid-20230221_192445_754244_2CE6F606 
+X-CRM114-Status: UNSURE (   8.18  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,11 +83,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 22, 2023 at 11:05 AM Po-Wen Kao <powen.kao@mediatek.com> wrote:
->
-> Need to add one to MAXQ to obtain number of hardware queue.
->
-> Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
+v1 -> v2:
+- Add 2 new patches
+	- Update MTK driver for mcq
+	- Export symbols for MTK driver
+- Fix commit message in "scsi: ufs: core: Fix mcq nr_hw_queues"
+- Split name change and fix into two patches
 
-Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+Po-Wen Kao (7):
+  scsi: ufs: core: Fix mcq tag calcualtion
+  scsi: ufs: core: Rename symbols
+  scsi: ufs: core: Fix mcq nr_hw_queues
+  scsi: ufs: core: Add hwq print for debug
+  scsi: ufs: core: Remove redundant check
+  scsi: ufs: core: Export symbols for MTK driver module
+  scsi: ufs: mtk-host: Add MCQ support for MTK platform
+
+ drivers/ufs/core/ufs-mcq.c      |  39 ++++++-
+ drivers/ufs/core/ufshcd-priv.h  |  11 +-
+ drivers/ufs/core/ufshcd.c       |  31 ++---
+ drivers/ufs/host/ufs-mediatek.c | 193 +++++++++++++++++++++++++++++++-
+ drivers/ufs/host/ufs-mediatek.h |  33 ++++++
+ include/ufs/ufshcd.h            |   8 +-
+ include/ufs/ufshci.h            |  12 ++
+ 7 files changed, 306 insertions(+), 21 deletions(-)
+
+-- 
+2.18.0
+
 
