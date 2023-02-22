@@ -4,79 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5205CC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 18:40:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73F8DC636D6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 18:40:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=foDA/GXxUeG6qywVw7pPHlQfm+Orh3kvLzj/my6QoE8=; b=t32ywOKI/i3atB
-	aq1LoObqtk1c+ZGIF2xTHXWEkfsoC0h1y+4MLhXLsspBbt5QRg2z9s/7ggaXU7zq0RFhDi9pZ3Vq0
-	y2xzpYK+uToKmPu1hVNwffc6aOmChVSo1ZL+kmz4ID4EF6HCmFewFg9vrrR3nU/LVCUNx3AzS/jRH
-	rYilu+S9MYG7nJuNAi4/uoyQWNvi6sjISwacpcNjAiENwwxygYTe1SoyOes5d6jy9K9XwcmMFAScU
-	f5OehP42MiAKMqKJ22sVk0WmGLrnj7wEzKN98h+smL5Htkm0qidraN3CGNRrm5eVRJqMu8XyakJd7
-	4howeZQ9qS802SsNUzhA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=91+V2URQd5z0cRWdOdijFthyyEN9gwUVNKx2OIXRm+M=; b=hjV3BaWfCB8L1F
+	zGqAxNFMU/j3y5L33G+4APWswTn99wC2GLCa8KdeV2VkxPkKtUdfnv/1NbvYAtLV/VI72ReVTadXU
+	LNxVuurLeumUUSQv/gvt38KLHF+EVy2FUnSvKw9+mw9qnAi6TgdwEh0s8L+ZGvreaTFkFgf4Ics2a
+	i9ZS5TWwTQ0wBdVAsQb9JRo3dsbvYUvYf/Rb+WDx6inf0zkMN6Hf5Lx1EKlLaFnpOT7mdu6g6pPvV
+	qjiiGwW+TwjEAD5QPpQMOqkmMa99sTU20vciH25BBFPyxxUpNc7Rq7k8A2n/XphmPPHgOqXSio3Bi
+	zR6otPo1mb/JZgYjc+fQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUu29-00DThR-HC; Wed, 22 Feb 2023 18:40:05 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1pUu28-00DThA-PE; Wed, 22 Feb 2023 18:40:04 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUu25-00DTfQ-QE; Wed, 22 Feb 2023 18:40:03 +0000
-Received: by mail-wr1-x434.google.com with SMTP id t15so8859369wrz.7;
-        Wed, 22 Feb 2023 10:40:00 -0800 (PST)
+	id 1pUu25-00DTel-TY; Wed, 22 Feb 2023 18:40:03 +0000
+Received: by mail-wr1-x432.google.com with SMTP id bt28so2089120wrb.8;
+        Wed, 22 Feb 2023 10:39:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=foDA/GXxUeG6qywVw7pPHlQfm+Orh3kvLzj/my6QoE8=;
-        b=B9+WOGfkjvzGfunEXkLYy8KTjSrl99QhGvrJByDf0VqgZLm54rAB8+A9V8YhbSMxEv
-         BBVeVV1Kk+uc/mDULVvKuDcXyq/JGZ14j1nhe6Fiqk4cjafKSUB3jOUazpz0YqspXaot
-         o1vYvzu4/0RXvgATzshU0UETf2CZIIkkM2YOMMXZb/Y6z6pqxT5LKQYFNsfd3StDvWPI
-         jIUEIwgzsmqfLOoEgnnRUMLE54hbtE/zjEspIUang04Lj4OZ+F+IwDpkUW6Xjxnzd/5k
-         j8l4oMQcFZTAtrFtuzIXALV+kn6wQE+4Fi+ThhcG3XuAubClZdzey8Y7wEAnJJxKJdZx
-         q9SA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=91+V2URQd5z0cRWdOdijFthyyEN9gwUVNKx2OIXRm+M=;
+        b=luRFZSblmPWY3gvrk6yKViXpppEt290S64jD0a09c5fdl2Wa+zgTS/VVVcLaeZtGf1
+         uQc5DXdqqz1i38W1yT70ERXNJiB92MhivB/TLlXOsjqbGBOEDn1YmsVCAyVyitmZEi+V
+         ex1usBk+Gq8bgb5cFOGt1bzMGObP/5AaaIJq8A7KCF7pCl693CW+ZZPd0NIFwJsBP5y4
+         eMy+V9aV2/NCp7+OpslssgUNIdTwKfTlw4iLNITnyTSGaNfk2ouKTJnx7PWmbcAkNCXT
+         KSnq0GDCosZ1Gz7uM4hNy2HQQTaq6TJIGWSGQjmnHB6JsLLQ5KM/1/SAimU4XXSZhm4J
+         QVJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=foDA/GXxUeG6qywVw7pPHlQfm+Orh3kvLzj/my6QoE8=;
-        b=Hdytpc0k4Hptwz01LFRc6XrKk6mgd6FaNpEyDTK7+zTaExNxzUxyqhDdBhZRMeZZMh
-         8mFWPkw21XzkTOUB/SVGirBlSpnfCGLSCdwkmFDJ760jACtgchmq7akJw4l0LnzOXEh9
-         NhEdel6TdLIHJvDZk3Qc06ezCW4N2MT4+IkK8g9HoPuMWQZwwz0ZFOaKUj3rDmDXd0ol
-         pI7dtB2HR/lG+gCPMozjcs4lgUtz7s2lQZvjwyrdx+Mjpa4NmKMHVRplK4PpJRmMBS9F
-         7eLox81yWt5R45xXVEdxZX3j7H0kPeDPPfWhr4VRl6SmaXML7T8nkFZ0KBtYe2MXiAYs
-         JcWg==
-X-Gm-Message-State: AO0yUKW/q7yGiO0zuSW8ZWGKzI/ZgDbvmp3S8qbQRGiUEsv48/WwKMSv
-	xxj8S1kVuj2q8nY1SzATUuM=
-X-Google-Smtp-Source: AK7set9VipcuXxYpnZ45Df1zEkwY+VzCevZIE9fa4nfCbZ7L/fI0ChM6/Zx2yWmI9RnPiMQlYfZ5Nw==
-X-Received: by 2002:a5d:67cc:0:b0:2c5:6016:496 with SMTP id n12-20020a5d67cc000000b002c560160496mr8555585wrw.27.1677091199479;
-        Wed, 22 Feb 2023 10:39:59 -0800 (PST)
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=91+V2URQd5z0cRWdOdijFthyyEN9gwUVNKx2OIXRm+M=;
+        b=Oc/MFrAduN6Yyx1c+awvQOraFxTRlFKrOeUlPaVZm2ayqpupsz+nA9xZTOqIfwrfiX
+         M9CDEgcRggkrdx/xBpeBlyOUcn1StoW7l0nU4Ygq4BkgbUHR8Pa9dO7/V0uqemv71EiP
+         70O6hUTwxwA8Y1ZzysOpegssJop7QZWwaZzPer+JqcdQWGbeL2/1RfpySrZ5JeggfGrh
+         LO4VOOhSaBm5P6TkbsPd991ebbZmejE5Hp1RyuIfVCdSSiHFuggdyStkuBf1Y2Vhqeuc
+         nvOswBPMssIcKqtrXpIR+Zxfr0A5f6Z4BJ2Pypq5tnfir/fljGzr7OzRhNZ+uA0oAL9K
+         V8Dg==
+X-Gm-Message-State: AO0yUKVqWXKXnx9lPAHIDivyC3VzgNy79FyosOr2WKjY69iG9j4mrJS2
+	i7OHfhYVT0RzSPu/FWLmi/A=
+X-Google-Smtp-Source: AK7set/Ay1pTP7dhUzrpNZ4kePGXVZQAHKH5ICQPaMGVsqN5CiW4i4RTql7o2vSio2A1mf+Qef4G7A==
+X-Received: by 2002:a5d:6305:0:b0:2c7:e1f:60eb with SMTP id i5-20020a5d6305000000b002c70e1f60ebmr802521wru.69.1677091197184;
+        Wed, 22 Feb 2023 10:39:57 -0800 (PST)
 Received: from arinc9-PC.lan ([37.120.152.236])
-        by smtp.gmail.com with ESMTPSA id l18-20020a5d4112000000b002c56179d39esm9372845wrp.44.2023.02.22.10.39.57
+        by smtp.gmail.com with ESMTPSA id l18-20020a5d4112000000b002c56179d39esm9372845wrp.44.2023.02.22.10.39.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 22 Feb 2023 10:39:59 -0800 (PST)
+        Wed, 22 Feb 2023 10:39:56 -0800 (PST)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
 	Linus Walleij <linus.walleij@linaro.org>,
 	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Subject: [RFC PATCH 01/16] pinctrl: ralink: reintroduce ralink,rt2880-pinmux compatible string
-Date: Wed, 22 Feb 2023 21:39:17 +0300
-Message-Id: <20230222183932.33267-2-arinc.unal@arinc9.com>
+Subject: [RFC PATCH 00/16] pinctrl: ralink: fix ABI, improve driver, move to mediatek, improve dt-bindings
+Date: Wed, 22 Feb 2023 21:39:16 +0300
+Message-Id: <20230222183932.33267-1-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20230222183932.33267-1-arinc.unal@arinc9.com>
-References: <20230222183932.33267-1-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230222_104001_897682_40886A86 
-X-CRM114-Status: GOOD (  12.58  )
+X-CRM114-CacheID: sfid-20230222_104002_001232_F5E73CFE 
+X-CRM114-Status: GOOD (  16.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,82 +89,59 @@ Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, DENG Qingfan
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+This is an ambitious effort I've been wanting to do for months.
 
-There have been stable releases with the ralink,rt2880-pinmux compatible
-string included. Having it removed breaks the ABI. Reintroduce it.
+Straight off the bat, I'm fixing the ABI that I broke a while back, by
+reintroducing the ralink,rt2880-pinmux compatible string.
 
-Fixes: e5981cd46183 ("pinctrl: ralink: add new compatible strings for each pinctrl subdriver")
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
----
- drivers/pinctrl/ralink/pinctrl-mt7620.c | 1 +
- drivers/pinctrl/ralink/pinctrl-mt7621.c | 1 +
- drivers/pinctrl/ralink/pinctrl-rt2880.c | 1 +
- drivers/pinctrl/ralink/pinctrl-rt305x.c | 1 +
- drivers/pinctrl/ralink/pinctrl-rt3883.c | 1 +
- 5 files changed, 5 insertions(+)
+If you take a look at the schema for mt7620 and rt305x, some functions got
+multiple lists for groups. Like refclk on mt7620. Because mt7620 and
+mt7628/mt7688 SoCs use the same compatible string, it's impossible to
+differentiate on the binding which SoC a devicetree is actually for.
+Therefore, the binding will allow all groups listed for that function. For
+example, if the SoC is mt7620, only the refclk function for the mdio group
+can be used. If one were to put "spi cs1" as the function there, there
+wouldn't be a warning.
 
-diff --git a/drivers/pinctrl/ralink/pinctrl-mt7620.c b/drivers/pinctrl/ralink/pinctrl-mt7620.c
-index 4e8d26bb3430..06b86c726839 100644
---- a/drivers/pinctrl/ralink/pinctrl-mt7620.c
-+++ b/drivers/pinctrl/ralink/pinctrl-mt7620.c
-@@ -372,6 +372,7 @@ static int mt7620_pinctrl_probe(struct platform_device *pdev)
- 
- static const struct of_device_id mt7620_pinctrl_match[] = {
- 	{ .compatible = "ralink,mt7620-pinctrl" },
-+	{ .compatible = "ralink,rt2880-pinmux" },
- 	{}
- };
- MODULE_DEVICE_TABLE(of, mt7620_pinctrl_match);
-diff --git a/drivers/pinctrl/ralink/pinctrl-mt7621.c b/drivers/pinctrl/ralink/pinctrl-mt7621.c
-index eddc0ba6d468..fb5824922e78 100644
---- a/drivers/pinctrl/ralink/pinctrl-mt7621.c
-+++ b/drivers/pinctrl/ralink/pinctrl-mt7621.c
-@@ -97,6 +97,7 @@ static int mt7621_pinctrl_probe(struct platform_device *pdev)
- 
- static const struct of_device_id mt7621_pinctrl_match[] = {
- 	{ .compatible = "ralink,mt7621-pinctrl" },
-+	{ .compatible = "ralink,rt2880-pinmux" },
- 	{}
- };
- MODULE_DEVICE_TABLE(of, mt7621_pinctrl_match);
-diff --git a/drivers/pinctrl/ralink/pinctrl-rt2880.c b/drivers/pinctrl/ralink/pinctrl-rt2880.c
-index 3e2f1aaaf095..d7a65fcc7755 100644
---- a/drivers/pinctrl/ralink/pinctrl-rt2880.c
-+++ b/drivers/pinctrl/ralink/pinctrl-rt2880.c
-@@ -41,6 +41,7 @@ static int rt2880_pinctrl_probe(struct platform_device *pdev)
- 
- static const struct of_device_id rt2880_pinctrl_match[] = {
- 	{ .compatible = "ralink,rt2880-pinctrl" },
-+	{ .compatible = "ralink,rt2880-pinmux" },
- 	{}
- };
- MODULE_DEVICE_TABLE(of, rt2880_pinctrl_match);
-diff --git a/drivers/pinctrl/ralink/pinctrl-rt305x.c b/drivers/pinctrl/ralink/pinctrl-rt305x.c
-index bdaee5ce1ee0..f6092c64383e 100644
---- a/drivers/pinctrl/ralink/pinctrl-rt305x.c
-+++ b/drivers/pinctrl/ralink/pinctrl-rt305x.c
-@@ -118,6 +118,7 @@ static int rt305x_pinctrl_probe(struct platform_device *pdev)
- 
- static const struct of_device_id rt305x_pinctrl_match[] = {
- 	{ .compatible = "ralink,rt305x-pinctrl" },
-+	{ .compatible = "ralink,rt2880-pinmux" },
- 	{}
- };
- MODULE_DEVICE_TABLE(of, rt305x_pinctrl_match);
-diff --git a/drivers/pinctrl/ralink/pinctrl-rt3883.c b/drivers/pinctrl/ralink/pinctrl-rt3883.c
-index 392208662355..5f766d76bafa 100644
---- a/drivers/pinctrl/ralink/pinctrl-rt3883.c
-+++ b/drivers/pinctrl/ralink/pinctrl-rt3883.c
-@@ -88,6 +88,7 @@ static int rt3883_pinctrl_probe(struct platform_device *pdev)
- 
- static const struct of_device_id rt3883_pinctrl_match[] = {
- 	{ .compatible = "ralink,rt3883-pinctrl" },
-+	{ .compatible = "ralink,rt2880-pinmux" },
- 	{}
- };
- MODULE_DEVICE_TABLE(of, rt3883_pinctrl_match);
--- 
-2.37.2
+I address this by introducing new compatible strings for these SoCs, then
+split the schemas. I also separate mt7628/mt7688 from mt7620 pinctrl
+subdriver in the process.
+
+I wanted to split the rt305x driver too but too much code would be reused
+so I backed down from that.
+
+Ralink was acquired by MediaTek in 2011. These SoCs have been rebranded as
+MediaTek. We're moving the Ralink pinctrl driver to MediaTek, and rename
+the schemas to mediatek.
+
+I've renamed the ralink core driver to mtmips. I decided to call the core
+mtmips as I've seen folks from MediaTek use the same name when they added
+support for MT7621 pinctrl on U-Boot. Feel free to comment on this.
+
+The MTMIPS pinctrl driver requires rt_sysc_membase from
+arch/mips/ralink/of.c, so, for COMPILE_TEST to be useful, RALINK must be
+selected. These headers, asm/mach-ralink/ralink_regs.h and
+asm/mach-ralink/mt7620.h, from arch/mips/include are also required but
+they can easily be included:
+
+ifeq ($(CONFIG_COMPILE_TEST),y)
+CFLAGS_pinctrl-mtmips.o			+= -I$(srctree)/arch/mips/include
+endif
+
+Sergio, do you see a way to make the pinctrl driver independent of
+architecture code? At least avoid using rt_sysc_membase.
+
+dtbs_check will print warnings for DTs with the old strings as it will
+match multiple bindings. I assume that's acceptable in order to have the
+things properly documented without breaking the ABI. The bindings will work
+fine with the new compatible strings.
+
+I could define the checks under $defs:, then refer to it if the compatible
+string is the one which would work fine. Or I could put only the new
+compatible strings on the documentation. What are your thoughts Krzysztof,
+Rob?
+
+Arınç
+
 
 
