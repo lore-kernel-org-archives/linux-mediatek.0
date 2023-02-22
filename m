@@ -4,73 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80A48C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 20:06:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14120C6379F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 21:12:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5FrhnmpFXYJ2ruds7IcpiLVKaKCtCwhucB8NT2yoBtA=; b=ZppBkqX1k3jp3BLlNERYLRcajH
-	SbTxXW3IA2smOKeMClKZInkEEOs3V9s4HPmNoudBYl3llHDdDhm+4GJ+aCFoRQQpWiptqEaT09r+K
-	0IEgOYZoVrDruX5Dr0Utukl4PDnKJeZ2/0MZUC/3mGcwIeIN43tmSLbZXOKU9cZmzVaCGWEMgDGsH
-	jmRFKq4uT1DxaAqYLQz8IKXzecpF0IuBxxXVY5n3+E7SsfvLVKJPxwoQcXEnTBVCjhcIh2rjkKCf3
-	83iqW4ILD+OJzWKt7oHZgglFky6lo0k1M/8fo4VEbUWt7Jn3T8/PiO9l+LnZpFVts2nSxFSQh3Cvy
-	aB1xEp9Q==;
+	bh=i3FsBG+kDiNsavGcYwLyo98IrJbd8tu6clMTXoiDI58=; b=d1T3hWyFEDTFGoAwPEN5znqLX4
+	OviYWermiDoHefW+431M8mVnUSJmS1J/F6+j2pIwjmff/cQshY545wly4juQM2zDwIj6PUYEok1DF
+	GY63xM+9MWxhtWHYzeFF7RIi6v/KFG4Mdh1E4dRXkOYoJf20bMXgUXwTRCdPP4shY5DeszWe86Atu
+	Vq7tlGT/Oi4n6I2s8r5bEmq/oTC9niJduT3t01PSb/fg+ZPS95FqnXyURHvU9gpoPs5sdXxopFfCa
+	bjUO/bUBXib6Srekx4LkU3iSPaWSVbUYvgKUArI5PXNydAdSj17Kj23+4Ot51pU0joecwuoVsz6kX
+	WRaxfdOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUvNq-00Dxa9-BR; Wed, 22 Feb 2023 20:06:34 +0000
-Received: from mail-ed1-f49.google.com ([209.85.208.49])
+	id 1pUwPT-00E8cZ-2k; Wed, 22 Feb 2023 21:12:19 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUvNf-00DxWG-8O; Wed, 22 Feb 2023 20:06:24 +0000
-Received: by mail-ed1-f49.google.com with SMTP id b12so35175809edd.4;
-        Wed, 22 Feb 2023 12:06:21 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=5FrhnmpFXYJ2ruds7IcpiLVKaKCtCwhucB8NT2yoBtA=;
-        b=7/Ww+UKetVia9z1zw27o2oMbvx2J1e3OAgrwjzreDpBi1MHBqkj6wQKbGNBS7fGtF4
-         oj0iy/1FuWKITOHd5onoSawfmAjJni7chRs8BnUOVIqezcxNoOgRykk4XAyng7szU9/o
-         PDMvCFNdx201M+qRGnK+6mOGWXSknhpAuoOKkHWly+DYbG2fOJidMDtHdu/bSlf+0pDT
-         bpRjAl8cY7OvZzqh2/aZ/nTE1d1oVGvnwJm7HmiJDbFA3s5L+4BusIDSEg71w2as5kf/
-         /XArim3YEySfN5h6j9wHx830sr+dbhoLB/Os9UFx+OwINegZim4D07qBj8hFfhy6v6Rh
-         JTBA==
-X-Gm-Message-State: AO0yUKVoS3ahSgRvGH+3J8hjbXAKXOIqbomQvGj2rwvpmL3FzzbOeqaN
-	VCchC4gvHAyB/12a1A1mWabfpYFhBHWdoU78+Ms=
-X-Google-Smtp-Source: AK7set/po3VyktwxEsvJqz0FpIkkq7uzVUEz8zFA6NgPjaNe3NoxjdDwF5w8A3dbosoUaeENbiJ8bZNdJt2gAN+dbw0=
-X-Received: by 2002:a17:906:3b84:b0:877:747d:1108 with SMTP id
- u4-20020a1709063b8400b00877747d1108mr8024476ejf.5.1677096380241; Wed, 22 Feb
- 2023 12:06:20 -0800 (PST)
+	id 1pUwPG-00E8YN-RX; Wed, 22 Feb 2023 21:12:10 +0000
+Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9723366021D8;
+	Wed, 22 Feb 2023 21:11:58 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1677100321;
+	bh=XbP0sDtxNAm8IjAuyCN+WUe9AnaCJFk0QivDms/MLjQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=G1TrERe84hp5Xh4cdSkuPi9RArEPR4vwFIsdCEi4eoh3RC74Qm/9Y9Q0rrx6he6MF
+	 2iPbBOgXAoxANRrkIVPITIcY5WvvOcrf+iNUeSGe2aw838v42JwuLRj/F2eG/pX7XW
+	 KHWswBtuV/cZcbdJyt4Iml8w9WmqrbsHF/GGT+WAxL0OxZwQdJwy8C2K3DICs3uc5U
+	 yyBu3o4Kk2ubBrSJ2d3uWzi7oD1gAzcnmPSnGNmFtVzoPxoQa3gwr5aJGGPq90SyyP
+	 +uJw3vWsqq31TIpE1nIZ2S0nf5yXuyOk6C4P5wQyDI+LH4totlwaGhiEHd/Bid9Tvs
+	 YxIOnCzJnUE3g==
+Date: Wed, 22 Feb 2023 16:11:54 -0500
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Yunfei Dong =?utf-8?B?KOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>
+Cc: "wenst@chromium.org" <wenst@chromium.org>,
+	Tiffany Lin =?utf-8?B?KOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>,
+	"nicolas@ndufresne.ca" <nicolas@ndufresne.ca>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
+	"benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
+	"hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"frkoenig@chromium.org" <frkoenig@chromium.org>,
+	"stevecho@chromium.org" <stevecho@chromium.org>,
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"mchehab@kernel.org" <mchehab@kernel.org>,
+	"daniel@ffwll.ch" <daniel@ffwll.ch>,
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"hsinyi@chromium.org" <hsinyi@chromium.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2] media: mediatek: vcodec: Force capture queue format
+ to MM21
+Message-ID: <20230222211154.mhl7mihycl7eq5v6@notapiano>
+References: <20230210055518.6017-1-yunfei.dong@mediatek.com>
+ <e972c2ac1a7a6f0ce258c8056b82bdc87e4d8ceb.camel@ndufresne.ca>
+ <f6148f4c4864d324b52a52cc87b8785d958ceeb5.camel@mediatek.com>
 MIME-Version: 1.0
-References: <20230221180710.2781027-1-daniel.lezcano@linaro.org>
- <20230221180710.2781027-7-daniel.lezcano@linaro.org> <CAJZ5v0gTmi7ZeDDdHWGWju4m3bv2366oVqSP1dGOT+3jLV-jaw@mail.gmail.com>
- <0889767f-d187-0cb4-895e-c149517b6636@linaro.org>
-In-Reply-To: <0889767f-d187-0cb4-895e-c149517b6636@linaro.org>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Wed, 22 Feb 2023 21:06:09 +0100
-Message-ID: <CAJZ5v0h=UCOyJ88UgEdqch4NZK+DaT8jWnDaguQGNx-KOMhPPA@mail.gmail.com>
-Subject: Re: [PATCH v2 06/16] thermal: Don't use 'device' internal thermal
- zone structure field
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, linux-pm@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, Balsam CHIHI <bchihi@baylibre.com>, 
-	Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
-	Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Ido Schimmel <idosch@nvidia.com>, 
-	Mark Brown <broonie@kernel.org>, 
-	"moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, 
-	"open list:TI BANDGAP AND THERMAL DRIVER" <linux-omap@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <f6148f4c4864d324b52a52cc87b8785d958ceeb5.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230222_120623_319965_73F0CF4C 
-X-CRM114-Status: GOOD (  22.23  )
+X-CRM114-CacheID: sfid-20230222_131207_176586_62D8190D 
+X-CRM114-Status: GOOD (  34.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,48 +90,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 22, 2023 at 9:00 PM Daniel Lezcano
-<daniel.lezcano@linaro.org> wrote:
->
-> On 22/02/2023 20:43, Rafael J. Wysocki wrote:
-> > On Tue, Feb 21, 2023 at 7:07 PM Daniel Lezcano
-> > <daniel.lezcano@linaro.org> wrote:
-> >>
-> >> Some drivers are directly using the thermal zone's 'device' structure
-> >> field.
-> >>
-> >> Use the driver device pointer instead of the thermal zone device when
-> >> it is available.
-> >>
-> >> Remove the traces when they are duplicate with the traces in the core
-> >> code.
-> >>
-> >> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-> >> Reviewed-by: Balsam CHIHI <bchihi@baylibre.com> #Mediatek LVTS
-> >> ---
->
-> [ ... ]
->
-> >>          thermal_zone_device_update(data->ti_thermal, THERMAL_EVENT_UNSPECIFIED);
-> >>
-> >> -       dev_dbg(&data->ti_thermal->device, "updated thermal zone %s\n",
-> >> +       dev_dbg(data->bgp->dev, "updated thermal zone %s\n",
-> >>                  data->ti_thermal->type);
-> >
-> > The code before the change is more consistent, because it refers to
-> > the same object in both instances.
-> >
-> > It looks like a type field accessor is needed, eg. thermal_zone_device_type()?
-> >
-> > Or move the debug message to thermal_zone_device_update()?
->
-> Actually it is done on purpose because the patch 9 replaces the accesses
-> to 'type' by 'id', the thermal_zone_device_type() accessor won't be needed.
+Hi,
 
-Cool.
+On Tue, Feb 14, 2023 at 02:28:04AM +0000, Yunfei Dong (董云飞) wrote:
+> Hi Nicolas,
+> 
+> Thanks for your suggestion.
+> On Fri, 2023-02-10 at 10:36 -0500, Nicolas Dufresne wrote:
+> > Le vendredi 10 février 2023 à 13:55 +0800, Yunfei Dong a écrit :
+> > > In order to conver the format of capture queue from mediatek MM21
+> > > to
+> > > standard yuv420 with Libyuv, need to force capture queue format to
+> > > MM21 for Libyuv can't covert mediatek MT21 format at current
+> > > period.
+> > 
+> > Please rework this text, it is hard to understand.
+> > 
+> 
+> Will re-write the commit message in next version as below, could you
+> please help to review whether it's well to be used ?
+> 
+> Libyuv is one software library used to covert format. Only covert
+> mediatek MM21 to standard yuv420 for MT21 is compressed mode and MM21
+> is uncompressed mode at current period. Need to set capture queue
+> format to MM21 in order to use Libyuv.
+> 
+> > > 
+> > > Fixes: 7501edef6b1f ("media: mediatek: vcodec: Different codec
+> > > using different capture format")
+> > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.org>
+> > > ---
+> > > changed with v1:
+> > > - add Fixes tag.
+> > > ---
+> > >  drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c | 4 ++--
+> > >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > > 
+> > > diff --git
+> > > a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+> > > b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+> > > index 641f533c417f..4f5e9c20214f 100644
+> > > --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+> > > +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+> > > @@ -41,7 +41,7 @@ static bool mtk_vdec_get_cap_fmt(struct
+> > > mtk_vcodec_ctx *ctx, int format_index)
+> > >  	const struct mtk_video_fmt *fmt;
+> > >  	struct mtk_q_data *q_data;
+> > >  	int num_frame_count = 0, i;
+> > > -	bool ret = true;
+> > > +	bool ret = false;
 
-However, this is a change in behavior (albeit small) which doesn't
-appear to be necessary.
+This change doesn't do anything, so I'd drop it.
 
-What would be wrong with having a tz->type accessor too?
+> > >  
+> > >  	for (i = 0; i < *dec_pdata->num_formats; i++) {
+> > >  		if (dec_pdata->vdec_formats[i].type != MTK_FMT_FRAME)
+> > > @@ -63,7 +63,7 @@ static bool mtk_vdec_get_cap_fmt(struct
+> > > mtk_vcodec_ctx *ctx, int format_index)
+> > >  	case V4L2_PIX_FMT_H264_SLICE:
+> > >  	case V4L2_PIX_FMT_VP9_FRAME:
+> > >  		if (fmt->fourcc == V4L2_PIX_FMT_MM21)
+> > > -			ret = false;
+> > > +			ret = true;
+> > 
+> > This makes the VP8 and the other cases identical, leaving anything
+> > that touches
+> > MT21 as dead code. I'm not sure, cause I cannot test it, but it
+> > should in theory
+> > render MT8192 unusable, unless a new firmware has been submitted to
+> > linux-
+> > firmware with MM21 support ?
+> > 
+> 
+> If the firmware only support MT21 => won't exist for vp8 need to use
+> MM21.
+
+And that's the issue, the scp.img for MT8192 on linux-firmware only supports
+MT21 [1]. Can you please update it to support both MM21 and MT21?
+
+For MT8195, only MM21 is supported in scp.img [2], but since the hardware
+supports both MM21 and MT21, the firmware should also support both. So please
+also update it on linux-firmware.
+
+[1] https://lore.kernel.org/all/20230112204626.ciaff4amseoidybw@notapiano/
+[2] https://lore.kernel.org/all/20230112205825.wb5qcqhh5kwvyi3y@notapiano/
+
+Thanks,
+Nícolas
+
+> 
+> If the firmware only support MM21, will using MM21.
+> If the firmware support MT21 & MM21, will force VP8 to use MM21,
+> H264/VP9/AV1 will use MT21 before this change. 
+> 
+> Will force all driver to use MM21 after adding this change. 
+> 
+> Best Regards,
+> Yunfei Dong
+> > >  		break;
+> > >  	default:
+> > >  		ret = true;
+> > 
+> > 
 
