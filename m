@@ -4,52 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57CDEC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 09:11:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E562DC6379F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 09:14:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=X6IEpSISwJiYlJ3uA866lskXve3r+4o2hf4z7VM6m5o=; b=bo76ofimju517ou2GfLQd7Q7Mz
-	mp34SvLCZ4aoQZLtJR63DAARunJFht1bI14z6yQmg6AIaaLmrWui5cu6gc8NzgV6SCZfApS+V3evW
-	P0JOSDjzjvnKkDhjxQXd3PzDZB51sAtSbidUbKkVf/jtheyVokzAor1jQTNctyQDIq3EC0DHtCKWw
-	tDwKINOCDoA0jSZTP5ssQh1YiObnQcoF0MjAvgboLoY9JZgtYluuP7YIxGUg7JfonCcr77uWmaEbF
-	SthDvr1fzjJnCjuy36M7S6cE43CwhBellzbDVOYCtw5Hr3Of2pg25puVp7uEw33e2NrV4U8nTXJxE
-	F2Uig4Ug==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TD1HByFG+9ivuthhxtqxMWNZz4S5bBCQEHhEDbx05/0=; b=4hrjSVhOmSTU3pU2EyprFPVOol
+	W7jTrc+c9lSjTAk6IXOK/P4unxQez2Fc3BYp3y5U4Yv0GP3LykUhoC8zFHwFxMaoVBCV4+B251gx1
+	3fWQqU1fyXIc7o4K4sACeAu2y18W/rTYHQs39suW7a6YkGtAOM+iz5lpmbdoC/5AUSH81UjB35j6I
+	YOvdmt2L3phY81NSbG9g6fgjdPnywW/ikbEaQBANZ0T1PUuNBtTWPVJitln4UGlt7UyjG55rAfoN1
+	EsVQmLQXnN352w0wPoltkALhhjEKKYBf6kT7d30hJ6iZXBpcNjlGZqFDOssMf96ZuUx3XjFoKItl5
+	uqbh6ZKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUl9P-00BLNB-7l; Wed, 22 Feb 2023 09:10:59 +0000
-Received: from mail.corrib.pl ([185.58.226.145])
+	id 1pUlCO-00BMWh-2v; Wed, 22 Feb 2023 09:14:04 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUl9M-00BLLp-Mm
-	for linux-mediatek@lists.infradead.org; Wed, 22 Feb 2023 09:10:57 +0000
-Received: by mail.corrib.pl (Postfix, from userid 1001)
-	id A1431A45E6; Wed, 22 Feb 2023 09:10:52 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=corrib.pl; s=mail;
-	t=1677057060; bh=X6IEpSISwJiYlJ3uA866lskXve3r+4o2hf4z7VM6m5o=;
-	h=Date:From:To:Subject:From;
-	b=qojIHlgXTaNnkzZGJitARxc/jeK6NKATY2HBIARArV7CZcSSrzkPqFd0wYu+RojXn
-	 V8EZ3OXwemn+W9x4hEd5mjOlGkCbB4yIO/3tI7+eFmEbpMGL7Y7QJs2FiWp5NOem8W
-	 h2WN1m+6tuw9rPiWKvoCPqMCUzviTn7XF0aLx+O7NsbfbHJgiumTl5BYxq5KZFMtLG
-	 VdeCOwGTE3evSvpG8JARYGrSSjYkjAfoluTfbDjuWEg8x2uOxi3MjEKzVO24cgMrz2
-	 lnbkaKerUhEqw2gWcbTBp5bGlko98J8U+Fvz36+7Xy9D1Kqd6RYcHxbAwX3gOCLIXw
-	 SBrb3gSdKQ7PQ==
-Received: by mail.corrib.pl for <linux-mediatek@lists.infradead.org>; Wed, 22 Feb 2023 09:10:40 GMT
-Message-ID: <20230222074502-0.1.5n.hcw0.0.1tc1j165y6@corrib.pl>
-Date: Wed, 22 Feb 2023 09:10:40 GMT
-From: =?UTF-8?Q?"Szczepan_Kie=C5=82basa"?= <szczepan.kielbasa@corrib.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: Faktoring
-X-Mailer: mail.corrib.pl
+	id 1pUlCB-00BMQw-TN; Wed, 22 Feb 2023 09:13:53 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9623A66021CF;
+	Wed, 22 Feb 2023 09:13:47 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1677057228;
+	bh=EQcPbGfJMfRIei4Am5Ga2lgUV4SqL9FM6hrNSYWP81M=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Ci/5xPZofV2WGWkOXFeQ2oVFhVnJmStDnJ+1lB2glB7h3NKKb0bfohtHXtJKXc2yX
+	 JWVnuiF69Z+OHcCJRhnNa2ACiMYCzBSOy8zvnn6pooaRWfMSZnpSOazVeZdqClc+0G
+	 y25SprcuQ75Uh659VUCmWtbl16GzOd1vQwSZ126q0a97ymt/Bno/rmABd5HTPjHFej
+	 tiNgim+asQkJ4eXmwVfXy9ow8OgyZX/OAWJw2eQd1I8sHZf5MJcjSXa4wxJT8r7mqb
+	 PXbcpQlG+VbDWbC6B4pSwrVwbVGuk1hsDT0ukfvwzMBfUkrryQJxDBqZx/qx7uR7HC
+	 Bzqd0ggFXVjHg==
+Message-ID: <88a3fa09-60cb-bb3c-c392-286efd983627@collabora.com>
+Date: Wed, 22 Feb 2023 10:13:45 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v2 06/10] dt-bindings: gpu: mali-bifrost: Add a compatible
+ for MediaTek MT8186
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: airlied@gmail.com, daniel@ffwll.ch, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, steven.price@arm.com,
+ alyssa.rosenzweig@collabora.com, matthias.bgg@gmail.com, robh@kernel.org,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230221153740.1620529-1-angelogioacchino.delregno@collabora.com>
+ <20230221153740.1620529-7-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5Ed-5Nq0zNzCGzez3fnW2yxW7zFx9B6k58Y4yb8P+hvpw@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAGXv+5Ed-5Nq0zNzCGzez3fnW2yxW7zFx9B6k58Y4yb8P+hvpw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230222_011056_886786_F131B2B1 
-X-CRM114-Status: UNSURE (   1.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230222_011352_108681_12158F60 
+X-CRM114-Status: GOOD (  18.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,20 +80,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,
+Il 22/02/23 09:37, Chen-Yu Tsai ha scritto:
+> On Tue, Feb 21, 2023 at 11:37 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Get GPU support on MT8186 by adding its compatible.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml | 5 +++++
+>>   1 file changed, 5 insertions(+)
+>>
+>> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+>> index be18b161959b..43a841d4e94d 100644
+>> --- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+>> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+>> @@ -15,6 +15,11 @@ properties:
+>>
+>>     compatible:
+>>       oneOf:
+>> +      - items:
+>> +          - enum:
+>> +              - mediatek,mt8186-mali
+>> +          - const: mediatek,mt8183b-mali
+>> +          - const: arm,mali-bifrost # Mali Bifrost GPU model/revision is fully discoverable
+> 
+> The MT8186 has Mali-G52 MC2 2EE, while the MT8183 has Mali-G72 MP3.
 
-rozwa=C5=BCali Pa=C5=84stwo wyb=C3=B3r finansowania, kt=C3=B3re spe=C5=82=
-ni potrzeby firmy, zapewniaj=C4=85c natychmiastowy dost=C4=99p do got=C3=B3=
-wki, bez zb=C4=99dnych przestoj=C3=B3w?=20
+Keeping in mind the obvious - which is that G52 and G72 are both Bifrost....
 
-Przygotowali=C5=9Bmy rozwi=C4=85zania faktoringowe dopasowane do Pa=C5=84=
-stwa bran=C5=BCy i wielko=C5=9Bci firmy, dzi=C4=99ki kt=C3=B3rym, nie mus=
-z=C4=85 Pa=C5=84stwo martwi=C4=87 si=C4=99 o niewyp=C5=82acalno=C5=9B=C4=87=
- kontrahent=C3=B3w, poniewa=C5=BC transakcje s=C4=85 zabezpieczone i posi=
-adaj=C4=85 gwarancj=C4=99 sp=C5=82aty.=20
-Chc=C4=85 Pa=C5=84stwo przeanalizowa=C4=87 dost=C4=99pne opcje?
+> So we actually need a new entry with two power domains.
+> 
+
+...This is my node for MT8186:
+
+		gpu: gpu@13040000 {
+			compatible = "mediatek,mt8186-mali",
+				     "mediatek,mt8183b-mali",
+				     "arm,mali-bifrost";
+			reg = <0 0x13040000 0 0x4000>;
+
+			clocks = <&mfgsys CLK_MFG_BG3D>;
+			interrupts = <GIC_SPI 276 IRQ_TYPE_LEVEL_HIGH 0>,
+				     <GIC_SPI 275 IRQ_TYPE_LEVEL_HIGH 0>,
+				     <GIC_SPI 274 IRQ_TYPE_LEVEL_HIGH 0>;
+			interrupt-names = "job", "mmu", "gpu";
+			power-domains = <&spm MT8186_POWER_DOMAIN_MFG1>,
+					<&spm MT8186_POWER_DOMAIN_MFG2>,
+					<&spm MT8186_POWER_DOMAIN_MFG3>;
+			power-domain-names = "core0", "core1", "core2";
+
+			/* Please ignore speedbin, that's for another time :-) */
+			nvmem-cells = <&gpu_volt_bin>;
+			nvmem-cell-names = "speed-bin";
+			#cooling-cells = <2>;
+		};
+
+There are three MFG power domains... MFG2 and MFG3 are parents of MFG1, on that
+I agree, but we can avoid adding a new entry just for MT8186 and use the MT8183-b
+one while still being technically correct.
+
+Besides, Mali G52 and Mali G72 are both Bifrost... so I don't think that this
+commit is incorrect. For the sake of simplicity, I would push on getting this
+one picked.
+
+Unless there are any real-strong opinions against...
+
+Regards,
+Angelo
+
+> Our downstream Mali driver & DT use just that.
+> 
+> ChenYu
 
 
-Pozdrawiam
-Szczepan Kie=C5=82basa
 
