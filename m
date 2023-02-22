@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0DB5C6379F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 10:29:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62D64C6379F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 10:29:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ctg8ERf/4rRDsGsd3RTSMaAAkHQavwE17jWyngyXiWw=; b=0owYyz3sr6CYMpk72RXdtFOoOr
-	eUN+aBMcWpZwn99IOz2CJ2y/q9hAjEmqvvvveP9UAbkgQpOBXvWSH092UE1JQntpQc4j8CdTJdhuz
-	BVPo44pPNKc7f6TZgx2hfoxLaNuvh8LiGMmuB1qMgqvdsc5Q8O+foZfPTCtivdubn1msH+HyydGch
-	1GI/Nr5tJMjfzE4Fpeuey+xlunNeKCIiJFWc7qtkYEBz4dEe+ii+LmlX4hfvhN7zdLrZopwZDo0ye
-	ge/bbISUkZCTOo2KLvVSWJ9U+mwyvblhZpbFXOWESZuc1yCDTIfRKCbK8DmfLrMIwk3DglGhCm9x5
-	wELa939A==;
+	bh=SBJqdueKzWGERhe7LO3Jh5BUunb3nxELtMe7iavkoZU=; b=ETluP/sfZYceDlz1fTnWRDjb66
+	YmlrxX3mVjV7XLe7lzd0K/13dV2GKWXqW17kL0ta63ThE1qGMZFYCcCkt0t32JAbnRmgzDOfQDxWs
+	qliwU2EnBslIY8A249XdI5dyADEgUmGIxiwjlqz7NA390D1lTuDwm/xZz/AU0DsQHfmLypTg4D5UY
+	2brNb/HxVDiNLXBBDZOgBRCvwLcofh7wA2ayt0aC++0TqtzzK+P0MrY/tucmc3XCyYclFO12Nbdxs
+	q8ZlLvdyO0frmli7Siomp22cRCYiWV/rYP9HrYFFAkVOXkWW2dY38YHrSRkH/glM8gCjBZ7vn1EXL
+	kn77xI8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUmMx-00BvZo-L7; Wed, 22 Feb 2023 10:29:03 +0000
+	id 1pUmN1-00Bvbh-GO; Wed, 22 Feb 2023 10:29:07 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUleR-00BYg9-Qn; Wed, 22 Feb 2023 09:43:05 +0000
+	id 1pUleR-00BYfB-2a; Wed, 22 Feb 2023 09:43:05 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 00AB766021BC;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4EB4666021BA;
 	Wed, 22 Feb 2023 09:43:01 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1677058982;
-	bh=HdA9LzRyfYNiXvz7Hffi4ApU2JZCzXJht1XHORTPc54=;
+	s=mail; t=1677058981;
+	bh=D2Wg1MCaTWqKvlTyCHCMNbxkOo7Gmf+eDXCX8QbUlHI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=aj2IRggvt5KoR/paEff124zVV1bz7iA05sKUjbBbqW53DSgsrF8Ac/HSDp9MWgTPS
-	 HCEO/WtQLd3yHAz+y093jCIDbYYvNkG4FSh3yTRWXVMKQ+o3m164hFc9o3K2RA3OLO
-	 DlWsdQcMy7Y+l8cQoLZMs/jiS10fdbjVz6XMmRDk6zQFPyIiXNywAbaDYA5/ZBlmJZ
-	 IiqjB8+S4VW5TWxrsSsFtb+B6Cj+O9Z+K+o/8pO/bg/YVMWnqSp9oxyQW/ayp5tbjB
-	 DcAzhUnKvKoO4Vr6zuprIgzbgbLnuziDblLf2e+xnq84MjeDErNiD61Ibm35tP4Fg6
-	 zI4jnG1pL1B5A==
+	b=HPlsRs8ew86CCn01Gcuu9S1HtWNy6942rbS5Jbv4zMYqrVjhcsHaBalT9RmEZkw48
+	 Nyi6tw/H76/HYemFUPNzRJELwqS1zt7qTbSAp0IWcYbD03PlCpIKVzSFYpiSu39zxt
+	 laa++YqNavcWmihqf+ry9qsMssFZ9sGmxnK8+gDtWmCuucC76lZYlgHb1UMFBiunya
+	 B57NyVWHoVP67dD5j28Z2vGQaJzMCyv6nPHYfdDcKC3uPyp2wo4jUUzCE+NwT8NjQK
+	 OcOWjO/obaYQuJYD2+N64AQ8kbkDKcRgfrnCIvGwnGGHk8WNKwV9R74yAOX98gmQmI
+	 eR8yqip69z9fw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: jason-jh.lin@mediatek.com,
@@ -50,18 +50,17 @@ Cc: jason-jh.lin@mediatek.com,
 	linux-mediatek@lists.infradead.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Chen-Yu Tsai <wenst@chromium.org>
-Subject: [PATCH v2 4/9] soc: mediatek: mtk-mmsys: Add MODULE_DEVICE_TABLE() to allow auto-load
-Date: Wed, 22 Feb 2023 10:42:48 +0100
-Message-Id: <20230222094253.23678-5-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 3/9] soc: mediatek: mtk-mmsys: Compress of_device_id array entries
+Date: Wed, 22 Feb 2023 10:42:47 +0100
+Message-Id: <20230222094253.23678-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230222094253.23678-1-angelogioacchino.delregno@collabora.com>
 References: <20230222094253.23678-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230222_014304_028119_A1223209 
-X-CRM114-Status: UNSURE (   9.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230222_014303_433291_46A69E5D 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,27 +75,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Allow module auto-loading by adding a MODULE_DEVICE_TABLE for
-of_match_mmsys.
+Compress entries of the of_match_mtk_mmsys array to reduce the amount
+of lines and increase readability; this brings us to a maximum of 90
+columns.
+
+While at it, also add a sentinel comment to the last entry for the
+sole purpose of consistency.
+
+This commit brings no functional changes.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/soc/mediatek/mtk-mmsys.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/soc/mediatek/mtk-mmsys.c | 83 +++++++-------------------------
+ 1 file changed, 18 insertions(+), 65 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-index fcf702fda92e..0f0fa27e17a5 100644
+index 1a574de9484d..fcf702fda92e 100644
 --- a/drivers/soc/mediatek/mtk-mmsys.c
 +++ b/drivers/soc/mediatek/mtk-mmsys.c
-@@ -391,6 +391,7 @@ static const struct of_device_id of_match_mtk_mmsys[] = {
- 	{ .compatible = "mediatek,mt8365-mmsys", .data = &mt8365_mmsys_driver_data },
- 	{ /* sentinel */ }
+@@ -372,71 +372,24 @@ static int mtk_mmsys_remove(struct platform_device *pdev)
+ }
+ 
+ static const struct of_device_id of_match_mtk_mmsys[] = {
+-	{
+-		.compatible = "mediatek,mt2701-mmsys",
+-		.data = &mt2701_mmsys_driver_data,
+-	},
+-	{
+-		.compatible = "mediatek,mt2712-mmsys",
+-		.data = &mt2712_mmsys_driver_data,
+-	},
+-	{
+-		.compatible = "mediatek,mt6779-mmsys",
+-		.data = &mt6779_mmsys_driver_data,
+-	},
+-	{
+-		.compatible = "mediatek,mt6797-mmsys",
+-		.data = &mt6797_mmsys_driver_data,
+-	},
+-	{
+-		.compatible = "mediatek,mt8167-mmsys",
+-		.data = &mt8167_mmsys_driver_data,
+-	},
+-	{
+-		.compatible = "mediatek,mt8173-mmsys",
+-		.data = &mt8173_mmsys_driver_data,
+-	},
+-	{
+-		.compatible = "mediatek,mt8183-mmsys",
+-		.data = &mt8183_mmsys_driver_data,
+-	},
+-	{
+-		.compatible = "mediatek,mt8186-mmsys",
+-		.data = &mt8186_mmsys_driver_data,
+-	},
+-	{
+-		.compatible = "mediatek,mt8188-vdosys0",
+-		.data = &mt8188_vdosys0_driver_data,
+-	},
+-	{
+-		.compatible = "mediatek,mt8192-mmsys",
+-		.data = &mt8192_mmsys_driver_data,
+-	},
+-	{	/* deprecated compatible */
+-		.compatible = "mediatek,mt8195-mmsys",
+-		.data = &mt8195_vdosys0_driver_data,
+-	},
+-	{
+-		.compatible = "mediatek,mt8195-vdosys0",
+-		.data = &mt8195_vdosys0_driver_data,
+-	},
+-	{
+-		.compatible = "mediatek,mt8195-vdosys1",
+-		.data = &mt8195_vdosys1_driver_data,
+-	},
+-	{
+-		.compatible = "mediatek,mt8195-vppsys0",
+-		.data = &mt8195_vppsys0_driver_data,
+-	},
+-	{
+-		.compatible = "mediatek,mt8195-vppsys1",
+-		.data = &mt8195_vppsys1_driver_data,
+-	},
+-	{
+-		.compatible = "mediatek,mt8365-mmsys",
+-		.data = &mt8365_mmsys_driver_data,
+-	},
+-	{ }
++	{ .compatible = "mediatek,mt2701-mmsys", .data = &mt2701_mmsys_driver_data },
++	{ .compatible = "mediatek,mt2712-mmsys", .data = &mt2712_mmsys_driver_data },
++	{ .compatible = "mediatek,mt6779-mmsys", .data = &mt6779_mmsys_driver_data },
++	{ .compatible = "mediatek,mt6797-mmsys", .data = &mt6797_mmsys_driver_data },
++	{ .compatible = "mediatek,mt8167-mmsys", .data = &mt8167_mmsys_driver_data },
++	{ .compatible = "mediatek,mt8173-mmsys", .data = &mt8173_mmsys_driver_data },
++	{ .compatible = "mediatek,mt8183-mmsys", .data = &mt8183_mmsys_driver_data },
++	{ .compatible = "mediatek,mt8186-mmsys", .data = &mt8186_mmsys_driver_data },
++	{ .compatible = "mediatek,mt8188-vdosys0", .data = &mt8188_vdosys0_driver_data },
++	{ .compatible = "mediatek,mt8192-mmsys", .data = &mt8192_mmsys_driver_data },
++	/* "mediatek,mt8195-mmsys" compatible is deprecated */
++	{ .compatible = "mediatek,mt8195-mmsys", .data = &mt8195_vdosys0_driver_data },
++	{ .compatible = "mediatek,mt8195-vdosys0", .data = &mt8195_vdosys0_driver_data },
++	{ .compatible = "mediatek,mt8195-vdosys1", .data = &mt8195_vdosys1_driver_data },
++	{ .compatible = "mediatek,mt8195-vppsys0", .data = &mt8195_vppsys0_driver_data },
++	{ .compatible = "mediatek,mt8195-vppsys1", .data = &mt8195_vppsys1_driver_data },
++	{ .compatible = "mediatek,mt8365-mmsys", .data = &mt8365_mmsys_driver_data },
++	{ /* sentinel */ }
  };
-+MODULE_DEVICE_TABLE(of, of_match_mtk_mmsys);
  
  static struct platform_driver mtk_mmsys_drv = {
- 	.driver = {
 -- 
 2.39.2
 
