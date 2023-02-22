@@ -4,79 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5D4EC636D6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 18:50:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 441C8C636D6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 19:19:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JGSNKz0q0gsC5HLgSbrlpiQsXVswleKhPPANT6X3ZpI=; b=SQCfClhpGro0em
-	16ZwMwbUMrLouc0xWfLjuxjopPLieEkFslOC3HHTIHIqrJL+WQ/0DiGmwT+NpBmk6LjGxrBcd1Mlb
-	hHJSUdL4YkTUoShppfINfVogrNnPcyb3yN0tWnugs+2IkPwrl/7ynrf83gihmkbG5141DQTRNZFIF
-	VrN59iE1/eyHG+FTr7PgBi6z8bNE//P6EQU4//rdyRX3A5GCL2199S647ivLAaGmTM0bGVW36x1/M
-	80XIIR2h4dhYVucz1XbXHiSn7qu3jE/Lytsfkq9hWT1eelb41ZYpPu1HnuB7ny0LSntIXsMqx8+zR
-	CGkMjKE8t83bfBJ197kA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=04GSnrd8tX0yWJBkr6CyBz0vjBDnbAQt5vSHW+DOXO4=; b=nmPxCSyMEVpa+ZIMi3JGTGW0z6
+	QviNwuRI1XLACPZc64Fa4EHUkUIJvZDUKuS5+nC0PbOdboN52pZSfwrmuAu1vVTmQXwjQCxpPQHzZ
+	dFu+c1uf5TYNDSny1rbU+tzsMI9Jm6SFG5z7LHoDIZlvc8G0msv1CD9XYIdln81uTCyHbICD655nF
+	hacIcESVfhGUwQ62bYXR74wBMKqQNQGos8dsS67TvqBKnCYlGaLL2OvQn5VkIE96c7sKpXqXVasfa
+	IC63YzoCnk6kotdqvclyHpPRAdgXHEW51w2IDowgR+Qt9MO4i352soeGvqXsHxoxHCZ8tUQByoO53
+	EOpMrt1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUuBm-00DYxb-KI; Wed, 22 Feb 2023 18:50:02 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1pUueJ-00DorI-7U; Wed, 22 Feb 2023 19:19:31 +0000
+Received: from mail-ed1-f47.google.com ([209.85.208.47])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUu2k-00DTj2-3a; Wed, 22 Feb 2023 18:40:48 +0000
-Received: by mail-wr1-x432.google.com with SMTP id i11so2586829wrp.5;
-        Wed, 22 Feb 2023 10:40:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=JGSNKz0q0gsC5HLgSbrlpiQsXVswleKhPPANT6X3ZpI=;
-        b=GYafZWwDleHBnO/XlsX3CZ/87Pf2sxrXHGv2JBHFJGTRi8Ixhpk48QnV+XQomsohF0
-         XDEZlJPvVH696bvNEENlheCJ3Q4r0OXlLdTzl4Eu+7yL2gK07lKLFFHI11IXY156SXAK
-         5MWPBI9C5zJtNnkw917bVtQavhldG/kIlDvzD0UpO1GGzkwxYpll4MV1QznCs9p66oKN
-         In5i/CTJVS3wYms2I3Sy64sOd9TZA5it7XCiwD2YITSM3Fpz8XH/gTJmS1MLKjOxonyh
-         AnBRPnTKxGCNi6mrDd0KkFlK/pIsSX3y6YrXex69P6Z8iIK9S6rAN60s/Jz0hEF5Xptd
-         WqNA==
+	id 1pUue9-00DopE-MT; Wed, 22 Feb 2023 19:19:27 +0000
+Received: by mail-ed1-f47.google.com with SMTP id i34so9418723eda.7;
+        Wed, 22 Feb 2023 11:19:20 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=JGSNKz0q0gsC5HLgSbrlpiQsXVswleKhPPANT6X3ZpI=;
-        b=ceWASq6i0WLwO2NcE2ibkLs906quzRF1w1quR7WWN07geuPNy/FNGmUYnWgBmIbMbv
-         j7HGOwbLg4M/azuBLY8vHJeLNrBx5fMHH9EdFRWUv6vnRms78/viRpXvbNY3eGvQU/4K
-         vFon1SlDTEW/yfOt5GE2S88v8wdQReGSUVOzCHhoVYncOYO4ORzLfqlAsaU2PTSSE3m6
-         byqhpTj2tBFA49pU03uGuJImQjeojS/Y0MnHN5sjw/OfbCwiPp1h+6fFo78d79U/Q/J2
-         0QaDh0Oy7FCs0mwAHROvdHWNuQX4J8qwwFtBdZGbUilcbEOInbVCbRlrd5RhRGR0zzce
-         rg3Q==
-X-Gm-Message-State: AO0yUKUliwbYk8AUL4dps8VExgyMQnZwfoVYAAubZpmqNrr4l48oBbc5
-	vz3DDC8FskQpMjm7OV+0uVA=
-X-Google-Smtp-Source: AK7set9XZ6fejEokWr/EtWMPZHKgIkMVbfEKSDaxuwCBb7P6IStu3GLCN2B9q0DPRJkFROsTrHVOKQ==
-X-Received: by 2002:adf:dfd0:0:b0:2c5:54a7:3646 with SMTP id q16-20020adfdfd0000000b002c554a73646mr7460724wrn.5.1677091240944;
-        Wed, 22 Feb 2023 10:40:40 -0800 (PST)
-Received: from arinc9-PC.lan ([37.120.152.236])
-        by smtp.gmail.com with ESMTPSA id l18-20020a5d4112000000b002c56179d39esm9372845wrp.44.2023.02.22.10.40.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 22 Feb 2023 10:40:40 -0800 (PST)
-From: arinc9.unal@gmail.com
-X-Google-Original-From: arinc.unal@arinc9.com
-To: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Subject: [RFC PATCH 16/16] dt-bindings: pinctrl: mediatek: improve schemas
-Date: Wed, 22 Feb 2023 21:39:32 +0300
-Message-Id: <20230222183932.33267-17-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20230222183932.33267-1-arinc.unal@arinc9.com>
-References: <20230222183932.33267-1-arinc.unal@arinc9.com>
+        bh=04GSnrd8tX0yWJBkr6CyBz0vjBDnbAQt5vSHW+DOXO4=;
+        b=Q0K12PwLAh+HZsBMkMhIZNSmPqXhorI0Dkfe71i1RavlwC9a425b6PlhLB8/BzbHds
+         Mjz2h8LzP9ou9j5Bk1K4trag70LK35SmoEbMRjq9U/5QNOl8I0G0xFQGb2/touf5NMqi
+         w2ec6NzpAME1QAV1l+iEAqIlhc6RUdER0q8Zv+d7lQd1dFlEfa/W3mm8OhnOg6dwlDBv
+         nsGgetNYDrx2bgdEIpf/NcQ0PFeaWZ4tHBWv52N6oqrq+TWky6gC0xuQmCSBNh6osMrn
+         K8GENLvjhPffIzv5Fkw51qGYmmRDeiWp39QA0PC9ck9GSUipBwLv6seUYxdIzksCdh2f
+         S9uw==
+X-Gm-Message-State: AO0yUKUdV3sKHlxe41wTw+yaM8nl+UVgJJYvJWhbXk5qvt6SpAmwoBpN
+	l8puhANuy3O53rGNDOS9Zd1o0FCtvHGVyAmnDvQ=
+X-Google-Smtp-Source: AK7set8xxz/RZh0RzAjdttiqcVp+60EmPnPXBh7VVMMeAEehD2l6TAgC1R4KFLm26WfmcY1mcNRpYlfzyFJn3/9ihOs=
+X-Received: by 2002:a50:c00a:0:b0:4af:69e2:52f9 with SMTP id
+ r10-20020a50c00a000000b004af69e252f9mr200729edb.6.1677093558509; Wed, 22 Feb
+ 2023 11:19:18 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+References: <20230221180710.2781027-1-daniel.lezcano@linaro.org> <20230221180710.2781027-2-daniel.lezcano@linaro.org>
+In-Reply-To: <20230221180710.2781027-2-daniel.lezcano@linaro.org>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Wed, 22 Feb 2023 20:19:07 +0100
+Message-ID: <CAJZ5v0ga7e3OFEDETzr1G0pJBjNe=+ajs04=MicSyMq28imCcQ@mail.gmail.com>
+Subject: Re: [PATCH v2 01/16] thermal/core: Add a thermal zone 'devdata' accessor
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: rafael@kernel.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	Guenter Roeck <linux@roeck-us.net>, 
+	=?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>, 
+	Mark Brown <broonie@kernel.org>, Ido Schimmel <idosch@nvidia.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Balsam CHIHI <bchihi@baylibre.com>, Gregory Greenman <gregory.greenman@intel.com>, 
+	Adam Ward <DLG-Adam.Ward.opensource@dm.renesas.com>, 
+	Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	Sebastian Reichel <sebastian.reichel@collabora.com>, Zhang Rui <rui.zhang@intel.com>, 
+	Len Brown <lenb@kernel.org>, Damien Le Moal <damien.lemoal@opensource.wdc.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	NXP Linux Team <linux-imx@nxp.com>, Jean Delvare <jdelvare@suse.com>, 
+	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>, Raju Rangoju <rajur@chelsio.com>, 
+	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Petr Machata <petrm@nvidia.com>, 
+	Kalle Valo <kvalo@kernel.org>, Sebastian Reichel <sre@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Miquel Raynal <miquel.raynal@bootlin.com>, Amit Kucheria <amitk@kernel.org>, 
+	Florian Fainelli <f.fainelli@gmail.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, Markus Mayer <mmayer@broadcom.com>, 
+	Support Opensource <support.opensource@diasemi.com>, Thara Gopinath <thara.gopinath@gmail.com>, 
+	Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	=?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, 
+	Heiko Stuebner <heiko@sntech.de>, Bartlomiej Zolnierkiewicz <bzolnier@gmail.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Orson Zhai <orsonzhai@gmail.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
+	Vasily Khoruzhick <anarsoul@gmail.com>, Yangtao Li <tiny.windzz@gmail.com>, 
+	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Talel Shenhar <talel@amazon.com>, Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>, 
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Stefan Wahren <stefan.wahren@i2se.com>, 
+	ye xingchen <ye.xingchen@zte.com.cn>, Zheng Yongjun <zhengyongjun3@huawei.com>, 
+	Tim Zimmermann <tim@linux4.de>, Yang Li <yang.lee@linux.alibaba.com>, 
+	Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>, Jiang Jian <jiangjian@cdjrlc.com>, 
+	Daniel Golle <daniel@makrotopia.org>, Randy Dunlap <rdunlap@infradead.org>, 
+	Mikko Perttunen <mperttunen@nvidia.com>, 
+	"open list:ACPI THERMAL DRIVER" <linux-acpi@vger.kernel.org>, 
+	"open list:LIBATA SUBSYSTEM (Serial and Parallel ATA drivers)" <linux-ide@vger.kernel.org>, 
+	"moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, 
+	"open list:HARDWARE MONITORING" <linux-hwmon@vger.kernel.org>, 
+	"open list:IIO SUBSYSTEM AND DRIVERS" <linux-iio@vger.kernel.org>, 
+	"open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>, 
+	"open list:INPUT (KEYBOARD, MOUSE, JOYSTICK, TOUCHSCREEN)..." <linux-input@vger.kernel.org>, 
+	"open list:CXGB4 ETHERNET DRIVER (CXGB4)" <netdev@vger.kernel.org>, 
+	"open list:INTEL WIRELESS WIFI LINK (iwlwifi)" <linux-wireless@vger.kernel.org>, 
+	"moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE" <linux-rpi-kernel@lists.infradead.org>, 
+	"open list:QUALCOMM TSENS THERMAL DRIVER" <linux-arm-msm@vger.kernel.org>, 
+	"open list:RENESAS R-CAR THERMAL DRIVERS" <linux-renesas-soc@vger.kernel.org>, 
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, 
+	"open list:SAMSUNG THERMAL DRIVER" <linux-samsung-soc@vger.kernel.org>, 
+	"open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>, 
+	"open list:TI BANDGAP AND THERMAL DRIVER" <linux-omap@vger.kernel.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230222_104042_469710_D587D3B4 
-X-CRM114-Status: GOOD (  18.71  )
+X-CRM114-CacheID: sfid-20230222_111921_800085_3811E2E6 
+X-CRM114-Status: GOOD (  24.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,1424 +125,1355 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>, Daniel Santos <daniel.santos@pobox.com>, Sean Wang <sean.wang@kernel.org>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, William Dean <williamsukatube@gmail.com>, linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>, Matthias Brugger <matthias.bgg@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+On Tue, Feb 21, 2023 at 7:07 PM Daniel Lezcano
+<daniel.lezcano@linaro.org> wrote:
+>
+> The thermal zone device structure is exposed to the different drivers
+> and obviously they access the internals while that should be
+> restricted to the core thermal code.
+>
+> In order to self-encapsulate the thermal core code, we need to prevent
+> the drivers accessing directly the thermal zone structure and provide
+> accessor functions to deal with.
+>
+> Provide an accessor to the 'devdata' structure and make use of it in
+> the different drivers.
+>
+> No functional changes intended.
+>
+> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> Acked-by: Guenter Roeck <linux@roeck-us.net> #hwmon
+> Reviewed-by: Niklas S=C3=B6derlund <niklas.soderlund+renesas@ragnatech.se=
+> #R-Car
+> Acked-by: Mark Brown <broonie@kernel.org>
+> Reviewed-by: Ido Schimmel <idosch@nvidia.com> #mlxsw
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com> #MediaTek auxadc and lvts
+> Reviewed-by: Balsam CHIHI <bchihi@baylibre.com> #Mediatek lvts
+> Acked-by: Gregory Greenman <gregory.greenman@intel.com> #iwlwifi
+> Reviewed-by: Adam Ward <DLG-Adam.Ward.opensource@dm.renesas.com> #da9062
+> Reviewed-by: Baolin Wang <baolin.wang@linux.alibaba.com>  #spread
+> Acked-by: Sebastian Reichel <sebastian.reichel@collabora.com> #power_supp=
+ly
 
-Some schemas include "MediaTek", some "Mediatek". Rename all to "MediaTek"
-to address the naming inconsistency.
+Acked-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
 
-Change the style of description properties to plain style where there's no
-need to preserve the line endings, and vice versa.
-
-Fit the schemas to 80 columns for each line.
-
-Set patternProperties to '^.*mux.*$' on mediatek,mt7986-pinctrl.yaml.
-
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
----
- .../pinctrl/mediatek,mt65xx-pinctrl.yaml      | 24 +++---
- .../pinctrl/mediatek,mt6779-pinctrl.yaml      | 33 +++++----
- .../pinctrl/mediatek,mt6795-pinctrl.yaml      | 33 +++++----
- .../pinctrl/mediatek,mt7620-pinctrl.yaml      |  2 +-
- .../pinctrl/mediatek,mt7621-pinctrl.yaml      |  2 +-
- .../pinctrl/mediatek,mt7622-pinctrl.yaml      | 26 +++----
- .../pinctrl/mediatek,mt76x8-pinctrl.yaml      |  2 +-
- .../pinctrl/mediatek,mt7981-pinctrl.yaml      | 35 +++++----
- .../pinctrl/mediatek,mt7986-pinctrl.yaml      | 64 ++++++++--------
- .../pinctrl/mediatek,mt8183-pinctrl.yaml      | 26 ++++---
- .../pinctrl/mediatek,mt8186-pinctrl.yaml      | 47 ++++++------
- .../pinctrl/mediatek,mt8188-pinctrl.yaml      | 74 ++++++++++---------
- .../pinctrl/mediatek,mt8192-pinctrl.yaml      | 47 ++++++------
- .../pinctrl/mediatek,mt8195-pinctrl.yaml      | 38 +++++-----
- .../pinctrl/mediatek,mt8365-pinctrl.yaml      | 28 +++----
- .../pinctrl/mediatek,rt2880-pinctrl.yaml      |  2 +-
- .../pinctrl/mediatek,rt305x-pinctrl.yaml      |  2 +-
- .../pinctrl/mediatek,rt3352-pinctrl.yaml      |  2 +-
- .../pinctrl/mediatek,rt3883-pinctrl.yaml      |  2 +-
- .../pinctrl/mediatek,rt5350-pinctrl.yaml      |  2 +-
- 20 files changed, 256 insertions(+), 235 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
-index a55c8e4ff26e..206fa8ba9502 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
-@@ -4,13 +4,13 @@
- $id: http://devicetree.org/schemas/pinctrl/mediatek,mt65xx-pinctrl.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
- 
--title: Mediatek MT65xx Pin Controller
-+title: MediaTek MT65xx Pin Controller
- 
- maintainers:
-   - Sean Wang <sean.wang@kernel.org>
- 
--description: |+
--  The Mediatek's Pin controller is used to control SoC pins.
-+description:
-+  The MediaTek's Pin controller is used to control SoC pins.
- 
- properties:
-   compatible:
-@@ -30,7 +30,7 @@ properties:
- 
-   pins-are-numbered:
-     $ref: /schemas/types.yaml#/definitions/flag
--    description: |
-+    description:
-       Specify the subnodes are using numbered pinmux to specify pins. (UNUSED)
-     deprecated: true
- 
-@@ -38,10 +38,10 @@ properties:
- 
-   "#gpio-cells":
-     const: 2
--    description: |
--      Number of cells in GPIO specifier. Since the generic GPIO
--      binding is used, the amount of cells must be specified as 2. See the below
--      mentioned gpio binding representation for description of particular cells.
-+    description:
-+      Number of cells in GPIO specifier. Since the generic GPIO binding is used,
-+      the amount of cells must be specified as 2. See the below mentioned gpio
-+      binding representation for description of particular cells.
- 
-   mediatek,pctl-regmap:
-     $ref: /schemas/types.yaml#/definitions/phandle-array
-@@ -49,7 +49,7 @@ properties:
-       maxItems: 1
-     minItems: 1
-     maxItems: 2
--    description: |
-+    description:
-       Should be phandles of the syscfg node.
- 
-   interrupt-controller: true
-@@ -77,7 +77,7 @@ patternProperties:
-       '(^pins|pins?$)':
-         type: object
-         additionalProperties: false
--        description: |
-+        description:
-           A pinctrl node should contain at least one subnodes representing the
-           pinctrl groups available on the machine. Each subnode will list the
-           pins it needs, and how they should be configured, with regard to muxer
-@@ -95,7 +95,7 @@ patternProperties:
-           bias-disable: true
- 
-           bias-pull-up:
--            description: |
-+            description:
-               Besides generic pinconfig options, it can be used as the pull up
-               settings for 2 pull resistors, R0 and R1. User can configure those
-               special pins. Some macros have been defined for this usage, such
-@@ -117,7 +117,7 @@ patternProperties:
-           input-schmitt-disable: true
- 
-           drive-strength:
--            description: |
-+            description:
-               Can support some arguments, such as MTK_DRIVE_4mA, MTK_DRIVE_6mA,
-               etc. See dt-bindings/pinctrl/mt65xx.h for valid arguments.
- 
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
-index a2141eb0854e..17046d204087 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
-@@ -4,15 +4,15 @@
- $id: http://devicetree.org/schemas/pinctrl/mediatek,mt6779-pinctrl.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
- 
--title: Mediatek MT6779 Pin Controller
-+title: MediaTek MT6779 Pin Controller
- 
- maintainers:
-   - Andy Teng <andy.teng@mediatek.com>
-   - Sean Wang <sean.wang@kernel.org>
- 
- description:
--  The MediaTek pin controller on MT6779 is used to control pin
--  functions, pull up/down resistance and drive strength options.
-+  The MediaTek pin controller on MT6779 is used to control pin functions, pull
-+  up/down resistance and drive strength options.
- 
- properties:
-   compatible:
-@@ -29,22 +29,22 @@ properties:
- 
-   "#gpio-cells":
-     const: 2
--    description: |
--      Number of cells in GPIO specifier. Since the generic GPIO
--      binding is used, the amount of cells must be specified as 2. See the below
--      mentioned gpio binding representation for description of particular cells.
-+    description:
-+      Number of cells in GPIO specifier. Since the generic GPIO binding is used,
-+      the amount of cells must be specified as 2. See the below mentioned gpio
-+      binding representation for description of particular cells.
- 
-   gpio-ranges:
-     minItems: 1
-     maxItems: 5
--    description: |
-+    description:
-       GPIO valid number range.
- 
-   interrupt-controller: true
- 
-   interrupts:
-     maxItems: 1
--    description: |
-+    description:
-       Specifies the summary IRQ.
- 
-   "#interrupt-cells":
-@@ -118,19 +118,20 @@ patternProperties:
-     patternProperties:
-       '-pins*$':
-         type: object
--        description: |
-+        description:
-           A pinctrl node should contain at least one subnodes representing the
-           pinctrl groups available on the machine. Each subnode will list the
-           pins it needs, and how they should be configured, with regard to muxer
--          configuration, pullups, drive strength, input enable/disable and input schmitt.
-+          configuration, pullups, drive strength, input enable/disable and input
-+          schmitt.
-         $ref: "/schemas/pinctrl/pincfg-node.yaml"
- 
-         properties:
-           pinmux:
-             description:
-               integer array, represents gpio pin number and mux setting.
--              Supported pin number and mux varies for different SoCs, and are defined
--              as macros in boot/dts/<soc>-pinfunc.h directly.
-+              Supported pin number and mux varies for different SoCs, and are
-+              defined as macros in boot/dts/<soc>-pinfunc.h directly.
- 
-           bias-disable: true
- 
-@@ -159,7 +160,8 @@ patternProperties:
-           mediatek,pull-up-adv:
-             description: |
-               Pull up setings for 2 pull resistors, R0 and R1. User can
--              configure those special pins. Valid arguments are described as below:
-+              configure those special pins. Valid arguments are described as
-+              below:
-               0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
-               1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
-               2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
-@@ -170,7 +172,8 @@ patternProperties:
-           mediatek,pull-down-adv:
-             description: |
-               Pull down settings for 2 pull resistors, R0 and R1. User can
--              configure those special pins. Valid arguments are described as below:
-+              configure those special pins. Valid arguments are described as
-+              below:
-               0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
-               1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
-               2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml
-index c5131f053b61..5bd78e88fea3 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml
-@@ -4,14 +4,14 @@
- $id: http://devicetree.org/schemas/pinctrl/mediatek,mt6795-pinctrl.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
- 
--title: Mediatek MT6795 Pin Controller
-+title: MediaTek MT6795 Pin Controller
- 
- maintainers:
-   - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-   - Sean Wang <sean.wang@kernel.org>
- 
--description: |
--  The Mediatek's Pin controller is used to control SoC pins.
-+description:
-+  The MediaTek's MT6795 Pin controller is used to control SoC pins.
- 
- properties:
-   compatible:
-@@ -22,8 +22,8 @@ properties:
-   '#gpio-cells':
-     description: |
-       Number of cells in GPIO specifier. Since the generic GPIO binding is used,
--      the amount of cells must be specified as 2. See the below
--      mentioned gpio binding representation for description of particular cells.
-+      the amount of cells must be specified as 2. See the below mentioned gpio
-+      binding representation for description of particular cells.
-     const: 2
- 
-   gpio-ranges:
-@@ -65,8 +65,8 @@ patternProperties:
-           A pinctrl node should contain at least one subnodes representing the
-           pinctrl groups available on the machine. Each subnode will list the
-           pins it needs, and how they should be configured, with regard to muxer
--          configuration, pullups, drive strength, input enable/disable and
--          input schmitt.
-+          configuration, pullups, drive strength, input enable/disable and input
-+          schmitt.
-           An example of using macro:
-           pincontroller {
-             /* GPIO0 set as multifunction GPIO0 */
-@@ -86,11 +86,10 @@ patternProperties:
- 
-         properties:
-           pinmux:
--            description: |
-+            description:
-               Integer array, represents gpio pin number and mux setting.
-               Supported pin number and mux varies for different SoCs, and are
--              defined as macros in dt-bindings/pinctrl/<soc>-pinfunc.h
--              directly.
-+              defined as macros in dt-bindings/pinctrl/<soc>-pinfunc.h directly.
- 
-           drive-strength:
-             enum: [2, 4, 6, 8, 10, 12, 14, 16]
-@@ -100,7 +99,7 @@ patternProperties:
-               - type: boolean
-               - enum: [100, 101, 102, 103]
-                 description: mt6795 pull down PUPD/R0/R1 type define value.
--            description: |
-+            description:
-                For normal pull down type, it is not necessary to specify R1R0
-                values; When pull down type is PUPD/R0/R1, adding R1R0 defines
-                will set different resistance values.
-@@ -110,10 +109,10 @@ patternProperties:
-               - type: boolean
-               - enum: [100, 101, 102, 103]
-                 description: mt6795 pull up PUPD/R0/R1 type define value.
--            description: |
-+            description:
-                For normal pull up type, it is not necessary to specify R1R0
--               values; When pull up type is PUPD/R0/R1, adding R1R0 defines
--               will set different resistance values.
-+               values; When pull up type is PUPD/R0/R1, adding R1R0 defines will
-+               set different resistance values.
- 
-           bias-disable: true
- 
-@@ -132,7 +131,8 @@ patternProperties:
-           mediatek,pull-up-adv:
-             description: |
-               Pull up setings for 2 pull resistors, R0 and R1. User can
--              configure those special pins. Valid arguments are described as below:
-+              configure those special pins. Valid arguments are described as
-+              below:
-               0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
-               1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
-               2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
-@@ -143,7 +143,8 @@ patternProperties:
-           mediatek,pull-down-adv:
-             description: |
-               Pull down settings for 2 pull resistors, R0 and R1. User can
--              configure those special pins. Valid arguments are described as below:
-+              configure those special pins. Valid arguments are described as
-+              below:
-               0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
-               1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
-               2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml
-index ea4a1194fbc4..2a5495a3a717 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Arınç ÜNAL <arinc.unal@arinc9.com>
-   - Sergio Paracuellos <sergio.paracuellos@gmail.com>
- 
--description:
-+description: |
-   MediaTek MT7620 pin controller for MT7620 SoC.
-   The pin controller can only set the muxing of pin groups. Muxing individual
-   pins is not supported. There is no pinconf support.
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7621-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7621-pinctrl.yaml
-index 4dfe3da5fd40..1fc227c27bd0 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7621-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7621-pinctrl.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Arınç ÜNAL <arinc.unal@arinc9.com>
-   - Sergio Paracuellos <sergio.paracuellos@gmail.com>
- 
--description:
-+description: |
-   MediaTek MT7621 pin controller for MT7621 SoC.
-   The pin controller can only set the muxing of pin groups. Muxing individual
-   pins is not supported. There is no pinconf support.
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-index ac93eb8f01a6..740a26e1ede1 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-@@ -4,12 +4,12 @@
- $id: http://devicetree.org/schemas/pinctrl/mediatek,mt7622-pinctrl.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
- 
--title: Mediatek MT7622 Pin Controller
-+title: MediaTek MT7622 Pin Controller
- 
- maintainers:
-   - Sean Wang <sean.wang@kernel.org>
- 
--description: |+
-+description:
-   The MediaTek's MT7622 Pin controller is used to control SoC pins.
- 
- properties:
-@@ -29,10 +29,10 @@ properties:
- 
-   "#gpio-cells":
-     const: 2
--    description: |
--      Number of cells in GPIO specifier. Since the generic GPIO
--      binding is used, the amount of cells must be specified as 2. See the below
--      mentioned gpio binding representation for description of particular cells.
-+    description:
-+      Number of cells in GPIO specifier. Since the generic GPIO binding is used,
-+      the amount of cells must be specified as 2. See the below mentioned gpio
-+      binding representation for description of particular cells.
- 
-   interrupt-controller: true
- 
-@@ -68,18 +68,18 @@ patternProperties:
-       '^mux(-|$)':
-         type: object
-         additionalProperties: false
--        description: |
-+        description:
-           pinmux configuration nodes.
-         $ref: "/schemas/pinctrl/pinmux-node.yaml"
-         properties:
-           function:
--            description: |
-+            description:
-               A string containing the name of the function to mux to the group.
-             enum: [emmc, eth, i2c, i2s, ir, led, flash, pcie, pmic, pwm, sd,
-                    spi, tdm, uart, watchdog, wifi]
- 
-           groups:
--            description: |
-+            description:
-               An array of strings. Each string contains the name of a group.
- 
-           drive-strength:
-@@ -247,7 +247,7 @@ patternProperties:
-       '^conf(-|$)':
-         type: object
-         additionalProperties: false
--        description: |
-+        description:
-           pinconf configuration nodes.
-         $ref: "/schemas/pinctrl/pincfg-node.yaml"
- 
-@@ -258,7 +258,7 @@ patternProperties:
-               Valid values are the same as the pinmux node.
- 
-           pins:
--            description: |
-+            description:
-               An array of strings. Each string contains the name of a pin.
-             enum: [GPIO_A, I2S1_IN, I2S1_OUT, I2S_BCLK, I2S_WS, I2S_MCLK, TXD0,
-                    RXD0, SPI_WP, SPI_HOLD, SPI_CLK, SPI_MOSI, SPI_MISO, SPI_CS,
-@@ -315,14 +315,14 @@ patternProperties:
-             enum: [0, 1]
- 
-           mediatek,tdsel:
--            description: |
-+            description:
-               An integer describing the steps for output level shifter duty
-               cycle when asserted (high pulse width adjustment). Valid arguments
-               are from 0 to 15.
-             $ref: /schemas/types.yaml#/definitions/uint32
- 
-           mediatek,rdsel:
--            description: |
-+            description:
-               An integer describing the steps for input level shifter duty cycle
-               when asserted (high pulse width adjustment). Valid arguments are
-               from 0 to 63.
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt76x8-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt76x8-pinctrl.yaml
-index c818c8947866..48d563886e57 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt76x8-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt76x8-pinctrl.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Arınç ÜNAL <arinc.unal@arinc9.com>
-   - Sergio Paracuellos <sergio.paracuellos@gmail.com>
- 
--description:
-+description: |
-   MediaTek MT76X8 pin controller for MT7628 and MT7688 SoCs.
-   The pin controller can only set the muxing of pin groups. Muxing individual
-   pins is not supported. There is no pinconf support.
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7981-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7981-pinctrl.yaml
-index 74c66fbcb2ae..10717cee9058 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7981-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7981-pinctrl.yaml
-@@ -4,7 +4,7 @@
- $id: http://devicetree.org/schemas/pinctrl/mediatek,mt7981-pinctrl.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
- 
--title: Mediatek MT7981 Pin Controller
-+title: MediaTek MT7981 Pin Controller
- 
- maintainers:
-   - Daniel Golle <daniel@makrotopia.org>
-@@ -37,7 +37,7 @@ properties:
- 
-   "#gpio-cells":
-     const: 2
--    description: >
-+    description:
-       Number of cells in GPIO specifier. Since the generic GPIO binding is used,
-       the amount of cells must be specified as 2. See the below mentioned gpio
-       binding representation for description of particular cells.
-@@ -111,7 +111,9 @@ patternProperties:
-           "watchdog1"            "watchdog"  13
-           "udi"                  "udi"       9, 10, 11, 12, 13
-           "drv_vbus"             "usb"       14
--          "emmc_45"              "flash"     15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25
-+          "emmc_45"              "flash"     15, 16, 17, 18, 19, 20, 21, 22, 23,
-+                                             24, 25
-+
-           "snfi"                 "flash"     16, 17, 18, 19, 20, 21
-           "spi0"                 "spi"       16, 17, 18, 19
-           "spi0_wp_hold"         "spi"       20, 21
-@@ -148,7 +150,7 @@ patternProperties:
-           "wf5g_led0"            "led"       31
-           "wf5g_led1"            "led"       35
-           "mt7531_int"           "eth"       38
--          "ant_sel"              "ant"       14, 15, 16, 17, 18, 19, 20, 21, 22
-+          "ant_sel"              "ant"       14, 15, 16, 17, 18, 19, 20, 21, 22,
-                                              23, 24, 25, 34, 35
- 
-         $ref: /schemas/pinctrl/pinmux-node.yaml
-@@ -256,7 +258,8 @@ patternProperties:
-             then:
-               properties:
-                 groups:
--                  enum: [gbe_led0, gbe_led1, wf2g_led0, wf2g_led1, wf5g_led0, wf5g_led1]
-+                  enum: [gbe_led0, gbe_led1, wf2g_led0, wf2g_led1, wf5g_led0,
-+                         wf5g_led1]
-           - if:
-               properties:
-                 function:
-@@ -275,7 +278,8 @@ patternProperties:
-               properties:
-                 groups:
-                   items:
--                    enum: [spi1_0, spi0, spi0_wp_hold, spi1_1, spi2, spi2_wp_hold]
-+                    enum: [spi1_0, spi0, spi0_wp_hold, spi1_1, spi2,
-+                           spi2_wp_hold]
-                   maxItems: 4
-           - if:
-               properties:
-@@ -332,13 +336,14 @@ patternProperties:
-                      JTAG_JTDO, JTAG_JTDI, JTAG_JTMS, JTAG_JTCLK, JTAG_JTRST_N,
-                      WO_JTAG_JTDO, WO_JTAG_JTDI, WO_JTAG_JTMS, WO_JTAG_JTCLK,
-                      WO_JTAG_JTRST_N, USB_VBUS, PWM0, SPI0_CLK, SPI0_MOSI,
--                     SPI0_MISO, SPI0_CS, SPI0_HOLD, SPI0_WP, SPI1_CLK, SPI1_MOSI,
--                     SPI1_MISO, SPI1_CS, SPI2_CLK, SPI2_MOSI, SPI2_MISO, SPI2_CS,
--                     SPI2_HOLD, SPI2_WP, UART0_RXD, UART0_TXD, PCIE_CLK_REQ,
--                     PCIE_WAKE_N, SMI_MDC, SMI_MDIO, GBE_INT, GBE_RESET,
--                     WF_DIG_RESETB, WF_CBA_RESETB, WF_XO_REQ, WF_TOP_CLK,
--                     WF_TOP_DATA, WF_HB1, WF_HB2, WF_HB3, WF_HB4, WF_HB0,
--                     WF_HB0_B, WF_HB5, WF_HB6, WF_HB7, WF_HB8, WF_HB9, WF_HB10]
-+                     SPI0_MISO, SPI0_CS, SPI0_HOLD, SPI0_WP, SPI1_CLK,
-+                     SPI1_MOSI, SPI1_MISO, SPI1_CS, SPI2_CLK, SPI2_MOSI,
-+                     SPI2_MISO, SPI2_CS, SPI2_HOLD, SPI2_WP, UART0_RXD,
-+                     UART0_TXD, PCIE_CLK_REQ, PCIE_WAKE_N, SMI_MDC, SMI_MDIO,
-+                     GBE_INT, GBE_RESET, WF_DIG_RESETB, WF_CBA_RESETB,
-+                     WF_XO_REQ, WF_TOP_CLK, WF_TOP_DATA, WF_HB1, WF_HB2, WF_HB3,
-+                     WF_HB4, WF_HB0, WF_HB0_B, WF_HB5, WF_HB6, WF_HB7, WF_HB8,
-+                     WF_HB9, WF_HB10]
-             maxItems: 57
- 
-           bias-disable: true
-@@ -348,7 +353,7 @@ patternProperties:
-               - type: boolean
-                 description: normal pull up.
-               - enum: [100, 101, 102, 103]
--                description: >
-+                description:
-                   PUPD/R1/R0 pull down type. See MTK_PUPD_SET_R1R0 defines in
-                   dt-bindings/pinctrl/mt65xx.h.
- 
-@@ -357,7 +362,7 @@ patternProperties:
-               - type: boolean
-                 description: normal pull down.
-               - enum: [100, 101, 102, 103]
--                description: >
-+                description:
-                   PUPD/R1/R0 pull down type. See MTK_PUPD_SET_R1R0 defines in
-                   dt-bindings/pinctrl/mt65xx.h.
- 
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-index 216b356cd519..f5e982375b44 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-@@ -4,12 +4,12 @@
- $id: http://devicetree.org/schemas/pinctrl/mediatek,mt7986-pinctrl.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
- 
--title: Mediatek MT7986 Pin Controller
-+title: MediaTek MT7986 Pin Controller
- 
- maintainers:
-   - Sean Wang <sean.wang@kernel.org>
- 
--description: |+
-+description:
-   The MediaTek's MT7986 Pin controller is used to control SoC pins.
- 
- properties:
-@@ -37,15 +37,15 @@ properties:
- 
-   "#gpio-cells":
-     const: 2
--    description: |
--      Number of cells in GPIO specifier. Since the generic GPIO
--      binding is used, the amount of cells must be specified as 2. See the below
--      mentioned gpio binding representation for description of particular cells.
-+    description:
-+      Number of cells in GPIO specifier. Since the generic GPIO binding is used,
-+      the amount of cells must be specified as 2. See the below mentioned gpio
-+      binding representation for description of particular cells.
- 
-   gpio-ranges:
-     minItems: 1
-     maxItems: 5
--    description: |
-+    description:
-       GPIO valid number range.
- 
-   interrupt-controller: true
-@@ -72,7 +72,7 @@ patternProperties:
-     additionalProperties: false
- 
-     patternProperties:
--      '.*mux.*':
-+      '^.*mux.*$':
-         type: object
-         additionalProperties: false
-         description: |
-@@ -81,7 +81,7 @@ patternProperties:
-           The following table shows the effective values of "group", "function"
-           properties and chip pinout pins
- 
--          groups	    function    pins (in pin#)
-+          groups            function    pins (in pin#)
-           ---------------------------------------------------------------------
-           "watchdog"        "watchdog"  0
-           "wifi_led"        "led"       1, 2
-@@ -97,8 +97,9 @@ patternProperties:
-           "pwm1_0"          "pwm"       22,
-           "snfi"            "flash"     23, 24, 25, 26, 27, 28
-           "spi1_2"          "spi"       29, 30, 31, 32
--          "emmc_45"         "emmc"      22, 23, 24, 25, 26, 27, 28, 29, 30,
--                                        31, 32
-+          "emmc_45"         "emmc"      22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
-+                                        32
-+
-           "spi1_1"          "spi"       23, 24, 25, 26
-           "uart1_2_rx_tx"   "uart"      29, 30
-           "uart1_2_cts_rts" "uart"      31, 32
-@@ -115,8 +116,9 @@ patternProperties:
-           "pcie_pereset"    "pcie"      41
-           "uart1"           "uart"      42, 43, 44, 45
-           "uart2"           "uart"      46, 47, 48, 49
--          "emmc_51"         "emmc"      50, 51, 52, 53, 54, 55, 56, 57, 57,
--                                        59, 60, 61
-+          "emmc_51"         "emmc"      50, 51, 52, 53, 54, 55, 56, 57, 58, 59,
-+                                        60, 61
-+
-           "pcm"             "audio"     62, 63, 64, 65
-           "i2s"             "audio"     62, 63, 64, 65
-           "switch_int"      "eth"       66
-@@ -129,18 +131,17 @@ patternProperties:
-         $ref: "/schemas/pinctrl/pinmux-node.yaml"
-         properties:
-           function:
--            description: |
-+            description:
-               A string containing the name of the function to mux to the group.
-               There is no "audio", "pcie" functions on mt7986b, you can only use
-               those functions on mt7986a.
-             enum: [audio, emmc, eth, i2c, led, flash, pcie, pwm, spi, uart,
-                    watchdog, wifi]
-           groups:
--            description: |
-+            description:
-               An array of strings. Each string contains the name of a group.
--              There is no "pcie_pereset", "uart1", "uart2" "emmc_51", "pcm",
--              and "i2s" groups on mt7986b, you can only use those groups on
--              mt7986a.
-+              There is no "pcie_pereset", "uart1", "uart2" "emmc_51", "pcm", and
-+              "i2s" groups on mt7986b, you can only use those groups on mt7986a.
-         required:
-           - function
-           - groups
-@@ -258,7 +259,7 @@ patternProperties:
-       '.*conf.*':
-         type: object
-         additionalProperties: false
--        description: |
-+        description:
-           pinconf configuration nodes.
-         $ref: "/schemas/pinctrl/pincfg-node.yaml"
- 
-@@ -271,16 +272,17 @@ patternProperties:
-             items:
-               enum: [SYS_WATCHDOG, WF2G_LED, WF5G_LED, I2C_SCL, I2C_SDA, GPIO_0,
-                      GPIO_1, GPIO_2, GPIO_3, GPIO_4, GPIO_5, GPIO_6, GPIO_7,
--                     GPIO_8, GPIO_9, GPIO_10, GPIO_11, GPIO_12, GPIO_13, GPIO_14,
--                     GPIO_15, PWM0, PWM1, SPI0_CLK, SPI0_MOSI, SPI0_MISO, SPI0_CS,
--                     SPI0_HOLD, SPI0_WP, SPI1_CLK, SPI1_MOSI, SPI1_MISO, SPI1_CS,
--                     SPI2_CLK, SPI2_MOSI, SPI2_MISO, SPI2_CS, SPI2_HOLD, SPI2_WP,
--                     UART0_RXD, UART0_TXD, PCIE_PERESET_N, UART1_RXD, UART1_TXD,
--                     UART1_CTS, UART1_RTS, UART2_RXD, UART2_TXD, UART2_CTS,
--                     UART2_RTS, EMMC_DATA_0, EMMC_DATA_1, EMMC_DATA_2,
--                     EMMC_DATA_3, EMMC_DATA_4, EMMC_DATA_5, EMMC_DATA_6,
--                     EMMC_DATA_7, EMMC_CMD, EMMC_CK, EMMC_DSL, EMMC_RSTB, PCM_DTX,
--                     PCM_DRX, PCM_CLK, PCM_FS, MT7531_INT, SMI_MDC, SMI_MDIO,
-+                     GPIO_8, GPIO_9, GPIO_10, GPIO_11, GPIO_12, GPIO_13,
-+                     GPIO_14, GPIO_15, PWM0, PWM1, SPI0_CLK, SPI0_MOSI,
-+                     SPI0_MISO, SPI0_CS, SPI0_HOLD, SPI0_WP, SPI1_CLK,
-+                     SPI1_MOSI, SPI1_MISO, SPI1_CS, SPI2_CLK, SPI2_MOSI,
-+                     SPI2_MISO, SPI2_CS, SPI2_HOLD, SPI2_WP, UART0_RXD,
-+                     UART0_TXD, PCIE_PERESET_N, UART1_RXD, UART1_TXD, UART1_CTS,
-+                     UART1_RTS, UART2_RXD, UART2_TXD, UART2_CTS, UART2_RTS,
-+                     EMMC_DATA_0, EMMC_DATA_1, EMMC_DATA_2, EMMC_DATA_3,
-+                     EMMC_DATA_4, EMMC_DATA_5, EMMC_DATA_6, EMMC_DATA_7,
-+                     EMMC_CMD, EMMC_CK, EMMC_DSL, EMMC_RSTB, PCM_DTX, PCM_DRX,
-+                     PCM_CLK, PCM_FS, MT7531_INT, SMI_MDC, SMI_MDIO,
-                      WF0_DIG_RESETB, WF0_CBA_RESETB, WF0_XO_REQ, WF0_TOP_CLK,
-                      WF0_TOP_DATA, WF0_HB1, WF0_HB2, WF0_HB3, WF0_HB4, WF0_HB0,
-                      WF0_HB0_B, WF0_HB5, WF0_HB6, WF0_HB7, WF0_HB8, WF0_HB9,
-@@ -297,7 +299,7 @@ patternProperties:
-               - type: boolean
-                 description: normal pull up.
-               - enum: [100, 101, 102, 103]
--                description: |
-+                description:
-                   PUPD/R1/R0 pull down type. See MTK_PUPD_SET_R1R0 defines in
-                   dt-bindings/pinctrl/mt65xx.h.
- 
-@@ -306,7 +308,7 @@ patternProperties:
-               - type: boolean
-                 description: normal pull down.
-               - enum: [100, 101, 102, 103]
--                description: |
-+                description:
-                   PUPD/R1/R0 pull down type. See MTK_PUPD_SET_R1R0 defines in
-                   dt-bindings/pinctrl/mt65xx.h.
- 
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
-index c30cd0d010dd..3b1be7949e8c 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
-@@ -4,12 +4,12 @@
- $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8183-pinctrl.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
- 
--title: Mediatek MT8183 Pin Controller
-+title: MediaTek MT8183 Pin Controller
- 
- maintainers:
-   - Sean Wang <sean.wang@kernel.org>
- 
--description: |+
-+description:
-   The MediaTek's MT8183 Pin controller is used to control SoC pins.
- 
- properties:
-@@ -37,15 +37,15 @@ properties:
- 
-   "#gpio-cells":
-     const: 2
--    description: |
--      Number of cells in GPIO specifier. Since the generic GPIO
--      binding is used, the amount of cells must be specified as 2. See the below
--      mentioned gpio binding representation for description of particular cells.
-+    description:
-+      Number of cells in GPIO specifier. Since the generic GPIO binding is used,
-+      the amount of cells must be specified as 2. See the below mentioned gpio
-+      binding representation for description of particular cells.
- 
-   gpio-ranges:
-     minItems: 1
-     maxItems: 5
--    description: |
-+    description:
-       GPIO valid number range.
- 
-   interrupt-controller: true
-@@ -74,7 +74,7 @@ patternProperties:
-       '^pins':
-         type: object
-         additionalProperties: false
--        description: |
-+        description:
-           A pinctrl node should contain at least one subnodes representing the
-           pinctrl groups available on the machine. Each subnode will list the
-           pins it needs, and how they should be configured, with regard to muxer
-@@ -139,7 +139,8 @@ patternProperties:
-           mediatek,pull-up-adv:
-             description: |
-               Pull up setings for 2 pull resistors, R0 and R1. User can
--              configure those special pins. Valid arguments are described as below:
-+              configure those special pins. Valid arguments are described as
-+              below:
-               0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
-               1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
-               2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
-@@ -150,7 +151,8 @@ patternProperties:
-           mediatek,pull-down-adv:
-             description: |
-               Pull down settings for 2 pull resistors, R0 and R1. User can
--              configure those special pins. Valid arguments are described as below:
-+              configure those special pins. Valid arguments are described as
-+              below:
-               0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
-               1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
-               2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
-@@ -159,14 +161,14 @@ patternProperties:
-             enum: [0, 1, 2, 3]
- 
-           mediatek,tdsel:
--            description: |
-+            description:
-               An integer describing the steps for output level shifter duty
-               cycle when asserted (high pulse width adjustment). Valid arguments
-               are from 0 to 15.
-             $ref: /schemas/types.yaml#/definitions/uint32
- 
-           mediatek,rdsel:
--            description: |
-+            description:
-               An integer describing the steps for input level shifter duty cycle
-               when asserted (high pulse width adjustment). Valid arguments are
-               from 0 to 63.
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8186-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8186-pinctrl.yaml
-index 32d64416eb16..c7abc13a167d 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8186-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8186-pinctrl.yaml
-@@ -4,13 +4,13 @@
- $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8186-pinctrl.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
- 
--title: Mediatek MT8186 Pin Controller
-+title: MediaTek MT8186 Pin Controller
- 
- maintainers:
-   - Sean Wang <sean.wang@mediatek.com>
- 
--description: |
--  The Mediatek's Pin controller is used to control SoC pins.
-+description:
-+  The MediaTek's MT8186 Pin controller is used to control SoC pins.
- 
- properties:
-   compatible:
-@@ -19,10 +19,10 @@ properties:
-   gpio-controller: true
- 
-   '#gpio-cells':
--    description: |
-+    description:
-       Number of cells in GPIO specifier. Since the generic GPIO binding is used,
--      the amount of cells must be specified as 2. See the below
--      mentioned gpio binding representation for description of particular cells.
-+      the amount of cells must be specified as 2. See the below mentioned gpio
-+      binding representation for description of particular cells.
-     const: 2
- 
-   gpio-ranges:
-@@ -31,13 +31,13 @@ properties:
-   gpio-line-names: true
- 
-   reg:
--    description: |
-+    description:
-       Physical address base for gpio base registers. There are 8 different GPIO
-       physical address base in mt8186.
-     maxItems: 8
- 
-   reg-names:
--    description: |
-+    description:
-       Gpio base register names.
-     items:
-       - const: iocfg0
-@@ -60,9 +60,9 @@ properties:
- 
-   mediatek,rsel-resistance-in-si-unit:
-     type: boolean
--    description: |
--      Identifying i2c pins pull up/down type which is RSEL. It can support
--      RSEL define or si unit value(ohm) to set different resistance.
-+    description:
-+      Identifying i2c pins pull up/down type which is RSEL. It can support RSEL
-+      define or si unit value(ohm) to set different resistance.
- 
- # PIN CONFIGURATION NODES
- patternProperties:
-@@ -77,8 +77,8 @@ patternProperties:
-           A pinctrl node should contain at least one subnodes representing the
-           pinctrl groups available on the machine. Each subnode will list the
-           pins it needs, and how they should be configured, with regard to muxer
--          configuration, pullups, drive strength, input enable/disable and
--          input schmitt.
-+          configuration, pullups, drive strength, input enable/disable and input
-+          schmitt.
-           An example of using macro:
-           pincontroller {
-             /* GPIO0 set as multifunction GPIO0 */
-@@ -98,11 +98,10 @@ patternProperties:
- 
-         properties:
-           pinmux:
--            description: |
-+            description:
-               Integer array, represents gpio pin number and mux setting.
-               Supported pin number and mux varies for different SoCs, and are
--              defined as macros in dt-bindings/pinctrl/<soc>-pinfunc.h
--              directly.
-+              defined as macros in dt-bindings/pinctrl/<soc>-pinfunc.h directly.
- 
-           drive-strength:
-             enum: [2, 4, 6, 8, 10, 12, 14, 16]
-@@ -129,10 +128,10 @@ patternProperties:
-               For pull down type is RSEL, it can add RSEL define & resistance
-               value(ohm) to set different resistance by identifying property
-               "mediatek,rsel-resistance-in-si-unit".
--              It can support "MTK_PULL_SET_RSEL_000" & "MTK_PULL_SET_RSEL_001"
--              & "MTK_PULL_SET_RSEL_010" & "MTK_PULL_SET_RSEL_011"
--              define in mt8186. It can also support resistance value(ohm)
--              "75000" & "5000" in mt8186.
-+              It can support "MTK_PULL_SET_RSEL_000" & "MTK_PULL_SET_RSEL_001" &
-+              "MTK_PULL_SET_RSEL_010" & "MTK_PULL_SET_RSEL_011" define in
-+              mt8186. It can also support resistance value(ohm) "75000" & "5000"
-+              in mt8186.
-               An example of using RSEL define:
-               pincontroller {
-                 i2c0_pin {
-@@ -174,10 +173,10 @@ patternProperties:
-               For pull up type is RSEL, it can add RSEL define & resistance
-               value(ohm) to set different resistance by identifying property
-               "mediatek,rsel-resistance-in-si-unit".
--              It can support "MTK_PULL_SET_RSEL_000" & "MTK_PULL_SET_RSEL_001"
--              & "MTK_PULL_SET_RSEL_010" & "MTK_PULL_SET_RSEL_011"
--              define in mt8186. It can also support resistance value(ohm)
--              "1000" & "5000" & "10000" & "75000" in mt8186.
-+              It can support "MTK_PULL_SET_RSEL_000" & "MTK_PULL_SET_RSEL_001" &
-+              "MTK_PULL_SET_RSEL_010" & "MTK_PULL_SET_RSEL_011" define in
-+              mt8186. It can also support resistance value(ohm) "1000" & "5000"
-+              & "10000" & "75000" in mt8186.
-               An example of using si unit resistance value(ohm):
-               &pio {
-                 mediatek,rsel-resistance-in-si-unit;
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml
-index 7e750f1e643d..51b3d1247614 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml
-@@ -9,7 +9,7 @@ title: MediaTek MT8188 Pin Controller
- maintainers:
-   - Hui Liu <hui.liu@mediatek.com>
- 
--description: |
-+description:
-   The MediaTek's MT8188 Pin controller is used to control SoC pins.
- 
- properties:
-@@ -19,10 +19,10 @@ properties:
-   gpio-controller: true
- 
-   '#gpio-cells':
--    description: |
--      Number of cells in GPIO specifier, should be two. The first cell
--      is the pin number, the second cell is used to specify optional
--      parameters which are defined in <dt-bindings/gpio/gpio.h>.
-+    description:
-+      Number of cells in GPIO specifier, should be two. The first cell is the
-+      pin number, the second cell is used to specify optional parameters which
-+      are defined in <dt-bindings/gpio/gpio.h>.
-     const: 2
- 
-   gpio-ranges:
-@@ -59,10 +59,11 @@ properties:
- 
-   mediatek,rsel-resistance-in-si-unit:
-     type: boolean
--    description: |
--      We provide two methods to select the resistance for I2C when pull up or pull down.
--      The first is by RSEL definition value, another one is by resistance value(ohm).
--      This flag is used to identify if the method is resistance(si unit) value.
-+    description:
-+      We provide two methods to select the resistance for I2C when pull up or
-+      pull down. The first is by RSEL definition value, another one is by
-+      resistance value(ohm). This flag is used to identify if the method is
-+      resistance(si unit) value.
- 
- # PIN CONFIGURATION NODES
- patternProperties:
-@@ -75,16 +76,16 @@ patternProperties:
-         type: object
-         $ref: "/schemas/pinctrl/pincfg-node.yaml"
-         additionalProperties: false
--        description: |
-+        description:
-           A pinctrl node should contain at least one subnode representing the
-           pinctrl groups available on the machine. Each subnode will list the
-           pins it needs, and how they should be configured, with regard to muxer
--          configuration, pullups, drive strength, input enable/disable and
--          input schmitt.
-+          configuration, pullups, drive strength, input enable/disable and input
-+          schmitt.
- 
-         properties:
-           pinmux:
--            description: |
-+            description:
-               Integer array, represents gpio pin number and mux setting.
-               Supported pin number and mux varies for different SoCs, and are
-               defined as macros in dt-bindings/pinctrl/mediatek,<soc>-pinfunc.h
-@@ -106,18 +107,21 @@ patternProperties:
-               - enum: [75000, 5000]
-                 description: mt8188 pull down RSEL type si unit value(ohm).
-             description: |
--              For pull down type is normal, it doesn't need add RSEL & R1R0 define
--              and resistance value.
-+              For pull down type is normal, it doesn't need add RSEL & R1R0
-+              define and resistance value.
-               For pull down type is PUPD/R0/R1 type, it can add R1R0 define to
-               set different resistance. It can support "MTK_PUPD_SET_R1R0_00" &
--              "MTK_PUPD_SET_R1R0_01" & "MTK_PUPD_SET_R1R0_10" & "MTK_PUPD_SET_R1R0_11"
--              define in mt8188.
--              For pull down type is RSEL, it can add RSEL define & resistance value(ohm)
--              to set different resistance by identifying property "mediatek,rsel-resistance-in-si-unit".
--              It can support "MTK_PULL_SET_RSEL_000" & "MTK_PULL_SET_RSEL_001"
--              & "MTK_PULL_SET_RSEL_010" & "MTK_PULL_SET_RSEL_011" & "MTK_PULL_SET_RSEL_100"
--              & "MTK_PULL_SET_RSEL_101" & "MTK_PULL_SET_RSEL_110" & "MTK_PULL_SET_RSEL_111"
--              define in mt8188. It can also support resistance value(ohm) "75000" & "5000" in mt8188.
-+              "MTK_PUPD_SET_R1R0_01" & "MTK_PUPD_SET_R1R0_10" &
-+              "MTK_PUPD_SET_R1R0_11" define in mt8188.
-+              For pull down type is RSEL, it can add RSEL define & resistance
-+              value(ohm) to set different resistance by identifying property
-+              "mediatek,rsel-resistance-in-si-unit". It can support
-+              "MTK_PULL_SET_RSEL_000" & "MTK_PULL_SET_RSEL_001" &
-+              "MTK_PULL_SET_RSEL_010" & "MTK_PULL_SET_RSEL_011" &
-+              "MTK_PULL_SET_RSEL_100" & "MTK_PULL_SET_RSEL_101" &
-+              "MTK_PULL_SET_RSEL_110" & "MTK_PULL_SET_RSEL_111" define in
-+              mt8188. It can also support resistance value(ohm) "75000" & "5000"
-+              in mt8188.
- 
-           bias-pull-up:
-             oneOf:
-@@ -131,17 +135,19 @@ patternProperties:
-             description: |
-               For pull up type is normal, it don't need add RSEL & R1R0 define
-               and resistance value.
--              For pull up type is PUPD/R0/R1 type, it can add R1R0 define to
--              set different resistance. It can support "MTK_PUPD_SET_R1R0_00" &
--              "MTK_PUPD_SET_R1R0_01" & "MTK_PUPD_SET_R1R0_10" & "MTK_PUPD_SET_R1R0_11"
--              define in mt8188.
--              For pull up type is RSEL, it can add RSEL define & resistance value(ohm)
--              to set different resistance by identifying property "mediatek,rsel-resistance-in-si-unit".
--              It can support "MTK_PULL_SET_RSEL_000" & "MTK_PULL_SET_RSEL_001"
--              & "MTK_PULL_SET_RSEL_010" & "MTK_PULL_SET_RSEL_011" & "MTK_PULL_SET_RSEL_100"
--              & "MTK_PULL_SET_RSEL_101" & "MTK_PULL_SET_RSEL_110" & "MTK_PULL_SET_RSEL_111"
--              define in mt8188. It can also support resistance value(ohm)
--              "1000" & "1500" & "2000" & "3000" & "4000" & "5000" & "10000" & "75000" in mt8188.
-+              For pull up type is PUPD/R0/R1 type, it can add R1R0 define to set
-+              different resistance. It can support "MTK_PUPD_SET_R1R0_00" &
-+              "MTK_PUPD_SET_R1R0_01" & "MTK_PUPD_SET_R1R0_10" &
-+              "MTK_PUPD_SET_R1R0_11" define in mt8188.
-+              For pull up type is RSEL, it can add RSEL define & resistance
-+              value(ohm) to set different resistance by identifying property
-+              "mediatek,rsel-resistance-in-si-unit". It can support
-+              "MTK_PULL_SET_RSEL_000" & "MTK_PULL_SET_RSEL_001" &
-+              "MTK_PULL_SET_RSEL_010" & "MTK_PULL_SET_RSEL_011" &
-+              "MTK_PULL_SET_RSEL_100" & "MTK_PULL_SET_RSEL_101" &
-+              "MTK_PULL_SET_RSEL_110" & "MTK_PULL_SET_RSEL_111" define in
-+              mt8188. It can also support resistance value(ohm) "1000" & "1500"
-+              & "2000" & "3000" & "4000" & "5000" & "10000" & "75000" in mt8188.
- 
-           bias-disable: true
- 
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8192-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8192-pinctrl.yaml
-index e764cb0f8c1a..88a466769938 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8192-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8192-pinctrl.yaml
-@@ -4,13 +4,13 @@
- $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8192-pinctrl.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
- 
--title: Mediatek MT8192 Pin Controller
-+title: MediaTek MT8192 Pin Controller
- 
- maintainers:
-   - Sean Wang <sean.wang@mediatek.com>
- 
--description: |
--  The Mediatek's Pin controller is used to control SoC pins.
-+description:
-+  The MediaTek's MT8192 Pin controller is used to control SoC pins.
- 
- properties:
-   compatible:
-@@ -19,10 +19,10 @@ properties:
-   gpio-controller: true
- 
-   '#gpio-cells':
--    description: |
-+    description:
-       Number of cells in GPIO specifier. Since the generic GPIO binding is used,
--      the amount of cells must be specified as 2. See the below
--      mentioned gpio binding representation for description of particular cells.
-+      the amount of cells must be specified as 2. See the below mentioned gpio
-+      binding representation for description of particular cells.
-     const: 2
- 
-   gpio-ranges:
-@@ -32,13 +32,13 @@ properties:
-   gpio-line-names: true
- 
-   reg:
--    description: |
--      Physical address base for gpio base registers. There are 11 GPIO
--      physical address base in mt8192.
-+    description:
-+      Physical address base for gpio base registers. There are 11 GPIO physical
-+      address base in mt8192.
-     maxItems: 11
- 
-   reg-names:
--    description: |
-+    description:
-       Gpio base register names.
-     maxItems: 11
- 
-@@ -59,25 +59,26 @@ patternProperties:
-     patternProperties:
-       '^pins':
-         type: object
--        description: |
-+        description:
-           A pinctrl node should contain at least one subnodes representing the
-           pinctrl groups available on the machine. Each subnode will list the
-           pins it needs, and how they should be configured, with regard to muxer
--          configuration, pullups, drive strength, input enable/disable and
--          input schmitt.
-+          configuration, pullups, drive strength, input enable/disable and input
-+          schmitt.
-         $ref: "pinmux-node.yaml"
- 
-         properties:
-           pinmux:
--            description: |
-+            description:
-               Integer array, represents gpio pin number and mux setting.
--              Supported pin number and mux varies for different SoCs, and are defined
--              as macros in dt-bindings/pinctrl/<soc>-pinfunc.h directly.
-+              Supported pin number and mux varies for different SoCs, and are
-+              defined as macros in dt-bindings/pinctrl/<soc>-pinfunc.h directly.
- 
-           drive-strength:
--            description: |
--              It can support some arguments, such as MTK_DRIVE_4mA, MTK_DRIVE_6mA, etc. See
--              dt-bindings/pinctrl/mt65xx.h. It can only support 2/4/6/8/10/12/14/16mA in mt8192.
-+            description:
-+              It can support some arguments, such as MTK_DRIVE_4mA,
-+              MTK_DRIVE_6mA, etc. See dt-bindings/pinctrl/mt65xx.h. It can only
-+              support 2/4/6/8/10/12/14/16mA in mt8192.
-             enum: [2, 4, 6, 8, 10, 12, 14, 16]
- 
-           drive-strength-microamp:
-@@ -91,8 +92,8 @@ patternProperties:
-                 description: PUPD/R1/R0 pull down type. See MTK_PUPD_SET_R1R0_
-                   defines in dt-bindings/pinctrl/mt65xx.h.
-               - enum: [200, 201, 202, 203]
--                description: RSEL pull down type. See MTK_PULL_SET_RSEL_
--                  defines in dt-bindings/pinctrl/mt65xx.h.
-+                description: RSEL pull down type. See MTK_PULL_SET_RSEL_ defines
-+                  in dt-bindings/pinctrl/mt65xx.h.
- 
-           bias-pull-up:
-             oneOf:
-@@ -102,8 +103,8 @@ patternProperties:
-                 description: PUPD/R1/R0 pull up type. See MTK_PUPD_SET_R1R0_
-                   defines in dt-bindings/pinctrl/mt65xx.h.
-               - enum: [200, 201, 202, 203]
--                description: RSEL pull up type. See MTK_PULL_SET_RSEL_
--                  defines in dt-bindings/pinctrl/mt65xx.h.
-+                description: RSEL pull up type. See MTK_PULL_SET_RSEL_ defines
-+                  in dt-bindings/pinctrl/mt65xx.h.
- 
-           bias-disable: true
- 
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml
-index 7b3dfc14eedc..c1c8c99ba139 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml
-@@ -4,13 +4,13 @@
- $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8195-pinctrl.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
- 
--title: Mediatek MT8195 Pin Controller
-+title: MediaTek MT8195 Pin Controller
- 
- maintainers:
-   - Sean Wang <sean.wang@mediatek.com>
- 
--description: |
--  The Mediatek's Pin controller is used to control SoC pins.
-+description:
-+  The MediaTek's MT8195 Pin controller is used to control SoC pins.
- 
- properties:
-   compatible:
-@@ -19,10 +19,10 @@ properties:
-   gpio-controller: true
- 
-   '#gpio-cells':
--    description: |
-+    description:
-       Number of cells in GPIO specifier. Since the generic GPIO binding is used,
--      the amount of cells must be specified as 2. See the below
--      mentioned gpio binding representation for description of particular cells.
-+      the amount of cells must be specified as 2. See the below mentioned gpio
-+      binding representation for description of particular cells.
-     const: 2
- 
-   gpio-ranges:
-@@ -32,13 +32,13 @@ properties:
-   gpio-line-names: true
- 
-   reg:
--    description: |
--      Physical address base for gpio base registers. There are 8 GPIO
--      physical address base in mt8195.
-+    description:
-+      Physical address base for gpio base registers. There are 8 GPIO physical
-+      address base in mt8195.
-     maxItems: 8
- 
-   reg-names:
--    description: |
-+    description:
-       Gpio base register names.
-     maxItems: 8
- 
-@@ -53,9 +53,9 @@ properties:
- 
-   mediatek,rsel-resistance-in-si-unit:
-     type: boolean
--    description: |
--      Identifying i2c pins pull up/down type which is RSEL. It can support
--      RSEL define or si unit value(ohm) to set different resistance.
-+    description:
-+      Identifying i2c pins pull up/down type which is RSEL. It can support RSEL
-+      define or si unit value(ohm) to set different resistance.
- 
- # PIN CONFIGURATION NODES
- patternProperties:
-@@ -70,8 +70,8 @@ patternProperties:
-           A pinctrl node should contain at least one subnodes representing the
-           pinctrl groups available on the machine. Each subnode will list the
-           pins it needs, and how they should be configured, with regard to muxer
--          configuration, pullups, drive strength, input enable/disable and
--          input schmitt.
-+          configuration, pullups, drive strength, input enable/disable and input
-+          schmitt.
-           An example of using macro:
-           pincontroller {
-             /* GPIO0 set as multifunction GPIO0 */
-@@ -91,7 +91,7 @@ patternProperties:
- 
-         properties:
-           pinmux:
--            description: |
-+            description:
-               Integer array, represents gpio pin number and mux setting.
-               Supported pin number and mux varies for different SoCs, and are
-               defined as macros in dt-bindings/pinctrl/<soc>-pinfunc.h
-@@ -174,9 +174,9 @@ patternProperties:
-               & "MTK_PULL_SET_RSEL_010" & "MTK_PULL_SET_RSEL_011"
-               & "MTK_PULL_SET_RSEL_100" & "MTK_PULL_SET_RSEL_101"
-               & "MTK_PULL_SET_RSEL_110" & "MTK_PULL_SET_RSEL_111"
--              define in mt8195. It can also support resistance value(ohm)
--              "1000" & "1500" & "2000" & "3000" & "4000" & "5000" & "10000" &
--              "75000" in mt8195.
-+              define in mt8195. It can also support resistance value(ohm) "1000"
-+              & "1500" & "2000" & "3000" & "4000" & "5000" & "10000" & "75000"
-+              in mt8195.
-               An example of using RSEL define:
-               pincontroller {
-                 i2c0-pins {
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8365-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8365-pinctrl.yaml
-index 4b96884a1afc..1cd9d6e55866 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8365-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8365-pinctrl.yaml
-@@ -4,13 +4,13 @@
- $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8365-pinctrl.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
- 
--title: Mediatek MT8365 Pin Controller
-+title: MediaTek MT8365 Pin Controller
- 
- maintainers:
-   - Zhiyong Tao <zhiyong.tao@mediatek.com>
-   - Bernhard Rosenkränzer <bero@baylibre.com>
- 
--description: |
-+description:
-   The MediaTek's MT8365 Pin controller is used to control SoC pins.
- 
- properties:
-@@ -26,17 +26,17 @@ properties:
-       maxItems: 1
-     minItems: 1
-     maxItems: 2
--    description: |
-+    description:
-       Should be phandles of the syscfg node.
- 
-   gpio-controller: true
- 
-   "#gpio-cells":
-     const: 2
--    description: |
--      Number of cells in GPIO specifier. Since the generic GPIO
--      binding is used, the amount of cells must be specified as 2. See the below
--      mentioned gpio binding representation for description of particular cells.
-+    description:
-+      Number of cells in GPIO specifier. Since the generic GPIO binding is used,
-+      the amount of cells must be specified as 2. See the below mentioned gpio
-+      binding representation for description of particular cells.
- 
-   interrupt-controller: true
- 
-@@ -54,7 +54,7 @@ patternProperties:
-       "pins$":
-         type: object
-         additionalProperties: false
--        description: |
-+        description:
-           A pinctrl node should contain at least one subnode representing the
-           pinctrl groups available on the machine. Each subnode will list the
-           pins it needs, and how they should be configured, with regard to muxer
-@@ -72,7 +72,7 @@ patternProperties:
-           bias-disable: true
- 
-           bias-pull-up:
--            description: |
-+            description:
-               Besides generic pinconfig options, it can be used as the pull up
-               settings for 2 pull resistors, R0 and R1. User can configure those
-               special pins.
-@@ -120,7 +120,8 @@ patternProperties:
-           mediatek,pull-up-adv:
-             description: |
-               Pull up setings for 2 pull resistors, R0 and R1. User can
--              configure those special pins. Valid arguments are described as below:
-+              configure those special pins. Valid arguments are described as
-+              below:
-               0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
-               1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
-               2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
-@@ -131,7 +132,8 @@ patternProperties:
-           mediatek,pull-down-adv:
-             description: |
-               Pull down settings for 2 pull resistors, R0 and R1. User can
--              configure those special pins. Valid arguments are described as below:
-+              configure those special pins. Valid arguments are described as
-+              below:
-               0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
-               1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
-               2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
-@@ -140,14 +142,14 @@ patternProperties:
-             enum: [0, 1, 2, 3]
- 
-           mediatek,tdsel:
--            description: |
-+            description:
-               An integer describing the steps for output level shifter duty
-               cycle when asserted (high pulse width adjustment). Valid arguments
-               are from 0 to 15.
-             $ref: /schemas/types.yaml#/definitions/uint32
- 
-           mediatek,rdsel:
--            description: |
-+            description:
-               An integer describing the steps for input level shifter duty cycle
-               when asserted (high pulse width adjustment). Valid arguments are
-               from 0 to 63.
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,rt2880-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,rt2880-pinctrl.yaml
-index 7395e4434e64..fa03560a13f8 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,rt2880-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,rt2880-pinctrl.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Arınç ÜNAL <arinc.unal@arinc9.com>
-   - Sergio Paracuellos <sergio.paracuellos@gmail.com>
- 
--description:
-+description: |
-   MediaTek RT2880 pin controller for RT2880 SoC.
-   The pin controller can only set the muxing of pin groups. Muxing individual
-   pins is not supported. There is no pinconf support.
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,rt305x-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,rt305x-pinctrl.yaml
-index 1e6c7e7f2fe2..11b46aee36d4 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,rt305x-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,rt305x-pinctrl.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Arınç ÜNAL <arinc.unal@arinc9.com>
-   - Sergio Paracuellos <sergio.paracuellos@gmail.com>
- 
--description:
-+description: |
-   MediaTek RT305X pin controller for RT3050, RT3052, and RT3350 SoCs.
-   The pin controller can only set the muxing of pin groups. Muxing individual
-   pins is not supported. There is no pinconf support.
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,rt3352-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,rt3352-pinctrl.yaml
-index 7a74c1602afc..c88b9fefb9ef 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,rt3352-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,rt3352-pinctrl.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Arınç ÜNAL <arinc.unal@arinc9.com>
-   - Sergio Paracuellos <sergio.paracuellos@gmail.com>
- 
--description:
-+description: |
-   MediaTek RT3352 pin controller for RT3352 SoC.
-   The pin controller can only set the muxing of pin groups. Muxing individual
-   pins is not supported. There is no pinconf support.
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,rt3883-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,rt3883-pinctrl.yaml
-index ab20f67c47f0..bafc2b820dd8 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,rt3883-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,rt3883-pinctrl.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Arınç ÜNAL <arinc.unal@arinc9.com>
-   - Sergio Paracuellos <sergio.paracuellos@gmail.com>
- 
--description:
-+description: |
-   MediaTek RT3883 pin controller for RT3883 SoC.
-   The pin controller can only set the muxing of pin groups. Muxing individual
-   pins is not supported. There is no pinconf support.
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,rt5350-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,rt5350-pinctrl.yaml
-index 5184cea62640..070a9d59e639 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,rt5350-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,rt5350-pinctrl.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - Arınç ÜNAL <arinc.unal@arinc9.com>
-   - Sergio Paracuellos <sergio.paracuellos@gmail.com>
- 
--description:
-+description: |
-   MediaTek RT5350 pin controller for RT5350 SoC.
-   The pin controller can only set the muxing of pin groups. Muxing individual
-   pins is not supported. There is no pinconf support.
--- 
-2.37.2
-
+> ---
+>  drivers/acpi/thermal.c                           | 16 ++++++++--------
+>  drivers/ata/ahci_imx.c                           |  2 +-
+>  drivers/hwmon/hwmon.c                            |  4 ++--
+>  drivers/hwmon/pmbus/pmbus_core.c                 |  2 +-
+>  drivers/hwmon/scmi-hwmon.c                       |  2 +-
+>  drivers/hwmon/scpi-hwmon.c                       |  2 +-
+>  drivers/iio/adc/sun4i-gpadc-iio.c                |  2 +-
+>  drivers/input/touchscreen/sun4i-ts.c             |  2 +-
+>  .../net/ethernet/chelsio/cxgb4/cxgb4_thermal.c   |  2 +-
+>  .../net/ethernet/mellanox/mlxsw/core_thermal.c   | 14 +++++++-------
+>  drivers/net/wireless/intel/iwlwifi/mvm/tt.c      |  4 ++--
+>  drivers/power/supply/power_supply_core.c         |  2 +-
+>  drivers/regulator/max8973-regulator.c            |  2 +-
+>  drivers/thermal/armada_thermal.c                 |  4 ++--
+>  drivers/thermal/broadcom/bcm2711_thermal.c       |  2 +-
+>  drivers/thermal/broadcom/bcm2835_thermal.c       |  2 +-
+>  drivers/thermal/broadcom/brcmstb_thermal.c       |  4 ++--
+>  drivers/thermal/broadcom/ns-thermal.c            |  2 +-
+>  drivers/thermal/broadcom/sr-thermal.c            |  2 +-
+>  drivers/thermal/da9062-thermal.c                 |  2 +-
+>  drivers/thermal/dove_thermal.c                   |  2 +-
+>  drivers/thermal/hisi_thermal.c                   |  2 +-
+>  drivers/thermal/imx8mm_thermal.c                 |  2 +-
+>  drivers/thermal/imx_sc_thermal.c                 |  2 +-
+>  drivers/thermal/imx_thermal.c                    |  6 +++---
+>  drivers/thermal/intel/intel_pch_thermal.c        |  2 +-
+>  drivers/thermal/intel/intel_soc_dts_iosf.c       | 13 +++++--------
+>  drivers/thermal/intel/x86_pkg_temp_thermal.c     |  4 ++--
+>  drivers/thermal/k3_bandgap.c                     |  2 +-
+>  drivers/thermal/k3_j72xx_bandgap.c               |  2 +-
+>  drivers/thermal/kirkwood_thermal.c               |  2 +-
+>  drivers/thermal/max77620_thermal.c               |  2 +-
+>  drivers/thermal/mediatek/auxadc_thermal.c        |  2 +-
+>  drivers/thermal/mediatek/lvts_thermal.c          |  4 ++--
+>  drivers/thermal/qcom/qcom-spmi-adc-tm5.c         |  4 ++--
+>  drivers/thermal/qcom/qcom-spmi-temp-alarm.c      |  4 ++--
+>  drivers/thermal/qoriq_thermal.c                  |  2 +-
+>  drivers/thermal/rcar_gen3_thermal.c              |  4 ++--
+>  drivers/thermal/rcar_thermal.c                   |  3 +--
+>  drivers/thermal/rockchip_thermal.c               |  4 ++--
+>  drivers/thermal/rzg2l_thermal.c                  |  2 +-
+>  drivers/thermal/samsung/exynos_tmu.c             |  4 ++--
+>  drivers/thermal/spear_thermal.c                  |  8 ++++----
+>  drivers/thermal/sprd_thermal.c                   |  2 +-
+>  drivers/thermal/sun8i_thermal.c                  |  2 +-
+>  drivers/thermal/tegra/tegra-bpmp-thermal.c       |  6 ++++--
+>  drivers/thermal/tegra/tegra30-tsensor.c          |  4 ++--
+>  drivers/thermal/thermal-generic-adc.c            |  2 +-
+>  drivers/thermal/thermal_core.c                   |  6 ++++++
+>  drivers/thermal/thermal_mmio.c                   |  2 +-
+>  .../thermal/ti-soc-thermal/ti-thermal-common.c   |  4 ++--
+>  drivers/thermal/uniphier_thermal.c               |  2 +-
+>  include/linux/thermal.h                          |  7 +++++++
+>  53 files changed, 102 insertions(+), 91 deletions(-)
+>
+> diff --git a/drivers/acpi/thermal.c b/drivers/acpi/thermal.c
+> index 0b4b844f9d4c..392b73b3e269 100644
+> --- a/drivers/acpi/thermal.c
+> +++ b/drivers/acpi/thermal.c
+> @@ -498,7 +498,7 @@ static int acpi_thermal_get_trip_points(struct acpi_t=
+hermal *tz)
+>
+>  static int thermal_get_temp(struct thermal_zone_device *thermal, int *te=
+mp)
+>  {
+> -       struct acpi_thermal *tz =3D thermal->devdata;
+> +       struct acpi_thermal *tz =3D thermal_zone_device_priv(thermal);
+>         int result;
+>
+>         if (!tz)
+> @@ -516,7 +516,7 @@ static int thermal_get_temp(struct thermal_zone_devic=
+e *thermal, int *temp)
+>  static int thermal_get_trip_type(struct thermal_zone_device *thermal,
+>                                  int trip, enum thermal_trip_type *type)
+>  {
+> -       struct acpi_thermal *tz =3D thermal->devdata;
+> +       struct acpi_thermal *tz =3D thermal_zone_device_priv(thermal);
+>         int i;
+>
+>         if (!tz || trip < 0)
+> @@ -560,7 +560,7 @@ static int thermal_get_trip_type(struct thermal_zone_=
+device *thermal,
+>  static int thermal_get_trip_temp(struct thermal_zone_device *thermal,
+>                                  int trip, int *temp)
+>  {
+> -       struct acpi_thermal *tz =3D thermal->devdata;
+> +       struct acpi_thermal *tz =3D thermal_zone_device_priv(thermal);
+>         int i;
+>
+>         if (!tz || trip < 0)
+> @@ -613,7 +613,7 @@ static int thermal_get_trip_temp(struct thermal_zone_=
+device *thermal,
+>  static int thermal_get_crit_temp(struct thermal_zone_device *thermal,
+>                                 int *temperature)
+>  {
+> -       struct acpi_thermal *tz =3D thermal->devdata;
+> +       struct acpi_thermal *tz =3D thermal_zone_device_priv(thermal);
+>
+>         if (tz->trips.critical.flags.valid) {
+>                 *temperature =3D deci_kelvin_to_millicelsius_with_offset(
+> @@ -628,7 +628,7 @@ static int thermal_get_crit_temp(struct thermal_zone_=
+device *thermal,
+>  static int thermal_get_trend(struct thermal_zone_device *thermal,
+>                              int trip, enum thermal_trend *trend)
+>  {
+> -       struct acpi_thermal *tz =3D thermal->devdata;
+> +       struct acpi_thermal *tz =3D thermal_zone_device_priv(thermal);
+>         enum thermal_trip_type type;
+>         int i;
+>
+> @@ -670,7 +670,7 @@ static int thermal_get_trend(struct thermal_zone_devi=
+ce *thermal,
+>
+>  static void acpi_thermal_zone_device_hot(struct thermal_zone_device *the=
+rmal)
+>  {
+> -       struct acpi_thermal *tz =3D thermal->devdata;
+> +       struct acpi_thermal *tz =3D thermal_zone_device_priv(thermal);
+>
+>         acpi_bus_generate_netlink_event(tz->device->pnp.device_class,
+>                                         dev_name(&tz->device->dev),
+> @@ -679,7 +679,7 @@ static void acpi_thermal_zone_device_hot(struct therm=
+al_zone_device *thermal)
+>
+>  static void acpi_thermal_zone_device_critical(struct thermal_zone_device=
+ *thermal)
+>  {
+> -       struct acpi_thermal *tz =3D thermal->devdata;
+> +       struct acpi_thermal *tz =3D thermal_zone_device_priv(thermal);
+>
+>         acpi_bus_generate_netlink_event(tz->device->pnp.device_class,
+>                                         dev_name(&tz->device->dev),
+> @@ -693,7 +693,7 @@ static int acpi_thermal_cooling_device_cb(struct ther=
+mal_zone_device *thermal,
+>                                           bool bind)
+>  {
+>         struct acpi_device *device =3D cdev->devdata;
+> -       struct acpi_thermal *tz =3D thermal->devdata;
+> +       struct acpi_thermal *tz =3D thermal_zone_device_priv(thermal);
+>         struct acpi_device *dev;
+>         acpi_handle handle;
+>         int i;
+> diff --git a/drivers/ata/ahci_imx.c b/drivers/ata/ahci_imx.c
+> index a950767f7948..e45e91f5e703 100644
+> --- a/drivers/ata/ahci_imx.c
+> +++ b/drivers/ata/ahci_imx.c
+> @@ -418,7 +418,7 @@ static int __sata_ahci_read_temperature(void *dev, in=
+t *temp)
+>
+>  static int sata_ahci_read_temperature(struct thermal_zone_device *tz, in=
+t *temp)
+>  {
+> -       return __sata_ahci_read_temperature(tz->devdata, temp);
+> +       return __sata_ahci_read_temperature(thermal_zone_device_priv(tz),=
+ temp);
+>  }
+>
+>  static ssize_t sata_ahci_show_temp(struct device *dev,
+> diff --git a/drivers/hwmon/hwmon.c b/drivers/hwmon/hwmon.c
+> index 33edb5c02f7d..3adf5c3c75ed 100644
+> --- a/drivers/hwmon/hwmon.c
+> +++ b/drivers/hwmon/hwmon.c
+> @@ -154,7 +154,7 @@ static DEFINE_IDA(hwmon_ida);
+>  #ifdef CONFIG_THERMAL_OF
+>  static int hwmon_thermal_get_temp(struct thermal_zone_device *tz, int *t=
+emp)
+>  {
+> -       struct hwmon_thermal_data *tdata =3D tz->devdata;
+> +       struct hwmon_thermal_data *tdata =3D thermal_zone_device_priv(tz)=
+;
+>         struct hwmon_device *hwdev =3D to_hwmon_device(tdata->dev);
+>         int ret;
+>         long t;
+> @@ -171,7 +171,7 @@ static int hwmon_thermal_get_temp(struct thermal_zone=
+_device *tz, int *temp)
+>
+>  static int hwmon_thermal_set_trips(struct thermal_zone_device *tz, int l=
+ow, int high)
+>  {
+> -       struct hwmon_thermal_data *tdata =3D tz->devdata;
+> +       struct hwmon_thermal_data *tdata =3D thermal_zone_device_priv(tz)=
+;
+>         struct hwmon_device *hwdev =3D to_hwmon_device(tdata->dev);
+>         const struct hwmon_chip_info *chip =3D hwdev->chip;
+>         const struct hwmon_channel_info **info =3D chip->info;
+> diff --git a/drivers/hwmon/pmbus/pmbus_core.c b/drivers/hwmon/pmbus/pmbus=
+_core.c
+> index 95e95783972a..e39a327ac2a1 100644
+> --- a/drivers/hwmon/pmbus/pmbus_core.c
+> +++ b/drivers/hwmon/pmbus/pmbus_core.c
+> @@ -1272,7 +1272,7 @@ struct pmbus_thermal_data {
+>
+>  static int pmbus_thermal_get_temp(struct thermal_zone_device *tz, int *t=
+emp)
+>  {
+> -       struct pmbus_thermal_data *tdata =3D tz->devdata;
+> +       struct pmbus_thermal_data *tdata =3D thermal_zone_device_priv(tz)=
+;
+>         struct pmbus_sensor *sensor =3D tdata->sensor;
+>         struct pmbus_data *pmbus_data =3D tdata->pmbus_data;
+>         struct i2c_client *client =3D to_i2c_client(pmbus_data->dev);
+> diff --git a/drivers/hwmon/scmi-hwmon.c b/drivers/hwmon/scmi-hwmon.c
+> index e192f0c67146..046ac157749d 100644
+> --- a/drivers/hwmon/scmi-hwmon.c
+> +++ b/drivers/hwmon/scmi-hwmon.c
+> @@ -141,7 +141,7 @@ static int scmi_hwmon_thermal_get_temp(struct thermal=
+_zone_device *tz,
+>  {
+>         int ret;
+>         long value;
+> -       struct scmi_thermal_sensor *th_sensor =3D tz->devdata;
+> +       struct scmi_thermal_sensor *th_sensor =3D thermal_zone_device_pri=
+v(tz);
+>
+>         ret =3D scmi_hwmon_read_scaled_value(th_sensor->ph, th_sensor->in=
+fo,
+>                                            &value);
+> diff --git a/drivers/hwmon/scpi-hwmon.c b/drivers/hwmon/scpi-hwmon.c
+> index 4d75385f7d5e..121e5e9f487f 100644
+> --- a/drivers/hwmon/scpi-hwmon.c
+> +++ b/drivers/hwmon/scpi-hwmon.c
+> @@ -64,7 +64,7 @@ static void scpi_scale_reading(u64 *value, struct senso=
+r_data *sensor)
+>
+>  static int scpi_read_temp(struct thermal_zone_device *tz, int *temp)
+>  {
+> -       struct scpi_thermal_zone *zone =3D tz->devdata;
+> +       struct scpi_thermal_zone *zone =3D thermal_zone_device_priv(tz);
+>         struct scpi_sensors *scpi_sensors =3D zone->scpi_sensors;
+>         struct scpi_ops *scpi_ops =3D scpi_sensors->scpi_ops;
+>         struct sensor_data *sensor =3D &scpi_sensors->data[zone->sensor_i=
+d];
+> diff --git a/drivers/iio/adc/sun4i-gpadc-iio.c b/drivers/iio/adc/sun4i-gp=
+adc-iio.c
+> index a6ade70dedf8..a5322550c422 100644
+> --- a/drivers/iio/adc/sun4i-gpadc-iio.c
+> +++ b/drivers/iio/adc/sun4i-gpadc-iio.c
+> @@ -414,7 +414,7 @@ static int sun4i_gpadc_runtime_resume(struct device *=
+dev)
+>
+>  static int sun4i_gpadc_get_temp(struct thermal_zone_device *tz, int *tem=
+p)
+>  {
+> -       struct sun4i_gpadc_iio *info =3D tz->devdata;
+> +       struct sun4i_gpadc_iio *info =3D thermal_zone_device_priv(tz);
+>         int val, scale, offset;
+>
+>         if (sun4i_gpadc_temp_read(info->indio_dev, &val))
+> diff --git a/drivers/input/touchscreen/sun4i-ts.c b/drivers/input/touchsc=
+reen/sun4i-ts.c
+> index 73eb8f80be6e..1117fba30020 100644
+> --- a/drivers/input/touchscreen/sun4i-ts.c
+> +++ b/drivers/input/touchscreen/sun4i-ts.c
+> @@ -194,7 +194,7 @@ static int sun4i_get_temp(const struct sun4i_ts_data =
+*ts, int *temp)
+>
+>  static int sun4i_get_tz_temp(struct thermal_zone_device *tz, int *temp)
+>  {
+> -       return sun4i_get_temp(tz->devdata, temp);
+> +       return sun4i_get_temp(thermal_zone_device_priv(tz), temp);
+>  }
+>
+>  static const struct thermal_zone_device_ops sun4i_ts_tz_ops =3D {
+> diff --git a/drivers/net/ethernet/chelsio/cxgb4/cxgb4_thermal.c b/drivers=
+/net/ethernet/chelsio/cxgb4/cxgb4_thermal.c
+> index 95e1b415ba13..dea9d2907666 100644
+> --- a/drivers/net/ethernet/chelsio/cxgb4/cxgb4_thermal.c
+> +++ b/drivers/net/ethernet/chelsio/cxgb4/cxgb4_thermal.c
+> @@ -12,7 +12,7 @@
+>  static int cxgb4_thermal_get_temp(struct thermal_zone_device *tzdev,
+>                                   int *temp)
+>  {
+> -       struct adapter *adap =3D tzdev->devdata;
+> +       struct adapter *adap =3D thermal_zone_device_priv(tzdev);
+>         u32 param, val;
+>         int ret;
+>
+> diff --git a/drivers/net/ethernet/mellanox/mlxsw/core_thermal.c b/drivers=
+/net/ethernet/mellanox/mlxsw/core_thermal.c
+> index c5240d38c9db..722e4a40afef 100644
+> --- a/drivers/net/ethernet/mellanox/mlxsw/core_thermal.c
+> +++ b/drivers/net/ethernet/mellanox/mlxsw/core_thermal.c
+> @@ -201,7 +201,7 @@ mlxsw_thermal_module_trips_update(struct device *dev,=
+ struct mlxsw_core *core,
+>  static int mlxsw_thermal_bind(struct thermal_zone_device *tzdev,
+>                               struct thermal_cooling_device *cdev)
+>  {
+> -       struct mlxsw_thermal *thermal =3D tzdev->devdata;
+> +       struct mlxsw_thermal *thermal =3D thermal_zone_device_priv(tzdev)=
+;
+>         struct device *dev =3D thermal->bus_info->dev;
+>         int i, err;
+>
+> @@ -227,7 +227,7 @@ static int mlxsw_thermal_bind(struct thermal_zone_dev=
+ice *tzdev,
+>  static int mlxsw_thermal_unbind(struct thermal_zone_device *tzdev,
+>                                 struct thermal_cooling_device *cdev)
+>  {
+> -       struct mlxsw_thermal *thermal =3D tzdev->devdata;
+> +       struct mlxsw_thermal *thermal =3D thermal_zone_device_priv(tzdev)=
+;
+>         struct device *dev =3D thermal->bus_info->dev;
+>         int i;
+>         int err;
+> @@ -249,7 +249,7 @@ static int mlxsw_thermal_unbind(struct thermal_zone_d=
+evice *tzdev,
+>  static int mlxsw_thermal_get_temp(struct thermal_zone_device *tzdev,
+>                                   int *p_temp)
+>  {
+> -       struct mlxsw_thermal *thermal =3D tzdev->devdata;
+> +       struct mlxsw_thermal *thermal =3D thermal_zone_device_priv(tzdev)=
+;
+>         struct device *dev =3D thermal->bus_info->dev;
+>         char mtmp_pl[MLXSW_REG_MTMP_LEN];
+>         int temp;
+> @@ -281,7 +281,7 @@ static struct thermal_zone_device_ops mlxsw_thermal_o=
+ps =3D {
+>  static int mlxsw_thermal_module_bind(struct thermal_zone_device *tzdev,
+>                                      struct thermal_cooling_device *cdev)
+>  {
+> -       struct mlxsw_thermal_module *tz =3D tzdev->devdata;
+> +       struct mlxsw_thermal_module *tz =3D thermal_zone_device_priv(tzde=
+v);
+>         struct mlxsw_thermal *thermal =3D tz->parent;
+>         int i, j, err;
+>
+> @@ -310,7 +310,7 @@ static int mlxsw_thermal_module_bind(struct thermal_z=
+one_device *tzdev,
+>  static int mlxsw_thermal_module_unbind(struct thermal_zone_device *tzdev=
+,
+>                                        struct thermal_cooling_device *cde=
+v)
+>  {
+> -       struct mlxsw_thermal_module *tz =3D tzdev->devdata;
+> +       struct mlxsw_thermal_module *tz =3D thermal_zone_device_priv(tzde=
+v);
+>         struct mlxsw_thermal *thermal =3D tz->parent;
+>         int i;
+>         int err;
+> @@ -356,7 +356,7 @@ mlxsw_thermal_module_temp_and_thresholds_get(struct m=
+lxsw_core *core,
+>  static int mlxsw_thermal_module_temp_get(struct thermal_zone_device *tzd=
+ev,
+>                                          int *p_temp)
+>  {
+> -       struct mlxsw_thermal_module *tz =3D tzdev->devdata;
+> +       struct mlxsw_thermal_module *tz =3D thermal_zone_device_priv(tzde=
+v);
+>         struct mlxsw_thermal *thermal =3D tz->parent;
+>         int temp, crit_temp, emerg_temp;
+>         struct device *dev;
+> @@ -391,7 +391,7 @@ static struct thermal_zone_device_ops mlxsw_thermal_m=
+odule_ops =3D {
+>  static int mlxsw_thermal_gearbox_temp_get(struct thermal_zone_device *tz=
+dev,
+>                                           int *p_temp)
+>  {
+> -       struct mlxsw_thermal_module *tz =3D tzdev->devdata;
+> +       struct mlxsw_thermal_module *tz =3D thermal_zone_device_priv(tzde=
+v);
+>         struct mlxsw_thermal *thermal =3D tz->parent;
+>         char mtmp_pl[MLXSW_REG_MTMP_LEN];
+>         u16 index;
+> diff --git a/drivers/net/wireless/intel/iwlwifi/mvm/tt.c b/drivers/net/wi=
+reless/intel/iwlwifi/mvm/tt.c
+> index 232c200af38f..354d95222b1b 100644
+> --- a/drivers/net/wireless/intel/iwlwifi/mvm/tt.c
+> +++ b/drivers/net/wireless/intel/iwlwifi/mvm/tt.c
+> @@ -615,7 +615,7 @@ int iwl_mvm_send_temp_report_ths_cmd(struct iwl_mvm *=
+mvm)
+>  static int iwl_mvm_tzone_get_temp(struct thermal_zone_device *device,
+>                                   int *temperature)
+>  {
+> -       struct iwl_mvm *mvm =3D (struct iwl_mvm *)device->devdata;
+> +       struct iwl_mvm *mvm =3D thermal_zone_device_priv(device);
+>         int ret;
+>         int temp;
+>
+> @@ -641,7 +641,7 @@ static int iwl_mvm_tzone_get_temp(struct thermal_zone=
+_device *device,
+>  static int iwl_mvm_tzone_set_trip_temp(struct thermal_zone_device *devic=
+e,
+>                                        int trip, int temp)
+>  {
+> -       struct iwl_mvm *mvm =3D (struct iwl_mvm *)device->devdata;
+> +       struct iwl_mvm *mvm =3D thermal_zone_device_priv(device);
+>         struct iwl_mvm_thermal_device *tzone;
+>         int ret;
+>
+> diff --git a/drivers/power/supply/power_supply_core.c b/drivers/power/sup=
+ply/power_supply_core.c
+> index 7c790c41e2fe..83fd19079d8b 100644
+> --- a/drivers/power/supply/power_supply_core.c
+> +++ b/drivers/power/supply/power_supply_core.c
+> @@ -1142,7 +1142,7 @@ static int power_supply_read_temp(struct thermal_zo=
+ne_device *tzd,
+>         int ret;
+>
+>         WARN_ON(tzd =3D=3D NULL);
+> -       psy =3D tzd->devdata;
+> +       psy =3D thermal_zone_device_priv(tzd);
+>         ret =3D power_supply_get_property(psy, POWER_SUPPLY_PROP_TEMP, &v=
+al);
+>         if (ret)
+>                 return ret;
+> diff --git a/drivers/regulator/max8973-regulator.c b/drivers/regulator/ma=
+x8973-regulator.c
+> index 7e00a45db26a..303426135276 100644
+> --- a/drivers/regulator/max8973-regulator.c
+> +++ b/drivers/regulator/max8973-regulator.c
+> @@ -436,7 +436,7 @@ static int max8973_init_dcdc(struct max8973_chip *max=
+,
+>
+>  static int max8973_thermal_read_temp(struct thermal_zone_device *tz, int=
+ *temp)
+>  {
+> -       struct max8973_chip *mchip =3D tz->devdata;
+> +       struct max8973_chip *mchip =3D thermal_zone_device_priv(tz);
+>         unsigned int val;
+>         int ret;
+>
+> diff --git a/drivers/thermal/armada_thermal.c b/drivers/thermal/armada_th=
+ermal.c
+> index 2efc222a379b..ebd606861a61 100644
+> --- a/drivers/thermal/armada_thermal.c
+> +++ b/drivers/thermal/armada_thermal.c
+> @@ -398,7 +398,7 @@ static int armada_read_sensor(struct armada_thermal_p=
+riv *priv, int *temp)
+>  static int armada_get_temp_legacy(struct thermal_zone_device *thermal,
+>                                   int *temp)
+>  {
+> -       struct armada_thermal_priv *priv =3D thermal->devdata;
+> +       struct armada_thermal_priv *priv =3D thermal_zone_device_priv(the=
+rmal);
+>         int ret;
+>
+>         /* Valid check */
+> @@ -420,7 +420,7 @@ static struct thermal_zone_device_ops legacy_ops =3D =
+{
+>
+>  static int armada_get_temp(struct thermal_zone_device *tz, int *temp)
+>  {
+> -       struct armada_thermal_sensor *sensor =3D tz->devdata;
+> +       struct armada_thermal_sensor *sensor =3D thermal_zone_device_priv=
+(tz);
+>         struct armada_thermal_priv *priv =3D sensor->priv;
+>         int ret;
+>
+> diff --git a/drivers/thermal/broadcom/bcm2711_thermal.c b/drivers/thermal=
+/broadcom/bcm2711_thermal.c
+> index 1f8651d15160..fcfcbbf044a4 100644
+> --- a/drivers/thermal/broadcom/bcm2711_thermal.c
+> +++ b/drivers/thermal/broadcom/bcm2711_thermal.c
+> @@ -33,7 +33,7 @@ struct bcm2711_thermal_priv {
+>
+>  static int bcm2711_get_temp(struct thermal_zone_device *tz, int *temp)
+>  {
+> -       struct bcm2711_thermal_priv *priv =3D tz->devdata;
+> +       struct bcm2711_thermal_priv *priv =3D thermal_zone_device_priv(tz=
+);
+>         int slope =3D thermal_zone_get_slope(tz);
+>         int offset =3D thermal_zone_get_offset(tz);
+>         u32 val;
+> diff --git a/drivers/thermal/broadcom/bcm2835_thermal.c b/drivers/thermal=
+/broadcom/bcm2835_thermal.c
+> index 23918bb76ae6..86aaf459de37 100644
+> --- a/drivers/thermal/broadcom/bcm2835_thermal.c
+> +++ b/drivers/thermal/broadcom/bcm2835_thermal.c
+> @@ -90,7 +90,7 @@ static int bcm2835_thermal_temp2adc(int temp, int offse=
+t, int slope)
+>
+>  static int bcm2835_thermal_get_temp(struct thermal_zone_device *tz, int =
+*temp)
+>  {
+> -       struct bcm2835_thermal_data *data =3D tz->devdata;
+> +       struct bcm2835_thermal_data *data =3D thermal_zone_device_priv(tz=
+);
+>         u32 val =3D readl(data->regs + BCM2835_TS_TSENSSTAT);
+>
+>         if (!(val & BCM2835_TS_TSENSSTAT_VALID))
+> diff --git a/drivers/thermal/broadcom/brcmstb_thermal.c b/drivers/thermal=
+/broadcom/brcmstb_thermal.c
+> index 4d02c28331e3..60173cc83c46 100644
+> --- a/drivers/thermal/broadcom/brcmstb_thermal.c
+> +++ b/drivers/thermal/broadcom/brcmstb_thermal.c
+> @@ -152,7 +152,7 @@ static inline u32 avs_tmon_temp_to_code(struct brcmst=
+b_thermal_priv *priv,
+>
+>  static int brcmstb_get_temp(struct thermal_zone_device *tz, int *temp)
+>  {
+> -       struct brcmstb_thermal_priv *priv =3D tz->devdata;
+> +       struct brcmstb_thermal_priv *priv =3D thermal_zone_device_priv(tz=
+);
+>         u32 val;
+>         long t;
+>
+> @@ -262,7 +262,7 @@ static irqreturn_t brcmstb_tmon_irq_thread(int irq, v=
+oid *data)
+>
+>  static int brcmstb_set_trips(struct thermal_zone_device *tz, int low, in=
+t high)
+>  {
+> -       struct brcmstb_thermal_priv *priv =3D tz->devdata;
+> +       struct brcmstb_thermal_priv *priv =3D thermal_zone_device_priv(tz=
+);
+>
+>         dev_dbg(priv->dev, "set trips %d <--> %d\n", low, high);
+>
+> diff --git a/drivers/thermal/broadcom/ns-thermal.c b/drivers/thermal/broa=
+dcom/ns-thermal.c
+> index 07a8a3f49bd0..d255aa879fc0 100644
+> --- a/drivers/thermal/broadcom/ns-thermal.c
+> +++ b/drivers/thermal/broadcom/ns-thermal.c
+> @@ -16,7 +16,7 @@
+>
+>  static int ns_thermal_get_temp(struct thermal_zone_device *tz, int *temp=
+)
+>  {
+> -       void __iomem *pvtmon =3D tz->devdata;
+> +       void __iomem *pvtmon =3D thermal_zone_device_priv(tz);
+>         int offset =3D thermal_zone_get_offset(tz);
+>         int slope =3D thermal_zone_get_slope(tz);
+>         u32 val;
+> diff --git a/drivers/thermal/broadcom/sr-thermal.c b/drivers/thermal/broa=
+dcom/sr-thermal.c
+> index 2b93502543ff..747915890022 100644
+> --- a/drivers/thermal/broadcom/sr-thermal.c
+> +++ b/drivers/thermal/broadcom/sr-thermal.c
+> @@ -32,7 +32,7 @@ struct sr_thermal {
+>
+>  static int sr_get_temp(struct thermal_zone_device *tz, int *temp)
+>  {
+> -       struct sr_tmon *tmon =3D tz->devdata;
+> +       struct sr_tmon *tmon =3D thermal_zone_device_priv(tz);
+>         struct sr_thermal *sr_thermal =3D tmon->priv;
+>
+>         *temp =3D readl(sr_thermal->regs + SR_TMON_TEMP_BASE(tmon->tmon_i=
+d));
+> diff --git a/drivers/thermal/da9062-thermal.c b/drivers/thermal/da9062-th=
+ermal.c
+> index a805a6666c44..e7097f354750 100644
+> --- a/drivers/thermal/da9062-thermal.c
+> +++ b/drivers/thermal/da9062-thermal.c
+> @@ -123,7 +123,7 @@ static irqreturn_t da9062_thermal_irq_handler(int irq=
+, void *data)
+>  static int da9062_thermal_get_temp(struct thermal_zone_device *z,
+>                                    int *temp)
+>  {
+> -       struct da9062_thermal *thermal =3D z->devdata;
+> +       struct da9062_thermal *thermal =3D thermal_zone_device_priv(z);
+>
+>         mutex_lock(&thermal->lock);
+>         *temp =3D thermal->temperature;
+> diff --git a/drivers/thermal/dove_thermal.c b/drivers/thermal/dove_therma=
+l.c
+> index 056622a58d00..6db1882e8229 100644
+> --- a/drivers/thermal/dove_thermal.c
+> +++ b/drivers/thermal/dove_thermal.c
+> @@ -87,7 +87,7 @@ static int dove_get_temp(struct thermal_zone_device *th=
+ermal,
+>                           int *temp)
+>  {
+>         unsigned long reg;
+> -       struct dove_thermal_priv *priv =3D thermal->devdata;
+> +       struct dove_thermal_priv *priv =3D thermal_zone_device_priv(therm=
+al);
+>
+>         /* Valid check */
+>         reg =3D readl_relaxed(priv->control + PMU_TEMP_DIOD_CTRL1_REG);
+> diff --git a/drivers/thermal/hisi_thermal.c b/drivers/thermal/hisi_therma=
+l.c
+> index 32a7c3cf073d..f3a374266fa0 100644
+> --- a/drivers/thermal/hisi_thermal.c
+> +++ b/drivers/thermal/hisi_thermal.c
+> @@ -431,7 +431,7 @@ static int hi3660_thermal_probe(struct hisi_thermal_d=
+ata *data)
+>
+>  static int hisi_thermal_get_temp(struct thermal_zone_device *tz, int *te=
+mp)
+>  {
+> -       struct hisi_thermal_sensor *sensor =3D tz->devdata;
+> +       struct hisi_thermal_sensor *sensor =3D thermal_zone_device_priv(t=
+z);
+>         struct hisi_thermal_data *data =3D sensor->data;
+>
+>         *temp =3D data->ops->get_temp(sensor);
+> diff --git a/drivers/thermal/imx8mm_thermal.c b/drivers/thermal/imx8mm_th=
+ermal.c
+> index 72b5d6f319c1..efa1a4ffc368 100644
+> --- a/drivers/thermal/imx8mm_thermal.c
+> +++ b/drivers/thermal/imx8mm_thermal.c
+> @@ -141,7 +141,7 @@ static int imx8mp_tmu_get_temp(void *data, int *temp)
+>
+>  static int tmu_get_temp(struct thermal_zone_device *tz, int *temp)
+>  {
+> -       struct tmu_sensor *sensor =3D tz->devdata;
+> +       struct tmu_sensor *sensor =3D thermal_zone_device_priv(tz);
+>         struct imx8mm_tmu *tmu =3D sensor->priv;
+>
+>         return tmu->socdata->get_temp(sensor, temp);
+> diff --git a/drivers/thermal/imx_sc_thermal.c b/drivers/thermal/imx_sc_th=
+ermal.c
+> index f32e59e74623..ddde4bdfc94a 100644
+> --- a/drivers/thermal/imx_sc_thermal.c
+> +++ b/drivers/thermal/imx_sc_thermal.c
+> @@ -46,7 +46,7 @@ static int imx_sc_thermal_get_temp(struct thermal_zone_=
+device *tz, int *temp)
+>  {
+>         struct imx_sc_msg_misc_get_temp msg;
+>         struct imx_sc_rpc_msg *hdr =3D &msg.hdr;
+> -       struct imx_sc_sensor *sensor =3D tz->devdata;
+> +       struct imx_sc_sensor *sensor =3D thermal_zone_device_priv(tz);
+>         int ret;
+>
+>         msg.data.req.resource_id =3D sensor->resource_id;
+> diff --git a/drivers/thermal/imx_thermal.c b/drivers/thermal/imx_thermal.=
+c
+> index fb0d5cab70af..a22b8086a209 100644
+> --- a/drivers/thermal/imx_thermal.c
+> +++ b/drivers/thermal/imx_thermal.c
+> @@ -252,7 +252,7 @@ static void imx_set_alarm_temp(struct imx_thermal_dat=
+a *data,
+>
+>  static int imx_get_temp(struct thermal_zone_device *tz, int *temp)
+>  {
+> -       struct imx_thermal_data *data =3D tz->devdata;
+> +       struct imx_thermal_data *data =3D thermal_zone_device_priv(tz);
+>         const struct thermal_soc_data *soc_data =3D data->socdata;
+>         struct regmap *map =3D data->tempmon;
+>         unsigned int n_meas;
+> @@ -311,7 +311,7 @@ static int imx_get_temp(struct thermal_zone_device *t=
+z, int *temp)
+>  static int imx_change_mode(struct thermal_zone_device *tz,
+>                            enum thermal_device_mode mode)
+>  {
+> -       struct imx_thermal_data *data =3D tz->devdata;
+> +       struct imx_thermal_data *data =3D thermal_zone_device_priv(tz);
+>
+>         if (mode =3D=3D THERMAL_DEVICE_ENABLED) {
+>                 pm_runtime_get(data->dev);
+> @@ -342,7 +342,7 @@ static int imx_get_crit_temp(struct thermal_zone_devi=
+ce *tz, int *temp)
+>  static int imx_set_trip_temp(struct thermal_zone_device *tz, int trip,
+>                              int temp)
+>  {
+> -       struct imx_thermal_data *data =3D tz->devdata;
+> +       struct imx_thermal_data *data =3D thermal_zone_device_priv(tz);
+>         int ret;
+>
+>         ret =3D pm_runtime_resume_and_get(data->dev);
+> diff --git a/drivers/thermal/intel/intel_pch_thermal.c b/drivers/thermal/=
+intel/intel_pch_thermal.c
+> index b855d031a855..dce50d239357 100644
+> --- a/drivers/thermal/intel/intel_pch_thermal.c
+> +++ b/drivers/thermal/intel/intel_pch_thermal.c
+> @@ -119,7 +119,7 @@ static int pch_wpt_add_acpi_psv_trip(struct pch_therm=
+al_device *ptd, int trip)
+>
+>  static int pch_thermal_get_temp(struct thermal_zone_device *tzd, int *te=
+mp)
+>  {
+> -       struct pch_thermal_device *ptd =3D tzd->devdata;
+> +       struct pch_thermal_device *ptd =3D thermal_zone_device_priv(tzd);
+>
+>         *temp =3D GET_WPT_TEMP(WPT_TEMP_TSR & readw(ptd->hw_base + WPT_TE=
+MP));
+>         return 0;
+> diff --git a/drivers/thermal/intel/intel_soc_dts_iosf.c b/drivers/thermal=
+/intel/intel_soc_dts_iosf.c
+> index 8c26f7b2316b..f99dc7e4ae89 100644
+> --- a/drivers/thermal/intel/intel_soc_dts_iosf.c
+> +++ b/drivers/thermal/intel/intel_soc_dts_iosf.c
+> @@ -54,7 +54,7 @@ static int sys_get_trip_temp(struct thermal_zone_device=
+ *tzd, int trip,
+>         struct intel_soc_dts_sensor_entry *dts;
+>         struct intel_soc_dts_sensors *sensors;
+>
+> -       dts =3D tzd->devdata;
+> +       dts =3D thermal_zone_device_priv(tzd);
+>         sensors =3D dts->sensors;
+>         mutex_lock(&sensors->dts_update_lock);
+>         status =3D iosf_mbi_read(BT_MBI_UNIT_PMC, MBI_REG_READ,
+> @@ -168,7 +168,7 @@ static int update_trip_temp(struct intel_soc_dts_sens=
+or_entry *dts,
+>  static int sys_set_trip_temp(struct thermal_zone_device *tzd, int trip,
+>                              int temp)
+>  {
+> -       struct intel_soc_dts_sensor_entry *dts =3D tzd->devdata;
+> +       struct intel_soc_dts_sensor_entry *dts =3D thermal_zone_device_pr=
+iv(tzd);
+>         struct intel_soc_dts_sensors *sensors =3D dts->sensors;
+>         int status;
+>
+> @@ -176,7 +176,7 @@ static int sys_set_trip_temp(struct thermal_zone_devi=
+ce *tzd, int trip,
+>                 return -EINVAL;
+>
+>         mutex_lock(&sensors->dts_update_lock);
+> -       status =3D update_trip_temp(tzd->devdata, trip, temp,
+> +       status =3D update_trip_temp(dts, trip, temp,
+>                                   dts->trip_types[trip]);
+>         mutex_unlock(&sensors->dts_update_lock);
+>
+> @@ -186,9 +186,7 @@ static int sys_set_trip_temp(struct thermal_zone_devi=
+ce *tzd, int trip,
+>  static int sys_get_trip_type(struct thermal_zone_device *tzd,
+>                              int trip, enum thermal_trip_type *type)
+>  {
+> -       struct intel_soc_dts_sensor_entry *dts;
+> -
+> -       dts =3D tzd->devdata;
+> +       struct intel_soc_dts_sensor_entry *dts =3D thermal_zone_device_pr=
+iv(tzd);
+>
+>         *type =3D dts->trip_types[trip];
+>
+> @@ -200,11 +198,10 @@ static int sys_get_curr_temp(struct thermal_zone_de=
+vice *tzd,
+>  {
+>         int status;
+>         u32 out;
+> -       struct intel_soc_dts_sensor_entry *dts;
+> +       struct intel_soc_dts_sensor_entry *dts =3D thermal_zone_device_pr=
+iv(tzd);
+>         struct intel_soc_dts_sensors *sensors;
+>         unsigned long raw;
+>
+> -       dts =3D tzd->devdata;
+>         sensors =3D dts->sensors;
+>         status =3D iosf_mbi_read(BT_MBI_UNIT_PMC, MBI_REG_READ,
+>                                SOC_DTS_OFFSET_TEMP, &out);
+> diff --git a/drivers/thermal/intel/x86_pkg_temp_thermal.c b/drivers/therm=
+al/intel/x86_pkg_temp_thermal.c
+> index 1c2de84742df..c4ec314441be 100644
+> --- a/drivers/thermal/intel/x86_pkg_temp_thermal.c
+> +++ b/drivers/thermal/intel/x86_pkg_temp_thermal.c
+> @@ -107,7 +107,7 @@ static struct zone_device *pkg_temp_thermal_get_dev(u=
+nsigned int cpu)
+>
+>  static int sys_get_curr_temp(struct thermal_zone_device *tzd, int *temp)
+>  {
+> -       struct zone_device *zonedev =3D tzd->devdata;
+> +       struct zone_device *zonedev =3D thermal_zone_device_priv(tzd);
+>         int val;
+>
+>         val =3D intel_tcc_get_temp(zonedev->cpu, true);
+> @@ -122,7 +122,7 @@ static int sys_get_curr_temp(struct thermal_zone_devi=
+ce *tzd, int *temp)
+>  static int
+>  sys_set_trip_temp(struct thermal_zone_device *tzd, int trip, int temp)
+>  {
+> -       struct zone_device *zonedev =3D tzd->devdata;
+> +       struct zone_device *zonedev =3D thermal_zone_device_priv(tzd);
+>         u32 l, h, mask, shift, intr;
+>         int tj_max, ret;
+>
+> diff --git a/drivers/thermal/k3_bandgap.c b/drivers/thermal/k3_bandgap.c
+> index 22c9bcb899c3..b5cd2c85e0c3 100644
+> --- a/drivers/thermal/k3_bandgap.c
+> +++ b/drivers/thermal/k3_bandgap.c
+> @@ -141,7 +141,7 @@ static int k3_bgp_read_temp(struct k3_thermal_data *d=
+evdata,
+>
+>  static int k3_thermal_get_temp(struct thermal_zone_device *tz, int *temp=
+)
+>  {
+> -       struct k3_thermal_data *data =3D tz->devdata;
+> +       struct k3_thermal_data *data =3D thermal_zone_device_priv(tz);
+>         int ret =3D 0;
+>
+>         ret =3D k3_bgp_read_temp(data, temp);
+> diff --git a/drivers/thermal/k3_j72xx_bandgap.c b/drivers/thermal/k3_j72x=
+x_bandgap.c
+> index 031ea1091909..5be1f09eeb2c 100644
+> --- a/drivers/thermal/k3_j72xx_bandgap.c
+> +++ b/drivers/thermal/k3_j72xx_bandgap.c
+> @@ -248,7 +248,7 @@ static inline int k3_bgp_read_temp(struct k3_thermal_=
+data *devdata,
+>  /* Get temperature callback function for thermal zone */
+>  static int k3_thermal_get_temp(struct thermal_zone_device *tz, int *temp=
+)
+>  {
+> -       return k3_bgp_read_temp(tz->devdata, temp);
+> +       return k3_bgp_read_temp(thermal_zone_device_priv(tz), temp);
+>  }
+>
+>  static const struct thermal_zone_device_ops k3_of_thermal_ops =3D {
+> diff --git a/drivers/thermal/kirkwood_thermal.c b/drivers/thermal/kirkwoo=
+d_thermal.c
+> index bec7ec20e79d..92b3ce426b9d 100644
+> --- a/drivers/thermal/kirkwood_thermal.c
+> +++ b/drivers/thermal/kirkwood_thermal.c
+> @@ -27,7 +27,7 @@ static int kirkwood_get_temp(struct thermal_zone_device=
+ *thermal,
+>                           int *temp)
+>  {
+>         unsigned long reg;
+> -       struct kirkwood_thermal_priv *priv =3D thermal->devdata;
+> +       struct kirkwood_thermal_priv *priv =3D thermal_zone_device_priv(t=
+hermal);
+>
+>         reg =3D readl_relaxed(priv->sensor);
+>
+> diff --git a/drivers/thermal/max77620_thermal.c b/drivers/thermal/max7762=
+0_thermal.c
+> index 6451a55eb582..bf1679765f1b 100644
+> --- a/drivers/thermal/max77620_thermal.c
+> +++ b/drivers/thermal/max77620_thermal.c
+> @@ -46,7 +46,7 @@ struct max77620_therm_info {
+>
+>  static int max77620_thermal_read_temp(struct thermal_zone_device *tz, in=
+t *temp)
+>  {
+> -       struct max77620_therm_info *mtherm =3D tz->devdata;
+> +       struct max77620_therm_info *mtherm =3D thermal_zone_device_priv(t=
+z);
+>         unsigned int val;
+>         int ret;
+>
+> diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/=
+mediatek/auxadc_thermal.c
+> index ab730f9552d0..755baa4e5bd2 100644
+> --- a/drivers/thermal/mediatek/auxadc_thermal.c
+> +++ b/drivers/thermal/mediatek/auxadc_thermal.c
+> @@ -763,7 +763,7 @@ static int mtk_thermal_bank_temperature(struct mtk_th=
+ermal_bank *bank)
+>
+>  static int mtk_read_temp(struct thermal_zone_device *tz, int *temperatur=
+e)
+>  {
+> -       struct mtk_thermal *mt =3D tz->devdata;
+> +       struct mtk_thermal *mt =3D thermal_zone_device_priv(tz);
+>         int i;
+>         int tempmax =3D INT_MIN;
+>
+> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/me=
+diatek/lvts_thermal.c
+> index 84ba65a27acf..fb4b1b4db245 100644
+> --- a/drivers/thermal/mediatek/lvts_thermal.c
+> +++ b/drivers/thermal/mediatek/lvts_thermal.c
+> @@ -252,7 +252,7 @@ static u32 lvts_temp_to_raw(int temperature)
+>
+>  static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
+>  {
+> -       struct lvts_sensor *lvts_sensor =3D tz->devdata;
+> +       struct lvts_sensor *lvts_sensor =3D thermal_zone_device_priv(tz);
+>         void __iomem *msr =3D lvts_sensor->msr;
+>         u32 value;
+>
+> @@ -290,7 +290,7 @@ static int lvts_get_temp(struct thermal_zone_device *=
+tz, int *temp)
+>
+>  static int lvts_set_trips(struct thermal_zone_device *tz, int low, int h=
+igh)
+>  {
+> -       struct lvts_sensor *lvts_sensor =3D tz->devdata;
+> +       struct lvts_sensor *lvts_sensor =3D thermal_zone_device_priv(tz);
+>         void __iomem *base =3D lvts_sensor->base;
+>         u32 raw_low =3D lvts_temp_to_raw(low);
+>         u32 raw_high =3D lvts_temp_to_raw(high);
+> diff --git a/drivers/thermal/qcom/qcom-spmi-adc-tm5.c b/drivers/thermal/q=
+com/qcom-spmi-adc-tm5.c
+> index 31164ade2dd1..ed204489a950 100644
+> --- a/drivers/thermal/qcom/qcom-spmi-adc-tm5.c
+> +++ b/drivers/thermal/qcom/qcom-spmi-adc-tm5.c
+> @@ -360,7 +360,7 @@ static irqreturn_t adc_tm5_gen2_isr(int irq, void *da=
+ta)
+>
+>  static int adc_tm5_get_temp(struct thermal_zone_device *tz, int *temp)
+>  {
+> -       struct adc_tm5_channel *channel =3D tz->devdata;
+> +       struct adc_tm5_channel *channel =3D thermal_zone_device_priv(tz);
+>         int ret;
+>
+>         if (!channel || !channel->iio)
+> @@ -642,7 +642,7 @@ static int adc_tm5_gen2_configure(struct adc_tm5_chan=
+nel *channel, int low, int
+>
+>  static int adc_tm5_set_trips(struct thermal_zone_device *tz, int low, in=
+t high)
+>  {
+> -       struct adc_tm5_channel *channel =3D tz->devdata;
+> +       struct adc_tm5_channel *channel =3D thermal_zone_device_priv(tz);
+>         struct adc_tm5_chip *chip;
+>         int ret;
+>
+> diff --git a/drivers/thermal/qcom/qcom-spmi-temp-alarm.c b/drivers/therma=
+l/qcom/qcom-spmi-temp-alarm.c
+> index 101c75d0e13f..b196d8d01726 100644
+> --- a/drivers/thermal/qcom/qcom-spmi-temp-alarm.c
+> +++ b/drivers/thermal/qcom/qcom-spmi-temp-alarm.c
+> @@ -187,7 +187,7 @@ static int qpnp_tm_update_temp_no_adc(struct qpnp_tm_=
+chip *chip)
+>
+>  static int qpnp_tm_get_temp(struct thermal_zone_device *tz, int *temp)
+>  {
+> -       struct qpnp_tm_chip *chip =3D tz->devdata;
+> +       struct qpnp_tm_chip *chip =3D thermal_zone_device_priv(tz);
+>         int ret, mili_celsius;
+>
+>         if (!temp)
+> @@ -265,7 +265,7 @@ static int qpnp_tm_update_critical_trip_temp(struct q=
+pnp_tm_chip *chip,
+>
+>  static int qpnp_tm_set_trip_temp(struct thermal_zone_device *tz, int tri=
+p_id, int temp)
+>  {
+> -       struct qpnp_tm_chip *chip =3D tz->devdata;
+> +       struct qpnp_tm_chip *chip =3D thermal_zone_device_priv(tz);
+>         struct thermal_trip trip;
+>         int ret;
+>
+> diff --git a/drivers/thermal/qoriq_thermal.c b/drivers/thermal/qoriq_ther=
+mal.c
+> index 431c29c0898a..d2dc99247f61 100644
+> --- a/drivers/thermal/qoriq_thermal.c
+> +++ b/drivers/thermal/qoriq_thermal.c
+> @@ -83,7 +83,7 @@ static struct qoriq_tmu_data *qoriq_sensor_to_data(stru=
+ct qoriq_sensor *s)
+>
+>  static int tmu_get_temp(struct thermal_zone_device *tz, int *temp)
+>  {
+> -       struct qoriq_sensor *qsensor =3D tz->devdata;
+> +       struct qoriq_sensor *qsensor =3D thermal_zone_device_priv(tz);
+>         struct qoriq_tmu_data *qdata =3D qoriq_sensor_to_data(qsensor);
+>         u32 val;
+>         /*
+> diff --git a/drivers/thermal/rcar_gen3_thermal.c b/drivers/thermal/rcar_g=
+en3_thermal.c
+> index d6b5b59c5c53..2b7537ef141d 100644
+> --- a/drivers/thermal/rcar_gen3_thermal.c
+> +++ b/drivers/thermal/rcar_gen3_thermal.c
+> @@ -167,7 +167,7 @@ static int rcar_gen3_thermal_round(int temp)
+>
+>  static int rcar_gen3_thermal_get_temp(struct thermal_zone_device *tz, in=
+t *temp)
+>  {
+> -       struct rcar_gen3_thermal_tsc *tsc =3D tz->devdata;
+> +       struct rcar_gen3_thermal_tsc *tsc =3D thermal_zone_device_priv(tz=
+);
+>         int mcelsius, val;
+>         int reg;
+>
+> @@ -206,7 +206,7 @@ static int rcar_gen3_thermal_mcelsius_to_temp(struct =
+rcar_gen3_thermal_tsc *tsc,
+>
+>  static int rcar_gen3_thermal_set_trips(struct thermal_zone_device *tz, i=
+nt low, int high)
+>  {
+> -       struct rcar_gen3_thermal_tsc *tsc =3D tz->devdata;
+> +       struct rcar_gen3_thermal_tsc *tsc =3D thermal_zone_device_priv(tz=
+);
+>         u32 irqmsk =3D 0;
+>
+>         if (low !=3D -INT_MAX) {
+> diff --git a/drivers/thermal/rcar_thermal.c b/drivers/thermal/rcar_therma=
+l.c
+> index 436f5f9cf729..e0440f63ae77 100644
+> --- a/drivers/thermal/rcar_thermal.c
+> +++ b/drivers/thermal/rcar_thermal.c
+> @@ -101,7 +101,6 @@ struct rcar_thermal_priv {
+>         list_for_each_entry(pos, &common->head, list)
+>
+>  #define MCELSIUS(temp)                 ((temp) * 1000)
+> -#define rcar_zone_to_priv(zone)                ((zone)->devdata)
+>  #define rcar_priv_to_dev(priv)         ((priv)->common->dev)
+>  #define rcar_has_irq_support(priv)     ((priv)->common->base)
+>  #define rcar_id_to_shift(priv)         ((priv)->id * 8)
+> @@ -273,7 +272,7 @@ static int rcar_thermal_get_current_temp(struct rcar_=
+thermal_priv *priv,
+>
+>  static int rcar_thermal_get_temp(struct thermal_zone_device *zone, int *=
+temp)
+>  {
+> -       struct rcar_thermal_priv *priv =3D rcar_zone_to_priv(zone);
+> +       struct rcar_thermal_priv *priv =3D thermal_zone_device_priv(zone)=
+;
+>
+>         return rcar_thermal_get_current_temp(priv, temp);
+>  }
+> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchi=
+p_thermal.c
+> index 4b7c43f34d1a..8a51eb26e798 100644
+> --- a/drivers/thermal/rockchip_thermal.c
+> +++ b/drivers/thermal/rockchip_thermal.c
+> @@ -1213,7 +1213,7 @@ static irqreturn_t rockchip_thermal_alarm_irq_threa=
+d(int irq, void *dev)
+>
+>  static int rockchip_thermal_set_trips(struct thermal_zone_device *tz, in=
+t low, int high)
+>  {
+> -       struct rockchip_thermal_sensor *sensor =3D tz->devdata;
+> +       struct rockchip_thermal_sensor *sensor =3D thermal_zone_device_pr=
+iv(tz);
+>         struct rockchip_thermal_data *thermal =3D sensor->thermal;
+>         const struct rockchip_tsadc_chip *tsadc =3D thermal->chip;
+>
+> @@ -1226,7 +1226,7 @@ static int rockchip_thermal_set_trips(struct therma=
+l_zone_device *tz, int low, i
+>
+>  static int rockchip_thermal_get_temp(struct thermal_zone_device *tz, int=
+ *out_temp)
+>  {
+> -       struct rockchip_thermal_sensor *sensor =3D tz->devdata;
+> +       struct rockchip_thermal_sensor *sensor =3D thermal_zone_device_pr=
+iv(tz);
+>         struct rockchip_thermal_data *thermal =3D sensor->thermal;
+>         const struct rockchip_tsadc_chip *tsadc =3D sensor->thermal->chip=
+;
+>         int retval;
+> diff --git a/drivers/thermal/rzg2l_thermal.c b/drivers/thermal/rzg2l_ther=
+mal.c
+> index 2e0649f38506..7631430ce8a9 100644
+> --- a/drivers/thermal/rzg2l_thermal.c
+> +++ b/drivers/thermal/rzg2l_thermal.c
+> @@ -75,7 +75,7 @@ static inline void rzg2l_thermal_write(struct rzg2l_the=
+rmal_priv *priv, u32 reg,
+>
+>  static int rzg2l_thermal_get_temp(struct thermal_zone_device *tz, int *t=
+emp)
+>  {
+> -       struct rzg2l_thermal_priv *priv =3D tz->devdata;
+> +       struct rzg2l_thermal_priv *priv =3D thermal_zone_device_priv(tz);
+>         u32 result =3D 0, dsensor, ts_code_ave;
+>         int val, i;
+>
+> diff --git a/drivers/thermal/samsung/exynos_tmu.c b/drivers/thermal/samsu=
+ng/exynos_tmu.c
+> index 527d1eb0663a..45e5c840d130 100644
+> --- a/drivers/thermal/samsung/exynos_tmu.c
+> +++ b/drivers/thermal/samsung/exynos_tmu.c
+> @@ -645,7 +645,7 @@ static void exynos7_tmu_control(struct platform_devic=
+e *pdev, bool on)
+>
+>  static int exynos_get_temp(struct thermal_zone_device *tz, int *temp)
+>  {
+> -       struct exynos_tmu_data *data =3D tz->devdata;
+> +       struct exynos_tmu_data *data =3D thermal_zone_device_priv(tz);
+>         int value, ret =3D 0;
+>
+>         if (!data || !data->tmu_read)
+> @@ -723,7 +723,7 @@ static void exynos4412_tmu_set_emulation(struct exyno=
+s_tmu_data *data,
+>
+>  static int exynos_tmu_set_emulation(struct thermal_zone_device *tz, int =
+temp)
+>  {
+> -       struct exynos_tmu_data *data =3D tz->devdata;
+> +       struct exynos_tmu_data *data =3D thermal_zone_device_priv(tz);
+>         int ret =3D -EINVAL;
+>
+>         if (data->soc =3D=3D SOC_ARCH_EXYNOS4210)
+> diff --git a/drivers/thermal/spear_thermal.c b/drivers/thermal/spear_ther=
+mal.c
+> index 6a722b10d738..653439b965c8 100644
+> --- a/drivers/thermal/spear_thermal.c
+> +++ b/drivers/thermal/spear_thermal.c
+> @@ -31,7 +31,7 @@ struct spear_thermal_dev {
+>  static inline int thermal_get_temp(struct thermal_zone_device *thermal,
+>                                 int *temp)
+>  {
+> -       struct spear_thermal_dev *stdev =3D thermal->devdata;
+> +       struct spear_thermal_dev *stdev =3D thermal_zone_device_priv(ther=
+mal);
+>
+>         /*
+>          * Data are ready to be read after 628 usec from POWERDOWN signal
+> @@ -48,7 +48,7 @@ static struct thermal_zone_device_ops ops =3D {
+>  static int __maybe_unused spear_thermal_suspend(struct device *dev)
+>  {
+>         struct thermal_zone_device *spear_thermal =3D dev_get_drvdata(dev=
+);
+> -       struct spear_thermal_dev *stdev =3D spear_thermal->devdata;
+> +       struct spear_thermal_dev *stdev =3D thermal_zone_device_priv(spea=
+r_thermal);
+>         unsigned int actual_mask =3D 0;
+>
+>         /* Disable SPEAr Thermal Sensor */
+> @@ -64,7 +64,7 @@ static int __maybe_unused spear_thermal_suspend(struct =
+device *dev)
+>  static int __maybe_unused spear_thermal_resume(struct device *dev)
+>  {
+>         struct thermal_zone_device *spear_thermal =3D dev_get_drvdata(dev=
+);
+> -       struct spear_thermal_dev *stdev =3D spear_thermal->devdata;
+> +       struct spear_thermal_dev *stdev =3D thermal_zone_device_priv(spea=
+r_thermal);
+>         unsigned int actual_mask =3D 0;
+>         int ret =3D 0;
+>
+> @@ -154,7 +154,7 @@ static int spear_thermal_exit(struct platform_device =
+*pdev)
+>  {
+>         unsigned int actual_mask =3D 0;
+>         struct thermal_zone_device *spear_thermal =3D platform_get_drvdat=
+a(pdev);
+> -       struct spear_thermal_dev *stdev =3D spear_thermal->devdata;
+> +       struct spear_thermal_dev *stdev =3D thermal_zone_device_priv(spea=
+r_thermal);
+>
+>         thermal_zone_device_unregister(spear_thermal);
+>
+> diff --git a/drivers/thermal/sprd_thermal.c b/drivers/thermal/sprd_therma=
+l.c
+> index ac884514f116..2fb90fdad76e 100644
+> --- a/drivers/thermal/sprd_thermal.c
+> +++ b/drivers/thermal/sprd_thermal.c
+> @@ -206,7 +206,7 @@ static int sprd_thm_temp_to_rawdata(int temp, struct =
+sprd_thermal_sensor *sen)
+>
+>  static int sprd_thm_read_temp(struct thermal_zone_device *tz, int *temp)
+>  {
+> -       struct sprd_thermal_sensor *sen =3D tz->devdata;
+> +       struct sprd_thermal_sensor *sen =3D thermal_zone_device_priv(tz);
+>         u32 data;
+>
+>         data =3D readl(sen->data->base + SPRD_THM_TEMP(sen->id)) &
+> diff --git a/drivers/thermal/sun8i_thermal.c b/drivers/thermal/sun8i_ther=
+mal.c
+> index 497beac63e5d..6b550f0f90bf 100644
+> --- a/drivers/thermal/sun8i_thermal.c
+> +++ b/drivers/thermal/sun8i_thermal.c
+> @@ -110,7 +110,7 @@ static int sun50i_h5_calc_temp(struct ths_device *tmd=
+ev,
+>
+>  static int sun8i_ths_get_temp(struct thermal_zone_device *tz, int *temp)
+>  {
+> -       struct tsensor *s =3D tz->devdata;
+> +       struct tsensor *s =3D thermal_zone_device_priv(tz);
+>         struct ths_device *tmdev =3D s->tmdev;
+>         int val =3D 0;
+>
+> diff --git a/drivers/thermal/tegra/tegra-bpmp-thermal.c b/drivers/thermal=
+/tegra/tegra-bpmp-thermal.c
+> index 0b7a1a1948cb..7bd8ea770fa1 100644
+> --- a/drivers/thermal/tegra/tegra-bpmp-thermal.c
+> +++ b/drivers/thermal/tegra/tegra-bpmp-thermal.c
+> @@ -62,12 +62,14 @@ static int __tegra_bpmp_thermal_get_temp(struct tegra=
+_bpmp_thermal_zone *zone,
+>
+>  static int tegra_bpmp_thermal_get_temp(struct thermal_zone_device *tz, i=
+nt *out_temp)
+>  {
+> -       return __tegra_bpmp_thermal_get_temp(tz->devdata, out_temp);
+> +       struct tegra_bpmp_thermal_zone *zone =3D thermal_zone_device_priv=
+(tz);
+> +
+> +       return __tegra_bpmp_thermal_get_temp(zone, out_temp);
+>  }
+>
+>  static int tegra_bpmp_thermal_set_trips(struct thermal_zone_device *tz, =
+int low, int high)
+>  {
+> -       struct tegra_bpmp_thermal_zone *zone =3D tz->devdata;
+> +       struct tegra_bpmp_thermal_zone *zone =3D thermal_zone_device_priv=
+(tz);
+>         struct mrq_thermal_host_to_bpmp_request req;
+>         struct tegra_bpmp_message msg;
+>         int err;
+> diff --git a/drivers/thermal/tegra/tegra30-tsensor.c b/drivers/thermal/te=
+gra/tegra30-tsensor.c
+> index b3218b71b6d9..42c6fb494dd9 100644
+> --- a/drivers/thermal/tegra/tegra30-tsensor.c
+> +++ b/drivers/thermal/tegra/tegra30-tsensor.c
+> @@ -160,7 +160,7 @@ static void devm_tegra_tsensor_hw_disable(void *data)
+>
+>  static int tegra_tsensor_get_temp(struct thermal_zone_device *tz, int *t=
+emp)
+>  {
+> -       const struct tegra_tsensor_channel *tsc =3D tz->devdata;
+> +       const struct tegra_tsensor_channel *tsc =3D thermal_zone_device_p=
+riv(tz);
+>         const struct tegra_tsensor *ts =3D tsc->ts;
+>         int err, c1, c2, c3, c4, counter;
+>         u32 val;
+> @@ -218,7 +218,7 @@ static int tegra_tsensor_temp_to_counter(const struct=
+ tegra_tsensor *ts, int tem
+>
+>  static int tegra_tsensor_set_trips(struct thermal_zone_device *tz, int l=
+ow, int high)
+>  {
+> -       const struct tegra_tsensor_channel *tsc =3D tz->devdata;
+> +       const struct tegra_tsensor_channel *tsc =3D thermal_zone_device_p=
+riv(tz);
+>         const struct tegra_tsensor *ts =3D tsc->ts;
+>         u32 val;
+>
+> diff --git a/drivers/thermal/thermal-generic-adc.c b/drivers/thermal/ther=
+mal-generic-adc.c
+> index 323e273e3298..2c283e762d81 100644
+> --- a/drivers/thermal/thermal-generic-adc.c
+> +++ b/drivers/thermal/thermal-generic-adc.c
+> @@ -54,7 +54,7 @@ static int gadc_thermal_adc_to_temp(struct gadc_thermal=
+_info *gti, int val)
+>
+>  static int gadc_thermal_get_temp(struct thermal_zone_device *tz, int *te=
+mp)
+>  {
+> -       struct gadc_thermal_info *gti =3D tz->devdata;
+> +       struct gadc_thermal_info *gti =3D thermal_zone_device_priv(tz);
+>         int val;
+>         int ret;
+>
+> diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_cor=
+e.c
+> index 0675df54c8e6..9fa12147fead 100644
+> --- a/drivers/thermal/thermal_core.c
+> +++ b/drivers/thermal/thermal_core.c
+> @@ -1378,6 +1378,12 @@ struct thermal_zone_device *thermal_zone_device_re=
+gister(const char *type, int n
+>  }
+>  EXPORT_SYMBOL_GPL(thermal_zone_device_register);
+>
+> +void *thermal_zone_device_priv(struct thermal_zone_device *tzd)
+> +{
+> +       return tzd->devdata;
+> +}
+> +EXPORT_SYMBOL_GPL(thermal_zone_device_priv);
+> +
+>  /**
+>   * thermal_zone_device_unregister - removes the registered thermal zone =
+device
+>   * @tz: the thermal zone device to remove
+> diff --git a/drivers/thermal/thermal_mmio.c b/drivers/thermal/thermal_mmi=
+o.c
+> index ea616731066c..6845756ad5e7 100644
+> --- a/drivers/thermal/thermal_mmio.c
+> +++ b/drivers/thermal/thermal_mmio.c
+> @@ -23,7 +23,7 @@ static u32 thermal_mmio_readb(void __iomem *mmio_base)
+>  static int thermal_mmio_get_temperature(struct thermal_zone_device *tz, =
+int *temp)
+>  {
+>         int t;
+> -       struct thermal_mmio *sensor =3D tz->devdata;
+> +       struct thermal_mmio *sensor =3D thermal_zone_device_priv(tz);
+>
+>         t =3D sensor->read_mmio(sensor->mmio_base) & sensor->mask;
+>         t *=3D sensor->factor;
+> diff --git a/drivers/thermal/ti-soc-thermal/ti-thermal-common.c b/drivers=
+/thermal/ti-soc-thermal/ti-thermal-common.c
+> index 8a9055bd376e..3e998c9799bb 100644
+> --- a/drivers/thermal/ti-soc-thermal/ti-thermal-common.c
+> +++ b/drivers/thermal/ti-soc-thermal/ti-thermal-common.c
+> @@ -68,7 +68,7 @@ static inline int ti_thermal_hotspot_temperature(int t,=
+ int s, int c)
+>  static inline int __ti_thermal_get_temp(struct thermal_zone_device *tz, =
+int *temp)
+>  {
+>         struct thermal_zone_device *pcb_tz =3D NULL;
+> -       struct ti_thermal_data *data =3D tz->devdata;
+> +       struct ti_thermal_data *data =3D thermal_zone_device_priv(tz);
+>         struct ti_bandgap *bgp;
+>         const struct ti_temp_sensor *s;
+>         int ret, tmp, slope, constant;
+> @@ -109,7 +109,7 @@ static inline int __ti_thermal_get_temp(struct therma=
+l_zone_device *tz, int *tem
+>
+>  static int __ti_thermal_get_trend(struct thermal_zone_device *tz, int tr=
+ip, enum thermal_trend *trend)
+>  {
+> -       struct ti_thermal_data *data =3D tz->devdata;
+> +       struct ti_thermal_data *data =3D thermal_zone_device_priv(tz);
+>         struct ti_bandgap *bgp;
+>         int id, tr, ret =3D 0;
+>
+> diff --git a/drivers/thermal/uniphier_thermal.c b/drivers/thermal/uniphie=
+r_thermal.c
+> index 47801841b3f5..aef6119cc004 100644
+> --- a/drivers/thermal/uniphier_thermal.c
+> +++ b/drivers/thermal/uniphier_thermal.c
+> @@ -187,7 +187,7 @@ static void uniphier_tm_disable_sensor(struct uniphie=
+r_tm_dev *tdev)
+>
+>  static int uniphier_tm_get_temp(struct thermal_zone_device *tz, int *out=
+_temp)
+>  {
+> -       struct uniphier_tm_dev *tdev =3D tz->devdata;
+> +       struct uniphier_tm_dev *tdev =3D thermal_zone_device_priv(tz);
+>         struct regmap *map =3D tdev->regmap;
+>         int ret;
+>         u32 temp;
+> diff --git a/include/linux/thermal.h b/include/linux/thermal.h
+> index 2bb4bf33f4f3..7dbb5712434c 100644
+> --- a/include/linux/thermal.h
+> +++ b/include/linux/thermal.h
+> @@ -365,6 +365,8 @@ thermal_zone_device_register_with_trips(const char *,=
+ struct thermal_trip *, int
+>                                         void *, struct thermal_zone_devic=
+e_ops *,
+>                                         struct thermal_zone_params *, int=
+, int);
+>
+> +void *thermal_zone_device_priv(struct thermal_zone_device *tzd);
+> +
+>  int thermal_zone_bind_cooling_device(struct thermal_zone_device *, int,
+>                                      struct thermal_cooling_device *,
+>                                      unsigned long, unsigned long,
+> @@ -436,6 +438,11 @@ static inline int thermal_zone_get_offset(
+>                 struct thermal_zone_device *tz)
+>  { return -ENODEV; }
+>
+> +static inline void *thermal_zone_device_priv(struct thermal_zone_device =
+*tz)
+> +{
+> +       return NULL;
+> +}
+> +
+>  static inline int thermal_zone_device_enable(struct thermal_zone_device =
+*tz)
+>  { return -ENODEV; }
+>
+> --
+> 2.34.1
+>
 
