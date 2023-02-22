@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D160DC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 08:01:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F284C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 08:02:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1Y/laJfFqV4xwHyPJ7m5mnZnkPz7sXnRa7yaLqyRbq4=; b=LP8E1f5dqCXwiCRgDGU6r6/orG
-	TuqiGplwg54s9AG68aJupNA6S3fESTjdIKUVdDoczA5cDAqPAybVR0BtoF4DK8Uj4YTlGqvM4J8JM
-	XNBcfzBqxZlwYjpM/oHsbo9eZxYOMyzOFw/M1XpKG5g+iKK534ZTrxRC2VYXjriOgYk+pyQT1kZRF
-	vXztPMl5cWdB6H1P5ZM4rEVEMAfE8vfpdqz3vQ4hY0UEFpAK2UQGXYB2GiQqwcv6AfTGnMf5aCQ/l
-	lyQia0Mhrfvnug299aEGsfowB1zLG+o5dKAAWFwiE3OtOeldjopg9C7m4D4DvTrlcirlqMHXNN7lX
-	d1Hj30Ew==;
+	bh=Tlzo2IJo5C30mjLFPDclNhtFd2xIEgosfbXcJe2YvVE=; b=y2Z3/3Q4J2U0zM8sSNvK7Ifh4R
+	jfhWaKYrMeb3JaTDL7MRqG27F1duD0iMPQsiHlviudDUy5Lzc2lYo4TA3IqJYX9kxa86dDwYMbyFJ
+	96CAY+GMlIjkljU+1fznRL0ZBQMtasPgX6CD0Q+42nB6smhMuhe0uHObuet+bNGkyWqS53rP4H5vI
+	ylSt7Bt7HE9ydDp1E6DWKws2kHJtT7kH3mhCjdYgYDeD08MkRs4/xK7uDpwzocwb7/Uz6+njTkzXH
+	R9qEjZA74c1xjbFIuOJ5UC1xRmARFk0VFuC4I02QYAS0W8PgIfN1fdCafgqHl8qygGJ3OSJ3YMMf5
+	9cJnYAAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUk4L-00B9l9-Cz; Wed, 22 Feb 2023 08:01:41 +0000
-Received: from mail-vs1-xe34.google.com ([2607:f8b0:4864:20::e34])
+	id 1pUk4h-00B9uv-GB; Wed, 22 Feb 2023 08:02:03 +0000
+Received: from mail-vs1-xe36.google.com ([2607:f8b0:4864:20::e36])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUk4I-00B9im-Qb
-	for linux-mediatek@lists.infradead.org; Wed, 22 Feb 2023 08:01:40 +0000
-Received: by mail-vs1-xe34.google.com with SMTP id u14so7209632vsp.8
-        for <linux-mediatek@lists.infradead.org>; Wed, 22 Feb 2023 00:01:37 -0800 (PST)
+	id 1pUk4f-00B9sD-4F
+	for linux-mediatek@lists.infradead.org; Wed, 22 Feb 2023 08:02:02 +0000
+Received: by mail-vs1-xe36.google.com with SMTP id g12so9420176vsf.12
+        for <linux-mediatek@lists.infradead.org>; Wed, 22 Feb 2023 00:01:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=1Y/laJfFqV4xwHyPJ7m5mnZnkPz7sXnRa7yaLqyRbq4=;
-        b=fwgJZ1kd/b7yZ8TdPMq+tKUzKjEZD5tLpT9fCYC0eKvSX7BY8L4D6l5i5Fs5mQ0VhA
-         s1lH2IXxMhWLSNQcMkwL4NsJ6NPlpWG1Hs8qbltFRcnuRTTjJ9K1F6Aq28JktV0upaTi
-         lDlbusLsU4bSpWk9IP9DxyyIZVinrYwz8sqm8=
+        bh=Tlzo2IJo5C30mjLFPDclNhtFd2xIEgosfbXcJe2YvVE=;
+        b=MeWMKnUvCa5h3wnNxrVJwgGjMGC7euso+9Epxo9WZnMC3zklZnUMAdZ6JmNt6tv94J
+         wnGbHnAcop4UQ5kLLD/AngU8vKm9bLOO7c19mmm5R8uwYNy7xW8gjJozc4V+7pdANJmi
+         Me6WFN7P7gptD+fkV3vqzODRL+tt7nUGbDd3s=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=1Y/laJfFqV4xwHyPJ7m5mnZnkPz7sXnRa7yaLqyRbq4=;
-        b=krSVkOhVfO9pxG/XDMgUkWDbBZbqfJv8krOvsBVd934rguI0WqUYeHcesWHXlUTVVW
-         VSqKk+cQrEf54V6Orbf8z4JHT9HMVQ3Pb3cEEQ7f7A7PQ4zKnNd3MTQwpbi+mwFjW45q
-         BIMTdSLe1Y3frdqodv8n2UocgyMzemm7eIb+fWWra3EnB6jdmqBPEI6tPdjVYXMB543u
-         VditnkU4WJx6+d2r5O1IBIHJyrTenSKAwt06Dwsx1MMVJA5E461x9oMSNWcnQl1E2V4Y
-         q46Mm/8Mf9BI2tsZRh5t2iYEWUQRvfv6kLZLuWy0nMl2uSST3KtcD+zIqDciqHQWOZpl
-         x8HA==
-X-Gm-Message-State: AO0yUKWEmeSbHVju0o4IEFutkDKvV4uuI3lwxZj4TAOpHdvjZ6Q5jSV7
-	cgYkybpptPNlfPHrLKHYdpUjmjDrkZO2ZcSdivh2Wg==
-X-Google-Smtp-Source: AK7set8jBcPu1FfniwnfmSpRHGWbhReDFVjElASgEIaz7mr0mpSwwLePzizwdVl4B4a62CrhB/XmVCgC0WHUB1uKmLg=
+        bh=Tlzo2IJo5C30mjLFPDclNhtFd2xIEgosfbXcJe2YvVE=;
+        b=4BtpYmB3Ex2znM+g7gEmDOGYzsaoSxfT1aU9RGuNiOj5xMCq14kqq0NvE0pw7cP/jh
+         321XkZUJ9DBZmiu/wuYIXgyMTe+6BZXcFFJ3TdyOTUcwwefiLa2g+FO3RjVEQAaCmGJ1
+         MdTWvWYO1+WKIbGAzsgw9PRHzZZH9X2KPoNEXjWTdrK4+sJ4e2CzhXjpeJCHMgmjAvS4
+         MdsMbd8KoONvYuOy2ktSJStBJBPoYt0WlIljTdwN+ime6ozqshGaWcnxWoRK/z4w3rrw
+         Q2oXhRNMC1eCZSBaQVYc7F9XguPdLXwYmWV29hpiI7QD3PK+7WevT/RhTI26ChJmLUIL
+         ub/Q==
+X-Gm-Message-State: AO0yUKWzWk6tvvsC06dz3xXN0e0e2mCIfW+vnW14TwPsocbPnQVt1+NB
+	mc5uozzeTDt13xRAnwrBvO1d16XpHj0BfJB08hgVow==
+X-Google-Smtp-Source: AK7set/K733MxVsNaWaZ582QR4RHXcNoi9G2ZoQ2+vNsIwgFsMxrfQGCDYAD5F2km2PqCut/v0ZaIlykDJA2RFfbm3I=
 X-Received: by 2002:a05:6102:570b:b0:3fc:58d:f90f with SMTP id
- dg11-20020a056102570b00b003fc058df90fmr1556195vsb.60.1677052897191; Wed, 22
- Feb 2023 00:01:37 -0800 (PST)
+ dg11-20020a056102570b00b003fc058df90fmr1556381vsb.60.1677052917662; Wed, 22
+ Feb 2023 00:01:57 -0800 (PST)
 MIME-Version: 1.0
-References: <20230221153740.1620529-1-angelogioacchino.delregno@collabora.com> <20230221153740.1620529-5-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230221153740.1620529-5-angelogioacchino.delregno@collabora.com>
+References: <20230221153740.1620529-1-angelogioacchino.delregno@collabora.com> <20230221153740.1620529-6-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230221153740.1620529-6-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 22 Feb 2023 16:01:26 +0800
-Message-ID: <CAGXv+5GKTdGoX61OBb84VeH3nKH2DhN=6h9KEyMuKa2phgcUpw@mail.gmail.com>
-Subject: Re: [PATCH v2 04/10] dt-bindings: gpu: mali-bifrost: Add compatible
- for MT8195 SoC
+Date: Wed, 22 Feb 2023 16:01:46 +0800
+Message-ID: <CAGXv+5FJ6ze5tECGMoJT3yALDoSkshQPj0dUy_KwLJoWo9AYCg@mail.gmail.com>
+Subject: Re: [PATCH v2 05/10] dt-bindings: gpu: mali-bifrost: Add new MT8183 compatible
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: airlied@gmail.com, daniel@ffwll.ch, robh+dt@kernel.org, 
 	krzysztof.kozlowski+dt@linaro.org, steven.price@arm.com, 
@@ -70,8 +69,8 @@ Cc: airlied@gmail.com, daniel@ffwll.ch, robh+dt@kernel.org,
 	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230222_000138_896627_79957F1F 
-X-CRM114-Status: UNSURE (   9.12  )
+X-CRM114-CacheID: sfid-20230222_000201_189751_EF66BAB9 
+X-CRM114-Status: UNSURE (   7.59  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,15 +89,12 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Tue, Feb 21, 2023 at 11:37 PM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> The MediaTek MT8195 SoC has a Mali G57 MC5 (Valhall-JM) and has the
-> same number of power domains and requirements as MT8192 in terms of
-> bindings.
+> Since new platform data was required in Panfrost for getting GPU DVFS
+> finally working on MediaTek SoCs, add a new "mediatek,mt8183b-mali"
+> compatible.
 >
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > Reviewed-by: Rob Herring <robh@kernel.org>
 
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-
-For future reference, the Mali G57 in the MT8195 has a minor revision of 1,
-while in the MT8192 the minor revision number is 0.
 
