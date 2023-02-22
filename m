@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6F06C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 06:28:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF621C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 06:30:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=GlIiKdz81RC+WT6ye6XFZWOPht8IFh4/MI/IcySt7tk=; b=YHXOjRy/3lrGzhUG7NHdaUQcvx
-	8/uonaJxYRLdl0CtTxt8d5j0/tywrdlc+FqnKHBGeF4GvhNaqZCAXeXCOjJ3VqQNebeC4HHemzYon
-	+bdt13wLyuA1+aI07cqtifa6oGC5aH7AzODSjNNXiq5X7kVStyeVA9IUKDewOV6RHruakZWMkJ6mM
-	q0FrJJX59oyrQW95iIWZD7c72uNT095CJE45f9Ngt9f9XrF8oYseFGIig2N5362GsFBhiLIcdqggt
-	hsG8sS5uoBc16NrWJgE1zPs2lZS0UDjvSxfU7bQ2U7MWtIrGGGImflMAjMfSaB6DRY/4xt3QjlKE8
-	uXfJYX7Q==;
+	bh=SMReaCXxwMWlPjCtDmlgPy2UA7uur7WDWXn4/VwP9i0=; b=LDZ9onUlrbgrv+uR4kLGjdWIgu
+	YAsqk2fREa1etkOVeuDnNh3JAboqWjXgIMyEH1xx1dFOcoE8UkY8HJ0UYsmPdGIb3jnYzcgf7zilW
+	ZAR/7HkXOXJJf4OUfzSDT5CbXYH5A/Ihfe2sPtRyarlZ/xq7Nwkz66ZFZA5V+XdABbSv8wYFbSoWA
+	vy2JHe7sHpJOyU+sD7czXN//MiPlhexxv7Vo7pHOZ2ZvJM7ndkUPiLixd2nfmV5sHm4vIuJjVK+jk
+	quEoiWbHCKQiKU81Mafb+kDPKu7g0msx7yU++jQj/nU4M/lxYbAy1wEt38wmKHfZPxaqX5BBMsVTt
+	YCrxSJsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUicN-00Awlb-76; Wed, 22 Feb 2023 06:28:43 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pUieC-00Ax7k-GH; Wed, 22 Feb 2023 06:30:36 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUicK-00Awl8-Np; Wed, 22 Feb 2023 06:28:41 +0000
-X-UUID: 241f503cb27a11eda08d4d6090ec5a5c-20230221
+	id 1pUie9-00Ax68-8B
+	for linux-mediatek@lists.infradead.org; Wed, 22 Feb 2023 06:30:34 +0000
+X-UUID: 629b1a58b27a11edbbe3f76fe852e059-20230221
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=GlIiKdz81RC+WT6ye6XFZWOPht8IFh4/MI/IcySt7tk=;
-	b=Wy5W7Pma7ksrsOWmCqdALFtvC2TG9DiuPqdcpe8rFJx0sULsSyYjxbelVrC4lrS6IIT2ULuqVVe4sGqu9mVaiwzzA5TRngbFm1pXJlCQiBb06vvrXF3mWpCIJB0h+Ok/R4J1DebHGio5Qu8e7tjuESz5sBHH5A0aVycuCA2euOk=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=SMReaCXxwMWlPjCtDmlgPy2UA7uur7WDWXn4/VwP9i0=;
+	b=GpCmRVLPrRkftEaP17p41K/zY07iPwpfdgAPMfb0jEiCPPKlmHaaGz+LpR4JNgZRzOQ/8MLRuw7XKKJv35qoeeKxFDBJF5yLVT1msyEC2OfdoQSvzAojVaeEirdEXSRmCM7cFU+IdicUiBpOdZjEIzbweYsBOjPD1vQ3P6HmzRw=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.20,REQID:b5f48757-0239-4ee0-9146-e58b6f06fa90,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:25b5999,CLOUDID:2ee15426-564d-42d9-9875-7c868ee415ec,B
+X-CID-O-INFO: VERSION:1.1.20,REQID:07b2e5ca-2ed3-4d3c-9384-7edbff5790fa,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:25b5999,CLOUDID:5913c3f3-ddba-41c3-91d9-10eeade8eac7,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
-X-UUID: 241f503cb27a11eda08d4d6090ec5a5c-20230221
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <andrew.yang@mediatek.com>)
+X-UUID: 629b1a58b27a11edbbe3f76fe852e059-20230221
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <sujuan.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1471509684; Tue, 21 Feb 2023 23:28:38 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+	with ESMTP id 662953374; Tue, 21 Feb 2023 23:30:22 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 22 Feb 2023 14:28:02 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 22 Feb 2023 14:28:02 +0800
-From: Andrew Yang <andrew.yang@mediatek.com>
-To: SeongJae Park <sj@kernel.org>, Andrew Morton <akpm@linux-foundation.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <wsd_upstream@mediatek.com>, <casper.li@mediatek.com>, andrew.yang
-	<andrew.yang@mediatek.com>, <damon@lists.linux.dev>, <linux-mm@kvack.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2] mm/damon/paddr: fix missing folio_put()
-Date: Wed, 22 Feb 2023 14:27:54 +0800
-Message-ID: <20230222062758.6183-1-andrew.yang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ Wed, 22 Feb 2023 14:29:45 +0800
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 22 Feb 2023 14:29:45 +0800
+From: Sujuan Chen <sujuan.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Bo Jiao
+	<bo.jiao@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Sujuan Chen <sujuan.chen@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7915: add dev->hif2 support for mt7916 WED device
+Date: Wed, 22 Feb 2023 14:29:36 +0800
+Message-ID: <5dcd2b1b74b7c46ba4245f96eaf3a4e2f84b37e7.1677039727.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230221_222840_805497_B2B89C69 
-X-CRM114-Status: GOOD (  13.34  )
+X-CRM114-CacheID: sfid-20230221_223033_316857_54A3F897 
+X-CRM114-Status: GOOD (  12.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,52 +79,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "andrew.yang" <andrew.yang@mediatek.com>
+Enable two PCIe interfaces (dev->hif2) support for mt7916 when WED is enabled.
 
-damon_get_folio() would always increase folio _refcount and
-folio_isolate_lru() would increase folio _refcount if the folio's lru
-flag is set.
-
-If an unevictable folio isolated successfully, there will be two more
-_refcount. The one from folio_isolate_lru() will be decreased in
-folio_puback_lru(), but the other one from damon_get_folio() will be
-left behind. This causes a pin page.
-
-Whatever the case, the _refcount from damon_get_folio() should be
-decreased.
-
-Signed-off-by: andrew.yang <andrew.yang@mediatek.com>
+Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
 ---
-v2:
-  according to David's suggestion
-    1. revise subject
-  according to SeongJae's suggestions
-    1. rebase to mm-unstable tree 
-    2. remove braces for th single statements
----
- mm/damon/paddr.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7915/dma.c  | 10 ++++++++--
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c  |  3 ++-
+ drivers/net/wireless/mediatek/mt76/mt7915/mmio.c | 10 +++++-----
+ 3 files changed, 15 insertions(+), 8 deletions(-)
 
-diff --git a/mm/damon/paddr.c b/mm/damon/paddr.c
-index 607bb69e526c..6c655d9b5639 100644
---- a/mm/damon/paddr.c
-+++ b/mm/damon/paddr.c
-@@ -250,12 +250,11 @@ static unsigned long damon_pa_pageout(struct damon_region *r, struct damos *s)
- 			folio_put(folio);
- 			continue;
- 		}
--		if (folio_test_unevictable(folio)) {
-+		if (folio_test_unevictable(folio))
- 			folio_putback_lru(folio);
--		} else {
-+		else
- 			list_add(&folio->lru, &folio_list);
--			folio_put(folio);
--		}
-+		folio_put(folio);
- 	}
- 	applied = reclaim_pages(&folio_list);
- 	cond_resched();
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/dma.c b/drivers/net/wireless/mediatek/mt76/mt7915/dma.c
+index abe17dac9996..43a5456d4b97 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/dma.c
+@@ -87,8 +87,14 @@ static void mt7915_dma_config(struct mt7915_dev *dev)
+ 				   MT7916_RXQ_BAND0);
+ 			RXQ_CONFIG(MT_RXQ_MCU_WA, WFDMA0, MT_INT_WED_RX_DONE_WA_MT7916,
+ 				   MT7916_RXQ_MCU_WA);
+-			RXQ_CONFIG(MT_RXQ_BAND1, WFDMA0, MT_INT_WED_RX_DONE_BAND1_MT7916,
+-				   MT7916_RXQ_BAND1);
++			if (dev->hif2)
++				RXQ_CONFIG(MT_RXQ_BAND1, WFDMA0,
++					   MT_INT_RX_DONE_BAND1_MT7916,
++					   MT7916_RXQ_BAND1);
++			else
++				RXQ_CONFIG(MT_RXQ_BAND1, WFDMA0,
++					   MT_INT_WED_RX_DONE_BAND1_MT7916,
++					   MT7916_RXQ_BAND1);
+ 			RXQ_CONFIG(MT_RXQ_MAIN_WA, WFDMA0, MT_INT_WED_RX_DONE_WA_MAIN_MT7916,
+ 				   MT7916_RXQ_MCU_WA_MAIN);
+ 			TXQ_CONFIG(0, WFDMA0, MT_INT_WED_TX_DONE_BAND0,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 5545a8bdf1d0..cd440aaa969e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -2370,7 +2370,8 @@ int mt7915_mcu_init_firmware(struct mt7915_dev *dev)
+ 	if (ret)
+ 		return ret;
+ 
+-	if (mtk_wed_device_active(&dev->mt76.mmio.wed) && is_mt7915(&dev->mt76))
++	if (mtk_wed_device_active(&dev->mt76.mmio.wed) &&
++	    is_mt7915(&dev->mt76) || !mtk_wed_get_rx_capa(&dev->mt76.mmio.wed))
+ 		mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(CAPABILITY), 0, 0, 0);
+ 
+ 	ret = mt7915_mcu_set_mwds(dev, 1);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+index 225a19604d3e..6f0c0e2ae045 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+@@ -989,13 +989,13 @@ irqreturn_t mt7915_irq_handler(int irq, void *dev_instance)
+ 	struct mt7915_dev *dev = dev_instance;
+ 	struct mtk_wed_device *wed = &dev->mt76.mmio.wed;
+ 
+-	if (mtk_wed_device_active(wed)) {
++	if (mtk_wed_device_active(wed))
+ 		mtk_wed_device_irq_set_mask(wed, 0);
+-	} else {
++	else
+ 		mt76_wr(dev, MT_INT_MASK_CSR, 0);
+-		if (dev->hif2)
+-			mt76_wr(dev, MT_INT1_MASK_CSR, 0);
+-	}
++
++	if (dev->hif2)
++		mt76_wr(dev, MT_INT1_MASK_CSR, 0);
+ 
+ 	if (!test_bit(MT76_STATE_INITIALIZED, &dev->mphy.state))
+ 		return IRQ_NONE;
 -- 
 2.18.0
 
