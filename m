@@ -4,97 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FD0FC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 21:15:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71C6DC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 23:15:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1hpkcdj31Kp+64I0H+8QjpzTiuX76hZTeMvrWdpVOt4=; b=EVatgJsIQggWuu6WdyjrKcO1Zm
-	CsseexPJgOY4BRt5MhW+DDuvDi2RrzN590IJTq/OEg2cpD9nGdTFxcdsJih5mkg2tY2zQIfnWEaS3
-	hNSApy5eb7FwC1n36+wVT+IXp8QkvfwFX22qWMVAD6cO4YuqdGgbDHjzlwT2cqzU7ygB7h1NDZph9
-	twrC808oGggYunuHb7xcyM/RR25Zxnr6R42vQ+My28Ks28+aWq5yghEO92uYtuZ8Jp9A/GzQU1ihH
-	eafPatgCtSSU0nCNpfP24p4h7xhSDmp99ufZuOwjcDCTCRdIJTTVLZa5rCfgz+kgtbteDfl9uaGDl
-	QlBTcnUQ==;
+	bh=AWtWIYTGNMyDOMqqOh9t6zGvy0m9O4dPql9gjsk0/Zw=; b=b7OQ0UvFUcU3iVcfhzZWGZGw4d
+	Cw094I3o24cS6WEwlnU1gPM8BVgWUFuyYTupoYETUfbhxv5Ava4MKU+Au/XnLB5E/mDf8UrGDtq7Z
+	esIuQ7BPLW317EFhCoP5yWUjsPf5mmqBLgS9C3jvAALS412IR2kngl42OBui/MNaHxZktawHhjqwH
+	7Sb34aOCSOTHmywfYj+6HjnOgZjh4s8daUh2xXYyghPEgnXArjjaX0pgrXFm5dgRyzItCULQ//c90
+	Z+BV4iWhk0HoIkjdrExFXSXUxyi/B52td24kr1p6Dn/nmUCp6+pMAeNViGEAo9KHZ9UsCuKKb2eC3
+	U1TvLOTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUwSK-00E98y-PF; Wed, 22 Feb 2023 21:15:16 +0000
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+	id 1pUyK7-00EOes-QX; Wed, 22 Feb 2023 23:14:55 +0000
+Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUwSE-00E96V-Tn; Wed, 22 Feb 2023 21:15:12 +0000
-Received: by mail-ed1-x533.google.com with SMTP id eg37so32060472edb.12;
-        Wed, 22 Feb 2023 13:15:07 -0800 (PST)
+	id 1pUyJt-00EOcI-0M; Wed, 22 Feb 2023 23:14:43 +0000
+Received: by mail-oa1-x29.google.com with SMTP id 586e51a60fabf-17235c8dab9so8124778fac.7;
+        Wed, 22 Feb 2023 15:14:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=googlemail.com; s=20210112;
+        d=gmail.com; s=20210112;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=1hpkcdj31Kp+64I0H+8QjpzTiuX76hZTeMvrWdpVOt4=;
-        b=Y95tEBQTvJnja0wiaBFlONHEPFFpg4E5Aidd7Wxu88GO6+Efw9s32CSm6Qrv+mXXKE
-         i5+x1nQprf7tfF0IcJzKPjG26LQSm8lVS+CQndNmsIeuLxTz3Zws+u23ldaG3K54+WIL
-         IKeo6NJCJ7WchtpfymyIpeNWai8L7kAy3lwcxu51e9DNdYZrZ0f3D1Sw8ivAk+CfDKS3
-         Ek4oq62+5hOyx3h0ySU4oZmDiESIURoGhUvHFCUOXpdaqhWIldAEFOJmG9Rfku2zdt2S
-         XHD98cqCLTBp5a+c55IWJPbpd06egfIFbD37YQMjJACS4ZlT8leLyYR4DAvtMaXLTN/X
-         IY6g==
+        bh=AWtWIYTGNMyDOMqqOh9t6zGvy0m9O4dPql9gjsk0/Zw=;
+        b=iIdpgNb0c5q4M2dQOzDGGvR++HfQmC46LKRbtsCGsETjgQ5P6n/Vf5mgNZ2ejrYv3a
+         eEpk4mh8B5DHrozdEgeMsVa9C7Ed8BQN74vvcsGxcnSLMqj1eKSnpYKyyVVuf/u6tC8L
+         sOf+z+1LUQPxP9eRg20srtpuodp5MWnxEWcnqsAMFzaXtCBQal/Q/4c8C1KZtaThZhUJ
+         kVkNlc2+3BDOKmgVATFBcM/OKSyjE+6DaFc6uBM4xekagRxjs1b7kjfoMxqoYIL42qEJ
+         pjRxxEMjnrHrR52ho/sMNS2dW5P0ReAq0ZWC/FHX3DxrBxAo+3xG25zsH0ZrR8p6Q9qv
+         uYeg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=1hpkcdj31Kp+64I0H+8QjpzTiuX76hZTeMvrWdpVOt4=;
-        b=ESzvGo2YbvD9LkdPZngcUgPHxKJHJ11ML7/WfBdKFcxFjShY0Cg7AHlZ+t5/7ZkBRO
-         bRgczKqzjlpebS6eCV6yaDCjdwuwmw8hbJUhwhDoFM4EbfEHf6MdWrD93vGGv38vVCNw
-         Pt8ABVBZyiVcx5NObesb1koQjM6Z7iICBI2I6CofEKzQNmlnyopcSNdocw2hhHKWbmVM
-         Wj0sRZw86o2KEUrEd+dkZYA/VnKwMzW2JdWTvw9Yya/MBCOMHTGl/nSODbYojH0aSTOs
-         LTef2Wz9WItTcVQd/d7966NXo54PTBwopnF2mLx9oMkChnXe/MS1FnuMKpA2l70azBxJ
-         jLoA==
-X-Gm-Message-State: AO0yUKVu+6q8GGYg54UdQxtMYeLW6Y4q1xtF/XYb0p7x+Ghd9pNDjpvt
-	uK6eP+6iWbJvoDPsVbgL+SI30gkqRESBAm3PyZ0=
-X-Google-Smtp-Source: AK7set8TXb46bTmDPfzW/xczn6QfGU7MdMXPRf/CaO6cyWdNx+3X84yvibHTXzLWWA/EAH5iiZY+OShEAAHjsEGwRMc=
-X-Received: by 2002:a50:f611:0:b0:4ac:b7c1:9109 with SMTP id
- c17-20020a50f611000000b004acb7c19109mr4476929edn.6.1677100506156; Wed, 22 Feb
- 2023 13:15:06 -0800 (PST)
+        bh=AWtWIYTGNMyDOMqqOh9t6zGvy0m9O4dPql9gjsk0/Zw=;
+        b=yA9RXLgUyG9BoJOezY4cJerDEsJ7KyMWCGcUCi1mSu77rTB+M4D60iVgx6pSSc1hzP
+         Y4oXMpoetNh60Dfud5+gQFPewN5WTcHl58MO3Nm1FUo3FecBWNTVtpjd5s5vgBmxvJNQ
+         fuQkkyGj96Gr0tRt78pDsf4HmqKJ4TNfsr8iIP85aorED9BL5yK/xJ9GbS2DsroHKH+h
+         gwL7mWoHuVucTkQUgVwbv2rL4NzMlxbSeseaXsVI/AgkUhRLZnqHZj8FnKcXzJoXR64c
+         9zSGQ+jp1MMPq6cDL5iqL9xkXywZVYwtb2WwpGd62zVUrFJ7FvCTpNejXDoDa0TuUcUz
+         MypA==
+X-Gm-Message-State: AO0yUKWFImulvAv+EfZJmLds5QI4J26EJsJR4po9HGAbxGu/qoFV9vsY
+	Bl1BF0sMOlUNd6zlMHJDGDNtLR1nN4GbsMxfhlc=
+X-Google-Smtp-Source: AK7set/vSOhCsjA3k/BmRsMD07qeudjbB6KHmncgnsdQiHmX7AqvCxii7B6mfmEHNkUURYYhVKOWgKR+7Kt+sVEKhwo=
+X-Received: by 2002:a05:6870:808d:b0:16e:8a56:d0d2 with SMTP id
+ q13-20020a056870808d00b0016e8a56d0d2mr1457790oab.38.1677107678554; Wed, 22
+ Feb 2023 15:14:38 -0800 (PST)
 MIME-Version: 1.0
-References: <20230221145021.31993-1-zajec5@gmail.com> <CAFBinCDxB=xtz9mtZupBC7J5oxknN1ENHzJ-cFxX4FTDSgZeFQ@mail.gmail.com>
- <101a5bdf-870a-a1bb-954d-1d675ecad5a7@gmail.com>
-In-Reply-To: <101a5bdf-870a-a1bb-954d-1d675ecad5a7@gmail.com>
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Date: Wed, 22 Feb 2023 22:14:55 +0100
-Message-ID: <CAFBinCDcDYtdOdikc2ieXjRUkrjgwNKaPYvYZb_v84gh66q=bw@mail.gmail.com>
-Subject: Re: [PATCH] nvmem: add explicit config option to read OF fixed cells
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, 
-	Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, 
-	Vignesh Raghavendra <vigneshr@ti.com>, Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
-	Jerome Brunet <jbrunet@baylibre.com>, Claudiu Beznea <claudiu.beznea@microchip.com>, 
+References: <20230216111214.3489223-1-daniel.vetter@ffwll.ch>
+In-Reply-To: <20230216111214.3489223-1-daniel.vetter@ffwll.ch>
+From: Rob Clark <robdclark@gmail.com>
+Date: Wed, 22 Feb 2023 15:14:27 -0800
+Message-ID: <CAF6AEGvFN-9_cr2EyGxuW5NVgk8CA99rVuv_Y80M+gvMviPcuA@mail.gmail.com>
+Subject: Re: [PATCH] drm/atomic-helpers: remove legacy_cursor_update hacks
+To: Daniel Vetter <daniel.vetter@ffwll.ch>
+Cc: DRI Development <dri-devel@lists.freedesktop.org>, 
+	Intel Graphics Development <intel-gfx@lists.freedesktop.org>, Abhinav Kumar <quic_abhinavk@quicinc.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, Maxime Ripard <maxime@cerno.tech>, mikita.lipski@amd.com, 
+	=?UTF-8?Q?Michel_D=C3=A4nzer?= <michel@daenzer.net>, harry.wentland@amd.com, 
+	"Kazlauskas, Nicholas" <nicholas.kazlauskas@amd.com>, 
+	Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Sean Paul <sean@poorly.run>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Gross <agross@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Vincent Shih <vincent.sunplus@gmail.com>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
-	Michal Simek <michal.simek@xilinx.com>, Alessandro Zummo <a.zummo@towertech.it>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Evgeniy Polyakov <zbr@ioremap.net>, 
-	linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
-	linux-rtc@vger.kernel.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	=?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>, 
+	Jani Nikula <jani.nikula@intel.com>, Lucas De Marchi <lucas.demarchi@intel.com>, 
+	Imre Deak <imre.deak@intel.com>, Manasi Navare <manasi.d.navare@intel.com>, 
+	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Daniel Vetter <daniel.vetter@intel.com>, 
+	Rob Clark <robdclark@chromium.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230222_131510_988749_858D027B 
-X-CRM114-Status: GOOD (  23.40  )
+X-CRM114-CacheID: sfid-20230222_151441_102622_08707117 
+X-CRM114-Status: GOOD (  34.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,65 +100,265 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Rafa=C5=82,
+On Thu, Feb 16, 2023 at 3:12 AM Daniel Vetter <daniel.vetter@ffwll.ch> wrot=
+e:
+>
+> The stuff never really worked, and leads to lots of fun because it
+> out-of-order frees atomic states. Which upsets KASAN, among other
+> things.
+>
+> For async updates we now have a more solid solution with the
+> ->atomic_async_check and ->atomic_async_commit hooks. Support for that
+> for msm and vc4 landed. nouveau and i915 have their own commit
+> routines, doing something similar.
+>
+> For everyone else it's probably better to remove the use-after-free
+> bug, and encourage folks to use the async support instead. The
+> affected drivers which register a legacy cursor plane and don't either
+> use the new async stuff or their own commit routine are: amdgpu,
+> atmel, mediatek, qxl, rockchip, sti, sun4i, tegra, virtio, and vmwgfx.
+>
+> Inspired by an amdgpu bug report.
+>
+> v2: Drop RFC, I think with amdgpu converted over to use
+> atomic_async_check/commit done in
+>
+> commit 674e78acae0dfb4beb56132e41cbae5b60f7d662
+> Author: Nicholas Kazlauskas <nicholas.kazlauskas@amd.com>
+> Date:   Wed Dec 5 14:59:07 2018 -0500
+>
+>     drm/amd/display: Add fast path for cursor plane updates
+>
+> we don't have any driver anymore where we have userspace expecting
+> solid legacy cursor support _and_ they are using the atomic helpers in
+> their fully glory. So we can retire this.
+>
+> v3: Paper over msm and i915 regression. The complete_all is the only
+> thing missing afaict.
+>
+> v4: Fixup i915 fixup ...
+>
+> v5: Unallocate the crtc->event in msm to avoid hitting a WARN_ON in
+> dpu_crtc_atomic_flush(). This is a bit a hack, but simplest way to
+> untangle this all. Thanks to Abhinav Kumar for the debug help.
 
-On Tue, Feb 21, 2023 at 11:29 PM Rafa=C5=82 Mi=C5=82ecki <zajec5@gmail.com>=
- wrote:
-[...]
-> > I am not familiar with the recent changes around dynamic cells.
-> > Is there any discussion/summary that I can read to get up to speed?
->
-> Some NVMEM devices don't store specific data at hardcoded offsets. For
-> such devices we have drivers (to become: layouts) that parse their magic
-> content. They discover cells and register them and provide matching with
-> proper DT nodes.
->
-> For bindings see:
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit=
-/?id=3D084973e944bec21804f8afb0515b25434438699a
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit=
-/?id=3Da607a850ba1fa966cbb035544c1588e24a6307df
->
-> For example driver see:
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit=
-/?id=3D6e977eaa8280e957b87904b536661550f2a6b3e8
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit=
-/?id=3D207775f7e17b8fd0426a2ac4a5b81e4e1d71849e
->
-> For usage see:
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit=
-/?id=3Dc8442f0fb09ca3d842b9b23d1d0650f649fd10f8
-Thanks, that makes things clearer for me!
+Hmm, are you sure about that double-put?
 
-> > My main thought is: if there are many "fixed OF cells" implementations
-> > and only a few "dynamic" ones - does it make sense to flip the logic
-> > and introduce a new "use_dynamic_of_cells" flag instead?
->
-> The problem is that there are more cases than just two. We can have:
-> 1. No cells at all
-> 2. Fixed cells in DT
-> 3. Dynamic cells with references in DT
-> 4. Driver specified cells (specified within config)
-> 5. Cells defined in a global table
->
-> So we need to reference DT cells explicitly (we can't just confirm /
-> deny *dynamic* cells).
->
-> Another solution would be to have "no_fixed_of_cells" but:
->
-> 1. Personally I think negation is less clear / easy to follow
->
-> 2. There may be actually more drivers with no fixed cells.
-> I think I modified 18 drivers. It seems devm_nvmem_register() is
-> referenced in 44 places. Few of them may be not actual users but it
-> still seems to be about equal.
-Thanks for this overview of all the special cases. Please add my:
-Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-for the following two drivers:
-- drivers/nvmem/meson-efuse.c
-- drivers/nvmem/meson-mx-efuse.c
+[  +0.501263] ------------[ cut here ]------------
+[  +0.000032] refcount_t: underflow; use-after-free.
+[  +0.000033] WARNING: CPU: 6 PID: 1854 at lib/refcount.c:28
+refcount_warn_saturate+0xf8/0x134
+[  +0.000043] Modules linked in: uinput rfcomm algif_hash
+algif_skcipher af_alg veth venus_dec venus_enc xt_cgroup xt_MASQUERADE
+qcom_spmi_temp_alarm qcom_spmi_adc_tm5 qcom_spmi_adc5 qcom_vadc_common
+cros_ec_typec typec 8021q hci_uart btqca qcom_stats venus_core
+coresight_etm4x coresight_tmc snd_soc_lpass_sc7180
+coresight_replicator coresight_funnel coresight snd_soc_sc7180
+ip6table_nat fuse ath10k_snoc ath10k_core ath mac80211 iio_trig_sysfs
+bluetooth cros_ec_sensors cfg80211 cros_ec_sensors_core
+industrialio_triggered_buffer kfifo_buf ecdh_generic ecc
+cros_ec_sensorhub lzo_rle lzo_compress r8153_ecm cdc_ether usbnet
+r8152 mii zram hid_vivaldi hid_google_hammer hid_vivaldi_common joydev
+[  +0.000189] CPU: 6 PID: 1854 Comm: DrmThread Not tainted
+5.15.93-16271-g5ecce40dbcd4 #46
+cf9752a1c9e5b13fd13216094f52d77fa5a5f8f3
+[  +0.000016] Hardware name: Google Wormdingler rev1+ INX panel board (DT)
+[  +0.000008] pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=
+=3D--)
+[  +0.000013] pc : refcount_warn_saturate+0xf8/0x134
+[  +0.000011] lr : refcount_warn_saturate+0xf8/0x134
+[  +0.000011] sp : ffffffc012e43930
+[  +0.000008] x29: ffffffc012e43930 x28: ffffff80d31aa300 x27: 000000000000=
+024e
+[  +0.000017] x26: 00000000000003bd x25: 0000000000000040 x24: 000000000000=
+0040
+[  +0.000014] x23: ffffff8083eb1000 x22: 0000000000000002 x21: ffffff80845b=
+c800
+[  +0.000013] x20: 0000000000000040 x19: ffffff80d0cecb00 x18: 000000006001=
+4024
+[  +0.000012] x17: 0000000000000000 x16: 000000000000003c x15: ffffffd97e21=
+a1c0
+[  +0.000012] x14: 0000000000000003 x13: 0000000000000004 x12: 000000000000=
+0001
+[  +0.000014] x11: c0000000ffffdfff x10: ffffffd97f560f50 x9 : 5749cdb40355=
+0d00
+[  +0.000014] x8 : 5749cdb403550d00 x7 : 0000000000000000 x6 : 372e31332020=
+205b
+[  +0.000012] x5 : ffffffd97f7b8b24 x4 : 0000000000000000 x3 : ffffffc012e4=
+3588
+[  +0.000013] x2 : ffffffc012e43590 x1 : 00000000ffffdfff x0 : 000000000000=
+0026
+[  +0.000014] Call trace:
+[  +0.000008]  refcount_warn_saturate+0xf8/0x134
+[  +0.000013]  drm_crtc_commit_put+0x54/0x74
+[  +0.000013]  __drm_atomic_helper_plane_destroy_state+0x64/0x68
+[  +0.000013]  dpu_plane_destroy_state+0x24/0x3c
+[  +0.000017]  drm_atomic_state_default_clear+0x13c/0x2d8
+[  +0.000015]  __drm_atomic_state_free+0x88/0xa0
+[  +0.000015]  drm_atomic_helper_update_plane+0x158/0x188
+[  +0.000014]  __setplane_atomic+0xf4/0x138
+[  +0.000012]  drm_mode_cursor_common+0x2e8/0x40c
+[  +0.000009]  drm_mode_cursor_ioctl+0x48/0x70
+[  +0.000008]  drm_ioctl_kernel+0xe0/0x158
+[  +0.000014]  drm_ioctl+0x214/0x480
+[  +0.000012]  __arm64_sys_ioctl+0x94/0xd4
+[  +0.000010]  invoke_syscall+0x4c/0x100
+[  +0.000013]  do_el0_svc+0xa4/0x168
+[  +0.000012]  el0_svc+0x20/0x50
+[  +0.000009]  el0t_64_sync_handler+0x20/0x110
+[  +0.000008]  el0t_64_sync+0x1a4/0x1a8
+[  +0.000010] ---[ end trace 35bb2d245a684c9a ]---
 
 
-Best regards,
-Martin
+BR,
+-R
+
+
+
+> Cc: Abhinav Kumar <quic_abhinavk@quicinc.com>
+> Cc: Thomas Zimmermann <tzimmermann@suse.de>
+> Cc: Maxime Ripard <maxime@cerno.tech>
+> References: https://bugzilla.kernel.org/show_bug.cgi?id=3D199425
+> References: https://lore.kernel.org/all/20220221134155.125447-9-maxime@ce=
+rno.tech/
+> References: https://bugzilla.kernel.org/show_bug.cgi?id=3D199425
+> Cc: Maxime Ripard <maxime@cerno.tech>
+> Tested-by: Maxime Ripard <maxime@cerno.tech>
+> Cc: mikita.lipski@amd.com
+> Cc: Michel D=C3=A4nzer <michel@daenzer.net>
+> Cc: harry.wentland@amd.com
+> Cc: Rob Clark <robdclark@gmail.com>
+> Cc: "Kazlauskas, Nicholas" <nicholas.kazlauskas@amd.com>
+> Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+> Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+> Cc: Sean Paul <sean@poorly.run>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Cc: "Ville Syrj=C3=A4l=C3=A4" <ville.syrjala@linux.intel.com>
+> Cc: Jani Nikula <jani.nikula@intel.com>
+> Cc: Lucas De Marchi <lucas.demarchi@intel.com>
+> Cc: Imre Deak <imre.deak@intel.com>
+> Cc: Manasi Navare <manasi.d.navare@intel.com>
+> Cc: linux-arm-msm@vger.kernel.org
+> Cc: freedreno@lists.freedesktop.org
+> Cc: linux-kernel@vger.kernel.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-mediatek@lists.infradead.org
+> Signed-off-by: Daniel Vetter <daniel.vetter@intel.com>
+> ---
+>  drivers/gpu/drm/drm_atomic_helper.c          | 13 -------------
+>  drivers/gpu/drm/i915/display/intel_display.c | 14 ++++++++++++++
+>  drivers/gpu/drm/msm/msm_atomic.c             | 15 +++++++++++++++
+>  3 files changed, 29 insertions(+), 13 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/drm_at=
+omic_helper.c
+> index d579fd8f7cb8..f6b4c3a00684 100644
+> --- a/drivers/gpu/drm/drm_atomic_helper.c
+> +++ b/drivers/gpu/drm/drm_atomic_helper.c
+> @@ -1587,13 +1587,6 @@ drm_atomic_helper_wait_for_vblanks(struct drm_devi=
+ce *dev,
+>         int i, ret;
+>         unsigned int crtc_mask =3D 0;
+>
+> -        /*
+> -         * Legacy cursor ioctls are completely unsynced, and userspace
+> -         * relies on that (by doing tons of cursor updates).
+> -         */
+> -       if (old_state->legacy_cursor_update)
+> -               return;
+> -
+>         for_each_oldnew_crtc_in_state(old_state, crtc, old_crtc_state, ne=
+w_crtc_state, i) {
+>                 if (!new_crtc_state->active)
+>                         continue;
+> @@ -2244,12 +2237,6 @@ int drm_atomic_helper_setup_commit(struct drm_atom=
+ic_state *state,
+>                         continue;
+>                 }
+>
+> -               /* Legacy cursor updates are fully unsynced. */
+> -               if (state->legacy_cursor_update) {
+> -                       complete_all(&commit->flip_done);
+> -                       continue;
+> -               }
+> -
+>                 if (!new_crtc_state->event) {
+>                         commit->event =3D kzalloc(sizeof(*commit->event),
+>                                                 GFP_KERNEL);
+> diff --git a/drivers/gpu/drm/i915/display/intel_display.c b/drivers/gpu/d=
+rm/i915/display/intel_display.c
+> index 3479125fbda6..2454451fcf95 100644
+> --- a/drivers/gpu/drm/i915/display/intel_display.c
+> +++ b/drivers/gpu/drm/i915/display/intel_display.c
+> @@ -7651,6 +7651,20 @@ static int intel_atomic_commit(struct drm_device *=
+dev,
+>                 intel_runtime_pm_put(&dev_priv->runtime_pm, state->wakere=
+f);
+>                 return ret;
+>         }
+> +
+> +       /*
+> +        * FIXME: Cut over to (async) commit helpers instead of hand-roll=
+ing
+> +        * everything.
+> +        */
+> +       if (state->base.legacy_cursor_update) {
+> +               struct intel_crtc_state *new_crtc_state;
+> +               struct intel_crtc *crtc;
+> +               int i;
+> +
+> +               for_each_new_intel_crtc_in_state(state, crtc, new_crtc_st=
+ate, i)
+> +                       complete_all(&new_crtc_state->uapi.commit->flip_d=
+one);
+> +       }
+> +
+>         intel_shared_dpll_swap_state(state);
+>         intel_atomic_track_fbs(state);
+>
+> diff --git a/drivers/gpu/drm/msm/msm_atomic.c b/drivers/gpu/drm/msm/msm_a=
+tomic.c
+> index 1686fbb611fd..b7151767b567 100644
+> --- a/drivers/gpu/drm/msm/msm_atomic.c
+> +++ b/drivers/gpu/drm/msm/msm_atomic.c
+> @@ -189,6 +189,19 @@ void msm_atomic_commit_tail(struct drm_atomic_state =
+*state)
+>         bool async =3D kms->funcs->vsync_time &&
+>                         can_do_async(state, &async_crtc);
+>
+> +       /*
+> +        * FIXME: Convert to async plane helpers and remove the various h=
+acks to
+> +        * keep the old legacy_cursor_way of doing async commits working =
+for the
+> +        * dpu code, like the expectation that these don't have a crtc->e=
+vent.
+> +        */
+> +       if (async) {
+> +               /* both ->event itself and the pointer hold a reference! =
+*/
+> +               drm_crtc_commit_put(async_crtc->state->commit);
+> +               drm_crtc_commit_put(async_crtc->state->commit);
+> +               kfree(async_crtc->state->event);
+> +               async_crtc->state->event =3D NULL;
+> +       }
+> +
+>         trace_msm_atomic_commit_tail_start(async, crtc_mask);
+>
+>         kms->funcs->enable_commit(kms);
+> @@ -222,6 +235,8 @@ void msm_atomic_commit_tail(struct drm_atomic_state *=
+state)
+>                 /* async updates are limited to single-crtc updates: */
+>                 WARN_ON(crtc_mask !=3D drm_crtc_mask(async_crtc));
+>
+> +               complete_all(&async_crtc->state->commit->flip_done);
+> +
+>                 /*
+>                  * Start timer if we don't already have an update pending
+>                  * on this crtc:
+> --
+> 2.39.0
+>
 
