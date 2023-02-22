@@ -4,72 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F271BC636D6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 19:48:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0053AC64ED6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 20:00:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+xirph8ZaZs/FfoVibB+3ZRkHICfPfH3p+X5lk5hXus=; b=ryjiRR5feiOpJ7Jxa8CO1Hzpph
-	BkeKsG4y4NWoVCoWQLp5ReRouEQJ+D4yLoIJQdKeYxn16ICzuVwFnZopbxJin4c0sb6KtMdhLGNTm
-	NC72QccvL7wq5vrg2KQ45Kj5sUKOT6AGLBB8SJ5m6d+B/ETXL3hKBgqnnu1sqkQX2ihhjzMLJwu4T
-	hmJGywksbaUXf1GIr64aLpZ/C3mNsqSo0N3/dF/gpnqrcDDPPoXBBeVSyNt6T0RMMNZF2unfFShjy
-	D/USH8HElWB0HFpxtKaZw0hs5OKPI6TCb5tv9SCYhpdktApR2ECqWoggNA1/+LGz+onnf60RkMYcq
-	aF+fKQtA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UwUDGKoPgiuo5lALlHpfmsp5MEL6Xw8SNKbG9NQwr4c=; b=VAF23lzfkuVsp4p3P2ylKElxht
+	MT5yWlOnGs2mQbyD1gAjCqFMWvhMfl+5d53luqpQIJCHlrPhMtFuZuufAyf+SfOXcaNYJQn3ZJiN4
+	YXke5cGLTdWnrbR9E1VB8sqEFA4ielhecy+AqkOsbbYMuRPKI1tM5G9k5msbYNn4V8NIFCy5GYaeo
+	C0f4SwblOtjF12geaZ9Fvm7YdB4JBnPK2HhhEk5FRQNJkC7oo+Xopnh0oGBnj9StghUKiBBA4vQXS
+	2cc24LKE8gcBwTEECpQopDF3JAI5RNGsG04dFbGbpiMQ8K4mfpyfXmISqzWkVosRDvNdrKihjjCK4
+	cVhHvBdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUv65-00DscE-Kz; Wed, 22 Feb 2023 19:48:13 +0000
-Received: from mail-ed1-f43.google.com ([209.85.208.43])
+	id 1pUvHl-00DvQZ-Ik; Wed, 22 Feb 2023 20:00:17 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUv5v-00DsZb-GM; Wed, 22 Feb 2023 19:48:04 +0000
-Received: by mail-ed1-f43.google.com with SMTP id ee7so19935136edb.2;
-        Wed, 22 Feb 2023 11:48:03 -0800 (PST)
+	id 1pUvHj-00DvLj-0f
+	for linux-mediatek@lists.infradead.org; Wed, 22 Feb 2023 20:00:17 +0000
+Received: by mail-wr1-x429.google.com with SMTP id c12so8905516wrw.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 22 Feb 2023 12:00:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=UwUDGKoPgiuo5lALlHpfmsp5MEL6Xw8SNKbG9NQwr4c=;
+        b=zOmfsgm2oMNxKfdD6mf2QSJdaBYIpimqxO7NODPiEeUMgGgv085WJYS348gnwWhHVO
+         yYI52yy56Eq4bZm7M9Dq6It/xcvCrr95hSlJWHgc4C7/4ZtBgT/XDwLJ6HXOVIZrWcB7
+         ISd9tRZsD5wNPj0n5+30x2gOEO7R9QANEoKYXKhb2AAV96d3fJxhz/5nXWTx48TtvUxW
+         MD+mBPJXf1CtL823mD5BEqqyHe5IOQlTdjkQf7KUjC22OEr3GeUGrpHv9kpJEZjJQchf
+         WH6BW4wdOQzomqelOeqIqkFJhKSFekix9WkDi8JaSMBOwd4FoxXg02RfgCjKK9dp+UCG
+         lpHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=+xirph8ZaZs/FfoVibB+3ZRkHICfPfH3p+X5lk5hXus=;
-        b=e/2xuVgzmqJZXuYAEBl9/4enW+V5aZkZAnerLBP8r5JQeLvr4SgbGldN4NDGLqj4fY
-         eT26gvL1k+IlXOwxBj4eBV2kzSvCcZ29EqGCd1C+gEUrydDlg4kwdxI7BLQqa+C6H1Vg
-         eKvtrWTHGjaBUOILeq46B0dAbsfkaLh9+LflFFHMcqUwzRhBTv5dzLSk/ES9l9xNCad0
-         o3HqpG7gdBn+NyPvmF1zx7mv8S2TkAn/5h6lm46Z2b7Zn7yL3UsPE1qWlXuTzDW69dNh
-         ByHKoSaAU+rDvHq81gLzQWWgIoF9PRKMBUb7IbVGr56cSO2yTelYHhQR7XLhuEA8/fLf
-         wiJQ==
-X-Gm-Message-State: AO0yUKVfpcZ+Exj+Z2b2JHhnZXbCy5aHTg7/advsoEC107wL3iGoCFX2
-	yJxspRqTbel4cXMBUXj4wxHlxe+lRG2A+HPJxnnjv6lf
-X-Google-Smtp-Source: AK7set9kCY98R+CyM0V7JuOsXpiSKOjZhntRws2CYg4MiPUEc2u4pqQFZKOHMs/+YLxV0+q4CvfwqG60Wm+gmXE9Z/8=
-X-Received: by 2002:a17:907:2076:b0:8b1:788d:1fbf with SMTP id
- qp22-20020a170907207600b008b1788d1fbfmr10129118ejb.5.1677095282047; Wed, 22
- Feb 2023 11:48:02 -0800 (PST)
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=UwUDGKoPgiuo5lALlHpfmsp5MEL6Xw8SNKbG9NQwr4c=;
+        b=TqC2kk6NPmircgvAfq6ECXcyc5WVM+7SWavFjLQoGrnXdchhg+1e3Id53ResS6egfx
+         kEz2zu39OZSpJ+IkytnqTNBjDR7UVQKs41k09LPO3ZWe94Bb2loL8cLKP7OVER8Nm3MJ
+         bv6JXkWytj5YBTy3fc7c2RD0oeq+4BVNy1iGcX7DO+cG41tfAfeJjLmL3/msKC7/9kWV
+         VnG8P3XE/M4YNZY2MLSeQsvhSMfMNlUaVcy7jVdBjeNvz72dKEU9/Nna8qq0wEYNhLF3
+         SXRtfIzqYg1GVfwFk0VSl7LAa/i5ibJLX8HYm4A3lhm25MQ5pVzWM6f6eyAQqPP+6S61
+         vwnQ==
+X-Gm-Message-State: AO0yUKWbhrYNXCVsKFtmh5iRmUdal7A17fE2KPtqMYd07bfZ2b5YggLv
+	JX4dVLxa54GGvvMOu09YZAacMQ==
+X-Google-Smtp-Source: AK7set8QV+TEp7mcc79CNUS9FSeQrKu89ZriCplsTFQ+8TXFTLjX8xXl7kACrCDQdWkkGS8vanVjIQ==
+X-Received: by 2002:adf:f208:0:b0:2c5:4b22:bce9 with SMTP id p8-20020adff208000000b002c54b22bce9mr9293747wro.47.1677096008681;
+        Wed, 22 Feb 2023 12:00:08 -0800 (PST)
+Received: from ?IPV6:2a05:6e02:1041:c10:be67:8d59:7eae:a15d? ([2a05:6e02:1041:c10:be67:8d59:7eae:a15d])
+        by smtp.googlemail.com with ESMTPSA id j7-20020a05600c42c700b003db012d49b7sm3227982wme.2.2023.02.22.12.00.06
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 22 Feb 2023 12:00:07 -0800 (PST)
+Message-ID: <0889767f-d187-0cb4-895e-c149517b6636@linaro.org>
+Date: Wed, 22 Feb 2023 21:00:05 +0100
 MIME-Version: 1.0
-References: <20230221180710.2781027-1-daniel.lezcano@linaro.org> <20230221180710.2781027-10-daniel.lezcano@linaro.org>
-In-Reply-To: <20230221180710.2781027-10-daniel.lezcano@linaro.org>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Wed, 22 Feb 2023 20:47:50 +0100
-Message-ID: <CAJZ5v0idDA74D3paCmbFdb2R3Ce77Mmn5xh9Sg3smoTy6j_Mag@mail.gmail.com>
-Subject: Re: [PATCH v2 09/16] thermal: Do not access 'type' field, use the tz
- id instead
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: rafael@kernel.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	Ido Schimmel <idosch@nvidia.com>, Zhang Rui <rui.zhang@intel.com>, Len Brown <lenb@kernel.org>, 
-	Petr Machata <petrm@nvidia.com>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Amit Kucheria <amitk@kernel.org>, Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Balsam CHIHI <bchihi@baylibre.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
-	"open list:ACPI THERMAL DRIVER" <linux-acpi@vger.kernel.org>, 
-	"open list:MELLANOX ETHERNET SWITCH DRIVERS" <netdev@vger.kernel.org>, 
-	"open list:TI BANDGAP AND THERMAL DRIVER" <linux-omap@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH v2 06/16] thermal: Don't use 'device' internal thermal
+ zone structure field
+Content-Language: en-US
+To: "Rafael J. Wysocki" <rafael@kernel.org>
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Balsam CHIHI <bchihi@baylibre.com>, Amit Kucheria <amitk@kernel.org>,
+ Zhang Rui <rui.zhang@intel.com>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Ido Schimmel <idosch@nvidia.com>, Mark Brown <broonie@kernel.org>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:TI BANDGAP AND THERMAL DRIVER" <linux-omap@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+References: <20230221180710.2781027-1-daniel.lezcano@linaro.org>
+ <20230221180710.2781027-7-daniel.lezcano@linaro.org>
+ <CAJZ5v0gTmi7ZeDDdHWGWju4m3bv2366oVqSP1dGOT+3jLV-jaw@mail.gmail.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <CAJZ5v0gTmi7ZeDDdHWGWju4m3bv2366oVqSP1dGOT+3jLV-jaw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230222_114803_567913_ED6EAF95 
-X-CRM114-Status: GOOD (  22.09  )
+X-CRM114-CacheID: sfid-20230222_120015_124566_DF781E15 
+X-CRM114-Status: GOOD (  17.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,98 +108,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 21, 2023 at 7:08 PM Daniel Lezcano
-<daniel.lezcano@linaro.org> wrote:
->
-> The 'type' field is used as a name in the message. However we can have
-> multiple thermal zone with the same type. The information is not
-> accurate.
->
-> Moreover, the thermal zone device structure is directly accessed while
-> we want to improve the self-encapsulation of the code.
->
-> Replace the 'type' in the message by the thermal zone id.
->
-> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-> Reviewed-by: Ido Schimmel <idosch@nvidia.com> #mlxsw
+On 22/02/2023 20:43, Rafael J. Wysocki wrote:
+> On Tue, Feb 21, 2023 at 7:07 PM Daniel Lezcano
+> <daniel.lezcano@linaro.org> wrote:
+>>
+>> Some drivers are directly using the thermal zone's 'device' structure
+>> field.
+>>
+>> Use the driver device pointer instead of the thermal zone device when
+>> it is available.
+>>
+>> Remove the traces when they are duplicate with the traces in the core
+>> code.
+>>
+>> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+>> Reviewed-by: Balsam CHIHI <bchihi@baylibre.com> #Mediatek LVTS
+>> ---
 
-Acked-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+[ ... ]
 
-> ---
->  drivers/acpi/thermal.c                             | 2 +-
->  drivers/net/ethernet/mellanox/mlxsw/core_thermal.c | 4 ++--
->  drivers/thermal/mediatek/lvts_thermal.c            | 5 +----
->  drivers/thermal/ti-soc-thermal/ti-thermal-common.c | 4 ++--
->  4 files changed, 6 insertions(+), 9 deletions(-)
->
-> diff --git a/drivers/acpi/thermal.c b/drivers/acpi/thermal.c
-> index 392b73b3e269..b55a3b0ad9ed 100644
-> --- a/drivers/acpi/thermal.c
-> +++ b/drivers/acpi/thermal.c
-> @@ -842,7 +842,7 @@ static int acpi_thermal_register_thermal_zone(struct acpi_thermal *tz)
->                 goto acpi_bus_detach;
->
->         dev_info(&tz->device->dev, "registered as thermal_zone%d\n",
-> -                tz->thermal_zone->id);
-> +                thermal_zone_device_get_id(tz->thermal_zone));
->
->         return 0;
->
-> diff --git a/drivers/net/ethernet/mellanox/mlxsw/core_thermal.c b/drivers/net/ethernet/mellanox/mlxsw/core_thermal.c
-> index 722e4a40afef..a997fca211ba 100644
-> --- a/drivers/net/ethernet/mellanox/mlxsw/core_thermal.c
-> +++ b/drivers/net/ethernet/mellanox/mlxsw/core_thermal.c
-> @@ -176,8 +176,8 @@ mlxsw_thermal_module_trips_update(struct device *dev, struct mlxsw_core *core,
->         }
->
->         if (crit_temp > emerg_temp) {
-> -               dev_warn(dev, "%s : Critical threshold %d is above emergency threshold %d\n",
-> -                        tz->tzdev->type, crit_temp, emerg_temp);
-> +               dev_warn(dev, "tz id %d: Critical threshold %d is above emergency threshold %d\n",
-> +                        thermal_zone_device_get_id(tz->tzdev), crit_temp, emerg_temp);
->                 return 0;
->         }
->
-> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-> index beb835d644e2..155cef8ed3f5 100644
-> --- a/drivers/thermal/mediatek/lvts_thermal.c
-> +++ b/drivers/thermal/mediatek/lvts_thermal.c
-> @@ -304,10 +304,8 @@ static int lvts_set_trips(struct thermal_zone_device *tz, int low, int high)
->          *
->          * 14-0 : Raw temperature for threshold
->          */
-> -       if (low != -INT_MAX) {
-> -               pr_debug("%s: Setting low limit temperature interrupt: %d\n", tz->type, low);
-> +       if (low != -INT_MAX)
->                 writel(raw_low, LVTS_H2NTHRE(base));
-> -       }
->
->         /*
->          * Hot temperature threshold
-> @@ -318,7 +316,6 @@ static int lvts_set_trips(struct thermal_zone_device *tz, int low, int high)
->          *
->          * 14-0 : Raw temperature for threshold
->          */
-> -       pr_debug("%s: Setting high limit temperature interrupt: %d\n", tz->type, high);
->         writel(raw_high, LVTS_HTHRE(base));
->
->         return 0;
-> diff --git a/drivers/thermal/ti-soc-thermal/ti-thermal-common.c b/drivers/thermal/ti-soc-thermal/ti-thermal-common.c
-> index 060f46cea5ff..488b08fc20e4 100644
-> --- a/drivers/thermal/ti-soc-thermal/ti-thermal-common.c
-> +++ b/drivers/thermal/ti-soc-thermal/ti-thermal-common.c
-> @@ -43,8 +43,8 @@ static void ti_thermal_work(struct work_struct *work)
->
->         thermal_zone_device_update(data->ti_thermal, THERMAL_EVENT_UNSPECIFIED);
->
-> -       dev_dbg(data->bgp->dev, "updated thermal zone %s\n",
-> -               data->ti_thermal->type);
-> +       dev_dbg(data->bgp->dev, "updated thermal zone id %d\n",
-> +               thermal_zone_device_get_id(data->ti_thermal));
->  }
->
->  /**
-> --
-> 2.34.1
->
+>>          thermal_zone_device_update(data->ti_thermal, THERMAL_EVENT_UNSPECIFIED);
+>>
+>> -       dev_dbg(&data->ti_thermal->device, "updated thermal zone %s\n",
+>> +       dev_dbg(data->bgp->dev, "updated thermal zone %s\n",
+>>                  data->ti_thermal->type);
+> 
+> The code before the change is more consistent, because it refers to
+> the same object in both instances.
+> 
+> It looks like a type field accessor is needed, eg. thermal_zone_device_type()?
+> 
+> Or move the debug message to thermal_zone_device_update()?
+
+Actually it is done on purpose because the patch 9 replaces the accesses 
+to 'type' by 'id', the thermal_zone_device_type() accessor won't be needed.
+
+-- 
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
+
 
