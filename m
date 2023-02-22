@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49D93C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 03:12:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7794C64EC7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 03:17:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zNaFMBMYjszLIMNwm9nfdvrGjZqm6B4tt+On23nJyTc=; b=uA1SEhX3QxKekQeirPhzChCHHF
-	O4bRa5zLn5jSxPx69ijFgUAOygf/vR1856GbVwYVgDTOu4RYNErSHoFBIiC5V6WnjdG94wSvAlv08
-	2xL07YutnDNd4XkXXJSYuZnkh9pRKr7G+ZOHWgUtlbxxPaprUzwxe7OeQCGik02vNHPyOSjKNAcUQ
-	pw5LSUlDo8ZDjpgKzOkOMGyIA7e1dZ+cw9cn05qF3egbbyRdpP6hl8BQaDHU3JgPzAalyczeeGbFh
-	87OC+404V09PaFz7c96+uFifo25voTpUtwxLzpQm5xt+MPNDFrf+xeDH+T/Wd+nDl6wSzqZwfXO36
-	zoadO4SA==;
+	bh=zjix5hHmRg1gnpTeSvqiWXkay4LiEwf0MpYeRg42JtU=; b=qSFuMjWCgM60IBxFPcJ+YMvKz8
+	mYeJ5+I20q/zBtVMqKPspW/xfDJ3c71k1Rm3Pvh4BMMlW1IDgirNwdcOyCxKZXtMgxvpuVnKMOTHd
+	9o8FP+c9myr4kjqHbJHolIO4P2+On96c4wIfT7pckqjAKw6QonKkb5DQhH46UgX1EZhdC+L8JYKhp
+	feuUpL6LuQ6/0/XfKNHA40KO8X/3Z8q0taMhLNa7zCCWBcZvzldcBy0UJ1nj+w147kWCHhzgTJ0+Q
+	zDWT9U8SLvLqub+N80dD99N6xa2+V3mSt6SptebEJVpB+GxNAoHumx2pWi4P7SorT0iAXAwt4+EDb
+	UhdsL6Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUfYH-00AY2x-Sm; Wed, 22 Feb 2023 03:12:17 +0000
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	id 1pUfcx-00AZDQ-Io; Wed, 22 Feb 2023 03:17:07 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUfY1-00AXvp-8R; Wed, 22 Feb 2023 03:12:02 +0000
-Received: by mail-lj1-x22c.google.com with SMTP id by8so1499357ljb.7;
-        Tue, 21 Feb 2023 19:11:53 -0800 (PST)
+	id 1pUfcm-00AZB9-R7; Wed, 22 Feb 2023 03:16:58 +0000
+Received: by mail-lf1-x134.google.com with SMTP id x24so8421771lfr.1;
+        Tue, 21 Feb 2023 19:16:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=zNaFMBMYjszLIMNwm9nfdvrGjZqm6B4tt+On23nJyTc=;
-        b=fmfGqAOsDB60738L285br04P8DANes2K/Tv98hhNfH3Xs5XYRBCUc2p+WQDyOS5tQo
-         Q+LWEA8OJ2xn3yfgz18qSC/ZAD5nDWnuOCxLcXfubd3Knyj3P/zbTYWN6EEaCETRQaAt
-         Oc2/tbx1ayiJYK+arqS9gtbTnEIkREJTY37nFJtMWc/h7ur+5VfPHd4aI7sVKBhhQ83o
-         napzGAEQZxOmhuEL7mFEiQv4vQpk1uE4P6gUDvzx/rShM1AlMplgP9FF0R+DBm7sqXqA
-         /fD42bR1jdlJp1ALlwfRva4IooQa+7i89t0crvWVXIcGJ6wQU2d7ALhE6kgDuIwFHuhb
-         KvbA==
+        bh=zjix5hHmRg1gnpTeSvqiWXkay4LiEwf0MpYeRg42JtU=;
+        b=jsfRdr+kWUxp+JSuWOhyMf2DgmTyC81KmIi94ElAmd4jVlFb1ItgeZ5toC4vejyhFM
+         KLDOefgUya0UG3F8aw64bx4lmoMYk1tD8mW2I0HCSputvZkRa4gJltI5ssLQK6Th3HN5
+         lphga6gcPXm6v6v4Go7HxAnpnWU+8dGfLt6A8vugqjpCpL570WtyMUfoaENpDyYtW8ya
+         tiwzVcEmqSp4CyKiMOVFpgNoGNwnA2BE1o94h3NyyuAg27KkAljAUiYToOILf/KLJAbi
+         u4sUXiKPcARYizm++3kiLaGyJA5vTv3Alsa/5bs+tEz/96o3hCiCA8Mz90x81Y8DvbBo
+         CnJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=zNaFMBMYjszLIMNwm9nfdvrGjZqm6B4tt+On23nJyTc=;
-        b=0vjEfCQV/GS8uliZ7aWEFUPQVDa/tCNR75EGo7WjeKn0iEGUt6kBKSoc8vPlcYRyRB
-         A4ZHuqBbXdUo3owxekvdGDYUxjc/DkPA2vrESKFENqdrUTsPc7wUyYrTkNDCIjth403C
-         nyAC7LU7awrkK2EZQ/Nr2q+UXAEz8x0XFYeqC/Hv6Fv3ZG/YUjeADV3W6cc+TO3NIV19
-         QO+/RjGaRBL0TSRrOwzT4nH95lhqFLAijmox59gERclMBKFBfkZGV0Sd5EPZVIcm+0Sp
-         qFdvR2Zs5TzgYDGFbNRc3OQoCmEDYwC3qWjP479fmjYYnrDexOQdVUS6wyLmhr5Z5YSl
-         c/SA==
-X-Gm-Message-State: AO0yUKX3A/RWDDJSb+YvmXmDtmQhtmZHFfadPq9PsQTD7ZSKVk/+UboT
-	5TTpHNIkdRgJp2UN9Mbv7nSMDrbY6NyJ7wOdLA==
-X-Google-Smtp-Source: AK7set98faJfc/hSpvMVcieQV5UmQYC3dAwOgPi+RRqhZzy/3dex8rxO+fMeXVTDfPdZNOSWUNfwACMIBCXfugtSlOc=
-X-Received: by 2002:a05:651c:488:b0:293:4b99:f883 with SMTP id
- s8-20020a05651c048800b002934b99f883mr2205922ljc.8.1677035511982; Tue, 21 Feb
- 2023 19:11:51 -0800 (PST)
+        bh=zjix5hHmRg1gnpTeSvqiWXkay4LiEwf0MpYeRg42JtU=;
+        b=CRWyFsv2osW7xN/njQE7546VrMCq81ybvpu/KAHjNOOoYzf+FsmiRfLVJ0oaEAny4z
+         fJSB5FFMV0z7R2Ode6CuM9k0RhA06RMACwxaIr1eDG+6Mh9C/Ke3AcBsWx9HeJhVVEp5
+         nFFTSU2iEn8A5r2No3WmCouQecdM4GlvFCKp124n/eog5KkwRkevc2Jcya47O8VR/4oZ
+         0nnEJML2kbjovcyjGuqfZRqs3Oa87MshHK9f7/6Y3QpVjQopq5gOVcFNTipKHRhKqfhJ
+         hYAC/YG3pYdHpO80NhBuSXg4b9CL31wnawAnSLRbtrqXODbpApEZbmhA/H/56UNcCA4S
+         trxA==
+X-Gm-Message-State: AO0yUKXPf0srnyD2teJIIRNxCLxAVbeShHi+i1sX8Bt+zvY0nYyzjFKm
+	33I7CAFLbI0l54OsDR/wWVHYkEoQWGULuOXHhSZOlX9mUEXk
+X-Google-Smtp-Source: AK7set/3OD7E1WKxGGmZLHWOzKUAYuvDvrVESkKv/Ae9by3eSpTZN/UJX08073sf6Ku8mTNdE+Qroaj2UXoEaJwqcSM=
+X-Received: by 2002:ac2:53a7:0:b0:4d5:ca32:689b with SMTP id
+ j7-20020ac253a7000000b004d5ca32689bmr2302409lfh.0.1677035814323; Tue, 21 Feb
+ 2023 19:16:54 -0800 (PST)
 MIME-Version: 1.0
-References: <20230222030427.957-1-powen.kao@mediatek.com> <20230222030427.957-3-powen.kao@mediatek.com>
-In-Reply-To: <20230222030427.957-3-powen.kao@mediatek.com>
+References: <20230222030427.957-1-powen.kao@mediatek.com> <20230222030427.957-4-powen.kao@mediatek.com>
+In-Reply-To: <20230222030427.957-4-powen.kao@mediatek.com>
 From: Stanley Chu <chu.stanley@gmail.com>
-Date: Wed, 22 Feb 2023 11:11:40 +0800
-Message-ID: <CAGaU9a9Yx6DAGpoULJ7j19i+KKAw9iUjeXucH8o3XdHAqDNamw@mail.gmail.com>
-Subject: Re: [PATCH v2 2/7] scsi: ufs: core: Rename symbols
+Date: Wed, 22 Feb 2023 11:16:30 +0800
+Message-ID: <CAGaU9a-X5JYKGp-jjKV8MRxoBnD=ffHa3iBshemRikpOHynitQ@mail.gmail.com>
+Subject: Re: [PATCH v2 3/7] scsi: ufs: core: Fix mcq nr_hw_queues
 To: Po-Wen Kao <powen.kao@mediatek.com>
 Cc: linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
@@ -74,8 +74,8 @@ Cc: linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
 	chaotian.jing@mediatek.com, jiajie.hao@mediatek.com
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230221_191201_325030_E6B214A8 
-X-CRM114-Status: UNSURE (   7.11  )
+X-CRM114-CacheID: sfid-20230221_191656_894135_6D46DFD1 
+X-CRM114-Status: UNSURE (   7.86  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,8 +93,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 On Wed, Feb 22, 2023 at 11:05 AM Po-Wen Kao <powen.kao@mediatek.com> wrote:
 >
-> To avoid confusion, sizeof_utp_transfer_cmd_desc() is renamed to
-> ufshcd_get_ucd_size().
+> Need to add one to MAXQ to obtain number of hardware queue.
 >
 > Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
 
