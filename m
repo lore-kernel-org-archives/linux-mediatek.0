@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74879C636D7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 03:06:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25A40C636D7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Feb 2023 03:06:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nQ1FI+tZAutpfgYwGq8uJe/0tKi1xigqaET55cH0i18=; b=Mt+ctzoVtUyg7wtXvoOVUOhzp9
-	ErNn5celWSC9zsUbyT8R2SRhQu6zVeDlJgzXxY5JeKbDf/7UEhhpOnuIIFRDukvu/g+yBzuaXhPII
-	ZD5nBymF+BjeA6xnOOh/rl8RSTO3qtzFyO0ZRkpTIKDLO4Psv6ZUVWzHFubBJUKubTkTLFfkx20BR
-	pI92oTJOU8dDPUbrFH/wP/jM3oaetWDvcOpYeekZA9yVcN9dzkCdZAiMARS2wTHkujdTt8YxzLYCA
-	tlpkMEqjf8XSiEDoG364cdxn6QFsXgFQ4Fu667UA/PE5AQvj6sSR1A+Hqw7cFC2LhX32DcgqjMEW7
-	j/c2RUpg==;
+	bh=5wNgkfU0gfaGyQfCQ6XlpXp67iExe5GxmfD+aZq/3ac=; b=gZHOIbdady0z6YoY3OqJiktiS/
+	6McSaOUfn58G6VMYAoLYjvMsbAo5w+nXXvxgotagBi5SQ45D5J9GqhpPt6ogJjA5S6KazodGEG2Qm
+	VbFZG53EQwQ3/tGcZYcfg5URD16VleinOvVlx5H8otfJCGxddIH4pXrYq6MxsP2fmPoaeDPD2Nahh
+	r24Eodlhj/6UdgI5mXgzfYTS0TLpR0OQmRrvB3J22xZ+aY6E3MdwoQgnJyIws4mst0/zdI0IteC3O
+	XmJ/4uGExq2Z0gVFO2jsPws7OQc+2WMx9vRuhAYeC5TDMtIfU/Yv2lVeN7j/k9TMquKxUWcaa7AJk
+	L2bw+bGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUfS6-00AVSm-DS; Wed, 22 Feb 2023 03:05:54 +0000
+	id 1pUfSb-00AVm6-0Z; Wed, 22 Feb 2023 03:06:25 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUfRc-00AVDT-KE; Wed, 22 Feb 2023 03:05:28 +0000
-X-UUID: bb9c15b6b25d11eda08d4d6090ec5a5c-20230221
+	id 1pUfRd-00AVF5-0M; Wed, 22 Feb 2023 03:05:28 +0000
+X-UUID: bc74a8d6b25d11eda08d4d6090ec5a5c-20230221
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=nQ1FI+tZAutpfgYwGq8uJe/0tKi1xigqaET55cH0i18=;
-	b=n7L0jHbvXc6KR79OOT0ES2APw3aba7Fa0oA7e59H4ATGvXV9bo1kFdGKcD50mYap7B6GlmDBUIMQjj8axa3T9Y9o6VPz9+pMEFG67fd+Q/kgeVJBwtTh+XuJoKj4EwLuDuC8rmZhG8/gJ+U646tIVa/CowEpgC0qBup/wEGIlQw=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=5wNgkfU0gfaGyQfCQ6XlpXp67iExe5GxmfD+aZq/3ac=;
+	b=Z5frGqSe+snUYq9g0Q9G/UfkVg/7BnespghAMjqhZoHUr+ScY/EQ8d9pv9lZBCxlN0TIgcWDPsh8nKaAUK/ZTnAmkvmQn36KSOjlnext3uKfV2nyZIGPG0J0JPy5rMOAu/6X3PVV3s+IGCvNVC9RmJwmr4nyDRQH5cYciqkdNwo=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.20,REQID:9bfc6574-152b-46ae-b693-98bbce5e9e86,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:25b5999,CLOUDID:9aa64e26-564d-42d9-9875-7c868ee415ec,B
+X-CID-O-INFO: VERSION:1.1.20,REQID:49ca03cf-628e-4a07-be83-af33dd2a0b7c,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:25b5999,CLOUDID:bf4d2fb1-beed-4dfc-bd9c-e1b22fa6ccc4,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0,NGT
-X-UUID: bb9c15b6b25d11eda08d4d6090ec5a5c-20230221
+X-UUID: bc74a8d6b25d11eda08d4d6090ec5a5c-20230221
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <powen.kao@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 295279039; Tue, 21 Feb 2023 20:05:16 -0700
+	with ESMTP id 630623345; Tue, 21 Feb 2023 20:05:18 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 22 Feb 2023 11:04:40 +0800
+ 15.2.792.15; Wed, 22 Feb 2023 11:04:42 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 22 Feb 2023 11:04:40 +0800
+ 15.2.792.15 via Frontend Transport; Wed, 22 Feb 2023 11:04:42 +0800
 From: Po-Wen Kao <powen.kao@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
@@ -61,9 +61,9 @@ CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
 	<chun-hung.wu@mediatek.com>, <cc.chou@mediatek.com>,
 	<eddie.huang@mediatek.com>, <mason.zhang@mediatek.com>,
 	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>
-Subject: [PATCH v2 4/7] scsi: ufs: core: Add hwq print for debug
-Date: Wed, 22 Feb 2023 11:04:21 +0800
-Message-ID: <20230222030427.957-5-powen.kao@mediatek.com>
+Subject: [PATCH v2 6/7] scsi: ufs: core: Export symbols for MTK driver module
+Date: Wed, 22 Feb 2023 11:04:23 +0800
+Message-ID: <20230222030427.957-7-powen.kao@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230222030427.957-1-powen.kao@mediatek.com>
 References: <20230222030427.957-1-powen.kao@mediatek.com>
@@ -71,8 +71,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230221_190524_755678_3D36FED9 
-X-CRM114-Status: GOOD (  17.58  )
+X-CRM114-CacheID: sfid-20230221_190525_091513_BC953D10 
+X-CRM114-Status: GOOD (  13.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,168 +87,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce hwq printing function for debug purpose.
-- ufshcd_mcq_print_hwqs()
+Export
+- ufshcd_mcq_config_mac
+- ufshcd_mcq_make_queues_operational
+- ufshcd_mcq_read_cqis
+- ufshcd_disable_intr
 
 Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
 ---
- drivers/ufs/core/ufs-mcq.c     | 32 +++++++++++++++++++++++++++++++-
- drivers/ufs/core/ufshcd-priv.h |  9 +++++++++
- drivers/ufs/core/ufshcd.c      | 18 +++++++++++-------
- include/ufs/ufshci.h           | 12 ++++++++++++
- 4 files changed, 63 insertions(+), 8 deletions(-)
+ drivers/ufs/core/ufs-mcq.c     | 3 +++
+ drivers/ufs/core/ufshcd-priv.h | 2 --
+ drivers/ufs/core/ufshcd.c      | 3 ++-
+ include/ufs/ufshcd.h           | 6 ++++++
+ 4 files changed, 11 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-index 5d5bc0bc6e88..d1ff3ccd2085 100644
+index d1ff3ccd2085..ae67ab90bd29 100644
 --- a/drivers/ufs/core/ufs-mcq.c
 +++ b/drivers/ufs/core/ufs-mcq.c
-@@ -23,7 +23,6 @@
- 
- #define MAX_DEV_CMD_ENTRIES	2
- #define MCQ_CFG_MAC_MASK	GENMASK(16, 8)
--#define MCQ_QCFG_SIZE		0x40
- #define MCQ_ENTRY_SIZE_IN_DWORD	8
- #define CQE_UCD_BA GENMASK_ULL(63, 7)
- 
-@@ -75,6 +74,13 @@ module_param_cb(poll_queues, &poll_queue_count_ops, &poll_queues, 0644);
- MODULE_PARM_DESC(poll_queues,
- 		 "Number of poll queues used for r/w. Default value is 1");
- 
-+static const int mcq_opr_size[] = {
-+	MCQ_SQD_SIZE,
-+	MCQ_SQIS_SIZE,
-+	MCQ_CQD_SIZE,
-+	MCQ_CQIS_SIZE,
-+};
-+
- /**
-  * ufshcd_mcq_config_mac - Set the #Max Activ Cmds.
-  * @hba: per adapter instance
-@@ -237,6 +243,30 @@ static void __iomem *mcq_opr_base(struct ufs_hba *hba,
- 	return opr->base + opr->stride * i;
+@@ -98,6 +98,7 @@ void ufshcd_mcq_config_mac(struct ufs_hba *hba, u32 max_active_cmds)
+ 	val |= FIELD_PREP(MCQ_CFG_MAC_MASK, max_active_cmds);
+ 	ufshcd_writel(hba, val, REG_UFS_MCQ_CFG);
  }
++EXPORT_SYMBOL_GPL(ufshcd_mcq_config_mac);
  
-+void ufshcd_mcq_print_hwqs(struct ufs_hba *hba, unsigned long bitmap)
-+{
-+	int id, i;
-+	char prefix[15];
-+
-+	if (!is_mcq_enabled(hba))
-+		return;
-+
-+	for_each_set_bit(id, &bitmap, hba->nr_hw_queues) {
-+		snprintf(prefix, sizeof(prefix), "q%d SQCFG: ", id);
-+		ufshcd_hex_dump(prefix,
-+			hba->mcq_base + MCQ_QCFG_SIZE * id, MCQ_QCFG_SQ_SIZE);
-+
-+		snprintf(prefix, sizeof(prefix), "q%d CQCFG: ", id);
-+		ufshcd_hex_dump(prefix,
-+			hba->mcq_base + MCQ_QCFG_SIZE * id + MCQ_QCFG_SQ_SIZE, MCQ_QCFG_CQ_SIZE);
-+
-+		for (i = 0; i < OPR_MAX ; i++) {
-+			snprintf(prefix, sizeof(prefix), "q%d OPR%d: ", id, i);
-+			ufshcd_hex_dump(prefix, mcq_opr_base(hba, i, id), mcq_opr_size[i]);
-+		}
-+	}
-+}
-+
- u32 ufshcd_mcq_read_cqis(struct ufs_hba *hba, int i)
+ /**
+  * ufshcd_mcq_req_to_hwq - find the hardware queue on which the
+@@ -271,6 +272,7 @@ u32 ufshcd_mcq_read_cqis(struct ufs_hba *hba, int i)
  {
  	return readl(mcq_opr_base(hba, OPR_CQIS, i) + REG_CQIS);
+ }
++EXPORT_SYMBOL_GPL(ufshcd_mcq_read_cqis);
+ 
+ void ufshcd_mcq_write_cqis(struct ufs_hba *hba, u32 val, int i)
+ {
+@@ -401,6 +403,7 @@ void ufshcd_mcq_make_queues_operational(struct ufs_hba *hba)
+ 			      MCQ_CFG_n(REG_SQATTR, i));
+ 	}
+ }
++EXPORT_SYMBOL_GPL(ufshcd_mcq_make_queues_operational);
+ 
+ void ufshcd_mcq_enable_esi(struct ufs_hba *hba)
+ {
 diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
-index 529f8507a5e4..13534a9a6d0a 100644
+index 13534a9a6d0a..1c83a6bc88b7 100644
 --- a/drivers/ufs/core/ufshcd-priv.h
 +++ b/drivers/ufs/core/ufshcd-priv.h
-@@ -6,6 +6,14 @@
- #include <linux/pm_runtime.h>
- #include <ufs/ufshcd.h>
- 
-+#define ufshcd_hex_dump(prefix_str, buf, len) do {                       \
-+	size_t __len = (len);                                            \
-+	print_hex_dump(KERN_ERR, prefix_str,                             \
-+		       __len > 4 ? DUMP_PREFIX_OFFSET : DUMP_PREFIX_NONE,\
-+		       16, 4, buf, __len, false);                        \
-+} while (0)
-+
-+
- static inline bool ufshcd_is_user_access_allowed(struct ufs_hba *hba)
- {
- 	return !hba->shutting_down;
-@@ -65,6 +73,7 @@ void ufshcd_compl_one_cqe(struct ufs_hba *hba, int task_tag,
- 			  struct cq_entry *cqe);
- int ufshcd_mcq_init(struct ufs_hba *hba);
+@@ -75,8 +75,6 @@ int ufshcd_mcq_init(struct ufs_hba *hba);
  int ufshcd_mcq_decide_queue_depth(struct ufs_hba *hba);
-+void ufshcd_mcq_print_hwqs(struct ufs_hba *hba, unsigned long bitmap);
+ void ufshcd_mcq_print_hwqs(struct ufs_hba *hba, unsigned long bitmap);
  int ufshcd_mcq_memory_alloc(struct ufs_hba *hba);
- void ufshcd_mcq_make_queues_operational(struct ufs_hba *hba);
- void ufshcd_mcq_config_mac(struct ufs_hba *hba, u32 max_active_cmds);
+-void ufshcd_mcq_make_queues_operational(struct ufs_hba *hba);
+-void ufshcd_mcq_config_mac(struct ufs_hba *hba, u32 max_active_cmds);
+ void ufshcd_mcq_select_mcq_mode(struct ufs_hba *hba);
+ u32 ufshcd_mcq_read_cqis(struct ufs_hba *hba, int i);
+ void ufshcd_mcq_write_cqis(struct ufs_hba *hba, u32 val, int i);
 diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 81c9f07ebfc8..a15a5a78160c 100644
+index 21e3bf5d8f08..a0848a8e2e6f 100644
 --- a/drivers/ufs/core/ufshcd.c
 +++ b/drivers/ufs/core/ufshcd.c
-@@ -135,13 +135,6 @@ MODULE_PARM_DESC(use_mcq_mode, "Control MCQ mode for controllers starting from U
- 		_ret;                                                   \
- 	})
- 
--#define ufshcd_hex_dump(prefix_str, buf, len) do {                       \
--	size_t __len = (len);                                            \
--	print_hex_dump(KERN_ERR, prefix_str,                             \
--		       __len > 4 ? DUMP_PREFIX_OFFSET : DUMP_PREFIX_NONE,\
--		       16, 4, buf, __len, false);                        \
--} while (0)
--
- int ufshcd_dump_regs(struct ufs_hba *hba, size_t offset, size_t len,
- 		     const char *prefix)
+@@ -2567,7 +2567,7 @@ static void ufshcd_enable_intr(struct ufs_hba *hba, u32 intrs)
+  * @hba: per adapter instance
+  * @intrs: interrupt bits
+  */
+-static void ufshcd_disable_intr(struct ufs_hba *hba, u32 intrs)
++void ufshcd_disable_intr(struct ufs_hba *hba, u32 intrs)
  {
-@@ -536,6 +529,8 @@ static
- void ufshcd_print_trs(struct ufs_hba *hba, unsigned long bitmap, bool pr_prdt)
- {
- 	const struct ufshcd_lrb *lrbp;
-+	struct ufs_hw_queue *hwq;
-+	struct scsi_cmnd *cmd;
- 	int prdt_length;
- 	int tag;
+ 	u32 set = ufshcd_readl(hba, REG_INTERRUPT_ENABLE);
  
-@@ -574,7 +569,16 @@ void ufshcd_print_trs(struct ufs_hba *hba, unsigned long bitmap, bool pr_prdt)
- 		if (pr_prdt)
- 			ufshcd_hex_dump("UPIU PRDT: ", lrbp->ucd_prdt_ptr,
- 				ufshcd_sg_entry_size(hba) * prdt_length);
-+
-+		if (is_mcq_enabled(hba)) {
-+			cmd = lrbp->cmd;
-+			if (!cmd)
-+				return;
-+			hwq = ufshcd_mcq_req_to_hwq(hba, scsi_cmd_to_rq(cmd));
-+			ufshcd_mcq_print_hwqs(hba, 1 << hwq->id);
-+		}
- 	}
-+
+@@ -2583,6 +2583,7 @@ static void ufshcd_disable_intr(struct ufs_hba *hba, u32 intrs)
+ 
+ 	ufshcd_writel(hba, set, REG_INTERRUPT_ENABLE);
  }
++EXPORT_SYMBOL_GPL(ufshcd_disable_intr);
  
- static void ufshcd_print_tmrs(struct ufs_hba *hba, unsigned long bitmap)
-diff --git a/include/ufs/ufshci.h b/include/ufs/ufshci.h
-index 11424bb03814..027a2e884f89 100644
---- a/include/ufs/ufshci.h
-+++ b/include/ufs/ufshci.h
-@@ -185,6 +185,18 @@ static inline u32 ufshci_version(u32 major, u32 minor)
- 				CRYPTO_ENGINE_FATAL_ERROR |\
- 				UIC_LINK_LOST)
+ /**
+  * ufshcd_prepare_req_desc_hdr - Fill UTP Transfer request descriptor header according to request
+diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+index 8f79cca449e1..d4dc7bcec127 100644
+--- a/include/ufs/ufshcd.h
++++ b/include/ufs/ufshcd.h
+@@ -1230,6 +1230,7 @@ static inline void ufshcd_rmwl(struct ufs_hba *hba, u32 mask, u32 val, u32 reg)
  
-+/* MCQ size */
-+#define MCQ_QCFG_SIZE			0x40
-+#define MCQ_QCFG_SQ_SIZE		0x20
-+#define MCQ_QCFG_CQ_SIZE		0x20
+ int ufshcd_alloc_host(struct device *, struct ufs_hba **);
+ void ufshcd_dealloc_host(struct ufs_hba *);
++void ufshcd_disable_intr(struct ufs_hba *hba, u32 intrs);
+ int ufshcd_hba_enable(struct ufs_hba *hba);
+ int ufshcd_init(struct ufs_hba *, void __iomem *, unsigned int);
+ int ufshcd_link_recovery(struct ufs_hba *hba);
+@@ -1242,9 +1243,14 @@ void ufshcd_parse_dev_ref_clk_freq(struct ufs_hba *hba, struct clk *refclk);
+ void ufshcd_update_evt_hist(struct ufs_hba *hba, u32 id, u32 val);
+ void ufshcd_hba_stop(struct ufs_hba *hba);
+ void ufshcd_schedule_eh_work(struct ufs_hba *hba);
 +
-+enum {
-+	MCQ_SQD_SIZE		= 0x14,
-+	MCQ_SQIS_SIZE		= 0x08,
-+	MCQ_CQD_SIZE		= 0x08,
-+	MCQ_CQIS_SIZE		= 0x0C,
-+};
++void ufshcd_mcq_config_mac(struct ufs_hba *hba, u32 max_active_cmds);
++u32 ufshcd_mcq_read_cqis(struct ufs_hba *hba, int i);
+ void ufshcd_mcq_write_cqis(struct ufs_hba *hba, u32 val, int i);
 +
- /* HCS - Host Controller Status 30h */
- #define DEVICE_PRESENT				0x1
- #define UTP_TRANSFER_REQ_LIST_READY		0x2
+ unsigned long ufshcd_mcq_poll_cqe_nolock(struct ufs_hba *hba,
+ 					 struct ufs_hw_queue *hwq);
++void ufshcd_mcq_make_queues_operational(struct ufs_hba *hba);
+ void ufshcd_mcq_enable_esi(struct ufs_hba *hba);
+ void ufshcd_mcq_config_esi(struct ufs_hba *hba, struct msi_msg *msg);
+ 
 -- 
 2.18.0
 
