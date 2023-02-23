@@ -4,74 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 834E6C636D7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 08:23:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88AE4C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 09:56:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QsyCwrGwGh6nf4heZThET+LTLXoG42t7GpLMsbNCMTs=; b=MrBNB5Upab372GBnyOlkbEqPeP
-	lhqTPvbiWFWzLV+doPJmPOyrQ1pH5SfhLjejdqoNc1rN5kyufEoWmWxls6HWgXdJEz/HR+kIP7qky
-	z9iaJSdLx2Q02gkUzvjD5/W58RlWKCQ+KjYH8ACSas1pg5Gj5Wnpy+WAXzyNpwFIsVfFC29pwYJT4
-	sgWhUelNNCx00vv58u5FrivKCtQB73MckN3VXbv7WM2vy4IRoKg7woI+jccQ5rreyM62gfiDJDkSu
-	h242XEkKrH/GGAyBKLJ+Wx4PBPudsrVrNjo6110DBak533EXfetInDie2oo7d2MDOgji44LxRZ4Vv
-	2UbiC3dw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zqMvyew1VuvLR+5MrHi+CVRR54Ec9Hg3AWm5Uzuvhkk=; b=YeoqNGDldL8WnIk4Kgy7E9zBJ8
+	RIPWXU1vrtZv3qTEbO5MHJvq4oR3lkHj27U+AUQMcV4oDHhrytlRs/ZvS6tbP9Kg9rHW8HvoGvfu4
+	hlbFn+LBlEQv65gTuMDDk7Q1iShkskWpd/r9JSUMXCMku8e/601ueuRJvHuYwCO+Wb6Cy67UperUH
+	TEwCYhHYNoRBgduzmJjcMrPwxdhQ04JxVVdtv+BtjxZT+Cg8lXizFCYGf1KE9/3EkhRcVOPxWFvgw
+	9sQ7YS11hbvjEHaCtJVW8Couhlte7stSZP4xxM5wyHjb8ggs6IAUPI91fTKgyy21afvYqnvLRr/Tx
+	fGCVIxDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pV6t2-00FWzX-TT; Thu, 23 Feb 2023 08:23:32 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pV8Kx-00FoZN-K4; Thu, 23 Feb 2023 09:56:27 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pV6sz-00FWyw-Hl; Thu, 23 Feb 2023 08:23:31 +0000
-X-UUID: 563ebea2b35311edbbe3f76fe852e059-20230223
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=QsyCwrGwGh6nf4heZThET+LTLXoG42t7GpLMsbNCMTs=;
-	b=EQhUWMEhiLzo52BoAhc3eABLKbhW/C/kAk/DV+8M4V59q8DnMckVNZ4aKojfAAN3a0AWoKtzhZevyQgVncFmB4KQDNcSwfINnWxsff9S2U5HNrDKYw4lDq8ZP87nP9R0FTYL5zzSRvySv47zcToX6GsUkZIUArXtI81Lz4af+nY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.20,REQID:890b772c-6a65-4c02-8fed-38fe7c0c873e,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:25b5999,CLOUDID:13d37826-564d-42d9-9875-7c868ee415ec,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-UUID: 563ebea2b35311edbbe3f76fe852e059-20230223
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <irui.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 223902949; Thu, 23 Feb 2023 01:23:22 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 23 Feb 2023 16:13:19 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 23 Feb 2023 16:13:19 +0800
-From: Irui Wang <irui.wang@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <nicolas.dufresne@collabora.com>,
-	kyrie wu <kyrie.wu@mediatek.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Tomasz Figa <tfiga@chromium.org>, <xia.jiang@mediatek.com>,
-	<maoguang.meng@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, "Irui
- Wang" <irui.wang@mediatek.com>
-Subject: [V1,5/7] media: mtk-jpeg: Remove some unnecessary variables
-Date: Thu, 23 Feb 2023 16:13:10 +0800
-Message-ID: <20230223081312.29296-6-irui.wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230223081312.29296-1-irui.wang@mediatek.com>
-References: <20230223081312.29296-1-irui.wang@mediatek.com>
+	id 1pV8Kd-00FoMk-6g
+	for linux-mediatek@lists.infradead.org; Thu, 23 Feb 2023 09:56:08 +0000
+Received: by mail-wr1-x434.google.com with SMTP id v3so10108631wrp.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 23 Feb 2023 01:56:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=zqMvyew1VuvLR+5MrHi+CVRR54Ec9Hg3AWm5Uzuvhkk=;
+        b=y7DPYrkGk9xCwkGpaQAeXdWfCjSmojs2x7UvFOZ+JGW+Um8i0jZjaVS/JoDxV3yUZ0
+         r2mzgdIy6vEOoh0l3o6m0w1lKsOZgXuQqbdwACzgM/m1DpSE+5//S4EF3vj81Dbd1bLm
+         O4drKYRElSQ+HYorlA1n5JY9qwn/cNvnG0dTpi7UPGpPhIeDGCGUamJ8HfxuemB1tIsZ
+         5NptNCmJtIF7INhKAxupGcRrEHkhAFbInzl5ei9Zqhy18pNNqLHEl5mIWMHcxWTaF7TL
+         Lpib0IIgJrbiFYLDfpwk8fax+5qTX5rFXQOM1RvNC/rEYzOahY/lMrmWjmfm5Iwh/+xS
+         BCWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=zqMvyew1VuvLR+5MrHi+CVRR54Ec9Hg3AWm5Uzuvhkk=;
+        b=aa/8MGHIx7lkIfmEeIQpTmwHQ1UtI1rTjrmfwvouM17+BOTU1fMbgymgJBwLedvKg0
+         lNX+/cdkt1IOigV2Snj7l9SjtDLcFyzjT10ouEBQt5vA92N7kvtJv2+8GibHJEX11wIn
+         1eh/5D15p8Yq4Vh+7uEiWNX3B3p7ApWvAdcWaoV/1cKRM7AuDhXQLnGIFSPKnVNIbghj
+         cYGaE+PLEUVSWKkFpQlLqLEbOK7RTFVRd6k2iY6N8lHft+uoDWzVz+bugbO1KBaoHWlQ
+         kZ8dG0ImiHwDKYIHF20re8dwVlJhJzxilUqWgt1jEA7LVLme8a7QrAqRgEikRaL1lejX
+         0/GA==
+X-Gm-Message-State: AO0yUKWecboo/XZsOVQy/vSDwTM6QPHw+CGTmE/tCS78Ge/Tqe2b/ZuV
+	WH7IOCd8sdYt9+Oun6fTccEiuw==
+X-Google-Smtp-Source: AK7set9wKGyiCs4mhXfwoAzjxI0hINeis8DMPCt/2knY34phjllU4IYlzLKUeg8KQ1/3trkYX25LXw==
+X-Received: by 2002:a5d:4806:0:b0:2c5:5a68:958 with SMTP id l6-20020a5d4806000000b002c55a680958mr10075206wrq.33.1677146164810;
+        Thu, 23 Feb 2023 01:56:04 -0800 (PST)
+Received: from ?IPV6:2a05:6e02:1041:c10:c265:a8c7:c71d:6e47? ([2a05:6e02:1041:c10:c265:a8c7:c71d:6e47])
+        by smtp.googlemail.com with ESMTPSA id u4-20020adfed44000000b002c706c754fesm6399145wro.32.2023.02.23.01.56.03
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 23 Feb 2023 01:56:04 -0800 (PST)
+Message-ID: <2b843912-cc9b-f1ac-1f81-28e3ecf8daba@linaro.org>
+Date: Thu, 23 Feb 2023 10:56:02 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH v2 06/16] thermal: Don't use 'device' internal thermal
+ zone structure field
+Content-Language: en-US
+To: "Rafael J. Wysocki" <rafael@kernel.org>
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Balsam CHIHI <bchihi@baylibre.com>, Amit Kucheria <amitk@kernel.org>,
+ Zhang Rui <rui.zhang@intel.com>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Ido Schimmel <idosch@nvidia.com>, Mark Brown <broonie@kernel.org>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:TI BANDGAP AND THERMAL DRIVER" <linux-omap@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+References: <20230221180710.2781027-1-daniel.lezcano@linaro.org>
+ <20230221180710.2781027-7-daniel.lezcano@linaro.org>
+ <CAJZ5v0gTmi7ZeDDdHWGWju4m3bv2366oVqSP1dGOT+3jLV-jaw@mail.gmail.com>
+ <0889767f-d187-0cb4-895e-c149517b6636@linaro.org>
+ <CAJZ5v0h=UCOyJ88UgEdqch4NZK+DaT8jWnDaguQGNx-KOMhPPA@mail.gmail.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <CAJZ5v0h=UCOyJ88UgEdqch4NZK+DaT8jWnDaguQGNx-KOMhPPA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230223_002329_629157_B081FA27 
-X-CRM114-Status: GOOD (  13.13  )
+X-CRM114-CacheID: sfid-20230223_015607_262010_42B75653 
+X-CRM114-Status: GOOD (  21.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,120 +110,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: kyrie wu <kyrie.wu@mediatek.com>
+On 22/02/2023 21:06, Rafael J. Wysocki wrote:
+> On Wed, Feb 22, 2023 at 9:00 PM Daniel Lezcano
+> <daniel.lezcano@linaro.org> wrote:
+>>
+>> On 22/02/2023 20:43, Rafael J. Wysocki wrote:
+>>> On Tue, Feb 21, 2023 at 7:07 PM Daniel Lezcano
+>>> <daniel.lezcano@linaro.org> wrote:
+>>>>
+>>>> Some drivers are directly using the thermal zone's 'device' structure
+>>>> field.
+>>>>
+>>>> Use the driver device pointer instead of the thermal zone device when
+>>>> it is available.
+>>>>
+>>>> Remove the traces when they are duplicate with the traces in the core
+>>>> code.
+>>>>
+>>>> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+>>>> Reviewed-by: Balsam CHIHI <bchihi@baylibre.com> #Mediatek LVTS
+>>>> ---
+>>
+>> [ ... ]
+>>
+>>>>           thermal_zone_device_update(data->ti_thermal, THERMAL_EVENT_UNSPECIFIED);
+>>>>
+>>>> -       dev_dbg(&data->ti_thermal->device, "updated thermal zone %s\n",
+>>>> +       dev_dbg(data->bgp->dev, "updated thermal zone %s\n",
+>>>>                   data->ti_thermal->type);
+>>>
+>>> The code before the change is more consistent, because it refers to
+>>> the same object in both instances.
+>>>
+>>> It looks like a type field accessor is needed, eg. thermal_zone_device_type()?
+>>>
+>>> Or move the debug message to thermal_zone_device_update()?
+>>
+>> Actually it is done on purpose because the patch 9 replaces the accesses
+>> to 'type' by 'id', the thermal_zone_device_type() accessor won't be needed.
+> 
+> Cool.
+> 
+> However, this is a change in behavior (albeit small) which doesn't
+> appear to be necessary.
+> 
+> What would be wrong with having a tz->type accessor too?
 
-remove is_jpgenc_multihw, is_jpgdec_multihw,
-and unnecessary initialization.
+I can add the 'type' accessor but from my point of view it is not 
+correct because the information belongs to the thermal framework and it 
+is used to export the information in the sysfs which is along with the 
+directory name giving the id of the thermal zone.
 
-Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
-Signed-off-by: irui wang <irui.wang@mediatek.com>
----
- .../platform/mediatek/jpeg/mtk_jpeg_core.h    |  4 ---
- .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  | 29 ++++++++-----------
- .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  | 18 ++++--------
- 3 files changed, 18 insertions(+), 33 deletions(-)
+Actually, the useful information is the id of the thermal zone, not the 
+type. This one can be duplicate, for instance:
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-index e118a0175f75..83cf35a12b7a 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-@@ -204,12 +204,10 @@ struct mtk_jpegdec_comp_dev {
-  * @variant:		driver variant to be used
-  * @reg_encbase:	jpg encode register base addr
-  * @enc_hw_dev:		jpg encode hardware device
-- * @is_jpgenc_multihw:	the flag of multi-hw core
-  * @enc_hw_wq:		jpg encode wait queue
-  * @enchw_rdy:		jpg encode hw ready flag
-  * @reg_decbase:	jpg decode register base addr
-  * @dec_hw_dev:		jpg decode hardware device
-- * @is_jpgdec_multihw:	the flag of dec multi-hw core
-  * @dec_hw_wq:		jpg decode wait queue
-  * @dec_workqueue:	jpg decode work queue
-  * @dechw_rdy:		jpg decode hw ready flag
-@@ -229,13 +227,11 @@ struct mtk_jpeg_dev {
- 
- 	void __iomem *reg_encbase[MTK_JPEGENC_HW_MAX];
- 	struct mtk_jpegenc_comp_dev *enc_hw_dev[MTK_JPEGENC_HW_MAX];
--	bool is_jpgenc_multihw;
- 	wait_queue_head_t enc_hw_wq;
- 	atomic_t enchw_rdy;
- 
- 	void __iomem *reg_decbase[MTK_JPEGDEC_HW_MAX];
- 	struct mtk_jpegdec_comp_dev *dec_hw_dev[MTK_JPEGDEC_HW_MAX];
--	bool is_jpgdec_multihw;
- 	wait_queue_head_t dec_hw_wq;
- 	struct workqueue_struct	*dec_workqueue;
- 	atomic_t dechw_rdy;
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-index 8c07fa02fd9a..5b47bd83c5ce 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-@@ -608,23 +608,18 @@ static int mtk_jpegdec_hw_probe(struct platform_device *pdev)
- 	dev->plat_dev = pdev;
- 	dev->dev = &pdev->dev;
- 
--	if (!master_dev->is_jpgdec_multihw) {
--		master_dev->is_jpgdec_multihw = true;
--		for (i = 0; i < MTK_JPEGDEC_HW_MAX; i++)
--			master_dev->dec_hw_dev[i] = NULL;
--
--		init_waitqueue_head(&master_dev->dec_hw_wq);
--		master_dev->workqueue = alloc_ordered_workqueue(MTK_JPEG_NAME,
--								WQ_MEM_RECLAIM
--								| WQ_FREEZABLE);
--		if (!master_dev->workqueue)
--			return -EINVAL;
--
--		ret = devm_add_action_or_reset(&pdev->dev, mtk_jpegdec_destroy_workqueue,
--					       master_dev->workqueue);
--		if (ret)
--			return ret;
--	}
-+	init_waitqueue_head(&master_dev->dec_hw_wq);
-+	master_dev->workqueue = alloc_ordered_workqueue(MTK_JPEG_NAME,
-+							WQ_MEM_RECLAIM
-+							| WQ_FREEZABLE);
-+	if (!master_dev->workqueue)
-+		return -EINVAL;
-+
-+	ret = devm_add_action_or_reset(&pdev->dev,
-+				       mtk_jpegdec_destroy_workqueue,
-+				       master_dev->workqueue);
-+	if (ret)
-+		return ret;
- 
- 	atomic_set(&master_dev->dechw_rdy, MTK_JPEGDEC_HW_MAX);
- 	spin_lock_init(&dev->hw_lock);
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-index 867f4c1a09fa..c2bc0b531b32 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-@@ -340,18 +340,12 @@ static int mtk_jpegenc_hw_probe(struct platform_device *pdev)
- 	dev->plat_dev = pdev;
- 	dev->dev = &pdev->dev;
- 
--	if (!master_dev->is_jpgenc_multihw) {
--		master_dev->is_jpgenc_multihw = true;
--		for (i = 0; i < MTK_JPEGENC_HW_MAX; i++)
--			master_dev->enc_hw_dev[i] = NULL;
--
--		init_waitqueue_head(&master_dev->enc_hw_wq);
--		master_dev->workqueue = alloc_ordered_workqueue(MTK_JPEG_NAME,
--								WQ_MEM_RECLAIM
--								| WQ_FREEZABLE);
--		if (!master_dev->workqueue)
--			return -EINVAL;
--	}
-+	init_waitqueue_head(&master_dev->enc_hw_wq);
-+	master_dev->workqueue = alloc_ordered_workqueue(MTK_JPEG_NAME,
-+							WQ_MEM_RECLAIM
-+							| WQ_FREEZABLE);
-+	if (!master_dev->workqueue)
-+		return -EINVAL;
- 
- 	atomic_set(&master_dev->enchw_rdy, MTK_JPEGENC_HW_MAX);
- 	spin_lock_init(&dev->hw_lock);
+cat /sys/class/thermal/thermal_zone*/type
+acpitz
+acpitz
+
+Given there are few places where 'type' is used in the drivers, I prefer 
+to directly change that to 'id' in the next patch instead of creating 
+the accessor for 'type', then send another series removing it.
+
+
 -- 
-2.18.0
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
 
 
