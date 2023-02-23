@@ -4,50 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16636C64ED6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 15:28:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D626C64ED8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 15:28:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7uMzSQcvofb9ZK7sDFI4FXlhrVcrNNEsLBbZDQpU+t8=; b=cmX928ASSGXrFZNgmGSecYIUWK
-	UXosNhNge8bVtfJFSHLun/uQyOEXXRmP0MjkzU8nVVSgU81N0w887JE8s/Q3NPiDOH6h4ZdgzDb/t
-	BqzMRHv2DX5T3pFfuU/6ox6xHVmrFXJn2rdRCVfl2yuM/2/Z2nFg7+8CGY60gsTLZ2PJJ4ivCBrm5
-	6cbS50h0O6NmSZ/a6sTIN1PdOAOGKANgEJ7Bmf60hCbaOkvfAGrOmEKLC+sRIi/Me/pokOAKMAFoD
-	NeEID27uQrgsCpxiohYMirzTPkWn1axOWF9n3+ElqzgjVfeuzu3E5SMhBc41jLBzdd3IVD32TMbbh
-	mbK8/MVA==;
+	bh=9uLZTDN7EKFW91Km1A/yj0hnw6XPhEiXuWmKX1zGIxo=; b=WgchJ+TFNVC2BKcK7ZlgKyBUHJ
+	nrL78MbeHPnkIIErCiEo+MT/QO64F0SqLu2/pAhT/0q/23gL3yQ2KznNp1ykR2zU3dH9iZh8ePqyl
+	GrWKaspBleArQAZpKzaW2YFUCroNYT6oRtxGU7nvWvBK2JLJv6qiw0Ev1WJOxIUSsIioyYjF0VS7h
+	485uemAu+Dh9itzt2g8Oa4tkeg+hU3DTnBA0pa6KEDdpV8L+Y3eO8nKdJMdVS7uzBKK1P2rJgg3B/
+	zS/csvzfzMlxoJNpolCNgWoUgP80bL1fecUX1VUk80XnbP7/t9sVYKI2weXESlSbh/6sWAdK35IVY
+	+BqRkRvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVDWX-00H1aG-P8; Thu, 23 Feb 2023 15:28:45 +0000
+	id 1pVDWZ-00H1bK-N3; Thu, 23 Feb 2023 15:28:47 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVDWC-00H1OC-Du; Thu, 23 Feb 2023 15:28:27 +0000
-X-UUID: b25b2168b38e11edbbe3f76fe852e059-20230223
+	id 1pVDWC-00H1PD-Ue; Thu, 23 Feb 2023 15:28:27 +0000
+X-UUID: b3c7a706b38e11edbbe3f76fe852e059-20230223
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=7uMzSQcvofb9ZK7sDFI4FXlhrVcrNNEsLBbZDQpU+t8=;
-	b=lbc3tTwR3Jv+moW1XrH3KBSISSJL0EzqVXQDE9i35R8h9/3SOhay/TJDTCPkvZuo5fjyNC91eW4hB0jWDzlatfAM3rCdMtE6ZKOBOxEXvEDWSa/mhZlsL0z54+fWSC56bXRCBcUonjVgSieKdMRUp2oHCOqJs6PM9bZ+Y5gyFc8=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=9uLZTDN7EKFW91Km1A/yj0hnw6XPhEiXuWmKX1zGIxo=;
+	b=bEPMHz6a8Pu9phViN/mnQuYQdyYk+AgfgfiPYsuRhrH50gwq6zsU8zPF4V4oTqbF3+/rMYJiwcJjp6rcki51mPbOvWYvTX1ZnI5jARnbGNvTk/xkR48kCPKmdp/2FOOY4CvNwIyhCwFY7G3MBA1MvflpYVQIgdBxlkQOUE5yppk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.20,REQID:fcb31653-94e4-40fb-bb8a-b24f0f432d3b,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:25b5999,CLOUDID:7f5962b1-beed-4dfc-bd9c-e1b22fa6ccc4,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-O-INFO: VERSION:1.1.20,REQID:1c921056-4bd7-47b2-bddb-dae4ca21c21f,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:95
+X-CID-INFO: VERSION:1.1.20,REQID:1c921056-4bd7-47b2-bddb-dae4ca21c21f,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
+	:quarantine,TS:95
+X-CID-META: VersionHash:25b5999,CLOUDID:3cb08126-564d-42d9-9875-7c868ee415ec,B
+	ulkID:2302232328235CUHUM2N,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+	,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0,NGT
-X-UUID: b25b2168b38e11edbbe3f76fe852e059-20230223
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: b3c7a706b38e11edbbe3f76fe852e059-20230223
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
 	(envelope-from <powen.kao@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 944958518; Thu, 23 Feb 2023 08:28:17 -0700
+	with ESMTP id 1885926918; Thu, 23 Feb 2023 08:28:20 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 23 Feb 2023 23:28:15 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 23 Feb 2023 23:28:17 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 23 Feb 2023 23:28:15 +0800
+ 15.2.792.15 via Frontend Transport; Thu, 23 Feb 2023 23:28:17 +0800
 From: Po-Wen Kao <powen.kao@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
@@ -61,9 +65,9 @@ CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
 	<chun-hung.wu@mediatek.com>, <cc.chou@mediatek.com>,
 	<eddie.huang@mediatek.com>, <mason.zhang@mediatek.com>,
 	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>
-Subject: [PATCH v3 1/6] scsi: ufs: core: Fix mcq tag calcualtion
-Date: Thu, 23 Feb 2023 23:27:51 +0800
-Message-ID: <20230223152757.13606-2-powen.kao@mediatek.com>
+Subject: [PATCH v3 4/6] scsi: ufs: core: Remove redundant check
+Date: Thu, 23 Feb 2023 23:27:54 +0800
+Message-ID: <20230223152757.13606-5-powen.kao@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230223152757.13606-1-powen.kao@mediatek.com>
 References: <20230223152757.13606-1-powen.kao@mediatek.com>
@@ -71,8 +75,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230223_072824_499098_0F62B8EA 
-X-CRM114-Status: GOOD (  10.56  )
+X-CRM114-CacheID: sfid-20230223_072825_008184_BDD82BB0 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,37 +91,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Transfer command descriptor is allocated in ufshcd_memory_alloc()
-and referenced by transfer request descriptor with stride size
-sizeof_utp_transfer_cmd_desc()
-instead of
-sizeof(struct utp_transfer_cmd_desc).
-
-Consequently, computing tag by address offset should also refer to the
-same stride.
+is_mcq_supported() already check on use_mcq_mode.
 
 Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
-Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
 Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
 Reviewed-by: Ziqi Chen <quic_ziqichen@quicinc.com>
 ---
- drivers/ufs/core/ufs-mcq.c | 2 +-
+ drivers/ufs/core/ufshcd.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-index 31df052fbc41..3a27fa4b0024 100644
---- a/drivers/ufs/core/ufs-mcq.c
-+++ b/drivers/ufs/core/ufs-mcq.c
-@@ -265,7 +265,7 @@ static int ufshcd_mcq_get_tag(struct ufs_hba *hba,
- 	addr = (le64_to_cpu(cqe->command_desc_base_addr) & CQE_UCD_BA) -
- 		hba->ucdl_dma_addr;
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 81c9f07ebfc8..3357cfa23616 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -8544,7 +8544,7 @@ static int ufshcd_device_init(struct ufs_hba *hba, bool init_dev_params)
+ 			hba->scsi_host_added = true;
+ 		}
+ 		/* MCQ may be disabled if ufshcd_alloc_mcq() fails */
+-		if (is_mcq_supported(hba) && use_mcq_mode)
++		if (is_mcq_supported(hba))
+ 			ufshcd_config_mcq(hba);
+ 	}
  
--	return div_u64(addr, sizeof(struct utp_transfer_cmd_desc));
-+	return div_u64(addr, sizeof_utp_transfer_cmd_desc(hba));
- }
- 
- static void ufshcd_mcq_process_cqe(struct ufs_hba *hba,
 -- 
 2.18.0
 
