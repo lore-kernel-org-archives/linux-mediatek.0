@@ -4,92 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AB69C636D6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 10:20:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A59F0C636D7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 10:22:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5JZ+d4keOM3Q3zQN27hdiAOtmuIEuYd9JoJG8TNKmKg=; b=OYAxuAJ8K1C+NYEYba4T8vpLqV
-	8o5x3Ac+/6/gFAluwh0TBKMBSqr2HiEHdJAyBg3saJ+3w3rX4g02NXtdyPKnknQt0ed99l734vUb0
-	N0AbCoJ/b+JBSeVEAwvJyICxzWwGppP4fqk11WfGSM0ttrosZZTRgMbqsthssAR8/9ThxE8bnjv2K
-	Kl9edhyDq64/5IyxBiPjtskkxB0PGq+D8hzw7PbohpeskRvd+/PeX0DGbzjVJszLmsuxIAXGPGYxc
-	rngDdJ0noxatu8Tbl4TWqmYFQbFtKoQZ807qzQ+nmPmrS3f1N0Ja7STfb/3vMjFIWv0MIr2HoLzZJ
-	q1gZJigQ==;
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sSP+qmgsxXr2sGqfpiPkDCc3EDwwHf/hj8AkhCmtSKQ=; b=G1m5+QPndcLXLroGUZqr7VKSKY
+	8/+qSQocVpF16abakOjFcqdEwqh/JJczydjgATJjHiRXzVHCnu1sA0zZb24OXbXSQ/s5KhSe7XS3h
+	QWdgdBxvbiMzSvR2aL49i4PHwr+gX3wW4mGGDQua9L6ZZWpMlRk6oho24Vi8ls3zexRiRE+4tiYAA
+	eomHH725EZPvU7hW48OXSg2wY3YgdCakx7Lc00HGl9kkyicW0D+CFl6J2SpYFi4BlgALeG3PMIE9N
+	Gp5KaRGmmwyroPcVJbzWMP269wHlixEBycyvDzPFFftn6vd/7/IGKMvn/XwiqloV0ptoY6GyeZHmx
+	cD6uNrZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pV8iT-00Fu3j-Nf; Thu, 23 Feb 2023 10:20:45 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1pV8k4-00FuiJ-Qb; Thu, 23 Feb 2023 10:22:24 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pV8iR-00Fu0i-6l
-	for linux-mediatek@lists.infradead.org; Thu, 23 Feb 2023 10:20:44 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id eg37so36473460edb.12
-        for <linux-mediatek@lists.infradead.org>; Thu, 23 Feb 2023 02:20:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=5JZ+d4keOM3Q3zQN27hdiAOtmuIEuYd9JoJG8TNKmKg=;
-        b=n7vK1uti/NJxOe2l5pgWT9fnzleJ4H03NITi75Q2bs5brLlwGt6RsM+ucCorwglL9U
-         hX/eV5362EwCuFAcSZYB/qUT/5AuR+Ae2z/L32yPCdKtA8hzuYSJ94QQ6a+cMa8bDbrg
-         LjjTw8FC8z3fmRp4qOCpQZmosXXb65XVuQgtjQpKH95GCYCbJ5pHKwWg24lQpWJfjxND
-         pcqmEfmhueC7JrByWbZlaorKfQ+CAiQZ5r3CkxdFR7eGh6sQEvF7EwAecofYDqlSoY6e
-         By3NtLox/iaZcp3cF4l/k9nLgPxZlXnIg/eBvvlJIjP0ZJo2n69bXrNwuSGMS7FZzjP+
-         CniA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5JZ+d4keOM3Q3zQN27hdiAOtmuIEuYd9JoJG8TNKmKg=;
-        b=iTVU+lmkImBV4foFwzmHQpMJ1ytRXp1qrMS2ZJjfijFoyxqLVy7kBsopZEJs/80lix
-         Bf0xM8GvytqZaruKR1GHBGqLnaPR3uyCz0AL4wHLyCZFgv0+6ERCI/KteuFs662W5TOi
-         jeL/pSsJcar8eEbzWbilPu3KE7flJClCI4E2klMsHrwFj7MhsRZJ7u4DrAClIfEmDipU
-         yB5vkhSYfDK/CEe0PxHxJy7dHCGkQ6DTHo9CGKzFBxNw4eiAo0QkKkbyCQ4tOADgzMrn
-         5b7IHpEhUnHZHxipVhWgZRtBdwSAjirSW35lH1OUjUCacznVv59ekZ/zhTOKCFYwpvFe
-         C8sw==
-X-Gm-Message-State: AO0yUKW1q9j8BUuVITf3SwrMpkYB8rR3Btsn8g9viz8gA4mvi1K1oqKl
-	6VFbWLgdsOa3x6oBxa1HEcW4Zg==
-X-Google-Smtp-Source: AK7set93FtHW6w3W7U3tQiQ6L+JtvumwzgUUgSyJVkmq59feUx9y/URkmGf7hA4biCkBF+LMcfgelA==
-X-Received: by 2002:a05:6402:b2f:b0:4ab:4be9:5dcf with SMTP id bo15-20020a0564020b2f00b004ab4be95dcfmr10929013edb.4.1677147639370;
-        Thu, 23 Feb 2023 02:20:39 -0800 (PST)
-Received: from [192.168.1.109] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id m21-20020a170906849500b008d269233bd4sm5010633ejx.204.2023.02.23.02.20.37
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 23 Feb 2023 02:20:38 -0800 (PST)
-Message-ID: <ffa1d5ff-3046-95f5-062b-9833cc4f3127@linaro.org>
-Date: Thu, 23 Feb 2023 11:20:37 +0100
+	id 1pV8k2-00Fugx-EQ; Thu, 23 Feb 2023 10:22:24 +0000
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 31N2R16e005929;
+	Thu, 23 Feb 2023 10:22:16 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=sSP+qmgsxXr2sGqfpiPkDCc3EDwwHf/hj8AkhCmtSKQ=;
+ b=SFWSOibVLV6wWLUIJ6TG1mVDDj5kvMz1HfG/qGPTOA3m+Mu44s4nwAU3Sr9uVvD2akQn
+ QyU0ulfkfLkd+Br9IzQddZPWoDzMZfYUur1Sq0LRHzdoA+e4LZ/dm/Bxb5DldZLXKFyo
+ fhZfUh9IYIMtWkM79C1OUYZyBpszQgcVpr3ugx3VAvRunBu2vTtgSu2gVKNo6F/AyYJu
+ 1Mzf5BjTYRZxBVc27FN//4uKHyZmCyIOW/PA9dvwkxutz45VB3+NFaF0bcrekORYFHFy
+ VBke489vJNG6iJaS2xfWOtk1fJ0+5rtz718hSO0kDyS0ud6AYMZ8WjH3rTvq5O50th75 BA== 
+Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3nwybm0yud-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 23 Feb 2023 10:22:16 +0000
+Received: from nasanex01a.na.qualcomm.com ([10.52.223.231])
+	by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 31NAMFlL008110
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 23 Feb 2023 10:22:15 GMT
+Received: from [10.239.155.136] (10.80.80.8) by nasanex01a.na.qualcomm.com
+ (10.52.223.231) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.41; Thu, 23 Feb
+ 2023 02:22:10 -0800
+Message-ID: <bb96b0c4-d1ef-c198-3e07-d83621010a7e@quicinc.com>
+Date: Thu, 23 Feb 2023 18:22:08 +0800
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH RFC 3/4] dt-bindings: clock: break out
- mediatek,filogic-apmixed
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Subject: Re: [PATCH v2 1/7] scsi: ufs: core: Fix mcq tag calcualtion
 Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, linux-clk@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>,
- Edward-JW Yang <edward-jw.yang@mediatek.com>,
- Johnson Wang <johnson.wang@mediatek.com>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- Miles Chen <miles.chen@mediatek.com>, Sam Shih <sam.shih@mediatek.com>
-References: <cover.1677089171.git.daniel@makrotopia.org>
- <177707569882ff308d375aae3e2936a60ea483c7.1677089171.git.daniel@makrotopia.org>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <177707569882ff308d375aae3e2936a60ea483c7.1677089171.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+To: Po-Wen Kao <powen.kao@mediatek.com>, <linux-scsi@vger.kernel.org>,
+        <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>,
+        Alim Akhtar <alim.akhtar@samsung.com>,
+        Avri Altman <avri.altman@wdc.com>,
+        Bart Van Assche <bvanassche@acm.org>,
+        "James E.J. Bottomley" <jejb@linux.ibm.com>,
+        "Martin K. Petersen"
+	<martin.petersen@oracle.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>, <quic_cang@quicinc.com>,
+        <quic_asutoshd@quicinc.com>
+CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
+        <stanley.chu@mediatek.com>, <alice.chao@mediatek.com>,
+        <naomi.chu@mediatek.com>, <chun-hung.wu@mediatek.com>,
+        <cc.chou@mediatek.com>, <eddie.huang@mediatek.com>,
+        <mason.zhang@mediatek.com>, <chaotian.jing@mediatek.com>,
+        <jiajie.hao@mediatek.com>
+References: <20230222030427.957-1-powen.kao@mediatek.com>
+ <20230222030427.957-2-powen.kao@mediatek.com>
+From: Ziqi Chen <quic_ziqichen@quicinc.com>
+In-Reply-To: <20230222030427.957-2-powen.kao@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: 4gYogiX9VRbIXWwhX1NoQAqpeTHa_-uI
+X-Proofpoint-GUID: 4gYogiX9VRbIXWwhX1NoQAqpeTHa_-uI
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.219,Aquarius:18.0.930,Hydra:6.0.562,FMLib:17.11.170.22
+ definitions=2023-02-23_06,2023-02-23_01,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxlogscore=999
+ suspectscore=0 phishscore=0 spamscore=0 priorityscore=1501 adultscore=0
+ impostorscore=0 bulkscore=0 lowpriorityscore=0 malwarescore=0 mlxscore=0
+ clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2212070000 definitions=main-2302230088
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230223_022043_309183_D7F3AEB1 
-X-CRM114-Status: GOOD (  12.42  )
+X-CRM114-CacheID: sfid-20230223_022222_619716_20779C94 
+X-CRM114-Status: GOOD (  17.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,26 +110,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 22/02/2023 19:09, Daniel Golle wrote:
-> The apmixed clocks of MT7981 and MT7986 are identical. In order to
-> de-duplicate both clock drivers, start with putting apmixed into a
-> header files of its own, so it can be used by both SoCs.
-> Propagate this change also to mt7986a.dtsi which is the only user.
-> 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+
+On 2/22/2023 11:04 AM, Po-Wen Kao wrote:
+> Transfer command descriptor is allocated in ufshcd_memory_alloc()
+> and referenced by transfer request descriptor with stride size
+> sizeof_utp_transfer_cmd_desc()
+> instead of
+> sizeof(struct utp_transfer_cmd_desc).
+>
+> Consequently, computing tag by address offset should also refer to the
+> same stride.
+>
+> Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
+> Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+> Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
+> Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+reviewed-by:  Ziqi Chen <quic_ziqichen@quicinc.com>
 > ---
->  arch/arm64/boot/dts/mediatek/mt7986a.dtsi     |  1 +
->  drivers/clk/mediatek/clk-mt7986-apmixed.c     |  2 +-
->  .../clock/mediatek,filogic-apmixed.h          | 21 +++++++++++++++++++
->  .../dt-bindings/clock/mediatek,mt7981-clk.h   | 10 ---------
->  .../dt-bindings/clock/mediatek,mt7986-clk.h   | 11 ----------
->  5 files changed, 23 insertions(+), 22 deletions(-)
-
-Same comments as previous patch:
-1. Too generic name.
-2. Mixed code with bindings with DTS.
-
-Best regards,
-Krzysztof
-
+>   drivers/ufs/core/ufs-mcq.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+> index 31df052fbc41..3a27fa4b0024 100644
+> --- a/drivers/ufs/core/ufs-mcq.c
+> +++ b/drivers/ufs/core/ufs-mcq.c
+> @@ -265,7 +265,7 @@ static int ufshcd_mcq_get_tag(struct ufs_hba *hba,
+>   	addr = (le64_to_cpu(cqe->command_desc_base_addr) & CQE_UCD_BA) -
+>   		hba->ucdl_dma_addr;
+>   
+> -	return div_u64(addr, sizeof(struct utp_transfer_cmd_desc));
+> +	return div_u64(addr, sizeof_utp_transfer_cmd_desc(hba));
+>   }
+>   
+>   static void ufshcd_mcq_process_cqe(struct ufs_hba *hba,
 
