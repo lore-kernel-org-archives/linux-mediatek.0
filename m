@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9627C636D6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 10:27:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F1BCC636D6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 10:33:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U0sgrD2VnCWAPk/z6hwGGg1MC9ws6rs2YQCV9DmicYw=; b=0zDENoSdGbo+FGpo2eMXJhsGCQ
-	1rKZxZwvl9AIUztvUlV/EODWukbDIcmn3jqna0ns2cgXh9EXEHEaRmzDqXw0xack301QRXxD/uljo
-	Hed+HPn9IXtkTYO11mvHwLyeQFRVTU3UW9lp/FZzKaIUJD2Uk26XcMkE6Rt+KXfJbcLMDHRBW5r3B
-	AxZDtF6MJnoM51uO9m3UHqvVOspSmqfd5Q7wIT/QLPHnsDnjdATLbiGY+1IIkxE2aIMoRXOAGnsmv
-	Nl6u2D+xcsAgG+EYvOeHs35cwivSb+4P+fbwxl5nkZLJ/zvBloafXfMZBiMhILS0Abu6LmDxSeunQ
-	ZkRKB06A==;
+	bh=FiIjYCibcng5pWI5Vn82J5Qpk5rLTpSd4Rwvvgpmky0=; b=EnFaOkoe5um+SFP3yKIifXvOSH
+	Qmk1vvE8UKYQiBzXOddIi5FvRl903ZbcWWYeG7oQZQcJL6EfaKqpHhRG7Euwom1asc8JQ19+xfhm4
+	G4GAFHwxihkHWXue+KL/HvGm5tseY0yARBRUdC+9uN7nLbyiTsO9IAZUdeQEDiHHOvnHgOTUjG20J
+	pyODTlm3/SPIBdZJBUnJV8FiovkmKhSD3r5UwpMK2NZ7H6tsJHF0RrmibYDEFNUWaFcqIAZ7Gie/1
+	69VwYuJpj5DHCORu245Un4UxlQBgSZ86usu+W5+zDdXZfLeZQ5GgOk8wyXCz5dtIRwsYEAFIy3EMw
+	3quTY+ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pV8pA-00Fwj0-FZ; Thu, 23 Feb 2023 10:27:40 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1pV8uc-00Fyb2-PO; Thu, 23 Feb 2023 10:33:18 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pV8p7-00FwhS-Ve; Thu, 23 Feb 2023 10:27:39 +0000
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 31N34GJR020922;
-	Thu, 23 Feb 2023 10:27:29 GMT
+	id 1pV8uZ-00FyZm-JI; Thu, 23 Feb 2023 10:33:17 +0000
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 31N8bksZ018368;
+	Thu, 23 Feb 2023 10:32:56 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
  mime-version : subject : to : cc : references : from : in-reply-to :
  content-type : content-transfer-encoding; s=qcppdkim1;
- bh=U0sgrD2VnCWAPk/z6hwGGg1MC9ws6rs2YQCV9DmicYw=;
- b=I6EuLrCmQ8grKQwN3TxlUhvnrD8XiAs5+2pHcqETe+Rk48qQsd7L0ObWCj/0Wki9rltN
- BLU+IvBJBNwgEVZpY2BeMQQ/W0fwloFuYVUGx+ytIyquGpTPbZqo3k77WjzyXe1sBC3U
- QBHmNHbgtYY7kD5YdLLw+VSy8z/H1F1/FwxBD/1UY1JHAnJw8qY7pt5PZxQiGeOFleJ/
- lgIkHTCQoUOefHnY3D9yM7Nz0J7c/Sx9eBtDjEEeAbdSdcZxte2E6JWVLRA+UZ5AMREJ
- vV4ZETX7LZG0yaAl+i1WJZMoAiK7WPZPURN1DBVIdoCKwzz+ax+bAeXMRcPtcB+IlOXH Aw== 
-Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3nwybwh020-1
+ bh=FiIjYCibcng5pWI5Vn82J5Qpk5rLTpSd4Rwvvgpmky0=;
+ b=GxDI/dFN9HDIIo7Uzp1dCAbChw1Q1KWDzyiXfVKB95DDDBTi4WCXEfk2gF4UKU7FzImS
+ 6Namq5MQL3kgoWnALZKsZEYTVQMFbpTIGpokSIuunQE+3upl14YsfK4OfLHNMvJWYj3z
+ Gh7etsxTRlGrjZcnByiadczxXgyXF9HOkAPTh1V1KOaHiQe3xCFu7C0B890+7sxMHChr
+ 9zEZejYUEozvy/G8XnFcIBO/B+FciqUHdxikxUAXtDVgSSPwK2sMjB3vGtUGZcrKv6hm
+ OL6D3ULN5m4XsGeRmn27+/BmjORYSQlXpmuX6TzJJxS6VD5QQR2cNaIGJGgDZQQqii1V Yg== 
+Received: from nasanppmta03.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3nwywd0x36-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 23 Feb 2023 10:27:28 +0000
+	Thu, 23 Feb 2023 10:32:56 +0000
 Received: from nasanex01a.na.qualcomm.com ([10.52.223.231])
-	by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 31NARS7a016451
+	by NASANPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 31NAWsJl016690
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 23 Feb 2023 10:27:28 GMT
+	Thu, 23 Feb 2023 10:32:54 GMT
 Received: from [10.239.155.136] (10.80.80.8) by nasanex01a.na.qualcomm.com
  (10.52.223.231) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.41; Thu, 23 Feb
- 2023 02:27:22 -0800
-Message-ID: <7dbb5b31-1113-8b7c-7391-c61e79df0a66@quicinc.com>
-Date: Thu, 23 Feb 2023 18:27:20 +0800
+ 2023 02:32:48 -0800
+Message-ID: <58244768-33ad-21d6-d88d-93e7fdd0ba27@quicinc.com>
+Date: Thu, 23 Feb 2023 18:32:45 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
  Thunderbird/91.8.0
-Subject: Re: [PATCH v2 2/7] scsi: ufs: core: Rename symbols
+Subject: Re: [PATCH v2 3/7] scsi: ufs: core: Fix mcq nr_hw_queues
 Content-Language: en-US
 To: Po-Wen Kao <powen.kao@mediatek.com>, <linux-scsi@vger.kernel.org>,
         <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
@@ -70,32 +70,32 @@ CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
         <naomi.chu@mediatek.com>, <chun-hung.wu@mediatek.com>,
         <cc.chou@mediatek.com>, <eddie.huang@mediatek.com>,
         <mason.zhang@mediatek.com>, <chaotian.jing@mediatek.com>,
-        <jiajie.hao@mediatek.com>, <quic_asutoshd@quicinc.com>,
-        <quic_cang@quicinc.com>
+        <jiajie.hao@mediatek.com>, <quic_cang@quicinc.com>,
+        <quic_asutoshd@quicinc.com>
 References: <20230222030427.957-1-powen.kao@mediatek.com>
- <20230222030427.957-3-powen.kao@mediatek.com>
+ <20230222030427.957-4-powen.kao@mediatek.com>
 From: Ziqi Chen <quic_ziqichen@quicinc.com>
-In-Reply-To: <20230222030427.957-3-powen.kao@mediatek.com>
+In-Reply-To: <20230222030427.957-4-powen.kao@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
  nasanex01a.na.qualcomm.com (10.52.223.231)
 X-QCInternal: smtphost
 X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: mNyQJHA8dZodSgVit1fh_RCBiB_N3ANg
-X-Proofpoint-ORIG-GUID: mNyQJHA8dZodSgVit1fh_RCBiB_N3ANg
+X-Proofpoint-GUID: KkQ6qnJqZ8YOH38mukRGEjyuDaGido5k
+X-Proofpoint-ORIG-GUID: KkQ6qnJqZ8YOH38mukRGEjyuDaGido5k
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.219,Aquarius:18.0.930,Hydra:6.0.562,FMLib:17.11.170.22
  definitions=2023-02-23_06,2023-02-23_01,2023-02-09_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1015
- lowpriorityscore=0 mlxlogscore=999 malwarescore=0 impostorscore=0
- bulkscore=0 spamscore=0 mlxscore=0 priorityscore=1501 adultscore=0
- phishscore=0 suspectscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2212070000 definitions=main-2302230088
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0 malwarescore=0
+ clxscore=1015 impostorscore=0 mlxscore=0 bulkscore=0 suspectscore=0
+ phishscore=0 lowpriorityscore=0 priorityscore=1501 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2212070000 definitions=main-2302230089
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230223_022738_042027_4E001EE5 
-X-CRM114-Status: GOOD (  19.61  )
+X-CRM114-CacheID: sfid-20230223_023315_776561_61DEE461 
+X-CRM114-Status: GOOD (  17.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,78 +110,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Po-Wen,
 
 On 2/22/2023 11:04 AM, Po-Wen Kao wrote:
-> To avoid confusion, sizeof_utp_transfer_cmd_desc() is renamed to
-> ufshcd_get_ucd_size().
+> Need to add one to MAXQ to obtain number of hardware queue.
 >
 > Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
-reviewed-by:  Ziqi Chen <quic_ziqichen@quicinc.com>
 > ---
 >   drivers/ufs/core/ufs-mcq.c | 2 +-
->   drivers/ufs/core/ufshcd.c  | 8 ++++----
->   include/ufs/ufshcd.h       | 2 +-
->   3 files changed, 6 insertions(+), 6 deletions(-)
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 >
 > diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-> index 3a27fa4b0024..a39746b2a8be 100644
+> index a39746b2a8be..5d5bc0bc6e88 100644
 > --- a/drivers/ufs/core/ufs-mcq.c
 > +++ b/drivers/ufs/core/ufs-mcq.c
-> @@ -265,7 +265,7 @@ static int ufshcd_mcq_get_tag(struct ufs_hba *hba,
->   	addr = (le64_to_cpu(cqe->command_desc_base_addr) & CQE_UCD_BA) -
->   		hba->ucdl_dma_addr;
+> @@ -150,7 +150,7 @@ static int ufshcd_mcq_config_nr_queues(struct ufs_hba *hba)
+>   	u32 hba_maxq, rem, tot_queues;
+>   	struct Scsi_Host *host = hba->host;
 >   
-> -	return div_u64(addr, sizeof_utp_transfer_cmd_desc(hba));
-> +	return div_u64(addr, ufshcd_get_ucd_size(hba));
->   }
+> -	hba_maxq = FIELD_GET(MAX_QUEUE_SUP, hba->mcq_capabilities);
+> +	hba_maxq = FIELD_GET(MAX_QUEUE_SUP, hba->mcq_capabilities) + 1 ;
+Can we add one line comment why need to  add one to hba_maxq  here or in 
+commit message?
 >   
->   static void ufshcd_mcq_process_cqe(struct ufs_hba *hba,
-> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-> index 3b3cf78d3b10..81c9f07ebfc8 100644
-> --- a/drivers/ufs/core/ufshcd.c
-> +++ b/drivers/ufs/core/ufshcd.c
-> @@ -2823,10 +2823,10 @@ static void ufshcd_map_queues(struct Scsi_Host *shost)
->   static void ufshcd_init_lrb(struct ufs_hba *hba, struct ufshcd_lrb *lrb, int i)
->   {
->   	struct utp_transfer_cmd_desc *cmd_descp = (void *)hba->ucdl_base_addr +
-> -		i * sizeof_utp_transfer_cmd_desc(hba);
-> +		i * ufshcd_get_ucd_size(hba);
->   	struct utp_transfer_req_desc *utrdlp = hba->utrdl_base_addr;
->   	dma_addr_t cmd_desc_element_addr = hba->ucdl_dma_addr +
-> -		i * sizeof_utp_transfer_cmd_desc(hba);
-> +		i * ufshcd_get_ucd_size(hba);
->   	u16 response_offset = offsetof(struct utp_transfer_cmd_desc,
->   				       response_upiu);
->   	u16 prdt_offset = offsetof(struct utp_transfer_cmd_desc, prd_table);
-> @@ -3735,7 +3735,7 @@ static int ufshcd_memory_alloc(struct ufs_hba *hba)
->   	size_t utmrdl_size, utrdl_size, ucdl_size;
->   
->   	/* Allocate memory for UTP command descriptors */
-> -	ucdl_size = sizeof_utp_transfer_cmd_desc(hba) * hba->nutrs;
-> +	ucdl_size = ufshcd_get_ucd_size(hba) * hba->nutrs;
->   	hba->ucdl_base_addr = dmam_alloc_coherent(hba->dev,
->   						  ucdl_size,
->   						  &hba->ucdl_dma_addr,
-> @@ -3835,7 +3835,7 @@ static void ufshcd_host_memory_configure(struct ufs_hba *hba)
->   	prdt_offset =
->   		offsetof(struct utp_transfer_cmd_desc, prd_table);
->   
-> -	cmd_desc_size = sizeof_utp_transfer_cmd_desc(hba);
-> +	cmd_desc_size = ufshcd_get_ucd_size(hba);
->   	cmd_desc_dma_addr = hba->ucdl_dma_addr;
->   
->   	for (i = 0; i < hba->nutrs; i++) {
-> diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-> index ed9e3d5addb3..8f79cca449e1 100644
-> --- a/include/ufs/ufshcd.h
-> +++ b/include/ufs/ufshcd.h
-> @@ -1136,7 +1136,7 @@ static inline size_t ufshcd_sg_entry_size(const struct ufs_hba *hba)
->   	({ (void)(hba); BUILD_BUG_ON(sg_entry_size != sizeof(struct ufshcd_sg_entry)); })
->   #endif
->   
-> -static inline size_t sizeof_utp_transfer_cmd_desc(const struct ufs_hba *hba)
-> +static inline size_t ufshcd_get_ucd_size(const struct ufs_hba *hba)
->   {
->   	return sizeof(struct utp_transfer_cmd_desc) + SG_ALL * ufshcd_sg_entry_size(hba);
->   }
+>   	tot_queues = UFS_MCQ_NUM_DEV_CMD_QUEUES + read_queues + poll_queues +
+>   			rw_queues;
+
+Best Regards.
+
+Ziqi
+
 
