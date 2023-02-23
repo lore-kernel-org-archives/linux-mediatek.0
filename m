@@ -4,64 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6DBAC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 14:56:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3444C64ED8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 15:28:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fqRLzlPTEnQUVqEhTxeICvt3kSVg5OnjTVSkVV6x8I8=; b=gxF5td2VbRJRGbwdar4txBOs63
-	D3MJ52NOD+tCDcl2yxqdWu77R01GyPDoDUEhZ8cB5JZ5egZP2yX1OYw6AbcvtUE9/pM2xsQvINJTb
-	txIv/Lw99dfzGSHpEmwKedY8acFTrjsi0muz04TUhZ8Ii3mTwmMPIsaOLG55nW/nhgaTkIL7yZiKj
-	BJLNg5n0Bi26VsBzTpJE+AJZkF5kJD2qX1o+xQ6aRxgQ1LUD8ywL/z69jvfcU7S4Dr+w3oSfGId3k
-	x4v78++exe1e5Db0KcC5P/V3F9KJxz0kgtJ/FBcEnmLoOOzaCMs7hou4XneAbE+MHFeUUYxg6W/co
-	pE30QRqg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=d7rfc8R04jaAj0ITZoFz9RJ9lBwYyOyMLNJ9BzDX9uI=; b=Yi5etqhu7GBUapoKatcYyPerA+
+	YFzTIiOMgA9Zw8kFA2X0XZSsG8NEHjbXZTpRcBa0yJ7PZfwxvpCuR4ACBAs4ZOfiYqHbBh8/wWUwf
+	tqx7WyUXWXH5TyQe238IlxZ37wKw0zmNHxUkbZhjU3wDT6IUcG/S4FT8MQFKFpS+U+P4Bc3/EWxxY
+	0qrdAQCGKsczadwh/U1Gk38ys/hc9c7UcuujmsE/x5L9SYj+67Ywj04Zt0fRdJw5j80mHDHMp72xd
+	KQf6kuRN5i/HgpQ5qY7IO6PIjeBSpwmrcTFg/yfwbWsoksIhbUMhQ1EewLPasRhfGrXfGx3BXoh2/
+	sA59cMxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVD1M-00GuTt-7A; Thu, 23 Feb 2023 14:56:32 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pVDWG-00H1Rp-Pe; Thu, 23 Feb 2023 15:28:28 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVCzV-00GtUV-Eu; Thu, 23 Feb 2023 14:54:41 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BCEE06602218;
-	Thu, 23 Feb 2023 14:54:35 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1677164076;
-	bh=2FDlNqFMvv568OceJDLOHaVPuNkoQcOewFS48O2E3K8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=hDuVc56t9YVqQsWw8Z293SKRKZ++z7sXiXURKBM0uIr8fSXw2qoC0Flal9G2n9Bcg
-	 SJlLEncNL/dQTjNkoAB0Qt+TbHNsxdhXxzPkWqHT5LNMdaIStRygUpMt9pGEU2K0qH
-	 GX/rEaCMSNZZrP+4LW1dvGsAazCto1QUVBQrkGKm6n833DL1oN5pKUtODo9/CQfhDX
-	 eA/DBDYqicqHknC5cwT0n7F+sRhsU+PFKKUiIAyKGaKGJ88BVhQ11nuFdcPPX6HXf9
-	 QwYGebToYhxPkP0bV1voaQDykZpFsLMF5eVw67S91vtBG+WPaobCGd+ng9l+NX22Qb
-	 u31Q5TMDaTu5w==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v1 3/4] arm64: dts: mediatek: mt8195: Add display pwm nodes
-Date: Thu, 23 Feb 2023 15:54:25 +0100
-Message-Id: <20230223145426.193590-4-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230223145426.193590-1-angelogioacchino.delregno@collabora.com>
-References: <20230223145426.193590-1-angelogioacchino.delregno@collabora.com>
+	id 1pVDWC-00H1OS-Dw; Thu, 23 Feb 2023 15:28:25 +0000
+X-UUID: b333d058b38e11edbbe3f76fe852e059-20230223
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=d7rfc8R04jaAj0ITZoFz9RJ9lBwYyOyMLNJ9BzDX9uI=;
+	b=NDASsG4YVdd6ISRuUJ0Sfh3514Hht28T9dtpnaHll2zNmjAtQc9AdbJGNcURe9XkhYK6+eNowh908OGyfvti/WyelmLGFGpxZCGeErwQcfP7byIu7cYerqZctAJUwCH1FDesaaz2co5kjB6NYPbYkBVdHgpGMDo9s8rZZjdr+aw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.20,REQID:0c2a8193-1af4-4ce4-a215-cac8b6167fcb,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:25b5999,CLOUDID:845962b1-beed-4dfc-bd9c-e1b22fa6ccc4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-UUID: b333d058b38e11edbbe3f76fe852e059-20230223
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <powen.kao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1132747401; Thu, 23 Feb 2023 08:28:19 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 23 Feb 2023 23:28:16 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 23 Feb 2023 23:28:16 +0800
+From: Po-Wen Kao <powen.kao@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+	Bart Van Assche <bvanassche@acm.org>, "James E.J. Bottomley"
+	<jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
+	<stanley.chu@mediatek.com>, <powen.kao@mediatek.com>,
+	<alice.chao@mediatek.com>, <naomi.chu@mediatek.com>,
+	<chun-hung.wu@mediatek.com>, <cc.chou@mediatek.com>,
+	<eddie.huang@mediatek.com>, <mason.zhang@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>
+Subject: [PATCH v3 3/6] scsi: ufs: core: Fix mcq nr_hw_queues
+Date: Thu, 23 Feb 2023 23:27:53 +0800
+Message-ID: <20230223152757.13606-4-powen.kao@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230223152757.13606-1-powen.kao@mediatek.com>
+References: <20230223152757.13606-1-powen.kao@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230223_065437_708651_6AE74E3B 
-X-CRM114-Status: UNSURE (   8.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230223_072824_499056_5B532163 
+X-CRM114-Status: GOOD (  10.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,49 +87,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the two hardware PWMs for display backlighting but keep them
-disabled by default, as usage is board-specific.
+Since MAXQ is 0 based value, add one to obtain number of hardware queue.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+ drivers/ufs/core/ufs-mcq.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index fecb41104193..c86c4b48dc3f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -1102,6 +1102,29 @@ lvts_ap: thermal-sensor@1100b000 {
- 			#thermal-sensor-cells = <1>;
- 		};
+diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+index a39746b2a8be..f9af658b4ba2 100644
+--- a/drivers/ufs/core/ufs-mcq.c
++++ b/drivers/ufs/core/ufs-mcq.c
+@@ -150,7 +150,8 @@ static int ufshcd_mcq_config_nr_queues(struct ufs_hba *hba)
+ 	u32 hba_maxq, rem, tot_queues;
+ 	struct Scsi_Host *host = hba->host;
  
-+		disp_pwm0: pwm@1100e000 {
-+			compatible = "mediatek,mt8195-disp-pwm", "mediatek,mt8183-disp-pwm";
-+			reg = <0 0x1100e000 0 0x1000>;
-+			interrupts = <GIC_SPI 203 IRQ_TYPE_LEVEL_LOW 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			#pwm-cells = <2>;
-+			clocks = <&topckgen CLK_TOP_DISP_PWM0>,
-+				 <&infracfg_ao CLK_INFRA_AO_DISP_PWM>;
-+			clock-names = "main", "mm";
-+			status = "disabled";
-+		};
-+
-+		disp_pwm1: pwm@1100f000 {
-+			compatible = "mediatek,mt8195-disp-pwm", "mediatek,mt8183-disp-pwm";
-+			reg = <0 0x1100f000 0 0x1000>;
-+			interrupts = <GIC_SPI 793 IRQ_TYPE_LEVEL_HIGH 0>;
-+			#pwm-cells = <2>;
-+			clocks = <&topckgen CLK_TOP_DISP_PWM1>,
-+				 <&infracfg_ao CLK_INFRA_AO_DISP_PWM1>;
-+			clock-names = "main", "mm";
-+			status = "disabled";
-+		};
-+
- 		spi1: spi@11010000 {
- 			compatible = "mediatek,mt8195-spi",
- 				     "mediatek,mt6765-spi";
+-	hba_maxq = FIELD_GET(MAX_QUEUE_SUP, hba->mcq_capabilities);
++	/* maxq is 0 based value */
++	hba_maxq = FIELD_GET(MAX_QUEUE_SUP, hba->mcq_capabilities) + 1 ;
+ 
+ 	tot_queues = UFS_MCQ_NUM_DEV_CMD_QUEUES + read_queues + poll_queues +
+ 			rw_queues;
 -- 
-2.39.2
+2.18.0
 
 
