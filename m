@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D357DC64ED6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 14:55:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8C41C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 14:56:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EcyN8mwkynLnEcZ0mwlJ8EUC8lbw508/JbLNFp7NmP4=; b=tddZUtcLjem9tYph8ZZpbCiKOI
-	Q4bITvqTG3blsehbDA6KdzOlkaj32dfqwr6b622ObtL7Kv7i4dQ0isQn3gpuQC1/z3+BkRvQknKfU
-	vldNnd3APwdfOjB2WBsU7dvpOLSfXcjYhoUezxPBq7bg8pv9SnEXokuIt9aAJ7wD7Gv0wcX6Ers8x
-	TXbEfrFYPDLdv1yZggMDqbaW3whvHW/WquNR5Jz1g6do83AA9Kfsz3voz/CkO0cSM3o/TaXsBHCKG
-	gF3uGhInLvlZ9juab/xQOcBQdg1ZRE2oX3oRSjWJnzszR7bGHIoOfucKcxrnexrXCy1NLPqtad3bd
-	YjoYX7Fw==;
+	bh=HmaSZLeZjSQ/sfj0NzDmxDJsic9p5DXbQ+3CHJs5uhg=; b=mFPpAZmw9eGrPRWItXL6G7XFHG
+	Ott2N03R4ybcBbTLc4OoRvraKzkf6LfQuCmZGiAjJap5SxcNoT54k29qWxLyTRF0FOWZ22Jky57Ou
+	UL09g9LOotbO3wFVqymIoCJtRD9giZIDD3/DfRht07VzhfD0rkLH4Wnid+lsom3QETiuV+Jm9G3Vh
+	mwhRbrQ3paLL4JDEEZU+fIfGkX5P++vQ0/b+u8UxJx+29SL2FBPbC04J3FrjLzm2/F2pVzNGLRz+9
+	SQesaVA9Tsl0F1McXQl82NGRfOrJAPRYCZVYD4nb2jd5dFm+8nXWA1wwbvyy7zxKBvSRNOKCLDJuV
+	2sqpK8hA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVD0X-00Gtwx-1o; Thu, 23 Feb 2023 14:55:41 +0000
+	id 1pVD1J-00GuRj-1J; Thu, 23 Feb 2023 14:56:29 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVCzU-00GtTb-8a; Thu, 23 Feb 2023 14:54:39 +0000
+	id 1pVCzW-00GtUp-1r; Thu, 23 Feb 2023 14:54:41 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8C37E6602216;
-	Thu, 23 Feb 2023 14:54:34 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5B5306602219;
+	Thu, 23 Feb 2023 14:54:36 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1677164075;
-	bh=6pu9qitOcCueSg/XyeyLzoSlFZ5o/IQW+VQsBZPX1lk=;
+	s=mail; t=1677164076;
+	bh=EMwmDgqiKXB9Dx2NxJ/NhHjgvpsexC8a5B3Qc0K2qvw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=auXFFpiDZrBUMlDFrM3ayviuKcXeH9Y3WZXwAIeHZbbeKfuzs9pa7F1x+JZs9GsIa
-	 BYbexjJNUdLaXsyCABnXFPF/r3R4fDv7AeFNfohN9k3XkNf1Om0geQyJlOXWP38tX4
-	 1YyyUvaa08utDnHFamt6ki0jy0kMBnEW/TeCScSvd4H0x33aBoH4XYlEtzNgX1a6E9
-	 CWHWhaS5F2wr5wn7tmAmW7vniNsK7rHEmL5zH+VaXANNN+mYKGEQp098+DM2t3xKcF
-	 Q3nemt77J+0QcSSGvoPcBVUTJTvhIxyMl+yHoG0DGtW5fYsV6ivZTFiSjBxNlb+Q1d
-	 Xh4BGHz0ufAtw==
+	b=KruIvXwfhBJ1KgQJ8MomBQ7ddTMRxdJFkotOKOZNKWW2puLevwEou1ipTyayhMYWD
+	 +RG5lQP49nVFlAmbJqLdHw6tddeqQx3O966PhIeYsTHtLsjONtLEKZCeuxstRVtlXl
+	 GgBxgCU107vCmvk288rcgohAJoP5oc5e0YcUYLCUiKlYVlY7gSMx7ip+WZraEazNIP
+	 fDumET3XZBY1J6PrGU0yI1d8nV2V1Bu3T/HsFrZIkGXrPpz05xc1uNMq/MNXHhGcOG
+	 e8hu3/KYlj9qvPWO+VqfTI97mkRag8BJuQty6SgdBhKI4f7QEXDE5lH7pjqlsJ9JPG
+	 9vItNLGbkzOkQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: robh+dt@kernel.org,
@@ -50,17 +50,17 @@ Cc: robh+dt@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v1 1/4] arm64: dts: mediatek: cherry: Add platform thermal configuration
-Date: Thu, 23 Feb 2023 15:54:23 +0100
-Message-Id: <20230223145426.193590-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 4/4] arm64: dts: mediatek: cherry: Add configuration for display backlight
+Date: Thu, 23 Feb 2023 15:54:26 +0100
+Message-Id: <20230223145426.193590-5-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230223145426.193590-1-angelogioacchino.delregno@collabora.com>
 References: <20230223145426.193590-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230223_065436_478942_EEE15EBC 
-X-CRM114-Status: UNSURE (   9.47  )
+X-CRM114-CacheID: sfid-20230223_065438_274617_4871AB25 
+X-CRM114-Status: UNSURE (   8.71  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,165 +76,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This platform has three auxiliary NTC thermistors, connected to the
-SoC's ADC pins. Enable the auxadc in order to be able to read the
-ADC values, add a generic-adc-thermal LUT for each and finally assign
-them to the SoC's thermal zones.
+Configure the hardware PWM for the integrated display's backlight:
+all Cherry devices enable the backlight with GPIO82 and manage the
+PWM via MediaTek disp-pwm on GPIO97.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../boot/dts/mediatek/mt8195-cherry.dtsi      | 124 ++++++++++++++++++
- 1 file changed, 124 insertions(+)
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      | 24 +++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index 24669093fbed..ae2052a7160d 100644
+index d679a04207d8..c50f1e2914b2 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -104,6 +104,108 @@ ppvar_sys: regulator-ppvar-sys {
- 		regulator-boot-on;
+@@ -22,6 +22,16 @@ aliases {
+ 		serial0 = &uart0;
  	};
  
-+	tboard_thermistor1: thermal-sensor-t1 {
-+		compatible = "generic-adc-thermal";
-+		#thermal-sensor-cells = <0>;
-+		io-channels = <&auxadc 0>;
-+		io-channel-names = "sensor-channel";
-+		temperature-lookup-table = <	(-5000) 4241
-+						0 4063
-+						5000 3856
-+						10000 3621
-+						15000 3364
-+						20000 3091
-+						25000 2810
-+						30000 2526
-+						35000 2247
-+						40000 1982
-+						45000 1734
-+						50000 1507
-+						55000 1305
-+						60000 1122
-+						65000 964
-+						70000 827
-+						75000 710
-+						80000 606
-+						85000 519
-+						90000 445
-+						95000 382
-+						100000 330
-+						105000 284
-+						110000 245
-+						115000 213
-+						120000 183
-+						125000 161>;
++	backlight_lcd0: backlight-lcd0 {
++		compatible = "pwm-backlight";
++		brightness-levels = <0 1023>;
++		default-brightness-level = <576>;
++		enable-gpios = <&pio 82 GPIO_ACTIVE_HIGH>;
++		num-interpolated-steps = <1023>;
++		pwms = <&disp_pwm0 0 500000>;
++		power-supply = <&ppvar_sys>;
 +	};
 +
-+	tboard_thermistor2: thermal-sensor-t2 {
-+		compatible = "generic-adc-thermal";
-+		#thermal-sensor-cells = <0>;
-+		io-channels = <&auxadc 0>;
-+		io-channel-names = "sensor-channel";
-+		temperature-lookup-table = <	(-5000) 4241
-+						0 4063
-+						5000 3856
-+						10000 3621
-+						15000 3364
-+						20000 3091
-+						25000 2810
-+						30000 2526
-+						35000 2247
-+						40000 1982
-+						45000 1734
-+						50000 1507
-+						55000 1305
-+						60000 1122
-+						65000 964
-+						70000 827
-+						75000 710
-+						80000 606
-+						85000 519
-+						90000 445
-+						95000 382
-+						100000 330
-+						105000 284
-+						110000 245
-+						115000 213
-+						120000 183
-+						125000 161>;
-+	};
-+
-+	tboard_thermistor3: thermal-sensor-t3 {
-+		compatible = "generic-adc-thermal";
-+		#thermal-sensor-cells = <0>;
-+		io-channels = <&auxadc 0>;
-+		io-channel-names = "sensor-channel";
-+		temperature-lookup-table = <	(-5000) 4241
-+						0 4063
-+						5000 3856
-+						10000 3621
-+						15000 3364
-+						20000 3091
-+						25000 2810
-+						30000 2526
-+						35000 2247
-+						40000 1982
-+						45000 1734
-+						50000 1507
-+						55000 1305
-+						60000 1122
-+						65000 964
-+						70000 827
-+						75000 710
-+						80000 606
-+						85000 519
-+						90000 445
-+						95000 382
-+						100000 330
-+						105000 284
-+						110000 245
-+						115000 213
-+						120000 183
-+						125000 161>;
-+	};
-+
- 	usb_vbus: regulator-5v0-usb-vbus {
- 		compatible = "regulator-fixed";
- 		regulator-name = "usb-vbus";
-@@ -243,6 +345,10 @@ &gpu {
- 	mali-supply = <&mt6315_7_vbuck1>;
+ 	chosen {
+ 		stdout-path = "serial0:115200n8";
+ 	};
+@@ -349,6 +359,13 @@ &auxadc {
+ 	status = "okay";
  };
  
-+&auxadc {
++&disp_pwm0 {
 +	status = "okay";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&disp_pwm0_pin_default>;
 +};
 +
  &i2c0 {
  	status = "okay";
  
-@@ -1074,6 +1180,24 @@ mt6315_7_vbuck1: vbuck1 {
+@@ -773,6 +790,13 @@ pins-cmd-dat {
+ 		};
  	};
- };
  
-+&thermal_zones {
-+	ap_ntc1 {
-+		polling-delay = <1000>;
-+		polling-delay-passive = <0>;
-+		thermal-sensors = <&tboard_thermistor1>;
++	disp_pwm0_pin_default: disp-pwm0-default-pins {
++		pins-disp-pwm {
++			pinmux = <PINMUX_GPIO82__FUNC_GPIO82>,
++				 <PINMUX_GPIO97__FUNC_DISP_PWM0>;
++		};
 +	};
-+	ap_ntc2 {
-+		polling-delay = <1000>;
-+		polling-delay-passive = <0>;
-+		thermal-sensors = <&tboard_thermistor2>;
-+	};
-+	ap_ntc3 {
-+		polling-delay = <1000>;
-+		polling-delay-passive = <0>;
-+		thermal-sensors = <&tboard_thermistor3>;
-+	};
-+};
 +
- &u3phy0 {
- 	status = "okay";
- };
+ 	i2c0_pins: i2c0-default-pins {
+ 		pins-bus {
+ 			pinmux = <PINMUX_GPIO8__FUNC_SDA0>,
 -- 
 2.39.2
 
