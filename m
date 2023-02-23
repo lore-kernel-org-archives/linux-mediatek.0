@@ -4,98 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A33EC64ED8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 10:52:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8572EC636D6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 11:24:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9RtgpJu54slfX0JMTbbQkMovmg0D++50tTf8IWA0C08=; b=cDIGFKU9u19UA70Mghhp6ZdqRy
-	JAatfdIpti49epsHLX07DoSRCuymzUPXmCaemfofu4qS0rgrE1BdFk1kM4NHdrcBOTEubG2SSudsH
-	AIPCRjNsLPUQj2BcS7Cj6ApmhSjLImztgpmH8ul0Lo5dzLW/BbF3cXqAsktpGwIRgZBobg1GdgQei
-	/ozdqiH5ixjzQcuverNDp/luXXR1Onbmvb9KKCSp8/lYUcFwh1q8/dwS1zVIYgp4OLc0fqUpsxYd+
-	7XA9PWg7ETV7LPa1rMEJ5Jp+8RSOuFK4Bh3ApZXx0WdqpL+RFTjWUA53zp+tKXtSA0zCbTA74XUkY
-	alyuHhPw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xTcdE99TcQTNlc0Sc8sOfgvuwoyx0Fa/oqYqR+lzGXw=; b=LXur98VA5ou2BkP69Lc0r4lSW0
+	pnUnf/X53BOX+wUbBcAEt828UKmcAchsNBeZwNz/XPELM9qgUc+XD2Ac7tiA11FdB/DALxedqx9Z7
+	WqdTw2l6tUSVBEB8nk2RiwOZeK30vBn55BmbG+gNxIbwdctZfDti9rNaSJ6cvPOrf4AIJp4dl9rC2
+	H9ZOfuGgDn+0Ms4DzZbLDdZsl6tLurClkrYejOlSp0eJwnntsY8Yr/ry+6/KdLW3qQtD1OxYRK5yn
+	xD6YcU0Vij9vMoRnL6bU1cZsPAt7YB4UimSaDp7GfYhlk6ZgSd3iKgO1/1uAgTEPYCG6H8qKFJpeT
+	sqg7Qavw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pV9D8-00G2HH-78; Thu, 23 Feb 2023 10:52:26 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pV9D6-00G2Fw-80; Thu, 23 Feb 2023 10:52:25 +0000
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 31NA129N011643;
-	Thu, 23 Feb 2023 10:52:19 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=9RtgpJu54slfX0JMTbbQkMovmg0D++50tTf8IWA0C08=;
- b=LwRRgaN8B3sh7qymZkrsX+ItdZFDNAhy4qrR07c3ANwOYOzwqL7YKo5W0W6x+bUc+Dex
- siYi0XieoVojDtpI/Zv9XD2PNCit61B2bVVT1Ar92Lruf/o2gYrHSrXricPelIssrfg1
- 2OUSo8hk4LnrKhp2srWv2RxquudoiEdHIBLbijEErHSCmiCJaYqPuBA1+FcTQXSlWIC4
- pFJX3GvVCYIK/XQoD/I76pBOzUAHxazt3eyG586q8dpiY9UvK47ixrU4BHp7FTC9Jwvz
- fOobsUvwW6GPt/HCxhl+HnWUgXIaWFtRKUd6986BkrQ8yepN056CK3NcnwUZaLI8x8al hQ== 
-Received: from nasanppmta03.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3nwy8m11hs-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 23 Feb 2023 10:52:18 +0000
-Received: from nasanex01a.na.qualcomm.com ([10.52.223.231])
-	by NASANPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 31NAqIMr017618
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 23 Feb 2023 10:52:18 GMT
-Received: from [10.239.155.136] (10.80.80.8) by nasanex01a.na.qualcomm.com
- (10.52.223.231) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.41; Thu, 23 Feb
- 2023 02:52:12 -0800
-Message-ID: <27d2a4c4-2a4c-7fc6-4afb-cf5792e91d85@quicinc.com>
-Date: Thu, 23 Feb 2023 18:52:10 +0800
+	id 1pV9i3-00G8Sm-Ib; Thu, 23 Feb 2023 11:24:23 +0000
+Received: from mg.richtek.com ([220.130.44.152])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pV9hz-00G8Ns-Nb; Thu, 23 Feb 2023 11:24:21 +0000
+X-MailGates: (flag:4,DYNAMIC,BADHELO,RELAY,NOHOST:PASS)(compute_score:DE
+	LIVER,40,3)
+Received: from 192.168.10.46
+	by mg.richtek.com with MailGates ESMTP Server V5.0(14980:0:AUTH_RELAY)
+	(envelope-from <chiaen_wu@richtek.com>); Thu, 23 Feb 2023 19:23:39 +0800 (CST)
+Received: from ex4.rt.l (192.168.10.47) by ex3.rt.l (192.168.10.46) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.20; Thu, 23 Feb
+ 2023 19:23:39 +0800
+Received: from linuxcarl2.richtek.com (192.168.10.154) by ex4.rt.l
+ (192.168.10.45) with Microsoft SMTP Server id 15.2.1118.20 via Frontend
+ Transport; Thu, 23 Feb 2023 19:23:38 +0800
+From: ChiaEn Wu <chiaen_wu@richtek.com>
+To: <corbet@lwn.net>, <pavel@ucw.cz>, <lee@kernel.org>,
+	<matthias.bgg@gmail.com>, <andriy.shevchenko@linux.intel.com>,
+	<jacek.anaszewski@gmail.com>, <angelogioacchino.delregno@collabora.com>
+CC: <linux-doc@vger.kernel.org>, <peterwu.pub@gmail.com>,
+	<cy_huang@richtek.com>, <linux-leds@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <szunichen@gmail.com>, ChiaEn Wu
+	<chiaen_wu@richtek.com>
+Subject: [PATCH v17 RESEND 3/3] docs: leds: Add MT6370 RGB LED pattern document
+Date: Thu, 23 Feb 2023 19:23:09 +0800
+Message-ID: <c6487954daff5e514023056ad7de1d0ddee674a8.1677150607.git.chiaen_wu@richtek.com>
+X-Mailer: git-send-email 1.8.3.1
+In-Reply-To: <cover.1677150607.git.chiaen_wu@richtek.com>
+References: <cover.1677150607.git.chiaen_wu@richtek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [PATCH v2 5/7] scsi: ufs: core: Remove redundant check
-Content-Language: en-US
-To: Po-Wen Kao <powen.kao@mediatek.com>, <linux-scsi@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>,
-        Alim Akhtar <alim.akhtar@samsung.com>,
-        Avri Altman <avri.altman@wdc.com>,
-        Bart Van Assche <bvanassche@acm.org>,
-        "James E.J. Bottomley" <jejb@linux.ibm.com>,
-        "Martin K. Petersen"
-	<martin.petersen@oracle.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>, <quic_ziqichen@quicinc.com>
-CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
-        <stanley.chu@mediatek.com>, <alice.chao@mediatek.com>,
-        <naomi.chu@mediatek.com>, <chun-hung.wu@mediatek.com>,
-        <cc.chou@mediatek.com>, <eddie.huang@mediatek.com>,
-        <mason.zhang@mediatek.com>, <chaotian.jing@mediatek.com>,
-        <jiajie.hao@mediatek.com>, <quic_cang@quicinc.com>,
-        <quic_asutoshd@quicinc.com>
-References: <20230222030427.957-1-powen.kao@mediatek.com>
- <20230222030427.957-6-powen.kao@mediatek.com>
-From: Ziqi Chen <quic_ziqichen@quicinc.com>
-In-Reply-To: <20230222030427.957-6-powen.kao@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nasanex01a.na.qualcomm.com (10.52.223.231)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: kJ6tIHn7zTNWGPlxe8BKBPgyRbxF6M0C
-X-Proofpoint-ORIG-GUID: kJ6tIHn7zTNWGPlxe8BKBPgyRbxF6M0C
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.219,Aquarius:18.0.930,Hydra:6.0.562,FMLib:17.11.170.22
- definitions=2023-02-23_06,2023-02-23_01,2023-02-09_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1015 bulkscore=0
- mlxscore=0 spamscore=0 adultscore=0 lowpriorityscore=0 priorityscore=1501
- impostorscore=0 suspectscore=0 malwarescore=0 mlxlogscore=999 phishscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2212070000
- definitions=main-2302230092
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230223_025224_320595_F7BAB405 
-X-CRM114-Status: GOOD (  16.02  )
+X-CRM114-CacheID: sfid-20230223_032420_219326_1FFAA26D 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,27 +70,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: ChiYuan Huang <cy_huang@richtek.com>
 
-On 2/22/2023 11:04 AM, Po-Wen Kao wrote:
-> is_mcq_supported() already check on use_mcq_mode.
->
-> Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
-reviewed-by:  Ziqi Chen <quic_ziqichen@quicinc.com>
-> ---
->   drivers/ufs/core/ufshcd.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-> index a15a5a78160c..21e3bf5d8f08 100644
-> --- a/drivers/ufs/core/ufshcd.c
-> +++ b/drivers/ufs/core/ufshcd.c
-> @@ -8548,7 +8548,7 @@ static int ufshcd_device_init(struct ufs_hba *hba, bool init_dev_params)
->   			hba->scsi_host_added = true;
->   		}
->   		/* MCQ may be disabled if ufshcd_alloc_mcq() fails */
-> -		if (is_mcq_supported(hba) && use_mcq_mode)
-> +		if (is_mcq_supported(hba))
->   			ufshcd_config_mcq(hba);
->   	}
->   
+Document the MT6370 RGB LED pattern trigger.
+
+This simply describe how the pattern works, each timing period, and the
+pattern diagram for MT6370 RGB LED.
+
+Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+---
+ Documentation/leds/leds-mt6370-rgb.rst | 64 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 64 insertions(+)
+ create mode 100644 Documentation/leds/leds-mt6370-rgb.rst
+
+diff --git a/Documentation/leds/leds-mt6370-rgb.rst b/Documentation/leds/leds-mt6370-rgb.rst
+new file mode 100644
+index 00000000..d1b2e4f
+--- /dev/null
++++ b/Documentation/leds/leds-mt6370-rgb.rst
+@@ -0,0 +1,64 @@
++.. SPDX-License-Identifier: GPL-2.0
++
++=========================================
++Kernel driver for Mediatek MT6370 RGB LED
++=========================================
++
++Description
++-----------
++
++The MT6370 integrates a four-channel RGB LED driver, designed to provide a
++variety of lighting effect for mobile device applications. The RGB LED driver
++includes a smart LED string controller and it can drive 3 channels of LEDs with
++a sink current up to 24mA and a CHG_VIN power good indicator LED with sink
++current up to 6mA. It provides three operation modes for RGB LEDs:
++PWM Dimming mode, breath pattern mode, and constant current mode. The device
++can increase or decrease the brightness of the RGB LED via I2C interface.
++
++The breath pattern for a channel can be programmed using the "pattern" trigger,
++using the hw_pattern attribute.
++
++/sys/class/leds/<led>/hw_pattern
++--------------------------------
++
++Specify a hardware breath pattern for a MT6370 RGB LED.
++
++The breath pattern is a series of timing pairs, with the hold-time expressed in
++milliseconds. And the brightness is controlled by
++'/sys/class/leds/<led>/brightness'. The pattern doesn't include the brightness
++setting. Hardware pattern only controls the timing for each pattern stage
++depending on the current brightness setting.
++
++Pattern diagram::
++
++     "0 Tr1 0 Tr2 0 Tf1 0 Tf2 0 Ton 0 Toff" --> '0' for dummy brightness code
++
++      ^
++      |           ============
++      |          /            \                                /
++Icurr |         /              \                              /
++      |        /                \                            /
++      |       /                  \                          /   .....repeat
++      |      /                    \                        /
++      |   ---                      ---                  ---
++      |---                            ---            ---
++      +----------------------------------============------------> Time
++       < Tr1><Tr2><   Ton    ><Tf1><Tf2 ><  Toff    >< Tr1><Tr2>
++
++Timing description::
++
++Tr1:    First rising time for duty 0 to 30%.
++Tr2:    Second rising time for duty 31% to 100%.
++Ton:    On time for duty 100%.
++Tf1:    First falling time for duty 100% to 31%.
++Tf2:    Second falling time for duty 30% to 0%.
++Toff:   Off time for duty 0%.
++
++Tr1/Tr2/Tf1/Tf2/Ton: 125ms to 3125ms, 200ms per step.
++Toff: 250ms to 6250ms, 400ms per step.
++
++Pattern example::
++
++       "0 125 0 125 0 125 0 125 0 625 0 1050"
++
++This Will configure Tr1/Tr2/Tf1/Tf2 to 125m, Ton to 625ms, and Toff to 1050ms.
+-- 
+2.7.4
+
 
