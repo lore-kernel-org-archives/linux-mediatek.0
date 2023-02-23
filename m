@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E5CBC636D6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 13:47:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EC54C636D6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 13:48:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=tcDrEAMKPs00auLDSDbLDnNOA86qg1drBPhGMx0FJoo=; b=H8oPpslsRe38oZleVcGl5R50DI
-	9EdJZOi/ZHv4D2rj38if1oahfu6KfFimZ5qm0ChlfLl6RWC6zEut03SakXa5+EqwuKFBKZRGz4lqD
-	//lgYKAuKoFkmcl/m4N4qyVQke4aTTcHkwv93CLGXfhd8QlqOzshdnJKanRCUhhGWlfGZsuzN4oJl
-	YMwG17jRkIlXLIyGHsRAM4xmps+WyDNGwxPh3UQdZgfHXMVEDJoV3HSKMUxYX73GhxsqJ9rtd90wN
-	QQfUE+96AbnTgiMsaVw53XdNOZEL9ZvMjGIh/EShmgzAOTxYCsVCSSsUGB8XGjPbHMdOK5gYuQRnb
-	LKTEjs6A==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PeksOt2o57ZhTAjru0t0681d+unyxQCSrcSwQkRnzLM=; b=THV2jKnuTWfrBP6DonyiBUPsvf
+	SJDeMz2NpShdoc0UYx87LE7EutjDXt8IfZ+6bAl5w3GvkBRa8YfyHr5dErolqvvdu25eWukIqEiGH
+	d9UWCwUbO7AYWUo+Q360xhWwZ+B/eVkRYBu7G9ilMgQ5AkNKbt53uNezo8sHNQDiDCT9Zc3tagZWd
+	EzL4htdx4BmN1Q4k2OC9qXOR05Vszjou/1OXMqQr4tb/u5r1SGkKIVB/9mmsFWpFDEXmGlLCAk2hP
+	gGdBpnH6mf08xWWx3kIkbyK4e2xB0VIsVU59D9Nk1GmeYliNdP4eeQZje9ee5quRB7XPVKOPIMDG4
+	ibii5hlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVBwW-00GZvi-3P; Thu, 23 Feb 2023 13:47:28 +0000
+	id 1pVBxn-00Gaig-OO; Thu, 23 Feb 2023 13:48:47 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVBt7-00GYIg-DA; Thu, 23 Feb 2023 13:43:59 +0000
+	id 1pVBt9-00GYJy-2C; Thu, 23 Feb 2023 13:44:00 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6D3D96602206;
-	Thu, 23 Feb 2023 13:43:55 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 58449660220A;
+	Thu, 23 Feb 2023 13:43:57 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1677159835;
-	bh=kcWtsl7kt6vskygEy/KjJuQ2tTbCD0wsvaj9dsJ3sHY=;
-	h=From:To:Cc:Subject:Date:From;
-	b=fsD0NKgVghv0d1bNIskDjH0rGdpRGIHsVJrgkm9GCaIZ4ipNQm4+0yRR0lZeU0cMt
-	 NP/Hf9RXoOI+PdcgIJu0qba8DSLcY9goY4kYwGgUoUrDIUnyj8VTMwxoyOVGgxNrju
-	 aHmgTwdLMJfiu5Y61fqy9ns9og63pAtqPvX80+NvNeRGRcf8qbdemQ5r0bnvhc4bJl
-	 yN8zN3ZDUE/cd4xbowQ8xugXP73mRZMh6g/TuHThCyAKv/0uxZ3nuD7F72QSdjfER6
-	 m90eUOzpnAqMPbCy1/abhIX/bVvheKDffJTxdNTpiv774XpcbcVnOuxJxJg7eFUYqq
-	 z/6qI0ZhzdDgA==
+	s=mail; t=1677159837;
+	bh=O+KDnSI3KszDtxSXA0fyQMxxMHho/MGieF2kZyp8r7c=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=AP3bxT479EcxEZGP2VzwVZJBT0ZPQ39hal42JpJafcKPtXdX+WGz+JaibwRIiKu+D
+	 O5akJ3a08NT4gqhpiLtg2O/8N64h+30NOpNpsemItFnlIwxGbj/Tk4sZrfZyWqe5C+
+	 7SVaoERKNpvUrrbiwre5FxSgc7eWnacYwoCoKq5O21cUlKleWag1ZqtoeqFsurd2d0
+	 +bFb+ZGSmx1QXcMl/F1t6sQoaCCPQ14CBCfKDWS9UHM//f8sm69s5eFfuWaNEPG4jF
+	 gniLh0o5jr6kS1mbCY+ql46i/PFFg8SBmp+d+k8iB04H7Eyxtl8tNLYE3SnHXuc5qm
+	 iaPL61eHbLceg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: robh+dt@kernel.org,
@@ -51,16 +51,18 @@ Cc: robh+dt@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	wenst@chromium.org
-Subject: [PATCH v2 00/16] Enable GPU with DVFS support on MediaTek SoCs
-Date: Thu, 23 Feb 2023 14:43:29 +0100
-Message-Id: <20230223134345.82625-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 03/16] arm64: dts: mediatek: mt8183: Remove second opp-microvolt entries from gpu table
+Date: Thu, 23 Feb 2023 14:43:32 +0100
+Message-Id: <20230223134345.82625-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230223134345.82625-1-angelogioacchino.delregno@collabora.com>
+References: <20230223134345.82625-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230223_054357_629788_3EBC762A 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20230223_054359_270080_253611AA 
+X-CRM114-Status: UNSURE (   8.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,72 +77,118 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v2:
- - Changed MT8186 to use only two power domains for the GPU.
+This was done to keep a strict relation between VSRAM and VGPU, but
+it never worked: now we're doing it transparently with the new
+mediatek-regulator-coupler driver.
 
-We finally have working GPU DVFS on MediaTek SoCs.
-On Panfrost.
-For real.
-...and the best part is that it's going upstream.
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 32 ++++++++++++------------
+ 1 file changed, 16 insertions(+), 16 deletions(-)
 
-In order to get GPU DVFS working, it was necessary to satisfy a
-specific constraint (which is different, depending on the SoC)
-between two regulators: GPU VCORE and GPU SRAM.
-This was done through adding the mtk-regulator-coupler driver,
-which transparently manages the voltage relation between these
-two vregs, hence completely eliminating the need to manage these
-regulators in the Panfrost driver; this solves the long standing
-issue with devfreq+opp tables not supporting managing voltages
-for two regulators per opp entry out of the box, due to which
-we never got GPU DVFS on those SoCs, often locking them out to
-a low GPU frequency.
-
-This changes. Right now!
-
-Tested on MT8192, MT8195 Chromebooks.
-
-This series depends on [1].
-
-[1]: https://lore.kernel.org/lkml/20230223133440.80941-1-angelogioacchino.delregno@collabora.com/
-
-Alyssa Rosenzweig (2):
-  arm64: dts: mediatek: mt8192: Add GPU nodes
-  arm64: dts: mediatek: mt8192-asurada: Enable GPU
-
-AngeloGioacchino Del Regno (13):
-  arm64: dts: mediatek: mt8183-kukui: Couple VGPU and VSRAM_GPU
-    regulators
-  arm64: dts: mediatek: mt8183-kukui: Override vgpu/vsram_gpu
-    constraints
-  arm64: dts: mediatek: mt8183: Remove second opp-microvolt entries from
-    gpu table
-  arm64: dts: mt8183-pumpkin: Couple VGPU and VSRAM_GPU regulators
-  arm64: dts: mediatek: mt8183-evb: Couple VGPU and VSRAM_GPU regulators
-  arm64: dts: mediatek: mt8183: Use mediatek,mt8183b-mali as GPU
-    compatible
-  arm64: dts: mediatek: mt8192: Add mfg_ref_sel clock to MFG0 domain
-  arm64: dts: mediatek: mt8192-asurada: Assign sram supply to MFG1 pd
-  arm64: dts: mediatek: mt8192-asurada: Couple VGPU and VSRAM_OTHER
-    regulators
-  arm64: dts: mediatek: mt8195: Add mfg_core_tmp clock to MFG1 domain
-  arm64: dts: mt8195: Add panfrost node for Mali-G57 Valhall Natt GPU
-  arm64: dts: mediatek: mt8195-cherry: Enable Mali-G57 GPU
-  arm64: dts: mediatek: mt8186: Add GPU node
-
-Nícolas F. R. A. Prado (1):
-  arm64: dts: mediatek: mt8192-asurada: Add MFG0 domain supply
-
- arch/arm64/boot/dts/mediatek/mt8183-evb.dts   |  11 +-
- .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |  17 ++-
- .../boot/dts/mediatek/mt8183-pumpkin.dts      |  11 +-
- arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  34 ++---
- arch/arm64/boot/dts/mediatek/mt8186.dtsi      |  17 +++
- .../boot/dts/mediatek/mt8192-asurada.dtsi     |  22 ++++
- arch/arm64/boot/dts/mediatek/mt8192.dtsi      | 118 +++++++++++++++++-
- .../boot/dts/mediatek/mt8195-cherry.dtsi      |   5 +
- arch/arm64/boot/dts/mediatek/mt8195.dtsi      |  95 +++++++++++++-
- 9 files changed, 304 insertions(+), 26 deletions(-)
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 3d1d7870a5f1..e01b96adef02 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -563,82 +563,82 @@ gpu_opp_table: opp-table-0 {
+ 
+ 		opp-300000000 {
+ 			opp-hz = /bits/ 64 <300000000>;
+-			opp-microvolt = <625000>, <850000>;
++			opp-microvolt = <625000>;
+ 		};
+ 
+ 		opp-320000000 {
+ 			opp-hz = /bits/ 64 <320000000>;
+-			opp-microvolt = <631250>, <850000>;
++			opp-microvolt = <631250>;
+ 		};
+ 
+ 		opp-340000000 {
+ 			opp-hz = /bits/ 64 <340000000>;
+-			opp-microvolt = <637500>, <850000>;
++			opp-microvolt = <637500>;
+ 		};
+ 
+ 		opp-360000000 {
+ 			opp-hz = /bits/ 64 <360000000>;
+-			opp-microvolt = <643750>, <850000>;
++			opp-microvolt = <643750>;
+ 		};
+ 
+ 		opp-380000000 {
+ 			opp-hz = /bits/ 64 <380000000>;
+-			opp-microvolt = <650000>, <850000>;
++			opp-microvolt = <650000>;
+ 		};
+ 
+ 		opp-400000000 {
+ 			opp-hz = /bits/ 64 <400000000>;
+-			opp-microvolt = <656250>, <850000>;
++			opp-microvolt = <656250>;
+ 		};
+ 
+ 		opp-420000000 {
+ 			opp-hz = /bits/ 64 <420000000>;
+-			opp-microvolt = <662500>, <850000>;
++			opp-microvolt = <662500>;
+ 		};
+ 
+ 		opp-460000000 {
+ 			opp-hz = /bits/ 64 <460000000>;
+-			opp-microvolt = <675000>, <850000>;
++			opp-microvolt = <675000>;
+ 		};
+ 
+ 		opp-500000000 {
+ 			opp-hz = /bits/ 64 <500000000>;
+-			opp-microvolt = <687500>, <850000>;
++			opp-microvolt = <687500>;
+ 		};
+ 
+ 		opp-540000000 {
+ 			opp-hz = /bits/ 64 <540000000>;
+-			opp-microvolt = <700000>, <850000>;
++			opp-microvolt = <700000>;
+ 		};
+ 
+ 		opp-580000000 {
+ 			opp-hz = /bits/ 64 <580000000>;
+-			opp-microvolt = <712500>, <850000>;
++			opp-microvolt = <712500>;
+ 		};
+ 
+ 		opp-620000000 {
+ 			opp-hz = /bits/ 64 <620000000>;
+-			opp-microvolt = <725000>, <850000>;
++			opp-microvolt = <725000>;
+ 		};
+ 
+ 		opp-653000000 {
+ 			opp-hz = /bits/ 64 <653000000>;
+-			opp-microvolt = <743750>, <850000>;
++			opp-microvolt = <743750>;
+ 		};
+ 
+ 		opp-698000000 {
+ 			opp-hz = /bits/ 64 <698000000>;
+-			opp-microvolt = <768750>, <868750>;
++			opp-microvolt = <768750>;
+ 		};
+ 
+ 		opp-743000000 {
+ 			opp-hz = /bits/ 64 <743000000>;
+-			opp-microvolt = <793750>, <893750>;
++			opp-microvolt = <793750>;
+ 		};
+ 
+ 		opp-800000000 {
+ 			opp-hz = /bits/ 64 <800000000>;
+-			opp-microvolt = <825000>, <925000>;
++			opp-microvolt = <825000>;
+ 		};
+ 	};
+ 
 -- 
 2.39.2
 
