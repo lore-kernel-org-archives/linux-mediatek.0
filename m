@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4829C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 13:38:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4C68C636D6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 13:39:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kJkPXXd0E1FJFKrycqmi608Pd6u8FQxFygP/oYqBqwk=; b=saMcU+3LtdQYHnjJ6zs7dXz3aH
-	l3xiCe5m/sxG9BIn/uS7XUpuSMmG7jz/QLT5DpxlOT0NOG1bHR6mbF8MrgsH0WWlh+yw5/dOhn8A0
-	ohOFPwVR+jM7iAbmoP1i+g27xdEQltixJXNcpr7efUNzfcdC3WcvUbAR4Y12cMvKXHMi6PRBEyYbN
-	ZlNAuIJEkjFBAbTGYOicnpWv886LjilJ8RkldwEryVWFKnMrnhj70KWsOeT8fb1gzExI5FddfwhGk
-	9pSbknoD/hyVztHAmHcY3EsaoMYSuXTKuPTVTucAKoBAmfbh5I4ci2L6fytIRuhUw/xekRoNFGmpD
-	okjq520A==;
+	bh=FMfdiM13fhNnqDKSct6SZ9/VsenkCovJxjsYEtqYwCE=; b=HUkaUmV6uKfRDe8pZehTxeKM5d
+	JUqGGx84uTPaHAahvbMvPQmeVKxm8IL+hpKWMzh7EFm/+q+XRaJsacjc06tVDyygsFjd15DbgVyHc
+	nP8Me8FC57xKzhw9kqFgaOjFmkgZO4yZzQrIJzBqTvVAHF+6HT2jEKDBMPQYng8XgMBifu9MyCkM2
+	vAIvGftuPnLMLyIEJAStHzGYk760HOi7embIzXYY+r2B38UYKsUV+TCDYmG2gd5AYrcDByjgVu5Tk
+	22uezL1UIr4uLu4sw5WktnOlQi6/CBpII8KRAXpJslQk6Olc4mkgYUhW418xOtcEj51Ex1ktEZqy3
+	tONz41WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVBnz-00GVK7-Ny; Thu, 23 Feb 2023 13:38:39 +0000
+	id 1pVBpB-00GW64-4f; Thu, 23 Feb 2023 13:39:53 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVBkV-00GT2y-RC; Thu, 23 Feb 2023 13:35:05 +0000
+	id 1pVBkW-00GT3b-Gu; Thu, 23 Feb 2023 13:35:07 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A474E6602208;
-	Thu, 23 Feb 2023 13:35:01 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8C6CA6602206;
+	Thu, 23 Feb 2023 13:35:02 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1677159302;
-	bh=d98v4XkYuSdlaBMRVhy8ckf3WPpqfT9gFqNu9PlgtLo=;
+	s=mail; t=1677159303;
+	bh=hkk4f6FFc9GkAmhDJ/1AiRSfMxb8riRRgIr9wuciCH0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=BiGnh69IV/fDTW/ttFIjrRlyQipfGpN6lJfGvE8RG2QP5PA2XxzKvXP5T0Ng30Nbu
-	 RPgrEYsC2hIJHKsn+o/2NYBKQ9jEsCy2fur4ybtcGZNpVj3tQ1RPclzrvY4ehkELXv
-	 qTproiq1OpDgtg28YiTGIaxko0qMPLWKxsSdMg0KRImVJzxDUGCaeQuSjjec5g/Wkz
-	 8u9XDpkT2rBpeC/ReF60wO+BuIIRTK3ZzPVxsbtrA01FkZ/pNVOuPUJdfv72MaCrET
-	 gNF76Um5JwfxiPt318kFBhfmNHuUfMmvoLEjMu/hZ8p1LH2fMEdCvE4SqoWq9Cr4zh
-	 lrM0jQS0jAynw==
+	b=DU3AqJ0zCCiOWwKjRhzNTq4/7HwCBpb9jEPw1PWupbABOHnMVA1gWQgVpgd9kHSqN
+	 v54YewBfLsyLZP4fA0GVryUdVTTG3Mytud2s8G7t2Pf9FBJDacdlgUCEcIhN8RvqJo
+	 ZvXHitMOwFh28a/EsK1vNvT16Mss035RjZuHjZN+AJv0rd6wYtbwVkU9wfvAeNThVg
+	 mRuxTEQJH3sbODV+l2h6xljlgD16lkvD/RjrPXDqQYp0SsyEoJemHQuDJ6DyfcLhXy
+	 XyDgx0r2fTFZflf/zIc51MCARWXOJOjbu1toIj3odbWDB95bbnMs18uZJrHmS3qd07
+	 wvWOh2NW9HVZw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: airlied@gmail.com
 Cc: daniel@ffwll.ch,
@@ -57,17 +57,18 @@ Cc: daniel@ffwll.ch,
 	linux-mediatek@lists.infradead.org,
 	wenst@chromium.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v3 10/11] drm/panfrost: Add new compatible for Mali on the MT8183 SoC
-Date: Thu, 23 Feb 2023 14:34:39 +0100
-Message-Id: <20230223133440.80941-11-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 11/11] drm/panfrost: Add support for Mali on the MT8186 SoC
+Date: Thu, 23 Feb 2023 14:34:40 +0100
+Message-Id: <20230223133440.80941-12-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230223133440.80941-1-angelogioacchino.delregno@collabora.com>
 References: <20230223133440.80941-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230223_053504_050015_C4B3B498 
-X-CRM114-Status: GOOD (  12.31  )
+X-CRM114-CacheID: sfid-20230223_053504_750425_C9B03C49 
+X-CRM114-Status: UNSURE (   9.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,67 +83,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The "mediatek,mt8183-mali" compatible uses platform data that calls for
-getting (and managing) two regulators ("mali" and "sram") but devfreq
-does not support this usecase, resulting in DVFS not working.
-
-Since a lot of MediaTek SoCs need to set the voltages for the GPU SRAM
-regulator in a specific relation to the GPU VCORE regulator, a MediaTek
-SoC specific driver was introduced to automatically satisfy, through
-coupling, these constraints: this means that there is at all no need to
-manage both regulators in panfrost but to otherwise just manage the main
-"mali" (-> gpu vcore) regulator instead.
-
-Keeping in mind that we cannot break the ABI, the most sensible route
-(avoiding hacks and uselessly overcomplicated code) to get a MT8183
-node with one power supply was to add a new "mediatek,mt8183b-mali"
-compatible, which effectively deprecates the former.
+MediaTek MT8186 has a Mali-G52 MC2 2EE (Bifrost): add a new compatible
+and platform data using the same supplies list as "mt8183_b" (only one
+regulator), and a new pm_domains list with only two power domains.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Steven Price <steven.price@arm.com>
 ---
- drivers/gpu/drm/panfrost/panfrost_drv.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ drivers/gpu/drm/panfrost/panfrost_drv.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
 diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
-index 5d25e77e1037..14cdeaeeb5c4 100644
+index 14cdeaeeb5c4..e4053bf84c62 100644
 --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
 +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-@@ -654,6 +654,14 @@ static const struct panfrost_compatible amlogic_data = {
- 	.vendor_quirk = panfrost_gpu_amlogic_quirk,
- };
- 
-+/*
-+ * The old data with two power supplies for MT8183 is here only to
-+ * keep retro-compatibility with older devicetrees, as DVFS will
-+ * not work with this one.
-+ *
-+ * On new devicetrees please use the _b variant with a single and
-+ * coupled regulators instead.
-+ */
- static const char * const mediatek_mt8183_supplies[] = { "mali", "sram", NULL };
- static const char * const mediatek_mt8183_pm_domains[] = { "core0", "core1", "core2" };
- static const struct panfrost_compatible mediatek_mt8183_data = {
-@@ -663,6 +671,14 @@ static const struct panfrost_compatible mediatek_mt8183_data = {
+@@ -679,6 +679,14 @@ static const struct panfrost_compatible mediatek_mt8183_b_data = {
  	.pm_domain_names = mediatek_mt8183_pm_domains,
  };
  
-+static const char * const mediatek_mt8183_b_supplies[] = { "mali", NULL };
-+static const struct panfrost_compatible mediatek_mt8183_b_data = {
++static const char * const mediatek_mt8186_pm_domains[] = { "core0", "core1" };
++static const struct panfrost_compatible mediatek_mt8186_data = {
 +	.num_supplies = ARRAY_SIZE(mediatek_mt8183_b_supplies) - 1,
 +	.supply_names = mediatek_mt8183_b_supplies,
-+	.num_pm_domains = ARRAY_SIZE(mediatek_mt8183_pm_domains),
-+	.pm_domain_names = mediatek_mt8183_pm_domains,
++	.num_pm_domains = ARRAY_SIZE(mediatek_mt8186_pm_domains),
++	.pm_domain_names = mediatek_mt8186_pm_domains,
 +};
 +
  static const char * const mediatek_mt8192_supplies[] = { "mali", NULL };
  static const char * const mediatek_mt8192_pm_domains[] = { "core0", "core1", "core2",
  							   "core3", "core4" };
-@@ -691,6 +707,7 @@ static const struct of_device_id dt_match[] = {
- 	{ .compatible = "arm,mali-bifrost", .data = &default_data, },
+@@ -708,6 +716,7 @@ static const struct of_device_id dt_match[] = {
  	{ .compatible = "arm,mali-valhall-jm", .data = &default_data, },
  	{ .compatible = "mediatek,mt8183-mali", .data = &mediatek_mt8183_data },
-+	{ .compatible = "mediatek,mt8183b-mali", .data = &mediatek_mt8183_b_data },
+ 	{ .compatible = "mediatek,mt8183b-mali", .data = &mediatek_mt8183_b_data },
++	{ .compatible = "mediatek,mt8186-mali", .data = &mediatek_mt8186_data },
  	{ .compatible = "mediatek,mt8192-mali", .data = &mediatek_mt8192_data },
  	{}
  };
