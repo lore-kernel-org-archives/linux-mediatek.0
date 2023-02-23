@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C486C636D6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 13:54:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD1F4C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 13:55:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jqZy+MDKdvz7m5aRBshAv4C2pDneinerQCx22KbQCsw=; b=tSYyyZyx3M7NomCwCRegBvu/3J
-	JiknO7QPPfANcjx/cr46Cg2AnTU5A/+5HnnBruAipHFrnHqZYChXGVaNH3gtr46XEyxB7QiqO4x81
-	kIIAExh+sDjomhfifwJA3tParRhRnAd9hHAOTK56DC4SCH/eguYtVbmw/QE6BsDn5+ddSlMsX1mXW
-	hre4Ec+pEmJSc+OoPmcVLBz0MxjlAwocUoORULEH6CbxsHaHTkVpi1zg2JRjp0MIfS3AgCsofzNKh
-	I91J0e5sgetHUKfBu3mZBDv8mZZweiTBMucvGF8piG/XC9TRnZ3wzws2QMU+MLDsRc+Wj9qTuOszC
-	oBEA9lTw==;
+	bh=1Acrc8CuJb9673RJheAp2PuGkCR+tTGJM3uZl4Pw8JA=; b=hahLcVD+I9/o2cLFmtZP0yLMI/
+	EDt5mQz3/NarXwO9gPJkDRMu23Mibdvd4x0oLhakAn8ohjbElIY3082skZDHTm3KcPQqn/LPXPXyr
+	kwVE+oQYUMxgLp3MwZFsifvVCTlxWE5oyO8QwTnloGJE6u8nDxaN2GmEXKHtv2T8sdZA/3As6VCCv
+	wdKxpJxKMo1Egw4a/vHM7JWfKfPkcwafWU6xxVS0pHbvqTDEwzdR6jJ6c+IS1bQOIkbQCYdir9uHa
+	JBjAA2lyYjqVoYabSeMK/2Olg521lcDdJ1Z7ZDziDLvaM7szS2mz+uiYLqGjPC9Uqb5VIoEuUBc4w
+	y08Edivw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVC3X-00GeFg-SZ; Thu, 23 Feb 2023 13:54:43 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pVC4P-00GemQ-By; Thu, 23 Feb 2023 13:55:37 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVBtE-00GYPD-UO; Thu, 23 Feb 2023 13:44:06 +0000
+	id 1pVBtG-00GYQf-UL; Thu, 23 Feb 2023 13:44:08 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 39FDF660220A;
-	Thu, 23 Feb 2023 13:44:03 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2DDFE6602206;
+	Thu, 23 Feb 2023 13:44:05 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1677159843;
-	bh=5uTIKzxccTuXc8ARaKxHVjhHv2AKqCAZTuNnIoDmS70=;
+	s=mail; t=1677159845;
+	bh=862noHI/rREDzYDVTtjiXXlf1hVscfBOCM0dedbpEnY=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Sw4L5ZnqFa2sLyuyW38JEOlhxqihMMNhrcOZtS0RpYhksw57hMyge1E4LSf1I8J1P
-	 Ta9EdICsUkzksw7zGmVS+mf1y27y05qHPRegzsuouZLyfZ9sYpqMmZ8jYelECmMcm+
-	 E3pW6wlUovBL9sGjTVjvedOMt2U4qSDQkuQ4zNSQ0Da/Cak36Ds/L83szZviB/pjzY
-	 JbkYgXFpOnzsd2jVPOpkUzPwEK+lP7ZkVN9Tl7V2G1AkAt2ODXmGb7HcaHTZ+xl6GK
-	 kHo8Al6Vw1vxJA6rZUg7lZ/m2dBxaxhkgox/eQ7YD35KH3XgE0P/HjOUL19kdlviVK
-	 WWde/QVkRzJvA==
+	b=MGWa/tZWigRcJxgxhM8A1iWWkGMGzeUFou1U0A3VjGFkhm0eJ0rD6ThrC22N/K3pm
+	 U1DDgnyOzUqJVhcZhI4RR971z9KFzH/cBaPKtISZHOH9+u6Jm9qoCyzEx6O+Ub62xU
+	 pdLvmXZ0VihuTVW1bc6iZxSlh1NqCv/pgjSbEd0xeD33jT+r7ArI9k/AL/1UWEmiwk
+	 AGdJFK6hu7hK87LRdIKMlnuJ+Sqs/0OMb8e+H6Sh3gsganlfZuGiJdHsVZAC+dCtLF
+	 OTteXY0QB+l7iR+EiSUOkvEgtFhlc+OJm/Ch8jErxR0TfNBPAzNaXwX7iT88BW/EuK
+	 iY59O+s5v/wbQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: robh+dt@kernel.org,
@@ -50,19 +50,18 @@ Cc: robh+dt@kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	wenst@chromium.org,
-	Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
-Subject: [PATCH v2 12/16] arm64: dts: mediatek: mt8192-asurada: Enable GPU
-Date: Thu, 23 Feb 2023 14:43:41 +0100
-Message-Id: <20230223134345.82625-13-angelogioacchino.delregno@collabora.com>
+	wenst@chromium.org
+Subject: [PATCH v2 15/16] arm64: dts: mediatek: mt8195-cherry: Enable Mali-G57 GPU
+Date: Thu, 23 Feb 2023 14:43:44 +0100
+Message-Id: <20230223134345.82625-16-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230223134345.82625-1-angelogioacchino.delregno@collabora.com>
 References: <20230223134345.82625-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230223_054405_159902_7B7562E0 
-X-CRM114-Status: UNSURE (   7.94  )
+X-CRM114-CacheID: sfid-20230223_054407_187336_83C66F7B 
+X-CRM114-Status: UNSURE (   8.37  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,30 +77,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
+Enable the Mali-G57 found on this platform with the open-source
+Panfrost driver.
 
-Enable the GPU with its power supplies described.
-
-Signed-off-by: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
-[wenst@: patch split out from MT8192 GPU node patch]
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-[Angelo: Minor commit title fix]
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 5 +++++
+ arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 5 +++++
  1 file changed, 5 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-index c8b6e1a9605b..067685191ba6 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-@@ -275,6 +275,11 @@ &dsi_out {
- 	remote-endpoint = <&anx7625_in>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+index 56749cfe7c33..24669093fbed 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+@@ -238,6 +238,11 @@ dptx_out: endpoint {
+ 	};
  };
  
 +&gpu {
-+	mali-supply = <&mt6315_7_vbuck1>;
 +	status = "okay";
++	mali-supply = <&mt6315_7_vbuck1>;
 +};
 +
  &i2c0 {
