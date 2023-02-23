@@ -4,98 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88AE4C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 09:56:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D95BC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 10:15:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zqMvyew1VuvLR+5MrHi+CVRR54Ec9Hg3AWm5Uzuvhkk=; b=YeoqNGDldL8WnIk4Kgy7E9zBJ8
-	RIPWXU1vrtZv3qTEbO5MHJvq4oR3lkHj27U+AUQMcV4oDHhrytlRs/ZvS6tbP9Kg9rHW8HvoGvfu4
-	hlbFn+LBlEQv65gTuMDDk7Q1iShkskWpd/r9JSUMXCMku8e/601ueuRJvHuYwCO+Wb6Cy67UperUH
-	TEwCYhHYNoRBgduzmJjcMrPwxdhQ04JxVVdtv+BtjxZT+Cg8lXizFCYGf1KE9/3EkhRcVOPxWFvgw
-	9sQ7YS11hbvjEHaCtJVW8Couhlte7stSZP4xxM5wyHjb8ggs6IAUPI91fTKgyy21afvYqnvLRr/Tx
-	fGCVIxDg==;
+	bh=c4clivKo9ew/gC6glkZCR3DQPjKGD10Y+BS6SNEcx2U=; b=SXxt6Z1rdBi2iZApRVYptafHYd
+	z7JBjqpmCDM220zqx5l4clY/2iVinKMMZAXpaqJnTEm7lspTWqjWUObUcGuJx8tjQO9OoONTMQoJe
+	2q29M2REw6WlXAWADf52B0rs5676AHhM+4yS/IUmAdmaX3eRDQkgr8AlOEWWMTXZdbbSFgKZUJW5H
+	NHjEAfYAHyUGQLRiqQ/bWw9i+CQrzB7pKvXMNVHcKKst3I/Ewnq38BWpJSmNvN9EduC5/PwnCIKp3
+	oABvFBgnmYTWyfXrOrj56nCVDYLnHGtPSW3WxpYzeC9ZFUbgdlrhIpXSM60qTv8Xt6WX9l5HhkLpD
+	VB3Ef5Ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pV8Kx-00FoZN-K4; Thu, 23 Feb 2023 09:56:27 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1pV8d4-00FsaQ-QK; Thu, 23 Feb 2023 10:15:10 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pV8Kd-00FoMk-6g
-	for linux-mediatek@lists.infradead.org; Thu, 23 Feb 2023 09:56:08 +0000
-Received: by mail-wr1-x434.google.com with SMTP id v3so10108631wrp.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 23 Feb 2023 01:56:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=zqMvyew1VuvLR+5MrHi+CVRR54Ec9Hg3AWm5Uzuvhkk=;
-        b=y7DPYrkGk9xCwkGpaQAeXdWfCjSmojs2x7UvFOZ+JGW+Um8i0jZjaVS/JoDxV3yUZ0
-         r2mzgdIy6vEOoh0l3o6m0w1lKsOZgXuQqbdwACzgM/m1DpSE+5//S4EF3vj81Dbd1bLm
-         O4drKYRElSQ+HYorlA1n5JY9qwn/cNvnG0dTpi7UPGpPhIeDGCGUamJ8HfxuemB1tIsZ
-         5NptNCmJtIF7INhKAxupGcRrEHkhAFbInzl5ei9Zqhy18pNNqLHEl5mIWMHcxWTaF7TL
-         Lpib0IIgJrbiFYLDfpwk8fax+5qTX5rFXQOM1RvNC/rEYzOahY/lMrmWjmfm5Iwh/+xS
-         BCWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=zqMvyew1VuvLR+5MrHi+CVRR54Ec9Hg3AWm5Uzuvhkk=;
-        b=aa/8MGHIx7lkIfmEeIQpTmwHQ1UtI1rTjrmfwvouM17+BOTU1fMbgymgJBwLedvKg0
-         lNX+/cdkt1IOigV2Snj7l9SjtDLcFyzjT10ouEBQt5vA92N7kvtJv2+8GibHJEX11wIn
-         1eh/5D15p8Yq4Vh+7uEiWNX3B3p7ApWvAdcWaoV/1cKRM7AuDhXQLnGIFSPKnVNIbghj
-         cYGaE+PLEUVSWKkFpQlLqLEbOK7RTFVRd6k2iY6N8lHft+uoDWzVz+bugbO1KBaoHWlQ
-         kZ8dG0ImiHwDKYIHF20re8dwVlJhJzxilUqWgt1jEA7LVLme8a7QrAqRgEikRaL1lejX
-         0/GA==
-X-Gm-Message-State: AO0yUKWecboo/XZsOVQy/vSDwTM6QPHw+CGTmE/tCS78Ge/Tqe2b/ZuV
-	WH7IOCd8sdYt9+Oun6fTccEiuw==
-X-Google-Smtp-Source: AK7set9wKGyiCs4mhXfwoAzjxI0hINeis8DMPCt/2knY34phjllU4IYlzLKUeg8KQ1/3trkYX25LXw==
-X-Received: by 2002:a5d:4806:0:b0:2c5:5a68:958 with SMTP id l6-20020a5d4806000000b002c55a680958mr10075206wrq.33.1677146164810;
-        Thu, 23 Feb 2023 01:56:04 -0800 (PST)
-Received: from ?IPV6:2a05:6e02:1041:c10:c265:a8c7:c71d:6e47? ([2a05:6e02:1041:c10:c265:a8c7:c71d:6e47])
-        by smtp.googlemail.com with ESMTPSA id u4-20020adfed44000000b002c706c754fesm6399145wro.32.2023.02.23.01.56.03
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 23 Feb 2023 01:56:04 -0800 (PST)
-Message-ID: <2b843912-cc9b-f1ac-1f81-28e3ecf8daba@linaro.org>
-Date: Thu, 23 Feb 2023 10:56:02 +0100
+	id 1pV8d1-00FsYc-Pv; Thu, 23 Feb 2023 10:15:09 +0000
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 31N8aZtB008148;
+	Thu, 23 Feb 2023 10:15:00 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=c4clivKo9ew/gC6glkZCR3DQPjKGD10Y+BS6SNEcx2U=;
+ b=HQelw0SCfCU+hhSgZeziCRuJD3nMy6SoQKGzELPo/X5tXsnhHcXjzmvWjoCO1k8KmAQE
+ v4RB9gW6rITARmBnle2P/MGWrDDJwY4Ge6bba/YMk6kuA7rOK6taAHVjBmoZua/ajSdp
+ WR4BEs7uI9H7T3eSu3myhN0zjtaIMG3bcGzq0cvzeLHRcUyAXloxFqQ2BlbG+KwyJnM6
+ qyuWd396wuUovkb/fEbXE+uHvNEptkDBdT2unu2logt1J2w4gBVoWH/SEKBVyt/jooUP
+ tYthtvGgThjCdk8mi7gQxKMDEmMvhp8fs8ukQ0xloC3OCdCinBpLTiHJYV0sU0/zH2vJ 9A== 
+Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3nwybm0yfa-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 23 Feb 2023 10:15:00 +0000
+Received: from nasanex01a.na.qualcomm.com ([10.52.223.231])
+	by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 31NAEmfF027674
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 23 Feb 2023 10:14:49 GMT
+Received: from [10.239.155.136] (10.80.80.8) by nasanex01a.na.qualcomm.com
+ (10.52.223.231) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.41; Thu, 23 Feb
+ 2023 02:14:44 -0800
+Message-ID: <1b9c2bc9-a349-062a-597c-336804c05394@quicinc.com>
+Date: Thu, 23 Feb 2023 18:14:41 +0800
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH v2 06/16] thermal: Don't use 'device' internal thermal
- zone structure field
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Subject: Re: [PATCH v2 4/7] scsi: ufs: core: Add hwq print for debug
 Content-Language: en-US
-To: "Rafael J. Wysocki" <rafael@kernel.org>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- Balsam CHIHI <bchihi@baylibre.com>, Amit Kucheria <amitk@kernel.org>,
- Zhang Rui <rui.zhang@intel.com>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Ido Schimmel <idosch@nvidia.com>, Mark Brown <broonie@kernel.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:TI BANDGAP AND THERMAL DRIVER" <linux-omap@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-References: <20230221180710.2781027-1-daniel.lezcano@linaro.org>
- <20230221180710.2781027-7-daniel.lezcano@linaro.org>
- <CAJZ5v0gTmi7ZeDDdHWGWju4m3bv2366oVqSP1dGOT+3jLV-jaw@mail.gmail.com>
- <0889767f-d187-0cb4-895e-c149517b6636@linaro.org>
- <CAJZ5v0h=UCOyJ88UgEdqch4NZK+DaT8jWnDaguQGNx-KOMhPPA@mail.gmail.com>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <CAJZ5v0h=UCOyJ88UgEdqch4NZK+DaT8jWnDaguQGNx-KOMhPPA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Po-Wen Kao <powen.kao@mediatek.com>, <linux-scsi@vger.kernel.org>,
+        <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>,
+        Alim Akhtar <alim.akhtar@samsung.com>,
+        Avri Altman <avri.altman@wdc.com>,
+        Bart Van Assche <bvanassche@acm.org>,
+        "James E.J. Bottomley" <jejb@linux.ibm.com>,
+        "Martin K. Petersen"
+	<martin.petersen@oracle.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>
+CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
+        <stanley.chu@mediatek.com>, <alice.chao@mediatek.com>,
+        <naomi.chu@mediatek.com>, <chun-hung.wu@mediatek.com>,
+        <cc.chou@mediatek.com>, <eddie.huang@mediatek.com>,
+        <mason.zhang@mediatek.com>, <chaotian.jing@mediatek.com>,
+        <jiajie.hao@mediatek.com>
+References: <20230222030427.957-1-powen.kao@mediatek.com>
+ <20230222030427.957-5-powen.kao@mediatek.com>
+From: Ziqi Chen <quic_ziqichen@quicinc.com>
+In-Reply-To: <20230222030427.957-5-powen.kao@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: fa3l4AGteW8PYg206KGl-rGssUA6d6Ga
+X-Proofpoint-GUID: fa3l4AGteW8PYg206KGl-rGssUA6d6Ga
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.219,Aquarius:18.0.930,Hydra:6.0.562,FMLib:17.11.170.22
+ definitions=2023-02-23_06,2023-02-23_01,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxlogscore=999
+ suspectscore=0 phishscore=0 spamscore=0 priorityscore=1501 adultscore=0
+ impostorscore=0 bulkscore=0 lowpriorityscore=0 malwarescore=0 mlxscore=0
+ clxscore=1011 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2212070000 definitions=main-2302230087
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230223_015607_262010_42B75653 
-X-CRM114-Status: GOOD (  21.54  )
+X-CRM114-CacheID: sfid-20230223_021507_997275_2AB77064 
+X-CRM114-Status: GOOD (  16.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,74 +109,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 22/02/2023 21:06, Rafael J. Wysocki wrote:
-> On Wed, Feb 22, 2023 at 9:00 PM Daniel Lezcano
-> <daniel.lezcano@linaro.org> wrote:
->>
->> On 22/02/2023 20:43, Rafael J. Wysocki wrote:
->>> On Tue, Feb 21, 2023 at 7:07 PM Daniel Lezcano
->>> <daniel.lezcano@linaro.org> wrote:
->>>>
->>>> Some drivers are directly using the thermal zone's 'device' structure
->>>> field.
->>>>
->>>> Use the driver device pointer instead of the thermal zone device when
->>>> it is available.
->>>>
->>>> Remove the traces when they are duplicate with the traces in the core
->>>> code.
->>>>
->>>> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
->>>> Reviewed-by: Balsam CHIHI <bchihi@baylibre.com> #Mediatek LVTS
->>>> ---
->>
->> [ ... ]
->>
->>>>           thermal_zone_device_update(data->ti_thermal, THERMAL_EVENT_UNSPECIFIED);
->>>>
->>>> -       dev_dbg(&data->ti_thermal->device, "updated thermal zone %s\n",
->>>> +       dev_dbg(data->bgp->dev, "updated thermal zone %s\n",
->>>>                   data->ti_thermal->type);
->>>
->>> The code before the change is more consistent, because it refers to
->>> the same object in both instances.
->>>
->>> It looks like a type field accessor is needed, eg. thermal_zone_device_type()?
->>>
->>> Or move the debug message to thermal_zone_device_update()?
->>
->> Actually it is done on purpose because the patch 9 replaces the accesses
->> to 'type' by 'id', the thermal_zone_device_type() accessor won't be needed.
-> 
-> Cool.
-> 
-> However, this is a change in behavior (albeit small) which doesn't
-> appear to be necessary.
-> 
-> What would be wrong with having a tz->type accessor too?
+Hi Po-Wen,
 
-I can add the 'type' accessor but from my point of view it is not 
-correct because the information belongs to the thermal framework and it 
-is used to export the information in the sysfs which is along with the 
-directory name giving the id of the thermal zone.
+On 2/22/2023 11:04 AM, Po-Wen Kao wrote:
+> +void ufshcd_mcq_print_hwqs(struct ufs_hba *hba, unsigned long bitmap)
+> +{
+> +	int id, i;
+> +	char prefix[15];
+> +
+> +	if (!is_mcq_enabled(hba))
+> +		return;
+> +
+> +	for_each_set_bit(id, &bitmap, hba->nr_hw_queues) {
+> +		snprintf(prefix, sizeof(prefix), "q%d SQCFG: ", id);
+> +		ufshcd_hex_dump(prefix,
+> +			hba->mcq_base + MCQ_QCFG_SIZE * id, MCQ_QCFG_SQ_SIZE);
 
-Actually, the useful information is the id of the thermal zone, not the 
-type. This one can be duplicate, for instance:
+Is your purpose dump per hardware queue registers here?  If yes, why 
+don't use ufsmcq_readl() to save to a buffer and then use ufshcd_hex_dump()
 
-cat /sys/class/thermal/thermal_zone*/type
-acpitz
-acpitz
+to dump ? Are you sure ufshcd_hex_dump() can dump register directly?
 
-Given there are few places where 'type' is used in the drivers, I prefer 
-to directly change that to 'id' in the next patch instead of creating 
-the accessor for 'type', then send another series removing it.
+> +
+> +		snprintf(prefix, sizeof(prefix), "q%d CQCFG: ", id);
+> +		ufshcd_hex_dump(prefix,
+> +			hba->mcq_base + MCQ_QCFG_SIZE * id + MCQ_QCFG_SQ_SIZE, MCQ_QCFG_CQ_SIZE);
+Same to above comment.
+> +
+> +		for (i = 0; i < OPR_MAX ; i++) {
+> +			snprintf(prefix, sizeof(prefix), "q%d OPR%d: ", id, i);
+> +			ufshcd_hex_dump(prefix, mcq_opr_base(hba, i, id), mcq_opr_size[i]);
+Same.
+> +		}
+> +	}
+> +}
+> +
+>
+>   
+> @@ -574,7 +569,16 @@ void ufshcd_print_trs(struct ufs_hba *hba, unsigned long bitmap, bool pr_prdt)
+>   		if (pr_prdt)
+>   			ufshcd_hex_dump("UPIU PRDT: ", lrbp->ucd_prdt_ptr,
+>   				ufshcd_sg_entry_size(hba) * prdt_length);
+> +
+> +		if (is_mcq_enabled(hba)) {
+> +			cmd = lrbp->cmd;
+> +			if (!cmd)
+> +				return;
+> +			hwq = ufshcd_mcq_req_to_hwq(hba, scsi_cmd_to_rq(cmd));
+> +			ufshcd_mcq_print_hwqs(hba, 1 << hwq->id);
+
+Calling registers dump function in ufshcd_print_trs() is not reasonable, 
+eg.. for each aborted request, it would print out all hwq registers, 
+it's not make sense.
+
+I think we should move it out of ufshcd_print_trs().
+
+> +		}
+>   	}
+> +
+>   }
 
 
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+Best Regards,
 
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+Ziqi
 
 
