@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C37BDC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 13:50:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD9D8C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Feb 2023 13:50:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YPNDSENDG/1IH0mca5bU4Urqg4usT5ZFZdeiD0xt3Js=; b=E2iZNUsmlsCqQS4N/0aqoVJNhs
-	oKjrmc6mTEWCrJKYUyRVQIUZ2qjcPom4yQHe48ScQqth+DEIaI/SO7QA2MhBmZoUJ24fgsfD0X70Z
-	9iFxV4PGHFZ4MjsmzB0oXXBBcc1zHxpkV0JK33mv7BQWmhghAhxVjYMNl7QMRERCEf89OJF9j22xH
-	KBzAGzD1hLNMcofJEuu3ZJQ0hsK34aLlI1asGVZFrliJGG0fNApHh5G7gkovePYv05IIP1OPIIJ3K
-	63k7NtTZG1lJFKoouFyk25t/zpyxOPRzbdM/9zkDYF3L3pFHXOyuzQBdbIIS1DVmgE8Uu5cmKJTGW
-	KKCRp3JA==;
+	bh=mp4oon05Id98nwINEF3EplkNYLZDo3lMOs8whveFURw=; b=21s6cgrbhUMUI4MOett32wwxkD
+	POKQHtNsDamuIimQ7FwtIXWi6H8d4rrdbi32JypFMVVjZ+drssXf+qYVWXzBsn0pLIgPmPgP4RzMO
+	Tqv41/7bgbmpFYJltNMdjKGCA7yUwvgCYg7jAt5FhWy7El78IPwnVDb3wCG4Fu3m2Ff5tNlqXX1YA
+	vhfD80uQ2zPWKcHmU5nXjBpl+8LPuwUBxiH/NW+/7fZ6P/6rdH9WdFKRunCz0gk3x6t0a6y7tpU5f
+	CNFMQDTCFcbvX8Ic/1DtErPZeANrNlwEoXprGF85h6VO/gQkAmBlJ/yDvAxS2d/i8Sjt4H1hI2rmZ
+	hHCMkmnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVBzb-00Gbwj-8d; Thu, 23 Feb 2023 13:50:39 +0000
+	id 1pVBzf-00Gbzm-D0; Thu, 23 Feb 2023 13:50:43 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVBtA-00GYLO-W2; Thu, 23 Feb 2023 13:44:02 +0000
+	id 1pVBtD-00GYN4-4O; Thu, 23 Feb 2023 13:44:04 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4182B660220D;
-	Thu, 23 Feb 2023 13:43:59 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4ABBB660220B;
+	Thu, 23 Feb 2023 13:44:01 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1677159839;
-	bh=xAp8H2hVhd7urTj86UlUSbK9LB5eP77m4/nFArJQr+s=;
+	s=mail; t=1677159841;
+	bh=ycGpdrBlx/uJtZOtOoxWkcwFaJ2ZAw9Ng7FysdL11fE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=BXpHl2GJD8EjzIABLdfe2cxa8PVrmn5m/9ru9rR2XZoZODWb6nA3ZXAKqGJjUj7nC
-	 2QGK97fbrcZKjxH58Ga9BfTOUwoC7nyNIHeAxGb5PGZGf5ERzlXuaCNuDP5VtEhhJp
-	 gSqilcMZrkwT8UiWt16tTFcyrQla0DgtBx5Qrqn6OodDRadOZBgMDeUesPM/qbOmy/
-	 Wy3NnOdRf00hpwaaiZ49dtAzvQZYALx27n+Fpu7//NGJ/X9Vw3i1ejC+99Ak9ujsIy
-	 WXUk1euFgHXIoztqm6G5Ym7sKIUqPuwNDj89poW7JyLRZVEO6jrNdLcYqiYJLKleFf
-	 t4vluZ/JK87Fw==
+	b=oKlgofuEaQjFberftOuu7Q5HzbsWGzBvcdjx4/kF2VantqiM6m7AWmJDxmIEQ7+dh
+	 HZrVOTVh2mDBTRdpCG7NQF1dMH2GAVdgTzCj+nZgha/Rln9mDVpYpoy32kplF5EPoh
+	 Sl2prOVV2wSD15wkyoN8LcHbbDZ3rWNzSu5CI6YLFFBhUAD1pdpixr+lm35heMUgND
+	 xA8PVu3HlKOmuddBwcH/EL5qd0ueAXpJGSgVw7ehMXt3Eby+G5Y109UnNefg60IfFQ
+	 tV1uCJngaZWfLZDoZ5YERtpCKak6tynbe8p6GMTsApogr316YfZiNQ2KEWbXSGVthT
+	 +qCQoFCFhyKmQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: robh+dt@kernel.org,
@@ -50,18 +50,20 @@ Cc: robh+dt@kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	wenst@chromium.org
-Subject: [PATCH v2 06/16] arm64: dts: mediatek: mt8183: Use mediatek,mt8183b-mali as GPU compatible
-Date: Thu, 23 Feb 2023 14:43:35 +0100
-Message-Id: <20230223134345.82625-7-angelogioacchino.delregno@collabora.com>
+	wenst@chromium.org,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+Subject: [PATCH v2 09/16] arm64: dts: mediatek: mt8192-asurada: Add MFG0 domain supply
+Date: Thu, 23 Feb 2023 14:43:38 +0100
+Message-Id: <20230223134345.82625-10-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230223134345.82625-1-angelogioacchino.delregno@collabora.com>
 References: <20230223134345.82625-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230223_054401_219293_CEAF1615 
-X-CRM114-Status: GOOD (  10.03  )
+X-CRM114-CacheID: sfid-20230223_054403_349589_AE4BC46E 
+X-CRM114-Status: GOOD (  10.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,27 +78,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the new GPU related compatible to finally enable GPU DVFS on
-the MT8183 SoC.
+From: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
+The mfg0 power domain encompasses the whole GPU and its surrounding
+glue logic. This power domain has a separate power rail.
+
+Add its power supply for Asurada.
+
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+[wenst@chromium.org: fix subject prefix and add commit message]
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+[Angelo: Reordered commits to address DVFS stability issues]
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 4 ++++
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi         | 2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index e01b96adef02..5169779d01df 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1752,7 +1752,7 @@ mfgcfg: syscon@13000000 {
- 		};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+index 9f12257ab4e7..ec013d5ef157 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+@@ -380,6 +380,10 @@ &i2c7 {
+ 	pinctrl-0 = <&i2c7_pins>;
+ };
  
- 		gpu: gpu@13040000 {
--			compatible = "mediatek,mt8183-mali", "arm,mali-bifrost";
-+			compatible = "mediatek,mt8183b-mali", "arm,mali-bifrost";
- 			reg = <0 0x13040000 0 0x4000>;
- 			interrupts =
- 				<GIC_SPI 280 IRQ_TYPE_LEVEL_LOW>,
++&mfg0 {
++	domain-supply = <&mt6315_7_vbuck1>;
++};
++
+ &mipi_tx0 {
+ 	status = "okay";
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index 018d48f7d3c6..d536fe5f33a0 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -497,7 +497,7 @@ power-domain@MT8192_POWER_DOMAIN_CONN {
+ 					#power-domain-cells = <0>;
+ 				};
+ 
+-				power-domain@MT8192_POWER_DOMAIN_MFG0 {
++				mfg0: power-domain@MT8192_POWER_DOMAIN_MFG0 {
+ 					reg = <MT8192_POWER_DOMAIN_MFG0>;
+ 					clocks = <&topckgen CLK_TOP_MFG_PLL_SEL>,
+ 						 <&topckgen CLK_TOP_MFG_REF_SEL>;
 -- 
 2.39.2
 
