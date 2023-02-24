@@ -4,76 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3705CC61DA3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Feb 2023 12:38:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12E78C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Feb 2023 13:02:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
-	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yi14cTdYANNPEap3pqdxxJ1hsHfM+r9CN0mSG8FKdBA=; b=mdD/oZiNq8VKD/FFkPqKfoousJ
-	W23ucq14talgrA/F2LoSN32Af7yEU5b/H0Fe/OUg8X1LKBnsYFf1Zt/ck8MeEQveysyVMccvD++jY
-	uoA4P3a4Mv5K3QKuSWbDBIVSiWNqPI2iUqnCszyYmjh94YR8qnksfDIenI60yLaqgzfnyIhJnLMv1
-	lgZfP3xc5xikC2GDdHZBDZ23tI/LIr9dvFLpIXXkgYXvSWLNDEn9R9VUFehqwCJlNGbBc9IrIcitU
-	UazqRY+SC29zTSYKvjiiN2+cwKDFFgD2kff8fhrhlUPMvZNSJteAj7qg/M7inSuDctjQKgfOyW+FF
-	fBFyPfCg==;
+	bh=Z/blZWOcOiamNa0Mp5UEjaNBFl7uBOWHXQ2xNb+5O/E=; b=Nfl+I9fmmV/P34CB7wZA1VxMn/
+	Y2NTvhGK4sqX1rUwAfhewoPuEC7JvKF3na6XUjNDM8AH1vmaFCt851hUPSCXIDEZr/CSG+F8O/5SO
+	WqtBlRyzbCyQm/sR8qY6GXFJkq4o+p1nSGg4g8ZxU99B3VwBTQLDLy8y9NcBlm77PjHpolTaWMPT8
+	R2ARv2BkXmr3BejS1mDWXnj4jm3bnbovDPhD+ISQZz5IigGFoEoR5VUpePwvkofCa0xYhnfoWei2r
+	gHlqEQsJLKGtJ11n+nkWSWBGAAaVnWVvjMWeHm4YQEvOYudoay0XEgBuduaNSIhYHrJFHztM5778L
+	iLRAJUhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVXLT-002Qhi-54; Fri, 24 Feb 2023 12:38:39 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1pVXik-002VNr-5C; Fri, 24 Feb 2023 13:02:42 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVXLE-002PWz-Jl; Fri, 24 Feb 2023 12:38:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=yi14cTdYANNPEap3pqdxxJ1hsHfM+r9CN0mSG8FKdBA=; b=14UfcOsBa6nbww2NhPSDz98UyC
-	+sFNmp9pAjgVPiU7itFTJ8ULwVo44eVKET6hhwcpDD9Ac85eLDe1GACqUf9OGWjD6FTYEM/5jE8Al
-	zAkAa2nqiOzIrCe41tOYLlf4Yyz1TL2M+jCPM7m0Hb1fEec7gjX7nQdW+KrSyeEt561a8VH1cW1Qj
-	PlP01S1KwGMV50TSql80FwfcOunRRZp9Cnye1PWNbaXd7pOO9Blm1mW+z8qGFO9ielq5nBHDPKEVf
-	JiRKF+BWhR4Str2km1OS56pv4aAzeNsieIYJ20mfcknAkdYNSfmb7Mek3M3KBR7jW7iSfjfZBBtZd
-	Uob2NqrA==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:49018 helo=rmk-PC.armlinux.org.uk)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1pVXJ6-0000dF-68; Fri, 24 Feb 2023 12:36:12 +0000
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1pVXJ5-00CT9m-CT; Fri, 24 Feb 2023 12:36:11 +0000
-In-Reply-To: <Y/ivHGroIVTe4YP/@shell.armlinux.org.uk>
-References: <Y/ivHGroIVTe4YP/@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Daniel Golle <daniel@makrotopia.org>,
-	 Daniel Golle <daniel@makrotopia.org>
-Cc: Felix Fietkau <nbd@nbd.name>,
-	John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH RFC net-next 1/4] net: mtk_eth_soc: tidy
- mtk_gmac0_rgmii_adjust()
+	id 1pVXiY-002VJV-BL; Fri, 24 Feb 2023 13:02:31 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 80A406602FB6;
+	Fri, 24 Feb 2023 13:02:26 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1677243746;
+	bh=v09nEiPPrKyyZ5dnBNTGSJ/5jA/WVigVy6zfFwa7DEU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=gUHDoki01EnQxD1f5QnXwVHKZs8QUfYzYPjD3m/a6F8vOYJ98XrwY1axIFFBz0966
+	 vy1IgyZK+YkQctwONolbD6b8BEMpXFD2Q3FR7K+VfILJUJ/CTRsJ9iJNig0vcwuFtg
+	 rM+jUY3OGYKoC3//BAncdrtS8ZR09KBLoT3bOxPvjsMMWz5s1JkqcVaMMmjUTPlBA3
+	 rCxoRNhekOPa+us26y3IFOTdgjLGtruOgTRpxHyO6qfVnTjxy0wdbbRh/K/iw5ikZv
+	 9Nwyt9aNWZgA5Do/GYd+jrulhFSn6e/0VcRvVtEvxRrqHoE0H4/vIttwCib3X7AFte
+	 s+Uiuc/12/rJg==
+Message-ID: <fa6c2d63-0341-b5d6-059e-d44b1f2e9d02@collabora.com>
+Date: Fri, 24 Feb 2023 14:02:23 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1pVXJ5-00CT9m-CT@rmk-PC.armlinux.org.uk>
-Date: Fri, 24 Feb 2023 12:36:11 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v2 02/16] arm64: dts: mediatek: mt8183-kukui: Override
+ vgpu/vsram_gpu constraints
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230223134345.82625-1-angelogioacchino.delregno@collabora.com>
+ <20230223134345.82625-3-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5FUzeB1SPDt+Ys8ALA_y5ZAPQGnz43NnLCPorvurF3eYg@mail.gmail.com>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAGXv+5FUzeB1SPDt+Ys8ALA_y5ZAPQGnz43NnLCPorvurF3eYg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230224_043824_672783_81613FEA 
-X-CRM114-Status: GOOD (  10.49  )
+X-CRM114-CacheID: sfid-20230224_050230_546257_6F8DAB20 
+X-CRM114-Status: GOOD (  16.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,77 +78,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Get rid of the multiple tenary operators in mtk_gmac0_rgmii_adjust()
-replacing them with a single if(), thus making the code easier to read.
+Il 24/02/23 10:50, Chen-Yu Tsai ha scritto:
+> On Thu, Feb 23, 2023 at 9:43 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Override the PMIC-default voltage constraints for VGPU and VSRAM_GPU
+>> with the platform specific vmin/vmax for the highest possible SoC
+>> binning.
+> 
+> The maximum voltage numbers don't match the existing OPP table though.
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 34 ++++++++++++---------
- 1 file changed, 19 insertions(+), 15 deletions(-)
+The OPP table that we've got in mt8183.dtsi does not declare frequencies for the
+highest binning for this SoC, I guess because there was no way to check fuses to
+restrict the table to bin XYZ.
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 14be6ea51b88..c63f17929ccf 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -397,38 +397,42 @@ static int mt7621_gmac0_rgmii_adjust(struct mtk_eth *eth,
- static void mtk_gmac0_rgmii_adjust(struct mtk_eth *eth,
- 				   phy_interface_t interface, int speed)
- {
--	u32 val;
-+	unsigned long rate;
-+	u32 tck, rck, intf;
- 	int ret;
- 
- 	if (interface == PHY_INTERFACE_MODE_TRGMII) {
- 		mtk_w32(eth, TRGMII_MODE, INTF_MODE);
--		val = 500000000;
--		ret = clk_set_rate(eth->clks[MTK_CLK_TRGPLL], val);
-+		ret = clk_set_rate(eth->clks[MTK_CLK_TRGPLL], 500000000);
- 		if (ret)
- 			dev_err(eth->dev, "Failed to set trgmii pll: %d\n", ret);
- 		return;
- 	}
- 
--	val = (speed == SPEED_1000) ?
--		INTF_MODE_RGMII_1000 : INTF_MODE_RGMII_10_100;
--	mtk_w32(eth, val, INTF_MODE);
-+	if (speed == SPEED_1000) {
-+		intf = INTF_MODE_RGMII_1000;
-+		rate = 250000000;
-+		rck = RCK_CTRL_RGMII_1000;
-+		tck = TCK_CTRL_RGMII_1000;
-+	} else {
-+		intf = INTF_MODE_RGMII_10_100;
-+		rate = 500000000;
-+		rck = RCK_CTRL_RGMII_10_100;
-+		tck = TCK_CTRL_RGMII_10_100;
-+	}
-+
-+	mtk_w32(eth, intf, INTF_MODE);
- 
- 	regmap_update_bits(eth->ethsys, ETHSYS_CLKCFG0,
- 			   ETHSYS_TRGMII_CLK_SEL362_5,
- 			   ETHSYS_TRGMII_CLK_SEL362_5);
- 
--	val = (speed == SPEED_1000) ? 250000000 : 500000000;
--	ret = clk_set_rate(eth->clks[MTK_CLK_TRGPLL], val);
-+	ret = clk_set_rate(eth->clks[MTK_CLK_TRGPLL], rate);
- 	if (ret)
- 		dev_err(eth->dev, "Failed to set trgmii pll: %d\n", ret);
- 
--	val = (speed == SPEED_1000) ?
--		RCK_CTRL_RGMII_1000 : RCK_CTRL_RGMII_10_100;
--	mtk_w32(eth, val, TRGMII_RCK_CTRL);
--
--	val = (speed == SPEED_1000) ?
--		TCK_CTRL_RGMII_1000 : TCK_CTRL_RGMII_10_100;
--	mtk_w32(eth, val, TRGMII_TCK_CTRL);
-+	mtk_w32(eth, rck, TRGMII_RCK_CTRL);
-+	mtk_w32(eth, tck, TRGMII_TCK_CTRL);
- }
- 
- static struct phylink_pcs *mtk_mac_select_pcs(struct phylink_config *config,
--- 
-2.30.2
+These maximum voltages are - true - higher compared to the highest voltage in
+the GPU OPP table, but they're still in spec (check datasheets!).
+
+Should I reword the commit description?
+
+Regards,
+Angelo
+
+> 
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 6 ++++++
+>>   1 file changed, 6 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+>> index de9778c85b94..63952c1251df 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+>> @@ -401,6 +401,9 @@ &mt6358codec {
+>>   };
+>>
+>>   &mt6358_vgpu_reg {
+>> +       regulator-min-microvolt = <625000>;
+>> +       regulator-max-microvolt = <900000>;
+>> +
+>>          regulator-coupled-with = <&mt6358_vsram_gpu_reg>;
+>>          regulator-coupled-max-spread = <100000>;
+>>   };
+>> @@ -416,6 +419,9 @@ &mt6358_vsim2_reg {
+>>   };
+>>
+>>   &mt6358_vsram_gpu_reg {
+>> +       regulator-min-microvolt = <850000>;
+>> +       regulator-max-microvolt = <1000000>;
+>> +
+>>          regulator-coupled-with = <&mt6358_vgpu_reg>;
+>>          regulator-coupled-max-spread = <100000>;
+>>   };
+>> --
+>> 2.39.2
+>>
 
 
