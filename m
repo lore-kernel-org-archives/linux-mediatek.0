@@ -4,77 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B8FDC64ED8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Feb 2023 07:53:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD736C64ED8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Feb 2023 08:46:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vdmyGXqsuWEA5J1LKHJz/9OjkInX21YMvFtAnrWDjfY=; b=VeL9/fLuWJFMMOw5wA535VUOf6
-	bZRFPMj4BJsK3zMXu729UosgrXGY55fOz0492dJnTfkztzluJgT6BhxNmPjb2mRuBlKg5BjQtym0L
-	5uRM/ucafUB5zMPr1c9W0th1hXAeFKXLcPLwFOx0+dqbg9lGicfaBCGzWLm15DZdDmkh6cMxjlw2B
-	i4FWKJo8SnrKmWxM4kR9jLbRRfg6sCIqoVJ6e8XEf4Ad9Dix5JYzZvKWT9NIkNxbTFxMC4RW902Zb
-	xsyJPvrT2JwqQ1Qm3VZz3WaHYqZ844vgztRj7aAUf7TLhCeQsCqWjQV6oeZHp8kuh9fzz+1Yfh0TG
-	vIXzH2Qw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RQvbTmRd0wBclAPG2MPi6CMdsRbzsN7+1DTSz6yCgHs=; b=HAnsz1R7m2UyGdr+mgoUPgzpgr
+	kXR40CBkibEIwCCLYfHo5KtLAQHezFi19fmweadJJmOWfbp4BoGYO4CjpFia/k+/ijFP2E4e2KRV3
+	AULWoZrujqBuhO72/LytrnqS4wSfNrnztUravblIeUOORDoymxavBd66tM+QQ5+KWs8IYeNIheqw2
+	hXDKW3x4ioSgkeYYNrk6XIGU5R2SHP2pLSMN0xxkfYA47Z7hOb0bs/OjNOJV2bYonZD0FsmtARQIJ
+	P3S6a44f0u0XiEJDObYPMlE6Kw5kszQzQhrVspTv6/8Rqu00qEnQZpHYN/exbTmJhMc8uYkpH9pJJ
+	BMtx/xiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVStn-001S9T-DB; Fri, 24 Feb 2023 07:53:47 +0000
-Received: from mail-vs1-xe2c.google.com ([2607:f8b0:4864:20::e2c])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVStk-001S8Z-A3
-	for linux-mediatek@lists.infradead.org; Fri, 24 Feb 2023 07:53:45 +0000
-Received: by mail-vs1-xe2c.google.com with SMTP id a3so7170987vsi.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 23 Feb 2023 23:53:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=vdmyGXqsuWEA5J1LKHJz/9OjkInX21YMvFtAnrWDjfY=;
-        b=adA6qbq4MVAaO3KK3woJiwoMOuBmQNISBj+EVmRR/SNgcOzcS9d+nUzZPzfYwPYLmu
-         ZbqTf2Zsdn/vl/g48cSS+4twwPXAG8NkA1nSxH04kVTlIC4X3i+Tz1cMxwGW2aci91j7
-         pHI7rr/eT1IJedTRY6hTC+yNaAoPiwBhJHmTo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=vdmyGXqsuWEA5J1LKHJz/9OjkInX21YMvFtAnrWDjfY=;
-        b=ILgmOcsZovXsibKR1uxZ3YzxL37fDR7FUwlvd6l/gXXMWJdkB8whWS6WOU8qtYrw1L
-         vHxu9EPXECyouHyRjLFAXix4woyg3SruWC/Ixsaa/hIyQmvhS5pC5TkeBjegb7QNo8d6
-         y/dEhGRexI3hHuK7gqDzX13GYhQTi27S/2URC1SAM4xpKEJBp+SddE2XA9yX/KN4aJJo
-         DX7gsCaWjFc4UYlKVHw+dVkyQ5OYhg3/yeGoM/7TZUrSjfiiT52kLG+Oe70n5JXNWqZm
-         5VqXjElqBsl2MbTfEDrjyqmg3JWdqRQLixts4SQnotzrt0iwevKTA8rIUnBCM/n4DWR1
-         SbbA==
-X-Gm-Message-State: AO0yUKWcIc4g6yDS7bCPBrs+QGKghlJWtqlM1D2WSe8JsC49z01jYyZs
-	/n2QuAFStflfMgBzdFP5kxjx17Md3v/4adHw8HOhCg==
-X-Google-Smtp-Source: AK7set9ZAp9+Vs7DCN8gO7YWRVX7TWXuw4hHRRsssi+Iv2W0TTsgH88ywdYxCBLS54DFWC5u60r7qCR10D/MbBr9UZw=
-X-Received: by 2002:a1f:4343:0:b0:400:ea69:7082 with SMTP id
- q64-20020a1f4343000000b00400ea697082mr1911875vka.0.1677225222656; Thu, 23 Feb
- 2023 23:53:42 -0800 (PST)
+	id 1pVTis-001Ze2-9m; Fri, 24 Feb 2023 08:46:34 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pVTih-001ZZ7-5R; Fri, 24 Feb 2023 08:46:25 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 741C4C14;
+	Fri, 24 Feb 2023 00:47:00 -0800 (PST)
+Received: from [192.168.1.79] (unknown [172.31.20.19])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 3C0093F703;
+	Fri, 24 Feb 2023 00:46:15 -0800 (PST)
+Message-ID: <4e0673e7-5685-ad1b-2fac-4ae544caefeb@arm.com>
+Date: Fri, 24 Feb 2023 08:46:05 +0000
 MIME-Version: 1.0
-References: <20230222092543.19187-1-angelogioacchino.delregno@collabora.com> <20230222092543.19187-54-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230222092543.19187-54-angelogioacchino.delregno@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 24 Feb 2023 15:53:31 +0800
-Message-ID: <CAGXv+5F6U9VZaRR3TW_rkDQrROVBGarqZJC6+ntR0d-TxJZ_Lw@mail.gmail.com>
-Subject: Re: [PATCH v5 53/54] clk: mediatek: mt8135: Join root_clk_alias and
- top_divs arrays
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
-	johnson.wang@mediatek.com, miles.chen@mediatek.com, 
-	chun-jie.chen@mediatek.com, daniel@makrotopia.org, fparent@baylibre.com, 
-	msp@baylibre.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com, 
-	zhaojh329@gmail.com, sam.shih@mediatek.com, edward-jw.yang@mediatek.com, 
-	yangyingliang@huawei.com, granquet@baylibre.com, pablo.sun@mediatek.com, 
-	sean.wang@mediatek.com, chen.zhong@mediatek.com, linux-kernel@vger.kernel.org, 
-	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH v3 11/11] drm/panfrost: Add support for Mali on the MT8186
+ SoC
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ airlied@gmail.com
+Cc: daniel@ffwll.ch, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ alyssa.rosenzweig@collabora.com, matthias.bgg@gmail.com, robh@kernel.org,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, wenst@chromium.org
+References: <20230223133440.80941-1-angelogioacchino.delregno@collabora.com>
+ <20230223133440.80941-12-angelogioacchino.delregno@collabora.com>
+Content-Language: en-GB
+From: Steven Price <steven.price@arm.com>
+In-Reply-To: <20230223133440.80941-12-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230223_235344_400901_159065B4 
-X-CRM114-Status: GOOD (  16.34  )
+X-CRM114-CacheID: sfid-20230224_004623_292042_935174A6 
+X-CRM114-Status: GOOD (  14.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,67 +68,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 22, 2023 at 5:27 PM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> In preparation for converting this driver to the common simple probe
-> mechanism, join the root_clk_alias and top_divs mtk_fixed_factor
-> arrays.
->
-> This commit brings no functional change.
->
+On 23/02/2023 13:34, AngeloGioacchino Del Regno wrote:
+> MediaTek MT8186 has a Mali-G52 MC2 2EE (Bifrost): add a new compatible
+> and platform data using the same supplies list as "mt8183_b" (only one
+> regulator), and a new pm_domains list with only two power domains.
+> 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+
+Reviewed-by: Steven Price <steven.price@arm.com>
+
 > ---
->  drivers/clk/mediatek/clk-mt8135.c | 7 +------
->  1 file changed, 1 insertion(+), 6 deletions(-)
->
-> diff --git a/drivers/clk/mediatek/clk-mt8135.c b/drivers/clk/mediatek/clk-mt8135.c
-> index 1c76c0003f99..8785d58cb3a5 100644
-> --- a/drivers/clk/mediatek/clk-mt8135.c
-> +++ b/drivers/clk/mediatek/clk-mt8135.c
-> @@ -2,8 +2,6 @@
->  /*
->   * Copyright (c) 2014 MediaTek Inc.
->   * Author: James Liao <jamesjj.liao@mediatek.com>
-> - * Copyright (c) 2023 Collabora, Ltd.
-> - *               AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>  drivers/gpu/drm/panfrost/panfrost_drv.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
+> index 14cdeaeeb5c4..e4053bf84c62 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
+> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
+> @@ -679,6 +679,14 @@ static const struct panfrost_compatible mediatek_mt8183_b_data = {
+>  	.pm_domain_names = mediatek_mt8183_pm_domains,
+>  };
+>  
+> +static const char * const mediatek_mt8186_pm_domains[] = { "core0", "core1" };
+> +static const struct panfrost_compatible mediatek_mt8186_data = {
+> +	.num_supplies = ARRAY_SIZE(mediatek_mt8183_b_supplies) - 1,
+> +	.supply_names = mediatek_mt8183_b_supplies,
+> +	.num_pm_domains = ARRAY_SIZE(mediatek_mt8186_pm_domains),
+> +	.pm_domain_names = mediatek_mt8186_pm_domains,
+> +};
+> +
+>  static const char * const mediatek_mt8192_supplies[] = { "mali", NULL };
+>  static const char * const mediatek_mt8192_pm_domains[] = { "core0", "core1", "core2",
+>  							   "core3", "core4" };
+> @@ -708,6 +716,7 @@ static const struct of_device_id dt_match[] = {
+>  	{ .compatible = "arm,mali-valhall-jm", .data = &default_data, },
+>  	{ .compatible = "mediatek,mt8183-mali", .data = &mediatek_mt8183_data },
+>  	{ .compatible = "mediatek,mt8183b-mali", .data = &mediatek_mt8183_b_data },
+> +	{ .compatible = "mediatek,mt8186-mali", .data = &mediatek_mt8186_data },
+>  	{ .compatible = "mediatek,mt8192-mali", .data = &mediatek_mt8192_data },
+>  	{}
+>  };
 
-Was this meant for some other patch?
-
-Also this is the first patch where my MT8186 fails to boot, which makes
-absolutely no sense, since the MT8135 driver isn't even built.
-
-ChenYu
-
->   */
->
->  #include <linux/clk.h>
-> @@ -19,14 +17,12 @@
->
->  static DEFINE_SPINLOCK(mt8135_clk_lock);
->
-> -static const struct mtk_fixed_factor root_clk_alias[] __initconst = {
-> +static const struct mtk_fixed_factor top_divs[] __initconst = {
->         FACTOR(CLK_TOP_DSI0_LNTC_DSICLK, "dsi0_lntc_dsiclk", "clk_null", 1, 1),
->         FACTOR(CLK_TOP_HDMITX_CLKDIG_CTS, "hdmitx_clkdig_cts", "clk_null", 1, 1),
->         FACTOR(CLK_TOP_CLKPH_MCK, "clkph_mck", "clk_null", 1, 1),
->         FACTOR(CLK_TOP_CPUM_TCK_IN, "cpum_tck_in", "clk_null", 1, 1),
-> -};
->
-> -static const struct mtk_fixed_factor top_divs[] __initconst = {
->         FACTOR(CLK_TOP_MAINPLL_806M, "mainpll_806m", "mainpll", 1, 2),
->         FACTOR(CLK_TOP_MAINPLL_537P3M, "mainpll_537p3m", "mainpll", 1, 3),
->         FACTOR(CLK_TOP_MAINPLL_322P4M, "mainpll_322p4m", "mainpll", 1, 5),
-> @@ -534,7 +530,6 @@ static void __init mtk_topckgen_init(struct device_node *node)
->
->         clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
->
-> -       mtk_clk_register_factors(root_clk_alias, ARRAY_SIZE(root_clk_alias), clk_data);
->         mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), clk_data);
->         mtk_clk_register_composites(NULL, top_muxes,
->                                     ARRAY_SIZE(top_muxes), base,
-> --
-> 2.39.2
->
 
