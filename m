@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F8B5C64ED8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Feb 2023 09:43:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E2D4C64ED8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Feb 2023 09:48:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kbnXOoIvCwre/+4QX5AN/9RjsRsacNnY7HA3dADS82M=; b=nDj4hp2tAtxYtUOzqTKS6xS4Nd
-	p4vjKKizui1NtUEmxjytV89WAR8Bf8HzfJJCr0v3bo643dwqZrRjtWQ/ZT1J9A3q77jeu3SutKQvU
-	joVRvv/hSHrLUz6k7m/5T6amYnlcxG3x5U6NgNDnO3+ITYq/Wtdp+UIJfZCDAAH+1Z/tAZkN2E8qq
-	0APa3N4++VXe+T40haVgI53bCglXFQNGaxHmzSyfGGwAws7zz5/vg438WI0qYAWvC+j9fnX/CWkgB
-	MUZ1R19AEUYXvk+pCH3bSSaQVAHepBCkzVL3CQt7ORnyOYamKOYBJuyZj/SHbqf79N8/pl9Slr0jF
-	Av70IdVw==;
+	bh=Hy9qFm6Se/EXdsfdDRuKKStMA9t1Y7+V3hdvzyTdE1k=; b=40pDS1SLpeDNJXN299scCjUYGc
+	wRiFnh+ajz3OPuC6ZCw/vGr2owtSOneg0DyqbY4z73KbnRDMY1kLZf0J6+yRLiZeZhuKP29Dn3m9T
+	O3ReT77wuoL5RmPCSlmE5FdlsP/g27uiDMbT9izvWHX+oU7GsAGZk2jQSU2ocQKKyPZ7PMajxX3Ya
+	+U+UGYz3/kuvHLnanqvI6TVKnIDNFm0eIQwOV4D90aTsyRlxdOdde1zMglr6qMubi7yi+Z5JcdaYt
+	y5n6AJKO07lA2ht84PlB29KyFyDQx/oO2j4hG3E65BOOCogZMgykNNf+DNKgRr9FOlUwhAHDF7dez
+	taUUt/ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVUbo-001jJY-3m; Fri, 24 Feb 2023 09:43:20 +0000
-Received: from mail-vs1-xe2a.google.com ([2607:f8b0:4864:20::e2a])
+	id 1pVUgp-001kHi-6m; Fri, 24 Feb 2023 09:48:31 +0000
+Received: from mail-vs1-xe35.google.com ([2607:f8b0:4864:20::e35])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVUbk-001jI7-Mn
-	for linux-mediatek@lists.infradead.org; Fri, 24 Feb 2023 09:43:18 +0000
-Received: by mail-vs1-xe2a.google.com with SMTP id d20so13087860vsf.11
-        for <linux-mediatek@lists.infradead.org>; Fri, 24 Feb 2023 01:43:16 -0800 (PST)
+	id 1pVUgf-001kEH-Px
+	for linux-mediatek@lists.infradead.org; Fri, 24 Feb 2023 09:48:23 +0000
+Received: by mail-vs1-xe35.google.com with SMTP id d20so13109801vsf.11
+        for <linux-mediatek@lists.infradead.org>; Fri, 24 Feb 2023 01:48:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=kbnXOoIvCwre/+4QX5AN/9RjsRsacNnY7HA3dADS82M=;
-        b=SSI0N/ZzzZtFN3NC9K9DXhTBJeR3c8kHwLA5fTMTff0SyrOe86wwffe3Djlo0gYd0f
-         6g64G/BHBOijusArADG/hxf6rlwCGwFkRKhecjiHfm1e9LFUFnB/sJTf5NUQq15Ht5UV
-         Gc1zD7tqJ1k8N8zfsQK6IWmeY1a5VmYBokIxU=
+        bh=Hy9qFm6Se/EXdsfdDRuKKStMA9t1Y7+V3hdvzyTdE1k=;
+        b=DXKueC8GpWCpoaUHhYn/VQVDrlcC5bBvGx9yUjyrIaUxjgH/nZgFkXAlDhhIM4Rk1K
+         fevzB1ccqZoM/IEbncOZ8uRBzbikbbjGgp4UmpOZmrPCgcJLJ2UXc5ibkBAy4ieK7itq
+         7R5kC5Dod5amnYLIoK+eRQgN2GAqgId8oG5es=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=kbnXOoIvCwre/+4QX5AN/9RjsRsacNnY7HA3dADS82M=;
-        b=EO1YBbU3DnUxCUKS8T3PGD2HsEhaITg/fkr+EpsTCi5ZQ76O0D9EUzDNyh1oE+gxor
-         GsEHe6SuEh3hSPyNI1XUxL+mO4ZYcEu7ibK58k9iXAojcX1tbByEocR8qjrXJt/b35na
-         mXIoYD6i02MiE67VSIQQ+4o7948MYAmLnlZuGJLSlONU4KHXa9qmt55eXkPq43Ej8R7w
-         yBcZ/mqvxmnVfgS5zI0iZE0xiIoZy05B+yEAhLpKW5aXINMXfKAg9hVqWo8RIidjslya
-         fGz+HE6HiSv5NCVuYnl4UFUDqtUW5RHC52vwUQUQQ0qKGJlrDFYvBezfKia34IOv1B7q
-         kQ4A==
-X-Gm-Message-State: AO0yUKX5X9DrkLKd1lnckWX3agvQ3IUisRM3Pu4oCvOvG8zpxEawG+YJ
-	YE7Pp1tpJZiq9g+wIwUGB4PJ7QaNEcJs6g5u+oS+WQ==
-X-Google-Smtp-Source: AK7set/KpmOufYOT89amku4MuWdzdnK+6D2wu9CS/8jhVNSAh5wdSQfoQxCA2kg+qARRnk13Skua4AsQwc/ET0fx5nE=
-X-Received: by 2002:a67:fbd2:0:b0:411:fff6:3cc4 with SMTP id
- o18-20020a67fbd2000000b00411fff63cc4mr2067609vsr.3.1677231795727; Fri, 24 Feb
- 2023 01:43:15 -0800 (PST)
+        bh=Hy9qFm6Se/EXdsfdDRuKKStMA9t1Y7+V3hdvzyTdE1k=;
+        b=5wxhEphEutHJf9KlRzqATIg906xnSaUIwFqiGu3XNkZtRmQ0QIt7sQZcjzUPC3aTnN
+         UGZi11TIM1IYqKjnPawVHrJQCe5SkqN4unKp/9hE2mmojRVEmGqxEJSbHlyBYBqmG4rQ
+         i3KUfXu+ePgX0N/C93vH7sb8jreafOpDPDYEw2p4AFkrM7KY4mIkV+4APchORHYjEMTg
+         eHzxJ44DDhiez7kpAeX27rhkevNLKvEQg5wv5i+XGy4qRu0EHtAetVt8h9AX4w3Ro3If
+         Jld4knDd1c3rWyEHFwSK+6MWQYzkcjt5kVmMMDUJosHMTKqchdfkndsZfuJZFxNo2E8/
+         KB2g==
+X-Gm-Message-State: AO0yUKVpOp7L8hiCs81S1nTNp93Ny7zA5a8M9/JVTV3whUVd3zOtyBLJ
+	kCJy9YtSSF5iALdKv3oUcA6dL7qLfQFVMxxsLb1dvA==
+X-Google-Smtp-Source: AK7set//leuBbGapBBCZqdtVWTRR+//pDwfT2YEJmSKyJPphUPRuePVjrJm1c2+unUfCTnRY/OH4DOBdzIniPgi5pX8=
+X-Received: by 2002:a67:ec11:0:b0:411:c62b:6bf0 with SMTP id
+ d17-20020a67ec11000000b00411c62b6bf0mr2046072vso.3.1677232099910; Fri, 24 Feb
+ 2023 01:48:19 -0800 (PST)
 MIME-Version: 1.0
-References: <20230223133440.80941-1-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230223133440.80941-1-angelogioacchino.delregno@collabora.com>
+References: <20230223134345.82625-1-angelogioacchino.delregno@collabora.com> <20230223134345.82625-2-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230223134345.82625-2-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 24 Feb 2023 17:43:04 +0800
-Message-ID: <CAGXv+5Gcnx4cw891hDTsSzMQsw+NAR7Le7FkUejEJCL-MMsktg@mail.gmail.com>
-Subject: Re: [PATCH v3 00/11] Panfrost: Improve and add MediaTek SoCs support
+Date: Fri, 24 Feb 2023 17:48:08 +0800
+Message-ID: <CAGXv+5G8dkV-Po+960QeqMVUj6Sp7a08LYLitorWOWN=MhNKhQ@mail.gmail.com>
+Subject: Re: [PATCH v2 01/16] arm64: dts: mediatek: mt8183-kukui: Couple VGPU
+ and VSRAM_GPU regulators
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: airlied@gmail.com, daniel@ffwll.ch, robh+dt@kernel.org, 
-	krzysztof.kozlowski+dt@linaro.org, steven.price@arm.com, 
-	alyssa.rosenzweig@collabora.com, matthias.bgg@gmail.com, robh@kernel.org, 
-	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, 
+	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230224_014316_762710_5611D96A 
-X-CRM114-Status: GOOD (  17.88  )
+X-CRM114-CacheID: sfid-20230224_014821_845709_999D9E1B 
+X-CRM114-Status: UNSURE (   6.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,54 +85,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 23, 2023 at 9:34 PM AngeloGioacchino Del Regno
+On Thu, Feb 23, 2023 at 9:43 PM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> Changes in v3:
->  - Changed MT8186 bindings to declare only two power domains
->  - Added a commit introducing MT8186 specific platform data to
->    panfrost_drv
+> Add coupling for these regulators, as they have a strict voltage output
+> relation to satisfy in order to ensure GPU stable operation.
 >
-> Changes in v2:
->  - Add power-domain-names commit from Chen-Yu to the series
->  - Kept sram-supply in base schema, overridden for non-MediaTek
->  - Added Reviewed-by tags from Steven Price to the driver commits
->    (as released in reply to v1's cover letter - thanks!)
->
-> This series adds support for new MediaTek SoCs (MT8186/MT8192/MT8195)
-> and improves MT8183 support: since the mtk-regulator-coupler driver
-> was picked, it is now useless for Panfrost to look for, and manage,
-> two regulators (GPU Vcore and GPU SRAM) on MediaTek;
->
-> The aforementioned driver will take care of keeping the voltage
-> relation (/constraints) of the two regulators on its own when a
-> voltage change request is sent to the Vcore, solving the old time
-> issue with not working DVFS on Panfrost+MediaTek (due to devfreq
-> supporting only single regulator).
->
-> In the specific case of MT8183, in order to not break the ABI, it
-> was necessary to add a new compatible for enabling DVFS.
->
-> Alyssa Rosenzweig (3):
->   drm/panfrost: Increase MAX_PM_DOMAINS to 5
->   drm/panfrost: Add the MT8192 GPU ID
->   drm/panfrost: Add mediatek,mt8192-mali compatible
->
-> AngeloGioacchino Del Regno (7):
->   dt-bindings: gpu: mali-bifrost: Split out MediaTek power-domains
->     variation
->   dt-bindings: gpu: mali-bifrost: Allow up to 5 power domains for MT8192
->   dt-bindings: gpu: mali-bifrost: Add compatible for MT8195 SoC
->   dt-bindings: gpu: mali-bifrost: Add new MT8183 compatible
->   dt-bindings: gpu: mali-bifrost: Add support for MediaTek MT8186
->   drm/panfrost: Add new compatible for Mali on the MT8183 SoC
->   drm/panfrost: Add support for Mali on the MT8186 SoC
->
-> Chen-Yu Tsai (1):
->   dt-bindings: gpu: mali-bifrost: Add power-domain-names to base schema
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
-
-on MT8183 Juniper, MT8192 Hayato, MT8195 Tomato, MT8186 not-yet-upstreamed
-device.
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
