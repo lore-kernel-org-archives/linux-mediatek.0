@@ -4,56 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD736C64ED8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Feb 2023 08:46:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D84AC677F1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Feb 2023 08:53:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RQvbTmRd0wBclAPG2MPi6CMdsRbzsN7+1DTSz6yCgHs=; b=HAnsz1R7m2UyGdr+mgoUPgzpgr
-	kXR40CBkibEIwCCLYfHo5KtLAQHezFi19fmweadJJmOWfbp4BoGYO4CjpFia/k+/ijFP2E4e2KRV3
-	AULWoZrujqBuhO72/LytrnqS4wSfNrnztUravblIeUOORDoymxavBd66tM+QQ5+KWs8IYeNIheqw2
-	hXDKW3x4ioSgkeYYNrk6XIGU5R2SHP2pLSMN0xxkfYA47Z7hOb0bs/OjNOJV2bYonZD0FsmtARQIJ
-	P3S6a44f0u0XiEJDObYPMlE6Kw5kszQzQhrVspTv6/8Rqu00qEnQZpHYN/exbTmJhMc8uYkpH9pJJ
-	BMtx/xiw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WXBxCzUTwUkY9VpXwOuTsg9QsDGpyRlggQ0Ehs3LnAQ=; b=GAga+9sVk2x5Ux1/nY6I9mm7gr
+	VhoZhIqumoMl9Gd1jd7W4Ezgtumz12NPrBVaxlBxlDqhRzovQ+bxGB76SGVBY31Lm/yN8g8YnaPuM
+	kiR+zhXNyEIF+tuxK/J8du0Q7c9HsLhaPKvFwyojQPfUWN8aHgUw+RFxhO80iY66M78keIBRhX3Qi
+	nyBtD1lBVWUe3KGA0l/gG5Z5EgE4UcZXaYhv9a1rpBYc87MHUCzJP0oAuZ26PKVPA2QinoTcw1x5J
+	pOHLQBgNEeqBt+Sl+bp/8mcVi+nNA3doyVM4uj0M9l37qDMYbjMaKNTARfQehOGOAvxx9fW0ZB8S6
+	TvepqMug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVTis-001Ze2-9m; Fri, 24 Feb 2023 08:46:34 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVTih-001ZZ7-5R; Fri, 24 Feb 2023 08:46:25 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 741C4C14;
-	Fri, 24 Feb 2023 00:47:00 -0800 (PST)
-Received: from [192.168.1.79] (unknown [172.31.20.19])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 3C0093F703;
-	Fri, 24 Feb 2023 00:46:15 -0800 (PST)
-Message-ID: <4e0673e7-5685-ad1b-2fac-4ae544caefeb@arm.com>
-Date: Fri, 24 Feb 2023 08:46:05 +0000
+	id 1pVTpB-001b4S-TK; Fri, 24 Feb 2023 08:53:05 +0000
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pVTp9-001b32-DE
+	for linux-mediatek@lists.infradead.org; Fri, 24 Feb 2023 08:53:04 +0000
+Received: by mail-yw1-x1129.google.com with SMTP id 00721157ae682-536b7ffdd34so263015147b3.6
+        for <linux-mediatek@lists.infradead.org>; Fri, 24 Feb 2023 00:53:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=WXBxCzUTwUkY9VpXwOuTsg9QsDGpyRlggQ0Ehs3LnAQ=;
+        b=kLCBct7OJ0ZWzc41yyFNoAbZU/0AeYHVz7PrnBKPVpdqsXs2IAdyj+vQZ4TlLmrVwI
+         weqFuX+933EX7S14S/LlRbwYOj0fFXjgMSzRLlN69zyC1b53+Gb1kHUBmbSLcPTaJfSL
+         mpJY1tS03b3k21dWA0+dIK2361RNm6DE73/5w=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=WXBxCzUTwUkY9VpXwOuTsg9QsDGpyRlggQ0Ehs3LnAQ=;
+        b=WmmgNvD6tVyBSfWNtUDnxDBFkZw140raGTpKy2wYLgr00ROLRzNItTkxQxAyhBUACE
+         OwmQjeWDf6xrYybajYBT977RmeGDVcUNakBE3WEub9SRPP8h6mJavbVO5qvWibD3ijCU
+         2Y8lLtSr443hk+y0IKpIw7CvdA+GREIc7+dkFpHAEGMG9E1W5bQCPPhFhNqYMbaGhcB0
+         XMTB27MOA8MGjkk0gn4jQXYMdfP/bxUVv+uNt7TTnhwQx5sgSp8TJrqp8yHbDjxbd8du
+         3+S2X+YW1kad6RxXAwdKF0tuXa4ivvPgLjJpK4YwPljV2T/HM4Xt8h9eqkbvlcW/XI4+
+         XV6A==
+X-Gm-Message-State: AO0yUKXyCUnQ9+PfxTAb4U5jJQ/xlLcH5JzDwjmmpussH91dFn94TIvX
+	BCHSbjaYbJOxu5LxlrYEb7CK3LjC2yhnZb4pRW+1+hOCpUHvmh6Q
+X-Google-Smtp-Source: AK7set+Ee//aV+bgfKyyjEpjRL0bSpqErjnIpTNSDdx4FSfXGZbHvCA4NH6lrLlFfb3LI0RYGdapOLHeJoNvs/rJzp0=
+X-Received: by 2002:ab0:5550:0:b0:688:c23f:c22f with SMTP id
+ u16-20020ab05550000000b00688c23fc22fmr3805805uaa.1.1677228765555; Fri, 24 Feb
+ 2023 00:52:45 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH v3 11/11] drm/panfrost: Add support for Mali on the MT8186
- SoC
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- airlied@gmail.com
-Cc: daniel@ffwll.ch, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- alyssa.rosenzweig@collabora.com, matthias.bgg@gmail.com, robh@kernel.org,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, wenst@chromium.org
-References: <20230223133440.80941-1-angelogioacchino.delregno@collabora.com>
- <20230223133440.80941-12-angelogioacchino.delregno@collabora.com>
-Content-Language: en-GB
-From: Steven Price <steven.price@arm.com>
-In-Reply-To: <20230223133440.80941-12-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20230223145426.193590-1-angelogioacchino.delregno@collabora.com> <20230223145426.193590-5-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230223145426.193590-5-angelogioacchino.delregno@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 24 Feb 2023 16:52:34 +0800
+Message-ID: <CAGXv+5H7ADKUu1bsGrF5F-EgJBM6WW0N+AFw=m+hH_00QGHDew@mail.gmail.com>
+Subject: Re: [PATCH v1 4/4] arm64: dts: mediatek: cherry: Add configuration
+ for display backlight
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, 
+	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230224_004623_292042_935174A6 
-X-CRM114-Status: GOOD (  14.39  )
+X-CRM114-CacheID: sfid-20230224_005303_488071_3DF8C582 
+X-CRM114-Status: UNSURE (   6.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,45 +85,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23/02/2023 13:34, AngeloGioacchino Del Regno wrote:
-> MediaTek MT8186 has a Mali-G52 MC2 2EE (Bifrost): add a new compatible
-> and platform data using the same supplies list as "mt8183_b" (only one
-> regulator), and a new pm_domains list with only two power domains.
-> 
+On Thu, Feb 23, 2023 at 10:56 PM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Configure the hardware PWM for the integrated display's backlight:
+> all Cherry devices enable the backlight with GPIO82 and manage the
+> PWM via MediaTek disp-pwm on GPIO97.
+>
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Reviewed-by: Steven Price <steven.price@arm.com>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 
-> ---
->  drivers/gpu/drm/panfrost/panfrost_drv.c | 9 +++++++++
->  1 file changed, 9 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
-> index 14cdeaeeb5c4..e4053bf84c62 100644
-> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
-> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-> @@ -679,6 +679,14 @@ static const struct panfrost_compatible mediatek_mt8183_b_data = {
->  	.pm_domain_names = mediatek_mt8183_pm_domains,
->  };
->  
-> +static const char * const mediatek_mt8186_pm_domains[] = { "core0", "core1" };
-> +static const struct panfrost_compatible mediatek_mt8186_data = {
-> +	.num_supplies = ARRAY_SIZE(mediatek_mt8183_b_supplies) - 1,
-> +	.supply_names = mediatek_mt8183_b_supplies,
-> +	.num_pm_domains = ARRAY_SIZE(mediatek_mt8186_pm_domains),
-> +	.pm_domain_names = mediatek_mt8186_pm_domains,
-> +};
-> +
->  static const char * const mediatek_mt8192_supplies[] = { "mali", NULL };
->  static const char * const mediatek_mt8192_pm_domains[] = { "core0", "core1", "core2",
->  							   "core3", "core4" };
-> @@ -708,6 +716,7 @@ static const struct of_device_id dt_match[] = {
->  	{ .compatible = "arm,mali-valhall-jm", .data = &default_data, },
->  	{ .compatible = "mediatek,mt8183-mali", .data = &mediatek_mt8183_data },
->  	{ .compatible = "mediatek,mt8183b-mali", .data = &mediatek_mt8183_b_data },
-> +	{ .compatible = "mediatek,mt8186-mali", .data = &mediatek_mt8186_data },
->  	{ .compatible = "mediatek,mt8192-mali", .data = &mediatek_mt8192_data },
->  	{}
->  };
-
+with some additional patches to enable the internal display.
 
