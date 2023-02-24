@@ -4,121 +4,182 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8A24C64ED8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Feb 2023 07:29:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2780FC64ED8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Feb 2023 07:50:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=m/Cxoh6V+BgcmchZ+10xr/6oU7fU3F9s3pEwnrYxX0A=; b=jRRLjyqFsffF57+gD5GBvR5b0p
-	NObQB2wTmvzcM5Rsr3RpyJaqvG+Hz6fu1FQlAUz/RR73bJ4+QAvaW6jd3c/kOqnKQMuHBh3bPLn7b
-	sV2YLEwC4Q3w+rJ46hNu812rJtySxgVzLOdTK6zqKHmcycFxYZbGA9/gHkY89mEyUr1y0GxgUv9PL
-	er/xacXqMWbLk8VsPwVK6GW/7eB8bOhRox869QoJpF/cIU61/uaBYEJNADNh1CHUUf/0cgLgSVZQK
-	fdNOcUYGxCSN9KoLpsne7h++RGMMAFuJ7Z3wRYEIbuF9YyLTY1FPfwH1lyUKE9C5zph1EHSLR9v+X
-	xueN3XzQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QvC9vkCAz7ts9+TSwK8ZJ8GegyXfNCAsMqmAecfSWIA=; b=JK3X4sN6eTaTrOFEhsMPhFvgFY
+	FeIq56rifuRxKwKdSSTopVe0hbf4LfGyQ6OrxDwJ+MSHooIMGKJH/jFD4dgZp4ZfcObihr+h/nWdc
+	9KbcGM4wgEKz7krhCPdpoA0MLSzKPnm4b7o4P7CwHoNOxR4T4CsG4saLoSW30wR+K3s41vZcy0YJ3
+	2ZR3w8GXc9zVmQZWa5jADGonMyiWpzb8jW3gP5NEJ8HUWuMXuCBvWJ9OgiLkxGXPGnN04kOTxyAYk
+	90a2DNy6+Pw/oDqqufdlqETgU4jUD+xqqj90kGOt+7yPOwCe39psNJxhNAES6XDt1G/2xAPuGM2Tk
+	oDd27Liw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVSWD-001Pkl-8o; Fri, 24 Feb 2023 07:29:25 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1pVSqU-001Rg3-63; Fri, 24 Feb 2023 07:50:22 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVSW6-001Pi1-7E; Fri, 24 Feb 2023 07:29:20 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id f18so16815859lfa.3;
-        Thu, 23 Feb 2023 23:29:16 -0800 (PST)
+	id 1pVSqR-001Rer-D6
+	for linux-mediatek@lists.infradead.org; Fri, 24 Feb 2023 07:50:21 +0000
+X-UUID: dc907c6ab41711edbbe3f76fe852e059-20230224
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=QvC9vkCAz7ts9+TSwK8ZJ8GegyXfNCAsMqmAecfSWIA=;
+	b=Vx8ZXQleXLR2jooYNFJCiFjORU4tuZwcQkImsr0xMf3sAQ2YLF8a55bYZB+fnAer/qHUtsLZsZMeBOkciU7wNQvp3pbo0vW4onxDHSiXKPgmSW0noeDEEYIAA5sCbGTzMvORJ/WS/LhF0ZXuzng8A90/wHtC2RTzuxNH036XyHo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.20,REQID:033c63c5-d13d-420c-a8c2-437338ba086c,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:25b5999,CLOUDID:73499626-564d-42d9-9875-7c868ee415ec,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-UUID: dc907c6ab41711edbbe3f76fe852e059-20230224
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <yanchao.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1615554804; Fri, 24 Feb 2023 00:50:09 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 24 Feb 2023 15:39:36 +0800
+Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n1.mediatek.com (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 24 Feb 2023 15:39:36 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=IUvjbyK53iv+ST4rhSjrqKKaastUWbOk3WM24rf7LnhlWUt34Sf7woRrCeD2bBstCLHEjPiI5dHhbB3HjCRhYnqmzfmrquDxgxTpPH+gA9/Z/RvnTwxXML/KMmfyZ7doSnPmAK7GJSh4vho0t8ZjGs1wQlXqdYsqHrlC3L0BKDHEIi7Yu8jjecd1te8dEP2ozBkd2vxVB7zxj6NBpy3MaSfsOIjQM5ij2tb+ZwJTVFppSEiOeQl4eF0iI0vD31/CjYPmO1pMfL3ie/k0uDRDkB/gw1u1vMvRDGuNtlUE140roXnJZ8tbznJUnFKA6/PbeAOiTzp6J08iXKHCzBvwGw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=QvC9vkCAz7ts9+TSwK8ZJ8GegyXfNCAsMqmAecfSWIA=;
+ b=Ih0I8wxGQ5TEQn1RBnrZ5/FE3PKkNIMeolPLYXEUI6yM3/OvsIu5y9GMhXkQOsk3L/snAPMmIbXNUGxtb4C2eWBFcafLqtiaUmlygoOWGBfk0TxaMCyWNUIUsDdTgOWOFStlklh7FyYbru5vx1OvuL9+EtG8BqFOIXtx8f3yOE43lq2s8y4WAxLyHOJ+nDX5CBrTU1aep5mc3pk3bHlwc1ikTXySZHdbNrJkg2kfMhya0lcCSupz/GfSSXmHoALlLNLMMxUQ/utdp6cGtHeUIHQElnn0ipltb3fmDx36SsRkMIlCTOtA0n02CSdtgs0teKOqNLhcFI6ioocxVl5afA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=m/Cxoh6V+BgcmchZ+10xr/6oU7fU3F9s3pEwnrYxX0A=;
-        b=eVK2ynhIpTGqiEAlBOej0FWvBN5smLlVmVZ+pWu7JvvCg6UulQB0KgZlQTjcoKCrAh
-         oRjmkC4mCWtwKxsFkTxjxgQA+Ej6n6k0y/Tz++2QSdGOK2KI0y++ajwpJHqGCug/tVOk
-         1mHahMWkHzsO5jvDg7ZHWUg5dCEVVbZoi+80L84AG/3TX7pLM1sCBFXzi9fdINZjbktc
-         uiJU7MRok2IaGIfusCQ18RPkbEveIXu4Wv7yYRJ4fjIxlG/FbwS3DGJyVlTz4pq1fIh9
-         5KU3AJ8QooP7uK0M3bqXsh0jrZGQEXX9j8iNZDZF5DlQF7SpinRPlbEm6WOZlx50Jkjd
-         LSXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=m/Cxoh6V+BgcmchZ+10xr/6oU7fU3F9s3pEwnrYxX0A=;
-        b=l3qDPzeuAHR82BqPGkEcqwE9maTamtoSzwdi1l7BQHuQQ2SUuUjq5u7zMjpsouneqS
-         UzwUcJRre8FaPVyLGExozxuRkr6cx9D90i5NoMKyHyBAjO22K1R1F4uXxo4Y5IS+yKPI
-         wGXezfg/GGohFOINC9/bhmUnlz1s1WT8ZAqF4R2ga1iOaP8DBzUcM0H7OTbYJYsUGate
-         xdZbcyl/5p/gl2mFmK/mXMF4CC1d77gTj+byof7bgCapSFN8e+KE14dL3NJX0S4bQLWo
-         pZwxhnveiK6n/vbrQToBA5PydOLo5vnjNh4fjaphWthWGM7qSgeAZY9hsDIE8L+jFpr9
-         m7BQ==
-X-Gm-Message-State: AO0yUKWv3rMtiHNt7AGd3yz6NcfFCPEhUK7ZoYhgCqh4suDaB+sMJIkq
-	fLmF6ndjTiz2BCW4pH5gujY=
-X-Google-Smtp-Source: AK7set/Ibo1grGw27G8ZssjK/q0QmJczYwyRA6AUAZG1VKg4S3qwR2gPUxHO86Ix5iGu10EYUuh1KQ==
-X-Received: by 2002:a05:6512:145:b0:4cc:a166:e27f with SMTP id m5-20020a056512014500b004cca166e27fmr4642606lfo.3.1677223754408;
-        Thu, 23 Feb 2023 23:29:14 -0800 (PST)
-Received: from localhost.lan (ip-194-187-74-233.konfederacka.maverick.com.pl. [194.187.74.233])
-        by smtp.gmail.com with ESMTPSA id v12-20020a056512048c00b004cc9edb0f99sm906082lfq.44.2023.02.23.23.29.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Feb 2023 23:29:13 -0800 (PST)
-From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Cc: Miquel Raynal <miquel.raynal@bootlin.com>,
-	Richard Weinberger <richard@nod.at>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Hector Martin <marcan@marcan.st>,
-	Sven Peter <sven@svenpeter.dev>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Vincent Shih <vincent.sunplus@gmail.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Michal Simek <michal.simek@xilinx.com>,
-	Alessandro Zummo <a.zummo@towertech.it>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Evgeniy Polyakov <zbr@ioremap.net>,
-	linux-mtd@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	asahi@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev,
-	linux-rtc@vger.kernel.org,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH V2] nvmem: add explicit config option to read OF fixed cells
-Date: Fri, 24 Feb 2023 08:29:03 +0100
-Message-Id: <20230224072903.20945-1-zajec5@gmail.com>
-X-Mailer: git-send-email 2.34.1
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=QvC9vkCAz7ts9+TSwK8ZJ8GegyXfNCAsMqmAecfSWIA=;
+ b=FUtVcJhXwgCNrn5GSOoc1R/nX9thL3f2L1kZxGlAvcd8925FA8NcLxPRn3i/yPLpsoBvxc0kuIeoemiP0PXh6AN9Sns/gXCJmOy8MBAB+84qugeSaEp5QCW1iNmphFLbnxdq+xOduheI2E5z1bCncI7Kvlg++e1do84TqPRuExs=
+Received: from TYZPR03MB6161.apcprd03.prod.outlook.com (2603:1096:400:12c::13)
+ by SI2PR03MB5449.apcprd03.prod.outlook.com (2603:1096:4:103::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6134.20; Fri, 24 Feb
+ 2023 07:39:34 +0000
+Received: from TYZPR03MB6161.apcprd03.prod.outlook.com
+ ([fe80::7b38:f629:1b13:6dc7]) by TYZPR03MB6161.apcprd03.prod.outlook.com
+ ([fe80::7b38:f629:1b13:6dc7%8]) with mapi id 15.20.6134.023; Fri, 24 Feb 2023
+ 07:39:34 +0000
+From: =?utf-8?B?WWFuY2hhbyBZYW5nICjmnajlvabotoUp?= <Yanchao.Yang@mediatek.com>
+To: "kuba@kernel.org" <kuba@kernel.org>
+CC: =?utf-8?B?Q2hyaXMgRmVuZyAo5Yav5L+d5p6XKQ==?= <Chris.Feng@mediatek.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	=?utf-8?B?TWluZ2xpYW5nIFh1ICjlvpDmmI7kuq4p?= <mingliang.xu@mediatek.com>,
+	=?utf-8?B?TWluIERvbmcgKOiRo+aVjyk=?= <min.dong@mediatek.com>,
+	"linuxwwan@intel.com" <linuxwwan@intel.com>, "m.chetan.kumar@intel.com"
+	<m.chetan.kumar@intel.com>, =?utf-8?B?TGlhbmcgTHUgKOWQleS6rik=?=
+	<liang.lu@mediatek.com>, =?utf-8?B?SGFpanVuIExpdSAo5YiY5rW35YabKQ==?=
+	<haijun.liu@mediatek.com>, =?utf-8?B?SGFvemhlIENoYW5nICjluLjmtanlk7Ip?=
+	<Haozhe.Chang@mediatek.com>, =?utf-8?B?SHVhIFlhbmcgKOadqOWNjik=?=
+	<Hua.Yang@mediatek.com>, "ryazanov.s.a@gmail.com" <ryazanov.s.a@gmail.com>,
+	=?utf-8?B?WGlheXUgWmhhbmcgKOW8oOWkj+Wuhyk=?= <Xiayu.Zhang@mediatek.com>,
+	"loic.poulain@linaro.org" <loic.poulain@linaro.org>, "pabeni@redhat.com"
+	<pabeni@redhat.com>, "edumazet@google.com" <edumazet@google.com>,
+	=?utf-8?B?VGluZyBXYW5nICjnjovmjLop?= <ting.wang@mediatek.com>,
+	"johannes@sipsolutions.net" <johannes@sipsolutions.net>,
+	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+	=?utf-8?B?QWlkZW4gV2FuZyAo546L5ZKP6bqSKQ==?= <Aiden.Wang@mediatek.com>,
+	=?utf-8?B?RmVsaXggQ2hlbiAo6ZmI6Z2eKQ==?= <Felix.Chen@mediatek.com>,
+	=?utf-8?B?TGFtYmVydCBXYW5nICjnjovkvJ8p?= <Lambert.Wang@mediatek.com>,
+	"davem@davemloft.net" <davem@davemloft.net>,
+	=?utf-8?B?TWluZ2NodWFuZyBRaWFvICjkuZTmmI7pl68p?=
+	<Mingchuang.Qiao@mediatek.com>, =?utf-8?B?R3VvaGFvIFpoYW5nICjlvKDlm73osaop?=
+	<Guohao.Zhang@mediatek.com>
+Subject: Re: [PATCH net-next v3 01/10] net: wwan: tmi: Add PCIe core
+Thread-Topic: [PATCH net-next v3 01/10] net: wwan: tmi: Add PCIe core
+Thread-Index: AQHZPfRhXG0uLuMh9ki8uUJNPx0e967PblKAgAIgUwCADDu2AA==
+Date: Fri, 24 Feb 2023 07:39:33 +0000
+Message-ID: <d6f13d66a5ab0224f2ae424a0645d4cf29c2752b.camel@mediatek.com>
+References: <20230211083732.193650-1-yanchao.yang@mediatek.com>
+	 <20230211083732.193650-2-yanchao.yang@mediatek.com>
+	 <20230214202229.50d07b89@kernel.org>
+	 <2e518c17bf54298a2108de75fcd35aaf2b3397d3.camel@mediatek.com>
+In-Reply-To: <2e518c17bf54298a2108de75fcd35aaf2b3397d3.camel@mediatek.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB6161:EE_|SI2PR03MB5449:EE_
+x-ms-office365-filtering-correlation-id: 0a1f8490-e981-4fe8-898a-08db163a45ca
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: cQlIqqrlsmx+Se4QP9eMG386plB8mjAnEL9c6lKr2cSEBpo2SMeaGcbBxJIpbYo5pu6XaCW5YWEP72KXbpejis6QBKzCF/cp8AVfLlgvm3NNGS+lmXv+0HzbrDepIKegw/i7rsPmv7B44xLZQOWBFj5IQk0ZPZSadfdHRKxAqYWKO6lmXU1Vrj0yI+wg4fo620xM2B8xKFUAlxZ/TDQcDSIihH2X8h4szfduEGid4DMjUDemhRAq0yXFrjxhhWZFlrYggV2LNtWPSag4XDRjGcWEYs4wb/8U9CUlZRsTinHR8P6U5WAJvMtO71ddjA4Ua4hTiLgTFvFjZ+V91ChllUQhrelYkvPIppnXcMoGfVywTrap+RcXx48KMtr3E5Igmz8ZmS/f13Af7/ee0+FBWA9wV9/m6bmwblhxdG9kAufqk7FdmlzK1r3JjPEe5cee6TXY3y27/cHlLCgjS6Ns/1rYcI3aqEM2yGGBuMeB0Nr4U+BdEsreybLvShUzEHd4VHaIJUjRDE1J7Rhu1nw/DObzpXxZ3hEEpP55OlGtawwn4KN0vIBMzOnp2zuGmSDjIsxAPdDCYTLkj9Y3ZmC1s2PhvbhLenQd6tR0Kv3v964iCObkzNpnP2LXdWovvBwJek+tG032kuArnTb+yF1a3lXgpYERdGkvJ1dhMB3MeZOyVVNom/LUdC7Q5y1iNc3cLzCbJtJJGd9VLXZmUWNSaqzymBvYjW6Sqo1FPHQP7yE/jVQUNQYmgRV29cnHjN+t
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6161.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(39860400002)(346002)(396003)(376002)(366004)(136003)(451199018)(54906003)(316002)(2906002)(8936002)(2616005)(7416002)(38070700005)(186003)(122000001)(38100700002)(6512007)(71200400001)(6506007)(85182001)(26005)(6486002)(478600001)(83380400001)(86362001)(107886003)(36756003)(66946007)(64756008)(41300700001)(66476007)(66556008)(76116006)(66446008)(4326008)(5660300002)(91956017)(8676002)(6916009)(99106002)(473944003);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?WVJTZC9aT2g1RklJaU1rZFZNU29IcVpPSldMOWJ0OVRKdzBXSm5SeVpFZTRB?=
+ =?utf-8?B?T2wwMmNzSHkzb1pwRTg0cHRLODErWmlpOTFQSHlJTzQzVHAxTW9nSngwaEVC?=
+ =?utf-8?B?eDBtVFk1ZENMN0ZsWERveFh4VzQzeW11dWtBRFltWkVCbkM3RzVuZmQyWWYx?=
+ =?utf-8?B?OURueEQyNVRseDF2ZldqVXJDVFR0c0lrUU1XZjR4RjRuZS9HaEIwYVkxZUJy?=
+ =?utf-8?B?MHRKQW1zY2VDNlBxbWN1dTk2dGNQMUdsY0pNd1FwdHd2Si9zSUQvR256TUlQ?=
+ =?utf-8?B?bTQyeGpuc0k5MVhoVEM5cmtzZXFCN3R4SVpoVlgrdEY2T1ZhQXBuL2I0NDhp?=
+ =?utf-8?B?WE40TDFhempoSWo4MkJDdkhQUmhVK01RS1M5K2dpS2J1UkhTYTVON3ZhV0Zh?=
+ =?utf-8?B?eVF0S05jdDNTeVlZZmJRbThXamhWSlArSUxvdEttZkhoNnlTLzJPNGUzR1Yr?=
+ =?utf-8?B?cC82RjlFQjdaNDgzc2poazBxa2ZOU1FnM1pVbGdDNGI1NjN3WnBjWnJOMURj?=
+ =?utf-8?B?RVNHNTJCY01BdTVNVlViRjQvLzFxUUVETzl6SEZjbmFpYzk2SUl3ekxBb1ZI?=
+ =?utf-8?B?aHBZK2xuUEkxenFlaEpTSDJNTW0zV05vdmg0dTVBa1QvYS8vNm1xMWNVMXIr?=
+ =?utf-8?B?aXExdFFYNGhlcFRjOTFadU85NC9taHF4OEhhMlVHdFF6dWNaSmFSb3RqbFRh?=
+ =?utf-8?B?K0tHK2hLMmlkK0ZPdVJFbGIzQTlkSlBQbUVtQTI5MHZXREVnbm5Pbm5uUE1t?=
+ =?utf-8?B?ZHRCZWFzZnE4UVpqUkFrWGcxdjR3VXB3dVJmN09qOGdBUytETFN3RkFGdExV?=
+ =?utf-8?B?UFh3UmJaNlM2R1NRb2hCQ3p5dXdlNFpDQkdXVjRmc0hwNEhJbDlwYmJzK1Av?=
+ =?utf-8?B?Z1FyYUhWVDhhTDBHSTFCQ0lSKzUxanBQWXEySlJXNVRrK1FHU3lPMWxoSkYv?=
+ =?utf-8?B?blRYN0ZNeVlEcGlVaEtOQzl4QzZJTlVMcm13aG8yL2graVNYOHAxamppM2Vu?=
+ =?utf-8?B?Umsvd1ovSkFLRm1wTWpraUJBaWlINlo1OE15cG1lbDF6Vld4RWY3UmxtZ1Vn?=
+ =?utf-8?B?ZTJSMW1WUXFrcDI3Zjd2bWMyWGpSR2Z6R1UxQnNMazhyNzYvQ2JjZGFaVTky?=
+ =?utf-8?B?Slc0Sk84NCtXR2JTQW11YjBMbjhPR3BuTTlURVAyYnVUdFNTR3UxdWdnU1Jl?=
+ =?utf-8?B?YWMyLzRmblNSVUF1UEFKeGN3cVN2Z3RCOXBSVkVFb2JTci85bmYvbE5xYXpG?=
+ =?utf-8?B?SkVVMDNFN3Q3Q3p3bUkvNzdKaXBTajBHbWZVYmREbWxNUzdQRHRNcE5zUm45?=
+ =?utf-8?B?OWxCR3lDS3IvYVJBdkEvUVZITk1CN01MQlE1OXBOWlZValdiZTQ2b1hZdE5Y?=
+ =?utf-8?B?RThSbFhWbm9kdmVrT3pZcWlDcWQyODcxQXpHd09RU3JwTXFoL1ltL2hNd0VK?=
+ =?utf-8?B?UldaQUdJWGF5SmVDN0ZDcWpYYTNYTUZPdEhybCtIYWt0RHNCeEZpdkVOMFg2?=
+ =?utf-8?B?Mms5ckFoakZyV0VpRVcyNXNQWEo5T2J1a25yOHYxc3d0VTc4dHV3NURMZUxS?=
+ =?utf-8?B?c0l5Sng1UXZNTzQ5RURFUy9xaWtKT2RNRzMwR0RlNk1zaUpEaXRuR2lCaGR6?=
+ =?utf-8?B?SVN4RGExcG1YYzM1cmNWU1hURTkzUzZzc3FSVHN6SHJpMG5MSFEyQUthKzBE?=
+ =?utf-8?B?bFBHb2dYZmNTd0d0OXhNUGFoaGV6U2MvZStDT2xDTGZZWEhYNnl1eE1CZHBx?=
+ =?utf-8?B?aDl6alp6TjN5aFZnMnpLYW5GelQ2bjloNWxkd2RzYllCdVR2MVVzZXY1d1RF?=
+ =?utf-8?B?M2sybkdrY2w4QTVRa1F1bDRPNW83eVhQSGQ4WU5ROUEzbFVVZ245VWxhZzNv?=
+ =?utf-8?B?VExLdDNJRzZ0VTVrcXVwMXIyT1JwRUpoMDBQb1NoSGdpUk43UVJ2WEtCYUJS?=
+ =?utf-8?B?RllnTU5GVDMrVW44ZmJ4QWpjQmxlbHRqOTNPMHM3UUw1bVFHRVN1b25nMjhm?=
+ =?utf-8?B?Y1NvWXFYdFl3T2NicUpHLzRCMnJHSUIzVG5kbExZOTkwTTkzZlVOeGk5RDk2?=
+ =?utf-8?B?YVNZbVpuTVRRSkhZNXRBVVhTVzVPaS9ZcG9ZUTBzSXY4Z0xqSnd5alFHMi9k?=
+ =?utf-8?B?b29WQ1dWVm1ZWDFkWXpjNkJkc2w3eEduTlR0a2kzd0xzWnV3Qk12TE5VV0Z0?=
+ =?utf-8?B?eWc9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <BAA4F721FDDFE149AFC5943149FADB2F@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6161.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0a1f8490-e981-4fe8-898a-08db163a45ca
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Feb 2023 07:39:33.7247
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 9usGiu+GD30XnE5MA/SRZfdft9stLQFUgIEKBYMSCOoTMA96bswN+McUm8mJGX+P2nMbSgc7NcTmNSJN5OuHPZPknqTSRSlF2JOBGfmgRWQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB5449
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230223_232918_306366_4F57A31C 
-X-CRM114-Status: GOOD (  20.19  )
+X-CRM114-CacheID: sfid-20230223_235019_669201_F9C748DE 
+X-CRM114-Status: GOOD (  20.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,363 +194,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rafał Miłecki <rafal@milecki.pl>
-
-NVMEM subsystem looks for fixed NVMEM cells (specified in DT) by
-default. This behaviour made sense in early days before adding support
-for dynamic cells.
-
-With every new supported NVMEM device with dynamic cells current
-behaviour becomes non-optimal. It results in unneeded iterating over DT
-nodes and may result in false discovery of cells (depending on used DT
-properties).
-
-This behaviour has actually caused a problem already with the MTD
-subsystem. MTD subpartitions were incorrectly treated as NVMEM cells.
-
-Also with upcoming support for NVMEM layouts no new binding or driver
-should support fixed cells defined in device node.
-
-Solve this by modifying drivers for bindings that support specifying
-fixed NVMEM cells in DT. Make them explicitly tell NVMEM subsystem to
-read cells from DT.
-
-It wasn't clear (to me) if rtc and w1 code actually uses fixed cells. I
-enabled them to don't risk any breakage.
-
-Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
-[for drivers/nvmem/meson-{efuse,mx-efuse}.c]
-Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
----
-V2: Fix stm32-romem.c typo breaking its compilation
-    Pick Martin's Acked-by
-    Add paragraph about layouts deprecating use_fixed_of_cells
----
- drivers/mtd/mtdcore.c          | 2 ++
- drivers/nvmem/apple-efuses.c   | 1 +
- drivers/nvmem/core.c           | 8 +++++---
- drivers/nvmem/imx-ocotp-scu.c  | 1 +
- drivers/nvmem/imx-ocotp.c      | 1 +
- drivers/nvmem/meson-efuse.c    | 1 +
- drivers/nvmem/meson-mx-efuse.c | 1 +
- drivers/nvmem/microchip-otpc.c | 1 +
- drivers/nvmem/mtk-efuse.c      | 1 +
- drivers/nvmem/qcom-spmi-sdam.c | 1 +
- drivers/nvmem/qfprom.c         | 1 +
- drivers/nvmem/rave-sp-eeprom.c | 1 +
- drivers/nvmem/rockchip-efuse.c | 1 +
- drivers/nvmem/sc27xx-efuse.c   | 1 +
- drivers/nvmem/sprd-efuse.c     | 1 +
- drivers/nvmem/stm32-romem.c    | 1 +
- drivers/nvmem/sunplus-ocotp.c  | 1 +
- drivers/nvmem/sunxi_sid.c      | 1 +
- drivers/nvmem/uniphier-efuse.c | 1 +
- drivers/nvmem/zynqmp_nvmem.c   | 1 +
- drivers/rtc/nvmem.c            | 1 +
- drivers/w1/slaves/w1_ds250x.c  | 1 +
- include/linux/nvmem-provider.h | 2 ++
- 23 files changed, 29 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/mtd/mtdcore.c b/drivers/mtd/mtdcore.c
-index 0feacb9fbdac..1bb479c0f758 100644
---- a/drivers/mtd/mtdcore.c
-+++ b/drivers/mtd/mtdcore.c
-@@ -523,6 +523,7 @@ static int mtd_nvmem_add(struct mtd_info *mtd)
- 	config.dev = &mtd->dev;
- 	config.name = dev_name(&mtd->dev);
- 	config.owner = THIS_MODULE;
-+	config.use_fixed_of_cells = of_device_is_compatible(node, "nvmem-cells");
- 	config.reg_read = mtd_nvmem_reg_read;
- 	config.size = mtd->size;
- 	config.word_size = 1;
-@@ -891,6 +892,7 @@ static struct nvmem_device *mtd_otp_nvmem_register(struct mtd_info *mtd,
- 	config.name = kasprintf(GFP_KERNEL, "%s-%s", dev_name(&mtd->dev), compatible);
- 	config.id = NVMEM_DEVID_NONE;
- 	config.owner = THIS_MODULE;
-+	config.use_fixed_of_cells = true;
- 	config.type = NVMEM_TYPE_OTP;
- 	config.root_only = true;
- 	config.ignore_wp = true;
-diff --git a/drivers/nvmem/apple-efuses.c b/drivers/nvmem/apple-efuses.c
-index 9b7c87102104..0119bac43b2c 100644
---- a/drivers/nvmem/apple-efuses.c
-+++ b/drivers/nvmem/apple-efuses.c
-@@ -36,6 +36,7 @@ static int apple_efuses_probe(struct platform_device *pdev)
- 	struct resource *res;
- 	struct nvmem_config config = {
- 		.dev = &pdev->dev,
-+		.use_fixed_of_cells = true,
- 		.read_only = true,
- 		.reg_read = apple_efuses_read,
- 		.stride = sizeof(u32),
-diff --git a/drivers/nvmem/core.c b/drivers/nvmem/core.c
-index 174ef3574e07..6783cd8478d7 100644
---- a/drivers/nvmem/core.c
-+++ b/drivers/nvmem/core.c
-@@ -844,9 +844,11 @@ struct nvmem_device *nvmem_register(const struct nvmem_config *config)
- 	if (rval)
- 		goto err_remove_cells;
- 
--	rval = nvmem_add_cells_from_of(nvmem);
--	if (rval)
--		goto err_remove_cells;
-+	if (config->use_fixed_of_cells) {
-+		rval = nvmem_add_cells_from_of(nvmem);
-+		if (rval)
-+			goto err_remove_cells;
-+	}
- 
- 	dev_dbg(&nvmem->dev, "Registering nvmem device %s\n", config->name);
- 
-diff --git a/drivers/nvmem/imx-ocotp-scu.c b/drivers/nvmem/imx-ocotp-scu.c
-index 399e1eb8b4c1..ec5cce7c6697 100644
---- a/drivers/nvmem/imx-ocotp-scu.c
-+++ b/drivers/nvmem/imx-ocotp-scu.c
-@@ -220,6 +220,7 @@ static int imx_scu_ocotp_write(void *context, unsigned int offset,
- 
- static struct nvmem_config imx_scu_ocotp_nvmem_config = {
- 	.name = "imx-scu-ocotp",
-+	.use_fixed_of_cells = true,
- 	.read_only = false,
- 	.word_size = 4,
- 	.stride = 1,
-diff --git a/drivers/nvmem/imx-ocotp.c b/drivers/nvmem/imx-ocotp.c
-index e9b52ecb3f72..e37a82f98ba6 100644
---- a/drivers/nvmem/imx-ocotp.c
-+++ b/drivers/nvmem/imx-ocotp.c
-@@ -616,6 +616,7 @@ static int imx_ocotp_probe(struct platform_device *pdev)
- 		return PTR_ERR(priv->clk);
- 
- 	priv->params = of_device_get_match_data(&pdev->dev);
-+	imx_ocotp_nvmem_config.use_fixed_of_cells = true;
- 	imx_ocotp_nvmem_config.size = 4 * priv->params->nregs;
- 	imx_ocotp_nvmem_config.dev = dev;
- 	imx_ocotp_nvmem_config.priv = priv;
-diff --git a/drivers/nvmem/meson-efuse.c b/drivers/nvmem/meson-efuse.c
-index d6b533497ce1..657e171d5af3 100644
---- a/drivers/nvmem/meson-efuse.c
-+++ b/drivers/nvmem/meson-efuse.c
-@@ -93,6 +93,7 @@ static int meson_efuse_probe(struct platform_device *pdev)
- 
- 	econfig->dev = dev;
- 	econfig->name = dev_name(dev);
-+	econfig->use_fixed_of_cells = true;
- 	econfig->stride = 1;
- 	econfig->word_size = 1;
- 	econfig->reg_read = meson_efuse_read;
-diff --git a/drivers/nvmem/meson-mx-efuse.c b/drivers/nvmem/meson-mx-efuse.c
-index 13eb14316f46..7cc51391ec9c 100644
---- a/drivers/nvmem/meson-mx-efuse.c
-+++ b/drivers/nvmem/meson-mx-efuse.c
-@@ -213,6 +213,7 @@ static int meson_mx_efuse_probe(struct platform_device *pdev)
- 	efuse->config.owner = THIS_MODULE;
- 	efuse->config.dev = &pdev->dev;
- 	efuse->config.priv = efuse;
-+	efuse->config.use_fixed_of_cells = true;
- 	efuse->config.stride = drvdata->word_size;
- 	efuse->config.word_size = drvdata->word_size;
- 	efuse->config.size = SZ_512;
-diff --git a/drivers/nvmem/microchip-otpc.c b/drivers/nvmem/microchip-otpc.c
-index 436e0dc4f337..fb920fd7a8fc 100644
---- a/drivers/nvmem/microchip-otpc.c
-+++ b/drivers/nvmem/microchip-otpc.c
-@@ -261,6 +261,7 @@ static int mchp_otpc_probe(struct platform_device *pdev)
- 		return ret;
- 
- 	mchp_nvmem_config.dev = otpc->dev;
-+	mchp_nvmem_config.use_fixed_of_cells = true;
- 	mchp_nvmem_config.size = size;
- 	mchp_nvmem_config.priv = otpc;
- 	nvmem = devm_nvmem_register(&pdev->dev, &mchp_nvmem_config);
-diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
-index a08e0aedd21c..1947337a121f 100644
---- a/drivers/nvmem/mtk-efuse.c
-+++ b/drivers/nvmem/mtk-efuse.c
-@@ -45,6 +45,7 @@ static int mtk_efuse_probe(struct platform_device *pdev)
- 	if (IS_ERR(priv->base))
- 		return PTR_ERR(priv->base);
- 
-+	econfig.use_fixed_of_cells = true;
- 	econfig.stride = 1;
- 	econfig.word_size = 1;
- 	econfig.reg_read = mtk_reg_read;
-diff --git a/drivers/nvmem/qcom-spmi-sdam.c b/drivers/nvmem/qcom-spmi-sdam.c
-index f822790db49e..b547def94b5b 100644
---- a/drivers/nvmem/qcom-spmi-sdam.c
-+++ b/drivers/nvmem/qcom-spmi-sdam.c
-@@ -142,6 +142,7 @@ static int sdam_probe(struct platform_device *pdev)
- 	sdam->sdam_config.name = "spmi_sdam";
- 	sdam->sdam_config.id = NVMEM_DEVID_AUTO;
- 	sdam->sdam_config.owner = THIS_MODULE;
-+	sdam->sdam_config.use_fixed_of_cells = true;
- 	sdam->sdam_config.stride = 1;
- 	sdam->sdam_config.word_size = 1;
- 	sdam->sdam_config.reg_read = sdam_read;
-diff --git a/drivers/nvmem/qfprom.c b/drivers/nvmem/qfprom.c
-index c1e893c8a247..eb126d507561 100644
---- a/drivers/nvmem/qfprom.c
-+++ b/drivers/nvmem/qfprom.c
-@@ -357,6 +357,7 @@ static int qfprom_probe(struct platform_device *pdev)
- {
- 	struct nvmem_config econfig = {
- 		.name = "qfprom",
-+		.use_fixed_of_cells = true,
- 		.stride = 1,
- 		.word_size = 1,
- 		.id = NVMEM_DEVID_AUTO,
-diff --git a/drivers/nvmem/rave-sp-eeprom.c b/drivers/nvmem/rave-sp-eeprom.c
-index c456011b75e8..e9b4c7927e37 100644
---- a/drivers/nvmem/rave-sp-eeprom.c
-+++ b/drivers/nvmem/rave-sp-eeprom.c
-@@ -328,6 +328,7 @@ static int rave_sp_eeprom_probe(struct platform_device *pdev)
- 	of_property_read_string(np, "zii,eeprom-name", &config.name);
- 	config.priv		= eeprom;
- 	config.dev		= dev;
-+	config.use_fixed_of_cells	= true;
- 	config.size		= size;
- 	config.reg_read		= rave_sp_eeprom_reg_read;
- 	config.reg_write	= rave_sp_eeprom_reg_write;
-diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
-index e4579de5d014..211f6e7401a9 100644
---- a/drivers/nvmem/rockchip-efuse.c
-+++ b/drivers/nvmem/rockchip-efuse.c
-@@ -205,6 +205,7 @@ static int rockchip_rk3399_efuse_read(void *context, unsigned int offset,
- 
- static struct nvmem_config econfig = {
- 	.name = "rockchip-efuse",
-+	.use_fixed_of_cells = true,
- 	.stride = 1,
- 	.word_size = 1,
- 	.read_only = true,
-diff --git a/drivers/nvmem/sc27xx-efuse.c b/drivers/nvmem/sc27xx-efuse.c
-index c825fc902d10..ed5cc4f3e2bc 100644
---- a/drivers/nvmem/sc27xx-efuse.c
-+++ b/drivers/nvmem/sc27xx-efuse.c
-@@ -248,6 +248,7 @@ static int sc27xx_efuse_probe(struct platform_device *pdev)
- 	econfig.reg_read = sc27xx_efuse_read;
- 	econfig.priv = efuse;
- 	econfig.dev = &pdev->dev;
-+	econfig.use_fixed_of_cells = true;
- 	nvmem = devm_nvmem_register(&pdev->dev, &econfig);
- 	if (IS_ERR(nvmem)) {
- 		dev_err(&pdev->dev, "failed to register nvmem config\n");
-diff --git a/drivers/nvmem/sprd-efuse.c b/drivers/nvmem/sprd-efuse.c
-index 4f1fcbfec394..ef3161645f60 100644
---- a/drivers/nvmem/sprd-efuse.c
-+++ b/drivers/nvmem/sprd-efuse.c
-@@ -408,6 +408,7 @@ static int sprd_efuse_probe(struct platform_device *pdev)
- 	econfig.read_only = false;
- 	econfig.name = "sprd-efuse";
- 	econfig.size = efuse->data->blk_nums * SPRD_EFUSE_BLOCK_WIDTH;
-+	econfig.use_fixed_of_cells = true;
- 	econfig.reg_read = sprd_efuse_read;
- 	econfig.reg_write = sprd_efuse_write;
- 	econfig.priv = efuse;
-diff --git a/drivers/nvmem/stm32-romem.c b/drivers/nvmem/stm32-romem.c
-index ba779e26937a..a6fc43acb797 100644
---- a/drivers/nvmem/stm32-romem.c
-+++ b/drivers/nvmem/stm32-romem.c
-@@ -208,6 +208,7 @@ static int stm32_romem_probe(struct platform_device *pdev)
- 	priv->cfg.priv = priv;
- 	priv->cfg.owner = THIS_MODULE;
- 	priv->cfg.type = NVMEM_TYPE_OTP;
-+	priv->cfg.use_fixed_of_cells = true;
- 
- 	priv->lower = 0;
- 
-diff --git a/drivers/nvmem/sunplus-ocotp.c b/drivers/nvmem/sunplus-ocotp.c
-index 52b928a7a6d5..57e3e0833b85 100644
---- a/drivers/nvmem/sunplus-ocotp.c
-+++ b/drivers/nvmem/sunplus-ocotp.c
-@@ -145,6 +145,7 @@ static int sp_ocotp_read(void *priv, unsigned int offset, void *value, size_t by
- 
- static struct nvmem_config sp_ocotp_nvmem_config = {
- 	.name = "sp-ocotp",
-+	.use_fixed_of_cells = true,
- 	.read_only = true,
- 	.word_size = 1,
- 	.size = QAC628_OTP_SIZE,
-diff --git a/drivers/nvmem/sunxi_sid.c b/drivers/nvmem/sunxi_sid.c
-index a970f1741cc6..6ab7aa3724a0 100644
---- a/drivers/nvmem/sunxi_sid.c
-+++ b/drivers/nvmem/sunxi_sid.c
-@@ -156,6 +156,7 @@ static int sunxi_sid_probe(struct platform_device *pdev)
- 	nvmem_cfg->dev = dev;
- 	nvmem_cfg->name = "sunxi-sid";
- 	nvmem_cfg->type = NVMEM_TYPE_OTP;
-+	nvmem_cfg->use_fixed_of_cells = true;
- 	nvmem_cfg->read_only = true;
- 	nvmem_cfg->size = cfg->size;
- 	nvmem_cfg->word_size = 1;
-diff --git a/drivers/nvmem/uniphier-efuse.c b/drivers/nvmem/uniphier-efuse.c
-index aca910b3b6f8..69b9dfe6ab6e 100644
---- a/drivers/nvmem/uniphier-efuse.c
-+++ b/drivers/nvmem/uniphier-efuse.c
-@@ -53,6 +53,7 @@ static int uniphier_efuse_probe(struct platform_device *pdev)
- 	econfig.size = resource_size(res);
- 	econfig.priv = priv;
- 	econfig.dev = dev;
-+	econfig.use_fixed_of_cells = true;
- 	nvmem = devm_nvmem_register(dev, &econfig);
- 
- 	return PTR_ERR_OR_ZERO(nvmem);
-diff --git a/drivers/nvmem/zynqmp_nvmem.c b/drivers/nvmem/zynqmp_nvmem.c
-index e28d7b133e11..d13750a4c112 100644
---- a/drivers/nvmem/zynqmp_nvmem.c
-+++ b/drivers/nvmem/zynqmp_nvmem.c
-@@ -58,6 +58,7 @@ static int zynqmp_nvmem_probe(struct platform_device *pdev)
- 
- 	priv->dev = dev;
- 	econfig.dev = dev;
-+	econfig.use_fixed_of_cells = true;
- 	econfig.reg_read = zynqmp_nvmem_read;
- 	econfig.priv = priv;
- 
-diff --git a/drivers/rtc/nvmem.c b/drivers/rtc/nvmem.c
-index 07ede21cee34..5cc039d92257 100644
---- a/drivers/rtc/nvmem.c
-+++ b/drivers/rtc/nvmem.c
-@@ -21,6 +21,7 @@ int devm_rtc_nvmem_register(struct rtc_device *rtc,
- 
- 	nvmem_config->dev = dev;
- 	nvmem_config->owner = rtc->owner;
-+	nvmem_config->use_fixed_of_cells = true;
- 	nvmem = devm_nvmem_register(dev, nvmem_config);
- 	if (IS_ERR(nvmem))
- 		dev_err(dev, "failed to register nvmem device for RTC\n");
-diff --git a/drivers/w1/slaves/w1_ds250x.c b/drivers/w1/slaves/w1_ds250x.c
-index 7592c7050d1d..538722b41f87 100644
---- a/drivers/w1/slaves/w1_ds250x.c
-+++ b/drivers/w1/slaves/w1_ds250x.c
-@@ -168,6 +168,7 @@ static int w1_eprom_add_slave(struct w1_slave *sl)
- 	struct nvmem_device *nvmem;
- 	struct nvmem_config nvmem_cfg = {
- 		.dev = &sl->dev,
-+		.use_fixed_of_cells = true,
- 		.reg_read = w1_nvmem_read,
- 		.type = NVMEM_TYPE_OTP,
- 		.read_only = true,
-diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-provider.h
-index 0262b86194eb..b3c14ce87a65 100644
---- a/include/linux/nvmem-provider.h
-+++ b/include/linux/nvmem-provider.h
-@@ -73,6 +73,7 @@ struct nvmem_cell_info {
-  * @owner:	Pointer to exporter module. Used for refcounting.
-  * @cells:	Optional array of pre-defined NVMEM cells.
-  * @ncells:	Number of elements in cells.
-+ * @use_fixed_of_cells:	Read fixed NVMEM cells from OF.
-  * @keepout:	Optional array of keepout ranges (sorted ascending by start).
-  * @nkeepout:	Number of elements in the keepout array.
-  * @type:	Type of the nvmem storage
-@@ -103,6 +104,7 @@ struct nvmem_config {
- 	struct module		*owner;
- 	const struct nvmem_cell_info	*cells;
- 	int			ncells;
-+	bool			use_fixed_of_cells;
- 	const struct nvmem_keepout *keepout;
- 	unsigned int		nkeepout;
- 	enum nvmem_type		type;
--- 
-2.34.1
-
+SGkgSmFrdWIsDQpPbiBUaHUsIDIwMjMtMDItMTYgYXQgMjA6NTAgKzA4MDAsIFlhbmNoYW8gWWFu
+ZyB3cm90ZToNCj4gPiANCj4gSGkgSmFrdWIsDQo+IA0KPiBPbiBUdWUsIDIwMjMtMDItMTQgYXQg
+MjA6MjIgLTA4MDAsIEpha3ViIEtpY2luc2tpIHdyb3RlOg0KPiA+IE9uIFNhdCwgMTEgRmViIDIw
+MjMgMTY6Mzc6MjMgKzA4MDAgWWFuY2hhbyBZYW5nIHdyb3RlOg0KPiA+ID4gK2NjZmxhZ3MteSAr
+PSAtSSQoc3JjdHJlZSkvJChzcmMpLw0KPiA+ID4gK2NjZmxhZ3MteSArPSAtSSQoc3JjdHJlZSkv
+JChzcmMpL3BjaWUvDQo+ID4gDQo+ID4gRG8geW91IHJlYWxseSBuZWVkIHRoZXNlIGZsYWdzPw0K
+PiANCj4gV2Ugd2lsbCBjaGVjayBhbmQgdXBkYXRlIGlmIGl0J3MgcmVhbGx5IHJlZHVuZGFudCBz
+b29uLg0KVXBkYXRlIHRlc3QgcmVzdWx0Lg0KQm90aCBmbGFncyBhcmUgZGVsZXRlZCwgdGhlbiBy
+dW4gdGhlIG1ha2UgY29tbWFuZCB3aXRoIA0KImJ1aWxkIGluIiBhbmQgImJ1aWxkIG1vZHVsZSIg
+b24gYSBzZXBhcmF0ZSBrZXJuZWwgdHJlZS4gQm90aCBzdWZmZXINCnRoZSBzYW1lIGJ1aWxkIGVy
+cm9yLg0K4oCcZHJpdmVycy9uZXQvd2FuL21lZGlhdGVrL3BjaWUvbXRrX3BjaS5jOjE2OjEwOiBm
+YXRhbCBlcnJvcjogbXRrX2ZzbS5oOg0KTm8gc3VjaCBmaWxlIG9yIGRpcmVjdG9yeQ0KICNpbmNs
+dWRlICJtdGtfZnNtLmgiIg0KVGhlIHJlYXNvbiBpcyB0aGF0IGFsbCBmaWxlcyBhcmUgbm90IHBs
+YWNlZCBpbiB0aGUgc2FtZSBmb2xkZXIuIFRoZQ0KZHJpdmVyIG5hbWVkIFRNSSBuZWVkcyBhIGNo
+aWxkIGZvbGRlciwgdGhlbiBuZWVkcyB0aGVzZSBmbGFncy4NCg0KQW55IGlkZWFzIG9yIGNvbW1l
+bnRzIGZvciB0aGlzPyBQbGVhc2UgaGVscCBzaGFyZSBpdCBhdCB5b3VyDQpjb252ZW5pZW5jZS4N
+Cg0KPiA+ID4gK3sNCj4gPiA+ICsJc3RydWN0IHBjaV9kZXYgKnBkZXYgPSB0b19wY2lfZGV2KG1k
+ZXYtPmRldik7DQo+ID4gPiArCWludCBpcnFfY250Ow0KPiA+ID4gKw0KPiA+ID4gKwlpcnFfY250
+ID0gcGNpX2FsbG9jX2lycV92ZWN0b3JzKHBkZXYsIE1US19JUlFfQ05UX01JTiwNCj4gPiA+IG1h
+eF9pcnFfY250LCBpcnFfdHlwZSk7DQo+ID4gPiArCW1kZXYtPm1zaV9udmVjcyA9IGlycV9jbnQ7
+DQo+ID4gPiArDQo+ID4gPiArCWlmIChpcnFfY250IDwgTVRLX0lSUV9DTlRfTUlOKSB7DQo+ID4g
+PiArCQlkZXZfZXJyKG1kZXYtPmRldiwNCj4gPiA+ICsJCQkiVW5hYmxlIHRvIGFsbG9jIHBjaSBp
+cnEgdmVjdG9ycy4gcmV0PSVkDQo+ID4gPiBtYXhpcnFjbnQ9JWQgaXJxdHlwZT0weCV4XG4iLA0K
+PiA+ID4gKwkJCWlycV9jbnQsIG1heF9pcnFfY250LCBpcnFfdHlwZSk7DQo+ID4gPiArCQlyZXR1
+cm4gLUVGQVVMVDsNCj4gPiA+ICsJfQ0KPiA+ID4gKw0KPiA+ID4gKwlyZXR1cm4gbXRrX3BjaV9y
+ZXF1ZXN0X2lycV9tc2l4KG1kZXYsIGlycV9jbnQpOw0KPiA+ID4gK30NCj4gPiA+ICsNCj4gPiA+
+ICtzdGF0aWMgdm9pZCBtdGtfcGNpX2ZyZWVfaXJxKHN0cnVjdCBtdGtfbWRfZGV2ICptZGV2KQ0K
+PiA+ID4gK3sNCj4gPiA+ICsJc3RydWN0IHBjaV9kZXYgKnBkZXYgPSB0b19wY2lfZGV2KG1kZXYt
+PmRldik7DQo+ID4gPiArCXN0cnVjdCBtdGtfcGNpX3ByaXYgKnByaXYgPSBtZGV2LT5od19wcml2
+Ow0KPiA+ID4gKwlpbnQgaTsNCj4gPiA+ICsNCj4gPiA+ICsJZm9yIChpID0gMDsgaSA8IHByaXYt
+PmlycV9jbnQ7IGkrKykNCj4gPiA+ICsJCXBjaV9mcmVlX2lycShwZGV2LCBpLCAmcHJpdi0+aXJx
+X2Rlc2NbaV0pOw0KPiA+ID4gKw0KPiA+ID4gKwlwY2lfZnJlZV9pcnFfdmVjdG9ycyhwZGV2KTsN
+Cj4gPiA+ICt9DQo+ID4gPiArDQo+ID4gPiArc3RhdGljIHZvaWQgbXRrX3BjaV9zYXZlX3N0YXRl
+KHN0cnVjdCBtdGtfbWRfZGV2ICptZGV2KQ0KPiA+ID4gK3sNCj4gPiA+ICsJc3RydWN0IHBjaV9k
+ZXYgKnBkZXYgPSB0b19wY2lfZGV2KG1kZXYtPmRldik7DQo+ID4gPiArCXN0cnVjdCBtdGtfcGNp
+X3ByaXYgKnByaXYgPSBtZGV2LT5od19wcml2Ow0KPiA+ID4gKwlpbnQgbHRyLCBsMXNzOw0KPiA+
+ID4gKw0KPiA+ID4gKwlwY2lfc2F2ZV9zdGF0ZShwZGV2KTsNCj4gPiA+ICsJLyogc2F2ZSBsdHIg
+Ki8NCj4gPiA+ICsJbHRyID0gcGNpX2ZpbmRfZXh0X2NhcGFiaWxpdHkocGRldiwgUENJX0VYVF9D
+QVBfSURfTFRSKTsNCj4gPiA+ICsJaWYgKGx0cikgew0KPiA+ID4gKwkJcGNpX3JlYWRfY29uZmln
+X3dvcmQocGRldiwgbHRyICsgUENJX0xUUl9NQVhfU05PT1BfTEFULA0KPiA+ID4gKwkJCQkgICAg
+ICZwcml2LT5sdHJfbWF4X3Nub29wX2xhdCk7DQo+ID4gPiArCQlwY2lfcmVhZF9jb25maWdfd29y
+ZChwZGV2LCBsdHIgKw0KPiA+ID4gUENJX0xUUl9NQVhfTk9TTk9PUF9MQVQsDQo+ID4gPiArCQkJ
+CSAgICAgJnByaXYtPmx0cl9tYXhfbm9zbm9vcF9sYXQpOw0KPiA+ID4gKwl9DQo+ID4gPiArCS8q
+IHNhdmUgbDFzcyAqLw0KPiA+ID4gKwlsMXNzID0gcGNpX2ZpbmRfZXh0X2NhcGFiaWxpdHkocGRl
+diwgUENJX0VYVF9DQVBfSURfTDFTUyk7DQo+ID4gPiArCWlmIChsMXNzKSB7DQo+ID4gPiArCQlw
+Y2lfcmVhZF9jb25maWdfZHdvcmQocGRldiwgbDFzcyArIFBDSV9MMVNTX0NUTDEsDQo+ID4gPiAm
+cHJpdi0+bDFzc19jdGwxKTsNCj4gPiA+ICsJCXBjaV9yZWFkX2NvbmZpZ19kd29yZChwZGV2LCBs
+MXNzICsgUENJX0wxU1NfQ1RMMiwNCj4gPiA+ICZwcml2LT5sMXNzX2N0bDIpOw0KPiA+ID4gKwl9
+DQo+ID4gPiArfQ0KPiA+ID4gKwlkZXZfaW5mbyhtZGV2LT5kZXYsICJQcm9iZSBkb25lIGh3X3Zl
+cj0weCV4XG4iLCBtZGV2LT5od192ZXIpOw0KPiA+ID4gKwlyZXR1cm4gMDsNCj4gPiA+ICsNCj4g
+PiA+ICtlcnJfc2F2ZV9zdGF0ZToNCj4gPiANCj4gPiBMYWJlbHMgc2hvdWxkIGJlIG5hbWVkIGFm
+dGVyIGFjdGlvbiB0aGV5IHBlcmZvcm0sIG5vdCB3aGVyZSB0aGV5DQo+ID4ganVtcA0KPiA+IGZy
+b20uIFBsZWFzZSBmaXggdGhpcyBldmVyeXdoZXJlLg0KPiANCj4gV2UgY2FuIGZvdW5kIHNpbWls
+YXIgc2FtcGxlcyBpbiBrZXJuZWwgY29kZXMsIG5hbWluZyB0aGUgbGFiZWwgcGVyDQo+IHdoZXJl
+IGp1bXAgZnJvbeKApg0KPiBleC4gcGNpLXN5c2ZzLmMNCj4gc2hhbGwgd2UgYXBwbHkgdGhpcyBy
+dWxlIHRvIG91ciBkcml2ZXI/DQo+IEkNCj4gdCdzIG1hbmRhdG9yeSBvciBuaWNlIHRvIGhhdmUu
+DQoNCkFueSBpZGVhcyBvciBjb21tZW50cyBmb3IgdGhpcz8gUGxlYXNlIGhlbHAgc2hhcmUgaXQg
+YXQgeW91cg0KY29udmVuaWVuY2UuDQoNCk1hbnkgdGhhbmtzLg0KeWFuY2hhby55YW5nDQo=
 
