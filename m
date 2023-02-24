@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19FA5C61DA3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Feb 2023 09:20:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAF51C64ED8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Feb 2023 09:42:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZIErPNQ+4RoTAfxtc85oSdGiGvNY8d2XkblliVRlj88=; b=xsJAqK0/FylmSP0dvAGKoztqXp
-	AXbSYEvbem3YWBsmC0f8REfkwwPOenvMb8vaSuuXk3Pg16T6vQE1CPNk6SVxgXZIX0yWWVPrmShWU
-	VJFbWtwUnsGCRm7hnNHlyOMrZeAVXKX3yQHLqZvjruH6v3Jt3XejAQ13vnkB7iGZFeyZXVuaozwqo
-	LMOEgW8ImXR6rtGAHgW9sc2qVJ1peJerFEkR4lSjrDOBPbqFUbhsNw3lzN76uabPUH5B7p2g+CuIC
-	0312iZkRtD2uzWRlMI8Q6X7nTIiQIMonGz1EW3MaNZRq13a19QbSmjxjDOh00hwJvNpc9fpSC6pEi
-	lXbGpmvg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hup0iftcL4w1rRk5wtFimO6PxuW6uWdJ0jF6+XpUdR4=; b=WpLwxWFnKcEFWjm17xgSeTayoB
+	/SR6/8ISpQu+iOSShFndqK2AjboEStMfgZZ7b3WWHAc+dd3NCckSZct0IPjwroXF1hQTX7cufYsXv
+	0MC+BpBALFqUbLkmexdtMGBU9BsCvI749eT1R7j69BHczdlqIetGSh2ZYVDe9pJbOWlFZkRkTB3aL
+	6GoNmHKVl78jW+yPuP0/vtUmapwpBYOtHwnTPswvVbMusUfUrZYnEhNjfGrxaOxujAIkE9o3dsRx+
+	ewYYGuA6WO19XvHrKLmfymNXkSh4d57ITMU2Hj2YmuNNH7qciiP/cblvgycTe2/54QehkSqMQbNnD
+	95HBdTnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVUFV-001fsq-Fq; Fri, 24 Feb 2023 09:20:17 +0000
-Received: from mail-vs1-xe34.google.com ([2607:f8b0:4864:20::e34])
+	id 1pVUam-001j1h-PN; Fri, 24 Feb 2023 09:42:16 +0000
+Received: from mail-vs1-xe31.google.com ([2607:f8b0:4864:20::e31])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVUFS-001fqU-1Z
-	for linux-mediatek@lists.infradead.org; Fri, 24 Feb 2023 09:20:15 +0000
-Received: by mail-vs1-xe34.google.com with SMTP id d7so14834923vsj.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 24 Feb 2023 01:20:04 -0800 (PST)
+	id 1pVUae-001iyP-Po
+	for linux-mediatek@lists.infradead.org; Fri, 24 Feb 2023 09:42:10 +0000
+Received: by mail-vs1-xe31.google.com with SMTP id f31so20625760vsv.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 24 Feb 2023 01:42:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZIErPNQ+4RoTAfxtc85oSdGiGvNY8d2XkblliVRlj88=;
-        b=EsI3t1aKn2uzy3PhReMsj8zr61m1aWNI3Jz88PBVgpknHdWQYwDZpuIXUzjLx4i3Gg
-         tAJ+H5isQMGJBnLvGprO+qOkHkolourLmBAuf3jyjbjVTR60xA44119U3YqbjTiv8SKv
-         R0xAxsZFmysFWhi4Z6FWtgJCpbVhmqxgn0vU8=
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=hup0iftcL4w1rRk5wtFimO6PxuW6uWdJ0jF6+XpUdR4=;
+        b=ILlbVCTYVbpnbi+jGGAGx3PaoBWbhKoVb6P+oj/K1qHYViVWJaIetHfDytZ27sv5ta
+         vbT1LgpOKrk1fogvyMOL2rd/aQi/sc4z2bOcGAXaAbNnwvVddJ97/I3KDSt8O0VZJeyV
+         AWxdSUQjjBnxOZ60ohawiP8oRX2MBClGagJiQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ZIErPNQ+4RoTAfxtc85oSdGiGvNY8d2XkblliVRlj88=;
-        b=t8rccwEct3l5Q6L5nMtzo921kwddAGu+KLc4iBbtLm01OdOd+EvWjk2rXShgWQilTh
-         eYVY9mJTX+LgVfogjTnzBy+Jpa+0g9DhUtndoTb96arNKQTSfnM3wh+CVKRU6cDdwMN1
-         L9VZE2C15jf3hXn+XDCvASQgdYBmb9R8uty3ff4yY87yuXuKDr9E3rBR5od6DcU2RsHr
-         hap3Hak+5Z7Bg8ubdWUdtj/uhgLU/QQ/1up86Ci7bISoUmBwkA2NdxdJw5Msig2Vzuev
-         AOJcuQUHKsKa6FKtJHAqq1SHlCxDNCulJhBHmCO1FASaozRiGgT5yHMmgalNIL71Ugy4
-         U9Dg==
-X-Gm-Message-State: AO0yUKVM8mYHnFtRL5eeaYs+J4oCqHpfWcozgFWJYzTXk70JZuU7TF2e
-	7sKoD6veJqhTjeJuI37dzU2wduJ4o1Z4YEky/B92hA==
-X-Google-Smtp-Source: AK7set/4I7NL/6Fx/a0lveJQyrNy6DQ6pD3eAfVaTlWQEZeaGIbAFetGOErsZ6Sbu6SQVD0aUWpjuLbzx6uZl1JQPAE=
-X-Received: by 2002:a05:6102:1592:b0:412:5424:e58e with SMTP id
- g18-20020a056102159200b004125424e58emr2324416vsv.0.1677230403544; Fri, 24 Feb
- 2023 01:20:03 -0800 (PST)
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=hup0iftcL4w1rRk5wtFimO6PxuW6uWdJ0jF6+XpUdR4=;
+        b=dwS6HjfQ1mpoGHfuavbozUm1NhO92T9kwa7+RfDi5CrbB3oso3k6KVTePZScglTlKl
+         kncNWdqDK/GpMmFN6iDIeyu3XbxXHVYez/RhItLPQod8VBIEhBR3X3od7xHzSJJ/WTI8
+         uBnnNYxoNWbraVtLSV5EsZiZLxfLFJVAAEbdOgh47AMFejZCtXyPTUqcA+laCZEATlMI
+         9VUxC4agbV+kIzpnPVIPflEv0juBM29g5Zh3DTrVn3Z4syOiM2M9grRpIreZQo/qwpLu
+         PxmJHo0aHTFYe0Sop4WzZKEwEeDxSocnCVmf8p4ZvbelT3fmUX4VesvkeQU6i4/f4c7d
+         DYAg==
+X-Gm-Message-State: AO0yUKV4tCQzaaP2krOWwe+Ng0yzZdSULsX8AEjSnMaRlvZ0JlXwFOD8
+	1TyH4jgSqdTyz45sExSjxFT4XRYA263S7l8XPtQbdg==
+X-Google-Smtp-Source: AK7set9DUpz0pEONX2reqzfDYEcSwsr+i/Um3XAlW3+tABX0lBa5XkMywVbJR0HhqBPXZ89dHJNKXj2sT8/vLVhiVck=
+X-Received: by 2002:a67:d21c:0:b0:402:999f:51dd with SMTP id
+ y28-20020a67d21c000000b00402999f51ddmr2176299vsi.3.1677231723939; Fri, 24 Feb
+ 2023 01:42:03 -0800 (PST)
 MIME-Version: 1.0
-References: <20230223145426.193590-1-angelogioacchino.delregno@collabora.com> <20230223145426.193590-2-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230223145426.193590-2-angelogioacchino.delregno@collabora.com>
+References: <20230223134345.82625-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230223134345.82625-1-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 24 Feb 2023 17:19:52 +0800
-Message-ID: <CAGXv+5E5T3hWs1M2D8QL2SGXYfsevaEw7gzK8XgD2ns2Cx_G9A@mail.gmail.com>
-Subject: Re: [PATCH v1 1/4] arm64: dts: mediatek: cherry: Add platform thermal configuration
+Date: Fri, 24 Feb 2023 17:41:52 +0800
+Message-ID: <CAGXv+5HvQugnQjJbdqOuQKeqpFgJOvtzzwhVD9FL2CKgxxJYQQ@mail.gmail.com>
+Subject: Re: [PATCH v2 00/16] Enable GPU with DVFS support on MediaTek SoCs
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, 
 	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230224_012014_122037_C0CB6081 
-X-CRM114-Status: GOOD (  17.11  )
+X-CRM114-CacheID: sfid-20230224_014208_844495_7F409538 
+X-CRM114-Status: GOOD (  15.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,178 +85,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 23, 2023 at 10:55 PM AngeloGioacchino Del Regno
+On Thu, Feb 23, 2023 at 9:43 PM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> This platform has three auxiliary NTC thermistors, connected to the
-> SoC's ADC pins. Enable the auxadc in order to be able to read the
-> ADC values, add a generic-adc-thermal LUT for each and finally assign
-> them to the SoC's thermal zones.
+> Changes in v2:
+>  - Changed MT8186 to use only two power domains for the GPU.
 >
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../boot/dts/mediatek/mt8195-cherry.dtsi      | 124 ++++++++++++++++++
->  1 file changed, 124 insertions(+)
+> We finally have working GPU DVFS on MediaTek SoCs.
+> On Panfrost.
+> For real.
+> ...and the best part is that it's going upstream.
 >
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> index 24669093fbed..ae2052a7160d 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> @@ -104,6 +104,108 @@ ppvar_sys: regulator-ppvar-sys {
->                 regulator-boot-on;
->         };
+> In order to get GPU DVFS working, it was necessary to satisfy a
+> specific constraint (which is different, depending on the SoC)
+> between two regulators: GPU VCORE and GPU SRAM.
+> This was done through adding the mtk-regulator-coupler driver,
+> which transparently manages the voltage relation between these
+> two vregs, hence completely eliminating the need to manage these
+> regulators in the Panfrost driver; this solves the long standing
+> issue with devfreq+opp tables not supporting managing voltages
+> for two regulators per opp entry out of the box, due to which
+> we never got GPU DVFS on those SoCs, often locking them out to
+> a low GPU frequency.
 >
-> +       tboard_thermistor1: thermal-sensor-t1 {
-> +               compatible = "generic-adc-thermal";
-> +               #thermal-sensor-cells = <0>;
-> +               io-channels = <&auxadc 0>;
-> +               io-channel-names = "sensor-channel";
-> +               temperature-lookup-table = <    (-5000) 4241
-> +                                               0 4063
-> +                                               5000 3856
-> +                                               10000 3621
-> +                                               15000 3364
-> +                                               20000 3091
-> +                                               25000 2810
-> +                                               30000 2526
-> +                                               35000 2247
-> +                                               40000 1982
-> +                                               45000 1734
-> +                                               50000 1507
-> +                                               55000 1305
-> +                                               60000 1122
-> +                                               65000 964
-> +                                               70000 827
-> +                                               75000 710
-> +                                               80000 606
-> +                                               85000 519
-> +                                               90000 445
-> +                                               95000 382
-> +                                               100000 330
-> +                                               105000 284
-> +                                               110000 245
-> +                                               115000 213
-> +                                               120000 183
-> +                                               125000 161>;
-> +       };
-> +
-> +       tboard_thermistor2: thermal-sensor-t2 {
-> +               compatible = "generic-adc-thermal";
-> +               #thermal-sensor-cells = <0>;
-> +               io-channels = <&auxadc 0>;
-> +               io-channel-names = "sensor-channel";
-> +               temperature-lookup-table = <    (-5000) 4241
-> +                                               0 4063
-> +                                               5000 3856
-> +                                               10000 3621
-> +                                               15000 3364
-> +                                               20000 3091
-> +                                               25000 2810
-> +                                               30000 2526
-> +                                               35000 2247
-> +                                               40000 1982
-> +                                               45000 1734
-> +                                               50000 1507
-> +                                               55000 1305
-> +                                               60000 1122
-> +                                               65000 964
-> +                                               70000 827
-> +                                               75000 710
-> +                                               80000 606
-> +                                               85000 519
-> +                                               90000 445
-> +                                               95000 382
-> +                                               100000 330
-> +                                               105000 284
-> +                                               110000 245
-> +                                               115000 213
-> +                                               120000 183
-> +                                               125000 161>;
-> +       };
-> +
-> +       tboard_thermistor3: thermal-sensor-t3 {
-> +               compatible = "generic-adc-thermal";
-> +               #thermal-sensor-cells = <0>;
-> +               io-channels = <&auxadc 0>;
-> +               io-channel-names = "sensor-channel";
-> +               temperature-lookup-table = <    (-5000) 4241
-> +                                               0 4063
-> +                                               5000 3856
-> +                                               10000 3621
-> +                                               15000 3364
-> +                                               20000 3091
-> +                                               25000 2810
-> +                                               30000 2526
-> +                                               35000 2247
-> +                                               40000 1982
-> +                                               45000 1734
-> +                                               50000 1507
-> +                                               55000 1305
-> +                                               60000 1122
-> +                                               65000 964
-> +                                               70000 827
-> +                                               75000 710
-> +                                               80000 606
-> +                                               85000 519
-> +                                               90000 445
-> +                                               95000 382
-> +                                               100000 330
-> +                                               105000 284
-> +                                               110000 245
-> +                                               115000 213
-> +                                               120000 183
-> +                                               125000 161>;
-> +       };
-> +
->         usb_vbus: regulator-5v0-usb-vbus {
->                 compatible = "regulator-fixed";
->                 regulator-name = "usb-vbus";
-> @@ -243,6 +345,10 @@ &gpu {
->         mali-supply = <&mt6315_7_vbuck1>;
->  };
+> This changes. Right now!
 >
-> +&auxadc {
-> +       status = "okay";
-> +};
-> +
->  &i2c0 {
->         status = "okay";
+> Tested on MT8192, MT8195 Chromebooks.
 >
-> @@ -1074,6 +1180,24 @@ mt6315_7_vbuck1: vbuck1 {
->         };
->  };
+> This series depends on [1].
 >
-> +&thermal_zones {
-> +       ap_ntc1 {
-> +               polling-delay = <1000>;
-> +               polling-delay-passive = <0>;
-> +               thermal-sensors = <&tboard_thermistor1>;
+> [1]: https://lore.kernel.org/lkml/20230223133440.80941-1-angelogioacchino=
+.delregno@collabora.com/
+>
+> Alyssa Rosenzweig (2):
+>   arm64: dts: mediatek: mt8192: Add GPU nodes
+>   arm64: dts: mediatek: mt8192-asurada: Enable GPU
+>
+> AngeloGioacchino Del Regno (13):
+>   arm64: dts: mediatek: mt8183-kukui: Couple VGPU and VSRAM_GPU
+>     regulators
+>   arm64: dts: mediatek: mt8183-kukui: Override vgpu/vsram_gpu
+>     constraints
+>   arm64: dts: mediatek: mt8183: Remove second opp-microvolt entries from
+>     gpu table
+>   arm64: dts: mt8183-pumpkin: Couple VGPU and VSRAM_GPU regulators
+>   arm64: dts: mediatek: mt8183-evb: Couple VGPU and VSRAM_GPU regulators
+>   arm64: dts: mediatek: mt8183: Use mediatek,mt8183b-mali as GPU
+>     compatible
+>   arm64: dts: mediatek: mt8192: Add mfg_ref_sel clock to MFG0 domain
+>   arm64: dts: mediatek: mt8192-asurada: Assign sram supply to MFG1 pd
+>   arm64: dts: mediatek: mt8192-asurada: Couple VGPU and VSRAM_OTHER
+>     regulators
+>   arm64: dts: mediatek: mt8195: Add mfg_core_tmp clock to MFG1 domain
+>   arm64: dts: mt8195: Add panfrost node for Mali-G57 Valhall Natt GPU
+>   arm64: dts: mediatek: mt8195-cherry: Enable Mali-G57 GPU
+>   arm64: dts: mediatek: mt8186: Add GPU node
+>
+> N=C3=ADcolas F. R. A. Prado (1):
+>   arm64: dts: mediatek: mt8192-asurada: Add MFG0 domain supply
 
-Without trip points, this doesn't satisfy the bindings, nor does the
-driver probe.
+Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 
-> +       };
-> +       ap_ntc2 {
-> +               polling-delay = <1000>;
-> +               polling-delay-passive = <0>;
-> +               thermal-sensors = <&tboard_thermistor2>;
-> +       };
-> +       ap_ntc3 {
-> +               polling-delay = <1000>;
-> +               polling-delay-passive = <0>;
-> +               thermal-sensors = <&tboard_thermistor3>;
-> +       };
-> +};
-> +
->  &u3phy0 {
->         status = "okay";
->  };
-> --
-> 2.39.2
->
->
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+on MT8183 Juniper, MT8192 Hayato, MT8195 Tomato, MT8186 not-yet-upstreamed
+device.
 
