@@ -4,58 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C76CC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Feb 2023 13:53:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72ABAC678D5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Feb 2023 14:07:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jiqqD+HJrm5EG4I770vjKlUjnmFFDbpbxUea6nfqRjU=; b=G8dEjCW+UvzoRNCrcrJVokjhRj
-	rW9N3tViv7erNrUu5OUWUuw8+9XqEnr/abV8EfztEJL0XFDZR6oilXJ9D2KKQ4gsvI9lga+bXBG2+
-	0u3XrPK0WBJTl6w0gXRC60VRqlfvVqwpcYNLbX7vvxmbZZ5JwE/DXYqARMu9f+MzkplQVJUReOczn
-	bWN0qoFNTF4gMaQCr6v2MP9/f7Gq+Ep9261T5/bPAY9eKSIloDTIEMCHBT3gn4Z52r5Oo1jC0SbIr
-	BBFcNLGDTYtlbqNcJBhDz8yeTk/qf1OvtIXWUDHLVs7p8GfmJbBYxSDEhQxMZYL+VnpjQb05qyiAZ
-	ERfovTUQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wybJnM53KevypaA7rKqPG0maKqm0ssJ3PZrRffZT0iw=; b=Yim2MxI/SWWq94
+	h+JWj7Sj+O/nDG57o8popOUgl73UctdcXOENgJR8ZH3FvwGPJ2ihABtxJw6+uPdncdInMs2FCMaTZ
+	WFrELU5QaKE+d0zg51k+4DPM4Ayam8bKdozwhSlwwNnehU2hfO70wSobbsJuQt5YCWVbcWBT3ELqr
+	UxOLmvG6IavwR3Z8JME1Hj1gq8aBm8CMr/6/dDjDTdGzExPAYYdtX1Lr3cRKX/SQWkntDo6ch9NUx
+	dfPCdunUJqH8w+gp7Gj5ti7/q3aSgZDp9yxfhkHG2J3UEBVJAAgp4VYupZN2x9vsQlpUQ47hlHRPf
+	FDkqoE9/mEx1uvDIckWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVYVs-002fMF-GL; Fri, 24 Feb 2023 13:53:28 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVYVb-002fEA-9i; Fri, 24 Feb 2023 13:53:13 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id C76CC1042;
-	Fri, 24 Feb 2023 05:53:49 -0800 (PST)
-Received: from [10.1.38.16] (e122027.cambridge.arm.com [10.1.38.16])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 454093F71A;
-	Fri, 24 Feb 2023 05:53:04 -0800 (PST)
-Message-ID: <8c20f01a-2123-b76d-bf70-bf75aec9efb8@arm.com>
-Date: Fri, 24 Feb 2023 13:53:02 +0000
+	id 1pVYjj-002hOu-Gu; Fri, 24 Feb 2023 14:07:47 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pVYjX-002hMe-VI; Fri, 24 Feb 2023 14:07:37 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 5A82661843;
+	Fri, 24 Feb 2023 14:07:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A58EC433EF;
+	Fri, 24 Feb 2023 14:07:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1677247654;
+	bh=6WgQseSSE1/0RjYTZmTF8phVwKCFajro+gk7cetd7fg=;
+	h=From:Subject:Date:To:Cc:From;
+	b=e3icBfRRHSaWBxoU7LXlhkkJ0dYzqRGcFoeLU+fspHDzlaA9zBC8GeNEr0XoWqRYb
+	 XrWCoGjjVBIjqcs7d4Fn0XnOqYQPZ66sLSLH85VvoqWnwlZbCSUYTqBzMqkbk9Gol+
+	 qJyNPR1dH8GkTHU/eTurusY2fu4NeKRdFDjG5Ci98wc7ru8+xQso8CEw4jFzJd9hlb
+	 aZABOvgqo7J2hWYjnyLse4bS0PkJM5HA1SkEOKbThYc9T6S5x7xLhJ60RS0EJu/apn
+	 lhCFM1kQJZGHnb3Qjo7eTeasTkDA7K/1drnv3JHFpNrmyqdmpU7BU6FNYQU88xQxys
+	 CN+qvpn2mCfkw==
+From: Mark Brown <broonie@kernel.org>
+Subject: [PATCH 0/4] ASoC: mt8192: Fixes from initial glance at kselftest
+ run
+Date: Fri, 24 Feb 2023 14:03:54 +0000
+Message-Id: <20230223-asoc-mt8192-quick-fixes-v1-0-9a85f90368e1@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH v3 08/11] drm/panfrost: Add the MT8192 GPU ID
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chen-Yu Tsai <wenst@chromium.org>,
- Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
-Cc: airlied@gmail.com, daniel@ffwll.ch, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, robh@kernel.org,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230223133440.80941-1-angelogioacchino.delregno@collabora.com>
- <20230223133440.80941-9-angelogioacchino.delregno@collabora.com>
- <CAGXv+5Hzin_5aTqMRRztWbDR64z6_oFOx2hUVnpJBvk9xDzrfw@mail.gmail.com>
- <61ebdd1a-2737-0516-08fd-3b9aa0ddd4fe@collabora.com>
-Content-Language: en-GB
-From: Steven Price <steven.price@arm.com>
-In-Reply-To: <61ebdd1a-2737-0516-08fd-3b9aa0ddd4fe@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAMrD+GMC/x2L0QrCMAwAf2Xk2UCbwqz+iviQdZkLsm42U4Sxf
+ 7fz8Y67DUyKisG12aDIR03nXMGfGkgj54eg9pWBHAVHFJBtTjit0V8IX29NTxz0K4ZxCOLYxzN
+ RC/Xu2AS7wjmNx79Oy2GXIv+8qtt9338NhGfcfwAAAA==
+To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Mark Brown <broonie@kernel.org>
+X-Mailer: b4 0.12.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=949; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=6WgQseSSE1/0RjYTZmTF8phVwKCFajro+gk7cetd7fg=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBj+MSgptemsOYFwoH0fc5cIPy9dkZo6raLVN9t/bwB
+ +1VF2laJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCY/jEoAAKCRAk1otyXVSH0F4CB/
+ wO8wM26BECdCimtw2TUtGGjddmXPhsckwQto7lBLJnqtFnOxrYE4eHSGXjRkRyvFN1BjKnEObQY6Cb
+ ZrzIw5s7kYMxAd0ik6y/+TOM5X+a2h7PJvwkfFlQEnTNUXz06e+Wr7+2th0RPw28ovpvrv9suUyjMf
+ PrlaTSKbcvL/ThYL94y2bKP8bqL9segFhHf8NwSpneSBlVAsg3lHNb2tUKoVxZP4OeTMNSgMTlyYxd
+ GfYjWV1qZgwIKdzteb1WDVZQn20VkgeGqSy4G+XqdAsor1IPfo26xdcE0snqTs7tID86Yvi9yBN9ss
+ MfryzIZcD7L/hWfFve8dZ9/dvrj84m
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230224_055311_482395_519D0C7C 
-X-CRM114-Status: GOOD (  20.28  )
+X-CRM114-CacheID: sfid-20230224_060736_076537_03DAF817 
+X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,91 +89,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24/02/2023 13:08, AngeloGioacchino Del Regno wrote:
-> Il 24/02/23 11:06, Chen-Yu Tsai ha scritto:
->> On Thu, Feb 23, 2023 at 9:35 PM AngeloGioacchino Del Regno
->> <angelogioacchino.delregno@collabora.com> wrote:
->>>
->>> From: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
->>>
->>> MediaTek MT8192 has a Mali-G57 with a special GPU ID. Add its GPU ID,
->>> but treat it as otherwise identical to a standard Mali-G57.
->>>
->>> We do _not_ fix up the GPU ID here -- userspace needs to be aware of the
->>> special GPU ID, in case we find functional differences between
->>> MediaTek's implementation and the standard Mali-G57 down the line.
->>>
->>> Signed-off-by: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
->>> Signed-off-by: AngeloGioacchino Del Regno
->>> <angelogioacchino.delregno@collabora.com>
->>> Reviewed-by: Steven Price <steven.price@arm.com>
->>
->> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
->>
->> As previously mentioned, MT8195 Mali G57 has minor revision number 1.
->> Do we need to handle that?
->>
-> 
-> Maybe something went wrong while sending the reply to the same question
-> on v2?
-> 
-> Anyway, from what I can see on my MT8195 machine, it works fine without
-> adding
-> any particular handling...
-> 
-> Alyssa, Steven,
-> are you aware of anything that we should consider?
+This is a collection of fixes I came up after glancing through an
+initial test run with the Spherion Chromebook on KernelCI.  There are
+more issues flagged, this is just what I fixed thus far - the volume
+controls on the MT6359 have issues for example, and a lot of controls
+aren't marked as Switches like they should be.
 
-The minor revision means that the set of HW workarounds might be
-different. Specifically it appears that "BASE_HW_ISSUE_TTRX_3485"
-applies to G57 ('Natt') r0p0 but not r0p1.
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+Mark Brown (4):
+      ASoC: mt8192: Remove spammy log messages
+      ASoC: mt8192: Fix event generation for controls
+      ASoC: mt8192: Report an error if when an invalid sidetone gain is written
+      ASoC: mt8192: Fix range for sidetone positive gain
 
-That particular workaround is a horrendous "dummy job" in kbase and we
-don't have an implementation in Panfrost. However Panfrost also doesn't
-(yet[1]) proactively SOFT_STOP jobs so is also unlikely to be affected.
+ sound/soc/mediatek/mt8192/mt8192-dai-adda.c | 58 ++++++++++-------------------
+ 1 file changed, 19 insertions(+), 39 deletions(-)
+---
+base-commit: b361d5d2464a88184f6e17a6462719ba79180b1a
+change-id: 20230223-asoc-mt8192-quick-fixes-8f3e0a187226
 
-TLDR; Minor revision 1 has a HW bug fixed, Panfrost isn't affected by
-the bug anyway.
-
-Steve
-
-[1] It's been on my todo list for a while to look at improving job
-scheduling, but to be honest I doubt I'm going to get round to it with
-Panfrost, and PanCSF obviously changes the job scheduling anyway.
-
-> Regards,
-> Angelo
-> 
->>> ---
->>>   drivers/gpu/drm/panfrost/panfrost_gpu.c | 8 ++++++++
->>>   1 file changed, 8 insertions(+)
->>>
->>> diff --git a/drivers/gpu/drm/panfrost/panfrost_gpu.c
->>> b/drivers/gpu/drm/panfrost/panfrost_gpu.c
->>> index 6452e4e900dd..d28b99732dde 100644
->>> --- a/drivers/gpu/drm/panfrost/panfrost_gpu.c
->>> +++ b/drivers/gpu/drm/panfrost/panfrost_gpu.c
->>> @@ -204,6 +204,14 @@ static const struct panfrost_model gpu_models[] = {
->>>
->>>          GPU_MODEL(g57, 0x9001,
->>>                  GPU_REV(g57, 0, 0)),
->>> +
->>> +       /* MediaTek MT8192 has a Mali-G57 with a different GPU ID
->>> from the
->>> +        * standard. Arm's driver does not appear to handle this model.
->>> +        * ChromeOS has a hack downstream for it. Treat it as
->>> equivalent to
->>> +        * standard Mali-G57 for now.
->>> +        */
->>> +       GPU_MODEL(g57, 0x9003,
->>> +               GPU_REV(g57, 0, 0)),
->>>   };
->>>
->>>   static void panfrost_gpu_init_features(struct panfrost_device *pfdev)
->>> -- 
->>> 2.39.2
->>>
-> 
-> 
+Best regards,
+-- 
+Mark Brown <broonie@kernel.org>
 
 
