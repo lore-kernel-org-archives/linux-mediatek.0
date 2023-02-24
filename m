@@ -4,84 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3A81C6FA8E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Feb 2023 19:51:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7736BC6FA8E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Feb 2023 21:06:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/Zx6BADBRska34sUaorwL9Ae662J4TmlI3xIuYsWsc0=; b=JUUkqMxRRnHZdAVhpEayQ37dLF
-	aRRbRSfgbXae3xzK+/ciD3vdiXrLAONGYm7Xjx+3uS6f7Q/sPra2FSe+Lb/YgrbRwKSlRdqhrNvSa
-	xGBqu2bMgYVWpJQnQZzNi+upLkqkoAjvQ2GAJGU05sLG7o5w42NdmIJMnfe7nrbMyJgGcLbkPGYT0
-	mmvXBufVxVN3SKL8vAN1+lM2UdYTMGYcUoMguMsEZH5+MdUAIkzvAwTbK5+eBqwUm5nux3T3+QkGy
-	VLPkJrE21vTWiqXY9jrt3cl+33jXHgFIFfW565LYX/t6rb7+Oqxo9/WOVMO2EpiXDRGgXKDt2Wsg1
-	azOqfQeA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dvSuiGSu1GkO4ghHm5O4huEsvqt0XEJOLenULrIzZls=; b=lrBNgPE3QYCBDwpXuVzKhTZ6tw
+	eFwrWDqmKKXKf7thKxtcYzT3dNTsDxAu8dSKox/SZYebYu8P07GR3RbIQNYJXUFmleGD3qMvkWpjU
+	OYGtiYS51Y7MZjYNFWBh0vdh03Eiog9PcVLAz8lEFYGL4yB0mvGnwefpU6gK+/zsP2J80ObSVgGB3
+	SCWpXCjHGR6teNxxw9nJxPpcShTjx8qv5Upg8s38zBBjQYaG24oe73May6DPSDsW3UHyURuhyyYK0
+	z4pvA4KE6Y0P04eLD/AGbuorCL7TWomoCaQU32+DF5nXtOs1DhXwquEddKM4lQHvoDILzH3XIVvWK
+	ufzjvoUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVe5r-003img-2w; Fri, 24 Feb 2023 19:50:59 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pVfH2-003t3f-2K; Fri, 24 Feb 2023 21:06:36 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVe5o-003imA-Cw
-	for linux-mediatek@lists.infradead.org; Fri, 24 Feb 2023 19:50:57 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id DB8C161956;
-	Fri, 24 Feb 2023 19:50:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2C358C433D2;
-	Fri, 24 Feb 2023 19:50:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1677268254;
-	bh=DxSc5qyoJ3WetPubE5FBomItk0PCI3+VL+zlQed0ojE=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=tSH3us1vBbUCfEsZ6FMHC5txQio/GgPk3pwL4mgWsm2eWbEdeEVZuqyzPHEJf1Lv/
-	 41K7CyS5MK3Cquy3xwxCb73DyOY1UOnUh1OmK/TIPpTjgF9RlDgn7g22IWuhPcP7xl
-	 b8zSoq79YNCAG7T6jskr4k+7aqV1FWwCZgTehv/mAlnjw/6HGGqQ17gCcr56KkrONT
-	 3dQtOThgDyh8BmGRN64ucXCQZij41ySd9x0PyLyI/HGQhsZKMkdsTYRNOgA7yXd98e
-	 LSUGk8w2LmrLzZ8t8nUSGgNYtt+nkTPoCTrwKoJjOc5c3q4X/8djvfySzBldSZNJiw
-	 m89YMERgCba7w==
-Date: Fri, 24 Feb 2023 11:50:52 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: "Yanchao Yang (=?UTF-8?B?5p2o5b2m6LaF?=)" <Yanchao.Yang@mediatek.com>
-Cc: "Chris Feng (=?UTF-8?B?5Yav5L+d5p6X?=)" <Chris.Feng@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "Mingliang Xu (=?UTF-8?B?5b6Q5piO5Lqu?=)" <mingliang.xu@mediatek.com>, "Min
- Dong (=?UTF-8?B?6JGj5pWP?=)" <min.dong@mediatek.com>, "linuxwwan@intel.com"
- <linuxwwan@intel.com>, "m.chetan.kumar@intel.com"
- <m.chetan.kumar@intel.com>, "Liang Lu (=?UTF-8?B?5ZCV5Lqu?=)"
- <liang.lu@mediatek.com>, "Haijun Liu (=?UTF-8?B?5YiY5rW35Yab?=)"
- <haijun.liu@mediatek.com>, "Haozhe Chang (=?UTF-8?B?5bi45rWp5ZOy?=)"
- <Haozhe.Chang@mediatek.com>, "Hua Yang (=?UTF-8?B?5p2o5Y2O?=)"
- <Hua.Yang@mediatek.com>, "ryazanov.s.a@gmail.com" <ryazanov.s.a@gmail.com>,
- "Xiayu Zhang (=?UTF-8?B?5byg5aSP5a6H?=)" <Xiayu.Zhang@mediatek.com>,
- "loic.poulain@linaro.org" <loic.poulain@linaro.org>, "pabeni@redhat.com"
- <pabeni@redhat.com>, "edumazet@google.com" <edumazet@google.com>, "Ting
- Wang (=?UTF-8?B?546L5oy6?=)" <ting.wang@mediatek.com>,
- "johannes@sipsolutions.net" <johannes@sipsolutions.net>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Aiden Wang (
- =?UTF-8?B?546L5ZKP6bqS?=)" <Aiden.Wang@mediatek.com>, "Felix Chen (
- =?UTF-8?B?6ZmI6Z2e?=)" <Felix.Chen@mediatek.com>, "Lambert Wang (
- =?UTF-8?B?546L5Lyf?=)" <Lambert.Wang@mediatek.com>, "davem@davemloft.net"
- <davem@davemloft.net>, "Mingchuang Qiao (=?UTF-8?B?5LmU5piO6Zev?=)"
- <Mingchuang.Qiao@mediatek.com>, "Guohao Zhang (=?UTF-8?B?5byg5Zu96LGq?=)"
- <Guohao.Zhang@mediatek.com>
-Subject: Re: [PATCH net-next v3 01/10] net: wwan: tmi: Add PCIe core
-Message-ID: <20230224115052.5bdcc54d@kernel.org>
-In-Reply-To: <d6f13d66a5ab0224f2ae424a0645d4cf29c2752b.camel@mediatek.com>
-References: <20230211083732.193650-1-yanchao.yang@mediatek.com>
-	<20230211083732.193650-2-yanchao.yang@mediatek.com>
-	<20230214202229.50d07b89@kernel.org>
-	<2e518c17bf54298a2108de75fcd35aaf2b3397d3.camel@mediatek.com>
-	<d6f13d66a5ab0224f2ae424a0645d4cf29c2752b.camel@mediatek.com>
+	id 1pVfGy-003t2D-Se; Fri, 24 Feb 2023 21:06:34 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pVfGp-0002JD-34;
+	Fri, 24 Feb 2023 22:06:24 +0100
+Date: Fri, 24 Feb 2023 21:06:17 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>,
+	Edward-JW Yang <edward-jw.yang@mediatek.com>,
+	Johnson Wang <johnson.wang@mediatek.com>,
+	Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+	Miles Chen <miles.chen@mediatek.com>,
+	Sam Shih <sam.shih@mediatek.com>
+Subject: Re: [PATCH RFC 1/4] dt-bindings: clock: rename mt7986-clk.h to
+ mediatek,mt7986-clk.h
+Message-ID: <Y/kmj36e4jSfLdVN@makrotopia.org>
+References: <cover.1677089171.git.daniel@makrotopia.org>
+ <15d718a2d696d29b48668b9ab5531369c537a1e6.1677089171.git.daniel@makrotopia.org>
+ <ace28a97-b43e-4b24-52d0-93bc21263aff@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ace28a97-b43e-4b24-52d0-93bc21263aff@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230224_115056_558019_A2721A31 
-X-CRM114-Status: GOOD (  17.82  )
+X-CRM114-CacheID: sfid-20230224_130632_949053_875E2889 
+X-CRM114-Status: GOOD (  13.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,40 +74,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 24 Feb 2023 07:39:33 +0000 Yanchao Yang (=E6=9D=A8=E5=BD=A6=E8=B6=
-=85) wrote:
-> > > Do you really need these flags? =20
-> >=20
-> > We will check and update if it's really redundant soon. =20
-> Update test result.
-> Both flags are deleted, then run the make command with=20
-> "build in" and "build module" on a separate kernel tree. Both suffer
-> the same build error.
-> =E2=80=9Cdrivers/net/wan/mediatek/pcie/mtk_pci.c:16:10: fatal error: mtk_=
-fsm.h:
-> No such file or directory
->  #include "mtk_fsm.h""
-> The reason is that all files are not placed in the same folder. The
-> driver named TMI needs a child folder, then needs these flags.
->=20
-> Any ideas or comments for this? Please help share it at your
-> convenience.
+On Thu, Feb 23, 2023 at 11:18:37AM +0100, Krzysztof Kozlowski wrote:
+> On 22/02/2023 19:09, Daniel Golle wrote:
+> > Rename dt-bindings header file mt7986-clk.h to mediatek,mt7986-clk.h,
+> > propagate this change also to mt7986a.dtsi which is the only user.
+> > 
+> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt7986a.dtsi                       | 2 +-
+> >  drivers/clk/mediatek/clk-mt7986-infracfg.c                      | 2 +-
+> >  drivers/clk/mediatek/clk-mt7986-topckgen.c                      | 2 +-
+> >  .../dt-bindings/clock/{mt7986-clk.h => mediatek,mt7986-clk.h}   | 0
+> 
+> You cannot have bindings and DTS and drivers mixed together. Which
+> points to fact - you cannot make such change... Also your commit msg
+> does not justify "why" you are doing it.
 
-Relative paths work, right?
+The reason is simply consistency with most other SoCs.
 
-> > > Labels should be named after action they perform, not where they
-> > > jump
-> > > from. Please fix this everywhere. =20
-> >=20
-> > We can found similar samples in kernel codes, naming the label per
-> > where jump from=E2=80=A6
-> > ex. pci-sysfs.c
-> > shall we apply this rule to our driver?
-> > I
-> > t's mandatory or nice to have. =20
->=20
-> Any ideas or comments for this? Please help share it at your
-> convenience.
+So to make such a change possible, I should do it in three steps, right?
+Step 1: dt-bindings: copy mt7986-clk.h to mediatek,mt7986-clk.h
+Step 2: changes in drivers
+Step 3: dt-bindings: remove mt7986-clk.h
 
-It's mandatory for new code.
+Would this change be acceptable if carried out in 3 commits?
+And using the same strategy also the other changes suggested in the
+series?
+
+Thank you!
+
+Best regards
+
+Daniel
 
