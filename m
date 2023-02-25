@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40FD7C64EC7
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Feb 2023 10:17:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA98CC7EE2D
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Feb 2023 10:17:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NZlTyV5gXSWpUhRTyRZWDDfy9ZYKtV/X37QY0RZg8Qc=; b=F5gjXb+3NPbdOPfEZ4DM98dW5e
-	g/TBQM28rDDY84z/VsIihK0yARcObwGoZyX6CM+DI8mzPsu4sBZLDbKuyuDiO/wxVISHE1s68AU31
-	c7bvgR3CZoR0WuKriLOiVKwoK11Ue+DWLDHOWLdUODAQEEJJn3U/njbxbVx3Y8ZJWdmbKO+o328Vp
-	SsWsjnmDzIhISIAVch0zs60oU36XpTHPY3b9ApzkFVH67TpyaIL1PyLzlaHE2gWNK0GpJ2vSa7o1t
-	zXxvJ6EKqtlyja5KUlV/6669zBkKs6mCXEFeIGZ2hkOq/pifP65YLE7A93SoXX0z/YetotiJsEQJY
-	3Sb4ZYSQ==;
+	bh=SNOc3+gSr8ZmR62uYnPdP5co5re0OgpLu9vaZLf178E=; b=qIZBT9VmraR3tV5Ln47iGPWix2
+	YPb2MI3jiRnif7rk1iscXIF3rGYudsNSAO3ngcbxEKtm6EfJ1e1ZXb3LsFeFDGMOehWU27XQp4Um6
+	sxbWyuhfc22+VSpnpUWpyIuPOGX0z3MlSaSjRJ0hIy5grNQQTLR/XiPffTOoSIZZLgSTQk0I16667
+	IsJ19NkdPwkIm9Tr1sX+7XhNkUlJLTWuYLJKOrnGhjdZYphNf5YLrq/GULaGpU3ccJziVDDqQUHSK
+	YKmMnf6515DhpFo9Tx8w63WO3H2paltNh1TTjW1oMhxVIJSpNTXyydZsvjxhuA9NU+eYN9kSekmIa
+	nv5ZS/dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVrcK-005Sh9-EN; Sat, 25 Feb 2023 10:17:24 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1pVrcV-005Sli-2Z; Sat, 25 Feb 2023 10:17:35 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVrc9-005SZo-7f; Sat, 25 Feb 2023 10:17:14 +0000
-Received: by mail-ed1-x532.google.com with SMTP id h16so6815925edz.10;
-        Sat, 25 Feb 2023 02:17:13 -0800 (PST)
+	id 1pVrcE-005Sc8-7v; Sat, 25 Feb 2023 10:17:19 +0000
+Received: by mail-ed1-x531.google.com with SMTP id s26so6796186edw.11;
+        Sat, 25 Feb 2023 02:17:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=NZlTyV5gXSWpUhRTyRZWDDfy9ZYKtV/X37QY0RZg8Qc=;
-        b=lfNgoABENzvAU9vbrDDeIhipKTEOAzm+1ypKOJOfED6srDbCB+THw/3/nsmJfXTk+j
-         9P6wrt3CNxTndnx7wHv4EdutmhyRy9bhOllkOpgCzTtmqKtTeLKYKNFTAO/lzDwr0rvV
-         5fNGKbXpqTyeAT6OfF0478xebq52pK+D2jLjHaAYhrzOtfwr9KmAVEpQ6P6rLZLiTQ+v
-         ujdYh5GrtEimemw1iBAfWwk4Uust9HsNXs7fPaGz3xFG7xwWV0u0x3nr7A0Zt5fuc/2Z
-         HLa3y2auSiKZvwbHDAAm+EvVu1Q9dQiEsRx7hRcSmlgbiDVfCqG1faAQZaSpXs5nDp0J
-         zWSg==
+        bh=SNOc3+gSr8ZmR62uYnPdP5co5re0OgpLu9vaZLf178E=;
+        b=EiIvBQ4GbWPFzedJeC8giVvUC0oKHukVPsn13/vJOzDFgYuk80Nj1emClZAr1NBI5V
+         vBSlUbVdniHkVoWAd7+a5EoAqbIsd/DdcIBm/RkxtLzG7vcANrDA7zMMv3b0WauIMF7Z
+         JWSa5UxGl2kTnwB6MBqRpZW2/baw2wscfSiKVTVY+mVtJ1eLbq6oTiJ4CHiYmf1/nGzT
+         QmdOrMAPFLOo1/cvrUQ8dwoQ8pGovqfNAR3mOWbYuQB1ACk1EBzGKCJBLBaesFSUvtIs
+         C21sBYrpDoKjUqxe2gUfk+Uf7445uuZqw0hyhTwv223q+TDv3Cm9IfY7WTUMwKgaSLwf
+         RWug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=NZlTyV5gXSWpUhRTyRZWDDfy9ZYKtV/X37QY0RZg8Qc=;
-        b=1to3oFD07FCpO2KsHLFASDfOg+VPz9kVGINmVhV41wr3fwTARPqmIklfEUDyCELg0D
-         u52QF8zBOh53LsfF7agH7Gva/z/wfyWoWplPc4/0dq7XfEcaMwd8ImfUNX5Fz3wqvgvB
-         N/2gF46/9WRxBW9zX5FEx2bB8dxocUiKEzcyjL32RMmNXtZ/yTmP/DYLzf5rU1Wo+Xzb
-         1b37GiB/STAI/VOFbVq4fwIvmfi+8AnjmNEroeKC9Q33loMBBoezR+MusW1jRQ8LxPe3
-         RhZFYHk2nTqCWGl8gW0Exj8aXnXFTcQ6dOHec1jw/3WToTdAKLi5BjbdJRkm7TOt3jQ1
-         cmUA==
-X-Gm-Message-State: AO0yUKUnGeWSmSgQUgg+aaEDrWSD0MtjrFZtHRMWNk1qIyqhOwnYUMb/
-	s0GuMfyXdKnZohFkZzewKdBLHxTp+E4=
-X-Google-Smtp-Source: AK7set+p80yxwive0vFrfuDaRCkLAO2YhJ0YF72bVGf3x/DXOphxfSCDrLe8RInslHnX6xHo8AlhOA==
-X-Received: by 2002:a05:6402:845:b0:4a3:43c1:8431 with SMTP id b5-20020a056402084500b004a343c18431mr3099829edz.5.1677320232660;
-        Sat, 25 Feb 2023 02:17:12 -0800 (PST)
+        bh=SNOc3+gSr8ZmR62uYnPdP5co5re0OgpLu9vaZLf178E=;
+        b=shnIKHClF5zqLykuymoqvDXyX3LVA5nOpf9OrQT95stDbdPLEn1IW7pxs8Liq32GBs
+         aySmC/wxzN0WXlqLzPTlKmwUwt20BwCw8qW77hnVMeD+hDqL+zr2TBMcDHpFIptR6OaY
+         hmeMDSF/iMMyy3s3lsO5bpzK9oXIRzKA8yfX7OLk7CsgllZSkgUTn2D6fG9AQmb3Ecbr
+         QQAig4eiyaPOpVllX6HL07VlzeKje5JjCQPUqGN3s8jdP1CkkjmPIGcs6oyXlimA8JZp
+         b2WlFUeTuQU43f8fapquiizIwmKGWnKmKu0W4CWokFi9m9LnquJgjHiNby8C9kiPzBGl
+         yFqw==
+X-Gm-Message-State: AO0yUKV+rsto5NVqlyqkbTLUyKGDNdFSHhAQ4H4i/S03BgL76dYvlGWV
+	/J7cFRJYghWHcDZ/f0qR+HE=
+X-Google-Smtp-Source: AK7set/K6P2ZaMdb52XoOkvgi1/h1i47RQzA9sBuj1bguB5r7y/Kmiv984/NFZkpd2u9AUu9BAVqTw==
+X-Received: by 2002:a05:6402:b04:b0:4ae:f496:10ac with SMTP id bm4-20020a0564020b0400b004aef49610acmr17413203edb.0.1677320230397;
+        Sat, 25 Feb 2023 02:17:10 -0800 (PST)
 Received: from localhost.localdomain ([95.183.227.97])
-        by smtp.gmail.com with ESMTPSA id y23-20020a50ce17000000b004af6163f845sm677722edi.28.2023.02.25.02.17.11
+        by smtp.gmail.com with ESMTPSA id y23-20020a50ce17000000b004af6163f845sm677722edi.28.2023.02.25.02.17.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 25 Feb 2023 02:17:12 -0800 (PST)
+        Sat, 25 Feb 2023 02:17:10 -0800 (PST)
 From: Yassine Oudjana <yassine.oudjana@gmail.com>
 X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
 To: Rob Herring <robh+dt@kernel.org>,
@@ -71,17 +71,17 @@ Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 2/3] dt-bindings: soc: mediatek: scpsys: Document MT6735 SCPSYS compatible string
-Date: Sat, 25 Feb 2023 13:16:28 +0300
-Message-Id: <20230225101629.264206-3-y.oudjana@protonmail.com>
+Subject: [PATCH 1/3] dt-bindings: power: Add bindings for MediaTek MT6735
+Date: Sat, 25 Feb 2023 13:16:27 +0300
+Message-Id: <20230225101629.264206-2-y.oudjana@protonmail.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230225101629.264206-1-y.oudjana@protonmail.com>
 References: <20230225101629.264206-1-y.oudjana@protonmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230225_021713_304184_8D985791 
-X-CRM114-Status: GOOD (  10.80  )
+X-CRM114-CacheID: sfid-20230225_021718_354037_52C9C00C 
+X-CRM114-Status: GOOD (  12.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,33 +98,34 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Yassine Oudjana <y.oudjana@protonmail.com>
 
-Add a compatible string for MT6735 SCPSYS.
+Add DT bindings for MediaTek MT6735 SCPSYS.
 
 Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
 ---
- Documentation/devicetree/bindings/soc/mediatek/scpsys.txt | 2 ++
- 1 file changed, 2 insertions(+)
+ include/dt-bindings/power/mediatek,mt6735-scpsys.h | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+ create mode 100644 include/dt-bindings/power/mediatek,mt6735-scpsys.h
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-index 2bc367793aec..54ba2e06403a 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-+++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-@@ -10,6 +10,7 @@ domain control.
- The driver implements the Generic PM domain bindings described in
- power/power-domain.yaml. It provides the power domains defined in
- - include/dt-bindings/power/mt8173-power.h
-+- include/dt-bindings/power/mediatek,mt6735-scpsys.h
- - include/dt-bindings/power/mt6797-power.h
- - include/dt-bindings/power/mt6765-power.h
- - include/dt-bindings/power/mt2701-power.h
-@@ -20,6 +21,7 @@ Required properties:
- - compatible: Should be one of:
- 	- "mediatek,mt2701-scpsys"
- 	- "mediatek,mt2712-scpsys"
-+	- "mediatek,mt6735-scpsys"
- 	- "mediatek,mt6765-scpsys"
- 	- "mediatek,mt6797-scpsys"
- 	- "mediatek,mt7622-scpsys"
+diff --git a/include/dt-bindings/power/mediatek,mt6735-scpsys.h b/include/dt-bindings/power/mediatek,mt6735-scpsys.h
+new file mode 100644
+index 000000000000..5124cdee9dc7
+--- /dev/null
++++ b/include/dt-bindings/power/mediatek,mt6735-scpsys.h
+@@ -0,0 +1,14 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++
++#ifndef _DT_BINDINGS_POWER_MEDIATEK_MT6735_SCPSYS_H
++#define _DT_BINDINGS_POWER_MEDIATEK_MT6735_SCPSYS_H
++
++#define MT6735_POWER_DOMAIN_MD1		0
++#define MT6735_POWER_DOMAIN_CONN	1
++#define MT6735_POWER_DOMAIN_DIS		2
++#define MT6735_POWER_DOMAIN_MFG		3
++#define MT6735_POWER_DOMAIN_ISP		4
++#define MT6735_POWER_DOMAIN_VDE		5
++#define MT6735_POWER_DOMAIN_VEN		6
++
++#endif
 -- 
 2.39.2
 
