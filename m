@@ -4,55 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC670C6FA8E
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Feb 2023 16:49:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CEA6C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Feb 2023 19:14:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a+C+p72V7OQw23bEGB2B7Tmx6x7vmHKzY7inzefY4bg=; b=DYqJkBS5+uIZ48vJ9/1NqVhAtF
-	vzMjGTNBk7bgSzj9vcGCkGL6Wb2FdNRkO5oyC7ZbdM2NL6BJFcbt2JZz4oQFwrpkcK2RzkJVeZ8Wj
-	AJZOQYIjaFz1jPsbVzKShFMF2e5gKbtNx8MGmp057k2X+9qYlIjPSt6I0sqsmw445C2RB16rHUirI
-	OQliLJnW3fnMVHmq83txLNqk19LP+L6gQgF4EI6Vfa6rCJFUmfzb1bck7Rp5qON3VpiUNkX4f/uT9
-	kiFa8goZZydDlQefv8tbNoYsEqfhyO3emcIYdwIo2SpKz0FHNVXCbggVTfpwek77C6GwP+D3ih59v
-	kkRRJdXQ==;
+	bh=ehYtjN5CZeUvK2Vk+Sr5h+rU0UfW3i1Sw0qdtskSkww=; b=YuoZ2zV9jKjdQkrBANhZBZFMz7
+	hQUMwFLuvKIbctZc7689er9tyi3D1EJKJOx6wzjd71Z5JJZ3LKuRM09gcfh/MCRleT9o213vq7KJt
+	hIS1/IpRSzcd2OjpfLgRJyFiFCgd/EWW+X4oFeZiwdjvjMfYjmEL/e5+TklWEZ18wOS/cAegrP+/U
+	5+Nd0O9WMjPXln2iZTu1/qD9+mAxW3f/TsRJ9i3wX0wrB2dirofSbo3MEh68wo/6OrRF2JTigWjS3
+	coT0LwTHFwm9Z9QT6YEnWF2unWheAjrQKi+WNv5FE0oSwzK8MmExX13X+V5z/Ahx0J3jkkxV0agAv
+	JTEWQ7Mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVxk4-00641m-IY; Sat, 25 Feb 2023 16:49:48 +0000
-Received: from mail-mw2nam12on20709.outbound.protection.outlook.com ([2a01:111:f400:fe5a::709] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+	id 1pW009-006Bj0-SQ; Sat, 25 Feb 2023 19:14:33 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVxjn-0063wb-Si; Sat, 25 Feb 2023 16:49:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=FqnJyFzXRZPWPPKXEyhOWjnjKs2+eYwBonBDrK6uwr1FH9eQUyyr6tthw19Mmpb63eN78dRYIpF57hDvgF1QdaRjdQ3SGhdm6LgfSPPcvgwsolx6JU36dhQShHmmFLV6FlNLtA/3dhITSqrMIVmJ1ezKvU99aqPZyXMiEAFapcuXFq9UBVdlSyAaYXuTVbvg4SCBvnYksGgBUAl829xxPXGmbpHgMlMV/ad5Q6/NSnMUabw8Kriz8ILuem04aGUwV/FFALsYwZspp8A/R7PggzoSkaRNor0zIJMScsjzpuNZsMvvHjxEnQ/ntpiQLlNu9WGBpS3cAwvtSoUtGC5thw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=a+C+p72V7OQw23bEGB2B7Tmx6x7vmHKzY7inzefY4bg=;
- b=PtCiR4nstVopAX/p8ayIEIngLDTvLsEjkYbD/ieEAiVFAuX4RglqcOSRkgdlF+7qvOB92EGuASAeMwJenmeL7ZHWFSE9wZKlPb3IAO+eBZ39IlyxMuD/CDETUbMSXn2lzL0KmGDLCGxPVrx5GyCA9P//GVbroYWOGYFvZd22nqpts6kg3TI8FmUj96BPTET1bInp3hEC+sXMWLagcdhvkC4DnHoYG2LBEhGymLektYJddhgPx6OXYaSCY2wGLAIKVsZrBwq8h04vpME/XM/WQSpYQKZ57mlHpnro9E7nICQe57nVy/Cor/CheXl5zyOfaTtMh6AHH8T2qdiNM0DFTA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=a+C+p72V7OQw23bEGB2B7Tmx6x7vmHKzY7inzefY4bg=;
- b=gqOOMlxJ4KsYuKqWnSotmAMQ7AvUyuQnDGVoNDbJC4btjhfSTtBMk2gFqMz5GSHQGZDP16KFpfGl6PEWF6k5WpVuYN3/qUBhZklv4DXCIt03Cw3Qaw9i70Gk8gNJCI4dSu6sliBFKSjnYI7M/LsqrFCsW1xOu8tG8pNnBW0un5g=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=corigine.com;
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
- by PH0PR13MB5682.namprd13.prod.outlook.com (2603:10b6:510:111::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6134.25; Sat, 25 Feb
- 2023 16:49:27 +0000
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::85f5:bdb:fb9e:294c]) by PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::85f5:bdb:fb9e:294c%9]) with mapi id 15.20.6134.025; Sat, 25 Feb 2023
- 16:49:27 +0000
-Date: Sat, 25 Feb 2023 17:49:18 +0100
-From: Simon Horman <simon.horman@corigine.com>
-To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+	id 1pVzzw-006Bb9-0r; Sat, 25 Feb 2023 19:14:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=ehYtjN5CZeUvK2Vk+Sr5h+rU0UfW3i1Sw0qdtskSkww=; b=TsFTaEMNxnretKmFsnkHA7QgmE
+	RiPnJOkEtzPBADPvihuji//flzqjNOtVJBL/M1qRL/wglTt6uof20tqrf9t+NnLMiLKYX6OBj6xmD
+	FlzzX6J/X8ASIHslft7DA3GT3+8oYGWUlTZS9Xj3lnrR8RwVBtODmLZiHR+3+/s3MOmWrz233Apk5
+	2pNpA0k8Okz2pGgxoTyMzJhKF1mgatAblLBeZi4iN+g755f7tab0jjL7iHa4TpAxAN2pGHsB8Y9Sv
+	Xp5AQoS1wjdHF12sGVG6FG/fNGM+3e5YlfYRDuA+UnXQGLe5kA/jsRonrq1sqXieAPaR5vb8aWTU6
+	VT6k0qMw==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:46530)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1pVzxW-0001lq-LO; Sat, 25 Feb 2023 19:11:50 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1pVzxQ-0008PB-7F; Sat, 25 Feb 2023 19:11:44 +0000
+Date: Sat, 25 Feb 2023 19:11:44 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Simon Horman <simon.horman@corigine.com>
 Cc: Daniel Golle <daniel@makrotopia.org>, Felix Fietkau <nbd@nbd.name>,
 	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
 	Mark Lee <Mark-MC.Lee@mediatek.com>,
@@ -66,68 +60,17 @@ Cc: Daniel Golle <daniel@makrotopia.org>, Felix Fietkau <nbd@nbd.name>,
 	linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH RFC net-next 4/4] net: mtk_eth_soc: note interface modes
  not set in supported_interfaces
-Message-ID: <Y/o8DkLO9CY+ROkH@corigine.com>
+Message-ID: <Y/pdcIKpM1QjdUdI@shell.armlinux.org.uk>
 References: <Y/ivHGroIVTe4YP/@shell.armlinux.org.uk>
  <E1pVXJK-00CTAl-V7@rmk-PC.armlinux.org.uk>
+ <Y/o8DkLO9CY+ROkH@corigine.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <E1pVXJK-00CTAl-V7@rmk-PC.armlinux.org.uk>
-X-ClientProxiedBy: AM3PR05CA0119.eurprd05.prod.outlook.com
- (2603:10a6:207:2::21) To PH0PR13MB4842.namprd13.prod.outlook.com
- (2603:10b6:510:78::6)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|PH0PR13MB5682:EE_
-X-MS-Office365-Filtering-Correlation-Id: 743ff641-e1a0-4e3a-0d4f-08db17504189
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	6q0zb3JIhDIXutCYAM3I9LWp63SgQ9RypPYkO44nfcjxedNvDq86c7JxI1OTzTKcReIo79vZZQyrW1GY8sLXCHqhrP9aNHuIdcDedLEYgjf20ZsgiU6sQIlMqVjFj/tESDc9AHyLv5Q8KD71MmSPQhdcTkBOWvAb8Efxb0dfyGMKrcAsZ8uX/PDLLvoP01KL55I2em4c41A8w4gdcRom20lp+Q/+4wi24pXjrLSsQvJoEsiGnqTqSHLGgFA7QaQnvcQMwpvSmu+Gdqdx0dJ2izbib5phfLFgl633kXygN8tM2h5/J4ReE/PIav3HrxPGJPV0AEu1RP2SJqeBNk3cpi4D18jO6gbPYccQ+W0bh+F8j2uG2aGvtzcVby6RT6TDL0uqxeHY2msbum4IS8A3wDc+g3axpGNE+bwOg8HeuaVbBxnp5gid5u8OYET3mrvu/lDA2PoxqmpnuqW8AnjE6vdonWLn5ccpbHdQOdKjxY2PPs8ex0eywSpd4eYlXNXOaRsbZQvXxpypCvJUIpmpPhYNINod0YTjhc6+o904bkQ/nhIT0tJAmC0X5LNogD1ES2+nSUswDlsYbzqAw/FrCRSAGQMkZIlhYovn6txzmeCct0cv2AIrZQdo8YvkgfZGoYRx4rciu/TpdDyocteCUA==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR13MB4842.namprd13.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(346002)(136003)(366004)(39840400004)(396003)(376002)(451199018)(7416002)(41300700001)(8936002)(44832011)(4744005)(2906002)(4326008)(5660300002)(66946007)(8676002)(66476007)(66556008)(6666004)(54906003)(6512007)(316002)(478600001)(6506007)(36756003)(6486002)(186003)(2616005)(86362001)(38100700002);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?eJiLrVp6HExO6y+aigAPPQ3JVloLJ9NX+4OfnmWn5agP+rFA6ohrEGUzC0ph?=
- =?us-ascii?Q?UzFLumDGxfCL51q+Cb/nzZmSj2EQjWqAmhPvoW18BTkHNGBqR98RZUUTvnEF?=
- =?us-ascii?Q?Od2C+vJau0V3SnbVNkIIiyimFrgiPxpiJdLcrGzW/OxTujho6vlWUDS9GlBa?=
- =?us-ascii?Q?pKiiN5GorhydAtqH4Zalg3COhaLvKGdyXICJkKuI0zgkwLPKEb88bD7mthsO?=
- =?us-ascii?Q?122OMKqK5RqTJsYp6EZaIrDCtyEmS9+8uEc6naxokt7iWcSwI12OJd55/Rau?=
- =?us-ascii?Q?SYrDWlCwMSzPN+WujabGpJTHeuekoPVYEPkdSHiY7Oy+pJwYOrmYO8xz7WSS?=
- =?us-ascii?Q?bYbWVxwjorDZGacf2mVBhurYOmtw0ukg9I7TZ6iV69pH///deZV5Es+p1EKE?=
- =?us-ascii?Q?fz2vDyVMwMWXsgZ2PFfPiCIjXLbu8eBDe/UlOTLPpPQ5noQQszGopC7GcHt1?=
- =?us-ascii?Q?h7zPUG8ScTefdGZP5TufRoDrcNm0N/CB0lBMjyFTDbnximg3/F6d5QSi+bQL?=
- =?us-ascii?Q?dg2f87TeIOxIfUYc0FrCjeCnZQwkGflxhksc5Q/5Yb+Ym+102xETYu8vfPA8?=
- =?us-ascii?Q?NVvao/zAey2X/O6KHWrnld6VM8k0iKy6QztPJZfw48gQSnpI06MrZmq3qFIL?=
- =?us-ascii?Q?WPWUTbkBLNMqrSOpr6SzbqHkMOIF+HW6RnuA9siVCKcqq1CiVqJta0YLgGl7?=
- =?us-ascii?Q?LMKdY6M1GBADWBDASR5Rnlw0+LftgW3qAEmj4IutzXuPL88p20DzSW5+0Qzm?=
- =?us-ascii?Q?FeTcDwdTQjlc7z63eBkLV2BEHDtJ24jd6szmFXWRvyvss+fp7RDzOh8N5o/o?=
- =?us-ascii?Q?DmH7LZF/jleev/T8kXq5AinjD8akaxDC4zpQHozUKWHyH6HxyNyHwM+VJGSN?=
- =?us-ascii?Q?OUSQbB6TEY+fZV24uJ2ej035rRzB3OmOvtz/3r6uQxEkRLaCI2unXxnDPrTd?=
- =?us-ascii?Q?F60w9Tqs3AHAf5yQ/4K8rAELVSrspxFzywFeXkO6bcyChSSSL81UIvtNIH0k?=
- =?us-ascii?Q?5lwWe9E0aN2I7uesqgt+QVRysj3qmICo4mQOYoNR/2SQSHugvCSRzB7hCshO?=
- =?us-ascii?Q?hvza8Kp71d47gqXd23vuBABlvS6woDgvehs4E5kldI2k1in2jTu7nx3Gvu8+?=
- =?us-ascii?Q?93fYypFHzb/o+e5Pmsl5AvHE71GJhuz9pFNTmSmqvX7zaIzuEvEc2L2+yEri?=
- =?us-ascii?Q?yqdlvLghc6UsOwLp9wcRIf5VQrwKEO4S4aLPJF9Oj3AxBr692P9saHTJqj1I?=
- =?us-ascii?Q?J5GRi6G9GYteE9wyRs+8vpLzZZxUrclDUnHYHanMgVOtF9jgJPHQnRz01om6?=
- =?us-ascii?Q?udRiV5ZjQJHqeutmFNgSiRilDmdLIdQu7ffmq/l5z6ItWulpApW0sf6xRFfM?=
- =?us-ascii?Q?uNk1jfB5ozM5AzLAz3cxAkKGFmkBpWBBD83480N6lh/UgoH18GKXOi7MdfS3?=
- =?us-ascii?Q?d/9r+OXzUac8j/mqnsV6jPqbhupXgtj49x8RLT0KMcHxihldEiGTxWhH9FEB?=
- =?us-ascii?Q?/TOrlBCXPA9zFRi5+33ppccBIntjZNp31c3Vl2HwRYVfTfPbHjFAP1UH+pX6?=
- =?us-ascii?Q?7LwrnrFRW/WybSAcysVxxj493M2Nr+7cYMUiudOnpF0GFobS6fyGTjO1QtCn?=
- =?us-ascii?Q?Fw0ELzJurBotDNSgGX4OeYi1nNeM1qb4hn7NwVFBgnXnIUCOS+4C88Z3Vm8e?=
- =?us-ascii?Q?LDS91w=3D=3D?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 743ff641-e1a0-4e3a-0d4f-08db17504189
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Feb 2023 16:49:26.9110
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: z2YX8pukOfiilR9aZlGL7E5IOEw1/FkLQfcHpzlDPrOUuyP7vxGW0WnqkbuH1/YRSU0RQkbXPAnm55Hk+glim9mNUMUbsdbKwVjAxFDO6R8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR13MB5682
+In-Reply-To: <Y/o8DkLO9CY+ROkH@corigine.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230225_084931_975711_651DB7D8 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20230225_111420_108006_1A67320F 
+X-CRM114-Status: GOOD (  17.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,18 +85,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 24, 2023 at 12:36:26PM +0000, Russell King (Oracle) wrote:
+On Sat, Feb 25, 2023 at 05:49:18PM +0100, Simon Horman wrote:
+> On Fri, Feb 24, 2023 at 12:36:26PM +0000, Russell King (Oracle) wrote:
+> 
+> Hi Russell,
+> 
+> I think it would be good to add a patch description here.
+> 
+> Code change looks good to me.
 
-Hi Russell,
+As noted in the cover message, this is to highlight the issue to
+hopefully get folk to think what we should do about RMII and REVMII
+in this driver - basically, should we continue to support them, or
+remove it completely.
 
-I think it would be good to add a patch description here.
+Either way, this patch won't hit net-next in its current form.
 
-Code change looks good to me.
+Essentially, the choice is either we remove these two switch cases,
+or we add these interface modes to the supported_interfaces array.
 
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 ++
->  1 file changed, 2 insertions(+)
+I'd rather those with mtk_eth_soc made the decision, even though it
+is highly unlikely that these modes are used on the hardware they
+have - as I don't have any mediatek hardware.
 
-...
+Thanks.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
