@@ -4,84 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B4D7C7EE2D
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Feb 2023 10:17:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1404C6FA8E
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Feb 2023 12:06:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yqdAqtl2HyM6weGdRUYSI5fz6MeLKme641FAPtX5r3Y=; b=bbzlJ1wUt+Zl6yV5bGqR3bROwg
-	JDLR66j52caCQUh+PZe59xLrFyTRVTqPb3pNmxqUgnphAeVPHCsx0qlxkMCT1o9IrpinMOfjwbEcz
-	AjfoGLX8SGUkOemZEt39H867i/lhiTwbHooqsU3s0LaPpus5IjEy2LUNBTQAXW76f6eW2sE71dO+m
-	tJRXFDlLvrDaK1/MRYqncVkIxSakQmBqBSzEiVTAlJEW6h22MTHiSk0fOTWmnKHobZsA7B7nCD6dt
-	8xgnzUGXDWWPR4nMtutzE1rcLr4nmbC0UFG3WgmNfCo0VPggrtZuQx8mc0EMBTm9dAFgXEnyu6FEK
-	B7/pdSvw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7A9gnHA0Yp5qn1x/e2p4ofnPEAs5dus5GOyTR4TbOVk=; b=gO8/k/oFDmoFfaybyWsbB9Pcz6
+	FT+MfgWjtzSSmZkLbVNdKqPE1OpVPijlFrUOsezB+EyK8g7o3ffzdGraLQMnQ7o5h7yuC+7wgFFVZ
+	lZ72A12Ih7/AV+KbF48MBrlPhB4/XSjseGYRPi/lLsR1uNuvrGBQwizQpqKJhsbTN/o+uE+IsNtb4
+	tNQH6+U6sjIDpOJFwwn1K+PUQJqX15kaiwXGfgrJcENP3CZlJffq9CPfrFEw0D9DqfufFAy+sasXz
+	RX42BHO4WQU5O3fYYzvu+Dnq+PyJwcvm3z72+DEGF1cc2UEdV6u81TPCaRvDA+TJhn3lcIQl4fD+h
+	nF3sDmwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVrcg-005SrK-Uy; Sat, 25 Feb 2023 10:17:46 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1pVtKB-005fEy-PJ; Sat, 25 Feb 2023 12:06:47 +0000
+Received: from mga09.intel.com ([134.134.136.24])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVrcI-005Sdg-3u; Sat, 25 Feb 2023 10:17:23 +0000
-Received: by mail-ed1-x535.google.com with SMTP id ck15so7155805edb.0;
-        Sat, 25 Feb 2023 02:17:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=yqdAqtl2HyM6weGdRUYSI5fz6MeLKme641FAPtX5r3Y=;
-        b=SJOypASA17J1FKOo6kyyV500JXZQFVFCO776wNmuV4SCzUTMoivR3arUdg0Hq6bd20
-         Q57GtAFi/UATECSfJnIWOuOxDuD4nK1qEO/Yn3i3/UMy4M1g/Xkmu4zO2IYpOBQ6GADi
-         dkBppSVdbq3TPlWwsKavCiY8a2PtzoRY9d2mZg+ZVaoKEhz+wWX9nM1U4zByz9bTGP7u
-         1RmUmwpv0J02HnrnhhC4MD3SXobdjlSRtbyDesa8XywGxzSo0YVEjhImkzSBYtaT1VtP
-         CWQbmvQEzU1FolZSnppWJ5bBrU37lbnoO9i6w+kcprbo3/kgudAKooj2yfgTgRUYhEuy
-         GiIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=yqdAqtl2HyM6weGdRUYSI5fz6MeLKme641FAPtX5r3Y=;
-        b=NpYWMeOYqNbC0+q8A8VE0ctSoyqWCLUsqHu7VlDtlgXH2P5LARE2YCKCotCN1/4CiN
-         aiY2d24pzEKgxOUCI4gjb2OHXST/cfCc9kO2kHj6zrCKOmZTucgpkyS0aL3D6rmm0W3i
-         arTBGvVXPqfXwa7teu5VOuBuvPyVmzs7Tm7fpypAkDDn1gNff4NOc4NyN+ALoc6BiQN7
-         Nx0MbRV//KPkuoi613fLQcsydX2AQbn4KxuUi5D0n0Bj0uPfLzF/QIFd9IpqMJxi6VoB
-         Jp3CxVIxKXwcPY44imKEvO+a6n/u2aVDyjaVCjQAZxfVwGo/n23rR+PL2YQHjNPEcdTj
-         vANg==
-X-Gm-Message-State: AO0yUKV9yVRcSPcu8yLeNSdvkyMVxPOHgFXqKQKvpwuUTD9b9spnqlqy
-	5vIST5KOydo3AGJTU6RJuzY=
-X-Google-Smtp-Source: AK7set+M//y5jAG54Dw5hwWPqfgJ4BDNdS66Iw9Q5xh131Vo6pX8zFC8LqZeCc3It6fTNWWUmbnA4A==
-X-Received: by 2002:a17:906:86d4:b0:87b:3d29:2982 with SMTP id j20-20020a17090686d400b0087b3d292982mr26298346ejy.11.1677320235019;
-        Sat, 25 Feb 2023 02:17:15 -0800 (PST)
-Received: from localhost.localdomain ([95.183.227.97])
-        by smtp.gmail.com with ESMTPSA id y23-20020a50ce17000000b004af6163f845sm677722edi.28.2023.02.25.02.17.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 25 Feb 2023 02:17:14 -0800 (PST)
-From: Yassine Oudjana <yassine.oudjana@gmail.com>
-X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	id 1pVtK2-005fDd-CR; Sat, 25 Feb 2023 12:06:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1677326798; x=1708862798;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=kXlFv0VM1scl/3fVxb7GACNApgIxpmbqk/4Qeq95V9I=;
+  b=MSro7VvN9T456oeeSNNoAUpldqCYNPGO1lg4mCfV0XLuNIjIVLLYyHVJ
+   76xR4ouoY0gQ94oGQceXy1QMW1UAwN9LLOTBwvf1WlE2l3Mwlm1uvI7Hi
+   BdH3Kmihku2zwFTelEX1YU3kkFJS0WEFTkPyOGxE5q6K4MCPefpaxVLvV
+   tCS7XoSP1HHYhWqPeB5h2y1BeEG+FlmJr1W+9OakZS6aYh3Bpiz+Zgwyt
+   CBn1XNvVzcLbKbFMvMdzxCJj9fdXV7c9/FB0NDSVR2EMcykG7w2qCFfeH
+   1odgNG9s2oLV1QWlqH0kxHWrM4uDRT2/gX4kYtBJcxxcd9kLC1UKMHQnb
+   w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10631"; a="335090448"
+X-IronPort-AV: E=Sophos;i="5.97,327,1669104000"; 
+   d="scan'208";a="335090448"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Feb 2023 04:06:36 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10631"; a="673187249"
+X-IronPort-AV: E=Sophos;i="5.97,327,1669104000"; 
+   d="scan'208";a="673187249"
+Received: from lkp-server01.sh.intel.com (HELO 3895f5c55ead) ([10.239.97.150])
+  by orsmga002.jf.intel.com with ESMTP; 25 Feb 2023 04:06:30 -0800
+Received: from kbuild by 3895f5c55ead with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1pVtJt-0003Ah-0u;
+	Sat, 25 Feb 2023 12:06:29 +0000
+Date: Sat, 25 Feb 2023 20:05:55 +0800
+From: kernel test robot <lkp@intel.com>
+To: Yassine Oudjana <yassine.oudjana@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
-	Yassine Oudjana <yassine.oudjana@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 3/3] soc: mediatek: scpsys: Add support for MT6735
-Date: Sat, 25 Feb 2023 13:16:29 +0300
-Message-Id: <20230225101629.264206-4-y.oudjana@protonmail.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230225101629.264206-1-y.oudjana@protonmail.com>
-References: <20230225101629.264206-1-y.oudjana@protonmail.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+	Tinghan Shen <tinghan.shen@mediatek.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Edward-JW Yang <edward-jw.yang@mediatek.com>,
+	Johnson Wang <johnson.wang@mediatek.com>,
+	Fabien Parent <fparent@baylibre.com>,
+	Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+	Miles Chen <miles.chen@mediatek.com>,
+	Bartosz Golaszewski <bgolaszewski@baylibre.com>
+Cc: oe-kbuild-all@lists.linux.dev,
+	Yassine Oudjana <y.oudjana@protonmail.com>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v3 4/4] clk: mediatek: Add drivers for MediaTek MT6735
+ main clock and reset drivers
+Message-ID: <202302251958.hFATZOVS-lkp@intel.com>
+References: <20230225094246.261697-5-y.oudjana@protonmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230225094246.261697-5-y.oudjana@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230225_021722_188482_50E40311 
-X-CRM114-Status: GOOD (  14.70  )
+X-CRM114-CacheID: sfid-20230225_040638_555112_36F1659A 
+X-CRM114-Status: GOOD (  21.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,153 +102,166 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yassine Oudjana <y.oudjana@protonmail.com>
+Hi Yassine,
 
-Add support for SCPSYS power domains of MT6735. All non-CPU power domains
-are added except for MD2 (C2K modem), which is left out due to issues
-with powering it on.
+I love your patch! Perhaps something to improve:
 
-Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
----
- drivers/soc/mediatek/mtk-scpsys.c | 84 +++++++++++++++++++++++++++++++
- 1 file changed, 84 insertions(+)
+[auto build test WARNING on clk/clk-next]
+[also build test WARNING on robh/for-next krzk/for-next krzk-dt/for-next krzk-mem-ctrl/for-next linus/master pza/reset/next v6.2 next-20230225]
+[cannot apply to pza/imx-drm/next]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index 7a668888111c..b771bfb93cc9 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -13,6 +13,7 @@
- #include <linux/regulator/consumer.h>
- #include <linux/soc/mediatek/infracfg.h>
- 
-+#include <dt-bindings/power/mediatek,mt6735-scpsys.h>
- #include <dt-bindings/power/mt2701-power.h>
- #include <dt-bindings/power/mt2712-power.h>
- #include <dt-bindings/power/mt6797-power.h>
-@@ -32,6 +33,7 @@
- #define SPM_VEN_PWR_CON			0x0230
- #define SPM_ISP_PWR_CON			0x0238
- #define SPM_DIS_PWR_CON			0x023c
-+#define SPM_MD1_PWR_CON			0x0284	/* MT6735 */
- #define SPM_CONN_PWR_CON		0x0280
- #define SPM_VEN2_PWR_CON		0x0298
- #define SPM_AUDIO_PWR_CON		0x029c	/* MT8173, MT2712 */
-@@ -57,11 +59,13 @@
- #define PWR_ON_2ND_BIT			BIT(3)
- #define PWR_CLK_DIS_BIT			BIT(4)
- 
-+#define PWR_STATUS_MD1			BIT(0)
- #define PWR_STATUS_CONN			BIT(1)
- #define PWR_STATUS_DISP			BIT(3)
- #define PWR_STATUS_MFG			BIT(4)
- #define PWR_STATUS_ISP			BIT(5)
- #define PWR_STATUS_VDEC			BIT(7)
-+#define PWR_STATUS_VEN			BIT(8)	/* MT6735 */
- #define PWR_STATUS_BDP			BIT(14)
- #define PWR_STATUS_ETH			BIT(15)
- #define PWR_STATUS_HIF			BIT(16)
-@@ -750,6 +754,73 @@ static const struct scp_subdomain scp_subdomain_mt2712[] = {
- 	{MT2712_POWER_DOMAIN_MFG_SC2, MT2712_POWER_DOMAIN_MFG_SC3},
- };
- 
-+/*
-+ * MT6735 power domain support
-+ */
-+
-+static const struct scp_domain_data scp_domain_data_mt6735[] = {
-+	[MT6735_POWER_DOMAIN_MD1] = {
-+		.name = "md1",
-+		.sta_mask = PWR_STATUS_MD1,
-+		.ctl_offs = SPM_MD1_PWR_CON,
-+		.sram_pdn_bits = GENMASK(8, 8),
-+		.sram_pdn_ack_bits = 0,
-+		.clk_id = {CLK_NONE},
-+		.bus_prot_mask = (BIT(24) | BIT(25) | BIT(26) | BIT(27) | BIT(28)),
-+	},
-+	[MT6735_POWER_DOMAIN_CONN] = {
-+		.name = "conn",
-+		.sta_mask = PWR_STATUS_CONN,
-+		.ctl_offs = SPM_CONN_PWR_CON,
-+		.sram_pdn_bits = GENMASK(8, 8),
-+		.sram_pdn_ack_bits = 0,
-+		.clk_id = {CLK_NONE},
-+		.bus_prot_mask = (BIT(2) | BIT(8)),
-+	},
-+	[MT6735_POWER_DOMAIN_DIS] = {
-+		.name = "dis",
-+		.sta_mask = PWR_STATUS_DISP,
-+		.ctl_offs = SPM_DIS_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(12, 12),
-+		.clk_id = {CLK_NONE},
-+		.bus_prot_mask = (BIT(1)),
-+	},
-+	[MT6735_POWER_DOMAIN_MFG] = {
-+		.name = "mfg",
-+		.sta_mask = PWR_STATUS_MFG,
-+		.ctl_offs = SPM_MFG_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(12, 12),
-+		.clk_id = {CLK_NONE},
-+		.bus_prot_mask = BIT(14),
-+	},
-+	[MT6735_POWER_DOMAIN_ISP] = {
-+		.name = "isp",
-+		.sta_mask = PWR_STATUS_ISP,
-+		.ctl_offs = SPM_ISP_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(13, 12),
-+		.clk_id = {CLK_NONE},
-+	},
-+	[MT6735_POWER_DOMAIN_VDE] = {
-+		.name = "vde",
-+		.sta_mask = PWR_STATUS_VDEC,
-+		.ctl_offs = SPM_VDE_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(12, 12),
-+		.clk_id = {CLK_NONE},
-+	},
-+	[MT6735_POWER_DOMAIN_VEN] = {
-+		.name = "ven",
-+		.sta_mask = PWR_STATUS_VEN,
-+		.ctl_offs = SPM_VEN_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(15, 12),
-+		.clk_id = {CLK_NONE},
-+	},
-+};
-+
- /*
-  * MT6797 power domain support
-  */
-@@ -1033,6 +1104,16 @@ static const struct scp_soc_data mt2712_data = {
- 	.bus_prot_reg_update = false,
- };
- 
-+static const struct scp_soc_data mt6735_data = {
-+	.domains = scp_domain_data_mt6735,
-+	.num_domains = ARRAY_SIZE(scp_domain_data_mt6735),
-+	.regs = {
-+		.pwr_sta_offs = SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-+	},
-+	.bus_prot_reg_update = true,
-+};
-+
- static const struct scp_soc_data mt6797_data = {
- 	.domains = scp_domain_data_mt6797,
- 	.num_domains = ARRAY_SIZE(scp_domain_data_mt6797),
-@@ -1088,6 +1169,9 @@ static const struct of_device_id of_scpsys_match_tbl[] = {
- 	}, {
- 		.compatible = "mediatek,mt2712-scpsys",
- 		.data = &mt2712_data,
-+	}, {
-+		.compatible = "mediatek,mt6735-scpsys",
-+		.data = &mt6735_data,
- 	}, {
- 		.compatible = "mediatek,mt6797-scpsys",
- 		.data = &mt6797_data,
+url:    https://github.com/intel-lab-lkp/linux/commits/Yassine-Oudjana/dt-bindings-clock-Add-MediaTek-MT6735-clock-bindings/20230225-174603
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
+patch link:    https://lore.kernel.org/r/20230225094246.261697-5-y.oudjana%40protonmail.com
+patch subject: [PATCH v3 4/4] clk: mediatek: Add drivers for MediaTek MT6735 main clock and reset drivers
+config: sparc-allyesconfig (https://download.01.org/0day-ci/archive/20230225/202302251958.hFATZOVS-lkp@intel.com/config)
+compiler: sparc64-linux-gcc (GCC) 12.1.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/de4ed4bf78e894ade5d21d52861ee9e647d645a5
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Yassine-Oudjana/dt-bindings-clock-Add-MediaTek-MT6735-clock-bindings/20230225-174603
+        git checkout de4ed4bf78e894ade5d21d52861ee9e647d645a5
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=sparc olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=sparc SHELL=/bin/bash drivers/clk/
+
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Link: https://lore.kernel.org/oe-kbuild-all/202302251958.hFATZOVS-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> drivers/clk/mediatek/clk-mt6735-apmixedsys.c:80:5: warning: no previous prototype for 'clk_mt6735_apmixed_probe' [-Wmissing-prototypes]
+      80 | int clk_mt6735_apmixed_probe(struct platform_device *pdev)
+         |     ^~~~~~~~~~~~~~~~~~~~~~~~
+>> drivers/clk/mediatek/clk-mt6735-apmixedsys.c:112:5: warning: no previous prototype for 'clk_mt6735_apmixed_remove' [-Wmissing-prototypes]
+     112 | int clk_mt6735_apmixed_remove(struct platform_device *pdev)
+         |     ^~~~~~~~~~~~~~~~~~~~~~~~~
+--
+>> drivers/clk/mediatek/clk-mt6735-topckgen.c:366:5: warning: no previous prototype for 'clk_mt6735_topckgen_probe' [-Wmissing-prototypes]
+     366 | int clk_mt6735_topckgen_probe(struct platform_device *pdev)
+         |     ^~~~~~~~~~~~~~~~~~~~~~~~~
+   drivers/clk/mediatek/clk-mt6735-topckgen.c: In function 'clk_mt6735_topckgen_probe':
+   drivers/clk/mediatek/clk-mt6735-topckgen.c:400:38: error: passing argument 1 of 'mtk_clk_register_muxes' from incompatible pointer type [-Werror=incompatible-pointer-types]
+     400 |         ret = mtk_clk_register_muxes(topckgen_muxes, ARRAY_SIZE(topckgen_muxes),
+         |                                      ^~~~~~~~~~~~~~
+         |                                      |
+         |                                      const struct mtk_mux *
+   In file included from drivers/clk/mediatek/clk-mt6735-topckgen.c:10:
+   drivers/clk/mediatek/clk-mux.h:86:43: note: expected 'struct device *' but argument is of type 'const struct mtk_mux *'
+      86 | int mtk_clk_register_muxes(struct device *dev,
+         |                            ~~~~~~~~~~~~~~~^~~
+   In file included from include/linux/cpumask.h:10,
+                    from include/linux/smp.h:13,
+                    from include/linux/lockdep.h:14,
+                    from include/linux/mutex.h:17,
+                    from include/linux/kernfs.h:11,
+                    from include/linux/sysfs.h:16,
+                    from include/linux/kobject.h:20,
+                    from include/linux/of.h:17,
+                    from include/linux/clk-provider.h:9,
+                    from drivers/clk/mediatek/clk-mt6735-topckgen.c:6:
+>> include/linux/kernel.h:55:25: warning: passing argument 2 of 'mtk_clk_register_muxes' makes pointer from integer without a cast [-Wint-conversion]
+      55 | #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]) + __must_be_array(arr))
+         |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         |                         |
+         |                         long unsigned int
+   drivers/clk/mediatek/clk-mt6735-topckgen.c:400:54: note: in expansion of macro 'ARRAY_SIZE'
+     400 |         ret = mtk_clk_register_muxes(topckgen_muxes, ARRAY_SIZE(topckgen_muxes),
+         |                                                      ^~~~~~~~~~
+   drivers/clk/mediatek/clk-mux.h:87:50: note: expected 'const struct mtk_mux *' but argument is of type 'long unsigned int'
+      87 |                            const struct mtk_mux *muxes,
+         |                            ~~~~~~~~~~~~~~~~~~~~~~^~~~~
+>> drivers/clk/mediatek/clk-mt6735-topckgen.c:401:47: warning: passing argument 3 of 'mtk_clk_register_muxes' makes integer from pointer without a cast [-Wint-conversion]
+     401 |                                      pdev->dev.of_node, &mt6735_topckgen_lock,
+         |                                      ~~~~~~~~~^~~~~~~~
+         |                                               |
+         |                                               struct device_node *
+   drivers/clk/mediatek/clk-mux.h:88:32: note: expected 'int' but argument is of type 'struct device_node *'
+      88 |                            int num, struct device_node *node,
+         |                            ~~~~^~~
+   drivers/clk/mediatek/clk-mt6735-topckgen.c:401:57: error: passing argument 4 of 'mtk_clk_register_muxes' from incompatible pointer type [-Werror=incompatible-pointer-types]
+     401 |                                      pdev->dev.of_node, &mt6735_topckgen_lock,
+         |                                                         ^~~~~~~~~~~~~~~~~~~~~
+         |                                                         |
+         |                                                         spinlock_t * {aka struct spinlock *}
+   drivers/clk/mediatek/clk-mux.h:88:57: note: expected 'struct device_node *' but argument is of type 'spinlock_t *' {aka 'struct spinlock *'}
+      88 |                            int num, struct device_node *node,
+         |                                     ~~~~~~~~~~~~~~~~~~~~^~~~
+   drivers/clk/mediatek/clk-mt6735-topckgen.c:402:38: error: passing argument 5 of 'mtk_clk_register_muxes' from incompatible pointer type [-Werror=incompatible-pointer-types]
+     402 |                                      clk_data);
+         |                                      ^~~~~~~~
+         |                                      |
+         |                                      struct clk_hw_onecell_data *
+   drivers/clk/mediatek/clk-mux.h:89:40: note: expected 'spinlock_t *' {aka 'struct spinlock *'} but argument is of type 'struct clk_hw_onecell_data *'
+      89 |                            spinlock_t *lock,
+         |                            ~~~~~~~~~~~~^~~~
+   drivers/clk/mediatek/clk-mt6735-topckgen.c:400:15: error: too few arguments to function 'mtk_clk_register_muxes'
+     400 |         ret = mtk_clk_register_muxes(topckgen_muxes, ARRAY_SIZE(topckgen_muxes),
+         |               ^~~~~~~~~~~~~~~~~~~~~~
+   drivers/clk/mediatek/clk-mux.h:86:5: note: declared here
+      86 | int mtk_clk_register_muxes(struct device *dev,
+         |     ^~~~~~~~~~~~~~~~~~~~~~
+   drivers/clk/mediatek/clk-mt6735-topckgen.c: At top level:
+>> drivers/clk/mediatek/clk-mt6735-topckgen.c:417:5: warning: no previous prototype for 'clk_mt6735_topckgen_remove' [-Wmissing-prototypes]
+     417 | int clk_mt6735_topckgen_remove(struct platform_device *pdev)
+         |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+   cc1: some warnings being treated as errors
+
+
+vim +/clk_mt6735_apmixed_probe +80 drivers/clk/mediatek/clk-mt6735-apmixedsys.c
+
+    79	
+  > 80	int clk_mt6735_apmixed_probe(struct platform_device *pdev)
+    81	{
+    82		void __iomem *base;
+    83		struct resource *res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+    84		struct clk_hw_onecell_data *clk_data;
+    85		int ret;
+    86	
+    87		base = devm_ioremap_resource(&pdev->dev, res);
+    88		if (IS_ERR(base))
+    89			return PTR_ERR(base);
+    90	
+    91		clk_data = mtk_alloc_clk_data(ARRAY_SIZE(apmixedsys_plls));
+    92		if (!clk_data)
+    93			return -ENOMEM;
+    94		platform_set_drvdata(pdev, clk_data);
+    95	
+    96		ret = mtk_clk_register_plls(pdev->dev.of_node, apmixedsys_plls,
+    97					   ARRAY_SIZE(apmixedsys_plls), clk_data);
+    98		if (ret) {
+    99			dev_err(&pdev->dev, "Failed to register PLLs: %d\n", ret);
+   100			return ret;
+   101		}
+   102	
+   103		ret = devm_of_clk_add_hw_provider(&pdev->dev, of_clk_hw_onecell_get,
+   104						  clk_data);
+   105		if (ret)
+   106			dev_err(&pdev->dev,
+   107				"Failed to register clock provider: %d\n", ret);
+   108	
+   109		return ret;
+   110	}
+   111	
+ > 112	int clk_mt6735_apmixed_remove(struct platform_device *pdev)
+   113	{
+   114		struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+   115	
+   116		mtk_clk_unregister_plls(apmixedsys_plls, ARRAY_SIZE(apmixedsys_plls), clk_data);
+   117		mtk_free_clk_data(clk_data);
+   118	
+   119		return 0;
+   120	}
+   121	
+
 -- 
-2.39.2
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
