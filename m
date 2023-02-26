@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A15AC6FA8E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Feb 2023 14:46:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6657C6FA8E
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Feb 2023 14:47:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n+CfJfK3LGuZZ1+r8jcLiRQ/Gdr+QRjvAyXIu9TfP2U=; b=1IzW2QPM4T5sudoWpM+YS8sL6c
-	RgL6UEPKXhTNODvlHd+6Wpe7iH4BQS3rRvMJEIYU5FV3HbaiOj2pA4u2obI2OT9uLxEKEokNP+/qN
-	CEyFeTNtbDXW1Ju+pkTEjQfpYnHgqSDxvJGttNE351Q7YqVE4ugPaYh6NmafCwkanQcPhk4RZLGA+
-	r9apTxsJuzGRJ0fBhUrTImpedQcC6AiGuPATIHO+FEdW8gU7YnXvnUg5tmVrMOSWuRNyHyiEQB/t1
-	ykEjmeBx0d4mc5Nw9b4RB12SgBPVYdFuZtS9PtrgWUqMC7zzEtWEoOrsJjBTMdUTVbevhd1RJy9ay
-	budCcRSg==;
+	bh=M+EJJAiERl2YhEOSvKtnMiDFXabmi8YTFe5QykNaECg=; b=qSi3Ysofd1t0qeSL3WVbfwOHIm
+	KAfQM3yUsY7aDiAfmMwlKevzhBVopZRTsJEMe3L0zmA89UIHhO+vxaWkdEN+76g/uPenvXW3Wpmak
+	GXrKPY5V1EFJxT8Cm24kYoxrZDyrDR5cOtbEjBrmAXjkfvUFgHCOeQJ8tCOUrslK4ENEqssMhOBXq
+	2byP7iq4d/8MfBHNh7UaamknNNw2HRn+8lk4RbgfZzcrTAX1rcJ3yd56HoqAENWuEqx7E+k/BTGys
+	Duq3FOljdEV+P8nI4bdb4B64wmtz1vz4THgPQJ7c/p4PdMWZyoK8e30FOjQgsfksPf0E9EDFfcYcy
+	4fYFRr5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWIIX-007P2G-TO; Sun, 26 Feb 2023 14:46:45 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pWIJX-007PWs-GS; Sun, 26 Feb 2023 14:47:47 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWIIL-007Oxm-IB; Sun, 26 Feb 2023 14:46:35 +0000
+	id 1pWIJJ-007PPG-5G; Sun, 26 Feb 2023 14:47:35 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 2CD4960C1A;
-	Sun, 26 Feb 2023 14:46:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B67BC4339B;
-	Sun, 26 Feb 2023 14:46:31 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id BEEEBB80BEC;
+	Sun, 26 Feb 2023 14:47:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 53670C433A1;
+	Sun, 26 Feb 2023 14:47:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1677422793;
-	bh=i+fdipJ0Web+0CarVXGoatLl7+3hFfmAieXTSFSwacQ=;
+	s=k20201202; t=1677422849;
+	bh=6m2TmILGqIjxl3+mDXlrPO4M+DUAGyTJ1HZNICXWLrk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=neqVAwHBHfhC73KCPpzA47QGCwCxwCvi0jGPAhzLTFrtym4h2V1JzbS8Cr6ca9WMo
-	 ID+LXEpTTwt+p5DofDr61aBJLhOE4JhF8kvOKUPwZ3vg2cv/tcZqasp4+W0YlRb7G6
-	 9Yn1geoOi5FW70LOCPe5V81RzGbhYoO8XbS5wW7cMLC+ESC+DRWM/t5c6kO+TmPm5d
-	 A19Gugadug08OoCpmaNHnQvbigIWeDJ24qjui8NZA/AiKLqpa6yTgE6KTc0fz678sX
-	 rPVtQB5HLtL0g9KtmSligjiISFJr6n08QzU/1WAxpgEt/HW2nLcb7RwrKrl9rzrd2L
-	 90J5v8I/fwVdQ==
+	b=btFbV7MtdJAJcdH9n9NzK/Ar/CkCWaXr/uGVaiT/lKjdlZ9EQcKD3bThrOEalfnjM
+	 R+v3j8ctWwnZc4sZLdBPrzLWVk56KUWXdGqoLUyaiOu6jwqYN9d2rZk1QFhGI+WGJM
+	 hLaqWX2M3Ja/MvEP8U2QIFXZMzeTwuMMk6AKDc+NkQlYs8SZHWcs3XAGJn7Pwd6k1l
+	 q0flXOh3OVwyjHmlD64wy/AkHCEn+2KHZi9EqSAm0JQUMocY32/E/xt4h+IJ0xDlXz
+	 ZU3o0uZdL3UftnaHjcyzan1cPMllb8TDzSqGjxTihsPuytqT02b2He1i+DirObGL92
+	 lRZKYeP/1CiFg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Mario Limonciello <mario.limonciello@amd.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Anson Tsao <anson.tsao@amd.com>,
-	Luiz Augusto von Dentz <luiz.von.dentz@intel.com>,
+Cc: Jisoo Jang <jisoo.jang@yonsei.ac.kr>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Kalle Valo <kvalo@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
-	marcel@holtmann.org,
-	johan.hedberg@gmail.com,
-	luiz.dentz@gmail.com,
+	davem@davemloft.net,
+	edumazet@google.com,
+	pabeni@redhat.com,
 	matthias.bgg@gmail.com,
-	linux-bluetooth@vger.kernel.org,
+	linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.2 46/53] Bluetooth: btusb: Add new PID/VID 0489:e0f2 for MT7921
-Date: Sun, 26 Feb 2023 09:44:38 -0500
-Message-Id: <20230226144446.824580-46-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.1 15/49] wifi: mt7601u: fix an integer underflow
+Date: Sun, 26 Feb 2023 09:46:15 -0500
+Message-Id: <20230226144650.826470-15-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230226144446.824580-1-sashal@kernel.org>
-References: <20230226144446.824580-1-sashal@kernel.org>
+In-Reply-To: <20230226144650.826470-1-sashal@kernel.org>
+References: <20230226144650.826470-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230226_064633_720391_E9E2A09C 
-X-CRM114-Status: GOOD (  11.19  )
+X-CRM114-CacheID: sfid-20230226_064733_618627_B285A8A9 
+X-CRM114-Status: GOOD (  14.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,78 +83,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Mario Limonciello <mario.limonciello@amd.com>
+From: Jisoo Jang <jisoo.jang@yonsei.ac.kr>
 
-[ Upstream commit 83458a5f272b303479e7d2f451600817a7350b6b ]
+[ Upstream commit 803f3176c5df3b5582c27ea690f204abb60b19b9 ]
 
-This bluetooth device is found in a combo WLAN/BT card
-for a MediaTek 7921e.
+Fix an integer underflow that leads to a null pointer dereference in
+'mt7601u_rx_skb_from_seg()'. The variable 'dma_len' in the URB packet
+could be manipulated, which could trigger an integer underflow of
+'seg_len' in 'mt7601u_rx_process_seg()'. This underflow subsequently
+causes the 'bad_frame' checks in 'mt7601u_rx_skb_from_seg()' to be
+bypassed, eventually leading to a dereference of the pointer 'p', which
+is a null pointer.
 
-The device information:
+Ensure that 'dma_len' is greater than 'min_seg_len'.
 
-T:  Bus=01 Lev=01 Prnt=01 Port=02 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
-D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=0489 ProdID=e0f2 Rev= 1.00
-S:  Manufacturer=MediaTek Inc.
-S:  Product=Wireless_Device
-S:  SerialNumber=000000000
-C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+Found by a modified version of syzkaller.
 
-Cc: Sean Wang <sean.wang@mediatek.com>
-Cc: Anson Tsao <anson.tsao@amd.com>
-Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
-Signed-off-by: Luiz Augusto von Dentz <luiz.von.dentz@intel.com>
+KASAN: null-ptr-deref in range [0x0000000000000008-0x000000000000000f]
+CPU: 0 PID: 12 Comm: ksoftirqd/0 Tainted: G        W  O      5.14.0+
+#139
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS
+rel-1.12.1-0-ga5cab58e9a3f-prebuilt.qemu.org 04/01/2014
+RIP: 0010:skb_add_rx_frag+0x143/0x370
+Code: e2 07 83 c2 03 38 ca 7c 08 84 c9 0f 85 86 01 00 00 4c 8d 7d 08 44
+89 68 08 48 b8 00 00 00 00 00 fc ff df 4c 89 fa 48 c1 ea 03 <80> 3c 02
+00 0f 85 cd 01 00 00 48 8b 45 08 a8 01 0f 85 3d 01 00 00
+RSP: 0018:ffffc900000cfc90 EFLAGS: 00010202
+RAX: dffffc0000000000 RBX: ffff888115520dc0 RCX: 0000000000000000
+RDX: 0000000000000001 RSI: ffff8881118430c0 RDI: ffff8881118430f8
+RBP: 0000000000000000 R08: 0000000000000e09 R09: 0000000000000010
+R10: ffff888111843017 R11: ffffed1022308602 R12: 0000000000000000
+R13: 0000000000000e09 R14: 0000000000000010 R15: 0000000000000008
+FS:  0000000000000000(0000) GS:ffff88811a800000(0000)
+knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000000004035af40 CR3: 00000001157f2000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ mt7601u_rx_tasklet+0xc73/0x1270
+ ? mt7601u_submit_rx_buf.isra.0+0x510/0x510
+ ? tasklet_action_common.isra.0+0x79/0x2f0
+ tasklet_action_common.isra.0+0x206/0x2f0
+ __do_softirq+0x1b5/0x880
+ ? tasklet_unlock+0x30/0x30
+ run_ksoftirqd+0x26/0x50
+ smpboot_thread_fn+0x34f/0x7d0
+ ? smpboot_register_percpu_thread+0x370/0x370
+ kthread+0x3a1/0x480
+ ? set_kthread_struct+0x120/0x120
+ ret_from_fork+0x1f/0x30
+Modules linked in: 88XXau(O) 88x2bu(O)
+---[ end trace 57f34f93b4da0f9b ]---
+RIP: 0010:skb_add_rx_frag+0x143/0x370
+Code: e2 07 83 c2 03 38 ca 7c 08 84 c9 0f 85 86 01 00 00 4c 8d 7d 08 44
+89 68 08 48 b8 00 00 00 00 00 fc ff df 4c 89 fa 48 c1 ea 03 <80> 3c 02
+00 0f 85 cd 01 00 00 48 8b 45 08 a8 01 0f 85 3d 01 00 00
+RSP: 0018:ffffc900000cfc90 EFLAGS: 00010202
+RAX: dffffc0000000000 RBX: ffff888115520dc0 RCX: 0000000000000000
+RDX: 0000000000000001 RSI: ffff8881118430c0 RDI: ffff8881118430f8
+RBP: 0000000000000000 R08: 0000000000000e09 R09: 0000000000000010
+R10: ffff888111843017 R11: ffffed1022308602 R12: 0000000000000000
+R13: 0000000000000e09 R14: 0000000000000010 R15: 0000000000000008
+FS:  0000000000000000(0000) GS:ffff88811a800000(0000)
+knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000000004035af40 CR3: 00000001157f2000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+
+Signed-off-by: Jisoo Jang <jisoo.jang@yonsei.ac.kr>
+Acked-by: Jakub Kicinski <kuba@kernel.org>
+Signed-off-by: Kalle Valo <kvalo@kernel.org>
+Link: https://lore.kernel.org/r/20221229092906.2328282-1-jisoo.jang@yonsei.ac.kr
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/bluetooth/btusb.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/net/wireless/mediatek/mt7601u/dma.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index afd2f08ffe30f..acfd40f1cc75c 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -567,6 +567,9 @@ static const struct usb_device_id blacklist_table[] = {
- 	{ USB_DEVICE(0x0489, 0xe0e0), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH |
- 						     BTUSB_VALID_LE_STATES },
-+	{ USB_DEVICE(0x0489, 0xe0f2), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH |
-+						     BTUSB_VALID_LE_STATES },
- 	{ USB_DEVICE(0x04ca, 0x3802), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH |
- 						     BTUSB_VALID_LE_STATES },
+diff --git a/drivers/net/wireless/mediatek/mt7601u/dma.c b/drivers/net/wireless/mediatek/mt7601u/dma.c
+index 457147394edc4..773a1cc2f8520 100644
+--- a/drivers/net/wireless/mediatek/mt7601u/dma.c
++++ b/drivers/net/wireless/mediatek/mt7601u/dma.c
+@@ -123,7 +123,8 @@ static u16 mt7601u_rx_next_seg_len(u8 *data, u32 data_len)
+ 	if (data_len < min_seg_len ||
+ 	    WARN_ON_ONCE(!dma_len) ||
+ 	    WARN_ON_ONCE(dma_len + MT_DMA_HDRS > data_len) ||
+-	    WARN_ON_ONCE(dma_len & 0x3))
++	    WARN_ON_ONCE(dma_len & 0x3) ||
++	    WARN_ON_ONCE(dma_len < min_seg_len))
+ 		return 0;
+ 
+ 	return MT_DMA_HDRS + dma_len;
 -- 
 2.39.0
 
