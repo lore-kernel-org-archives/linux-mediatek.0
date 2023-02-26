@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91B4DC6FA8E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Feb 2023 18:04:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 112AAC6FA8E
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Feb 2023 18:38:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UMSuEX3PzF7dxnK96QE6BnCdpykh3c5U6wgrobTc4/c=; b=DlVEvLoMpYNPtBjokP+Sfumtkq
-	nj63WDE5pNvsNiEESxEfPr2+95uQW/+T588Ydgh6ykyNuE4oiiPqVZi3lHDvw5Lc+YmWYUYaDvDiV
-	K1ctdmOWlH22+7/I6QUmCHbT38+tnszcZj+5ELE2F0vSwaAqbUCAa1HMmblodeGUBvLyrTtgrW5WV
-	M3d6HwSavAqEK9XixHRubS6PLQiHoFEtozoxxA+V3YTsUPHOO3dv67fo5O+59MbdFfN7pSJV9Ct2x
-	+LjwJbkBSOyntUhwCt3knCg3osh5gy6dmWN/zEZDgSLkd0palPBrPd3ORHxDeb9ru5j9FycrBML4d
-	cfL5CQfw==;
+	bh=KapxYTomvu59mWLVr5fqDVRnfE034d9Qe/O0kjHGyo4=; b=m51+LOIRo1tg9BzjAQ4nsUKqjV
+	AsXC7uDJlf1XugpsnOdoOD+kgH7KFY3mpoZfyjFzcO3/uqJ1sL+s9EkLvdpAV2hQraHU+6Hrx7q3f
+	UMeDlutSeV6C1cV4RzGWyIBjlkGVp4wQy8K8k8VyxQMBanYh3MV0NWKtCbbJPGI5QseG8P5JthW1B
+	jPrIapall0johF9t75bSDct7t7heUKBeGR9ViXcAjg9SOvsmlRSZtkhfifmi3otqNxGTQ4AzvEKFb
+	rVP1yO1302gIQnPmulh1WWMcwCi39tBZK1yeAz7Jp6TyD3zcb/YYjD6HY49+IF70nWfd/kLQkvBsN
+	AYVjUyyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWLNw-007fB3-78; Sun, 26 Feb 2023 18:04:32 +0000
-Received: from mail-il1-f182.google.com ([209.85.166.182])
+	id 1pWLv3-007jIi-HE; Sun, 26 Feb 2023 18:38:45 +0000
+Received: from mail-il1-f175.google.com ([209.85.166.175])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWLNt-007fAW-O5; Sun, 26 Feb 2023 18:04:30 +0000
-Received: by mail-il1-f182.google.com with SMTP id i12so2795364ila.5;
-        Sun, 26 Feb 2023 10:04:28 -0800 (PST)
+	id 1pWLv0-007jHs-TI; Sun, 26 Feb 2023 18:38:44 +0000
+Received: by mail-il1-f175.google.com with SMTP id y14so777517ilv.4;
+        Sun, 26 Feb 2023 10:38:40 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=UMSuEX3PzF7dxnK96QE6BnCdpykh3c5U6wgrobTc4/c=;
-        b=snkm55w9AszrmnwHngA0ymQRknKlUaHYVdtS7+NsWUHhby95QcDumY0HOqCmTU33Xp
-         ge8wzZRscvd8l7yrIgz1Mpf4Y7aoMOYAtrqzFvD+VY4WSHZo6J4Hs8Zr5csU9unZiisc
-         HiG0i58XvFDzAbYNBq2uGy8000q/gQ6yNtQiibfSEfRBljVOqqOdGneH36MVckH7VVir
-         WOrnXBXJL2u5BIhdt1zkuYDvvfcQ1UtI1Zcu7JildJnSFOAhOEi71ihBu6WCLXUmLLWr
-         lKmSvLTVKA2LRwnNTYyMfEGu6AVSgWsl9W7XlSo78Me9al9WvFYc+8oZllZRg9p7owaD
-         6j+w==
-X-Gm-Message-State: AO0yUKWJHmwWsW/8K65R2A8K3EoUv1fryTHrEkMuzevzPz1zE8bmWzt3
-	9/DcGK9TkFr/OBgtu5QHhA==
-X-Google-Smtp-Source: AK7set/i0/757auG+RPj2GgQ8Gf8IwoAPeqDUP6Mh+t5Eh/sv0npg2IlH3JW8tgYlgcPvcdhpZtEdA==
-X-Received: by 2002:a05:6e02:16cd:b0:316:acef:e65a with SMTP id 13-20020a056e0216cd00b00316acefe65amr20992008ilx.17.1677434668129;
-        Sun, 26 Feb 2023 10:04:28 -0800 (PST)
+        bh=KapxYTomvu59mWLVr5fqDVRnfE034d9Qe/O0kjHGyo4=;
+        b=olhhIXYmEUDElXbfpeP3b9c2pwv/qHgoBE9zEoO9cCP1/kk845ftXvLiVsCPNWaRn5
+         YVbfoYvev6sxmPokpoZVUe5oWU+MaDyHFFlBi92wW3NaWkNDHlJTsWIb6Y4KCy+ZWfsa
+         yRK3+5Jir1gDH3svM4IUkSEALmGUncdfCwPnwK0A5hVKO/e5PW2uT1gC+9EVWukq8ZSn
+         OvlfqLaGFjrBHcAtwu1Af2gXHOAlRnT7d8BcOGGqRziFhmMJjRBfDzLb7Ox9SShCLNkk
+         OlZ2I7FdXySh2N78sKezllTrPc2abonXDQaJyshNzuYo8SYdyrxjk5VGL6eOYVK+ZGpo
+         eHKQ==
+X-Gm-Message-State: AO0yUKWN7wCqWnwVOprxRt+Ng/EobIcAW/WbUmzVIXYx4RKpk1qDW7Pe
+	8cmHbpR9TNx0ZuZ7N5Ucl3uIcMDLDA==
+X-Google-Smtp-Source: AK7set9n8DDNpC4hB74xJ2JU8XjS3anvJsTrFcA7XhlUG3DTjyhpdQ6KB4JcJ7bzRMeGVlwepczC/A==
+X-Received: by 2002:a92:cd89:0:b0:314:f7f:a35a with SMTP id r9-20020a92cd89000000b003140f7fa35amr19991705ilb.7.1677436719547;
+        Sun, 26 Feb 2023 10:38:39 -0800 (PST)
 Received: from robh_at_kernel.org ([2605:ef80:8069:8ddf:ff6b:c94c:94fd:4442])
-        by smtp.gmail.com with ESMTPSA id a4-20020a92d584000000b003153213c586sm1411833iln.30.2023.02.26.10.04.24
+        by smtp.gmail.com with ESMTPSA id y21-20020a02bb15000000b003acfdc75a53sm1547986jan.48.2023.02.26.10.38.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 26 Feb 2023 10:04:27 -0800 (PST)
-Received: (nullmailer pid 105263 invoked by uid 1000);
-	Sun, 26 Feb 2023 18:04:23 -0000
-Date: Sun, 26 Feb 2023 12:04:23 -0600
+        Sun, 26 Feb 2023 10:38:39 -0800 (PST)
+Received: (nullmailer pid 150130 invoked by uid 1000);
+	Sun, 26 Feb 2023 18:38:28 -0000
+Date: Sun, 26 Feb 2023 12:38:28 -0600
 From: Rob Herring <robh@kernel.org>
-To: arinc9.unal@gmail.com
-Cc: Andrew Lunn <andrew@lunn.ch>, Jakub Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, DENG Qingfang <dqfext@gmail.com>, Paolo Abeni <pabeni@redhat.com>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, "David S. Miller" <davem@davemloft.net>, Sean Wang <sean.wang@mediatek.com>, netdev@vger.kernel.org, devicetree@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Florian Fainelli <f.fainelli@gmail.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Landen Chao <Landen.Chao@mediatek.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, Vladimir Oltean <olteanv@gmail.com>, linux-mediatek@lists.infradead.org, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: net: dsa: mediatek,mt7530: change some
- descriptions to literal
-Message-ID: <167743466228.105184.14755620917019401339.robh@kernel.org>
-References: <20230218072348.13089-1-arinc.unal@arinc9.com>
+To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+Cc: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Masami Hiramatsu <mhiramat@kernel.org>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-kernel@vger.kernel.org, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH V3 1/2] dt-bindings: nvmem: mmio: new binding for MMIO
+ accessible NVMEM devices
+Message-ID: <167743670799.150030.2985662299530290415.robh@kernel.org>
+References: <20230220174930.7440-1-zajec5@gmail.com>
+ <20230220174930.7440-2-zajec5@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230218072348.13089-1-arinc.unal@arinc9.com>
+In-Reply-To: <20230220174930.7440-2-zajec5@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230226_100429_807525_B8417012 
-X-CRM114-Status: GOOD (  14.00  )
+X-CRM114-CacheID: sfid-20230226_103842_969634_77CAD236 
+X-CRM114-Status: GOOD (  14.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,22 +81,30 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Sat, 18 Feb 2023 10:23:48 +0300, arinc9.unal@gmail.com wrote:
-> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+On Mon, 20 Feb 2023 18:49:29 +0100, Rafał Miłecki wrote:
+> From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> The line endings must be preserved on gpio-controller, io-supply, and
-> reset-gpios properties to look proper when the YAML file is parsed.
+> Content of some NVMEM devices can be read using MMIO. Some of them
+> (probably very few though) may be also programmable that way. Add
+> generic binding to allow describing such hardware.
 > 
-> Currently it's interpreted as a single line when parsed. Change the style
-> of the description of these properties to literal style to preserve the
-> line endings.
+> This *doesn't* apply to any more complicated devices that need more
+> complex interface e.g. for writing. While such devices could be
+> supported for reading purposes by the same driver - they should get
+> their own binding.
 > 
-> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> This binding will gain even more usability once we fully support NVMEM
+> layouts (describing content of NVMEM devices in an independent way).
+> 
+> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 > ---
->  .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml        | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+> V3: Make it clear this binding should NOT be used for more complex devices
+> ---
+>  .../devicetree/bindings/nvmem/mmio.yaml       | 50 +++++++++++++++++++
+>  1 file changed, 50 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/nvmem/mmio.yaml
 > 
 
-Acked-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 
