@@ -4,75 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49AA9C6FA8E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Feb 2023 12:51:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E51FC7EE23
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Feb 2023 14:45:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ly4ImqVJ8nFpq8SIw5/ZGX4jKcnms3UqozgWVFQtu/A=; b=Vp2gGyDsTlbBrZkAItlcNOtwRY
-	xI6MF4u7ngqyCdIUSuRPKLqbUgpjA91NV1cPZxXgy25lWr/iXyONj6N45qxmOUg/tcT5RywjdP7Mq
-	pHD9oFUHWps+az/9frnAQdWqii7v6xMECCqmcf9eAvKNwlq6aYD5E/pJ/Xuaq8EMQnHRjieT8b8r7
-	FFeW8kr4qgHTiMT2JBlFrzWYfZXAFKUU4KKGrfs+cHz6tLhHcw02EUIU8BJh0+Y/niSOGsXaDVcja
-	sekmpdfZId9I18emGJymHN5AsC3PfkDRmvMu3KX5DTjIt7Rptg9JLFFCTUy/bnwbht95eeyTR61yK
-	dw9iLz2Q==;
+	bh=M+EJJAiERl2YhEOSvKtnMiDFXabmi8YTFe5QykNaECg=; b=R5zY53iymc6y7BpNsG8XVcABub
+	AnMZNnwJ3po/l5umPiEKD3A2DkmS3Af2fBQ7jO7DaJsLOGsdMYYcPMKlUIZ37lb4iU/6tnFeEBwjg
+	6XTl4nSGg7YR7U8YU5QhO/n+/vKA407vTOINQ32eyXe8EUhjnaZAHs9fyYEEzIuFcrVkHVDh0pwy+
+	/CS5xWtIBKVrDTFAVCwrLI94Xy6gaKGOGHNHvzKoWNpcrWyUKeAD9WazX1Gt/j/bKsndIv7Q/d3LU
+	2C/w+v0DzYOmTM7S/UOzLNqH0OISQd31jRwyLI68mXUtiuiMG8nJQtE7WhBX4ZxrdjzH+fpFN/V5A
+	6ANsYuTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWGUY-007Diy-EV; Sun, 26 Feb 2023 12:51:02 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pWIHV-007Ojn-7a; Sun, 26 Feb 2023 14:45:41 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWGU0-007DPv-62; Sun, 26 Feb 2023 12:50:29 +0000
+	id 1pWIHK-007Ogr-3h; Sun, 26 Feb 2023 14:45:32 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id B4837B80159;
-	Sun, 26 Feb 2023 12:50:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB669C4339E;
-	Sun, 26 Feb 2023 12:50:14 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 874D2B80BE8;
+	Sun, 26 Feb 2023 14:45:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E36EFC433A0;
+	Sun, 26 Feb 2023 14:45:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1677415816;
-	bh=JEDiIUtaX6g3tzXr94u0tVLuH331wW8Kksrsq52VVaw=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=KJDl+HGre8yXeUx2qaDrDi2wZvNZ2dIYmMUG1rcPYUNvYuSzehbaEh/fOnI5/IWNt
-	 qd1XCLGO/mvCyeWMu1+YPB2h/n2SjS7KNu0prq0VQ2EGUQies2if/laQpoMK/VkfKL
-	 4als1i4T3HaS4Bea6b8FXV9R2FwynDxiowMh3L6MB3lPDDKvAAvuzCDb3nGvQg2wSj
-	 9GGiOKXHVtZs8jFhn9qG5MEyLb16B5OpWUmpd7vSCZBIIqzR/A/rraz2ujnZt2DyfU
-	 nVcL9+iBGAPKuELGEKic7vJlBeqQU2b1VqRtpsyU3xHkJwgyI8FGVG9n/xJiCtBtUp
-	 XY3gaYU+0A8TQ==
-From: Mark Brown <broonie@kernel.org>
-Date: Sun, 26 Feb 2023 12:49:57 +0000
-Subject: [PATCH 2/2] ASoC: mt8183: Fix event generation for I2S DAI
- operations
+	s=k20201202; t=1677422727;
+	bh=6m2TmILGqIjxl3+mDXlrPO4M+DUAGyTJ1HZNICXWLrk=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=qhw4UYiAJ4TAdVeOBCNTJYspyzfcfqrwKUzWlEUoM4QDyLXKSZJG+4wMnpnPElL7m
+	 T4y0Yxv0BIv/X1ozys9SQf7/dgJUYQ28roloOgEqhJ39N4bQ248hbj45jLQa45nyIY
+	 fSpQ41+iZ6261Oozhcjg+FOdiN5zwiOp33oZ7MJeoOHuMCexUpGCgbiMhbWvmi3/L6
+	 mAkUij0MvND061u1ZlHoHEBUj7CuqDZNp85RHiAHiW0AKCm+hx87TiMc8rSJOFFs9s
+	 Ub/Rx9Kyq+7e1KvdLKe4cGA5xE+N3Z2zYqo7mtRYB/drtod0qQikWvH5LmzC2+iJnF
+	 yV/5t6xtOF0Nw==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Jisoo Jang <jisoo.jang@yonsei.ac.kr>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Kalle Valo <kvalo@kernel.org>,
+	Sasha Levin <sashal@kernel.org>,
+	davem@davemloft.net,
+	edumazet@google.com,
+	pabeni@redhat.com,
+	matthias.bgg@gmail.com,
+	linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.2 16/53] wifi: mt7601u: fix an integer underflow
+Date: Sun, 26 Feb 2023 09:44:08 -0500
+Message-Id: <20230226144446.824580-16-sashal@kernel.org>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230226144446.824580-1-sashal@kernel.org>
+References: <20230226144446.824580-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20230224-asoc-mt8183-quick-fixes-v1-2-041f29419ed5@kernel.org>
-References: <20230224-asoc-mt8183-quick-fixes-v1-0-041f29419ed5@kernel.org>
-In-Reply-To: <20230224-asoc-mt8183-quick-fixes-v1-0-041f29419ed5@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
- alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Mark Brown <broonie@kernel.org>
-X-Mailer: b4 0.13-dev-ada30
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1295; i=broonie@kernel.org;
- h=from:subject:message-id; bh=JEDiIUtaX6g3tzXr94u0tVLuH331wW8Kksrsq52VVaw=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBj+1WAnugavWTX+9Hg/IvfRmt51ua6j+yicn0pEbPH
- asQEgkeJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCY/tVgAAKCRAk1otyXVSH0CYYB/
- 0YSxCulCFXlrJOmzm6bM8diam+8P0CaA2QdRk+4WzbchuF3GPtZYVkpLATCYcFkge0COsUx4/f25Ng
- DEm6IaKvDx3uPBKT6F2o2utQBxHYPzaotQ0l6AzJ/CakQC+7h0FKRcwjK5yEWYGT0Y4LoVeZStSKfu
- rvLgBlDdRsXMEDGzXAhDzzpuU9y22LBshUeP/DQZnhpzYxFtUOlvCA+Xzavgn7FpA9Wxeut5Ztpq3f
- xsAVW6NAEr6b4xUwsgMfUazDH6Hh2dwnDuj9DzhaVKP+QLRrMZeKKBNHRjjCE/RTJRSODi+FkaI/nE
- 4tr+kl9q1aYhrH7pGqFNzIEqt7tVnq
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+X-stable: review
+X-Patchwork-Hint: Ignore
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230226_045028_590633_9E550438 
-X-CRM114-Status: GOOD (  13.24  )
+X-CRM114-CacheID: sfid-20230226_064530_479329_4D795AF4 
+X-CRM114-Status: GOOD (  14.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,42 +83,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-ALSA control put() operations should return 0 if the value changed so that
-events can be generated appropriately for userspace but the custom control
-in the MT8183 I2S DAI driver doesn't do that, fix it.
+From: Jisoo Jang <jisoo.jang@yonsei.ac.kr>
 
-Signed-off-by: Mark Brown <broonie@kernel.org>
+[ Upstream commit 803f3176c5df3b5582c27ea690f204abb60b19b9 ]
+
+Fix an integer underflow that leads to a null pointer dereference in
+'mt7601u_rx_skb_from_seg()'. The variable 'dma_len' in the URB packet
+could be manipulated, which could trigger an integer underflow of
+'seg_len' in 'mt7601u_rx_process_seg()'. This underflow subsequently
+causes the 'bad_frame' checks in 'mt7601u_rx_skb_from_seg()' to be
+bypassed, eventually leading to a dereference of the pointer 'p', which
+is a null pointer.
+
+Ensure that 'dma_len' is greater than 'min_seg_len'.
+
+Found by a modified version of syzkaller.
+
+KASAN: null-ptr-deref in range [0x0000000000000008-0x000000000000000f]
+CPU: 0 PID: 12 Comm: ksoftirqd/0 Tainted: G        W  O      5.14.0+
+#139
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS
+rel-1.12.1-0-ga5cab58e9a3f-prebuilt.qemu.org 04/01/2014
+RIP: 0010:skb_add_rx_frag+0x143/0x370
+Code: e2 07 83 c2 03 38 ca 7c 08 84 c9 0f 85 86 01 00 00 4c 8d 7d 08 44
+89 68 08 48 b8 00 00 00 00 00 fc ff df 4c 89 fa 48 c1 ea 03 <80> 3c 02
+00 0f 85 cd 01 00 00 48 8b 45 08 a8 01 0f 85 3d 01 00 00
+RSP: 0018:ffffc900000cfc90 EFLAGS: 00010202
+RAX: dffffc0000000000 RBX: ffff888115520dc0 RCX: 0000000000000000
+RDX: 0000000000000001 RSI: ffff8881118430c0 RDI: ffff8881118430f8
+RBP: 0000000000000000 R08: 0000000000000e09 R09: 0000000000000010
+R10: ffff888111843017 R11: ffffed1022308602 R12: 0000000000000000
+R13: 0000000000000e09 R14: 0000000000000010 R15: 0000000000000008
+FS:  0000000000000000(0000) GS:ffff88811a800000(0000)
+knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000000004035af40 CR3: 00000001157f2000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ mt7601u_rx_tasklet+0xc73/0x1270
+ ? mt7601u_submit_rx_buf.isra.0+0x510/0x510
+ ? tasklet_action_common.isra.0+0x79/0x2f0
+ tasklet_action_common.isra.0+0x206/0x2f0
+ __do_softirq+0x1b5/0x880
+ ? tasklet_unlock+0x30/0x30
+ run_ksoftirqd+0x26/0x50
+ smpboot_thread_fn+0x34f/0x7d0
+ ? smpboot_register_percpu_thread+0x370/0x370
+ kthread+0x3a1/0x480
+ ? set_kthread_struct+0x120/0x120
+ ret_from_fork+0x1f/0x30
+Modules linked in: 88XXau(O) 88x2bu(O)
+---[ end trace 57f34f93b4da0f9b ]---
+RIP: 0010:skb_add_rx_frag+0x143/0x370
+Code: e2 07 83 c2 03 38 ca 7c 08 84 c9 0f 85 86 01 00 00 4c 8d 7d 08 44
+89 68 08 48 b8 00 00 00 00 00 fc ff df 4c 89 fa 48 c1 ea 03 <80> 3c 02
+00 0f 85 cd 01 00 00 48 8b 45 08 a8 01 0f 85 3d 01 00 00
+RSP: 0018:ffffc900000cfc90 EFLAGS: 00010202
+RAX: dffffc0000000000 RBX: ffff888115520dc0 RCX: 0000000000000000
+RDX: 0000000000000001 RSI: ffff8881118430c0 RDI: ffff8881118430f8
+RBP: 0000000000000000 R08: 0000000000000e09 R09: 0000000000000010
+R10: ffff888111843017 R11: ffffed1022308602 R12: 0000000000000000
+R13: 0000000000000e09 R14: 0000000000000010 R15: 0000000000000008
+FS:  0000000000000000(0000) GS:ffff88811a800000(0000)
+knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000000004035af40 CR3: 00000001157f2000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+
+Signed-off-by: Jisoo Jang <jisoo.jang@yonsei.ac.kr>
+Acked-by: Jakub Kicinski <kuba@kernel.org>
+Signed-off-by: Kalle Valo <kvalo@kernel.org>
+Link: https://lore.kernel.org/r/20221229092906.2328282-1-jisoo.jang@yonsei.ac.kr
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- sound/soc/mediatek/mt8183/mt8183-dai-i2s.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/net/wireless/mediatek/mt7601u/dma.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/sound/soc/mediatek/mt8183/mt8183-dai-i2s.c b/sound/soc/mediatek/mt8183/mt8183-dai-i2s.c
-index 38f7fa38ee95..8645ab686970 100644
---- a/sound/soc/mediatek/mt8183/mt8183-dai-i2s.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-dai-i2s.c
-@@ -141,7 +141,7 @@ static int mt8183_i2s_hd_set(struct snd_kcontrol *kcontrol,
- 	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
- 	struct mtk_afe_i2s_priv *i2s_priv;
- 	struct soc_enum *e = (struct soc_enum *)kcontrol->private_value;
--	int hd_en;
-+	int hd_en, change;
+diff --git a/drivers/net/wireless/mediatek/mt7601u/dma.c b/drivers/net/wireless/mediatek/mt7601u/dma.c
+index 457147394edc4..773a1cc2f8520 100644
+--- a/drivers/net/wireless/mediatek/mt7601u/dma.c
++++ b/drivers/net/wireless/mediatek/mt7601u/dma.c
+@@ -123,7 +123,8 @@ static u16 mt7601u_rx_next_seg_len(u8 *data, u32 data_len)
+ 	if (data_len < min_seg_len ||
+ 	    WARN_ON_ONCE(!dma_len) ||
+ 	    WARN_ON_ONCE(dma_len + MT_DMA_HDRS > data_len) ||
+-	    WARN_ON_ONCE(dma_len & 0x3))
++	    WARN_ON_ONCE(dma_len & 0x3) ||
++	    WARN_ON_ONCE(dma_len < min_seg_len))
+ 		return 0;
  
- 	if (ucontrol->value.enumerated.item[0] >= e->items)
- 		return -EINVAL;
-@@ -155,9 +155,10 @@ static int mt8183_i2s_hd_set(struct snd_kcontrol *kcontrol,
- 		return -EINVAL;
- 	}
- 
-+	change = i2s_priv->low_jitter_en != hd_en;
- 	i2s_priv->low_jitter_en = hd_en;
- 
--	return 0;
-+	return change;
- }
- 
- static const struct snd_kcontrol_new mtk_dai_i2s_controls[] = {
-
+ 	return MT_DMA_HDRS + dma_len;
 -- 
-2.30.2
+2.39.0
 
 
