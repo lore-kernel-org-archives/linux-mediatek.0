@@ -4,61 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6657C6FA8E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Feb 2023 14:47:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26FFAC7EE32
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Feb 2023 14:48:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M+EJJAiERl2YhEOSvKtnMiDFXabmi8YTFe5QykNaECg=; b=qSi3Ysofd1t0qeSL3WVbfwOHIm
-	KAfQM3yUsY7aDiAfmMwlKevzhBVopZRTsJEMe3L0zmA89UIHhO+vxaWkdEN+76g/uPenvXW3Wpmak
-	GXrKPY5V1EFJxT8Cm24kYoxrZDyrDR5cOtbEjBrmAXjkfvUFgHCOeQJ8tCOUrslK4ENEqssMhOBXq
-	2byP7iq4d/8MfBHNh7UaamknNNw2HRn+8lk4RbgfZzcrTAX1rcJ3yd56HoqAENWuEqx7E+k/BTGys
-	Duq3FOljdEV+P8nI4bdb4B64wmtz1vz4THgPQJ7c/p4PdMWZyoK8e30FOjQgsfksPf0E9EDFfcYcy
-	4fYFRr5w==;
+	bh=UAuliX91zyYmvKfaec3+F8sfle83PP/aQcN2u8FY47o=; b=RlRefIEkDj8jHfOsmw9HKlYHuP
+	BoALpA15314nb3Z9qTjnqY8tqFggJxsrIvJ5KPnD3Aho3eQgQ5/tQR+LyhadG4jME4FhJJSjR9nRI
+	lp5Bf9CJRsCyPM8erD1fMdR6NTtEg/5VFVeEuQNwZ02lUlpCCxKH8SJ/bbfd251ngM4nGJxHviC56
+	2h6Pf/P9m6DyZZ4cs1ubotjstsUqZNRntgL60eBMB5kCjkD44zAlzul2z82s7QxNSfQTecwdaMXNU
+	7RC42GSE6RJpPWTUJ+w+fPuy8UPUdzWJqTb1/Ewfvj3m28Ze2nq5IpdAVKpQrgiH5bnaMNUW7H59G
+	MOpvEKmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWIJX-007PWs-GS; Sun, 26 Feb 2023 14:47:47 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pWIK5-007PmK-9y; Sun, 26 Feb 2023 14:48:21 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWIJJ-007PPG-5G; Sun, 26 Feb 2023 14:47:35 +0000
+	id 1pWIJp-007Pe8-Qk; Sun, 26 Feb 2023 14:48:07 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id BEEEBB80BEC;
-	Sun, 26 Feb 2023 14:47:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 53670C433A1;
-	Sun, 26 Feb 2023 14:47:28 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTPS id E146BCE0E7F;
+	Sun, 26 Feb 2023 14:48:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8EF41C4339B;
+	Sun, 26 Feb 2023 14:48:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1677422849;
-	bh=6m2TmILGqIjxl3+mDXlrPO4M+DUAGyTJ1HZNICXWLrk=;
+	s=k20201202; t=1677422882;
+	bh=H0IFMJcZ+k7Xt/8vWDHG/3NQCkegbKGyVZsMGOknc2Q=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=btFbV7MtdJAJcdH9n9NzK/Ar/CkCWaXr/uGVaiT/lKjdlZ9EQcKD3bThrOEalfnjM
-	 R+v3j8ctWwnZc4sZLdBPrzLWVk56KUWXdGqoLUyaiOu6jwqYN9d2rZk1QFhGI+WGJM
-	 hLaqWX2M3Ja/MvEP8U2QIFXZMzeTwuMMk6AKDc+NkQlYs8SZHWcs3XAGJn7Pwd6k1l
-	 q0flXOh3OVwyjHmlD64wy/AkHCEn+2KHZi9EqSAm0JQUMocY32/E/xt4h+IJ0xDlXz
-	 ZU3o0uZdL3UftnaHjcyzan1cPMllb8TDzSqGjxTihsPuytqT02b2He1i+DirObGL92
-	 lRZKYeP/1CiFg==
+	b=SmZMU0jSAz8fW+xT7wPppZ+PnZ+KtPfP9N2crUbtJJxZJkPgG2u0rliKETgctSCB+
+	 P4zQ1ng68RSTf+QZFeI3K3gORmkexGVg+CNTeddlY1X6OWC1ktrww3F0MH0XKaba+C
+	 Pau9nKHY55JSsh6QAJk6rdYOPoPcID36oR/I9lm/kLVqx/kx92nRmRylqQKMpst3i0
+	 Vzp5gT7IhUBL5FJc22cvezQoQO9P7fwZZ3YckaochI9ofKUQd1goCWtHutSrRY3Yuy
+	 gbaIEZClhTsb5nGBHdR/qHRZ9xomdlGoj7PBITDAj+1syBBy50mV0mhjF7+FfP9OsX
+	 lTSpTvdK7cE4g==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Jisoo Jang <jisoo.jang@yonsei.ac.kr>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Kalle Valo <kvalo@kernel.org>,
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Felix Fietkau <nbd@nbd.name>,
 	Sasha Levin <sashal@kernel.org>,
+	ryder.lee@mediatek.com,
+	kvalo@kernel.org,
 	davem@davemloft.net,
 	edumazet@google.com,
+	kuba@kernel.org,
 	pabeni@redhat.com,
 	matthias.bgg@gmail.com,
 	linux-wireless@vger.kernel.org,
 	netdev@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 15/49] wifi: mt7601u: fix an integer underflow
-Date: Sun, 26 Feb 2023 09:46:15 -0500
-Message-Id: <20230226144650.826470-15-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.1 32/49] wifi: mt76: dma: free rx_head in mt76_dma_rx_cleanup
+Date: Sun, 26 Feb 2023 09:46:32 -0500
+Message-Id: <20230226144650.826470-32-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230226144650.826470-1-sashal@kernel.org>
 References: <20230226144650.826470-1-sashal@kernel.org>
@@ -67,8 +69,8 @@ X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230226_064733_618627_B285A8A9 
-X-CRM114-Status: GOOD (  14.07  )
+X-CRM114-CacheID: sfid-20230226_064806_076838_C987F71B 
+X-CRM114-Status: GOOD (  11.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,100 +85,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jisoo Jang <jisoo.jang@yonsei.ac.kr>
+From: Lorenzo Bianconi <lorenzo@kernel.org>
 
-[ Upstream commit 803f3176c5df3b5582c27ea690f204abb60b19b9 ]
+[ Upstream commit 1b88b47e898edef0e56e3a2f4e49f052a136153d ]
 
-Fix an integer underflow that leads to a null pointer dereference in
-'mt7601u_rx_skb_from_seg()'. The variable 'dma_len' in the URB packet
-could be manipulated, which could trigger an integer underflow of
-'seg_len' in 'mt7601u_rx_process_seg()'. This underflow subsequently
-causes the 'bad_frame' checks in 'mt7601u_rx_skb_from_seg()' to be
-bypassed, eventually leading to a dereference of the pointer 'p', which
-is a null pointer.
+Free rx_head skb in mt76_dma_rx_cleanup routine in order to avoid
+possible memory leak at module unload.
 
-Ensure that 'dma_len' is greater than 'min_seg_len'.
-
-Found by a modified version of syzkaller.
-
-KASAN: null-ptr-deref in range [0x0000000000000008-0x000000000000000f]
-CPU: 0 PID: 12 Comm: ksoftirqd/0 Tainted: G        W  O      5.14.0+
-#139
-Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS
-rel-1.12.1-0-ga5cab58e9a3f-prebuilt.qemu.org 04/01/2014
-RIP: 0010:skb_add_rx_frag+0x143/0x370
-Code: e2 07 83 c2 03 38 ca 7c 08 84 c9 0f 85 86 01 00 00 4c 8d 7d 08 44
-89 68 08 48 b8 00 00 00 00 00 fc ff df 4c 89 fa 48 c1 ea 03 <80> 3c 02
-00 0f 85 cd 01 00 00 48 8b 45 08 a8 01 0f 85 3d 01 00 00
-RSP: 0018:ffffc900000cfc90 EFLAGS: 00010202
-RAX: dffffc0000000000 RBX: ffff888115520dc0 RCX: 0000000000000000
-RDX: 0000000000000001 RSI: ffff8881118430c0 RDI: ffff8881118430f8
-RBP: 0000000000000000 R08: 0000000000000e09 R09: 0000000000000010
-R10: ffff888111843017 R11: ffffed1022308602 R12: 0000000000000000
-R13: 0000000000000e09 R14: 0000000000000010 R15: 0000000000000008
-FS:  0000000000000000(0000) GS:ffff88811a800000(0000)
-knlGS:0000000000000000
-CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-CR2: 000000004035af40 CR3: 00000001157f2000 CR4: 0000000000750ef0
-DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-PKRU: 55555554
-Call Trace:
- mt7601u_rx_tasklet+0xc73/0x1270
- ? mt7601u_submit_rx_buf.isra.0+0x510/0x510
- ? tasklet_action_common.isra.0+0x79/0x2f0
- tasklet_action_common.isra.0+0x206/0x2f0
- __do_softirq+0x1b5/0x880
- ? tasklet_unlock+0x30/0x30
- run_ksoftirqd+0x26/0x50
- smpboot_thread_fn+0x34f/0x7d0
- ? smpboot_register_percpu_thread+0x370/0x370
- kthread+0x3a1/0x480
- ? set_kthread_struct+0x120/0x120
- ret_from_fork+0x1f/0x30
-Modules linked in: 88XXau(O) 88x2bu(O)
----[ end trace 57f34f93b4da0f9b ]---
-RIP: 0010:skb_add_rx_frag+0x143/0x370
-Code: e2 07 83 c2 03 38 ca 7c 08 84 c9 0f 85 86 01 00 00 4c 8d 7d 08 44
-89 68 08 48 b8 00 00 00 00 00 fc ff df 4c 89 fa 48 c1 ea 03 <80> 3c 02
-00 0f 85 cd 01 00 00 48 8b 45 08 a8 01 0f 85 3d 01 00 00
-RSP: 0018:ffffc900000cfc90 EFLAGS: 00010202
-RAX: dffffc0000000000 RBX: ffff888115520dc0 RCX: 0000000000000000
-RDX: 0000000000000001 RSI: ffff8881118430c0 RDI: ffff8881118430f8
-RBP: 0000000000000000 R08: 0000000000000e09 R09: 0000000000000010
-R10: ffff888111843017 R11: ffffed1022308602 R12: 0000000000000000
-R13: 0000000000000e09 R14: 0000000000000010 R15: 0000000000000008
-FS:  0000000000000000(0000) GS:ffff88811a800000(0000)
-knlGS:0000000000000000
-CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-CR2: 000000004035af40 CR3: 00000001157f2000 CR4: 0000000000750ef0
-DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-PKRU: 55555554
-
-Signed-off-by: Jisoo Jang <jisoo.jang@yonsei.ac.kr>
-Acked-by: Jakub Kicinski <kuba@kernel.org>
-Signed-off-by: Kalle Valo <kvalo@kernel.org>
-Link: https://lore.kernel.org/r/20221229092906.2328282-1-jisoo.jang@yonsei.ac.kr
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt7601u/dma.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/dma.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt7601u/dma.c b/drivers/net/wireless/mediatek/mt7601u/dma.c
-index 457147394edc4..773a1cc2f8520 100644
---- a/drivers/net/wireless/mediatek/mt7601u/dma.c
-+++ b/drivers/net/wireless/mediatek/mt7601u/dma.c
-@@ -123,7 +123,8 @@ static u16 mt7601u_rx_next_seg_len(u8 *data, u32 data_len)
- 	if (data_len < min_seg_len ||
- 	    WARN_ON_ONCE(!dma_len) ||
- 	    WARN_ON_ONCE(dma_len + MT_DMA_HDRS > data_len) ||
--	    WARN_ON_ONCE(dma_len & 0x3))
-+	    WARN_ON_ONCE(dma_len & 0x3) ||
-+	    WARN_ON_ONCE(dma_len < min_seg_len))
- 		return 0;
+diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
+index 7378c4d1e1567..478bffb7418d9 100644
+--- a/drivers/net/wireless/mediatek/mt76/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/dma.c
+@@ -573,6 +573,7 @@ mt76_dma_rx_cleanup(struct mt76_dev *dev, struct mt76_queue *q)
+ 		return;
  
- 	return MT_DMA_HDRS + dma_len;
+ 	spin_lock_bh(&q->lock);
++
+ 	do {
+ 		buf = mt76_dma_dequeue(dev, q, true, NULL, NULL, &more);
+ 		if (!buf)
+@@ -580,6 +581,12 @@ mt76_dma_rx_cleanup(struct mt76_dev *dev, struct mt76_queue *q)
+ 
+ 		skb_free_frag(buf);
+ 	} while (1);
++
++	if (q->rx_head) {
++		dev_kfree_skb(q->rx_head);
++		q->rx_head = NULL;
++	}
++
+ 	spin_unlock_bh(&q->lock);
+ 
+ 	if (!q->rx_page.va)
+@@ -605,12 +612,6 @@ mt76_dma_rx_reset(struct mt76_dev *dev, enum mt76_rxq_id qid)
+ 	mt76_dma_rx_cleanup(dev, q);
+ 	mt76_dma_sync_idx(dev, q);
+ 	mt76_dma_rx_fill(dev, q);
+-
+-	if (!q->rx_head)
+-		return;
+-
+-	dev_kfree_skb(q->rx_head);
+-	q->rx_head = NULL;
+ }
+ 
+ static void
 -- 
 2.39.0
 
