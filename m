@@ -4,68 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FE76C64ED6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Feb 2023 13:19:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 962BFC64ED8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Feb 2023 13:35:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uYV3nh0GOJ5cZ96AUmioIJzwz0msM6/oCNyrD26nAT8=; b=KZSYM9eg5NLi+QsIgbrOTWIreK
-	WtNn1NVqXBzJWZ2Vq3IBvTFwrt46+LlRXSkXLfU2WKh3MLvAsOtSaW0+9NN7nUsemwLNOKDyFYqkg
-	5adv1n/O26jjvOqB2/hpqFCLnB37gjA6jwlIotpuqcPgETNdx8GruHXDa/Wrmc1icGuJxp9ed1vf3
-	hWtpDXF8Um7ljp9S9CIe66JeePko/pPhZDnGPpgrBN/77xXwWSt2AYvG+tZV7AP1z5tOszlKIrkO8
-	yHYmpF6ffMkBUKcUhYGQJsLOxwBaWiCFpFtnD0SobORuO1tFi/o924EWEfL2FoZH2MKDNh/U2YIzy
-	APjKzaTg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=f/FzhhKEtTgugR/y3mXLSjzn0vLNSjQZIOnSkH/KjvI=; b=o/yWbhGyXNR4O1N+wg1K5Ad/TZ
+	CYATZQxRGq5kYbQP6CYLADP1MJKPGtsmPh1h3yCJPCcab3ekxoiP1dJUJiniCAjmArl4duzyy6rpz
+	c8JqYXs8+jiq6ZqTl2p/qM8zYjJ4JA0/9OIKE08NbMItCsH1E3RLHy+aoFToP0BpqccJUC3khPM/j
+	rkE6olFGpiI97UenBqsYkhQYUlzldEzkkH/oMtmUP+uu2ZBMY3V1zcO9NQsNQnHK78iuT/sJEaBwu
+	D2XjQLahFPGQkddv+efSVRoGfE8gQAu4PfqZhDCt8kQ7bPAi8ZWn4jR5AaZtH0uaBu3OxLsKZ0qN0
+	ncBM/UNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWdPY-009izT-Bu; Mon, 27 Feb 2023 13:19:24 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pWdet-009mOb-JT; Mon, 27 Feb 2023 13:35:15 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWdPN-009ivn-PT; Mon, 27 Feb 2023 13:19:15 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 21FCA6602EBB;
-	Mon, 27 Feb 2023 13:19:11 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1677503951;
-	bh=M84hUc6FSjtfLLuQzMVefdgxCampFeISHt8LSmhyiIM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=CDiCRdUU0NNxCM540FhfqUKkpo4mktrjuOYSHLlsZ13oHX2JlAsIydqSIIOir4PeH
-	 BmEw7i4EV1M0yfhKyziVFK634gam8zXe1GE3igvbIFD5f1ctEoQpDFbCkiF60YiRHn
-	 7hCyMAz6X7ahzt+xO6wqPYlnACJpPAGOZd41vWDaO9FM1FUyZf5XUAsSHnYwejfvHu
-	 Z9Yg89+hrrZBPLBwYW+TeM7N0ytvedykIhUPOrP8sRDqdMQDqIU3NzS/Gqj3s8GeBn
-	 tYkpcIH9Y/Ctre4OM0HYnqh0ed6KDfsy23E99j41mOaZIRfOcI6/y6eZX5dvTtWoE+
-	 hFB4Ml2GDtKwg==
-Message-ID: <caddf39b-fb0d-c6ff-b98e-bbd5aac5f974@collabora.com>
-Date: Mon, 27 Feb 2023 14:19:08 +0100
+	id 1pWdeh-009mKj-8D
+	for linux-mediatek@lists.infradead.org; Mon, 27 Feb 2023 13:35:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1677504900;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=f/FzhhKEtTgugR/y3mXLSjzn0vLNSjQZIOnSkH/KjvI=;
+	b=dIBljA3+YDw9bv2Rz1xiINT0NFqTOguoXzLwDTN/J0ckvlj/Q8BFTTtR86AOf2YNDqKdqe
+	u31n4cxa6/V0XukDLAt1z+IxTPVVx2aACqc1A0KRbwlqCILKeDwpGHcm0Wo435IlHZg6bU
+	E8Z3j05ftxLD25q9gn5Y1whFkmSwOk8=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-614-WCiAAXKLPOC5t-VZNSOVDQ-1; Mon, 27 Feb 2023 08:33:19 -0500
+X-MC-Unique: WCiAAXKLPOC5t-VZNSOVDQ-1
+Received: by mail-wr1-f71.google.com with SMTP id n4-20020a5d5984000000b002c3b562d76cso857749wri.12
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Feb 2023 05:33:18 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=f/FzhhKEtTgugR/y3mXLSjzn0vLNSjQZIOnSkH/KjvI=;
+        b=OD6EJ/EM5Hc12qM6KavVtssXleRwgktSzFn1n8VfcR4E4NN0xnF10OsudHhp2ZAFHq
+         yvtjw+r52mdfgd8VK76p5zjVyHcXL4A48xcJ1QcMZ1T8Ovp9RFxsiwVho78b2FI6kzk8
+         CaGZlFx5Wce17OlFjJZAZPvjQbTTE7agIv161CeqWmjPnEK8Y8bQBXX9YrtEDswaUByZ
+         AJDrRt/3wOSjE0LiPT1arQ2gqIDH26244scrGEsPyxPVH8vuLn08Oc0R6immm0oDCTHV
+         oSqP/fy97SphXcuDACL9sRVM3p2Hdvq8gwH498uUqCCeMu7adXIBxP8Yj1FsLHsUz6NO
+         9bIg==
+X-Gm-Message-State: AO0yUKWpsTqey/STS/Xu3ePNKCkyqchoJtYHniHWpivExpPrTLCURyg5
+	BzrvqySb2Jr7GYVM9CPYbNbNozWpbAYT6H22GczOiIQ6hzcRyNNCJ1zugfutw2ZgszTovi+BRM1
+	5X9S3yq+RR5PbbO77QILftZKkkOahiaD3
+X-Received: by 2002:a5d:4a01:0:b0:2c5:530d:4045 with SMTP id m1-20020a5d4a01000000b002c5530d4045mr22440798wrq.20.1677504796251;
+        Mon, 27 Feb 2023 05:33:16 -0800 (PST)
+X-Google-Smtp-Source: AK7set/Yz/Rv4CK4NnI11VoX+Rldy1Xt3bEfcajvfM5UFjwwMM3KQIUevlYVIj9yyeSBZmQssT/Hiw==
+X-Received: by 2002:a5d:4a01:0:b0:2c5:530d:4045 with SMTP id m1-20020a5d4a01000000b002c5530d4045mr22440777wrq.20.1677504795917;
+        Mon, 27 Feb 2023 05:33:15 -0800 (PST)
+Received: from localhost (net-188-216-77-84.cust.vodafonedsl.it. [188.216.77.84])
+        by smtp.gmail.com with ESMTPSA id p1-20020a056000018100b002c54fb024b2sm7198843wrx.61.2023.02.27.05.33.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 27 Feb 2023 05:33:14 -0800 (PST)
+Date: Mon, 27 Feb 2023 14:33:12 +0100
+From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+To: Kang Chen <void0red@gmail.com>
+Cc: shayne.chen@mediatek.com, sean.wang@mediatek.com, kvalo@kernel.org,
+	nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com,
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] wifi: mt76: add a check of vzalloc in
+ mt7615_coredump_work
+Message-ID: <Y/yxGMvBbMGiehC6@lore-desk>
+References: <20230227115717.3360755-1-void0red@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v3 04/11] dt-bindings: gpu: mali-bifrost: Add compatible
- for MT8195 SoC
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: airlied@gmail.com, daniel@ffwll.ch, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, steven.price@arm.com,
- alyssa.rosenzweig@collabora.com, matthias.bgg@gmail.com, robh@kernel.org,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230223133440.80941-1-angelogioacchino.delregno@collabora.com>
- <20230223133440.80941-5-angelogioacchino.delregno@collabora.com>
- <CAGXv+5GJgAz4yvb-zvFwxRD2PGtkpV7gD-Lst9KDAaZDzLyDEg@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5GJgAz4yvb-zvFwxRD2PGtkpV7gD-Lst9KDAaZDzLyDEg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="ifWNKEdM2/arQ3c2"
+Content-Disposition: inline
+In-Reply-To: <20230227115717.3360755-1-void0red@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230227_051913_982893_592C2260 
-X-CRM114-Status: GOOD (  16.21  )
+X-CRM114-CacheID: sfid-20230227_053503_466211_255EEC65 
+X-CRM114-Status: GOOD (  15.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,50 +102,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/02/23 11:08, Chen-Yu Tsai ha scritto:
-> On Thu, Feb 23, 2023 at 9:34 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> The MediaTek MT8195 SoC has a Mali G57 MC5 (Valhall-JM) and has the
->> same number of power domains and requirements as MT8192 in terms of
->> bindings.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> Reviewed-by: Rob Herring <robh@kernel.org>
->> ---
->>   Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml | 5 +++++
->>   1 file changed, 5 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
->> index 65fe139ceb83..4d9ab4702582 100644
->> --- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
->> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
->> @@ -25,6 +25,11 @@ properties:
->>                 - rockchip,px30-mali
->>                 - rockchip,rk3568-mali
->>             - const: arm,mali-bifrost # Mali Bifrost GPU model/revision is fully discoverable
->> +      - items:
->> +          - enum:
->> +              - mediatek,mt8195-mali
-> 
-> This could be squashed into "- const: mediatek,mt8195-mali" like the
-> following lines?
-> 
 
-Could be, but I expect more compatibles on this list, that's why I've modeled
-that as enum. I prefer keeping this an enum.
+--ifWNKEdM2/arQ3c2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> Otherwise,
-> 
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-> 
->> +          - const: mediatek,mt8192-mali
->> +          - const: arm,mali-valhall-jm # Mali Valhall GPU model/revision is fully discoverable
->>         - items:
->>             - enum:
->>                 - mediatek,mt8192-mali
->> --
->> 2.39.2
->>
+> vzalloc may fails, dump might be null and will cause
+> illegal address access later.
+
+can you please add a Fixes tag?
+
+Regards,
+Lorenzo
+
+>=20
+> Signed-off-by: Kang Chen <void0red@gmail.com>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 3 +++
+>  1 file changed, 3 insertions(+)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7615/mac.c
+> index a95602473..73d84c301 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+> @@ -2367,6 +2367,9 @@ void mt7615_coredump_work(struct work_struct *work)
+>  	}
+> =20
+>  	dump =3D vzalloc(MT76_CONNAC_COREDUMP_SZ);
+> +	if (!dump)
+> +		return;
+> +
+>  	data =3D dump;
+> =20
+>  	while (true) {
+> --=20
+> 2.34.1
+>=20
+
+--ifWNKEdM2/arQ3c2
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY/yxGAAKCRA6cBh0uS2t
+rLjcAP0QtrGC6pC4wqyPa3TdGMOKu6ih0Dlbdf4hC0hL6+BYTAEAxEIcRy+wsaR6
+kT/4qA1YwxG1EmeDzGEy+PPTPp/NZAA=
+=x8oL
+-----END PGP SIGNATURE-----
+
+--ifWNKEdM2/arQ3c2--
 
 
