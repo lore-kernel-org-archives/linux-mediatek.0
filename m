@@ -4,78 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0166CC6FA8E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Feb 2023 03:14:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF804C6FA8E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Feb 2023 03:15:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=gR/wbqkWELBvn+JMlhT/1Wwy2lqKc5lu0UUAT54M4Rc=; b=mjJ10woPNsIC9roLtPUvqfr8dG
-	xnTxUo6JN4QAAz8UgGdvhaVs26JVGgbUHyICYuagrg+ltArjHD7KmQGjhjXl6MBnOoknQuqQMVP9x
-	2gvb23gV/vdLhCfCT4XnBCGUSWUsejtimRZiYAjt6hBBZ/WCaqL2xRP5/a9zACeyUI4ecm6eCu3ts
-	Je8uf1fCTrUCgCGq4AbTvVjDpX0FKHEtXFswDRtHw66srSb1IYKDI2uQEKLCGEMozz0ALjmlCvLu4
-	YYGJjn11b0w4xz0aWvZ+vAkeRa8dxdZA4ANy8kl9GGHiwLDvxCTGFB/7WtDZHR6uW510LmcsdBrWm
-	4SupAn8Q==;
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KpqWmeVWmsOLm8pVxOCJXGWeNurXRtlo3K3msDyonpI=; b=qtWZFcN3dBRBj+8+UK6PY2Eg2d
+	sm4Tu2+v7yBAI8ZdDM9m4Yq4vtRhIQKpzPhurtu2E6HRNRCu/96VI77wrkH99VQtg0+Tctxxr9jGk
+	UJBAXs1u4ObXdGLFCB/6CWsIq0ZT74mtW5iF+ozVp9EKK5ODxNnZ9Duduy+O62N5Ysg7iylz6MABN
+	5Jsqk6rA6M5qno8OMty9XJzRZ9O5PKh5rUurdBx8qLm7L8Ek8V9ecyExYXNLtfB/UB/hZ61OqhSAZ
+	AAocW9r34k/Z948nI10HIT/dkENO1AW5rKskiAaOqClcRYjVyJAhCHNqaPQEVql/Ok593MJbyjBW5
+	kY24cdfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWTyA-008LuP-Tw; Mon, 27 Feb 2023 03:14:30 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1pWTyq-008M3L-K2; Mon, 27 Feb 2023 03:15:12 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWTxy-008Lru-PS; Mon, 27 Feb 2023 03:14:21 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id i10so5301362plr.9;
-        Sun, 26 Feb 2023 19:14:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=gR/wbqkWELBvn+JMlhT/1Wwy2lqKc5lu0UUAT54M4Rc=;
-        b=GYQ3Ms8rjd2jErfhgiWiEr/dJxgV5z8L+TIrPo3Ew4DocOtfJADVUoqZ9d4u9a2XTL
-         VWxa0EF3CH5erbyF3v4luEYbX/tkyY7QtKswpwU55z0gtW1rqxC1cN/H54mChZNNM6hY
-         eslkxgj/Tb92yvS2VvKvpkTt+pbFW+UFGrS8iUr6aTxw6Pq1Nm71fxHfI+K93L3j91wD
-         zaFMrPewTRZ3kU/tp587eYeSFMuHyeyiT1QsQXtoVJOQo8w6PB3nKsOrth88Gg5qNXhU
-         YVn5N9trWAnrY3JjixezzmFjnBNaPF/Vt8OBFzFh9ies0e+xRIH5SjlrPVon+5Puah/H
-         tPMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=gR/wbqkWELBvn+JMlhT/1Wwy2lqKc5lu0UUAT54M4Rc=;
-        b=Z6PlH9vLNcwXK3GMG58F1PmFXkrOhNjb18P5L7UuYFehyB1i+RfPyOxtEhjOVmP/Y+
-         Tr7bO0G9A4Gktz5Ik3LrN0z8XK+gR5+AbVkYqb2xxOdZgufAZaEgjloNevkvhYSZ+A0C
-         s91KmtNstu1VAk3RPL7rEohQ/IacrDoppLsSW1CBmw2T/35q1qaOZpL1EBogwy3UQYxs
-         QflVuIF7wZFH8RmaBn9KCl5ywzrTZ74j8N21HZkETu+AAxOr/oFb/VfBlxNTAwbNgeAs
-         YnATEakM+1nV29ZysVYxhf2A6B2OybKd72V4wVwBgc0UZmcvWSIjHOZPj17JIfvrYlnY
-         DhEQ==
-X-Gm-Message-State: AO0yUKWs6zDwaiXrpKvCtXmlixz5diOVjd4JGceB9NHbgMnHBADnt0qU
-	EmzlmHLXGbsW+NrNtbpWkMc=
-X-Google-Smtp-Source: AK7set8cIYQP+miBC0tMU5JIugoMFJN1vsUND7dRn31QdsukPLIUZzlVly0ruAvbjyhrgN9JO/Cp0w==
-X-Received: by 2002:a05:6a20:cf60:b0:cd:363d:b27c with SMTP id hz32-20020a056a20cf6000b000cd363db27cmr2294371pzb.16.1677467655103;
-        Sun, 26 Feb 2023 19:14:15 -0800 (PST)
-Received: from localhost.localdomain ([103.116.245.58])
-        by smtp.gmail.com with ESMTPSA id d19-20020aa78693000000b005dae7d1b61asm3088362pfo.154.2023.02.26.19.14.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 26 Feb 2023 19:14:14 -0800 (PST)
-From: void0red <void0red@gmail.com>
-To: angelogioacchino.delregno@collabora.com
-Cc: sre@kernel.org,
-	matthias.bgg@gmail.com,
-	linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Kang Chen <void0red@gmail.com>
-Subject: [PATCH] power: supply: mt6360: add a check of devm_work_autocancel in mt6360_charger_probe
-Date: Mon, 27 Feb 2023 11:14:10 +0800
-Message-Id: <20230227031410.893593-1-void0red@gmail.com>
-X-Mailer: git-send-email 2.39.2
+	id 1pWTye-008Lzj-O4; Mon, 27 Feb 2023 03:15:02 +0000
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 31R2QlD3002025;
+	Mon, 27 Feb 2023 03:14:43 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=KpqWmeVWmsOLm8pVxOCJXGWeNurXRtlo3K3msDyonpI=;
+ b=eP0bjr4xk9A4Hlw/BQq30VELfrCEB0uc4rOXdVtUMHAHKkpFoD+XG+UUCgdkGsbVGkjy
+ qMBAXkdWMfoNYQG5PTTpt4bvRz1pNzIaY1J4XAYIpcn6tSWkJIacc0I2NKQEdoHBXwvO
+ xj9XThTMa4859kzb4CpsS8JtfSRAP0cNx0WV104EGTyT6YwIRVwlsUa+KhtlZ20URqrn
+ Q7FQxG36uFZ7mMZYctu4mo8pSNIFOgkHEp+g9ZqNWRF/VoSMLzLseEP7gLJq0Dnh4VUG
+ H/nx9afBJR7nC+dCa3it3drqFzFZaQLOfrGel6EXeo5jKveHa0X2tW/GYSRRLyz5EKYV TA== 
+Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3ny9bfbh84-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 27 Feb 2023 03:14:42 +0000
+Received: from nasanex01a.na.qualcomm.com ([10.52.223.231])
+	by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 31R3Ef1Z013824
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 27 Feb 2023 03:14:41 GMT
+Received: from [10.239.155.136] (10.80.80.8) by nasanex01a.na.qualcomm.com
+ (10.52.223.231) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.41; Sun, 26 Feb
+ 2023 19:14:35 -0800
+Message-ID: <0c17dd26-b1aa-54b0-6dc4-561cd996cead@quicinc.com>
+Date: Mon, 27 Feb 2023 11:14:33 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Subject: Re: [PATCH v2 4/7] scsi: ufs: core: Add hwq print for debug
+Content-Language: en-US
+To: =?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?= <Powen.Kao@mediatek.com>,
+        "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+        "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+        "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+        "avri.altman@wdc.com"
+	<avri.altman@wdc.com>,
+        "bvanassche@acm.org" <bvanassche@acm.org>,
+        "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+        "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+        "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+        "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>,
+        "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>,
+        <quic_nguyenb@quicinc.com>
+CC: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+        =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
+        =?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
+        =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
+        =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
+        wsd_upstream <wsd_upstream@mediatek.com>,
+        =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
+        =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
+	<Chaotian.Jing@mediatek.com>,
+        =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
+	<Naomi.Chu@mediatek.com>,
+        =?UTF-8?B?U3RhbmxleSBDaHUgKOacseWOn+mZnik=?=
+	<stanley.chu@mediatek.com>,
+        =?UTF-8?B?TWFzb24gWmhhbmcgKOeroOi+iSk=?=
+	<Mason.Zhang@mediatek.com>,
+        "quic_cang@quicinc.com" <quic_cang@quicinc.com>,
+        "quic_asutoshd@quicinc.com" <quic_asutoshd@quicinc.com>
+References: <20230222030427.957-1-powen.kao@mediatek.com>
+ <20230222030427.957-5-powen.kao@mediatek.com>
+ <1b9c2bc9-a349-062a-597c-336804c05394@quicinc.com>
+ <74bedcff32df0c93c14b004814017f3344247528.camel@mediatek.com>
+From: Ziqi Chen <quic_ziqichen@quicinc.com>
+In-Reply-To: <74bedcff32df0c93c14b004814017f3344247528.camel@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: Bwjn2tfh64sBDZPbFxPnTOZQXEU6PQIF
+X-Proofpoint-ORIG-GUID: Bwjn2tfh64sBDZPbFxPnTOZQXEU6PQIF
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.219,Aquarius:18.0.930,Hydra:6.0.562,FMLib:17.11.170.22
+ definitions=2023-02-26_22,2023-02-24_01,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxlogscore=999
+ priorityscore=1501 mlxscore=0 bulkscore=0 malwarescore=0 phishscore=0
+ adultscore=0 spamscore=0 suspectscore=0 lowpriorityscore=0 impostorscore=0
+ clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2212070000 definitions=main-2302270023
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230226_191418_886622_B41FF3FE 
-X-CRM114-Status: GOOD (  10.78  )
+X-CRM114-CacheID: sfid-20230226_191500_977602_2545D1E0 
+X-CRM114-Status: GOOD (  22.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,31 +127,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Kang Chen <void0red@gmail.com>
+Hi  Powen,
 
-devm_work_autocancel may fails, add a check and return early.
+The Bao. D . Nguyen (quic_nguyenb@quicinc.com) from QCOM already made 
+patch to support MCQ abort.
 
-Signed-off-by: Kang Chen <void0red@gmail.com>
----
- drivers/power/supply/mt6360_charger.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+++ Bao here to be aware of it in case your error handing patch conflict 
+with his abort handling patch.
 
-diff --git a/drivers/power/supply/mt6360_charger.c b/drivers/power/supply/mt6360_charger.c
-index 92e48e3a4..1305cba61 100644
---- a/drivers/power/supply/mt6360_charger.c
-+++ b/drivers/power/supply/mt6360_charger.c
-@@ -796,7 +796,9 @@ static int mt6360_charger_probe(struct platform_device *pdev)
- 	mci->vinovp = 6500000;
- 	mutex_init(&mci->chgdet_lock);
- 	platform_set_drvdata(pdev, mci);
--	devm_work_autocancel(&pdev->dev, &mci->chrdet_work, mt6360_chrdet_work);
-+	ret = devm_work_autocancel(&pdev->dev, &mci->chrdet_work, mt6360_chrdet_work);
-+	if (ret)
-+		return dev_err_probe(&pdev->dev, ret, "Failed to set delayed work\n");
- 
- 	ret = device_property_read_u32(&pdev->dev, "richtek,vinovp-microvolt", &mci->vinovp);
- 	if (ret)
--- 
-2.34.1
 
+Best Regards,
+
+Ziqi
+
+
+On 2/23/2023 10:13 PM, Powen Kao (高伯文) wrote:
+> Hi Ziqi,
+>
+> Thanks for ur comments.
+>
+> This piece of code successfully dump relevent registers on our
+> platform. As you know, mcq error handling flow is not ready yet so the
+> insertion point might not seems to be reasonable.
+>
+> Maybe drop this patch for now, I will send it later with error handling
+> patches.
+>
+>
+> On Thu, 2023-02-23 at 18:14 +0800, Ziqi Chen wrote:
+>> Hi Po-Wen,
+>>
+>> On 2/22/2023 11:04 AM, Po-Wen Kao wrote:
+>>> +void ufshcd_mcq_print_hwqs(struct ufs_hba *hba, unsigned long
+>>> bitmap)
+>>> +{
+>>> +	int id, i;
+>>> +	char prefix[15];
+>>> +
+>>> +	if (!is_mcq_enabled(hba))
+>>> +		return;
+>>> +
+>>> +	for_each_set_bit(id, &bitmap, hba->nr_hw_queues) {
+>>> +		snprintf(prefix, sizeof(prefix), "q%d SQCFG: ", id);
+>>> +		ufshcd_hex_dump(prefix,
+>>> +			hba->mcq_base + MCQ_QCFG_SIZE * id,
+>>> MCQ_QCFG_SQ_SIZE);
+>> Is your purpose dump per hardware queue registers here?  If yes, why
+>> don't use ufsmcq_readl() to save to a buffer and then use
+>> ufshcd_hex_dump()
+>>
+>> to dump ? Are you sure ufshcd_hex_dump() can dump register directly?
+>>
+>>> +
+>>> +		snprintf(prefix, sizeof(prefix), "q%d CQCFG: ", id);
+>>> +		ufshcd_hex_dump(prefix,
+>>> +			hba->mcq_base + MCQ_QCFG_SIZE * id +
+>>> MCQ_QCFG_SQ_SIZE, MCQ_QCFG_CQ_SIZE);
+>> Same to above comment.
+>>> +
+>>> +		for (i = 0; i < OPR_MAX ; i++) {
+>>> +			snprintf(prefix, sizeof(prefix), "q%d OPR%d: ",
+>>> id, i);
+>>> +			ufshcd_hex_dump(prefix, mcq_opr_base(hba, i,
+>>> id), mcq_opr_size[i]);
+>> Same.
+>>> +		}
+>>> +	}
+>>> +}
+>>> +
+>>>
+>>>    
+>>> @@ -574,7 +569,16 @@ void ufshcd_print_trs(struct ufs_hba *hba,
+>>> unsigned long bitmap, bool pr_prdt)
+>>>    		if (pr_prdt)
+>>>    			ufshcd_hex_dump("UPIU PRDT: ", lrbp-
+>>>> ucd_prdt_ptr,
+>>>    				ufshcd_sg_entry_size(hba) *
+>>> prdt_length);
+>>> +
+>>> +		if (is_mcq_enabled(hba)) {
+>>> +			cmd = lrbp->cmd;
+>>> +			if (!cmd)
+>>> +				return;
+>>> +			hwq = ufshcd_mcq_req_to_hwq(hba,
+>>> scsi_cmd_to_rq(cmd));
+>>> +			ufshcd_mcq_print_hwqs(hba, 1 << hwq->id);
+>> Calling registers dump function in ufshcd_print_trs() is not
+>> reasonable,
+>> eg.. for each aborted request, it would print out all hwq registers,
+>> it's not make sense.
+>>
+>> I think we should move it out of ufshcd_print_trs().
+>>
+>>> +		}
+>>>    	}
+>>> +
+>>>    }
+>>
+>> Best Regards,
+>>
+>> Ziqi
+>>
 
