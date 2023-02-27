@@ -4,73 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50C7AC64ED8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Feb 2023 11:26:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6B9CC64ED6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Feb 2023 12:00:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=uJkhkcyw+YCo652cbJy90MfhJa/odF41bwjtMLAeNIk=; b=Ggqy/VCXBPAzq7RIqxluAPtMN+
-	ssy5lUkyZBj0lC+PJ7sZVEjJrkqTdRwVUeXRAUynGAeb2ZGN196aeXfA3JeWFE9Z8DEcaE2fO6XcE
-	yfDPzgkajo4DEIGm4PLLucpbh9bjVxt6kESynes7doyi0iTnbEhbl0rBfe3110YnvNHlyjLVV5ivu
-	Q5RjqzZqBSg0MYTgmQou9n4PNDExXQU3gcCYMhznhg58cNVzGXm/ZxZ4xQtHJ4ABdTLdlYKpdqkh3
-	OKhhOMNwM3Bt9lJ4+vbey77ty8WzlGuYbubfCCYF6gqukNBiDyT1B++iE7mB4KkjU4byESTTybbD1
-	GXTEYnyg==;
+	bh=UL2ps8yaPj+oovF7HkNPRUPm6/ExhIXpUcFA+LZV1i4=; b=RFmuCTb9L/AnDB1PMnwaPmPVsU
+	r7sRczRrHjoJzcqGsl2cQ+VcLIWOSbD5AGMeJcx4k4nBTevfi2YPWC3JCo8jAE3zefzu0wmRjy8qt
+	rP3X9HvV5RpUlPPzsakc8ex/SdptsRJllv5RZN2oyT95aTa0iy7LTcMqNYcgV7iPNbBR3ad8TS82A
+	2tAs+y1dKZRDxPX2GQwiAwM8Pb++xwD0RTfrBGUpa7Fj/yndvkdYP6du4uSxdl5A6kFA3vaOvRjLW
+	DUgimi8Ulfcc5fzpjjF/RJN/dXL/taMVh6pxo9AELNuuoVzX2c1VstkOs0joEM4bxJN9rBdAokPTv
+	lPP2AnVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWbeW-009MU5-2e; Mon, 27 Feb 2023 11:26:44 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1pWcAs-009VFu-Rc; Mon, 27 Feb 2023 12:00:10 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWbeS-009MSz-Va
-	for linux-mediatek@lists.infradead.org; Mon, 27 Feb 2023 11:26:42 +0000
-Received: by mail-wm1-x334.google.com with SMTP id fm20-20020a05600c0c1400b003ead37e6588so6852974wmb.5
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Feb 2023 03:26:39 -0800 (PST)
+	id 1pWc8D-009UKs-Vl; Mon, 27 Feb 2023 11:57:31 +0000
+Received: by mail-pl1-x636.google.com with SMTP id i3so6421600plg.6;
+        Mon, 27 Feb 2023 03:57:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=uJkhkcyw+YCo652cbJy90MfhJa/odF41bwjtMLAeNIk=;
-        b=I8DJ4R4mY3qM6LJfuoOc5sWEglN86Bn6qN7fE5U3snRukx66IsbHq0xHzEZhZAz2eh
-         AjHjJmx3SNfdzoX99c35EDO9sIU9CDnP8ltFRn2S4VI459gg7AC6MbE6ThEgrx/TXdge
-         rVEgCvfb3nxIa7zLRHZmy0AlNmoRpK0sv+wErKVmbtPDd28lYcrSGPiZOfoptxX2Vbow
-         E+j4Xzc/9mJPnyn65Km/aaz3XpJSdy2JSd6IqQv+kmiaZoKMGjz955v4BE8fxpoqmAKJ
-         KNztNYTVFuEgWMSuVFJ3dT7JUQvqxYwSW0xrmOVOw0L4rBHDzZQNNKaApOlkU1Ngk7jL
-         Shcg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=UL2ps8yaPj+oovF7HkNPRUPm6/ExhIXpUcFA+LZV1i4=;
+        b=mX8m8PH4kwuZFOdGmAjNOVMEHyrxdN+oHDHiDLndFYfPmKmlIQhlaWu9lodb+RDDWK
+         BBTuTnw6joramjEwLl/njhxU83ctQyLqjN80SFFTjyIoCoLMLcY8wR/L7rJOijEWvRLa
+         R3sMCrvfp7mjceLiUNf7vrSJav+7KnfFumfqaZsGnoV9PL9UkfIEDMBkS4nnOO4VW54k
+         ewDp0dBPWg1etRzldVARQFFBq+nqNnIzCDrEWjMRPnzb9Pdx6thP2X3UbFjl0E/YPogi
+         /9r4l+XKyjih1CK8zSpb1HaEXKe8e0UPyEYWKYl27KP/gxM9J+b70QmrIgNKkFlyP8kv
+         u5Hg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=uJkhkcyw+YCo652cbJy90MfhJa/odF41bwjtMLAeNIk=;
-        b=R7Z1tJdrr41u+lbFbdP0cdHM/InA78cR7Jd9JLSmhdkIlEH2xSspi3dBM2XKTJtqBO
-         RwJk7dDIcraKSG6MkYfxhz78fDegrX2ANZzMxtRXVsMPfyxm9Rrlybv27SmgARdGai0D
-         /v4XXc+YRamo6OAos6At7cizy5zbIejWP8JCx3D2Pl50n17fTG0ux30D6s/5w8W7q3T0
-         nQy4eiAa71kQ2kesU/x0Pce7HqNnQqK8rBad7I0+CBSjfHfre5m5vq2rtQ4AkhzWCTQy
-         MfbJLLzR+3tNwbouQZFqTBKlhLkcgICyD+EenPiuXYsa+k2IrRCmnAkL0Wktk56eN+fE
-         ib1Q==
-X-Gm-Message-State: AO0yUKVkNWwVxxcgIOXaqgYRbzYhv1+zzL7pHiYd7JF/ji5xk1tPrJwB
-	zEa1F1+RmbUICRKEeZpFp/4=
-X-Google-Smtp-Source: AK7set8JaGUU/ejyFbK8vANqItq8nP5VI5XJzamLuDLbt0B8Gg7MjSYEzUbAHgIk13cwKIwS0QjM5Q==
-X-Received: by 2002:a05:600c:3512:b0:3df:9858:c02e with SMTP id h18-20020a05600c351200b003df9858c02emr6311165wmq.3.1677497198575;
-        Mon, 27 Feb 2023 03:26:38 -0800 (PST)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id u6-20020a05600c00c600b003e21dcccf9fsm12084392wmm.16.2023.02.27.03.26.37
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=UL2ps8yaPj+oovF7HkNPRUPm6/ExhIXpUcFA+LZV1i4=;
+        b=2Xrz7DKjtY6IDHbV0nco0j7Cb2pTR0LjnfRRtAU3HJecpI6oVXBiRV+tWSqucZ0xul
+         YWPJ3jjm8GovyRAWWHkITfqiseYFvdH10vOWSs0mko9KeymmQs69QGa0Nmut40ybRPiH
+         0E291j3Oe2/EuCdEg/BPaHqaVy4Zmw19XjfTkqsJ7Tjoyl65zTzW18c/twDOOENDLf19
+         e1ubW8FYT6sMkPyXwkUlEn5i/nbM407LHmmfps78fYeKIuXg8/cPmxTP0J4W3Ej1ip/g
+         v1R7ueb75wnpC8XDZq8svPDBAu0ufJeLpHnTveBzIQTBXQwr2wQFVyk86ZU7T3pkS/lh
+         iqFA==
+X-Gm-Message-State: AO0yUKXweR58fkrR20Ninsvlu9cPHkezvE3Beq3zBNvFbr7ezSMpEN5v
+	obJCgYiGin7Xceub1nPW0jE=
+X-Google-Smtp-Source: AK7set+BLyzHJFtVSyKmZHTYpge+3sc6hQOxe+auHdzmUX0POIcjrnIIsYgxojEj7pDzaw4Rr1Gc8g==
+X-Received: by 2002:a17:902:bd89:b0:19d:1509:5848 with SMTP id q9-20020a170902bd8900b0019d15095848mr2419219pls.29.1677499045263;
+        Mon, 27 Feb 2023 03:57:25 -0800 (PST)
+Received: from passwd123-ThinkStation-P920.. ([222.20.94.23])
+        by smtp.gmail.com with ESMTPSA id w13-20020a170902d70d00b0019aeddce6casm4390573ply.205.2023.02.27.03.57.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Feb 2023 03:26:38 -0800 (PST)
-Date: Mon, 27 Feb 2023 14:26:33 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: bchihi@baylibre.com
-Cc: linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [bug report] thermal/drivers/mediatek: Add the Low Voltage Thermal
- Sensor driver
-Message-ID: <Y/yTacHF8TvAkxdj@kili>
+        Mon, 27 Feb 2023 03:57:24 -0800 (PST)
+From: Kang Chen <void0red@gmail.com>
+To: shayne.chen@mediatek.com
+Cc: sean.wang@mediatek.com,
+	kvalo@kernel.org,
+	nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Kang Chen <void0red@gmail.com>
+Subject: [PATCH] wifi: mt76: add a check of vzalloc in mt7615_coredump_work
+Date: Mon, 27 Feb 2023 19:57:17 +0800
+Message-Id: <20230227115717.3360755-1-void0red@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230227_032641_041136_4CE42D45 
-X-CRM114-Status: UNSURE (   7.60  )
+X-CRM114-CacheID: sfid-20230227_035726_302332_C6CD6C46 
+X-CRM114-Status: UNSURE (   8.29  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,34 +101,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Balsam CHIHI,
+vzalloc may fails, dump might be null and will cause
+illegal address access later.
 
-The patch f5f633b18234: "thermal/drivers/mediatek: Add the Low
-Voltage Thermal Sensor driver" from Feb 9, 2023, leads to the
-following Smatch static checker warning:
+Signed-off-by: Kang Chen <void0red@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-	drivers/thermal/mediatek/lvts_thermal.c:562 lvts_calibration_init()
-	warn: not copying enough bytes for '&lvts_ctrl->calibration[i]' (4 vs 2 bytes)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index a95602473..73d84c301 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -2367,6 +2367,9 @@ void mt7615_coredump_work(struct work_struct *work)
+ 	}
+ 
+ 	dump = vzalloc(MT76_CONNAC_COREDUMP_SZ);
++	if (!dump)
++		return;
++
+ 	data = dump;
+ 
+ 	while (true) {
+-- 
+2.34.1
 
-drivers/thermal/mediatek/lvts_thermal.c
-    555 static int lvts_calibration_init(struct device *dev, struct lvts_ctrl *lvts_ctrl,
-    556                                         const struct lvts_ctrl_data *lvts_ctrl_data,
-    557                                         u8 *efuse_calibration)
-    558 {
-    559         int i;
-    560 
-    561         for (i = 0; i < lvts_ctrl_data->num_lvts_sensor; i++)
---> 562                 memcpy(&lvts_ctrl->calibration[i],
-    563                        efuse_calibration + lvts_ctrl_data->cal_offset[i], 2);
-                                                                                  ^
-This is copying an array of known ints to a u32 array.  It should copy
-sizeof(int) instead of 2.  It only works because the data you're on
-little endian and the data is small.
-
-    564 
-    565         return 0;
-    566 }
-
-regards,
-dan carpenter
 
