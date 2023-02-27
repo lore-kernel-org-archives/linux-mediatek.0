@@ -4,57 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08189C64ED8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Feb 2023 22:42:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87E64C64ED8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Feb 2023 22:48:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qCxd0o6I6PVpHD5qrk9QAafoCFUoiKj6VQ7yh68C05c=; b=cz1ivcsexB5yeP39aOevBq1dCU
-	1VRLaCeu0XHWDqkqPbKHaGGbcmdU3xfTie+45075FjbBbkFk45ifgw9vM6VWF+L9RyPIZXms4m8vA
-	CgtMBsM1bLqhEnb+Klcy+bsxuYDg8lXerY9lN24EhXzN8FH46FJ8dKpmZQv2+vtmQStpKkN3rkL0L
-	LaXrgKRFgkxEwJz4pIuGTyAEGyNqm6FDfSmllRxdV9qda40OAaNitCnGuwUWkxA5hH/45lujSf+x3
-	sHpMC/XqZcdGK30hWLNy9tz8f6qYZb4/rxsO9arlP3yFScx4UJYqBNzuW88U4mcO4YuzOcJWGflAV
-	3OkwBI/g==;
+	bh=lG6vB3dP9H3e//Mg7ICB0IjrePifa0YDIvFrmLOhqlQ=; b=SEIgZtl8L6usre7wPzZ+xjzwwb
+	pekaKRuTAMMJD7NLxGsgfLzeG9CgTVvjN/+h2jCXD8obpRMedG3541MUnWWIJqvcRoADoPxfY1TPA
+	PItWNjYYZfMaZ7QX1Jut8eXLdvRKWZtHU/73a0ufPkcLIb9FwE/iS5lJbuGO80F85Ycv1UfZI0XoO
+	uTY/iKiPsxXfWep2r0/DpZCqlYsK5pcltqhmuLi+RsAaDl8fvUW0CSEN6FlTwB5LvaBW8lM18XE92
+	IDY1eJ/s4RKk9RsY5WHFw3QowQtooYoJQkISt/O9MXn/P/iq0T1fxdqAflYfKUNiPiNqAGq5S7h6N
+	GA39TlXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWmCG-00BVMu-Qb; Mon, 27 Feb 2023 22:42:16 +0000
-Received: from mail-pj1-f41.google.com ([209.85.216.41])
+	id 1pWmHq-00BWNX-3J; Mon, 27 Feb 2023 22:48:02 +0000
+Received: from mail-pl1-f176.google.com ([209.85.214.176])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWmC1-00BVHk-Cn; Mon, 27 Feb 2023 22:42:02 +0000
-Received: by mail-pj1-f41.google.com with SMTP id 6-20020a17090a190600b00237c5b6ecd7so7200379pjg.4;
-        Mon, 27 Feb 2023 14:41:59 -0800 (PST)
+	id 1pWmHf-00BWKl-Vh; Mon, 27 Feb 2023 22:47:53 +0000
+Received: by mail-pl1-f176.google.com with SMTP id c1so8479857plg.4;
+        Mon, 27 Feb 2023 14:47:51 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=qCxd0o6I6PVpHD5qrk9QAafoCFUoiKj6VQ7yh68C05c=;
-        b=xeLO6hVKn7X/qVUL5nZdg6DgKfOOyKwpPRekc0EdYmQEgO7G0z9SFvJrxarAbtHtpx
-         TjXGAPtxW1q/4nL2GtEAIFWIt5S84OZt1nKvtCLZh78JXloDn08nS3zhhGj9FSL/Jnzt
-         DVRm7koP0lKhUBAEtvMaPjC9Z8W/MNfKkphssgnyLf4vDcQridAV0L0we2bbNowbZHMc
-         GlKhqbl3nku8YJGCGM8pSfuZ97HOeEfF/P4Esm//iyRdC1PoLhjTW3rXAvSvAbez087U
-         hnA/vt59f9JR3Z4YMw2Iuw5QzW81rTIjbLBlO1F9uNn9rZeO8mdPcQmneS3glNV/wwxr
-         GgsQ==
-X-Gm-Message-State: AO0yUKX0DtpSbrqPnZAu+41DBybEFuSf9tYIKyKaJD17xFSPr9r7iYsv
-	KrFUtYwa/Xwsqei2JydPApo=
-X-Google-Smtp-Source: AK7set98soD4yjnc2MvbeieY+/GJvE6ANtpYsxx5d+GZ34/Z/sdYAUIKvRTqAfLminupo0FWOhZgoQ==
-X-Received: by 2002:a17:90b:1d88:b0:237:c52f:a54d with SMTP id pf8-20020a17090b1d8800b00237c52fa54dmr9522892pjb.21.1677537719315;
-        Mon, 27 Feb 2023 14:41:59 -0800 (PST)
+        bh=lG6vB3dP9H3e//Mg7ICB0IjrePifa0YDIvFrmLOhqlQ=;
+        b=p6W01FTH5DKcq3Wg1Ha28GKLRPECTAdKB21fnMlAp/UhlhNxoKsH5UqEDPFgLR6bqQ
+         riVkXw2a20L13TtKeH6+aPtBOAFJyQ954whhPRE8nLtFU2eLEWl/QauIzQ2elVn/7fIz
+         Pkxd1B58mt+d5P9oS9JIYWoj1i45q3MYFHezKDKKgA79wt5zZg3AQ/C0L407XX/qyXgV
+         n8I3n2wbNBtJzxAp2UBzFPJmri5w7apUkqy0xbvjmxurxgAO4svcEmHpAcChur4T9UlA
+         VFt6M5wlh4DnrwGJMiMqxLm7Qd0XuV4gCA8pDK+R/OTs9BwVdMu6MnT1Lm4BMxhjJezf
+         vsxw==
+X-Gm-Message-State: AO0yUKWSBy3Ul7sLWOmxuWfY+DA/ODqeKT8Bvcm7j0hT922Rj/6aw6gB
+	DaXB3xlYA3o5Bbhv7Kk/tZc=
+X-Google-Smtp-Source: AK7set9vcQ/F8WhIG+6XsqcHSIU5HVBhAJ1lVW44QSnhAm+ORXEIjQ6fFA1tdKOn1Sl1SStdekryLg==
+X-Received: by 2002:a17:902:db04:b0:19d:90f:6c50 with SMTP id m4-20020a170902db0400b0019d090f6c50mr583309plx.58.1677538070772;
+        Mon, 27 Feb 2023 14:47:50 -0800 (PST)
 Received: from ?IPV6:2620:15c:211:201:6cf3:f584:1162:e48a? ([2620:15c:211:201:6cf3:f584:1162:e48a])
-        by smtp.gmail.com with ESMTPSA id k15-20020a637b4f000000b004fb26a80875sm4487449pgn.22.2023.02.27.14.41.57
+        by smtp.gmail.com with ESMTPSA id 3-20020a170902c10300b00186b69157ecsm5088744pli.202.2023.02.27.14.47.47
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 27 Feb 2023 14:41:58 -0800 (PST)
-Message-ID: <f7e6028c-7ed9-a410-19c7-268ac701d03d@acm.org>
-Date: Mon, 27 Feb 2023 14:41:55 -0800
+        Mon, 27 Feb 2023 14:47:49 -0800 (PST)
+Message-ID: <99993a45-acc6-176f-d846-e278f173171c@acm.org>
+Date: Mon, 27 Feb 2023 14:47:46 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.7.1
-Subject: Re: [PATCH v2 3/7] scsi: ufs: core: Fix mcq nr_hw_queues
+Subject: Re: [PATCH v2 4/7] scsi: ufs: core: Add hwq print for debug
 Content-Language: en-US
-To: Po-Wen Kao <powen.kao@mediatek.com>, linux-scsi@vger.kernel.org,
+To: Ziqi Chen <quic_ziqichen@quicinc.com>, Po-Wen Kao
+ <powen.kao@mediatek.com>, linux-scsi@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, Alim Akhtar <alim.akhtar@samsung.com>,
  Avri Altman <avri.altman@wdc.com>, "James E.J. Bottomley"
@@ -65,14 +66,15 @@ Cc: wsd_upstream@mediatek.com, peter.wang@mediatek.com,
  chun-hung.wu@mediatek.com, cc.chou@mediatek.com, eddie.huang@mediatek.com,
  mason.zhang@mediatek.com, chaotian.jing@mediatek.com, jiajie.hao@mediatek.com
 References: <20230222030427.957-1-powen.kao@mediatek.com>
- <20230222030427.957-4-powen.kao@mediatek.com>
+ <20230222030427.957-5-powen.kao@mediatek.com>
+ <1b9c2bc9-a349-062a-597c-336804c05394@quicinc.com>
 From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20230222030427.957-4-powen.kao@mediatek.com>
+In-Reply-To: <1b9c2bc9-a349-062a-597c-336804c05394@quicinc.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230227_144201_467044_5451A4E8 
-X-CRM114-Status: UNSURE (   6.56  )
+X-CRM114-CacheID: sfid-20230227_144752_084153_FA24AA1A 
+X-CRM114-Status: UNSURE (   8.22  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,10 +90,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/21/23 19:04, Po-Wen Kao wrote:
-> Need to add one to MAXQ to obtain number of hardware queue.
+On 2/23/23 02:14, Ziqi Chen wrote:
+> Calling registers dump function in ufshcd_print_trs() is not reasonable, 
+> eg.. for each aborted request, it would print out all hwq registers, 
+> it's not make sense.
+> 
+> I think we should move it out of ufshcd_print_trs().
 
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
++1
 
 
 
