@@ -4,76 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3713AC64ED6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Feb 2023 09:08:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3D17C64ED6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Feb 2023 09:28:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q+3pF92mSwYUhZy9VRH+vsVoYv/M6+lCoICkuRbVNPs=; b=Q+GnZZjKOmVOgePq1w5BBMI/g6
-	6/Wb29vbPL7kjRXZV8s1AbX3cBHOponLNmoXQ0R8YDT81If0srHYMHDeZdWgegpwy93y/7u2MHJqG
-	yREfJX4GU/lKFjKIiq5KJukhKcRYajCWF6v15mWfDLawhVgQn5B+0n9n+zECWoIZH8uGquofFJMEP
-	5adENRQhkRGZqG2gAbYNe4I239jsuFLm8413iTMJTUfWuh//RyyEk5hMXPmkKt4Fc+bNoWloficIb
-	i+/45wp6r4x73tP63A3awr1FLCEJaLccnHzrklFZYDL8V+sLWBxBYgeRDplAQJoD82cvCLY08TQzQ
-	q/ShEuwg==;
+	bh=cMjKnic1RDzVnLUWgGe2AKObgBvZZKMI7NiRHKpr+hM=; b=OC7KIuMUPXVAPSZblTlMJyDTW0
+	uDJ0sofAya5z7nVNFCLhzq0FGgdnBPzZMU9VCnqXRfoEHN7nX4+f5dOjcwUqz/QCFKlQ+eNfVGLZL
+	b3Osi7nw0Wm+tT50ziDXN4LIiXkka20Q+h0xDNzhXIRsV3QdKvm1rXpB+G5TqvP8OyWEVd1jX7nX9
+	fv8gszih7vjv1CoiabHSvFu8fVLKluoPlYzU8F76TYiS5f5PJLSkBwcIDVKBattRDcYOsGXKPU9Uv
+	dGBbBQ0p+Nm30xUecKUQ5CqnnzJjxO0uYPIWmArGYzCid1S4DAYXxcdHTmodVWmza/xSP2riFYzqi
+	JwrwAPUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWZUp-008zaC-40; Mon, 27 Feb 2023 09:08:35 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1pWZo4-0091yS-Nq; Mon, 27 Feb 2023 09:28:28 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWZUe-008zWy-Vf
-	for linux-mediatek@lists.infradead.org; Mon, 27 Feb 2023 09:08:34 +0000
-Received: by mail-wm1-x333.google.com with SMTP id fm20-20020a05600c0c1400b003ead37e6588so6548283wmb.5
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Feb 2023 01:08:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=q+3pF92mSwYUhZy9VRH+vsVoYv/M6+lCoICkuRbVNPs=;
-        b=tUj0g530f3WAX6zMkiIob+nD3+znuJH4ZEokLzpC9j0yMozZ+6j4xtIysbReCzryyc
-         hmmVw4LwVO+K2a0x1sTkTF1fmfE7o06O02wHgNXEbAptfuXSch+ew/MNWqFtFEqGjZME
-         90gBrUhTclwaxlicifCU9E18i2aLswra3wMOB/JnZynfRBKWyhuWhcF0L9VxuOVNIjCX
-         7dzuvotjWXMRGOXquSEyEZ4ZRCo9Nvr3imV6Ng+aEVPMc8H7BwkiFuARGkHaLyCkP0tc
-         M3xt61M+nC6QnKYIqM1x01Kt5ENmULXB0+NHnhZv0XgFfCES6v8uQkeKHYCpfE5GMcxA
-         oyiw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=q+3pF92mSwYUhZy9VRH+vsVoYv/M6+lCoICkuRbVNPs=;
-        b=MBw+qyqPDSTuZQWWG6/R6VpirRuTRKCPXhhnA0jWiNrmSdrkY3GURiMtK7bilu4tly
-         iRXK5Y3HESqDRUzZUkMSD1HQ3vCDuG1IyQE9Qf52vhprv54fhnU1Lkiojy1L1Y+kfVeO
-         3meI6HBfg+4daUIvRcvrQFc09hWaGCq2KBj1nTcso6VEEs+BbJunYMEuRgA3kKg/cHLM
-         2utjU5CZr7HDfP5r3dJ6bNhjlkePXJ0j+BITj93C+vxwKvuXjFvn3aDDqI8+eGzR/ID7
-         xiENdQxGbn/RxJ+EqMAij0DiVgR0FjAq20JT6DUlaLLunQ85pjLuEDWqXNLPGZ16HFcF
-         m3NQ==
-X-Gm-Message-State: AO0yUKXaaSoYhkaBzU2Cu3TkHFmVJOVGu2FEyY80WumX906fWLIbAvsa
-	wNbHTu84SxIoJqcYPSKfgw8uyQ==
-X-Google-Smtp-Source: AK7set+CgWk1B+qEbO2S6zEfsqUjUh/9Lug+Zx2H+A7mNnO3xd751GxZ8Zsy42rsWWaEMswByX9LgQ==
-X-Received: by 2002:a05:600c:4e12:b0:3eb:3998:8bca with SMTP id b18-20020a05600c4e1200b003eb39988bcamr3861828wmq.17.1677488903422;
-        Mon, 27 Feb 2023 01:08:23 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id o25-20020a05600c511900b003dfe549da4fsm13368751wms.18.2023.02.27.01.08.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 27 Feb 2023 01:08:23 -0800 (PST)
-Message-ID: <d2e43fe8-2072-6723-dbb4-500a6ff8f719@linaro.org>
-Date: Mon, 27 Feb 2023 10:08:20 +0100
+	id 1pWZno-0091uv-2g; Mon, 27 Feb 2023 09:28:19 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 19B066602216;
+	Mon, 27 Feb 2023 09:28:08 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1677490090;
+	bh=fldeCQ2T3yK2LbLkV58DiP2FN50W9J7zlsxRxl8CG0c=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=muSvg7U/qWbXs3L1PUQ0RBl7Rh8gbjl/8NqkagVl/L6OHTx6O+uEE0zle6Dpcs0Sd
+	 7H1akkLBKCE49h6FPNpktm05EhzY06VyX8aJb8qIacgtyNkQF+AELASrpc1pH8GflM
+	 On7KLALIWvNE4mJKEIQ7H5juaCiwWcXqtIOxw00wmdKiosEGpDqeQAGpuv2AaJkgRj
+	 rJ8z9U9hLl7YICyqQrGPjFYqly73XNk73Nr+K+8zAbWkrEbqEjZ40+ylR4kXE3XoLS
+	 OZTOdSSBjAVbVUeCvAmX1OnX90fR4yK+BSpyrQvekroyt9fffedVtq0BE00XP9G5ny
+	 KyIS9miksZX+g==
+Message-ID: <cd634833-b28e-d6d3-692d-5a391b85ad34@collabora.com>
+Date: Mon, 27 Feb 2023 10:28:06 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.8.0
-Subject: Re: [PATCH v3 1/4] dt-bindings: clock: Add MediaTek MT6735 clock
- bindings
+Subject: Re: [PATCH v3 4/4] clk: mediatek: Add drivers for MediaTek MT6735
+ main clock and reset drivers
 Content-Language: en-US
-To: Yassine Oudjana <yassine.oudjana@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
+To: Yassine Oudjana <yassine.oudjana@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
  <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Philipp Zabel <p.zabel@pengutronix.de>, Daniel Golle
  <daniel@makrotopia.org>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
  Tinghan Shen <tinghan.shen@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
@@ -82,22 +62,19 @@ Cc: Rob Herring <robh+dt@kernel.org>,
  Fabien Parent <fparent@baylibre.com>,
  Chun-Jie Chen <chun-jie.chen@mediatek.com>,
  Miles Chen <miles.chen@mediatek.com>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Yassine Oudjana <y.oudjana@protonmail.com>, devicetree@vger.kernel.org,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>
+Cc: Yassine Oudjana <y.oudjana@protonmail.com>, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Rob Herring <robh@kernel.org>
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 References: <20230225094246.261697-1-y.oudjana@protonmail.com>
- <20230225094246.261697-2-y.oudjana@protonmail.com>
- <52d479ff-14c6-b65d-952b-e7753fee2dea@linaro.org>
- <2XCQQR.YSBPBN01H6D31@gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <2XCQQR.YSBPBN01H6D31@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+ <20230225094246.261697-5-y.oudjana@protonmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230225094246.261697-5-y.oudjana@protonmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230227_010829_642624_20EBA001 
-X-CRM114-Status: GOOD (  13.06  )
+X-CRM114-CacheID: sfid-20230227_012812_570022_7B55F5E0 
+X-CRM114-Status: GOOD (  18.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,48 +89,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27/02/2023 09:29, Yassine Oudjana wrote:
+Il 25/02/23 10:42, Yassine Oudjana ha scritto:
+> From: Yassine Oudjana <y.oudjana@protonmail.com>
 > 
-> On Mon, Feb 27 2023 at 09:18:45 AM +01:00:00, Krzysztof Kozlowski 
-> <krzysztof.kozlowski@linaro.org> wrote:
->> On 25/02/2023 10:42, Yassine Oudjana wrote:
->>>  From: Yassine Oudjana <y.oudjana@protonmail.com>
->>>
->>>  Add clock definitions for the main clock controllers of MT6735 
->>> (apmixedsys,
->>>  topckgen, infracfg and pericfg).
->>>
->>>  Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
->>>  Acked-by: Rob Herring <robh@kernel.org>
->>>  ---
->>>   MAINTAINERS                                   | 10 +++
->>>   .../clock/mediatek,mt6735-apmixedsys.h        | 16 ++++
->>>   .../clock/mediatek,mt6735-infracfg.h          | 25 ++++++
->>>   .../clock/mediatek,mt6735-pericfg.h           | 37 +++++++++
->>>   .../clock/mediatek,mt6735-topckgen.h          | 79 
->>> +++++++++++++++++++
->>>   5 files changed, 167 insertions(+)
->>
->> You should squash it with other part of binding. What is the reason
->> behind splitting one binding into three patches?
+> Add drivers for MT6735 apmixedsys, topckgen, infracfg and pericfg
+> clock and reset controllers. These provide the base clocks and resets
+> on the platform, and should be enough to bring up all essential blocks
+> including PWRAP, MSDC and peripherals (UART, I2C, SPI).
 > 
-> It seemed logical to me that each of clock and reset bindings as well 
-> as documentation would be separate parts especially since they go in 
+> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+> ---
+>   MAINTAINERS                                  |   4 +
+>   drivers/clk/mediatek/Kconfig                 |   9 +
+>   drivers/clk/mediatek/Makefile                |   1 +
+>   drivers/clk/mediatek/clk-mt6735-apmixedsys.c | 139 ++++++
+>   drivers/clk/mediatek/clk-mt6735-infracfg.c   |  78 ++++
+>   drivers/clk/mediatek/clk-mt6735-pericfg.c    |  91 ++++
+>   drivers/clk/mediatek/clk-mt6735-topckgen.c   | 450 +++++++++++++++++++
+>   7 files changed, 772 insertions(+)
+>   create mode 100644 drivers/clk/mediatek/clk-mt6735-apmixedsys.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt6735-infracfg.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt6735-pericfg.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt6735-topckgen.c
+> 
 
-I don't understand. All of these are bindings. What do you mean by
-"documentation"?
+..snip..
 
-> different paths, but if combining them is how it's done then sure, I'll 
-> squash them and resend.
+> diff --git a/drivers/clk/mediatek/clk-mt6735-topckgen.c b/drivers/clk/mediatek/clk-mt6735-topckgen.c
+> new file mode 100644
+> index 000000000000..5fa743e4b0fc
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-mt6735-topckgen.c
+> @@ -0,0 +1,450 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2022 Yassine Oudjana <y.oudjana@protonmail.com>
+> + */
+> +
+> +#include <linux/clk-provider.h>
+> +#include <linux/platform_device.h>
+> +
+> +#include "clk-mtk.h"
+> +#include "clk-mux.h"
+> +
+> +#include <dt-bindings/clock/mediatek,mt6735-topckgen.h>
+> +
 
-They cannot go different paths and your submissions creates false
-impression they can. If you want to see - apply these on separate
-branches and test if: driver compiles and paths to files in doc are not
-broken. Answer: driver won't compile and paths will point to
-non-existing files.
+..snip..
 
+> +
+> +int clk_mt6735_topckgen_probe(struct platform_device *pdev)
 
-Best regards,
-Krzysztof
+It gets *even easier* than that!
 
+Check out this one:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20230222092543.19187-5-angelogioacchino.delregno@collabora.com/
+
+...being part of:
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=724004
+
+So you can use simple_probe for MT6735's topckgen too!
+
+In this case, it would be...
+
+static const struct mtk_clk_desc topck_desc = {
+	.clks = topckgen_muxes,
+	.num_clks = ARRAY_SIZE(topckgen_muxes),
+	.fixed_clks = topckgen_fixed_clks,
+	.num_fixed_clks = ARRAY_SIZE(topckgen_fixed_clks),
+	.factor_clks = topckgen_factors,
+	.num_factor_clks = ARRAY_SIZE(topckgen_factors),
+	.clk_lock = &mt6735_topckgen_lock,
+};
+
+static const struct of_device_id of_match_mt6735_topckgen[] = {
+	{ .compatible = "mediatek,mt6735-topckgen", .data = &topck_desc },
+	{ /* sentinel */ }
+};
+
+MODULE_DEVICE_TABLE(of, of_match_mt6735_topckgen)
+     ^^^^^
+You're missing that on multiple clock drivers ;-)
+
+...And you're replacing .probe(), .remove() callbacks with
+
+static struct platform_driver clk_mt6735_topckgen = {
+	.probe = mtk_clk_simple_probe,
+	.remove = mtk_clk_simple_remove,
+
+	......
+
+Other than that, good job!
+
+After performing these changes, please make sure to mention the dependency on
+my last cleanup series on your cover letter for v4, so that maintainers will
+be aware of what to do.
+
+Your v4 smells like Reviewed-by tags all over. Keep up the great work!
+
+Cheers,
+Angelo
 
