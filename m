@@ -4,90 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 586F2C64ED6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Feb 2023 14:07:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B460C64ED6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Feb 2023 14:29:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aFTvFQ3q5aWSqvyw9AelhhhkIt6I0O9TBRHfypnLJlQ=; b=LFgAHLCfDTfsVquastdZrNkqAt
-	mtgSnPD3miynv3U+kPhc2QwnU/QzRZJLZPg0tbUvgkYv/cBOmt6dNfvWtT18+tbLIqbItMhb5c5t+
-	e/juLXAbdPmkqAKJv7YWhXXCPGcddBDFXYHqSU3+aQ3gL/OhYCvM4nITCnFSVzqCreinAJBAooYl5
-	fJpqNcuifIfl7VGFRAdXaxRm9m16yJzUw2GW8bgDYrc4DJQ5DDYOc1Jgq+FtNRJ8BjpaEGaQtVtT1
-	GMRKY20bipXHGRLDeCf6lVKLa8CvRA2w+jyyxDotbzwXTiOc7NdGZXwj2C7a1RUISdUFmRAP/x8ES
-	lG1ZAMxw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3owx8bm935W6dFgfi76X403PJDDk983z5ZT3LHH1Acw=; b=J/5Df8P6WopxT4Vpyd5MooZhDv
+	kavZ3yW7/vKXO3XF52vDLew/Y6axkH5ztuGVijQZE6QU57YNCXJ7K0EOBrvsedOvsyFh3rtKcQuEQ
+	5/G2hPfdBKH+ZlLcvjHG9lvQcwALMwVwimKQsKoZIqyGWALwVDvc9+DCL6ROTFLYhMAI08SVRUxI1
+	v2iHo3xzRVizSChI+SU0w5l3ZJ90heaJ4B6aYEsRtwvaSVL3hui0Z5FcpglYwSKyzz248J4+RbuK+
+	8tdX8RDGmipg0RnpOnhQyEc7r0mwQF1d7Ed32+C5Gy7vfKvAecksW6MWZB+jXtLL4n2XgVRpGaLdj
+	nF22SZIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWe9l-009u7a-SO; Mon, 27 Feb 2023 14:07:09 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1pWeVE-009yD4-ED; Mon, 27 Feb 2023 14:29:20 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWe9j-009u6G-4i
-	for linux-mediatek@lists.infradead.org; Mon, 27 Feb 2023 14:07:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1677506825;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=aFTvFQ3q5aWSqvyw9AelhhhkIt6I0O9TBRHfypnLJlQ=;
-	b=GEcndyobv9GWtT9DftMcqy+RVDZRHvLBaiVaAtQobRey6fEObKRbXNVtWyBX0Fp8xPS74b
-	osEQO+vJJzJ4Oj1pLgA52/KFbxJIniJrjFvRFa6Qexk2VJbAm2SRLvMKi5kU8ZVFlN6rBb
-	0mCfpP7j8wRb4gzwZgQjaWOWGiWnccw=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-277-9-tHI4D8MxijkiE_V_U4jg-1; Mon, 27 Feb 2023 09:07:04 -0500
-X-MC-Unique: 9-tHI4D8MxijkiE_V_U4jg-1
-Received: by mail-wm1-f71.google.com with SMTP id s18-20020a7bc392000000b003deaf780ab6so2933211wmj.4
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Feb 2023 06:07:03 -0800 (PST)
+	id 1pWeV3-009y9m-2S; Mon, 27 Feb 2023 14:29:10 +0000
+Received: by mail-ed1-x534.google.com with SMTP id o15so24101776edr.13;
+        Mon, 27 Feb 2023 06:29:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3owx8bm935W6dFgfi76X403PJDDk983z5ZT3LHH1Acw=;
+        b=IJmZsh7fYD7T16wncmSllWFtkg8kJqqVSHOhmRRb5OcSnsLnAtAHSE2/qeXUGX8xdk
+         tISARXjOjZypqmIb64hTDftc1PTiaSBzjiX7IDLENKao0z+q8hD9nIVwpflTZF3042sV
+         ktNlgFg7hEprtUmKsQo9UTc51Pw7G216iGd3pxHLCbthIhBXLAQ4he2bGfJrfHLPoh14
+         mZGx3ZqVp5VpQsdLR6jq+Fzq90IAna8KFRSSDmRRdltIosjYs7F3Vnb8qPaiARYJeAFL
+         rpWyA7vH/8UwZuC9DLJok/NXICAmKGJMHwn/d5jALIU7LLgivEZRZQev7m8sq4xv7DCh
+         zXuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=aFTvFQ3q5aWSqvyw9AelhhhkIt6I0O9TBRHfypnLJlQ=;
-        b=DIz8ilkqhOblNKKV1gawjmEeePBwohBcNswp9k3DjAK2gkxtus0jtqk93G5CPXPl/M
-         6VFmxJ47sjThfmAnnw1xmSQWTDOTFtOtEJ5dCaFP1oSKhbBFjRoARc/VPu1z7Jf/CFiq
-         UBt27ouOxpnzJkkfx2dkXA2cTIVLSDVkJpUT/if4pEcBzo0GTY3L0atgmURbbBDPhuqx
-         pkDy68pnHWycGZAodmSon3I4zONfGZkZGHSi+Of4r+CUXK9mYeaiLnMEoQk/L57npc/A
-         QF9EkE5L39sB49r/COV5v8yMi4kvDqjJ7y0hrT8PNGx3ezY6UwEvAo5h381OLE6/JZ1P
-         vA3Q==
-X-Gm-Message-State: AO0yUKUoWabgCXnVQcrjY6paO9Ofvv9BB7fkfCeO8GmdV7osLRbPWcdh
-	uGW9+A8U1tji3Lj70ir1zEj0uHtIN7Yva9/LEH6BQJP7ylMNM/Y7rzid8RC3e7mxrmquPSaMsbo
-	cmbSXYZB/wcXA4rTmf5k9uXoz+JlRZbXVimHbpQ==
-X-Received: by 2002:a5d:4f89:0:b0:2c7:1d70:561 with SMTP id d9-20020a5d4f89000000b002c71d700561mr9516583wru.45.1677506821180;
-        Mon, 27 Feb 2023 06:07:01 -0800 (PST)
-X-Google-Smtp-Source: AK7set9ec/Yueab8Bvk6eJi8LCRz4+aeuNEBluM/tCSwA288dNuu0Nq41jbKDNy7uFxhcbonKrPSew==
-X-Received: by 2002:a5d:4f89:0:b0:2c7:1d70:561 with SMTP id d9-20020a5d4f89000000b002c71d700561mr9516553wru.45.1677506820885;
-        Mon, 27 Feb 2023 06:07:00 -0800 (PST)
-Received: from localhost (net-188-216-77-84.cust.vodafonedsl.it. [188.216.77.84])
-        by smtp.gmail.com with ESMTPSA id g9-20020a056000118900b002c794495f6fsm6993704wrx.117.2023.02.27.06.07.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Feb 2023 06:07:00 -0800 (PST)
-Date: Mon, 27 Feb 2023 15:06:58 +0100
-From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
-To: void0red <void0red@gmail.com>
-Cc: angelogioacchino.delregno@collabora.com, davem@davemloft.net,
-	edumazet@google.com, kuba@kernel.org, kvalo@kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org,
-	lorenzo@kernel.org, matthias.bgg@gmail.com, nbd@nbd.name,
-	netdev@vger.kernel.org, pabeni@redhat.com, ryder.lee@mediatek.com,
-	sean.wang@mediatek.com, shayne.chen@mediatek.com
-Subject: Re: [PATCH v2] wifi: mt76: add a check of vzalloc in
- mt7615_coredump_work
-Message-ID: <Y/y5Asxw3T3m4jCw@lore-desk>
-References: <Y/yxGMvBbMGiehC6@lore-desk>
- <20230227135241.947052-1-void0red@gmail.com>
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=3owx8bm935W6dFgfi76X403PJDDk983z5ZT3LHH1Acw=;
+        b=eo1vMQH25Y2ozYw5SzbXBuiIPou5zJ84EbSslMnFSz2oWPl541/y55tKaI4gs0yi1E
+         jYHIVZvo5L8DQR7COBiq+vvcQQymoy8LN6MBj1pk75c5wSZZGzBQ4r2wm0GjbSTY/5Mp
+         lGB7PjX+oiwlGXo32K64nI3GKXy9pbiKm0SiRv/umgUZnfPXtAlZ25Mf41zYXSMiKK42
+         HWMf77uzZWxAx/N4JiUoS9hosZRY9bZ2eqqdQ2wHdOuggjgWreH5vOOSvcM7cWh26Qw4
+         ALf3466roSS/vlcH1z1w/nEWYsCLtTH4DYGS3FqPfy6jOaCz6J6yQcsj4ha3rtUdWvp9
+         Vpag==
+X-Gm-Message-State: AO0yUKWW86zwcfu6kl2LE6cHebF0sH40V/Gxb3eVrrR2UK5KgasSYgsl
+	erlciVc0Q7mfKoZl4w7fOaN1AcCJpxmHyi6QDJc=
+X-Google-Smtp-Source: AK7set+0CkCmG9Ei5HQCw/IfAgBc87KenY2hXkZDhwv1TKtYAnJrh+LmG+gnLJZC6R3xgxWU0R0R0p5BHh5UHdH/V5M=
+X-Received: by 2002:a17:906:195b:b0:889:dc4d:e637 with SMTP id
+ b27-20020a170906195b00b00889dc4de637mr14651060eje.6.1677508147369; Mon, 27
+ Feb 2023 06:29:07 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="suqa0cLxZu8I2O6i"
-Content-Disposition: inline
-In-Reply-To: <20230227135241.947052-1-void0red@gmail.com>
+References: <Y/yxGMvBbMGiehC6@lore-desk> <20230227135241.947052-1-void0red@gmail.com>
+ <Y/y5Asxw3T3m4jCw@lore-desk>
+In-Reply-To: <Y/y5Asxw3T3m4jCw@lore-desk>
+From: Kang Chen <void0red@gmail.com>
+Date: Mon, 27 Feb 2023 22:28:55 +0800
+Message-ID: <CANE+tVq=djTShowm1o86184c34QYEax0_4Ls=y0_qFL=wo+EsQ@mail.gmail.com>
+Subject: Re: [PATCH v2] wifi: mt76: add a check of vzalloc in mt7615_coredump_work
+To: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+Cc: angelogioacchino.delregno@collabora.com, davem@davemloft.net, 
+	edumazet@google.com, kuba@kernel.org, kvalo@kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org, 
+	lorenzo@kernel.org, matthias.bgg@gmail.com, nbd@nbd.name, 
+	netdev@vger.kernel.org, pabeni@redhat.com, ryder.lee@mediatek.com, 
+	sean.wang@mediatek.com, shayne.chen@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230227_060707_285605_A770A61C 
-X-CRM114-Status: GOOD (  16.93  )
+X-CRM114-CacheID: sfid-20230227_062909_154910_7B3D7821 
+X-CRM114-Status: GOOD (  17.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,65 +91,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi, Lorenzo
 
---suqa0cLxZu8I2O6i
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Thanks for your suggestions.
+I totally agree with you.
 
-> From: Kang Chen <void0red@gmail.com>
->=20
-> vzalloc may fails, dump might be null and will cause
-> illegal address access later.
->=20
-> Fixes: d2bf7959d9c0 ("mt76: mt7663: introduce coredump support")
-> Signed-off-by: Kang Chen <void0red@gmail.com>
-> ---
-> v2 -> v1: add Fixes tag
->=20
->  drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 3 +++
->  1 file changed, 3 insertions(+)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7615/mac.c
-> index a95602473..73d84c301 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-> @@ -2367,6 +2367,9 @@ void mt7615_coredump_work(struct work_struct *work)
->  	}
-> =20
->  	dump =3D vzalloc(MT76_CONNAC_COREDUMP_SZ);
-> +	if (!dump)
-> +		return;
-> +
->  	data =3D dump;
-> =20
->  	while (true) {
-> --=20
-> 2.34.1
->=20
+Best regards,
+Kang Chen
 
-revieweing the code I guess the right approach would be the one used in
-mt7921_coredump_work():
-- free pending skbs
-- not run dev_coredumpv()
-
-What do you think?
-
-Regards,
-Lorenzo
-
---suqa0cLxZu8I2O6i
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY/y5AgAKCRA6cBh0uS2t
-rNvNAQChxct9I9hvxziffNgrIyEvdXvuQxbOt0yeiX8oblnPWwEA4qXx39acNsg6
-Q0MSG7S8eufwOP2IXUXhOgXTb9tFZQw=
-=ErB1
------END PGP SIGNATURE-----
-
---suqa0cLxZu8I2O6i--
-
+On Mon, Feb 27, 2023 at 10:07=E2=80=AFPM Lorenzo Bianconi
+<lorenzo.bianconi@redhat.com> wrote:
+>
+> > From: Kang Chen <void0red@gmail.com>
+> >
+> > vzalloc may fails, dump might be null and will cause
+> > illegal address access later.
+> >
+> > Fixes: d2bf7959d9c0 ("mt76: mt7663: introduce coredump support")
+> > Signed-off-by: Kang Chen <void0red@gmail.com>
+> > ---
+> > v2 -> v1: add Fixes tag
+> >
+> >  drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 3 +++
+> >  1 file changed, 3 insertions(+)
+> >
+> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/=
+net/wireless/mediatek/mt76/mt7615/mac.c
+> > index a95602473..73d84c301 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+> > +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+> > @@ -2367,6 +2367,9 @@ void mt7615_coredump_work(struct work_struct *wor=
+k)
+> >       }
+> >
+> >       dump =3D vzalloc(MT76_CONNAC_COREDUMP_SZ);
+> > +     if (!dump)
+> > +             return;
+> > +
+> >       data =3D dump;
+> >
+> >       while (true) {
+> > --
+> > 2.34.1
+> >
+>
+> revieweing the code I guess the right approach would be the one used in
+> mt7921_coredump_work():
+> - free pending skbs
+> - not run dev_coredumpv()
+>
+> What do you think?
+>
+> Regards,
+> Lorenzo
 
