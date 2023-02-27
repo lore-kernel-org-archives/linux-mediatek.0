@@ -4,88 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70F15C64ED8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Feb 2023 08:16:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C6FAC64ED8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Feb 2023 08:17:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T4JhC2nWay681MyZ600/nV3QW4wK4jKvMlYS/Fga+0g=; b=Hg/jaLC5OczaFWF5kuD27bqtsz
-	Il533pFdosluBgLbM0yREq9QPMWJTOq5ZH5GZ98IAET3GiQjHtD8mxb8aJHVZAbfdgq9CE1vvhip8
-	7Y8gfohWuqhV/HfmFJ1PVDqiErYQ9MehKUP6aUAxs1bwv+hRx3RKqtN5SJ8SzIgAyWjYfbD7jjACn
-	U+DG8E0c9YYpjbbIW1jk6J0AI8X6WtbuHSPn1REz0tTfQT6G02SYvd9h/iwzrfd1k/n9RgWT1vxwh
-	REXUGgs0qP4Yjh3i81xxCesun8Qu0X7VJnaTM30ThuunPuzCg3ww6Zs9l1uwCrjJOcBrvwI407uAL
-	ouLOqrFw==;
+	bh=SXjvdSe0Xoy2F99alaan33seTEDoFO78h4PoWaqWgOY=; b=hlE8w1FK/1sFu3WTWL+2acpq5y
+	2B09YLgcMWuU5lTjVDZZ9k8a5I/lTKzfL88PCI4AU7Y2FrIh/4MUd4UunUk+b2rDfX2lPX15HpEpy
+	TNxagUaSTUttx6OtpmMIctsZB9b+741waCTrVBIUsrvcXTpYYogBqRmwifvw5WC9UV2L6QptWkgW3
+	fgNShoe3+Oa7Z3VOmU7xRDL9SQyNGozJ35xQcRXX0dS1HxpRuTzlFxC89mv2ZRM6+xojhcy1ytanE
+	gGvlweQgllZFHOR/71a3AhNerGjWOr2Bdu41YHoYv/OJsVWpLJtCSQjLhvDhWP5lQZjA9uBuX+W8g
+	V5/p4KmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWYgW-008lU8-CC; Mon, 27 Feb 2023 08:16:36 +0000
+	id 1pWYhR-008lsS-HU; Mon, 27 Feb 2023 08:17:33 +0000
 Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWYfd-008lLJ-5O
-	for linux-mediatek@lists.infradead.org; Mon, 27 Feb 2023 08:15:43 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id bv17so5226905wrb.5
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Feb 2023 00:15:39 -0800 (PST)
+	id 1pWYhM-008lol-BM
+	for linux-mediatek@lists.infradead.org; Mon, 27 Feb 2023 08:17:31 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id r18so5248778wrx.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Feb 2023 00:17:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=T4JhC2nWay681MyZ600/nV3QW4wK4jKvMlYS/Fga+0g=;
-        b=HrrgkbGG45vP0425yqDd/ojN0/PrHyRlPGxvZkkHn3k2S22kizVxn3pKE3ca9bmhRx
-         FIIQ54GzG2GMZJMy4+mYMScSUxt1Uf9y54JjLNAD/qq1O8c6u9FUmhOooRRylmm+TDmT
-         Xo5aHGjPSdBohi+w68qWMnSPPfXX+DT6QAYx+X+FgKj0Z7a4XwGyluNkghKuNeDs57Vu
-         EkPB9IBIieYIi3TdVzW8NhtUJ2D3nXb0nkBHw8Gp/ksYOY6yyr0oWnODqm7lREh7Q7MM
-         u/smmXzD8IifvROiO2feiK/Y4BWrXmitOuS0iRQrcCPFLDe3AUbcTcPebYgLwO4OxM+f
-         a0+w==
+        bh=SXjvdSe0Xoy2F99alaan33seTEDoFO78h4PoWaqWgOY=;
+        b=Lz4+9beKVbWGlNZ6JCP58x/xj/5GDQnJ5jCtQqyk+1Udl9BuMfMaqAUXJVrX2gGAWA
+         H22mr9hUSs6gxP/dkX1KUIEXR3e6LG214vFsWVbuboi5zufMdpFYmshF4cwGF2NV4H0z
+         qvRYWIvNKBbfobB6eeUdLDOkT0LAjGmu4KvfNxDHTvEse8d28/WUysicQIdl0aApCADF
+         7J5mfxUFaThBrPciFhRLWq5t5tVGNN5vOglz34rOh4yJx5jBo9GxMZZyWytU9fihJRsn
+         kOaZr0OIMAaAjnSkR9viY0q+ix5LePgu5IImhO7Rk0mYSW/eBZNbsSAZBts88SH9xCWR
+         xHnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=T4JhC2nWay681MyZ600/nV3QW4wK4jKvMlYS/Fga+0g=;
-        b=qVr3r7g8vjdK7RJy15HgDRIiK5SCKx8Wmub4U5RmpJjLhSRk/RUfNMjsbIZnZd9Hrg
-         23sMs6LUoCRS66Zrrq4PyFcyuL4Jrfo/ymbUY8S52d5LCPW+5IApaWJHQ5ogicqAvujO
-         CZyt3twdwW6QGKuxecQgemq2BhuuvWtIwOZeI/S9MUOiw5Nq1n+uwOnEVw7ab6kWkzvW
-         +QZt+JalA5EYMNKShgNYjfpVVMs+/j4DyIn8F8hF2XCbQicXGx3Y7G5PsFcS/2LhOtzw
-         g92OcP+4unWBMrGfe8r4/YaNLG+xYVQYzagsB2Y9O4go90XIxuuGpnZUlIJk6P675bQv
-         ziMw==
-X-Gm-Message-State: AO0yUKW5QVyPD3bmscud4WzZ/YpqoJrBj9WRDyH2ZieZFYT/npEC4wlJ
-	BiNBRdsKTw1I4xSQtfn/piuSgQ==
-X-Google-Smtp-Source: AK7set+vvGFePt09tzp4Z32rFN7rkY2KHpQe3puGsiU0Rn3K+1kR6q98QfhqZizoskKxgi53ge2EKA==
-X-Received: by 2002:a5d:5004:0:b0:2cb:5b58:766 with SMTP id e4-20020a5d5004000000b002cb5b580766mr1922362wrt.51.1677485738626;
-        Mon, 27 Feb 2023 00:15:38 -0800 (PST)
+        bh=SXjvdSe0Xoy2F99alaan33seTEDoFO78h4PoWaqWgOY=;
+        b=ivGxs+HbWlq99XlxorydVQ9tGuiX91UXB7KJo6pqGPnib634j2M0FIclCQ1EkCWUl4
+         XlZBnpzXje/ek9/OLAXtt2IRhsTG/rZe87uezQX4mZy+cRUQDdEO5piGssJV9ffO2RJL
+         XghK2XUGPfHv9bgrZLYmYtTy+ocOrHZNNNmtgInVoxWiQOusFDM3Ro6haIfkl60eSF2s
+         jo9cNVt3onyDXw8yNNF12OpMuibKssQZJdeQaJMnXlpLahKFrVbP3u4EGVwdlVQ2ImmV
+         jtgQbZ9UUJfjyprsvT6FsLHys8aRWCQ/wBSnRQRDBCvbjhTXFpckOqfXgsIjiqBmrbeo
+         bk3w==
+X-Gm-Message-State: AO0yUKUAfIECURolshxm4xldLaUUi/kfviv7EyQ13hnUl7h68XDq09u0
+	y0NhIPa688Gx2GQsT2EHltDq5Q==
+X-Google-Smtp-Source: AK7set+LGhJeW/YV/Plyh6BkEVwsi5ztKVwgCyYUJRw0gktnM8wdTkBmFtmQU+S6gcfBUUuXp8EDLg==
+X-Received: by 2002:a5d:58ea:0:b0:2c7:d56:7d72 with SMTP id f10-20020a5d58ea000000b002c70d567d72mr13130426wrd.19.1677485846867;
+        Mon, 27 Feb 2023 00:17:26 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id i2-20020adfdec2000000b002c71dd1109fsm6363230wrn.47.2023.02.27.00.15.37
+        by smtp.gmail.com with ESMTPSA id c4-20020adffb04000000b002c70bfe505esm6324326wrr.82.2023.02.27.00.17.22
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 27 Feb 2023 00:15:38 -0800 (PST)
-Message-ID: <33806330-a274-c102-8b47-4b8a25422d38@linaro.org>
-Date: Mon, 27 Feb 2023 09:15:36 +0100
+        Mon, 27 Feb 2023 00:17:26 -0800 (PST)
+Message-ID: <481a732d-8867-b811-e96c-caf43d08e9f9@linaro.org>
+Date: Mon, 27 Feb 2023 09:17:22 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.8.0
-Subject: Re: [PATCH 2/3] dt-bindings: soc: mediatek: scpsys: Document MT6735
- SCPSYS compatible string
+Subject: Re: [PATCH v3 2/4] dt-bindings: reset: Add MediaTek MT6735 reset
+ bindings
 Content-Language: en-US
 To: Yassine Oudjana <yassine.oudjana@gmail.com>,
  Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Daniel Golle
+ <daniel@makrotopia.org>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Tinghan Shen <tinghan.shen@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
+ Edward-JW Yang <edward-jw.yang@mediatek.com>,
+ Johnson Wang <johnson.wang@mediatek.com>,
+ Fabien Parent <fparent@baylibre.com>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ Miles Chen <miles.chen@mediatek.com>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>
 Cc: Yassine Oudjana <y.oudjana@protonmail.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230225101629.264206-1-y.oudjana@protonmail.com>
- <20230225101629.264206-3-y.oudjana@protonmail.com>
+ linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Rob Herring <robh@kernel.org>
+References: <20230225094246.261697-1-y.oudjana@protonmail.com>
+ <20230225094246.261697-3-y.oudjana@protonmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230225101629.264206-3-y.oudjana@protonmail.com>
+In-Reply-To: <20230225094246.261697-3-y.oudjana@protonmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230227_001541_385395_E75AFA5E 
-X-CRM114-Status: UNSURE (   8.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230227_001728_430850_9FF08DE1 
+X-CRM114-Status: GOOD (  14.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,17 +110,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25/02/2023 11:16, Yassine Oudjana wrote:
+On 25/02/2023 10:42, Yassine Oudjana wrote:
 > From: Yassine Oudjana <y.oudjana@protonmail.com>
 > 
-> Add a compatible string for MT6735 SCPSYS.
+> Add reset definitions for the main reset controllers of MT6735 (infracfg
+> and pericfg).
 > 
 > Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+> Acked-by: Rob Herring <robh@kernel.org>
 > ---
->  Documentation/devicetree/bindings/soc/mediatek/scpsys.txt | 2 ++
+>  MAINTAINERS                                   |  4 ++-
+>  .../reset/mediatek,mt6735-infracfg.h          | 31 +++++++++++++++++++
+>  .../reset/mediatek,mt6735-pericfg.h           | 31 +++++++++++++++++++
+>  3 files changed, 65 insertions(+), 1 deletion(-)
+>  create mode 100644 include/dt-bindings/reset/mediatek,mt6735-infracfg.h
+>  create mode 100644 include/dt-bindings/reset/mediatek,mt6735-pericfg.h
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 5323f71c48fb..f617042790ee 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -13101,7 +13101,7 @@ S:	Maintained
+>  F:	Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+>  F:	drivers/mmc/host/mtk-sd.c
+>  
+> -MEDIATEK MT6735 CLOCK DRIVERS
+> +MEDIATEK MT6735 CLOCK & RESET DRIVERS
 
-Previous commit should be part of this one. It is logically the same and
-you cannot merge them via different trees/branches.
+You just added this line in previous patch. Don't add code which
+immediately you fix.
+
 
 
 Best regards,
