@@ -4,86 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 057D6C64ED8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Feb 2023 19:01:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 067D2C64ED6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Feb 2023 22:41:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eY7yiys7COzp4kD+eaEygV3+8zds0XEzT6dHAeWHFRc=; b=XNEFVytBFxsqbH5NrgXT8Fxe2/
-	uT2f0nd2coDRLDkiuK51dIP2lSVgtfrW/urmirAfWuQN4qXbV62uEkAD7UnFL+PCb0aAEEiGITuSM
-	axVePuE3GcP+8NxB0pBFAH32vsBU3oeo+Qc+aMuopCaXEVyB+Xqo8GNNGsnASjeRbZIcEWii4IV1l
-	XzsrPrvDnb1f8Gz3jgI1hihUdvSWEzaH8UI/Kgndp3f3sCHmolDcpCcB7CQScofejmRi2aYyLQhFA
-	yA8MgJtwAVsleXQIkNdac/IrrCf/2pKkhLWq+NgKnHQ0jPFcfTE0dzyVY7DUCzs8XhAvw6FkMn0/0
-	L547izww==;
+	bh=6u8oq2oXvTRbMsEPSGA+QLZ+vr7GcOeYXtTa8jueGTM=; b=whH6uwTwcuHhWLIfJqmHG9FAwQ
+	zDeHccBCERijVDIy5hzWOL3nfh56oSVjB5sz07bFAV7DLrM0NCQjMljYQHaWUoA5UqiKbwnguXvGG
+	1+RFjbUxP15WfQ3PKPEn/8th6ju4FCV4533bn2UmwlzOK8KIVvWyGOepyzBv2y7pI9QDqiz+kNwMd
+	yma2X5yxu73J1k+Pnu3k8QgKExunAUj7LAqnyVPGzn4cqnSJXEuvVyhb8jQHMQ/vts4/1Sj1GXDEU
+	oSwhzTqbmiki1VERkjKOnayjELSYNlpXAVeIkBVCHFjHORD7aaC89OVvsiPReCKsR4vIR2HH41hfH
+	kODImFRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWik1-00AqHY-BD; Mon, 27 Feb 2023 19:00:53 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pWmBQ-00BV8n-Ji; Mon, 27 Feb 2023 22:41:24 +0000
+Received: from mail-pj1-f49.google.com ([209.85.216.49])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWijy-00AqGF-Ei
-	for linux-mediatek@lists.infradead.org; Mon, 27 Feb 2023 19:00:51 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id F0DAF60DEA;
-	Mon, 27 Feb 2023 19:00:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56BBEC4339B;
-	Mon, 27 Feb 2023 19:00:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1677524449;
-	bh=HwzmljqOzuBkijMnmzBYp637A8GdPOQuvWFinajEoGs=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=Do9qi4Aqw9yT2N03lqdKzOLbWdAURzY1FoAp85RpjLWWiUNFmwcZFsNkjamEhjjiy
-	 L1hsDSeDKLojst44RoHt9eTsAgo90AHn1TB4lyQHVYbdkGE13GtLQ0DYB6OZP6jrt4
-	 wOzJoBmRV+Zcgo3Wm7SkQUClpolLGIPWNc9aPlRLiDOeubhRhmv0VLsaO1ksVVH49V
-	 ZjqqvszxmjLBEDywaQZ4OphWlyxyxfIWqw64e4Nfs0pf6+gAN0Uellj4fVREIPXO+R
-	 lhd6lfglphM4od6+WExArZ7L0c28NNNzysn+lqYS6+RZI4FwZILQ/uw1YxxGu2RwGn
-	 /4UaamGjQid3Q==
-Date: Mon, 27 Feb 2023 11:00:47 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: "Yanchao Yang (=?UTF-8?B?5p2o5b2m6LaF?=)" <Yanchao.Yang@mediatek.com>
-Cc: "Chris Feng (=?UTF-8?B?5Yav5L+d5p6X?=)" <Chris.Feng@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "Mingliang Xu (=?UTF-8?B?5b6Q5piO5Lqu?=)" <mingliang.xu@mediatek.com>, "Min
- Dong (=?UTF-8?B?6JGj5pWP?=)" <min.dong@mediatek.com>, "linuxwwan@intel.com"
- <linuxwwan@intel.com>, "m.chetan.kumar@intel.com"
- <m.chetan.kumar@intel.com>, "Liang Lu (=?UTF-8?B?5ZCV5Lqu?=)"
- <liang.lu@mediatek.com>, "Haijun Liu (=?UTF-8?B?5YiY5rW35Yab?=)"
- <haijun.liu@mediatek.com>, "Haozhe Chang (=?UTF-8?B?5bi45rWp5ZOy?=)"
- <Haozhe.Chang@mediatek.com>, "Hua Yang (=?UTF-8?B?5p2o5Y2O?=)"
- <Hua.Yang@mediatek.com>, "ryazanov.s.a@gmail.com" <ryazanov.s.a@gmail.com>,
- "Xiayu Zhang (=?UTF-8?B?5byg5aSP5a6H?=)" <Xiayu.Zhang@mediatek.com>,
- "loic.poulain@linaro.org" <loic.poulain@linaro.org>, "pabeni@redhat.com"
- <pabeni@redhat.com>, "edumazet@google.com" <edumazet@google.com>, "Ting
- Wang (=?UTF-8?B?546L5oy6?=)" <ting.wang@mediatek.com>,
- "johannes@sipsolutions.net" <johannes@sipsolutions.net>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Aiden Wang (
- =?UTF-8?B?546L5ZKP6bqS?=)" <Aiden.Wang@mediatek.com>, "Felix Chen (
- =?UTF-8?B?6ZmI6Z2e?=)" <Felix.Chen@mediatek.com>, "Lambert Wang (
- =?UTF-8?B?546L5Lyf?=)" <Lambert.Wang@mediatek.com>, "davem@davemloft.net"
- <davem@davemloft.net>, "Mingchuang Qiao (=?UTF-8?B?5LmU5piO6Zev?=)"
- <Mingchuang.Qiao@mediatek.com>, "Guohao Zhang (=?UTF-8?B?5byg5Zu96LGq?=)"
- <Guohao.Zhang@mediatek.com>
-Subject: Re: [PATCH net-next v3 01/10] net: wwan: tmi: Add PCIe core
-Message-ID: <20230227110047.224909ee@kernel.org>
-In-Reply-To: <e7628b89847adda7d8302db91d48b3ff62245f43.camel@mediatek.com>
-References: <20230211083732.193650-1-yanchao.yang@mediatek.com>
-	<20230211083732.193650-2-yanchao.yang@mediatek.com>
-	<20230214202229.50d07b89@kernel.org>
-	<2e518c17bf54298a2108de75fcd35aaf2b3397d3.camel@mediatek.com>
-	<d6f13d66a5ab0224f2ae424a0645d4cf29c2752b.camel@mediatek.com>
-	<20230224115052.5bdcc54d@kernel.org>
-	<e7628b89847adda7d8302db91d48b3ff62245f43.camel@mediatek.com>
+	id 1pWmBC-00BV5Z-E0; Mon, 27 Feb 2023 22:41:12 +0000
+Received: by mail-pj1-f49.google.com with SMTP id cp7-20020a17090afb8700b0023756229427so11731699pjb.1;
+        Mon, 27 Feb 2023 14:41:08 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=6u8oq2oXvTRbMsEPSGA+QLZ+vr7GcOeYXtTa8jueGTM=;
+        b=Hkl+qrYEw7RqNlB2cELg/piM46IgIxDha27/qCEfexaCTr+p9HdgTn7ffdLcfb3YdM
+         QskelW+UvpVIglpAqzds5WLFdQre6o6VO5HGaYKA6+RH9A+CZRg+sw12abwoTRp5Wszf
+         nSqkaMWM44wFCw4h7pJecNOkMjEBR+/qXovtCylD656JnZ5IHsFgBZndO1yRBfjJg8q4
+         6D1x3r18t3NTpzKBq2wogEOcfYYk3CuY1vv+dL2D+bd1DfDIfKMe/DzD2ZqBf21GiU49
+         ILeoV8ucxHApCEmUifcU9wMQe0Pp+VpItduJRP1K8D7bkv2biIakP32Ck5ig1nfu1QlK
+         1L/Q==
+X-Gm-Message-State: AO0yUKWpB7uH8s5QKSlrQy0E2hdzpQxBi8ZZjqQdnpQsHhM/STiuhtpw
+	JYwX5SNy2Bn1N7ECc7Bg4aw=
+X-Google-Smtp-Source: AK7set/ht7zdEIgJouJZ9Ofe7q3lKZZEmj4XTuh5hFbe3Xy1z0z6jV+xr3cc0RfOBA2xBW+OFHDuvA==
+X-Received: by 2002:a05:6a20:6983:b0:cb:aacb:312c with SMTP id t3-20020a056a20698300b000cbaacb312cmr1031666pzk.27.1677537667460;
+        Mon, 27 Feb 2023 14:41:07 -0800 (PST)
+Received: from ?IPV6:2620:15c:211:201:6cf3:f584:1162:e48a? ([2620:15c:211:201:6cf3:f584:1162:e48a])
+        by smtp.gmail.com with ESMTPSA id v19-20020aa78093000000b0058d54960eccsm4662778pff.151.2023.02.27.14.41.04
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 27 Feb 2023 14:41:06 -0800 (PST)
+Message-ID: <6a076b7e-9b0d-11af-ecf8-8e3db96b4eae@acm.org>
+Date: Mon, 27 Feb 2023 14:41:03 -0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH v2 2/7] scsi: ufs: core: Rename symbols
+Content-Language: en-US
+To: Po-Wen Kao <powen.kao@mediatek.com>, linux-scsi@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Alim Akhtar <alim.akhtar@samsung.com>,
+ Avri Altman <avri.altman@wdc.com>, "James E.J. Bottomley"
+ <jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: wsd_upstream@mediatek.com, peter.wang@mediatek.com,
+ stanley.chu@mediatek.com, alice.chao@mediatek.com, naomi.chu@mediatek.com,
+ chun-hung.wu@mediatek.com, cc.chou@mediatek.com, eddie.huang@mediatek.com,
+ mason.zhang@mediatek.com, chaotian.jing@mediatek.com, jiajie.hao@mediatek.com
+References: <20230222030427.957-1-powen.kao@mediatek.com>
+ <20230222030427.957-3-powen.kao@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20230222030427.957-3-powen.kao@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230227_110050_587102_590F90E3 
-X-CRM114-Status: GOOD (  12.91  )
+X-CRM114-CacheID: sfid-20230227_144110_501876_F8BEA338 
+X-CRM114-Status: UNSURE (   6.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,44 +88,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 27 Feb 2023 12:11:51 +0000 Yanchao Yang (=E6=9D=A8=E5=BD=A6=E8=B6=
-=85) wrote:
-> On Fri, 2023-02-24 at 11:50 -0800, Jakub Kicinski wrote:
-> > Relative paths work, right?
-> >  =20
-> Okay. Change as follows, is that right?
-> mtk_pci.h includes "mtk_dev.h",
-> which is located in the parent folder.
-> #include "../mtk_dev.h"
->=20
-> mtk_fsm.c
-> includes "mtk_reg.h", which is located in the child folder "pcie"
-> #include "pcie/mtk_reg.h"
+On 2/21/23 19:04, Po-Wen Kao wrote:
+> To avoid confusion, sizeof_utp_transfer_cmd_desc() is renamed to
+> ufshcd_get_ucd_size().
 
-Yes, that's right.
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
-> > > Any ideas or comments for this? Please help share it at your
-> > > convenience. =20
-> >=20
-> > It's mandatory for new code. =20
-> Okay. Change as follows, is that right?
-> 	......
-> 	ret =3D mtk_ctrl_init(mdev);
-> 	if (ret)
-> 		goto free_fsm;
-> 	ret =3D mtk_data_init(mdev)
-> 	if (ret)
-> 		goto free_ctrl_plane;
->=20
-> 	return 0;
-> free_ctrl_plane:
->=20
-> 	mtk_ctrl_exit(mdev);
-> free_fsm:
-> 	mtk_fsm_exit(mdev);
-> exit:
-> 	return ret;
-> }
-
-That's right, thanks!
 
