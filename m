@@ -4,66 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BBD2C64EC7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Feb 2023 16:47:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 189B9C64ED6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Feb 2023 18:00:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YzP0t2qNfnd3V6PK1d7LQSBOy5pePAV5wJ9vr1fobF0=; b=WidZjj82v4PCoT
-	Ip1Fi9NkcTWCd3WsIKPhU4Vif5vtlehA5ExIleyMjRD9c4yNyc3CI3Mh8e7J3A1q6ojjFg57GII1Z
-	oLWpf5DK6HsluWZgKWyExVbyBzm0ExGbRGmn47xBshxkB7HXS9c8leOwGIVLXn8yqxmRIYNREZT17
-	C5n7HB5qSvGnSieFaBuqIvbZbmPNoNHWbfPmldWwCO2PdySBOLNC2dHnhUS3KHs2L7hdjDnFSpB2w
-	gQDo+U7KDfc9kHCLsdHhLvj8k8W8zIfuWvcQib87pCnmazwBsRD0oMYOLdOo41Rz/ottOPWkO5JCh
-	H6HdhOOYTRowS+7QtUgA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=m+iE5ezTWChahLOSne2jUH43Z4U6NQQK1WEtSKgh4gY=; b=zL25loS8LAztEHPEgzN8iMCN5g
+	/Rsff9sauOBpDJ3ODBabk0e7b7+OtmkoFih581WmGXPOuiCfyWYZmYc09nPefvlS6ahnSvFk7mz2I
+	692F66DasOJ2qsQVNUfxCmrUZimMlFZtAfcRkO0PMTndxzEl+eu13S6FJKiCk64HjQ3HrceVxsqsf
+	x8mryrlT07HnJ7UJBto5kR7ToRam6P2fK6uUhFTouHc1EfWyN6Kfh+sZjFx2zbHyx0D0hdXfaV11h
+	IniSHd9RJVJyKL8zwfyOfwlxUPKanqQjXc9SPGEgt842GK22N5HxNpVYwm+3tkHX5CWxYrFWSC01x
+	UjmNeIqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pX37y-00Dn7G-D7; Tue, 28 Feb 2023 16:46:58 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1pX4HP-00Dvb3-1P; Tue, 28 Feb 2023 18:00:47 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pX37w-00Dn6b-Hx; Tue, 28 Feb 2023 16:46:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1677602805; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=bq2Q8ygL/SEUX6cgcpwKrWziBtCDM/1IyP1Bgqp4n/3yvzLpkGRt7eQBgYDMx0OHYx6oF829Rf7nUJTL+fgDj16Tej2RUqb7gcIqmL+AYtYF2sVOCOv8IDsqe9+mdEODYNHOSqbssLZ7rzec9nddA7bhNsViYCAHhTx6ivMPiYg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1677602805; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=YzP0t2qNfnd3V6PK1d7LQSBOy5pePAV5wJ9vr1fobF0=; 
-	b=lZIygUMLbMVTtXXx6MBZkWDnMik2/GkFQIURsEyey+wf7fPUujaeBrDdAjN9vIKzGV02VK1e27euViDv22GKRko5yHFDH7xJioBw9qQEFb9LQ+MZO2WAu/5ZiHDcRX3x/RYzMZ+EuAmqIs8BDgk49BRv06x8fgnFM3I/o1hiCtA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1677602805;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=YzP0t2qNfnd3V6PK1d7LQSBOy5pePAV5wJ9vr1fobF0=;
-	b=MS9/DjXzffLDauoiF3iu8V30lwh6+BRt3Nb1ESoJ8UABM5AQs2FrN0oPDNIpDag6
-	tAbI2EtXCNtY+5T00swlN5ZrYFr7nn3vlW3COsvzRbWfGw/C/kRkyLOK1P65A0rfMUl
-	IRLyIIqRcqW6yAwuC2vOiqXhWn+qOVJD1II6eeGs=
-Received: from [10.10.10.3] (212.68.60.226 [212.68.60.226]) by mx.zohomail.com
-	with SMTPS id 1677602802848981.7442252849089; Tue, 28 Feb 2023 08:46:42 -0800 (PST)
-Message-ID: <d7aea90f-d077-3a41-996c-804c95d72e24@arinc9.com>
-Date: Tue, 28 Feb 2023 19:46:36 +0300
+	id 1pX4HD-00DvXr-TG; Tue, 28 Feb 2023 18:00:37 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 4A8C261179;
+	Tue, 28 Feb 2023 18:00:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 53BD8C433D2;
+	Tue, 28 Feb 2023 18:00:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1677607230;
+	bh=g/zRMqEHWvrUdMovSA/zwPxEgtx1YbVsjFwL8peZugg=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=HZobxikkQG2ou9HWf9cwO80G/+gCBkcX18aLab76EEwpTtYw+lxF8IHqxBAC6+GXJ
+	 BlkOzb9P9w01cIPARw6UG+mydWBCXarm5pTkQ/RmNVbBI10GrzvoGeExZLBRKCSgeF
+	 I8s7vbJ7tshwQ8R5n9o9pz/Dbtic7IqxKrxQB+tV7jjiB4Idr3n6T8fDtTwoueM4Jj
+	 lM9v8Ed7TbLgf5FNexWIfvjADWwcPYMGqwCU4vpk7fc5QyS+VP2xqGw6Gy7od/kMY/
+	 Klpv/cAv4vLHt+IuQnw04T/aUYaxaMCCeIxFV4sFZvVOsWNjst+9TL9BqyEQMVNs7K
+	 TK4UF3I2GouTA==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Mark Brown <broonie@kernel.org>
+Cc: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20230223-asoc-mt8192-quick-fixes-v1-0-9a85f90368e1@kernel.org>
+References: <20230223-asoc-mt8192-quick-fixes-v1-0-9a85f90368e1@kernel.org>
+Subject: Re: [PATCH 0/4] ASoC: mt8192: Fixes from initial glance at
+ kselftest run
+Message-Id: <167760722797.68866.15387830398391668204.b4-ty@kernel.org>
+Date: Tue, 28 Feb 2023 18:00:27 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [RFC PATCH 07/16] dt-bindings: pinctrl: ralink: add new
- compatible strings
-To: Rob Herring <robh@kernel.org>
-References: <20230222183932.33267-1-arinc.unal@arinc9.com>
- <20230222183932.33267-8-arinc.unal@arinc9.com>
- <20230227173333.GA496999-robh@kernel.org>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20230227173333.GA496999-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13-dev-ada30
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230228_084656_701376_883B43D2 
-X-CRM114-Status: GOOD (  12.89  )
+X-CRM114-CacheID: sfid-20230228_100036_033876_8A5AB232 
+X-CRM114-Status: GOOD (  16.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,52 +73,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-gpio@vger.kernel.org, Daniel Santos <daniel.santos@pobox.com>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org, Sergio Paracuellos <sergio.paracuellos@gmail.com>, William Dean <williamsukatube@gmail.com>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Daniel Golle <daniel@makrotopia.org>, Matthias Brugger <matthias.bgg@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27/02/2023 20:33, Rob Herring wrote:
-> On Wed, Feb 22, 2023 at 09:39:23PM +0300, arinc9.unal@gmail.com wrote:
->> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>
->> Add the ralink,rt2880-pinmux compatible string. It had been removed from
->> the driver which broke the ABI.
->>
->> Add the mediatek compatible strings. Change the compatible string on the
->> examples with the mediatek compatible strings.
->>
->> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->> ---
->>   .../devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml | 7 +++++--
->>   .../devicetree/bindings/pinctrl/ralink,mt7621-pinctrl.yaml | 7 +++++--
->>   .../devicetree/bindings/pinctrl/ralink,rt2880-pinctrl.yaml | 7 +++++--
->>   .../devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml | 7 +++++--
->>   .../devicetree/bindings/pinctrl/ralink,rt3883-pinctrl.yaml | 7 +++++--
->>   5 files changed, 25 insertions(+), 10 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
->> index 1e63ea34146a..531b5f616c3d 100644
->> --- a/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
->> +++ b/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
->> @@ -17,7 +17,10 @@ description:
->>   
->>   properties:
->>     compatible:
->> -    const: ralink,mt7620-pinctrl
->> +    enum:
->> +      - mediatek,mt7620-pinctrl
->> +      - ralink,mt7620-pinctrl
+On Fri, 24 Feb 2023 14:03:54 +0000, Mark Brown wrote:
+> This is a collection of fixes I came up after glancing through an
+> initial test run with the Spherion Chromebook on KernelCI.  There are
+> more issues flagged, this is just what I fixed thus far - the volume
+> controls on the MT6359 have issues for example, and a lot of controls
+> aren't marked as Switches like they should be.
 > 
-> We don't update compatible strings based on acquistions nor marketing
-> whims. If you want to use 'mediatek' for new things, then fine.
+> 
+> [...]
 
-Understood. Only the SoCs with rtXXXX were rebranded, the mtXXXX SoCs 
-share the same architecture from Ralink, so they were incorrectly called 
-Ralink SoCs.
+Applied to
 
-I can remove the new strings from Ralink SoCs and add them only for 
-MediaTek SoCs. Or you could make an exception for this one, regarding 
-the situation. Whatever you think is best.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-Arınç
+Thanks!
+
+[1/4] ASoC: mt8192: Remove spammy log messages
+      commit: 5df1a5d28449f2b98ff84f69dea74b06f9b8e362
+[2/4] ASoC: mt8192: Fix event generation for controls
+      commit: b373076f609993d333dbbc3283b65320c7a41834
+[3/4] ASoC: mt8192: Report an error if when an invalid sidetone gain is written
+      commit: 05437a91173b8780692ac35313f98cac68be7c42
+[4/4] ASoC: mt8192: Fix range for sidetone positive gain
+      commit: ce40d93b062c0bdcd29218c12ab1dba544382dd8
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
