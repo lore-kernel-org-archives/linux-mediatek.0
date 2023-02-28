@@ -4,70 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73287C64EC7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Feb 2023 10:32:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23AD3C7EE31
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Feb 2023 10:48:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R+tG6JS0Kz0cbXbeKHjMGU0WeFesVUIEOdqPcndUf68=; b=0mcMsUvuFR4k2F2Q4sUqqMGzpM
-	JiKvG2/8MvzzkcXbg9luENODEG3ZgUVFEgbc3ugkehGtCOtTllQM/p9WFSrFvVtZn2hoD1n8gn5zz
-	iP01nJ/ZPw3J3JnSCT+RJ5UkYtWVFzd4nnQijqPjAp3NQwOz4PC8in0I8mtZbrELpAKoCuhEEw+7Y
-	Gc1sfBU7TaGedJ7J/c05SMCSNKg6E9seepj1rX3UDoKwH0uqmmfPzwvyic6K9QPpKfaz3CVXqijQR
-	0FVnZ3wy4RE8hC9Rs6aafJ29Td6hZJrxtX6DfyEw7zZZohD5ySLdHK837nBtLZAREarwldhUvniN3
-	08QnQNKQ==;
+	bh=AwzYgY//LGcWZQNi758UN/hidxcHlf+1mU/Su45QGhQ=; b=A4wkubnodbpcdZuQDBX5nAMKM9
+	aK/19lwaHrTNPdaLEW0wJ3Jj/Sw6OeFYIqcHsFdMcntyN2bD/r96wsUP75Cpc4sTz0yD7nyOImZ6B
+	b61YA9HN9ZZUTRjFllF1qdSTeYUps9ArYLyhWS7SuPf9KrWfB3jR/ioxVtxA89Cjkm87RdEoWMoum
+	p5D7BIaWtuggvIAZNb0Hbbd9WE2mwtLaXxSrrfedmTB2d8S0laUFhl34NtO2gS37V10PPE3PcvpBK
+	eEupSs5v/N71BsguvgCfhp7Fbu3oKP1oDvOmeCfa6iU8HHPDmTU3G1rfioqhdIsDwcd+EVZfJrvGF
+	XeQhXifw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWxHt-00CfQh-NA; Tue, 28 Feb 2023 10:32:49 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pWxWn-00Ck8W-I6; Tue, 28 Feb 2023 10:48:13 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWxCb-00CcCJ-6r; Tue, 28 Feb 2023 10:27:23 +0000
+	id 1pWxWR-00Cjud-Bk; Tue, 28 Feb 2023 10:47:52 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 03DE66602FDB;
-	Tue, 28 Feb 2023 10:27:18 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9E5BF6602FD6;
+	Tue, 28 Feb 2023 10:47:49 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1677580039;
-	bh=1JnVPVujLBT5atPy7IIvdnCv3UEvpv+n+JLXQmdBXc4=;
+	s=mail; t=1677581270;
+	bh=L6kGyfCrTlPJ9U3bVTbj8GIaJJMOf4x1aJLiGYToiq8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=XBtqrJ661TF65pMMYdFlcwffGxegFzbooParqFCFZ/PsBfC5GB/3luHURrV0BYvch
-	 WCUzqm8UyJbNHi0nzLej2N5SMiMMdBKWs2tkkPZwyZjadsTsXN9minzIpXJhksPZjI
-	 +ux46nPhjvajG96R8MeOmWfzjPAetD9idFqfaOV8E+17fgrO0Iy21mkoLIVcw++SDJ
-	 yHLrAum9cY2qA4NxshgkViXJOCqrA8UzJQq67gtrYEyqY8Wnl3ZXFHR6XVYVxEl1wf
-	 nyMaFifj5PlKcovAGTC7SYhuFyW5h3BBhiT4/GGTJAYscxIAyk9k2OM4qV8VWoHXZc
-	 minCGbH9D9V/A==
+	b=hru/Bhv6rkdi/pc5OZ/qgVOJYCvL/DkC6PZj7ceZTdEjgCyE6H6s7dHsRschIiVYX
+	 4MYHmN7rFlYH6xZbfkp2sWqUNiU3YUqf0aoJ5r1U7saLJSs2iGQXNQlWuPr6GHxLY7
+	 f7SUMmKncl5NMZVddOlcvGl94nl9Qd3z00SVIOIXOgItFeaRH8DZKWI7oYa9FtWM+X
+	 Y5+CNmrE2NwTMRfJsdJqpOfu0tsUJadp2ydRVl6hMymInhZxfCf1M/sqYhgiLmmWKM
+	 tL9Lj8gZ6EhBGEL3q6B/cv+a4JNQYPFqfDpPVpAJ++Jnk57knUCMbzhr1XRVrrfcEJ
+	 Sn9zOvy19vnbQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: airlied@gmail.com
-Cc: daniel@ffwll.ch,
-	robh+dt@kernel.org,
+To: matthias.bgg@gmail.com
+Cc: robh+dt@kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
-	steven.price@arm.com,
-	alyssa.rosenzweig@collabora.com,
-	matthias.bgg@gmail.com,
-	robh@kernel.org,
-	dri-devel@lists.freedesktop.org,
+	angelogioacchino.delregno@collabora.com,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	wenst@chromium.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v4 12/12] drm/panfrost: Add support for Mali on the MT8186 SoC
-Date: Tue, 28 Feb 2023 11:27:04 +0100
-Message-Id: <20230228102704.708150-12-angelogioacchino.delregno@collabora.com>
+	wenst@chromium.org
+Subject: [PATCH v3 01/18] arm64: dts: mediatek: mt8183-kukui: Couple VGPU and VSRAM_GPU regulators
+Date: Tue, 28 Feb 2023 11:47:24 +0100
+Message-Id: <20230228104741.717819-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230228102704.708150-1-angelogioacchino.delregno@collabora.com>
-References: <20230228102704.708150-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230228104741.717819-1-angelogioacchino.delregno@collabora.com>
+References: <20230228104741.717819-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230228_022721_415657_DA78FBCB 
-X-CRM114-Status: UNSURE (   9.50  )
+X-CRM114-CacheID: sfid-20230228_024751_546997_22F5986D 
+X-CRM114-Status: UNSURE (   9.37  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,43 +77,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MediaTek MT8186 has a Mali-G52 MC2 2EE (Bifrost): add a new compatible
-and platform data using the same supplies list as "mt8183_b" (only one
-regulator), and a new pm_domains list with only two power domains.
+Add coupling for these regulators, as they have a strict voltage output
+relation to satisfy in order to ensure GPU stable operation.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Steven Price <steven.price@arm.com>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/gpu/drm/panfrost/panfrost_drv.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
-index 14cdeaeeb5c4..e4053bf84c62 100644
---- a/drivers/gpu/drm/panfrost/panfrost_drv.c
-+++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-@@ -679,6 +679,14 @@ static const struct panfrost_compatible mediatek_mt8183_b_data = {
- 	.pm_domain_names = mediatek_mt8183_pm_domains,
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index fbe14b13051a..de9778c85b94 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -294,7 +294,6 @@ dsi_out: endpoint {
+ 
+ &gpu {
+ 	mali-supply = <&mt6358_vgpu_reg>;
+-	sram-supply = <&mt6358_vsram_gpu_reg>;
  };
  
-+static const char * const mediatek_mt8186_pm_domains[] = { "core0", "core1" };
-+static const struct panfrost_compatible mediatek_mt8186_data = {
-+	.num_supplies = ARRAY_SIZE(mediatek_mt8183_b_supplies) - 1,
-+	.supply_names = mediatek_mt8183_b_supplies,
-+	.num_pm_domains = ARRAY_SIZE(mediatek_mt8186_pm_domains),
-+	.pm_domain_names = mediatek_mt8186_pm_domains,
+ &i2c0 {
+@@ -401,6 +400,11 @@ &mt6358codec {
+ 	Avdd-supply = <&mt6358_vaud28_reg>;
+ };
+ 
++&mt6358_vgpu_reg {
++	regulator-coupled-with = <&mt6358_vsram_gpu_reg>;
++	regulator-coupled-max-spread = <100000>;
 +};
 +
- static const char * const mediatek_mt8192_supplies[] = { "mali", NULL };
- static const char * const mediatek_mt8192_pm_domains[] = { "core0", "core1", "core2",
- 							   "core3", "core4" };
-@@ -708,6 +716,7 @@ static const struct of_device_id dt_match[] = {
- 	{ .compatible = "arm,mali-valhall-jm", .data = &default_data, },
- 	{ .compatible = "mediatek,mt8183-mali", .data = &mediatek_mt8183_data },
- 	{ .compatible = "mediatek,mt8183b-mali", .data = &mediatek_mt8183_b_data },
-+	{ .compatible = "mediatek,mt8186-mali", .data = &mediatek_mt8186_data },
- 	{ .compatible = "mediatek,mt8192-mali", .data = &mediatek_mt8192_data },
- 	{}
+ &mt6358_vsim1_reg {
+ 	regulator-min-microvolt = <2700000>;
+ 	regulator-max-microvolt = <2700000>;
+@@ -411,6 +415,11 @@ &mt6358_vsim2_reg {
+ 	regulator-max-microvolt = <2700000>;
  };
+ 
++&mt6358_vsram_gpu_reg {
++	regulator-coupled-with = <&mt6358_vgpu_reg>;
++	regulator-coupled-max-spread = <100000>;
++};
++
+ &pio {
+ 	aud_pins_default: audiopins {
+ 		pins_bus {
 -- 
 2.39.2
 
