@@ -4,78 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87E64C64ED8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Feb 2023 22:48:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD345C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Feb 2023 02:58:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lG6vB3dP9H3e//Mg7ICB0IjrePifa0YDIvFrmLOhqlQ=; b=SEIgZtl8L6usre7wPzZ+xjzwwb
-	pekaKRuTAMMJD7NLxGsgfLzeG9CgTVvjN/+h2jCXD8obpRMedG3541MUnWWIJqvcRoADoPxfY1TPA
-	PItWNjYYZfMaZ7QX1Jut8eXLdvRKWZtHU/73a0ufPkcLIb9FwE/iS5lJbuGO80F85Ycv1UfZI0XoO
-	uTY/iKiPsxXfWep2r0/DpZCqlYsK5pcltqhmuLi+RsAaDl8fvUW0CSEN6FlTwB5LvaBW8lM18XE92
-	IDY1eJ/s4RKk9RsY5WHFw3QowQtooYoJQkISt/O9MXn/P/iq0T1fxdqAflYfKUNiPiNqAGq5S7h6N
-	GA39TlXQ==;
+	bh=THfjmtf+moKot3JcHrO/bMwOY4UUnP9g05A05WQE4/Q=; b=iN1KeMk+ResrWdkYdsPQNurk7i
+	j7IU9poNHHlU67WFeRpqOnLA2gACpilrZyZ7ntYsyrpSIgmBO0WxGdbxWtNmAfnLLVpwgVJt+4PTR
+	wqAT6Gj+PrwOXCBthonWuQ7WLTVSjfwNElAR99NE58BBjp+yEXALKcouaZKM7SHpnAZIh/ork3t2M
+	WZA6MYKpiiCsFMNlh7zR31DikowP0lfXbStENHS+TkYQWVWuSMTC+PDXxqUMZx+xoNKzffyRz03gV
+	YlThjQwF8BvcmOW+nTdlklg/nUA0v37/I8tIEBJnLk9fHM2Gz+W7qozQVwqkzQ8Csbg6CwHlQpE+Q
+	hDyb1hiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWmHq-00BWNX-3J; Mon, 27 Feb 2023 22:48:02 +0000
-Received: from mail-pl1-f176.google.com ([209.85.214.176])
+	id 1pWqBb-00Bs1A-Ir; Tue, 28 Feb 2023 02:57:51 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWmHf-00BWKl-Vh; Mon, 27 Feb 2023 22:47:53 +0000
-Received: by mail-pl1-f176.google.com with SMTP id c1so8479857plg.4;
-        Mon, 27 Feb 2023 14:47:51 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=lG6vB3dP9H3e//Mg7ICB0IjrePifa0YDIvFrmLOhqlQ=;
-        b=p6W01FTH5DKcq3Wg1Ha28GKLRPECTAdKB21fnMlAp/UhlhNxoKsH5UqEDPFgLR6bqQ
-         riVkXw2a20L13TtKeH6+aPtBOAFJyQ954whhPRE8nLtFU2eLEWl/QauIzQ2elVn/7fIz
-         Pkxd1B58mt+d5P9oS9JIYWoj1i45q3MYFHezKDKKgA79wt5zZg3AQ/C0L407XX/qyXgV
-         n8I3n2wbNBtJzxAp2UBzFPJmri5w7apUkqy0xbvjmxurxgAO4svcEmHpAcChur4T9UlA
-         VFt6M5wlh4DnrwGJMiMqxLm7Qd0XuV4gCA8pDK+R/OTs9BwVdMu6MnT1Lm4BMxhjJezf
-         vsxw==
-X-Gm-Message-State: AO0yUKWSBy3Ul7sLWOmxuWfY+DA/ODqeKT8Bvcm7j0hT922Rj/6aw6gB
-	DaXB3xlYA3o5Bbhv7Kk/tZc=
-X-Google-Smtp-Source: AK7set9vcQ/F8WhIG+6XsqcHSIU5HVBhAJ1lVW44QSnhAm+ORXEIjQ6fFA1tdKOn1Sl1SStdekryLg==
-X-Received: by 2002:a17:902:db04:b0:19d:90f:6c50 with SMTP id m4-20020a170902db0400b0019d090f6c50mr583309plx.58.1677538070772;
-        Mon, 27 Feb 2023 14:47:50 -0800 (PST)
-Received: from ?IPV6:2620:15c:211:201:6cf3:f584:1162:e48a? ([2620:15c:211:201:6cf3:f584:1162:e48a])
-        by smtp.gmail.com with ESMTPSA id 3-20020a170902c10300b00186b69157ecsm5088744pli.202.2023.02.27.14.47.47
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 27 Feb 2023 14:47:49 -0800 (PST)
-Message-ID: <99993a45-acc6-176f-d846-e278f173171c@acm.org>
-Date: Mon, 27 Feb 2023 14:47:46 -0800
+	id 1pWqBP-00Brzs-7Y; Tue, 28 Feb 2023 02:57:40 +0000
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 31S0s3rC013888;
+	Tue, 28 Feb 2023 02:57:31 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=THfjmtf+moKot3JcHrO/bMwOY4UUnP9g05A05WQE4/Q=;
+ b=TQ0WnnvAL9wnLZYDsg++r0SdjDwxVCIaHhYzhJ/5gdnWsr594LX0xFfoSlhZbW8io3YA
+ P9+pkNZLQy1O6dVwiPyzsO+Q3ODYsL705rKIMYMEnHeKf06oI57tLJYvteGVzoSCrBRE
+ 5U9Jl8uFQj7+8XXZkx/8hOa1iAcYsQdUhlGK+VpxOEE1XIhp1T1gVTAtAJQjMO8JrWUV
+ z3P0XCYJg3lnJsMUZUglv8ntcV7iG+6TJA92mPY5l0fc6IIKsUsey6lKM+7WciGZP9eW
+ QoITB8gemOoFCIQs8LigoV6B6DFfZKalZrTM5+2GRbCiqZv3hfkKrfq1oR0JoiUdO7W7 jg== 
+Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3nyajaxuj6-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 28 Feb 2023 02:57:31 +0000
+Received: from nasanex01a.na.qualcomm.com ([10.52.223.231])
+	by NASANPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 31S2vUW4015949
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 28 Feb 2023 02:57:30 GMT
+Received: from [192.168.143.77] (10.80.80.8) by nasanex01a.na.qualcomm.com
+ (10.52.223.231) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.41; Mon, 27 Feb
+ 2023 18:57:29 -0800
+Message-ID: <76f74b86-8ff1-2346-4f5e-0048543bd8b0@quicinc.com>
+Date: Mon, 27 Feb 2023 18:57:17 -0800
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
 Subject: Re: [PATCH v2 4/7] scsi: ufs: core: Add hwq print for debug
 Content-Language: en-US
-To: Ziqi Chen <quic_ziqichen@quicinc.com>, Po-Wen Kao
- <powen.kao@mediatek.com>, linux-scsi@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Alim Akhtar <alim.akhtar@samsung.com>,
- Avri Altman <avri.altman@wdc.com>, "James E.J. Bottomley"
- <jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: wsd_upstream@mediatek.com, peter.wang@mediatek.com,
- stanley.chu@mediatek.com, alice.chao@mediatek.com, naomi.chu@mediatek.com,
- chun-hung.wu@mediatek.com, cc.chou@mediatek.com, eddie.huang@mediatek.com,
- mason.zhang@mediatek.com, chaotian.jing@mediatek.com, jiajie.hao@mediatek.com
+To: Ziqi Chen <quic_ziqichen@quicinc.com>,
+        =?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?= <Powen.Kao@mediatek.com>,
+        "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+        "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+        "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+        "avri.altman@wdc.com"
+	<avri.altman@wdc.com>,
+        "bvanassche@acm.org" <bvanassche@acm.org>,
+        "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+        "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+        "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+        "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>,
+        "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>
+CC: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+        =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
+        =?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
+        =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
+        =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
+        wsd_upstream <wsd_upstream@mediatek.com>,
+        =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
+        =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
+	<Chaotian.Jing@mediatek.com>,
+        =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
+	<Naomi.Chu@mediatek.com>,
+        =?UTF-8?B?U3RhbmxleSBDaHUgKOacseWOn+mZnik=?=
+	<stanley.chu@mediatek.com>,
+        =?UTF-8?B?TWFzb24gWmhhbmcgKOeroOi+iSk=?=
+	<Mason.Zhang@mediatek.com>,
+        "quic_cang@quicinc.com" <quic_cang@quicinc.com>,
+        "quic_asutoshd@quicinc.com" <quic_asutoshd@quicinc.com>
 References: <20230222030427.957-1-powen.kao@mediatek.com>
  <20230222030427.957-5-powen.kao@mediatek.com>
  <1b9c2bc9-a349-062a-597c-336804c05394@quicinc.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <1b9c2bc9-a349-062a-597c-336804c05394@quicinc.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+ <74bedcff32df0c93c14b004814017f3344247528.camel@mediatek.com>
+ <0c17dd26-b1aa-54b0-6dc4-561cd996cead@quicinc.com>
+From: "Bao D. Nguyen" <quic_nguyenb@quicinc.com>
+In-Reply-To: <0c17dd26-b1aa-54b0-6dc4-561cd996cead@quicinc.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: CYcUx0XkS3EEJ4PSGTkhuMo1tvPEzTXz
+X-Proofpoint-ORIG-GUID: CYcUx0XkS3EEJ4PSGTkhuMo1tvPEzTXz
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.219,Aquarius:18.0.930,Hydra:6.0.562,FMLib:17.11.170.22
+ definitions=2023-02-27_19,2023-02-27_01,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0 adultscore=0
+ bulkscore=0 clxscore=1011 phishscore=0 mlxscore=0 mlxlogscore=999
+ priorityscore=1501 impostorscore=0 suspectscore=0 spamscore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2212070000 definitions=main-2302280017
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230227_144752_084153_FA24AA1A 
-X-CRM114-Status: UNSURE (   8.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230227_185739_305274_DB0813D3 
+X-CRM114-Status: GOOD (  20.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,14 +128,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/23/23 02:14, Ziqi Chen wrote:
-> Calling registers dump function in ufshcd_print_trs() is not reasonable, 
-> eg.. for each aborted request, it would print out all hwq registers, 
-> it's not make sense.
-> 
-> I think we should move it out of ufshcd_print_trs().
+On 2/26/2023 7:14 PM, Ziqi Chen wrote:
+> Hi Powen,
+>
+> The Bao. D . Nguyen (quic_nguyenb@quicinc.com) from QCOM already made 
+> patch to support MCQ abort.
+>
+> ++ Bao here to be aware of it in case your error handing patch 
+> conflict with his abort handling patch.
+>
+>
+> Best Regards,
+>
+> Ziqi
+>
+>
+> On 2/23/2023 10:13 PM, Powen Kao (高伯文) wrote:
+>> Hi Ziqi,
+>>
+>> Thanks for ur comments.
+>>
+>> This piece of code successfully dump relevent registers on our
+>> platform. As you know, mcq error handling flow is not ready yet so the
+>> insertion point might not seems to be reasonable.
+>>
+>> Maybe drop this patch for now, I will send it later with error handling
+>> patches.
+>>
+>>
+>> On Thu, 2023-02-23 at 18:14 +0800, Ziqi Chen wrote:
+>>> Hi Po-Wen,
+>>>
+>>> On 2/22/2023 11:04 AM, Po-Wen Kao wrote:
+>>>> +void ufshcd_mcq_print_hwqs(struct ufs_hba *hba, unsigned long
+>>>> bitmap)
+>>>> +{
+>>>> +    int id, i;
+>>>> +    char prefix[15];
+>>>> +
+>>>> +    if (!is_mcq_enabled(hba))
+>>>> +        return;
+>>>> +
+>>>> +    for_each_set_bit(id, &bitmap, hba->nr_hw_queues) {
+>>>> +        snprintf(prefix, sizeof(prefix), "q%d SQCFG: ", id);
+>>>> +        ufshcd_hex_dump(prefix,
+>>>> +            hba->mcq_base + MCQ_QCFG_SIZE * id,
+>>>> MCQ_QCFG_SQ_SIZE);
+>>> Is your purpose dump per hardware queue registers here?  If yes, why
+>>> don't use ufsmcq_readl() to save to a buffer and then use
+>>> ufshcd_hex_dump()
+>>>
+>>> to dump ? Are you sure ufshcd_hex_dump() can dump register directly?
+>>>
+>>>> +
+>>>> +        snprintf(prefix, sizeof(prefix), "q%d CQCFG: ", id);
+>>>> +        ufshcd_hex_dump(prefix,
+>>>> +            hba->mcq_base + MCQ_QCFG_SIZE * id +
+>>>> MCQ_QCFG_SQ_SIZE, MCQ_QCFG_CQ_SIZE);
+>>> Same to above comment.
+>>>> +
+>>>> +        for (i = 0; i < OPR_MAX ; i++) {
+>>>> +            snprintf(prefix, sizeof(prefix), "q%d OPR%d: ",
+>>>> id, i);
+>>>> +            ufshcd_hex_dump(prefix, mcq_opr_base(hba, i,
+>>>> id), mcq_opr_size[i]);
+>>> Same.
+>>>> +        }
+>>>> +    }
+>>>> +}
+>>>> +
+>>>>
+>>>>    @@ -574,7 +569,16 @@ void ufshcd_print_trs(struct ufs_hba *hba,
+>>>> unsigned long bitmap, bool pr_prdt)
+>>>>            if (pr_prdt)
+>>>>                ufshcd_hex_dump("UPIU PRDT: ", lrbp-
+>>>>> ucd_prdt_ptr,
+>>>>                    ufshcd_sg_entry_size(hba) *
+>>>> prdt_length);
+>>>> +
+>>>> +        if (is_mcq_enabled(hba)) {
+>>>> +            cmd = lrbp->cmd;
+>>>> +            if (!cmd)
+>>>> +                return;
+>>>> +            hwq = ufshcd_mcq_req_to_hwq(hba,
+>>>> scsi_cmd_to_rq(cmd));
+>>>> +            ufshcd_mcq_print_hwqs(hba, 1 << hwq->id);
+>>> Calling registers dump function in ufshcd_print_trs() is not
+>>> reasonable,
+>>> eg.. for each aborted request, it would print out all hwq registers,
+>>> it's not make sense.
+>>>
+>>> I think we should move it out of ufshcd_print_trs().
+>>>
+>>>> +        }
+>>>>        }
+>>>> +
+>>>>    }
+>>>
+>>> Best Regards,
+>>>
+>>> Ziqi
+>>>
+Hi Powen,
 
-+1
+I am going to push the mcq abort handling and mcq error handling code 
+upstream for review in a couple days. Would that work for you?
 
+Regards,
+Bao
 
 
