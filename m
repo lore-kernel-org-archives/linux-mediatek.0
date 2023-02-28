@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22900C64ED6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Feb 2023 10:27:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A692EC7EE33
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Feb 2023 10:27:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yrLSUHyTXgl0c3Uc7tDtNQgDmVUflHWn7qjpcaeDWY8=; b=HCRPZvmB3c/M5+5/UJPSUh0Bcy
-	SpCWsfqj+zvovviPOshYHzytkF9h0KrPt9VgjeP7w01shp/V8JDC/uEI7zK/dMPoFFzx9LDlyuLsq
-	KKaRiTRaIqXw9P7o3MxOzuee6w1SWUKcAoZN5mSbRIPfAZ9miHt/1RD2bxlIzKszujukneo8Iuiyf
-	aKvqjkXEjnigJ1E9Gfcga1/a2dI0oJ5ZJJ3dnQr/H5Y0Bu2nJNiSIJ4rCWTKWZA6ht/FKoXY96gNJ
-	RCnfV+W4xM77cG6PXFhPlmHepJArKDs9UMHAJUUKqf4wY0r5+JOwJKQ8X20iwgJaP3lUSskP0tLvv
-	FhwTveeg==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AoTZEtmrkUQkLMvWbseF56KVXsJKgmVJ5cikWWvBTp4=; b=Bs4ZosE13gfVP2GZ7ObgzfRXno
+	PRGi+pU77Dxq4T44tkFNRznxX7taXvbZ22cd0hx28BJQzwDlEwS1//RjdJbL3Lk1bWrNhKUsDWfaE
+	fCU0W76hhHYvakXXcujD5v9TwpacG3F6c5LZQjynqdMVCkL2cs3rPaXvM8xC2v2iJGhng0xeGZsAe
+	jCA5eQ4DUdAHjXeifJPPwRcPHH7UvB2u50M+ceaKIqNBeOiOMf0yOYgYYpG4c9Jw6LC3Gl/cEETIX
+	kdHIounl9hS5DY/yCzkYvoObQTNFNyg+T/h+HT+4d19tFdoDVpJIK0IT+S1tI7IhNdiVbavUP4Ypr
+	ZsGuaD0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWxC4-00Cbzv-KO; Tue, 28 Feb 2023 10:26:48 +0000
+	id 1pWxCn-00CcLM-5m; Tue, 28 Feb 2023 10:27:33 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWxBu-00Cbvq-5s; Tue, 28 Feb 2023 10:26:39 +0000
+	id 1pWxCS-00Cc5O-61; Tue, 28 Feb 2023 10:27:13 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E508D6602F90;
-	Tue, 28 Feb 2023 10:26:32 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 19EDA6602FD8;
+	Tue, 28 Feb 2023 10:27:10 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1677579993;
-	bh=VFa+f+8DW2e7D6mKpQUiXknzxxQ8s0Fg736RhJg9+aQ=;
-	h=From:To:Cc:Subject:Date:From;
-	b=BVlPG6TwFWfmWmTOzq+4wKLJpdKMTDcMH0Ykv43T1b18Qe+wluCePVdBBrXC6Hkbo
-	 pKhLkWY3No2PyYisZN6VmkvmMzEARzivyanq2TlND6V1DeTiWx7nhmJpMQ7z0YudGd
-	 XX54jwrGdvXTvdKTmWdCZQpPexKTo25vXwTCxUnTCF4jZeNHYHqP9JtUwDGCO0nc5b
-	 NlPFJbgfWAF9ESMNgHiN2wCmg2T6NiIQ30RlFzjtiGI8VSgX4O0L20Wv/lcgLstnHd
-	 JNl/rmRPgDRFZQfd+XYznZljh3Y/z1IXz0uoD2T2Ozf3iIABkcmc7PlSey5otRRNJ8
-	 OUXUvnB67Jb6Q==
+	s=mail; t=1677580030;
+	bh=07ttYEO0iBLHOrhXOFTPyKzhESTahMlFIiXlO4bGx5g=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=HwanA9e8mQdP3F3nehvW+iHlvEKe5WR1w7Ik64jb67REBrVYaOGHmeCnb/cBWmP+3
+	 O0eqLn0o54Vtl2zQIJvaoTCJkmxc1IJTDGM44j2cpFV0SQ80Hb7sqzgFXHNuDSvCUF
+	 6A8nwA2xhX+22Q2aFA2Ckbg3gdo8bsL/CuDxdXJLaB2H0nFXGDQQ5phS42jz2Le6cq
+	 UAniRBIPAO0lVda2L67lVGR2ut/B/j/oi7s1bhuBLvCOdJSpEPdmlRYXgYTTHSDlET
+	 kU9+dLtg0YnJiLIKrnvEmr2nlQ9+enUFdK7QH50b1vHb5+hTU5C3fCAmOmPlczawXt
+	 yS9fsVl5VaL9Q==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: airlied@gmail.com
 Cc: daniel@ffwll.ch,
@@ -57,15 +57,18 @@ Cc: daniel@ffwll.ch,
 	linux-mediatek@lists.infradead.org,
 	wenst@chromium.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v4 00/12] Panfrost: Improve and add MediaTek SoCs support
-Date: Tue, 28 Feb 2023 11:25:58 +0100
-Message-Id: <20230228102610.707605-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v4 02/12] dt-bindings: gpu: mali-bifrost: Set power-domains maxItems to 5
+Date: Tue, 28 Feb 2023 11:26:54 +0100
+Message-Id: <20230228102704.708150-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230228102704.708150-1-angelogioacchino.delregno@collabora.com>
+References: <20230228102704.708150-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230228_022638_376566_1DA761B9 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20230228_022712_373713_0A06E2B6 
+X-CRM114-Status: UNSURE (   8.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,60 +83,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v4:
- - Refactored power-domains and power-domain-names exclusions as
-   suggested by Krzysztof
- - Small changes in MT8192 bindings addition
+In preparation for adding (and fixing) power-domain-names and MediaTek
+MT8192 bindings, allow up to five items for power-domains.
 
-Changes in v3:
- - Changed MT8186 bindings to declare only two power domains
- - Added a commit introducing MT8186 specific platform data to
-   panfrost_drv
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Changes in v2:
- - Add power-domain-names commit from Chen-Yu to the series
- - Kept sram-supply in base schema, overridden for non-MediaTek
- - Added Reviewed-by tags from Steven Price to the driver commits
-   (as released in reply to v1's cover letter - thanks!)
-
-This series adds support for new MediaTek SoCs (MT8186/MT8192/MT8195)
-and improves MT8183 support: since the mtk-regulator-coupler driver
-was picked, it is now useless for Panfrost to look for, and manage,
-two regulators (GPU Vcore and GPU SRAM) on MediaTek;
-
-The aforementioned driver will take care of keeping the voltage
-relation (/constraints) of the two regulators on its own when a
-voltage change request is sent to the Vcore, solving the old time
-issue with not working DVFS on Panfrost+MediaTek (due to devfreq
-supporting only single regulator).
-
-In the specific case of MT8183, in order to not break the ABI, it
-was necessary to add a new compatible for enabling DVFS.
-
-Alyssa Rosenzweig (3):
-  drm/panfrost: Increase MAX_PM_DOMAINS to 5
-  drm/panfrost: Add the MT8192 GPU ID
-  drm/panfrost: Add mediatek,mt8192-mali compatible
-
-AngeloGioacchino Del Regno (9):
-  dt-bindings: gpu: mali-bifrost: Split out MediaTek power-domains
-    variation
-  dt-bindings: gpu: mali-bifrost: Set power-domains maxItems to 5
-  dt-bindings: gpu: mali-bifrost: Fix power-domain-names validation
-  dt-bindings: gpu: mali-bifrost: Add sub-schema for MT8192's power
-    domains
-  dt-bindings: gpu: mali-bifrost: Add new MT8183 compatible
-  dt-bindings: gpu: mali-bifrost: Add support for MediaTek MT8186
-  dt-bindings: gpu: mali-bifrost: Add compatible for MT8195 SoC
-  drm/panfrost: Add new compatible for Mali on the MT8183 SoC
-  drm/panfrost: Add support for Mali on the MT8186 SoC
-
- .../bindings/gpu/arm,mali-bifrost.yaml        | 80 ++++++++++++++++++-
- drivers/gpu/drm/panfrost/panfrost_device.h    |  2 +-
- drivers/gpu/drm/panfrost/panfrost_drv.c       | 37 +++++++++
- drivers/gpu/drm/panfrost/panfrost_gpu.c       |  8 ++
- 4 files changed, 123 insertions(+), 4 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+index 7e110751353e..5b7f1c9d2b30 100644
+--- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
++++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+@@ -63,7 +63,7 @@ properties:
+ 
+   power-domains:
+     minItems: 1
+-    maxItems: 3
++    maxItems: 5
+ 
+   resets:
+     minItems: 1
+@@ -157,6 +157,7 @@ allOf:
+       properties:
+         power-domains:
+           minItems: 3
++          maxItems: 3
+         power-domain-names:
+           items:
+             - const: core0
 -- 
 2.39.2
 
