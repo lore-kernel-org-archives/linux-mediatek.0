@@ -4,64 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B46FC64EC7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Feb 2023 18:01:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEC81C7EE30
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Feb 2023 19:29:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pm/LmxXkFvMjay3OZYbmXF5JhHjO4R2wyQbwilZdJNs=; b=IOJ6pZzU5eZ3VtKDoOzyPRGS33
-	aEakZ4VnBUlUUOnPhdDDM2gh3wkIsW6DkqEFEL65KQUDK5FbTqaFK1GK95yDvwsbIe23E5HQSX9oz
-	zMGOYeHHTviRGeVbgSSuik1X/BPolMf5dBqBIcOks1Ny7GojNb0/Uxe3cOscKmWlTFwz3J+TOn8md
-	/631tZBBWY9Hp4+/IYyJxL11E0EfT8Ql/dj/jSBnX1ohg1N8DNkCuvlDmNdMKnQ30+qaUfIqtKAJn
-	l6qCR3sSevoSpUUSCV89XzC2DkNuZNlov5k2gwfSUwg+VwT85Fuq/DeFovg+sMTGeCBaERbJNbTQg
-	HM9rrvwg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Subject:Cc:To:From:Message-ID:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UflYxWroEtmK39RAVwEkBjNlTv8uQehwxdDrnHocUV4=; b=zaVcpzhX8zKwsfGPdoZINRrVvv
+	0KrvH6V+HSPBQEDQKolbvtbgkd47j/ukogBv9oFkKbTd9AF2Gv1xoxaTt4lqsvD9MKL80KtRkI3GS
+	nwEM1N1EO7khM+waEXiW2wuBYKxLbVCgcRIbPKga3iPQq9hUSHkTAkZ1HCnaW/4wE0gkA1Hu6Ypf8
+	hPlCno+iKmJJNMscqm+o7P5Ar3Sic9MTAZppE5LtT2eDFnzcAVu/+nfk+q/LN4UufzDNckVHy1M6/
+	9VOl/Ut1QRcNN88skxhq1xMOZH/Wc/gxISoyIzwLs1t+GIesqAg9mYOgylcAY9GDX/F4HmwyLO4q/
+	WX295XrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pX4Hi-00Dvg2-OY; Tue, 28 Feb 2023 18:01:06 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pX5fU-00E5y5-Et; Tue, 28 Feb 2023 19:29:44 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pX4HG-00DvYe-H6; Tue, 28 Feb 2023 18:00:40 +0000
+	id 1pX5fJ-00E5vP-A3; Tue, 28 Feb 2023 19:29:34 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 2F1B1B80E9B;
-	Tue, 28 Feb 2023 18:00:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C570AC4339C;
-	Tue, 28 Feb 2023 18:00:33 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id E3D11B80EBB;
+	Tue, 28 Feb 2023 19:29:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 31534C433D2;
+	Tue, 28 Feb 2023 19:29:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1677607235;
-	bh=OEe2wAjAN5Wk3+/Gr8WAFlMWCXBu8whw25LrAQEArjE=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=fUlCaCrme1FbHiY+4s3OeDrWTDvt7fHBRl0xaqaILYRrDLdhpn62iLCwpX0Oh9206
-	 Ct1GeeXawus4QVZYYiHmMMdLF+xK4pmRH+zVFh9K+F7kuZ+Ap1W+evafNlck9QXwsp
-	 YlTHeccnaa96QFRp4Id+YULbn7dTGg2WMH+91yHb7oYCmnNlf72rkOlBIEjfF0frvU
-	 b5Xwte7IR9Cn/kMnvv3Tggtj0cXiSYKSe2Uh308K8VmCMrhiRSJegdg+nPm6tjaXsQ
-	 6QK0CexD+vrAVnKmX9MHf2HnkbIMNtLmJkCrecSFo00kMscjEiMBpTSrr5Dqi/PoEr
-	 dbDoSeqUwRffw==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Mark Brown <broonie@kernel.org>
-Cc: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
- alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20230224-asoc-mt8183-quick-fixes-v1-0-041f29419ed5@kernel.org>
-References: <20230224-asoc-mt8183-quick-fixes-v1-0-041f29419ed5@kernel.org>
-Subject: Re: [PATCH 0/2] ASoC: mt8183: Fixes from an initial glance at a
- kselftest run
-Message-Id: <167760723351.68866.5282074700831903370.b4-ty@kernel.org>
-Date: Tue, 28 Feb 2023 18:00:33 +0000
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.13-dev-ada30
+	s=k20201202; t=1677612570;
+	bh=0crKvCVlXbQHhK0hVWeeHPbKSkNSrZfsAg93hhclvLM=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=UNZCZ9i3h0qhD6hHIVtloCYpkml4NRcDwkYhv9GrwZhRoMVsjYVzI0cArMQfbQZN+
+	 LGFYbMx//Vw8HzeO6pCa2sBQ7dvrE4OZXbjWLikHI/na99+mwGxICloB0BrRpaPLc6
+	 SJCN2i2Yp0CkGa+DfifrRT0TpGXqeYwUZdT/XSi5LiOFxipFLqnKoXQ3iBVI9tKSOP
+	 +ZHA6zHA8GPGlTtHOeWsrSqGchf0eL6NoT0smo67O6Si4L/jUbyIPlzYvac4CJlal5
+	 3wVvuVfPOYy5jorgt6+nRECC6NKpdkZY/cj/RWy5u9nMWojGXEf1kigzCt727/LZ07
+	 DrYjbjQzW024w==
+Received: from [47.176.216.2] (helo=wait-a-minute.misterjones.org)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <maz@kernel.org>)
+	id 1pX5fD-00Dv1i-Eb;
+	Tue, 28 Feb 2023 19:29:27 +0000
+Date: Tue, 28 Feb 2023 19:29:20 +0000
+Message-ID: <87r0u9h9m7.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Randy Dunlap <rdunlap@infradead.org>
+Cc: Arnd Bergmann <arnd@arndb.de>,
+	linux-kernel@vger.kernel.org,
+	MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Chanwoo Choi
+ <cw00.choi@samsung.com>,
+	Donggeun Kim <dg77.kim@samsung.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Peter Rosin <peda@axentia.se>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Geert Uytterhoeven <geert@linux-m68k.org>,
+	Rob Herring <robh@kernel.org>,
+	Eddie Huang <eddie.huang@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Alessandro Zummo <a.zummo@towertech.it>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	linux-rtc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 0/3] IRQ_DOMAIN: remove all "depends on", use only "select"
+In-Reply-To: <6bb7bca5-e663-60c4-d574-9a4856cdb802@infradead.org>
+References: <20230213041535.12083-1-rdunlap@infradead.org>
+	<b8fb48b9-349d-4723-9b35-6471cb65b6b5@app.fastmail.com>
+	<8e6977b8-d256-4e51-82b7-e36d6ca259dc@infradead.org>
+	<86y1p0xbqd.wl-maz@kernel.org>
+	<6bb7bca5-e663-60c4-d574-9a4856cdb802@infradead.org>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=US-ASCII
+X-SA-Exim-Connect-IP: 47.176.216.2
+X-SA-Exim-Rcpt-To: rdunlap@infradead.org, arnd@arndb.de, linux-kernel@vger.kernel.org, myungjoo.ham@samsung.com, cw00.choi@samsung.com, dg77.kim@samsung.com, p.zabel@pengutronix.de, peda@axentia.se, gregkh@linuxfoundation.org, geert@linux-m68k.org, robh@kernel.org, eddie.huang@mediatek.com, sean.wang@mediatek.com, matthias.bgg@gmail.com, a.zummo@towertech.it, alexandre.belloni@bootlin.com, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230228_100038_743295_6A1F9DCF 
-X-CRM114-Status: GOOD (  14.68  )
+X-CRM114-CacheID: sfid-20230228_112933_655921_98AAC924 
+X-CRM114-Status: GOOD (  41.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,42 +103,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 26 Feb 2023 12:49:55 +0000, Mark Brown wrote:
-> This is a collection of fixes I came up after glancing through an
-> initial test run with the snappily named Kukui Jacuzzi SKU16 Chromebook
-> on KernelCI.  There are more issues flagged, this is just what I fixed
-> thus far.
+On Thu, 23 Feb 2023 18:37:01 +0000,
+Randy Dunlap <rdunlap@infradead.org> wrote:
 > 
+> Hi Marc,
 > 
+> On 2/14/23 11:56, Marc Zyngier wrote:
+> > On Tue, 14 Feb 2023 18:30:54 +0000,
+> > Randy Dunlap <rdunlap@infradead.org> wrote:
+> >>
+> >>
+> >>
+> >> On 2/13/23 00:05, Arnd Bergmann wrote:
+> >>> On Mon, Feb 13, 2023, at 05:15, Randy Dunlap wrote:
+> >>>> IRQ_DOMAIN is a hidden (not user visible) symbol. Users cannot set
+> >>>> it directly thru "make *config", so drivers should select it instead
+> >>>> of depending on it if they need it.
+> >>>> Relying on it being set for a dependency is risky.
+> >>>>
+> >>>> Consistently using "select" or "depends on" can also help reduce
+> >>>> Kconfig circular dependency issues.
+> >>>>
+> >>>> IRQ_DOMAIN is selected 109 times and is depended on 3 times in
+> >>>> current linux-next. Eliminate the uses of "depends on" by
+> >>>> converting them to "select".
+> >>>>
+> >>>>  [PATCH 1/3] extcon: max8997: select IRQ_DOMAIN instead of depending on it
+> >>>>  [PATCH 2/3] of: OF_IRQ: select IRQ_DOMAIN instead of depending on it
+> >>>>  [PATCH 3/3] rtc: mt6397: select IRQ_DOMAIN instead of depending on it
+> >>>
+> >>> From a Kconfig perspective, your reasoning makes a lot of sense.
+> >>>
+> >>> Looking at the bigger picture, I wonder if we should just remove the
+> >>> option and make it unconditional. It is enabled in ever architecture
+> >>> defconfig other than alpha and sparc, and it's selected by a lot of
+> >>> very common options such as I2C,  GENERIC_MSI_IRQ, GENERIC_IRQ_CHIP,
+> >>> and PCI_HOST_GENERIC. Enabling the option on Alpha grows the kernel
+> >>> image from 9010KB to 9023KB, or on m68k Coldfire from 3346KB to
+> >>> 3351KB.
+> >>
+> >> Marc, what do you think about this suggestion?
+> > 
+> > Seems sensible enough to me.
+> > 
+> > I'd also get rid of the IRQ_DOMAIN_HIERARCHY option, which is used by
+> > a ton of things. Architectures that are not using it are either dead,
+> > or at least terminally comatose.
+> > 
+> > I'm half-tempted to put the following patch into -next. Maybe after
+> > -rc1 though. And then the option can go as well.
+> > 
+> > 	M.
+> 
+> What is this patch based on?  It doesn't apply cleanly to current linux-next.
 
-Applied to
+Not very surprising, I usually base my stuff on a stable rc tag. But
+in this instance, it may have been based on whatever was in my sandbox
+at that point in time, and subsequently discarded.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+> I made a similar patch (to linux-next) that drops the IRQ_DOMAIN_HIERARCHY
+> option and converts its dependent code to always on.
+> It has been built (multiple randconfigs) on all ARCHes (except hexagon),
+> both 32-bit and 64-bit where applicable (not that it should matter here).
+> 
+> But yes, let's plan to get one of these patches in soon (after -rc1).
 
-Thanks!
-
-[1/2] ASoC: mt8183: Remove spammy logging from I2S DAI driver
-      commit: d71ed1c8f0f458ae6852fdab055790fe1d9d19b6
-[2/2] ASoC: mt8183: Fix event generation for I2S DAI operations
-      commit: 18f51ed09888c8e48bd377d1715d4ff807b4c805
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+Please send it based on -rc1 once it is out, and I'll be happy to
+stick that in -next for further simmering.
 
 Thanks,
-Mark
 
+	M.
+
+-- 
+Without deviation from the norm, progress is not possible.
 
