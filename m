@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D8FFC7EE23
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Mar 2023 08:15:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19F28C64EC7
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Mar 2023 09:30:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=loHyMMxyuLpIik8Ed+HNPAQgCqKfx0atv75vwMAnXyg=; b=opAhOzoRCdSmEk
-	j6sbek3qzKqrXa32VSFXVxHjUmEX5lOuCX3GemQIrJ5YkE6DKljAdjrhsRLfDAI+xBY+x+FYsLUd7
-	Tn35rp9HhExy2vZtivSqF6eMW9tPuoefzy5jD1d/kxS2/9Xx+LgfQ2ObR/4cIE8A047Qkb4v67vhh
-	KhWa5Mmhf3Bw2thSASa9USkeTRXTgYiU1PQg4ym7v+O5PIvtCS+cw44vKWn+GvxlHjxoSOs49DRD6
-	OmFEdTS8r6TAbL+mg6/mxTkkWozXRPjHxPaEKXWEcRCe55hKogl4P8JFY4qsPP3FF+V8EEgRnPtdp
-	gXKO4/sjYcgvFN4dkQ/Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=q7EQpZQ0zIYpX4tsqF5beTBP8gidcV6pAM9ZgWvM3MI=; b=lCq/yAGF86ArWp2avtp8W8Gdl3
+	hv4ZpAqpnffxtU31udememOh3P272lwVCSV9LO6OPXK9DBzQ2pwc4I3n1nCRU5Ox/Q48M8imAeKbp
+	9hRt6B4l7CtRU6m/RPOhn66AtvmgDQDYp/YBJcmczIZFt/IJqTzi2lpxdBG+BNQZ+4fJ03EtA6dfD
+	3Cr2FmWfUV8ho/n5+0j+Ay16ieUksHK7L7wetsBOefUGxy4WDXOaXgRzFmtcSEDNJP4xj5JtyIYTG
+	Tf529gdLQGnMTQ2goFoT1ic0v+mXPFVXothpstASspuMi25NfOTbTPCFl5EZnMOKIFmTp2hjclM/y
+	oJlV/Teg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXHcN-00FQTL-SW; Wed, 01 Mar 2023 08:15:19 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1pXInL-00Fabn-2j; Wed, 01 Mar 2023 09:30:43 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXHcL-00FQSV-A2; Wed, 01 Mar 2023 08:15:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1677658508; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=K5rqZm5I60Bmtew0uSXmf2QdNGCVWX1lhlyhU8380uu1m8/CKfubPcGBbvh+osbNYNcC8tVs+Gu/OEFciXuZ/aHuCMPN+sErbg5KHGqP3hZRlRxjVxlsNwtv05WtyOEguVdlpg6HDQ71mLqPNZCVkPKxc1FAmozR0Dr3HFCNlCE=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1677658508; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=loHyMMxyuLpIik8Ed+HNPAQgCqKfx0atv75vwMAnXyg=; 
-	b=OXSalVxFM3c/JcYzZ8n5+DZDYdhPgKo5DQwJCUwV68BmQCtPp2qW3Jjlb/CLBKuzowWC5ENWp2S6F/ak/lK2AIe4GKhoMrr5tmZa1fcKlIvyQMaIuK4/rf7kXK346372ns5r13TmnH0L57WyuxJOXb8jKh3rO87z3wUlOtiC6ZU=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1677658508;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=loHyMMxyuLpIik8Ed+HNPAQgCqKfx0atv75vwMAnXyg=;
-	b=LIMMHzZ2dE9bY9Yig8KeA77aDkINNP4M/XYzhvWOkj633Ejy+RkLTNNwykzdX8QC
-	RDgVO0t6wr/HuR12ifAUHKOgCydy3pU5pxQdfHa2gyTtRKKsgLtqHVpHbwg3Bd/UftA
-	SgurdupqykIt/825g7WuaO2XwA9ICT+eSCEjA3i0=
-Received: from [10.10.10.3] (212.68.60.226 [212.68.60.226]) by mx.zohomail.com
-	with SMTPS id 1677658506523162.75111868803015; Wed, 1 Mar 2023 00:15:06 -0800 (PST)
-Message-ID: <ae3346de-140f-f181-b6a3-ccaa694e1548@arinc9.com>
-Date: Wed, 1 Mar 2023 11:15:00 +0300
+	id 1pXInB-00Faa1-1m; Wed, 01 Mar 2023 09:30:34 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5DC106600362;
+	Wed,  1 Mar 2023 09:30:28 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1677663028;
+	bh=kzRKHPaffCQS5sZAFMRnd4mRdECYEDJHB5S8AGoRV3k=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ilJhazDlsLkG0QAjiGSO16V0TmcYh3StQiRL5RB9pxezQuHyy5YJl2YKZXyTn3iox
+	 G558l5GWrGaUOt7gVhT6EDDGpYo8/we/o8y+n9vanUn9LOEDVYSnX4lXdjLPjoKIUS
+	 NCQw3HOODF4DkwXD8jj5XpQvOov/Crh6OQSYY05shfq0CX54cIbuT8k0iIs2S7vyGs
+	 L02OS97YYbQTOD/lUSxdqKXz4r6R95OmShXqkfnDTCPXoTySQ9LFkj/+489zNVlnn1
+	 YiVOGSQ/Ony31EpA7UlTr4lGbxwwa9xEw9pJuNy4vwurSXUkK8aSl/0squi69e0LlZ
+	 UfdmJiK2Wz30Q==
+Message-ID: <1022ffb8-c691-5af3-e138-006ea77d3165@collabora.com>
+Date: Wed, 1 Mar 2023 10:30:25 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [RFC PATCH 07/16] dt-bindings: pinctrl: ralink: add new
- compatible strings
-To: Rob Herring <robh@kernel.org>
-References: <20230222183932.33267-1-arinc.unal@arinc9.com>
- <20230222183932.33267-8-arinc.unal@arinc9.com>
- <20230227173333.GA496999-robh@kernel.org>
- <d7aea90f-d077-3a41-996c-804c95d72e24@arinc9.com>
- <20230301024431.GA251215-robh@kernel.org>
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v3 11/18] arm64: dts: mediatek: mt8192-asurada: Couple
+ VGPU and VSRAM_OTHER regulators
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230228104741.717819-1-angelogioacchino.delregno@collabora.com>
+ <20230228104741.717819-12-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5FyjoLo1VW2Kep5JWH0tz5JE77XjbwWiKusnTntj2eZHQ@mail.gmail.com>
 Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20230301024431.GA251215-robh@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAGXv+5FyjoLo1VW2Kep5JWH0tz5JE77XjbwWiKusnTntj2eZHQ@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230301_001517_435962_D8158296 
-X-CRM114-Status: GOOD (  21.21  )
+X-CRM114-CacheID: sfid-20230301_013033_245542_85669182 
+X-CRM114-Status: GOOD (  21.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,79 +75,73 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-gpio@vger.kernel.org, Daniel Santos <daniel.santos@pobox.com>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org, Sergio Paracuellos <sergio.paracuellos@gmail.com>, William Dean <williamsukatube@gmail.com>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Daniel Golle <daniel@makrotopia.org>, Matthias Brugger <matthias.bgg@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 1.03.2023 05:44, Rob Herring wrote:
-> On Tue, Feb 28, 2023 at 07:46:36PM +0300, Arınç ÜNAL wrote:
->> On 27/02/2023 20:33, Rob Herring wrote:
->>> On Wed, Feb 22, 2023 at 09:39:23PM +0300, arinc9.unal@gmail.com wrote:
->>>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>>>
->>>> Add the ralink,rt2880-pinmux compatible string. It had been removed from
->>>> the driver which broke the ABI.
->>>>
->>>> Add the mediatek compatible strings. Change the compatible string on the
->>>> examples with the mediatek compatible strings.
->>>>
->>>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->>>> ---
->>>>    .../devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml | 7 +++++--
->>>>    .../devicetree/bindings/pinctrl/ralink,mt7621-pinctrl.yaml | 7 +++++--
->>>>    .../devicetree/bindings/pinctrl/ralink,rt2880-pinctrl.yaml | 7 +++++--
->>>>    .../devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml | 7 +++++--
->>>>    .../devicetree/bindings/pinctrl/ralink,rt3883-pinctrl.yaml | 7 +++++--
->>>>    5 files changed, 25 insertions(+), 10 deletions(-)
->>>>
->>>> diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
->>>> index 1e63ea34146a..531b5f616c3d 100644
->>>> --- a/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
->>>> +++ b/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
->>>> @@ -17,7 +17,10 @@ description:
->>>>    properties:
->>>>      compatible:
->>>> -    const: ralink,mt7620-pinctrl
->>>> +    enum:
->>>> +      - mediatek,mt7620-pinctrl
->>>> +      - ralink,mt7620-pinctrl
->>>
->>> We don't update compatible strings based on acquistions nor marketing
->>> whims. If you want to use 'mediatek' for new things, then fine.
+Il 01/03/23 05:53, Chen-Yu Tsai ha scritto:
+> On Tue, Feb 28, 2023 at 6:47 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
 >>
->> Understood. Only the SoCs with rtXXXX were rebranded, the mtXXXX SoCs share
->> the same architecture from Ralink, so they were incorrectly called Ralink
->> SoCs.
->>
->> I can remove the new strings from Ralink SoCs and add them only for MediaTek
->> SoCs. Or you could make an exception for this one, regarding the situation.
->> Whatever you think is best.
+>> Add coupling for these regulators, as VSRAM_OTHER is used to power the
+>> GPU SRAM, and they have a strict voltage output relation to satisfy in
+>> order to ensure GPU stable operation.
+>> While at it, also add voltage constraint overrides for the GPU SRAM
+>> regulator "mt6359_vsram_others", but don't touch mt6315's vbuck1 as
+>> its constraints are fine.
 > 
-> I'm not in a position to make an exception as I know little about this
-> platform. Carrying both strings is a NAK. Either you (and everyone using
-> these platforms) care about the ABI and are stuck with the "wrong"
-> string. In the end, they are just unique identifiers. Or you don't care
-> and break the ABI and rename everything. If you do that, do just that in
-> your patches and make it crystal clear in the commit msg that is your
-> intention and why that is okay.
+> The minimum voltage on vbuck1 matches the lowest OPP. However the maximum
+> voltage is set to the maximum of the regulator itself. The MT8192 datasheet
+> says the absolute maximum for the GPU is 0.8V, and the recommended range
+> for 0.8V is 0.72V ~ 0.88V. The highest OPP we have is 0.8V, so I would
+> just set the maximum voltage to that?
+> 
 
-Ralink had their MIPS SoCs pre-acquisition, RT2880, etc. MediaTek 
-introduced new SoCs post-acquisition, MT7620, MT7621, MT7628, and 
-MT7688, utilising the same platform from Ralink, sharing the same 
-architecture code, pinctrl core driver, etc.
+The point was that we'd never get vbuck1 at more than vsram+10mV because
+of the constraints that are set with regulator-coupled-max-spread, but
+thinking about it again, relying on that is *highly* suboptimal.
 
-I don't intend to break the ABI at all. On the contrary, I fix it where 
-possible.
+Yes, you're right, let's change the constraints on vbuck1 to 800mV: that's
+going to be for v4.
 
-If I understand correctly, from this conversation and what Krzysztof 
-said, all strings must be kept on the schemas so I can do what I said on 
-the composed mail. Only match the pin muxing information on the strings 
-that won't match multiple pin muxing information from other schemas.
+Thanks!
+Angelo
 
-This way we don't break the ABI, introduce new compatible strings while 
-keeping the remaining ones, and make schemas match correctly.
+> ChenYu
+> 
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 9 +++++++++
+>>   1 file changed, 9 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+>> index df477eb89f21..c8b6e1a9605b 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+>> @@ -447,6 +447,13 @@ &mt6359_vrf12_ldo_reg {
+>>          regulator-always-on;
+>>   };
+>>
+>> +&mt6359_vsram_others_ldo_reg {
+>> +       regulator-min-microvolt = <750000>;
+>> +       regulator-max-microvolt = <850000>;
+>> +       regulator-coupled-with = <&mt6315_7_vbuck1>;
+>> +       regulator-coupled-max-spread = <10000>;
+>> +};
+>> +
+>>   &mt6359_vufs_ldo_reg {
+>>          regulator-always-on;
+>>   };
+>> @@ -1411,6 +1418,8 @@ mt6315_7_vbuck1: vbuck1 {
+>>                                  regulator-max-microvolt = <1193750>;
+>>                                  regulator-enable-ramp-delay = <256>;
+>>                                  regulator-allowed-modes = <0 1 2>;
+>> +                               regulator-coupled-with = <&mt6359_vsram_others_ldo_reg>;
+>> +                               regulator-coupled-max-spread = <10000>;
+>>                          };
+>>                  };
+>>          };
+>> --
+>> 2.39.2
+>>
 
-Let me know if this is acceptable to you.
-
-Arınç
 
