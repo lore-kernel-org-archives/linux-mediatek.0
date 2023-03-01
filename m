@@ -4,111 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A35EC6FA9D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Mar 2023 18:55:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35A15C7EE30
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Mar 2023 19:53:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3TgiKhi42q3wmBGdmYMiHUCevyqh6Uh75vpv8WVPRks=; b=SVWEHP6//8CsD6mloHmHIXD4Bq
-	SROOIQ49rAYRKWWd2hGMNY65iF+GEtPnDQMFbKn5YJCNISY9C4Sb1tGesrNXRofM73QTQ52Xeoutz
-	S5WytcS9goSrsmfVEEfos21DwKNghMTpjgRjKCL+9kuopBBVxe4aDmBMDSObnM7XeaNMkKJI4Tozi
-	EYyP7P2peQHfAWXw8u+GoUxgX3xznTm8z1DT0l2R/R9tYl1+MOTDOXAZk0E+aDzzIHOVk5EiJr2SV
-	WBxPU39LKzjEgi6Yh9Hj9TLbfnoQWDW8rp9Kk9KWgaPPWeEml/THGU+/QpEn5EZNdARtY1kn9GP2M
-	WYslk7kA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5jGEbBF1/efgEWgJ5oF7oZDXp/O1E3most1HT1cKws0=; b=oy21yjFPgH6bep9jucP15Z5EoW
+	Q73dNfUqOywfUlK39Z1lfBNpgEb58qc/oOh1O+vYF8IOku0bDe5NVV+Ubc7NTx3aRB7T66jTYTjNo
+	+d03TLCF0YFjQtHsGgWHxMMMCbLcYzxxIGoesIy9HVb/K3n823KU7caO9zJwY86GHw07z7SpSDfqT
+	/EViYVgJ4FzVwIKp67PZhA+UQS0kp2nMs4TDukM+qWZpC3Em3BFyi1GVK3IMPH9VuV6Vk3ITmhcBH
+	4BpBLCpMP3yYj4jX6HdejyV0/RualBx2qDYzMt/PFP7TTZuY+q72jK6tcW7luflYX/a8tVu4E4Hdt
+	bT0Z0F5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXRcC-00HDcE-9X; Wed, 01 Mar 2023 18:55:48 +0000
-Received: from mail-qt1-x82c.google.com ([2607:f8b0:4864:20::82c])
+	id 1pXSW9-00HLfd-VS; Wed, 01 Mar 2023 19:53:38 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXRc6-00HDXG-Fp
-	for linux-mediatek@lists.infradead.org; Wed, 01 Mar 2023 18:55:44 +0000
-Received: by mail-qt1-x82c.google.com with SMTP id c19so15390495qtn.13
-        for <linux-mediatek@lists.infradead.org>; Wed, 01 Mar 2023 10:55:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=sladewatkins.net; s=googled;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=3TgiKhi42q3wmBGdmYMiHUCevyqh6Uh75vpv8WVPRks=;
-        b=Nvam5+nR8S3y+Y2B55SxN0JnRfea2d/xXFDMc2DiAQ4NLLMcC5QtM1IX+bRmoqasi3
-         Qo84Th0ptQ4NBDEal1mMUscjKvAWBhR6nNrR/0RAv5un4R2koGPpwdo7jp8xu+vzLYN8
-         jlvuTr6W5//iyX4ois4HUaN3/uWk3Ns9wllzCzZp6VSuVAvLbsveFHMGT39+Egp0VMgE
-         KoCzt1jYszpGV4c4cMwpmokLmJHmSXnobaURMirxB8nWSHGyJg066X3C5nqGvMCllcHK
-         o/TWn80MhVmUIBKYJznLLT3/Si4vfFvA2R0tsnpyN/qvdtmav/eQTvoe7M2FDc19oYXs
-         09Ug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=3TgiKhi42q3wmBGdmYMiHUCevyqh6Uh75vpv8WVPRks=;
-        b=G8kHWtfW154fF7C/KG1TJ7tD7pLz9MjeqbBFp5KIFiW+x+eAuHF9BHaYnvUVvMA+7Y
-         U+wHg2e2/LkjPlKC+eosQlAOPJlRUGsJPN2AO3cv2snqxWrhO2/8cIKl+Ac+gG6dGieS
-         +Dm2/M2TnUi4dIFywOOcrJo3RQrQ3BYDQR64VnuZ0AkdokJwY0+zEeF+dycWA0ONa17v
-         dyqO5qimYYY22evGfEEcX3WyzpVrVOhBT0flWYLjmfASY9X22lBjS20r9xrnUVzvignT
-         igAS/z7yUU4lssWcsp+Boe6tEAgohcR6Wh4WuaWnfW3PD4STeugfkPFJ4qwEgi67sdeM
-         DBxw==
-X-Gm-Message-State: AO0yUKUT/EY9rv3sVj9RHzKT6gLEZ0fXHCSNyvgUt+ZdG8m6RePgn4F9
-	9PEmWXWqjOfRpWTZGxbTm3KGXg==
-X-Google-Smtp-Source: AK7set8efE2ic1qDCl5vB6UuSzw5tDGfuj/AWkp5gIlZw4LegN7+lqFUd1Y4loxlJ7hLAeQjAsur5g==
-X-Received: by 2002:a05:622a:1650:b0:3b9:ca2b:a923 with SMTP id y16-20020a05622a165000b003b9ca2ba923mr13763023qtj.67.1677696938199;
-        Wed, 01 Mar 2023 10:55:38 -0800 (PST)
-Received: from ghost.leviathan.sladewatkins.net (pool-108-44-32-49.albyny.fios.verizon.net. [108.44.32.49])
-        by smtp.gmail.com with ESMTPSA id x11-20020a05620a0ecb00b00741b312c899sm9390094qkm.6.2023.03.01.10.55.33
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 01 Mar 2023 10:55:36 -0800 (PST)
-Message-ID: <0ac05d7c-a885-2e13-93fc-20a58643abcb@sladewatkins.net>
-Date: Wed, 1 Mar 2023 13:55:32 -0500
+	id 1pXSW6-00HLdi-QQ; Wed, 01 Mar 2023 19:53:36 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pXSVr-0007Fg-02;
+	Wed, 01 Mar 2023 20:53:19 +0100
+Date: Wed, 1 Mar 2023 19:53:10 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Russell King <linux@armlinux.org.uk>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>
+Cc: Jianhui Zhao <zhaojh329@gmail.com>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
+Subject: [RFC PATCH net-next v11 00/12] net: ethernet: mtk_eth_soc: various
+ enhancements
+Message-ID: <cover.1677699407.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-From: Slade's Kernel Patch Bot <KernelPatchBot@sladewatkins.net>
-Subject: Re: [PATCH v2 4/7] scsi: ufs: core: Add hwq print for debug
-To: =?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?= <Powen.Kao@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "quic_nguyenb@quicinc.com" <quic_nguyenb@quicinc.com>,
- "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "quic_ziqichen@quicinc.com" <quic_ziqichen@quicinc.com>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
- "avri.altman@wdc.com" <avri.altman@wdc.com>,
- "bvanassche@acm.org" <bvanassche@acm.org>,
- "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Cc: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
- =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
- =?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
- =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
- =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
- wsd_upstream <wsd_upstream@mediatek.com>,
- =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
- "quic_asutoshd@quicinc.com" <quic_asutoshd@quicinc.com>,
- =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
- <Chaotian.Jing@mediatek.com>, =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
- <Naomi.Chu@mediatek.com>, =?UTF-8?B?U3RhbmxleSBDaHUgKOacseWOn+mZnik=?=
- <stanley.chu@mediatek.com>, =?UTF-8?B?TWFzb24gWmhhbmcgKOeroOi+iSk=?=
- <Mason.Zhang@mediatek.com>, "quic_cang@quicinc.com" <quic_cang@quicinc.com>,
- Slade Watkins <srw@sladewatkins.net>
-References: <20230222030427.957-1-powen.kao@mediatek.com>
- <20230222030427.957-5-powen.kao@mediatek.com>
- <1b9c2bc9-a349-062a-597c-336804c05394@quicinc.com>
- <74bedcff32df0c93c14b004814017f3344247528.camel@mediatek.com>
- <0c17dd26-b1aa-54b0-6dc4-561cd996cead@quicinc.com>
- <76f74b86-8ff1-2346-4f5e-0048543bd8b0@quicinc.com>
- <f629f1b72e4859d79aac279ef3327715000e3210.camel@mediatek.com>
-Content-Language: en-US
-In-Reply-To: <f629f1b72e4859d79aac279ef3327715000e3210.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230301_105542_582049_3F7A6191 
-X-CRM114-Status: GOOD (  24.62  )
+X-CRM114-CacheID: sfid-20230301_115334_897385_E59456C3 
+X-CRM114-Status: GOOD (  16.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,157 +77,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/28/23 21:17, Powen Kao (高伯文) wrote:
-> Hi Bao,
-> 
-> Sure, we can first integrate ur patch and see if anything is missing
-> that need further upstream. Due to comapct schedule, I would kindly ask
-> if it will be ready by the end of this week? :) Thanks
-> 
+This series brings a variety of fixes and enhancements for mtk_eth_soc,
+adds support for the MT7981 SoC and facilitates sharing the SGMII PCS
+code between mtk_eth_soc and mt7530.
 
-This is Slade's kernel patch bot. When scanning his mailbox, I came across
-this message, which appears to be a top-post. Please do not top-post on Linux
-mailing lists.
+Note that this series depends on commit 697c3892d825
+("regmap: apply reg_base and reg_downshift for single register ops") to
+not break mt7530 pcs register access.
 
-A: Because it messes up the order in which people normally read text.
-Q: Why is top-posting such a bad thing?
-A: Top-posting.
-Q: What is the most annoying thing in e-mail?
+The whole series has been tested on MT7622+MT7531 (BPi-R64),
+MT7623+MT7530 (BPi-R2), MT7981+GPY211 (GL.iNet GL-MT3000) and
+MT7986+MT7531 (BPi-R3).
 
-Please bottom-post to Linux mailing lists in the future. See also:
-https://daringfireball.net/2007/07/on_top
+Changes since v10:
+ * improve mediatek,mt7981-eth dt-bindings
+ * use regmap_set_bits instead of regmap_update_bits where possible
+ * completely remove mtk_sgmii.c
+ * no need to keep struct mtk_sgmii either as it had only a single
+   element
 
-If you believe this is an error, please address a message to Slade Watkins
-<srw@sladewatkins.net>.
+Changes since v9:
+ * fix path in mediatek,sgmiisys dt-binding
 
-Thank you,
--- Slade's kernel patch bot
+Changes since v8:
+ * move mediatek,sgmiisys dt-bindings to correct net/pcs folder
+ * rebase on top of net-next/main so series applies cleanly again
 
-> 
-> On Mon, 2023-02-27 at 18:57 -0800, Bao D. Nguyen wrote:
->> On 2/26/2023 7:14 Sure PM, Ziqi Chen wrote:
->>> Hi Powen,
->>>
->>> The Bao. D . Nguyen (quic_nguyenb@quicinc.com) from QCOM already
->>> made 
->>> patch to support MCQ abort.
->>>
->>> ++ Bao here to be aware of it in case your error handing patch 
->>> conflict with his abort handling patch.
->>>
->>>
->>> Best Regards,
->>>
->>> Ziqi
->>>
->>>
->>> On 2/23/2023 10:13 PM, Powen Kao (高伯文) wrote:
->>>> Hi Ziqi,
->>>>
->>>> Thanks for ur comments.
->>>>
->>>> This piece of code successfully dump relevent registers on our
->>>> platform. As you know, mcq error handling flow is not ready yet
->>>> so the
->>>> insertion point might not seems to be reasonable.
->>>>
->>>> Maybe drop this patch for now, I will send it later with error
->>>> handling
->>>> patches.
->>>>
->>>>
->>>> On Thu, 2023-02-23 at 18:14 +0800, Ziqi Chen wrote:
->>>>> Hi Po-Wen,
->>>>>
->>>>> On 2/22/2023 11:04 AM, Po-Wen Kao wrote:
->>>>>> +void ufshcd_mcq_print_hwqs(struct ufs_hba *hba, unsigned
->>>>>> long
->>>>>> bitmap)
->>>>>> +{
->>>>>> +    int id, i;
->>>>>> +    char prefix[15];
->>>>>> +
->>>>>> +    if (!is_mcq_enabled(hba))
->>>>>> +        return;
->>>>>> +
->>>>>> +    for_each_set_bit(id, &bitmap, hba->nr_hw_queues) {
->>>>>> +        snprintf(prefix, sizeof(prefix), "q%d SQCFG: ", id);
->>>>>> +        ufshcd_hex_dump(prefix,
->>>>>> +            hba->mcq_base + MCQ_QCFG_SIZE * id,
->>>>>> MCQ_QCFG_SQ_SIZE);
->>>>>
->>>>> Is your purpose dump per hardware queue registers here?  If
->>>>> yes, why
->>>>> don't use ufsmcq_readl() to save to a buffer and then use
->>>>> ufshcd_hex_dump()
->>>>>
->>>>> to dump ? Are you sure ufshcd_hex_dump() can dump register
->>>>> directly?
->>>>>
->>>>>> +
->>>>>> +        snprintf(prefix, sizeof(prefix), "q%d CQCFG: ", id);
->>>>>> +        ufshcd_hex_dump(prefix,
->>>>>> +            hba->mcq_base + MCQ_QCFG_SIZE * id +
->>>>>> MCQ_QCFG_SQ_SIZE, MCQ_QCFG_CQ_SIZE);
->>>>>
->>>>> Same to above comment.
->>>>>> +
->>>>>> +        for (i = 0; i < OPR_MAX ; i++) {
->>>>>> +            snprintf(prefix, sizeof(prefix), "q%d OPR%d: ",
->>>>>> id, i);
->>>>>> +            ufshcd_hex_dump(prefix, mcq_opr_base(hba, i,
->>>>>> id), mcq_opr_size[i]);
->>>>>
->>>>> Same.
->>>>>> +        }
->>>>>> +    }
->>>>>> +}
->>>>>> +
->>>>>>
->>>>>>    @@ -574,7 +569,16 @@ void ufshcd_print_trs(struct ufs_hba
->>>>>> *hba,
->>>>>> unsigned long bitmap, bool pr_prdt)
->>>>>>            if (pr_prdt)
->>>>>>                ufshcd_hex_dump("UPIU PRDT: ", lrbp-
->>>>>>> ucd_prdt_ptr,
->>>>>>
->>>>>>                    ufshcd_sg_entry_size(hba) *
->>>>>> prdt_length);
->>>>>> +
->>>>>> +        if (is_mcq_enabled(hba)) {
->>>>>> +            cmd = lrbp->cmd;
->>>>>> +            if (!cmd)
->>>>>> +                return;
->>>>>> +            hwq = ufshcd_mcq_req_to_hwq(hba,
->>>>>> scsi_cmd_to_rq(cmd));
->>>>>> +            ufshcd_mcq_print_hwqs(hba, 1 << hwq->id);
->>>>>
->>>>> Calling registers dump function in ufshcd_print_trs() is not
->>>>> reasonable,
->>>>> eg.. for each aborted request, it would print out all hwq
->>>>> registers,
->>>>> it's not make sense.
->>>>>
->>>>> I think we should move it out of ufshcd_print_trs().
->>>>>
->>>>>> +        }
->>>>>>        }
->>>>>> +
->>>>>>    }
->>>>>
->>>>> Best Regards,
->>>>>
->>>>> Ziqi
->>>>>
->>
->> Hi Powen,
->>
->> I am going to push the mcq abort handling and mcq error handling
->> code 
->> upstream for review in a couple days. Would that work for you?
->>
->> Regards,
->> Bao
->>
+Changes since v7:
+ * move mediatek,sgmiisys.yaml to more appropriate folder
+ * don't include <linux/phylink.h> twice in PCS driver, sort includes
+
+Changes since v6:
+ * label MAC MCR bit 12 in 08/12, MediaTek replied explaining its function
+
+Changes since v5:
+ * drop dev pointer also from struct mtk_sgmii, pass it as function
+   parameter instead
+ * address comments left for dt-bindings
+ * minor improvements to commit messages
+
+Changes since v4:
+ * remove unused dev pointer in struct pcs_mtk_lynxi
+ * squash link timer check into correct follow-up patch
+
+Changes since v3:
+ * remove unused #define's
+ * use BMCR_* instead of #define'ing our own constants
+ * return before changing registers in case of invalid link timer
+
+Changes since v2:
+ * improve dt-bindings, convert sgmisys bindings to dt-schema yaml
+ * fix typo
+
+Changes since v1:
+ * apply reverse xmas tree everywhere
+ * improve commit descriptions
+ * add dt binding documentation
+ * various small changes addressing all comments received for v1
+
+
+Daniel Golle (12):
+  net: ethernet: mtk_eth_soc: add support for MT7981 SoC
+  dt-bindings: net: mediatek,net: add mt7981-eth binding
+  dt-bindings: arm: mediatek: sgmiisys: Convert to DT schema
+  dt-bindings: arm: mediatek: sgmiisys: add MT7981 SoC
+  net: ethernet: mtk_eth_soc: set MDIO bus clock frequency
+  net: ethernet: mtk_eth_soc: reset PCS state
+  net: ethernet: mtk_eth_soc: only write values if needed
+  net: ethernet: mtk_eth_soc: fix RX data corruption issue
+  net: ethernet: mtk_eth_soc: ppe: add support for flow accounting
+  net: pcs: add driver for MediaTek SGMII PCS
+  net: ethernet: mtk_eth_soc: switch to external PCS driver
+  net: dsa: mt7530: use external PCS driver
+
+ .../arm/mediatek/mediatek,sgmiisys.txt        |  27 --
+ .../devicetree/bindings/net/mediatek,net.yaml |  53 ++-
+ .../bindings/net/pcs/mediatek,sgmiisys.yaml   |  55 ++++
+ MAINTAINERS                                   |   7 +
+ drivers/net/dsa/Kconfig                       |   1 +
+ drivers/net/dsa/mt7530.c                      | 277 ++++------------
+ drivers/net/dsa/mt7530.h                      |  47 +--
+ drivers/net/ethernet/mediatek/Kconfig         |   2 +
+ drivers/net/ethernet/mediatek/Makefile        |   2 +-
+ drivers/net/ethernet/mediatek/mtk_eth_path.c  |  14 +-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   | 114 ++++++-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h   | 114 +++----
+ drivers/net/ethernet/mediatek/mtk_ppe.c       | 114 ++++++-
+ drivers/net/ethernet/mediatek/mtk_ppe.h       |  25 +-
+ .../net/ethernet/mediatek/mtk_ppe_debugfs.c   |   9 +-
+ .../net/ethernet/mediatek/mtk_ppe_offload.c   |   8 +
+ drivers/net/ethernet/mediatek/mtk_ppe_regs.h  |  14 +
+ drivers/net/ethernet/mediatek/mtk_sgmii.c     | 203 ------------
+ drivers/net/pcs/Kconfig                       |   7 +
+ drivers/net/pcs/Makefile                      |   1 +
+ drivers/net/pcs/pcs-mtk-lynxi.c               | 302 ++++++++++++++++++
+ include/linux/pcs/pcs-mtk-lynxi.h             |  13 +
+ 22 files changed, 817 insertions(+), 592 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+ create mode 100644 Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml
+ delete mode 100644 drivers/net/ethernet/mediatek/mtk_sgmii.c
+ create mode 100644 drivers/net/pcs/pcs-mtk-lynxi.c
+ create mode 100644 include/linux/pcs/pcs-mtk-lynxi.h
+
+
+base-commit: 1716a175592aff9549a0c07aac8f9cadd03003f5
+-- 
+2.39.2
 
 
