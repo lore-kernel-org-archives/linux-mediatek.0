@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4872EC64ED6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Mar 2023 09:56:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C858AC64EC7
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Mar 2023 09:57:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mV5HuQ9Svg3ODFXa0ShJffVZt3rDKNlMuzzUUjGjtzc=; b=RuKv1RQVv/FWND7qvzVVd4rKgT
-	0yLfnO2WBU0bebC9ob4fqXXErdjGw7rGCL5OX+7yyUK89w0HID/sluGC1eY03cyuqo9t92Rfzhkj0
-	K46kGs/QYoDNEIPUxbrPabJL8/5KU4Ly2IDs9CE7B1OqE/CyvRB2Qp8e2Hu2KPQ6+Ky13fP25/NPM
-	QWFTsn+DGXYgpXosrBO87pyBnYNL175ElwhjC9HWn2ydjJyCxaLUuBq840vMX2m4Pyv1jEV3Ebv6c
-	f9gVjmKhqqUNpw54TeqbWE3i1YwRk9BR4xtREYAzVJXfvph0hgjMdnbHVY/4o2q6VSJkCJhkbpSRB
-	bVwWX03A==;
+	bh=F5X0eqramAMz+tYV9t3z/PRvMrYdEJZZalH63bZ/oQU=; b=DJ6wYxhHOeJnf/P5u8Gu8945W/
+	k9scb+qjvZnwNbxA3au/PgcutuUyIe5ppeTdP8QcoMqkFkBGDLsdg6+9drr1KRGxN33QyBe4fBnWp
+	zKYP3HhGaXbJo50c23VpYNIEBlkrC6CrTJ9OOtZO2xImIJFdyqxBDcnSY/bim8uPk59P9qzKYKCFt
+	vRmGOY/+FajlLVHvR88OOonGNyCAYZTMWeMCE7c/cDp84Wuk6TcDxgC8X7OxRAe4fRZH4K26AlWBb
+	uPWrlbSZx2jvQwXOP9cqKSCdHDsQ0K09ipjnjKnhQBtu1x8G8AfcQAxrPJwzU2/IxWUzgNZwej5Bp
+	Zipazb3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXJCP-00Fe0J-Dn; Wed, 01 Mar 2023 09:56:37 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pXJCn-00FeI7-DG; Wed, 01 Mar 2023 09:57:01 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXJBN-00FdLE-PO; Wed, 01 Mar 2023 09:55:35 +0000
+	id 1pXJBO-00FdLa-HQ; Wed, 01 Mar 2023 09:55:35 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 005876602129;
-	Wed,  1 Mar 2023 09:55:31 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A601E660212B;
+	Wed,  1 Mar 2023 09:55:32 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1677664532;
-	bh=Ua7BwziPqVhfWLXLBzmILApbAUpa3Hpx/UhYQnsGNBU=;
+	s=mail; t=1677664533;
+	bh=7nrUbCRYVnwYMTUi2s51QYeV3DhvJQJoBM8PfyrS3Ok=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=NFQfYgKmh/wAZEKNGxC8nLtuK2x3mXJaEZNe3LXZeNA+pyYRgjxz7TXDbqb8mDzHh
-	 F32yXiXlRUIacfbgzJ+BLcb0CBnFkSNJBavd6zUhLsUI0ucTwr6PUY5AmNvH0/OXL+
-	 +CEuZET5PQJLwGyFV/T+nEZlj7f14XjA0SZ2TrFiPGQl9dHllRAJcOxWMBFrkGOt5H
-	 qec7MiXa/qYy4uo1lLvtpGZemKuMDSghuRr5/ux5JLwRGuwUjJMyxVQXq4HHjemDnB
-	 D8XPHzo9b1Xo27I/BeL5W4lPvpr3XUPrTGJb+AGmITHSmM1vF4RxhibCWzENOStbdP
-	 tluhzhuX6ctGQ==
+	b=NiKrMvBDndF+/nbyd9BX/TRNSJ9R5YKqiJkhLQ9I7aJRrFLJukVqSCAF4jmwSzz50
+	 o4UKRFGE2FP3hW9jL8i0lpGBGTa7NOqY8D4us1fnSglIJ3GRltz+u+d97wLsowuQfP
+	 XC+AYNziGRftlUVAzlrnNzYVzajkdIOg6lPs8aAnhHIR1DRfHKkaYFi+/tEvfXfDlm
+	 J8przl+LtTktHzp1ZNnexLdb1vhi9Q0T2ReOC6WYQrxl9bNhmyOmssatGfv6s3MwwL
+	 +8b+v/t7r17jBxOvigvZAQZkbM2CrNBWQcD/FxYgRTjuqMpI/z6rT+PkilyBo77uh6
+	 H5A/6gIUtbJVw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: robh+dt@kernel.org,
@@ -51,18 +51,17 @@ Cc: robh+dt@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	wenst@chromium.org
-Subject: [PATCH v4 05/19] arm64: dts: mediatek: mt8183-evb: Couple VGPU and VSRAM_GPU regulators
-Date: Wed,  1 Mar 2023 10:55:09 +0100
-Message-Id: <20230301095523.428461-6-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v4 06/19] arm64: dts: mediatek: mt8183: Use mediatek,mt8183b-mali as GPU compatible
+Date: Wed,  1 Mar 2023 10:55:10 +0100
+Message-Id: <20230301095523.428461-7-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230301095523.428461-1-angelogioacchino.delregno@collabora.com>
 References: <20230301095523.428461-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230301_015533_968383_FB636218 
-X-CRM114-Status: UNSURE (   9.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230301_015534_740979_B495ECAF 
+X-CRM114-Status: GOOD (  10.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,44 +76,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add coupling for these regulators, as they have a strict voltage output
-relation to satisfy in order to ensure GPU stable operation.
+Use the new GPU related compatible to finally enable GPU DVFS on
+the MT8183 SoC.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- arch/arm64/boot/dts/mediatek/mt8183-evb.dts | 11 ++++++++++-
- 1 file changed, 10 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-index 52dc4a50e34d..fd327437e932 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-@@ -52,7 +52,6 @@ &auxadc {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index e01b96adef02..5169779d01df 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1752,7 +1752,7 @@ mfgcfg: syscon@13000000 {
+ 		};
  
- &gpu {
- 	mali-supply = <&mt6358_vgpu_reg>;
--	sram-supply = <&mt6358_vsram_gpu_reg>;
- };
- 
- &i2c0 {
-@@ -138,6 +137,16 @@ &mmc1 {
- 	non-removable;
- };
- 
-+&mt6358_vgpu_reg {
-+	regulator-coupled-with = <&mt6358_vsram_gpu_reg>;
-+	regulator-coupled-max-spread = <100000>;
-+};
-+
-+&mt6358_vsram_gpu_reg {
-+	regulator-coupled-with = <&mt6358_vgpu_reg>;
-+	regulator-coupled-max-spread = <100000>;
-+};
-+
- &pio {
- 	i2c_pins_0: i2c0{
- 		pins_i2c{
+ 		gpu: gpu@13040000 {
+-			compatible = "mediatek,mt8183-mali", "arm,mali-bifrost";
++			compatible = "mediatek,mt8183b-mali", "arm,mali-bifrost";
+ 			reg = <0 0x13040000 0 0x4000>;
+ 			interrupts =
+ 				<GIC_SPI 280 IRQ_TYPE_LEVEL_LOW>,
 -- 
 2.39.2
 
