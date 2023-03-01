@@ -4,56 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45317C64ED6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Mar 2023 18:50:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A35EC6FA9D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Mar 2023 18:55:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zg98MgWwNc6aZh94xCdr9oJM0+ApGLWaqsOAQluX6tU=; b=tYnuczCC6JvGpCX/ifVVDwo9Qd
-	AbkgEnHqB5JdzYFFowLbqZemikK/xn4TX94tC1ICnFTTHns42Xc57s4NSk/DexIENBs2fiXmxZvDC
-	t3rui32YKd5c/7XxIO1iDqaULajdH5pe5+Cbtz7teavdJp21ZWw1hdnKqGdSMbwK2byPvZK/46srl
-	0pJiayaRvnjcekQ7kVRcChKOaDe1nu3i9B566AdOOrJ0A6j3rd9ZSPm50+2pfm03pScdkYnURNxos
-	NQJYiEEJTAZ+q5L5NkhhrX7KsuRVwnXWWfcFZoOzgZsLOi9j15ZRsgv8rl8AAI+qpFEYEV00yb1m2
-	LwrMYvCQ==;
+	bh=3TgiKhi42q3wmBGdmYMiHUCevyqh6Uh75vpv8WVPRks=; b=SVWEHP6//8CsD6mloHmHIXD4Bq
+	SROOIQ49rAYRKWWd2hGMNY65iF+GEtPnDQMFbKn5YJCNISY9C4Sb1tGesrNXRofM73QTQ52Xeoutz
+	S5WytcS9goSrsmfVEEfos21DwKNghMTpjgRjKCL+9kuopBBVxe4aDmBMDSObnM7XeaNMkKJI4Tozi
+	EYyP7P2peQHfAWXw8u+GoUxgX3xznTm8z1DT0l2R/R9tYl1+MOTDOXAZk0E+aDzzIHOVk5EiJr2SV
+	WBxPU39LKzjEgi6Yh9Hj9TLbfnoQWDW8rp9Kk9KWgaPPWeEml/THGU+/QpEn5EZNdARtY1kn9GP2M
+	WYslk7kA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXRXP-00HBpb-No; Wed, 01 Mar 2023 18:50:51 +0000
-Received: from mail-pl1-f176.google.com ([209.85.214.176])
+	id 1pXRcC-00HDcE-9X; Wed, 01 Mar 2023 18:55:48 +0000
+Received: from mail-qt1-x82c.google.com ([2607:f8b0:4864:20::82c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXRXM-00HBo0-S8; Wed, 01 Mar 2023 18:50:50 +0000
-Received: by mail-pl1-f176.google.com with SMTP id i5so13334594pla.2;
-        Wed, 01 Mar 2023 10:50:46 -0800 (PST)
+	id 1pXRc6-00HDXG-Fp
+	for linux-mediatek@lists.infradead.org; Wed, 01 Mar 2023 18:55:44 +0000
+Received: by mail-qt1-x82c.google.com with SMTP id c19so15390495qtn.13
+        for <linux-mediatek@lists.infradead.org>; Wed, 01 Mar 2023 10:55:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=sladewatkins.net; s=googled;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=3TgiKhi42q3wmBGdmYMiHUCevyqh6Uh75vpv8WVPRks=;
+        b=Nvam5+nR8S3y+Y2B55SxN0JnRfea2d/xXFDMc2DiAQ4NLLMcC5QtM1IX+bRmoqasi3
+         Qo84Th0ptQ4NBDEal1mMUscjKvAWBhR6nNrR/0RAv5un4R2koGPpwdo7jp8xu+vzLYN8
+         jlvuTr6W5//iyX4ois4HUaN3/uWk3Ns9wllzCzZp6VSuVAvLbsveFHMGT39+Egp0VMgE
+         KoCzt1jYszpGV4c4cMwpmokLmJHmSXnobaURMirxB8nWSHGyJg066X3C5nqGvMCllcHK
+         o/TWn80MhVmUIBKYJznLLT3/Si4vfFvA2R0tsnpyN/qvdtmav/eQTvoe7M2FDc19oYXs
+         09Ug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=zg98MgWwNc6aZh94xCdr9oJM0+ApGLWaqsOAQluX6tU=;
-        b=v5GkoaIqtHes2LZHzG008/Dvo/xqjmAD50l76UT7z5H7FYumA4ERAofiEzMGohAsU8
-         mne6y7XEwgoxbkw+GkHKJp+ExgddfBEW7A6gF21x8cW2OA2ElhubhBIlwSDcT2pplJ0S
-         vm9acHDXHQqPUN6m34gVvZ9k7s+UQmJtWLrdDquw0Od87nJt6v0zhD/We3v4WFzOhT1b
-         insrRftwGoM59L4DMVtwmt69AZJghyIKsDiIhXsQditaXXI9m4KgDhYgYEalXBvbpHtx
-         Z4QWVcJQg4P4wWd0YvhWf5vPQSxRPvyG59o4FBMPy02qB+mM1DjiqNTeOI+N65SHfR2u
-         ewZw==
-X-Gm-Message-State: AO0yUKUBTLLTbqLD3tEq2xhRuI3FkUu+j0IXRyqNyCl8IoTmgevysLr9
-	C8jMwJZRDYVfQY8m1A9mS7s=
-X-Google-Smtp-Source: AK7set9u+NzbfYeo686zDMAFl04xD8Pph/E1g7L9BlqRFstkRybhM7M2i5bRLPKRUnTneqBFFO5e4Q==
-X-Received: by 2002:a17:902:e886:b0:19d:b02:cca5 with SMTP id w6-20020a170902e88600b0019d0b02cca5mr7772883plg.12.1677696646037;
-        Wed, 01 Mar 2023 10:50:46 -0800 (PST)
-Received: from ?IPV6:2620:15c:211:201:e8e:76a3:8425:6d37? ([2620:15c:211:201:e8e:76a3:8425:6d37])
-        by smtp.gmail.com with ESMTPSA id ik19-20020a170902ab1300b00194c1281ca9sm8778424plb.166.2023.03.01.10.50.43
+        bh=3TgiKhi42q3wmBGdmYMiHUCevyqh6Uh75vpv8WVPRks=;
+        b=G8kHWtfW154fF7C/KG1TJ7tD7pLz9MjeqbBFp5KIFiW+x+eAuHF9BHaYnvUVvMA+7Y
+         U+wHg2e2/LkjPlKC+eosQlAOPJlRUGsJPN2AO3cv2snqxWrhO2/8cIKl+Ac+gG6dGieS
+         +Dm2/M2TnUi4dIFywOOcrJo3RQrQ3BYDQR64VnuZ0AkdokJwY0+zEeF+dycWA0ONa17v
+         dyqO5qimYYY22evGfEEcX3WyzpVrVOhBT0flWYLjmfASY9X22lBjS20r9xrnUVzvignT
+         igAS/z7yUU4lssWcsp+Boe6tEAgohcR6Wh4WuaWnfW3PD4STeugfkPFJ4qwEgi67sdeM
+         DBxw==
+X-Gm-Message-State: AO0yUKUT/EY9rv3sVj9RHzKT6gLEZ0fXHCSNyvgUt+ZdG8m6RePgn4F9
+	9PEmWXWqjOfRpWTZGxbTm3KGXg==
+X-Google-Smtp-Source: AK7set8efE2ic1qDCl5vB6UuSzw5tDGfuj/AWkp5gIlZw4LegN7+lqFUd1Y4loxlJ7hLAeQjAsur5g==
+X-Received: by 2002:a05:622a:1650:b0:3b9:ca2b:a923 with SMTP id y16-20020a05622a165000b003b9ca2ba923mr13763023qtj.67.1677696938199;
+        Wed, 01 Mar 2023 10:55:38 -0800 (PST)
+Received: from ghost.leviathan.sladewatkins.net (pool-108-44-32-49.albyny.fios.verizon.net. [108.44.32.49])
+        by smtp.gmail.com with ESMTPSA id x11-20020a05620a0ecb00b00741b312c899sm9390094qkm.6.2023.03.01.10.55.33
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 01 Mar 2023 10:50:45 -0800 (PST)
-Message-ID: <db9031f6-f0cd-fc79-a00d-c1f52abc286f@acm.org>
-Date: Wed, 1 Mar 2023 10:50:42 -0800
+        Wed, 01 Mar 2023 10:55:36 -0800 (PST)
+Message-ID: <0ac05d7c-a885-2e13-93fc-20a58643abcb@sladewatkins.net>
+Date: Wed, 1 Mar 2023 13:55:32 -0500
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
+ Thunderbird/102.8.0
+From: Slade's Kernel Patch Bot <KernelPatchBot@sladewatkins.net>
 Subject: Re: [PATCH v2 4/7] scsi: ufs: core: Add hwq print for debug
-Content-Language: en-US
 To: =?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?= <Powen.Kao@mediatek.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
  "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
@@ -62,6 +75,7 @@ To: =?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?= <Powen.Kao@mediatek.com>,
  "quic_ziqichen@quicinc.com" <quic_ziqichen@quicinc.com>,
  "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
  "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "bvanassche@acm.org" <bvanassche@acm.org>,
  "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
  "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
  "linux-arm-kernel@lists.infradead.org"
@@ -79,7 +93,8 @@ Cc: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
  <Chaotian.Jing@mediatek.com>, =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
  <Naomi.Chu@mediatek.com>, =?UTF-8?B?U3RhbmxleSBDaHUgKOacseWOn+mZnik=?=
  <stanley.chu@mediatek.com>, =?UTF-8?B?TWFzb24gWmhhbmcgKOeroOi+iSk=?=
- <Mason.Zhang@mediatek.com>, "quic_cang@quicinc.com" <quic_cang@quicinc.com>
+ <Mason.Zhang@mediatek.com>, "quic_cang@quicinc.com" <quic_cang@quicinc.com>,
+ Slade Watkins <srw@sladewatkins.net>
 References: <20230222030427.957-1-powen.kao@mediatek.com>
  <20230222030427.957-5-powen.kao@mediatek.com>
  <1b9c2bc9-a349-062a-597c-336804c05394@quicinc.com>
@@ -87,13 +102,13 @@ References: <20230222030427.957-1-powen.kao@mediatek.com>
  <0c17dd26-b1aa-54b0-6dc4-561cd996cead@quicinc.com>
  <76f74b86-8ff1-2346-4f5e-0048543bd8b0@quicinc.com>
  <f629f1b72e4859d79aac279ef3327715000e3210.camel@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
+Content-Language: en-US
 In-Reply-To: <f629f1b72e4859d79aac279ef3327715000e3210.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230301_105048_954476_6F9D8494 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20230301_105542_582049_3F7A6191 
+X-CRM114-Status: GOOD (  24.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,20 +123,157 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/28/23 18:17, Powen Kao (高伯文) wrote:
+On 2/28/23 21:17, Powen Kao (高伯文) wrote:
+> Hi Bao,
+> 
 > Sure, we can first integrate ur patch and see if anything is missing
 > that need further upstream. Due to comapct schedule, I would kindly ask
 > if it will be ready by the end of this week? :) Thanks
+> 
 
-Please trim e-mails before replying and please reply below the original 
-text instead of above. From https://en.wikipedia.org/wiki/Posting_style:
+This is Slade's kernel patch bot. When scanning his mailbox, I came across
+this message, which appears to be a top-post. Please do not top-post on Linux
+mailing lists.
 
-Because it messes up the order in which people normally read text.
-Why is top-posting such a bad thing?
-Top-posting.
-What is the most annoying thing in e-mail?
+A: Because it messes up the order in which people normally read text.
+Q: Why is top-posting such a bad thing?
+A: Top-posting.
+Q: What is the most annoying thing in e-mail?
 
-Thanks,
+Please bottom-post to Linux mailing lists in the future. See also:
+https://daringfireball.net/2007/07/on_top
 
-Bart.
+If you believe this is an error, please address a message to Slade Watkins
+<srw@sladewatkins.net>.
+
+Thank you,
+-- Slade's kernel patch bot
+
+> 
+> On Mon, 2023-02-27 at 18:57 -0800, Bao D. Nguyen wrote:
+>> On 2/26/2023 7:14 Sure PM, Ziqi Chen wrote:
+>>> Hi Powen,
+>>>
+>>> The Bao. D . Nguyen (quic_nguyenb@quicinc.com) from QCOM already
+>>> made 
+>>> patch to support MCQ abort.
+>>>
+>>> ++ Bao here to be aware of it in case your error handing patch 
+>>> conflict with his abort handling patch.
+>>>
+>>>
+>>> Best Regards,
+>>>
+>>> Ziqi
+>>>
+>>>
+>>> On 2/23/2023 10:13 PM, Powen Kao (高伯文) wrote:
+>>>> Hi Ziqi,
+>>>>
+>>>> Thanks for ur comments.
+>>>>
+>>>> This piece of code successfully dump relevent registers on our
+>>>> platform. As you know, mcq error handling flow is not ready yet
+>>>> so the
+>>>> insertion point might not seems to be reasonable.
+>>>>
+>>>> Maybe drop this patch for now, I will send it later with error
+>>>> handling
+>>>> patches.
+>>>>
+>>>>
+>>>> On Thu, 2023-02-23 at 18:14 +0800, Ziqi Chen wrote:
+>>>>> Hi Po-Wen,
+>>>>>
+>>>>> On 2/22/2023 11:04 AM, Po-Wen Kao wrote:
+>>>>>> +void ufshcd_mcq_print_hwqs(struct ufs_hba *hba, unsigned
+>>>>>> long
+>>>>>> bitmap)
+>>>>>> +{
+>>>>>> +    int id, i;
+>>>>>> +    char prefix[15];
+>>>>>> +
+>>>>>> +    if (!is_mcq_enabled(hba))
+>>>>>> +        return;
+>>>>>> +
+>>>>>> +    for_each_set_bit(id, &bitmap, hba->nr_hw_queues) {
+>>>>>> +        snprintf(prefix, sizeof(prefix), "q%d SQCFG: ", id);
+>>>>>> +        ufshcd_hex_dump(prefix,
+>>>>>> +            hba->mcq_base + MCQ_QCFG_SIZE * id,
+>>>>>> MCQ_QCFG_SQ_SIZE);
+>>>>>
+>>>>> Is your purpose dump per hardware queue registers here?  If
+>>>>> yes, why
+>>>>> don't use ufsmcq_readl() to save to a buffer and then use
+>>>>> ufshcd_hex_dump()
+>>>>>
+>>>>> to dump ? Are you sure ufshcd_hex_dump() can dump register
+>>>>> directly?
+>>>>>
+>>>>>> +
+>>>>>> +        snprintf(prefix, sizeof(prefix), "q%d CQCFG: ", id);
+>>>>>> +        ufshcd_hex_dump(prefix,
+>>>>>> +            hba->mcq_base + MCQ_QCFG_SIZE * id +
+>>>>>> MCQ_QCFG_SQ_SIZE, MCQ_QCFG_CQ_SIZE);
+>>>>>
+>>>>> Same to above comment.
+>>>>>> +
+>>>>>> +        for (i = 0; i < OPR_MAX ; i++) {
+>>>>>> +            snprintf(prefix, sizeof(prefix), "q%d OPR%d: ",
+>>>>>> id, i);
+>>>>>> +            ufshcd_hex_dump(prefix, mcq_opr_base(hba, i,
+>>>>>> id), mcq_opr_size[i]);
+>>>>>
+>>>>> Same.
+>>>>>> +        }
+>>>>>> +    }
+>>>>>> +}
+>>>>>> +
+>>>>>>
+>>>>>>    @@ -574,7 +569,16 @@ void ufshcd_print_trs(struct ufs_hba
+>>>>>> *hba,
+>>>>>> unsigned long bitmap, bool pr_prdt)
+>>>>>>            if (pr_prdt)
+>>>>>>                ufshcd_hex_dump("UPIU PRDT: ", lrbp-
+>>>>>>> ucd_prdt_ptr,
+>>>>>>
+>>>>>>                    ufshcd_sg_entry_size(hba) *
+>>>>>> prdt_length);
+>>>>>> +
+>>>>>> +        if (is_mcq_enabled(hba)) {
+>>>>>> +            cmd = lrbp->cmd;
+>>>>>> +            if (!cmd)
+>>>>>> +                return;
+>>>>>> +            hwq = ufshcd_mcq_req_to_hwq(hba,
+>>>>>> scsi_cmd_to_rq(cmd));
+>>>>>> +            ufshcd_mcq_print_hwqs(hba, 1 << hwq->id);
+>>>>>
+>>>>> Calling registers dump function in ufshcd_print_trs() is not
+>>>>> reasonable,
+>>>>> eg.. for each aborted request, it would print out all hwq
+>>>>> registers,
+>>>>> it's not make sense.
+>>>>>
+>>>>> I think we should move it out of ufshcd_print_trs().
+>>>>>
+>>>>>> +        }
+>>>>>>        }
+>>>>>> +
+>>>>>>    }
+>>>>>
+>>>>> Best Regards,
+>>>>>
+>>>>> Ziqi
+>>>>>
+>>
+>> Hi Powen,
+>>
+>> I am going to push the mcq abort handling and mcq error handling
+>> code 
+>> upstream for review in a couple days. Would that work for you?
+>>
+>> Regards,
+>> Bao
+>>
+
 
