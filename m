@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E1FDC64ED6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Mar 2023 09:59:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8426C64ED6
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Mar 2023 09:59:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bQTAgDuOfb2kZdVEZqjF5sDL/UOMQcC8U38T0HAwWt0=; b=n9y7ruPEnDGCGVMhO4fM2SvwA1
-	8ejMx3WYgzTn9+vlmTFP3/3n2RjkMODoB9J0WX8AplD+AdSymv+PoT5F4/5oiZvomtl89xDFJx3lD
-	5fUCLGaRYcP1Ax6tIatu+69cz8F9+jKkEMy2/VuIsdFtkD12UA5SjqfyR1ZfCTXxf/4+N8loaGvah
-	kUsvhM+eljctySXVqANFnvrn6xSK+K6f0Bp2npg13H8z+IAx1awwR5touMRSJhUyTp5u3hmD7ts5Q
-	2ZOjHvskHRQxgX2bPb3/2zSRMOSSBAPpg7aBjV9lvGFzCWmxON7DbwpoxDoJXsmM1s0lWRddtplb3
-	Ca3gGKHw==;
+	bh=IPeLzAnu40OEFmsm2TUZHRD4OK6i1lIc44dZlRVz8I4=; b=tC9GEvq5s9FGfjRDx3Kwe8yA86
+	QFMgark5Pxucc3ubVGBg/L2/Z+imecKwWw95KEKmXqHe/XYBzuiqOq/j2aJ4GsgezKIJV0IhdkaXj
+	dM1c5SibB2mwBGnv/9u8Jm+hSz3Lp3xrJBeXXrkxIuuMN7aa76hfG4THiZnGtD06rTZ9LjAGr+5s4
+	v4CJRWWq+sRl62R9v2O3m4Ui3qAwtzgjmnAEXYwajgpumJ/2apiOyWc25Z67um15OMZas68P1d0xn
+	3aw+euZMzIG/61XlWEL72StN5OlH4YxdVhzum00R0hZXGG42JxfP0QO205Cdkku9HvYKVqXZH2r3B
+	jFkaytSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXJEw-00Ffgd-Sv; Wed, 01 Mar 2023 09:59:14 +0000
+	id 1pXJFV-00Fg1k-PA; Wed, 01 Mar 2023 09:59:49 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXJBR-00FdNi-Qm; Wed, 01 Mar 2023 09:55:39 +0000
+	id 1pXJBS-00FdO7-GS; Wed, 01 Mar 2023 09:55:39 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 297D266020E6;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D050D660211B;
 	Wed,  1 Mar 2023 09:55:36 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1677664536;
-	bh=8ABzLk/e2rpCHLt16uUykksCJa8zFaozhbox7sQgQPA=;
+	s=mail; t=1677664537;
+	bh=co4SeDmQzj4uU8aYQJsjemsonD8P7POUOi2D/TyJicQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=jDpdAPcLUUkMKSd2i4Ita4lKN0g2OI5VS3BvB09Q+chWNGVMOPpOideIk7LMs2dOh
-	 t9S0/fbLiYZlvn/1nWgCxRtObYrN7joVanRPx3d3XfYQIIVldT1WR03TvG+rRQR4ov
-	 ORAyPsPsrNJ98qutjZrriNituD7SbYQ+wOFnFC/AVwuob4qxVfZu1UT2BmekH03S2i
-	 MUsUIMOi163XelGIj5nurZcdFZlyaS1KcTnuYtvl2RUyJhMvS7lzU7uG8O0lb4bSMn
-	 PNccE7tZhfPwTjE2wwlCkJrsMtU/CdzkUa4bDG8FOW5aolTbqOoqpsU80/mivtyeKD
-	 N9dmdIDoDnikA==
+	b=LNy8CnbOZxIoaSG9lOwDELZPZvwSOFF6ZoXE3St0Hjhbs1dq9GP2Vr9Ux4rfjgDDA
+	 c98a5Ml4ioX3aLdmuVF37c/VCxRt+/7GDBFM/Dj21pdh6dxvtdl+kKPCbKpCuLg1R8
+	 3FQO3RGxwc3Zffx7q+wNLT8y7ajTGd6hHOXWGxCmDd2sYyxjkJ9GiNlt8jgdnJpbXM
+	 2MDpGwx2YrkdLz6w8ibZ1vkQ2Ttg4Nv5B+h0PkTIbdaMXMSLdNwhcrB1niGm5IRuo4
+	 5IbCQ8+tDH8EusEPQclRv9ytqM1Wt98Rnf/H0jlDjomO7qpGUyU3NQCGFYD7G+6Mzy
+	 zBPcCtltPv/SA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: robh+dt@kernel.org,
@@ -51,17 +51,18 @@ Cc: robh+dt@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	wenst@chromium.org
-Subject: [PATCH v4 11/19] arm64: dts: mediatek: mt8192-asurada: Fix voltage constraint for Vgpu
-Date: Wed,  1 Mar 2023 10:55:15 +0100
-Message-Id: <20230301095523.428461-12-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v4 12/19] arm64: dts: mediatek: mt8192-asurada: Couple VGPU and VSRAM_OTHER regulators
+Date: Wed,  1 Mar 2023 10:55:16 +0100
+Message-Id: <20230301095523.428461-13-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230301095523.428461-1-angelogioacchino.delregno@collabora.com>
 References: <20230301095523.428461-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230301_015538_024080_056B7336 
-X-CRM114-Status: GOOD (  10.23  )
+X-CRM114-CacheID: sfid-20230301_015538_698051_51577C83 
+X-CRM114-Status: UNSURE (   9.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,32 +77,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8192 SoC specifies a maximum voltage for the GPU's digital supply
-of 0.88V and the GPU OPPs are declaring a maximum voltage of 0.80V.
+Add coupling for these regulators, as VSRAM_OTHER is used to power the
+GPU SRAM, and they have a strict voltage output relation to satisfy in
+order to ensure GPU stable operation.
+While at it, also add voltage constraint overrides for the GPU SRAM
+regulator "mt6359_vsram_others" so that we stay in a safe range of
+0.75-0.80V.
 
-In order to keep the GPU voltage in the safe range, change the maximum
-voltage for mt6315@7's vbuck1 to 0.80V as sending, for any mistake,
-1.193V would be catastrophic.
-
-Fixes: 3183cb62b033 ("arm64: dts: mediatek: asurada: Add SPMI regulators")
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-index df477eb89f21..8570b78c04a4 100644
+index 8570b78c04a4..f858eca219d7 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-@@ -1408,7 +1408,7 @@ mt6315_7_vbuck1: vbuck1 {
- 				regulator-compatible = "vbuck1";
- 				regulator-name = "Vgpu";
- 				regulator-min-microvolt = <606250>;
--				regulator-max-microvolt = <1193750>;
-+				regulator-max-microvolt = <800000>;
+@@ -447,6 +447,13 @@ &mt6359_vrf12_ldo_reg {
+ 	regulator-always-on;
+ };
+ 
++&mt6359_vsram_others_ldo_reg {
++	regulator-min-microvolt = <750000>;
++	regulator-max-microvolt = <800000>;
++	regulator-coupled-with = <&mt6315_7_vbuck1>;
++	regulator-coupled-max-spread = <10000>;
++};
++
+ &mt6359_vufs_ldo_reg {
+ 	regulator-always-on;
+ };
+@@ -1411,6 +1418,8 @@ mt6315_7_vbuck1: vbuck1 {
+ 				regulator-max-microvolt = <800000>;
  				regulator-enable-ramp-delay = <256>;
  				regulator-allowed-modes = <0 1 2>;
++				regulator-coupled-with = <&mt6359_vsram_others_ldo_reg>;
++				regulator-coupled-max-spread = <10000>;
  			};
+ 		};
+ 	};
 -- 
 2.39.2
 
