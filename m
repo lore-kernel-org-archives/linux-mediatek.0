@@ -4,69 +4,179 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01E5DC64ED6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Mar 2023 13:19:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4755DC64ED6
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Mar 2023 16:22:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y/5EwPs/V4mpGnR0QR156FhPVTzX7OVgzcD+BmBfaXI=; b=KDK0+mHa6ShjvT4gZruew2dENE
-	ph6j0Uq5umo2uRHhf4wioH8NUJ2FCdGlUi7+x75hvfYD2y/Sdegdt3GDHBJUYj/7ZD8OhfAvUuTI8
-	d+HexLo+rrhK/U/GtCzj3fQ1HqY9mCW+Be4M4KHzqLFV3Y3zv7UZntLNJb3vpPsRDiVD8jfeFaZA/
-	6dAX+SzYUf89X0KrFLWMP7myTaHKfLF1slzIB0BIuuQiT292zUQtaaNi+vU7esE76+0KSDLf25bsM
-	0BT2LdaUdoI7HSbznp8yoNQBpFMTSgX6k47kvMw+eqtteeWTusLTSNx/8OZFrRwXwD3JX8EM7zQuz
-	YpO7gQkg==;
+	bh=eJOulfBTO406+XJwSAbUrw3TOVKL7z76SdXOdRRvd8g=; b=tPlKaFp7nsRq8YYsmE3PQ/jzgU
+	ItVgDIEALmqarPNHIL6Pr4fZbtPszEL5lXL9hUENJbsdH7Kg/GCYS+QwKWx7VOrrABDgstS/Vqz6L
+	3MRk4OCyuO9+v3lxw/uB+e271i0s9xUHXC+hBEbGfF4+YO8womfB6opmmp+gbCBPJjTnJq2+UdPZg
+	q7pKCbo8gqVMvcssSOJa85Sc1mBTXcGuA20DpBbQ2KkXt6oZIMbPi2f08pFvMO92CWdcCszvKSq3w
+	OsqB03Rzc/xz2FvXZuhOFeiL1ETAc4kZUA2p+UrTo8t/VwFojOe0donUa+heejbZ5aD8j3KZyP4Ln
+	jQ6Z/xbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXMMd-00GKSx-AT; Wed, 01 Mar 2023 13:19:23 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pXPDB-00GneZ-OM; Wed, 01 Mar 2023 16:21:49 +0000
+Received: from fllv0016.ext.ti.com ([198.47.19.142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXMMS-00GKRH-0m; Wed, 01 Mar 2023 13:19:14 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 52EF6660212B;
-	Wed,  1 Mar 2023 13:19:07 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1677676748;
-	bh=NtI9QMAsK+AJz3EAGeUPIX06W3NymJxTuOWGisSbFkc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MK2tGL+XPyq507BPSHvKp8CIS6CO6/yAUNqhwEtB+R382xSeeAUBWLlgCXmRDsL0K
-	 cNy91SX9oTkQmgPlMMRfZTqfFTGGf6rVo4qDLKA7etHzZ0BhXKQ41i9NDKWCKjmIrY
-	 BuaDjG698hvaxZsHLEY3NqASs4gmORnMHPp3gDtD5bBBGYaBA8XYC2okikv2wzgv0Z
-	 dlrJRRJ6i+5BwC9fnMpgMX1p804yrsOvVbBHYeVwNE5MMlLElB9CcXSIVeNrAqpPr4
-	 7SuDT9e9j7KaSAcRbeXVJEqbooS8ffJ+48oQRfW94AOLZI6ZNgfhwqK560gz9U9Wjd
-	 zsxYES1ZVjvtw==
-Message-ID: <6f630d1f-6445-eafa-995b-c38bc23ebc9b@collabora.com>
-Date: Wed, 1 Mar 2023 14:19:04 +0100
+	id 1pXPD8-00GndK-HG; Wed, 01 Mar 2023 16:21:48 +0000
+Received: from fllv0035.itg.ti.com ([10.64.41.0])
+	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 321GKeV8065246;
+	Wed, 1 Mar 2023 10:20:40 -0600
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+	s=ti-com-17Q1; t=1677687640;
+	bh=eJOulfBTO406+XJwSAbUrw3TOVKL7z76SdXOdRRvd8g=;
+	h=Date:Subject:To:CC:References:From:In-Reply-To;
+	b=oITlJuKJL0Igo+Zp8Mw3to8q1ph1GEIt/d3yESZ3cer2ebuhWbdbMI3A5SmJvB3FN
+	 V+iCTjreym1r6VJb2vPdvJYz95D6QkQDjk525lQPej2NRTUvuqozcO2ayatgFg+2/r
+	 1bTPhJR/a6fqQcqeL9vlm4O3gnX/VFyNSv0aWTr0=
+Received: from DFLE106.ent.ti.com (dfle106.ent.ti.com [10.64.6.27])
+	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 321GKeZv003448
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Wed, 1 Mar 2023 10:20:40 -0600
+Received: from DFLE112.ent.ti.com (10.64.6.33) by DFLE106.ent.ti.com
+ (10.64.6.27) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.16; Wed, 1
+ Mar 2023 10:20:40 -0600
+Received: from fllv0040.itg.ti.com (10.64.41.20) by DFLE112.ent.ti.com
+ (10.64.6.33) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.16 via
+ Frontend Transport; Wed, 1 Mar 2023 10:20:40 -0600
+Received: from [10.250.235.39] (ileaxei01-snat2.itg.ti.com [10.180.69.6])
+	by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 321GKE84054644;
+	Wed, 1 Mar 2023 10:20:15 -0600
+Message-ID: <2493cf75-f78c-993a-01e6-8f89556973f0@ti.com>
+Date: Wed, 1 Mar 2023 21:50:14 +0530
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v5 00/54] MediaTek clocks: full module build and cleanups
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v4 02/19] thermal/core: Use the thermal zone 'devdata'
+ accessor in thermal located drivers
 Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
- johnson.wang@mediatek.com, miles.chen@mediatek.com,
- chun-jie.chen@mediatek.com, daniel@makrotopia.org, fparent@baylibre.com,
- msp@baylibre.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com,
- zhaojh329@gmail.com, sam.shih@mediatek.com, edward-jw.yang@mediatek.com,
- yangyingliang@huawei.com, granquet@baylibre.com, pablo.sun@mediatek.com,
- sean.wang@mediatek.com, chen.zhong@mediatek.com,
- linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230222092543.19187-1-angelogioacchino.delregno@collabora.com>
- <CAGXv+5EA9Ed2tyg2f3TSeXYdZOZ8a=VztaOc_UTFK2dEsENjJQ@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5EA9Ed2tyg2f3TSeXYdZOZ8a=VztaOc_UTFK2dEsENjJQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: Daniel Lezcano <daniel.lezcano@linaro.org>, <rafael@kernel.org>
+CC: <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        =?UTF-8?Q?Niklas_S=c3=b6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+        Mark Brown <broonie@kernel.org>,
+        AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+        Balsam CHIHI
+	<bchihi@baylibre.com>,
+        Adam Ward <DLG-Adam.Ward.opensource@dm.renesas.com>,
+        Baolin Wang <baolin.wang@linux.alibaba.com>,
+        Jernej Skrabec
+	<jernej.skrabec@gmail.com>,
+        "Rafael J . Wysocki"
+	<rafael.j.wysocki@intel.com>,
+        Florian Fainelli <f.fainelli@gmail.com>,
+        Guillaume La Roque <glaroque@baylibre.com>,
+        Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+        Miquel Raynal <miquel.raynal@bootlin.com>,
+        Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+        Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+        Markus
+ Mayer <mmayer@broadcom.com>,
+        Support Opensource
+	<support.opensource@diasemi.com>,
+        Shawn Guo <shawnguo@kernel.org>,
+        Sascha
+ Hauer <s.hauer@pengutronix.de>,
+        Pengutronix Kernel Team
+	<kernel@pengutronix.de>,
+        Fabio Estevam <festevam@gmail.com>,
+        NXP Linux Team
+	<linux-imx@nxp.com>,
+        Thara Gopinath <thara.gopinath@gmail.com>,
+        Andy Gross
+	<agross@kernel.org>,
+        Bjorn Andersson <andersson@kernel.org>,
+        Konrad Dybcio
+	<konrad.dybcio@linaro.org>,
+        =?UTF-8?Q?Niklas_S=c3=b6derlund?=
+	<niklas.soderlund@ragnatech.se>,
+        Heiko Stuebner <heiko@sntech.de>,
+        Bartlomiej
+ Zolnierkiewicz <bzolnier@gmail.com>,
+        Krzysztof Kozlowski
+	<krzysztof.kozlowski@linaro.org>,
+        Alim Akhtar <alim.akhtar@samsung.com>,
+        Orson Zhai <orsonzhai@gmail.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+        Alexandre Torgue
+	<alexandre.torgue@foss.st.com>,
+        Vasily Khoruzhick <anarsoul@gmail.com>,
+        Yangtao Li <tiny.windzz@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+        Samuel
+ Holland <samuel@sholland.org>,
+        Thierry Reding <thierry.reding@gmail.com>,
+        Jonathan Hunter <jonathanh@nvidia.com>,
+        Talel Shenhar <talel@amazon.com>,
+        Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
+        Kunihiko
+ Hayashi <hayashi.kunihiko@socionext.com>,
+        Masami Hiramatsu
+	<mhiramat@kernel.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        Stefan
+ Wahren <stefan.wahren@i2se.com>,
+        ye xingchen <ye.xingchen@zte.com.cn>,
+        Zheng
+ Yongjun <zhengyongjun3@huawei.com>,
+        Srinivas Pandruvada
+	<srinivas.pandruvada@linux.intel.com>,
+        Davidlohr Bueso <dave@stgolabs.net>,
+        Sumeet Pawnikar <sumeet.r.pawnikar@intel.com>,
+        Kees Cook
+	<keescook@chromium.org>,
+        Shang XiaoJing <shangxiaojing@huawei.com>,
+        Tim
+ Zimmermann <tim@linux4.de>, Yang Li <yang.lee@linux.alibaba.com>,
+        Jiang Jian
+	<jiangjian@cdjrlc.com>,
+        Daniel Golle <daniel@makrotopia.org>,
+        Randy Dunlap
+	<rdunlap@infradead.org>,
+        Minghao Chi <chi.minghao@zte.com.cn>,
+        Johan Hovold
+	<johan+linaro@kernel.org>,
+        Mikko Perttunen <mperttunen@nvidia.com>,
+        "open
+ list:THERMAL DRIVER FOR AMLOGIC SOCS" <linux-amlogic@lists.infradead.org>,
+        "moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE"
+	<linux-rpi-kernel@lists.infradead.org>,
+        "moderated list:BROADCOM
+ BCM2711/BCM2835 ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>,
+        "open list:QUALCOMM TSENS THERMAL DRIVER" <linux-arm-msm@vger.kernel.org>,
+        "open list:RENESAS R-CAR THERMAL DRIVERS"
+	<linux-renesas-soc@vger.kernel.org>,
+        "open list:ARM/Rockchip SoC support"
+	<linux-rockchip@lists.infradead.org>,
+        "open list:SAMSUNG THERMAL DRIVER"
+	<linux-samsung-soc@vger.kernel.org>,
+        "moderated list:ARM/STM32 ARCHITECTURE"
+	<linux-stm32@st-md-mailman.stormreply.com>,
+        "open list:ARM/Allwinner sunXi
+ SoC support" <linux-sunxi@lists.linux.dev>,
+        "open list:TEGRA ARCHITECTURE
+ SUPPORT" <linux-tegra@vger.kernel.org>,
+        "open list:TI BANDGAP AND THERMAL
+ DRIVER" <linux-omap@vger.kernel.org>,
+        "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>
+References: <20230228112238.2312273-1-daniel.lezcano@linaro.org>
+ <20230228112238.2312273-3-daniel.lezcano@linaro.org>
+From: "Gole, Dhruva" <d-gole@ti.com>
+Organization: Texas Instruments Incorporated
+In-Reply-To: <20230228112238.2312273-3-daniel.lezcano@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230301_051912_679326_CBBDF5D7 
-X-CRM114-Status: GOOD (  28.18  )
+X-CRM114-CacheID: sfid-20230301_082146_664218_B4CCB93E 
+X-CRM114-Status: GOOD (  20.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,166 +191,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/02/23 11:15, Chen-Yu Tsai ha scritto:
-> On Wed, Feb 22, 2023 at 5:25 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Changes in v5:
->>   - Fixed typo in MODULE_DEVICE_TABLE() for clk-mt8195-vpp0/vpp1
->>
->> Changes in v4:
->>   - Rebased over clk-next branch as of 21/02/2023
->>   - MT8135: Squashed removal of __initconst annotation with conversion
->>     to platform drivers as suggested by Chen-Yu
->>   - MT8135: Added mention of the introduction of the dummy clock in
->>     the commit description of patch [54/54]
->>   - Fixed Kconfig ordering issue for MT8195 IMGSYS dependant option
->>
->> Changes in v3:
->>   - Added conversion to simple_probe for MT8135 clocks
->>   - Reordered added Kconfig options for MT8195, MT8186
->>   - Additional config options for MT8195, MT8186 are now default
->>     enabled if parent COMMON_CLK_MT81{95,86} is enabled
->>   - Added .remove() callback to MT2712 and MT7622 apmixedsys drivers
->>     to avoid resource leakage on unbind/removal
->>   - Dropped unwanted and useless change on mt7629-eth.c
->>
->> Changes in v2:
->>   - Fixed issues on MT8183 (thanks Chen-Yu!)
->>   - Changed builtin_platform_driver() -> module_platform_driver() for
->>     MT8167 vdecsys clocks (as that was a mistake!)
->>   - Some patches were split, some others were reordered
->>   - Summarized: applied changes from Chen-Yu's review
->>
->> This is part 2 of the "MediaTek clocks cleanups and improvements" series,
->> which was already picked.
->>
->> If reading this full cover letter is too boring for you, here's a short
->> summary of the changes of this series:
->>   - Added mtk_clk_pdev_probe() for mtk-mmsys probed clocks;
->>   - Added divider clock support to common probe mechanism;
->>   - Various cleanups here and there;
->>   - Converted most clock drivers to platform_driver;
->>   - MediaTek clocks can now be built as modules.
->>
->> NOTE: Applies on top of [1] and [2].
->>
->>
->> Full blurb:
->>
->> This huge series adds more cleanups on top, reducing size and adding more
->> commonization for clock drivers probe/remove, which also includes a new
->> common probe mechanism for multimedia clock drivers that are usually
->> probed by mtk-mmsys instead of a dt clock node: thanks to this, it was
->> finally possible to convert almost all clock drivers to the common probe
->> mechanism, which *finally again* makes us able to build all these drivers
->> as modules!
->>
->> Since this looked like being *the* way forward, I went on converting some
->> more drivers away from OF_CLK_DECLARE_DRIVER to full platform_driver(s),
->> allowing for more (actually, almost all!) drivers to be built as modules.
->>
->> While at it, I also added some more consistency in macros usage by
->> removing all of the duplicated full macro declaration for MediaTek gate
->> clocks and replacing all of those with using the GATE_MTK macro instead,
->> producing a nice reduction in amount of lines per file but, more
->> importantly, improving readability and eventual future batch changes.
->>
->> This amount of commonization will also, in my opinion, greatly improve
->> the review process for new clock drivers, as they will be mostly just a
->> list of clocks and won't contain much new code, as it's all going to be
->> handled in the common places, which also reduces chances to see new clock
->> driver related bugs emerging on one SoC or the other.
->>
->> Since I don't own devices with all of the supported MediaTek SoCs, I
->> could not test some of the conversions on real hardware... but I am
->> confident that this will work as the drivers are *very* similar on a
->> per-generation basis.
->>
->> This series was build-tested for all (both module and built-in build)
->> and was manually tested on MT6795, MT8173, MT8192, MT8195.
->>
->> [1]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=719067
->> [2]: https://patchwork.kernel.org/project/linux-mediatek/patch/20230207014800.7619-2-moudy.ho@mediatek.com/
->>
->> AngeloGioacchino Del Regno (54):
->>    clk: mediatek: clk-mtk: Switch to device_get_match_data()
->>    clk: mediatek: clk-mtk: Introduce clk_mtk_pdev_{probe,remove}()
->>    clk: mediatek: Migrate to mtk_clk_pdev_probe() for multimedia clocks
->>    clk: mediatek: Add divider clocks to mtk_clk_simple_{probe,remove}()
->>    clk: mediatek: mt2712: Migrate topckgen/mcucfg to
->>      mtk_clk_simple_probe()
->>    clk: mediatek: mt2712: Compress clock arrays entries to 90 columns
->>    clk: mediatek: mt2712: Add error handling to
->>      clk_mt2712_apmixed_probe()
->>    clk: mediatek: mt2712: Move apmixedsys clock driver to its own file
->>    clk: mediatek: mt2712-apmixedsys: Add .remove() callback for module
->>      build
->>    clk: mediatek: mt2712: Change to use module_platform_driver macro
->>    clk: mediatek: mt8365: Move apmixedsys clock driver to its own file
->>    clk: mediatek: mt8365: Convert simple_gate to mtk_gate clocks
->>    clk: mediatek: mt8365: Join top_misc_mux_gates and top_misc_muxes
->>      arrays
->>    clk: mediatek: mt8365: Convert to mtk_clk_simple_{probe,remove}()
->>    clk: mediatek: mt8167: Compress GATE_TOPx macros
->>    clk: mediatek: mt8167: Move apmixedsys as platform_driver in new file
->>    clk: mediatek: mt8167: Remove __initconst annotation from arrays
->>    clk: mediatek: mt8167: Convert to mtk_clk_simple_{probe,remove}()
->>    clk: mediatek: mt8183: Move apmixedsys clock driver to its own file
->>    clk: mediatek: mt8183: Compress clocks arrays entries where possible
->>    clk: mediatek: mt8183: Convert all remaining clocks to common probe
->>    clk: mediatek: Consistently use GATE_MTK() macro
->>    clk: mediatek: mt7622: Properly use CLK_IS_CRITICAL flag
->>    clk: mediatek: mt7622: Move apmixedsys clock driver to its own file
->>    clk: mediatek: mt7622-apmixedsys: Add .remove() callback for module
->>      build
->>    clk: mediatek: mt7622: Move infracfg to clk-mt7622-infracfg.c
->>    clk: mediatek: mt7622: Convert to platform driver and simple probe
->>    clk: mediatek: mt8516: Move apmixedsys clock driver to its own file
->>    clk: mediatek: mt8516: Convert to platform driver and simple probe
->>    clk: mediatek: mt8516: Allow building clock drivers as modules
->>    clk: mediatek: Propagate struct device with
->>      mtk_clk_register_dividers()
->>    clk: mediatek: mt7986-apmixed: Use PLL_AO flag to set critical clock
->>    clk: mediatek: mt7986-infracfg: Migrate to common probe mechanism
->>    clk: mediatek: mt7986-eth: Migrate to common probe mechanism
->>    clk: mediatek: mt8186-mcu: Migrate to common probe mechanism
->>    clk: mediatek: Switch to module_platform_driver() where possible
->>    clk: mediatek: Add MODULE_LICENSE() where missing
->>    clk: mediatek: mt2712: Change Kconfig options to allow module build
->>    clk: mediatek: Split MT8195 clock drivers and allow module build
->>    clk: mediatek: Allow building MT8192 non-critical clocks as modules
->>    clk: mediatek: Allow MT7622 clocks to be built as modules
->>    clk: mediatek: Allow all MT8167 clocks to be built as modules
->>    clk: mediatek: Allow all MT8183 clocks to be built as modules
->>    clk: mediatek: Allow building most MT6765 clock drivers as modules
->>    clk: mediatek: Allow building most MT6797 clock drivers as modules
->>    clk: mediatek: Split configuration options for MT8186 clock drivers
->>    clk: mediatek: mt8192: Move apmixedsys clock driver to its own file
->>    clk: mediatek: Kconfig: Allow module build for core mt8192 clocks
->>    clk: mediatek: Add MODULE_DEVICE_TABLE() where appropriate
->>    clk: mediatek: mt8135: Move apmixedsys to its own file
->>    clk: mediatek: mt8135: Properly use CLK_IS_CRITICAL flag
->>    clk: mediatek: mt8135-apmixedsys: Convert to platform_driver and
->>      module
->>    clk: mediatek: mt8135: Join root_clk_alias and top_divs arrays
->>    clk: mediatek: mt8135: Convert to simple probe and enable module build
-> 
-> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
-> 
-> on MT8183, MT8192, MT8195. Unfortunately on MT8186 the patch series causes
-> the kernel to freeze during boot. I need to build a verbose kernel to figure
-> it out.
-> 
-> ChenYu
 
-On next-20230301 I can't replicate kernel boot freezes, but there's a crash with
-ANX7625 happening with Asurada as well, completely unrelated to this series (as
-having it or not having it doesn't change anything, I checked).
+On 2/28/2023 4:52 PM, Daniel Lezcano wrote:
+> The thermal zone device structure is exposed to the different drivers
+> and obviously they access the internals while that should be
+> restricted to the core thermal code.
+>
+> In order to self-encapsulate the thermal core code, we need to prevent
+> the drivers accessing directly the thermal zone structure and provide
+> accessor functions to deal with.
+>
+> Use the devdata accessor introduced in the previous patch.
+>
+> No functional changes intended.
+>
+> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> Reviewed-by: Niklas Söderlund <niklas.soderlund+renesas@ragnatech.se> #R-Car
+> Acked-by: Mark Brown <broonie@kernel.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> #MediaTek auxadc and lvts
+> Reviewed-by: Balsam CHIHI <bchihi@baylibre.com> #Mediatek lvts
+> Reviewed-by: Adam Ward <DLG-Adam.Ward.opensource@dm.renesas.com> #da9062
+> Reviewed-by: Baolin Wang <baolin.wang@linux.alibaba.com>  #spread
+> Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com> #sun8i_thermal
+> Acked-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+> Acked-by: Florian Fainelli <f.fainelli@gmail.com> #Broadcom
+> ---
+>  drivers/thermal/amlogic_thermal.c                   |  2 +-
+>  drivers/thermal/armada_thermal.c                    |  4 ++--
+>  drivers/thermal/broadcom/bcm2711_thermal.c          |  2 +-
+>  drivers/thermal/broadcom/bcm2835_thermal.c          |  2 +-
+>  drivers/thermal/broadcom/brcmstb_thermal.c          |  4 ++--
+>  drivers/thermal/broadcom/ns-thermal.c               |  2 +-
+>  drivers/thermal/broadcom/sr-thermal.c               |  2 +-
+>  drivers/thermal/da9062-thermal.c                    |  2 +-
+>  drivers/thermal/db8500_thermal.c                    |  2 +-
+>  drivers/thermal/dove_thermal.c                      |  2 +-
+>  drivers/thermal/hisi_thermal.c                      |  2 +-
+>  drivers/thermal/imx8mm_thermal.c                    |  2 +-
+>  drivers/thermal/imx_sc_thermal.c                    |  2 +-
+>  drivers/thermal/imx_thermal.c                       |  6 +++---
+>  .../thermal/intel/int340x_thermal/int3400_thermal.c |  2 +-
+>  .../intel/int340x_thermal/int340x_thermal_zone.c    |  4 ++--
+>  .../int340x_thermal/processor_thermal_device_pci.c  |  4 ++--
+>  drivers/thermal/intel/intel_pch_thermal.c           |  2 +-
+>  drivers/thermal/intel/intel_quark_dts_thermal.c     |  6 +++---
+>  drivers/thermal/intel/intel_soc_dts_iosf.c          | 13 +++++--------
+>  drivers/thermal/intel/x86_pkg_temp_thermal.c        |  4 ++--
+>  drivers/thermal/k3_bandgap.c                        |  2 +-
+>  drivers/thermal/k3_j72xx_bandgap.c                  |  2 +-
+> [...]
+>  
+> diff --git a/drivers/thermal/k3_bandgap.c b/drivers/thermal/k3_bandgap.c
+> index 22c9bcb899c3..b5cd2c85e0c3 100644
+> --- a/drivers/thermal/k3_bandgap.c
+> +++ b/drivers/thermal/k3_bandgap.c
+> @@ -141,7 +141,7 @@ static int k3_bgp_read_temp(struct k3_thermal_data *devdata,
+>  
+>  static int k3_thermal_get_temp(struct thermal_zone_device *tz, int *temp)
+>  {
+> -	struct k3_thermal_data *data = tz->devdata;
+> +	struct k3_thermal_data *data = thermal_zone_device_priv(tz);
 
-I mentioned the unrelated crash to make you aware that it wasn't a full boot.
-If what you experienced what an early crash, that shouldn't be the case... I will
-give you some more info once I get a fully working kernel again...
+Reviewed-by: Dhruva Gole <d-gole@ti.com>
 
-Angelo
+
+>  	int ret = 0;
+>  
+>  	ret = k3_bgp_read_temp(data, temp);
+> diff --git a/drivers/thermal/k3_j72xx_bandgap.c b/drivers/thermal/k3_j72xx_bandgap.c
+> index 031ea1091909..5be1f09eeb2c 100644
+> --- a/drivers/thermal/k3_j72xx_bandgap.c
+> +++ b/drivers/thermal/k3_j72xx_bandgap.c
+> @@ -248,7 +248,7 @@ static inline int k3_bgp_read_temp(struct k3_thermal_data *devdata,
+>  /* Get temperature callback function for thermal zone */
+>  static int k3_thermal_get_temp(struct thermal_zone_device *tz, int *temp)
+>  {
+> -	return k3_bgp_read_temp(tz->devdata, temp);
+> +	return k3_bgp_read_temp(thermal_zone_device_priv(tz), temp);
+>  }
+>  
+>  static const struct thermal_zone_device_ops k3_of_thermal_ops = {
+> diff --git a/drivers/thermal/kirkwood_thermal.c b/drivers/thermal/kirkwood_thermal.c
+> index bec7ec20e79d..92b3ce426b9d 100644
+> --- a/drivers/thermal/kirkwood_thermal.c
+> +++ b/drivers/thermal/kirkwood_thermal.c
+> @@ -27,7 +27,7 @@ static int kirkwood_get_temp(struct thermal_zone_device *thermal,
+>  			  int *temp)
+>  {
+>  	unsigned long reg;
+> -	struct kirkwood_thermal_priv *priv = thermal->devdata;
+> +	struct kirkwood_thermal_priv *priv = thermal_zone_device_priv(thermal);
+>  
+>  	reg = readl_relaxed(priv->sensor);
+>  
+> [...]
+
+-- 
+Regards,
+Dhruva Gole <d-gole@ti.com>
+
 
