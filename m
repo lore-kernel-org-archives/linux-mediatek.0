@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D7E1C64EC7
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Mar 2023 12:15:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01E5DC64ED6
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Mar 2023 13:19:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JujL0zJMof6BeSlvA5bvmTeu3hHrd2enXVP0mfRzsrA=; b=FmNZyKuvTPUbDxool4TgzZ31Ms
-	5Doo0ECLHLw0RyY1VAkowJKXJ4suxT0XZn1KLzOnaDvq0LlLBdZLGsAX0N2wHSdpYmfsWP53BDjrm
-	J7vzBU7+xrz1U4JMqkVv8ubE6kdiqfzuRoxZr1QzQjVA4N6NDzrUpl4NwJYGD73UTq0OndDjFY916
-	7PEHKDY16dorKltLcx5KqGEu6HhPzR/yo+X0K3ct0KmiPK0RU0d1CnjxxxoDTa/topO/OxinLLa0b
-	qZwrigAONMvpPKyJpMSMsOMd2JJe2/4l5rk0BF8iG8wIPTbrJ6Vu9NDS/WGBkUgamHpHZ1BcO9WMK
-	ZSBe4pnw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=y/5EwPs/V4mpGnR0QR156FhPVTzX7OVgzcD+BmBfaXI=; b=KDK0+mHa6ShjvT4gZruew2dENE
+	ph6j0Uq5umo2uRHhf4wioH8NUJ2FCdGlUi7+x75hvfYD2y/Sdegdt3GDHBJUYj/7ZD8OhfAvUuTI8
+	d+HexLo+rrhK/U/GtCzj3fQ1HqY9mCW+Be4M4KHzqLFV3Y3zv7UZntLNJb3vpPsRDiVD8jfeFaZA/
+	6dAX+SzYUf89X0KrFLWMP7myTaHKfLF1slzIB0BIuuQiT292zUQtaaNi+vU7esE76+0KSDLf25bsM
+	0BT2LdaUdoI7HSbznp8yoNQBpFMTSgX6k47kvMw+eqtteeWTusLTSNx/8OZFrRwXwD3JX8EM7zQuz
+	YpO7gQkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXLN3-00G4PD-9V; Wed, 01 Mar 2023 12:15:45 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pXMMd-00GKSx-AT; Wed, 01 Mar 2023 13:19:23 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXKF0-00Fqfv-Rw; Wed, 01 Mar 2023 11:03:25 +0000
-X-UUID: 80d6e686b82011eda08d4d6090ec5a5c-20230301
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=JujL0zJMof6BeSlvA5bvmTeu3hHrd2enXVP0mfRzsrA=;
-	b=egqhgcTJMRLOXnyC2Ff0GDXNNYeukR0m3xLRRHFCd+mnOv0KWkc568qo0c0p29Vxjn4Ei6J71AJj/05oUc4KGk2qAmCcN1teh94ANqg4KUQBxN6IMxGToEZPeu030fhfBsadFTvqC0lEekh4EsOs+7/LjJAwD66QuPGBoN+TSbs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.20,REQID:3ef8d431-6fba-426f-aa53-f973f35c2b14,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:25b5999,CLOUDID:a609deb1-beed-4dfc-bd9c-e1b22fa6ccc4,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-UUID: 80d6e686b82011eda08d4d6090ec5a5c-20230301
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <trevor.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1448282283; Wed, 01 Mar 2023 04:02:05 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Wed, 1 Mar 2023 19:02:03 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Wed, 1 Mar 2023 19:02:03 +0800
-From: Trevor Wu <trevor.wu@mediatek.com>
-To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
-	<perex@perex.cz>, <matthias.bgg@gmail.com>
-CC: <trevor.wu@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
-	<alsa-devel@alsa-project.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH v2 2/2] ASoC: mediatek: mt8195: add missing initialization
-Date: Wed, 1 Mar 2023 19:02:00 +0800
-Message-ID: <20230301110200.26177-3-trevor.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230301110200.26177-1-trevor.wu@mediatek.com>
-References: <20230301110200.26177-1-trevor.wu@mediatek.com>
+	id 1pXMMS-00GKRH-0m; Wed, 01 Mar 2023 13:19:14 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 52EF6660212B;
+	Wed,  1 Mar 2023 13:19:07 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1677676748;
+	bh=NtI9QMAsK+AJz3EAGeUPIX06W3NymJxTuOWGisSbFkc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=MK2tGL+XPyq507BPSHvKp8CIS6CO6/yAUNqhwEtB+R382xSeeAUBWLlgCXmRDsL0K
+	 cNy91SX9oTkQmgPlMMRfZTqfFTGGf6rVo4qDLKA7etHzZ0BhXKQ41i9NDKWCKjmIrY
+	 BuaDjG698hvaxZsHLEY3NqASs4gmORnMHPp3gDtD5bBBGYaBA8XYC2okikv2wzgv0Z
+	 dlrJRRJ6i+5BwC9fnMpgMX1p804yrsOvVbBHYeVwNE5MMlLElB9CcXSIVeNrAqpPr4
+	 7SuDT9e9j7KaSAcRbeXVJEqbooS8ffJ+48oQRfW94AOLZI6ZNgfhwqK560gz9U9Wjd
+	 zsxYES1ZVjvtw==
+Message-ID: <6f630d1f-6445-eafa-995b-c38bc23ebc9b@collabora.com>
+Date: Wed, 1 Mar 2023 14:19:04 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v5 00/54] MediaTek clocks: full module build and cleanups
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
+ johnson.wang@mediatek.com, miles.chen@mediatek.com,
+ chun-jie.chen@mediatek.com, daniel@makrotopia.org, fparent@baylibre.com,
+ msp@baylibre.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com,
+ zhaojh329@gmail.com, sam.shih@mediatek.com, edward-jw.yang@mediatek.com,
+ yangyingliang@huawei.com, granquet@baylibre.com, pablo.sun@mediatek.com,
+ sean.wang@mediatek.com, chen.zhong@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230222092543.19187-1-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5EA9Ed2tyg2f3TSeXYdZOZ8a=VztaOc_UTFK2dEsENjJQ@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAGXv+5EA9Ed2tyg2f3TSeXYdZOZ8a=VztaOc_UTFK2dEsENjJQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230301_030322_930408_7527DD41 
-X-CRM114-Status: GOOD (  13.88  )
+X-CRM114-CacheID: sfid-20230301_051912_679326_CBBDF5D7 
+X-CRM114-Status: GOOD (  28.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,36 +81,166 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In etdm dai driver, dai_etdm_parse_of() function is used to parse dts
-properties to get parameters. There are two for-loops which are
-sepearately for all etdm and etdm input only cases. In etdm in only
-loop, dai_id is not initialized, so it keeps the value intiliazed in
-another loop.
+Il 23/02/23 11:15, Chen-Yu Tsai ha scritto:
+> On Wed, Feb 22, 2023 at 5:25 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Changes in v5:
+>>   - Fixed typo in MODULE_DEVICE_TABLE() for clk-mt8195-vpp0/vpp1
+>>
+>> Changes in v4:
+>>   - Rebased over clk-next branch as of 21/02/2023
+>>   - MT8135: Squashed removal of __initconst annotation with conversion
+>>     to platform drivers as suggested by Chen-Yu
+>>   - MT8135: Added mention of the introduction of the dummy clock in
+>>     the commit description of patch [54/54]
+>>   - Fixed Kconfig ordering issue for MT8195 IMGSYS dependant option
+>>
+>> Changes in v3:
+>>   - Added conversion to simple_probe for MT8135 clocks
+>>   - Reordered added Kconfig options for MT8195, MT8186
+>>   - Additional config options for MT8195, MT8186 are now default
+>>     enabled if parent COMMON_CLK_MT81{95,86} is enabled
+>>   - Added .remove() callback to MT2712 and MT7622 apmixedsys drivers
+>>     to avoid resource leakage on unbind/removal
+>>   - Dropped unwanted and useless change on mt7629-eth.c
+>>
+>> Changes in v2:
+>>   - Fixed issues on MT8183 (thanks Chen-Yu!)
+>>   - Changed builtin_platform_driver() -> module_platform_driver() for
+>>     MT8167 vdecsys clocks (as that was a mistake!)
+>>   - Some patches were split, some others were reordered
+>>   - Summarized: applied changes from Chen-Yu's review
+>>
+>> This is part 2 of the "MediaTek clocks cleanups and improvements" series,
+>> which was already picked.
+>>
+>> If reading this full cover letter is too boring for you, here's a short
+>> summary of the changes of this series:
+>>   - Added mtk_clk_pdev_probe() for mtk-mmsys probed clocks;
+>>   - Added divider clock support to common probe mechanism;
+>>   - Various cleanups here and there;
+>>   - Converted most clock drivers to platform_driver;
+>>   - MediaTek clocks can now be built as modules.
+>>
+>> NOTE: Applies on top of [1] and [2].
+>>
+>>
+>> Full blurb:
+>>
+>> This huge series adds more cleanups on top, reducing size and adding more
+>> commonization for clock drivers probe/remove, which also includes a new
+>> common probe mechanism for multimedia clock drivers that are usually
+>> probed by mtk-mmsys instead of a dt clock node: thanks to this, it was
+>> finally possible to convert almost all clock drivers to the common probe
+>> mechanism, which *finally again* makes us able to build all these drivers
+>> as modules!
+>>
+>> Since this looked like being *the* way forward, I went on converting some
+>> more drivers away from OF_CLK_DECLARE_DRIVER to full platform_driver(s),
+>> allowing for more (actually, almost all!) drivers to be built as modules.
+>>
+>> While at it, I also added some more consistency in macros usage by
+>> removing all of the duplicated full macro declaration for MediaTek gate
+>> clocks and replacing all of those with using the GATE_MTK macro instead,
+>> producing a nice reduction in amount of lines per file but, more
+>> importantly, improving readability and eventual future batch changes.
+>>
+>> This amount of commonization will also, in my opinion, greatly improve
+>> the review process for new clock drivers, as they will be mostly just a
+>> list of clocks and won't contain much new code, as it's all going to be
+>> handled in the common places, which also reduces chances to see new clock
+>> driver related bugs emerging on one SoC or the other.
+>>
+>> Since I don't own devices with all of the supported MediaTek SoCs, I
+>> could not test some of the conversions on real hardware... but I am
+>> confident that this will work as the drivers are *very* similar on a
+>> per-generation basis.
+>>
+>> This series was build-tested for all (both module and built-in build)
+>> and was manually tested on MT6795, MT8173, MT8192, MT8195.
+>>
+>> [1]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=719067
+>> [2]: https://patchwork.kernel.org/project/linux-mediatek/patch/20230207014800.7619-2-moudy.ho@mediatek.com/
+>>
+>> AngeloGioacchino Del Regno (54):
+>>    clk: mediatek: clk-mtk: Switch to device_get_match_data()
+>>    clk: mediatek: clk-mtk: Introduce clk_mtk_pdev_{probe,remove}()
+>>    clk: mediatek: Migrate to mtk_clk_pdev_probe() for multimedia clocks
+>>    clk: mediatek: Add divider clocks to mtk_clk_simple_{probe,remove}()
+>>    clk: mediatek: mt2712: Migrate topckgen/mcucfg to
+>>      mtk_clk_simple_probe()
+>>    clk: mediatek: mt2712: Compress clock arrays entries to 90 columns
+>>    clk: mediatek: mt2712: Add error handling to
+>>      clk_mt2712_apmixed_probe()
+>>    clk: mediatek: mt2712: Move apmixedsys clock driver to its own file
+>>    clk: mediatek: mt2712-apmixedsys: Add .remove() callback for module
+>>      build
+>>    clk: mediatek: mt2712: Change to use module_platform_driver macro
+>>    clk: mediatek: mt8365: Move apmixedsys clock driver to its own file
+>>    clk: mediatek: mt8365: Convert simple_gate to mtk_gate clocks
+>>    clk: mediatek: mt8365: Join top_misc_mux_gates and top_misc_muxes
+>>      arrays
+>>    clk: mediatek: mt8365: Convert to mtk_clk_simple_{probe,remove}()
+>>    clk: mediatek: mt8167: Compress GATE_TOPx macros
+>>    clk: mediatek: mt8167: Move apmixedsys as platform_driver in new file
+>>    clk: mediatek: mt8167: Remove __initconst annotation from arrays
+>>    clk: mediatek: mt8167: Convert to mtk_clk_simple_{probe,remove}()
+>>    clk: mediatek: mt8183: Move apmixedsys clock driver to its own file
+>>    clk: mediatek: mt8183: Compress clocks arrays entries where possible
+>>    clk: mediatek: mt8183: Convert all remaining clocks to common probe
+>>    clk: mediatek: Consistently use GATE_MTK() macro
+>>    clk: mediatek: mt7622: Properly use CLK_IS_CRITICAL flag
+>>    clk: mediatek: mt7622: Move apmixedsys clock driver to its own file
+>>    clk: mediatek: mt7622-apmixedsys: Add .remove() callback for module
+>>      build
+>>    clk: mediatek: mt7622: Move infracfg to clk-mt7622-infracfg.c
+>>    clk: mediatek: mt7622: Convert to platform driver and simple probe
+>>    clk: mediatek: mt8516: Move apmixedsys clock driver to its own file
+>>    clk: mediatek: mt8516: Convert to platform driver and simple probe
+>>    clk: mediatek: mt8516: Allow building clock drivers as modules
+>>    clk: mediatek: Propagate struct device with
+>>      mtk_clk_register_dividers()
+>>    clk: mediatek: mt7986-apmixed: Use PLL_AO flag to set critical clock
+>>    clk: mediatek: mt7986-infracfg: Migrate to common probe mechanism
+>>    clk: mediatek: mt7986-eth: Migrate to common probe mechanism
+>>    clk: mediatek: mt8186-mcu: Migrate to common probe mechanism
+>>    clk: mediatek: Switch to module_platform_driver() where possible
+>>    clk: mediatek: Add MODULE_LICENSE() where missing
+>>    clk: mediatek: mt2712: Change Kconfig options to allow module build
+>>    clk: mediatek: Split MT8195 clock drivers and allow module build
+>>    clk: mediatek: Allow building MT8192 non-critical clocks as modules
+>>    clk: mediatek: Allow MT7622 clocks to be built as modules
+>>    clk: mediatek: Allow all MT8167 clocks to be built as modules
+>>    clk: mediatek: Allow all MT8183 clocks to be built as modules
+>>    clk: mediatek: Allow building most MT6765 clock drivers as modules
+>>    clk: mediatek: Allow building most MT6797 clock drivers as modules
+>>    clk: mediatek: Split configuration options for MT8186 clock drivers
+>>    clk: mediatek: mt8192: Move apmixedsys clock driver to its own file
+>>    clk: mediatek: Kconfig: Allow module build for core mt8192 clocks
+>>    clk: mediatek: Add MODULE_DEVICE_TABLE() where appropriate
+>>    clk: mediatek: mt8135: Move apmixedsys to its own file
+>>    clk: mediatek: mt8135: Properly use CLK_IS_CRITICAL flag
+>>    clk: mediatek: mt8135-apmixedsys: Convert to platform_driver and
+>>      module
+>>    clk: mediatek: mt8135: Join root_clk_alias and top_divs arrays
+>>    clk: mediatek: mt8135: Convert to simple probe and enable module build
+> 
+> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+> 
+> on MT8183, MT8192, MT8195. Unfortunately on MT8186 the patch series causes
+> the kernel to freeze during boot. I need to build a verbose kernel to figure
+> it out.
+> 
+> ChenYu
 
-In the patch, add the missing initialization to fix the unexpected
-parsing problem.
+On next-20230301 I can't replicate kernel boot freezes, but there's a crash with
+ANX7625 happening with Asurada as well, completely unrelated to this series (as
+having it or not having it doesn't change anything, I checked).
 
-Fixes: 1de9a54acafb ("ASoC: mediatek: mt8195: support etdm in platform driver")
-Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
----
- sound/soc/mediatek/mt8195/mt8195-dai-etdm.c | 3 +++
- 1 file changed, 3 insertions(+)
+I mentioned the unrelated crash to make you aware that it wasn't a full boot.
+If what you experienced what an early crash, that shouldn't be the case... I will
+give you some more info once I get a fully working kernel again...
 
-diff --git a/sound/soc/mediatek/mt8195/mt8195-dai-etdm.c b/sound/soc/mediatek/mt8195/mt8195-dai-etdm.c
-index c2e268054773..f2c9a1fdbe0d 100644
---- a/sound/soc/mediatek/mt8195/mt8195-dai-etdm.c
-+++ b/sound/soc/mediatek/mt8195/mt8195-dai-etdm.c
-@@ -2567,6 +2567,9 @@ static void mt8195_dai_etdm_parse_of(struct mtk_base_afe *afe)
- 
- 	/* etdm in only */
- 	for (i = 0; i < 2; i++) {
-+		dai_id = ETDM_TO_DAI_ID(i);
-+		etdm_data = afe_priv->dai_priv[dai_id];
-+
- 		ret = snprintf(prop, sizeof(prop),
- 			       "mediatek,%s-chn-disabled",
- 			       of_afe_etdms[i].name);
--- 
-2.18.0
-
+Angelo
 
