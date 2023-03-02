@@ -4,71 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA518C678D4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Mar 2023 11:57:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EE9FC6FA8E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Mar 2023 12:27:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QRlbWIe1dpHcNCVev+gyATBt1suaJM1LpuD0lQyVqU4=; b=ikk5VRw2lkSoTiSOL6PAP5pmMc
-	S5XCGNRLpmx1DuSLLIq/aHCPh+QUb9LAGkx2pRhtEikWCjqhDrpjkZG/bOWKbAVX2/hv6htyo55lx
-	Pv8OeP/a0hgahJNIvzJOOgMKy5YauWg2LfpEMGvgmjt29chFTswmevFcxG/BDLyQliWCK6e4oeEuV
-	VXqOOZpbn9EGDio+Y+9NBpt9NplqM8MKjFqNrNdlseC68brfpUgHQHeyHVFpkQYZ6YIybha8hT9Rn
-	tI5sOVnUp8gp/i2DoH3KaHZY4ghLTrCIUBoy8RwdGIS5nWWAkPbgJRCsOBe+lbggNphEvok2vXoAQ
-	SlVUnlRg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UCzu+CfYoO6L/88b2EATsbmRsnxpl5XJojzf9dpIYbM=; b=oWCx0K5Wu6CD+GPWTT7H+5IoET
+	aSaivH6JPTGKLEIqVY3PMbzxRZ9gJgvlQeAMyVugxd9jV4hR8jQct14tCzpPUh0v7Woo3yM17C3a5
+	o8LYTWbuZWdy1GRB7Xaou+Wvk6eEvBoFvzd4FLc+91wTR67/iQiHhKp5cby4utTvY1LTZh0BXoNVY
+	uQiGslpo6xpA2O0zNTAqY6wgRKMowyuNsO6vorYZKShJNbXIFieBEc7ZrbBrFfQfyai51omJqaBiM
+	IZWStYHMpg7llsJEAd21cZYgi7y35kfSp6rGbW1yZ1s8HBhwwF/gicqUDqb81ylioS/PB0590hfX6
+	G7vBBMVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXhYj-00236l-FA; Thu, 02 Mar 2023 11:57:17 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pXi22-00282U-8c; Thu, 02 Mar 2023 12:27:34 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXhYf-00232V-TB; Thu, 02 Mar 2023 11:57:16 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pXhYR-0004Hm-2H;
-	Thu, 02 Mar 2023 12:56:59 +0100
-Date: Thu, 2 Mar 2023 11:56:56 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+	id 1pXi1z-0027zZ-2o; Thu, 02 Mar 2023 12:27:32 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id g3so11413125eda.1;
+        Thu, 02 Mar 2023 04:27:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1677760046;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=UCzu+CfYoO6L/88b2EATsbmRsnxpl5XJojzf9dpIYbM=;
+        b=nMWeYaQK6N2n+tcRBZmsETp9VrbSsWitZpxfoLVg9dzNOrnd/hoxPvxWQvmPhV/Lcz
+         FiF0pr0nw8IU4Dbscq9aSQVa5jbCFXsGAZrerRZM+L3OtZCBV/hMjW4QzN2csYOfCqhF
+         NY9UN9AvbZWXbCBBcZypwKWVjV0pFBhqdL1tIkz7ntdJvqxtsz1kHCXjLltF7i5QRxMc
+         ojfNwCdwyyqaH1kRZX/hVTUmdYTmbTEONcJDBtcjUX5l9BYhRbpztFvkv0N3ZSmlRWPv
+         sZ0ugavlEGWk7oC7qqgydCV/UJ41I7q6DzTZCgbZ/5e5QwBnV5KIK2C9JWgSq1oQh4lL
+         9mfA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1677760046;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=UCzu+CfYoO6L/88b2EATsbmRsnxpl5XJojzf9dpIYbM=;
+        b=yNdzyR1ItCS3PvdRTbFM8Vc3ZfL1/VX/HIdP4R3U0k103jK9rdwfvsZ3KXBsGlbvvU
+         eguEj5S8+POSkrbGEPRDiNFxyQEFHhIKOo5iurSyatAycmszBq9vBSTct6LNVAC6Z2wp
+         KH7WrP8P0gsetIyQ0tbJ5Hiuqug3RiavFmL8LTx7GXENTL8ZEodZeoTT74IsK5c5vk97
+         3UayibtzMDIRPt9bbo5v937nDBv82hzG3ajV3ZWGf6KThDp4CG1mpv1x4WL/vqH9Ctkm
+         +cnHv0aIMQnAuxuSFzRH3seK45W8c7vULs4FoJ/1Ke8v62HZ+ILPtzSO0n0RyLy8U9QP
+         +YLA==
+X-Gm-Message-State: AO0yUKWbIf3eINWpyGtLxwPJ5MuwnWC15pdUj2ziNCtnMzK5z0vN9+BB
+	SIe6ED5Bmp4tJyaPptC0/dlt6k9hsos=
+X-Google-Smtp-Source: AK7set88KNYQCJ8xnXU4YX6cMBd1m+CfpbxjYXG8W1sUvhQ4bXwI2FO/XpIVWpYvF0lT7Xgkx10HGQ==
+X-Received: by 2002:a17:906:9156:b0:8d7:6699:3ba9 with SMTP id y22-20020a170906915600b008d766993ba9mr9434114ejw.29.1677760045782;
+        Thu, 02 Mar 2023 04:27:25 -0800 (PST)
+Received: from localhost.localdomain ([95.183.227.97])
+        by smtp.gmail.com with ESMTPSA id qc17-20020a170906d8b100b008ca37f3eae9sm7038375ejb.131.2023.03.02.04.27.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 02 Mar 2023 04:27:25 -0800 (PST)
+From: Yassine Oudjana <yassine.oudjana@gmail.com>
+X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
+To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Russell King <linux@armlinux.org.uk>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
-	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
-Subject: Re: [RFC PATCH v11 08/12] net: ethernet: mtk_eth_soc: fix RX data
- corruption issue
-Message-ID: <ZACPCHxbuD7deGTa@makrotopia.org>
-References: <cover.1677699407.git.daniel@makrotopia.org>
- <9a788bb6984c836e63a7ecbdadff11a723769c37.1677699407.git.daniel@makrotopia.org>
- <20230301233121.trnzgverxndxgunu@skbuf>
- <Y//n4R2QuWvySDbg@makrotopia.org>
- <20230302100022.vcw5kqpiy6jpmq3r@skbuf>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Tinghan Shen <tinghan.shen@mediatek.com>,
+	"Garmin.Chang" <Garmin.Chang@mediatek.com>,
+	MandyJH Liu <mandyjh.liu@mediatek.com>
+Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
+	Yassine Oudjana <yassine.oudjana@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2 0/2] MediaTek MT6735 SCPSYS support
+Date: Thu,  2 Mar 2023 15:27:06 +0300
+Message-Id: <20230302122708.73848-1-y.oudjana@protonmail.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230302100022.vcw5kqpiy6jpmq3r@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230302_035713_990552_977DD7E5 
-X-CRM114-Status: GOOD (  29.28  )
+X-CRM114-CacheID: sfid-20230302_042731_169608_0005F467 
+X-CRM114-Status: GOOD (  13.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,51 +96,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 02, 2023 at 12:00:22PM +0200, Vladimir Oltean wrote:
-> On Thu, Mar 02, 2023 at 12:03:45AM +0000, Daniel Golle wrote:
-> > On Thu, Mar 02, 2023 at 01:31:21AM +0200, Vladimir Oltean wrote:
-> > > On Wed, Mar 01, 2023 at 07:55:05PM +0000, Daniel Golle wrote:
-> > > > Also set bit 12 which disabled the RX FIDO clear function when setting up
-> > > > MAC MCR, as MediaTek SDK did the same change stating:
-> > > > "If without this patch, kernel might receive invalid packets that are
-> > > > corrupted by GMAC."[1]
-> > > > This fixes issues with <= 1G speed where we could previously observe
-> > > > about 30% packet loss while the bad packet counter was increasing.
-> > > > 
-> > > > [1]: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/d8a2975939a12686c4a95c40db21efdc3f821f63
-> > > > Tested-by: Bjørn Mork <bjorn@mork.no>
-> > > > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> > > > ---
-> > > 
-> > > Should this patch be submitted separately from the series, to the
-> > > net.git tree, to be backported to stable kernels?
-> > 
-> > Maybe yes, as this issue may affect e.g. the BPi-R3 board when used
-> > with 1G SFP modules. Previously this has just never been a problem as
-> > all practically all boards with MediaTek SoCs using SGMII also use the
-> > MediaTek MT7531 switch connecting in 2500Base-X mode.
-> > 
-> > Should the Fixes:-tag hence reference the commit adding support for the
-> > BPi-R3?
-> 
-> If it's not an issue that affects existing setups, there is no need to
-> backport the patch. But it needs to be clearly described as such in the
-> commit message.
-> 
-> You mention <= 1G speeds, but then only talk about 1G SFP modules.
-> I see that the mtk_eth_soc driver also sets "gmii" and "rgmii" in
-> phylink's supported_interfaces. Those are also <= 1G speeds. There could
-> also be SGMII on-board PHYs. Does the RX FIFO clearing issue not affect
-> those?
+From: Yassine Oudjana <y.oudjana@protonmail.com>
 
-The issues affects PHYs (and potentially switch PHY ICs) connected via
-SGMII operating at 1.25Mbaud.
+These patches are part of a larger effort to support the MT6735 SoC family in
+mainline Linux. More patches (unsent or sent and pending review or revision)
+can be found here[1].
 
-The only officially supported board affected by this is the BPi-R3 where
-it affects the SFP cages -- the on-board MT7531 switch which is also
-used on all other boards using these SoCs is connected with 2500Base-X.
+This series adds support for most SCPSYS power domains on MT6735. See patches
+for details.
 
-The issue does **not** affect RGMII or GMII on the MT7623 SoC, but I
-don't have any way to try RGMII or GMII on more recent SoCs as I lack
-hardware making use of that to connect a PHY.
+Changes since v1:
+- Squash DT binding patches
+- Dual-licence DT binding as GPL/BSD
+- Switch to mtk-pm-domains driver
+- Add MFG bus protection bit
+
+[1] https://gitlab.com/mt6735-mainline/linux/-/commits/mt6735-staging
+
+Yassine Oudjana (2):
+  dt-bindings: power: Add binding for MediaTek MT6735 power controller
+  soc: mediatek: pm-domains: Add support for MT6735
+
+ .../power/mediatek,power-controller.yaml      |  2 +
+ .../bindings/soc/mediatek/scpsys.txt          |  1 +
+ drivers/soc/mediatek/mt6735-pm-domains.h      | 96 +++++++++++++++++++
+ drivers/soc/mediatek/mtk-pm-domains.c         |  5 +
+ drivers/soc/mediatek/mtk-pm-domains.h         |  2 +
+ include/dt-bindings/power/mt6735-power.h      | 14 +++
+ include/linux/soc/mediatek/infracfg.h         |  5 +
+ 7 files changed, 125 insertions(+)
+ create mode 100644 drivers/soc/mediatek/mt6735-pm-domains.h
+ create mode 100644 include/dt-bindings/power/mt6735-power.h
+
+-- 
+2.39.2
+
 
