@@ -4,84 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00778C6FA8E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Mar 2023 11:03:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C116CC678D4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Mar 2023 11:07:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LkHuEvWnBbmn6J9IHM/XCzxQvuZdAVkzVZy6DwR1zSo=; b=ZudqMqXLX+vhu0YyYlfrRqx/ko
-	NHtT4GHqoVYmQeGJVoXZF0mzdL7z/5zv83A9HDmZLpxGQfw56q9XFB2RpLIftEzNuOpINvrE7qIIv
-	KhaFkWQ6gFmt89unBwHAPs81tHTqfHz/U52MWYnkcX7ZartQKS8AnHFlVk+EL623qPZlAE5XYnBoS
-	jk1eklGPlnymmmfekZ/NvqM9ZvYfSGpx9X7w890Q+sxavgrkuIosmPRpUsLLhhRjLLRlwz0MzZOnP
-	Nq/Dbn0dbM4d9sGw/0FZX29qC0niu/5e73Hz/USqjNVG2b9AAD6t2a8WWE0s/w6kYZvFMuHCYm/cR
-	I1xE9qkg==;
+	bh=ti6yggdPsNOIPGXfO2UGItrftMezYx+P9sftKU+qmUA=; b=rQnF2N5eLXyooAzqEio+OUFWrY
+	t+I2xbG6WswS9q8uQBC1YGjWqcaA6Q6OlKpx+rfE2Ga/LPhiEdfVbFSLTwmBYuMkxD/xFXda10Hd7
+	osPfsTVV85mxckOw5CwplZVA1Con68yJNV8vbnLglGKVF3o3J0D8GO0AN0KaH+xT+atES0HxYFait
+	ePc2qbl3xhGpuU17VTLVqqcLF8kyiMMyaDmLJ9/Q+dOzION+r+RrN1O1oSp1Sxk9vsG/SFOVT0p5u
+	A5XK54QvEFlVkztvp267Soo7UvDUrhSt4m3D/If4KQ7pZvo7IcMRXHMfyYcKGnZja99FGo9h+y3vW
+	Nr+T3v/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXgid-001nps-Hq; Thu, 02 Mar 2023 11:03:27 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1pXgmD-001pZa-6T; Thu, 02 Mar 2023 11:07:09 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXgiY-001nmI-0x; Thu, 02 Mar 2023 11:03:26 +0000
-Received: by mail-wm1-x333.google.com with SMTP id j19-20020a05600c1c1300b003e9b564fae9so1434981wms.2;
-        Thu, 02 Mar 2023 03:03:19 -0800 (PST)
+	id 1pXgm9-001pUb-PS; Thu, 02 Mar 2023 11:07:07 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id p26so10409362wmc.4;
+        Thu, 02 Mar 2023 03:07:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1677754998;
+        d=gmail.com; s=20210112; t=1677755222;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=LkHuEvWnBbmn6J9IHM/XCzxQvuZdAVkzVZy6DwR1zSo=;
-        b=BDwGZkebAseiLNLVCP3fUulwLJK3BAX6aOcYlZdJ+9o6XbspZwfiY6Nq+XWUlz6nDj
-         wvkfkvOMwBz+Y3CSBSqSj/Mr/0HLiTSpB60Refn0RsFsoUYV9EQKiEUyXDO2C2j3vsXn
-         3wPXBf36Se2Y/sJRwqyv4Cc4TAoxUMqulXfIaPl9A+jxUUK98tgYRx0MDJ/fCDyptD9k
-         3c3hnIyvs7sHYFIMFJqW7cnHazcSl3v8w2HjnJ68GuCKLiPLFXRnQynkxeVUch90WOhG
-         Z9BGa+3XNat+LQZFAB0HGYdd7kdeoTzQaOqrczqzPqeQDKdYfnkr6TLlHpJ0Pclfalt+
-         Inpg==
+        bh=ti6yggdPsNOIPGXfO2UGItrftMezYx+P9sftKU+qmUA=;
+        b=ogeMmyPlp+ux1bh8ePIj9tjnZ9OyV99vPTnFYiv+uMZwKp5HtnUJJD7gO/h+KuGXgQ
+         2qmTHQ2hh+O+VSWueO+T7XjElqQ8akIKpBV56Veov8Wd71Z+16tONPex+tKsIPJcrBG5
+         MP0kiNPjjBde5dP0I42a4o7ExYcnChE8yymqJXpmfPOkM/HKZAnIFlYFW5ln7OvFZ14g
+         cHErnwIj2YCLCdzOrX9AO8QGYgKR0qY87WOU2XrWw9NRDBygTv2g2xdGY4cQwSKYMZTs
+         LEr8W1eVVoxkXNeMZFPN44AiE35J8kNMVduu90IP38nc0tJ9Vy/FVZtMpQhJasOf517d
+         yoOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1677754998;
+        d=1e100.net; s=20210112; t=1677755222;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=LkHuEvWnBbmn6J9IHM/XCzxQvuZdAVkzVZy6DwR1zSo=;
-        b=mFlIM7jSXSyoaSg3uRKxIbZtRq9VL12jtv1CMEojpJyJMHDwXY+Uffd2pmguAPGJNO
-         8X6iBJIva+kIw5+pLfkSUJ0ZLt2kl5vYKO60L01Qj2JK0qC7cH0gTGl8/5EJLeE8QZJK
-         XTuoheYtRkySkg2gj7l+zBqildUc6omF2ZFGObYs1ulGXNGdR8GdcQ6ZMPu8xNmjvxDw
-         Q+fB3kg4XOo6WtUayIsMrUjvYNDX78geq2vQhplkwMPGinzsvqKMRP7hmZXt08/EXlW0
-         ACvwg8rO0hkPL2KXU3JTCW/mj9K/1Ydktq8x7ZpG4vSTT+99phxLiPPGHRKIFfN9JCRL
-         8Mbg==
-X-Gm-Message-State: AO0yUKXS6y0R6l51UTcolGHl+7PJ4/Uxnhu12o7Lqm62ZLnX9bFAIvK/
-	r4Oq5UB+hJ729TcLVMzDDT8Pnp/7sIrfOg==
-X-Google-Smtp-Source: AK7set/JlzFceze8hhK3/4uajo1mpfVadvTq9TwAVwpchmL5fNm1Ggc9LQk17dnZcbn2PRNdl/6H1A==
-X-Received: by 2002:a05:600c:458b:b0:3e9:f4c2:b604 with SMTP id r11-20020a05600c458b00b003e9f4c2b604mr8193890wmo.24.1677754998008;
-        Thu, 02 Mar 2023 03:03:18 -0800 (PST)
+        bh=ti6yggdPsNOIPGXfO2UGItrftMezYx+P9sftKU+qmUA=;
+        b=vZ1EEmcRRpExrZR6oJs06CM4GZfspH6BtfHpSibZTIwCxBQtk5V0v2onnF+gwrj0wO
+         YMyCuN6API4KGHyry+ldvEHOjnHg7BdF+h1QRGvoQ5QEX4bj2maVgYzzCAPbeMPLz5jG
+         eY8u9sboibAtsT0Dev24s6YYqJ1vl+j8ZktlGxUQUm95GvG2nMVz9eIkcrrJsJeH4V4M
+         qz6x4ImFq6VtH1sa318brc24ceGK3G3wZAXmGhPp8cn0vtS4rGNoqmQwsDGVaOU0+6+c
+         2b2b1SNuC0qifMBXYLRPxB/HZLbvJMgdt4JRMKAJHCz50SLGWWgfZAjW0yBfsHq8q8jQ
+         3M+w==
+X-Gm-Message-State: AO0yUKX9uVyKNGgatOnTMo3oYp74h/ipGV4z0lpnmeVbSAPWK29eDw+Z
+	9mT9H/XdNjzyy9Z4jRzc51otJJThzItDXg==
+X-Google-Smtp-Source: AK7set+yVpXtDFapduhsB0nccsgHCdavaSYmvTKCXeQKdTLPsNpVFb/bbrhQF8nu1ZSwpum2tkVRQw==
+X-Received: by 2002:a05:600c:1894:b0:3e1:fc61:e0e5 with SMTP id x20-20020a05600c189400b003e1fc61e0e5mr7220130wmp.33.1677755221954;
+        Thu, 02 Mar 2023 03:07:01 -0800 (PST)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id j40-20020a05600c1c2800b003dd1bd0b915sm2893847wms.22.2023.03.02.03.03.16
+        by smtp.gmail.com with ESMTPSA id u9-20020a5d5149000000b002c54c92e125sm15122249wrt.46.2023.03.02.03.07.01
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 02 Mar 2023 03:03:17 -0800 (PST)
-Message-ID: <dcd653a3-3f7c-7bfb-f096-033f62cb9074@gmail.com>
-Date: Thu, 2 Mar 2023 12:03:16 +0100
+        Thu, 02 Mar 2023 03:07:01 -0800 (PST)
+Message-ID: <380b32fc-6e9b-6f7d-e8ff-063346ee1d27@gmail.com>
+Date: Thu, 2 Mar 2023 12:07:00 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH v1 4/4] Revert "arm64: dts: mt8173: add mmsel clocks for
- 4K support"
+Subject: Re: [PATCH v1 3/4] arm64: dts: mt8195: Align vppsys node to dtschema
 Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- matthias.bgg@kernel.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, Chen-Yu Tsai <wenst@chromium.org>
+To: matthias.bgg@kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org
 Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ angelogioacchino.delregno@collabora.com
 References: <20230209160357.19307-1-matthias.bgg@kernel.org>
- <20230209160357.19307-4-matthias.bgg@kernel.org>
- <3db45ca3-9104-826c-9f92-549e07471296@collabora.com>
+ <20230209160357.19307-3-matthias.bgg@kernel.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <3db45ca3-9104-826c-9f92-549e07471296@collabora.com>
+In-Reply-To: <20230209160357.19307-3-matthias.bgg@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230302_030322_110644_B6F7F4FC 
-X-CRM114-Status: GOOD (  16.52  )
+X-CRM114-CacheID: sfid-20230302_030705_877311_5590E25A 
+X-CRM114-Status: GOOD (  17.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,35 +96,52 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 10/02/2023 12:59, AngeloGioacchino Del Regno wrote:
-> Il 09/02/23 17:03, matthias.bgg@kernel.org ha scritto:
->> From: Matthias Brugger <matthias.bgg@gmail.com>
->>
->> This reverts commit fc6634ac0e5380aeb1063275a2e9a583d41b2306.
->>
->> The mmsys is a clock provider but does not have any clocks connected to
->> it. Therefore assigned-clock properties should be applied to the users of mmsys.
->>
->> This fixes the DT schema check:
->> mediatek/mt8173-elm.dtb: syscon@14000000: 'assigned-clock-rates', 
->> 'assigned-clocks' do not match any of the regexes: 'pinctrl-[0-9]+'
->>
->> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+On 09/02/2023 17:03, matthias.bgg@kernel.org wrote:
+> From: Matthias Brugger <matthias.bgg@gmail.com>
 > 
-> About solving schema checks: agreed.
+> As the node is a syscon, this has to be reflected in the compatible and
+> the node name.
 > 
-> Since this is impacting on multiple subsystems (display, vdec, venc), can we
-> instead move this to the topckgen node?
-> I didn't check if that would trigger another schema check, but I remember
-> doing that on Qualcomm DTs a bit of time ago.
-> 
-> The alternative would be to copy that over more than 10 nodes, which would
-> be a bit ... ugly.
-> 
+> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Thanks Angelo and Chen-Yu for your feedback. I'm not able to reproduce that 
-problem right now, so I'll drop this patch from the series.
+A similar patch is already in v6.3-tmp/dts64:
+168136cbef9c ("arm64: dts: mediatek: mt8195: add MMSYS configuration for VPPSYS")
+
+I'll drop this one as well.
+My bad, I should have noticed that earlier.
 
 Regards,
 Matthias
+
+> ---
+> 
+>   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> index 8f1264d5290bf..5261367031426 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -1795,8 +1795,8 @@ mfgcfg: clock-controller@13fbf000 {
+>   			#clock-cells = <1>;
+>   		};
+>   
+> -		vppsys0: clock-controller@14000000 {
+> -			compatible = "mediatek,mt8195-vppsys0";
+> +		vppsys0: syscon@14000000 {
+> +			compatible = "mediatek,mt8195-vppsys0", "syscon";
+>   			reg = <0 0x14000000 0 0x1000>;
+>   			#clock-cells = <1>;
+>   		};
+> @@ -1900,8 +1900,8 @@ larb8: larb@14e05000 {
+>   			power-domains = <&spm MT8195_POWER_DOMAIN_WPESYS>;
+>   		};
+>   
+> -		vppsys1: clock-controller@14f00000 {
+> -			compatible = "mediatek,mt8195-vppsys1";
+> +		vppsys1: syscon@14f00000 {
+> +			compatible = "mediatek,mt8195-vppsys1", "syscon";
+>   			reg = <0 0x14f00000 0 0x1000>;
+>   			#clock-cells = <1>;
+>   		};
 
