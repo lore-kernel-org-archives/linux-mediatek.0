@@ -4,74 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93AF5C6FA8E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Mar 2023 14:24:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D40CC7EE2F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Mar 2023 15:15:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n+FX2bRnFYB4pwUNOT+bxicT/CBSQOm6gc2j2xz3BnQ=; b=c4Eqfb3uG/JT929GHL5DmWUULl
-	NrIjLeb4zrGVEmVFNcjYdE3roE9BNdFQFE3zBuJcO/1uquJCkaCJNXTvZTnzdIJ7TJZeF7R7wkocY
-	k2NtHX7zXtyjoppNn7o80jbde214iUj/nO+a2GmVW4MRXMNr9udwOiLYa2rwrBPKwVtWP6O9IUNaF
-	Mq7xjulBNLoH41WulEMmK8PoG9RlMgzCAwbGEz7PcPQo53ztpuuGFZVFLHLt1QGqpq/1ZG9pBaMEz
-	8HbH6IUS2Md7lt/kv2bA4+WW/Em0r9/SGEkJTPY8YsPRg0k9CY4L3YhDCM6NQLjZGWptAiZCktWmV
-	c2mTJcDA==;
+	bh=gs43fjO/PE0waZNljXxshUgVcldMsmXR/gfKNDIlw84=; b=HbM7u8i8KtjBTvzQ3GwjzbVlBG
+	z+7ugFigf5GBsI7vWOroZnNrzaW/3AGG1VHiTLweuM10ItBWxcaY5jfjbbkQdlPEOxD2sCchlqVnU
+	HH6neoyeQPgE5VOO2x3bj6M8MKCHypZsMzGdZWYPJ8mVLHhvuMuU49e9HmZ5A+JxZTUHD7WLwKH8r
+	8CmD/5SNyxYAHki3wIZLyqVARD7kzuKpm2h1865KGdJ1IW1HysTovwh9dzqzqn7JnyAE/QTuWmyZR
+	8RfwoIgpW/rBK8KxQIAeJUI25ip0MPYMPZ4DG01UAUl6zihK7KxoKXarMP1/TZ/mItMG1HFuW0GJc
+	GHYvobQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXjr3-002SSn-9u; Thu, 02 Mar 2023 14:24:21 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1pXker-002cCb-Ch; Thu, 02 Mar 2023 15:15:49 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXjqy-002SRR-Gq
-	for linux-mediatek@lists.infradead.org; Thu, 02 Mar 2023 14:24:20 +0000
-Received: by mail-ed1-x535.google.com with SMTP id da10so68358127edb.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 02 Mar 2023 06:24:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1677767053;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=n+FX2bRnFYB4pwUNOT+bxicT/CBSQOm6gc2j2xz3BnQ=;
-        b=mySt6yKzU0MPpjsIOQSpdfsaJYaU4vwgigGhMgO0Rlq0/92t/YM9DmRkeNxagirRcp
-         iT+nNZ2RewxnwPpll7uIfD6P5B1zOssp9LmcMs4g9hesKKVuvRlvIXxvp7mPeyrBHkh2
-         zMiAh6N95NMozIK5wOmbbL6jJ6ZP5vpWM46hfoUzm/BUsikUpF+CZD4wz6UQXNcj/M4b
-         rRziW8AWrS7yO3/jNVSbn8uP9Un/sqQO4L1Sq0Vjux/C9Jtpq5Y+4Vr3eBPd7xtNCuV8
-         b7+WCuW2Qk9anZswOk/fSpxBWrSEvuHPbBPBpieju5ccRVDFbxx71gdn32t3t8s2LSjR
-         knZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1677767053;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=n+FX2bRnFYB4pwUNOT+bxicT/CBSQOm6gc2j2xz3BnQ=;
-        b=4XnWkBtGnEOkKBISK67IsG5choHxP2xAYUjWY3iMpZX1dxkqlryjkKEVvMYSvsC7B5
-         lSzIK+xn4okN4APJox90baTYHt16PN9dC39DvR8dcA7mpZ8lReNJ85ehkMyh5IQOJPgD
-         hOnXFbXEuDl3ghmDXC7Lb/03dWP7rzgeqYz/NGbmdJBGZO3InTDWEGuZWZeS92Yvv89u
-         bgCqIT9JdkpJ0z4KxVebMffX6IMVIVDc1/aX3fN9LYEDKLfaa9RqY9sc5brykY2dB7Jb
-         /syt6erD3uIOEmNK7OtdfPJvjyysFKWVAtSS9PkXInAuGUknj/yM2fcruUQcWHJ3ETb2
-         Qx7w==
-X-Gm-Message-State: AO0yUKVb0fs95kOPqmkQiulbpFnpA/I8xKoYOzGkLsmYI/0wJLzSeQck
-	nbWjxmHF1A3lT2WZ807qvZgwu0uwIrtGDLIgn4W4h1p0n8+5kFujBcA=
-X-Google-Smtp-Source: AK7set8r4j0tq4rowbbxxo8fIvmc+CPTtwUYa80qViAhpkPD9kvq8gLfk9uOHpWXWuK70y+1jlhXp7wFwtrfjeU2zns=
-X-Received: by 2002:a17:906:6d55:b0:8f3:9ee9:f1e2 with SMTP id
- a21-20020a1709066d5500b008f39ee9f1e2mr1255982ejt.5.1677767053169; Thu, 02 Mar
- 2023 06:24:13 -0800 (PST)
+	id 1pXkeY-002c5g-V7; Thu, 02 Mar 2023 15:15:32 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2FF8966018CA;
+	Thu,  2 Mar 2023 15:15:25 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1677770125;
+	bh=XDztbEfmSsWdhvyNwXpUvERVe2JxCB34x7YGEA1gAxQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=hIWmhALVlRXTtzN+QFo5val3tRedI0IU+GM0t7eJZpQRWLt27+PIJs5zhXny57c56
+	 nb3DIulazp6wc9jOoxwUoI6EKCIzZ/isv10f7oEDbfg5sFw/13ajH4fEiLbr37Z9Ak
+	 7vfKqzVVq8vkuTkYKVpalIpsf0FRlxBdhCLcfaHZyPIytkFmCyqBQSwsSHIHlJO4J2
+	 WExHtCvzGOMr7LNNJG7hOuw/jIRlF/Ic8cNNHohI/kcw+MJzOXzlqaQ0H+Ncck9j8/
+	 v4X10skRDtTLXplMx3hzzr6o46n68XPc6N/8slULvetHRPziojT/ni9cIeMuXtPyD1
+	 IPHdia+fnJMTw==
+Message-ID: <0398e95e-dbb8-2e41-7b36-12e36b8729f0@collabora.com>
+Date: Thu, 2 Mar 2023 16:15:22 +0100
 MIME-Version: 1.0
-References: <Y/yTacHF8TvAkxdj@kili>
-In-Reply-To: <Y/yTacHF8TvAkxdj@kili>
-From: Balsam CHIHI <bchihi@baylibre.com>
-Date: Thu, 2 Mar 2023 15:23:37 +0100
-Message-ID: <CAGuA+ooJXL9f5P8ToCyOwYoYA2TG7H4x_H5FMDhAOwqf51FfQg@mail.gmail.com>
-Subject: Re: [bug report] thermal/drivers/mediatek: Add the Low Voltage
- Thermal Sensor driver
-To: Dan Carpenter <error27@gmail.com>
-Cc: linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH 2/2] watchdog: mtk_wdt: Add support for MT6735 WDT
+Content-Language: en-US
+To: Yassine Oudjana <yassine.oudjana@gmail.com>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
+ <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
+ linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230302124015.75546-1-y.oudjana@protonmail.com>
+ <20230302124015.75546-3-y.oudjana@protonmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230302124015.75546-3-y.oudjana@protonmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230302_062416_815052_A6587981 
-X-CRM114-Status: GOOD (  12.82  )
+X-CRM114-CacheID: sfid-20230302_071531_180225_39B49E91 
+X-CRM114-Status: GOOD (  21.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,51 +81,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 27, 2023 at 12:26=E2=80=AFPM Dan Carpenter <error27@gmail.com> =
-wrote:
->
-> Hello Balsam CHIHI,
->
-> The patch f5f633b18234: "thermal/drivers/mediatek: Add the Low
-> Voltage Thermal Sensor driver" from Feb 9, 2023, leads to the
-> following Smatch static checker warning:
->
->         drivers/thermal/mediatek/lvts_thermal.c:562 lvts_calibration_init=
-()
->         warn: not copying enough bytes for '&lvts_ctrl->calibration[i]' (=
-4 vs 2 bytes)
->
-> drivers/thermal/mediatek/lvts_thermal.c
->     555 static int lvts_calibration_init(struct device *dev, struct lvts_=
-ctrl *lvts_ctrl,
->     556                                         const struct lvts_ctrl_da=
-ta *lvts_ctrl_data,
->     557                                         u8 *efuse_calibration)
->     558 {
->     559         int i;
->     560
->     561         for (i =3D 0; i < lvts_ctrl_data->num_lvts_sensor; i++)
-> --> 562                 memcpy(&lvts_ctrl->calibration[i],
->     563                        efuse_calibration + lvts_ctrl_data->cal_of=
-fset[i], 2);
->                                                                          =
-         ^
-> This is copying an array of known ints to a u32 array.  It should copy
-> sizeof(int) instead of 2.  It only works because the data you're on
-> little endian and the data is small.
->
->     564
->     565         return 0;
->     566 }
->
-> regards,
-> dan carpenter
+Il 02/03/23 13:40, Yassine Oudjana ha scritto:
+> From: Yassine Oudjana <y.oudjana@protonmail.com>
+> 
+> Add support for the watchdog timer/top reset generation unit found on MT6735.
+> Disable WDT_MODE_IRQ_EN in mtk_wdt_restart in order to make TOPRGU assert
+> the SYSRST pin instead of issuing an IRQ. This change may be needed in other
+> SoCs as well.
+> 
+> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+> ---
+>   drivers/watchdog/mtk_wdt.c | 12 ++++++++++++
+>   1 file changed, 12 insertions(+)
+> 
+> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+> index a9c437598e7e..5a7a7b2b3727 100644
+> --- a/drivers/watchdog/mtk_wdt.c
+> +++ b/drivers/watchdog/mtk_wdt.c
+> @@ -10,6 +10,7 @@
+>    */
+>   
+>   #include <dt-bindings/reset/mt2712-resets.h>
+> +#include <dt-bindings/reset/mediatek,mt6735-wdt.h>
+>   #include <dt-bindings/reset/mediatek,mt6795-resets.h>
+>   #include <dt-bindings/reset/mt7986-resets.h>
+>   #include <dt-bindings/reset/mt8183-resets.h>
+> @@ -82,6 +83,10 @@ static const struct mtk_wdt_data mt2712_data = {
+>   	.toprgu_sw_rst_num = MT2712_TOPRGU_SW_RST_NUM,
+>   };
+>   
+> +static const struct mtk_wdt_data mt6735_data = {
+> +	.toprgu_sw_rst_num = MT6735_TOPRGU_RST_NUM,
+> +};
+> +
+>   static const struct mtk_wdt_data mt6795_data = {
+>   	.toprgu_sw_rst_num = MT6795_TOPRGU_SW_RST_NUM,
+>   };
+> @@ -187,9 +192,15 @@ static int mtk_wdt_restart(struct watchdog_device *wdt_dev,
+>   {
+>   	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdt_dev);
+>   	void __iomem *wdt_base;
+> +	u32 reg;
+>   
+>   	wdt_base = mtk_wdt->wdt_base;
+>   
+> +	/* Enable reset in order to issue a system reset instead of an IRQ */
+> +	reg = readl(wdt_base + WDT_MODE);
+> +	reg &= ~WDT_MODE_IRQ_EN;
+> +	writel(reg | WDT_MODE_KEY, wdt_base + WDT_MODE);
 
-Hello Dan Carpenter,
+This is unnecessary and already done in mtk_wdt_start().
+If you think you *require* this snippet, you most likely misconfigured the
+devicetree node for your device :-)
 
-Thank you for reporting this bug.
-I will create a patch to fix it ASAP.
+Please remove this snippet.
 
-Best regards,
-Balsam
+Regards,
+Angelo
 
