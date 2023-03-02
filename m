@@ -4,69 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C4F3C678D4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Mar 2023 00:04:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEA49C6FA8E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Mar 2023 08:28:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bZbWqbAYV0DpqH8DRo0/9v/OUsMvk34uYpySVI9K9W4=; b=hflQ/LLESMRy9Cod2B5tGnkDLq
-	l8KKihWBLxjuZJ1B9phXKoKv8mqZpw6nmtO8I9fBVxRisxHvk6x8toH59Xpgm/jUCviKkpa1/36VU
-	RnhZUGNa2PNrPQRcUZv+mEimLyekiSgCs8aWGMuD1nc1aKp2acWO1IcccQikZdqSiEOGxRFxiRBOW
-	mLd/nMq4L7pDhX1mT4k1bHKtvr0eq8z6LNeeItIHMHk7Z0ok2fKljzeud5pxX26gXFY9+gCpEs/nT
-	EG8Wk3f+VgV2eOFYle3oSVY1C3cQ45KxchATUpJ6GCjZHHlAPxRD5k6T80A0eA6xtedDW68DbQJs0
-	X+B8uc8A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=binSKFTDATr+VUKohUw2T7hk+6PX9qDP2BHHB8PRuJo=; b=rInXKa1Nv33vN5
+	mIP96ch6HuMrUKjelzJtbd7XuHJUUUAzskM6PojMpDRCfgfxa2om2+clNz0IsmNMsnZcB0+jO/Ft5
+	zkp21NhMJrMUwBOhl96vuIrMTxJXVVoA/PcPP8F5+/BYwDvTtCgYIqp+dOBExiAiVqF3a83GcA58S
+	jGeyl18ZSS7jenJGYJcH+iPEN5vwwz5J6174g4+IIqN/dLk88nDzG7FnxX83KOxe72ww0Hw3xtEu0
+	E4pEJYSKjNZJFMRL03kKSyeqpKvuKvh+bE4/FG4xFfr4yy3JI1CzhKzHMZ5qFBpc/uIWq7MDS4fKW
+	OljH3bkqKuHLIZj0N1Qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXWQZ-000Khs-3z; Thu, 02 Mar 2023 00:04:07 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pXeIh-001HA3-DW; Thu, 02 Mar 2023 08:28:31 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXWQV-000Kg9-Ow; Thu, 02 Mar 2023 00:04:05 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pXWQH-0000kl-0o;
-	Thu, 02 Mar 2023 01:03:49 +0100
-Date: Thu, 2 Mar 2023 00:03:45 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Russell King <linux@armlinux.org.uk>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
-	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
-Subject: Re: [RFC PATCH v11 08/12] net: ethernet: mtk_eth_soc: fix RX data
- corruption issue
-Message-ID: <Y//n4R2QuWvySDbg@makrotopia.org>
-References: <cover.1677699407.git.daniel@makrotopia.org>
- <9a788bb6984c836e63a7ecbdadff11a723769c37.1677699407.git.daniel@makrotopia.org>
- <20230301233121.trnzgverxndxgunu@skbuf>
+	id 1pXeId-001H9Z-EK
+	for linux-mediatek@lists.infradead.org; Thu, 02 Mar 2023 08:28:29 +0000
+Received: by mail-ed1-x536.google.com with SMTP id g3so8934102eda.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 02 Mar 2023 00:28:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1677745705;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=binSKFTDATr+VUKohUw2T7hk+6PX9qDP2BHHB8PRuJo=;
+        b=vaprO//rVPPS8AInkhN+nrEBCuqfVNws7vQ3mUHSuQNCEu7Z5a6GAO20G65gqlEPQS
+         SwHqRqdItcbIe1gf5fQp9roEpYdWODBt+x0pK1is7wEacjcCrNLNRSWTBaGrzIP5DBWP
+         Oito52Yw1fswhUyFRRJIzKctJhREeDaeVr8cGD8ujTExK+iph6kMDNn3DfzQNEiNnhw4
+         NeDDxG4T2IkVTpnUrLyA3N+1VMtbd9aBKWix41DWNEcBspelgdcYVaUgsrsqAbXcNW6o
+         Xh6VbTiBWVccDtsn4z6cgxc/ojsCItsRlJdrmsQAQb2rMHSgzdKNyJ6dHUoWzslot+Aw
+         vupg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1677745705;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=binSKFTDATr+VUKohUw2T7hk+6PX9qDP2BHHB8PRuJo=;
+        b=w795VYf+k8p3tLtQp0mAaEGxhoQVAy+Wr++E1BQ7Li9qPxhjeL68LA7Q2dXpPwJ1iK
+         glHt2K37hMVE3gv9pd5WTS3KmZHftA83mPlaGIDfblEJ3UJSJa1G+TSnaGWcHadU8thJ
+         QD5TOtjC/4FduBUTSe1THGWfGFm9pRFszw9os+1G6TE72de4ljdZ4GyWbb6LzlxVhjPv
+         jmuMsJu58PRQEuIwJ57CCKVHQ4LbMBPBXZTgBozsNDbhKnP+b9KZ5BJgR0S31gQffJQ/
+         u8EDP52ksXJuUCMT+bNtZ9MWkk7Qfm0sN2OXhb+A/2wH3NBR7ag1kqnH8ZzGYasRylTE
+         3t5A==
+X-Gm-Message-State: AO0yUKW1GbOMjJhQmc2lUhDOEMMdPVIkcQzvYanKkR1IHpP0hQkGbXnx
+	E4yDIi9CeQqXfeK8GABdJ+HBBA==
+X-Google-Smtp-Source: AK7set+sya+UufcyMJpds/o5eIN1syxY+wLyLZB9BFt9OhvL1PkZ9IK+iHqBR/gdWrOSJTSc4p7EVQ==
+X-Received: by 2002:aa7:d856:0:b0:4af:6e95:861b with SMTP id f22-20020aa7d856000000b004af6e95861bmr1487899eds.2.1677745703475;
+        Thu, 02 Mar 2023 00:28:23 -0800 (PST)
+Received: from [192.168.1.20] ([178.197.216.144])
+        by smtp.gmail.com with ESMTPSA id q21-20020a50cc95000000b004c0c5864cc5sm214800edi.25.2023.03.02.00.28.21
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 02 Mar 2023 00:28:23 -0800 (PST)
+Message-ID: <11d3c806-04b6-da54-65f1-c0bd154affbc@linaro.org>
+Date: Thu, 2 Mar 2023 09:28:21 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [RFC PATCH 07/16] dt-bindings: pinctrl: ralink: add new
+ compatible strings
+Content-Language: en-US
+To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ Rob Herring <robh@kernel.org>
+References: <20230222183932.33267-1-arinc.unal@arinc9.com>
+ <20230222183932.33267-8-arinc.unal@arinc9.com>
+ <20230227173333.GA496999-robh@kernel.org>
+ <d7aea90f-d077-3a41-996c-804c95d72e24@arinc9.com>
+ <20230301024431.GA251215-robh@kernel.org>
+ <ae3346de-140f-f181-b6a3-ccaa694e1548@arinc9.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <ae3346de-140f-f181-b6a3-ccaa694e1548@arinc9.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230301233121.trnzgverxndxgunu@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230301_160403_851883_5BBADE2A 
-X-CRM114-Status: GOOD (  16.78  )
+X-CRM114-CacheID: sfid-20230302_002827_529547_643AA73F 
+X-CRM114-Status: GOOD (  22.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,31 +94,88 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-gpio@vger.kernel.org, Daniel Santos <daniel.santos@pobox.com>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org, Sergio Paracuellos <sergio.paracuellos@gmail.com>, William Dean <williamsukatube@gmail.com>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Daniel Golle <daniel@makrotopia.org>, Matthias Brugger <matthias.bgg@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 02, 2023 at 01:31:21AM +0200, Vladimir Oltean wrote:
-> On Wed, Mar 01, 2023 at 07:55:05PM +0000, Daniel Golle wrote:
-> > Also set bit 12 which disabled the RX FIDO clear function when setting up
-> > MAC MCR, as MediaTek SDK did the same change stating:
-> > "If without this patch, kernel might receive invalid packets that are
-> > corrupted by GMAC."[1]
-> > This fixes issues with <= 1G speed where we could previously observe
-> > about 30% packet loss while the bad packet counter was increasing.
-> > 
-> > [1]: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/d8a2975939a12686c4a95c40db21efdc3f821f63
-> > Tested-by: Bj�rn Mork <bjorn@mork.no>
-> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> > ---
+On 01/03/2023 09:15, Arınç ÜNAL wrote:
+> On 1.03.2023 05:44, Rob Herring wrote:
+>> On Tue, Feb 28, 2023 at 07:46:36PM +0300, Arınç ÜNAL wrote:
+>>> On 27/02/2023 20:33, Rob Herring wrote:
+>>>> On Wed, Feb 22, 2023 at 09:39:23PM +0300, arinc9.unal@gmail.com wrote:
+>>>>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+>>>>>
+>>>>> Add the ralink,rt2880-pinmux compatible string. It had been removed from
+>>>>> the driver which broke the ABI.
+>>>>>
+>>>>> Add the mediatek compatible strings. Change the compatible string on the
+>>>>> examples with the mediatek compatible strings.
+>>>>>
+>>>>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+>>>>> ---
+>>>>>    .../devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml | 7 +++++--
+>>>>>    .../devicetree/bindings/pinctrl/ralink,mt7621-pinctrl.yaml | 7 +++++--
+>>>>>    .../devicetree/bindings/pinctrl/ralink,rt2880-pinctrl.yaml | 7 +++++--
+>>>>>    .../devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml | 7 +++++--
+>>>>>    .../devicetree/bindings/pinctrl/ralink,rt3883-pinctrl.yaml | 7 +++++--
+>>>>>    5 files changed, 25 insertions(+), 10 deletions(-)
+>>>>>
+>>>>> diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
+>>>>> index 1e63ea34146a..531b5f616c3d 100644
+>>>>> --- a/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
+>>>>> +++ b/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
+>>>>> @@ -17,7 +17,10 @@ description:
+>>>>>    properties:
+>>>>>      compatible:
+>>>>> -    const: ralink,mt7620-pinctrl
+>>>>> +    enum:
+>>>>> +      - mediatek,mt7620-pinctrl
+>>>>> +      - ralink,mt7620-pinctrl
+>>>>
+>>>> We don't update compatible strings based on acquistions nor marketing
+>>>> whims. If you want to use 'mediatek' for new things, then fine.
+>>>
+>>> Understood. Only the SoCs with rtXXXX were rebranded, the mtXXXX SoCs share
+>>> the same architecture from Ralink, so they were incorrectly called Ralink
+>>> SoCs.
+>>>
+>>> I can remove the new strings from Ralink SoCs and add them only for MediaTek
+>>> SoCs. Or you could make an exception for this one, regarding the situation.
+>>> Whatever you think is best.
+>>
+>> I'm not in a position to make an exception as I know little about this
+>> platform. Carrying both strings is a NAK. Either you (and everyone using
+>> these platforms) care about the ABI and are stuck with the "wrong"
+>> string. In the end, they are just unique identifiers. Or you don't care
+>> and break the ABI and rename everything. If you do that, do just that in
+>> your patches and make it crystal clear in the commit msg that is your
+>> intention and why that is okay.
 > 
-> Should this patch be submitted separately from the series, to the
-> net.git tree, to be backported to stable kernels?
+> Ralink had their MIPS SoCs pre-acquisition, RT2880, etc. MediaTek 
+> introduced new SoCs post-acquisition, MT7620, MT7621, MT7628, and 
+> MT7688, utilising the same platform from Ralink, sharing the same 
+> architecture code, pinctrl core driver, etc.
+> 
+> I don't intend to break the ABI at all. On the contrary, I fix it where 
+> possible.
+> 
+> If I understand correctly, from this conversation and what Krzysztof 
+> said, all strings must be kept on the schemas so I can do what I said on 
+> the composed mail. Only match the pin muxing information on the strings 
+> that won't match multiple pin muxing information from other schemas.
+> 
+> This way we don't break the ABI, introduce new compatible strings while 
+> keeping the remaining ones, and make schemas match correctly.
+> 
+> Let me know if this is acceptable to you.
 
-Maybe yes, as this issue may affect e.g. the BPi-R3 board when used
-with 1G SFP modules. Previously this has just never been a problem as
-all practically all boards with MediaTek SoCs using SGMII also use the
-MediaTek MT7531 switch connecting in 2500Base-X mode.
+If by "introduce new compatible strings" you mean duplicate compatibles
+to fix the ralink->mediatek, then you ignored entire email from Rob -
+this and previous. We don't do this. Leave them as is.
 
-Should the Fixes:-tag hence reference the commit adding support for the
-BPi-R3?
+If you meant something else, explain more...
+
+Best regards,
+Krzysztof
+
 
