@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAE6CC64EC4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 06:04:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94C9CC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 06:04:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZJ2aViFV8G5fD3sj6zvP1zwzM+rkvacAu8VneaLs+F0=; b=iO2Pcil01V9Kqw
-	zGJ0lyknD1zr6j3n6SRlyDln8caP5i6VVkEf5Aeqa0MN8Jv5dGV5SiIGXs9gQYsqFAyg+hXRBUt9t
-	oKemdADgGxwgQTKAHClHZTyTSQ5pQQJuxp5FPQcKWWdDGjEAxWPhXIMdCvCUsgp+54XGVCLBmWxL0
-	Woe70aGmeaCONCFV444vfHG4kQ73usQkXCNGuWjJBwdyBFCeZ0hJWxdqeKqkjFlrId01/LIuJHxSK
-	GaOiqeoV8D/vj/vZiKdBQ1um6NfLmEzLoCIQjn9pArejHmTf5SXg7Do7+dSO7CLXALErkdI/m1Y0V
-	tpRBHOgHaC7OG/3vDLJA==;
+	List-Owner; bh=A7cWEU8HBpDT1/6MmuaACtH+747N38odJNoAvMZIW4s=; b=RzmgWZYPBtjv0x
+	XQV5s7bqTYlq2ISPw4DwYbxq5AWehdItgQkfZWE6AZXIVzDgFUfpIiEg64QilbA8TRJsD11Mevg4X
+	a0KnsBc/q3xLZchwyhuuSlhgZZ9ck/vHGyHIFIqH5eHqhHKZZ4QuohShREsujqWgTB3bARCmUwgie
+	x5e8FV9yALehuvHrGmDIBMrhV/bjuNWETI/u9zQDqtQxmx21Vnup7YyzjBjvFiTAQ1cRzcR0NR7Wz
+	JlckbPbQd3POAfI0IwqoKlQCNBNTDRj7wVjSU1B7/lV+ZucrIUzATfZWgLc8+bZR0fv6UUdUxH+e7
+	bXlhMiWQIl//LmFW7f8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXyWM-004y6q-Ks; Fri, 03 Mar 2023 06:03:58 +0000
-Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231])
+	id 1pXyWf-004yEs-Ou; Fri, 03 Mar 2023 06:04:17 +0000
+Received: from mail-oa1-x2d.google.com ([2001:4860:4864:20::2d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXyWJ-004y5W-Jd; Fri, 03 Mar 2023 06:03:56 +0000
-Received: by mail-oi1-x231.google.com with SMTP id c11so1047022oiw.2;
-        Thu, 02 Mar 2023 22:03:54 -0800 (PST)
+	id 1pXyWd-004yDF-6D; Fri, 03 Mar 2023 06:04:16 +0000
+Received: by mail-oa1-x2d.google.com with SMTP id 586e51a60fabf-1720433ba75so1926730fac.5;
+        Thu, 02 Mar 2023 22:04:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1677823433;
+        d=gmail.com; s=20210112; t=1677823453;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ZJ2aViFV8G5fD3sj6zvP1zwzM+rkvacAu8VneaLs+F0=;
-        b=MPIeoVXSgZQNc49dEdm+5PyxfuyNRWHFy6hY3TPROVGUTnXybd0lj8Feor6Dn14i2I
-         DTjAJyXWKQ7LK/dRZ95078fw6kSk2XPI48BkUnUyDsNkC37GQ71FarEh+iKd29Aeu3Dq
-         /84zs9wM7/QI4C/5Wirt0SD4iaVkvG9Nu1wD+NUZACxFLqwkx2ECxQX1+xK/uOG8K7+o
-         gC/68ag2oH6pq3iqbFkKwhaYTDnFSiCqYhPuBuqPRKQ21tWM4mYP8P7eYUUU8URN2w0w
-         iXUKb1GnLiEZzGCR/FXRWm3kONerrmdEYzZT9QD+qyG7OJPJQ/GOptdYbTBJhytkGMfE
-         2jgA==
+        bh=A7cWEU8HBpDT1/6MmuaACtH+747N38odJNoAvMZIW4s=;
+        b=lntsTFtRjMy1nyd93DsrcqZAzV1bTRlQHP6iITP0XPKXdojIbqW5WNueotKkBSnlO1
+         80GjhDWuJwU0kI4AoB5HDXIdABnrWkEXkZL0m80SQBAOYzlSt9gZPZfGsovAuTAg1dSv
+         O80SIUoNzhr3fZn0Ze6PMjEmkF1jzyakq6wNA5BNEnaqvBKrGzkW6ovipE7nERBTTjVX
+         Zc0BgNzchzDiJOsXQA2zcvVN20R463vvQP5nUzS3CeconZyFIe2bCxBXEWEeRkjzW8Ml
+         TABoP40WtnVJzBVkSa9Bs8CBrpB5R3nLop5JAtix+6JH2dB5YFErtQhbfD5kTF7rfjzz
+         FZMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1677823433;
+        d=1e100.net; s=20210112; t=1677823453;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ZJ2aViFV8G5fD3sj6zvP1zwzM+rkvacAu8VneaLs+F0=;
-        b=IMuHc8c/UjqNuzleChYkG+dzXCm0spd7lPZE53pMfn8+mlNaPhr5CQbgc3Blz/yx4D
-         1fwcxiZU1VyHsYHVGGpuyvuYohI08MZAAhdIiarTHWJ0pi+my3flYt+0HZbwqCTb0OYf
-         +dZVWoGDRIvJtM539jLu1SDC2UpdZRcQgox0EZ73MtDLzpk8iqCN+y0ZHpky9MauMjeq
-         sdOYm83uW4y0Lg2TZz/pPds3U2nUGWV8kiXQIp1gnzf9X9dg9Uuf+JuwxphLhoMYLbzl
-         pZENzz0ke0SXli/xEZwGpfXkumi2Z/KY/KUMcLfyVd3wZJD0CQ//m5sqXbCkC3kx7vXQ
-         n0fA==
-X-Gm-Message-State: AO0yUKXafalBN8G1FnJdjaAuPUvdSV+brZyog5fNoGNrkhONgHHQ9mBE
-	FXqbNNsr90XQtmLHy8Lhz+OmfKDf4ovyR1P36po=
-X-Google-Smtp-Source: AK7set8YxDCWPYK7rU1INZGaYhKhWrHNXMzEGlkkj1ToCKsyEYhRAP7UvN+4lrZyv7g91f2zNpmwjk+BtkPXi5r4J8s=
-X-Received: by 2002:aca:1c0b:0:b0:384:2a27:8567 with SMTP id
- c11-20020aca1c0b000000b003842a278567mr198832oic.2.1677823433805; Thu, 02 Mar
- 2023 22:03:53 -0800 (PST)
+        bh=A7cWEU8HBpDT1/6MmuaACtH+747N38odJNoAvMZIW4s=;
+        b=8NdDj+yG5Vj6md47+NzW/ksvM7tqa/jTGy48wB70rsXql/8XgVL+9cDCcFINfqUzHi
+         h/66g0CxyuKKlCtYRMgnWUHcFmlCHIanYx/bxjP0oSxlWGTi343oAuKXadhyzNVronZP
+         GpUmSyk7LdAYEVVLDZCRT1rCJKvo3Z7mWNPzXWoqevTzd1IdoNACQXDrwqlWC4xrbgVJ
+         gPjKqKo1g4YR93aee2B52tUOWnnyGVK0IFlijOruKhGbry1A58OqycrsdYtpGZF3DfnH
+         z1yk7KTckA9a6/QDrX8jguA6wfbTwKZLPyMK5bzyr4VvP5aoe4z5b2zpzOfhRED9frys
+         8Hjg==
+X-Gm-Message-State: AO0yUKWNZFMg2/Nj/1t5WIEkx+c2ZYKY1rLjtCly3r39BNWIYgiA7483
+	fgZvSAe3VbidechlakwR2fCAdOgFK7qgZ0TXPSc=
+X-Google-Smtp-Source: AK7set8poKz9lmsr4x7Pzww0rh+JcHA/O5B1fvAZHniZfyEHHNU5hGFb/a4ovY5xGj1iTGUZoY9D+1fIUZNTHc0x+J8=
+X-Received: by 2002:a05:6870:8c2f:b0:176:45a7:1ec0 with SMTP id
+ ec47-20020a0568708c2f00b0017645a71ec0mr252872oab.2.1677823453219; Thu, 02 Mar
+ 2023 22:04:13 -0800 (PST)
 MIME-Version: 1.0
 References: <20230303002850.51858-1-arinc.unal@arinc9.com> <20230303002850.51858-5-arinc.unal@arinc9.com>
-In-Reply-To: <20230303002850.51858-5-arinc.unal@arinc9.com>
+ <CAMhs-H9qVE0Z23Z3J8D1voo5UaKZrjUYU=7V=oRMd8=vVGASAg@mail.gmail.com>
+In-Reply-To: <CAMhs-H9qVE0Z23Z3J8D1voo5UaKZrjUYU=7V=oRMd8=vVGASAg@mail.gmail.com>
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Fri, 3 Mar 2023 07:03:41 +0100
-Message-ID: <CAMhs-H9qVE0Z23Z3J8D1voo5UaKZrjUYU=7V=oRMd8=vVGASAg@mail.gmail.com>
+Date: Fri, 3 Mar 2023 07:04:01 +0100
+Message-ID: <CAMhs-H9kPMsaMHJx703qSS4fxZh_KyGib+VKf9DfP0s085O3Mg@mail.gmail.com>
 Subject: Re: [PATCH 04/20] pinctrl: ralink: mt7620: split out to mt76x8
 To: arinc9.unal@gmail.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230302_220355_686225_88EEC5CC 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20230302_220415_271307_AC7D997F 
+X-CRM114-Status: GOOD (  12.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,23 +85,31 @@ Cc: devicetree@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, DENG Qingf
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 3, 2023 at 1:30 AM <arinc9.unal@gmail.com> wrote:
+On Fri, Mar 3, 2023 at 7:03 AM Sergio Paracuellos
+<sergio.paracuellos@gmail.com> wrote:
 >
-> From: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
->
-> Split the driver out to pinctrl-mt76x8.c. Remove including the unnecessar=
-y
-> headers since is_mt76x8() is not being used anymore.
->
-> Introduce a new compatible string to be able to document the pin muxing
-> information properly.
->
-> Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
-> ---
->  drivers/pinctrl/ralink/Kconfig          |   5 +
->  drivers/pinctrl/ralink/Makefile         |   1 +
->  drivers/pinctrl/ralink/pinctrl-mt7620.c | 257 +--------------------
->  drivers/pinctrl/ralink/pinctrl-mt76x8.c | 283 ++++++++++++++++++++++++
->  4 files changed, 290 insertions(+), 256 deletions(-)
->  create mode 100644 drivers/pinctrl/ralink/pinctrl-mt76x8.c
+> On Fri, Mar 3, 2023 at 1:30 AM <arinc9.unal@gmail.com> wrote:
+> >
+> > From: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
+> >
+> > Split the driver out to pinctrl-mt76x8.c. Remove including the unnecess=
+ary
+> > headers since is_mt76x8() is not being used anymore.
+> >
+> > Introduce a new compatible string to be able to document the pin muxing
+> > information properly.
+> >
+> > Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
+> > ---
+> >  drivers/pinctrl/ralink/Kconfig          |   5 +
+> >  drivers/pinctrl/ralink/Makefile         |   1 +
+> >  drivers/pinctrl/ralink/pinctrl-mt7620.c | 257 +--------------------
+> >  drivers/pinctrl/ralink/pinctrl-mt76x8.c | 283 ++++++++++++++++++++++++
+> >  4 files changed, 290 insertions(+), 256 deletions(-)
+> >  create mode 100644 drivers/pinctrl/ralink/pinctrl-mt76x8.c
+
+Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+
+Thanks,
+    Sergio Paracuellos
 
