@@ -4,68 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49645C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 14:18:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0D54C7EE2D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 15:48:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=J1x4ZN9o6V9W+qBh0ggz87xL1gWqHwTlf5r/ePU2u7s=; b=owv1S6wiK7tAgw
-	YQPfPMYjNFXmL9TQLVH8sZxd3jkErkGvbjLW37cs8MaZg31FzViz30Syh27i7NqkRuZjHj2ZuLJMQ
-	U9Gv/8kVh0XT00LFapo+6B5O2gJX/tqk0v3cWVqF4rFtDrfWuU/3GADG9CzZyHGLx/T0PYTGZkiQ9
-	VYHsrbichxeveZEP2h2zX00fhUJNSw5rhCUmkUF7bFaqViWgyvk23nBm0MC/g7NFLpDibW2vekdgH
-	44NTg8FfA2RXYR+k8wOJ7/fEWjDFwEO8OQoVNvaNdS1s+o7CVUVB5oOTwVD8xnoWMRfTx/8EZxdu7
-	UeU9PArRcILAzylRmfrw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EaXCVPjMTLiev1mb+8EwCfDrHgM6em5kKtDpTtYrDuo=; b=WNC+M7t/Ibh4SlCWGgOaawvL5K
+	DUgY6oW1bOVqhQOcZq+RETeBdOLBNxZzeAMt0jXMFPfKrHau9IykB+kK3WIcdg6xNEXyXRzZ8/0sM
+	iaM005lfnUtdYhd5mV/s5IdaSsUjsOrUfIgbylZP7r57rr6rqWMCYt5ECSw78FgIoobiPHQ5110aH
+	uAJu3mI1R8LXBnTIjs1J1BoQfjj1p+fsDQOCCiT29NZJ5lvuTLkSmcq/uhEx67JIhXDwSJ5pFqE3S
+	SRQAR0u28GGhM+5PQD7Ke9Fm54xaH5jMI6ZTVO1pJBLZFL6Uub+yOzjDHpiUBU9E/k9ONOv0RDZWA
+	2HsYWliw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pY6EX-006aVH-7N; Fri, 03 Mar 2023 14:18:05 +0000
-Received: from sender4-op-o16.zoho.com ([136.143.188.16])
+	id 1pY7du-006jrI-Lw; Fri, 03 Mar 2023 15:48:22 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pY6ET-006aUV-By; Fri, 03 Mar 2023 14:18:03 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1677853069; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=W045bdmzx75s5wZRdqKXSj6MKbsu2H2RGd+UAnNckVvKqLut14P74dngx9EFa3evMrmBYiHdBTRXJyPx2A4RrAaB9laruuFL2SwFjdx9hQUid2fVKXWKx7WL+MK1YPXYFFKHTxgcsJJ3Z6VlRjXLRQ6cNqlTNKsqb7apzFbFe8U=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1677853069; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=J1x4ZN9o6V9W+qBh0ggz87xL1gWqHwTlf5r/ePU2u7s=; 
-	b=HJnA1Gl0ulvNFNp12PIcPvVUaBO6ptuEg6ynGu9Yl44nim8zC+8upY72jeHPZRItXgGOYveaI+tR5pZI7GIPIkurvIukwH05ZudxJOyZ9j1NeT95XpvNzgp/Y+QXqj18DFIbH079gA0xokv+XXs7ClCvyKPjG9eW71OFxJMz3WI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1677853069;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=J1x4ZN9o6V9W+qBh0ggz87xL1gWqHwTlf5r/ePU2u7s=;
-	b=MaWvmbrf7SOR8X/C8UKjWp5SLXWJ2UbwfRjhDt+BXZvBSmv3nFgNLQZ5KGi97Y5K
-	ESrqbdmG0ZN1lnt5Rze51IjtCv2PetxHEqIe7SO4WubKJkNu1cmAnGILIpLlwXLq+4T
-	FWKpYkEwBL8lWP22gmTE+9UXhAJ6eDW+Hnt+PMxk=
-Received: from [10.10.10.3] (212.68.60.226 [212.68.60.226]) by mx.zohomail.com
-	with SMTPS id 1677853067111992.3122175211197; Fri, 3 Mar 2023 06:17:47 -0800 (PST)
-Message-ID: <fc6dc970-5bae-1c27-9473-8c9d90ac79a1@arinc9.com>
-Date: Fri, 3 Mar 2023 17:17:39 +0300
+	id 1pY7dq-006jpt-MV; Fri, 03 Mar 2023 15:48:19 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1pY7cn-0005si-GH; Fri, 03 Mar 2023 16:47:13 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: rafael@kernel.org, daniel.lezcano@linaro.org,
+ Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Niklas =?ISO-8859-1?Q?S=F6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+ Mark Brown <broonie@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Balsam CHIHI <bchihi@baylibre.com>,
+ Adam Ward <DLG-Adam.Ward.opensource@dm.renesas.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ "Rafael J . Wysocki" <rafael.j.wysocki@intel.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Dhruva Gole <d-gole@ti.com>,
+ Guillaume La Roque <glaroque@baylibre.com>, Amit Kucheria <amitk@kernel.org>,
+ Zhang Rui <rui.zhang@intel.com>, Miquel Raynal <miquel.raynal@bootlin.com>,
+ Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+ Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+ Markus Mayer <mmayer@broadcom.com>,
+ Support Opensource <support.opensource@diasemi.com>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Thara Gopinath <thara.gopinath@gmail.com>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Niklas =?ISO-8859-1?Q?S=F6derlund?= <niklas.soderlund@ragnatech.se>,
+ Bartlomiej Zolnierkiewicz <bzolnier@gmail.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Vasily Khoruzhick <anarsoul@gmail.com>, Yangtao Li <tiny.windzz@gmail.com>,
+ Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Talel Shenhar <talel@amazon.com>,
+ Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Stefan Wahren <stefan.wahren@i2se.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ ye xingchen <ye.xingchen@zte.com.cn>,
+ Zheng Yongjun <zhengyongjun3@huawei.com>,
+ Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
+ Davidlohr Bueso <dave@stgolabs.net>,
+ Sumeet Pawnikar <sumeet.r.pawnikar@intel.com>,
+ "Lee, Chun-Yi" <joeyli.kernel@gmail.com>,
+ Shang XiaoJing <shangxiaojing@huawei.com>, Tim Zimmermann <tim@linux4.de>,
+ Yang Li <yang.lee@linux.alibaba.com>, Jiang Jian <jiangjian@cdjrlc.com>,
+ Daniel Golle <daniel@makrotopia.org>, Randy Dunlap <rdunlap@infradead.org>,
+ Ido Schimmel <idosch@nvidia.com>, Minghao Chi <chi.minghao@zte.com.cn>,
+ Johan Hovold <johan+linaro@kernel.org>,
+ Mikko Perttunen <mperttunen@nvidia.com>,
+ "open list:THERMAL DRIVER FOR AMLOGIC SOCS"
+ <linux-amlogic@lists.infradead.org>,
+ "moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE"
+ <linux-rpi-kernel@lists.infradead.org>,
+ "moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:QUALCOMM TSENS THERMAL DRIVER" <linux-arm-msm@vger.kernel.org>,
+ "open list:RENESAS R-CAR THERMAL DRIVERS"
+ <linux-renesas-soc@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+ "open list:SAMSUNG THERMAL DRIVER" <linux-samsung-soc@vger.kernel.org>,
+ "moderated list:ARM/STM32 ARCHITECTURE"
+ <linux-stm32@st-md-mailman.stormreply.com>,
+ "open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>,
+ "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
+ "open list:TI BANDGAP AND THERMAL DRIVER" <linux-omap@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+Subject:  Re: [PATCH v5 02/18] thermal/core: Use the thermal zone 'devdata' accessor in
+ thermal located drivers
+Date: Fri, 03 Mar 2023 16:47:15 +0100
+Message-ID: <3152081.5fSG56mABF@diego>
+In-Reply-To: <20230301201446.3713334-3-daniel.lezcano@linaro.org>
+References:  <20230301201446.3713334-1-daniel.lezcano@linaro.org>
+ <20230301201446.3713334-3-daniel.lezcano@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH 05/20] pinctrl: ralink: move to mediatek as mtmips
-To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-References: <20230303002850.51858-1-arinc.unal@arinc9.com>
- <20230303002850.51858-6-arinc.unal@arinc9.com>
- <CAMhs-H-VGjP32AZc2cuY=Co4iqx8xPtvjr+hMg-haMMFaQzzsg@mail.gmail.com>
- <CAMhs-H8OsG-SEWigimG3fT-SGjZruH-7tnjff198Z2qhb0O=yA@mail.gmail.com>
- <2106f6d0-63cc-4656-1e52-19640994fb43@arinc9.com>
- <CAMhs-H869pR6CzaWfvf44w-ak+0OCyxnMEEU4kWYpw=C14ShsQ@mail.gmail.com>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <CAMhs-H869pR6CzaWfvf44w-ak+0OCyxnMEEU4kWYpw=C14ShsQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="iso-8859-1"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230303_061801_508330_BC67E4EC 
-X-CRM114-Status: GOOD (  32.20  )
+X-CRM114-CacheID: sfid-20230303_074818_765396_41E329E9 
+X-CRM114-Status: GOOD (  12.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,217 +125,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Daniel Santos <daniel.santos@pobox.com>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, William Dean <williamsukatube@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Heyo,
+Am Mittwoch, 1. M=E4rz 2023, 21:14:30 CET schrieb Daniel Lezcano:
+> The thermal zone device structure is exposed to the different drivers
+> and obviously they access the internals while that should be
+> restricted to the core thermal code.
+>=20
+> In order to self-encapsulate the thermal core code, we need to prevent
+> the drivers accessing directly the thermal zone structure and provide
+> accessor functions to deal with.
+>=20
+> Use the devdata accessor introduced in the previous patch.
+>=20
+> No functional changes intended.
+>=20
+> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> Reviewed-by: Niklas S=F6derlund <niklas.soderlund+renesas@ragnatech.se> #=
+R-Car
+> Acked-by: Mark Brown <broonie@kernel.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com> #MediaTek auxadc and lvts
+> Reviewed-by: Balsam CHIHI <bchihi@baylibre.com> #Mediatek lvts
+> Reviewed-by: Adam Ward <DLG-Adam.Ward.opensource@dm.renesas.com> #da9062
+> Reviewed-by: Baolin Wang <baolin.wang@linux.alibaba.com>  #spread
+> Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com> #sun8i_thermal
+> Acked-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+> Acked-by: Florian Fainelli <f.fainelli@gmail.com> #Broadcom
+> Reviewed-by: Dhruva Gole <d-gole@ti.com> # K3 bandgap
 
-On 3.03.2023 13:57, Sergio Paracuellos wrote:
-> Hi Arınç,
-> 
-> On Fri, Mar 3, 2023 at 9:16 AM Arınç ÜNAL <arinc.unal@arinc9.com> wrote:
->>
->> Hey Sergio,
->>
->> On 3.03.2023 09:34, Sergio Paracuellos wrote:
->>> On Fri, Mar 3, 2023 at 7:17 AM Sergio Paracuellos
->>> <sergio.paracuellos@gmail.com> wrote:
->>>>
->>>>    Hi Arınç,
->>>>
->>>> On Fri, Mar 3, 2023 at 1:30 AM <arinc9.unal@gmail.com> wrote:
->>>>>
->>>>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>>>>
->>>>> This platform from Ralink was acquired by MediaTek in 2011. Then, MediaTek
->>>>> introduced new SoCs which utilise this platform. Move the driver to
->>>>> mediatek pinctrl directory. Rename the ralink core driver to mtmips.
->>>>>
->>>>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->>>>> ---
->>>>>    drivers/pinctrl/Kconfig                       |  1 -
->>>>>    drivers/pinctrl/Makefile                      |  1 -
->>>>>    drivers/pinctrl/mediatek/Kconfig              | 51 ++++++++++-
->>>>>    drivers/pinctrl/mediatek/Makefile             | 63 +++++++------
->>>>>    .../{ralink => mediatek}/pinctrl-mt7620.c     | 34 +++----
->>>>>    .../{ralink => mediatek}/pinctrl-mt7621.c     | 30 +++----
->>>>>    .../{ralink => mediatek}/pinctrl-mt76x8.c     | 60 ++++++-------
->>>>>    .../pinctrl-mtmips.c}                         | 90 +++++++++----------
->>>>>    .../pinctrl-mtmips.h}                         | 16 ++--
->>>>>    .../{ralink => mediatek}/pinctrl-rt2880.c     | 20 ++---
->>>>>    .../{ralink => mediatek}/pinctrl-rt305x.c     | 44 ++++-----
->>>>>    .../{ralink => mediatek}/pinctrl-rt3883.c     | 28 +++---
->>>>>    drivers/pinctrl/ralink/Kconfig                | 40 ---------
->>>>>    drivers/pinctrl/ralink/Makefile               |  9 --
->>>>>    14 files changed, 246 insertions(+), 241 deletions(-)
->>>>>    rename drivers/pinctrl/{ralink => mediatek}/pinctrl-mt7620.c (81%)
->>>>>    rename drivers/pinctrl/{ralink => mediatek}/pinctrl-mt7621.c (80%)
->>>>>    rename drivers/pinctrl/{ralink => mediatek}/pinctrl-mt76x8.c (81%)
->>>>>    rename drivers/pinctrl/{ralink/pinctrl-ralink.c => mediatek/pinctrl-mtmips.c} (74%)
->>>>>    rename drivers/pinctrl/{ralink/pinctrl-ralink.h => mediatek/pinctrl-mtmips.h} (75%)
->>>>>    rename drivers/pinctrl/{ralink => mediatek}/pinctrl-rt2880.c (71%)
->>>>>    rename drivers/pinctrl/{ralink => mediatek}/pinctrl-rt305x.c (75%)
->>>>>    rename drivers/pinctrl/{ralink => mediatek}/pinctrl-rt3883.c (80%)
->>>>>    delete mode 100644 drivers/pinctrl/ralink/Kconfig
->>>>>    delete mode 100644 drivers/pinctrl/ralink/Makefile
->>>>>
->>>>> diff --git a/drivers/pinctrl/Kconfig b/drivers/pinctrl/Kconfig
->>>>> index dcb53c4a9584..8a6012770640 100644
->>>>> --- a/drivers/pinctrl/Kconfig
->>>>> +++ b/drivers/pinctrl/Kconfig
->>>>> @@ -537,7 +537,6 @@ source "drivers/pinctrl/nomadik/Kconfig"
->>>>>    source "drivers/pinctrl/nuvoton/Kconfig"
->>>>>    source "drivers/pinctrl/pxa/Kconfig"
->>>>>    source "drivers/pinctrl/qcom/Kconfig"
->>>>> -source "drivers/pinctrl/ralink/Kconfig"
->>>>>    source "drivers/pinctrl/renesas/Kconfig"
->>>>>    source "drivers/pinctrl/samsung/Kconfig"
->>>>>    source "drivers/pinctrl/spear/Kconfig"
->>>>> diff --git a/drivers/pinctrl/Makefile b/drivers/pinctrl/Makefile
->>>>> index d5939840bb2a..ada6ed1d4e91 100644
->>>>> --- a/drivers/pinctrl/Makefile
->>>>> +++ b/drivers/pinctrl/Makefile
->>>>> @@ -66,7 +66,6 @@ obj-y                         += nomadik/
->>>>>    obj-y                          += nuvoton/
->>>>>    obj-$(CONFIG_PINCTRL_PXA)      += pxa/
->>>>>    obj-$(CONFIG_ARCH_QCOM)                += qcom/
->>>>> -obj-$(CONFIG_PINCTRL_RALINK)   += ralink/
->>>>>    obj-$(CONFIG_PINCTRL_RENESAS)  += renesas/
->>>>>    obj-$(CONFIG_PINCTRL_SAMSUNG)  += samsung/
->>>>>    obj-$(CONFIG_PINCTRL_SPEAR)    += spear/
->>>>> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
->>>>> index a71874fed3d6..2eeb55010563 100644
->>>>> --- a/drivers/pinctrl/mediatek/Kconfig
->>>>> +++ b/drivers/pinctrl/mediatek/Kconfig
->>>>> @@ -1,6 +1,6 @@
->>>>>    # SPDX-License-Identifier: GPL-2.0-only
->>>>>    menu "MediaTek pinctrl drivers"
->>>>> -       depends on ARCH_MEDIATEK || COMPILE_TEST
->>>>> +       depends on ARCH_MEDIATEK || RALINK || COMPILE_TEST
->>>>>
->>>>>    config EINT_MTK
->>>>>           tristate "MediaTek External Interrupt Support"
->>>>> @@ -22,6 +22,12 @@ config PINCTRL_MTK
->>>>>    config PINCTRL_MTK_V2
->>>>>           tristate
->>>>>
->>>>> +config PINCTRL_MTK_MTMIPS
->>>>> +       bool
->>>>> +       depends on RALINK
->>>>> +       select PINMUX
->>>>> +       select GENERIC_PINCONF
->>>>> +
->>>>>    config PINCTRL_MTK_MOORE
->>>>>           bool
->>>>>           depends on OF
->>>>> @@ -43,6 +49,49 @@ config PINCTRL_MTK_PARIS
->>>>>           select OF_GPIO
->>>>>           select PINCTRL_MTK_V2
->>>>>
->>>>> +# For MIPS SoCs
->>>>> +config PINCTRL_MT7620
->>>>> +       bool "MediaTek MT7620 pin control"
->>>>> +       depends on SOC_MT7620 || COMPILE_TEST
->>>>> +       depends on RALINK
->>>>> +       default SOC_MT7620
->>>>> +       select PINCTRL_MTK_MTMIPS
->>>>> +
->>>>> +config PINCTRL_MT7621
->>>>> +       bool "MediaTek MT7621 pin control"
->>>>> +       depends on SOC_MT7621 || COMPILE_TEST
->>>>> +       depends on RALINK
->>>>> +       default SOC_MT7621
->>>>> +       select PINCTRL_MTK_MTMIPS
->>>>> +
->>>>> +config PINCTRL_MT76X8
->>>>> +       bool "MediaTek MT76X8 pin control"
->>>>> +       depends on SOC_MT7620 || COMPILE_TEST
->>>>> +       depends on RALINK
->>>>> +       default SOC_MT7620
->>>>> +       select PINCTRL_MTK_MTMIPS
->>>>> +
->>>>> +config PINCTRL_RT2880
->>>>> +       bool "Ralink RT2880 pin control"
->>>>> +       depends on SOC_RT288X || COMPILE_TEST
->>>>> +       depends on RALINK
->>>>> +       default SOC_RT288X
->>>>> +       select PINCTRL_MTK_MTMIPS
->>>>> +
->>>>> +config PINCTRL_RT305X
->>>>> +       bool "Ralink RT305X pin control"
->>>>> +       depends on SOC_RT305X || COMPILE_TEST
->>>>> +       depends on RALINK
->>>>> +       default SOC_RT305X
->>>>> +       select PINCTRL_MTK_MTMIPS
->>>>> +
->>>>> +config PINCTRL_RT3883
->>>>> +       bool "Ralink RT3883 pin control"
->>>>> +       depends on SOC_RT3883 || COMPILE_TEST
->>>>> +       depends on RALINK
->>>>> +       default SOC_RT3883
->>>>> +       select PINCTRL_MTK_MTMIPS
->>>>> +
->>>>
->>>> I am not a Kconfig expert at all but...
->>>>
->>>> Should not all of these be depends on SOC_XXX || (COMPILE_TEST &&
->>>> RALINK) and avoid the " depends on RALINK" next line in all of them?
->>
->> This seems to do the same thing but I'm following the "either change
->> them all or fit into the crowd" ideology.
->>
->>>>
->>>> Just asking since we have yet arch read and write register operations
->>>> in pinctrl common ralink code. Having in this way, when we address
->>>> this arch thing  in the next series just removing the "&& RALINK" part
->>>> makes the review pretty obvious.
->>
->> You'd have to change RALINK with OF since we're still depending on that.
->> RALINK selects OF by default so it's currently a hidden dependency.
->>
->>>>
->>>> Other than that, changes look good to me.
->>>
->>> I think "depends on SOC_XXX || (COMPILE_TEST && MIPS)" would work also
->>> and might be more accurate for compile testing targets.
-> 
-> Are you sure? SOC_XXX here is already being enabled only if RALINK is
-> already enabled, right? [0]
+Acked-by: Heiko Stuebner <heiko@sntech.de> #rockchip
 
-I'm not sure who's your reply to, or what it's about here.
 
-> 
->>
->> This is not OK in both cases. If the driver is dependent on Ralink
->> architecture code, choosing any other MIPS platform will make the driver
->> available to compile, which will fail.
-> 
-> SOC_XXX is already dependent on RALINK for real uses but the driver is
-> going to be selected for other MIPS platforms only for COMPILE_TEST
-> targets. Ideally drivers should be arch agnostic so can be selected
-> for any single arch build. Now we have arch dependent read and write
-> calls in the code, so you need the right headers to be properly found
-> to be able to compile testing. I think MIPS is enough dependency here
-> to properly find them. But if not, this should be (COMPILE_TEST &&
-> RALINK)
-
-I expect below to work without requiring the MIPS option.
-
-ifeq ($(CONFIG_COMPILE_TEST),y)
-CFLAGS_pinctrl-mtmips.o		+= -I$(srctree)/arch/mips/include
-endif
-
-> 
->>
->> If the driver is independent of Ralink architecture code, you're
->> limiting the driver to be compiled only when a MIPS platform is selected.
-> 
-> So... how are you planning to allow compile testing of the driver in
-> any single arch when we get rid of all the arch dependent code? If you
-> make everything dependent on RALINK you cannot.
-
-I intend to make it dependent on OF, not RALINK.
-
-Arınç
 
