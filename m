@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94F4FC64EC4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 03:37:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3AE0C678D4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 03:38:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=IB7vySGDvPUDamupYDMiAN7nbycQ9cEJZldI3SP22Ys=; b=hJjQaNJyuML6PjSKqTuylldNiG
-	4YNu3bxw+k3nJumxqwbZkocw9a/r00Kdw/tG61Lq+iwL2XH6tZg9Aof5PQD5+pnVrwULZLgKFIKLT
-	o+DV/8H/5i50amIW9vbuiiUcjpBTfLw22wRaHdnlQJLUx9oWFMFtdujOyQXmbyHixkm2AwuDB3neK
-	xMStsMHiSShkJkhi26iMoEpxxoy+fLxqnzvPJEJje0QGEs++1H+2QnvqyVHS/mIZDAJoOZfYwe7PO
-	w6HbxjGqQjv7K78xJt27kVmCeZJaQQDdGTEO/6i3OntAxx2HkQ69qq86vq7YmKCMW9TNVhwXyFSqq
-	4u8nzF5w==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zIlJ7NybosfQq5qKIS3xQ+78hBjmgkGkVjNteGRkKmo=; b=Kn8nQCKsT8bAyhKsYoD5+Ji0PI
+	L65OZj3IL4Bzk4WFWlKu6kHjOhW9h/Zol1aiZZjkMN+vvKCq+lATpEMQVpm88PjSPapvJhyhj55Z8
+	FQyZoe+F4G7ehx1x5yNT7zXlD8vnXBBwZ6UBYWmIITtqWEN2gWZT8ljPXPp/PH1udBPYSEB7wBMtt
+	01yPTVowcqcjpITzOwfZx+5nHQQl38gygMf13qJqvfXjgA65QbqxYF1HcQTbJhWJ33B/ekcTRHP/I
+	DdNTN5SFGXB/OBmTmCG7VqDSkKXan1aJJRLUB0ScSW5znKPBiYr8tQ9kwTCT0Md9XhXjtuuT4GXhG
+	f2X4wYFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXwEp-004hsb-82; Fri, 03 Mar 2023 03:37:43 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pXwFL-004i1Y-SE; Fri, 03 Mar 2023 03:38:15 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXwEl-004hs1-FB; Fri, 03 Mar 2023 03:37:40 +0000
-X-UUID: bb1e906eb97411edbbe3f76fe852e059-20230302
+	id 1pXwFI-004hzu-LP; Fri, 03 Mar 2023 03:38:14 +0000
+X-UUID: cf47120ab97411eda08d4d6090ec5a5c-20230302
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=IB7vySGDvPUDamupYDMiAN7nbycQ9cEJZldI3SP22Ys=;
-	b=OaWibnzf6Tsaq/UoMRiPz5JwYjFKIirF8rFo+ei7QX7Df0V45l+cW4l2B+KTxF3GXINNuB2Cuktwlfguk0hYPAPwwBMPdzE5MjxTo3uPD21xk1bcy8v5I6Scez2RBp/7AFKL+JSpmXzkhrRmQh8etz9jtCyXhij3NDsGLgwm68s=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=zIlJ7NybosfQq5qKIS3xQ+78hBjmgkGkVjNteGRkKmo=;
+	b=E50r4WW2doidIVpBONyCS326BLm3tgiJVzhXgTZGRSe30mQDBjedESnN4W0xLe05W3n1KrwdQThIC18YMS0o28KLqbb16nnMrEi4qYzC7dEus7aCnPTyHe9DxU6RsXLIa20OfB3JNF1q46emUrbTLNLWR+iXkLkt7pnSgvcAt/0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.20,REQID:671e3557-5b37-4f97-939a-c0e7da89217c,IP:0,U
-	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:25
-X-CID-META: VersionHash:25b5999,CLOUDID:9f0412b2-beed-4dfc-bd9c-e1b22fa6ccc4,B
+X-CID-O-INFO: VERSION:1.1.20,REQID:c8b2bf08-ca90-433e-9338-e52461eccd04,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:25b5999,CLOUDID:70ba9ff4-ddba-41c3-91d9-10eeade8eac7,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-UUID: bb1e906eb97411edbbe3f76fe852e059-20230302
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-UUID: cf47120ab97411eda08d4d6090ec5a5c-20230302
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <allen-kh.cheng@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 640334353; Thu, 02 Mar 2023 20:37:32 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+	with ESMTP id 185957361; Thu, 02 Mar 2023 20:38:06 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Fri, 3 Mar 2023 11:17:29 +0800
+ 15.2.1118.25; Fri, 3 Mar 2023 11:17:30 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.1118.25 via Frontend Transport; Fri, 3 Mar 2023 11:17:29 +0800
@@ -57,17 +57,18 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
 	<hsinyi@chromium.org>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Subject: [PATCH v3 0/7] Add and update some driver nodes for MT8186 SoC
-Date: Fri, 3 Mar 2023 11:17:21 +0800
-Message-ID: <20230303031728.24251-1-allen-kh.cheng@mediatek.com>
+Subject: [PATCH v3 1/7] arm64: dts: mediatek: mt8186: Add MTU3 nodes
+Date: Fri, 3 Mar 2023 11:17:22 +0800
+Message-ID: <20230303031728.24251-2-allen-kh.cheng@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230303031728.24251-1-allen-kh.cheng@mediatek.com>
+References: <20230303031728.24251-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230302_193739_558170_25E11DB6 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230302_193812_747259_24463907 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,34 +83,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series is based on matthias github, for-next.
+Add MTU3 nodes for MT8186 SoC.
 
-Changes since v2:
- - Remove some unnecessary linebreaks for some nodes
- - Use one line for some properties
- - Drop "Fix the fallback for mediatek, mt8186-disp-ccorr" patch
-   (since this is applied in chunkuang.hu/linux.git/log/?h=mediatek-drm-next)
- - Separate GCE into another patch
- - Drop some patches which are appied in matthias github
+Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi | 68 ++++++++++++++++++++++++
+ 1 file changed, 68 insertions(+)
 
-Changes since v1:
- - Remove the unnecessary trailing number
- - Add aliases for ovl* and rdma*
-
-Allen-KH Cheng (7):
-  arm64: dts: mediatek: mt8186: Add MTU3 nodes
-  dt-bindings: spmi: spmi-mtk-pmif: Document mediatek,mt8195-spmi as
-    fallback of mediatek,mt8186-spmi
-  arm64: dts: mediatek: mt8186: Add SPMI node
-  arm64: dts: mediatek: mt8186: Add ADSP node
-  arm64: dts: mediatek: mt8186: Add audio controller node
-  arm64: dts: mediatek: mt8186: Add GCE node
-  arm64: dts: mediatek: mt8186: Add display nodes
-
- .../bindings/spmi/mtk,spmi-mtk-pmif.yaml      |  11 +-
- arch/arm64/boot/dts/mediatek/mt8186.dtsi      | 296 ++++++++++++++++++
- 2 files changed, 304 insertions(+), 3 deletions(-)
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+index a0d3e1f731bd..178421fd8380 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+@@ -981,6 +981,40 @@
+ 			status = "disabled";
+ 		};
+ 
++		ssusb0: usb@11201000 {
++			compatible = "mediatek,mt8186-mtu3", "mediatek,mtu3";
++			reg = <0 0x11201000 0 0x2dff>, <0 0x11203e00 0 0x0100>;
++			reg-names = "mac", "ippc";
++			clocks = <&topckgen CLK_TOP_USB_TOP>,
++				 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_REF>,
++				 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_HCLK>,
++				 <&infracfg_ao CLK_INFRA_AO_ICUSB>;
++			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck";
++			interrupts = <GIC_SPI 303 IRQ_TYPE_LEVEL_HIGH 0>;
++			phys = <&u2port0 PHY_TYPE_USB2>;
++			power-domains = <&spm MT8186_POWER_DOMAIN_SSUSB>;
++			#address-cells = <2>;
++			#size-cells = <2>;
++			ranges;
++			status = "disabled";
++
++			usb_host0: usb@11200000 {
++				compatible = "mediatek,mt8186-xhci", "mediatek,mtk-xhci";
++				reg = <0 0x11200000 0 0x1000>;
++				reg-names = "mac";
++				clocks = <&topckgen CLK_TOP_USB_TOP>,
++					 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_REF>,
++					 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_HCLK>,
++					 <&infracfg_ao CLK_INFRA_AO_ICUSB>,
++					 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_XHCI>;
++				clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck", "xhci_ck";
++				interrupts = <GIC_SPI 294 IRQ_TYPE_LEVEL_HIGH 0>;
++				mediatek,syscon-wakeup = <&pericfg 0x420 2>;
++				wakeup-source;
++				status = "disabled";
++			};
++		};
++
+ 		mmc0: mmc@11230000 {
+ 			compatible = "mediatek,mt8186-mmc",
+ 				     "mediatek,mt8183-mmc";
+@@ -1012,6 +1046,40 @@
+ 			status = "disabled";
+ 		};
+ 
++		ssusb1: usb@11281000 {
++			compatible = "mediatek,mt8186-mtu3", "mediatek,mtu3";
++			reg = <0 0x11281000 0 0x2dff>, <0 0x11283e00 0 0x0100>;
++			reg-names = "mac", "ippc";
++			clocks = <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_SYS>,
++				 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_REF>,
++				 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_HCLK>,
++				 <&clk26m>;
++			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck";
++			interrupts = <GIC_SPI 331 IRQ_TYPE_LEVEL_HIGH 0>;
++			phys = <&u2port1 PHY_TYPE_USB2>, <&u3port1 PHY_TYPE_USB3>;
++			power-domains = <&spm MT8186_POWER_DOMAIN_SSUSB_P1>;
++			#address-cells = <2>;
++			#size-cells = <2>;
++			ranges;
++			status = "disabled";
++
++			usb_host1: usb@11280000 {
++				compatible = "mediatek,mt8186-xhci", "mediatek,mtk-xhci";
++				reg = <0 0x11280000 0 0x1000>;
++				reg-names = "mac";
++				clocks = <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_SYS>,
++					 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_REF>,
++					 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_HCLK>,
++					 <&clk26m>,
++					 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_XHCI>;
++				clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck","xhci_ck";
++				interrupts = <GIC_SPI 324 IRQ_TYPE_LEVEL_HIGH 0>;
++				mediatek,syscon-wakeup = <&pericfg 0x424 2>;
++				wakeup-source;
++				status = "disabled";
++			};
++		};
++
+ 		u3phy0: t-phy@11c80000 {
+ 			compatible = "mediatek,mt8186-tphy",
+ 				     "mediatek,generic-tphy-v2";
 -- 
 2.18.0
 
