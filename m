@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAFC4C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 06:19:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9464C678D4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 06:22:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=27Rub21gSh1XV2+0EkPwBcTe3XiiNWsAL6GxLuOsDgM=; b=0zYFxB3h4avn2A
-	Dr2eihJ92z77ZaCVuhZeuORKJSPInFfCtYN6ZmrmNW55VX428SS/sAD6m/hxFqJtwcmWCIqR4Ucx1
-	Rr97mW73ZCGt0BpW/bWG1uj4R/4dk8Qg+uWTyiEI/iKlNqWxPN9xrBmH5d7z9mbvb3e4R/b7Kcimi
-	6gPmZQzeSOJZS8IbLmzdhQ/97OohE9ZZamQ8fbnkfWl61deei9ijvePp1zCcXHidP/E8Sdytm1Nbq
-	XYQhjvjxP/+oN1MmjmK6roLdbkO7DomIekSaEHJCImu6K89kMTGcyCatzQXsHbnUmB1PFGyNljOg7
-	/3RnagWhu8xsumDQZayQ==;
+	List-Owner; bh=7uu9usq4mOX/FOI6pJz5zLJ5pzNWKUs6IvxsWUK8a5c=; b=b/JXb7O+iK4A6Q
+	QHYHxR3I+H1Ut54fkPflwWigpufjRiIa6T4lKvWo2vKg7mOvXIDJa3SdyKPqL277RXzUHyKYhpDCa
+	nHWoJ0mb+anDs3xMSBElE11BERLgzq3ozV4TIeiHh6w0VhNnD+A/c4j9fjVIXZhnGWqQzETb0LJ6j
+	B0EC6AqwKyyJDPTgx9BO1BsvR7GdIucGlG//Uf3LVmVre3VO0n/l8xfE1jNZz60E1jhYYpxBsQphO
+	o2ZOYq0PZDBTTFpWHkmA/DxPuZu1GmBYECm6I3InPHKlHYs0JuFsR18g/lKWYSBSsXN2vKYkeVilA
+	hNlC4Z2GreDrpov4ltVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXyl2-0051C7-Ew; Fri, 03 Mar 2023 06:19:08 +0000
-Received: from mail-oi1-x229.google.com ([2607:f8b0:4864:20::229])
+	id 1pXynm-0051jm-Vd; Fri, 03 Mar 2023 06:21:59 +0000
+Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXyl0-0051BM-Fm; Fri, 03 Mar 2023 06:19:07 +0000
-Received: by mail-oi1-x229.google.com with SMTP id r40so1094962oiw.0;
-        Thu, 02 Mar 2023 22:19:05 -0800 (PST)
+	id 1pXynk-0051iv-Hs; Fri, 03 Mar 2023 06:21:57 +0000
+Received: by mail-oi1-x22e.google.com with SMTP id e21so1072255oie.1;
+        Thu, 02 Mar 2023 22:21:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1677824345;
+        d=gmail.com; s=20210112; t=1677824515;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=27Rub21gSh1XV2+0EkPwBcTe3XiiNWsAL6GxLuOsDgM=;
-        b=WFBYt3L8DntAMPfj6wX4uDprAl5N5HINLj7Bf3RwcmiN3lbIvi8oMORSjWSbWxfxsw
-         Wlslp48ES248GNt9LfrlqHo5jxS/EmPFKIz9rWZ1KB49AxxP1qXKz/JoYPjiCYYQX2ZP
-         EhCwMybz29eI4Eewl/xw989srlioqGomgGzPmaf1ysUtVe01QJol2v/3rzeRL5yXKq7h
-         pgBkky1uf+mQ70H0KloAB0bp5OVNmPH7v+mztsjSY8digjflIiDdzsZqONn+74Jf7Vg3
-         c9Esp8v0Xq0xejAUiyNs9WyVBsqXxGcKhPlm7TNp3y89ZSfLVsjMpBjPR9cykcNHskFO
-         foWg==
+        bh=7uu9usq4mOX/FOI6pJz5zLJ5pzNWKUs6IvxsWUK8a5c=;
+        b=fTXyzaCdRaPj0J8hS+NqiNvQyp+yT3pjGkvVFYFKdtXQrqsLwtfmjgrJnX5eZRFHVz
+         /4V0diy/bNPdxM3fArpgy8WEGKWfFDKRwKcCVwI1y6L0d0fTGNrfOz10icx1Ko6ZDT6s
+         gQ1YsTwWU//GXRs/O1FvhSJEYVcXuB0MW1XHTbrV9C1EhYOYxRWfFS0fK4FfiSzKiljg
+         ZM96f/zYX53MqjABYL4QjB4Yoeie3T8r0+V7XUpQT1qMdK+dfq9UVh95zGS0FhIjWtGl
+         mqjk0lWsnq6OhEGtPEv0Mtlqnr0zG4deisg6k1svN+Wf6g0BldiUfTfmHBTjqL1FLTRM
+         zKZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1677824345;
+        d=1e100.net; s=20210112; t=1677824515;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=27Rub21gSh1XV2+0EkPwBcTe3XiiNWsAL6GxLuOsDgM=;
-        b=kiHz04JyPvpoFYDlWf5HZd8GoNHYU/7M+t7+Uef9aZ6VK0BuRhLVDCdpjCZ2IguitG
-         BHM4nA9PFfmZq3XuqXUyiJIo3rU/WCXsEZt/r9Yc75fiEraqPiWH38bcimYv+lzC7wHq
-         CXUE2JG9XlLZmnoTsI7FUICms6sAkevu+YEE7MDGkUiCT1XAqOA9dH3fzYXqRqsRqz1n
-         IscWLhcpDBkQBHqfd0mos3ECCOusZPqmHzeVryrhIEN//gnXEmz9WQ2zABFz0WG27Ki3
-         b0RRkXwhesACyO55aR4DNtl/P6WKvsOh2xTIXmycQYkYRqOfBP+AK0v6ZedLlox8MJmg
-         /MnA==
-X-Gm-Message-State: AO0yUKXA3xegpAvb9/uNXgGTp9ODqRU7tQTI7007ZvUmU5vh5BA03k0v
-	Y22jduo+A/TW+lx1VzT+DStnNz1JLoZ2VBTWAKe+3Q25SjM=
-X-Google-Smtp-Source: AK7set8U22fTtAiAvoGmZia+tj+JgvsCoAxu6D9wTuc0d8JsGWv7/y/fhzl2ksI+jPG2VBrmtV6+JbMjrcDtyMs8iqY=
-X-Received: by 2002:a05:6808:aa1:b0:384:2022:f9b1 with SMTP id
- r1-20020a0568080aa100b003842022f9b1mr193623oij.2.1677824345277; Thu, 02 Mar
- 2023 22:19:05 -0800 (PST)
+        bh=7uu9usq4mOX/FOI6pJz5zLJ5pzNWKUs6IvxsWUK8a5c=;
+        b=dG51dhqu0cVag0USzMvBRkWc0J7GbMQkcAoTIg9AFd3p3emHfy/ef5KyebS5lFIukq
+         gNEGFx3vkNjKI32F30byRJjcjwy92kjVdo0p2ZsQxwaz3Wi49tDRGt9typCJ3iPgrMtv
+         q13dRXy5GDnZpt4ZyMHLJCgybdeDJzTLk0jm498j7NZYDLpOTagp14xSoszocBjP3Egz
+         KM22VhTpr3DgZTGAqDP4cCCSbNij+2o6g2UIEE/j3rphubr9WPxSE9OG8i6Q4T2jrp4j
+         uzpn3m4wTm9l9Ey5Q/lV0r4UwbKqODN6BqgaIQ5+nVJXSmXxuFPkERO8/u3a1zFS/dBo
+         BD2g==
+X-Gm-Message-State: AO0yUKU50ut8u/NyL2NrSuYMCFuKeTGr9wLWf7lZR7vWhtY6G27vZut/
+	GkzpU82m6ElcOX8NzOJ3k+O1iiVWR4/X5J57Bes=
+X-Google-Smtp-Source: AK7set+z64CcHHKhQaG66pxc/FizbSgSp6kitd5gdIWhn5D4zQQDUYQReQikK/llQrfMO6ymTKDyCLfdWAe8qczJ6AI=
+X-Received: by 2002:a05:6808:b10:b0:384:c7b:5fa7 with SMTP id
+ s16-20020a0568080b1000b003840c7b5fa7mr181580oij.2.1677824515356; Thu, 02 Mar
+ 2023 22:21:55 -0800 (PST)
 MIME-Version: 1.0
-References: <20230303002850.51858-1-arinc.unal@arinc9.com> <20230303002850.51858-7-arinc.unal@arinc9.com>
-In-Reply-To: <20230303002850.51858-7-arinc.unal@arinc9.com>
+References: <20230303002850.51858-1-arinc.unal@arinc9.com> <20230303002850.51858-21-arinc.unal@arinc9.com>
+In-Reply-To: <20230303002850.51858-21-arinc.unal@arinc9.com>
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Fri, 3 Mar 2023 07:18:53 +0100
-Message-ID: <CAMhs-H-N6KYUXA9kJPrbbZdLhNqFpPafkLWz=2nCzua=zzjHfA@mail.gmail.com>
-Subject: Re: [PATCH 06/20] pinctrl: mediatek: remove OF_GPIO as reverse dependency
+Date: Fri, 3 Mar 2023 07:21:43 +0100
+Message-ID: <CAMhs-H-eLjKG=4gTFKQHm2zDsXOB2P7Pr=TgExKLkwY5frjbvw@mail.gmail.com>
+Subject: Re: [PATCH 20/20] MAINTAINERS: move ralink pinctrl to mediatek mips pinctrl
 To: arinc9.unal@gmail.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230302_221906_577386_3EB47931 
-X-CRM114-Status: GOOD (  11.01  )
+X-CRM114-CacheID: sfid-20230302_222156_631695_390CD454 
+X-CRM114-Status: GOOD (  14.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,18 +88,80 @@ On Fri, Mar 3, 2023 at 1:30 AM <arinc9.unal@gmail.com> wrote:
 >
 > From: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
 >
-> The OF_GPIO option is enabled by default when GPIOLIB is enabled, and
-> cannot be disabled. Remove it as a reverse dependency where GPIOLIB is al=
-so
-> set as a reverse dependency.
+> The Ralink pinctrl driver is now under the name of MediaTek MIPS pin
+> controller. Move the maintainer information accordingly. Add dt-binding
+> schema files. Add linux-mediatek@lists.infradead.org as an associated
+> mailing list.
 >
 > Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
 > ---
->  drivers/pinctrl/mediatek/Kconfig | 3 ---
->  1 file changed, 3 deletions(-)
+>  MAINTAINERS | 29 ++++++++++++++++++++++-------
+>  1 file changed, 22 insertions(+), 7 deletions(-)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 8a851eb053ca..83fa1e9651ef 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -16541,6 +16541,28 @@ F:     Documentation/devicetree/bindings/pinctrl=
+/mediatek,mt7622-pinctrl.yaml
+>  F:     Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl=
+.yaml
+>  F:     drivers/pinctrl/mediatek/
+>
+> +PIN CONTROLLER - MEDIATEK MIPS
+> +M:     Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
+> +M:     Sergio Paracuellos <sergio.paracuellos@gmail.com>
+> +L:     linux-mediatek@lists.infradead.org (moderated for non-subscribers=
+)
+> +L:     linux-mips@vger.kernel.org
+> +S:     Maintained
+> +F:     Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl=
+.yaml
+> +F:     Documentation/devicetree/bindings/pinctrl/mediatek,mt7621-pinctrl=
+.yaml
+> +F:     Documentation/devicetree/bindings/pinctrl/mediatek,mt76x8-pinctrl=
+.yaml
+> +F:     Documentation/devicetree/bindings/pinctrl/ralink,rt2880-pinctrl.y=
+aml
+> +F:     Documentation/devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.y=
+aml
+> +F:     Documentation/devicetree/bindings/pinctrl/ralink,rt3352-pinctrl.y=
+aml
+> +F:     Documentation/devicetree/bindings/pinctrl/ralink,rt3883-pinctrl.y=
+aml
+> +F:     Documentation/devicetree/bindings/pinctrl/ralink,rt5350-pinctrl.y=
+aml
+> +F:     drivers/pinctrl/mediatek/pinctrl-mt7620.c
+> +F:     drivers/pinctrl/mediatek/pinctrl-mt7621.c
+> +F:     drivers/pinctrl/mediatek/pinctrl-mt76x8.c
+> +F:     drivers/pinctrl/mediatek/pinctrl-mtmips.*
+> +F:     drivers/pinctrl/mediatek/pinctrl-rt2880.c
+> +F:     drivers/pinctrl/mediatek/pinctrl-rt305x.c
+> +F:     drivers/pinctrl/mediatek/pinctrl-rt3883.c
+> +
+>  PIN CONTROLLER - MICROCHIP AT91
+>  M:     Ludovic Desroches <ludovic.desroches@microchip.com>
+>  L:     linux-arm-kernel@lists.infradead.org (moderated for non-subscribe=
+rs)
+> @@ -17486,13 +17508,6 @@ L:     linux-mips@vger.kernel.org
+>  S:     Maintained
+>  F:     arch/mips/boot/dts/ralink/mt7621*
+>
+> -RALINK PINCTRL DRIVER
+> -M:     Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
+> -M:     Sergio Paracuellos <sergio.paracuellos@gmail.com>
+> -L:     linux-mips@vger.kernel.org
+> -S:     Maintained
+> -F:     drivers/pinctrl/ralink/
+> -
+>  RALINK RT2X00 WIRELESS LAN DRIVER
+>  M:     Stanislaw Gruszka <stf_xl@wp.pl>
+>  M:     Helmut Schaa <helmut.schaa@googlemail.com>
+> --
+> 2.37.2
 >
 
-Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Acked-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 
 Thanks,
     Sergio Paracuellos
