@@ -4,66 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AACBDC64EC4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 08:16:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3000EC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 08:34:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x1yTx2MwAwX00C013w6BJ6S/CvwODgtedkYbLYGwzT4=; b=NYjPs6I59v4D/p
-	q1ywFsYUuJQm4DdFDOBtvfOhzzy/CODQGrc+TbvvLKXPyPlbbOOua09lB+nXkulZa4d5+ASqdOlUU
-	cS1CfyiEV+5OfbJE3kIc08vs14kBC5ZS4/Mzy8F7HZEwLXbqFDFCUuBlk9soc8EwWhxo+6TOfQUZ0
-	/cH0/beR1/HCvdbelHL9OICmo0rF8Yxd5eicPnLy3nbSLakdmw36yjSOgjHKqloHhzEmL+XxNpTG3
-	1sNPYDr0JWXBnhGKVs+pWQPSPBnDuxZELQae9WZzJt2zWvDqOngcCqPgP1ldp7XogBgYy7CLvd9f1
-	YpzNlQtdutHvbPwWbHjA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0ATWdT8JEgK9WVD3GAytYZzwX478NdefTVtzSQUmDTg=; b=xTxmmCw0bv4q5xr/lOLBxi0L66
+	UrjrwCBEBvn5YgZ/8LyigAIlFEyuKPYuuS/CNio8HH6PIZ1O6dKOJVqu3AaT9CQZiNp7Uo3GQ61uy
+	lsUvEiTLwZmi+9OGa1yFMRItMeQMpKmBlLOroaFEAyRgLZsDDdsrIG/W9wqjDoDuZuft36pmWMSFz
+	ll2yKw7UEZwTz+5n6tKcEz8osjmFNZKg7yPLN3HeWLs+f438Dq3Ah0gmP3BP0pxImb/QYHOvhTqUu
+	8pStrvnZ2kzdcRsO5L8iIRkLjQ7qYy9G2aXa8DQS/6OG4lwk3cG1y81x97HWDZX174HOciyjHOMVd
+	NAqh8+Cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pY0a8-005LmI-HD; Fri, 03 Mar 2023 08:16:00 +0000
-Received: from sender4-op-o16.zoho.com ([136.143.188.16])
+	id 1pY0sJ-005QNY-7g; Fri, 03 Mar 2023 08:34:47 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pY0a2-005LlW-90; Fri, 03 Mar 2023 08:15:58 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1677831348; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=B+RLmIXy/WvEfbSuLFMyhMfTwkbxGIaH4luFXWJ/CxPLG0A1Qqdqu7HIdSukVrNyr2RQUEvZhK2yw8iVDnXTSUQNz2tUeUHSkNpp05eKULbAPd0WI51oKeQS3L1oSC2PGyQlE17YnisobKK/6dwDZZWpmbeqCBv1s4SOa+S8COU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1677831348; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=x1yTx2MwAwX00C013w6BJ6S/CvwODgtedkYbLYGwzT4=; 
-	b=W1WvSuEQDIWkG1u/e0KkLTIyEKp3cvTJalmQJ3tbt0OeNqLO0J7OKgHGq65GraRVDDa1SDrJVuS1HZ2gMZKWqO/9IWbALaTQsEaMyT6J/JmEvi50GGJtULoefVL7J/n/4a2siZwrUOs/XPCRBpcQ2quWDayeGZ8S68MIJxepucc=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1677831348;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=x1yTx2MwAwX00C013w6BJ6S/CvwODgtedkYbLYGwzT4=;
-	b=QAXJGEX//jwirFSPb+ejUd1UpD79hltdJ5Rp2KI+G6mImsskBZv98L6uuDLG+utt
-	VDg4TycRiOaMnlgErLdZ98NcGiVmBUnlmbovm1fjujZO0MEkBGrb64scsDpO8DK62AB
-	GrsbIFzlFf2XxZ7QOkj0B7crftK0Z0Q4buQd6t+k=
-Received: from [10.10.10.3] (212.68.60.226 [212.68.60.226]) by mx.zohomail.com
-	with SMTPS id 1677831347128580.3366076094062; Fri, 3 Mar 2023 00:15:47 -0800 (PST)
-Message-ID: <2106f6d0-63cc-4656-1e52-19640994fb43@arinc9.com>
-Date: Fri, 3 Mar 2023 11:15:40 +0300
+	id 1pY0sE-005QIy-PM; Fri, 03 Mar 2023 08:34:44 +0000
+X-UUID: 39de493eb99e11edbbe3f76fe852e059-20230303
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=0ATWdT8JEgK9WVD3GAytYZzwX478NdefTVtzSQUmDTg=;
+	b=ZdcSWyQ5xUBCxmeNSVqsCu6lVM2Ftn/ZrbqJWpsfsLGWe4938QEDodZi9yDipDsM7s4tVmuCzjGR/NubrdPdsXHFGoXjJDtcGY70S2aQ2cjNrU1Md0ScoRQGWlOtt2Ag0bnxOMiT8qixB7YQkoWn/ltMKKJafY/AjhaoL4Ot3xo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.20,REQID:3b6d7e8f-6d56-4a04-928f-7194a028c0d5,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:95
+X-CID-INFO: VERSION:1.1.20,REQID:3b6d7e8f-6d56-4a04-928f-7194a028c0d5,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
+	:quarantine,TS:95
+X-CID-META: VersionHash:25b5999,CLOUDID:5c393b27-564d-42d9-9875-7c868ee415ec,B
+	ulkID:230303163402JKXIHIJ5,BulkQuantity:3,Recheck:0,SF:38|29|28|17|19|48,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-UUID: 39de493eb99e11edbbe3f76fe852e059-20230303
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2021934371; Fri, 03 Mar 2023 01:34:34 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Fri, 3 Mar 2023 16:33:59 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Fri, 3 Mar 2023 16:33:59 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Tinghan Shen
+	<tinghan.shen@mediatek.com>
+CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v8 02/11] arm64: dts: mediatek: Update the node name of SCP rpmsg subnode
+Date: Fri, 3 Mar 2023 16:33:46 +0800
+Message-ID: <20230303083355.3378-3-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230303083355.3378-1-tinghan.shen@mediatek.com>
+References: <20230303083355.3378-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH 05/20] pinctrl: ralink: move to mediatek as mtmips
-Content-Language: en-US
-To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-References: <20230303002850.51858-1-arinc.unal@arinc9.com>
- <20230303002850.51858-6-arinc.unal@arinc9.com>
- <CAMhs-H-VGjP32AZc2cuY=Co4iqx8xPtvjr+hMg-haMMFaQzzsg@mail.gmail.com>
- <CAMhs-H8OsG-SEWigimG3fT-SGjZruH-7tnjff198Z2qhb0O=yA@mail.gmail.com>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <CAMhs-H8OsG-SEWigimG3fT-SGjZruH-7tnjff198Z2qhb0O=yA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230303_001554_391911_D2EA4B67 
-X-CRM114-Status: GOOD (  22.51  )
+X-CRM114-CacheID: sfid-20230303_003442_871185_1DB64C23 
+X-CRM114-Status: GOOD (  11.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,180 +86,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Daniel Santos <daniel.santos@pobox.com>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, William Dean <williamsukatube@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hey Sergio,
+Align the node name with the definition in SCP bindings.
 
-On 3.03.2023 09:34, Sergio Paracuellos wrote:
-> On Fri, Mar 3, 2023 at 7:17 AM Sergio Paracuellos
-> <sergio.paracuellos@gmail.com> wrote:
->>
->>   Hi Arınç,
->>
->> On Fri, Mar 3, 2023 at 1:30 AM <arinc9.unal@gmail.com> wrote:
->>>
->>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>>
->>> This platform from Ralink was acquired by MediaTek in 2011. Then, MediaTek
->>> introduced new SoCs which utilise this platform. Move the driver to
->>> mediatek pinctrl directory. Rename the ralink core driver to mtmips.
->>>
->>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->>> ---
->>>   drivers/pinctrl/Kconfig                       |  1 -
->>>   drivers/pinctrl/Makefile                      |  1 -
->>>   drivers/pinctrl/mediatek/Kconfig              | 51 ++++++++++-
->>>   drivers/pinctrl/mediatek/Makefile             | 63 +++++++------
->>>   .../{ralink => mediatek}/pinctrl-mt7620.c     | 34 +++----
->>>   .../{ralink => mediatek}/pinctrl-mt7621.c     | 30 +++----
->>>   .../{ralink => mediatek}/pinctrl-mt76x8.c     | 60 ++++++-------
->>>   .../pinctrl-mtmips.c}                         | 90 +++++++++----------
->>>   .../pinctrl-mtmips.h}                         | 16 ++--
->>>   .../{ralink => mediatek}/pinctrl-rt2880.c     | 20 ++---
->>>   .../{ralink => mediatek}/pinctrl-rt305x.c     | 44 ++++-----
->>>   .../{ralink => mediatek}/pinctrl-rt3883.c     | 28 +++---
->>>   drivers/pinctrl/ralink/Kconfig                | 40 ---------
->>>   drivers/pinctrl/ralink/Makefile               |  9 --
->>>   14 files changed, 246 insertions(+), 241 deletions(-)
->>>   rename drivers/pinctrl/{ralink => mediatek}/pinctrl-mt7620.c (81%)
->>>   rename drivers/pinctrl/{ralink => mediatek}/pinctrl-mt7621.c (80%)
->>>   rename drivers/pinctrl/{ralink => mediatek}/pinctrl-mt76x8.c (81%)
->>>   rename drivers/pinctrl/{ralink/pinctrl-ralink.c => mediatek/pinctrl-mtmips.c} (74%)
->>>   rename drivers/pinctrl/{ralink/pinctrl-ralink.h => mediatek/pinctrl-mtmips.h} (75%)
->>>   rename drivers/pinctrl/{ralink => mediatek}/pinctrl-rt2880.c (71%)
->>>   rename drivers/pinctrl/{ralink => mediatek}/pinctrl-rt305x.c (75%)
->>>   rename drivers/pinctrl/{ralink => mediatek}/pinctrl-rt3883.c (80%)
->>>   delete mode 100644 drivers/pinctrl/ralink/Kconfig
->>>   delete mode 100644 drivers/pinctrl/ralink/Makefile
->>>
->>> diff --git a/drivers/pinctrl/Kconfig b/drivers/pinctrl/Kconfig
->>> index dcb53c4a9584..8a6012770640 100644
->>> --- a/drivers/pinctrl/Kconfig
->>> +++ b/drivers/pinctrl/Kconfig
->>> @@ -537,7 +537,6 @@ source "drivers/pinctrl/nomadik/Kconfig"
->>>   source "drivers/pinctrl/nuvoton/Kconfig"
->>>   source "drivers/pinctrl/pxa/Kconfig"
->>>   source "drivers/pinctrl/qcom/Kconfig"
->>> -source "drivers/pinctrl/ralink/Kconfig"
->>>   source "drivers/pinctrl/renesas/Kconfig"
->>>   source "drivers/pinctrl/samsung/Kconfig"
->>>   source "drivers/pinctrl/spear/Kconfig"
->>> diff --git a/drivers/pinctrl/Makefile b/drivers/pinctrl/Makefile
->>> index d5939840bb2a..ada6ed1d4e91 100644
->>> --- a/drivers/pinctrl/Makefile
->>> +++ b/drivers/pinctrl/Makefile
->>> @@ -66,7 +66,6 @@ obj-y                         += nomadik/
->>>   obj-y                          += nuvoton/
->>>   obj-$(CONFIG_PINCTRL_PXA)      += pxa/
->>>   obj-$(CONFIG_ARCH_QCOM)                += qcom/
->>> -obj-$(CONFIG_PINCTRL_RALINK)   += ralink/
->>>   obj-$(CONFIG_PINCTRL_RENESAS)  += renesas/
->>>   obj-$(CONFIG_PINCTRL_SAMSUNG)  += samsung/
->>>   obj-$(CONFIG_PINCTRL_SPEAR)    += spear/
->>> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
->>> index a71874fed3d6..2eeb55010563 100644
->>> --- a/drivers/pinctrl/mediatek/Kconfig
->>> +++ b/drivers/pinctrl/mediatek/Kconfig
->>> @@ -1,6 +1,6 @@
->>>   # SPDX-License-Identifier: GPL-2.0-only
->>>   menu "MediaTek pinctrl drivers"
->>> -       depends on ARCH_MEDIATEK || COMPILE_TEST
->>> +       depends on ARCH_MEDIATEK || RALINK || COMPILE_TEST
->>>
->>>   config EINT_MTK
->>>          tristate "MediaTek External Interrupt Support"
->>> @@ -22,6 +22,12 @@ config PINCTRL_MTK
->>>   config PINCTRL_MTK_V2
->>>          tristate
->>>
->>> +config PINCTRL_MTK_MTMIPS
->>> +       bool
->>> +       depends on RALINK
->>> +       select PINMUX
->>> +       select GENERIC_PINCONF
->>> +
->>>   config PINCTRL_MTK_MOORE
->>>          bool
->>>          depends on OF
->>> @@ -43,6 +49,49 @@ config PINCTRL_MTK_PARIS
->>>          select OF_GPIO
->>>          select PINCTRL_MTK_V2
->>>
->>> +# For MIPS SoCs
->>> +config PINCTRL_MT7620
->>> +       bool "MediaTek MT7620 pin control"
->>> +       depends on SOC_MT7620 || COMPILE_TEST
->>> +       depends on RALINK
->>> +       default SOC_MT7620
->>> +       select PINCTRL_MTK_MTMIPS
->>> +
->>> +config PINCTRL_MT7621
->>> +       bool "MediaTek MT7621 pin control"
->>> +       depends on SOC_MT7621 || COMPILE_TEST
->>> +       depends on RALINK
->>> +       default SOC_MT7621
->>> +       select PINCTRL_MTK_MTMIPS
->>> +
->>> +config PINCTRL_MT76X8
->>> +       bool "MediaTek MT76X8 pin control"
->>> +       depends on SOC_MT7620 || COMPILE_TEST
->>> +       depends on RALINK
->>> +       default SOC_MT7620
->>> +       select PINCTRL_MTK_MTMIPS
->>> +
->>> +config PINCTRL_RT2880
->>> +       bool "Ralink RT2880 pin control"
->>> +       depends on SOC_RT288X || COMPILE_TEST
->>> +       depends on RALINK
->>> +       default SOC_RT288X
->>> +       select PINCTRL_MTK_MTMIPS
->>> +
->>> +config PINCTRL_RT305X
->>> +       bool "Ralink RT305X pin control"
->>> +       depends on SOC_RT305X || COMPILE_TEST
->>> +       depends on RALINK
->>> +       default SOC_RT305X
->>> +       select PINCTRL_MTK_MTMIPS
->>> +
->>> +config PINCTRL_RT3883
->>> +       bool "Ralink RT3883 pin control"
->>> +       depends on SOC_RT3883 || COMPILE_TEST
->>> +       depends on RALINK
->>> +       default SOC_RT3883
->>> +       select PINCTRL_MTK_MTMIPS
->>> +
->>
->> I am not a Kconfig expert at all but...
->>
->> Should not all of these be depends on SOC_XXX || (COMPILE_TEST &&
->> RALINK) and avoid the " depends on RALINK" next line in all of them?
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi   | 2 +-
+ arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-This seems to do the same thing but I'm following the "either change 
-them all or fit into the crowd" ideology.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index fbe14b13051a..a259eb043de5 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -810,7 +810,7 @@
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&scp_pins>;
+ 
+-	cros_ec {
++	cros-ec-rpmsg {
+ 		compatible = "google,cros-ec-rpmsg";
+ 		mediatek,rpmsg-name = "cros-ec-rpmsg";
+ 	};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+index 9f12257ab4e7..8f14b633c1e1 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+@@ -1260,7 +1260,7 @@
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&scp_pins>;
+ 
+-	cros-ec {
++	cros-ec-rpmsg {
+ 		compatible = "google,cros-ec-rpmsg";
+ 		mediatek,rpmsg-name = "cros-ec-rpmsg";
+ 	};
+-- 
+2.18.0
 
->>
->> Just asking since we have yet arch read and write register operations
->> in pinctrl common ralink code. Having in this way, when we address
->> this arch thing  in the next series just removing the "&& RALINK" part
->> makes the review pretty obvious.
-
-You'd have to change RALINK with OF since we're still depending on that. 
-RALINK selects OF by default so it's currently a hidden dependency.
-
->>
->> Other than that, changes look good to me.
-> 
-> I think "depends on SOC_XXX || (COMPILE_TEST && MIPS)" would work also
-> and might be more accurate for compile testing targets.
-
-This is not OK in both cases. If the driver is dependent on Ralink 
-architecture code, choosing any other MIPS platform will make the driver 
-available to compile, which will fail.
-
-If the driver is independent of Ralink architecture code, you're 
-limiting the driver to be compiled only when a MIPS platform is selected.
-
-Arınç
 
