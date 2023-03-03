@@ -4,123 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8992C7EE2D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 16:22:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99B7BC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 17:22:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MkIW6IlWuNN5L1bjoo+oWbGknS1rGBAoX4pY32CHcVw=; b=iAT4Eg3tiAjVzKgSxhBSLJg2S6
-	mDEC7jBtc+0h0cVJ8p67HwWjgg9LEd+XG9j1OpWw/QIFofZ5hfgDireRR3LST37FydTFp99wMasUI
-	2fnXY19PQmBwqv6Y56QIIsmhVdyZWwuVF4c8YA+MuXvRgn84IEPiubOqiauFZ08QN+D5BBIV1Z9Ni
-	FB+4wATScleeIGv1Sb85ccoscEsrffQqB0fGbh6YxHFvXhcT8kwSK1Wo6HOIuaTQh+VdB2MvOJYVL
-	pOClUZ23xqBjOmg2EoPuXndfer31TnfF/gRuDRLpIne1IsJmhv+RGXW5KilALKWFCy0EpDV3sLE1u
-	9gLOvJsQ==;
+	bh=ss961LJ91eQPj74XtoW1LOVsYbns5ydroiBUQZvygXo=; b=zYJ2RraTE5HLKhX8TB6zpLgvIN
+	HQyRtp1ACIrFkcN9B6XpNhGzLieIowc8YC9qEcwqIj12z5j58kuDMWacfz//Zl8ua5PrVSi/iG74Y
+	eyMUU8TR3iLvfRfMXdWb6qBSeRDgRilSIY2uvLztmHgXEdji/PK89QBDmrjTfIlo2Ub8gHKhityFy
+	V4k6hheENo7e3nYxZh/RMPHxQ8pE+Bog36Y/kKdaBk3hfxTstuuJJhia3uZWxVPXU49brY/u7SXix
+	Gu+rOZVK+raQ4jgZoiQQu+h8kqts15bwOGC3oqSs5NN8Z/KZV9XTdQC8MuYmukBtB7EuXLyyH+AXS
+	av2pwprw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pY8AY-006np8-ON; Fri, 03 Mar 2023 16:22:06 +0000
-Received: from mx.socionext.com ([202.248.49.38])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pY8AT-006nmX-Rw; Fri, 03 Mar 2023 16:22:04 +0000
-Received: from unknown (HELO kinkan2-ex.css.socionext.com) ([172.31.9.52])
-  by mx.socionext.com with ESMTP; 04 Mar 2023 01:21:52 +0900
-Received: from mail.mfilter.local (mail-arc02.css.socionext.com [10.213.46.40])
-	by kinkan2-ex.css.socionext.com (Postfix) with ESMTP id EE1632058442;
-	Sat,  4 Mar 2023 01:21:51 +0900 (JST)
-Received: from kinkan2.css.socionext.com ([172.31.9.51]) by m-FILTER with ESMTP; Sat, 4 Mar 2023 01:21:51 +0900
-Received: from [10.212.156.241] (unknown [10.212.156.241])
-	by kinkan2.css.socionext.com (Postfix) with ESMTP id 60F9D25528;
-	Sat,  4 Mar 2023 01:21:44 +0900 (JST)
-Message-ID: <acb7d81e-69d5-ff1b-aa0b-709c8c56010b@socionext.com>
-Date: Sat, 4 Mar 2023 01:21:43 +0900
+	id 1pY979-006tnu-28; Fri, 03 Mar 2023 17:22:39 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pY95i-006t5x-Ah
+	for linux-mediatek@lists.infradead.org; Fri, 03 Mar 2023 17:21:15 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pY95Z-0006nb-Qj; Fri, 03 Mar 2023 18:21:01 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pY95Y-001blp-9d; Fri, 03 Mar 2023 18:21:00 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pY95X-001tkY-HF; Fri, 03 Mar 2023 18:20:59 +0100
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Mark Brown <broonie@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-spi@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@pengutronix.de
+Subject: [PATCH 42/87] spi: mtk-snfi: Convert to platform remove callback returning void
+Date: Fri,  3 Mar 2023 18:19:56 +0100
+Message-Id: <20230303172041.2103336-43-u.kleine-koenig@pengutronix.de>
+X-Mailer: git-send-email 2.39.1
+In-Reply-To: <20230303172041.2103336-1-u.kleine-koenig@pengutronix.de>
+References: <20230303172041.2103336-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v5 02/18] thermal/core: Use the thermal zone 'devdata'
- accessor in thermal located drivers
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, rafael@kernel.org
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- =?UTF-8?Q?Niklas_S=c3=b6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
- Mark Brown <broonie@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Balsam CHIHI <bchihi@baylibre.com>,
- Adam Ward <DLG-Adam.Ward.opensource@dm.renesas.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- "Rafael J . Wysocki" <rafael.j.wysocki@intel.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Dhruva Gole <d-gole@ti.com>,
- Guillaume La Roque <glaroque@baylibre.com>, Amit Kucheria
- <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>,
- Scott Branden <sbranden@broadcom.com>, Markus Mayer <mmayer@broadcom.com>,
- Support Opensource <support.opensource@diasemi.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Thara Gopinath <thara.gopinath@gmail.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>,
- =?UTF-8?Q?Niklas_S=c3=b6derlund?= <niklas.soderlund@ragnatech.se>,
- Heiko Stuebner <heiko@sntech.de>,
- Bartlomiej Zolnierkiewicz <bzolnier@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Orson Zhai <orsonzhai@gmail.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Vasily Khoruzhick <anarsoul@gmail.com>, Yangtao Li <tiny.windzz@gmail.com>,
- Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Talel Shenhar <talel@amazon.com>,
- Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
- Masami Hiramatsu <mhiramat@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Stefan Wahren <stefan.wahren@i2se.com>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- ye xingchen <ye.xingchen@zte.com.cn>,
- Zheng Yongjun <zhengyongjun3@huawei.com>,
- Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
- Davidlohr Bueso <dave@stgolabs.net>,
- Sumeet Pawnikar <sumeet.r.pawnikar@intel.com>,
- "Lee, Chun-Yi" <joeyli.kernel@gmail.com>,
- Shang XiaoJing <shangxiaojing@huawei.com>, Tim Zimmermann <tim@linux4.de>,
- Yang Li <yang.lee@linux.alibaba.com>, Jiang Jian <jiangjian@cdjrlc.com>,
- Daniel Golle <daniel@makrotopia.org>, Randy Dunlap <rdunlap@infradead.org>,
- Ido Schimmel <idosch@nvidia.com>, Minghao Chi <chi.minghao@zte.com.cn>,
- Johan Hovold <johan+linaro@kernel.org>,
- Mikko Perttunen <mperttunen@nvidia.com>,
- "open list:THERMAL DRIVER FOR AMLOGIC SOCS"
- <linux-amlogic@lists.infradead.org>,
- "moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE"
- <linux-rpi-kernel@lists.infradead.org>,
- "moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:QUALCOMM TSENS THERMAL DRIVER" <linux-arm-msm@vger.kernel.org>,
- "open list:RENESAS R-CAR THERMAL DRIVERS"
- <linux-renesas-soc@vger.kernel.org>,
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
- "open list:SAMSUNG THERMAL DRIVER" <linux-samsung-soc@vger.kernel.org>,
- "moderated list:ARM/STM32 ARCHITECTURE"
- <linux-stm32@st-md-mailman.stormreply.com>,
- "open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>,
- "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
- "open list:TI BANDGAP AND THERMAL DRIVER" <linux-omap@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-References: <20230301201446.3713334-1-daniel.lezcano@linaro.org>
- <20230301201446.3713334-3-daniel.lezcano@linaro.org>
-Content-Language: en-US
-From: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
-In-Reply-To: <20230301201446.3713334-3-daniel.lezcano@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1673; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=9HCn3Ajliympt2j/eU2WMSCODvoPrwHImFJwAQQQGEs=; b=owEBbQGS/pANAwAKAcH8FHityuwJAcsmYgBkAiutIIF62FsinJ91ws4cCd2Axf2iGC0uQTKGA tz+Ro4YmpWJATMEAAEKAB0WIQR+cioWkBis/z50pAvB/BR4rcrsCQUCZAIrrQAKCRDB/BR4rcrs CR5DB/0V3dZa5NSV2GdMJ4CQbiDuthvzPmYj5YbDHCJ+5AZQ3Ed0ksIbS+YZSctXub/tnUOPdxs oarTsboXFESau7Q/7FvtwLK24EZmCzL9Rq9nfk9e5NltsN6bUg7y8pnzc6iREDh70GZ4ZvlnH4J gQCLHkMkuPH7R2TJevI/1lCS8GEkQ5vRfLYB5ffjCwqTNZOVDV40S8rrS7f+eQsPaI51fkWtHhz Tw7G/XWlwWY63oUmu2E9g+sLh0aAvqC4zpVbAYSv3+4ZTTeQ0i++r6Q2J5LOyKoR9Mxi3+UgmeG 8C4Kn8OG31oj4tN+dj5t5g3ylcdro0STjz3yDe36P4DFdoqh
+X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230303_082202_022457_66A0657F 
-X-CRM114-Status: GOOD (  16.03  )
+X-CRM114-CacheID: sfid-20230303_092110_434330_80C72239 
+X-CRM114-Status: GOOD (  15.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,53 +77,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023/03/02 5:14, Daniel Lezcano wrote:
-> The thermal zone device structure is exposed to the different drivers
-> and obviously they access the internals while that should be
-> restricted to the core thermal code.
-> 
-> In order to self-encapsulate the thermal core code, we need to prevent
-> the drivers accessing directly the thermal zone structure and provide
-> accessor functions to deal with.
-> 
-> Use the devdata accessor introduced in the previous patch.
-> 
-> No functional changes intended.
-> 
-> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-> Reviewed-by: Niklas Söderlund <niklas.soderlund+renesas@ragnatech.se> #R-Car
-> Acked-by: Mark Brown <broonie@kernel.org>
-> Reviewed-by: AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> #MediaTek auxadc and lvts
-> Reviewed-by: Balsam CHIHI <bchihi@baylibre.com> #Mediatek lvts
-> Reviewed-by: Adam Ward <DLG-Adam.Ward.opensource@dm.renesas.com> #da9062
-> Reviewed-by: Baolin Wang <baolin.wang@linux.alibaba.com>  #spread
-> Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com> #sun8i_thermal
-> Acked-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
-> Acked-by: Florian Fainelli <f.fainelli@gmail.com> #Broadcom
-> Reviewed-by: Dhruva Gole <d-gole@ti.com> # K3 bandgap
+The .remove() callback for a platform driver returns an int which makes
+many driver authors wrongly assume it's possible to do error handling by
+returning an error code. However the value returned is (mostly) ignored
+and this typically results in resource leaks. To improve here there is a
+quest to make the remove callback return void. In the first step of this
+quest all drivers are converted to .remove_new() which already returns
+void.
 
-(snip)
+Trivially convert this driver from always returning zero in the remove
+callback to the void returning variant.
 
-> diff --git a/drivers/thermal/uniphier_thermal.c
-> b/drivers/thermal/uniphier_thermal.c
-> index 47801841b3f5..aef6119cc004 100644
-> --- a/drivers/thermal/uniphier_thermal.c
-> +++ b/drivers/thermal/uniphier_thermal.c
-> @@ -187,7 +187,7 @@ static void uniphier_tm_disable_sensor(struct
-> uniphier_tm_dev *tdev)
-> 
->   static int uniphier_tm_get_temp(struct thermal_zone_device *tz, int
-> *out_temp)
->   {
-> -	struct uniphier_tm_dev *tdev = tz->devdata;
-> +	struct uniphier_tm_dev *tdev = thermal_zone_device_priv(tz);
-
-Reviewed-by: Kunihiko Hayashi <hayashi.kunihiko@socionext.com> #uniphier
-
-Thank you,
-
+Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 ---
-Best Regards
-Kunihiko Hayashi
+ drivers/spi/spi-mtk-snfi.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/spi/spi-mtk-snfi.c b/drivers/spi/spi-mtk-snfi.c
+index f3f95eb37365..bed8317cd205 100644
+--- a/drivers/spi/spi-mtk-snfi.c
++++ b/drivers/spi/spi-mtk-snfi.c
+@@ -1506,7 +1506,7 @@ static int mtk_snand_probe(struct platform_device *pdev)
+ 	return ret;
+ }
+ 
+-static int mtk_snand_remove(struct platform_device *pdev)
++static void mtk_snand_remove(struct platform_device *pdev)
+ {
+ 	struct spi_controller *ctlr = platform_get_drvdata(pdev);
+ 	struct mtk_snand *ms = spi_controller_get_devdata(ctlr);
+@@ -1515,12 +1515,11 @@ static int mtk_snand_remove(struct platform_device *pdev)
+ 	mtk_snand_disable_clk(ms);
+ 	mtk_ecc_release(ms->ecc);
+ 	kfree(ms->buf);
+-	return 0;
+ }
+ 
+ static struct platform_driver mtk_snand_driver = {
+ 	.probe = mtk_snand_probe,
+-	.remove = mtk_snand_remove,
++	.remove_new = mtk_snand_remove,
+ 	.driver = {
+ 		.name = "mtk-snand",
+ 		.of_match_table = mtk_snand_ids,
+-- 
+2.39.1
+
 
