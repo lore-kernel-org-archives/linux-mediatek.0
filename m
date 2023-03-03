@@ -4,79 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 519B7C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 07:45:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90B5CC678D4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 07:47:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ryO/715HXYmlcWLd+2L0EnmXwar4LhfC0gZCXwMnKL8=; b=PsIuTZ3Qhkp5OS
-	jCqPF57EnUY2LYty16hohrHT1/KBwi82r5s8c75nL2++oO2usfnAbG+jP/uHMGyhfooDNT0NXeXs2
-	khxmzcfb83ndH27SCXD8RI9X70o1cvdBWVD1MfvhKQfa8VpJNd0sppQqSKbMIVP+Eh/PgxlEGHDJ7
-	SZvGQeiuhf8Tg+0OJ3vMdEtQer+vlWRJBnAdAOqnwqflF1MEKrvuI7s3vD3REpJGf11rgavxox3NT
-	+pygy1t+jGzi5ybU5I6OQEp6vduEQeHiTrODdIowB6Uygd3H2sfDc4XIBy3UPKSR6Y3GpoM7vV+oX
-	jO9PIiQzNx4Xg0EG+0WQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-Id:Cc:To:Subject:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Omx5oHf0JnIS1Sef0sR/U5gX7Qg/sqJ2a4muWjko1WQ=; b=YDChQjlH167DX1w9sCiZPtRYU1
+	h+V+c4Su8E7IqSuiMxJhNqQYx4OjyMcddbO0tCQacjsaemr0A6YNOk6STKDpRNnPuiAsvUd5ihxIu
+	AihAoS3ueyHrPKftPuqNldBVejHtj1VE2a5QorDbhArFJe6nHWtbHAMRbhLa/B3/fzFjF106Gg/e7
+	B3dj6kRjPFUVRbSmSe0ofaND4pPEOYkX03H5kON4feO3SjJtaGCwwoE4Z8zUJQgOKTNWJze+H9CxS
+	BsUFCHa+NX9egxwkUtso5MaM98CTUJrQkkJs4X8G8Hd+xIA6sMedLou8IS4q/bZKGEy5qxyqYZlsh
+	GWyrx8mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pY065-005GdU-Qo; Fri, 03 Mar 2023 07:44:57 +0000
-Received: from sender4-op-o16.zoho.com ([136.143.188.16])
+	id 1pY08B-005H2N-EI; Fri, 03 Mar 2023 07:47:07 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pY063-005GcG-SX; Fri, 03 Mar 2023 07:44:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1677829488; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=PxjbRLVNt8tc3gqOBUlPuEl2vdem8DJ630dv7Cquf5/ORgxh3aN49y8OfW8XI8TSx+RScUMsugtfe3wYVB6eoPqYV1uXZwAE0k0sVKH8n79oMQQYb5QFsC8G/EyJHrPBUInlfZNB+GIovqfwukgxjq9ciHozemAoUI9Ihj46G2g=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1677829488; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=ryO/715HXYmlcWLd+2L0EnmXwar4LhfC0gZCXwMnKL8=; 
-	b=GQ4sFZMyQkBUlRU6zDhErU5+p9JhegjLhelz6elwhYVFt7w1UX3zM5UOmZicwL7U1fEUEGVMKXfD5rl8iYY+blBe9K1daayaOjJIbTglbMjcI15/CdevugsJS1AZgusVppKStj0d0wUa7lQULsEZjqCvilNenCknyyz6uyYHNRg=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1677829488;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=ryO/715HXYmlcWLd+2L0EnmXwar4LhfC0gZCXwMnKL8=;
-	b=jNe8Y4Sdpp08C58lbyr60V+t3wE7dP+kZJohcYAwcLUCqJyI3/G+1YpVgour+lPJ
-	db+aup8CYNUX5dpWE4uVnGHrt/8ZvaIwy8NttJGZdm/BJDRCpJ0gk5SLy/Q49P6sc27
-	wu8bkkemaep391c56ufUBki+BhENtQb0u2vQ43Mw=
-Received: from [10.10.10.3] (212.68.60.226 [212.68.60.226]) by mx.zohomail.com
-	with SMTPS id 1677829486602727.4785012329536; Thu, 2 Mar 2023 23:44:46 -0800 (PST)
-Message-ID: <4c522dc3-d6f4-fd3e-e715-4c7795576541@arinc9.com>
-Date: Fri, 3 Mar 2023 10:44:31 +0300
+	id 1pY087-005H0v-IY; Fri, 03 Mar 2023 07:47:05 +0000
+Received: by mail-ed1-x529.google.com with SMTP id f13so6852792edz.6;
+        Thu, 02 Mar 2023 23:47:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1677829621;
+        h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
+         :date:from:to:cc:subject:date:message-id:reply-to;
+        bh=Omx5oHf0JnIS1Sef0sR/U5gX7Qg/sqJ2a4muWjko1WQ=;
+        b=ozc1VrHETnrLhQtBcnplwt73aiOVOejbuXeswiFjg0HWLRLQOy3gEvhXlzf/FARwmO
+         FvUHYQzrNvPMqc2elIVOaZWMmO+L7M9ehaPkcOuXD5zXJ52ZUNogyOQjHr761hsQI8AD
+         QrCwlblgvnyRS6ffpq0NUAlQRp9redAtRmyosagwbE+t1uoCzcqh0awzf/NflocnaBv3
+         QYhXEIzN2IY4IoRgWCmxr5fpJj8v70caDmMt0pmeDuesVix00uyIyV+EqdCnwIbmvkwE
+         a3bmffeIu9eDx7rZAeO4CSuRRWikb8VMaqwpypJ6OmHT+NjNf6gIna6tszLa1z5BUZzg
+         ELeg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1677829621;
+        h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
+         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Omx5oHf0JnIS1Sef0sR/U5gX7Qg/sqJ2a4muWjko1WQ=;
+        b=XvzUmY3k71leoDTG4Ou67ltSoAp50mXHfZWohKC3lRABom0qaBcS5myk5z+UsVmjO1
+         fiEWv1kK6iTQmrfrL/ZtL8rF9jboS51XuAjpM2v4TMFoiDgH/ElC4HutONcXcz3Zmkb5
+         bk6ZzbGcDShoeny8nOZfWtDyIKFXFYWFEGKw0zdbpuJfvyeEV4w10WH/9J5dkqNavsuU
+         pfbSfDzwtAKRw5bVcfe3WBJlSQ/E369DLK3Q8hw4p5zBGCbWCcp84YbFvcdU6280VnMO
+         Y9Jeqi9r4YrRE2Cij54Qad2f5YsThgl96VLZ3YeKVfhSrruPdC1d2/miHQnhEjOXUOep
+         JkmA==
+X-Gm-Message-State: AO0yUKXt8C8vqmiOJctq6rqVXvbPkduoEL6hCiDTIPg71+hI8S2AFWtV
+	nW2JcRU0ciwu9YUqvXuhUeU=
+X-Google-Smtp-Source: AK7set9P2tOy3fmUEkyPvahxzEgIJcBPccB35rreiCFEC2kbf7LU1iSxpNhOStPDkAOGDwzPoyYmWA==
+X-Received: by 2002:aa7:d6c6:0:b0:4af:59c0:d303 with SMTP id x6-20020aa7d6c6000000b004af59c0d303mr1014386edr.26.1677829620883;
+        Thu, 02 Mar 2023 23:47:00 -0800 (PST)
+Received: from [10.33.2.246] ([95.183.227.97])
+        by smtp.gmail.com with ESMTPSA id 19-20020a508e13000000b004acbdf23cd2sm820955edw.29.2023.03.02.23.46.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 02 Mar 2023 23:47:00 -0800 (PST)
+Date: Fri, 03 Mar 2023 10:46:49 +0300
+From: Yassine Oudjana <yassine.oudjana@gmail.com>
+Subject: Re: [PATCH v2] dt-bindings: display: mediatek: Compatible list
+ cleanup
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Daniel Vetter
+	<daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Maxime Coquelin
+	<mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, Yassine Oudjana
+	<y.oudjana@protonmail.com>, dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org
+Message-Id: <1MPXQR.LIW1MS7NJON23@gmail.com>
+In-Reply-To: <0969ff46-3fba-f679-7943-52da7528185a@collabora.com>
+References: <20230302141234.169985-1-y.oudjana@protonmail.com>
+	<0969ff46-3fba-f679-7943-52da7528185a@collabora.com>
+X-Mailer: geary/43.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [RFC PATCH 07/16] dt-bindings: pinctrl: ralink: add new
- compatible strings
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Rob Herring <robh@kernel.org>
-References: <20230222183932.33267-1-arinc.unal@arinc9.com>
- <20230222183932.33267-8-arinc.unal@arinc9.com>
- <20230227173333.GA496999-robh@kernel.org>
- <d7aea90f-d077-3a41-996c-804c95d72e24@arinc9.com>
- <20230301024431.GA251215-robh@kernel.org>
- <ae3346de-140f-f181-b6a3-ccaa694e1548@arinc9.com>
- <11d3c806-04b6-da54-65f1-c0bd154affbc@linaro.org>
- <a9acd3b4-2b03-86c0-711c-a3840aeab574@arinc9.com>
- <1aae7ac9-c83d-71b4-4fce-325f02fcd722@linaro.org>
- <89588f69-9cf0-e7a4-b976-5ce87d42e296@arinc9.com>
- <2ccb573d-39f4-cb80-7a3e-63a60c2bc0a8@linaro.org>
- <b48e0a5e-dd45-8b8a-4ee3-357a0985ca9c@arinc9.com>
- <83a03258-9e52-3d09-67fe-12e9e5ed4b76@linaro.org>
- <11d10e4e-65ec-3bec-3e0c-7e57feb03506@arinc9.com>
- <a696bea5-3ba6-3b71-10ad-a04a7412c178@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <a696bea5-3ba6-3b71-10ad-a04a7412c178@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: text/plain; charset=us-ascii; format=flowed
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230302_234456_019797_EA2349C8 
-X-CRM114-Status: GOOD (  22.29  )
+X-CRM114-CacheID: sfid-20230302_234703_681078_8B223C71 
+X-CRM114-Status: GOOD (  22.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,79 +93,477 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-gpio@vger.kernel.org, Daniel Santos <daniel.santos@pobox.com>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org, Sergio Paracuellos <sergio.paracuellos@gmail.com>, William Dean <williamsukatube@gmail.com>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Daniel Golle <daniel@makrotopia.org>, Matthias Brugger <matthias.bgg@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 3.03.2023 10:05, Krzysztof Kozlowski wrote:
-> On 02/03/2023 12:50, Arınç ÜNAL wrote:
->> On 2.03.2023 14:36, Krzysztof Kozlowski wrote:
->>> On 02/03/2023 11:47, Arınç ÜNAL wrote:
->>>> On 2.03.2023 13:29, Krzysztof Kozlowski wrote:
->>>>> On 02/03/2023 11:22, Arınç ÜNAL wrote:
->>>>>>>>
->>>>>>>> ## Incorrect naming
->>>>>>>>
->>>>>>>> MT7620, MT7621, MT7628, and MT7688 SoCs are incorrectly called Ralink,
->>>>>>>> introduce new ralink->mediatek compatible strings to address it.
->>>>>>>
->>>>>>> So this part was addressed by Rob - we don't do it, because it does not
->>>>>>> matter. Ralink is now Mediatek, thus there is no conflict and no issues
->>>>>>> with different vendor used.
->>>>>>
->>>>>> I think Rob was rather addressing that updating compatible strings based
->>>>>> on acquisition or marketing whims is not permitted. This condition does
->>>>>> not apply here as these SoCs were never Ralink.
->>>>>>
->>>>>> I understand your point that Ralink is now MediaTek but still, calling
->>>>>> these SoCs Ralink would be a bit misleading, don't you think?
->>>>>
->>>>> Misleading yes, but also does not matter. At least matter not enough to
->>>>> justify ABI break, so you would need to deprecate old ones and keep
->>>>> everything backwards compatible. You still would affect 3rd party users
->>>>> of DTS, though...
->>>>
->>>> I intend to do just that. Introduce new mediatek strings, keep the old
->>>> ones so it's backwards compatible, therefore don't break the ABI.
->>>>
->>>> Instead of deprecating old strings, I intend to introduce the checks I
->>>> mentioned, on the schema, so the pin muxing bindings only apply if the
->>>> DT has got a string that won't match multiple schemas. This way it
->>>> shouldn't affect 3rd party DTs.
->>>
->>> I meant, 3rd party users of DTS. You will replace the compatible in the
->>> DTS, right? So the DTS exported and used in all other projects, OS,
->>> firmwares, bootloaders, out of tree kernel forks will stop working.
->>
->> I plan to change it on the DTs for MediaTek SoCs, yes. Is this a
->> problem? From what I can tell, what must be ensured is that old DTs must
->> work with newer kernels, not new DTs on older kernels.
+
+On Thu, Mar 2 2023 at 05:08:30 PM +01:00:00, AngeloGioacchino Del Regno 
+<angelogioacchino.delregno@collabora.com> wrote:
+> Il 02/03/23 15:12, Yassine Oudjana ha scritto:
+>> From: Yassine Oudjana <y.oudjana@protonmail.com>
+>> 
+>> Several DT bindings of MediaTek display blocks make unnecessary use 
+>> of
+>> "oneOf" and "items". Remove them and replace them with enums where
+>> necessary.
+>> 
+>> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+>> ---
+>> Changes since v1:
+>> - Leave enums with 1 element as they are.
+>> 
+>>   .../bindings/display/mediatek/mediatek,ccorr.yaml   |  7 +++----
+>>   .../bindings/display/mediatek/mediatek,color.yaml   | 10 ++++------
+>>   .../bindings/display/mediatek/mediatek,dither.yaml  |  3 +--
+>>   .../bindings/display/mediatek/mediatek,dsc.yaml     |  4 +---
+>>   .../bindings/display/mediatek/mediatek,gamma.yaml   |  7 +++----
+>>   .../bindings/display/mediatek/mediatek,merge.yaml   |  8 +++-----
+>>   .../bindings/display/mediatek/mediatek,od.yaml      |  8 +++-----
+>>   .../bindings/display/mediatek/mediatek,ovl-2l.yaml  |  7 +++----
+>>   .../bindings/display/mediatek/mediatek,ovl.yaml     | 13 
+>> +++++--------
+>>   .../display/mediatek/mediatek,postmask.yaml         |  3 +--
+>>   .../bindings/display/mediatek/mediatek,rdma.yaml    | 13 
+>> +++++--------
+>>   .../bindings/display/mediatek/mediatek,split.yaml   |  4 +---
+>>   .../bindings/display/mediatek/mediatek,ufoe.yaml    |  4 +---
+>>   .../bindings/display/mediatek/mediatek,wdma.yaml    |  4 +---
+>>   14 files changed, 35 insertions(+), 60 deletions(-)
+>> 
+>> diff --git 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+>> index b04820c95b22..dc22bd522523 100644
+>> --- 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+>> +++ 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+>> @@ -21,10 +21,9 @@ description: |
+>>   properties:
+>>     compatible:
+>>       oneOf:
+>> -      - items:
+>> -          - const: mediatek,mt8183-disp-ccorr
+>> -      - items:
+>> -          - const: mediatek,mt8192-disp-ccorr
+>> +      - enum:
+>> +          - mediatek,mt8183-disp-ccorr
+>> +          - mediatek,mt8192-disp-ccorr
 > 
-> Can I be clearer than this?
+> This change is ok.
 > 
-> " So the DTS exported and used in all other projects, OS,
-> firmwares, bootloaders, out of tree kernel forks will stop working."
+>>         - items:
+>>             - enum:
+>>                 - mediatek,mt8188-disp-ccorr
+>> diff --git 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+>> index 62306c88f485..d0ea77fc4b06 100644
+>> --- 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+>> +++ 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+>> @@ -22,12 +22,10 @@ description: |
+>>   properties:
+>>     compatible:
+>>       oneOf:
+>> -      - items:
+>> -          - const: mediatek,mt2701-disp-color
+>> -      - items:
+>> -          - const: mediatek,mt8167-disp-color
+>> -      - items:
+>> -          - const: mediatek,mt8173-disp-color
+>> +      - enum:
+>> +          - mediatek,mt2701-disp-color
+>> +          - mediatek,mt8167-disp-color
+>> +          - mediatek,mt8173-disp-color
 > 
-> Yes, this is a problem - they will stop working.
+> OK.
+> 
+>>         - items:
+>>             - enum:
+>>                 - mediatek,mt7623-disp-color
+>> diff --git 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
+>> index 5c7445c174e5..9d74de63fe63 100644
+>> --- 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
+>> +++ 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
+>> @@ -22,8 +22,7 @@ description: |
+>>   properties:
+>>     compatible:
+>>       oneOf:
+>> -      - items:
+>> -          - const: mediatek,mt8183-disp-dither
+>> +      - const: mediatek,mt8183-disp-dither
+> 
+> OK.
+> 
+>>         - items:
+>>             - enum:
+>>                 - mediatek,mt8186-disp-dither
+>> diff --git 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
+>> index 49248864514b..37bf6bf4a1ab 100644
+>> --- 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
+>> +++ 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
+>> @@ -19,9 +19,7 @@ description: |
+>>     properties:
+>>     compatible:
+>> -    oneOf:
+>> -      - items:
+>> -          - const: mediatek,mt8195-disp-dsc
+>> +    const: mediatek,mt8195-disp-dsc
+> 
+> This will grow, and you'll get devicetree declaring something like:
+> 
+> compatible = "mediatek,(different-new-chip)-disp-dsc";
+> 
+> and
+> 
+> compatible = "mediatek,(current-chip)-disp-dsc", 
+> "mediatek,mt8195-disp-dsc";
+> 
+> Note: Some smartphone SoCs (Dimensity series) do have the same 
+> disp-dsc as
+> the Chromebook variant MT8195! :-)
+> 
+>>       reg:
+>>       maxItems: 1
+>> diff --git 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
+>> index a5c6a91fac71..6c2be9d6840b 100644
+>> --- 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
+>> +++ 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
+>> @@ -21,10 +21,9 @@ description: |
+>>   properties:
+>>     compatible:
+>>       oneOf:
+>> -      - items:
+>> -          - const: mediatek,mt8173-disp-gamma
+>> -      - items:
+>> -          - const: mediatek,mt8183-disp-gamma
+>> +      - enum:
+>> +          - mediatek,mt8173-disp-gamma
+>> +          - mediatek,mt8183-disp-gamma
+> 
+> This change is ok.
+> 
+>>         - items:
+>>             - enum:
+>>                 - mediatek,mt8186-disp-gamma
+>> diff --git 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
+>> index 69ba75777dac..c474ee6fa05b 100644
+>> --- 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
+>> +++ 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
+>> @@ -20,11 +20,9 @@ description: |
+>>     properties:
+>>     compatible:
+>> -    oneOf:
+>> -      - items:
+>> -          - const: mediatek,mt8173-disp-merge
+>> -      - items:
+>> -          - const: mediatek,mt8195-disp-merge
+>> +    enum:
+>> +      - mediatek,mt8173-disp-merge
+>> +      - mediatek,mt8195-disp-merge
+> 
+> I'm mostly sure that you (yes, you, Yassine) will sooner or later 
+> write a
+> devicetree node containing the following compatible string on merge0:
+> 
+> compatible = "mediatek,mt6735-disp-merge", 
+> "mediatek,mt8173-disp-merge";
+> 
+> Am I wrong? :-)
 
-I've never seen any project just exporting DTs from the latest kernel 
-version and slap it onto old versions, as a new devicetree that was 
-introduced with a newer kernel version is not guaranteed to work with 
-older kernel versions.
+Actually MT6735 doesn't have this block so no, I won't be doing that :)
 
-If someone is actually doing this on a project, I think it's the 
-responsibility of the maintainers of these said projects to account for 
-this and modify the DT for the kernel version they're running it on.
+> 
+> In that case, that `oneOf:` will have to return back to this file, so 
+> it's
+> not worth removing it.
+> 
+>>       reg:
+>>       maxItems: 1
+>> diff --git 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml
+>> index 853fcb9db2be..7e6bbf8b5c60 100644
+>> --- 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml
+>> +++ 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml
+>> @@ -20,11 +20,9 @@ description: |
+>>     properties:
+>>     compatible:
+>> -    oneOf:
+>> -      - items:
+>> -          - const: mediatek,mt2712-disp-od
+>> -      - items:
+>> -          - const: mediatek,mt8173-disp-od
+>> +    enum:
+>> +      - mediatek,mt2712-disp-od
+>> +      - mediatek,mt8173-disp-od
+>> 
+> Same story with this one...
 
-What's more usual is one'd run the kernel version where the new DT was 
-introduced, which will work fine.
+It doesn't have this one either.
 
-On to real life implications, popular projects like U-Boot and OpenWrt 
-maintain their own DTs for this platform so I think the impact is very 
-minimal.
+> 
+>>     reg:
+>>       maxItems: 1
+>> diff --git 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
+>> index 4e94f4e947ad..c7dd0ef02dcf 100644
+>> --- 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
+>> +++ 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
+>> @@ -21,10 +21,9 @@ description: |
+>>   properties:
+>>     compatible:
+>>       oneOf:
+>> -      - items:
+>> -          - const: mediatek,mt8183-disp-ovl-2l
+>> -      - items:
+>> -          - const: mediatek,mt8192-disp-ovl-2l
+>> +      - enum:
+>> +          - mediatek,mt8183-disp-ovl-2l
+>> +          - mediatek,mt8192-disp-ovl-2l
+> 
+> This change is ok.
+> 
+>>         - items:
+>>             - enum:
+>>                 - mediatek,mt8186-disp-ovl-2l
+>> diff --git 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+>> index 065e526f950e..92e320d54ba2 100644
+>> --- 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+>> +++ 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+>> @@ -21,14 +21,11 @@ description: |
+>>   properties:
+>>     compatible:
+>>       oneOf:
+>> -      - items:
+>> -          - const: mediatek,mt2701-disp-ovl
+>> -      - items:
+>> -          - const: mediatek,mt8173-disp-ovl
+>> -      - items:
+>> -          - const: mediatek,mt8183-disp-ovl
+>> -      - items:
+>> -          - const: mediatek,mt8192-disp-ovl
+>> +      - enum:
+>> +          - mediatek,mt2701-disp-ovl
+>> +          - mediatek,mt8173-disp-ovl
+>> +          - mediatek,mt8183-disp-ovl
+>> +          - mediatek,mt8192-disp-ovl
+> 
+> This is ok too.
+> 
+>>         - items:
+>>             - enum:
+>>                 - mediatek,mt7623-disp-ovl
+>> diff --git 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml
+>> index 27de64495401..12ec410bb921 100644
+>> --- 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml
+>> +++ 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml
+>> @@ -21,8 +21,7 @@ description: |
+>>   properties:
+>>     compatible:
+>>       oneOf:
+>> -      - items:
+>> -          - const: mediatek,mt8192-disp-postmask
+>> +      - const: mediatek,mt8192-disp-postmask
+> 
+> Should be fine as well.
+> 
+>>         - items:
+>>             - enum:
+>>                 - mediatek,mt8186-disp-postmask
+>> diff --git 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
+>> index 3ade2ece3fed..42059efad45d 100644
+>> --- 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
+>> +++ 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
+>> @@ -23,14 +23,11 @@ description: |
+>>   properties:
+>>     compatible:
+>>       oneOf:
+>> -      - items:
+>> -          - const: mediatek,mt2701-disp-rdma
+>> -      - items:
+>> -          - const: mediatek,mt8173-disp-rdma
+>> -      - items:
+>> -          - const: mediatek,mt8183-disp-rdma
+>> -      - items:
+>> -          - const: mediatek,mt8195-disp-rdma
+>> +      - enum:
+>> +          - mediatek,mt2701-disp-rdma
+>> +          - mediatek,mt8173-disp-rdma
+>> +          - mediatek,mt8183-disp-rdma
+>> +          - mediatek,mt8195-disp-rdma
+> 
+> OK.
+> 
+>>         - items:
+>>             - enum:
+>>                 - mediatek,mt8188-disp-rdma
+>> diff --git 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
+>> index 35ace1f322e8..54b7b0531144 100644
+>> --- 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
+>> +++ 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
+>> @@ -20,9 +20,7 @@ description: |
+>>     properties:
+>>     compatible:
+>> -    oneOf:
+>> -      - items:
+>> -          - const: mediatek,mt8173-disp-split
+>> +    const: mediatek,mt8173-disp-split
+>> 
+> 
+> compatible = "mediatek,mt6795-disp-split", 
+> "mediatek,mt8173-disp-split";
+> 
+> I have exactly that in my local devicetree for Xperia M5 (not 
+> upstream yet) so
+> no, I wouldn't do that :-)
 
-Anyway, I'm not doing this change on this patch series so why don't we 
-cross this bridge when we get to it.
+Would only removing "items" and keeping "oneOf" be alright then?
 
-Arınç
+> 
+>>     reg:
+>>       maxItems: 1
+>> diff --git 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
+>> index b8bb135fe96b..87523b45a210 100644
+>> --- 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
+>> +++ 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
+>> @@ -21,9 +21,7 @@ description: |
+>>     properties:
+>>     compatible:
+>> -    oneOf:
+>> -      - items:
+>> -          - const: mediatek,mt8173-disp-ufoe
+>> +    const: mediatek,mt8173-disp-ufoe
+>> 
+> Same, and I think UFOE is present on your MT6735 as well.
+
+It isn't. In fact its input and output muxes are present, but the UFOE 
+block itself
+is absent. My guess is Mediatek reused the dispsys skeleton in several 
+SoCs and
+plugged in processing blocks as needed. Removing the muxes would've 
+probably required
+additional work to reroute the connections between blocks before and 
+after UFOE, so
+they just kept the muxes untouched.
+
+BTW, this patch comes in preparation for adding bindings for almost all 
+MT6735 display
+blocks, so I haven't gotten rid of something that I'd need later. 
+Although I didn't reuse
+MT8173 and MT8167 compatibles (the 2 SoCs functionally closest to 
+MT6735 in terms of
+display) but instead added new MT6735 compatibles to the drivers (none 
+of this is sent yet
+of course).
+
+> 
+>>     reg:
+>>       maxItems: 1
+>> diff --git 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
+>> index 7d7cc1ab526b..52f233fe1c0f 100644
+>> --- 
+>> a/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
+>> +++ 
+>> b/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
+>> @@ -20,9 +20,7 @@ description: |
+>>     properties:
+>>     compatible:
+>> -    oneOf:
+>> -      - items:
+>> -          - const: mediatek,mt8173-disp-wdma
+>> +    const: mediatek,mt8173-disp-wdma
+>> 
+> This is present on all MediaTek SoCs - literally. The issue is that 
+> the driver
+> currently does not support command mode panels for real, so this 
+> binding is...
+> ...well, somehow in forgotten-land...
+
+What does it have to do with command mode panels? I thought it was used 
+for off-screen
+image processing. Or was that MDP WDMA?
+
+Also with all the command mode stuff the driver currently has, it 
+doesn't properly support
+command mode panels? I mean it even switches to command mode to send 
+configuration commands
+to video mode panels rather than using VM_CMD (something that took me a 
+while to get right
+on MT6735, because its DSI controller acts funny when modes are 
+switched frequently), so I
+imagined it had better support for command mode.
+
+> 
+> I would hope that command mode panels get implemented 
+> soon(er-than-later), but
+> I'll leave the choice to you and Krzysztof - I'm only providing the 
+> information
+> here. :-)
+> 
+>>     reg:
+>>       maxItems: 1
+> 
+> Thanks for the effort!
+> 
+> Cheers,
+> Angelo
+> 
+
+Anyway, I don't mind dropping the changes you NACKed, especially since 
+they don't
+affect me at all, but I do want to know the motive behind discouraging 
+simplifying
+the bindings now and adding these things back if needed in the future.
+
+Thanks,
+Yassine
+
+
+
 
