@@ -4,71 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3AE0C678D4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 03:38:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E7C8C64EC4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 04:10:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zIlJ7NybosfQq5qKIS3xQ+78hBjmgkGkVjNteGRkKmo=; b=Kn8nQCKsT8bAyhKsYoD5+Ji0PI
-	L65OZj3IL4Bzk4WFWlKu6kHjOhW9h/Zol1aiZZjkMN+vvKCq+lATpEMQVpm88PjSPapvJhyhj55Z8
-	FQyZoe+F4G7ehx1x5yNT7zXlD8vnXBBwZ6UBYWmIITtqWEN2gWZT8ljPXPp/PH1udBPYSEB7wBMtt
-	01yPTVowcqcjpITzOwfZx+5nHQQl38gygMf13qJqvfXjgA65QbqxYF1HcQTbJhWJ33B/ekcTRHP/I
-	DdNTN5SFGXB/OBmTmCG7VqDSkKXan1aJJRLUB0ScSW5znKPBiYr8tQ9kwTCT0Md9XhXjtuuT4GXhG
-	f2X4wYFg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hRC4YLaEQEHKXN/6JGBdTnUfCKse6BmeeCh40b97lyU=; b=BqtYGcTg8X1eRbveaWEGWdrgTn
+	Xcp3Ebbmj79ShY9VIqFyXeWq4HmsT7wZLKRR2t8j0JN7TjqrYf7tJFQ4/5QS6E98S1PO7r7zy2h3y
+	HhAyywEL0oXhvbfaCOGOQSdw4uc03c6UShvDXZWEWRN4gwlC99xz2qEbIYHN8+FonTD1I6e2uY9M+
+	uPPCwCIJAfD8W2VsbO5pEC+H72YF/0FSesEsJ7u7NyTDaRT59mJ4qjrtoK9lHv2BRuTTyMHgMMj43
+	PsNm1oZGYsutTNcEVM1aEUefDyN+fFaGlTgCJSYubpRKVEiyOfOQzA+qn5zT4HzR+v2tzw9UfpGMx
+	V5X9ZraA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXwFL-004i1Y-SE; Fri, 03 Mar 2023 03:38:15 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pXwkP-004mFT-Gm; Fri, 03 Mar 2023 04:10:21 +0000
+Received: from mail-vs1-xe29.google.com ([2607:f8b0:4864:20::e29])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXwFI-004hzu-LP; Fri, 03 Mar 2023 03:38:14 +0000
-X-UUID: cf47120ab97411eda08d4d6090ec5a5c-20230302
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=zIlJ7NybosfQq5qKIS3xQ+78hBjmgkGkVjNteGRkKmo=;
-	b=E50r4WW2doidIVpBONyCS326BLm3tgiJVzhXgTZGRSe30mQDBjedESnN4W0xLe05W3n1KrwdQThIC18YMS0o28KLqbb16nnMrEi4qYzC7dEus7aCnPTyHe9DxU6RsXLIa20OfB3JNF1q46emUrbTLNLWR+iXkLkt7pnSgvcAt/0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.20,REQID:c8b2bf08-ca90-433e-9338-e52461eccd04,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:25b5999,CLOUDID:70ba9ff4-ddba-41c3-91d9-10eeade8eac7,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-UUID: cf47120ab97411eda08d4d6090ec5a5c-20230302
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <allen-kh.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 185957361; Thu, 02 Mar 2023 20:38:06 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Fri, 3 Mar 2023 11:17:30 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Fri, 3 Mar 2023 11:17:29 +0800
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Stephen Boyd <sboyd@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<hsinyi@chromium.org>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Subject: [PATCH v3 1/7] arm64: dts: mediatek: mt8186: Add MTU3 nodes
-Date: Fri, 3 Mar 2023 11:17:22 +0800
-Message-ID: <20230303031728.24251-2-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230303031728.24251-1-allen-kh.cheng@mediatek.com>
-References: <20230303031728.24251-1-allen-kh.cheng@mediatek.com>
+	id 1pXwkM-004mDK-IC
+	for linux-mediatek@lists.infradead.org; Fri, 03 Mar 2023 04:10:20 +0000
+Received: by mail-vs1-xe29.google.com with SMTP id d7so1316705vsj.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 02 Mar 2023 20:10:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1677816608;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=hRC4YLaEQEHKXN/6JGBdTnUfCKse6BmeeCh40b97lyU=;
+        b=J0MMw125d6BUUD2+AWqFnAyv/kyC+C8t2mo+dbXO0bnEX355WlX9Q8LyZ7B1xTyhRB
+         SJO0yGDk1xFfdVyMDPIL4Cpju727DBv/06HO3ZbVgKT4tqt/GT8QTL7C+CgBduekqZoX
+         Y8yGhzkKeWknSRPQtmGy+02d0EXtiBZ/IGn68=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1677816608;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=hRC4YLaEQEHKXN/6JGBdTnUfCKse6BmeeCh40b97lyU=;
+        b=j26nkZmb7fDGjIzUYRRHMoLzXQtLdxT7XH8Uy/78l+4jiKCdOTx4KhRuQAZVRw6tCp
+         1YyQU8/mrmhHZNT2ok7wnP5ldAP+OlbXvJXKy7TD465QALxgFueJio1Jf7ChMUiopF1i
+         tgq5uJ+HToiUJRfWNT59A3PwBzB3tkyUP6MRxTGBGIzTOW45qRIYnngNvBmp/p3S75IL
+         1wHuSNmWYRvzZl2LQhLz0MCngOqR1NB79O7w1U9IVAXVfjwBv4SvDhtyCs6Wz8u339j8
+         l10EbvXhGd2+BCiSqRdWHCYEqbnmZT4TVTV8vGtpVsONPogdzXf17guENzGsC8EyAmkT
+         Uspw==
+X-Gm-Message-State: AO0yUKUW/e2/55Vbt9ESVFrOltR2rgWyCTTbdJLOF4/VFK16edtqhTKn
+	X3wtBgCCZDrVsCEyIHXGEAtdluk4p6mjqvgaOvltfA==
+X-Google-Smtp-Source: AK7set9++Bot24TdBbob3L+v00rJIcqvEsIVWfPdrz7FFzAkveckkAMrXFyxCkw7zTJ7CrHhOeb6JCtaprEtFG9gu5c=
+X-Received: by 2002:a67:d583:0:b0:411:fff6:3cc4 with SMTP id
+ m3-20020a67d583000000b00411fff63cc4mr328329vsj.3.1677816608206; Thu, 02 Mar
+ 2023 20:10:08 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20230301095523.428461-1-angelogioacchino.delregno@collabora.com>
+ <20230301095523.428461-13-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5GHdtbheL6wxtDo-szk+=3BGk2z93SBowd4Z=E9XupZkw@mail.gmail.com> <5dba27e1-d480-ea24-c1ba-03bb7f77b1b1@collabora.com>
+In-Reply-To: <5dba27e1-d480-ea24-c1ba-03bb7f77b1b1@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 3 Mar 2023 12:09:57 +0800
+Message-ID: <CAGXv+5FwNfZ7TwKVMM5_uAjYQ6ZmhZVFsWREb_da-jxC6EUVJw@mail.gmail.com>
+Subject: Re: [PATCH v4 12/19] arm64: dts: mediatek: mt8192-asurada: Couple
+ VGPU and VSRAM_OTHER regulators
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, 
+	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230302_193812_747259_24463907 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20230302_201018_667598_EC4DF19B 
+X-CRM114-Status: GOOD (  26.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,101 +88,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MTU3 nodes for MT8186 SoC.
+On Thu, Mar 2, 2023 at 6:17=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 02/03/23 11:03, Chen-Yu Tsai ha scritto:
+> > On Wed, Mar 1, 2023 at 5:55=E2=80=AFPM AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com> wrote:
+> >>
+> >> Add coupling for these regulators, as VSRAM_OTHER is used to power the
+> >> GPU SRAM, and they have a strict voltage output relation to satisfy in
+> >> order to ensure GPU stable operation.
+> >> While at it, also add voltage constraint overrides for the GPU SRAM
+> >> regulator "mt6359_vsram_others" so that we stay in a safe range of
+> >> 0.75-0.80V.
+> >>
+> >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@c=
+ollabora.com>
+> >> ---
+> >>   arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 9 +++++++++
+> >>   1 file changed, 9 insertions(+)
+> >>
+> >> diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/a=
+rm64/boot/dts/mediatek/mt8192-asurada.dtsi
+> >> index 8570b78c04a4..f858eca219d7 100644
+> >> --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+> >> +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+> >> @@ -447,6 +447,13 @@ &mt6359_vrf12_ldo_reg {
+> >>          regulator-always-on;
+> >>   };
+> >>
+> >> +&mt6359_vsram_others_ldo_reg {
+> >> +       regulator-min-microvolt =3D <750000>;
+> >> +       regulator-max-microvolt =3D <800000>;
+> >> +       regulator-coupled-with =3D <&mt6315_7_vbuck1>;
+> >> +       regulator-coupled-max-spread =3D <10000>;
+> >
+> > Looking again at the downstream OPP table, it seems there's no voltage
+> > difference requirement. It only needs V_SRAM >=3D V_GPU. Same applies t=
+o
+> > MT8195. Looks like only MT8183 and MT8186 need V_SRAM - V_GPU >=3D 1000=
+0.
+>
+> On MT8195 we don't need any regulator coupling. There, the GPU-SRAM volta=
+ge
+> is fixed at .. I don't remember, 0.7V? - anyway - MT8195 doesn't need to
+> scale the vsram.
 
-Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8186.dtsi | 68 ++++++++++++++++++++++++
- 1 file changed, 68 insertions(+)
+Looks like it's fixed at 0.75V. I guess we're Ok on MT8195.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-index a0d3e1f731bd..178421fd8380 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-@@ -981,6 +981,40 @@
- 			status = "disabled";
- 		};
- 
-+		ssusb0: usb@11201000 {
-+			compatible = "mediatek,mt8186-mtu3", "mediatek,mtu3";
-+			reg = <0 0x11201000 0 0x2dff>, <0 0x11203e00 0 0x0100>;
-+			reg-names = "mac", "ippc";
-+			clocks = <&topckgen CLK_TOP_USB_TOP>,
-+				 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_REF>,
-+				 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_HCLK>,
-+				 <&infracfg_ao CLK_INFRA_AO_ICUSB>;
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck";
-+			interrupts = <GIC_SPI 303 IRQ_TYPE_LEVEL_HIGH 0>;
-+			phys = <&u2port0 PHY_TYPE_USB2>;
-+			power-domains = <&spm MT8186_POWER_DOMAIN_SSUSB>;
-+			#address-cells = <2>;
-+			#size-cells = <2>;
-+			ranges;
-+			status = "disabled";
-+
-+			usb_host0: usb@11200000 {
-+				compatible = "mediatek,mt8186-xhci", "mediatek,mtk-xhci";
-+				reg = <0 0x11200000 0 0x1000>;
-+				reg-names = "mac";
-+				clocks = <&topckgen CLK_TOP_USB_TOP>,
-+					 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_REF>,
-+					 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_HCLK>,
-+					 <&infracfg_ao CLK_INFRA_AO_ICUSB>,
-+					 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_XHCI>;
-+				clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck", "xhci_ck";
-+				interrupts = <GIC_SPI 294 IRQ_TYPE_LEVEL_HIGH 0>;
-+				mediatek,syscon-wakeup = <&pericfg 0x420 2>;
-+				wakeup-source;
-+				status = "disabled";
-+			};
-+		};
-+
- 		mmc0: mmc@11230000 {
- 			compatible = "mediatek,mt8186-mmc",
- 				     "mediatek,mt8183-mmc";
-@@ -1012,6 +1046,40 @@
- 			status = "disabled";
- 		};
- 
-+		ssusb1: usb@11281000 {
-+			compatible = "mediatek,mt8186-mtu3", "mediatek,mtu3";
-+			reg = <0 0x11281000 0 0x2dff>, <0 0x11283e00 0 0x0100>;
-+			reg-names = "mac", "ippc";
-+			clocks = <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_SYS>,
-+				 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_REF>,
-+				 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_HCLK>,
-+				 <&clk26m>;
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck";
-+			interrupts = <GIC_SPI 331 IRQ_TYPE_LEVEL_HIGH 0>;
-+			phys = <&u2port1 PHY_TYPE_USB2>, <&u3port1 PHY_TYPE_USB3>;
-+			power-domains = <&spm MT8186_POWER_DOMAIN_SSUSB_P1>;
-+			#address-cells = <2>;
-+			#size-cells = <2>;
-+			ranges;
-+			status = "disabled";
-+
-+			usb_host1: usb@11280000 {
-+				compatible = "mediatek,mt8186-xhci", "mediatek,mtk-xhci";
-+				reg = <0 0x11280000 0 0x1000>;
-+				reg-names = "mac";
-+				clocks = <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_SYS>,
-+					 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_REF>,
-+					 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_HCLK>,
-+					 <&clk26m>,
-+					 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_XHCI>;
-+				clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck","xhci_ck";
-+				interrupts = <GIC_SPI 324 IRQ_TYPE_LEVEL_HIGH 0>;
-+				mediatek,syscon-wakeup = <&pericfg 0x424 2>;
-+				wakeup-source;
-+				status = "disabled";
-+			};
-+		};
-+
- 		u3phy0: t-phy@11c80000 {
- 			compatible = "mediatek,mt8186-tphy",
- 				     "mediatek,generic-tphy-v2";
--- 
-2.18.0
+> >
+> > Would setting max-spread to 0 work? I ask because with both regulator's
+> > maximum voltage set to 0.8V, there's no way we can reach the highest
+> > OPP.
+> >
+>
+> No that doesn't work. I can raise the Vgpu max voltage to 0.88V to solve =
+the
+> issue right here and right now, or we can leave it like that and revisit =
+it
+> later.
+>
+> I would at this point go for setting mt6315_7_vbuck1's max-microvolt to
+> 880000, as this is the maximum recommended voltage for the GPU as per the
+> MT8192 datasheet, it would also make sense as we would be still describin=
+g
+> the hardware in a correct manner.
+>
+> What do you think?
 
+If it's just to accommodate the coupler stuff, I say just set the maximum
+at the lowest possible setting that satisfies the coupler constraint and
+granularity of the regulator. The regulator does 6250 uV steps, so I guess
+we could set the maximum at 812500 uV, with a comment stating the nominal
+voltage of 800000 uV and that the extra 12500 uV is to workaround coupler
+limitations.
+
+Does that sound OK?
+
+ChenYu
 
