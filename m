@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCEC3C6FA8E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 01:40:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 151A8C678D4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 01:40:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tyMuc6+z6Czz6mBk9Fo6HyijgYmHTnDSU3jNKbiRzWU=; b=Jfy8x1VoftcH3oNIyEC+lBwkMZ
-	pL2nIuuo9LjuPk6POPWvC0OWpJ5i/3MqCKOwOKvU0+lTowMnvQvJnJZDEQYUboIhDtw9FYv+77SQb
-	itPomU95ZNxt2YTwJdjUr7owRnINsBbdeYHYdoMQ29NOt8lwwFzNB26uW1nwXZvy109ka8x67uhww
-	k9qxBkyJcxzeRDS1qarJ+7arZj9Dl5sP22t/mS8MGkRdf86c1najipJTS7zuRzHQ0trC5YOFfqZXW
-	nVsOMnIDAQ9MpCNjgzEIvE5r5SZauYst5aMOFlPTZg9rCYWvVhZASYF8pez/h9FtKBdIt36DLtjOx
-	mGhF6+qw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=d52g3hRZkl/a2eC5lgJWmYH122SOlYvP/ZU+/rzmV+8=; b=j7tnk2/Hd3K/p9aoX5aL8tTsl/
+	RZdZRBtCI2Wxq3Lza8aJg9NDC15g84asHNKetzCGgPLl16lmeem/PrsYopGVT0fCSbLEq4jV7ZjmM
+	8/u6u1t191aKHjHBGcYDqG79zVhmJwCyg83dvPz68QohjlXp93orF04menVUH489sJGiJ44VS8Km2
+	7jBQ96GnWoCFDtJ01KMsLc8J8eb3MtaznKlELZCiZytVoDZ77/lsskAbmgZGas4eicwxtlbrf/Jvp
+	OM90Mct1U3POS/XG0t9fNG9Hwc1i7jGY3aqgiaHWXAoRDaUKx6xcFeUQ0Sh5OXJEckkvNbKc0LWPx
+	zF2IXvZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXuOr-004D8G-Kw; Fri, 03 Mar 2023 01:39:57 +0000
+	id 1pXuP2-004DE0-O2; Fri, 03 Mar 2023 01:40:08 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXuOp-004D5u-2q; Fri, 03 Mar 2023 01:39:56 +0000
-X-UUID: 48905650b96411edbbe3f76fe852e059-20230302
+	id 1pXuOq-004D6S-1G; Fri, 03 Mar 2023 01:39:57 +0000
+X-UUID: 48f325fab96411edbbe3f76fe852e059-20230302
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=tyMuc6+z6Czz6mBk9Fo6HyijgYmHTnDSU3jNKbiRzWU=;
-	b=H/pVhggzKmW/NSqylZHPxYrKNz9i5+wZ8DbK+eAN9iHz9eV+ACfoUko2UmGwPyfjnGY2g+YomMebii51FQvDs1DTjtLQ961HUMOgMsWW2QOX9k33kGjcGuu/OpifzEmgFkqtpVgIpy9ZJw8cOemBYBZ2o0HwMtvzwa6rHP2RqnA=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=d52g3hRZkl/a2eC5lgJWmYH122SOlYvP/ZU+/rzmV+8=;
+	b=lQ846jgKlZ0WjLrwr6tl0ieoNT7U5vKivqxGQtXHzBvLRgzPYbhw+y/SX0lifug4VnlWWj+DRjNd+GnhYzncBSjH6VUcDEXDHvemo3t55+JcQRkN5ZBmV6cAWxUwrBdOGxtxqBfqmwuk9vkKewlBaFbr3d5fw3RCUcMSN6mexHE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.20,REQID:f89cf4d6-e0ac-4e7e-8d32-a5190821e0aa,IP:0,U
+X-CID-O-INFO: VERSION:1.1.20,REQID:5ca606d1-7626-4177-87b5-802b66c966d0,IP:0,U
 	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:90
-X-CID-INFO: VERSION:1.1.20,REQID:f89cf4d6-e0ac-4e7e-8d32-a5190821e0aa,IP:0,URL
+X-CID-INFO: VERSION:1.1.20,REQID:5ca606d1-7626-4177-87b5-802b66c966d0,IP:0,URL
 	:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
 	N:quarantine,TS:90
-X-CID-META: VersionHash:25b5999,CLOUDID:29419bf4-ddba-41c3-91d9-10eeade8eac7,B
-	ulkID:230303093901985AIBF2,BulkQuantity:3,Recheck:0,SF:38|29|28|17|19|48,T
+X-CID-META: VersionHash:25b5999,CLOUDID:ce910db2-beed-4dfc-bd9c-e1b22fa6ccc4,B
+	ulkID:230303093901TRG18TP9,BulkQuantity:3,Recheck:0,SF:38|29|28|17|19|48,T
 	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
 	OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
-X-UUID: 48905650b96411edbbe3f76fe852e059-20230302
+X-UUID: 48f325fab96411edbbe3f76fe852e059-20230302
 Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
 	(envelope-from <allen-kh.cheng@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 340934626; Thu, 02 Mar 2023 18:39:48 -0700
+	with ESMTP id 662091089; Thu, 02 Mar 2023 18:39:49 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Fri, 3 Mar 2023 09:38:45 +0800
+ 15.2.1118.25; Fri, 3 Mar 2023 09:38:46 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Fri, 3 Mar 2023 09:38:45 +0800
+ 15.2.1118.25 via Frontend Transport; Fri, 3 Mar 2023 09:38:46 +0800
 From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
@@ -61,19 +61,18 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<linux-mediatek@lists.infradead.org>, <yunfei.dong@mediatek.com>, "Allen-KH
  Cheng" <allen-kh.cheng@mediatek.com>
-Subject: [RESEND 2/6] media: dt-bindings: media: mediatek: Remove "dma-ranges" property for decoder
-Date: Fri, 3 Mar 2023 09:38:38 +0800
-Message-ID: <20230303013842.23259-3-allen-kh.cheng@mediatek.com>
+Subject: [RESEND 4/6] media: dt-bindings: media: mediatek: vcodec: adapt to the 'clock-names' of different platforms
+Date: Fri, 3 Mar 2023 09:38:40 +0800
+Message-ID: <20230303013842.23259-5-allen-kh.cheng@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230303013842.23259-1-allen-kh.cheng@mediatek.com>
 References: <20230303013842.23259-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230302_173955_157518_8804BBE6 
-X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-CacheID: sfid-20230302_173956_084517_633B36F5 
+X-CRM114-Status: UNSURE (   9.74  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,57 +88,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Because the decoder nodes already make use of the iommus property to
-configure the IOMMU for address translations, having a dma-ranges
-property makes no sense.
+From: Yunfei Dong <yunfei.dong@mediatek.com>
 
-In fact, after commit f1ad5338a4d5 ("of: Fix "dma-ranges" handling for
-bus controllers"), having a dma-ranges property causes IOMMU faults.
+mt8195 and mt8192 have different clock numbers, separate 'clock-names'
+according to compatible name.
 
-Remove the dma-ranges property and update the example.
-
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Rob Herring <robh@kernel.org>
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- .../bindings/media/mediatek,vcodec-subdev-decoder.yaml     | 7 -------
- 1 file changed, 7 deletions(-)
+ .../media/mediatek,vcodec-subdev-decoder.yaml | 41 ++++++++++++++++---
+ 1 file changed, 35 insertions(+), 6 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-index 46308cdaacc0..7efc70ae4406 100644
+index 7efc70ae4406..51c0ff7baa52 100644
 --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
 +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-@@ -76,11 +76,6 @@ properties:
-       The node of system control processor (SCP), using
-       the remoteproc & rpmsg framework.
+@@ -110,15 +110,12 @@ patternProperties:
+           Refer to bindings/iommu/mediatek,iommu.yaml.
  
--  dma-ranges:
--    maxItems: 1
--    description: |
--      Describes the physical address space of IOMMU maps to memory.
--
-   "#address-cells":
-     const: 2
+       clocks:
++        minItems: 4
+         maxItems: 5
  
-@@ -151,7 +146,6 @@ required:
-   - reg
-   - iommus
-   - mediatek,scp
--  - dma-ranges
-   - ranges
+       clock-names:
+-        items:
+-          - const: sel
+-          - const: soc-vdec
+-          - const: soc-lat
+-          - const: vdec
+-          - const: top
++        minItems: 4
++        maxItems: 5
  
- if:
-@@ -185,7 +179,6 @@ examples:
-             compatible = "mediatek,mt8192-vcodec-dec";
-             mediatek,scp = <&scp>;
-             iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>;
--            dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
-             #address-cells = <2>;
-             #size-cells = <2>;
-             ranges = <0 0 0 0x16000000 0 0x40000>;
+       assigned-clocks:
+         maxItems: 1
+@@ -160,6 +157,38 @@ then:
+   required:
+     - interrupts
+ 
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt8192-vcodec-dec
++    then:
++      properties:
++        clock-names:
++          items:
++            - const: sel
++            - const: soc-vdec
++            - const: soc-lat
++            - const: vdec
++            - const: top
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt8195-vcodec-dec
++    then:
++      properties:
++        clock-names:
++          items:
++            - const: sel
++            - const: vdec
++            - const: lat
++            - const: top
++
+ additionalProperties: false
+ 
+ examples:
 -- 
 2.18.0
 
