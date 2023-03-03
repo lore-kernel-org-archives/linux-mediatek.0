@@ -4,163 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01A11C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 17:36:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D8C1C64EC4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 18:20:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QQYnEz2Fl0Ft9pCKVJI3XZ87OlrwihMEA0VN9FfpM3c=; b=elxDYJVAiy77qz4+tELezgAHES
-	XcY+vvqJ8XmQiToDjo1vAkHNcPDlPcWdI5Vmu7bsxtkBUBdLDpuTj4rRlCBFxzK7FO2JbiSRmHK/y
-	D8m0ZpXM05o441x9Qtswioz2CVTucXvLVWd6CrmF/kHBVG8ZaP/VmaN/3p55cSZTDc00dlPE7XNYi
-	vk7o7+p/FnsKs7NqEDHzGYFjcYMn3j1LNk9F6QwAGLagIq38bZjqAgCr0A9xpKdsKAm/a9XdOgax/
-	uK2J571W9qrl/e8JNhh5CJ3p9DpJlzn5yqVTDrE0Gc4+ScBVq64VYm4cD6zCfs10MH0DGFEwxh7nB
-	nCEFkicA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8M4JJhK7OCXpM9WO1V+URKM7Lv3jQVkaIfYcDZqUPng=; b=OBuUezF4judrAzc+BYfxKpAwDB
+	F6V22D59vh+s6JsEZngOB+fCEzq6IddvONn7TkvrLl4Ez7W+XgAeRPqgDI0B8S/sSLcG18MIHMXfX
+	TTgCW92jfppkHte+7EJDppq14K30n9eFO7TIulN0VOcba7wOrqfYcHRHJSSM3jgF6z46X7oCrgwJq
+	7/SwT3c4HKC7RJEJVouN8wD/z+Te2ITgSdBkyushliREKxoabyGwuXCuoIKYlIwPdYnjUY0795zib
+	wtN5iXMZTClpvGKd8UexYLPwuNdV4DcsjQyB5QoWpO7xzbpUupl9ch/TBrWv1CyaEZNg2322umsLs
+	iwEcqMrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pY9KS-007099-2r; Fri, 03 Mar 2023 17:36:24 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pYA1J-00791b-1X; Fri, 03 Mar 2023 18:20:41 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pY96s-006tco-Hb
-	for linux-mediatek@bombadil.infradead.org; Fri, 03 Mar 2023 17:22:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=QQYnEz2Fl0Ft9pCKVJI3XZ87OlrwihMEA0VN9FfpM3c=; b=Wdt6aV7QP+z6BlXGtVC3MMSGQT
-	1qC7HsrQ+Lt0AcNeTgcHhufD5/U1GRomJQ6l6DqPwciogVOedN2FjrLfjzOE2UVQRRkMcDYaBwclq
-	vak/DobGXGWQXPbJmgQpKlCifQU18A/qCfHbWNIi2t13BCZPnPGPkS28BA7SLNtbxkjouWe4hOFpr
-	ZolWJ/7iOsxLhHojeBdtoLiQnb3/OPVpXe2NpBGIz+ojatZALtDXM1AJo/x+34IXFeBCh7WbwyS4K
-	+rwmskhRRDmVZVrEJlM6V5V4Jue/n+bumUkJCD30q1wN8qb2max8Jry2g11AYlkHFgjGxL5qCYS+N
-	9bdf9g7A==;
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pY96m-00FkXa-0p
-	for linux-mediatek@lists.infradead.org;
-	Fri, 03 Mar 2023 17:22:19 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pY95b-0006Ot-7P; Fri, 03 Mar 2023 18:21:03 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pY95P-001bia-Q5; Fri, 03 Mar 2023 18:20:51 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pY95P-001tht-22; Fri, 03 Mar 2023 18:20:51 +0100
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Mark Brown <broonie@kernel.org>,
-	Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>,
-	=?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
-	Joel Stanley <joel@jms.id.au>,
-	Radu Pirea <radu_nicolae.pirea@upb.ro>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Tudor Ambarus <tudor.ambarus@linaro.org>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Ray Jui <rjui@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	William Zhang <william.zhang@broadcom.com>,
-	Kursad Oney <kursad.oney@broadcom.com>,
-	Jonas Gorski <jonas.gorski@gmail.com>,
-	Anand Gore <anand.gore@broadcom.com>,
-	=?utf-8?b?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
-	Kamal Dasu <kdasu.kdev@gmail.com>,
-	Serge Semin <fancer.lancer@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Han Xu <han.xu@nxp.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Jay Fang <f.fangjian@huawei.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Haibo Chen <haibo.chen@nxp.com>,
-	Daniel Mack <daniel@zonque.org>,
-	Haojian Zhuang <haojian.zhuang@gmail.com>,
-	Robert Jarzmik <robert.jarzmik@free.fr>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Andi Shyti <andi@etezian.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Li-hao Kuo <lhjeff911@gmail.com>,
-	Masahisa Kojima <masahisa.kojima@linaro.org>,
-	Jassi Brar <jaswinder.singh@linaro.org>,
-	Laxman Dewangan <ldewangan@nvidia.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Sowjanya Komatineni <skomatineni@nvidia.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Michal Simek <michal.simek@xilinx.com>,
-	Max Filippov <jcmvbkbc@gmail.com>
-Cc: linux-spi@vger.kernel.org,
-	Andrew Jeffery <andrew@aj.id.au>,
-	linux-aspeed@lists.ozlabs.org,
-	openbmc@lists.ozlabs.org,
-	linux-arm-kernel@lists.infradead.org,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	linux-rpi-kernel@lists.infradead.org,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	linux-arm-msm@vger.kernel.org,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	linux-amlogic@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Patrick Venture <venture@google.com>,
-	Nancy Yuen <yuenn@google.com>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Yogesh Gaur <yogeshgaur.83@gmail.com>,
-	linux-rockchip@lists.infradead.org,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	linux-samsung-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	linux-xtensa@linux-xtensa.org
-Subject: [PATCH 00/87] spi: Convert to platform remove callback returning void
-Date: Fri,  3 Mar 2023 18:19:14 +0100
-Message-Id: <20230303172041.2103336-1-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.39.1
+	id 1pYA18-0078zN-Vu
+	for linux-mediatek@lists.infradead.org; Fri, 03 Mar 2023 18:20:32 +0000
+Received: by mail-wr1-x429.google.com with SMTP id j2so3142154wrh.9
+        for <linux-mediatek@lists.infradead.org>; Fri, 03 Mar 2023 10:20:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1677867626;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=8M4JJhK7OCXpM9WO1V+URKM7Lv3jQVkaIfYcDZqUPng=;
+        b=IvX4709SpETHwKZnaZ/VUBhGBnb3edIHYGjmnRTo1BR7Tt1xe823j2DQZTJ2WkNzK/
+         R5cpZFgbjIPciEMfKgv3NrYpZemZHbPp9Icf90pImph3WUIV+WDqmvGjINefz1TBaRa6
+         k/KQ2xsxWpgC9qzNcLTZlg/ZelSOQaxs+k6RYznEhGkEpU3bEguAOIWlzQdlyb5H1xtE
+         VhM3dxPKFeXIwpkmDHby9jXRGvqEma7hrM/d1JolXyCnXd0dnBQPWdb7RrSxvJV3t/CI
+         9pQTFRbY/5f5mK4RpUa+g9wxO53l8IjMJHYNBgiJUFgre7filrwaTOQ3mkJgtG3+sjO2
+         kQsQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1677867626;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=8M4JJhK7OCXpM9WO1V+URKM7Lv3jQVkaIfYcDZqUPng=;
+        b=pT046mleEeA7InXiNra0em7nYmqABKg7m5KoQvgin5M5v8XiM9Owcigh3MX4SbMbGr
+         9ZbLwZ/2XdVw8JiwaDTMQNSxgoZhTeQPZJdQk3UUlPif5dTF+U3fVHHUH0qEyn9gulaZ
+         Lkaa7Ru2PlE8bglg1e8PUQqSDYlW/3dXHNoWnrd9cZNnvdonHAfYsubuJwGoRKlkxzb6
+         le2MksBOnS/cxUXTQNzuOcz/mQRnohi/Dht5lOXiFMwzXel31oeLx+ADpMS1YrSuRNAr
+         OPn8XNc3QFffClef6OLHiVV9BIUOMFYdlCrSCRsILZl4w9b5/pz/QRBYPIeJyxb6D5aS
+         bSFA==
+X-Gm-Message-State: AO0yUKUc8udU550mR7wv/hLHrHlNd50T7f3ZX/97WlQ3XhmO0Qeai9d0
+	hVmNrrZ+x+7nuzknTF028dRgX6UaarANJQ0T64OeLQ==
+X-Google-Smtp-Source: AK7set8oEHzqOqPD7jWE2EaUZk7vGnHcVw/OgqgaNvamVgg81oFWY/hFsoF4Gpyn8OzLm2vrZQT2ciIRG5AFFD0W2TQ=
+X-Received: by 2002:a5d:4347:0:b0:2c7:1320:7781 with SMTP id
+ u7-20020a5d4347000000b002c713207781mr635648wrr.13.1677867626499; Fri, 03 Mar
+ 2023 10:20:26 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=11739; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=RWqvc8RnhEbQQ2oAk+E+9rPdzPGR+1W5SnXdzobHuT8=; b=owEBbQGS/pANAwAKAcH8FHityuwJAcsmYgBkAisJkW18zyL+YEzlTtbekP+5UvgovAIj/gcML nwd+Kay6RGJATMEAAEKAB0WIQR+cioWkBis/z50pAvB/BR4rcrsCQUCZAIrCQAKCRDB/BR4rcrs CaFBB/92x5SnXIGhT6giruoYpGJoso7Z3MP3OVm/DCgJH6s6vYJGV9pYI2lu5eRUCDJcQoZTtgK ZkjyGMNYXLHw5tUKn88EDwX0RuzGhj1fwNvi8u3zdCpZd0blCS4DV8PGtqPH15IKjCg/NSwpEO0 xOmALBy9uOxij739aBF/xuxhaZWpjiyjPVbwwC1NGIxdOTpGl00eDfc6ZiABfbeTa5LWEblpdn3 rWOBzSBlcyizkhTVwSimgHB/YEYbG/drCH5pRdxMGW+U10fVOuvdYOknPfRpZ5kOcyLnDxD362d aviWRkaIauhw3X9/YDqmV6gHXwcidGlxnJzNMnpfCDTq2Mlj
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+References: <20230303102751.9374-1-jason-ch.chen@mediatek.com>
+In-Reply-To: <20230303102751.9374-1-jason-ch.chen@mediatek.com>
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+Date: Fri, 3 Mar 2023 11:20:15 -0700
+Message-ID: <CANLsYky0pbqiEfq7E6DZM=J+sm2JJ8gYST2atUyP8X7y9zdHWA@mail.gmail.com>
+Subject: Re: [PATCH] remoteproc: mediatek: Dereferencing a pointer that might
+ be NULL
+To: Jason-ch Chen <jason-ch.chen@mediatek.com>
+Cc: Bjorn Andersson <bjorn.andersson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-remoteproc@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230303_172216_603054_543CEB5D 
-X-CRM114-Status: GOOD (  13.57  )
+X-CRM114-CacheID: sfid-20230303_102031_090492_BAF4317B 
+X-CRM114-Status: GOOD (  16.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -175,209 +87,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+On Fri, 3 Mar 2023 at 03:28, Jason-ch Chen <jason-ch.chen@mediatek.com> wrote:
+>
+> From: jason-ch chen <Jason-ch.Chen@mediatek.com>
+>
+> The res might be NULL when calling resource_size.
+>
 
-this patch series adapts the platform drivers below drivers/spi
-to use the .remove_new() callback. Compared to the traditional .remove()
-callback .remove_new() returns no value. This is a good thing because
-the driver core doesn't (and cannot) cope for errors during remove. The
-only effect of a non-zero return value in .remove() is that the driver
-core emits a warning. The device is removed anyhow and an early return
-from .remove() usually yields a resource leak.
+"resource_size" ?  What is that?
 
-By changing the remove callback to return void driver authors cannot
-reasonably assume any more that there is some kind of cleanup later.
+> Signed-off-by: jason-ch chen <Jason-ch.Chen@mediatek.com>
+> ---
+>  drivers/remoteproc/mtk_scp.c | 3 +++
+>  1 file changed, 3 insertions(+)
+>
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> index eacdf241f4ef..863d18f63f58 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -829,6 +829,9 @@ static int scp_probe(struct platform_device *pdev)
+>         platform_set_drvdata(pdev, scp);
+>
+>         res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "sram");
+> +       if (!res)
+> +               return -ENODEV;
+> +
 
-All drivers touched here returned zero unconditionally in their remove
-callback, so they could all be converted trivially to .remove_new().
+Please have a look at the implementation of devm_ioremap_resource()
+along with the function it calls and let me know if your patch is
+needed.
 
-Note that this series depends on commit 5c5a7680e67b ("platform: Provide
-a remove callback that returns no value") that is already in Linus' tree
-but not yet included in a tagged version.
-
-Best regards
-Uwe
-
-Uwe Kleine-König (87):
-  spi: ar934x: Convert to platform remove callback returning void
-  spi: armada-3700: Convert to platform remove callback returning void
-  spi: aspeed-smc: Convert to platform remove callback returning void
-  spi: at91-usart: Convert to platform remove callback returning void
-  spi: ath79: Convert to platform remove callback returning void
-  spi: atmel: Convert to platform remove callback returning void
-  spi: au1550: Convert to platform remove callback returning void
-  spi: axi-spi-engine: Convert to platform remove callback returning void
-  spi: bcm2835: Convert to platform remove callback returning void
-  spi: bcm2835aux: Convert to platform remove callback returning void
-  spi: bcm63xx-hsspi: Convert to platform remove callback returning void
-  spi: bcm63xx: Convert to platform remove callback returning void
-  spi: bcmbca-hsspi: Convert to platform remove callback returning void
-  spi: brcmstb-qspi: Convert to platform remove callback returning void
-  spi: cadence-quadspi: Convert to platform remove callback returning void
-  spi: cadence: Convert to platform remove callback returning void
-  spi: cavium-octeon: Convert to platform remove callback returning void
-  spi: coldfire-qspi: Convert to platform remove callback returning void
-  spi: davinci: Convert to platform remove callback returning void
-  spi: dln2: Convert to platform remove callback returning void
-  spi: dw-bt1: Convert to platform remove callback returning void
-  spi: dw-mmio: Convert to platform remove callback returning void
-  spi: ep93xx: Convert to platform remove callback returning void
-  spi: fsl-dspi: Convert to platform remove callback returning void
-  spi: fsl-espi: Convert to platform remove callback returning void
-  spi: fsl-lpspi: Convert to platform remove callback returning void
-  spi: fsl-qspi: Convert to platform remove callback returning void
-  spi: fsl-spi: Convert to platform remove callback returning void
-  spi: geni-qcom: Convert to platform remove callback returning void
-  spi: hisi-kunpeng: Convert to platform remove callback returning void
-  spi: img-spfi: Convert to platform remove callback returning void
-  spi: iproc-qspi: Convert to platform remove callback returning void
-  spi: lantiq-ssc: Convert to platform remove callback returning void
-  spi: meson-spicc: Convert to platform remove callback returning void
-  spi: meson-spifc: Convert to platform remove callback returning void
-  spi: microchip-core-qspi: Convert to platform remove callback returning void
-  spi: microchip-core: Convert to platform remove callback returning void
-  spi: mpc512x-psc: Convert to platform remove callback returning void
-  spi: mpc52xx-psc: Convert to platform remove callback returning void
-  spi: mpc52xx: Convert to platform remove callback returning void
-  spi: mtk-nor: Convert to platform remove callback returning void
-  spi: mtk-snfi: Convert to platform remove callback returning void
-  spi: mxic: Convert to platform remove callback returning void
-  spi: mxs: Convert to platform remove callback returning void
-  spi: npcm-fiu: Convert to platform remove callback returning void
-  spi: npcm-pspi: Convert to platform remove callback returning void
-  spi: nxp-fspi: Convert to platform remove callback returning void
-  spi: oc-tiny: Convert to platform remove callback returning void
-  spi: omap-uwire: Convert to platform remove callback returning void
-  spi: omap2-mcspi: Convert to platform remove callback returning void
-  spi: orion: Convert to platform remove callback returning void
-  spi: pic32-sqi: Convert to platform remove callback returning void
-  spi: pic32: Convert to platform remove callback returning void
-  spi: ppc4xx: Convert to platform remove callback returning void
-  spi: pxa2xx: Convert to platform remove callback returning void
-  spi: qcom-qspi: Convert to platform remove callback returning void
-  spi: rb4xx: Convert to platform remove callback returning void
-  spi: rockchip-sfc: Convert to platform remove callback returning void
-  spi: rockchip: Convert to platform remove callback returning void
-  spi: rpc-if: Convert to platform remove callback returning void
-  spi: rspi: Convert to platform remove callback returning void
-  spi: s3c64xx: Convert to platform remove callback returning void
-  spi: sh-hspi: Convert to platform remove callback returning void
-  spi: sh-msiof: Convert to platform remove callback returning void
-  spi: sh-sci: Convert to platform remove callback returning void
-  spi: sh: Convert to platform remove callback returning void
-  spi: sifive: Convert to platform remove callback returning void
-  spi: slave-mt27xx: Convert to platform remove callback returning void
-  spi: sn-f-ospi: Convert to platform remove callback returning void
-  spi: sprd-adi: Convert to platform remove callback returning void
-  spi: st-ssc4: Convert to platform remove callback returning void
-  spi: stm32-qspi: Convert to platform remove callback returning void
-  spi: stm32: Convert to platform remove callback returning void
-  spi: sun4i: Convert to platform remove callback returning void
-  spi: sun6i: Convert to platform remove callback returning void
-  spi: sunplus-sp7021: Convert to platform remove callback returning void
-  spi: synquacer: Convert to platform remove callback returning void
-  spi: tegra114: Convert to platform remove callback returning void
-  spi: tegra20-sflash: Convert to platform remove callback returning void
-  spi: tegra20-slink: Convert to platform remove callback returning void
-  spi: tegra210-quad: Convert to platform remove callback returning void
-  spi: topcliff-pch: Convert to platform remove callback returning void
-  spi: uniphier: Convert to platform remove callback returning void
-  spi: xilinx: Convert to platform remove callback returning void
-  spi: xtensa-xtfpga: Convert to platform remove callback returning void
-  spi: zynq-qspi: Convert to platform remove callback returning void
-  spi: zynqmp-gqspi: Convert to platform remove callback returning void
-
- drivers/spi/spi-ar934x.c              |  6 ++----
- drivers/spi/spi-armada-3700.c         |  6 ++----
- drivers/spi/spi-aspeed-smc.c          |  5 ++---
- drivers/spi/spi-at91-usart.c          |  6 ++----
- drivers/spi/spi-ath79.c               |  6 ++----
- drivers/spi/spi-atmel.c               |  6 ++----
- drivers/spi/spi-au1550.c              |  5 ++---
- drivers/spi/spi-axi-spi-engine.c      |  6 ++----
- drivers/spi/spi-bcm2835.c             | 12 +++---------
- drivers/spi/spi-bcm2835aux.c          |  6 ++----
- drivers/spi/spi-bcm63xx-hsspi.c       |  6 ++----
- drivers/spi/spi-bcm63xx.c             |  6 ++----
- drivers/spi/spi-bcmbca-hsspi.c        |  6 ++----
- drivers/spi/spi-brcmstb-qspi.c        |  6 ++----
- drivers/spi/spi-cadence-quadspi.c     |  6 ++----
- drivers/spi/spi-cadence.c             |  6 ++----
- drivers/spi/spi-cavium-octeon.c       |  6 ++----
- drivers/spi/spi-coldfire-qspi.c       |  6 ++----
- drivers/spi/spi-davinci.c             |  5 ++---
- drivers/spi/spi-dln2.c                |  6 ++----
- drivers/spi/spi-dw-bt1.c              |  6 ++----
- drivers/spi/spi-dw-mmio.c             |  6 ++----
- drivers/spi/spi-ep93xx.c              |  6 ++----
- drivers/spi/spi-fsl-dspi.c            |  6 ++----
- drivers/spi/spi-fsl-espi.c            |  6 ++----
- drivers/spi/spi-fsl-lpspi.c           |  5 ++---
- drivers/spi/spi-fsl-qspi.c            |  6 ++----
- drivers/spi/spi-fsl-spi.c             | 11 ++++-------
- drivers/spi/spi-geni-qcom.c           |  5 ++---
- drivers/spi/spi-hisi-kunpeng.c        |  6 ++----
- drivers/spi/spi-img-spfi.c            |  6 ++----
- drivers/spi/spi-iproc-qspi.c          |  6 ++----
- drivers/spi/spi-lantiq-ssc.c          |  6 ++----
- drivers/spi/spi-meson-spicc.c         |  6 ++----
- drivers/spi/spi-meson-spifc.c         |  6 ++----
- drivers/spi/spi-microchip-core-qspi.c |  6 ++----
- drivers/spi/spi-microchip-core.c      |  6 ++----
- drivers/spi/spi-mpc512x-psc.c         | 22 ++++++++--------------
- drivers/spi/spi-mpc52xx-psc.c         |  6 ++----
- drivers/spi/spi-mpc52xx.c             |  6 ++----
- drivers/spi/spi-mtk-nor.c             |  6 ++----
- drivers/spi/spi-mtk-snfi.c            |  5 ++---
- drivers/spi/spi-mxic.c                |  6 ++----
- drivers/spi/spi-mxs.c                 |  6 ++----
- drivers/spi/spi-npcm-fiu.c            |  5 ++---
- drivers/spi/spi-npcm-pspi.c           |  6 ++----
- drivers/spi/spi-nxp-fspi.c            |  6 ++----
- drivers/spi/spi-oc-tiny.c             |  5 ++---
- drivers/spi/spi-omap-uwire.c          |  5 ++---
- drivers/spi/spi-omap2-mcspi.c         |  6 ++----
- drivers/spi/spi-orion.c               |  6 ++----
- drivers/spi/spi-pic32-sqi.c           |  6 ++----
- drivers/spi/spi-pic32.c               |  6 ++----
- drivers/spi/spi-ppc4xx.c              |  5 ++---
- drivers/spi/spi-pxa2xx.c              |  6 ++----
- drivers/spi/spi-qcom-qspi.c           |  6 ++----
- drivers/spi/spi-rb4xx.c               |  6 ++----
- drivers/spi/spi-rockchip-sfc.c        |  6 ++----
- drivers/spi/spi-rockchip.c            |  6 ++----
- drivers/spi/spi-rpc-if.c              |  6 ++----
- drivers/spi/spi-rspi.c                |  6 ++----
- drivers/spi/spi-s3c64xx.c             |  6 ++----
- drivers/spi/spi-sh-hspi.c             |  6 ++----
- drivers/spi/spi-sh-msiof.c            |  5 ++---
- drivers/spi/spi-sh-sci.c              |  5 ++---
- drivers/spi/spi-sh.c                  |  6 ++----
- drivers/spi/spi-sifive.c              |  6 ++----
- drivers/spi/spi-slave-mt27xx.c        |  6 ++----
- drivers/spi/spi-sn-f-ospi.c           |  6 ++----
- drivers/spi/spi-sprd-adi.c            |  5 ++---
- drivers/spi/spi-st-ssc4.c             |  6 ++----
- drivers/spi/spi-stm32-qspi.c          |  6 ++----
- drivers/spi/spi-stm32.c               |  6 ++----
- drivers/spi/spi-sun4i.c               |  6 ++----
- drivers/spi/spi-sun6i.c               |  5 ++---
- drivers/spi/spi-sunplus-sp7021.c      |  5 ++---
- drivers/spi/spi-synquacer.c           |  6 ++----
- drivers/spi/spi-tegra114.c            |  6 ++----
- drivers/spi/spi-tegra20-sflash.c      |  6 ++----
- drivers/spi/spi-tegra20-slink.c       |  5 ++---
- drivers/spi/spi-tegra210-quad.c       |  6 ++----
- drivers/spi/spi-topcliff-pch.c        |  6 ++----
- drivers/spi/spi-uniphier.c            |  6 ++----
- drivers/spi/spi-xilinx.c              |  6 ++----
- drivers/spi/spi-xtensa-xtfpga.c       |  6 ++----
- drivers/spi/spi-zynq-qspi.c           |  6 ++----
- drivers/spi/spi-zynqmp-gqspi.c        |  6 ++----
- 87 files changed, 183 insertions(+), 350 deletions(-)
-
-base-commit: 2eb29d59ddf02e39774abfb60b2030b0b7e27c1f
--- 
-2.39.1
-
+>         scp->sram_base = devm_ioremap_resource(dev, res);
+>         if (IS_ERR((__force void *)scp->sram_base)) {
+>                 dev_err(dev, "Failed to parse and map sram memory\n");
+> --
+> 2.37.3
+>
 
