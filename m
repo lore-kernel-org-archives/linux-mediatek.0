@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9C89C678D4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 00:34:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA283C6FA8E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 00:34:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F8438bEydUlrPZrkVMSwHAqPRPD9BxspbjMsnayfq+s=; b=kGcL/npyxaEeyy
-	wU6fUesQVy2f/3591qBN49ZN/vfiOWWsHHh/z/OE86P4Se4tApeOwjZhtSfO3QxZPEZy80Fw9AWMR
-	xgwgKtuHf1LZwkIJW1m0wyVRZ4tndHfjqKDQ3QM1lUC0s7ZMEwda8LFrimRfoQXtjhoJwIYzcE2UB
-	QbnfyxLDkKwQylHcrnVhBMA3BcKwdyeRX+epxSqauj/bRlcALD7M+Z3SaeD383d2BvGVWA+beEOFO
-	N2M37s9XCToh0lN4BcuyDyOOEcWCkq6LDNDvCE4m0TCPxIkK7Zuf5LTYXWoAkbQvmCfhOXMLqXSNo
-	JK76lVIkVHlG6e2I+I2Q==;
+	List-Owner; bh=jBoLaLgAfnzJMOco92w0PZhMXyCzsUA5lEBWwlGN0ao=; b=36CGBG1wlRqwtp
+	GlM181zROd9ODPnVsKs2Iig5Ox+8oy+I32bro5qsPfHl8En5A3RtaoDgOmBNdEJb1Aj2e8Nc8MiM9
+	6AU0o7ye+bqoMbjXD96x+EQeqsfDHg/QKEUYbfpZShl/EgWmpH7MrVB/uOj06LrUcKiNnTr0/fuyg
+	wy1PGniHHY/liTrN92JdgF9LTh5HJPb1tyBm+dqyGF7dnahlCm9XRBThgGjHya/fQQsElbanB+UXc
+	h9QYud9vCSVRUFjESvkUnPoXnJYKuWWwOkXAjdRRdpq3p0mmmc05XqDizd+ohtVZAslYjrR0d92Dl
+	yrKg4/RR1nWhQhY/CyCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXtND-003t6M-Dt; Fri, 03 Mar 2023 00:34:11 +0000
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
+	id 1pXtNq-003tSa-0J; Fri, 03 Mar 2023 00:34:50 +0000
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXtJU-003qrE-MT; Fri, 03 Mar 2023 00:30:22 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id h9so777093ljq.2;
-        Thu, 02 Mar 2023 16:30:20 -0800 (PST)
+	id 1pXtJW-003qoG-FD; Fri, 03 Mar 2023 00:30:23 +0000
+Received: by mail-lj1-x233.google.com with SMTP id h3so725046lja.12;
+        Thu, 02 Mar 2023 16:30:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1677803419;
+        d=gmail.com; s=20210112; t=1677803422;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=F8438bEydUlrPZrkVMSwHAqPRPD9BxspbjMsnayfq+s=;
-        b=NvVrQZmOZM3L5aKsXkdrOIz4Ks1ElIhzsdKG0l9z8OGbfolNiSH93uEQ1SxBctBbjH
-         4fj1R/mUMdy8JOZ7Vn2Gfu7nE+bHyBHZL5okEkvEB2l51CDXqzale4Ix0KQgsfLcsoxk
-         CDHZI8Y9uAkTwM6v9BZuGqezR7rbSev4D+hfXx08O4jFWd+O6IOaiMmmhJET5MTUUQjK
-         +Z22zHtIbOUVNRRhRaEJkhFAZxE/UMasEJ9uTC+in9Po8pfiOE9pc1skvevioaUUaIni
-         WJK78mFXYFIYFisjTvFURD0RyAo4MObb81DgYIfrRlMGhqY1F5hMFaXm4eyEfQiRd2cI
-         G8YQ==
+        bh=jBoLaLgAfnzJMOco92w0PZhMXyCzsUA5lEBWwlGN0ao=;
+        b=EMMa4ni9zrDRspPU5ftf0JQipoI2u0POA5nbF+kc3oe/G6/TubCteI6IDoea0/5U22
+         rn4SzkTNg6n9q/RXrtVKqGuLp0oOZrS/RpNUwn/oFvoJayTzhtzITB59+y7iTBlfhUEg
+         cVxoVeII2eLERdm1jq+apPU7OMj7/EHk+rFWbG5lQ/aGJxhj/hBshvJXZPDLRjNMnz3u
+         Cs8u/+ynlARvsccuFBSqmSyB2oH/mKdfY695iisL5D/YDPo1vxmvVk/DOeAw01Gpyj0S
+         wj1KmpaJFE/VF2OLqXmiYGdId2+dkEZUdkb09ahg3SOk8GKk5v9TuOKaby8O6qIzxeaZ
+         p8yw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1677803419;
+        d=1e100.net; s=20210112; t=1677803422;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=F8438bEydUlrPZrkVMSwHAqPRPD9BxspbjMsnayfq+s=;
-        b=FadKDqWlyjkKNPIcmitsHunYt9ekcv2VgUFMxfvtnPJLYirE9ghBszMXDhQqAcAVcB
-         0Uqxd2yhTk39saHTTk/LWQY91NSaozYXsr+7mtQjkz/eSoEuBuxj2vQezLpAIGYtUzhX
-         Yl4TJVf4KjtMaCtoOxsVlhBMW1ssSH76r94MQhQZRPzhtZ3nhqun0MksZJh092Xq8PRS
-         hE5LgIYBsP8PFB2tASs17eRtM4Sz6Ku4pq8IU0ZQ8YcC5Mm4qmR0ScM1Rdhog6jOh2xK
-         920AeUBZlGuyY87IryFS9f1yi48dhxfQpipgCJfU9nst9lfGcmKsOVJLMeR58M62bwJ5
-         /f5A==
-X-Gm-Message-State: AO0yUKX7LJZK7kmXDMBhwHyn6b4Lo+m9/ZD6r85wGVFMmgdP2iX5fh1d
-	zj+WRT1ux+TXI/C767G2q64=
-X-Google-Smtp-Source: AK7set/XYEYh2rpl8Hj6S3msHXK+AjMZIY2lTd8Jv31ZzTy8V28zpD3KyVf0hWldflgc2tujmptGww==
-X-Received: by 2002:a2e:3101:0:b0:295:941c:7b2 with SMTP id x1-20020a2e3101000000b00295941c07b2mr3730218ljx.12.1677803419304;
-        Thu, 02 Mar 2023 16:30:19 -0800 (PST)
+        bh=jBoLaLgAfnzJMOco92w0PZhMXyCzsUA5lEBWwlGN0ao=;
+        b=aqCFeYQ+YyDOiuKcODLhqw8OIAMDZ6DrbjnEvgp0MgmZ6lMNhQERBnVVgdpt1vfdrm
+         /cxpMTVD24ulBqp9hEz0+eHfiF9DQmNCVVkyQctgzCKI9g7DmzMZe7/i09ht8FZyOezM
+         HwrYApytIIwMHqjZ/CfwDAr6ingWijXdtMDUWXUdKJetBkLwEOKoxiYvzS6Azuh6cQPv
+         85BjPIbdO4DYXtgGRaIN7sf24tP3kSPOiBSJpXGPqmD0NFRxR2XtXseYjl6jQ6pgiRJ1
+         opmf+uaVM7aOG56iXtRmpvVrj+5OuuzuQt5AdY60ubiCcnsedsaFnds9nL5xhRghh1EI
+         Q1dQ==
+X-Gm-Message-State: AO0yUKVlbVPzRvO/c8FgIYJFpK+iRfXu1PPKwfFbflCkeWEcebbTfu02
+	OLjoTulGbgA5K1/O5p/OcAo=
+X-Google-Smtp-Source: AK7set8rNy4xiBupjJ/nm4xKxLpUCbesFNEMDh48vzYZKeWx12ce9ZufLJQp9c42xDcig2JNeIlaWw==
+X-Received: by 2002:a2e:9255:0:b0:293:5f51:3d41 with SMTP id v21-20020a2e9255000000b002935f513d41mr918759ljg.11.1677803421888;
+        Thu, 02 Mar 2023 16:30:21 -0800 (PST)
 Received: from arinc9-PC.lan ([212.68.60.226])
-        by smtp.gmail.com with ESMTPSA id v19-20020a2e9f53000000b002932b817990sm64901ljk.31.2023.03.02.16.30.16
+        by smtp.gmail.com with ESMTPSA id v19-20020a2e9f53000000b002932b817990sm64901ljk.31.2023.03.02.16.30.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 Mar 2023 16:30:18 -0800 (PST)
+        Thu, 02 Mar 2023 16:30:21 -0800 (PST)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Linus Walleij <linus.walleij@linaro.org>,
 	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Subject: [PATCH 11/20] dt-bindings: pinctrl: mediatek: mt8186: rename to mediatek,mt8186-pinctrl
-Date: Fri,  3 Mar 2023 03:28:40 +0300
-Message-Id: <20230303002850.51858-12-arinc.unal@arinc9.com>
+Subject: [PATCH 12/20] dt-bindings: pinctrl: mediatek: mt8192: rename to mediatek,mt8192-pinctrl
+Date: Fri,  3 Mar 2023 03:28:41 +0300
+Message-Id: <20230303002850.51858-13-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20230303002850.51858-1-arinc.unal@arinc9.com>
 References: <20230303002850.51858-1-arinc.unal@arinc9.com>
@@ -74,7 +74,7 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230302_163020_797384_7406E1EA 
+X-CRM114-CacheID: sfid-20230302_163022_554365_74B4701B 
 X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,32 +93,32 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Rename pinctrl-mt8186.yaml to mediatek,mt8186-pinctrl.yaml to be on par
+Rename pinctrl-mt8192.yaml to mediatek,mt8192-pinctrl.yaml to be on par
 with the compatible string and other mediatek dt-binding schemas.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 Acked-by: Rob Herring <robh@kernel.org>
 ---
- .../{pinctrl-mt8186.yaml => mediatek,mt8186-pinctrl.yaml}       | 2 +-
+ .../{pinctrl-mt8192.yaml => mediatek,mt8192-pinctrl.yaml}       | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
- rename Documentation/devicetree/bindings/pinctrl/{pinctrl-mt8186.yaml => mediatek,mt8186-pinctrl.yaml} (99%)
+ rename Documentation/devicetree/bindings/pinctrl/{pinctrl-mt8192.yaml => mediatek,mt8192-pinctrl.yaml} (98%)
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8186-pinctrl.yaml
-similarity index 99%
-rename from Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
-rename to Documentation/devicetree/bindings/pinctrl/mediatek,mt8186-pinctrl.yaml
-index 26573a793b57..32d64416eb16 100644
---- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8186-pinctrl.yaml
+diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8192.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8192-pinctrl.yaml
+similarity index 98%
+rename from Documentation/devicetree/bindings/pinctrl/pinctrl-mt8192.yaml
+rename to Documentation/devicetree/bindings/pinctrl/mediatek,mt8192-pinctrl.yaml
+index e0e943e5b874..e764cb0f8c1a 100644
+--- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8192.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8192-pinctrl.yaml
 @@ -1,7 +1,7 @@
  # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
  %YAML 1.2
  ---
--$id: http://devicetree.org/schemas/pinctrl/pinctrl-mt8186.yaml#
-+$id: http://devicetree.org/schemas/pinctrl/mediatek,mt8186-pinctrl.yaml#
+-$id: http://devicetree.org/schemas/pinctrl/pinctrl-mt8192.yaml#
++$id: http://devicetree.org/schemas/pinctrl/mediatek,mt8192-pinctrl.yaml#
  $schema: http://devicetree.org/meta-schemas/core.yaml#
  
- title: Mediatek MT8186 Pin Controller
+ title: Mediatek MT8192 Pin Controller
 -- 
 2.37.2
 
