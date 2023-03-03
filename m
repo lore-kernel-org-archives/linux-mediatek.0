@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A64FFC678D4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 00:32:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4F4FC6FA8E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 00:33:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ct2y6EoMrN+HJxQD2RfUFZp0XRCxO4iCVehUYgYijVs=; b=Eld/Yax78bgpqP
-	0ZXn638ZqrrbrnfLmcBwo0rh79WVluNMXqLXe/YAngbHuA+LFDtdybGbKfc/AY4Uqo3NJY93gEJBu
-	cJ7wTWflhxKlD7jEO+gxSYMqZX/t17d2AuragkfWWp+7O7ZyjqRT3eLfT0I7fymkdfuUwGjk09SrW
-	1zy6rOMSLEUjtXSkRSPV2p1WUk63gsAXtD0AFyIhCI/llxxYKfPKZno25PG4IxC6M0txMnwGadin9
-	7h84iTkFiwhjhAfCnE9H7++u+5m3/wku6+9/CJG6IUiCkA/UmZX+4dxsZ8u6qMgNPp8tfloKpPkU/
-	PhmHXxQpuemZQXIOSOzw==;
+	List-Owner; bh=nIZ/VUwLQr0Tb6Hs8t6RcaxxMgXGsFSSH+ZFsM+YJEg=; b=CWt3MWcoXPFpTZ
+	HW+LdIU5AqUOed5fX7TSXp+P7MNsKnkY0XaYlxZc5zkIL5EBIfR4Hfs5ohr7LKgaJppH0y0la/C1Y
+	fsvA7+ESxzT056JHo4UgcHRy91Xx40JkMN5crgx1gIMNtizujgCRM+djHoo4YGhMF7eEArnlMZh5C
+	C5VYFRnTbJp1S0Xkzf0F3mRXXko9ip2Cic+y5vtdtNCIqGQHSDMOEhKNgHY9gocsgr0NBDwFn2iOU
+	031phHSSkS2RosgUqxtGQDMbTVe1ePF+Q6IRZVJzSoQ8PkP4Ggy/5sW6RjMb+YXCyNof81pcdalVu
+	wlv2nuptr0rq8jovfZFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXtLl-003sHH-TO; Fri, 03 Mar 2023 00:32:41 +0000
-Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+	id 1pXtMC-003sV2-KX; Fri, 03 Mar 2023 00:33:08 +0000
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pXtJM-003qeP-2A; Fri, 03 Mar 2023 00:30:13 +0000
-Received: by mail-lj1-x229.google.com with SMTP id f16so734761ljq.10;
-        Thu, 02 Mar 2023 16:30:11 -0800 (PST)
+	id 1pXtJQ-003qoG-J3; Fri, 03 Mar 2023 00:30:18 +0000
+Received: by mail-lj1-x233.google.com with SMTP id h3so724756lja.12;
+        Thu, 02 Mar 2023 16:30:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1677803411;
+        d=gmail.com; s=20210112; t=1677803414;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ct2y6EoMrN+HJxQD2RfUFZp0XRCxO4iCVehUYgYijVs=;
-        b=FwM7QY25lZengJrJwyQSjL5E6EosTaG/+eugSo4UGZwRYY8gKfpS9IxSeMotKhKENz
-         biglUWtHjccGIf9oq0UngdlPPqw1v/YPEobXNbQ+ZgSjR0EzCtHX3pkszkI+g5JKCm0R
-         yJWwrt0BmYv9MBtO1HPmDRBY5Qi1EjFNSSAYUbCnfmpUN87UC3QSwWkTpRYmWhsQ7HTo
-         hdg8QBpC9f3W+dZ5Q3q9x9tcGaI02jQW8LxIzA7n/QhHDJpZB7RGt+KR+sw5MkXN1ycr
-         m377JWoET6qxAf4D+0mrGk2Z91C8B0BUWMh6FMnyPgBXBf3KErnTXdBx0fQIGyn8NGEj
-         Gr7A==
+        bh=nIZ/VUwLQr0Tb6Hs8t6RcaxxMgXGsFSSH+ZFsM+YJEg=;
+        b=aR/StYwg5SBRBhvvub54pAY0m0Dak5Vqi1Sn2vYzdDBLtdMkvWTrVCM/lqdvz9Douo
+         FLDnxFfjNFng+q5UzRjBPEr8i41m8tlHvyE27SMFOwoC/s9ubhYRXgs9G5NWy9s/32pF
+         4Wk73BnGAY2AXdu8/25JjMiA35UqkYAPoXYcew2afGVkltta25e4cQMBjhNMdoVjn+Hd
+         lN0b4j1dsy2JzVqfR4nGNkHRDA3IXpIWWHWjB/i7gq3f5IEVnfzWqzU0GJiLo69EPQd/
+         vp/RxMjmN3By5gPM7cptGrJaKEwnTN9zlGh2PuKUSk9MiRpbWujrdsyoVyNww7m5qpb4
+         9YBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1677803411;
+        d=1e100.net; s=20210112; t=1677803414;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ct2y6EoMrN+HJxQD2RfUFZp0XRCxO4iCVehUYgYijVs=;
-        b=MivfmMtrYLbmShGCMPyRV7hXLBKGgXHTEh/13CuO9eMXYrx80uhXj9Shqv3c2nyS31
-         CMIXzutIfm3HJxE/2749BrA5QBWAwc2JXheOjgCYQcbC6TWZFyDCpFQndDdwwxjc7El4
-         dANC7WRU7EEWVmncd80+NN+/XucsOGlsOV9TiIFBHOskpewGW1qxVPwovUNOY/2bYe+r
-         FvlTQs7zi4o4fXQZ/zcfJs2pJpx8QOkOy4VvxhR/tAe8gN1U9DfX0eKRWCMOpsusrJDK
-         hh9oRh4By1hiPcD6vdyHNMD/jA7QC5pWESWyqsQmh/HR8yrbOrWDEu1DdTA2DI9sSS3j
-         Y5TA==
-X-Gm-Message-State: AO0yUKUlkYGxK6Mc4Ly1usIFrgs7VPyzH1G8FaNVUx9lFztPUVBP94I8
-	c+vJvx1thr+YAXjIThGhBwk=
-X-Google-Smtp-Source: AK7set+7dqKolQq1dLdyJinry05b+SRKAJDd4GYsDcYXoX757fWcDh/aP+KdZ3FWHQIOUWKVHYhvDw==
-X-Received: by 2002:a2e:7810:0:b0:295:94f4:c22c with SMTP id t16-20020a2e7810000000b0029594f4c22cmr3635070ljc.49.1677803411429;
-        Thu, 02 Mar 2023 16:30:11 -0800 (PST)
+        bh=nIZ/VUwLQr0Tb6Hs8t6RcaxxMgXGsFSSH+ZFsM+YJEg=;
+        b=3RSWUa5iJPa2cKTxrlx/485DOAcyzVhxzPgsjERI8pvho9N6Be+I06SFXdhKAO/7K3
+         RfUweqZ4dZn46zRZCiqkTkSk6sPyIBQku5WNaRxzfu15ocf5RXRsfgVAiX802o8reBsd
+         AUXbP49eVHb495V6VdZz1o0cL216gsPAXomftzMek7nIilqYxGCzsqqgRyNs1liNtOBM
+         q0AHJOScsG6RoL8qLdvZydLRbYWU+ScfrqaxDMUMJfkV/fOWT3F808GKIxOWGf6DTv71
+         KCCjMBw810mWaDqzrredmMLkKXkMuIdrh3AJX/NwqMPIe5uf80gBbpm31LuSQ0pLgqcK
+         lyLg==
+X-Gm-Message-State: AO0yUKWYetAd2qx3YVjqBpUz3KAKng/7dDDi5f2Fyw3D+kp54Ul0dqmJ
+	rVKQ/Gt4DVcR0Qe/FrZyaaU=
+X-Google-Smtp-Source: AK7set83k4MFsUVGzmCNJxxP1R5E6lqPSIHxrZtWDUwPEtDs/ZH+jWGM6ooYBuPE7QUickUieSdq6A==
+X-Received: by 2002:a2e:870d:0:b0:290:6e01:8d0b with SMTP id m13-20020a2e870d000000b002906e018d0bmr3245766lji.26.1677803413992;
+        Thu, 02 Mar 2023 16:30:13 -0800 (PST)
 Received: from arinc9-PC.lan ([212.68.60.226])
-        by smtp.gmail.com with ESMTPSA id v19-20020a2e9f53000000b002932b817990sm64901ljk.31.2023.03.02.16.30.08
+        by smtp.gmail.com with ESMTPSA id v19-20020a2e9f53000000b002932b817990sm64901ljk.31.2023.03.02.16.30.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 Mar 2023 16:30:11 -0800 (PST)
+        Thu, 02 Mar 2023 16:30:13 -0800 (PST)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Linus Walleij <linus.walleij@linaro.org>,
 	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Subject: [PATCH 08/20] dt-bindings: pinctrl: ralink: add new compatible strings
-Date: Fri,  3 Mar 2023 03:28:37 +0300
-Message-Id: <20230303002850.51858-9-arinc.unal@arinc9.com>
+Subject: [PATCH 09/20] dt-bindings: pinctrl: ralink: {mt7620,mt7621}: rename to mediatek
+Date: Fri,  3 Mar 2023 03:28:38 +0300
+Message-Id: <20230303002850.51858-10-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20230303002850.51858-1-arinc.unal@arinc9.com>
 References: <20230303002850.51858-1-arinc.unal@arinc9.com>
@@ -74,8 +74,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230302_163012_134306_536A6144 
-X-CRM114-Status: GOOD (  11.49  )
+X-CRM114-CacheID: sfid-20230302_163016_717955_56482D7C 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,85 +93,74 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Add the new mediatek compatible strings. Change the compatible string on
-the examples with the mediatek compatible strings.
-
-Add the new compatible strings for mt7620, mt76x8, and rt305x to be able to
-properly document the pin muxing information of each SoC, or SoCs that use
-the same pinmux data.
+This platform from Ralink was acquired by MediaTek in 2011. Then, MediaTek
+introduced these SoCs which utilise this platform. Rename the schemas to
+mediatek to address the incorrect naming.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- .../devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml | 7 +++++--
- .../devicetree/bindings/pinctrl/ralink,mt7621-pinctrl.yaml | 6 ++++--
- .../devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml | 5 ++++-
- 3 files changed, 13 insertions(+), 5 deletions(-)
+ ...ink,mt7620-pinctrl.yaml => mediatek,mt7620-pinctrl.yaml} | 6 +++---
+ ...ink,mt7621-pinctrl.yaml => mediatek,mt7621-pinctrl.yaml} | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+ rename Documentation/devicetree/bindings/pinctrl/{ralink,mt7620-pinctrl.yaml => mediatek,mt7620-pinctrl.yaml} (98%)
+ rename Documentation/devicetree/bindings/pinctrl/{ralink,mt7621-pinctrl.yaml => mediatek,mt7621-pinctrl.yaml} (97%)
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
-index cde6de77e228..a94d2e7a5f37 100644
+diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml
+similarity index 98%
+rename from Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
+rename to Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml
+index a94d2e7a5f37..1c9ca0bf9750 100644
 --- a/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
-@@ -17,7 +17,10 @@ description:
++++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml
+@@ -1,17 +1,17 @@
+ # SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+ %YAML 1.2
+ ---
+-$id: http://devicetree.org/schemas/pinctrl/ralink,mt7620-pinctrl.yaml#
++$id: http://devicetree.org/schemas/pinctrl/mediatek,mt7620-pinctrl.yaml#
+ $schema: http://devicetree.org/meta-schemas/core.yaml#
  
- properties:
-   compatible:
--    const: ralink,mt7620-pinctrl
-+    enum:
-+      - mediatek,mt7620-pinctrl
-+      - mediatek,mt76x8-pinctrl
-+      - ralink,mt7620-pinctrl
+-title: Ralink MT7620 Pin Controller
++title: MediaTek MT7620 Pin Controller
  
- patternProperties:
-   '-pins$':
-@@ -646,7 +649,7 @@ additionalProperties: false
- examples:
-   - |
-     pinctrl {
--      compatible = "ralink,mt7620-pinctrl";
-+      compatible = "mediatek,mt7620-pinctrl";
+ maintainers:
+   - Arınç ÜNAL <arinc.unal@arinc9.com>
+   - Sergio Paracuellos <sergio.paracuellos@gmail.com>
  
-       i2c_pins: i2c0-pins {
-         pinmux {
-diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,mt7621-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,mt7621-pinctrl.yaml
-index fb8c5459ea93..eb0746cfc6d6 100644
+ description:
+-  Ralink MT7620 pin controller for MT7620, MT7628 and MT7688 SoCs.
++  MediaTek MT7620 pin controller for MT7620, MT7628 and MT7688 SoCs.
+   The pin controller can only set the muxing of pin groups. Muxing individual
+   pins is not supported. There is no pinconf support.
+ 
+diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,mt7621-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7621-pinctrl.yaml
+similarity index 97%
+rename from Documentation/devicetree/bindings/pinctrl/ralink,mt7621-pinctrl.yaml
+rename to Documentation/devicetree/bindings/pinctrl/mediatek,mt7621-pinctrl.yaml
+index eb0746cfc6d6..717c948951be 100644
 --- a/Documentation/devicetree/bindings/pinctrl/ralink,mt7621-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/ralink,mt7621-pinctrl.yaml
-@@ -17,7 +17,9 @@ description:
++++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7621-pinctrl.yaml
+@@ -1,17 +1,17 @@
+ # SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+ %YAML 1.2
+ ---
+-$id: http://devicetree.org/schemas/pinctrl/ralink,mt7621-pinctrl.yaml#
++$id: http://devicetree.org/schemas/pinctrl/mediatek,mt7621-pinctrl.yaml#
+ $schema: http://devicetree.org/meta-schemas/core.yaml#
  
- properties:
-   compatible:
--    const: ralink,mt7621-pinctrl
-+    enum:
-+      - mediatek,mt7621-pinctrl
-+      - ralink,mt7621-pinctrl
+-title: Ralink MT7621 Pin Controller
++title: MediaTek MT7621 Pin Controller
  
- patternProperties:
-   '-pins$':
-@@ -250,7 +252,7 @@ additionalProperties: false
- examples:
-   - |
-     pinctrl {
--      compatible = "ralink,mt7621-pinctrl";
-+      compatible = "mediatek,mt7621-pinctrl";
+ maintainers:
+   - Arınç ÜNAL <arinc.unal@arinc9.com>
+   - Sergio Paracuellos <sergio.paracuellos@gmail.com>
  
-       i2c_pins: i2c0-pins {
-         pinmux {
-diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml
-index 8b1256af09c3..23fb82f9959c 100644
---- a/Documentation/devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml
-@@ -18,7 +18,10 @@ description:
+ description:
+-  Ralink MT7621 pin controller for MT7621 SoC.
++  MediaTek MT7621 pin controller for MT7621 SoC.
+   The pin controller can only set the muxing of pin groups. Muxing individual
+   pins is not supported. There is no pinconf support.
  
- properties:
-   compatible:
--    const: ralink,rt305x-pinctrl
-+    enum:
-+      - ralink,rt305x-pinctrl
-+      - ralink,rt3352-pinctrl
-+      - ralink,rt5350-pinctrl
- 
- patternProperties:
-   '-pins$':
 -- 
 2.37.2
 
