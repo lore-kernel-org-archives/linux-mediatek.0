@@ -4,93 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B235C678DB
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Mar 2023 13:34:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3551EC678DB
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Mar 2023 13:45:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=l98O6Gp4Q4b0pe+UoWkExHa2eKu+2AI657gSqgEePSA=; b=xstFSeqyYk7/hySOMaEFylqdR9
-	U2kL7plfzJl4ddyNy2NldqUNseB1wp+iKqUWRmZ8kRzzr7Ml0KwmIScr1hBLlvYb0LlmmzkvFo0AK
-	Q1Q75BtlGyjdscpqbJv/q7ibMgXy+4Cj+IOnKJHgaYJC1MNF9ndmKvuvE+J8Wg04d1k0Vvet4+5AX
-	oxHpJwjcEygwSgqPciq7uW0RF3Iqwb26kpw+vBhgJb3t6O6KKVOCVDoH1otPVRgVmPD9fSMqw0jw8
-	wy1UXWTZL7Oon5I+pTp6itR0eTpHqwgsqbuz9KY39p2AsB+CL6XnlzPxxamGrZR9oL7DV04R/Hqgp
-	EBIE3CeQ==;
+	bh=E3ekUcCxDIVZHb+kN5SOvoRv8WIK/AqJpIi4nY5LMB4=; b=ctf35Bk/ioQs/IcyNjUR3nXtI+
+	jbEXp5koL+6NORafgqRtcEPs8lCIb6v49HpVHSWT8iyE73V29y5VKt/un9zB2Eg3YslufWzd208AB
+	oEjiJOeK5mgOzwVTAqWa0L/+yIpL12vWyrKHD4afU67r9xn+dMvyDqLMJdLNQLIq2SeHLeE41n/Hc
+	9yeVDRRFJgD5KPd/mVJvfIOD8wR+01mN2bUknfxrzMrDBD8JlS+F6L/mpBA6cu6SjtoHSAIVxB9tm
+	OvXnmqF9pZguEhj2gVRnLAFbYlTpOlySHZrZKW2CxYgdTNdDavrEFuJvfDCg6tYJz3riLVPpJvWq8
+	VyFNX/qQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYS1S-0092lj-3R; Sat, 04 Mar 2023 13:34:02 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1pYSCK-00956q-Mm; Sat, 04 Mar 2023 13:45:16 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYRyo-0091LI-6Q
-	for linux-mediatek@lists.infradead.org; Sat, 04 Mar 2023 13:31:20 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pYRyN-0000be-7f; Sat, 04 Mar 2023 14:30:51 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pYRyE-001nZ1-4u; Sat, 04 Mar 2023 14:30:42 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pYRyD-0027GF-AN; Sat, 04 Mar 2023 14:30:41 +0100
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Alessandro Zummo <a.zummo@towertech.it>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Benson Leung <bleung@chromium.org>,
-	Joshua Kinard <kumba@gentoo.org>,
-	Hans Ulli Kroll <ulli.kroll@googlemail.com>,
-	Vladimir Zapolskiy <vz@mleia.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	Eddie Huang <eddie.huang@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Miquel Raynal <miquel.raynal@bootlin.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Vincent Shih <vincent.sunplus@gmail.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Michal Simek <michal.simek@xilinx.com>
-Cc: linux-rtc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Guenter Roeck <groeck@chromium.org>,
-	chrome-platform@lists.linux.dev,
-	linux-riscv@lists.infradead.org,
+	id 1pYSCH-009565-7g; Sat, 04 Mar 2023 13:45:15 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pYSC6-0006XR-1P;
+	Sat, 04 Mar 2023 14:45:02 +0100
+Date: Sat, 4 Mar 2023 13:43:20 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Russell King <linux@armlinux.org.uk>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-tegra@vger.kernel.org,
-	patches@opensource.cirrus.com,
-	kernel@pengutronix.de
-Subject: [PATCH 00/41] rtc: Convert to platform remove callback returning void
-Date: Sat,  4 Mar 2023 14:29:47 +0100
-Message-Id: <20230304133028.2135435-1-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.39.1
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vladimir Oltean <vladimir.oltean@nxp.com>
+Cc: =?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
+Subject: [PATCH net] net: ethernet: mtk_eth_soc: fix RX data corruption issue
+Message-ID: <138da2735f92c8b6f8578ec2e5a794ee515b665f.1677937317.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5947; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=pCaRjKbsihInauNKYog8PJUZGzXfOUbEoxu4a7CE/hA=; b=owEBbQGS/pANAwAKAcH8FHityuwJAcsmYgBkA0dmCZ37vDreXRwIALTBz7LkP9UVbo7kIC2m5 /YcXNXxgQOJATMEAAEKAB0WIQR+cioWkBis/z50pAvB/BR4rcrsCQUCZANHZgAKCRDB/BR4rcrs Cb37B/9X0mwN6W28M9A+kpBV/hix7liXqpKGHjVS5tdrD2imP2auSWPldHmFFosH098N6HNifk7 6+TcL+2KaFszesDc+QQNKeynJwPBzACiIccRP9yGXkasW87KaTMlcX7VErNrSWPE6UGyMlxJOTa a4AOMGRUBQskxMq0U7AbhviH7BTHC6NEZ3ZH1+pbDjh+/VXycM+HsrxMEiMWZvNqXLQpExUobSR JA724JcAIucnmX8DSUbinzkcmmKKgpKV3o2w4NmOqT7ifFL84jMXKcFYHU3Xp3iPDk5USIl1ixA IWXh4m4XPq/JrCh0hIXE1DJGgznkrP8gqXlAkcxQpLw2ESLE
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230304_053118_407694_85AB4340 
-X-CRM114-Status: GOOD (  14.04  )
+X-CRM114-CacheID: sfid-20230304_054513_560515_386AB6EE 
+X-CRM114-Status: GOOD (  13.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,117 +75,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+Fix data corruption issue with SerDes connected PHYs operating at 1.25
+Gbps speed where we could previously observe about 30% packet loss while
+the bad packet counter was increasing.
 
-this patch series adapts the platform drivers below drivers/rtc to use the
-.remove_new() callback. Compared to the traditional .remove() callback
-.remove_new() returns no value. This is a good thing because the driver core
-doesn't (and cannot) cope for errors during remove. The only effect of a
-non-zero return value in .remove() is that the driver core emits a warning. The
-device is removed anyhow and an early return from .remove() usually yields a
-resource leak.
+As almost all boards with MediaTek MT7622 or MT7986 use either the MT7531
+switch IC operating at 3.125Gbps SerDes rate or single-port PHYs using
+rate-adaptation to 2500Base-X mode, this issue only got exposed now when
+we started trying to use SFP modules operating with 1.25 Gbps with the
+BananaPi R3 board.
 
-By changing the remove callback to return void driver authors cannot reasonably
-assume any more that there is some kind of cleanup later.
+The fix is to set bit 12 which disables the RX FIFO clear function when
+setting up MAC MCR, MediaTek SDK did the same change stating:
+"If without this patch, kernel might receive invalid packets that are
+corrupted by GMAC."[1]
 
-All drivers touched here returned zero unconditionally in their remove
-callback, so they could all be converted trivially to .remove_new().
+[1]: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/d8a2975939a12686c4a95c40db21efdc3f821f63
 
-Note that this series depends on commit 5c5a7680e67b ("platform: Provide a
-remove callback that returns no value") that is already in Linus' tree but not
-yet included in a tagged version. I guess this will change tomorrow.
+Fixes: 42c03844e93d ("net-next: mediatek: add support for MediaTek MT7622 SoC")
+Tested-by: Bjørn Mork <bjorn@mork.no>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 3 ++-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 1 +
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-Best regards
-Uwe
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 14be6ea51b88..3cb43623d3db 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -616,7 +616,8 @@ static int mtk_mac_finish(struct phylink_config *config, unsigned int mode,
+ 	mcr_cur = mtk_r32(mac->hw, MTK_MAC_MCR(mac->id));
+ 	mcr_new = mcr_cur;
+ 	mcr_new |= MAC_MCR_IPG_CFG | MAC_MCR_FORCE_MODE |
+-		   MAC_MCR_BACKOFF_EN | MAC_MCR_BACKPR_EN | MAC_MCR_FORCE_LINK;
++		   MAC_MCR_BACKOFF_EN | MAC_MCR_BACKPR_EN | MAC_MCR_FORCE_LINK |
++		   MAC_MCR_RX_FIFO_CLR_DIS;
+ 
+ 	/* Only update control register when needed! */
+ 	if (mcr_new != mcr_cur)
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index afc9d52e79bf..b65de174c3d9 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -397,6 +397,7 @@
+ #define MAC_MCR_FORCE_MODE	BIT(15)
+ #define MAC_MCR_TX_EN		BIT(14)
+ #define MAC_MCR_RX_EN		BIT(13)
++#define MAC_MCR_RX_FIFO_CLR_DIS	BIT(12)
+ #define MAC_MCR_BACKOFF_EN	BIT(9)
+ #define MAC_MCR_BACKPR_EN	BIT(8)
+ #define MAC_MCR_FORCE_RX_FC	BIT(5)
 
-Uwe Kleine-KÃ¶nig (41):
-  rtc: 88pm80x: Convert to platform remove callback returning void
-  rtc: 88pm860x: Convert to platform remove callback returning void
-  rtc: ab8500: Convert to platform remove callback returning void
-  rtc: ac100: Convert to platform remove callback returning void
-  rtc: asm9260: Convert to platform remove callback returning void
-  rtc: at91sam9: Convert to platform remove callback returning void
-  rtc: brcmstb-waketimer: Convert to platform remove callback returning void
-  rtc: cadence: Convert to platform remove callback returning void
-  rtc: cmos: Convert to platform remove callback returning void
-  rtc: cros-ec: Convert to platform remove callback returning void
-  rtc: ds1685: Convert to platform remove callback returning void
-  rtc: ftrtc010: Convert to platform remove callback returning void
-  rtc: hid-sensor-time: Convert to platform remove callback returning void
-  rtc: lpc24xx: Convert to platform remove callback returning void
-  rtc: max77686: Convert to platform remove callback returning void
-  rtc: mc13xxx: Convert to platform remove callback returning void
-  rtc: mpc5121: Convert to platform remove callback returning void
-  rtc: mpfs: Convert to platform remove callback returning void
-  rtc: mt7622: Convert to platform remove callback returning void
-  rtc: mxc_v2: Convert to platform remove callback returning void
-  rtc: omap: Convert to platform remove callback returning void
-  rtc: palmas: Convert to platform remove callback returning void
-  rtc: pcf50633: Convert to platform remove callback returning void
-  rtc: pic32: Convert to platform remove callback returning void
-  rtc: pm8xxx: Convert to platform remove callback returning void
-  rtc: rc5t583: Convert to platform remove callback returning void
-  rtc: rtd119x: Convert to platform remove callback returning void
-  rtc: rzn1: Convert to platform remove callback returning void
-  rtc: s3c: Convert to platform remove callback returning void
-  rtc: sa1100: Convert to platform remove callback returning void
-  rtc: spear: Convert to platform remove callback returning void
-  rtc: stm32: Convert to platform remove callback returning void
-  rtc: stmp3xxx: Convert to platform remove callback returning void
-  rtc: sunplus: Convert to platform remove callback returning void
-  rtc: tegra: Convert to platform remove callback returning void
-  rtc: tps6586x: Convert to platform remove callback returning void
-  rtc: twl: Convert to platform remove callback returning void
-  rtc: vt8500: Convert to platform remove callback returning void
-  rtc: wm8350: Convert to platform remove callback returning void
-  rtc: xgene: Convert to platform remove callback returning void
-  rtc: zynqmp: Convert to platform remove callback returning void
-
- drivers/rtc/rtc-88pm80x.c           | 5 ++---
- drivers/rtc/rtc-88pm860x.c          | 6 ++----
- drivers/rtc/rtc-ab8500.c            | 6 ++----
- drivers/rtc/rtc-ac100.c             | 6 ++----
- drivers/rtc/rtc-asm9260.c           | 5 ++---
- drivers/rtc/rtc-at91sam9.c          | 6 ++----
- drivers/rtc/rtc-brcmstb-waketimer.c | 6 ++----
- drivers/rtc/rtc-cadence.c           | 6 ++----
- drivers/rtc/rtc-cmos.c              | 5 ++---
- drivers/rtc/rtc-cros-ec.c           | 6 ++----
- drivers/rtc/rtc-ds1685.c            | 6 ++----
- drivers/rtc/rtc-ftrtc010.c          | 6 ++----
- drivers/rtc/rtc-hid-sensor-time.c   | 6 ++----
- drivers/rtc/rtc-lpc24xx.c           | 6 ++----
- drivers/rtc/rtc-max77686.c          | 6 ++----
- drivers/rtc/rtc-mc13xxx.c           | 6 ++----
- drivers/rtc/rtc-mpc5121.c           | 6 ++----
- drivers/rtc/rtc-mpfs.c              | 6 ++----
- drivers/rtc/rtc-mt7622.c            | 6 ++----
- drivers/rtc/rtc-mxc_v2.c            | 5 ++---
- drivers/rtc/rtc-omap.c              | 6 ++----
- drivers/rtc/rtc-palmas.c            | 5 ++---
- drivers/rtc/rtc-pcf50633.c          | 6 ++----
- drivers/rtc/rtc-pic32.c             | 6 ++----
- drivers/rtc/rtc-pm8xxx.c            | 5 ++---
- drivers/rtc/rtc-rc5t583.c           | 5 ++---
- drivers/rtc/rtc-rtd119x.c           | 6 ++----
- drivers/rtc/rtc-rzn1.c              | 6 ++----
- drivers/rtc/rtc-s3c.c               | 6 ++----
- drivers/rtc/rtc-sa1100.c            | 6 ++----
- drivers/rtc/rtc-spear.c             | 6 ++----
- drivers/rtc/rtc-stm32.c             | 6 ++----
- drivers/rtc/rtc-stmp3xxx.c          | 8 +++-----
- drivers/rtc/rtc-sunplus.c           | 6 ++----
- drivers/rtc/rtc-tegra.c             | 6 ++----
- drivers/rtc/rtc-tps6586x.c          | 5 ++---
- drivers/rtc/rtc-twl.c               | 6 ++----
- drivers/rtc/rtc-vt8500.c            | 6 ++----
- drivers/rtc/rtc-wm8350.c            | 6 ++----
- drivers/rtc/rtc-xgene.c             | 5 ++---
- drivers/rtc/rtc-zynqmp.c            | 6 ++----
- 41 files changed, 83 insertions(+), 156 deletions(-)
-
-base-commit: 0988a0ea791999ebbf95693f2676381825b05033
+base-commit: 528125268588a18a2f257002af051b62b14bb282
 -- 
-2.39.1
+2.39.2
 
 
