@@ -4,94 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2D42C678D5
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Mar 2023 05:59:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A751C678D5
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Mar 2023 08:10:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cZdOR2mQrM2Yh/ZdXBDU9hVL0HlZsZVueh/CEeqYueU=; b=1wcLjGauCLLQtdZRe5MWMXO+Xe
-	QJytLyNBz7NPCb2tdel+TeBgTmVrNsobUVzNIUz00K9i6Cm72XX8uCuQD3hj5o1H5QdugdA1JwptJ
-	jGe0HmXBA1ek/6DjzEL8XolyEHe5xZ5X+SWjBJFY40rnGLoGw6AAkRE9KKStWjdqP/k2T+wR3z0sr
-	Fjp1+CbbE3YQu0w2Oa1N1TJ4bBOzsyqDrL31yFXDyj/dp0/Djf1SvNucVnehrBX6B0+vtQ6F9O+Yg
-	pU41Q6ZhMLGpB54E2TAOwX2e39SNJxJysjiDiaP7XdmDcWBVBOAxGNASucLkmmutk8wZMSrl2t8uk
-	tnxaAA8A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=M+nX4DmXaWAu5GaLRZX1v8/uR3NbT5kE2UzeDElONlw=; b=whO2FTkI4Gg3dB430lRUzn7PWq
+	x8n/zkLS2rDaDF0AfVq5xllq7O7+vd75IyAD0xa95iUg1fJtHlnyq8u3FmUD6phaLbgVUzsyL0tKo
+	/DwlSmrUc63EcdFmQ1z8vmMcq3/tvln6yl56FJHPszfQrbe5l2zTgGxxTQKYurCqspLE9vFaijGKn
+	o0LSk+blQU7lBFcy6Ynwz30doo7qMKWxyg5LZdaPSQkOqLGuZulNVjbpDVmPA46OFosDfagt7kCcX
+	4MZeZpy/3Q1w4UNqb4Kyp5yffM21JZzKz9QR28f6qLiA6sGI88vv4WcJxHnrQ1wBDXV80j8Hv0tNx
+	vPYQ/eJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYKvh-008OYD-2F; Sat, 04 Mar 2023 05:59:37 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1pYMyY-008ZGB-Rn; Sat, 04 Mar 2023 08:10:42 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYKvU-008OWZ-Ha; Sat, 04 Mar 2023 05:59:25 +0000
-Received: by mail-ed1-x534.google.com with SMTP id o15so18262381edr.13;
-        Fri, 03 Mar 2023 21:59:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=cZdOR2mQrM2Yh/ZdXBDU9hVL0HlZsZVueh/CEeqYueU=;
-        b=Spc5p3ovs3CEvWjvB15Lsxi3xGjMUIlNSYNFAcggChHEqyh1XQIV3ghzRysFCQdwot
-         B+Pzk25ozrx9jxO/cugIqFD/r06/RjYzQnBpUsHfl/0KYoxab8FIKN/6rnu8co2Z7lxk
-         Mz/CVbIsMog2abpNbYK7pFe96zz3t3Rm2GralvuU2HiegQXFXYRGe79tiCnlqDK3Rrl6
-         8VS8m3lEou653ypRcub4hORgngyVE/4CfwaI/6Ymv9PPP20xwlEC+gP0A5TBq1L9JjQx
-         WqrbysUxMMTh2VK+L+GDogxIkZBJXxBrm5+58547IY4AFuOrd0rJYXORJ4HKz5lJfuqe
-         f6og==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=cZdOR2mQrM2Yh/ZdXBDU9hVL0HlZsZVueh/CEeqYueU=;
-        b=q/QsZwObnFgpAJiPaWXwdcOTDuzr9UN057xeiqlTQ5o3r43+hQCf3AbY8xFRFZaipW
-         qjSAgDt4gawTYaLplWejiZB4a6QLvoKG0lqURqQ2GjHwxVReC/yUz262n1Jdy4P2DDrH
-         903u4sLkP17D+09B7Izd/ZsPuXTMPLUrbaoQ/5v3YR0UVZRKgeVvuVi6XF4/wIGEg9ED
-         MWO378c0JIjgGUhB/Tn3im0S4TSbmQxyceW61dZ1KxYRnHAHI9a0jqZ+9aZhC5dhwH8u
-         YWmudV8haT1Ycbvg5q5Y+kEOHiTXvJm/PJiErzQVP2xOnU46q+tKjYuf37VUXGfmqWOV
-         sAtQ==
-X-Gm-Message-State: AO0yUKXm8K1nczHbsuvtevNuSvXA03dTqXIwv//WxHPhqpzSwxfaKHKc
-	iGCHP3hIkJs/VMwSIiej9co=
-X-Google-Smtp-Source: AK7set8UXUFWR2ui/AgXkHFAvLBJPzNPX6LhnlTox4YZzu7Cyy9qpwNmgZWB6VYga3nqRk1K4I90aA==
-X-Received: by 2002:a05:6402:510:b0:4bb:83fa:5e83 with SMTP id m16-20020a056402051000b004bb83fa5e83mr4125414edv.12.1677909561087;
-        Fri, 03 Mar 2023 21:59:21 -0800 (PST)
-Received: from [192.168.0.173] ([79.115.63.78])
-        by smtp.gmail.com with ESMTPSA id v12-20020a50c40c000000b004bb810e0b87sm2030841edf.39.2023.03.03.21.59.17
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 03 Mar 2023 21:59:20 -0800 (PST)
-Message-ID: <5bd48f09-f7ba-e5b3-60ba-49ecd1493e36@gmail.com>
-Date: Sat, 4 Mar 2023 07:59:16 +0200
+	id 1pYMyV-008ZF9-Uw
+	for linux-mediatek@lists.infradead.org; Sat, 04 Mar 2023 08:10:41 +0000
+X-UUID: 0671747eba6411edbbe3f76fe852e059-20230304
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=M+nX4DmXaWAu5GaLRZX1v8/uR3NbT5kE2UzeDElONlw=;
+	b=DiQEHvv1AXnYPoOU6TwDw6kpx2aPAnxYp6f6zAV6YepAjUTsy1IkUBvUzc0Jv7PmODdUi0VGLulcFqlr9qrqljSSeXE6Anz7F+MFZhOJS8Tr8IiQJVDi3zGjoWx+lPfLkcgUzcjSSmjnIK3aBfyp9+uWawSmaVLxXsXyJxYRs6o=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.20,REQID:163cb6bc-6a2c-4249-bc21-e637930796c9,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:25b5999,CLOUDID:44fe4d27-564d-42d9-9875-7c868ee415ec,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-UUID: 0671747eba6411edbbe3f76fe852e059-20230304
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <deren.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1591237435; Sat, 04 Mar 2023 01:10:28 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Sat, 4 Mar 2023 16:09:54 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Sat, 4 Mar 2023 16:09:54 +0800
+From: Deren Wu <deren.wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+	YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
+ Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>, KM Lin
+	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Stella Chang
+	<Stella.Chang@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, "Ryder
+ Lee" <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Neil Chen <yn.chen@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7921: use driver flags rather than mac80211 flags to mcu
+Date: Sat, 4 Mar 2023 16:09:51 +0800
+Message-ID: <fce2160648ed8a83248e8998cf76bbe05de0e8a0.1677912476.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH] spi: Replace `dummy.nbytes` with `dummy.ncycles`
-To: Sergiu Moga <sergiu.moga@microchip.com>, pratyush@kernel.org,
- michael@walle.cc, miquel.raynal@bootlin.com, richard@nod.at,
- vigneshr@ti.com, broonie@kernel.org, nicolas.ferre@microchip.com,
- alexandre.belloni@bootlin.com, claudiu.beznea@microchip.com,
- chin-ting_kuo@aspeedtech.com, clg@kaod.org, joel@jms.id.au, andrew@aj.id.au,
- kdasu.kdev@gmail.com, fancer.lancer@gmail.com, han.xu@nxp.com,
- john.garry@huawei.com, matthias.bgg@gmail.com, avifishman70@gmail.com,
- tmaimon77@gmail.com, tali.perry1@gmail.com, venture@google.com,
- yuenn@google.com, benjaminfair@google.com, haibo.chen@nxp.com,
- yogeshgaur.83@gmail.com, heiko@sntech.de, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, michal.simek@xilinx.com, tkuw584924@gmail.com,
- Takahiro Kuwano <Takahiro.Kuwano@infineon.com>, tudor.ambarus@linaro.org
-Cc: bcm-kernel-feedback-list@broadcom.com, linux-mtd@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
- openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
-References: <20220911174551.653599-1-sergiu.moga@microchip.com>
-From: Tudor Ambarus <tudor.ambarus@gmail.com>
-Content-Language: en-US
-In-Reply-To: <20220911174551.653599-1-sergiu.moga@microchip.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230303_215924_634065_C6D8EEC3 
-X-CRM114-Status: UNSURE (   6.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230304_001040_052533_835F4DD2 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,12 +84,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+From: Neil Chen <yn.chen@mediatek.com>
 
-Sergiu changed his interests, I'm going to send a new version of this
-patch. We really need the conversion in SPI NOR as there are flashes
-that require a number of dummy cycles that is not multiple of 8.
+FIF_* flags from mac80211 is not ABI. mt7921 should not pass it into mcu
+directly. Remap FIF_* to driver defined flags as mcu command input.
 
-Cheers,
-ta
+Fixes: c222f77fd421 ("wifi: mt76: mt7921: fix rx filter incorrect by drv/fw inconsistent")
+Signed-off-by: Neil Chen <yn.chen@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt7921/main.c    | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 75eaf86c6a78..f67b37d38dbc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -703,10 +703,25 @@ static void mt7921_configure_filter(struct ieee80211_hw *hw,
+ 				    unsigned int *total_flags,
+ 				    u64 multicast)
+ {
++#define MT7921_FILTER_FCSFAIL    BIT(2)
++#define MT7921_FILTER_CONTROL    BIT(5)
++#define MT7921_FILTER_OTHER_BSS  BIT(6)
++#define MT7921_FILTER_ENABLE     BIT(31)
++
+ 	struct mt7921_dev *dev = mt7921_hw_dev(hw);
++	u32 flags = MT7921_FILTER_ENABLE;
++
++#define MT7921_FILTER(_fif, _type) do {			\
++		if (*total_flags & (_fif))		\
++			flags |= MT7921_FILTER_##_type;	\
++	} while (0)
++
++	MT7921_FILTER(FIF_FCSFAIL, FCSFAIL);
++	MT7921_FILTER(FIF_CONTROL, CONTROL);
++	MT7921_FILTER(FIF_OTHER_BSS, OTHER_BSS);
+ 
+ 	mt7921_mutex_acquire(dev);
+-	mt7921_mcu_set_rxfilter(dev, *total_flags, 0, 0);
++	mt7921_mcu_set_rxfilter(dev, flags, 0, 0);
+ 	mt7921_mutex_release(dev);
+ 
+ 	*total_flags &= (FIF_OTHER_BSS | FIF_FCSFAIL | FIF_CONTROL);
+-- 
+2.18.0
+
 
