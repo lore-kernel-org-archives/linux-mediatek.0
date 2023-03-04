@@ -4,59 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4C84C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Mar 2023 13:32:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B235C678DB
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Mar 2023 13:34:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q2wNUPCxIadIdEYauYaKR8KCy3MJdu1k55JJ0ZrppCA=; b=gO2rwGYhGjlyLCf4MbkdDFV7G7
-	mv5UCmm/ViMzd1GO7DELT3YQYOonm8XSDB+Nm5hPjI7oABaauqIxoAxJ+9THaiqhuZ7MaGRc+nauP
-	ahY+hbF8sYk2yKftil6I21H3Od8kJVgts5qLIs4DiIkMy6g8wpMMMmrMgsyZSFF+LVU9AZR+palFi
-	xFHh0aw0q+3mvja27WTlhWZUvZVnM4qqXZzkT3SpAtBywibsrk6mUqNe3JucR2ssD4cLElobe4k0q
-	Dfh64dN+OoAkik0A34+AcraYuBrly7skWuqLZaM1fzisH4Q733F1NGBHtO3bPIKY5oEiK9yiaA8c4
-	5jhaj5Kw==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=l98O6Gp4Q4b0pe+UoWkExHa2eKu+2AI657gSqgEePSA=; b=xstFSeqyYk7/hySOMaEFylqdR9
+	U2kL7plfzJl4ddyNy2NldqUNseB1wp+iKqUWRmZ8kRzzr7Ml0KwmIScr1hBLlvYb0LlmmzkvFo0AK
+	Q1Q75BtlGyjdscpqbJv/q7ibMgXy+4Cj+IOnKJHgaYJC1MNF9ndmKvuvE+J8Wg04d1k0Vvet4+5AX
+	oxHpJwjcEygwSgqPciq7uW0RF3Iqwb26kpw+vBhgJb3t6O6KKVOCVDoH1otPVRgVmPD9fSMqw0jw8
+	wy1UXWTZL7Oon5I+pTp6itR0eTpHqwgsqbuz9KY39p2AsB+CL6XnlzPxxamGrZR9oL7DV04R/Hqgp
+	EBIE3CeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYS06-0091zB-K5; Sat, 04 Mar 2023 13:32:38 +0000
+	id 1pYS1S-0092lj-3R; Sat, 04 Mar 2023 13:34:02 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYRyS-0091HN-TO
-	for linux-mediatek@lists.infradead.org; Sat, 04 Mar 2023 13:30:59 +0000
+	id 1pYRyo-0091LI-6Q
+	for linux-mediatek@lists.infradead.org; Sat, 04 Mar 2023 13:31:20 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1pYRyL-0000hX-BU; Sat, 04 Mar 2023 14:30:49 +0100
+	id 1pYRyN-0000be-7f; Sat, 04 Mar 2023 14:30:51 +0100
 Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1pYRyH-001naQ-Gb; Sat, 04 Mar 2023 14:30:45 +0100
+	id 1pYRyE-001nZ1-4u; Sat, 04 Mar 2023 14:30:42 +0100
 Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1pYRyG-0027HQ-Nz; Sat, 04 Mar 2023 14:30:44 +0100
+	id 1pYRyD-0027GF-AN; Sat, 04 Mar 2023 14:30:41 +0100
 From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Eddie Huang <eddie.huang@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Alessandro Zummo <a.zummo@towertech.it>,
+To: Alessandro Zummo <a.zummo@towertech.it>,
 	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Benson Leung <bleung@chromium.org>,
+	Joshua Kinard <kumba@gentoo.org>,
+	Hans Ulli Kroll <ulli.kroll@googlemail.com>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Eddie Huang <eddie.huang@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Vincent Shih <vincent.sunplus@gmail.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Michal Simek <michal.simek@xilinx.com>
+Cc: linux-rtc@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Guenter Roeck <groeck@chromium.org>,
+	chrome-platform@lists.linux.dev,
+	linux-riscv@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-mediatek@lists.infradead.org,
-	linux-rtc@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-tegra@vger.kernel.org,
+	patches@opensource.cirrus.com,
 	kernel@pengutronix.de
-Subject: [PATCH 19/41] rtc: mt7622: Convert to platform remove callback returning void
-Date: Sat,  4 Mar 2023 14:30:06 +0100
-Message-Id: <20230304133028.2135435-20-u.kleine-koenig@pengutronix.de>
+Subject: [PATCH 00/41] rtc: Convert to platform remove callback returning void
+Date: Sat,  4 Mar 2023 14:29:47 +0100
+Message-Id: <20230304133028.2135435-1-u.kleine-koenig@pengutronix.de>
 X-Mailer: git-send-email 2.39.1
-In-Reply-To: <20230304133028.2135435-1-u.kleine-koenig@pengutronix.de>
-References: <20230304133028.2135435-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1585; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=wsitiIApd4ucVW84Pvz8D60NiLt7vailK+/0WWhDkC0=; b=owEBbQGS/pANAwAKAcH8FHityuwJAcsmYgBkA0ejOVlmBKaKDYk1u+oNiMMy85Nj6w38owcQa UoeS1QQPE6JATMEAAEKAB0WIQR+cioWkBis/z50pAvB/BR4rcrsCQUCZANHowAKCRDB/BR4rcrs CWtEB/0URD+d/dClTJt0HoSoK44vQrbZjdGcXmbb6EFMphfDfkPgN7CP8SNlX8HYYKQ7NQ2UDAN Ejuafmz7SURmVR1RzSSpUFVSSTnuEcpiQzMLKSlng+VETU9E/csn9H7W9DiZ8cVak9JVDWS2v8/ bXAhzJKz4YSbVAM4fu/i1At/X+nMqu3R1w6r3wO1SSSocwbkHXvWT84i1mgWc6/blhV1U2qCZ8w aiwIWmekX+AyaJ4WwU26gWdT9hqLroIATl88kbLh+evlcxclFJ344J4cPksQnm3Lot8RTpY+mIE uMmKQl/I+8+cxySoeOTtMkX6gqPdgfmkhiJrML9lplIlWLe7
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5947; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=pCaRjKbsihInauNKYog8PJUZGzXfOUbEoxu4a7CE/hA=; b=owEBbQGS/pANAwAKAcH8FHityuwJAcsmYgBkA0dmCZ37vDreXRwIALTBz7LkP9UVbo7kIC2m5 /YcXNXxgQOJATMEAAEKAB0WIQR+cioWkBis/z50pAvB/BR4rcrsCQUCZANHZgAKCRDB/BR4rcrs Cb37B/9X0mwN6W28M9A+kpBV/hix7liXqpKGHjVS5tdrD2imP2auSWPldHmFFosH098N6HNifk7 6+TcL+2KaFszesDc+QQNKeynJwPBzACiIccRP9yGXkasW87KaTMlcX7VErNrSWPE6UGyMlxJOTa a4AOMGRUBQskxMq0U7AbhviH7BTHC6NEZ3ZH1+pbDjh+/VXycM+HsrxMEiMWZvNqXLQpExUobSR JA724JcAIucnmX8DSUbinzkcmmKKgpKV3o2w4NmOqT7ifFL84jMXKcFYHU3Xp3iPDk5USIl1ixA IWXh4m4XPq/JrCh0hIXE1DJGgznkrP8gqXlAkcxQpLw2ESLE
 X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
@@ -64,8 +89,8 @@ X-SA-Exim-Mail-From: ukl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230304_053056_986785_31956B97 
-X-CRM114-Status: GOOD (  16.70  )
+X-CRM114-CacheID: sfid-20230304_053118_407694_85AB4340 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,50 +105,116 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The .remove() callback for a platform driver returns an int which makes
-many driver authors wrongly assume it's possible to do error handling by
-returning an error code. However the value returned is (mostly) ignored
-and this typically results in resource leaks. To improve here there is a
-quest to make the remove callback return void. In the first step of this
-quest all drivers are converted to .remove_new() which already returns
-void.
+Hello,
 
-Trivially convert this driver from always returning zero in the remove
-callback to the void returning variant.
+this patch series adapts the platform drivers below drivers/rtc to use the
+.remove_new() callback. Compared to the traditional .remove() callback
+.remove_new() returns no value. This is a good thing because the driver core
+doesn't (and cannot) cope for errors during remove. The only effect of a
+non-zero return value in .remove() is that the driver core emits a warning. The
+device is removed anyhow and an early return from .remove() usually yields a
+resource leak.
 
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
----
- drivers/rtc/rtc-mt7622.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+By changing the remove callback to return void driver authors cannot reasonably
+assume any more that there is some kind of cleanup later.
 
-diff --git a/drivers/rtc/rtc-mt7622.c b/drivers/rtc/rtc-mt7622.c
-index f1e356394814..81857a457c32 100644
---- a/drivers/rtc/rtc-mt7622.c
-+++ b/drivers/rtc/rtc-mt7622.c
-@@ -357,13 +357,11 @@ static int mtk_rtc_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
--static int mtk_rtc_remove(struct platform_device *pdev)
-+static void mtk_rtc_remove(struct platform_device *pdev)
- {
- 	struct mtk_rtc *hw = platform_get_drvdata(pdev);
- 
- 	clk_disable_unprepare(hw->clk);
--
--	return 0;
- }
- 
- #ifdef CONFIG_PM_SLEEP
-@@ -396,7 +394,7 @@ static SIMPLE_DEV_PM_OPS(mtk_rtc_pm_ops, mtk_rtc_suspend, mtk_rtc_resume);
- 
- static struct platform_driver mtk_rtc_driver = {
- 	.probe	= mtk_rtc_probe,
--	.remove	= mtk_rtc_remove,
-+	.remove_new = mtk_rtc_remove,
- 	.driver = {
- 		.name = MTK_RTC_DEV,
- 		.of_match_table = mtk_rtc_match,
+All drivers touched here returned zero unconditionally in their remove
+callback, so they could all be converted trivially to .remove_new().
+
+Note that this series depends on commit 5c5a7680e67b ("platform: Provide a
+remove callback that returns no value") that is already in Linus' tree but not
+yet included in a tagged version. I guess this will change tomorrow.
+
+Best regards
+Uwe
+
+Uwe Kleine-König (41):
+  rtc: 88pm80x: Convert to platform remove callback returning void
+  rtc: 88pm860x: Convert to platform remove callback returning void
+  rtc: ab8500: Convert to platform remove callback returning void
+  rtc: ac100: Convert to platform remove callback returning void
+  rtc: asm9260: Convert to platform remove callback returning void
+  rtc: at91sam9: Convert to platform remove callback returning void
+  rtc: brcmstb-waketimer: Convert to platform remove callback returning void
+  rtc: cadence: Convert to platform remove callback returning void
+  rtc: cmos: Convert to platform remove callback returning void
+  rtc: cros-ec: Convert to platform remove callback returning void
+  rtc: ds1685: Convert to platform remove callback returning void
+  rtc: ftrtc010: Convert to platform remove callback returning void
+  rtc: hid-sensor-time: Convert to platform remove callback returning void
+  rtc: lpc24xx: Convert to platform remove callback returning void
+  rtc: max77686: Convert to platform remove callback returning void
+  rtc: mc13xxx: Convert to platform remove callback returning void
+  rtc: mpc5121: Convert to platform remove callback returning void
+  rtc: mpfs: Convert to platform remove callback returning void
+  rtc: mt7622: Convert to platform remove callback returning void
+  rtc: mxc_v2: Convert to platform remove callback returning void
+  rtc: omap: Convert to platform remove callback returning void
+  rtc: palmas: Convert to platform remove callback returning void
+  rtc: pcf50633: Convert to platform remove callback returning void
+  rtc: pic32: Convert to platform remove callback returning void
+  rtc: pm8xxx: Convert to platform remove callback returning void
+  rtc: rc5t583: Convert to platform remove callback returning void
+  rtc: rtd119x: Convert to platform remove callback returning void
+  rtc: rzn1: Convert to platform remove callback returning void
+  rtc: s3c: Convert to platform remove callback returning void
+  rtc: sa1100: Convert to platform remove callback returning void
+  rtc: spear: Convert to platform remove callback returning void
+  rtc: stm32: Convert to platform remove callback returning void
+  rtc: stmp3xxx: Convert to platform remove callback returning void
+  rtc: sunplus: Convert to platform remove callback returning void
+  rtc: tegra: Convert to platform remove callback returning void
+  rtc: tps6586x: Convert to platform remove callback returning void
+  rtc: twl: Convert to platform remove callback returning void
+  rtc: vt8500: Convert to platform remove callback returning void
+  rtc: wm8350: Convert to platform remove callback returning void
+  rtc: xgene: Convert to platform remove callback returning void
+  rtc: zynqmp: Convert to platform remove callback returning void
+
+ drivers/rtc/rtc-88pm80x.c           | 5 ++---
+ drivers/rtc/rtc-88pm860x.c          | 6 ++----
+ drivers/rtc/rtc-ab8500.c            | 6 ++----
+ drivers/rtc/rtc-ac100.c             | 6 ++----
+ drivers/rtc/rtc-asm9260.c           | 5 ++---
+ drivers/rtc/rtc-at91sam9.c          | 6 ++----
+ drivers/rtc/rtc-brcmstb-waketimer.c | 6 ++----
+ drivers/rtc/rtc-cadence.c           | 6 ++----
+ drivers/rtc/rtc-cmos.c              | 5 ++---
+ drivers/rtc/rtc-cros-ec.c           | 6 ++----
+ drivers/rtc/rtc-ds1685.c            | 6 ++----
+ drivers/rtc/rtc-ftrtc010.c          | 6 ++----
+ drivers/rtc/rtc-hid-sensor-time.c   | 6 ++----
+ drivers/rtc/rtc-lpc24xx.c           | 6 ++----
+ drivers/rtc/rtc-max77686.c          | 6 ++----
+ drivers/rtc/rtc-mc13xxx.c           | 6 ++----
+ drivers/rtc/rtc-mpc5121.c           | 6 ++----
+ drivers/rtc/rtc-mpfs.c              | 6 ++----
+ drivers/rtc/rtc-mt7622.c            | 6 ++----
+ drivers/rtc/rtc-mxc_v2.c            | 5 ++---
+ drivers/rtc/rtc-omap.c              | 6 ++----
+ drivers/rtc/rtc-palmas.c            | 5 ++---
+ drivers/rtc/rtc-pcf50633.c          | 6 ++----
+ drivers/rtc/rtc-pic32.c             | 6 ++----
+ drivers/rtc/rtc-pm8xxx.c            | 5 ++---
+ drivers/rtc/rtc-rc5t583.c           | 5 ++---
+ drivers/rtc/rtc-rtd119x.c           | 6 ++----
+ drivers/rtc/rtc-rzn1.c              | 6 ++----
+ drivers/rtc/rtc-s3c.c               | 6 ++----
+ drivers/rtc/rtc-sa1100.c            | 6 ++----
+ drivers/rtc/rtc-spear.c             | 6 ++----
+ drivers/rtc/rtc-stm32.c             | 6 ++----
+ drivers/rtc/rtc-stmp3xxx.c          | 8 +++-----
+ drivers/rtc/rtc-sunplus.c           | 6 ++----
+ drivers/rtc/rtc-tegra.c             | 6 ++----
+ drivers/rtc/rtc-tps6586x.c          | 5 ++---
+ drivers/rtc/rtc-twl.c               | 6 ++----
+ drivers/rtc/rtc-vt8500.c            | 6 ++----
+ drivers/rtc/rtc-wm8350.c            | 6 ++----
+ drivers/rtc/rtc-xgene.c             | 5 ++---
+ drivers/rtc/rtc-zynqmp.c            | 6 ++----
+ 41 files changed, 83 insertions(+), 156 deletions(-)
+
+base-commit: 0988a0ea791999ebbf95693f2676381825b05033
 -- 
 2.39.1
 
