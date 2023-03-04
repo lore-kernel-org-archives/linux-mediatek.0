@@ -4,60 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA8B9C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Mar 2023 22:23:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2D42C678D5
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Mar 2023 05:59:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Cc:To:Subject:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jP+DE2aGeRsiKby89SI01ZerumDxZelYSr+aKSJN/m0=; b=Y4cotEX7E9Adu00y6Q6RJDH1Wg
-	af3TdiWDvpTBRzrlCvIrSdUQW7P8qu2HQ8DvR0GREDuTxJeYS+pCq4nsZlZ0Q9FhPbEx42vDBsCQd
-	KgaOEwVBSsJE0qA1OULLNGyglMEr/jouFd6YEtsCn51Xfc+jCEZxBPZzyJcxrt6iMKsIarpQErFiV
-	kKix5U6jpSEA0mghw0Pfqu9KsTN5yhnZKeH+ba9uDjlzN4e65luWizD2QkALxwsGGLKncT86RqS9V
-	mBWUb4FkNJkJHOCFPV8koA0eWMITYm/kiomC18GdOgNd3PKYHTfNKl7dcNIiMfWBYt5B65WJ2TT4N
-	zfkDXtyg==;
+	bh=cZdOR2mQrM2Yh/ZdXBDU9hVL0HlZsZVueh/CEeqYueU=; b=1wcLjGauCLLQtdZRe5MWMXO+Xe
+	QJytLyNBz7NPCb2tdel+TeBgTmVrNsobUVzNIUz00K9i6Cm72XX8uCuQD3hj5o1H5QdugdA1JwptJ
+	jGe0HmXBA1ek/6DjzEL8XolyEHe5xZ5X+SWjBJFY40rnGLoGw6AAkRE9KKStWjdqP/k2T+wR3z0sr
+	Fjp1+CbbE3YQu0w2Oa1N1TJ4bBOzsyqDrL31yFXDyj/dp0/Djf1SvNucVnehrBX6B0+vtQ6F9O+Yg
+	pU41Q6ZhMLGpB54E2TAOwX2e39SNJxJysjiDiaP7XdmDcWBVBOAxGNASucLkmmutk8wZMSrl2t8uk
+	tnxaAA8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYDoI-007ihX-Kr; Fri, 03 Mar 2023 22:23:30 +0000
-Received: from s2.dolansoft.org ([212.51.146.245] helo=mx.dolansoft.org)
+	id 1pYKvh-008OYD-2F; Sat, 04 Mar 2023 05:59:37 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYDo8-007ifW-Hi; Fri, 03 Mar 2023 22:23:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=brun.one;
-	s=s1; h=MIME-Version:References:In-Reply-To:Message-Id:Cc:To:Subject:From:
-	Date:From:To:Subject:Date:Message-ID:Reply-To;
-	bh=jP+DE2aGeRsiKby89SI01ZerumDxZelYSr+aKSJN/m0=; b=T1WQkKSmlCH8TgABX1xfiMaNX9
-	8ks/E7QcjaEHAyg1RfCDCfUoaG+IXnaC2MItUs2U2PftpwLxCyv+8FUO4c8Qmm9iae+XuTn+jXWN3
-	o3Na3/cvIsbWFoORdTrFPFbpd2EoM404ZhY/YpAEQH/w/TbTbAbrRBK3p6cnpy/parCWky2qARmKF
-	FSDjBw9bQolLKCfdl30/jCh/IzD1J/ikDFWA8ICk5Cne1onGTLBvR6KVfGkHF0dqu/mF7Zi1Y1P9S
-	32TuYaKHlUR2Ad243XkGanhOCiAnqVJPT+ArwqMT/VxjsYtT69uJzPmjO0yfkD5FKVmPbHU4RJfM5
-	LHgKOLYA==;
-Received: from [212.51.153.89] (helo=[192.168.12.54])
-	by mx.dolansoft.org with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <lorenz@dolansoft.org>)
-	id 1pYDo1-00163h-1Q;
-	Fri, 03 Mar 2023 22:23:13 +0000
-Date: Fri, 03 Mar 2023 23:23:07 +0100
-From: Lorenz Brun <lorenz@brun.one>
-Subject: Re: [PATCH] pwm: mediatek: support inverted polarity
-To: Uwe =?iso-8859-1?q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Thierry Reding <thierry.reding@gmail.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, linux-pwm@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Message-Id: <J6UYQR.PWF59DFFYYO71@brun.one>
-In-Reply-To: <20230303211725.7wtxdxjqpxlrp77b@pengutronix.de>
-References: <20230303205821.2285418-1-lorenz@brun.one>
-	<20230303211725.7wtxdxjqpxlrp77b@pengutronix.de>
+	id 1pYKvU-008OWZ-Ha; Sat, 04 Mar 2023 05:59:25 +0000
+Received: by mail-ed1-x534.google.com with SMTP id o15so18262381edr.13;
+        Fri, 03 Mar 2023 21:59:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=cZdOR2mQrM2Yh/ZdXBDU9hVL0HlZsZVueh/CEeqYueU=;
+        b=Spc5p3ovs3CEvWjvB15Lsxi3xGjMUIlNSYNFAcggChHEqyh1XQIV3ghzRysFCQdwot
+         B+Pzk25ozrx9jxO/cugIqFD/r06/RjYzQnBpUsHfl/0KYoxab8FIKN/6rnu8co2Z7lxk
+         Mz/CVbIsMog2abpNbYK7pFe96zz3t3Rm2GralvuU2HiegQXFXYRGe79tiCnlqDK3Rrl6
+         8VS8m3lEou653ypRcub4hORgngyVE/4CfwaI/6Ymv9PPP20xwlEC+gP0A5TBq1L9JjQx
+         WqrbysUxMMTh2VK+L+GDogxIkZBJXxBrm5+58547IY4AFuOrd0rJYXORJ4HKz5lJfuqe
+         f6og==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=cZdOR2mQrM2Yh/ZdXBDU9hVL0HlZsZVueh/CEeqYueU=;
+        b=q/QsZwObnFgpAJiPaWXwdcOTDuzr9UN057xeiqlTQ5o3r43+hQCf3AbY8xFRFZaipW
+         qjSAgDt4gawTYaLplWejiZB4a6QLvoKG0lqURqQ2GjHwxVReC/yUz262n1Jdy4P2DDrH
+         903u4sLkP17D+09B7Izd/ZsPuXTMPLUrbaoQ/5v3YR0UVZRKgeVvuVi6XF4/wIGEg9ED
+         MWO378c0JIjgGUhB/Tn3im0S4TSbmQxyceW61dZ1KxYRnHAHI9a0jqZ+9aZhC5dhwH8u
+         YWmudV8haT1Ycbvg5q5Y+kEOHiTXvJm/PJiErzQVP2xOnU46q+tKjYuf37VUXGfmqWOV
+         sAtQ==
+X-Gm-Message-State: AO0yUKXm8K1nczHbsuvtevNuSvXA03dTqXIwv//WxHPhqpzSwxfaKHKc
+	iGCHP3hIkJs/VMwSIiej9co=
+X-Google-Smtp-Source: AK7set8UXUFWR2ui/AgXkHFAvLBJPzNPX6LhnlTox4YZzu7Cyy9qpwNmgZWB6VYga3nqRk1K4I90aA==
+X-Received: by 2002:a05:6402:510:b0:4bb:83fa:5e83 with SMTP id m16-20020a056402051000b004bb83fa5e83mr4125414edv.12.1677909561087;
+        Fri, 03 Mar 2023 21:59:21 -0800 (PST)
+Received: from [192.168.0.173] ([79.115.63.78])
+        by smtp.gmail.com with ESMTPSA id v12-20020a50c40c000000b004bb810e0b87sm2030841edf.39.2023.03.03.21.59.17
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 03 Mar 2023 21:59:20 -0800 (PST)
+Message-ID: <5bd48f09-f7ba-e5b3-60ba-49ecd1493e36@gmail.com>
+Date: Sat, 4 Mar 2023 07:59:16 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1; format=flowed
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH] spi: Replace `dummy.nbytes` with `dummy.ncycles`
+To: Sergiu Moga <sergiu.moga@microchip.com>, pratyush@kernel.org,
+ michael@walle.cc, miquel.raynal@bootlin.com, richard@nod.at,
+ vigneshr@ti.com, broonie@kernel.org, nicolas.ferre@microchip.com,
+ alexandre.belloni@bootlin.com, claudiu.beznea@microchip.com,
+ chin-ting_kuo@aspeedtech.com, clg@kaod.org, joel@jms.id.au, andrew@aj.id.au,
+ kdasu.kdev@gmail.com, fancer.lancer@gmail.com, han.xu@nxp.com,
+ john.garry@huawei.com, matthias.bgg@gmail.com, avifishman70@gmail.com,
+ tmaimon77@gmail.com, tali.perry1@gmail.com, venture@google.com,
+ yuenn@google.com, benjaminfair@google.com, haibo.chen@nxp.com,
+ yogeshgaur.83@gmail.com, heiko@sntech.de, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, michal.simek@xilinx.com, tkuw584924@gmail.com,
+ Takahiro Kuwano <Takahiro.Kuwano@infineon.com>, tudor.ambarus@linaro.org
+Cc: bcm-kernel-feedback-list@broadcom.com, linux-mtd@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
+ openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
+References: <20220911174551.653599-1-sergiu.moga@microchip.com>
+From: Tudor Ambarus <tudor.ambarus@gmail.com>
+Content-Language: en-US
+In-Reply-To: <20220911174551.653599-1-sergiu.moga@microchip.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230303_142320_632660_217CC8E3 
-X-CRM114-Status: GOOD (  22.05  )
+X-CRM114-CacheID: sfid-20230303_215924_634065_C6D8EEC3 
+X-CRM114-Status: UNSURE (   6.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,98 +106,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
-On Fri, Mar 3 2023 at 22:17:25 +01:00:00, Uwe Kleine-K=F6nig=20
-<u.kleine-koenig@pengutronix.de> wrote:
-> On Fri, Mar 03, 2023 at 09:58:21PM +0100, Lorenz Brun wrote:
->>  According to the MT7986 Reference Manual the Mediatek  PWM=20
->> controller
->>  doesn't appear to have support for inverted polarity.
->>=20
->>  This implements the same solution as in pwm-meson and just inverts=20
->> the
->>  duty cycle instead, which results in the same outcome.
->=20
-> This idea is broken. This was recently discussed on the linux-pwm list
-> and I hope will be fixed soon. See
-> https://lore.kernel.org/linux-pwm/20230228093911.bh2sbp4tyfir2z5g@pengutr=
-onix.de/T/#meda75ffbd4ef2048991ea2cd091c0c14b1bb09c2
->=20
-Is the issue here emulating PWM_POLARITY_INVERSED by inverting the=20
-period or the overflow issues?
-This driver currently rejects PWM_POLARITY_INVERSED, but the problem is=20
-that I have a board which inverts the output of the PWM peripheral=20
-(low-side MOSFET for higher-voltage open-drain output), thus I need to=20
-set the PWM node to output an inverted signal so that the final=20
-open-drain output behaves correctly as the signal has been inverted=20
-twice now.
+Sergiu changed his interests, I'm going to send a new version of this
+patch. We really need the conversion in SPI NOR as there are flashes
+that require a number of dummy cycles that is not multiple of 8.
 
-In my specific case this logic could also be added to pwm-fan, but this=20
-would lead to more complexity there as this type of circuit is=20
-generally handled by the PWM driver.
-
-> So this patch won't be accepted, still pointing out a style problem
-> below.
->=20
->>  Signed-off-by: Lorenz Brun <lorenz@brun.one>
->>  ---
->>   drivers/pwm/pwm-mediatek.c | 13 +++++++++----
->>   1 file changed, 9 insertions(+), 4 deletions(-)
->>=20
->>  diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
->>  index 5b5eeaff35da..6f4a54c8299f 100644
->>  --- a/drivers/pwm/pwm-mediatek.c
->>  +++ b/drivers/pwm/pwm-mediatek.c
->>  @@ -202,9 +202,7 @@ static int pwm_mediatek_apply(struct pwm_chip=20
->> *chip, struct pwm_device *pwm,
->>   			      const struct pwm_state *state)
->>   {
->>   	int err;
->>  -
->>  -	if (state->polarity !=3D PWM_POLARITY_NORMAL)
->>  -		return -EINVAL;
->>  +	u64 duty_cycle;
->>=20
->>   	if (!state->enabled) {
->>   		if (pwm->state.enabled)
->>  @@ -213,7 +211,14 @@ static int pwm_mediatek_apply(struct pwm_chip=20
->> *chip, struct pwm_device *pwm,
->>   		return 0;
->>   	}
->>=20
->>  -	err =3D pwm_mediatek_config(pwm->chip, pwm, state->duty_cycle,=20
->> state->period);
->>  +	// According to the MT7986 Reference Manual the peripheral does=20
->> not
->>  +	// appear to have the capability to invert the output. Instead=20
->> just
->>  +	// invert the duty cycle.
->=20
-> Wrong commenting style, please stick to C-style comments (/* ... */)
-I can fix that if I end up submitting a V2 of this patch, but this=20
-didn't get picked up by checkpatch.
-
->=20
->>  +	duty_cycle =3D state->duty_cycle;
->>  +	if (state->polarity =3D=3D PWM_POLARITY_INVERSED)
->>  +		duty_cycle =3D state->period - state->duty_cycle;
->>  +
->>  +	err =3D pwm_mediatek_config(pwm->chip, pwm, duty_cycle,=20
->> state->period);
->>   	if (err)
->>   		return err;
->=20
-> Best regards
-> Uwe
->=20
-> --
-> Pengutronix e.K.                           | Uwe Kleine-K=F6nig       =20
->     |
-> Industrial Linux Solutions                 |=20
-> https://www.pengutronix.de/ |
-
-Regards,
-Lorenz
-
-
+Cheers,
+ta
 
