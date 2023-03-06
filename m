@@ -4,64 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50616C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 07:35:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE1E6C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 08:14:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=B3JDl7HsvcM+bR33AI6/Y1tuCPT7EaV42mkmNvh9ewY=; b=KB4V/IadGU9YHeGN9+Fd2oJQ2h
-	quI9TMXotPgTlIcEubFE90Fqha0RDZVUBXjRdj+aD7bprngK7Ohv0C27Ukq3FiERmssh6Dv4fIKK0
-	ymunao+hc7SStaJa9aBvG3APR5nhkP01YQKWBOdZ/byNL82Ha+SW75vaTW8+379qr2ndvh1d/dg9f
-	o16cLPViTs+mkPEd0gW9PlQXqEb1YIWgHlGpN9L5GwM/ZHQSkKCxf08T7sv+SIwXasWV51nQfZYP2
-	xdtYmbno5TzmfP+siNCYiFxMAe7PGcfs6S6Ss32QnFKTX0/TmFIXxc5KxV1XpCouCPfVg34jF0xCY
-	C2KPa7sw==;
+	bh=LeOosjniRqAJpVn9l+KUuMbvlCUs1QT+HJHij9nb9wE=; b=vXSkdff6Vt9A6TlJHdovrdbxPX
+	KdbvU1LM8W1Q95zfHI+UzBtW29DK0K98ByG74bqRuqjwxySUvrjEf92YXetGT6GqPuPtD1Eakq0BF
+	3GzYlc7nEfoW1rRPdt6rHSlZwyuZKKvl29hfmSJc16Q9Pitq+OwFBDqAfkRxW96gpUijENhNE5t9x
+	HBGY7ATIsZo6mKjPxfsybIu12QINx1vladFpnkHpHPwUADyYSdVG7EEUTyB1sTVBjVotCTFUF31T2
+	XUh1uSXqRmwjHGtHObfwzqdbnZ+hkxfJUc/+4nKfaA7Wa78ReqYg4X/eJLWbMFsGJ7nfvhr3xMbFz
+	xnTz8ttA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZ5NU-00BfVZ-VL; Mon, 06 Mar 2023 07:35:24 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1pZ5z8-00Bont-AC; Mon, 06 Mar 2023 08:14:18 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZ5NC-00BfPU-1c
-	for linux-mediatek@lists.infradead.org; Mon, 06 Mar 2023 07:35:07 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pZ5N2-0008Os-NA; Mon, 06 Mar 2023 08:34:57 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pZ5N1-002C0m-Gw; Mon, 06 Mar 2023 08:34:55 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pZ5N0-002bam-No; Mon, 06 Mar 2023 08:34:54 +0100
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@pengutronix.de
-Subject: [PATCH 0/3] spmi: Convert to platform remove callback returning void
-Date: Mon,  6 Mar 2023 08:34:43 +0100
-Message-Id: <20230306073446.2194048-1-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.39.1
+	id 1pZ5t2-00Bm96-Le; Mon, 06 Mar 2023 08:08:06 +0000
+X-UUID: f413cf6ebbf511eda08d4d6090ec5a5c-20230306
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=LeOosjniRqAJpVn9l+KUuMbvlCUs1QT+HJHij9nb9wE=;
+	b=GquxTPdVvCR99g66LrUyuDWTVuWyGnLUCfhBYHgIGrqZ0EkAsKgzEoo6hBPo9icUXlW9IqFA2YI2cLYtQvMqxmzvDq9L+A29wzinpRoWZ6bgHnqavTv732G9xqrApf1g+F0cKynCAqdepGXVqd7NGFk6suq/RHetNRPklZ3CK9M=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.20,REQID:7130ec68-fc3d-452c-bf24-f72b0d650f1e,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:25b5999,CLOUDID:3b17e2f4-ddba-41c3-91d9-10eeade8eac7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-UUID: f413cf6ebbf511eda08d4d6090ec5a5c-20230306
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1607121769; Mon, 06 Mar 2023 01:07:35 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Mon, 6 Mar 2023 16:07:00 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Mon, 6 Mar 2023 16:07:00 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Rex-BC Chen
+	<rex-bc.chen@mediatek.com>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
+	Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+	Nathan Lu <nathan.lu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v8 0/2] Change mmsys compatible for mt8195 mediatek-drm
+Date: Mon, 6 Mar 2023 16:06:57 +0800
+Message-ID: <20230306080659.15261-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1458; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=LDehB5gsx29IvbmffavsnSV8Eu2SN5vC8ARQBx16fdE=; b=owEBbQGS/pANAwAKAcH8FHityuwJAcsmYgBkBZeGXJt15Yv/ivjvwz1ZXiL3FL+DYlk2Ho0rZ BuAMxOa1WqJATMEAAEKAB0WIQR+cioWkBis/z50pAvB/BR4rcrsCQUCZAWXhgAKCRDB/BR4rcrs CW3AB/9vd0mEZbajImYQ7YcxspnZ2asSFbRlMWaqXKeQms/i2l3cKZBq26qcx882t9TpiwyDxpa vw5OxyLIMJp5dgDjXeTTssEpYY12XhMTh8TJTVsbLYklA+9Q0JBPQkgoVJds4WCdJd8qpO7A+IU Q8ECg2+oDNQRdZhXP7IR+8MduOzvpzrPaGaCPedZqNUY4eTuLEbdNNZEF+sjncofHacPc1KDmWl 4h5e/x8C0GMrGC8NWVoVvIZ1uYJpmNdO1ha2txwHaUqvk2Hwz2VyuP5xdPDskW2JI5heJK+rPcf WAmEuKjeyACjDX5GrRlqEgLMvnx5woR95e08sBOv4xFH3zwM
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230305_233506_305959_A5BE4CC4 
-X-CRM114-Status: GOOD (  10.66  )
+X-CRM114-CacheID: sfid-20230306_000803_451533_B08B3168 
+X-CRM114-Status: GOOD (  12.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,40 +82,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-this patch series adapts the platform drivers below drivers/spmi
-to use the .remove_new() callback. Compared to the traditional .remove()
-callback .remove_new() returns no value. This is a good thing because
-the driver core doesn't (and cannot) cope for errors during remove. The
-only effect of a non-zero return value in .remove() is that the driver
-core emits a warning. The device is removed anyhow and an early return
-from .remove() usually yields a resource leak.
+For previous MediaTek SoCs, such as MT8173, there are 2 display HW
+pipelines binding to 1 mmsys with the same power domain, the same
+clock driver and the same mediatek-drm driver.
 
-By changing the remove callback to return void driver authors cannot
-reasonably assume any more that there is some kind of cleanup later.
+For MT8195, VDOSYS0 and VDOSYS1 are 2 display HW pipelines binding to
+2 different power domains, different clock drivers and different
+mediatek-drm drivers.
 
-All drivers in drivers/spmi returned zero unconditionally in their remove
-callback, so they could all be converted trivially to .remove_new().
+Moreover, Hardware pipeline of VDOSYS0 has these components: COLOR,
+CCORR, AAL, GAMMA, DITHER. They are related to the PQ (Picture Quality)
+and they makes VDOSYS0 supports PQ function while they are not
+including in VDOSYS1.
 
-Note that this series depends on commit 5c5a7680e67b ("platform: Provide
-a remove callback that returns no value") which is included in v6.3-rc1.
+Hardware pipeline of VDOSYS1 has the component ETHDR (HDR related
+component). It makes VDOSYS1 supports the HDR function while it's not
+including in VDOSYS0.
 
-Best regards
-Uwe
+To summarize0:
+Only VDOSYS0 can support PQ adjustment.
+Only VDOSYS1 can support HDR adjustment.
 
+Therefore, we need to separate these two different mmsys hardwares to
+2 different compatibles for MT8195.
+---
+Change in v8:
+1. Remove mt8192 rdma related modification.
 
-Uwe Kleine-König (3):
-  spmi: hisi-spmi-controller: Convert to platform remove callback
-    returning void
-  spmi: mtk-pmif: Convert to platform remove callback returning void
-  spmi: pmic-arb: Convert to platform remove callback returning void
+Change in v7:
+1. Rebase on v6.2-rc1.
+2. Squash patch 1 and 2 in v6.
 
- drivers/spmi/hisi-spmi-controller.c | 5 ++---
- drivers/spmi/spmi-mtk-pmif.c        | 5 ++---
- drivers/spmi/spmi-pmic-arb.c        | 5 ++---
- 3 files changed, 6 insertions(+), 9 deletions(-)
+Change in v6:
+1. Add old driver data for mediatek-drm driver with deprecated compatible name.
 
-base-commit: fe15c26ee26efa11741a7b632e9f23b01aca4cc6
+Change in v5:
+1. Add oneOf item to deprecate mediatek,mt8195-mmsys.
+
+Change in v4:
+1. Deprecate original mediatek,mt8195-mmsys at the first item.
+
+Change in v3:
+1. Keep the original compatible "mediatek,mt8195-mmsys" and add
+   "mediatek,mt8195-vdosys0" into the same item to make the tree
+   fallback compatible.
+
+Change in v2:
+1. Remove Ack tag in the first patch
+2. Change the compatible name changing patch to one revert patch and
+   one add vdosys0 support patch.
+---
+
+Jason-JH.Lin (2):
+  drm/mediatek: change mmsys compatible for mt8195 mediatek-drm
+  soc: mediatek: remove DDP_DOMPONENT_DITHER from enum
+
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 126 +++----------------------
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h |   6 --
+ include/linux/soc/mediatek/mtk-mmsys.h |   3 +-
+ 3 files changed, 13 insertions(+), 122 deletions(-)
+
 -- 
-2.39.1
+2.18.0
 
 
