@@ -4,95 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B39BC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 15:46:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80E6AC6FA99
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 15:46:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wAXNPcAY8FDhepd+nXB76i2sKT/S0dvIhJIAahFHwjU=; b=RC6pWVO+D9SiENEg/t/OPvM5SU
-	OZ15sn+j3VEcBWvtmBMmKtNKj9uzTvI1eaNdL80Li+WlpBR3rpxQ+K5v4Rjj/LRaa8YOOJ+kPlHJ+
-	3DvU+V2K0dCsi44dSCJJrDbIqA3s5hngNK/0K8Vg3VMFUQDVq/szxub9eYrwAJJbgPjSraJKU6Jlk
-	Ao1yrTOyo5rXYYei8WhWyrUBIPxtbKP8yBpep+WiT+1kzJ8wkclvH+JpG1gpsZBvSwyH1KvLJ0IDI
-	gwFrXsOy1Fbz/8HVY3VIP6+7+GLdFP8CHH8T8vzFexUbqT8e0qbJwyt5kvd02COAqTOLKxLlmvByv
-	Mp8fWenQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+agbrQBr9UIR6u+yd/9aPdKOrcjr4SJiOd6RvbJ917E=; b=xRRLuaMXT7M6blCPuY8EUu3L8G
+	ZQPTdb1SAi6kxWLhSPj+VZ8nvU+JTeXx7FC/Ml+3uOeUwWiBAeeswtyKnLbtNAQyMx/GiWoC4CQfw
+	szhaj8epRQxe0b1D2Lv8017xJAd6FRKaSkqGQhGHvYI+Uh19PMNsGW1SnnxetVJgF+xPb+fY9Jo+O
+	kRs98wns71xiAYswH8N5C2/HVYttQ3sXlWrFXME2lD6mVc19n9wUyUvVf8vX1u1X1XWEbkhQkT9MV
+	4s4QyBv45ImvD7/v5M1esNlYUl0BaBYQKigH6uZgPu9lyDIN4++opw8vU/w2n8gqi5RnoXP3IksYD
+	tTi5JKwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZD2R-00Df0w-7q; Mon, 06 Mar 2023 15:46:11 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pZD2b-00Df7C-VS; Mon, 06 Mar 2023 15:46:21 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZD2H-00DexD-3M; Mon, 06 Mar 2023 15:46:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=wAXNPcAY8FDhepd+nXB76i2sKT/S0dvIhJIAahFHwjU=; b=DpRQdDh+RXylj+eRx59eWqFMft
-	XIkJwZJuNFw5eYW7v4Qxsh5h0U7pj8En42Yy1fDo/44Rqzzvb/SyVBkVKZ9dxzXCyaDS527RH7nyQ
-	s4Wxd9LFf4zWyDHlrJqtTHR+x1F+euJ2eYPrfqjx9Lurfi9IO9yoV+M3xGLX2VASl6JvarJJq4Emi
-	VS8zc1yLJXjY95AkGhPFsQ/5xrFFgugWGYJJLBwAVxiErAEbcr0wlJOgJhqiTsUQOaUD9UrpE7FXY
-	/vzQeHYaL4RuNcWnBUkROhHz09zJmAbV4ljHKWIE5SqosEmQyg2jXIbnPiY6QrKkQ0EePrE4n6t3+
-	kGePWLYg==;
-Received: from madras.collabora.co.uk ([46.235.227.172])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pZBU2-00GhDt-0j;
-	Mon, 06 Mar 2023 14:06:36 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3CE506602FE5;
-	Mon,  6 Mar 2023 14:06:28 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678111589;
-	bh=Y9OkODTDNmSVwsbSSwpqPuC/orp6A0Bd3FSf0Ld5XzI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=XoC7funjbYMqAVLd79Ln19VPZJvac7gb8go10IPOahvFAzhY9/+mtv1D6w/ckAJeF
-	 udf0aGR1cJspONUEJysGkrrSqoSO5ubehyG91Utexpf5iyrheYXXHCLGJ5wn/SfPv3
-	 OECOnt0uC+rs+kHaksHHaLgYzGiOe7Sc5jpdzD3W5ljGnOe3Htk1MBOVmhWWj3uOMJ
-	 CEwdcjj4txzQ0kallrj/vObn6Oj124XVfWVIV3x4qITH6HmxslHtFqrrl8+NGbGJ+6
-	 qLI4SYaHy/HptzjCMcu0i30je1EHACgiQFoMLbziJiNITTwPMdxtMtrKAvISib1pc0
-	 2tsWjS6wEzw5Q==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: mturquette@baylibre.com
-Cc: sboyd@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	wenst@chromium.org,
-	johnson.wang@mediatek.com,
-	miles.chen@mediatek.com,
-	chun-jie.chen@mediatek.com,
-	daniel@makrotopia.org,
-	fparent@baylibre.com,
-	msp@baylibre.com,
-	nfraprado@collabora.com,
-	rex-bc.chen@mediatek.com,
-	zhaojh329@gmail.com,
-	sam.shih@mediatek.com,
-	edward-jw.yang@mediatek.com,
-	yangyingliang@huawei.com,
-	granquet@baylibre.com,
-	pablo.sun@mediatek.com,
-	sean.wang@mediatek.com,
-	chen.zhong@mediatek.com,
-	linux-kernel@vger.kernel.org,
-	linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH v6 26/54] clk: mediatek: mt7622: Move infracfg to clk-mt7622-infracfg.c
-Date: Mon,  6 Mar 2023 15:05:15 +0100
-Message-Id: <20230306140543.1813621-27-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
-References: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
+	id 1pZD2G-00Devk-Kf; Mon, 06 Mar 2023 15:46:02 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id da10so40516491edb.3;
+        Mon, 06 Mar 2023 07:45:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678117556;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=+agbrQBr9UIR6u+yd/9aPdKOrcjr4SJiOd6RvbJ917E=;
+        b=Y77j9wNfCqhsQgS5VtBqGxkr8fNqSRIiwr7uASxDqh41IHEK6k6P0iDCMIQ010xLN8
+         8gGCpcmgTFWfiJ61RPep8tFG0/ivQG1G0DByq8/8QDtpvocC4GkMyu04ddS/cWmT/7s5
+         06n64qwzdpI34bvi8Pj6WzfCuLgjEmFW1lL5RTSoRz4fVk65VA4E67Cyo7tqAufgQz2U
+         E9UvW3OpZaef7UqqVnqAcvGJ1yeVay1LIstSzDk8cIS73hReozWfns/A3W4VRwZEniRh
+         zvQqrnG7Bl4V/uGRce4XXabZsWlm40LofmGGxVRT6yVCi9SArylPJDlUqdOH6XchBb28
+         zl9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678117556;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=+agbrQBr9UIR6u+yd/9aPdKOrcjr4SJiOd6RvbJ917E=;
+        b=Q18Cn+Jkagvr4p+r3imzS2/H+/PaDWQnL9MXUII0nAfVxFjM5pD8LKtV3lMa5MCFXi
+         O9KeNjaV0Eyo8gfsGV2R6yUwvcVlPo1vijKuuqyo0omS42rALFUkZnl1fMtnLYIFqyut
+         4BpiVinZDRW3XoZKDBlAH9gSS6bAt/dIzXn20Cn/zGI+9v2hCS75mOJWt6SErZzqxeTl
+         ev5Ia9H8LVr3022ShNMVmDzyB4P3rfPLxJfuBHEbS/0o6J1TLaUISDgJx0+IQLFGusFe
+         nXEDL8Ekr8sNG7HCd6VQ6CP+7P6xkyodYCCZYDvYVrPV6VDWR1DE9RJJ6nhWM+YgWopk
+         Xikw==
+X-Gm-Message-State: AO0yUKVAgqfKoiGrH8HNAKmiJG0Gi0zbpcdc53qfuWgVoRhPt8w5cpqV
+	DrUDIviOofcjJLd8V8TeKzU=
+X-Google-Smtp-Source: AK7set9BlqZGG5uxTwNphRDgJIRMh0nQJIjcZc4FuO0fw/8jOfMKvBhYTdg7oIcUFcf1w1KT+Ji3hw==
+X-Received: by 2002:aa7:d513:0:b0:4af:7f6e:297b with SMTP id y19-20020aa7d513000000b004af7f6e297bmr11260638edq.35.1678117555732;
+        Mon, 06 Mar 2023 07:45:55 -0800 (PST)
+Received: from skbuf ([188.27.184.189])
+        by smtp.gmail.com with ESMTPSA id j7-20020a17090643c700b008caaae1f1e1sm4686362ejn.110.2023.03.06.07.45.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 06 Mar 2023 07:45:55 -0800 (PST)
+Date: Mon, 6 Mar 2023 17:45:52 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: arinc9.unal@gmail.com
+Subject: Re: [RFC PATCH net] net: dsa: mt7530: move PLL setup out of port 6
+ pad configuration
+Message-ID: <20230306154552.26o6sbwf3rfekcyz@skbuf>
+References: <20230304125453.53476-1-arinc.unal@arinc9.com>
+ <20230304125453.53476-1-arinc.unal@arinc9.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230304125453.53476-1-arinc.unal@arinc9.com>
+ <20230304125453.53476-1-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230306_140634_448383_E64F2174 
-X-CRM114-Status: GOOD (  24.41  )
+X-CRM114-CacheID: sfid-20230306_074600_736892_1E4BE560 
+X-CRM114-Status: GOOD (  49.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,321 +87,281 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, =?utf-8?B?UmVuw6k=?= van Dorst <opensource@vdorst.com>, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Russell King <rmk+kernel@armlinux.org.uk>, Alexander Couzens <lynxis@fe80.eu>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The infracfg driver cannot be converted to clk_mtk_simple_probe() as
-it registers cpumuxes, which is not supported on the common probing
-mechanism: for this reason, move it to its own file.
-While at it, also convert it to be a platform driver instead; to do
-so, also add a .remove() callback for this driver.
+Hi Arınç,
 
-During the conversion, error handling was added to the infracfg
-probe function.
+On Sat, Mar 04, 2023 at 03:54:54PM +0300, arinc9.unal@gmail.com wrote:
+> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+> 
+> Move the PLL setup of the MT7530 switch out of the pad configuration of
+> port 6 to mt7530_setup, after reset.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
----
- drivers/clk/mediatek/Makefile              |   3 +-
- drivers/clk/mediatek/clk-mt7622-infracfg.c | 127 +++++++++++++++++++++
- drivers/clk/mediatek/clk-mt7622.c          |  78 +------------
- 3 files changed, 134 insertions(+), 74 deletions(-)
- create mode 100644 drivers/clk/mediatek/clk-mt7622-infracfg.c
+it would have been good if this patch had done that and only that, no?
 
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 4619091963a0..5dc5f9457c44 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -46,7 +46,8 @@ obj-$(CONFIG_COMMON_CLK_MT2712_MFGCFG) += clk-mt2712-mfg.o
- obj-$(CONFIG_COMMON_CLK_MT2712_MMSYS) += clk-mt2712-mm.o
- obj-$(CONFIG_COMMON_CLK_MT2712_VDECSYS) += clk-mt2712-vdec.o
- obj-$(CONFIG_COMMON_CLK_MT2712_VENCSYS) += clk-mt2712-venc.o
--obj-$(CONFIG_COMMON_CLK_MT7622) += clk-mt7622-apmixedsys.o clk-mt7622.o
-+obj-$(CONFIG_COMMON_CLK_MT7622) += clk-mt7622-apmixedsys.o clk-mt7622.o \
-+				   clk-mt7622-infracfg.o
- obj-$(CONFIG_COMMON_CLK_MT7622_ETHSYS) += clk-mt7622-eth.o
- obj-$(CONFIG_COMMON_CLK_MT7622_HIFSYS) += clk-mt7622-hif.o
- obj-$(CONFIG_COMMON_CLK_MT7622_AUDSYS) += clk-mt7622-aud.o
-diff --git a/drivers/clk/mediatek/clk-mt7622-infracfg.c b/drivers/clk/mediatek/clk-mt7622-infracfg.c
-new file mode 100644
-index 000000000000..09d8ac4d483a
---- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt7622-infracfg.c
-@@ -0,0 +1,127 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2017 MediaTek Inc.
-+ * Copyright (c) 2023 Collabora, Ltd.
-+ *               AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ */
-+
-+#include <dt-bindings/clock/mt7622-clk.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+
-+#include "clk-cpumux.h"
-+#include "clk-gate.h"
-+#include "clk-mtk.h"
-+#include "reset.h"
-+
-+#define GATE_INFRA(_id, _name, _parent, _shift)				\
-+	GATE_MTK(_id, _name, _parent, &infra_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-+
-+static const struct mtk_gate_regs infra_cg_regs = {
-+	.set_ofs = 0x40,
-+	.clr_ofs = 0x44,
-+	.sta_ofs = 0x48,
-+};
-+
-+static const char * const infra_mux1_parents[] = {
-+	"clkxtal",
-+	"armpll",
-+	"main_core_en",
-+	"armpll"
-+};
-+
-+static const struct mtk_composite cpu_muxes[] = {
-+	MUX(CLK_INFRA_MUX1_SEL, "infra_mux1_sel", infra_mux1_parents, 0x000, 2, 2),
-+};
-+
-+static const struct mtk_gate infra_clks[] = {
-+	GATE_INFRA(CLK_INFRA_DBGCLK_PD, "infra_dbgclk_pd", "axi_sel", 0),
-+	GATE_INFRA(CLK_INFRA_TRNG, "trng_ck", "axi_sel", 2),
-+	GATE_INFRA(CLK_INFRA_AUDIO_PD, "infra_audio_pd", "aud_intbus_sel", 5),
-+	GATE_INFRA(CLK_INFRA_IRRX_PD, "infra_irrx_pd", "irrx_sel", 16),
-+	GATE_INFRA(CLK_INFRA_APXGPT_PD, "infra_apxgpt_pd", "f10m_ref_sel", 18),
-+	GATE_INFRA(CLK_INFRA_PMIC_PD, "infra_pmic_pd", "pmicspi_sel", 22),
-+};
-+
-+static u16 infrasys_rst_ofs[] = { 0x30 };
-+
-+static const struct mtk_clk_rst_desc clk_rst_desc = {
-+	.version = MTK_RST_SIMPLE,
-+	.rst_bank_ofs = infrasys_rst_ofs,
-+	.rst_bank_nr = ARRAY_SIZE(infrasys_rst_ofs),
-+};
-+
-+static const struct of_device_id of_match_clk_mt7622_infracfg[] = {
-+	{ .compatible = "mediatek,mt7622-infracfg" },
-+	{ /* sentinel */ }
-+};
-+
-+static int clk_mt7622_infracfg_probe(struct platform_device *pdev)
-+{
-+	struct clk_hw_onecell_data *clk_data;
-+	struct device_node *node = pdev->dev.of_node;
-+	void __iomem *base;
-+	int ret;
-+
-+	base = devm_platform_ioremap_resource(pdev, 0);
-+	if (IS_ERR(base))
-+		return PTR_ERR(base);
-+
-+	clk_data = mtk_alloc_clk_data(CLK_INFRA_NR_CLK);
-+	if (!clk_data)
-+		return -ENOMEM;
-+
-+	ret = mtk_register_reset_controller_with_dev(&pdev->dev, &clk_rst_desc);
-+	if (ret)
-+		goto free_clk_data;
-+
-+	ret = mtk_clk_register_gates(&pdev->dev, node, infra_clks,
-+				     ARRAY_SIZE(infra_clks), clk_data);
-+	if (ret)
-+		goto free_clk_data;
-+
-+	ret = mtk_clk_register_cpumuxes(&pdev->dev, node, cpu_muxes,
-+					ARRAY_SIZE(cpu_muxes), clk_data);
-+	if (ret)
-+		goto unregister_gates;
-+
-+	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
-+	if (ret)
-+		goto unregister_cpumuxes;
-+
-+	return 0;
-+
-+unregister_cpumuxes:
-+	mtk_clk_unregister_cpumuxes(cpu_muxes, ARRAY_SIZE(cpu_muxes), clk_data);
-+unregister_gates:
-+	mtk_clk_unregister_gates(infra_clks, ARRAY_SIZE(infra_clks), clk_data);
-+free_clk_data:
-+	mtk_free_clk_data(clk_data);
-+	return ret;
-+}
-+
-+static int clk_mt7622_infracfg_remove(struct platform_device *pdev)
-+{
-+	struct device_node *node = pdev->dev.of_node;
-+	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
-+
-+	of_clk_del_provider(node);
-+	mtk_clk_unregister_cpumuxes(cpu_muxes, ARRAY_SIZE(cpu_muxes), clk_data);
-+	mtk_clk_unregister_gates(infra_clks, ARRAY_SIZE(infra_clks), clk_data);
-+	mtk_free_clk_data(clk_data);
-+
-+	return 0;
-+}
-+
-+static struct platform_driver clk_mt7622_infracfg_drv = {
-+	.driver = {
-+		.name = "clk-mt7622-infracfg",
-+		.of_match_table = of_match_clk_mt7622_infracfg,
-+	},
-+	.probe = clk_mt7622_infracfg_probe,
-+	.remove = clk_mt7622_infracfg_remove,
-+};
-+module_platform_driver(clk_mt7622_infracfg_drv);
-+
-+MODULE_DESCRIPTION("MediaTek MT7622 infracfg clocks driver");
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/mediatek/clk-mt7622.c b/drivers/clk/mediatek/clk-mt7622.c
-index 6cf74c948ac7..fb813f8d3a7d 100644
---- a/drivers/clk/mediatek/clk-mt7622.c
-+++ b/drivers/clk/mediatek/clk-mt7622.c
-@@ -18,9 +18,6 @@
- #include <dt-bindings/clock/mt7622-clk.h>
- #include <linux/clk.h> /* for consumer */
- 
--#define GATE_INFRA(_id, _name, _parent, _shift)				\
--	GATE_MTK(_id, _name, _parent, &infra_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
--
- #define GATE_TOP0(_id, _name, _parent, _shift)				\
- 	GATE_MTK(_id, _name, _parent, &top0_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr)
- 
-@@ -39,13 +36,6 @@
- 
- static DEFINE_SPINLOCK(mt7622_clk_lock);
- 
--static const char * const infra_mux1_parents[] = {
--	"clkxtal",
--	"armpll",
--	"main_core_en",
--	"armpll"
--};
--
- static const char * const axi_parents[] = {
- 	"clkxtal",
- 	"syspll1_d2",
-@@ -225,12 +215,6 @@ static const char * const peribus_ck_parents[] = {
- 	"syspll1_d4"
- };
- 
--static const struct mtk_gate_regs infra_cg_regs = {
--	.set_ofs = 0x40,
--	.clr_ofs = 0x44,
--	.sta_ofs = 0x48,
--};
--
- static const struct mtk_gate_regs top0_cg_regs = {
- 	.set_ofs = 0x120,
- 	.clr_ofs = 0x120,
-@@ -255,15 +239,6 @@ static const struct mtk_gate_regs peri1_cg_regs = {
- 	.sta_ofs = 0x1C,
- };
- 
--static const struct mtk_gate infra_clks[] = {
--	GATE_INFRA(CLK_INFRA_DBGCLK_PD, "infra_dbgclk_pd", "axi_sel", 0),
--	GATE_INFRA(CLK_INFRA_TRNG, "trng_ck", "axi_sel", 2),
--	GATE_INFRA(CLK_INFRA_AUDIO_PD, "infra_audio_pd", "aud_intbus_sel", 5),
--	GATE_INFRA(CLK_INFRA_IRRX_PD, "infra_irrx_pd", "irrx_sel", 16),
--	GATE_INFRA(CLK_INFRA_APXGPT_PD, "infra_apxgpt_pd", "f10m_ref_sel", 18),
--	GATE_INFRA(CLK_INFRA_PMIC_PD, "infra_pmic_pd", "pmicspi_sel", 22),
--};
--
- static const struct mtk_fixed_clk top_fixed_clks[] = {
- 	FIXED_CLK(CLK_TOP_TO_U2_PHY, "to_u2_phy", "clkxtal",
- 		  31250000),
-@@ -408,11 +383,6 @@ static const struct mtk_gate peri_clks[] = {
- 	GATE_PERI1(CLK_PERI_IRTX_PD, "peri_irtx_pd", "irtx_sel", 2),
- };
- 
--static struct mtk_composite infra_muxes[] = {
--	MUX(CLK_INFRA_MUX1_SEL, "infra_mux1_sel", infra_mux1_parents,
--	    0x000, 2, 2),
--};
--
- static struct mtk_composite top_muxes[] = {
- 	/* CLK_CFG_0 */
- 	MUX_GATE_FLAGS(CLK_TOP_AXI_SEL, "axi_sel", axi_parents,
-@@ -512,22 +482,12 @@ static struct mtk_composite peri_muxes[] = {
- 	MUX(CLK_PERIBUS_SEL, "peribus_ck_sel", peribus_ck_parents, 0x05C, 0, 1),
- };
- 
--static u16 infrasys_rst_ofs[] = { 0x30, };
- static u16 pericfg_rst_ofs[] = { 0x0, 0x4, };
- 
--static const struct mtk_clk_rst_desc clk_rst_desc[] = {
--	/* infrasys */
--	{
--		.version = MTK_RST_SIMPLE,
--		.rst_bank_ofs = infrasys_rst_ofs,
--		.rst_bank_nr = ARRAY_SIZE(infrasys_rst_ofs),
--	},
--	/* pericfg */
--	{
--		.version = MTK_RST_SIMPLE,
--		.rst_bank_ofs = pericfg_rst_ofs,
--		.rst_bank_nr = ARRAY_SIZE(pericfg_rst_ofs),
--	},
-+static const struct mtk_clk_rst_desc clk_rst_desc = {
-+	.version = MTK_RST_SIMPLE,
-+	.rst_bank_ofs = pericfg_rst_ofs,
-+	.rst_bank_nr = ARRAY_SIZE(pericfg_rst_ofs),
- };
- 
- static int mtk_topckgen_init(struct platform_device *pdev)
-@@ -561,31 +521,6 @@ static int mtk_topckgen_init(struct platform_device *pdev)
- 	return of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+> This fixes the improper initialisation of the switch when only port 5 is
+> used as a CPU port.
+> 
+> Add supported phy modes of port 5 on the PLL setup.
+> 
+> Remove now incorrect comment regarding P5 as GMAC5.
+> 
+> Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
+> Fixes: 38f790a80560 ("net: dsa: mt7530: Add support for port 5")
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> ---
+> 
+> I'm trying to mimic this change by Alexander [0] for the MT7530 switch.
+> This is already the case for MT7530 and MT7531 on the MediaTek ethernet
+> driver on U-Boot [1] [2].
+> 
+> [0] https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/commit/?id=42bc4fafe359ed6b73602b7a2dba0dd99588f8ce
+> [1] https://github.com/u-boot/u-boot/blob/a94ab561e2f49a80d8579930e840b810ab1a1330/drivers/net/mtk_eth.c#L729
+> [2] https://github.com/u-boot/u-boot/blob/a94ab561e2f49a80d8579930e840b810ab1a1330/drivers/net/mtk_eth.c#L903
+> 
+> There are some parts I couldn't figure out myself with my limited C
+> knowledge. I've pointed them out on the code. Vladimir, could you help?
+> 
+> There is a lot of code which is only needed for port 6 or trgmii on port 6,
+> but runs whether port 6 or trgmii is used or not. For now, the best I can
+> do is to fix port 5 so it works without port 6 being used.
+> 
+> The U-Boot driver seems to be much more organised so it could be taken as
+> a reference to sort out this DSA driver further.
+> 
+> Also, now that the pad setup for mt7530 is also moved somewhere else, can
+> we completely get rid of @pad_setup?
+> 
+> Arınç
+
+I don't like the strategy you used in this patch here, and I don't want
+to answer these questions just yet, because I'm not certain that my
+answers will be useful in the end.
+
+> 
+> ---
+>  drivers/net/dsa/mt7530.c | 46 +++++++++++++++++++++++++++++-----------
+>  1 file changed, 34 insertions(+), 12 deletions(-)
+> 
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index 0e99de26d159..fb20ce4f443e 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -395,9 +395,8 @@ mt7530_fdb_write(struct mt7530_priv *priv, u16 vid,
+>  
+>  /* Setup TX circuit including relevant PAD and driving */
+>  static int
+> -mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+> +mt7530_pad_clk_setup(struct mt7530_priv *priv, phy_interface_t interface)
+>  {
+> -	struct mt7530_priv *priv = ds->priv;
+>  	u32 ncpo1, ssc_delta, trgint, i, xtal;
+>  
+>  	xtal = mt7530_read(priv, MT7530_MHWTRAP) & HWTRAP_XTAL_MASK;
+> @@ -409,9 +408,32 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+>  		return -EINVAL;
+>  	}
+>  
+> +	/* Is setting trgint to 0 really needed for the !trgint check? */
+> +	trgint = 0;
+> +
+> +	/* FIXME: run this switch if p5 is defined on the devicetree */
+> +	/* and change interface to the phy-mode of port 5 */
+> +	switch (interface) {
+
+so this should be something like priv->p5_interface (assuming this is
+initialized by the time mt7530_pad_clk_setup() is called, which it isn't).
+
+> +	case PHY_INTERFACE_MODE_GMII:
+> +		/* PLL frequency: 125MHz */
+> +		ncpo1 = 0x0c80;
+> +		break;
+> +	case PHY_INTERFACE_MODE_MII:
+> +		break;
+
+so with priv->p5_interface == "mii", ncpo1 is uninitialized (will be
+potentially still initialized by the port 6 "switch" statement below).
+
+> +	case PHY_INTERFACE_MODE_RGMII:
+> +		/* PLL frequency: 125MHz */
+> +		ncpo1 = 0x0c80;
+> +		break;
+> +	default:
+> +		dev_err(priv->dev, "xMII interface %d not supported\n",
+> +			interface);
+> +		return -EINVAL;
+> +	}
+
+What method did you use to determine the ncpo1 values here? Are they
+coordinated with what p6 wants? I would expect to see a table with
+
+  priv->p5_interface        priv->p6_interface       ncpo1 value
+      gmii                     rgmii                     ???
+      mii                      rgmii                     ???
+      rgmii                    rgmii                     ???
+      gmii                     trgmii                    ???
+      mii                      trgmii                    ???
+      rgmii                    trgmii                    ???
+
+right now, you let the p6_interface logic overwrite the ncpo1 selected
+by the p5_interface logic like crazy, and it's not clear to me that this
+is what you want.
+
+This problem is way deeper than knowledge of the C language, your pseudo
+code simply does not describe what should happen in all combinations.
+
+From our private conversation dated Feb 08, I guess that what you're
+doing is also a useless complication and not what you truly want. What
+you truly want is for the CORE_GSWPLL_GRP2 register to be programmed
+regardless of whether port 6 is used or not.
+
+> +
+> +	/* FIXME: run this switch if p6 is defined on the devicetree */
+> +	/* and change interface to the phy-mode of port 6 */
+>  	switch (interface) {
+
+same comment as above, this should approximate priv->p6_interface.
+
+>  	case PHY_INTERFACE_MODE_RGMII:
+> -		trgint = 0;
+>  		/* PLL frequency: 125MHz */
+>  		ncpo1 = 0x0c80;
+>  		break;
+> @@ -2172,7 +2194,11 @@ mt7530_setup(struct dsa_switch *ds)
+>  		     SYS_CTRL_PHY_RST | SYS_CTRL_SW_RST |
+>  		     SYS_CTRL_REG_RST);
+>  
+> -	/* Enable Port 6 only; P5 as GMAC5 which currently is not supported */
+> +	/* Setup switch core pll */
+> +	/* FIXME: feed the phy-mode of port 5 and 6, if the ports are defined on the devicetree */
+> +	mt7530_pad_clk_setup(priv, interface);
+
+"interface" is completely uninitialized here.
+
+Sorry, I'm not reviewing this any further, because it obviously doesn't work.
+
+> +
+> +	/* Enable Port 6 */
+>  	val = mt7530_read(priv, MT7530_MHWTRAP);
+>  	val &= ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
+>  	val |= MHWTRAP_MANUAL;
+> @@ -2491,11 +2517,9 @@ static void mt7531_mac_port_get_caps(struct dsa_switch *ds, int port,
+>  }
+>  
+>  static int
+> -mt753x_pad_setup(struct dsa_switch *ds, const struct phylink_link_state *state)
+> +mt7530_pad_setup(struct dsa_switch *ds, phy_interface_t interface)
+>  {
+> -	struct mt7530_priv *priv = ds->priv;
+> -
+> -	return priv->info->pad_setup(ds, state->interface);
+> +	return 0;
+>  }
+>  
+>  static int
+> @@ -2769,8 +2793,6 @@ mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+>  		if (priv->p6_interface == state->interface)
+>  			break;
+>  
+> -		mt753x_pad_setup(ds, state);
+> -
+>  		if (mt753x_mac_config(ds, port, mode, state) < 0)
+>  			goto unsupported;
+>  
+> @@ -3187,7 +3209,7 @@ static const struct mt753x_info mt753x_table[] = {
+>  		.phy_write_c22 = mt7530_phy_write_c22,
+>  		.phy_read_c45 = mt7530_phy_read_c45,
+>  		.phy_write_c45 = mt7530_phy_write_c45,
+> -		.pad_setup = mt7530_pad_clk_setup,
+> +		.pad_setup = mt7530_pad_setup,
+>  		.mac_port_get_caps = mt7530_mac_port_get_caps,
+>  		.mac_port_config = mt7530_mac_config,
+>  	},
+> @@ -3199,7 +3221,7 @@ static const struct mt753x_info mt753x_table[] = {
+>  		.phy_write_c22 = mt7530_phy_write_c22,
+>  		.phy_read_c45 = mt7530_phy_read_c45,
+>  		.phy_write_c45 = mt7530_phy_write_c45,
+> -		.pad_setup = mt7530_pad_clk_setup,
+> +		.pad_setup = mt7530_pad_setup,
+
+as a general rule, for bug fixes don't touch stuff that you don't need to touch
+
+>  		.mac_port_get_caps = mt7530_mac_port_get_caps,
+>  		.mac_port_config = mt7530_mac_config,
+>  	},
+> -- 
+> 2.37.2
+> 
+
+Could you please let me know if this patch works, instead of what you've
+posted above? It does what you *said* you tried to do, aka it performs
+the initialization of CORE_GSWPLL_GRP2 independently of port 6 setup.
+There is a slight reordering of register writes with MT7530_P6ECR, but
+hopefully that doesn't bother anyone.
+
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 3a15015bc409..a508402c4ecb 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -393,6 +393,24 @@ mt7530_fdb_write(struct mt7530_priv *priv, u16 vid,
+ 		mt7530_write(priv, MT7530_ATA1 + (i * 4), reg[i]);
  }
  
--static int mtk_infrasys_init(struct platform_device *pdev)
--{
--	struct device_node *node = pdev->dev.of_node;
--	struct clk_hw_onecell_data *clk_data;
--	int r;
--
--	clk_data = mtk_alloc_clk_data(CLK_INFRA_NR_CLK);
--
--	mtk_clk_register_gates(&pdev->dev, node, infra_clks,
--			       ARRAY_SIZE(infra_clks), clk_data);
--
--	mtk_clk_register_cpumuxes(&pdev->dev, node, infra_muxes,
--				  ARRAY_SIZE(infra_muxes), clk_data);
--
--	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get,
--				   clk_data);
--	if (r)
--		return r;
--
--	mtk_register_reset_controller_with_dev(&pdev->dev, &clk_rst_desc[0]);
--
--	return 0;
--}
--
--
- static int mtk_pericfg_init(struct platform_device *pdev)
- {
- 	struct clk_hw_onecell_data *clk_data;
-@@ -610,16 +545,13 @@ static int mtk_pericfg_init(struct platform_device *pdev)
- 	if (r)
- 		return r;
++/* Set up switch core clock for MT7530 */
++static void mt7530_pll_setup(struct mt7530_priv *priv)
++{
++	/* Disable PLL */
++	core_write(priv, CORE_GSWPLL_GRP1, 0);
++
++	/* Set core clock into 500Mhz */
++	core_write(priv, CORE_GSWPLL_GRP2,
++		   RG_GSWPLL_POSDIV_500M(1) |
++		   RG_GSWPLL_FBKDIV_500M(25));
++
++	/* Enable PLL */
++	core_write(priv, CORE_GSWPLL_GRP1,
++		   RG_GSWPLL_EN_PRE |
++		   RG_GSWPLL_POSDIV_200M(2) |
++		   RG_GSWPLL_FBKDIV_200M(32));
++}
++
+ /* Setup TX circuit including relevant PAD and driving */
+ static int
+ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+@@ -453,21 +471,6 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+ 	core_clear(priv, CORE_TRGMII_GSW_CLK_CG,
+ 		   REG_GSWCK_EN | REG_TRGMIICK_EN);
  
--	mtk_register_reset_controller_with_dev(&pdev->dev, &clk_rst_desc[1]);
-+	mtk_register_reset_controller_with_dev(&pdev->dev, &clk_rst_desc);
+-	/* Setup core clock for MT7530 */
+-	/* Disable PLL */
+-	core_write(priv, CORE_GSWPLL_GRP1, 0);
+-
+-	/* Set core clock into 500Mhz */
+-	core_write(priv, CORE_GSWPLL_GRP2,
+-		   RG_GSWPLL_POSDIV_500M(1) |
+-		   RG_GSWPLL_FBKDIV_500M(25));
+-
+-	/* Enable PLL */
+-	core_write(priv, CORE_GSWPLL_GRP1,
+-		   RG_GSWPLL_EN_PRE |
+-		   RG_GSWPLL_POSDIV_200M(2) |
+-		   RG_GSWPLL_FBKDIV_200M(32));
+-
+ 	/* Setup the MT7530 TRGMII Tx Clock */
+ 	core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
+ 	core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
+@@ -2196,6 +2199,8 @@ mt7530_setup(struct dsa_switch *ds)
+ 		     SYS_CTRL_PHY_RST | SYS_CTRL_SW_RST |
+ 		     SYS_CTRL_REG_RST);
  
- 	return 0;
- }
- 
- static const struct of_device_id of_match_clk_mt7622[] = {
- 	{
--		.compatible = "mediatek,mt7622-infracfg",
--		.data = mtk_infrasys_init,
--	}, {
- 		.compatible = "mediatek,mt7622-topckgen",
- 		.data = mtk_topckgen_init,
- 	}, {
++	mt7530_pll_setup(priv);
++
+ 	/* Enable Port 6 only; P5 as GMAC5 which currently is not supported */
+ 	val = mt7530_read(priv, MT7530_MHWTRAP);
+ 	val &= ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
 -- 
-2.39.2
+2.34.1
 
 
