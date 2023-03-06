@@ -4,77 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F12BAC678D4
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 13:23:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2369DC678D4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 13:40:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A6UPnvKq09Wou2+IQachtCQ63VCTkOWQC89w6AgtMPM=; b=mBB2f4p1mgMfulm5fQo52WQCua
-	02LNZRjcX+ldIEhn9WA+ax/0c/P8vNk8ZcjRPhSogewMH5qKhlCki6nIwY/OXgHwSmlT/nl+eLAY6
-	JNTIbtDME6VI1ZGms6t7SVPZ0D6xU4004mls2vQdEQBgL9bCFPpCpUbW8m9N7viy1I8WO2sw5ErQv
-	vIAe/IeOW5PxWW4iClFHpaTtZlvnk6lEPjsQRie7rpiZLuE3nrALF65SghR8TYaWis8NKpetCO2CI
-	rKTxynyYaiELlqTMFG0/JolPrcuc6wn/lUSFOuS98gT7vwR6JXSjT5lp62Eup4PJ+uicUr0jH+CAW
-	3Ityl+rw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZW1Oqg+WLuWWxkuIkyJR54a4c3JXn+NZetW0zwSCeSw=; b=4CECMXulN5a4Fm56zj+SoFEV+G
+	BmY+nP7oV29zAYEyGOp8txCQCoEe7N71Lbn0oJeLYDVDPeL3XebpNY6NaK+LXcaOXI+WHMKT7sYLe
+	arVbzlP2vWcurudTePE3TffrozMldQUg9ydtK1Ba1esn4J3MZzC7R/fUfBm8RxTeR2Dlr95C8g5bz
+	HggCG/rbac6YTHYqSt+a6H5NJTF/PaZETHvvg34eQafUZ+Nw4TTrE9n5hGbu+Y19/n+GPNm/N+Z22
+	nLRNV/u0Rr9L+gI1c0KNnPX/6fOTjwv3uB1TJj126Upupu4jue9p8XGxGaIH31cf55kWwrntGv+Q4
+	6g65RJuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZAoI-00CrwB-Ib; Mon, 06 Mar 2023 13:23:26 +0000
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
+	id 1pZB54-00CwMM-1O; Mon, 06 Mar 2023 13:40:46 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZAoF-00Crv6-1E
-	for linux-mediatek@lists.infradead.org; Mon, 06 Mar 2023 13:23:24 +0000
-Received: by mail-yw1-x1134.google.com with SMTP id 00721157ae682-536bbe5f888so183306387b3.8
-        for <linux-mediatek@lists.infradead.org>; Mon, 06 Mar 2023 05:23:20 -0800 (PST)
+	id 1pZB4r-00CwHd-Qe
+	for linux-mediatek@lists.infradead.org; Mon, 06 Mar 2023 13:40:36 +0000
+Received: by mail-ed1-x534.google.com with SMTP id o12so38611985edb.9
+        for <linux-mediatek@lists.infradead.org>; Mon, 06 Mar 2023 05:40:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678108999;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=A6UPnvKq09Wou2+IQachtCQ63VCTkOWQC89w6AgtMPM=;
-        b=BxnBHQDCamtmwpqCeExj//dagBQrW6HHltyHkLJJEamdTia5Xi3n1MMpVx3WQN3uTR
-         ++YezTuGdjOjToEuahsL0RuqU5p3n0m5PcyMnLBFdxYJlMv07cHkeflOgYGHj+U1bJzC
-         5o6Hcyf6d4uLkUYn/ZXjxOlQELveWzV6ouKvFCfMQ4oYWN8rZfsPgdymBeKkzD2KHtAb
-         UeNdBSMi5GkrILM+YioOmOir9B39Uo/4hHJgZI9AX1n2up1lP/HMwHUKOwKJaYdpSKEj
-         3hBlTqD/qdxoHSyUXuHIYg8OK+VQCWZTcGPgT3w+4bHF16ibOB+o63mSYJG1Jh6raUR9
-         mMLQ==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1678110029;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZW1Oqg+WLuWWxkuIkyJR54a4c3JXn+NZetW0zwSCeSw=;
+        b=cuvBAavVvAQVUP54IBvXmzklqerlQN2fNulM+x734wtvrCyyyrFSIbHxMeBokGLcIP
+         pkkJ6uBVZTDQqpgRfgEM0/sIW+6WotEmGDeNJMHIFUnsKW3h8CT0EyAbw4DyCwPjrhpE
+         WudN8Y2KYBCkeTqmo098LV4W0EhF8FQ9AG47GHRVeqay66sObxfm7csAncStrbk90EAh
+         p9MuucTj6mF/pYqJInvyqLxpp9ZRxUGgvEILHxA+E3oSzZkir0BQGVEe8UTKEG9HPT3V
+         keZBOsBoCo7mHVVRWvvMxGhqTWmwssFJzwzm/VEmYdUSYA4o6m1U5i9ucyxuwjw+8PSw
+         r9Qg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678108999;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=A6UPnvKq09Wou2+IQachtCQ63VCTkOWQC89w6AgtMPM=;
-        b=53UuAh7vpH8HRPJBkQHbLr1QiJnfSzG+VsIgTXQKWNaac6qnLi8Jlznq8V2g13Hsmy
-         vUdhzieNFf03fTlhvlebdwyN9ShEC3aO1d60MarQrCsimu7CZkkddH4Hxu04Yr34Svrd
-         mr70P1hAdKes+p1XJNvm/PPiWYUWfv65EE7kmHdBYRndTLftsX/MagBw6UNhLFa9IqdT
-         3tZAK7LX/WRkWKz0ZmK3Uv6gbHot80Q8oesPdV+8yEerV+9FWiltAjzXfNoJKEMcL+Ep
-         TOKgKNnkM+oXcgd8aR5slNHtMqN7fP9pX3Kq83gvp7JdpK4sUm10lxinKJnidF4Noe6y
-         SyPQ==
-X-Gm-Message-State: AO0yUKXdROFK6nJz/rL8vVS9YV/OwgWLWYdKThtGjDifED+bk+bFHa9o
-	YoZiwy06QY4u29S/3pgp6RDNRM+lvCehxxvzlLMCpA==
-X-Google-Smtp-Source: AK7set/s6kdSu1VcFIDUDDAjhyT5WX5VXxR9fDOOK3NMP0aCh1mWegJfszBB8kiuEvAwn0UNiI+jPIKsmpqnhlWyXBE=
-X-Received: by 2002:a81:b61a:0:b0:52e:cea7:f6e3 with SMTP id
- u26-20020a81b61a000000b0052ecea7f6e3mr6509470ywh.10.1678108999681; Mon, 06
- Mar 2023 05:23:19 -0800 (PST)
+        d=1e100.net; s=20210112; t=1678110029;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ZW1Oqg+WLuWWxkuIkyJR54a4c3JXn+NZetW0zwSCeSw=;
+        b=06vmeHlYRg7n6iP8x7FFpPY7uxji9TPICz7y5dLmykRUx5KTvthr1N9Kks5NuCp7M5
+         +1B+eiQRCqpQGh80RquJ+1klrs9WzuVSqqBZxV73tZ+v2mvpugWQP7Opa1VxpTZv3F+h
+         1S8oziaoAr+j6pSM/DxNl7iNGE6nCSREqebI1GkTo1VnhSDVoA4ldUspNQ9VnGpsC8Gu
+         aLw0iujC08VQgYKufhwnf4E/vOzAfgb4TdHYpZj6ZbD/Rv78jGXUUKnK3OwGqiHt4tz6
+         JcWKMQUDFuFdN7c3gRLJZh9FiMpOPfY/zEIbOsFP16A11nvqRP5NdUUCbdkvzMioBQAQ
+         sFMg==
+X-Gm-Message-State: AO0yUKWn1nTCIx4v3f1KYinrR15FU5Jr7CKAdB6fYDLCkTyf55SV1FGK
+	HV+vcWeRofTLTy13RCXrWAxL2A==
+X-Google-Smtp-Source: AK7set/0XrGcKW6yxv/wJZcYC83SiD0kz0lIalXfaXFBbdXe/zoJAr5MHbFp08xZq8Th54ZnERWtsw==
+X-Received: by 2002:aa7:cf90:0:b0:4bc:502e:e7de with SMTP id z16-20020aa7cf90000000b004bc502ee7demr9831944edx.32.1678110028679;
+        Mon, 06 Mar 2023 05:40:28 -0800 (PST)
+Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.googlemail.com with ESMTPSA id u2-20020a170906c40200b008e2dfc6382asm4574959ejz.125.2023.03.06.05.40.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 06 Mar 2023 05:40:28 -0800 (PST)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Mon, 06 Mar 2023 14:40:11 +0100
+Subject: [PATCH] Fixes dt-bindings: display: mediatek: Fix the fallback for
+ mediatek,mt8186-disp-ccorr
 MIME-Version: 1.0
-References: <20230218065108.8958-1-arinc.unal@arinc9.com>
-In-Reply-To: <20230218065108.8958-1-arinc.unal@arinc9.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 6 Mar 2023 14:23:08 +0100
-Message-ID: <CACRpkdY1xPVd1dTch1jvP6Wc27977Qm7GJ9fKffzhF9odHWG9Q@mail.gmail.com>
-Subject: Re: [PATCH 1/2] pinctrl: mediatek: add missing options to PINCTRL_MT7981
-To: arinc9.unal@gmail.com
-Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	=?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	Daniel Golle <daniel@makrotopia.org>, erkin.bozoglu@xeront.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20230306-ccorr-binding-fix-v1-0-177d81d60c69@baylibre.com>
+To: Rob Herring <robh+dt@kernel.org>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Daniel Vetter <daniel@ffwll.ch>
+Cc: linux-kernel@vger.kernel.org, Alexandre Mergnat <amergnat@baylibre.com>, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, Rob Herring <robh@kernel.org>, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org
+X-Mailer: b4 0.10.1
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2033; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=Sllvr1qcJosNPm/127wltPmXLo/4qloGmkwT8rLTdQs=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkBe1Lg8S54sdx+TkgJNo3Q94C1ufIjETI8glahloA
+ wAMPhpWJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZAXtSwAKCRArRkmdfjHURYxBD/
+ 0TgSfGN1WScR5N5YN6E/+DvS8lJCRDx+Ky+06JfD0PD/Oskchz6XpYCjhFeSKztRXMpZZIbonI1aa0
+ fyxq18BAhYPzBeELrCMD8fWqGuC069YvDqTVQeIE3pz9XpooTDesaQWHh59UgT4119MCpLnLHM2xE+
+ rdpm+l7he9szKBSEdvS9RbBHYh/GUY22ipY6APt5qFgua2DsCr+QPrcNxlnY75p7DbifXqBu3V3NPZ
+ QBywL/k0JnIraVsSTr20XYmhGtKYv1GmwimQ1uXxGjDbIQM9CxaM6Eg2Ngeob9m4KUZwa9AdPTo52l
+ kP7dELhSgd+qei7U/kKgQVj0vCQv8w/JjRJkR2ylQO1SDTdoJmfbGOr49GWsWE/aqp3AV5QsBHiful
+ 17Xcw5DcnpG/5wbbuNc472Fr7uWwxIkSvvLZxuiER3g8+3oF8O0rx/JXFKTZvzf3S4fzNNuyglXTt+
+ fOMYxL3iB5pjsOMJmPtRKenLhJnde6pGHcBMFJo28ZG9aRVLQDOV+Mp8kAPRwjqaI1bPWOLrDyOsfj
+ Z9w8RwWVBKXHC3XXkRiSMtER76zkOZdiTHo3An37wNV98cTQ5VWuyuiscunseNUjqqnbdad17m2Moj
+ /8HwAtPOqMmrdoWqDXF1RAzdGPD/BuXBlelZvYCVZN20LXGywmz0hMDFG3Yw==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230306_052323_101112_C23E1A53 
-X-CRM114-Status: UNSURE (   7.32  )
+X-CRM114-CacheID: sfid-20230306_054034_076446_07A90189 
+X-CRM114-Status: UNSURE (   9.20  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,17 +108,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Feb 18, 2023 at 7:51 AM <arinc9.unal@gmail.com> wrote:
+The item which have the mediatek,mt8192-disp-ccorr const compatible already
+exist above. Remove duplicated fallback.
 
-> From: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
->
-> There are options missing from PINCTRL_MT7981 whilst being on every other
-> pin controller. Add them.
->
-> Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
+Fixes: 137272ef1b0f ("dt-bindings: display: mediatek: Fix the fallback for mediatek,mt8186-disp-ccorr")
 
-Patch applied for fixes.
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+---
+Fix MTK color correction binding
 
-Yours,
-Linus Walleij
+The fallback compatible has been duplicated in the 137272ef1b0f commit.
+
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+To: David Airlie <airlied@gmail.com>
+To: Daniel Vetter <daniel@ffwll.ch>
+To: Rob Herring <robh+dt@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>
+Cc: dri-devel@lists.freedesktop.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: devicetree@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+---
+ Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+index b04820c95b22..3aaf44719786 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+@@ -29,9 +29,6 @@ properties:
+           - enum:
+               - mediatek,mt8188-disp-ccorr
+               - mediatek,mt8195-disp-ccorr
+-          - const: mediatek,mt8192-disp-ccorr
+-      - items:
+-          - enum:
+               - mediatek,mt8186-disp-ccorr
+           - const: mediatek,mt8192-disp-ccorr
+ 
+
+---
+base-commit: add072536971d7ce891fde3cdbf68c55e7cfa95a
+change-id: 20230306-ccorr-binding-fix-718c6d725088
+
+Best regards,
+-- 
+Alexandre Mergnat <amergnat@baylibre.com>
 
