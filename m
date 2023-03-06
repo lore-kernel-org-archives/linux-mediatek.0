@@ -4,86 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09A1DC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 13:45:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E860AC6FD1B
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 13:45:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T2ixbp4HL4ggnEiRH4MwcUBhAScL6f5ENTnBz9aakSY=; b=CRrwdg4IH8Qu7L
-	+nDHDiVss4gYfOjAoZp6mM5XFYITjBkhHDNixMuK3NWJihGVvHBO4ncJ++in1T9r80VKi+KIvB5q6
-	O7Ez0dYvYtIcCK2FWHk6hGKkG0OMhItDl3mArkxz1QCig+ylBrUI3nNsve7pAcqC+V1wpVjG7KWo1
-	MUK7FuXY5k2jUB0ctdDBkB4JZHu3vans3EjoFdj0JbWf7YLhrqfC4nlIJqdWNFxZQ9NiIx5isIczl
-	arVXub1FyK0V/jXLV5Q+pCmXPWlrf8kn5dOV6GcGG/m52AHcD8pAn9pE1vwf4CqYnk0y2VrM6Y8jT
-	lL8OH/ZaqvMW2n3AmQ1g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xvyn9YaeJ86q8W8Lig51PjsTK8zYrWmGcOa1PW4eicM=; b=rwG5Di+xbi8FIV5/v0DwaBJuip
+	HypiDu4lG4PsRMaA8aart560d0tZapdyp0mpV+PufmplogZXmUG1YmFSZsPbLp+y/DBg9akc1P3Ud
+	HKV+DEK/jIKF39/rSu30xfRSDISmlzoVOaK08P/TZiAAxYrutzDHpb2VomEfeIyHtGfGb9BED/Hrc
+	s2SYysZBbM8tjx1ZblQQ/SMsdWL9M82Qryjx7KvT2OzNongo+Xr2/5n0bCb7KJ2cFzV7RLTN9gDAT
+	5GUmQtOw758KOEqGX1QkIzqSXFxkYaEPNgohAU0w2b3Q5q8FBD4677GaJErKPxGz2QbMEma4yqb12
+	IeZnR9eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZB9l-00Cxdz-3D; Mon, 06 Mar 2023 13:45:37 +0000
+	id 1pZB9p-00CxfR-B4; Mon, 06 Mar 2023 13:45:41 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZB9Z-00Cxb6-8x; Mon, 06 Mar 2023 13:45:25 +0000
+	id 1pZB9k-00Cxdk-Mn
+	for linux-mediatek@bombadil.infradead.org; Mon, 06 Mar 2023 13:45:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=T2ixbp4HL4ggnEiRH4MwcUBhAScL6f5ENTnBz9aakSY=; b=hvube7YvbCZmVMwrcJ6j7M+ne2
-	J3kb5DDq1LTRcywXl0XY3k+igOeTtNJWZtln+H3/tBc2E9IZ5sweZjMABLLBDOBh8rYwZXzj+QEsN
-	Ch5T/T9L78OgbNxlDKifqoh50fWAeTcqDrSStQaTQga2MPTMC5POzCy1lGeOx7GUcxZc7j3tEEO55
-	yimPhj9RMZ4S7WdWROqY6Qq2Er50ppis8YQDeyrNBs7BMHFu2DYC/LNkeDTOT5nglOR0VuvExhQJ+
-	ZlvUdh8tWz4Oq059qYxtSKn69gswWO6GpL5OPZfATs9jPgLMbqleseHvtR40C25Rsf/3h+2/82TnC
-	6wPv64NA==;
-Received: from sender4-op-o10.zoho.com ([136.143.188.10])
+	bh=xvyn9YaeJ86q8W8Lig51PjsTK8zYrWmGcOa1PW4eicM=; b=HZ/qMmW6BSKvskMlEtWVVTX1qu
+	CBlCZJqEOSc5ltIaIF4QxAb0SnO/oDCcbsgzAgNDloeEb97/B4lOA5cDaFubFHyN4W7ZBP11v+2MQ
+	vI+7qzk/6mFxeqaUba6ROUSqdsYLzCujL57lIlq+MI6XzIylKvktTa5IXSQmJe834zvqSnWedfqPO
+	pr0k01v/l5zbubIBHm4ofEJGwH48pFWLXtFUY/lQxA1Chn8b6eCLDOzOI3oQeGQdndziLnixl5TV6
+	m36YdBdyXYGMmJFKvvPwm4+Ok3kprkk43+J5JArP4/34RrEs4vij84imNphisGc6Bt9bqkn37tgDz
+	W3DUW2Kw==;
+Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pZAl0-00GgN2-0o;
-	Mon, 06 Mar 2023 13:20:04 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1678108766; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=MBt2bMI5bp/2zB0h18LEQySzgihKn/foLOBx2NR77IdiTmpfWrd0sRr8GchUGFOvDlnrW8/fCdnkJIfSunM13v4CNeWuznd6cnkvhrA1XzzgC2CDwhrXMw+sog8HVIsZ5H0neMdIhzkOvE4G6Y02VbsY+dMfAoR1sKUhMBq3EZo=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1678108766; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=T2ixbp4HL4ggnEiRH4MwcUBhAScL6f5ENTnBz9aakSY=; 
-	b=Rf+LkxsgmGXk10OGqcrdeQTYayhTVPI8T3yveHH1mDuvAZmj9TRzqI7xLNc9nu7gtnvN5hpxdFoMzsoa1GIwUeHA2mbDl0c+8kPNZL5k49lnCrTRgSLsVlse968YPMO+mW+e4mTQt2xarynaHe/epleXN+YiIcOzOZCc4OTC0ok=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1678108766;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=T2ixbp4HL4ggnEiRH4MwcUBhAScL6f5ENTnBz9aakSY=;
-	b=cuzashvIqaekgwn5HerHcqybDot4DJA7rFstAZKiwPAUIfM8mZbktInSfFyrX8t8
-	F5id+uDOl+qmc0awzudVzEYOl3VDxHXDbdswgWDBCowjBuQnHb0Yp0lTZi6CnROfkUx
-	CUchHVz1uCHxvr8AuyDL/vshLHTtRpPro+drcZ14=
-Received: from [10.10.10.3] (212.68.60.226 [212.68.60.226]) by mx.zohomail.com
-	with SMTPS id 1678108765103288.5523800899738; Mon, 6 Mar 2023 05:19:25 -0800 (PST)
-Message-ID: <f8669264-0c96-0337-2293-4d215e313b93@arinc9.com>
-Date: Mon, 6 Mar 2023 16:19:18 +0300
+	id 1pZAoh-00GgRy-0K
+	for linux-mediatek@lists.infradead.org;
+	Mon, 06 Mar 2023 13:23:53 +0000
+Received: by mail-yb1-xb2b.google.com with SMTP id t39so8065775ybi.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 06 Mar 2023 05:23:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1678109026;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xvyn9YaeJ86q8W8Lig51PjsTK8zYrWmGcOa1PW4eicM=;
+        b=fx9JPxs8+fzKQ6JqYbK+ifFmBjQ8eiYWeu+QMPOh5aQDwncSjoIKNL+6iwAOjYGL09
+         3Faqia2eMlfEynDpLbJsBSy18Shb+rKJvTtBtUgqrHGWJsxEBFUk5jymRW2ciTwgAkBj
+         Po/2KOc34FC5F1VTHjYFGz/7k77mF4aZk6Xu1s8tuGev7TIh09D/mEHWsAaiA7Wq09Ff
+         tvi4rLXv5h/JsFMe/neIUqta45IBBHusMEqepEMZjXSFb1OGWAJOTjlL6QCtSiCbozNh
+         D//3aNiuN/Ed5uiK2252qkssT63iyt6DfhlB2t6qIaaMPbKb7TJO/3+omybR4yL88MJ/
+         g/Ew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678109026;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=xvyn9YaeJ86q8W8Lig51PjsTK8zYrWmGcOa1PW4eicM=;
+        b=v4Cb+RhnADrgPtASgBRDyVug0Bh0QI02aEmVNUIXFSiQfd8P3XwJlfEDPK2yIucOLD
+         f3hI9toCtTtaRG69ra7wh/VXtWzE7LAisNNVCygqmeTWAGf0yCjw+cAuENogtsKqQw+Y
+         cyxYqb8Q2y1nKSo2tg6vhHStAhdsEfWzMc5617jvgZw8r3mKz7PRRS75Hp26Uyc/1nfl
+         Z37IZu97qdyZMa4PbnpT8iBb6zW8sLe4I+NZalylzdIyjPumHURsKar1vjOURbCeFy13
+         MbA76+f1gBC0ezCxmAZN/IsjkAHLPOsfYSB0knDUyqntUY/r+KaoNQXrmvhs1Y6KZuIA
+         o8Ng==
+X-Gm-Message-State: AO0yUKXs3OIbAjkzYLiGW8SN/o+gZ9juhH4guAqp5OXZgCSDkL3dg3Dj
+	sIxgJQGA9kxpeTNf+E0vDyjqzLgS+xDRrOoatOG65A==
+X-Google-Smtp-Source: AK7set9u5szpr+wnH4nFcOvWFTNqyAYPnIW16Yn+p0DCJfxCmYIAe+HSI0DHLu7vDQphHfezI+/du5AHMakyD/+qNYI=
+X-Received: by 2002:a05:6902:4c2:b0:ab8:1ed9:cfd6 with SMTP id
+ v2-20020a05690204c200b00ab81ed9cfd6mr6273934ybs.5.1678109026098; Mon, 06 Mar
+ 2023 05:23:46 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [RFC PATCH net] net: dsa: mt7530: move PLL setup out of port 6
- pad configuration
-Content-Language: en-US
-To: Sean Wang <sean.wang@mediatek.com>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Russell King <linux@armlinux.org.uk>
-References: <20230304125453.53476-1-arinc.unal@arinc9.com>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20230304125453.53476-1-arinc.unal@arinc9.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+References: <20230218065108.8958-1-arinc.unal@arinc9.com> <20230218065108.8958-2-arinc.unal@arinc9.com>
+In-Reply-To: <20230218065108.8958-2-arinc.unal@arinc9.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Mon, 6 Mar 2023 14:23:34 +0100
+Message-ID: <CACRpkdb5vpTW+1VmYjm_28_rFNPpuD1fANdKXN-WdFiajoe30A@mail.gmail.com>
+Subject: Re: [PATCH 2/2] pinctrl: mediatek: fix naming inconsistency
+To: arinc9.unal@gmail.com
+Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	=?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, 
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	Daniel Golle <daniel@makrotopia.org>, erkin.bozoglu@xeront.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230306_132002_606558_DE1479C6 
-X-CRM114-Status: GOOD (  31.33  )
+X-CRM114-CacheID: sfid-20230306_132351_494612_E987587E 
+X-CRM114-Status: UNSURE (   7.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,115 +102,21 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Richard van Schagen <richard@routerhints.com>, =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>, Russell King <rmk+kernel@armlinux.org.uk>, Alexander Couzens <lynxis@fe80.eu>, linux-mediatek@lists.infradead.org, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4.03.2023 15:54, arinc9.unal@gmail.com wrote:
-> From: Arınç ÜNAL <arinc.unal@arinc9.com>
-> 
-> Move the PLL setup of the MT7530 switch out of the pad configuration of
-> port 6 to mt7530_setup, after reset.
-> 
-> This fixes the improper initialisation of the switch when only port 5 is
-> used as a CPU port.
-> 
-> Add supported phy modes of port 5 on the PLL setup.
-> 
-> Remove now incorrect comment regarding P5 as GMAC5.
-> 
-> Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
-> Fixes: 38f790a80560 ("net: dsa: mt7530: Add support for port 5")
-> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> ---
-> 
-> I'm trying to mimic this change by Alexander [0] for the MT7530 switch.
-> This is already the case for MT7530 and MT7531 on the MediaTek ethernet
-> driver on U-Boot [1] [2].
-> 
-> [0] https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/commit/?id=42bc4fafe359ed6b73602b7a2dba0dd99588f8ce
-> [1] https://github.com/u-boot/u-boot/blob/a94ab561e2f49a80d8579930e840b810ab1a1330/drivers/net/mtk_eth.c#L729
-> [2] https://github.com/u-boot/u-boot/blob/a94ab561e2f49a80d8579930e840b810ab1a1330/drivers/net/mtk_eth.c#L903
-> 
-> There are some parts I couldn't figure out myself with my limited C
-> knowledge. I've pointed them out on the code. Vladimir, could you help?
-> 
-> There is a lot of code which is only needed for port 6 or trgmii on port 6,
-> but runs whether port 6 or trgmii is used or not. For now, the best I can
-> do is to fix port 5 so it works without port 6 being used.
-> 
-> The U-Boot driver seems to be much more organised so it could be taken as
-> a reference to sort out this DSA driver further.
-> 
-> Also, now that the pad setup for mt7530 is also moved somewhere else, can
-> we completely get rid of @pad_setup?
-> 
-> Arınç
-> 
-> ---
->   drivers/net/dsa/mt7530.c | 46 +++++++++++++++++++++++++++++-----------
->   1 file changed, 34 insertions(+), 12 deletions(-)
-> 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 0e99de26d159..fb20ce4f443e 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -395,9 +395,8 @@ mt7530_fdb_write(struct mt7530_priv *priv, u16 vid,
->   
->   /* Setup TX circuit including relevant PAD and driving */
->   static int
-> -mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
-> +mt7530_pad_clk_setup(struct mt7530_priv *priv, phy_interface_t interface)
->   {
-> -	struct mt7530_priv *priv = ds->priv;
->   	u32 ncpo1, ssc_delta, trgint, i, xtal;
->   
->   	xtal = mt7530_read(priv, MT7530_MHWTRAP) & HWTRAP_XTAL_MASK;
-> @@ -409,9 +408,32 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
->   		return -EINVAL;
->   	}
->   
-> +	/* Is setting trgint to 0 really needed for the !trgint check? */
-> +	trgint = 0;
-> +
-> +	/* FIXME: run this switch if p5 is defined on the devicetree */
-> +	/* and change interface to the phy-mode of port 5 */
-> +	switch (interface) {
-> +	case PHY_INTERFACE_MODE_GMII:
-> +		/* PLL frequency: 125MHz */
-> +		ncpo1 = 0x0c80;
-> +		break;
-> +	case PHY_INTERFACE_MODE_MII:
-> +		break;
-> +	case PHY_INTERFACE_MODE_RGMII:
-> +		/* PLL frequency: 125MHz */
-> +		ncpo1 = 0x0c80;
-> +		break;
-> +	default:
-> +		dev_err(priv->dev, "xMII interface %d not supported\n",
-> +			interface);
-> +		return -EINVAL;
-> +	}
-> +
-> +	/* FIXME: run this switch if p6 is defined on the devicetree */
-> +	/* and change interface to the phy-mode of port 6 */
->   	switch (interface) {
->   	case PHY_INTERFACE_MODE_RGMII:
-> -		trgint = 0;
->   		/* PLL frequency: 125MHz */
->   		ncpo1 = 0x0c80;
->   		break;
-> @@ -2172,7 +2194,11 @@ mt7530_setup(struct dsa_switch *ds)
->   		     SYS_CTRL_PHY_RST | SYS_CTRL_SW_RST |
->   		     SYS_CTRL_REG_RST);
->   
-> -	/* Enable Port 6 only; P5 as GMAC5 which currently is not supported */
-> +	/* Setup switch core pll */
-> +	/* FIXME: feed the phy-mode of port 5 and 6, if the ports are defined on the devicetree */
-> +	mt7530_pad_clk_setup(priv, interface);
+On Sat, Feb 18, 2023 at 7:51 AM <arinc9.unal@gmail.com> wrote:
 
-Unlike mt7531_pll_setup, there are return codes on mt7530_pad_clk_setup 
-so we may need to check for the return code here.
+> From: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
+>
+> Some options include "MediaTek", some "Mediatek". Rename all to "MediaTek=
+"
+> to address the naming inconsistency.
+>
+> Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
 
-Arınç
+Patch applied for fixes.
+
+Yours,
+Linus Walleij
 
