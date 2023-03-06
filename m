@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E1BDC678D4
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 14:42:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14954C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 14:42:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NzY2tGdI9Ze9z5i2yml98b++235/QIz3fMNn10urMJA=; b=kd+/JRaispy5SfgctFp1Do6fc8
-	cLPnJytzEQf5S57E4mDRKYuvPspXFsB4LnSRPxwe7+YTqYDob8nF0V0/tqb17Zo3Ru6VLCqoRoxNM
-	rEZUGD/WSdUdom2kFE/ZfzfGghJw6oTIbF+SNgl3Oyoz44Bka9vlv1SvBThTtE03ot7wFBkO3+dhA
-	/14cZx3phK6nIVuKnjqO+ZXgp6ZuOAMnLeE1XkSloWPCixHHgavu89igBnGH2WPBQ5HON2/CzEUeK
-	ivnoAcUEKG5LerkZ0JXNk8sLecg2jNJTnKyAyVHOEwagNA58KlDYl4iYdRdOgB/u20OUKwYRr77Pb
-	3krPKqdA==;
+	bh=9dQdKIGot+BLqFnnI3m+1toqb4BGusTowIkOmsodBVg=; b=UI8qcFkee2+dBOLYt43/JmbpT6
+	QQWdSUjBPDT0CYGBoip6wwUqsW9L13ehFZ3BWq0rCGEW8GlMLT7LxJd3LqwXFYugV/b53+JVIemet
+	9lz7MuQgN1gZX7lh9P6BDZwDne9Ss2JPyGn1LrgJDr7G5Z4KBwn8m4zpnKHwlFpXfE3S8hAjmWtFW
+	818Bp4nFDJWxUOzPvoh73JcQeStc1ZplWmVBjm/GXSbEX6lDBlE1FkrNLpezdZWLmRJXsVLHYPVyQ
+	/MfQUXVyCzD8oczjIkGgNMzbgceewK2xOwWFY9yl8hgMc4vMR7X4KRT1EzpfthpQ5tISbj3S9YA9I
+	oeQrU7JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZC2t-00DMo8-D2; Mon, 06 Mar 2023 14:42:35 +0000
+	id 1pZC2z-00DMrO-Tp; Mon, 06 Mar 2023 14:42:41 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZBUX-00D45v-NA; Mon, 06 Mar 2023 14:07:17 +0000
+	id 1pZBUb-00D470-71; Mon, 06 Mar 2023 14:07:17 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E410D6602FF0;
-	Mon,  6 Mar 2023 14:07:02 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A6D8B6602FF1;
+	Mon,  6 Mar 2023 14:07:06 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678111624;
-	bh=ziGH2zOiWjI+IoI+jWYiAA1anJ7BSP8mPNTuPdiSX6s=;
+	s=mail; t=1678111628;
+	bh=MyJkv2GU2hsM5d8F1LGjAaTK3FS7K3NsQ1olEogWvNw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=aojRSbbkh7jvOgyMfoLo3ObnWAvZvh/WNRaT4wGm+r52gyCMy9Ts3GMDdAWuXhz16
-	 gTKe5bVkJDmQPmKc7SaPtF/NoGQ86peBKMDIcP+48E5PmURQPMB3jZmFZ19GnjJF7R
-	 /bpRrhaUsxAT96u+oalMbfN/go09DXUBmZEwB6RIdcQR+xb9fk/MjaJnqYVl78vbTp
-	 2tQBS33+dX43B1wWGM0D3JPIxhkNv8Kansz5hXgLQTBBrM6mFWSGxoyUbkfQXPCk/v
-	 9OU9sm9pst/Q5WzM6Cw4r02aq011sc9KVqwYuQ5DtRnLMBMBAlDG67E1f4idmgO3Lo
-	 YiVrN8ki0hBIA==
+	b=b1iB3kmyijUSNC6t5Ga2EqKyYf4O8yvo+XtjO3xHSI4wbujYie6ZCO74FLDbYVHx6
+	 1x29Gx4yiuZj3J6gOhBk6uaQ3s+6dq2HLnFCtKbHpp0DY4qJW9pxelNFymXdTsNzGy
+	 hQojitijbOw9ajpY323L5Fiy8Uv4ObTuOLrDXGfIh4F69h7Iyj7lL8SH8gmXfpjt/7
+	 voGNRz6NhMgcYmpRIZrDN2eNDR+5PKSA7avphwkHP/rpOfRVj7VK83+px2IWlsgdOr
+	 VD2rfwhgBm8BulccZzOpI1VfO4weYRj1PK3ytFxZJNOJmPmJuX6ioT91ZvFVJS3kDU
+	 ll1e5cHj2/PJw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mturquette@baylibre.com
 Cc: sboyd@kernel.org,
@@ -68,17 +68,17 @@ Cc: sboyd@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v6 48/54] clk: mediatek: Kconfig: Allow module build for core mt8192 clocks
-Date: Mon,  6 Mar 2023 15:05:37 +0100
-Message-Id: <20230306140543.1813621-49-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v6 50/54] clk: mediatek: mt8135: Move apmixedsys to its own file
+Date: Mon,  6 Mar 2023 15:05:39 +0100
+Message-Id: <20230306140543.1813621-51-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
 References: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230306_060715_712985_41BA4E55 
-X-CRM114-Status: GOOD (  10.76  )
+X-CRM114-CacheID: sfid-20230306_060715_681687_B5938E14 
+X-CRM114-Status: GOOD (  14.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,32 +93,154 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Bootloaders must in a way setup the SoC to boot Linux: this means
-that it will be possible to decompress a ramdisk and eventually
-insert the core clock driver module from there.
-Allow module build for all MT8192 clocks by switching to tristate.
+In preparation for migrating mt8135 clocks to the common simple
+probe mechanism, move the apmixedsys clocks to a different file.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-Tested-by: Miles Chen <miles.chen@mediatek.com>
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/clk/mediatek/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/clk/mediatek/Makefile                |  2 +-
+ drivers/clk/mediatek/clk-mt8135-apmixedsys.c | 62 ++++++++++++++++++++
+ drivers/clk/mediatek/clk-mt8135.c            | 46 ---------------
+ 3 files changed, 63 insertions(+), 47 deletions(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt8135-apmixedsys.c
 
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index 04b4be419bd0..02093996ccc3 100644
---- a/drivers/clk/mediatek/Kconfig
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -682,7 +682,7 @@ config COMMON_CLK_MT8186_VENCSYS
- 	  This driver supports MediaTek MT8186 vencsys clocks.
- 
- config COMMON_CLK_MT8192
--	bool "Clock driver for MediaTek MT8192"
-+	tristate "Clock driver for MediaTek MT8192"
- 	depends on ARM64 || COMPILE_TEST
- 	select COMMON_CLK_MEDIATEK
- 	default ARM64
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index 048a150a7637..bcd3b8c465aa 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -62,7 +62,7 @@ obj-$(CONFIG_COMMON_CLK_MT7986) += clk-mt7986-apmixed.o
+ obj-$(CONFIG_COMMON_CLK_MT7986) += clk-mt7986-topckgen.o
+ obj-$(CONFIG_COMMON_CLK_MT7986) += clk-mt7986-infracfg.o
+ obj-$(CONFIG_COMMON_CLK_MT7986_ETHSYS) += clk-mt7986-eth.o
+-obj-$(CONFIG_COMMON_CLK_MT8135) += clk-mt8135.o
++obj-$(CONFIG_COMMON_CLK_MT8135) += clk-mt8135-apmixedsys.o clk-mt8135.o
+ obj-$(CONFIG_COMMON_CLK_MT8167) += clk-mt8167-apmixedsys.o clk-mt8167.o
+ obj-$(CONFIG_COMMON_CLK_MT8167_AUDSYS) += clk-mt8167-aud.o
+ obj-$(CONFIG_COMMON_CLK_MT8167_IMGSYS) += clk-mt8167-img.o
+diff --git a/drivers/clk/mediatek/clk-mt8135-apmixedsys.c b/drivers/clk/mediatek/clk-mt8135-apmixedsys.c
+new file mode 100644
+index 000000000000..2b4d379300fc
+--- /dev/null
++++ b/drivers/clk/mediatek/clk-mt8135-apmixedsys.c
+@@ -0,0 +1,62 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Copyright (c) 2014 MediaTek Inc.
++ *               James Liao <jamesjj.liao@mediatek.com>
++ * Copyright (c) 2023 Collabora, Ltd.
++ *               AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++ */
++
++#include <dt-bindings/clock/mt8135-clk.h>
++#include <linux/clk.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
++
++#include "clk-mtk.h"
++#include "clk-pll.h"
++
++#define MT8135_PLL_FMAX		(2000 * MHZ)
++#define CON0_MT8135_RST_BAR	BIT(27)
++
++#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits, _pd_reg, _pd_shift, _tuner_reg, _pcw_reg, _pcw_shift) { \
++		.id = _id,						\
++		.name = _name,						\
++		.reg = _reg,						\
++		.pwr_reg = _pwr_reg,					\
++		.en_mask = _en_mask,					\
++		.flags = _flags,					\
++		.rst_bar_mask = CON0_MT8135_RST_BAR,			\
++		.fmax = MT8135_PLL_FMAX,				\
++		.pcwbits = _pcwbits,					\
++		.pd_reg = _pd_reg,					\
++		.pd_shift = _pd_shift,					\
++		.tuner_reg = _tuner_reg,				\
++		.pcw_reg = _pcw_reg,					\
++		.pcw_shift = _pcw_shift,				\
++	}
++
++static const struct mtk_pll_data plls[] = {
++	PLL(CLK_APMIXED_ARMPLL1, "armpll1", 0x200, 0x218, 0x80000000, 0, 21, 0x204, 24, 0x0, 0x204, 0),
++	PLL(CLK_APMIXED_ARMPLL2, "armpll2", 0x2cc, 0x2e4, 0x80000000, 0, 21, 0x2d0, 24, 0x0, 0x2d0, 0),
++	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x21c, 0x234, 0xf0000000, HAVE_RST_BAR, 21, 0x21c, 6, 0x0, 0x220, 0),
++	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x238, 0x250, 0xf3000000, HAVE_RST_BAR, 7, 0x238, 6, 0x0, 0x238, 9),
++	PLL(CLK_APMIXED_MMPLL, "mmpll", 0x254, 0x26c, 0xf0000000, HAVE_RST_BAR, 21, 0x254, 6, 0x0, 0x258, 0),
++	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x278, 0x290, 0x80000000, 0, 21, 0x278, 6, 0x0, 0x27c, 0),
++	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x294, 0x2ac, 0x80000000, 0, 31, 0x294, 6, 0x0, 0x298, 0),
++	PLL(CLK_APMIXED_LVDSPLL, "lvdspll", 0x2b0, 0x2c8, 0x80000000, 0, 21, 0x2b0, 6, 0x0, 0x2b4, 0),
++	PLL(CLK_APMIXED_AUDPLL, "audpll", 0x2e8, 0x300, 0x80000000, 0, 31, 0x2e8, 6, 0x2f8, 0x2ec, 0),
++	PLL(CLK_APMIXED_VDECPLL, "vdecpll", 0x304, 0x31c, 0x80000000, 0, 21, 0x2b0, 6, 0x0, 0x308, 0),
++};
++
++static void __init mtk_apmixedsys_init(struct device_node *node)
++{
++	struct clk_hw_onecell_data *clk_data;
++
++	clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
++	if (!clk_data)
++		return;
++
++	mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
++}
++CLK_OF_DECLARE(mtk_apmixedsys, "mediatek,mt8135-apmixedsys",
++		mtk_apmixedsys_init);
++MODULE_LICENSE("GPL");
+diff --git a/drivers/clk/mediatek/clk-mt8135.c b/drivers/clk/mediatek/clk-mt8135.c
+index 98165b1f7c97..2a9405b552c6 100644
+--- a/drivers/clk/mediatek/clk-mt8135.c
++++ b/drivers/clk/mediatek/clk-mt8135.c
+@@ -592,50 +592,4 @@ static void __init mtk_pericfg_init(struct device_node *node)
+ 	mtk_register_reset_controller(node, &clk_rst_desc[1]);
+ }
+ CLK_OF_DECLARE(mtk_pericfg, "mediatek,mt8135-pericfg", mtk_pericfg_init);
+-
+-#define MT8135_PLL_FMAX		(2000 * MHZ)
+-#define CON0_MT8135_RST_BAR	BIT(27)
+-
+-#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits, _pd_reg, _pd_shift, _tuner_reg, _pcw_reg, _pcw_shift) { \
+-		.id = _id,						\
+-		.name = _name,						\
+-		.reg = _reg,						\
+-		.pwr_reg = _pwr_reg,					\
+-		.en_mask = _en_mask,					\
+-		.flags = _flags,					\
+-		.rst_bar_mask = CON0_MT8135_RST_BAR,			\
+-		.fmax = MT8135_PLL_FMAX,				\
+-		.pcwbits = _pcwbits,					\
+-		.pd_reg = _pd_reg,					\
+-		.pd_shift = _pd_shift,					\
+-		.tuner_reg = _tuner_reg,				\
+-		.pcw_reg = _pcw_reg,					\
+-		.pcw_shift = _pcw_shift,				\
+-	}
+-
+-static const struct mtk_pll_data plls[] = {
+-	PLL(CLK_APMIXED_ARMPLL1, "armpll1", 0x200, 0x218, 0x80000000, 0, 21, 0x204, 24, 0x0, 0x204, 0),
+-	PLL(CLK_APMIXED_ARMPLL2, "armpll2", 0x2cc, 0x2e4, 0x80000000, 0, 21, 0x2d0, 24, 0x0, 0x2d0, 0),
+-	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x21c, 0x234, 0xf0000000, HAVE_RST_BAR, 21, 0x21c, 6, 0x0, 0x220, 0),
+-	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x238, 0x250, 0xf3000000, HAVE_RST_BAR, 7, 0x238, 6, 0x0, 0x238, 9),
+-	PLL(CLK_APMIXED_MMPLL, "mmpll", 0x254, 0x26c, 0xf0000000, HAVE_RST_BAR, 21, 0x254, 6, 0x0, 0x258, 0),
+-	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x278, 0x290, 0x80000000, 0, 21, 0x278, 6, 0x0, 0x27c, 0),
+-	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x294, 0x2ac, 0x80000000, 0, 31, 0x294, 6, 0x0, 0x298, 0),
+-	PLL(CLK_APMIXED_LVDSPLL, "lvdspll", 0x2b0, 0x2c8, 0x80000000, 0, 21, 0x2b0, 6, 0x0, 0x2b4, 0),
+-	PLL(CLK_APMIXED_AUDPLL, "audpll", 0x2e8, 0x300, 0x80000000, 0, 31, 0x2e8, 6, 0x2f8, 0x2ec, 0),
+-	PLL(CLK_APMIXED_VDECPLL, "vdecpll", 0x304, 0x31c, 0x80000000, 0, 21, 0x2b0, 6, 0x0, 0x308, 0),
+-};
+-
+-static void __init mtk_apmixedsys_init(struct device_node *node)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
+-	if (!clk_data)
+-		return;
+-
+-	mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
+-}
+-CLK_OF_DECLARE(mtk_apmixedsys, "mediatek,mt8135-apmixedsys",
+-		mtk_apmixedsys_init);
+ MODULE_LICENSE("GPL");
 -- 
 2.39.2
 
