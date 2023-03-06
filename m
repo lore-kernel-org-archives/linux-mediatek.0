@@ -4,78 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80E6AC6FA99
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 15:46:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F78AC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 15:47:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+agbrQBr9UIR6u+yd/9aPdKOrcjr4SJiOd6RvbJ917E=; b=xRRLuaMXT7M6blCPuY8EUu3L8G
-	ZQPTdb1SAi6kxWLhSPj+VZ8nvU+JTeXx7FC/Ml+3uOeUwWiBAeeswtyKnLbtNAQyMx/GiWoC4CQfw
-	szhaj8epRQxe0b1D2Lv8017xJAd6FRKaSkqGQhGHvYI+Uh19PMNsGW1SnnxetVJgF+xPb+fY9Jo+O
-	kRs98wns71xiAYswH8N5C2/HVYttQ3sXlWrFXME2lD6mVc19n9wUyUvVf8vX1u1X1XWEbkhQkT9MV
-	4s4QyBv45ImvD7/v5M1esNlYUl0BaBYQKigH6uZgPu9lyDIN4++opw8vU/w2n8gqi5RnoXP3IksYD
-	tTi5JKwg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3Qbcg/KfL+9ZQToqwfu735u7SGlIt/GY2b0W9QmpeXY=; b=TRHRTfK9ufrdQEN8zDCAaj5gOn
+	BoGjaQaDwNHfqcuqnA95h7Dddjv3CkwyFUOsr4O/wvl0WUeOj/7BI/2a4OiBaVoep1rZy/j8hYUpt
+	hyqemxflS7a8Q1JQDvnlhUmMTJBVVGPUny+hlxXpL3ML0WDmrLaJPtt2ikJiy+AK+9XNQj5CTsfmv
+	qGmjk+EwYQluG1vYWRYvCbLR6nakUROrqXURZ8XdpSNzPJiyloOvuYRW6vbnOGmOi717EkdUUNl2Y
+	a4Jazrm+uBxQqEW4bzJqMFAW2cFaxKP0Ek0YCBBTDUBIGIjpV0yRfHGThV4X/T2lDxLSTY+LCmwUj
+	zPU/qCTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZD2b-00Df7C-VS; Mon, 06 Mar 2023 15:46:21 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1pZD3F-00DfUn-Ey; Mon, 06 Mar 2023 15:47:01 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZD2G-00Devk-Kf; Mon, 06 Mar 2023 15:46:02 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id da10so40516491edb.3;
-        Mon, 06 Mar 2023 07:45:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678117556;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=+agbrQBr9UIR6u+yd/9aPdKOrcjr4SJiOd6RvbJ917E=;
-        b=Y77j9wNfCqhsQgS5VtBqGxkr8fNqSRIiwr7uASxDqh41IHEK6k6P0iDCMIQ010xLN8
-         8gGCpcmgTFWfiJ61RPep8tFG0/ivQG1G0DByq8/8QDtpvocC4GkMyu04ddS/cWmT/7s5
-         06n64qwzdpI34bvi8Pj6WzfCuLgjEmFW1lL5RTSoRz4fVk65VA4E67Cyo7tqAufgQz2U
-         E9UvW3OpZaef7UqqVnqAcvGJ1yeVay1LIstSzDk8cIS73hReozWfns/A3W4VRwZEniRh
-         zvQqrnG7Bl4V/uGRce4XXabZsWlm40LofmGGxVRT6yVCi9SArylPJDlUqdOH6XchBb28
-         zl9w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678117556;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=+agbrQBr9UIR6u+yd/9aPdKOrcjr4SJiOd6RvbJ917E=;
-        b=Q18Cn+Jkagvr4p+r3imzS2/H+/PaDWQnL9MXUII0nAfVxFjM5pD8LKtV3lMa5MCFXi
-         O9KeNjaV0Eyo8gfsGV2R6yUwvcVlPo1vijKuuqyo0omS42rALFUkZnl1fMtnLYIFqyut
-         4BpiVinZDRW3XoZKDBlAH9gSS6bAt/dIzXn20Cn/zGI+9v2hCS75mOJWt6SErZzqxeTl
-         ev5Ia9H8LVr3022ShNMVmDzyB4P3rfPLxJfuBHEbS/0o6J1TLaUISDgJx0+IQLFGusFe
-         nXEDL8Ekr8sNG7HCd6VQ6CP+7P6xkyodYCCZYDvYVrPV6VDWR1DE9RJJ6nhWM+YgWopk
-         Xikw==
-X-Gm-Message-State: AO0yUKVAgqfKoiGrH8HNAKmiJG0Gi0zbpcdc53qfuWgVoRhPt8w5cpqV
-	DrUDIviOofcjJLd8V8TeKzU=
-X-Google-Smtp-Source: AK7set9BlqZGG5uxTwNphRDgJIRMh0nQJIjcZc4FuO0fw/8jOfMKvBhYTdg7oIcUFcf1w1KT+Ji3hw==
-X-Received: by 2002:aa7:d513:0:b0:4af:7f6e:297b with SMTP id y19-20020aa7d513000000b004af7f6e297bmr11260638edq.35.1678117555732;
-        Mon, 06 Mar 2023 07:45:55 -0800 (PST)
-Received: from skbuf ([188.27.184.189])
-        by smtp.gmail.com with ESMTPSA id j7-20020a17090643c700b008caaae1f1e1sm4686362ejn.110.2023.03.06.07.45.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Mar 2023 07:45:55 -0800 (PST)
-Date: Mon, 6 Mar 2023 17:45:52 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: arinc9.unal@gmail.com
-Subject: Re: [RFC PATCH net] net: dsa: mt7530: move PLL setup out of port 6
- pad configuration
-Message-ID: <20230306154552.26o6sbwf3rfekcyz@skbuf>
-References: <20230304125453.53476-1-arinc.unal@arinc9.com>
- <20230304125453.53476-1-arinc.unal@arinc9.com>
+	id 1pZD2g-00Df9L-Qs; Mon, 06 Mar 2023 15:46:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=3Qbcg/KfL+9ZQToqwfu735u7SGlIt/GY2b0W9QmpeXY=; b=ROuiogfk4Jj0hYYTdrN0WSRgNw
+	v7/UxxfYRfq3iU0epsEd4z1T9VMwv0QCPp1aZhOylZLHpWJ887qPrvKGkYu0Vzxg70Qf6HZJ7jLT1
+	ySbbxTNBgLVggvPUzqkAdMIRrxhxc+GD+h7UeVImmHlQp+r++aGYBM5K3BHh/llKlaCHqaMqTl+ob
+	m4FDLib41uo+5FIFhtwzeOrhuq0CD0+5xyjI5XL/Xgs/IXitFNGDSxBRntXv6a2ND36hBBZhjxzrl
+	qfdfLibYbyUEnV+vQE++/TbisOLn5NMBE5Vk6AMAwDnvscEJJ0NmVD4t46GkxWsPWATV15XHEQZ/D
+	N5l6pwIA==;
+Received: from madras.collabora.co.uk ([46.235.227.172])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pZBUh-00GhF3-2w;
+	Mon, 06 Mar 2023 14:07:17 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 442586602F13;
+	Mon,  6 Mar 2023 14:07:11 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1678111632;
+	bh=dv6Z4kavdozYHTEcXkNgUDi5pAIhynlNgpR6jA5eVf8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=lBKKfJU8YxisASGx1icnGTAuBFziSNZhjbYRw5tUabXKrm0d9+kA64Id0L0O67xZx
+	 ibUjEtCbA3RwjkCz99I/Ddtv/C8Sn1ANIuzEGsdC2EN2TulVYdKdtWJzEt3f3lvyor
+	 qE6lBPjl+wMxSpjdSrZTX2Nqgn0Dm0vimLcCpZtTQB/7qtxh2WDqXmXeSuXqIHY2Wd
+	 cvp0LNnN+zG7z1cEz+GjkrQPtz5PyDqeEh/vNa+DtkPHWXn20PbrNs1m3dolqsieSJ
+	 Mdlu+cttubzlGad21mjaEsndi/qdZX+kt4MBxFbu+yBpjjfREgige8TL8hslgZSOB/
+	 esEugOw3CV05g==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: mturquette@baylibre.com
+Cc: sboyd@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	wenst@chromium.org,
+	johnson.wang@mediatek.com,
+	miles.chen@mediatek.com,
+	chun-jie.chen@mediatek.com,
+	daniel@makrotopia.org,
+	fparent@baylibre.com,
+	msp@baylibre.com,
+	nfraprado@collabora.com,
+	rex-bc.chen@mediatek.com,
+	zhaojh329@gmail.com,
+	sam.shih@mediatek.com,
+	edward-jw.yang@mediatek.com,
+	yangyingliang@huawei.com,
+	granquet@baylibre.com,
+	pablo.sun@mediatek.com,
+	sean.wang@mediatek.com,
+	chen.zhong@mediatek.com,
+	linux-kernel@vger.kernel.org,
+	linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@collabora.com
+Subject: [PATCH v6 53/54] clk: mediatek: mt8135: Join root_clk_alias and top_divs arrays
+Date: Mon,  6 Mar 2023 15:05:42 +0100
+Message-Id: <20230306140543.1813621-54-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
+References: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230304125453.53476-1-arinc.unal@arinc9.com>
- <20230304125453.53476-1-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230306_074600_736892_1E4BE560 
-X-CRM114-Status: GOOD (  49.54  )
+X-CRM114-CacheID: sfid-20230306_140716_133426_2838CCB3 
+X-CRM114-Status: UNSURE (   8.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,281 +105,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, =?utf-8?B?UmVuw6k=?= van Dorst <opensource@vdorst.com>, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Russell King <rmk+kernel@armlinux.org.uk>, Alexander Couzens <lynxis@fe80.eu>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Arınç,
+In preparation for converting this driver to the common simple probe
+mechanism, join the root_clk_alias and top_divs mtk_fixed_factor
+arrays.
 
-On Sat, Mar 04, 2023 at 03:54:54PM +0300, arinc9.unal@gmail.com wrote:
-> From: Arınç ÜNAL <arinc.unal@arinc9.com>
-> 
-> Move the PLL setup of the MT7530 switch out of the pad configuration of
-> port 6 to mt7530_setup, after reset.
+This commit brings no functional change.
 
-it would have been good if this patch had done that and only that, no?
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ drivers/clk/mediatek/clk-mt8135.c | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
 
-> This fixes the improper initialisation of the switch when only port 5 is
-> used as a CPU port.
-> 
-> Add supported phy modes of port 5 on the PLL setup.
-> 
-> Remove now incorrect comment regarding P5 as GMAC5.
-> 
-> Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
-> Fixes: 38f790a80560 ("net: dsa: mt7530: Add support for port 5")
-> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> ---
-> 
-> I'm trying to mimic this change by Alexander [0] for the MT7530 switch.
-> This is already the case for MT7530 and MT7531 on the MediaTek ethernet
-> driver on U-Boot [1] [2].
-> 
-> [0] https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/commit/?id=42bc4fafe359ed6b73602b7a2dba0dd99588f8ce
-> [1] https://github.com/u-boot/u-boot/blob/a94ab561e2f49a80d8579930e840b810ab1a1330/drivers/net/mtk_eth.c#L729
-> [2] https://github.com/u-boot/u-boot/blob/a94ab561e2f49a80d8579930e840b810ab1a1330/drivers/net/mtk_eth.c#L903
-> 
-> There are some parts I couldn't figure out myself with my limited C
-> knowledge. I've pointed them out on the code. Vladimir, could you help?
-> 
-> There is a lot of code which is only needed for port 6 or trgmii on port 6,
-> but runs whether port 6 or trgmii is used or not. For now, the best I can
-> do is to fix port 5 so it works without port 6 being used.
-> 
-> The U-Boot driver seems to be much more organised so it could be taken as
-> a reference to sort out this DSA driver further.
-> 
-> Also, now that the pad setup for mt7530 is also moved somewhere else, can
-> we completely get rid of @pad_setup?
-> 
-> Arınç
-
-I don't like the strategy you used in this patch here, and I don't want
-to answer these questions just yet, because I'm not certain that my
-answers will be useful in the end.
-
-> 
-> ---
->  drivers/net/dsa/mt7530.c | 46 +++++++++++++++++++++++++++++-----------
->  1 file changed, 34 insertions(+), 12 deletions(-)
-> 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 0e99de26d159..fb20ce4f443e 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -395,9 +395,8 @@ mt7530_fdb_write(struct mt7530_priv *priv, u16 vid,
->  
->  /* Setup TX circuit including relevant PAD and driving */
->  static int
-> -mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
-> +mt7530_pad_clk_setup(struct mt7530_priv *priv, phy_interface_t interface)
->  {
-> -	struct mt7530_priv *priv = ds->priv;
->  	u32 ncpo1, ssc_delta, trgint, i, xtal;
->  
->  	xtal = mt7530_read(priv, MT7530_MHWTRAP) & HWTRAP_XTAL_MASK;
-> @@ -409,9 +408,32 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
->  		return -EINVAL;
->  	}
->  
-> +	/* Is setting trgint to 0 really needed for the !trgint check? */
-> +	trgint = 0;
-> +
-> +	/* FIXME: run this switch if p5 is defined on the devicetree */
-> +	/* and change interface to the phy-mode of port 5 */
-> +	switch (interface) {
-
-so this should be something like priv->p5_interface (assuming this is
-initialized by the time mt7530_pad_clk_setup() is called, which it isn't).
-
-> +	case PHY_INTERFACE_MODE_GMII:
-> +		/* PLL frequency: 125MHz */
-> +		ncpo1 = 0x0c80;
-> +		break;
-> +	case PHY_INTERFACE_MODE_MII:
-> +		break;
-
-so with priv->p5_interface == "mii", ncpo1 is uninitialized (will be
-potentially still initialized by the port 6 "switch" statement below).
-
-> +	case PHY_INTERFACE_MODE_RGMII:
-> +		/* PLL frequency: 125MHz */
-> +		ncpo1 = 0x0c80;
-> +		break;
-> +	default:
-> +		dev_err(priv->dev, "xMII interface %d not supported\n",
-> +			interface);
-> +		return -EINVAL;
-> +	}
-
-What method did you use to determine the ncpo1 values here? Are they
-coordinated with what p6 wants? I would expect to see a table with
-
-  priv->p5_interface        priv->p6_interface       ncpo1 value
-      gmii                     rgmii                     ???
-      mii                      rgmii                     ???
-      rgmii                    rgmii                     ???
-      gmii                     trgmii                    ???
-      mii                      trgmii                    ???
-      rgmii                    trgmii                    ???
-
-right now, you let the p6_interface logic overwrite the ncpo1 selected
-by the p5_interface logic like crazy, and it's not clear to me that this
-is what you want.
-
-This problem is way deeper than knowledge of the C language, your pseudo
-code simply does not describe what should happen in all combinations.
-
-From our private conversation dated Feb 08, I guess that what you're
-doing is also a useless complication and not what you truly want. What
-you truly want is for the CORE_GSWPLL_GRP2 register to be programmed
-regardless of whether port 6 is used or not.
-
-> +
-> +	/* FIXME: run this switch if p6 is defined on the devicetree */
-> +	/* and change interface to the phy-mode of port 6 */
->  	switch (interface) {
-
-same comment as above, this should approximate priv->p6_interface.
-
->  	case PHY_INTERFACE_MODE_RGMII:
-> -		trgint = 0;
->  		/* PLL frequency: 125MHz */
->  		ncpo1 = 0x0c80;
->  		break;
-> @@ -2172,7 +2194,11 @@ mt7530_setup(struct dsa_switch *ds)
->  		     SYS_CTRL_PHY_RST | SYS_CTRL_SW_RST |
->  		     SYS_CTRL_REG_RST);
->  
-> -	/* Enable Port 6 only; P5 as GMAC5 which currently is not supported */
-> +	/* Setup switch core pll */
-> +	/* FIXME: feed the phy-mode of port 5 and 6, if the ports are defined on the devicetree */
-> +	mt7530_pad_clk_setup(priv, interface);
-
-"interface" is completely uninitialized here.
-
-Sorry, I'm not reviewing this any further, because it obviously doesn't work.
-
-> +
-> +	/* Enable Port 6 */
->  	val = mt7530_read(priv, MT7530_MHWTRAP);
->  	val &= ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
->  	val |= MHWTRAP_MANUAL;
-> @@ -2491,11 +2517,9 @@ static void mt7531_mac_port_get_caps(struct dsa_switch *ds, int port,
->  }
->  
->  static int
-> -mt753x_pad_setup(struct dsa_switch *ds, const struct phylink_link_state *state)
-> +mt7530_pad_setup(struct dsa_switch *ds, phy_interface_t interface)
->  {
-> -	struct mt7530_priv *priv = ds->priv;
-> -
-> -	return priv->info->pad_setup(ds, state->interface);
-> +	return 0;
->  }
->  
->  static int
-> @@ -2769,8 +2793,6 @@ mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
->  		if (priv->p6_interface == state->interface)
->  			break;
->  
-> -		mt753x_pad_setup(ds, state);
-> -
->  		if (mt753x_mac_config(ds, port, mode, state) < 0)
->  			goto unsupported;
->  
-> @@ -3187,7 +3209,7 @@ static const struct mt753x_info mt753x_table[] = {
->  		.phy_write_c22 = mt7530_phy_write_c22,
->  		.phy_read_c45 = mt7530_phy_read_c45,
->  		.phy_write_c45 = mt7530_phy_write_c45,
-> -		.pad_setup = mt7530_pad_clk_setup,
-> +		.pad_setup = mt7530_pad_setup,
->  		.mac_port_get_caps = mt7530_mac_port_get_caps,
->  		.mac_port_config = mt7530_mac_config,
->  	},
-> @@ -3199,7 +3221,7 @@ static const struct mt753x_info mt753x_table[] = {
->  		.phy_write_c22 = mt7530_phy_write_c22,
->  		.phy_read_c45 = mt7530_phy_read_c45,
->  		.phy_write_c45 = mt7530_phy_write_c45,
-> -		.pad_setup = mt7530_pad_clk_setup,
-> +		.pad_setup = mt7530_pad_setup,
-
-as a general rule, for bug fixes don't touch stuff that you don't need to touch
-
->  		.mac_port_get_caps = mt7530_mac_port_get_caps,
->  		.mac_port_config = mt7530_mac_config,
->  	},
-> -- 
-> 2.37.2
-> 
-
-Could you please let me know if this patch works, instead of what you've
-posted above? It does what you *said* you tried to do, aka it performs
-the initialization of CORE_GSWPLL_GRP2 independently of port 6 setup.
-There is a slight reordering of register writes with MT7530_P6ECR, but
-hopefully that doesn't bother anyone.
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 3a15015bc409..a508402c4ecb 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -393,6 +393,24 @@ mt7530_fdb_write(struct mt7530_priv *priv, u16 vid,
- 		mt7530_write(priv, MT7530_ATA1 + (i * 4), reg[i]);
- }
+diff --git a/drivers/clk/mediatek/clk-mt8135.c b/drivers/clk/mediatek/clk-mt8135.c
+index 1c76c0003f99..8785d58cb3a5 100644
+--- a/drivers/clk/mediatek/clk-mt8135.c
++++ b/drivers/clk/mediatek/clk-mt8135.c
+@@ -2,8 +2,6 @@
+ /*
+  * Copyright (c) 2014 MediaTek Inc.
+  * Author: James Liao <jamesjj.liao@mediatek.com>
+- * Copyright (c) 2023 Collabora, Ltd.
+- *               AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+  */
  
-+/* Set up switch core clock for MT7530 */
-+static void mt7530_pll_setup(struct mt7530_priv *priv)
-+{
-+	/* Disable PLL */
-+	core_write(priv, CORE_GSWPLL_GRP1, 0);
-+
-+	/* Set core clock into 500Mhz */
-+	core_write(priv, CORE_GSWPLL_GRP2,
-+		   RG_GSWPLL_POSDIV_500M(1) |
-+		   RG_GSWPLL_FBKDIV_500M(25));
-+
-+	/* Enable PLL */
-+	core_write(priv, CORE_GSWPLL_GRP1,
-+		   RG_GSWPLL_EN_PRE |
-+		   RG_GSWPLL_POSDIV_200M(2) |
-+		   RG_GSWPLL_FBKDIV_200M(32));
-+}
-+
- /* Setup TX circuit including relevant PAD and driving */
- static int
- mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
-@@ -453,21 +471,6 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
- 	core_clear(priv, CORE_TRGMII_GSW_CLK_CG,
- 		   REG_GSWCK_EN | REG_TRGMIICK_EN);
+ #include <linux/clk.h>
+@@ -19,14 +17,12 @@
  
--	/* Setup core clock for MT7530 */
--	/* Disable PLL */
--	core_write(priv, CORE_GSWPLL_GRP1, 0);
--
--	/* Set core clock into 500Mhz */
--	core_write(priv, CORE_GSWPLL_GRP2,
--		   RG_GSWPLL_POSDIV_500M(1) |
--		   RG_GSWPLL_FBKDIV_500M(25));
--
--	/* Enable PLL */
--	core_write(priv, CORE_GSWPLL_GRP1,
--		   RG_GSWPLL_EN_PRE |
--		   RG_GSWPLL_POSDIV_200M(2) |
--		   RG_GSWPLL_FBKDIV_200M(32));
--
- 	/* Setup the MT7530 TRGMII Tx Clock */
- 	core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
- 	core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
-@@ -2196,6 +2199,8 @@ mt7530_setup(struct dsa_switch *ds)
- 		     SYS_CTRL_PHY_RST | SYS_CTRL_SW_RST |
- 		     SYS_CTRL_REG_RST);
+ static DEFINE_SPINLOCK(mt8135_clk_lock);
  
-+	mt7530_pll_setup(priv);
-+
- 	/* Enable Port 6 only; P5 as GMAC5 which currently is not supported */
- 	val = mt7530_read(priv, MT7530_MHWTRAP);
- 	val &= ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
+-static const struct mtk_fixed_factor root_clk_alias[] __initconst = {
++static const struct mtk_fixed_factor top_divs[] __initconst = {
+ 	FACTOR(CLK_TOP_DSI0_LNTC_DSICLK, "dsi0_lntc_dsiclk", "clk_null", 1, 1),
+ 	FACTOR(CLK_TOP_HDMITX_CLKDIG_CTS, "hdmitx_clkdig_cts", "clk_null", 1, 1),
+ 	FACTOR(CLK_TOP_CLKPH_MCK, "clkph_mck", "clk_null", 1, 1),
+ 	FACTOR(CLK_TOP_CPUM_TCK_IN, "cpum_tck_in", "clk_null", 1, 1),
+-};
+ 
+-static const struct mtk_fixed_factor top_divs[] __initconst = {
+ 	FACTOR(CLK_TOP_MAINPLL_806M, "mainpll_806m", "mainpll", 1, 2),
+ 	FACTOR(CLK_TOP_MAINPLL_537P3M, "mainpll_537p3m", "mainpll", 1, 3),
+ 	FACTOR(CLK_TOP_MAINPLL_322P4M, "mainpll_322p4m", "mainpll", 1, 5),
+@@ -534,7 +530,6 @@ static void __init mtk_topckgen_init(struct device_node *node)
+ 
+ 	clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
+ 
+-	mtk_clk_register_factors(root_clk_alias, ARRAY_SIZE(root_clk_alias), clk_data);
+ 	mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), clk_data);
+ 	mtk_clk_register_composites(NULL, top_muxes,
+ 				    ARRAY_SIZE(top_muxes), base,
 -- 
-2.34.1
+2.39.2
 
 
