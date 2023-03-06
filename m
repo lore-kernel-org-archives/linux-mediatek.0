@@ -4,76 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7043C6FA99
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 16:16:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60926C64EC4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 16:16:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TgdT/YtWm0g09J975wQLLJKIJx3wVMWVgah7dEH2bco=; b=aW/5nfLkN7qWU/
-	Wrqt/NDcBniGGEHXnwH+TNFWLqBsNrKwmGUrk5Po4pWhXsRn/zMyh8RzPxHSZnN+0SBvYiyANZXNF
-	qeyQo/qTQLvszXsTuZQOcuhPGMYFdEMzWlzd1PGxq8jFL4hHeRW3aInXo4LJ1PPodDVA9BiJ+Mt4L
-	NZU9lRTOOLPDJgWgRxFQhSWGK9osBRpl8MnAuWpCypNnR6YGNBTOfedkh1ZeabP6p+x+JkdZ5/LIU
-	f4WrGNAhDnzC9J2+vD8zsgULt9M0teVkYmon3t7T9isUmO5ri144hFo0iXJT60pnmGzjEvjEAplp1
-	QLwqtiSuh7u+GnlAInQg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=e9niV0lDM32nqHqYgD5Iv+BIY49mmSBNqShco7CYbZ0=; b=2ycdznQ9D+WlHnOPsLZauVbIFT
+	4dycwFuKGX4FOnyk6yAtTSYD21v0DWNVn5Z29d+IW/G6OLL9pq5LcN2xqej0I8ImrL4lduSIgSPUu
+	nVnbY1/uvNpTmZkuBol+qFTdq8Oxkc69C78M0wwVCMO/SK7qfcwsGNg1wLF09nCROQAVakWpkfe9e
+	FkGZ++FQoNH0sVplTLXFRaMmYdTUjrU7/trWGh0XS0wpA3/nh2zS+R4r0uUYw/YkvrOw/UwlQblTH
+	hBfHJz4zqYgJkmfJ56WXufoMEVXksqQY+rrNxutxdyDjL60X/2TktD82Z6bvmdQ1TC898MSInQEVS
+	qMxoqoag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZDVC-00Dne9-Mv; Mon, 06 Mar 2023 16:15:54 +0000
-Received: from mail-oa1-x31.google.com ([2001:4860:4864:20::31])
+	id 1pZDVV-00Dnn9-5Z; Mon, 06 Mar 2023 16:16:13 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZDV8-00Dnb8-Tm; Mon, 06 Mar 2023 16:15:53 +0000
-Received: by mail-oa1-x31.google.com with SMTP id 586e51a60fabf-1767a208b30so9988027fac.2;
-        Mon, 06 Mar 2023 08:15:49 -0800 (PST)
+	id 1pZDVQ-00Dnjh-Ln
+	for linux-mediatek@lists.infradead.org; Mon, 06 Mar 2023 16:16:11 +0000
+Received: by mail-ed1-x530.google.com with SMTP id cy23so40741575edb.12
+        for <linux-mediatek@lists.infradead.org>; Mon, 06 Mar 2023 08:16:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678119349;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=TgdT/YtWm0g09J975wQLLJKIJx3wVMWVgah7dEH2bco=;
-        b=I436onofBERXhxwZ8iyGU8YndM9/HbZKw04GlZ9RKvicO5pNTpMgmOa1D+AKT55Hzb
-         UGtBF55toPolPBCNGGMUo1mjijgWdbROYLyjxq8mcTBiPePGf3Cw3jMRe6VxIOVhoKJ6
-         eCZUxI8vqb5dn297zUtlQ+Yl5YjMhGc08Gu/IW/u49OTCeHo97eujy124kqNiJDmWPjo
-         RBoLhKUlBODwIqen8B6EtK1J7iOFqeLR+ka1/00S68FtU0ZvR9ER0OWm2DmtCu0nFspf
-         +wya8oyV+6DL+/estAnX9kYMQB8kUBVHAak2MRtIs9r952b1jEfDHPa2jQ8i8UNrxJqA
-         tsQQ==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1678119366;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=e9niV0lDM32nqHqYgD5Iv+BIY49mmSBNqShco7CYbZ0=;
+        b=7l6dijN1SxoxyfdVaf28yN2A4H8PFN9TLFpsI6hPiPiQl2zozrvl2sv+2WzHCSCQpL
+         h08Zy2G7uf8A1sp4/NLO6Qj3oCSq4B5rvwH3hdIyMgmqYRLOcsUnpA5ScoycxdHo2eQg
+         7AAc9r9HtATADNErnkJ7sZpe+MP6DyqTKAJk/eZLhPyoVV4/Mf5XvvsrGEHHEIRarTmQ
+         xrRY24e3Mj+0UaClfTt89hBdKVKE4S0+MkWnMF3qZjKSP56KHUfLnumAhyfJtFdZNTbt
+         tgPKBQcJ6SqFHJU57Ode24vvYMhmhj7vBPQEkafD9o/B8jJkoUUGi+WObszt8LDS7Okh
+         SKMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678119349;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=TgdT/YtWm0g09J975wQLLJKIJx3wVMWVgah7dEH2bco=;
-        b=uMMxKWsyx4JsWNE6lHvS40bP4gKIFqmhEqQNsK0XlE1OztJa1rPRHRxuzHbaEl+Bvc
-         fu11O2JFfQRifhmYnoKZ7sMimT2kNWqVnkvcbE7cYbjf9SSVNX0d6wnE8dk8pCsirdcy
-         +FPLXbVxqAC5LXKkW5cy/vsHizWSiEleecp3XEVapGkEcUmXc6xLBfjXgLzqeq+402gk
-         jdFhdSUxES+Xi5wxVCVStyuRuW81R3QCtWNkVMiZh7KXbWDNYNKqapl/OlSP48CGkxxr
-         GxDeKrOYCh09A/r0BWbMwJDhRCL/mciF9STaCLcPbxtT3619nlL+NK/ejX4e1HNwnItx
-         x+cQ==
-X-Gm-Message-State: AO0yUKXIs0ZLLKz1CwGlFwjmao/0CbM3VxF6m9qr/99L7aC/DcbnRY5G
-	wPjzz1rUw7Aism3O2TX9W5Jh/SecyFEdzwQFdHA=
-X-Google-Smtp-Source: AK7set9iTA9AO4Etm6Qa6BetwCKi4s9NKpG7X8X0EqbX+5L+CoaJUzr/UhCCfQS5fJIS/u7YsOAg2h5lNwb4vZhgsu4=
-X-Received: by 2002:a05:6870:d346:b0:176:2168:12a2 with SMTP id
- h6-20020a056870d34600b00176216812a2mr3902807oag.2.1678119349301; Mon, 06 Mar
- 2023 08:15:49 -0800 (PST)
+        d=1e100.net; s=20210112; t=1678119366;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=e9niV0lDM32nqHqYgD5Iv+BIY49mmSBNqShco7CYbZ0=;
+        b=ZksLVyHrTR/a/sYCmbCbIoaOrW6oETo1nGR14U0wjArv4YeuobOeE2Mf80AgLstgBo
+         55/m1QaBVrab/G6X6WWL/MkDHxja2nKhcbcZGQZcFY96BXc3V0B/hbc054r2U+eBaH6h
+         D78P/X6NCZo6SdmCoNgyB0+QlD23QAAspZgMxpp5vWngCzjXQyq7rgI+U+t4RdzNQmnt
+         XEgtIp96XoZ7i0umGq9IU8QXHsgHc4o9IJ0/9FofAgvRMreoJ5HzLNfxUUwokNVlnBQ9
+         Ta3C8Zm2Ha57829TK7rYjhDE/5rvXbGzekF5ZJaFSlRfq11zgg5G2GF2/nwRfbHwYKRk
+         LSMQ==
+X-Gm-Message-State: AO0yUKX1vB7KNa9sH5Y38N/m88af72x5iU3NO4Ha0yj4IqTRgcFGaUk/
+	JGWKy0vW9FDjT1rWvD+uIPqbWw==
+X-Google-Smtp-Source: AK7set8UJgx+RtN6p8sM/0DeC3tPMU8VJqx5A4m0mRCX7TvoPE1tRwsLeEzWPyNIXYZdIXH4gkDKDQ==
+X-Received: by 2002:a17:906:fe07:b0:8b1:7de3:cfaa with SMTP id wy7-20020a170906fe0700b008b17de3cfaamr15805736ejb.3.1678119366668;
+        Mon, 06 Mar 2023 08:16:06 -0800 (PST)
+Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.googlemail.com with ESMTPSA id f14-20020a1709067f8e00b008c16025b318sm4725074ejr.155.2023.03.06.08.16.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 06 Mar 2023 08:16:06 -0800 (PST)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Mon, 06 Mar 2023 17:15:55 +0100
+Subject: [PATCH v2] dt-bindings: display: mediatek: Fix the duplicated fallback
 MIME-Version: 1.0
-References: <20230303002850.51858-1-arinc.unal@arinc9.com> <20230303002850.51858-6-arinc.unal@arinc9.com>
- <CAMhs-H-VGjP32AZc2cuY=Co4iqx8xPtvjr+hMg-haMMFaQzzsg@mail.gmail.com>
- <CAMhs-H8OsG-SEWigimG3fT-SGjZruH-7tnjff198Z2qhb0O=yA@mail.gmail.com>
- <2106f6d0-63cc-4656-1e52-19640994fb43@arinc9.com> <CAMhs-H869pR6CzaWfvf44w-ak+0OCyxnMEEU4kWYpw=C14ShsQ@mail.gmail.com>
- <fc6dc970-5bae-1c27-9473-8c9d90ac79a1@arinc9.com> <CAMhs-H_SryQqCZ3mB_VsO20ZSvKCMR5V9E7wrt+a-kbcqQxsWQ@mail.gmail.com>
- <00d4dd34-efe5-8bc7-031a-0f9d19a1b8e0@arinc9.com>
-In-Reply-To: <00d4dd34-efe5-8bc7-031a-0f9d19a1b8e0@arinc9.com>
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Mon, 6 Mar 2023 17:15:36 +0100
-Message-ID: <CAMhs-H_nTDZMQPQ8R5JeWtgWyP1y57uhym-A4f3LcTgJYV+8pw@mail.gmail.com>
-Subject: Re: [PATCH 05/20] pinctrl: ralink: move to mediatek as mtmips
-To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20230306-ccorr-binding-fix-v2-0-4822939a837d@baylibre.com>
+To: Rob Herring <robh+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ Alexandre Mergnat <amergnat@baylibre.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+X-Mailer: b4 0.10.1
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2172; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=4agDtIQ77F9ME6yRsPUjLAJBlnLGzpQX4bZnM0RC0x4=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkBhHFIaq0Oa2uH87DGmClu+FpsQAsxEPqMLB5HFNL
+ i3nTFg2JAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZAYRxQAKCRArRkmdfjHURcHRD/
+ 9MhoXFudTD4tZBPgh+Gp2RJsoD30POoNUwZRp0mjM/CQzuvWbkSoEKVOfDsjD7vYeM87ZaWl9TsWVe
+ qXA2y0Dk0P2KrnThxIOx4SEB3cnKapUKxkD7NeyxQ8x5JttdB98Vs+Ndrm8Le9b1yScoxwskgtnhgH
+ AosTF9wPB6SM31tRkr9vsAiznTgv7uhKiCttF9Qq30jdy/nTonScrsWo56HDRRC7EZk/JtS7yYnn9r
+ L1DTWPuk+jam1HcwBKWwQR3GZWazffHpuWYlkJ9LrjHmSjqjmNL6eBgXbhjhlVonskoOZmrNoUWlmj
+ g+fDofLPIVYkxQFDIjpDHUDtqQzxIHIN7a50vIECNGUdFZsmo7X3kj+51ljXMxsGg8GN2obSwiSfwY
+ azGs8OqIV5YOaCSX2eT5Ork2Ysufqo3Cqk8IgHKq5nFwWIDJ44untGuLwOf0m2o9fgePQUWRMIaU0G
+ 0B0hW0p+G6izKCRfhaWfZ1HglzG8WwpGq51n+TRy3o23OQAXMRKvstdtKSWS5vD0uyh/Mvxu9Mc4zi
+ 95TNB+K8CDf7GJi16s6r5V8+TGCr6banMuY0yFEfHOPqOVV+2Y7RbOBeIYKshj4qOkpW3xOk5my05i
+ YP3VRVJQLGZcMYZyq8ChWV7/CTAyFr1zC9enBdQbzk/j8xO8zweMTd1DnI8Q==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230306_081551_277745_F54E3C7F 
-X-CRM114-Status: GOOD (  46.29  )
+X-CRM114-CacheID: sfid-20230306_081609_014570_9F3460B3 
+X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,278 +104,62 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Daniel Santos <daniel.santos@pobox.com>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, William Dean <williamsukatube@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 6, 2023 at 4:06 PM Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9=
-.com> wrote:
->
-> On 6.03.2023 17:07, Sergio Paracuellos wrote:
-> > On Fri, Mar 3, 2023 at 3:18 PM Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@ar=
-inc9.com> wrote:
-> >>
-> >> Heyo,
-> >>
-> >> On 3.03.2023 13:57, Sergio Paracuellos wrote:
-> >>> Hi Ar=C4=B1n=C3=A7,
-> >>>
-> >>> On Fri, Mar 3, 2023 at 9:16 AM Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@=
-arinc9.com> wrote:
-> >>>>
-> >>>> Hey Sergio,
-> >>>>
-> >>>> On 3.03.2023 09:34, Sergio Paracuellos wrote:
-> >>>>> On Fri, Mar 3, 2023 at 7:17 AM Sergio Paracuellos
-> >>>>> <sergio.paracuellos@gmail.com> wrote:
-> >>>>>>
-> >>>>>>     Hi Ar=C4=B1n=C3=A7,
-> >>>>>>
-> >>>>>> On Fri, Mar 3, 2023 at 1:30 AM <arinc9.unal@gmail.com> wrote:
-> >>>>>>>
-> >>>>>>> From: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
-> >>>>>>>
-> >>>>>>> This platform from Ralink was acquired by MediaTek in 2011. Then,=
- MediaTek
-> >>>>>>> introduced new SoCs which utilise this platform. Move the driver =
-to
-> >>>>>>> mediatek pinctrl directory. Rename the ralink core driver to mtmi=
-ps.
-> >>>>>>>
-> >>>>>>> Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
-> >>>>>>> ---
-> >>>>>>>     drivers/pinctrl/Kconfig                       |  1 -
-> >>>>>>>     drivers/pinctrl/Makefile                      |  1 -
-> >>>>>>>     drivers/pinctrl/mediatek/Kconfig              | 51 ++++++++++=
--
-> >>>>>>>     drivers/pinctrl/mediatek/Makefile             | 63 +++++++---=
+The item which have the mediatek,mt8192-disp-ccorr const compatible already
+exist above. Remove duplicated fallback.
+
+Fixes: 137272ef1b0f ("dt-bindings: display: mediatek: Fix the fallback for mediatek,mt8186-disp-ccorr")
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
-> >>>>>>>     .../{ralink =3D> mediatek}/pinctrl-mt7620.c     | 34 +++----
-> >>>>>>>     .../{ralink =3D> mediatek}/pinctrl-mt7621.c     | 30 +++----
-> >>>>>>>     .../{ralink =3D> mediatek}/pinctrl-mt76x8.c     | 60 ++++++--=
------
-> >>>>>>>     .../pinctrl-mtmips.c}                         | 90 +++++++++-=
----------
-> >>>>>>>     .../pinctrl-mtmips.h}                         | 16 ++--
-> >>>>>>>     .../{ralink =3D> mediatek}/pinctrl-rt2880.c     | 20 ++---
-> >>>>>>>     .../{ralink =3D> mediatek}/pinctrl-rt305x.c     | 44 ++++----=
--
-> >>>>>>>     .../{ralink =3D> mediatek}/pinctrl-rt3883.c     | 28 +++---
-> >>>>>>>     drivers/pinctrl/ralink/Kconfig                | 40 ---------
-> >>>>>>>     drivers/pinctrl/ralink/Makefile               |  9 --
-> >>>>>>>     14 files changed, 246 insertions(+), 241 deletions(-)
-> >>>>>>>     rename drivers/pinctrl/{ralink =3D> mediatek}/pinctrl-mt7620.=
-c (81%)
-> >>>>>>>     rename drivers/pinctrl/{ralink =3D> mediatek}/pinctrl-mt7621.=
-c (80%)
-> >>>>>>>     rename drivers/pinctrl/{ralink =3D> mediatek}/pinctrl-mt76x8.=
-c (81%)
-> >>>>>>>     rename drivers/pinctrl/{ralink/pinctrl-ralink.c =3D> mediatek=
-/pinctrl-mtmips.c} (74%)
-> >>>>>>>     rename drivers/pinctrl/{ralink/pinctrl-ralink.h =3D> mediatek=
-/pinctrl-mtmips.h} (75%)
-> >>>>>>>     rename drivers/pinctrl/{ralink =3D> mediatek}/pinctrl-rt2880.=
-c (71%)
-> >>>>>>>     rename drivers/pinctrl/{ralink =3D> mediatek}/pinctrl-rt305x.=
-c (75%)
-> >>>>>>>     rename drivers/pinctrl/{ralink =3D> mediatek}/pinctrl-rt3883.=
-c (80%)
-> >>>>>>>     delete mode 100644 drivers/pinctrl/ralink/Kconfig
-> >>>>>>>     delete mode 100644 drivers/pinctrl/ralink/Makefile
-> >>>>>>>
-> >>>>>>> diff --git a/drivers/pinctrl/Kconfig b/drivers/pinctrl/Kconfig
-> >>>>>>> index dcb53c4a9584..8a6012770640 100644
-> >>>>>>> --- a/drivers/pinctrl/Kconfig
-> >>>>>>> +++ b/drivers/pinctrl/Kconfig
-> >>>>>>> @@ -537,7 +537,6 @@ source "drivers/pinctrl/nomadik/Kconfig"
-> >>>>>>>     source "drivers/pinctrl/nuvoton/Kconfig"
-> >>>>>>>     source "drivers/pinctrl/pxa/Kconfig"
-> >>>>>>>     source "drivers/pinctrl/qcom/Kconfig"
-> >>>>>>> -source "drivers/pinctrl/ralink/Kconfig"
-> >>>>>>>     source "drivers/pinctrl/renesas/Kconfig"
-> >>>>>>>     source "drivers/pinctrl/samsung/Kconfig"
-> >>>>>>>     source "drivers/pinctrl/spear/Kconfig"
-> >>>>>>> diff --git a/drivers/pinctrl/Makefile b/drivers/pinctrl/Makefile
-> >>>>>>> index d5939840bb2a..ada6ed1d4e91 100644
-> >>>>>>> --- a/drivers/pinctrl/Makefile
-> >>>>>>> +++ b/drivers/pinctrl/Makefile
-> >>>>>>> @@ -66,7 +66,6 @@ obj-y                         +=3D nomadik/
-> >>>>>>>     obj-y                          +=3D nuvoton/
-> >>>>>>>     obj-$(CONFIG_PINCTRL_PXA)      +=3D pxa/
-> >>>>>>>     obj-$(CONFIG_ARCH_QCOM)                +=3D qcom/
-> >>>>>>> -obj-$(CONFIG_PINCTRL_RALINK)   +=3D ralink/
-> >>>>>>>     obj-$(CONFIG_PINCTRL_RENESAS)  +=3D renesas/
-> >>>>>>>     obj-$(CONFIG_PINCTRL_SAMSUNG)  +=3D samsung/
-> >>>>>>>     obj-$(CONFIG_PINCTRL_SPEAR)    +=3D spear/
-> >>>>>>> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/m=
-ediatek/Kconfig
-> >>>>>>> index a71874fed3d6..2eeb55010563 100644
-> >>>>>>> --- a/drivers/pinctrl/mediatek/Kconfig
-> >>>>>>> +++ b/drivers/pinctrl/mediatek/Kconfig
-> >>>>>>> @@ -1,6 +1,6 @@
-> >>>>>>>     # SPDX-License-Identifier: GPL-2.0-only
-> >>>>>>>     menu "MediaTek pinctrl drivers"
-> >>>>>>> -       depends on ARCH_MEDIATEK || COMPILE_TEST
-> >>>>>>> +       depends on ARCH_MEDIATEK || RALINK || COMPILE_TEST
-> >>>>>>>
-> >>>>>>>     config EINT_MTK
-> >>>>>>>            tristate "MediaTek External Interrupt Support"
-> >>>>>>> @@ -22,6 +22,12 @@ config PINCTRL_MTK
-> >>>>>>>     config PINCTRL_MTK_V2
-> >>>>>>>            tristate
-> >>>>>>>
-> >>>>>>> +config PINCTRL_MTK_MTMIPS
-> >>>>>>> +       bool
-> >>>>>>> +       depends on RALINK
-> >>>>>>> +       select PINMUX
-> >>>>>>> +       select GENERIC_PINCONF
-> >>>>>>> +
-> >>>>>>>     config PINCTRL_MTK_MOORE
-> >>>>>>>            bool
-> >>>>>>>            depends on OF
-> >>>>>>> @@ -43,6 +49,49 @@ config PINCTRL_MTK_PARIS
-> >>>>>>>            select OF_GPIO
-> >>>>>>>            select PINCTRL_MTK_V2
-> >>>>>>>
-> >>>>>>> +# For MIPS SoCs
-> >>>>>>> +config PINCTRL_MT7620
-> >>>>>>> +       bool "MediaTek MT7620 pin control"
-> >>>>>>> +       depends on SOC_MT7620 || COMPILE_TEST
-> >>>>>>> +       depends on RALINK
-> >>>>>>> +       default SOC_MT7620
-> >>>>>>> +       select PINCTRL_MTK_MTMIPS
-> >>>>>>> +
-> >>>>>>> +config PINCTRL_MT7621
-> >>>>>>> +       bool "MediaTek MT7621 pin control"
-> >>>>>>> +       depends on SOC_MT7621 || COMPILE_TEST
-> >>>>>>> +       depends on RALINK
-> >>>>>>> +       default SOC_MT7621
-> >>>>>>> +       select PINCTRL_MTK_MTMIPS
-> >>>>>>> +
-> >>>>>>> +config PINCTRL_MT76X8
-> >>>>>>> +       bool "MediaTek MT76X8 pin control"
-> >>>>>>> +       depends on SOC_MT7620 || COMPILE_TEST
-> >>>>>>> +       depends on RALINK
-> >>>>>>> +       default SOC_MT7620
-> >>>>>>> +       select PINCTRL_MTK_MTMIPS
-> >>>>>>> +
-> >>>>>>> +config PINCTRL_RT2880
-> >>>>>>> +       bool "Ralink RT2880 pin control"
-> >>>>>>> +       depends on SOC_RT288X || COMPILE_TEST
-> >>>>>>> +       depends on RALINK
-> >>>>>>> +       default SOC_RT288X
-> >>>>>>> +       select PINCTRL_MTK_MTMIPS
-> >>>>>>> +
-> >>>>>>> +config PINCTRL_RT305X
-> >>>>>>> +       bool "Ralink RT305X pin control"
-> >>>>>>> +       depends on SOC_RT305X || COMPILE_TEST
-> >>>>>>> +       depends on RALINK
-> >>>>>>> +       default SOC_RT305X
-> >>>>>>> +       select PINCTRL_MTK_MTMIPS
-> >>>>>>> +
-> >>>>>>> +config PINCTRL_RT3883
-> >>>>>>> +       bool "Ralink RT3883 pin control"
-> >>>>>>> +       depends on SOC_RT3883 || COMPILE_TEST
-> >>>>>>> +       depends on RALINK
-> >>>>>>> +       default SOC_RT3883
-> >>>>>>> +       select PINCTRL_MTK_MTMIPS
-> >>>>>>> +
-> >>>>>>
-> >>>>>> I am not a Kconfig expert at all but...
-> >>>>>>
-> >>>>>> Should not all of these be depends on SOC_XXX || (COMPILE_TEST &&
-> >>>>>> RALINK) and avoid the " depends on RALINK" next line in all of the=
-m?
-> >>>>
-> >>>> This seems to do the same thing but I'm following the "either change
-> >>>> them all or fit into the crowd" ideology.
-> >>>>
-> >>>>>>
-> >>>>>> Just asking since we have yet arch read and write register operati=
-ons
-> >>>>>> in pinctrl common ralink code. Having in this way, when we address
-> >>>>>> this arch thing  in the next series just removing the "&& RALINK" =
-part
-> >>>>>> makes the review pretty obvious.
-> >>>>
-> >>>> You'd have to change RALINK with OF since we're still depending on t=
-hat.
-> >>>> RALINK selects OF by default so it's currently a hidden dependency.
-> >>>>
-> >>>>>>
-> >>>>>> Other than that, changes look good to me.
-> >>>>>
-> >>>>> I think "depends on SOC_XXX || (COMPILE_TEST && MIPS)" would work a=
-lso
-> >>>>> and might be more accurate for compile testing targets.
-> >>>
-> >>> Are you sure? SOC_XXX here is already being enabled only if RALINK is
-> >>> already enabled, right? [0]
-> >>
-> >> I'm not sure who's your reply to, or what it's about here.
-> >
-> > Bad insertion between lines, sorry :). I was just trying to explain to
-> > you that SOC_RTXX ralink stuff is only available when RALINK is
-> > already selected.
->
-> Makes sense. However, I believe what I said below is still true. This
-> option will be available to compile if a Ralink SoC (and therefore
-> RALINK) is enabled, OR, COMPILE_TEST and MIPS is enabled. The latter
-> will fail to compile if the enabled MIPS platform is not RALINK.
->
-> >
-> >>
-> >>>
-> >>>>
-> >>>> This is not OK in both cases. If the driver is dependent on Ralink
-> >>>> architecture code, choosing any other MIPS platform will make the dr=
-iver
-> >>>> available to compile, which will fail.
-> >>>
-> >>> SOC_XXX is already dependent on RALINK for real uses but the driver i=
-s
-> >>> going to be selected for other MIPS platforms only for COMPILE_TEST
-> >>> targets. Ideally drivers should be arch agnostic so can be selected
-> >>> for any single arch build. Now we have arch dependent read and write
-> >>> calls in the code, so you need the right headers to be properly found
-> >>> to be able to compile testing. I think MIPS is enough dependency here
-> >>> to properly find them. But if not, this should be (COMPILE_TEST &&
-> >>> RALINK)
-> >>
-> >> I expect below to work without requiring the MIPS option.
-> >>
-> >> ifeq ($(CONFIG_COMPILE_TEST),y)
-> >> CFLAGS_pinctrl-mtmips.o         +=3D -I$(srctree)/arch/mips/include
-> >> endif
-> >
-> > Yes, this will work but won't be necessary at all when we get rid of
-> > ralink arch dependent code in the next series.
->
-> Oh, you plan to completely get rid of it, including headers. That's bette=
-r!
+Fix MTK color correction binding
 
-I'd really love to get rid of all of that, yes.
+The fallback compatible has been duplicated in the 137272ef1b0f commit.
 
->
-> However, rt305x_pinctrl_probe() on pinctrl-rt305x.c needs them to find
-> out the SoC to match the pinmux data. Sure, splitting the driver further
-> will work but I'm wondering if you've got something else in mind to
-> address this.
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+To: David Airlie <airlied@gmail.com>
+To: Daniel Vetter <daniel@ffwll.ch>
+To: Rob Herring <robh+dt@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>
+Cc: dri-devel@lists.freedesktop.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: devicetree@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+---
+Changes in v2:
+- Fix commit title.
+- Link to v1: https://lore.kernel.org/r/20230306-ccorr-binding-fix-v1-0-177d81d60c69@baylibre.com
+---
+ Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml | 3 ---
+ 1 file changed, 3 deletions(-)
 
-I know. Sharing the same compatible string makes really hard to do
-this easily. One of my thoughts was to split also that in the driver
-as you are pointing out here. I have also submitted this series [0] to
-be able to make use of soc_match stuff instead of relying on
-compatible strings for these kinds of situations. However I am not
-also sure that would be a valid approach. Let's see. At the end we can
-end up splitting the driver if nothing seems to work.
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+index b04820c95b22..3aaf44719786 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+@@ -29,9 +29,6 @@ properties:
+           - enum:
+               - mediatek,mt8188-disp-ccorr
+               - mediatek,mt8195-disp-ccorr
+-          - const: mediatek,mt8192-disp-ccorr
+-      - items:
+-          - enum:
+               - mediatek,mt8186-disp-ccorr
+           - const: mediatek,mt8192-disp-ccorr
+ 
 
-Thanks,
-    Sergio Paracuellos
+---
+base-commit: add072536971d7ce891fde3cdbf68c55e7cfa95a
+change-id: 20230306-ccorr-binding-fix-718c6d725088
 
-[0]: https://lore.kernel.org/linux-mips/20230227105806.2394101-1-sergio.par=
-acuellos@gmail.com/T/#t
-
->
-> Ar=C4=B1n=C3=A7
+Best regards,
+-- 
+Alexandre Mergnat <amergnat@baylibre.com>
 
