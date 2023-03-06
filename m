@@ -4,70 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD861C6FA99
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 15:06:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A93BFC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 15:32:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r4agI4LPy6FgrB7KmjsZNdXZS2ptKpPbaUnL77FGf/Q=; b=ovLqYP4h2Ff/v7
-	iLEl6WKzz4fPpcZw8YLSF1/QgKMQ6FDptUkMTx2bhRd/6uxMkn+UloPSTE5unKB9zJqF7sQbpiTs5
-	97U6l4s7DE0gHpfN1nxg54K18Frajdb4Y4rr1CQeqMazdcXcDphZ2a65R8T+phDipDtl4lFzPq8ND
-	ZqetT4hHZ67OM6eh4l3RiZm5btIe4hinhqnrEglk0bzzzKKhNQdOuuXYOrfANikydIpTwzDxXmSZZ
-	8PwcaoAYJpnuHL1cMc25n57BCZB0XMSi41YhBmZkETugOU3BS13Y5Stykxl/M1EeqBIbmofMiOe+S
-	CQIBXR/HFSLg6XvLLvjw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JRQrl5U9lMtNgzq+MdqmyJdFN3iRrkVwUAs+rJ7mf28=; b=ODRc8qil1L/vw+UaPtc73ofl8I
+	70jNZW7ZSpGd4WIFNt17IvKiP2vgBq1Rbc5AvlKlkalbrlX1B9vUPERbfaeBgOrczkydJELGDIKk9
+	L+a8Vs+5wWrS2vW0YAR70JkbhwSzL9oAh6xX2jj7ADyNm9VrwWdeIRSrQmae880N/4S0SxKSnKvW8
+	+HMHuEvv7xZ0Vy+S34kKOmWXHnjkJawoJzZ8ij3wwS9WoFevjXJyjDlThV+xcXH+jHiqRVROLDIq8
+	GNTKo70Wurlr3ogYXmaUIdPW0vhyzEpUmJ9R3lnGmd9/ULbhBOx50f2WNJqBYCoVen3A4fthDSzcp
+	ZVJ2Jpxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZCPS-00DWoF-8N; Mon, 06 Mar 2023 15:05:54 +0000
-Received: from sender3-op-o19.zoho.com ([136.143.184.19])
+	id 1pZCov-00DbeW-9p; Mon, 06 Mar 2023 15:32:13 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZCPJ-00DWke-U9; Mon, 06 Mar 2023 15:05:47 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1678115119; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=UfPOFHMkdznd87JloIZ8m86p2pzNt/ccXTXFMPx15ukx6u+sUh4eFRNxN/SjSxRAdR9Hf44KKzFTe/G97mqk3vx7SJq8thkUNWrSJUbcDNkiBCz9H6gI4XJdqo1n+Egk8WjUhX7cRLtzYM2xKz17HABr5jlayh7b6LCDqpaqUjE=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1678115119; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=r4agI4LPy6FgrB7KmjsZNdXZS2ptKpPbaUnL77FGf/Q=; 
-	b=J/QnisgZ682RVINtjzd9lgPKZPfrI+eArLZmSESG9jDjCKzwfr0JxbcyY7UONEQNVztCPaS4v2of3m+hBYg1nmEjgpmYkRqzRBFy/jclUylc2nEnYNShCNM3N0++bB1f3wBgcAvJNeXz6Edauld7ytwdt7Lv7XvxPFJfC1TbZxI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1678115119;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=r4agI4LPy6FgrB7KmjsZNdXZS2ptKpPbaUnL77FGf/Q=;
-	b=O9WulbGt9HymcV/5FnXMxwZ6zaVhKW8w40iy412QIjuX23UgcV5vFm9oOAL9fTgx
-	A2ZlB7LFfM5hOc/a+ay+3N80Qw9Orr3AqAR/BvBTOsahTPSPCK7Y0xbw5CKNnkCg9oC
-	eYHDsBBkBLygKVXfaTyJxB1wYIBermYrn8Gz0Nyg=
-Received: from [10.10.10.3] (212.68.60.226 [212.68.60.226]) by mx.zohomail.com
-	with SMTPS id 1678115118236395.4353396149395; Mon, 6 Mar 2023 07:05:18 -0800 (PST)
-Message-ID: <00d4dd34-efe5-8bc7-031a-0f9d19a1b8e0@arinc9.com>
-Date: Mon, 6 Mar 2023 18:05:12 +0300
+	id 1pZCoj-00Dbb3-Ud; Mon, 06 Mar 2023 15:32:04 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id DA65961013;
+	Mon,  6 Mar 2023 15:32:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4B422C433A8;
+	Mon,  6 Mar 2023 15:31:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1678116719;
+	bh=rRHqdKMHPWS/LjhmJ23Rc1dXdnIHUm1Jr8BzRDwRJ+0=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=aSYzF2ecWPWDMaM6cUrTAMbvIsldA4drf9R+JCTEQvmvwViieJhkO01+/M5p98Kuo
+	 saMe6/z+BUS9J4uZjhd/5krgzQdNI6x8QKQA8krznQtBcv/qf+MPI4/QIp5Q/9HuUF
+	 tcBKeyQR+1FDqCJhMiHFLMB8axxHXDSLAmvHwdw0Li5Njdf2mBoqZ91W/R4FKECexw
+	 EI3p/1pFrsqemTCqc/E/dQQuvzlGzQZb0hmDzQykxD1xliTpLrak7gyWalzAhLmnd7
+	 wlSnfxNiPhjl+dBU47YD1fXyySt3wCUrbqjbG1SGq7tXvh80IjkFcKaaM4TaabS9YQ
+	 xJYyRlkmo5Z/A==
+Received: by mail-lj1-f176.google.com with SMTP id x6so10090132ljq.1;
+        Mon, 06 Mar 2023 07:31:59 -0800 (PST)
+X-Gm-Message-State: AO0yUKXRShTFxXF/a9ySJ4Pbh9s9jSxTC7R1ZINmhJJ1Ct640jGFw3xn
+	BwAZMcsPGPp7uWiO20+JQHpnGecNGZjHIlYmlw==
+X-Google-Smtp-Source: AK7set8UntwEJ6mrYVsM5Db2la8gI8Llk2OG70nJiG7YKqjsiVHpGpJYhjWb4W9quf1biMBNHaS9hrRgUlcM3rripuo=
+X-Received: by 2002:a2e:a0d2:0:b0:296:a59d:c969 with SMTP id
+ f18-20020a2ea0d2000000b00296a59dc969mr5890413ljm.5.1678116717143; Mon, 06 Mar
+ 2023 07:31:57 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH 05/20] pinctrl: ralink: move to mediatek as mtmips
-Content-Language: en-US
-To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-References: <20230303002850.51858-1-arinc.unal@arinc9.com>
- <20230303002850.51858-6-arinc.unal@arinc9.com>
- <CAMhs-H-VGjP32AZc2cuY=Co4iqx8xPtvjr+hMg-haMMFaQzzsg@mail.gmail.com>
- <CAMhs-H8OsG-SEWigimG3fT-SGjZruH-7tnjff198Z2qhb0O=yA@mail.gmail.com>
- <2106f6d0-63cc-4656-1e52-19640994fb43@arinc9.com>
- <CAMhs-H869pR6CzaWfvf44w-ak+0OCyxnMEEU4kWYpw=C14ShsQ@mail.gmail.com>
- <fc6dc970-5bae-1c27-9473-8c9d90ac79a1@arinc9.com>
- <CAMhs-H_SryQqCZ3mB_VsO20ZSvKCMR5V9E7wrt+a-kbcqQxsWQ@mail.gmail.com>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <CAMhs-H_SryQqCZ3mB_VsO20ZSvKCMR5V9E7wrt+a-kbcqQxsWQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+References: <20221107072413.16178-1-nancy.lin@mediatek.com> <20221107072413.16178-2-nancy.lin@mediatek.com>
+In-Reply-To: <20221107072413.16178-2-nancy.lin@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 6 Mar 2023 23:31:45 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__4R==J+v7etAHyaHokFGRC=phqBzR0oUXizhT2pFDotQ@mail.gmail.com>
+Message-ID: <CAAOTY__4R==J+v7etAHyaHokFGRC=phqBzR0oUXizhT2pFDotQ@mail.gmail.com>
+Subject: Re: [PATCH v28 1/7] dt-bindings: mediatek: add ethdr definition for mt8195
+To: "Nancy.Lin" <nancy.lin@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, wim@linux-watchdog.org, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux@roeck-us.net, 
+	nfraprado@collabora.com, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
+	Nathan Chancellor <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>, 
+	"jason-jh . lin" <jason-jh.lin@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	dri-devel@lists.freedesktop.org, llvm@lists.linux.dev, 
+	singo.chang@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230306_070546_060843_8F445E1A 
-X-CRM114-Status: GOOD (  30.24  )
+X-CRM114-CacheID: sfid-20230306_073202_135122_63FBE258 
+X-CRM114-Status: GOOD (  22.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,230 +84,276 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Daniel Santos <daniel.santos@pobox.com>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, William Dean <williamsukatube@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6.03.2023 17:07, Sergio Paracuellos wrote:
-> On Fri, Mar 3, 2023 at 3:18 PM Arınç ÜNAL <arinc.unal@arinc9.com> wrote:
->>
->> Heyo,
->>
->> On 3.03.2023 13:57, Sergio Paracuellos wrote:
->>> Hi Arınç,
->>>
->>> On Fri, Mar 3, 2023 at 9:16 AM Arınç ÜNAL <arinc.unal@arinc9.com> wrote:
->>>>
->>>> Hey Sergio,
->>>>
->>>> On 3.03.2023 09:34, Sergio Paracuellos wrote:
->>>>> On Fri, Mar 3, 2023 at 7:17 AM Sergio Paracuellos
->>>>> <sergio.paracuellos@gmail.com> wrote:
->>>>>>
->>>>>>     Hi Arınç,
->>>>>>
->>>>>> On Fri, Mar 3, 2023 at 1:30 AM <arinc9.unal@gmail.com> wrote:
->>>>>>>
->>>>>>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>>>>>>
->>>>>>> This platform from Ralink was acquired by MediaTek in 2011. Then, MediaTek
->>>>>>> introduced new SoCs which utilise this platform. Move the driver to
->>>>>>> mediatek pinctrl directory. Rename the ralink core driver to mtmips.
->>>>>>>
->>>>>>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->>>>>>> ---
->>>>>>>     drivers/pinctrl/Kconfig                       |  1 -
->>>>>>>     drivers/pinctrl/Makefile                      |  1 -
->>>>>>>     drivers/pinctrl/mediatek/Kconfig              | 51 ++++++++++-
->>>>>>>     drivers/pinctrl/mediatek/Makefile             | 63 +++++++------
->>>>>>>     .../{ralink => mediatek}/pinctrl-mt7620.c     | 34 +++----
->>>>>>>     .../{ralink => mediatek}/pinctrl-mt7621.c     | 30 +++----
->>>>>>>     .../{ralink => mediatek}/pinctrl-mt76x8.c     | 60 ++++++-------
->>>>>>>     .../pinctrl-mtmips.c}                         | 90 +++++++++----------
->>>>>>>     .../pinctrl-mtmips.h}                         | 16 ++--
->>>>>>>     .../{ralink => mediatek}/pinctrl-rt2880.c     | 20 ++---
->>>>>>>     .../{ralink => mediatek}/pinctrl-rt305x.c     | 44 ++++-----
->>>>>>>     .../{ralink => mediatek}/pinctrl-rt3883.c     | 28 +++---
->>>>>>>     drivers/pinctrl/ralink/Kconfig                | 40 ---------
->>>>>>>     drivers/pinctrl/ralink/Makefile               |  9 --
->>>>>>>     14 files changed, 246 insertions(+), 241 deletions(-)
->>>>>>>     rename drivers/pinctrl/{ralink => mediatek}/pinctrl-mt7620.c (81%)
->>>>>>>     rename drivers/pinctrl/{ralink => mediatek}/pinctrl-mt7621.c (80%)
->>>>>>>     rename drivers/pinctrl/{ralink => mediatek}/pinctrl-mt76x8.c (81%)
->>>>>>>     rename drivers/pinctrl/{ralink/pinctrl-ralink.c => mediatek/pinctrl-mtmips.c} (74%)
->>>>>>>     rename drivers/pinctrl/{ralink/pinctrl-ralink.h => mediatek/pinctrl-mtmips.h} (75%)
->>>>>>>     rename drivers/pinctrl/{ralink => mediatek}/pinctrl-rt2880.c (71%)
->>>>>>>     rename drivers/pinctrl/{ralink => mediatek}/pinctrl-rt305x.c (75%)
->>>>>>>     rename drivers/pinctrl/{ralink => mediatek}/pinctrl-rt3883.c (80%)
->>>>>>>     delete mode 100644 drivers/pinctrl/ralink/Kconfig
->>>>>>>     delete mode 100644 drivers/pinctrl/ralink/Makefile
->>>>>>>
->>>>>>> diff --git a/drivers/pinctrl/Kconfig b/drivers/pinctrl/Kconfig
->>>>>>> index dcb53c4a9584..8a6012770640 100644
->>>>>>> --- a/drivers/pinctrl/Kconfig
->>>>>>> +++ b/drivers/pinctrl/Kconfig
->>>>>>> @@ -537,7 +537,6 @@ source "drivers/pinctrl/nomadik/Kconfig"
->>>>>>>     source "drivers/pinctrl/nuvoton/Kconfig"
->>>>>>>     source "drivers/pinctrl/pxa/Kconfig"
->>>>>>>     source "drivers/pinctrl/qcom/Kconfig"
->>>>>>> -source "drivers/pinctrl/ralink/Kconfig"
->>>>>>>     source "drivers/pinctrl/renesas/Kconfig"
->>>>>>>     source "drivers/pinctrl/samsung/Kconfig"
->>>>>>>     source "drivers/pinctrl/spear/Kconfig"
->>>>>>> diff --git a/drivers/pinctrl/Makefile b/drivers/pinctrl/Makefile
->>>>>>> index d5939840bb2a..ada6ed1d4e91 100644
->>>>>>> --- a/drivers/pinctrl/Makefile
->>>>>>> +++ b/drivers/pinctrl/Makefile
->>>>>>> @@ -66,7 +66,6 @@ obj-y                         += nomadik/
->>>>>>>     obj-y                          += nuvoton/
->>>>>>>     obj-$(CONFIG_PINCTRL_PXA)      += pxa/
->>>>>>>     obj-$(CONFIG_ARCH_QCOM)                += qcom/
->>>>>>> -obj-$(CONFIG_PINCTRL_RALINK)   += ralink/
->>>>>>>     obj-$(CONFIG_PINCTRL_RENESAS)  += renesas/
->>>>>>>     obj-$(CONFIG_PINCTRL_SAMSUNG)  += samsung/
->>>>>>>     obj-$(CONFIG_PINCTRL_SPEAR)    += spear/
->>>>>>> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
->>>>>>> index a71874fed3d6..2eeb55010563 100644
->>>>>>> --- a/drivers/pinctrl/mediatek/Kconfig
->>>>>>> +++ b/drivers/pinctrl/mediatek/Kconfig
->>>>>>> @@ -1,6 +1,6 @@
->>>>>>>     # SPDX-License-Identifier: GPL-2.0-only
->>>>>>>     menu "MediaTek pinctrl drivers"
->>>>>>> -       depends on ARCH_MEDIATEK || COMPILE_TEST
->>>>>>> +       depends on ARCH_MEDIATEK || RALINK || COMPILE_TEST
->>>>>>>
->>>>>>>     config EINT_MTK
->>>>>>>            tristate "MediaTek External Interrupt Support"
->>>>>>> @@ -22,6 +22,12 @@ config PINCTRL_MTK
->>>>>>>     config PINCTRL_MTK_V2
->>>>>>>            tristate
->>>>>>>
->>>>>>> +config PINCTRL_MTK_MTMIPS
->>>>>>> +       bool
->>>>>>> +       depends on RALINK
->>>>>>> +       select PINMUX
->>>>>>> +       select GENERIC_PINCONF
->>>>>>> +
->>>>>>>     config PINCTRL_MTK_MOORE
->>>>>>>            bool
->>>>>>>            depends on OF
->>>>>>> @@ -43,6 +49,49 @@ config PINCTRL_MTK_PARIS
->>>>>>>            select OF_GPIO
->>>>>>>            select PINCTRL_MTK_V2
->>>>>>>
->>>>>>> +# For MIPS SoCs
->>>>>>> +config PINCTRL_MT7620
->>>>>>> +       bool "MediaTek MT7620 pin control"
->>>>>>> +       depends on SOC_MT7620 || COMPILE_TEST
->>>>>>> +       depends on RALINK
->>>>>>> +       default SOC_MT7620
->>>>>>> +       select PINCTRL_MTK_MTMIPS
->>>>>>> +
->>>>>>> +config PINCTRL_MT7621
->>>>>>> +       bool "MediaTek MT7621 pin control"
->>>>>>> +       depends on SOC_MT7621 || COMPILE_TEST
->>>>>>> +       depends on RALINK
->>>>>>> +       default SOC_MT7621
->>>>>>> +       select PINCTRL_MTK_MTMIPS
->>>>>>> +
->>>>>>> +config PINCTRL_MT76X8
->>>>>>> +       bool "MediaTek MT76X8 pin control"
->>>>>>> +       depends on SOC_MT7620 || COMPILE_TEST
->>>>>>> +       depends on RALINK
->>>>>>> +       default SOC_MT7620
->>>>>>> +       select PINCTRL_MTK_MTMIPS
->>>>>>> +
->>>>>>> +config PINCTRL_RT2880
->>>>>>> +       bool "Ralink RT2880 pin control"
->>>>>>> +       depends on SOC_RT288X || COMPILE_TEST
->>>>>>> +       depends on RALINK
->>>>>>> +       default SOC_RT288X
->>>>>>> +       select PINCTRL_MTK_MTMIPS
->>>>>>> +
->>>>>>> +config PINCTRL_RT305X
->>>>>>> +       bool "Ralink RT305X pin control"
->>>>>>> +       depends on SOC_RT305X || COMPILE_TEST
->>>>>>> +       depends on RALINK
->>>>>>> +       default SOC_RT305X
->>>>>>> +       select PINCTRL_MTK_MTMIPS
->>>>>>> +
->>>>>>> +config PINCTRL_RT3883
->>>>>>> +       bool "Ralink RT3883 pin control"
->>>>>>> +       depends on SOC_RT3883 || COMPILE_TEST
->>>>>>> +       depends on RALINK
->>>>>>> +       default SOC_RT3883
->>>>>>> +       select PINCTRL_MTK_MTMIPS
->>>>>>> +
->>>>>>
->>>>>> I am not a Kconfig expert at all but...
->>>>>>
->>>>>> Should not all of these be depends on SOC_XXX || (COMPILE_TEST &&
->>>>>> RALINK) and avoid the " depends on RALINK" next line in all of them?
->>>>
->>>> This seems to do the same thing but I'm following the "either change
->>>> them all or fit into the crowd" ideology.
->>>>
->>>>>>
->>>>>> Just asking since we have yet arch read and write register operations
->>>>>> in pinctrl common ralink code. Having in this way, when we address
->>>>>> this arch thing  in the next series just removing the "&& RALINK" part
->>>>>> makes the review pretty obvious.
->>>>
->>>> You'd have to change RALINK with OF since we're still depending on that.
->>>> RALINK selects OF by default so it's currently a hidden dependency.
->>>>
->>>>>>
->>>>>> Other than that, changes look good to me.
->>>>>
->>>>> I think "depends on SOC_XXX || (COMPILE_TEST && MIPS)" would work also
->>>>> and might be more accurate for compile testing targets.
->>>
->>> Are you sure? SOC_XXX here is already being enabled only if RALINK is
->>> already enabled, right? [0]
->>
->> I'm not sure who's your reply to, or what it's about here.
-> 
-> Bad insertion between lines, sorry :). I was just trying to explain to
-> you that SOC_RTXX ralink stuff is only available when RALINK is
-> already selected.
+Hi, Nancy:
 
-Makes sense. However, I believe what I said below is still true. This 
-option will be available to compile if a Ralink SoC (and therefore 
-RALINK) is enabled, OR, COMPILE_TEST and MIPS is enabled. The latter 
-will fail to compile if the enabled MIPS platform is not RALINK.
+I've lost the v29 mail, so I reply in this mail for v29.
+I got some message by make dt_binding_check.
 
-> 
->>
->>>
->>>>
->>>> This is not OK in both cases. If the driver is dependent on Ralink
->>>> architecture code, choosing any other MIPS platform will make the driver
->>>> available to compile, which will fail.
->>>
->>> SOC_XXX is already dependent on RALINK for real uses but the driver is
->>> going to be selected for other MIPS platforms only for COMPILE_TEST
->>> targets. Ideally drivers should be arch agnostic so can be selected
->>> for any single arch build. Now we have arch dependent read and write
->>> calls in the code, so you need the right headers to be properly found
->>> to be able to compile testing. I think MIPS is enough dependency here
->>> to properly find them. But if not, this should be (COMPILE_TEST &&
->>> RALINK)
->>
->> I expect below to work without requiring the MIPS option.
->>
->> ifeq ($(CONFIG_COMPILE_TEST),y)
->> CFLAGS_pinctrl-mtmips.o         += -I$(srctree)/arch/mips/include
->> endif
-> 
-> Yes, this will work but won't be necessary at all when we get rid of
-> ralink arch dependent code in the next series.
+/home/chunkuang/git/linux/Documentation/devicetree/bindings/display/mediate=
+k/mediatek,ethdr.example.dtb:
+hdr-engine@1c114000: mediatek,gce-client-reg:0: [4294967295, 7, 16384,
+4096, 4294967295, 7, 20480, 4096, 4294967295, 7, 28672, 4096,
+4294967295, 7, 36864, 4096, 4294967295, 7, 40960, 4096, 4294967295, 7,
+45056, 4096, 4294967295, 7, 49152, 4096] is too long
+From schema: /home/chunkuang/git/linux/Documentation/devicetree/bindings/di=
+splay/mediatek/mediatek,ethdr.yaml
+/home/chunkuang/git/linux/Documentation/devicetree/bindings/display/mediate=
+k/mediatek,ethdr.example.dtb:
+hdr-engine@1c114000: mediatek,gce-client-reg: [[4294967295, 7, 16384,
+4096, 4294967295, 7, 20480, 4096, 4294967295, 7, 28672, 4096,
+4294967295, 7, 36864, 4096, 4294967295, 7, 40960, 4096, 4294967295, 7,
+45056, 4096, 4294967295, 7, 49152, 4096]] is too short
+From schema: /home/chunkuang/git/linux/Documentation/devicetree/bindings/di=
+splay/mediatek/mediatek,ethdr.yaml
 
-Oh, you plan to completely get rid of it, including headers. That's better!
+Regards,
+Chun-Kuang.
 
-However, rt305x_pinctrl_probe() on pinctrl-rt305x.c needs them to find 
-out the SoC to match the pinmux data. Sure, splitting the driver further 
-will work but I'm wondering if you've got something else in mind to 
-address this.
+Nancy.Lin <nancy.lin@mediatek.com> =E6=96=BC 2022=E5=B9=B411=E6=9C=887=E6=
+=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=883:24=E5=AF=AB=E9=81=93=EF=BC=9A
 
-Arınç
+>
+> Add vdosys1 ETHDR definition.
+>
+> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabor=
+a.com>
+> ---
+>  .../display/mediatek/mediatek,ethdr.yaml      | 188 ++++++++++++++++++
+>  1 file changed, 188 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/me=
+diatek,ethdr.yaml
+>
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+ethdr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,et=
+hdr.yaml
+> new file mode 100644
+> index 000000000000..3b11e47a8834
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.y=
+aml
+> @@ -0,0 +1,188 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/display/mediatek/mediatek,ethdr.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek Ethdr Device
+> +
+> +maintainers:
+> +  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> +  - Philipp Zabel <p.zabel@pengutronix.de>
+> +
+> +description:
+> +  ETHDR (ET High Dynamic Range) is a MediaTek internal HDR engine and is
+> +  designed for HDR video and graphics conversion in the external display=
+ path.
+> +  It handles multiple HDR input types and performs tone mapping, color
+> +  space/color format conversion, and then combine different layers,
+> +  output the required HDR or SDR signal to the subsequent display path.
+> +  This engine is composed of two video frontends, two graphic frontends,
+> +  one video backend and a mixer. ETHDR has two DMA function blocks, DS a=
+nd ADL.
+> +  These two function blocks read the pre-programmed registers from DRAM =
+and
+> +  set them to HW in the v-blanking period.
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt8195-disp-ethdr
+> +
+> +  reg:
+> +    maxItems: 7
+> +
+> +  reg-names:
+> +    items:
+> +      - const: mixer
+> +      - const: vdo_fe0
+> +      - const: vdo_fe1
+> +      - const: gfx_fe0
+> +      - const: gfx_fe1
+> +      - const: vdo_be
+> +      - const: adl_ds
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  iommus:
+> +    minItems: 1
+> +    maxItems: 2
+> +
+> +  clocks:
+> +    items:
+> +      - description: mixer clock
+> +      - description: video frontend 0 clock
+> +      - description: video frontend 1 clock
+> +      - description: graphic frontend 0 clock
+> +      - description: graphic frontend 1 clock
+> +      - description: video backend clock
+> +      - description: autodownload and menuload clock
+> +      - description: video frontend 0 async clock
+> +      - description: video frontend 1 async clock
+> +      - description: graphic frontend 0 async clock
+> +      - description: graphic frontend 1 async clock
+> +      - description: video backend async clock
+> +      - description: ethdr top clock
+> +
+> +  clock-names:
+> +    items:
+> +      - const: mixer
+> +      - const: vdo_fe0
+> +      - const: vdo_fe1
+> +      - const: gfx_fe0
+> +      - const: gfx_fe1
+> +      - const: vdo_be
+> +      - const: adl_ds
+> +      - const: vdo_fe0_async
+> +      - const: vdo_fe1_async
+> +      - const: gfx_fe0_async
+> +      - const: gfx_fe1_async
+> +      - const: vdo_be_async
+> +      - const: ethdr_top
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  resets:
+> +    items:
+> +      - description: video frontend 0 async reset
+> +      - description: video frontend 1 async reset
+> +      - description: graphic frontend 0 async reset
+> +      - description: graphic frontend 1 async reset
+> +      - description: video backend async reset
+> +
+> +  reset-names:
+> +    items:
+> +      - const: vdo_fe0_async
+> +      - const: vdo_fe1_async
+> +      - const: gfx_fe0_async
+> +      - const: gfx_fe1_async
+> +      - const: vdo_be_async
+> +
+> +  mediatek,gce-client-reg:
+> +    $ref: /schemas/types.yaml#/definitions/phandle-array
+> +    description: The register of display function block to be set by gce=
+.
+> +      There are 4 arguments in this property, gce node, subsys id, offse=
+t and
+> +      register size. The subsys id is defined in the gce header of each =
+chips
+> +      include/dt-bindings/gce/<chip>-gce.h, mapping to the register of d=
+isplay
+> +      function block.
+> +    items:
+> +      items:
+> +        - description: phandle of GCE
+> +        - description: GCE subsys id
+> +        - description: register offset
+> +        - description: register size
+> +    minItems: 7
+> +    maxItems: 7
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - clocks
+> +  - clock-names
+> +  - interrupts
+> +  - power-domains
+> +  - resets
+> +  - mediatek,gce-client-reg
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/clock/mt8195-clk.h>
+> +    #include <dt-bindings/gce/mt8195-gce.h>
+> +    #include <dt-bindings/memory/mt8195-memory-port.h>
+> +    #include <dt-bindings/power/mt8195-power.h>
+> +    #include <dt-bindings/reset/mt8195-resets.h>
+> +
+> +    soc {
+> +        #address-cells =3D <2>;
+> +        #size-cells =3D <2>;
+> +
+> +        hdr-engine@1c114000 {
+> +                compatible =3D "mediatek,mt8195-disp-ethdr";
+> +                reg =3D <0 0x1c114000 0 0x1000>,
+> +                      <0 0x1c115000 0 0x1000>,
+> +                      <0 0x1c117000 0 0x1000>,
+> +                      <0 0x1c119000 0 0x1000>,
+> +                      <0 0x1c11a000 0 0x1000>,
+> +                      <0 0x1c11b000 0 0x1000>,
+> +                      <0 0x1c11c000 0 0x1000>;
+> +                reg-names =3D "mixer", "vdo_fe0", "vdo_fe1", "gfx_fe0", =
+"gfx_fe1",
+> +                            "vdo_be", "adl_ds";
+> +                mediatek,gce-client-reg =3D <&gce0 SUBSYS_1c11XXXX 0x400=
+0 0x1000>,
+> +                                          <&gce0 SUBSYS_1c11XXXX 0x5000 =
+0x1000>,
+> +                                          <&gce0 SUBSYS_1c11XXXX 0x7000 =
+0x1000>,
+> +                                          <&gce0 SUBSYS_1c11XXXX 0x9000 =
+0x1000>,
+> +                                          <&gce0 SUBSYS_1c11XXXX 0xa000 =
+0x1000>,
+> +                                          <&gce0 SUBSYS_1c11XXXX 0xb000 =
+0x1000>,
+> +                                          <&gce0 SUBSYS_1c11XXXX 0xc000 =
+0x1000>;
+> +                clocks =3D <&vdosys1 CLK_VDO1_DISP_MIXER>,
+> +                         <&vdosys1 CLK_VDO1_HDR_VDO_FE0>,
+> +                         <&vdosys1 CLK_VDO1_HDR_VDO_FE1>,
+> +                         <&vdosys1 CLK_VDO1_HDR_GFX_FE0>,
+> +                         <&vdosys1 CLK_VDO1_HDR_GFX_FE1>,
+> +                         <&vdosys1 CLK_VDO1_HDR_VDO_BE>,
+> +                         <&vdosys1 CLK_VDO1_26M_SLOW>,
+> +                         <&vdosys1 CLK_VDO1_HDR_VDO_FE0_DL_ASYNC>,
+> +                         <&vdosys1 CLK_VDO1_HDR_VDO_FE1_DL_ASYNC>,
+> +                         <&vdosys1 CLK_VDO1_HDR_GFX_FE0_DL_ASYNC>,
+> +                         <&vdosys1 CLK_VDO1_HDR_GFX_FE1_DL_ASYNC>,
+> +                         <&vdosys1 CLK_VDO1_HDR_VDO_BE_DL_ASYNC>,
+> +                         <&topckgen CLK_TOP_ETHDR>;
+> +                clock-names =3D "mixer", "vdo_fe0", "vdo_fe1", "gfx_fe0"=
+, "gfx_fe1",
+> +                              "vdo_be", "adl_ds", "vdo_fe0_async", "vdo_=
+fe1_async",
+> +                              "gfx_fe0_async", "gfx_fe1_async","vdo_be_a=
+sync",
+> +                              "ethdr_top";
+> +                power-domains =3D <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
+> +                iommus =3D <&iommu_vpp M4U_PORT_L3_HDR_DS>,
+> +                         <&iommu_vpp M4U_PORT_L3_HDR_ADL>;
+> +                interrupts =3D <GIC_SPI 517 IRQ_TYPE_LEVEL_HIGH 0>; /* d=
+isp mixer */
+> +                resets =3D <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE=
+0_DL_ASYNC>,
+> +                         <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE1_=
+DL_ASYNC>,
+> +                         <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE0_=
+DL_ASYNC>,
+> +                         <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE1_=
+DL_ASYNC>,
+> +                         <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_BE_D=
+L_ASYNC>;
+> +                reset-names =3D "vdo_fe0_async", "vdo_fe1_async", "gfx_f=
+e0_async",
+> +                              "gfx_fe1_async", "vdo_be_async";
+> +        };
+> +    };
+> +...
+> --
+> 2.18.0
+>
 
