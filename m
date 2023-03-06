@@ -4,128 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26DD3C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 11:00:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB8F0C678D4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 12:16:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NErjUpAdH47H0dk39e6qFfX1x2szQH4h3c0TqOPnkjI=; b=zqSFSYw8ZiLK8TZzpcs/WcIIo2
-	eaICLCbxZwCBGzZP0lGjGcvOhhDGGhLD+DPFK9eV8WLavq29mgwjWMQ2zx41jopmHZv0rxdKUIoMm
-	AejJuRWA2eIwGoujGabRiDMuL0DiVVQmAP8PeX5I8+QmK2EYl1tFhSVbjU4zZqRQD30xB3Yd6s8b7
-	NQoOcHzj1gSa480wY33Vy/oxnm+vFR8s7tLcFnI4xn2SJuESqHyt5ih+ve/sxUHwN5G5Q2tu36vwn
-	9hFuOoMx4K/X90VBWp4B1jwIxSHXJvJOPL9G19dOBLrniTlkc3K2PZGDXoTiZbk91HmLRnq2PXhoP
-	aHmnvOFQ==;
+	bh=1g4AYGzxTWyuARpoPesNpg8EiVTXYK4wwkJzSL4nXXs=; b=HfBB8aTULsH7hsQsxCnFuADg6K
+	x+U1Dd9Hudzw3CCJS6S/9UxHrIodkzjpUN4qsZ83Th+PS5x79e7qDsxD3Z68QMwnGNbZec0oO8bG/
+	H1tbtFpWiLCi7ip2SBQLnXhoEY9btev96DAPT4KHsjRkP4SSHGCqp+LI55wkBmhQ+PKI+4VuBUO/v
+	w/eV0xkqZrl1ttMaltgDI73JRU9bGWAY2UYKQCqR9HN/MzoEE9Bigeqsyyec4P1RJ/vwysRDol1tF
+	49tIMiK/r2uUVkMd98UjY9JN/E1WtN2NJXYJ7jF/3mVhua9nCoHkSm/mffuiIQnon+NYE8GXdUMk3
+	cC5RwADA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZ8Zn-00CORz-Ja; Mon, 06 Mar 2023 11:00:19 +0000
-Received: from mail-mw2nam04on2071a.outbound.protection.outlook.com ([2a01:111:f400:7e8c::71a] helo=NAM04-MW2-obe.outbound.protection.outlook.com)
+	id 1pZ9l0-00CeKZ-SD; Mon, 06 Mar 2023 12:15:59 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZ8Zk-00COR7-MY; Mon, 06 Mar 2023 11:00:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ik9hDRumxDwtmE5Eh+BiZZWxKpqkeQmQFAeRfc3xGretPkqf6j1ykSOJKEplrZPyr+YY+O4DjKm4WVvws1u9AEWrppLJfpSaql92xfswWQMD6m2tDjAJcZ+3DuKRbckFc3uxYQf4XYC1Kw32k6vXRJx+QYEUjJvmgPEm5ETrm9Yww5nciaO6WL4E6+Xkox4I51452RVBM67oMW6tlefru5b8Dp3+wx8wnLSHUP3bd3/EYs3kvFlDY7OxVKz23B4EGFEd13+Fk0o7ozQiihVncHgc7FcOhEVvcyMcw6tSxDdddj7rsphJ/qXfbwk+BvEzBIvOEL2/KxA1PsGRvtz9hA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=NErjUpAdH47H0dk39e6qFfX1x2szQH4h3c0TqOPnkjI=;
- b=Kzy+MLODN49EukrBtVL9c+TtVloySz6QJMOnSaj2xG754MOAjgoCj48PN5hxGckWTQSeHtQ6mAJxujts5wMPHVIhqEmAgC5PHFmS8zWisoAxQchjcS9W9Zktgoc034EHUlmsSHpXYGa/bCYkKdAbTUq7Y7KM6p7z50l4LD8izx1p1EXMf++rhlt5SjC4LkHo7ZntGRHIIwPlHyysM4X+jUUVQm63/lt463mazAdggyQYI7xOVPtG+GRll6+uWvii3aDEL/TyYiloIfHOLGhY1/JYOguXbb/5oSqWZgma+7AZz63l08FxelkZkWLsx8cCC0g1pzV8N5BWyhAlKu0HZQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
+	id 1pZ9kx-00CeHl-88; Mon, 06 Mar 2023 12:15:56 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id ay14so33940519edb.11;
+        Mon, 06 Mar 2023 04:15:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=NErjUpAdH47H0dk39e6qFfX1x2szQH4h3c0TqOPnkjI=;
- b=NYLuqgWxXnltKkKic9uScgXMU+lauWMoPSvPwaJ2LFHLX3Res1RxFu9hZXjJppr0wyxQ5mvwj0Q+GhPZKVI4DXtpGFsRTrgXtBD/xkDKe8HXzLCpZbEb6erbjpun38Kkck7rXTtJSs3tQQXqNQC1wT1So4gFh5nab85s5XzfoHY=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=corigine.com;
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
- by SJ0PR13MB5598.namprd13.prod.outlook.com (2603:10b6:a03:425::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6156.28; Mon, 6 Mar
- 2023 11:00:10 +0000
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::85f5:bdb:fb9e:294c]) by PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::85f5:bdb:fb9e:294c%3]) with mapi id 15.20.6156.028; Mon, 6 Mar 2023
- 11:00:10 +0000
-Date: Mon, 6 Mar 2023 12:00:02 +0100
-From: Simon Horman <simon.horman@corigine.com>
-To: void0red <void0red@gmail.com>
-Cc: lorenzo.bianconi@redhat.com, angelogioacchino.delregno@collabora.com,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	kvalo@kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-wireless@vger.kernel.org, lorenzo@kernel.org,
-	matthias.bgg@gmail.com, nbd@nbd.name, netdev@vger.kernel.org,
-	pabeni@redhat.com, ryder.lee@mediatek.com, sean.wang@mediatek.com,
-	shayne.chen@mediatek.com
-Subject: Re: [PATCH v3] wifi: mt76: handle failure of vzalloc in
- mt7615_coredump_work
-Message-ID: <ZAXHsidkn1g7YMeo@corigine.com>
-References: <Y/y5Asxw3T3m4jCw@lore-desk>
- <20230227144823.947648-1-void0red@gmail.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230227144823.947648-1-void0red@gmail.com>
-X-ClientProxiedBy: AM0PR02CA0180.eurprd02.prod.outlook.com
- (2603:10a6:20b:28e::17) To PH0PR13MB4842.namprd13.prod.outlook.com
- (2603:10b6:510:78::6)
+        d=gmail.com; s=20210112; t=1678104952;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=1g4AYGzxTWyuARpoPesNpg8EiVTXYK4wwkJzSL4nXXs=;
+        b=bNBYn1TnRcdbUj1TqpxVf5w4INnvEjSqvJATHZL3viiCgAe5kp/1aYJV3tXUZ+I8YT
+         0vCWGQuC16ynAcvcZnRa5hfRn/jz/QCFUY6K7Zrww2DOxPQLM9RLS3vqxXuG8Yc26yPz
+         o2IVbERznLqdY8VE1LgEKZh+B5AfNg7DwIjDcTKTy1k9Or5yOIV3cCyZ9Dr6vQ993zDC
+         CEZBUuUoHmV8iNhBwIuy9wsE5KyOBmLoNeECjwtbZQ1S03Of68bWqzXkOCIsZJBdYaHe
+         JoZGH+txs9zp+P6QinTeqi9DThGgPfkNutBu2p20LjJsTtWbv0J12Z2H/1D48xXogVHp
+         Buuw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678104952;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=1g4AYGzxTWyuARpoPesNpg8EiVTXYK4wwkJzSL4nXXs=;
+        b=Cn1mkR5yCMGZnXY3ok8lzUQ/pwHHpPs5d14TUuNreoqu0e2lWuIxpurPjbDluVJkDK
+         sBc/9LucBKqkpNCme3K6M2SJABeJesBPFmFwBwczGF+QUyWFRXye2Ng7NdseSYQKNdTs
+         eH59uSnTBGnk7dvi38RWzQ8FMFbGME3QG/w0GlWfz0LswB6iIgh4l4hqjrNvXHxa2Cz5
+         IyjEY99NJrlMV/A+hfTn/JtQ6xHgS0jaqw6A/u5kwx5HY/B8x2ACwLr7HfLK2hV8Mj/4
+         xyjPEuI3GxzP/r7lwszZGFLAVURtINq9+4r4d0EOn6cJt9wSymtwi5abC9UaHo7xoY5Z
+         I0iA==
+X-Gm-Message-State: AO0yUKVoiTFuXKHzvE8PeWta5MZy6qsEM/Y1rZj38XM8a8Vi0/RmBKUv
+	dPlIAPBds55AgysGJW8Q/Yo=
+X-Google-Smtp-Source: AK7set83ncGukr5k9XtPEBkCv42ZvOmeZIY23CtKgfOVZ1N4PNDRl2X2UQy2myUkpOZpI/aknFckcQ==
+X-Received: by 2002:a17:907:c689:b0:914:4164:658a with SMTP id ue9-20020a170907c68900b009144164658amr506482ejc.42.1678104952142;
+        Mon, 06 Mar 2023 04:15:52 -0800 (PST)
+Received: from skbuf ([188.27.184.189])
+        by smtp.gmail.com with ESMTPSA id o13-20020a1709062e8d00b008e22978b98bsm4525453eji.61.2023.03.06.04.15.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 06 Mar 2023 04:15:51 -0800 (PST)
+Date: Mon, 6 Mar 2023 14:15:48 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Daniel Golle <daniel@makrotopia.org>
+Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: fix RX data corruption
+ issue
+Message-ID: <20230306121548.k33fgu7adg44zruu@skbuf>
+References: <138da2735f92c8b6f8578ec2e5a794ee515b665f.1677937317.git.daniel@makrotopia.org>
+ <138da2735f92c8b6f8578ec2e5a794ee515b665f.1677937317.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|SJ0PR13MB5598:EE_
-X-MS-Office365-Filtering-Correlation-Id: 79845b12-52ae-4238-66ca-08db1e31f3e6
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	nrpRHNdw0GwHiP0afrE2iZvDpHLbWGsPXu7DE0pAmNp+cf35rSNPpZ3J1DAQO5PeSyt+UvMPB20FL5rZhFx3EjcnJ9IknEvvAzFkM8D0oj+twqjTivcF/9S2mMYu8fv6O0Sm+heYaOX8I0UjaOsLhiA8npH0nHf71wduI4zWCXeZShRh99ryQCO07o2sr+z2GJAdhF2yAjot5EoKoQc6XkHGvglitmSbZ3Ia3p5inX/YF7SF8DoXcvarZVjSbAwSJmyuUoHyXRYi44AFUXCZS9bngk65MGbARmifArjrY+/tVPiHdxLp+0848gvf8+uz+kozJooxHb3FLJJme5ViMPBw1mg7I6ERZKIb0zbDpmAZeD7XY8JJf+t36YGhW6Xfk8xZFmSmp6JyscbcU/b8BFPLy9Mdanzl0wKMBaYrRrRV+bL/zDlDD77Ffd32XDRsS1XhNaYEvgc8JjV4i7q9wts3Yib4kixkQlafl0DEET6ws2z/hGBjSrv6j9x/JLCKZIRSVEyPXRfkicMc+HA0JA+m2V5wLLYA95ml+AdagQVLd6Gi7To/Bo18o11dLrxbqtmjpwhVTP8IHOrwgzlQAB4za5+TPSSubkjItNHytnjeh/WHu+Adr5qW3q4t0TfI
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR13MB4842.namprd13.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(136003)(39840400004)(396003)(376002)(366004)(346002)(451199018)(36756003)(4326008)(66946007)(66556008)(41300700001)(8676002)(6916009)(8936002)(44832011)(2906002)(4744005)(5660300002)(7416002)(86362001)(38100700002)(66476007)(6666004)(966005)(6486002)(478600001)(316002)(83380400001)(6512007)(6506007)(2616005)(186003);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?gDfKMZqYcAJd9BSKJcLOXrvKWWqF2eSfixVPQ4bW7ou2+dk9lp4zWskxj7BI?=
- =?us-ascii?Q?qUa/XHSkTvEIlnl1sL8s6guk8vYRdTB+9VC62BB9ZfOyfSIbQZPYK7qQQ698?=
- =?us-ascii?Q?AyizLgVpW/IJrT6kZ60ToT9wHNBx59JOgTpWjtBE4K69P1gW88YQ/EG3YADj?=
- =?us-ascii?Q?SWV9SR89O51MpeQAUCFxqJ3QsM0Pz0VtlESbXIImO0eZV6e5d7bjFkZ4J9WX?=
- =?us-ascii?Q?7gVEMSwfHt+UIGre01n4klAQODjJz6bHMR5bh+SoAdWIxYTc9ZM3qnlik2d8?=
- =?us-ascii?Q?ufHn1GyPEK7VdmaZlhHUoQc2ixF1+ZUOB0nQjxLiYz2u3APAmvq1+gcjwrSO?=
- =?us-ascii?Q?/LJn4oy8Vc6oNNWq1sR7WQ5cT+T1X/j8nEZO4vbPtP1bCBZP+fMwfp8huyyu?=
- =?us-ascii?Q?FgtV1Fta7bo3VPXo008wVnqkfQ/YJBbPKzEmKYV0nzeXj0ox1GOeifwjRrJ9?=
- =?us-ascii?Q?zY/D+Us0cEM9Ux9E+w2abCAAFAhqztoVk80yqcQXRJATuXCy1AL5JdUE00aF?=
- =?us-ascii?Q?c188z6ZvW2HpGoMkOJFIfQkSLvZTT8ylf6Cw/ZfO/b4lnIOiTw1nGnHWcJ7b?=
- =?us-ascii?Q?+YVrkHV3hJDVlnYMlTAy0YR87/Tk4FCeo7WOjTtcYGNEWfmNsUXOn7GZDZ21?=
- =?us-ascii?Q?cRCyANZ158nFsA/IEdHHd/PYTY+TMkMA6YgEvMryNgStvO7sJyVWqra1yS2Q?=
- =?us-ascii?Q?x1gaFc41Mn2T4y2qLQw9/TdfDKWs0W+QQqcuSMCWpFFV6D3zdejEoIeIIQSO?=
- =?us-ascii?Q?Uo27mxuMmnYaRsF6uK8tczB8YlgtEsMrYrxyM5mqDUMVK0Pe0y1OgzberZpd?=
- =?us-ascii?Q?8r8raQlUfj5aWP0yJIo2PAc23zTxtO9R/dRIzF9tOJ8n1RCxX6USoXMWMvk2?=
- =?us-ascii?Q?WlZ8koJyGAlwcKc77evH9EC5n78QcglHgr1pn98nj69Afnqzzc/uSIhDSFzv?=
- =?us-ascii?Q?NV/a6KZ6ATt6cRGTV7/G0wA2syaWnz209N3bDEej6xJ2hCbonS1QpbUitK4v?=
- =?us-ascii?Q?1aWFjJ5L5uitegG09nDNVoK9xAsGNd4QmotXGSTFni9ZJLf4tnLuyO4RQctu?=
- =?us-ascii?Q?5WF0iCd4BhMXcFPMKPYszTNuNtKiDX+kc+43xB1xlpgudL9aGLPGjDBaO5Ms?=
- =?us-ascii?Q?0k/xG2xDibEXvqUEf8kvGF+zFn/Fd2i3UtH0ma6kx43Cp7v5W9/QQ1relVJs?=
- =?us-ascii?Q?md9KrmczMh6s6aX6zArZN6+Qo1npTe+fseS5XNw8dQVtX4OvLszK64TZ51St?=
- =?us-ascii?Q?UxYYNuihzsCRX4BXB9lUtN9Vzv/vl5M6spIPHXYneBhQ6Jt/l8ILTo82Qpxq?=
- =?us-ascii?Q?U9DESN4a/23sP2n6GxxSSxsYRTzMqb0fV6JOQtnwgg7AV7W/yJMef79jp3VU?=
- =?us-ascii?Q?V9LVgjFDTeih94cnDNn7qMO98U5CiRmNQ3Y6Hm6HcZFyC+WSuFvEWZQAh0rZ?=
- =?us-ascii?Q?Z+rgG6kaz5uizbFRG4P+FS1mcrfrX1N7C/28w9BcDX3RYkb42GhwgoBD+auz?=
- =?us-ascii?Q?2PeN6j++oXwyhPDewnKfAdgcM637tNa9qJpw3/8G+En/4A2Cu9WL0EqaZE7F?=
- =?us-ascii?Q?/9Ilo4tcUVePNzTlVSIe6N7zrakg172m4n3xzQTcQsObMcqMTu51UYe+tT0i?=
- =?us-ascii?Q?ibZ6KKNSPc8b9tQ3FO9i2GOhcJaVpzjA9MQFDK5voQ9TF5NAPPCiT95XAMDv?=
- =?us-ascii?Q?JSbyrg=3D=3D?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 79845b12-52ae-4238-66ca-08db1e31f3e6
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Mar 2023 11:00:09.9281
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: d3PNi2M9inz4YktUv1FIXAY4DU1fTXDdU6EjpiBhOrEq7w9MQtRE0aJBoQBBT9GdPZ4dVRjJxqdPQ60VlPVphsJTsZYf1q5RhIwHWTeO9bc=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR13MB5598
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <138da2735f92c8b6f8578ec2e5a794ee515b665f.1677937317.git.daniel@makrotopia.org>
+ <138da2735f92c8b6f8578ec2e5a794ee515b665f.1677937317.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230306_030017_018852_52E40907 
-X-CRM114-Status: UNSURE (   6.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230306_041555_323308_3F4A5947 
+X-CRM114-Status: GOOD (  14.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,19 +87,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <vladimir.oltean@nxp.com>, Eric Dumazet <edumazet@google.com>, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, arinc9.unal@gmail.com, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Heiner Kallweit <hkallweit1@gmail.com>, "David S. Miller" <davem@davemloft.net>, =?utf-8?B?QmrDuHJu?= Mork <bjorn@mork.no>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 27, 2023 at 10:48:23PM +0800, void0red wrote:
-> From: Kang Chen <void0red@gmail.com>
+On Sat, Mar 04, 2023 at 01:43:20PM +0000, Daniel Golle wrote:
+> Fix data corruption issue with SerDes connected PHYs operating at 1.25
+> Gbps speed where we could previously observe about 30% packet loss while
+> the bad packet counter was increasing.
 > 
-> vzalloc may fails, dump might be null and will cause
-> illegal address access later.
+> As almost all boards with MediaTek MT7622 or MT7986 use either the MT7531
+> switch IC operating at 3.125Gbps SerDes rate or single-port PHYs using
+> rate-adaptation to 2500Base-X mode, this issue only got exposed now when
+> we started trying to use SFP modules operating with 1.25 Gbps with the
+> BananaPi R3 board.
 > 
-> Link: https://lore.kernel.org/all/Y%2Fy5Asxw3T3m4jCw@lore-desk
-> Fixes: d2bf7959d9c0 ("mt76: mt7663: introduce coredump support")
-> Signed-off-by: Kang Chen <void0red@gmail.com>
+> The fix is to set bit 12 which disables the RX FIFO clear function when
+> setting up MAC MCR, MediaTek SDK did the same change stating:
+> "If without this patch, kernel might receive invalid packets that are
+> corrupted by GMAC."[1]
+> 
+> [1]: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/d8a2975939a12686c4a95c40db21efdc3f821f63
+> 
+> Fixes: 42c03844e93d ("net-next: mediatek: add support for MediaTek MT7622 SoC")
+> Tested-by: Bjørn Mork <bjorn@mork.no>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
 
-Reviewed-by: Simon Horman <simon.horman@corigine.com>
+I don't see something particularly controversial with this change.
 
+Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
 
