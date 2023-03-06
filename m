@@ -4,115 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85E82C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 20:13:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E34EEC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 20:20:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uXR1hBuNmG/TwC91AeVvsW1UVH/MwkAfhUSEnuvNaoY=; b=VfySYYGJXQJu2dR7mVE0+xyWko
-	S8HlUnyBmaxmG9AokSTXaHqHd8ptgsAioOhmIgX/XAEe8xlwJssDEXaip9Udg3nMxmQOPtrtGkwFB
-	bySoVn7AZUgBjKJzEtfC3ADU1KxMDU+GXEJvveiYCDnpyR1YQe1e+4pAuThfWfV+NUdXs7IY5diri
-	kRIj5MvPanF7ekjWBrDBewZFQLbVuGwWxRQNDfdm2RzMvxcMhSipMqPAlyyM9rC00ZSc0QBPkIKb2
-	qpHFKnO/fXfDZ7S/oHxkx5YG840405Dd4h7IiW9DTjQaYJWohZlU67jazcV57TwWobwbLEFS1K54/
-	rM/qSVXg==;
+	bh=5X1DrGT/RW1/r+Y1HGheUCUnfXToPi6qBpvnHsE+fKY=; b=LsAaG3m2vmzzrYN7TYirazMUs6
+	GcDwaKhi3lAkSvaWPKQge5Ajx0S0ALX3eQD0cRws+tU+R5XUwhGtH2cBoARJcUTC4a6O+ACU+iHfr
+	u0ALlNa8o8pB4SvYtsvZPTI4WHBGIP8YWk5ZpPIgNqifzdkCiH7TiI3ykUuOmNDQxGdliFvr6Cxz6
+	sIqSTtw7mQMOidWxQIkLm5k/0AXZcjVTvxYGQglrbMOGogOyGYCfJgfsoMKzC9wLzZwey+J78RThP
+	wONW6psyNSBrOE18wMCM9tRhF3xtsW9dTiyT8SONE/bd3SjcXmQKh35jmMlyOpKHNVLSvVlRWqSeB
+	884lCqQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZHDH-00EppG-Cf; Mon, 06 Mar 2023 20:13:39 +0000
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+	id 1pZHJT-00Estx-Uk; Mon, 06 Mar 2023 20:20:04 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZH10-00Ejp3-E7; Mon, 06 Mar 2023 20:01:11 +0000
-Received: by mail-pj1-x1029.google.com with SMTP id 6-20020a17090a190600b00237c5b6ecd7so14268005pjg.4;
-        Mon, 06 Mar 2023 12:00:56 -0800 (PST)
+	id 1pZHIe-00EsVg-Ok; Mon, 06 Mar 2023 20:19:14 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id u9so43874502edd.2;
+        Mon, 06 Mar 2023 12:19:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678132856;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=uXR1hBuNmG/TwC91AeVvsW1UVH/MwkAfhUSEnuvNaoY=;
-        b=o6hZefnQYEnFw3COvoTdyyoXo9Zv4P0LTShB301lkw0/gGr+x1ou0XeYCSdcXXLXoz
-         Ie/lwSIsRhh9vBh4c56fFPeCbh1Mg/u0f+SLHuOsNnA01L3iQxuD6tKvCodPDyUeqcUA
-         ipzyAtvRXWR1nR5U0W8m7xh6fPIYtpAYIZVYRkCJb0GTxixFtDSEeec8W6O4TIR9SFvb
-         8TyLwk+heXtYmzhntJcZ54SphmylZPrikYFa1PRdJ8V5j+VefclzJKcG1hcN/EBRiJ2z
-         A5LjdstbOHhVHAVRXA7o2dTcBNuVBc27QoVtU1tjX+Yepbtmilj428R4Os2Xd6WiLWnA
-         Of4A==
+        d=gmail.com; s=20210112; t=1678133949;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=5X1DrGT/RW1/r+Y1HGheUCUnfXToPi6qBpvnHsE+fKY=;
+        b=KwWvKclEUngSB3nCut/ygs51cOep20WW/PM6mVMbVZXU4Jq3uV9+8XJ7ifEeag9BOp
+         N9ZqWkEr8ULNgEe4uTwk41dQM0cdtf4lBv9rwMmCmPO1dslhJGEmysV/Vp7wE9BG8XLp
+         RL/5cwv64oNboXwBVBBUQObpvv+Em1yepOS/wJjy8TSpCiN2clXjuXBqTUei8h/kxdOd
+         OllmhYEvTQXL4jIkUCwHVkPzVBcDMNa02KliH2dNm8f/1SyAIdAsJPcb+Aip6UUNmoE3
+         9ebRHY6JmtjrONDS3qQduWBtHriIzGnc+rWRQP6MP6btnwVQCFgmQvgB8/DlH+I8WGQg
+         xtRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678132856;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=uXR1hBuNmG/TwC91AeVvsW1UVH/MwkAfhUSEnuvNaoY=;
-        b=H5gT6SrH83dk84HDWz55nSvIa30b0VmGlZCrfLWOya85LSa0w8rY3wzkmnKsdmBC5H
-         RuYpHDiHy4PgsFngp3bUvNA3AhsI2Zc2FqQ9HXKn2L1NW0ZCA4kwxaq5J/M2uGM/+kQb
-         ZzUrEPOAO5FOyKsWWpt3alt9vEAV/CszXGvBklC5C0lLPqqsK6XAj8XmrbZ9oYW9G7Ye
-         jZypaEOorifSY2ivn5dZwCeXNhYop6viP2kvasVRaR0DcqeTUcdoIGSSY3sKYPhZvT2L
-         XVU0NPb+l+OlSm6eegHOejK+y3voOFa5v4WNlVZVQe8XuOkKfXljUTlcne+npkQRLq29
-         oRjw==
-X-Gm-Message-State: AO0yUKUCU+qf/V4C1spRQynG3kgfREjgg4YJeg6UQpBsDPdCACqei/Q5
-	tV1H5WsqLXa8w4UCSiKztaf3VLq0WL1rrdTShqI=
-X-Google-Smtp-Source: AK7set/DxZtiZhO+z+A0Is7yokDniYYkETavBEcleYa7IPSvIEQBIV7zty9Y+UWe1CWFM73JZ5CBgh34wQSFC4iK+eg=
-X-Received: by 2002:a17:90a:5993:b0:233:b520:1544 with SMTP id
- l19-20020a17090a599300b00233b5201544mr6625621pji.0.1678132856231; Mon, 06 Mar
- 2023 12:00:56 -0800 (PST)
+        d=1e100.net; s=20210112; t=1678133949;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=5X1DrGT/RW1/r+Y1HGheUCUnfXToPi6qBpvnHsE+fKY=;
+        b=fz45Hsd4di4X+iKuWuLwTORw7JHP6+KfM1wyr7G2qKvCyw6TQkLJHuSMHbVfNTzf0G
+         1XmcPtHv8CkyfDgEtfcRqzKdMor3XzSsrX7ceh5HhIW1uos3jB+Ug8FNAfYRz7ClNDuD
+         zU6Ajv90Hg7nqgihE13iGdhGxx+Y7wSHRclnzXSuI/Uhy9XffiqSUSkLuVfOvBPfwQgq
+         P+w2W604opFTNfKg8koQS3VAfqU1t10HFgBk8BcONrYx1Bkj8/zo+ItfrTG+r3/Nre36
+         fKI3L8eiTMCdKSID7Ybq8XZBQuiH/9cx49TPMrtGhwxdG2I2yyeuZ5a57ZygcckcbjJz
+         MbJQ==
+X-Gm-Message-State: AO0yUKWSk5kkKWycq5135DQw7vTeiM5kwaC9wkSwHIJrcGpG+gwHaPyB
+	g8emn6Py3PRC8Bu+tqLfnM8=
+X-Google-Smtp-Source: AK7set/BFRz4eNs5vXIC0za8DuHe0GFhkdvMDwTsUhlweCkvilsfm48w3UUydiQdzAItTNdw5vmLLA==
+X-Received: by 2002:a17:907:a0d5:b0:8b1:319c:c29e with SMTP id hw21-20020a170907a0d500b008b1319cc29emr15022639ejc.74.1678133948607;
+        Mon, 06 Mar 2023 12:19:08 -0800 (PST)
+Received: from skbuf ([188.27.184.189])
+        by smtp.gmail.com with ESMTPSA id n6-20020a17090673c600b008c607dd7cefsm5027776ejl.79.2023.03.06.12.19.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 06 Mar 2023 12:19:08 -0800 (PST)
+Date: Mon, 6 Mar 2023 22:19:05 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Subject: Re: [RFC PATCH net] net: dsa: mt7530: move PLL setup out of port 6
+ pad configuration
+Message-ID: <20230306201905.yothcuxokzlk3mcq@skbuf>
+References: <20230304125453.53476-1-arinc.unal@arinc9.com>
+ <20230304125453.53476-1-arinc.unal@arinc9.com>
+ <20230306154552.26o6sbwf3rfekcyz@skbuf>
+ <65f84ef3-8f72-d823-e6f9-44d33a953697@arinc9.com>
 MIME-Version: 1.0
-References: <20230306172109.595464-1-amit.kumar-mahapatra@amd.com> <20230306172109.595464-10-amit.kumar-mahapatra@amd.com>
-In-Reply-To: <20230306172109.595464-10-amit.kumar-mahapatra@amd.com>
-From: Jonas Gorski <jonas.gorski@gmail.com>
-Date: Mon, 6 Mar 2023 21:00:44 +0100
-Message-ID: <CAOiHx=nmsAh3ADL3s0eZKpEZJqCB_POi=8YjfxrHYLEbjRfwHg@mail.gmail.com>
-Subject: Re: [PATCH V5 09/15] spi: Add stacked and parallel memories support
- in SPI core
-To: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
-Cc: broonie@kernel.org, miquel.raynal@bootlin.com, richard@nod.at, 
-	vigneshr@ti.com, jic23@kernel.org, tudor.ambarus@microchip.com, 
-	pratyush@kernel.org, Sanju.Mehta@amd.com, chin-ting_kuo@aspeedtech.com, 
-	clg@kaod.org, kdasu.kdev@gmail.com, f.fainelli@gmail.com, rjui@broadcom.com, 
-	sbranden@broadcom.com, eajames@linux.ibm.com, olteanv@gmail.com, 
-	han.xu@nxp.com, john.garry@huawei.com, shawnguo@kernel.org, 
-	s.hauer@pengutronix.de, narmstrong@baylibre.com, khilman@baylibre.com, 
-	matthias.bgg@gmail.com, haibo.chen@nxp.com, linus.walleij@linaro.org, 
-	daniel@zonque.org, haojian.zhuang@gmail.com, robert.jarzmik@free.fr, 
-	agross@kernel.org, bjorn.andersson@linaro.org, heiko@sntech.de, 
-	krzysztof.kozlowski@linaro.org, andi@etezian.org, mcoquelin.stm32@gmail.com, 
-	alexandre.torgue@foss.st.com, wens@csie.org, jernej.skrabec@gmail.com, 
-	samuel@sholland.org, masahisa.kojima@linaro.org, jaswinder.singh@linaro.org, 
-	rostedt@goodmis.org, mingo@redhat.com, l.stelmach@samsung.com, 
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, 
-	alex.aring@gmail.com, stefan@datenfreihafen.org, kvalo@kernel.org, 
-	james.schulman@cirrus.com, david.rhodes@cirrus.com, 
-	tanureal@opensource.cirrus.com, rf@opensource.cirrus.com, perex@perex.cz, 
-	tiwai@suse.com, npiggin@gmail.com, christophe.leroy@csgroup.eu, 
-	mpe@ellerman.id.au, oss@buserror.net, windhl@126.com, 
-	yangyingliang@huawei.com, william.zhang@broadcom.com, 
-	kursad.oney@broadcom.com, anand.gore@broadcom.com, rafal@milecki.pl, 
-	git@amd.com, linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	joel@jms.id.au, andrew@aj.id.au, radu_nicolae.pirea@upb.ro, 
-	nicolas.ferre@microchip.com, alexandre.belloni@bootlin.com, 
-	claudiu.beznea@microchip.com, bcm-kernel-feedback-list@broadcom.com, 
-	fancer.lancer@gmail.com, kernel@pengutronix.de, festevam@gmail.com, 
-	linux-imx@nxp.com, jbrunet@baylibre.com, martin.blumenstingl@googlemail.com, 
-	avifishman70@gmail.com, tmaimon77@gmail.com, tali.perry1@gmail.com, 
-	venture@google.com, yuenn@google.com, benjaminfair@google.com, 
-	yogeshgaur.83@gmail.com, konrad.dybcio@somainline.org, 
-	alim.akhtar@samsung.com, ldewangan@nvidia.com, thierry.reding@gmail.com, 
-	jonathanh@nvidia.com, michal.simek@amd.com, linux-aspeed@lists.ozlabs.org, 
-	openbmc@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
-	linux-tegra@vger.kernel.org, netdev@vger.kernel.org, 
-	linux-wpan@vger.kernel.org, libertas-dev@lists.infradead.org, 
-	linux-wireless@vger.kernel.org, linux-mtd@lists.infradead.org, 
-	lars@metafoo.de, Michael.Hennerich@analog.com, linux-iio@vger.kernel.org, 
-	michael@walle.cc, palmer@dabbelt.com, linux-riscv@lists.infradead.org, 
-	alsa-devel@alsa-project.org, patches@opensource.cirrus.com, 
-	linuxppc-dev@lists.ozlabs.org, amitrkcian2002@gmail.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <65f84ef3-8f72-d823-e6f9-44d33a953697@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230306_120059_561694_F652AB3C 
-X-CRM114-Status: GOOD (  22.22  )
+X-CRM114-CacheID: sfid-20230306_121912_854293_0AC956C3 
+X-CRM114-Status: GOOD (  20.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,62 +88,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, =?utf-8?B?UmVuw6k=?= van Dorst <opensource@vdorst.com>, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Russell King <rmk+kernel@armlinux.org.uk>, Alexander Couzens <lynxis@fe80.eu>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Mon, Mar 06, 2023 at 08:03:54PM +0300, Arınç ÜNAL wrote:
+> Looking at the Wikipedia page for Media-independent interface [0], the data
+> interface must be clocked at 125 MHz for gigabit MIIs, which I believe what
+> the "PLL" here refers to. trgmii needs higher frequency in some cases so if
+> both CPU ports are enabled, the table would be:
+> 
+>     priv->p5_interface        priv->p6_interface       ncpo1 value
+>         gmii                     rgmii                     125MHz
+>         mii                      rgmii                     125MHz
+>         rgmii                    rgmii                     125MHz
+>         gmii                     trgmii                    125-250MHz
+>         mii                      trgmii                    125-250MHz
+>         rgmii                    trgmii                    125-250MHz
+> 
+> [0] https://en.wikipedia.org/wiki/Media-independent_interface#GMII
 
-On Mon, 6 Mar 2023 at 18:26, Amit Kumar Mahapatra
-<amit.kumar-mahapatra@amd.com> wrote:
->
-> For supporting multiple CS the SPI device need to be aware of all the CS
-> values. So, the "chip_select" member in the spi_device structure is now an
-> array that holds all the CS values.
->
-> spi_device structure now has a "cs_index_mask" member. This acts as an
-> index to the chip_select array. If nth bit of spi->cs_index_mask is set
-> then the driver would assert spi->chip_select[n].
->
-> In parallel mode all the chip selects are asserted/de-asserted
-> simultaneously and each byte of data is stored in both devices, the even
-> bits in one, the odd bits in the other. The split is automatically handled
-> by the GQSPI controller. The GQSPI controller supports a maximum of two
-> flashes connected in parallel mode. A "multi-cs-cap" flag is added in the
-> spi controntroller data, through ctlr->multi-cs-cap the spi core will make
-> sure that the controller is capable of handling multiple chip selects at
-> once.
->
-> For supporting multiple CS via GPIO the cs_gpiod member of the spi_device
-> structure is now an array that holds the gpio descriptor for each
-> chipselect.
->
-> Multi CS support using GPIO is not tested due to unavailability of
-> necessary hardware setup.
->
-> Signed-off-by: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
-> ---
->  drivers/spi/spi.c       | 213 +++++++++++++++++++++++++++-------------
->  include/linux/spi/spi.h |  34 +++++--
->  2 files changed, 173 insertions(+), 74 deletions(-)
->
-> diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-> index 5866bf5813a4..8ec7f58fa111 100644
-> --- a/drivers/spi/spi.c
-> +++ b/drivers/spi/spi.c
-> @@ -613,7 +613,8 @@ static int spi_dev_check(struct device *dev, void *data)
->         struct spi_device *new_spi = data;
->
->         if (spi->controller == new_spi->controller &&
-> -           spi_get_chipselect(spi, 0) == spi_get_chipselect(new_spi, 0))
-> +           spi_get_chipselect(spi, 0) == spi_get_chipselect(new_spi, 0) &&
-> +           spi_get_chipselect(spi, 1) == spi_get_chipselect(new_spi, 1))
->                 return -EBUSY;
+Wikipedia will only tell you what the frequency of the interface signals
+needs to be. That is useful to keep in mind, but without information from
+the datasheet regarding what the SoC's clock distribution tree looks like,
+it's hard to know how that interface clock is derived from internal PLLs
+and ultimately from the oscillators. I was hoping that was the kind of
+information you could provide. The manuals I have access to, through charity,
+don't say anything on that front.
 
-This will only reject new devices if both chip selects are identical,
-but not if they only share one, e.g. CS 1 + 2 vs 1 + 3, or 1 + 2 vs
-only 2, or if the order is different (1 + 2 vs 2 + 1 - haven't read
-the code too close to know if this is allowed/possible).
+Since I don't know what I'm commenting on, I'll stop commenting any further.
 
-Regards,
-Jonas
+> > right now, you let the p6_interface logic overwrite the ncpo1 selected
+> > by the p5_interface logic like crazy, and it's not clear to me that this
+> > is what you want.
+> 
+> This seems to be fine as p6 sets the frequency either the same or higher.
+
+(...)
+
+> This looks much better, thanks a lot! The only missing part is setting the
+> PLL frequency when only port 5 is enabled.
+
+True. Although with the limited information I have, I'm not sure that
+the ncpo1 value written into CORE_PLL_GROUP5 is needed by port5 either
+way. The fact that you claim port5 works when ncpo1 ranges from 125 to
+250 MHz tells me that it's either very tolerant of the ncpo1 value
+(through mechanisms unknown to me), or simply unaffected by it (more
+likely ATM). Since I don't have any details regarding the value, I'd
+just like to treat the configuration procedure as plain code, and not
+make any changes until there's a proof that they're needed.
+
+> I'll test it regardless.
+
+Thanks.
 
