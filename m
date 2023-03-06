@@ -4,72 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20569C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 16:44:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7109C64EC4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 17:05:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GhOHnLd/ZrulTyWHs57KgHBhEF0NXBApRRv9RF39G3g=; b=KQxDW06+r70aJg
-	d8nEsw7ZP/DIrvAp09t0B19jp4yEBmqrW6KY/N2DYveLpYqy0rFh3V7h6GDksEevBr/yIAhxyqI/U
-	P8sglIJyn3zN7w6aw5BiWPez12JgyjQzSVsFMg2RAWQAqGI1vYRit2mH2H1ra8lWk5Z49szaEvQf5
-	W0BByOhc+VZ9V7tSCiuJnSBaqWMOnPqOnam2+HxWeFKzNyL6WOluw8ne3EbOye1ExXEvjQg5wiOn3
-	Zf5Iipjc5/NdU0nvToXRISpCpK3oXPB/LsyqKyAqgqK6dXiHJjvBVzjTB1RH1BPBbvuwG/PXovw7a
-	BDumxad//ngQEbdtVO4Q==;
+	List-Owner; bh=q5l7naX4O5QueYzr6i0mswCRLa1ukDW7QTn36Q4q+K4=; b=ElUTTNCPlxL7lP
+	cIV9U4CHOyN+NO9bOvyOTcvjbcvfzn3HOcZLjfYRyoQdL1cHTWIR2jHyEPBGkf4AkfrP3dz9SbXu3
+	S/HAsj4yY3OmZnU/Y5kIvxlfM/hnDMNDVI1ZNBtPmjBwpFeFeUtXTVP3P540pMkkYHlkh+29b7p+z
+	nEven5A8CKsY7y4lJLakYmYH/cW+yZJAAil8EL454gcTmbNrnKNkXP8XKQnOTzds5catu8BBia2Gg
+	kN7YUhoqAGkGFxjCcIezwF3RR1b5Pw1jupZx/nz7aWOjSqYW0rzv9SreTMa9z0coGRnjv/NTdPKmH
+	SkflaE1otgyHmQ450T/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZDwD-00Dz27-8M; Mon, 06 Mar 2023 16:43:50 +0000
-Received: from sender3-op-o18.zoho.com ([136.143.184.18])
+	id 1pZEGm-00E2vj-Kt; Mon, 06 Mar 2023 17:05:04 +0000
+Received: from sender4-op-o10.zoho.com ([136.143.188.10])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZDw8-00DyzF-PG; Mon, 06 Mar 2023 16:43:46 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1678121016; cv=none; 
+	id 1pZEGO-00E2s4-42; Mon, 06 Mar 2023 17:04:42 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1678122243; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=eo63YKSNqDtbujlq1hoCRriDqd6jCWt3BI4t0jb4rOK1VuLSJCV//MBWOdJEvULBt4yuAF1vn40798+cIPCfenzbNdk1nA7ls5D48Zwhnj7v195SKB3nFFMEO83XTu/b7CKIoCryhLJhCSaHruGbHBGGo9pQ/WNgK1AH3hFkFvg=
+	b=XJo1xtZRFQ4S/LYUpwHdlovBtRFJX13jcBtzRkFzOlxxd7ianEByWIQhxE546OgwGm63HxFSYitTzZXsyL8NSwcKlcKTGr35Srx2k5R6gFeP1vdcNVpH+yG3mHDFSNN+wmK9PNDQYcdStuWYQdnxbPUeEEL9cWtW3YjHzHWQRH8=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1678121016; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=GhOHnLd/ZrulTyWHs57KgHBhEF0NXBApRRv9RF39G3g=; 
-	b=DWhjID6Oahe6pBC6ss+aWfXqNbLeba9TOPBpjR0DESA+0e2dd1jXhgFIFLfAQj9pmsIFScQ6Lzi0Chcb5QnlMkNMGBLFLGPZl9rJufN3y1oR/zqe+CuusvYQ5yzUL/Bt/S1Mq2drSrfzOim8oZ7HyH7o9Wr2QGWfPJWDmbi2EsI=
+	t=1678122243; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=q5l7naX4O5QueYzr6i0mswCRLa1ukDW7QTn36Q4q+K4=; 
+	b=mRY9RxaTOlzHR4ZlEQz252jiBt1NO5K4+cbZR3ZyO9ajW9BGfh8DqHzPTvAMURSE8TFUfpL9Bjc9PYrUS2jZQ1nSblZlRBk9A4P7fZVCzyuXjxnzUjPYtTqqx0MZuTZBNI3Kf2RvCJhillo4YiSyg3/THl3BA5jCjvLqGTxMeCU=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1678121016;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1678122243;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
 	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=GhOHnLd/ZrulTyWHs57KgHBhEF0NXBApRRv9RF39G3g=;
-	b=NG3iK9xh40c00iHMOV0sqJfZylHUJg92F3eDxvC5UFdQDGVyJ2/x2fSykjtfF9ct
-	hvEN6Not8StnGsADrMdAArQ2i7E18C0zaPhRIczphIjOcbVd++tKKpyDZUC5BtIxsmI
-	W/QhrhQepuzMJh4n63VC+FinqL5sdNhBPQNEDDsE=
+	bh=q5l7naX4O5QueYzr6i0mswCRLa1ukDW7QTn36Q4q+K4=;
+	b=YJKkYWzmsMTNOYszqw0nblS6LY/d/eVkkJe7k0Gde8b7mtoRH85xBYlG9NGnHCQf
+	NQsEOpQ5LgvPcpayH+Y1ZkSKvIacYXGbe/lQRBhoTJ4MusujzluT7J31j1VBTBEQo8M
+	sPNV7WFnzEDdB1RiYorWR/cPGqxvapvF3S1GtBfE=
 Received: from [10.10.10.3] (212.68.60.226 [212.68.60.226]) by mx.zohomail.com
-	with SMTPS id 1678121014650368.48293366387577; Mon, 6 Mar 2023 08:43:34 -0800 (PST)
-Message-ID: <89416ebd-5da3-7155-94d1-44c7d2019e02@arinc9.com>
-Date: Mon, 6 Mar 2023 19:43:27 +0300
+	with SMTPS id 167812224118149.09624828493145; Mon, 6 Mar 2023 09:04:01 -0800 (PST)
+Message-ID: <65f84ef3-8f72-d823-e6f9-44d33a953697@arinc9.com>
+Date: Mon, 6 Mar 2023 20:03:54 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.7.1
-Subject: Re: [PATCH 05/20] pinctrl: ralink: move to mediatek as mtmips
-To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-References: <20230303002850.51858-1-arinc.unal@arinc9.com>
- <20230303002850.51858-6-arinc.unal@arinc9.com>
- <CAMhs-H-VGjP32AZc2cuY=Co4iqx8xPtvjr+hMg-haMMFaQzzsg@mail.gmail.com>
- <CAMhs-H8OsG-SEWigimG3fT-SGjZruH-7tnjff198Z2qhb0O=yA@mail.gmail.com>
- <2106f6d0-63cc-4656-1e52-19640994fb43@arinc9.com>
- <CAMhs-H869pR6CzaWfvf44w-ak+0OCyxnMEEU4kWYpw=C14ShsQ@mail.gmail.com>
- <fc6dc970-5bae-1c27-9473-8c9d90ac79a1@arinc9.com>
- <CAMhs-H_SryQqCZ3mB_VsO20ZSvKCMR5V9E7wrt+a-kbcqQxsWQ@mail.gmail.com>
- <00d4dd34-efe5-8bc7-031a-0f9d19a1b8e0@arinc9.com>
- <CAMhs-H_nTDZMQPQ8R5JeWtgWyP1y57uhym-A4f3LcTgJYV+8pw@mail.gmail.com>
+Subject: Re: [RFC PATCH net] net: dsa: mt7530: move PLL setup out of port 6
+ pad configuration
 Content-Language: en-US
+To: Vladimir Oltean <olteanv@gmail.com>
+References: <20230304125453.53476-1-arinc.unal@arinc9.com>
+ <20230304125453.53476-1-arinc.unal@arinc9.com>
+ <20230306154552.26o6sbwf3rfekcyz@skbuf>
 From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <CAMhs-H_nTDZMQPQ8R5JeWtgWyP1y57uhym-A4f3LcTgJYV+8pw@mail.gmail.com>
+In-Reply-To: <20230306154552.26o6sbwf3rfekcyz@skbuf>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230306_084344_940312_03CC8518 
-X-CRM114-Status: GOOD (  35.67  )
+X-CRM114-CacheID: sfid-20230306_090440_270400_11259085 
+X-CRM114-Status: GOOD (  56.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,246 +75,308 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Daniel Santos <daniel.santos@pobox.com>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, William Dean <williamsukatube@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
+Cc: Andrew Lunn <andrew@lunn.ch>, Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Russell King <rmk+kernel@armlinux.org.uk>, Alexander Couzens <lynxis@fe80.eu>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6.03.2023 19:15, Sergio Paracuellos wrote:
-> On Mon, Mar 6, 2023 at 4:06 PM Arınç ÜNAL <arinc.unal@arinc9.com> wrote:
->>
->> On 6.03.2023 17:07, Sergio Paracuellos wrote:
->>> On Fri, Mar 3, 2023 at 3:18 PM Arınç ÜNAL <arinc.unal@arinc9.com> wrote:
->>>>
->>>> Heyo,
->>>>
->>>> On 3.03.2023 13:57, Sergio Paracuellos wrote:
->>>>> Hi Arınç,
->>>>>
->>>>> On Fri, Mar 3, 2023 at 9:16 AM Arınç ÜNAL <arinc.unal@arinc9.com> wrote:
->>>>>>
->>>>>> Hey Sergio,
->>>>>>
->>>>>> On 3.03.2023 09:34, Sergio Paracuellos wrote:
->>>>>>> On Fri, Mar 3, 2023 at 7:17 AM Sergio Paracuellos
->>>>>>> <sergio.paracuellos@gmail.com> wrote:
->>>>>>>>
->>>>>>>>      Hi Arınç,
->>>>>>>>
->>>>>>>> On Fri, Mar 3, 2023 at 1:30 AM <arinc9.unal@gmail.com> wrote:
->>>>>>>>>
->>>>>>>>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>>>>>>>>
->>>>>>>>> This platform from Ralink was acquired by MediaTek in 2011. Then, MediaTek
->>>>>>>>> introduced new SoCs which utilise this platform. Move the driver to
->>>>>>>>> mediatek pinctrl directory. Rename the ralink core driver to mtmips.
->>>>>>>>>
->>>>>>>>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->>>>>>>>> ---
->>>>>>>>>      drivers/pinctrl/Kconfig                       |  1 -
->>>>>>>>>      drivers/pinctrl/Makefile                      |  1 -
->>>>>>>>>      drivers/pinctrl/mediatek/Kconfig              | 51 ++++++++++-
->>>>>>>>>      drivers/pinctrl/mediatek/Makefile             | 63 +++++++------
->>>>>>>>>      .../{ralink => mediatek}/pinctrl-mt7620.c     | 34 +++----
->>>>>>>>>      .../{ralink => mediatek}/pinctrl-mt7621.c     | 30 +++----
->>>>>>>>>      .../{ralink => mediatek}/pinctrl-mt76x8.c     | 60 ++++++-------
->>>>>>>>>      .../pinctrl-mtmips.c}                         | 90 +++++++++----------
->>>>>>>>>      .../pinctrl-mtmips.h}                         | 16 ++--
->>>>>>>>>      .../{ralink => mediatek}/pinctrl-rt2880.c     | 20 ++---
->>>>>>>>>      .../{ralink => mediatek}/pinctrl-rt305x.c     | 44 ++++-----
->>>>>>>>>      .../{ralink => mediatek}/pinctrl-rt3883.c     | 28 +++---
->>>>>>>>>      drivers/pinctrl/ralink/Kconfig                | 40 ---------
->>>>>>>>>      drivers/pinctrl/ralink/Makefile               |  9 --
->>>>>>>>>      14 files changed, 246 insertions(+), 241 deletions(-)
->>>>>>>>>      rename drivers/pinctrl/{ralink => mediatek}/pinctrl-mt7620.c (81%)
->>>>>>>>>      rename drivers/pinctrl/{ralink => mediatek}/pinctrl-mt7621.c (80%)
->>>>>>>>>      rename drivers/pinctrl/{ralink => mediatek}/pinctrl-mt76x8.c (81%)
->>>>>>>>>      rename drivers/pinctrl/{ralink/pinctrl-ralink.c => mediatek/pinctrl-mtmips.c} (74%)
->>>>>>>>>      rename drivers/pinctrl/{ralink/pinctrl-ralink.h => mediatek/pinctrl-mtmips.h} (75%)
->>>>>>>>>      rename drivers/pinctrl/{ralink => mediatek}/pinctrl-rt2880.c (71%)
->>>>>>>>>      rename drivers/pinctrl/{ralink => mediatek}/pinctrl-rt305x.c (75%)
->>>>>>>>>      rename drivers/pinctrl/{ralink => mediatek}/pinctrl-rt3883.c (80%)
->>>>>>>>>      delete mode 100644 drivers/pinctrl/ralink/Kconfig
->>>>>>>>>      delete mode 100644 drivers/pinctrl/ralink/Makefile
->>>>>>>>>
->>>>>>>>> diff --git a/drivers/pinctrl/Kconfig b/drivers/pinctrl/Kconfig
->>>>>>>>> index dcb53c4a9584..8a6012770640 100644
->>>>>>>>> --- a/drivers/pinctrl/Kconfig
->>>>>>>>> +++ b/drivers/pinctrl/Kconfig
->>>>>>>>> @@ -537,7 +537,6 @@ source "drivers/pinctrl/nomadik/Kconfig"
->>>>>>>>>      source "drivers/pinctrl/nuvoton/Kconfig"
->>>>>>>>>      source "drivers/pinctrl/pxa/Kconfig"
->>>>>>>>>      source "drivers/pinctrl/qcom/Kconfig"
->>>>>>>>> -source "drivers/pinctrl/ralink/Kconfig"
->>>>>>>>>      source "drivers/pinctrl/renesas/Kconfig"
->>>>>>>>>      source "drivers/pinctrl/samsung/Kconfig"
->>>>>>>>>      source "drivers/pinctrl/spear/Kconfig"
->>>>>>>>> diff --git a/drivers/pinctrl/Makefile b/drivers/pinctrl/Makefile
->>>>>>>>> index d5939840bb2a..ada6ed1d4e91 100644
->>>>>>>>> --- a/drivers/pinctrl/Makefile
->>>>>>>>> +++ b/drivers/pinctrl/Makefile
->>>>>>>>> @@ -66,7 +66,6 @@ obj-y                         += nomadik/
->>>>>>>>>      obj-y                          += nuvoton/
->>>>>>>>>      obj-$(CONFIG_PINCTRL_PXA)      += pxa/
->>>>>>>>>      obj-$(CONFIG_ARCH_QCOM)                += qcom/
->>>>>>>>> -obj-$(CONFIG_PINCTRL_RALINK)   += ralink/
->>>>>>>>>      obj-$(CONFIG_PINCTRL_RENESAS)  += renesas/
->>>>>>>>>      obj-$(CONFIG_PINCTRL_SAMSUNG)  += samsung/
->>>>>>>>>      obj-$(CONFIG_PINCTRL_SPEAR)    += spear/
->>>>>>>>> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
->>>>>>>>> index a71874fed3d6..2eeb55010563 100644
->>>>>>>>> --- a/drivers/pinctrl/mediatek/Kconfig
->>>>>>>>> +++ b/drivers/pinctrl/mediatek/Kconfig
->>>>>>>>> @@ -1,6 +1,6 @@
->>>>>>>>>      # SPDX-License-Identifier: GPL-2.0-only
->>>>>>>>>      menu "MediaTek pinctrl drivers"
->>>>>>>>> -       depends on ARCH_MEDIATEK || COMPILE_TEST
->>>>>>>>> +       depends on ARCH_MEDIATEK || RALINK || COMPILE_TEST
->>>>>>>>>
->>>>>>>>>      config EINT_MTK
->>>>>>>>>             tristate "MediaTek External Interrupt Support"
->>>>>>>>> @@ -22,6 +22,12 @@ config PINCTRL_MTK
->>>>>>>>>      config PINCTRL_MTK_V2
->>>>>>>>>             tristate
->>>>>>>>>
->>>>>>>>> +config PINCTRL_MTK_MTMIPS
->>>>>>>>> +       bool
->>>>>>>>> +       depends on RALINK
->>>>>>>>> +       select PINMUX
->>>>>>>>> +       select GENERIC_PINCONF
->>>>>>>>> +
->>>>>>>>>      config PINCTRL_MTK_MOORE
->>>>>>>>>             bool
->>>>>>>>>             depends on OF
->>>>>>>>> @@ -43,6 +49,49 @@ config PINCTRL_MTK_PARIS
->>>>>>>>>             select OF_GPIO
->>>>>>>>>             select PINCTRL_MTK_V2
->>>>>>>>>
->>>>>>>>> +# For MIPS SoCs
->>>>>>>>> +config PINCTRL_MT7620
->>>>>>>>> +       bool "MediaTek MT7620 pin control"
->>>>>>>>> +       depends on SOC_MT7620 || COMPILE_TEST
->>>>>>>>> +       depends on RALINK
->>>>>>>>> +       default SOC_MT7620
->>>>>>>>> +       select PINCTRL_MTK_MTMIPS
->>>>>>>>> +
->>>>>>>>> +config PINCTRL_MT7621
->>>>>>>>> +       bool "MediaTek MT7621 pin control"
->>>>>>>>> +       depends on SOC_MT7621 || COMPILE_TEST
->>>>>>>>> +       depends on RALINK
->>>>>>>>> +       default SOC_MT7621
->>>>>>>>> +       select PINCTRL_MTK_MTMIPS
->>>>>>>>> +
->>>>>>>>> +config PINCTRL_MT76X8
->>>>>>>>> +       bool "MediaTek MT76X8 pin control"
->>>>>>>>> +       depends on SOC_MT7620 || COMPILE_TEST
->>>>>>>>> +       depends on RALINK
->>>>>>>>> +       default SOC_MT7620
->>>>>>>>> +       select PINCTRL_MTK_MTMIPS
->>>>>>>>> +
->>>>>>>>> +config PINCTRL_RT2880
->>>>>>>>> +       bool "Ralink RT2880 pin control"
->>>>>>>>> +       depends on SOC_RT288X || COMPILE_TEST
->>>>>>>>> +       depends on RALINK
->>>>>>>>> +       default SOC_RT288X
->>>>>>>>> +       select PINCTRL_MTK_MTMIPS
->>>>>>>>> +
->>>>>>>>> +config PINCTRL_RT305X
->>>>>>>>> +       bool "Ralink RT305X pin control"
->>>>>>>>> +       depends on SOC_RT305X || COMPILE_TEST
->>>>>>>>> +       depends on RALINK
->>>>>>>>> +       default SOC_RT305X
->>>>>>>>> +       select PINCTRL_MTK_MTMIPS
->>>>>>>>> +
->>>>>>>>> +config PINCTRL_RT3883
->>>>>>>>> +       bool "Ralink RT3883 pin control"
->>>>>>>>> +       depends on SOC_RT3883 || COMPILE_TEST
->>>>>>>>> +       depends on RALINK
->>>>>>>>> +       default SOC_RT3883
->>>>>>>>> +       select PINCTRL_MTK_MTMIPS
->>>>>>>>> +
->>>>>>>>
->>>>>>>> I am not a Kconfig expert at all but...
->>>>>>>>
->>>>>>>> Should not all of these be depends on SOC_XXX || (COMPILE_TEST &&
->>>>>>>> RALINK) and avoid the " depends on RALINK" next line in all of them?
->>>>>>
->>>>>> This seems to do the same thing but I'm following the "either change
->>>>>> them all or fit into the crowd" ideology.
->>>>>>
->>>>>>>>
->>>>>>>> Just asking since we have yet arch read and write register operations
->>>>>>>> in pinctrl common ralink code. Having in this way, when we address
->>>>>>>> this arch thing  in the next series just removing the "&& RALINK" part
->>>>>>>> makes the review pretty obvious.
->>>>>>
->>>>>> You'd have to change RALINK with OF since we're still depending on that.
->>>>>> RALINK selects OF by default so it's currently a hidden dependency.
->>>>>>
->>>>>>>>
->>>>>>>> Other than that, changes look good to me.
->>>>>>>
->>>>>>> I think "depends on SOC_XXX || (COMPILE_TEST && MIPS)" would work also
->>>>>>> and might be more accurate for compile testing targets.
->>>>>
->>>>> Are you sure? SOC_XXX here is already being enabled only if RALINK is
->>>>> already enabled, right? [0]
->>>>
->>>> I'm not sure who's your reply to, or what it's about here.
->>>
->>> Bad insertion between lines, sorry :). I was just trying to explain to
->>> you that SOC_RTXX ralink stuff is only available when RALINK is
->>> already selected.
->>
->> Makes sense. However, I believe what I said below is still true. This
->> option will be available to compile if a Ralink SoC (and therefore
->> RALINK) is enabled, OR, COMPILE_TEST and MIPS is enabled. The latter
->> will fail to compile if the enabled MIPS platform is not RALINK.
->>
->>>
->>>>
->>>>>
->>>>>>
->>>>>> This is not OK in both cases. If the driver is dependent on Ralink
->>>>>> architecture code, choosing any other MIPS platform will make the driver
->>>>>> available to compile, which will fail.
->>>>>
->>>>> SOC_XXX is already dependent on RALINK for real uses but the driver is
->>>>> going to be selected for other MIPS platforms only for COMPILE_TEST
->>>>> targets. Ideally drivers should be arch agnostic so can be selected
->>>>> for any single arch build. Now we have arch dependent read and write
->>>>> calls in the code, so you need the right headers to be properly found
->>>>> to be able to compile testing. I think MIPS is enough dependency here
->>>>> to properly find them. But if not, this should be (COMPILE_TEST &&
->>>>> RALINK)
->>>>
->>>> I expect below to work without requiring the MIPS option.
->>>>
->>>> ifeq ($(CONFIG_COMPILE_TEST),y)
->>>> CFLAGS_pinctrl-mtmips.o         += -I$(srctree)/arch/mips/include
->>>> endif
->>>
->>> Yes, this will work but won't be necessary at all when we get rid of
->>> ralink arch dependent code in the next series.
->>
->> Oh, you plan to completely get rid of it, including headers. That's better!
+On 6.03.2023 18:45, Vladimir Oltean wrote:
+> Hi Arınç,
 > 
-> I'd really love to get rid of all of that, yes.
-> 
+> On Sat, Mar 04, 2023 at 03:54:54PM +0300, arinc9.unal@gmail.com wrote:
+>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
 >>
->> However, rt305x_pinctrl_probe() on pinctrl-rt305x.c needs them to find
->> out the SoC to match the pinmux data. Sure, splitting the driver further
->> will work but I'm wondering if you've got something else in mind to
->> address this.
+>> Move the PLL setup of the MT7530 switch out of the pad configuration of
+>> port 6 to mt7530_setup, after reset.
 > 
-> I know. Sharing the same compatible string makes really hard to do
-> this easily. One of my thoughts was to split also that in the driver
-> as you are pointing out here. I have also submitted this series [0] to
-> be able to make use of soc_match stuff instead of relying on
-> compatible strings for these kinds of situations. However I am not
-> also sure that would be a valid approach. Let's see. At the end we can
-> end up splitting the driver if nothing seems to work.
+> it would have been good if this patch had done that and only that, no?
 
-Sounds good, I appreciate your efforts.
+Agreed.
+
+> 
+>> This fixes the improper initialisation of the switch when only port 5 is
+>> used as a CPU port.
+>>
+>> Add supported phy modes of port 5 on the PLL setup.
+>>
+>> Remove now incorrect comment regarding P5 as GMAC5.
+>>
+>> Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
+>> Fixes: 38f790a80560 ("net: dsa: mt7530: Add support for port 5")
+>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+>> ---
+>>
+>> I'm trying to mimic this change by Alexander [0] for the MT7530 switch.
+>> This is already the case for MT7530 and MT7531 on the MediaTek ethernet
+>> driver on U-Boot [1] [2].
+>>
+>> [0] https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/commit/?id=42bc4fafe359ed6b73602b7a2dba0dd99588f8ce
+>> [1] https://github.com/u-boot/u-boot/blob/a94ab561e2f49a80d8579930e840b810ab1a1330/drivers/net/mtk_eth.c#L729
+>> [2] https://github.com/u-boot/u-boot/blob/a94ab561e2f49a80d8579930e840b810ab1a1330/drivers/net/mtk_eth.c#L903
+>>
+>> There are some parts I couldn't figure out myself with my limited C
+>> knowledge. I've pointed them out on the code. Vladimir, could you help?
+>>
+>> There is a lot of code which is only needed for port 6 or trgmii on port 6,
+>> but runs whether port 6 or trgmii is used or not. For now, the best I can
+>> do is to fix port 5 so it works without port 6 being used.
+>>
+>> The U-Boot driver seems to be much more organised so it could be taken as
+>> a reference to sort out this DSA driver further.
+>>
+>> Also, now that the pad setup for mt7530 is also moved somewhere else, can
+>> we completely get rid of @pad_setup?
+>>
+>> Arınç
+> 
+> I don't like the strategy you used in this patch here, and I don't want
+> to answer these questions just yet, because I'm not certain that my
+> answers will be useful in the end.
+> 
+>>
+>> ---
+>>   drivers/net/dsa/mt7530.c | 46 +++++++++++++++++++++++++++++-----------
+>>   1 file changed, 34 insertions(+), 12 deletions(-)
+>>
+>> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+>> index 0e99de26d159..fb20ce4f443e 100644
+>> --- a/drivers/net/dsa/mt7530.c
+>> +++ b/drivers/net/dsa/mt7530.c
+>> @@ -395,9 +395,8 @@ mt7530_fdb_write(struct mt7530_priv *priv, u16 vid,
+>>   
+>>   /* Setup TX circuit including relevant PAD and driving */
+>>   static int
+>> -mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+>> +mt7530_pad_clk_setup(struct mt7530_priv *priv, phy_interface_t interface)
+>>   {
+>> -	struct mt7530_priv *priv = ds->priv;
+>>   	u32 ncpo1, ssc_delta, trgint, i, xtal;
+>>   
+>>   	xtal = mt7530_read(priv, MT7530_MHWTRAP) & HWTRAP_XTAL_MASK;
+>> @@ -409,9 +408,32 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+>>   		return -EINVAL;
+>>   	}
+>>   
+>> +	/* Is setting trgint to 0 really needed for the !trgint check? */
+>> +	trgint = 0;
+>> +
+>> +	/* FIXME: run this switch if p5 is defined on the devicetree */
+>> +	/* and change interface to the phy-mode of port 5 */
+>> +	switch (interface) {
+> 
+> so this should be something like priv->p5_interface (assuming this is
+> initialized by the time mt7530_pad_clk_setup() is called, which it isn't).
+> 
+>> +	case PHY_INTERFACE_MODE_GMII:
+>> +		/* PLL frequency: 125MHz */
+>> +		ncpo1 = 0x0c80;
+>> +		break;
+>> +	case PHY_INTERFACE_MODE_MII:
+>> +		break;
+> 
+> so with priv->p5_interface == "mii", ncpo1 is uninitialized (will be
+> potentially still initialized by the port 6 "switch" statement below).
+> 
+>> +	case PHY_INTERFACE_MODE_RGMII:
+>> +		/* PLL frequency: 125MHz */
+>> +		ncpo1 = 0x0c80;
+>> +		break;
+>> +	default:
+>> +		dev_err(priv->dev, "xMII interface %d not supported\n",
+>> +			interface);
+>> +		return -EINVAL;
+>> +	}
+> 
+> What method did you use to determine the ncpo1 values here? Are they
+> coordinated with what p6 wants? I would expect to see a table with
+> 
+>    priv->p5_interface        priv->p6_interface       ncpo1 value
+>        gmii                     rgmii                     ???
+>        mii                      rgmii                     ???
+>        rgmii                    rgmii                     ???
+>        gmii                     trgmii                    ???
+>        mii                      trgmii                    ???
+>        rgmii                    trgmii                    ???
+
+Looking at the Wikipedia page for Media-independent interface [0], the 
+data interface must be clocked at 125 MHz for gigabit MIIs, which I 
+believe what the "PLL" here refers to. trgmii needs higher frequency in 
+some cases so if both CPU ports are enabled, the table would be:
+
+     priv->p5_interface        priv->p6_interface       ncpo1 value
+         gmii                     rgmii                     125MHz
+         mii                      rgmii                     125MHz
+         rgmii                    rgmii                     125MHz
+         gmii                     trgmii                    125-250MHz
+         mii                      trgmii                    125-250MHz
+         rgmii                    trgmii                    125-250MHz
+
+> 
+> right now, you let the p6_interface logic overwrite the ncpo1 selected
+> by the p5_interface logic like crazy, and it's not clear to me that this
+> is what you want.
+
+This seems to be fine as p6 sets the frequency either the same or higher.
+
+> 
+> This problem is way deeper than knowledge of the C language, your pseudo
+> code simply does not describe what should happen in all combinations.
+> 
+>  From our private conversation dated Feb 08, I guess that what you're
+> doing is also a useless complication and not what you truly want. What
+> you truly want is for the CORE_GSWPLL_GRP2 register to be programmed
+> regardless of whether port 6 is used or not.
+> 
+>> +
+>> +	/* FIXME: run this switch if p6 is defined on the devicetree */
+>> +	/* and change interface to the phy-mode of port 6 */
+>>   	switch (interface) {
+> 
+> same comment as above, this should approximate priv->p6_interface.
+> 
+>>   	case PHY_INTERFACE_MODE_RGMII:
+>> -		trgint = 0;
+>>   		/* PLL frequency: 125MHz */
+>>   		ncpo1 = 0x0c80;
+>>   		break;
+>> @@ -2172,7 +2194,11 @@ mt7530_setup(struct dsa_switch *ds)
+>>   		     SYS_CTRL_PHY_RST | SYS_CTRL_SW_RST |
+>>   		     SYS_CTRL_REG_RST);
+>>   
+>> -	/* Enable Port 6 only; P5 as GMAC5 which currently is not supported */
+>> +	/* Setup switch core pll */
+>> +	/* FIXME: feed the phy-mode of port 5 and 6, if the ports are defined on the devicetree */
+>> +	mt7530_pad_clk_setup(priv, interface);
+> 
+> "interface" is completely uninitialized here.
+> 
+> Sorry, I'm not reviewing this any further, because it obviously doesn't work.
+> 
+>> +
+>> +	/* Enable Port 6 */
+>>   	val = mt7530_read(priv, MT7530_MHWTRAP);
+>>   	val &= ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
+>>   	val |= MHWTRAP_MANUAL;
+>> @@ -2491,11 +2517,9 @@ static void mt7531_mac_port_get_caps(struct dsa_switch *ds, int port,
+>>   }
+>>   
+>>   static int
+>> -mt753x_pad_setup(struct dsa_switch *ds, const struct phylink_link_state *state)
+>> +mt7530_pad_setup(struct dsa_switch *ds, phy_interface_t interface)
+>>   {
+>> -	struct mt7530_priv *priv = ds->priv;
+>> -
+>> -	return priv->info->pad_setup(ds, state->interface);
+>> +	return 0;
+>>   }
+>>   
+>>   static int
+>> @@ -2769,8 +2793,6 @@ mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+>>   		if (priv->p6_interface == state->interface)
+>>   			break;
+>>   
+>> -		mt753x_pad_setup(ds, state);
+>> -
+>>   		if (mt753x_mac_config(ds, port, mode, state) < 0)
+>>   			goto unsupported;
+>>   
+>> @@ -3187,7 +3209,7 @@ static const struct mt753x_info mt753x_table[] = {
+>>   		.phy_write_c22 = mt7530_phy_write_c22,
+>>   		.phy_read_c45 = mt7530_phy_read_c45,
+>>   		.phy_write_c45 = mt7530_phy_write_c45,
+>> -		.pad_setup = mt7530_pad_clk_setup,
+>> +		.pad_setup = mt7530_pad_setup,
+>>   		.mac_port_get_caps = mt7530_mac_port_get_caps,
+>>   		.mac_port_config = mt7530_mac_config,
+>>   	},
+>> @@ -3199,7 +3221,7 @@ static const struct mt753x_info mt753x_table[] = {
+>>   		.phy_write_c22 = mt7530_phy_write_c22,
+>>   		.phy_read_c45 = mt7530_phy_read_c45,
+>>   		.phy_write_c45 = mt7530_phy_write_c45,
+>> -		.pad_setup = mt7530_pad_clk_setup,
+>> +		.pad_setup = mt7530_pad_setup,
+> 
+> as a general rule, for bug fixes don't touch stuff that you don't need to touch
+> 
+>>   		.mac_port_get_caps = mt7530_mac_port_get_caps,
+>>   		.mac_port_config = mt7530_mac_config,
+>>   	},
+>> -- 
+>> 2.37.2
+>>
+> 
+> Could you please let me know if this patch works, instead of what you've
+> posted above? It does what you *said* you tried to do, aka it performs
+> the initialization of CORE_GSWPLL_GRP2 independently of port 6 setup.
+> There is a slight reordering of register writes with MT7530_P6ECR, but
+> hopefully that doesn't bother anyone.
+> 
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index 3a15015bc409..a508402c4ecb 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -393,6 +393,24 @@ mt7530_fdb_write(struct mt7530_priv *priv, u16 vid,
+>   		mt7530_write(priv, MT7530_ATA1 + (i * 4), reg[i]);
+>   }
+>   
+> +/* Set up switch core clock for MT7530 */
+> +static void mt7530_pll_setup(struct mt7530_priv *priv)
+> +{
+> +	/* Disable PLL */
+> +	core_write(priv, CORE_GSWPLL_GRP1, 0);
+> +
+> +	/* Set core clock into 500Mhz */
+> +	core_write(priv, CORE_GSWPLL_GRP2,
+> +		   RG_GSWPLL_POSDIV_500M(1) |
+> +		   RG_GSWPLL_FBKDIV_500M(25));
+> +
+> +	/* Enable PLL */
+> +	core_write(priv, CORE_GSWPLL_GRP1,
+> +		   RG_GSWPLL_EN_PRE |
+> +		   RG_GSWPLL_POSDIV_200M(2) |
+> +		   RG_GSWPLL_FBKDIV_200M(32));
+> +}
+> +
+>   /* Setup TX circuit including relevant PAD and driving */
+>   static int
+>   mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+> @@ -453,21 +471,6 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+>   	core_clear(priv, CORE_TRGMII_GSW_CLK_CG,
+>   		   REG_GSWCK_EN | REG_TRGMIICK_EN);
+>   
+> -	/* Setup core clock for MT7530 */
+> -	/* Disable PLL */
+> -	core_write(priv, CORE_GSWPLL_GRP1, 0);
+> -
+> -	/* Set core clock into 500Mhz */
+> -	core_write(priv, CORE_GSWPLL_GRP2,
+> -		   RG_GSWPLL_POSDIV_500M(1) |
+> -		   RG_GSWPLL_FBKDIV_500M(25));
+> -
+> -	/* Enable PLL */
+> -	core_write(priv, CORE_GSWPLL_GRP1,
+> -		   RG_GSWPLL_EN_PRE |
+> -		   RG_GSWPLL_POSDIV_200M(2) |
+> -		   RG_GSWPLL_FBKDIV_200M(32));
+> -
+>   	/* Setup the MT7530 TRGMII Tx Clock */
+>   	core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
+>   	core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
+> @@ -2196,6 +2199,8 @@ mt7530_setup(struct dsa_switch *ds)
+>   		     SYS_CTRL_PHY_RST | SYS_CTRL_SW_RST |
+>   		     SYS_CTRL_REG_RST);
+>   
+> +	mt7530_pll_setup(priv);
+> +
+>   	/* Enable Port 6 only; P5 as GMAC5 which currently is not supported */
+>   	val = mt7530_read(priv, MT7530_MHWTRAP);
+>   	val &= ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
+
+This looks much better, thanks a lot! The only missing part is setting 
+the PLL frequency when only port 5 is enabled.
+
+I'll test it regardless.
+
+[0] https://en.wikipedia.org/wiki/Media-independent_interface#GMII
 
 Arınç
 
