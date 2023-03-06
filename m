@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74BA2C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 14:31:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D88FC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 14:33:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZxF+zo37ykHE1+v2F+C8eyz3DiA+alGZrXmmW3pjXaE=; b=Zti2Wh/E24xwbAO1ABhCa3lcU6
-	AzB/y5fWt3g5U5X4VMb+Lf98TNa6Zj3hxXAxFuqppcoWQ3QqCsVkHWkKOy1aaAsGBaCoriPW3r1O/
-	G1EKP61wzelI7aJptjfElo9fwhro/O+0tfn0K9tH9+is48z5Vv4q3HIocZ4mGF1b7F+2uiUNMAqna
-	1gJhWRiyh24VoUMYsTSugbFU6aJXHQ5A7XvElHUqtjZB5QxpQGkjheU7OsTxcCLAy9Ez2pLoUzkOq
-	oHEVVO/E2JzTZNe8cGOaKCBpgjyr2QwkGBRAtSLSscSOsGtiEQ2XBO+Rbbn1RwQQWd78LrkS7G3zv
-	NbUGT2tQ==;
+	bh=5hiOGbRLd6awfODUe5B29cRrwHs/i+noW1PKu3C/lIU=; b=zL2O9oYtUMLNSSlrE8gVmJ601T
+	XKM6Ukhtd5cYoVb3bb9pHxM49UACFZb6g7Yw1tqJIm38pcEQgqbSPb+lwHx4R7rE6Mu/9JrF0BZC3
+	97SlO/l65PehJAILvkF50uYPlDZnrnkWWpHK3yg4Q8nw55dn5onM7IuODoyXd777x4k86Jc3xjIEn
+	Fxo0HEgOL1bQoB+0BPwG00Qhb65Mc+0pnGTt+MK/Lt8ut83w4uHfhqPtP5UVXjBe+i4dYcgB6yM7H
+	hM6pjy24mkjd35m0qjLLfYmh648OcTGQpCBHJXG1yAEXFX4WCrcu4EB2US+aIxUsnvGwXdDauJNx8
+	xE3HzBSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZBrY-00DH6Q-0x; Mon, 06 Mar 2023 14:30:52 +0000
+	id 1pZBuJ-00DIV4-QI; Mon, 06 Mar 2023 14:33:43 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZBUC-00D3ss-Ip; Mon, 06 Mar 2023 14:06:46 +0000
+	id 1pZBUI-00D3wR-44; Mon, 06 Mar 2023 14:06:55 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 189646602FF3;
-	Mon,  6 Mar 2023 14:06:42 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 86E476602FF5;
+	Mon,  6 Mar 2023 14:06:47 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678111603;
-	bh=+rJu1lq5BLirEKECDD7KKkaw15QAWsrzbIAaNVC4b1g=;
+	s=mail; t=1678111608;
+	bh=okgDVcS5AIh9ARPx4LN/uPCOjdyJGHaFGT+16hg9eRs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=P8eUs05KlkTWOvOZI6vKEjQhO8Sle3mnv0wO044GvPutVjl5fOqa6gjHovTHnc2Iz
-	 EUGrvgPwxBxBQ8sdAXjIGGaXsG35KHJDp+bPZ/n1Qops6H7FX28uHbTiIJjkENCqfE
-	 zD/NiPkDDLbhXT2Ouk168GYY+GzUM3IZVHIJB+xpEFO31mjH+E2V7ZpbIVNdAAdwiT
-	 HkfZoVd1TDz6FxadxDqaUiTlkPPJeSZ3yXf0MbV1mOVoPUCiwLvdJ3a2PukTsZ1i2U
-	 5Xe8d9Vy79C0aMA6NLFc/AYPTb+C8dtENBzigMkf58en2QpRtJ7lJzCbfSOHhUlKOK
-	 G25atp0TuUCMg==
+	b=C39t7wn3I5n8ZzF6x9vo0CmHqRDGYWBUELBHSInQz732ThU20yixNP3UxuURE+9W9
+	 pmSC5+M7q9/rdGipO5azwP9W7xCHe8eirDewk+miuzJRbKRfpfFgqx8QO0evq5E2Jy
+	 W6ETOyExIx0/6+ZGWUzS9Hrf6YUr1pvCmz3S6CPf7Z2ZnjeqBGkxmAKO+6A8eD0GnB
+	 SygusETVJlSPV9hfKbN2KVyXILZm5Z+JUd726/+uc3EmYga9nj0lCuW754A3+zTkq2
+	 pewXBiK5h2N5NGAdZ7olhxSerE5qh9R/B5DeyEgxIuDSutaU3lBY9nGxuGS/EgPxbZ
+	 GqB4P5Rjjcqtw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mturquette@baylibre.com
 Cc: sboyd@kernel.org,
@@ -68,17 +68,18 @@ Cc: sboyd@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v6 35/54] clk: mediatek: mt8186-mcu: Migrate to common probe mechanism
-Date: Mon,  6 Mar 2023 15:05:24 +0100
-Message-Id: <20230306140543.1813621-36-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v6 38/54] clk: mediatek: mt2712: Change Kconfig options to allow module build
+Date: Mon,  6 Mar 2023 15:05:27 +0100
+Message-Id: <20230306140543.1813621-39-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
 References: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230306_060644_788697_C3D1B4BF 
-X-CRM114-Status: GOOD (  11.80  )
+X-CRM114-CacheID: sfid-20230306_060650_335000_A875F8CF 
+X-CRM114-Status: UNSURE (   8.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,100 +94,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert MT8186 MCUSYS clocks to the common mtk_clk_simple_probe().
+All of the mt2712 drivers have been converted to platform drivers!
+Change the Kconfig options for all MT2712 clocks to tristate to allow
+building all clock drivers as modules.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/clk/mediatek/clk-mt8186-mcu.c | 68 +++++----------------------
- 1 file changed, 13 insertions(+), 55 deletions(-)
+ drivers/clk/mediatek/Kconfig | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt8186-mcu.c b/drivers/clk/mediatek/clk-mt8186-mcu.c
-index e52a2d986c99..895856df95df 100644
---- a/drivers/clk/mediatek/clk-mt8186-mcu.c
-+++ b/drivers/clk/mediatek/clk-mt8186-mcu.c
-@@ -43,67 +43,25 @@ static struct mtk_composite mcu_muxes[] = {
- 	MUX(CLK_MCU_ARMPLL_BUS_SEL, "mcu_armpll_bus_sel", mcu_armpll_bus_parents, 0x2E0, 9, 2),
- };
+diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+index b9c0a9e21cf1..45b7aea7648d 100644
+--- a/drivers/clk/mediatek/Kconfig
++++ b/drivers/clk/mediatek/Kconfig
+@@ -75,7 +75,7 @@ config COMMON_CLK_MT2701_G3DSYS
+ 	  This driver supports MediaTek MT2701 g3dsys clocks.
  
--static const struct of_device_id of_match_clk_mt8186_mcu[] = {
--	{ .compatible = "mediatek,mt8186-mcusys", },
--	{}
-+static const struct mtk_clk_desc mcu_desc = {
-+	.composite_clks = mcu_muxes,
-+	.num_composite_clks = ARRAY_SIZE(mcu_muxes),
- };
+ config COMMON_CLK_MT2712
+-	bool "Clock driver for MediaTek MT2712"
++	tristate "Clock driver for MediaTek MT2712"
+ 	depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
+ 	select COMMON_CLK_MEDIATEK
+ 	default ARCH_MEDIATEK && ARM64
+@@ -83,43 +83,43 @@ config COMMON_CLK_MT2712
+ 	  This driver supports MediaTek MT2712 basic clocks.
  
--static int clk_mt8186_mcu_probe(struct platform_device *pdev)
--{
--	struct clk_hw_onecell_data *clk_data;
--	struct device_node *node = pdev->dev.of_node;
--	int r;
--	void __iomem *base;
--
--	clk_data = mtk_alloc_clk_data(CLK_MCU_NR_CLK);
--	if (!clk_data)
--		return -ENOMEM;
--
--	base = devm_platform_ioremap_resource(pdev, 0);
--	if (IS_ERR(base)) {
--		r = PTR_ERR(base);
--		goto free_mcu_data;
--	}
--
--	r = mtk_clk_register_composites(&pdev->dev, mcu_muxes,
--					ARRAY_SIZE(mcu_muxes), base,
--					NULL, clk_data);
--	if (r)
--		goto free_mcu_data;
--
--	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
--	if (r)
--		goto unregister_composite_muxes;
--
--	platform_set_drvdata(pdev, clk_data);
--
--	return r;
--
--unregister_composite_muxes:
--	mtk_clk_unregister_composites(mcu_muxes, ARRAY_SIZE(mcu_muxes), clk_data);
--free_mcu_data:
--	mtk_free_clk_data(clk_data);
--	return r;
--}
--
--static int clk_mt8186_mcu_remove(struct platform_device *pdev)
--{
--	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
--	struct device_node *node = pdev->dev.of_node;
--
--	of_clk_del_provider(node);
--	mtk_clk_unregister_composites(mcu_muxes, ARRAY_SIZE(mcu_muxes), clk_data);
--	mtk_free_clk_data(clk_data);
--
--	return 0;
--}
-+static const struct of_device_id of_match_clk_mt8186_mcu[] = {
-+	{ .compatible = "mediatek,mt8186-mcusys", .data = &mcu_desc },
-+	{ /* sentinel */}
-+};
+ config COMMON_CLK_MT2712_BDPSYS
+-	bool "Clock driver for MediaTek MT2712 bdpsys"
++	tristate "Clock driver for MediaTek MT2712 bdpsys"
+ 	depends on COMMON_CLK_MT2712
+ 	help
+ 	  This driver supports MediaTek MT2712 bdpsys clocks.
  
- static struct platform_driver clk_mt8186_mcu_drv = {
--	.probe = clk_mt8186_mcu_probe,
--	.remove = clk_mt8186_mcu_remove,
- 	.driver = {
- 		.name = "clk-mt8186-mcu",
- 		.of_match_table = of_match_clk_mt8186_mcu,
- 	},
-+	.probe = mtk_clk_simple_probe,
-+	.remove = mtk_clk_simple_remove,
- };
--builtin_platform_driver(clk_mt8186_mcu_drv);
-+module_platform_driver(clk_mt8186_mcu_drv);
-+
-+MODULE_DESCRIPTION("MediaTek MT8186 mcusys clocks driver");
-+MODULE_LICENSE("GPL");
+ config COMMON_CLK_MT2712_IMGSYS
+-	bool "Clock driver for MediaTek MT2712 imgsys"
++	tristate "Clock driver for MediaTek MT2712 imgsys"
+ 	depends on COMMON_CLK_MT2712
+ 	help
+ 	  This driver supports MediaTek MT2712 imgsys clocks.
+ 
+ config COMMON_CLK_MT2712_JPGDECSYS
+-	bool "Clock driver for MediaTek MT2712 jpgdecsys"
++	tristate "Clock driver for MediaTek MT2712 jpgdecsys"
+ 	depends on COMMON_CLK_MT2712
+ 	help
+ 	  This driver supports MediaTek MT2712 jpgdecsys clocks.
+ 
+ config COMMON_CLK_MT2712_MFGCFG
+-	bool "Clock driver for MediaTek MT2712 mfgcfg"
++	tristate "Clock driver for MediaTek MT2712 mfgcfg"
+ 	depends on COMMON_CLK_MT2712
+ 	help
+ 	  This driver supports MediaTek MT2712 mfgcfg clocks.
+ 
+ config COMMON_CLK_MT2712_MMSYS
+-	bool "Clock driver for MediaTek MT2712 mmsys"
++	tristate "Clock driver for MediaTek MT2712 mmsys"
+ 	depends on COMMON_CLK_MT2712
+ 	help
+ 	  This driver supports MediaTek MT2712 mmsys clocks.
+ 
+ config COMMON_CLK_MT2712_VDECSYS
+-	bool "Clock driver for MediaTek MT2712 vdecsys"
++	tristate "Clock driver for MediaTek MT2712 vdecsys"
+ 	depends on COMMON_CLK_MT2712
+ 	help
+ 	  This driver supports MediaTek MT2712 vdecsys clocks.
+ 
+ config COMMON_CLK_MT2712_VENCSYS
+-	bool "Clock driver for MediaTek MT2712 vencsys"
++	tristate "Clock driver for MediaTek MT2712 vencsys"
+ 	depends on COMMON_CLK_MT2712
+ 	help
+ 	  This driver supports MediaTek MT2712 vencsys clocks.
 -- 
 2.39.2
 
