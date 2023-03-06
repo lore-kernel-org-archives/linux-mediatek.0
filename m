@@ -4,70 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 074F9C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 17:49:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5318C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 18:40:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8lN0Yg0JRWF9rWx1AIEB0nSa4HfMfBnZ+uCfkhWx3pk=; b=xpcAxQwJ23MGK9mZcAZkyCwkoH
-	ynP6MGTU+t6Kz+vWQqbCgo77FAFocnEkvh4AxwhinG0v1ETUHQ2nLLhYfWY243L554kIkdQ+1h0zS
-	nlw3Q0sSiKL13CkE5Kz+q2hD/4CeBaXapFfvFT+QTxXpSdlytIy5vjx//ZqVT+BYj2uvfBHI9/yXE
-	nthwPyzbzbmRr06W1OdIUyc4S8eSqUafApkrJq6wA341BuSYL9v8tPO83vzFC2CCvG26pE/kLPgZa
-	jkgyNQFRgHN7Z6Rh4qvlFnGULRMC/TG3OeIlHo7uYoQsseF4hViTnge7lM+D2xir82BMxMq3Rp+2X
-	0/lC3FSA==;
+	bh=B1PH+yRb87aW+TCrhm59uGdmpc+0t4xz4NdiXNOaRfU=; b=M/AuP9Do3onzK4MNRCAwbGV4/N
+	pb7EubV4JA2F4byBDehBuXu5LuXt0DNP5dWeh6GWHBCX683DSDQ8wRDMXqSqHbiBrPLzUnpYlNWBS
+	ADfkt1v/o58sDGnWpVIm/EWRxMDxhQHF5gCBVCZEdWHucH/4iSijyPWX0cTX8Kclf9mRd1/ANItqI
+	81HPNWLF0GAXSrbMrLQc2+O2V9LXZKo2sFTk+58EkM/i13qTuIfoWyldUolLdK+Wch1kBe4YJzIPU
+	LwjfycyK1lgxadFRduWZClcrjwlsmp8LYFc6Z1XaoYVl6JRk3jG4n8SlQj+y1vEabZGLbLuTqqsW2
+	05+scV2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZExv-00EHeF-SC; Mon, 06 Mar 2023 17:49:39 +0000
-Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
+	id 1pZFlK-00EON4-3W; Mon, 06 Mar 2023 18:40:42 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZEwK-00EGug-82; Mon, 06 Mar 2023 17:48:02 +0000
-From: Kurt Kanzenbach <kurt@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020; t=1678124873;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=8lN0Yg0JRWF9rWx1AIEB0nSa4HfMfBnZ+uCfkhWx3pk=;
-	b=PiDvaxw4LGrgfeWFLomToEp8NXOe127xR8zSD3xdD7fGjOODv4sckwrpJAEB88tlBkosFU
-	nf6LP5VdmgBHRGVwa1jz51jWwzVGgRZsiIJSvY1nY4W+E0jx6jFLmRjXxndkQdy7f4ToNK
-	/2yd6YCMRtQHSbt64qAOF1pjQYgtflD6W12UfgaUVV3pfTxHpY5jpqAMgD3wqJvAmZdNUk
-	TDhu7T5Eo+bDYa1HllgrRtMl4Qa1F3FMyklmyhQn4sSPmh8r28NtGZGU7cKnFqGy2qtQiP
-	At9OFLPA7Pm2BbHUjdQJpIkZtI8RbdF058x16bISYmOmfb00kzLASOY0WsAbnQ==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020e; t=1678124873;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=8lN0Yg0JRWF9rWx1AIEB0nSa4HfMfBnZ+uCfkhWx3pk=;
-	b=ejETIPzH+UYpQsQdDQiRzE7D1rokyyVF4y27HoO9uGNVQmgJFYg6wLL2/QhqIOxHbMW615
-	kjHmGjANoELoCKDQ==
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Gene Chen
- <gene_chen@richtek.com>, linux-leds@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org
-Cc: Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
- <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Subject: Re: [PATCH v4 11/11] net: dsa: hellcreek: Get rid of custom
- led_init_default_state_get()
-In-Reply-To: <ZAYMvVR+6eQ9qjAk@smile.fi.intel.com>
-References: <20230103131256.33894-1-andriy.shevchenko@linux.intel.com>
- <20230103131256.33894-12-andriy.shevchenko@linux.intel.com>
- <ZAYMvVR+6eQ9qjAk@smile.fi.intel.com>
-Date: Mon, 06 Mar 2023 18:47:51 +0100
-Message-ID: <87jzztbwl4.fsf@kurt>
+	id 1pZFl7-00EOKR-Dy; Mon, 06 Mar 2023 18:40:31 +0000
+Received: by mail-wr1-x434.google.com with SMTP id t15so9839992wrz.7;
+        Mon, 06 Mar 2023 10:40:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678128023;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=B1PH+yRb87aW+TCrhm59uGdmpc+0t4xz4NdiXNOaRfU=;
+        b=btTrgj3hvHGI4jNHgY0EEKR1i+DuZ26UUXctsbwjMpHLfA7IkcIGzId7qVz7bppB+z
+         iW7EFRRsx7h4YBb5rOaKUMyiBr0ue2cwkVM22UQO8OMZqwJcBQBVkRKyW0ksbVdmL6NB
+         r6jH4UNBYH3BKQgTRs/JhQ0ekoI8YjtULw/YN6+YKU+T9coIUlVpkN3S0OyDs977Q9Qu
+         qytyEpOSUWf2idHgq1mtTKUd+oml3jjhpVuCzfqtWINLqq5+moZWWGBi6Dwj+VRngh2S
+         xfMxkrTxRtMmAQplUkFUkne9TVxM4MiBe7If1iNgQH8XhT8NYqZWvg0mfQMI5yXnYx+q
+         NHSw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678128023;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=B1PH+yRb87aW+TCrhm59uGdmpc+0t4xz4NdiXNOaRfU=;
+        b=JGbG188nxY+LSiSIJ3s/idflmscdGo462LpwKP01iAR7N24G9MI6cZ8vcYlV9sZbGA
+         wJrAruk3vIxdrJll+Dj1QXymAozejdJjvyFgqdgMJfl8D0GECe9gpQXaAADW6UpShWNb
+         liJ3f5NWgmNOg2CSpMRsBPnLSuouBEi6CMq/2/zHdnsxd6nbmkC8bDyLwzaNuKCP4RlI
+         hYMlX3er/kfrSVfWEPDJ4OUJvgTSladsUeL4sINt5Tzir/NZ8LuHgYWFGPJnVRRdnUE+
+         ievCXCOVy/TUKDvgmaq/VmoaPP3AX3ArilwApRWwoL79gdYaykQcp+o7DfQI3J7YB7AM
+         kbQg==
+X-Gm-Message-State: AO0yUKUHdJA8TpoE/mA+FW0hxCPEJ1rJNn0rkKMkHagTNnRdu1wF/d8k
+	JxlaQ4v77MhiuO+O6UuTpxo=
+X-Google-Smtp-Source: AK7set/F36FHtydPEcpGgsu0Ed9jFfTXpA/Ag5lVW1UVkjbFqBz9jjpeztml0DNaEurx5Zzjqy6GSA==
+X-Received: by 2002:a5d:630c:0:b0:2bf:d940:29b6 with SMTP id i12-20020a5d630c000000b002bfd94029b6mr8001979wru.54.1678128023184;
+        Mon, 06 Mar 2023 10:40:23 -0800 (PST)
+Received: from ?IPv6:2a02:168:6806:0:3cd0:c200:5d73:7ad4? ([2a02:168:6806:0:3cd0:c200:5d73:7ad4])
+        by smtp.gmail.com with ESMTPSA id j17-20020adff011000000b002c5a1bd527dsm10480809wro.96.2023.03.06.10.40.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 06 Mar 2023 10:40:22 -0800 (PST)
+Message-ID: <712bc92ca6d576f33f63f1e9c2edf0030b10d3ae.camel@gmail.com>
+Subject: Re: [PATCH net-next v2 4/6] net: mdio: scan bus based on bus
+ capabilities for C22 and C45
+From: Klaus Kudielka <klaus.kudielka@gmail.com>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Michael Walle <michael@walle.cc>, Heiner Kallweit
+ <hkallweit1@gmail.com>,  Russell King <linux@armlinux.org.uk>, "David S.
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
+ Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Felix Fietkau
+ <nbd@nbd.name>, John Crispin <john@phrozen.org>,  Sean Wang
+ <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
+ Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Bryan Whitehead <bryan.whitehead@microchip.com>,
+ UNGLinuxDriver@microchip.com, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,  Jose Abreu
+ <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Joel
+ Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ netdev@vger.kernel.org,  linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,  linux-mediatek@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,  linux-aspeed@lists.ozlabs.org,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>
+Date: Mon, 06 Mar 2023 19:40:21 +0100
+In-Reply-To: <100c439a-2a4d-4cb2-96f2-5bf273e2121a@lunn.ch>
+References: 	<20230116-net-next-remove-probe-capabilities-v2-0-15513b05e1f4@walle.cc>
+	 <20230116-net-next-remove-probe-capabilities-v2-4-15513b05e1f4@walle.cc>
+	 <449bde236c08d5ab5e54abd73b645d8b29955894.camel@gmail.com>
+	 <100c439a-2a4d-4cb2-96f2-5bf273e2121a@lunn.ch>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.4-1 
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha512; protocol="application/pgp-signature"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230306_094800_486198_26350268 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20230306_104029_501968_9A9D06F9 
+X-CRM114-Status: GOOD (  23.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,42 +107,264 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---=-=-=
-Content-Type: text/plain
+On Sun, 2023-03-05 at 19:35 +0100, Andrew Lunn wrote:
+> On Sun, Mar 05, 2023 at 07:13:09PM +0100, Klaus Kudielka wrote:
+> > On Wed, 2023-01-18 at 11:01 +0100, Michael Walle wrote:
+> > > From: Andrew Lunn <andrew@lunn.ch>
+> > >=20
+> > > Now that all MDIO bus drivers which set probe_capabilities to
+> > > MDIOBUS_C22_C45 have been converted to use the name API for C45
+> > > transactions, perform the scanning of the bus based on which methods
+> > > the bus provides.
+> > >=20
+> > > Signed-off-by: Andrew Lunn <andrew@lunn.ch>
+> > > Signed-off-by: Michael Walle <michael@walle.cc>
+> > > Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+> >=20
+> > Hello,
+> >=20
+> > On a Turris Omnia (Armada 385, Marvell 88E6176) this commit results
+> > in a strange boot behaviour. I see two distinct multi-second freezes
+> > in dmesg. Usually (up to the commit before), the (monolithic) kernel
+> > starts init after ~1.6 seconds, now it takes more than 6....
+> >=20
+> > dmesg output below. Any idea, why this is happening?
+>=20
+> The Armada 385 uses mdio-orian, also known as
+> drivers/net/ethernet/marvell/mvmdio.c. It comes in two variants, one
+> which supports only C22 and one which only supports C45, if i'm
+> reading orion_mdio_match[] correctly.
+>=20
+> Please could you add a debug print in orion_mdio_smi_read() and
+> orion_mdio_xsmi_read_c45() and see if there is a difference before and
+> after this patch.
+>=20
+> I'm assuming here the problem is with the MDIO bus associated to
+> mvneta, and not the mdio bus associated to the switch. That assumption
+> could be wrong, but the printk's should help with that as well.
+>=20
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 Andrew
 
-On Mon Mar 06 2023, Andy Shevchenko wrote:
-> On Tue, Jan 03, 2023 at 03:12:56PM +0200, Andy Shevchenko wrote:
->> LED core provides a helper to parse default state from firmware node.
->> Use it instead of custom implementation.
->
-> Jakub, if you are okay with thi, it may be applied now
-> (Lee hadn't taken it in via LEDS subsystem for v6.3-rc1).
 
-I think you have to repost this one separately to netdev, so that it
-shows up in patchwork.
+I just added
 
-Thanks,
-Kurt
+dev_warn_ratelimited(bus->parent, "<function_name> %d\n", mii_id);
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+at the entry point of each function. And here we go.
 
------BEGIN PGP SIGNATURE-----
 
-iQJGBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmQGJ0cTHGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzgkrGD/i8jm+ezfthebeBq5NEe2fhRTOQSUEo
-J6p8vlFqhXEQi6TP4fF7J+YwDABjyWsB3BuIavKZ4gYzpFYhr/aU8wfa/N1VxA25
-XsUALOkexCOua3nBMN3k2M6Kuy3bdzDQpq1SSLQZV/qeC8KWS63vUxU2yf6kLTAn
-tTKtX+dMS3UiwiafYX7VH8g7eX+0RnPUgjUnq7pSH6AqJqgmyusUfVt5Iox1KssI
-BO/dvy7IJQHZITVrbOdhcLXgXgDbyxuozjhooH+TbfNM8FrD3Z78ag4vClZjiVqY
-wzpPMApXSPrZ5uYlRySVxf94CAsvhZGj5jPWPfwV7/A+VVTpdMrqGO/5m+cDbS2q
-qGOdebdC68nbZCnQEk1hewMSmTufzv6GnoMKNr62036+WPYFlshf0Ig5aWzm8e7Z
-+/U03mXUN+bf5wqhjUqX5mhK7B9MFt85r2A+F45UB2t6wJxIBD6GXxCMd2gvI/95
-vwQukHXYMTCOLxcBk8rq0miDM04D81+uXg3Jhr7r+S5cXu34a+jNvl9ENHb61aeD
-QA/Ew9HZZ/Y//Ubj5S7It9qpsmb89new/UNDDr2DYYGppoN19b7YSvyibuGH0klC
-56Oyvdz8EEkAVIZwXySPp+5l+Tj8oFeqTEMEKm0EGgEUEtwzmmRTTlikureoqkkB
-F26RqCvsDG2T
-=tkxD
------END PGP SIGNATURE-----
---=-=-=--
+
+########
+# good: [3486593374858b41ae6ef7720cb28ff39ad822f3] net: mdio: Add workaroun=
+d for Micrel PHYs which are not C45 compatible
+
+*** snip ***
+[    0.194348] Creating 3 MTD partitions on "spi0.0":
+[    0.194353] 0x000000000000-0x0000000f0000 : "U-Boot"
+[    0.194534] 0x000000100000-0x000000800000 : "Rescue system"
+[    0.194652] 0x0000000f0000-0x000000100000 : "u-boot-env"
+[    0.195518] orion-mdio f1072004.mdio: orion_mdio_smi_read 1
+[    0.195592] orion-mdio f1072004.mdio: orion_mdio_smi_read 1
+[    0.202202] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    0.202280] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    0.202346] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    0.202470] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    0.202534] mv88e6085 f1072004.mdio-mii:10: switch 0x1760 detected: Marv=
+ell 88E6176, revision 1
+[    0.202542] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    0.202674] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    0.202799] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    0.202921] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    0.320192] mvneta_bm f10c8000.bm: Buffer Manager for network controller=
+ enabled
+*** snip ***
+[    1.598893] Run /init as init process
+[    1.598896]   with arguments:
+[    1.598898]     /init
+[    1.598900]   with environment:
+[    1.598902]     HOME=3D/
+[    1.598904]     TERM=3Dlinux
+*** snip ***
+[    4.628127] mv88e6085 f1072004.mdio-mii:10 lan3: Link is Up - 1Gbps/Full=
+ - flow control rx/tx
+[    4.628150] IPv6: ADDRCONF(NETDEV_CHANGE): lan3: link becomes ready
+[    4.628210] br0: port 2(lan3) entered blocking state
+[    4.628219] br0: port 2(lan3) entered forwarding state
+[    4.629187] IPv6: ADDRCONF(NETDEV_CHANGE): br0: link becomes ready
+[  283.962353] orion_mdio_smi_read: 9231 callbacks suppressed
+[  283.962361] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  283.962492] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  283.962617] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  283.962799] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  283.962981] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  283.963162] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  283.963344] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  283.963466] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  283.963588] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  283.963652] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  310.572411] orion_mdio_smi_read: 56 callbacks suppressed
+[  310.572419] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  310.572550] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  310.572675] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  310.572857] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  310.573039] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  310.573220] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  310.573402] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  310.573524] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  310.573647] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  310.573711] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  726.308614] orion_mdio_smi_read: 56 callbacks suppressed
+[  726.308623] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  726.308754] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  726.308879] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  726.309060] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  726.309242] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  726.309423] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  726.309604] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  726.309727] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  726.309850] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  726.309914] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  841.713791] orion_mdio_smi_read: 56 callbacks suppressed
+[  841.713800] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  841.713931] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  841.714056] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  841.714239] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  841.714420] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  841.714602] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  841.714783] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  841.714906] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  841.715029] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  841.715093] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+
+
+
+#####
+# first bad commit: [1a136ca2e089d91df8eec0a796a324171373ffd8] net: mdio: s=
+can bus based on bus capabilities for C22 and C45
+
+*** snip ***
+[    0.191685] Creating 3 MTD partitions on "spi0.0":
+[    0.191690] 0x000000000000-0x0000000f0000 : "U-Boot"
+[    0.191871] 0x000000100000-0x000000800000 : "Rescue system"
+[    0.191991] 0x0000000f0000-0x000000100000 : "u-boot-env"
+[    0.192830] orion-mdio f1072004.mdio: orion_mdio_smi_read 1
+[    0.192906] orion-mdio f1072004.mdio: orion_mdio_smi_read 1
+[    0.199530] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    0.199610] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    0.199677] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    0.199799] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    0.199864] mv88e6085 f1072004.mdio-mii:10: switch 0x1760 detected: Marv=
+ell 88E6176, revision 1
+[    0.199871] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    0.199994] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    0.200117] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    0.200239] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    0.396608] ata2: SATA link down (SStatus 0 SControl 300)
+[    0.554697] ata1: SATA link up 6.0 Gbps (SStatus 133 SControl 300)
+[    0.555370] ata1.00: supports DRM functions and may not be fully accessi=
+ble
+[    0.555375] ata1.00: ATA-10: KINGSTON SKC600MS512G, S4800105, max UDMA/1=
+33
+[    0.555385] ata1.00: 1000215216 sectors, multi 1: LBA48 NCQ (depth 32)
+[    0.556058] ata1.00: Features: Trust Dev-Sleep
+[    0.556158] ata1.00: supports DRM functions and may not be fully accessi=
+ble
+[    0.556811] ata1.00: configured for UDMA/133
+[    0.556985] scsi 0:0:0:0: Direct-Access     ATA      KINGSTON SKC600M 01=
+05 PQ: 0 ANSI: 5
+[    0.557485] sd 0:0:0:0: [sda] 1000215216 512-byte logical blocks: (512 G=
+B/477 GiB)
+[    0.557493] sd 0:0:0:0: [sda] 4096-byte physical blocks
+[    0.557515] sd 0:0:0:0: [sda] Write Protect is off
+[    0.557520] sd 0:0:0:0: [sda] Mode Sense: 00 3a 00 00
+[    0.557553] sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled,=
+ doesn't support DPO or FUA
+[    0.557620] sd 0:0:0:0: [sda] Preferred minimum I/O size 4096 bytes
+[    0.558111]  sda: sda1
+[    0.558230] sd 0:0:0:0: [sda] Attached SCSI removable disk
+[    2.741909] mvneta_bm f10c8000.bm: Buffer Manager for network controller=
+ enabled
+*** snip ***
+[    3.213998] sfp sfp: module TP-LINK          TL-SM321B        rev      s=
+n 1403076900       dc 140401
+[    3.214020] mvneta f1034000.ethernet eth2: switched to inband/1000base-x=
+ link mode
+[    5.194695] orion_mdio_smi_read: 43968 callbacks suppressed
+[    5.194701] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    5.194767] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    5.194891] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    5.195014] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    5.195137] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    5.195259] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    5.195324] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    5.195446] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    5.195510] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    5.195633] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[    6.223184] mv88e6085 f1072004.mdio-mii:10: configuring for fixed/rgmii-=
+id link mode
+[    6.224852] mv88e6085 f1072004.mdio-mii:10: configuring for fixed/rgmii-=
+id link mode
+[    6.226126] mv88e6085 f1072004.mdio-mii:10: Link is Up - 1Gbps/Full - fl=
+ow control off
+[    6.229455] mv88e6085 f1072004.mdio-mii:10: Link is Up - 1Gbps/Full - fl=
+ow control off
+[    6.294120] mv88e6085 f1072004.mdio-mii:10 lan0 (uninitialized): PHY [mv=
+88e6xxx-1:00] driver [Marvell 88E1540] (irq=3D68)
+[    6.366663] mv88e6085 f1072004.mdio-mii:10 lan1 (uninitialized): PHY [mv=
+88e6xxx-1:01] driver [Marvell 88E1540] (irq=3D69)
+[    6.438843] mv88e6085 f1072004.mdio-mii:10 lan2 (uninitialized): PHY [mv=
+88e6xxx-1:02] driver [Marvell 88E1540] (irq=3D70)
+[    6.510122] mv88e6085 f1072004.mdio-mii:10 lan3 (uninitialized): PHY [mv=
+88e6xxx-1:03] driver [Marvell 88E1540] (irq=3D71)
+[    6.582302] mv88e6085 f1072004.mdio-mii:10 lan4 (uninitialized): PHY [mv=
+88e6xxx-1:04] driver [Marvell 88E1540] (irq=3D72)
+[    6.584680] device eth1 entered promiscuous mode
+[    6.585573] device eth0 entered promiscuous mode
+[    6.585593] DSA: tree 0 setup
+[    6.586408] Freeing unused kernel image (initmem) memory: 1024K
+[    6.586547] Run /init as init process
+[    6.586551]   with arguments:
+[    6.586553]     /init
+[    6.586555]   with environment:
+[    6.586557]     HOME=3D/
+[    6.586559]     TERM=3Dlinux
+*** snip ***
+[    9.437029] mv88e6085 f1072004.mdio-mii:10 lan3: Link is Up - 1Gbps/Full=
+ - flow control rx/tx
+[    9.437052] IPv6: ADDRCONF(NETDEV_CHANGE): lan3: link becomes ready
+[    9.437116] br0: port 2(lan3) entered blocking state
+[    9.437125] br0: port 2(lan3) entered forwarding state
+[    9.438061] IPv6: ADDRCONF(NETDEV_CHANGE): br0: link becomes ready
+[    9.469466] systemd-journald[207]: Time jumped backwards, rotating.
+[  414.675728] orion_mdio_smi_read: 11201 callbacks suppressed
+[  414.675736] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  414.675869] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  414.675996] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  414.676179] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  414.676361] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  414.676543] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  414.676725] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  414.676847] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  414.676970] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  414.677034] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  540.809740] orion_mdio_smi_read: 56 callbacks suppressed
+[  540.809748] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  540.809879] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  540.810004] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  540.810186] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  540.810368] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  540.810551] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  540.810732] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  540.810855] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  540.810978] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+[  540.811042] orion-mdio f1072004.mdio: orion_mdio_smi_read 16
+
+
+
+"orion_mdio_smi_read: 43968 callbacks suppressed" after 5 seconds - quite i=
+mpressive!
+
+
+Best regards, Klaus
+
 
