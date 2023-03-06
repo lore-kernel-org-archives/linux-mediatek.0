@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F4DDC678D4
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 14:23:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81CADC678D4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 14:24:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2w5mFRby7YfjNkAFz2DMFSEIsDitlfyKm6Uh4KUaM2Q=; b=M1CfWSQF0FKwokHc1yYEwG4eQC
-	rElNJCXo+mmcnsphr8O++ytqmuOs/NOHq7WYgFgVO+TZGD1kd8W9c0OqARxhNarFU7MufUHaQrRRi
-	3RR9Gztaf1MmTj/oNA7oLIiA3kdJaVdZDBFfCvu0HSR8VsuMogpUSkou6woc5Hic9uv5ZZnxCZ3D8
-	rNx/9bmhiUnP4dgJFQO5ztm46o5pkMovmKmWgUepDhqd0hQL3QFABM6xuwkzgA/+P85BqStNA18Vk
-	wHOBGo5ysLG0OJZDV1PbI7fDEuzf6AYtQSVWZPxFEh5O2LN8aZ1z7jx1H7ng9SG9J5snVEXLSDs1P
-	+BfMZbIA==;
+	bh=jV5eRz6WuCMtouVV++EUgssRVFovzuPzfprpSFBP8os=; b=bAAU88ILAcjglFAKY0LYYiIqKt
+	DiqnTehRsyKijoafvJL53h2DEM0exh9hjvko7AWpR9uCyP/jkShUWDhVwzxIUy9u+jiJW6TrvhTQy
+	HEqcwzqTJySrgclTc9dvelOGbk8D0nxbtZiLwWTku/Ug24JyHnwD6ujhdSqNiU3cGqSI+G6BaTtGS
+	bb6r039+gwj9LdYpDD0kia4c2yvV+SdmiS0y2/4hTf6N+wlTdJv8jl/rnU2/BLNkIXJ1nYz9M49uT
+	h+/5AIUGOH5ociaBVLojXVeejEjJe5nT8azXhfQDDNi8t9aCiyITBG80c1HMygUpOjD0xtg/I3prD
+	JJvBYXHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZBke-00DDNT-3f; Mon, 06 Mar 2023 14:23:47 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pZBlU-00DDnj-T4; Mon, 06 Mar 2023 14:24:36 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZBTu-00D3hF-An; Mon, 06 Mar 2023 14:06:32 +0000
+	id 1pZBTx-00D3im-8Q; Mon, 06 Mar 2023 14:06:32 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9DBC46602EDC;
-	Mon,  6 Mar 2023 14:06:23 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AC5B16602FDE;
+	Mon,  6 Mar 2023 14:06:26 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678111585;
-	bh=WqZ5UvGPIzWucu4sfsY6VhDy9AwB8hhVyU31QRmaiDQ=;
+	s=mail; t=1678111588;
+	bh=kTtACXAEbNAgNCZdigRxep+XT4EJ4BHRbcIY5vyvaqU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Vexw+aBJykvKqa94RRpLU430ruPYXw2BwPIdMGb+WK/pw8qh5L5WJqLF6N6KCAZw0
-	 tRY+VbrjzCZHxEaWPnFI3ykToEkmcqdy0mPsWn22y9V4ryy87/Dm2NS/WDXX8AADEJ
-	 eX1eS3RMy6EIo/fIBSamzEgSDVFpjPUSDCA0Tcfb7t0bgq1IQyQg5r4hU+JQDrHYhD
-	 MOv4eZMSZGWs/ykW/+GrJxlAeUUO1eyvj84oNeo16L+9grA/rhLCxvrjmLsvS3BCbX
-	 iaUmCYwAi6Zx/rON4AyY5bOorCQh/PQODLuRq90q5D2vaFrhpK+sVV4rxSDmuEUUkJ
-	 0ODJZAzyVMZSw==
+	b=GTCjZDybFDbs4Pek+rs+GJaYZraEKMzu0dYhHA3JG0fDj8OkzgWh1vBRF1x5ahcOu
+	 Ats82ETnhGJ7HpkMWeBjUvR3j4BgDWmxitP04tNVuu7Q3tEJeoKaKiDoMwZ0+aEcBy
+	 iFf/MpP+8atVQAq6c6q39hp1HHCl9UwSzNwjjjQzvz5/cPgpCMJwAyftzu+1jvJ/XP
+	 B2Zw/SYVhms4eb7rPilh0OjE1yKAc/3ksJbdFq/g3boKMnW8/G74wccLqzqeZr32ZD
+	 awvAtM+VESHU85MRlnf34QBFZTm2hkkNdOFZp/bFjhe0kP18xTkYioL1kPDqics8H6
+	 uVO1o06x/ioeg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mturquette@baylibre.com
 Cc: sboyd@kernel.org,
@@ -68,17 +68,17 @@ Cc: sboyd@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v6 23/54] clk: mediatek: mt7622: Properly use CLK_IS_CRITICAL flag
-Date: Mon,  6 Mar 2023 15:05:12 +0100
-Message-Id: <20230306140543.1813621-24-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v6 25/54] clk: mediatek: mt7622-apmixedsys: Add .remove() callback for module build
+Date: Mon,  6 Mar 2023 15:05:14 +0100
+Message-Id: <20230306140543.1813621-26-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
 References: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230306_060626_761893_BBFE2D1B 
-X-CRM114-Status: GOOD (  11.22  )
+X-CRM114-CacheID: sfid-20230306_060629_469668_E6012BFC 
+X-CRM114-Status: GOOD (  13.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,111 +93,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Instead of calling clk_prepare_enable() for clocks that shall stay
-enabled, use the CLK_IS_CRITICAL flag, which purpose is exactly that.
+Add a .remove() callback to the apmixedsys driver to allow full module
+build; while at it, also change the usage of builtin_platform_driver()
+to module_platform_driver() to actually make use of the new callback.
 
-Fixes: 2fc0a509e4ee ("clk: mediatek: add clock support for MT7622 SoC")
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/clk/mediatek/clk-mt7622.c | 35 +++++++++++++------------------
- 1 file changed, 15 insertions(+), 20 deletions(-)
+ drivers/clk/mediatek/clk-mt7622-apmixedsys.c | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt7622.c b/drivers/clk/mediatek/clk-mt7622.c
-index 41af8d420bbf..1c0049fbeb69 100644
---- a/drivers/clk/mediatek/clk-mt7622.c
-+++ b/drivers/clk/mediatek/clk-mt7622.c
-@@ -50,9 +50,9 @@
- 		 _pd_reg, _pd_shift, _tuner_reg, _pcw_reg, _pcw_shift,  \
- 		 NULL, "clkxtal")
+diff --git a/drivers/clk/mediatek/clk-mt7622-apmixedsys.c b/drivers/clk/mediatek/clk-mt7622-apmixedsys.c
+index 497fada797b9..a9f3057d7080 100644
+--- a/drivers/clk/mediatek/clk-mt7622-apmixedsys.c
++++ b/drivers/clk/mediatek/clk-mt7622-apmixedsys.c
+@@ -119,6 +119,19 @@ static int clk_mt7622_apmixed_probe(struct platform_device *pdev)
+ 	return ret;
+ }
  
--#define GATE_APMIXED(_id, _name, _parent, _shift)			\
--	GATE_MTK(_id, _name, _parent, &apmixed_cg_regs, _shift,		\
--		 &mtk_clk_gate_ops_no_setclr_inv)
-+#define GATE_APMIXED_AO(_id, _name, _parent, _shift)			\
-+	GATE_MTK_FLAGS(_id, _name, _parent, &apmixed_cg_regs, _shift,	\
-+		 &mtk_clk_gate_ops_no_setclr_inv, CLK_IS_CRITICAL)
- 
- #define GATE_INFRA(_id, _name, _parent, _shift)				\
- 	GATE_MTK(_id, _name, _parent, &infra_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-@@ -66,6 +66,10 @@
- #define GATE_PERI0(_id, _name, _parent, _shift)				\
- 	GATE_MTK(_id, _name, _parent, &peri0_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
- 
-+#define GATE_PERI0_AO(_id, _name, _parent, _shift)			\
-+	GATE_MTK_FLAGS(_id, _name, _parent, &peri0_cg_regs, _shift,	\
-+		 &mtk_clk_gate_ops_setclr, CLK_IS_CRITICAL)
++static int clk_mt7622_apmixed_remove(struct platform_device *pdev)
++{
++	struct device_node *node = pdev->dev.of_node;
++	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
 +
- #define GATE_PERI1(_id, _name, _parent, _shift)				\
- 	GATE_MTK(_id, _name, _parent, &peri1_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++	of_clk_del_provider(node);
++	mtk_clk_unregister_gates(apmixed_clks, ARRAY_SIZE(apmixed_clks), clk_data);
++	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
++	mtk_free_clk_data(clk_data);
++
++	return 0;
++}
++
+ static const struct of_device_id of_match_clk_mt7622_apmixed[] = {
+ 	{ .compatible = "mediatek,mt7622-apmixedsys" },
+ 	{ /* sentinel */ }
+@@ -126,12 +139,13 @@ static const struct of_device_id of_match_clk_mt7622_apmixed[] = {
  
-@@ -315,7 +319,7 @@ static const struct mtk_pll_data plls[] = {
+ static struct platform_driver clk_mt7622_apmixed_drv = {
+ 	.probe = clk_mt7622_apmixed_probe,
++	.remove = clk_mt7622_apmixed_remove,
+ 	.driver = {
+ 		.name = "clk-mt7622-apmixed",
+ 		.of_match_table = of_match_clk_mt7622_apmixed,
+ 	},
  };
+-builtin_platform_driver(clk_mt7622_apmixed_drv)
++module_platform_driver(clk_mt7622_apmixed_drv)
  
- static const struct mtk_gate apmixed_clks[] = {
--	GATE_APMIXED(CLK_APMIXED_MAIN_CORE_EN, "main_core_en", "mainpll", 5),
-+	GATE_APMIXED_AO(CLK_APMIXED_MAIN_CORE_EN, "main_core_en", "mainpll", 5),
- };
- 
- static const struct mtk_gate infra_clks[] = {
-@@ -450,7 +454,7 @@ static const struct mtk_gate peri_clks[] = {
- 	GATE_PERI0(CLK_PERI_AP_DMA_PD, "peri_ap_dma_pd", "axi_sel", 12),
- 	GATE_PERI0(CLK_PERI_MSDC30_0_PD, "peri_msdc30_0", "msdc30_0_sel", 13),
- 	GATE_PERI0(CLK_PERI_MSDC30_1_PD, "peri_msdc30_1", "msdc30_1_sel", 14),
--	GATE_PERI0(CLK_PERI_UART0_PD, "peri_uart0_pd", "axi_sel", 17),
-+	GATE_PERI0_AO(CLK_PERI_UART0_PD, "peri_uart0_pd", "axi_sel", 17),
- 	GATE_PERI0(CLK_PERI_UART1_PD, "peri_uart1_pd", "axi_sel", 18),
- 	GATE_PERI0(CLK_PERI_UART2_PD, "peri_uart2_pd", "axi_sel", 19),
- 	GATE_PERI0(CLK_PERI_UART3_PD, "peri_uart3_pd", "axi_sel", 20),
-@@ -478,12 +482,12 @@ static struct mtk_composite infra_muxes[] = {
- 
- static struct mtk_composite top_muxes[] = {
- 	/* CLK_CFG_0 */
--	MUX_GATE(CLK_TOP_AXI_SEL, "axi_sel", axi_parents,
--		 0x040, 0, 3, 7),
--	MUX_GATE(CLK_TOP_MEM_SEL, "mem_sel", mem_parents,
--		 0x040, 8, 1, 15),
--	MUX_GATE(CLK_TOP_DDRPHYCFG_SEL, "ddrphycfg_sel", ddrphycfg_parents,
--		 0x040, 16, 1, 23),
-+	MUX_GATE_FLAGS(CLK_TOP_AXI_SEL, "axi_sel", axi_parents,
-+		       0x040, 0, 3, 7, CLK_IS_CRITICAL),
-+	MUX_GATE_FLAGS(CLK_TOP_MEM_SEL, "mem_sel", mem_parents,
-+		       0x040, 8, 1, 15, CLK_IS_CRITICAL),
-+	MUX_GATE_FLAGS(CLK_TOP_DDRPHYCFG_SEL, "ddrphycfg_sel", ddrphycfg_parents,
-+		       0x040, 16, 1, 23, CLK_IS_CRITICAL),
- 	MUX_GATE(CLK_TOP_ETH_SEL, "eth_sel", eth_parents,
- 		 0x040, 24, 3, 31),
- 
-@@ -621,10 +625,6 @@ static int mtk_topckgen_init(struct platform_device *pdev)
- 	mtk_clk_register_gates(&pdev->dev, node, top_clks,
- 			       ARRAY_SIZE(top_clks), clk_data);
- 
--	clk_prepare_enable(clk_data->hws[CLK_TOP_AXI_SEL]->clk);
--	clk_prepare_enable(clk_data->hws[CLK_TOP_MEM_SEL]->clk);
--	clk_prepare_enable(clk_data->hws[CLK_TOP_DDRPHYCFG_SEL]->clk);
--
- 	return of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
- }
- 
-@@ -667,9 +667,6 @@ static int mtk_apmixedsys_init(struct platform_device *pdev)
- 	mtk_clk_register_gates(&pdev->dev, node, apmixed_clks,
- 			       ARRAY_SIZE(apmixed_clks), clk_data);
- 
--	clk_prepare_enable(clk_data->hws[CLK_APMIXED_ARMPLL]->clk);
--	clk_prepare_enable(clk_data->hws[CLK_APMIXED_MAIN_CORE_EN]->clk);
--
- 	return of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
- }
- 
-@@ -697,8 +694,6 @@ static int mtk_pericfg_init(struct platform_device *pdev)
- 	if (r)
- 		return r;
- 
--	clk_prepare_enable(clk_data->hws[CLK_PERI_UART0_PD]->clk);
--
- 	mtk_register_reset_controller_with_dev(&pdev->dev, &clk_rst_desc[1]);
- 
- 	return 0;
+ MODULE_DESCRIPTION("MediaTek MT7622 apmixedsys clocks driver");
+ MODULE_LICENSE("GPL");
 -- 
 2.39.2
 
