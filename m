@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8133DC6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 14:14:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6627C678D4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 14:16:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tz7sDGbu0k6Lf2BzrrylGfwEsrudwdMTcybUwCi21Do=; b=EMYLrJTaiW6wewAqWgnu1utJsv
-	RfBpOf4nbSdvYbgM+dYJB0d5KIbAKQ2XvM/FggPu2ErAFPC+Ox6rIaK++7aEWiC1qlQ4PGhoKh/CZ
-	ZHLf5H+wjJf5UVfyf0NoERelrnfE8G3Tm6oDE1qtzXOlZa2UxV2IJkW6Nm47d2Kr+OaLI3jbBbRec
-	oZP8bfROpMpAlsTf4hKMXHEKE+jM3sOz1GBvV3yhiTFiXgaOZ/eWQFbkET8JoDRKwsQI5odcXAaxn
-	NR9RGdQvEX+eq9MbmWU2QelaSFibBC90MqVilBiRbVXMPe+E6NeZ//gPW09mBBQkaHD4cqsponWFP
-	aYF2XxfA==;
+	bh=eL59f63SOe5UpqL7hL2j/yIsp10n7/Zo7DWoBgQgXaQ=; b=qKIcc34JjRwLm/rJ2w5Rn0zAnz
+	1ti8K6FpNG2GLU+v2SeqNt0bcO0rEZbKWKxy+3kkbm6hfNQ8kQuWsrGlXg0f41w+tQsKf3dZxQiH8
+	kk8QukA77HToPjp4bZkie42VGzNrgcdqsXVkq6jk+UE37L433gwfXhk++bYFm+sZa/Hme9hJdwd62
+	poHlBXsG6Axvt6xKVHNk0JMtIKkY+4RcV/pu2Yr3mbX4tezLaRsiS2Gyz9o7+ZZPRRFv2qbPIGVPg
+	Vs6zzxQrynOFp1IQv6sI4iB+98fjaAqGNmybgGpUJK5kd0Rk0BsVEYZhHLb9GUajBOim0bHN6MFbi
+	/O5fUkZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZBbA-00D8DT-HU; Mon, 06 Mar 2023 14:13:56 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pZBd4-00D9GD-Aq; Mon, 06 Mar 2023 14:15:54 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZBTf-00D3Yn-La; Mon, 06 Mar 2023 14:06:14 +0000
+	id 1pZBTi-00D3aQ-KE; Mon, 06 Mar 2023 14:06:17 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 064CF6602FCD;
-	Mon,  6 Mar 2023 14:06:08 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1944C6602FD8;
+	Mon,  6 Mar 2023 14:06:12 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678111570;
-	bh=g/jvPtx1Vs2whSVmVXS3wwQv4A05imyIVOO05+/tAaw=;
+	s=mail; t=1678111573;
+	bh=OUGNJKdqCdyHQqCwpkL0wlW2ALg0tsFhbPU2qBzldIk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=EG/MLMwA+HWiK0ln5AxMiI/H750Trc/hCLDX3sR9pCxGO8waJY8gNgmD1kAU1BhZ9
-	 2BxpqYrTVF+UM6dM1xNp10ncHbQ98rPX1RMJaI1P1CWh7kX+LYRo7Oe7advi2VbL9G
-	 hHeSaTR0edWSuvv0Yhl6c3JayftlCIwr14tWh0Is5HWAY3NI+2Xg6kbR60vu8BJXkN
-	 HYR8PCRytGcXL80hgFLZODetznXz52odtyuwhJDQXuQaV/4GHiNGGPL/1slaRWFJj5
-	 PzwYpTrcj0xOjJI3bZzAqmYpljoyAFWPe2dOIbPWGe0b8QxMYKhGAU559l3MGsf41Q
-	 /MDuN3a+uE9VQ==
+	b=PoucxSvEuE1O2o31mIdY1Rmw8/gYj8HqMlWPRg1r7KmzwvkuCoVZVH3/nmt5Zh5Fm
+	 K5y77hf0HpcwwjnvAdUxpgyocfeiuayCqq7CpiIMzMEnQjMXsdoxNIb178+Lo1nEQZ
+	 izSp6whsKopTgnVRfJjZVgVc+XEg7vhuCKedybJIVBgIIsdotxImaCqOT8QZVH1l49
+	 3KXiHxpW30dFnm6/Qni2ufKxNr74KC4cTBbtTE6w9dKzTn6l/ixecWRE1EqftfUNQa
+	 HYlzuH2stJ3KScs2m3gutX6t3ljlLYCNQ9z8wl7JabHSjBNICbA3WYrJkpDTRwZiwk
+	 dhNyLH03tsfcA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mturquette@baylibre.com
 Cc: sboyd@kernel.org,
@@ -68,17 +68,17 @@ Cc: sboyd@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v6 14/54] clk: mediatek: mt8365: Convert to mtk_clk_simple_{probe,remove}()
-Date: Mon,  6 Mar 2023 15:05:03 +0100
-Message-Id: <20230306140543.1813621-15-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v6 16/54] clk: mediatek: mt8167: Move apmixedsys as platform_driver in new file
+Date: Mon,  6 Mar 2023 15:05:05 +0100
+Message-Id: <20230306140543.1813621-17-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
 References: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230306_060612_042553_62541077 
-X-CRM114-Status: GOOD (  14.69  )
+X-CRM114-CacheID: sfid-20230306_060614_998984_65C7EDA0 
+X-CRM114-Status: GOOD (  22.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,279 +93,309 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-All clocks in this driver are supported by the common simple probe
-mechanism and it's now possible to migrate to it.
+In preparation for migrating all other MT8167 clocks to the common
+mtk_clk_simple_probe(), move apmixedsys clocks to a different file.
+While at it, also migrate away from the legacy CLK_OF_DECLARE and
+convert this clock driver to be a platform_driver instead.
 
-While at it, also switch to using the module_platform_driver() macro.
+During the conversion, error handling was added to the apmixedsys
+probe function.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/clk/mediatek/clk-mt8365.c | 241 +++++-------------------------
- 1 file changed, 37 insertions(+), 204 deletions(-)
+ drivers/clk/mediatek/Makefile                |   2 +-
+ drivers/clk/mediatek/clk-mt8167-apmixedsys.c | 143 +++++++++++++++++++
+ drivers/clk/mediatek/clk-mt8167.c            | 102 -------------
+ 3 files changed, 144 insertions(+), 103 deletions(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt8167-apmixedsys.c
 
-diff --git a/drivers/clk/mediatek/clk-mt8365.c b/drivers/clk/mediatek/clk-mt8365.c
-index fef6c653c9ce..208cdc157918 100644
---- a/drivers/clk/mediatek/clk-mt8365.c
-+++ b/drivers/clk/mediatek/clk-mt8365.c
-@@ -752,220 +752,53 @@ static const struct mtk_gate peri_clks[] = {
- 		 &mtk_clk_gate_ops_no_setclr),
- };
- 
--static int clk_mt8365_top_probe(struct platform_device *pdev)
--{
--	void __iomem *base;
--	struct clk_hw_onecell_data *clk_data;
--	struct device_node *node = pdev->dev.of_node;
--	struct device *dev = &pdev->dev;
--	int ret;
--	int i;
--
--	base = devm_platform_ioremap_resource(pdev, 0);
--	if (IS_ERR(base))
--		return PTR_ERR(base);
--
--	clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
--	if (!clk_data)
--		return -ENOMEM;
--
--	ret = mtk_clk_register_fixed_clks(top_fixed_clks,
--					  ARRAY_SIZE(top_fixed_clks), clk_data);
--	if (ret)
--		goto free_clk_data;
--
--	ret = mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs),
--				       clk_data);
--	if (ret)
--		goto unregister_fixed_clks;
--
--	ret = mtk_clk_register_muxes(&pdev->dev, top_muxes,
--				     ARRAY_SIZE(top_muxes), node,
--				     &mt8365_clk_lock, clk_data);
--	if (ret)
--		goto unregister_factors;
--
--	ret = mtk_clk_register_composites(&pdev->dev, top_misc_muxes,
--					  ARRAY_SIZE(top_misc_muxes), base,
--					  &mt8365_clk_lock, clk_data);
--	if (ret)
--		goto unregister_muxes;
--
--	ret = mtk_clk_register_dividers(top_adj_divs, ARRAY_SIZE(top_adj_divs),
--					base, &mt8365_clk_lock, clk_data);
--	if (ret)
--		goto unregister_composites;
--
--	ret = mtk_clk_register_gates(&pdev->dev, node, top_clk_gates,
--				     ARRAY_SIZE(top_clk_gates), clk_data);
--	if (ret)
--		goto unregister_dividers;
--
--	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
--	if (ret)
--		goto unregister_gates;
--
--	return 0;
--unregister_gates:
--	mtk_clk_unregister_gates(top_clk_gates, ARRAY_SIZE(top_clk_gates), clk_data);
--unregister_dividers:
--	mtk_clk_unregister_dividers(top_adj_divs, ARRAY_SIZE(top_adj_divs),
--				    clk_data);
--unregister_composites:
--	mtk_clk_unregister_composites(top_misc_muxes,
--				      ARRAY_SIZE(top_misc_muxes), clk_data);
--unregister_muxes:
--	mtk_clk_unregister_muxes(top_muxes, ARRAY_SIZE(top_muxes), clk_data);
--unregister_factors:
--	mtk_clk_unregister_factors(top_divs, ARRAY_SIZE(top_divs), clk_data);
--unregister_fixed_clks:
--	mtk_clk_unregister_fixed_clks(top_fixed_clks,
--				      ARRAY_SIZE(top_fixed_clks), clk_data);
--free_clk_data:
--	mtk_free_clk_data(clk_data);
--
--	return ret;
--}
--
--static int clk_mt8365_infra_probe(struct platform_device *pdev)
--{
--	struct clk_hw_onecell_data *clk_data;
--	struct device_node *node = pdev->dev.of_node;
--	int ret;
--
--	clk_data = mtk_alloc_clk_data(CLK_IFR_NR_CLK);
--	if (!clk_data)
--		return -ENOMEM;
--
--	ret = mtk_clk_register_gates(&pdev->dev, node, ifr_clks,
--				     ARRAY_SIZE(ifr_clks), clk_data);
--	if (ret)
--		goto free_clk_data;
--
--	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
--	if (ret)
--		goto unregister_gates;
--
--	return 0;
--
--unregister_gates:
--	mtk_clk_unregister_gates(ifr_clks, ARRAY_SIZE(ifr_clks), clk_data);
--free_clk_data:
--	mtk_free_clk_data(clk_data);
--
--	return ret;
--}
--
--static int clk_mt8365_peri_probe(struct platform_device *pdev)
--{
--	void __iomem *base;
--	struct clk_hw_onecell_data *clk_data;
--	struct device *dev = &pdev->dev;
--	struct device_node *node = dev->of_node;
--	int ret;
--
--	base = devm_platform_ioremap_resource(pdev, 0);
--	if (IS_ERR(base))
--		return PTR_ERR(base);
--
--	clk_data = mtk_devm_alloc_clk_data(dev, CLK_PERI_NR_CLK);
--	if (!clk_data)
--		return -ENOMEM;
--
--
--	ret = mtk_clk_register_gates(&pdev->dev, node, peri_clks,
--				     ARRAY_SIZE(peri_clks), clk_data);
--	if (ret)
--		return ret;
--
--	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
--
--	return ret;
--}
--
--static int clk_mt8365_mcu_probe(struct platform_device *pdev)
--{
--	struct clk_hw_onecell_data *clk_data;
--	struct device_node *node = pdev->dev.of_node;
--	void __iomem *base;
--	int ret;
--
--	base = devm_platform_ioremap_resource(pdev, 0);
--	if (IS_ERR(base))
--		return PTR_ERR(base);
--
--	clk_data = mtk_alloc_clk_data(CLK_MCU_NR_CLK);
--	if (!clk_data)
--		return -ENOMEM;
--
--	ret = mtk_clk_register_composites(&pdev->dev, mcu_muxes,
--					  ARRAY_SIZE(mcu_muxes), base,
--					  &mt8365_clk_lock, clk_data);
--	if (ret)
--		goto free_clk_data;
--
--	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
--	if (ret)
--		goto unregister_composites;
-+static const struct mtk_clk_desc topck_desc = {
-+	.clks = top_clk_gates,
-+	.num_clks = ARRAY_SIZE(top_clk_gates),
-+	.fixed_clks = top_fixed_clks,
-+	.num_fixed_clks = ARRAY_SIZE(top_fixed_clks),
-+	.factor_clks = top_divs,
-+	.num_factor_clks = ARRAY_SIZE(top_divs),
-+	.mux_clks = top_muxes,
-+	.num_mux_clks = ARRAY_SIZE(top_muxes),
-+	.composite_clks = top_misc_muxes,
-+	.num_composite_clks = ARRAY_SIZE(top_misc_muxes),
-+	.divider_clks = top_adj_divs,
-+	.num_divider_clks = ARRAY_SIZE(top_adj_divs),
-+	.clk_lock = &mt8365_clk_lock,
-+};
- 
--	return 0;
-+static const struct mtk_clk_desc infra_desc = {
-+	.clks = ifr_clks,
-+	.num_clks = ARRAY_SIZE(ifr_clks),
-+};
- 
--unregister_composites:
--	mtk_clk_unregister_composites(mcu_muxes, ARRAY_SIZE(mcu_muxes),
--				      clk_data);
--free_clk_data:
--	mtk_free_clk_data(clk_data);
-+static const struct mtk_clk_desc peri_desc = {
-+	.clks = peri_clks,
-+	.num_clks = ARRAY_SIZE(peri_clks),
-+};
- 
--	return ret;
--}
-+static const struct mtk_clk_desc mcu_desc = {
-+	.composite_clks = mcu_muxes,
-+	.num_composite_clks = ARRAY_SIZE(mcu_muxes),
-+	.clk_lock = &mt8365_clk_lock,
-+};
- 
- static const struct of_device_id of_match_clk_mt8365[] = {
--	{
--		.compatible = "mediatek,mt8365-topckgen",
--		.data = clk_mt8365_top_probe,
--	}, {
--		.compatible = "mediatek,mt8365-infracfg",
--		.data = clk_mt8365_infra_probe,
--	}, {
--		.compatible = "mediatek,mt8365-pericfg",
--		.data = clk_mt8365_peri_probe,
--	}, {
--		.compatible = "mediatek,mt8365-mcucfg",
--		.data = clk_mt8365_mcu_probe,
--	}, {
--		/* sentinel */
--	}
--};
--
--static int clk_mt8365_probe(struct platform_device *pdev)
--{
--	int (*clk_probe)(struct platform_device *pdev);
--	int ret;
--
--	clk_probe = of_device_get_match_data(&pdev->dev);
--	if (!clk_probe)
--		return -EINVAL;
--
--	ret = clk_probe(pdev);
--	if (ret)
--		dev_err(&pdev->dev,
--			"%s: could not register clock provider: %d\n",
--			pdev->name, ret);
--
--	return ret;
--}
-+	{ .compatible = "mediatek,mt8365-topckgen", .data = &topck_desc },
-+	{ .compatible = "mediatek,mt8365-infracfg", .data = &infra_desc },
-+	{ .compatible = "mediatek,mt8365-pericfg", .data = &peri_desc },
-+	{ .compatible = "mediatek,mt8365-mcucfg", .data = &mcu_desc },
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index 6c898874e948..c5778a7e8025 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -62,7 +62,7 @@ obj-$(CONFIG_COMMON_CLK_MT7986) += clk-mt7986-topckgen.o
+ obj-$(CONFIG_COMMON_CLK_MT7986) += clk-mt7986-infracfg.o
+ obj-$(CONFIG_COMMON_CLK_MT7986_ETHSYS) += clk-mt7986-eth.o
+ obj-$(CONFIG_COMMON_CLK_MT8135) += clk-mt8135.o
+-obj-$(CONFIG_COMMON_CLK_MT8167) += clk-mt8167.o
++obj-$(CONFIG_COMMON_CLK_MT8167) += clk-mt8167-apmixedsys.o clk-mt8167.o
+ obj-$(CONFIG_COMMON_CLK_MT8167_AUDSYS) += clk-mt8167-aud.o
+ obj-$(CONFIG_COMMON_CLK_MT8167_IMGSYS) += clk-mt8167-img.o
+ obj-$(CONFIG_COMMON_CLK_MT8167_MFGCFG) += clk-mt8167-mfgcfg.o
+diff --git a/drivers/clk/mediatek/clk-mt8167-apmixedsys.c b/drivers/clk/mediatek/clk-mt8167-apmixedsys.c
+new file mode 100644
+index 000000000000..ebd90365be5f
+--- /dev/null
++++ b/drivers/clk/mediatek/clk-mt8167-apmixedsys.c
+@@ -0,0 +1,143 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2020 MediaTek Inc.
++ * Copyright (c) 2020 BayLibre, SAS
++ * Copyright (c) 2023 Collabora, Ltd.
++ */
++
++#include <dt-bindings/clock/mt8167-clk.h>
++#include <linux/clk.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
++
++#include "clk-pll.h"
++#include "clk-mtk.h"
++
++static DEFINE_SPINLOCK(mt8167_apmixed_clk_lock);
++
++#define MT8167_PLL_FMAX		(2500UL * MHZ)
++
++#define CON0_MT8167_RST_BAR	BIT(27)
++
++#define PLL_B(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits,	\
++			_pd_reg, _pd_shift, _tuner_reg, _pcw_reg,	\
++			_pcw_shift, _div_table) {			\
++		.id = _id,						\
++		.name = _name,						\
++		.reg = _reg,						\
++		.pwr_reg = _pwr_reg,					\
++		.en_mask = _en_mask,					\
++		.flags = _flags,					\
++		.rst_bar_mask = CON0_MT8167_RST_BAR,			\
++		.fmax = MT8167_PLL_FMAX,				\
++		.pcwbits = _pcwbits,					\
++		.pd_reg = _pd_reg,					\
++		.pd_shift = _pd_shift,					\
++		.tuner_reg = _tuner_reg,				\
++		.pcw_reg = _pcw_reg,					\
++		.pcw_shift = _pcw_shift,				\
++		.div_table = _div_table,				\
++	}
++
++#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits,	\
++			_pd_reg, _pd_shift, _tuner_reg, _pcw_reg,	\
++			_pcw_shift)					\
++		PLL_B(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits, \
++			_pd_reg, _pd_shift, _tuner_reg, _pcw_reg, _pcw_shift, \
++			NULL)
++
++static const struct mtk_pll_div_table mmpll_div_table[] = {
++	{ .div = 0, .freq = MT8167_PLL_FMAX },
++	{ .div = 1, .freq = 1000000000 },
++	{ .div = 2, .freq = 604500000 },
++	{ .div = 3, .freq = 253500000 },
++	{ .div = 4, .freq = 126750000 },
 +	{ /* sentinel */ }
 +};
++
++static const struct mtk_pll_data plls[] = {
++	PLL(CLK_APMIXED_ARMPLL, "armpll", 0x0100, 0x0110, 0, 0,
++	    21, 0x0104, 24, 0, 0x0104, 0),
++	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x0120, 0x0130, 0,
++	    HAVE_RST_BAR, 21, 0x0124, 24, 0, 0x0124, 0),
++	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x0140, 0x0150, 0x30000000,
++	    HAVE_RST_BAR, 7, 0x0144, 24, 0, 0x0144, 0),
++	PLL_B(CLK_APMIXED_MMPLL, "mmpll", 0x0160, 0x0170, 0, 0,
++	      21, 0x0164, 24, 0, 0x0164, 0, mmpll_div_table),
++	PLL(CLK_APMIXED_APLL1, "apll1", 0x0180, 0x0190, 0, 0,
++	    31, 0x0180, 1, 0x0194, 0x0184, 0),
++	PLL(CLK_APMIXED_APLL2, "apll2", 0x01A0, 0x01B0, 0, 0,
++	    31, 0x01A0, 1, 0x01B4, 0x01A4, 0),
++	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x01C0, 0x01D0, 0, 0,
++	    21, 0x01C4, 24, 0, 0x01C4, 0),
++	PLL(CLK_APMIXED_LVDSPLL, "lvdspll", 0x01E0, 0x01F0, 0, 0,
++	    21, 0x01E4, 24, 0, 0x01E4, 0),
++};
++
++#define DIV_ADJ_FLAG(_id, _name, _parent, _reg, _shift, _width, _flag) { \
++		.id = _id,					\
++		.name = _name,					\
++		.parent_name = _parent,				\
++		.div_reg = _reg,				\
++		.div_shift = _shift,				\
++		.div_width = _width,				\
++		.clk_divider_flags = _flag,			\
++}
++
++static const struct mtk_clk_divider adj_divs[] = {
++	DIV_ADJ_FLAG(CLK_APMIXED_HDMI_REF, "hdmi_ref", "tvdpll",
++		     0x1c4, 24, 3, CLK_DIVIDER_POWER_OF_TWO),
++};
++
++static int clk_mt8167_apmixed_probe(struct platform_device *pdev)
++{
++	void __iomem *base;
++	struct clk_hw_onecell_data *clk_data;
++	struct device_node *node = pdev->dev.of_node;
++	struct device *dev = &pdev->dev;
++	int ret;
++
++	base = devm_platform_ioremap_resource(pdev, 0);
++	if (IS_ERR(base))
++		return PTR_ERR(base);
++
++	clk_data = mtk_devm_alloc_clk_data(dev, MT8167_CLK_APMIXED_NR_CLK);
++	if (!clk_data)
++		return -ENOMEM;
++
++	ret = mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
++	if (ret)
++		return ret;
++
++	ret = mtk_clk_register_dividers(adj_divs, ARRAY_SIZE(adj_divs), base,
++					&mt8167_apmixed_clk_lock, clk_data);
++	if (ret)
++		goto unregister_plls;
++
++	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
++	if (ret)
++		goto unregister_dividers;
++
++	return 0;
++
++unregister_dividers:
++	mtk_clk_unregister_dividers(adj_divs, ARRAY_SIZE(adj_divs), clk_data);
++unregister_plls:
++	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
++
++	return ret;
++}
++
++static const struct of_device_id of_match_clk_mt8167_apmixed[] = {
++	{ .compatible = "mediatek,mt8167-apmixedsys" },
++	{ /* sentinel */ }
++};
++
++static struct platform_driver clk_mt8167_apmixed_drv = {
++	.probe = clk_mt8167_apmixed_probe,
++	.driver = {
++		.name = "clk-mt8167-apmixed",
++		.of_match_table = of_match_clk_mt8167_apmixed,
++	},
++};
++builtin_platform_driver(clk_mt8167_apmixed_drv)
+diff --git a/drivers/clk/mediatek/clk-mt8167.c b/drivers/clk/mediatek/clk-mt8167.c
+index 12384da4002d..a4ffdac6d94d 100644
+--- a/drivers/clk/mediatek/clk-mt8167.c
++++ b/drivers/clk/mediatek/clk-mt8167.c
+@@ -14,7 +14,6 @@
  
- static struct platform_driver clk_mt8365_drv = {
--	.probe = clk_mt8365_probe,
- 	.driver = {
- 		.name = "clk-mt8365",
- 		.of_match_table = of_match_clk_mt8365,
- 	},
-+	.probe = mtk_clk_simple_probe,
-+	.remove = mtk_clk_simple_remove,
+ #include "clk-gate.h"
+ #include "clk-mtk.h"
+-#include "clk-pll.h"
+ 
+ #include <dt-bindings/clock/mt8167-clk.h>
+ 
+@@ -685,21 +684,6 @@ static const struct mtk_clk_divider top_adj_divs[] = {
+ 		0x0078, 0, 8),
  };
--
--static int __init clk_mt8365_init(void)
--{
--	return platform_driver_register(&clk_mt8365_drv);
+ 
+-#define DIV_ADJ_FLAG(_id, _name, _parent, _reg, _shift, _width, _flag) {	\
+-		.id = _id,					\
+-		.name = _name,					\
+-		.parent_name = _parent,				\
+-		.div_reg = _reg,				\
+-		.div_shift = _shift,				\
+-		.div_width = _width,				\
+-		.clk_divider_flags = _flag,				\
 -}
--arch_initcall(clk_mt8365_init);
-+module_platform_driver(clk_mt8365_drv);
- MODULE_LICENSE("GPL");
+-
+-static const struct mtk_clk_divider apmixed_adj_divs[] = {
+-	DIV_ADJ_FLAG(CLK_APMIXED_HDMI_REF, "hdmi_ref", "tvdpll",
+-		0x1c4, 24, 3, CLK_DIVIDER_POWER_OF_TWO),
+-};
+-
+ static const struct mtk_gate_regs top0_cg_regs = {
+ 	.set_ofs = 0x50,
+ 	.clr_ofs = 0x80,
+@@ -929,89 +913,3 @@ static void __init mtk_infracfg_init(struct device_node *node)
+ 			__func__, r);
+ }
+ CLK_OF_DECLARE(mtk_infracfg, "mediatek,mt8167-infracfg", mtk_infracfg_init);
+-
+-#define MT8167_PLL_FMAX		(2500UL * MHZ)
+-
+-#define CON0_MT8167_RST_BAR	BIT(27)
+-
+-#define PLL_B(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits,	\
+-			_pd_reg, _pd_shift, _tuner_reg, _pcw_reg,	\
+-			_pcw_shift, _div_table) {			\
+-		.id = _id,						\
+-		.name = _name,						\
+-		.reg = _reg,						\
+-		.pwr_reg = _pwr_reg,					\
+-		.en_mask = _en_mask,					\
+-		.flags = _flags,					\
+-		.rst_bar_mask = CON0_MT8167_RST_BAR,			\
+-		.fmax = MT8167_PLL_FMAX,				\
+-		.pcwbits = _pcwbits,					\
+-		.pd_reg = _pd_reg,					\
+-		.pd_shift = _pd_shift,					\
+-		.tuner_reg = _tuner_reg,				\
+-		.pcw_reg = _pcw_reg,					\
+-		.pcw_shift = _pcw_shift,				\
+-		.div_table = _div_table,				\
+-	}
+-
+-#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits,	\
+-			_pd_reg, _pd_shift, _tuner_reg, _pcw_reg,	\
+-			_pcw_shift)					\
+-		PLL_B(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits, \
+-			_pd_reg, _pd_shift, _tuner_reg, _pcw_reg, _pcw_shift, \
+-			NULL)
+-
+-static const struct mtk_pll_div_table mmpll_div_table[] = {
+-	{ .div = 0, .freq = MT8167_PLL_FMAX },
+-	{ .div = 1, .freq = 1000000000 },
+-	{ .div = 2, .freq = 604500000 },
+-	{ .div = 3, .freq = 253500000 },
+-	{ .div = 4, .freq = 126750000 },
+-	{ } /* sentinel */
+-};
+-
+-static const struct mtk_pll_data plls[] = {
+-	PLL(CLK_APMIXED_ARMPLL, "armpll", 0x0100, 0x0110, 0, 0,
+-		21, 0x0104, 24, 0, 0x0104, 0),
+-	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x0120, 0x0130, 0,
+-		HAVE_RST_BAR, 21, 0x0124, 24, 0, 0x0124, 0),
+-	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x0140, 0x0150, 0x30000000,
+-		HAVE_RST_BAR, 7, 0x0144, 24, 0, 0x0144, 0),
+-	PLL_B(CLK_APMIXED_MMPLL, "mmpll", 0x0160, 0x0170, 0, 0,
+-		21, 0x0164, 24, 0, 0x0164, 0, mmpll_div_table),
+-	PLL(CLK_APMIXED_APLL1, "apll1", 0x0180, 0x0190, 0, 0,
+-		31, 0x0180, 1, 0x0194, 0x0184, 0),
+-	PLL(CLK_APMIXED_APLL2, "apll2", 0x01A0, 0x01B0, 0, 0,
+-		31, 0x01A0, 1, 0x01B4, 0x01A4, 0),
+-	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x01C0, 0x01D0, 0, 0,
+-		21, 0x01C4, 24, 0, 0x01C4, 0),
+-	PLL(CLK_APMIXED_LVDSPLL, "lvdspll", 0x01E0, 0x01F0, 0, 0,
+-		21, 0x01E4, 24, 0, 0x01E4, 0),
+-};
+-
+-static void __init mtk_apmixedsys_init(struct device_node *node)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	void __iomem *base;
+-	int r;
+-
+-	base = of_iomap(node, 0);
+-	if (!base) {
+-		pr_err("%s(): ioremap failed\n", __func__);
+-		return;
+-	}
+-
+-	clk_data = mtk_alloc_clk_data(MT8167_CLK_APMIXED_NR_CLK);
+-
+-	mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
+-	mtk_clk_register_dividers(apmixed_adj_divs, ARRAY_SIZE(apmixed_adj_divs),
+-		base, &mt8167_clk_lock, clk_data);
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r)
+-		pr_err("%s(): could not register clock provider: %d\n",
+-			__func__, r);
+-
+-}
+-CLK_OF_DECLARE(mtk_apmixedsys, "mediatek,mt8167-apmixedsys",
+-		mtk_apmixedsys_init);
 -- 
 2.39.2
 
