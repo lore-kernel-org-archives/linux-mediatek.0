@@ -4,58 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28C68C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 20:35:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6957C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 21:28:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
-	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1G3N5PVmkon6vfUF7PxpALoL8dBrGQ2f+oMsV2VCin0=; b=qXKJMM9c4DOAPH4e7yfnOVAeB8
-	CEDCzMNg8T6iYNiHXO5v+J6Asxh1UFezsHsoFD0SR2RyxS6UMFM/V2AKEiYJzCIq8a9t4IfB/1X7V
-	TL1IBFeg7t4ETdYWtoHwkfW/IRcCmlzPNxV3+9Us8ntlOGly6LMGlbF8R7yjdL+Nv4q32jNRu9RAa
-	l/cGubiYvDJHmcnTCiF1yX6nabuNHOXrf/1erEJyJo9ra/pv0l75HNoKG6z+jJg+agzAXEUI7qLpW
-	Ryub8IvYazhzhvVfIA7ZX8aLRX4pjrdRvQpZKN7T8i+txX7VoSrATmzs/Gj4/Acd+2ofMg4AQT1g1
-	gLtpez2Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=L11+ZZR7AgJ9777mC0YSI2O5CjFayQNahGAhim/M1HQ=; b=ofnfVbPQtTlQnGR3lU9ddqGQC2
+	8U3lvAE2r/PkkAdXmQ5so48dh+xYDl2ETWzGL2TI3hrz8xj0yWJhARIfcToC6u0JXDArZAQob8Lkg
+	FNGuIOHcrs/FGcaAO6eKYCBh138N0Mq6Z40GBZjpQJISWKxnPPm/0qAru3y/Ejnad/4HRiyduebK5
+	QCtkUL5rL8lpCKJxHp72HAqiIzBFR3aiD4B6hp/YW2fE7Td52mRo3C++Y/F/sHWM5WriItofJ97V3
+	j+eN4oc31EKEkP1EYFD0h1r/mNCThdRSs3okrs89RM/pYwLqOg059UfUrlRsvmVEVdPSRh8SD255O
+	CNRLP+lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZHYH-00Exjl-US; Mon, 06 Mar 2023 20:35:22 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pZINJ-00F5Y0-3z; Mon, 06 Mar 2023 21:28:05 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZHY6-00Exfg-SS; Mon, 06 Mar 2023 20:35:12 +0000
+	id 1pZINE-00F5WR-Ax; Mon, 06 Mar 2023 21:28:01 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 9DC466114D;
-	Mon,  6 Mar 2023 20:35:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 006BBC433EF;
-	Mon,  6 Mar 2023 20:35:05 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E2CF760C7A;
+	Mon,  6 Mar 2023 21:27:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA102C433A1;
+	Mon,  6 Mar 2023 21:27:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1678134906;
-	bh=1G3N5PVmkon6vfUF7PxpALoL8dBrGQ2f+oMsV2VCin0=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=pzoFEX3TnEDvOID9sxcxyBWmQb/GMaRmWOwVkdA9429maq9xj87XoGIeYpbSuJi9N
-	 ceT8VEVQA+f3gb6AWv7I4M5eq/d5QKnO9jRiV/LMvMs8CXoKIC1IAPT6tzwNjz4Pg6
-	 Ad2dcoo0q1PUpXo9C7Xb0kKz2y0EYNNbTNMWuj1lASoxRjougCPKQ8lDVXDQHDT2F9
-	 ncrn0i7nkeAx56qFbO1o9U39dwORW9SmvDGw5RvmR9lDfsMLqa836s23O/pNfj2rTd
-	 KA4fkljCU7PUwh8y5nk60PY3j/QY+eHckG9x4W48ckPGGQiA5pZPU4M2ncJ8+Vd7Br
-	 FQZheSm/YqCJg==
-Message-ID: <b772f0075322b7bec01881e478c8dc4e.sboyd@kernel.org>
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1678138079;
+	bh=OPscq8j4gixbBXyx4rYRiqcOtug0pajWX+t3LwK0uPE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=PsQMxWTNyqmjmOyLA6f4aBxEbqjXLjGnQvTHUoE4f6zTvuB0TEbKKoow7O0Bl6lqg
+	 gYnqSQeBrO1rJ29HWmn+yvMly1eyD9pru67Ei5XhYPhftQR6cu4eDx5Y2uE63s5KIt
+	 s3zsZ4FOYFUkiy7gTDlGyR2DhiXrF2ddTXSUbWfDk94k+YWjCuHsJXdkT6LOyMmw3/
+	 OBMkdU9AXHfmpJlFP0bcKZdHq+IuioXEaW+oivplUHjLiBGkJeMjuBmdvu2rgkgh5Q
+	 WG7SALFgV1PPXh9MrSvGscl5OUXQrlqRl1aL8dYkfSYDeEvI72A6J1sMyBNHxpS7Fw
+	 LxAw7Z0FF0jTA==
+Date: Mon, 6 Mar 2023 21:27:32 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
+Cc: miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com,
+	jic23@kernel.org, tudor.ambarus@microchip.com, pratyush@kernel.org,
+	Sanju.Mehta@amd.com, chin-ting_kuo@aspeedtech.com, clg@kaod.org,
+	kdasu.kdev@gmail.com, f.fainelli@gmail.com, rjui@broadcom.com,
+	sbranden@broadcom.com, eajames@linux.ibm.com, olteanv@gmail.com,
+	han.xu@nxp.com, john.garry@huawei.com, shawnguo@kernel.org,
+	s.hauer@pengutronix.de, narmstrong@baylibre.com,
+	khilman@baylibre.com, matthias.bgg@gmail.com, haibo.chen@nxp.com,
+	linus.walleij@linaro.org, daniel@zonque.org,
+	haojian.zhuang@gmail.com, robert.jarzmik@free.fr, agross@kernel.org,
+	bjorn.andersson@linaro.org, heiko@sntech.de,
+	krzysztof.kozlowski@linaro.org, andi@etezian.org,
+	mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
+	wens@csie.org, jernej.skrabec@gmail.com, samuel@sholland.org,
+	masahisa.kojima@linaro.org, jaswinder.singh@linaro.org,
+	rostedt@goodmis.org, mingo@redhat.com, l.stelmach@samsung.com,
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, alex.aring@gmail.com, stefan@datenfreihafen.org,
+	kvalo@kernel.org, james.schulman@cirrus.com,
+	david.rhodes@cirrus.com, tanureal@opensource.cirrus.com,
+	rf@opensource.cirrus.com, perex@perex.cz, tiwai@suse.com,
+	npiggin@gmail.com, christophe.leroy@csgroup.eu, mpe@ellerman.id.au,
+	oss@buserror.net, windhl@126.com, yangyingliang@huawei.com,
+	william.zhang@broadcom.com, kursad.oney@broadcom.com,
+	jonas.gorski@gmail.com, anand.gore@broadcom.com, rafal@milecki.pl,
+	git@amd.com, linux-spi@vger.kernel.org,
+	linux-kernel@vger.kernel.org, joel@jms.id.au, andrew@aj.id.au,
+	radu_nicolae.pirea@upb.ro, nicolas.ferre@microchip.com,
+	alexandre.belloni@bootlin.com, claudiu.beznea@microchip.com,
+	bcm-kernel-feedback-list@broadcom.com, fancer.lancer@gmail.com,
+	kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
+	jbrunet@baylibre.com, martin.blumenstingl@googlemail.com,
+	avifishman70@gmail.com, tmaimon77@gmail.com, tali.perry1@gmail.com,
+	venture@google.com, yuenn@google.com, benjaminfair@google.com,
+	yogeshgaur.83@gmail.com, konrad.dybcio@somainline.org,
+	alim.akhtar@samsung.com, ldewangan@nvidia.com,
+	thierry.reding@gmail.com, jonathanh@nvidia.com,
+	michal.simek@amd.com, linux-aspeed@lists.ozlabs.org,
+	openbmc@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+	netdev@vger.kernel.org, linux-wpan@vger.kernel.org,
+	libertas-dev@lists.infradead.org, linux-wireless@vger.kernel.org,
+	linux-mtd@lists.infradead.org, lars@metafoo.de,
+	Michael.Hennerich@analog.com, linux-iio@vger.kernel.org,
+	michael@walle.cc, palmer@dabbelt.com,
+	linux-riscv@lists.infradead.org, alsa-devel@alsa-project.org,
+	patches@opensource.cirrus.com, linuxppc-dev@lists.ozlabs.org,
+	amitrkcian2002@gmail.com, Dhruva Gole <d-gole@ti.com>,
+	Patrice Chotard <patrice.chotard@foss.st.com>
+Subject: Re: [PATCH V5 01/15] spi: Replace all spi->chip_select and
+ spi->cs_gpiod references with function call
+Message-ID: <00684da3-520f-459d-b6bd-55e728e93ebf@sirena.org.uk>
+References: <20230306172109.595464-1-amit.kumar-mahapatra@amd.com>
+ <20230306172109.595464-2-amit.kumar-mahapatra@amd.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
-References: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v6 00/54] MediaTek clocks: full module build and cleanups
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, wenst@chromium.org, johnson.wang@mediatek.com, miles.chen@mediatek.com, chun-jie.chen@mediatek.com, daniel@makrotopia.org, fparent@baylibre.com, msp@baylibre.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com, zhaojh329@gmail.com, sam.shih@mediatek.com, edward-jw.yang@mediatek.com, yangyingliang@huawei.com, granquet@baylibre.com, pablo.sun@mediatek.com, sean.wang@mediatek.com, chen.zhong@mediatek.com, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, kernel@collabora.com
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, mturquette@baylibre.com
-Date: Mon, 06 Mar 2023 12:35:02 -0800
-User-Agent: alot/0.10
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="RfYQ7lwbbyjtjTUN"
+Content-Disposition: inline
+In-Reply-To: <20230306172109.595464-2-amit.kumar-mahapatra@amd.com>
+X-Cookie: teamwork, n.:
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230306_123511_021251_BB5BD0CF 
-X-CRM114-Status: GOOD (  18.43  )
+X-CRM114-CacheID: sfid-20230306_132800_518515_DC400698 
+X-CRM114-Status: UNSURE (   8.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,52 +128,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting AngeloGioacchino Del Regno (2023-03-06 06:04:49)
->=20
-> NOTE: Applies on top of [1] and [2].
->=20
->=20
-> Full blurb:
->=20
-> This huge series adds more cleanups on top, reducing size and adding more
-> commonization for clock drivers probe/remove, which also includes a new
-> common probe mechanism for multimedia clock drivers that are usually
-> probed by mtk-mmsys instead of a dt clock node: thanks to this, it was
-> finally possible to convert almost all clock drivers to the common probe
-> mechanism, which *finally again* makes us able to build all these drivers
-> as modules!
->=20
-> Since this looked like being *the* way forward, I went on converting some
-> more drivers away from OF_CLK_DECLARE_DRIVER to full platform_driver(s),
-> allowing for more (actually, almost all!) drivers to be built as modules.
->=20
-> While at it, I also added some more consistency in macros usage by
-> removing all of the duplicated full macro declaration for MediaTek gate
-> clocks and replacing all of those with using the GATE_MTK macro instead,
-> producing a nice reduction in amount of lines per file but, more
-> importantly, improving readability and eventual future batch changes.
->=20
-> This amount of commonization will also, in my opinion, greatly improve
-> the review process for new clock drivers, as they will be mostly just a
-> list of clocks and won't contain much new code, as it's all going to be
-> handled in the common places, which also reduces chances to see new clock
-> driver related bugs emerging on one SoC or the other.
->=20
-> Since I don't own devices with all of the supported MediaTek SoCs, I
-> could not test some of the conversions on real hardware... but I am
-> confident that this will work as the drivers are *very* similar on a
-> per-generation basis.
->=20
-> This series was build-tested for all (both module and built-in build)
-> and was manually tested on MT6795, MT8173, MT8192, MT8195.
->=20
-> [1]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=3D7=
-19067
-> [2]: https://patchwork.kernel.org/project/linux-mediatek/patch/2023020701=
-4800.7619-2-moudy.ho@mediatek.com/
->=20
 
-Please use lore links (https://lore.kernel.org/r/<message-id>). [2] has
-been applied in an alternative form. [1] doesn't have any review besides
-DT review. Please get it reviewed.
+--RfYQ7lwbbyjtjTUN
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Mon, Mar 06, 2023 at 10:50:55PM +0530, Amit Kumar Mahapatra wrote:
+
+>  drivers/spi/spi-omap-100k.c       |  2 +-
+
+This is also not against -rc1, this file was removed in bcace9c4c9270292
+("spi: remove omap 100K driver").
+
+--RfYQ7lwbbyjtjTUN
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmQGWsMACgkQJNaLcl1U
+h9C7Fwf+MqZVyi3PlI6YIKPDaaFyWnmjZtweIjxd+4E2eEmTZq9MbcCHS/W56cUk
+TPWusPOjIa33XHC376rZpTYGqNTRjvOo8UwttJFAFQFbtMNui8BfC1bnrROwoyUE
+AxcOxhCAi3r1P0nRIkS126TepySOo1qXD1gf6YUQydf6/iDxzq7VddVjfqtt3dPF
+6rnt0G5xA5O0Z75Kc76h4ePCX7kXMqJhJSaJf7HFcGwD2P5HIeRcRyucD2q4Ddnr
+KzkdziV90/s6X7Q9cfiA620jfm8jVdqqN3yC+JX/L2Iu8kpeefFFgD49yG2aMtxv
+zgXP6uMpvQm5g7F9e/wo/JMWhjfh8g==
+=uJRe
+-----END PGP SIGNATURE-----
+
+--RfYQ7lwbbyjtjTUN--
 
