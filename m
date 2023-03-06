@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0C0CC61DA4
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73A9BC678D4
 	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 14:10:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,35 +12,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8MvGISZkN55EMPWuuJdXCWFCtP9jqMvtgeY0ONo0qQ8=; b=mdaoqtk65NSZoDSwa0cBh4fmQj
-	gT/5TqttQ9yZchMTOFjJwk/rFXDsi9ysAIW/E3KJkAJ5NO/G/SIpns3hSoRuC7guoUrsS0K/SAhdU
-	ApNZYEJ/znZC61GAbG2MbwnQdUAAlasThYR2S1xjYDBT8YgoklybUGDTUhN5otqX75sWiyKQrm1xu
-	1nwVqcEmOg7IqKD5Ofxe1kx+hsuPhMfw2yYMKnvKFqVN37q0izUAmzN3Yh4BDXnssi15dpb/cvF5u
-	HLuM11quHPkubHqMPK56xbuCvv4zmlETyl+FjfhjlJe6x97V12VDELIEbwQhuZysHWVJDhUb32Kg7
-	1pykOr8w==;
+	bh=kJUEJEPWKn5n5CBjubZFlcLrudWa9i66DoTNyyyxqls=; b=LhxLSadrNta281i+RlDymRjwCF
+	d8LctYCHYLFDWnAYSUAAFPi4+LdQnXtacsVBlBxsDF8uJra9A9Q8oGrDlZVOgmoi1KRByHIVgTJBQ
+	p2GRbaLSYkre2LUvDx0wdLuPWpEM5P7Qk1+9mmXWi2Y2N2tLFQgSJHElkL06RWJdRvYsarCEQUzoo
+	Zqw5lOXsTlgWRECt6ftwjSmOZlCDzpa9SqY3X7z4IHkXkhGO1iwyJtJuVOfOXLxl7DxJgwN/q5Z2p
+	hUjG6i/xw7rCY4BNACqZU5mWMFnKgbFe4Xw1AbonFQNKlYjYDw3WeCRAFWgyEn5pZARvBqT/QkZwj
+	nc4xl4OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZBY7-00D6MN-2F; Mon, 06 Mar 2023 14:10:47 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pZBY5-00D6LO-Od; Mon, 06 Mar 2023 14:10:45 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZBTY-00D3UM-4z; Mon, 06 Mar 2023 14:06:05 +0000
+	id 1pZBTW-00D3TB-9n; Mon, 06 Mar 2023 14:06:05 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 50DC16602F6A;
-	Mon,  6 Mar 2023 14:06:01 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C302D6602F94;
+	Mon,  6 Mar 2023 14:05:59 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678111562;
-	bh=c06sztOuI8DQ5DDjj8gCYxk1bqozhA9LrG1lTO5UoY4=;
+	s=mail; t=1678111561;
+	bh=kz8iQ8boEjR7HQUIv+oQzyLcyfamnjk7DLLHgHxBzAk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=hRRik9yhPavOoET28fPMy3EQmRsCtZmw2t4i7xc1ws4b9JPXUQfzBmiTd4pPevYNj
-	 FIzRdLTLjPG1qUCchXNy9pwpbpNzpNisDDHUkbpRsPg6cjQi06gmcFiC1cWhaTtqU5
-	 YUBB5l675xjYbCRUQtv3qLp7eDXzAYS/1pp9k2Bptg/HcxW8fAXBUgSV6qmXAACSyj
-	 GRiINnS3AhoQxC5zZ7LaRM5O6xNpSQK7V7Hdf9gben6Gb6pt9bo+ypY/93b7q696ly
-	 WLDImDWGk9GhKdl9WEFGgGkWrHeHk1cKXhtkHvDb774yhyVMdNhbXi79vIpcgLjVmU
-	 HJKfdUMXfHIYw==
+	b=Ltj5HTzUZ46snb4AdvzLHbzOzS0R/MlChk8aLhbLsvETotctwYV1f/AP9GahhwQG4
+	 DY0zZDU45Z2v5BCwnkXppZLUsYhF9RAp5b/MmUkpT0dnLw9IjU/AguHWdAg5ck8Ng7
+	 a66OjIwBnf9mm+udnVhkTShPTnAC0GVDC31tQAj/CopsONBpWm4rmZbXTewyOTi3TD
+	 lKF34b1+T6GQs8/graMw9GjotsT3CtUo9xoV3b1Qw1l10cKDDjes7gNS/ZYX9QZPUk
+	 VMOE4f26rqFKUpcBEv56cgisV5EuEj3U3CaRwn0wSpcmWCY6I0IZ/6ND+ygZXhQ9kD
+	 B7V+Jkw3mX/WQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mturquette@baylibre.com
 Cc: sboyd@kernel.org,
@@ -68,17 +68,17 @@ Cc: sboyd@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v6 09/54] clk: mediatek: mt2712-apmixedsys: Add .remove() callback for module build
-Date: Mon,  6 Mar 2023 15:04:58 +0100
-Message-Id: <20230306140543.1813621-10-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v6 08/54] clk: mediatek: mt2712: Move apmixedsys clock driver to its own file
+Date: Mon,  6 Mar 2023 15:04:57 +0100
+Message-Id: <20230306140543.1813621-9-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
 References: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230306_060604_588363_CD451C90 
-X-CRM114-Status: GOOD (  13.54  )
+X-CRM114-CacheID: sfid-20230306_060603_074804_ADBF0C4C 
+X-CRM114-Status: GOOD (  22.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,51 +93,397 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a .remove() callback to the apmixedsys driver to allow full module
-build; while at it, also change the usage of builtin_platform_driver()
-to module_platform_driver() to actually make use of the new callback.
+The only clock driver that does not support mtk_clk_simple_probe() is
+apmixedsys: in preparation for enabling module build of non-critical
+mt2712 clocks, move this to its own file.
+While at it, also fix some indentation issues in the PLLs table.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/clk/mediatek/clk-mt2712-apmixedsys.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
+ drivers/clk/mediatek/Makefile                |   2 +-
+ drivers/clk/mediatek/clk-mt2712-apmixedsys.c | 153 +++++++++++++++++
+ drivers/clk/mediatek/clk-mt2712.c            | 164 -------------------
+ 3 files changed, 154 insertions(+), 165 deletions(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt2712-apmixedsys.c
 
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index e5d018270ed0..9ba8f666221c 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -38,7 +38,7 @@ obj-$(CONFIG_COMMON_CLK_MT2701_HIFSYS) += clk-mt2701-hif.o
+ obj-$(CONFIG_COMMON_CLK_MT2701_IMGSYS) += clk-mt2701-img.o
+ obj-$(CONFIG_COMMON_CLK_MT2701_MMSYS) += clk-mt2701-mm.o
+ obj-$(CONFIG_COMMON_CLK_MT2701_VDECSYS) += clk-mt2701-vdec.o
+-obj-$(CONFIG_COMMON_CLK_MT2712) += clk-mt2712.o
++obj-$(CONFIG_COMMON_CLK_MT2712) += clk-mt2712-apmixedsys.o clk-mt2712.o
+ obj-$(CONFIG_COMMON_CLK_MT2712_BDPSYS) += clk-mt2712-bdp.o
+ obj-$(CONFIG_COMMON_CLK_MT2712_IMGSYS) += clk-mt2712-img.o
+ obj-$(CONFIG_COMMON_CLK_MT2712_JPGDECSYS) += clk-mt2712-jpgdec.o
 diff --git a/drivers/clk/mediatek/clk-mt2712-apmixedsys.c b/drivers/clk/mediatek/clk-mt2712-apmixedsys.c
-index 1e1a8272a4ac..2f4061c9a59e 100644
---- a/drivers/clk/mediatek/clk-mt2712-apmixedsys.c
+new file mode 100644
+index 000000000000..1e1a8272a4ac
+--- /dev/null
 +++ b/drivers/clk/mediatek/clk-mt2712-apmixedsys.c
-@@ -138,6 +138,18 @@ static int clk_mt2712_apmixed_probe(struct platform_device *pdev)
- 	return r;
- }
- 
-+static int clk_mt2712_apmixed_remove(struct platform_device *pdev)
-+{
-+	struct device_node *node = pdev->dev.of_node;
-+	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+@@ -0,0 +1,153 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Copyright (c) 2017 MediaTek Inc.
++ *                    Weiyi Lu <weiyi.lu@mediatek.com>
++ * Copyright (c) 2023 Collabora Ltd.
++ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++ */
++#include <linux/clk.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
 +
-+	of_clk_del_provider(node);
-+	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
-+	mtk_free_clk_data(clk_data);
++#include "clk-pll.h"
++#include "clk-mtk.h"
++
++#include <dt-bindings/clock/mt2712-clk.h>
++
++#define MT2712_PLL_FMAX		(3000UL * MHZ)
++
++#define CON0_MT2712_RST_BAR	BIT(24)
++
++#define PLL_B(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits,	\
++			_pd_reg, _pd_shift, _tuner_reg, _tuner_en_reg,	\
++			_tuner_en_bit, _pcw_reg, _pcw_shift,		\
++			_div_table) {					\
++		.id = _id,						\
++		.name = _name,						\
++		.reg = _reg,						\
++		.pwr_reg = _pwr_reg,					\
++		.en_mask = _en_mask,					\
++		.flags = _flags,					\
++		.rst_bar_mask = CON0_MT2712_RST_BAR,			\
++		.fmax = MT2712_PLL_FMAX,				\
++		.pcwbits = _pcwbits,					\
++		.pd_reg = _pd_reg,					\
++		.pd_shift = _pd_shift,					\
++		.tuner_reg = _tuner_reg,				\
++		.tuner_en_reg = _tuner_en_reg,				\
++		.tuner_en_bit = _tuner_en_bit,				\
++		.pcw_reg = _pcw_reg,					\
++		.pcw_shift = _pcw_shift,				\
++		.div_table = _div_table,				\
++	}
++
++#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits,	\
++			_pd_reg, _pd_shift, _tuner_reg, _tuner_en_reg,	\
++			_tuner_en_bit, _pcw_reg, _pcw_shift)		\
++		PLL_B(_id, _name, _reg, _pwr_reg, _en_mask, _flags,	\
++			_pcwbits, _pd_reg, _pd_shift, _tuner_reg,	\
++			_tuner_en_reg, _tuner_en_bit, _pcw_reg,		\
++			_pcw_shift, NULL)
++
++static const struct mtk_pll_div_table armca35pll_div_table[] = {
++	{ .div = 0, .freq = MT2712_PLL_FMAX },
++	{ .div = 1, .freq = 1202500000 },
++	{ .div = 2, .freq = 500500000 },
++	{ .div = 3, .freq = 315250000 },
++	{ .div = 4, .freq = 157625000 },
++	{ /* sentinel */ }
++};
++
++static const struct mtk_pll_div_table armca72pll_div_table[] = {
++	{ .div = 0, .freq = MT2712_PLL_FMAX },
++	{ .div = 1, .freq = 994500000 },
++	{ .div = 2, .freq = 520000000 },
++	{ .div = 3, .freq = 315250000 },
++	{ .div = 4, .freq = 157625000 },
++	{ /* sentinel */ }
++};
++
++static const struct mtk_pll_div_table mmpll_div_table[] = {
++	{ .div = 0, .freq = MT2712_PLL_FMAX },
++	{ .div = 1, .freq = 1001000000 },
++	{ .div = 2, .freq = 601250000 },
++	{ .div = 3, .freq = 250250000 },
++	{ .div = 4, .freq = 125125000 },
++	{ /* sentinel */ }
++};
++
++static const struct mtk_pll_data plls[] = {
++	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x0230, 0x023C, 0xf0000100,
++	    HAVE_RST_BAR, 31, 0x0230, 4, 0, 0, 0, 0x0234, 0),
++	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x0240, 0x024C, 0xfe000100,
++	    HAVE_RST_BAR, 31, 0x0240, 4, 0, 0, 0, 0x0244, 0),
++	PLL(CLK_APMIXED_VCODECPLL, "vcodecpll", 0x0320, 0x032C, 0xc0000100,
++	    0, 31, 0x0320, 4, 0, 0, 0, 0x0324, 0),
++	PLL(CLK_APMIXED_VENCPLL, "vencpll", 0x0280, 0x028C, 0x00000100,
++	    0, 31, 0x0280, 4, 0, 0, 0, 0x0284, 0),
++	PLL(CLK_APMIXED_APLL1, "apll1", 0x0330, 0x0340, 0x00000100,
++	    0, 31, 0x0330, 4, 0x0338, 0x0014, 0, 0x0334, 0),
++	PLL(CLK_APMIXED_APLL2, "apll2", 0x0350, 0x0360, 0x00000100,
++	    0, 31, 0x0350, 4, 0x0358, 0x0014, 1, 0x0354, 0),
++	PLL(CLK_APMIXED_LVDSPLL, "lvdspll", 0x0370, 0x037c, 0x00000100,
++	    0, 31, 0x0370, 4, 0, 0, 0, 0x0374, 0),
++	PLL(CLK_APMIXED_LVDSPLL2, "lvdspll2", 0x0390, 0x039C, 0x00000100,
++	    0, 31, 0x0390, 4, 0, 0, 0, 0x0394, 0),
++	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x0270, 0x027C, 0x00000100,
++	    0, 31, 0x0270, 4, 0, 0, 0, 0x0274, 0),
++	PLL(CLK_APMIXED_MSDCPLL2, "msdcpll2", 0x0410, 0x041C, 0x00000100,
++	    0, 31, 0x0410, 4, 0, 0, 0, 0x0414, 0),
++	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x0290, 0x029C, 0xc0000100,
++	    0, 31, 0x0290, 4, 0, 0, 0, 0x0294, 0),
++	PLL_B(CLK_APMIXED_MMPLL, "mmpll", 0x0250, 0x0260, 0x00000100,
++	      0, 31, 0x0250, 4, 0, 0, 0, 0x0254, 0, mmpll_div_table),
++	PLL_B(CLK_APMIXED_ARMCA35PLL, "armca35pll", 0x0100, 0x0110, 0xf0000100,
++	      HAVE_RST_BAR, 31, 0x0100, 4, 0, 0, 0, 0x0104, 0, armca35pll_div_table),
++	PLL_B(CLK_APMIXED_ARMCA72PLL, "armca72pll", 0x0210, 0x0220, 0x00000100,
++	      0, 31, 0x0210, 4, 0, 0, 0, 0x0214, 0, armca72pll_div_table),
++	PLL(CLK_APMIXED_ETHERPLL, "etherpll", 0x0300, 0x030C, 0xc0000100,
++	    0, 31, 0x0300, 4, 0, 0, 0, 0x0304, 0),
++};
++
++static int clk_mt2712_apmixed_probe(struct platform_device *pdev)
++{
++	struct clk_hw_onecell_data *clk_data;
++	int r;
++	struct device_node *node = pdev->dev.of_node;
++
++	clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
++	if (!clk_data)
++		return -ENOMEM;
++
++	r = mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
++	if (r)
++		goto free_clk_data;
++
++	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
++	if (r) {
++		dev_err(&pdev->dev, "Cannot register clock provider: %d\n", r);
++		goto unregister_plls;
++	}
 +
 +	return 0;
++
++unregister_plls:
++	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
++free_clk_data:
++	mtk_free_clk_data(clk_data);
++	return r;
 +}
 +
- static const struct of_device_id of_match_clk_mt2712_apmixed[] = {
- 	{ .compatible = "mediatek,mt2712-apmixedsys" },
- 	{ /* sentinel */ }
-@@ -145,9 +157,10 @@ static const struct of_device_id of_match_clk_mt2712_apmixed[] = {
++static const struct of_device_id of_match_clk_mt2712_apmixed[] = {
++	{ .compatible = "mediatek,mt2712-apmixedsys" },
++	{ /* sentinel */ }
++};
++
++static struct platform_driver clk_mt2712_apmixed_drv = {
++	.probe = clk_mt2712_apmixed_probe,
++	.driver = {
++		.name = "clk-mt2712-apmixed",
++		.of_match_table = of_match_clk_mt2712_apmixed,
++	},
++};
++builtin_platform_driver(clk_mt2712_apmixed_drv)
+diff --git a/drivers/clk/mediatek/clk-mt2712.c b/drivers/clk/mediatek/clk-mt2712.c
+index 8aa361f0fa13..c5fd76d1b9df 100644
+--- a/drivers/clk/mediatek/clk-mt2712.c
++++ b/drivers/clk/mediatek/clk-mt2712.c
+@@ -14,7 +14,6 @@
+ #include <linux/slab.h>
  
- static struct platform_driver clk_mt2712_apmixed_drv = {
- 	.probe = clk_mt2712_apmixed_probe,
-+	.remove = clk_mt2712_apmixed_remove,
- 	.driver = {
- 		.name = "clk-mt2712-apmixed",
- 		.of_match_table = of_match_clk_mt2712_apmixed,
+ #include "clk-gate.h"
+-#include "clk-pll.h"
+ #include "clk-mtk.h"
+ 
+ #include <dt-bindings/clock/mt2712-clk.h>
+@@ -971,101 +970,6 @@ static const struct mtk_gate peri_clks[] = {
+ 	GATE_PERI2(CLK_PERI_MSDC30_3_QTR_EN, "per_msdc30_3_q", "mem_sel", 7),
+ };
+ 
+-#define MT2712_PLL_FMAX		(3000UL * MHZ)
+-
+-#define CON0_MT2712_RST_BAR	BIT(24)
+-
+-#define PLL_B(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits,	\
+-			_pd_reg, _pd_shift, _tuner_reg, _tuner_en_reg,	\
+-			_tuner_en_bit, _pcw_reg, _pcw_shift,		\
+-			_div_table) {					\
+-		.id = _id,						\
+-		.name = _name,						\
+-		.reg = _reg,						\
+-		.pwr_reg = _pwr_reg,					\
+-		.en_mask = _en_mask,					\
+-		.flags = _flags,					\
+-		.rst_bar_mask = CON0_MT2712_RST_BAR,			\
+-		.fmax = MT2712_PLL_FMAX,				\
+-		.pcwbits = _pcwbits,					\
+-		.pd_reg = _pd_reg,					\
+-		.pd_shift = _pd_shift,					\
+-		.tuner_reg = _tuner_reg,				\
+-		.tuner_en_reg = _tuner_en_reg,				\
+-		.tuner_en_bit = _tuner_en_bit,				\
+-		.pcw_reg = _pcw_reg,					\
+-		.pcw_shift = _pcw_shift,				\
+-		.div_table = _div_table,				\
+-	}
+-
+-#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits,	\
+-			_pd_reg, _pd_shift, _tuner_reg, _tuner_en_reg,	\
+-			_tuner_en_bit, _pcw_reg, _pcw_shift)		\
+-		PLL_B(_id, _name, _reg, _pwr_reg, _en_mask, _flags,	\
+-			_pcwbits, _pd_reg, _pd_shift, _tuner_reg,	\
+-			_tuner_en_reg, _tuner_en_bit, _pcw_reg,		\
+-			_pcw_shift, NULL)
+-
+-static const struct mtk_pll_div_table armca35pll_div_table[] = {
+-	{ .div = 0, .freq = MT2712_PLL_FMAX },
+-	{ .div = 1, .freq = 1202500000 },
+-	{ .div = 2, .freq = 500500000 },
+-	{ .div = 3, .freq = 315250000 },
+-	{ .div = 4, .freq = 157625000 },
+-	{ } /* sentinel */
+-};
+-
+-static const struct mtk_pll_div_table armca72pll_div_table[] = {
+-	{ .div = 0, .freq = MT2712_PLL_FMAX },
+-	{ .div = 1, .freq = 994500000 },
+-	{ .div = 2, .freq = 520000000 },
+-	{ .div = 3, .freq = 315250000 },
+-	{ .div = 4, .freq = 157625000 },
+-	{ } /* sentinel */
+-};
+-
+-static const struct mtk_pll_div_table mmpll_div_table[] = {
+-	{ .div = 0, .freq = MT2712_PLL_FMAX },
+-	{ .div = 1, .freq = 1001000000 },
+-	{ .div = 2, .freq = 601250000 },
+-	{ .div = 3, .freq = 250250000 },
+-	{ .div = 4, .freq = 125125000 },
+-	{ } /* sentinel */
+-};
+-
+-static const struct mtk_pll_data plls[] = {
+-	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x0230, 0x023C, 0xf0000100,
+-	    HAVE_RST_BAR, 31, 0x0230, 4, 0, 0, 0, 0x0234, 0),
+-	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x0240, 0x024C, 0xfe000100,
+-	    HAVE_RST_BAR, 31, 0x0240, 4, 0, 0, 0, 0x0244, 0),
+-	PLL(CLK_APMIXED_VCODECPLL, "vcodecpll", 0x0320, 0x032C, 0xc0000100,
+-	    0, 31, 0x0320, 4, 0, 0, 0, 0x0324, 0),
+-	PLL(CLK_APMIXED_VENCPLL, "vencpll", 0x0280, 0x028C, 0x00000100,
+-	    0, 31, 0x0280, 4, 0, 0, 0, 0x0284, 0),
+-	PLL(CLK_APMIXED_APLL1, "apll1", 0x0330, 0x0340, 0x00000100,
+-	    0, 31, 0x0330, 4, 0x0338, 0x0014, 0, 0x0334, 0),
+-	PLL(CLK_APMIXED_APLL2, "apll2", 0x0350, 0x0360, 0x00000100,
+-	    0, 31, 0x0350, 4, 0x0358, 0x0014, 1, 0x0354, 0),
+-	PLL(CLK_APMIXED_LVDSPLL, "lvdspll", 0x0370, 0x037c, 0x00000100,
+-	    0, 31, 0x0370, 4, 0, 0, 0, 0x0374, 0),
+-	PLL(CLK_APMIXED_LVDSPLL2, "lvdspll2", 0x0390, 0x039C, 0x00000100,
+-	    0, 31, 0x0390, 4, 0, 0, 0, 0x0394, 0),
+-	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x0270, 0x027C, 0x00000100,
+-	    0, 31, 0x0270, 4, 0, 0, 0, 0x0274, 0),
+-	PLL(CLK_APMIXED_MSDCPLL2, "msdcpll2", 0x0410, 0x041C, 0x00000100,
+-	    0, 31, 0x0410, 4, 0, 0, 0, 0x0414, 0),
+-	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x0290, 0x029C, 0xc0000100,
+-	    0, 31, 0x0290, 4, 0, 0, 0, 0x0294, 0),
+-	PLL_B(CLK_APMIXED_MMPLL, "mmpll", 0x0250, 0x0260, 0x00000100,
+-	    0, 31, 0x0250, 4, 0, 0, 0, 0x0254, 0, mmpll_div_table),
+-	PLL_B(CLK_APMIXED_ARMCA35PLL, "armca35pll", 0x0100, 0x0110, 0xf0000100,
+-	      HAVE_RST_BAR, 31, 0x0100, 4, 0, 0, 0, 0x0104, 0, armca35pll_div_table),
+-	PLL_B(CLK_APMIXED_ARMCA72PLL, "armca72pll", 0x0210, 0x0220, 0x00000100,
+-	      0, 31, 0x0210, 4, 0, 0, 0, 0x0214, 0, armca72pll_div_table),
+-	PLL(CLK_APMIXED_ETHERPLL, "etherpll", 0x0300, 0x030C, 0xc0000100,
+-	    0, 31, 0x0300, 4, 0, 0, 0, 0x0304, 0),
+-};
+-
+ static u16 infrasys_rst_ofs[] = { 0x30, 0x34, };
+ static u16 pericfg_rst_ofs[] = { 0x0, 0x4, };
+ 
+@@ -1084,35 +988,6 @@ static const struct mtk_clk_rst_desc clk_rst_desc[] = {
  	},
  };
--builtin_platform_driver(clk_mt2712_apmixed_drv)
-+module_platform_driver(clk_mt2712_apmixed_drv)
+ 
+-static int clk_mt2712_apmixed_probe(struct platform_device *pdev)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-	struct device_node *node = pdev->dev.of_node;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
+-	if (!clk_data)
+-		return -ENOMEM;
+-
+-	r = mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
+-	if (r)
+-		goto free_clk_data;
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r) {
+-		dev_err(&pdev->dev, "Cannot register clock provider: %d\n", r);
+-		goto unregister_plls;
+-	}
+-
+-	return 0;
+-
+-unregister_plls:
+-	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
+-free_clk_data:
+-	mtk_free_clk_data(clk_data);
+-	return r;
+-}
+-
+ static const struct mtk_clk_desc topck_desc = {
+ 	.clks = top_clks,
+ 	.num_clks = ARRAY_SIZE(top_clks),
+@@ -1133,33 +1008,6 @@ static const struct mtk_clk_desc mcu_desc = {
+ 	.clk_lock = &mt2712_clk_lock,
+ };
+ 
+-static const struct of_device_id of_match_clk_mt2712[] = {
+-	{
+-		.compatible = "mediatek,mt2712-apmixedsys",
+-		.data = clk_mt2712_apmixed_probe,
+-	}, {
+-		/* sentinel */
+-	}
+-};
+-
+-static int clk_mt2712_probe(struct platform_device *pdev)
+-{
+-	int (*clk_probe)(struct platform_device *);
+-	int r;
+-
+-	clk_probe = of_device_get_match_data(&pdev->dev);
+-	if (!clk_probe)
+-		return -EINVAL;
+-
+-	r = clk_probe(pdev);
+-	if (r != 0)
+-		dev_err(&pdev->dev,
+-			"could not register clock provider: %s: %d\n",
+-			pdev->name, r);
+-
+-	return r;
+-}
+-
+ static const struct mtk_clk_desc infra_desc = {
+ 	.clks = infra_clks,
+ 	.num_clks = ARRAY_SIZE(infra_clks),
+@@ -1189,20 +1037,8 @@ static struct platform_driver clk_mt2712_simple_drv = {
+ 	},
+ };
+ 
+-static struct platform_driver clk_mt2712_drv = {
+-	.probe = clk_mt2712_probe,
+-	.driver = {
+-		.name = "clk-mt2712",
+-		.of_match_table = of_match_clk_mt2712,
+-	},
+-};
+-
+ static int __init clk_mt2712_init(void)
+ {
+-	int ret = platform_driver_register(&clk_mt2712_drv);
+-
+-	if (ret)
+-		return ret;
+ 	return platform_driver_register(&clk_mt2712_simple_drv);
+ }
+ 
 -- 
 2.39.2
 
