@@ -4,95 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6BABC64EC4
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 15:47:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3606C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Mar 2023 15:55:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=azsVNssM4YVIgJkjBhfB+0RW4YebySD+ilpX5G6kaO0=; b=pHApa7SRJMppIHUBGLa+DMH+t3
-	u8svOr4M5BhZg4lIS/QzZPJ5XocVhjXPf+DCieuaD8xSUdHMLXnIedWpTNIbu5xOShfqgOHjObf6O
-	4VOZ/uzYkbuMpWVYWrbUWIEMDjrWAI6xfDgtKjWcWM9h7DCAZDvZF1DGiDwr6p1tJ5vLxmExJxvSE
-	KfvNeR3i1DWZ4i+AoWzRUSuBJeVEE3mList2TyP9zbzt2uexhVzyKziIAjOMTdobHT+2odbnW5mfK
-	uDKf1p16Pp+GoIaWx2HGYut66qSJwBEWXJC6pNhMn9CcFhXF8HyBw10UCvonC/1xPETicooejF2zL
-	OvKnfVlw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AvDnsBHm4JPVWXbpMekTy6/FhzTPIA1qk63CGBaWUZQ=; b=tJilhrTRQG/Cb4RhP2dE3Hiltm
+	rX0NDBxgqQ5JPSsBDn9Po6Iwh94vCDsxkIagUE1rckw6CME3b8ef2ptjfxMDi7qy4FxV8Qg3BtsXo
+	MyjXCxhVTP9ur7MbOVrCdFBc0g3Px3vSb6BzsDHZlGwhar1lx8WtfCYn527ucgXjXcfpmiEMlw4Du
+	/ebsTzSc9Gh1GteID9t6fSZ4VthKmg55slmACitOAcix5IBl+r17wUBs63dbp7zzDoGrcRDWC/yt+
+	dq+ycE6NCy8JeUDXJwyLcP41ohbP5sHZhPYeWVe09zG+5WtragA21q81hpLcTt+zx/5blWcPV6MKi
+	v8QkstHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZD3i-00Dfl4-Ru; Mon, 06 Mar 2023 15:47:30 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pZDBC-00DiXy-OJ; Mon, 06 Mar 2023 15:55:14 +0000
+Received: from mga07.intel.com ([134.134.136.100])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZD2h-00Df9L-8C; Mon, 06 Mar 2023 15:46:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=azsVNssM4YVIgJkjBhfB+0RW4YebySD+ilpX5G6kaO0=; b=LGwbx+V7ydx172CV2I67flkwUb
-	7LCWzznj0QWCILrxyMLoxoRKT5JGZ+a7JomOwAr1cdfJCA0JFQK7odWU5rve3EksqbtaZsu/Pj1ga
-	YqjuubqBAbB3FC7jpQqXuKsEo1en5+ONx8FaBtO23kHdkuHu3gfecDtypHuqIWanXa178r0kUmwXK
-	Qvvs7Ui4Md7Qrat3TD7vAjdxGV/9kcN8e9aB+2JEwmc5yFfAXg0JdD72rU5ro8X/ULOSp6vTfiQlp
-	yBQYMIoQhEOM9pQORGkG1cod6PslLj4+0hxFJqRutJPR0eCj6WnJw+ULqMNtCtcDBfIba9HdPbIVp
-	zRxRALIg==;
-Received: from madras.collabora.co.uk ([46.235.227.172])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pZBUh-00GhF2-2w;
-	Mon, 06 Mar 2023 14:07:17 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B58726603006;
-	Mon,  6 Mar 2023 14:07:09 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678111631;
-	bh=G39BkrHiy8UDI2+jdX1lg0zn/2dAssLXNfESAl+XYlU=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=UqzU9FO+BQkxwKP30fVYNYeLm8JDdCS8rNUj08L9I+vAPRT4C4H2+31aJWjKx21jL
-	 +XESMgURqQ0Auav1c3VKbWnl7yFJXB3mm5P/4Y8/7i9LQ3WLV1A4M7SuVA9zVjmHfe
-	 cLubYutgJsp+jvjOgaR+w4DuAblcbSAtla+EwDMB7f3p0oQzbNVTAEp7KpGcyIutTL
-	 FD0b1lnlpP9Xp2W09fd9Z4EgQzjy8vsSRuCnjTE/95RdgIZe8h1Op8cHrwijUsWYBz
-	 O6ch2TalnomG/jJIzSr6/Vb6PYrIElzxZ3U+zMYSSrONS66xp+T3TTe+rbBAOC59Ob
-	 /PGaPDs6thNXA==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: mturquette@baylibre.com
-Cc: sboyd@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	wenst@chromium.org,
-	johnson.wang@mediatek.com,
-	miles.chen@mediatek.com,
-	chun-jie.chen@mediatek.com,
-	daniel@makrotopia.org,
-	fparent@baylibre.com,
-	msp@baylibre.com,
-	nfraprado@collabora.com,
-	rex-bc.chen@mediatek.com,
-	zhaojh329@gmail.com,
-	sam.shih@mediatek.com,
-	edward-jw.yang@mediatek.com,
-	yangyingliang@huawei.com,
-	granquet@baylibre.com,
-	pablo.sun@mediatek.com,
-	sean.wang@mediatek.com,
-	chen.zhong@mediatek.com,
-	linux-kernel@vger.kernel.org,
-	linux-clk@vger.kernel.org,
+	id 1pZDAk-00DiNW-H4; Mon, 06 Mar 2023 15:54:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1678118086; x=1709654086;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=nqBEyqCxPf0CdDuSxcYS7HYgQHSI7GNHr2exg16wCz4=;
+  b=jVQzGY7cm78n24RleIe4Y3IOOs3UvWUJWxBpsB/poUmwiF9/IrOrNKZM
+   OD+iw8EXaul0+YEKyD++alUsF8rrZaLXwZMBqO6v5iUz9O+Ifd1btlGPa
+   3gegQYjR+fJPu8tu63x4Fw3C3HDl/HpPjVOCDftObd0Cf+McdcLyiQwJr
+   SZymu+KeyZnGzYLPIvkO1vYi5VFyfxB+B3827udan9BaXt0wN5mvJisGp
+   o8ACMGyZtn9lsB9bTVxO+Sxi4lLIsXmEAKeGeM0A3O1mbK4gPyhq9Oqjf
+   yC1KptYpTosbjzUQA4ux1R5xkslaiLHrxQEKCz6OBmOJMrNMVGQXW+Alz
+   w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10641"; a="400411727"
+X-IronPort-AV: E=Sophos;i="5.98,238,1673942400"; 
+   d="scan'208";a="400411727"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Mar 2023 07:54:45 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10641"; a="850346560"
+X-IronPort-AV: E=Sophos;i="5.98,238,1673942400"; 
+   d="scan'208";a="850346560"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by orsmga005.jf.intel.com with ESMTP; 06 Mar 2023 07:54:40 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.96)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1pZDAc-00GVWx-0e;
+	Mon, 06 Mar 2023 17:54:38 +0200
+Date: Mon, 6 Mar 2023 17:54:37 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Gene Chen <gene_chen@richtek.com>, linux-leds@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH v6 52/54] clk: mediatek: mt8135-apmixedsys: Convert to platform_driver and module
-Date: Mon,  6 Mar 2023 15:05:41 +0100
-Message-Id: <20230306140543.1813621-53-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
-References: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org
+Cc: Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>, Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Subject: Re: [PATCH v4 11/11] net: dsa: hellcreek: Get rid of custom
+ led_init_default_state_get()
+Message-ID: <ZAYMvVR+6eQ9qjAk@smile.fi.intel.com>
+References: <20230103131256.33894-1-andriy.shevchenko@linux.intel.com>
+ <20230103131256.33894-12-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230103131256.33894-12-andriy.shevchenko@linux.intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230306_140716_116086_03CFBCD2 
-X-CRM114-Status: GOOD (  15.23  )
+X-CRM114-CacheID: sfid-20230306_075446_640886_1CCA18B3 
+X-CRM114-Status: UNSURE (   9.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,88 +95,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert apmixedsys clocks to be a platform driver; while at it, also
-add necessary error handling to the probe function, add a remove
-callback and provide a MODULE_DESCRIPTION().
+On Tue, Jan 03, 2023 at 03:12:56PM +0200, Andy Shevchenko wrote:
+> LED core provides a helper to parse default state from firmware node.
+> Use it instead of custom implementation.
 
-This driver is now compatible with an eventual module build.
+Jakub, if you are okay with thi, it may be applied now
+(Lee hadn't taken it in via LEDS subsystem for v6.3-rc1).
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
----
- drivers/clk/mediatek/clk-mt8135-apmixedsys.c | 53 ++++++++++++++++++--
- 1 file changed, 48 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/clk/mediatek/clk-mt8135-apmixedsys.c b/drivers/clk/mediatek/clk-mt8135-apmixedsys.c
-index 2b4d379300fc..744aae092281 100644
---- a/drivers/clk/mediatek/clk-mt8135-apmixedsys.c
-+++ b/drivers/clk/mediatek/clk-mt8135-apmixedsys.c
-@@ -47,16 +47,59 @@ static const struct mtk_pll_data plls[] = {
- 	PLL(CLK_APMIXED_VDECPLL, "vdecpll", 0x304, 0x31c, 0x80000000, 0, 21, 0x2b0, 6, 0x0, 0x308, 0),
- };
- 
--static void __init mtk_apmixedsys_init(struct device_node *node)
-+static int clk_mt8135_apmixed_probe(struct platform_device *pdev)
- {
- 	struct clk_hw_onecell_data *clk_data;
-+	struct device_node *node = pdev->dev.of_node;
-+	int ret;
- 
- 	clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
- 	if (!clk_data)
--		return;
-+		return -ENOMEM;
- 
--	mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
-+	ret = mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
-+	if (ret)
-+		return ret;
-+
-+	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
-+	if (ret)
-+		goto unregister_plls;
-+
-+	return 0;
-+
-+unregister_plls:
-+	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
-+
-+	return ret;
-+}
-+
-+static int clk_mt8135_apmixed_remove(struct platform_device *pdev)
-+{
-+	struct device_node *node = pdev->dev.of_node;
-+	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
-+
-+	of_clk_del_provider(node);
-+	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
-+	mtk_free_clk_data(clk_data);
-+
-+	return 0;
- }
--CLK_OF_DECLARE(mtk_apmixedsys, "mediatek,mt8135-apmixedsys",
--		mtk_apmixedsys_init);
-+
-+static const struct of_device_id of_match_clk_mt8135_apmixed[] = {
-+	{ .compatible = "mediatek,mt8135-apmixedsys" },
-+	{ /* sentinel */ }
-+};
-+MODULE_DEVICE_TABLE(of, of_match_clk_mt8135_apmixed);
-+
-+static struct platform_driver clk_mt8135_apmixed_drv = {
-+	.probe = clk_mt8135_apmixed_probe,
-+	.remove = clk_mt8135_apmixed_remove,
-+	.driver = {
-+		.name = "clk-mt8135-apmixed",
-+		.of_match_table = of_match_clk_mt8135_apmixed,
-+	},
-+};
-+module_platform_driver(clk_mt8135_apmixed_drv)
-+
-+MODULE_DESCRIPTION("MediaTek MT8135 apmixedsys clocks driver");
- MODULE_LICENSE("GPL");
 -- 
-2.39.2
+With Best Regards,
+Andy Shevchenko
+
 
 
