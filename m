@@ -4,64 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 947B0C678D5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 21:12:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2386C6FA99
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 21:51:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nHEWJ62o/VJ8EVGCBg+hnZDPaMdn8ffAQGXXQugTBr0=; b=PxtKbljlRKECgX
-	9PoXiEUDtyF5z6bTvd/OLdc4ODXfdtxfRdwCOKNZBGcwXbd6xZoK0C2efXscVPq/MNNSqg46n2JLV
-	+u2MHSoqpq2x12O7NrSv5ze7ObRHEj9Gi/2Cf1yrhhh3WUR/+T0M/4WhdZ39GGgh9ztKb79s5l86L
-	xeDjh/yM0WkMEQmc85wVYKjqmX5Q031P73eQVS4KomPd9c554AsGp9DNShO/2mOX+7tYIfkzq4JMF
-	4hvvg49l4w/pT6g2Fd1QWuoXr9jEIxC5v4hzIcm+JoOqFhd59qUwF2kY/j7tW7mFkiSJTPgKbqufU
-	xBQwTVs8rLKK+3P61cuw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=X3tu9DRcqh2D0cLK4oVHDUYxyUjFp+xzMsztOpi7iOA=; b=OlMd0AUauV8WqETGKzpgb0ewup
+	V8Ove+/v6hItmvKztsz2uMnO3dTNXLU/Zge8C3JoCd+bpAzHN2KSUfBPRIDMlNLgk1JEhk01MnY6r
+	N3Aato3L6XLaUCh8SJ+N1WlYh7CDS3uKm56xaiwFUV7RF36CPY43sQ0gwNDty1KnWdYuR6Y7ilhUU
+	aspUcPvPNv4JUbQuigcgsv1/XsMlPUNcVr7+gyBCxNwR/xsrri+RBwr7l3CPGlV9aQNKtd5LP+so0
+	AIGlFo7pUy2Q7t2lUGQduMY8it05aPSz8E6fU5J2cfV5PlpIXuwvy1skVIqDDVnU9FASFG5whEGBH
+	Q6Gkt++Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZebt-002ULQ-MD; Tue, 07 Mar 2023 21:12:37 +0000
-Received: from sender4-op-o10.zoho.com ([136.143.188.10])
+	id 1pZfDC-002XmJ-PK; Tue, 07 Mar 2023 21:51:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZebi-002UKD-Ml; Tue, 07 Mar 2023 21:12:28 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1678223483; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ETjq7rbMswQJ2j1BHDNrQSbH1N0d/xsSJ5KzBh6V+TDq8/uk+tq6s886s7na+VJgHcNhhyWO9Ymze0zaIarlilxPcdhaEqrYUEZLcLZiA29JQeSkhHRWcEC+Zp7iMuD2Q2koXq0x444192VBIXct068ec6CIvXCNuDHbd/MoC9I=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1678223483; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=nHEWJ62o/VJ8EVGCBg+hnZDPaMdn8ffAQGXXQugTBr0=; 
-	b=EUGU+r+Mr1laPBXSh1EDhXrKyWSyEROMOsDE4WZJpgupQj1PHZdMilvUFe6wIP6OhLNCvqbT0ebvODEazOWFdAunGTfrvN56kI8ySDAUuebHDKdPePKgklKEwivsKbY8qEK/pJvX3Sly1fGFEnV7vbQZFWlh6AY0q+8krLnoT/8=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1678223483;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=nHEWJ62o/VJ8EVGCBg+hnZDPaMdn8ffAQGXXQugTBr0=;
-	b=K0Oa55MkQsbV4Q+HVOxBLE7muKBK9hA9LJIj1RhRpXKyGhQ16Q39Sh05M6ZwnEuV
-	QLVhRJiUzns3nwQMICkYURvXD5RJjuVRS5Vxfs6DxNwhfa4Yrep8qMgywCNrpRSs5U/
-	tUeTQxbDUVXhKsVx7hADcQElw9GRACfQH05RpBAM=
-Received: from [10.10.10.3] (212.68.60.226 [212.68.60.226]) by mx.zohomail.com
-	with SMTPS id 16782234810581014.6128349434224; Tue, 7 Mar 2023 13:11:21 -0800 (PST)
-Message-ID: <2da9d544-03b8-8a8c-f7b6-f69a82310cd5@arinc9.com>
-Date: Wed, 8 Mar 2023 00:11:14 +0300
+	id 1pZfD9-002Xln-WA
+	for linux-mediatek@lists.infradead.org; Tue, 07 Mar 2023 21:51:09 +0000
+X-UUID: 27b0cc18bd3211eda08d4d6090ec5a5c-20230307
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=X3tu9DRcqh2D0cLK4oVHDUYxyUjFp+xzMsztOpi7iOA=;
+	b=UxMTx1J+9on9VgSoz2vq2n0IVN1PR/qp8inaKrBFmiN6ML5VxNrXWX0qDDRJgAVHex/BiRoehIPXoxm5PXi9TAlwG/KSyJ6MBDLcWv1hbqb8tNNp9kmv8nmEhWW8hx8uKGkqNTkQFSAW7mhgXuMRvJkzrMdsXndY64yZl1iZM80=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.20,REQID:2e9e3e75-4a31-4bf2-a8eb-01a2bef8e947,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:25b5999,CLOUDID:711611f5-ddba-41c3-91d9-10eeade8eac7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-UUID: 27b0cc18bd3211eda08d4d6090ec5a5c-20230307
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <sean.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2030865357; Tue, 07 Mar 2023 14:51:03 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Wed, 8 Mar 2023 05:51:00 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Wed, 8 Mar 2023 05:51:00 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
+	<robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+	<ted.huang@mediatek.com>, <Stella.Chang@mediatek.com>,
+	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
+	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
+	<abhishekpandit@google.com>, <shawnku@google.com>,
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v2] wifi: mt76: mt7921: enable p2p support
+Date: Wed, 8 Mar 2023 05:50:59 +0800
+Message-ID: <acf73d3e8cb5ad91c9144d63959e84f007f9e336.1678222117.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH net] net: dsa: mt7530: permit port 5 to work without port
- 6 on MT7621 SoC
-To: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org
-References: <20230307155411.868573-1-vladimir.oltean@nxp.com>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20230307155411.868573-1-vladimir.oltean@nxp.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_131226_822394_9997AC7C 
-X-CRM114-Status: GOOD (  30.73  )
+X-CRM114-CacheID: sfid-20230307_135108_224033_64134CA1 
+X-CRM114-Status: GOOD (  16.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,81 +81,159 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Greg Ungerer <gerg@kernel.org>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, Alexander Couzens <lynxis@fe80.eu>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7.03.2023 18:54, Vladimir Oltean wrote:
-> The MT7530 switch from the MT7621 SoC has 2 ports which can be set up as
-> internal: port 5 and 6. Arınç reports that the GMAC1 attached to port 5
-> receives corrupted frames, unless port 6 (attached to GMAC0) has been
-> brought up by the driver. This is true regardless of whether port 5 is
-> used as a user port or as a CPU port (carrying DSA tags).
-> 
-> Offline debugging (blind for me) which began in the linked thread showed
-> experimentally that the configuration done by the driver for port 6
-> contains a step which is needed by port 5 as well - the write to
-> CORE_GSWPLL_GRP2 (note that I've no idea as to what it does, apart from
-> the comment "Set core clock into 500Mhz"). Prints put by Arınç show that
-> the reset value of CORE_GSWPLL_GRP2 is RG_GSWPLL_POSDIV_500M(1) |
-> RG_GSWPLL_FBKDIV_500M(40) (0x128), both on the MCM MT7530 from the
-> MT7621 SoC, as well as on the standalone MT7530 from MT7623NI Bananapi
-> BPI-R2. Apparently, port 5 on the standalone MT7530 can work under both
-> values of the register, while on the MT7621 SoC it cannot.
-> 
-> The call path that triggers the register write is:
-> 
-> mt753x_phylink_mac_config() for port 6
-> -> mt753x_pad_setup()
->     -> mt7530_pad_clk_setup()
-> 
-> so this fully explains the behavior noticed by Arınç, that bringing port
-> 6 up is necessary.
-> 
-> The simplest fix for the problem is to extract the register writes which
-> are needed for both port 5 and 6 into a common mt7530_pll_setup()
-> function, which is called at mt7530_setup() time, immediately after
-> switch reset. We can argue that this mirrors the code layout introduced
-> in mt7531_setup() by commit 42bc4fafe359 ("net: mt7531: only do PLL once
-> after the reset"), in that the PLL setup has the exact same positioning,
-> and further work to consolidate the separate setup() functions is not
-> hindered.
-> 
-> Testing confirms that:
-> 
-> - the slight reordering of writes to MT7530_P6ECR and to
->    CORE_GSWPLL_GRP1 / CORE_GSWPLL_GRP2 introduced by this change does not
->    appear to cause problems for the operation of port 6 on MT7621 and on
->    MT7623 (where port 5 also always worked)
-> 
-> - packets sent through port 5 are not corrupted anymore, regardless of
->    whether port 6 is enabled by phylink or not (or even present in the
->    device tree)
-> 
-> My algorithm for determining the Fixes: tag is as follows. Testing shows
-> that some logic from mt7530_pad_clk_setup() is needed even for port 5.
-> Prior to commit ca366d6c889b ("net: dsa: mt7530: Convert to PHYLINK
-> API"), a call did exist for all phy_is_pseudo_fixed_link() ports - so
-> port 5 included. That commit replaced it with a temporary "Port 5 is not
-> supported!" comment, and the following commit 38f790a80560 ("net: dsa:
-> mt7530: Add support for port 5") replaced that comment with a
-> configuration procedure in mt7530_setup_port5() which was insufficient
-> for port 5 to work. I'm laying the blame on the patch that claimed
-> support for port 5, although one would have also needed the change from
-> commit c3b8e07909db ("net: dsa: mt7530: setup core clock even in TRGMII
-> mode") for the write to be performed completely independently from port
-> 6's configuration.
-> 
-> Thanks go to Arınç for describing the problem, for debugging and for
-> testing.
-> 
-> Reported-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> Link: https://lore.kernel.org/netdev/f297c2c4-6e7c-57ac-2394-f6025d309b9d@arinc9.com/
-> Fixes: 38f790a80560 ("net: dsa: mt7530: Add support for port 5")
-> Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+From: Sean Wang <sean.wang@mediatek.com>
 
-Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Introduce p2p-go/p2p-client support to mt7921 driver
 
-Cheers.
-Arınç
+CONNECTION_P2P_GC/GO is not supported with the current firmware
+so we added mt76_dev to mt76_connac_mcu_sta_basic_tlv signature to
+use CONNECTION_INFRA_STA/AP instead for p2p-client and p2p-go
+respectively to make it work.
+
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+v2: fix the build error with mt7996
+---
+ drivers/net/wireless/mediatek/mt76/mt7615/mcu.c      |  3 ++-
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c |  8 ++++----
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c      |  4 ++--
+ drivers/net/wireless/mediatek/mt76/mt7921/init.c     | 10 +++++++---
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c      |  4 ++--
+ 6 files changed, 18 insertions(+), 13 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+index eea398c79a98..195fe1094d9b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+@@ -861,7 +861,8 @@ mt7615_mcu_wtbl_sta_add(struct mt7615_phy *phy, struct ieee80211_vif *vif,
+ 		else
+ 			mvif->sta_added = true;
+ 	}
+-	mt76_connac_mcu_sta_basic_tlv(sskb, vif, sta, enable, new_entry);
++	mt76_connac_mcu_sta_basic_tlv(&dev->mt76, sskb, vif, sta, enable,
++				      new_entry);
+ 	if (enable && sta)
+ 		mt76_connac_mcu_sta_tlv(phy->mt76, sskb, sta, vif, 0,
+ 					MT76_STA_INFO_STATE_ASSOC);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index efb9bfaa187f..25b61cc469bd 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -363,7 +363,7 @@ void mt76_connac_mcu_bss_omac_tlv(struct sk_buff *skb,
+ }
+ EXPORT_SYMBOL_GPL(mt76_connac_mcu_bss_omac_tlv);
+ 
+-void mt76_connac_mcu_sta_basic_tlv(struct sk_buff *skb,
++void mt76_connac_mcu_sta_basic_tlv(struct mt76_dev *dev, struct sk_buff *skb,
+ 				   struct ieee80211_vif *vif,
+ 				   struct ieee80211_sta *sta,
+ 				   bool enable, bool newly)
+@@ -394,7 +394,7 @@ void mt76_connac_mcu_sta_basic_tlv(struct sk_buff *skb,
+ 	switch (vif->type) {
+ 	case NL80211_IFTYPE_MESH_POINT:
+ 	case NL80211_IFTYPE_AP:
+-		if (vif->p2p)
++		if (vif->p2p && !is_mt7921(dev))
+ 			conn_type = CONNECTION_P2P_GC;
+ 		else
+ 			conn_type = CONNECTION_INFRA_STA;
+@@ -402,7 +402,7 @@ void mt76_connac_mcu_sta_basic_tlv(struct sk_buff *skb,
+ 		basic->aid = cpu_to_le16(sta->aid);
+ 		break;
+ 	case NL80211_IFTYPE_STATION:
+-		if (vif->p2p)
++		if (vif->p2p && !is_mt7921(dev))
+ 			conn_type = CONNECTION_P2P_GO;
+ 		else
+ 			conn_type = CONNECTION_INFRA_AP;
+@@ -1029,7 +1029,7 @@ int mt76_connac_mcu_sta_cmd(struct mt76_phy *phy,
+ 		return PTR_ERR(skb);
+ 
+ 	if (info->sta || !info->offload_fw)
+-		mt76_connac_mcu_sta_basic_tlv(skb, info->vif, info->sta,
++		mt76_connac_mcu_sta_basic_tlv(dev, skb, info->vif, info->sta,
+ 					      info->enable, info->newly);
+ 	if (info->sta && info->enable)
+ 		mt76_connac_mcu_sta_tlv(phy, skb, info->sta,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index 40a99e0caded..345e34cdeff3 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -1776,7 +1776,7 @@ mt76_connac_mcu_add_tlv(struct sk_buff *skb, int tag, int len)
+ 
+ int mt76_connac_mcu_set_channel_domain(struct mt76_phy *phy);
+ int mt76_connac_mcu_set_vif_ps(struct mt76_dev *dev, struct ieee80211_vif *vif);
+-void mt76_connac_mcu_sta_basic_tlv(struct sk_buff *skb,
++void mt76_connac_mcu_sta_basic_tlv(struct mt76_dev *dev, struct sk_buff *skb,
+ 				   struct ieee80211_vif *vif,
+ 				   struct ieee80211_sta *sta, bool enable,
+ 				   bool newly);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 16f09ead307d..f9c34eb268f2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -1657,8 +1657,8 @@ int mt7915_mcu_add_sta(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 		return PTR_ERR(skb);
+ 
+ 	/* starec basic */
+-	mt76_connac_mcu_sta_basic_tlv(skb, vif, sta, enable,
+-			!rcu_access_pointer(dev->mt76.wcid[msta->wcid.idx]));
++	mt76_connac_mcu_sta_basic_tlv(&dev->mt76, skb, vif, sta, enable,
++				      !rcu_access_pointer(dev->mt76.wcid[msta->wcid.idx]));
+ 	if (!enable)
+ 		goto out;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index 80c71acfe159..124405cc50a5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -32,11 +32,13 @@ static const struct ieee80211_iface_combination if_comb[] = {
+ static const struct ieee80211_iface_limit if_limits_chanctx[] = {
+ 	{
+ 		.max = 2,
+-		.types = BIT(NL80211_IFTYPE_STATION),
++		.types = BIT(NL80211_IFTYPE_STATION) |
++			 BIT(NL80211_IFTYPE_P2P_CLIENT)
+ 	},
+ 	{
+ 		.max = 1,
+-		.types = BIT(NL80211_IFTYPE_AP),
++		.types = BIT(NL80211_IFTYPE_AP) |
++			 BIT(NL80211_IFTYPE_P2P_GO)
+ 	}
+ };
+ 
+@@ -100,7 +102,9 @@ mt7921_init_wiphy(struct ieee80211_hw *hw)
+ 	wiphy->flags &= ~(WIPHY_FLAG_IBSS_RSN | WIPHY_FLAG_4ADDR_AP |
+ 			  WIPHY_FLAG_4ADDR_STATION);
+ 	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION) |
+-				 BIT(NL80211_IFTYPE_AP);
++				 BIT(NL80211_IFTYPE_AP) |
++				 BIT(NL80211_IFTYPE_P2P_CLIENT) |
++				 BIT(NL80211_IFTYPE_P2P_GO);
+ 	wiphy->max_remain_on_channel_duration = 5000;
+ 	wiphy->max_scan_ie_len = MT76_CONNAC_SCAN_IE_LEN;
+ 	wiphy->max_scan_ssids = 4;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 8ad51cbfdbe8..eb29231f844d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -1694,8 +1694,8 @@ int mt7996_mcu_add_sta(struct mt7996_dev *dev, struct ieee80211_vif *vif,
+ 		return PTR_ERR(skb);
+ 
+ 	/* starec basic */
+-	mt76_connac_mcu_sta_basic_tlv(skb, vif, sta, enable,
+-			!rcu_access_pointer(dev->mt76.wcid[msta->wcid.idx]));
++	mt76_connac_mcu_sta_basic_tlv(&dev->mt76, skb, vif, sta, enable,
++				      !rcu_access_pointer(dev->mt76.wcid[msta->wcid.idx]));
+ 	if (!enable)
+ 		goto out;
+ 
+-- 
+2.25.1
+
 
