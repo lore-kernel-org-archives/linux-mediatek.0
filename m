@@ -4,66 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E706C6FD1A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 16:01:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 147EDC6FD1A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 16:09:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FCmjiPxcsC3L5K5dxUe4f7XacBmHm9izSBuMHT4nnOs=; b=gwqctxSwlMTmxDRX69dvb5PxhI
-	V1RPnFenuud0vwzSGvRKruNOI4+sKhKCcaY8hsBtS1rDh1UIst9y0/2on17TAGQDXIz4HJNWEg65t
-	KbHVkbGxjKcsW2vUU8FS2iDElPf3uKNGNgtOtIuVzDUQTRbpc1nTig9p/dnymCEvlN60P/RnissHQ
-	WsxKxnVxBSN+aAu1QjHJMrfGdf/6vcnFOzzz4FUCn1TQjoWd1KZnkIBjkV+UDdpw1vDCAdc5OunUC
-	uT763NxG5oIcBjb5U/HXRDBhsvtO4qu/MtkIzdmgTdLBkPath8jQ2CrCpHXFqr5A/RgSnFsDTs27r
-	4WGgV3jw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=JreJ/ToUY3xijsocCVxeGcjs8TwnvGQep1b07cuiX6s=; b=dqQKH/2v2po9c0udlUG9ywtai+
+	09if/H+AkquWBBhkJRc1EUeVb3mEhV7EzawHOGx9U8ozwDTaab8MVA4xTEd6Iy56MNA1tZszNb2e0
+	h5iKYYZC/RjmKT0cvbloFhTQYjZcoJXZyDAjoRA4nMnsSl7G6Yg4EIWp8ZnmrEeXhkDcEkg5pwEIv
+	cOIkDojs1UZoRvnAHh/4JYPp2N9c/mJ5xiydYzB7pXxye7g9leBXsIprNAHQBN9vPCzpIpBoIj2Su
+	lirqsNRM63o90Ia3VAAf+JbBBZEdcUci8Q9UPf12Ma6KKvd14FP5PrI5zprNmfRYYjse6i+HW0TgZ
+	Do734C0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZZkx-001O46-P8; Tue, 07 Mar 2023 16:01:39 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pZZsj-001Rit-Ci; Tue, 07 Mar 2023 16:09:41 +0000
+Received: from mail-vi1eur04on061f.outbound.protection.outlook.com ([2a01:111:f400:fe0e::61f] helo=EUR04-VI1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZZh8-001LkX-Fs; Tue, 07 Mar 2023 15:57:43 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pZZh3-0001xB-04;
-	Tue, 07 Mar 2023 16:57:37 +0100
-Date: Tue, 7 Mar 2023 15:56:00 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Russell King <linux@armlinux.org.uk>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <vladimir.oltean@nxp.com>
-Subject: [PATCH v12 18/18] net: ethernet: mtk_eth_soc: convert caps in
- mtk_soc_data struct to u64
-Message-ID: <47dccc5402a93b690bbadc1d95a1f14333299b7f.1678201958.git.daniel@makrotopia.org>
-References: <cover.1678201958.git.daniel@makrotopia.org>
+	id 1pZZsg-001RgY-2E; Tue, 07 Mar 2023 16:09:40 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=GhmbvJ7ej+2jR6TMuuQLtAjbZkGPGQxumP3DQ+gDeu7s6J3nrefZDkBt6R6khBBPa3coMpQKx2f9JqIOKnRWnYczdyKrW6nvDqE4BQP5jZ9InvMAp5iYULM5Cq2J8DHrsTY6JcR5OK+BLpXuKFwx75cXxlrgZRJBVR8M5tLNdydaSZrA4wcqD6gG8AbqF1YEipcJsCv+H181L3vew5WG6nJ6a20tjjX/uXsrY7TGGoZeqdJzEM60cONjHY/yP4ii+Jt+p1MlAU4WXTmtZohoOg7hXgh8aC/KhWTYH3mB4RmgUu9FUcjtmdihYJq3lORt3FGC3QADGsp3XGt8SLDIHQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=JreJ/ToUY3xijsocCVxeGcjs8TwnvGQep1b07cuiX6s=;
+ b=eOBM2fP2IcYx1ExEEWE5hWGhzIobSOHoC0bqwYNXLQwgY0CAJnJdSR68nETQuNOlgzRwtUQtxoXKRhG/u3CU0RGv49YZTaHo4X/U4ZvMSvB9xgBZXagEAmSy7NGka1Th2iQrAgCmuHWME3+KLQePNVWVOVctjYLwohBFPRYptXG9JZ9NkNuef/57bb3VlJHV3L5qB/ohLBD6Rplio1pVZMxI7egxb7rrBj5RqjI8+1dcdGrjL20IxRhcYYfoTJsNezMjelYPsOKYY4kAIG6EdMKuLmGCxybvEychxMZEcCBB2k41gtmVOSO6+IVI0nEvLDNqeW/+ib2B4ysEFbC0jw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=JreJ/ToUY3xijsocCVxeGcjs8TwnvGQep1b07cuiX6s=;
+ b=SaB5AIxkffPgmAWBivdl6gOvka87dRGYtFqA+eDf/KXUhZp9rCpyHCNlvfHMgx1LEhP1NYH8BcPOC0Q4VDg52scVilgL+OKkuF81F20i9x8y0YBkb9ErrHIX8QGL52/r5oGzvJ0V6eJt9KB1O7V0bS1/yrl3Xx0X/tqOEBnGwxI=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from AM0PR04MB6452.eurprd04.prod.outlook.com (2603:10a6:208:16d::21)
+ by GV1PR04MB9513.eurprd04.prod.outlook.com (2603:10a6:150:1e::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6156.29; Tue, 7 Mar
+ 2023 15:54:24 +0000
+Received: from AM0PR04MB6452.eurprd04.prod.outlook.com
+ ([fe80::29a3:120c:7d42:3ca8]) by AM0PR04MB6452.eurprd04.prod.outlook.com
+ ([fe80::29a3:120c:7d42:3ca8%7]) with mapi id 15.20.6156.029; Tue, 7 Mar 2023
+ 15:54:24 +0000
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: netdev@vger.kernel.org
+Subject: [PATCH net] net: dsa: mt7530: permit port 5 to work without port 6 on MT7621 SoC
+Date: Tue,  7 Mar 2023 17:54:11 +0200
+Message-Id: <20230307155411.868573-1-vladimir.oltean@nxp.com>
+X-Mailer: git-send-email 2.34.1
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: VI1P193CA0021.EURP193.PROD.OUTLOOK.COM
+ (2603:10a6:800:bd::31) To AM0PR04MB6452.eurprd04.prod.outlook.com
+ (2603:10a6:208:16d::21)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1678201958.git.daniel@makrotopia.org>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM0PR04MB6452:EE_|GV1PR04MB9513:EE_
+X-MS-Office365-Filtering-Correlation-Id: 804dd4ca-ec8d-416f-c66a-08db1f243922
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	VbKV7HCNcwo54sK4fh1GzH3R/M83+lkaXxCnpsjiFa2pCIV2pMvB9tHS3zkaaqWnn/HBRq91orCck8Gs+4XLRm+ejyWdpjyrb2qxln98ikjY4kCXlDHVyFa3kyRsn4Bkh/AlkXq5Qycj/f7EYt2WJ7lOtvtVxZje1Chz7ddCIP99KXV3wkTcS6OBwJhF4bS6Ng6V8B89jcoecAypHCaMznUFMK65U7bDOCc8mTlYOpBZ+B9OXmgDSabQ5PAvpNXfKgWbEhHp4+UzakVjKsIddb/3dUrBGd/ZYTIJvYBYLv+yLsSMl2acaQXAa6lx7F721IN0sQlsXvSE0f292LWenpu6HGnGwiW/aWB58Wt9TwyxBJVEXPYtGWKajHMAPsFrkH/H6eBYePOG/Q1+S37VD9gqUaj71J2z1kOqznvMn+Z7MK3GcTbx6XimBG8mIkj7ZGffqSOLsyl3Vo8Xpr+ssNyHF+h8HiXdMJMIJA2EMviVDmv2gG+rv3t27uuydEA7qCYs5wcAKqGHrglMGWX1bDK5tCxdhnS8hC1F7At1akdcuQGzUNdvwlqbwKjXWy1PgF0j3tQweo/qHg/WTZzorZIu4SZ+j28h+f0uGqp39ct27beKczncrYsC4G0XHqvsw6r2NUoss58FazfuHgTSOLSJPmAC+ObOVLC9Iy4mITZpJxEa8S4Pit7CS/q1UxF4
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM0PR04MB6452.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(396003)(39860400002)(136003)(376002)(346002)(366004)(451199018)(66574015)(316002)(54906003)(36756003)(38100700002)(38350700002)(86362001)(6506007)(26005)(6512007)(1076003)(83380400001)(186003)(2616005)(52116002)(5660300002)(8936002)(7416002)(966005)(478600001)(6486002)(4326008)(41300700001)(6666004)(2906002)(44832011)(66556008)(66476007)(66946007)(6916009)(8676002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?WUxvR2czelR0MlhyeDZyb1dZbXdDWkdMVkZiOHczaGg5eENDKzNBcXV3eDdY?=
+ =?utf-8?B?WWl1d0x5eWlnZU1iQ00ySHljcSt3N2dmeExKVkUzQUxUTElheDVlNkhnZEpM?=
+ =?utf-8?B?WHZJalE4bURGWkZFRUNKRG1GblRSdG51NlFEV1VGYWkwTUErdkVEMFY4NFhF?=
+ =?utf-8?B?azR5N0hUMXBQYjVzS0JadEh5VUJyNTZ3QjZFbnZnYkRKaEdqQVlaQ1N0eTJX?=
+ =?utf-8?B?dnpLaHBLa3lPY1ovcnFEL2VXVEMzNGVIUTAySjJkU1RnNytMYlIvYURzV2lB?=
+ =?utf-8?B?dDNMR0ZoYm85V0ltRWQ4T1ROUzhsRnhZaGhmVEl0RHo5Njc0Y0dRLzZETFY2?=
+ =?utf-8?B?ZlRPUzBTS3o3U0dvRjVUY2k5RkYvNVAvRjJvN1Z4VWFSYlFuN2NPMVhoS1R6?=
+ =?utf-8?B?dDZxK3paRjRIZWRlTlc4OE1DUGp1bk5DenJlcTduRGRtVkVJLzdlVjY2dWsy?=
+ =?utf-8?B?a3BFKyt0a09iTlcweklYTzR5V3pNMUFWUzJsY1E4SG1YbmZxRVl1ODNTWDhT?=
+ =?utf-8?B?RzZUbTZUVGxvZ1BlZjdBeHBWZGE5UFU0Skk0NG5JcDUwZDlTVHJzWE9ucmVl?=
+ =?utf-8?B?Z2k1eWtYSVB6eWdLQ1p4eGFoWm0xcXU0ZUVqL1RPU2RHai9VL0dYVDdNcGF3?=
+ =?utf-8?B?bC81QkhIc3JsWlZCcWNKUG5tVlNHSE1NNWRQcjkvVDRYdXAxUTZGT1VocWxh?=
+ =?utf-8?B?SHYzZ2c1aE9mWDhCS1FKb1lNL2J5b2w0Ri9TTEtrNk9pWVBmR1d0RUNZUnlL?=
+ =?utf-8?B?MFZ1U2FuR1J6cjVkMTNJVE5EYkZHbWorcFgyQ1l3SkEwSktvb1ZzOXV6TDc0?=
+ =?utf-8?B?SC9NcE9FcHA1UGY0Y0FSb3dNeUFvU1FxUkxzN0dOUjg3S2dTWlNoYm1tTnAr?=
+ =?utf-8?B?VkNtRWxXYWVOcm5BdklEK0lNVThZRWxpcDdJUlNqTXA3azVLUUpJa3hJVlA1?=
+ =?utf-8?B?aFFOZHNxNFJJL0laOWpkLzdWUW95UDdwSTBQazcvbTFadzBkM1pnc0EwYy9Y?=
+ =?utf-8?B?cWU4SzVGTGlyN3hJQklCSnJoeEtUSklINVVvU2JoWDVubW5FQWxreUdsRHAx?=
+ =?utf-8?B?RklQTFZPUHU4TmxrdkxJQWpVRmovUVVEOU5sNG5JdXBnR1p5aUp3OGZxeVQ3?=
+ =?utf-8?B?TjFUcjVrbUU3Q3RvM1dCUTZkS3NXN2VOdjhYQ240SEhkZ0tjMVFTemFhQ3I0?=
+ =?utf-8?B?em5RdkYxU2trUmVsc2pNNXcyQUVZVm9rSDZrSDcrUlkvMWIwL3VBV2J0S25T?=
+ =?utf-8?B?N1A4REE4NFdlUTBzNWcrblpRNEFIejBMKy9VWlpqMmszL0JxbzREK2lnbnpz?=
+ =?utf-8?B?dVhZUTVsbUlvL0N6bDBNNzVMeVYvaU5UUUZybEljTXd5UmUvT2JyUE5RNGJn?=
+ =?utf-8?B?UEloelI2bnp6M1B5ZXlVaEJZeVNvRlVPNzdhV2x3UlE1ZTdCdzVHcGt2SkxU?=
+ =?utf-8?B?bmpaUk5ZUXRxOEdLMnBhMnh5RjZKWFRMMk8reXczMmdZcURnZjcrSkUxbndo?=
+ =?utf-8?B?aE9mWEJ6blZTWmhnZk8wbGxxN0tqNTlJUEJPS3hWYlliTWhpTklSUzVKbG1P?=
+ =?utf-8?B?eHF5SVh5MGVtUnB1d2JMVGpkN2xlR1RmVkUweHBEZnJ5ZHlvQzFYcHJqZCtR?=
+ =?utf-8?B?ZWRNelRuckoyOXE1c2FVdXlaTUNRYlZ5RkdyRVc1VHpLWVBmaFpHMmJlS3Qr?=
+ =?utf-8?B?KzBTcXorSVBBdGN2RFp6U1hUNHdYSWo2c05UbUxFTFZsMnBaSFJ5NU1rQitL?=
+ =?utf-8?B?MXY5V3dBU3FwbjE3Vm9nUDMvb0hadXlSSVI5N1Z5U091OGlwcW9Jb0VYRkN6?=
+ =?utf-8?B?djVJS2N1alJBSjRHeW5FNW9CeTRjMk1ZYURsNDlCMFM2Tkt4RzVWRGtjWnVz?=
+ =?utf-8?B?WjRXZDZYSC8yYUlIby9rYnNpNnlDdlVnRnh3STBxS09RbjFtbFIyVUhGYkRK?=
+ =?utf-8?B?OGVWZlBWRFR6S3FvRDVIY2xMOE9WclpGM0RBNVFkenlmRG9YM2RiVW5ESFlw?=
+ =?utf-8?B?bTg3bVRQRE5CbW41Z1h4MFphYlhvNENJZElSaHZscEduMnFVbktiZlhWTXdL?=
+ =?utf-8?B?c2hWUkpnaisyL3NUMCtqdnZvQjhldUI0RXFlTmlZY3J0VlVTV0tDbnRmYzZD?=
+ =?utf-8?B?dDRLVG9IdmNwTkVjazJHYVYxN29uRWpJaVN2NmRIMXBTZEdUM29peDZWSTZP?=
+ =?utf-8?B?bXc9PQ==?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 804dd4ca-ec8d-416f-c66a-08db1f243922
+X-MS-Exchange-CrossTenant-AuthSource: AM0PR04MB6452.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Mar 2023 15:54:24.3264
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: hglSc9ofxVbI0fzDio1SPQlWPMDxLCN83AJoGd0AHCkjG365ovRUCXNv0ndFqpQMarNDCKfyhHCSXflG1Jk6GA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV1PR04MB9513
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_075742_559536_39DA37FB 
-X-CRM114-Status: GOOD (  15.44  )
+X-CRM114-CacheID: sfid-20230307_080938_137153_63C2CEB8 
+X-CRM114-Status: GOOD (  25.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,132 +132,142 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Greg Ungerer <gerg@kernel.org>, arinc9.unal@gmail.com, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>, linux-kernel@vger.kernel.org, Alexander Couzens <lynxis@fe80.eu>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lorenzo Bianconi <lorenzo@kernel.org>
+The MT7530 switch from the MT7621 SoC has 2 ports which can be set up as
+internal: port 5 and 6. Arınç reports that the GMAC1 attached to port 5
+receives corrupted frames, unless port 6 (attached to GMAC0) has been
+brought up by the driver. This is true regardless of whether port 5 is
+used as a user port or as a CPU port (carrying DSA tags).
 
-This is a preliminary patch to introduce support for MT7988 SoC.
+Offline debugging (blind for me) which began in the linked thread showed
+experimentally that the configuration done by the driver for port 6
+contains a step which is needed by port 5 as well - the write to
+CORE_GSWPLL_GRP2 (note that I've no idea as to what it does, apart from
+the comment "Set core clock into 500Mhz"). Prints put by Arınç show that
+the reset value of CORE_GSWPLL_GRP2 is RG_GSWPLL_POSDIV_500M(1) |
+RG_GSWPLL_FBKDIV_500M(40) (0x128), both on the MCM MT7530 from the
+MT7621 SoC, as well as on the standalone MT7530 from MT7623NI Bananapi
+BPI-R2. Apparently, port 5 on the standalone MT7530 can work under both
+values of the register, while on the MT7621 SoC it cannot.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+The call path that triggers the register write is:
+
+mt753x_phylink_mac_config() for port 6
+-> mt753x_pad_setup()
+   -> mt7530_pad_clk_setup()
+
+so this fully explains the behavior noticed by Arınç, that bringing port
+6 up is necessary.
+
+The simplest fix for the problem is to extract the register writes which
+are needed for both port 5 and 6 into a common mt7530_pll_setup()
+function, which is called at mt7530_setup() time, immediately after
+switch reset. We can argue that this mirrors the code layout introduced
+in mt7531_setup() by commit 42bc4fafe359 ("net: mt7531: only do PLL once
+after the reset"), in that the PLL setup has the exact same positioning,
+and further work to consolidate the separate setup() functions is not
+hindered.
+
+Testing confirms that:
+
+- the slight reordering of writes to MT7530_P6ECR and to
+  CORE_GSWPLL_GRP1 / CORE_GSWPLL_GRP2 introduced by this change does not
+  appear to cause problems for the operation of port 6 on MT7621 and on
+  MT7623 (where port 5 also always worked)
+
+- packets sent through port 5 are not corrupted anymore, regardless of
+  whether port 6 is enabled by phylink or not (or even present in the
+  device tree)
+
+My algorithm for determining the Fixes: tag is as follows. Testing shows
+that some logic from mt7530_pad_clk_setup() is needed even for port 5.
+Prior to commit ca366d6c889b ("net: dsa: mt7530: Convert to PHYLINK
+API"), a call did exist for all phy_is_pseudo_fixed_link() ports - so
+port 5 included. That commit replaced it with a temporary "Port 5 is not
+supported!" comment, and the following commit 38f790a80560 ("net: dsa:
+mt7530: Add support for port 5") replaced that comment with a
+configuration procedure in mt7530_setup_port5() which was insufficient
+for port 5 to work. I'm laying the blame on the patch that claimed
+support for port 5, although one would have also needed the change from
+commit c3b8e07909db ("net: dsa: mt7530: setup core clock even in TRGMII
+mode") for the write to be performed completely independently from port
+6's configuration.
+
+Thanks go to Arınç for describing the problem, for debugging and for
+testing.
+
+Reported-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Link: https://lore.kernel.org/netdev/f297c2c4-6e7c-57ac-2394-f6025d309b9d@arinc9.com/
+Fixes: 38f790a80560 ("net: dsa: mt7530: Add support for port 5")
+Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_path.c | 22 ++++++++++----------
- drivers/net/ethernet/mediatek/mtk_eth_soc.h  |  2 +-
- 2 files changed, 12 insertions(+), 12 deletions(-)
+ drivers/net/dsa/mt7530.c | 35 ++++++++++++++++++++---------------
+ 1 file changed, 20 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_path.c b/drivers/net/ethernet/mediatek/mtk_eth_path.c
-index 317e447f4991..34ac492e047c 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_path.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_path.c
-@@ -15,10 +15,10 @@
- struct mtk_eth_muxc {
- 	const char	*name;
- 	int		cap_bit;
--	int		(*set_path)(struct mtk_eth *eth, int path);
-+	int		(*set_path)(struct mtk_eth *eth, u64 path);
- };
- 
--static const char *mtk_eth_path_name(int path)
-+static const char *mtk_eth_path_name(u64 path)
- {
- 	switch (path) {
- 	case MTK_ETH_PATH_GMAC1_RGMII:
-@@ -40,7 +40,7 @@ static const char *mtk_eth_path_name(int path)
- 	}
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 3a15015bc409..a508402c4ecb 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -393,6 +393,24 @@ mt7530_fdb_write(struct mt7530_priv *priv, u16 vid,
+ 		mt7530_write(priv, MT7530_ATA1 + (i * 4), reg[i]);
  }
  
--static int set_mux_gdm1_to_gmac1_esw(struct mtk_eth *eth, int path)
-+static int set_mux_gdm1_to_gmac1_esw(struct mtk_eth *eth, u64 path)
- {
- 	bool updated = true;
- 	u32 val, mask, set;
-@@ -71,7 +71,7 @@ static int set_mux_gdm1_to_gmac1_esw(struct mtk_eth *eth, int path)
- 	return 0;
- }
++/* Set up switch core clock for MT7530 */
++static void mt7530_pll_setup(struct mt7530_priv *priv)
++{
++	/* Disable PLL */
++	core_write(priv, CORE_GSWPLL_GRP1, 0);
++
++	/* Set core clock into 500Mhz */
++	core_write(priv, CORE_GSWPLL_GRP2,
++		   RG_GSWPLL_POSDIV_500M(1) |
++		   RG_GSWPLL_FBKDIV_500M(25));
++
++	/* Enable PLL */
++	core_write(priv, CORE_GSWPLL_GRP1,
++		   RG_GSWPLL_EN_PRE |
++		   RG_GSWPLL_POSDIV_200M(2) |
++		   RG_GSWPLL_FBKDIV_200M(32));
++}
++
+ /* Setup TX circuit including relevant PAD and driving */
+ static int
+ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+@@ -453,21 +471,6 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+ 	core_clear(priv, CORE_TRGMII_GSW_CLK_CG,
+ 		   REG_GSWCK_EN | REG_TRGMIICK_EN);
  
--static int set_mux_gmac2_gmac0_to_gephy(struct mtk_eth *eth, int path)
-+static int set_mux_gmac2_gmac0_to_gephy(struct mtk_eth *eth, u64 path)
- {
- 	unsigned int val = 0;
- 	bool updated = true;
-@@ -94,7 +94,7 @@ static int set_mux_gmac2_gmac0_to_gephy(struct mtk_eth *eth, int path)
- 	return 0;
- }
+-	/* Setup core clock for MT7530 */
+-	/* Disable PLL */
+-	core_write(priv, CORE_GSWPLL_GRP1, 0);
+-
+-	/* Set core clock into 500Mhz */
+-	core_write(priv, CORE_GSWPLL_GRP2,
+-		   RG_GSWPLL_POSDIV_500M(1) |
+-		   RG_GSWPLL_FBKDIV_500M(25));
+-
+-	/* Enable PLL */
+-	core_write(priv, CORE_GSWPLL_GRP1,
+-		   RG_GSWPLL_EN_PRE |
+-		   RG_GSWPLL_POSDIV_200M(2) |
+-		   RG_GSWPLL_FBKDIV_200M(32));
+-
+ 	/* Setup the MT7530 TRGMII Tx Clock */
+ 	core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
+ 	core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
+@@ -2196,6 +2199,8 @@ mt7530_setup(struct dsa_switch *ds)
+ 		     SYS_CTRL_PHY_RST | SYS_CTRL_SW_RST |
+ 		     SYS_CTRL_REG_RST);
  
--static int set_mux_u3_gmac2_to_qphy(struct mtk_eth *eth, int path)
-+static int set_mux_u3_gmac2_to_qphy(struct mtk_eth *eth, u64 path)
- {
- 	unsigned int val = 0, mask = 0, reg = 0;
- 	bool updated = true;
-@@ -125,7 +125,7 @@ static int set_mux_u3_gmac2_to_qphy(struct mtk_eth *eth, int path)
- 	return 0;
- }
- 
--static int set_mux_gmac1_gmac2_to_sgmii_rgmii(struct mtk_eth *eth, int path)
-+static int set_mux_gmac1_gmac2_to_sgmii_rgmii(struct mtk_eth *eth, u64 path)
- {
- 	unsigned int val = 0;
- 	bool updated = true;
-@@ -163,7 +163,7 @@ static int set_mux_gmac1_gmac2_to_sgmii_rgmii(struct mtk_eth *eth, int path)
- 	return 0;
- }
- 
--static int set_mux_gmac12_to_gephy_sgmii(struct mtk_eth *eth, int path)
-+static int set_mux_gmac12_to_gephy_sgmii(struct mtk_eth *eth, u64 path)
- {
- 	unsigned int val = 0;
- 	bool updated = true;
-@@ -218,7 +218,7 @@ static const struct mtk_eth_muxc mtk_eth_muxc[] = {
- 	},
- };
- 
--static int mtk_eth_mux_setup(struct mtk_eth *eth, int path)
-+static int mtk_eth_mux_setup(struct mtk_eth *eth, u64 path)
- {
- 	int i, err = 0;
- 
-@@ -249,7 +249,7 @@ static int mtk_eth_mux_setup(struct mtk_eth *eth, int path)
- 
- int mtk_gmac_sgmii_path_setup(struct mtk_eth *eth, int mac_id)
- {
--	int path;
-+	u64 path;
- 
- 	path = (mac_id == 0) ?  MTK_ETH_PATH_GMAC1_SGMII :
- 				MTK_ETH_PATH_GMAC2_SGMII;
-@@ -260,7 +260,7 @@ int mtk_gmac_sgmii_path_setup(struct mtk_eth *eth, int mac_id)
- 
- int mtk_gmac_gephy_path_setup(struct mtk_eth *eth, int mac_id)
- {
--	int path = 0;
-+	u64 path = 0;
- 
- 	if (mac_id == 1)
- 		path = MTK_ETH_PATH_GMAC2_GEPHY;
-@@ -274,7 +274,7 @@ int mtk_gmac_gephy_path_setup(struct mtk_eth *eth, int mac_id)
- 
- int mtk_gmac_rgmii_path_setup(struct mtk_eth *eth, int mac_id)
- {
--	int path;
-+	u64 path;
- 
- 	path = (mac_id == 0) ?  MTK_ETH_PATH_GMAC1_RGMII :
- 				MTK_ETH_PATH_GMAC2_RGMII;
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index e4f6cca8a3a8..e5bfc2d891ad 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -1069,7 +1069,7 @@ struct mtk_reg_map {
- struct mtk_soc_data {
- 	const struct mtk_reg_map *reg_map;
- 	u32             ana_rgc3;
--	u32		caps;
-+	u64		caps;
- 	u32		required_clks;
- 	bool		required_pctl;
- 	u8		offload_version;
++	mt7530_pll_setup(priv);
++
+ 	/* Enable Port 6 only; P5 as GMAC5 which currently is not supported */
+ 	val = mt7530_read(priv, MT7530_MHWTRAP);
+ 	val &= ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
 -- 
-2.39.2
+2.34.1
 
 
