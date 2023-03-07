@@ -4,72 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB6D9C678D5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 14:01:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15B9CC678D4
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 14:01:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SEf10B8VEiphcTb2B4uTjdUHx2WfwTpFd5+nhXo7zM8=; b=szxyumHU03t7VxW0L+bKsSvwfc
-	lFuoSJUDWtPyKhTM7AK9jGHhKcbnu/RIfGUnq3RBpo0wPrjBRHr4psuMpVephYiR3N03gr1Cj8akx
-	wdv6BHDpMC8cW1QPlDwbySlDj8B8oNhecBVOvZY2sRkslr4yOQfViY7FOB5TU57Spy47UJBUXHvin
-	Ntdqv6dfG4xACcGC9vsKGAb7v3yacGLZVRWzjmhVyqrhqpcj6kchRqlzve750foIOggTs+xcrT0cG
-	HT530clAJO6ERIo3hzrUvjrQZeY6O60k1vhDovOafZNi7S3KxBhhPn5vWOb7s36K21Y0gvYcDG8ka
-	++SAHRrw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:Date:From:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3QcLxqc/EMQ7vTX+ppb3WUMx4kSFKtn1M+ctQl6WKSw=; b=UhtVz8at6XWztW7EOIvYfiMpCb
+	LdSkERZw6ilX3uj9UJCEa/nMgPSbvGn6b/vA22KhAIm2E3yaAVdePDh+qRHmEZD3jX1oxigVAsfLs
+	YITJp7c0qDQ5g4sGHc4mo87JBMbWFkUVosDIszCVNCFXHwAMRdQJxY06SMog8N8Zol88wWzMSBU0K
+	nmHD+eBAeSiBZ857CNwFdfAzusfd+IniPftRxr+WfWmin5LKNrQAOxQfam7m6+yl/4d8v/g/N9/vb
+	YP6OJCqeS170GzaZJEYb8PtA9we0udiDYCHpEFlPWkhCBWsIMkYKfeNp74jHvOM32h4Nd8MsIIxKk
+	UyzMmhlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZXsx-000bIL-GZ; Tue, 07 Mar 2023 14:01:47 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1pZXt0-000bJl-5o; Tue, 07 Mar 2023 14:01:50 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZXeK-000V3e-BW
-	for linux-mediatek@lists.infradead.org; Tue, 07 Mar 2023 13:46:42 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id bx12so12146899wrb.11
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Mar 2023 05:46:39 -0800 (PST)
+	id 1pZXeK-000V2m-GE
+	for linux-mediatek@lists.infradead.org; Tue, 07 Mar 2023 13:46:43 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id bw19so12144113wrb.13
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Mar 2023 05:46:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1678196798;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=SEf10B8VEiphcTb2B4uTjdUHx2WfwTpFd5+nhXo7zM8=;
-        b=4sOznHYviOoLd6Zd8EYiOJist7t8fD5mJ+NBE7qVWJmSnPsvlosTA2cevluMpj197D
-         40uGAHQCT3WlWo7+hpEtsQyqFii+aVMxXSnaN4McuYKRFQIPFUzdCot9KMUlGUU/CYL7
-         P2S82Eqp14aXOn2DfVRIZLesyAuzLnCcXUef3xy/LhoOE7LNiQ0uSWqy1bpZLcZxO21b
-         uLlbsGY3OMMeWQIxRXNCujtOh3iItegi9gz70HoUKtGEemGoEadtpxqUjshuRz5x1BB5
-         QTwefKOx83KFVEIH1x5xe8NcP0iTuyVZxeYoibjrFdat6I2TzJwA3OG2pCJULhrD2Z7Y
-         nK8w==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1678196796;
+        h=cc:to:message-id:date:from:content-transfer-encoding:mime-version
+         :subject:from:to:cc:subject:date:message-id:reply-to;
+        bh=3QcLxqc/EMQ7vTX+ppb3WUMx4kSFKtn1M+ctQl6WKSw=;
+        b=pF6YzMiqMpo7uXvApBRAXO5v+ieRxCELpvGFAUsC5/07FkJiFomXVJ6LCm2+em1pjb
+         4+3o2BEa/cS2Tr0BdwFG9oKJpGFDFk12BVz9jghe7Y0IYw0lP3Z8kakSzqw0O4tk8UNW
+         VWe2oEx4MKHkf45LgXriHP0cILJTN6eS8Yegi/0E9hRfIxsjcAz+tpUCAd7LTnxC3FAQ
+         zINJyCZdtFUAKvSL6dwF5yC59j0ZMbW5VhGw5kl7quwCuvEcF5s7WCbm6Klh6CUEmFxu
+         wfXvDf6aps3IJgsK3gFJPVYTc+4enVYn+WFN9Bl84WOncaP9eqnV9CtYUjccE+KiQfzE
+         Q7ow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678196798;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=SEf10B8VEiphcTb2B4uTjdUHx2WfwTpFd5+nhXo7zM8=;
-        b=IZGBdOouS2vYeL3re+CyL4EGw1a4fVq2xr0uB2jlHycdfkPSJ05tbN6xvsx4+My7Nv
-         93qHdVrr8eUXFGnkSswMKUSa8V/8XNRzM3sTS5hu7Uom5x3rd3QAvsZ29euIotHbGAv5
-         RNbUCocXwtj+uPq9WOyf6sBWt388aAYm87eOd0FiCEKwIzFREUapd+c5k6ZH7VBsB95J
-         jPWOrRZl8ibhxOSy2iGTf4UYdQ6WCVM/r3YfQ55LHhsj65bB4yBVeUXiqnkeeafNpXel
-         BtUSBhFZ4XHjKe0iW6XgqNYS+Swsr9NxONMO6oD28UcSpQnKCW+IiZ/1nohYpzre8pxY
-         nZAA==
-X-Gm-Message-State: AO0yUKU2wNF4Q8JkViKHEbvXJTomG0+9w+7FeIdD1y0MipYTRiqgFW9U
-	2Y39UEJgH56ecg8xsVmq+h6VoA==
-X-Google-Smtp-Source: AK7set94hvOKIE8CibQ7R/8FK8dBtsN5U3aL2wjYc5zEKPs6aatdvCcFPZwezGFFtCpd4yZqHZdgrQ==
-X-Received: by 2002:a05:6000:104b:b0:2c7:13e4:2094 with SMTP id c11-20020a056000104b00b002c713e42094mr8912781wrx.42.1678196798354;
-        Tue, 07 Mar 2023 05:46:38 -0800 (PST)
+        d=1e100.net; s=20210112; t=1678196796;
+        h=cc:to:message-id:date:from:content-transfer-encoding:mime-version
+         :subject:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=3QcLxqc/EMQ7vTX+ppb3WUMx4kSFKtn1M+ctQl6WKSw=;
+        b=d1PAd8Fa7Cm3dfJgtKD4cau/9/Fv/h0lQPIEKI6r5CG4BI6TQlZzbt8HHlt2hp3LhN
+         9/1ka+c5OecUvdKFLPdGHglQQtN41iQUHaqV1/AM4+Lm0oNiSxWp4aTuToHaH1K2jdZR
+         R5eAOd6oVulQ4qQluJTZVq0w0rMKfKiaQ/zS5bexeuEwBM0xX/XF8zDfGIUY8h1axM0g
+         4RDRraWteq6Gk18kQAUtGufEJohOX7y2LUatBe1bygF+wjVaujkvYSO319O2UZi3KbnB
+         wWuGA+9KuPpE5B6+7W4GPH6Wu9IFH7QxsHhbI8YboZnsH7tj3nsdgj28aGaUBmc7wmHQ
+         xu6Q==
+X-Gm-Message-State: AO0yUKXAC9NIdGnRmEPUfA3KnqKmnI6VW4foIyM6lojJy+JZBvXh2sIX
+	nld1YRfiz6vbaRscfBuALmmHCw==
+X-Google-Smtp-Source: AK7set+JSjliJoe7MHdfV/BnLWtWTYS3B+zFrCxJjvW7M8NLA/sGpGyEPk2L4vIJN6ZF9G0DkQWnJw==
+X-Received: by 2002:a5d:5544:0:b0:242:1809:7e17 with SMTP id g4-20020a5d5544000000b0024218097e17mr9700189wrw.6.1678196796365;
+        Tue, 07 Mar 2023 05:46:36 -0800 (PST)
 Received: from [127.0.1.1] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.googlemail.com with ESMTPSA id o13-20020a5d670d000000b002c8476dde7asm12657607wru.114.2023.03.07.05.46.37
+        by smtp.googlemail.com with ESMTPSA id o13-20020a5d670d000000b002c8476dde7asm12657607wru.114.2023.03.07.05.46.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Mar 2023 05:46:37 -0800 (PST)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Tue, 07 Mar 2023 14:46:27 +0100
-Subject: [PATCH 2/6] dt-bindings: memory-controllers: mediatek,smi-larb: add
- mt8365
+        Tue, 07 Mar 2023 05:46:36 -0800 (PST)
+Subject: [PATCH 0/6] Add IOMMU support to MT8365 SoC
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20230207-iommu-support-v1-2-4f0c81fd52c1@baylibre.com>
-References: <20230207-iommu-support-v1-0-4f0c81fd52c1@baylibre.com>
-In-Reply-To: <20230207-iommu-support-v1-0-4f0c81fd52c1@baylibre.com>
+X-b4-tracking: H4sIADFAB2QC/w3LwQ5AMAwA0F+RnjWZYsLfbDQ0mU1WcxH/bsd3eC8oZ2GFpXkh8yMqKVZ0bQPr4e
+ LOKFs1kKHekJlQ0nkW1HJdKd84siUzk+WBGOrxThl9dnE96oolhO/7AejW71RkAAAA
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Tue, 07 Mar 2023 14:46:25 +0100
+Message-Id: <20230207-iommu-support-v1-0-4f0c81fd52c1@baylibre.com>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring <robh+dt@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, Yong Wu <yong.wu@mediatek.com>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -77,24 +75,24 @@ To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring <robh+dt@k
 Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Alexandre Mergnat <amergnat@baylibre.com>,
  linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
 X-Mailer: b4 0.10.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=898; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=o5INfZQdHMAzRwteTSUE4GnwTkm9SQeKy4Fu0Y5Tde8=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkB0A7aarELR02nYYjRryO3XRDB2eH+dFM6D6Rljrp
- qSQee5OJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZAdAOwAKCRArRkmdfjHURVuiEA
- C5eGs1STXqlKB+t00zv5k0ryooUVKloiajkvpVhlXiUWCv+ZRR3p4+P3iw3XgbA2R295UCLSDNqqFg
- vrM+kCLl0Xr/hntRdHqI1kGcC1dPt81L2OtwBKTM4J0MnI6cEJ8pEmTzgR0aLzAzhog/2wwMJAWa3b
- r8q2bkaQd23d+Gi0rToQh3D11H+5hcufvkxl/nBzgHx+ju/JrgVR4XGW/hbb3ICocBl38XUL8A1iBD
- rGpJp0mo3EsZCEF9iUOYkmBr2OCkfHzSPQ4BNRY1ukkYZNEaLb6q6H91QdvWoxNPAq79d2c7Te938c
- L0ZjFXcwC7/vPf9DVQxl5EYO0GhAV+dL3wjdcKo46JDSNRdF7FY4iYbAFzyc8C8sMBVyR7EkMTbNQL
- EKajjbZQHNtQE31O3JEjY6aN8a39ImMIfi90OKD2n8xXBCa3svml0DVu887VxN7ujdWLHVKJaKRAlW
- rFFVwKWimqbz6P8z/Y04AqEkJ30TAx7moKOhNC7CTefFo9iPGzTkoO3NlQUVr0MCZjzGzFzCAmdNq8
- fxI/TQ16f9uR8qoLQA4mWIRh3JPAZs3dTAfM8UmUkdSs4I3j9tXQs8BdgSu/f932KhU52OW5YFeFuf
- CL6gMd8ZUiZXDkpB6qboc61/wyYsL7Z5e4694VRm4jOog1FSiMor5i6SU5xg==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1947; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=03Ugo53d84FTdWBX9oQiR9MrVn5qSFZ7/cxlmIhFGCU=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkB0A753nOSUCwQYV1X9uTdM+tzoOEkDcA/gdDvICW
+ lcKaa7GJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZAdAOwAKCRArRkmdfjHURRUpD/
+ 9vIk78xkY/EbZ1WxCn9ZnY/y6I1ZFt5oiGvLUkOo4ktMG3kjm9yuROircgRYKM912Quzno3NMh/jQq
+ 5offIoGO8XPmsAzKfQS/1xlRkMtHWDId9dkcLssvqTpvLH5hXmcLuITNL1FKGHfwBIgxvf+hr+a828
+ g0BB9Ift5CCrAt2T36U0etElG52NiRB7bIZWl2eOCpreFuuieo2SyrsZ5kHHNo7p35Fps5ewZ/J9Ne
+ QXUB1VUib1EciOTXoH81frDx5+CqBuKjv0zYZd201gaT/Q3A22cIkFLnElMs5shDApecNrGbgLaIdm
+ 0+JgAbM417F6JfkGEO4CLY4hRhO2tRcqX9D1ABHp7oL8K6nefslJJe6AzOwslB1CgPrXAeF9aiOujQ
+ ud+KLqiHLgvntnRyYed5wmyeO2auHXjQwjAzL/2eHrsD7K5CeoD6WIgZwfS+C+otfwSUSPXY2OLKyR
+ 35xnfQLla7SjzGs/iZzvhN123QdhM/rPmPx8E7CBsn41fh+bZNqzXMWJEHXyDSzKbHEZluACcYO5Bb
+ rmBn7lAKxQ52WSIYfCG/e0jo2uyp9NCe9VTTOqKTGvqLVo6cInPDu+80L1rdQ+gB08cv3g3F6HOCUj
+ SVd5TYnXDbTgOnLJMH/H22rDJLUwbztiSS/f18FN1+DqzADJ9tcVA7HtS0TQ==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_054640_434010_63AB71B6 
-X-CRM114-Status: UNSURE (   7.77  )
+X-CRM114-CacheID: sfid-20230307_054640_620306_D4A6A98A 
+X-CRM114-Status: UNSURE (   9.76  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -110,29 +108,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add binding description for mediatek,mt8365-smi-larb
+This commits are based on the Fabien Parent <fparent@baylibre.com> work.
 
+The purpose of this series is to add the following HWs / IPs support for
+the MT8365 SoC:
+- System Power Manager
+- MultiMedia Memory Management Unit "M4U" (IOMMU)
+  - Smart Multimedia Interface "SMI"
+    - Local arbiter "LARB"
+
+This series depends to two others which add power support for MT8365 SoC
+[1] [2].
+
+Regards,
+Alex
+
+[1]: https://lore.kernel.org/all/20230203-evk-board-support-v2-0-6ec7cdb10ccf@baylibre.com/
+[2]: https://lore.kernel.org/lkml/20230105170735.1637416-1-msp@baylibre.com/
+
+To: Yong Wu <yong.wu@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Rob Herring <robh+dt@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+Cc: devicetree@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+
 ---
- .../devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml     | 4 ++++
- 1 file changed, 4 insertions(+)
+Alexandre Mergnat (6):
+      dt-bindings: memory-controllers: mediatek,smi-common: add mt8365
+      dt-bindings: memory-controllers: mediatek,smi-larb: add mt8365
+      arm64: dts: mediatek: add power domain support for mt8365 SoC
+      arm64: dts: mediatek: add smi support for mt8365 SoC
+      arm64: dts: mediatek: add larb support for mt8365 SoC
+      arm64: dts: mediatek: add iommu support for mt8365 SoC
 
-diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-index 5f4ac3609887..aee7f6cf1300 100644
---- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-+++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-@@ -34,6 +34,10 @@ properties:
-           - const: mediatek,mt7623-smi-larb
-           - const: mediatek,mt2701-smi-larb
- 
-+      - items:
-+          - const: mediatek,mt8365-smi-larb
-+          - const: mediatek,mt8186-smi-larb
-+
-   reg:
-     maxItems: 1
- 
+ .../memory-controllers/mediatek,smi-common.yaml    |   4 +
+ .../memory-controllers/mediatek,smi-larb.yaml      |   4 +
+ arch/arm64/boot/dts/mediatek/mt8365.dtsi           | 211 +++++++++++++++++++++
+ 3 files changed, 219 insertions(+)
+---
+base-commit: 1db7fc94e6e116f43f7bf3adb33407f21bc29fd9
+change-id: 20230207-iommu-support-5e620926e42e
 
+Best regards,
 -- 
-b4 0.10.1
+Alexandre Mergnat <amergnat@baylibre.com>
 
