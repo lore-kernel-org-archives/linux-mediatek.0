@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCAA1C678D5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 18:51:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 099A9C6FD1B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 18:52:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nWexxL308BH6z9moewgL9uYihCpYFK54dVeZ2PBn3f8=; b=coVH1ZMUFmanfDsPlsCGFzdT2l
-	wmxJVjjLP5ET1+skwXES33tGiBagcMnGaU0Gg3DRc3lWeMUA/iEfTdnWMZbJ6pNrMkXKc61dxYBzJ
-	gCl+reJfvLoNf9iOLvrC9gKEY2KzFkreAFN3wfT3zy5FyYe7dki5hXQsa0Ic/ADw5jKhxJnPCt0tS
-	835cOwYUT+XbAyto2JRAQJtE4OmUBMpsogpUhVGrKlSmh7QPhCM4K9MZd5pefzOWUEmoKHhmD/kCc
-	MXnSER7b4p9x0mu2nx4cHpjmHNqNn24DO+C1edFjQIHn2rvlSyZMz8Wh5uY8UVn7ZODZaVhVZeo57
-	lVE/fQbQ==;
+	bh=JTGTLkZ8OoT+RqpyAx1sW9UaQMm0R5ZBqK9JTQc9Wc4=; b=lF8AtKOUYkYAfJtU+TvKHBUujE
+	QkQScwacRh47iJJpIk5pgsf4hj3TM16AOSS5R/KHcdc6xLNR6i8YzjnvD0mt8XHEn2c6UTR30Oug6
+	Ss1wjwMibrpLgOwxKUXB7dI7q3Bzx6jZg6H4i3P0ofgqgEtEWVlasRkLhBNrMMuoy2DpHqwrSXNWJ
+	fqzrdj6gwNzBj2TLH6qp4rETSn+xuP5vl/3l/Otdy40Hmtg8iZrebotD2N4RO9eGbvVzYa4dV5nO6
+	XA3rNYAmVGefyrSTRbIXL96JLqxySWONA5W9K9MBd0w03rvJLRAKW0tSkp6eM/PHz5ZEmpVvhZqVt
+	xNNsCAxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZcOr-0026kS-G8; Tue, 07 Mar 2023 18:51:01 +0000
-Received: from mout.gmx.net ([212.227.15.19])
+	id 1pZcQd-0027P0-Uv; Tue, 07 Mar 2023 18:52:51 +0000
+Received: from mout.gmx.net ([212.227.15.18])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZcOp-0026in-3h; Tue, 07 Mar 2023 18:51:00 +0000
+	id 1pZcQS-0027Kh-TR; Tue, 07 Mar 2023 18:52:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1678215040; i=frank-w@public-files.de;
-	bh=nWexxL308BH6z9moewgL9uYihCpYFK54dVeZ2PBn3f8=;
+	s=s31663417; t=1678215136; i=frank-w@public-files.de;
+	bh=JTGTLkZ8OoT+RqpyAx1sW9UaQMm0R5ZBqK9JTQc9Wc4=;
 	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=tIoGoyJqs2OkjReYZUq7R4DzCHsQfWQztFQt0KYgB3j4czOZiXbqyOTrzPbm6KFVZ
-	 liwK94XYdcyqvarEYpALo+sYdLpNoDD9pVUn+Dh2f/9ygzrIXfdxNkH/lIy/5puhO9
-	 2PJg2Bme9jBtXursaPmy8+5WeNnFNQPmT4C4sWL0ARLoOegq85fkCjDQ79meY4TSrq
-	 HI+AL1OH3onxeqhHLrlfXUHOp2T/BpEUbuXY35JZhegNDwMbdjuzSq93wfFtFP1/+b
-	 9L+vkQmVV3sgFqOxjxVubm0L4dOE6IilYta8ILPWjY1ohwOWSj5Bx/NsbHGkQ6gRL0
-	 mh9l3rfxnbiYg==
+	b=b+QmKzfHv8rGk0ljlZiia03mXcX9YPLoQBedOXDh8wOm8154pyHvOo9m8uzMhFpz7
+	 Vk5N2ZeRsp2inDmS91qBkw/E8thjZoKu87XjyKFfUXPG3sBQUXATK4Ubn26D5JSb5M
+	 Fhbx+fFOdwP+AI0DNWFsfzF9Z1wYqaVYY0EsDYgS8Td9JUCRUcBc3dmhaB2zowbeWo
+	 HIs0hQ6NDVytqY8aYp2TKnq0LpvywaY1w/bgvHmj8LfvJdpmGTKGUPWEOMsG1srNgY
+	 GACR2+YD1eFxpDY9VZeB6eoGAU5tBnEK4oFRVm3qrURSaj4Gye2Q8MlWbgS780hAnH
+	 ZavwqdiHoqGJA==
 X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
 Received: from [217.61.156.24] ([217.61.156.24]) by web-mail.gmx.net
  (3c-app-gmx-bs16.server.lan [172.19.170.68]) (via HTTP); Tue, 7 Mar 2023
- 19:50:40 +0100
+ 19:52:16 +0100
 MIME-Version: 1.0
-Message-ID: <trinity-19cb78f9-24ee-4cab-a24d-5c431d154e43-1678215039980@3c-app-gmx-bs16>
+Message-ID: <trinity-d2a4c07d-5278-494f-9e10-fd366d539604-1678215136485@3c-app-gmx-bs16>
 From: Frank Wunderlich <frank-w@public-files.de>
 To: Daniel Golle <daniel@makrotopia.org>
 Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
@@ -57,40 +57,39 @@ Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
  Oltean <vladimir.oltean@nxp.com>, Jianhui Zhao <zhaojh329@gmail.com>,
  =?UTF-8?Q?Bj=C3=B8rn_Mork?= <bjorn@mork.no>, Alexander Couzens
  <lynxis@fe80.eu>
-Subject: Aw: [PATCH net-next v12 09/18] net: ethernet: mtk_eth_soc: Fix link
- status for none-SGMII modes
+Subject: Aw: [PATCH net-next v12 11/18] net: pcs: add driver for MediaTek
+ SGMII PCS
 Content-Type: text/plain; charset=UTF-8
-Date: Tue, 7 Mar 2023 19:50:40 +0100
+Date: Tue, 7 Mar 2023 19:52:16 +0100
 Importance: normal
 Sensitivity: Normal
-In-Reply-To: <1590fb0e69f6243ac6a961b16bf7ae7534f46949.1678201958.git.daniel@makrotopia.org>
+In-Reply-To: <05e6d08bba07ab2462178e51bbc146bdea508f46.1678201958.git.daniel@makrotopia.org>
 References: <cover.1678201958.git.daniel@makrotopia.org>
- <1590fb0e69f6243ac6a961b16bf7ae7534f46949.1678201958.git.daniel@makrotopia.org>
+ <05e6d08bba07ab2462178e51bbc146bdea508f46.1678201958.git.daniel@makrotopia.org>
 Content-Transfer-Encoding: quoted-printable
 X-UI-Message-Type: mail
 X-Priority: 3
-X-Provags-ID: V03:K1:76gtEPPKbw3oW5Vh9Br7sY/0upYihofaodLeF5Poo1oqibixMOcL2y0Fehhg3y1CanIwj
- i5ak/DrOGWMtDkAYTL930BJHMzxlrPSD2RbFOg1hZRZSQNQhey/uFIOTm3zkeR1tT5latxzmDT+R
- ornMPbIXSbhTma8tYRTXgrgq9yEciDBGKHnfKhUD4rF9mztF2FgFZj88rHLE0511TZGh4Q3XxDfh
- +RLVZaxpaN91URF6IUIDZ9pozauNCiX0MQ/ER24URfXEoXWLDYpb024n4rMKi5LvTM/hpuX4DO1B
- AI=
-UI-OutboundReport: notjunk:1;M01:P0:oYTl1d60MWg=;C4x3bNHaagBMTR7qFsMFz764oFC
- jJLFXAfjjvaBoce70TTO7nh0M+WdDbscQzSasa9/SVoIR72+oR2P1GgL50WxyPdJv7GW3jgSE
- E0BDP8nKyWbC/fgxe09oIJvEUyrxiT9KYQ8r0wW4hVwz0maIvWO4MDymQ8XZpf4jqSmISLh7I
- LtwFvVINAheIPWzHwsDGpwnLrg+fVJnG2EFknNv2X74RfPTyjS2yr7sOm9TlGMFP1wudgMG2E
- +kvs20B3TwakSQUJkYPK7OWbRXk80KyKKYPAbGuhEc3g0S1poZZVKUOjl0aIAc13/xdW0J5F4
- fR2VS8+xWT00FOggTPtn2l9+56qDd3grvNKEqzrWPmgRf0pctgFChlJ7rKiRYsysC2uq+31j3
- m96NS+N0oukLakr9dG1gzJFtk+p9demgwiG9zrU/CpC93y0i2CQktk4BBPHNGBP6Mfj/r1B3Q
- AIfiFJ4OWoywMTZ24UWNgJeY5KnXT1BsdI/iXym4LhpHwD+KOCftR1UXY6OLPxoGYe5U6O63M
- mlZEyG5zqlx+FmopGHsSC28luN0cCQegFCzpmBC1F/FUEa2PODTQrj5NVYxqcLz7xujEjRBcO
- PJ2usGtkhRAKkRZ+zAejstj/9sG2Nc/hLY2fwFyIVoGLBBRjInZFeFElBXD4rJk2CFP48X5Uc
- gxyZLoFkcVG/rIhr2PylXTzTif/AUtcUPTkwT/+tDn3Ros7LXKmvmLqz2ukq7SnhwLhPK4Obs
- OrJRtP4FVmMOnhISR2Z+et3AuEKc+Xwmk06cxMSLQtDiOQDUTxSNF8JcRfcgxmCyrpU0VPwZf
- 2r/3kTJb1FQ+1YQB21okVMcg==
+X-Provags-ID: V03:K1:PwtmZC5NIT1sqzXVXjKmB8ju6BS93xlMNGejBocvc9T1IS+s8osXo7fjoDMrpnGZXcQoo
+ ZVBjFJeCbQBsCFnEYKc2UUAem12eiW8c996KCKdD5m/bQWp+7FK6LqKt4pUTdgUZ1ReSdPsbUE/p
+ lMegGXMXFmoMnKLPeoDdr1UNIE+hEni2F+952KY7spa10Mzvx9EgODLqOaM/8mt48rE934OOsppQ
+ XObs3vkdgVRuw9bTJX4xnRPxqI1McLrZdm58yLIIxsD4zO6ErxEtKBwzfh44gIFUDCswevyup7EX
+ 4U=
+UI-OutboundReport: notjunk:1;M01:P0:Am6NJr4guOY=;WJNN6VHGMn/i+3O1d7Gc5MoWki9
+ C2foELMSUwRbHwq6Z8uu9Wtjh/WEEGXkL/K/cmEP016qneV/GdE2jAbweZOEXEFPeI/AZzKgU
+ sbSHxFsEl812pBkRVk5UMyNa1YdPNMLXuwMqTVw/YHk5EpXrge3y4mlb5yMNfGvpGevk/3Gb3
+ 5nNfbEiqCGSVu4DbzJ8Pd6R6TRijCUDDk1l7PhBedLe+F6Z0A+b43YNQ2HuI2PkeIXyvqhc4o
+ HEadAC2mJHymigjDuoVKhYeA/9nlqjvxclSQsLV2gFVEftCRuiN8lP97wetwwVFd1j9O6ADVw
+ 9LOuQGYwerWI9tZZfdiMUuOPH2Ab5U+2xTndjHOuyEbGLKcQhu95Q5h379ZKBK95//HuT7UhH
+ Gl/jeL3HvpiDhPtcg6Tg/vPyyR4l4v20oyWMEE+6sMAXzGY0gEl2CJo/+jSriwN9BiZHPpahS
+ Wc4dmDy8OJnFN7MwSAoymsgB4LrdRutC8tFNE4ULdwH2dlw9DuliJwCtHUdLdqH0Qw6ziDR6C
+ Tb0461FmjASVUx4x1HraIIiuRzxTLkEY1dxgtt+RfU+hsi989fsZNvseN2qwh1XXPSczHRncw
+ ABlDRl9iYvL3IZC+Cl0EFlAtQFKSwbEwGuXAeZqo7sDbfVs0H+jz9cPTulZjNrAFyw99uofz3
+ yAC0k1TmL+iz/DhXZHqp18cIc7pKhTA4o7YioGlRstCHGpjkBiPUWmWGR9nEMXL08ejg6hkHJ
+ CKlCOZtsczSeVbfmHCEAqGep30mGAgXXV9e7REN7Wa5d5kmMbzq5CNno36BR+RHLDJ+NTmsvz
+ RzH090yGyZRlOCzUOl6bA0mQ==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_105059_453510_69176AC3 
-X-CRM114-Status: UNSURE (   9.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230307_105241_254484_66F0B827 
+X-CRM114-Status: GOOD (  13.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,12 +106,16 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 > Gesendet: Dienstag, 07=2E M=C3=A4rz 2023 um 16:54 Uhr
 > Von: "Daniel Golle" <daniel@makrotopia=2Eorg>
-> Link partner advertised link modes are not reported by the SerDes
-> hardware if not operating in SGMII mode=2E Hence we cannot use
-> phylink_mii_c22_pcs_decode_state() in this case=2E
-> Implement reporting link and an_complete only and use speed according to
-> the interface mode=2E
-
+> The SGMII core found in several MediaTek SoCs is identical to what can
+> also be found in MediaTek's MT7531 Ethernet switch IC=2E
+> As this has not always been clear, both drivers developed different
+> implementations to deal with the PCS=2E
+> Recently Alexander Couzens pointed out this fact which lead to the
+> development of this shared driver=2E
+>=20
+> Add a dedicated driver, mostly by copying the code now found in the
+> Ethernet driver=2E The now redundant code will be removed by a follow-up
+> commit=2E
 Hi,
 
 have tested Parts 1-12 this on bananapi-r3 (mt7986) with 1G Fiber SFP (no =
