@@ -4,72 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FB23C678D5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 12:03:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A749C678D5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 12:41:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/DdiJJW2KMfOiNRsqXeyzvsPa+tiQ685iR7M7gsvOIw=; b=gD+BzXSsaPnL1F4WjpPABn1kEm
-	I9ik98ZixGJqkCEsRGvHmyuVmfb9+bqr4h2QR5cMpLVyBzbG4k/Dfna8mHeQrTRC4QG6JUnN+2zkX
-	GWoeYyiKNGJuTi7GheVEJW5WK2fl3e0leKKGgRAq7f7T4XXK9UXCUgP7vDTtmoKuyuQvsiX3lUsX3
-	9qOf8u88JiKPKc8tX9KnodKHRboTc65EMPVZ2Lf+kgXRiND4mlhYVByNOjjSjrdpCP9T0r//WAS3A
-	FvCtzs06IO1X1Q7NNcyCDhAjpL1SYlyFoYCSCR1eog1hfL/WOqllNj+Md/N5vFzpT1a3ojBRn+Wt1
-	TCzpMNjg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Da3gycm9GaSOTxM2r6GKDW6btSTz1Fl+GtonHRy4OIs=; b=QrQNt4iVNMoJEWdcq40f9kKLtQ
+	9VDuTw0wavru08jk3NvP7bUxxhEM8gEExFKFA9TuwGc5yVSmM4S0AkDT1esiND8kib10LgvjO7Yg/
+	dbaqG8eo/EFCMJb8hSXi1SIsF4AjDSYEoHYAMiuZuaTvqUkAaAkhDoeKWTx0xUglxMrshcEpsWj7D
+	HgkW0ahrIRhD0e/jroQ88PaT/O3ClH4n0c60uA330W00H9Uj0MuDcX2wVwu9ZufziyN7uMhEG/QhB
+	I4CkPgzevFLaYQDb2lxPvLrLkvOQCheOPLvi8McNgZiMjjhPfH2kkodVt5AgERAhael46jjmo27yx
+	tcqFWdMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZW22-0000B3-GD; Tue, 07 Mar 2023 12:03:02 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1pZWdT-0008RT-Bv; Tue, 07 Mar 2023 12:41:43 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZW0o-00HaXo-98; Tue, 07 Mar 2023 12:01:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=/DdiJJW2KMfOiNRsqXeyzvsPa+tiQ685iR7M7gsvOIw=; b=R2Qb1TE8dqEBMGg7VF0Dpe19ee
-	hwjqzoiTKKi07io0ZMqiVYyM5u9bzjnQQTVVoSzx9jZ65pIh40pUSAT0gKdLJxqle8PKE1orcHzsy
-	F3KgegTzmjJhVakafY4SuCJioqn0+3aevIpZN87oxB9nTRFIANxkHKYggDcz7niX4UxmA+fImIsvI
-	7eXgUBImPC62skToo1ycHrXW2WkdpF3zU2gPzWKFGoUYMmbihzmKImoxY7/D00OvEe+dFn2aVGaA4
-	h/Z8fBdrklVOc+qizDVNHSWSVOrK2wvj+3OEagH8vXQuVoskHe/yRjdibMLMTVG6xGEHGJZwFd/Qi
-	PVwF2npg==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:36490)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1pZW0R-00007V-Bc; Tue, 07 Mar 2023 12:01:23 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1pZW0L-0001Ub-7W; Tue, 07 Mar 2023 12:01:17 +0000
-Date: Tue, 7 Mar 2023 12:01:17 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH RFC net-next 4/4] net: mtk_eth_soc: note interface modes
- not set in supported_interfaces
-Message-ID: <ZAcnjXxLfeE9UIsO@shell.armlinux.org.uk>
-References: <Y/ivHGroIVTe4YP/@shell.armlinux.org.uk>
- <E1pVXJK-00CTAl-V7@rmk-PC.armlinux.org.uk>
+	id 1pZWd8-0008HS-28
+	for linux-mediatek@lists.infradead.org; Tue, 07 Mar 2023 12:41:25 +0000
+Received: by mail-wr1-x429.google.com with SMTP id l1so11928017wry.12
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Mar 2023 04:41:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1678192877;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Da3gycm9GaSOTxM2r6GKDW6btSTz1Fl+GtonHRy4OIs=;
+        b=CeuK0gBWMnnVxKXxuaS4TbHqVvqx/XcRViY6Ab8AN5ulApgZO1xLbviliDSE8SggCv
+         0oROsCCoztpy4OEIaM453xTfC+EaR6i6iWS+mzmQBhKyWMgaliV3Heff6IujzglBKc2d
+         mpP0OgwLpfktzGbumYthAreBwgMeplwXW6dih2aPW13Bmi7Bg5hW9GMyFBuKKEzhUfrp
+         WhIA+AJBhV4aRgMXikn4aEY96bWjucyydAZWpKz33v6QcC4MI0LsglG7EkX0JaLVbwjx
+         /o5Wy6x0NNQAURfDWBOdjG6HznTOR31Gza8TyI7VHMWpBtWTuIGqcHga1x7bDUANvEZZ
+         qpCg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678192877;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Da3gycm9GaSOTxM2r6GKDW6btSTz1Fl+GtonHRy4OIs=;
+        b=pZbRGCSMcTnPYbWksuagxOAdAlCwJRXZapCUxcV7fxikPuRiT/SxL3J0a4uvPCtuY5
+         4Ra+jqi/FzONlYfTil7tun4jhkg+cZxIpnK4uWqg8+NMVqReVZ7+oZEDw/uhtU4HVzYc
+         TUDpG+4+Ubkb2pqiJFBOGFNnjfSkFcF6ytuERXNbYjEA8bFW0tINhOLQsAmxlJUsz66v
+         fgvxIxXLmDQID22JVY00e4MOOB12cqkzHYw7NSkLbPa34CefJuIU4sckHfDhQx+EbBTp
+         jl/ZftNIKTUgP24wg9d5tw+NXcCT5rRukVct4cEilC8awXTlg9HWbfBUxMbD0kKD/sO1
+         NYmg==
+X-Gm-Message-State: AO0yUKV639zPKAF2xeVmyrLnjhoTzGVPAwTQwl25yclWJnqi0zJtblGx
+	F7h4jPUYCcWP+OqCfctVcFnBfQ==
+X-Google-Smtp-Source: AK7set8ho3AE5slu0eVuVQjsVB3HmQggDT+fS0otKyV+eMbPIkDH2/8BRv6LrVQf2lZZpiaBnlISXQ==
+X-Received: by 2002:a5d:4ec5:0:b0:2c7:1e32:f7ff with SMTP id s5-20020a5d4ec5000000b002c71e32f7ffmr8350736wrv.16.1678192877556;
+        Tue, 07 Mar 2023 04:41:17 -0800 (PST)
+Received: from [127.0.1.1] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+        by smtp.googlemail.com with ESMTPSA id w9-20020a05600018c900b002c5a1bd5280sm12434670wrq.95.2023.03.07.04.41.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 07 Mar 2023 04:41:17 -0800 (PST)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Tue, 07 Mar 2023 13:41:08 +0100
+Subject: [PATCH v4 2/2] arm64: dts: mediatek: enable i2c0 for mt8365-evk board
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <E1pVXJK-00CTAl-V7@rmk-PC.armlinux.org.uk>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20221122-mt8365-i2c-support-v4-2-885ad3301d5a@baylibre.com>
+References: <20221122-mt8365-i2c-support-v4-0-885ad3301d5a@baylibre.com>
+In-Reply-To: <20221122-mt8365-i2c-support-v4-0-885ad3301d5a@baylibre.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Qii Wang <qii.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org,
+ Alexandre Mergnat <amergnat@baylibre.com>, Fabien Parent <fparent@baylibre.com>, Rob Herring <robh@kernel.org>,
+ linux-kernel@vger.kernel.org, linux-i2c@vger.kernel.org
+X-Mailer: b4 0.10.1
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1291; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=/2/cjSO2mF7U+slihZOD76PFWiM0Jv1Qz+ElLd/bOnw=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkBzDqcQGDX7mF+2FUnSGPLDJyNAnKOn4NaJfOwzgl
+ MmtGUVSJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZAcw6gAKCRArRkmdfjHURYkYD/
+ 9KfGHtkTIXYn298xwf9hQ8ovbQgNJm4iLoD0gTwEbNJbtAQWcm+pf/kgA5UzVtT6LolXsRv6xkDDFg
+ HtHgOj/0G6IQrF9O3BuUX7c1MW5ynG/CTjXxf/uYzlDG95t7NAQIxy7MzHKMlDur6zTNmVrks7GI5z
+ s9EDsvMqQx1j+LBOv1Jj0Moq6vzCXrP4+LucyqXzSg7hMmXn7mRFalNAd+TJpN295ZFwwmL3Qg3EQs
+ UnAuqUywmHwMWYxwRm9fFKutfibO2LvXfmQOs1Mgo+9NpQfuQxmtenzmqwqcvAyW0qhU/Ai8GFd5Wz
+ w9/2JIXAN4K3kquecBWSkFZNGfux0VlX63Womo8TbX1mDWq3TNvNeH5g7mdqKdkccBF8XU2F7K/+5L
+ 3s/7x3JaCafJg1A/ckS5I1+eeDleUiHGtk5ZNYYEWNTMJdi64+G3bhL6OeU1DZdCx/ACZJv+Qgn4ta
+ HMdFJgqwFGG3qnM0TxbgjGoGFtYn1E1Y8DI1BNhHugJHGg/Em9usE2p/nZxShBJrRbM7VGxaMWb5Wh
+ 2UsHNmnXEA8Qnu+FIL/w4Bi4o6PQw+AVgHrBxdDRscOaCeMd6axkQWAmFEsTSCiG7cMtwj+oAcSlI7
+ IYdbwUpMSrB7sIeFan52LlY4xfCjYz/+APqYAGG9BpSyF31DoOnVHpqvrHAg==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_040146_623616_204AC578 
-X-CRM114-Status: GOOD (  16.27  )
+X-CRM114-CacheID: sfid-20230307_044122_229428_8D19F7AB 
+X-CRM114-Status: UNSURE (   8.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,42 +109,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To any of those with Mediatek hardware... Any opinions on what we should
-do concerning these modes?
+Enable the I2C0 bus provides communication with:
+- The integrated RT9466 Switching Battery Charger.
+- The integrated MT6691 LP4X buck for VDDQ.
+- The integrated MT6691 LP4X buck for VDD2.
+- The pin header, to plug external I2C devices.
 
-If I don't get a reply, then I'll delete these. There's no point having
-this code if it's been unreachable for a while and no one's complained.
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-Thanks.
-
-On Fri, Feb 24, 2023 at 12:36:26PM +0000, Russell King (Oracle) wrote:
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index f78810717f66..280490942fa4 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -530,9 +530,11 @@ static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
->  		case PHY_INTERFACE_MODE_GMII:
->  			ge_mode = 1;
->  			break;
-> +		/* FIXME: RMII is not set in the phylink capabilities */
->  		case PHY_INTERFACE_MODE_REVMII:
->  			ge_mode = 2;
->  			break;
-> +		/* FIXME: RMII is not set in the phylink capabilities */
->  		case PHY_INTERFACE_MODE_RMII:
->  			if (mac->id)
->  				goto err_phy;
-> -- 
-> 2.30.2
-> 
-> 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+index 4683704ea235..bfaee9a4a38b 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+@@ -87,6 +87,13 @@ optee_reserved: optee@43200000 {
+ 	};
+ };
+ 
++&i2c0 {
++	clock-frequency = <100000>;
++	pinctrl-0 = <&i2c0_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++};
++
+ &pio {
+ 	gpio_keys: gpio-keys-pins {
+ 		pins {
+@@ -96,6 +103,16 @@ pins {
+ 		};
+ 	};
+ 
++	i2c0_pins: i2c0-pins {
++		pins {
++			bias-pull-up;
++			mediatek,drive-strength-adv = <0>;
++			mediatek,pull-up-adv = <3>;
++			pinmux = <MT8365_PIN_57_SDA0__FUNC_SDA0_0>,
++				 <MT8365_PIN_58_SCL0__FUNC_SCL0_0>;
++		};
++	};
++
+ 	uart0_pins: uart0-pins {
+ 		pins {
+ 			pinmux = <MT8365_PIN_35_URXD0__FUNC_URXD0>,
 
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+b4 0.10.1
 
