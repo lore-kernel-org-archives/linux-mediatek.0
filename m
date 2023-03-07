@@ -4,94 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC913C678D5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 09:58:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EEB5C678D5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 09:59:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=84FgM/FVnZP1rWfRH7Rix7KO0TYKL81ghGqMfAMNH9w=; b=rxydj3IInJcDHUF/tSqnOFFLDM
-	1Ryr+fF62px9Tp95B8pLbu42Io1FGr1xgsoJNqp9AzczE9SgmnKMmnPjLZ9kqLBIj4EM2dY0v5TW4
-	rZbHBiPNMmD3aPcgmsrvVlOHsaP95QCuSjszMaJ1m3IjSxtTQZsQHcWPWURn0xJMBmNBgfj47khVv
-	g3epMPdNBDRp/2IgAJlSyPcYKB+e7T1JDvyFk8a/7vG94C8zC32UeiFvCKAdVF2IpK2thn3E0nLvv
-	pvhrxZUAR2LMbIn6GG5UGEdNxs4f0R+NvyJOcU5DzWd0asQsN6JNQouJdLgcjOZAA7L4+CIcP5y09
-	GzEHUyOw==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6Fm+NLvT+TCdHe6ozx4fjIKLBXM6oVkJk5kZy+5K90Q=; b=rWB87wl5ZHTBcRgohWdJ3wEhPZ
+	D0MNuy1OMKce2gBFvCmc9NAV5t6Guje4bsvLd2U+v7v6kTf14A8X5Px/7G+fStM4SQbaX9xioN6r0
+	XdCZEUywT7n+aZceZn/w0NOvCGDdIeY3Ju8GuIu5Z//CC4jGdzhv6Lq0uQ0IjetR+MrHKZJeKu0iv
+	UmRtrE3izqR6GnjMbzuvMaW4QACMQUBfPASIoMpbmx5ARmigPef54PUWFq/rXB/lSDqRYsoN7eHVM
+	QG1L1aCef5v+WH+Pby6UMCB+7koT0WJddygZYmYL2ZPQgttLA2ra4rfQjnGhqTM55a7CISZQV7W6i
+	XK/373MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZU5d-00H641-Dc; Tue, 07 Mar 2023 09:58:37 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1pZU6h-00H6V2-I0; Tue, 07 Mar 2023 09:59:43 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZU3b-00H4yp-V7; Tue, 07 Mar 2023 09:56:33 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id l25so11525038wrb.3;
-        Tue, 07 Mar 2023 01:56:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678182988;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=84FgM/FVnZP1rWfRH7Rix7KO0TYKL81ghGqMfAMNH9w=;
-        b=eFq2KyyTn/QGbH4BM+M5/FmPPuIzwcnCVqRLo0zYV0sSvg0+tGAXHazl9KWmkCiEk7
-         WLxBQGPM1bsojnZFEfY05aoyYIowBdtL7gvKFGicwSButTOpEAtuuHkrMFeD+eD8Klan
-         NdqhQg/D2dRkKMgFlznZJKJGQ5CoqGW4LT6C1ba5BWTb4BJIzK9UgtkM9SnCWanWSvFj
-         rMaJv4lgSFarm8UCE75p7YU+VSaqMYX2LuauciLfGmDju/NpFRuYbs8kp+P7A0T8vRMV
-         WfS7+i5w/B2y/xdSTIk5fueA0qAtWpB/CXyMNhx9agQR91DnsS0d2j7fqbU0wNX0zqn7
-         Oo7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678182988;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=84FgM/FVnZP1rWfRH7Rix7KO0TYKL81ghGqMfAMNH9w=;
-        b=gWUdt5NLxDCnPSfohyspXLwgleyG3eAi3NxhSjcp/sD8dF3b4pf9TssUNGv4bT1m6P
-         BUEGq0qWGQ7+HHs460o9PhknLUEB6bWwfbGBiCQcWaCeoWNikwNVkb+SKrX3a7EVY7yF
-         uKY9SpnI6Fpw8swMWQgOeLZLRR5jagOpSygTDEiFtFZu/yridtwZe/BLpxZv69NfYt/B
-         zBWxsu8H7AHobwwQHr6Qp+IzZcv9KgBY/ZEbIH2z6hi043mo6wejmvydxubeY+gI0/rR
-         KV2lzVLSmW9wSUxdKhNEFwMEIrf+KyupVQ2ZtQ/mmSiTS0sjjl/40Zvc0CXRuj4ieqwu
-         2F4w==
-X-Gm-Message-State: AO0yUKUMsVuoMCvgfqUJhIYoff0ohHnBES1EGSzYkEuJ/2X3i7w0b1Zs
-	DAkM/ch6VVQAzH5SDuzC6LI=
-X-Google-Smtp-Source: AK7set+2oqnqS/Vy/l7T728/Cs+NBndVQPWOONRki7dYNYfEOCQKVhTw2lodMf9LsijyuBXftEBKqw==
-X-Received: by 2002:adf:f58b:0:b0:2cc:4dac:fe3e with SMTP id f11-20020adff58b000000b002cc4dacfe3emr9457600wro.62.1678182987854;
-        Tue, 07 Mar 2023 01:56:27 -0800 (PST)
-Received: from arinc9-PC.lan ([212.68.60.226])
-        by smtp.gmail.com with ESMTPSA id s10-20020adfea8a000000b002c7e1a39adcsm12257203wrm.23.2023.03.07.01.56.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Mar 2023 01:56:27 -0800 (PST)
-From: arinc9.unal@gmail.com
-X-Google-Original-From: arinc.unal@arinc9.com
-To: Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>
-Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Rob Herring <robh@kernel.org>,
-	erkin.bozoglu@xeront.com,
-	netdev@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2] dt-bindings: net: dsa: mediatek,mt7530: change some descriptions to literal
-Date: Tue,  7 Mar 2023 12:56:19 +0300
-Message-Id: <20230307095619.13403-1-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.37.2
+	id 1pZU3k-00H55B-T1; Tue, 07 Mar 2023 09:56:42 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1524D66018CA;
+	Tue,  7 Mar 2023 09:56:38 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1678182999;
+	bh=b2sW59AfaGFgFUY1ZzjTm6KZ66xi/bkthdwC/r+4TgA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=LJxMvDvw6Q83K+ttDjzaDidUrhIXIZx+I98if6nPAtt4g6mQCFgOVenRXYHxce70M
+	 67XrHxS+XgTAN5WD1IsqbuC8VE0QJWcNQDfBAYbcMQ+6De/Rtijk5uN6v2X8Wfp8eq
+	 PncHZ6GVV3tgwpc5Ng+Hdvhrg+B4r/kwJuSnkD/fKgEeREj2g/SavYamspcy2n+RUU
+	 AisM8yrgNrCJLUvVRnTTISHlXA68st2K3KUrkNNsOu5BGY0QKljeMKDNN+EabQ5yK5
+	 nZOn3tKpQtOx4ZbnM5C6FH5av8/Kkc7Mjhkf4ARmofNjomCzaxxwBkFAy9oekokfwI
+	 8q2PjlQJqqxJg==
+Message-ID: <7e5aac3a-8edc-fd90-666b-0649182ad8a5@collabora.com>
+Date: Tue, 7 Mar 2023 10:56:35 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v8 7/7] iommu/mediatek: mt8188: Add iova_region_larb_msk
+Content-Language: en-US
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Robin Murphy <robin.murphy@arm.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, mingyuan.ma@mediatek.com,
+ yf.wang@mediatek.com, jianjiao.zeng@mediatek.com, chengci.xu@mediatek.com,
+ youlin.pei@mediatek.com
+References: <20230307080555.14399-1-yong.wu@mediatek.com>
+ <20230307080555.14399-8-yong.wu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230307080555.14399-8-yong.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_015632_057333_3175E634 
-X-CRM114-Status: GOOD (  15.31  )
+X-CRM114-CacheID: sfid-20230307_015641_131250_69E9A9A8 
+X-CRM114-Status: UNSURE (   8.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,63 +82,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+Il 07/03/23 09:05, Yong Wu ha scritto:
+> Add iova_region_larb_msk for mt8188. We separate the 16GB iova regions
+> by each device's larbid/portid.
+> Refer to include/dt-bindings/memory/mediatek,mt8188-memory-port.h
+> 
+> Note: larb19(21) as commented in that h above, it means larb19 while its SW
+> index is 21.
+> 
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 
-The line endings must be preserved on gpio-controller, io-supply, and
-reset-gpios properties to look proper when the YAML file is parsed.
+Please clarify the commit description:
 
-Currently it's interpreted as a single line when parsed. Change the style
-of the description of these properties to literal style to preserve the
-line endings.
+"larb19(21) as commented in that h above" => "As commented in the code, larb19(21)
+means .."
 
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-Acked-by: Rob Herring <robh@kernel.org>
----
+After which:
 
-v2: git send-email doesn't like --from "Name <mail@mail>" but --from
-mail@mail, got it. I also got to fix wrong submitter name for my gmail
-address on patchwork, sorry for the noise.
-
-Sending again now that net-next is open.
-
-Arınç
-
----
- .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml        | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index 449ee0735012..5ae9cd8f99a2 100644
---- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -93,7 +93,7 @@ properties:
- 
-   gpio-controller:
-     type: boolean
--    description:
-+    description: |
-       If defined, LED controller of the MT7530 switch will run on GPIO mode.
- 
-       There are 15 controllable pins.
-@@ -112,7 +112,7 @@ properties:
-     maxItems: 1
- 
-   io-supply:
--    description:
-+    description: |
-       Phandle to the regulator node necessary for the I/O power.
-       See Documentation/devicetree/bindings/regulator/mt6323-regulator.txt for
-       details for the regulator setup on these boards.
-@@ -124,7 +124,7 @@ properties:
-       switch is a part of the multi-chip module.
- 
-   reset-gpios:
--    description:
-+    description: |
-       GPIO to reset the switch. Use this if mediatek,mcm is not used.
-       This property is optional because some boards share the reset line with
-       other components which makes it impossible to probe the switch if the
--- 
-2.37.2
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
