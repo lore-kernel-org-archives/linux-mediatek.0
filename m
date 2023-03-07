@@ -4,59 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B80BC678D5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 13:42:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A039C6FD1A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 13:56:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KrOUd/OEMMuCZ68QL2mn+ahMTv4H/6y5eI1b2qbSrko=; b=3K9YuLC/Z4NtbFDlvHPxD7Erd4
-	HM5bw4xTkCa8SpJMZwj4CZZ5y43gUa28xGGzXycJq4MguxRSP/ohHx9I/a5ZoFz/5vEH3977RBzjW
-	9CfqjJ1rYASPlHzP9yidX1fbTCA5DiqtdTl1UmSDWAeA4ewYH1B/YZp1Qo5Q1A+DKkfZ7dVrrLhBu
-	X6SyH1MsseMVIlPqrP2wokoOGsylj7ACxvAHcMsQMmE/qVLzYqXv+vlbyVgyp8TrvSsbHfTUBqfI5
-	yxljvKGQGCO4ZvickAc1BtEUfn3mKh/81xyrP2+AY0hTHM4gvl0FwmVBZdobtruOkroi+oD+hrnWI
-	bW0/vuFg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Eeel5XHVDoFzIY2YG1FRNg5liLwMdDxd6X70lesaeNg=; b=BghoE4pcg37lFNIX0SIQdGXgKz
+	2IJyaWX09bvVrXqAvhIWzQCYyCPkUkl0PDY19Z+dBMJQ+DzZcEGkj2dqcBriZeUqle4AAkM6DnSKl
+	8wTIszTO5B5f3YPeyg26+Zm16yZLMhJpK6rcEgCWiCQ6RpTLjYaALI+1FbIn9uvHdrxAVeqk0H7qC
+	mprn7fTnmVNps+A//eSYa+gj92bEBFWc/Bq4g2eHmXtL98L3o+lwMebzH+E8Sr2uG8oDJ009Qacow
+	RoR6mUWs+C9EnzLduTIJvh1Uc2hCr1LHmAK2Zl8yda7m51ZZtHEJdGeKKXAh0dNzXeLVj1ZvyeszK
+	9N3rr/DA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZXZo-000T7E-MP; Tue, 07 Mar 2023 13:42:00 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pZXnT-000YrO-Lx; Tue, 07 Mar 2023 13:56:07 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZXKI-000N7T-2C; Tue, 07 Mar 2023 13:25:59 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pZXJn-0000FJ-03;
-	Tue, 07 Mar 2023 14:25:27 +0100
-Date: Tue, 7 Mar 2023 13:25:23 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH RFC net-next 4/4] net: mtk_eth_soc: note interface modes
- not set in supported_interfaces
-Message-ID: <ZAc7Q4VMzLjzQbRC@makrotopia.org>
-References: <Y/ivHGroIVTe4YP/@shell.armlinux.org.uk>
- <E1pVXJK-00CTAl-V7@rmk-PC.armlinux.org.uk>
- <ZAcnjXxLfeE9UIsO@shell.armlinux.org.uk>
+	id 1pZXac-000TQH-St
+	for linux-mediatek@lists.infradead.org; Tue, 07 Mar 2023 13:42:53 +0000
+Received: by mail-wr1-x433.google.com with SMTP id f11so12151869wrv.8
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Mar 2023 05:42:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1678196568;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Eeel5XHVDoFzIY2YG1FRNg5liLwMdDxd6X70lesaeNg=;
+        b=cbqb/e/w8w236fE3rmjvQsm/3PyhLPMdyuWqyoTBlqyuTuh4Zx/mzq9dD/hjQM321F
+         EPB63dMqDynEzEDCff8rJuhWAX0PUbR47loqbnjH60nmVA00l41/8wBdy7xRukr/QcUB
+         ++pbWDmgErb4+w499XFEq4DfaPlLlTf3SdD8SrXqLCdEL2MyhQvoRBTKg20+piBh5+m/
+         CCCuJRSWnewbDQIs/r6yxYgEhDO4p3noRsmSDMMaAnHkeTvDz7rQxGYCDnkyJAU1AC7U
+         1dy7QQb3V8jKCHqPH19PBYbF6nyFthwQQZ6D+8uFXby+DfyGtvOZHdG91NHBDkmmwQ5u
+         OPSg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678196568;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Eeel5XHVDoFzIY2YG1FRNg5liLwMdDxd6X70lesaeNg=;
+        b=VRdvHRx5JJE2tmaGWdpi0WWBqTEF7qdWML0VPi9evUOUQs/r3GbVsvPba2mDdPJ8uM
+         rG2tvEBHi6sZ9pJPEIsQKwF5xmKu9mo5ARR/WavK8gQmLPsBQY+q5FskPZ8V/v6b3vis
+         ebjQBzv2/UOfNIeMrgrq6h7j1deWHNbVj8M7LE2fFDefX4uDiAH56oCYxw8UJAZuehg2
+         FFElqMw6h+Izclh8NPYeQNuyDJvfvLgqu7hiXgyL+cMiSRQ/6Gl0eufXtU/Ew00ZUyh3
+         PXNddasCA7FjoxNXZwObvj56ZJEZEXOmwIcN085somu4sHOcWT8UtRNQr4I47fijWeCT
+         QRPA==
+X-Gm-Message-State: AO0yUKUklwnyDoDQnIfw+nuuYc0Kww2KdwEVtkCuoMcNUGIE0wmO3VrI
+	sFy05BrsaljcFKLmISj2JnODyw==
+X-Google-Smtp-Source: AK7set+aspRSIaTh4/XbS+bw8KYAx2Ifi6PVWrobx0AWeOOli8vUV5Ail29oq9+yZ42Y9gSmbdGEzw==
+X-Received: by 2002:adf:ea90:0:b0:2c9:d90c:56c3 with SMTP id s16-20020adfea90000000b002c9d90c56c3mr8924250wrm.53.1678196568111;
+        Tue, 07 Mar 2023 05:42:48 -0800 (PST)
+Received: from localhost.localdomain (laubervilliers-657-1-248-155.w90-24.abo.wanadoo.fr. [90.24.137.155])
+        by smtp.gmail.com with ESMTPSA id f2-20020a5d4dc2000000b002be5bdbe40csm12495589wru.27.2023.03.07.05.42.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 07 Mar 2023 05:42:47 -0800 (PST)
+From: bchihi@baylibre.com
+To: daniel.lezcano@linaro.org,
+	angelogioacchino.delregno@collabora.com,
+	rafael@kernel.org,
+	amitk@kernel.org,
+	rui.zhang@intel.com,
+	matthias.bgg@gmail.com,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	rdunlap@infradead.org,
+	ye.xingchen@zte.com.cn,
+	p.zabel@pengutronix.de
+Cc: linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	khilman@baylibre.com,
+	james.lo@mediatek.com,
+	rex-bc.chen@mediatek.com
+Subject: [PATCH] thermal/drivers/mediatek/lvts_thermal: fix memcpy's number of bytes in lvts_calibration_init()
+Date: Tue,  7 Mar 2023 14:42:45 +0100
+Message-Id: <20230307134245.83599-1-bchihi@baylibre.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230126161048.94089-1-bchihi@baylibre.com>
+References: <20230126161048.94089-1-bchihi@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZAcnjXxLfeE9UIsO@shell.armlinux.org.uk>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_052558_130202_7D6D7208 
-X-CRM114-Status: GOOD (  23.50  )
+X-CRM114-CacheID: sfid-20230307_054250_951112_B894E6EA 
+X-CRM114-Status: GOOD (  13.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,63 +105,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 07, 2023 at 12:01:17PM +0000, Russell King (Oracle) wrote:
-> To any of those with Mediatek hardware... Any opinions on what we should
-> do concerning these modes?
-> 
-> If I don't get a reply, then I'll delete these. There's no point having
-> this code if it's been unreachable for a while and no one's complained.
+From: Balsam CHIHI <bchihi@baylibre.com>
 
-A quick grep through the device trees of the more than 650 ramips and
-mediatek boards we support in OpenWrt has revealed that *none* of them
-uses either reduced-MII or reverse-MII PHY modes. I could imaging that
-some more specialized ramips boards may use the RMII 100M PHY mode to
-connect with exotic PHYs for industrial or automotive applications
-(think: for 100BASE-T1 PHY connected via RMII). I have never seen or
-touched such boards, but there are hints that they do exist.
+Replace memcpy 2 bytes by sizeof(int) bytes of LVTS calibration data.
 
-For reverse-MII there are cases in which the Ralink SoC (Rt305x, for
-example) is used in iNIC mode, ie. connected as a PHY to another SoC,
-and running only a minimal firmware rather than running Linux. Due to
-the lack of external DRAM for the Ralink SoC on this kind of boards,
-the Ralink SoC there will anyway never be able to boot Linux.
-I've seen this e.g. in multimedia devices like early WiFi-connected
-not-yet-so-smart TVs.
+Reported-by: Dan Carpenter <error27@gmail.com>
+Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+---
+Rebased on top of thermal/linux-next
+base-commit: 6828e402d06f7c574430b61c05db784cd847b19f
 
-Tl;dr: I'd drop them. If anyone really needs them, it would be easy to
-add them again and then also add them to the phylink capability mask.
+Original email :
+Hello Balsam CHIHI,
 
-> 
-> Thanks.
-> 
-> On Fri, Feb 24, 2023 at 12:36:26PM +0000, Russell King (Oracle) wrote:
-> > Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> > ---
-> >  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 ++
-> >  1 file changed, 2 insertions(+)
-> > 
-> > diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> > index f78810717f66..280490942fa4 100644
-> > --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> > +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> > @@ -530,9 +530,11 @@ static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
-> >  		case PHY_INTERFACE_MODE_GMII:
-> >  			ge_mode = 1;
-> >  			break;
-> > +		/* FIXME: RMII is not set in the phylink capabilities */
-> >  		case PHY_INTERFACE_MODE_REVMII:
-> >  			ge_mode = 2;
-> >  			break;
-> > +		/* FIXME: RMII is not set in the phylink capabilities */
-> >  		case PHY_INTERFACE_MODE_RMII:
-> >  			if (mac->id)
-> >  				goto err_phy;
-> > -- 
-> > 2.30.2
-> > 
-> > 
-> 
-> -- 
-> RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-> FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+The patch f5f633b18234: "thermal/drivers/mediatek: Add the Low
+Voltage Thermal Sensor driver" from Feb 9, 2023, leads to the
+following Smatch static checker warning:
+
+        drivers/thermal/mediatek/lvts_thermal.c:562 lvts_calibration_init()
+        warn: not copying enough bytes for '&lvts_ctrl->calibration[i]' (4 vs 2 bytes)
+
+drivers/thermal/mediatek/lvts_thermal.c
+    555 static int lvts_calibration_init(struct device *dev, struct lvts_ctrl *lvts_ctrl,
+    556                                         const struct lvts_ctrl_data *lvts_ctrl_data,
+    557                                         u8 *efuse_calibration)
+    558 {
+    559         int i;
+    560
+    561         for (i = 0; i < lvts_ctrl_data->num_lvts_sensor; i++)
+--> 562                 memcpy(&lvts_ctrl->calibration[i],
+    563                        efuse_calibration + lvts_ctrl_data->cal_offset[i], 2);
+                                                                                  ^
+This is copying an array of known ints to a u32 array.  It should copy
+sizeof(int) instead of 2.  It only works because the data you're on
+little endian and the data is small.
+
+    564
+    565         return 0;
+    566 }
+
+regards,
+dan carpenter
+---
+---
+ drivers/thermal/mediatek/lvts_thermal.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+index ddfdcbcf6d86..b505c6b49031 100644
+--- a/drivers/thermal/mediatek/lvts_thermal.c
++++ b/drivers/thermal/mediatek/lvts_thermal.c
+@@ -575,7 +575,7 @@ static int lvts_calibration_init(struct device *dev, struct lvts_ctrl *lvts_ctrl
+ 
+ 	for (i = 0; i < lvts_ctrl_data->num_lvts_sensor; i++)
+ 		memcpy(&lvts_ctrl->calibration[i],
+-		       efuse_calibration + lvts_ctrl_data->cal_offset[i], 2);
++		       efuse_calibration + lvts_ctrl_data->cal_offset[i], sizeof(int));
+ 
+ 	return 0;
+ }
+
+base-commit: 6828e402d06f7c574430b61c05db784cd847b19f
+prerequisite-patch-id: 73be949bd16979769e5b94905b244dcee4a8f687
+prerequisite-patch-id: d23d83a946e5b876ef01a717fd51b07df1fa08dd
+prerequisite-patch-id: d67f2455eef1c4a9ecc460dbf3c2e3ad47d213ec
+prerequisite-patch-id: 9076e9b3bd3cc411b7b80344211364db5f0cca17
+prerequisite-patch-id: e220d6ae26786f524c249588433f02e5f5f906ad
+prerequisite-patch-id: b407d2998e57678952128b3a4bac92a379132b09
+prerequisite-patch-id: fbb9212ce8c3530da17d213f56fa334ce4fa1b2b
+prerequisite-patch-id: 5db9eed2659028cf4419f2de3d093af7df6c2dad
+prerequisite-patch-id: a83c00c628605d1c8fbe1d97074f9f28efb1bcfc
+prerequisite-patch-id: 56a245620a4f8238cf1ba3844dc348de3db33845
+prerequisite-patch-id: 7df24b0bf11129ddd3356eacf192cc3fdb2bcded
+prerequisite-patch-id: 3213ca70cb5b26d54a7137ff40ca8cd2a795c414
+prerequisite-patch-id: 6c2202e85215d1c7e8ab16a6b85922e994c68d9b
+-- 
+2.34.1
+
 
