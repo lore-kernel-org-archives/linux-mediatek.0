@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2220AC6FA99
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 22:03:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3243FC6FA99
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 22:04:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=JuDmDmY4IV0QLoJ1ArzJ4ijcazQ7ZD0u2S2wBUytaV4=; b=k8V53P8cary27gz7mK0Skz5O+O
-	ltKGfZ6WRigsWFV4Hx73Vk776XAXxs6o8CfYumy8Ve9LDyEa7hA/qK01/M7/d6aijuzP1ksJ39cGY
-	HXd18Ls1s+/CV2W5APuVJ7sE3h4BArnfuTZSsi2ixP4e2bMJsoT2aK59pdxKykSHgSFq3w/+Ju3jD
-	GTbqXyAbWc2G0feYLqOwNUfMqYZemuIWEe4Un4vZXpxwuy72wGOG+8+LNDya6GvtXVS0GcNRJVxh0
-	h9z+o2KKG0UHgNPY+amYpVVTLQKY6VI+bi/FSw9/rLUat7rN+sSF0j7Vl0vUS6lU0r6RJKUujr/XT
-	eYSGiHxw==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LstyUSK2ksGKfcMC7HuMLK2ujqvPm5YfOXdsGasYESo=; b=aWofdhFlk99QGevQz4bNKgBu84
+	ZgOfMVCw/wlc2kDEwVso9SPfEYTlGmgBDEndEu0Zb8CdR81GLO3L6GNrRbufqZtrX1vS25WnYzRAv
+	l9kyO34UIJb5Vh+tMXX+3fWjyb5tLm9I+LBKRW5p8LJ7YKKahXnoc0di3jymwDvhIwxaCdFqAiJfE
+	7qzUDXdCgMKIuMqDcw8RhRrInGYUo29f/nH8RssOTe+kPBaDg8ZqE2+crroBCLJLuijqQagtqYjKq
+	Hn0vQe5oK43k1kgTOWzDsC1/4cE7joJbOLUgjVaFUZn/KJ2LDSgFgnod2fL8HqJ4ipf8zQ7CKsLmA
+	Vtcif21A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZfPS-002Ybn-UE; Tue, 07 Mar 2023 22:03:50 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1pZfPb-002Ygp-LT; Tue, 07 Mar 2023 22:03:59 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZfPI-002YYX-Jz; Tue, 07 Mar 2023 22:03:41 +0000
-Received: by mail-wm1-x336.google.com with SMTP id l7-20020a05600c4f0700b003e79fa98ce1so56209wmq.2;
-        Tue, 07 Mar 2023 14:03:38 -0800 (PST)
+	id 1pZfPM-002YZ2-1P; Tue, 07 Mar 2023 22:03:46 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id bw19so13569174wrb.13;
+        Tue, 07 Mar 2023 14:03:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678226617;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=JuDmDmY4IV0QLoJ1ArzJ4ijcazQ7ZD0u2S2wBUytaV4=;
-        b=RNXi6CIgsswuyNAn64MCE1WBucMN/4Lb2cthlZw4x33sH4no/5WS9mQOMKrXlZeIiZ
-         f4A2fky6gKi+hjyL07oPC4kprq1TCIoE9pRh0xDlCilqd4j35ULgS5rUYFFwQqiEgk6F
-         dFcWPzK/4/j5+q0lz+LJNcsixcNJHCcPeJHy7Q16jEXU8Iah9kdiFgCzW3RAO+6OMgpi
-         1mVqCP4Hx/9Ppg5oftc8FsrLtbcNvc4UboWlZ0RSzEkX/34eJ4DiE3nPssW7VrzWwjba
-         7gssg+qqA46xyoQmNVnsXbI4zHB8V0fgh5ij87CA18eZoqDNVkGgXyIC0DfSgJUkYr/i
-         m2gQ==
+        d=gmail.com; s=20210112; t=1678226620;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=LstyUSK2ksGKfcMC7HuMLK2ujqvPm5YfOXdsGasYESo=;
+        b=JTznxaDSIZk/x2YXBJnolwCPMu+BmF5gjJWvb5/X+6iDfQzlLsf1n87VYDLy5f0UBL
+         6oviJe1ukzqEdTg27I/xG1Wj5dM1N1aTMXRMXJTOxp0+fb8eL8nu840BAtMwYHaGkGFM
+         vuaayvTA8HSuyDZ4L0/2WkuLk62rHpzePfwk9nr0p6GS0zq9PHUKPfqoO4ZAfAZ5sjFI
+         GGQab32uW0JQLe0TCpCDmrr36ZmGjaUJgqh5OTlJNjptHQHZq6dhP23wf7iWm1+H5xj5
+         SFIPeQoIKFi8jdjw0tSNKP4k8qf+ZvaVCevsPoKPkM6Lm7Rw6tcXKUkQbFSN3VNtCAbl
+         Iocg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678226617;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=JuDmDmY4IV0QLoJ1ArzJ4ijcazQ7ZD0u2S2wBUytaV4=;
-        b=GbbqaG4Y09Fvn8sO/1BIreZDez+y2I156jlkfk62EhGq52zD5ufk+sfPuWtjB+Udey
-         jYmAX/1xyZw2I+jEM1BqYEzdH23VIs5nj1ILqaRG1SXPERbFb4E+l3hw2ehQx53YzHZd
-         wpOvrN2t30uPUJTyuK6YnjS2CSRHC8v7BLW2OYcd4kRqvsfFWKUXXWsFew5WbZiBFckc
-         t4t7mkwrV2bv4VDad9iFqvifu1aeqsRK1yFW7YAnuDIMsbvVNEz+k4e8KrE0+MDDJA8s
-         CbNVGCEtXcjCLnQ+a36Nf+oG9D93hoZwm55mlTVLudX2lPGxbzHzyohS/wgPNrezXVG5
-         iKUA==
-X-Gm-Message-State: AO0yUKVDQ8jao/AFT4XXCFoaKxRUVWsmvjnZZfSKalAZ0ylIqSb4/CpJ
-	P82Xe7CDymApLkhXQXGS98o=
-X-Google-Smtp-Source: AK7set+nNuteaAJCPG2h+uXKJN36DhqNuJ1LM58JQ9dJYBDea2ahKspMS4VBH1MVa7s1gsdYprAUZw==
-X-Received: by 2002:a05:600c:5127:b0:3ea:f01d:2346 with SMTP id o39-20020a05600c512700b003eaf01d2346mr14624376wms.15.1678226617227;
-        Tue, 07 Mar 2023 14:03:37 -0800 (PST)
+        d=1e100.net; s=20210112; t=1678226620;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=LstyUSK2ksGKfcMC7HuMLK2ujqvPm5YfOXdsGasYESo=;
+        b=YPUgqe4E3oQipcstFfnDyo5/y1GZq5s8U1G1Oql4fhW6WzfeI/sHlHxNGvl7BG7xiz
+         b36MxyTvoCN5glb1dD+4xv3d3TQxKJx1Aa5ZAGDzc8+LMGZJ5OJCqWAyIKoJB77Hq0qD
+         5FF6jP/sY8jwySQl+oI7+vbIjllpnF7TkF1IzOhSQljoIW7WZjeWeCb7qkcazgghl8B7
+         dXZKdgDAPXxE0fW1VMh9FtqullNYwIMg8myLSG1dkSXPuGXiHdkEYQiCScDokQCUhXIS
+         Cd0IhxZi2xMEwZ0WT8v8ls6pkVHU8QTLJwgAeYedPPSBPU1sWPpvPh3GNySlvx2xvO2A
+         NO+g==
+X-Gm-Message-State: AO0yUKWQqT9ZtSYcycbqRsYH8hXWK12oDqp5v9J7FTaiExo5g/oArZDr
+	EVZrTMXBWD5ICAYjUkez4Ps=
+X-Google-Smtp-Source: AK7set/r47niW5a/bUBb91PhT58/HqcU2MPuw7GZiPGUzn4bRzA0eCB9/J35AJ/YB+PF1LEk9IzelA==
+X-Received: by 2002:adf:f048:0:b0:2c7:1757:3a8e with SMTP id t8-20020adff048000000b002c717573a8emr10746733wro.34.1678226619878;
+        Tue, 07 Mar 2023 14:03:39 -0800 (PST)
 Received: from arinc9-PC.lan ([212.68.60.226])
-        by smtp.gmail.com with ESMTPSA id o13-20020a5d670d000000b002c8476dde7asm13556735wru.114.2023.03.07.14.03.34
+        by smtp.gmail.com with ESMTPSA id o13-20020a5d670d000000b002c8476dde7asm13556735wru.114.2023.03.07.14.03.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Mar 2023 14:03:36 -0800 (PST)
+        Tue, 07 Mar 2023 14:03:39 -0800 (PST)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Sean Wang <sean.wang@mediatek.com>,
@@ -80,16 +81,18 @@ Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net 1/2] net: dsa: mt7530: remove now incorrect comment regarding port 5
-Date: Wed,  8 Mar 2023 01:03:27 +0300
-Message-Id: <20230307220328.11186-1-arinc.unal@arinc9.com>
+Subject: [PATCH net 2/2] net: dsa: mt7530: set PLL frequency only when trgmii is used
+Date: Wed,  8 Mar 2023 01:03:28 +0300
+Message-Id: <20230307220328.11186-2-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
+In-Reply-To: <20230307220328.11186-1-arinc.unal@arinc9.com>
+References: <20230307220328.11186-1-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_140340_721261_19991CB4 
-X-CRM114-Status: GOOD (  11.66  )
+X-CRM114-CacheID: sfid-20230307_140344_112619_33C64433 
+X-CRM114-Status: GOOD (  13.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,29 +109,32 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Remove now incorrect comment regarding port 5 as GMAC5. This is supposed to
-be supported since commit 38f790a80560 ("net: dsa: mt7530: Add support for
-port 5") under mt7530_setup_port5().
+As my testing on the MCM MT7530 switch on MT7621 SoC shows, setting the PLL
+frequency does not affect MII modes other than trgmii on port 5 and port 6.
+So the assumption is that the operation here called "setting the PLL
+frequency" actually sets the frequency of the TRGMII TX clock.
 
-Fixes: 38f790a80560 ("net: dsa: mt7530: Add support for port 5")
+Make it so that it is set only when the trgmii mode is used.
+
+Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/dsa/mt7530.c | 2 --
+ 1 file changed, 2 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index a508402c4ecb..b1a79460df0e 100644
+index b1a79460df0e..961306c1ac14 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -2201,7 +2201,7 @@ mt7530_setup(struct dsa_switch *ds)
- 
- 	mt7530_pll_setup(priv);
- 
--	/* Enable Port 6 only; P5 as GMAC5 which currently is not supported */
-+	/* Enable port 6 */
- 	val = mt7530_read(priv, MT7530_MHWTRAP);
- 	val &= ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
- 	val |= MHWTRAP_MANUAL;
+@@ -430,8 +430,6 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+ 	switch (interface) {
+ 	case PHY_INTERFACE_MODE_RGMII:
+ 		trgint = 0;
+-		/* PLL frequency: 125MHz */
+-		ncpo1 = 0x0c80;
+ 		break;
+ 	case PHY_INTERFACE_MODE_TRGMII:
+ 		trgint = 1;
 -- 
 2.37.2
 
