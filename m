@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B989C6FA99
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 02:37:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3524BC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 02:38:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B3fUYpS3LnbDGHnuPjAepmzY+ww78KYwRrDrCdVfTbI=; b=JnzR7gvmvQ0vLZeIxABdgC/Jke
-	OLTfrutbhqj/kubsGRm6Hm4Bak/40+XZyoMv70ilBDby9vlP617hrjjghRbk4zfi7eJCe+UkyNaoE
-	/EFhDlvREL3umwMPW9NHyDwS8PUxi5HJGVwCrf2bosGQIc7V49M4ArE0/Qx1ZkM4APsY6WmClVxMQ
-	HNgmKYyuC/oCijnduY/Muz7dQ5gADkPJxvwa7DHZzVqjDUb0F0icfsMvloiool5nJvIjYoIEDZD94
-	7R2FTweVBd1y0UKzCwYz77PtMQN9RRcE34KkhytXYGxEV8F+YY/Ik8AHT62bNO5Fb2K/yvpSjFnLb
-	juJceOGA==;
+	bh=J+LXFciiS5DwAI74xJjdw77cbB8VWd8r6zJwG/j2qg8=; b=qi6enHsH3+MJ63VKzptt39TeS5
+	E7elSzl+ft8vDjewbSb5XkF/AIpK0R2w0+SbqlvUjQF8PtCIKe10cBGf2tmeenXIEfavdo2jZZifY
+	BwtMYRUUVj4uNsJG8h4tRwh8ieA2q5QXuZe1nc/HHgVHq70dB3ZZhU+nuKYd6WBfXg2Yg+3HhRVex
+	fInm/B6GsPxDQs3RY9+93z/NgSCwab8McyYV8GqcJcARAL62xb5vYDcKi7MbyBBhE/X32KTeuKPNt
+	+2n7Ji7tBWRQbuMdp5Y99laZGoNGOcGLZUq7kK0Zo9qQGqcOdmCupX9c3/1I3HtVwtmQZjjwF2f06
+	OMWlMaXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZNCn-00Ftn8-UO; Tue, 07 Mar 2023 02:37:34 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pZNDI-00Fu39-MT; Tue, 07 Mar 2023 02:38:04 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZNC5-00FtKM-OY; Tue, 07 Mar 2023 02:36:51 +0000
-X-UUID: e59542babc9011eda08d4d6090ec5a5c-20230306
+	id 1pZNCC-00FtOr-6f; Tue, 07 Mar 2023 02:36:57 +0000
+X-UUID: eace7e90bc9011edbbe3f76fe852e059-20230306
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=B3fUYpS3LnbDGHnuPjAepmzY+ww78KYwRrDrCdVfTbI=;
-	b=oeNfUvTH/ksbsbw6OfxxSgu7fG3qcdpJCyRJMwMlaUWJgJDuEstDstU5ZuSDtIzYeKB2GJvNP1DFSfnU17ATWswcfIipe64DhsI4IbTj7MrhYZ4XJg6NVbyFQwHnDw1ZLTwdXebU2EqXrc3e7cyXb36t8BKstrLZNk4UGvsrAwE=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=J+LXFciiS5DwAI74xJjdw77cbB8VWd8r6zJwG/j2qg8=;
+	b=N5hYa07FZ4u2EDnWwnvCv6sQmbFf3LShQ4QNuLW+OUek5/Gle/oIhJTLu/SNIDx4kIS0V8ajXOxz00YAQ69j+pyIrsHqlPZc2PjTb+MdLWpcOtq3l+SxnXNeiU99DH/ETsvhKWBWfoDZw1oCd8Mp26C6NMgQMtx3JMg4jb5CwbE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.20,REQID:8c6f2f4d-6ea7-4ac1-a7e0-d57296453fdf,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:25b5999,CLOUDID:8b29f7f4-ddba-41c3-91d9-10eeade8eac7,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+X-CID-O-INFO: VERSION:1.1.20,REQID:cb239523-8693-4200-9086-2b0ccd9987b8,IP:0,U
+	RL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-20
+X-CID-META: VersionHash:25b5999,CLOUDID:a52af7f4-ddba-41c3-91d9-10eeade8eac7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
-X-UUID: e59542babc9011eda08d4d6090ec5a5c-20230306
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+X-UUID: eace7e90bc9011edbbe3f76fe852e059-20230306
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yong.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1381849807; Mon, 06 Mar 2023 19:36:43 -0700
+	with ESMTP id 1927441775; Mon, 06 Mar 2023 19:36:51 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
  mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Tue, 7 Mar 2023 10:36:40 +0800
+ 15.2.1118.25; Tue, 7 Mar 2023 10:36:49 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Tue, 7 Mar 2023 10:36:39 +0800
+ 15.2.1118.25 via Frontend Transport; Tue, 7 Mar 2023 10:36:47 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>
@@ -63,9 +63,9 @@ CC: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
 	<kyrie.wu@mediatek.corp-partner.google.com>, <chengci.xu@mediatek.com>,
 	<youlin.pei@mediatek.com>, <anan.sun@mediatek.com>, Yong Wu
 	<yong.wu@mediatek.com>
-Subject: [PATCH v5 05/11] iommu/mediatek: mt8192: Add iova_region_larb_msk
-Date: Tue, 7 Mar 2023 10:35:01 +0800
-Message-ID: <20230307023507.13306-6-yong.wu@mediatek.com>
+Subject: [PATCH v5 06/11] iommu/mediatek: mt8195: Add iova_region_larb_msk
+Date: Tue, 7 Mar 2023 10:35:02 +0800
+Message-ID: <20230307023507.13306-7-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230307023507.13306-1-yong.wu@mediatek.com>
 References: <20230307023507.13306-1-yong.wu@mediatek.com>
@@ -74,8 +74,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230306_183649_850624_36765CFB 
-X-CRM114-Status: GOOD (  12.70  )
+X-CRM114-CacheID: sfid-20230306_183656_347425_C81FF628 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,66 +90,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add iova_region_larb_msk for mt8192. We separate the 16GB iova regions
+Add iova_region_larb_msk for mt8195. We separate the 16GB iova regions
 by each device's larbid/portid.
-Note: larb3/6/8/10/12/15 connect nothing in this SoC.
-Refer to the comment in include/dt-bindings/memory/mt8192-larb-port.h
-
-Define a new macro MT8192_MULTI_REGION_NR_MAX to indicate
-the index of mt8xxx_larb_region_msk and
-"struct mtk_iommu_iova_region mt8192_multi_dom"
-are the same.
+Refer to include/dt-bindings/memory/mt8195-memory-port.h
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/iommu/mtk_iommu.c | 19 ++++++++++++++++++-
- 1 file changed, 18 insertions(+), 1 deletion(-)
+ drivers/iommu/mtk_iommu.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 89a80982b7d1..710a3239fd3d 100644
+index 710a3239fd3d..0e387345e1c3 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -336,7 +336,12 @@ static const struct mtk_iommu_iova_region single_domain[] = {
- 	{.iova_base = 0,		.size = SZ_4G},
+@@ -1583,6 +1583,21 @@ static const struct mtk_iommu_plat_data mt8195_data_infra = {
+ 	.iova_region_nr   = ARRAY_SIZE(single_domain),
  };
  
--static const struct mtk_iommu_iova_region mt8192_multi_dom[] = {
-+#define MT8192_MULTI_REGION_NR_MAX	6
-+
-+#define MT8192_MULTI_REGION_NR	(IS_ENABLED(CONFIG_ARCH_DMA_ADDR_T_64BIT) ? \
-+				 MT8192_MULTI_REGION_NR_MAX : 1)
-+
-+static const struct mtk_iommu_iova_region mt8192_multi_dom[MT8192_MULTI_REGION_NR] = {
- 	{ .iova_base = 0x0,		.size = SZ_4G},		/* 0 ~ 4G */
- 	#if IS_ENABLED(CONFIG_ARCH_DMA_ADDR_T_64BIT)
- 	{ .iova_base = SZ_4G,		.size = SZ_4G},		/* 4G ~ 8G */
-@@ -1538,6 +1543,17 @@ static const struct mtk_iommu_plat_data mt8186_data_mm = {
- 	.iova_region_nr = ARRAY_SIZE(mt8192_multi_dom),
- };
- 
-+static const unsigned int mt8192_larb_region_msk[MT8192_MULTI_REGION_NR_MAX][MTK_LARB_NR_MAX] = {
-+	[0] = {~0, ~0},				/* Region0: larb0/1 */
-+	[1] = {0, 0, 0, 0, ~0, ~0, 0, ~0},	/* Region1: larb4/5/7 */
-+	[2] = {0, 0, ~0, 0, 0, 0, 0, 0,		/* Region2: larb2/9/11/13/14/16/17/18/19/20 */
-+	       0, ~0, 0, ~0, 0, ~(u32)(BIT(9) | BIT(10)), ~(u32)(BIT(4) | BIT(5)), 0,
-+	       ~0, ~0, ~0, ~0, ~0},
++static const unsigned int mt8195_larb_region_msk[MT8192_MULTI_REGION_NR_MAX][MTK_LARB_NR_MAX] = {
++	[0] = {~0, ~0, ~0, ~0},               /* Region0: all ports for larb0/1/2/3 */
++	[1] = {0, 0, 0, 0, 0, 0, 0, 0,
++	       0, 0, 0, 0, 0, 0, 0, 0,
++	       0, 0, 0, ~0, ~0, ~0, ~0, ~0,   /* Region1: larb19/20/21/22/23/24 */
++	       ~0},
++	[2] = {0, 0, 0, 0, ~0, ~0, ~0, ~0,    /* Region2: the other larbs. */
++	       ~0, ~0, ~0, ~0, ~0, ~0, ~0, ~0,
++	       ~0, ~0, 0, 0, 0, 0, 0, 0,
++	       0, ~0, ~0, ~0, ~0},
 +	[3] = {0},
-+	[4] = {[13] = BIT(9) | BIT(10)},	/* larb13 port9/10 */
-+	[5] = {[14] = BIT(4) | BIT(5)},		/* larb14 port4/5 */
++	[4] = {[18] = BIT(0) | BIT(1)},       /* Only larb18 port0/1 */
++	[5] = {[18] = BIT(2) | BIT(3)},       /* Only larb18 port2/3 */
 +};
 +
- static const struct mtk_iommu_plat_data mt8192_data = {
- 	.m4u_plat       = M4U_MT8192,
+ static const struct mtk_iommu_plat_data mt8195_data_vdo = {
+ 	.m4u_plat	= M4U_MT8195,
  	.flags          = HAS_BCLK | HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN |
-@@ -1547,6 +1563,7 @@ static const struct mtk_iommu_plat_data mt8192_data = {
+@@ -1593,6 +1608,7 @@ static const struct mtk_iommu_plat_data mt8195_data_vdo = {
  	.banks_enable   = {true},
- 	.iova_region    = mt8192_multi_dom,
- 	.iova_region_nr = ARRAY_SIZE(mt8192_multi_dom),
-+	.iova_region_larb_msk = mt8192_larb_region_msk,
- 	.larbid_remap   = {{0}, {1}, {4, 5}, {7}, {2}, {9, 11, 19, 20},
- 			   {0, 14, 16}, {0, 13, 18, 17}},
+ 	.iova_region	= mt8192_multi_dom,
+ 	.iova_region_nr	= ARRAY_SIZE(mt8192_multi_dom),
++	.iova_region_larb_msk = mt8195_larb_region_msk,
+ 	.larbid_remap   = {{2, 0}, {21}, {24}, {7}, {19}, {9, 10, 11},
+ 			   {13, 17, 15/* 17b */, 25}, {5}},
  };
+@@ -1607,6 +1623,7 @@ static const struct mtk_iommu_plat_data mt8195_data_vpp = {
+ 	.banks_enable   = {true},
+ 	.iova_region	= mt8192_multi_dom,
+ 	.iova_region_nr	= ARRAY_SIZE(mt8192_multi_dom),
++	.iova_region_larb_msk = mt8195_larb_region_msk,
+ 	.larbid_remap   = {{1}, {3},
+ 			   {22, MTK_INVALID_LARBID, MTK_INVALID_LARBID, MTK_INVALID_LARBID, 23},
+ 			   {8}, {20}, {12},
 -- 
 2.25.1
 
