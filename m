@@ -4,132 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D14F2C6FA99
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 12:01:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FB23C678D5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 12:03:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wdVZz8+KFRtKLbWyeEMdGAN3x16KFXWAVD39yCjP1+s=; b=DAJEZYTNAPgJQcwq4XmzrocLUl
-	daf9q2enQ7VjgA1ol2hg1k7yxwdV0nsFFLtdIgfUPZ/pq4YDPRCwtb5q9hkYO2KLQHD3nFZ7eyLnx
-	SCicYXt3m3LRE3Y9scnB3qX+eQCQ8LJH7Nw1koHeFtGj4gmuFkOsvXYwmXiwV/5rR9aVbR4B/FTk6
-	zJFa1f4j/sF5bWz8XP2bM0QTVnVVMxzrsrF2b1jA/ohDt1u9+gqIGfDuATc9riq74hP1s4OulrwVT
-	jsCP5niFwt8wXAE/J+rQujRfSYgcGEm1gpbjwfEueD4Gv3iW5Opxco0FykY5gB74yCvZF/Tg1tV2K
-	876ZzREA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/DdiJJW2KMfOiNRsqXeyzvsPa+tiQ685iR7M7gsvOIw=; b=gD+BzXSsaPnL1F4WjpPABn1kEm
+	I9ik98ZixGJqkCEsRGvHmyuVmfb9+bqr4h2QR5cMpLVyBzbG4k/Dfna8mHeQrTRC4QG6JUnN+2zkX
+	GWoeYyiKNGJuTi7GheVEJW5WK2fl3e0leKKGgRAq7f7T4XXK9UXCUgP7vDTtmoKuyuQvsiX3lUsX3
+	9qOf8u88JiKPKc8tX9KnodKHRboTc65EMPVZ2Lf+kgXRiND4mlhYVByNOjjSjrdpCP9T0r//WAS3A
+	FvCtzs06IO1X1Q7NNcyCDhAjpL1SYlyFoYCSCR1eog1hfL/WOqllNj+Md/N5vFzpT1a3ojBRn+Wt1
+	TCzpMNjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZW0I-00HaEw-JJ; Tue, 07 Mar 2023 12:01:14 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pZW22-0000B3-GD; Tue, 07 Mar 2023 12:03:02 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZVzD-00HZVM-Eq
-	for linux-mediatek@bombadil.infradead.org; Tue, 07 Mar 2023 12:00:07 +0000
+	id 1pZW0o-00HaXo-98; Tue, 07 Mar 2023 12:01:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=wdVZz8+KFRtKLbWyeEMdGAN3x16KFXWAVD39yCjP1+s=; b=hoi7LyA23DDwI+LE3riiJ0MF0i
-	r+Z36JO/G5XLDi8Su1dwGehyVMZYnZlrySwDMJDBxQRbeLFpdMhHZK40jHuDA7jb9rc61I/3Oi5rw
-	3ABMPwV/eyC5q+NV4gknG5e265Z3tANgcSCWfp56IYEce8u7nmbJlOTSEp4178UVE8wTNOB/P8ZQs
-	GZU+wfb0eLX0H3La0rfLB5PmD4YtNn/nH6oavrcIPFt9jD/FQQWePTzPb6A+SaBzrMU8Ts8F7T/C4
-	sagztse+hywmDB4uA/dIJgf89XuzZ5jItbTbj7WhFtn9mqfmXKfpxD8+gq+Vz+Qj1X0+XR6ZdvDSu
-	2KO3EghA==;
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pZVz9-00H2Gf-2T
-	for linux-mediatek@lists.infradead.org;
-	Tue, 07 Mar 2023 12:00:06 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pZVyN-0006T7-KM; Tue, 07 Mar 2023 12:59:15 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pZVyF-002TEW-9a; Tue, 07 Mar 2023 12:59:07 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pZVyE-002yig-5U; Tue, 07 Mar 2023 12:59:06 +0100
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Andre Przywara <andre.przywara@arm.com>,
-	Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	Icenowy Zheng <uwu@icenowy.me>,
-	Justin Chen <justinpopo6@gmail.com>,
-	Al Cooper <alcooperx@gmail.com>,
-	Pratyush Yadav <p.yadav@ti.com>,
-	Rahul T R <r-ravikumar@ti.com>,
-	Swapnil Jakhade <sjakhade@cadence.com>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Liu Ying <victor.liu@nxp.com>,
-	Yuan Can <yuancan@huawei.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=/DdiJJW2KMfOiNRsqXeyzvsPa+tiQ685iR7M7gsvOIw=; b=R2Qb1TE8dqEBMGg7VF0Dpe19ee
+	hwjqzoiTKKi07io0ZMqiVYyM5u9bzjnQQTVVoSzx9jZ65pIh40pUSAT0gKdLJxqle8PKE1orcHzsy
+	F3KgegTzmjJhVakafY4SuCJioqn0+3aevIpZN87oxB9nTRFIANxkHKYggDcz7niX4UxmA+fImIsvI
+	7eXgUBImPC62skToo1ycHrXW2WkdpF3zU2gPzWKFGoUYMmbihzmKImoxY7/D00OvEe+dFn2aVGaA4
+	h/Z8fBdrklVOc+qizDVNHSWSVOrK2wvj+3OEagH8vXQuVoskHe/yRjdibMLMTVG6xGEHGJZwFd/Qi
+	PVwF2npg==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:36490)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1pZW0R-00007V-Bc; Tue, 07 Mar 2023 12:01:23 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1pZW0L-0001Ub-7W; Tue, 07 Mar 2023 12:01:17 +0000
+Date: Tue, 7 Mar 2023 12:01:17 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Allison Randal <allison@lohutok.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Miaoqian Lin <linmq006@gmail.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Amelie Delaunay <amelie.delaunay@foss.st.com>,
-	Dan Carpenter <error27@gmail.com>,
-	Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
-	JC Kuo <jckuo@nvidia.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Roger Quadros <rogerq@kernel.org>,
-	Matt Ranostay <mranostay@ti.com>,
-	Sinthu Raja <sinthu.raja@ti.com>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Tanmay Patil <t-patil@ti.com>,
-	Siddharth Vadapalli <s-vadapalli@ti.com>,
-	Lv Ruyi <lv.ruyi@zte.com.cn>
-Cc: linux-phy@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev,
-	kernel@pengutronix.de,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-tegra@vger.kernel.org
-Subject: [PATCH 00/31] phy: Convert to platform remove callback returning void
-Date: Tue,  7 Mar 2023 12:58:29 +0100
-Message-Id: <20230307115900.2293120-1-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.39.1
+	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH RFC net-next 4/4] net: mtk_eth_soc: note interface modes
+ not set in supported_interfaces
+Message-ID: <ZAcnjXxLfeE9UIsO@shell.armlinux.org.uk>
+References: <Y/ivHGroIVTe4YP/@shell.armlinux.org.uk>
+ <E1pVXJK-00CTAl-V7@rmk-PC.armlinux.org.uk>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5818; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=MYs5JN8sdLbdhFqX1o8FkbSoO7sfiFpKaRQbsKFPJqQ=; b=owEBbQGS/pANAwAKAcH8FHityuwJAcsmYgBkByZ3qXmeqAA+C0xt3Tbnmc2ihyUokkXi7q3YR NmSTiOqsGOJATMEAAEKAB0WIQR+cioWkBis/z50pAvB/BR4rcrsCQUCZAcmdwAKCRDB/BR4rcrs CQWGB/411PW1y2WnaZUJlgvVPVtj4QZujEz8AqlBRHTptyhx5CaQGlPe5Xdx6F1Q5b+kPwyAdD9 /HAdHufSEHfPbZGDUn4HLokWRJ8EGqimHminkBYxmUvdoH5XYFmaQwZ6a88+sD124laNpghG7TD rX6oqjXAt4PTE/fQrGyqD/tWwDxLRZpczwfFESmWk28IPcjCEOQQP+2oSas8Mef2Oc8JJQWBCvl YDEq69SPXLHguNB1ZudTCSbi4KAzJ9LHrwEWqumQjr2K3Du5Gg91o9+6EaSl2YQGu5XnPFgmqQ3 cWA/IVc9vOXlx2ruwlHvEB1wcclx//PSUSpKGg2356dPcYJG
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <E1pVXJK-00CTAl-V7@rmk-PC.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_120004_101445_9FD1A64E 
-X-CRM114-Status: GOOD (  11.79  )
+X-CRM114-CacheID: sfid-20230307_040146_623616_204AC578 
+X-CRM114-Status: GOOD (  16.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,125 +84,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+To any of those with Mediatek hardware... Any opinions on what we should
+do concerning these modes?
 
-this patch series adapts the platform drivers below drivers/phy to use the
-.remove_new() callback. Compared to the traditional .remove() callback
-.remove_new() returns no value. This is a good thing because the driver core
-doesn't (and cannot) cope for errors during remove. The only effect of a
-non-zero return value in .remove() is that the driver core emits a warning. The
-device is removed anyhow and an early return from .remove() usually yields a
-resource leak.
+If I don't get a reply, then I'll delete these. There's no point having
+this code if it's been unreachable for a while and no one's complained.
 
-By changing the remove callback to return void driver authors cannot
-reasonably assume any more that there is some kind of cleanup later.
+Thanks.
 
-All drivers in drivers/spmi returned zero unconditionally in their remove
-callback, so they could all be converted trivially to .remove_new().
+On Fri, Feb 24, 2023 at 12:36:26PM +0000, Russell King (Oracle) wrote:
+> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+> ---
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index f78810717f66..280490942fa4 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -530,9 +530,11 @@ static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
+>  		case PHY_INTERFACE_MODE_GMII:
+>  			ge_mode = 1;
+>  			break;
+> +		/* FIXME: RMII is not set in the phylink capabilities */
+>  		case PHY_INTERFACE_MODE_REVMII:
+>  			ge_mode = 2;
+>  			break;
+> +		/* FIXME: RMII is not set in the phylink capabilities */
+>  		case PHY_INTERFACE_MODE_RMII:
+>  			if (mac->id)
+>  				goto err_phy;
+> -- 
+> 2.30.2
+> 
+> 
 
-Note that this series depends on commit 5c5a7680e67b ("platform: Provide
-a remove callback that returns no value") which is included in v6.3-rc1.
-
-Best regards
-Uwe
-
-Uwe Kleine-König (31):
-  phy: allwinner: phy-sun4i-usb: Convert to platform remove callback
-    returning void
-  phy: broadcom: phy-brcm-usb: Convert to platform remove callback
-    returning void
-  phy: cadence: cdns-dphy: Convert to platform remove callback returning
-    void
-  phy: cadence: phy-cadence-sierra: Convert to platform remove callback
-    returning void
-  phy: cadence: phy-cadence-torrent: Convert to platform remove callback
-    returning void
-  phy: freescale: phy-fsl-imx8qm-lvds-phy: Convert to platform remove
-    callback returning void
-  phy: intel: phy-intel-lgm-combo: Convert to platform remove callback
-    returning void
-  phy: mediatek: phy-mtk-mipi-dsi: Convert to platform remove callback
-    returning void
-  phy: motorola: phy-cpcap-usb: Convert to platform remove callback
-    returning void
-  phy: motorola: phy-mapphone-mdm6600: Convert to platform remove
-    callback returning void
-  phy: phy-lgm-usb: Convert to platform remove callback returning void
-  phy: qualcomm: phy-qcom-apq8064-sata: Convert to platform remove
-    callback returning void
-  phy: qualcomm: phy-qcom-eusb2-repeater: Convert to platform remove
-    callback returning void
-  phy: qualcomm: phy-qcom-ipq806x-sata: Convert to platform remove
-    callback returning void
-  phy: renesas: phy-rcar-gen3-pcie: Convert to platform remove callback
-    returning void
-  phy: renesas: phy-rcar-gen3-usb2: Convert to platform remove callback
-    returning void
-  phy: renesas: phy-rcar-gen3-usb3: Convert to platform remove callback
-    returning void
-  phy: renesas: r8a779f0-ether-serdes: Convert to platform remove
-    callback returning void
-  phy: rockchip: phy-rockchip-inno-csidphy: Convert to platform remove
-    callback returning void
-  phy: rockchip: phy-rockchip-inno-dsidphy: Convert to platform remove
-    callback returning void
-  phy: rockchip: phy-rockchip-inno-hdmi: Convert to platform remove
-    callback returning void
-  phy: rockchip: phy-rockchip-typec: Convert to platform remove callback
-    returning void
-  phy: st: phy-stm32-usbphyc: Convert to platform remove callback
-    returning void
-  phy: tegra: xusb: Convert to platform remove callback returning void
-  phy: ti: phy-am654-serdes: Convert to platform remove callback
-    returning void
-  phy: ti: phy-da8xx-usb: Convert to platform remove callback returning
-    void
-  phy: ti: phy-dm816x-usb: Convert to platform remove callback returning
-    void
-  phy: ti: phy-j721e-wiz: Convert to platform remove callback returning
-    void
-  phy: ti: phy-omap-usb2: Convert to platform remove callback returning
-    void
-  phy: ti: phy-ti-pipe3: Convert to platform remove callback returning
-    void
-  phy: ti: phy-twl4030-usb: Convert to platform remove callback
-    returning void
-
- drivers/phy/allwinner/phy-sun4i-usb.c            | 6 ++----
- drivers/phy/broadcom/phy-brcm-usb.c              | 6 ++----
- drivers/phy/cadence/cdns-dphy.c                  | 6 ++----
- drivers/phy/cadence/phy-cadence-sierra.c         | 6 ++----
- drivers/phy/cadence/phy-cadence-torrent.c        | 6 ++----
- drivers/phy/freescale/phy-fsl-imx8qm-lvds-phy.c  | 6 ++----
- drivers/phy/intel/phy-intel-lgm-combo.c          | 5 ++---
- drivers/phy/mediatek/phy-mtk-mipi-dsi.c          | 5 ++---
- drivers/phy/motorola/phy-cpcap-usb.c             | 6 ++----
- drivers/phy/motorola/phy-mapphone-mdm6600.c      | 6 ++----
- drivers/phy/phy-lgm-usb.c                        | 6 ++----
- drivers/phy/qualcomm/phy-qcom-apq8064-sata.c     | 6 ++----
- drivers/phy/qualcomm/phy-qcom-eusb2-repeater.c   | 8 +++-----
- drivers/phy/qualcomm/phy-qcom-ipq806x-sata.c     | 6 ++----
- drivers/phy/renesas/phy-rcar-gen3-pcie.c         | 6 ++----
- drivers/phy/renesas/phy-rcar-gen3-usb2.c         | 6 ++----
- drivers/phy/renesas/phy-rcar-gen3-usb3.c         | 6 ++----
- drivers/phy/renesas/r8a779f0-ether-serdes.c      | 6 ++----
- drivers/phy/rockchip/phy-rockchip-inno-csidphy.c | 6 ++----
- drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c | 6 ++----
- drivers/phy/rockchip/phy-rockchip-inno-hdmi.c    | 6 ++----
- drivers/phy/rockchip/phy-rockchip-typec.c        | 6 ++----
- drivers/phy/st/phy-stm32-usbphyc.c               | 6 ++----
- drivers/phy/tegra/xusb.c                         | 6 ++----
- drivers/phy/ti/phy-am654-serdes.c                | 6 ++----
- drivers/phy/ti/phy-da8xx-usb.c                   | 6 ++----
- drivers/phy/ti/phy-dm816x-usb.c                  | 6 ++----
- drivers/phy/ti/phy-j721e-wiz.c                   | 6 ++----
- drivers/phy/ti/phy-omap-usb2.c                   | 6 ++----
- drivers/phy/ti/phy-ti-pipe3.c                    | 6 ++----
- drivers/phy/ti/phy-twl4030-usb.c                 | 6 ++----
- 31 files changed, 63 insertions(+), 123 deletions(-)
-
-base-commit: fe15c26ee26efa11741a7b632e9f23b01aca4cc6
 -- 
-2.39.1
-
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
