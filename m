@@ -4,89 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32844C678D5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 11:30:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE9BEC678D4
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 11:38:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8Gw+hMjGj1I9H2fg3ljNbnH8D9RaMuxw0VHL6fBZJv4=; b=YPv2ZJt2iuUkY/SlNzJx2XnLox
-	GumkXJ7W2OJAwarIebniqG7tIhFLQ5GO9o1BtHHTpsl6Fzz9MjPshXqynKg7ks/8FHCH/sVeg6i47
-	CMThjyVGU17Mz7E0siXQhKejldfIYT0aTEXh1dnLN7tHqCGQQa5jaKeF00y6EjIt3Lg6MMl/9kjxq
-	pK52Tp5yA5YCnkTN9fZ5XCeLy/aYVp7r6JW9UzHkRiCrZua2OBTplDZILHuHancsgYc9jH3jYRU1G
-	8zFzsuZXdG5E9rg1uPDocK3mFv1xoZ2hSC/Z4XJM+I7GYM54PRW32ugVX32iLro5pjWU2aNxdD0sF
-	O4RHTamw==;
+	bh=Ylf/mq//lzVCs2kUwljoL1tKekI4ibQM03In0NCDXLs=; b=hpnMV2l1ioCQ+vtV8vM2hBxGzM
+	1RDlFo30+aYtAPh4H45ggkaDjKDjkxNqeY+lXdgMWEHK1YM6njpqn40xm5HOUph0COfmhNFJ0r1Su
+	/FtB0yZMuM9A8xjEW8CeAnVD88t5vPbpCsxqDebszB7jkp0K+aiizZ1IAoXceU8WpTs3LCQUUBYim
+	UDRxYbtGodQXb0M37deMBjzIUBBQRIf3M9nZhHov50mnPGawxkw3jrVtZAH2+dWkjfq6Ubba/eghQ
+	PFP5aHu14ezih6KaUUNE5wwTTxrBVrBWVRY8ggImgz+el4a1IfbDp/sRzLMHyuAQEZBeSQkGjYWUw
+	27M1eFgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZVWk-00HTcJ-Tn; Tue, 07 Mar 2023 11:30:42 +0000
-Received: from mx0a-001ae601.pphosted.com ([67.231.149.25] helo=mx0b-001ae601.pphosted.com)
+	id 1pZVe9-00HV9J-RT; Tue, 07 Mar 2023 11:38:21 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZVWi-00HTbc-Qw; Tue, 07 Mar 2023 11:30:42 +0000
-Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
-	by mx0a-001ae601.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3277tv94022730;
-	Tue, 7 Mar 2023 05:30:19 -0600
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=PODMain02222019;
- bh=8Gw+hMjGj1I9H2fg3ljNbnH8D9RaMuxw0VHL6fBZJv4=;
- b=RLWayBHYAC3WRv9HPpNTERg+r3oTqRoc1PhTaiH7YBIi+g27pmBKE71aOiAvS27S3N07
- +QHcy5hOfjEbFGHVcXXvt9qIN3WGOS3Bqlri7NiCAQhOhMOgUcVD/jtynzPS4OAO8V4x
- y0soTVGFyQ8h0rjtQN8pahOoaJaEwQF+b1XRYG7PlC2fH/BI33BVKPohDXEuq+sfwinQ
- st9ocuKEdqcae/7gnnLT1gkEC3NHxNf2+QnaoIAl+yku5tDVskg+wvMD2woy7I197Y8b
- atlA+qMh5usVUKVHiqBqRp3egA8oAV2JdrRPRQRVEwGGY4zU2uz2Qv/12AeFgHJufFHL 1A== 
-Received: from ediex02.ad.cirrus.com ([84.19.233.68])
-	by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 3p4497427y-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 07 Mar 2023 05:30:19 -0600
-Received: from ediex02.ad.cirrus.com (198.61.84.81) by ediex02.ad.cirrus.com
- (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.25; Tue, 7 Mar
- 2023 05:30:16 -0600
-Received: from ediswmail.ad.cirrus.com (198.61.86.93) by
- anon-ediex02.ad.cirrus.com (198.61.84.81) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Tue, 7 Mar 2023 05:30:16 -0600
-Received: from ediswmail.ad.cirrus.com (ediswmail.ad.cirrus.com [198.61.86.93])
-	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id C72ED11D3;
-	Tue,  7 Mar 2023 11:30:16 +0000 (UTC)
-Date: Tue, 7 Mar 2023 11:30:16 +0000
-From: Charles Keepax <ckeepax@opensource.cirrus.com>
-To: Claudiu Beznea <claudiu.beznea@microchip.com>
-CC: <perex@perex.cz>, <tiwai@suse.com>, <lgirdwood@gmail.com>,
-        <broonie@kernel.org>, <james.schulman@cirrus.com>,
-        <david.rhodes@cirrus.com>, <tanureal@opensource.cirrus.com>,
-        <rf@opensource.cirrus.com>, <oder_chiou@realtek.com>,
-        <shengjiu.wang@gmail.com>, <Xiubo.Lee@gmail.com>, <festevam@gmail.com>,
-        <nicoleotsuka@gmail.com>, <shawnguo@kernel.org>,
-        <s.hauer@pengutronix.de>, <kernel@pengutronix.de>, <linux-imx@nxp.com>,
-        <cezary.rojewski@intel.com>, <pierre-louis.bossart@linux.intel.com>,
-        <peter.ujfalusi@linux.intel.com>, <yung-chuan.liao@linux.intel.com>,
-        <ranjani.sridharan@linux.intel.com>, <kai.vehmanen@linux.intel.com>,
-        <matthias.bgg@gmail.com>, <srinivas.kandagatla@linaro.org>,
-        <bgoswami@quicinc.com>, <vkoul@kernel.org>, <daniel.baluta@nxp.com>,
-        <thierry.reding@gmail.com>, <jonathanh@nvidia.com>,
-        <jarkko.nikula@bitmer.com>, <alsa-devel@alsa-project.org>,
-        <linux-kernel@vger.kernel.org>, <patches@opensource.cirrus.com>,
-        <linuxppc-dev@lists.ozlabs.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>,
-        <sound-open-firmware@alsa-project.org>, <linux-tegra@vger.kernel.org>,
-        <linux-omap@vger.kernel.org>
-Subject: Re: [PATCH] ASoC: do not include pm_runtime.h if not used
-Message-ID: <20230307113016.GS68926@ediswmail.ad.cirrus.com>
-References: <20230307103022.1007420-1-claudiu.beznea@microchip.com>
+	id 1pZVdy-00HV5P-M7; Tue, 07 Mar 2023 11:38:12 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id k10so27050310edk.13;
+        Tue, 07 Mar 2023 03:38:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678189051;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=Ylf/mq//lzVCs2kUwljoL1tKekI4ibQM03In0NCDXLs=;
+        b=qfmrPmJWAlfuCrezU2zfyKjyPn1k15H8+DCWstzdR9q7Zdiw4p9EkGmXZLB4rvVaxO
+         M8aFDlQU0WuJpCglA1/MTurm/Fs9mO0a+9M0rnn9YBsCoecDZZdUCH1MKo8ioElHt93f
+         LdvcbQrlXKmKTsXvH8qoi1c65T3TCx06by9wDB+/WdkF0dTci6q8qBJA1mEGeXcrmETM
+         9walOuPtXw//rddNM/yep3yIj5xNMptphS89eB4FnFz220hagzMKv6bYNHwX7TwaiQVz
+         9OuJYAvcafUDxLF1MLy+SH6LBdjtUEOuUysIHYZUbz/sp/4emVJ/sBewjMfBmXO+CS9m
+         eRDA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678189051;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Ylf/mq//lzVCs2kUwljoL1tKekI4ibQM03In0NCDXLs=;
+        b=v4C4JVm+8zoYxg6+pYRTA0Ag8G5vIoXe65UC1Jfjrv1RhsWqi0NCLIztQRt3brtk5N
+         D0KzR52uZKGxM/XCtORHUAIU0EoTR8CYEJqzdWJHPh4A18rMQEK2Ks3jd0Ry4Xq+hhlv
+         JnJORWWj7lTDci5i1XpVB6j7CuOboKvrTYNE6gjwmR9jIg+Mpv28oO/tX2B4vGSf7c/p
+         yaU/FP5pGJhxZ6mTElbDmh+yoqa5Xp6woY+jX/C52V5Jm/fai9IeUestAEwq8xflslZP
+         z7iworcstHqMwPRdxttTrdm+eNHzEmQzvJWD4DaTBvJtWZxZZbUUt0rxuXFV28GfXAPL
+         3/nw==
+X-Gm-Message-State: AO0yUKWqA8Bg6e7fG0Bm18jD7VFK4mbTv03tRTgNR3Q0E1DNozPv2Yyd
+	HYHz3q5sXhGiXyTQydafOv4=
+X-Google-Smtp-Source: AK7set+q9vyTDat0wK16qtvlKptYHYpRS/dTB7ZGYkMsDFFHqZU8dAjrdZF/YlQjZziUdW9i2UzcXA==
+X-Received: by 2002:a17:906:1317:b0:88d:d304:3433 with SMTP id w23-20020a170906131700b0088dd3043433mr14026907ejb.67.1678189051410;
+        Tue, 07 Mar 2023 03:37:31 -0800 (PST)
+Received: from skbuf ([188.27.184.189])
+        by smtp.gmail.com with ESMTPSA id q27-20020a17090622db00b008b1787ce722sm5939973eja.152.2023.03.07.03.37.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 07 Mar 2023 03:37:31 -0800 (PST)
+Date: Tue, 7 Mar 2023 13:37:28 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Subject: Re: [RFC PATCH net] net: dsa: mt7530: move PLL setup out of port 6
+ pad configuration
+Message-ID: <20230307113728.4lg6xqfhj5szcpd3@skbuf>
+References: <20230304125453.53476-1-arinc.unal@arinc9.com>
+ <20230304125453.53476-1-arinc.unal@arinc9.com>
+ <20230306154552.26o6sbwf3rfekcyz@skbuf>
+ <65f84ef3-8f72-d823-e6f9-44d33a953697@arinc9.com>
+ <20230306201905.yothcuxokzlk3mcq@skbuf>
+ <a8ad9299-1f9f-e184-4429-eef9950e22d8@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20230307103022.1007420-1-claudiu.beznea@microchip.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Proofpoint-GUID: 8AhJH_Etb0kWl8-U4QDOKiyr044l28y7
-X-Proofpoint-ORIG-GUID: 8AhJH_Etb0kWl8-U4QDOKiyr044l28y7
-X-Proofpoint-Spam-Reason: safe
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <a8ad9299-1f9f-e184-4429-eef9950e22d8@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_033040_916840_8F4D098D 
-X-CRM114-Status: GOOD (  16.76  )
+X-CRM114-CacheID: sfid-20230307_033810_750950_1FEDD7AA 
+X-CRM114-Status: GOOD (  23.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,33 +90,93 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, =?utf-8?B?UmVuw6k=?= van Dorst <opensource@vdorst.com>, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Russell King <rmk+kernel@armlinux.org.uk>, Alexander Couzens <lynxis@fe80.eu>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 07, 2023 at 12:30:22PM +0200, Claudiu Beznea wrote:
-> Do not include pm_runtime.h header in files where runtime PM support is
-> not implemented.
+On Tue, Mar 07, 2023 at 02:26:08PM +0300, Arınç ÜNAL wrote:
+> Port 5 as CPU port works fine with this patch. I completely removed from
+> port 6 phy modes.
 > 
-> Signed-off-by: Claudiu Beznea <claudiu.beznea@microchip.com>
-> ---
->  sound/soc/codecs/cs35l45.h                                | 1 -
-> diff --git a/sound/soc/codecs/cs35l45.h b/sound/soc/codecs/cs35l45.h
-> index 53fe9d2b7b15..0555702eac03 100644
-> --- a/sound/soc/codecs/cs35l45.h
-> +++ b/sound/soc/codecs/cs35l45.h
-> @@ -11,7 +11,6 @@
->  #ifndef CS35L45_H
->  #define CS35L45_H
->  
-> -#include <linux/pm_runtime.h>
->  #include <linux/regmap.h>
->  #include <linux/regulator/consumer.h>
->  
+> With your patch on MT7621 (remember port 5 always worked on MT7623):
+> 
+> - Port 5 at rgmii as the only CPU port works, even though the PLL frequency
+> won't be set. The download/upload speed is not affected.
 
-cs35l45 does already make use of some functions from that header,
-and more support is in the process of being upstreamed. So this
-part should be dropped.
+That's good. Empirically it seems to prove that ncpo1 only affects p6,
+which was my initial assumption.
 
-Thanks,
-Charles
+> - port 6 at trgmii mode won't work if the PLL frequency is not set. The
+> SoC's MAC (gmac0) won't receive anything. It checks out since setting the
+> PLL frequency is put under the "Setup the MT7530 TRGMII Tx Clock" comment.
+> So port 6 cannot properly transmit frames to the SoC's MAC.
+> 
+> - Port 6 at rgmii mode works without setting the PLL frequency. Speed is not
+> affected.
+> 
+> I commented out core_write(priv, CORE_PLL_GROUP5,
+> RG_LCDDS_PCW_NCPO1(ncpo1)); to stop setting the PLL frequency.
+> 
+> In conclusion, setting the PLL frequency is only needed for the trgmii mode,
+> so I believe we can get rid of it on other cases.
+
+Got it, sounds expected, then? My patch can be submitted as-is, correct?
+
+> One more thing, on MT7621, xtal matches to both HWTRAP_XTAL_40MHZ and
+> HWTRAP_XTAL_25MHZ so the final value of ncpo1 is 0x0a00. I'm not sure if
+> xtal matching both of them is the expected behaviour.
+> 
+> > diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> > index fbf27d4ab5d9..12cea89ae0ac 100644
+> > --- a/drivers/net/dsa/mt7530.c
+> > +++ b/drivers/net/dsa/mt7530.c
+> > @@ -439,8 +439,12 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+> >  			/* PLL frequency: 150MHz: 1.2GBit */
+> >  			if (xtal == HWTRAP_XTAL_40MHZ)
+> >  				ncpo1 = 0x0780;
+> > +				dev_info(priv->dev, "XTAL is 40MHz, ncpo1 is 0x0780\n");
+
+In the C language, you need to put brackets { } around multi-statement
+"if" blocks. Otherwise, despite the indentation, "dev_info" will be
+executed unconditionally (unlike in Python for example). There should
+also be a warning with newer gcc compilers about the misleading
+indentation not leading to the expected code.
+
+Like this:
+
+			if (xtal == HWTRAP_XTAL_40MHZ) {
+				ncpo1 = 0x0780;
+				dev_info(priv->dev, "XTAL is 40MHz, ncpo1 is 0x0780\n");
+			}
+
+> >  			if (xtal == HWTRAP_XTAL_25MHZ)
+> >  				ncpo1 = 0x0a00;
+> > +				dev_info(priv->dev, "XTAL is 25MHz, ncpo1 is 0x0a00\n");
+> > +			if (xtal == HWTRAP_XTAL_20MHZ)
+> > +				dev_info(priv->dev, "XTAL is 20MHz too\n");
+> >  		} else { /* PLL frequency: 250MHz: 2.0Gbit */
+> >  			if (xtal == HWTRAP_XTAL_40MHZ)
+> >  				ncpo1 = 0x0c80;
+> 
+> > [    0.710455] mt7530 mdio-bus:1f: MT7530 adapts as multi-chip module
+> > [    0.734419] mt7530 mdio-bus:1f: configuring for fixed/rgmii link mode
+> > [    0.741766] mt7530 mdio-bus:1f: Link is Up - 1Gbps/Full - flow control rx/tx
+> > [    0.743647] mt7530 mdio-bus:1f: configuring for fixed/trgmii link mode
+> > [    0.755422] mt7530 mdio-bus:1f: XTAL is 40MHz, ncpo1 is 0x0780
+> > [    0.761250] mt7530 mdio-bus:1f: XTAL is 25MHz, ncpo1 is 0x0a00
+> > [    0.769414] mt7530 mdio-bus:1f: Link is Up - 1Gbps/Full - flow control rx/tx
+> > [    0.772067] mt7530 mdio-bus:1f lan1 (uninitialized): PHY [mt7530-0:00] driver [MediaTek MT7530 PHY] (irq=17)
+> > [    0.788647] mt7530 mdio-bus:1f lan2 (uninitialized): PHY [mt7530-0:01] driver [MediaTek MT7530 PHY] (irq=18)
+> > [    0.800354] mt7530 mdio-bus:1f lan3 (uninitialized): PHY [mt7530-0:02] driver [MediaTek MT7530 PHY] (irq=19)
+> > [    0.812031] mt7530 mdio-bus:1f lan4 (uninitialized): PHY [mt7530-0:03] driver [MediaTek MT7530 PHY] (irq=20)
+> > [    0.823418] mtk_soc_eth 1e100000.ethernet eth1: entered promiscuous mode
+> > [    0.830250] mtk_soc_eth 1e100000.ethernet eth0: entered promiscuous mode
+> > [    0.837007] DSA: tree 0 setup
+> 
+> Thunderbird limits lines to about 72 columns, so I'm pasting as quotation
+> which seems to bypass that.
+
+That seems to have worked, but shouldn't have been needed. I've uninstalled
+Thunderbird in favor of mutt + vim for email editing.. although, isn't
+there a Word Wrap option which you can just turn off?
 
