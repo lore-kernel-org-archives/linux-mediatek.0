@@ -4,35 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A67CC6FD1B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 15:59:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69430C6FD1A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 16:00:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wBKCwXj483L5u4n0VldoyIhl3DjTamC0KnEuUOhkqgs=; b=w9rSVaKQrMDPhEUFMn1kJHfJpm
-	GN4E1gue19HNwkI3X94drR1uJBxiwIDmx/YvjTGDNGbliFmtaFClBKoz/IqJNfmiep1DzzNXsUBEX
-	rkw4VPO16wcrfgh51l1XIMenZs43tTjJUgZ8w7g8fihGK1doXSlIPOPehQ7N2jGBlJQHhca1RPt+x
-	GjJnIs3LslZAuSAWIbm/kWt41fukqGXcPq+OpKE0jMyraiB4Su9ecIdk4+sUEGsotLhxDgPeonRKi
-	tyhOItCVPJDIFonUnOktk1ht3XlfRRkRlXBp4KXhTBdVNNUUpCuROiWhF68H2PpkzlAZDWBhaYDKU
-	iyfdeRIQ==;
+	bh=CGeXGbJpt5OSYrhIezvxVux9Dt31ZYtObjTf01Pa9Tw=; b=K6kdk7hQKvoIpDyevfMUyRX6Qe
+	3g6FgfeOVLBcKu/kG2c1EMPFW/4ou/l338oFaofTDr9F4XXwQaRrgQXD/L4AEen9qS7FA4ZnSwzFn
+	1qKkAHmc8c1YBdpQYnZ2DmSP/EnV0UHbM5GHymOLUcAXGicC2+akVdW1MPi23Mk7l7/k7Q7UgCQpf
+	CxTX++Zq52RmjwKC/HGwet2LOxGfI+VfDhovSB1Q6/R5ZEueci9AohP7zf0QjHJNZiSkIDNfZYE9c
+	2jgOCkFo+M68R6vdLhIMqOyZqPTErMihlfVsPj5TZG7T7om0UXkyB0GlqqR2YMdnqZHI07CP5LDpX
+	2JDZM9mA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZZio-001MpK-9t; Tue, 07 Mar 2023 15:59:26 +0000
+	id 1pZZjG-001N6O-AI; Tue, 07 Mar 2023 15:59:54 +0000
 Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZZgI-001L9c-Pl; Tue, 07 Mar 2023 15:56:54 +0000
+	id 1pZZgX-001LL2-T7; Tue, 07 Mar 2023 15:57:07 +0000
 Received: from local
 	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1pZZgH-0001ue-1A;
-	Tue, 07 Mar 2023 16:56:49 +0100
-Date: Tue, 7 Mar 2023 15:55:13 +0000
+	id 1pZZgS-0001vB-21;
+	Tue, 07 Mar 2023 16:57:00 +0100
+Date: Tue, 7 Mar 2023 15:55:24 +0000
 From: Daniel Golle <daniel@makrotopia.org>
-To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+To: devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	Russell King <linux@armlinux.org.uk>,
 	Heiner Kallweit <hkallweit1@gmail.com>,
@@ -51,17 +53,17 @@ To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	Florian Fainelli <f.fainelli@gmail.com>,
 	Andrew Lunn <andrew@lunn.ch>,
 	Vladimir Oltean <vladimir.oltean@nxp.com>
-Subject: [PATCH net-next v12 14/18] net: ethernet: mtk_eth_soc: add
- MTK_NETSYS_V1 capability bit
-Message-ID: <e60efc0ca068723a9299107294376665eade3845.1678201958.git.daniel@makrotopia.org>
+Subject: [PATCH net-next v12 15/18] net: ethernet: mtk_eth_soc: move MAX_DEVS
+ in mtk_soc_data
+Message-ID: <5667bbae0ca9d261894ef1bab7c9578ec48ada72.1678201958.git.daniel@makrotopia.org>
 References: <cover.1678201958.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1678201958.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_075651_037945_374AA211 
-X-CRM114-Status: GOOD (  16.94  )
+X-CRM114-CacheID: sfid-20230307_075705_985035_2D55137E 
+X-CRM114-Status: GOOD (  19.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,227 +80,186 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Introduce MTK_NETSYS_V1 bit in the device capabilities for
-MT7621/MT7622/MT7623/MT7628/MT7629 SoCs.
-Use !MTK_NETSYS_V1 instead of MTK_NETSYS_V2 in the driver codebase.
-This is a preliminary patch to introduce support for MT7988 SoC.
+This is a preliminary patch to add MT7988 SoC support since it runs 3
+macs instead of 2.
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 30 +++++++-------
- drivers/net/ethernet/mediatek/mtk_eth_soc.h | 45 ++++++++++++---------
- 2 files changed, 41 insertions(+), 34 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 34 +++++++++++++++++++--
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 11 +++----
+ 2 files changed, 36 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 817951718681..e34065e17446 100644
+index e34065e17446..c858f21f603c 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -683,7 +683,7 @@ static void mtk_set_queue_speed(struct mtk_eth *eth, unsigned int idx,
- 	      FIELD_PREP(MTK_QTX_SCH_MIN_RATE_MAN, 1) |
- 	      FIELD_PREP(MTK_QTX_SCH_MIN_RATE_EXP, 4) |
- 	      MTK_QTX_SCH_LEAKY_BUCKET_SIZE;
--	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V1))
- 		val |= MTK_QTX_SCH_LEAKY_BUCKET_EN;
- 
- 	if (IS_ENABLED(CONFIG_SOC_MT7621)) {
-@@ -1062,7 +1062,7 @@ static bool mtk_rx_get_desc(struct mtk_eth *eth, struct mtk_rx_dma_v2 *rxd,
- 	rxd->rxd1 = READ_ONCE(dma_rxd->rxd1);
- 	rxd->rxd3 = READ_ONCE(dma_rxd->rxd3);
- 	rxd->rxd4 = READ_ONCE(dma_rxd->rxd4);
--	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
-+	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V1)) {
- 		rxd->rxd5 = READ_ONCE(dma_rxd->rxd5);
- 		rxd->rxd6 = READ_ONCE(dma_rxd->rxd6);
- 	}
-@@ -1120,7 +1120,7 @@ static int mtk_init_fq_dma(struct mtk_eth *eth)
- 
- 		txd->txd3 = TX_DMA_PLEN0(MTK_QDMA_PAGE_SIZE);
- 		txd->txd4 = 0;
--		if (MTK_HAS_CAPS(soc->caps, MTK_NETSYS_V2)) {
-+		if (!MTK_HAS_CAPS(soc->caps, MTK_NETSYS_V1)) {
- 			txd->txd5 = 0;
- 			txd->txd6 = 0;
- 			txd->txd7 = 0;
-@@ -1311,7 +1311,7 @@ static void mtk_tx_set_dma_desc(struct net_device *dev, void *txd,
- 	struct mtk_mac *mac = netdev_priv(dev);
- 	struct mtk_eth *eth = mac->hw;
- 
--	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
-+	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V1))
- 		mtk_tx_set_dma_desc_v2(dev, txd, info);
- 	else
- 		mtk_tx_set_dma_desc_v1(dev, txd, info);
-@@ -1962,7 +1962,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 			break;
- 
- 		/* find out which mac the packet come from. values start at 1 */
--		if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
-+		if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V1))
- 			mac = RX_DMA_GET_SPORT_V2(trxd.rxd5) - 1;
- 		else if (!MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628) &&
- 			 !(trxd.rxd4 & RX_DMA_SPECIAL_TAG))
-@@ -2058,7 +2058,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 		skb->dev = netdev;
- 		bytes += skb->len;
- 
--		if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
-+		if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V1)) {
- 			reason = FIELD_GET(MTK_RXD5_PPE_CPU_REASON, trxd.rxd5);
- 			hash = trxd.rxd5 & MTK_RXD5_FOE_ENTRY;
- 			if (hash != MTK_RXD5_FOE_ENTRY)
-@@ -2084,7 +2084,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 			mtk_ppe_check_skb(eth->ppe[0], skb, hash);
- 
- 		if (netdev->features & NETIF_F_HW_VLAN_CTAG_RX) {
--			if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
-+			if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V1)) {
- 				if (trxd.rxd3 & RX_DMA_VTAG_V2) {
- 					vlan_proto = RX_DMA_VPID(trxd.rxd4);
- 					vlan_tci = RX_DMA_VID(trxd.rxd4);
-@@ -2409,7 +2409,7 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
- 		txd->txd2 = next_ptr;
- 		txd->txd3 = TX_DMA_LS0 | TX_DMA_OWNER_CPU;
- 		txd->txd4 = 0;
--		if (MTK_HAS_CAPS(soc->caps, MTK_NETSYS_V2)) {
-+		if (!MTK_HAS_CAPS(soc->caps, MTK_NETSYS_V1)) {
- 			txd->txd5 = 0;
- 			txd->txd6 = 0;
- 			txd->txd7 = 0;
-@@ -2462,7 +2462,7 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
- 			      FIELD_PREP(MTK_QTX_SCH_MIN_RATE_MAN, 1) |
- 			      FIELD_PREP(MTK_QTX_SCH_MIN_RATE_EXP, 4) |
- 			      MTK_QTX_SCH_LEAKY_BUCKET_SIZE;
--			if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
-+			if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V1))
- 				val |= MTK_QTX_SCH_LEAKY_BUCKET_EN;
- 			mtk_w32(eth, val, soc->reg_map->qdma.qtx_sch + ofs);
- 			ofs += MTK_QTX_OFFSET;
-@@ -2598,7 +2598,7 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
- 
- 		rxd->rxd3 = 0;
- 		rxd->rxd4 = 0;
--		if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
-+		if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V1)) {
- 			rxd->rxd5 = 0;
- 			rxd->rxd6 = 0;
- 			rxd->rxd7 = 0;
-@@ -3164,7 +3164,7 @@ static int mtk_start_dma(struct mtk_eth *eth)
- 		       MTK_TX_BT_32DWORDS | MTK_NDP_CO_PRO |
- 		       MTK_RX_2B_OFFSET | MTK_TX_WB_DDONE;
- 
--		if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
-+		if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V1))
- 			val |= MTK_MUTLI_CNT | MTK_RESV_BUF |
- 			       MTK_WCOMP_EN | MTK_DMAD_WR_WDONE |
- 			       MTK_CHK_DDONE_EN | MTK_LEAKY_BUCKET_EN;
-@@ -3567,7 +3567,7 @@ static void mtk_hw_reset(struct mtk_eth *eth)
+@@ -4082,7 +4082,10 @@ static void mtk_sgmii_destroy(struct mtk_eth *eth)
  {
- 	u32 val;
+ 	int i;
  
--	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
-+	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V1)) {
- 		regmap_write(eth->ethsys, ETHSYS_FE_RST_CHK_IDLE_EN, 0);
- 		val = RSTCTRL_PPE0_V2;
- 	} else {
-@@ -3579,7 +3579,7 @@ static void mtk_hw_reset(struct mtk_eth *eth)
- 
- 	ethsys_reset(eth, RSTCTRL_ETH | RSTCTRL_FE | val);
- 
--	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
-+	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V1))
- 		regmap_write(eth->ethsys, ETHSYS_FE_RST_CHK_IDLE_EN,
- 			     0x3ffffff);
+-	for (i = 0; i < MTK_MAX_DEVS; i++)
++	if (!eth->sgmii_pcs)
++		return;
++
++	for (i = 0; i < eth->soc->num_devs; i++)
+ 		mtk_pcs_lynxi_destroy(eth->sgmii_pcs[i]);
  }
-@@ -3775,7 +3775,7 @@ static int mtk_hw_init(struct mtk_eth *eth, bool reset)
- 	else
- 		mtk_hw_reset(eth);
  
--	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
-+	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V1)) {
- 		/* Set FE to PDMAv2 if necessary */
- 		val = mtk_r32(eth, MTK_FE_GLO_MISC);
- 		mtk_w32(eth,  val | BIT(4), MTK_FE_GLO_MISC);
-@@ -3812,7 +3812,7 @@ static int mtk_hw_init(struct mtk_eth *eth, bool reset)
- 	 */
- 	val = mtk_r32(eth, MTK_CDMQ_IG_CTRL);
- 	mtk_w32(eth, val | MTK_CDMQ_STAG_EN, MTK_CDMQ_IG_CTRL);
--	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V1)) {
- 		val = mtk_r32(eth, MTK_CDMP_IG_CTRL);
- 		mtk_w32(eth, val | MTK_CDMP_STAG_EN, MTK_CDMP_IG_CTRL);
+@@ -4531,7 +4534,12 @@ static int mtk_sgmii_init(struct mtk_eth *eth)
+ 	u32 flags;
+ 	int i;
+ 
+-	for (i = 0; i < MTK_MAX_DEVS; i++) {
++	eth->sgmii_pcs = devm_kzalloc(eth->dev,
++				      sizeof(*eth->sgmii_pcs) *
++				      eth->soc->num_devs,
++				      GFP_KERNEL);
++
++	for (i = 0; i < eth->soc->num_devs; i++) {
+ 		np = of_parse_phandle(eth->dev->of_node, "mediatek,sgmiisys", i);
+ 		if (!np)
+ 			break;
+@@ -4576,6 +4584,18 @@ static int mtk_probe(struct platform_device *pdev)
+ 	if (MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628))
+ 		eth->ip_align = NET_IP_ALIGN;
+ 
++	eth->netdev = devm_kzalloc(eth->dev,
++				   sizeof(*eth->netdev) * eth->soc->num_devs,
++				   GFP_KERNEL);
++	if (!eth->netdev)
++		return -ENOMEM;
++
++	eth->mac = devm_kzalloc(eth->dev,
++				sizeof(*eth->mac) * eth->soc->num_devs,
++				GFP_KERNEL);
++	if (!eth->mac)
++		return -ENOMEM;
++
+ 	spin_lock_init(&eth->page_lock);
+ 	spin_lock_init(&eth->tx_irq_lock);
+ 	spin_lock_init(&eth->rx_irq_lock);
+@@ -4761,7 +4781,7 @@ static int mtk_probe(struct platform_device *pdev)
+ 			goto err_deinit_ppe;
  	}
+ 
+-	for (i = 0; i < MTK_MAX_DEVS; i++) {
++	for (i = 0; i < eth->soc->num_devs; i++) {
+ 		if (!eth->netdev[i])
+ 			continue;
+ 
+@@ -4835,6 +4855,7 @@ static const struct mtk_soc_data mt2701_data = {
+ 	.hw_features = MTK_HW_FEATURES,
+ 	.required_clks = MT7623_CLKS_BITMAP,
+ 	.required_pctl = true,
++	.num_devs = 2,
+ 	.txrx = {
+ 		.txd_size = sizeof(struct mtk_tx_dma),
+ 		.rxd_size = sizeof(struct mtk_rx_dma),
+@@ -4853,6 +4874,7 @@ static const struct mtk_soc_data mt7621_data = {
+ 	.required_pctl = false,
+ 	.offload_version = 1,
+ 	.hash_offset = 2,
++	.num_devs = 2,
+ 	.foe_entry_size = sizeof(struct mtk_foe_entry) - 16,
+ 	.txrx = {
+ 		.txd_size = sizeof(struct mtk_tx_dma),
+@@ -4874,6 +4896,7 @@ static const struct mtk_soc_data mt7622_data = {
+ 	.offload_version = 2,
+ 	.hash_offset = 2,
+ 	.has_accounting = true,
++	.num_devs = 2,
+ 	.foe_entry_size = sizeof(struct mtk_foe_entry) - 16,
+ 	.txrx = {
+ 		.txd_size = sizeof(struct mtk_tx_dma),
+@@ -4893,6 +4916,7 @@ static const struct mtk_soc_data mt7623_data = {
+ 	.required_pctl = true,
+ 	.offload_version = 1,
+ 	.hash_offset = 2,
++	.num_devs = 2,
+ 	.foe_entry_size = sizeof(struct mtk_foe_entry) - 16,
+ 	.txrx = {
+ 		.txd_size = sizeof(struct mtk_tx_dma),
+@@ -4912,6 +4936,7 @@ static const struct mtk_soc_data mt7629_data = {
+ 	.required_clks = MT7629_CLKS_BITMAP,
+ 	.required_pctl = false,
+ 	.has_accounting = true,
++	.num_devs = 2,
+ 	.txrx = {
+ 		.txd_size = sizeof(struct mtk_tx_dma),
+ 		.rxd_size = sizeof(struct mtk_rx_dma),
+@@ -4933,6 +4958,7 @@ static const struct mtk_soc_data mt7981_data = {
+ 	.hash_offset = 4,
+ 	.foe_entry_size = sizeof(struct mtk_foe_entry),
+ 	.has_accounting = true,
++	.num_devs = 2,
+ 	.txrx = {
+ 		.txd_size = sizeof(struct mtk_tx_dma_v2),
+ 		.rxd_size = sizeof(struct mtk_rx_dma_v2),
+@@ -4952,6 +4978,7 @@ static const struct mtk_soc_data mt7986_data = {
+ 	.required_pctl = false,
+ 	.offload_version = 2,
+ 	.hash_offset = 4,
++	.num_devs = 2,
+ 	.foe_entry_size = sizeof(struct mtk_foe_entry),
+ 	.has_accounting = true,
+ 	.txrx = {
+@@ -4970,6 +4997,7 @@ static const struct mtk_soc_data rt5350_data = {
+ 	.hw_features = MTK_HW_FEATURES_MT7628,
+ 	.required_clks = MT7628_CLKS_BITMAP,
+ 	.required_pctl = false,
++	.num_devs = 2,
+ 	.txrx = {
+ 		.txd_size = sizeof(struct mtk_tx_dma),
+ 		.rxd_size = sizeof(struct mtk_rx_dma),
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 3dfa880da41a..cb3cdf0b38d5 100644
+index cb3cdf0b38d5..f0c38c856cd0 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -820,6 +820,7 @@ enum mkt_eth_capabilities {
- 	MTK_SHARED_INT_BIT,
- 	MTK_TRGMII_MT7621_CLK_BIT,
- 	MTK_QDMA_BIT,
-+	MTK_NETSYS_V1_BIT,
- 	MTK_NETSYS_V2_BIT,
- 	MTK_SOC_MT7628_BIT,
- 	MTK_RSTCTRL_PPE1_BIT,
-@@ -855,6 +856,7 @@ enum mkt_eth_capabilities {
- #define MTK_SHARED_INT		BIT(MTK_SHARED_INT_BIT)
- #define MTK_TRGMII_MT7621_CLK	BIT(MTK_TRGMII_MT7621_CLK_BIT)
- #define MTK_QDMA		BIT(MTK_QDMA_BIT)
-+#define MTK_NETSYS_V1		BIT(MTK_NETSYS_V1_BIT)
- #define MTK_NETSYS_V2		BIT(MTK_NETSYS_V2_BIT)
- #define MTK_SOC_MT7628		BIT(MTK_SOC_MT7628_BIT)
- #define MTK_RSTCTRL_PPE1	BIT(MTK_RSTCTRL_PPE1_BIT)
-@@ -911,25 +913,30 @@ enum mkt_eth_capabilities {
+@@ -1016,6 +1016,7 @@ struct mtk_reg_map {
+  * @required_pctl		A bool value to show whether the SoC requires
+  *				the extra setup for those pins used by GMAC.
+  * @hash_offset			Flow table hash offset.
++ * @num_devs			SoC number of macs.
+  * @foe_entry_size		Foe table entry size.
+  * @has_accounting		Bool indicating support for accounting of
+  *				offloaded flows.
+@@ -1034,6 +1035,7 @@ struct mtk_soc_data {
+ 	bool		required_pctl;
+ 	u8		offload_version;
+ 	u8		hash_offset;
++	u8		num_devs;
+ 	u16		foe_entry_size;
+ 	netdev_features_t hw_features;
+ 	bool		has_accounting;
+@@ -1049,9 +1051,6 @@ struct mtk_soc_data {
  
- #define MTK_HAS_CAPS(caps, _x)		(((caps) & (_x)) == (_x))
+ #define MTK_DMA_MONITOR_TIMEOUT		msecs_to_jiffies(1000)
  
--#define MT7621_CAPS  (MTK_GMAC1_RGMII | MTK_GMAC1_TRGMII | \
--		      MTK_GMAC2_RGMII | MTK_SHARED_INT | \
--		      MTK_TRGMII_MT7621_CLK | MTK_QDMA)
+-/* currently no SoC has more than 2 macs */
+-#define MTK_MAX_DEVS			2
 -
--#define MT7622_CAPS  (MTK_GMAC1_RGMII | MTK_GMAC1_SGMII | MTK_GMAC2_RGMII | \
--		      MTK_GMAC2_SGMII | MTK_GDM1_ESW | \
--		      MTK_MUX_GDM1_TO_GMAC1_ESW | \
--		      MTK_MUX_GMAC1_GMAC2_TO_SGMII_RGMII | MTK_QDMA)
--
--#define MT7623_CAPS  (MTK_GMAC1_RGMII | MTK_GMAC1_TRGMII | MTK_GMAC2_RGMII | \
--		      MTK_QDMA)
--
--#define MT7628_CAPS  (MTK_SHARED_INT | MTK_SOC_MT7628)
--
--#define MT7629_CAPS  (MTK_GMAC1_SGMII | MTK_GMAC2_SGMII | MTK_GMAC2_GEPHY | \
--		      MTK_GDM1_ESW | MTK_MUX_GDM1_TO_GMAC1_ESW | \
--		      MTK_MUX_GMAC2_GMAC0_TO_GEPHY | \
--		      MTK_MUX_U3_GMAC2_TO_QPHY | \
--		      MTK_MUX_GMAC12_TO_GEPHY_SGMII | MTK_QDMA)
-+#define MT7621_CAPS  (MTK_GMAC1_RGMII | MTK_GMAC1_TRGMII |	\
-+		      MTK_GMAC2_RGMII | MTK_SHARED_INT |	\
-+		      MTK_TRGMII_MT7621_CLK | MTK_QDMA |	\
-+		      MTK_NETSYS_V1)
-+
-+#define MT7622_CAPS  (MTK_GMAC1_RGMII | MTK_GMAC1_SGMII |	\
-+		      MTK_GMAC2_RGMII | MTK_GMAC2_SGMII |	\
-+		      MTK_GDM1_ESW | MTK_MUX_GDM1_TO_GMAC1_ESW |\
-+		      MTK_MUX_GMAC1_GMAC2_TO_SGMII_RGMII |	\
-+		      MTK_QDMA | MTK_NETSYS_V1)
-+
-+#define MT7623_CAPS  (MTK_GMAC1_RGMII | MTK_GMAC1_TRGMII |	\
-+		      MTK_GMAC2_RGMII | MTK_QDMA |		\
-+		      MTK_NETSYS_V1)
-+
-+#define MT7628_CAPS  (MTK_SHARED_INT | MTK_SOC_MT7628 |		\
-+		      MTK_NETSYS_V1)
-+
-+#define MT7629_CAPS  (MTK_GMAC1_SGMII | MTK_GMAC2_SGMII |	\
-+		      MTK_GMAC2_GEPHY | MTK_GDM1_ESW |		\
-+		      MTK_MUX_GMAC2_GMAC0_TO_GEPHY | MTK_QDMA |	\
-+		      MTK_MUX_U3_GMAC2_TO_QPHY | MTK_NETSYS_V1 |\
-+		      MTK_MUX_GDM1_TO_GMAC1_ESW |		\
-+		      MTK_MUX_GMAC12_TO_GEPHY_SGMII)
- 
- #define MT7981_CAPS  (MTK_GMAC1_SGMII | MTK_GMAC2_SGMII | MTK_GMAC2_GEPHY | \
- 		      MTK_MUX_GMAC12_TO_GEPHY_SGMII | MTK_QDMA | \
+ /* struct mtk_eth -	This is the main datasructure for holding the state
+  *			of the driver
+  * @dev:		The device pointer
+@@ -1106,14 +1105,14 @@ struct mtk_eth {
+ 	spinlock_t			tx_irq_lock;
+ 	spinlock_t			rx_irq_lock;
+ 	struct net_device		dummy_dev;
+-	struct net_device		*netdev[MTK_MAX_DEVS];
+-	struct mtk_mac			*mac[MTK_MAX_DEVS];
++	struct net_device		**netdev;
++	struct mtk_mac			**mac;
+ 	int				irq[3];
+ 	u32				msg_enable;
+ 	unsigned long			sysclk;
+ 	struct regmap			*ethsys;
+ 	struct regmap			*infra;
+-	struct phylink_pcs		*sgmii_pcs[MTK_MAX_DEVS];
++	struct phylink_pcs		**sgmii_pcs;
+ 	struct regmap			*pctl;
+ 	bool				hwlro;
+ 	refcount_t			dma_refcnt;
 -- 
 2.39.2
 
