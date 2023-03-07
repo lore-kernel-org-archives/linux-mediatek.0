@@ -4,77 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DED33C678DB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 09:57:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC913C678D5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 09:58:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+RP4oTBHTQfU+cSOnEmCaBzJhcvOEi+tlYyv1N22EK0=; b=k6JYczDzOThzoNJk4I0zD17WiK
-	lsya0aIUNtvhAaKPoZlCsHa+gMmGeKitSPNJwGUQJTjVwUYgZDChlzR9jmRjFwHHo1XgFVi6Yu9uw
-	tPTbqA7CXzutObQgc57ZL+iPnkGLSNFej9swWwS+RYIcw01Kfv1JnWSpE8loN9QpcToBIb42kQQMC
-	tS7f0ca3U9CWCAmq99a7zlDdV9coYQpDte6MJaOJNLPtZmjUYcsA74c8fkxebUdnEuuBcx3f5aZTi
-	0Tpt/MIbvLaOlNEXAHKT8tgdqCaR5npqwjB9QFi4zhAUeniCMjjO6WQCPp7j4Y5yefM42AyQGVJwG
-	hf3oOMdw==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=84FgM/FVnZP1rWfRH7Rix7KO0TYKL81ghGqMfAMNH9w=; b=rxydj3IInJcDHUF/tSqnOFFLDM
+	1Ryr+fF62px9Tp95B8pLbu42Io1FGr1xgsoJNqp9AzczE9SgmnKMmnPjLZ9kqLBIj4EM2dY0v5TW4
+	rZbHBiPNMmD3aPcgmsrvVlOHsaP95QCuSjszMaJ1m3IjSxtTQZsQHcWPWURn0xJMBmNBgfj47khVv
+	g3epMPdNBDRp/2IgAJlSyPcYKB+e7T1JDvyFk8a/7vG94C8zC32UeiFvCKAdVF2IpK2thn3E0nLvv
+	pvhrxZUAR2LMbIn6GG5UGEdNxs4f0R+NvyJOcU5DzWd0asQsN6JNQouJdLgcjOZAA7L4+CIcP5y09
+	GzEHUyOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZU48-00H5Im-Hi; Tue, 07 Mar 2023 09:57:04 +0000
-Received: from mail-vs1-xe2e.google.com ([2607:f8b0:4864:20::e2e])
+	id 1pZU5d-00H641-Dc; Tue, 07 Mar 2023 09:58:37 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZU30-00H4fH-0s
-	for linux-mediatek@lists.infradead.org; Tue, 07 Mar 2023 09:55:55 +0000
-Received: by mail-vs1-xe2e.google.com with SMTP id o2so11768929vss.8
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Mar 2023 01:55:53 -0800 (PST)
+	id 1pZU3b-00H4yp-V7; Tue, 07 Mar 2023 09:56:33 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id l25so11525038wrb.3;
+        Tue, 07 Mar 2023 01:56:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1678182953;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=+RP4oTBHTQfU+cSOnEmCaBzJhcvOEi+tlYyv1N22EK0=;
-        b=NHiNggQW7NfCAAvBD5ei7LCdwF00j9A7BOiqv3LttCcsdwo/weQ9LhfU9Nz3t9K0Fi
-         e8StI7dy46pVfR2lKDF71AlvtMc8TJEB65CXOk8EKH/8P6OLO2iqz7I0gly94Gqxs964
-         0aI9kk4tURcrj9YAdXnCi7av7TMDe/aaony7c=
+        d=gmail.com; s=20210112; t=1678182988;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=84FgM/FVnZP1rWfRH7Rix7KO0TYKL81ghGqMfAMNH9w=;
+        b=eFq2KyyTn/QGbH4BM+M5/FmPPuIzwcnCVqRLo0zYV0sSvg0+tGAXHazl9KWmkCiEk7
+         WLxBQGPM1bsojnZFEfY05aoyYIowBdtL7gvKFGicwSButTOpEAtuuHkrMFeD+eD8Klan
+         NdqhQg/D2dRkKMgFlznZJKJGQ5CoqGW4LT6C1ba5BWTb4BJIzK9UgtkM9SnCWanWSvFj
+         rMaJv4lgSFarm8UCE75p7YU+VSaqMYX2LuauciLfGmDju/NpFRuYbs8kp+P7A0T8vRMV
+         WfS7+i5w/B2y/xdSTIk5fueA0qAtWpB/CXyMNhx9agQR91DnsS0d2j7fqbU0wNX0zqn7
+         Oo7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678182953;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=+RP4oTBHTQfU+cSOnEmCaBzJhcvOEi+tlYyv1N22EK0=;
-        b=uNz2+uDoxtP1009gTpdH+vK5JpHOlOGfbx1Joc+5Wr4DFhnazri5f54j6IZK4Qmo8j
-         R3YpJP2cp9ArF5UlJocnJipZ11Ags+NrvPHutjzc7F6nz4tFdsN40ucQWSiDRFpPKVMa
-         acE0bumuQkghlnLzvawCT2XJv9I/cFDlN7giLMxfbOQWtxSNIFFCt2KYauJPStXPegOy
-         cYCAxl8RtvHXa2pnd1Od9n0npW4k0tvPRC7pkapvIxPPxdKyD6b0tacHZq5Xrld8Cc+o
-         uKWpgoDySl33QqOhNfornxiqGjrsPxXR4gPTDdl6GXdy73YymfbF57y2waEAEpR4Xpyt
-         RzSA==
-X-Gm-Message-State: AO0yUKXqkY/vUtV+pJgeyviQKgU0LW/M7cCk/Y1Omfdx1supFhP5W2Bm
-	jkLJ0eU8GyZcehWod+IzuxvH4YVV+ij205priUIo0Q==
-X-Google-Smtp-Source: AK7set8nGUBgc2L2PJPdJBoEOnCnChdp+HTmYAB9+1VzdkOjzou3mYdfP4Z3384VdFLyRn6Da7w1948dOB0dW551ajc=
-X-Received: by 2002:a67:f349:0:b0:41f:641c:f775 with SMTP id
- p9-20020a67f349000000b0041f641cf775mr9639372vsm.3.1678182952854; Tue, 07 Mar
- 2023 01:55:52 -0800 (PST)
-MIME-Version: 1.0
-References: <20230228102704.708150-1-angelogioacchino.delregno@collabora.com> <20230228102704.708150-7-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230228102704.708150-7-angelogioacchino.delregno@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 7 Mar 2023 17:55:41 +0800
-Message-ID: <CAGXv+5F_YQLPqJYUoLA=zSeJyPzPxBESt4GyjYE=fEFt-xxfRQ@mail.gmail.com>
-Subject: Re: [PATCH v4 07/12] dt-bindings: gpu: mali-bifrost: Add compatible
- for MT8195 SoC
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: airlied@gmail.com, daniel@ffwll.ch, robh+dt@kernel.org, 
-	krzysztof.kozlowski+dt@linaro.org, steven.price@arm.com, 
-	alyssa.rosenzweig@collabora.com, matthias.bgg@gmail.com, robh@kernel.org, 
-	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+        d=1e100.net; s=20210112; t=1678182988;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=84FgM/FVnZP1rWfRH7Rix7KO0TYKL81ghGqMfAMNH9w=;
+        b=gWUdt5NLxDCnPSfohyspXLwgleyG3eAi3NxhSjcp/sD8dF3b4pf9TssUNGv4bT1m6P
+         BUEGq0qWGQ7+HHs460o9PhknLUEB6bWwfbGBiCQcWaCeoWNikwNVkb+SKrX3a7EVY7yF
+         uKY9SpnI6Fpw8swMWQgOeLZLRR5jagOpSygTDEiFtFZu/yridtwZe/BLpxZv69NfYt/B
+         zBWxsu8H7AHobwwQHr6Qp+IzZcv9KgBY/ZEbIH2z6hi043mo6wejmvydxubeY+gI0/rR
+         KV2lzVLSmW9wSUxdKhNEFwMEIrf+KyupVQ2ZtQ/mmSiTS0sjjl/40Zvc0CXRuj4ieqwu
+         2F4w==
+X-Gm-Message-State: AO0yUKUMsVuoMCvgfqUJhIYoff0ohHnBES1EGSzYkEuJ/2X3i7w0b1Zs
+	DAkM/ch6VVQAzH5SDuzC6LI=
+X-Google-Smtp-Source: AK7set+2oqnqS/Vy/l7T728/Cs+NBndVQPWOONRki7dYNYfEOCQKVhTw2lodMf9LsijyuBXftEBKqw==
+X-Received: by 2002:adf:f58b:0:b0:2cc:4dac:fe3e with SMTP id f11-20020adff58b000000b002cc4dacfe3emr9457600wro.62.1678182987854;
+        Tue, 07 Mar 2023 01:56:27 -0800 (PST)
+Received: from arinc9-PC.lan ([212.68.60.226])
+        by smtp.gmail.com with ESMTPSA id s10-20020adfea8a000000b002c7e1a39adcsm12257203wrm.23.2023.03.07.01.56.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 07 Mar 2023 01:56:27 -0800 (PST)
+From: arinc9.unal@gmail.com
+X-Google-Original-From: arinc.unal@arinc9.com
+To: Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>
+Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Rob Herring <robh@kernel.org>,
+	erkin.bozoglu@xeront.com,
+	netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Subject: [PATCH v2] dt-bindings: net: dsa: mediatek,mt7530: change some descriptions to literal
+Date: Tue,  7 Mar 2023 12:56:19 +0300
+Message-Id: <20230307095619.13403-1-arinc.unal@arinc9.com>
+X-Mailer: git-send-email 2.37.2
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_015554_088319_06623C55 
-X-CRM114-Status: UNSURE (   8.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230307_015632_057333_3175E634 
+X-CRM114-Status: GOOD (  15.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,18 +106,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 28, 2023 at 6:27=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> The MediaTek MT8195 SoC has a Mali G57 MC5 (Valhall-JM) and has the
-> same number of power domains and requirements as MT8192 in terms of
-> bindings.
->
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
+From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
-  with `make dt_binding_check` and `make dtbs_check`
+The line endings must be preserved on gpio-controller, io-supply, and
+reset-gpios properties to look proper when the YAML file is parsed.
+
+Currently it's interpreted as a single line when parsed. Change the style
+of the description of these properties to literal style to preserve the
+line endings.
+
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+
+v2: git send-email doesn't like --from "Name <mail@mail>" but --from
+mail@mail, got it. I also got to fix wrong submitter name for my gmail
+address on patchwork, sorry for the noise.
+
+Sending again now that net-next is open.
+
+Arınç
+
+---
+ .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml        | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+index 449ee0735012..5ae9cd8f99a2 100644
+--- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+@@ -93,7 +93,7 @@ properties:
+ 
+   gpio-controller:
+     type: boolean
+-    description:
++    description: |
+       If defined, LED controller of the MT7530 switch will run on GPIO mode.
+ 
+       There are 15 controllable pins.
+@@ -112,7 +112,7 @@ properties:
+     maxItems: 1
+ 
+   io-supply:
+-    description:
++    description: |
+       Phandle to the regulator node necessary for the I/O power.
+       See Documentation/devicetree/bindings/regulator/mt6323-regulator.txt for
+       details for the regulator setup on these boards.
+@@ -124,7 +124,7 @@ properties:
+       switch is a part of the multi-chip module.
+ 
+   reset-gpios:
+-    description:
++    description: |
+       GPIO to reset the switch. Use this if mediatek,mcm is not used.
+       This property is optional because some boards share the reset line with
+       other components which makes it impossible to probe the switch if the
+-- 
+2.37.2
+
 
