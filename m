@@ -4,114 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 104CFC678D5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 15:17:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61E76C6FD1B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 15:19:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oEysRp2LLNbE8OqaqMCJkdE0HWAQiicQ5qKiXMYvwo8=; b=MJ2pU1EL9liM0s78NKyvz4Igwm
-	1fAFT25kOpzCKeBG0VO0MgIMB4YDjgZ95grXn8tZo65DALAdnlZDT5hjSerOM07Pb0H/P1Bj08rXu
-	TA9P1e3VyRZGVhTOOnaagc0XaJCvCWxK5sowVKNyrd5VFoKqGHBvmIlQjg3s++5b5N7JMUNMl8uD7
-	vBpCTN4Dn7Il9XUbtH+/a3JyU8wlDdNCqGFAu4JnL2nah9s609eBQQPEw6L7uSwJFj+p+gVBKxEHT
-	e6pzJuAA5aaGbrENnGyTu0yDUBM9M6I8Cbu9xCNqrtD69Hpr+IBOtHulc2FgawtZkXV2ALSsuqQO9
-	XpmQRR/w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GQgX+OFkaGwQO+Ny7NdW8cV5dWlF2ecQwTfPYmkv02s=; b=Bfenh82MQEJfZ3ML+MChpawDy5
+	n9RBOKi17RNinvnKqzcE7LoX/qJHXa2bl5b/uZe8GNp9x0M95iUMc4g+wDr63h6diIFIwT1SyEgRY
+	qaafvCHKWee2YKpaGVTXsaMkhjZI0ifpH4H3XtXBR/V6f2YftipVlaFY8GwuvEWf+YT23HCsUQb9h
+	uvbZax8ODuST0eKfIVLRtXqOdGe/feJTN5A+X0+DsGokwJD0aDmV4c15vomq56LSL2gNMSt/Ws2wA
+	lwC5pp/UcATI4MxSKlnM8bBwSSAy8VQhIeKzT3kWh9ykTlImWd9JzKqi3sCv0VvcvRmwj/lKEG4lO
+	ZIm2xCug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZZ3p-001ATf-N0; Tue, 07 Mar 2023 15:17:05 +0000
-Received: from desiato.infradead.org ([90.155.92.199])
+	id 1pZZ5V-001BG7-Nx; Tue, 07 Mar 2023 15:18:49 +0000
+Received: from wnew3-smtp.messagingengine.com ([64.147.123.17])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZYZe-000vXb-ET
-	for linux-mediatek@bombadil.infradead.org; Tue, 07 Mar 2023 14:45:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=oEysRp2LLNbE8OqaqMCJkdE0HWAQiicQ5qKiXMYvwo8=; b=NNK6xafx5jwlKGeqGPyh6zbJKs
-	HRANLvld6wrX7UtPvOsq0rUkVMpDIXAedH4L8Xz30yFCgxCqmO4VLZaOSnavxueoSy4pNbvr6kpQZ
-	vaJkTNYffNdy+6GpCXfqfDcIoHrMFqofwdSkDBzzaLv0sUnWAUe1ESvhXZlBKw2qpusXTHkpp63v8
-	dxom/CMPWstc5DsdinCMmznOMiuScbI8ScPgnGgDQpF8+MuzFDZVPT7ZDf/xXLhmQpBX9B4mQ8TfD
-	5+3YgNOc0XKi+Kzzi1SBhXnMaDlpvxImoGff3EVf/Z0CBpTTaNhQv/Iyw+tf7fB/fBCUI6owk/a/k
-	eUyrLS2Q==;
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pZXCs-00H3CZ-1y
-	for linux-mediatek@lists.infradead.org;
-	Tue, 07 Mar 2023 13:18:21 +0000
-Received: by mail-wm1-x332.google.com with SMTP id k37so7779159wms.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Mar 2023 05:18:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1678195096;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=oEysRp2LLNbE8OqaqMCJkdE0HWAQiicQ5qKiXMYvwo8=;
-        b=tSdosrxc8Clpmhy8Ka6GWoretGf8XlhU4bfZgM0aufGyol9spfbL4Eftq3UtWOs75f
-         Ar6kRW9XcNM1q54Kdix/xlXPUCj4IFwv/kaXEF+Rk++2V8mndJmb3mkgDvZzZI2YvX8W
-         8h1n2OOKhAcv1MpD3N4ACEq5NS+0dI2b+UHJULLIisICd2jr3/O27HUmRQ8n42eUs0qW
-         wUJtw+iFbCyAC/cy9MmNEZZsZ2sTdbwLf2S2fQG8KwLu/RoYkiQyZXuyGDWs6QweXmas
-         uTm0FMmQ/PNzJaYihsT/0qE6g9rEltE4+hMR/Y5YjUi1T2NmZl9CTX4Q/P0O5Rsbo0R1
-         MpBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678195096;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=oEysRp2LLNbE8OqaqMCJkdE0HWAQiicQ5qKiXMYvwo8=;
-        b=l732wqfUcHOjtexRzHuXfocGZZaZ586IriMRucXuZLMAHu3n3t/aU8QUUUI88LlOhQ
-         t2QAz2dx0ssjE+TiRl1XtL89ESRuES+QvSL1VMutV5ULnaVS6SwOK9eRIzRC+xnl8ouQ
-         yZrb97QO3BVZGMstzV+EPpmWNX5lT1fB8fA9wSdpGhYwM7siupPoYhxJR+EzoH7nLPDQ
-         QyJwSvgWOffv0soxb6RL4xBDZ4w/xe9oDT8PKbKj7LBx9CGOyssQsioLdLpDzo1P7Etl
-         eE2LG0VyRaExWQL30dW+x4quLHfNnjyEsgPWSU8dQojZ1tOFoN1895QUBe7fWWcVezPN
-         zxGA==
-X-Gm-Message-State: AO0yUKVfGKvhtAFHVQPtLx72xap5ZwHo9tYk53MttjE8DSCjIbq1H0yT
-	8cb94glHjLXqpz2quTjywWrn2Q==
-X-Google-Smtp-Source: AK7set9Sg3L/dtrfvuq35AvI3lyloaM2L7q6P1AskVtybYA0Ssbgwopv3ZiUmeTeiyf/sqtbn3+AuQ==
-X-Received: by 2002:a05:600c:4751:b0:3eb:2e66:8 with SMTP id w17-20020a05600c475100b003eb2e660008mr13128115wmo.35.1678195095698;
-        Tue, 07 Mar 2023 05:18:15 -0800 (PST)
-Received: from [127.0.1.1] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.googlemail.com with ESMTPSA id hu21-20020a05600ca29500b003eaee9e0d22sm12986242wmb.33.2023.03.07.05.18.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Mar 2023 05:18:15 -0800 (PST)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Tue, 07 Mar 2023 14:17:43 +0100
-Subject: [PATCH v2 14/18] arm64: dts: mediatek: add ethernet support for mt8365-evk
+	id 1pZYjs-0010KU-SZ; Tue, 07 Mar 2023 14:56:31 +0000
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+	by mailnew.west.internal (Postfix) with ESMTP id 9AE3A2B0725A;
+	Tue,  7 Mar 2023 09:56:17 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute1.internal (MEProxy); Tue, 07 Mar 2023 09:56:21 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
+	:cc:content-type:content-type:date:date:from:from:in-reply-to
+	:in-reply-to:message-id:mime-version:references:reply-to:sender
+	:subject:subject:to:to; s=fm2; t=1678200977; x=1678208177; bh=GQ
+	gX+OFkaGwQO+Ny7NdW8cV5dWlF2ecQwTfPYmkv02s=; b=D7w4Muld8Eu5UCLbVO
+	LkJFD+WIQx/Vzhl/X9C7A3qLfJhZNcIALZMfRNsBf7+N55NHVr9FJUhm0NBULAMK
+	OdN1V2vrqVaMLDU/IZklg1687bwu5j1CmvmG2CA6DVe2PIWdLUGEF8hQig4Krczx
+	V6EV2IYQMElVTx3+qTYWF41t6gcXtpmwEnBu1P1+LLahYaitCge2I2jYbsxmlBQW
+	rXRlBxq5JKjAlT3QnidUxg3FOfE5dcKEXlD+cJhw596isAMQouwEYW8x///plLZw
+	GoV2fs2GbKvlj8WQ/J6OCAW/IYoSEpi2CZ23J6b/bQybSaatyf4Djxnu9LqkXqrb
+	9iAw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:content-type:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:sender:subject
+	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+	:x-sasl-enc; s=fm1; t=1678200977; x=1678208177; bh=GQgX+OFkaGwQO
+	+Ny7NdW8cV5dWlF2ecQwTfPYmkv02s=; b=KmI5/Os6WpMErhW3w/1B7EuXeAvCQ
+	xhfYD5k9CNH3MJZkJgOgkqQNvmfzPZY97/kz27sByxjiByCcWO0iq9Di3H0ozngH
+	AJ34GxitJkGvPu3BfwwlKR3OeVQhzyah69W7ESRThiYprN31rCqtxCdDPEHLcsQp
+	Mua38OlFMeFfYx8gat2t5Z30dGaEgFeH8r6BBIB5ogU9N5eliiCKTx7lQsiinlkd
+	7rpmCHNmCiTbrb0GTqb6qNaPETFhGAYwaCbou6zZPq6Zk5y6qa90IJvlcwtPgQlS
+	Z+LEv2EIQYTD3Jkk0AOvgJVjahHihNBwH559ddWvrL/Q1fz+IpJYufmPw==
+X-ME-Sender: <xms:kFAHZGeaqwXLPcM2ZfAd9njBAJC7Qi702nIuGITTB9r2mHpiJQmxuQ>
+    <xme:kFAHZANks4fE2kD4LVIfrNXPmvJ2LWq68vgJFN5G9I036iVCLwpItQKtwdvvePLG3
+    lIz6eoANG5nWgguZsg>
+X-ME-Received: <xmr:kFAHZHifYLdjTcgYugedhArfBJX5ZO095Tzyk3GJMwGW_JqKMbxkcv4-6UdvXVWL_IdTdizpJ4-nBCbAKDYobYgANbZBeMI>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvddutddgieehucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepfffhvfevuffkfhggtggujgesghdtreertddtvdenucfhrhhomhepofgrgihi
+    mhgvucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrg
+    htthgvrhhnpeetfefffefgkedtfefgledugfdtjeefjedvtddtkeetieffjedvgfehheff
+    hfevudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+    hmrgigihhmvgestggvrhhnohdrthgvtghh
+X-ME-Proxy: <xmx:kFAHZD8i7TqRetgXoJKraTcZZ4qAe6yWv7D7zbRf67iVgQS8jbZdiQ>
+    <xmx:kFAHZCvzE5SAi7en6Ya85Dfx_8ANirukxjtec1coGl342WvLls9Chg>
+    <xmx:kFAHZKHHge_08-IbbPVfQcusfH4wd8uO9ND8Pzsqjnw-7qeaVVPO_A>
+    <xmx:kVAHZMtyfuXByAQ91WiEFHmEhoTysW6RSMH7Y31dJM6poMiGIfPxH1JkFNA>
+Feedback-ID: i8771445c:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 7 Mar 2023 09:56:15 -0500 (EST)
+Date: Tue, 7 Mar 2023 15:56:13 +0100
+From: Maxime Ripard <maxime@cerno.tech>
+To: Daniel Vetter <daniel.vetter@ffwll.ch>
+Cc: DRI Development <dri-devel@lists.freedesktop.org>,
+	Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
+	Abhinav Kumar <quic_abhinavk@quicinc.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>, mikita.lipski@amd.com,
+	Michel =?utf-8?Q?D=C3=A4nzer?= <michel@daenzer.net>,
+	harry.wentland@amd.com, Rob Clark <robdclark@gmail.com>,	"Kazlauskas,
+ Nicholas" <nicholas.kazlauskas@amd.com>,
+	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+	Sean Paul <sean@poorly.run>,	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>,
+	Jani Nikula <jani.nikula@intel.com>,
+	Lucas De Marchi <lucas.demarchi@intel.com>,
+	Imre Deak <imre.deak@intel.com>,
+	Manasi Navare <manasi.d.navare@intel.com>,	linux-arm-msm@vger.kernel.org,
+ freedreno@lists.freedesktop.org,	linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,	linux-mediatek@lists.infradead.org,
+	Daniel Vetter <daniel.vetter@intel.com>
+Subject: Re: [PATCH] drm/atomic-helpers: remove legacy_cursor_update hacks
+Message-ID: <20230307145613.xvhru3fpcudlpazt@houat>
+References: <20230216111214.3489223-1-daniel.vetter@ffwll.ch>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20230203-evk-board-support-v2-14-6ec7cdb10ccf@baylibre.com>
-References: <20230203-evk-board-support-v2-0-6ec7cdb10ccf@baylibre.com>
-In-Reply-To: <20230203-evk-board-support-v2-0-6ec7cdb10ccf@baylibre.com>
-To: Zhiyong Tao <zhiyong.tao@mediatek.com>, Guenter Roeck <linux@roeck-us.net>, Linus Walleij <linus.walleij@linaro.org>,
- Bernhard Rosenkränzer <bero@baylibre.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, Wim Van Sebroeck <wim@linux-watchdog.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Chaotian Jing <chaotian.jing@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, Wenbin Mei <wenbin.mei@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mmc@vger.kernel.org, Alexandre Bailon <abailon@baylibre.com>, devicetree@vger.kernel.org,
- Amjad Ouled-Ameur <aouledameur@baylibre.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-gpio@vger.kernel.org, linux-watchdog@vger.kernel.org, Alexandre Mergnat <amergnat@baylibre.com>,
- linux-mediatek@lists.infradead.org, Fabien Parent <fparent@baylibre.com>
-X-Mailer: b4 0.10.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2433; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=Tf5+10DbTH8JmWbl0F1BhURJNU0ijmIE+qOre9BoIzg=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkBzmF/sAhqWjUqlEjJxepXUShC/SRz4SMSPGgs8dc
- 8Y4hC5qJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZAc5hQAKCRArRkmdfjHURYrNEA
- C7FKCe06Tg3Xme8I9oeXAXAoQPa/GtIYgVzAnKYh8IYPyu/sjV1POXjfi2nmaSkHupKfhC6R0T2+Sp
- D6DwqRzHGwmVQlO3KzXiY2FjTBJEv8YbjiGNMdtfBhFKR2uvkKmugRENznoWO3joVv6M3Xjzk9ZjUP
- +MNSljha6j/IgWjT6UVeJmOQM8v6hHAuiOqttsrR5zwyCg5wtpCp05bcRDeyIvLJnKGJVglkdu09mm
- 7vOTsUpvszwFG+sEkijxxCPmhGcM6uqxIs/cdsnInOlgz4MGkF+S88eLc+MUFY1ss7AhhIWCx8t8og
- VbnKLRI6df/8HfIaMAfhZCyA1wzrUIRkPWiO4iSYu/y8oGTQqBQW1nBY+5i4LYwaznCV6Jccbhc5kP
- FksNuR3D9SRQRJTNkPHb0Din5Tqag8K1GzY1asD1IaK1qsMXyxH8uFkHiGWUw8Nl1Ptl5DKVnd5Afn
- bzWgZHA9MPLBnS13N32jkit1bvE0h4Qeo+cTO5czH8BB2BqQYzR/KBGCTPPalaR7ufapYP2mBKimU8
- MJrKDx1uwmlWHYSrp2uI37SgGrdZ63hXOhtokvakvxUlMh8BWW+nu0+4wLsHkSj3O10fLPumy4SNSA
- pL7/MLDWW68rw9qikXp8l/oBuJCESSj43uffFxrd93bef/tvrhsZ48aF93Jw==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="mgg47tbsz3puzqki"
+Content-Disposition: inline
+In-Reply-To: <20230216111214.3489223-1-daniel.vetter@ffwll.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_131818_770704_AFD66FA0 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20230307_065629_687137_45F59DD3 
+X-CRM114-Status: GOOD (  15.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,95 +119,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-- Enable "vibr" and "vsim2" regulators to power the ethernet chip.
 
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
- arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 57 +++++++++++++++++++++++++++++
- 1 file changed, 57 insertions(+)
+--mgg47tbsz3puzqki
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-index 868ee0d160e4..1820daad6da3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-@@ -88,6 +88,28 @@ optee_reserved: optee@43200000 {
- 	};
- };
- 
-+&ethernet {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&ethernet_pins>;
-+	phy-handle = <&eth_phy>;
-+	phy-mode = "rmii";
-+	/*
-+	 * Ethernet and HDMI (DSI0) are sharing pins.
-+	 * Only one can be enabled at a time and require the physical switch
-+	 * SW2101 to be set on LAN position
-+	 */
-+	status = "disabled";
-+
-+	mdio {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		eth_phy: ethernet-phy@0 {
-+			reg = <0>;
-+		};
-+	};
-+};
-+
- &i2c0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c0_pins>;
-@@ -140,12 +162,47 @@ &mt6357_pmic {
- 	#interrupt-cells = <2>;
- };
- 
-+/* Needed by analog switch (multiplexer), HDMI and ethernet */
-+&mt6357_vibr_reg {
-+	regulator-always-on;
-+};
-+
- /* Needed by MSDC1 */
- &mt6357_vmc_reg {
- 	regulator-always-on;
- };
- 
-+/* Needed by ethernet */
-+&mt6357_vsim2_reg {
-+	regulator-always-on;
-+};
-+
- &pio {
-+	ethernet_pins: ethernet-pins {
-+		phy_reset_pins {
-+			pinmux = <MT8365_PIN_133_TDM_TX_DATA1__FUNC_GPIO133>;
-+		};
-+
-+		rmii_pins {
-+			pinmux = <MT8365_PIN_0_GPIO0__FUNC_EXT_TXD0>,
-+				 <MT8365_PIN_1_GPIO1__FUNC_EXT_TXD1>,
-+				 <MT8365_PIN_2_GPIO2__FUNC_EXT_TXD2>,
-+				 <MT8365_PIN_3_GPIO3__FUNC_EXT_TXD3>,
-+				 <MT8365_PIN_4_GPIO4__FUNC_EXT_TXC>,
-+				 <MT8365_PIN_5_GPIO5__FUNC_EXT_RXER>,
-+				 <MT8365_PIN_6_GPIO6__FUNC_EXT_RXC>,
-+				 <MT8365_PIN_7_GPIO7__FUNC_EXT_RXDV>,
-+				 <MT8365_PIN_8_GPIO8__FUNC_EXT_RXD0>,
-+				 <MT8365_PIN_9_GPIO9__FUNC_EXT_RXD1>,
-+				 <MT8365_PIN_10_GPIO10__FUNC_EXT_RXD2>,
-+				 <MT8365_PIN_11_GPIO11__FUNC_EXT_RXD3>,
-+				 <MT8365_PIN_12_GPIO12__FUNC_EXT_TXEN>,
-+				 <MT8365_PIN_13_GPIO13__FUNC_EXT_COL>,
-+				 <MT8365_PIN_14_GPIO14__FUNC_EXT_MDIO>,
-+				 <MT8365_PIN_15_GPIO15__FUNC_EXT_MDC>;
-+		};
-+	};
-+
- 	gpio_keys: gpio-keys-pins {
- 		pins {
- 			pinmux = <MT8365_PIN_24_KPCOL0__FUNC_KPCOL0>;
+Hi,
 
--- 
-b4 0.10.1
+On Thu, Feb 16, 2023 at 12:12:13PM +0100, Daniel Vetter wrote:
+> The stuff never really worked, and leads to lots of fun because it
+> out-of-order frees atomic states. Which upsets KASAN, among other
+> things.
+>=20
+> For async updates we now have a more solid solution with the
+> ->atomic_async_check and ->atomic_async_commit hooks. Support for that
+> for msm and vc4 landed. nouveau and i915 have their own commit
+> routines, doing something similar.
+>=20
+> For everyone else it's probably better to remove the use-after-free
+> bug, and encourage folks to use the async support instead. The
+> affected drivers which register a legacy cursor plane and don't either
+> use the new async stuff or their own commit routine are: amdgpu,
+> atmel, mediatek, qxl, rockchip, sti, sun4i, tegra, virtio, and vmwgfx.
+>=20
+> Inspired by an amdgpu bug report.
+
+Thanks for submitting that patch. It's been in the downstream RPi tree
+for a while, so I'd really like it to be merged eventually :)
+
+Acked-by: Maxime Ripard <maxime@cerno.tech>
+
+Maxime
+
+--mgg47tbsz3puzqki
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZAdQjQAKCRDj7w1vZxhR
+xWtgAQD3/rzdROsdbjOwFc/mbmUyG/GnJLulhBcauAuhRqkI9gEAliE4z5x/v2vW
+zxe+foePRa9l0/iW//JcHyAuNW9R1Ac=
+=Xp79
+-----END PGP SIGNATURE-----
+
+--mgg47tbsz3puzqki--
 
