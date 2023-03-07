@@ -4,138 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7BA8C678D4
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 17:48:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8C7FC678D5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 18:33:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FlvZ+5Q71/br6hd7/GTIMUisLLKEuft77KfeP5ymj3I=; b=dmEiROzXWQVUWUPjl2adVShJ6h
-	hQmL2KX4JeZh30l3BPqgH3JyV/F68GDbQyGTG9FmJ33Tqhh4e+DOP702S74fHmbqSVrgwrd8qjmQB
-	Zgy9o+D0qrcT83m4RsuFkxGgV/fRWURbFBXKrKpOr6WGnvYgwytwhglkpYYtzCm5y5CpS6DnLSKfn
-	+pqU53PBoN/kD9CPTe9o7tMjuTq0AqsdaqVkskYbKdCajBOo3kps367bpGorNFtZWhXKpW1AfTatQ
-	y42Y024OmAmVhb2hPXUrr1ZsLv1bI43UgD9RRSWHOkfR0GC0Jc23LSl7n9utYQN3sDIWC4XH7eQj5
-	F46H3gHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Content-Type:Subject:Cc
+	:To:From:Message-ID:MIME-Version:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=iiYFJVeV5Lun31L5V97QB9wHxZh/USWR/3jK7Ozn0Z8=; b=JtqtSdh3pVr793/IDBQUz/x5Bj
+	fNvUQltGZe4Se3tuuS1qwqFodlt0ai7YiGfaQEcPsCyNdcQTFYz2D5Jyg3HniDFa+YGrzSbzW6Ceq
+	uyZPydC+lAMZ+8vHuHeKOx7/95dkXT738x1a42nG9b3NzPZlbRCAXnS8IMZDC3ukqFcLj5cJ/6BuA
+	gSlSXaNCeJUoIlNm1ux8RO6SCHZx55YKdyjrLhonobfyceJnn0tdL2PKdv1TJPowysNUwL6VBx3rm
+	9hNKJXnlSalBaCc0tLq9euX6Pjj1zGNZYWuHfnhLWClWwY8kmF9TqUErpbfobaDQoCwIbYCFZ4hu1
+	Kvmm7IoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZbQ0-001tFw-Io; Tue, 07 Mar 2023 17:48:08 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1pZc7T-0020yZ-QP; Tue, 07 Mar 2023 18:33:03 +0000
+Received: from mout.gmx.net ([212.227.15.19])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZbPw-001tDJ-6o
-	for linux-mediatek@lists.infradead.org; Tue, 07 Mar 2023 17:48:06 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pZbOi-0001A8-23; Tue, 07 Mar 2023 18:46:48 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pZbOJ-002XP1-FG; Tue, 07 Mar 2023 18:46:23 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pZbOI-0034GD-GY; Tue, 07 Mar 2023 18:46:22 +0100
-Date: Tue, 7 Mar 2023 18:46:22 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Mark Brown <broonie@kernel.org>
-Cc: Kursad Oney <kursad.oney@broadcom.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
-	linux-stm32@st-md-mailman.stormreply.com,
-	Heiko Stuebner <heiko@sntech.de>, linux-samsung-soc@vger.kernel.org,
-	Samuel Holland <samuel@sholland.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Michal Simek <michal.simek@xilinx.com>,
-	Haibo Chen <haibo.chen@nxp.com>,
-	Tudor Ambarus <tudor.ambarus@linaro.org>,
-	NXP Linux Team <linux-imx@nxp.com>, linux-sunxi@lists.linux.dev,
-	Anand Gore <anand.gore@broadcom.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Scott Branden <sbranden@broadcom.com>,
-	Andrew Jeffery <andrew@aj.id.au>, linux-spi@vger.kernel.org,
-	Yogesh Gaur <yogeshgaur.83@gmail.com>,
-	Sowjanya Komatineni <skomatineni@nvidia.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Laxman Dewangan <ldewangan@nvidia.com>,
-	Jonas Gorski <jonas.gorski@gmail.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	linux-rockchip@lists.infradead.org,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Jerome Brunet <jbrunet@baylibre.com>, linux-xtensa@linux-xtensa.org,
-	Andi Shyti <andi@etezian.org>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	linux-arm-msm@vger.kernel.org,
-	Radu Pirea <radu_nicolae.pirea@upb.ro>,
-	Jay Fang <f.fangjian@huawei.com>,
-	Haojian Zhuang <haojian.zhuang@gmail.com>,
-	Jassi Brar <jaswinder.singh@linaro.org>,
-	=?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
-	linux-amlogic@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
-	Masahisa Kojima <masahisa.kojima@linaro.org>,
-	Fabio Estevam <festevam@gmail.com>, linux-aspeed@lists.ozlabs.org,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Nancy Yuen <yuenn@google.com>, Chen-Yu Tsai <wens@csie.org>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Joel Stanley <joel@jms.id.au>, Orson Zhai <orsonzhai@gmail.com>,
-	William Zhang <william.zhang@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Li-hao Kuo <lhjeff911@gmail.com>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Tali Perry <tali.perry1@gmail.com>, linux-riscv@lists.infradead.org,
-	Robert Jarzmik <robert.jarzmik@free.fr>,
-	Kamal Dasu <kdasu.kdev@gmail.com>,
-	Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>,
-	Andy Gross <agross@kernel.org>, linux-mediatek@lists.infradead.org,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, Han Xu <han.xu@nxp.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Patrick Venture <venture@google.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Serge Semin <fancer.lancer@gmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>, openbmc@lists.ozlabs.org,
-	Daniel Mack <daniel@zonque.org>
-Subject: Re: [PATCH 00/87] spi: Convert to platform remove callback returning
- void
-Message-ID: <20230307174622.vluzrlicw2gdn7hq@pengutronix.de>
-References: <20230303172041.2103336-1-u.kleine-koenig@pengutronix.de>
- <ddcda593-f8e9-43a4-bba6-dae31e8d6b39@sirena.org.uk>
+	id 1pZc7Q-0020xe-HQ; Tue, 07 Mar 2023 18:33:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1678213958; i=frank-w@public-files.de;
+	bh=iiYFJVeV5Lun31L5V97QB9wHxZh/USWR/3jK7Ozn0Z8=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
+	b=nrwQLyXnCC5aMbkQ+6Szw8cSeTl6xv481PdnVPYCXBg0FFTp+clxOOyGLKECps2LE
+	 YNHkGL+/ucknfCvYf8mtmpATU+/fhl2DJqc6Ey0aNYw2BL8H7ZrNBSWKkFOfcMKp+y
+	 4PtsDRDUSOoxZI0bLBZlMO7xUuyZ77WgoNBNTgYsiQfWTcXj0TYh9x3+RXo+Fv7hVv
+	 PEeJN5eRzHJU9f3N/ErvKFnhep0hO+kRgmiH6U3aVGNDqcwJ9T6b31EbS+InFrTcpW
+	 TMEwudSd2z6rAeXuoqbTQxMOILXZ8HFfoIp+MfAa2edIbiKX0wA6ZQWwaoLudPNxOZ
+	 PTC/48FGwQAAg==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.156.24] ([217.61.156.24]) by web-mail.gmx.net
+ (3c-app-gmx-bs16.server.lan [172.19.170.68]) (via HTTP); Tue, 7 Mar 2023
+ 19:32:38 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="subqk3tp4gcmon6z"
-Content-Disposition: inline
-In-Reply-To: <ddcda593-f8e9-43a4-bba6-dae31e8d6b39@sirena.org.uk>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Message-ID: <trinity-92c3826f-c2c8-40af-8339-bc6d0d3ffea4-1678213958520@3c-app-gmx-bs16>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Felix Fietkau <nbd@nbd.name>, Mark Lee <Mark-MC.Lee@mediatek.com>, Sean
+ Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+ <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, John Crispin <john@phrozen.org>, AngeloGioacchino
+ Del Regno <angelogioacchino.delregno@collabora.com>,
+ netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [BUG] MTK SoC Ethernet throughput TX only ~620Mbit/s since 6.2-rc1
+Content-Type: text/plain; charset=UTF-8
+Date: Tue, 7 Mar 2023 19:32:38 +0100
+Importance: normal
+Sensitivity: Normal
+X-Priority: 3
+X-Provags-ID: V03:K1:ubRWJfPcckhsg8gokIy5pT2FiG3BLjXPVe2Bp2f2IhnzRb7del4i7YLlq+tA7wVTjxgOW
+ 8Ou0/KrAWx322W9iRCjABuv9wZ3f03whhGZFDnag7vtjT+Nhj6iGtUQeidVh8zqPC9zyiVDweRhC
+ lOryXI3U+73Kv1nSsOT6BHD9lCGbv63CHS9XZAT33TKsEi1gtJUfFgJS1wmlEZ5H3ygNsmEEQwDG
+ ig5TSwZQITE0mMrXUtLcSx9evYtYZmqEAwhM0klefPQkSaqrYPDdrrh+MVZYibvwITdfYPz42vTT
+ LI=
+UI-OutboundReport: notjunk:1;M01:P0:r9ye7wDW7pg=;Jfx09dZpv3ZaCbno6AfR0AMqdNB
+ rk0ZYj+3BgeN+F9WFQifUjaQw76M5ozqb3poMp/MOv129rT9nCAfgHVNj8+KuL3/F2gtkOXxY
+ t8UJ1np1S69eVLxUwWVvVcdx4P3hRM/b5ibGqbVB/WF2HvpUV3Ny1CajvH+8r8F8vduzM5Wa1
+ CeKhXUotHJgIn3m24VhpFevqwdUVg95eSN+LDwr3F+REVr+HZ79FqhT17Is5qipPu83V4U+3M
+ 6Shhi0yJEEgjiiO9gkY8G9R+vlVk2D0qdYHVvBXWDrjpR+9aIylO8lyYkwgr99d4doUIVTEkt
+ e/YXaqib4Kxodx0m+F+brczfzNxNpCKc6pYcaof2v7unRpuc1Gb242QYSNk3IVmmuEqYfO+7p
+ MvXcTeJs+yuEyIjswNTI8akIfRf1tsYqJUVWjo2DZvT1Lh7xzxnGv+SaAZb/gXC8W4t8MNRcg
+ JxDgOJyIR5dbxIi6m/vuKywhyHbqttRjL6SmLl7leVL5jfBOSWyktEXBiNMVvcEzjZ61z4z5U
+ hn6nLUDZkZ1sovff2YWWqLlMnoCXPWxA1trjDm94jCZ7Hywbmc9MonRee8Lgy4w7pUvdRRDIZ
+ ho8tggehVMUrWFV3czpHDdVM9lT9Leas9GSgDXhE/VfAP3m0lUl21UgWjqUkzRHAore120v/z
+ xTsVMogWaoOHCqEACuBX/8xygKKGHA6YgiA3PvBAQ1hPhyn6U3q5fklDXYsQ5z1HrlOWMsLjb
+ AYDH8t7jnkQ2ZRpQEHv4tJKct6lBMHNNuqA96cQmfaPCAB0vvQCk+pFvnWGKvD310nHceuLNu
+ O3BFEdrh22FuorwP5u141KA0+GNWZp2jDDxtmUZd0dy3A=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_094804_272188_8C26D590 
-X-CRM114-Status: GOOD (  17.45  )
+X-CRM114-CacheID: sfid-20230307_103300_986899_D6FA80EF 
+X-CRM114-Status: UNSURE (   8.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,51 +92,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
---subqk3tp4gcmon6z
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+i've noticed that beginning on 6.2-rc1 the throughput on my Bananapi-R2 and Bananapi-R3 goes from 940Mbit/s down do 620Mbit/s since 6.2-rc1.
+Only TX (from SBC PoV) is affected, RX is still 940Mbit/s.
 
-Hello Mark,
+i bisected this to this commit:
 
-On Tue, Mar 07, 2023 at 05:00:47PM +0000, Mark Brown wrote:
-> On Fri, Mar 03, 2023 at 06:19:14PM +0100, Uwe Kleine-K=F6nig wrote:
->=20
-> >   spi: mpc512x-psc: Convert to platform remove callback returning void
-> >   spi: mpc52xx-psc: Convert to platform remove callback returning void
->=20
-> As well as the Raspberry Pi patch dropped due to build failures I also
-> dropped these two as they conflicted with Rob's refactoring of that
-> driver, nothing especially complex but since there's stuff to resend
-> anyway...
+f63959c7eec3151c30a2ee0d351827b62e742dcb ("net: ethernet: mtk_eth_soc: implement multi-queue support for per-port queues")
 
-Fine for me. Given that my queue of patches to convert the remove
-callbacks is quite big, there is no pressure from my side to get these
-all in. 84 from 87 is great already, I'll care about the remaining 3
-patches (and the few drivers that don't return 0 in .remove()) later.
+Daniel reported me that this is known so far and they need assistance from MTK and i should report it officially.
 
-Thanks
-Uwe
+As far as i understand it the commit should fix problems with clients using non-GBE speeds (10/100 Mbit/s) on the Gbit-capable dsa
+interfaces (mt753x connected) behind the mac, but now the Gigabit speed is no more reached.
+I see no CRC/dropped packets, retransmitts or similar.
 
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+after reverting the commit above i get 940Mbit like in rx direction, but this will introduce the problems mentioned above so this not a complete fix.
 
---subqk3tp4gcmon6z
-Content-Type: application/pgp-signature; name="signature.asc"
+example output before revert on mt7623/bpi.r2:
 
------BEGIN PGP SIGNATURE-----
+root@bpi-r2:~# iperf3 -c 192.168.0.21
+Connecting to host 192.168.0.21, port 5201
+[ 5] local 192.168.0.11 port 48882 connected to 192.168.0.21 port 5201
+[ ID] Interval Transfer Bitrate Retr Cwnd
+[ 5] 0.00-1.00 sec 75.3 MBytes 632 Mbits/sec 0 396 KBytes
+[ 5] 1.00-2.00 sec 74.3 MBytes 623 Mbits/sec 0 396 KBytes
+[ 5] 2.00-3.00 sec 74.6 MBytes 625 Mbits/sec 0 396 KBytes
+[ 5] 3.00-4.00 sec 73.9 MBytes 620 Mbits/sec 0 396 KBytes
+[ 5] 4.00-5.00 sec 74.6 MBytes 626 Mbits/sec 0 396 KBytes
+[ 5] 5.00-6.00 sec 74.4 MBytes 624 Mbits/sec 0 396 KBytes
+[ 5] 6.00-7.00 sec 74.4 MBytes 624 Mbits/sec 0 396 KBytes
+[ 5] 7.00-8.00 sec 74.4 MBytes 624 Mbits/sec 0 396 KBytes
+[ 5] 8.00-9.00 sec 73.9 MBytes 620 Mbits/sec 0 396 KBytes
+[ 5] 9.00-10.00 sec 74.6 MBytes 626 Mbits/sec 0 396 KBytes
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval Transfer Bitrate Retr
+[ 5] 0.00-10.00 sec 745 MBytes 625 Mbits/sec 0 sender
+[ 5] 0.00-10.05 sec 744 MBytes 621 Mbits/sec receiver
 
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmQHeGsACgkQwfwUeK3K
-7AmJQAf+OLFnhHHVOJXrgsKSMBVT9Qycgk1Nx3JjIocPvU73GYAc8BXwKRUCjb2G
-yTOGAdCjHSEwQuDZxv2NhBd/vpxLkpD7iy/doYJxHT2UMPWV54rl6CFYJEHlJPqW
-Z/Ml4CO3hzmB4BXtCN8RnFyPLmswQObzaXX8HL2DGHB1XE8S1ih7F9Kal3TQISuT
-hZmmMMLaoUtmq5BdGPNybIlL7hGGrMoH0ej+lkPelgMI+QnFAQ6ge26Uc1x9lkDb
-M9w96TPGO6fCBhTV7g21HUUO1P1MsEqJqTPxwUxg+iatcXPmt/w55d07QZQbST7b
-W1YrIAGbAt6hkfVtrrUIlqw3J57gTA==
-=WgaT
------END PGP SIGNATURE-----
+iperf Done.
+root@bpi-r2:~# ethtool -S eth0 | grep -v ': 0'
+NIC statistics:
+tx_bytes: 819999267
+tx_packets: 538815
+rx_bytes: 18338089
+rx_packets: 261984
+p06_TxUnicast: 261974
+p06_TxMulticast: 10
+p06_TxPktSz65To127: 261983
+p06_TxPktSz256To511: 1
+p06_TxBytes: 19386025
+p06_RxFiltering: 13
+p06_RxUnicast: 538783
+p06_RxMulticast: 31
+p06_RxBroadcast: 1
+p06_RxPktSz64: 3
+p06_RxPktSz65To127: 47
+p06_RxPktSz128To255: 2
+p06_RxPktSz256To511: 1
+p06_RxPktSz512To1023: 2
+p06_RxPktSz1024ToMax: 538760
+p06_RxBytes: 819999267
 
---subqk3tp4gcmon6z--
+Hope i've forgot no information for now :)
+
+regards Frank
 
