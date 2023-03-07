@@ -4,75 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA9C3C678D5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 09:27:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9748C678D4
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 09:28:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h6O4zV+wYZ6GyzPQY6V2bUaFgM1LKFhXGuewMvfDT80=; b=Mz/aJ5DTWS38xIR0e57NARLdcs
-	MTj0/uU7Tki/w2Kw+4icIuTvHJLLF8jUIeMlvuEZIBWtbkvyADLlC00GeT0+YpQNI5GE9tyCgJ2BJ
-	bg57lreuMK3hCQCf8B/JZPdirfiOBSoncQYYhm6DEpOgSHfs4axLAd8d5ei0tS9Ye6Qm4ZKckuxIf
-	D8b6X7xiCP4c33/VL72AuekCJvANjE2bYhIsZudV1w/CU6IYWzgBRGQTeND+pLX4DcnG97c/UMHXm
-	9DVxSEf8tYS0Mj2KSTveRxPQdOCD1vPC2yXLfd+nFTJ2xqC2rYvFyXfuwfTfJKYhkxblZbWtCaSlN
-	NA45f6Dg==;
+	bh=yhS9WuvDVLCH/07BDFe4S3wnXC3MatfvUcLm7rOWzPU=; b=b4AN0UAXFI08Ym1GymJmnOmAZW
+	YPLZ/RHcs+vTGzA7QLH4bIS6XpDhoiM656R1UQ/kgVhUq+kxievhEdGkIQgUIhiQgpd4pnY1LQfLD
+	FpCZLW1QfCgMsGQw3iV/h1s/zQodKChu/zdyRh3mzEwlsdUNMGzyfM6/hax2+h5LZ6S7XFy9olHFo
+	3bTCRLFBJCAoJR3NknTIeJ/PRGZY5D6JWpJjlOSIFGVxeLsdgfqyelKe0grVyXZZuq83dBcxkzBsJ
+	SnSJRWZHb4CkDjXJ96sjlzQhXTYOfHQXgJE37U2oMEQwYfBqmcgL9oYnpQC6oELoM5JCCnONUKEZ3
+	BkrA1+bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZTbI-00GtOZ-Bk; Tue, 07 Mar 2023 09:27:16 +0000
-Received: from mail-vs1-xe31.google.com ([2607:f8b0:4864:20::e31])
+	id 1pZTcG-00Gtm5-3c; Tue, 07 Mar 2023 09:28:16 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZTbF-00GtN7-LD
-	for linux-mediatek@lists.infradead.org; Tue, 07 Mar 2023 09:27:15 +0000
-Received: by mail-vs1-xe31.google.com with SMTP id d7so11754424vsj.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Mar 2023 01:27:12 -0800 (PST)
+	id 1pZTbv-00Gtbz-M5; Tue, 07 Mar 2023 09:28:00 +0000
+Received: by mail-pl1-x634.google.com with SMTP id v11so13393309plz.8;
+        Tue, 07 Mar 2023 01:27:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1678181231;
+        d=gmail.com; s=20210112; t=1678181273;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=h6O4zV+wYZ6GyzPQY6V2bUaFgM1LKFhXGuewMvfDT80=;
-        b=H2Ti7FHW+XohgRdhghefx+zObvs6AR32eg8DMi/YKatcYQ4us8hC5AJ8FUxugv/9IM
-         9Su2oTgQ4KnbRLrVBDXmeL1Jr9Z/4Y7bJlnOuSG50DBUt2ZdLBI4SvjiUcoKluFEdq5Q
-         LX45ksfKK62r0uRdJkZ4DKyyJg/TDkVORPnkE=
+        bh=yhS9WuvDVLCH/07BDFe4S3wnXC3MatfvUcLm7rOWzPU=;
+        b=IIwvrYveZMftYjvctthjlBYZfsacrBWVljfA/5J0vr0PcgbCGnOfcnJRU27qrxTv93
+         DyiWrvJX9sGIHdz5xjFCQ8fzBQB9qp0Z537ErAGFhX8eA1OBDHJBrRFR/iEqk9XbnCdy
+         q078ee9CfLzrFWHGO29KJCwSa0PIXTWBDIDjhKQC+R1dWN77mXOxTSg5G6yEd3KQY7wn
+         La9hh5KbolMEXhOodflYLfQTM2GQRnPGr9FQ36cT5QmW1+K2g2TU+kQdsIQBclodnJl4
+         W/XVTYkxEvweelFcBWZaF8+KJKeByx1Zv4p8CjlvWmDBUJPFzqqHGIJgboaIqAOr1xwr
+         h7hg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678181231;
+        d=1e100.net; s=20210112; t=1678181273;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=h6O4zV+wYZ6GyzPQY6V2bUaFgM1LKFhXGuewMvfDT80=;
-        b=EdQd/nuSnfTE+a1vk9FqIZ69DirQ/sUvlWNtNEKRvCaFPZpO6Y2N2frC89w9/YWV0V
-         DkIPocMf3v9WFoWlLN5IIKl0UMYGf4DiemW6qGfeYqOFl69ZdhbLsvbwNI20puRFZYTf
-         L0UWGkc+U94x+S8qGJP2Md4V69RjQ8rkn99VrIEUejvTQh3YPbrjrrBZo/ixQqozW77n
-         kTF6776IrVVeQ6yo/shqEaisKHIZnyPwA6fXnxa6hpwuxqJyb0pjY0Fl0+zoFcZkcyEE
-         mGwvP2fLuCofPYHr/PukopryTknu6yzbW3U5KQWaZlrCzwR03RPvuSDApIk5yFegCEl7
-         h8SQ==
-X-Gm-Message-State: AO0yUKUhSOAFOI9poj1wC8se8/pveiz+E8DOHGugpw36ZzbSXhjWKBoO
-	7kWlQQ7Cr942xJSL94EvmNR7gi1VROr+G/KyOnT6Xw==
-X-Google-Smtp-Source: AK7set/ZOW9YeJyWIGClae8/5JYGzkBBuuPzV7Pj8Xj2wGsnc5D4R6oFPYvzHcnhhOA+BAFliMjNDeI+1/R1tjtEifs=
-X-Received: by 2002:a67:db97:0:b0:412:2ed6:d79b with SMTP id
- f23-20020a67db97000000b004122ed6d79bmr9219504vsk.3.1678181231626; Tue, 07 Mar
- 2023 01:27:11 -0800 (PST)
+        bh=yhS9WuvDVLCH/07BDFe4S3wnXC3MatfvUcLm7rOWzPU=;
+        b=pxWU2t7+4VOVqR24ucegohcmG+V+BkZqjOFpaKYI6JUz1/E8EkfX4/aJXsp0SUH2vk
+         YekBJf74q6k8InkwA1ta6SiCYSCOrnratlGfLezVgSGSjSVbLObJMcv6yylOXeEsTnoT
+         7rcMcdXs9rnOVQrJf2V6J+4we30fVEdRYoILpY1DX5oEM0umJQZX1bH5nv2HwcgHtp8O
+         kurzjPRxaJOEGN4xyr+r62E1txeC+lhFBEpmcyFzRcjJORsVxVazasHbOLtWM6v6jIsP
+         N7JbEFnvmxSuZopEDKUWM9p82q6J0ir3tEU7fWFTBblvBUrM5Wvi9spjzVw8wMoNRKW+
+         As8A==
+X-Gm-Message-State: AO0yUKVNQLGVm4setvrQdvTWuYR7RkVXvzOzz9FGHaqO3gyvrK2Lacga
+	G90bnOZ7MxC8i6FmwF5r8tgK3tXgDI2/Ud6+89E=
+X-Google-Smtp-Source: AK7set/cJsa7T6lRnhe3AOvYaVAEX3dOwNKizDvDRu5d9q0M5oZM2coLOWPB9DeQoaPW9yb4Q+CgVIpU3/LV3N7Km6k=
+X-Received: by 2002:a17:902:ef92:b0:19a:8259:c754 with SMTP id
+ iz18-20020a170902ef9200b0019a8259c754mr5338648plb.0.1678181273514; Tue, 07
+ Mar 2023 01:27:53 -0800 (PST)
 MIME-Version: 1.0
-References: <20230301095523.428461-1-angelogioacchino.delregno@collabora.com>
- <b4fc6bd8-e300-0f40-4216-8b99589c21cc@gmail.com> <895abaa2-5fd3-9928-4e53-86ce160fbad8@collabora.com>
- <CAGXv+5EPVhH-O+ZdoLeW4OZVcEtS824oracmu3jHTa8k-tEU0A@mail.gmail.com> <e5302c3e-f985-b020-5f8c-fba876768eaf@gmail.com>
-In-Reply-To: <e5302c3e-f985-b020-5f8c-fba876768eaf@gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 7 Mar 2023 17:27:00 +0800
-Message-ID: <CAGXv+5FR5unBbdp0MDZY1TtSMoTtxzi2F4tO=3qZsh=3b3Ru9w@mail.gmail.com>
-Subject: Re: [PATCH v4 00/19] Enable GPU with DVFS support on MediaTek SoCs
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230306062633.200427-1-zyytlz.wz@163.com>
+In-Reply-To: <20230306062633.200427-1-zyytlz.wz@163.com>
+From: Zheng Hacker <hackerzheng666@gmail.com>
+Date: Tue, 7 Mar 2023 17:27:41 +0800
+Message-ID: <CAJedcCzeVwwi9SkkwouFXUAVhF-tKF4dkqsFqVQwszSwY1SJ0A@mail.gmail.com>
+Subject: Re: [RESEND PATCH] media: mtk-jpeg: Fix use after free bug due to
+ uncanceled work
+To: Zheng Wang <zyytlz.wz@163.com>
+Cc: mchehab@kernel.org, bin.liu@mediatek.com, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, linux-media@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, 1395428693sheep@gmail.com, 
+	alex000young@gmail.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_012713_722262_53B4607B 
-X-CRM114-Status: GOOD (  15.03  )
+X-CRM114-CacheID: sfid-20230307_012755_747725_36CBDBF8 
+X-CRM114-Status: GOOD (  18.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,41 +89,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 2, 2023 at 7:28=E2=80=AFPM Matthias Brugger <matthias.bgg@gmail=
-.com> wrote:
-> On 02/03/2023 11:11, Chen-Yu Tsai wrote:
-> > On Thu, Mar 2, 2023 at 6:10=E2=80=AFPM AngeloGioacchino Del Regno
-> > <angelogioacchino.delregno@collabora.com> wrote:
-> >>
-> >> Il 02/03/23 10:36, Matthias Brugger ha scritto:
-> >>> Series looks good but from my understanding has a dependency on:
-> >>> [PATCH v4 00/12] Panfrost: Improve and add MediaTek SoCs support
-> >>> (https://lore.kernel.org/linux-mediatek/20230228102610.707605-1-angel=
-ogioacchino.delregno@collabora.com/)
-> >>>
-> >>> Did I get that right?
-> >>>
-> >>
-> >> Yes you got it right - without the mentioned series, this one will do =
-nothing
-> >> at all (and will also fail binding checks, as the bindings are introdu=
-ced in
-> >> that other series).
-> >
-> > Please also let me test them on MT8183 and MT8186 before merging them.
-> >
+Hi,
+
+Is there anyone who can help with this? I can provide more details
+like invoking chain if needed.
+
+Thanks,
+Zheng
+
+Zheng Wang <zyytlz.wz@163.com> =E4=BA=8E2023=E5=B9=B43=E6=9C=886=E6=97=A5=
+=E5=91=A8=E4=B8=80 14:28=E5=86=99=E9=81=93=EF=BC=9A
 >
-> Of course, I'll wait for your tested-by tags then.
-> Thanks for testing!
-
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
-
-on MT8183, MT8186, MT8192 and MT8195 Chromebooks.
-
-BTW, Angelo, I see that Panfrost keeps the GPU regulator enabled, but
-the power domains, and thus the SRAM regulator, get powered off when
-the GPU is not in use. There doesn't seem to be any damaging effects,
-but I worry about idle power consumption.
-
-ChenYu
+> In mtk_jpeg_probe, &jpeg->job_timeout_work is bound with
+> mtk_jpeg_job_timeout_work. Then mtk_jpeg_dec_device_run
+> and mtk_jpeg_enc_device_run may be called to start the
+> work.
+> If we remove the module which will call mtk_jpeg_remove
+> to make cleanup, there may be a unfinished work. The
+> possible sequence is as follows, which will cause a
+> typical UAF bug.
+>
+> Fix it by canceling the work before cleanup in the mtk_jpeg_remove
+>
+> CPU0                  CPU1
+>
+>                     |mtk_jpeg_job_timeout_work
+> mtk_jpeg_remove     |
+>   v4l2_m2m_release  |
+>     kfree(m2m_dev); |
+>                     |
+>                     | v4l2_m2m_get_curr_priv
+>                     |   m2m_dev->curr_ctx //use
+>
+> Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
+> ---
+>  drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drive=
+rs/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> index 969516a940ba..364513e7897e 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> @@ -1793,7 +1793,7 @@ static int mtk_jpeg_probe(struct platform_device *p=
+dev)
+>  static int mtk_jpeg_remove(struct platform_device *pdev)
+>  {
+>         struct mtk_jpeg_dev *jpeg =3D platform_get_drvdata(pdev);
+> -
+> +       cancel_delayed_work(&jpeg->job_timeout_work);
+>         pm_runtime_disable(&pdev->dev);
+>         video_unregister_device(jpeg->vdev);
+>         v4l2_m2m_release(jpeg->m2m_dev);
+> --
+> 2.25.1
+>
 
