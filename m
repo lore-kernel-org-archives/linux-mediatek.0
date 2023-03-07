@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1C7AC678DB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 04:43:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EECD9C678DB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 04:53:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KhJjKxrUhurA/m4r0Y8ciLGDFRFz3Zu/L7FJeZQi0n0=; b=jLpmvF/fF2SnCWFaMle/6YsGFR
-	fGBGyMEABwcoMliSyHLdt6kTDSneJsb3R/ZxmmTGC/T+4u2Px8y8VRcyppJW2+G/MZy2XVPdmd1cx
-	4gNRz1ElLFhyl0HiNOcF7d/9lCQDJqv3eNlBcMGQSwIb7ItL5R1yzfTl1tkrtzp2cr5tDsujxboMM
-	FSZwr1rir6++Jo9X5u2JnBPgeXo/T6JneIVmO86orDKMUySr270fJoB9busE0M/QmqlF3LL4qKmJ4
-	FbTZ6MRPfuudk9Wgxp1gcHe+cpU3mN38feqpxXedsgN9a3IufrBGCeem+JHSYtgzkXCnBgr/iIbCJ
-	4bSQCYXw==;
+	bh=tcE3GqJXQUb3n8r8Cf9DeCZohIcMVrjYDJopDIgXigE=; b=Z1V4dG+GBBLyHYsPs4gtsRkkqF
+	IbHtVYzKnd+O0WRlSUvZK0QNSLOjQv/5mABqHtNvGMGqMztE/W6bXBf0N1dlogK1oLnk573GmLxDl
+	tt0dutJ52ls53Fx5jq+D3mNe55ewVB1zWC2Qmqah4jIdGvMKU1dyjyTRwnsEl3WNghk4JDJZqUo4z
+	21l9kG8xKJIA5EdFvofszdM8dEWRheAppyuxVO4wDimJs/v6uE6U0Q5QxdGfhxVVrZBmDl68DphhU
+	8sno/2xOchj23snOu+VXM9yZNCf2z+WJbByFbQHaxQcgz5/GFivHmGi00VVPYb7gSqb0MFf9yOPCC
+	SUgpUsxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZPAh-00GBNq-Fd; Tue, 07 Mar 2023 04:43:31 +0000
-Received: from mail-vs1-xe29.google.com ([2607:f8b0:4864:20::e29])
+	id 1pZPKX-00GDJz-An; Tue, 07 Mar 2023 04:53:41 +0000
+Received: from mail-vs1-xe2d.google.com ([2607:f8b0:4864:20::e2d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZPAd-00GBN9-Q4
-	for linux-mediatek@lists.infradead.org; Tue, 07 Mar 2023 04:43:29 +0000
-Received: by mail-vs1-xe29.google.com with SMTP id f31so11304130vsv.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 06 Mar 2023 20:43:26 -0800 (PST)
+	id 1pZPKU-00GDJ8-RW
+	for linux-mediatek@lists.infradead.org; Tue, 07 Mar 2023 04:53:40 +0000
+Received: by mail-vs1-xe2d.google.com with SMTP id f23so11260118vsa.13
+        for <linux-mediatek@lists.infradead.org>; Mon, 06 Mar 2023 20:53:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1678164205;
+        d=chromium.org; s=google; t=1678164817;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=KhJjKxrUhurA/m4r0Y8ciLGDFRFz3Zu/L7FJeZQi0n0=;
-        b=jOKDEzTFJKDobwqd/AaLDsioLxzunt0PU3HWIuUlngMXLEufc/ZCoVD6guXfhWzOE3
-         LP/FGV+ei6S/XtPrBkbWJJ8vNgJyyTKabNa36UqfPYgp4WmojFFtOvg2oP9Ml7dgWHsm
-         ls1XlNpd8H6AMm6H4FpPD5j7Evsrqn73rJ+2U=
+        bh=tcE3GqJXQUb3n8r8Cf9DeCZohIcMVrjYDJopDIgXigE=;
+        b=Vzrk9J5moRnykRY4cC9oel+ani17/mQT1hS7fW5bTqtqAd7jAs6j9dMN+vet4QAbiR
+         wLn/UcC5dzKOaSIlo8lpjPkkrFOXTgdUN74fa4OM2opvZio84DqY/cRDreHz/DoYvVWg
+         0qsmUVy/K8rXM1y8XCrhGaMupA3V/0nQMDoC0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678164205;
+        d=1e100.net; s=20210112; t=1678164817;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=KhJjKxrUhurA/m4r0Y8ciLGDFRFz3Zu/L7FJeZQi0n0=;
-        b=asaqFEgt8NAbfxqhOzbdGPBpyVEaF8dkq9m+atbW5xEi1JUjvPTkY0AMTUHAcBV3FA
-         wr426mcTt4PI3DNDklmC/cI08YNbQ5VjWgQNx4wPerot4WrQ9dTMjLEVEGdNH6cJ7ep4
-         oIoC3BJckxDAVUlHySJdP+llVVDR3Sq16tFIm06iBeiDWPty0+VaAyMSWVxsEh/HDJEO
-         fJTdEKApz1iDo3yTaFHy7j5tG31RwkXib5lIMQOathCrWE4sL3zlibPnEAX3U2G1YVEI
-         3dQPO8N4g3aXTX+HkWTrUJsByEyubwId8Q3zJnxJp8BhJaEjk7fc9TutDMFAC+zi8Sm/
-         BB5Q==
-X-Gm-Message-State: AO0yUKUdI2bANyljUhJ60LzncO8AYvi5bF7txMG2UY2RS9BxAhe+JFUC
-	ZPPOOBB/RVwMIFJicdPGpEHM/UDcr6BlBG0PzMZeOw==
-X-Google-Smtp-Source: AK7set/1DJCH0yxSVzq1QxxilcX1Ry7rj5FrT+uT+Ty9POkTz3gYzHgrQh11DgQu5fT4OEg/HkjyYznfw7u/BjjiNaA=
-X-Received: by 2002:a67:e3cb:0:b0:421:e25b:3d0c with SMTP id
- k11-20020a67e3cb000000b00421e25b3d0cmr2865465vsm.3.1678164205669; Mon, 06 Mar
- 2023 20:43:25 -0800 (PST)
+        bh=tcE3GqJXQUb3n8r8Cf9DeCZohIcMVrjYDJopDIgXigE=;
+        b=JdIMSwbgQBdrC8IIwXS1AQ2hsiD3uigfvy3Ids23WafVwC9FRXNpZjtuVP0vpCApvM
+         UiX1Hqk2cWS7tiAXDYsxHxI5zDP5/hteMfsIXo0JjdlEnE4FD5tgSF3cGYgQWdSnB3Wx
+         Hw2TZ0t48Gd60/Y6bxlLHhjAIBeGLh9KXy4GObF+Gpm5q7Xxv+53Qgz/jV1wAkQkMQcN
+         5YKQpurcqcqDXvwJtWALQrKh4MDY+8vgBccmmWfmIlm16Dl4zRW6K5keJpOThENKVz/F
+         AsXr1au8Ilj3RAPtwcgyZB6Xpn5GWQ5mCc2IE5+R6+cUcIBWihiPNkogvlZp1EGns46m
+         0Q1A==
+X-Gm-Message-State: AO0yUKUD2JoGlGqXHC+VlQsoSjJLjiHsnNB+f4wy+zha8cZuggtSfJwz
+	M5N46WPXN62i4uOSCHYUDX9rmW4+39+G9aadsKZ7bA==
+X-Google-Smtp-Source: AK7set/aeUCT0y/ttIIfAOxj05+op6eB8+wnmmD5urpBf0dNju9inYFodFHO4EvDUnuOZnaNy9rangMDYNzBR51J9rg=
+X-Received: by 2002:a67:db97:0:b0:412:2ed6:d79b with SMTP id
+ f23-20020a67db97000000b004122ed6d79bmr8785312vsk.3.1678164817397; Mon, 06 Mar
+ 2023 20:53:37 -0800 (PST)
 MIME-Version: 1.0
-References: <20230206100105.861720-1-angelogioacchino.delregno@collabora.com> <20230206100105.861720-8-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230206100105.861720-8-angelogioacchino.delregno@collabora.com>
+References: <20230206100105.861720-1-angelogioacchino.delregno@collabora.com> <20230206100105.861720-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230206100105.861720-3-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 7 Mar 2023 12:43:14 +0800
-Message-ID: <CAGXv+5Ey02hzNQA2O2ussAt9sXxxy9mOjze2GH90Ko9HeoETXQ@mail.gmail.com>
-Subject: Re: [PATCH v3 7/7] clk: mediatek: mt8195: Add support for frequency
- hopping through FHCTL
+Date: Tue, 7 Mar 2023 12:53:26 +0800
+Message-ID: <CAGXv+5EFtex3YCqkD91XbXura+e1gOWL6uerX5YMw-1=akW7Ew@mail.gmail.com>
+Subject: Re: [PATCH v3 2/7] clk: mediatek: clk-pllfh: Export
+ register/unregister/parse functions
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: sboyd@kernel.org, mturquette@baylibre.com, robh+dt@kernel.org, 
 	krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, 
@@ -74,8 +74,9 @@ Cc: sboyd@kernel.org, mturquette@baylibre.com, robh+dt@kernel.org,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230306_204327_891342_F39BB468 
-X-CRM114-Status: GOOD (  19.18  )
+X-CRM114-CacheID: sfid-20230306_205338_924981_EF4D1137 
+X-CRM114-Status: UNSURE (   6.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,180 +94,12 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Mon, Feb 6, 2023 at 6:01=E2=80=AFPM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> Add FHCTL parameters and register PLLs through FHCTL to add support
-> for frequency hopping and SSC. FHCTL will be enabled only on PLLs
-> specified in devicetree.
->
-> This commit brings functional changes only upon addition of
-> devicetree configuration.
+> These functions are used by the various MediaTek apmixed clock drivers
+> that may be built as modules: export the common functions used to parse
+> related devicetree properties, register and unregister the PLLFH clocks.
 >
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
-> ---
->  drivers/clk/mediatek/clk-mt8195-apmixedsys.c | 69 +++++++++++++++++++-
->  1 file changed, 66 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/clk/mediatek/clk-mt8195-apmixedsys.c b/drivers/clk/m=
-ediatek/clk-mt8195-apmixedsys.c
-> index 1bc917f2667e..c0db31ce0741 100644
-> --- a/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
-> +++ b/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
-> @@ -3,9 +3,11 @@
->  // Copyright (c) 2021 MediaTek Inc.
->  // Author: Chun-Jie Chen <chun-jie.chen@mediatek.com>
->
-> +#include "clk-fhctl.h"
->  #include "clk-gate.h"
->  #include "clk-mtk.h"
->  #include "clk-pll.h"
-> +#include "clk-pllfh.h"
->
->  #include <dt-bindings/clock/mt8195-clk.h>
->  #include <linux/of_device.h>
-> @@ -105,6 +107,61 @@ static const struct mtk_pll_data plls[] =3D {
->             0, 0, 22, 0x0158, 24, 0, 0, 0, 0x0158, 0, 0x0158, 0, 9),
->  };
->
-> +enum fh_pll_id {
-> +       FH_ARMPLL_LL,
-> +       FH_ARMPLL_BL,
-> +       FH_MEMPLL,
-> +       FH_ADSPPLL,
-> +       FH_NNAPLL,
-> +       FH_CCIPLL,
-> +       FH_MFGPLL,
-> +       FH_TVDPLL2,
-> +       FH_MPLL,
-> +       FH_MMPLL,
-> +       FH_MAINPLL,
-> +       FH_MSDCPLL,
-> +       FH_IMGPLL,
-> +       FH_VDECPLL,
-> +       FH_TVDPLL1,
-> +       FH_NR_FH,
-> +};
-> +
-> +#define FH(_pllid, _fhid, _offset) {                                   \
-> +               .data =3D {                                              =
- \
-> +                       .pll_id =3D _pllid,                              =
- \
-> +                       .fh_id =3D _fhid,                                =
- \
-> +                       .fh_ver =3D FHCTL_PLLFH_V2,                      =
- \
-> +                       .fhx_offset =3D _offset,                         =
- \
-> +                       .dds_mask =3D GENMASK(21, 0),                    =
- \
 
-> +                       .slope0_value =3D 0x6003c97,                     =
- \
-> +                       .slope1_value =3D 0x6003c97,                     =
- \
-
-Are these
-
-> +                       .sfstrx_en =3D BIT(2),                           =
- \
-> +                       .frddsx_en =3D BIT(1),                           =
- \
-> +                       .fhctlx_en =3D BIT(0),                           =
- \
-> +                       .tgl_org =3D BIT(31),                            =
- \
-> +                       .dvfs_tri =3D BIT(31),                           =
- \
-> +                       .pcwchg =3D BIT(31),                             =
- \
-
-> +                       .dt_val =3D 0x0,                                 =
- \
-> +                       .df_val =3D 0x9,                                 =
- \
-
-and these just copied from MT8186?
-
-> +                       .updnlmt_shft =3D 16,                            =
- \
-> +                       .msk_frddsx_dys =3D GENMASK(23, 20),             =
- \
-> +                       .msk_frddsx_dts =3D GENMASK(19, 16),             =
- \
-> +               },                                                      \
-> +       }
-> +
-> +static struct mtk_pllfh_data pllfhs[] =3D {
-> +       FH(CLK_APMIXED_ADSPPLL, FH_ADSPPLL, 0x78),
-> +       FH(CLK_APMIXED_NNAPLL, FH_NNAPLL, 0x8c),
-> +       FH(CLK_APMIXED_MFGPLL, FH_MFGPLL, 0xb4),
-> +       FH(CLK_APMIXED_TVDPLL2, FH_TVDPLL2, 0xc8),
-> +       FH(CLK_APMIXED_MMPLL, FH_MMPLL, 0xf0),
-> +       FH(CLK_APMIXED_MAINPLL, FH_MAINPLL, 0x104),
-> +       FH(CLK_APMIXED_MSDCPLL, FH_MSDCPLL, 0x118),
-> +       FH(CLK_APMIXED_IMGPLL, FH_IMGPLL, 0x12c),
-> +       FH(CLK_APMIXED_VDECPLL, FH_VDECPLL, 0x140),
-> +       FH(CLK_APMIXED_TVDPLL2, FH_TVDPLL1, 0x154),
-> +};
-> +
->  static const struct of_device_id of_match_clk_mt8195_apmixed[] =3D {
->         { .compatible =3D "mediatek,mt8195-apmixedsys", },
->         {}
-> @@ -114,13 +171,17 @@ static int clk_mt8195_apmixed_probe(struct platform=
-_device *pdev)
->  {
->         struct clk_hw_onecell_data *clk_data;
->         struct device_node *node =3D pdev->dev.of_node;
-> +       const u8 *fhctl_node =3D "mediatek,mt8195-fhctl";
->         int r;
->
->         clk_data =3D mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
->         if (!clk_data)
->                 return -ENOMEM;
->
-> -       r =3D mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_dat=
-a);
-> +       fhctl_parse_dt(fhctl_node, pllfhs, ARRAY_SIZE(pllfhs));
-> +
-> +       r =3D mtk_clk_register_pllfhs(node, plls, ARRAY_SIZE(plls),
-> +                                   pllfhs, ARRAY_SIZE(pllfhs), clk_data)=
-;
->         if (r)
->                 goto free_apmixed_data;
->
-> @@ -140,7 +201,8 @@ static int clk_mt8195_apmixed_probe(struct platform_d=
-evice *pdev)
->  unregister_gates:
->         mtk_clk_unregister_gates(apmixed_clks, ARRAY_SIZE(apmixed_clks), =
-clk_data);
->  unregister_plls:
-> -       mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
-> +       mtk_clk_unregister_pllfhs(plls, ARRAY_SIZE(plls), pllfhs,
-> +                                 ARRAY_SIZE(pllfhs), clk_data);
-
-Nit: I think this could be squeezed into one line.
-
->  free_apmixed_data:
->         mtk_free_clk_data(clk_data);
->         return r;
-> @@ -153,7 +215,8 @@ static int clk_mt8195_apmixed_remove(struct platform_=
-device *pdev)
->
->         of_clk_del_provider(node);
->         mtk_clk_unregister_gates(apmixed_clks, ARRAY_SIZE(apmixed_clks), =
-clk_data);
-> -       mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
-> +       mtk_clk_unregister_pllfhs(plls, ARRAY_SIZE(plls), pllfhs,
-> +                                 ARRAY_SIZE(pllfhs), clk_data);
-
-Same here.
-
-ChenYu
-
->         mtk_free_clk_data(clk_data);
->
->         return 0;
-> --
-> 2.39.1
->
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
