@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7EC8C678D5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 18:53:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3A24C6FD1A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 18:54:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k9ls87AUqXtQuQdmuxvYZphUw05BBFcV2MURS2q3dHo=; b=t6kv1prW49mYG64Ki1sd/F7JJa
-	RAgLyA7tN4T5D3i25Gej2hBGDcmG3c/LTYsF6rA2uOEH7nl6ApUmrWnFVbvz0XSDhX6XQB1t0zEdx
-	+nD8UlFysJu3tJjR+QGK/tujuob/4kNXAFISsO7ByL+/oNJ1yrxr3NukhRafUfO9Nz2d4DuUReN34
-	A7SVXuTk18/8M7OzA9fIq4g+AG9R8WuvjoxvjvfKZw1p1tTyrJigoSJmKj+y95dQJyumbpM/96S4V
-	onTJ95KJDXh99cPNDbSOPp99dqObrShHn4NxWDsLoFsfltmNaX5zTupvEFdcrkKGITAn2897vB9Rh
-	3y8YNaoQ==;
+	bh=+owYiX7jswArKs3fL+HnoSgqSO+sE7J8CBPiU44HSVA=; b=EPoiHldFfSA35VelNEVfMb3VHQ
+	V8DgDN9v/k1KJNE6z1W2aIvtKo/W8q+EsXvtKWwU39CePFxQEATKg98tOc2fSpcgIC2CyB7lo3f8e
+	7ueDcsG2xkJnVD1ToZZNoBqAB0dHLEDw2MNQWKv+laCwlDFwuP9fXBJJ4F+Vf5fGxWE7ZB1AX7hJc
+	fT5MC5sPQsTn0z7Fdx8xNUQIZgbsrONe8kjKfX2skrRSmnVYTRY45GbuaZh/iAAOWX3zWb/AslFcC
+	HNp8vioMjjUc8dDEUaofcb7Tn1vKarpfq/3TNJPOlcTT2TaO9ZkwgKHaiDns6k04B/ldSioCR6i46
+	6XHm4vFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZcR5-0027bA-EA; Tue, 07 Mar 2023 18:53:19 +0000
+	id 1pZcRu-0027yb-Hk; Tue, 07 Mar 2023 18:54:10 +0000
 Received: from mout.gmx.net ([212.227.15.19])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZcR2-0027YW-5W; Tue, 07 Mar 2023 18:53:17 +0000
+	id 1pZcRr-0027x7-MY; Tue, 07 Mar 2023 18:54:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1678215174; i=frank-w@public-files.de;
-	bh=k9ls87AUqXtQuQdmuxvYZphUw05BBFcV2MURS2q3dHo=;
+	s=s31663417; t=1678215228; i=frank-w@public-files.de;
+	bh=+owYiX7jswArKs3fL+HnoSgqSO+sE7J8CBPiU44HSVA=;
 	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=c635wzwuK2vPcW8SjHeAxKwkqSfGfh9C0ehHGHaD8ap5/aZlNLTTJ+ql8ftZerxgq
-	 3oDkmKc32OjNP86UiTv/bp6YN0hBFRa+3HUTai8cOwEYJJozgadqcC0MPpsdYMxH4m
-	 77HmILE0kF1GPCeVfGsEgueUBeRXiPrqur0E5mIqrDXeyQvtuJF727aGVmogTj3L0m
-	 biDE7Pdn18zMK7gVdAD7MzVmJUuogNjAsuBUhrEFdQ9hoafED1f3TVPJhCQrf7d4Dp
-	 4gGw3hSkuuMyMRY9G/MpLJVvh8mcKBM01frjT2kIvt2N7T4/xwhSPFTGEuYFyPKM88
-	 IIX2EegMcPmKA==
+	b=Ud9W7IEd/03xmWP/ai64n/sHBhn0fBsP6DlJXdr5l0uNkSfa4zEU/lAo34Tm/y6RP
+	 bJNoR3KxCBkO9chRoQSPcSMDRyajidiVJgYrgfB6KEnrCLgdWahy7vkNS6AVC9MGFk
+	 +sQf/9G03qLckfMgAPncpMxMwS1fu9OraROpcVONaOkMIKqsd2YbtOi7nrxGN5y6G0
+	 iF7zovhxIvx+TbxQ8kAUZztBSNez95df01rwHNs6piXujUsggN5qxuwMecDtI7XRTj
+	 I0uxYTTwaFFn7ef/eVODUgVKUVwrSkGYmMY6r5++ywCI/21cTfqMt3UjX7gZWcN6gz
+	 iheRYz9g6tmiQ==
 X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
 Received: from [217.61.156.24] ([217.61.156.24]) by web-mail.gmx.net
  (3c-app-gmx-bs16.server.lan [172.19.170.68]) (via HTTP); Tue, 7 Mar 2023
- 19:52:54 +0100
+ 19:53:48 +0100
 MIME-Version: 1.0
-Message-ID: <trinity-4b8f5f5f-55fe-4c7c-9ba6-d903c722d0d8-1678215174716@3c-app-gmx-bs16>
+Message-ID: <trinity-c28f2d1c-6730-416a-ad34-6e03182c2cd5-1678215227989@3c-app-gmx-bs16>
 From: Frank Wunderlich <frank-w@public-files.de>
 To: Daniel Golle <daniel@makrotopia.org>
 Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
@@ -57,39 +57,40 @@ Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
  Oltean <vladimir.oltean@nxp.com>, Jianhui Zhao <zhaojh329@gmail.com>,
  =?UTF-8?Q?Bj=C3=B8rn_Mork?= <bjorn@mork.no>, Alexander Couzens
  <lynxis@fe80.eu>
-Subject: Aw: [PATCH net-next v12 08/18] net: ethernet: mtk_eth_soc: fix
- 1000Base-X and 2500Base-X modes
+Subject: Aw: [PATCH net-next v12 07/18] net: ethernet: mtk_eth_soc: only
+ write values if needed
 Content-Type: text/plain; charset=UTF-8
-Date: Tue, 7 Mar 2023 19:52:54 +0100
+Date: Tue, 7 Mar 2023 19:53:48 +0100
 Importance: normal
 Sensitivity: Normal
-In-Reply-To: <fd5c7ea79a7f84caac7d0b64b39fe5c4043edfa8.1678201958.git.daniel@makrotopia.org>
+In-Reply-To: <d2db725199011ec06082926830cf9fb2a8aeb147.1678201958.git.daniel@makrotopia.org>
 References: <cover.1678201958.git.daniel@makrotopia.org>
- <fd5c7ea79a7f84caac7d0b64b39fe5c4043edfa8.1678201958.git.daniel@makrotopia.org>
+ <d2db725199011ec06082926830cf9fb2a8aeb147.1678201958.git.daniel@makrotopia.org>
 Content-Transfer-Encoding: quoted-printable
 X-UI-Message-Type: mail
 X-Priority: 3
-X-Provags-ID: V03:K1:ES5k/UBa3QqaRIr9k0VcmOXcFh0bykQJLKCIgGmd/YebGxi28WQ/EcN+n7mMf+t0YkaCy
- Y4897TVRC1SPVCFsi/uYPVwNKBdUpeRan3iRALEpNX1BKVJ7NWo7tZm//nuGZPenHExqoeI+dKKN
- VN6Cu2y+0iYztONsYUKBmW9UoqsHg/XLbwmDdbXOAo1i1FVhz6i9OvdB6Q2zmHE7u4xNzAxyTYsH
- OxyamxZFKelQJuufRPUa5QumyakVh0qvBi71r/B98Fa0QqgnObZiX3Scg7b9G54HL02TLA9kel/y
- G8=
-UI-OutboundReport: notjunk:1;M01:P0:4h4kEjkhaiU=;dI5ucOYtvHC9hF7eodeX8AoWNCf
- T/39mVButQZ0rIfz1wOBiFAU0K7LDUFSLVb89Wj/gG+PdVNi6C6k98QH4b1QePr3G3TEQAiTl
- Tp6lyFJpfHey5UpRukmFMTU/G8p1cPSTSrGm3fIy5ANKDYI6HGlObpp0yzo5UGTNo+7pRk+9C
- hUNHxyeGZYWz/y3N/jt2OT9tEPFBBeLE4BGf61SPCI8da1vM0pR4g8erpUqwhGzZnA1hyiyKe
- Xt53Led9PP+2ns8/ovTFiHvVv/XLZcmffbBDu0n1RUiX+CY/DJX71pdNR+cNuPzvLG0CAe12z
- 42RiYtYJ3Gd9uyf42rd6VNbHo3aVB+XXt5Fb1xnzPK643Km1cU7a1lLs+vGH29M4zcboD7cmx
- cFm48ExY8bFuSMG9Bd0nWOTt5GhTLrkcdV/9p+zmrvXYWLz9oXeuzOMWVwUxR57bFtOwe8Egw
- rDLRjCdLqGV0zV9dMLKaZQqwi0qO7kTLodN+K3JNGXaItK33zzyCsAi8eKr6S12ClPhM0R/F2
- 1xSYQc3n1HAW1MhX1Ah1deBXM7xLuob+ztd6eZSKcMR2XalosCznLHzcMTZa+qPSgERUg6TJj
- ra+oVcuqV0YEhYTipc31GBpFU36Ox7tFSLNuGJwOb/TdGmkZEy3LV9DV/xHvQoGiF85Hzztqf
- vBpwIIizFyg0UOWCEFkRyrBN+jMA6c4ty5JriIT+TL0Lm8OnkLmJhIS7HmphPlhRLaZAHr16X
- m7HG3LhywQhZlAAQWecglQCA8mqbfiW1RDy8ceYy6a63/204uZnX+BTW/ScoAeaTTe7wk+1Nm
- qWV9HNLnhkrSLWF6JgwwbD+8CpFoVf69T+PMeIm2a8e1s=
+X-Provags-ID: V03:K1:pkz3K6WA6EmNJMhsiAcvkx7bjekeiDSDQDd8tCucyVIXTL57c1OwHykxVgZKG1lGsNyg1
+ 0cWV/hriObkPzyLS+0mGKLemW65VGLyO2iap2e1yYSL0GICfo5VbTKwQ8DkKaGAEY1NspIXVaseU
+ lDoQX7fOwYvYMS2ZGrGAg+YIjOJiAkww3nvUJWFN21/EG7AIU5SydbGcwR6Y+xK9xx0tsk+cUGZr
+ kB+K7tsWcuBEK5/xd/TbPnoqFd097MJDgdQbXT7+bzEicx/1VLzODjxPMN3Gn1Yui8bM/sKvC6QH
+ Lo=
+UI-OutboundReport: notjunk:1;M01:P0:mxzF7MLmkLI=;/RFfM47ZWNU2XSMGrw0gxKEoCRi
+ xN13YE1EvN8VdTw8rS/2cyFNG+AoWNsqWM9YR7IhvFNPKeYDE+SoLwGeXs0oagtNQLQf9EOxk
+ gcgJkOXmEIJDd41Gv1DnWJ13fAIj+FBM6XIDYbsi/IwJw+mDYvsRYxk5RT9uUeTx7uAirIAEc
+ kdVMqy37arAgw1BjHnWZWh4wR57GDqgkvAK13qPvyiFAfPusc3lNFxTPJIU7n3NmS08WNbpDF
+ FMjMuUZuJ5JgMNXGRVg5quf+z+P2FgkMNDtm6c8aaiFshuZ0b0lAlyR3z2HJhQDgzC+zytIub
+ foMFAK1Dikg24AkfeeQP7qE/9yZBoZnk9C3/xsyPKr3GmWzzh3MbLXVU3J8eosodFg249eIHn
+ 7lJNSEr7aAERqaWXOcKNaSUBLAmmin6sKHBSvTwlSCXE7fMjMsgGTDXWM2Vm1pCbkKRDn2aUB
+ ZK9E+ZYWu7cca711Q8/UjOi0C6DxiYPH2W1CNNhNRh/I9V1J/bGAJY9aTzbl3+3LZDmW9DjIm
+ mZKFLid0r+020WWqHU6Dyz/T36itBN2wwOtQR/kQ6hk+Gw6KBJKepHXUZ3J53aW8FWtJrZ0cR
+ cT89vsQa06PLXUF2PimUVABhFLki555V+5YGQJRPEHrYFdD0DY966B66ovTLwK11S7ZXTQhXc
+ naFm23TpAk2anx7XQmJteQnGAiPI+v0l1XFdiaJVVZRUxgcBpUzY4p747w2C573ynKluLEP0U
+ fSwj+7zOjp4QIY8zNNFmfEX/gr3PcIXslEVP/By46T9tK+LhX9OfkQyo6OFlr4hPHpa5SNtaS
+ 125/WcdSyvOnLbZ8kXoo7R9Mhw2WRgQp92LxqvW+KULJk=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_105316_552465_5AE51DB2 
-X-CRM114-Status: GOOD (  13.57  )
+X-CRM114-CacheID: sfid-20230307_105408_037794_756B4BB8 
+X-CRM114-Status: UNSURE (   7.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,20 +107,9 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 > Gesendet: Dienstag, 07=2E M=C3=A4rz 2023 um 16:53 Uhr
 > Von: "Daniel Golle" <daniel@makrotopia=2Eorg>
->
-> After conversion to phylink_pcs the 1000Base-X and 2500Base-X modes
-> would work only after `ethtool -s eth1 autoneg off`=2E
-> As ethtool autoneg and the ETHTOOL_LINK_MODE_Autoneg_BIT is supposed
-> to control auto-negotiation on the external interface it doesn't make
-> much sense to use it to control on-board SGMII auto-negotiation between
-> MAC and PHY=2E
-> Set correct values to really only enable SGMII auto-negotiation when
-> actually operating in SGMII mode=2E For 1000Base-X and 2500Base-X mode,
-> enable remote-fault detection only if in-band-status is enabled=2E
-> This fixes using 1000Base-X and 2500Base-X SFPs on the BananaPi R3
-> board and also makes it possible to use interface-mode-switching PHYs
-> operating in either SGMII mode for 10M/100M/1000M or in 2500Base-X for
-> 2500M mode on other boards=2E
+> Only restart auto-negotiation and write link timer if actually
+> necessary=2E This prevents loosing the link in case of minor
+> changes=2E
 
 Hi,
 
