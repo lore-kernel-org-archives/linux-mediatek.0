@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 197D2C6FD1A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 13:58:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4906DC678D5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 14:00:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WTwUwSLISXupiYzHSzg22kxdlXmwobHt1s4yX2iCI30=; b=qEB3RSp6ivjoT5JkihQMwC6nTt
-	8phi7uJvekdtoqOlxj9zhwK9zm2fIlU5yPEdsFm5oJ502JuAPH9I0tT78vtBveBEJ8bqagrlgc+0V
-	hMuY/qNp8oHzArN8woQtDkZcCrJsdTD46Jt66caOd7aBGkq5VsLAcGboYijnpCJEiZuKQNVievJIo
-	wTTqQq7sx0zG9nSSNSXUMPIrRkokdvVC5Xgzy7feAinMcF6f7VRuuXtFGkqKpixqXg5tIAMYndKjw
-	NwVP3WzdqxsCjAy5sB5HynW0TKvztlHxjUhKyXd2F+51xzsyp89stn50Jy1Fz2n0opni5pmPNXMn8
-	iy0Ag5Cg==;
+	bh=mJVpBJj7Q47tDVHQbQFKEbwqf8M1r6OvMJv941rag94=; b=hscURT2EMLM18OWhegfXuIHosI
+	6S8dJYrTGpD9NuPOCYwXR/Ue6w2L0kBe8CQxPSMH6ks7gWK9G4pbE7avgv0IwPkSzyNKEdlEGHdjN
+	5Al9TGwIGr6R5rFpKVaWXPUfiFAXWXhq4aWDmBp/aHJ0NrMLcZVHT5WWGYGRswvSkqcnwm6RcCA80
+	AmqkY34wyTXP3aeLtOP1eLxBoJedmP13dg+1ySQ1iDAT+j2or1IrBtPhEot137RCI6iN5BIKt56y7
+	YFUYrWIAqF+ejZqw5pdF/KaKKGi5nnl9PTdbqBQb1ogDkmPnFCWog0mxBhn4OVoi4f3kVy56rEoM4
+	kZPWr2AQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZXpU-000ZnW-SG; Tue, 07 Mar 2023 13:58:12 +0000
+	id 1pZXrK-000aZ8-3g; Tue, 07 Mar 2023 14:00:06 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZXdq-000Uqj-Ke
-	for linux-mediatek@bombadil.infradead.org; Tue, 07 Mar 2023 13:46:10 +0000
+	id 1pZXeC-000V1B-UW
+	for linux-mediatek@bombadil.infradead.org; Tue, 07 Mar 2023 13:46:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=WTwUwSLISXupiYzHSzg22kxdlXmwobHt1s4yX2iCI30=; b=A2xiOisdJ2xozCpnO/JfahXfOJ
-	npj2JkNDcyVueN81SdDwDkki19gc1tVfKDcjmUbQNII1GWc6xxW45rUWThwKUypI/CI0KWamfK9ER
-	6oSeC8S3ioPPP7Ik+lD7tKeHHKbIQAA0gDXy4z5xqW9ahgc284jpKGRvdTDrf9t02rLtG+n3u+Q74
-	oFbCbzCXsoThipg6CmHs8BoSy0c2tyrBByrPgvoNSW/6cxJ+RScWBlf4WvtpY0xeeM1y36617QsRt
-	fJKqllJkfZt521NERCO8GGGFC4zHA0K65nNXkxvxwuiGNIOeEeJVggnTvhOzOj+X5m42Nrwc1POLA
-	rhtiOgxQ==;
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	bh=mJVpBJj7Q47tDVHQbQFKEbwqf8M1r6OvMJv941rag94=; b=b64+M4/NkDd7SZsut3w1VwegDC
+	3t24F4J4pI3La0QsSIS5I6TBGYgu5tXHXwZWsmKobSn+vPoQAEWdDmd0VO5Jjcmq516OZnoIujtC4
+	eTh007/c2SlZ3ykQKltnkT73rZKZ1SZk8hfBzgfQH+dNTyAOw+z5LGjPC6CPH3IE+Cwp7EVy4AvWZ
+	uStiFCkrjy3EUWMsMjSu6zi96wDYfdQYSdmCQAZgedo4Fjkd+8Me7pKW8kxdrTGXzK47zYngpDQRL
+	1I88Ej/7DP3HeIyUxxvdNOECdfCI+NRrKeGyglL3fziKYQJBDi2mIN37L4+FUPbrGMbv8YIYgjFJY
+	1vzr3wug==;
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pZXCq-00H3CM-30
+	id 1pZXCw-00H3Dj-0I
 	for linux-mediatek@lists.infradead.org;
-	Tue, 07 Mar 2023 13:18:19 +0000
-Received: by mail-wr1-x434.google.com with SMTP id e13so12057866wro.10
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Mar 2023 05:18:16 -0800 (PST)
+	Tue, 07 Mar 2023 13:18:24 +0000
+Received: by mail-wm1-x330.google.com with SMTP id az36so7750797wmb.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Mar 2023 05:18:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1678195094;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1678195100;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=WTwUwSLISXupiYzHSzg22kxdlXmwobHt1s4yX2iCI30=;
-        b=AImREh7EYVUqaehhWzUZxtGIBjaSqsCEYAUilNqh3fIYOwmSqT+WO5874wgxRa4fvy
-         8W23oJI9Gd4tFMWSOLaqJCEI65vb24enNrTj/0fnUNfh/xSkp2XPZXT5sLgiAm9WorCH
-         ZxfNLZgHEeDx75K647KUzD5wIb8c2HWFwskRNQMmxm4/N5mzEfsULaPRtuafLLtl3nuA
-         mo4j6fwhNNe5hpbrGqrePLNWyY8IikTJmV9VTKfJj8mT1q2iYgC7LHMGVSbErXL2GMTG
-         fl7yrpZsLnfzUuX59QoZ4iW8S8JrDlPljjLHxK+yuZpjTws1F+D57fxCGsLNbFCV03W9
-         rlYQ==
+        bh=mJVpBJj7Q47tDVHQbQFKEbwqf8M1r6OvMJv941rag94=;
+        b=IZg32YgLf+Ob3FqrwsTYqi5GHtsL3B2+OzidEnAamlmCMYWXlNM5iF8j9UVsn6jyu/
+         lUUx95nLxxea/evaLSGlxEnFi/BajfETqf7bY8NpRCro/Wjg8thXKvKwAojLINPM+H5S
+         zkzfQNAncIg3Ve2YK2HWUBhVoiqEVN9A8ZPsEdejTIoSbr0LCisrkAiSQbLTr7ZTudJK
+         2KGG8T1o1DLTICSz/TkEFlRBOMq1qQxfKrV05KuqD/vwjgp2PKfAY2UY+kH0TwGsJ2Rh
+         EuvI15oB89y+ST8wtn2gpP1BOsgsomd5aNMIxrCCz8LzYOMYucQ+Q373gEJn79qCixba
+         Hxxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678195094;
+        d=1e100.net; s=20210112; t=1678195100;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=WTwUwSLISXupiYzHSzg22kxdlXmwobHt1s4yX2iCI30=;
-        b=zmnA5ubyhTiESTpqaHzw1tW++wFh3labtDeKV9Wktnrbagw7pW/2n4tdiytS6/MeHE
-         af81JpSElMqCInL6pbXVRswEDNwoN1eX4yhDglGgVTgyi+Ak6L3tEm8OikLinUcksGDz
-         STVSix9dsJ3S1sYkMzlmV+e2ZPS8fmDffS+8k7ks5f5STRqVF7xFkPlai5c1BxPY0kQO
-         X9v5qGUAcBf1SDRqzQQNj7a2dLTZ7w3tRh+VMT12sfq6jysFGIRgqIA6pe3+plA9DUwu
-         inm+1u76F1oStGDW+xZ01nW0UO0iTH0HDbBZogjFqhaf6sVs25F4JBilWtKVZXK7dnpB
-         vQfQ==
-X-Gm-Message-State: AO0yUKV/3iLaeP4YZ2oHHT/IKEg49qLE8zCc2DTEFh1TNlmZeYFIqxJk
-	MdPI9qzOQMD/7UsFGz+9ACHX2A==
-X-Google-Smtp-Source: AK7set+9nhyca70hEIORA9ihk8VcPxx61Ick2qkumdsaCswY2a3eyZE2HAhVl6yEdVLnbUFukGskdg==
-X-Received: by 2002:adf:f448:0:b0:2ca:e8c2:6d29 with SMTP id f8-20020adff448000000b002cae8c26d29mr9172709wrp.7.1678195094636;
-        Tue, 07 Mar 2023 05:18:14 -0800 (PST)
+        bh=mJVpBJj7Q47tDVHQbQFKEbwqf8M1r6OvMJv941rag94=;
+        b=Y4D4nrkZ84geXkC60lj5Q2kPzYqaAaOlZz9KOlomyQWS9rOm/E6VZMLUZfm/QNeVFN
+         cvqznrPn3pKWu6AHOeEJcIM90fM2qkPXjJMBcKnHw1AJ838StFHdNvUXGzR552vwAx2g
+         +Jn0mToVk1F3t6twLxbA77Mobun0YCXUva5m2rbiA1FVpdnWl+goEI+8CHNTFk32eSBM
+         FM7UK3U2zQwaRzWt/fN6xFpApbLpXplN2/ZDryQgFpaoezKyncwokAmMHVfdZWmdN8DE
+         WjLAcGDOxj+xL6cZydgtuhY5I84zsNQ29iYARmDo+NnaYYUkLYjyUqxQmIJWSsI4GQs9
+         N9Aw==
+X-Gm-Message-State: AO0yUKXLRasrGb+ttq8IZzoee72Sa1o0yJkcsVHJ1JJKZanB2u58p/nz
+	33ykzFzR/mJ2IiAxtWCwA2ctRg==
+X-Google-Smtp-Source: AK7set/i25Rk5nwLo2x3J80rqpfPHXWm+zuJxnKC4fugCyM7LvMbur3zuZ3u/JjGdfIiWtZP1OnthA==
+X-Received: by 2002:a05:600c:468b:b0:3df:fcbd:3159 with SMTP id p11-20020a05600c468b00b003dffcbd3159mr9947470wmo.3.1678195099918;
+        Tue, 07 Mar 2023 05:18:19 -0800 (PST)
 Received: from [127.0.1.1] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.googlemail.com with ESMTPSA id hu21-20020a05600ca29500b003eaee9e0d22sm12986242wmb.33.2023.03.07.05.18.13
+        by smtp.googlemail.com with ESMTPSA id hu21-20020a05600ca29500b003eaee9e0d22sm12986242wmb.33.2023.03.07.05.18.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Mar 2023 05:18:14 -0800 (PST)
+        Tue, 07 Mar 2023 05:18:19 -0800 (PST)
 From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Tue, 07 Mar 2023 14:17:42 +0100
-Subject: [PATCH v2 13/18] arm64: dts: mediatek: add ethernet support for mt8365 SoC
+Date: Tue, 07 Mar 2023 14:17:47 +0100
+Subject: [PATCH v2 18/18] arm64: dts: mediatek: Add CPU Idle support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20230203-evk-board-support-v2-13-6ec7cdb10ccf@baylibre.com>
+Message-Id: <20230203-evk-board-support-v2-18-6ec7cdb10ccf@baylibre.com>
 References: <20230203-evk-board-support-v2-0-6ec7cdb10ccf@baylibre.com>
 In-Reply-To: <20230203-evk-board-support-v2-0-6ec7cdb10ccf@baylibre.com>
 To: Zhiyong Tao <zhiyong.tao@mediatek.com>, Guenter Roeck <linux@roeck-us.net>, Linus Walleij <linus.walleij@linaro.org>,
@@ -94,24 +94,24 @@ Cc: linux-mmc@vger.kernel.org, Alexandre Bailon <abailon@baylibre.com>, devicetr
  linux-gpio@vger.kernel.org, linux-watchdog@vger.kernel.org, Alexandre Mergnat <amergnat@baylibre.com>,
  linux-mediatek@lists.infradead.org, Fabien Parent <fparent@baylibre.com>
 X-Mailer: b4 0.10.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1366; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=7pGcYrXi2hCGwx6B3T21Sna5Awy1U2WZgVtirE5+dl8=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkBzmF1I9j0+IU2v2RxpbCwB2my0kNnwI44xhyeFNR
- uO6Rj5SJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZAc5hQAKCRArRkmdfjHUReT/D/
- 9f/Z0AlnwLWfgxZfW4BDsRbISoCY87TTG4ZwHBUYDz6dJ+Q5sFIOxtg1DSXFWtYQYLS8+OTyZjJo/k
- Kv7O1Q8tD+UZ9YtLtpVxaH8WPckQSURjbCj2RG6qfSjQ5HOqmIlqwKIA3f5My78bfgDL91c13lgqp2
- 7kOqOYp+B6goWCpZie3cYo3x4YJX2CCxP8dRWUHtjNh8xjzene2wm9aE1AiueQImqOKM5JdzDgJB/F
- WgG98pjdtUwuMQwgIgusg0tqmRpcVPBV/ksXv5jfkCz5ie3vAdN+r0iW2nYl2XnWca+9+PybQ1Kiav
- iPC5W7rHj/9g4+hXLCUr2ps6H0mkKibdairpalxKAl52SpL/h+LvgcdNqglIo8LkhSapfD39LmbQvb
- +Gr1ZIyVtvgrwlw0TH0MJ9W/SRo4K0wS4AgGKEcYxKDIXVLoGyQNVfYli08WFbsAx2cFCz0ekHWhxf
- XjmHYQFB3V92oJ5wsconzyqMsdtnu6ZLfCqpeqYfApfDHBJD21z/WmuAHS8X1kvHWux4qUq3namym2
- KRTA5Bi61m9IAnee7jxsL8++vm9eRuBNyjNbXjdkUqF9D5q/Wu4ujvDChlplnsqqH3PLLOV9oQq2Qm
- VFKhU3cTPyELITQ9PtDYkBevPK13IJ071Yfgb3jilFL/j7Jsump9OUHJzK7A==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2609; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=PpXbegqyhWKQM1ZMMzVId+LMr9Lt16YQvGeGFjFB8IY=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkBzmFTOpOgQPHjN244A+ti+23VUEeI0ssQNVxIX1S
+ QjiLHWqJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZAc5hQAKCRArRkmdfjHURdaZD/
+ 9OsOd8QzUcRygK5Z4CW5UnTYxlvCOS/vUvVxIGwHtJg9z98s8WA3oKbQl4BOAqKVJGm3jzHrgSEbDJ
+ cj9nNv9An3T2UVh+hJ8jI2dsh5Cb63tB6P7SMGwlBFVdC80E9yovd5CQROrT/J7cQeBLTT+MSHK6Zx
+ 2Q3DWeaegqXQHTZpbIsWZY3xpRYYyR45/ojmig6ZOrq5MJwnTVENqb5nsuWmKR6Jb4LpxLRyW3drpt
+ 4dJujkWx/uVKogPLyCUQdMVAvDa3I3Kbyefxdkz3qRVQXTAlkddBWbcLseZEzOhLCOj2duGDV6fOFw
+ t0GmQyIcQKfaSWcCb/Y4Tp0SkryKhaXw3A84mXEepahjA5i2zEG2ScUlOC26Sc0vy66teApn94S3U6
+ 1Lk1CZqclWL6YL+4nGbtcs+I1FymmsmCgP1Z2yloFvFB34xSueFFNeMivNnVkBNre1htNOxfzrh/7J
+ xEfgoExFsckKhVBIU5C7w6lt6RUFxqjlti1xs/kPoK8cUG2pAXMYD+zQEyfhym5V2K7UFPxa3nMUV8
+ 7kRneDYtcanK64kg4r1gfOpuCct7ZHl2f2/+xBXWHbDlgdF+3Cp8ihSZw38Rpa3Xl+qe8gb1rCI1hg
+ xNK+e0opvI/kzs5dHGvrRpcui+l2CJO3g87N1DVn5G++3of8VZD5XareiSow==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_131817_196958_39B67E41 
-X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-CacheID: sfid-20230307_131822_264681_A4ECDD2E 
+X-CRM114-Status: UNSURE (   9.93  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -127,40 +127,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This IP is a 10/100 MAC controller compliant with IEEE 802.3 standards.
-It supports power management with Energy Efficient Ethernet and Wake-on-LAN
-specification. Flow control is provided for half-duplex and full-duplex
-mode. For packet transmission and reception, the controller supports
-IPv4/UDP/TCP checksum offload and VLAN tag insertion.
+From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
 
+MT8365 has 3 CPU Idle states:
+- MCDI_CPU. (Multi-Core-Deep-Idle)
+- MCDI_CLUSTER.
+- DPIDLE. (Deep-Idle)
+
+Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8365.dtsi | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8365.dtsi | 35 ++++++++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-index a67eeca28da5..394a5a61be59 100644
+index 959d8533c24c..b5f5c77f7f84 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-@@ -438,6 +438,18 @@ mmc2: mmc@11250000 {
- 			status = "disabled";
+@@ -112,6 +112,7 @@ cpu0: cpu@0 {
+ 			reg = <0x0>;
+ 			#cooling-cells = <2>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&CPU_MCDI &CLUSTER_MCDI &CLUSTER_DPIDLE>;
+ 			i-cache-size = <0x8000>;
+ 			i-cache-line-size = <64>;
+ 			i-cache-sets = <256>;
+@@ -131,6 +132,7 @@ cpu1: cpu@1 {
+ 			reg = <0x1>;
+ 			#cooling-cells = <2>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&CPU_MCDI &CLUSTER_MCDI &CLUSTER_DPIDLE>;
+ 			i-cache-size = <0x8000>;
+ 			i-cache-line-size = <64>;
+ 			i-cache-sets = <256>;
+@@ -150,6 +152,7 @@ cpu2: cpu@2 {
+ 			reg = <0x2>;
+ 			#cooling-cells = <2>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&CPU_MCDI &CLUSTER_MCDI &CLUSTER_DPIDLE>;
+ 			i-cache-size = <0x8000>;
+ 			i-cache-line-size = <64>;
+ 			i-cache-sets = <256>;
+@@ -169,6 +172,7 @@ cpu3: cpu@3 {
+ 			reg = <0x3>;
+ 			#cooling-cells = <2>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&CPU_MCDI &CLUSTER_MCDI &CLUSTER_DPIDLE>;
+ 			i-cache-size = <0x8000>;
+ 			i-cache-line-size = <64>;
+ 			i-cache-sets = <256>;
+@@ -182,6 +186,37 @@ cpu3: cpu@3 {
+ 			operating-points-v2 = <&cluster0_opp>;
  		};
  
-+		ethernet: ethernet@112a0000 {
-+			compatible = "mediatek,mt8365-eth";
-+			reg = <0 0x112a0000 0 0x1000>;
-+			mediatek,pericfg = <&infracfg>;
-+			interrupts = <GIC_SPI 25 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&topckgen CLK_TOP_ETH_SEL>,
-+				 <&infracfg CLK_IFR_NIC_AXI>,
-+				 <&infracfg CLK_IFR_NIC_SLV_AXI>;
-+			clock-names = "core", "reg", "trans";
-+			status = "disabled";
++		idle-states {
++			entry-method = "psci";
++
++			CPU_MCDI: cpu-mcdi {
++				compatible = "arm,idle-state";
++				local-timer-stop;
++				arm,psci-suspend-param = <0x00010001>;
++				entry-latency-us = <300>;
++				exit-latency-us = <200>;
++				min-residency-us = <1000>;
++			};
++
++			CLUSTER_MCDI: cluster-mcdi {
++				compatible = "arm,idle-state";
++				local-timer-stop;
++				arm,psci-suspend-param = <0x01010001>;
++				entry-latency-us = <350>;
++				exit-latency-us = <250>;
++				min-residency-us = <1200>;
++			};
++
++			CLUSTER_DPIDLE: cluster-dpidle {
++				compatible = "arm,idle-state";
++				local-timer-stop;
++				arm,psci-suspend-param = <0x01010004>;
++				entry-latency-us = <300>;
++				exit-latency-us = <800>;
++				min-residency-us = <3300>;
++			};
 +		};
 +
- 		u3phy: t-phy@11cc0000 {
- 			compatible = "mediatek,mt8365-tphy", "mediatek,generic-tphy-v2";
- 			#address-cells = <1>;
+ 		l2: l2-cache {
+ 			compatible = "cache";
+ 			cache-level = <2>;
 
 -- 
 b4 0.10.1
