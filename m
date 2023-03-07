@@ -4,77 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 974DBC678D4
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 09:25:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAE3CC6FD20
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 09:25:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2KEjIGIP7k4933B+btGoksmvrPyH6BRppEBQn/EZ6nA=; b=aI03j80HlRBRV65UcHAmWaVYFF
-	I9im09tpqCbGJ0Gn/qoU+EHDwPOkumwPceMXUT8xePePvtsDdRlBOvKMVuIgJ2++5T+5pVTe47Ui6
-	izgPUT+fOKmZvGUsJ8QeU2b6wl3JTVAPtGZBOOPtDJNiqAfIHLRedPXQbu6yXQ9z5tO0KOd8Vv79N
-	czRXvempWTM4KijX75bJaTrAh261vs7uQX76bDSpDBkX8kRZ+jqwjHm6FYSuXw1eSEOxTqVSksORC
-	Cn+Fq+RAuTQggJ/Sey3ON+ihXKoNZ2j3nqV4gYVdC5a9R+B2HB8OHh9V5W4Cf4G8+CMOLIa2NQium
-	dY5Lx13w==;
+	bh=ov+7M2rJ+yI8E3FxSOXUyYGQGXOW9J99IK253jZbFoE=; b=vWUE3njuUx2ACjRPHueVXob4kW
+	5uKngxT0mFeM3cERio6o1rqEcO+RyWkrdqc7Ax2IbswmnpcEnaja1wkxUYGkNBz46t/brB22XDHLO
+	DxQ00Tg5fjOTecpyHw+fc9SX9xlGI6fKtfDqFavX0ePF1q9Nl0fmSRLq2ydpwJ1lry9cGM4iR5lvI
+	TkwoKIbCgrwhb7UJVLfvfXZD6jdCi3EujnS2pDun11VfEtCRMwPUb18HxfQx6UwaAgzfrJEkYzYgK
+	pMHrL1q2sFD69/NicUccZj283Fhv/9l9AQLJrg4m8p3YBp3V3nz9DRSFQ8ZxGWZVq65evrNIaScZZ
+	/7K79lJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZTZ9-00GsLN-0a; Tue, 07 Mar 2023 09:25:03 +0000
-Received: from mail-ua1-x929.google.com ([2607:f8b0:4864:20::929])
+	id 1pZTZW-00GsXG-7C; Tue, 07 Mar 2023 09:25:26 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZTYp-00GsAN-Gj
-	for linux-mediatek@lists.infradead.org; Tue, 07 Mar 2023 09:24:45 +0000
-Received: by mail-ua1-x929.google.com with SMTP id n4so8362854ual.13
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Mar 2023 01:24:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1678181079;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=2KEjIGIP7k4933B+btGoksmvrPyH6BRppEBQn/EZ6nA=;
-        b=hVe6Sb3vULw3t8joPXyJizdO/5PxqGwox55+I7vxTiXYKJ0qwlXt6/LqiGX9tqqE/b
-         nk4UimZQaU0d9iKv62y+OHGrxmGZ30Rg+l1tmtH486aWXB/oPzRZJOCh98gaG8qn2iOQ
-         asNP6HvdtcY8Jj1N2XPu2lCt+dWqp9/a2Dai0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678181079;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=2KEjIGIP7k4933B+btGoksmvrPyH6BRppEBQn/EZ6nA=;
-        b=a7sc10iVxix61X0f//J6I160r+VvxOtfIl4HZMPX2NuN+1YkKmBbbYH0I/107jjaUG
-         HEk6JvyyqnsuDkK2/OO9skCxoKBJFm2m8evXr2DZYM6ZTRE/ht0eEtDURBXluwbexzQj
-         8oSiifqMy8dxpXcZs/UX1Llr4vRDyFjWqTlIOZNq64vtX6SvSgWoNXf4SjdnrygLc3JB
-         /Jgt4t53fnNQOkeGqNFrFZOhf8L1GPxidzV3O9mM9FIiiTzhuQY3bWuuqkfg7U/wJ//Y
-         mWxXPhQkKz8GSsJnQKkagUst4tSp6je57ZGC6bB4L+bqODJUooPTX5axpJlm2h/r2WY5
-         psig==
-X-Gm-Message-State: AO0yUKW1oZFKL7cTDPj7hMSHOJGke35WiJYx7UmNjRP9r5Z2COPtmlR6
-	+LZ+1TYdJBC/aomju9DNGMX9ppRXfwAJBsaUHQ5IVw==
-X-Google-Smtp-Source: AK7set+da9sAeR326t9LNfp7UZouQJyP9uKjC8RgBcg9Kg3WklPbE8tDN9/nwn0EBb9q00Bh4xZa0t6X7HiSBNUylAo=
-X-Received: by 2002:a9f:3104:0:b0:68a:5bba:ba40 with SMTP id
- m4-20020a9f3104000000b0068a5bbaba40mr8809625uab.1.1678181079476; Tue, 07 Mar
- 2023 01:24:39 -0800 (PST)
+	id 1pZTZ7-00GsJ5-DD; Tue, 07 Mar 2023 09:25:03 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8E3036602FE5;
+	Tue,  7 Mar 2023 09:24:55 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1678181097;
+	bh=q3luoZTgpNdhEHW9jdKgy83al0aOJTjkSQZabZ2eSNI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=W8ZSG78OC0e/uulkRGd5Gm6py5CcblJbNWn1TQOWZv/EZ0g0shxFXfxDTp0262JYR
+	 liRNvSmuJOPli90jo2/hE6h6gkO0GePEbxa5OOIRAS7ADdfRlCptRhPAsR0ZtMTFOZ
+	 y+QLPOFue9xJHHJQrG0J4bLfTMhJmxChge6xibg9M3APxTzLNeEJPjBDxPtPXNj1tI
+	 A0mgGGcOhmhCLgAqxjxMPgtLaJ0gUge6mPI5Z4q0A9jGMBaywuerKA3cBPnySWXzx8
+	 j/AtZCGNrZGSHqJrmoHpC/IiG0jtBidJsLHkNy0zVuKmJNOdb/LRks7cFxQqIUBP2z
+	 +JnIUIZpky/Aw==
+Message-ID: <5ca9ad61-0a79-5700-8c6a-e9afa94a59c5@collabora.com>
+Date: Tue, 7 Mar 2023 10:24:52 +0100
 MIME-Version: 1.0
-References: <20230301095523.428461-1-angelogioacchino.delregno@collabora.com>
- <20230301095523.428461-13-angelogioacchino.delregno@collabora.com>
- <CAGXv+5GHdtbheL6wxtDo-szk+=3BGk2z93SBowd4Z=E9XupZkw@mail.gmail.com>
- <5dba27e1-d480-ea24-c1ba-03bb7f77b1b1@collabora.com> <CAGXv+5FwNfZ7TwKVMM5_uAjYQ6ZmhZVFsWREb_da-jxC6EUVJw@mail.gmail.com>
-In-Reply-To: <CAGXv+5FwNfZ7TwKVMM5_uAjYQ6ZmhZVFsWREb_da-jxC6EUVJw@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 7 Mar 2023 17:24:27 +0800
-Message-ID: <CAGXv+5F8A4kLq3y8dE4mrcVb338-afDorWsS5MRBvWVPgiAhEA@mail.gmail.com>
-Subject: Re: [PATCH v4 12/19] arm64: dts: mediatek: mt8192-asurada: Couple
- VGPU and VSRAM_OTHER regulators
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, 
-	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v6 47/54] clk: mediatek: mt8192: Move apmixedsys clock
+ driver to its own file
+Content-Language: en-US
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
+ wenst@chromium.org, johnson.wang@mediatek.com, miles.chen@mediatek.com,
+ chun-jie.chen@mediatek.com, fparent@baylibre.com, msp@baylibre.com,
+ nfraprado@collabora.com, rex-bc.chen@mediatek.com, zhaojh329@gmail.com,
+ sam.shih@mediatek.com, edward-jw.yang@mediatek.com,
+ yangyingliang@huawei.com, granquet@baylibre.com, pablo.sun@mediatek.com,
+ sean.wang@mediatek.com, chen.zhong@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+References: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
+ <20230306140543.1813621-48-angelogioacchino.delregno@collabora.com>
+ <ZAZjYTv4TLKSunFZ@makrotopia.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <ZAZjYTv4TLKSunFZ@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_012443_583893_96430645 
-X-CRM114-Status: GOOD (  30.03  )
+X-CRM114-CacheID: sfid-20230307_012501_746632_3899E8F8 
+X-CRM114-Status: GOOD (  18.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,107 +84,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 3, 2023 at 12:09=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> w=
-rote:
->
-> On Thu, Mar 2, 2023 at 6:17=E2=80=AFPM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
-> >
-> > Il 02/03/23 11:03, Chen-Yu Tsai ha scritto:
-> > > On Wed, Mar 1, 2023 at 5:55=E2=80=AFPM AngeloGioacchino Del Regno
-> > > <angelogioacchino.delregno@collabora.com> wrote:
-> > >>
-> > >> Add coupling for these regulators, as VSRAM_OTHER is used to power t=
-he
-> > >> GPU SRAM, and they have a strict voltage output relation to satisfy =
-in
-> > >> order to ensure GPU stable operation.
-> > >> While at it, also add voltage constraint overrides for the GPU SRAM
-> > >> regulator "mt6359_vsram_others" so that we stay in a safe range of
-> > >> 0.75-0.80V.
-> > >>
-> > >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno=
-@collabora.com>
-> > >> ---
-> > >>   arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 9 +++++++++
-> > >>   1 file changed, 9 insertions(+)
-> > >>
-> > >> diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch=
-/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-> > >> index 8570b78c04a4..f858eca219d7 100644
-> > >> --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-> > >> +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-> > >> @@ -447,6 +447,13 @@ &mt6359_vrf12_ldo_reg {
-> > >>          regulator-always-on;
-> > >>   };
-> > >>
-> > >> +&mt6359_vsram_others_ldo_reg {
-> > >> +       regulator-min-microvolt =3D <750000>;
-> > >> +       regulator-max-microvolt =3D <800000>;
-> > >> +       regulator-coupled-with =3D <&mt6315_7_vbuck1>;
-> > >> +       regulator-coupled-max-spread =3D <10000>;
-> > >
-> > > Looking again at the downstream OPP table, it seems there's no voltag=
-e
-> > > difference requirement. It only needs V_SRAM >=3D V_GPU. Same applies=
- to
-> > > MT8195. Looks like only MT8183 and MT8186 need V_SRAM - V_GPU >=3D 10=
-000.
-> >
-> > On MT8195 we don't need any regulator coupling. There, the GPU-SRAM vol=
-tage
-> > is fixed at .. I don't remember, 0.7V? - anyway - MT8195 doesn't need t=
-o
-> > scale the vsram.
->
-> Looks like it's fixed at 0.75V. I guess we're Ok on MT8195.
->
-> > >
-> > > Would setting max-spread to 0 work? I ask because with both regulator=
-'s
-> > > maximum voltage set to 0.8V, there's no way we can reach the highest
-> > > OPP.
-> > >
-> >
-> > No that doesn't work. I can raise the Vgpu max voltage to 0.88V to solv=
-e the
-> > issue right here and right now, or we can leave it like that and revisi=
-t it
-> > later.
-> >
-> > I would at this point go for setting mt6315_7_vbuck1's max-microvolt to
-> > 880000, as this is the maximum recommended voltage for the GPU as per t=
-he
-> > MT8192 datasheet, it would also make sense as we would be still describ=
-ing
-> > the hardware in a correct manner.
-> >
-> > What do you think?
->
-> If it's just to accommodate the coupler stuff, I say just set the maximum
-> at the lowest possible setting that satisfies the coupler constraint and
-> granularity of the regulator. The regulator does 6250 uV steps, so I gues=
-s
-> we could set the maximum at 812500 uV, with a comment stating the nominal
-> voltage of 800000 uV and that the extra 12500 uV is to workaround coupler
-> limitations.
->
-> Does that sound OK?
+Il 06/03/23 23:04, Daniel Golle ha scritto:
+> On Mon, Mar 06, 2023 at 03:05:36PM +0100, AngeloGioacchino Del Regno wrote:
+>> This is the last man standing in clk-mt8192.c that won't allow us to
+>> use the module_platform_driver() macro, and for *no* good reason.
+>> Move it to clk-mt8192-apmixedsys.c and while at it, also add a
+>> .remove() callback for it.
+>>
+>> Also, since the need for "clk-mt8192-simple" and "clk-mt8192" was
+>> just due to them being in the same file and probing different clocks,
+>> and since now there's just one platform_driver struct per file, it
+>> seemed natural to rename the `-simple` variant to just "clk-mt8192".
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+>> Tested-by: Miles Chen <miles.chen@mediatek.com>
+>> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+>> ---
+>>   drivers/clk/mediatek/Makefile                |   2 +-
+>>   drivers/clk/mediatek/clk-mt8192-apmixedsys.c | 214 ++++++++++++++++++
+>>   drivers/clk/mediatek/clk-mt8192.c            | 221 +------------------
+>>   3 files changed, 219 insertions(+), 218 deletions(-)
+>>   create mode 100644 drivers/clk/mediatek/clk-mt8192-apmixedsys.c
+> 
+> I've tried to apply this on clk-next (currently v6.3-rc1) and also
+> linux-next (next-20230306), on both this patch doesn't apply:
+> 
+> Applying: clk: mediatek: mt8192: Move apmixedsys clock driver to its own file
+> error: patch failed: drivers/clk/mediatek/clk-mt8192.c:12
+> error: drivers/clk/mediatek/clk-mt8192.c: patch does not apply
+> Patch failed at 0047 clk: mediatek: mt8192: Move apmixedsys clock driver to its own file
+> hint: Use 'git am --show-current-patch=diff' to see the failed patch
+> When you have resolved this problem, run "git am --continue".
+> If you prefer to skip this patch, run "git am --skip" instead.
+> To restore the original branch and stop patching, run "git am --abort".
+> 
 
-Even without changing anything, the coupler seems to work OK:
+You've missed the dependency that I've listed in the cover letter.
 
- vsram_others                     1    1      0  normal   800mV
-0mA   750mV   800mV
-    10006000.syscon:power-controller-domain   1
-         0mA     0mV     0mV
- Vgpu                             2    2      0  normal   800mV
-0mA   606mV   800mV
-    13000000.gpu-mali             1
-0mA   800mV   800mV
-    10006000.syscon:power-controller-domain   1
-         0mA     0mV     0mV
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=719067
 
-Am I missing something?
+Regards,
+Angelo
 
-ChenYu
 
