@@ -4,68 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E1D9C678D4
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 11:27:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32844C678D5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 11:30:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:To:Subject:From
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+7/qmZLaHjjfxCYjNJsCYZ5/nHivH/ph12W74gSRfo4=; b=LvpE2+zwNm5YqP
-	yPvL/WpbeXZsABlT/dTHOXnHV1zkszkmas6PXhZ5hYYd/IfudWlZUptdGCxqCqmzXoF9VQXdMTBp5
-	8FMEzlyebQNUrOr/1+Ntx25cZwBlGHLbRs0D+VEZRac1aIGFNSGNglJI2tdl8qQRlXIkVjqmt6ba3
-	8U1UNa7j9EHvy8WFTMsEJAnGudYiZaht1TxKF6zq71YlWKwqVxwthQJRZ5KrgG9FYgSsfaSJzELYJ
-	0ZOyNxqTguEey1KuOXZ70RxByih7VgOypfYrhrF1Z5n05Ka22Z3GJhDyMOgfGCE50+entRhpGJAsU
-	QTUD+sHiVkX/P+j9rEbw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8Gw+hMjGj1I9H2fg3ljNbnH8D9RaMuxw0VHL6fBZJv4=; b=YPv2ZJt2iuUkY/SlNzJx2XnLox
+	GumkXJ7W2OJAwarIebniqG7tIhFLQ5GO9o1BtHHTpsl6Fzz9MjPshXqynKg7ks/8FHCH/sVeg6i47
+	CMThjyVGU17Mz7E0siXQhKejldfIYT0aTEXh1dnLN7tHqCGQQa5jaKeF00y6EjIt3Lg6MMl/9kjxq
+	pK52Tp5yA5YCnkTN9fZ5XCeLy/aYVp7r6JW9UzHkRiCrZua2OBTplDZILHuHancsgYc9jH3jYRU1G
+	8zFzsuZXdG5E9rg1uPDocK3mFv1xoZ2hSC/Z4XJM+I7GYM54PRW32ugVX32iLro5pjWU2aNxdD0sF
+	O4RHTamw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZVTG-00HSzv-FR; Tue, 07 Mar 2023 11:27:06 +0000
-Received: from sender4-op-o10.zoho.com ([136.143.188.10])
+	id 1pZVWk-00HTcJ-Tn; Tue, 07 Mar 2023 11:30:42 +0000
+Received: from mx0a-001ae601.pphosted.com ([67.231.149.25] helo=mx0b-001ae601.pphosted.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZVT5-00HSwh-V8; Tue, 07 Mar 2023 11:26:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1678188377; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=BPkMiJfMNGTEJlUmVH0YDuLKtaiBwss4eMv0yjEp53AnSr/0riTP/xKDz5E7HQPQenEPTUy4A7HRvjL4+hyeqYhEnsdF9LEIQuc191lKCM7JH8RobAt0cUSXOCexFyipf9XbvWJU43hcdShcqVahmBeJ0iQgkPeDk9nY7nDjYCs=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1678188377; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=+7/qmZLaHjjfxCYjNJsCYZ5/nHivH/ph12W74gSRfo4=; 
-	b=n5xvtv8B36zcM/7j7tnCcJNuvqh0i85CC9CqmucBz7zg6Za06Qe+Mn1FToQvSjeSh2UdGzZ/rcwrAFwF7seKOf0kHQFS8x/xoaWZUZg89PhofZvQklvl92kjWWuTR8xuHRrPOlRoKm/wTk920+BwlhNihhFonwq7aidgng6pmUI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1678188377;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:From:From:Subject:Subject:To:To:Cc:Cc:References:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=+7/qmZLaHjjfxCYjNJsCYZ5/nHivH/ph12W74gSRfo4=;
-	b=iG84a1Vep245sF1QqwSB3OL5UIp/lwhqXOjC0MY0d7PLKWaSJVrZw39OwgK+OEan
-	o29MCLUfzm94//dBDBeR5mKOZuwSIwQwe+FNXdxh4CpnPDp5nliZD0Ci2tjvIFrvOlX
-	G/bW42wDqtKulWRB7NP4/TnuCQzDZdMVtQVWkj1A=
-Received: from [10.10.10.3] (212.68.60.226 [212.68.60.226]) by mx.zohomail.com
-	with SMTPS id 167818837544070.97573534295577; Tue, 7 Mar 2023 03:26:15 -0800 (PST)
-Message-ID: <a8ad9299-1f9f-e184-4429-eef9950e22d8@arinc9.com>
-Date: Tue, 7 Mar 2023 14:26:08 +0300
+	id 1pZVWi-00HTbc-Qw; Tue, 07 Mar 2023 11:30:42 +0000
+Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
+	by mx0a-001ae601.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3277tv94022730;
+	Tue, 7 Mar 2023 05:30:19 -0600
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=PODMain02222019;
+ bh=8Gw+hMjGj1I9H2fg3ljNbnH8D9RaMuxw0VHL6fBZJv4=;
+ b=RLWayBHYAC3WRv9HPpNTERg+r3oTqRoc1PhTaiH7YBIi+g27pmBKE71aOiAvS27S3N07
+ +QHcy5hOfjEbFGHVcXXvt9qIN3WGOS3Bqlri7NiCAQhOhMOgUcVD/jtynzPS4OAO8V4x
+ y0soTVGFyQ8h0rjtQN8pahOoaJaEwQF+b1XRYG7PlC2fH/BI33BVKPohDXEuq+sfwinQ
+ st9ocuKEdqcae/7gnnLT1gkEC3NHxNf2+QnaoIAl+yku5tDVskg+wvMD2woy7I197Y8b
+ atlA+qMh5usVUKVHiqBqRp3egA8oAV2JdrRPRQRVEwGGY4zU2uz2Qv/12AeFgHJufFHL 1A== 
+Received: from ediex02.ad.cirrus.com ([84.19.233.68])
+	by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 3p4497427y-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 07 Mar 2023 05:30:19 -0600
+Received: from ediex02.ad.cirrus.com (198.61.84.81) by ediex02.ad.cirrus.com
+ (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.25; Tue, 7 Mar
+ 2023 05:30:16 -0600
+Received: from ediswmail.ad.cirrus.com (198.61.86.93) by
+ anon-ediex02.ad.cirrus.com (198.61.84.81) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Tue, 7 Mar 2023 05:30:16 -0600
+Received: from ediswmail.ad.cirrus.com (ediswmail.ad.cirrus.com [198.61.86.93])
+	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id C72ED11D3;
+	Tue,  7 Mar 2023 11:30:16 +0000 (UTC)
+Date: Tue, 7 Mar 2023 11:30:16 +0000
+From: Charles Keepax <ckeepax@opensource.cirrus.com>
+To: Claudiu Beznea <claudiu.beznea@microchip.com>
+CC: <perex@perex.cz>, <tiwai@suse.com>, <lgirdwood@gmail.com>,
+        <broonie@kernel.org>, <james.schulman@cirrus.com>,
+        <david.rhodes@cirrus.com>, <tanureal@opensource.cirrus.com>,
+        <rf@opensource.cirrus.com>, <oder_chiou@realtek.com>,
+        <shengjiu.wang@gmail.com>, <Xiubo.Lee@gmail.com>, <festevam@gmail.com>,
+        <nicoleotsuka@gmail.com>, <shawnguo@kernel.org>,
+        <s.hauer@pengutronix.de>, <kernel@pengutronix.de>, <linux-imx@nxp.com>,
+        <cezary.rojewski@intel.com>, <pierre-louis.bossart@linux.intel.com>,
+        <peter.ujfalusi@linux.intel.com>, <yung-chuan.liao@linux.intel.com>,
+        <ranjani.sridharan@linux.intel.com>, <kai.vehmanen@linux.intel.com>,
+        <matthias.bgg@gmail.com>, <srinivas.kandagatla@linaro.org>,
+        <bgoswami@quicinc.com>, <vkoul@kernel.org>, <daniel.baluta@nxp.com>,
+        <thierry.reding@gmail.com>, <jonathanh@nvidia.com>,
+        <jarkko.nikula@bitmer.com>, <alsa-devel@alsa-project.org>,
+        <linux-kernel@vger.kernel.org>, <patches@opensource.cirrus.com>,
+        <linuxppc-dev@lists.ozlabs.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>,
+        <sound-open-firmware@alsa-project.org>, <linux-tegra@vger.kernel.org>,
+        <linux-omap@vger.kernel.org>
+Subject: Re: [PATCH] ASoC: do not include pm_runtime.h if not used
+Message-ID: <20230307113016.GS68926@ediswmail.ad.cirrus.com>
+References: <20230307103022.1007420-1-claudiu.beznea@microchip.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Subject: Re: [RFC PATCH net] net: dsa: mt7530: move PLL setup out of port 6
- pad configuration
-To: Vladimir Oltean <olteanv@gmail.com>
-References: <20230304125453.53476-1-arinc.unal@arinc9.com>
- <20230304125453.53476-1-arinc.unal@arinc9.com>
- <20230306154552.26o6sbwf3rfekcyz@skbuf>
- <65f84ef3-8f72-d823-e6f9-44d33a953697@arinc9.com>
- <20230306201905.yothcuxokzlk3mcq@skbuf>
-Content-Language: en-US
-In-Reply-To: <20230306201905.yothcuxokzlk3mcq@skbuf>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20230307103022.1007420-1-claudiu.beznea@microchip.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Proofpoint-GUID: 8AhJH_Etb0kWl8-U4QDOKiyr044l28y7
+X-Proofpoint-ORIG-GUID: 8AhJH_Etb0kWl8-U4QDOKiyr044l28y7
+X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_032656_061187_2A9FAAEF 
-X-CRM114-Status: GOOD (  32.19  )
+X-CRM114-CacheID: sfid-20230307_033040_916840_8F4D098D 
+X-CRM114-Status: GOOD (  16.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,131 +98,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>, Eric Dumazet <edumazet@google.com>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Russell King <rmk+kernel@armlinux.org.uk>, Alexander Couzens <lynxis@fe80.eu>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6.03.2023 23:19, Vladimir Oltean wrote:
-> On Mon, Mar 06, 2023 at 08:03:54PM +0300, Arınç ÜNAL wrote:
->> Looking at the Wikipedia page for Media-independent interface [0], the data
->> interface must be clocked at 125 MHz for gigabit MIIs, which I believe what
->> the "PLL" here refers to. trgmii needs higher frequency in some cases so if
->> both CPU ports are enabled, the table would be:
->>
->>      priv->p5_interface        priv->p6_interface       ncpo1 value
->>          gmii                     rgmii                     125MHz
->>          mii                      rgmii                     125MHz
->>          rgmii                    rgmii                     125MHz
->>          gmii                     trgmii                    125-250MHz
->>          mii                      trgmii                    125-250MHz
->>          rgmii                    trgmii                    125-250MHz
->>
->> [0] https://en.wikipedia.org/wiki/Media-independent_interface#GMII
+On Tue, Mar 07, 2023 at 12:30:22PM +0200, Claudiu Beznea wrote:
+> Do not include pm_runtime.h header in files where runtime PM support is
+> not implemented.
 > 
-> Wikipedia will only tell you what the frequency of the interface signals
-> needs to be. That is useful to keep in mind, but without information from
-> the datasheet regarding what the SoC's clock distribution tree looks like,
-> it's hard to know how that interface clock is derived from internal PLLs
-> and ultimately from the oscillators. I was hoping that was the kind of
-> information you could provide. The manuals I have access to, through charity,
-> don't say anything on that front.
+> Signed-off-by: Claudiu Beznea <claudiu.beznea@microchip.com>
+> ---
+>  sound/soc/codecs/cs35l45.h                                | 1 -
+> diff --git a/sound/soc/codecs/cs35l45.h b/sound/soc/codecs/cs35l45.h
+> index 53fe9d2b7b15..0555702eac03 100644
+> --- a/sound/soc/codecs/cs35l45.h
+> +++ b/sound/soc/codecs/cs35l45.h
+> @@ -11,7 +11,6 @@
+>  #ifndef CS35L45_H
+>  #define CS35L45_H
+>  
+> -#include <linux/pm_runtime.h>
+>  #include <linux/regmap.h>
+>  #include <linux/regulator/consumer.h>
+>  
 
-I wish I could. There are three people associated with MediaTek CC'd 
-here. Maybe one will care to inform us.
+cs35l45 does already make use of some functions from that header,
+and more support is in the process of being upstreamed. So this
+part should be dropped.
 
-> 
-> Since I don't know what I'm commenting on, I'll stop commenting any further.
-> 
->>> right now, you let the p6_interface logic overwrite the ncpo1 selected
->>> by the p5_interface logic like crazy, and it's not clear to me that this
->>> is what you want.
->>
->> This seems to be fine as p6 sets the frequency either the same or higher.
-> 
-> (...)
-
-Sorry for the vague reply, my assumption was that interfaces with slower 
-speeds, 100M, 1000M, etc. works fine at higher PLL frequency whilst they 
-won't work the other way around.
-
-> 
->> This looks much better, thanks a lot! The only missing part is setting the
->> PLL frequency when only port 5 is enabled.
-> 
-> True. Although with the limited information I have, I'm not sure that
-> the ncpo1 value written into CORE_PLL_GROUP5 is needed by port5 either
-> way. The fact that you claim port5 works when ncpo1 ranges from 125 to
-> 250 MHz tells me that it's either very tolerant of the ncpo1 value
-> (through mechanisms unknown to me), or simply unaffected by it (more
-> likely ATM). Since I don't have any details regarding the value, I'd
-> just like to treat the configuration procedure as plain code, and not
-> make any changes until there's a proof that they're needed.
-> 
->> I'll test it regardless.
-> 
-> Thanks.
-
-Port 5 as CPU port works fine with this patch. I completely removed from 
-port 6 phy modes.
-
-With your patch on MT7621 (remember port 5 always worked on MT7623):
-
-- Port 5 at rgmii as the only CPU port works, even though the PLL 
-frequency won't be set. The download/upload speed is not affected.
-
-- port 6 at trgmii mode won't work if the PLL frequency is not set. The 
-SoC's MAC (gmac0) won't receive anything. It checks out since setting 
-the PLL frequency is put under the "Setup the MT7530 TRGMII Tx Clock" 
-comment. So port 6 cannot properly transmit frames to the SoC's MAC.
-
-- Port 6 at rgmii mode works without setting the PLL frequency. Speed is 
-not affected.
-
-I commented out core_write(priv, CORE_PLL_GROUP5, 
-RG_LCDDS_PCW_NCPO1(ncpo1)); to stop setting the PLL frequency.
-
-In conclusion, setting the PLL frequency is only needed for the trgmii 
-mode, so I believe we can get rid of it on other cases.
-
-One more thing, on MT7621, xtal matches to both HWTRAP_XTAL_40MHZ and 
-HWTRAP_XTAL_25MHZ so the final value of ncpo1 is 0x0a00. I'm not sure if 
-xtal matching both of them is the expected behaviour.
-
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index fbf27d4ab5d9..12cea89ae0ac 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -439,8 +439,12 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
->  			/* PLL frequency: 150MHz: 1.2GBit */
->  			if (xtal == HWTRAP_XTAL_40MHZ)
->  				ncpo1 = 0x0780;
-> +				dev_info(priv->dev, "XTAL is 40MHz, ncpo1 is 0x0780\n");
->  			if (xtal == HWTRAP_XTAL_25MHZ)
->  				ncpo1 = 0x0a00;
-> +				dev_info(priv->dev, "XTAL is 25MHz, ncpo1 is 0x0a00\n");
-> +			if (xtal == HWTRAP_XTAL_20MHZ)
-> +				dev_info(priv->dev, "XTAL is 20MHz too\n");
->  		} else { /* PLL frequency: 250MHz: 2.0Gbit */
->  			if (xtal == HWTRAP_XTAL_40MHZ)
->  				ncpo1 = 0x0c80;
-
-> [    0.710455] mt7530 mdio-bus:1f: MT7530 adapts as multi-chip module
-> [    0.734419] mt7530 mdio-bus:1f: configuring for fixed/rgmii link mode
-> [    0.741766] mt7530 mdio-bus:1f: Link is Up - 1Gbps/Full - flow control rx/tx
-> [    0.743647] mt7530 mdio-bus:1f: configuring for fixed/trgmii link mode
-> [    0.755422] mt7530 mdio-bus:1f: XTAL is 40MHz, ncpo1 is 0x0780
-> [    0.761250] mt7530 mdio-bus:1f: XTAL is 25MHz, ncpo1 is 0x0a00
-> [    0.769414] mt7530 mdio-bus:1f: Link is Up - 1Gbps/Full - flow control rx/tx
-> [    0.772067] mt7530 mdio-bus:1f lan1 (uninitialized): PHY [mt7530-0:00] driver [MediaTek MT7530 PHY] (irq=17)
-> [    0.788647] mt7530 mdio-bus:1f lan2 (uninitialized): PHY [mt7530-0:01] driver [MediaTek MT7530 PHY] (irq=18)
-> [    0.800354] mt7530 mdio-bus:1f lan3 (uninitialized): PHY [mt7530-0:02] driver [MediaTek MT7530 PHY] (irq=19)
-> [    0.812031] mt7530 mdio-bus:1f lan4 (uninitialized): PHY [mt7530-0:03] driver [MediaTek MT7530 PHY] (irq=20)
-> [    0.823418] mtk_soc_eth 1e100000.ethernet eth1: entered promiscuous mode
-> [    0.830250] mtk_soc_eth 1e100000.ethernet eth0: entered promiscuous mode
-> [    0.837007] DSA: tree 0 setup
-
-Thunderbird limits lines to about 72 columns, so I'm pasting as 
-quotation which seems to bypass that.
-
-Arınç
+Thanks,
+Charles
 
