@@ -4,74 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DECB2C678D5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 16:21:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7178DC678D5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 16:34:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
-	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yi14cTdYANNPEap3pqdxxJ1hsHfM+r9CN0mSG8FKdBA=; b=sr/aSTwGZm7GRDktzRTzNujRnH
-	hVHuIgiDktFGm5iY8HFYiGTJdsYi9cUHk9MzvzBAk2Ippp0tS/sqPCGwEx9Iv74USiTMZGI3e6Tk5
-	+w6RLFP1bgeyM6ERTRBp1FTJoT5PyOTaar63uii0lxhFsYdS6UpmwMMMRK6Amv1U8L/8MrHkQxPhb
-	iD0cYN6LCS2lXuWnu/UVBncRNZQTH5iM48ug26Wecd0IVR6tsxLIrlVKMVpnQJyoLHaPF9moSt43P
-	8fAw0klJ5aDQiLeVVb8uArwbeffY0JL7n/F3rHIhYb3rUX0fklZ/jLJTiD3XHmIKJ2eqFK3oVK4iT
-	h3H8J4iQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XF0M7uZbzNZ9RU+izdrVf7tIYf1cA6nVKbtuxlKJIFk=; b=j1ZuJFiszuepDYCnIWeypnk26k
+	DMGKx+OCWfAjhUMPdXraemBySNCt/LmfD/YL/M2idInntnJII0o5u+haR1x3q6ipf+5Di9E7/gUtQ
+	OklYH9KclwkHtJ34hKLWJuXB1EfJMgF4u8Yho9yOBYaoLCfSBN9T1ve0KVh+uqpnZOZvYFLeLXP+G
+	TDddAevAkvYx2hRp1vN4hOTW0jSgfahO1/Tc1yFXxIdRjvyA48IMW+jJkLWEgINPUaoihHLLwF1i3
+	44IBD9nEgd1Du5R+v92RfZZo2xJDvePNDl9P8uKz61V8J/ATJc1Tn7ArHHe9B0r/zC+8ON4xHC/qh
+	+m9Ma/rA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZa4W-001VAg-NI; Tue, 07 Mar 2023 16:21:52 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1pZaGc-001Yc0-DV; Tue, 07 Mar 2023 16:34:22 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZa4F-001U2B-Sh; Tue, 07 Mar 2023 16:21:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=yi14cTdYANNPEap3pqdxxJ1hsHfM+r9CN0mSG8FKdBA=; b=lmNr0w/4ILfy8+0HYuHQPMkt+G
-	Hz+k3Xho9bodsMJu8RVod+di3arGpOuTeune1MIVwOXNBbwvsg0Ee+sktL3djw7+ZwYZOsXq6mk3w
-	nJSHXisLwO8nPwET//pxuoEfdysiV5/OmJpQGP1KNupiSupg5+B9q18bQAgbXYNwPVV5qbEu82itn
-	+dAp9z7eWc4BrxDkVqhXjpc+tzgSdJX+fPr7oB3cmPsZZLr1/XV8yRMKBWGQDEjJReXe8bKqQ30Dp
-	VqiuOHHBzpW52VAJ+xRVGuKW3yjJHuXrgsfiEoC2Wkj/+k2OkREvl1szjcBGM+fhB53Z8a1bnO3uB
-	g3YGWHMg==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:49534 helo=rmk-PC.armlinux.org.uk)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1pZa2B-0000mt-72; Tue, 07 Mar 2023 16:19:27 +0000
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1pZa2A-00DFfD-JI; Tue, 07 Mar 2023 16:19:26 +0000
-In-Reply-To: <ZAdj9qUXcHUsK7Gt@shell.armlinux.org.uk>
-References: <ZAdj9qUXcHUsK7Gt@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Daniel Golle <daniel@makrotopia.org>,
-	 Felix Fietkau <nbd@nbd.name>,
-	 John Crispin <john@phrozen.org>,
-	 Mark Lee <Mark-MC.Lee@mediatek.com>,
-	 Matthias Brugger <matthias.bgg@gmail.com>,
-	 Sean Wang <sean.wang@mediatek.com>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org,
+	id 1pZaGW-001YXv-MI
+	for linux-mediatek@lists.infradead.org; Tue, 07 Mar 2023 16:34:21 +0000
+Received: by mail-wm1-x330.google.com with SMTP id ay29-20020a05600c1e1d00b003e9f4c2b623so10802118wmb.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Mar 2023 08:34:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1678206855;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=XF0M7uZbzNZ9RU+izdrVf7tIYf1cA6nVKbtuxlKJIFk=;
+        b=tBJUgEd0FQrErE0j90np5BC+5nKfFqaf6M1h39mR9FhEY2+OUfKStaMPp0dkWS4hnD
+         2usQf3sbT+rD+D/uAYU4Ejk4be3qW92gEY8Q0Yqi5njTgIGNgSUmXK3oT1qjUzJpu5sd
+         Zf86n8X2RUCnj0QD8Dz5syvNlWWJcVbE4yVoPS16SIWQtojhTZuhG2pES2/jnUHw3XwU
+         YKmNAZjenFD+TCG3au3df5WDj+l78i1EpKK4FNjoc2Q8rdowmrtk9pAxKzxtAN8yhTXf
+         MzBNS7fjAT7yMzo3WIxx+IYULEY9og1CWQQV9dA0gJHRLuxTFExESf0usHTz4OV+X1x9
+         8wqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678206855;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=XF0M7uZbzNZ9RU+izdrVf7tIYf1cA6nVKbtuxlKJIFk=;
+        b=y/rbbD2kDPve/aQ9wFYymw/X2g81hjdpZY0vbCqfMuPog07RrEYoG5/bV6FnJqfnN7
+         oRWPtLiwl12NHMO1NWtyQPSHJNnkrSN/LedouWrlvJzEgBESDcrwBnX+q1lxoBxMgHpF
+         8whEH+TEb5VRQtNA1LtvJeTjJCvK5221a6sN/lSNDmsNHZX1qASC7lH60sCuWZ0Czc6e
+         N7zEnJDg8IU6W3gw2cAdQEkSbG702zBSYsesX1bcLQfjAinDY06zNh18HJzPykhJIdm3
+         VRmmafyOHxmOc6ocFhjei4gcIzXGi/+qmepAtQj1QNFAf86o588er96GSwDkFTEDfEv9
+         uaAQ==
+X-Gm-Message-State: AO0yUKW3nbi4IHO49qEcOrYYKvrVx3uQ1jacWc+x9+PpNwje2q6OOO1h
+	rEMaEn577GbEp8hL9qkO+YhIqQ==
+X-Google-Smtp-Source: AK7set+wqd8TopV09QEWHXr4GZcjeN3JQUoHUM4XtO6ka5qQm4lRRIvlStjXSZL4Vw270Jc1Bw6ZBw==
+X-Received: by 2002:a05:600c:444c:b0:3dc:16d2:ae5e with SMTP id v12-20020a05600c444c00b003dc16d2ae5emr13080448wmn.32.1678206855177;
+        Tue, 07 Mar 2023 08:34:15 -0800 (PST)
+Received: from localhost.localdomain (laubervilliers-657-1-248-155.w90-24.abo.wanadoo.fr. [90.24.137.155])
+        by smtp.gmail.com with ESMTPSA id t1-20020a5d49c1000000b002c563b124basm12778117wrs.103.2023.03.07.08.34.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 07 Mar 2023 08:34:14 -0800 (PST)
+From: bchihi@baylibre.com
+To: daniel.lezcano@linaro.org,
+	angelogioacchino.delregno@collabora.com,
+	rafael@kernel.org,
+	amitk@kernel.org,
+	rui.zhang@intel.com,
+	matthias.bgg@gmail.com,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	rdunlap@infradead.org,
+	ye.xingchen@zte.com.cn,
+	p.zabel@pengutronix.de
+Cc: linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next 1/4] net: mtk_eth_soc: tidy mtk_gmac0_rgmii_adjust()
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	khilman@baylibre.com,
+	james.lo@mediatek.com,
+	rex-bc.chen@mediatek.com
+Subject: [PATCH 0/4] Add LVTS support for mt8192
+Date: Tue,  7 Mar 2023 17:34:09 +0100
+Message-Id: <20230307163413.143334-1-bchihi@baylibre.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1pZa2A-00DFfD-JI@rmk-PC.armlinux.org.uk>
-Date: Tue, 07 Mar 2023 16:19:26 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_082135_963843_FAE875D0 
-X-CRM114-Status: GOOD (  10.37  )
+X-CRM114-CacheID: sfid-20230307_083416_780670_73CF40C7 
+X-CRM114-Status: UNSURE (   8.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,77 +103,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Get rid of the multiple tenary operators in mtk_gmac0_rgmii_adjust()
-replacing them with a single if(), thus making the code easier to read.
+From: Balsam CHIHI <bchihi@baylibre.com>
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 34 ++++++++++++---------
- 1 file changed, 19 insertions(+), 15 deletions(-)
+Add full LVTS support (MCU thermal domain + AP thermal domain) to MediaTek MT8192 SoC.
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 14be6ea51b88..c63f17929ccf 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -397,38 +397,42 @@ static int mt7621_gmac0_rgmii_adjust(struct mtk_eth *eth,
- static void mtk_gmac0_rgmii_adjust(struct mtk_eth *eth,
- 				   phy_interface_t interface, int speed)
- {
--	u32 val;
-+	unsigned long rate;
-+	u32 tck, rck, intf;
- 	int ret;
- 
- 	if (interface == PHY_INTERFACE_MODE_TRGMII) {
- 		mtk_w32(eth, TRGMII_MODE, INTF_MODE);
--		val = 500000000;
--		ret = clk_set_rate(eth->clks[MTK_CLK_TRGPLL], val);
-+		ret = clk_set_rate(eth->clks[MTK_CLK_TRGPLL], 500000000);
- 		if (ret)
- 			dev_err(eth->dev, "Failed to set trgmii pll: %d\n", ret);
- 		return;
- 	}
- 
--	val = (speed == SPEED_1000) ?
--		INTF_MODE_RGMII_1000 : INTF_MODE_RGMII_10_100;
--	mtk_w32(eth, val, INTF_MODE);
-+	if (speed == SPEED_1000) {
-+		intf = INTF_MODE_RGMII_1000;
-+		rate = 250000000;
-+		rck = RCK_CTRL_RGMII_1000;
-+		tck = TCK_CTRL_RGMII_1000;
-+	} else {
-+		intf = INTF_MODE_RGMII_10_100;
-+		rate = 500000000;
-+		rck = RCK_CTRL_RGMII_10_100;
-+		tck = TCK_CTRL_RGMII_10_100;
-+	}
-+
-+	mtk_w32(eth, intf, INTF_MODE);
- 
- 	regmap_update_bits(eth->ethsys, ETHSYS_CLKCFG0,
- 			   ETHSYS_TRGMII_CLK_SEL362_5,
- 			   ETHSYS_TRGMII_CLK_SEL362_5);
- 
--	val = (speed == SPEED_1000) ? 250000000 : 500000000;
--	ret = clk_set_rate(eth->clks[MTK_CLK_TRGPLL], val);
-+	ret = clk_set_rate(eth->clks[MTK_CLK_TRGPLL], rate);
- 	if (ret)
- 		dev_err(eth->dev, "Failed to set trgmii pll: %d\n", ret);
- 
--	val = (speed == SPEED_1000) ?
--		RCK_CTRL_RGMII_1000 : RCK_CTRL_RGMII_10_100;
--	mtk_w32(eth, val, TRGMII_RCK_CTRL);
--
--	val = (speed == SPEED_1000) ?
--		TCK_CTRL_RGMII_1000 : TCK_CTRL_RGMII_10_100;
--	mtk_w32(eth, val, TRGMII_TCK_CTRL);
-+	mtk_w32(eth, rck, TRGMII_RCK_CTRL);
-+	mtk_w32(eth, tck, TRGMII_TCK_CTRL);
- }
- 
- static struct phylink_pcs *mtk_mac_select_pcs(struct phylink_config *config,
+This series is a continuation of the previous series "Add LVTS Thermal Architecture" v14 :
+    https://patchwork.kernel.org/project/linux-pm/cover/20230209105628.50294-1-bchihi@baylibre.com/
+and "Add LVTS's AP thermal domain support for mt8195" :
+    https://patchwork.kernel.org/project/linux-pm/cover/20230307154524.118541-1-bchihi@baylibre.com/
+
+Based on top of thermal/linux-next :
+    base-commit: 6828e402d06f7c574430b61c05db784cd847b19f
+
+Depends on these patches as they are not yet applyied to thermal/linux-next branch :
+    [1/4] dt-bindings: thermal: mediatek: Add AP domain to LVTS thermal controllers for mt8195
+    https://patchwork.kernel.org/project/linux-pm/patch/20230307154524.118541-2-bchihi@baylibre.com/
+    [2/4] thermal/drivers/mediatek/lvts_thermal: Add AP domain for mt8195
+    https://patchwork.kernel.org/project/linux-pm/patch/20230307154524.118541-3-bchihi@baylibre.com/
+
+Balsam CHIHI (4):
+  dt-bindings: thermal: mediatek: Add LVTS thermal controller definition
+    for mt8192
+  thermal/drivers/mediatek/lvts_thermal: Add mt8192 support
+  arm64: dts: mediatek: mt8192: Add thermal zones and thermal nodes
+  arm64: dts: mediatek: mt8192: Add temperature mitigation threshold
+
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi      | 454 ++++++++++++++++++
+ drivers/thermal/mediatek/lvts_thermal.c       | 106 +++-
+ .../thermal/mediatek,lvts-thermal.h           |  19 +
+ 3 files changed, 577 insertions(+), 2 deletions(-)
+
+
+base-commit: 6828e402d06f7c574430b61c05db784cd847b19f
+prerequisite-patch-id: 73be949bd16979769e5b94905b244dcee4a8f687
+prerequisite-patch-id: 9076e9b3bd3cc411b7b80344211364db5f0cca17
+prerequisite-patch-id: e220d6ae26786f524c249588433f02e5f5f906ad
+prerequisite-patch-id: 58e295ae36ad4784f3eb3830412f35dad31bb8b6
+prerequisite-patch-id: d23d83a946e5b876ef01a717fd51b07df1fa08dd
+prerequisite-patch-id: d67f2455eef1c4a9ecc460dbf3c2e3ad47d213ec
+prerequisite-patch-id: b407d2998e57678952128b3a4bac92a379132b09
+prerequisite-patch-id: fbb9212ce8c3530da17d213f56fa334ce4fa1b2b
+prerequisite-patch-id: 5db9eed2659028cf4419f2de3d093af7df6c2dad
+prerequisite-patch-id: a83c00c628605d1c8fbe1d97074f9f28efb1bcfc
 -- 
-2.30.2
+2.34.1
 
 
