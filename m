@@ -4,77 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9748C678D4
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 09:28:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DED8C678D5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Mar 2023 09:28:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yhS9WuvDVLCH/07BDFe4S3wnXC3MatfvUcLm7rOWzPU=; b=b4AN0UAXFI08Ym1GymJmnOmAZW
-	YPLZ/RHcs+vTGzA7QLH4bIS6XpDhoiM656R1UQ/kgVhUq+kxievhEdGkIQgUIhiQgpd4pnY1LQfLD
-	FpCZLW1QfCgMsGQw3iV/h1s/zQodKChu/zdyRh3mzEwlsdUNMGzyfM6/hax2+h5LZ6S7XFy9olHFo
-	3bTCRLFBJCAoJR3NknTIeJ/PRGZY5D6JWpJjlOSIFGVxeLsdgfqyelKe0grVyXZZuq83dBcxkzBsJ
-	SnSJRWZHb4CkDjXJ96sjlzQhXTYOfHQXgJE37U2oMEQwYfBqmcgL9oYnpQC6oELoM5JCCnONUKEZ3
-	BkrA1+bQ==;
+	bh=AJeTKAvMaR5FVH09iElKX7QMLFDF12OINiScVz2VgM0=; b=MDWFpUg8PEmkGVyk9sFc2LiFQR
+	TFHPftLkjOAqBlrW6fqyeOUUL3focNIP+LnPYcmbJ/k5NbEivA3ADhX3qBShWWoMYYadu2rvwM+sr
+	7EAOVp8/xJ3E2R+Iljtt94AHLkCZAI2K9MnQzd1ihCBv1RE0tLA6mBQRYzzHZpkNGFCjE7eP4e+Hj
+	iZ1TMW1/SCJtRutjlN3or8Cz44HGk8mx4d4QgVB/FF5yCq1fovtCOEFIuFszqvEN060R62/ihJGL8
+	0mPYVZYoLq8QvO4I89dSQywvr/9dtDnXMGNhtvxqnqA2gFs7ewjQ/iXpo5hHXzirv/XXk4bHFv54w
+	MsheWawg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZTcG-00Gtm5-3c; Tue, 07 Mar 2023 09:28:16 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1pZTcY-00GtuO-Rk; Tue, 07 Mar 2023 09:28:34 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZTbv-00Gtbz-M5; Tue, 07 Mar 2023 09:28:00 +0000
-Received: by mail-pl1-x634.google.com with SMTP id v11so13393309plz.8;
-        Tue, 07 Mar 2023 01:27:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678181273;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=yhS9WuvDVLCH/07BDFe4S3wnXC3MatfvUcLm7rOWzPU=;
-        b=IIwvrYveZMftYjvctthjlBYZfsacrBWVljfA/5J0vr0PcgbCGnOfcnJRU27qrxTv93
-         DyiWrvJX9sGIHdz5xjFCQ8fzBQB9qp0Z537ErAGFhX8eA1OBDHJBrRFR/iEqk9XbnCdy
-         q078ee9CfLzrFWHGO29KJCwSa0PIXTWBDIDjhKQC+R1dWN77mXOxTSg5G6yEd3KQY7wn
-         La9hh5KbolMEXhOodflYLfQTM2GQRnPGr9FQ36cT5QmW1+K2g2TU+kQdsIQBclodnJl4
-         W/XVTYkxEvweelFcBWZaF8+KJKeByx1Zv4p8CjlvWmDBUJPFzqqHGIJgboaIqAOr1xwr
-         h7hg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678181273;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=yhS9WuvDVLCH/07BDFe4S3wnXC3MatfvUcLm7rOWzPU=;
-        b=pxWU2t7+4VOVqR24ucegohcmG+V+BkZqjOFpaKYI6JUz1/E8EkfX4/aJXsp0SUH2vk
-         YekBJf74q6k8InkwA1ta6SiCYSCOrnratlGfLezVgSGSjSVbLObJMcv6yylOXeEsTnoT
-         7rcMcdXs9rnOVQrJf2V6J+4we30fVEdRYoILpY1DX5oEM0umJQZX1bH5nv2HwcgHtp8O
-         kurzjPRxaJOEGN4xyr+r62E1txeC+lhFBEpmcyFzRcjJORsVxVazasHbOLtWM6v6jIsP
-         N7JbEFnvmxSuZopEDKUWM9p82q6J0ir3tEU7fWFTBblvBUrM5Wvi9spjzVw8wMoNRKW+
-         As8A==
-X-Gm-Message-State: AO0yUKVNQLGVm4setvrQdvTWuYR7RkVXvzOzz9FGHaqO3gyvrK2Lacga
-	G90bnOZ7MxC8i6FmwF5r8tgK3tXgDI2/Ud6+89E=
-X-Google-Smtp-Source: AK7set/cJsa7T6lRnhe3AOvYaVAEX3dOwNKizDvDRu5d9q0M5oZM2coLOWPB9DeQoaPW9yb4Q+CgVIpU3/LV3N7Km6k=
-X-Received: by 2002:a17:902:ef92:b0:19a:8259:c754 with SMTP id
- iz18-20020a170902ef9200b0019a8259c754mr5338648plb.0.1678181273514; Tue, 07
- Mar 2023 01:27:53 -0800 (PST)
+	id 1pZTc0-00GteE-Bx; Tue, 07 Mar 2023 09:28:02 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0ABBF6602FE5;
+	Tue,  7 Mar 2023 09:27:58 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1678181278;
+	bh=sqQDBNgd5UNWSh83RRXI0+wSwjJrUHfByYRxfwzYM1o=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=NRfyuUOHzc14asi063Q3C/+xodAU/AC9CRV1OQvTG2fnvyUljrZAXkPiSzImcILag
+	 a/fH92+pg2tLeJD18/4T23bip/KPvnM6uNooD9Rf+ftF7ZAsc2/ceneH0/FinPb7i3
+	 cnf9kIqEmFO8oGFzy/FO+TPBiPg7nlXp31omQLgKBzWm3l3ERslDSVArrHb4EN1YgY
+	 CDE90s0O7Lx2K8FVGM4mxCgz4ipzeYLDE8DzTHTJArq9o3WyVCHnVrkqXneqr/FLJk
+	 NSAvfK+Dqis3+Jna7A8o5DQmSR8OK1dykChZVydOkuCG+fGizSvFLMlakLOOrA/1ze
+	 P0hjKB9NYDufA==
+Message-ID: <a890fd4c-f15e-480a-64e3-c42c73584417@collabora.com>
+Date: Tue, 7 Mar 2023 10:27:55 +0100
 MIME-Version: 1.0
-References: <20230306062633.200427-1-zyytlz.wz@163.com>
-In-Reply-To: <20230306062633.200427-1-zyytlz.wz@163.com>
-From: Zheng Hacker <hackerzheng666@gmail.com>
-Date: Tue, 7 Mar 2023 17:27:41 +0800
-Message-ID: <CAJedcCzeVwwi9SkkwouFXUAVhF-tKF4dkqsFqVQwszSwY1SJ0A@mail.gmail.com>
-Subject: Re: [RESEND PATCH] media: mtk-jpeg: Fix use after free bug due to
- uncanceled work
-To: Zheng Wang <zyytlz.wz@163.com>
-Cc: mchehab@kernel.org, bin.liu@mediatek.com, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, linux-media@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, 1395428693sheep@gmail.com, 
-	alex000young@gmail.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v3 7/7] clk: mediatek: mt8195: Add support for frequency
+ hopping through FHCTL
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: sboyd@kernel.org, mturquette@baylibre.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ edward-jw.yang@mediatek.com, johnson.wang@mediatek.com,
+ miles.chen@mediatek.com, chun-jie.chen@mediatek.com,
+ rex-bc.chen@mediatek.com, jose.exposito89@gmail.com,
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+References: <20230206100105.861720-1-angelogioacchino.delregno@collabora.com>
+ <20230206100105.861720-8-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5Ey02hzNQA2O2ussAt9sXxxy9mOjze2GH90Ko9HeoETXQ@mail.gmail.com>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAGXv+5Ey02hzNQA2O2ussAt9sXxxy9mOjze2GH90Ko9HeoETXQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_012755_747725_36CBDBF8 
-X-CRM114-Status: GOOD (  18.66  )
+X-CRM114-CacheID: sfid-20230307_012800_736038_99FB6C25 
+X-CRM114-Status: GOOD (  22.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,59 +82,161 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Il 07/03/23 05:43, Chen-Yu Tsai ha scritto:
+> On Mon, Feb 6, 2023 at 6:01 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Add FHCTL parameters and register PLLs through FHCTL to add support
+>> for frequency hopping and SSC. FHCTL will be enabled only on PLLs
+>> specified in devicetree.
+>>
+>> This commit brings functional changes only upon addition of
+>> devicetree configuration.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   drivers/clk/mediatek/clk-mt8195-apmixedsys.c | 69 +++++++++++++++++++-
+>>   1 file changed, 66 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/clk/mediatek/clk-mt8195-apmixedsys.c b/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
+>> index 1bc917f2667e..c0db31ce0741 100644
+>> --- a/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
+>> +++ b/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
+>> @@ -3,9 +3,11 @@
+>>   // Copyright (c) 2021 MediaTek Inc.
+>>   // Author: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+>>
+>> +#include "clk-fhctl.h"
+>>   #include "clk-gate.h"
+>>   #include "clk-mtk.h"
+>>   #include "clk-pll.h"
+>> +#include "clk-pllfh.h"
+>>
+>>   #include <dt-bindings/clock/mt8195-clk.h>
+>>   #include <linux/of_device.h>
+>> @@ -105,6 +107,61 @@ static const struct mtk_pll_data plls[] = {
+>>              0, 0, 22, 0x0158, 24, 0, 0, 0, 0x0158, 0, 0x0158, 0, 9),
+>>   };
+>>
+>> +enum fh_pll_id {
+>> +       FH_ARMPLL_LL,
+>> +       FH_ARMPLL_BL,
+>> +       FH_MEMPLL,
+>> +       FH_ADSPPLL,
+>> +       FH_NNAPLL,
+>> +       FH_CCIPLL,
+>> +       FH_MFGPLL,
+>> +       FH_TVDPLL2,
+>> +       FH_MPLL,
+>> +       FH_MMPLL,
+>> +       FH_MAINPLL,
+>> +       FH_MSDCPLL,
+>> +       FH_IMGPLL,
+>> +       FH_VDECPLL,
+>> +       FH_TVDPLL1,
+>> +       FH_NR_FH,
+>> +};
+>> +
+>> +#define FH(_pllid, _fhid, _offset) {                                   \
+>> +               .data = {                                               \
+>> +                       .pll_id = _pllid,                               \
+>> +                       .fh_id = _fhid,                                 \
+>> +                       .fh_ver = FHCTL_PLLFH_V2,                       \
+>> +                       .fhx_offset = _offset,                          \
+>> +                       .dds_mask = GENMASK(21, 0),                     \
+> 
+>> +                       .slope0_value = 0x6003c97,                      \
+>> +                       .slope1_value = 0x6003c97,                      \
+> 
+> Are these
+> 
+>> +                       .sfstrx_en = BIT(2),                            \
+>> +                       .frddsx_en = BIT(1),                            \
+>> +                       .fhctlx_en = BIT(0),                            \
+>> +                       .tgl_org = BIT(31),                             \
+>> +                       .dvfs_tri = BIT(31),                            \
+>> +                       .pcwchg = BIT(31),                              \
+> 
+>> +                       .dt_val = 0x0,                                  \
+>> +                       .df_val = 0x9,                                  \
+> 
+> and these just copied from MT8186?
 
-Is there anyone who can help with this? I can provide more details
-like invoking chain if needed.
+Yes, and that's because they're really the same.
 
-Thanks,
-Zheng
+> 
+>> +                       .updnlmt_shft = 16,                             \
+>> +                       .msk_frddsx_dys = GENMASK(23, 20),              \
+>> +                       .msk_frddsx_dts = GENMASK(19, 16),              \
+>> +               },                                                      \
+>> +       }
+>> +
+>> +static struct mtk_pllfh_data pllfhs[] = {
+>> +       FH(CLK_APMIXED_ADSPPLL, FH_ADSPPLL, 0x78),
+>> +       FH(CLK_APMIXED_NNAPLL, FH_NNAPLL, 0x8c),
+>> +       FH(CLK_APMIXED_MFGPLL, FH_MFGPLL, 0xb4),
+>> +       FH(CLK_APMIXED_TVDPLL2, FH_TVDPLL2, 0xc8),
+>> +       FH(CLK_APMIXED_MMPLL, FH_MMPLL, 0xf0),
+>> +       FH(CLK_APMIXED_MAINPLL, FH_MAINPLL, 0x104),
+>> +       FH(CLK_APMIXED_MSDCPLL, FH_MSDCPLL, 0x118),
+>> +       FH(CLK_APMIXED_IMGPLL, FH_IMGPLL, 0x12c),
+>> +       FH(CLK_APMIXED_VDECPLL, FH_VDECPLL, 0x140),
+>> +       FH(CLK_APMIXED_TVDPLL2, FH_TVDPLL1, 0x154),
+>> +};
+>> +
+>>   static const struct of_device_id of_match_clk_mt8195_apmixed[] = {
+>>          { .compatible = "mediatek,mt8195-apmixedsys", },
+>>          {}
+>> @@ -114,13 +171,17 @@ static int clk_mt8195_apmixed_probe(struct platform_device *pdev)
+>>   {
+>>          struct clk_hw_onecell_data *clk_data;
+>>          struct device_node *node = pdev->dev.of_node;
+>> +       const u8 *fhctl_node = "mediatek,mt8195-fhctl";
+>>          int r;
+>>
+>>          clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
+>>          if (!clk_data)
+>>                  return -ENOMEM;
+>>
+>> -       r = mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
+>> +       fhctl_parse_dt(fhctl_node, pllfhs, ARRAY_SIZE(pllfhs));
+>> +
+>> +       r = mtk_clk_register_pllfhs(node, plls, ARRAY_SIZE(plls),
+>> +                                   pllfhs, ARRAY_SIZE(pllfhs), clk_data);
+>>          if (r)
+>>                  goto free_apmixed_data;
+>>
+>> @@ -140,7 +201,8 @@ static int clk_mt8195_apmixed_probe(struct platform_device *pdev)
+>>   unregister_gates:
+>>          mtk_clk_unregister_gates(apmixed_clks, ARRAY_SIZE(apmixed_clks), clk_data);
+>>   unregister_plls:
+>> -       mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
+>> +       mtk_clk_unregister_pllfhs(plls, ARRAY_SIZE(plls), pllfhs,
+>> +                                 ARRAY_SIZE(pllfhs), clk_data);
+> 
+> Nit: I think this could be squeezed into one line.
+> 
+>>   free_apmixed_data:
+>>          mtk_free_clk_data(clk_data);
+>>          return r;
+>> @@ -153,7 +215,8 @@ static int clk_mt8195_apmixed_remove(struct platform_device *pdev)
+>>
+>>          of_clk_del_provider(node);
+>>          mtk_clk_unregister_gates(apmixed_clks, ARRAY_SIZE(apmixed_clks), clk_data);
+>> -       mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
+>> +       mtk_clk_unregister_pllfhs(plls, ARRAY_SIZE(plls), pllfhs,
+>> +                                 ARRAY_SIZE(pllfhs), clk_data);
+> 
+> Same here.
+> 
 
-Zheng Wang <zyytlz.wz@163.com> =E4=BA=8E2023=E5=B9=B43=E6=9C=886=E6=97=A5=
-=E5=91=A8=E4=B8=80 14:28=E5=86=99=E9=81=93=EF=BC=9A
->
-> In mtk_jpeg_probe, &jpeg->job_timeout_work is bound with
-> mtk_jpeg_job_timeout_work. Then mtk_jpeg_dec_device_run
-> and mtk_jpeg_enc_device_run may be called to start the
-> work.
-> If we remove the module which will call mtk_jpeg_remove
-> to make cleanup, there may be a unfinished work. The
-> possible sequence is as follows, which will cause a
-> typical UAF bug.
->
-> Fix it by canceling the work before cleanup in the mtk_jpeg_remove
->
-> CPU0                  CPU1
->
->                     |mtk_jpeg_job_timeout_work
-> mtk_jpeg_remove     |
->   v4l2_m2m_release  |
->     kfree(m2m_dev); |
->                     |
->                     | v4l2_m2m_get_curr_priv
->                     |   m2m_dev->curr_ctx //use
->
-> Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
-> ---
->  drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drive=
-rs/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> index 969516a940ba..364513e7897e 100644
-> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> @@ -1793,7 +1793,7 @@ static int mtk_jpeg_probe(struct platform_device *p=
-dev)
->  static int mtk_jpeg_remove(struct platform_device *pdev)
->  {
->         struct mtk_jpeg_dev *jpeg =3D platform_get_drvdata(pdev);
-> -
-> +       cancel_delayed_work(&jpeg->job_timeout_work);
->         pm_runtime_disable(&pdev->dev);
->         video_unregister_device(jpeg->vdev);
->         v4l2_m2m_release(jpeg->m2m_dev);
-> --
-> 2.25.1
->
+That's the same on the others as well, but if I compress those lines I will have
+to rebase the clocks cleanup series again and send the 54 patches again.. I'd like
+to avoid that noise.
+
+If you really want though, I can do that... what should I do?
+
+Regards,
+Angelo
+
 
