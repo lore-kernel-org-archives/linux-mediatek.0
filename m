@@ -4,59 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7035CC678D5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 15:34:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78421C64EC4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 15:34:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/cc1vOdWtwzxjB8Itoebo3PGpOUY7+SB1sP8jgG5BLo=; b=trOyIqeAC6euyd92fhFQjGBQ4b
-	3w1lz255FN8kAM3Ql3nZ3olfutMqlnkJ1EzgmeemxVoubHDVe6LxUX+xpdlAh23wHsx0mnS/oGMgw
-	OZB0qKskta2Mxx0UkLVQsc3R2TUyfjk527gRyer7ZNO6gM2Yb1T0tTg6XGcL6tUt8oesbq6DNFDAm
-	TmO/N29omyW9V6IdBlRFnFY75e+H4Q3wKNjcpNof2U3MqwIpSdODKtSsH3mDXCqs+B43dgUCzUMMw
-	ChdYWthwUDpCbDf2JCaTDq/A3yJcm93TvwvIOoLHk+QGQ7vzIisEz19KTF+2FFo2zVdCpJGz0zLSQ
-	BC5punDA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=rJPmzdZE4NSQdkz7wFZ0jochMCQuk6LumCoRhBy4k2I=; b=L2xnYF+DY7krauWgZ6yoc3K7ND
+	razbwBwOqnoQNMYP/OMls1cCGpfyTJNoysohWNAESMUauyYPTblLm6nAVCo+BsV6QvZrKehGKHHmj
+	lwgQxbgxR7i1o5n1zsDkypTOqF0A0r4Jb5ev5HQtuRKIIntgg9Y8aUlAtB6w/akskxYsnfnnK0uuL
+	rnmEgZkgsaJxvf2CPuBjGvTHrXnhCh+sh2ZECtmZXE3UNBqc9lqYmqa8Ybd6uORd3Cx8b07SvnJ9w
+	5rNnpOmz6K4KTG8hM2ocewumtrPh4C9fMz4mqWn90oSNkRQpuinAQ9fV0LSJlYCcLCfu5o8pb+TIq
+	hWcaDCnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZvo8-005j5g-WB; Wed, 08 Mar 2023 15:34:25 +0000
-Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
+	id 1pZvoB-005j6Y-EE; Wed, 08 Mar 2023 15:34:27 +0000
+Received: from mail-qt1-x82f.google.com ([2607:f8b0:4864:20::82f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZvo6-005j3e-AS
-	for linux-mediatek@lists.infradead.org; Wed, 08 Mar 2023 15:34:23 +0000
-Received: by mail-qv1-xf2c.google.com with SMTP id g9so9611726qvt.8
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Mar 2023 07:34:19 -0800 (PST)
+	id 1pZvo6-005j3L-Ll
+	for linux-mediatek@lists.infradead.org; Wed, 08 Mar 2023 15:34:25 +0000
+Received: by mail-qt1-x82f.google.com with SMTP id r16so16820380qtx.9
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Mar 2023 07:34:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1678289658;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=/cc1vOdWtwzxjB8Itoebo3PGpOUY7+SB1sP8jgG5BLo=;
-        b=YoD4ttwbs43VKxfqZVBA8RXsYlw5CZm74f+e5Lh/kCbYdkWfNFqSGYc08xOUDBYk9P
-         lZnvrLEzsfrbvfUiEhnaXnwkYHfR+CsmLGUeokIRahw+9k+tmcJ5xb3TyChoPVDo9/P1
-         l1VDO62R0d+LwA7NDoCm69wOXebeShbps3Yxk=
+        d=chromium.org; s=google; t=1678289657;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=rJPmzdZE4NSQdkz7wFZ0jochMCQuk6LumCoRhBy4k2I=;
+        b=VakQlAXPBwXadUCnmy2qfP2seck4Mcu4X2hhm8QJIhsMasnL/ScseQIP6fkikJJauh
+         r4z9bsiNUoCTbjYA9jN0bdUho8reXLT9yzOseDXTgEIddxl1Gk2gocrTKU7QZTQ2Ezve
+         IvZU5EFRkzm2GELvjrkQMbVjAziM8VazNi614=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678289658;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=/cc1vOdWtwzxjB8Itoebo3PGpOUY7+SB1sP8jgG5BLo=;
-        b=f4x85N3z1mxb1iDC1ws1fzqlSlZaxRx+L/Z1i58v0vmy3c2JztfU2U/ndmZD8uF2jl
-         mIb9a5KV5lrX0Lj9NWD/4lmDa77fuSXZ2tsXCdDj2DBRZnrLj7NIo083PVPEkE46jjJd
-         VaLY1iPsjxuYvryuL/g0cQFP12NjCmIM6ahjaY8Ykrd7NTzSCvh3IehCalmrmE9MUuim
-         pI2jRs7iuJySqUSqCPnxu9v0Uh5WKagZtJvWBZpYZsVP/s+vmnKuyOWsATxRG/1NfJ83
-         TLrCRHdgYPOt34gGxW0l5f3tOsYJv/QezSgcaRAlF3YPtvBrSmh/PczXeQ8zoyJpZ55L
-         grjw==
-X-Gm-Message-State: AO0yUKUMBstS0GVX21IVesxCADXWyH+GwgxOGPO4XKRLdwDAzi2QX+Xq
-	vU+Rs9PMXWE542MgVKs/2KsJiqsVgPJ1eBAsnUvq8w==
-X-Google-Smtp-Source: AK7set98642jUMtdHeymZDEKFYq0KpYGGdPN1pcP5RvZyBL1nfu9bZZzmMjm71u4d8JnE0Kaca57mg==
-X-Received: by 2002:ad4:5f4f:0:b0:56e:b59d:2ee7 with SMTP id p15-20020ad45f4f000000b0056eb59d2ee7mr35502459qvg.47.1678289658613;
-        Wed, 08 Mar 2023 07:34:18 -0800 (PST)
+        d=1e100.net; s=20210112; t=1678289657;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=rJPmzdZE4NSQdkz7wFZ0jochMCQuk6LumCoRhBy4k2I=;
+        b=EWnIgvE6ydInKGEntCUB1erJN095rN+49PAjJGHtZAOiD8h/eXjYpOZX90k7Dwdvk1
+         B/Hl0e8v+gcI4JxLpflT5WlxCR0jMHHD79qrXULM9AjbUx1Bc6qNzj+ARFDA89YhLQgE
+         ch6Wp7boxpvTmIANskkoCQ3fD5Jl0x8ZmQKpvIqbbbQ+LgrW8aERkYj9tg4N/VSSxVYd
+         tKkPGC/7dwG/yxv19ZM2cDx3GVVpDk4VjUC6/GG4FeZfIIcPr3+8zYIL37Op0iKbgUVy
+         iAyjKX9VT1WRA++QFQKcXYmDXDApnfmjDE1IBMmbsUPKpjPphXSQAXHvTXeUn/UEmhtz
+         zHJA==
+X-Gm-Message-State: AO0yUKWbJ2WZCfIFdAGhaMFL+3t0bID27JjlVJwDKiUVv9FdjfHJhsdt
+	SJ3t2sY+bUjRe36AgF5baY0QEQyx9ilN3Jv/NLAB2g==
+X-Google-Smtp-Source: AK7set94y1LoGb6TI2c5F8OOyhxTynG9RJHPpWlMkkXZiFAVpPpXIBgOHtqCI0Ftilyiq6xU6yVpGQ==
+X-Received: by 2002:ac8:7d84:0:b0:3b9:fb0e:adba with SMTP id c4-20020ac87d84000000b003b9fb0eadbamr31631153qtd.25.1678289656877;
+        Wed, 08 Mar 2023 07:34:16 -0800 (PST)
 Received: from greenjustin3.nyc.corp.google.com ([2620:0:1003:314:8752:d0ab:8bcc:f9a8])
-        by smtp.gmail.com with ESMTPSA id c134-20020ae9ed8c000000b0073d873df3fesm10506884qkg.30.2023.03.08.07.34.17
+        by smtp.gmail.com with ESMTPSA id c134-20020ae9ed8c000000b0073d873df3fesm10506884qkg.30.2023.03.08.07.34.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Mar 2023 07:34:18 -0800 (PST)
+        Wed, 08 Mar 2023 07:34:16 -0800 (PST)
 From: Justin Green <greenjustin@chromium.org>
 To: linux-mediatek@lists.infradead.org,
 	dri-devel@lists.freedesktop.org
@@ -70,17 +69,15 @@ Cc: angelogioacchino.delregno@collabora.com,
 	daniel@ffwll.ch,
 	daniel@fooishbar.org,
 	greenjustin@chromium.org
-Subject: [PATCH v7 RESEND 2/3] drm/mediatek: Add support for AR30 and BA30 overlays
-Date: Wed,  8 Mar 2023 10:33:57 -0500
-Message-Id: <20230308153358.333297-3-greenjustin@chromium.org>
+Subject: [PATCH v7 RESEND 0/3] drm/mediatek: Add support for 10-bit overlays
+Date: Wed,  8 Mar 2023 10:33:55 -0500
+Message-Id: <20230308153358.333297-1-greenjustin@chromium.org>
 X-Mailer: git-send-email 2.40.0.rc0.216.gc4246ad0f0-goog
-In-Reply-To: <20230308153358.333297-1-greenjustin@chromium.org>
-References: <20230308153358.333297-1-greenjustin@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_073422_396483_DAB85FD2 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20230308_073422_768038_A84F601B 
+X-CRM114-Status: GOOD (  10.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,95 +92,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Tested using "modetest -P" on an MT8195 device.
+This patch series adds support for 10-bit overlays to the Mediatek DRM driver.
+Specifically, we add support for AR30 and BA30 overlays on MT8195 devices and
+lay the groundwork for supporting more 10-bit formats on more devices.
 
-Signed-off-by: Justin Green <greenjustin@chromium.org>
----
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 33 +++++++++++++++++++++++++
- 1 file changed, 33 insertions(+)
+1. Refactor plane initialization logic to allow individual DDP components to
+provide their supported pixel formats.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 8743c8047dc9..a6255e847104 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -41,6 +41,7 @@
- #define DISP_REG_OVL_RDMA_CTRL(n)		(0x00c0 + 0x20 * (n))
- #define DISP_REG_OVL_RDMA_GMC(n)		(0x00c8 + 0x20 * (n))
- #define DISP_REG_OVL_ADDR_MT2701		0x0040
-+#define DISP_REG_OVL_CLRFMT_EXT			0x02D0
- #define DISP_REG_OVL_ADDR_MT8173		0x0f40
- #define DISP_REG_OVL_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n))
- #define DISP_REG_OVL_HDR_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n) + 0x04)
-@@ -61,6 +62,10 @@
- 					0 : OVL_CON_CLRFMT_RGB)
- #define OVL_CON_CLRFMT_RGB888(ovl)	((ovl)->data->fmt_rgb565_is_0 ? \
- 					OVL_CON_CLRFMT_RGB : 0)
-+#define OVL_CON_CLRFMT_BIT_DEPTH_MASK(ovl)	(0xFF << 4 * (ovl))
-+#define OVL_CON_CLRFMT_BIT_DEPTH(depth, ovl)	(depth << 4 * (ovl))
-+#define OVL_CON_CLRFMT_8_BIT			0x00
-+#define OVL_CON_CLRFMT_10_BIT			0x01
- #define	OVL_CON_AEN		BIT(8)
- #define	OVL_CON_ALPHA		0xff
- #define	OVL_CON_VIRT_FLIP	BIT(9)
-@@ -89,6 +94,7 @@ struct mtk_disp_ovl_data {
- 	bool supports_afbc;
- 	const u32 *formats;
- 	size_t num_formats;
-+	bool supports_clrfmt_ext;
- };
- 
- /*
-@@ -218,6 +224,30 @@ static void mtk_ovl_set_afbc(struct mtk_disp_ovl *ovl, struct cmdq_pkt *cmdq_pkt
- 			   DISP_REG_OVL_DATAPATH_CON, OVL_LAYER_AFBC_EN(idx));
- }
- 
-+static void mtk_ovl_set_bit_depth(struct device *dev, int idx, u32 format,
-+				  struct cmdq_pkt *cmdq_pkt)
-+{
-+	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
-+	unsigned int reg;
-+	unsigned int bit_depth = OVL_CON_CLRFMT_8_BIT;
-+
-+	if (!ovl->data->supports_clrfmt_ext)
-+		return;
-+
-+	reg = readl(ovl->regs + DISP_REG_OVL_CLRFMT_EXT);
-+	reg &= ~OVL_CON_CLRFMT_BIT_DEPTH_MASK(idx);
-+
-+	if (format == DRM_FORMAT_RGBA1010102 ||
-+	    format == DRM_FORMAT_BGRA1010102 ||
-+	    format == DRM_FORMAT_ARGB2101010)
-+		bit_depth = OVL_CON_CLRFMT_10_BIT;
-+
-+	reg |= OVL_CON_CLRFMT_BIT_DEPTH(bit_depth, idx);
-+
-+	mtk_ddp_write(cmdq_pkt, reg, &ovl->cmdq_reg,
-+		      ovl->regs, DISP_REG_OVL_CLRFMT_EXT);
-+}
-+
- void mtk_ovl_config(struct device *dev, unsigned int w,
- 		    unsigned int h, unsigned int vrefresh,
- 		    unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-@@ -332,9 +362,11 @@ static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt)
- 		return OVL_CON_CLRFMT_ARGB8888;
- 	case DRM_FORMAT_BGRX8888:
- 	case DRM_FORMAT_BGRA8888:
-+	case DRM_FORMAT_BGRA1010102:
- 		return OVL_CON_CLRFMT_ARGB8888 | OVL_CON_BYTE_SWAP;
- 	case DRM_FORMAT_XRGB8888:
- 	case DRM_FORMAT_ARGB8888:
-+	case DRM_FORMAT_ARGB2101010:
- 		return OVL_CON_CLRFMT_RGBA8888;
- 	case DRM_FORMAT_XBGR8888:
- 	case DRM_FORMAT_ABGR8888:
-@@ -418,6 +450,7 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 				      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_PITCH_MSB(idx));
- 	}
- 
-+	mtk_ovl_set_bit_depth(dev, idx, fmt, cmdq_pkt);
- 	mtk_ovl_layer_on(dev, idx, cmdq_pkt);
- }
- 
+2. Add AR30 and BA30 support to overlay driver.
+
+3. Enable AR30 and BA30 overlays on MT8195.
+
+
+Version history:
+v2:
+ * Rebase and resolve merge conflicts with the AFBC patch.
+v3:
+ * Moved 10-bit support detection to mtk_disk_ovl.c
+v4:
+ * Moved formats to mtk_disp_ovl.c and mtk_disp_rdma.c
+v5:
+ * Minor style adjustments per checkpatch.pl
+v6:
+ * Refactor patch into patch series.
+ * Add formats directly to private data.
+v7:
+ * Gate setting OVL_CLRFMT_EXT register on compatibility.
+ * Split patches for adding 10-bit support and enabling 10-bit support on
+   MT8195.
+
+
+Justin Green (3):
+  drm/mediatek: Refactor pixel format logic
+  drm/mediatek: Add support for AR30 and BA30 overlays
+  drm/mediatek: Enable AR30 and BA30 overlays on MT8195
+
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     |  4 +
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c     | 94 +++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c    | 38 +++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |  4 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  4 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 20 +++++
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c    | 24 ++----
+ drivers/gpu/drm/mediatek/mtk_drm_plane.h    |  3 +-
+ 8 files changed, 173 insertions(+), 18 deletions(-)
+
 -- 
 2.39.1.456.gfc5497dd1b-goog
 
