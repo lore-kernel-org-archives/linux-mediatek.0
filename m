@@ -4,91 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 273FCC64EC4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 10:55:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77BA8C678D5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 11:36:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R4h2FY+X2SHJL5D/w63hFPZQVBBm0zbY0tUXPSa+dEU=; b=B3HXL4cL5c1DGVkn0Xg3MeILhF
-	W4MmY8ENOX0eTgQbOeTQ9Z1g9y6uHORetkq94fMPe0bwLkDlIPl+XOq9AcNKG4sIab2pX+sR8kKz2
-	2Zf4fqDWWYEQ1vmNoGY798TU7njHAavd3ZDL5Jwnvy0QmNQjvGXWjH7608Tr36wn6c559S8e3m/w3
-	+kUnxMz93/ONRJGWY6YyJmw6VJGsd0Rec4lgtg0ac+eR5iqKM/24V9dbJ9VvdjFTZaIFS46JiLCFD
-	stmrnoJIObpCu7OfuoGQtkDjpPe8IDw2HCVz99eP6KkEWZ0HzRcXVcjjLITGcCPBXFU24ptksmAbI
-	/ePg59pQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7q5WRUhB8xv0RmSiXrjbZQTqBS/OimwrA3VM7RORVD0=; b=e0uV3RsBO/T5gfHYXRLbgw0KW/
+	iLgOple9QCejSTWfL5959bvp4ToX42xqvuV+qSsZozzy2W1shCJFX7W2dyGPFKe/sYWHupqr+Mg++
+	NIE3GrM9e4AeA8bAhOHmdPkArfvtmzDPvZT7XRnfz55KA/wR1S2u0QNqB7fayPaX7wcB0UVbcbKw8
+	/tF4GoVKJgJbcw/COtLkFALVbPb943DoQSE8ixaowhXow/i007FKn/CS+yPiYTxl6JzKw4Z4+ehcd
+	0QmSwFtdWWuIKWBxRSAc2ZNsNwzMdvm1luPIDdIJ2hMZ5T8SUx/JMLuuB9pXeFGUIdYJQzCFOcBFq
+	OnL5JXMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZrSV-004Tnq-Qk; Wed, 08 Mar 2023 10:55:47 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1pZs5S-004dOC-Os; Wed, 08 Mar 2023 11:36:02 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZrSL-004Tld-FA
-	for linux-mediatek@lists.infradead.org; Wed, 08 Mar 2023 10:55:38 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id o12so63944673edb.9
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Mar 2023 02:55:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678272935;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=R4h2FY+X2SHJL5D/w63hFPZQVBBm0zbY0tUXPSa+dEU=;
-        b=J+dLbTIne4bumfpOBr7e9LqYt+Wa+Z9T0zBInXT0GSS0qlSmlpiUYrmb9lHXgkj1BB
-         ULUVqNV86biaEGn0lEdoahVFuHrqTyHZ6uIWcP1Se+iMJRIwWxB/TRZ05Yizj0GWM7np
-         ICOGLEhdjgIFHHhdWVFGBEa31/z0C2RFBRZutfST+r5l7n8ckq6SBauls1hVD24sg6IE
-         khUr+D/zpRwXVLum7KxqdJHoP+ISB3nVXd8bXCPRqnR8rrbxqA/8ea6Tq3LBxDS0FqhY
-         5lBThWrCO3i+XlD98BL971vYS41YaECzX3vk0O/VBEkGvPofNT0wFiAYjzZ36RahNcM4
-         dg1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678272935;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=R4h2FY+X2SHJL5D/w63hFPZQVBBm0zbY0tUXPSa+dEU=;
-        b=1nr6JBOFdDG5O8ywohVgxbY0cEDWwir1zJQpxl6d13x3isE5bdKWbKtEKnIh7K2ncw
-         A9+emdGSjwTBWcqylqx+WGPbZYiixrsS6i2e2NnWtQXEEzqshwdfjspiJy19hqSpUs7l
-         pndi5PwO4fLSfU/APOR1UWiAiVBYUkD/wICz6fIWVKwvoxJeuLG0mCvBqSrNYzyiuAKb
-         lX3RmJ3I6qT9l2YBXaLOZBewbxA49EbGvCH/gk0vPnuKUYz+y/3uhZqHEBquKacxm3A6
-         XaSIcp9oJ/Gqtvlo0GXuehWYcrFEQR726H90RhyUEtHd+oxv82QsSdpMSpIWCageuufA
-         YJ6w==
-X-Gm-Message-State: AO0yUKVqlqPoINJujWrof+ZeVEUkBVKGjbvbwjdR+Up/j7Eh/ex+MbJM
-	Yy7eguMrZLtV4cYjEU0fzqaszQ==
-X-Google-Smtp-Source: AK7set/jz2AnF63tB8p00z47gnyjjREBhBa4nYjrJe4txxjqSyfWR9lCxSiLVcOC6zjDw4RWTaQ/Hw==
-X-Received: by 2002:a17:906:af67:b0:8b1:2ebf:386c with SMTP id os7-20020a170906af6700b008b12ebf386cmr16593671ejb.11.1678272935154;
-        Wed, 08 Mar 2023 02:55:35 -0800 (PST)
-Received: from ?IPV6:2a02:810d:15c0:828:ff33:9b14:bdd2:a3da? ([2a02:810d:15c0:828:ff33:9b14:bdd2:a3da])
-        by smtp.gmail.com with ESMTPSA id p12-20020a17090628cc00b008b1797b77b2sm7340991ejd.221.2023.03.08.02.55.34
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 08 Mar 2023 02:55:34 -0800 (PST)
-Message-ID: <c3080319-b8c4-ab9d-334b-c0ce776b59a9@linaro.org>
-Date: Wed, 8 Mar 2023 11:55:33 +0100
+	id 1pZs5O-004dMF-B3; Wed, 08 Mar 2023 11:36:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=7q5WRUhB8xv0RmSiXrjbZQTqBS/OimwrA3VM7RORVD0=; b=AMlDmF0qS7/JM218n5xSc6B/il
+	0fN2kNupiUXxRe+kzYu2XBBq403g9gC55gVLbJ/sN3USW+t3cMnbjVMv1cQxEBMuYjeiAPI8PhDtD
+	lIYeO9dz7RVb4vkk7cu5AOr4RrSvza1Tikl2KyxdqvclclEP1pKICKtbtHcivpmP9idHEpaStDG31
+	QXFsFdAJfWILtRrn4Z1dr009qSE8DUVGILTTUqq9JKpELdqm/W+u6Z+fwhim3k366hBAwodhKKTRE
+	A5A7x75q3eKme2IVkQgndmFwAs/tm4/Ex79eraWChy7xrqv0uZIMR+qrTTdaiMLJVlvVomq8jymKb
+	aaWjx07w==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:34522)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1pZs5C-0002MJ-Ax; Wed, 08 Mar 2023 11:35:46 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1pZs57-0002XC-0y; Wed, 08 Mar 2023 11:35:41 +0000
+Date: Wed, 8 Mar 2023 11:35:40 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Daniel Golle <daniel@makrotopia.org>
+Subject: Re: [PATCH net-next v12 08/18] net: ethernet: mtk_eth_soc: fix
+ 1000Base-X and 2500Base-X modes
+Message-ID: <ZAhzDDjZ8+gxyo3V@shell.armlinux.org.uk>
+References: <cover.1678201958.git.daniel@makrotopia.org>
+ <fd5c7ea79a7f84caac7d0b64b39fe5c4043edfa8.1678201958.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH 1/2] dt-bindings: reset: Add binding for MediaTek MT6735
- TOPRGU/WDT
-Content-Language: en-US
-To: Yassine Oudjana <yassine.oudjana@gmail.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
- <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
- linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230302124015.75546-1-y.oudjana@protonmail.com>
- <20230302124015.75546-2-y.oudjana@protonmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230302124015.75546-2-y.oudjana@protonmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <fd5c7ea79a7f84caac7d0b64b39fe5c4043edfa8.1678201958.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_025537_556422_D57BE32D 
-X-CRM114-Status: UNSURE (   8.07  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230308_033558_406373_E2923C12 
+X-CRM114-Status: GOOD (  16.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,20 +70,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <vladimir.oltean@nxp.com>, Eric Dumazet <edumazet@google.com>, Florian Fainelli <f.fainelli@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Alexander Couzens <lynxis@fe80.eu>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Jianhui Zhao <zhaojh329@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, =?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02/03/2023 13:40, Yassine Oudjana wrote:
-> From: Yassine Oudjana <y.oudjana@protonmail.com>
+On Tue, Mar 07, 2023 at 03:53:58PM +0000, Daniel Golle wrote:
+> After conversion to phylink_pcs the 1000Base-X and 2500Base-X modes
+> would work only after `ethtool -s eth1 autoneg off`.
+> As ethtool autoneg and the ETHTOOL_LINK_MODE_Autoneg_BIT is supposed
+> to control auto-negotiation on the external interface it doesn't make
+> much sense to use it to control on-board SGMII auto-negotiation between
+> MAC and PHY.
+> Set correct values to really only enable SGMII auto-negotiation when
+> actually operating in SGMII mode. For 1000Base-X and 2500Base-X mode,
+> enable remote-fault detection only if in-band-status is enabled.
+> This fixes using 1000Base-X and 2500Base-X SFPs on the BananaPi R3
+> board and also makes it possible to use interface-mode-switching PHYs
+> operating in either SGMII mode for 10M/100M/1000M or in 2500Base-X for
+> 2500M mode on other boards.
 > 
-> Add a DT binding for the MT6735 top reset generation unit/watchdog timer.
-> 
-> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+> Fixes: 14a44ab0330d ("net: mtk_eth_soc: partially convert to phylink_pcs")
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
+NAK.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+There are PHYs out there which operate in SGMII mode but do not
+exchange the SGMII 16-bit configuration word. The code implemented
+here by me was explicitly to allow such a configuration to work,
+which is defined as:
 
-Best regards,
-Krzysztof
+	SGMII *without* mode == inband
 
+An example of this is the Broadcom 84881 PHY which can be found on
+SFP modules.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
