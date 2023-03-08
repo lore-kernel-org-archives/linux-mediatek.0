@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48780C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 23:25:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FB3EC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 23:34:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=orF4MmvENbtPn9ArKvzBScZduwRUTzmJQm8/XMEgeIg=; b=Y+yYgVw6XFv2i+/EpCAH4K0U2L
-	BY6oPImHAP3oeOFwECrZOZHDbtixu81MQ1EH2JKSSm3Y/Uo0AwUgvu1VatKEALQZtImrsPHEigA4E
-	/AHWybFFfF37r4+v7arWisjmkAWrnBISJSbibXsNdZP2m5fIzDQ/B0lCe09qQg9KCFMtBX/WuKvTB
-	RkVm0PCgh3vc7AWlpGiN/qjXPLQYmlMggRaAMmamKkUPC5shr/FDaK/JYYh/ekU2qIpMHbXpPFmUV
-	YKnNVg3GeGK0nOFQdW1HOBoCFH+h6TcxskB0sivMWdvPp5LcCDV0LNULsJm6GutMT3XzNZlcczzk7
-	nl4SQa7A==;
+	bh=29njkmTzIUDFmXLxK4RuUPHH8xVwEXksxMZXQotmbXY=; b=yaYADMieKtpQIRv2dii5hpsNaH
+	Q4qT9fSXsVV6AWzNiU/h6Cm0V0VDSqa7XrgG890wBHcThpwN0betGo2RajVL+phxtiwJsvucg049e
+	NUh3nthUo9jTzaELI7elPas2gz/Km+Z6cMUNwwzRDqJW+FGxf8cqafptYQPwgVb3d4ONCVKZzmugP
+	i0VKAby5V5YXO5JGGbzvXXjSHbqCAlhbGuof2UaDeJ/eQWWjUAsYUQtEScQ67u1Mwb4T1g5b7Rpb9
+	Ms56QElMgG7SeYMyxKVn6+Jjyvdi1AkVEdeAo0gmoqB0ozImZZdR9fb0n1C0TU2Yk9SupE8qvJJna
+	1TMt1TgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pa3AK-00784X-D8; Wed, 08 Mar 2023 23:25:48 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pa3IX-0078ta-PL; Wed, 08 Mar 2023 23:34:17 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pa3AG-00782V-57
-	for linux-mediatek@lists.infradead.org; Wed, 08 Mar 2023 23:25:46 +0000
+	id 1pa3IU-0078sz-HV
+	for linux-mediatek@lists.infradead.org; Wed, 08 Mar 2023 23:34:16 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id DB7B6619D0
-	for <linux-mediatek@lists.infradead.org>; Wed,  8 Mar 2023 23:25:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9FB16C433A7
-	for <linux-mediatek@lists.infradead.org>; Wed,  8 Mar 2023 23:25:35 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 28CED616FE
+	for <linux-mediatek@lists.infradead.org>; Wed,  8 Mar 2023 23:34:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E2222C433AA
+	for <linux-mediatek@lists.infradead.org>; Wed,  8 Mar 2023 23:34:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1678317935;
-	bh=TpYn0H8JcGDOzBuVDB4sWru2HwVpWoAeJw+bkPkNvQQ=;
+	s=k20201202; t=1678318452;
+	bh=KUGDEgonlg9RXBeUOcEOHd3TUC9eBAaEXNluLsYZAao=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=f1txx5IK93vMi02N0uIHlMQ+a/H4R7USq5MfO22T4+YW1407D2Rpbo226Eiix+QP/
-	 eBwQ4a/Knt/F9C6CodPtujxcMehIOSAwIExeSp3vEkks+rvMSX0KpWmi7v+kW5lJbG
-	 L3TAEdDJ2xDAWRsqWPxfX94AhU+61isZJQopezJ0C5fjjOYTbDvNKwq91D/HetX/cx
-	 xAIYBZmQBRBL4V+R0NcZS3dSjbAm+c7Oq0dJvsWdnzrTGgEcNXh7MMVk8bBzbQoFbq
-	 VFBlDsr4gk8qPeN7GsxAoTzQswfSRZe0aFHAxDUoS3DKkCy9Qt5rlZStu4eNhlkZuH
-	 7XFWVoZOnJDgw==
-Received: by mail-lf1-f41.google.com with SMTP id t11so100688lfr.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Mar 2023 15:25:35 -0800 (PST)
-X-Gm-Message-State: AO0yUKUq9TvZoO+hgoL1p+jagNlYKYWOaVStfIXkOKcd0quzOR8H9GuF
-	XDPuErNdQWR/X9G0LOWVTdrx02CmrrH8pjynxA==
-X-Google-Smtp-Source: AK7set+9sek6VGxljpAjpmp3Jbe3Jx+jwbptMksXrLFsF/AAaWKgYRgjQY7NYC0OshY1wZVOXRPzMKlwoFVX7bMKqeQ=
-X-Received: by 2002:ac2:593b:0:b0:4dd:9931:c555 with SMTP id
- v27-20020ac2593b000000b004dd9931c555mr6344336lfi.0.1678317933468; Wed, 08 Mar
- 2023 15:25:33 -0800 (PST)
+	b=au+97evzRqd78Dy4n9eVrSyu9VMiSiWPRJyoiTBcEeoptCEEghO9zy/Y+MI3UMCOO
+	 2WcQFeDu4snkRN28cg71IUD/vuHAHrhY4YKvcRvdg1HCpSlbfVIH9/jd3wrFg2KPpx
+	 zO07uC2QsSFADZnr1MZRGZhtQb8CWW53NDQSv08hJnRgre0BfxKmJyRXSK4hFF4uiR
+	 DJpO3tMD1iERylS7qa7l0oTJpMyyqYCBJWOZ9wr8Y3mSno86hJ/cYsBo33l/QebRKr
+	 iXr1eB29ci0aZtIDoxQG/c44Ycazt4RymqZ0RC5d4zXTnFw6juyVISQf7/FgIf3h0a
+	 hQklF5ujmYNjw==
+Received: by mail-lf1-f45.google.com with SMTP id t11so122396lfr.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Mar 2023 15:34:12 -0800 (PST)
+X-Gm-Message-State: AO0yUKVFLUSH5ToS+7lNLlF84SPdcwY/OuCncFTcoRdT1SUx9SES0pgm
+	dr1od/5viI0Bgn2UD3LW4ZL5etx3KKr/QqDwmw==
+X-Google-Smtp-Source: AK7set9jU1rJvJm8BuARSI7xDYybdRxjrachn9eWnJEyi+odkJN2cu9+DkDVO1JPavi5lB7ija2xXLVkY9O12YvKapU=
+X-Received: by 2002:ac2:5de1:0:b0:4dd:af74:fe17 with SMTP id
+ z1-20020ac25de1000000b004ddaf74fe17mr6129635lfq.7.1678318450861; Wed, 08 Mar
+ 2023 15:34:10 -0800 (PST)
 MIME-Version: 1.0
-References: <20230308153358.333297-1-greenjustin@chromium.org> <20230308153358.333297-2-greenjustin@chromium.org>
-In-Reply-To: <20230308153358.333297-2-greenjustin@chromium.org>
+References: <20230308153358.333297-1-greenjustin@chromium.org> <20230308153358.333297-3-greenjustin@chromium.org>
+In-Reply-To: <20230308153358.333297-3-greenjustin@chromium.org>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Thu, 9 Mar 2023 07:25:21 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_8TAjh082cspy6-KyEgUP6G1h8fcX=+4r2ON3PYxgMOWQ@mail.gmail.com>
-Message-ID: <CAAOTY_8TAjh082cspy6-KyEgUP6G1h8fcX=+4r2ON3PYxgMOWQ@mail.gmail.com>
-Subject: Re: [PATCH v7 RESEND 1/3] drm/mediatek: Refactor pixel format logic
+Date: Thu, 9 Mar 2023 07:33:58 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__LJPfBMkZM1XxBrrzYdnTG20RH2Yn1rCYioro9Fv+1_g@mail.gmail.com>
+Message-ID: <CAAOTY__LJPfBMkZM1XxBrrzYdnTG20RH2Yn1rCYioro9Fv+1_g@mail.gmail.com>
+Subject: Re: [PATCH v7 RESEND 2/3] drm/mediatek: Add support for AR30 and BA30 overlays
 To: Justin Green <greenjustin@chromium.org>
 Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
 	angelogioacchino.delregno@collabora.com, jason-jh.lin@mediatek.com, 
@@ -67,8 +67,8 @@ Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_152544_314488_E13D0B86 
-X-CRM114-Status: GOOD (  21.20  )
+X-CRM114-CacheID: sfid-20230308_153414_696621_3B859478 
+X-CRM114-Status: GOOD (  21.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,404 +89,113 @@ Justin Green <greenjustin@chromium.org> =E6=96=BC 2023=E5=B9=B43=E6=9C=888=
 =E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=8811:34=E5=AF=AB=E9=81=93=EF=
 =BC=9A
 >
-> Add an DDP component interface for querying pixel format support and move=
- list
-> of supported pixel formats into DDP components instead of mtk_drm_plane.c
+> Tested using "modetest -P" on an MT8195 device.
 
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+I think you could not test this when only apply the first two patches
+of this series, so move the test information to the third patch. In
+this patch, you could describe more about what and why this patch
+does. The other modification looks good to me.
 
->
-> Tested by running Chrome on an MT8195.
+Regards,
+Chun-Kuang.
+
 >
 > Signed-off-by: Justin Green <greenjustin@chromium.org>
 > ---
->  drivers/gpu/drm/mediatek/mtk_disp_drv.h     |  4 ++
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c     | 44 +++++++++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_disp_rdma.c    | 38 ++++++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |  4 +-
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  4 ++
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 20 ++++++++++
->  drivers/gpu/drm/mediatek/mtk_drm_plane.c    | 24 ++++-------
->  drivers/gpu/drm/mediatek/mtk_drm_plane.h    |  3 +-
->  8 files changed, 123 insertions(+), 18 deletions(-)
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 33 +++++++++++++++++++++++++
+>  1 file changed, 33 insertions(+)
 >
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/me=
-diatek/mtk_disp_drv.h
-> index 33e61a136bbc..0df6a06defb8 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> @@ -96,6 +96,8 @@ void mtk_ovl_register_vblank_cb(struct device *dev,
->  void mtk_ovl_unregister_vblank_cb(struct device *dev);
->  void mtk_ovl_enable_vblank(struct device *dev);
->  void mtk_ovl_disable_vblank(struct device *dev);
-> +const u32 *mtk_ovl_get_formats(struct device *dev);
-> +size_t mtk_ovl_get_num_formats(struct device *dev);
->
->  void mtk_rdma_bypass_shadow(struct device *dev);
->  int mtk_rdma_clk_enable(struct device *dev);
-> @@ -115,6 +117,8 @@ void mtk_rdma_register_vblank_cb(struct device *dev,
->  void mtk_rdma_unregister_vblank_cb(struct device *dev);
->  void mtk_rdma_enable_vblank(struct device *dev);
->  void mtk_rdma_disable_vblank(struct device *dev);
-> +const u32 *mtk_rdma_get_formats(struct device *dev);
-> +size_t mtk_rdma_get_num_formats(struct device *dev);
->
->  int mtk_mdp_rdma_clk_enable(struct device *dev);
->  void mtk_mdp_rdma_clk_disable(struct device *dev);
 > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/me=
 diatek/mtk_disp_ovl.c
-> index 84daeaffab6a..8743c8047dc9 100644
+> index 8743c8047dc9..a6255e847104 100644
 > --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
 > +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> @@ -66,6 +66,20 @@
+> @@ -41,6 +41,7 @@
+>  #define DISP_REG_OVL_RDMA_CTRL(n)              (0x00c0 + 0x20 * (n))
+>  #define DISP_REG_OVL_RDMA_GMC(n)               (0x00c8 + 0x20 * (n))
+>  #define DISP_REG_OVL_ADDR_MT2701               0x0040
+> +#define DISP_REG_OVL_CLRFMT_EXT                        0x02D0
+>  #define DISP_REG_OVL_ADDR_MT8173               0x0f40
+>  #define DISP_REG_OVL_ADDR(ovl, n)              ((ovl)->data->addr + 0x20=
+ * (n))
+>  #define DISP_REG_OVL_HDR_ADDR(ovl, n)          ((ovl)->data->addr + 0x20=
+ * (n) + 0x04)
+> @@ -61,6 +62,10 @@
+>                                         0 : OVL_CON_CLRFMT_RGB)
+>  #define OVL_CON_CLRFMT_RGB888(ovl)     ((ovl)->data->fmt_rgb565_is_0 ? \
+>                                         OVL_CON_CLRFMT_RGB : 0)
+> +#define OVL_CON_CLRFMT_BIT_DEPTH_MASK(ovl)     (0xFF << 4 * (ovl))
+> +#define OVL_CON_CLRFMT_BIT_DEPTH(depth, ovl)   (depth << 4 * (ovl))
+> +#define OVL_CON_CLRFMT_8_BIT                   0x00
+> +#define OVL_CON_CLRFMT_10_BIT                  0x01
+>  #define        OVL_CON_AEN             BIT(8)
+>  #define        OVL_CON_ALPHA           0xff
 >  #define        OVL_CON_VIRT_FLIP       BIT(9)
->  #define        OVL_CON_HORZ_FLIP       BIT(10)
->
-> +static const u32 mt8173_formats[] =3D {
-> +       DRM_FORMAT_XRGB8888,
-> +       DRM_FORMAT_ARGB8888,
-> +       DRM_FORMAT_BGRX8888,
-> +       DRM_FORMAT_BGRA8888,
-> +       DRM_FORMAT_ABGR8888,
-> +       DRM_FORMAT_XBGR8888,
-> +       DRM_FORMAT_RGB888,
-> +       DRM_FORMAT_BGR888,
-> +       DRM_FORMAT_RGB565,
-> +       DRM_FORMAT_UYVY,
-> +       DRM_FORMAT_YUYV,
-> +};
-> +
->  struct mtk_disp_ovl_data {
->         unsigned int addr;
->         unsigned int gmc_bits;
-> @@ -73,6 +87,8 @@ struct mtk_disp_ovl_data {
->         bool fmt_rgb565_is_0;
->         bool smi_id_en;
+> @@ -89,6 +94,7 @@ struct mtk_disp_ovl_data {
 >         bool supports_afbc;
-> +       const u32 *formats;
-> +       size_t num_formats;
+>         const u32 *formats;
+>         size_t num_formats;
+> +       bool supports_clrfmt_ext;
 >  };
 >
 >  /*
-> @@ -138,6 +154,20 @@ void mtk_ovl_disable_vblank(struct device *dev)
->         writel_relaxed(0x0, ovl->regs + DISP_REG_OVL_INTEN);
+> @@ -218,6 +224,30 @@ static void mtk_ovl_set_afbc(struct mtk_disp_ovl *ov=
+l, struct cmdq_pkt *cmdq_pkt
+>                            DISP_REG_OVL_DATAPATH_CON, OVL_LAYER_AFBC_EN(i=
+dx));
 >  }
 >
-> +const u32 *mtk_ovl_get_formats(struct device *dev)
+> +static void mtk_ovl_set_bit_depth(struct device *dev, int idx, u32 forma=
+t,
+> +                                 struct cmdq_pkt *cmdq_pkt)
 > +{
 > +       struct mtk_disp_ovl *ovl =3D dev_get_drvdata(dev);
+> +       unsigned int reg;
+> +       unsigned int bit_depth =3D OVL_CON_CLRFMT_8_BIT;
 > +
-> +       return ovl->data->formats;
+> +       if (!ovl->data->supports_clrfmt_ext)
+> +               return;
+> +
+> +       reg =3D readl(ovl->regs + DISP_REG_OVL_CLRFMT_EXT);
+> +       reg &=3D ~OVL_CON_CLRFMT_BIT_DEPTH_MASK(idx);
+> +
+> +       if (format =3D=3D DRM_FORMAT_RGBA1010102 ||
+> +           format =3D=3D DRM_FORMAT_BGRA1010102 ||
+> +           format =3D=3D DRM_FORMAT_ARGB2101010)
+> +               bit_depth =3D OVL_CON_CLRFMT_10_BIT;
+> +
+> +       reg |=3D OVL_CON_CLRFMT_BIT_DEPTH(bit_depth, idx);
+> +
+> +       mtk_ddp_write(cmdq_pkt, reg, &ovl->cmdq_reg,
+> +                     ovl->regs, DISP_REG_OVL_CLRFMT_EXT);
 > +}
 > +
-> +size_t mtk_ovl_get_num_formats(struct device *dev)
-> +{
-> +       struct mtk_disp_ovl *ovl =3D dev_get_drvdata(dev);
-> +
-> +       return ovl->data->num_formats;
-> +}
-> +
->  int mtk_ovl_clk_enable(struct device *dev)
->  {
->         struct mtk_disp_ovl *ovl =3D dev_get_drvdata(dev);
-> @@ -495,6 +525,8 @@ static const struct mtk_disp_ovl_data mt2701_ovl_driv=
-er_data =3D {
->         .gmc_bits =3D 8,
->         .layer_nr =3D 4,
->         .fmt_rgb565_is_0 =3D false,
-> +       .formats =3D mt8173_formats,
-> +       .num_formats =3D ARRAY_SIZE(mt8173_formats),
->  };
+>  void mtk_ovl_config(struct device *dev, unsigned int w,
+>                     unsigned int h, unsigned int vrefresh,
+>                     unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+> @@ -332,9 +362,11 @@ static unsigned int ovl_fmt_convert(struct mtk_disp_=
+ovl *ovl, unsigned int fmt)
+>                 return OVL_CON_CLRFMT_ARGB8888;
+>         case DRM_FORMAT_BGRX8888:
+>         case DRM_FORMAT_BGRA8888:
+> +       case DRM_FORMAT_BGRA1010102:
+>                 return OVL_CON_CLRFMT_ARGB8888 | OVL_CON_BYTE_SWAP;
+>         case DRM_FORMAT_XRGB8888:
+>         case DRM_FORMAT_ARGB8888:
+> +       case DRM_FORMAT_ARGB2101010:
+>                 return OVL_CON_CLRFMT_RGBA8888;
+>         case DRM_FORMAT_XBGR8888:
+>         case DRM_FORMAT_ABGR8888:
+> @@ -418,6 +450,7 @@ void mtk_ovl_layer_config(struct device *dev, unsigne=
+d int idx,
+>                                       &ovl->cmdq_reg, ovl->regs, DISP_REG=
+_OVL_PITCH_MSB(idx));
+>         }
 >
->  static const struct mtk_disp_ovl_data mt8173_ovl_driver_data =3D {
-> @@ -502,6 +534,8 @@ static const struct mtk_disp_ovl_data mt8173_ovl_driv=
-er_data =3D {
->         .gmc_bits =3D 8,
->         .layer_nr =3D 4,
->         .fmt_rgb565_is_0 =3D true,
-> +       .formats =3D mt8173_formats,
-> +       .num_formats =3D ARRAY_SIZE(mt8173_formats),
->  };
->
->  static const struct mtk_disp_ovl_data mt8183_ovl_driver_data =3D {
-> @@ -509,6 +543,8 @@ static const struct mtk_disp_ovl_data mt8183_ovl_driv=
-er_data =3D {
->         .gmc_bits =3D 10,
->         .layer_nr =3D 4,
->         .fmt_rgb565_is_0 =3D true,
-> +       .formats =3D mt8173_formats,
-> +       .num_formats =3D ARRAY_SIZE(mt8173_formats),
->  };
->
->  static const struct mtk_disp_ovl_data mt8183_ovl_2l_driver_data =3D {
-> @@ -516,6 +552,8 @@ static const struct mtk_disp_ovl_data mt8183_ovl_2l_d=
-river_data =3D {
->         .gmc_bits =3D 10,
->         .layer_nr =3D 2,
->         .fmt_rgb565_is_0 =3D true,
-> +       .formats =3D mt8173_formats,
-> +       .num_formats =3D ARRAY_SIZE(mt8173_formats),
->  };
->
->  static const struct mtk_disp_ovl_data mt8192_ovl_driver_data =3D {
-> @@ -524,6 +562,8 @@ static const struct mtk_disp_ovl_data mt8192_ovl_driv=
-er_data =3D {
->         .layer_nr =3D 4,
->         .fmt_rgb565_is_0 =3D true,
->         .smi_id_en =3D true,
-> +       .formats =3D mt8173_formats,
-> +       .num_formats =3D ARRAY_SIZE(mt8173_formats),
->  };
->
->  static const struct mtk_disp_ovl_data mt8192_ovl_2l_driver_data =3D {
-> @@ -532,6 +572,8 @@ static const struct mtk_disp_ovl_data mt8192_ovl_2l_d=
-river_data =3D {
->         .layer_nr =3D 2,
->         .fmt_rgb565_is_0 =3D true,
->         .smi_id_en =3D true,
-> +       .formats =3D mt8173_formats,
-> +       .num_formats =3D ARRAY_SIZE(mt8173_formats),
->  };
->
->  static const struct mtk_disp_ovl_data mt8195_ovl_driver_data =3D {
-> @@ -541,6 +583,8 @@ static const struct mtk_disp_ovl_data mt8195_ovl_driv=
-er_data =3D {
->         .fmt_rgb565_is_0 =3D true,
->         .smi_id_en =3D true,
->         .supports_afbc =3D true,
-> +       .formats =3D mt8173_formats,
-> +       .num_formats =3D ARRAY_SIZE(mt8173_formats),
->  };
->
->  static const struct of_device_id mtk_disp_ovl_driver_dt_match[] =3D {
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/m=
-ediatek/mtk_disp_rdma.c
-> index 0ec2e4049e07..cf92df845160 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> @@ -54,8 +54,24 @@
->
->  #define RDMA_MEM_GMC                           0x40402020
->
-> +static const u32 mt8173_formats[] =3D {
-> +       DRM_FORMAT_XRGB8888,
-> +       DRM_FORMAT_ARGB8888,
-> +       DRM_FORMAT_BGRX8888,
-> +       DRM_FORMAT_BGRA8888,
-> +       DRM_FORMAT_ABGR8888,
-> +       DRM_FORMAT_XBGR8888,
-> +       DRM_FORMAT_RGB888,
-> +       DRM_FORMAT_BGR888,
-> +       DRM_FORMAT_RGB565,
-> +       DRM_FORMAT_UYVY,
-> +       DRM_FORMAT_YUYV,
-> +};
-> +
->  struct mtk_disp_rdma_data {
->         unsigned int fifo_size;
-> +       const u32 *formats;
-> +       size_t num_formats;
->  };
->
->  /*
-> @@ -126,6 +142,20 @@ void mtk_rdma_disable_vblank(struct device *dev)
->         rdma_update_bits(dev, DISP_REG_RDMA_INT_ENABLE, RDMA_FRAME_END_IN=
-T, 0);
+> +       mtk_ovl_set_bit_depth(dev, idx, fmt, cmdq_pkt);
+>         mtk_ovl_layer_on(dev, idx, cmdq_pkt);
 >  }
 >
-> +const u32 *mtk_rdma_get_formats(struct device *dev)
-> +{
-> +       struct mtk_disp_rdma *rdma =3D dev_get_drvdata(dev);
-> +
-> +       return rdma->data->formats;
-> +}
-> +
-> +size_t mtk_rdma_get_num_formats(struct device *dev)
-> +{
-> +       struct mtk_disp_rdma *rdma =3D dev_get_drvdata(dev);
-> +
-> +       return rdma->data->num_formats;
-> +}
-> +
->  int mtk_rdma_clk_enable(struct device *dev)
->  {
->         struct mtk_disp_rdma *rdma =3D dev_get_drvdata(dev);
-> @@ -360,18 +390,26 @@ static int mtk_disp_rdma_remove(struct platform_dev=
-ice *pdev)
->
->  static const struct mtk_disp_rdma_data mt2701_rdma_driver_data =3D {
->         .fifo_size =3D SZ_4K,
-> +       .formats =3D mt8173_formats,
-> +       .num_formats =3D ARRAY_SIZE(mt8173_formats),
->  };
->
->  static const struct mtk_disp_rdma_data mt8173_rdma_driver_data =3D {
->         .fifo_size =3D SZ_8K,
-> +       .formats =3D mt8173_formats,
-> +       .num_formats =3D ARRAY_SIZE(mt8173_formats),
->  };
->
->  static const struct mtk_disp_rdma_data mt8183_rdma_driver_data =3D {
->         .fifo_size =3D 5 * SZ_1K,
-> +       .formats =3D mt8173_formats,
-> +       .num_formats =3D ARRAY_SIZE(mt8173_formats),
->  };
->
->  static const struct mtk_disp_rdma_data mt8195_rdma_driver_data =3D {
->         .fifo_size =3D 1920,
-> +       .formats =3D mt8173_formats,
-> +       .num_formats =3D ARRAY_SIZE(mt8173_formats),
->  };
->
->  static const struct of_device_id mtk_disp_rdma_driver_dt_match[] =3D {
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/me=
-diatek/mtk_drm_crtc.c
-> index 112615817dcb..2ba01c484228 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -856,7 +856,9 @@ static int mtk_drm_crtc_init_comp_planes(struct drm_d=
-evice *drm_dev,
->                                 BIT(pipe),
->                                 mtk_drm_crtc_plane_type(mtk_crtc->layer_n=
-r,
->                                                         num_planes),
-> -                               mtk_ddp_comp_supported_rotations(comp));
-> +                               mtk_ddp_comp_supported_rotations(comp),
-> +                               mtk_ddp_comp_get_formats(comp),
-> +                               mtk_ddp_comp_get_num_formats(comp));
->                 if (ret)
->                         return ret;
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/dr=
-m/mediatek/mtk_drm_ddp_comp.c
-> index 6b6d5335c834..4a4c1928f83d 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> @@ -359,6 +359,8 @@ static const struct mtk_ddp_comp_funcs ddp_ovl =3D {
->         .layer_config =3D mtk_ovl_layer_config,
->         .bgclr_in_on =3D mtk_ovl_bgclr_in_on,
->         .bgclr_in_off =3D mtk_ovl_bgclr_in_off,
-> +       .get_formats =3D mtk_ovl_get_formats,
-> +       .get_num_formats =3D mtk_ovl_get_num_formats,
->  };
->
->  static const struct mtk_ddp_comp_funcs ddp_postmask =3D {
-> @@ -381,6 +383,8 @@ static const struct mtk_ddp_comp_funcs ddp_rdma =3D {
->         .disable_vblank =3D mtk_rdma_disable_vblank,
->         .layer_nr =3D mtk_rdma_layer_nr,
->         .layer_config =3D mtk_rdma_layer_config,
-> +       .get_formats =3D mtk_rdma_get_formats,
-> +       .get_num_formats =3D mtk_rdma_get_num_formats,
->  };
->
->  static const struct mtk_ddp_comp_funcs ddp_ufoe =3D {
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/dr=
-m/mediatek/mtk_drm_ddp_comp.h
-> index 2d0052c23dcb..7f2e638cfdc2 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> @@ -71,6 +71,8 @@ struct mtk_ddp_comp_funcs {
->         void (*bgclr_in_off)(struct device *dev);
->         void (*ctm_set)(struct device *dev,
->                         struct drm_crtc_state *state);
-> +       const u32 *(*get_formats)(struct device *dev);
-> +       size_t (*get_num_formats)(struct device *dev);
->  };
->
->  struct mtk_ddp_comp {
-> @@ -203,6 +205,24 @@ static inline void mtk_ddp_ctm_set(struct mtk_ddp_co=
-mp *comp,
->                 comp->funcs->ctm_set(comp->dev, state);
->  }
->
-> +static inline
-> +const u32 *mtk_ddp_comp_get_formats(struct mtk_ddp_comp *comp)
-> +{
-> +       if (comp->funcs && comp->funcs->get_formats)
-> +               return comp->funcs->get_formats(comp->dev);
-> +
-> +       return NULL;
-> +}
-> +
-> +static inline
-> +size_t mtk_ddp_comp_get_num_formats(struct mtk_ddp_comp *comp)
-> +{
-> +       if (comp->funcs && comp->funcs->get_num_formats)
-> +               return comp->funcs->get_num_formats(comp->dev);
-> +
-> +       return 0;
-> +}
-> +
->  int mtk_ddp_comp_get_id(struct device_node *node,
->                         enum mtk_ddp_comp_type comp_type);
->  unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/m=
-ediatek/mtk_drm_plane.c
-> index d54fbf34b000..31f9420aff6f 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> @@ -19,20 +19,6 @@
->  #include "mtk_drm_gem.h"
->  #include "mtk_drm_plane.h"
->
-> -static const u32 formats[] =3D {
-> -       DRM_FORMAT_XRGB8888,
-> -       DRM_FORMAT_ARGB8888,
-> -       DRM_FORMAT_BGRX8888,
-> -       DRM_FORMAT_BGRA8888,
-> -       DRM_FORMAT_ABGR8888,
-> -       DRM_FORMAT_XBGR8888,
-> -       DRM_FORMAT_RGB888,
-> -       DRM_FORMAT_BGR888,
-> -       DRM_FORMAT_RGB565,
-> -       DRM_FORMAT_UYVY,
-> -       DRM_FORMAT_YUYV,
-> -};
-> -
->  static const u64 modifiers[] =3D {
->         DRM_FORMAT_MOD_LINEAR,
->         DRM_FORMAT_MOD_ARM_AFBC(AFBC_FORMAT_MOD_BLOCK_SIZE_32x8 |
-> @@ -315,13 +301,19 @@ static const struct drm_plane_helper_funcs mtk_plan=
-e_helper_funcs =3D {
->
->  int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
->                    unsigned long possible_crtcs, enum drm_plane_type type=
-,
-> -                  unsigned int supported_rotations)
-> +                  unsigned int supported_rotations, const u32 *formats,
-> +                  size_t num_formats)
->  {
->         int err;
->
-> +       if (!formats || !num_formats) {
-> +               DRM_ERROR("no formats for plane\n");
-> +               return -EINVAL;
-> +       }
-> +
->         err =3D drm_universal_plane_init(dev, plane, possible_crtcs,
->                                        &mtk_plane_funcs, formats,
-> -                                      ARRAY_SIZE(formats), modifiers, ty=
-pe, NULL);
-> +                                      num_formats, modifiers, type, NULL=
-);
->         if (err) {
->                 DRM_ERROR("failed to initialize plane\n");
->                 return err;
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.h b/drivers/gpu/drm/m=
-ediatek/mtk_drm_plane.h
-> index 8f39011cdbfc..99aff7da0831 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-> @@ -48,6 +48,7 @@ to_mtk_plane_state(struct drm_plane_state *state)
->
->  int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
->                    unsigned long possible_crtcs, enum drm_plane_type type=
-,
-> -                  unsigned int supported_rotations);
-> +                  unsigned int supported_rotations, const u32 *formats,
-> +                  size_t num_formats);
->
->  #endif
 > --
 > 2.39.1.456.gfc5497dd1b-goog
 >
