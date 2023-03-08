@@ -4,52 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D854C6FD20
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 14:12:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C44DDC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 14:33:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tRpfWAyAr9NJ0cUH+oJUvt5Zq2cO3qLqUNmAFfG9Mp4=; b=bt6wKdl7notSAMVmW30fk6JuS1
-	LbdPJfC4GMq0U6KxRznblRImlZLp5AAltNglvaAIXDAHAH2S+rqY0j3JQayse/w6skBZOVzW39WIc
-	II0lTDQMSC9P0/j9TWp1BHtIhEAzaTOJOAgOhtp9xfhGVE1s5wss5pI3gxxkL+WfnkFyYtfP9dLmC
-	IBpc/8D0eH7gexJ5mBPFPJADDwU9Z0vn1q1irzmu2G9j1WjFHtwyDxL3Ostg2FbblXeeT6NSQs9A5
-	L2bXsjqlh8Lptd/QZ7baox4CGs38VJO177rzzctCWyVXFdIL5B4njL6mb5brsL4Ds0+j1yL98Km1r
-	kgWRgn4Q==;
+	bh=zQH1VakMNzRAzYPkjLfRs3MDre+zMdwcgjvCwGvAq3Y=; b=lBfARET4XD7LnGcn/3lydVuj6Q
+	KzqukXyrcb1ZMx/1I+SlmYdOsbf77BdMUxTpqMxWPcz03E7aYOC1J+dDeeNUSyk4yIl0ABlG5MosS
+	gJZt8SoQ2yQ6iL/GlnnMQiZwWt5vmnMcXyo47QrqSNb3oxET4iQzkyVTVXMSBKjON38MISGoqFaGO
+	IpLhs7t2ql0pARp06EojmGpISEsVx/66xewfUcVfcZeFGpNAW2w9aEug+HoJmoSsR5VpwNrkhgXO8
+	q+sjPPNapnkeG4HRh0rZohKXgNYT750ie3NSIsWFR9qLEo6XUUjRImxFLmyyA7FdMcZneDlbeo6uN
+	hao9kf5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZuWw-005OXh-QZ; Wed, 08 Mar 2023 14:12:34 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1pZur3-005Tpm-6Z; Wed, 08 Mar 2023 14:33:21 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZuWt-005OVc-1e; Wed, 08 Mar 2023 14:12:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=tRpfWAyAr9NJ0cUH+oJUvt5Zq2cO3qLqUNmAFfG9Mp4=; b=RJ47iD6rJBGBLbFJHKdbU2G1AQ
-	rI2unKHGX2cX9JmMhhybBVN7yYSp3+bVvPmrVHddReFLFP2657dahor6uGkgwCM98/ATjbO0XWWji
-	rbbfqHv3f0YlF11z7W0oD9sl/MzvnRJlEfBGq90/eEddeZAnaJma2Vzb5KT71sRzPFqoR0BAw5pL0
-	3Im1UvMxsEYD8mbcGN4E3I1T99gmyzwxzlkVIDJ1vbW28mwnw4MPPZQIGAwvySCWcrQB2tBkKf7NQ
-	t65/rKf+1j90ZC8slM7DRA3MzTSToOyEVqtY8ALLSCz4I0nZG8kXzzxCe23sE7/ISiWglEWbE13yS
-	J1K9XwZQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:57160)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1pZuWj-0002iT-7X; Wed, 08 Mar 2023 14:12:21 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1pZuWb-0002eN-0y; Wed, 08 Mar 2023 14:12:13 +0000
-Date: Wed, 8 Mar 2023 14:12:12 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
+	id 1pZuqy-005TkY-3v; Wed, 08 Mar 2023 14:33:19 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pZuqX-0003Nq-2f;
+	Wed, 08 Mar 2023 15:32:50 +0100
+Date: Wed, 8 Mar 2023 14:32:40 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
 Subject: Re: [PATCH net-next v12 08/18] net: ethernet: mtk_eth_soc: fix
  1000Base-X and 2500Base-X modes
-Message-ID: <ZAiXvNT8EzHTmFPh@shell.armlinux.org.uk>
+Message-ID: <ZAiciK5fElvLXYQ9@makrotopia.org>
 References: <cover.1678201958.git.daniel@makrotopia.org>
  <fd5c7ea79a7f84caac7d0b64b39fe5c4043edfa8.1678201958.git.daniel@makrotopia.org>
  <ZAhzDDjZ8+gxyo3V@shell.armlinux.org.uk>
@@ -58,13 +44,14 @@ References: <cover.1678201958.git.daniel@makrotopia.org>
  <ZAiFOTRQI36nGo+w@makrotopia.org>
  <ZAiJqvzcUob2Aafq@shell.armlinux.org.uk>
  <20230308134642.cdxqw4lxtlgfsl4g@skbuf>
+ <ZAiXvNT8EzHTmFPh@shell.armlinux.org.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230308134642.cdxqw4lxtlgfsl4g@skbuf>
+In-Reply-To: <ZAiXvNT8EzHTmFPh@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_061231_107357_32B80CDD 
-X-CRM114-Status: GOOD (  29.17  )
+X-CRM114-CacheID: sfid-20230308_063316_377896_171709FC 
+X-CRM114-Status: GOOD (  59.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,60 +63,176 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Florian Fainelli <f.fainelli@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Alexander Couzens <lynxis@fe80.eu>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Jianhui Zhao <zhaojh329@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, =?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>, Felix Fietkau <nbd@nbd.name>
+Cc: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <vladimir.oltean@nxp.com>, Eric Dumazet <edumazet@google.com>, Florian Fainelli <f.fainelli@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Alexander Couzens <lynxis@fe80.eu>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Jianhui Zhao <zhaojh329@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, =?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 08, 2023 at 03:46:42PM +0200, Vladimir Oltean wrote:
-> On Wed, Mar 08, 2023 at 01:12:10PM +0000, Russell King (Oracle) wrote:
-> > So, what I would want to do is to move the decision about whether
-> > the PCS should enable in-band into the phylink core code instead
-> > of these random decisions being made in each PCS.
+On Wed, Mar 08, 2023 at 01:12:10PM +0000, Russell King (Oracle) wrote:
+> On Wed, Mar 08, 2023 at 12:53:13PM +0000, Daniel Golle wrote:
+> > On Wed, Mar 08, 2023 at 12:41:43PM +0000, Russell King (Oracle) wrote:
+> > > On Wed, Mar 08, 2023 at 12:11:48PM +0000, Daniel Golle wrote:
+> > > > On Wed, Mar 08, 2023 at 11:35:40AM +0000, Russell King (Oracle) wrote:
+> > > > > On Tue, Mar 07, 2023 at 03:53:58PM +0000, Daniel Golle wrote:
+> > > > > > After conversion to phylink_pcs the 1000Base-X and 2500Base-X modes
+> > > > > > would work only after `ethtool -s eth1 autoneg off`.
+> > > > > > As ethtool autoneg and the ETHTOOL_LINK_MODE_Autoneg_BIT is supposed
+> > > > > > to control auto-negotiation on the external interface it doesn't make
+> > > > > > much sense to use it to control on-board SGMII auto-negotiation between
+> > > > > > MAC and PHY.
+> > > > > > Set correct values to really only enable SGMII auto-negotiation when
+> > > > > > actually operating in SGMII mode. For 1000Base-X and 2500Base-X mode,
+> > > > > > enable remote-fault detection only if in-band-status is enabled.
+> > > > > > This fixes using 1000Base-X and 2500Base-X SFPs on the BananaPi R3
+> > > > > > board and also makes it possible to use interface-mode-switching PHYs
+> > > > > > operating in either SGMII mode for 10M/100M/1000M or in 2500Base-X for
+> > > > > > 2500M mode on other boards.
+> > > > > > 
+> > > > > > Fixes: 14a44ab0330d ("net: mtk_eth_soc: partially convert to phylink_pcs")
+> > > > > > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> > > > > 
+> > > > > NAK.
+> > > > > 
+> > > > > There are PHYs out there which operate in SGMII mode but do not
+> > > > > exchange the SGMII 16-bit configuration word. The code implemented
+> > > > > here by me was explicitly to allow such a configuration to work,
+> > > > > which is defined as:
+> > > > > 
+> > > > > 	SGMII *without* mode == inband
+> > > > > 
+> > > > > An example of this is the Broadcom 84881 PHY which can be found on
+> > > > > SFP modules.
+> > > > 
+> > > > I also have multiple such 1000Base-T SFP modules here (finisar, AJYA),
+> > > > and this change doesn't touch the codepaths relevant for those. They
+> > > > are operating in SGMII mode, they have always been working fine.
+> > > > 
+> > > > What I'm trying to fix here is 1000Base-X and 2500Base-X mode which
+> > > > has been broken by introducing ETHTOOL_LINK_MODE_Autoneg_BIT as the
+> > > > deciding factor for in-band AN here.
+> > > 
+> > > ... which is correct.
+> > > 
+> > > > Can you explain why ETHTOOL_LINK_MODE_Autoneg_BIT was used there in
+> > > > first place? Is my understanding of this bit controlling autoneg on the
+> > > > *external* interface rather than on the *system-side* interface wrong?
+> > > 
+> > > Think about what 1000BASE-X is for. It's not really for internal links,
+> > > it's intended by IEEE 802.3 to be the 1G *media* side protocol for
+> > > 1000BASE-SX, 1000BASE-LX, 1000BASE-CX etc links.
+> > > 
+> > > Therefore, when being used in that case, one may wish to disable
+> > > autoneg over the fibre link. Hence, turning off autoneg via ethtool
+> > > *should* turn off autoneg over the fibre link. So, using
+> > > ETHTOOL_LINK_MODE_Autoneg_BIT to gate 802.3z autonegotiation the
+> > > correct thing to do.
+> > > 
+> > > If we have a PHY using 1000BASE-X, then it is at odds with the
+> > > primary purpose of this protocol, especially with it comes to AN.
+> > > This is why phylink used to refuse to accept PHYs when using 802.3z
+> > > mode, but Marek wanted this to work, so relaxed the checks
+> > > preventing such a setup working.
 > > 
-> > At that point, we can then make the decision about whether the
-> > ethtool autoneg bit should affect whether the PCS uses inband
-> > depending on whether the PCS is effectively the media facing
-> > entity, or whether there is a PHY attached - and if there is a PHY
-> > attached, ask the PHY whether it will be using in-band or not.
+> > Sadly 2500Base-X is very commonly used to connect 2500Base-T-capable
+> > PHYs or SFP modules. I also got an ATS branded 1000M/100M/10M copper
+> > SFP module which uses 1000Base-X as system-side interface, independently
+> > of the speed of the link partner on the TP interface.
+> > All of them do not work with inband-AN enabled and a link only comes
+> > up after `ethtool -s eth1 autoneg off` in the current implementation,
+> > while previously they were working just fine.
 > > 
-> > This also would give a way to ensure that all PCS adopt the same
-> > behaviour.
+> > I understand that there isn't really a good solution for 1000Base-X as
+> > thanks to you I now understand that SerDes autoneg just transparently
+> > ends up being autoneg on a fiber link.
 > > 
-> > Does that sound a reasonable approach?
-> > 
-> > Strangely, I already have some patches along those lines in my
-> > net-queue branch. See:
-> > 
-> > net: phylink: add helpers for decoding mode
-> > net: use phylink_mode_*() helpers
-> > net: phylink: split PCS in-band from inband mode
-> > 
-> > It's nowhere near finished though, it was just an idea back in
-> > 2021 when the problem of getting rid of differing PCS behaviours
-> > was on my mind.
+> > 2500Base-X, however, is hardly used for fiber links, but rather mostly
+> > for 2500Base-T PHYs and SFP module as well as xPON SFPs. Maybe we could
+> > at least have in-band AN disabled by default for those to get them
+> > working without requiring the user to carry out ethtool settings?
 > 
-> Having looked at those patches
-> (http://git.armlinux.org.uk/cgit/linux-arm.git/commit/?h=net-queue&id=a632167d226cf95d92cd887b2f1678e1539833b1)
-> and seen the way in which they are incomplete, could you sketch here how
-> do you see an actual pcs_validate() implementation making use of the new
-> "mode" argument?
+> We could _possibly_ make 2500base-X ignore the autoneg bit, but in
+> order to do that I would want to make other changes, because this
+> is getting absolutely stupid to have these decisions being made in
+> each and every PCS - and have each PCS author implementing different
+> decision making in their PCS driver.
 > 
-> I'd expect there to be some logic which changes the "mode", if the PCS
-> validation with the existing one fails... or?
+> The problem that gives is it makes phylink maintenance in hard,
+> because it becomes impossible to predict what the effect of any
+> change is.
+> 
+> It also means that plugging the same SFP module into different
+> hardware will give different results (maybe it works, maybe it
+> doesn't.)
+> 
+> So, what I would want to do is to move the decision about whether
+> the PCS should enable in-band into the phylink core code instead
+> of these random decisions being made in each PCS.
+> 
+> At that point, we can then make the decision about whether the
+> ethtool autoneg bit should affect whether the PCS uses inband
+> depending on whether the PCS is effectively the media facing
+> entity, or whether there is a PHY attached - and if there is a PHY
+> attached, ask the PHY whether it will be using in-band or not.
+> 
+> This also would give a way to ensure that all PCS adopt the same
+> behaviour.
+> 
+> Does that sound a reasonable approach?
 
-You may notice that I explicitly didn't include the patches adding the
-mode argument to the validation path, precisely because that's an
-unanswered question.
+In general it sound reasonable. We may need more SFP qurik bits to
+indicate presence of a PHY on SFP modules which do not expose that
+PHY via i2c-mdio or otherwise let the host know about it's presence.
+For my TP-LINK TL-SM410U 2500Base-T SFP this unfortunately seems to
+be the case, and I assume it's actually like that for most
+2500Base-T as well as xPON SFPs... (xPON SFPs are usually managed
+via high-level protocols, even Web-UI is common there. They don't
+tell you much about them via I2C, I suppose to get them to work in
+as many SFP host devices as possible without any software changes).
 
-I haven't done much work in this area because I gave up with trying to
-convert mv88e6xxx to phylink_pcs because it just became impossible
-due to the history of the driver - and that destroyed my motivation
-for further work, because that would mean I'd just accumulate more
-and more patches. You may have noticed that I'm hardly doing any
-development work on phylink over the last few months, instead
-concentrating on problem non-DSA network drivers.
+FYI:
+TP-LINK TL-SM410U 2500Base-T module:
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+sfp EE: 00000000: 03 04 07 00 00 00 00 00 00 40 00 01 1f 00 00 00  .........@......
+sfp EE: 00000010: 00 00 00 00 54 50 2d 4c 49 4e 4b 20 20 20 20 20  ....TP-LINK     
+sfp EE: 00000020: 20 20 20 20 00 30 b5 c2 54 4c 2d 53 4d 34 31 30      .0..TL-SM410
+sfp EE: 00000030: 55 20 20 20 20 20 20 20 32 2e 30 20 00 00 00 1b  U       2.0 ....
+sfp EE: 00000040: 00 08 01 00 80 ff ff ff 40 3d f0 0d c0 ff ff ff  ........@=......
+sfp EE: 00000050: c8 39 7a 08 c0 ff ff ff 50 3d f0 0d c0 ff ff ff  .9z.....P=......
+sfp sfp2: module TP-LINK          TL-SM410U        rev 2.0  sn 12260M4001782    dc 220622  
+
+
+And this is the ATS SFP-GE-T 10/100/1000M copper module doing
+rate-adaptation to 1000Base-X:
+
+sfp sfp1: EEPROM extended structure checksum failure: 0xb0 != 0xaf
+sfp EE: 00000000: 03 04 07 00 00 00 02 12 00 01 01 01 0c 00 03 00  ................
+sfp EE: 00000010: 00 00 00 00 4f 45 4d 20 20 20 20 20 20 20 20 20  ....OEM         
+sfp EE: 00000020: 20 20 20 20 00 00 90 65 53 46 50 2d 47 45 2d 54      ...eSFP-GE-T
+sfp EE: 00000030: 20 20 20 20 00 00 00 00 43 20 20 20 00 00 00 f0      ....C   ....
+sfp EE: 00000040: 00 12 00 00 32 31 30 37 31 30 41 30 30 31 32 37  ....210710A00127
+sfp EE: 00000050: 33 39 00 00 32 31 30 37 31 30 20 20 60 00 01 af  39..210710  `...
+sfp sfp1: module OEM              SFP-GE-T     rev C    sn  dc 
+
+That one already needs quirks to even work at all as TX-FAULT is not
+reported properly by the module, see
+
+https://github.com/dangowrt/linux/commit/2c694bd494583f08858fabca97cfdc79de8ba089
+
+> 
+> Strangely, I already have some patches along those lines in my
+> net-queue branch. See:
+> 
+> net: phylink: add helpers for decoding mode
+> net: use phylink_mode_*() helpers
+> net: phylink: split PCS in-band from inband mode
+> 
+> It's nowhere near finished though, it was just an idea back in
+> 2021 when the problem of getting rid of differing PCS behaviours
+> was on my mind.
+
+I'll take a look and let you know.
+
+For this series, I will post v13 without the two patches fixing
+????Base-X modes tomorrow, waiting for other comments on the current
+post of the series up to then.
+
 
