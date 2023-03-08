@@ -4,69 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64DF0C678D5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 15:24:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7035CC678D5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 15:34:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CQH39Di29dr/Gqo5tr4azRM7bV/jn6BroV0Z6GxcVTQ=; b=IcEhkWe0ai3n8VWw5JXGxf7sER
-	kzQCxYHuYP2w/Nj5WND9vSicZPPx7ExlMm8GOcPTa8b62tIt4sCkVpiBxFY+k+iRHeJ7i9i1pbF6H
-	NR7fD+Qa1w2pvJMXsKemBsttcpaF8wSYk22pcOGrHNrl0SMQZhf66Iulf7lSwtPSFN5S+jW60Rd5+
-	GvSMx8sJN4N432BusEbxDXb2zAwLuDD9zyzvXj+p/3PoWenUXZ4fX8UiBhSRY/jMIIWyH8BpZI9CQ
-	lSWRLMUEj+hWktR7Tx2zkmow1iNsbkgllblRxU/OV410vdt00rRwvjnlsNAmqDW/oL0E9qghUW9Op
-	oQy4ijlQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/cc1vOdWtwzxjB8Itoebo3PGpOUY7+SB1sP8jgG5BLo=; b=trOyIqeAC6euyd92fhFQjGBQ4b
+	3w1lz255FN8kAM3Ql3nZ3olfutMqlnkJ1EzgmeemxVoubHDVe6LxUX+xpdlAh23wHsx0mnS/oGMgw
+	OZB0qKskta2Mxx0UkLVQsc3R2TUyfjk527gRyer7ZNO6gM2Yb1T0tTg6XGcL6tUt8oesbq6DNFDAm
+	TmO/N29omyW9V6IdBlRFnFY75e+H4Q3wKNjcpNof2U3MqwIpSdODKtSsH3mDXCqs+B43dgUCzUMMw
+	ChdYWthwUDpCbDf2JCaTDq/A3yJcm93TvwvIOoLHk+QGQ7vzIisEz19KTF+2FFo2zVdCpJGz0zLSQ
+	BC5punDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZveq-005h0J-Eu; Wed, 08 Mar 2023 15:24:48 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1pZvo8-005j5g-WB; Wed, 08 Mar 2023 15:34:25 +0000
+Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZven-005gzJ-Jg; Wed, 08 Mar 2023 15:24:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=CQH39Di29dr/Gqo5tr4azRM7bV/jn6BroV0Z6GxcVTQ=; b=nt4eGNU1vpmMG5CMd/ToMMa/GR
-	RqB54MsLk8c/5naFCaUuHwjQcuBI4PoZTksLoj+MlH9AnAbRCEUKeHR3BXKX3/3Eask+mj+NOjsk0
-	CDoaxiCdDHUJuJfQ0NEBnoSn9Gu19Do+TVwWbO/1nBaLD1e10I0YPIRL4oYkgBT9t8GZ8p4S3E1Op
-	jU8I3YBVKWCyQ4e5To2juv1IZ46o+rKOnRyzu7rgawD0YHypPS8u/3/GDWPfwfdlpWECVJkLRrHFT
-	eMK4SHu66d2q2ehrEqAS4j/AoNSzRv5GLIVjC9zscqbBubbsHZmDKEGVLHCcGZ3nNgt4lLGnK3Bgy
-	Pxgvt0SQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:41704)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1pZved-0002qq-BO; Wed, 08 Mar 2023 15:24:35 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1pZveU-0002h7-N4; Wed, 08 Mar 2023 15:24:26 +0000
-Date: Wed, 8 Mar 2023 15:24:26 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Daniel Golle <daniel@makrotopia.org>
-Subject: Re: [PATCH net-next v12 08/18] net: ethernet: mtk_eth_soc: fix
- 1000Base-X and 2500Base-X modes
-Message-ID: <ZAioqp21521NsttV@shell.armlinux.org.uk>
-References: <ZAhzDDjZ8+gxyo3V@shell.armlinux.org.uk>
- <ZAh7hA4JuJm1b2M6@makrotopia.org>
- <ZAiCh8wkdTBT+6Id@shell.armlinux.org.uk>
- <ZAiFOTRQI36nGo+w@makrotopia.org>
- <ZAiJqvzcUob2Aafq@shell.armlinux.org.uk>
- <20230308134642.cdxqw4lxtlgfsl4g@skbuf>
- <ZAiXvNT8EzHTmFPh@shell.armlinux.org.uk>
- <ZAiciK5fElvLXYQ9@makrotopia.org>
- <ZAijM91F18lWC80+@shell.armlinux.org.uk>
- <ZAik+I1Ei+grJdUQ@makrotopia.org>
+	id 1pZvo6-005j3e-AS
+	for linux-mediatek@lists.infradead.org; Wed, 08 Mar 2023 15:34:23 +0000
+Received: by mail-qv1-xf2c.google.com with SMTP id g9so9611726qvt.8
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Mar 2023 07:34:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1678289658;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/cc1vOdWtwzxjB8Itoebo3PGpOUY7+SB1sP8jgG5BLo=;
+        b=YoD4ttwbs43VKxfqZVBA8RXsYlw5CZm74f+e5Lh/kCbYdkWfNFqSGYc08xOUDBYk9P
+         lZnvrLEzsfrbvfUiEhnaXnwkYHfR+CsmLGUeokIRahw+9k+tmcJ5xb3TyChoPVDo9/P1
+         l1VDO62R0d+LwA7NDoCm69wOXebeShbps3Yxk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678289658;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=/cc1vOdWtwzxjB8Itoebo3PGpOUY7+SB1sP8jgG5BLo=;
+        b=f4x85N3z1mxb1iDC1ws1fzqlSlZaxRx+L/Z1i58v0vmy3c2JztfU2U/ndmZD8uF2jl
+         mIb9a5KV5lrX0Lj9NWD/4lmDa77fuSXZ2tsXCdDj2DBRZnrLj7NIo083PVPEkE46jjJd
+         VaLY1iPsjxuYvryuL/g0cQFP12NjCmIM6ahjaY8Ykrd7NTzSCvh3IehCalmrmE9MUuim
+         pI2jRs7iuJySqUSqCPnxu9v0Uh5WKagZtJvWBZpYZsVP/s+vmnKuyOWsATxRG/1NfJ83
+         TLrCRHdgYPOt34gGxW0l5f3tOsYJv/QezSgcaRAlF3YPtvBrSmh/PczXeQ8zoyJpZ55L
+         grjw==
+X-Gm-Message-State: AO0yUKUMBstS0GVX21IVesxCADXWyH+GwgxOGPO4XKRLdwDAzi2QX+Xq
+	vU+Rs9PMXWE542MgVKs/2KsJiqsVgPJ1eBAsnUvq8w==
+X-Google-Smtp-Source: AK7set98642jUMtdHeymZDEKFYq0KpYGGdPN1pcP5RvZyBL1nfu9bZZzmMjm71u4d8JnE0Kaca57mg==
+X-Received: by 2002:ad4:5f4f:0:b0:56e:b59d:2ee7 with SMTP id p15-20020ad45f4f000000b0056eb59d2ee7mr35502459qvg.47.1678289658613;
+        Wed, 08 Mar 2023 07:34:18 -0800 (PST)
+Received: from greenjustin3.nyc.corp.google.com ([2620:0:1003:314:8752:d0ab:8bcc:f9a8])
+        by smtp.gmail.com with ESMTPSA id c134-20020ae9ed8c000000b0073d873df3fesm10506884qkg.30.2023.03.08.07.34.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Mar 2023 07:34:18 -0800 (PST)
+From: Justin Green <greenjustin@chromium.org>
+To: linux-mediatek@lists.infradead.org,
+	dri-devel@lists.freedesktop.org
+Cc: angelogioacchino.delregno@collabora.com,
+	jason-jh.lin@mediatek.com,
+	justin.yeh@mediatek.com,
+	wenst@chromium.org,
+	chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de,
+	matthias.bgg@gmail.com,
+	daniel@ffwll.ch,
+	daniel@fooishbar.org,
+	greenjustin@chromium.org
+Subject: [PATCH v7 RESEND 2/3] drm/mediatek: Add support for AR30 and BA30 overlays
+Date: Wed,  8 Mar 2023 10:33:57 -0500
+Message-Id: <20230308153358.333297-3-greenjustin@chromium.org>
+X-Mailer: git-send-email 2.40.0.rc0.216.gc4246ad0f0-goog
+In-Reply-To: <20230308153358.333297-1-greenjustin@chromium.org>
+References: <20230308153358.333297-1-greenjustin@chromium.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZAik+I1Ei+grJdUQ@makrotopia.org>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_072445_663830_887C075A 
-X-CRM114-Status: GOOD (  17.39  )
+X-CRM114-CacheID: sfid-20230308_073422_396483_DAB85FD2 
+X-CRM114-Status: GOOD (  12.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,40 +92,99 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <vladimir.oltean@nxp.com>, Eric Dumazet <edumazet@google.com>, Florian Fainelli <f.fainelli@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Alexander Couzens <lynxis@fe80.eu>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Jianhui Zhao <zhaojh329@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, =?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 08, 2023 at 03:08:55PM +0000, Daniel Golle wrote:
-> On Wed, Mar 08, 2023 at 03:01:07PM +0000, Russell King (Oracle) wrote:
-> > > FYI:
-> > > TP-LINK TL-SM410U 2500Base-T module:
-> > > 
-> > > sfp EE: 00000000: 03 04 07 00 00 00 00 00 00 40 00 01 1f 00 00 00  .........@......
-> > > sfp EE: 00000010: 00 00 00 00 54 50 2d 4c 49 4e 4b 20 20 20 20 20  ....TP-LINK     
-> > > sfp EE: 00000020: 20 20 20 20 00 30 b5 c2 54 4c 2d 53 4d 34 31 30      .0..TL-SM410
-> > > sfp EE: 00000030: 55 20 20 20 20 20 20 20 32 2e 30 20 00 00 00 1b  U       2.0 ....
-> > > sfp EE: 00000040: 00 08 01 00 80 ff ff ff 40 3d f0 0d c0 ff ff ff  ........@=......
-> > > sfp EE: 00000050: c8 39 7a 08 c0 ff ff ff 50 3d f0 0d c0 ff ff ff  .9z.....P=......
-> > > sfp sfp2: module TP-LINK          TL-SM410U        rev 2.0  sn 12260M4001782    dc 220622  
-> > 
-> > I'm guessing this is a module with a checksum problem...
-> 
-> No, the checksum of the TL-SM410U is correct. I have patched the kernel
-> to always dump the EEPROM, so I can share it with you.
+Tested using "modetest -P" on an MT8195 device.
 
-Bear in mind that I haven't spent time with the spec to manually decode
-the above, when I have tools to do that for me when given the EEPROM in
-the correct form, which is:
+Signed-off-by: Justin Green <greenjustin@chromium.org>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 33 +++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
 
-> > It would be nice to add these to my database - please send me the
-> > output of ethtool -m $iface raw on > foo.bin for each module.
-
-so if you can do that for me, then I can see whether it's likely that
-the patches that are already in mainline will do anything to solve
-the workaround you've had to add for the hw signals.
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index 8743c8047dc9..a6255e847104 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -41,6 +41,7 @@
+ #define DISP_REG_OVL_RDMA_CTRL(n)		(0x00c0 + 0x20 * (n))
+ #define DISP_REG_OVL_RDMA_GMC(n)		(0x00c8 + 0x20 * (n))
+ #define DISP_REG_OVL_ADDR_MT2701		0x0040
++#define DISP_REG_OVL_CLRFMT_EXT			0x02D0
+ #define DISP_REG_OVL_ADDR_MT8173		0x0f40
+ #define DISP_REG_OVL_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n))
+ #define DISP_REG_OVL_HDR_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n) + 0x04)
+@@ -61,6 +62,10 @@
+ 					0 : OVL_CON_CLRFMT_RGB)
+ #define OVL_CON_CLRFMT_RGB888(ovl)	((ovl)->data->fmt_rgb565_is_0 ? \
+ 					OVL_CON_CLRFMT_RGB : 0)
++#define OVL_CON_CLRFMT_BIT_DEPTH_MASK(ovl)	(0xFF << 4 * (ovl))
++#define OVL_CON_CLRFMT_BIT_DEPTH(depth, ovl)	(depth << 4 * (ovl))
++#define OVL_CON_CLRFMT_8_BIT			0x00
++#define OVL_CON_CLRFMT_10_BIT			0x01
+ #define	OVL_CON_AEN		BIT(8)
+ #define	OVL_CON_ALPHA		0xff
+ #define	OVL_CON_VIRT_FLIP	BIT(9)
+@@ -89,6 +94,7 @@ struct mtk_disp_ovl_data {
+ 	bool supports_afbc;
+ 	const u32 *formats;
+ 	size_t num_formats;
++	bool supports_clrfmt_ext;
+ };
+ 
+ /*
+@@ -218,6 +224,30 @@ static void mtk_ovl_set_afbc(struct mtk_disp_ovl *ovl, struct cmdq_pkt *cmdq_pkt
+ 			   DISP_REG_OVL_DATAPATH_CON, OVL_LAYER_AFBC_EN(idx));
+ }
+ 
++static void mtk_ovl_set_bit_depth(struct device *dev, int idx, u32 format,
++				  struct cmdq_pkt *cmdq_pkt)
++{
++	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
++	unsigned int reg;
++	unsigned int bit_depth = OVL_CON_CLRFMT_8_BIT;
++
++	if (!ovl->data->supports_clrfmt_ext)
++		return;
++
++	reg = readl(ovl->regs + DISP_REG_OVL_CLRFMT_EXT);
++	reg &= ~OVL_CON_CLRFMT_BIT_DEPTH_MASK(idx);
++
++	if (format == DRM_FORMAT_RGBA1010102 ||
++	    format == DRM_FORMAT_BGRA1010102 ||
++	    format == DRM_FORMAT_ARGB2101010)
++		bit_depth = OVL_CON_CLRFMT_10_BIT;
++
++	reg |= OVL_CON_CLRFMT_BIT_DEPTH(bit_depth, idx);
++
++	mtk_ddp_write(cmdq_pkt, reg, &ovl->cmdq_reg,
++		      ovl->regs, DISP_REG_OVL_CLRFMT_EXT);
++}
++
+ void mtk_ovl_config(struct device *dev, unsigned int w,
+ 		    unsigned int h, unsigned int vrefresh,
+ 		    unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+@@ -332,9 +362,11 @@ static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt)
+ 		return OVL_CON_CLRFMT_ARGB8888;
+ 	case DRM_FORMAT_BGRX8888:
+ 	case DRM_FORMAT_BGRA8888:
++	case DRM_FORMAT_BGRA1010102:
+ 		return OVL_CON_CLRFMT_ARGB8888 | OVL_CON_BYTE_SWAP;
+ 	case DRM_FORMAT_XRGB8888:
+ 	case DRM_FORMAT_ARGB8888:
++	case DRM_FORMAT_ARGB2101010:
+ 		return OVL_CON_CLRFMT_RGBA8888;
+ 	case DRM_FORMAT_XBGR8888:
+ 	case DRM_FORMAT_ABGR8888:
+@@ -418,6 +450,7 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+ 				      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_PITCH_MSB(idx));
+ 	}
+ 
++	mtk_ovl_set_bit_depth(dev, idx, fmt, cmdq_pkt);
+ 	mtk_ovl_layer_on(dev, idx, cmdq_pkt);
+ }
+ 
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+2.39.1.456.gfc5497dd1b-goog
+
 
