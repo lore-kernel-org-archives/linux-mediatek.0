@@ -4,69 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CC77C678D5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 09:11:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E5DEC678D5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 09:11:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z1nrGsQlrC7hqRqPSsAK2Ji28nQhrid6Ckt8xhuu298=; b=MHha2pozhVNfMDHR1k2HfQ8TS+
-	nRWiCdGCi9hITqjOSPtfitNf7wkMQIBvcpZYtEzyYTEVuKEFV/wy9k71GezSFDw2IxTVbyHRlqHto
-	EPYPXRkdiiNrJGwpnZpf58l+sqC6KjzbRnWN1IoXBPCTv2z473lXGNwl7dXY7wbYuMbOFGb/vJR1r
-	JtbNu3Ayt9rn8EMkgFh0MLscBlvau3fHnsXbd90UIEyh0oEXIhcgspP0fU3iq8HUHBiE4+UrU6rwL
-	0dtdp2DDDV6OzdFX0jH6qBhaJ5XbHEpP6y3uzxnB1WsKmh/aUIQJLal9jUMyYJWMsv8N97SEqc3s4
-	NXYHutqQ==;
+	bh=RzspcNbxXg2xISUqaM9muYfxMTJ9eCPtBjLXH/6QqYo=; b=v8Qvm+dmCiiJDzMSYoohsYuaFD
+	3BB7z5iSn7jbPjWb7dbbKqzXuEzqNC6z1nTmsqUWfGnLxHFtULaLHS5wE2YewB4tSKgwkIQvxWbyM
+	hOCVHOEUVYRwVm2m+7hrrSur0JKPwm5K6ROA3ihAt1lVQYOXwIS1kaU6RLuTNxyuiZ3v5R9PudMD5
+	x1O1m9zwSy5Na8kFulmzPmK4r4/dAdrmsWQFDaeS8A1Q/riD0FrTT1/+kHAmaCZNxyLLfqE6MOs09
+	V0+52dst9qTJcg+D+Vdpssj8lye+m5wDyepVdjxYvS/bv9MMEd5kNKQupyXyRNkOoJKa61TsHWHZX
+	BXCHTqaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZpp6-0047Yh-12; Wed, 08 Mar 2023 09:11:00 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pZppl-0047lN-3J; Wed, 08 Mar 2023 09:11:41 +0000
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZpot-0047Tu-48; Wed, 08 Mar 2023 09:10:51 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0020A6602F64;
-	Wed,  8 Mar 2023 09:10:37 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678266638;
-	bh=oZpxuChfh/t93Mus5+/9plHeSiSfNTCOmsCVmHDTRow=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ZNstprf46gnbu3obY8tXh1p2qMlk2DtYmHthKlfqRykaK6NM2aUOcP2VznPB3R0qB
-	 IRGUT40uSg9UyFv7Dt++qtcPs3In4Nj6OIZvFcJEWuf3ry2m2OHtFkgMyJUBLQk/T+
-	 DJNuKK+N6lXz6dIdOVFmC461HTj7zTcp6sw5Kab3pdhh01val6h0RXORYTSQcahHXK
-	 i0IyuLp/1DdBTxxYaSCv3wefK73B5zD4dSDdnf1YFm/POgP2JPUk/9GDZKjhwg8uGE
-	 r5npst+gdkx6SpXe/A8qlp4FwwaAHB/fZD+C3TxOGXdiDhPOM8ZqIDhfyhNZMe0VqN
-	 vzqnE/r6E/nng==
-Message-ID: <1af76fd0-ea27-da60-cd22-8a65a8ef369e@collabora.com>
-Date: Wed, 8 Mar 2023 10:10:34 +0100
+	id 1pZppg-0047il-Mi; Wed, 08 Mar 2023 09:11:39 +0000
+Received: by mail-pg1-x52f.google.com with SMTP id q23so9196220pgt.7;
+        Wed, 08 Mar 2023 01:11:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678266693;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=RzspcNbxXg2xISUqaM9muYfxMTJ9eCPtBjLXH/6QqYo=;
+        b=nRXIk/tReDyXv8jEj1EqPHBsWHvqbzbSVsa0aRdnzb6bqzSgzND5peyHpf/RYiFRr1
+         3oUI0pn1dbrrXNbd9Ci39qK1c06qvj5X3lF+Xiq+5Rj7xB1OpImZgTe5HJ3usRMbZg/Y
+         Op9qIJq8JGzdEloFzoBvV6FB4X2xqWfZchctEDau5kK1IY1AM4Eun61T1G/uNsoWLk/e
+         gjezSIweV1QgkMp1Y+k0G7eUdY+xomoeLJNucSHuXsL84J7ZDNyLChDi/QL5vhcMoHMw
+         C/gqbxu/ne1vyEBxH+EZ1hV/gzHpGuVXr2Q+Sdaoith6g/NQkrP8G7ZC9iQ7EnzXxuXi
+         wGgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678266693;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=RzspcNbxXg2xISUqaM9muYfxMTJ9eCPtBjLXH/6QqYo=;
+        b=ZtyImnj4oLKmLcBkI6l9K9ChQJJjT+6vUw8tiA49HxFVrUKnBdbKSH0bVJH3rJKWs4
+         OS9odvOYsTMwaO6hjyIyTliAdFvR0J4ImjlVCNTyyNjJ1/s3ZnODoxuQzJsO4w4UxKHG
+         MVaikZrav4YWABCj40pJxpsPEUUSGGxajn/x1oA/Psy6AehJL3oJZdDzqTv1WZkrjJBD
+         lPFGsGKK3lvgsJITSmzYGohiIjxdDcxqd5mLOLdla5/kpzinwhpJFQVMi3FaitcvYSiD
+         QWbbZBlCSTqwiJTZR09kJQ+N9PeZCex5aJS2umklPqkVITZ+KhUgGnBrXBisDYFjg2oZ
+         5htw==
+X-Gm-Message-State: AO0yUKWL/ZEbe3dsdbTBylBTzPfU3L/rdPbYjoc4pJJn/S1J52YdwI8e
+	0FGZwr6dGTkidfk20m/lZbqFWoo4cqHzBAeOn/Y=
+X-Google-Smtp-Source: AK7set/V47I++hgo+7AtoP0WvUUs/iWNAhsM4dQiF3ABin44orKRCILy1z9bUQljjIbGlTDDL1twS2NMeKbxpPkXiWc=
+X-Received: by 2002:a63:5508:0:b0:502:fd71:d58c with SMTP id
+ j8-20020a635508000000b00502fd71d58cmr6442965pgb.9.1678266693310; Wed, 08 Mar
+ 2023 01:11:33 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH] thermal/drivers/mediatek/lvts_thermal: fix memcpy's
- number of bytes in lvts_calibration_init()
-To: bchihi@baylibre.com, daniel.lezcano@linaro.org, rafael@kernel.org,
- amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- rdunlap@infradead.org, ye.xingchen@zte.com.cn, p.zabel@pengutronix.de
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com,
- rex-bc.chen@mediatek.com
-References: <20230126161048.94089-1-bchihi@baylibre.com>
- <20230307134245.83599-1-bchihi@baylibre.com>
-Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230307134245.83599-1-bchihi@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20230306062633.200427-1-zyytlz.wz@163.com> <CAJedcCzeVwwi9SkkwouFXUAVhF-tKF4dkqsFqVQwszSwY1SJ0A@mail.gmail.com>
+ <57c17bfd-83f3-fcce-0eab-e28469fb0ced@collabora.com> <11c2bce1e5286ad3a9a5be2ee59c2beac168f135.camel@mediatek.com>
+ <CAJedcCx13sz5h=fWvJU38P_1W-zd6yZe=iSMpO28_E_kAqUGDA@mail.gmail.com>
+ <cfa2f64d2d01ffc53a6afdc9a5b867bbcb07b5f6.camel@mediatek.com>
+ <CAJedcCwhk_XuMF8keGZGBTVBZSMuoQeyV_7L1H2VeT2x_vj-ZQ@mail.gmail.com>
+ <86c98d73b0d294e143014ea5e15d0a5d065e1a66.camel@mediatek.com>
+ <CAJedcCyiczZiKm=zQyYwJCszmEHKYX+sVEBx7UC082pS5K5Oww@mail.gmail.com> <0bf5c11128f96d820f8e3ffaf5e9402aa0c0a1a5.camel@mediatek.com>
+In-Reply-To: <0bf5c11128f96d820f8e3ffaf5e9402aa0c0a1a5.camel@mediatek.com>
+From: Zheng Hacker <hackerzheng666@gmail.com>
+Date: Wed, 8 Mar 2023 17:11:21 +0800
+Message-ID: <CAJedcCyVOpNyXsm6NW738tPvGF_nNDh_NCKXqKWgrnhKV5y-2g@mail.gmail.com>
+Subject: Re: [RESEND PATCH] media: mtk-jpeg: Fix use after free bug due to
+ uncanceled work
+To: =?UTF-8?B?S3lyaWUgV3UgKOWQtOaZlyk=?= <Kyrie.Wu@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "mchehab@kernel.org" <mchehab@kernel.org>, 
+	"zyytlz.wz@163.com" <zyytlz.wz@163.com>, =?UTF-8?B?QmluIExpdSAo5YiY5b2sKQ==?= <bin.liu@mediatek.com>, 
+	"alex000young@gmail.com" <alex000young@gmail.com>, =?UTF-8?B?SXJ1aSBXYW5nICjnjovnkZ4p?= <Irui.Wang@mediatek.com>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
+	"1395428693sheep@gmail.com" <1395428693sheep@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_011047_347509_98CF68D2 
-X-CRM114-Status: UNSURE (   6.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230308_011136_790935_AA0A3F50 
+X-CRM114-Status: GOOD (  67.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,16 +99,365 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/03/23 14:42, bchihi@baylibre.com ha scritto:
-> From: Balsam CHIHI <bchihi@baylibre.com>
-> 
-> Replace memcpy 2 bytes by sizeof(int) bytes of LVTS calibration data.
+Dear Kyrie,
 
-sizeof(int) is architecture dependant... please use a fixed size type instead.
+Sorry for my misunderstanding. I've seen the timeout worker is bound
+with mtk_jpegdec_timeout_work rather than mtk_jpeg_job_timeout_work.So
+the competition won't happen.
 
-Also, shouldn't this be u16?!
+Back to the beginning scene, I still don't know if it's a UAF issue or
+not. The normal schedule is very strong to me. If we can call
+mtk_jpeg_remove directly without calling mtk_jpeg_release,
+The UAF is still possible. Otherwis, I think it's safe here.
 
-Regards,
-Angelo
+Best regards,
+Zheng
 
+Kyrie Wu (=E5=90=B4=E6=99=97) <Kyrie.Wu@mediatek.com> =E4=BA=8E2023=E5=B9=
+=B43=E6=9C=888=E6=97=A5=E5=91=A8=E4=B8=89 15:39=E5=86=99=E9=81=93=EF=BC=9A
+>
+> On Wed, 2023-03-08 at 14:10 +0800, Zheng Hacker wrote:
+> > Hi Kyrie,
+> >
+> > After reviewing the code, I found anothe possible code path. As I am
+> > not familiar with the module. It has high possibility it's wrong.
+> > Could please help me check this? Very much appreciated for your
+> > valuable time.
+> >
+> > In summary, mtk_jpegdec_worker was set in mtk_jpeg_open and started
+> > in
+> > mtk_jpeg_multicore_dec_device_run, which made it running on cpu1.
+> > Inside the mtk_jpeg_multicore_dec_device_run, it will call
+> > schedule_delayed_work  to start the timeout_work, which will make it
+> > running on cpu2. Meanwhile, we can call
+> > mtk_jpeg_release to cancel the job. But there might be a race between
+> > mtk_jpegdec_worker and v4l2_m2m_cancel_job. It may call
+> > v4l2_m2m_job_finish too early to wake up the event.
+> > The remove will go on, the other race is as described earlier.
+> >
+> > cpu0                         cpu1                  cpu2
+> > (1)->device_run
+> > mtk_jpeg_multicore
+> > _dec_device_run
+> > queue_work
+> > (jpeg->workqueue,
+> > &ctx->jpeg_work);
+> >                       (2)mtk_jpegdec_worker
+> > (3)mtk_jpeg_release
+> > v4l2_m2m_cancel_job
+> > wait event
+> >
+> >                       schedule_delayed_work
+> >                                             (4)mtk_jpeg_job_timeout_w
+> > ork
+> >                       (5)v4l2_m2m_job_finish
+> >                       wake up
+> > (6)mtk_jpeg_remove
+> > v4l2_m2m_release
+> > kfree(m2m_dev)
+> >                                             (7)v4l2_m2m_get_curr_priv
+> >
+> Dear zheng,
+>
+> The mtk_jpeg_multicore_dec_device_run function is used for multi-hw
+> jpeg decoding. Instead of scheduling mtk_jpeg_job_timeout_work,
+> mtk_jpegdec_worker is scheduled in this function.
+>
+> The mtk_jpeg_dec_device_run function is used for single hw jpeg
+> decoding, which schedules mtk_jpeg_job_timeout_work.
+>
+> A driver is either a single hw driver or a multi-hw driver and cannot
+> represent both at the same time.
+> mtk_jpeg_job_timeout_work and mtk_jpegdec_worker cannot be scheduled at
+> the same time.
+> So mtk_jpeg_job_timeout_work calls v4l2_m2m_job_finish would not cause
+> competition between the mtk_jpegdec_worker and v4l2_m2m_cancel_job.
+>
+> Regards,
+> Kyrie.
+>
+>
+> > Kyrie Wu (=E5=90=B4=E6=99=97) <Kyrie.Wu@mediatek.com> =E4=BA=8E2023=E5=
+=B9=B43=E6=9C=888=E6=97=A5=E5=91=A8=E4=B8=89 11:32=E5=86=99=E9=81=93=EF=BC=
+=9A
+> > >
+> > > On Wed, 2023-03-08 at 10:20 +0800, Zheng Hacker wrote:
+> > > > Hi Kyrie,
+> > > >
+> > > > Thank you for your careful analysis and response. I still have
+> > > > some
+> > > > areas that I don't quite understand and would like to ask for
+> > > > clarification. That is, how do the function pointers for stop
+> > > > streaming, initialized as mtk_jpeg_enc_stop_streaming and
+> > > > mtk_jpeg_dec_stop_streaming, ensure that the worker is canceled?
+> > > > I
+> > > > would greatly appreciate your response.
+> > > >
+> > > > Best regards,
+> > > > Zheng
+> > >
+> > > Dear zheng,
+> > >
+> > > For stop streaming, what I mean is that stoppping jpeg decoding or
+> > > encoding.
+> > > Ok, let me introduce the sw flow of stop streaming:
+> > > Firstly, the app will call v4l2_m2m_ioctl_streamoff, which will
+> > > call
+> > > v4l2_m2m_cancel_job, if it finds a job running(as you note, cpu1 is
+> > > running), it will wait event, the event is wake up by
+> > > v4l2_m2m_job_finish function. And v4l2_m2m_job_finish is called by
+> > > jpeg
+> > > dec/enc irq handler, which means that the waitting would result mtk
+> > > hw
+> > > to finish dec/enc, irq will occur and irq handler would cancel
+> > > timeout
+> > > worker. The follow is shown as blow.
+> > > v4l2_m2m_ioctl_streamoff
+> > >    v4l2_m2m_cancel_job                mtk_jpeg_enc_irq/mtk_jpeg_dec
+> > > _irq
+> > >        wait evnet <------ wake up ------v4l2_m2m_job_finish
+> > >                                         cancel timeout work
+> > >
+> > > As mentioned above, if it is normal stop streaming action, there
+> > > will
+> > > be no happen that the timeout worker does not canceled.
+> > >
+> > > But if mtk_jpeg_remove is called directly without above flow, it
+> > > would
+> > > cause lots of issues.
+> > >
+> > > Regards,
+> > > Kyrie.
+> > > >
+> > > > Kyrie Wu (=E5=90=B4=E6=99=97) <Kyrie.Wu@mediatek.com> =E4=BA=8E2023=
+=E5=B9=B43=E6=9C=888=E6=97=A5=E5=91=A8=E4=B8=89 10:02=E5=86=99=E9=81=93=EF=
+=BC=9A
+> > > > >
+> > > > > On Tue, 2023-03-07 at 23:03 +0800, Zheng Hacker wrote:
+> > > > > > The timer function was set in mtk_jpeg_probe with
+> > > > > > mtk_jpeg_job_timeout_work function.
+> > > > > > And the worker is started in mtk_jpeg_dec_device_run.
+> > > > > > There are two functions (mtk_jpeg_enc_irq and
+> > > > > > mtk_jpeg_dec_irq)
+> > > > > > which
+> > > > > > may cancel the worker.
+> > > > > > They are used as IRQ handler function which is saved as
+> > > > > > function
+> > > > > > pointer in a variable.
+> > > > > > In mtk_jpeg_probe, they are registered by devm_request_irq:
+> > > > > >
+> > > > > > ret =3D devm_request_irq(&pdev->dev,
+> > > > > >                jpeg_irq,
+> > > > > >                jpeg->variant->irq_handler,
+> > > > > >                0,
+> > > > > >                pdev->name, jpeg);
+> > > > > >     if (ret) {
+> > > > > >       dev_err(&pdev->dev, "Failed to request jpeg_irq %d
+> > > > > > (%d)\n",
+> > > > > >         jpeg_irq, ret);
+> > > > > >       return ret;
+> > > > > >     }
+> > > > > >
+> > > > > > However, if we remove the module without triggering the irq,
+> > > > > > the
+> > > > > > worker will never be removed.
+> > > > > >
+> > > > > > As for the schedule, mtk_jpeg_dec_device_run and
+> > > > > > mtk_jpeg_enc_device_run will start the worker.
+> > > > > > The schedule invoking is quite complicated. As far as I know,
+> > > > > > the
+> > > > > > invoking chain is as follows:
+> > > > > >
+> > > > > > v4l2_m2m_init->v4l2_m2m_device_run_work->v4l2_m2m_try_run
+> > > > > >
+> > > > > > the v4l2_m2m_device_run_work function is also a worker which
+> > > > > > is
+> > > > > > set
+> > > > > > in
+> > > > > > v4l2_m2m_init and started in
+> > > > > > v4l2_m2m_schedule_next_job.
+> > > > > >
+> > > > > > Before calling remove function, the  mtk_jpeg_release was
+> > > > > > invoked
+> > > > > > to
+> > > > > > release the related resource.
+> > > > > >
+> > > > > > v4l2_m2m_cancel_job will cancel the job by calling
+> > > > > > m2m_dev->m2m_ops->job_abort(m2m_ctx->priv).
+> > > > > >
+> > > > > > But this will only cancel the current queue by
+> > > > > > list_del(&m2m_dev->curr_ctx->queue);
+> > > > > >
+> > > > > > I think this can not cancel the posted task mentioned before.
+> > > > > > So
+> > > > > > I
+> > > > > > think if mtk_jpeg_job_timeout_work
+> > > > > >
+> > > > > > is working on, and using jpeg->m2m_dev after freeing it in
+> > > > > > mtk_jpeg_remove, it will cause a UAF bug.
+> > > > > >
+> > > > > > static int mtk_jpeg_release(struct file *file)
+> > > > > > {
+> > > > > >   struct mtk_jpeg_dev *jpeg =3D video_drvdata(file);
+> > > > > >   struct mtk_jpeg_ctx *ctx =3D mtk_jpeg_fh_to_ctx(file-
+> > > > > > > private_data);
+> > > > > >
+> > > > > >   mutex_lock(&jpeg->lock);
+> > > > > >   v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
+> > > > > >   [1] v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
+> > > > > >   v4l2_fh_del(&ctx->fh);
+> > > > > >   v4l2_fh_exit(&ctx->fh);
+> > > > > >   kfree(ctx);
+> > > > > >   mutex_unlock(&jpeg->lock);
+> > > > > >   return 0;
+> > > > > > }
+> > > > > >
+> > > > > > void v4l2_m2m_ctx_release(struct v4l2_m2m_ctx *m2m_ctx)
+> > > > > > {
+> > > > > >   /* wait until the current context is dequeued from
+> > > > > > job_queue */
+> > > > > >   [2] v4l2_m2m_cancel_job(m2m_ctx);
+> > > > > >
+> > > > > >   vb2_queue_release(&m2m_ctx->cap_q_ctx.q);
+> > > > > >   vb2_queue_release(&m2m_ctx->out_q_ctx.q);
+> > > > > >
+> > > > > >   kfree(m2m_ctx);
+> > > > > > }
+> > > > > >
+> > > > > > Note that all of this is static analysis, which may be false
+> > > > > > positive.
+> > > > > > Feel free to tell me if there is something I've missed.
+> > > > > >
+> > > > > > Regard,
+> > > > > > Zheng
+> > > > >
+> > > > > Dear Zheng,
+> > > > >
+> > > > > You set up an application scenario:
+> > > > > cpu1 is using the mtk-jpeg driver and timeout work has been
+> > > > > scheduled.
+> > > > > At the same time cpu0 wanted to remove the mtk-jpeg driver,
+> > > > > which
+> > > > > caused the UAF bug.
+> > > > > I wonder if such an irrational application scenario could
+> > > > > exist.
+> > > > > This
+> > > > > scenario, as you described, not only leads to the problems you
+> > > > > mentioned, but also to output&capture memory leaks and
+> > > > > unreleased
+> > > > > resources, such as spinlock.
+> > > > > Typically, if we want to remove the driver, we firstly do stop
+> > > > > streaming, which ensures that the worker has been canceled.
+> > > > > I agree with your changes from the perspective of strengthening
+> > > > > the
+> > > > > robustness of the driver code.
+> > > > >
+> > > > > Regards,
+> > > > > Kyrie.
+> > > > > >
+> > > > > > Irui Wang (=E7=8E=8B=E7=91=9E) <Irui.Wang@mediatek.com> =E4=BA=
+=8E2023=E5=B9=B43=E6=9C=887=E6=97=A5=E5=91=A8=E4=BA=8C 18:23=E5=86=99=E9=81=
+=93=EF=BC=9A
+> > > > > > >
+> > > > > > > Dear Angelo and Zheng,
+> > > > > > >
+> > > > > > > Thanks for your patch and comments.
+> > > > > > >
+> > > > > > > Dear Kyrie,
+> > > > > > >
+> > > > > > > Please help to check this, thanks.
+> > > > > > >
+> > > > > > > Best Regards
+> > > > > > >
+> > > > > > > On Tue, 2023-03-07 at 10:49 +0100, AngeloGioacchino Del
+> > > > > > > Regno
+> > > > > > > wrote:
+> > > > > > > > Il 07/03/23 10:27, Zheng Hacker ha scritto:
+> > > > > > > > > Hi,
+> > > > > > > > >
+> > > > > > > > > Is there anyone who can help with this? I can provide
+> > > > > > > > > more
+> > > > > > > > > details
+> > > > > > > > > like invoking chain if needed.
+> > > > > > > > >
+> > > > > > > >
+> > > > > > > > Providing more details is always good. Please do.
+> > > > > > > >
+> > > > > > > > Meanwhile, adding Irui Wang to the loop: he's doing mtk-
+> > > > > > > > jpeg.
+> > > > > > > >
+> > > > > > > > Regards,
+> > > > > > > > Angelo
+> > > > > > > >
+> > > > > > > > > Thanks,
+> > > > > > > > > Zheng
+> > > > > > > > >
+> > > > > > > > > Zheng Wang <zyytlz.wz@163.com> =E4=BA=8E2023=E5=B9=B43=E6=
+=9C=886=E6=97=A5=E5=91=A8=E4=B8=80 14:28=E5=86=99=E9=81=93=EF=BC=9A
+> > > > > > > > > >
+> > > > > > > > > > In mtk_jpeg_probe, &jpeg->job_timeout_work is bound
+> > > > > > > > > > with
+> > > > > > > > > > mtk_jpeg_job_timeout_work. Then
+> > > > > > > > > > mtk_jpeg_dec_device_run
+> > > > > > > > > > and mtk_jpeg_enc_device_run may be called to start
+> > > > > > > > > > the
+> > > > > > > > > > work.
+> > > > > > > > > > If we remove the module which will call
+> > > > > > > > > > mtk_jpeg_remove
+> > > > > > > > > > to make cleanup, there may be a unfinished work. The
+> > > > > > > > > > possible sequence is as follows, which will cause a
+> > > > > > > > > > typical UAF bug.
+> > > > > > > > > >
+> > > > > > > > > > Fix it by canceling the work before cleanup in the
+> > > > > > > > > > mtk_jpeg_remove
+> > > > > > > > > >
+> > > > > > > > > > CPU0                  CPU1
+> > > > > > > > > >
+> > > > > > > > > >                      |mtk_jpeg_job_timeout_work
+> > > > > > > > > > mtk_jpeg_remove     |
+> > > > > > > > > >    v4l2_m2m_release  |
+> > > > > > > > > >      kfree(m2m_dev); |
+> > > > > > > > > >                      |
+> > > > > > > > > >                      | v4l2_m2m_get_curr_priv
+> > > > > > > > > >                      |   m2m_dev->curr_ctx //use
+> > > > > > > > > >
+> > > > > > > > > > Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
+> > > > > > > > > > ---
+> > > > > > > > > >
+> > > > > > > > > > drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> > > > > > > > > > |
+> > > > > > > > > > 2 +-
+> > > > > > > > > >   1 file changed, 1 insertion(+), 1 deletion(-)
+> > > > > > > > > >
+> > > > > > > > > > diff --git
+> > > > > > > > > > a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.
+> > > > > > > > > > c
+> > > > > > > > > > b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.
+> > > > > > > > > > c
+> > > > > > > > > > index 969516a940ba..364513e7897e 100644
+> > > > > > > > > > ---
+> > > > > > > > > > a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.
+> > > > > > > > > > c
+> > > > > > > > > > +++
+> > > > > > > > > > b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.
+> > > > > > > > > > c
+> > > > > > > > > > @@ -1793,7 +1793,7 @@ static int
+> > > > > > > > > > mtk_jpeg_probe(struct
+> > > > > > > > > > platform_device *pdev)
+> > > > > > > > > >   static int mtk_jpeg_remove(struct platform_device
+> > > > > > > > > > *pdev)
+> > > > > > > > > >   {
+> > > > > > > > > >          struct mtk_jpeg_dev *jpeg =3D
+> > > > > > > > > > platform_get_drvdata(pdev);
+> > > > > > > > > > -
+> > > > > > > > > > +       cancel_delayed_work(&jpeg->job_timeout_work);
+> > > > > > > > > >          pm_runtime_disable(&pdev->dev);
+> > > > > > > > > >          video_unregister_device(jpeg->vdev);
+> > > > > > > > > >          v4l2_m2m_release(jpeg->m2m_dev);
+> > > > > > > > > > --
+> > > > > > > > > > 2.25.1
+> > > > > > > > > >
+> > > > > > > >
+> > > > > > > >
+> > > > > > > >
 
