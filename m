@@ -4,48 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 589CFC678D5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 12:12:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5F14C678D5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 12:35:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i5VerW9E57a3AkDp3/3ZMYYrKq9pQbYM9N4W7z4rNw0=; b=TRMhQyi4DL/r00/iOvWu0sNRcs
-	4ZwOVRno9P/O7vtWCniF/R3XY0F2Zfw3i5/t3HX/tTGyZtKEv2dNFpvOcSybhYWdTYJ3JqANHHE/0
-	jdbhG3TwK/bKYcY7p30b48/IY55H91zx4GcVNbSK6xrC/xffYF5TCDgVNcC0wZhX4vK8f3AGFsZx8
-	Dndp/2/4d4hI+6DBz6CGeYSq606Yk+Vjj86tLoQ1HnSYBEKrM4e/ytagEaXJbxAwlKAL6NdzqNkbW
-	cFQRFoGJB0nrOjsAT62yB+iPnuhQD6Fe4gJ1ghw13JBRodUhGFOjwsWY5fNyv4cOLqxpxtMzq1K5P
-	lpT+Ymlw==;
+	bh=A+9+kArDFqMD7qz6roFjTV8cDajCHtDUUSq0on75xa4=; b=bTL8ckLd734lBj3GhyUB7m0tqZ
+	NsZkFdq/3BVykPuh/V8o01opi8IQAlpI6IRNy28TjTN580+OgU9y1oz4I7G9I0tJLdL4Nhmp7i4h5
+	BOze3hpi2P3J0aNc9cBicdxhWgJcqEe98UMFHn6V249kngvuNYCL0aSdgkGzdYebj3I1Z9UW+PXXS
+	hzLi966PHNiSVhpx8iB2PVitBO8WUq/DOkgZuLA9l72qFuLHHTUv4gId4kbwkl/cxszmOLyzFSDKK
+	dMqZsZxeTEApN7aoZJPEH/4v940kOUFp3oyM71Ihi2nNSvIVR0v/FdkP8Tfb/j++1Mv+5ehU7p3yJ
+	k5DB2OKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZseI-004mK5-Ax; Wed, 08 Mar 2023 12:12:02 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pZt1C-004s8h-N1; Wed, 08 Mar 2023 12:35:42 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZseF-004mJ0-V8; Wed, 08 Mar 2023 12:12:01 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pZse8-0002CF-0s;
-	Wed, 08 Mar 2023 13:11:52 +0100
-Date: Wed, 8 Mar 2023 12:11:48 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Subject: Re: [PATCH net-next v12 08/18] net: ethernet: mtk_eth_soc: fix
- 1000Base-X and 2500Base-X modes
-Message-ID: <ZAh7hA4JuJm1b2M6@makrotopia.org>
+	id 1pZt0y-004s0o-DX; Wed, 08 Mar 2023 12:35:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=A+9+kArDFqMD7qz6roFjTV8cDajCHtDUUSq0on75xa4=; b=tkvSd7snwbc/j+floPhhA+OFbE
+	lEW0Z0C3FLUY4x7rFhSSgL9uJYCdnhcWvMkmL8sSiIysZB9h/EOjliF2QnOc+TZLjPIMk7D5yhWTO
+	7HRMICviQC3dHR4WLuajtCr/nQpeNrE2iF/3a9IqUGpYHFlcgZGBkFjCzTWnf1qtUWdPLvN3KV0YT
+	CDEQUw3weHTFvv7dBOfmOgReTLHbefdxrHguYWfoUIEz/6qSgxf5RT4REXXXdNt8V4YRhjj9s09J2
+	ppOuVhAANR8Z9V2bv0gdUkZfubJHwyQZHUCMIKyFnzwig9SNrFGHEmidmEc7pW3Kghdw/FTwFiLM/
+	vZQ+H2cQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:45066)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1pZt0m-0002Tl-36; Wed, 08 Mar 2023 12:35:16 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1pZt0e-0002Zg-Jl; Wed, 08 Mar 2023 12:35:08 +0000
+Date: Wed, 8 Mar 2023 12:35:08 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vladimir Oltean <vladimir.oltean@nxp.com>,
+	Jianhui Zhao <zhaojh329@gmail.com>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
+	Alexander Couzens <lynxis@fe80.eu>
+Subject: Re: [PATCH net-next v12 09/18] net: ethernet: mtk_eth_soc: Fix link
+ status for none-SGMII modes
+Message-ID: <ZAiA/ExxgHPEY15h@shell.armlinux.org.uk>
 References: <cover.1678201958.git.daniel@makrotopia.org>
- <fd5c7ea79a7f84caac7d0b64b39fe5c4043edfa8.1678201958.git.daniel@makrotopia.org>
- <ZAhzDDjZ8+gxyo3V@shell.armlinux.org.uk>
+ <1590fb0e69f6243ac6a961b16bf7ae7534f46949.1678201958.git.daniel@makrotopia.org>
+ <ZAhzt5eIZiJUyVm7@shell.armlinux.org.uk>
+ <B69026D7-E770-4168-B1CA-54E34D52C961@public-files.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <ZAhzDDjZ8+gxyo3V@shell.armlinux.org.uk>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <B69026D7-E770-4168-B1CA-54E34D52C961@public-files.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_041200_023181_E4A31028 
-X-CRM114-Status: GOOD (  22.50  )
+X-CRM114-CacheID: sfid-20230308_043528_801151_FD77AA81 
+X-CRM114-Status: GOOD (  15.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,50 +95,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <vladimir.oltean@nxp.com>, Eric Dumazet <edumazet@google.com>, Florian Fainelli <f.fainelli@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Alexander Couzens <lynxis@fe80.eu>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Jianhui Zhao <zhaojh329@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, =?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 08, 2023 at 11:35:40AM +0000, Russell King (Oracle) wrote:
-> On Tue, Mar 07, 2023 at 03:53:58PM +0000, Daniel Golle wrote:
-> > After conversion to phylink_pcs the 1000Base-X and 2500Base-X modes
-> > would work only after `ethtool -s eth1 autoneg off`.
-> > As ethtool autoneg and the ETHTOOL_LINK_MODE_Autoneg_BIT is supposed
-> > to control auto-negotiation on the external interface it doesn't make
-> > much sense to use it to control on-board SGMII auto-negotiation between
-> > MAC and PHY.
-> > Set correct values to really only enable SGMII auto-negotiation when
-> > actually operating in SGMII mode. For 1000Base-X and 2500Base-X mode,
-> > enable remote-fault detection only if in-band-status is enabled.
-> > This fixes using 1000Base-X and 2500Base-X SFPs on the BananaPi R3
-> > board and also makes it possible to use interface-mode-switching PHYs
-> > operating in either SGMII mode for 10M/100M/1000M or in 2500Base-X for
-> > 2500M mode on other boards.
-> > 
-> > Fixes: 14a44ab0330d ("net: mtk_eth_soc: partially convert to phylink_pcs")
-> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+On Wed, Mar 08, 2023 at 12:44:57PM +0100, Frank Wunderlich wrote:
+> Am 8. März 2023 12:38:31 MEZ schrieb "Russell King (Oracle)" <linux@armlinux.org.uk>:
+> >On Tue, Mar 07, 2023 at 03:54:11PM +0000, Daniel Golle wrote:
+> >> Link partner advertised link modes are not reported by the SerDes
+> >> hardware if not operating in SGMII mode. Hence we cannot use
+> >> phylink_mii_c22_pcs_decode_state() in this case.
+> >> Implement reporting link and an_complete only and use speed according to
+> >> the interface mode.
+> >> 
+> >> Fixes: 14a44ab0330d ("net: mtk_eth_soc: partially convert to phylink_pcs")
+> >> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> >
+> >This has been proven to work by Frank Wunderlich last October, so by
+> >making this change, you will be regressing his setup.
 > 
-> NAK.
+> Hi
 > 
-> There are PHYs out there which operate in SGMII mode but do not
-> exchange the SGMII 16-bit configuration word. The code implemented
-> here by me was explicitly to allow such a configuration to work,
-> which is defined as:
-> 
-> 	SGMII *without* mode == inband
-> 
-> An example of this is the Broadcom 84881 PHY which can be found on
-> SFP modules.
+> My tests were done with 1 kind of 1g fibre sfp as i only have these atm...have ordered some 2g5 rj54 ones,but don't have them yet. I'm not sure if they are working with/without sgmii (1000base-X) and if they have builtin phy.
 
-I also have multiple such 1000Base-T SFP modules here (finisar, AJYA),
-and this change doesn't touch the codepaths relevant for those. They
-are operating in SGMII mode, they have always been working fine.
+Fiber SFPs do not have a built in PHY. They merely convert the serdes
+electrical waveform into light and back again, possibly with some
+retiming of the received waveform, and a bit of monitoring. They're
+pretty simple devices.
 
-What I'm trying to fix here is 1000Base-X and 2500Base-X mode which
-has been broken by introducing ETHTOOL_LINK_MODE_Autoneg_BIT as the
-deciding factor for in-band AN here.
+They certainly do not change the protocol in any way.
 
-Can you explain why ETHTOOL_LINK_MODE_Autoneg_BIT was used there in
-first place? Is my understanding of this bit controlling autoneg on the
-*external* interface rather than on the *system-side* interface wrong?
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
