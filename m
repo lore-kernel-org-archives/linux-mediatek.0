@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1771CC678D5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 04:33:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAA75C678D5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 06:11:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fnlnWFbORRUW7WotUUBNStj9+HXnlgPod90NeKp1RSA=; b=I9gHoj9CFRx91QJU/5Z0m4R87W
-	Pgo5eh/Ggr6h/pZbNvs95tEj/9zZjAn+Ric1FToFJi9nzpRO7gjfne7YQlyeJpP0YMaHsIKyOZGUE
-	wM9o5SQFuf+E551lzfPXmF85aQ3F4IgUYSU+2hpMgRezkF5KJlAq/M//rLxl5KU+AXd1FII4GlqIJ
-	aK2KLPfU5aBqDGZpTG/IIvaSQKK0AXrnvageRyHS7WDMmKuGHu7GDvwU6z1ZiirRwDGSwbAxIezmO
-	7bQVKLWRdHcA4ZoE5Y6KMz8Rnq1KaTgq1MEakM/U5FiQRuFvcYUM6lDmabfgF5SWsxbayLOZW9Bas
-	+Ao8F+8A==;
+	bh=JcMP5vlPRx03oWddxmNQBtShzXd//qFHNzh0RraWFD4=; b=PiXZJW2Eoj7UaEOR7AqiOXd6qy
+	UHmWplkXnjQc7d4AyaG9tstxBgRp9WohZExFibWwLXUz3zLinkTKYG5mTPpJAFKprWCyyW+tLf9iB
+	+s3OeHlzTMxpmVC4uzGmEkcm9M4v6Xj32jOSfXt1Uifl3mVXX27WgQE026tHCG2kzWkSDlXwMYUKO
+	13k4HLQ+Em18BehBI9NB0qz35VGtTb38U7Uqhxj1h6mjsxhh24H1Cm84bAzYozOkCV79zn0xMbjXR
+	PRqDurf+/YjVbE+1cCJNLtKrFT+3bGPdddyHGVxassBm50dgor763pHLArqecm+1xxE6OxrNriT3d
+	lLK+ggnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZlU9-003T1J-LL; Wed, 08 Mar 2023 04:33:05 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1pZn0y-003fGp-LG; Wed, 08 Mar 2023 06:11:04 +0000
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZlU6-003T0Q-3q; Wed, 08 Mar 2023 04:33:04 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id y10so9472631pfi.8;
-        Tue, 07 Mar 2023 20:32:59 -0800 (PST)
+	id 1pZn0u-003fDt-0N; Wed, 08 Mar 2023 06:11:02 +0000
+Received: by mail-pf1-x435.google.com with SMTP id c10so9534088pfv.13;
+        Tue, 07 Mar 2023 22:10:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678249979;
+        d=gmail.com; s=20210112; t=1678255852;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=fnlnWFbORRUW7WotUUBNStj9+HXnlgPod90NeKp1RSA=;
-        b=FJ+IUjhXNOO8+G+be8rJmlTEtFsEBVXy8Yc53e6jSgEtpmPme/oBlrtOmlT3HdW3Tm
-         7l09AtBr9+5I/NWCWLt1dZVDRq3eCqLquT6Rp563QocYBPR9lEuO8084mPj1f77IdtBJ
-         HrKyHMMPIqE0gvEYK83Oj4TR7z3+M0d2WKR++tQVx1taYiAkirHou160XeFYVVVI0ypI
-         kv/+D3c28xlZTf91X78JGCWY0Q2Z+gYyCfuHk048PclUNd6ugxZqB2cW6Nk+Bs+UP6QI
-         WjSw4mE3ISNurhQ3wyFc7u8C1EwFgeHNnfxwIRuALFJEZdI6q7NBfYwcfahSmSTfc3ue
-         PrCg==
+        bh=JcMP5vlPRx03oWddxmNQBtShzXd//qFHNzh0RraWFD4=;
+        b=WbiI1I2Jcr+3kClatEccOoL7DfYJvCaqlmxfHZa3rLQa/Ww9qcPhk/1jzwdp9cLc7K
+         JAfoOzJPW22Pk3VWX21GYAKUY8cSLJqT6uFYrgMJvB0FERjRQ6pbw3ZPrzcGdt9/ONRm
+         T/2IKrDBcSvHWh6MWg8GRewUsXoCrOD4p46JUFCOEKDiwAQH41wTs8uZmY2JST8yStia
+         PrFTlmK6YUPXTUixuNPDht/e7JRo/MvXgkB+X6lNiImqUikG5Lyhkd1hwSQLu1J7zdqp
+         Ed+FAELIv2xjMkOaByoDzFNZkfxpxPfua8MIbPVW3wyPUzPDrq8wwRzdmQQq4Ivzt28w
+         N3Gw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678249979;
+        d=1e100.net; s=20210112; t=1678255852;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=fnlnWFbORRUW7WotUUBNStj9+HXnlgPod90NeKp1RSA=;
-        b=yHKWyQuOFNxzujd67CHN3s87xVSG//BrHF1w3K3izyjtV2gRY7SedynkXbQFkXIyAA
-         9mN9BM8bItk/n86doErpyw+6NaqRnEba6TIUc2BXX5oNSetjvWIRTXh4fginw/S7kOXs
-         h+kA2nk/OXgZWUf6lUFp+LuE161fuxauvweBvBivn4EA2QQb1ip3+39UlBhcophInGCl
-         5cbn+i92WzbDapFcE+iuVZP6gUZdCgOH+XRTDNRsvM/B30Mkw2mSllRBEzhDqunkNoMV
-         dkzDfPi6fs5wt6IbNbbjekWLaZod7kvPJaKUrfljK2AY+qKrbVCyLccn0MkjdWEW/v9s
-         iOKA==
-X-Gm-Message-State: AO0yUKUPv4CdYv/mI6xLA/uHHnFrX8PwjeMvSwnsCvRnH3hUcuc27WJi
-	sxMVVzs2iEIWo9XX5Ez6NOHCWIX2b19DnNrpin4=
-X-Google-Smtp-Source: AK7set82TysaLAqeDmXsG1fbDnyaC/PXgRmq9+k8PphsiSF8ywjhc76iouhmrHSpB3HbUL6ZpXYZc0pmxH6HqsCJx90=
-X-Received: by 2002:a63:5508:0:b0:502:fd71:d58c with SMTP id
- j8-20020a635508000000b00502fd71d58cmr6236376pgb.9.1678249978831; Tue, 07 Mar
- 2023 20:32:58 -0800 (PST)
+        bh=JcMP5vlPRx03oWddxmNQBtShzXd//qFHNzh0RraWFD4=;
+        b=6np5xnCDISm+ExqAK8rDqEo+3fcSuvdUoc0yIU2gqxYFaWG3oI+ljQPCXUgmRkJcU/
+         r4SPMXH83BoBxe/ZKRVMclJpjyGfZUGL8GgqSD5KJMkbQgJuy2alUxopKSWnZxMITPr+
+         8rmFpVpXPgQ3WiD1C08ktaSsOoe2mKJS50rhuSGz0591BmPyTKhrMolPoionUZv8ySGo
+         scoZVr+9y0LBZm85morpv0eIiqfpendrp0Pya6EpQDnP0aDKuGEqMUHv4sUnzR9nZOGH
+         pmN1tW7QnvBWCGcRRI99KcJGkYj1DiiyVTqrqQQWlCDjZsrgL7jT4Hlyhr6SYzaruBqa
+         D0LA==
+X-Gm-Message-State: AO0yUKXa9UVzWghF3QCUJuTps4MXGtNqJXKovYOY6XxGgn0vl/S2zXsk
+	+bCZqs733JAJm063My/HzuD2m3cgnzimPABa4us=
+X-Google-Smtp-Source: AK7set+qSEXNWRTh6oONCdq0pECNPcAH7otxC9LGn1nI3uzuJWbi/8510iMYahKIlHFdJJCrBdI7C8B4L17n9zEe2eE=
+X-Received: by 2002:a63:2918:0:b0:503:77c9:45aa with SMTP id
+ bt24-20020a632918000000b0050377c945aamr5771378pgb.9.1678255852381; Tue, 07
+ Mar 2023 22:10:52 -0800 (PST)
 MIME-Version: 1.0
 References: <20230306062633.200427-1-zyytlz.wz@163.com> <CAJedcCzeVwwi9SkkwouFXUAVhF-tKF4dkqsFqVQwszSwY1SJ0A@mail.gmail.com>
  <57c17bfd-83f3-fcce-0eab-e28469fb0ced@collabora.com> <11c2bce1e5286ad3a9a5be2ee59c2beac168f135.camel@mediatek.com>
@@ -64,8 +64,8 @@ References: <20230306062633.200427-1-zyytlz.wz@163.com> <CAJedcCzeVwwi9SkkwouFXU
  <CAJedcCwhk_XuMF8keGZGBTVBZSMuoQeyV_7L1H2VeT2x_vj-ZQ@mail.gmail.com> <86c98d73b0d294e143014ea5e15d0a5d065e1a66.camel@mediatek.com>
 In-Reply-To: <86c98d73b0d294e143014ea5e15d0a5d065e1a66.camel@mediatek.com>
 From: Zheng Hacker <hackerzheng666@gmail.com>
-Date: Wed, 8 Mar 2023 12:32:45 +0800
-Message-ID: <CAJedcCzdwAFGK1U56AQ-iXLgBmbnNcc3i4428RMd4WHR1cJZsQ@mail.gmail.com>
+Date: Wed, 8 Mar 2023 14:10:40 +0800
+Message-ID: <CAJedcCyiczZiKm=zQyYwJCszmEHKYX+sVEBx7UC082pS5K5Oww@mail.gmail.com>
 Subject: Re: [RESEND PATCH] media: mtk-jpeg: Fix use after free bug due to
  uncanceled work
 To: =?UTF-8?B?S3lyaWUgV3UgKOWQtOaZlyk=?= <Kyrie.Wu@mediatek.com>
@@ -82,8 +82,8 @@ Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_203302_227394_3C097139 
-X-CRM114-Status: GOOD (  65.82  )
+X-CRM114-CacheID: sfid-20230307_221100_121000_913D9A84 
+X-CRM114-Status: GOOD (  65.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,26 +100,41 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Kyrie,
 
-Thanks for your quick response and detailed information. I understand
-more about the design with your explanation. As you say,  there
-shouldn't be any issues with the normal flow. And if the attacker use
-some tricks to enhance the race window and call remove function
-directly as [1] mentioned, this might trigger uaf bug unexpectedly.
+After reviewing the code, I found anothe possible code path. As I am
+not familiar with the module. It has high possibility it's wrong.
+Could please help me check this? Very much appreciated for your
+valuable time.
 
-Besides, I found another code path which may call v4l2_m2m_cancel_job
-and finally make the situation looks safe. The invoking chain is
+In summary, mtk_jpegdec_worker was set in mtk_jpeg_open and started in
+mtk_jpeg_multicore_dec_device_run, which made it running on cpu1.
+Inside the mtk_jpeg_multicore_dec_device_run, it will call
+schedule_delayed_work  to start the timeout_work, which will make it
+running on cpu2. Meanwhile, we can call
+mtk_jpeg_release to cancel the job. But there might be a race between
+mtk_jpegdec_worker and v4l2_m2m_cancel_job. It may call
+v4l2_m2m_job_finish too early to wake up the event.
+The remove will go on, the other race is as described earlier.
 
-mtk_jpeg_release
-  v4l2_m2m_ctx_release
-    v4l2_m2m_cancel_job
+cpu0                         cpu1                  cpu2
+(1)->device_run
+mtk_jpeg_multicore
+_dec_device_run
+queue_work
+(jpeg->workqueue,
+&ctx->jpeg_work);
+                      (2)mtk_jpegdec_worker
+(3)mtk_jpeg_release
+v4l2_m2m_cancel_job
+wait event
 
-If the attacker have to call mtk_jpeg_release function before the
-remove function, it might be harmless. But I'm not sure about that.
-
-[1]  https://www.usenix.org/system/files/sec21-lee-yoochan.pdf
-
-Best regards,
-Zheng
+                      schedule_delayed_work
+                                            (4)mtk_jpeg_job_timeout_work
+                      (5)v4l2_m2m_job_finish
+                      wake up
+(6)mtk_jpeg_remove
+v4l2_m2m_release
+kfree(m2m_dev)
+                                            (7)v4l2_m2m_get_curr_priv
 
 Kyrie Wu (=E5=90=B4=E6=99=97) <Kyrie.Wu@mediatek.com> =E4=BA=8E2023=E5=B9=
 =B43=E6=9C=888=E6=97=A5=E5=91=A8=E4=B8=89 11:32=E5=86=99=E9=81=93=EF=BC=9A
