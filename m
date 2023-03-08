@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98614C742A7
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 19:03:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16B3FC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 19:03:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5FrWOB0uVxHx56X9xrWxuDWJ/kb3JEYgMVQs34PVT2U=; b=nK2ftSOilgyQggm5/c3qB/yWOv
-	4PUXJbZYQCVjacGSiRCgBvBjBFZw5ZllWfjao8oFlekHEGHh9PESOwglFxq5dtf/sDbAJLxSaaaIn
-	16ega//x56X3C5qsLSa95/8UslInwQ9/2KAdRDmKs9C1sMhzgJ85+9BzP4izkr//Z7fsQlsfFi85+
-	EJKRhi17EmE4yfJReZ7tA7M5DsvdoiOm9nl803hGnWD+7qGi3W3acrxBBcSxOka3lRqFRpdBj+2uV
-	fFCSIOm+VimH4UClT+y5r752abGzknfi+IFup1EeyPiv7dgxhahq+X2Qr1kSKD4smTtqHafJbKthY
-	h++aSpuQ==;
+	bh=9il/DGJIQiu6Ue8jvxZUwoY7ORjCm0v/Im7Io+dDxPs=; b=bRmMFrwSrtuWft9eAqpIdsbmf1
+	7wavQWzO7HHIGTsm0l9oNPX35Z7s/sH4FH3kw8hGwJgV92IWnSwg/J91HRjn9iHUruHsuZqYpvPmQ
+	Aye8oTazB0/oPNZWY6S/UnaaTQgLhL0PQTlxyT1Os0CgElBiL+xsQ7c8azCCjUuw9jLtP/S3d23FP
+	f0AwNynn/kmqsZXuoeDsQtNiTYOygiBg/7P8FNj1m3nWsBuP3auJ9RInKOS1jv2sT/wWr9fcdQzIk
+	onD6ydycySjFY1cVlIvuJGIjrKnHWYoHjcy2uGVvXiwFFnfjVlWGYT44NLWtU5Wlx40oGsAVcUkkt
+	X15Yzw3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZz4D-006TKM-Vl; Wed, 08 Mar 2023 19:03:13 +0000
-Received: from mail-oa1-f52.google.com ([209.85.160.52])
+	id 1pZz4o-006TiW-TZ; Wed, 08 Mar 2023 19:03:50 +0000
+Received: from mail-oa1-f49.google.com ([209.85.160.49])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZz3y-006TDm-Vg; Wed, 08 Mar 2023 19:03:00 +0000
-Received: by mail-oa1-f52.google.com with SMTP id 586e51a60fabf-17711f56136so4878568fac.12;
-        Wed, 08 Mar 2023 11:02:58 -0800 (PST)
+	id 1pZz4P-006TOn-Ba; Wed, 08 Mar 2023 19:03:29 +0000
+Received: by mail-oa1-f49.google.com with SMTP id 586e51a60fabf-176eae36feaso9055215fac.6;
+        Wed, 08 Mar 2023 11:03:22 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678302178;
+        d=1e100.net; s=20210112; t=1678302202;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=5FrWOB0uVxHx56X9xrWxuDWJ/kb3JEYgMVQs34PVT2U=;
-        b=NtnJtrc4I2M1coaFu9kReo3X304+tChBR0EPl+K/4L+K/LNgliCLqFvBXON2CrN5fF
-         +md/0jgTQSVjzZuBBoAkBSK+oiUM+Tzf/hzY4LlDn892P99p3ctwyWxLNH7X0w7Ns9do
-         oFGn9G4CBGsa0P0mc45zpJskQAmcUYyrxEPSRHYliGGtvytceRieQVfj22SIpH50+DAb
-         a3uMqUIwFZCs7SR6EV6B9H89yPWuHI9tB3r5kJE7FLgSYDreqK9DRl5/KJC2MHQ7Fg6O
-         v5jKz3rAPWg3LvuwVs8ds0NjsstGnjO0FStTybGccNLkfajrWJgIGCtqaNdrKXbXMel+
-         VcWg==
-X-Gm-Message-State: AO0yUKVDpTMNJgs5ZiRrNG8R7plHfNkIVk7Ni+XQmqhOFaiAC6yfGXxA
-	NM13WqNb33EECdPsvKhr/Q==
-X-Google-Smtp-Source: AK7set+DvjoWc1KWq2h3sKBZx+8CoWicRMFGWsEt1KRrNByZmsCl9/pHwHZRNzh/c5BtXW6lqvK2cw==
-X-Received: by 2002:a05:6870:b14d:b0:172:80f9:a545 with SMTP id a13-20020a056870b14d00b0017280f9a545mr13141161oal.25.1678302178217;
-        Wed, 08 Mar 2023 11:02:58 -0800 (PST)
+        bh=9il/DGJIQiu6Ue8jvxZUwoY7ORjCm0v/Im7Io+dDxPs=;
+        b=T2hjRSl0UzKUskanx7HJlcwZx1QawrY+SlMRPy0sOlK4zXZa+CrXBu/7Gf10d1y4Np
+         v7FzRyltNFPNyhYwrqdVl0fHi/euCJCaUcc0lM2mIvt/1QEdex+bhYHR/6UykqP5CDaC
+         EabxjwhBzDmKc9z2qk/GA8PRN6VTMHxTRrRG5wQ3n//sLjiNkBxwPWNCs7gji1YHzJB0
+         li9WWBKCt44Lj2p1jJG4ir7CUvo7wG2lL7xXZ2DJX8F29Prt9u3k43AB9C+qkgUNFxww
+         AAbnNLoRrHHZjPQmsDQdpf3FkwHkLvw1/6q61Nw+lv3FlFc4qf4aEB/Ud2/Iwo70GOyj
+         /dhw==
+X-Gm-Message-State: AO0yUKXW0O8QkpkpSKW0YHNli4nZNFRO3rtBN2kAt/ktXFy7Lp9omgnH
+	bjBSWWGwhcda8zEnJmWntw==
+X-Google-Smtp-Source: AK7set/POqWuscJib/lrSJTB9epA2owd4C+73BtnHIuJFrEFJL2xeHZhaNT4yQoIOLqI2Iaqknu/XQ==
+X-Received: by 2002:a05:6870:f292:b0:172:c578:d78b with SMTP id u18-20020a056870f29200b00172c578d78bmr1164117oap.23.1678302201744;
+        Wed, 08 Mar 2023 11:03:21 -0800 (PST)
 Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id d199-20020a4a52d0000000b005264a1472adsm1543777oob.15.2023.03.08.11.02.57
+        by smtp.gmail.com with ESMTPSA id dx12-20020a056870768c00b0017281100b75sm6506505oab.42.2023.03.08.11.03.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Mar 2023 11:02:57 -0800 (PST)
-Received: (nullmailer pid 3604331 invoked by uid 1000);
-	Wed, 08 Mar 2023 19:02:57 -0000
-Date: Wed, 8 Mar 2023 13:02:57 -0600
+        Wed, 08 Mar 2023 11:03:21 -0800 (PST)
+Received: (nullmailer pid 3605141 invoked by uid 1000);
+	Wed, 08 Mar 2023 19:03:20 -0000
+Date: Wed, 8 Mar 2023 13:03:20 -0600
 From: Rob Herring <robh@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: airlied@gmail.com, daniel@ffwll.ch, krzysztof.kozlowski+dt@linaro.org, steven.price@arm.com, alyssa.rosenzweig@collabora.com, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wenst@chromium.org
-Subject: Re: [PATCH v4 03/12] dt-bindings: gpu: mali-bifrost: Fix
- power-domain-names validation
-Message-ID: <20230308190257.GA3601415-robh@kernel.org>
+Cc: steven.price@arm.com, devicetree@vger.kernel.org, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, linux-kernel@vger.kernel.org, wenst@chromium.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, daniel@ffwll.ch, alyssa.rosenzweig@collabora.com, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, airlied@gmail.com
+Subject: Re: [PATCH v4 06/12] dt-bindings: gpu: mali-bifrost: Add support for
+ MediaTek MT8186
+Message-ID: <167830220018.3605078.16960763301333635462.robh@kernel.org>
 References: <20230228102704.708150-1-angelogioacchino.delregno@collabora.com>
- <20230228102704.708150-3-angelogioacchino.delregno@collabora.com>
+ <20230228102704.708150-6-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230228102704.708150-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230228102704.708150-6-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_110259_044589_FCF1730E 
-X-CRM114-Status: GOOD (  15.02  )
+X-CRM114-CacheID: sfid-20230308_110325_418539_298AA322 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,66 +79,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 28, 2023 at 11:26:55AM +0100, AngeloGioacchino Del Regno wrote:
-> Commit ("dt-bindings: gpu: mali-bifrost: Add Mediatek MT8183")
-> incorrectly introduced power domain names for MT8183, causing
-> validation issues.
-> 
-> Add power-domain-names to the base schema, allowing a maximum of
-> five elements; since platforms having a single power domain don't
-> need any actual domain name, disallow that for each sub-schema.
-> 
-> Fixes: a7a596cd3115 ("dt-bindings: gpu: mali-bifrost: Add Mediatek MT8183")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../devicetree/bindings/gpu/arm,mali-bifrost.yaml          | 7 +++++++
->  1 file changed, 7 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-> index 5b7f1c9d2b30..bf0f7f1f71e0 100644
-> --- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-> @@ -65,6 +65,10 @@ properties:
->      minItems: 1
->      maxItems: 5
->  
-> +  power-domain-names:
-> +    minItems: 1
 
-If you are disallowing for a single domain, then this could be 2...
+On Tue, 28 Feb 2023 11:26:58 +0100, AngeloGioacchino Del Regno wrote:
+> MT8186 has a Mali-G52 MC2 2EE GPU (two cores): add a binding with
+> two power domains (one per core) for it.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+>  .../bindings/gpu/arm,mali-bifrost.yaml         | 18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
+> 
 
 Reviewed-by: Rob Herring <robh@kernel.org>
 
-> +    maxItems: 5
-> +
->    resets:
->      minItems: 1
->      maxItems: 3
-> @@ -112,6 +116,7 @@ allOf:
->        properties:
->          power-domains:
->            maxItems: 1
-> +        power-domain-names: false
->        required:
->          - resets
->    - if:
-> @@ -136,6 +141,7 @@ allOf:
->              - const: bus_ace
->          power-domains:
->            maxItems: 1
-> +        power-domain-names: false
->          resets:
->            minItems: 3
->          reset-names:
-> @@ -186,6 +192,7 @@ allOf:
->              - const: bus
->          power-domains:
->            maxItems: 1
-> +        power-domain-names: false
->        required:
->          - clock-names
->  
-> -- 
-> 2.39.2
-> 
 
