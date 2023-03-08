@@ -4,93 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 384FCC64EC4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 12:04:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FBACC678D5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 12:05:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=amflx+MPu/55qREv7D1gpSWbJ6NWDsdR+AZRDR7ovnE=; b=HC6Pr+3m3nPlh7m7d1pn3rKbjv
-	61Ivm+TiwCtnMoJyB+Qs3/k9UZDgh+ZpRaWyt3gvUOGxyzGGjDDzsacrCWiJaVxpJp2ZFKXbVSG8A
-	Ueyw48T/EVswusdNiXBrTDfPXHDkvyZs5nnzuxlQGLQTNwqipkkp6IaFfhGytAorFJ+xJ+jQHL6Ba
-	s+sutJLdgc9wh3tKfQ2xrpseMgDNrow7RqRFCk5uQZd2gWvUypc0N95SISCKZI3NCHa4slQO7pJfq
-	+6EzgkVmCSUBOsLindw6Ys229+qMNo750NiyiHvB4oIA2jw22jDRwTJVkyhhOhDsEqciY75iUyBTL
-	4eMcyGVA==;
+	bh=BhNdaWMGnHpsHbouu9TN2KiAtJhNTYuRn4f1bUa2P2Y=; b=i3HvDBG55Lm2Ru3qSUNM1DcKhz
+	pkN9iA4fRcDhGc9S4Lx2bP0bpWjrLw5vzz7Q52jWi7Ef51R9cL3GieXJz7lb3QcdJKF3mf5T87jP0
+	t/yI5709VgieTpIE0UL45xTcecf668q5FwY8D+FECgPKicHy0ga6VxbLv2bmeQE2Gk37sRQuk/gOX
+	upgXCXcamHRxBuIbAykzWYsT0Ez0izksZfK1Svqs6ZlJ0A3hzwrvLKfi16BK3R4lyJ+Qx6rLjQ4K8
+	PhBTC1WYViF5u8R+zdphp5h0ZAf7c2D0XVu+UwNFcCu9j5LKpLhtVe8Tr6JSCp4eKm2juKYiymoOm
+	3sIuIn/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZsXC-004kYH-Fd; Wed, 08 Mar 2023 12:04:42 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1pZsYC-004ksj-Ui; Wed, 08 Mar 2023 12:05:44 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZsX1-004kVA-Ui
-	for linux-mediatek@lists.infradead.org; Wed, 08 Mar 2023 12:04:33 +0000
-Received: by mail-wm1-x330.google.com with SMTP id j19-20020a05600c1c1300b003e9b564fae9so1123741wms.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Mar 2023 04:04:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678277069;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=amflx+MPu/55qREv7D1gpSWbJ6NWDsdR+AZRDR7ovnE=;
-        b=MXXuoAJ25BhikwDMJMbsOMMSMTpkbh236/a+M7b/jvA/yI2WL8SKcnJseSiiTCATdv
-         ygqlltiWCufIHuCEJMDnUjiNuXT+L46Bjff6zQncWfRMPoJRqeq88lx1I7fznBoo9f/C
-         5i+6ag5xC/vwCsuF5Llp00jNeH+zhHkBKjfiDq4sBIWepdUjQrCx9R1Y7oD5NklTCbmJ
-         uu9IEi6ZiZGowy4ePxMiVGKFpRPZwOhe8F5App/XMXzVlJkaC8zDAigwkr4vtC/8q2OT
-         54Gj6NJp2shY2QwYlupJrlElYNiF9bzE5fPZf015nbNbfc7C+vs4RmM1/yFmN77Rg97r
-         aZ+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678277069;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=amflx+MPu/55qREv7D1gpSWbJ6NWDsdR+AZRDR7ovnE=;
-        b=Wykxui3nkIFBrcXZLxx7lR9/REw9j74uTC+L9StEnCDgFbvvXzgBHDs+Xx1znaPZRi
-         slBJYMpEwXV2ZlSqu4Ke8VpQSS6pHOUkZzX5YpBJfZNfQlS1g4I6OdGom8g2LcYDBIIN
-         8/zK2S7Zm+mfj2DP6yesSns/2XoPzSmlOjRLGT7AIEziNyqniF3KrMjzjvenIYtaRIgV
-         bPQGg+VAtTCemNS2qkhye5LBBDUr+mNeS+2Cc1UFFjbKt6BTwnjlnv54fX24Vnlqt4s0
-         v1HurEde+ECDx1tbRQTAUoV4rMGlicx9YJ8Kqn4tGATbLDidN74TqBeYcu2ASqbCsI0o
-         9zyw==
-X-Gm-Message-State: AO0yUKV7mY0tYNwIY/kHim/2wSVFsuxJi8m0DRFA6SqG3/lX0eJwl0yr
-	rnAylQLkLddhfwmJWTOo88k4Nw==
-X-Google-Smtp-Source: AK7set+BQHFboi4QXgAYqrYtuSpR1zmoAeIuRNLA1tt4tiD/NZOIeUje28/bcJ5vKzbXewtLlkt13Q==
-X-Received: by 2002:a05:600c:3512:b0:3ea:e554:7815 with SMTP id h18-20020a05600c351200b003eae5547815mr16957712wmq.9.1678277068004;
-        Wed, 08 Mar 2023 04:04:28 -0800 (PST)
-Received: from aspen.lan (cpc141216-aztw34-2-0-cust174.18-1.cable.virginm.net. [80.7.220.175])
-        by smtp.gmail.com with ESMTPSA id x21-20020a05600c189500b003e71a6be279sm15336997wmp.37.2023.03.08.04.04.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Mar 2023 04:04:27 -0800 (PST)
-Date: Wed, 8 Mar 2023 12:04:25 +0000
-From: Daniel Thompson <daniel.thompson@linaro.org>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Lee Jones <lee@kernel.org>, Jingoo Han <jingoohan1@gmail.com>,
-	Helge Deller <deller@gmx.de>,
-	Michael Hennerich <michael.hennerich@analog.com>,
-	Support Opensource <support.opensource@diasemi.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	dri-devel@lists.freedesktop.org, linux-fbdev@vger.kernel.org,
-	kernel@pengutronix.de,
+	id 1pZsY9-004kqe-9U; Wed, 08 Mar 2023 12:05:43 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pZsXr-00028P-0Q;
+	Wed, 08 Mar 2023 13:05:23 +0100
+Date: Wed, 8 Mar 2023 12:05:19 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>, netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-pwm@vger.kernel.org,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH 00/13] backlight: Convert to platform remove callback
- returning void
-Message-ID: <20230308120425.GA6174@aspen.lan>
-References: <20230308073945.2336302-1-u.kleine-koenig@pengutronix.de>
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vladimir Oltean <vladimir.oltean@nxp.com>,
+	Jianhui Zhao <zhaojh329@gmail.com>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
+	Alexander Couzens <lynxis@fe80.eu>
+Subject: Re: [PATCH net-next v12 09/18] net: ethernet: mtk_eth_soc: Fix link
+ status for none-SGMII modes
+Message-ID: <ZAh5/+erE6yYYl7B@makrotopia.org>
+References: <cover.1678201958.git.daniel@makrotopia.org>
+ <1590fb0e69f6243ac6a961b16bf7ae7534f46949.1678201958.git.daniel@makrotopia.org>
+ <ZAhzt5eIZiJUyVm7@shell.armlinux.org.uk>
+ <B69026D7-E770-4168-B1CA-54E34D52C961@public-files.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230308073945.2336302-1-u.kleine-koenig@pengutronix.de>
+In-Reply-To: <B69026D7-E770-4168-B1CA-54E34D52C961@public-files.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_040431_996888_77930C66 
-X-CRM114-Status: UNSURE (   7.06  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230308_040541_355021_17AEF427 
+X-CRM114-Status: GOOD (  21.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,36 +84,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 08, 2023 at 08:39:32AM +0100, Uwe Kleine-König wrote:
-> Uwe Kleine-König (13):
->   backlight: aat2870_bl: Convert to platform remove callback returning
->     void
->   backlight: adp5520_bl: Convert to platform remove callback returning
->     void
->   backlight: cr_bllcd: Convert to platform remove callback returning
->     void
->   backlight: da9052_bl: Convert to platform remove callback returning
->     void
->   backlight: hp680_bl: Convert to platform remove callback returning
->     void
->   backlight: led_bl: Convert to platform remove callback returning void
->   backlight: lm3533_bl: Convert to platform remove callback returning
->     void
->   backlight: lp8788_bl: Convert to platform remove callback returning
->     void
->   backlight: mt6370-backlight: Convert to platform remove callback
->     returning void
->   backlight: pwm_bl: Convert to platform remove callback returning void
->   backlight: qcom-wled: Convert to platform remove callback returning
->     void
->   backlight: rt4831-backlight: Convert to platform remove callback
->     returning void
->   backlight: sky81452-backlight: Convert to platform remove callback
->     returning void
+On Wed, Mar 08, 2023 at 12:44:57PM +0100, Frank Wunderlich wrote:
+> Am 8. März 2023 12:38:31 MEZ schrieb "Russell King (Oracle)" <linux@armlinux.org.uk>:
+> >On Tue, Mar 07, 2023 at 03:54:11PM +0000, Daniel Golle wrote:
+> >> Link partner advertised link modes are not reported by the SerDes
+> >> hardware if not operating in SGMII mode. Hence we cannot use
+> >> phylink_mii_c22_pcs_decode_state() in this case.
+> >> Implement reporting link and an_complete only and use speed according to
+> >> the interface mode.
+> >> 
+> >> Fixes: 14a44ab0330d ("net: mtk_eth_soc: partially convert to phylink_pcs")
+> >> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> >
+> >This has been proven to work by Frank Wunderlich last October, so by
+> >making this change, you will be regressing his setup.
+> 
+> Hi
+> 
+> My tests were done with 1 kind of 1g fibre sfp as i only have these atm...have ordered some 2g5 rj54 ones,but don't have them yet. I'm not sure if they are working with/without sgmii (1000base-X) and if they have builtin phy.
+> 
+> Daniel have a lot more of different SFPs and some (especially 2g5) were not working after our pcs change.
 
-Whole series is:
-Reviewed-by: Daniel Thompson <daniel.thompson@linaro.org>
+Exactly. 1 GBit/s SFPs with built-in PHY and using SGMII are working
+fine before and after conversion to phylink_pcs. 1000Base-X and
+2500Base-X PHYs and SFPs were broken after this.
 
+The patch about (and the other one you already NACK'ed) fixes those
+codepaths which were simply not used in Frank's setup.
 
-Thanks!
+> 
+> >What are you testing against? Have you proven independently that the
+> >link partner is indeed sending a valid advertisement for the LPA
+> >register to be filled in?
+> >
+
+I have a ballpark of different SFPs and MediaTek boards with different
+PHYs here and tried all of them.
+
+I have no way to tell if the SFPs and PHYs which stopped working after
+the phylink_pcs conversion are sending valid advertisement. The only
+other boards with SFP slots I got here are RealTek-based switches, and
+all I can say is that on an RTL8380 based 1G switch both, the SFP
+modules containing a PHY and operating in SGMII mode as well as the
+ones without a PHY exposed via i2c-mdio and operating in 1000Base-X
+mode are working fine with that switch, with both, stock firmware and
+OpenWrt running on it.
+
+However, even should they not send valid advertisement, they are very
+common parts and they were working before and not after the change to
+phylink_pcs, for the reasons mentioned in the description of this
+patch.
 
