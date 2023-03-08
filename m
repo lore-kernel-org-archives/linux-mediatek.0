@@ -4,90 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9D72C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 19:01:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98614C742A7
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 19:03:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t11cxmne+0VdAolMvDq/xltshYeH2IXmpwmlXchwk3k=; b=xztWlUcPZHFKCuc+nWbArgCSWx
-	2zUIrKtkxpofFQrNCPs5eCJBJuh+gYLbKzIlM1cWCIO73hvLZD987bzyguVoOPW7qe0z/qQabxv8x
-	rkfZ+T7mFty0d0TpRY12Wgo7zDKpfhNeF4jUSodAyymEEi5VRj8txKo2aASxJ/gxt/kQiFIjWv+/M
-	L+waeJ4dwiDpIzrV7kGhJw2rc0DoATrN/C4/uUqYpw9O/z7EcE4gtC6ACeaUF9If1CVK4/7ZHf2og
-	dq7SEWl5k3Fzi9ZKBxiyeFf5B0NSNb5tLQnqKId4Yhhs30XR1GjmS4DinXo2EZMxx8DIkIO1iOJ6Q
-	6IuEU+lQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5FrWOB0uVxHx56X9xrWxuDWJ/kb3JEYgMVQs34PVT2U=; b=nK2ftSOilgyQggm5/c3qB/yWOv
+	4PUXJbZYQCVjacGSiRCgBvBjBFZw5ZllWfjao8oFlekHEGHh9PESOwglFxq5dtf/sDbAJLxSaaaIn
+	16ega//x56X3C5qsLSa95/8UslInwQ9/2KAdRDmKs9C1sMhzgJ85+9BzP4izkr//Z7fsQlsfFi85+
+	EJKRhi17EmE4yfJReZ7tA7M5DsvdoiOm9nl803hGnWD+7qGi3W3acrxBBcSxOka3lRqFRpdBj+2uV
+	fFCSIOm+VimH4UClT+y5r752abGzknfi+IFup1EeyPiv7dgxhahq+X2Qr1kSKD4smTtqHafJbKthY
+	h++aSpuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZz23-006STw-JU; Wed, 08 Mar 2023 19:00:59 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1pZz4D-006TKM-Vl; Wed, 08 Mar 2023 19:03:13 +0000
+Received: from mail-oa1-f52.google.com ([209.85.160.52])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZz1q-006SMj-08
-	for linux-mediatek@lists.infradead.org; Wed, 08 Mar 2023 19:00:47 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id j11so50217236edq.4
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Mar 2023 11:00:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678302044;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=t11cxmne+0VdAolMvDq/xltshYeH2IXmpwmlXchwk3k=;
-        b=AGLZkhWFlMA8ZWIjUlo0+w3j+VFetWhvUJxpWk0y0IoM53AD4KkK9U4PLEdndBDqQg
-         xu5jkIFSsnXO74ausz2POBUYhA7DpXBG7rJIc4SXzSBYunKc/Uq0Y848Fi0ibHHV/t5n
-         MTQPTJxKtdipKusQ+0r6Ct67v3Uhl12P3UszYAS9WvufRH08OOT4Ija27PAYJQRdXlKp
-         XZNnumm6spmdNIbzNbaDDPOLazEWmpj0RwawvbRfKEcEXr/FwTB8KDX7I7koQNrwq5cO
-         2NnwC/96XcIxWGgxA/jq9dJF5MOv+mIIfBpddgzLuiAxZeAWBbrYLNKr0ssGSGaGbQxJ
-         B3uQ==
+	id 1pZz3y-006TDm-Vg; Wed, 08 Mar 2023 19:03:00 +0000
+Received: by mail-oa1-f52.google.com with SMTP id 586e51a60fabf-17711f56136so4878568fac.12;
+        Wed, 08 Mar 2023 11:02:58 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678302044;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=t11cxmne+0VdAolMvDq/xltshYeH2IXmpwmlXchwk3k=;
-        b=xVmCEOHhGqvMxZCTymQvODp3xAZJyjMAYKlhZLZr1/WbFSS8sKC9PD8RmnCOXvQ7lQ
-         bcxiPLoBlHTRQf4zf+JkDU//t5QO6+AXVOIof7MBGxksVT6oI/de48g+CAIbmWgctx3W
-         VtidQcx+h57A3FQXYXeNc1kXmLxe5S0+5tv/o8WAKHvgiyj/tAkR8h9YSOSh3KC6OWBb
-         0k112NcoD9ixkAJ7dPJtMcNlfX2eqEQnuCnGLN2COEkpmvwZAyv/nWNZC/bXvQ1rz5sF
-         NOGGQBBMpa3g9bgMfLoc4OIpdWoHj7mZX3brC7QVBANfIaCFN7uBixYmp83FGACiY/Pw
-         xYoQ==
-X-Gm-Message-State: AO0yUKVvYdwOdP3vnFF+94UFsTXMhXsiAWTEpIJ9yj/tPThY/WZoGoHZ
-	7cqGU5h68yMMrORUKqxGfyA6Sg==
-X-Google-Smtp-Source: AK7set/+5jp0MA8IXZg5DhthNgI1lxVOkSh+a5PHrXyYyfbVxm4Qz0kTiahcu3zvWUYmETajoJJw5w==
-X-Received: by 2002:a17:907:7e9a:b0:88a:a27c:c282 with SMTP id qb26-20020a1709077e9a00b0088aa27cc282mr25411368ejc.47.1678302044260;
-        Wed, 08 Mar 2023 11:00:44 -0800 (PST)
-Received: from ?IPV6:2a02:810d:15c0:828:ff33:9b14:bdd2:a3da? ([2a02:810d:15c0:828:ff33:9b14:bdd2:a3da])
-        by smtp.gmail.com with ESMTPSA id dt2-20020a170906b78200b008dcf89a72d7sm7955386ejb.147.2023.03.08.11.00.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 08 Mar 2023 11:00:43 -0800 (PST)
-Message-ID: <def9197e-bb3c-b9f2-35c5-168b632ef93e@linaro.org>
-Date: Wed, 8 Mar 2023 20:00:42 +0100
+        d=1e100.net; s=20210112; t=1678302178;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=5FrWOB0uVxHx56X9xrWxuDWJ/kb3JEYgMVQs34PVT2U=;
+        b=NtnJtrc4I2M1coaFu9kReo3X304+tChBR0EPl+K/4L+K/LNgliCLqFvBXON2CrN5fF
+         +md/0jgTQSVjzZuBBoAkBSK+oiUM+Tzf/hzY4LlDn892P99p3ctwyWxLNH7X0w7Ns9do
+         oFGn9G4CBGsa0P0mc45zpJskQAmcUYyrxEPSRHYliGGtvytceRieQVfj22SIpH50+DAb
+         a3uMqUIwFZCs7SR6EV6B9H89yPWuHI9tB3r5kJE7FLgSYDreqK9DRl5/KJC2MHQ7Fg6O
+         v5jKz3rAPWg3LvuwVs8ds0NjsstGnjO0FStTybGccNLkfajrWJgIGCtqaNdrKXbXMel+
+         VcWg==
+X-Gm-Message-State: AO0yUKVDpTMNJgs5ZiRrNG8R7plHfNkIVk7Ni+XQmqhOFaiAC6yfGXxA
+	NM13WqNb33EECdPsvKhr/Q==
+X-Google-Smtp-Source: AK7set+DvjoWc1KWq2h3sKBZx+8CoWicRMFGWsEt1KRrNByZmsCl9/pHwHZRNzh/c5BtXW6lqvK2cw==
+X-Received: by 2002:a05:6870:b14d:b0:172:80f9:a545 with SMTP id a13-20020a056870b14d00b0017280f9a545mr13141161oal.25.1678302178217;
+        Wed, 08 Mar 2023 11:02:58 -0800 (PST)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id d199-20020a4a52d0000000b005264a1472adsm1543777oob.15.2023.03.08.11.02.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Mar 2023 11:02:57 -0800 (PST)
+Received: (nullmailer pid 3604331 invoked by uid 1000);
+	Wed, 08 Mar 2023 19:02:57 -0000
+Date: Wed, 8 Mar 2023 13:02:57 -0600
+From: Rob Herring <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: airlied@gmail.com, daniel@ffwll.ch, krzysztof.kozlowski+dt@linaro.org, steven.price@arm.com, alyssa.rosenzweig@collabora.com, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wenst@chromium.org
+Subject: Re: [PATCH v4 03/12] dt-bindings: gpu: mali-bifrost: Fix
+ power-domain-names validation
+Message-ID: <20230308190257.GA3601415-robh@kernel.org>
+References: <20230228102704.708150-1-angelogioacchino.delregno@collabora.com>
+ <20230228102704.708150-3-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v2 1/2] dt-bindings: power: Add binding for MediaTek
- MT6735 power controller
-Content-Language: en-US
-To: Yassine Oudjana <yassine.oudjana@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Tinghan Shen <tinghan.shen@mediatek.com>,
- "Garmin.Chang" <Garmin.Chang@mediatek.com>,
- MandyJH Liu <mandyjh.liu@mediatek.com>
-Cc: Yassine Oudjana <y.oudjana@protonmail.com>, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20230302122708.73848-1-y.oudjana@protonmail.com>
- <20230302122708.73848-2-y.oudjana@protonmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230302122708.73848-2-y.oudjana@protonmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230228102704.708150-3-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_110046_079359_2514B583 
-X-CRM114-Status: GOOD (  16.82  )
+X-CRM114-CacheID: sfid-20230308_110259_044589_FCF1730E 
+X-CRM114-Status: GOOD (  15.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,64 +79,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02/03/2023 13:27, Yassine Oudjana wrote:
-> From: Yassine Oudjana <y.oudjana@protonmail.com>
+On Tue, Feb 28, 2023 at 11:26:55AM +0100, AngeloGioacchino Del Regno wrote:
+> Commit ("dt-bindings: gpu: mali-bifrost: Add Mediatek MT8183")
+> incorrectly introduced power domain names for MT8183, causing
+> validation issues.
 > 
-> Add DT binding for MediaTek MT6735 SCPSYS power controller.
+> Add power-domain-names to the base schema, allowing a maximum of
+> five elements; since platforms having a single power domain don't
+> need any actual domain name, disallow that for each sub-schema.
 > 
-> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+> Fixes: a7a596cd3115 ("dt-bindings: gpu: mali-bifrost: Add Mediatek MT8183")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../bindings/power/mediatek,power-controller.yaml  |  2 ++
->  .../devicetree/bindings/soc/mediatek/scpsys.txt    |  1 +
->  include/dt-bindings/power/mt6735-power.h           | 14 ++++++++++++++
->  3 files changed, 17 insertions(+)
->  create mode 100644 include/dt-bindings/power/mt6735-power.h
+>  .../devicetree/bindings/gpu/arm,mali-bifrost.yaml          | 7 +++++++
+>  1 file changed, 7 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> index c9acef80f452..710db61cab53 100644
-> --- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> +++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> @@ -23,6 +23,7 @@ properties:
+> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+> index 5b7f1c9d2b30..bf0f7f1f71e0 100644
+> --- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+> @@ -65,6 +65,10 @@ properties:
+>      minItems: 1
+>      maxItems: 5
 >  
->    compatible:
->      enum:
-> +      - mediatek,mt6735-power-controller
->        - mediatek,mt6795-power-controller
->        - mediatek,mt8167-power-controller
->        - mediatek,mt8173-power-controller
-> @@ -81,6 +82,7 @@ $defs:
->        reg:
->          description: |
->            Power domain index. Valid values are defined in:
-> +              "include/dt-bindings/power/mt6735-power.h" - for MT6735 type power domain.
+> +  power-domain-names:
+> +    minItems: 1
 
-Isn't the comment obvious? Maybe let's stop adding them?
+If you are disallowing for a single domain, then this could be 2...
 
->                "include/dt-bindings/power/mt6795-power.h" - for MT8167 type power domain.
->                "include/dt-bindings/power/mt8167-power.h" - for MT8167 type power domain.
->                "include/dt-bindings/power/mt8173-power.h" - for MT8173 type power domain.
-> diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> index 2bc367793aec..3530a6668b48 100644
-> --- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> +++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> @@ -20,6 +20,7 @@ Required properties:
->  - compatible: Should be one of:
->  	- "mediatek,mt2701-scpsys"
->  	- "mediatek,mt2712-scpsys"
-> +	- "mediatek,mt6735-scpsys"
->  	- "mediatek,mt6765-scpsys"
->  	- "mediatek,mt6797-scpsys"
->  	- "mediatek,mt7622-scpsys"
-> diff --git a/include/dt-bindings/power/mt6735-power.h b/include/dt-bindings/power/mt6735-power.h
-> new file mode 100644
-> index 000000000000..782b49a88773
-> --- /dev/null
-> +++ b/include/dt-bindings/power/mt6735-power.h
+Reviewed-by: Rob Herring <robh@kernel.org>
 
-I am pretty sure we already discussed the file naming with some other
-patches... mediatek,mt6735-power-controller.h
-
-Best regards,
-Krzysztof
-
+> +    maxItems: 5
+> +
+>    resets:
+>      minItems: 1
+>      maxItems: 3
+> @@ -112,6 +116,7 @@ allOf:
+>        properties:
+>          power-domains:
+>            maxItems: 1
+> +        power-domain-names: false
+>        required:
+>          - resets
+>    - if:
+> @@ -136,6 +141,7 @@ allOf:
+>              - const: bus_ace
+>          power-domains:
+>            maxItems: 1
+> +        power-domain-names: false
+>          resets:
+>            minItems: 3
+>          reset-names:
+> @@ -186,6 +192,7 @@ allOf:
+>              - const: bus
+>          power-domains:
+>            maxItems: 1
+> +        power-domain-names: false
+>        required:
+>          - clock-names
+>  
+> -- 
+> 2.39.2
+> 
 
