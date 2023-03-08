@@ -4,63 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AA8CC678D5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 12:42:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0473EC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 13:06:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mxTVyA0v8n+ugEViShja2/nO02YnajTUleuPEutG1sQ=; b=NWfrumZEJusgUh5+UAxiBoHLL9
-	kj1sdvgoleZZWKpHr32gMgQXoujQVUYmSVdDZF2usypQPfGA5o+lB3MOzb2mLfG75Cx/IEpaK/Olt
-	ioUKGqeHreVKedvX3hjl7Rtj0iLwJdy6ya5FHL7daYY0uHT1ssxl7CC6tXGuy2dFcKomsWQZjzNNg
-	FMd+LAabmgwoMWnfljjhsspCDtvJ0M/5Iz1P2ENrmhvh/3kXCGORLckt6k8WvK9oJTRKOBkaIytIS
-	hvrpL+LLzJ30WP9Sgz5GepnBldXBaW0FI4g/Tlv11CWQ/az1QKmxYFD2k6q9pIq9in+Qm2MSjxs7O
-	Qfs7B3MA==;
+	bh=I3r/yZfsG1+DpbR/nJJ84mozXnqngQpyIIxts7XzzVw=; b=ZdOr2ApPAedOB9jEVwRWQovN23
+	pojXxRVQVAYLkziEqQsc5VGXitCJbkkA/Vo642jR0fTLa0j0NlQJY4o5RnEFyhYbXGvWTh05Ze2jZ
+	RJc4j4ovZ/LCg1YShUF+AIxRjEwjzBBSp2AEmStacF/QioOT17CmMYr85lr3j/IxtdH1HhGz/RuZM
+	LUwDQT2r4Z8hZQhSwEgPg6sHe2vSvMO+PMVyRkt/zeQBCLnAqYgsY+Ep8qDUlS6tnvCnYHEE9xOSh
+	qp1uHwnTW1GfNn30mRwGbLFhETQZWG7o/36ge0JonX8ssRmL8Viu6WCb9eeGBaJq/NvBIn3GixiXW
+	OTsrI06w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZt7F-004uEV-Ny; Wed, 08 Mar 2023 12:41:57 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1pZtUQ-0052b1-8q; Wed, 08 Mar 2023 13:05:54 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZt7C-004uC2-Ka; Wed, 08 Mar 2023 12:41:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=mxTVyA0v8n+ugEViShja2/nO02YnajTUleuPEutG1sQ=; b=T+w7GXVJVVPmscwBKGpRvQR8zj
-	YVH7+/jayql7u5RcsbMj6+18P66imDJylWjpgFe7Sx9+qVt0KkNQijLdt/d38RBhhC4CA8BJr3ddq
-	tj1GqkTnjmuvuCbxp2M0ocSpuJyd16xGRyY9HhuGZzIHhxq/FG3+iAEauQ40db/8ERt6MNs4sHez9
-	y5BmlsgTiRE2JabGiY93BQ6SWDsX/YcYO4/VpG8vMsSTO2sBx+n/5i/7ae2I2z9MF/WeXE1o8bi4w
-	lswaeNTgUvO9LsCiaIh0IPhx7fZ8uNAE0UaqCi6qA0TKFdjjMJGjn3ON0FtR/Z9UCUpw5TWq3TXRg
-	BZuOvnVQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:41488)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1pZt74-0002Ux-Qt; Wed, 08 Mar 2023 12:41:46 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1pZt71-0002ae-2L; Wed, 08 Mar 2023 12:41:43 +0000
-Date: Wed, 8 Mar 2023 12:41:43 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Daniel Golle <daniel@makrotopia.org>
+	id 1pZtIX-004wNl-7c; Wed, 08 Mar 2023 12:53:38 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pZtIJ-0002Wu-1C;
+	Wed, 08 Mar 2023 13:53:23 +0100
+Date: Wed, 8 Mar 2023 12:53:13 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
 Subject: Re: [PATCH net-next v12 08/18] net: ethernet: mtk_eth_soc: fix
  1000Base-X and 2500Base-X modes
-Message-ID: <ZAiCh8wkdTBT+6Id@shell.armlinux.org.uk>
+Message-ID: <ZAiFOTRQI36nGo+w@makrotopia.org>
 References: <cover.1678201958.git.daniel@makrotopia.org>
  <fd5c7ea79a7f84caac7d0b64b39fe5c4043edfa8.1678201958.git.daniel@makrotopia.org>
  <ZAhzDDjZ8+gxyo3V@shell.armlinux.org.uk>
  <ZAh7hA4JuJm1b2M6@makrotopia.org>
+ <ZAiCh8wkdTBT+6Id@shell.armlinux.org.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZAh7hA4JuJm1b2M6@makrotopia.org>
+In-Reply-To: <ZAiCh8wkdTBT+6Id@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_044154_695733_76CB4E74 
-X-CRM114-Status: GOOD (  30.75  )
+X-CRM114-CacheID: sfid-20230308_045337_297378_34211473 
+X-CRM114-Status: GOOD (  38.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,69 +63,83 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <vladimir.oltean@nxp.com>, Eri
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 08, 2023 at 12:11:48PM +0000, Daniel Golle wrote:
-> On Wed, Mar 08, 2023 at 11:35:40AM +0000, Russell King (Oracle) wrote:
-> > On Tue, Mar 07, 2023 at 03:53:58PM +0000, Daniel Golle wrote:
-> > > After conversion to phylink_pcs the 1000Base-X and 2500Base-X modes
-> > > would work only after `ethtool -s eth1 autoneg off`.
-> > > As ethtool autoneg and the ETHTOOL_LINK_MODE_Autoneg_BIT is supposed
-> > > to control auto-negotiation on the external interface it doesn't make
-> > > much sense to use it to control on-board SGMII auto-negotiation between
-> > > MAC and PHY.
-> > > Set correct values to really only enable SGMII auto-negotiation when
-> > > actually operating in SGMII mode. For 1000Base-X and 2500Base-X mode,
-> > > enable remote-fault detection only if in-band-status is enabled.
-> > > This fixes using 1000Base-X and 2500Base-X SFPs on the BananaPi R3
-> > > board and also makes it possible to use interface-mode-switching PHYs
-> > > operating in either SGMII mode for 10M/100M/1000M or in 2500Base-X for
-> > > 2500M mode on other boards.
+On Wed, Mar 08, 2023 at 12:41:43PM +0000, Russell King (Oracle) wrote:
+> On Wed, Mar 08, 2023 at 12:11:48PM +0000, Daniel Golle wrote:
+> > On Wed, Mar 08, 2023 at 11:35:40AM +0000, Russell King (Oracle) wrote:
+> > > On Tue, Mar 07, 2023 at 03:53:58PM +0000, Daniel Golle wrote:
+> > > > After conversion to phylink_pcs the 1000Base-X and 2500Base-X modes
+> > > > would work only after `ethtool -s eth1 autoneg off`.
+> > > > As ethtool autoneg and the ETHTOOL_LINK_MODE_Autoneg_BIT is supposed
+> > > > to control auto-negotiation on the external interface it doesn't make
+> > > > much sense to use it to control on-board SGMII auto-negotiation between
+> > > > MAC and PHY.
+> > > > Set correct values to really only enable SGMII auto-negotiation when
+> > > > actually operating in SGMII mode. For 1000Base-X and 2500Base-X mode,
+> > > > enable remote-fault detection only if in-band-status is enabled.
+> > > > This fixes using 1000Base-X and 2500Base-X SFPs on the BananaPi R3
+> > > > board and also makes it possible to use interface-mode-switching PHYs
+> > > > operating in either SGMII mode for 10M/100M/1000M or in 2500Base-X for
+> > > > 2500M mode on other boards.
+> > > > 
+> > > > Fixes: 14a44ab0330d ("net: mtk_eth_soc: partially convert to phylink_pcs")
+> > > > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 > > > 
-> > > Fixes: 14a44ab0330d ("net: mtk_eth_soc: partially convert to phylink_pcs")
-> > > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> > > NAK.
+> > > 
+> > > There are PHYs out there which operate in SGMII mode but do not
+> > > exchange the SGMII 16-bit configuration word. The code implemented
+> > > here by me was explicitly to allow such a configuration to work,
+> > > which is defined as:
+> > > 
+> > > 	SGMII *without* mode == inband
+> > > 
+> > > An example of this is the Broadcom 84881 PHY which can be found on
+> > > SFP modules.
 > > 
-> > NAK.
+> > I also have multiple such 1000Base-T SFP modules here (finisar, AJYA),
+> > and this change doesn't touch the codepaths relevant for those. They
+> > are operating in SGMII mode, they have always been working fine.
 > > 
-> > There are PHYs out there which operate in SGMII mode but do not
-> > exchange the SGMII 16-bit configuration word. The code implemented
-> > here by me was explicitly to allow such a configuration to work,
-> > which is defined as:
-> > 
-> > 	SGMII *without* mode == inband
-> > 
-> > An example of this is the Broadcom 84881 PHY which can be found on
-> > SFP modules.
+> > What I'm trying to fix here is 1000Base-X and 2500Base-X mode which
+> > has been broken by introducing ETHTOOL_LINK_MODE_Autoneg_BIT as the
+> > deciding factor for in-band AN here.
 > 
-> I also have multiple such 1000Base-T SFP modules here (finisar, AJYA),
-> and this change doesn't touch the codepaths relevant for those. They
-> are operating in SGMII mode, they have always been working fine.
+> ... which is correct.
 > 
-> What I'm trying to fix here is 1000Base-X and 2500Base-X mode which
-> has been broken by introducing ETHTOOL_LINK_MODE_Autoneg_BIT as the
-> deciding factor for in-band AN here.
+> > Can you explain why ETHTOOL_LINK_MODE_Autoneg_BIT was used there in
+> > first place? Is my understanding of this bit controlling autoneg on the
+> > *external* interface rather than on the *system-side* interface wrong?
+> 
+> Think about what 1000BASE-X is for. It's not really for internal links,
+> it's intended by IEEE 802.3 to be the 1G *media* side protocol for
+> 1000BASE-SX, 1000BASE-LX, 1000BASE-CX etc links.
+> 
+> Therefore, when being used in that case, one may wish to disable
+> autoneg over the fibre link. Hence, turning off autoneg via ethtool
+> *should* turn off autoneg over the fibre link. So, using
+> ETHTOOL_LINK_MODE_Autoneg_BIT to gate 802.3z autonegotiation the
+> correct thing to do.
+> 
+> If we have a PHY using 1000BASE-X, then it is at odds with the
+> primary purpose of this protocol, especially with it comes to AN.
+> This is why phylink used to refuse to accept PHYs when using 802.3z
+> mode, but Marek wanted this to work, so relaxed the checks
+> preventing such a setup working.
 
-... which is correct.
+Sadly 2500Base-X is very commonly used to connect 2500Base-T-capable
+PHYs or SFP modules. I also got an ATS branded 1000M/100M/10M copper
+SFP module which uses 1000Base-X as system-side interface, independently
+of the speed of the link partner on the TP interface.
+All of them do not work with inband-AN enabled and a link only comes
+up after `ethtool -s eth1 autoneg off` in the current implementation,
+while previously they were working just fine.
 
-> Can you explain why ETHTOOL_LINK_MODE_Autoneg_BIT was used there in
-> first place? Is my understanding of this bit controlling autoneg on the
-> *external* interface rather than on the *system-side* interface wrong?
+I understand that there isn't really a good solution for 1000Base-X as
+thanks to you I now understand that SerDes autoneg just transparently
+ends up being autoneg on a fiber link.
 
-Think about what 1000BASE-X is for. It's not really for internal links,
-it's intended by IEEE 802.3 to be the 1G *media* side protocol for
-1000BASE-SX, 1000BASE-LX, 1000BASE-CX etc links.
-
-Therefore, when being used in that case, one may wish to disable
-autoneg over the fibre link. Hence, turning off autoneg via ethtool
-*should* turn off autoneg over the fibre link. So, using
-ETHTOOL_LINK_MODE_Autoneg_BIT to gate 802.3z autonegotiation the
-correct thing to do.
-
-If we have a PHY using 1000BASE-X, then it is at odds with the
-primary purpose of this protocol, especially with it comes to AN.
-This is why phylink used to refuse to accept PHYs when using 802.3z
-mode, but Marek wanted this to work, so relaxed the checks
-preventing such a setup working.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+2500Base-X, however, is hardly used for fiber links, but rather mostly
+for 2500Base-T PHYs and SFP module as well as xPON SFPs. Maybe we could
+at least have in-band AN disabled by default for those to get them
+working without requiring the user to carry out ethtool settings?
 
