@@ -4,55 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B1A0C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 15:11:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A64EC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 15:18:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XtTjWJUWjI0AhCXmK568pJfMomi0rP7MwrlsUcp4fN4=; b=Rv4EEVZPML0UrAtpsntBSxSLDn
-	Qo+bJeAuybyy9WpoX+HxETC8LALSP2lcQX+ihJr1ov7k3z+3KxN3BI0zW+qbU377vSlJoiKaoQmGz
-	3PDNNNT1/TRwWNVJ6Ixlx7UCM2SKfnFhixRCSv2/MxhR2t0/9fG5ijoD+JCBMex90ITGO9yaKWYqH
-	8nXSf0YBHG3nL5S0hmWGM6zTb0bKA+CLyqrmr2p9HTc7SZO74giEFCPPb1LdC2F2WB19S3we/b5Sv
-	6FPk3UfMygUAOg6FenwAJaa+wrgcnXpoV2V3PqLbrX+XV8LKimZPL5Smn2YvLtaG/SiOlC/UI1UNt
-	J9pNcb8w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Subject:To:From:MIME-Version:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=CpL8pfFHgYoyZ2Mo0Ft2NbfXGys8eh5PDeoz/LLjCnE=; b=uiWqBQGUs1nGWGicoadkOXfbM8
+	vRpw4sFjBbZwGkuTYKdQzI5GBuPGXGoQreuEZnKRWcuD592V5LpeH+l7W0yLMNiwr68ZWHpfCAusn
+	XBL4z9GvrrWXFKd0g4Ehx6CC23oikRcw+jIqnpk2jrEOvDds/ULtPiU/SADK/LHbBsGI/Q8pnbGx9
+	HBX2Z9dK/3oyxGJvkkGhqnSRZAGkg7FM2YTQvv2NwbqJA5vdPE7FVQNfY+eu/RfJlmPawAFFUjXk+
+	4pO24b37UDChTB2ospAYfNFNlaZd3VaQZ/7kjUS+gZr/fH9i0yZ39/J47kRwgQTWvwcrR1r5qCKMv
+	MM+lBE/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZvRN-005dXD-BB; Wed, 08 Mar 2023 15:10:53 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pZvYR-005fbk-Ko; Wed, 08 Mar 2023 15:18:11 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZvRK-005dW9-6P; Wed, 08 Mar 2023 15:10:52 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pZvR8-0003fl-2r;
-	Wed, 08 Mar 2023 16:10:39 +0100
-Date: Wed, 8 Mar 2023 15:08:55 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Subject: Re: [PATCH net-next v12 08/18] net: ethernet: mtk_eth_soc: fix
- 1000Base-X and 2500Base-X modes
-Message-ID: <ZAik+I1Ei+grJdUQ@makrotopia.org>
-References: <fd5c7ea79a7f84caac7d0b64b39fe5c4043edfa8.1678201958.git.daniel@makrotopia.org>
- <ZAhzDDjZ8+gxyo3V@shell.armlinux.org.uk>
- <ZAh7hA4JuJm1b2M6@makrotopia.org>
- <ZAiCh8wkdTBT+6Id@shell.armlinux.org.uk>
- <ZAiFOTRQI36nGo+w@makrotopia.org>
- <ZAiJqvzcUob2Aafq@shell.armlinux.org.uk>
- <20230308134642.cdxqw4lxtlgfsl4g@skbuf>
- <ZAiXvNT8EzHTmFPh@shell.armlinux.org.uk>
- <ZAiciK5fElvLXYQ9@makrotopia.org>
- <ZAijM91F18lWC80+@shell.armlinux.org.uk>
+	id 1pZvYO-005fYi-Eh
+	for linux-mediatek@lists.infradead.org; Wed, 08 Mar 2023 15:18:09 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id ay29-20020a05600c1e1d00b003e9f4c2b623so1554182wmb.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Mar 2023 07:18:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678288682;
+        h=content-transfer-encoding:subject:to:from:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=CpL8pfFHgYoyZ2Mo0Ft2NbfXGys8eh5PDeoz/LLjCnE=;
+        b=kNByBMal4zZHXdad7tc2QCDgtp/m9PMhcqp+wlj+KjBJcEHqZ3CJbosiP1vgGMGVkg
+         wKx6halLGdnthasuLHK5VS1ho8F38Unxc5Mjhvu0dtq/3/mvDtZp/7VD+uN7oBEup9O2
+         7KxewzMnLA0ekqlP+H0qGqJh9y3JqyTBNyxR0VJhf/Hm2mljk4HYI8sU6SkzjcBu7DZf
+         8VvOQTtl+y2khF2bpJhO8r/uYWvcPtATqETY4w9KX2Pl5dKDy+qAJeRfNMfK6JVJH38t
+         +qbok1LujptLeuXgEC+0A0ljTdHcNNGJhyeOKXtggy/7NxtTEztNAGq8K9p0ZxRq+OJS
+         cNwg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678288682;
+        h=content-transfer-encoding:subject:to:from:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=CpL8pfFHgYoyZ2Mo0Ft2NbfXGys8eh5PDeoz/LLjCnE=;
+        b=R0dpRQSjipKwQRScZOhoLUdff68DcKNC+FYRfVCJ+rYMDooqfakFATJGDaHlHdevtP
+         SyDkKGJvIv0ZN53kxKWytCHL5HBHvWSA387Jyq+8l77y25yDYu7ya05eNqegKIK8Ft3p
+         REdOlXhC1Mm2+W+wU0zCfqqYpNZhQtHjvWHNtZfJAM3VYj2nshQSxRufx7xH7FRNdvmR
+         6nlUCGlE4PMb0CmmaoK5R/gcqGGb2Vgr8AnW/WmwesTzCgRva1cJp3M2zVrqY5d2j/X4
+         mjDYF2bM/QQllouuHF+/v7ICRWA1tPLdqRbK04G+bggOVXQHW4M38RJzhnpttTLRYI47
+         QLeg==
+X-Gm-Message-State: AO0yUKWg14FsHdddw+oB/9neaXk7st80aUelBNYAoavlWFcSwxTUvR1m
+	3bE5petFFnFtdkhLK68A36SrKUuMFu8=
+X-Google-Smtp-Source: AK7set/7YcnyKmOCKdg6qoexCcSDKPVPwnSHqx8BMJn8M62bG+pIQvs2hRfutS0vU2rHHdtCQGDTTg==
+X-Received: by 2002:a7b:cc10:0:b0:3eb:3104:efef with SMTP id f16-20020a7bcc10000000b003eb3104efefmr16285682wmh.31.1678288681863;
+        Wed, 08 Mar 2023 07:18:01 -0800 (PST)
+Received: from DESKTOP-8VK398V ([125.62.90.127])
+        by smtp.gmail.com with ESMTPSA id e41-20020a05600c4ba900b003e1f2e43a1csm15774119wmp.48.2023.03.08.07.18.00
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
+        Wed, 08 Mar 2023 07:18:01 -0800 (PST)
+Message-ID: <6408a729.050a0220.f92fb.0940@mx.google.com>
+Date: Wed, 08 Mar 2023 07:18:01 -0800 (PST)
+X-Google-Original-Date: 8 Mar 2023 20:18:01 +0500
 MIME-Version: 1.0
+From: terenceblake6795@gmail.com
+To: linux-mediatek@lists.infradead.org
+Subject: Bid Estimate
 Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZAijM91F18lWC80+@shell.armlinux.org.uk>
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_071050_257006_7D000491 
-X-CRM114-Status: GOOD (  40.59  )
+X-CRM114-CacheID: sfid-20230308_071808_501316_96C210FD 
+X-CRM114-Status: UNSURE (   2.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,116 +84,21 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <vladimir.oltean@nxp.com>, Eric Dumazet <edumazet@google.com>, Florian Fainelli <f.fainelli@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Alexander Couzens <lynxis@fe80.eu>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Jianhui Zhao <zhaojh329@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, =?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 08, 2023 at 03:01:07PM +0000, Russell King (Oracle) wrote:
-> On Wed, Mar 08, 2023 at 02:32:40PM +0000, Daniel Golle wrote:
-> > In general it sound reasonable. We may need more SFP qurik bits to
-> > indicate presence of a PHY on SFP modules which do not expose that
-> > PHY via i2c-mdio or otherwise let the host know about it's presence.
-> 
-> That's a whole load of fun - some modules where the PHY is inaccessible
-> will be using 1000base-X, others will be using SGMII. So yes, its
-> likely that we may need quirks for these. We don't have quirks yet
-> because you're the first to suggest there's a problem.
-> 
-> > For my TP-LINK TL-SM410U 2500Base-T SFP this unfortunately seems to
-> > be the case, and I assume it's actually like that for most
-> > 2500Base-T as well as xPON SFPs... (xPON SFPs are usually managed
-> > via high-level protocols, even Web-UI is common there. They don't
-> > tell you much about them via I2C, I suppose to get them to work in
-> > as many SFP host devices as possible without any software changes).
-> 
-> xPON SFPs are a whole different ball game. For some, they auto-detect
-> while booting and try 2500base-X or 1000base-X to see which will sync
-> and if not they try the other. Other xPON SFPs run their host interface
-> at a speed determined by the configuration set by the remote end. Other
-> xPON SFPs may do something entirely different.
-> 
-> In many cases, their EEPROM is a full of errors - such as advertising
-> that they're 1.2 or 1.3 Gbd while operating in 2500base-X mode.
-> 
-> They do weird stuff with their status pins as well, for example, some
-> use the RX_LOS pin as a uart - which is a problem if it's e.g. tied
-> from the cage to a switch that uses the pin to gate the link-up
-> indication without any software control of that!
-> 
-> With xPON SFPs, it's just a total minefield, which lots of SFF MSA
-> violations all over the place. They're essentially a law to themselves
-> (this is exactly why we have the quirks infrastructure.)
-> 
-> > FYI:
-> > TP-LINK TL-SM410U 2500Base-T module:
-> > 
-> > sfp EE: 00000000: 03 04 07 00 00 00 00 00 00 40 00 01 1f 00 00 00  .........@......
-> > sfp EE: 00000010: 00 00 00 00 54 50 2d 4c 49 4e 4b 20 20 20 20 20  ....TP-LINK     
-> > sfp EE: 00000020: 20 20 20 20 00 30 b5 c2 54 4c 2d 53 4d 34 31 30      .0..TL-SM410
-> > sfp EE: 00000030: 55 20 20 20 20 20 20 20 32 2e 30 20 00 00 00 1b  U       2.0 ....
-> > sfp EE: 00000040: 00 08 01 00 80 ff ff ff 40 3d f0 0d c0 ff ff ff  ........@=......
-> > sfp EE: 00000050: c8 39 7a 08 c0 ff ff ff 50 3d f0 0d c0 ff ff ff  .9z.....P=......
-> > sfp sfp2: module TP-LINK          TL-SM410U        rev 2.0  sn 12260M4001782    dc 220622  
-> 
-> I'm guessing this is a module with a checksum problem...
+Hello,=0D=0A=0D=0AWe provide accurate material take-offs and cost=
+ estimates at low cost and with fast turnaround. Our team of prof=
+essionals has been providing these services to General Contractor=
+s, Subs (Painting, Electrical, Plumbing, Roofing, Drywall, Tile a=
+nd Framing etc.). We offer both Residential and Commercial Estima=
+tes and we cover every trade that you wish to bid, whether you wo=
+rk with CSI Divisions or your unique classification. We use the l=
+atest estimating software backed up by professionals with over a =
+decade of experience.=0D=0A=0D=0AWe are giving almost 25% Discoun=
+t on the first estimate.=0D=0A=0D=0APlease send us the plans or l=
+inks to any FTP site so that we can review the plans and submit y=
+ou a very economical quote.=0D=0A=0D=0ABest Regards.=0D=0ATerence=
+ Blake=0D=0AMarketing Manager=0D=0ACrown Estimation, LLC=0D=0A
 
-No, the checksum of the TL-SM410U is correct. I have patched the kernel
-to always dump the EEPROM, so I can share it with you.
-
-> 
-> > And this is the ATS SFP-GE-T 10/100/1000M copper module doing
-> > rate-adaptation to 1000Base-X:
-> > 
-> > sfp sfp1: EEPROM extended structure checksum failure: 0xb0 != 0xaf
-> 
-> Given how close that is, it looks like they used the wrong algorithm.
-> 
-> > sfp EE: 00000000: 03 04 07 00 00 00 02 12 00 01 01 01 0c 00 03 00  ................
-> > sfp EE: 00000010: 00 00 00 00 4f 45 4d 20 20 20 20 20 20 20 20 20  ....OEM         
-> > sfp EE: 00000020: 20 20 20 20 00 00 90 65 53 46 50 2d 47 45 2d 54      ...eSFP-GE-T
-> > sfp EE: 00000030: 20 20 20 20 00 00 00 00 43 20 20 20 00 00 00 f0      ....C   ....
-> > sfp EE: 00000040: 00 12 00 00 32 31 30 37 31 30 41 30 30 31 32 37  ....210710A00127
-> > sfp EE: 00000050: 33 39 00 00 32 31 30 37 31 30 20 20 60 00 01 af  39..210710  `...
-> > sfp sfp1: module OEM              SFP-GE-T     rev C    sn  dc 
-> 
-> Welcome to the wonderful world of horribly broken SFPs.
-> 
-> Do we know what form of rate adaption this module needs on the
-> transmit path? Does it require the host to pace itself to the media
-> speed (which I suspect will be unreadable if the PHY isn't accessible)
-> or will it send pause frames?
-> 
-> It would be nice to add these to my database - please send me the
-> output of ethtool -m $iface raw on > foo.bin for each module.
-> 
-> > That one already needs quirks to even work at all as TX-FAULT is not
-> > reported properly by the module, see
-> > 
-> > https://github.com/dangowrt/linux/commit/2c694bd494583f08858fabca97cfdc79de8ba089
-> 
-> I'm guessing that's not on a kernel version that has:
-> 
-> 73472c830eae net: sfp: add support for HALNy GPON SFP
-> 5029be761161 net: sfp: move Huawei MA5671A fixup
-> 275416754e9a net: sfp: move Alcatel Lucent 3FE46541AA fixup
-> 23571c7b9643 net: sfp: move quirk handling into sfp.c
-> 8475c4b70b04 net: sfp: re-implement soft state polling setup
-> 
-> which reworks how we deal with the soft/hard state signals.
-> 
-> I think the problem space is growing, and I fear that if we try to
-> address all these issues in one go, we're going to end up with way
-> too much to deal with in one go (which means poor reviews etc.)
-> 
-> Can we try to concentrate on fixing one problem at a time, rather
-> than throwing a whole load of problems into the mix?
-
-Ok. I'll just repost tomorrow without the ????Base-X AN realted patches.
-
-> 
-> Thanks.
-> 
-> -- 
-> RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-> FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
