@@ -4,95 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57FB6C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 13:12:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37AA4C6FD20
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 13:15:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w1qQOPUYZltp62usDX13u0lfSl6bY/5+CW4Brvbfffs=; b=d3LHyiD2aaKO1mdqRkNz+MMVfp
-	Tzb8yVp0u1+ias4ilZhPD9Kwvh/Ti3R9DSdXQ1T/koKF0EKs2skusgT8ViHpt0hPfOuBsINnlbkYy
-	t/IC6j4qUau+PtsJxcImy/2dXEKAaMDE/XziooZJp7OSbKe+e7kT8fprqFB2HTv2ODASete2e9mQ+
-	B8AEtn6DnpKNB8i+ufGmTMgo6q4isS5KtEnemF22qw0i4n0NP5cznij8rUmOgZ1ndFH3nmO9oqduK
-	vV507ot8AF349CiAg+WcX/tFL1BRUOhxeIEo1RaWKkAi4fQHpHGaIBcjoqXs2YuY7z8moxgYM59f7
-	4JCir7Pg==;
+	bh=9jA0qSMARdzRgE1AJqk+4t7Ih8p3aUBwuQDgOk+mXsw=; b=WxIDvuFdgAke8JiO8GW4UGtaXh
+	VrLvGkY7qQ5YXQJkYpxhqblimTfB/3VzrkdVMRr/D/fPccYAiSzttjk9wDKWVced8W+QI8RFmJzBA
+	WmzG2VWrn6tcT5KThxM8EEbUnV51erosdKXJPUSVzBXCvfME3PShK/H+IHDEjkEhV/Tulk+xC883i
+	W77JgDWXyKRiq0LgZNIB6k1h1Na3LxLkKWOOoVn/miTjMj28gDXAp2v/7dUPEgHcM1ABKZOFZg4fs
+	HueP+/K8nkLPSqqdDz8vDRPDdra+55bAuqEZM3Za4yJjAFtbIChRfsZ0uh/wpyYne383ILvUfJ8xM
+	fp5afM7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZtb1-0056FP-B7; Wed, 08 Mar 2023 13:12:43 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1pZtd9-0057QE-7P; Wed, 08 Mar 2023 13:14:55 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZtVx-0053SP-Pi; Wed, 08 Mar 2023 13:07:31 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id l1so15258111wry.12;
-        Wed, 08 Mar 2023 05:07:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678280846;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=w1qQOPUYZltp62usDX13u0lfSl6bY/5+CW4Brvbfffs=;
-        b=LoOmc33r6hDYRPAbUIc7PLTQTmw1nd1Yu1JjIRp7tohLlnWvHQuQCbrLVsYxnwhoAf
-         7VAG8+bxYrXzKq7/ZvkKKQaAzMUUmJZIv36GBOP2aOmn9aLjsKnMVBeidiPun1jUfnAu
-         xpV9uTVIs4cdbz0bmyRk12AxbOUz80jMj9C7KVzL2WdVbEwwOj2l5dkkcWnWLZJVT99W
-         EKbq0sEzdSCv6kVAJ2AqPWtCQC8j5ocjlB1nfwwNOBUE9IpXxUm1OYnpTuRMufAUweQU
-         FuOHJQOcV776gVr4QYPigLCgBUdJxaFpYbwEDAZs46B9QkzfG/aYe2ZnunJfFjCfWTkY
-         f8Uw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678280846;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=w1qQOPUYZltp62usDX13u0lfSl6bY/5+CW4Brvbfffs=;
-        b=SARtTeKIIDHFlcrqe0OnNpimQWfI5y1fXBFTh0RjRBfOca3baSYRe9NhFtebzMAHuR
-         7tx4Ofq7wdH00lgWdLTnbQlBITlecR29igkW4V65gvsbnmU4n3Eqr81wOsRGX40yGexA
-         Mosuhkv61qDyZTPf6i2InewtyjzUfxEj8oPVDf0HM3p+Djb5sJR71RAS4waOF7jd/Jpc
-         X8bmSw1Ace/FM2QPwnX8PTHp2A7OCxhMZoqv+JB/P3KVnA6bMA9JJ4xfHHprxWi2HbXH
-         et1B0ZtMT1zPmNlNSnEpxNO5oeZ1X1d78LWUTpravsc95/PJjPCJyWX1fhOSe7DQTi0+
-         YmrA==
-X-Gm-Message-State: AO0yUKVzoeZ2lsKPPKd58GBltOgB89bPrVPKNoSujNdWXU6niFCJxIVH
-	vyVn9fW/XX41OOTGLLANx+s=
-X-Google-Smtp-Source: AK7set+chCvVyMu/Alk9YMPkc6M1D5hQo3UquQkcmNKdIEeu879ufUQb+Tt+MiE42KL0vZoz6/4HBQ==
-X-Received: by 2002:adf:e606:0:b0:2c5:587e:75ba with SMTP id p6-20020adfe606000000b002c5587e75bamr10918723wrm.55.1678280845802;
-        Wed, 08 Mar 2023 05:07:25 -0800 (PST)
-Received: from arinc9-PC.lan ([212.68.60.226])
-        by smtp.gmail.com with ESMTPSA id b3-20020a5d40c3000000b002ce37d2464csm11461328wrq.83.2023.03.08.05.07.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Mar 2023 05:07:25 -0800 (PST)
-From: arinc9.unal@gmail.com
-X-Google-Original-From: arinc.unal@arinc9.com
-To: Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <rmk+kernel@armlinux.org.uk>,
-	=?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>
-Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	erkin.bozoglu@xeront.com,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 net 2/2] net: dsa: mt7530: set PLL frequency and trgmii only when trgmii is used
-Date: Wed,  8 Mar 2023 16:07:15 +0300
-Message-Id: <20230308130714.77397-2-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20230308130714.77397-1-arinc.unal@arinc9.com>
-References: <20230308130714.77397-1-arinc.unal@arinc9.com>
+	id 1pZtYj-00556i-Q6; Wed, 08 Mar 2023 13:10:23 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 43BF0B81C9F;
+	Wed,  8 Mar 2023 13:10:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id D4A8CC433A1;
+	Wed,  8 Mar 2023 13:10:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1678281018;
+	bh=HDU5RSFrhJRyPeHHGe9PSEO9fpmqEJDVjePgAMyAk7g=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=bOwDgHThICTR3yhRaANBrsC3Cp8OtkvmOo0my5DgyfeKSRp5BcEbZphH0xzYPFpG/
+	 htKwOKcYPzaS8TPfgNyGOlpQ3T1R8rzB5pZwvfkC2DfFKfsqUDm9+d0LT9NZvC8mGQ
+	 K0emFp5cNLZWeNPTEjxvy1PfOQkSTm8MLF/Ybe+E+HJzRtv2FT3xHwJhXIqm81qBad
+	 eYyFUKlkpAG3BJtxEG/8Mbo6xYllalw68jXMZGqlgOrazXasJEssGxQm0T/MntS9Sn
+	 OvQ4hoMX57uKoW9st5H2RcBrfKHxuS/mRjE4ljCldz+J+ZTFAIX8nVS8aXod13koPh
+	 e4fJmk3cyZEvg==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id BAC19E61B61;
+	Wed,  8 Mar 2023 13:10:18 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH v2] dt-bindings: net: dsa: mediatek,mt7530: change some
+ descriptions to literal
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id:  <167828101875.17807.8617360531349466866.git-patchwork-notify@kernel.org>
+Date: Wed, 08 Mar 2023 13:10:18 +0000
+References: <20230307095619.13403-1-arinc.unal@arinc9.com>
+In-Reply-To: <20230307095619.13403-1-arinc.unal@arinc9.com>
+To: =?utf-8?b?QXLEsW7DpyDDnE5BTCA8YXJpbmM5LnVuYWxAZ21haWwuY29tPg==?=@ci.codeaurora.org
+Cc: andrew@lunn.ch, f.fainelli@gmail.com, olteanv@gmail.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ Landen.Chao@mediatek.com, dqfext@gmail.com, sean.wang@mediatek.com,
+ arinc.unal@arinc9.com, robh@kernel.org, erkin.bozoglu@xeront.com,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_050729_928535_C6183D56 
-X-CRM114-Status: GOOD (  17.46  )
+X-CRM114-CacheID: sfid-20230308_051022_020216_5643C5B9 
+X-CRM114-Status: GOOD (  12.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,110 +81,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+Hello:
 
-As my testing on the MCM MT7530 switch on MT7621 SoC shows, setting the PLL
-frequency does not affect MII modes other than trgmii on port 5 and port 6.
-So the assumption is that the operation here called "setting the PLL
-frequency" actually sets the frequency of the TRGMII TX clock.
+This patch was applied to netdev/net-next.git (main)
+by David S. Miller <davem@davemloft.net>:
 
-Make it so that it and the rest of the trgmii setup run only when the
-trgmii mode is used.
+On Tue,  7 Mar 2023 12:56:19 +0300 you wrote:
+> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+> 
+> The line endings must be preserved on gpio-controller, io-supply, and
+> reset-gpios properties to look proper when the YAML file is parsed.
+> 
+> Currently it's interpreted as a single line when parsed. Change the style
+> of the description of these properties to literal style to preserve the
+> line endings.
+> 
+> [...]
 
-Tested rgmii and trgmii modes of port 6 on MCM MT7530 on MT7621AT Unielec
-U7621-06 and standalone MT7530 on MT7623NI Bananapi BPI-R2.
+Here is the summary with links:
+  - [v2] dt-bindings: net: dsa: mediatek,mt7530: change some descriptions to literal
+    https://git.kernel.org/netdev/net-next/c/7d8c48917a95
 
-Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
-Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
----
- drivers/net/dsa/mt7530.c | 62 ++++++++++++++++++++--------------------
- 1 file changed, 31 insertions(+), 31 deletions(-)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index b1a79460df0e..c2d81b7a429d 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -430,8 +430,6 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
- 	switch (interface) {
- 	case PHY_INTERFACE_MODE_RGMII:
- 		trgint = 0;
--		/* PLL frequency: 125MHz */
--		ncpo1 = 0x0c80;
- 		break;
- 	case PHY_INTERFACE_MODE_TRGMII:
- 		trgint = 1;
-@@ -462,38 +460,40 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
- 	mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
- 		   P6_INTF_MODE(trgint));
- 
--	/* Lower Tx Driving for TRGMII path */
--	for (i = 0 ; i < NUM_TRGMII_CTRL ; i++)
--		mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
--			     TD_DM_DRVP(8) | TD_DM_DRVN(8));
--
--	/* Disable MT7530 core and TRGMII Tx clocks */
--	core_clear(priv, CORE_TRGMII_GSW_CLK_CG,
--		   REG_GSWCK_EN | REG_TRGMIICK_EN);
--
--	/* Setup the MT7530 TRGMII Tx Clock */
--	core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
--	core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
--	core_write(priv, CORE_PLL_GROUP10, RG_LCDDS_SSC_DELTA(ssc_delta));
--	core_write(priv, CORE_PLL_GROUP11, RG_LCDDS_SSC_DELTA1(ssc_delta));
--	core_write(priv, CORE_PLL_GROUP4,
--		   RG_SYSPLL_DDSFBK_EN | RG_SYSPLL_BIAS_EN |
--		   RG_SYSPLL_BIAS_LPF_EN);
--	core_write(priv, CORE_PLL_GROUP2,
--		   RG_SYSPLL_EN_NORMAL | RG_SYSPLL_VODEN |
--		   RG_SYSPLL_POSDIV(1));
--	core_write(priv, CORE_PLL_GROUP7,
--		   RG_LCDDS_PCW_NCPO_CHG | RG_LCCDS_C(3) |
--		   RG_LCDDS_PWDB | RG_LCDDS_ISO_EN);
--
--	/* Enable MT7530 core and TRGMII Tx clocks */
--	core_set(priv, CORE_TRGMII_GSW_CLK_CG,
--		 REG_GSWCK_EN | REG_TRGMIICK_EN);
--
--	if (!trgint)
-+	if (trgint) {
-+		/* Lower Tx Driving for TRGMII path */
-+		for (i = 0 ; i < NUM_TRGMII_CTRL ; i++)
-+			mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
-+				     TD_DM_DRVP(8) | TD_DM_DRVN(8));
-+
-+		/* Disable MT7530 core and TRGMII Tx clocks */
-+		core_clear(priv, CORE_TRGMII_GSW_CLK_CG,
-+			   REG_GSWCK_EN | REG_TRGMIICK_EN);
-+
-+		/* Setup the MT7530 TRGMII Tx Clock */
-+		core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
-+		core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
-+		core_write(priv, CORE_PLL_GROUP10, RG_LCDDS_SSC_DELTA(ssc_delta));
-+		core_write(priv, CORE_PLL_GROUP11, RG_LCDDS_SSC_DELTA1(ssc_delta));
-+		core_write(priv, CORE_PLL_GROUP4,
-+			   RG_SYSPLL_DDSFBK_EN | RG_SYSPLL_BIAS_EN |
-+			   RG_SYSPLL_BIAS_LPF_EN);
-+		core_write(priv, CORE_PLL_GROUP2,
-+			   RG_SYSPLL_EN_NORMAL | RG_SYSPLL_VODEN |
-+			   RG_SYSPLL_POSDIV(1));
-+		core_write(priv, CORE_PLL_GROUP7,
-+			   RG_LCDDS_PCW_NCPO_CHG | RG_LCCDS_C(3) |
-+			   RG_LCDDS_PWDB | RG_LCDDS_ISO_EN);
-+
-+		/* Enable MT7530 core and TRGMII Tx clocks */
-+		core_set(priv, CORE_TRGMII_GSW_CLK_CG,
-+			 REG_GSWCK_EN | REG_TRGMIICK_EN);
-+	} else {
- 		for (i = 0 ; i < NUM_TRGMII_CTRL; i++)
- 			mt7530_rmw(priv, MT7530_TRGMII_RD(i),
- 				   RD_TAP_MASK, RD_TAP(16));
-+	}
-+
- 	return 0;
- }
- 
+You are awesome, thank you!
 -- 
-2.37.2
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
