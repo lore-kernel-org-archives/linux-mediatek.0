@@ -4,50 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0473EC64EC4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 13:06:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCC1AC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 13:11:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I3r/yZfsG1+DpbR/nJJ84mozXnqngQpyIIxts7XzzVw=; b=ZdOr2ApPAedOB9jEVwRWQovN23
-	pojXxRVQVAYLkziEqQsc5VGXitCJbkkA/Vo642jR0fTLa0j0NlQJY4o5RnEFyhYbXGvWTh05Ze2jZ
-	RJc4j4ovZ/LCg1YShUF+AIxRjEwjzBBSp2AEmStacF/QioOT17CmMYr85lr3j/IxtdH1HhGz/RuZM
-	LUwDQT2r4Z8hZQhSwEgPg6sHe2vSvMO+PMVyRkt/zeQBCLnAqYgsY+Ep8qDUlS6tnvCnYHEE9xOSh
-	qp1uHwnTW1GfNn30mRwGbLFhETQZWG7o/36ge0JonX8ssRmL8Viu6WCb9eeGBaJq/NvBIn3GixiXW
-	OTsrI06w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=JuDmDmY4IV0QLoJ1ArzJ4ijcazQ7ZD0u2S2wBUytaV4=; b=Dl6yNcDebm2rpdywsnXtiUUfM3
+	QJcoCp7C3GzYkqKrGZWaOaIZ8dGGSXNFhX36KbZtQ+MN3evrjOaaUCMReTGghj+HeW43be03i9ylZ
+	3ftO1drnY2vzKa3tJvA9IIG2c6WSH2ob6g+UX2cpIxZHeRaQ+CioUUDmgQRPYoE/5YaA9Bkvn4pzw
+	L8I/X7Hnx/a1uFT0xkJiE16fR928ogwfoblCU4VxlRSi5v5JNtzYB62WPIYt7OPYym8maQ9vZ8rEq
+	S9+Y45hBx8ZWLhFVWk6rLcm4PICezbGhQPZtb5R7lbOJwpn5HN12FVlUHjnc0/6g5gQ+e8vM93W9U
+	XzE3YRhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZtUQ-0052b1-8q; Wed, 08 Mar 2023 13:05:54 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1pZtZs-0055fi-0T; Wed, 08 Mar 2023 13:11:32 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZtIX-004wNl-7c; Wed, 08 Mar 2023 12:53:38 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1pZtIJ-0002Wu-1C;
-	Wed, 08 Mar 2023 13:53:23 +0100
-Date: Wed, 8 Mar 2023 12:53:13 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Subject: Re: [PATCH net-next v12 08/18] net: ethernet: mtk_eth_soc: fix
- 1000Base-X and 2500Base-X modes
-Message-ID: <ZAiFOTRQI36nGo+w@makrotopia.org>
-References: <cover.1678201958.git.daniel@makrotopia.org>
- <fd5c7ea79a7f84caac7d0b64b39fe5c4043edfa8.1678201958.git.daniel@makrotopia.org>
- <ZAhzDDjZ8+gxyo3V@shell.armlinux.org.uk>
- <ZAh7hA4JuJm1b2M6@makrotopia.org>
- <ZAiCh8wkdTBT+6Id@shell.armlinux.org.uk>
+	id 1pZtVu-0053QP-2l; Wed, 08 Mar 2023 13:07:27 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id bx12so15278454wrb.11;
+        Wed, 08 Mar 2023 05:07:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678280844;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=JuDmDmY4IV0QLoJ1ArzJ4ijcazQ7ZD0u2S2wBUytaV4=;
+        b=Dkuy4VDXieLUfg8wLyjcvVyTG3cxdXmVVcyqAjQzY2ESFnznZGMWvTKoAogOrf1tZO
+         7xFIAbyFOk3M03a449PZz9nPzsMnohAks1WHPKOutMHa6yvON9XXqpZkhtj4mhjSDvHT
+         qGr9G2v6GtndN9sStm89LaOEeRN8glr2KZYlqUVRc8DjKLZa1zJ5g0dZtwMq4vZ3aHaV
+         tNSz8ouiBbvLnReajtgAptfEXBDdlO3tj46vruxT+vCOb/mu5wwLW29zEdvmVRTdd3kZ
+         MGBHUv0ZH1sPVkbN+1wH0xCoPsT7v52aAFl9QHEMPSUWsnAq1Ooz0/j7KlSuLQucpvjM
+         EWow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678280844;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=JuDmDmY4IV0QLoJ1ArzJ4ijcazQ7ZD0u2S2wBUytaV4=;
+        b=5IZ7og8A6JsDAS0P5fWWHirVHajUcV+IOa36TQe3BjfKq4yRsfjq0rEFxa6OJ0xB8H
+         ZT4Yr435EkNFzgNHZTMwvlq7mWR5NOXASwrKwJQdv+/yaNBeVsjJYKXcJ/LKEJlk6lGi
+         /Y6YS7wPxzDbYxtlz/Pa0Ngz+lxpd9SSCRyZhubeiC3OjyuydB4V66PniXtR8LFCN8PW
+         6RLEm+B6klC5PCssSvFUk9wMntFfbIPaP8vZRFDj7+6iCcgbssrEFE31kxd7Fsil7U09
+         rkt5yFY4fJBWze6GJ0ln9jdoiNHsrlNiH7MMKkBvgx7UJ/pN/U3X+tfvRSQkHRF9E5yU
+         JuBQ==
+X-Gm-Message-State: AO0yUKWQAhrE//R2PHCRAHK4+ql69cnPVgExdjCrNztwFiyX9BgnVegZ
+	8nSHPvDkH1sdN5upCL2BzH8=
+X-Google-Smtp-Source: AK7set/96yytF4lJdh5dq0MUq0uqJPsADOci+FXLCWrgSJ+F8EsYh8DcDuDj9WyArHHVFVjqlneYOA==
+X-Received: by 2002:adf:eac7:0:b0:2c7:161e:702f with SMTP id o7-20020adfeac7000000b002c7161e702fmr12307060wrn.47.1678280843674;
+        Wed, 08 Mar 2023 05:07:23 -0800 (PST)
+Received: from arinc9-PC.lan ([212.68.60.226])
+        by smtp.gmail.com with ESMTPSA id b3-20020a5d40c3000000b002ce37d2464csm11461328wrq.83.2023.03.08.05.07.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Mar 2023 05:07:23 -0800 (PST)
+From: arinc9.unal@gmail.com
+X-Google-Original-From: arinc.unal@arinc9.com
+To: Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <rmk+kernel@armlinux.org.uk>,
+	=?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>
+Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	erkin.bozoglu@xeront.com,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v2 net 1/2] net: dsa: mt7530: remove now incorrect comment regarding port 5
+Date: Wed,  8 Mar 2023 16:07:14 +0300
+Message-Id: <20230308130714.77397-1-arinc.unal@arinc9.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZAiCh8wkdTBT+6Id@shell.armlinux.org.uk>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_045337_297378_34211473 
-X-CRM114-Status: GOOD (  38.15  )
+X-CRM114-CacheID: sfid-20230308_050726_165634_D0CC48B8 
+X-CRM114-Status: GOOD (  11.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,87 +101,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <vladimir.oltean@nxp.com>, Eric Dumazet <edumazet@google.com>, Florian Fainelli <f.fainelli@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Alexander Couzens <lynxis@fe80.eu>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Jianhui Zhao <zhaojh329@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, =?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 08, 2023 at 12:41:43PM +0000, Russell King (Oracle) wrote:
-> On Wed, Mar 08, 2023 at 12:11:48PM +0000, Daniel Golle wrote:
-> > On Wed, Mar 08, 2023 at 11:35:40AM +0000, Russell King (Oracle) wrote:
-> > > On Tue, Mar 07, 2023 at 03:53:58PM +0000, Daniel Golle wrote:
-> > > > After conversion to phylink_pcs the 1000Base-X and 2500Base-X modes
-> > > > would work only after `ethtool -s eth1 autoneg off`.
-> > > > As ethtool autoneg and the ETHTOOL_LINK_MODE_Autoneg_BIT is supposed
-> > > > to control auto-negotiation on the external interface it doesn't make
-> > > > much sense to use it to control on-board SGMII auto-negotiation between
-> > > > MAC and PHY.
-> > > > Set correct values to really only enable SGMII auto-negotiation when
-> > > > actually operating in SGMII mode. For 1000Base-X and 2500Base-X mode,
-> > > > enable remote-fault detection only if in-band-status is enabled.
-> > > > This fixes using 1000Base-X and 2500Base-X SFPs on the BananaPi R3
-> > > > board and also makes it possible to use interface-mode-switching PHYs
-> > > > operating in either SGMII mode for 10M/100M/1000M or in 2500Base-X for
-> > > > 2500M mode on other boards.
-> > > > 
-> > > > Fixes: 14a44ab0330d ("net: mtk_eth_soc: partially convert to phylink_pcs")
-> > > > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> > > 
-> > > NAK.
-> > > 
-> > > There are PHYs out there which operate in SGMII mode but do not
-> > > exchange the SGMII 16-bit configuration word. The code implemented
-> > > here by me was explicitly to allow such a configuration to work,
-> > > which is defined as:
-> > > 
-> > > 	SGMII *without* mode == inband
-> > > 
-> > > An example of this is the Broadcom 84881 PHY which can be found on
-> > > SFP modules.
-> > 
-> > I also have multiple such 1000Base-T SFP modules here (finisar, AJYA),
-> > and this change doesn't touch the codepaths relevant for those. They
-> > are operating in SGMII mode, they have always been working fine.
-> > 
-> > What I'm trying to fix here is 1000Base-X and 2500Base-X mode which
-> > has been broken by introducing ETHTOOL_LINK_MODE_Autoneg_BIT as the
-> > deciding factor for in-band AN here.
-> 
-> ... which is correct.
-> 
-> > Can you explain why ETHTOOL_LINK_MODE_Autoneg_BIT was used there in
-> > first place? Is my understanding of this bit controlling autoneg on the
-> > *external* interface rather than on the *system-side* interface wrong?
-> 
-> Think about what 1000BASE-X is for. It's not really for internal links,
-> it's intended by IEEE 802.3 to be the 1G *media* side protocol for
-> 1000BASE-SX, 1000BASE-LX, 1000BASE-CX etc links.
-> 
-> Therefore, when being used in that case, one may wish to disable
-> autoneg over the fibre link. Hence, turning off autoneg via ethtool
-> *should* turn off autoneg over the fibre link. So, using
-> ETHTOOL_LINK_MODE_Autoneg_BIT to gate 802.3z autonegotiation the
-> correct thing to do.
-> 
-> If we have a PHY using 1000BASE-X, then it is at odds with the
-> primary purpose of this protocol, especially with it comes to AN.
-> This is why phylink used to refuse to accept PHYs when using 802.3z
-> mode, but Marek wanted this to work, so relaxed the checks
-> preventing such a setup working.
+From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Sadly 2500Base-X is very commonly used to connect 2500Base-T-capable
-PHYs or SFP modules. I also got an ATS branded 1000M/100M/10M copper
-SFP module which uses 1000Base-X as system-side interface, independently
-of the speed of the link partner on the TP interface.
-All of them do not work with inband-AN enabled and a link only comes
-up after `ethtool -s eth1 autoneg off` in the current implementation,
-while previously they were working just fine.
+Remove now incorrect comment regarding port 5 as GMAC5. This is supposed to
+be supported since commit 38f790a80560 ("net: dsa: mt7530: Add support for
+port 5") under mt7530_setup_port5().
 
-I understand that there isn't really a good solution for 1000Base-X as
-thanks to you I now understand that SerDes autoneg just transparently
-ends up being autoneg on a fiber link.
+Fixes: 38f790a80560 ("net: dsa: mt7530: Add support for port 5")
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+---
+ drivers/net/dsa/mt7530.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-2500Base-X, however, is hardly used for fiber links, but rather mostly
-for 2500Base-T PHYs and SFP module as well as xPON SFPs. Maybe we could
-at least have in-band AN disabled by default for those to get them
-working without requiring the user to carry out ethtool settings?
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index a508402c4ecb..b1a79460df0e 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2201,7 +2201,7 @@ mt7530_setup(struct dsa_switch *ds)
+ 
+ 	mt7530_pll_setup(priv);
+ 
+-	/* Enable Port 6 only; P5 as GMAC5 which currently is not supported */
++	/* Enable port 6 */
+ 	val = mt7530_read(priv, MT7530_MHWTRAP);
+ 	val &= ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
+ 	val |= MHWTRAP_MANUAL;
+-- 
+2.37.2
+
 
