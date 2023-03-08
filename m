@@ -4,91 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA15BC64EC4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 18:31:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25E0AC742A7
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 18:35:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IE2mAjvNqXWB2ZmmfkBzebNZ3UKFN3Q87ghm1dunraM=; b=hq8mNL2SA1Q5lF5/xTBhTYVjcv
-	gERY17hMjgByz6xzCVTUmuR7d1XzBihWA8kLD5daLWZXD/ysS1oftGvTa7pbwhWX34iZ9/L/VIY4S
-	CsGwfvad4s+kfHO0vGYln9k5/kI4SjIQnNsICA0HJWNYEF82ZmeaPjpx/h2j4EAhrVNaKF2iF8lsh
-	4xwTYJyCYhR8U2D83w82Oa4fQmzsRUzg+f3OrPD4BVokU3lJk3pB+9ffbMI31k9Ybuo5X0KfHoeoM
-	sMAUUMCwbo2q4DmShGwSMfkg6caCJBCzSzgbho03vT04hR2VfaP/j5P9+Sak9PKb9iAnLO1fgPOuG
-	1/MGT/0w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VtUE/7DBohqNr7IJ3h/RgLd1gCpyEJMqeBsb1dHhiiw=; b=VcscjW12WtziweZDZSbn0fmZZE
+	w8LjI6I/jl1Dddb/nouis0CvsqMX3rzrlMedipTun9idjKUp89ZvLaRmVLoGkf7nFROiL057YPJSS
+	sW+iet6bvp9swkaAh1PRKTNPRH6sbtVpJCP5R3K0hg/X1m7GQN9uxuR4Z+eWcBWyuhxmCr0YVSgbv
+	RCJ90OgQaP27T0wSryZ7jB/PS/RXu4vWC4CfEEakwkUmTzNzdbTKUMSobsq+631E79Y4kSjSalOQA
+	wKqnBZ99qT7WqABghfhWOsoavifE8P+aLyxyZNG9OzWA1vcvmLr+chPQt85IxSpv2cOH4DJUvw4eM
+	6ORZ7+Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZyZl-006Mtz-B9; Wed, 08 Mar 2023 18:31:45 +0000
-Received: from relay10.mail.gandi.net ([2001:4b98:dc4:8::230])
+	id 1pZyco-006NSv-4s; Wed, 08 Mar 2023 18:34:54 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZyZg-006Ms3-7g; Wed, 08 Mar 2023 18:31:42 +0000
-Received: (Authenticated sender: miquel.raynal@bootlin.com)
-	by mail.gandi.net (Postfix) with ESMTPSA id 9E339240005;
-	Wed,  8 Mar 2023 18:31:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1678300295;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=IE2mAjvNqXWB2ZmmfkBzebNZ3UKFN3Q87ghm1dunraM=;
-	b=W9bpmY3/KK4H8XkPR5AErqDMuVx7gx1E72W3ekylox5c6Sb1rEoaG0nwEeCbQsUc6fByxS
-	3PZpBawbq5O55tiA1JKMB5WB+fl+xGlvZNIIkCxD0BVegUIaYhJ86Z7HDmbu6JgNt7O36Q
-	KczTEKWoIBBtiUPEE1mzlJ8L3xWUVUHSuQq9Fv2DewrgLpVSiS05S/U+XBCe5KjNrcLjrq
-	zJjci2YlnX3uHUsv5p9FYMGHzDICiiJZDFiKjvNvjG0iu7BTOTVKX/AFVZKghFBpWyCpwD
-	wYIXSzk/QdQeStQWTRLDE6ufZtwkm0Ub+sRPvLPoXU1/cVvB2P656eC6WpRDow==
-Date: Wed, 8 Mar 2023 19:31:21 +0100
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-Cc: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>, Srinivas Kandagatla
- <srinivas.kandagatla@linaro.org>, Richard Weinberger <richard@nod.at>,
- Vignesh Raghavendra <vigneshr@ti.com>, Hector Martin <marcan@marcan.st>,
- Sven Peter <sven@svenpeter.dev>, Alyssa Rosenzweig <alyssa@rosenzweig.io>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam
- <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, Neil Armstrong
- <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome
- Brunet <jbrunet@baylibre.com>, Martin Blumenstingl
- <martin.blumenstingl@googlemail.com>, Claudiu Beznea
- <claudiu.beznea@microchip.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy
- Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad
- Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Orson
- Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Vincent Shih <vincent.sunplus@gmail.com>,
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Kunihiko Hayashi
- <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>,
- Michal Simek <michal.simek@xilinx.com>, Alessandro Zummo
- <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Evgeniy Polyakov <zbr@ioremap.net>, linux-mtd@lists.infradead.org,
- linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
- linux-rtc@vger.kernel.org
-Subject: Re: [PATCH V2] nvmem: add explicit config option to read OF fixed
- cells
-Message-ID: <20230308193121.7f5b3d02@xps-13>
-In-Reply-To: <5974d28426057975e701c4a8454b5a13@milecki.pl>
-References: <20230224072903.20945-1-zajec5@gmail.com>
-	<20230308173256.3837b87b@xps-13>
-	<91ff425b4c901648b1faf34c784f20ad@milecki.pl>
-	<20230308190636.7fabab9c@xps-13>
-	<5974d28426057975e701c4a8454b5a13@milecki.pl>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+	id 1pZycd-006NRY-VK; Wed, 08 Mar 2023 18:34:45 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id x3so69373178edb.10;
+        Wed, 08 Mar 2023 10:34:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678300482;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=VtUE/7DBohqNr7IJ3h/RgLd1gCpyEJMqeBsb1dHhiiw=;
+        b=fHmNlpoMEszeE15zSWXKhmvAq0EDBulLvVk7HYWuPhBWDAN3TUjmkcrisqicYJ3bW/
+         20+ijoy3Y/FQhe5M69QbmFhsZihZK7M8h3X6+HDqYB3hqjql8woeHenCG4MUgzzC8A3g
+         ejqZNbW1gsV1Gfwit4wm46QaHrrj9hda+JuGS9nqE2CDZIMy6mO5ocOA00kalBh3HmTI
+         oLceEemLvRTcQXfAbwysUE0hFZ+sJcvXGxLNk1KkV3kQjTmky04YODCLVdAZiZUGM84K
+         kxxvEnQHVsNLf79Po4HmwGO3h5IjsYrZf3L2tNMVKHJ68/DMP2MRkmOny8WjTZ/N8W8H
+         Ub9Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678300482;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=VtUE/7DBohqNr7IJ3h/RgLd1gCpyEJMqeBsb1dHhiiw=;
+        b=djXLh/Fhiyb2cnZU98q94YYogQIvakzEQr7p2JXi2naxb3oQZR8yW6mxJcqSfYXeOK
+         MZ381bTsMDc3pmXRB6h6fZtlLHyDhVucNEAwGs95WHmLj/DWs6ISnkYswaziLhC76aGI
+         egX5R70LvffMYYILqbJO68zvM9cL4JdfXnjc+xbMn4mawj8RSeD0mehjJPpcYwH+H23J
+         le2O8oMlZTPJWVZesJvWirzd8NgEq2yxXb1YSGCBlZucwyuoZquAFr7ojPIjzso1uXic
+         1+Rh/qsDHsu3yLT61v3vQL3NAqUHDtbvznYd7nLIFZF2/cvOZ5sg0ekYLQCqR8aJJFT0
+         djcw==
+X-Gm-Message-State: AO0yUKXlhKuR+U8nUxifXidb6P4CukDsg7Gq/yyrr2WnmVK24FJ+6MiA
+	p6qAyIekkPishhl5fvkEPNI=
+X-Google-Smtp-Source: AK7set+NcA0sgdg4llwz3yGkNz7kStT6sPz/Ru82tgxk1Zl88I1GbZ2ntBhg9IwWQghzRUFE1LELOQ==
+X-Received: by 2002:a05:6402:5154:b0:4bd:6b93:1289 with SMTP id n20-20020a056402515400b004bd6b931289mr17146099edd.15.1678300482112;
+        Wed, 08 Mar 2023 10:34:42 -0800 (PST)
+Received: from ?IPv6:2a02:168:6806:0:3ab6:1404:fd5c:80ff? ([2a02:168:6806:0:3ab6:1404:fd5c:80ff])
+        by smtp.gmail.com with ESMTPSA id q18-20020a170906771200b008cc920469b5sm7922081ejm.18.2023.03.08.10.34.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Mar 2023 10:34:41 -0800 (PST)
+Message-ID: <09d65e1ee0679e1e74b4f3a5a4c55bd48332f043.camel@gmail.com>
+Subject: Re: [PATCH net-next v2 4/6] net: mdio: scan bus based on bus
+ capabilities for C22 and C45
+From: Klaus Kudielka <klaus.kudielka@gmail.com>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Michael Walle <michael@walle.cc>, Heiner Kallweit
+ <hkallweit1@gmail.com>,  Russell King <linux@armlinux.org.uk>, "David S.
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
+ Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Felix Fietkau
+ <nbd@nbd.name>, John Crispin <john@phrozen.org>,  Sean Wang
+ <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
+ Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Bryan Whitehead <bryan.whitehead@microchip.com>,
+ UNGLinuxDriver@microchip.com, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,  Jose Abreu
+ <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Joel
+ Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ netdev@vger.kernel.org,  linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,  linux-mediatek@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,  linux-aspeed@lists.ozlabs.org,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>
+Date: Wed, 08 Mar 2023 19:34:40 +0100
+In-Reply-To: <72530e86-9ba9-4a01-9cd2-68835ecae7a0@lunn.ch>
+References: 	<20230116-net-next-remove-probe-capabilities-v2-0-15513b05e1f4@walle.cc>
+	 <20230116-net-next-remove-probe-capabilities-v2-4-15513b05e1f4@walle.cc>
+	 <449bde236c08d5ab5e54abd73b645d8b29955894.camel@gmail.com>
+	 <100c439a-2a4d-4cb2-96f2-5bf273e2121a@lunn.ch>
+	 <712bc92ca6d576f33f63f1e9c2edf0030b10d3ae.camel@gmail.com>
+	 <db6b8a09-b680-4baa-8963-d355ad29eb09@lunn.ch>
+	 <0e10aa8492eadb587949d8744b56fccaabbd183b.camel@gmail.com>
+	 <72530e86-9ba9-4a01-9cd2-68835ecae7a0@lunn.ch>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.4-1 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_103140_627966_6DB5820D 
-X-CRM114-Status: GOOD (  43.39  )
+X-CRM114-CacheID: sfid-20230308_103444_032066_8CAA0097 
+X-CRM114-Status: GOOD (  18.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,155 +111,145 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rafa=C5=82,
-
-rafal@milecki.pl wrote on Wed, 08 Mar 2023 19:12:32 +0100:
-
-> On 2023-03-08 19:06, Miquel Raynal wrote:
-> > Hi Rafa=C5=82,
-> >=20
-> > rafal@milecki.pl wrote on Wed, 08 Mar 2023 17:55:46 +0100:
-> >  =20
-> >> On 2023-03-08 17:34, Miquel Raynal wrote: =20
-> >> > Hi Rafa=C5=82,
-> >> >
-> >> > zajec5@gmail.com wrote on Fri, 24 Feb 2023 08:29:03 +0100:
-> >> > =20
-> >> >> From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl> =20
-> >> >> >> NVMEM subsystem looks for fixed NVMEM cells (specified in DT) by=
- =20
-> >> >> default. This behaviour made sense in early days before adding supp=
-ort
-> >> >> for dynamic cells. =20
-> >> >> >> With every new supported NVMEM device with dynamic cells current=
- =20
-> >> >> behaviour becomes non-optimal. It results in unneeded iterating ove=
-r >> DT
-> >> >> nodes and may result in false discovery of cells (depending on used=
- DT
-> >> >> properties). =20
-> >> >> >> This behaviour has actually caused a problem already with the MT=
-D =20
-> >> >> subsystem. MTD subpartitions were incorrectly treated as NVMEM cell=
-s. =20
-> >> >
-> >> > That's true, but I expect this to be really MTD specific.
-> >> >
-> >> > A concrete proposal below.
-> >> > =20
-> >> >> Also with upcoming support for NVMEM layouts no new binding or driv=
-er
-> >> >> should support fixed cells defined in device node. =20
-> >> >
-> >> > I'm not sure I agree with this statement. We are not preventing new
-> >> > binding/driver to use fixed cells, or...? We offer a new way to expo=
-se
-> >> > nvmem cells with another way than "fixed-offset" and "fixed-size" OF
-> >> > nodes. =20
-> >> >>  From what I understood all new NVMEM bindings should have cells >>=
- defined =20
-> >> in the nvmem-layout { } node. That's what I mean by saying they should
-> >> not be defined in device node (but its "nvmem-layout" instead). =20
-> >=20
-> > Layouts are just another possibility, either you user the nvmem-cells
-> > compatible and produce nvmem cells with fixed OF nodes, or you use the
-> > nvmem-layout container. I don't think all new bindings should have
-> > cells in layouts. It depends if the content is static or not.
-> >  =20
-> >> >> Solve this by modifying drivers for bindings that support specifying
-> >> >> fixed NVMEM cells in DT. Make them explicitly tell NVMEM subsystem =
-to
-> >> >> read cells from DT. =20
-> >> >> >> It wasn't clear (to me) if rtc and w1 code actually uses fixed c=
-ells. >> I =20
-> >> >> enabled them to don't risk any breakage. =20
-> >> >> >> Signed-off-by: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl> =20
-> >> >> [for drivers/nvmem/meson-{efuse,mx-efuse}.c]
-> >> >> Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-> >> >> ---
-> >> >> V2: Fix stm32-romem.c typo breaking its compilation
-> >> >>     Pick Martin's Acked-by
-> >> >>     Add paragraph about layouts deprecating use_fixed_of_cells
-> >> >> ---
-> >> >>  drivers/mtd/mtdcore.c          | 2 ++
-> >> >>  drivers/nvmem/apple-efuses.c   | 1 +
-> >> >>  drivers/nvmem/core.c           | 8 +++++---
-> >> >>  drivers/nvmem/imx-ocotp-scu.c  | 1 +
-> >> >>  drivers/nvmem/imx-ocotp.c      | 1 +
-> >> >>  drivers/nvmem/meson-efuse.c    | 1 +
-> >> >>  drivers/nvmem/meson-mx-efuse.c | 1 +
-> >> >>  drivers/nvmem/microchip-otpc.c | 1 +
-> >> >>  drivers/nvmem/mtk-efuse.c      | 1 +
-> >> >>  drivers/nvmem/qcom-spmi-sdam.c | 1 +
-> >> >>  drivers/nvmem/qfprom.c         | 1 +
-> >> >>  drivers/nvmem/rave-sp-eeprom.c | 1 +
-> >> >>  drivers/nvmem/rockchip-efuse.c | 1 +
-> >> >>  drivers/nvmem/sc27xx-efuse.c   | 1 +
-> >> >>  drivers/nvmem/sprd-efuse.c     | 1 +
-> >> >>  drivers/nvmem/stm32-romem.c    | 1 +
-> >> >>  drivers/nvmem/sunplus-ocotp.c  | 1 +
-> >> >>  drivers/nvmem/sunxi_sid.c      | 1 +
-> >> >>  drivers/nvmem/uniphier-efuse.c | 1 +
-> >> >>  drivers/nvmem/zynqmp_nvmem.c   | 1 +
-> >> >>  drivers/rtc/nvmem.c            | 1 +
-> >> >>  drivers/w1/slaves/w1_ds250x.c  | 1 +
-> >> >>  include/linux/nvmem-provider.h | 2 ++
-> >> >>  23 files changed, 29 insertions(+), 3 deletions(-) =20
-> >> >> >> diff --git a/drivers/mtd/mtdcore.c b/drivers/mtd/mtdcore.c =20
-> >> >> index 0feacb9fbdac..1bb479c0f758 100644
-> >> >> --- a/drivers/mtd/mtdcore.c
-> >> >> +++ b/drivers/mtd/mtdcore.c
-> >> >> @@ -523,6 +523,7 @@ static int mtd_nvmem_add(struct mtd_info *mtd)
-> >> >>  	config.dev =3D &mtd->dev;
-> >> >>  	config.name =3D dev_name(&mtd->dev);
-> >> >>  	config.owner =3D THIS_MODULE;
-> >> >> +	config.use_fixed_of_cells =3D of_device_is_compatible(node, >> "n=
-vmem-cells"); =20
-> >> >
-> >> > I am wondering how mtd specific this is? For me all OF nodes contain=
-ing
-> >> > the nvmem-cells compatible should be treated as cells providers and
-> >> > populate nvmem cells as for each children.
-> >> >
-> >> > Why don't we just check for this compatible to be present? in
-> >> > nvmem_add_cells_from_of() ? And if not we just skip the operation.
-> >> >
-> >> > This way we still follow the bindings (even though using nvmem-cells=
- in
-> >> > the compatible property to require cells population was a mistake in
-> >> > the first place, as discussed in the devlink thread recently) but th=
-ere
-> >> > is no need for a per-driver config option? =20
-> >> >> This isn't mtd specific. Please check this patch for all occurrence=
-s >> of =20
-> >> the:
-> >> use_fixed_of_cells =3D true =20
-> >> >> The very first one: drivers/nvmem/apple-efuses.c driver for the =20
-> >> "apple,efuses" binding. That binding supports fixed OF cells, see:
-> >> Documentation/devicetree/bindings/nvmem/apple,efuses.yaml =20
-> >=20
-> > I'm saying: based on what has been enforced so far, I would expect all
-> > fixed cell providers to come with nvmem-cells as compatible, no?
-> >=20
-> > If that's the case we could use that as a common denominator? =20
+On Tue, 2023-03-07 at 21:35 +0100, Andrew Lunn wrote:
+> > Summary: Still 4 calls to mdio_bus_scan_c22, but also *2* calls to mdio=
+_bus_scan_c45, approx. 190*100 reads by the switch driver
 >=20
-> Sorry, I don't get it. Have you checked
-> Documentation/devicetree/bindings/nvmem/apple,efuses.yaml
-> ?
->=20
-> It's a NVMEM provied binding with fixed cells that doesn't use
-> nvmem-cells as compatible. There are many more.
+> Those calls to mdio_bus_scan_c45 are caused by 743a19e38d02 net: dsa:
+> mv88e6xxx: Separate C22 and C45 transactions.
 
-Oh yeah you're right, I'm mixing things. Well I guess you're right
-then, it's such a mess, we have to tell the core the parsing method.
+Well, yes and no. I understand orion mdio is MDIOBUS_NO_CAP
+and therefore the c45 scan is *not* called until 1a136ca2e0
+net: mdio: scan bus based on bus capabilities for C22 and C45.
+Which is the behaviour I see.
+(I needed a close look at the conditions in the if statements
+that were removed then)
 
-So maybe another question: do we have other situations than mtd which
-sometimes expect the nvmem core to parse the OF nodes to populate cells,
-and sometimes not?
 
-Also, what about "of_children_are_cells" ? Because actually in most
-cases it's a "fixed of cell", so I don't find the current naming
-descriptive enough for something so touchy.
+> The only part of a c45 scan which is not linear is
+> mv88e6xxx_g2_smi_phy_wait() which is implemented by
+> mv88e6xxx_wait_mask(). That loops reading a register waiting for a bit
+> to change. Maybe print out the value of i, and see if it is looping
+> more times for C45 than C22?
 
-Thanks, Miqu=C3=A8l
+Here the debug code
+
+diff --git a/drivers/net/dsa/mv88e6xxx/chip.c b/drivers/net/dsa/mv88e6xxx/c=
+hip.c
+index 0a5d6c7bb1..23816cad41 100644
+--- a/drivers/net/dsa/mv88e6xxx/chip.c
++++ b/drivers/net/dsa/mv88e6xxx/chip.c
+@@ -90,6 +90,7 @@ int mv88e6xxx_wait_mask(struct mv88e6xxx_chip *chip, int =
+addr, int reg,
+ 	u16 data;
+ 	int err;
+ 	int i;
++	static unsigned wait_count =3D 0, loop_count =3D 0;
+=20
+ 	/* There's no bus specific operation to wait for a mask. Even
+ 	 * if the initial poll takes longer than 50ms, always do at
+@@ -100,8 +101,13 @@ int mv88e6xxx_wait_mask(struct mv88e6xxx_chip *chip, i=
+nt addr, int reg,
+ 		if (err)
+ 			return err;
+=20
+-		if ((data & mask) =3D=3D val)
++		if ((data & mask) =3D=3D val) {
++			wait_count++;
++			loop_count +=3D i;
++			if (wait_count % 10 =3D=3D 0)
++				dev_warn(chip->dev, "wait_count %u, loop_count %u\n", wait_count, loop=
+_count);
+ 			return 0;
++		}
+=20
+ 		if (i < 2)
+ 			cpu_relax();
+diff --git a/drivers/net/phy/mdio_bus.c b/drivers/net/phy/mdio_bus.c
+index 5b2f48c09a..19fde21cae 100644
+--- a/drivers/net/phy/mdio_bus.c
++++ b/drivers/net/phy/mdio_bus.c
+@@ -569,6 +569,7 @@ static int mdiobus_scan_bus_c22(struct mii_bus *bus)
+ {
+ 	int i;
+=20
++	dev_warn(&bus->dev, "*** mdiobus_scan_bus_c22 call ***\n");
+ 	for (i =3D 0; i < PHY_MAX_ADDR; i++) {
+ 		if ((bus->phy_mask & BIT(i)) =3D=3D 0) {
+ 			struct phy_device *phydev;
+@@ -578,6 +579,7 @@ static int mdiobus_scan_bus_c22(struct mii_bus *bus)
+ 				return PTR_ERR(phydev);
+ 		}
+ 	}
++	dev_warn(&bus->dev, "*** mdiobus_scan_bus_c22 return ***\n");
+ 	return 0;
+ }
+=20
+@@ -585,6 +587,7 @@ static int mdiobus_scan_bus_c45(struct mii_bus *bus)
+ {
+ 	int i;
+=20
++	dev_warn(&bus->dev, "*** mdiobus_scan_bus_c45 call ***\n");
+ 	for (i =3D 0; i < PHY_MAX_ADDR; i++) {
+ 		if ((bus->phy_mask & BIT(i)) =3D=3D 0) {
+ 			struct phy_device *phydev;
+@@ -598,6 +601,7 @@ static int mdiobus_scan_bus_c45(struct mii_bus *bus)
+ 				return PTR_ERR(phydev);
+ 		}
+ 	}
++	dev_warn(&bus->dev, "*** mdiobus_scan_bus_c45 return ***\n");
+ 	return 0;
+ }
+=20
+
+
+And here the trimmed results from boot @ 1a136ca2e0, plus debug code.
+
+It's not only the looping during the mv88e6xxx_wait_mask calls, but
+also the sheer amount of mv88e6xxx_wait_mask calls during the c45 scans.
+(c22: ~0.1 sec & ~150 calls, c45: 2.3-2.5 sec & ~4800 calls)
+
+
+[    0.195215] mdio_bus fixed-0: *** mdiobus_scan_bus_c22 call ***
+[    0.195221] mdio_bus fixed-0: *** mdiobus_scan_bus_c22 return ***
+[    0.195617] mdio_bus f1072004.mdio-mii: *** mdiobus_scan_bus_c22 call **=
+*
+[    0.195623] mdio_bus f1072004.mdio-mii: *** mdiobus_scan_bus_c22 return =
+***
+[    0.202583] mv88e6085 f1072004.mdio-mii:10: switch 0x1760 detected: Marv=
+ell 88E6176, revision 1
+[    0.212708] mdio_bus mv88e6xxx-0: *** mdiobus_scan_bus_c22 call ***
+[    0.222200] mv88e6085 f1072004.mdio-mii:10: wait_count 10, loop_count 3
+........
+[    0.315724] mv88e6085 f1072004.mdio-mii:10: wait_count 150, loop_count 7=
+6
+[    0.315908] mdio_bus mv88e6xxx-0: *** mdiobus_scan_bus_c22 return ***
+[    0.315913] mdio_bus mv88e6xxx-0: *** mdiobus_scan_bus_c45 call ***
+[    0.321095] mv88e6085 f1072004.mdio-mii:10: wait_count 160, loop_count 8=
+3
+........
+[    2.610380] mv88e6085 f1072004.mdio-mii:10: wait_count 4980, loop_count =
+1571
+[    2.613258] mdio_bus mv88e6xxx-0: *** mdiobus_scan_bus_c45 return ***
+[    2.755785] mv88e6085 f1072004.mdio-mii:10: switch 0x1760 detected: Marv=
+ell 88E6176, revision 1
+[    2.766047] mdio_bus mv88e6xxx-1: *** mdiobus_scan_bus_c22 call ***
+[    2.766960] mv88e6085 f1072004.mdio-mii:10: wait_count 4990, loop_count =
+1574
+........
+[    2.867107] mv88e6085 f1072004.mdio-mii:10: wait_count 5130, loop_count =
+1645
+[    2.869938] mdio_bus mv88e6xxx-1: *** mdiobus_scan_bus_c22 return ***
+[    2.869943] mdio_bus mv88e6xxx-1: *** mdiobus_scan_bus_c45 call ***
+[    2.871556] mv88e6085 f1072004.mdio-mii:10: wait_count 5140, loop_count =
+1649
+........
+[    5.371710] mv88e6085 f1072004.mdio-mii:10: wait_count 9970, loop_count =
+4282
+[    5.373332] mdio_bus mv88e6xxx-1: *** mdiobus_scan_bus_c45 return ***
+
+
+
+
+Best regards, Klaus
 
