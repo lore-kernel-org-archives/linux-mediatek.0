@@ -4,65 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83682C678D5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 13:15:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43B3DC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 13:31:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a9sAgt042t8o6ny+aE48pC0mQiSu4cCbNHTT4FuPqyA=; b=ufZRpAgXcqtn2CVQFWrPL+rrWR
-	3XBwGXJAubpHJJE+/77i6twtd++gWD0k59W+926GPnvU/OtXYGxhs1ltvXRf4KSYaJvLOD/nKjE4m
-	RohvVRx+VEVRgoGuzjuJWl/0nYm21udZiLItm3GYkp+OMgPU0Ux0eSr5WmRWg9gylpactl+c/cfqC
-	Uf4Ct+v0jGVSX51bA9tv2m+6sVGmu2QdlbfGFf6RlOS1x9WcQ2tXcP+3sr9sW5T+PpnZbe538JWIN
-	d1pOt+nXdzMrqpGBkKAGp60hsDCgH3n37f5P8bpRhXUGKiXouk1tqRL2NX56idxzrFdUtUyqh1ByO
-	bbhnhhhw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tcs+oZ8Ti0MefEj+f00/ORib4j1MEGcYHaRo1YTx8vQ=; b=hI6K8k05gkCvv+wWL6iWKwBV5I
+	WcM2KfFBGY7vMzE2rogSKVsZrz5uTKcIuNrvg+rZFjRvkRReTtVGXlGYO60gZwG12I3qzQGXxcHh6
+	Lnih/hIHxQzL5rnTuPZDFJAjy5paDt86MQE4SVr0ki2oQ8pIqx0cQjMLv/98TA9XiVDhp1Hnp6rfr
+	NxFZzuhIlGKCXNUmCo5vprKcVOoSyzSruD5z7sjgPn3mmoCVb8cv3fXQCWt+80vNsbnEii0oTwMY0
+	zYNxFq9ZfnejznkdZOx/f5MKBMghMkPlqfj3NpPLSFb12o4wHPU8OEYOMAVyR3z4fQVwNwEkuuCyu
+	Na84+PHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZtdG-0057TW-J9; Wed, 08 Mar 2023 13:15:02 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1pZttB-005DCD-1o; Wed, 08 Mar 2023 13:31:29 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZtaf-005649-0T; Wed, 08 Mar 2023 13:12:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=a9sAgt042t8o6ny+aE48pC0mQiSu4cCbNHTT4FuPqyA=; b=YEenRdjR/S2/qI3IoQN+qT86KQ
-	Be65vqLNIn+vK+bBO02Hib6TbHGArTU4HbExSququReIK5DHwOLPxq/h3gWkD7dJrLRzqS76D0vWT
-	TpL4ZTf8yMOUFmZosAhpbSUMWMlbkcJEQSS+kL1uieLXhHyFVCH+IR2bN+DnJceuITaFiubJU4Nzk
-	xefBhv/2GNo5nc9jv9wd54vIbrGD/fOhFfQ2hDP+bjktfOwHe7P5BEwDJtvLEIJNADk86P7OHyZ4K
-	X8FWcNfUWzT/5J/8oYnMrvXy8/frmTAfy2Mr8HrHQrqwp5eq8B/Zf26EvtuXPsWAhAQ3vsP5ExkdM
-	KLaT95dw==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:46720)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1pZtaY-0002ac-UP; Wed, 08 Mar 2023 13:12:15 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1pZtaU-0002c3-F8; Wed, 08 Mar 2023 13:12:10 +0000
-Date: Wed, 8 Mar 2023 13:12:10 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Daniel Golle <daniel@makrotopia.org>
-Subject: Re: [PATCH net-next v12 08/18] net: ethernet: mtk_eth_soc: fix
- 1000Base-X and 2500Base-X modes
-Message-ID: <ZAiJqvzcUob2Aafq@shell.armlinux.org.uk>
-References: <cover.1678201958.git.daniel@makrotopia.org>
- <fd5c7ea79a7f84caac7d0b64b39fe5c4043edfa8.1678201958.git.daniel@makrotopia.org>
- <ZAhzDDjZ8+gxyo3V@shell.armlinux.org.uk>
- <ZAh7hA4JuJm1b2M6@makrotopia.org>
- <ZAiCh8wkdTBT+6Id@shell.armlinux.org.uk>
- <ZAiFOTRQI36nGo+w@makrotopia.org>
+	id 1pZtsz-005D8F-M1
+	for linux-mediatek@lists.infradead.org; Wed, 08 Mar 2023 13:31:21 +0000
+Received: by mail-wr1-x432.google.com with SMTP id bx12so15348065wrb.11
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Mar 2023 05:31:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1678282275;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=tcs+oZ8Ti0MefEj+f00/ORib4j1MEGcYHaRo1YTx8vQ=;
+        b=uMORQYJTqb7eF+TS+OXUnvGZtemx2Gmei0dGIW+WS7sSdQNWx6CYu2YSur7gZ7UUZe
+         dgjVvgHIe9wrTxtDLDc87XXjrUs1sTFvERIYaF4dSP7NUP4E97AHGTBwAzcrfmyLR28x
+         2DUIcUYsYAc6Aj+QB3hsJtzAbv0Ex92QNRvv/HF3jbZEmjyFb0TarmYJmU7Aha/zIgK9
+         NJBVEM9oCehdwPcTzxCQTxWJPUDv3ULDAwf+YcJMh54Z+ZWVteE+lD7Ccrp+J+aORgkE
+         HlKq/dJBsiNxkFXfbCay2W2Et5VX6jHi0G0DlFT2cfabz5kg8G0PEApfuqh9ggVtunB3
+         hrIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678282275;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=tcs+oZ8Ti0MefEj+f00/ORib4j1MEGcYHaRo1YTx8vQ=;
+        b=K2gq4io7jkulZ1zet/yDFSrgkV2LGJBCaC3gLgJUEff3pANHt6rOQGuEqjW9vXURy4
+         N9w1zVc0YjB+La5IKUjriV1Lle6dsPp13Yy1NvCFPO9trOqY+j1hYl7H9ynw5rn+icwe
+         qNJ2LjTWaZwZXcBSP0TZzIv78OFRIqYw0uIybxExko1CtK86N1ytNiew5e+oLZQf7xQY
+         IhD0r5eOZ/OV9QRXNIeDp6qBGEj7eUZi5XqhJZ5FQUQ/s66qoERLdWowc/zQeabK1uqR
+         enU3j1MwYGZh1kYKQ0FDWAooV0R2PEmqrGNWlwA2QG9O6WVgXT8PmemIQMdEXOSMRMpH
+         oSeA==
+X-Gm-Message-State: AO0yUKWgw14MD3N9pxvzoh+qZFU/4XL8rEsGcflg4Rqf6PUEp0xs8qBb
+	25hRWtDoZnFej/frmwdLvgWz4A==
+X-Google-Smtp-Source: AK7set/NX5HlxdOngMNTFnb0EPlr+0JwIwMOaiZ9ppB69TodBmpVecSoCUT3wDixITtN85Dj4zLXfg==
+X-Received: by 2002:a5d:6b10:0:b0:2cc:4e58:f6d0 with SMTP id v16-20020a5d6b10000000b002cc4e58f6d0mr10220801wrw.54.1678282275334;
+        Wed, 08 Mar 2023 05:31:15 -0800 (PST)
+Received: from [192.168.1.195] ([5.133.47.210])
+        by smtp.googlemail.com with ESMTPSA id m16-20020a056000009000b002be099f78c0sm15313823wrx.69.2023.03.08.05.31.14
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 08 Mar 2023 05:31:14 -0800 (PST)
+Message-ID: <7853ff04-02cf-9430-d84a-c8fe8b1d6725@linaro.org>
+Date: Wed, 8 Mar 2023 13:31:13 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZAiFOTRQI36nGo+w@makrotopia.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH V4 2/2] nvmem: add generic driver for devices with MMIO
+ access
+Content-Language: en-US
+To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>
+References: <20230228072936.1108-1-zajec5@gmail.com>
+ <20230228072936.1108-3-zajec5@gmail.com>
+From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+In-Reply-To: <20230228072936.1108-3-zajec5@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_051221_248144_FD48B0CF 
-X-CRM114-Status: GOOD (  49.79  )
+X-CRM114-CacheID: sfid-20230308_053117_757363_BF9B23B2 
+X-CRM114-Status: GOOD (  42.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,132 +97,257 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <vladimir.oltean@nxp.com>, Eric Dumazet <edumazet@google.com>, Florian Fainelli <f.fainelli@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Alexander Couzens <lynxis@fe80.eu>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Jianhui Zhao <zhaojh329@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, =?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 08, 2023 at 12:53:13PM +0000, Daniel Golle wrote:
-> On Wed, Mar 08, 2023 at 12:41:43PM +0000, Russell King (Oracle) wrote:
-> > On Wed, Mar 08, 2023 at 12:11:48PM +0000, Daniel Golle wrote:
-> > > On Wed, Mar 08, 2023 at 11:35:40AM +0000, Russell King (Oracle) wrote:
-> > > > On Tue, Mar 07, 2023 at 03:53:58PM +0000, Daniel Golle wrote:
-> > > > > After conversion to phylink_pcs the 1000Base-X and 2500Base-X modes
-> > > > > would work only after `ethtool -s eth1 autoneg off`.
-> > > > > As ethtool autoneg and the ETHTOOL_LINK_MODE_Autoneg_BIT is supposed
-> > > > > to control auto-negotiation on the external interface it doesn't make
-> > > > > much sense to use it to control on-board SGMII auto-negotiation between
-> > > > > MAC and PHY.
-> > > > > Set correct values to really only enable SGMII auto-negotiation when
-> > > > > actually operating in SGMII mode. For 1000Base-X and 2500Base-X mode,
-> > > > > enable remote-fault detection only if in-band-status is enabled.
-> > > > > This fixes using 1000Base-X and 2500Base-X SFPs on the BananaPi R3
-> > > > > board and also makes it possible to use interface-mode-switching PHYs
-> > > > > operating in either SGMII mode for 10M/100M/1000M or in 2500Base-X for
-> > > > > 2500M mode on other boards.
-> > > > > 
-> > > > > Fixes: 14a44ab0330d ("net: mtk_eth_soc: partially convert to phylink_pcs")
-> > > > > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> > > > 
-> > > > NAK.
-> > > > 
-> > > > There are PHYs out there which operate in SGMII mode but do not
-> > > > exchange the SGMII 16-bit configuration word. The code implemented
-> > > > here by me was explicitly to allow such a configuration to work,
-> > > > which is defined as:
-> > > > 
-> > > > 	SGMII *without* mode == inband
-> > > > 
-> > > > An example of this is the Broadcom 84881 PHY which can be found on
-> > > > SFP modules.
-> > > 
-> > > I also have multiple such 1000Base-T SFP modules here (finisar, AJYA),
-> > > and this change doesn't touch the codepaths relevant for those. They
-> > > are operating in SGMII mode, they have always been working fine.
-> > > 
-> > > What I'm trying to fix here is 1000Base-X and 2500Base-X mode which
-> > > has been broken by introducing ETHTOOL_LINK_MODE_Autoneg_BIT as the
-> > > deciding factor for in-band AN here.
-> > 
-> > ... which is correct.
-> > 
-> > > Can you explain why ETHTOOL_LINK_MODE_Autoneg_BIT was used there in
-> > > first place? Is my understanding of this bit controlling autoneg on the
-> > > *external* interface rather than on the *system-side* interface wrong?
-> > 
-> > Think about what 1000BASE-X is for. It's not really for internal links,
-> > it's intended by IEEE 802.3 to be the 1G *media* side protocol for
-> > 1000BASE-SX, 1000BASE-LX, 1000BASE-CX etc links.
-> > 
-> > Therefore, when being used in that case, one may wish to disable
-> > autoneg over the fibre link. Hence, turning off autoneg via ethtool
-> > *should* turn off autoneg over the fibre link. So, using
-> > ETHTOOL_LINK_MODE_Autoneg_BIT to gate 802.3z autonegotiation the
-> > correct thing to do.
-> > 
-> > If we have a PHY using 1000BASE-X, then it is at odds with the
-> > primary purpose of this protocol, especially with it comes to AN.
-> > This is why phylink used to refuse to accept PHYs when using 802.3z
-> > mode, but Marek wanted this to work, so relaxed the checks
-> > preventing such a setup working.
+Hi Rafał,
+
+
+Thanks for doing this,
+
+On 28/02/2023 07:29, Rafał Miłecki wrote:
+> From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> Sadly 2500Base-X is very commonly used to connect 2500Base-T-capable
-> PHYs or SFP modules. I also got an ATS branded 1000M/100M/10M copper
-> SFP module which uses 1000Base-X as system-side interface, independently
-> of the speed of the link partner on the TP interface.
-> All of them do not work with inband-AN enabled and a link only comes
-> up after `ethtool -s eth1 autoneg off` in the current implementation,
-> while previously they were working just fine.
+> Some NVMEM devices can be accessed by simply mapping memory and reading
+> from / writing to it. This driver adds support for a generic
+> "mmio-nvmem" DT binding used by such devices.
 > 
-> I understand that there isn't really a good solution for 1000Base-X as
-> thanks to you I now understand that SerDes autoneg just transparently
-> ends up being autoneg on a fiber link.
+> One of such devices is Broadcom's NVRAM. It's already supported (see
+> NVMEM_BRCM_NVRAM) but existing driver covers both:
+
+What will happen to the old "brcm,nvram" compatible and the dt firmware 
+that already have this node?
+
+
+If there is only one user for this then one would object that why do we 
+need this DT level of abstraction to start with?
+If this is not the case please consider adding those patches to this series.
+
+
+> 1. NVMEM device access
+> 2. NVMEM content parsing
 > 
-> 2500Base-X, however, is hardly used for fiber links, but rather mostly
-> for 2500Base-T PHYs and SFP module as well as xPON SFPs. Maybe we could
-> at least have in-band AN disabled by default for those to get them
-> working without requiring the user to carry out ethtool settings?
+> Once we get support for NVMEM layouts then existing NVRAM driver will
+> get converted into a layout and generic driver will take over
+> responsibility for data access.
+>
 
-We could _possibly_ make 2500base-X ignore the autoneg bit, but in
-order to do that I would want to make other changes, because this
-is getting absolutely stupid to have these decisions being made in
-each and every PCS - and have each PCS author implementing different
-decision making in their PCS driver.
+Even though this series is simple, but it is really confusing for two 
+reasons.
 
-The problem that gives is it makes phylink maintenance in hard,
-because it becomes impossible to predict what the effect of any
-change is.
+1> Generic mmio nvmem bindings are incomplete and potentially 
+change/evolve on every new user. Ex clks, regulators, endianess ... So 
+it looks really fragile and incomplete to me as a generic bindings.
+Is this want you are expecting?
 
-It also means that plugging the same SFP module into different
-hardware will give different results (maybe it works, maybe it
-doesn't.)
 
-So, what I would want to do is to move the decision about whether
-the PCS should enable in-band into the phylink core code instead
-of these random decisions being made in each PCS.
+2> As you mentioned that this will replace broadcom NVMRAM, but this 
+patch does nothing in relation to updating that driver, so the code is 
+dead as it is. If you are considering to use it for Broadcom NVMRAM, 
+please add those patches to this series so that we could see the real 
+user for this code.
 
-At that point, we can then make the decision about whether the
-ethtool autoneg bit should affect whether the PCS uses inband
-depending on whether the PCS is effectively the media facing
-entity, or whether there is a PHY attached - and if there is a PHY
-attached, ask the PHY whether it will be using in-band or not.
+--srini
 
-This also would give a way to ensure that all PCS adopt the same
-behaviour.
-
-Does that sound a reasonable approach?
-
-Strangely, I already have some patches along those lines in my
-net-queue branch. See:
-
-net: phylink: add helpers for decoding mode
-net: use phylink_mode_*() helpers
-net: phylink: split PCS in-band from inband mode
-
-It's nowhere near finished though, it was just an idea back in
-2021 when the problem of getting rid of differing PCS behaviours
-was on my mind.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+> ---
+> V3: Support "reg-io-width", basic writing & "brcm,nvram" string
+> V3: Don't duplicate core checks, add 64 b support, complete writing
+>      support, don't add confusing conditional "brcm,nvram" support (it
+>      will be handled with layouts migration)
+> ---
+>   drivers/nvmem/Kconfig  |  10 +++
+>   drivers/nvmem/Makefile |   2 +
+>   drivers/nvmem/mmio.c   | 148 +++++++++++++++++++++++++++++++++++++++++
+>   3 files changed, 160 insertions(+)
+>   create mode 100644 drivers/nvmem/mmio.c
+> 
+> diff --git a/drivers/nvmem/Kconfig b/drivers/nvmem/Kconfig
+> index 6dec38805041..189ea85bd67d 100644
+> --- a/drivers/nvmem/Kconfig
+> +++ b/drivers/nvmem/Kconfig
+> @@ -166,6 +166,16 @@ config NVMEM_MICROCHIP_OTPC
+>   	  This driver enable the OTP controller available on Microchip SAMA7G5
+>   	  SoCs. It controls the access to the OTP memory connected to it.
+>   
+> +config NVMEM_MMIO
+> +	tristate "MMIO access based NVMEM support"
+> +	depends on HAS_IOMEM
+> +	help
+> +	  This driver provides support for NVMEM devices that can be accessed
+> +	  using MMIO.
+> +
+> +	  This driver can also be built as a module. If so, the module
+> +	  will be called nvmem-mmio.
+> +
+>   config NVMEM_MTK_EFUSE
+>   	tristate "Mediatek SoCs EFUSE support"
+>   	depends on ARCH_MEDIATEK || COMPILE_TEST
+> diff --git a/drivers/nvmem/Makefile b/drivers/nvmem/Makefile
+> index 6a1efffa88f0..767a9db2bfc1 100644
+> --- a/drivers/nvmem/Makefile
+> +++ b/drivers/nvmem/Makefile
+> @@ -35,6 +35,8 @@ obj-$(CONFIG_NVMEM_MESON_MX_EFUSE)	+= nvmem_meson_mx_efuse.o
+>   nvmem_meson_mx_efuse-y			:= meson-mx-efuse.o
+>   obj-$(CONFIG_NVMEM_MICROCHIP_OTPC)	+= nvmem-microchip-otpc.o
+>   nvmem-microchip-otpc-y			:= microchip-otpc.o
+> +obj-$(CONFIG_NVMEM_MMIO)		+= nvmem-mmio.o
+> +nvmem-mmio-y				:= mmio.o
+>   obj-$(CONFIG_NVMEM_MTK_EFUSE)		+= nvmem_mtk-efuse.o
+>   nvmem_mtk-efuse-y			:= mtk-efuse.o
+>   obj-$(CONFIG_NVMEM_MXS_OCOTP)		+= nvmem-mxs-ocotp.o
+> diff --git a/drivers/nvmem/mmio.c b/drivers/nvmem/mmio.c
+> new file mode 100644
+> index 000000000000..ce51648bb321
+> --- /dev/null
+> +++ b/drivers/nvmem/mmio.c
+> @@ -0,0 +1,148 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +/*
+> + * Copyright (C) 2023 Rafał Miłecki <rafal@milecki.pl>
+> + */
+> +
+> +#include <linux/io.h>
+> +#include <linux/mod_devicetable.h>
+> +#include <linux/module.h>
+> +#include <linux/nvmem-provider.h>
+> +#include <linux/of.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/property.h>
+> +#include <linux/slab.h>
+> +
+> +struct mmio_nvmem {
+> +	void __iomem *base;
+> +	u32 io_width;
+> +};
+> +
+> +static int mmio_nvmem_read(void *context, unsigned int offset, void *val, size_t bytes)
+> +{
+> +	struct mmio_nvmem *priv = context;
+> +	u64 __maybe_unused *dst64;
+> +	u32 *dst32;
+> +	u16 *dst16;
+> +	u8 *dst8;
+> +
+> +	switch (priv->io_width) {
+> +	case 0:
+> +		memcpy_fromio(val, priv->base + offset, bytes);
+> +		break;
+> +	case 1:
+> +		for (dst8 = val; bytes; bytes -= 1, offset += 1)
+> +			*dst8++ = readb(priv->base + offset);
+> +		break;
+> +	case 2:
+> +		for (dst16 = val; bytes; bytes -= 2, offset += 2)
+> +			*dst16++ = readw(priv->base + offset);
+> +		break;
+> +	case 4:
+> +		for (dst32 = val; bytes; bytes -= 4, offset += 4)
+> +			*dst32++ = readl(priv->base + offset);
+> +		break;
+> +#ifdef CONFIG_64BIT
+> +	case 8:
+> +		for (dst64 = val; bytes; bytes -= 8, offset += 8)
+> +			*dst64++ = readq(priv->base + offset);
+> +		break;
+> +#endif
+> +	default:
+> +		return -EINVAL;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int mmio_nvmem_write(void *context, unsigned int offset, void *val, size_t bytes)
+> +{
+> +	struct mmio_nvmem *priv = context;
+> +	u64 __maybe_unused *dst64;
+> +	u32 *dst32;
+> +	u16 *dst16;
+> +	u8 *dst8;
+> +
+> +	switch (priv->io_width) {
+> +	case 0:
+> +		memcpy_toio(priv->base + offset, val, bytes);
+> +		break;
+> +	case 1:
+> +		for (dst8 = val; bytes; bytes -= 1, offset += 1)
+> +			writeb(*dst8++, priv->base + offset);
+> +		break;
+> +	case 2:
+> +		for (dst16 = val; bytes; bytes -= 2, offset += 2)
+> +			writew(*dst16++, priv->base + offset);
+> +		break;
+> +	case 4:
+> +		for (dst32 = val; bytes; bytes -= 4, offset += 4)
+> +			writel(*dst32++, priv->base + offset);
+> +		break;
+> +#ifdef CONFIG_64BIT
+> +	case 8:
+> +		for (dst64 = val; bytes; bytes -= 8, offset += 8)
+> +			writeq(*dst64++, priv->base + offset);
+> +		break;
+> +#endif
+> +	default:
+> +		return -EINVAL;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int mmio_nvmem_probe(struct platform_device *pdev)
+> +{
+> +	struct nvmem_config config = {
+> +		.name = "mmio-nvmem",
+> +		.id = NVMEM_DEVID_AUTO,
+> +		.read_only = true,
+> +		.reg_read = mmio_nvmem_read,
+> +		.reg_write = mmio_nvmem_write,
+> +	};
+> +	struct device *dev = &pdev->dev;
+> +	struct mmio_nvmem *priv;
+> +	struct resource *res;
+> +
+> +	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
+> +	if (!priv)
+> +		return -ENOMEM;
+> +
+> +	priv->base = devm_platform_get_and_ioremap_resource(pdev, 0, &res);
+> +	if (IS_ERR(priv->base))
+> +		return PTR_ERR(priv->base);
+> +
+> +	of_property_read_u32(dev->of_node, "reg-io-width", &priv->io_width);
+> +
+> +	config.dev = dev;
+> +	config.size = resource_size(res);
+> +	config.word_size = priv->io_width;
+> +	config.stride = priv->io_width;
+> +	config.priv = priv;
+> +
+> +	return PTR_ERR_OR_ZERO(devm_nvmem_register(dev, &config));
+> +}
+> +
+> +static const struct of_device_id mmio_nvmem_of_match_table[] = {
+> +	{ .compatible = "mmio-nvmem", },
+> +	{},
+> +};
+> +
+> +static struct platform_driver mmio_nvmem_driver = {
+> +	.probe = mmio_nvmem_probe,
+> +	.driver = {
+> +		.name = "mmio_nvmem",
+> +		.of_match_table = mmio_nvmem_of_match_table,
+> +	},
+> +};
+> +
+> +static int __init mmio_nvmem_init(void)
+> +{
+> +	return platform_driver_register(&mmio_nvmem_driver);
+> +}
+> +
+> +subsys_initcall_sync(mmio_nvmem_init);
+> +
+> +MODULE_AUTHOR("Rafał Miłecki");
+> +MODULE_LICENSE("GPL");
+> +MODULE_DEVICE_TABLE(of, mmio_nvmem_of_match_table);
 
