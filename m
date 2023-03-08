@@ -4,66 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48717C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 07:40:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0830C678D5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 07:40:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=aNbUdPyTGrQHDiDHk9SFddfA+Q4FwnkUeFYWeiVzJuY=; b=eQzSLzHnkNxjkhHFL95LEOH77E
-	g7BpPLfgJ6UrK2Mn4ESq3j9U6ppXnQMzpbSaBYRnz3KaVhlrx8Bjg9lp7nEwfWiPm/MioaKGgqAEy
-	L2rxqafYeA3JdksuTrSpGL0rEe5lnV0VXb8VgUi34CvRe92lF0kxbSOAaZL9D/S12rZCf5LaMU+U0
-	e6ueNnoo5O72VK9VHZw3ZWK4fSE81BZ49Xmo+KeYrv3h0LCVJv7S7APSxHBS/tnmhWcJtZRN0ZtsQ
-	OCFtQrmNqGUPga4YoNWDyLBKROkwOENMCIZfxC73PjEEco/G385pmzFrTrWQXj3CV/lKaeKDDzsCC
-	f67EbNmg==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nCkxsMZ02pM0gt8ja/LXdDvJSoRo6F9mq7WcqGHKTOg=; b=VqF1y9jT1rT7wXcU8GVFy/pSrn
+	jtByFoyqTYX6T0aHEIBHxWZkpH3+cmo2xxPYogOtjP2NJYqpMudu6VHtZi8UY5oyEN+B4lAFlTGil
+	nlPJBZtnwup6xqmzne2AiuUZ+SY5W8BOvur0or7oe5YCxeEjRfAyDQHqrCUNDS0XPUf3B92IHNTZD
+	3FnuRXaC4jJYfp3tc3XqcD9+xorT8av+/gNXG2hF1X/sL8C6q2pJfVooV2kS5FWCiHBkD8XKglQZ1
+	KdnwypZHynPs+26+L9UnRJL/bndZaRmxwl6WZiyEJV2CGEPVJ6DXY0ZgVc1bDiD4vz3yTaQKdhPnQ
+	maxA26TA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZoPK-003p0q-EM; Wed, 08 Mar 2023 07:40:18 +0000
+	id 1pZoPV-003p8Z-3u; Wed, 08 Mar 2023 07:40:29 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZoP8-003otK-PU
-	for linux-mediatek@lists.infradead.org; Wed, 08 Mar 2023 07:40:08 +0000
+	id 1pZoPB-003owL-Bo
+	for linux-mediatek@lists.infradead.org; Wed, 08 Mar 2023 07:40:10 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1pZoOv-0007OI-Er; Wed, 08 Mar 2023 08:39:53 +0100
+	id 1pZoOv-0007RO-EF; Wed, 08 Mar 2023 08:39:53 +0100
 Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1pZoOs-002fHz-4I; Wed, 08 Mar 2023 08:39:50 +0100
+	id 1pZoOu-002fIe-4W; Wed, 08 Mar 2023 08:39:52 +0100
 Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1pZoOr-003ELq-EQ; Wed, 08 Mar 2023 08:39:49 +0100
+	id 1pZoOt-003EMM-CS; Wed, 08 Mar 2023 08:39:51 +0100
 From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
 To: Lee Jones <lee@kernel.org>,
 	Daniel Thompson <daniel.thompson@linaro.org>,
 	Jingoo Han <jingoohan1@gmail.com>,
 	Helge Deller <deller@gmx.de>,
-	Michael Hennerich <michael.hennerich@analog.com>,
-	Support Opensource <support.opensource@diasemi.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>
-Cc: dri-devel@lists.freedesktop.org,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	dri-devel@lists.freedesktop.org,
 	linux-fbdev@vger.kernel.org,
 	kernel@pengutronix.de,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-pwm@vger.kernel.org,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	linux-arm-msm@vger.kernel.org
-Subject: [PATCH 00/13] backlight: Convert to platform remove callback returning void
-Date: Wed,  8 Mar 2023 08:39:32 +0100
-Message-Id: <20230308073945.2336302-1-u.kleine-koenig@pengutronix.de>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 09/13] backlight: mt6370-backlight: Convert to platform remove callback returning void
+Date: Wed,  8 Mar 2023 08:39:41 +0100
+Message-Id: <20230308073945.2336302-10-u.kleine-koenig@pengutronix.de>
 X-Mailer: git-send-email 2.39.1
+In-Reply-To: <20230308073945.2336302-1-u.kleine-koenig@pengutronix.de>
+References: <20230308073945.2336302-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2935; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=Kjy1U54JR1Ng4uZuM4V7pqtJr+R0H4clHwG62u+DoeU=; b=owEBbQGS/pANAwAKAcH8FHityuwJAcsmYgBkCDuPukCAhVjcRmzwgXrcBiSoubLeLaBxxeYoh x6Wc4zMzfiJATMEAAEKAB0WIQR+cioWkBis/z50pAvB/BR4rcrsCQUCZAg7jwAKCRDB/BR4rcrs CRLBCACJQNQt47kru3bGNV4B9ox8fV7mGMj02dY2HLiYxsld+xlpfgRAPpvg0fmaz23uvo6P3eQ FUBPMUW6gH3kqXyAWDCn1TaTKhUliLtsriFDhvGyTnf9SP6fy22JVO3L9oi/IyVwws+u1eWG7wi bK1/ntPy1ABVk2jpLNsRtMxM5iEFOXPG/r4UFrRbykVXBhMELL8EK9U0q6ksaFR/Z+IGD0LDkhc 7rj7p8Eq483P8CrtGmCI02Kv9TdUUKAQ12mGXUOSeir+/4VIUBSw2yoa1PU5D8e4XOA7uEWCM88 dGuA3tRSXPcaeyapZt5m2hmWH13PxVIAnwglEtv4CPUVkoFo
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1754; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=izMl9qYZIjLfU5gY6yLq3ubZeeyc6JGvz++8GSEQJW0=; b=owEBbQGS/pANAwAKAcH8FHityuwJAcsmYgBkCDuuUSpDDhEM7P5ntBvd6sGNC7ioJLTDFxq90 V60T6nzE3SJATMEAAEKAB0WIQR+cioWkBis/z50pAvB/BR4rcrsCQUCZAg7rgAKCRDB/BR4rcrs Cc6oB/9WVJQFnIaDmnFEvpsCEp0G6K57Xf6TiCfAC7Jd+ERnAtUpHicrWrRBgZUNtxQL5wfepUv n+fEoQ3U8C5H3J/GsRo/Vvtvh8oe8F35YNtbwTKV6zUCLK/nCa5nGkkM1aHhDNCMty0reJxulh2 wTu6Kh9FqHqjUUN73Asvf1u3anMDk4fcmwYDLC3tDPcED9D/xwx+A0rE9A2arGu9J6y0bBmqZ/P 1AlmcACUajW1dL5NqPTch8fsxeRczOkX3719pRpStb4dmE0u96AoT0T1So38TH6E2CwCkE7qkxS OwC84dvY7InkTwU1CTclS7SlTp2h8HkMn2OC9mupMeJCrce4
 X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
@@ -71,8 +65,8 @@ X-SA-Exim-Mail-From: ukl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_234006_901210_D5CEBCAF 
-X-CRM114-Status: GOOD (  10.51  )
+X-CRM114-CacheID: sfid-20230307_234009_419465_073CE360 
+X-CRM114-Status: GOOD (  16.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,70 +81,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+The .remove() callback for a platform driver returns an int which makes
+many driver authors wrongly assume it's possible to do error handling by
+returning an error code. However the value returned is (mostly) ignored
+and this typically results in resource leaks. To improve here there is a
+quest to make the remove callback return void. In the first step of this
+quest all drivers are converted to .remove_new() which already returns
+void.
 
-this patch series adapts the platform drivers below drivers/video/backlight to
-use the .remove_new() callback. Compared to the traditional .remove() callback
-.remove_new() returns no value. This is a good thing because the driver core
-doesn't (and cannot) cope for errors during remove. The only effect of a
-non-zero return value in .remove() is that the driver core emits a warning. The
-device is removed anyhow and an early return from .remove() usually yields a
-resource leak.
+Trivially convert this driver from always returning zero in the remove
+callback to the void returning variant.
 
-By changing the remove callback to return void driver authors cannot
-reasonably assume any more that there is some kind of cleanup later.
+Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+---
+ drivers/video/backlight/mt6370-backlight.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-All drivers in drivers/video/backlight returned zero unconditionally in their
-remove callback, so they could all be converted trivially to .remove_new().
-
-Note that this series depends on commit 5c5a7680e67b ("platform: Provide
-a remove callback that returns no value") which is included in v6.3-rc1.
-
-Best regards
-Uwe
-
-Uwe Kleine-König (13):
-  backlight: aat2870_bl: Convert to platform remove callback returning
-    void
-  backlight: adp5520_bl: Convert to platform remove callback returning
-    void
-  backlight: cr_bllcd: Convert to platform remove callback returning
-    void
-  backlight: da9052_bl: Convert to platform remove callback returning
-    void
-  backlight: hp680_bl: Convert to platform remove callback returning
-    void
-  backlight: led_bl: Convert to platform remove callback returning void
-  backlight: lm3533_bl: Convert to platform remove callback returning
-    void
-  backlight: lp8788_bl: Convert to platform remove callback returning
-    void
-  backlight: mt6370-backlight: Convert to platform remove callback
-    returning void
-  backlight: pwm_bl: Convert to platform remove callback returning void
-  backlight: qcom-wled: Convert to platform remove callback returning
-    void
-  backlight: rt4831-backlight: Convert to platform remove callback
-    returning void
-  backlight: sky81452-backlight: Convert to platform remove callback
-    returning void
-
- drivers/video/backlight/aat2870_bl.c         | 6 ++----
- drivers/video/backlight/adp5520_bl.c         | 6 ++----
- drivers/video/backlight/cr_bllcd.c           | 6 ++----
- drivers/video/backlight/da9052_bl.c          | 6 ++----
- drivers/video/backlight/hp680_bl.c           | 6 ++----
- drivers/video/backlight/led_bl.c             | 6 ++----
- drivers/video/backlight/lm3533_bl.c          | 6 ++----
- drivers/video/backlight/lp8788_bl.c          | 6 ++----
- drivers/video/backlight/mt6370-backlight.c   | 6 ++----
- drivers/video/backlight/pwm_bl.c             | 6 ++----
- drivers/video/backlight/qcom-wled.c          | 6 ++----
- drivers/video/backlight/rt4831-backlight.c   | 6 ++----
- drivers/video/backlight/sky81452-backlight.c | 6 ++----
- 13 files changed, 26 insertions(+), 52 deletions(-)
-
-base-commit: fe15c26ee26efa11741a7b632e9f23b01aca4cc6
+diff --git a/drivers/video/backlight/mt6370-backlight.c b/drivers/video/backlight/mt6370-backlight.c
+index 623d4f2baca2..94422c956453 100644
+--- a/drivers/video/backlight/mt6370-backlight.c
++++ b/drivers/video/backlight/mt6370-backlight.c
+@@ -318,15 +318,13 @@ static int mt6370_bl_probe(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
+-static int mt6370_bl_remove(struct platform_device *pdev)
++static void mt6370_bl_remove(struct platform_device *pdev)
+ {
+ 	struct mt6370_priv *priv = platform_get_drvdata(pdev);
+ 	struct backlight_device *bl_dev = priv->bl;
+ 
+ 	bl_dev->props.brightness = 0;
+ 	backlight_update_status(priv->bl);
+-
+-	return 0;
+ }
+ 
+ static const struct of_device_id mt6370_bl_of_match[] = {
+@@ -342,7 +340,7 @@ static struct platform_driver mt6370_bl_driver = {
+ 		.of_match_table = mt6370_bl_of_match,
+ 	},
+ 	.probe = mt6370_bl_probe,
+-	.remove = mt6370_bl_remove,
++	.remove_new = mt6370_bl_remove,
+ };
+ module_platform_driver(mt6370_bl_driver);
+ 
 -- 
 2.39.1
+
 
