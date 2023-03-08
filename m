@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0830C678D5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 07:40:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0F3BC678D5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 07:54:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nCkxsMZ02pM0gt8ja/LXdDvJSoRo6F9mq7WcqGHKTOg=; b=VqF1y9jT1rT7wXcU8GVFy/pSrn
-	jtByFoyqTYX6T0aHEIBHxWZkpH3+cmo2xxPYogOtjP2NJYqpMudu6VHtZi8UY5oyEN+B4lAFlTGil
-	nlPJBZtnwup6xqmzne2AiuUZ+SY5W8BOvur0or7oe5YCxeEjRfAyDQHqrCUNDS0XPUf3B92IHNTZD
-	3FnuRXaC4jJYfp3tc3XqcD9+xorT8av+/gNXG2hF1X/sL8C6q2pJfVooV2kS5FWCiHBkD8XKglQZ1
-	KdnwypZHynPs+26+L9UnRJL/bndZaRmxwl6WZiyEJV2CGEPVJ6DXY0ZgVc1bDiD4vz3yTaQKdhPnQ
-	maxA26TA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZROicEC9TU/Yf4zsBSpQ6SvtM6o02kLYOlQBx2ObDKY=; b=AQFkh1hmB1kIw/p5l8L5JhsLkU
+	mCPAaOBbju8lmB6NRPjCX8xk8zkcW6wQW7+U2304nSVTvBpr4Ej9mxB38VNZSffKb3AgIeDmoUa1H
+	7yuoxJ7FNHR+AWYA+ncXq39MzeNlGD7H91syuho/XVaK3x8KgcXp67uf0mDr/mv0qKZVX2d9LlDvS
+	IoNXydcZCpstYmTM+MBzbtLJyLiUvkJudI3gBeKo6U2xcQC4tqXzCGNO3UxdBY39mEYLPMZ773ukb
+	uh+ayA00S3RByaMxovXfbxWqtETt67qQqvQZXT696fvIrxgTjfxkGdrRO0mJjrbtz0Cbf8MU656yj
+	FnW6hoNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZoPV-003p8Z-3u; Wed, 08 Mar 2023 07:40:29 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1pZodD-003rgX-VQ; Wed, 08 Mar 2023 07:54:39 +0000
+Received: from mail-vs1-xe2d.google.com ([2607:f8b0:4864:20::e2d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZoPB-003owL-Bo
-	for linux-mediatek@lists.infradead.org; Wed, 08 Mar 2023 07:40:10 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pZoOv-0007RO-EF; Wed, 08 Mar 2023 08:39:53 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pZoOu-002fIe-4W; Wed, 08 Mar 2023 08:39:52 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pZoOt-003EMM-CS; Wed, 08 Mar 2023 08:39:51 +0100
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Lee Jones <lee@kernel.org>,
-	Daniel Thompson <daniel.thompson@linaro.org>,
-	Jingoo Han <jingoohan1@gmail.com>,
-	Helge Deller <deller@gmx.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-fbdev@vger.kernel.org,
-	kernel@pengutronix.de,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 09/13] backlight: mt6370-backlight: Convert to platform remove callback returning void
-Date: Wed,  8 Mar 2023 08:39:41 +0100
-Message-Id: <20230308073945.2336302-10-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.39.1
-In-Reply-To: <20230308073945.2336302-1-u.kleine-koenig@pengutronix.de>
-References: <20230308073945.2336302-1-u.kleine-koenig@pengutronix.de>
+	id 1pZodB-003rev-1w
+	for linux-mediatek@lists.infradead.org; Wed, 08 Mar 2023 07:54:38 +0000
+Received: by mail-vs1-xe2d.google.com with SMTP id f23so14591652vsa.13
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Mar 2023 23:54:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20210112; t=1678262071;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZROicEC9TU/Yf4zsBSpQ6SvtM6o02kLYOlQBx2ObDKY=;
+        b=Lxu8zAqsY0AynkWFOSRHoMFMeCI3QuSBx6BmqyF7/NPrR3CwyXAS15Qje/VHAS04X9
+         9wI0rtWpbyn2NDxXishzXOzdNPXJ7vb9UBJgn1O3fUbQMoeSrk7zYZ2+jbvTfgxWHBZO
+         smt5lA6zW9+NL7JiwAMEbL5o9W5hG/lD5sW7JNihhyqZmPvQ7E8nmRgDheW36QiCHuOL
+         6RCUbeC9wblpVXYI+99XwiVZjvkWTteM+MqEj2SlVtUD5okt6NNAz5+oN82MnAKgQav5
+         TTBTpXZO16L2vXfi7NGaGLPms1xi0sKwn/09/lG47Hh/xxvsGk3eA+lw/IWTDqjGPP7o
+         MPsQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678262071;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ZROicEC9TU/Yf4zsBSpQ6SvtM6o02kLYOlQBx2ObDKY=;
+        b=QXYBBcyi6rPCB1UaBYRe0+EYCzjVmAfDCrE6pd7GLVcG2WVhDujmoQ6GW+BSlzk60J
+         CU4wccNmzdiyblfftV7euQKo4CpI6/tgJK8ItAOpHqOMnr/86TzHLlhV6/jgLtScN12S
+         szNX2YGSmo+C5ueY6WFxI1DznK9ZKGM86JLHw76UgmclMAQsZAMRegZMJLgHrwmOxiOr
+         pCV2/c0EkkuZ2DDCnjuUlLuETrCgtfY184r0LmFS7lH1bxfGjJnAcZqTrH0Yspvh2jtn
+         xCby4cY9aHwo///uHrK+W9WQ/Z2fWdrZFOMkoo7LUc7mvLC8DEzSkbt7kSjOILzF7X/j
+         3fAw==
+X-Gm-Message-State: AO0yUKXzl/Kqz29J2b11WaAe89haXx1baxWf3uCOn8wUyXWtUN5Y5Cqg
+	0wbNIt+If0ib2O/Zz0R9wGMJOl8weJzLvY687HVycw==
+X-Google-Smtp-Source: AK7set8cHOZpUtbKPw+4I21EoyXeWnGHo8a12mWiIPX0auShufUPiWOXz8lyzEIK7F08yUn/gok5kxTBSXmxVa06nZs=
+X-Received: by 2002:a05:6102:e43:b0:412:565:7f7a with SMTP id
+ p3-20020a0561020e4300b0041205657f7amr11660339vst.4.1678262071318; Tue, 07 Mar
+ 2023 23:54:31 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1754; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=izMl9qYZIjLfU5gY6yLq3ubZeeyc6JGvz++8GSEQJW0=; b=owEBbQGS/pANAwAKAcH8FHityuwJAcsmYgBkCDuuUSpDDhEM7P5ntBvd6sGNC7ioJLTDFxq90 V60T6nzE3SJATMEAAEKAB0WIQR+cioWkBis/z50pAvB/BR4rcrsCQUCZAg7rgAKCRDB/BR4rcrs Cc6oB/9WVJQFnIaDmnFEvpsCEp0G6K57Xf6TiCfAC7Jd+ERnAtUpHicrWrRBgZUNtxQL5wfepUv n+fEoQ3U8C5H3J/GsRo/Vvtvh8oe8F35YNtbwTKV6zUCLK/nCa5nGkkM1aHhDNCMty0reJxulh2 wTu6Kh9FqHqjUUN73Asvf1u3anMDk4fcmwYDLC3tDPcED9D/xwx+A0rE9A2arGu9J6y0bBmqZ/P 1AlmcACUajW1dL5NqPTch8fsxeRczOkX3719pRpStb4dmE0u96AoT0T1So38TH6E2CwCkE7qkxS OwC84dvY7InkTwU1CTclS7SlTp2h8HkMn2OC9mupMeJCrce4
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+References: <20230308022057.151078-1-haibo.li@mediatek.com>
+In-Reply-To: <20230308022057.151078-1-haibo.li@mediatek.com>
+From: Marco Elver <elver@google.com>
+Date: Wed, 8 Mar 2023 08:53:55 +0100
+Message-ID: <CANpmjNMj3JX6d=HS=CNzxZPZcJZWfz0G5wKmJjfGb_N525NNLw@mail.gmail.com>
+Subject: Re: [PATCH] kcsan:fix alignment_fault when read unaligned
+ instrumented memory
+To: Haibo Li <haibo.li@mediatek.com>
+Cc: Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kasan-dev@googlegroups.com, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, xiaoming.yu@mediatek.com, 
+	Mark Rutland <mark.rutland@arm.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_234009_419465_073CE360 
-X-CRM114-Status: GOOD (  16.06  )
+X-CRM114-CacheID: sfid-20230307_235437_119595_D029BCA0 
+X-CRM114-Status: GOOD (  23.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,53 +88,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The .remove() callback for a platform driver returns an int which makes
-many driver authors wrongly assume it's possible to do error handling by
-returning an error code. However the value returned is (mostly) ignored
-and this typically results in resource leaks. To improve here there is a
-quest to make the remove callback return void. In the first step of this
-quest all drivers are converted to .remove_new() which already returns
-void.
+On Wed, 8 Mar 2023 at 03:21, 'Haibo Li' via kasan-dev
+<kasan-dev@googlegroups.com> wrote:
+>
+> After enable kcsan on arm64+linux-5.15,it reports alignment_fault
+> when access unaligned address.
 
-Trivially convert this driver from always returning zero in the remove
-callback to the void returning variant.
+Is this KCSAN's fault or the fault of the code being instrumented?
+I.e. if you disable KCSAN, is there still an alignment fault reported?
 
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
----
- drivers/video/backlight/mt6370-backlight.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+Because as-is, I don't understand how the instrumentation alone will
+cause an alignment fault, because for every normal memory access there
+is a corresponding instrumented access - therefore, that'd suggest
+that the real access was also unaligned. Note that the compiler
+inserts instrumentation _before_ the actual access, so if there's a
+problem, that problem will manifest inside KCSAN.
 
-diff --git a/drivers/video/backlight/mt6370-backlight.c b/drivers/video/backlight/mt6370-backlight.c
-index 623d4f2baca2..94422c956453 100644
---- a/drivers/video/backlight/mt6370-backlight.c
-+++ b/drivers/video/backlight/mt6370-backlight.c
-@@ -318,15 +318,13 @@ static int mt6370_bl_probe(struct platform_device *pdev)
- 	return 0;
- }
- 
--static int mt6370_bl_remove(struct platform_device *pdev)
-+static void mt6370_bl_remove(struct platform_device *pdev)
- {
- 	struct mt6370_priv *priv = platform_get_drvdata(pdev);
- 	struct backlight_device *bl_dev = priv->bl;
- 
- 	bl_dev->props.brightness = 0;
- 	backlight_update_status(priv->bl);
--
--	return 0;
- }
- 
- static const struct of_device_id mt6370_bl_of_match[] = {
-@@ -342,7 +340,7 @@ static struct platform_driver mt6370_bl_driver = {
- 		.of_match_table = mt6370_bl_of_match,
- 	},
- 	.probe = mt6370_bl_probe,
--	.remove = mt6370_bl_remove,
-+	.remove_new = mt6370_bl_remove,
- };
- module_platform_driver(mt6370_bl_driver);
- 
--- 
-2.39.1
+Can you provide more information about what's going on (type of
+access, size of access, etc.)?
 
+> Here is the oops log:
+> "
+> Trying to unpack rootfs image as initramfs.....
+> Unable to handle kernel paging request at virtual address
+>   ffffff802a0d8d7171
+> Mem abort info:o:
+>   ESR = 0x9600002121
+>   EC = 0x25: DABT (current EL), IL = 32 bitsts
+>   SET = 0, FnV = 0 0
+>   EA = 0, S1PTW = 0 0
+>   FSC = 0x21: alignment fault
+> Data abort info:o:
+>   ISV = 0, ISS = 0x0000002121
+>   CM = 0, WnR = 0 0
+> swapper pgtable: 4k pages, 39-bit VAs, pgdp=000000002835200000
+> [ffffff802a0d8d71] pgd=180000005fbf9003, p4d=180000005fbf9003,
+> pud=180000005fbf9003, pmd=180000005fbe8003, pte=006800002a0d8707
+> Internal error: Oops: 96000021 [#1] PREEMPT SMP
+> Modules linked in:
+> CPU: 2 PID: 45 Comm: kworker/u8:2 Not tainted
+>   5.15.78-android13-8-g63561175bbda-dirty #1
+> ...
+> pc : kcsan_setup_watchpoint+0x26c/0x6bc
+> lr : kcsan_setup_watchpoint+0x88/0x6bc
+> sp : ffffffc00ab4b7f0
+> x29: ffffffc00ab4b800 x28: ffffff80294fe588 x27: 0000000000000001
+> x26: 0000000000000019 x25: 0000000000000001 x24: ffffff80294fdb80
+> x23: 0000000000000000 x22: ffffffc00a70fb68 x21: ffffff802a0d8d71
+> x20: 0000000000000002 x19: 0000000000000000 x18: ffffffc00a9bd060
+> x17: 0000000000000001 x16: 0000000000000000 x15: ffffffc00a59f000
+> x14: 0000000000000001 x13: 0000000000000000 x12: ffffffc00a70faa0
+> x11: 00000000aaaaaaab x10: 0000000000000054 x9 : ffffffc00839adf8
+> x8 : ffffffc009b4cf00 x7 : 0000000000000000 x6 : 0000000000000007
+> x5 : 0000000000000000 x4 : 0000000000000000 x3 : ffffffc00a70fb70
+> x2 : 0005ff802a0d8d71 x1 : 0000000000000000 x0 : 0000000000000000
+> Call trace:
+>  kcsan_setup_watchpoint+0x26c/0x6bc
+>  __tsan_read2+0x1f0/0x234
+>  inflate_fast+0x498/0x750
+
+^^ is it possible that an access in "inflate_fast" is unaligned?
+
+>  zlib_inflate+0x1304/0x2384
+>  __gunzip+0x3a0/0x45c
+>  gunzip+0x20/0x30
+>  unpack_to_rootfs+0x2a8/0x3fc
+>  do_populate_rootfs+0xe8/0x11c
+>  async_run_entry_fn+0x58/0x1bc
+>  process_one_work+0x3ec/0x738
+>  worker_thread+0x4c4/0x838
+>  kthread+0x20c/0x258
+>  ret_from_fork+0x10/0x20
+> Code: b8bfc2a8 2a0803f7 14000007 d503249f (78bfc2a8) )
+> ---[ end trace 613a943cb0a572b6 ]-----
+> "
+>
+> After checking linux 6.3-rc1 on QEMU arm64,it still has the possibility
+> to read unaligned address in read_instrumented_memory(qemu can not
+> emulate alignment fault)
+>
+> To fix alignment fault and read the value of instrumented memory
+> more effective,bypass the unaligned access in read_instrumented_memory.
+>
+> Signed-off-by: Haibo Li <haibo.li@mediatek.com>
+> ---
+>  kernel/kcsan/core.c | 5 +++++
+>  1 file changed, 5 insertions(+)
+>
+> diff --git a/kernel/kcsan/core.c b/kernel/kcsan/core.c
+> index 54d077e1a2dc..88e75d7d85d2 100644
+> --- a/kernel/kcsan/core.c
+> +++ b/kernel/kcsan/core.c
+> @@ -337,6 +337,11 @@ static void delay_access(int type)
+>   */
+>  static __always_inline u64 read_instrumented_memory(const volatile void *ptr, size_t size)
+>  {
+> +       bool aligned_read = (size == 1) || IS_ALIGNED((unsigned long)ptr, size);
+
+(size==1) check is redundant because IS_ALIGNED(.., 1) should always
+return true.
+
+And this will also penalize other architectures which can do unaligned
+accesses. So this check probably wants to be guarded by
+"IS_ENABLED(CONFIG_ARM64)" or something.
+
+> +       if (!aligned_read)
+> +               return 0;
+> +
+>         switch (size) {
+>         case 1:  return READ_ONCE(*(const u8 *)ptr);
+>         case 2:  return READ_ONCE(*(const u16 *)ptr);
 
