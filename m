@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3673DC64EC4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 21:15:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5B85C678D5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 21:17:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ktsS6gvJqIlBbC8B6VrYT4e0IFcYp23M4iEhHPG47pM=; b=hVJHamyg9kzTRb5YTfAMslARxh
-	g1XCbJ5SGVMjMK1Avum+jJ6/gpiD+IytdXssp4LCSHcFVM4bqdhl0JpgGWBxFz1hWafhwiI48ZFeE
-	lY3URY5AiRG31k05liDlUUzdohVSWJBntTHlzwFnNdT4KGVISdoECzS6XLR0NLmi/0vaPiHy9t0qD
-	/RM/0h+6n6H2xDVsBEOPw6cryZgoGuZWqJ/UqhowKlIjYHf/2vFHCpn1yPqAfhVToqbtzPFKnght1
-	tMvPk/Toy1gdwOVszyIvbAka8xOivgLT/UGPGP5255kP0rj8NjoO/hbo9iz0XzrxmeBypAqldXxQJ
-	OiL+gGGw==;
+	bh=YFMrPDdfxqpyd5M0MFhyXhLRTCbXShwPMfjjHKdui1k=; b=o6Pn/3tOjTpdS9LBel2wJTwSlM
+	TOAbbquSQv9e/kIN1vyIuPD0LvKcmSuuWqcCdm/UFctGHM83mN4ADw/9ruGRJeSe8+BGTQkjDOdwU
+	2hw6aLyFcFvyQRZozS5y09sXnhHKxBwoz+eUd/mNbddxHicmjE/c8AgntOB1hNRdkrQ6/FcdlShNg
+	HWTRTASlgREW22vkoS48eviow2bHvRO9EUIpt3QIFoTsEjlhXNUzJ3+9rzAxtwHPLr5ncMyTZfW7t
+	6dDafuWh8RDEVz7CKVPAv4SQeQtWFN5VhENdzdDtzEdKn8E/afKPr2v8tSzc7anbeJxGOgqv9i3bj
+	rtxrczfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pa180-006moA-UZ; Wed, 08 Mar 2023 21:15:16 +0000
-Received: from mail-oa1-f50.google.com ([209.85.160.50])
+	id 1pa1A3-006nER-EQ; Wed, 08 Mar 2023 21:17:23 +0000
+Received: from mail-oa1-f42.google.com ([209.85.160.42])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pa17y-006mnR-4l; Wed, 08 Mar 2023 21:15:15 +0000
-Received: by mail-oa1-f50.google.com with SMTP id 586e51a60fabf-17671fb717cso143706fac.8;
-        Wed, 08 Mar 2023 13:15:13 -0800 (PST)
+	id 1pa19s-006nAX-E1; Wed, 08 Mar 2023 21:17:13 +0000
+Received: by mail-oa1-f42.google.com with SMTP id 586e51a60fabf-176b48a9a05so229443fac.0;
+        Wed, 08 Mar 2023 13:17:08 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678310112;
+        d=1e100.net; s=20210112; t=1678310228;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ktsS6gvJqIlBbC8B6VrYT4e0IFcYp23M4iEhHPG47pM=;
-        b=TYzGhpXnh62wD1eXIWzGgVcRALK1FHGhUG9ni7yFfvX/5O3EGsTtyzUt/rAffxVqwA
-         P01x97SrUVeCBv/qJq/WME3Jj0jZrIw34F7ml804jyDCFD+eY9TDMcTPP/ES1iGo35vb
-         sTvGR7S4wl7MJKpUO8Jtlwq8YVL5LV73SBTQkqPe2MlVZ22M+q8yjppj54OytVBZVDYc
-         t67c2vdjlQmnjyslTudDFPM15kq7M4fggdsEOLTVMWiuyDD7A7TmI2ejUiR4eitBXRVK
-         WrsmVt3U4jeUtWyIAk8SrCqA7nULQZMObnO8/aYqnMLirWolohrzHd80/R7w/rZI/ElI
-         HxlA==
-X-Gm-Message-State: AO0yUKW43+X657i4Md4fe4J9FNlvLgYntD9blvNdov/TmBP0tAogb5n0
-	dEWtA4ovvljeMuFtgMsTew==
-X-Google-Smtp-Source: AK7set/guA8UuoeQpBiEWi5vzQStpahL+/DESR5U58DYCblv1tHuiS1b18dlELOYLHyJLaxszohlbg==
-X-Received: by 2002:a05:6870:1602:b0:16d:ccea:3ea0 with SMTP id b2-20020a056870160200b0016dccea3ea0mr12616079oae.0.1678310112649;
-        Wed, 08 Mar 2023 13:15:12 -0800 (PST)
+        bh=YFMrPDdfxqpyd5M0MFhyXhLRTCbXShwPMfjjHKdui1k=;
+        b=B8HV1oMWYf9CYBqxaaAmltY37Ad/hP2DC0whd8ZsEfPNtT+5GXn6rrgQVwu3V3WgyQ
+         eapY4vJJ3glAC1saLJgDrWg5EntVQ2+AIDaHhYznj1bwhB4Bn70HLQLQUnChDHhA52lY
+         SMeAuwJuEwYPO0eC+ApXPMedWsvyzSYq2qa5f2Yje4uK9V4REdGx0dB9mOXmF+W3iFX2
+         AcaLuCJuBhGZb6gFY0IY/DO+rtNIpmcuCo/TBlJYToWqWsnrxvd9f8tqqj9M3Ssk8Ro9
+         JSsIjG+NvcezM0aJ/mrkimiIcMLfsyLWCwFBhfvPwA0u3gxtnkCy3zaBBZK5tOz4JRBA
+         qZ0g==
+X-Gm-Message-State: AO0yUKW12ReqOs+KpOyLmTVnqHUsDnYujxcbJdSOXT++wP2S9Ij8Ru7Q
+	yoKT/ooh85NUcgMuYSchJqD4+Fyz0Q==
+X-Google-Smtp-Source: AK7set/7xk8grsaUoItOT2zuhVY8yeSb4zRNZBFmcFxRvaK1MclzUcTjoY+J1wTX6sQa1dIgiagbXw==
+X-Received: by 2002:a05:6870:8293:b0:176:770b:5e8 with SMTP id q19-20020a056870829300b00176770b05e8mr9332124oae.3.1678310227940;
+        Wed, 08 Mar 2023 13:17:07 -0800 (PST)
 Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id e21-20020a056870c35500b0016e8726f0d4sm6616083oak.3.2023.03.08.13.15.11
+        by smtp.gmail.com with ESMTPSA id dv23-20020a056870d89700b001728669a604sm6705945oab.5.2023.03.08.13.17.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Mar 2023 13:15:12 -0800 (PST)
-Received: (nullmailer pid 3855515 invoked by uid 1000);
-	Wed, 08 Mar 2023 21:15:11 -0000
-Date: Wed, 8 Mar 2023 15:15:11 -0600
+        Wed, 08 Mar 2023 13:17:07 -0800 (PST)
+Received: (nullmailer pid 3858258 invoked by uid 1000);
+	Wed, 08 Mar 2023 21:17:06 -0000
+Date: Wed, 8 Mar 2023 15:17:06 -0600
 From: Rob Herring <robh@kernel.org>
 To: arinc9.unal@gmail.com
-Subject: Re: [PATCH 17/20] dt-bindings: pinctrl: mediatek: mt7986: fix
- patternProperties regex
-Message-ID: <20230308211511.GA3850618-robh@kernel.org>
+Subject: Re: [PATCH 18/20] dt-bindings: pinctrl: ralink: rt305x: split binding
+Message-ID: <167831022612.3858198.10046631784617358105.robh@kernel.org>
 References: <20230303002850.51858-1-arinc.unal@arinc9.com>
- <20230303002850.51858-18-arinc.unal@arinc9.com>
+ <20230303002850.51858-19-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230303002850.51858-18-arinc.unal@arinc9.com>
+In-Reply-To: <20230303002850.51858-19-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_131514_208218_9B78EBCE 
-X-CRM114-Status: GOOD (  14.91  )
+X-CRM114-CacheID: sfid-20230308_131712_492374_AB64087C 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,48 +75,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, Daniel Santos <daniel.santos@pobox.com>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, William Dean <williamsukatube@gmail.com>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Daniel Golle <daniel@makrotopia.org>, Matthias Brugger <matthias.bgg@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
+Cc: Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, Daniel Santos <daniel.santos@pobox.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, erkin.bozoglu@xeront.com, Daniel Golle <daniel@makrotopia.org>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, devicetree@vger.kernel.org, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, DENG Qingfang <dqfext@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, Sean Wang <sean.wang@kernel.org>, linux-mips@vger.kernel.org, William Dean <williamsukatube@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 03, 2023 at 03:28:46AM +0300, arinc9.unal@gmail.com wrote:
+
+On Fri, 03 Mar 2023 03:28:47 +0300, arinc9.unal@gmail.com wrote:
 > From: Arınç ÜNAL <arinc.unal@arinc9.com>
 > 
-> Set second level patternProperties to '^.*mux.*$' and '^.*conf.*$' on
-> mediatek,mt7986-pinctrl.yaml.
+> The RT3352 and RT5350 SoCs each contain different pin muxing information,
+> therefore, should be split. This can be done now that there are compatible
+> strings to distinguish them from other SoCs.
+> 
+> Split the schema out to ralink,rt3352-pinctrl.yaml and
+> ralink,rt5350-pinctrl.yaml.
+> 
+> Remove ralink,rt3352-pinctrl and ralink,rt5350-pinctrl from rt305x.
 > 
 > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 > ---
->  .../devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml  | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  .../pinctrl/ralink,rt305x-pinctrl.yaml        |  83 +-----
+>  .../pinctrl/ralink,rt3352-pinctrl.yaml        | 243 ++++++++++++++++++
+>  .../pinctrl/ralink,rt5350-pinctrl.yaml        | 206 +++++++++++++++
+>  3 files changed, 455 insertions(+), 77 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/pinctrl/ralink,rt3352-pinctrl.yaml
+>  create mode 100644 Documentation/devicetree/bindings/pinctrl/ralink,rt5350-pinctrl.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-> index 46b7228920ed..e937881210c5 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-> @@ -72,7 +72,7 @@ patternProperties:
->      additionalProperties: false
->  
->      patternProperties:
-> -      '.*mux.*':
-> +      '^.*mux.*$':
 
-These are equivalent (so is just 'mux', but that's ambiguous). Why are 
-we changing them? Ideally, we'd only have a wildcard on one end.
+Reviewed-by: Rob Herring <robh@kernel.org>
 
->          type: object
->          additionalProperties: false
->          description: |
-> @@ -256,7 +256,7 @@ patternProperties:
->                    items:
->                      enum: [wf_2g, wf_5g, wf_dbdc]
->                    maxItems: 3
-> -      '.*conf.*':
-> +      '^.*conf.*$':
->          type: object
->          additionalProperties: false
->          description:
-> -- 
-> 2.37.2
-> 
 
