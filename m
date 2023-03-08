@@ -4,78 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFC91C678D5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 08:51:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2790C678D5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 09:05:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RegfERULej+941mOyU4tNlczm+KFqme2Zd1D/0dQ1IU=; b=l3jCqL02oc1qDvwttjR5PC9v3n
-	WTTKxXTk5m4WV+XcVs/n0fwQo8MgcPo2JP2j+kzIvSzEwnWO4Lw7tKQDzWAq3Oy8WOTrJ8Z0A2q+h
-	oTQljmJ3t1PNCwMK/GKBEXgnUQnR2NiIIM1l7mt2miqQWznCghj/+LLrOa6uja5uSybFKIP+T24V+
-	6HbRJ7lkE+IJCwBxlOW6Y5qkvrhPDMMSyr+LmEQM+jhCOrPPYGRf2jUC356x991HSWdZC2gDS2BAg
-	+s6fCpGJAU5Vnc3cn8KYdw9nXOCXc2x9vGatujXvIOMFvckCzI61dzOymNk7onr2FjTi0G4qR/1Ic
-	9juNkXAA==;
+	bh=kA8QaXHaQv2zTvTrF1F5tUB/9uaPE/un/rBzeew06Qk=; b=f6E19tZQPBQpHOaZRte8cyeTGh
+	invvnSD9ePgHsnJQnjJ7Rj/pwi4GT5KzKT3Utc7F9qVTCbEKL/4xYSvE2A+kuHE1xaH+V1gU4dlr4
+	/13ZGy2EXJqBFX/069EI1K34S+hgNXxVOywtWMjYRqUR9l+818S1esqtBszvM5yfvkNB6Ea/Y8xJn
+	m+JPobDFF+Xi2ruxOguKE260Jkf8QTTBuGO7HyeM2cuuoGnWrecLSbM4nFt6FVRdwmbeYHMfC4Ax9
+	IpEyAYurw3tKpxJAsjg91cgkDI7Gb3KZnP8E5wWcYGj7r9goSNAM8by3NoA6qW4SE+adW5YHwlb6r
+	d1X7J4dQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZpVf-0043w8-IB; Wed, 08 Mar 2023 08:50:55 +0000
-Received: from sender3-op-o17.zoho.com ([136.143.184.17])
+	id 1pZpjU-0045xg-TN; Wed, 08 Mar 2023 09:05:12 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZpVS-0043qH-IP; Wed, 08 Mar 2023 08:50:44 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1678265417; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=nzA2/7aGm9uqLYDPWojlBg5rCiXMU7vgMolusMiB66EVidBr8ubCd8eBZMTIbRAcLFfqBt/lLJUoXtoH9eztT6MlCKXcZeZ+voDoOxceTLLfXcqQQcZtEMWKFOGUVy+xAPlG7NtlyAOe9sngBTqYNwqlGOGdd8Rnq/I9LFtuHkY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1678265417; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=RegfERULej+941mOyU4tNlczm+KFqme2Zd1D/0dQ1IU=; 
-	b=kMaQa6pEwulqF0zPTD39nfyi2qxQ2XC2U7GK9liKteKIPwfw0tgQ1g5/vz+StBwNNW6Pwe7eHdKVv2OZLnS9X0Zz+OtK9pH/sw3jjpiboZTzxrbq6jqEti1Y0KjBNyInpiJySh9DWZlF75q/UTpRJBr9274Zjrw0aUuybqrCDDI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1678265417;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:From:From:Subject:Subject:To:To:Cc:Cc:References:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=RegfERULej+941mOyU4tNlczm+KFqme2Zd1D/0dQ1IU=;
-	b=HlkNjF9v5Zf6d1Mx44X+xqW4F86Z9W/hMSv5ZqtpsEt6kER3e03w+6cQ3o9BdYud
-	Ps+OCu/I1OkytJX4hmR8X7O/IcysoaWcm4EO1vuUJ7/uuQbJd3NLYQMV6o48DGRskuc
-	Q0Garo2rY7BHFToHb1Gcs5uibkXem2ZFWQeMN/tg=
-Received: from [10.10.10.3] (212.68.60.226 [212.68.60.226]) by mx.zohomail.com
-	with SMTPS id 1678265416245518.3169018503368; Wed, 8 Mar 2023 00:50:16 -0800 (PST)
-Message-ID: <c46f5be8-2d64-65dc-33c1-a71b3d5cc70c@arinc9.com>
-Date: Wed, 8 Mar 2023 11:50:09 +0300
+	id 1pZpjP-0045uQ-Et
+	for linux-mediatek@lists.infradead.org; Wed, 08 Mar 2023 09:05:10 +0000
+Received: by mail-wm1-x335.google.com with SMTP id bg16-20020a05600c3c9000b003eb34e21bdfso760725wmb.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Mar 2023 01:05:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1678266299;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=kA8QaXHaQv2zTvTrF1F5tUB/9uaPE/un/rBzeew06Qk=;
+        b=q89OEdbdQ8/5wEe6qFgIWzh3vd6s4xaRgf89QS/3X4cOBtJctnoIMQxxEkA1D1BiHI
+         0rPMGxYv1A8HM3xCu5rwnUu1Ej1pGr2yhOovW1vpKhfjmrhnTXnSrnkTPEb2jQaLNjCu
+         gjPvDpbonBmkmrER6l1D5vxT9FfWi6H61jHjcQqvRP49uhXANQfBL/nTJmVo9mW1K9+n
+         yBrlg1+msaFsX+hZi1yQGq1ALarkY7lxAgSKSy51rXIuUTDYzdRIQ4Td+1aCJOW/HPYu
+         E7T1Lo6gbBZA2NMhBQNGnjngG9/h7JB3LioUT5eLeFK7zU7ue/RKGy/ITsQAn5o7NDuO
+         SNdQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678266299;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=kA8QaXHaQv2zTvTrF1F5tUB/9uaPE/un/rBzeew06Qk=;
+        b=qgzBb78AiMElLPz9UGeouTeqx44L1nn4rFjp/wFOOAvRdqo/aMcyWVLiw0vlrt6fPH
+         dsu8CPSyyb29/obqZUBxvBjuuh6XtntzFlVSZ38/zotqhXyZ9HUxCdI6mIcXMIdQTG5z
+         lN8mC9/Q9NG6tBXSgQY19Bx+N8Uc4x4LoxkX5WXqWf17gn5LKpy9El23U5VxglKZReRA
+         h0vQqeBMesL3v/QkvkNp4CDDbc9l6R89JMXPBiEknShw5l05jPJuGLfgCBxJX+yAgWwb
+         0lAjAqLzVqc8oWfTkEJ30H1bQuQnZnRAyTsJkTWmZmORBycgibdDv18godfSuSQemT2M
+         INvQ==
+X-Gm-Message-State: AO0yUKVbUzpyS83ICNlCHfjRLKPKZKYbDsk/a0Na8P44oN0ZDFfdeyFo
+	gDUmvALCBmjbrYLrzPne1zcjFg==
+X-Google-Smtp-Source: AK7set/L9zFk+/3muQ4XCE6qXO8h4slPi9HcknR81cfBA77IySEK46FikrIsHFywPlVNMXfACef86g==
+X-Received: by 2002:a05:600c:1907:b0:3eb:29fe:7b9e with SMTP id j7-20020a05600c190700b003eb29fe7b9emr14295268wmq.17.1678266299463;
+        Wed, 08 Mar 2023 01:04:59 -0800 (PST)
+Received: from [192.168.2.107] ([79.115.63.78])
+        by smtp.gmail.com with ESMTPSA id v38-20020a05600c4da600b003eb68bb61c8sm14645299wmp.3.2023.03.08.01.04.56
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 08 Mar 2023 01:04:58 -0800 (PST)
+Message-ID: <1766f6ef-d9d8-04f7-a6bf-0ea6bc0b3d23@linaro.org>
+Date: Wed, 8 Mar 2023 09:04:55 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.7.1
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Subject: Re: [PATCH net 2/2] net: dsa: mt7530: set PLL frequency only when
- trgmii is used
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Russell King <rmk+kernel@armlinux.org.uk>,
- =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>,
- erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230307220328.11186-1-arinc.unal@arinc9.com>
- <20230307220328.11186-2-arinc.unal@arinc9.com>
- <20230307233354.y3srdoggy2yzugnq@skbuf>
+Subject: Re: [PATCH] spi: Replace `dummy.nbytes` with `dummy.ncycles`
+To: Serge Semin <fancer.lancer@gmail.com>, Sergiu.Moga@microchip.com,
+ Mark Brown <broonie@kernel.org>, Tudor Ambarus
+ <tudor.ambarus@microchip.com>, Pratyush Yadav <pratyush@kernel.org>,
+ Michael Walle <michael@walle.cc>
+Cc: miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com,
+ Nicolas.Ferre@microchip.com, alexandre.belloni@bootlin.com,
+ Claudiu.Beznea@microchip.com, chin-ting_kuo@aspeedtech.com, clg@kaod.org,
+ joel@jms.id.au, andrew@aj.id.au, kdasu.kdev@gmail.com, han.xu@nxp.com,
+ john.garry@huawei.com, matthias.bgg@gmail.com, avifishman70@gmail.com,
+ tmaimon77@gmail.com, tali.perry1@gmail.com, venture@google.com,
+ yuenn@google.com, benjaminfair@google.com, haibo.chen@nxp.com,
+ yogeshgaur.83@gmail.com, heiko@sntech.de, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, michal.simek@xilinx.com,
+ bcm-kernel-feedback-list@broadcom.com, linux-mtd@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
+ openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
+References: <20220911174551.653599-1-sergiu.moga@microchip.com>
+ <20220925220304.buk3yuqoh6vszfci@mobilestation>
+ <18e6e8a8-6412-7e31-21e0-6becd4400ac1@microchip.com>
+ <20220926172454.kbpzck7med5bopre@mobilestation>
 Content-Language: en-US
-In-Reply-To: <20230307233354.y3srdoggy2yzugnq@skbuf>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+From: Tudor Ambarus <tudor.ambarus@linaro.org>
+In-Reply-To: <20220926172454.kbpzck7med5bopre@mobilestation>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_005042_688588_68A8D7AD 
-X-CRM114-Status: GOOD (  30.64  )
+X-CRM114-CacheID: sfid-20230308_010507_565265_169532E4 
+X-CRM114-Status: GOOD (  26.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,148 +110,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8.03.2023 02:33, Vladimir Oltean wrote:
-> On Wed, Mar 08, 2023 at 01:03:28AM +0300, arinc9.unal@gmail.com wrote:
->> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>
->> As my testing on the MCM MT7530 switch on MT7621 SoC shows, setting the PLL
->> frequency does not affect MII modes other than trgmii on port 5 and port 6.
->> So the assumption is that the operation here called "setting the PLL
->> frequency" actually sets the frequency of the TRGMII TX clock.
->>
->> Make it so that it is set only when the trgmii mode is used.
->>
->> Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
->> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->> ---
->>   drivers/net/dsa/mt7530.c | 2 --
->>   1 file changed, 2 deletions(-)
->>
->> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
->> index b1a79460df0e..961306c1ac14 100644
->> --- a/drivers/net/dsa/mt7530.c
->> +++ b/drivers/net/dsa/mt7530.c
->> @@ -430,8 +430,6 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
->>   	switch (interface) {
->>   	case PHY_INTERFACE_MODE_RGMII:
->>   		trgint = 0;
->> -		/* PLL frequency: 125MHz */
->> -		ncpo1 = 0x0c80;
->>   		break;
->>   	case PHY_INTERFACE_MODE_TRGMII:
->>   		trgint = 1;
->> -- 
->> 2.37.2
->>
-> 
-> NACK.
-> 
-> By deleting the assignment to the ncpo1 variable, it becomes
-> uninitialized when port 6's interface mode is PHY_INTERFACE_MODE_RGMII.
-> In the C language, uninitialized variables take the value of whatever
-> memory happens to be on the stack at the address they are placed,
-> interpreted as an appropriate data type for that variable - here u32.
-> 
-> Writing the value to CORE_PLL_GROUP5 happens when the function below is
-> called, not when the "ncpo1" variable is assigned.
-> 
-> 	core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
-> 
-> It is not a good idea to write uninitialized kernel stack memory to
-> hardware registers, unless perhaps you want to use it as some sort of
-> poor quality entropy source for a random number generator...
+Hi, Sarge,
 
-Thanks a lot for this. Now that you moved setting the core clock to
-somewhere else, I think we can run the TRGMII setup only when trgmii
-mode is used, exactly what I already explained on the patch log, with
-the diff below. This should make it so that writing the value to
-CORE_PLL_GROUP5 happens in the case where ncpo1 is always set.
+On 9/26/22 18:24, Serge Semin wrote:
+>>>> diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
+>>>> index f2c64006f8d7..cc8ca824f912 100644
+>>>> --- a/drivers/mtd/spi-nor/core.c
+>>>> +++ b/drivers/mtd/spi-nor/core.c
+>>>> @@ -88,7 +88,7 @@ void spi_nor_spimem_setup_op(const struct spi_nor *nor,
+>>>>        if (op->addr.nbytes)
+>>>>                op->addr.buswidth = spi_nor_get_protocol_addr_nbits(proto);
+>>>>
+>>>
+>>>
+>>>> -     if (op->dummy.nbytes)
+>>>> +     if (op->dummy.ncycles)
+>>>>                op->dummy.buswidth = spi_nor_get_protocol_addr_nbits(proto);
+>>>>
+>>>>        if (op->data.nbytes)
+>>>> @@ -106,9 +106,6 @@ void spi_nor_spimem_setup_op(const struct spi_nor *nor,
+>>>>                op->dummy.dtr = true;
+>>>>                op->data.dtr = true;
+>>>>
+>>>> -             /* 2 bytes per clock cycle in DTR mode. */
+>>>> -             op->dummy.nbytes *= 2;
+>>>> -
+>>>>                ext = spi_nor_get_cmd_ext(nor, op);
+>>>>                op->cmd.opcode = (op->cmd.opcode << 8) | ext;
+>>>>                op->cmd.nbytes = 2;
+>>>> @@ -207,10 +204,7 @@ static ssize_t spi_nor_spimem_read_data(struct spi_nor *nor, loff_t from,
+>>>>
+>>>>        spi_nor_spimem_setup_op(nor, &op, nor->read_proto);
+>>>>
+>>>> -     /* convert the dummy cycles to the number of bytes */
+>>>> -     op.dummy.nbytes = (nor->read_dummy * op.dummy.buswidth) / 8;
+>>>> -     if (spi_nor_protocol_is_dtr(nor->read_proto))
+>>>> -             op.dummy.nbytes *= 2;
+>>>> +     op.dummy.ncycles = nor->read_dummy;
+>>> So according to this modification and what is done in the rest of the
+>>> patch, the dummy part of the SPI-mem operations now contains the number
+>>> of cycles only. Am I right to think that it means a number of dummy
+>>> clock oscillations? (Judging from what I've seen in the HW-manuals of
+>>> the SPI NOR memory devices most likely I am...)
+>>
+>>
+>> Yes, you are correct.
+>>
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index b1a79460df0e..c2d81b7a429d 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -430,8 +430,6 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
-  	switch (interface) {
-  	case PHY_INTERFACE_MODE_RGMII:
-  		trgint = 0;
--		/* PLL frequency: 125MHz */
--		ncpo1 = 0x0c80;
-  		break;
-  	case PHY_INTERFACE_MODE_TRGMII:
-  		trgint = 1;
-@@ -462,38 +460,40 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
-  	mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
-  		   P6_INTF_MODE(trgint));
-  
--	/* Lower Tx Driving for TRGMII path */
--	for (i = 0 ; i < NUM_TRGMII_CTRL ; i++)
--		mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
--			     TD_DM_DRVP(8) | TD_DM_DRVN(8));
--
--	/* Disable MT7530 core and TRGMII Tx clocks */
--	core_clear(priv, CORE_TRGMII_GSW_CLK_CG,
--		   REG_GSWCK_EN | REG_TRGMIICK_EN);
--
--	/* Setup the MT7530 TRGMII Tx Clock */
--	core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
--	core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
--	core_write(priv, CORE_PLL_GROUP10, RG_LCDDS_SSC_DELTA(ssc_delta));
--	core_write(priv, CORE_PLL_GROUP11, RG_LCDDS_SSC_DELTA1(ssc_delta));
--	core_write(priv, CORE_PLL_GROUP4,
--		   RG_SYSPLL_DDSFBK_EN | RG_SYSPLL_BIAS_EN |
--		   RG_SYSPLL_BIAS_LPF_EN);
--	core_write(priv, CORE_PLL_GROUP2,
--		   RG_SYSPLL_EN_NORMAL | RG_SYSPLL_VODEN |
--		   RG_SYSPLL_POSDIV(1));
--	core_write(priv, CORE_PLL_GROUP7,
--		   RG_LCDDS_PCW_NCPO_CHG | RG_LCCDS_C(3) |
--		   RG_LCDDS_PWDB | RG_LCDDS_ISO_EN);
--
--	/* Enable MT7530 core and TRGMII Tx clocks */
--	core_set(priv, CORE_TRGMII_GSW_CLK_CG,
--		 REG_GSWCK_EN | REG_TRGMIICK_EN);
--
--	if (!trgint)
-+	if (trgint) {
-+		/* Lower Tx Driving for TRGMII path */
-+		for (i = 0 ; i < NUM_TRGMII_CTRL ; i++)
-+			mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
-+				     TD_DM_DRVP(8) | TD_DM_DRVN(8));
-+
-+		/* Disable MT7530 core and TRGMII Tx clocks */
-+		core_clear(priv, CORE_TRGMII_GSW_CLK_CG,
-+			   REG_GSWCK_EN | REG_TRGMIICK_EN);
-+
-+		/* Setup the MT7530 TRGMII Tx Clock */
-+		core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
-+		core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
-+		core_write(priv, CORE_PLL_GROUP10, RG_LCDDS_SSC_DELTA(ssc_delta));
-+		core_write(priv, CORE_PLL_GROUP11, RG_LCDDS_SSC_DELTA1(ssc_delta));
-+		core_write(priv, CORE_PLL_GROUP4,
-+			   RG_SYSPLL_DDSFBK_EN | RG_SYSPLL_BIAS_EN |
-+			   RG_SYSPLL_BIAS_LPF_EN);
-+		core_write(priv, CORE_PLL_GROUP2,
-+			   RG_SYSPLL_EN_NORMAL | RG_SYSPLL_VODEN |
-+			   RG_SYSPLL_POSDIV(1));
-+		core_write(priv, CORE_PLL_GROUP7,
-+			   RG_LCDDS_PCW_NCPO_CHG | RG_LCCDS_C(3) |
-+			   RG_LCDDS_PWDB | RG_LCDDS_ISO_EN);
-+
-+		/* Enable MT7530 core and TRGMII Tx clocks */
-+		core_set(priv, CORE_TRGMII_GSW_CLK_CG,
-+			 REG_GSWCK_EN | REG_TRGMIICK_EN);
-+	} else {
-  		for (i = 0 ; i < NUM_TRGMII_CTRL; i++)
-  			mt7530_rmw(priv, MT7530_TRGMII_RD(i),
-  				   RD_TAP_MASK, RD_TAP(16));
-+	}
-+
-  	return 0;
-  }
-  
+I confirm.
 
-I'll do some tests to make sure everything works fine.
+>>
+>>> If so the "ncycles" field
+>>> is now free from the "data" semantic. Then what is the meaning of the
+>>> "buswidth and "dtr" fields in the spi_mem_op.dummy field?
+>>>
+>>
+>> It is still meaningful as it is used for the conversion by some drivers 
+>> to nbytes and I do not see how it goes out of the specification in any 
+>> way. So, at least for now, I do not see any reason to remove these fields.
+> I do see the way these fields are used in the SPI-mem drivers. I was
+> wondering what do these bits mean in the framework of the SPI-mem
+> core? AFAICS from the specification the dummy cycles are irrelevant to
+> the data bus state. It says "the master tri-states the bus during
+> 'dummy' cycles." If so I don't see a reason to have the DTR and
+> buswidth fields in the spi_mem_op structure anymore. The number of
+> cycles could be calculated right on the initialization stage based on
+> the SPI NOR/NAND requirements.
+> 
+> @Mark, @Tudor, @Pratyush, what do you think?
+> 
 
-Arınç
+In an ideal world, where both the controller and the device talk about
+dummy number of cycles, I would agree with you, buswidth and dtr should
+not be relevant for the number of dummy cycles. But it seems that there
+are old controllers (e.g. spi-hisi-sfc-v3xx.c, spi-mt65xx.c, spi-mxic.c)
+that support buswidths > 1 and work only with dummy nbytes, they are not
+capable of specifying a smaller granularity (ncycles). Thus the older
+controllers would have to convert the dummy ncycles to dummy nbytes.
+Since mixed transfer modes are a thing (see jesd251, it talks about
+4S-4D-4D), where single transfer mode (S) can be mixed with double
+transfer mode (D) for a command, the controller would have to guess the
+buswidth and dtr of the dummy. Shall they replicate the buswidth and dtr
+of the address or of the data? There's no rule for that. So we're forced
+to keep the dummy.{dtr, buswidth} fields by the old controllers that
+don't understand dummy ncycles.
+
+I'm going to send a v2 of this patch, I'll add you in To. Thanks for
+taking the time to review this patch!
+
+Cheers,
+ta
 
