@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77BA8C678D5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 11:36:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8BDCC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Mar 2023 11:38:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7q5WRUhB8xv0RmSiXrjbZQTqBS/OimwrA3VM7RORVD0=; b=e0uV3RsBO/T5gfHYXRLbgw0KW/
-	iLgOple9QCejSTWfL5959bvp4ToX42xqvuV+qSsZozzy2W1shCJFX7W2dyGPFKe/sYWHupqr+Mg++
-	NIE3GrM9e4AeA8bAhOHmdPkArfvtmzDPvZT7XRnfz55KA/wR1S2u0QNqB7fayPaX7wcB0UVbcbKw8
-	/tF4GoVKJgJbcw/COtLkFALVbPb943DoQSE8ixaowhXow/i007FKn/CS+yPiYTxl6JzKw4Z4+ehcd
-	0QmSwFtdWWuIKWBxRSAc2ZNsNwzMdvm1luPIDdIJ2hMZ5T8SUx/JMLuuB9pXeFGUIdYJQzCFOcBFq
-	OnL5JXMw==;
+	bh=5eLTHF6ZVD7q+XoBX/Z8f3udaRyHm9hE2Qes4Y+33Z8=; b=3rXQ6OXRIYKxEM5iI8gRFy2Irm
+	mWSYquDWq0aodNsFRBxDpu7LK/pjblCdA1m5PrIxa4b5+7PCCY0hCtZ8i4lAAPKRVmVR8F+Yg00Av
+	vTFnbga1Oi+EDn+lK0kH0O4H/rQdsKVDIFCiJof8oRnJiNVR9Uu11AxhGDR3rxr5MGSagv8de+b5o
+	/04yq6P9y3axh3lkFlE31zQqedh3hoR2dQSJQ3VVtTfvYeXVAYNFxpqIsOmPkhHRNYo4W/3nrds+2
+	t+ZhnvMIjqZuUV0uqdyclvPqSq0KeG+x/G34zP98BV9Scy2OoE0BcBbs5r00jBkKmsu6a3CjQQ+hJ
+	tBHDNrUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZs5S-004dOC-Os; Wed, 08 Mar 2023 11:36:02 +0000
+	id 1pZs7y-004e3X-6y; Wed, 08 Mar 2023 11:38:38 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZs5O-004dMF-B3; Wed, 08 Mar 2023 11:36:00 +0000
+	id 1pZs7v-004e2O-DI; Wed, 08 Mar 2023 11:38:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
 	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=7q5WRUhB8xv0RmSiXrjbZQTqBS/OimwrA3VM7RORVD0=; b=AMlDmF0qS7/JM218n5xSc6B/il
-	0fN2kNupiUXxRe+kzYu2XBBq403g9gC55gVLbJ/sN3USW+t3cMnbjVMv1cQxEBMuYjeiAPI8PhDtD
-	lIYeO9dz7RVb4vkk7cu5AOr4RrSvza1Tikl2KyxdqvclclEP1pKICKtbtHcivpmP9idHEpaStDG31
-	QXFsFdAJfWILtRrn4Z1dr009qSE8DUVGILTTUqq9JKpELdqm/W+u6Z+fwhim3k366hBAwodhKKTRE
-	A5A7x75q3eKme2IVkQgndmFwAs/tm4/Ex79eraWChy7xrqv0uZIMR+qrTTdaiMLJVlvVomq8jymKb
-	aaWjx07w==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:34522)
+	bh=5eLTHF6ZVD7q+XoBX/Z8f3udaRyHm9hE2Qes4Y+33Z8=; b=Jsw+Qi019/aK0xSskknbfctX55
+	H/Kbz46G65qhIwm5ZlU0MQXS05aISh+FQJY3BeUtDyopl3ls7AlBppr28dKtrCNM3wPEsZBv7/gqs
+	U70fpfCFe1dpkhcsnEanamebkLNCgwOb4qOa3r6s0HSRXY8h7YPlb+/xq9M1ByKCtZbRkMnucZ63b
+	S6xm8ndirwkXSZpDeNW1m+8MTZYSl5WAGt2giq2HthVCOTbQYyym0/5eQf057TJmBh4pFp++NNUAh
+	j4X9KjZ9JphQf4/PTu34ey9N8mPkpz4mz0Q0cnFDHztWynNihFXJKDvQmKtNkA2XJRV/rn+dBXUnb
+	j1MvGi/g==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:36214)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <linux@armlinux.org.uk>)
-	id 1pZs5C-0002MJ-Ax; Wed, 08 Mar 2023 11:35:46 +0000
+	id 1pZs7t-0002N5-62; Wed, 08 Mar 2023 11:38:33 +0000
 Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
 	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1pZs57-0002XC-0y; Wed, 08 Mar 2023 11:35:41 +0000
-Date: Wed, 8 Mar 2023 11:35:40 +0000
+	id 1pZs7r-0002XQ-RT; Wed, 08 Mar 2023 11:38:31 +0000
+Date: Wed, 8 Mar 2023 11:38:31 +0000
 From: "Russell King (Oracle)" <linux@armlinux.org.uk>
 To: Daniel Golle <daniel@makrotopia.org>
-Subject: Re: [PATCH net-next v12 08/18] net: ethernet: mtk_eth_soc: fix
- 1000Base-X and 2500Base-X modes
-Message-ID: <ZAhzDDjZ8+gxyo3V@shell.armlinux.org.uk>
+Subject: Re: [PATCH net-next v12 09/18] net: ethernet: mtk_eth_soc: Fix link
+ status for none-SGMII modes
+Message-ID: <ZAhzt5eIZiJUyVm7@shell.armlinux.org.uk>
 References: <cover.1678201958.git.daniel@makrotopia.org>
- <fd5c7ea79a7f84caac7d0b64b39fe5c4043edfa8.1678201958.git.daniel@makrotopia.org>
+ <1590fb0e69f6243ac6a961b16bf7ae7534f46949.1678201958.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <fd5c7ea79a7f84caac7d0b64b39fe5c4043edfa8.1678201958.git.daniel@makrotopia.org>
+In-Reply-To: <1590fb0e69f6243ac6a961b16bf7ae7534f46949.1678201958.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_033558_406373_E2923C12 
-X-CRM114-Status: GOOD (  16.46  )
+X-CRM114-CacheID: sfid-20230308_033835_464263_49DB49AB 
+X-CRM114-Status: GOOD (  11.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,35 +74,22 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <vladimir.oltean@nxp.com>, Eri
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 07, 2023 at 03:53:58PM +0000, Daniel Golle wrote:
-> After conversion to phylink_pcs the 1000Base-X and 2500Base-X modes
-> would work only after `ethtool -s eth1 autoneg off`.
-> As ethtool autoneg and the ETHTOOL_LINK_MODE_Autoneg_BIT is supposed
-> to control auto-negotiation on the external interface it doesn't make
-> much sense to use it to control on-board SGMII auto-negotiation between
-> MAC and PHY.
-> Set correct values to really only enable SGMII auto-negotiation when
-> actually operating in SGMII mode. For 1000Base-X and 2500Base-X mode,
-> enable remote-fault detection only if in-band-status is enabled.
-> This fixes using 1000Base-X and 2500Base-X SFPs on the BananaPi R3
-> board and also makes it possible to use interface-mode-switching PHYs
-> operating in either SGMII mode for 10M/100M/1000M or in 2500Base-X for
-> 2500M mode on other boards.
+On Tue, Mar 07, 2023 at 03:54:11PM +0000, Daniel Golle wrote:
+> Link partner advertised link modes are not reported by the SerDes
+> hardware if not operating in SGMII mode. Hence we cannot use
+> phylink_mii_c22_pcs_decode_state() in this case.
+> Implement reporting link and an_complete only and use speed according to
+> the interface mode.
 > 
 > Fixes: 14a44ab0330d ("net: mtk_eth_soc: partially convert to phylink_pcs")
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-NAK.
+This has been proven to work by Frank Wunderlich last October, so by
+making this change, you will be regressing his setup.
 
-There are PHYs out there which operate in SGMII mode but do not
-exchange the SGMII 16-bit configuration word. The code implemented
-here by me was explicitly to allow such a configuration to work,
-which is defined as:
-
-	SGMII *without* mode == inband
-
-An example of this is the Broadcom 84881 PHY which can be found on
-SFP modules.
+What are you testing against? Have you proven independently that the
+link partner is indeed sending a valid advertisement for the LPA
+register to be filled in?
 
 -- 
 RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
