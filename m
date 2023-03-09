@@ -4,68 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 649ACC64EC4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 21:03:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32507C74A4B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 21:05:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pKW6CVfdiVcKOlVrCdWthABuRy5PpI7KcCv16cmfRas=; b=s+nUE6JAsT8XB+
-	6N6xCQaGTz3TQxeZxZFnWhG38Fpy5dACrcaGi9x4UgR+kCbFixYdXhsiFOkQdL9ca8ozBEQZ/x3/j
-	7H1AbN1z2OpAV15Zm582KMc64fyvPnfNKynInxlG625yrZAG+OJxcO5WDbNMzCgnoLo5oHW/FgGlN
-	PWJ6lsrjdgG3eqX6lmNsnVf1ZZPAKapAtttK10ck86or4vRyAsydXkeK1SNeK9lCkXTUfSG1IUK95
-	eKuTXSFeDjoosCVCwzF/umYF8yHkWxXppD8WTmpQUwZ5nblMYrwp/L3AiwdHOPRqhRpPVVMPv6Hjb
-	P9gADWz4MG6lOcmjwQlw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zQruPEvUWXea5iv6fg4nOA01GAuR/ZB8cLPDfAhHg6M=; b=G4qK6N2YrmXJuAYHELTUlbvLOk
+	6DsKT3Vcg7XlW4XJk03L+e2grCzY0OyDXZXaO8tXkpKGqBvvS7P+Av3/keicc8LkFLSXL7RBK8dgI
+	FUm4i/HLoamuB1Ta9Wtmvjg36Q5XhtwCP/enrHE1CnBnG192bo95IWOrZk4LULk5pTDqRNBykV6MO
+	ClR95ALUmA0ABAtH7QPW5Q9pwiS/mHja0/U8ZUvaQKD29kfHi3xYf0abO/+zhqKFoQBneFp2RtSO5
+	9XZM7qJ+q4oUAht09goS1PFq6IhVGmS2Xq1GhD5Y0ClDfbwt23jdmyAgZtmjihzO3iQbxXjaAd4xd
+	dTWTk01w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paNQT-00Bupv-JD; Thu, 09 Mar 2023 21:03:49 +0000
-Received: from sender4-op-o10.zoho.com ([136.143.188.10])
+	id 1paNSG-00BvOy-9D; Thu, 09 Mar 2023 21:05:40 +0000
+Received: from mail-qt1-x832.google.com ([2607:f8b0:4864:20::832])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paNQL-00BuoC-OX; Thu, 09 Mar 2023 21:03:45 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1678395811; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=iUtNpgy7wTPxrPi44CtDxe9pL384jteIpM1fm+A98ORXPdq+UaPSKDykCx3EQXEGSz+L4bKr8DXtXfEKsHJdqX0+hajKIQiSd0GheN/cMnR5Khx/lFV8Br5ijZUQ+7nVWL3yY+H0h1CX6slim3gKSUBejO+tGW/qy0YshEA8Oxc=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1678395811; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=pKW6CVfdiVcKOlVrCdWthABuRy5PpI7KcCv16cmfRas=; 
-	b=icpvHqeFQc83D9F+ipYP+chSTw4pPC2vXawJQ2lH/mKR7UwprFpwG6h9KVY+KZXrwAKGuXvt9Rn+Mw2p4JuhOsRRem0cMRuDudhwpUubipLQS1SsCBh32fSmeMBzEIrC4/aQvtrrQuH4kxYCWxQQH0rd4qfMtYnjdS64aU7yews=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1678395811;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=pKW6CVfdiVcKOlVrCdWthABuRy5PpI7KcCv16cmfRas=;
-	b=fngNA3Q/fEZCSjXlSDhe+7kagjEII/8DPv7AJTBWY1Vqx1TmEp5/rYJEHb+xgKYx
-	2nRPYvJlRro7O4D2Ep1m5ICFA5LmXRZac9NN+GeTQ0r7YFxzyDZFvOSsrYWnfVvko/p
-	Am/dfZq20vEyLyy3LH5G5R7lYO0vh2E6Gcv1WowE=
-Received: from [10.10.10.3] (212.68.60.226 [212.68.60.226]) by mx.zohomail.com
-	with SMTPS id 1678395808981366.07781513789814; Thu, 9 Mar 2023 13:03:28 -0800 (PST)
-Message-ID: <a53a4792-c9e5-fce9-ac37-cc0a64447813@arinc9.com>
-Date: Fri, 10 Mar 2023 00:03:21 +0300
+	id 1paNSC-00BvMy-0F
+	for linux-mediatek@lists.infradead.org; Thu, 09 Mar 2023 21:05:37 +0000
+Received: by mail-qt1-x832.google.com with SMTP id l13so3605983qtv.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Mar 2023 13:05:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1678395934;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=zQruPEvUWXea5iv6fg4nOA01GAuR/ZB8cLPDfAhHg6M=;
+        b=Ps6exi3xpI87CzQUY4hXNPGVsjZaFoqg4HGL8a1MxAqCqKlL1H8+jHtFD2GpTj36e+
+         rpmphds1pfv7T/WkSa8vwmH48RssfA7nSoRFejaypkRswaUN/+PtXflJ//zhRv3Zgp9t
+         cqOaLThEboUnygyl80BCIcIaFtgsn3DGskeYA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678395934;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=zQruPEvUWXea5iv6fg4nOA01GAuR/ZB8cLPDfAhHg6M=;
+        b=GiMMk7xuMTjG8NnPXtnsJc5PJHpGg8j4gABIyd43JKb1ugScd2JdRzKYGg3l4pT3zn
+         WliTUl+zdAtjOAJ05dnRXRAeOWkQJNidpMFYZZAQzgX4K6bvPeRxO8q9zWsksPaLvEQ/
+         cM/YE0baDs6zr9eX40IsikmOlNpxrELxHcJ54Px5KDsNxPKSHfmEdqjr0ucPy8pyo2Xq
+         bWPcShT5pR2bODLSCbzmYHJh2rXEbNWFa0vOO9nWt3APRgoQywMmc8XHVznzZBcblgyJ
+         FyCfMHm8GxCQ5Q+6Aw9grR+kanMcVcwrR6lEX4krIhpsE4Ifp760Jqd2XpCkCzNiBr9J
+         ddNA==
+X-Gm-Message-State: AO0yUKXbH0BsPqMMu7pB6glPGYi+lje4z+vbLSv+fK4WUMJTRk0IAhm1
+	rXwNUJySjdv48gkiOdOPKaLQFv4VB1nJVySB53FCBw==
+X-Google-Smtp-Source: AK7set+TqWj6nJuKc1WVAKlRbKRPSQEHg026dY/owgOMx8qMZrSMaVkii4FshfhymFINPelDj02TzQ==
+X-Received: by 2002:ac8:7f4a:0:b0:3bf:dae3:bde2 with SMTP id g10-20020ac87f4a000000b003bfdae3bde2mr41004683qtk.36.1678395933876;
+        Thu, 09 Mar 2023 13:05:33 -0800 (PST)
+Received: from greenjustin3.nyc.corp.google.com ([2620:0:1003:314:a575:2520:a8e1:989d])
+        by smtp.gmail.com with ESMTPSA id 69-20020a370548000000b007426f115a4esm14302375qkf.129.2023.03.09.13.05.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Mar 2023 13:05:33 -0800 (PST)
+From: Justin Green <greenjustin@chromium.org>
+To: linux-mediatek@lists.infradead.org,
+	dri-devel@lists.freedesktop.org
+Cc: angelogioacchino.delregno@collabora.com,
+	jason-jh.lin@mediatek.com,
+	justin.yeh@mediatek.com,
+	wenst@chromium.org,
+	chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de,
+	matthias.bgg@gmail.com,
+	daniel@ffwll.ch,
+	daniel@fooishbar.org,
+	greenjustin@chromium.org
+Subject: [PATCH v8 3/3] drm/mediatek: Enable AR30 and BA30 overlays on MT8195
+Date: Thu,  9 Mar 2023 16:04:16 -0500
+Message-Id: <20230309210416.1167020-4-greenjustin@chromium.org>
+X-Mailer: git-send-email 2.40.0.rc1.284.g88254d51c5-goog
+In-Reply-To: <20230309210416.1167020-1-greenjustin@chromium.org>
+References: <20230309210416.1167020-1-greenjustin@chromium.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH 19/20] dt-bindings: pinctrl: mediatek: mt7620: split
- binding
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-References: <20230303002850.51858-1-arinc.unal@arinc9.com>
- <20230303002850.51858-20-arinc.unal@arinc9.com>
- <61539204-afbf-f504-dfe7-237824dc0d6c@linaro.org>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <61539204-afbf-f504-dfe7-237824dc0d6c@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_130341_877718_01A80D79 
-X-CRM114-Status: GOOD (  14.26  )
+X-CRM114-CacheID: sfid-20230309_130536_111034_F0696868 
+X-CRM114-Status: GOOD (  12.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,64 +92,62 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Daniel Santos <daniel.santos@pobox.com>, Sean Wang <sean.wang@kernel.org>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org, linux-gpio@vger.kernel.org, William Dean <williamsukatube@gmail.com>, linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>, Matthias Brugger <matthias.bgg@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9.03.2023 12:54, Krzysztof Kozlowski wrote:
-> On 03/03/2023 01:28, arinc9.unal@gmail.com wrote:
->> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>
->> The MT7628 and MT7688 SoCs contain different pin muxing information,
->> therefore, should be split. This can be done now that there are compatible
->> strings to distinguish them from other SoCs.
->>
->> Split the schema out to mediatek,mt76x8-pinctrl.yaml.
->>
->> Remove mediatek,mt76x8-pinctrl from mt7620.
->>
->> Deprecate ralink,mt7620-pinctrl. The reason is, the DTs for mt76x8 which
->> use this string will incorrectly match the pin muxing information for
->> mt7620. There's a new string, mediatek,mt7620-pinctrl, which makes the
->> deprecation possible.
->>
->> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->> ---
->>   .../pinctrl/mediatek,mt7620-pinctrl.yaml      | 380 +--------------
->>   .../pinctrl/mediatek,mt76x8-pinctrl.yaml      | 450 ++++++++++++++++++
->>   2 files changed, 459 insertions(+), 371 deletions(-)
->>   create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt76x8-pinctrl.yaml
->>
->> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml
->> index 11530b29d52b..38b71c74b9a0 100644
->> --- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml
->> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml
->> @@ -11,16 +11,13 @@ maintainers:
->>     - Sergio Paracuellos <sergio.paracuellos@gmail.com>
->>   
->>   description: |
->> -  MediaTek MT7620 pin controller for MT7620, MT7628 and MT7688 SoCs.
->> +  MediaTek MT7620 pin controller for MT7620 SoC.
->>     The pin controller can only set the muxing of pin groups. Muxing individual
->>     pins is not supported. There is no pinconf support.
->>   
->>   properties:
->>     compatible:
->> -    enum:
->> -      - mediatek,mt7620-pinctrl
->> -      - mediatek,mt76x8-pinctrl
->> -      - ralink,mt7620-pinctrl
-> 
-> I see removal, not deprecation.
+Modify the overlay driver data for MT8195 to enable bit depth control and
+enable support for AR30 and BA30 framebuffer formats. This patch in
+combination with the previous two patches in the series will allow MT8195
+devices to scanout AR30 and BA30 framebuffers.
 
-I thought deprecation meant removing a string with explanation on the 
-patch log, as I remember from my conversation with you and Rob on this 
-patch series.
+Tested using "modetest -P" on an MT8195 device. The test pattern displays
+correctly for both AR30 and BA30 formats.
 
-https://lore.kernel.org/linux-devicetree/87c9bf7e-f290-7d38-0844-7a7243688f5a@arinc9.com/
+Signed-off-by: Justin Green <greenjustin@chromium.org>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 21 +++++++++++++++++++--
+ 1 file changed, 19 insertions(+), 2 deletions(-)
 
-I won't have to deprecate this now that we straightened things out but 
-I'd like to know the proper way to deprecate compatible strings regardless.
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index a6255e847104..7d26f7055751 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -85,6 +85,22 @@ static const u32 mt8173_formats[] = {
+ 	DRM_FORMAT_YUYV,
+ };
+ 
++static const u32 mt8195_formats[] = {
++	DRM_FORMAT_XRGB8888,
++	DRM_FORMAT_ARGB8888,
++	DRM_FORMAT_ARGB2101010,
++	DRM_FORMAT_BGRX8888,
++	DRM_FORMAT_BGRA8888,
++	DRM_FORMAT_BGRA1010102,
++	DRM_FORMAT_ABGR8888,
++	DRM_FORMAT_XBGR8888,
++	DRM_FORMAT_RGB888,
++	DRM_FORMAT_BGR888,
++	DRM_FORMAT_RGB565,
++	DRM_FORMAT_UYVY,
++	DRM_FORMAT_YUYV,
++};
++
+ struct mtk_disp_ovl_data {
+ 	unsigned int addr;
+ 	unsigned int gmc_bits;
+@@ -616,8 +632,9 @@ static const struct mtk_disp_ovl_data mt8195_ovl_driver_data = {
+ 	.fmt_rgb565_is_0 = true,
+ 	.smi_id_en = true,
+ 	.supports_afbc = true,
+-	.formats = mt8173_formats,
+-	.num_formats = ARRAY_SIZE(mt8173_formats),
++	.formats = mt8195_formats,
++	.num_formats = ARRAY_SIZE(mt8195_formats),
++	.supports_clrfmt_ext = true,
+ };
+ 
+ static const struct of_device_id mtk_disp_ovl_driver_dt_match[] = {
+-- 
+2.39.1.456.gfc5497dd1b-goog
 
-Arınç
 
