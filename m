@@ -4,64 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 578EFC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 11:03:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FAE1C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 11:06:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BK/uBJbsZyliJnkWwDlE3JqM1bOct3HCceT//+OPGiU=; b=mGRK89Atiusx/b4On69qj3Zq/F
-	QEzjlxldzvyP70+CRRzR745B5rrbGR8pf5uTeHXIG0Jf3BzU9m0Kddj1DO5B7ic6GVl9M9rAlwTC2
-	eef+fUslaQKtsfqMXP0dvN1nzvtmDCNLVc88aPNDBvFlwxiWF7DeoyVRy4N9rWS1jXkem5AMRxoOj
-	Exl0PIXaidvtCbjBIgLLC8W/c8iUlAvh2zsLj6b9+uFG82O8B3thRz3ip8te9QNSR3g/uDJi9udls
-	Dxgzo0B8kgC31RjRoL+ZT8dtK84rdDVMaFJrDEw4qRHoXz/0hoizSjJpfdgQQ/2PKn5HizEYoqvMp
-	xw7/C3QA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/io0tiHurftvED5sx9LsxUT6zxO/u5fmUM2T3ONQg1w=; b=h4dHg1SF8KTuvhsJSkmUxj4Ztl
+	e61k+XJtKmtRcCt7RXwMhoqAohAruubEOjyPn4XDE7Ixp+tPnJB285GM+AkpLXhJVaMFazYnMHDrB
+	bvU1STVJ9k830R5c/HY76N6nbKekEuml1Y8jW8fGoTKGb3tXpUPoBBrUIUFC2S1vca78KUS3TbjCh
+	wzSVsIhpcBs2xt0lNIjTSHDAxVZKp6z9yq1LK7bRhmHJoomwgyjA51c9pecxBlNq2N3uM3qXfxjaF
+	SG1wapn//wddd6uFNDajEq+TO1SW8f20w795dgYFEIPu593FVuEIxBWaDTsO5lXnT+hTGcnZkKsiJ
+	kVRN60XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paE38-009IlT-7q; Thu, 09 Mar 2023 11:03:06 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1paE6G-009KCu-LR; Thu, 09 Mar 2023 11:06:20 +0000
+Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paDwt-009G86-TC; Thu, 09 Mar 2023 10:56:41 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1paDws-0003Z6-1e;
-	Thu, 09 Mar 2023 11:56:38 +0100
-Date: Thu, 9 Mar 2023 10:54:44 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Russell King <linux@armlinux.org.uk>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <vladimir.oltean@nxp.com>
-Subject: [PATCH net-next v13 01/16] net: ethernet: mtk_eth_soc: add support
- for MT7981 SoC
-Message-ID: <6c9cda3ba51d8f72c63369ec53fe16833db61762.1678357225.git.daniel@makrotopia.org>
-References: <cover.1678357225.git.daniel@makrotopia.org>
+	id 1paDx9-009GDS-To; Thu, 09 Mar 2023 10:56:57 +0000
+Received: from 3ffe.de (0001.3ffe.de [IPv6:2a01:4f8:c0c:9d57::1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 02408127D;
+	Thu,  9 Mar 2023 11:56:50 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
+	t=1678359411;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=/io0tiHurftvED5sx9LsxUT6zxO/u5fmUM2T3ONQg1w=;
+	b=Q0KB9CqTeuqMIUSe2pVjnWRuOwcuUmKy9D5oFkhfi/+moFgjMCQ/lunzoGmezZzlumqVKC
+	MrQg1kXbHWxTsyWsmj7NWDC/TENDDKHttjXm4yTCVHYePbZbHZoKkrXHx8CbxPIV34zeHU
+	+jfWs5s6CLuPLu8k4bHcBAttFBHFY10zEQWk+lkFlnRP1ytW2BqgvY7WGvS5HgIoxF5D4K
+	YNqzc1ck8iGX27ks548/YZDSqdK+1eYjVP2ukcLY5Va037kd8vocBPbRc52qQnq41ErkKV
+	4ZcoSCVyIYjrBToOMlILYNHuHLBiYOvk6DiBaFHGE4O0o5TSwpozL9l8guW67g==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1678357225.git.daniel@makrotopia.org>
+Date: Thu, 09 Mar 2023 11:56:50 +0100
+From: Michael Walle <michael@walle.cc>
+To: Tudor Ambarus <tudor.ambarus@linaro.org>
+Cc: Serge Semin <fancer.lancer@gmail.com>, Sergiu.Moga@microchip.com, Mark
+ Brown <broonie@kernel.org>, Tudor Ambarus <tudor.ambarus@microchip.com>,
+ Pratyush Yadav <pratyush@kernel.org>, miquel.raynal@bootlin.com,
+ richard@nod.at, vigneshr@ti.com, Nicolas.Ferre@microchip.com,
+ alexandre.belloni@bootlin.com, Claudiu.Beznea@microchip.com,
+ chin-ting_kuo@aspeedtech.com, clg@kaod.org, joel@jms.id.au, andrew@aj.id.au,
+ kdasu.kdev@gmail.com, han.xu@nxp.com, john.garry@huawei.com,
+ matthias.bgg@gmail.com, avifishman70@gmail.com, tmaimon77@gmail.com,
+ tali.perry1@gmail.com, venture@google.com, yuenn@google.com,
+ benjaminfair@google.com, haibo.chen@nxp.com, yogeshgaur.83@gmail.com,
+ heiko@sntech.de, mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
+ michal.simek@xilinx.com, bcm-kernel-feedback-list@broadcom.com,
+ linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH] spi: Replace `dummy.nbytes` with `dummy.ncycles`
+In-Reply-To: <1849e2c8-54f5-9e56-4ed8-8b0e4a826d04@linaro.org>
+References: <20220911174551.653599-1-sergiu.moga@microchip.com>
+ <20220925220304.buk3yuqoh6vszfci@mobilestation>
+ <18e6e8a8-6412-7e31-21e0-6becd4400ac1@microchip.com>
+ <20220926172454.kbpzck7med5bopre@mobilestation>
+ <1766f6ef-d9d8-04f7-a6bf-0ea6bc0b3d23@linaro.org>
+ <f647e713a65f5d3f0f2e3af95c4d0a89@walle.cc>
+ <1849e2c8-54f5-9e56-4ed8-8b0e4a826d04@linaro.org>
+User-Agent: Roundcube Webmail/1.4.13
+Message-ID: <302ecf0421fe4c99fca3eb0ca2f66127@walle.cc>
+X-Sender: michael@walle.cc
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_025640_136477_E801A3E2 
-X-CRM114-Status: GOOD (  18.22  )
+X-CRM114-CacheID: sfid-20230309_025656_153216_10F81C21 
+X-CRM114-Status: GOOD (  14.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,219 +92,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Alexander Couzens <lynxis@fe80.eu>, =?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek MT7981 SoC comes with two 1G/2.5G SGMII ports, just like
-MT7986.
+Am 2023-03-09 11:42, schrieb Tudor Ambarus:
+> On 09.03.2023 10:38, Michael Walle wrote:
+>>> In an ideal world, where both the controller and the device talk 
+>>> about
+>>> dummy number of cycles, I would agree with you, buswidth and dtr 
+>>> should
+>>> not be relevant for the number of dummy cycles. But it seems that 
+>>> there
+>>> are old controllers (e.g. spi-hisi-sfc-v3xx.c, spi-mt65xx.c, 
+>>> spi-mxic.c)
+>>> that support buswidths > 1 and work only with dummy nbytes, they are 
+>>> not
+>>> capable of specifying a smaller granularity (ncycles). Thus the older
+>>> controllers would have to convert the dummy ncycles to dummy nbytes.
+>>> Since mixed transfer modes are a thing (see jesd251, it talks about
+>>> 4S-4D-4D), where single transfer mode (S) can be mixed with double
+>>> transfer mode (D) for a command, the controller would have to guess 
+>>> the
+>>> buswidth and dtr of the dummy. Shall they replicate the buswidth and 
+>>> dtr
+>>> of the address or of the data? There's no rule for that.
+>> 
+>> But in the end that doesn't matter because they are just dummy clock
+>> cycles and the mode will only affect the data/address/command. 
+>> Therefore,
+>> the controller is free to choose the mode that suits it best.
+>>  > But that begs the question, is ncycles in regard to DTR or SDR? 
+>> That is,
+>> are you counting just one type of edges or both the falling and rising
+>> edges. The smallest granularity would be ncycles in regard of DTR. To 
+>> me,
+>> it's not obvious what the SEMPER Nano Flash [1] uses. I'd say we 
+>> choose
+>> the smallest granularty in spi-mem to be future proof and maybe 
+>> provide
+>> some spi-mem helper to help setting the cycles for SDR/DTR. As an 
+>> example,
+>> if you want to wait 4 cycles in SDR you'd have ncycles=8 in spi-mem.
+>> 
+> 
+> No, we can't invent our own measuring units. We have cycles and half
+> cycles (regardless of the transfer mode used (STR, DTR)).
 
-In addition MT7981 is equipped with a built-in 1000Base-T PHY which can
-be used with GMAC1.
+That is basically what I was saying, just using the correct term.
+Ok. So we don't need the dtr property, right? I'm still not sure,
+what the semper nano flash uses. Half cycles? But according to your
+naming you'd specify full cylces?
 
-As many MT7981 boards make use of inverting SGMII signal polarity, add
-new device-tree attribute 'mediatek,pn_swap' to support them.
-
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- drivers/net/ethernet/mediatek/mtk_eth_path.c | 14 +++++++--
- drivers/net/ethernet/mediatek/mtk_eth_soc.c  | 21 +++++++++++++
- drivers/net/ethernet/mediatek/mtk_eth_soc.h  | 31 ++++++++++++++++++++
- drivers/net/ethernet/mediatek/mtk_sgmii.c    | 10 +++++++
- 4 files changed, 73 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_path.c b/drivers/net/ethernet/mediatek/mtk_eth_path.c
-index 72648535a14d..317e447f4991 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_path.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_path.c
-@@ -96,12 +96,20 @@ static int set_mux_gmac2_gmac0_to_gephy(struct mtk_eth *eth, int path)
- 
- static int set_mux_u3_gmac2_to_qphy(struct mtk_eth *eth, int path)
- {
--	unsigned int val = 0;
-+	unsigned int val = 0, mask = 0, reg = 0;
- 	bool updated = true;
- 
- 	switch (path) {
- 	case MTK_ETH_PATH_GMAC2_SGMII:
--		val = CO_QPHY_SEL;
-+		if (MTK_HAS_CAPS(eth->soc->caps, MTK_U3_COPHY_V2)) {
-+			reg = USB_PHY_SWITCH_REG;
-+			val = SGMII_QPHY_SEL;
-+			mask = QPHY_SEL_MASK;
-+		} else {
-+			reg = INFRA_MISC2;
-+			val = CO_QPHY_SEL;
-+			mask = val;
-+		}
- 		break;
- 	default:
- 		updated = false;
-@@ -109,7 +117,7 @@ static int set_mux_u3_gmac2_to_qphy(struct mtk_eth *eth, int path)
- 	}
- 
- 	if (updated)
--		regmap_update_bits(eth->infra, INFRA_MISC2, CO_QPHY_SEL, val);
-+		regmap_update_bits(eth->infra, reg, mask, val);
- 
- 	dev_dbg(eth->dev, "path %s in %s updated = %d\n",
- 		mtk_eth_path_name(path), __func__, updated);
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index b22cd160554e..57fc8c98c3ce 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -4845,6 +4845,26 @@ static const struct mtk_soc_data mt7629_data = {
- 	},
- };
- 
-+static const struct mtk_soc_data mt7981_data = {
-+	.reg_map = &mt7986_reg_map,
-+	.ana_rgc3 = 0x128,
-+	.caps = MT7981_CAPS,
-+	.hw_features = MTK_HW_FEATURES,
-+	.required_clks = MT7981_CLKS_BITMAP,
-+	.required_pctl = false,
-+	.offload_version = 2,
-+	.hash_offset = 4,
-+	.foe_entry_size = sizeof(struct mtk_foe_entry),
-+	.txrx = {
-+		.txd_size = sizeof(struct mtk_tx_dma_v2),
-+		.rxd_size = sizeof(struct mtk_rx_dma_v2),
-+		.rx_irq_done_mask = MTK_RX_DONE_INT_V2,
-+		.rx_dma_l4_valid = RX_DMA_L4_VALID_V2,
-+		.dma_max_len = MTK_TX_DMA_BUF_LEN_V2,
-+		.dma_len_offset = 8,
-+	},
-+};
-+
- static const struct mtk_soc_data mt7986_data = {
- 	.reg_map = &mt7986_reg_map,
- 	.ana_rgc3 = 0x128,
-@@ -4887,6 +4907,7 @@ const struct of_device_id of_mtk_match[] = {
- 	{ .compatible = "mediatek,mt7622-eth", .data = &mt7622_data},
- 	{ .compatible = "mediatek,mt7623-eth", .data = &mt7623_data},
- 	{ .compatible = "mediatek,mt7629-eth", .data = &mt7629_data},
-+	{ .compatible = "mediatek,mt7981-eth", .data = &mt7981_data},
- 	{ .compatible = "mediatek,mt7986-eth", .data = &mt7986_data},
- 	{ .compatible = "ralink,rt5350-eth", .data = &rt5350_data},
- 	{},
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index afc9d52e79bf..7230dcb29315 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -551,11 +551,22 @@
- #define SGMSYS_QPHY_PWR_STATE_CTRL 0xe8
- #define	SGMII_PHYA_PWD		BIT(4)
- 
-+/* Register to QPHY wrapper control */
-+#define SGMSYS_QPHY_WRAP_CTRL	0xec
-+#define SGMII_PN_SWAP_MASK	GENMASK(1, 0)
-+#define SGMII_PN_SWAP_TX_RX	(BIT(0) | BIT(1))
-+#define MTK_SGMII_FLAG_PN_SWAP	BIT(0)
-+
- /* Infrasys subsystem config registers */
- #define INFRA_MISC2            0x70c
- #define CO_QPHY_SEL            BIT(0)
- #define GEPHY_MAC_SEL          BIT(1)
- 
-+/* Top misc registers */
-+#define USB_PHY_SWITCH_REG	0x218
-+#define QPHY_SEL_MASK		GENMASK(1, 0)
-+#define SGMII_QPHY_SEL		0x2
-+
- /* MT7628/88 specific stuff */
- #define MT7628_PDMA_OFFSET	0x0800
- #define MT7628_SDM_OFFSET	0x0c00
-@@ -736,6 +747,17 @@ enum mtk_clks_map {
- 				 BIT(MTK_CLK_SGMII2_CDR_FB) | \
- 				 BIT(MTK_CLK_SGMII_CK) | \
- 				 BIT(MTK_CLK_ETH2PLL) | BIT(MTK_CLK_SGMIITOP))
-+#define MT7981_CLKS_BITMAP	(BIT(MTK_CLK_FE) | BIT(MTK_CLK_GP2) | BIT(MTK_CLK_GP1) | \
-+				 BIT(MTK_CLK_WOCPU0) | \
-+				 BIT(MTK_CLK_SGMII_TX_250M) | \
-+				 BIT(MTK_CLK_SGMII_RX_250M) | \
-+				 BIT(MTK_CLK_SGMII_CDR_REF) | \
-+				 BIT(MTK_CLK_SGMII_CDR_FB) | \
-+				 BIT(MTK_CLK_SGMII2_TX_250M) | \
-+				 BIT(MTK_CLK_SGMII2_RX_250M) | \
-+				 BIT(MTK_CLK_SGMII2_CDR_REF) | \
-+				 BIT(MTK_CLK_SGMII2_CDR_FB) | \
-+				 BIT(MTK_CLK_SGMII_CK))
- #define MT7986_CLKS_BITMAP	(BIT(MTK_CLK_FE) | BIT(MTK_CLK_GP2) | BIT(MTK_CLK_GP1) | \
- 				 BIT(MTK_CLK_WOCPU1) | BIT(MTK_CLK_WOCPU0) | \
- 				 BIT(MTK_CLK_SGMII_TX_250M) | \
-@@ -849,6 +871,7 @@ enum mkt_eth_capabilities {
- 	MTK_NETSYS_V2_BIT,
- 	MTK_SOC_MT7628_BIT,
- 	MTK_RSTCTRL_PPE1_BIT,
-+	MTK_U3_COPHY_V2_BIT,
- 
- 	/* MUX BITS*/
- 	MTK_ETH_MUX_GDM1_TO_GMAC1_ESW_BIT,
-@@ -883,6 +906,7 @@ enum mkt_eth_capabilities {
- #define MTK_NETSYS_V2		BIT(MTK_NETSYS_V2_BIT)
- #define MTK_SOC_MT7628		BIT(MTK_SOC_MT7628_BIT)
- #define MTK_RSTCTRL_PPE1	BIT(MTK_RSTCTRL_PPE1_BIT)
-+#define MTK_U3_COPHY_V2		BIT(MTK_U3_COPHY_V2_BIT)
- 
- #define MTK_ETH_MUX_GDM1_TO_GMAC1_ESW		\
- 	BIT(MTK_ETH_MUX_GDM1_TO_GMAC1_ESW_BIT)
-@@ -955,6 +979,11 @@ enum mkt_eth_capabilities {
- 		      MTK_MUX_U3_GMAC2_TO_QPHY | \
- 		      MTK_MUX_GMAC12_TO_GEPHY_SGMII | MTK_QDMA)
- 
-+#define MT7981_CAPS  (MTK_GMAC1_SGMII | MTK_GMAC2_SGMII | MTK_GMAC2_GEPHY | \
-+		      MTK_MUX_GMAC12_TO_GEPHY_SGMII | MTK_QDMA | \
-+		      MTK_MUX_U3_GMAC2_TO_QPHY | MTK_U3_COPHY_V2 | \
-+		      MTK_NETSYS_V2 | MTK_RSTCTRL_PPE1)
-+
- #define MT7986_CAPS  (MTK_GMAC1_SGMII | MTK_GMAC2_SGMII | \
- 		      MTK_MUX_GMAC12_TO_GEPHY_SGMII | MTK_QDMA | \
- 		      MTK_NETSYS_V2 | MTK_RSTCTRL_PPE1)
-@@ -1068,12 +1097,14 @@ struct mtk_soc_data {
-  * @ana_rgc3:          The offset refers to register ANA_RGC3 related to regmap
-  * @interface:         Currently configured interface mode
-  * @pcs:               Phylink PCS structure
-+ * @flags:             Flags indicating hardware properties
-  */
- struct mtk_pcs {
- 	struct regmap	*regmap;
- 	u32             ana_rgc3;
- 	phy_interface_t	interface;
- 	struct phylink_pcs pcs;
-+	u32		flags;
- };
- 
- /* struct mtk_sgmii -  This is the structure holding sgmii regmap and its
-diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii.c b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-index bb00de1003ac..d7ffaaeaf9ab 100644
---- a/drivers/net/ethernet/mediatek/mtk_sgmii.c
-+++ b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-@@ -88,6 +88,11 @@ static int mtk_pcs_config(struct phylink_pcs *pcs, unsigned int mode,
- 		regmap_update_bits(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL,
- 				   SGMII_PHYA_PWD, SGMII_PHYA_PWD);
- 
-+		if (mpcs->flags & MTK_SGMII_FLAG_PN_SWAP)
-+			regmap_update_bits(mpcs->regmap, SGMSYS_QPHY_WRAP_CTRL,
-+					   SGMII_PN_SWAP_MASK,
-+					   SGMII_PN_SWAP_TX_RX);
-+
- 		if (interface == PHY_INTERFACE_MODE_2500BASEX)
- 			rgc3 = RG_PHY_SPEED_3_125G;
- 		else
-@@ -182,6 +187,11 @@ int mtk_sgmii_init(struct mtk_sgmii *ss, struct device_node *r, u32 ana_rgc3)
- 
- 		ss->pcs[i].ana_rgc3 = ana_rgc3;
- 		ss->pcs[i].regmap = syscon_node_to_regmap(np);
-+
-+		ss->pcs[i].flags = 0;
-+		if (of_property_read_bool(np, "mediatek,pnswap"))
-+			ss->pcs[i].flags |= MTK_SGMII_FLAG_PN_SWAP;
-+
- 		of_node_put(np);
- 		if (IS_ERR(ss->pcs[i].regmap))
- 			return PTR_ERR(ss->pcs[i].regmap);
--- 
-2.39.2
-
+-michael
 
