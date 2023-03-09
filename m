@@ -4,78 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B02AC74A4B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 14:01:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D48E6C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 14:03:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W+Dc/DVhiLGjEkv9B8OmCvGvpPWU0CUrh5Tv01ppAo4=; b=WwamRRgx/wDSVpDIVM97QQOpoT
-	hZIBGPpdjHbGJlB6dUOicpf8GOZTDnY3YZGNMgHv+xEhzCfST70QLdIbLl7kfYuRxKQvqWdH+DT2z
-	Xq7/DB28RudVtVkN42vRYuboFq60I01xpljN/2MnSWUnV0nfXz/yTwZU56i7KESdzkp1C11FE1QfM
-	3iEO0ZNl2ujlvgfTKEyG0DyVfn14CQwCERoL4ADim+iIxCwicqWmT75wb4cauGbeEsSjng+UGh0kl
-	CoMKKvjafiunD4GmV8Nnr7P+82BnHf1I9RR2xJ/ufty9iKNVkVRhYh2vesxmpyOJkYGbPLD1lmgp+
-	fmuzLCqA==;
+	bh=Vhxj3g02U6JfJorCEqukLhEPbi5ScM6y20Fj/uWtxsc=; b=De8HrBnigeWDxUbeeK3zC81dQO
+	qHKIUbHSYxvLVdT36XnsqGw1PbqVQzeHo4b0MIRVrTQ+IuzAEA8JcXw9OUTatrMrwInfKCEWvZFP7
+	89vP2URQkO9DT1sVS9k1ZwMMwbIZG/7+WjgzIzjetNGD+m+MpueONZVea005yz5CdaoGHb85rkEif
+	3IjfP799VZNaHFP/dpkIchiF1NlzIlknbCbI76chHIJFoLKLKEZbYJdptHsfU46piG7PECNwefm4r
+	d65d35yyLn0PyUADDuDgYyykF3DPI3LRQYWIDOERdC1Ij+AfJgco70r3KN7Nt6MysXOlRbMau97t9
+	2T8ZsuOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paGq0-00AJEu-VR; Thu, 09 Mar 2023 14:01:44 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1paGrj-00AK2C-7V; Thu, 09 Mar 2023 14:03:31 +0000
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paGka-00AFle-Ri; Thu, 09 Mar 2023 13:56:10 +0000
-X-UUID: 204f5420be8211eda08d4d6090ec5a5c-20230309
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=W+Dc/DVhiLGjEkv9B8OmCvGvpPWU0CUrh5Tv01ppAo4=;
-	b=G8pKiqSvJOJpydcRzp5PdS1Cr7Mu+yjIKcWM9tKa5t0x54wM6U/6nvcQVKHRkG1p/QEZPGsOLXVzhnp7cAbIL1JQC3+TS7P5DpNJuLO8yrD1Fl5+xR+hPrMqsoFQAp0k7sMZG+KCtVKHrx/h+zWRCo/0LKDkUla5cTORtP2sXJ0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.20,REQID:8a755daf-b87e-4b39-9c43-e06ac6ad2d44,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:70
-X-CID-INFO: VERSION:1.1.20,REQID:8a755daf-b87e-4b39-9c43-e06ac6ad2d44,IP:0,URL
-	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
-	ON:quarantine,TS:70
-X-CID-META: VersionHash:25b5999,CLOUDID:a5f1dc27-564d-42d9-9875-7c868ee415ec,B
-	ulkID:2303092156022B0V0VOM,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-	,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-UUID: 204f5420be8211eda08d4d6090ec5a5c-20230309
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <garmin.chang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1607463381; Thu, 09 Mar 2023 06:56:01 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Thu, 9 Mar 2023 21:54:27 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Thu, 9 Mar 2023 21:54:27 +0800
-From: Garmin.Chang <Garmin.Chang@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Michael Turquette
-	<mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Richard Cochran
-	<richardcochran@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-clk@vger.kernel.org>, <netdev@vger.kernel.org>, Garmin.Chang
-	<Garmin.Chang@mediatek.com>
-Subject: [PATCH v6 18/19] clk: mediatek: Add MT8188 imp i2c wrapper clock support
-Date: Thu, 9 Mar 2023 21:54:18 +0800
-Message-ID: <20230309135419.30159-19-Garmin.Chang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230309135419.30159-1-Garmin.Chang@mediatek.com>
-References: <20230309135419.30159-1-Garmin.Chang@mediatek.com>
+	id 1paGlD-00AGGL-JY
+	for linux-mediatek@lists.infradead.org; Thu, 09 Mar 2023 13:56:49 +0000
+Received: by mail-yw1-x112b.google.com with SMTP id 00721157ae682-536af432ee5so37305477b3.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Mar 2023 05:56:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1678370204;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=Vhxj3g02U6JfJorCEqukLhEPbi5ScM6y20Fj/uWtxsc=;
+        b=M6OUagewNatTVBWogs7CL7Frl+ekF/MC2BZgxAEhzQWeyuSsXaRpkf4c99DXMGsgc6
+         GIkzhUNU2BURb1j3QuJVpX9peQPez+0A+Lwv3I+Pr4W55I9ScaDo7aFhChRp0sadmIiL
+         0lKL1TZ0CxVdMF8HoIQ/7ufJEuKA5Dra+MJuKUyHRmB9rs9CuHe4y70Qv5xVu1WwZK0B
+         1vXdXtOHzSOCFokSbLcL3GvOf4lTYuXwXKVhUa8ogJNH81T3PpCdFdiMh5PpBeOSTCOE
+         8RasSI/d7wlsztguwb8tqjCkoykqGh1gdjoQgiePJjOS2aABefBearXVltjCsf9a3xlk
+         bqLQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678370204;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Vhxj3g02U6JfJorCEqukLhEPbi5ScM6y20Fj/uWtxsc=;
+        b=TVBt/l7aAEYpVZp/+z6VzQgkhhMrdeR4tJYx0oiu1bmMg9PKxNFHAss0C2EqU0apQ+
+         AHGCVArgpOHflLU4JwUAP/UzxBfME9YvdPvfSw8nURN6y1j217QvXdlzeVW48PD3Ns6s
+         m7Arnqho0Nl5CIj8bc+U6DuPBOzknM8d1RnjGlN8ROcrCjuBFwEDWC7vmp5yLcP331O2
+         QOmtOdZXxDkalZoG7bhIDH3krPghyU5CJCH/KExqcDVofeCcu78K5/vrL6x1uX7e/UL0
+         GzurjHhGklXq42CcOLrVnE+6gq0bZjguI5BtWniXABwnyzL1ss4bGOJX63ATI9KvmKLh
+         bvdA==
+X-Gm-Message-State: AO0yUKW988S0MD8fPy+ITNnVrr8mKGOLeO7HTTkfY3EGjk2NSkY8UgYl
+	5anLeYKcKEUCHI9kYKGI39jk0P7hiR72KalUhUxRxA==
+X-Google-Smtp-Source: AK7set8C8YjXMi5gSQYXdOX+ayCa5RjgmjqpOw5RNChqcaFChToV9jRVJLPT0IsYxq4ctbaJ0y/nV2OJRYi9K+NoTvc=
+X-Received: by 2002:a81:ad63:0:b0:52a:9f66:80c6 with SMTP id
+ l35-20020a81ad63000000b0052a9f6680c6mr13521476ywk.9.1678370204353; Thu, 09
+ Mar 2023 05:56:44 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20230203-evk-board-support-v2-0-6ec7cdb10ccf@baylibre.com> <20230203-evk-board-support-v2-3-6ec7cdb10ccf@baylibre.com>
+In-Reply-To: <20230203-evk-board-support-v2-3-6ec7cdb10ccf@baylibre.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Thu, 9 Mar 2023 14:56:33 +0100
+Message-ID: <CACRpkdb+CQFOW8zjK2pGhRX=tBUcJAyVN=ohEt8eccndA2nYpA@mail.gmail.com>
+Subject: Re: [PATCH v2 03/18] dt-bindings: pinctrl: mediatek,mt8365-pinctrl:
+ add drive strength property
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Zhiyong Tao <zhiyong.tao@mediatek.com>, Guenter Roeck <linux@roeck-us.net>, 
+	=?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Ulf Hansson <ulf.hansson@linaro.org>, Wim Van Sebroeck <wim@linux-watchdog.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Chaotian Jing <chaotian.jing@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
+	Wenbin Mei <wenbin.mei@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	linux-mmc@vger.kernel.org, Alexandre Bailon <abailon@baylibre.com>, 
+	devicetree@vger.kernel.org, Amjad Ouled-Ameur <aouledameur@baylibre.com>, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-gpio@vger.kernel.org, linux-watchdog@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, Fabien Parent <fparent@baylibre.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_055608_944541_058CB980 
-X-CRM114-Status: GOOD (  16.40  )
+X-CRM114-CacheID: sfid-20230309_055647_668482_1945C827 
+X-CRM114-Status: UNSURE (   9.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,116 +96,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8188 imp i2c wrapper clock controllers which provide clock gate
-control in I2C IP blocks.
+On Tue, Mar 7, 2023 at 2:18 PM Alexandre Mergnat <amergnat@baylibre.com> wrote:
 
-Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
----
- drivers/clk/mediatek/Makefile                 |  3 +-
- .../clk/mediatek/clk-mt8188-imp_iic_wrap.c    | 78 +++++++++++++++++++
- 2 files changed, 80 insertions(+), 1 deletion(-)
- create mode 100644 drivers/clk/mediatek/clk-mt8188-imp_iic_wrap.c
+> This SoC is able to drive the following output current:
+> - 2 mA
+> - 4 mA
+> - 6 mA
+> - 8 mA
+> - 10 mA
+> - 12 mA
+> - 14 mA
+> - 16 mA
+>
+> Then drive-strength property is set with enum to reflect its HW capability.
+>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index a7b8dcf9c0bc..0e75308e31d7 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -96,7 +96,8 @@ obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o clk-mt8188-topckgen.o
- 				   clk-mt8188-cam.o clk-mt8188-ccu.o clk-mt8188-img.o \
- 				   clk-mt8188-ipe.o clk-mt8188-mfg.o clk-mt8188-vdec.o \
- 				   clk-mt8188-vdo0.o clk-mt8188-vdo1.o clk-mt8188-venc.o \
--				   clk-mt8188-vpp0.o clk-mt8188-vpp1.o clk-mt8188-wpe.o
-+				   clk-mt8188-vpp0.o clk-mt8188-vpp1.o clk-mt8188-wpe.o \
-+				   clk-mt8188-imp_iic_wrap.o
- obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
- obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
- obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
-diff --git a/drivers/clk/mediatek/clk-mt8188-imp_iic_wrap.c b/drivers/clk/mediatek/clk-mt8188-imp_iic_wrap.c
-new file mode 100644
-index 000000000000..e9b951f95fba
---- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8188-imp_iic_wrap.c
-@@ -0,0 +1,78 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+//
-+// Copyright (c) 2022 MediaTek Inc.
-+// Author: Garmin Chang <garmin.chang@mediatek.com>
-+
-+#include <linux/clk-provider.h>
-+#include <linux/platform_device.h>
-+#include <dt-bindings/clock/mediatek,mt8188-clk.h>
-+
-+#include "clk-gate.h"
-+#include "clk-mtk.h"
-+
-+static const struct mtk_gate_regs imp_iic_wrap_cg_regs = {
-+	.set_ofs = 0xe08,
-+	.clr_ofs = 0xe04,
-+	.sta_ofs = 0xe00,
-+};
-+
-+#define GATE_IMP_IIC_WRAP(_id, _name, _parent, _shift)			\
-+	GATE_MTK_FLAGS(_id, _name, _parent, &imp_iic_wrap_cg_regs, _shift,			\
-+		&mtk_clk_gate_ops_setclr, CLK_OPS_PARENT_ENABLE)
-+
-+static const struct mtk_gate imp_iic_wrap_c_clks[] = {
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_C_AP_CLOCK_I2C0,
-+			  "imp_iic_wrap_c_ap_clock_i2c0", "top_i2c", 0),
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_C_AP_CLOCK_I2C2,
-+			  "imp_iic_wrap_c_ap_clock_i2c2", "top_i2c", 1),
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_C_AP_CLOCK_I2C3,
-+			  "imp_iic_wrap_c_ap_clock_i2c3", "top_i2c", 2),
-+};
-+
-+static const struct mtk_gate imp_iic_wrap_w_clks[] = {
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_W_AP_CLOCK_I2C1,
-+			  "imp_iic_wrap_w_ap_clock_i2c1", "top_i2c", 0),
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_W_AP_CLOCK_I2C4,
-+			  "imp_iic_wrap_w_ap_clock_i2c4", "top_i2c", 1),
-+};
-+
-+static const struct mtk_gate imp_iic_wrap_en_clks[] = {
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_EN_AP_CLOCK_I2C5,
-+			  "imp_iic_wrap_en_ap_clock_i2c5", "top_i2c", 0),
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_EN_AP_CLOCK_I2C6,
-+			  "imp_iic_wrap_en_ap_clock_i2c6", "top_i2c", 1),
-+};
-+
-+static const struct mtk_clk_desc imp_iic_wrap_c_desc = {
-+	.clks = imp_iic_wrap_c_clks,
-+	.num_clks = ARRAY_SIZE(imp_iic_wrap_c_clks),
-+};
-+
-+static const struct mtk_clk_desc imp_iic_wrap_w_desc = {
-+	.clks = imp_iic_wrap_w_clks,
-+	.num_clks = ARRAY_SIZE(imp_iic_wrap_w_clks),
-+};
-+
-+static const struct mtk_clk_desc imp_iic_wrap_en_desc = {
-+	.clks = imp_iic_wrap_en_clks,
-+	.num_clks = ARRAY_SIZE(imp_iic_wrap_en_clks),
-+};
-+
-+static const struct of_device_id of_match_clk_mt8188_imp_iic_wrap[] = {
-+	{ .compatible = "mediatek,mt8188-imp-iic-wrap-c", .data = &imp_iic_wrap_c_desc },
-+	{ .compatible = "mediatek,mt8188-imp-iic-wrap-w", .data = &imp_iic_wrap_w_desc },
-+	{ .compatible = "mediatek,mt8188-imp-iic-wrap-en", .data = &imp_iic_wrap_en_desc },
-+	{ /* sentinel */ }
-+};
-+
-+static struct platform_driver clk_mt8188_imp_iic_wrap_drv = {
-+	.probe = mtk_clk_simple_probe,
-+	.remove = mtk_clk_simple_remove,
-+	.driver = {
-+		.name = "clk-mt8188-imp_iic_wrap",
-+		.of_match_table = of_match_clk_mt8188_imp_iic_wrap,
-+	},
-+};
-+
-+builtin_platform_driver(clk_mt8188_imp_iic_wrap_drv);
-+MODULE_LICENSE("GPL");
--- 
-2.18.0
+Is this something I can apply directly to the pinctrl tree once the DT
+maintainers have
+had a chance to look at it?
 
+Yours,
+Linus Walleij
 
