@@ -4,89 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 202DBC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 13:19:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79D05C64EC4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 13:21:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KCS0grjDle8LqIHXYUqxgW9dQGLLuD8q9UNKbRuhYbk=; b=CU1TUKiY5reH7h9W9+QUPncBFe
-	2fucrdCcHxN7gxGKHa0MBY/PjxgZALBOu+Qd3O+HHPg9qvUanYvxlfWgKnmHS0WJEfUIPm9qzvvhT
-	QhxHRuXrMb5hLKoQOOc0ZANvEpMr8aR3/ewNmbbRATXZLnHW4F+lEBDHoTys3jEH0PEkhpOk2ctlg
-	X9f0C/SHpOdOWVXsuq/JNyz5PgHpl/s3Jc2uta2utQvUjvo74iOC6+cHwZuFPwA85tAL08RDYEo2N
-	NOv61vd2jSmj8Qflrbtd0fhjLUBq4cBA8kAZm1mljhOPofNwmVdlrACTrs36J3chPUyYSsHsTdUyZ
-	Txx7XnaA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+m7/rr7QHJTk9AeXbJ7c1PxCQ2GvH8D7moLZR0Qqv00=; b=WzDS2uv2sZtPj7AgI+frX/mjan
+	UuDvwlnLEEE48Ped/uPJvvVcVcxfwWHrNlgKBTWhW4d4bCZGGbyvC6MhslAOGas9GBdgZZrCq4jVQ
+	lW34CeDZQEitgdbTIAa+tACEDe0r+DwfNcGNIiX5BxSRQnpLmmTF4o3x5nRsJSN0iNxJh+I5wsJFJ
+	FXa6LfmnfJjzUDs/CYp28KIPa8kBzCssZfYWvL6NBmourGy2mLa07fWw/TwjUHpkq7w9zW3O3Nigc
+	az/4MfEqkU37RIk0e+TAWo4deYNFFV2AQ818kzEarmyeCWHOzahJSHaOc63ttgfmegtQ51PFhXTtR
+	yA89MJvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paGBG-00A3hA-KB; Thu, 09 Mar 2023 13:19:38 +0000
-Received: from relay8-d.mail.gandi.net ([2001:4b98:dc4:8::228])
+	id 1paGDI-00A4CP-Jd; Thu, 09 Mar 2023 13:21:44 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paGBB-00A3fI-MX; Thu, 09 Mar 2023 13:19:35 +0000
-Received: (Authenticated sender: miquel.raynal@bootlin.com)
-	by mail.gandi.net (Postfix) with ESMTPSA id D29391BF203;
-	Thu,  9 Mar 2023 13:19:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1678367968;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=KCS0grjDle8LqIHXYUqxgW9dQGLLuD8q9UNKbRuhYbk=;
-	b=Xwei8LaM7A3PtmP2nNF4x28yyM+iJOS9s9PrMxCrGzZC58KjSVM8cHaBeXrAZI/NtfH/9j
-	r01nhfdqw3Y5E4seWycsQrKTDFGGLW5n7wwD+gr+9XPRGo17l49ulVlJXO+zEXIj6W/wVp
-	xHnGPGBF0BnN6CjB6Mu7s0CWOOvq/3wpWShvMBXpv9A0NVrQOjh4c49bXdwQz2Qj8hWt33
-	zxizmlPdNsdJMSab2n/Xqmakf0DwsfvgnyFw9d/JVszhf957LuH1cfuu0MN5C7gxIvLwp6
-	eigmkj5aTAo76n4kZiDx68XnLa0GLX9JeCOa/Bk5Ds7ImdmzV7EC+0ot+vZz3Q==
-Date: Thu, 9 Mar 2023 14:19:20 +0100
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Richard Weinberger
- <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Hector Martin
- <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, Alyssa Rosenzweig
- <alyssa@rosenzweig.io>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
- <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman
- <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Martin
- Blumenstingl <martin.blumenstingl@googlemail.com>, Claudiu Beznea
- <claudiu.beznea@microchip.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy
- Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad
- Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Orson
- Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Vincent Shih <vincent.sunplus@gmail.com>,
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Kunihiko Hayashi
- <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>,
- Michal Simek <michal.simek@xilinx.com>, Alessandro Zummo
- <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Evgeniy Polyakov <zbr@ioremap.net>, linux-mtd@lists.infradead.org,
- linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
- linux-rtc@vger.kernel.org, Michael Walle <michael@walle.cc>,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-Subject: Re: [PATCH V3] nvmem: add explicit config option to read OF fixed
- cells
-Message-ID: <20230309141920.1d3f774e@xps-13>
-In-Reply-To: <e845b38c-d0eb-716c-dc51-b89582750f07@gmail.com>
-References: <20230309112028.19215-1-zajec5@gmail.com>
-	<20230309123513.43b7134f@xps-13>
-	<e845b38c-d0eb-716c-dc51-b89582750f07@gmail.com>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
+	id 1paGD9-00A49V-1J; Thu, 09 Mar 2023 13:21:36 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7653F660301A;
+	Thu,  9 Mar 2023 13:21:32 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1678368093;
+	bh=ldHXW19jlSTRYyH5WBpqiCYhhBV+psP18BsDgYHhh9c=;
+	h=From:To:Cc:Subject:Date:From;
+	b=IBMJpfisS7whkQpD/k8VireP5Hs0dDOUGl4S7ZJLe7gUqz2oQUHPX2c++Iw5Wikf7
+	 4XnMOclMG6RxTt1PAsYtmcgXEAayT3th9yC3hMHhiIhPHMnecQGLAU1j4H7PHua/jn
+	 rtsn6stv7GeI0y+ynN2N4E619/IyDChsLoXhu33Mjl4j+mLF+6P+VLvMW13dwHVheq
+	 Gh2tWZ0vMzFaw6kicgGToy0GJoDVdAoWaX8zF9eG9jyd4UIMyjHueIn69qZ1JExiox
+	 gv6DokypVRy0OWm+dBqsNzKX9WFcVNqNai9k7EBhX+aFMg/y/0d3Ug++ZbBC1x1rOc
+	 Vp42agSkDNRmA==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: walter.chang@mediatek.con
+Cc: sudeep.holla@arm.com,
+	daniel.lezcano@linaro.org,
+	tglx@linutronix.de,
+	macro@orcam.me.uk,
+	jstultz@google.com,
+	krzysztof.kozlowski@linaro.org,
+	wsd_upstream@mediatek.com,
+	stanley.chu@mediatek.com,
+	Chun-hung.Wu@mediatek.com,
+	Freddy.Hsin@mediatek.com,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH RFC] RFC: clocksource: timer-mediatek: Add means to register as platform_driver
+Date: Thu,  9 Mar 2023 14:21:19 +0100
+Message-Id: <20230309132119.175650-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_051934_072897_8EB28183 
-X-CRM114-Status: GOOD (  31.03  )
+X-CRM114-CacheID: sfid-20230309_052135_230713_EF64455E 
+X-CRM114-Status: GOOD (  17.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,94 +80,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rafa=C5=82,
+This commit is not meant to be picked!
 
-zajec5@gmail.com wrote on Thu, 9 Mar 2023 13:01:19 +0100:
+As some parties have some interest [1] in converting timers to
+modules (for the sake of GKI), which IMO is quite tricky and hard
+to do, I started some (quite fast) research on how could this be
+achieved: not like that, for sure!
 
-> On 9.03.2023 12:35, Miquel Raynal wrote:
-> >> diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-prov=
-ider.h
-> >> index 0262b86194eb..b3c14ce87a65 100644
-> >> --- a/include/linux/nvmem-provider.h
-> >> +++ b/include/linux/nvmem-provider.h
-> >> @@ -73,6 +73,7 @@ struct nvmem_cell_info {
-> >>    * @owner:	Pointer to exporter module. Used for refcounting.
-> >>    * @cells:	Optional array of pre-defined NVMEM cells.
-> >>    * @ncells:	Number of elements in cells.
-> >> + * @use_fixed_of_cells:	Read fixed NVMEM cells from OF. =20
-> >=20
-> > I'm still unhappy with the naming, especially since you explained in
-> > more details the whole plan which involves using a container to put
-> > these fixed cells from now on. In both cases you extract cells from
-> > fixed OF nodes but this boolean needs to be set to true in one
-> > case, and false in the other, which would not make sense.
-> >=20
-> > Also, regarding the bindings changes, I'm fairly happy with the idea,
-> > but if we go this way I would prefer a full series instead of
-> > individual changes with:
-> >=20
-> > - the boolean you introduce here (renamed, at the very least)
-> > - the new bindings =20
->=20
-> I assume you mean fixed-layout.yaml?
+This kind of timers are obviously started early in the kernel init
+process and as far as I saw (rightfully) even before pure_initcall,
+or actually, better said, even before *any* initcall.
 
-Yes!
+I fully acknowledge that this, as it is right now, is a quite big
+hack... though, this actually compiles and actually... works if
+timer-mediatek is compiled as built-in (so, in a way, I achieved
+nothing), but the addition of the pure_initcall() there may be an
+idea for others to experiment with initializing system timers at
+a later stage.
 
-> > - the update of the current provider bindings to take the new bindings
-> >    into account and deprecate the old ones officially =20
->=20
-> What has to be updated in current proceds? It seems to me that:
-> 1. Current NVMEM providers reference nvmem.yaml
-> 2. nvmem.yaml references nvmem-layout.yaml
-> 3. nvmem-layout.yaml references fixed-layout.yaml
->=20
-> what else is missing?
+This commit is practically one of the last steps involved in the
+conversion, but it's meant as a conversation piece for the
+interested parties.
 
-That's the theory, but then provider bindings should reflect the
-changes as well in their own binding documents.
+Last thing last, after performing this research, I'm not sure
+that pursuing modularization for timers is really worth it,
+but I may be ignoring something :-)
 
-IOW, this one (and all its cousins) becomes legacy and must be updated:
+[1]: https://patchwork.kernel.org/project/linux-mediatek/patch/20230214105412.5856-5-walter.chang@mediatek.com/
+---
+ drivers/clocksource/timer-mediatek.c | 40 ++++++++++++++++++++++++++--
+ include/linux/clocksource.h          |  8 ++++++
+ 2 files changed, 46 insertions(+), 2 deletions(-)
 
-https://elixir.bootlin.com/linux/latest/source/Documentation/devicetree/bin=
-dings/nvmem/imx-ocotp.yaml#L92
+diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
+index 7bcb4a3f26fb..eda7f60475b6 100644
+--- a/drivers/clocksource/timer-mediatek.c
++++ b/drivers/clocksource/timer-mediatek.c
+@@ -13,6 +13,7 @@
+ #include <linux/clocksource.h>
+ #include <linux/interrupt.h>
+ #include <linux/irqreturn.h>
++#include <linux/platform_device.h>
+ #include <linux/sched_clock.h>
+ #include <linux/slab.h>
+ #include "timer-of.h"
+@@ -337,5 +338,40 @@ static int __init mtk_gpt_init(struct device_node *node)
+ 
+ 	return 0;
+ }
+-TIMER_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_gpt_init);
+-TIMER_OF_DECLARE(mtk_mt6765, "mediatek,mt6765-timer", mtk_syst_init);
++
++static int mtk_timer_probe(struct platform_device *pdev)
++{
++	int (*mtk_timer_init)(struct device_node *node);
++
++	mtk_timer_init = device_get_match_data(&pdev->dev);
++	if (!mtk_timer_init)
++		return -EINVAL;
++
++	return mtk_timer_init(pdev->dev.of_node);
++}
++
++static const struct of_device_id timer_mediatek_of_match[] __timer_of_section = {
++	{ .compatible = "mediatek,mt6577-timer", .data = mtk_gpt_init },
++	{ .compatible = "mediatek,mt6765-timer", .data = mtk_syst_init },
++#ifdef MODULE
++	{ /* sentinel */ }
++#endif
++};
++MODULE_DEVICE_TABLE(of, timer_mediatek_of_match);
++
++static struct platform_driver timer_mediatek_driver __maybe_unused = {
++	.driver = {
++		.name = "mediatek-timer",
++		.of_match_table = timer_mediatek_of_match,
++		.suppress_bind_attrs = true,
++	},
++	.probe = mtk_timer_probe,
++};
++
++#ifdef MODULE
++static int __init timer_mediatek_init(void)
++{
++	return platform_driver_register(&timer_mediatek_driver);
++}
++pure_initcall(timer_mediatek_init)
++#endif
+diff --git a/include/linux/clocksource.h b/include/linux/clocksource.h
+index 1d42d4b17327..a5d61a1099e4 100644
+--- a/include/linux/clocksource.h
++++ b/include/linux/clocksource.h
+@@ -279,6 +279,14 @@ extern int clocksource_mmio_init(void __iomem *, const char *,
+ 
+ extern int clocksource_i8253_init(void);
+ 
++#if defined(CONFIG_OF) && !defined(MODULE)
++ #define __timer_of_section				\
++	 __used __section("__timer_of_table")		\
++	 __aligned(__alignof__(struct of_device_id))
++#else
++ #define __timer_of_section
++#endif
++
+ #define TIMER_OF_DECLARE(name, compat, fn) \
+ 	OF_DECLARE_1_RET(timer, name, compat, fn)
+ 
+-- 
+2.39.2
 
-(and there are many files to update then)
-
->=20
->=20
-> > - support for the new bindings in the core =20
->=20
-> Please, don't get me wrong, but I'm not going to spend more hours on
-> actual coding without approval of chosen path.
-
-Well, you want to make the bindings evolve. Just updating a single
-binding file is not enough, I believe we should at least provide full
-support for the new description. But of course I'm fine discussing what
-description we want first.
-
-> I'll need to have
-> [PATCH V2] dt-bindings: nvmem: layouts: add fixed-layout
-> reviewed/acked first. If you can do that that's great.
->=20
->=20
-> >>    * @keepout:	Optional array of keepout ranges (sorted ascending by s=
-tart).
-> >>    * @nkeepout:	Number of elements in the keepout array.
-> >>    * @type:	Type of the nvmem storage
-> >> @@ -103,6 +104,7 @@ struct nvmem_config {
-> >>   	struct module		*owner;
-> >>   	const struct nvmem_cell_info	*cells;
-> >>   	int			ncells;
-> >> +	bool			use_fixed_of_cells;
-> >>   	const struct nvmem_keepout *keepout;
-> >>   	unsigned int		nkeepout;
-> >>   	enum nvmem_type		type; =20
-> >=20
-> > Thanks,
-> > Miqu=C3=A8l =20
->=20
-
-
-Thanks,
-Miqu=C3=A8l
 
