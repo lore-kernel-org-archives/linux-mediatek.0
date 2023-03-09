@@ -4,106 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8017AC64EC4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 13:56:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3671AC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 13:56:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+yNMGdQC/Xw2IM5J0z39LrXI/wVpt74oZIMsD87S200=; b=Xs29UQan6NjyOb1V8aHAojgznY
-	5zSFYIMfjkdpemauposcXVO7g6uVT8XyOv6RXtclACiUasHUoN6yvpPYJzo/XQCllPRP7D6xvr1a+
-	8zCiW1TNLZuUtGIO5Ct7dDz2yG01+F127K8OPFgO2NHEyf2zCjS/IQ5b++32BmNGg2s+ynWLKGK1Q
-	fyuXBzx8BWVWkVjiN2Yb9sPViyelR6ebKsNEWBsfS09zwUVdBEZWCXFSb4dxkKZaBvUu8dpzJsCdy
-	EwhKUYIsIMuNc6gqS8e7YOgZepQ6aTmmrw/N8N/u9tVxd068kMhd4D85TuXm9Wd2EvqveP3RozTq6
-	+00uJz3w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TSbWBM3oCto+MvvvTH+ji3bPt//xWAb+CtqPplLMfEc=; b=FN86wl8sY9kNlrcgIYUWFqkVyy
+	ZYjcwU4nAW9N7p5B5oa2TKOVC67HnZmf+iE/9wXIviIhckwUYpccrp6mHQPaiGj4k7x+WHI1+bGR7
+	WJUDhifdINjEQtJ9rpJVlM2p7hFcwTzx6rMIISM0JCsBQVgsQUf2zG+ul0RVHqYzOY4sfwYLVJthJ
+	SNBzkJOtFXKJOmVz9IB/AOVgp+aOBzsZ4NqW/K5f/xkVwQuJXB3FV8wQUWJFYtRfCaV9AGbyamNLQ
+	tRHl0r+24i4LkplQpoGBdsTO9Ev+w51oPSa9xKVqOQ159n7+7XpXLlKb8PI5obESmm/EK0O8y5iaO
+	BhOjy3Uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paGkY-00AFnQ-Nw; Thu, 09 Mar 2023 13:56:06 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1paGka-00AFoQ-65; Thu, 09 Mar 2023 13:56:08 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paGj5-00AEvP-2W
-	for linux-mediatek@lists.infradead.org; Thu, 09 Mar 2023 13:54:39 +0000
-Received: by mail-wm1-x335.google.com with SMTP id t25-20020a1c7719000000b003eb052cc5ccso3647902wmi.4
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Mar 2023 05:54:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678370071;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=+yNMGdQC/Xw2IM5J0z39LrXI/wVpt74oZIMsD87S200=;
-        b=K7sXdAFy2z4bNQssKxVGN0CKWVjncTXW3VNw27sxQUhZ4toVTMpMfoKgamejk4M//3
-         UYw0C5S0MB14uALgQJ0MU8mkL13/HcmZ58Ma2NprweXhZTT+MTN3cHCmCO16cWEhFmZJ
-         S8lUWOV7zXulkBDx0mS9OPGDVaswJ7Gc+2PdVKtM9mU9HeiXSM2LfUJwlMFTMxPn8zes
-         jpWki0+2dgBR/u25caK3XxHeVY8jtubTX3/H8MOv8IZDVt54A5Ng9/ASlgnTKnHn5gmi
-         JpIVvIG86rQCG+AIHULWfhPK1DJuMzARFYBcFu+kR3CeJroS3LoxfCYLwGcEgKE/phNn
-         nfZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678370071;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=+yNMGdQC/Xw2IM5J0z39LrXI/wVpt74oZIMsD87S200=;
-        b=O1kPF2UWsXvA9NgtzblnvaU8YML+oXgTh22SEIqNXk790Dif2PbJkkKPuyn1O7j19q
-         uJAnbmYV+IWW017sdS1XQFRPjNiwx5xpfxdmPj/hckaPS0jmjN2qxM5CuTxltmdai1Sr
-         sEe04iezbekgha3ojEbhb2sAafvl7/A9lRNdPqRRVx03+MoptGydVvR/8iuzLK+Tnf+L
-         lj4CZ5sOwG4q1o60jhDS3CuTA4jWDG7SOkVVKvSCY8YDOuASekTBneML3VNnIC2QzMVW
-         W3BuPSYIYe+Vksq2qCwMxg1RqcQQ+9Y0mU7HTNZg6ZEMl3iz8u9dwC+MPVB8nYCzPIa3
-         duXg==
-X-Gm-Message-State: AO0yUKU5iNvajjKCT5UIP0yyCRCTpON1Bffatc3BDVm3X2aDMTI5EzPN
-	xajNhurTkfG3pJbJzLg3p/0iRQ==
-X-Google-Smtp-Source: AK7set9BC1aUcCmXpoGmNq+F0KtxUnHtaWTpYlQDUbfH+9jnFAvfgT6oTZA+trXsjWT36mi++mzKeg==
-X-Received: by 2002:a05:600c:2199:b0:3eb:f59f:6daf with SMTP id e25-20020a05600c219900b003ebf59f6dafmr7949883wme.34.1678370071103;
-        Thu, 09 Mar 2023 05:54:31 -0800 (PST)
-Received: from [192.168.0.173] ([79.115.63.78])
-        by smtp.gmail.com with ESMTPSA id v15-20020a05600c444f00b003e2232d0960sm2757515wmn.23.2023.03.09.05.54.26
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 09 Mar 2023 05:54:28 -0800 (PST)
-Message-ID: <b8b61fc0-1e4f-146b-2036-03fda5359585@linaro.org>
-Date: Thu, 9 Mar 2023 15:54:25 +0200
+	id 1paGj6-00AEyd-Ng; Thu, 09 Mar 2023 13:54:40 +0000
+X-UUID: ea873768be8111edbbe3f76fe852e059-20230309
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=TSbWBM3oCto+MvvvTH+ji3bPt//xWAb+CtqPplLMfEc=;
+	b=Jg8ZVsCBMxeFVZxEtFZ8Nm9nol3l1q4YND/oupBSi0QfUuEx+ZqiYMHUTp8YtyTRMp0vJFDNTGf0XX30x/NjRx5uX/Xc24EBxJmpcHz/jsN40YeKIHAEjYhmk971WZbr4bd0CFUgzgLFUG22XZnrkWGYrJHNaaAPfy2XWRcq6VA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.20,REQID:590dd0ff-db50-4798-8d1f-51716e67ac0d,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:70
+X-CID-INFO: VERSION:1.1.20,REQID:590dd0ff-db50-4798-8d1f-51716e67ac0d,IP:0,URL
+	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
+	ON:quarantine,TS:70
+X-CID-META: VersionHash:25b5999,CLOUDID:76ecdc27-564d-42d9-9875-7c868ee415ec,B
+	ulkID:230309215430FQ6XG8HP,BulkQuantity:8,Recheck:0,SF:38|29|28|17|19|48,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:43,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-UUID: ea873768be8111edbbe3f76fe852e059-20230309
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <garmin.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 779554043; Thu, 09 Mar 2023 06:54:31 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Thu, 9 Mar 2023 21:54:27 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Thu, 9 Mar 2023 21:54:26 +0800
+From: Garmin.Chang <Garmin.Chang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Michael Turquette
+	<mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Richard Cochran
+	<richardcochran@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-clk@vger.kernel.org>, <netdev@vger.kernel.org>, Garmin.Chang
+	<Garmin.Chang@mediatek.com>
+Subject: [PATCH v6 13/19] clk: mediatek: Add MT8188 vdosys1 clock support
+Date: Thu, 9 Mar 2023 21:54:13 +0800
+Message-ID: <20230309135419.30159-14-Garmin.Chang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230309135419.30159-1-Garmin.Chang@mediatek.com>
+References: <20230309135419.30159-1-Garmin.Chang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH] spi: Replace `dummy.nbytes` with `dummy.ncycles`
-Content-Language: en-US
-To: Michael Walle <michael@walle.cc>
-Cc: Serge Semin <fancer.lancer@gmail.com>, Sergiu.Moga@microchip.com,
- Mark Brown <broonie@kernel.org>, Tudor Ambarus
- <tudor.ambarus@microchip.com>, Pratyush Yadav <pratyush@kernel.org>,
- miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com,
- Nicolas.Ferre@microchip.com, alexandre.belloni@bootlin.com,
- Claudiu.Beznea@microchip.com, chin-ting_kuo@aspeedtech.com, clg@kaod.org,
- joel@jms.id.au, andrew@aj.id.au, kdasu.kdev@gmail.com, han.xu@nxp.com,
- john.garry@huawei.com, matthias.bgg@gmail.com, avifishman70@gmail.com,
- tmaimon77@gmail.com, tali.perry1@gmail.com, venture@google.com,
- yuenn@google.com, benjaminfair@google.com, haibo.chen@nxp.com,
- yogeshgaur.83@gmail.com, heiko@sntech.de, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, michal.simek@xilinx.com,
- bcm-kernel-feedback-list@broadcom.com, linux-mtd@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
- openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
-References: <20220911174551.653599-1-sergiu.moga@microchip.com>
- <20220925220304.buk3yuqoh6vszfci@mobilestation>
- <18e6e8a8-6412-7e31-21e0-6becd4400ac1@microchip.com>
- <20220926172454.kbpzck7med5bopre@mobilestation>
- <1766f6ef-d9d8-04f7-a6bf-0ea6bc0b3d23@linaro.org>
- <f647e713a65f5d3f0f2e3af95c4d0a89@walle.cc>
- <1849e2c8-54f5-9e56-4ed8-8b0e4a826d04@linaro.org>
- <302ecf0421fe4c99fca3eb0ca2f66127@walle.cc>
- <5183a184-c72d-3acd-70cd-6aa1e31533f5@linaro.org>
- <03a9f117316ab81f1b5a18100f771e65@walle.cc>
- <6c2090bf-d102-a333-3a83-03abe81ff70e@linaro.org>
- <460ef5ff3846b409b322ca53559e2476@walle.cc>
-From: Tudor Ambarus <tudor.ambarus@linaro.org>
-In-Reply-To: <460ef5ff3846b409b322ca53559e2476@walle.cc>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_055435_169759_2D568B5E 
-X-CRM114-Status: GOOD (  19.25  )
+X-CRM114-CacheID: sfid-20230309_055436_797167_4B3C0CD7 
+X-CRM114-Status: GOOD (  18.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,62 +90,220 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add MT8188 vdosys1 clock controller which provides clock gate
+control in video system. This is integrated with mtk-mmsys
+driver which will populate device by platform_device_register_data
+to start vdosys clock driver.
 
+Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
+---
+ drivers/clk/mediatek/Makefile          |   2 +-
+ drivers/clk/mediatek/clk-mt8188-vdo1.c | 182 +++++++++++++++++++++++++
+ 2 files changed, 183 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-vdo1.c
 
-On 09.03.2023 15:33, Michael Walle wrote:
->>>> The controllers that can talk in dummy ncycles don't need the
->>>> dummy.{buswidth, dtr} fields.
->>>>
->>>> The controllers that can't talk in dummy cycles, but only on a "byte"
->>>> boundary need both buswidth and dtr fields. Assume a flash needs 32
->>>> dummy cycles for an op on 8D-8D-8D mode. If the controller does not 
->>>> have
->>>> the buswidth and dtr info, it can't convert the dummy ncycles to 
->>>> nbytes.
->>>> If he knows only that buswidth is 8, it will convert ncycles to 4 
->>>> bytes.
->>>> If dtr is also specified it converts ncycles to 2 bytes.
->>>
->>> No they don't need it. Lets take your semper flash and assume it needs
->>> 12 latency cycles. SPI-NOR will set ncycles to 12 *regardless of the 
->>> mode
->>> or dtr setting*. The controller then knows we need 12 clock cycles. 
->>> It has
->>> then to figure out how that can be achieved. E.g. if it can only do the
->>> "old" byte programming and is in quad mode, good for it. It will send 6
->>> dummy bytes, which will result in 12 dummy clock cycles, because 1 byte
->>> takes two clock cycles in quad SDR mode. If its in octal mode, send 12
->>> bytes. If its in dual mode, send 3 bytes. Obiously, it cannot be in
->>> single bit mode, because it cannot send 1.5 bytes..
->>>
->>
->> You miss the fact that you can have 1-1-4. What buswidth do you use
->> for dummy, the address buswidth or the data buswidth?
-> 
-> Doesn't matter, does it? The driver is free to chose, 1, 4, or anything
-> else. You don't sample any data during the dummy phase.
-> To answer your question: single for instruction, single for address,
-> whatever you choose for dummy as long as there are ncycles space between
-> address and data, and quad for data.
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index fca66c37cecc..78885318e026 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -95,7 +95,7 @@ obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o clk-mt8188-topckgen.o
+ 				   clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o \
+ 				   clk-mt8188-cam.o clk-mt8188-ccu.o clk-mt8188-img.o \
+ 				   clk-mt8188-ipe.o clk-mt8188-mfg.o clk-mt8188-vdec.o \
+-				   clk-mt8188-vdo0.o
++				   clk-mt8188-vdo0.o clk-mt8188-vdo1.o
+ obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
+diff --git a/drivers/clk/mediatek/clk-mt8188-vdo1.c b/drivers/clk/mediatek/clk-mt8188-vdo1.c
+new file mode 100644
+index 000000000000..2b7fbc06f47d
+--- /dev/null
++++ b/drivers/clk/mediatek/clk-mt8188-vdo1.c
+@@ -0,0 +1,182 @@
++// SPDX-License-Identifier: GPL-2.0-only
++//
++// Copyright (c) 2022 MediaTek Inc.
++// Author: Garmin Chang <garmin.chang@mediatek.com>
++
++#include <linux/clk-provider.h>
++#include <linux/platform_device.h>
++#include <dt-bindings/clock/mediatek,mt8188-clk.h>
++
++#include "clk-gate.h"
++#include "clk-mtk.h"
++
++static const struct mtk_gate_regs vdo1_0_cg_regs = {
++	.set_ofs = 0x104,
++	.clr_ofs = 0x108,
++	.sta_ofs = 0x100,
++};
++
++static const struct mtk_gate_regs vdo1_1_cg_regs = {
++	.set_ofs = 0x114,
++	.clr_ofs = 0x118,
++	.sta_ofs = 0x110,
++};
++
++static const struct mtk_gate_regs vdo1_2_cg_regs = {
++	.set_ofs = 0x124,
++	.clr_ofs = 0x128,
++	.sta_ofs = 0x120,
++};
++
++static const struct mtk_gate_regs vdo1_3_cg_regs = {
++	.set_ofs = 0x134,
++	.clr_ofs = 0x138,
++	.sta_ofs = 0x130,
++};
++
++static const struct mtk_gate_regs vdo1_4_cg_regs = {
++	.set_ofs = 0x144,
++	.clr_ofs = 0x148,
++	.sta_ofs = 0x140,
++};
++
++#define GATE_VDO1_0(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &vdo1_0_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++
++#define GATE_VDO1_1(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &vdo1_1_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++
++#define GATE_VDO1_2(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &vdo1_2_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++
++#define GATE_VDO1_3(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &vdo1_3_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++
++#define GATE_VDO1_3_FLAGS(_id, _name, _parent, _shift, _flags)		\
++	GATE_MTK_FLAGS(_id, _name, _parent, &vdo1_3_cg_regs, _shift,	\
++		       &mtk_clk_gate_ops_setclr, _flags)
++
++#define GATE_VDO1_4(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &vdo1_4_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++
++static const struct mtk_gate vdo1_clks[] = {
++	/* VDO1_0 */
++	GATE_VDO1_0(CLK_VDO1_SMI_LARB2, "vdo1_smi_larb2", "top_vpp", 0),
++	GATE_VDO1_0(CLK_VDO1_SMI_LARB3, "vdo1_smi_larb3", "top_vpp", 1),
++	GATE_VDO1_0(CLK_VDO1_GALS, "vdo1_gals", "top_vpp", 2),
++	GATE_VDO1_0(CLK_VDO1_FAKE_ENG0, "vdo1_fake_eng0", "top_vpp", 3),
++	GATE_VDO1_0(CLK_VDO1_FAKE_ENG1, "vdo1_fake_eng1", "top_vpp", 4),
++	GATE_VDO1_0(CLK_VDO1_MDP_RDMA0, "vdo1_mdp_rdma0", "top_vpp", 5),
++	GATE_VDO1_0(CLK_VDO1_MDP_RDMA1, "vdo1_mdp_rdma1", "top_vpp", 6),
++	GATE_VDO1_0(CLK_VDO1_MDP_RDMA2, "vdo1_mdp_rdma2", "top_vpp", 7),
++	GATE_VDO1_0(CLK_VDO1_MDP_RDMA3, "vdo1_mdp_rdma3", "top_vpp", 8),
++	GATE_VDO1_0(CLK_VDO1_VPP_MERGE0, "vdo1_vpp_merge0", "top_vpp", 9),
++	GATE_VDO1_0(CLK_VDO1_VPP_MERGE1, "vdo1_vpp_merge1", "top_vpp", 10),
++	GATE_VDO1_0(CLK_VDO1_VPP_MERGE2, "vdo1_vpp_merge2", "top_vpp", 11),
++	/* VDO1_1 */
++	GATE_VDO1_1(CLK_VDO1_VPP_MERGE3, "vdo1_vpp_merge3", "top_vpp", 0),
++	GATE_VDO1_1(CLK_VDO1_VPP_MERGE4, "vdo1_vpp_merge4", "top_vpp", 1),
++	GATE_VDO1_1(CLK_VDO1_VPP2_TO_VDO1_DL_ASYNC, "vdo1_vpp2_to_vdo1_dl_async", "top_vpp", 2),
++	GATE_VDO1_1(CLK_VDO1_VPP3_TO_VDO1_DL_ASYNC, "vdo1_vpp3_to_vdo1_dl_async", "top_vpp", 3),
++	GATE_VDO1_1(CLK_VDO1_DISP_MUTEX, "vdo1_disp_mutex", "top_vpp", 4),
++	GATE_VDO1_1(CLK_VDO1_MDP_RDMA4, "vdo1_mdp_rdma4", "top_vpp", 5),
++	GATE_VDO1_1(CLK_VDO1_MDP_RDMA5, "vdo1_mdp_rdma5", "top_vpp", 6),
++	GATE_VDO1_1(CLK_VDO1_MDP_RDMA6, "vdo1_mdp_rdma6", "top_vpp", 7),
++	GATE_VDO1_1(CLK_VDO1_MDP_RDMA7, "vdo1_mdp_rdma7", "top_vpp", 8),
++	GATE_VDO1_1(CLK_VDO1_DP_INTF0_MMCK, "vdo1_dp_intf0_mmck", "top_vpp", 9),
++	GATE_VDO1_1(CLK_VDO1_DPI0_MM, "vdo1_dpi0_mm_ck", "top_vpp", 10),
++	GATE_VDO1_1(CLK_VDO1_DPI1_MM, "vdo1_dpi1_mm_ck", "top_vpp", 11),
++	GATE_VDO1_1(CLK_VDO1_MERGE0_DL_ASYNC, "vdo1_merge0_dl_async", "top_vpp", 13),
++	GATE_VDO1_1(CLK_VDO1_MERGE1_DL_ASYNC, "vdo1_merge1_dl_async", "top_vpp", 14),
++	GATE_VDO1_1(CLK_VDO1_MERGE2_DL_ASYNC, "vdo1_merge2_dl_async", "top_vpp", 15),
++	GATE_VDO1_1(CLK_VDO1_MERGE3_DL_ASYNC, "vdo1_merge3_dl_async", "top_vpp", 16),
++	GATE_VDO1_1(CLK_VDO1_MERGE4_DL_ASYNC, "vdo1_merge4_dl_async", "top_vpp", 17),
++	GATE_VDO1_1(CLK_VDO1_DSC_VDO1_DL_ASYNC, "vdo1_dsc_vdo1_dl_async", "top_vpp", 18),
++	GATE_VDO1_1(CLK_VDO1_MERGE_VDO1_DL_ASYNC, "vdo1_merge_vdo1_dl_async", "top_vpp", 19),
++	GATE_VDO1_1(CLK_VDO1_PADDING0, "vdo1_padding0", "top_vpp", 20),
++	GATE_VDO1_1(CLK_VDO1_PADDING1, "vdo1_padding1", "top_vpp", 21),
++	GATE_VDO1_1(CLK_VDO1_PADDING2, "vdo1_padding2", "top_vpp", 22),
++	GATE_VDO1_1(CLK_VDO1_PADDING3, "vdo1_padding3", "top_vpp", 23),
++	GATE_VDO1_1(CLK_VDO1_PADDING4, "vdo1_padding4", "top_vpp", 24),
++	GATE_VDO1_1(CLK_VDO1_PADDING5, "vdo1_padding5", "top_vpp", 25),
++	GATE_VDO1_1(CLK_VDO1_PADDING6, "vdo1_padding6", "top_vpp", 26),
++	GATE_VDO1_1(CLK_VDO1_PADDING7, "vdo1_padding7", "top_vpp", 27),
++	GATE_VDO1_1(CLK_VDO1_DISP_RSZ0, "vdo1_disp_rsz0", "top_vpp", 28),
++	GATE_VDO1_1(CLK_VDO1_DISP_RSZ1, "vdo1_disp_rsz1", "top_vpp", 29),
++	GATE_VDO1_1(CLK_VDO1_DISP_RSZ2, "vdo1_disp_rsz2", "top_vpp", 30),
++	GATE_VDO1_1(CLK_VDO1_DISP_RSZ3, "vdo1_disp_rsz3", "top_vpp", 31),
++	/* VDO1_2 */
++	GATE_VDO1_2(CLK_VDO1_HDR_VDO_FE0, "vdo1_hdr_vdo_fe0", "top_vpp", 0),
++	GATE_VDO1_2(CLK_VDO1_HDR_GFX_FE0, "vdo1_hdr_gfx_fe0", "top_vpp", 1),
++	GATE_VDO1_2(CLK_VDO1_HDR_VDO_BE, "vdo1_hdr_vdo_be", "top_vpp", 2),
++	GATE_VDO1_2(CLK_VDO1_HDR_VDO_FE1, "vdo1_hdr_vdo_fe1", "top_vpp", 16),
++	GATE_VDO1_2(CLK_VDO1_HDR_GFX_FE1, "vdo1_hdr_gfx_fe1", "top_vpp", 17),
++	GATE_VDO1_2(CLK_VDO1_DISP_MIXER, "vdo1_disp_mixer", "top_vpp", 18),
++	GATE_VDO1_2(CLK_VDO1_HDR_VDO_FE0_DL_ASYNC, "vdo1_hdr_vdo_fe0_dl_async", "top_vpp", 19),
++	GATE_VDO1_2(CLK_VDO1_HDR_VDO_FE1_DL_ASYNC, "vdo1_hdr_vdo_fe1_dl_async", "top_vpp", 20),
++	GATE_VDO1_2(CLK_VDO1_HDR_GFX_FE0_DL_ASYNC, "vdo1_hdr_gfx_fe0_dl_async", "top_vpp", 21),
++	GATE_VDO1_2(CLK_VDO1_HDR_GFX_FE1_DL_ASYNC, "vdo1_hdr_gfx_fe1_dl_async", "top_vpp", 22),
++	GATE_VDO1_2(CLK_VDO1_HDR_VDO_BE_DL_ASYNC, "vdo1_hdr_vdo_be_dl_async", "top_vpp", 23),
++	/* VDO1_3 */
++	GATE_VDO1_3(CLK_VDO1_DPI0, "vdo1_dpi0_ck", "top_vpp", 0),
++	GATE_VDO1_3(CLK_VDO1_DISP_MONITOR_DPI0, "vdo1_disp_monitor_dpi0_ck", "top_vpp", 1),
++	GATE_VDO1_3(CLK_VDO1_DPI1, "vdo1_dpi1_ck", "top_vpp", 8),
++	GATE_VDO1_3(CLK_VDO1_DISP_MONITOR_DPI1, "vdo1_disp_monitor_dpi1_ck", "top_vpp", 9),
++	GATE_VDO1_3_FLAGS(CLK_VDO1_DPINTF, "vdo1_dpintf", "top_dp", 16, CLK_SET_RATE_PARENT),
++	GATE_VDO1_3(CLK_VDO1_DISP_MONITOR_DPINTF, "vdo1_disp_monitor_dpintf_ck", "top_vpp", 17),
++	/* VDO1_4 */
++	GATE_VDO1_4(CLK_VDO1_26M_SLOW, "vdo1_26m_slow_ck", "clk26m", 8),
++};
++
++static int clk_mt8188_vdo1_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct device_node *node = dev->parent->of_node;
++	struct clk_hw_onecell_data *clk_data;
++	int r;
++
++	clk_data = mtk_alloc_clk_data(CLK_VDO1_NR_CLK);
++	if (!clk_data)
++		return -ENOMEM;
++
++	r = mtk_clk_register_gates(&pdev->dev, node, vdo1_clks,
++				   ARRAY_SIZE(vdo1_clks), clk_data);
++	if (r)
++		goto free_vdo1_data;
++
++	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
++	if (r)
++		goto unregister_gates;
++
++	platform_set_drvdata(pdev, clk_data);
++
++	return r;
++
++unregister_gates:
++	mtk_clk_unregister_gates(vdo1_clks, ARRAY_SIZE(vdo1_clks), clk_data);
++free_vdo1_data:
++	mtk_free_clk_data(clk_data);
++	return r;
++}
++
++static int clk_mt8188_vdo1_remove(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct device_node *node = dev->parent->of_node;
++	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
++
++	of_clk_del_provider(node);
++	mtk_clk_unregister_gates(vdo1_clks, ARRAY_SIZE(vdo1_clks), clk_data);
++	mtk_free_clk_data(clk_data);
++
++	return 0;
++}
++
++static struct platform_driver clk_mt8188_vdo1_drv = {
++	.probe = clk_mt8188_vdo1_probe,
++	.remove = clk_mt8188_vdo1_remove,
++	.driver = {
++		.name = "clk-mt8188-vdo1",
++	},
++};
++builtin_platform_driver(clk_mt8188_vdo1_drv);
+-- 
+2.18.0
 
-Huh? How does the controller chose, based on what?
-
-> 
-> Depending on the capabilites of the hardware it will likely be 1 or 4.
-> 
->> What happens if crazy protocols like 1S-1S-8D appear? What buswidth
->> and transfer mode are you going to use for dummy?
-> 
-> Also doesn't matter. What matters is how many dummy clock cycles you
-> do. Again, they don't depent on the mode. You just have to count
-> the clock cycles between the address and the data phase (and that is
-> what your ncycle parameter will tell the controller).
-> 
->> And please don't tell me that "we're going to assume that
->> dummy.buswidth = address.buswidth because that's what we currently do
->> in SPI NOR", because I'm not convinced that the assumption is correct.
-> 
-> No, it doesn't matter :)
-> 
-> -michael
 
