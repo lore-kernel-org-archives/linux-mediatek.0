@@ -4,91 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D08FAC6FD19
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 15:58:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9743C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 16:17:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r60XWQKaLUS5jZxaKx7MYiskgFp+zOaGglaYs+jZpB4=; b=E4QlaEONvmwfHhGnUrrREmUh6m
-	QqGaMpsw3VTBVmmEuOB7XyuwZuVm8iHspmb6ts6I4tM5VAzWePCgnvp+qADzlbcnUlwhgiMdyA7hl
-	gIxJn/IPSmmgbel2s2cbDLjHL+p7w5EpKvEHxK59vtqJuIoSn50NQ9rceHc+0+lf3vTt1LDKzhKMC
-	XDiRZ3ojO6VP8Onpvhjvwwjojt4c0uJkYmb57RS3eJbmutPZIsx21qKXOPTXspc1LD2gDcmuctq+D
-	5BOUPCF4u2miE3C3z+LIc4ryONx/x6RDbu50bmWqBmSCsg/+TAlF0UGhUEGpJe6CMIFUzTpkQmy73
-	gjUPcTNA==;
+	bh=Nfkr47uMkCiXVxXdwdLHVRDx52SBPipOfF4MJ+yNxeQ=; b=T95AFlCqWPTEmDMCuXnciT8Y4p
+	1iz7twIAEUO/CvPTANXOg4I2ziKraRKkhNZzDj+OJfz2pZ8hkRJKkqCdOXMKX0gNAA+RpvSMAqnda
+	Pge9F3wEPvnO51PVUIl7GpRH/TUl1//fOuucX/x+3CytyV4eO09wrKxUXjHNcJBFzpQtJFXX3+59N
+	Ob3IvY7aia8UfOOpn++NwFQHg8cuzLQhNQzGSFrP9amPheqcWwLj4kCUiYGDyo2xxNzrhaOBlQQDQ
+	YyzvIN4M4/PV7oXYQVVWLhKH7r+dZoSzeP8I4uwAAyPvSGfWXxY+FD6NX/pQh/rDfLEg/x60Xjp95
+	G0gCS9nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paIeg-00B5oE-CX; Thu, 09 Mar 2023 15:58:10 +0000
-Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
+	id 1paIxM-00BEQG-No; Thu, 09 Mar 2023 16:17:28 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paIOe-00Aylc-Ek; Thu, 09 Mar 2023 15:41:38 +0000
-Received: from 3ffe.de (0001.3ffe.de [IPv6:2a01:4f8:c0c:9d57::1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 4B77970;
-	Thu,  9 Mar 2023 16:41:31 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1678376491;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=r60XWQKaLUS5jZxaKx7MYiskgFp+zOaGglaYs+jZpB4=;
-	b=yw+qp48S48+4FOgaRHiANfTm+xvcoCzUGV9aYe37Jj3gd+iyXZkSHEY3ajTl1gOkq7oO5u
-	znQsK6gjuSZJQmV9F723h6LSh+Ua5//e2bDncUPygUzT8hsi83CTGF4SyHwJFvXkV3bxwp
-	CSxbPy6deUetvisKRLNhwMhMdvwvdcvcYWMFmvpQcTXWm1tYcUpnfbR5h0X1c4xBJ/n99t
-	LlDhNRFLCLOUgkU31/Pfsu4T4OopSDPVFJL45qWT2crt5QCwG9zx+Pib9gs+m5W6j+K4DE
-	k5NJkQtIMfNPp2V0U7zXvNaTeoF7LpJdtWjywMe7UMb6WsgT4EKOB7vyOtTqeA==
+	id 1paIxK-00BENf-3h
+	for linux-mediatek@lists.infradead.org; Thu, 09 Mar 2023 16:17:27 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id x3so9102233edb.10
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Mar 2023 08:17:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1678378639;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Nfkr47uMkCiXVxXdwdLHVRDx52SBPipOfF4MJ+yNxeQ=;
+        b=f2GNQOaSEYn2K875iDD1m+O+ehA0xtEb0yn0Y3GjyxfPFIVnmb4tThLnnJKqnSaMj8
+         zDHzpMR77KKioLJkBdpLg/PaYCp7Ws33K4MsmI2FEGrvDP3tsZokVnZk5WApoMrNXE7M
+         yPggHYe+D7cqElZgjppZi2/tpChF2SOt7Jd4bMjQ/D5m9zbVC464kiwTsblIXJjsBn6X
+         WPqhPaKdcPtxHoUGn0o+fDAIB+RZwBKO0dphMGn7MybHHohoqL06AXkS9nNmBDGgD+MU
+         QV0pEAaMKMlvDL1d7aLYKg4eHzthZ+X21YrEGjI353q3yfZuOanAv+wYH/TBDb871Zf2
+         Z0Ow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678378639;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Nfkr47uMkCiXVxXdwdLHVRDx52SBPipOfF4MJ+yNxeQ=;
+        b=JsXsEkIXCIswYMHt//sAYPxlvz2hDP0WJmMRmqtVjz7/1ep5TBGowOFFWPA70feljq
+         Ve32BSojhS811cDkhtMG5pvxUfJ0uWU15DK5DGNPGUrJIeLAQYTQRMgmHwqKbGqRZJ4N
+         Ot8X7DEI0Q9slqTEqrSZffCriqWuwFOL2Db2bh8Q2rJYeL26dJbPiofaDGsfph0X/Jvf
+         7cXQLo83Z3okS9uqwLzjOLH64TuEiv8bKDaAy+QzsTSL6UYctcqlQU384z9MHnZPurAn
+         7wxjZidkKgXG1+6X7aJMeKV2u5TMxRcMLVeCSGGDGYGPMf1Xk75ySdKYYdD7tqSLt0hO
+         JC5w==
+X-Gm-Message-State: AO0yUKVVpF9hpGslhUi6DL5VcbE7GUz1ljTfGXErDF2P/wsux1pMRbGE
+	V245yThNo1rTnMGT/c5sby2nwg==
+X-Google-Smtp-Source: AK7set9tLG7OqxL36Iw+EQSmEvEdnsYuLYCe5O2o6Pafsa9Ob3uXQyp15aFbfmwbSFuiC7AoVMAwgA==
+X-Received: by 2002:a17:907:1c1f:b0:884:930:b014 with SMTP id nc31-20020a1709071c1f00b008840930b014mr28489263ejc.6.1678378638898;
+        Thu, 09 Mar 2023 08:17:18 -0800 (PST)
+Received: from ?IPV6:2a02:810d:15c0:828:7ee2:e73e:802e:45c1? ([2a02:810d:15c0:828:7ee2:e73e:802e:45c1])
+        by smtp.gmail.com with ESMTPSA id dc23-20020a170906c7d700b008b17e55e8f7sm8977100ejb.186.2023.03.09.08.17.17
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 09 Mar 2023 08:17:18 -0800 (PST)
+Message-ID: <1d7f051b-761b-df8d-4407-9c6c3d95cf51@linaro.org>
+Date: Thu, 9 Mar 2023 17:17:16 +0100
 MIME-Version: 1.0
-Date: Thu, 09 Mar 2023 16:41:31 +0100
-From: Michael Walle <michael@walle.cc>
-To: Chuanhong Guo <gch981213@gmail.com>
-Cc: Tudor Ambarus <tudor.ambarus@linaro.org>, Serge Semin
- <fancer.lancer@gmail.com>, Sergiu.Moga@microchip.com, Mark Brown
- <broonie@kernel.org>, Tudor Ambarus <tudor.ambarus@microchip.com>, Pratyush
- Yadav <pratyush@kernel.org>, miquel.raynal@bootlin.com, richard@nod.at,
- vigneshr@ti.com, Nicolas.Ferre@microchip.com, alexandre.belloni@bootlin.com,
- Claudiu.Beznea@microchip.com, chin-ting_kuo@aspeedtech.com, clg@kaod.org,
- joel@jms.id.au, andrew@aj.id.au, kdasu.kdev@gmail.com, han.xu@nxp.com,
- john.garry@huawei.com, matthias.bgg@gmail.com, avifishman70@gmail.com,
- tmaimon77@gmail.com, tali.perry1@gmail.com, venture@google.com,
- yuenn@google.com, benjaminfair@google.com, haibo.chen@nxp.com,
- yogeshgaur.83@gmail.com, heiko@sntech.de, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, michal.simek@xilinx.com,
- bcm-kernel-feedback-list@broadcom.com, linux-mtd@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
- openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH] spi: Replace `dummy.nbytes` with `dummy.ncycles`
-In-Reply-To: <CAJsYDVJ_UtGqOm_HsN4X4nAuy9svXe4XV6aeG_fg8cWDrgrHMQ@mail.gmail.com>
-References: <20220911174551.653599-1-sergiu.moga@microchip.com>
- <20220925220304.buk3yuqoh6vszfci@mobilestation>
- <18e6e8a8-6412-7e31-21e0-6becd4400ac1@microchip.com>
- <20220926172454.kbpzck7med5bopre@mobilestation>
- <1766f6ef-d9d8-04f7-a6bf-0ea6bc0b3d23@linaro.org>
- <f647e713a65f5d3f0f2e3af95c4d0a89@walle.cc>
- <1849e2c8-54f5-9e56-4ed8-8b0e4a826d04@linaro.org>
- <302ecf0421fe4c99fca3eb0ca2f66127@walle.cc>
- <5183a184-c72d-3acd-70cd-6aa1e31533f5@linaro.org>
- <03a9f117316ab81f1b5a18100f771e65@walle.cc>
- <6c2090bf-d102-a333-3a83-03abe81ff70e@linaro.org>
- <460ef5ff3846b409b322ca53559e2476@walle.cc>
- <b8b61fc0-1e4f-146b-2036-03fda5359585@linaro.org>
- <bf57f3aafc3e0a02c81dab905ce9497e@walle.cc>
- <CAJsYDVJ_UtGqOm_HsN4X4nAuy9svXe4XV6aeG_fg8cWDrgrHMQ@mail.gmail.com>
-User-Agent: Roundcube Webmail/1.4.13
-Message-ID: <844d3d6807106a78767607327e2ec0d5@walle.cc>
-X-Sender: michael@walle.cc
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH 1/4] dt-bindings: thermal: mediatek: Add LVTS thermal
+ controller definition for mt8192
+Content-Language: en-US
+To: bchihi@baylibre.com, daniel.lezcano@linaro.org,
+ angelogioacchino.delregno@collabora.com, rafael@kernel.org,
+ amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ rdunlap@infradead.org, ye.xingchen@zte.com.cn, p.zabel@pengutronix.de
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com,
+ rex-bc.chen@mediatek.com
+References: <20230307163413.143334-1-bchihi@baylibre.com>
+ <20230307163413.143334-2-bchihi@baylibre.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230307163413.143334-2-bchihi@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_074136_697133_9BB8BC87 
-X-CRM114-Status: GOOD (  19.08  )
+X-CRM114-CacheID: sfid-20230309_081726_188709_245FEB98 
+X-CRM114-Status: UNSURE (   6.74  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,75 +101,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 2023-03-09 15:19, schrieb Chuanhong Guo:
-> Hi!
+On 07/03/2023 17:34, bchihi@baylibre.com wrote:
+> From: Balsam CHIHI <bchihi@baylibre.com>
 > 
-> On Thu, Mar 9, 2023 at 10:04 PM Michael Walle <michael@walle.cc> wrote:
->> 
->> Am 2023-03-09 14:54, schrieb Tudor Ambarus:
->> > On 09.03.2023 15:33, Michael Walle wrote:
->> >>>>> The controllers that can talk in dummy ncycles don't need the
->> >>>>> dummy.{buswidth, dtr} fields.
->> >>>>>
->> >>>>> The controllers that can't talk in dummy cycles, but only on a
->> >>>>> "byte"
->> >>>>> boundary need both buswidth and dtr fields. Assume a flash needs 32
->> >>>>> dummy cycles for an op on 8D-8D-8D mode. If the controller does not
->> >>>>> have
->> >>>>> the buswidth and dtr info, it can't convert the dummy ncycles to
->> >>>>> nbytes.
->> >>>>> If he knows only that buswidth is 8, it will convert ncycles to 4
->> >>>>> bytes.
->> >>>>> If dtr is also specified it converts ncycles to 2 bytes.
->> >>>>
->> >>>> No they don't need it. Lets take your semper flash and assume it
->> >>>> needs
->> >>>> 12 latency cycles. SPI-NOR will set ncycles to 12 *regardless of the
->> >>>> mode
->> >>>> or dtr setting*. The controller then knows we need 12 clock cycles.
->> >>>> It has
->> >>>> then to figure out how that can be achieved. E.g. if it can only do
->> >>>> the
->> >>>> "old" byte programming and is in quad mode, good for it. It will
->> >>>> send 6
->> >>>> dummy bytes, which will result in 12 dummy clock cycles, because 1
->> >>>> byte
->> >>>> takes two clock cycles in quad SDR mode. If its in octal mode, send
->> >>>> 12
->> >>>> bytes. If its in dual mode, send 3 bytes. Obiously, it cannot be in
->> >>>> single bit mode, because it cannot send 1.5 bytes..
->> >>>>
->> >>>
->> >>> You miss the fact that you can have 1-1-4. What buswidth do you use
->> >>> for dummy, the address buswidth or the data buswidth?
->> >>
->> >> Doesn't matter, does it? The driver is free to chose, 1, 4, or
->> >> anything
->> >> else. You don't sample any data during the dummy phase.
->> >> To answer your question: single for instruction, single for address,
->> >> whatever you choose for dummy as long as there are ncycles space
->> >> between
->> >> address and data, and quad for data.
->> >
->> > Huh? How does the controller chose, based on what?
->> 
->> Based on its own capabilities. It can choose either way. In the end
->> what matters is how many clock cycles there are between the address
->> and data phase. And you only need to convey that information to the
->> SPI controller - your new ncycles.
+> Add LVTS thermal controller definition for MT8192.
 > 
-> It does matter. Controller may be designed to actively drive
-> MOSI/WP/HOLD during single-spi dummy cycles and WP/HOLD
-> during dual-spi dummy cycles. If the pin modes between the
-> controller and device mismatched, worst case scenario
-> the chip may get fried.
+> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+> ---
 
-Interesting. But most of the time you'll have to do what the
-spi controller supports. Only if its freely programmable,
-then according to your comment you'd choose the buswidth of
-the data phase to be on the safe side.
 
-Btw. this is not what spi-nor is doing right now.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
--michael
+Best regards,
+Krzysztof
+
 
