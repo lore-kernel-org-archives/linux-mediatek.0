@@ -4,85 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02D52C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 12:38:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 202DBC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 13:19:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8Brecf3gTYVIGkh6Vg/ZrSy4fTcyL7LGy5CNuUxEbMY=; b=gl/R/f9gvVfFiWKB/vli47FdlS
-	eaSd5K7HWlgm+w7GkIZOrFmh+j+EuuEEiKIiJkz0nJan4nUBerXsTPkkkPRKs4tqsMLJ+k7rm1ap/
-	tzud3g2TAhwWwBgMTym899xCQUE5G0qyzZP2TZohFOPK2eeXut8ZjQvjIsmbcl/yMQqS83pqcxq84
-	mtJJSU/QH8tJglYzeLCV7eG9n+tZS4nuVE/I09TJfTvjrFHQoX/SmY2q1vWB65lxgp/A9a1t0cMyV
-	p1Z+FZV9ON6/t8AxRbendM4nCmM/TaCLqHv8ZAVYJuFrzHcaMqRdUBnz2POJiv1xx8TugxLAFA//l
-	rDsJEjwA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KCS0grjDle8LqIHXYUqxgW9dQGLLuD8q9UNKbRuhYbk=; b=CU1TUKiY5reH7h9W9+QUPncBFe
+	2fucrdCcHxN7gxGKHa0MBY/PjxgZALBOu+Qd3O+HHPg9qvUanYvxlfWgKnmHS0WJEfUIPm9qzvvhT
+	QhxHRuXrMb5hLKoQOOc0ZANvEpMr8aR3/ewNmbbRATXZLnHW4F+lEBDHoTys3jEH0PEkhpOk2ctlg
+	X9f0C/SHpOdOWVXsuq/JNyz5PgHpl/s3Jc2uta2utQvUjvo74iOC6+cHwZuFPwA85tAL08RDYEo2N
+	NOv61vd2jSmj8Qflrbtd0fhjLUBq4cBA8kAZm1mljhOPofNwmVdlrACTrs36J3chPUyYSsHsTdUyZ
+	Txx7XnaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paFX3-009tps-GJ; Thu, 09 Mar 2023 12:38:05 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1paGBG-00A3hA-KB; Thu, 09 Mar 2023 13:19:38 +0000
+Received: from relay8-d.mail.gandi.net ([2001:4b98:dc4:8::228])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paFWs-009tlB-5r; Thu, 09 Mar 2023 12:37:55 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id bg16-20020a05600c3c9000b003eb34e21bdfso3510186wmb.0;
-        Thu, 09 Mar 2023 04:37:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678365470;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=8Brecf3gTYVIGkh6Vg/ZrSy4fTcyL7LGy5CNuUxEbMY=;
-        b=WFH43aWuAcfWvR7AbnsKHlunddYyHWanGNqukKJo3kCwmXlSpGw5huJoVS4aQMMBSK
-         O1TJFj3ppdJL4xU0vncuCPluO4qFqKrfpqgoYiQzOKiZwPbxS4twYJO6TtWsu6BkexfD
-         axhtX3UU+LjyopE6v7IjZN5HygXJxsXn1t6VDHaPrTwT55y7TXSQH8CCOV+R9898awTS
-         uRro90lHSyg9r0zYjVSVgTSZQTRTAkzIaB3uTj93y8jhtjgei+d/SgMBK1Mov885YsPu
-         3f/IZCZEz1eYxGg1ykFmuQ6EKnIkkGjWuNg8Psd9faoA+3QeRlz5b/l/DOfes6gWGjgY
-         8nLA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678365470;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=8Brecf3gTYVIGkh6Vg/ZrSy4fTcyL7LGy5CNuUxEbMY=;
-        b=WkepDYMPqlfQ4XaP73ogIC1y1M4wkKcOE+fV+cPoEKTjIPr/8aSoTIzq2oS12Gir8+
-         Wrwspwc4ifWt1JPw1qg66hAD9pVK4ojCtAAlBWD7oFPXE2iAPO8VtEu87qrWi+Yd2TOP
-         Z/huOzK76Bgw8yntAnZll/BLMoQZUmG7UltylE6e98Dt6u20+QRKWVBLrmtsJlxhqFOY
-         jtXut7VpMaULOmIcdg1eNiWJZ1+DUg3Yg6zV1TwqhPCHcHsGExxGEXU6bQ86rAfk0nUm
-         Oo/1DTteDP3ygnWDTPsHnSfKES4HBZIJXahfQETKfMnVUvzTvM5jhLQ5X2Ivd+79f3XA
-         Y07A==
-X-Gm-Message-State: AO0yUKWZXqoDu1aFQE/6yeTLiZn9Eig0vcLvu5V1mTHrwXtpBc2ifCR+
-	CBk4MumbavnAioTJYxkjtYA=
-X-Google-Smtp-Source: AK7set8NuLLf3gUjtL31iDhK+a+vkBokvjRYPtxUk4Gb8Fzx6wRvPgpR8tkyNxjgL9KSx+TamE6Crw==
-X-Received: by 2002:a05:600c:444a:b0:3e0:6c4:6a38 with SMTP id v10-20020a05600c444a00b003e006c46a38mr11247542wmn.33.1678365469515;
-        Thu, 09 Mar 2023 04:37:49 -0800 (PST)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id u16-20020a5d5150000000b002c559843748sm17909147wrt.10.2023.03.09.04.37.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Mar 2023 04:37:48 -0800 (PST)
-Date: Thu, 9 Mar 2023 15:37:44 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: bchihi@baylibre.com, daniel.lezcano@linaro.org, rafael@kernel.org,
-	amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com,
-	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	rdunlap@infradead.org, ye.xingchen@zte.com.cn,
-	p.zabel@pengutronix.de, linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	khilman@baylibre.com, james.lo@mediatek.com,
-	rex-bc.chen@mediatek.com
-Subject: Re: [PATCH] thermal/drivers/mediatek/lvts_thermal: fix memcpy's
- number of bytes in lvts_calibration_init()
-Message-ID: <58a1a694-8a9a-438b-a5cf-9299e7914973@kili.mountain>
-References: <20230126161048.94089-1-bchihi@baylibre.com>
- <20230307134245.83599-1-bchihi@baylibre.com>
- <1af76fd0-ea27-da60-cd22-8a65a8ef369e@collabora.com>
+	id 1paGBB-00A3fI-MX; Thu, 09 Mar 2023 13:19:35 +0000
+Received: (Authenticated sender: miquel.raynal@bootlin.com)
+	by mail.gandi.net (Postfix) with ESMTPSA id D29391BF203;
+	Thu,  9 Mar 2023 13:19:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1678367968;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=KCS0grjDle8LqIHXYUqxgW9dQGLLuD8q9UNKbRuhYbk=;
+	b=Xwei8LaM7A3PtmP2nNF4x28yyM+iJOS9s9PrMxCrGzZC58KjSVM8cHaBeXrAZI/NtfH/9j
+	r01nhfdqw3Y5E4seWycsQrKTDFGGLW5n7wwD+gr+9XPRGo17l49ulVlJXO+zEXIj6W/wVp
+	xHnGPGBF0BnN6CjB6Mu7s0CWOOvq/3wpWShvMBXpv9A0NVrQOjh4c49bXdwQz2Qj8hWt33
+	zxizmlPdNsdJMSab2n/Xqmakf0DwsfvgnyFw9d/JVszhf957LuH1cfuu0MN5C7gxIvLwp6
+	eigmkj5aTAo76n4kZiDx68XnLa0GLX9JeCOa/Bk5Ds7ImdmzV7EC+0ot+vZz3Q==
+Date: Thu, 9 Mar 2023 14:19:20 +0100
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Richard Weinberger
+ <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Hector Martin
+ <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, Alyssa Rosenzweig
+ <alyssa@rosenzweig.io>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
+ <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman
+ <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Martin
+ Blumenstingl <martin.blumenstingl@googlemail.com>, Claudiu Beznea
+ <claudiu.beznea@microchip.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy
+ Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad
+ Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Orson
+ Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Vincent Shih <vincent.sunplus@gmail.com>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, Kunihiko Hayashi
+ <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>,
+ Michal Simek <michal.simek@xilinx.com>, Alessandro Zummo
+ <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Evgeniy Polyakov <zbr@ioremap.net>, linux-mtd@lists.infradead.org,
+ linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-rtc@vger.kernel.org, Michael Walle <michael@walle.cc>,
+ =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
+Subject: Re: [PATCH V3] nvmem: add explicit config option to read OF fixed
+ cells
+Message-ID: <20230309141920.1d3f774e@xps-13>
+In-Reply-To: <e845b38c-d0eb-716c-dc51-b89582750f07@gmail.com>
+References: <20230309112028.19215-1-zajec5@gmail.com>
+	<20230309123513.43b7134f@xps-13>
+	<e845b38c-d0eb-716c-dc51-b89582750f07@gmail.com>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1af76fd0-ea27-da60-cd22-8a65a8ef369e@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_043754_240410_E89DFA59 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20230309_051934_072897_8EB28183 
+X-CRM114-Status: GOOD (  31.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,34 +101,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 08, 2023 at 10:10:34AM +0100, AngeloGioacchino Del Regno wrote:
-> Il 07/03/23 14:42, bchihi@baylibre.com ha scritto:
-> > From: Balsam CHIHI <bchihi@baylibre.com>
-> > 
-> > Replace memcpy 2 bytes by sizeof(int) bytes of LVTS calibration data.
-> 
-> sizeof(int) is architecture dependant...
-> 
+Hi Rafa=C5=82,
 
-On Linux sizeof(int) is always 4.
+zajec5@gmail.com wrote on Thu, 9 Mar 2023 13:01:19 +0100:
 
-I'm just so confused what you are talking about.  Are you thinking about
-sizeof(long)?  Are you thinking about CPUs from the 1970s?  Linux wasn't
-invented until the 90s so the old CPUs were already in museums at that
-point.
+> On 9.03.2023 12:35, Miquel Raynal wrote:
+> >> diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-prov=
+ider.h
+> >> index 0262b86194eb..b3c14ce87a65 100644
+> >> --- a/include/linux/nvmem-provider.h
+> >> +++ b/include/linux/nvmem-provider.h
+> >> @@ -73,6 +73,7 @@ struct nvmem_cell_info {
+> >>    * @owner:	Pointer to exporter module. Used for refcounting.
+> >>    * @cells:	Optional array of pre-defined NVMEM cells.
+> >>    * @ncells:	Number of elements in cells.
+> >> + * @use_fixed_of_cells:	Read fixed NVMEM cells from OF. =20
+> >=20
+> > I'm still unhappy with the naming, especially since you explained in
+> > more details the whole plan which involves using a container to put
+> > these fixed cells from now on. In both cases you extract cells from
+> > fixed OF nodes but this boolean needs to be set to true in one
+> > case, and false in the other, which would not make sense.
+> >=20
+> > Also, regarding the bindings changes, I'm fairly happy with the idea,
+> > but if we go this way I would prefer a full series instead of
+> > individual changes with:
+> >=20
+> > - the boolean you introduce here (renamed, at the very least)
+> > - the new bindings =20
+>=20
+> I assume you mean fixed-layout.yaml?
 
-> please use a fixed size type instead.
+Yes!
 
-This is an unusual style opinion that I have not heard before.
-Hopefully, you just got ints and longs confused so we can move on
-without discussing it too much.  We're copying an int so sizeof(int) is
-obviously correct.  It's hard to know how to respond.
+> > - the update of the current provider bindings to take the new bindings
+> >    into account and deprecate the old ones officially =20
+>=20
+> What has to be updated in current proceds? It seems to me that:
+> 1. Current NVMEM providers reference nvmem.yaml
+> 2. nvmem.yaml references nvmem-layout.yaml
+> 3. nvmem-layout.yaml references fixed-layout.yaml
+>=20
+> what else is missing?
 
-> Also, shouldn't this be u16?!
+That's the theory, but then provider bindings should reflect the
+changes as well in their own binding documents.
 
-What? Why would you think that?
+IOW, this one (and all its cousins) becomes legacy and must be updated:
 
-regards,
-dan carpenter
+https://elixir.bootlin.com/linux/latest/source/Documentation/devicetree/bin=
+dings/nvmem/imx-ocotp.yaml#L92
 
+(and there are many files to update then)
+
+>=20
+>=20
+> > - support for the new bindings in the core =20
+>=20
+> Please, don't get me wrong, but I'm not going to spend more hours on
+> actual coding without approval of chosen path.
+
+Well, you want to make the bindings evolve. Just updating a single
+binding file is not enough, I believe we should at least provide full
+support for the new description. But of course I'm fine discussing what
+description we want first.
+
+> I'll need to have
+> [PATCH V2] dt-bindings: nvmem: layouts: add fixed-layout
+> reviewed/acked first. If you can do that that's great.
+>=20
+>=20
+> >>    * @keepout:	Optional array of keepout ranges (sorted ascending by s=
+tart).
+> >>    * @nkeepout:	Number of elements in the keepout array.
+> >>    * @type:	Type of the nvmem storage
+> >> @@ -103,6 +104,7 @@ struct nvmem_config {
+> >>   	struct module		*owner;
+> >>   	const struct nvmem_cell_info	*cells;
+> >>   	int			ncells;
+> >> +	bool			use_fixed_of_cells;
+> >>   	const struct nvmem_keepout *keepout;
+> >>   	unsigned int		nkeepout;
+> >>   	enum nvmem_type		type; =20
+> >=20
+> > Thanks,
+> > Miqu=C3=A8l =20
+>=20
+
+
+Thanks,
+Miqu=C3=A8l
 
