@@ -4,122 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F432C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 11:34:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C449C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 11:43:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=e00Z6rbgWbtwfWbflLPduP29zU9N+dlWUqqXvTYYH40=; b=DxnS+u6H7e8lEu9H7VO4X1f8Zb
-	1S9X9BPWrr8KrJgnqZS/LZJyN4Aniv5lsrCLiEnRPQ+p+M0NOZOOZ94zrE2Z2BdRj8+OC7M0eUJn0
-	zUTx2Oc512Y+OijM+vQJKE7x4tak//1XigBYvKs+Q9Fb/d4Bhn0c5jyim7MKVQSd3J2Fdi6axlp6K
-	PZrQKG8oa7IExfvzWckvwq21/oGER2/IfI/bgb5gL2oOOplpTKYSSk3hTSMk76HUmBjHuYDP4iACm
-	gr3ls0AkikyKLH2x4clP2eX1v9f0JHbPCAnrgMX4AswmxeA+jTDgSYGtlLMMckGq6gW1253xAsHoE
-	lpBOREcA==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AMX+JKvd7D3HhtD/pC4qCLGWIlfCg/IyXqngyoSoVBI=; b=KCYpLoB2AhXBPem10JdDlFVKcb
+	MW9ElL8+4VNE7mAmwPQhKENoCrw+t7TpNHdlaxt7a/K0tcOXKy+fQMbSvrVLKyQHhZ5qjxqhitlGg
+	pBtn9RS7bZIvLa2+iU3Xo/fXvshWxecJKQcjgc5BoP0yhgg2KX+nM6j0s/2KIaHAi9d3Cv9jhPXsy
+	XxS0ART/MXz3/dx5xSzf2Ji85GulhDDYLOiQARnnUlL8XHfrbZQNLf+xZAqcf2VYlOdTEAzXriVwe
+	FnFXBEf3XsaTPMkHq2t+042JwVs9eED5hqb2Ggjxr+0S5YF+KziIcPzyn3R+OUVraIX0t2TbL//IJ
+	efNVSksA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paEWt-009Y7I-Qg; Thu, 09 Mar 2023 11:33:51 +0000
-Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
+	id 1paEft-009cJB-UH; Thu, 09 Mar 2023 11:43:09 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paEKA-009R1c-NA; Thu, 09 Mar 2023 11:20:45 +0000
-Received: by mail-lj1-x233.google.com with SMTP id a32so1452041ljq.1;
-        Thu, 09 Mar 2023 03:20:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678360839;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=e00Z6rbgWbtwfWbflLPduP29zU9N+dlWUqqXvTYYH40=;
-        b=VFqKF5KotY4Vjmg8mUoPrTf0M6ObAMp3/sBy8QdQM+K3WcqPXBB+ZbZwqu/PSZdtGQ
-         raa8zEcIB95iRxzR15STsI8FrM81aC8hRseSBJ6fnuxYHU5qs0w3q0J2eat8ZGLx8rDr
-         MJt7eGexgwdGtOgjZ3NrKejTF2Dit0XPd1VYnAPtfSDDi76tdjhH4LUab44NWZ2G76r4
-         XCbR9GE8+8CWlJo4DFb5fs3mXBxhozfh53OuFokLQEhQm3KStRR7Oaf5XbzTq7HGYGOf
-         5TmO4ZboKrbWkcnrMe0XXOvJQGIXfHcolVgBwRV5eE2MJFkMhamMjHW985ZEaaesUxKX
-         1tyg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678360839;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=e00Z6rbgWbtwfWbflLPduP29zU9N+dlWUqqXvTYYH40=;
-        b=GJfsOm7mxeT7HlYm2Ueq1CLB5YJjCpaqawpdmtMt3KO+clCOCOWzvPUyB3PzAnAypI
-         OS2Cp7LSinYjuybfvNPrRmkrHCeTHK6H6QwGdDJ+gKeV2V2ZKSCvvgeP4x4THNVpVkWW
-         9IPYLrAMFPVQ/J289P3cA10dplocpH0RE+RmqqoEqrblqKf3EBvxzuO55ObGq0hwbOf8
-         oweU1ygTbS8VFHSlNH0TgtqFRuYrZKCFajGKBFK32iKCN/K7FSngsi/DAUaBVedm5KLM
-         KL/TG2CimGP+NUrK6NfC/cBv7hc1CQQOxiPY5t/+K4JF9NVAOJmC+RO3k0u9fViK/TWy
-         Jo3A==
-X-Gm-Message-State: AO0yUKWOF7wMePqpSk4S3jdc/1dkPs1KXQ/a4SsJLqUyx6DKB0CM+hN3
-	MFLbV2DZ0+uquFp36aX5dHA=
-X-Google-Smtp-Source: AK7set8HTR7OFTfX4GIl3bfF7h6LoNX++eaiJ96YI0k10ybCouJuK3PHp13GpxONHEnP+IpklQC2sw==
-X-Received: by 2002:a2e:a551:0:b0:28d:9dbe:227a with SMTP id e17-20020a2ea551000000b0028d9dbe227amr8453015ljn.42.1678360839328;
-        Thu, 09 Mar 2023 03:20:39 -0800 (PST)
-Received: from localhost.lan (ip-194-187-74-233.konfederacka.maverick.com.pl. [194.187.74.233])
-        by smtp.gmail.com with ESMTPSA id y16-20020a05651c021000b002934b5d6a61sm2905728ljn.121.2023.03.09.03.20.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Mar 2023 03:20:38 -0800 (PST)
-From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Cc: Miquel Raynal <miquel.raynal@bootlin.com>,
-	Richard Weinberger <richard@nod.at>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Hector Martin <marcan@marcan.st>,
-	Sven Peter <sven@svenpeter.dev>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Vincent Shih <vincent.sunplus@gmail.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Michal Simek <michal.simek@xilinx.com>,
-	Alessandro Zummo <a.zummo@towertech.it>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Evgeniy Polyakov <zbr@ioremap.net>,
-	linux-mtd@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	asahi@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev,
-	linux-rtc@vger.kernel.org,
-	Michael Walle <michael@walle.cc>,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH V3] nvmem: add explicit config option to read OF fixed cells
-Date: Thu,  9 Mar 2023 12:20:28 +0100
-Message-Id: <20230309112028.19215-1-zajec5@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	id 1paEPA-009Tt0-JQ; Thu, 09 Mar 2023 11:25:54 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5E2F16602087;
+	Thu,  9 Mar 2023 11:25:50 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1678361151;
+	bh=CWOTZLVevNTcpblZto23WaaBgmbFJEVjGPIDL9aATaM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=BR+nP7a944PQHBS/RASL/C9JyJjbKXMJ6wQxoz7XLYL50lWelxCrLfNUGo8LLzs7I
+	 JIZrDPEHo0XecO8HgHp1JWMAuw3ogyl6oi9JIOWADfaSLQQWf8e8aAZv0Cw9EIS3IN
+	 YFBA1qvsted+HxWazj/90CdmMrZ17V2ebi2hzxaqNE1vgor0kv/2j/SfOmIoDDa9CN
+	 FlFvitJYnchgVrYVPJw3A5TvtKorCVi0NdldTJJdBhrHI+2+NPy/lZAbO8CIN9IsEQ
+	 bkln1lbYpfBNZAZhSxFObbHMua1pw0IYkAYWYKska6yBAkHcGiv1g/6ZIAHiRD5WzP
+	 llp9EsDcdJcgw==
+Message-ID: <ccfa1d23-e4a3-89d4-b09f-b9d79c0e6e32@collabora.com>
+Date: Thu, 9 Mar 2023 12:25:48 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v5 12/19] clk: mediatek: Add MT8188 vdosys0 clock support
+Content-Language: en-US
+To: =?UTF-8?B?R2FybWluIENoYW5nICjlvLXlrrbpipgp?= <Garmin.Chang@mediatek.com>,
+ "wenst@chromium.org" <wenst@chromium.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "mturquette@baylibre.com" <mturquette@baylibre.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "sboyd@kernel.org" <sboyd@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ "richardcochran@gmail.com" <richardcochran@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+References: <20230119124848.26364-1-Garmin.Chang@mediatek.com>
+ <20230119124848.26364-13-Garmin.Chang@mediatek.com>
+ <CAGXv+5Fysy4iCvHEXWtf5oXCHkaKezPqcrGd8QzhnaTrYdyecA@mail.gmail.com>
+ <76f33f1f-53ab-65a9-f6e8-23db4ca0e0b5@collabora.com>
+ <329042ba313a93a389df5c69b1750f88cc26b9d4.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <329042ba313a93a389df5c69b1750f88cc26b9d4.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_032043_151421_7B442395 
-X-CRM114-Status: GOOD (  22.28  )
+X-CRM114-CacheID: sfid-20230309_032552_944559_0D691396 
+X-CRM114-Status: GOOD (  20.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,394 +91,220 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rafał Miłecki <rafal@milecki.pl>
+Il 09/03/23 06:49, Garmin Chang (張家銘) ha scritto:
+> On Fri, 2023-02-03 at 11:49 +0100, AngeloGioacchino Del Regno wrote:
+>> Il 03/02/23 08:19, Chen-Yu Tsai ha scritto:
+>>> On Thu, Jan 19, 2023 at 8:54 PM Garmin.Chang <
+>>> Garmin.Chang@mediatek.com> wrote:
+>>>>
+>>>> Add MT8188 vdosys0 clock controller which provides clock gate
+>>>> control in video system. This is integrated with mtk-mmsys
+>>>> driver which will populate device by
+>>>> platform_device_register_data
+>>>> to start vdosys clock driver.
+>>>>
+>>>> Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
+>>>> ---
+>>>>    drivers/clk/mediatek/Makefile          |   3 +-
+>>>>    drivers/clk/mediatek/clk-mt8188-vdo0.c | 134
+>>>> +++++++++++++++++++++++++
+>>>>    2 files changed, 136 insertions(+), 1 deletion(-)
+>>>>    create mode 100644 drivers/clk/mediatek/clk-mt8188-vdo0.c
+>>>>
+>>>> diff --git a/drivers/clk/mediatek/Makefile
+>>>> b/drivers/clk/mediatek/Makefile
+>>>> index 7d09e9fc6538..df78c0777fef 100644
+>>>> --- a/drivers/clk/mediatek/Makefile
+>>>> +++ b/drivers/clk/mediatek/Makefile
+>>>> @@ -86,7 +86,8 @@ obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-
+>>>> mcu.o clk-mt8186-topckgen.o clk-mt
+>>>>    obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o clk-
+>>>> mt8188-topckgen.o \
+>>>>                                      clk-mt8188-peri_ao.o clk-
+>>>> mt8188-infra_ao.o \
+>>>>                                      clk-mt8188-cam.o clk-mt8188-
+>>>> ccu.o clk-mt8188-img.o \
+>>>> -                                  clk-mt8188-ipe.o clk-mt8188-
+>>>> mfg.o clk-mt8188-vdec.o
+>>>> +                                  clk-mt8188-ipe.o clk-mt8188-
+>>>> mfg.o clk-mt8188-vdec.o \
+>>>> +                                  clk-mt8188-vdo0.o
+>>>>    obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
+>>>>    obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
+>>>>    obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
+>>>> diff --git a/drivers/clk/mediatek/clk-mt8188-vdo0.c
+>>>> b/drivers/clk/mediatek/clk-mt8188-vdo0.c
+>>>> new file mode 100644
+>>>> index 000000000000..30dd64374ace
+>>>> --- /dev/null
+>>>> +++ b/drivers/clk/mediatek/clk-mt8188-vdo0.c
+>>>> @@ -0,0 +1,134 @@
+>>>> +// SPDX-License-Identifier: GPL-2.0-only
+>>>> +//
+>>>> +// Copyright (c) 2022 MediaTek Inc.
+>>>> +// Author: Garmin Chang <garmin.chang@mediatek.com>
+>>>> +
+>>>> +#include <linux/clk-provider.h>
+>>>> +#include <linux/platform_device.h>
+>>>> +#include <dt-bindings/clock/mediatek,mt8188-clk.h>
+>>>> +
+>>>> +#include "clk-gate.h"
+>>>> +#include "clk-mtk.h"
+>>>> +
+>>>> +static const struct mtk_gate_regs vdo0_0_cg_regs = {
+>>>> +       .set_ofs = 0x104,
+>>>> +       .clr_ofs = 0x108,
+>>>> +       .sta_ofs = 0x100,
+>>>> +};
+>>>> +
+>>>> +static const struct mtk_gate_regs vdo0_1_cg_regs = {
+>>>> +       .set_ofs = 0x114,
+>>>> +       .clr_ofs = 0x118,
+>>>> +       .sta_ofs = 0x110,
+>>>> +};
+>>>> +
+>>>> +static const struct mtk_gate_regs vdo0_2_cg_regs = {
+>>>> +       .set_ofs = 0x124,
+>>>> +       .clr_ofs = 0x128,
+>>>> +       .sta_ofs = 0x120,
+>>>> +};
+>>>> +
+>>>> +#define GATE_VDO0_0(_id, _name, _parent,
+>>>> _shift)                       \
+>>>> +       GATE_MTK(_id, _name, _parent, &vdo0_0_cg_regs, _shift,
+>>>> &mtk_clk_gate_ops_setclr)
+>>>> +
+>>>> +#define GATE_VDO0_1(_id, _name, _parent,
+>>>> _shift)                       \
+>>>> +       GATE_MTK(_id, _name, _parent, &vdo0_1_cg_regs, _shift,
+>>>> &mtk_clk_gate_ops_setclr)
+>>>> +
+>>>> +#define GATE_VDO0_2(_id, _name, _parent,
+>>>> _shift)                       \
+>>>> +       GATE_MTK(_id, _name, _parent, &vdo0_2_cg_regs, _shift,
+>>>> &mtk_clk_gate_ops_setclr)
+>>>> +
+>>>> +#define GATE_VDO0_2_FLAGS(_id, _name, _parent, _shift,
+>>>> _flags)         \
+>>>> +       GATE_MTK_FLAGS(_id, _name, _parent, &vdo0_2_cg_regs,
+>>>> _shift,    \
+>>>> +       &mtk_clk_gate_ops_setclr, _flags)
+>>>> +
+>>>> +static const struct mtk_gate vdo0_clks[] = {
+>>>> +       /* VDO0_0 */
+>>>> +       GATE_VDO0_0(CLK_VDO0_DISP_OVL0, "vdo0_disp_ovl0",
+>>>> "top_vpp", 0),
+>>>> +       GATE_VDO0_0(CLK_VDO0_FAKE_ENG0, "vdo0_fake_eng0",
+>>>> "top_vpp", 2),
+>>>> +       GATE_VDO0_0(CLK_VDO0_DISP_CCORR0, "vdo0_disp_ccorr0",
+>>>> "top_vpp", 4),
+>>>> +       GATE_VDO0_0(CLK_VDO0_DISP_MUTEX0, "vdo0_disp_mutex0",
+>>>> "top_vpp", 6),
+>>>> +       GATE_VDO0_0(CLK_VDO0_DISP_GAMMA0, "vdo0_disp_gamma0",
+>>>> "top_vpp", 8),
+>>>> +       GATE_VDO0_0(CLK_VDO0_DISP_DITHER0, "vdo0_disp_dither0",
+>>>> "top_vpp", 10),
+>>>> +       GATE_VDO0_0(CLK_VDO0_DISP_WDMA0, "vdo0_disp_wdma0",
+>>>> "top_vpp", 17),
+>>>> +       GATE_VDO0_0(CLK_VDO0_DISP_RDMA0, "vdo0_disp_rdma0",
+>>>> "top_vpp", 19),
+>>>> +       GATE_VDO0_0(CLK_VDO0_DSI0, "vdo0_dsi0", "top_vpp", 21),
+>>>> +       GATE_VDO0_0(CLK_VDO0_DSI1, "vdo0_dsi1", "top_vpp", 22),
+>>>> +       GATE_VDO0_0(CLK_VDO0_DSC_WRAP0, "vdo0_dsc_wrap0",
+>>>> "top_vpp", 23),
+>>>> +       GATE_VDO0_0(CLK_VDO0_VPP_MERGE0, "vdo0_vpp_merge0",
+>>>> "top_vpp", 24),
+>>>> +       GATE_VDO0_0(CLK_VDO0_DP_INTF0, "vdo0_dp_intf0",
+>>>> "top_vpp", 25),
+>>>> +       GATE_VDO0_0(CLK_VDO0_DISP_AAL0, "vdo0_disp_aal0",
+>>>> "top_vpp", 26),
+>>>> +       GATE_VDO0_0(CLK_VDO0_INLINEROT0, "vdo0_inlinerot0",
+>>>> "top_vpp", 27),
+>>>> +       GATE_VDO0_0(CLK_VDO0_APB_BUS, "vdo0_apb_bus", "top_vpp",
+>>>> 28),
+>>>> +       GATE_VDO0_0(CLK_VDO0_DISP_COLOR0, "vdo0_disp_color0",
+>>>> "top_vpp", 29),
+>>>> +       GATE_VDO0_0(CLK_VDO0_MDP_WROT0, "vdo0_mdp_wrot0",
+>>>> "top_vpp", 30),
+>>>> +       GATE_VDO0_0(CLK_VDO0_DISP_RSZ0, "vdo0_disp_rsz0",
+>>>> "top_vpp", 31),
+>>>> +       /* VDO0_1 */
+>>>> +       GATE_VDO0_1(CLK_VDO0_DISP_POSTMASK0,
+>>>> "vdo0_disp_postmask0", "top_vpp", 0),
+>>>> +       GATE_VDO0_1(CLK_VDO0_FAKE_ENG1, "vdo0_fake_eng1",
+>>>> "top_vpp", 1),
+>>>> +       GATE_VDO0_1(CLK_VDO0_DL_ASYNC2, "vdo0_dl_async2",
+>>>> "top_vpp", 5),
+>>>> +       GATE_VDO0_1(CLK_VDO0_DL_RELAY3, "vdo0_dl_relay3",
+>>>> "top_vpp", 6),
+>>>> +       GATE_VDO0_1(CLK_VDO0_DL_RELAY4, "vdo0_dl_relay4",
+>>>> "top_vpp", 7),
+>>>> +       GATE_VDO0_1(CLK_VDO0_SMI_GALS, "vdo0_smi_gals",
+>>>> "top_vpp", 10),
+>>>> +       GATE_VDO0_1(CLK_VDO0_SMI_COMMON, "vdo0_smi_common",
+>>>> "top_vpp", 11),
+>>>> +       GATE_VDO0_1(CLK_VDO0_SMI_EMI, "vdo0_smi_emi", "top_vpp",
+>>>> 12),
+>>>> +       GATE_VDO0_1(CLK_VDO0_SMI_IOMMU, "vdo0_smi_iommu",
+>>>> "top_vpp", 13),
+>>>> +       GATE_VDO0_1(CLK_VDO0_SMI_LARB, "vdo0_smi_larb",
+>>>> "top_vpp", 14),
+>>>> +       GATE_VDO0_1(CLK_VDO0_SMI_RSI, "vdo0_smi_rsi", "top_vpp",
+>>>> 15),
+>>>> +       /* VDO0_2 */
+>>>> +       GATE_VDO0_2(CLK_VDO0_DSI0_DSI, "vdo0_dsi0_dsi",
+>>>> "top_dsi_occ", 0),
+>>>> +       GATE_VDO0_2(CLK_VDO0_DSI1_DSI, "vdo0_dsi1_dsi",
+>>>> "top_dsi_occ", 8),
+>>>> +       GATE_VDO0_2_FLAGS(CLK_VDO0_DP_INTF0_DP_INTF,
+>>>> "vdo0_dp_intf0_dp_intf",
+>>>> +               "top_edp", 16, CLK_SET_RATE_PARENT),
+>>>> +};
+>>>> +
+>>>> +static int clk_mt8188_vdo0_probe(struct platform_device *pdev)
+>>>> +{
+>>>> +       struct device *dev = &pdev->dev;
+>>>> +       struct device_node *node = dev->parent->of_node;
+>>>> +       struct clk_hw_onecell_data *clk_data;
+>>>> +       int r;
+>>>> +
+>>>> +       clk_data = mtk_alloc_clk_data(CLK_VDO0_NR_CLK);
+>>>> +       if (!clk_data)
+>>>> +               return -ENOMEM;
+>>>> +
+>>>> +       r = mtk_clk_register_gates(node, vdo0_clks,
+>>>> ARRAY_SIZE(vdo0_clks), clk_data);
+>>>
+>>> This API was changed. Please rebase onto the latest -next and
+>>> update.
+>>>
+>>> Angelo (CC-ed) also mentioned a new simple probe variant for non-DT
+>>> clock drivers is being developed. He didn't mention a timeline
+>>> though.
+>>
+>> I've already tested the new simple probe variant for non-DT clock
+>> drivers and
+>> it works fine on MT8173, MT8192 and MT8195.
+>>
+>> Timeline - I should be able to push the part 2 series next week,
+>> which will include
+>> more conversion to simple probe and almost all clock drivers changed
+>> to allow
+>> building as modules.
+>>
+>> Cheers,
+>> Angelo
+>>
+> Thank you for your suggestions.
+> When the new simple probe variant and building as modules are ready, I
+> will rebase latest-next and update it.
 
-NVMEM subsystem looks for fixed NVMEM cells (specified in DT) by
-default. This behaviour was totally safe in early days before adding
-support for dynamic cells and with simple DT syntax.
+It's *finally* ready as it's fully tested and reviewed.
 
-With every new supported NVMEM device with dynamic cells the current
-behaviour becomes non-optimal:
-1. It results in unneeded iterating over DT nodes
-2. It may result in false discovery of cells (in case DT subnodes
-   contain "reg" property)
+You can go on with a rebase on top of it:
 
-This behaviour has actually caused a problem already with the MTD
-subsystem and required a fix. MTD subpartitions were incorrectly treated
-(falsely discovered) as NVMEM cells.
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=726914
 
-Also with the support for NVMEM layouts we may & should have *new*
-bindings allow fixed NVMEM cells only in the "nvmem-layout" subnode. It
-means no *new* driver should require NVMEM core support for fixed cells
-defined in the **device** node.
-
-Obviously existing bindings must be supported and old drivers must
-support old DT syntax.
-
-The best approach seems to be making NVMEM core looking for fixed DT
-cells in **device** node an opt-in feature. It's a feature that over
-time should get deprecated in a favor of using "nvmem-layouts" also for
-fixed NVMEM cells.
-
-Solve this by modifying drivers for those bindings that support
-specifying fixed NVMEM cells in DT node of **NVMEM device**. Those
-drivers were picked by reviewing all supported NVMEM bindings. Make
-those drivers explicitly tell NVMEM subsystem to read cells from DT node
-of **NVMEM device**.
-
-It wasn't clear (to me) if rtc and w1 code actually uses fixed cells. I
-enabled them to don't risk any breakage.
-
-The whole change is not a huge game changer. It makes code slightly more
-optimal (in case you care), a bit less error prone and maybe / hopefully
-NVMEM code parsing code easier to understand.
-
-Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
-[for meson-{efuse,mx-efuse}.c]
-Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-[for mtk-efuse.c, nvmem/core.c, nvmem-provider.h]
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-[MT8192, MT8195 Chromebooks]
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-[for microchip-otpc.c]
-Reviewed-by: Claudiu Beznea <claudiu.beznea@microchip.com>
-[SAMA7G5-EK]
-Tested-by: Claudiu Beznea <claudiu.beznea@microchip.com>
----
-V2: Fix stm32-romem.c typo breaking its compilation
-    Pick Martin's Acked-by
-    Add paragraph about layouts deprecating use_fixed_of_cells
-V3: Update commit description:
-    1. Make it clear we're NOT dropping fixed cells support
-    2. Use nicer words (s/made sense/was totally safe/)
-    3. Explain fixed cells layout thing
-    4. Add paragraph with purpose of this commit
----
- drivers/mtd/mtdcore.c          | 2 ++
- drivers/nvmem/apple-efuses.c   | 1 +
- drivers/nvmem/core.c           | 8 +++++---
- drivers/nvmem/imx-ocotp-scu.c  | 1 +
- drivers/nvmem/imx-ocotp.c      | 1 +
- drivers/nvmem/meson-efuse.c    | 1 +
- drivers/nvmem/meson-mx-efuse.c | 1 +
- drivers/nvmem/microchip-otpc.c | 1 +
- drivers/nvmem/mtk-efuse.c      | 1 +
- drivers/nvmem/qcom-spmi-sdam.c | 1 +
- drivers/nvmem/qfprom.c         | 1 +
- drivers/nvmem/rave-sp-eeprom.c | 1 +
- drivers/nvmem/rockchip-efuse.c | 1 +
- drivers/nvmem/sc27xx-efuse.c   | 1 +
- drivers/nvmem/sprd-efuse.c     | 1 +
- drivers/nvmem/stm32-romem.c    | 1 +
- drivers/nvmem/sunplus-ocotp.c  | 1 +
- drivers/nvmem/sunxi_sid.c      | 1 +
- drivers/nvmem/uniphier-efuse.c | 1 +
- drivers/nvmem/zynqmp_nvmem.c   | 1 +
- drivers/rtc/nvmem.c            | 1 +
- drivers/w1/slaves/w1_ds250x.c  | 1 +
- include/linux/nvmem-provider.h | 2 ++
- 23 files changed, 29 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/mtd/mtdcore.c b/drivers/mtd/mtdcore.c
-index 0feacb9fbdac..1bb479c0f758 100644
---- a/drivers/mtd/mtdcore.c
-+++ b/drivers/mtd/mtdcore.c
-@@ -523,6 +523,7 @@ static int mtd_nvmem_add(struct mtd_info *mtd)
- 	config.dev = &mtd->dev;
- 	config.name = dev_name(&mtd->dev);
- 	config.owner = THIS_MODULE;
-+	config.use_fixed_of_cells = of_device_is_compatible(node, "nvmem-cells");
- 	config.reg_read = mtd_nvmem_reg_read;
- 	config.size = mtd->size;
- 	config.word_size = 1;
-@@ -891,6 +892,7 @@ static struct nvmem_device *mtd_otp_nvmem_register(struct mtd_info *mtd,
- 	config.name = kasprintf(GFP_KERNEL, "%s-%s", dev_name(&mtd->dev), compatible);
- 	config.id = NVMEM_DEVID_NONE;
- 	config.owner = THIS_MODULE;
-+	config.use_fixed_of_cells = true;
- 	config.type = NVMEM_TYPE_OTP;
- 	config.root_only = true;
- 	config.ignore_wp = true;
-diff --git a/drivers/nvmem/apple-efuses.c b/drivers/nvmem/apple-efuses.c
-index 9b7c87102104..0119bac43b2c 100644
---- a/drivers/nvmem/apple-efuses.c
-+++ b/drivers/nvmem/apple-efuses.c
-@@ -36,6 +36,7 @@ static int apple_efuses_probe(struct platform_device *pdev)
- 	struct resource *res;
- 	struct nvmem_config config = {
- 		.dev = &pdev->dev,
-+		.use_fixed_of_cells = true,
- 		.read_only = true,
- 		.reg_read = apple_efuses_read,
- 		.stride = sizeof(u32),
-diff --git a/drivers/nvmem/core.c b/drivers/nvmem/core.c
-index 174ef3574e07..6783cd8478d7 100644
---- a/drivers/nvmem/core.c
-+++ b/drivers/nvmem/core.c
-@@ -844,9 +844,11 @@ struct nvmem_device *nvmem_register(const struct nvmem_config *config)
- 	if (rval)
- 		goto err_remove_cells;
- 
--	rval = nvmem_add_cells_from_of(nvmem);
--	if (rval)
--		goto err_remove_cells;
-+	if (config->use_fixed_of_cells) {
-+		rval = nvmem_add_cells_from_of(nvmem);
-+		if (rval)
-+			goto err_remove_cells;
-+	}
- 
- 	dev_dbg(&nvmem->dev, "Registering nvmem device %s\n", config->name);
- 
-diff --git a/drivers/nvmem/imx-ocotp-scu.c b/drivers/nvmem/imx-ocotp-scu.c
-index 399e1eb8b4c1..ec5cce7c6697 100644
---- a/drivers/nvmem/imx-ocotp-scu.c
-+++ b/drivers/nvmem/imx-ocotp-scu.c
-@@ -220,6 +220,7 @@ static int imx_scu_ocotp_write(void *context, unsigned int offset,
- 
- static struct nvmem_config imx_scu_ocotp_nvmem_config = {
- 	.name = "imx-scu-ocotp",
-+	.use_fixed_of_cells = true,
- 	.read_only = false,
- 	.word_size = 4,
- 	.stride = 1,
-diff --git a/drivers/nvmem/imx-ocotp.c b/drivers/nvmem/imx-ocotp.c
-index e9b52ecb3f72..e37a82f98ba6 100644
---- a/drivers/nvmem/imx-ocotp.c
-+++ b/drivers/nvmem/imx-ocotp.c
-@@ -616,6 +616,7 @@ static int imx_ocotp_probe(struct platform_device *pdev)
- 		return PTR_ERR(priv->clk);
- 
- 	priv->params = of_device_get_match_data(&pdev->dev);
-+	imx_ocotp_nvmem_config.use_fixed_of_cells = true;
- 	imx_ocotp_nvmem_config.size = 4 * priv->params->nregs;
- 	imx_ocotp_nvmem_config.dev = dev;
- 	imx_ocotp_nvmem_config.priv = priv;
-diff --git a/drivers/nvmem/meson-efuse.c b/drivers/nvmem/meson-efuse.c
-index d6b533497ce1..657e171d5af3 100644
---- a/drivers/nvmem/meson-efuse.c
-+++ b/drivers/nvmem/meson-efuse.c
-@@ -93,6 +93,7 @@ static int meson_efuse_probe(struct platform_device *pdev)
- 
- 	econfig->dev = dev;
- 	econfig->name = dev_name(dev);
-+	econfig->use_fixed_of_cells = true;
- 	econfig->stride = 1;
- 	econfig->word_size = 1;
- 	econfig->reg_read = meson_efuse_read;
-diff --git a/drivers/nvmem/meson-mx-efuse.c b/drivers/nvmem/meson-mx-efuse.c
-index 13eb14316f46..7cc51391ec9c 100644
---- a/drivers/nvmem/meson-mx-efuse.c
-+++ b/drivers/nvmem/meson-mx-efuse.c
-@@ -213,6 +213,7 @@ static int meson_mx_efuse_probe(struct platform_device *pdev)
- 	efuse->config.owner = THIS_MODULE;
- 	efuse->config.dev = &pdev->dev;
- 	efuse->config.priv = efuse;
-+	efuse->config.use_fixed_of_cells = true;
- 	efuse->config.stride = drvdata->word_size;
- 	efuse->config.word_size = drvdata->word_size;
- 	efuse->config.size = SZ_512;
-diff --git a/drivers/nvmem/microchip-otpc.c b/drivers/nvmem/microchip-otpc.c
-index 436e0dc4f337..fb920fd7a8fc 100644
---- a/drivers/nvmem/microchip-otpc.c
-+++ b/drivers/nvmem/microchip-otpc.c
-@@ -261,6 +261,7 @@ static int mchp_otpc_probe(struct platform_device *pdev)
- 		return ret;
- 
- 	mchp_nvmem_config.dev = otpc->dev;
-+	mchp_nvmem_config.use_fixed_of_cells = true;
- 	mchp_nvmem_config.size = size;
- 	mchp_nvmem_config.priv = otpc;
- 	nvmem = devm_nvmem_register(&pdev->dev, &mchp_nvmem_config);
-diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
-index a08e0aedd21c..1947337a121f 100644
---- a/drivers/nvmem/mtk-efuse.c
-+++ b/drivers/nvmem/mtk-efuse.c
-@@ -45,6 +45,7 @@ static int mtk_efuse_probe(struct platform_device *pdev)
- 	if (IS_ERR(priv->base))
- 		return PTR_ERR(priv->base);
- 
-+	econfig.use_fixed_of_cells = true;
- 	econfig.stride = 1;
- 	econfig.word_size = 1;
- 	econfig.reg_read = mtk_reg_read;
-diff --git a/drivers/nvmem/qcom-spmi-sdam.c b/drivers/nvmem/qcom-spmi-sdam.c
-index f822790db49e..b547def94b5b 100644
---- a/drivers/nvmem/qcom-spmi-sdam.c
-+++ b/drivers/nvmem/qcom-spmi-sdam.c
-@@ -142,6 +142,7 @@ static int sdam_probe(struct platform_device *pdev)
- 	sdam->sdam_config.name = "spmi_sdam";
- 	sdam->sdam_config.id = NVMEM_DEVID_AUTO;
- 	sdam->sdam_config.owner = THIS_MODULE;
-+	sdam->sdam_config.use_fixed_of_cells = true;
- 	sdam->sdam_config.stride = 1;
- 	sdam->sdam_config.word_size = 1;
- 	sdam->sdam_config.reg_read = sdam_read;
-diff --git a/drivers/nvmem/qfprom.c b/drivers/nvmem/qfprom.c
-index c1e893c8a247..eb126d507561 100644
---- a/drivers/nvmem/qfprom.c
-+++ b/drivers/nvmem/qfprom.c
-@@ -357,6 +357,7 @@ static int qfprom_probe(struct platform_device *pdev)
- {
- 	struct nvmem_config econfig = {
- 		.name = "qfprom",
-+		.use_fixed_of_cells = true,
- 		.stride = 1,
- 		.word_size = 1,
- 		.id = NVMEM_DEVID_AUTO,
-diff --git a/drivers/nvmem/rave-sp-eeprom.c b/drivers/nvmem/rave-sp-eeprom.c
-index c456011b75e8..e9b4c7927e37 100644
---- a/drivers/nvmem/rave-sp-eeprom.c
-+++ b/drivers/nvmem/rave-sp-eeprom.c
-@@ -328,6 +328,7 @@ static int rave_sp_eeprom_probe(struct platform_device *pdev)
- 	of_property_read_string(np, "zii,eeprom-name", &config.name);
- 	config.priv		= eeprom;
- 	config.dev		= dev;
-+	config.use_fixed_of_cells	= true;
- 	config.size		= size;
- 	config.reg_read		= rave_sp_eeprom_reg_read;
- 	config.reg_write	= rave_sp_eeprom_reg_write;
-diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
-index e4579de5d014..211f6e7401a9 100644
---- a/drivers/nvmem/rockchip-efuse.c
-+++ b/drivers/nvmem/rockchip-efuse.c
-@@ -205,6 +205,7 @@ static int rockchip_rk3399_efuse_read(void *context, unsigned int offset,
- 
- static struct nvmem_config econfig = {
- 	.name = "rockchip-efuse",
-+	.use_fixed_of_cells = true,
- 	.stride = 1,
- 	.word_size = 1,
- 	.read_only = true,
-diff --git a/drivers/nvmem/sc27xx-efuse.c b/drivers/nvmem/sc27xx-efuse.c
-index c825fc902d10..ed5cc4f3e2bc 100644
---- a/drivers/nvmem/sc27xx-efuse.c
-+++ b/drivers/nvmem/sc27xx-efuse.c
-@@ -248,6 +248,7 @@ static int sc27xx_efuse_probe(struct platform_device *pdev)
- 	econfig.reg_read = sc27xx_efuse_read;
- 	econfig.priv = efuse;
- 	econfig.dev = &pdev->dev;
-+	econfig.use_fixed_of_cells = true;
- 	nvmem = devm_nvmem_register(&pdev->dev, &econfig);
- 	if (IS_ERR(nvmem)) {
- 		dev_err(&pdev->dev, "failed to register nvmem config\n");
-diff --git a/drivers/nvmem/sprd-efuse.c b/drivers/nvmem/sprd-efuse.c
-index 4f1fcbfec394..ef3161645f60 100644
---- a/drivers/nvmem/sprd-efuse.c
-+++ b/drivers/nvmem/sprd-efuse.c
-@@ -408,6 +408,7 @@ static int sprd_efuse_probe(struct platform_device *pdev)
- 	econfig.read_only = false;
- 	econfig.name = "sprd-efuse";
- 	econfig.size = efuse->data->blk_nums * SPRD_EFUSE_BLOCK_WIDTH;
-+	econfig.use_fixed_of_cells = true;
- 	econfig.reg_read = sprd_efuse_read;
- 	econfig.reg_write = sprd_efuse_write;
- 	econfig.priv = efuse;
-diff --git a/drivers/nvmem/stm32-romem.c b/drivers/nvmem/stm32-romem.c
-index ba779e26937a..a6fc43acb797 100644
---- a/drivers/nvmem/stm32-romem.c
-+++ b/drivers/nvmem/stm32-romem.c
-@@ -208,6 +208,7 @@ static int stm32_romem_probe(struct platform_device *pdev)
- 	priv->cfg.priv = priv;
- 	priv->cfg.owner = THIS_MODULE;
- 	priv->cfg.type = NVMEM_TYPE_OTP;
-+	priv->cfg.use_fixed_of_cells = true;
- 
- 	priv->lower = 0;
- 
-diff --git a/drivers/nvmem/sunplus-ocotp.c b/drivers/nvmem/sunplus-ocotp.c
-index 52b928a7a6d5..57e3e0833b85 100644
---- a/drivers/nvmem/sunplus-ocotp.c
-+++ b/drivers/nvmem/sunplus-ocotp.c
-@@ -145,6 +145,7 @@ static int sp_ocotp_read(void *priv, unsigned int offset, void *value, size_t by
- 
- static struct nvmem_config sp_ocotp_nvmem_config = {
- 	.name = "sp-ocotp",
-+	.use_fixed_of_cells = true,
- 	.read_only = true,
- 	.word_size = 1,
- 	.size = QAC628_OTP_SIZE,
-diff --git a/drivers/nvmem/sunxi_sid.c b/drivers/nvmem/sunxi_sid.c
-index a970f1741cc6..6ab7aa3724a0 100644
---- a/drivers/nvmem/sunxi_sid.c
-+++ b/drivers/nvmem/sunxi_sid.c
-@@ -156,6 +156,7 @@ static int sunxi_sid_probe(struct platform_device *pdev)
- 	nvmem_cfg->dev = dev;
- 	nvmem_cfg->name = "sunxi-sid";
- 	nvmem_cfg->type = NVMEM_TYPE_OTP;
-+	nvmem_cfg->use_fixed_of_cells = true;
- 	nvmem_cfg->read_only = true;
- 	nvmem_cfg->size = cfg->size;
- 	nvmem_cfg->word_size = 1;
-diff --git a/drivers/nvmem/uniphier-efuse.c b/drivers/nvmem/uniphier-efuse.c
-index aca910b3b6f8..69b9dfe6ab6e 100644
---- a/drivers/nvmem/uniphier-efuse.c
-+++ b/drivers/nvmem/uniphier-efuse.c
-@@ -53,6 +53,7 @@ static int uniphier_efuse_probe(struct platform_device *pdev)
- 	econfig.size = resource_size(res);
- 	econfig.priv = priv;
- 	econfig.dev = dev;
-+	econfig.use_fixed_of_cells = true;
- 	nvmem = devm_nvmem_register(dev, &econfig);
- 
- 	return PTR_ERR_OR_ZERO(nvmem);
-diff --git a/drivers/nvmem/zynqmp_nvmem.c b/drivers/nvmem/zynqmp_nvmem.c
-index e28d7b133e11..d13750a4c112 100644
---- a/drivers/nvmem/zynqmp_nvmem.c
-+++ b/drivers/nvmem/zynqmp_nvmem.c
-@@ -58,6 +58,7 @@ static int zynqmp_nvmem_probe(struct platform_device *pdev)
- 
- 	priv->dev = dev;
- 	econfig.dev = dev;
-+	econfig.use_fixed_of_cells = true;
- 	econfig.reg_read = zynqmp_nvmem_read;
- 	econfig.priv = priv;
- 
-diff --git a/drivers/rtc/nvmem.c b/drivers/rtc/nvmem.c
-index 07ede21cee34..5cc039d92257 100644
---- a/drivers/rtc/nvmem.c
-+++ b/drivers/rtc/nvmem.c
-@@ -21,6 +21,7 @@ int devm_rtc_nvmem_register(struct rtc_device *rtc,
- 
- 	nvmem_config->dev = dev;
- 	nvmem_config->owner = rtc->owner;
-+	nvmem_config->use_fixed_of_cells = true;
- 	nvmem = devm_nvmem_register(dev, nvmem_config);
- 	if (IS_ERR(nvmem))
- 		dev_err(dev, "failed to register nvmem device for RTC\n");
-diff --git a/drivers/w1/slaves/w1_ds250x.c b/drivers/w1/slaves/w1_ds250x.c
-index 7592c7050d1d..538722b41f87 100644
---- a/drivers/w1/slaves/w1_ds250x.c
-+++ b/drivers/w1/slaves/w1_ds250x.c
-@@ -168,6 +168,7 @@ static int w1_eprom_add_slave(struct w1_slave *sl)
- 	struct nvmem_device *nvmem;
- 	struct nvmem_config nvmem_cfg = {
- 		.dev = &sl->dev,
-+		.use_fixed_of_cells = true,
- 		.reg_read = w1_nvmem_read,
- 		.type = NVMEM_TYPE_OTP,
- 		.read_only = true,
-diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-provider.h
-index 0262b86194eb..b3c14ce87a65 100644
---- a/include/linux/nvmem-provider.h
-+++ b/include/linux/nvmem-provider.h
-@@ -73,6 +73,7 @@ struct nvmem_cell_info {
-  * @owner:	Pointer to exporter module. Used for refcounting.
-  * @cells:	Optional array of pre-defined NVMEM cells.
-  * @ncells:	Number of elements in cells.
-+ * @use_fixed_of_cells:	Read fixed NVMEM cells from OF.
-  * @keepout:	Optional array of keepout ranges (sorted ascending by start).
-  * @nkeepout:	Number of elements in the keepout array.
-  * @type:	Type of the nvmem storage
-@@ -103,6 +104,7 @@ struct nvmem_config {
- 	struct module		*owner;
- 	const struct nvmem_cell_info	*cells;
- 	int			ncells;
-+	bool			use_fixed_of_cells;
- 	const struct nvmem_keepout *keepout;
- 	unsigned int		nkeepout;
- 	enum nvmem_type		type;
--- 
-2.34.1
-
+Regards,
+Angelo
 
