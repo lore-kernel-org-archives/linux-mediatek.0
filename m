@@ -4,109 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39C0BC6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 09:40:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C288BC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 09:40:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j6A1cqIav5oN+sJ0Pm8CyKz7tSgwht+condPuImcVwY=; b=hQobvIvcO8D8TLHBrcKWT5RnFJ
-	xB6GrkELpqha02pcwbdfsBl3++zAeNJfaNXsjlIERGQmZPvzJg6Kt82MTA3B3lq0YRJVze3hmy4ui
-	fhM72+JtVDv5EFUsTelvEBFoYJZjbNH3HssY4KbgHokuJ0x0hrfRndhHJYkQospdcyS6H6HG01EJ5
-	mDKnajbVPLOVWxbbOsYsXKLhTHr/Wxf8kwZULWrjRYg0oCeoypHHNW617mRYZI9EvMqtsuK7ZjgJr
-	QbZTKTpQN6Rj7hm5HqOTwY1LWAExpDiE4o5YdKZMsZcEBoZMWA4Rzq3peS/T2oQVnwh2rmdACffYu
-	VzQEm3+Q==;
+	bh=aLQUta32qN5z9qK6CZm6mtIzqAOntNJLMlM4kX6YO0c=; b=nfCIKhMvb/gXwe3SaigIce4oBm
+	A4DzQp3M25bri9vXOOjfJevAofG0honPcwG3YhrG4kr73f5IsQ9mAuWYfKViX1k+pWVYCtGmMnUrt
+	HZHdi5MDtC2EqNGXtuKNhejFryisj8awedxjZ04vXwkN/MmyKP3lrApHWRmec9Ul6Ihbg+WnuZKBd
+	/pD7ofZUEbJsQSrsVTTtydweoR2YGylhwTFzUO4mSP9NNpsFmz07MylHH0ff3Yrh7nbmEZ2RUkJGg
+	34d7Wy+X3HyCzFqHW/XfG7nXfE346Q06aDqzj3Eb3KdW20+vs7JFzU73EGOlkgWzIGr9dsJrNzGs3
+	luLabnpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paCl5-008r9p-7G; Thu, 09 Mar 2023 09:40:23 +0000
-Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
+	id 1paClI-008rJE-PD; Thu, 09 Mar 2023 09:40:36 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paCl1-008r75-E1; Thu, 09 Mar 2023 09:40:20 +0000
-Received: from mwalle01.kontron.local. (unknown [213.135.10.150])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	id 1paCl4-008r8E-0N; Thu, 09 Mar 2023 09:40:23 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 0EF2A127D;
-	Thu,  9 Mar 2023 10:40:16 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1678354816;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=j6A1cqIav5oN+sJ0Pm8CyKz7tSgwht+condPuImcVwY=;
-	b=zsMPy9kNOSpYIQk2v92UlAChhQ1RPWvR19mptAEqIVjK7y7MtNDhCwb2WjCLD1XqQrz1Lw
-	q8s4RCfCX8HShn15fWBvySjzhsBHUFHE1ZVKHu5VkB4RcwxibgapaU57G1lZ9MaCbGS+ZB
-	d8zZihUMbqMqbCgfK1NPj8qFc6HdOzqsvmbsDviuS3ZwcHJ6DMQw2zRg/+2Ht3+IwL13B9
-	3XbUFM/uL/TIFiDCwAouAEb4qEnSGJF/f7NhSKUHWODVLEtFviq2WFQVuobulTjGODAOt4
-	qJx7Hf6BNV7PeSGwCgjwgSvM/epAZE1St3F3Qp7iV4+07CGebjwrTQ4MPMgtqQ==
-From: Michael Walle <michael@walle.cc>
-To: zajec5@gmail.com
-Cc: a.zummo@towertech.it,
-	agross@kernel.org,
-	alexandre.belloni@bootlin.com,
-	alexandre.torgue@foss.st.com,
-	alyssa@rosenzweig.io,
-	andersson@kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	asahi@lists.linux.dev,
-	baolin.wang@linux.alibaba.com,
-	claudiu.beznea@microchip.com,
-	festevam@gmail.com,
-	hayashi.kunihiko@socionext.com,
-	heiko@sntech.de,
-	jbrunet@baylibre.com,
-	jernej.skrabec@gmail.com,
-	kernel@pengutronix.de,
-	khilman@baylibre.com,
-	konrad.dybcio@linaro.org,
-	linux-amlogic@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-imx@nxp.com,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-mtd@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-rtc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev,
-	marcan@marcan.st,
-	martin.blumenstingl@googlemail.com,
-	matthias.bgg@gmail.com,
-	mcoquelin.stm32@gmail.com,
-	mhiramat@kernel.org,
-	michal.simek@xilinx.com,
-	miquel.raynal@bootlin.com,
-	neil.armstrong@linaro.org,
-	orsonzhai@gmail.com,
-	rafal@milecki.pl,
-	richard@nod.at,
-	s.hauer@pengutronix.de,
-	samuel@sholland.org,
-	shawnguo@kernel.org,
-	srinivas.kandagatla@linaro.org,
-	sven@svenpeter.dev,
-	vigneshr@ti.com,
-	vincent.sunplus@gmail.com,
-	wens@csie.org,
-	zbr@ioremap.net,
-	zhang.lyra@gmail.com,
-	Michael Walle <michael@walle.cc>
-Subject: Re: [PATCH V2] nvmem: add explicit config option to read OF fixed cells
-Date: Thu,  9 Mar 2023 10:40:10 +0100
-Message-Id: <20230309094010.1051573-1-michael@walle.cc>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20230224072903.20945-1-zajec5@gmail.com>
-References: <20230224072903.20945-1-zajec5@gmail.com>
+	by ams.source.kernel.org (Postfix) with ESMTPS id 47002B81EBD;
+	Thu,  9 Mar 2023 09:40:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 01D04C433EF;
+	Thu,  9 Mar 2023 09:40:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1678354819;
+	bh=Mm7vjJuCjPksuPI/SCzqU1/CD4qW+sVNOhnbWN2J/nA=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=ms4qVvZrJSYjju+jgFSP4PoasOtU+KI2GM1kP6vYSRHJqQi32KNMvp/uKn7a62EQ7
+	 vcoSLrhf83K2/ycpHkX2HB/KCDBYxtuIsVMHwVLybJ5yzsC7qtIregHVlwBVJWlYHg
+	 XyrvqMws0nEqIVxEqhHaAPTW5Vi9owrG/g8Ypb2Vz4in+UPgzTXuSI+unUmP1Jrlb/
+	 yatY+oQp9USgQ5A5kr0k1eLelmMbJeZIWqxmtI7ry01RiZ6fqtVLOYwqgvvAbGSCU0
+	 n1m1P2gND99ErSJkB1CXPKRwegf2NDwGPbJINus2thNmEo4XMhbXX40isLIovba8fz
+	 2vA1hjP0j7b3Q==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id D7D0DE61B60;
+	Thu,  9 Mar 2023 09:40:18 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Spam: Yes
+Subject: Re: [PATCH net-next 0/4] Various mtk_eth_soc cleanups
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id:  <167835481887.13872.13425175568351731683.git-patchwork-notify@kernel.org>
+Date: Thu, 09 Mar 2023 09:40:18 +0000
+References: <ZAdj9qUXcHUsK7Gt@shell.armlinux.org.uk>
+In-Reply-To: <ZAdj9qUXcHUsK7Gt@shell.armlinux.org.uk>
+To: Russell King (Oracle) <linux@armlinux.org.uk>
+Cc: daniel@makrotopia.org, nbd@nbd.name, john@phrozen.org,
+ Mark-MC.Lee@mediatek.com, matthias.bgg@gmail.com, sean.wang@mediatek.com,
+ angelogioacchino.delregno@collabora.com, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, lorenzo@kernel.org,
+ netdev@vger.kernel.org, pabeni@redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_014019_651227_B407760E 
-X-CRM114-Status: GOOD (  15.72  )
+X-CRM114-CacheID: sfid-20230309_014022_259248_7700AFB7 
+X-CRM114-Status: GOOD (  13.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,46 +77,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[as this mentions  nvmem layouts it would have been nice to include me]
+Hello:
 
-> NVMEM subsystem looks for fixed NVMEM cells (specified in DT) by
-> default. This behaviour made sense in early days before adding support
-> for dynamic cells.
+This series was applied to netdev/net-next.git (main)
+by Paolo Abeni <pabeni@redhat.com>:
 
-Why is that? It still makes sense, doesn't it?
+On Tue, 7 Mar 2023 16:19:02 +0000 you wrote:
+> Here are a number of patches that do a bit of cleanup to mtk_eth_soc.
+> 
+> The first patch cleans up mtk_gmac0_rgmii_adjust(), which is the
+> troublesome function preventing the driver becoming a post-March2020
+> phylink driver. It doesn't solve that problem, merely makes the code
+> easier to follow by getting rid of repeated tenary operators.
+> 
+> [...]
 
-> With every new supported NVMEM device with dynamic cells current
-> behaviour becomes non-optimal. It results in unneeded iterating over DT
-> nodes and may result in false discovery of cells (depending on used DT
-> properties).
+Here is the summary with links:
+  - [net-next,1/4] net: mtk_eth_soc: tidy mtk_gmac0_rgmii_adjust()
+    https://git.kernel.org/netdev/net-next/c/04eb3d1cede0
+  - [net-next,2/4] net: mtk_eth_soc: move trgmii ddr2 check to probe function
+    https://git.kernel.org/netdev/net-next/c/7910898e1b2a
+  - [net-next,3/4] net: mtk_eth_soc: remove unnecessary checks in mtk_mac_config()
+    https://git.kernel.org/netdev/net-next/c/c9f9e3a3289f
+  - [net-next,4/4] net: mtk_eth_soc: remove support for RMII and REVMII modes
+    https://git.kernel.org/netdev/net-next/c/8cd9de08ccf6
 
-What false discoveries?
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-> This behaviour has actually caused a problem already with the MTD
-> subsystem. MTD subpartitions were incorrectly treated as NVMEM cells.
 
-But this is solved, correct?
-
-> Also with upcoming support for NVMEM layouts no new binding or driver
-> should support fixed cells defined in device node.
-
-How would you support older device trees with newer kernels or the
-other way around? I'm not sure I get your motivation to drop handling
-the fixed cells.
-
-> Solve this by modifying drivers for bindings that support specifying
-> fixed NVMEM cells in DT. Make them explicitly tell NVMEM subsystem to
-> read cells from DT.
-
-How can a driver know when there are fixed cells and when not? IOW.
-only new ones can be affected.
-
-If you want to get rid of the schema for *new* drivers then what
-about having a new child node, something like "nvmem-fixed-cells",
-similar to "nvmem-layout".
-
-And then you'd tell the new drivers to use the new-style dt binding. But
-there are no new drivers yet. So I'm still not sure I get your motivation.
-
--michael
 
