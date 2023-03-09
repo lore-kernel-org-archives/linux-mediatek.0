@@ -4,100 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68358C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 14:31:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD17DC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 14:38:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rrHyOJGVVKPZphnDrvAxKhanBrrAGjAR34WdSO60jdc=; b=JOydlJ4QOYeQxSDBQu7ZRVf4W1
-	kTtyiVr54Ticfw4VttNGE2NFIjxTVfWXItBc7dbAiE0L3sZoi9XYSprL/pjrSmmq0fq7/Kkp7Ko7l
-	ok3/ohnJk7XhqgzxsMmvTKg43k8IxU6SlwinU96dphZknthPWWvOJzsfmDhkrjQZ53QqnffqQdsbp
-	XCkepR5yRZqnA/zhdgq65qlrhwFSFDIh2HLqFfmIP4GoN9epI3h9OwECcwJj0gniQ7UAuyX+J2qy9
-	o5TlJX/ZlMUKbcuWPaJ/EHe3FzCwmvgV2155hyax4gh0IRIe7fVAHNzuDU3qf6OKgdhnhOd4tjSnX
-	8E8W1PSQ==;
+	bh=uvjNBXeeYphBWgNkcT8wLT8gdWY2M0B9Tjp0nJ/il2U=; b=iE1ukBdOq/TYLda3BK6d7NDWjU
+	UUyJ+xNhTEq08Q1WWLp/lulXc9+cUOGFPkU1WZhWppD6VenLCdbmT32Nthj226eTy55iEGkqN/aK2
+	5z/EOpcmOngI2XGQ90HFR4QncV3Rx2yQOuOWsFVNYoFSmwUxlCgTi5QVShVwfhTSO3OkgZSoalee2
+	c9Txp3OKoVpqQycOCFCZzq+4zCK+EUh5a1oI34cPboO1wWSs4VkTyUf/2IIov6vDtfoNGmfYTUcGR
+	JAO+c7MTXhz/UHCyLH8SZcmZiY0xHegnnxybufReK8+UOg/S+nl1Gfd/tb+9/o1w6HYXFUywOexiH
+	1H810qxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paHJ3-00AXvY-N0; Thu, 09 Mar 2023 14:31:45 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1paHPE-00AaXu-Sg; Thu, 09 Mar 2023 14:38:08 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paHAq-00ATfE-00
-	for linux-mediatek@lists.infradead.org; Thu, 09 Mar 2023 14:23:17 +0000
-Received: by mail-wm1-x332.google.com with SMTP id j19-20020a05600c191300b003eb3e1eb0caso3724114wmq.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Mar 2023 06:23:15 -0800 (PST)
+	id 1paHMQ-00AZJG-84
+	for linux-mediatek@lists.infradead.org; Thu, 09 Mar 2023 14:35:16 +0000
+Received: by mail-ed1-x533.google.com with SMTP id g3so7888979eda.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Mar 2023 06:35:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1678371795;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1678372508;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=rrHyOJGVVKPZphnDrvAxKhanBrrAGjAR34WdSO60jdc=;
-        b=Fu4swfnOqXhFan7iDucc7xb3KTvLfmD3rY0dO4+hx6VNDXsQ6VrJLAEg0Kd/A92kEb
-         sTkCKKy3tROj+UX1Yo03rPVGOfrX7nX5uM7DMCkSUjijhW+5JygVuZuYZycc8u7oHNl5
-         LP7LhiW6x+HzXGTX715ftpirU9KGJt0SRBJJUBoN79Bq51VhUTtUZSYTZRAo8s5F7lV1
-         k4tDCiNySdZgF/scrr8YXJ2ScL4Pi3y60wbCmA9SkxN0icAELyWorTglAcImb2sLNOak
-         FcvQMWp/O3Ye4GalUaevFyoNmD+x+SqtdjhOrzwhoehs/hfZ/q5D9qntTy11ElE5iso4
-         gKCQ==
+        bh=uvjNBXeeYphBWgNkcT8wLT8gdWY2M0B9Tjp0nJ/il2U=;
+        b=4KYfaUs16ATIQmgfHGIiO1XlwvR2SggVkcJBEfiVouxApDCubSiGgFbPnSShsETRYy
+         osLsCoGwTaEk3ybDE64pvRN0q1CuG2E65nOYWfbGZ+C5SPT8YhTZCuNcLUQw2WY4XPP1
+         NBz4RVlVi04CxccL1W3fnHHIIL09pwbpWKy9XAXSymeDX+btDdLk7yRgpY8uCZKrM0Nt
+         W1Kx9TIHNdGQWDaXihZegh+OE3MrbWbii/J5URuEDCG9wjr5ziAtXL4E48LjIZNozQSu
+         Ukh7NzPBPnVSHj+qW6Z63i8H/D9UBpDwqKXvQuiAetFI56QFgXbv2l57bJj0p/huvmdl
+         NOqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678371795;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20210112; t=1678372508;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=rrHyOJGVVKPZphnDrvAxKhanBrrAGjAR34WdSO60jdc=;
-        b=wAWYJAkoJ8GJ9FfZcS+rKUljaM1Xb6ifTK6/E3w8p3iH6dUYwhN4O9MeBIcMVaCbE2
-         Ak/T9iFBWYuF4hsqzo4A+JLkslu2Mq13yovWbHBlqr6Ioe2lkoRaxnRAS7JSsePueHLy
-         xxOKWEMBQ2S8BujNkYC3S5DBUCbBsINKAmN+LwW44aLqlTCQ7IFAteHezmoYDbshYkLm
-         tr2KujBXcNT9iXzy9Fi04HYzmn+gxh/L/8CTayscs9qXDfy1fz+VZyADQhamhrQGg21K
-         xXScissvr1d7xtmTcy1C/FCAS2af6JeCBvrd4/ufSf191+j63dL/rI07hlLKvfXbERD7
-         suUg==
-X-Gm-Message-State: AO0yUKW/ogQK1dFCK91S87/dRzGxTmNVv5EEOdMBfBgmjKOO7OH5ylpI
-	yqIF1sCVq2mgSccYoRSVV3J/5w==
-X-Google-Smtp-Source: AK7set8QzTG7TmgZJszNonlu47Y/YSVtxnjb2KJag5vLlR/L0+qe97KJTCRO3KumfdwqRjyTKbKa4Q==
-X-Received: by 2002:a05:600c:548d:b0:3eb:2da4:efe7 with SMTP id iv13-20020a05600c548d00b003eb2da4efe7mr19116206wmb.11.1678371795392;
-        Thu, 09 Mar 2023 06:23:15 -0800 (PST)
-Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id x22-20020a1c7c16000000b003e8dc7a03basm2772434wmc.41.2023.03.09.06.23.14
+        bh=uvjNBXeeYphBWgNkcT8wLT8gdWY2M0B9Tjp0nJ/il2U=;
+        b=HlCKYL1wrpb1TvBP2tnND2xVuwkdyD7VLLFWWdt/RHLtgZZb58MBtC6ij+74ocz5mY
+         /7eyDQwFhQp8sR0Q4qdOP2MJtej58BMPG5cVBxttDWhPIeV+czEuq54LRACN1VAoNErI
+         2bb7L8kiKmcn929SiJiJytKKflM+q2nGqOwBhdHxr8PGc6puiAGyYxDsjgOyi/mniAfs
+         9JtrKt6LaE/TfHLmwb7G1mB1dNUc+akpZYSlOBRsZxWTK51r9c8ZDbL9QgcKWFzP4J/8
+         rpXayvuT2MzcLzlxuzpBxF5f1t/wm+f+C8F8jVbgEPB64gPbm1uxze5X1TcwGM8/TRWz
+         SXOw==
+X-Gm-Message-State: AO0yUKXJ6zKiTBnY9qb5oPSPLRiuO5waOuBsb7yfkYpSnTp+B9gEB5hC
+	/NzHqr+39nj7zhqdJor9SyISAhfDDWR7D/KFMQE=
+X-Google-Smtp-Source: AK7set8Qe8U6tp7US8u9NFqeRC9Aiio3kqtK7ujJVoqRZi/jAyoPIflQmwQykEFZpkPXbalGWg36QA==
+X-Received: by 2002:a17:907:7da6:b0:888:b764:54e5 with SMTP id oz38-20020a1709077da600b00888b76454e5mr26631536ejc.71.1678372508260;
+        Thu, 09 Mar 2023 06:35:08 -0800 (PST)
+Received: from ryzen9.fritz.box ([81.221.122.240])
+        by smtp.gmail.com with ESMTPSA id w4-20020a170906184400b008cb7473e488sm9046239eje.12.2023.03.09.06.35.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Mar 2023 06:23:15 -0800 (PST)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Thu, 09 Mar 2023 15:23:05 +0100
-Subject: [PATCH 16/21] arm64: dts: mediatek: add display blocks support for the
- MT8365 SoC
+        Thu, 09 Mar 2023 06:35:07 -0800 (PST)
+From: =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>
+To: linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-serial@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	angelogioacchino.delregno@collabora.com,
+	matthias.bgg@gmail.com,
+	gregkh@linuxfoundation.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	maz@kernel.org,
+	tglx@linutronix.de
+Subject: [PATCH v10 1/3] dt-bindings: irq: mtk, sysirq: add support for mt8365
+Date: Thu,  9 Mar 2023 15:34:57 +0100
+Message-Id: <20230309143459.401783-2-bero@baylibre.com>
+X-Mailer: git-send-email 2.40.0.rc2
+In-Reply-To: <20230309143459.401783-1-bero@baylibre.com>
+References: <20230309143459.401783-1-bero@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Message-Id: <20230220-display-v1-16-45cbc68e188b@baylibre.com>
-References: <20230220-display-v1-0-45cbc68e188b@baylibre.com>
-In-Reply-To: <20230220-display-v1-0-45cbc68e188b@baylibre.com>
-To: Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>,
- Thierry Reding <thierry.reding@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Sam Ravnborg <sam@ravnborg.org>,
- Rob Herring <robh+dt@kernel.org>, Uwe Kleine-König <u.kleine-koenig@pengutronix.de>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Xinlei Lee <xinlei.lee@mediatek.com>
-Cc: Guillaume La Roque <glaroque@baylibre.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Alexandre Mergnat <amergnat@baylibre.com>, dri-devel@lists.freedesktop.org, Fabien Parent <fparent@baylibre.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org
-X-Mailer: b4 0.10.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=7078; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=Wcti2dvDst5Omc+NFAWMgHvZj4frfA6jiTsXq3Dxas0=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkCeu+OIcpvewld8ZYN2Vbsrhev/msnpReDI48gZpB
- gUl99NiJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZAnrvgAKCRArRkmdfjHURV0jD/
- 0RIKT8+GT66C2rUCUHwprqNN6l/IX34iGyrDryWBWohtZ/7DJsJ8UCohV1jdJsuBG8viNEtZRcU7qF
- 1tcaaiLIbEur70toCIzznb0C1PtwgZp3Uvuf+bFhTuw1VTSgRQPfHFa+L2RztqWtSJe9bQG1V+qIuv
- mihfSBmY0Tjjsi2WaibcwkgW7HQv8cc0iP9GC1jZWsLwzgExR9ei9iGpjISEISMDgNcsvtwrKrbaSK
- bbX5VKihbClnWTMCepLMARGxRpV0+l+fqG8NevMM7DE2/ve/RB5k11pepXm0OuehyG26Yc5k/8Sjm0
- 8cCwZaLmXz8s2UsiSqfx3+jBSv+kmtm5DS+FODBZ7O5qXOk5jWWrzAOHb7w01Off7kezBfJUCdd7LI
- aF0yB05160XrZYcusXahhOkg2CSLnQ2hTjRwhPGe19K3sAhGm96zywJvm+sH/feoKZfTky0vmNXoZb
- UhtfN8DW/8Y3RiCOeYPVt9hISjjhxY0lFj95mfmngjv6bbVv80iKwzTJNohLa0nd57fcbdkvAacQA1
- 7uvnw2WMFWdtpilWbEyNgx+0mVhy7V0pGvQemo2MzmnLX0piT+/zRHnU0e990eJwuyanYp6CAXkJdd
- 9BCP6ruVjONjuXVlUciJpk8oA17557gSpmRlJFv37I3AZ5rQVsfJ12Nhc2Sg==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_062316_130300_25450AE0 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20230309_063514_350083_5327D249 
+X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,223 +100,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-- Add aliases for each display components to help display drivers.
-- Add the Display Pulse Width Modulation (DISP_PWM) to provide PWM signals
-  for the LED driver of mobile LCM.
-- Add the MIPI Display Serial Interface (DSI) PHY support. (up to 4-lane
-  output)
-- Add the display mutex support.
-- Add the following display component support:
-  - OVL0 (Overlay)
-  - RDMA0 (Data Path Read DMA)
-  - Color0
-  - CCorr0 (Color Correction)
-  - AAL0 (Adaptive Ambient Light)
-  - GAMMA0
-  - Dither0
-  - DSI0 (Display Serial Interface)
-  - RDMA1 (Data Path Read DMA)
-  - DPI0 (Display Parallel Interface)
+Add binding documentation of mediatek,sysirq for mt8365 SoC.
 
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8365.dtsi | 147 +++++++++++++++++++++++++++++++
- 1 file changed, 147 insertions(+)
+ .../devicetree/bindings/interrupt-controller/mediatek,sysirq.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-index 1034b652dd0f..49d8bf145933 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-@@ -8,6 +8,7 @@
- #include <dt-bindings/clock/mediatek,mt8365-clk.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/memory/mediatek,mt8365-larb-port.h>
- #include <dt-bindings/phy/phy.h>
- #include <dt-bindings/power/mediatek,mt8365-power.h>
- 
-@@ -17,6 +18,19 @@ / {
- 	#address-cells = <2>;
- 	#size-cells = <2>;
- 
-+	aliases {
-+		aal0 = &aal0;
-+		ccorr0 = &ccorr0;
-+		color0 = &color0;
-+		dither0 = &dither0;
-+		dpi0 = &dpi0;
-+		dsi0 = &dsi0;
-+		gamma0 = &gamma0;
-+		ovl0 = &ovl0;
-+		rdma0 = &rdma0;
-+		rdma1 = &rdma1;
-+	};
-+
- 	cpus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-@@ -481,6 +495,17 @@ spi: spi@1100a000 {
- 			status = "disabled";
- 		};
- 
-+		disp_pwm: pwm@1100e000 {
-+			compatible = "mediatek,mt8365-disp-pwm",
-+				     "mediatek,mt8183-disp-pwm";
-+			reg = <0 0x1100e000 0 0x1000>;
-+			clock-names = "main", "mm";
-+			clocks = <&topckgen CLK_TOP_DISP_PWM_SEL>,
-+				 <&infracfg CLK_IFR_DISP_PWM>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+			#pwm-cells = <2>;
-+		};
-+
- 		i2c3: i2c@1100f000 {
- 			compatible = "mediatek,mt8365-i2c",
- 				     "mediatek,mt8168-i2c";
-@@ -580,6 +605,15 @@ ethernet: ethernet@112a0000 {
- 			status = "disabled";
- 		};
- 
-+		mipi_tx0: dsi-phy@11c00000 {
-+			compatible = "mediatek,mt8365-mipi-tx", "mediatek,mt8183-mipi-tx";
-+			reg = <0 0x11c00000 0 0x800>;
-+			clock-output-names = "mipi_tx0_pll";
-+			clocks = <&clk26m>;
-+			#clock-cells = <0>;
-+			#phy-cells = <0>;
-+		};
-+
- 		u3phy: t-phy@11cc0000 {
- 			compatible = "mediatek,mt8365-tphy", "mediatek,generic-tphy-v2";
- 			#address-cells = <1>;
-@@ -609,6 +643,13 @@ mmsys: syscon@14000000 {
- 			#clock-cells = <1>;
- 		};
- 
-+		mutex: mutex@14001000 {
-+			compatible =  "mediatek,mt8365-disp-mutex";
-+			reg = <0 0x14001000 0 0x1000>;
-+			interrupts = <GIC_SPI 154 IRQ_TYPE_LEVEL_LOW>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+		};
-+
- 		smi_common: smi@14002000 {
- 			compatible = "mediatek,mt8365-smi-common",
- 				     "mediatek,mt8186-smi-common";
-@@ -633,6 +674,112 @@ larb0: larb@14003000 {
- 			mediatek,larb-id = <0>;
- 		};
- 
-+		ovl0: ovl@1400b000 {
-+			compatible = "mediatek,mt8365-disp-ovl",
-+				     "mediatek,mt8192-disp-ovl";
-+			reg = <0 0x1400b000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_MM_DISP_OVL0>;
-+			interrupts = <GIC_SPI 161 IRQ_TYPE_LEVEL_LOW>;
-+			iommus = <&iommu M4U_PORT_DISP_OVL0>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+		};
-+
-+		rdma0: rdma@1400d000 {
-+			compatible = "mediatek,mt8365-disp-rdma",
-+				     "mediatek,mt8183-disp-rdma";
-+			reg = <0 0x1400d000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_MM_DISP_RDMA0>;
-+			interrupts = <GIC_SPI 162 IRQ_TYPE_LEVEL_LOW>;
-+			iommus = <&iommu M4U_PORT_DISP_RDMA0>;
-+			mediatek,rdma-fifo-size = <5120>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+		};
-+
-+		color0: color@1400f000 {
-+			compatible = "mediatek,mt8365-disp-color",
-+				     "mediatek,mt8173-disp-color";
-+			reg = <0 0x1400f000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_MM_DISP_COLOR0>;
-+			interrupts = <GIC_SPI 164 IRQ_TYPE_LEVEL_LOW>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+		};
-+
-+		ccorr0: ccorr@14010000 {
-+			compatible = "mediatek,mt8365-disp-ccorr",
-+				     "mediatek,mt8183-disp-ccorr";
-+			reg = <0 0x14010000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_MM_DISP_CCORR0>;
-+			interrupts = <GIC_SPI 165 IRQ_TYPE_LEVEL_LOW>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+		};
-+
-+		aal0: aal@14011000 {
-+			compatible = "mediatek,mt8365-disp-aal",
-+				     "mediatek,mt8183-disp-aal";
-+			reg = <0 0x14011000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_MM_DISP_AAL0>;
-+			interrupts = <GIC_SPI 166 IRQ_TYPE_LEVEL_LOW>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+		};
-+
-+		gamma0: gamma@14012000 {
-+			compatible = "mediatek,mt8365-disp-gamma",
-+				     "mediatek,mt8183-disp-gamma";
-+			reg = <0 0x14012000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_MM_DISP_GAMMA0>;
-+			interrupts = <GIC_SPI 167 IRQ_TYPE_LEVEL_LOW>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+		};
-+
-+		dither0: dither@14013000 {
-+			compatible = "mediatek,mt8365-disp-dither",
-+				     "mediatek,mt8183-disp-dither";
-+			reg = <0 0x14013000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_MM_DISP_DITHER0>;
-+			interrupts = <GIC_SPI 168 IRQ_TYPE_LEVEL_LOW>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+		};
-+
-+		dsi0: dsi@14014000 {
-+			compatible = "mediatek,mt8183-dsi";
-+			reg = <0 0x14014000 0 0x1000>;
-+			clock-names = "engine", "digital", "hs";
-+			clocks = <&mmsys CLK_MM_MM_DSI0>,
-+				 <&mmsys CLK_MM_DSI0_DIG_DSI>,
-+				 <&mipi_tx0>;
-+			interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_LOW>;
-+			phy-names = "dphy";
-+			phys = <&mipi_tx0>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+		};
-+
-+		rdma1: rdma@14016000 {
-+			compatible = "mediatek,mt8365-disp-rdma",
-+				     "mediatek,mt8183-disp-rdma";
-+			reg = <0 0x14016000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_MM_DISP_RDMA1>;
-+			interrupts = <GIC_SPI 195 IRQ_TYPE_LEVEL_LOW>;
-+			iommus = <&iommu M4U_PORT_DISP_RDMA1>;
-+			mediatek,rdma-fifo-size = <2048>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+		};
-+
-+		dpi0: dpi@14018000 {
-+			compatible = "mediatek,mt8365-dpi",
-+				     "mediatek,mt8192-dpi";
-+			reg = <0 0x14018000 0 0x1000>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_LVDSPLL_D4>;
-+			assigned-clocks = <&topckgen CLK_TOP_DPI0_SEL>;
-+			clock-names = "pixel", "engine", "pll", "dpi";
-+			clocks = <&topckgen CLK_TOP_DPI0_SEL>,
-+				 <&mmsys CLK_MM_MM_DPI0>,
-+				 <&apmixedsys CLK_APMIXED_LVDSPLL>,
-+				 <&mmsys CLK_MM_DPI0_DPI0>;
-+			interrupts = <GIC_SPI 197 IRQ_TYPE_LEVEL_LOW>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+			status = "disabled";
-+		};
-+
- 		camsys: syscon@15000000 {
- 			compatible = "mediatek,mt8365-imgsys", "syscon";
- 			reg = <0 0x15000000 0 0x1000>;
-
+diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
+index 84ced3f4179b9..3ffc60184e445 100644
+--- a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
++++ b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
+@@ -25,6 +25,7 @@ Required properties:
+ 	"mediatek,mt6577-sysirq": for MT6577
+ 	"mediatek,mt2712-sysirq", "mediatek,mt6577-sysirq": for MT2712
+ 	"mediatek,mt2701-sysirq", "mediatek,mt6577-sysirq": for MT2701
++	"mediatek,mt8365-sysirq", "mediatek,mt6577-sysirq": for MT8365
+ - interrupt-controller : Identifies the node as an interrupt controller
+ - #interrupt-cells : Use the same format as specified by GIC in arm,gic.txt.
+ - reg: Physical base address of the intpol registers and length of memory
 -- 
-b4 0.10.1
+2.40.0.rc2
+
 
