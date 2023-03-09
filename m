@@ -4,84 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 703F4C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 14:56:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40DAFC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 15:40:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Gpqy2UwJbTsT8CSlsBkekwaizPbfI6waBJSct+QDKo8=; b=fG3rHJKSLzqOnlUY0D5FdR74EQ
-	Kqro8JBLf62cX+rMxK18neqA5XwjxaHP0jJDyTpEm6e6O8glJ9na0ZiBYXlHptHhT6sHj8z7HksXO
-	aZIRjCgzgN71T2TSP+NRsMyIhqHqjes+hPwEWsG+8reZyhVDCVc156XMqV6Wtoqyr8pPjz310JJVS
-	s+D9coRNDzBFr1KtvRw7NDaDEeS/COUnnLTREIWAMTPIBoNY1iB/M5YtSDrxyy1EYVo2vHTnVRXIM
-	PNJdslf5JJ9C1dqG5si3voJ2mnMG6YfUYcDmul9+NJY7p3IzP/OzPerrs2jwnTQ9sX7eEg36lPMpR
-	aCUBla/A==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XnRMDJsVtaLTah7fPLTSux/usKHTSQtwCxUKSMu5Eg4=; b=XqvhWNK+T1tjcw8K1WDZI04NLQ
+	YJzEDG3lSf3dV+0y4OTXEYG/pf/Coh0MSsgxblFWW5QvxD2cUDWAcbrC1GLJhegrEFdiPezrz8Xl6
+	uftQQse7hginBpOALMbP5QqhdrNG641ydS1ZSOy9kYn50RFQ4bAjXBDA/w++uhqdpPT+JjrCDtMoD
+	ql7ICRxNJeCnEYIDPCE6U2sBUptC/9At3Ff6iKjBztg3zTZcRVb/+To2CwoC+ZEHwjkRrvqy3bGTb
+	8VyR5YYMuxOws7io7c7RyqlQ0QVOzJWrFzRqIMJROs9TSJtG12gWcUTPBJvGQaoS+I/IAXAdjwtHN
+	Nqy+8CyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paHhF-00AiqU-9Q; Thu, 09 Mar 2023 14:56:45 +0000
-Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
+	id 1paINh-00AyOp-7h; Thu, 09 Mar 2023 15:40:37 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paHcd-00AgbN-2m
-	for linux-mediatek@lists.infradead.org; Thu, 09 Mar 2023 14:52:01 +0000
-Received: by mail-oi1-x230.google.com with SMTP id bg11so1822882oib.5
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Mar 2023 06:51:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1678373516;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Gpqy2UwJbTsT8CSlsBkekwaizPbfI6waBJSct+QDKo8=;
-        b=7VnZ8eoq8JCRR9LWSoq6SXSKIYIRedzcewZzSE9gKx6AQQB2Ax7dwKBcAYwJrjlsWs
-         4TCezR69X8MwfD4+CKaz/SObaltdvIIieLVdJ+BWlplOPFiALrUJwDgjMU47Vf51qRDl
-         xdFrwA1rnPNMA0GVzeDnkpXSGfyag6vAi04knNO8VIXj+D5n+705no78/qGHcnD2tLqc
-         nohnomuGXgF8COo7QbluFk8QfItIs5fLy7I2ZnAC1v81iSP6Ds1uiOBx5oP32kgrJXPW
-         yTtqYLrIVGryvFjGoykGRd0Kl8dTZeGhvhFDQoCSZrB7mIPyeb5SEOWrMbUnxfz7JmgZ
-         oQYA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678373516;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Gpqy2UwJbTsT8CSlsBkekwaizPbfI6waBJSct+QDKo8=;
-        b=HP7PbXHTZXCb+XUMDaGOQvLQ9p9pds6chmJUcsREpc3sMmqTNHO+LEHTtiKaSp29GE
-         7CteNU4BVjsm6EeJ+oh4czXcjqtM7FyAiWOBFl3ICYyGhFrtw0/B4HXjH37Krvc+Y/ih
-         tiUhvfkp2YkdFjjLe0eaTHLdln+EXWkzt1ihNIVvStYLOL4mD//jov74dcqZdA32ZEJy
-         4AgRunoWBN0BC0pHjDmA0G0ovTdjMZBB9hp86vu8XxOOI+GJP7jrt24kQSOd4yHH48wg
-         6GqRJxSN41HjEOxGZ1kr86cgseXaGTINnvfV3ll0jU/THWVLDwAChsv9malRe2xocKXQ
-         CdsQ==
-X-Gm-Message-State: AO0yUKWMIV3adGEegtZuewGvXNgcM4i/nEP+7SdBoWXni7DKEkaA0IMU
-	Hgs+RJ+XSqkJv8REi00n0ArDaGLWQndBXV4d1/z4iA==
-X-Google-Smtp-Source: AK7set8A8FpW9dqaR73G09blcvv/Ti7DIE1vGNLlncw0hLE8FnQCoXHRSlvX0YUqfVCqYXdazGxGSi3CnqOThNIO2y8=
-X-Received: by 2002:a05:6808:2208:b0:37a:2bed:5756 with SMTP id
- bd8-20020a056808220800b0037a2bed5756mr12243997oib.0.1678373515531; Thu, 09
- Mar 2023 06:51:55 -0800 (PST)
+	id 1paI5J-00ArMy-Ft; Thu, 09 Mar 2023 15:21:39 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BB598660304C;
+	Thu,  9 Mar 2023 15:21:32 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1678375293;
+	bh=9nQJQnCKbrb4KyGEURRImR/OMn2QuOxR8XFtRl35qr8=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=eCxYuAvDoUj6hHpZC5PYkYWMWUiG7uhp9zBZFfhSggOZvJ2PI3d/ct+eiTMkLCG7I
+	 rO989CP+wpq9ukZjjY6x7wRayNpanPHLt/3Ew6A0uRhmbr65Vane5p0BlKVGi0z4bK
+	 Y/hN8zryvtqjjIEplsuf+Jvd1oO6Jer9IJzh4OmM8ctWLHvqK8gHxB4JtFyjTk+uWg
+	 CaWIUMivoOqf0or3Uk8V1p6Pk0Xk58W8mA3dkiB1RYe0czYTYlNLWnBF/ecTzDigpu
+	 076PhgAa9jRPoOrZq7isygKz62/clJFhaTqazvkNlbUIcLa+VzFwpY3ST2365Gqr2j
+	 Lg6CSOT1bZtpg==
+Message-ID: <42e0c0fe-3ee5-91df-302a-20193ec64bd3@collabora.com>
+Date: Thu, 9 Mar 2023 16:21:29 +0100
 MIME-Version: 1.0
-References: <20230203-evk-board-support-v2-0-6ec7cdb10ccf@baylibre.com>
- <20230203-evk-board-support-v2-17-6ec7cdb10ccf@baylibre.com> <0fb37a8f-f284-76f2-e2f3-ff0f23eaa200@collabora.com>
-In-Reply-To: <0fb37a8f-f284-76f2-e2f3-ff0f23eaa200@collabora.com>
-From: =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>
-Date: Thu, 9 Mar 2023 15:51:44 +0100
-Message-ID: <CAP2ifjOtORrGKEBMw-CzPR4B8CPDaRKnqKHyKL7mC_8qH08=iA@mail.gmail.com>
-Subject: Re: [PATCH v2 17/18] arm64: dts: mediatek: fix systimer properties
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Alexandre Mergnat <amergnat@baylibre.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>, 
-	Guenter Roeck <linux@roeck-us.net>, Linus Walleij <linus.walleij@linaro.org>, 
-	Ulf Hansson <ulf.hansson@linaro.org>, Wim Van Sebroeck <wim@linux-watchdog.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Chaotian Jing <chaotian.jing@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
-	Wenbin Mei <wenbin.mei@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	linux-mmc@vger.kernel.org, Alexandre Bailon <abailon@baylibre.com>, 
-	devicetree@vger.kernel.org, Amjad Ouled-Ameur <aouledameur@baylibre.com>, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-gpio@vger.kernel.org, linux-watchdog@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, Fabien Parent <fparent@baylibre.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v10 3/3] arm64: dts: mediatek: Initial mt8365-evk support
+Content-Language: en-US
+To: =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-serial@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, matthias.bgg@gmail.com,
+ gregkh@linuxfoundation.org, krzysztof.kozlowski+dt@linaro.org,
+ robh+dt@kernel.org, maz@kernel.org, tglx@linutronix.de
+References: <20230309143459.401783-1-bero@baylibre.com>
+ <20230309143459.401783-4-bero@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230309143459.401783-4-bero@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_065159_165499_2C77EAB4 
-X-CRM114-Status: GOOD (  11.89  )
+X-CRM114-CacheID: sfid-20230309_072137_781093_70610170 
+X-CRM114-Status: GOOD (  15.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,31 +77,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Il 09/03/23 15:34, Bernhard Rosenkränzer ha scritto:
+> From: Fabien Parent <fparent@baylibre.com>
+> 
+> This adds minimal support for the Mediatek 8365 SOC and the EVK reference
+> board, allowing the board to boot to initramfs with serial port I/O.
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> [bero@baylibre.com: Removed parts depending on drivers that aren't upstream yet, cleanups, add CPU cache layout, add systimer, fix GIC]
+> Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
+> [aouledameur@baylibre.com: Fix systimer properties]
+> Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> Tested-by: Kevin Hilman <khilman@baylibre.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>   arch/arm64/boot/dts/mediatek/Makefile       |   1 +
+>   arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 168 +++++++++
+>   arch/arm64/boot/dts/mediatek/mt8365.dtsi    | 377 ++++++++++++++++++++
+>   3 files changed, 546 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8365.dtsi
+> 
 
-On Thu, Mar 9, 2023 at 2:32=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 07/03/23 14:17, Alexandre Mergnat ha scritto:
-> > From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
-> >
-> > MT8365 has a SYST timer (System Timer), therefore the compatible node
-> > should be "mediatek,mt6765-timer" instead of "mediatek,mt6795-systimer"
-> > (which corresponds to ARM/ARM64 System Timer).
->
-> So this is not a CPUXGPT, not a GPT, but a SYST?
->
-> At this point, this should not be even introduced because commit [1] is
-> not in linux-next yet.
->
-> [1]: https://lore.kernel.org/all/20230125143503.1015424-10-bero@baylibre.=
-com/
+..snip..
 
-I've posted a new revision of this patchset containing the systimer fix.
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+> new file mode 100644
+> index 0000000000000..5d6763ebcf869
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+> @@ -0,0 +1,377 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * (C) 2018 MediaTek Inc.
+> + * Copyright (C) 2022 BayLibre SAS
+> + * Fabien Parent <fparent@baylibre.com>
+> + * Bernhard Rosenkränzer <bero@baylibre.com>
+> + */
 
-https://lore.kernel.org/linux-mediatek/20230309143459.401783-1-bero@baylibr=
-e.com/
+..snip..
 
-ttyl
-bero
+> +
+> +	systimer: timer@10017000 {
+> +		compatible = "mediatek,mt8365-systimer", "mediatek,mt6795-timer";
+
+You mean "mediatek,67 -> 6 <- 5-timer", right? :-P
+
+Cheers,
+Angelo
+
+> +		reg = <0 0x10017000 0 0x100>;
+> +		interrupts = <GIC_SPI 138 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&system_clk>;
+> +		clock-names = "clk13m";
+> +	};
+> +};
+
 
