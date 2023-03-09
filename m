@@ -4,65 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6354AC6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 09:47:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26B42C64EC4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 09:49:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2mn89HVNEJENMJTeBUWh0VLNIJkC8ONnn7Jk84qQrhA=; b=XWx4X/pmpa7C8XDqqSdz5GR/nh
-	MxgdZqrFsP6FYPNtY5qoMh9zBmU20qAKEk8sGeugrCOMNi4gD0hx+wkFLT6cYQrzdgBKmokVqcON9
-	RqK8aoZnZkIceVaLn2XDHlYAOH8uMXajHC2Zy4QYC0F0oPzeiqa6kl6NsbAJQkjkmuktQ5JF/zIq7
-	6XyOImYZdqQjQBCNJkY9BNLxXvvPNACPKrN0RoIcuFxvzBrJVXD393iLIcQFnOcJ0nvtjq53GZZav
-	AQKeVo1Lhh4bwCC3zHE7LUfpy9E6CL97h2TgP+pxcOxMmGML4x0sst+p2ZxByM5e4WnwWAf1WAQI7
-	glUwutYg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KqM9tPbk85fkSamrIGtF+aGGKkrU9G+V8TUF+yeEv8A=; b=NLc075ayuou8bc
+	DmJODao+7oItrLEjJ10mRnMPRZjppqOewD12UDKhPDi6v3ARJFObgZlphSjhGpHsoHk7pX5feBp2v
+	3G96IlSvYo3yzc7Qjo0/R4Fz3Zh8+Ke9M1tX+//nTvQqZ1cFnuSXJG9Fz3hNep140MNI6WHmwKe72
+	vL/0fijbUqBgZJgYXV/9m0NTID18SqKTB8/0jl9J+FwINGi1luJgZr1d1apSFl1IeNzqbmBjI/1sR
+	mpnx7A6dq+4JkUr59X8tcis4aohxL0W1vLDI9LZAUxp8U6qz6WZvadMQJk4i3y0yr8Mvsdt2+Qvup
+	tlkH07O+yeM62fpKy0CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paCry-008tmi-Ed; Thu, 09 Mar 2023 09:47:30 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1paCtV-008uXs-FB; Thu, 09 Mar 2023 09:49:05 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paCrm-008tgi-E0
-	for linux-mediatek@lists.infradead.org; Thu, 09 Mar 2023 09:47:20 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1paCrc-0007fx-K7; Thu, 09 Mar 2023 10:47:08 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1paCrb-002uv8-3P; Thu, 09 Mar 2023 10:47:07 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1paCra-003VnH-C3; Thu, 09 Mar 2023 10:47:06 +0100
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Mark Brown <broonie@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-spi@vger.kernel.org,
-	kernel@pengutronix.de,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 1/3] spi: mt65xx: Properly handle failures in .remove()
-Date: Thu,  9 Mar 2023 10:47:02 +0100
-Message-Id: <20230309094704.2568531-2-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.39.1
-In-Reply-To: <20230309094704.2568531-1-u.kleine-koenig@pengutronix.de>
-References: <20230309094704.2568531-1-u.kleine-koenig@pengutronix.de>
+	id 1paCtI-008uRF-I6
+	for linux-mediatek@lists.infradead.org; Thu, 09 Mar 2023 09:48:55 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id o12so4539195edb.9
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Mar 2023 01:48:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1678355331;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=KqM9tPbk85fkSamrIGtF+aGGKkrU9G+V8TUF+yeEv8A=;
+        b=SOGx0RpyMsiXOR6INiKJFbpBvSFe9w7i05zm2lXlR/T2TKa8QylkB7e9C+MQuPWhO/
+         Ku/H+APnyg5V/why7CWDcRyCYN1EUTaAy7gUz8MgMug30Oroj1hx2lt4hjJXzJ4L+smS
+         Gl9GOre6r+id+4BvTzvCBZiFzsiuWufrylwoWWv1JKjLeRh2ebzdoMrEgZEa/ISGRQCK
+         suwRxZsk4QME0pgnBm3ErfIfs5rWuFyHeKyNi+8KHgjZ3KVHYTidsMbkOrKNcU13+CyF
+         8dpMQhVRryLJFV3L/NNAJH3yHfPOzd5bizHY4ltfMiJelw/cK3gSw7K/UOYRp0bg2qnj
+         +iIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678355331;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=KqM9tPbk85fkSamrIGtF+aGGKkrU9G+V8TUF+yeEv8A=;
+        b=5MORuuTVVKt4MWZ1X6Q1RGTrZLKlOyL3pnIFIldMX8mpQfvRohO18GhaQqWKeqQhtg
+         nJE7RnfG4J9Zo+Zphn7930L1PmG0Qbe9ouka2lJp/jw+XdcVrC+X5MMp9JRjMYu4V2fK
+         sCxcDx8J3eEKJuEDF5QgjGmJHqIO3p7nxSVtCw/DRyYfOywk/J4hdo78m1atLt5iJYK3
+         3v0hiGZ8PIycgWVYodCmrpsV6fId9EI+9lINAQbNTJvkiFBmxyIw93TH5N3Zg/YvDaCp
+         FvYg9N7fpyMODjPxOKuC42dQhwV+5tChtv9niyqAPOX4WszJXDSjNgRkUcIHbppoN6lI
+         X5ig==
+X-Gm-Message-State: AO0yUKXZcx46X3ZOLvXirSyduCvL2W+bgv0dc6WcWbPnSwH8W4bw2yh+
+	FHbN8VTAwMTY8NdAl8PTSnuGFw==
+X-Google-Smtp-Source: AK7set+LdAcJf2k76HO3Ko/pAiaiYsVO6swO8CiLqUtf9WOiHED+3AcF+H/mT/wOUS2xwh46rEkt0Q==
+X-Received: by 2002:a17:906:da82:b0:88f:9f5e:f40 with SMTP id xh2-20020a170906da8200b0088f9f5e0f40mr30594330ejb.68.1678355330988;
+        Thu, 09 Mar 2023 01:48:50 -0800 (PST)
+Received: from ?IPV6:2a02:810d:15c0:828:7ee2:e73e:802e:45c1? ([2a02:810d:15c0:828:7ee2:e73e:802e:45c1])
+        by smtp.gmail.com with ESMTPSA id 23-20020a170906005700b008e3e2b6a9adsm8646897ejg.94.2023.03.09.01.48.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 09 Mar 2023 01:48:50 -0800 (PST)
+Message-ID: <38eaed94-647d-a25b-f1ed-8e2d1b6e8852@linaro.org>
+Date: Thu, 9 Mar 2023 10:48:48 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH 08/20] dt-bindings: pinctrl: ralink: add new compatible
+ strings
+Content-Language: en-US
+To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ Rob Herring <robh@kernel.org>
+References: <20230303002850.51858-1-arinc.unal@arinc9.com>
+ <20230303002850.51858-9-arinc.unal@arinc9.com>
+ <20230308210017.GA3744272-robh@kernel.org>
+ <1c704ea4-2241-ef21-dc6c-d2d243d3bbad@arinc9.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <1c704ea4-2241-ef21-dc6c-d2d243d3bbad@arinc9.com>
 Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1578; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=yh/+04G2mPy0dKpao1v1bYKj6AZtMwDC3Z1eft87mk8=; b=owEBbQGS/pANAwAKAcH8FHityuwJAcsmYgBkCasNEPvAeZV5KK/fHmPsGkPJLZO1RWfvtok0y vsIcxFeGvKJATMEAAEKAB0WIQR+cioWkBis/z50pAvB/BR4rcrsCQUCZAmrDQAKCRDB/BR4rcrs Cdu4CACSHiTTHFcll04uCZUeJeS6AR0504iswcnVvtXCR0dvRFXwtXIAj5DvGLMrkygpvLzy8Fz D4SbbRNC4So/Ceks6J9QWMLbZ/IKNoxLop7z7vEEYHIsHzLcwsbj37ayJy11VQhRQB37LhGwfu5 0r02zYlvSfCIqn/AFLhxgS69bCZ3IueW2KOj7pAxeatoSKbsOpo3HfXw2Lb9n8gLNM8RDC77c5H VBLIk9vUpn4LB4uvVkM+esu6R9MjHz2AXoagZuSWSbkWyoNjqFFRpWENSLur8yKpsurqFHBPdqb R5Ayfg7SUenHGDpwcIcube0sXIbKW32Ym15STa+1XDXKVqBM
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_014718_522696_46783B89 
-X-CRM114-Status: GOOD (  15.51  )
+X-CRM114-CacheID: sfid-20230309_014852_622724_51557F78 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,55 +92,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Daniel Santos <daniel.santos@pobox.com>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, William Dean <williamsukatube@gmail.com>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Daniel Golle <daniel@makrotopia.org>, Matthias Brugger <matthias.bgg@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Returning an error code in a platform driver's remove function is wrong
-most of the time and there is an effort to make the callback return
-void. To prepare this rework the function not to exit early.
+On 08/03/2023 22:19, Arınç ÜNAL wrote:
+> 
+>>
+>> If you want to break the ABI (do you??, because the commit message
+>> still doesn't say), then you don't need "ralink,mt7620-pinctrl".
+> 
+> I don't want to break the ABI. But I deprecate ralink,mt7620-pinctrl on 
+> later patches.
 
-There wasn't a real problem because if pm runtime resume failed the only
-step missing was pm_runtime_disable() which isn't an issue.
+Deprecation should happen here. Otherwise you have now two valid
+compatibles which contradicts previous Rob's comments.
 
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
----
- drivers/spi/spi-mt65xx.c | 21 +++++++++++++--------
- 1 file changed, 13 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 9eab6c20dbc5..b1cf7bbb2c08 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -1275,15 +1275,20 @@ static int mtk_spi_remove(struct platform_device *pdev)
- 	struct mtk_spi *mdata = spi_master_get_devdata(master);
- 	int ret;
- 
--	ret = pm_runtime_resume_and_get(&pdev->dev);
--	if (ret < 0)
--		return ret;
--
--	mtk_spi_reset(mdata);
-+	ret = pm_runtime_get_sync(&pdev->dev);
-+	/*
-+	 * If pm runtime resume failed, clks are disabled and unprepared. So
-+	 * don't access the hardware and skip clk unpreparing.
-+	 */
-+	if (ret >= 0) {
-+		mtk_spi_reset(mdata);
- 
--	if (mdata->dev_comp->no_need_unprepare) {
--		clk_unprepare(mdata->spi_clk);
--		clk_unprepare(mdata->spi_hclk);
-+		if (mdata->dev_comp->no_need_unprepare) {
-+			clk_unprepare(mdata->spi_clk);
-+			clk_unprepare(mdata->spi_hclk);
-+		}
-+	} else {
-+		dev_warn(&pdev->dev, "Failed to resume hardware (%pe)\n", ERR_PTR(ret));
- 	}
- 
- 	pm_runtime_put_noidle(&pdev->dev);
--- 
-2.39.1
+> The driver still has it though, so old DTs will keep 
+> working. That keeps the ABI intact regardless of deprecating strings on 
+> the dt-binding schema, right?
+
+Yes, but deprecation is missing.
+
+
+Best regards,
+Krzysztof
 
 
