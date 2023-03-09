@@ -4,95 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0578EC64EC4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 08:56:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F3E9C64EC4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 09:06:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OsU9P3Ur2VchpA2JUh4YcUF6jVWgdCHPblwwuyxuAmM=; b=kpfmrIIzm7gVjHk+PIhFwhJo7L
-	2L/BpumXfFziuYLiE8Ib6GY8LFYs3ruZrPV8LQHE3qXB5tfwLo+JDhfIus5ND/qVqW49hjGqEt6AR
-	NONzJCs//5bDOnTBTk3Bx+BM6jgMKZadlTLhVBhg9d2JAiNlskcHyvHMoSsHATxiGyT8m5xjOvw3L
-	fj98O+8yDyW3/dAyZRJBT0RZqZ4oovsJmvARUa3Q3Eb++cFbu90hWxMkYD5I9giykVRPN+uYwfV1b
-	vkeyEqstNVWgYoSEzMqRi8xd/xa3UsOmiz6rrxzqcb1ueWR+Hv00wQWgfvHNoEFD+Z3pYNc/YI3CN
-	Z/3406PQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=v8gsX6vrStQeUsH5rKVIzb0ItwKWklQ0bcioQcBInIM=; b=ncMVKP9m9Nmp7Rw+MIqW2i74SW
+	fQTRql/UbqPdI+mBOnZcsQnTuel7tiN9Bww46coDfcqEE+6nmy5YBkKfM072Dg8hq9uV62WfL7Voj
+	T9cH3s2J+Oi1G0i8xXwEWaWlmQmYJK2hZ2QmURur+N+0UTHzqwMWpJjh2qUdnCHjd7JWYf3+t7t3M
+	KdP56Cg4auz9iQVHTlyVE+b2IRS6E/egP9mR1xAFdvA+Zxbw5G0ccjFveluEiH+miEilQLlKYImKb
+	yQbuEk7EvSzE1PmS+pdruyGjUO6G7LyHh/GcQDT34YNVWpLtpboq8EpXJe5VMMxOLMHfWQBoZVVRr
+	ZYuMAcJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paC4w-008fH5-I2; Thu, 09 Mar 2023 08:56:50 +0000
-Received: from relay6-d.mail.gandi.net ([217.70.183.198])
+	id 1paCDn-008he5-OB; Thu, 09 Mar 2023 09:05:59 +0000
+Received: from mail-ua1-x92e.google.com ([2607:f8b0:4864:20::92e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paC4r-008fE8-AW; Thu, 09 Mar 2023 08:56:48 +0000
-Received: (Authenticated sender: miquel.raynal@bootlin.com)
-	by mail.gandi.net (Postfix) with ESMTPSA id 0DF70C000C;
-	Thu,  9 Mar 2023 08:56:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1678352200;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=OsU9P3Ur2VchpA2JUh4YcUF6jVWgdCHPblwwuyxuAmM=;
-	b=EW5TlrV4CQ9Mmh3SXctNaJ3E6vLQDFLpT6USUszQ40PiT/G/H4kAE2HOo8ELaXuTkQPE/7
-	PtSBDFGEz5+owBxACqFApT/rEhZ1UxHqNQ0JeqAu7Y49D+uyNiZTkb/3qaS0KlqJ0+rphE
-	qIHERnL/qjJdmjUuJZSbLAMEw5XPfRTXbqn2KpThaanjWeSO5BLuTHqBXNc78c2T3tDPoq
-	gxPCqP0Lav/+NoCIm4vbutUJeL5h6HwWDWnvPFToYQgPMhmyieIQfmBLWAYQ3xf2jWpDDV
-	cBud8//oMxWBO+HUTDJcrxne728LVfY0Y7zyx0qQ98HvdR1wEinFBBmNGtj0Cg==
-Date: Thu, 9 Mar 2023 09:56:31 +0100
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-Cc: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>, Srinivas Kandagatla
- <srinivas.kandagatla@linaro.org>, Richard Weinberger <richard@nod.at>,
- Vignesh Raghavendra <vigneshr@ti.com>, Hector Martin <marcan@marcan.st>,
- Sven Peter <sven@svenpeter.dev>, Alyssa Rosenzweig <alyssa@rosenzweig.io>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam
- <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, Neil Armstrong
- <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome
- Brunet <jbrunet@baylibre.com>, Martin Blumenstingl
- <martin.blumenstingl@googlemail.com>, Claudiu Beznea
- <claudiu.beznea@microchip.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy
- Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad
- Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Orson
- Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Vincent Shih <vincent.sunplus@gmail.com>,
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Kunihiko Hayashi
- <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>,
- Michal Simek <michal.simek@xilinx.com>, Alessandro Zummo
- <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Evgeniy Polyakov <zbr@ioremap.net>, linux-mtd@lists.infradead.org,
- linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
- linux-rtc@vger.kernel.org
-Subject: Re: [PATCH V2] nvmem: add explicit config option to read OF fixed
- cells
-Message-ID: <20230309095631.7b4f610e@xps-13>
-In-Reply-To: <af5dfd4701666d4ea50ec1015b1d2e5c@milecki.pl>
-References: <20230224072903.20945-1-zajec5@gmail.com>
-	<20230308173256.3837b87b@xps-13>
-	<91ff425b4c901648b1faf34c784f20ad@milecki.pl>
-	<20230308190636.7fabab9c@xps-13>
-	<5974d28426057975e701c4a8454b5a13@milecki.pl>
-	<20230308193121.7f5b3d02@xps-13>
-	<930f3549-440d-adac-ae9d-1aa6ef07c44b@gmail.com>
-	<20230309093415.2b1088c8@xps-13>
-	<af5dfd4701666d4ea50ec1015b1d2e5c@milecki.pl>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
+	id 1paCDl-008hcI-22
+	for linux-mediatek@lists.infradead.org; Thu, 09 Mar 2023 09:05:58 +0000
+Received: by mail-ua1-x92e.google.com with SMTP id h34so661802uag.4
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Mar 2023 01:05:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20210112; t=1678352751;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=v8gsX6vrStQeUsH5rKVIzb0ItwKWklQ0bcioQcBInIM=;
+        b=EIqqh4WUJAtlIJKJ771rFSqQgKiSfrYcZLZHwsUo1vvE8JiE+4QAXbubHsVrGOdnSL
+         5euNxBsrcXw8gcyvMmkmuinOIEt68oVv2COdPyy89xisH3eOUc3Wo199eFiXikoK9+Ql
+         WKcYH8AqYwihfM72j7FWRBVxFU5GUN46CEC/sjfZDRsUBJg2OZP4XIyCoZL62zhpxQ5g
+         vqOow3L04f+6laqkMm4gk8ZGShc0kKYuJIii7HBe9W1zY4e/rTKoEJk3PqOyeFaeT/B5
+         gXQVked/eG/Dru+iA/ReY6JUxlhho5xYorDo5Imc1JKxfau9UvIt636C7WWRY9Sy7tQ8
+         mYjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678352751;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=v8gsX6vrStQeUsH5rKVIzb0ItwKWklQ0bcioQcBInIM=;
+        b=JzjC5/2SDaXbTWbF7A4+I/Q9s30MLx7xClTfbCNF8kVHWEbF5qr5Ajd3OMS4E2x3L3
+         DeVYQX+KomFuNfK469ZtA3DyuKolsbD2x5hqP7jXTpYoz/IRfV9crDGZKoN7S6gLGudu
+         Plv1fZANeq6xDJCGAlxcyV6CW6qVBag+PQzArio+7obQk2Wk35tscZHwc+tfZWWJrv9+
+         XxWHy5QzlbTtSJIzQeR+5QlK68KsgdtBpqmMG9kWiW3AWtJ/poQRYYoSmWpzG5fyoyGm
+         YKrazQfFibx7xlcVejh1DTmZ0SvosQmMjMLGoVKqi/fWHTE0qwZYvOo0BIYqqo/HOQGy
+         +l4g==
+X-Gm-Message-State: AO0yUKWgBpa1rmAaX2Q7YCIRDuSOZ6g/dbx0w1n7ccZZA2dwBwGw27qv
+	q6/2GcldFYfkoJqJif6IGgiFN74helO3F56g7sO12Q==
+X-Google-Smtp-Source: AK7set82OSvQFONVJyN8LBKOpbv2PUhiDRWDVoZ9Up/z/SqG1ikX8WNfSePirnax3JBNhUFcGRz8w7Dqf2d6saiDLR4=
+X-Received: by 2002:a9f:3001:0:b0:68b:817b:eec8 with SMTP id
+ h1-20020a9f3001000000b0068b817beec8mr13953524uab.0.1678352751125; Thu, 09 Mar
+ 2023 01:05:51 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+References: <ZAhkQUmvf1U3H4nR@elver.google.com> <20230309005831.52154-1-haibo.li@mediatek.com>
+In-Reply-To: <20230309005831.52154-1-haibo.li@mediatek.com>
+From: Marco Elver <elver@google.com>
+Date: Thu, 9 Mar 2023 10:05:11 +0100
+Message-ID: <CANpmjNNw6utf5ozpwu1keDG92Ew_vL6B=LZoRw12p48eVJeNnw@mail.gmail.com>
+Subject: Re: [PATCH] kcsan:fix alignment_fault when read unaligned
+ instrumented memory
+To: Haibo Li <haibo.li@mediatek.com>
+Cc: angelogioacchino.delregno@collabora.com, dvyukov@google.com, 
+	kasan-dev@googlegroups.com, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	mark.rutland@arm.com, matthias.bgg@gmail.com, will@kernel.org, 
+	xiaoming.yu@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_005645_655607_EB37E43B 
-X-CRM114-Status: GOOD (  50.28  )
+X-CRM114-CacheID: sfid-20230309_010557_132264_374FAF23 
+X-CRM114-Status: UNSURE (   6.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,233 +89,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rafa=C5=82,
+On Thu, 9 Mar 2023 at 01:58, 'Haibo Li' via kasan-dev
+<kasan-dev@googlegroups.com> wrote:
+[...]
+>
+> The below patch works well on linux-5.15+arm64.
 
-rafal@milecki.pl wrote on Thu, 09 Mar 2023 09:39:54 +0100:
-
-> On 2023-03-09 09:34, Miquel Raynal wrote:
-> > Hi Rafa=C5=82,
-> >=20
-> > zajec5@gmail.com wrote on Thu, 9 Mar 2023 07:56:05 +0100:
-> >  =20
-> >> On 8.03.2023 19:31, Miquel Raynal wrote: =20
-> >> > Hi Rafa=C5=82,
-> >> >
-> >> > rafal@milecki.pl wrote on Wed, 08 Mar 2023 19:12:32 +0100:
-> >> > =20
-> >> >> On 2023-03-08 19:06, Miquel Raynal wrote: =20
-> >> >>> Hi Rafa=C5=82,
-> >> >>>
-> >> >>> rafal@milecki.pl wrote on Wed, 08 Mar 2023 17:55:46 +0100: =20
-> >> >>>    >>>> On 2023-03-08 17:34, Miquel Raynal wrote: =20
-> >> >>>>> Hi Rafa=C5=82,
-> >> >>>>>
-> >> >>>>> zajec5@gmail.com wrote on Fri, 24 Feb 2023 08:29:03 +0100: =20
-> >> >>>>>   >>>>>> From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl> =20
-> >> >>>>>>>> NVMEM subsystem looks for fixed NVMEM cells (specified in DT)=
- by =20
-> >> >>>>>> default. This behaviour made sense in early days before adding =
-support
-> >> >>>>>> for dynamic cells. =20
-> >> >>>>>>>> With every new supported NVMEM device with dynamic cells curr=
-ent =20
-> >> >>>>>> behaviour becomes non-optimal. It results in unneeded iterating=
- over >> DT
-> >> >>>>>> nodes and may result in false discovery of cells (depending on =
-used DT
-> >> >>>>>> properties). =20
-> >> >>>>>>>> This behaviour has actually caused a problem already with the=
- MTD =20
-> >> >>>>>> subsystem. MTD subpartitions were incorrectly treated as NVMEM =
-cells. =20
-> >> >>>>>
-> >> >>>>> That's true, but I expect this to be really MTD specific.
-> >> >>>>>
-> >> >>>>> A concrete proposal below. =20
-> >> >>>>>   >>>>>> Also with upcoming support for NVMEM layouts no new bin=
-ding or driver =20
-> >> >>>>>> should support fixed cells defined in device node. =20
-> >> >>>>>
-> >> >>>>> I'm not sure I agree with this statement. We are not preventing =
-new
-> >> >>>>> binding/driver to use fixed cells, or...? We offer a new way to =
-expose
-> >> >>>>> nvmem cells with another way than "fixed-offset" and "fixed-size=
-" OF
-> >> >>>>> nodes. =20
-> >> >>>>>>   From what I understood all new NVMEM bindings should have cel=
-ls >> defined =20
-> >> >>>> in the nvmem-layout { } node. That's what I mean by saying they s=
-hould
-> >> >>>> not be defined in device node (but its "nvmem-layout" instead). =
-=20
-> >> >>>
-> >> >>> Layouts are just another possibility, either you user the nvmem-ce=
-lls
-> >> >>> compatible and produce nvmem cells with fixed OF nodes, or you use=
- the
-> >> >>> nvmem-layout container. I don't think all new bindings should have
-> >> >>> cells in layouts. It depends if the content is static or not. =20
-> >> >>>    >>>>>> Solve this by modifying drivers for bindings that suppor=
-t specifying =20
-> >> >>>>>> fixed NVMEM cells in DT. Make them explicitly tell NVMEM subsys=
-tem to
-> >> >>>>>> read cells from DT. =20
-> >> >>>>>>>> It wasn't clear (to me) if rtc and w1 code actually uses fixe=
-d cells. >> I =20
-> >> >>>>>> enabled them to don't risk any breakage. =20
-> >> >>>>>>>> Signed-off-by: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl> =20
-> >> >>>>>> [for drivers/nvmem/meson-{efuse,mx-efuse}.c]
-> >> >>>>>> Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.c=
-om>
-> >> >>>>>> ---
-> >> >>>>>> V2: Fix stm32-romem.c typo breaking its compilation
-> >> >>>>>>      Pick Martin's Acked-by
-> >> >>>>>>      Add paragraph about layouts deprecating use_fixed_of_cells
-> >> >>>>>> ---
-> >> >>>>>>   drivers/mtd/mtdcore.c          | 2 ++
-> >> >>>>>>   drivers/nvmem/apple-efuses.c   | 1 +
-> >> >>>>>>   drivers/nvmem/core.c           | 8 +++++---
-> >> >>>>>>   drivers/nvmem/imx-ocotp-scu.c  | 1 +
-> >> >>>>>>   drivers/nvmem/imx-ocotp.c      | 1 +
-> >> >>>>>>   drivers/nvmem/meson-efuse.c    | 1 +
-> >> >>>>>>   drivers/nvmem/meson-mx-efuse.c | 1 +
-> >> >>>>>>   drivers/nvmem/microchip-otpc.c | 1 +
-> >> >>>>>>   drivers/nvmem/mtk-efuse.c      | 1 +
-> >> >>>>>>   drivers/nvmem/qcom-spmi-sdam.c | 1 +
-> >> >>>>>>   drivers/nvmem/qfprom.c         | 1 +
-> >> >>>>>>   drivers/nvmem/rave-sp-eeprom.c | 1 +
-> >> >>>>>>   drivers/nvmem/rockchip-efuse.c | 1 +
-> >> >>>>>>   drivers/nvmem/sc27xx-efuse.c   | 1 +
-> >> >>>>>>   drivers/nvmem/sprd-efuse.c     | 1 +
-> >> >>>>>>   drivers/nvmem/stm32-romem.c    | 1 +
-> >> >>>>>>   drivers/nvmem/sunplus-ocotp.c  | 1 +
-> >> >>>>>>   drivers/nvmem/sunxi_sid.c      | 1 +
-> >> >>>>>>   drivers/nvmem/uniphier-efuse.c | 1 +
-> >> >>>>>>   drivers/nvmem/zynqmp_nvmem.c   | 1 +
-> >> >>>>>>   drivers/rtc/nvmem.c            | 1 +
-> >> >>>>>>   drivers/w1/slaves/w1_ds250x.c  | 1 +
-> >> >>>>>>   include/linux/nvmem-provider.h | 2 ++
-> >> >>>>>>   23 files changed, 29 insertions(+), 3 deletions(-) =20
-> >> >>>>>>>> diff --git a/drivers/mtd/mtdcore.c b/drivers/mtd/mtdcore.c =20
-> >> >>>>>> index 0feacb9fbdac..1bb479c0f758 100644
-> >> >>>>>> --- a/drivers/mtd/mtdcore.c
-> >> >>>>>> +++ b/drivers/mtd/mtdcore.c
-> >> >>>>>> @@ -523,6 +523,7 @@ static int mtd_nvmem_add(struct mtd_info *m=
-td)
-> >> >>>>>>   	config.dev =3D &mtd->dev;
-> >> >>>>>>   	config.name =3D dev_name(&mtd->dev);
-> >> >>>>>>   	config.owner =3D THIS_MODULE;
-> >> >>>>>> +	config.use_fixed_of_cells =3D of_device_is_compatible(node, >=
-> "nvmem-cells"); =20
-> >> >>>>>
-> >> >>>>> I am wondering how mtd specific this is? For me all OF nodes con=
-taining
-> >> >>>>> the nvmem-cells compatible should be treated as cells providers =
-and
-> >> >>>>> populate nvmem cells as for each children.
-> >> >>>>>
-> >> >>>>> Why don't we just check for this compatible to be present? in
-> >> >>>>> nvmem_add_cells_from_of() ? And if not we just skip the operatio=
-n.
-> >> >>>>>
-> >> >>>>> This way we still follow the bindings (even though using nvmem-c=
-ells in
-> >> >>>>> the compatible property to require cells population was a mistak=
-e in
-> >> >>>>> the first place, as discussed in the devlink thread recently) bu=
-t there
-> >> >>>>> is no need for a per-driver config option? =20
-> >> >>>>>> This isn't mtd specific. Please check this patch for all occurr=
-ences >> of =20
-> >> >>>> the:
-> >> >>>> use_fixed_of_cells =3D true =20
-> >> >>>>>> The very first one: drivers/nvmem/apple-efuses.c driver for the=
- =20
-> >> >>>> "apple,efuses" binding. That binding supports fixed OF cells, see:
-> >> >>>> Documentation/devicetree/bindings/nvmem/apple,efuses.yaml =20
-> >> >>>
-> >> >>> I'm saying: based on what has been enforced so far, I would expect=
- all
-> >> >>> fixed cell providers to come with nvmem-cells as compatible, no?
-> >> >>>
-> >> >>> If that's the case we could use that as a common denominator? =20
-> >> >>
-> >> >> Sorry, I don't get it. Have you checked
-> >> >> Documentation/devicetree/bindings/nvmem/apple,efuses.yaml
-> >> >> ?
-> >> >>
-> >> >> It's a NVMEM provied binding with fixed cells that doesn't use
-> >> >> nvmem-cells as compatible. There are many more. =20
-> >> >
-> >> > Oh yeah you're right, I'm mixing things. Well I guess you're right
-> >> > then, it's such a mess, we have to tell the core the parsing method.
-> >> >
-> >> > So maybe another question: do we have other situations than mtd which
-> >> > sometimes expect the nvmem core to parse the OF nodes to populate ce=
-lls,
-> >> > and sometimes not? =20
-> >> >> I'm not aware of that. Please also check my patch. The only case I =
-set =20
-> >> "use_fixed_of_cells" conditionally is mtd code. In other cases it's
-> >> hardcoded to "true". =20
-> >> >> >> > Also, what about "of_children_are_cells" ? Because actually in=
- most =20
-> >> > cases it's a "fixed of cell", so I don't find the current naming
-> >> > descriptive enough for something so touchy. =20
-> >> >> That would be just incorrect because this new config property =20
-> >> ("use_fixed_of_cells") is only about FIXED cells. =20
-> >> >> There are cases of OF children being cells but NOT being fixed cell=
-s. =20
-> >> They should NOT be parsed by the nvmem_add_cells_from_of(). =20
-> >> >> Example: =20
-> >> a607a850ba1f ("dt-bindings: nvmem: u-boot,env: add basic NVMEM cells")
-> >> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/com=
-mit/?id=3Da607a850ba1fa966cbb035544c1588e24a6307df =20
-> >=20
-> > This is backwards. That's why layouts have been proposed: having
-> > a clear framework were the nvmem core should or should not play with
-> > the OF children nodes. If each binding is different, you end up with
-> > the mess we have today, where nobody knows how to properly
-> > populate the cells.
-> >=20
-> > Anyway, it's not a big deal either, if the cells are empty we can
-> > easily check that and have *yet another* specific case in the core.
-> >  =20
-> >> So that would result in U-Boot env:
-> >> 1. Having OF children nodes being cells
-> >> 2. Setting "of_children_are_cells" to false (counter-intuitive) to >> =
-avoid nvmem_add_cells_from_of() =20
-> >=20
-> > Agreed. So what about config.ignore_of_children?
-> > - mtd sets this to !is_compatible(nvmem-cells)
-> > - nobody else touches it (the core don't try to parse the cell if it's
-> >   empty so U-Boot env driver works) =20
->=20
-> "ignore_of_children" would have opposite (reversed) meaning to the
-> "use_fixed_of_cells":
-> 1. By default it would be 0 / false
-> 2. By default NVMEM code would NOT ignore OF children nodes
->=20
-> That is what I actually *don't* want.
->=20
-> Having NVMEM core look for fixed cells in device node is undesirable.
-
-Is it?
-
-I think this is the standard case. Most of the time fixed cells are
-the simplest and most direct approach. I don't get why we would like
-to prevent it at some point? Only the more advanced stuff that does not
-fit the purpose of fixed OF cells should go through layouts.
-
-> I want that feature to be off by default. I want devices to have to
-> enable it explicitly only when it's needed.
-
-Well, that's exactly the opposite of what nvmem does right now, that's
-maybe why reviewers don't get the interest of the current
-implementation: it has many impacts on users which should not be
-impacted just because we messed with mtd.
-
-Thanks,
-Miqu=C3=A8l
+Thank you, glad to hear - may I add your Tested-by?
 
