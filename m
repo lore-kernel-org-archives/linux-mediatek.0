@@ -4,65 +4,171 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32218C678D5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 01:50:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F0CEC678D5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 02:56:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Nv/5roHotBHwk0pSeQW2CWNoxspRvcm/UdO/iZIzjXU=; b=bzgYO+z/NItF/TO5O2eAiD0oUP
-	+ddVG1FMmqc/3m6zCghNVRYOMrLeyOCPufsAsCtAF0N/XiC8mmiabwRVd1YHXP7dKOEo/vzjjFuMu
-	CegqFiW2Y6XTUKigDjIA6Oc2miucCb/9T94GUBXLgvlUd6SleTkdz7np5TofhJ4xa5DVEmMOosvQK
-	N8Y0REysC8FoSoMhV1UxKdjmmrASByNGjZ6VPtrO7vj9o35/SxEZR71z+xSRPxGvWZlL6YHFThD5S
-	cGbgyS6Dq4HZSSYF4kVqwtgZc0MHkYtUhGuVRPk4fARHWuc0yzbZwyaFU63Tq5oi4be1vLuQQCy55
-	toX/1DOQ==;
+	bh=XU11vwf0bcQE/psseS2vUcWOQ8P/EbGVUnukLPGwgek=; b=LWzY+ddTQN3sOs9V7hn3MfqnIv
+	g3cYEJlSaG+XwYNHH3e9k0j/gU+FHqjeywF+8J55+IMJ7MgMWbnYizvB5Di/9JJc5QY6xd5NnmxHq
+	uXo0WrVnsAQ3W+ZvYNXfLFu05gAFKksZMei08I+RnLn3b4wjVIJd6hiFCZSmNDeNbXMvUbxt5dF3U
+	BHqGO4z2z5gKJVP4iLRjQRxc7BLnvozk0cMwwCfXM5qUsqinT5lcYntoxRUKNyMsOKkCLcl2NFu15
+	TwJP/yFOyaYK6bDvDVggjtPZ8KBV59pNJySI1sG7x9CAvkAXWWV0dhQ8bmGiD+XnT3AMHd+p/Dwr0
+	KvLeFeqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pa5QK-007SSh-9m; Thu, 09 Mar 2023 01:50:28 +0000
-Received: from mg.richtek.com ([220.130.44.152])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pa5QF-007SQL-PQ; Thu, 09 Mar 2023 01:50:26 +0000
-X-MailGates: (flag:4,DYNAMIC,BADHELO,RELAY,NOHOST:PASS)(compute_score:DE
-	LIVER,40,3)
-Received: from 192.168.10.46
-	by mg.richtek.com with MailGates ESMTP Server V5.0(20041:0:AUTH_RELAY)
-	(envelope-from <cy_huang@richtek.com>); Thu, 09 Mar 2023 09:49:28 +0800 (CST)
-Received: from ex3.rt.l (192.168.10.46) by ex3.rt.l (192.168.10.46) with
+	id 1pa6SR-007ZnD-F8; Thu, 09 Mar 2023 02:56:43 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pa6SF-007Zjr-IH; Thu, 09 Mar 2023 02:56:34 +0000
+X-UUID: f699c946be2511edbbe3f76fe852e059-20230308
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=XU11vwf0bcQE/psseS2vUcWOQ8P/EbGVUnukLPGwgek=;
+	b=hY9yLL2VxCYmMOudRm5VUARgfxOw+ped8LzjaZFyxUcNg/PYI0ZJHflhldrccUG9BaT8piIquflpYJEUcKKpEZI/OYSQxtq7fIWvL6DXiG9dsEf8GRCOFt5Aq+GG88k4eLFmQdTRudI/qX/Pbu5kzUrRyp4i5lhIPfGPZa/tzB4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.20,REQID:44f96d9f-77c3-4235-a143-180f0fda4c3e,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:-5,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-INFO: VERSION:1.1.20,REQID:44f96d9f-77c3-4235-a143-180f0fda4c3e,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:-5,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:-5
+X-CID-META: VersionHash:25b5999,CLOUDID:e115ca27-564d-42d9-9875-7c868ee415ec,B
+	ulkID:230309105553YS0NTQKA,BulkQuantity:4,Recheck:0,SF:17|19|102,TC:nil,Co
+	ntent:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0
+X-CID-BVR: 0,NGT
+X-UUID: f699c946be2511edbbe3f76fe852e059-20230308
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <garmin.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1779209251; Wed, 08 Mar 2023 19:56:17 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Thu, 9 Mar 2023 10:55:50 +0800
+Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Thu, 9 Mar 2023 10:55:49 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=bS4UHuLs2mmUwOBXGL3OYdVQVe04wANnKF1OlwxNzxxK/2+gndfBKQ9ddwsqjADJL9MebGUH1bSJZ6mpVT1rmh4DYUJK4gkIY+mX3VaiyVWM5kGKqPuyF/nm9hQHDnZG9S69fZ885AkXTvg2OCNpV7dHOrB/BCJVtfHYzLfewlv3Xa1UlOSmyFGM2G/VKbgqskuNoP2qmD4mRvrsCwGZ3tMh/vR86LmflZLQut0RXeSC3RMqrKPEYgCM78J10skXIyI0UeSz6GfUGeLr/IpwVLK0OkkybGATJ+cWqP9ijTzeAOUN2SP1BnlYFzuFEJf7I5AfXHQFi9KP8CebhsPaSA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=XU11vwf0bcQE/psseS2vUcWOQ8P/EbGVUnukLPGwgek=;
+ b=GCWbZltVY6F+MXx/Q4xAH3k6DZQo2FobHP6Rb/u/F3MD2oJ6KcCLPBEcbIaACGO/ohe9xGEcgHCY836+0+4bUqS0BaSZKGPBYeFCyRztC5dO03zj/Itdu53O9XNYCnLpW0KcPbTdXo16/MmDIclx4Lb2fu0Pss1WnNxdomuz9fGlp5OwMuSlzyrMuFqDphgG3M3zM8JeEt7Ca2TSLl/8BcRUwlJKEU2RfgyPITtRVR4Six+wlEZALpRG/iYi7P4n2bkEkVW6QJa78WU8Ok9/tTFJxUYwRTsDcUpBfDeRo0BUVXNFGQVXJVj+LO7pt6TTdNysip0Bj+9AMQPNX7JltQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=XU11vwf0bcQE/psseS2vUcWOQ8P/EbGVUnukLPGwgek=;
+ b=LLCptqJbjd0+w6PxH2T5tqmsOrhEXlmT5cGLMbPNTcSApZ6gylf+AxdjPdJ6wp/iMnTpAVySUFiFCfXzVuPADpu1a1c15IqWTjE9POM2lpJcgPHA12Ot+90wI7l2iyrbtPoDcJP6z2HjB+viUQLreKsr8D82hvlr4Pee8ndZH3w=
+Received: from PUZPR03MB5877.apcprd03.prod.outlook.com (2603:1096:301:a5::6)
+ by SI2PR03MB6165.apcprd03.prod.outlook.com (2603:1096:4:14d::13) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.25; Thu, 9 Mar
- 2023 09:49:27 +0800
-Received: from linuxcarl2.richtek.com (192.168.10.154) by ex3.rt.l
- (192.168.10.45) with Microsoft SMTP Server id 15.2.1118.25 via Frontend
- Transport; Thu, 9 Mar 2023 09:49:27 +0800
-Date: Thu, 9 Mar 2023 09:49:27 +0800
-From: ChiYuan Huang <cy_huang@richtek.com>
-To: Lee Jones <lee@kernel.org>
-CC: ChiaEn Wu <chiaen_wu@richtek.com>, <corbet@lwn.net>, <pavel@ucw.cz>,
-	<matthias.bgg@gmail.com>, <andriy.shevchenko@linux.intel.com>,
-	<jacek.anaszewski@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<linux-doc@vger.kernel.org>, <peterwu.pub@gmail.com>,
-	<linux-leds@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<szunichen@gmail.com>
-Subject: Re: [PATCH v17 RESEND 2/3] leds: flash: mt6370: Add MediaTek MT6370
- flashlight support
-Message-ID: <20230309014927.GA12537@linuxcarl2.richtek.com>
-References: <cover.1677150607.git.chiaen_wu@richtek.com>
- <dc467984ebfc443685af62310aadb45389e804d6.1677150607.git.chiaen_wu@richtek.com>
- <20230305100608.GD2574592@google.com>
- <20230307034433.GA10739@linuxcarl2.richtek.com>
- <20230308135433.GL9667@google.com>
-MIME-Version: 1.0
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.18; Thu, 9 Mar
+ 2023 02:55:45 +0000
+Received: from PUZPR03MB5877.apcprd03.prod.outlook.com
+ ([fe80::cd32:5baf:ebd0:3eaa]) by PUZPR03MB5877.apcprd03.prod.outlook.com
+ ([fe80::cd32:5baf:ebd0:3eaa%8]) with mapi id 15.20.6178.018; Thu, 9 Mar 2023
+ 02:55:45 +0000
+From: =?utf-8?B?R2FybWluIENoYW5nICjlvLXlrrbpipgp?= <Garmin.Chang@mediatek.com>
+To: "wenst@chromium.org" <wenst@chromium.org>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"robh+dt@kernel.org" <robh+dt@kernel.org>, "mturquette@baylibre.com"
+	<mturquette@baylibre.com>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, "sboyd@kernel.org" <sboyd@kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"richardcochran@gmail.com" <richardcochran@gmail.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "krzysztof.kozlowski+dt@linaro.org"
+	<krzysztof.kozlowski+dt@linaro.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "linux-clk@vger.kernel.org"
+	<linux-clk@vger.kernel.org>, "netdev@vger.kernel.org"
+	<netdev@vger.kernel.org>
+Subject: Re: [PATCH v5 00/19] MediaTek MT8188 clock support
+Thread-Topic: [PATCH v5 00/19] MediaTek MT8188 clock support
+Thread-Index: AQHZLARzEGoyIZoOhEiaRt2yOb9uG6682BeAgDU1J4A=
+Date: Thu, 9 Mar 2023 02:55:45 +0000
+Message-ID: <9422834b6f103f531aa7cd31a6f5a45a7fbef3c8.camel@mediatek.com>
+References: <20230119124848.26364-1-Garmin.Chang@mediatek.com>
+	 <CAGXv+5F-4Tyf1Yn7BYYMkPVyRQffEpx709F6+T65M1J+LfUPvg@mail.gmail.com>
+In-Reply-To: <CAGXv+5F-4Tyf1Yn7BYYMkPVyRQffEpx709F6+T65M1J+LfUPvg@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PUZPR03MB5877:EE_|SI2PR03MB6165:EE_
+x-ms-office365-filtering-correlation-id: d17bafc4-cc37-4f2c-0c85-08db2049c790
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: KNGxTRcKq/UmSxIxpVolrQmKj/0yoYAbv5N/4KHdat8itCqoFLNpWJDbRF3SZh9IQil5+yN811RiyjKVi1ezEb5Mn3/8s2uanaIBy6r4W5q+qsqfLvze6NCsyz0wDlU3/+/nv64nI/fX4iutX6SzRhTFd+uf1S+Dra92Vd9xfZryMHNz6k8GLgB+ckb0jM3mU4JMiJpaDk2zEeeIIPym52qpzhKXbxj3QcWjZJ4ea+Lt8XfJbY4MnSs9NV+LCSapw0x/ebtxnnh1S2C5kXqr5r42naDf8lQSOg6f62lg4d7D6iajQbzDsHBEI1bTcttO5npJzbH2h0KImeBSEWy4cmswSjzf6K2ZdXKz30rBxPNTABy4pn1FHL9xteytiSvLi8pATnHzrYeed+D+KNCEZF1WcbKY6fbd6gt3mvCThWmM3zuVK29YVLmPTgmTDTVSSAezGs3aUSXRKr4kZ083expncOovYISsB/ODlzR5jgQKt1IZdeMG0PET9nXH0PFKhQS1OZDfuMGt1geG4EW3O4EW9DKl9RS7BQIekZHOGBE1FaDnZgjFFmP/R6WNnSXcnEvptwt7x+T44y0H0am49cJ6xPctUJ97e30rfP70qfheFa2Hddm5lwZ+evy/2JvobSNe1Tn/3zZh6KDK5xBtO/AhWjTOD3LZ0AEgCQe4ljywqcgkFM3lqIjug0zgy17yleqvtGnS34WLk9onb1Y4tSSUaTknsNqcQNycouj3sj0H8F7GLpeH7Yd94MFI+i8v
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PUZPR03MB5877.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(136003)(366004)(346002)(39860400002)(396003)(376002)(451199018)(36756003)(85182001)(53546011)(6512007)(186003)(26005)(6486002)(71200400001)(6506007)(2616005)(86362001)(8936002)(66476007)(66556008)(4326008)(8676002)(66446008)(6916009)(66946007)(76116006)(2906002)(5660300002)(7416002)(4744005)(64756008)(41300700001)(316002)(38070700005)(91956017)(38100700002)(122000001)(478600001)(54906003);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?bUtjVHdwWWtKaDBmWkh5QXVla2hXMWRtUUlRSnpBN0Vqemt2N2NZZXBjdXVC?=
+ =?utf-8?B?SGR2SitTTVBrMUFza0d6L1NSTDUrMnNrSSthN0tZQnRhWTlsMlVmc3poZUdt?=
+ =?utf-8?B?TXBQN1JndFdmSzQva1N3VksyWnh6alFjRksvSStWTFdOR1h5UVpaeWptZTk3?=
+ =?utf-8?B?cm5zK0p3WHlCL1c0R3RLMHFJZjlxalpWMnl6b3NRODNsUGFmemVnUWN2Z3Fj?=
+ =?utf-8?B?Y3I5Q0Q3ZjJKU29WUEpjOTUrSEtXYjNTdEhHTUtIY2Z2TDU2TmVndHUybVFx?=
+ =?utf-8?B?bWdPT1FkWUgxUGNFRlJkQmd3Zm1ZeEE4a3FMeWZYU1BpNXpSMzVRdDVoOU5M?=
+ =?utf-8?B?UHkzUlN4Vmt1ZzAya1ljc1pQaVZVWVhOdll3cDQ3ZEZFdmVaeGh6WGJEdUJq?=
+ =?utf-8?B?UllQeGlEc2JkSy9LUUVYU09KZjhrbjhXa21Xd2dLRUVYUmFvVzdCejRXTjJy?=
+ =?utf-8?B?NTRrZjN5cUtqZWhHZGVuNStlM2lkblR1KzhUNFFObm9aZk02UHR4Si9aK2FR?=
+ =?utf-8?B?WEFSK2lXdThhVkovQ1JkYUZhYUY3TXBWUFFZZ2FJUmhyQ2ZrRkZLVE5xNHJS?=
+ =?utf-8?B?NHJVZWd0ZGxYbXJKVTFlclBReTNRQVZpU1I0UUV2MnIvM0hldVhvdHIvV0RC?=
+ =?utf-8?B?bUkrUUk1SDJaREt2SUxYTXU1NHZBT2hscUhieE51bWdDbnlJWTk1eVBLaGV2?=
+ =?utf-8?B?ci9WeGV5SG45Qkk4MXNmNlI3c1cyLzlCNDhZL2hraDBwaWhQYlA5NWJvVGR3?=
+ =?utf-8?B?azlNU0gvY1lDQzFZNi9jbTdhOGVCS25iVXFLZE0wdDdMS2xZRUtoN1V2RmNO?=
+ =?utf-8?B?a01GZnJGemFPcmZsUUxoQ3J5YnFpTlEvaC84U0ZKbUVXdzFyejFUT2RjMUZz?=
+ =?utf-8?B?M29aaHRyTkVMV2lDdU9sQ0UzR2lwayswWktLaFVERWFmM2lnT3hGMmtnQWtU?=
+ =?utf-8?B?TmptZTVIbnErQ2MzNVRYak5vU2dOWnAzYm1wMHY2NysrcE4wanRYcE9XL3do?=
+ =?utf-8?B?eWlNM01zT1dNaWJlTEttWFdTL3BDTnNORlFkTk9qbU5Xa29OTDk1QUpHYTI2?=
+ =?utf-8?B?T2xINm45eUwwOC9pUTRHVUdQNjMwU1RzVnROVjlocFBMWmltYzh1R1VwanJB?=
+ =?utf-8?B?K2N4S0JLT0Z2RXNkSVdCNDRuc2g0Z3hKY2JLa3VDNkdHMVZESlRnWWJHUFlZ?=
+ =?utf-8?B?em5xUXRycm1wZHNualFSQjY2Z29HRllkTU9SSlFyNXlQdkJlUnhTQ0pKUWgw?=
+ =?utf-8?B?aExXYzFNalR0ckdOZUUwdlE0Ty9mTEZsSzgvOTZubzRuNVVzU2ZsemdBTGhq?=
+ =?utf-8?B?WkpCVHdveld4Y00vQUd2OXhqWlRTUGtZOGFVSGtHdTZhLzltYW8wekFqZlBH?=
+ =?utf-8?B?SXdhRUJDM3c1ZExBMkQzQUtuZUdEVEtiZDc2a0FoNW9pd3p2VGdVR3dLamRh?=
+ =?utf-8?B?UHg5cjdZL1RJQlVJaVMxQ1hvODhjenFHRzJ6SEV2QjY1cWZEcS8xQi9rejg5?=
+ =?utf-8?B?aG9qanZUZlZUalhwT2Jza3VoWVF4ei9JQUpLNzdMS1E0Y0pnMGl3eUEwL2V1?=
+ =?utf-8?B?bWkwNEREaGphY2ZCUFNxV0RCNGNYMGgvZnZTTG9TNmZrVkppV3RwcE9ZSkpD?=
+ =?utf-8?B?VSt1bnVoeUx3b1VCd1BqT2pvWE1oUVY5ZjRYS1dDZ0VYcktCb2xOSGdPZ0Nl?=
+ =?utf-8?B?MGtaNWloSTdKRkFBbENzOWdDeElqbHFLM1g1dGMraUI4VVBPTDhFSk9FWGgz?=
+ =?utf-8?B?cklaQWZickZZM1RzeWkrdEJGSm1sc1V3Y3J6WlkyRDBXenlxNW4rdjhCY01P?=
+ =?utf-8?B?dmQ0elBtbWhLSERWU2lDRllLaVhWS2pRTGVjY2ZzVkJaMy94aytCWE5FSWFB?=
+ =?utf-8?B?dXhPVmhON0NEVXVTR3lXRTVKU2g2K1BQNTNlSnJnUk1uSnMvRHQ0ajlUWDNq?=
+ =?utf-8?B?NnNEbVdma2hwU3JROUpEaUZFcUE1czlKTnl0bnJ6QndTKzM0bkcwRUVMUHdt?=
+ =?utf-8?B?RkVlUDhkd29VckNtYlV3UnpnMDBTR3E3Uzc4V3o0WjltMUlSMXFNclpSVmRB?=
+ =?utf-8?B?cUpWNDNHYUFJdVg5VC9uOXhRR0VBUUVQdHJqa2dDQnRRaEVUOGxKN3g5dTY2?=
+ =?utf-8?B?ZXEra28vb3puUitxWHJlUHVSVjZRdmFtNEkycS9QWDhNNGhRZXBZRE8wdjl3?=
+ =?utf-8?B?THc9PQ==?=
 Content-Type: text/plain; charset="utf-8"
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230308135433.GL9667@google.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-ID: <70F85CBE58B43849B424BFB5E5074017@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PUZPR03MB5877.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d17bafc4-cc37-4f2c-0c85-08db2049c790
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Mar 2023 02:55:45.4615
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: L1LTPf+uGBX6Ttc5MjKNcHE6tEKOfh5QB69T0HIvY6n7dWdCLVuXC1VrJpixfwP6LFMt7xJehcT20BKFBXUV6THbdgSYbsHGArqtUQT/5fc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB6165
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_175024_279175_8EF1A93D 
-X-CRM114-Status: GOOD (  35.30  )
+X-CRM114-CacheID: sfid-20230308_185631_628606_D92C6FCF 
+X-CRM114-Status: GOOD (  11.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,134 +183,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 08, 2023 at 01:54:33PM +0000, Lee Jones wrote:
-Hi, Lee:
-> On Tue, 07 Mar 2023, ChiYuan Huang wrote:
-> 
-> > Hi, Lee:
-> >    Reply below the comments.
-> >
-> > On Sun, Mar 05, 2023 at 10:06:08AM +0000, Lee Jones wrote:
-> > > On Thu, 23 Feb 2023, ChiaEn Wu wrote:
-> > >
-> > > > From: ChiYuan Huang <cy_huang@richtek.com>
-> > > >
-> > > > The MediaTek MT6370 is a highly-integrated smart power management IC,
-> > > > which includes a single cell Li-Ion/Li-Polymer switching battery
-> > > > charger, a USB Type-C & Power Delivery (PD) controller, dual Flash
-> > > > LED current sources, a RGB LED driver, a backlight WLED driver,
-> > > > a display bias driver and a general LDO for portable devices.
-> > > >
-> > > > Add support for the MT6370 Flash LED driver. Flash LED in MT6370
-> > > > has 2 channels and support torch/strobe mode.
-> > > >
-> > > > Acked-by: Jacek Anaszewski <jacek.anaszewski@gmail.com>
-> > > > Co-developed-by: Alice Chen <alice_chen@richtek.com>
-> > > > Signed-off-by: Alice Chen <alice_chen@richtek.com>
-> > > > Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
-> > > > Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
-> > > > ---
-> > > > v17
-> > > > - Update the year of Copyright from 2022 to 2023
-> > > >
-> > > > ---
-> > > >  drivers/leds/flash/Kconfig             |  13 +
-> > > >  drivers/leds/flash/Makefile            |   1 +
-> > > >  drivers/leds/flash/leds-mt6370-flash.c | 596 +++++++++++++++++++++++++++++++++
-> > > >  3 files changed, 610 insertions(+)
-> > > >  create mode 100644 drivers/leds/flash/leds-mt6370-flash.c
-> 
-> [...]
-> 
-> > > > +static int _mt6370_flash_brightness_set(struct led_classdev_flash *fl_cdev,
-> > > > +					u32 brightness)
-> > > > +{
-> > > > +	struct mt6370_led *led = to_mt6370_led(fl_cdev, flash);
-> > > > +	struct mt6370_priv *priv = led->priv;
-> > > > +	struct led_flash_setting *setting = &fl_cdev->brightness;
-> > > > +	u32 val = (brightness - setting->min) / setting->step;
-> > > > +	int ret, i;
-> > > > +
-> > > > +	if (led->led_no == MT6370_LED_JOINT) {
-> > >
-> > > What is a "JOINT"?
-> > >
-> > Since MT6370 has two flash led channels. Per channel can drive the current up to 1.5A.
-> > 'JOINT' case is used if 1.5A driving current is not enough, like as flash current 2A.
-> > They can use two channels to drive 'one' flash led by the HW application.
-> > This will make the driving current larger than the capability of one channel.
-> 
-> Is "joint" the term used in the datasheet?
->
-Nope, this term is not clearly defined in the datasheet. but this kind of HW application is
-allowed. 
-> Please make this definition clear in the code.
-> 
-> If I'm asking, others are likely to too.
-> 
-Thanks, I'll add more comments to clearly describe what the 'JOINT' code did.
-> [...]
-> 
-> > > > +static int mt6370_init_flash_properties(struct device *dev,
-> > > > +					struct mt6370_led *led,
-> > > > +					struct fwnode_handle *fwnode)
-> > > > +{
-> > > > +	struct led_classdev_flash *flash = &led->flash;
-> > > > +	struct led_classdev *lcdev = &flash->led_cdev;
-> > > > +	struct mt6370_priv *priv = led->priv;
-> > > > +	struct led_flash_setting *s;
-> > > > +	u32 sources[MT6370_MAX_LEDS];
-> > > > +	u32 max_ua, val;
-> > > > +	int i, ret, num;
-> > > > +
-> > > > +	num = fwnode_property_count_u32(fwnode, "led-sources");
-> > > > +	if (num < 1)
-> > > > +		return dev_err_probe(dev, -EINVAL,
-> > > > +				     "Not specified or wrong number of led-sources\n");
-> > > > +
-> > > > +	ret = fwnode_property_read_u32_array(fwnode, "led-sources", sources, num);
-> > > > +	if (ret)
-> > > > +		return ret;
-> > > > +
-> > > > +	for (i = 0; i < num; i++) {
-> > > > +		if (sources[i] >= MT6370_MAX_LEDS)
-> > > > +			return -EINVAL;
-> > > > +		if (priv->leds_active & BIT(sources[i]))
-> > > > +			return -EINVAL;
-> > > > +		priv->leds_active |= BIT(sources[i]);
-> > > > +	}
-> > > > +
-> > > > +	led->led_no = num == 2 ? MT6370_LED_JOINT : sources[0];
-> > > > +
-> > > > +	max_ua = num == 2 ? MT6370_ITORCH_DOUBLE_MAX_uA : MT6370_ITORCH_MAX_uA;
-> > > > +	val = MT6370_ITORCH_MIN_uA;
-> > >
-> > > In what scenario does this not get overwritten?
-> > >
-> > Only if the property is missing. This will make the value keep in minimum.
-> 
-> If the property is missing, fwnode_property_read_u32() returns an errno, no?
-> 
-> If that's the case, val will be over-written in the if() clause?
-> 
-In this funciton, three properties needs to be paresed from DT. Each one need to clamp the value.
-There're two ways to write the code.
-
-[Option 1]
-ret = fwnode_property_read_u32(...)
-if (ret)
-    val = MIM_uA;
-
-val = mt6370_clamp(val, MIN, MAX);
-
-[Option 2]
-val = MIN_uA;
-if (!ret)
-    val = mt6370_clamp(val, MIN, MAX);
-
-
-From the above, the sencond one can save more LOC, no?
-But it seems the first one is more preferable by you, right?
-> --
-> Lee Jones [李琼斯]
+T24gRnJpLCAyMDIzLTAyLTAzIGF0IDE0OjIzICswODAwLCBDaGVuLVl1IFRzYWkgd3JvdGU6DQo+
+IE9uIFRodSwgSmFuIDE5LCAyMDIzIGF0IDg6NDkgUE0gR2FybWluLkNoYW5nIDwNCj4gR2FybWlu
+LkNoYW5nQG1lZGlhdGVrLmNvbT4gd3JvdGU6DQo+ID4gDQo+ID4gQmFzZSBvbiB0YWc6IG5leHQt
+MjAyMzAxMTksIGxpbnV4LW5leHQvbWFzdGVyDQo+IA0KPiBUaGVyZSBhcmUgc29tZSByZWNlbnQg
+Y2hhbmdlcyB0byB0aGUgTWVkaWFUZWsgY2xrIGRyaXZlciBsaWJyYXJ5DQo+IHRoYXQgbWFrZXMg
+dGhpcyBzZXJpZXMgaW5jb21wYXRpYmxlLiBDb3VsZCB5b3UgcmViYXNlIG9udG8gbmV4dC0NCj4g
+MjAyMzAyeHgNCj4gYW5kIHNlbmQgYSBuZXcgdmVyc2lvbj8NCj4gDQo+IFRoYW5rcw0KDQpPSy4g
+SSdsbCByZWJhc2Ugb250byBuZXh0IDIwMjMwM3h4LCB0aGFua3MuDQo=
 
