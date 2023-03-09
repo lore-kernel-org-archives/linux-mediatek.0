@@ -4,79 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C449C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 11:43:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33F31C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 11:53:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AMX+JKvd7D3HhtD/pC4qCLGWIlfCg/IyXqngyoSoVBI=; b=KCYpLoB2AhXBPem10JdDlFVKcb
-	MW9ElL8+4VNE7mAmwPQhKENoCrw+t7TpNHdlaxt7a/K0tcOXKy+fQMbSvrVLKyQHhZ5qjxqhitlGg
-	pBtn9RS7bZIvLa2+iU3Xo/fXvshWxecJKQcjgc5BoP0yhgg2KX+nM6j0s/2KIaHAi9d3Cv9jhPXsy
-	XxS0ART/MXz3/dx5xSzf2Ji85GulhDDYLOiQARnnUlL8XHfrbZQNLf+xZAqcf2VYlOdTEAzXriVwe
-	FnFXBEf3XsaTPMkHq2t+042JwVs9eED5hqb2Ggjxr+0S5YF+KziIcPzyn3R+OUVraIX0t2TbL//IJ
-	efNVSksA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LVWBr/nHRC2tYP4GHz+Q26dc8LouI1/mTHjWjyy5lJY=; b=gQ+cvIj0pacDx7
+	cIFsDlYU9M0tjGq5ctrlzhFXjOZNEcxIDgetAVbZzaOC+W7DKXz8RmnDw5OxUzUONW4zm75wCEsHv
+	03hm1SIKhLEbEs2VyeH0o2HRPQeD+4aMMTqVvJVboP0kvB9cLiNACmkBPe9+okJQTIZtr97CUtc6a
+	zekpi4PKVEp63yse6z94CZE+43D4TPjCLPAAlUpxZJSKheM/hoTUapCBodmD8kwhXy6Q4aQSec+pT
+	ua7OtEzUSY7AMYgTHWeAwM4QKJcofREzAdn71RSkTyHRz4cz8YRimSHRexOO0ILeMsJMgTkPKTibf
+	mWIo+CYDcGQI3v5YREaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paEft-009cJB-UH; Thu, 09 Mar 2023 11:43:09 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1paEpw-009gsg-6q; Thu, 09 Mar 2023 11:53:32 +0000
+Received: from mail-oa1-x32.google.com ([2001:4860:4864:20::32])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paEPA-009Tt0-JQ; Thu, 09 Mar 2023 11:25:54 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5E2F16602087;
-	Thu,  9 Mar 2023 11:25:50 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678361151;
-	bh=CWOTZLVevNTcpblZto23WaaBgmbFJEVjGPIDL9aATaM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=BR+nP7a944PQHBS/RASL/C9JyJjbKXMJ6wQxoz7XLYL50lWelxCrLfNUGo8LLzs7I
-	 JIZrDPEHo0XecO8HgHp1JWMAuw3ogyl6oi9JIOWADfaSLQQWf8e8aAZv0Cw9EIS3IN
-	 YFBA1qvsted+HxWazj/90CdmMrZ17V2ebi2hzxaqNE1vgor0kv/2j/SfOmIoDDa9CN
-	 FlFvitJYnchgVrYVPJw3A5TvtKorCVi0NdldTJJdBhrHI+2+NPy/lZAbO8CIN9IsEQ
-	 bkln1lbYpfBNZAZhSxFObbHMua1pw0IYkAYWYKska6yBAkHcGiv1g/6ZIAHiRD5WzP
-	 llp9EsDcdJcgw==
-Message-ID: <ccfa1d23-e4a3-89d4-b09f-b9d79c0e6e32@collabora.com>
-Date: Thu, 9 Mar 2023 12:25:48 +0100
+	id 1paEWK-009XnJ-Ul; Thu, 09 Mar 2023 11:33:18 +0000
+Received: by mail-oa1-x32.google.com with SMTP id 586e51a60fabf-17711f56136so1916754fac.12;
+        Thu, 09 Mar 2023 03:33:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678361594;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=LVWBr/nHRC2tYP4GHz+Q26dc8LouI1/mTHjWjyy5lJY=;
+        b=E3Y8S/UvtydBi2xb90Ub5S4kXSGQdXRmiDm6/T3ti5CjjF4yk3XqDiG2BQoYthSZeO
+         mxCLl3BdDex+MGfAk9hkp/FpWcZrlTDnxaZCaC4I3v6fw+kKXRqBZP5ZDa5wOsmZlPLD
+         AzGcnuh4h3IRpeeaD5q43gZbfVKIXIHgkPCi+2yEMrPqxFGsyviR99270l6z81M1U4RC
+         nU6zDqwT7dxUWdz9abqEOwMH/o/sX3ldZ1UVhiysDTeWZDWhZeBkgxeelHe/yODPhvdY
+         juJ4EF2KNrVW6cAyuDX99w0UHVJi1G/6CeMPT8r8PBc+A8xbxhckcsQEQTNFzZXBxosG
+         bHAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678361594;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=LVWBr/nHRC2tYP4GHz+Q26dc8LouI1/mTHjWjyy5lJY=;
+        b=3cil3okWpLX+ohkeRxH0qVoE/W3o47NcYXXpLW8/0njwPytyvaG3uNgmaTMk87jhgG
+         xGY2AMCpZWrHSs76JOVdMx2Ixf78yfGECaqBe+KpPGIGdwrJSEAMLWTENIUDxb1ceoqb
+         lC9BRk7jhQyjWOBC0PtbiYdAq6PxkWxmiHlSU44i44UX06B8mpOq8axI4qAOOzoMUvLW
+         OVAkG9t7yDJLt3R5yCRXXKOAx9wiaze5JZbe+Clf3KGzWprYSC1cpkWw2LwE7/bbSwOd
+         fjVf/87vzxnYds+jJaZSmU+oyrmd0VMPsEnj4UrdAFdrv2pmRdq1zViSxiU8uYTCtUcV
+         kTeA==
+X-Gm-Message-State: AO0yUKXQCfmjmjlo6Qw2PrG1Ignb0NTVjXEtWuglqo4ZPeJ5Z/9Z6y8d
+	+wE9rEKGWpg09G8dvOF9ESNIWOlf1DGjEqZXZtk=
+X-Google-Smtp-Source: AK7set/XSrA5enE/PH73VS6AKR9JL5gUiLM25aDZOjVqo4Juj983qp5aKuXczEDYDKwriek9TOjLmAn4vC6x4VmkCfw=
+X-Received: by 2002:a05:6870:8c28:b0:16d:fb8e:3ba with SMTP id
+ ec40-20020a0568708c2800b0016dfb8e03bamr7334038oab.0.1678361594135; Thu, 09
+ Mar 2023 03:33:14 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v5 12/19] clk: mediatek: Add MT8188 vdosys0 clock support
-Content-Language: en-US
-To: =?UTF-8?B?R2FybWluIENoYW5nICjlvLXlrrbpipgp?= <Garmin.Chang@mediatek.com>,
- "wenst@chromium.org" <wenst@chromium.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "mturquette@baylibre.com" <mturquette@baylibre.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "sboyd@kernel.org" <sboyd@kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "richardcochran@gmail.com" <richardcochran@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>
-References: <20230119124848.26364-1-Garmin.Chang@mediatek.com>
- <20230119124848.26364-13-Garmin.Chang@mediatek.com>
- <CAGXv+5Fysy4iCvHEXWtf5oXCHkaKezPqcrGd8QzhnaTrYdyecA@mail.gmail.com>
- <76f33f1f-53ab-65a9-f6e8-23db4ca0e0b5@collabora.com>
- <329042ba313a93a389df5c69b1750f88cc26b9d4.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <329042ba313a93a389df5c69b1750f88cc26b9d4.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20230303002850.51858-1-arinc.unal@arinc9.com> <20230303002850.51858-10-arinc.unal@arinc9.com>
+ <20230308210514.GA3767521-robh@kernel.org> <12be053e-b70a-faca-71c8-d8eef69a3b73@arinc9.com>
+ <ccdfd262-eaf3-dbbe-7a3c-a911a5ec0fc4@arinc9.com> <9663817e-7f6f-c3b1-8bf9-321f9b067e96@linaro.org>
+ <deca532a-bdf5-c49e-1422-ce6124b61882@arinc9.com>
+In-Reply-To: <deca532a-bdf5-c49e-1422-ce6124b61882@arinc9.com>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Thu, 9 Mar 2023 12:33:01 +0100
+Message-ID: <CAMhs-H8M3ir+DshHF60W=QMn9WG3Jgbo8GgXZnDKCLhs=+WBoQ@mail.gmail.com>
+Subject: Re: [PATCH 09/20] dt-bindings: pinctrl: ralink: {mt7620,mt7621}:
+ rename to mediatek
+To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_032552_944559_0D691396 
-X-CRM114-Status: GOOD (  20.93  )
+X-CRM114-CacheID: sfid-20230309_033317_052641_FE78DE69 
+X-CRM114-Status: GOOD (  28.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,223 +84,97 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Rob Herring <robh@kernel.org>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, devicetree@vger.kernel.org, Daniel Santos <daniel.santos@pobox.com>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, William Dean <williamsukatube@gmail.com>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Daniel Golle <daniel@makrotopia.org>, Matthias Brugger <matthias.bgg@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/03/23 06:49, Garmin Chang (張家銘) ha scritto:
-> On Fri, 2023-02-03 at 11:49 +0100, AngeloGioacchino Del Regno wrote:
->> Il 03/02/23 08:19, Chen-Yu Tsai ha scritto:
->>> On Thu, Jan 19, 2023 at 8:54 PM Garmin.Chang <
->>> Garmin.Chang@mediatek.com> wrote:
->>>>
->>>> Add MT8188 vdosys0 clock controller which provides clock gate
->>>> control in video system. This is integrated with mtk-mmsys
->>>> driver which will populate device by
->>>> platform_device_register_data
->>>> to start vdosys clock driver.
->>>>
->>>> Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
->>>> ---
->>>>    drivers/clk/mediatek/Makefile          |   3 +-
->>>>    drivers/clk/mediatek/clk-mt8188-vdo0.c | 134
->>>> +++++++++++++++++++++++++
->>>>    2 files changed, 136 insertions(+), 1 deletion(-)
->>>>    create mode 100644 drivers/clk/mediatek/clk-mt8188-vdo0.c
->>>>
->>>> diff --git a/drivers/clk/mediatek/Makefile
->>>> b/drivers/clk/mediatek/Makefile
->>>> index 7d09e9fc6538..df78c0777fef 100644
->>>> --- a/drivers/clk/mediatek/Makefile
->>>> +++ b/drivers/clk/mediatek/Makefile
->>>> @@ -86,7 +86,8 @@ obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-
->>>> mcu.o clk-mt8186-topckgen.o clk-mt
->>>>    obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o clk-
->>>> mt8188-topckgen.o \
->>>>                                      clk-mt8188-peri_ao.o clk-
->>>> mt8188-infra_ao.o \
->>>>                                      clk-mt8188-cam.o clk-mt8188-
->>>> ccu.o clk-mt8188-img.o \
->>>> -                                  clk-mt8188-ipe.o clk-mt8188-
->>>> mfg.o clk-mt8188-vdec.o
->>>> +                                  clk-mt8188-ipe.o clk-mt8188-
->>>> mfg.o clk-mt8188-vdec.o \
->>>> +                                  clk-mt8188-vdo0.o
->>>>    obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
->>>>    obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
->>>>    obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
->>>> diff --git a/drivers/clk/mediatek/clk-mt8188-vdo0.c
->>>> b/drivers/clk/mediatek/clk-mt8188-vdo0.c
->>>> new file mode 100644
->>>> index 000000000000..30dd64374ace
->>>> --- /dev/null
->>>> +++ b/drivers/clk/mediatek/clk-mt8188-vdo0.c
->>>> @@ -0,0 +1,134 @@
->>>> +// SPDX-License-Identifier: GPL-2.0-only
->>>> +//
->>>> +// Copyright (c) 2022 MediaTek Inc.
->>>> +// Author: Garmin Chang <garmin.chang@mediatek.com>
->>>> +
->>>> +#include <linux/clk-provider.h>
->>>> +#include <linux/platform_device.h>
->>>> +#include <dt-bindings/clock/mediatek,mt8188-clk.h>
->>>> +
->>>> +#include "clk-gate.h"
->>>> +#include "clk-mtk.h"
->>>> +
->>>> +static const struct mtk_gate_regs vdo0_0_cg_regs = {
->>>> +       .set_ofs = 0x104,
->>>> +       .clr_ofs = 0x108,
->>>> +       .sta_ofs = 0x100,
->>>> +};
->>>> +
->>>> +static const struct mtk_gate_regs vdo0_1_cg_regs = {
->>>> +       .set_ofs = 0x114,
->>>> +       .clr_ofs = 0x118,
->>>> +       .sta_ofs = 0x110,
->>>> +};
->>>> +
->>>> +static const struct mtk_gate_regs vdo0_2_cg_regs = {
->>>> +       .set_ofs = 0x124,
->>>> +       .clr_ofs = 0x128,
->>>> +       .sta_ofs = 0x120,
->>>> +};
->>>> +
->>>> +#define GATE_VDO0_0(_id, _name, _parent,
->>>> _shift)                       \
->>>> +       GATE_MTK(_id, _name, _parent, &vdo0_0_cg_regs, _shift,
->>>> &mtk_clk_gate_ops_setclr)
->>>> +
->>>> +#define GATE_VDO0_1(_id, _name, _parent,
->>>> _shift)                       \
->>>> +       GATE_MTK(_id, _name, _parent, &vdo0_1_cg_regs, _shift,
->>>> &mtk_clk_gate_ops_setclr)
->>>> +
->>>> +#define GATE_VDO0_2(_id, _name, _parent,
->>>> _shift)                       \
->>>> +       GATE_MTK(_id, _name, _parent, &vdo0_2_cg_regs, _shift,
->>>> &mtk_clk_gate_ops_setclr)
->>>> +
->>>> +#define GATE_VDO0_2_FLAGS(_id, _name, _parent, _shift,
->>>> _flags)         \
->>>> +       GATE_MTK_FLAGS(_id, _name, _parent, &vdo0_2_cg_regs,
->>>> _shift,    \
->>>> +       &mtk_clk_gate_ops_setclr, _flags)
->>>> +
->>>> +static const struct mtk_gate vdo0_clks[] = {
->>>> +       /* VDO0_0 */
->>>> +       GATE_VDO0_0(CLK_VDO0_DISP_OVL0, "vdo0_disp_ovl0",
->>>> "top_vpp", 0),
->>>> +       GATE_VDO0_0(CLK_VDO0_FAKE_ENG0, "vdo0_fake_eng0",
->>>> "top_vpp", 2),
->>>> +       GATE_VDO0_0(CLK_VDO0_DISP_CCORR0, "vdo0_disp_ccorr0",
->>>> "top_vpp", 4),
->>>> +       GATE_VDO0_0(CLK_VDO0_DISP_MUTEX0, "vdo0_disp_mutex0",
->>>> "top_vpp", 6),
->>>> +       GATE_VDO0_0(CLK_VDO0_DISP_GAMMA0, "vdo0_disp_gamma0",
->>>> "top_vpp", 8),
->>>> +       GATE_VDO0_0(CLK_VDO0_DISP_DITHER0, "vdo0_disp_dither0",
->>>> "top_vpp", 10),
->>>> +       GATE_VDO0_0(CLK_VDO0_DISP_WDMA0, "vdo0_disp_wdma0",
->>>> "top_vpp", 17),
->>>> +       GATE_VDO0_0(CLK_VDO0_DISP_RDMA0, "vdo0_disp_rdma0",
->>>> "top_vpp", 19),
->>>> +       GATE_VDO0_0(CLK_VDO0_DSI0, "vdo0_dsi0", "top_vpp", 21),
->>>> +       GATE_VDO0_0(CLK_VDO0_DSI1, "vdo0_dsi1", "top_vpp", 22),
->>>> +       GATE_VDO0_0(CLK_VDO0_DSC_WRAP0, "vdo0_dsc_wrap0",
->>>> "top_vpp", 23),
->>>> +       GATE_VDO0_0(CLK_VDO0_VPP_MERGE0, "vdo0_vpp_merge0",
->>>> "top_vpp", 24),
->>>> +       GATE_VDO0_0(CLK_VDO0_DP_INTF0, "vdo0_dp_intf0",
->>>> "top_vpp", 25),
->>>> +       GATE_VDO0_0(CLK_VDO0_DISP_AAL0, "vdo0_disp_aal0",
->>>> "top_vpp", 26),
->>>> +       GATE_VDO0_0(CLK_VDO0_INLINEROT0, "vdo0_inlinerot0",
->>>> "top_vpp", 27),
->>>> +       GATE_VDO0_0(CLK_VDO0_APB_BUS, "vdo0_apb_bus", "top_vpp",
->>>> 28),
->>>> +       GATE_VDO0_0(CLK_VDO0_DISP_COLOR0, "vdo0_disp_color0",
->>>> "top_vpp", 29),
->>>> +       GATE_VDO0_0(CLK_VDO0_MDP_WROT0, "vdo0_mdp_wrot0",
->>>> "top_vpp", 30),
->>>> +       GATE_VDO0_0(CLK_VDO0_DISP_RSZ0, "vdo0_disp_rsz0",
->>>> "top_vpp", 31),
->>>> +       /* VDO0_1 */
->>>> +       GATE_VDO0_1(CLK_VDO0_DISP_POSTMASK0,
->>>> "vdo0_disp_postmask0", "top_vpp", 0),
->>>> +       GATE_VDO0_1(CLK_VDO0_FAKE_ENG1, "vdo0_fake_eng1",
->>>> "top_vpp", 1),
->>>> +       GATE_VDO0_1(CLK_VDO0_DL_ASYNC2, "vdo0_dl_async2",
->>>> "top_vpp", 5),
->>>> +       GATE_VDO0_1(CLK_VDO0_DL_RELAY3, "vdo0_dl_relay3",
->>>> "top_vpp", 6),
->>>> +       GATE_VDO0_1(CLK_VDO0_DL_RELAY4, "vdo0_dl_relay4",
->>>> "top_vpp", 7),
->>>> +       GATE_VDO0_1(CLK_VDO0_SMI_GALS, "vdo0_smi_gals",
->>>> "top_vpp", 10),
->>>> +       GATE_VDO0_1(CLK_VDO0_SMI_COMMON, "vdo0_smi_common",
->>>> "top_vpp", 11),
->>>> +       GATE_VDO0_1(CLK_VDO0_SMI_EMI, "vdo0_smi_emi", "top_vpp",
->>>> 12),
->>>> +       GATE_VDO0_1(CLK_VDO0_SMI_IOMMU, "vdo0_smi_iommu",
->>>> "top_vpp", 13),
->>>> +       GATE_VDO0_1(CLK_VDO0_SMI_LARB, "vdo0_smi_larb",
->>>> "top_vpp", 14),
->>>> +       GATE_VDO0_1(CLK_VDO0_SMI_RSI, "vdo0_smi_rsi", "top_vpp",
->>>> 15),
->>>> +       /* VDO0_2 */
->>>> +       GATE_VDO0_2(CLK_VDO0_DSI0_DSI, "vdo0_dsi0_dsi",
->>>> "top_dsi_occ", 0),
->>>> +       GATE_VDO0_2(CLK_VDO0_DSI1_DSI, "vdo0_dsi1_dsi",
->>>> "top_dsi_occ", 8),
->>>> +       GATE_VDO0_2_FLAGS(CLK_VDO0_DP_INTF0_DP_INTF,
->>>> "vdo0_dp_intf0_dp_intf",
->>>> +               "top_edp", 16, CLK_SET_RATE_PARENT),
->>>> +};
->>>> +
->>>> +static int clk_mt8188_vdo0_probe(struct platform_device *pdev)
->>>> +{
->>>> +       struct device *dev = &pdev->dev;
->>>> +       struct device_node *node = dev->parent->of_node;
->>>> +       struct clk_hw_onecell_data *clk_data;
->>>> +       int r;
->>>> +
->>>> +       clk_data = mtk_alloc_clk_data(CLK_VDO0_NR_CLK);
->>>> +       if (!clk_data)
->>>> +               return -ENOMEM;
->>>> +
->>>> +       r = mtk_clk_register_gates(node, vdo0_clks,
->>>> ARRAY_SIZE(vdo0_clks), clk_data);
->>>
->>> This API was changed. Please rebase onto the latest -next and
->>> update.
->>>
->>> Angelo (CC-ed) also mentioned a new simple probe variant for non-DT
->>> clock drivers is being developed. He didn't mention a timeline
->>> though.
->>
->> I've already tested the new simple probe variant for non-DT clock
->> drivers and
->> it works fine on MT8173, MT8192 and MT8195.
->>
->> Timeline - I should be able to push the part 2 series next week,
->> which will include
->> more conversion to simple probe and almost all clock drivers changed
->> to allow
->> building as modules.
->>
->> Cheers,
->> Angelo
->>
-> Thank you for your suggestions.
-> When the new simple probe variant and building as modules are ready, I
-> will rebase latest-next and update it.
+On Thu, Mar 9, 2023 at 11:34 AM Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc=
+9.com> wrote:
+>
+> On 9.03.2023 12:52, Krzysztof Kozlowski wrote:
+> > On 09/03/2023 08:53, Ar=C4=B1n=C3=A7 =C3=9CNAL wrote:
+> >> On 9.03.2023 00:19, Ar=C4=B1n=C3=A7 =C3=9CNAL wrote:
+> >>> On 9.03.2023 00:05, Rob Herring wrote:
+> >>>> On Fri, Mar 03, 2023 at 03:28:38AM +0300, arinc9.unal@gmail.com wrot=
+e:
+> >>>>> From: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
+> >>>>>
+> >>>>> This platform from Ralink was acquired by MediaTek in 2011. Then,
+> >>>>> MediaTek
+> >>>>> introduced these SoCs which utilise this platform. Rename the schem=
+as to
+> >>>>> mediatek to address the incorrect naming.
+> >>>>
+> >>>> I said we don't do renames due to acquistions, you said that wasn't =
+the
+> >>>> reason, but then that's your reasoning here.
+> >>>
+> >>> It's not a marketing/acquistion rename as the name of these SoCs were
+> >>> wrong from the get go. The information on the first sentence is to gi=
+ve
+> >>> the idea of why these SoCs were wrongfully named as the base platform
+> >>> that these new MediaTek SoCs share code with was called Ralink.
+> >>>
+> >>>>
+> >>>> To give you another example, *new* i.MX things are still called
+> >>>> 'fsl,imx...' and it has been how many years since merging with NXP?
+> >>>
+> >>> Ok this is a point I see now. Though, I fail to see how this is calle=
+d
+> >>> renaming when there's only new SoCs (from NXP in this case) to be add=
+ed.
+> >>
+> >> If I understand correctly, i.MX is a family from Freescale so the name
+> >
+> > It's the same "family" as your platform, because as you said:
+> > "introduced these SoCs which utilise this platform"
+> >
+> >> was kept the same on new SoC releases from NXP. I believe it's differe=
+nt
+> >> in this case here. There's no family name. The closest thing on the na=
+me
+> >> of the SoC model is, it's RT for Ralink, MT for MediaTek.
+> >
+> > It's not about the name. NXP took Freescale platform and since many
+> > years makes entirely new products, currently far, far away from origina=
+l
+> > platform.
+> >
+> > That's the same case you have here - Mediatek took existing platform an=
+d
+> > started making new products with it.
+> >
+> >>
+> >> On top of that, mediatek strings already exist for MT SoCs already, at
+> >> least for MT7621.
+> >>
+> >> https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/tr=
+ee/Documentation/devicetree/bindings/mips/ralink.yaml?id=3Ddd3cb467ebb5659d=
+6552999d6f16a616653f9933#n83
+> >
+> > NXP also has compatibles with nxp, thus still not that good reason.
+>
+> Ok, makes sense. Am I free to call the SoCs MediaTek, change the schema
+> name from ralink,mtXXXX-pinctrl.yaml to mediatek,mtXXXX-pinctrl.yaml
+> whilst keeping the compatible string ralink?
+>
+> I plan to do some cleanup on ralink.yaml as well. From what I
+> understand, I should change the mediatek,mt7621-soc compatible string to
+> ralink,mt7621-soc?
 
-It's *finally* ready as it's fully tested and reviewed.
+You have to take care of these SoC strings since they are used in the
+very beginning of the ralink startup platforms for any single ralink
+SoC. See for example [0] and [1] (but they are in all soc init code).
+I think it is better to maintain the ralink.yaml file as it is.
 
-You can go on with a rebase on top of it:
+Best regards,
+    Sergio Paracuellos
 
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=726914
+[0]: https://elixir.bootlin.com/linux/v6.2.1/source/arch/mips/ralink/mt7621=
+.c#L200
+[1] https://elixir.bootlin.com/linux/v6.2.1/source/arch/mips/ralink/rt305x.=
+c#L161
 
-Regards,
-Angelo
+>
+> Ar=C4=B1n=C3=A7
 
