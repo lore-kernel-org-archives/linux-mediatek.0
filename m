@@ -4,113 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 193C3C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 12:04:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C05E2C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 12:10:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J4GSqIKfh+fPPQrFXuCrH3ba1s5AAafXmlJ7Rizwh8Y=; b=1Dj6Ol3p2LJTx6jMU6ThnitZuR
-	LqEKTvBuzFnUdI3Y9loESFK9Kti4Wys4lYVHqoh9Oj0VG5aOD2fO8l+vFc+kCv1qK1CpFt3xXXz6l
-	/4YIwKCjCg6TbiRQztHN06gw0F85ONypAjC6/fT7HWaPFkLwVja0r2e7bc4yfmnnkB6AdkKS0nwJM
-	7b2pEGz4j1VTrX89RWr4zIYQzP7xxipkj5/l8HzWNDbyYTR4SqjQ3M38KdOPiGLN4VjsJ8p1VCfLm
-	gfQEZIQSir6qKhy/wo0I1wuUG6MREF7GYzdNG27gUWVMo2JJde8Trg/H7ddNwi7oZbfaoNBu2f0wV
-	5VvHeqHQ==;
+	bh=YPxJ2OLIeiVM9zIWTy8Z43PNxojoFyB4wHkVvrTMHsI=; b=nUrRAt1Uqm7/ZAbBaRUIMg+r9W
+	zFKh4/4h8B39kroiOEZnEIIzAqeIE54eDvsdFXeFqmuIdObK0IVp1G2976s1TXGZ6XjaLw8OzajQF
+	hDRYbFWN3O6GcIoKwNOvLSrfI3/qZZF5XFwxmWsHjgEPyoM4kjb3bsBxBdc/uSb6cGYGm5e7Rpbz8
+	ry/GlgkKzjzfiaPznEWdlpFZa8dEFTASfttknXOQsEUIEabJXLtff5RZHloxpCBNNT479RGofhamJ
+	gAOPyjGm3yyoagS+iQbJCY1EeBz9E+/BkAsN2TeoO2riVRLPrjwpsvfBop6ry9EwbEoLKS4gwMV3r
+	VmPiClgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paF0d-009m5G-OV; Thu, 09 Mar 2023 12:04:35 +0000
-Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
+	id 1paF66-009oJD-UA; Thu, 09 Mar 2023 12:10:14 +0000
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paExc-009kJZ-3K; Thu, 09 Mar 2023 12:01:29 +0000
-Received: by mail-lj1-x235.google.com with SMTP id by8so1549422ljb.7;
-        Thu, 09 Mar 2023 04:01:24 -0800 (PST)
+	id 1paF5u-009oDI-5J
+	for linux-mediatek@lists.infradead.org; Thu, 09 Mar 2023 12:10:04 +0000
+Received: by mail-ed1-x535.google.com with SMTP id da10so6110772edb.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Mar 2023 04:09:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678363283;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=J4GSqIKfh+fPPQrFXuCrH3ba1s5AAafXmlJ7Rizwh8Y=;
-        b=PKXkA4WiA8duFtEJwBSGgeMQh5pTE1KoLqyioyMj57ImMT8E5tzaJa8Cezr5Ac+udB
-         dohArEBcvlwsvfpPY/VkRXG5pxCBioA5v30rcjLDCviR5gJkkP+XEeaxVWr0R1GXSFvu
-         mY8AgbmcW96ld6ZTFuaKaIVYvXqY/NhH4+SN/hXF64q2DtSBpOxlBJylrbxJP0DtVtbJ
-         TcNfMSR8WLEoUXOdxw7vbbTtl0ApDDk2b+AAUsrOlX0v292IdbqAfhmHmtHrqnLZPbyl
-         GnohTfVo+Y+Anb2hVBX+PfQYYZpSMgOXg1CmZBureC9Z8PeQccZB2IijuNg/SeGIYztr
-         dS/w==
+        d=linaro.org; s=google; t=1678363796;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=YPxJ2OLIeiVM9zIWTy8Z43PNxojoFyB4wHkVvrTMHsI=;
+        b=PCsPuCrSaeWNjmDcMFw4bgKtBYhGYqAj+i0zbY3WNGu0vBzRYo2/guv0/GeJl7bNfu
+         3YZW8IM9wnoCeWWtit/jGd9sxzLQUNwy0zQ+E6mmPyFu9Vd5HsFxYTFOxB5W3z8ReLVC
+         6OlM8tbxyXovsn7ZLBEGJ1lssXttPBcKEZEEPpjm8A6LdXJ5iHJZwP32FBlWhryra/Sg
+         yyS6tl8QVZZkdPFrkE9ixOAd6/MtOQwY8fwNFyqS9qyQwyRq+Td43GQ6G2JXJ6ZDoHR6
+         xxon3Itaz79Ep3O1CiueLrpg6250OlViZAS1Opi7Bswchq0FKEn9pw7RxKk7U3McWukW
+         UyXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678363283;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=J4GSqIKfh+fPPQrFXuCrH3ba1s5AAafXmlJ7Rizwh8Y=;
-        b=5LvfquWEbTQKKsBrP5sSp0xzmLvr8JHlMagWWPT6520el9epeA7Xulj3l373se0S5B
-         5/p4eYLVicRERO+cq/VxCyV/+935T7T558DsibkqdNs9miKVhRWIJX7kx66h4L2fsABE
-         lRldzofBro7vOdtlVFaWWxVzItdbGZ7e5pgGy66PkAO98o0L01TWtjHiYhpx7tK9lWwq
-         EdYXhURDxrfWVxXCoADP+p88QfDCR6v09unKBibunaak95f2m1OcZXbwSumy22MYiERj
-         vJ2aGpkdHySyNmSCvf795k5y41aZbmfmWSZ+fBa/DFSj1SUbdDQyEJQUXMDYVSRw++3d
-         4ulA==
-X-Gm-Message-State: AO0yUKWVp8I4sNy1VGfKX7sqifBhLWQ4kqvDsvPcVZ3+oBlZThfywPle
-	Aha87LfakmL98PmXqJFZg1o=
-X-Google-Smtp-Source: AK7set+NMF/8gy2PgvVPpR4O7pSBLhYbUzPDmj5xP0+SqTAcGzlCByQXPVnKs759lKsD9WYcfwK9nw==
-X-Received: by 2002:a05:651c:b1f:b0:290:4d4b:481f with SMTP id b31-20020a05651c0b1f00b002904d4b481fmr7275446ljr.16.1678363283077;
-        Thu, 09 Mar 2023 04:01:23 -0800 (PST)
-Received: from [192.168.26.149] (ip-194-187-74-233.konfederacka.maverick.com.pl. [194.187.74.233])
-        by smtp.googlemail.com with ESMTPSA id s2-20020a2e98c2000000b002934fce87bfsm2846420ljj.108.2023.03.09.04.01.20
+        d=1e100.net; s=20210112; t=1678363796;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=YPxJ2OLIeiVM9zIWTy8Z43PNxojoFyB4wHkVvrTMHsI=;
+        b=NUj3TGJd/Nizh0TIqEICTf0b/xyxlf3/4zSftF81WzfV5JM++kdwRYmjfME8NLcKTz
+         bCBbhhMxKfpYtYrxjQeeLl/5C/fAw0aSWHlE1N7/4IBJd9nij4gsg0O+VcUgT1MKxXVy
+         KGcZpxktA/QjlFmAZO0b0YjOsu/aoIF2VDTBNhz1u6xfBTTEaHKWw6gV8b+Y+yNyu/tC
+         hbUcRcjGmARVnQAGTfADNBJUk27pH1tQA13ERtts3zRz2cvH18o/E7KUwrwusDFiZMxA
+         Fr62YigBO7nGH0zECAPUqUBEsZzPJmp/4WzNlg+ihVLlEF9l5a0nLQn8xYtiPeYZk/Av
+         Ca3g==
+X-Gm-Message-State: AO0yUKWYPY43w0Jk5p3a/UOMJ5pRggkorNclS/siodzkzVK5ydLDdOnS
+	PSWE7FWdG7dh4xqgCabNTla8gA==
+X-Google-Smtp-Source: AK7set/2yYrC/HUaBoW5bZf02GEocIZbb7pOirl6sFK8E+2O9TV3wFT42mnMHbUGh4cjSro0hUSJIQ==
+X-Received: by 2002:a17:907:97d3:b0:883:b1b4:e798 with SMTP id js19-20020a17090797d300b00883b1b4e798mr25054045ejc.10.1678363796112;
+        Thu, 09 Mar 2023 04:09:56 -0800 (PST)
+Received: from [172.20.10.10] ([213.233.108.171])
+        by smtp.gmail.com with ESMTPSA id jy24-20020a170907763800b008d7a8083dffsm8751132ejc.222.2023.03.09.04.09.50
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 09 Mar 2023 04:01:22 -0800 (PST)
-Message-ID: <e845b38c-d0eb-716c-dc51-b89582750f07@gmail.com>
-Date: Thu, 9 Mar 2023 13:01:19 +0100
+        Thu, 09 Mar 2023 04:09:55 -0800 (PST)
+Message-ID: <5183a184-c72d-3acd-70cd-6aa1e31533f5@linaro.org>
+Date: Thu, 9 Mar 2023 12:09:48 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:96.0) Gecko/20100101
- Thunderbird/96.0
-Subject: Re: [PATCH V3] nvmem: add explicit config option to read OF fixed
- cells
-To: Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
- Alyssa Rosenzweig <alyssa@rosenzweig.io>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Vincent Shih <vincent.sunplus@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>,
- Michal Simek <michal.simek@xilinx.com>,
- Alessandro Zummo <a.zummo@towertech.it>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Evgeniy Polyakov <zbr@ioremap.net>, linux-mtd@lists.infradead.org,
- linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
- linux-rtc@vger.kernel.org, Michael Walle <michael@walle.cc>,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-References: <20230309112028.19215-1-zajec5@gmail.com>
- <20230309123513.43b7134f@xps-13>
-From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-In-Reply-To: <20230309123513.43b7134f@xps-13>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH] spi: Replace `dummy.nbytes` with `dummy.ncycles`
+Content-Language: en-US
+To: Michael Walle <michael@walle.cc>
+Cc: Serge Semin <fancer.lancer@gmail.com>, Sergiu.Moga@microchip.com,
+ Mark Brown <broonie@kernel.org>, Tudor Ambarus
+ <tudor.ambarus@microchip.com>, Pratyush Yadav <pratyush@kernel.org>,
+ miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com,
+ Nicolas.Ferre@microchip.com, alexandre.belloni@bootlin.com,
+ Claudiu.Beznea@microchip.com, chin-ting_kuo@aspeedtech.com, clg@kaod.org,
+ joel@jms.id.au, andrew@aj.id.au, kdasu.kdev@gmail.com, han.xu@nxp.com,
+ john.garry@huawei.com, matthias.bgg@gmail.com, avifishman70@gmail.com,
+ tmaimon77@gmail.com, tali.perry1@gmail.com, venture@google.com,
+ yuenn@google.com, benjaminfair@google.com, haibo.chen@nxp.com,
+ yogeshgaur.83@gmail.com, heiko@sntech.de, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, michal.simek@xilinx.com,
+ bcm-kernel-feedback-list@broadcom.com, linux-mtd@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
+ openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
+References: <20220911174551.653599-1-sergiu.moga@microchip.com>
+ <20220925220304.buk3yuqoh6vszfci@mobilestation>
+ <18e6e8a8-6412-7e31-21e0-6becd4400ac1@microchip.com>
+ <20220926172454.kbpzck7med5bopre@mobilestation>
+ <1766f6ef-d9d8-04f7-a6bf-0ea6bc0b3d23@linaro.org>
+ <f647e713a65f5d3f0f2e3af95c4d0a89@walle.cc>
+ <1849e2c8-54f5-9e56-4ed8-8b0e4a826d04@linaro.org>
+ <302ecf0421fe4c99fca3eb0ca2f66127@walle.cc>
+From: Tudor Ambarus <tudor.ambarus@linaro.org>
+In-Reply-To: <302ecf0421fe4c99fca3eb0ca2f66127@walle.cc>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_040128_237514_B56B45FD 
-X-CRM114-Status: GOOD (  23.93  )
+X-CRM114-CacheID: sfid-20230309_041002_230769_7664EBD7 
+X-CRM114-Status: GOOD (  20.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,67 +114,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9.03.2023 12:35, Miquel Raynal wrote:
->> diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-provider.h
->> index 0262b86194eb..b3c14ce87a65 100644
->> --- a/include/linux/nvmem-provider.h
->> +++ b/include/linux/nvmem-provider.h
->> @@ -73,6 +73,7 @@ struct nvmem_cell_info {
->>    * @owner:	Pointer to exporter module. Used for refcounting.
->>    * @cells:	Optional array of pre-defined NVMEM cells.
->>    * @ncells:	Number of elements in cells.
->> + * @use_fixed_of_cells:	Read fixed NVMEM cells from OF.
+
+
+On 3/9/23 10:56, Michael Walle wrote:
+> Am 2023-03-09 11:42, schrieb Tudor Ambarus:
+>> On 09.03.2023 10:38, Michael Walle wrote:
+>>>> In an ideal world, where both the controller and the device talk about
+>>>> dummy number of cycles, I would agree with you, buswidth and dtr should
+>>>> not be relevant for the number of dummy cycles. But it seems that there
+>>>> are old controllers (e.g. spi-hisi-sfc-v3xx.c, spi-mt65xx.c,
+>>>> spi-mxic.c)
+>>>> that support buswidths > 1 and work only with dummy nbytes, they are
+>>>> not
+>>>> capable of specifying a smaller granularity (ncycles). Thus the older
+>>>> controllers would have to convert the dummy ncycles to dummy nbytes.
+>>>> Since mixed transfer modes are a thing (see jesd251, it talks about
+>>>> 4S-4D-4D), where single transfer mode (S) can be mixed with double
+>>>> transfer mode (D) for a command, the controller would have to guess the
+>>>> buswidth and dtr of the dummy. Shall they replicate the buswidth and
+>>>> dtr
+>>>> of the address or of the data? There's no rule for that.
+>>>
+>>> But in the end that doesn't matter because they are just dummy clock
+>>> cycles and the mode will only affect the data/address/command.
+>>> Therefore,
+>>> the controller is free to choose the mode that suits it best.
+>>>  > But that begs the question, is ncycles in regard to DTR or SDR?
+>>> That is,
+>>> are you counting just one type of edges or both the falling and rising
+>>> edges. The smallest granularity would be ncycles in regard of DTR. To
+>>> me,
+>>> it's not obvious what the SEMPER Nano Flash [1] uses. I'd say we choose
+>>> the smallest granularty in spi-mem to be future proof and maybe provide
+>>> some spi-mem helper to help setting the cycles for SDR/DTR. As an
+>>> example,
+>>> if you want to wait 4 cycles in SDR you'd have ncycles=8 in spi-mem.
+>>>
+>>
+>> No, we can't invent our own measuring units. We have cycles and half
+>> cycles (regardless of the transfer mode used (STR, DTR)).
 > 
-> I'm still unhappy with the naming, especially since you explained in
-> more details the whole plan which involves using a container to put
-> these fixed cells from now on. In both cases you extract cells from
-> fixed OF nodes but this boolean needs to be set to true in one
-> case, and false in the other, which would not make sense.
-> 
-> Also, regarding the bindings changes, I'm fairly happy with the idea,
-> but if we go this way I would prefer a full series instead of
-> individual changes with:
-> 
-> - the boolean you introduce here (renamed, at the very least)
-> - the new bindings
+> That is basically what I was saying, just using the correct term.
+> Ok. So we don't need the dtr property, right? I'm still not sure,
 
-I assume you mean fixed-layout.yaml?
+We do.
 
+As of now you can't specify 20 dummy cycles for READID in 8D-8D-8D mode
+because all the layers treats dummy as bytes, whereas they should treat
+it as cycles. One dummy byte in 8D-8D-8D means 16 dummy cycles. 20 dummy
+cycles in 8D-8D-8D means one byte and a quarter? This is a non-sense.
 
-> - the update of the current provider bindings to take the new bindings
->    into account and deprecate the old ones officially
+As the code is now, SPI NAND uses dummy cycles that are multiple of 8.
+SPI NOR requires a variable number of dummy cycles, there's no
+restrictions. In SPI NOR we get from SFDP or datasheets the number of
+dummy cycles, and in the code we convert them to dummy nbytes. Then when
+we get at the controller side, the majority of the controllers undo the
+operation, they take the dummy nbytes and convert them to dummy ncycles.
+Isn't better to use dummy ncycles from the beginning?
 
-What has to be updated in current proceds? It seems to me that:
-1. Current NVMEM providers reference nvmem.yaml
-2. nvmem.yaml references nvmem-layout.yaml
-3. nvmem-layout.yaml references fixed-layout.yaml
+The controllers that can talk in dummy ncycles don't need the
+dummy.{buswidth, dtr} fields.
 
-what else is missing?
+The controllers that can't talk in dummy cycles, but only on a "byte"
+boundary need both buswidth and dtr fields. Assume a flash needs 32
+dummy cycles for an op on 8D-8D-8D mode. If the controller does not have
+the buswidth and dtr info, it can't convert the dummy ncycles to nbytes.
+If he knows only that buswidth is 8, it will convert ncycles to 4 bytes.
+If dtr is also specified it converts ncycles to 2 bytes.
 
+> what the semper nano flash uses. Half cycles? But according to your
 
-> - support for the new bindings in the core
+there's no spimem flash code that use half cycles for now.
 
-Please, don't get me wrong, but I'm not going to spend more hours on
-actual coding without approval of chosen path.
+> naming you'd specify full cylces?
 
-I'll need to have
-[PATCH V2] dt-bindings: nvmem: layouts: add fixed-layout
-reviewed/acked first. If you can do that that's great.
+A clock period, yes.
 
-
->>    * @keepout:	Optional array of keepout ranges (sorted ascending by start).
->>    * @nkeepout:	Number of elements in the keepout array.
->>    * @type:	Type of the nvmem storage
->> @@ -103,6 +104,7 @@ struct nvmem_config {
->>   	struct module		*owner;
->>   	const struct nvmem_cell_info	*cells;
->>   	int			ncells;
->> +	bool			use_fixed_of_cells;
->>   	const struct nvmem_keepout *keepout;
->>   	unsigned int		nkeepout;
->>   	enum nvmem_type		type;
-> 
-> Thanks,
-> Miquèl
-
+Hope it helps.
+ta
 
