@@ -4,62 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01761C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 10:39:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ECB4C64EC4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 10:44:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=uGAPfn/J6G1VtMtSvFI7X7cihhU17l3ZbLJuA56w6zs=; b=ufbq4qDo4dnPqkG2vtrk1ZRzZ/
-	gtosmOlvPcCZk0zyKvaZK6QXdiFfvf4qHO1vAg0iLOVh5rWM+XkOayUXEh89pO7RqAwpAAXJimmOr
-	GRBOhJz/l9FcVeFoYh+DRxiYz/40QTXHfSFO3WOq7XJIzfnjTmtp01CC6yD8CaX7mhHibvtq3Kpmi
-	4wGMil18+Kg+X3uNOiatwcmcsPU76TuYqnWqB6NXQo1yvrKSAIdkhSS6ZeRUAjfEQPUV1sUxhlSCD
-	wXOmOjaDY9BpcbODtC+XRprCRiPaW+URr9T0dnf6Rw6t+KILEa8BLq7umASYUS4qffJwejlQ9nqBh
-	PJ/FlZMQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AXe5GLVgfCGpsOd/5Hq05tqMS28XNylXrDvLRZzzBYk=; b=r4MwK46usoGECk2n6P4h2GpWM1
+	DVFbpMgeguA2+7+OKc82fiaLCIyGnwBzu4hyh5aJgKFLKcwZcxpQr0w/O3BMdaqP8YnSmkStYpR7D
+	CP2ztA4MwSXaQzt6aTGVDWlpP7Ygww2pa9zmH6JJWRHMR6gol9edG54VWBc9sq3UMOPvLlcya8sg5
+	NSXXf9jd43F7saSuxp05WxLetJRT0sKTJolhZeM7p7t/3W+YcLeq5Cs+k0BPCIgVaNy6hJ2yzx8eg
+	oAkm2aN8pw2pTt7HBlzrldqFd/TjXOrbewup695vyI1hwidd6VEo1W3k0TSbRXdVWBb31CRb8e124
+	t94Ay6nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paDgP-0097kb-4N; Thu, 09 Mar 2023 10:39:37 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1paDl0-009ApH-RL; Thu, 09 Mar 2023 10:44:22 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paDg7-0097fZ-Iy; Thu, 09 Mar 2023 10:39:21 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8A26A66018CA;
-	Thu,  9 Mar 2023 10:39:17 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678358358;
-	bh=rmPFnrdCU4JEVWqaCcnkC6D30+fChM2cM1ghnBmuP2A=;
-	h=From:To:Cc:Subject:Date:From;
-	b=QsYcvF7XkyRIee456DfEuPcGOz8ItytO2MuVkBMRELce3FONeC8wm0M0qTasZs5WG
-	 M31lqJHEYbPtkp7Hh3lrNhymq0SCR7fRcyUZ754Zq6DlI778u7UPGZwEOrs2hgkVTC
-	 G3XH9U+kfF9dfvAaC3S1zmX2l9z9ItsihONk1gmJd7J7Skc8xxyc3NuEMwdHTm3FI6
-	 CF3C4e27RpiMLLEFN74xMq2mTy5Dn9RkjpiHisjGzHw8+0VN+xc9cMKQR1x9bQlLOC
-	 T1UVxDCMfUSBpn6qw2pp6zcz+CJs/MltT8hObFM0KTmt/K0bm/QXqyhHdLTIrR0vBZ
-	 2IRsIUPCeZDdw==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: daniel.lezcano@linaro.org
-Cc: tglx@linutronix.de,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com,
-	Walter.Chang@mediatek.com
-Subject: [PATCH] clocksource/drivers/timer-mediatek: Split out CPUXGPT timers
-Date: Thu,  9 Mar 2023 11:39:13 +0100
-Message-Id: <20230309103913.116775-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.39.2
+	id 1paDjN-0099ae-Gm
+	for linux-mediatek@lists.infradead.org; Thu, 09 Mar 2023 10:42:43 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id q16so1392010wrw.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Mar 2023 02:42:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1678358559;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=AXe5GLVgfCGpsOd/5Hq05tqMS28XNylXrDvLRZzzBYk=;
+        b=nBr8nAd36m9PAaXhfYM/4OLaddFdsGqVE33IkJXe836CVY1mwrMaJ0z6xZBf96qoOI
+         wHtu0PFtoKoyIzX+VPr+/fuzdwvpjf7WHn48t+f9zcU6YwYZWztwBuqGj7l0dwdbArgj
+         9BdJxnMMnENBMqvEWmtN9PjHCRl7l2YExcQXYKyBbziRvao/CePqrt7EvP4HpVtto5VH
+         QXi3YjTFTii/7goIfJr/GTdt68ovUVdmBOWoUiiz0gXw5VAu3RMa5w0b1gBU8OSuUqb4
+         AEtkZbqFYD4W0WJ0d3IiA/1XF2s9Fl82n7X/PtjFCiLZRgjUzj9Q13c24vjHb1a/yAmF
+         vQrA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678358559;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=AXe5GLVgfCGpsOd/5Hq05tqMS28XNylXrDvLRZzzBYk=;
+        b=c/mTv9zwT5YvUtMcmk2SK89Z6DqdauSMLnWX81kIp5o4SG/NtG446baZ0qk1Z0/f9Z
+         q4FX3OdStYHnHlIRE4kstgN/vg+X6/bLTbE+Pn+xcLbwBkKesGVgGLTSUmSGitAwh251
+         Sj6LhQkRnlFM1F9QTxcLD92vlDWC4z3MyuU3D9U8NQpD0l4ttdLnQv7EHl+YhOOOfUnO
+         HOb/lBWfGj3TfGNAH2C/IdUixTmRdUYAbDwyNVt28IT8++Uz1XI5g3zQzwmP1ly+AnGS
+         kEzrSkcx3lKtohQane2bBpiwHHHTgHYuKRcUuoROwiQBOVwhoLyNdcsLj3dO3mAJPSjx
+         Mq0A==
+X-Gm-Message-State: AO0yUKUumyKo0bY4+As/ZZVx+vaP5c+BUCMN7hP/DB7zCYIe7AlRHaMf
+	faYuCKjFnxEq7KEXRdZnW3ITyg==
+X-Google-Smtp-Source: AK7set9TX+g8GQa3ZvYm7K5IyQckLiVBKmzBF9eqRJS1rvlystpDX78yR8o1b1wUu4lOee+V+S+WMQ==
+X-Received: by 2002:a05:6000:507:b0:2c5:4f2d:d9b4 with SMTP id a7-20020a056000050700b002c54f2dd9b4mr12687108wrf.58.1678358559301;
+        Thu, 09 Mar 2023 02:42:39 -0800 (PST)
+Received: from [192.168.0.173] ([79.115.63.78])
+        by smtp.gmail.com with ESMTPSA id f12-20020a5d58ec000000b002c71b4d476asm17579951wrd.106.2023.03.09.02.42.36
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 09 Mar 2023 02:42:38 -0800 (PST)
+Message-ID: <1849e2c8-54f5-9e56-4ed8-8b0e4a826d04@linaro.org>
+Date: Thu, 9 Mar 2023 12:42:35 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH] spi: Replace `dummy.nbytes` with `dummy.ncycles`
+To: Michael Walle <michael@walle.cc>
+Cc: Serge Semin <fancer.lancer@gmail.com>, Sergiu.Moga@microchip.com,
+ Mark Brown <broonie@kernel.org>, Tudor Ambarus
+ <tudor.ambarus@microchip.com>, Pratyush Yadav <pratyush@kernel.org>,
+ miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com,
+ Nicolas.Ferre@microchip.com, alexandre.belloni@bootlin.com,
+ Claudiu.Beznea@microchip.com, chin-ting_kuo@aspeedtech.com, clg@kaod.org,
+ joel@jms.id.au, andrew@aj.id.au, kdasu.kdev@gmail.com, han.xu@nxp.com,
+ john.garry@huawei.com, matthias.bgg@gmail.com, avifishman70@gmail.com,
+ tmaimon77@gmail.com, tali.perry1@gmail.com, venture@google.com,
+ yuenn@google.com, benjaminfair@google.com, haibo.chen@nxp.com,
+ yogeshgaur.83@gmail.com, heiko@sntech.de, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, michal.simek@xilinx.com,
+ bcm-kernel-feedback-list@broadcom.com, linux-mtd@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
+ openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
+References: <20220911174551.653599-1-sergiu.moga@microchip.com>
+ <20220925220304.buk3yuqoh6vszfci@mobilestation>
+ <18e6e8a8-6412-7e31-21e0-6becd4400ac1@microchip.com>
+ <20220926172454.kbpzck7med5bopre@mobilestation>
+ <1766f6ef-d9d8-04f7-a6bf-0ea6bc0b3d23@linaro.org>
+ <f647e713a65f5d3f0f2e3af95c4d0a89@walle.cc>
+From: Tudor Ambarus <tudor.ambarus@linaro.org>
+Content-Language: en-US
+In-Reply-To: <f647e713a65f5d3f0f2e3af95c4d0a89@walle.cc>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_023919_912620_417F3BEC 
-X-CRM114-Status: GOOD (  34.38  )
+X-CRM114-CacheID: sfid-20230309_024241_612568_E6724A02 
+X-CRM114-Status: GOOD (  16.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,370 +112,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On MediaTek platforms, CPUXGPT is the source for the AArch64 System
-Timer, read through CNTVCT_EL0.
 
-The handling for starting this timer ASAP was introduced in commit
-327e93cf9a59 ("clocksource/drivers/timer-mediatek: Implement CPUXGPT timers")
-which description also contains an important full explanation of the
-reasons why this driver is necessary and cannot be a module.
 
-In preparation for an eventual conversion of timer-mediatek to a
-platform_driver that would be possibly built as a module, split out
-the CPUXGPT timers driver to a new timer-mediatek-cpux.c driver.
+On 09.03.2023 10:38, Michael Walle wrote:
+>> In an ideal world, where both the controller and the device talk about
+>> dummy number of cycles, I would agree with you, buswidth and dtr should
+>> not be relevant for the number of dummy cycles. But it seems that there
+>> are old controllers (e.g. spi-hisi-sfc-v3xx.c, spi-mt65xx.c, spi-mxic.c)
+>> that support buswidths > 1 and work only with dummy nbytes, they are not
+>> capable of specifying a smaller granularity (ncycles). Thus the older
+>> controllers would have to convert the dummy ncycles to dummy nbytes.
+>> Since mixed transfer modes are a thing (see jesd251, it talks about
+>> 4S-4D-4D), where single transfer mode (S) can be mixed with double
+>> transfer mode (D) for a command, the controller would have to guess the
+>> buswidth and dtr of the dummy. Shall they replicate the buswidth and dtr
+>> of the address or of the data? There's no rule for that.
+> 
+> But in the end that doesn't matter because they are just dummy clock
+> cycles and the mode will only affect the data/address/command. Therefore,
+> the controller is free to choose the mode that suits it best.
+>  > But that begs the question, is ncycles in regard to DTR or SDR? That is,
+> are you counting just one type of edges or both the falling and rising
+> edges. The smallest granularity would be ncycles in regard of DTR. To me,
+> it's not obvious what the SEMPER Nano Flash [1] uses. I'd say we choose
+> the smallest granularty in spi-mem to be future proof and maybe provide
+> some spi-mem helper to help setting the cycles for SDR/DTR. As an example,
+> if you want to wait 4 cycles in SDR you'd have ncycles=8 in spi-mem.
+> 
 
-This commit brings no functional changes.
+No, we can't invent our own measuring units. We have cycles and half 
+cycles (regardless of the transfer mode used (STR, DTR)).
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
-
-Note: I've added a mention to the commit that is introducing CPUXGPT
-because it contains a broad explanation about why this is needed and
-why it is mandatory to have it as built-in and initialized as early
-as possible. This is mostly because this question was asked multiple
-times and I've been pointing people to that commit to explain it all.
-
-This commit was made because of a discussion about the impossibility
-to convert timer-mediatek to a module: even though that's definitely
-not easy at all, this will make sure that whatever cannot (ever) be
-built as module goes out of that driver.
-
-I tried to tackle a timer-mediatek conversion to platform_driver as
-well, but I don't currently have the required bandwidth to do so:
-as a first step I moved that, so I'm pushing this commit as to try
-to reduce duplicated work.
-
-This commit was tested on MT6795 Sony Xperia M5.
-
- drivers/clocksource/Kconfig               |   9 ++
- drivers/clocksource/Makefile              |   1 +
- drivers/clocksource/timer-mediatek-cpux.c | 140 ++++++++++++++++++++++
- drivers/clocksource/timer-mediatek.c      | 114 ------------------
- 4 files changed, 150 insertions(+), 114 deletions(-)
- create mode 100644 drivers/clocksource/timer-mediatek-cpux.c
-
-diff --git a/drivers/clocksource/Kconfig b/drivers/clocksource/Kconfig
-index 5fc8f0e7fb38..526382dc7482 100644
---- a/drivers/clocksource/Kconfig
-+++ b/drivers/clocksource/Kconfig
-@@ -479,6 +479,15 @@ config MTK_TIMER
- 	help
- 	  Support for Mediatek timer driver.
- 
-+config MTK_CPUX_TIMER
-+	bool "MediaTek CPUX timer driver" if COMPILE_TEST
-+	depends on HAS_IOMEM
-+	default ARCH_MEDIATEK
-+	select TIMER_OF
-+	select CLKSRC_MMIO
-+	help
-+	  Support for MediaTek CPUXGPT timer driver.
-+
- config SPRD_TIMER
- 	bool "Spreadtrum timer driver" if EXPERT
- 	depends on HAS_IOMEM
-diff --git a/drivers/clocksource/Makefile b/drivers/clocksource/Makefile
-index 64ab547de97b..f12d3987a960 100644
---- a/drivers/clocksource/Makefile
-+++ b/drivers/clocksource/Makefile
-@@ -51,6 +51,7 @@ obj-$(CONFIG_FSL_FTM_TIMER)	+= timer-fsl-ftm.o
- obj-$(CONFIG_VF_PIT_TIMER)	+= timer-vf-pit.o
- obj-$(CONFIG_CLKSRC_QCOM)	+= timer-qcom.o
- obj-$(CONFIG_MTK_TIMER)		+= timer-mediatek.o
-+obj-$(CONFIG_MTK_CPUX_TIMER)	+= timer-mediatek-cpux.o
- obj-$(CONFIG_CLKSRC_PISTACHIO)	+= timer-pistachio.o
- obj-$(CONFIG_CLKSRC_TI_32K)	+= timer-ti-32k.o
- obj-$(CONFIG_OXNAS_RPS_TIMER)	+= timer-oxnas-rps.o
-diff --git a/drivers/clocksource/timer-mediatek-cpux.c b/drivers/clocksource/timer-mediatek-cpux.c
-new file mode 100644
-index 000000000000..a8e3df4c09fd
---- /dev/null
-+++ b/drivers/clocksource/timer-mediatek-cpux.c
-@@ -0,0 +1,140 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * MediaTek SoCs CPUX General Purpose Timer handling
-+ *
-+ * Based on timer-mediatek.c:
-+ * Copyright (C) 2014 Matthias Brugger <matthias.bgg@gmail.com>
-+ *
-+ * Copyright (C) 2022 Collabora Ltd.
-+ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ */
-+
-+#define pr_fmt(fmt)	KBUILD_MODNAME ": " fmt
-+
-+#include <linux/clockchips.h>
-+#include <linux/clocksource.h>
-+#include <linux/interrupt.h>
-+#include <linux/irqreturn.h>
-+#include <linux/sched_clock.h>
-+#include <linux/slab.h>
-+#include "timer-of.h"
-+
-+#define TIMER_SYNC_TICKS        3
-+
-+/* cpux mcusys wrapper */
-+#define CPUX_CON_REG		0x0
-+#define CPUX_IDX_REG		0x4
-+
-+/* cpux */
-+#define CPUX_IDX_GLOBAL_CTRL	0x0
-+ #define CPUX_ENABLE		BIT(0)
-+ #define CPUX_CLK_DIV_MASK	GENMASK(10, 8)
-+ #define CPUX_CLK_DIV1		BIT(8)
-+ #define CPUX_CLK_DIV2		BIT(9)
-+ #define CPUX_CLK_DIV4		BIT(10)
-+#define CPUX_IDX_GLOBAL_IRQ	0x30
-+
-+static u32 mtk_cpux_readl(u32 reg_idx, struct timer_of *to)
-+{
-+	writel(reg_idx, timer_of_base(to) + CPUX_IDX_REG);
-+	return readl(timer_of_base(to) + CPUX_CON_REG);
-+}
-+
-+static void mtk_cpux_writel(u32 val, u32 reg_idx, struct timer_of *to)
-+{
-+	writel(reg_idx, timer_of_base(to) + CPUX_IDX_REG);
-+	writel(val, timer_of_base(to) + CPUX_CON_REG);
-+}
-+
-+static void mtk_cpux_set_irq(struct timer_of *to, bool enable)
-+{
-+	const unsigned long *irq_mask = cpumask_bits(cpu_possible_mask);
-+	u32 val;
-+
-+	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_IRQ, to);
-+
-+	if (enable)
-+		val |= *irq_mask;
-+	else
-+		val &= ~(*irq_mask);
-+
-+	mtk_cpux_writel(val, CPUX_IDX_GLOBAL_IRQ, to);
-+}
-+
-+static int mtk_cpux_clkevt_shutdown(struct clock_event_device *clkevt)
-+{
-+	/* Clear any irq */
-+	mtk_cpux_set_irq(to_timer_of(clkevt), false);
-+
-+	/*
-+	 * Disabling CPUXGPT timer will crash the platform, especially
-+	 * if Trusted Firmware is using it (usually, for sleep states),
-+	 * so we only mask the IRQ and call it a day.
-+	 */
-+	return 0;
-+}
-+
-+static int mtk_cpux_clkevt_resume(struct clock_event_device *clkevt)
-+{
-+	mtk_cpux_set_irq(to_timer_of(clkevt), true);
-+	return 0;
-+}
-+
-+static struct timer_of to = {
-+	/*
-+	 * There are per-cpu interrupts for the CPUX General Purpose Timer
-+	 * but since this timer feeds the AArch64 System Timer we can rely
-+	 * on the CPU timer PPIs as well, so we don't declare TIMER_OF_IRQ.
-+	 */
-+	.flags = TIMER_OF_BASE | TIMER_OF_CLOCK,
-+
-+	.clkevt = {
-+		.name = "mtk-cpuxgpt",
-+		.cpumask = cpu_possible_mask,
-+		.rating = 10,
-+		.set_state_shutdown = mtk_cpux_clkevt_shutdown,
-+		.tick_resume = mtk_cpux_clkevt_resume,
-+	},
-+};
-+
-+static int __init mtk_cpux_init(struct device_node *node)
-+{
-+	u32 freq, val;
-+	int ret;
-+
-+	/* If this fails, bad things are about to happen... */
-+	ret = timer_of_init(node, &to);
-+	if (ret) {
-+		WARN(1, "Cannot start CPUX timers.\n");
-+		return ret;
-+	}
-+
-+	/*
-+	 * Check if we're given a clock with the right frequency for this
-+	 * timer, otherwise warn but keep going with the setup anyway, as
-+	 * that makes it possible to still boot the kernel, even though
-+	 * it may not work correctly (random lockups, etc).
-+	 * The reason behind this is that having an early UART may not be
-+	 * possible for everyone and this gives a chance to retrieve kmsg
-+	 * for eventual debugging even on consumer devices.
-+	 */
-+	freq = timer_of_rate(&to);
-+	if (freq > 13000000)
-+		WARN(1, "Requested unsupported timer frequency %u\n", freq);
-+
-+	/* Clock input is 26MHz, set DIV2 to achieve 13MHz clock */
-+	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_CTRL, &to);
-+	val &= ~CPUX_CLK_DIV_MASK;
-+	val |= CPUX_CLK_DIV2;
-+	mtk_cpux_writel(val, CPUX_IDX_GLOBAL_CTRL, &to);
-+
-+	/* Enable all CPUXGPT timers */
-+	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_CTRL, &to);
-+	mtk_cpux_writel(val | CPUX_ENABLE, CPUX_IDX_GLOBAL_CTRL, &to);
-+
-+	clockevents_config_and_register(&to.clkevt, timer_of_rate(&to),
-+					TIMER_SYNC_TICKS, 0xffffffff);
-+
-+	return 0;
-+}
-+TIMER_OF_DECLARE(mtk_mt6795, "mediatek,mt6795-systimer", mtk_cpux_init);
-diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
-index d5b29fd03ca2..7bcb4a3f26fb 100644
---- a/drivers/clocksource/timer-mediatek.c
-+++ b/drivers/clocksource/timer-mediatek.c
-@@ -22,19 +22,6 @@
- 
- #define TIMER_SYNC_TICKS        (3)
- 
--/* cpux mcusys wrapper */
--#define CPUX_CON_REG		0x0
--#define CPUX_IDX_REG		0x4
--
--/* cpux */
--#define CPUX_IDX_GLOBAL_CTRL	0x0
-- #define CPUX_ENABLE		BIT(0)
-- #define CPUX_CLK_DIV_MASK	GENMASK(10, 8)
-- #define CPUX_CLK_DIV1		BIT(8)
-- #define CPUX_CLK_DIV2		BIT(9)
-- #define CPUX_CLK_DIV4		BIT(10)
--#define CPUX_IDX_GLOBAL_IRQ	0x30
--
- /* gpt */
- #define GPT_IRQ_EN_REG          0x00
- #define GPT_IRQ_ENABLE(val)     BIT((val) - 1)
-@@ -85,52 +72,6 @@
- 
- static void __iomem *gpt_sched_reg __read_mostly;
- 
--static u32 mtk_cpux_readl(u32 reg_idx, struct timer_of *to)
--{
--	writel(reg_idx, timer_of_base(to) + CPUX_IDX_REG);
--	return readl(timer_of_base(to) + CPUX_CON_REG);
--}
--
--static void mtk_cpux_writel(u32 val, u32 reg_idx, struct timer_of *to)
--{
--	writel(reg_idx, timer_of_base(to) + CPUX_IDX_REG);
--	writel(val, timer_of_base(to) + CPUX_CON_REG);
--}
--
--static void mtk_cpux_set_irq(struct timer_of *to, bool enable)
--{
--	const unsigned long *irq_mask = cpumask_bits(cpu_possible_mask);
--	u32 val;
--
--	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_IRQ, to);
--
--	if (enable)
--		val |= *irq_mask;
--	else
--		val &= ~(*irq_mask);
--
--	mtk_cpux_writel(val, CPUX_IDX_GLOBAL_IRQ, to);
--}
--
--static int mtk_cpux_clkevt_shutdown(struct clock_event_device *clkevt)
--{
--	/* Clear any irq */
--	mtk_cpux_set_irq(to_timer_of(clkevt), false);
--
--	/*
--	 * Disabling CPUXGPT timer will crash the platform, especially
--	 * if Trusted Firmware is using it (usually, for sleep states),
--	 * so we only mask the IRQ and call it a day.
--	 */
--	return 0;
--}
--
--static int mtk_cpux_clkevt_resume(struct clock_event_device *clkevt)
--{
--	mtk_cpux_set_irq(to_timer_of(clkevt), true);
--	return 0;
--}
--
- static void mtk_syst_ack_irq(struct timer_of *to)
- {
- 	/* Clear and disable interrupt */
-@@ -340,60 +281,6 @@ static struct timer_of to = {
- 	},
- };
- 
--static int __init mtk_cpux_init(struct device_node *node)
--{
--	static struct timer_of to_cpux;
--	u32 freq, val;
--	int ret;
--
--	/*
--	 * There are per-cpu interrupts for the CPUX General Purpose Timer
--	 * but since this timer feeds the AArch64 System Timer we can rely
--	 * on the CPU timer PPIs as well, so we don't declare TIMER_OF_IRQ.
--	 */
--	to_cpux.flags = TIMER_OF_BASE | TIMER_OF_CLOCK;
--	to_cpux.clkevt.name = "mtk-cpuxgpt";
--	to_cpux.clkevt.rating = 10;
--	to_cpux.clkevt.cpumask = cpu_possible_mask;
--	to_cpux.clkevt.set_state_shutdown = mtk_cpux_clkevt_shutdown;
--	to_cpux.clkevt.tick_resume = mtk_cpux_clkevt_resume;
--
--	/* If this fails, bad things are about to happen... */
--	ret = timer_of_init(node, &to_cpux);
--	if (ret) {
--		WARN(1, "Cannot start CPUX timers.\n");
--		return ret;
--	}
--
--	/*
--	 * Check if we're given a clock with the right frequency for this
--	 * timer, otherwise warn but keep going with the setup anyway, as
--	 * that makes it possible to still boot the kernel, even though
--	 * it may not work correctly (random lockups, etc).
--	 * The reason behind this is that having an early UART may not be
--	 * possible for everyone and this gives a chance to retrieve kmsg
--	 * for eventual debugging even on consumer devices.
--	 */
--	freq = timer_of_rate(&to_cpux);
--	if (freq > 13000000)
--		WARN(1, "Requested unsupported timer frequency %u\n", freq);
--
--	/* Clock input is 26MHz, set DIV2 to achieve 13MHz clock */
--	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_CTRL, &to_cpux);
--	val &= ~CPUX_CLK_DIV_MASK;
--	val |= CPUX_CLK_DIV2;
--	mtk_cpux_writel(val, CPUX_IDX_GLOBAL_CTRL, &to_cpux);
--
--	/* Enable all CPUXGPT timers */
--	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_CTRL, &to_cpux);
--	mtk_cpux_writel(val | CPUX_ENABLE, CPUX_IDX_GLOBAL_CTRL, &to_cpux);
--
--	clockevents_config_and_register(&to_cpux.clkevt, timer_of_rate(&to_cpux),
--					TIMER_SYNC_TICKS, 0xffffffff);
--
--	return 0;
--}
--
- static int __init mtk_syst_init(struct device_node *node)
- {
- 	int ret;
-@@ -452,4 +339,3 @@ static int __init mtk_gpt_init(struct device_node *node)
- }
- TIMER_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_gpt_init);
- TIMER_OF_DECLARE(mtk_mt6765, "mediatek,mt6765-timer", mtk_syst_init);
--TIMER_OF_DECLARE(mtk_mt6795, "mediatek,mt6795-systimer", mtk_cpux_init);
--- 
-2.39.2
-
+> So you won't need the mode nor the dtr property.
+> 
+> -michael
+> 
+> [1] 
+> https://www.infineon.com/dgdl/Infineon-S25FS256T_256Mb_SEMPER_Nano_Flash_Quad_SPI_1.8V-DataSheet-v01_00-EN.pdf?fileId=8ac78c8c80027ecd0180740c5a46707a
 
