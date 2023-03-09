@@ -4,84 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6DEDC6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 14:52:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 941CEC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 14:52:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0qqXf5bg2DjJNJhs1P6NgIMh3qzJNF/ahtx7g412ZUk=; b=VudT4rhZ6JzrusALiRK5xQRlJ7
-	ojvyg9CksKeHquoGQyROFPOu7IkmPWLjmsC18qCwijCKj0s6QJL/pZdHsPZ5cPpMbwlF2BR8Z5VXJ
-	b6VtSL77Bil79BNaXg+kqms+endjsYrAq2y3SVWX2/2j1OYqGc6IjKUEeqRgaPLAnVe2uDj1EciTt
-	vR0HI2xjYvH9pO9zhZGfizebj13nHv0vng/sydL3tnvMa20qmfLiNtiQbWsp0ofL/faGiV6Mnp5N3
-	0kks/U4nBOLxrPMJlsB9F2mskunTg8nSwtSslD0mmVblpCgck7QtGCsMPBoqXP6bvRam5mWHRRONq
-	Qq6G7+IQ==;
+	bh=lE1bZPp7KRJkG065jA7BrjRq0e2c3UVRIFLdkJvreXg=; b=ombvU1IShVUJFN4lXdSQTAtYJ4
+	k46yTBEUtdVMGpU3DIWinW6mn8WzJFbQurk06vrTlkiciN5KBIk0ey0vvPL/0J9cqL2MAT/+DHBma
+	CQWZwAnySMGD0H46Kfx7/YGeZTfdO9CwV3hiDRgJ/XbgjDUjewlqcjMMwvZMwqEtA8UjpeQD5p+f7
+	i5de4ypj1JDniaDiY7hh2EKde+N2L4n5ytY79VOi4HOvlOXc3wgcEXFlKIkkvOpA/Y62l/sxdvqsN
+	UDlWvgFLQgMqMiJASlFvHQAnAZt/3oUVMlL/ASJWNERXWck6DyT64bp/Y5rzANxT9R36HBg+lFWb1
+	lSX9syiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paHcu-00AgnJ-QL; Thu, 09 Mar 2023 14:52:16 +0000
+	id 1paHd1-00Agqt-5C; Thu, 09 Mar 2023 14:52:23 +0000
 Received: from desiato.infradead.org ([90.155.92.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paHWv-00Ae93-3p
-	for linux-mediatek@bombadil.infradead.org; Thu, 09 Mar 2023 14:46:05 +0000
+	id 1paHWx-00Ae9w-NS
+	for linux-mediatek@bombadil.infradead.org; Thu, 09 Mar 2023 14:46:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=0qqXf5bg2DjJNJhs1P6NgIMh3qzJNF/ahtx7g412ZUk=; b=ps9bI+ec0yvzURZlqta+usnxYS
-	QDkKJ8A0BiFwXizVXIQyfoEkFbWB9wJfl4YMbIYUmQSxlUuAJDA3568K/9N5quaaSM+934j6s7zRo
-	8ZelUwp+WpICb6+JmxwUezAV4MO01LkZrae8EcHs3+gppcdXT7ZXMqCJx9kCSgJCcv9MvFfAdD61G
-	biiIE/jA9/fanDK2CIefgBSiDD414yOFj4Vd+nnGwfsdOgxM+y6hFHmsQzI4BlR2lnVjy/MZFnF3U
-	R5nz6v1PJ7SE9nGgEcQih5nbD8RaFKylXBk44MHjjb2iLIpY3H0+17b4Mo5ZJMhOiOPuUn8d4Wrb9
-	YlrtV+BQ==;
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	bh=lE1bZPp7KRJkG065jA7BrjRq0e2c3UVRIFLdkJvreXg=; b=LkhF47bhMpZUAyNjVqzXg6OHIS
+	+7sDiJSa0UdaVkGoQPqSlIz+WyZwTiwrshrItqLFts32HF5yEaP8idQHvVfQUqCI1xQ5/g5oWP1sN
+	YWTHQQXVTce3nVGo7LJEx3gK53nJkdvlwdDUm2VESPzPEkMg1V0XD1v3R/ABX7PwtFcpYga+0EJse
+	xlLj5WmZnAg1aMNr8ImiWLILQ08YLTLOM2998CgFww94ZsaMhKPqaTH7INuRKOw3AimKJaEnb4HY7
+	edAVUu3lXsh+CnL7tzEQQ4YxioURGmCLIfD15uMObhig42HRXN4GntKcFN5zuJd/jQLsieBPCn/Eb
+	gveHr/jQ==;
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1paHAm-0008Wc-2M
+	id 1paHAl-0008Vc-1B
 	for linux-mediatek@lists.infradead.org;
-	Thu, 09 Mar 2023 14:23:15 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id l7-20020a05600c4f0700b003e79fa98ce1so1358715wmq.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Mar 2023 06:23:12 -0800 (PST)
+	Thu, 09 Mar 2023 14:23:14 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id t25-20020a1c7719000000b003eb052cc5ccso3715071wmi.4
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Mar 2023 06:23:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1678371791;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1678371789;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=0qqXf5bg2DjJNJhs1P6NgIMh3qzJNF/ahtx7g412ZUk=;
-        b=ndfvLtOXYALHaDJoXtdSp49ENX7vae8EKYXuZFkLtNANAPIAw34WH2YzswD/Nooya8
-         3ebhfQvLhNLuXY991eVi0dufC1kR0NJQjyFafWcknNRvOk6qWvsjPYMTnnLUGOhnRPxp
-         XBamqA2qJLM5tfm8kDGm/L3lZSPFFDoO0vSgdKDq0rpU9S7KIX/NQrw3scveeaH0aocX
-         PWrHMSaBct8mxhXYatGIDHQaJ87pKP31naX6KtwQWEONyI7U3fNqB5fivuL17n607fMD
-         9NN187wt/KupgjKichvlHjv+ExNGdwvTXMVQfMAIt24lt1BRmC+LTst+jCBPSz1bFigX
-         gtCQ==
+        bh=lE1bZPp7KRJkG065jA7BrjRq0e2c3UVRIFLdkJvreXg=;
+        b=e3wRyPCxCTCbhqioIV84fwTJJWN1NAlFg9iXSquWHMB+55KKB4KLqzARSuOjj8DPMQ
+         N8be9sHKY0/KWVtlU7to5JigikApJnETiCwDE4KDojZ7aLJ/9UPVd9zcLpYHBgOaSvRl
+         8J+Xfw0FSp2HyMaVrMNbUMvVWlWEWwr4O5/Jc3wCXyOB7wCF1+s6eOAnraLRo8C2+EKS
+         Cnszz064QmUgyYI3/hdj7izmvQpmwpSmx3n6Wsv/n2F/PCU1kvqL7T8v0Wc5vUwFtXAD
+         G8++H809aE7XHRhumpMOl+4O+8YF22/f+3sCSvo2ZH7MRyoWfolCvwXxeZRpo46tBkLA
+         vBkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678371791;
+        d=1e100.net; s=20210112; t=1678371789;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=0qqXf5bg2DjJNJhs1P6NgIMh3qzJNF/ahtx7g412ZUk=;
-        b=x13jmQfPR0Vk5xEhA673TxRxgwV9cKBBcDNwkPELjsOcSEaQp8WUVjAJzsNdTNjMHF
-         QhR9euTk4cxSoiNQ1dC780Ejnxp+6BAzUWplllM3f9HWXU4mKtJ8Xr2GnFrLAnIAnv80
-         rj+nm+uukuydnn9Wyal6zyOb2eUgSmoNonaDD5CALrKg5kIbWmAtzAaz3P9yPu92zIYw
-         LGsKxJC4gqWG4JvooP1NoyrQ178MNtkdf9V3KffkjInwCWCatelRkNAMjRuZ4fUNa4Yw
-         XPPZAg9j38GoRw+NbuSvAm9kG00/aCK+LBS5toIdqRn5ISrVPBoNa+lYxBm4R7cSVZ/O
-         IcYA==
-X-Gm-Message-State: AO0yUKXZyShMJNMpZAdnleuCeCN1o6F1yClet9ACUo2X2Da9idWd/TYT
-	TwM0QBRakMysLlfEPE3MTkPTxw==
-X-Google-Smtp-Source: AK7set+ZmmzWQ3/OgN4ZN4jVYsGr7tlWPXJoWbP47hxERR2B4SJlxzP0Kn/jCQ5T5s3oDQcnLlQkow==
-X-Received: by 2002:a05:600c:470a:b0:3eb:2de9:8af1 with SMTP id v10-20020a05600c470a00b003eb2de98af1mr19799735wmo.32.1678371791471;
-        Thu, 09 Mar 2023 06:23:11 -0800 (PST)
+        bh=lE1bZPp7KRJkG065jA7BrjRq0e2c3UVRIFLdkJvreXg=;
+        b=Xp3nmozf7PZLkr6MPM8sw6ggPusWt1B3hAY3a06qpKYawGQ0PgyyGpjfi7jL6xM7mG
+         lIibrN+2X9FIe2k75vQEOV89gECepgYRHNPDxbc6mwfdkcERWFWRcgP9fg4B7RgVH9IR
+         mDziBpDr3b7ijcfSoJiP/9nVvrEOiengi0kMMH7Uk2ziFSx3P0mOEDT/iQUGFh+wfYEn
+         Lh9UjYf89b9yS/GvJM6+6gpeO6xGovTQA5IaglLqK6NEBgdFa9m4lQmevuvw5F+usvtX
+         FEf/sm6CThf1RiklKo56j8SnVwrAsioMZCzjRUiwVvyEcf788OzyMWaTkSXrMprOLe4e
+         OH7g==
+X-Gm-Message-State: AO0yUKXQJg3tJFZXcG8/+NU6drPGuuqvMzmtSZ+dXPhs69A4UGimZZhI
+	Ni+UQahP6as2bfzsv8dVbCUy9g==
+X-Google-Smtp-Source: AK7set/01szVVaeiIC4yN1x9Gpt/mNzvTYlHq94dchpbp1MYvvz4Fq2/M/RreXzcMvHUi3XBWN1Yhg==
+X-Received: by 2002:a05:600c:3c9c:b0:3ea:bc08:b63e with SMTP id bg28-20020a05600c3c9c00b003eabc08b63emr19961784wmb.2.1678371789194;
+        Thu, 09 Mar 2023 06:23:09 -0800 (PST)
 Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id x22-20020a1c7c16000000b003e8dc7a03basm2772434wmc.41.2023.03.09.06.23.10
+        by smtp.googlemail.com with ESMTPSA id x22-20020a1c7c16000000b003e8dc7a03basm2772434wmc.41.2023.03.09.06.23.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Mar 2023 06:23:11 -0800 (PST)
+        Thu, 09 Mar 2023 06:23:08 -0800 (PST)
 From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Thu, 09 Mar 2023 15:23:02 +0100
-Subject: [PATCH 13/21] dt-bindings: pwm: add binding for mt8365 SoC
+Date: Thu, 09 Mar 2023 15:23:00 +0100
+Subject: [PATCH 11/21] dt-bindings: display: pannel: add startek kd070fhfid015
+ binding documentation
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20230220-display-v1-13-45cbc68e188b@baylibre.com>
+Message-Id: <20230220-display-v1-11-45cbc68e188b@baylibre.com>
 References: <20230220-display-v1-0-45cbc68e188b@baylibre.com>
 In-Reply-To: <20230220-display-v1-0-45cbc68e188b@baylibre.com>
 To: Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>,
@@ -94,25 +95,24 @@ Cc: Guillaume La Roque <glaroque@baylibre.com>, linux-arm-kernel@lists.infradead
  Neil Armstrong <neil.armstrong@linaro.org>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org
 X-Mailer: b4 0.10.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=863; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=kwXNFyz1fOvgD/9TFtO82uJ5GaLXf7euau/EfzDL2xU=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkCeu+imHhsQxqvhUMp6CB6RG/Z7QlHhbuEB4qhZ/W
- nCE1zsmJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZAnrvgAKCRArRkmdfjHURZnDD/
- 9HyJuOJIaZ0hAG+nBq1j7h6AbNDdMcZdzmMsE49awO2lTEJkNp4T+infRuAwKaenvmQT9F6zDOxBu0
- o8RSBTjcQYdNMN7kVUuNL2o85Twc5+iWy0kqVR8UNgBpQmdMds6ecyW+Z5dc0R3J/ZAn4NcUN1j4eQ
- 2vueV9asBfmi6YN1FMJ2BKItAMlzNIqG9mQhYxbazbBaBnBESu3Oz159/le0uwfk/0fx4XXtfngJd6
- vAySbbBaZnRVep2Ky115GP3RlNXblBeN+0RpA7vPaINCFIT/s6tvDrYHrhio43mPAoUDR+p+iQh8BY
- btjIAGQ9ot/n8GC7VFnPK4NRl8Fex+PisqrF35RsvAos46iLMGf6QR2M9edbehXHhJk3UzB0EbDX/r
- vNV6qLdoaTf6d4VQtVNIqHi866Abd71ICI8cQ6+TTvXde/InqVYIFZ3gCGacdqbfZg/YBvCTuYuh/7
- LXFlMrLKWCgWOeymxy8eNDpvJgVxcloszuk+mj+YpimxwXMEvfbP4+97FhZoh7G0MynbBQO0s2HeDS
- 145C5YHOxv9Tq3ouPIoJ99UgRyTUvrmS3PtX/EFB7C399hmrZV3ucxamRojktLfRRUE6ZB6mJ8yoqi
- fuBJGEBkA6C9sDxeMsACrza/GY9JsEcYJs17H9A6KIBU7dD/VjFS97DnkmnA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1648; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=ZIT7zMlD8Ybmnc0MAE48dSiLfIIrFPqxzQFOQLpl7hE=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkCeu+G0qVP9OBtyeMgMvHIxMf6oq0XMUO3rJqXik3
+ LjvSat6JAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZAnrvgAKCRArRkmdfjHURZfED/
+ 414WwVYTAUFUxJE4CwHKrWcmoCVewOA/dd32LBGVdTz8vaKpH+2d1a5N9ovuTY4GW3H8kjpVJORADx
+ 4Xmkf/2xqpoSp2G1tnQjX7gpPaiW1qEJmk0ItcAcOfzItflGiFnbiiYaVvZi6uigXBr77DusoqtZ2e
+ 2d7TuAG86s+vZrISj3CfXsnZY6GOwMBoIz++ha8QV1WUuXMOE53gUBKUt8VSakC9Tj1HYP4L3UBox8
+ G2MrlJr/2NjismzZdJ1UEThjH3/kp9qZMJKNNDkimfX21jxvr6owH+AiEMBIM8bC3W6KAfidyapQn8
+ XzaXRfinr5+s/OPzcMvcJJhJwuZjsEpb1OQRZ5JSElVpYzvEwnvJ+6ZZC0XpgX721HbW3zE8UUMpSP
+ JSFkEn5NCpZ0FAbhlcKPn6yH0mzb5VO5I9n9PLHamCgcjmpBB3UZ+GKK7BbC5+14TZk4XUYM1S8UlQ
+ JPa6sj8/2jjLZWZDPvHGTgXyZcYf3kbHU+/HphFNdWttWktnm3y8MXF5oUdWXieUsGzEkrLokGPp24
+ RmmcS/f5beFeHXDKvVrBW00w7qJst/aHHOCXlUowrBgYy0cAHPBXdEX4sC7IKiwqb2GQbfs7+bUWMz
+ H/TVDMy4mN1ewwGa0HahS+2c91dONKmtyyo/WEvhj3C/5kMC6yCiAXSWI7bA==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_142312_953151_80C8795C 
-X-CRM114-Status: UNSURE (   8.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230309_142311_606073_1807009E 
+X-CRM114-Status: GOOD (  10.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,26 +127,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Display PWM for MT8365 is compatible with MT8183. Then, add MT8365 binding
-along with MT8183 SoC.
+The Startek KD070FHFID015 is a 7-inch TFT LCD display with a resolution
+of 1024 x 600 pixels.
 
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ .../display/panel/startek,kd070fhfid015.yaml       | 55 ++++++++++++++++++++++
+ 1 file changed, 55 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-index 8a0005a8bf40..889d2b376212 100644
---- a/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-+++ b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-@@ -30,6 +30,7 @@ properties:
-               - mediatek,mt8188-disp-pwm
-               - mediatek,mt8192-disp-pwm
-               - mediatek,mt8195-disp-pwm
-+              - mediatek,mt8365-disp-pwm
-           - const: mediatek,mt8183-disp-pwm
- 
-   reg:
+diff --git a/Documentation/devicetree/bindings/display/panel/startek,kd070fhfid015.yaml b/Documentation/devicetree/bindings/display/panel/startek,kd070fhfid015.yaml
+new file mode 100644
+index 000000000000..5fde552838e5
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/panel/startek,kd070fhfid015.yaml
+@@ -0,0 +1,55 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/panel/startek,kd070fhfid015.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Startek Electronic Technology Co. kd070fhfid015 7 inch TFT LCD panel
++
++maintainers:
++  - Alexandre Mergnat <amergnat@baylibre.com>
++
++allOf:
++  - $ref: panel-common.yaml#
++
++properties:
++  compatible:
++    const: startek,kd070fhfid015
++
++  dcdc-gpios: true
++
++  height-mm:
++    const: 119
++
++  iovcc-supply:
++    description: Reference to the regulator powering the panel IO pins.
++
++  reg:
++    maxItems: 1
++    description: DSI virtual channel
++
++  reset-gpios: true
++
++  pinctrl-0: true
++
++  pinctrl-names: true
++
++  port: true
++
++  power-supply: true
++
++  width-mm:
++    const: 178
++
++additionalProperties: false
++
++required:
++  - compatible
++  - dcdc-gpios
++  - iovcc-supply
++  - reg
++  - reset-gpios
++  - port
++  - power-supply
++
++...
 
 -- 
 b4 0.10.1
