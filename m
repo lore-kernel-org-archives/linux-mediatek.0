@@ -4,97 +4,164 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0162C742A7
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 08:40:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA11CC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 08:45:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XLcDhKAEG5LPaWdFebAa2lbfxu19fqD9CaHoKJVhl70=; b=RQ9f2lMQVHu2r/mTlgrYOXq7VX
-	3BQhTmj0uosB0AT1VDDhjRpfCeIKeIpTGtyiD3h3jqO83En0BrxE2kN3RldTl6hsJBDXVgR2owPTj
-	ADPsLrq/J2NBU0BUHn4fRXxnFCHgsYvGg25VyVNUrYd0eYAiCboGZPcaIEIg2f/1kkYnd9/OXKeZC
-	gNTiV3Ij3wQrgrTwMxVzZszLm4de6JyTjy9LEgCnXiiOaISXnxH9euuFifVtow6xIEHuw4F9SQPf8
-	yMJarq7/L+yK2wBN+VAFoqCN00rrs4FqYXv6CC0hzEgfvxKW0Y2eCSf7DBzRfo4I7h1ObJPHt4DoA
-	DIa/UaIQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Is2VqhbOsS3IuWI76iSIP1Noak8iMHaPakEyzPgYdVU=; b=FBRsdDyl1NTQtchnIlR3F48RGP
+	4TII2jxcdb4PUb0FCOIfJA273VMRvOSggXDOVW716a58Ty8LgM3fOvx0DqvCt5hdNMPO0NFEkq+fG
+	H6B3r3ynpIg38IQDG3VZ16jcxDe2lftboj9k5Z8/Hwl3J73L/5GK/ub5Kcrn/QASOVSLb1pX4F/f8
+	KNXCs9S/5GXqcbybfVVl1gYIl7qgpXBEZNZ96Fp6XhSLLtYpynb7suB8/RUEmWt9HYpstQhFZoamv
+	t5QOmZP+m19Iw/Jzo/1+9csL8OINAcpUrAEuXkEQQqNnbwLc01T9bIIwblP6uiAUUcAAP6ukGbPmk
+	GyrOuoPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paBor-008aZg-Sl; Thu, 09 Mar 2023 08:40:13 +0000
-Received: from 9.mo583.mail-out.ovh.net ([178.32.96.204])
+	id 1paBtg-008c1v-18; Thu, 09 Mar 2023 08:45:12 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paBog-008aTs-T8
-	for linux-mediatek@lists.infradead.org; Thu, 09 Mar 2023 08:40:09 +0000
-Received: from director2.ghost.mail-out.ovh.net (unknown [10.108.16.142])
-	by mo583.mail-out.ovh.net (Postfix) with ESMTP id 25A4026E02
-	for <linux-mediatek@lists.infradead.org>; Thu,  9 Mar 2023 08:39:58 +0000 (UTC)
-Received: from ghost-submission-6684bf9d7b-kbqfb (unknown [10.110.208.139])
-	by director2.ghost.mail-out.ovh.net (Postfix) with ESMTPS id 551CE1FDDD;
-	Thu,  9 Mar 2023 08:39:54 +0000 (UTC)
-Received: from RCM-web10.webmail.mail.ovh.net ([151.80.29.18])
-	by ghost-submission-6684bf9d7b-kbqfb with ESMTPSA
-	id 5WxtE1qbCWRTNQAA55JE7A
-	(envelope-from <rafal@milecki.pl>); Thu, 09 Mar 2023 08:39:54 +0000
+	id 1paBte-008byk-3o; Thu, 09 Mar 2023 08:45:11 +0000
+X-UUID: adec19d4be5611edbbe3f76fe852e059-20230309
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=Is2VqhbOsS3IuWI76iSIP1Noak8iMHaPakEyzPgYdVU=;
+	b=l0TBv2VZhCpKM95h/KvVrPPoApVkWZRoZk0VmC9zuigsqOeTQRX9cpD5DSGibYEuSNZZT5EAy9/hav38XTvUBaEAz+dv+zawlPApz3qJ3v6dM6dCAoNBZ18it4f0uYvQ9EqpqmrFKdZHJZuUV+V5hihDNPHHBQXv2cWST9r9qBk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.20,REQID:8faf2bda-6431-4a98-ad79-6586bdaf29f2,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:25b5999,CLOUDID:b3c544f5-ddba-41c3-91d9-10eeade8eac7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-UUID: adec19d4be5611edbbe3f76fe852e059-20230309
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <jason-ch.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1849773883; Thu, 09 Mar 2023 01:45:01 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Thu, 9 Mar 2023 16:24:22 +0800
+Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n1.mediatek.com (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Thu, 9 Mar 2023 16:24:22 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=GUeJA/3c2+rclh0opDWxnLrP0xTOyCarSdTsWzymfog/hAiAAAftCb7yY9TmzOrk5H3B7EvGipgQYA1SU7tu+GpRr/bEdYa77LrAJ/KQSsk7O549WQmTdlKjoCJabpdR+zPIZ/THCJ+Elnlxzq6y7R6+vt4lz1ZBpCLC5cy53P57nnSUt6jXWGW1yDNfwlbq0APoPUAv4yC6H2izUiwzn7o43iG6pTYUJ1OOx9uRL4fInm/qzxoonVW+5XaMgXcPAsNgkkpyZ+e5YZ9/Wp5uVqzcnLLj/C/d95i/yW1Ov0zP2odMVZaDqvM0Zvrj6EZHWrh4jmtN+ppJRStof+1ijg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Is2VqhbOsS3IuWI76iSIP1Noak8iMHaPakEyzPgYdVU=;
+ b=mpnZBWasj6Blw18UgFwEVctGuhtwe23pM2WoGJamAiNs1JB8zoP6vDOuNFZl1OLgxeGdGLPUS8g+6m6RsJ+nNdk7y9h5t6CPM2TZcbsT5P1z1VluTRXevCc1TAdYCOUOVPOOCY3+XvLnxVZndKD9Q1lmgoNcJ5TOTqWPU0gghhuV23xAgljYQg8Fv5oHfBqvBO7GpN1P2+VSC7LbfFZgCAW+fE0V6aUZiBrVxWzK8C51LzD3hAXztfxjtWkyUHeqTsCQq2VkPmHha1loPu5rRnMApIjwypMgYKNYyuRKIOuAxppiKrXWHlPHXtOotH+t/Cz5GvRuBmAKeu3WZb3dvg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Is2VqhbOsS3IuWI76iSIP1Noak8iMHaPakEyzPgYdVU=;
+ b=URkWxoVaJrs4psGeiSBlblC7+nABFqOJoQBKK9h6aH5wNtMnujSD+3MBf+GsdlWtBq8BmUTA0jWIfXXCihBMUWO/Znc6Mb/OFhylmW+NNqFq4p11hGOHcjz2GPK4ilh/DApq29h9j2NsChV98WBShMtPYK7A0InYRXHlVcqb/nM=
+Received: from KL1PR03MB5650.apcprd03.prod.outlook.com (2603:1096:820:73::5)
+ by TY0PR03MB6821.apcprd03.prod.outlook.com (2603:1096:400:216::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6156.25; Thu, 9 Mar
+ 2023 08:24:20 +0000
+Received: from KL1PR03MB5650.apcprd03.prod.outlook.com
+ ([fe80::40f8:8248:54d5:a6ca]) by KL1PR03MB5650.apcprd03.prod.outlook.com
+ ([fe80::40f8:8248:54d5:a6ca%9]) with mapi id 15.20.6178.018; Thu, 9 Mar 2023
+ 08:24:19 +0000
+From: =?utf-8?B?SmFzb24tY2ggQ2hlbiAo6Zmz5bu66LGqKQ==?=
+	<Jason-ch.Chen@mediatek.com>
+To: "mathieu.poirier@linaro.org" <mathieu.poirier@linaro.org>
+CC: "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "bjorn.andersson@linaro.org"
+	<bjorn.andersson@linaro.org>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"linux-remoteproc@vger.kernel.org" <linux-remoteproc@vger.kernel.org>
+Subject: Re: [PATCH] remoteproc: mediatek: Dereferencing a pointer that might
+ be NULL
+Thread-Topic: [PATCH] remoteproc: mediatek: Dereferencing a pointer that might
+ be NULL
+Thread-Index: AQHZTbrUIf19zHSerkC4hHxClViIAK7pXiSAgAjHeoA=
+Date: Thu, 9 Mar 2023 08:24:19 +0000
+Message-ID: <29643c069485b2c7e49fd9e40c26b60f86a63a86.camel@mediatek.com>
+References: <20230303102751.9374-1-jason-ch.chen@mediatek.com>
+	 <CANLsYky0pbqiEfq7E6DZM=J+sm2JJ8gYST2atUyP8X7y9zdHWA@mail.gmail.com>
+In-Reply-To: <CANLsYky0pbqiEfq7E6DZM=J+sm2JJ8gYST2atUyP8X7y9zdHWA@mail.gmail.com>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: KL1PR03MB5650:EE_|TY0PR03MB6821:EE_
+x-ms-office365-filtering-correlation-id: abc0a79b-2207-49cd-76ff-08db2077adbd
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Vtg3zPehkL+ehKcs/4yNeRbwsr2VSQCiNeQgbds6vSHFXScz9v5o0Hm10Kw7FeJa7sdu93/Sf6FO2NQj6EeOiJBdamd95Ue3DQvLbX2mNZitGmMu/K5zJixsT2XW6ncc/tAW5592fWTMDP7tme888qsKGji6zNuAYOa1zxLuxDhQGi95EQOPCpqrvuSNLzlxISrGX6Hzlro4IMm16sGbQW52BUhDMEmzMSeam99sbJrkWYR7ZgZ1cJmTpF5vqUue0ExKDhwSBZ2gJVhwUUBIx6O1D9KEZ3C3wJi76uetOoyPN2qr6XocbYIIZJw4xx/rTUTEA7ylWoGUVvfP/LKLDXU1MRDsGM+Bw/Iw5Xre0ra0fVnlGSkddR5QXTzibJwg5cm72RQDmcZSs9xcbO66Po3w7K5I5eS9SqDNJThRKPrLpofQDZaAn+1Wn2LNKwPlYQiUvRKLLC/5uBBm2N1wxXOBhewPvXGyPfpIghKUkhvIT4Ov/D9E75x/g88vaHPSlPSv1uSH+cQiJh/n8CF1QEHtMbdMutratphFPR1kdodo6ELEnIo0caeaUfwFgRVyX76ROZNui1BNnGH/dxbJiQouSC0mRe7/MbOHRjeopdLmilHdY4KzQdv4SacUvxPivjmD4ryhtrcyMnTzYPt4t03o1upUJs6fXCtNz4p6C2p52a1U0OwiNFS3HbYisWqLBZ50HyOT8ezLJQ2QclJl5A==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:KL1PR03MB5650.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(39860400002)(366004)(346002)(136003)(396003)(376002)(451199018)(5660300002)(186003)(66476007)(36756003)(85182001)(26005)(478600001)(41300700001)(71200400001)(6486002)(6512007)(2616005)(6506007)(38070700005)(66946007)(8676002)(66556008)(4326008)(6916009)(76116006)(66446008)(8936002)(86362001)(54906003)(64756008)(91956017)(38100700002)(122000001)(2906002)(316002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ZjM4TEhocUxCOGlFQ2d0VTFmMDBiVnhaREdhQ2hTRjRwbFh6dm1rK3dSUWVa?=
+ =?utf-8?B?SVVXZ2hDbVRDbUQrSmJTd2tCR2ZqN2VhRXZDaUVRQ0RLMUs3UEx3OGZtNGtR?=
+ =?utf-8?B?eVdqRWNYMFdybmo5ZGIrWnJ0cElrLzlNWmliQW9DNCtyTW1vYStEVzd2eXda?=
+ =?utf-8?B?QWVoWXg0SjRuME5zQnlhOElncVRSREVQTUJZSHlaYjA5R0YxZDFBb25iUHhs?=
+ =?utf-8?B?c2ptVGV2d3FKMHdUOWZ4bml0ejR5aDA5SnB3dmtJVXE0UW9teHhpVHo2R1JT?=
+ =?utf-8?B?WDhHSis1bjVHT3lNL0dzV3Jjd2FOVWZsRFRVS1EyeWFmZDl2WTlpeDhseERX?=
+ =?utf-8?B?Zy85Q3BOMlNkR3dTUWJlMWRRME9KK085UE9KVmFpQ2xwT3dvMm9DY3pqb3Iz?=
+ =?utf-8?B?TnFQMG90S0U2bko4NmlLTW9rQVZadS9ZWFloZ1BDR2hHelNLMGgyUEYvZjBm?=
+ =?utf-8?B?T1dFQ1pzalI5MmhBSklHR1lnbDhRN2ZLdTBzbWNMOXpObmFHVmgxZTNDTkRU?=
+ =?utf-8?B?dmJFSkZERk1HeFNLdGF4a01OM2dLSHp5MnJDSVdBMkl3elVGRnBSV0JPWmRl?=
+ =?utf-8?B?bXVKUWpzMGprOW9OYkRtN2FvNkZiMi9NbUd3d2Mwb0M2L1ZCUkhsS0VjRDJX?=
+ =?utf-8?B?bmwydVYySTIxYThNa2hXWXVtemVYTWloOVBRN3NUcjJTK2NZUWpzVFk1V2R3?=
+ =?utf-8?B?ZUY2Y0xmSmZ4NU96ekpHeXdvVFRUV1dBQ1NsaURYa1pHYzZ0c1NNbDVhQTdX?=
+ =?utf-8?B?emlzNGFYb29HcGFWN2k3STNZWTNzU2RKQ0REek1scGMrWTlsTVNoakZCeXZ4?=
+ =?utf-8?B?V1RkaHJuZGZWTHJhRjUyVlNHeUNhdWc4dHVjL2kxZkZBUkQ0T3FHN1hFNlJY?=
+ =?utf-8?B?RTk1M0ZsbXNvbndnajRZcW8wYTlic2JPcGFHa3M5N0VVM3hQbUZ2QVJpUjBk?=
+ =?utf-8?B?VzZxakczVVdpTXorVmhqN3U1N1oyTVYrNS94c3RQVVNJdC83OVNlelpCS3dp?=
+ =?utf-8?B?UW9TMjFydnRxSDc3ZXBkcG5xM1FCVVdETVBSN1JsMStVK05iTjAzTUpWbUpQ?=
+ =?utf-8?B?cWRTQmRYME1JcHJMVnBqcUI0L0szSmFBbFRqZzFuS29IVUlIc1lkK1FjZGNk?=
+ =?utf-8?B?dElUMWo4VjNJZjhUQkdpeitPd1RqTTlOTFhISVBndlVUdFdXZ0RITFJKMXVR?=
+ =?utf-8?B?MlpNRFl1MXpyVU92cS8yOURkRTFqYXpTekNkZ0lnOUFHL2k5R0pKVThyYTRB?=
+ =?utf-8?B?dUZTdXZHajFUMkJSUi9SVk9pQm14cHJ4OEd4L1czYzdvQkdIb1dXOTlORUg1?=
+ =?utf-8?B?Q1lIY2JiWnJ2cXJIUjdGc3RibkdWeU5pMXFDV3V3OTdoUE55V3ZPWVNJSVhM?=
+ =?utf-8?B?Mk5UZWMvKzJvSTZMOWgzNFZ0WERyaEQvbU1XL1I5YzVvTHpaM3JiU1JhQ2V2?=
+ =?utf-8?B?M0NwN2pPdUxtODVQaDgyMERkZHJxeTVGQTVtUXEzR0dCT1pwWmNWUVdSZ2Zk?=
+ =?utf-8?B?U0VLYXBaRFZSbnlxdHY2QmZ2T25XaFgvUHh4SUdFK2FLWmljTUx6a0xZSnpM?=
+ =?utf-8?B?ZHFIam5ndUJTWGV2UjdFZ1J0aUZFdUxHRzBLRUVFbTB2Y3RxWWk5N2cvY0tK?=
+ =?utf-8?B?d2Nnc2NvcCtvcFJlNHhzcnM0ZDk5MTMwWEJLTVo0ZjZyb1dHaTN3N3FWb1cr?=
+ =?utf-8?B?ZTdpRXZTZVhvMVp2YjVNNzJaRU5rd1crMWpGWnVwb2RMdEVXZXJjZmVKTWJp?=
+ =?utf-8?B?anFHL0ZWUjF5UWdkTndvK3ZXVWQrOUNOOUUrZnltU1VZZk5mZGZ0UlVsazhw?=
+ =?utf-8?B?MFJLN3lqTUtQcXRDekFTbTBDaUNHTVlYTXZSYUQwK0pKU3F6UjlvVmUvU1B6?=
+ =?utf-8?B?S0tIOEQyYkpIdEM2R3loV1MwWFFGNDJ4dDhHUzh0dFVPNjdmSEVzVGdiMFYx?=
+ =?utf-8?B?OStmRHVFazlzUjBYK2JQR0VyeDBYLzNLVXJUd3pZQlFqbmNDelFOMEZ6OTJU?=
+ =?utf-8?B?ZjRvK2R5eEdUZW9rN2tRRDNpLzFwWkJnMEprUGhRMythbXBoaktlM3NPUTk0?=
+ =?utf-8?B?RzdBS2J5ZDlVTHJLRmpnZlhxODNMdDkzMWNGUlpkL1hhZGVlaUhVUGFSZDR1?=
+ =?utf-8?B?ZHc4dFlIeWZlV0VtUFdlNTJsUEVvTmhnSWlEL1grcFZFdUhnTmczejQyMWo1?=
+ =?utf-8?Q?Udfo+FLFg78cHb2yfe29vcQ=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <40A6DA48390042468B84766C0C09F685@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Date: Thu, 09 Mar 2023 09:39:54 +0100
-From: =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>
-To: Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <zajec5@gmail.com>, Srinivas
- Kandagatla <srinivas.kandagatla@linaro.org>, Richard Weinberger
- <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Hector Martin
- <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, Alyssa Rosenzweig
- <alyssa@rosenzweig.io>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
- <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, Neil
- Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>,
- Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl
- <martin.blumenstingl@googlemail.com>, Claudiu Beznea
- <claudiu.beznea@microchip.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy
- Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad
- Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Orson
- Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Vincent Shih <vincent.sunplus@gmail.com>,
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Kunihiko Hayashi
- <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>,
- Michal Simek <michal.simek@xilinx.com>, Alessandro Zummo
- <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Evgeniy Polyakov <zbr@ioremap.net>, linux-mtd@lists.infradead.org,
- linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
- linux-rtc@vger.kernel.org
-Subject: Re: [PATCH V2] nvmem: add explicit config option to read OF fixed
- cells
-In-Reply-To: <20230309093415.2b1088c8@xps-13>
-References: <20230224072903.20945-1-zajec5@gmail.com>
- <20230308173256.3837b87b@xps-13>
- <91ff425b4c901648b1faf34c784f20ad@milecki.pl>
- <20230308190636.7fabab9c@xps-13>
- <5974d28426057975e701c4a8454b5a13@milecki.pl>
- <20230308193121.7f5b3d02@xps-13>
- <930f3549-440d-adac-ae9d-1aa6ef07c44b@gmail.com>
- <20230309093415.2b1088c8@xps-13>
-User-Agent: Roundcube Webmail/1.4.13
-Message-ID: <af5dfd4701666d4ea50ec1015b1d2e5c@milecki.pl>
-X-Sender: rafal@milecki.pl
-X-Originating-IP: 194.187.74.233
-X-Webmail-UserID: rafal@milecki.pl
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
-Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 11195104250516581191
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrvdduhedgvdefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepggffhffvvefujghffgfkgihitgfgsehtkehjtddtreejnecuhfhrohhmpeftrghfrghlucfoihhlvggtkhhiuceorhgrfhgrlhesmhhilhgvtghkihdrphhlqeenucggtffrrghtthgvrhhnpefghfeuiefhiedttedtheefhfeifeffveekvdegteetkeetjedtiedvvdfhgfffffenucffohhmrghinhepkhgvrhhnvghlrdhorhhgnecukfhppeduvdejrddtrddtrddupdduleegrddukeejrdejgedrvdeffedpudehuddrkedtrddvledrudeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepuddvjedrtddrtddruddpmhgrihhlfhhrohhmpeeorhgrfhgrlhesmhhilhgvtghkihdrphhlqedpnhgspghrtghpthhtohepuddprhgtphhtthhopehlihhnuhigqdhmvgguihgrthgvkheslhhishhtshdrihhnfhhrrgguvggrugdrohhrghdpoffvtefjohhsthepmhhoheekfedpmhhouggvpehsmhhtphhouhht
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: KL1PR03MB5650.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: abc0a79b-2207-49cd-76ff-08db2077adbd
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Mar 2023 08:24:19.0660
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: YEbsKhbuktrfCE63mcb+t508VSYhV3Sp+bEJttoiYXKGmtiY6UAl6u7aOSyWBH0FuwA9tN6lrZxlrahcBODX+xskkYbeNKLESARLuL/swow=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR03MB6821
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_004003_307934_937C4E42 
-X-CRM114-Status: GOOD (  37.58  )
+X-CRM114-CacheID: sfid-20230309_004510_190965_DF6CB880 
+X-CRM114-Status: GOOD (  23.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,183 +176,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023-03-09 09:34, Miquel Raynal wrote:
-> Hi Rafał,
-> 
-> zajec5@gmail.com wrote on Thu, 9 Mar 2023 07:56:05 +0100:
-> 
->> On 8.03.2023 19:31, Miquel Raynal wrote:
->> > Hi Rafał,
->> >
->> > rafal@milecki.pl wrote on Wed, 08 Mar 2023 19:12:32 +0100:
->> >
->> >> On 2023-03-08 19:06, Miquel Raynal wrote:
->> >>> Hi Rafał,
->> >>>
->> >>> rafal@milecki.pl wrote on Wed, 08 Mar 2023 17:55:46 +0100:
->> >>>    >>>> On 2023-03-08 17:34, Miquel Raynal wrote:
->> >>>>> Hi Rafał,
->> >>>>>
->> >>>>> zajec5@gmail.com wrote on Fri, 24 Feb 2023 08:29:03 +0100:
->> >>>>>   >>>>>> From: Rafał Miłecki <rafal@milecki.pl>
->> >>>>>>>> NVMEM subsystem looks for fixed NVMEM cells (specified in DT) by
->> >>>>>> default. This behaviour made sense in early days before adding support
->> >>>>>> for dynamic cells.
->> >>>>>>>> With every new supported NVMEM device with dynamic cells current
->> >>>>>> behaviour becomes non-optimal. It results in unneeded iterating over >> DT
->> >>>>>> nodes and may result in false discovery of cells (depending on used DT
->> >>>>>> properties).
->> >>>>>>>> This behaviour has actually caused a problem already with the MTD
->> >>>>>> subsystem. MTD subpartitions were incorrectly treated as NVMEM cells.
->> >>>>>
->> >>>>> That's true, but I expect this to be really MTD specific.
->> >>>>>
->> >>>>> A concrete proposal below.
->> >>>>>   >>>>>> Also with upcoming support for NVMEM layouts no new binding or driver
->> >>>>>> should support fixed cells defined in device node.
->> >>>>>
->> >>>>> I'm not sure I agree with this statement. We are not preventing new
->> >>>>> binding/driver to use fixed cells, or...? We offer a new way to expose
->> >>>>> nvmem cells with another way than "fixed-offset" and "fixed-size" OF
->> >>>>> nodes.
->> >>>>>>   From what I understood all new NVMEM bindings should have cells >> defined
->> >>>> in the nvmem-layout { } node. That's what I mean by saying they should
->> >>>> not be defined in device node (but its "nvmem-layout" instead).
->> >>>
->> >>> Layouts are just another possibility, either you user the nvmem-cells
->> >>> compatible and produce nvmem cells with fixed OF nodes, or you use the
->> >>> nvmem-layout container. I don't think all new bindings should have
->> >>> cells in layouts. It depends if the content is static or not.
->> >>>    >>>>>> Solve this by modifying drivers for bindings that support specifying
->> >>>>>> fixed NVMEM cells in DT. Make them explicitly tell NVMEM subsystem to
->> >>>>>> read cells from DT.
->> >>>>>>>> It wasn't clear (to me) if rtc and w1 code actually uses fixed cells. >> I
->> >>>>>> enabled them to don't risk any breakage.
->> >>>>>>>> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
->> >>>>>> [for drivers/nvmem/meson-{efuse,mx-efuse}.c]
->> >>>>>> Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
->> >>>>>> ---
->> >>>>>> V2: Fix stm32-romem.c typo breaking its compilation
->> >>>>>>      Pick Martin's Acked-by
->> >>>>>>      Add paragraph about layouts deprecating use_fixed_of_cells
->> >>>>>> ---
->> >>>>>>   drivers/mtd/mtdcore.c          | 2 ++
->> >>>>>>   drivers/nvmem/apple-efuses.c   | 1 +
->> >>>>>>   drivers/nvmem/core.c           | 8 +++++---
->> >>>>>>   drivers/nvmem/imx-ocotp-scu.c  | 1 +
->> >>>>>>   drivers/nvmem/imx-ocotp.c      | 1 +
->> >>>>>>   drivers/nvmem/meson-efuse.c    | 1 +
->> >>>>>>   drivers/nvmem/meson-mx-efuse.c | 1 +
->> >>>>>>   drivers/nvmem/microchip-otpc.c | 1 +
->> >>>>>>   drivers/nvmem/mtk-efuse.c      | 1 +
->> >>>>>>   drivers/nvmem/qcom-spmi-sdam.c | 1 +
->> >>>>>>   drivers/nvmem/qfprom.c         | 1 +
->> >>>>>>   drivers/nvmem/rave-sp-eeprom.c | 1 +
->> >>>>>>   drivers/nvmem/rockchip-efuse.c | 1 +
->> >>>>>>   drivers/nvmem/sc27xx-efuse.c   | 1 +
->> >>>>>>   drivers/nvmem/sprd-efuse.c     | 1 +
->> >>>>>>   drivers/nvmem/stm32-romem.c    | 1 +
->> >>>>>>   drivers/nvmem/sunplus-ocotp.c  | 1 +
->> >>>>>>   drivers/nvmem/sunxi_sid.c      | 1 +
->> >>>>>>   drivers/nvmem/uniphier-efuse.c | 1 +
->> >>>>>>   drivers/nvmem/zynqmp_nvmem.c   | 1 +
->> >>>>>>   drivers/rtc/nvmem.c            | 1 +
->> >>>>>>   drivers/w1/slaves/w1_ds250x.c  | 1 +
->> >>>>>>   include/linux/nvmem-provider.h | 2 ++
->> >>>>>>   23 files changed, 29 insertions(+), 3 deletions(-)
->> >>>>>>>> diff --git a/drivers/mtd/mtdcore.c b/drivers/mtd/mtdcore.c
->> >>>>>> index 0feacb9fbdac..1bb479c0f758 100644
->> >>>>>> --- a/drivers/mtd/mtdcore.c
->> >>>>>> +++ b/drivers/mtd/mtdcore.c
->> >>>>>> @@ -523,6 +523,7 @@ static int mtd_nvmem_add(struct mtd_info *mtd)
->> >>>>>>   	config.dev = &mtd->dev;
->> >>>>>>   	config.name = dev_name(&mtd->dev);
->> >>>>>>   	config.owner = THIS_MODULE;
->> >>>>>> +	config.use_fixed_of_cells = of_device_is_compatible(node, >> "nvmem-cells");
->> >>>>>
->> >>>>> I am wondering how mtd specific this is? For me all OF nodes containing
->> >>>>> the nvmem-cells compatible should be treated as cells providers and
->> >>>>> populate nvmem cells as for each children.
->> >>>>>
->> >>>>> Why don't we just check for this compatible to be present? in
->> >>>>> nvmem_add_cells_from_of() ? And if not we just skip the operation.
->> >>>>>
->> >>>>> This way we still follow the bindings (even though using nvmem-cells in
->> >>>>> the compatible property to require cells population was a mistake in
->> >>>>> the first place, as discussed in the devlink thread recently) but there
->> >>>>> is no need for a per-driver config option?
->> >>>>>> This isn't mtd specific. Please check this patch for all occurrences >> of
->> >>>> the:
->> >>>> use_fixed_of_cells = true
->> >>>>>> The very first one: drivers/nvmem/apple-efuses.c driver for the
->> >>>> "apple,efuses" binding. That binding supports fixed OF cells, see:
->> >>>> Documentation/devicetree/bindings/nvmem/apple,efuses.yaml
->> >>>
->> >>> I'm saying: based on what has been enforced so far, I would expect all
->> >>> fixed cell providers to come with nvmem-cells as compatible, no?
->> >>>
->> >>> If that's the case we could use that as a common denominator?
->> >>
->> >> Sorry, I don't get it. Have you checked
->> >> Documentation/devicetree/bindings/nvmem/apple,efuses.yaml
->> >> ?
->> >>
->> >> It's a NVMEM provied binding with fixed cells that doesn't use
->> >> nvmem-cells as compatible. There are many more.
->> >
->> > Oh yeah you're right, I'm mixing things. Well I guess you're right
->> > then, it's such a mess, we have to tell the core the parsing method.
->> >
->> > So maybe another question: do we have other situations than mtd which
->> > sometimes expect the nvmem core to parse the OF nodes to populate cells,
->> > and sometimes not?
->> 
->> I'm not aware of that. Please also check my patch. The only case I set
->> "use_fixed_of_cells" conditionally is mtd code. In other cases it's
->> hardcoded to "true".
->> 
->> 
->> > Also, what about "of_children_are_cells" ? Because actually in most
->> > cases it's a "fixed of cell", so I don't find the current naming
->> > descriptive enough for something so touchy.
->> 
->> That would be just incorrect because this new config property
->> ("use_fixed_of_cells") is only about FIXED cells.
->> 
->> There are cases of OF children being cells but NOT being fixed cells.
->> They should NOT be parsed by the nvmem_add_cells_from_of().
->> 
->> Example:
->> a607a850ba1f ("dt-bindings: nvmem: u-boot,env: add basic NVMEM cells")
->> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a607a850ba1fa966cbb035544c1588e24a6307df
-> 
-> This is backwards. That's why layouts have been proposed: having
-> a clear framework were the nvmem core should or should not play with
-> the OF children nodes. If each binding is different, you end up with
-> the mess we have today, where nobody knows how to properly
-> populate the cells.
-> 
-> Anyway, it's not a big deal either, if the cells are empty we can
-> easily check that and have *yet another* specific case in the core.
-> 
->> So that would result in U-Boot env:
->> 1. Having OF children nodes being cells
->> 2. Setting "of_children_are_cells" to false (counter-intuitive) to 
->> avoid nvmem_add_cells_from_of()
-> 
-> Agreed. So what about config.ignore_of_children?
-> - mtd sets this to !is_compatible(nvmem-cells)
-> - nobody else touches it (the core don't try to parse the cell if it's
->   empty so U-Boot env driver works)
-
-"ignore_of_children" would have opposite (reversed) meaning to the
-"use_fixed_of_cells":
-1. By default it would be 0 / false
-2. By default NVMEM code would NOT ignore OF children nodes
-
-That is what I actually *don't* want.
-
-Having NVMEM core look for fixed cells in device node is undesirable.
-I want that feature to be off by default. I want devices to have to
-enable it explicitly only when it's needed.
+SGkgTWF0aGlldSwNCg0KT24gRnJpLCAyMDIzLTAzLTAzIGF0IDExOjIwIC0wNzAwLCBNYXRoaWV1
+IFBvaXJpZXIgd3JvdGU6DQo+IE9uIEZyaSwgMyBNYXIgMjAyMyBhdCAwMzoyOCwgSmFzb24tY2gg
+Q2hlbiA8DQo+IGphc29uLWNoLmNoZW5AbWVkaWF0ZWsuY29tPiB3cm90ZToNCj4gPiANCj4gPiBG
+cm9tOiBqYXNvbi1jaCBjaGVuIDxKYXNvbi1jaC5DaGVuQG1lZGlhdGVrLmNvbT4NCj4gPiANCj4g
+PiBUaGUgcmVzIG1pZ2h0IGJlIE5VTEwgd2hlbiBjYWxsaW5nIHJlc291cmNlX3NpemUuDQo+ID4g
+DQo+IA0KPiAicmVzb3VyY2Vfc2l6ZSIgPyAgV2hhdCBpcyB0aGF0Pw0KPiANCj4gPiBTaWduZWQt
+b2ZmLWJ5OiBqYXNvbi1jaCBjaGVuIDxKYXNvbi1jaC5DaGVuQG1lZGlhdGVrLmNvbT4NCj4gPiAt
+LS0NCj4gPiAgZHJpdmVycy9yZW1vdGVwcm9jL210a19zY3AuYyB8IDMgKysrDQo+ID4gIDEgZmls
+ZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKykNCj4gPiANCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9yZW1vdGVwcm9jL210a19zY3AuYw0KPiA+IGIvZHJpdmVycy9yZW1vdGVwcm9jL210a19zY3Au
+Yw0KPiA+IGluZGV4IGVhY2RmMjQxZjRlZi4uODYzZDE4ZjYzZjU4IDEwMDY0NA0KPiA+IC0tLSBh
+L2RyaXZlcnMvcmVtb3RlcHJvYy9tdGtfc2NwLmMNCj4gPiArKysgYi9kcml2ZXJzL3JlbW90ZXBy
+b2MvbXRrX3NjcC5jDQo+ID4gQEAgLTgyOSw2ICs4MjksOSBAQCBzdGF0aWMgaW50IHNjcF9wcm9i
+ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlDQo+ID4gKnBkZXYpDQo+ID4gICAgICAgICBwbGF0Zm9y
+bV9zZXRfZHJ2ZGF0YShwZGV2LCBzY3ApOw0KPiA+IA0KPiA+ICAgICAgICAgcmVzID0gcGxhdGZv
+cm1fZ2V0X3Jlc291cmNlX2J5bmFtZShwZGV2LCBJT1JFU09VUkNFX01FTSwNCj4gPiAic3JhbSIp
+Ow0KPiA+ICsgICAgICAgaWYgKCFyZXMpDQo+ID4gKyAgICAgICAgICAgICAgIHJldHVybiAtRU5P
+REVWOw0KPiA+ICsNCj4gDQo+IFBsZWFzZSBoYXZlIGEgbG9vayBhdCB0aGUgaW1wbGVtZW50YXRp
+b24gb2YgZGV2bV9pb3JlbWFwX3Jlc291cmNlKCkNCj4gYWxvbmcgd2l0aCB0aGUgZnVuY3Rpb24g
+aXQgY2FsbHMgYW5kIGxldCBtZSBrbm93IGlmIHlvdXIgcGF0Y2ggaXMNCj4gbmVlZGVkLg0KPiAN
+ClRoYW5rcyBmb3IgeW91ciByZXBseS4NCkl0IHNlZW1zIGlzIHBhdGNoIGlzIG5vdCBuZWVkZWQu
+DQo+ID4gICAgICAgICBzY3AtPnNyYW1fYmFzZSA9IGRldm1faW9yZW1hcF9yZXNvdXJjZShkZXYs
+IHJlcyk7DQo+ID4gICAgICAgICBpZiAoSVNfRVJSKChfX2ZvcmNlIHZvaWQgKilzY3AtPnNyYW1f
+YmFzZSkpIHsNCj4gPiAgICAgICAgICAgICAgICAgZGV2X2VycihkZXYsICJGYWlsZWQgdG8gcGFy
+c2UgYW5kIG1hcCBzcmFtDQo+ID4gbWVtb3J5XG4iKTsNCj4gPiAtLQ0KPiA+IDIuMzcuMw0KPiA+
+IA0K
 
