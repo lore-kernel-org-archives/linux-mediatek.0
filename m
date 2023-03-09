@@ -4,87 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA12BC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 13:34:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6368C64EC4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 13:54:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I+iF8CPFFQ1v326vjmVw+Tv1dyEC7GRMOHK3YGspsDI=; b=qRzHT/H+GHRXh1JGJ+Yf2QUc9C
-	oqzg7mg061I5lW8zgKuTSYlOXIyGqc7RneauTJpVc/LuyGu08p/0MfVyv2Sl4wi2qjPDbva23RFPm
-	hmOgUGpUh8+xfPygL4X9HVwyz+yCNzcSCSRWEQL/Gj2LbQtzAbXk0TpKiGzuiv68qRkNq6FGFonkO
-	fRcbEYrZ5aukwhiutcenze9FuD2cYd9Za5YFGFgLRu7vQYQHP+q1TtoB2ofGhKie8CV+9AgHd7zLO
-	SPUEURIXU7oMfncFbkFFxNwqg5h5Dr7BUzOXrbqvohwGB6ETAem40cvHXMr8wPqi3UwyJO3qveKFi
-	+lmoGqFA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=VE6deOzWU724HC7+5//6PX1XAy1/y6mu5bn8YwbIUus=; b=ZJ6GItDlG44FR0KU+kXjp/WMXM
+	/z5Th7v2MTA2iNJcsITDKgRcKQnDDdkrgtIRlLa8iz9xNEQh1kMTfg/bmR0THrwQwWAyzeTwqb8i2
+	EwAMe4maIwfqnbw7gJjfrnc4aiP//HQ6gBD/AYG4x55/RaLEln/s7aFFhc/4q8YD8os3g/ss96G7T
+	iZUXK1vP/IJXvzD3qQe3a/7tok7UbNEQAOoVFTfKXpxdIsLLI+Nj3oetjKoOs2mDr3i8Cwpe55r10
+	eZyyfDgGuSuWKmBEAWUw2mkM6oSGHH2ZlWpJExNU440wBhUGlAwz9qNKgyIG7L9hLgw0/bs96TMDQ
+	+gCLflbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paGPg-00A95w-ST; Thu, 09 Mar 2023 13:34:32 +0000
-Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
+	id 1paGj7-00AEzo-O8; Thu, 09 Mar 2023 13:54:37 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paGOl-00A8b2-B8; Thu, 09 Mar 2023 13:33:36 +0000
-Received: from 3ffe.de (0001.3ffe.de [IPv6:2a01:4f8:c0c:9d57::1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 9F141D5A;
-	Thu,  9 Mar 2023 14:33:31 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1678368811;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=I+iF8CPFFQ1v326vjmVw+Tv1dyEC7GRMOHK3YGspsDI=;
-	b=J0YrqMIzlBpt7uBiKWHyMEj0RjMeBRKisoF+bJtSbE+DgLHuVCG1JSmqjTO6UFnIBJnxSb
-	nQ01qq/LIwcI2Yoo5NTtY1oBi+yCfCNlKOWcKU8VUu8T4DqZTogWmbHO3szIadAxpNIzu+
-	8TmYey/UvirCzVVhtEkqZPpToxOFHhvxIgED6c7aYA0z1FCYSPf/MHPSrXUQNf9M9hJU8d
-	ON/4xkZBcabsZx0uj1mHNY0r2S5V0WqTneRJ/0nErU7CuYDJzsqgqdjKZlm4EqpferQXsl
-	fVioS0iDADxKBR+HU0OYTGbeYqVopkZuSzFEN5oPMmhXOwjZ6+SZdQavxKC0xg==
+	id 1paGj3-00AEvL-ED; Thu, 09 Mar 2023 13:54:35 +0000
+X-UUID: e87e7026be8111edbbe3f76fe852e059-20230309
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=VE6deOzWU724HC7+5//6PX1XAy1/y6mu5bn8YwbIUus=;
+	b=JyMDwq8WdNqEgJ9CgWTMLYwEvmpopCcLsF6w9UUnWNZFhPjaejUgCVbv0FTvqhzDGuiOchegzrJCwkI6EGjtDW0LFcoYoL93p5PRNit9qqW6nHA51R+Dv3MtvDz+0Rf68M1dIR0nO+o3VuHntara/IPnC9MB9RQycRBQ4a+WW0s=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.20,REQID:cace2c6f-046c-4a89-9ea6-50322ca13660,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:25b5999,CLOUDID:28a4bdb2-beed-4dfc-bd9c-e1b22fa6ccc4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-UUID: e87e7026be8111edbbe3f76fe852e059-20230309
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <garmin.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1621270799; Thu, 09 Mar 2023 06:54:27 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Thu, 9 Mar 2023 21:54:25 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Thu, 9 Mar 2023 21:54:24 +0800
+From: Garmin.Chang <Garmin.Chang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Michael Turquette
+	<mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Richard Cochran
+	<richardcochran@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-clk@vger.kernel.org>, <netdev@vger.kernel.org>, Garmin.Chang
+	<Garmin.Chang@mediatek.com>
+Subject: [PATCH v6 00/19]  MediaTek MT8188 clock support
+Date: Thu, 9 Mar 2023 21:54:00 +0800
+Message-ID: <20230309135419.30159-1-Garmin.Chang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Date: Thu, 09 Mar 2023 14:33:31 +0100
-From: Michael Walle <michael@walle.cc>
-To: Tudor Ambarus <tudor.ambarus@linaro.org>
-Cc: Serge Semin <fancer.lancer@gmail.com>, Sergiu.Moga@microchip.com, Mark
- Brown <broonie@kernel.org>, Tudor Ambarus <tudor.ambarus@microchip.com>,
- Pratyush Yadav <pratyush@kernel.org>, miquel.raynal@bootlin.com,
- richard@nod.at, vigneshr@ti.com, Nicolas.Ferre@microchip.com,
- alexandre.belloni@bootlin.com, Claudiu.Beznea@microchip.com,
- chin-ting_kuo@aspeedtech.com, clg@kaod.org, joel@jms.id.au, andrew@aj.id.au,
- kdasu.kdev@gmail.com, han.xu@nxp.com, john.garry@huawei.com,
- matthias.bgg@gmail.com, avifishman70@gmail.com, tmaimon77@gmail.com,
- tali.perry1@gmail.com, venture@google.com, yuenn@google.com,
- benjaminfair@google.com, haibo.chen@nxp.com, yogeshgaur.83@gmail.com,
- heiko@sntech.de, mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
- michal.simek@xilinx.com, bcm-kernel-feedback-list@broadcom.com,
- linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH] spi: Replace `dummy.nbytes` with `dummy.ncycles`
-In-Reply-To: <6c2090bf-d102-a333-3a83-03abe81ff70e@linaro.org>
-References: <20220911174551.653599-1-sergiu.moga@microchip.com>
- <20220925220304.buk3yuqoh6vszfci@mobilestation>
- <18e6e8a8-6412-7e31-21e0-6becd4400ac1@microchip.com>
- <20220926172454.kbpzck7med5bopre@mobilestation>
- <1766f6ef-d9d8-04f7-a6bf-0ea6bc0b3d23@linaro.org>
- <f647e713a65f5d3f0f2e3af95c4d0a89@walle.cc>
- <1849e2c8-54f5-9e56-4ed8-8b0e4a826d04@linaro.org>
- <302ecf0421fe4c99fca3eb0ca2f66127@walle.cc>
- <5183a184-c72d-3acd-70cd-6aa1e31533f5@linaro.org>
- <03a9f117316ab81f1b5a18100f771e65@walle.cc>
- <6c2090bf-d102-a333-3a83-03abe81ff70e@linaro.org>
-User-Agent: Roundcube Webmail/1.4.13
-Message-ID: <460ef5ff3846b409b322ca53559e2476@walle.cc>
-X-Sender: michael@walle.cc
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_053335_592882_B42C8BF4 
-X-CRM114-Status: GOOD (  16.29  )
+X-CRM114-CacheID: sfid-20230309_055433_532984_1F989C72 
+X-CRM114-Status: UNSURE (   8.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,59 +85,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->>> The controllers that can talk in dummy ncycles don't need the
->>> dummy.{buswidth, dtr} fields.
->>> 
->>> The controllers that can't talk in dummy cycles, but only on a "byte"
->>> boundary need both buswidth and dtr fields. Assume a flash needs 32
->>> dummy cycles for an op on 8D-8D-8D mode. If the controller does not 
->>> have
->>> the buswidth and dtr info, it can't convert the dummy ncycles to 
->>> nbytes.
->>> If he knows only that buswidth is 8, it will convert ncycles to 4 
->>> bytes.
->>> If dtr is also specified it converts ncycles to 2 bytes.
->> 
->> No they don't need it. Lets take your semper flash and assume it needs
->> 12 latency cycles. SPI-NOR will set ncycles to 12 *regardless of the 
->> mode
->> or dtr setting*. The controller then knows we need 12 clock cycles. It 
->> has
->> then to figure out how that can be achieved. E.g. if it can only do 
->> the
->> "old" byte programming and is in quad mode, good for it. It will send 
->> 6
->> dummy bytes, which will result in 12 dummy clock cycles, because 1 
->> byte
->> takes two clock cycles in quad SDR mode. If its in octal mode, send 12
->> bytes. If its in dual mode, send 3 bytes. Obiously, it cannot be in
->> single bit mode, because it cannot send 1.5 bytes..
->> 
-> 
-> You miss the fact that you can have 1-1-4. What buswidth do you use
-> for dummy, the address buswidth or the data buswidth?
+Base on tag: next-20230309, linux-next/master
 
-Doesn't matter, does it? The driver is free to chose, 1, 4, or anything
-else. You don't sample any data during the dummy phase.
-To answer your question: single for instruction, single for address,
-whatever you choose for dummy as long as there are ncycles space between
-address and data, and quad for data.
+changes since v5:
+- modify mediatek,mt8188-clk.h
+- modify apmixedsys clock
+- modify topckgen clock
+- modify mfgcfg clock
+- modify vdecsys clock
+- modify vdosys0 clock
+- modify vdosys1 clock
+- modify vencsys clock
+- modify vppsys0 clock
+- modify vppsys1 clock
+- modify vencsys clock
+- modify adsp clock
 
-Depending on the capabilites of the hardware it will likely be 1 or 4.
+Garmin.Chang (19):
+  dt-bindings: clock: mediatek: Add new MT8188 clock
+  clk: mediatek: Add MT8188 apmixedsys clock support
+  clk: mediatek: Add MT8188 topckgen clock support
+  clk: mediatek: Add MT8188 peripheral clock support
+  clk: mediatek: Add MT8188 infrastructure clock support
+  clk: mediatek: Add MT8188 camsys clock support
+  clk: mediatek: Add MT8188 ccusys clock support
+  clk: mediatek: Add MT8188 imgsys clock support
+  clk: mediatek: Add MT8188 ipesys clock support
+  clk: mediatek: Add MT8188 mfgcfg clock support
+  clk: mediatek: Add MT8188 vdecsys clock support
+  clk: mediatek: Add MT8188 vdosys0 clock support
+  clk: mediatek: Add MT8188 vdosys1 clock support
+  clk: mediatek: Add MT8188 vencsys clock support
+  clk: mediatek: Add MT8188 vppsys0 clock support
+  clk: mediatek: Add MT8188 vppsys1 clock support
+  clk: mediatek: Add MT8188 wpesys clock support
+  clk: mediatek: Add MT8188 imp i2c wrapper clock support
+  clk: mediatek: Add MT8188 adsp clock support
 
-> What happens if crazy protocols like 1S-1S-8D appear? What buswidth
-> and transfer mode are you going to use for dummy?
+ .../bindings/clock/mediatek,mt8188-clock.yaml |   71 +
+ .../clock/mediatek,mt8188-sys-clock.yaml      |   55 +
+ drivers/clk/mediatek/Kconfig                  |   11 +
+ drivers/clk/mediatek/Makefile                 |    7 +
+ .../clk/mediatek/clk-mt8188-adsp_audio26m.c   |   45 +
+ drivers/clk/mediatek/clk-mt8188-apmixedsys.c  |  154 ++
+ drivers/clk/mediatek/clk-mt8188-cam.c         |  118 ++
+ drivers/clk/mediatek/clk-mt8188-ccu.c         |   48 +
+ drivers/clk/mediatek/clk-mt8188-img.c         |  110 ++
+ .../clk/mediatek/clk-mt8188-imp_iic_wrap.c    |   78 +
+ drivers/clk/mediatek/clk-mt8188-infra_ao.c    |  196 +++
+ drivers/clk/mediatek/clk-mt8188-ipe.c         |   50 +
+ drivers/clk/mediatek/clk-mt8188-mfg.c         |   47 +
+ drivers/clk/mediatek/clk-mt8188-peri_ao.c     |   56 +
+ drivers/clk/mediatek/clk-mt8188-topckgen.c    | 1347 +++++++++++++++++
+ drivers/clk/mediatek/clk-mt8188-vdec.c        |   90 ++
+ drivers/clk/mediatek/clk-mt8188-vdo0.c        |  135 ++
+ drivers/clk/mediatek/clk-mt8188-vdo1.c        |  182 +++
+ drivers/clk/mediatek/clk-mt8188-venc.c        |   52 +
+ drivers/clk/mediatek/clk-mt8188-vpp0.c        |  144 ++
+ drivers/clk/mediatek/clk-mt8188-vpp1.c        |  139 ++
+ drivers/clk/mediatek/clk-mt8188-wpe.c         |  101 ++
+ .../dt-bindings/clock/mediatek,mt8188-clk.h   |  726 +++++++++
+ 23 files changed, 3962 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt8188-clock.yaml
+ create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt8188-sys-clock.yaml
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-adsp_audio26m.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-apmixedsys.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-cam.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-ccu.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-img.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-imp_iic_wrap.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-infra_ao.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-ipe.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-mfg.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-peri_ao.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-topckgen.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-vdec.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-vdo0.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-vdo1.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-venc.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-vpp0.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-vpp1.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-wpe.c
+ create mode 100644 include/dt-bindings/clock/mediatek,mt8188-clk.h
 
-Also doesn't matter. What matters is how many dummy clock cycles you
-do. Again, they don't depent on the mode. You just have to count
-the clock cycles between the address and the data phase (and that is
-what your ncycle parameter will tell the controller).
+-- 
+2.18.0
 
-> And please don't tell me that "we're going to assume that
-> dummy.buswidth = address.buswidth because that's what we currently do
-> in SPI NOR", because I'm not convinced that the assumption is correct.
-
-No, it doesn't matter :)
-
--michael
 
