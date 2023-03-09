@@ -4,94 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 673D9C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 09:06:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21C6EC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 09:22:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DWLXsrQU8r8iBGzoibkZ5OVm/pVG4g0LW7vlYuupzQ0=; b=g8d5NqokvqJ8k7oWZDHSZFvvRs
-	uc/y9cgL5IcBG5hwW1bM2tUgArxZh40zQVm2s6yJMhKCZ0Bs7nZuyo51z1DfFEgPfVCbbuaLMliG3
-	eHB2/aV8ABT4nr3yes0hb15Gqbhr8IXlBP0IukbHHdBni8utbCqJignmbXqKr+S27Ymyd/WwQDuQx
-	dQT5kd7FjQjp8Iy8GIAVZ2rrB7sS1SNf5MCzSdxyQOPdO+Zpqih9o7Ek+pZeYP1o/Gy4PElUKVa1M
-	7s5y4G1lw8j+ad88FwC/Z384floJ2qT3mAkXZLzOH+7DAGKBCeeI+FH7kiN3z5GfdFTvsitVsW1z2
-	DDaUFFig==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=u2Y+lndMZvPCQFgYhF0b5tZdi1oGwpOpzR4P4QFlUvU=; b=0k3D2F2ShOSUhNnV1hIqpWTsk7
+	SU8QYo4CQxmPD1u5iZd2XjJ4UTrogGxpJ/Bn+5hGf6tnsCY4U9ANj68przCTX134mVIjNAlbNxmBn
+	ea7tHK9LldCXD8x8GPfxR2rUma/ycDtx2QVGrm7QQr3SnFNQ5uX45OFi3NGhr4TvwDAUh1KzprRXk
+	V5nrWHf9hJ7x7ne+ac2ohR6MVgQcD51I0Ufmm4pbBuNZrUeraHNHUuwgg0Phw4muhXlk6eiyqlwOm
+	lFraOTBhUo6yVMgyRYWD9o9myUtFEl9NoRzPZiiZBQZrVy2m+EwM5Mnz/3ZxfYI0sxktoGiCTIKAa
+	wCOutrbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paCED-008hnZ-GH; Thu, 09 Mar 2023 09:06:25 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1paCTq-008ljx-EC; Thu, 09 Mar 2023 09:22:34 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paCE1-008hhV-E1
-	for linux-mediatek@lists.infradead.org; Thu, 09 Mar 2023 09:06:15 +0000
-Received: by mail-wr1-x436.google.com with SMTP id f11so1107362wrv.8
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Mar 2023 01:06:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1678352770;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=DWLXsrQU8r8iBGzoibkZ5OVm/pVG4g0LW7vlYuupzQ0=;
-        b=c9DY57l6BH328f1T/IuGy3UGlMX08fdyv0xGGK71ceYc8K6OxMVs5U7DH6Ds/NteNr
-         HLJt9zi9wkF+pZk9PY6jZB846V1M997sQ2np8mNY1siIPAIubeIKXImVEqZWq3yx2Jdz
-         39U8oyTxDnBv6ZhHzgjpoIRHWlrXF0uV1TzTmuOR1gOsf2ib5T56EcRv6P24KrIqOy77
-         XnImIlM+NT0QPv9dWHDT3XmNt8OhptXL20KveMaomIM8oBoR9LJjRggljwjSdfVJRg5t
-         L4ZUGpofa5Gn444pQgTEmLW2bwoOJqStNUYHbW5DSPcqZ0mVZ0X61r3gvNxIDikUcLtI
-         vEfg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678352770;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=DWLXsrQU8r8iBGzoibkZ5OVm/pVG4g0LW7vlYuupzQ0=;
-        b=0+2vjvWgWTAnbuh0c8QMNFbutO9yVqwxSJNli8TujJ5njxCk55+gtBoaNxUMsuna/z
-         l0efak4aUxEVo361AVD74tMchXOVSVTJ1D1DD18b9dQmVrdacI6fbt1JQ5iFUYY+7WQJ
-         +y61GzT5R2iR/PHb3lshgdTIh518MPohJWe8bGZEbT2ZyXHNupatJWMZqPSw94Z9jRju
-         YX3Sepd8OgiqUXsljk91TkSZh4wl1pNRSr9U1VE9QUIw8NhCzrHLAGwusJjlCJP3PSSM
-         rcpM9PZ5pZKbQv4tXzpnxHByg2nv1tStgrq/bJU/oIXIa5/5MTMyFx9MggnG3Qx+U/0p
-         ptBw==
-X-Gm-Message-State: AO0yUKWK0TAMIGdlIdIFfFQwggJaZohpVWAYGUCE3qhr+PGTVD7R4Uvn
-	dgf6DbFPrrAJgm2V4D3sAfPskg==
-X-Google-Smtp-Source: AK7set/xWcQ3e6C8V9K1no/lYj82bJP03UJ98Zjsnfj7tf47EfzLA58Hl0ucNV55U1teahWwBS6hEA==
-X-Received: by 2002:a5d:6148:0:b0:2c5:5335:73f3 with SMTP id y8-20020a5d6148000000b002c5533573f3mr18826708wrt.34.1678352769884;
-        Thu, 09 Mar 2023 01:06:09 -0800 (PST)
-Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id g11-20020a05600c310b00b003eb68bb61c8sm2073243wmo.3.2023.03.09.01.06.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Mar 2023 01:06:09 -0800 (PST)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Thu, 09 Mar 2023 10:06:02 +0100
-Subject: [PATCH v5] dt-bindings: display: mediatek: clean unnecessary item
+	id 1paCTo-008lj2-Lo; Thu, 09 Mar 2023 09:22:33 +0000
+X-UUID: e0a6135cbe5b11edbbe3f76fe852e059-20230309
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=u2Y+lndMZvPCQFgYhF0b5tZdi1oGwpOpzR4P4QFlUvU=;
+	b=BnDhUGjzF8CCzeA3lNqrcX1LrXqVy9KEB7JxDMAy+kevwMJ404aguWjTCCmL6YPQIPnUBF46LMYNLUpCP6RD1Kypvg3/+kLXo/hbyVFF2NEsHatZ3s0uqBMgkUr6oJ/A3/VrnFSD0rM//qGO9/pkOfwoeDmrVgMzu1OSrcDdKLM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.20,REQID:55a1f89e-d598-464f-81fe-cad8ff422930,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:45,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:45
+X-CID-INFO: VERSION:1.1.20,REQID:55a1f89e-d598-464f-81fe-cad8ff422930,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:45,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:45
+X-CID-META: VersionHash:25b5999,CLOUDID:14b2d727-564d-42d9-9875-7c868ee415ec,B
+	ulkID:230308155434OUYWJX05,BulkQuantity:37,Recheck:0,SF:29|28|17|19|48|102
+	,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:
+	0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 1,FCT|NGT
+X-UUID: e0a6135cbe5b11edbbe3f76fe852e059-20230309
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <haibo.li@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2065328900; Thu, 09 Mar 2023 02:22:13 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Thu, 9 Mar 2023 17:21:36 +0800
+Received: from mszsdtlt102.gcn.mediatek.inc (10.16.4.142) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Thu, 9 Mar 2023 17:21:36 +0800
+From: Haibo Li <haibo.li@mediatek.com>
+To: <elver@google.com>
+CC: <angelogioacchino.delregno@collabora.com>, <dvyukov@google.com>,
+	<haibo.li@mediatek.com>, <kasan-dev@googlegroups.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <mark.rutland@arm.com>,
+	<matthias.bgg@gmail.com>, <will@kernel.org>, <xiaoming.yu@mediatek.com>
+Subject: Re: [PATCH] kcsan:fix alignment_fault when read unaligned instrumented memory
+Date: Thu, 9 Mar 2023 17:21:36 +0800
+Message-ID: <20230309092136.35799-1-haibo.li@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <CANpmjNNw6utf5ozpwu1keDG92Ew_vL6B=LZoRw12p48eVJeNnw@mail.gmail.com>
+References: <CANpmjNNw6utf5ozpwu1keDG92Ew_vL6B=LZoRw12p48eVJeNnw@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20230306-ccorr-binding-fix-v5-0-6c56aaecc3b1@baylibre.com>
-To: Philipp Zabel <p.zabel@pengutronix.de>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- Allen-KH Cheng <allen-kh.cheng@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, David Airlie <airlied@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- linux-arm-kernel@lists.infradead.org, Alexandre Mergnat <amergnat@baylibre.com>, linux-kernel@vger.kernel.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh@kernel.org>,
- linux-mediatek@lists.infradead.org
-X-Mailer: b4 0.10.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2889; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=ane73DE2EH6XTssrtokRfjsFxb/F2uv7GT+5uVVvMaA=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBkCaGACge7X0KLwuoqnZ4fw3r3jhLJMOt67yG9WGat
- LuOxaJuJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZAmhgAAKCRArRkmdfjHURVd7EA
- Czp7QiKLjtd5p68htZwWE4nDjor7AOsvtp3IS4KjRWv/VRtZrXJsy+RgqgCKe5cf0sGQSlHXgZvm2A
- Xg9ZwbC4WqVxgaDSQi8Ghgzcjg/nba7zSYTdMH6aChuWSUkPqDm/9MRkoNs+doS7ZAs7kwR6M+l9dz
- wnJsH686DmFkjzIRXxVbpTFSqlt0lCj4jzoO2WAsnz7CTslFXqLqSzmFtHaOLps1D5dWTdPHH/rcHZ
- UaNzDgSg7p3mKBJ8VJoMxLT9/FUDvursRQJ8Zox+wFSq8CL6ueKnsqjT18/SK7tyvLNIZ7zRngd0n9
- JMovt8IlYUhN2zmrAkXKH6skGQcKbteBFsKgUssRv7zflF+Hvonghl40mY7mbOs20b2g+ujmwQAOXB
- oYU7ybbe2IJewTR1XEXaEgHmABOyXh5ohHOMypvBe7jh3ZMsl5xacZe0MbZSsrTq+TTfi5Usv41Axa
- MKIfhfXUS6SChFwYNp+jTWY5rCwYFalQaLdh/0FOA3QT1VASQnEYV13WK+3qbF7wBo3bMtGzmSuh9x
- HJqU8GPrnfzkOXDaA2shnlVpNTfgOnbbVYqgc+dmExtZZkM/tWyUJx4IZU81fQ61BpuSyY/nAwsEor
- ap7GzUHFvcovcqTA1vSeUrkn46guO3pjI25vYVNDF27Nm7EsCZVflwUxcqBA==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_010613_716414_9B435ACF 
-X-CRM114-Status: GOOD (  11.42  )
+X-CRM114-CacheID: sfid-20230309_012232_730655_17DAEE3C 
+X-CRM114-Status: UNSURE (   7.24  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,79 +87,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The item which have the mediatek,mt8192-disp-ccorr as const compatible
-already exist above. Merge all compatibles which have the same fallback
-under the same item.
-
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
-Fix MTK color correction binding
-
-The fallback compatible has been duplicated in the 137272ef1b0f commit.
-
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-To: David Airlie <airlied@gmail.com>
-To: Daniel Vetter <daniel@ffwll.ch>
-To: Rob Herring <robh+dt@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>
-Cc: dri-devel@lists.freedesktop.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: devicetree@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
----
-Changes in v5:
-- Add trailers.
-- Link to v4: https://lore.kernel.org/r/20230306-ccorr-binding-fix-v4-0-117daea88efb@baylibre.com
-
-Changes in v4:
-- Reword commit title and message.
-- Link to v3: https://lore.kernel.org/r/20230306-ccorr-binding-fix-v3-0-7877613a35cb@baylibre.com
-
-Changes in v3:
-- Re-order compatible.
-- Link to v2: https://lore.kernel.org/r/20230306-ccorr-binding-fix-v2-0-4822939a837d@baylibre.com
-
-Changes in v2:
-- Fix commit title.
-- Link to v1: https://lore.kernel.org/r/20230306-ccorr-binding-fix-v1-0-177d81d60c69@baylibre.com
----
- .../devicetree/bindings/display/mediatek/mediatek,ccorr.yaml         | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-index b04820c95b22..bda86e6857f5 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-@@ -27,13 +27,10 @@ properties:
-           - const: mediatek,mt8192-disp-ccorr
-       - items:
-           - enum:
-+              - mediatek,mt8186-disp-ccorr
-               - mediatek,mt8188-disp-ccorr
-               - mediatek,mt8195-disp-ccorr
-           - const: mediatek,mt8192-disp-ccorr
--      - items:
--          - enum:
--              - mediatek,mt8186-disp-ccorr
--          - const: mediatek,mt8192-disp-ccorr
- 
-   reg:
-     maxItems: 1
-
----
-base-commit: add072536971d7ce891fde3cdbf68c55e7cfa95a
-change-id: 20230306-ccorr-binding-fix-718c6d725088
-
-Best regards,
--- 
-Alexandre Mergnat <amergnat@baylibre.com>
+> =0D
+> On Thu, 9 Mar 2023 at 01:58, 'Haibo Li' via kasan-dev=0D
+> <kasan-dev@googlegroups.com> wrote:=0D
+> [...]=0D
+> >=0D
+> > The below patch works well on linux-5.15+arm64.=0D
+> =0D
+> Thank you, glad to hear - may I add your Tested-by?=0D
+=0D
+Sure.Appreciated.=0D
 
