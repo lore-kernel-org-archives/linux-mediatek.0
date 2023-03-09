@@ -4,70 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D51BC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 10:34:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29A5CC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 10:39:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Mg4iT5L29dJa7AVQIwcXw9Gg2iG7ZPIvfRGXtutmKSE=; b=EUIwrkTVYxvS2B
-	jDYRRVdRBFyJGZDGFz4OChVXnhMmEcuR0mF1o3erCwiOgOdHq9BEGw5rlCRc924MKmZr9a8G1NIWu
-	zVFoSf8MC4DX3dPeoOtBlhnBlO3HHVQp/VttK11n5RT3eHVpT5ZoqJNFz4rhPI1ZkanEFIwKq/fcv
-	tQspy0IQdITkx6m8DGPmDke6/sefOhTvTsgkcVreKytgF/aoL1JbIHnYGBqAX3GLboodMqMLWsdVi
-	UwQTrtw50PChBAXr6Oqr5MdkOyFWJ5dc9rLokitpIk7nN8XxhB8fqW8pmeT6MDpjlyCXcgiw4y4/q
-	kmD6gVO1N8fZUyCbgbnw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hqPGgd3BFdJ5Z3N2xYuAK2cKJFro8IMB7DoFRyNGYm4=; b=lH1/iRBHpQB36JC2mQLWVeM7Q6
+	jJtKzfkGJqP1vHcudSFs6DFQTuSZkpNzVobGoFEt2qsA2R49ejQO9s2Osl3puW1ZMdVSHOaD9slef
+	j3RDruYleYFN82HnWeLsbrM68ggazW6Yq5KjXcR3dRH++yjd6wAJ5ZPOsv68XjXM1JQvFrfBmaLI7
+	HIYh5f4ZWUqNDXxvieRpJ7PW8E/sSpvQuhkVwVUXvQckB7sjq5YbX2CAecDwU4B8zbwcDpzTk4X9s
+	Tib2TrwTZ0EFiB/1VUCARDmMUJq7hlBigA52/S+xDz3Axp69ABX0wt3FxcW3Ba+N/RC5zl8XGCFHM
+	CCYdbY/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paDbZ-0096d6-Lb; Thu, 09 Mar 2023 10:34:37 +0000
-Received: from sender4-op-o10.zoho.com ([136.143.188.10])
+	id 1paDgG-0097hu-Ka; Thu, 09 Mar 2023 10:39:28 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paDbX-0096bx-Cv; Thu, 09 Mar 2023 10:34:36 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1678358067; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=OWpl8tvz0qnNpiG4Vs+J4Iu6UsRWaLvsmkni8KKQuT4infLkOEXMQIzFJdpv5TKppd1v7gAtf+g8AGcNRpxUM5ODfe2iQGhkUE6Z4EcHFf2hmwBIPo+byN9J2X8ct69Slf17YdzxrtgNczOygFMOkt6OgbOywD52mEiRzP5NvhU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1678358067; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=Mg4iT5L29dJa7AVQIwcXw9Gg2iG7ZPIvfRGXtutmKSE=; 
-	b=emZsj0DaXxwJxm0+A5FBl/c1bJ7BJ8Z7+TjisBaO35T5zLCXaPaj7OcVwT51c2vjyKE4EjinvCgcAWUDmfMsAmObw2lME82Mop8LjYwTpT69rgY4QMfJVZ+gQ8UbvJ1goypEv8OFrdHNWdjYnW7cNqx/ZMoZh66HMi4CdvFzbRI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1678358067;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=Mg4iT5L29dJa7AVQIwcXw9Gg2iG7ZPIvfRGXtutmKSE=;
-	b=iPqCEhOlGpIA5S1VoIwq0w9pqGbd369vSTPpixmehcg+6H6xYgrKB3mVdPwInSDF
-	ZFWa42Ij22TTk61dRDnKnA8x1gqx24tQgVO5ZaRXgALv87A85W9wnwl0DLeMPTCVj77
-	VnI2BO9GoNHfkRWXe0t9OAvY7QyTB53Ra46sEqbo=
-Received: from [10.10.125.234] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1678358065042379.7623954106633; Thu, 9 Mar 2023 02:34:25 -0800 (PST)
-Message-ID: <deca532a-bdf5-c49e-1422-ce6124b61882@arinc9.com>
-Date: Thu, 9 Mar 2023 13:34:18 +0300
+	id 1paDg5-0097eZ-Ad
+	for linux-mediatek@lists.infradead.org; Thu, 09 Mar 2023 10:39:18 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id bx12so1349926wrb.11
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Mar 2023 02:39:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1678358355;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=hqPGgd3BFdJ5Z3N2xYuAK2cKJFro8IMB7DoFRyNGYm4=;
+        b=cyuWrije1J+G0kpt9rtg9Zl9sy2vZ6FM3iuAuq3aa6xpiGzEf2lm0y2C8jOCJlsWeJ
+         EWmWc+ptmmIZ9VpxZoDLI1gR53mm2YZY+lWHHX9DnYPngQ1jRmg6Jeu657tZGxz2jX6N
+         YsoLVo8eGy3iUnDoOpwdsva1cuCV/u8EvWap4XFofYLdq6F3rlwtUXKWVPAevmo9lZVA
+         HDTeFqtX5+kZHYiMCjYQZiL2O9EhJWAWwx+6m0tXDA025+3xrVorFWwpWXEzFQ6EFYpQ
+         qC2bZ8Hc50FwsaxXuDrl5qnMSJlJexrK54vU2rtvMh2yoUkAcNaGANtYbeaPWwZlJBxe
+         G4/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678358355;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=hqPGgd3BFdJ5Z3N2xYuAK2cKJFro8IMB7DoFRyNGYm4=;
+        b=gNtY9dhs4LIWFHy40YECKhzdq19vlASbl3+MhedXFHQtzKuHFaPP6e55AjaXLVFFAy
+         CE9KQhcr/iJWGzo3/YgiHnDcT4eM0vGr3pfyPB4rfNxKwk7CVfuPU8gRAkSf3dLLGq6r
+         H5VvpKEiPvz/mdjjNX1JBGMC+RqeELrwU+k0dWyC39ee9+F/H1XPZvEvaFCbFdxVti4f
+         qlj0UHtD/0EUF+W4shqKiPakM5ivW3DSc7cnsnJ4ck64FX6jUOWaVsr+0jIvjJzNRuIV
+         3ZINb1YEY58bfdOENqKV/Awuz9McsYjRtIZpcLe7LD9tjsxzn5xZKxEX42SRNJ693HwI
+         zMsA==
+X-Gm-Message-State: AO0yUKUzFtqnFuIGwjmpZv+51H5vJq+wIc0BPwBcsBSYyuChZz80IDCg
+	2aNuaqUKMNvi/B7vPrmC6AsoIg==
+X-Google-Smtp-Source: AK7set/FRRRB0+8uQ1yztBz2VteqoM/5ZDzGzNq25bY2dg07fWy53EiQjle/35Q0iTayjTBe36Tw7Q==
+X-Received: by 2002:a5d:4a43:0:b0:2cd:ceab:df1a with SMTP id v3-20020a5d4a43000000b002cdceabdf1amr14687125wrs.32.1678358354769;
+        Thu, 09 Mar 2023 02:39:14 -0800 (PST)
+Received: from ?IPV6:2a05:6e02:1041:c10:fbda:65f5:e873:7527? ([2a05:6e02:1041:c10:fbda:65f5:e873:7527])
+        by smtp.googlemail.com with ESMTPSA id s1-20020a5d5101000000b002c559405a1csm17580482wrt.20.2023.03.09.02.39.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 09 Mar 2023 02:39:14 -0800 (PST)
+Message-ID: <e5959cb5-af8c-9410-9530-b3e19e9b647a@linaro.org>
+Date: Thu, 9 Mar 2023 11:39:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.7.1
-Subject: Re: [PATCH 09/20] dt-bindings: pinctrl: ralink: {mt7620,mt7621}:
- rename to mediatek
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Rob Herring <robh@kernel.org>
-References: <20230303002850.51858-1-arinc.unal@arinc9.com>
- <20230303002850.51858-10-arinc.unal@arinc9.com>
- <20230308210514.GA3767521-robh@kernel.org>
- <12be053e-b70a-faca-71c8-d8eef69a3b73@arinc9.com>
- <ccdfd262-eaf3-dbbe-7a3c-a911a5ec0fc4@arinc9.com>
- <9663817e-7f6f-c3b1-8bf9-321f9b067e96@linaro.org>
+Subject: Re: [PATCH 1/4] dt-bindings: thermal: mediatek: Add AP domain to LVTS
+ thermal controllers for mt8195
 Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <9663817e-7f6f-c3b1-8bf9-321f9b067e96@linaro.org>
+To: Chen-Yu Tsai <wenst@chromium.org>, bchihi@baylibre.com
+Cc: angelogioacchino.delregno@collabora.com, rafael@kernel.org,
+ amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ rdunlap@infradead.org, ye.xingchen@zte.com.cn, p.zabel@pengutronix.de,
+ linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com,
+ rex-bc.chen@mediatek.com
+References: <20230307154524.118541-1-bchihi@baylibre.com>
+ <20230307154524.118541-2-bchihi@baylibre.com>
+ <CAGXv+5FUrWEF4SZ6DKjoF8Oai--JGFffzQ3_DyzQrUrThVEQ7Q@mail.gmail.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <CAGXv+5FUrWEF4SZ6DKjoF8Oai--JGFffzQ3_DyzQrUrThVEQ7Q@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_023435_490857_DC7FF3B9 
-X-CRM114-Status: GOOD (  20.27  )
+X-CRM114-CacheID: sfid-20230309_023917_377536_C9A7536A 
+X-CRM114-Status: GOOD (  18.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,68 +98,99 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Daniel Santos <daniel.santos@pobox.com>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, William Dean <williamsukatube@gmail.com>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Daniel Golle <daniel@makrotopia.org>, Matthias Brugger <matthias.bgg@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9.03.2023 12:52, Krzysztof Kozlowski wrote:
-> On 09/03/2023 08:53, Arınç ÜNAL wrote:
->> On 9.03.2023 00:19, Arınç ÜNAL wrote:
->>> On 9.03.2023 00:05, Rob Herring wrote:
->>>> On Fri, Mar 03, 2023 at 03:28:38AM +0300, arinc9.unal@gmail.com wrote:
->>>>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>>>>
->>>>> This platform from Ralink was acquired by MediaTek in 2011. Then,
->>>>> MediaTek
->>>>> introduced these SoCs which utilise this platform. Rename the schemas to
->>>>> mediatek to address the incorrect naming.
->>>>
->>>> I said we don't do renames due to acquistions, you said that wasn't the
->>>> reason, but then that's your reasoning here.
->>>
->>> It's not a marketing/acquistion rename as the name of these SoCs were
->>> wrong from the get go. The information on the first sentence is to give
->>> the idea of why these SoCs were wrongfully named as the base platform
->>> that these new MediaTek SoCs share code with was called Ralink.
->>>
->>>>
->>>> To give you another example, *new* i.MX things are still called
->>>> 'fsl,imx...' and it has been how many years since merging with NXP?
->>>
->>> Ok this is a point I see now. Though, I fail to see how this is called
->>> renaming when there's only new SoCs (from NXP in this case) to be added.
+On 09/03/2023 05:40, Chen-Yu Tsai wrote:
+> On Wed, Mar 8, 2023 at 12:46 AM <bchihi@baylibre.com> wrote:
 >>
->> If I understand correctly, i.MX is a family from Freescale so the name
-> 
-> It's the same "family" as your platform, because as you said:
-> "introduced these SoCs which utilise this platform"
-> 
->> was kept the same on new SoC releases from NXP. I believe it's different
->> in this case here. There's no family name. The closest thing on the name
->> of the SoC model is, it's RT for Ralink, MT for MediaTek.
-> 
-> It's not about the name. NXP took Freescale platform and since many
-> years makes entirely new products, currently far, far away from original
-> platform.
-> 
-> That's the same case you have here - Mediatek took existing platform and
-> started making new products with it.
-> 
+>> From: Balsam CHIHI <bchihi@baylibre.com>
 >>
->> On top of that, mediatek strings already exist for MT SoCs already, at
->> least for MT7621.
+>> Add AP Domain to LVTS thermal controllers dt-binding definition for mt8195.
 >>
->> https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/tree/Documentation/devicetree/bindings/mips/ralink.yaml?id=dd3cb467ebb5659d6552999d6f16a616653f9933#n83
+>> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+>> ---
+>>   include/dt-bindings/thermal/mediatek,lvts-thermal.h | 10 ++++++++++
+>>   1 file changed, 10 insertions(+)
+>>
+>> diff --git a/include/dt-bindings/thermal/mediatek,lvts-thermal.h b/include/dt-bindings/thermal/mediatek,lvts-thermal.h
+>> index c09398920468..8fa5a46675c4 100644
+>> --- a/include/dt-bindings/thermal/mediatek,lvts-thermal.h
+>> +++ b/include/dt-bindings/thermal/mediatek,lvts-thermal.h
+>> @@ -16,4 +16,14 @@
+>>   #define MT8195_MCU_LITTLE_CPU2  6
+>>   #define MT8195_MCU_LITTLE_CPU3  7
+>>
+>> +#define MT8195_AP_VPU0  8
 > 
-> NXP also has compatibles with nxp, thus still not that good reason.
+> Can't this start from 0? This is a different hardware block. The index
+> namespace is separate. Same question for MT8192.
 
-Ok, makes sense. Am I free to call the SoCs MediaTek, change the schema 
-name from ralink,mtXXXX-pinctrl.yaml to mediatek,mtXXXX-pinctrl.yaml 
-whilst keeping the compatible string ralink?
+The ID is used to differentiate the thermal zone identifier in the 
+device tree from the driver.
 
-I plan to do some cleanup on ralink.yaml as well. From what I 
-understand, I should change the mediatek,mt7621-soc compatible string to 
-ralink,mt7621-soc?
++		vpu0-thermal {
++			polling-delay = <0>;
++			polling-delay-passive = <0>;
++			thermal-sensors = <&lvts_ap MT8195_AP_VPU0>;
++
++			trips {
++				vpu0_crit: trip-crit {
++					temperature = <100000>;
++					hysteresis = <2000>;
++					type = "critical";
++				};
++			};
++		};
 
-Arınç
+If MT8195_AP_VPU0 is 0, then the code won't be able to differentiate 
+MT8195_AP_VPU0 and MT8195_MCU_BIG_CPU0
+
+The LVTS driver will call devm_thermal_of_zone_register() with the 
+sensor id. If MT8195_MCU_BIG_CPU0 and MT8195_AP_VPU0 have the same id, 
+then at the moment of registering the MT8195_AP_VPU0, the underlying OF 
+thermal framework code will use MT8195_MCU_BIG_CPU0 description instead 
+because it will be the first to be find in the DT.
+
+If MT8195_AP_VPU0 is described in DT before, then the same will happen 
+when registering MT8195_MCU_BIG_CPU0, MT8195_AP_VPU0 will be registered 
+instead.
+
+IOW all ids must be different.
+
+The namespace is already described by the macro name AFAICS, so whatever 
+the values, we see only the macro names and those IDs are private the 
+kernel implementation.
+
+If the numbering is really important, may be something like:
+
+#define MT8195_MCU_BIG_CPU0     00
+#define MT8195_MCU_BIG_CPU1     01
+#define MT8195_MCU_BIG_CPU2     02
+#define MT8195_MCU_BIG_CPU3     03
+#define MT8195_MCU_LITTLE_CPU0  04
+#define MT8195_MCU_LITTLE_CPU1  05
+#define MT8195_MCU_LITTLE_CPU2  06
+#define MT8195_MCU_LITTLE_CPU3  07
+
+#define MT8195_AP_VPU1  10
+#define MT8195_AP_GPU0  11
+#define MT8195_AP_GPU1  12
+#define MT8195_AP_VDEC  13
+#define MT8195_AP_IMG   14
+#define MT8195_AP_INFRA 15
+#define MT8195_AP_CAM0  16
+#define MT8195_AP_CAM1  17
+
+But I would suggest considering this change as a separate patch after 
+the AP domain is added.
+
+
+-- 
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
+
 
