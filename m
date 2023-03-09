@@ -4,78 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFE84C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 04:40:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CB44C64EC4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 04:56:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1HfEhdsNHcbX3MgYanmt5oONyvC5m572GacJct3ywv8=; b=20wxukwDkY/XT3XAKl+JGhlKFs
-	ukEjWCsLpYs+sFpEpiUbf/7wpa8nC6mAufHuYfY0fqJdGXT8P+7y4t84fyx+eDZz/De4BMAtgZn+Y
-	ADFAENdkFH1dUoxgtGCDdx24pNgjuwxci04/7IK51AP8pPwJxCXQHjzNqGp8PL2WOktGOihH3Fy6J
-	K8GUo3GtWEGYF9Uq4ipJpRBXO1Isn5SfUJ0A2PYtIK62F5Svt9MNXGAaI9osMR8O9rEbmzQJTadQ6
-	VdUGa4T4gp9KIg1bDR4iK7TYi6kDnWiKR//xBbIeAMDSod7Dcz5JJDVUDpVHX8nJGwvMhoS/YqQlF
-	E7q9Ggbg==;
+	bh=EjxqdJHTwKdoqofrVIRX/uslVfOrecmuG0zXjEDMDnE=; b=EbkYGhRXKP2sbJNCezjrMQOoeg
+	YDMI/kM1WUYqTXJLtD80kaH5QRKbtHNfATg2ObIuUajPD1uNFXH/Q5ykRfZ6hyeXy2T8t4foBaUzP
+	H2pgeRI8VFRTjDL+T8jTngrFDusnsJq9IzIAE3P9BFepUiTOGWYYyuq2CQKbZ7GJtbr3Y5nqhjpvz
+	RpdTQe36AwCCMRjDEnPj2WqdZE38PAIcecfTWhdBXkvci/QdnonvYQ/Vg2nvmT5S+75YyF3iwxlg+
+	+mu2Cf96x4SIKw5YVUc0u/0t5fjn9W5vKNAI0ITPeb4w7mf1SJg57yYGn9uQyovqYFijGwWRQlYBh
+	A1nHvyQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pa85E-007pJp-0c; Thu, 09 Mar 2023 04:40:52 +0000
-Received: from mail-vs1-xe2f.google.com ([2607:f8b0:4864:20::e2f])
+	id 1pa8Jt-007rPE-6o; Thu, 09 Mar 2023 04:56:01 +0000
+Received: from mail-vs1-xe2a.google.com ([2607:f8b0:4864:20::e2a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pa85B-007pHn-H9
-	for linux-mediatek@lists.infradead.org; Thu, 09 Mar 2023 04:40:50 +0000
-Received: by mail-vs1-xe2f.google.com with SMTP id v27so552887vsa.7
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Mar 2023 20:40:45 -0800 (PST)
+	id 1pa8Jp-007rOJ-Is
+	for linux-mediatek@lists.infradead.org; Thu, 09 Mar 2023 04:55:59 +0000
+Received: by mail-vs1-xe2a.google.com with SMTP id d20so556917vsf.11
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Mar 2023 20:55:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1678336844;
+        d=chromium.org; s=google; t=1678337756;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=1HfEhdsNHcbX3MgYanmt5oONyvC5m572GacJct3ywv8=;
-        b=OY4ZWjxAKzzEe17t+/omd8pzCo16GDs+lISGaBNc7ARvCqvIDcXrBWaMz3KPUKAFAx
-         MKYjJMlijA0oiag/o9ltWgAulpb5GN7ubgXmPwvO0JcS+CHLTYBkBOAm+jnAVTiSj+dP
-         C9gs1nBW8msTqbWyP83xeXc2dm8SJOQ5ZteXs=
+        bh=EjxqdJHTwKdoqofrVIRX/uslVfOrecmuG0zXjEDMDnE=;
+        b=bxbeMG5QYKOQm/zYzvv3/3Hk/JY6JiPYXffsKvdoDYkgJEyLsd5luHWpeBPUeaNVoP
+         WI1TBhtSF9SQptos3NJfV1IUazfU2qfANWkdP0qVdaC65vDfQ7EvdHVplXw/nbVz0LqW
+         nYySeNJ1BUgFQnIdSq/Z+V4ppkz0S4K7nvdeU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678336844;
+        d=1e100.net; s=20210112; t=1678337756;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=1HfEhdsNHcbX3MgYanmt5oONyvC5m572GacJct3ywv8=;
-        b=4+fvCNcoWqPZE7gV6c7fU0nRRqx8tBxA9BbwqDLt5qZjvm/R1P8STlZDc9V+N2cRPJ
-         /cfjUKDJrnHeRtto+uxTfYZ651DoYOKVCfJ1/aYEl/OaG2NYqLwJjdf20mLb0Iq39RJy
-         sKoudrK780YvjwEo4LY95a+qc6ydavR5g4RS3qucQ60nT0yhAdqUac+tpfL98b8G5N1M
-         /nyNk02YP5B45ovFqwQLnvhbT7hDRBRHX2q3enoG698GL5B5qezJCfyv02ZZBv5ZTaNG
-         9dINmC1ExYERjId14llKDVCQgfTQ4qjK11/0Obzn6EwHRHOg8ArZ5XhEEqsTiQWE2Cfq
-         wIZA==
-X-Gm-Message-State: AO0yUKVh8QU4qFg0N4X1J8dYT5ZNpqeoqqzj92RCNQuCBDB6QeBvvbwJ
-	HwMc0TxCnsc21qBouS/c3tIK/xRPROjAg5iBEsN6UA==
-X-Google-Smtp-Source: AK7set/qz7AXP379kXCwXSGP7qW4SxN2fHK9WOBBCqjE7wujg+HjwD4MbiqD6RrlzvCfV93hp0pdiEJhzThyfyxm1e0=
-X-Received: by 2002:a05:6102:21ae:b0:412:364c:68be with SMTP id
- i14-20020a05610221ae00b00412364c68bemr13182027vsb.7.1678336844113; Wed, 08
- Mar 2023 20:40:44 -0800 (PST)
+        bh=EjxqdJHTwKdoqofrVIRX/uslVfOrecmuG0zXjEDMDnE=;
+        b=J7iorRGuaBnFIkYFIqykDD3SKf+HkkgvPr4LC5HKvUjmusPksAoTmxYZbbwaPCa5MU
+         oCZR2u8eHwHDcu0CFkKyQ+9UIDRuzzmgDODMn+CVL4Bx9Jn3A4uBtmwxBrQipo+gXKKt
+         nFQL559wuoCTw/t8VwUUxjNkbU3TdhASzq9KqYT/eLyCqzsF2nAivRmrelx1LenkNuEO
+         kqNfBRmGoGaPSLGf3maExV5JToboSH0ufzBUZvgvVkhXTh/R+yGKyiuaFzmlY63YbuYT
+         mNp9tCAJycR/3aUzk3HFJqxqqyK7AiX4/BUyU9lYpf9HdX48YpXJe2pccfPPr9GplVQ9
+         VKfw==
+X-Gm-Message-State: AO0yUKV1H9QJHrpkJQNJdjSa/fQ7CrvLtn6l0IHMsM1XSx4yEfVGcNOK
+	2tVqm+i0qT6b2gEqbz7aJWRHEu4rq7zAjhLW8SzLZg==
+X-Google-Smtp-Source: AK7set+BT4xEcKY+/uoaOL8KeVBJ3JdWu5Hu+B9F1sIYsvzfRdV29zePdKUttsi2e9i5g7od5M+1fBV0aszBSpO4YhA=
+X-Received: by 2002:a05:6102:5599:b0:421:c4a3:b607 with SMTP id
+ dc25-20020a056102559900b00421c4a3b607mr14816559vsb.3.1678337756090; Wed, 08
+ Mar 2023 20:55:56 -0800 (PST)
 MIME-Version: 1.0
-References: <20230307154524.118541-1-bchihi@baylibre.com> <20230307154524.118541-2-bchihi@baylibre.com>
-In-Reply-To: <20230307154524.118541-2-bchihi@baylibre.com>
+References: <20230223145426.193590-1-angelogioacchino.delregno@collabora.com> <20230223145426.193590-2-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230223145426.193590-2-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 9 Mar 2023 12:40:33 +0800
-Message-ID: <CAGXv+5FUrWEF4SZ6DKjoF8Oai--JGFffzQ3_DyzQrUrThVEQ7Q@mail.gmail.com>
-Subject: Re: [PATCH 1/4] dt-bindings: thermal: mediatek: Add AP domain to LVTS
- thermal controllers for mt8195
-To: bchihi@baylibre.com
-Cc: daniel.lezcano@linaro.org, angelogioacchino.delregno@collabora.com, 
-	rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com, 
-	matthias.bgg@gmail.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
-	rdunlap@infradead.org, ye.xingchen@zte.com.cn, p.zabel@pengutronix.de, 
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com, 
-	rex-bc.chen@mediatek.com
+Date: Thu, 9 Mar 2023 12:55:45 +0800
+Message-ID: <CAGXv+5FAcySm3fC1oV9R7FYP0N1z95BaMHXGFJvhi0jDTbSXtg@mail.gmail.com>
+Subject: Re: [PATCH v1 1/4] arm64: dts: mediatek: cherry: Add platform thermal configuration
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, 
+	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_204049_633033_596C4E6D 
-X-CRM114-Status: GOOD (  12.43  )
+X-CRM114-CacheID: sfid-20230308_205557_666807_4BC13259 
+X-CRM114-Status: GOOD (  18.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,46 +85,186 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 8, 2023 at 12:46=E2=80=AFAM <bchihi@baylibre.com> wrote:
+On Thu, Feb 23, 2023 at 10:55=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
 >
-> From: Balsam CHIHI <bchihi@baylibre.com>
+> This platform has three auxiliary NTC thermistors, connected to the
+> SoC's ADC pins. Enable the auxadc in order to be able to read the
+> ADC values, add a generic-adc-thermal LUT for each and finally assign
+> them to the SoC's thermal zones.
 >
-> Add AP Domain to LVTS thermal controllers dt-binding definition for mt819=
-5.
->
-> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
 > ---
->  include/dt-bindings/thermal/mediatek,lvts-thermal.h | 10 ++++++++++
->  1 file changed, 10 insertions(+)
+>  .../boot/dts/mediatek/mt8195-cherry.dtsi      | 124 ++++++++++++++++++
+>  1 file changed, 124 insertions(+)
 >
-> diff --git a/include/dt-bindings/thermal/mediatek,lvts-thermal.h b/includ=
-e/dt-bindings/thermal/mediatek,lvts-thermal.h
-> index c09398920468..8fa5a46675c4 100644
-> --- a/include/dt-bindings/thermal/mediatek,lvts-thermal.h
-> +++ b/include/dt-bindings/thermal/mediatek,lvts-thermal.h
-> @@ -16,4 +16,14 @@
->  #define MT8195_MCU_LITTLE_CPU2  6
->  #define MT8195_MCU_LITTLE_CPU3  7
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64=
+/boot/dts/mediatek/mt8195-cherry.dtsi
+> index 24669093fbed..ae2052a7160d 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+> @@ -104,6 +104,108 @@ ppvar_sys: regulator-ppvar-sys {
+>                 regulator-boot-on;
+>         };
 >
-> +#define MT8195_AP_VPU0  8
+> +       tboard_thermistor1: thermal-sensor-t1 {
+> +               compatible =3D "generic-adc-thermal";
+> +               #thermal-sensor-cells =3D <0>;
+> +               io-channels =3D <&auxadc 0>;
+> +               io-channel-names =3D "sensor-channel";
+> +               temperature-lookup-table =3D <    (-5000) 4241
+> +                                               0 4063
+> +                                               5000 3856
+> +                                               10000 3621
+> +                                               15000 3364
+> +                                               20000 3091
+> +                                               25000 2810
+> +                                               30000 2526
+> +                                               35000 2247
+> +                                               40000 1982
+> +                                               45000 1734
+> +                                               50000 1507
+> +                                               55000 1305
+> +                                               60000 1122
+> +                                               65000 964
+> +                                               70000 827
+> +                                               75000 710
+> +                                               80000 606
+> +                                               85000 519
+> +                                               90000 445
+> +                                               95000 382
+> +                                               100000 330
+> +                                               105000 284
+> +                                               110000 245
+> +                                               115000 213
+> +                                               120000 183
+> +                                               125000 161>;
+> +       };
+> +
+> +       tboard_thermistor2: thermal-sensor-t2 {
+> +               compatible =3D "generic-adc-thermal";
+> +               #thermal-sensor-cells =3D <0>;
+> +               io-channels =3D <&auxadc 0>;
 
-Can't this start from 0? This is a different hardware block. The index
-namespace is separate. Same question for MT8192.
+You are reusing the same channel for all three sensors. That doesn't
+make a lot of sense.
+
+Furthermore, the design only has two thermistors, connected to the first
+two ADC channels. The first one is located near the SoC; the second one
+is near the PMIC.
 
 ChenYu
 
-> +#define MT8195_AP_VPU1  9
-> +#define MT8195_AP_GPU0  10
-> +#define MT8195_AP_GPU1  11
-> +#define MT8195_AP_VDEC  12
-> +#define MT8195_AP_IMG   13
-> +#define MT8195_AP_INFRA 14
-> +#define MT8195_AP_CAM0  15
-> +#define MT8195_AP_CAM1  16
+> +               io-channel-names =3D "sensor-channel";
+> +               temperature-lookup-table =3D <    (-5000) 4241
+> +                                               0 4063
+> +                                               5000 3856
+> +                                               10000 3621
+> +                                               15000 3364
+> +                                               20000 3091
+> +                                               25000 2810
+> +                                               30000 2526
+> +                                               35000 2247
+> +                                               40000 1982
+> +                                               45000 1734
+> +                                               50000 1507
+> +                                               55000 1305
+> +                                               60000 1122
+> +                                               65000 964
+> +                                               70000 827
+> +                                               75000 710
+> +                                               80000 606
+> +                                               85000 519
+> +                                               90000 445
+> +                                               95000 382
+> +                                               100000 330
+> +                                               105000 284
+> +                                               110000 245
+> +                                               115000 213
+> +                                               120000 183
+> +                                               125000 161>;
+> +       };
 > +
->  #endif /* __MEDIATEK_LVTS_DT_H */
+> +       tboard_thermistor3: thermal-sensor-t3 {
+> +               compatible =3D "generic-adc-thermal";
+> +               #thermal-sensor-cells =3D <0>;
+> +               io-channels =3D <&auxadc 0>;
+> +               io-channel-names =3D "sensor-channel";
+> +               temperature-lookup-table =3D <    (-5000) 4241
+> +                                               0 4063
+> +                                               5000 3856
+> +                                               10000 3621
+> +                                               15000 3364
+> +                                               20000 3091
+> +                                               25000 2810
+> +                                               30000 2526
+> +                                               35000 2247
+> +                                               40000 1982
+> +                                               45000 1734
+> +                                               50000 1507
+> +                                               55000 1305
+> +                                               60000 1122
+> +                                               65000 964
+> +                                               70000 827
+> +                                               75000 710
+> +                                               80000 606
+> +                                               85000 519
+> +                                               90000 445
+> +                                               95000 382
+> +                                               100000 330
+> +                                               105000 284
+> +                                               110000 245
+> +                                               115000 213
+> +                                               120000 183
+> +                                               125000 161>;
+> +       };
+> +
+>         usb_vbus: regulator-5v0-usb-vbus {
+>                 compatible =3D "regulator-fixed";
+>                 regulator-name =3D "usb-vbus";
+> @@ -243,6 +345,10 @@ &gpu {
+>         mali-supply =3D <&mt6315_7_vbuck1>;
+>  };
+>
+> +&auxadc {
+> +       status =3D "okay";
+> +};
+> +
+>  &i2c0 {
+>         status =3D "okay";
+>
+> @@ -1074,6 +1180,24 @@ mt6315_7_vbuck1: vbuck1 {
+>         };
+>  };
+>
+> +&thermal_zones {
+> +       ap_ntc1 {
+> +               polling-delay =3D <1000>;
+> +               polling-delay-passive =3D <0>;
+> +               thermal-sensors =3D <&tboard_thermistor1>;
+> +       };
+> +       ap_ntc2 {
+> +               polling-delay =3D <1000>;
+> +               polling-delay-passive =3D <0>;
+> +               thermal-sensors =3D <&tboard_thermistor2>;
+> +       };
+> +       ap_ntc3 {
+> +               polling-delay =3D <1000>;
+> +               polling-delay-passive =3D <0>;
+> +               thermal-sensors =3D <&tboard_thermistor3>;
+> +       };
+> +};
+> +
+>  &u3phy0 {
+>         status =3D "okay";
+>  };
 > --
-> 2.34.1
+> 2.39.2
 >
 >
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 
