@@ -4,74 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B222BC6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 14:16:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6914AC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 14:21:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gYXaS8PJb/8u5+/wQX8dhTr0P8mIYQmnQJK/+fqlEWc=; b=NLlTp4qGdRD27JKt1YyhJ4nHzr
-	fueg3sxFWZKirM1z8vub0pjwCmdw+Fk5BwFd1K7P/Jwni5rs1n5g5l5xKz58d4bEQ+zLltUrvWSYn
-	OGRkt5jLveGpxzJq9i5BqgaHdygQn/9kb6J95BNvF4luuYaVaTEHNZi6X75Izd0EoJU9KuaMNp5d7
-	H34K6wLEhHlJkGrcCpclkRx8GAU+/WAQEk2HINPTU5at+fP5RzcSaGA1eHlKjJCm9wY3fEfglS09g
-	IHPtsKlJnMhiAIQBwFGF9fcZhc5guDDqLUnJfwlVfdaFNmF4spyzHk4hJpcoSKbQkuZf/ieN/6q1w
-	k2vl7DIA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=g9PFCuPFcq1FIHz8HOZSI5nxjlQ6hpHQldXpRzabQWk=; b=J8588VtQa/J0+rpxRd0HiUTVf9
+	1am9Ndt5NIqOGyEevQmj+48UrKPP+1JToa2RmaNJKAKBEwUc1CnspweEU6WKCqVbklMdZkHmtsHh7
+	0knTJp0xairOgXUpDCTuSeqHSOA59ZhYOvVe3ih6xqvNPTC+h12hPlxzHqFknkw1tD+f0xucA1T5y
+	wR5/MeaOvtoR68Shz9w1LIoM0fBDnb9lp7x3HPlPR6l9C5dUvKHzPK3YQjhYlDIV5wn/Bzy/6JDjD
+	Fg2rElSj01BY9NV1KTlPIcQ+DajuS6YrFCy1oXC0jWgLS9xnbQ7MnA0nQ+CpKDeczKOwTd0v8YFxj
+	emOo+0VQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paH4d-00AQih-8i; Thu, 09 Mar 2023 14:16:51 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1paH8z-00ASvA-Uj; Thu, 09 Mar 2023 14:21:22 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paH3Q-00AQAL-6k; Thu, 09 Mar 2023 14:15:38 +0000
-X-UUID: d8e5e790be8411eda08d4d6090ec5a5c-20230309
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=gYXaS8PJb/8u5+/wQX8dhTr0P8mIYQmnQJK/+fqlEWc=;
-	b=e7fncut8/xOJ1EOeXDEwdA/9xulPRWNv8DKe/eKgYUT+qIXq2orkDehDpy10+8UZxOG2h766yggBFDy8F65+mKXVn1NkPSyzMUSS7QTl0vLzd0W4YRFHSORHeLJa6Ly4wFPS7CQWNm/I+HvaEv2EBX8bvNIScT1Tky8+u9gqeu4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.20,REQID:76a26023-71f1-4a58-8d9e-c552200849cb,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:25b5999,CLOUDID:fda14bf5-ddba-41c3-91d9-10eeade8eac7,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-UUID: d8e5e790be8411eda08d4d6090ec5a5c-20230309
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <garmin.chang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 519693047; Thu, 09 Mar 2023 07:15:30 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Thu, 9 Mar 2023 21:54:25 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Thu, 9 Mar 2023 21:54:25 +0800
-From: Garmin.Chang <Garmin.Chang@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Michael Turquette
-	<mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Richard Cochran
-	<richardcochran@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-clk@vger.kernel.org>, <netdev@vger.kernel.org>, Garmin.Chang
-	<Garmin.Chang@mediatek.com>
-Subject: [PATCH v6 06/19] clk: mediatek: Add MT8188 camsys clock support
-Date: Thu, 9 Mar 2023 21:54:06 +0800
-Message-ID: <20230309135419.30159-7-Garmin.Chang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230309135419.30159-1-Garmin.Chang@mediatek.com>
-References: <20230309135419.30159-1-Garmin.Chang@mediatek.com>
+	id 1paH7t-00ASMl-6X; Thu, 09 Mar 2023 14:20:14 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id j2so2017123wrh.9;
+        Thu, 09 Mar 2023 06:20:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678371608;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=g9PFCuPFcq1FIHz8HOZSI5nxjlQ6hpHQldXpRzabQWk=;
+        b=pQ8rH9hmAvMGPdlWLtsaiCL1tbAk6J5Bet/1wrFc3yD0T50sPxhzJap0s2h/tEDON1
+         ZyckrHIm+7bwS9K33CaoBmOEZv2I7afmQGc2Er54g/6BTDs+CyEWTFawrPc5lAPk872n
+         dmirs2Ttda4PnqKgROjUd7CIwz9tdnPCkSyzGIlnzIK6bEyGRSqA1H7/Ze090yaenbxK
+         iPzeJNvkLQF6jNvmwsa7eHyXANDHZkBWQs6sisMepYXK+3QyecdSDDX0uIOJQsDjVcfx
+         gAyo8YDxkCaJ9wJqVQYaGvOmMuszKOMwbyHS/bu+S6gVRzJL6eI6sGaSbulGjMzjlnVQ
+         sYJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678371608;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=g9PFCuPFcq1FIHz8HOZSI5nxjlQ6hpHQldXpRzabQWk=;
+        b=6DzZp3nIGFGMlm16cyDfhH3cgGODNK9id0K2SPEYKLkT6lBuf6kiioLWMlOkNYmBI1
+         G4WnB5MG8VUj3BmajiWiT5Y/1QD4UCXGRd2DBsWpay6oWGKQNXdqxOmg4E4i9pnEiOSd
+         8+Bfo4uA0sEk9oV73zZ5nMvZ7OOkKWGqr3hDtHkE0HimmkI9wIL2AnVZtF6a3UjjskAy
+         MVaKRNeLwO3jezjgg1p4dxqg9XKi0aUoEevf2+ouCxipnzqCoBDtuA5DAZ0odFei1EAD
+         EQAuFbIk5vtYfl0F/sDamEGHRyuKnjMZ2Qd5tVU4utl4n9GCJO0J6B8TcLbK6Dh9Q/XI
+         h+xQ==
+X-Gm-Message-State: AO0yUKWKdN5mg3JgVNbCBrVMYEg6pdctFmu/ySIPBxPxxxPpnS+6dgYh
+	xoG6IELcKYIPrPVHeGpx4k3xSJEWUM4BMRExyEBVG2/dBTjcIA==
+X-Google-Smtp-Source: AK7set+Yd9KrImooA6uxrXUVmDh+Rcs9q/1b8CgKBFtf9L4gNgxW+NQjjkIdwpsMyntXGCBQF88sBj/dwaEvM3BdnWg=
+X-Received: by 2002:adf:dd4f:0:b0:2c5:5297:1f9a with SMTP id
+ u15-20020adfdd4f000000b002c552971f9amr4901402wrm.14.1678371608475; Thu, 09
+ Mar 2023 06:20:08 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20220911174551.653599-1-sergiu.moga@microchip.com>
+ <20220925220304.buk3yuqoh6vszfci@mobilestation> <18e6e8a8-6412-7e31-21e0-6becd4400ac1@microchip.com>
+ <20220926172454.kbpzck7med5bopre@mobilestation> <1766f6ef-d9d8-04f7-a6bf-0ea6bc0b3d23@linaro.org>
+ <f647e713a65f5d3f0f2e3af95c4d0a89@walle.cc> <1849e2c8-54f5-9e56-4ed8-8b0e4a826d04@linaro.org>
+ <302ecf0421fe4c99fca3eb0ca2f66127@walle.cc> <5183a184-c72d-3acd-70cd-6aa1e31533f5@linaro.org>
+ <03a9f117316ab81f1b5a18100f771e65@walle.cc> <6c2090bf-d102-a333-3a83-03abe81ff70e@linaro.org>
+ <460ef5ff3846b409b322ca53559e2476@walle.cc> <b8b61fc0-1e4f-146b-2036-03fda5359585@linaro.org>
+ <bf57f3aafc3e0a02c81dab905ce9497e@walle.cc>
+In-Reply-To: <bf57f3aafc3e0a02c81dab905ce9497e@walle.cc>
+From: Chuanhong Guo <gch981213@gmail.com>
+Date: Thu, 9 Mar 2023 22:19:55 +0800
+Message-ID: <CAJsYDVJ_UtGqOm_HsN4X4nAuy9svXe4XV6aeG_fg8cWDrgrHMQ@mail.gmail.com>
+Subject: Re: [PATCH] spi: Replace `dummy.nbytes` with `dummy.ncycles`
+To: Michael Walle <michael@walle.cc>
+Cc: Tudor Ambarus <tudor.ambarus@linaro.org>, Serge Semin <fancer.lancer@gmail.com>, 
+	Sergiu.Moga@microchip.com, Mark Brown <broonie@kernel.org>, 
+	Tudor Ambarus <tudor.ambarus@microchip.com>, Pratyush Yadav <pratyush@kernel.org>, 
+	miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com, 
+	Nicolas.Ferre@microchip.com, alexandre.belloni@bootlin.com, 
+	Claudiu.Beznea@microchip.com, chin-ting_kuo@aspeedtech.com, clg@kaod.org, 
+	joel@jms.id.au, andrew@aj.id.au, kdasu.kdev@gmail.com, han.xu@nxp.com, 
+	john.garry@huawei.com, matthias.bgg@gmail.com, avifishman70@gmail.com, 
+	tmaimon77@gmail.com, tali.perry1@gmail.com, venture@google.com, 
+	yuenn@google.com, benjaminfair@google.com, haibo.chen@nxp.com, 
+	yogeshgaur.83@gmail.com, heiko@sntech.de, mcoquelin.stm32@gmail.com, 
+	alexandre.torgue@foss.st.com, michal.simek@xilinx.com, 
+	bcm-kernel-feedback-list@broadcom.com, linux-mtd@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, 
+	openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_061536_302264_C68DE089 
-X-CRM114-Status: GOOD (  16.01  )
+X-CRM114-CacheID: sfid-20230309_062013_311075_DEDF1065 
+X-CRM114-Status: GOOD (  21.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,156 +107,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8188 camsys clock controllers which provide clock gate
-control for camera IP blocks.
+Hi!
 
-Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
----
- drivers/clk/mediatek/Makefile         |   3 +-
- drivers/clk/mediatek/clk-mt8188-cam.c | 118 ++++++++++++++++++++++++++
- 2 files changed, 120 insertions(+), 1 deletion(-)
- create mode 100644 drivers/clk/mediatek/clk-mt8188-cam.c
+On Thu, Mar 9, 2023 at 10:04=E2=80=AFPM Michael Walle <michael@walle.cc> wr=
+ote:
+>
+> Am 2023-03-09 14:54, schrieb Tudor Ambarus:
+> > On 09.03.2023 15:33, Michael Walle wrote:
+> >>>>> The controllers that can talk in dummy ncycles don't need the
+> >>>>> dummy.{buswidth, dtr} fields.
+> >>>>>
+> >>>>> The controllers that can't talk in dummy cycles, but only on a
+> >>>>> "byte"
+> >>>>> boundary need both buswidth and dtr fields. Assume a flash needs 32
+> >>>>> dummy cycles for an op on 8D-8D-8D mode. If the controller does not
+> >>>>> have
+> >>>>> the buswidth and dtr info, it can't convert the dummy ncycles to
+> >>>>> nbytes.
+> >>>>> If he knows only that buswidth is 8, it will convert ncycles to 4
+> >>>>> bytes.
+> >>>>> If dtr is also specified it converts ncycles to 2 bytes.
+> >>>>
+> >>>> No they don't need it. Lets take your semper flash and assume it
+> >>>> needs
+> >>>> 12 latency cycles. SPI-NOR will set ncycles to 12 *regardless of the
+> >>>> mode
+> >>>> or dtr setting*. The controller then knows we need 12 clock cycles.
+> >>>> It has
+> >>>> then to figure out how that can be achieved. E.g. if it can only do
+> >>>> the
+> >>>> "old" byte programming and is in quad mode, good for it. It will
+> >>>> send 6
+> >>>> dummy bytes, which will result in 12 dummy clock cycles, because 1
+> >>>> byte
+> >>>> takes two clock cycles in quad SDR mode. If its in octal mode, send
+> >>>> 12
+> >>>> bytes. If its in dual mode, send 3 bytes. Obiously, it cannot be in
+> >>>> single bit mode, because it cannot send 1.5 bytes..
+> >>>>
+> >>>
+> >>> You miss the fact that you can have 1-1-4. What buswidth do you use
+> >>> for dummy, the address buswidth or the data buswidth?
+> >>
+> >> Doesn't matter, does it? The driver is free to chose, 1, 4, or
+> >> anything
+> >> else. You don't sample any data during the dummy phase.
+> >> To answer your question: single for instruction, single for address,
+> >> whatever you choose for dummy as long as there are ncycles space
+> >> between
+> >> address and data, and quad for data.
+> >
+> > Huh? How does the controller chose, based on what?
+>
+> Based on its own capabilities. It can choose either way. In the end
+> what matters is how many clock cycles there are between the address
+> and data phase. And you only need to convey that information to the
+> SPI controller - your new ncycles.
 
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 172aaef29d5d..a4189d28cecc 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -92,7 +92,8 @@ obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o clk-mt8186-topckgen.o clk-mt
- 				   clk-mt8186-img.o clk-mt8186-vdec.o clk-mt8186-venc.o \
- 				   clk-mt8186-cam.o clk-mt8186-mdp.o clk-mt8186-ipe.o
- obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o clk-mt8188-topckgen.o \
--				   clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o
-+				   clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o \
-+				   clk-mt8188-cam.o
- obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
- obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
- obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
-diff --git a/drivers/clk/mediatek/clk-mt8188-cam.c b/drivers/clk/mediatek/clk-mt8188-cam.c
-new file mode 100644
-index 000000000000..5f7cf9db12f2
---- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8188-cam.c
-@@ -0,0 +1,118 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+//
-+// Copyright (c) 2022 MediaTek Inc.
-+// Author: Garmin Chang <garmin.chang@mediatek.com>
-+
-+#include <linux/clk-provider.h>
-+#include <linux/platform_device.h>
-+#include <dt-bindings/clock/mediatek,mt8188-clk.h>
-+
-+#include "clk-gate.h"
-+#include "clk-mtk.h"
-+
-+static const struct mtk_gate_regs cam_cg_regs = {
-+	.set_ofs = 0x4,
-+	.clr_ofs = 0x8,
-+	.sta_ofs = 0x0,
-+};
-+
-+#define GATE_CAM(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &cam_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-+
-+static const struct mtk_gate cam_main_clks[] = {
-+	GATE_CAM(CLK_CAM_MAIN_LARB13, "cam_main_larb13", "top_cam", 0),
-+	GATE_CAM(CLK_CAM_MAIN_LARB14, "cam_main_larb14", "top_cam", 1),
-+	GATE_CAM(CLK_CAM_MAIN_CAM, "cam_main_cam", "top_cam", 2),
-+	GATE_CAM(CLK_CAM_MAIN_CAM_SUBA, "cam_main_cam_suba", "top_cam", 3),
-+	GATE_CAM(CLK_CAM_MAIN_CAM_SUBB, "cam_main_cam_subb", "top_cam", 4),
-+	GATE_CAM(CLK_CAM_MAIN_CAMTG, "cam_main_camtg", "top_cam", 7),
-+	GATE_CAM(CLK_CAM_MAIN_SENINF, "cam_main_seninf", "top_cam", 8),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVA, "cam_main_gcamsva", "top_cam", 9),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVB, "cam_main_gcamsvb", "top_cam", 10),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVC, "cam_main_gcamsvc", "top_cam", 11),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVD, "cam_main_gcamsvd", "top_cam", 12),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVE, "cam_main_gcamsve", "top_cam", 13),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVF, "cam_main_gcamsvf", "top_cam", 14),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVG, "cam_main_gcamsvg", "top_cam", 15),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVH, "cam_main_gcamsvh", "top_cam", 16),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVI, "cam_main_gcamsvi", "top_cam", 17),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVJ, "cam_main_gcamsvj", "top_cam", 18),
-+	GATE_CAM(CLK_CAM_MAIN_CAMSV_TOP, "cam_main_camsv", "top_cam", 19),
-+	GATE_CAM(CLK_CAM_MAIN_CAMSV_CQ_A, "cam_main_camsv_cq_a", "top_cam", 20),
-+	GATE_CAM(CLK_CAM_MAIN_CAMSV_CQ_B, "cam_main_camsv_cq_b", "top_cam", 21),
-+	GATE_CAM(CLK_CAM_MAIN_CAMSV_CQ_C, "cam_main_camsv_cq_c", "top_cam", 22),
-+	GATE_CAM(CLK_CAM_MAIN_FAKE_ENG, "cam_main_fake_eng", "top_cam", 28),
-+	GATE_CAM(CLK_CAM_MAIN_CAM2MM0_GALS, "cam_main_cam2mm0_gals", "top_cam", 29),
-+	GATE_CAM(CLK_CAM_MAIN_CAM2MM1_GALS, "cam_main_cam2mm1_gals", "top_cam", 30),
-+	GATE_CAM(CLK_CAM_MAIN_CAM2SYS_GALS, "cam_main_cam2sys_gals", "top_cam", 31),
-+};
-+
-+static const struct mtk_gate cam_rawa_clks[] = {
-+	GATE_CAM(CLK_CAM_RAWA_LARBX, "cam_rawa_larbx", "top_cam", 0),
-+	GATE_CAM(CLK_CAM_RAWA_CAM, "cam_rawa_cam", "top_cam", 1),
-+	GATE_CAM(CLK_CAM_RAWA_CAMTG, "cam_rawa_camtg", "top_cam", 2),
-+};
-+
-+static const struct mtk_gate cam_rawb_clks[] = {
-+	GATE_CAM(CLK_CAM_RAWB_LARBX, "cam_rawb_larbx", "top_cam", 0),
-+	GATE_CAM(CLK_CAM_RAWB_CAM, "cam_rawb_cam", "top_cam", 1),
-+	GATE_CAM(CLK_CAM_RAWB_CAMTG, "cam_rawb_camtg", "top_cam", 2),
-+};
-+
-+static const struct mtk_gate cam_yuva_clks[] = {
-+	GATE_CAM(CLK_CAM_YUVA_LARBX, "cam_yuva_larbx", "top_cam", 0),
-+	GATE_CAM(CLK_CAM_YUVA_CAM, "cam_yuva_cam", "top_cam", 1),
-+	GATE_CAM(CLK_CAM_YUVA_CAMTG, "cam_yuva_camtg", "top_cam", 2),
-+};
-+
-+static const struct mtk_gate cam_yuvb_clks[] = {
-+	GATE_CAM(CLK_CAM_YUVB_LARBX, "cam_yuvb_larbx", "top_cam", 0),
-+	GATE_CAM(CLK_CAM_YUVB_CAM, "cam_yuvb_cam", "top_cam", 1),
-+	GATE_CAM(CLK_CAM_YUVB_CAMTG, "cam_yuvb_camtg", "top_cam", 2),
-+};
-+
-+static const struct mtk_clk_desc cam_main_desc = {
-+	.clks = cam_main_clks,
-+	.num_clks = ARRAY_SIZE(cam_main_clks),
-+};
-+
-+static const struct mtk_clk_desc cam_rawa_desc = {
-+	.clks = cam_rawa_clks,
-+	.num_clks = ARRAY_SIZE(cam_rawa_clks),
-+};
-+
-+static const struct mtk_clk_desc cam_rawb_desc = {
-+	.clks = cam_rawb_clks,
-+	.num_clks = ARRAY_SIZE(cam_rawb_clks),
-+};
-+
-+static const struct mtk_clk_desc cam_yuva_desc = {
-+	.clks = cam_yuva_clks,
-+	.num_clks = ARRAY_SIZE(cam_yuva_clks),
-+};
-+
-+static const struct mtk_clk_desc cam_yuvb_desc = {
-+	.clks = cam_yuvb_clks,
-+	.num_clks = ARRAY_SIZE(cam_yuvb_clks),
-+};
-+
-+static const struct of_device_id of_match_clk_mt8188_cam[] = {
-+	{ .compatible = "mediatek,mt8188-camsys", .data = &cam_main_desc },
-+	{ .compatible = "mediatek,mt8188-camsys-rawa", .data = &cam_rawa_desc },
-+	{ .compatible = "mediatek,mt8188-camsys-rawb", .data = &cam_rawb_desc },
-+	{ .compatible = "mediatek,mt8188-camsys-yuva", .data = &cam_yuva_desc },
-+	{ .compatible = "mediatek,mt8188-camsys-yuvb", .data = &cam_yuvb_desc },
-+	{ /* sentinel */}
-+};
-+
-+static struct platform_driver clk_mt8188_cam_drv = {
-+	.probe = mtk_clk_simple_probe,
-+	.remove = mtk_clk_simple_remove,
-+	.driver = {
-+		.name = "clk-mt8188-cam",
-+		.of_match_table = of_match_clk_mt8188_cam,
-+	},
-+};
-+
-+builtin_platform_driver(clk_mt8188_cam_drv);
-+MODULE_LICENSE("GPL");
--- 
-2.18.0
+It does matter. Controller may be designed to actively drive
+MOSI/WP/HOLD during single-spi dummy cycles and WP/HOLD
+during dual-spi dummy cycles. If the pin modes between the
+controller and device mismatched, worst case scenario
+the chip may get fried.
 
+--=20
+Regards,
+Chuanhong Guo
 
