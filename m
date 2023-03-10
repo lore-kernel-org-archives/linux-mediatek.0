@@ -4,95 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65AE2C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 07:29:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EBAEC6FD19
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 07:34:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AwBOkR9lwcDkjadRLgF0R44wF9qXADVSTiSBWCFE2ko=; b=szuYVp5BS5w90k9htimegQlo1r
-	GxNhF+awzFXiEdwGhzRNJ9yQeraNyIrOdd7OE6hQ/OKkn5MF8zg9APsgVm0pdtmlP8UHom9S7+3X0
-	8sdynJ9SvDjLDSQAAct7yZWBBS54ECtI209XXKIhNXsrpof3vJhMZHWHrk/x87G0PhuDev3QsPYWH
-	uBg830MUISkd1fYE184FIBkDbJ1w2LDDqq5i+vQQHs1z7CPV5+DJS5gk/zdF0aWjeKSxUw883pc/h
-	1UV5Y3jWRHei0+wSJYIkwQt0epktoIhP+c8FaUHld2lG7GucJVOn8M6sKKToWvMA9L2qLKPl/WVmp
-	IAhu7RmQ==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zarTkLijwIfhb3++coRGP/AsVqk8HV3V1KUfOUgPVtk=; b=p7RKF8MEPIsS+aLZp8OiVlsOsx
+	KJFQtuw1NwVpN6Kz+3OebMnBydNrOhW/LQD2OKhM10x6PI1W3YjL46D5lSEv8RABc0nL7492iIdMy
+	cAdLveYcxgL3LRezP1pUzV1QJ4LnUQ1k07iyCyW3OKUowfzsVjgd8THuIXP6kX+0j6fVyfiypI/x7
+	b+SX4pcewqM2qpnhFdXHtGbJ/9+DGXOkGlJYFjuozY7rAdTsiJ049U57Wn7tCQt2JMfIFHXlBwU+I
+	33u7QhsQAO1Cm+9kFItKlfvw4x7zJvZJAlgYtk2G1nMY7EFCSYcmcxWs8+VqlbkyClsDC/Rzk0M4K
+	HPlpamew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paXBh-00DOw2-Et; Fri, 10 Mar 2023 07:29:13 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1paXGJ-00DQ2I-IW; Fri, 10 Mar 2023 07:33:59 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paXBe-00DOuz-FX
-	for linux-mediatek@lists.infradead.org; Fri, 10 Mar 2023 07:29:11 +0000
-Received: by mail-wm1-x332.google.com with SMTP id p23-20020a05600c1d9700b003ead4835046so4512662wms.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Mar 2023 23:29:07 -0800 (PST)
+	id 1paXG8-00DPxd-I6; Fri, 10 Mar 2023 07:33:49 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id h11so4146394wrm.5;
+        Thu, 09 Mar 2023 23:33:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678433346;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=AwBOkR9lwcDkjadRLgF0R44wF9qXADVSTiSBWCFE2ko=;
-        b=mypyJqnC/F6lSavmkFjuNxCKPeRm25olFcbDuBbOsNUdgP5ZV1s0p+0BbdmQia3Nco
-         eWD82VasDd0oGCDEKHhbnfPVkrOrJpT3f1RdWpJTlQ9FFHc8JoHhmHwOWxMA0+fH6UtJ
-         5RnzxgtdCPBWoloVZpMX2hboHtHa6/ZkgrUh+vWSktIBlGqc4ZrFmPcCxkKAUI7h9WkK
-         FqjdmcRRCl+OyDdE05M4VOz4/XwOMi9xUQjLahywyfgovNrTASKp3ts1ZdL9YTrjMBVX
-         MCobRRHYDuKI5CshilPmv2tUYuHFRqIH/mMLjgOpNFDI0z8nmNRYTmaceloOm3TFnnFC
-         kRrA==
+        d=gmail.com; s=20210112; t=1678433624;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=zarTkLijwIfhb3++coRGP/AsVqk8HV3V1KUfOUgPVtk=;
+        b=JzR3GSzGt6g7r6i4Cwic2dUusdk/8qRxYUN/wpStfXAPOmEF1yGACv2eH3kQGepu8+
+         di2klWZbKaTV059r+B0wKDMMRMn6tD/qA1zOBnT7aQr2k0cg0lbSTms0fg4Mn+0DVRvu
+         MBepKuw6rj9cwHTCI6q54QNE0hRSYeCsExGOmG0Nk5HKjpylZS8flUqZz8mUKtZfsmjS
+         U+Hmy1VNJTFE/YsqwOBAQJVfuO3j6dW/sJSrztzHrzghLfEkibEzqS0dS1H+SNY2+fAA
+         9WByQ3A62u2/y6AfL5Ezw1EUFBl7yVcgoEHGbwbVamu5KnyD+FHqzKn8FAhNscSh48cn
+         k9lA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678433346;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=AwBOkR9lwcDkjadRLgF0R44wF9qXADVSTiSBWCFE2ko=;
-        b=WI+6YmbNtwlEQpkTmiXPFaPz/VqS+V4iTyUNKJOdURp5TCUnCeAn5D3PqFQuqYhQ+x
-         vahThPCg4GnXih1866c4CArzfbIuoXljq4P1zqaUUSZN6w/yOyTJZdrGCgS9zSA93SZ4
-         9VaZ/rQp4nw6t1zRTz8NYM0Yw6xpWqfKL9Mv/+JLd9P9+H9T/pXdV6OMkl1m8DZr3Ryk
-         QT144B/8J3jxlVOOPafRJSc1lYL2s0S3v14f7C2YoeEd+4hLgfxfkvro1+xyFD8zmGRd
-         /HihLxQwVGVukBAf2YXomLTVajMFi3Zgyvt821FW7Ky7p4pMoDoAFJMU3NECHvgR+4a3
-         KhHw==
-X-Gm-Message-State: AO0yUKXZ1NhYLnygCsrRDrA8Kx/T1zuje6NyIfN7gjozpCuZNnt++88m
-	p4MqkAmHltMFh5+NoO1jIF3QtQ==
-X-Google-Smtp-Source: AK7set92+cRtbKy+3ERr2ns8dFh7B2dy3XcYI3Bks9AgxAOC76oxIeXSLX+VzvC44JGh3SZrPpNXNg==
-X-Received: by 2002:a05:600c:3ba5:b0:3eb:4501:6c60 with SMTP id n37-20020a05600c3ba500b003eb45016c60mr1132916wms.5.1678433346655;
-        Thu, 09 Mar 2023 23:29:06 -0800 (PST)
-Received: from [192.168.1.195] ([5.133.47.210])
-        by smtp.googlemail.com with ESMTPSA id o1-20020a056000010100b002c71b4d476asm1393871wrx.106.2023.03.09.23.29.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 09 Mar 2023 23:29:05 -0800 (PST)
-Message-ID: <ef92dcac-cadd-b85e-d6ea-512684266e81@linaro.org>
-Date: Fri, 10 Mar 2023 07:29:04 +0000
+        d=1e100.net; s=20210112; t=1678433624;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=zarTkLijwIfhb3++coRGP/AsVqk8HV3V1KUfOUgPVtk=;
+        b=BaVBJkjRempRZ/FQoEIdVV7gVd/CLT7nB6d9jSkFydKQazx+bRwlwfdVX4sndxKqeO
+         Mwowbu3DujOrfd06SZJGUQPFZB9W1Ltf66WmTHnTErb08om/NAsDL2bnxeCr1qKYTXZm
+         qrG+zzAOhnfeWdgZnIOyID7pWstKJ5HgijBddfmWQdvfUN0+6wirF0gfYOavwm9uadMG
+         i24of2Ya+97wKtsUFsQqbDqB4nBT5heU40jbbTwrYqSqR2tGZFYIWs3WO9uCqzcG6Hmx
+         voSD9zdPRKp5D0eRd9Yqe8KyASn7TgKjfT5pI3m0nyE153dLlvcYgACBpgm0wz01fE14
+         +bgg==
+X-Gm-Message-State: AO0yUKWmYX9M7gpbM788B55yoeG6SQSQXrYo4RH3cPzGBKeUsI77Xeno
+	4kyQWjXS14kuNuF6totDiR0=
+X-Google-Smtp-Source: AK7set+zzlSuseUVR2p0H+i3yVkYgwFZudbMm/ifjGFcScl8DRFJsT55wM1RvasPdakrhp0aDQHY1Q==
+X-Received: by 2002:a5d:4012:0:b0:2c5:532a:98c4 with SMTP id n18-20020a5d4012000000b002c5532a98c4mr502630wrp.33.1678433624124;
+        Thu, 09 Mar 2023 23:33:44 -0800 (PST)
+Received: from arinc9-PC.lan ([212.68.60.226])
+        by smtp.gmail.com with ESMTPSA id bi11-20020a05600c3d8b00b003daffc2ecdesm2023129wmb.13.2023.03.09.23.33.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Mar 2023 23:33:43 -0800 (PST)
+From: arinc9.unal@gmail.com
+X-Google-Original-From: arinc.unal@arinc9.com
+To: Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
+	Russell King <rmk+kernel@armlinux.org.uk>
+Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	netdev@vger.kernel.org,
+	erkin.bozoglu@xeront.com,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v3 net 1/2] net: dsa: mt7530: remove now incorrect comment regarding port 5
+Date: Fri, 10 Mar 2023 10:33:37 +0300
+Message-Id: <20230310073338.5836-1-arinc.unal@arinc9.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH] ASoC: do not include pm_runtime.h if not used
-Content-Language: en-US
-To: Claudiu Beznea <claudiu.beznea@microchip.com>, perex@perex.cz,
- tiwai@suse.com, lgirdwood@gmail.com, broonie@kernel.org,
- james.schulman@cirrus.com, david.rhodes@cirrus.com,
- tanureal@opensource.cirrus.com, rf@opensource.cirrus.com,
- oder_chiou@realtek.com, shengjiu.wang@gmail.com, Xiubo.Lee@gmail.com,
- festevam@gmail.com, nicoleotsuka@gmail.com, shawnguo@kernel.org,
- s.hauer@pengutronix.de, kernel@pengutronix.de, linux-imx@nxp.com,
- cezary.rojewski@intel.com, pierre-louis.bossart@linux.intel.com,
- peter.ujfalusi@linux.intel.com, yung-chuan.liao@linux.intel.com,
- ranjani.sridharan@linux.intel.com, kai.vehmanen@linux.intel.com,
- matthias.bgg@gmail.com, bgoswami@quicinc.com, vkoul@kernel.org,
- daniel.baluta@nxp.com, thierry.reding@gmail.com, jonathanh@nvidia.com,
- jarkko.nikula@bitmer.com
-Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org,
- patches@opensource.cirrus.com, linuxppc-dev@lists.ozlabs.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- sound-open-firmware@alsa-project.org, linux-tegra@vger.kernel.org,
- linux-omap@vger.kernel.org
-References: <20230307103022.1007420-1-claudiu.beznea@microchip.com>
-From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-In-Reply-To: <20230307103022.1007420-1-claudiu.beznea@microchip.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_232910_600999_22AEA60B 
-X-CRM114-Status: GOOD (  10.39  )
+X-CRM114-CacheID: sfid-20230309_233348_624963_3E1E496D 
+X-CRM114-Status: GOOD (  11.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,39 +104,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
+Remove now incorrect comment regarding port 5 as GMAC5. This is supposed to
+be supported since commit 38f790a80560 ("net: dsa: mt7530: Add support for
+port 5") under mt7530_setup_port5().
 
-On 07/03/2023 10:30, Claudiu Beznea wrote:
-> diff --git a/sound/soc/qcom/lpass-sc7180.c b/sound/soc/qcom/lpass-sc7180.c
-> index 41db6617e2ed..dc892fac4baa 100644
-> --- a/sound/soc/qcom/lpass-sc7180.c
-> +++ b/sound/soc/qcom/lpass-sc7180.c
-> @@ -12,7 +12,6 @@
->   #include <linux/module.h>
->   #include <linux/of.h>
->   #include <linux/platform_device.h>
-> -#include <linux/pm_runtime.h>
->   #include <dt-bindings/sound/sc7180-lpass.h>
->   #include <sound/pcm.h>
->   #include <sound/soc.h>
-> diff --git a/sound/soc/qcom/lpass-sc7280.c b/sound/soc/qcom/lpass-sc7280.c
-> index d43f480cbae3..ee4a4b553e74 100644
-> --- a/sound/soc/qcom/lpass-sc7280.c
-> +++ b/sound/soc/qcom/lpass-sc7280.c
-> @@ -8,7 +8,6 @@
->   #include <linux/module.h>
->   #include <sound/pcm.h>
->   #include <sound/soc.h>
-> -#include <linux/pm_runtime.h>
->   
->   #include <dt-bindings/sound/sc7180-lpass.h>
+Fixes: 38f790a80560 ("net: dsa: mt7530: Add support for port 5")
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+---
 
-Has these been compile tested? the reason I ask is because both these 
-drivers need SET_SYSTEM_SLEEP_PM_OPS macro from pm.h which was getting 
-included from pm_runtime.h, now that is removed, am guessing it will 
-cause a compile errors.
+v3: Resend so the bot can test it now.
 
-can you atleast replace this with pm.h instead of removing it totally?
+---
+ drivers/net/dsa/mt7530.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
---srini
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index a508402c4ecb..b1a79460df0e 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2201,7 +2201,7 @@ mt7530_setup(struct dsa_switch *ds)
+ 
+ 	mt7530_pll_setup(priv);
+ 
+-	/* Enable Port 6 only; P5 as GMAC5 which currently is not supported */
++	/* Enable port 6 */
+ 	val = mt7530_read(priv, MT7530_MHWTRAP);
+ 	val &= ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
+ 	val |= MHWTRAP_MANUAL;
+-- 
+2.37.2
+
 
