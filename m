@@ -4,77 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EAA6C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 15:47:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AFE6C6FA99
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 16:01:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=OloxL41416j0dtlZQrOwSKVoKWWxTAqOsy1vcR6cR6w=; b=SKLrbFSl8mkgKWaXmdviuN4NmW
-	HM/KH4S/r4DBErKpcOn+DUaJrwzqYEpJSfP+zSlgMtpxgynOoZveIHeqW0CUDF1iSBcQDGJ0BUD31
-	kUJEK97AdEq8y/M/X3A6ep3usrwa++v+TJgGrTI52PPkGKj0Au6yuay5bNAnGjpyj5el1URozomop
-	fdiDKf/MTqqv00xNnd5sRDOLrjPNDqswmd272KzO3lybHFsHIumPe74DchcvqVGwjLYZ8ZLWDrliI
-	4QkzT3DoxgZO6G91zsR1RM30EauR2u/UlQ0JzOrkXvHdRn96HorP/IbkgTuK3MpNucEAtYqkzxwxV
-	vnldRtvw==;
+	bh=EIz7uldrpE/4a3Yn78TCMTOPk2yNsXBeiewFP++iTtI=; b=aCzJAC0ccgbjG49Vbh9DOFwRFc
+	OCp59Rt6F2REVdqtOimydHRxoTKrthy3yRlcjwx2RAsFfoMAbiGVaVm/jvqFcAo9zMGeeeDqUUwr0
+	q94BJbUpYW6C/y+WDKxNf7F7uwNNUIDFlp8B7YZIsQvWvZjIAUDMK58bHE98VpQgLRnuyXUrC3hDd
+	wLbb2O+aYGMCUVtHXbLV5e4FndZkI5yTDrRZUr83g3LOgNDUJc4tFAnCUTKwQTDjZVSfkwv2GNBN5
+	tbmAi5y0Lzj79kvUHntmArNv9nZSQCUOn7VTF0WjQVUqWw7YhMB7q4Xk60qm0tZuvQVbSFFNLoyUO
+	9GXl5rmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paexT-00F4RW-3k; Fri, 10 Mar 2023 15:47:03 +0000
-Received: from desiato.infradead.org ([90.155.92.199])
+	id 1pafBr-00FAH6-0w; Fri, 10 Mar 2023 16:01:55 +0000
+Received: from mail-oi1-f173.google.com ([209.85.167.173])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paewm-00F43C-8m; Fri, 10 Mar 2023 15:46:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=OloxL41416j0dtlZQrOwSKVoKWWxTAqOsy1vcR6cR6w=; b=PQcEwwxWD5giAesV9944Oyz6i2
-	L5GPw7MoyYbNHeKnhLuX7h7vU1KLiAinzB60nNPN3Yfoa52Wxwa3CSPpUis+UWQ4aTwHvwzmO0QMb
-	cXoXOaF3+JnNvwTyfwc4DQEkamkTGOnDazYxgSe3YZJtdw7eFY8yN4HffwZT2q7Hg84z7o8qsavIi
-	cKz16YpnYzbX+4oVbeK2hEN5H9Wlv9jiPQutkRHQgoYgjBo/NjDIRFx5LTXntI63EVyjXLdxorPWh
-	ml59SLLvm5q+/zUE+3XJEt1W/IGPU2Zi4UdjcDu2ELl4DGPhYlMULltuyxD/FyibbDHAqh6TPu+cw
-	rl83V57w==;
-Received: from mail-oa1-f49.google.com ([209.85.160.49])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pae1c-000UQa-0D;
-	Fri, 10 Mar 2023 14:47:18 +0000
-Received: by mail-oa1-f49.google.com with SMTP id 586e51a60fabf-176d93cd0daso6077094fac.4;
-        Fri, 10 Mar 2023 06:47:12 -0800 (PST)
+	id 1pae1v-00Emfm-Jc; Fri, 10 Mar 2023 14:47:37 +0000
+Received: by mail-oi1-f173.google.com with SMTP id t22so4365685oiw.12;
+        Fri, 10 Mar 2023 06:47:35 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678459631;
+        d=1e100.net; s=20210112; t=1678459654;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=OloxL41416j0dtlZQrOwSKVoKWWxTAqOsy1vcR6cR6w=;
-        b=6WEMxNmm7QAU22ZKYprGUtr8cP3y5ZGVQ5HTIwS739kHFt18rd/GMAhdGwbkLFC/LC
-         r9t/nsRKLCQU1FrL66AfqV8a7PtYi0tA6Sqj19fWtB9TARCW5gAzGYC/HyDlHnS3ELvO
-         ajb8PgRaCLNguSRle7O7qDIgsaFGTlhCNaOqp4pvq7D89KERul/GeCf22fMiPgrM7BAl
-         p3TxX+3Q3YLLIgFElWKJKtCcr38O/4Bu+re8dw6G9HNyKmGWtU4seu1CsYYUUgyj4HT5
-         00n2SlGTR1bRf1gFbpOaE12v6kRg2fnD9R0yEmYig5csCe0P/xpl7kmtGMe3EVxHD+Or
-         r8Lg==
-X-Gm-Message-State: AO0yUKVdmAkxfsbjOb95pD6NeXo38aHKu0MAykCIxsB2YUlGtqTMi+Fd
-	SbfFTTHn44J+Xy+b8E0Dqg==
-X-Google-Smtp-Source: AK7set8cE4u5Ar/WSEdd16NF/1QGLSArsjjzwCLB+imXcXgcq/h7vUoNgg1qv4X2jNW3kiukcdtxwQ==
-X-Received: by 2002:a05:6870:560a:b0:16e:7440:db73 with SMTP id m10-20020a056870560a00b0016e7440db73mr17913111oao.26.1678459630847;
-        Fri, 10 Mar 2023 06:47:10 -0800 (PST)
+        bh=EIz7uldrpE/4a3Yn78TCMTOPk2yNsXBeiewFP++iTtI=;
+        b=O/O3pcl2diCyb2Zvd3jpSYqmR+3pmoW1WC7VyxU4MY2G5dpecfsIFrbOixWgZeVsw+
+         pFzmFcU69fVw6V1ZaLFH7NZNnHSC7mkxKTrLW6c/2Pkv2buZ+9cPAafp6rHlWpt4VV2g
+         l3TO01ZRO5PDHvcqSCEVZEZ3I5oxfyN/SnCGJO+98W1sCiWRvuYkSjLP00CVITbfOzLp
+         AnUMTQeAth44xSA2bk+j+iU93PDVbHQoF8B0IC4I6VMehm1gZPahs8ybeTN5OpLtGv9N
+         MP87qxmvP0CI0ZMQGL/ceq3R/IjNRTAsGWFGqn4rYOckCKbowF/e/mO3xcAL4xqNqbJC
+         mP/A==
+X-Gm-Message-State: AO0yUKVoTtuXAWGOjBjUhy7x1Sap/8hYSXd34gQ4JmVsBsYWTeyImFEt
+	Etrs3krv8/2qUx2/oUkdJQ==
+X-Google-Smtp-Source: AK7set/GOJZQNFQdvex7AhT10x8uYUWw1aDar530wB//wxV61PlLIWKRODfn7mKYRTKkWueDppQvnA==
+X-Received: by 2002:a05:6808:1d2:b0:384:167d:736b with SMTP id x18-20020a05680801d200b00384167d736bmr10994562oic.15.1678459654281;
+        Fri, 10 Mar 2023 06:47:34 -0800 (PST)
 Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id s26-20020a05683004da00b00694303567b0sm129607otd.29.2023.03.10.06.47.09
+        by smtp.gmail.com with ESMTPSA id q12-20020a4ad54c000000b005252e5b6604sm834079oos.36.2023.03.10.06.47.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Mar 2023 06:47:10 -0800 (PST)
-Received: (nullmailer pid 1541461 invoked by uid 1000);
-	Fri, 10 Mar 2023 14:47:00 -0000
+        Fri, 10 Mar 2023 06:47:33 -0800 (PST)
+Received: (nullmailer pid 1543252 invoked by uid 1000);
+	Fri, 10 Mar 2023 14:47:11 -0000
 From: Rob Herring <robh@kernel.org>
-To: Damien Le Moal <damien.lemoal@opensource.wdc.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hans de Goede <hdegoede@redhat.com>, Jens Axboe <axboe@kernel.dk>
-Cc: devicetree@vger.kernel.org, linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH] ata: Use of_property_present() for testing DT property presence
-Date: Fri, 10 Mar 2023 08:47:00 -0600
-Message-Id: <20230310144700.1541414-1-robh@kernel.org>
+To: Bin Liu <bin.liu@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Hyun Kwon <hyun.kwon@xilinx.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Michal Simek <michal.simek@xilinx.com>
+Cc: devicetree@vger.kernel.org, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH] media: Use of_property_present() for testing DT property presence
+Date: Fri, 10 Mar 2023 08:47:11 -0600
+Message-Id: <20230310144711.1543225-1-robh@kernel.org>
 X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230310_144716_345804_FC2A4A4E 
-X-CRM114-Status: GOOD (  15.26  )
+X-CRM114-CacheID: sfid-20230310_064735_701668_EB1C488D 
+X-CRM114-Status: GOOD (  14.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,59 +84,64 @@ for presence of a property and nothing more.
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/ata/ahci_mtk.c         | 2 +-
- drivers/ata/libahci_platform.c | 2 +-
- drivers/ata/sata_dwc_460ex.c   | 4 ++--
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c        | 2 +-
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c | 2 +-
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c | 2 +-
+ drivers/media/platform/xilinx/xilinx-vtc.c                  | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/ata/ahci_mtk.c b/drivers/ata/ahci_mtk.c
-index c056378e3e72..5714efe3f8e7 100644
---- a/drivers/ata/ahci_mtk.c
-+++ b/drivers/ata/ahci_mtk.c
-@@ -106,7 +106,7 @@ static int mtk_ahci_parse_property(struct ahci_host_priv *hpriv,
- 	struct device_node *np = dev->of_node;
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 969516a940ba..1a2b3214b6f8 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1757,7 +1757,7 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
+ 	jpeg->vdev->device_caps = V4L2_CAP_STREAMING |
+ 				  V4L2_CAP_VIDEO_M2M_MPLANE;
  
- 	/* enable SATA function if needed */
--	if (of_find_property(np, "mediatek,phy-mode", NULL)) {
-+	if (of_property_present(np, "mediatek,phy-mode")) {
- 		plat->mode = syscon_regmap_lookup_by_phandle(
- 					np, "mediatek,phy-mode");
- 		if (IS_ERR(plat->mode)) {
-diff --git a/drivers/ata/libahci_platform.c b/drivers/ata/libahci_platform.c
-index b9e336bacf17..f00da19670b0 100644
---- a/drivers/ata/libahci_platform.c
-+++ b/drivers/ata/libahci_platform.c
-@@ -363,7 +363,7 @@ static int ahci_platform_get_phy(struct ahci_host_priv *hpriv, u32 port,
- 	switch (rc) {
- 	case -ENOSYS:
- 		/* No PHY support. Check if PHY is required. */
--		if (of_find_property(node, "phys", NULL)) {
-+		if (of_property_present(node, "phys")) {
- 			dev_err(dev,
- 				"couldn't get PHY in node %pOFn: ENOSYS\n",
- 				node);
-diff --git a/drivers/ata/sata_dwc_460ex.c b/drivers/ata/sata_dwc_460ex.c
-index 21d77633a98f..3a30e6eff8a8 100644
---- a/drivers/ata/sata_dwc_460ex.c
-+++ b/drivers/ata/sata_dwc_460ex.c
-@@ -810,7 +810,7 @@ static int sata_dwc_dma_get_channel(struct sata_dwc_device_port *hsdevp)
- 	struct device *dev = hsdev->dev;
+-	if (of_get_property(pdev->dev.of_node, "dma-ranges", NULL))
++	if (of_property_present(pdev->dev.of_node, "dma-ranges"))
+ 		dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
  
- #ifdef CONFIG_SATA_DWC_OLD_DMA
--	if (!of_find_property(dev->of_node, "dmas", NULL))
-+	if (!of_property_present(dev->of_node, "dmas"))
- 		return sata_dwc_dma_get_channel_old(hsdevp);
- #endif
- 
-@@ -1180,7 +1180,7 @@ static int sata_dwc_probe(struct platform_device *ofdev)
+ 	ret = video_register_device(jpeg->vdev, VFL_TYPE_VIDEO, -1);
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+index 174a6eec2f54..d2db8ccaa4c0 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+@@ -321,7 +321,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 		}
  	}
  
- #ifdef CONFIG_SATA_DWC_OLD_DMA
--	if (!of_find_property(np, "dmas", NULL)) {
-+	if (!of_property_present(np, "dmas")) {
- 		err = sata_dwc_dma_init_old(ofdev, hsdev);
- 		if (err)
- 			return err;
+-	if (of_get_property(pdev->dev.of_node, "dma-ranges", NULL)) {
++	if (of_property_present(pdev->dev.of_node, "dma-ranges")) {
+ 		ret = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
+ 		if (ret) {
+ 			mtk_v4l2_err("Failed to set mask");
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
+index 9095186d5495..199042034a3c 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
+@@ -344,7 +344,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 		goto err_event_workq;
+ 	}
+ 
+-	if (of_get_property(pdev->dev.of_node, "dma-ranges", NULL))
++	if (of_property_present(pdev->dev.of_node, "dma-ranges"))
+ 		dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
+ 
+ 	ret = video_register_device(vfd_enc, VFL_TYPE_VIDEO, -1);
+diff --git a/drivers/media/platform/xilinx/xilinx-vtc.c b/drivers/media/platform/xilinx/xilinx-vtc.c
+index 0ae0208d7529..cb4b421a348d 100644
+--- a/drivers/media/platform/xilinx/xilinx-vtc.c
++++ b/drivers/media/platform/xilinx/xilinx-vtc.c
+@@ -254,7 +254,7 @@ struct xvtc_device *xvtc_of_get(struct device_node *np)
+ 	struct xvtc_device *found = NULL;
+ 	struct xvtc_device *xvtc;
+ 
+-	if (!of_find_property(np, "xlnx,vtc", NULL))
++	if (!of_property_present(np, "xlnx,vtc"))
+ 		return NULL;
+ 
+ 	xvtc_node = of_parse_phandle(np, "xlnx,vtc", 0);
 -- 
 2.39.2
 
