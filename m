@@ -4,77 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7286DC64EC4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 03:22:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0564CC6FA99
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 05:18:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rHr1GGsOjXLcWLjsmH/gUiANtjkEwqYh6mSdD4znyFE=; b=O0uTxhakhQlh1qdUl2OM3tWPtK
-	CUGdp84pquuTnsKmpcitK95KO+NgRUgoTFuHU5j72z7l410QVuvdgek5vpjbqiWrLV22GfDS7a0lt
-	iQA2b2CPLjxnooIRmcVLfPRrdbrfcotsdtoF5EFd/jwxPccha299r5WT812zXDxKYExRImjkSCmzt
-	Xf8zEITRW8suTBXiAYYH+vuUprXODyx/mEBmcOkdMNBS+fUNfhzwd9uvhqD5bKQ8vgQhU37bJObQj
-	lXp29TWKaPvD84gbjhcrkITAAaT36zX9hE+eUJf16mjFmxUBasgbXJH1hv9xaCcKTd2W1SdRuf1HU
-	kXSsTTHw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=cmJriFkOpKZoYnGPOl4SvxxCHjZCGjG91SGvDFXeoKU=; b=TOcvng1gaj/ZmTdRX9m8y7Aybk
+	xQh8fGjA73wg/6fhLkQfFqQn21LDn+C8RrB2hQjmzZaemnSMrNTsmDgLgiSj7sVKEyWtYmx3lPz5d
+	TvpeQAJcn89zQiJW58vZqQDmxiZAxFpeDjn8xeF0chSgJMFw13F+rfUrE0pDz47mX3qf8zf7e/AGF
+	h99zuYgFHFxy9m0M1t+1WbUtuvsanND4HmUWfhTMX3t7BqeF6P34iCUuxO6saZ/DU2Zo+eoRGzG1w
+	KxN3WGQwHjDVpANUxv9YJw8UxVve1tqdWCiuzut0kHcCYjj9qKTK7iw8VSgOEyuuE/jjUIzJIpVsl
+	9X2PQb/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paTKz-00CrT3-Ng; Fri, 10 Mar 2023 03:22:33 +0000
-Received: from mail-ua1-x92c.google.com ([2607:f8b0:4864:20::92c])
+	id 1paV8t-00D5fb-Aq; Fri, 10 Mar 2023 05:18:11 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paTKw-00CrQ9-HU
-	for linux-mediatek@lists.infradead.org; Fri, 10 Mar 2023 03:22:31 +0000
-Received: by mail-ua1-x92c.google.com with SMTP id bx14so2679146uab.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Mar 2023 19:22:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1678418541;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=rHr1GGsOjXLcWLjsmH/gUiANtjkEwqYh6mSdD4znyFE=;
-        b=B90+ToIXUteCBlMGv/h+HRTmHi/Hj5vUhO45dJWlo/KFuWBFEtCuLw1vHQRdVj3a9l
-         XPRRun4yKYYLVGrsnB03glAgEX+m4GKLQfT3MSfs01SXEVIWrC0H3Gj2lcuEtRZVmraP
-         Q1uW2Rqv+LQH3B2szv8EsVhwNW4VRyLMAquH4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678418541;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=rHr1GGsOjXLcWLjsmH/gUiANtjkEwqYh6mSdD4znyFE=;
-        b=Fq2w56hUvrvNoujwIZSLBX2CarjKe/6ooy13bIzJtWZRuJw4MnL4StrLIaORXdVQ/3
-         1wVuFvesjkSgpSqUBxIwGHeWrAol/OCefV0jOeDGxgj9oBKyfwXZWfiRKscRVtKCG4JX
-         xoxwZydG6bsNgvlecdfDFc/56XrSx5SggCz7zNBmXdet3pY2zEVf1IKJChXLaq9sVlZq
-         dyZW4C26Fg+fS2l4hzmDQNXExAwrnV+q95Dgns9MAxwyB3ydqkVYRLscNhSjqAbDgG9R
-         Mm96ZQRWZ3SuSvNz0a7FdlLsJpodcdbR72B8ZFGCxHWNYCg2kjuX4d7L5gsqimYMJSJA
-         Ywaw==
-X-Gm-Message-State: AO0yUKWm0oK2nMScnWrLI9VNB9XCeXNiSpoWviAbVOBVmwPMiQ/q6Q+q
-	hs0NOpCoh3cCwKK0QA4flyeN3s53zSkdnqcSofJbFA==
-X-Google-Smtp-Source: AK7set8faFGJ+bOZYGnxseavaFiHmTnrgryhuZbd0Hj/FWE/b7datWYPM+PvMM7obIRbTIYTrtYMG7ouTbxFDjo/zDE=
-X-Received: by 2002:a1f:c507:0:b0:401:2297:b2e0 with SMTP id
- v7-20020a1fc507000000b004012297b2e0mr14336398vkf.0.1678418541550; Thu, 09 Mar
- 2023 19:22:21 -0800 (PST)
+	id 1paV8p-00D5ed-Eg; Fri, 10 Mar 2023 05:18:08 +0000
+X-UUID: ee377c02bf0211ed8a441d988bb316ae-20230309
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=cmJriFkOpKZoYnGPOl4SvxxCHjZCGjG91SGvDFXeoKU=;
+	b=a5ocF37LHhdkvlYvq/KSK7L2nC4cJrw8wqZLGKNFnmAnmv5ihvGgpVIQjnL+0jDdiVXaGe8epb4Qo3/qqc+6PMwspmyzws/dGjP2zW5nudZtzJ84pXMSbrsVGRmN8X0zk74N/y+jxLtFdfcmiD4nHbqN1KkjEpt1IbMw1CAC/ZY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.20,REQID:9db0609c-f5e0-4174-af9a-ac1e1c815a7c,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:25b5999,CLOUDID:7b4cef27-564d-42d9-9875-7c868ee415ec,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-UUID: ee377c02bf0211ed8a441d988bb316ae-20230309
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <jia-wei.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 870466266; Thu, 09 Mar 2023 22:18:02 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Fri, 10 Mar 2023 13:17:52 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Fri, 10 Mar 2023 13:17:52 +0800
+From: jia-wei.chang <jia-wei.chang@mediatek.com>
+To: "Rafael J . Wysocki" <rafael@kernel.org>, Viresh Kumar
+	<viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Kevin
+ Hilman <khilman@baylibre.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
+	Jia-Wei Chang <jia-wei.chang@mediatek.com>
+CC: <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <hsinyi@google.com>,
+	Nick <vincent@systemli.org>, Dan Carpenter <error27@gmail.com>
+Subject: [PATCH v1 0/3] Enhance mediatek-cpufreq robustness
+Date: Fri, 10 Mar 2023 13:17:47 +0800
+Message-ID: <20230310051750.4745-1-jia-wei.chang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20230307154524.118541-1-bchihi@baylibre.com>
-In-Reply-To: <20230307154524.118541-1-bchihi@baylibre.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 10 Mar 2023 11:22:10 +0800
-Message-ID: <CAGXv+5F6yFk+VMUe50YfV11Bx3qnQ=FHymeAM=dgfrqwLGrG7Q@mail.gmail.com>
-Subject: Re: [PATCH 0/4] Add LVTS's AP thermal domain support for mt8195
-To: bchihi@baylibre.com
-Cc: daniel.lezcano@linaro.org, angelogioacchino.delregno@collabora.com, 
-	rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com, 
-	matthias.bgg@gmail.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
-	rdunlap@infradead.org, ye.xingchen@zte.com.cn, p.zabel@pengutronix.de, 
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com, 
-	rex-bc.chen@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_192230_601959_308CFA41 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20230309_211807_654761_161E827E 
+X-CRM114-Status: UNSURE (   5.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,45 +83,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 7, 2023 at 11:45=E2=80=AFPM <bchihi@baylibre.com> wrote:
->
-> From: Balsam CHIHI <bchihi@baylibre.com>
->
-> Add AP thermal domain support to LVTS Driver for MediaTek MT8195 SoC.
->
-> This series is a continuation of the original series "Add LVTS Thermal Ar=
-chitecture" v14 :
->     https://patchwork.kernel.org/project/linux-pm/cover/20230209105628.50=
-294-1-bchihi@baylibre.com/
->
-> Based on top of thermal/linux-next :
->     base-commit: 6828e402d06f7c574430b61c05db784cd847b19f
->
-> Depends on these patches as they are not yet applyied to thermal/linux-ne=
-xt branch :
->     [v14,3/6] arm64: dts: mt8195: Add efuse node to mt8195 (already inclu=
-ded in linux master branch)
->     https://patchwork.kernel.org/project/linux-pm/patch/20230209105628.50=
-294-4-bchihi@baylibre.com/
->     [v14,5/6] arm64: dts: mediatek: mt8195: Add thermal zones and thermal=
- nodes
->     https://patchwork.kernel.org/project/linux-pm/patch/20230209105628.50=
-294-6-bchihi@baylibre.com/
->     [v14,6/6] arm64: dts: mediatek: mt8195: Add temperature mitigation th=
-reshold
->     https://patchwork.kernel.org/project/linux-pm/patch/20230209105628.50=
-294-7-bchihi@baylibre.com/
->
-> Balsam CHIHI (4):
->   dt-bindings: thermal: mediatek: Add AP domain to LVTS thermal
->     controllers for mt8195
->   thermal/drivers/mediatek/lvts_thermal: Add AP domain for mt8195
->   arm64: dts: mediatek: mt8195: Add AP domain thermal zones
->   arm64: dts: mediatek: mt8195: Add AP domain temperature thresholds
+From: "Jia-Wei Chang" <jia-wei.chang@mediatek.com>
 
-Whole series is
+MediaTek cpufreq driver has some reported problems required to be fixed.
 
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+Tested on:
+MT8186 Platform (kernel v5.15)
 
-on MT8195 Tomato Chromebook.
+jia-wei.chang (3):
+  cpufreq: mediatek: fix passing zero to 'PTR_ERR'
+  cpufreq: mediatek: fix KP caused by handler usage after
+    regulator_put/clk_put
+  cpufreq: mediatek: raise proc/sram max voltage for MT7622 and MT8516
+
+ drivers/cpufreq/mediatek-cpufreq.c | 64 ++++++++++++++++++++++--------
+ 1 file changed, 47 insertions(+), 17 deletions(-)
+
+-- 
+2.18.0
+
 
