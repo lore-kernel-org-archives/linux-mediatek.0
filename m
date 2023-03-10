@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E175DC74A4B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 23:31:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 490DCC6FA99
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 23:32:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=76/EJUTO15RzyW4Bq3aXjUUXSFzqS7eUnx+uuY+qlw4=; b=S7cL6L+Uox5bI7venWW64IeX6j
-	83QX8lpscsOos2cyU41Bvt/f2m46SGeiwTpDOybp99oUJQChWUg205axmrEx0UqfsrQeeYl0guZ0r
-	D0/bJ8yyOTnC4uVYe4jPHm5h4Vt826KCkNh1pJyfZWd+KNqjAGV0YnvENAMt8nhSyf6+zDns0kxqi
-	/NR+nM/tPh/qZQChvJEQqc8LiHyT5SYRz5wjBmRJGOU8lNfPzGwlxPrc3xEkZppf6fbzJemfaeL5J
-	tiYbwriGBp7c0DUFUk//WqgJCqaARDz74Bw8NBIG+2TPE8UQnMk45j9tO2rdFdKS+nzhmlnIQaAx8
-	z2Ce4ybA==;
+	bh=f4hsdqWnTrZCw8a5RzNxKgld2eq5ESSNSd43t/rkHbA=; b=h5V2blpm9S4xCqIWfu2L6BBvVh
+	uyhkvJuezRYJg2Oxu0MKWmYqHPbhnb63A2W8IOyK2DSZLhbyAi/3pQxYG/DaJSpTQ3Rg9LggUVjyG
+	r3pw5Pm3QSJU2y/mRCerOVXeUlkeFTzMBsE+Wk+q8kMCJ2/ePybreZrVQXAhbyempayBolP8wia5A
+	ItvKZ8hTFjsH2rpfV+iTZHlckz0Luxe4T206EnafHeF63ffkH1AgaVh+B7xSsu3XzunPxJ7Y1vja/
+	BRq5fk0CiX/sCZJQkbFczlb5YGpFmIWHybKovJ9N+uPePXlcCXOwGOOTyJRG6d9VHrUce7BAqGGWx
+	OekGnjFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pamDE-00GclC-Mr; Fri, 10 Mar 2023 23:31:48 +0000
-Received: from mail-ed1-f51.google.com ([209.85.208.51])
+	id 1pamDX-00GczU-En; Fri, 10 Mar 2023 23:32:07 +0000
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1palEY-00GNiK-80
-	for linux-mediatek@lists.infradead.org; Fri, 10 Mar 2023 22:29:07 +0000
-Received: by mail-ed1-f51.google.com with SMTP id g3so26537452eda.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 10 Mar 2023 14:29:04 -0800 (PST)
+	id 1palEY-00GNgB-QF
+	for linux-mediatek@lists.infradead.org; Fri, 10 Mar 2023 22:29:09 +0000
+Received: by mail-ed1-x535.google.com with SMTP id j11so26471510edq.4
+        for <linux-mediatek@lists.infradead.org>; Fri, 10 Mar 2023 14:29:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678487343;
+        d=linaro.org; s=google; t=1678487346;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=76/EJUTO15RzyW4Bq3aXjUUXSFzqS7eUnx+uuY+qlw4=;
-        b=QY+FHC9r4+RzAXwp4hRMO7dX5kmQsDXfU75lOdEZEw/5sR6fWA7KyEW89bZ4QaKtiA
-         5nMcH4WM7F79MtlVuGFWbq4njYJHE3nin7z1x5/Y62sE1/FUd9ROnyj6/etq6mfce0GT
-         UxU44MXgwq+ozgNLDyH6wRr5FmUGNNLw+fwUCP8Q1mITsJ2iI7TiO14GMnI+kmZQvO2b
-         /b7APHAP+iaFIBAZnYZwOMDVAnlxbRZkxoOpLaGVakb3bbfVJBUjdnbU/ryWER1uX1My
-         K7WeYQ3YEjmvpVGLlt61EcqGbwxZ69eWbT1wLS4zIXYURTaaJtMwwLqRjWPfF3WNdTDp
-         ZZLQ==
+        bh=f4hsdqWnTrZCw8a5RzNxKgld2eq5ESSNSd43t/rkHbA=;
+        b=sQ9AnmWrtkGTib7XAuvnkd/mECJ9fJ3H135f812M5x+86PSP40RwLIlTRgQ1T4m70O
+         /5u/uQm3FN3/qjs3kbzAn3amwi8BH54NeZ9ak/3qqOHRxONcHK+LS0jQ2lZFKn5gYTUc
+         RpRtfSA2m+jUdaaoLfdezgQ0HnabwAw5Zd5UJ5dqV3uQXLsbWK3iN7ntET4GLmfonbHG
+         HqTHQEpi57dXBQigF2FBMVwrXUfCvgWj/8SOoCpunzh11ZkB+PNH65nvKVZkueb62SGb
+         mXX9xdEOWyKpvgeLMJaW+kaCM65dZySOzCAtYIZjl7k+9cAThGz1l/FTIQEQq4iT2/ER
+         RJ5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678487343;
+        d=1e100.net; s=20210112; t=1678487346;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=76/EJUTO15RzyW4Bq3aXjUUXSFzqS7eUnx+uuY+qlw4=;
-        b=kXAecMecnnovoBLT0Eq4wglm8lBvxlpfkJI0JAnwj1NeLeG8pu/lOE3fKGyaP3A3Bi
-         /BrYQR1vfUjDoL7dvYkH0VWgAkArCMczXPTn8QpNschkFz6YvPLxfqvqzomqc8f6191z
-         lIjRZPgy5RzLQlLpMNAHTvIc5Z+lxCnAu67xfSgs4nhyvmDblgq6IwITfT3NAHFilP2i
-         lXk2xsq6Tzq1NiONQEB1/8labrCyCVx4lKsowcZ9PsLPX4KhVcCuMRFtDv8+WuSSDMu3
-         hbTV5A+3Ivdlb/pa6nuKxKHYjj9nUqBABQGhAY9mM5jrIbZye/km29TiBeFOb/29F1Hf
-         lWOA==
-X-Gm-Message-State: AO0yUKVOY5gyjfoA8o/ZY3XTxJs0daUJ+3ya9cfNSHv89m86c4rqZrDl
-	P8fWLsxZNE9OjrZvq84V6Aa0tg==
-X-Google-Smtp-Source: AK7set9xqAwgrRfSWZTYjl4H4cCqoLWPjOPJyHkzao/CGH+3TLt7ijPQdvoiK9ldcAApOqBUnsuWUA==
-X-Received: by 2002:a05:6402:3d2:b0:4ac:bde4:ff14 with SMTP id t18-20020a05640203d200b004acbde4ff14mr25348254edw.42.1678487343369;
-        Fri, 10 Mar 2023 14:29:03 -0800 (PST)
+        bh=f4hsdqWnTrZCw8a5RzNxKgld2eq5ESSNSd43t/rkHbA=;
+        b=LTwBuLsajz+dJDAAc/NqfTAODvNPkhD68QYKnVeqfGmwjlb2QGtQ1uRPEcFfheQoLL
+         oRQK/98c+WSC8NG4bYApKG724yAIRVrDQ5xpQGDNS6+vlJMpd0NBRzrzkQqiBeotgrum
+         M2tY07b701JAc0NkJtGDE7mEs7Y5iaBc0O7B0pw5RVrgojuvwogW4lqdiOUE0djjclKe
+         mSLY23OHPwx46lmRyurHDMx3yW85rW/cugdv6CVBaR6VEfrH6DHRmR9NSbW0JxL0Fagu
+         LB7pELznNqYAZ2e0pElvv3UeXpm2dzuMzueuj+cIaA2Lf6WXhblSKbyTuX7d+htXeHn3
+         u1HQ==
+X-Gm-Message-State: AO0yUKXKZ3g3TcousBpAn0MWFzSeFjLwnZ71oUWe8LuYY9Q3zd1Qysww
+	wTcT0F153wNG3JF28UoDILEBpg==
+X-Google-Smtp-Source: AK7set8req7DR8ncW0h8QB4fOrmA/Kz78djHJzJDXsGh0OSt5DpOgdDc5EHeCp2kQeLQUU4yam/Ccw==
+X-Received: by 2002:a05:6402:2028:b0:4af:70a5:55ee with SMTP id ay8-20020a056402202800b004af70a555eemr23535448edb.3.1678487346365;
+        Fri, 10 Mar 2023 14:29:06 -0800 (PST)
 Received: from krzk-bin.. ([2a02:810d:15c0:828:34:52e3:a77e:cac5])
-        by smtp.gmail.com with ESMTPSA id x101-20020a50baee000000b004aeeb476c5bsm525467ede.24.2023.03.10.14.29.02
+        by smtp.gmail.com with ESMTPSA id x101-20020a50baee000000b004aeeb476c5bsm525467ede.24.2023.03.10.14.29.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Mar 2023 14:29:02 -0800 (PST)
+        Fri, 10 Mar 2023 14:29:06 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Mark Brown <broonie@kernel.org>,
 	Kamal Dasu <kdasu.kdev@gmail.com>,
@@ -85,9 +85,9 @@ To: Mark Brown <broonie@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-samsung-soc@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 03/16] spi: meson-spicc: Drop of_match_ptr for ID table
-Date: Fri, 10 Mar 2023 23:28:44 +0100
-Message-Id: <20230310222857.315629-3-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 05/16] spi: orion: Drop of_match_ptr for ID table
+Date: Fri, 10 Mar 2023 23:28:46 +0100
+Message-Id: <20230310222857.315629-5-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230310222857.315629-1-krzysztof.kozlowski@linaro.org>
 References: <20230310222857.315629-1-krzysztof.kozlowski@linaro.org>
@@ -95,8 +95,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230310_142906_305693_65054D7D 
-X-CRM114-Status: GOOD (  15.56  )
+X-CRM114-CacheID: sfid-20230310_142906_872224_1FDA06C0 
+X-CRM114-Status: GOOD (  15.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,26 +115,26 @@ The driver can match only via the DT table so the table should be always
 used and the of_match_ptr does not have any sense (this also allows ACPI
 matching via PRP0001, even though it is not relevant here).
 
-  drivers/spi/spi-meson-spicc.c:949:34: error: ‘meson_spicc_of_match’ defined but not used [-Werror=unused-const-variable=]
+  drivers/spi/spi-orion.c:615:34: error: ‘orion_spi_of_match_table’ defined but not used [-Werror=unused-const-variable=]
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- drivers/spi/spi-meson-spicc.c | 2 +-
+ drivers/spi/spi-orion.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/spi/spi-meson-spicc.c b/drivers/spi/spi-meson-spicc.c
-index b9f812837cd6..2e9cbc507e26 100644
---- a/drivers/spi/spi-meson-spicc.c
-+++ b/drivers/spi/spi-meson-spicc.c
-@@ -968,7 +968,7 @@ static struct platform_driver meson_spicc_driver = {
- 	.remove_new = meson_spicc_remove,
- 	.driver  = {
- 		.name = "meson-spicc",
--		.of_match_table = of_match_ptr(meson_spicc_of_match),
-+		.of_match_table = meson_spicc_of_match,
+diff --git a/drivers/spi/spi-orion.c b/drivers/spi/spi-orion.c
+index e79d1fe0bca4..c63b75c1829a 100644
+--- a/drivers/spi/spi-orion.c
++++ b/drivers/spi/spi-orion.c
+@@ -852,7 +852,7 @@ static struct platform_driver orion_spi_driver = {
+ 	.driver = {
+ 		.name	= DRIVER_NAME,
+ 		.pm	= &orion_spi_pm_ops,
+-		.of_match_table = of_match_ptr(orion_spi_of_match_table),
++		.of_match_table = orion_spi_of_match_table,
  	},
- };
- 
+ 	.probe		= orion_spi_probe,
+ 	.remove_new	= orion_spi_remove,
 -- 
 2.34.1
 
