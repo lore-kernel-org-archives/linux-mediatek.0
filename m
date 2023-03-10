@@ -4,150 +4,154 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA003C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 17:41:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D909C64EC4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 17:46:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KaUhyoeEK1tG4Jq20ydCTjifKBTSA159AvAfZW0MjkQ=; b=j2Urs9Zoj0LR4Bt4dsqVMoTvBW
-	8npSR9dthJqp8fM/n6PloEx8bj4066N24UA2iHuPb9zmssuP0dEX9dEXoVIEwOa4b8q+QfkGBhMGE
-	/p3/qniZc2y63nULm7R9sfVg+DxqRxTghEzRS2nLxPdPImbqV67C66wOWDHqZbooADQc7kx7GZgg/
-	MG9EcBsScca+DTcWNVXHGSk/fXVlMg5fe0wv/zKf4JLJUUXbOdnloSzE287raGGDdcMDRnfkz062U
-	iUtsLunldKgk6xpRa2ZfcKre9SL00MGY5BCYzjjFcUAojYWVBfFAwg4DDcTa3adqnYiOJE6hxp6oD
-	3fGBkP3Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Cc:To:In-Reply-To:References:Message-Id:
+	Content-Type:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=AaAObrbm4EBKRfJda0O3pJUASkY2vicuQ13a5jf0XU4=; b=OqwlOGSw/6IjsH
+	T1tMCN5moTwJW7u76m/ajGV00KjLm/SVIZtWftj8tSbc6Evlm2CLzPDRueoonKzO042iicMW0Zr3n
+	QiDmPjEeM9ZdemcefN1o8T8K3xlZloEOxSZFWsgBkYxuXGTvUpVyrdGKKjNE205FbkJrAy0oUeLzI
+	vZArsVE4DWBKKsdwg6UQt3LJYKwZp1na6zij7fDCV6nLKOQZcRdUpMfkXdfO7eSuYCwOf6SO1XGRq
+	zAqSsQ8MuLS32Gz2DmbnQlkqKN092uhvLbniZb9RXUh6d9RXpeosBkOj4mXyDd96fBj98tVHe7xZN
+	PO0YRzXrJlw1I1RLlw7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pagkK-00FckY-Bx; Fri, 10 Mar 2023 17:41:36 +0000
-Received: from mail-dm6nam12on20616.outbound.protection.outlook.com ([2a01:111:f400:fe59::616] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+	id 1pagp0-00FePE-Tq; Fri, 10 Mar 2023 17:46:26 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pagj2-00FbvQ-6c; Fri, 10 Mar 2023 17:40:20 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=VvOCvcU1esDFNcdTp9fMTiP9YrJ27WtckgNuuQ/M0J4iK2Q4ijcgzDqYIYSSe165HTS2tNZ2tjYj4aM7kQ0UzA1irErWBB9Dnho707qv5nrGxysvCTC/AQW+yjED8xHWA4JUFunWqNwzFEtfN7znPjemgJAA7dyRJAvUzn550ciyaJZj3O74w+N+xP9EqFlKBcq6Mh+PqpBB8ftWDodVwZiUF+kM43dqXB7sXlV4iDvq8p9djZta/QikpwSomc98+TN61iSeuh3ifW1GmR5Obe7EpjnLlKbetSp9x1H2DNWv+qxf29ljOnl2RtnTRjTA+tQ02uxJozFCjbkujhAIcw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=KaUhyoeEK1tG4Jq20ydCTjifKBTSA159AvAfZW0MjkQ=;
- b=HTuF/IcpRCGVLCnYF04aGY9I6AvwqUop50bUv2x44FWfCPyqI9NjEIJpuKXJb0RHG8LQCGV1Qi59cW/FnWqj0bXnK6W6kAYA4+WJQMB/WYJC32MlfHc7/BbR5hPdYSMM/NwqkRFTeNtZUDNrJhCwjM0phRE3FWhiDaFwbu2gZCYA0JCjoB/Z7Bx0b7JO8xNeRJ7+aP6bVNN00OOS+ZZOY/Ixb6sB3ZsRp4FNxE/G1KJn9uRbJHhDsP775z49wJTk6rGHg9JNJq7CHCOAkPhNrKiaKrhULHQzFh36IkBH6XK6PQLWS5HVeQWseg/eXEJSkO9vtusEAsi9TQXJRoX5lg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=kernel.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=KaUhyoeEK1tG4Jq20ydCTjifKBTSA159AvAfZW0MjkQ=;
- b=OdrPcG0RPVLwrF5qKa+S3KNhS0bIJuUtmwjwgs6V1QBAN6Z+xN8kTmhfGO1HGcKpOUTkXCT6rdQGvj/lnh9GUEJcPwzVtwps0DAkHLR7KoLy/K7wVgughFMbxCS9QdM/ZvcljsOGRgmwUNTXysNVbkfzFAe8pgof1SCzoiXE6sQ=
-Received: from MW4PR04CA0200.namprd04.prod.outlook.com (2603:10b6:303:86::25)
- by BN9PR12MB5338.namprd12.prod.outlook.com (2603:10b6:408:103::23) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.20; Fri, 10 Mar
- 2023 17:40:10 +0000
-Received: from CO1NAM11FT074.eop-nam11.prod.protection.outlook.com
- (2603:10b6:303:86:cafe::52) by MW4PR04CA0200.outlook.office365.com
- (2603:10b6:303:86::25) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6156.29 via Frontend
- Transport; Fri, 10 Mar 2023 17:40:10 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
-Received: from SATLEXMB04.amd.com (165.204.84.17) by
- CO1NAM11FT074.mail.protection.outlook.com (10.13.174.254) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.6178.19 via Frontend Transport; Fri, 10 Mar 2023 17:40:10 +0000
-Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.34; Fri, 10 Mar
- 2023 11:40:03 -0600
-Received: from xhdsneeli40.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server id 15.1.2375.34 via Frontend
- Transport; Fri, 10 Mar 2023 11:39:36 -0600
-From: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
-To: <broonie@kernel.org>, <miquel.raynal@bootlin.com>, <richard@nod.at>,
-	<vigneshr@ti.com>, <jic23@kernel.org>, <tudor.ambarus@microchip.com>,
-	<pratyush@kernel.org>, <Sanju.Mehta@amd.com>, <chin-ting_kuo@aspeedtech.com>,
-	<clg@kaod.org>, <kdasu.kdev@gmail.com>, <f.fainelli@gmail.com>,
-	<rjui@broadcom.com>, <sbranden@broadcom.com>, <eajames@linux.ibm.com>,
-	<olteanv@gmail.com>, <han.xu@nxp.com>, <john.garry@huawei.com>,
-	<shawnguo@kernel.org>, <s.hauer@pengutronix.de>, <narmstrong@baylibre.com>,
-	<khilman@baylibre.com>, <matthias.bgg@gmail.com>, <haibo.chen@nxp.com>,
-	<linus.walleij@linaro.org>, <daniel@zonque.org>, <haojian.zhuang@gmail.com>,
-	<robert.jarzmik@free.fr>, <agross@kernel.org>, <bjorn.andersson@linaro.org>,
-	<heiko@sntech.de>, <krzysztof.kozlowski@linaro.org>, <andi@etezian.org>,
-	<mcoquelin.stm32@gmail.com>, <alexandre.torgue@foss.st.com>, <wens@csie.org>,
-	<jernej.skrabec@gmail.com>, <samuel@sholland.org>,
-	<masahisa.kojima@linaro.org>, <jaswinder.singh@linaro.org>,
-	<rostedt@goodmis.org>, <mingo@redhat.com>, <l.stelmach@samsung.com>,
-	<davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>,
-	<pabeni@redhat.com>, <alex.aring@gmail.com>, <stefan@datenfreihafen.org>,
-	<kvalo@kernel.org>, <james.schulman@cirrus.com>, <david.rhodes@cirrus.com>,
-	<tanureal@opensource.cirrus.com>, <rf@opensource.cirrus.com>,
-	<perex@perex.cz>, <tiwai@suse.com>, <npiggin@gmail.com>,
-	<christophe.leroy@csgroup.eu>, <mpe@ellerman.id.au>, <oss@buserror.net>,
-	<windhl@126.com>, <yangyingliang@huawei.com>, <william.zhang@broadcom.com>,
-	<kursad.oney@broadcom.com>, <jonas.gorski@gmail.com>,
-	<anand.gore@broadcom.com>, <rafal@milecki.pl>
-CC: <git@amd.com>, <linux-spi@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <joel@jms.id.au>, <andrew@aj.id.au>,
-	<radu_nicolae.pirea@upb.ro>, <nicolas.ferre@microchip.com>,
-	<alexandre.belloni@bootlin.com>, <claudiu.beznea@microchip.com>,
-	<bcm-kernel-feedback-list@broadcom.com>, <fancer.lancer@gmail.com>,
-	<kernel@pengutronix.de>, <festevam@gmail.com>, <linux-imx@nxp.com>,
-	<jbrunet@baylibre.com>, <martin.blumenstingl@googlemail.com>,
-	<avifishman70@gmail.com>, <tmaimon77@gmail.com>, <tali.perry1@gmail.com>,
-	<venture@google.com>, <yuenn@google.com>, <benjaminfair@google.com>,
-	<yogeshgaur.83@gmail.com>, <konrad.dybcio@somainline.org>,
-	<alim.akhtar@samsung.com>, <ldewangan@nvidia.com>,
-	<thierry.reding@gmail.com>, <jonathanh@nvidia.com>, <michal.simek@amd.com>,
-	<linux-aspeed@lists.ozlabs.org>, <openbmc@lists.ozlabs.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<linux-rpi-kernel@lists.infradead.org>, <linux-amlogic@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-rockchip@lists.infradead.org>, <linux-samsung-soc@vger.kernel.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>, <linux-sunxi@lists.linux.dev>,
-	<linux-tegra@vger.kernel.org>, <netdev@vger.kernel.org>,
-	<linux-wpan@vger.kernel.org>, <libertas-dev@lists.infradead.org>,
-	<linux-wireless@vger.kernel.org>, <linux-mtd@lists.infradead.org>,
-	<lars@metafoo.de>, <Michael.Hennerich@analog.com>,
-	<linux-iio@vger.kernel.org>, <michael@walle.cc>, <palmer@dabbelt.com>,
-	<linux-riscv@lists.infradead.org>, <alsa-devel@alsa-project.org>,
-	<patches@opensource.cirrus.com>, <linuxppc-dev@lists.ozlabs.org>,
-	<amitrkcian2002@gmail.com>, <amit.kumar-mahapatra@amd.com>
-Subject: [PATCH V6 15/15] spi: spi-zynqmp-gqspi: Add parallel memories support in GQSPI driver
-Date: Fri, 10 Mar 2023 23:02:17 +0530
-Message-ID: <20230310173217.3429788-16-amit.kumar-mahapatra@amd.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230310173217.3429788-1-amit.kumar-mahapatra@amd.com>
-References: <20230310173217.3429788-1-amit.kumar-mahapatra@amd.com>
+	id 1pafsD-00FLst-PX; Fri, 10 Mar 2023 16:45:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
+	:Cc:To:In-Reply-To:References:Message-Id:Content-Type:Subject:Date:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=AaAObrbm4EBKRfJda0O3pJUASkY2vicuQ13a5jf0XU4=; b=U0H7htH7UmdJAb3uj2UQGcTb6o
+	k/UOYdNlJfhtlBz8bk+tWKeTAJ5gO4zSbZ9cdogsRxQE/LwTz0uZ+PVR5MZq8wBOGnbleD68EmASi
+	RdFtrxlKQGjcqGJlemJl4DGnMq6imHceHc4F9j1SRK/1uoARTLLXa9CeFs7Y+7Bi/WMQCjhWCGUqi
+	2Ogyrcau0A2YwLzJUO0VHBVyzMJcOgcRYdl1e/0K3pXi1WV12R31r371MLen73G2g8gjf7kxbY2v4
+	6Wr8yHT7eEbh7bn8nROOQu9oIkbjqxs2EI5N9ZeJgGowApyVVPm1KUTszdURSar0VwzaTwFKJN0OY
+	ddHeiL6Q==;
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pafIk-000Vrg-08;
+	Fri, 10 Mar 2023 16:09:06 +0000
+Received: from pps.filterd (m0127361.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 32AF0wZI020552;
+	Fri, 10 Mar 2023 16:08:32 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=from : date : subject :
+ content-type : message-id : references : in-reply-to : to : cc :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=AaAObrbm4EBKRfJda0O3pJUASkY2vicuQ13a5jf0XU4=;
+ b=ofKkh5qnlajMXOHCeuGphjpjcpuub6EhmmQKtfUdYLZsV54ueMVgMBO+oXNAbzuUsDBz
+ 6aDLw85c0zH0eMwQph9E2YaY4SMC8lyrdJToLQZktmGCeQZ/K3tXLMDPWKaI9pBChdV3
+ vZ4gL36iSqneHbvBXqGh71UMMAqyf4/AeRn5laCQPjAZAVlDi4Vf1aQ2su5aIBlqgg5E
+ xe+xVDWbO4apfh7PFvtCAYgWA1XpG6zUKirsr5MQUX3oy/iP0klznQHh5qXT3vYiwPtB
+ dwYXFQOiLPrEtMBD6vqgSqiu0Ds41o1S2X8YAvMO/AMTkjz/sg7lH3Ep0fh0/MJ9Qpbh Fg== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3p86tshqcc-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 10 Mar 2023 16:08:32 +0000
+Received: from m0127361.ppops.net (m0127361.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 32AFhtEe025976;
+	Fri, 10 Mar 2023 16:08:31 GMT
+Received: from ppma04fra.de.ibm.com (6a.4a.5195.ip4.static.sl-reverse.com [149.81.74.106])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3p86tshqac-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 10 Mar 2023 16:08:31 +0000
+Received: from pps.filterd (ppma04fra.de.ibm.com [127.0.0.1])
+	by ppma04fra.de.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 32A90r90015599;
+	Fri, 10 Mar 2023 16:08:26 GMT
+Received: from smtprelay02.fra02v.mail.ibm.com ([9.218.2.226])
+	by ppma04fra.de.ibm.com (PPS) with ESMTPS id 3p6gdqb1kw-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 10 Mar 2023 16:08:26 +0000
+Received: from smtpav07.fra02v.mail.ibm.com (smtpav07.fra02v.mail.ibm.com [10.20.54.106])
+	by smtprelay02.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 32AG8MCx44958118
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 10 Mar 2023 16:08:22 GMT
+Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 718D62004D;
+	Fri, 10 Mar 2023 16:08:22 +0000 (GMT)
+Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id DFDFB2004B;
+	Fri, 10 Mar 2023 16:08:20 +0000 (GMT)
+Received: from tuxmaker.boeblingen.de.ibm.com (unknown [9.152.85.9])
+	by smtpav07.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Fri, 10 Mar 2023 16:08:20 +0000 (GMT)
+From: Niklas Schnelle <schnelle@linux.ibm.com>
+Date: Fri, 10 Mar 2023 17:07:50 +0100
+Subject: [PATCH v8 5/6] iommu/dma: Allow a single FQ in addition to per-CPU
+ FQs
+Content-Type: text/plain; charset="utf-8"
+Message-Id: <20230310-dma_iommu-v8-5-2347dfbed7af@linux.ibm.com>
+References: <20230310-dma_iommu-v8-0-2347dfbed7af@linux.ibm.com>
+In-Reply-To: <20230310-dma_iommu-v8-0-2347dfbed7af@linux.ibm.com>
+To: Joerg Roedel <joro@8bytes.org>, Matthew Rosato <mjrosato@linux.ibm.com>,
+        Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>,
+        Robin Murphy <robin.murphy@arm.com>, Jason Gunthorpe <jgg@ziepe.ca>
+Cc: Gerd Bayer <gbayer@linux.ibm.com>, Julian Ruess <julianr@linux.ibm.com>,
+        Pierre Morel <pmorel@linux.ibm.com>,
+        Alexandra Winter <wintera@linux.ibm.com>,
+        Heiko Carstens <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
+        Alexander Gordeev <agordeev@linux.ibm.com>,
+        Christian Borntraeger <borntraeger@linux.ibm.com>,
+        Sven Schnelle <svens@linux.ibm.com>,
+        Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+        Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+        Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+        David Woodhouse <dwmw2@infradead.org>,
+        Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
+        Bjorn Andersson <andersson@kernel.org>,
+        Konrad Dybcio <konrad.dybcio@linaro.org>,
+        Yong Wu <yong.wu@mediatek.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+        Orson Zhai <orsonzhai@gmail.com>,
+        Baolin Wang <baolin.wang@linux.alibaba.com>,
+        Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+        Jernej Skrabec <jernej.skrabec@gmail.com>,
+        Samuel Holland <samuel@sholland.org>,
+        Thierry Reding <thierry.reding@gmail.com>,
+        Krishna Reddy <vdumpa@nvidia.com>,
+        Jonathan Hunter <jonathanh@nvidia.com>,
+        Niklas Schnelle <schnelle@linux.ibm.com>,
+        Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
+        netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+        iommu@lists.linux.dev, asahi@lists.linux.dev,
+        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+        linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
+X-Mailer: b4 0.12.1
+X-Developer-Signature: v=1; a=openpgp-sha256; l=13183;
+ i=schnelle@linux.ibm.com; h=from:subject:message-id;
+ bh=JAstifVbluVdWhCehVO60V7Fl2xmys/DKEcXsVnxf8s=;
+ b=owGbwMvMwCH2Wz534YHOJ2GMp9WSGFK4Q197dZoH+7i4WD177SIwv2xW7paswEser2w1Ov49D
+ g189LCwo5SFQYyDQVZMkWVRl7PfuoIppnuC+jtg5rAygQxh4OIUgIlwrmP4K62W5NVwYN0eXsuF
+ 26z3mnxoTj33ztFNbW5iu/2cjI2VEowMJ9sPiddt0vz9OGj6W0Edg2N/mjO+RfLYTOBlrNMJFdd
+ jBQA=
+X-Developer-Key: i=schnelle@linux.ibm.com; a=openpgp;
+ fpr=9DB000B2D2752030A5F72DDCAFE43F15E8C26090
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: 6yYApsGmwgQ7PqAgHw9Co9i25sHtAVtK
+X-Proofpoint-GUID: gkbNqMxh_14xMZ-eDg8Yk25k3TIQQJ9M
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1NAM11FT074:EE_|BN9PR12MB5338:EE_
-X-MS-Office365-Filtering-Correlation-Id: 82a898d3-01dc-46cf-1621-08db218e7f22
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	Xt7TUEmhxJkG3uhUkGG89AnqA6rHXB2b1oBhbxumHhtWcnd2jUGpN0Q0HWHBfycuejtZ6LXt1TqMJvuYAsrKGP1+WuWryVzQtzdfFYCpEMfAcC0MV5BwoBUD6h4KSv/BDw2UeH/1mb5K2zfHk81eqUKAnb0+ZESBftRz7hxRZNVrze+8TgKYBj16bkdtEPgnf5CuakBOWoScoxkhtWbbEQb3I67slwNJLGIBFzmkdq/lxolX8/CHR3lbR+C32LP6ET5jxOB7c73GCv7YUoERmKCQCx6EUgnLm9ar7tTpfPDQak1vlkLYqPNJT/L9DSaJVnjCpLZUB1joIVtelqkV3FyOjSz+8+ZL+nj/QvH5mbzzWIEzKPC78N43lcgWLogk5OnKPd81ZllRwfOEkmpjsUSo/TU6ZK4zwbC22jfOdPKxmfsfjZMSMzl5BwbqyEkzfkHoG/okqPORgpb/p82BswKWG9hjg/rx87+0mhuVUxUOC7p+iWG8p5T7zXhqD+AoNqQJymlvwK6qONtCbFxqVLrFMGEmP5F0ElvEBvVvYl17GvgekYXP7edQ/+OUXiLug0ZN92dvILCd+OJjq5xWBeALWCHLQBdboneaQj6UzMwJvyjeR70tP1rSOAgb9dRrb/62Rz7hnB5bExgMeQJhvrfj6hCHcF1MBkDm6U08A9j9nVRxw6RRT9Zdbrb6f5hsDcplt4WFgtXxNTa3puNv2gkMhNn4G/f7o7eRv6MFOg6onDbuRNSlKnLucDWdeXca5fpwtyKOE6meHTurpmIGWDHEcSZbYnLIhRoPkXXiQFj/0fCmkRhAsKgxz3TPNsDO1/Yq3idIzNTxcbtQbrZieRm2cQwXMjIsBk0QM6qZkMs=
-X-Forefront-Antispam-Report: 	CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:SATLEXMB04.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230025)(4636009)(136003)(376002)(346002)(396003)(39860400002)(451199018)(46966006)(40470700004)(36840700001)(6666004)(83380400001)(82740400003)(1191002)(81166007)(478600001)(54906003)(110136005)(82310400005)(36860700001)(8936002)(40480700001)(186003)(5660300002)(40460700003)(316002)(1076003)(26005)(36756003)(7336002)(7416002)(7276002)(7366002)(7406005)(426003)(8676002)(921005)(356005)(47076005)(336012)(70206006)(70586007)(41300700001)(86362001)(2616005)(4326008)(2906002)(41080700001)(84006005)(83996005)(36900700001)(2101003);DIR:OUT;SFP:1101;
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Mar 2023 17:40:10.3038
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 82a898d3-01dc-46cf-1621-08db218e7f22
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[SATLEXMB04.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	CO1NAM11FT074.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN9PR12MB5338
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
+ definitions=2023-03-10_06,2023-03-10_01,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
+ phishscore=0 clxscore=1015 spamscore=0 impostorscore=0 bulkscore=0
+ lowpriorityscore=0 malwarescore=0 adultscore=0 mlxscore=0 suspectscore=0
+ mlxlogscore=968 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2212070000 definitions=main-2303100124
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230310_094016_377741_5BEE9CE8 
-X-CRM114-Status: GOOD (  18.59  )
+X-CRM114-CacheID: sfid-20230310_160902_541806_88B423BE 
+X-CRM114-Status: GOOD (  35.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -162,108 +166,409 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-During GQSPI driver probe set ctlr->multi-cs-cap for enabling multi CS
-capability of the controller. In parallel mode the controller can either
-split the data between both the flash or can send the same data to both the
-flashes, this is determined by the STRIPE bit. While sending commands to
-the flashes the GQSPI driver send the same command to both the flashes by
-resetting the STRIPE bit, but while writing/reading data to & from the
-flash the GQSPI driver splits the data evenly between both the flashes by
-setting the STRIPE bit.
+In some virtualized environments, including s390 paged memory guests,
+IOTLB flushes are used to update IOMMU shadow tables. Due to this, they
+are much more expensive than in typical bare metal environments or
+non-paged s390 guests. In addition they may parallelize more poorly in
+virtualized environments. This changes the trade off for flushing IOVAs
+such that minimizing the number of IOTLB flushes trumps any benefit of
+cheaper queuing operations or increased paralellism.
 
-Signed-off-by: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
+In this scenario per-CPU flush queues pose several problems. Firstly
+per-CPU memory is often quite limited prohibiting larger queues.
+Secondly collecting IOVAs per-CPU but flushing via a global timeout
+reduces the number of IOVAs flushed for each timeout especially on s390
+where PCI interrupts may not be bound to a specific CPU.
+
+Let's introduce a single flush queue mode that reuses the same queue
+logic but only allocates a single global queue. This mode can be
+selected as a flag bit in a new dma_iommu_options struct which can be
+modified from its defaults by IOMMU drivers implementing a new
+ops.tune_dma_iommu() callback. As a first user the s390 IOMMU driver
+selects the single queue mode if IOTLB flushes are needed on map which
+indicates shadow table use. With the unchanged small FQ size and
+timeouts this setting is worse than per-CPU queues but a follow up patch
+will make the FQ size and timeout variable. Together this allows the
+common IOVA flushing code to more closely resemble the global flush
+behavior used on s390's previous internal DMA API implementation.
+
+Link: https://lore.kernel.org/linux-iommu/3e402947-61f9-b7e8-1414-fde006257b6f@arm.com/
+Reviewed-by: Matthew Rosato <mjrosato@linux.ibm.com> #s390
+Signed-off-by: Niklas Schnelle <schnelle@linux.ibm.com>
 ---
- drivers/spi/spi-zynqmp-gqspi.c | 39 +++++++++++++++++++++++++++++++++-
- 1 file changed, 38 insertions(+), 1 deletion(-)
+ drivers/iommu/dma-iommu.c  | 161 ++++++++++++++++++++++++++++++++++-----------
+ drivers/iommu/dma-iommu.h  |   4 +-
+ drivers/iommu/iommu.c      |   4 +-
+ drivers/iommu/s390-iommu.c |  10 +++
+ include/linux/iommu.h      |  21 ++++++
+ 5 files changed, 157 insertions(+), 43 deletions(-)
 
-diff --git a/drivers/spi/spi-zynqmp-gqspi.c b/drivers/spi/spi-zynqmp-gqspi.c
-index 3d2b92a88e8a..d795d17d2541 100644
---- a/drivers/spi/spi-zynqmp-gqspi.c
-+++ b/drivers/spi/spi-zynqmp-gqspi.c
-@@ -23,6 +23,7 @@
- #include <linux/spinlock.h>
- #include <linux/workqueue.h>
- #include <linux/spi/spi-mem.h>
-+#include <linux/mtd/spi-nor.h>
+diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
+index 99b2646cb5c7..6f5fd110e0e0 100644
+--- a/drivers/iommu/dma-iommu.c
++++ b/drivers/iommu/dma-iommu.c
+@@ -49,8 +49,11 @@ struct iommu_dma_cookie {
+ 		/* Full allocator for IOMMU_DMA_IOVA_COOKIE */
+ 		struct {
+ 			struct iova_domain	iovad;
+-
+-			struct iova_fq __percpu *fq;	/* Flush queue */
++			/* Flush queue */
++			union {
++				struct iova_fq	*single_fq;
++				struct iova_fq	__percpu *percpu_fq;
++			};
+ 			/* Number of TLB flushes that have been started */
+ 			atomic64_t		fq_flush_start_cnt;
+ 			/* Number of TLB flushes that have been finished */
+@@ -67,6 +70,8 @@ struct iommu_dma_cookie {
  
- /* Generic QSPI register offsets */
- #define GQSPI_CONFIG_OFST		0x00000100
-@@ -192,6 +193,7 @@ struct qspi_platform_data {
-  * @op_lock:		Operational lock
-  * @speed_hz:          Current SPI bus clock speed in hz
-  * @has_tapdelay:	Used for tapdelay register available in qspi
-+ * @is_parallel:		Used for multi CS support
-  */
- struct zynqmp_qspi {
- 	struct spi_controller *ctlr;
-@@ -214,8 +216,33 @@ struct zynqmp_qspi {
- 	struct mutex op_lock;
- 	u32 speed_hz;
- 	bool has_tapdelay;
-+	bool is_parallel;
+ 	/* Domain for flush queue callback; NULL if flush queue not in use */
+ 	struct iommu_domain		*fq_domain;
++	/* Options for dma-iommu use */
++	struct dma_iommu_options	options;
+ 	struct mutex			mutex;
+ };
+ 
+@@ -152,25 +157,44 @@ static void fq_flush_iotlb(struct iommu_dma_cookie *cookie)
+ 	atomic64_inc(&cookie->fq_flush_finish_cnt);
+ }
+ 
+-static void fq_flush_timeout(struct timer_list *t)
++static void fq_flush_percpu(struct iommu_dma_cookie *cookie)
+ {
+-	struct iommu_dma_cookie *cookie = from_timer(cookie, t, fq_timer);
+ 	int cpu;
+ 
+-	atomic_set(&cookie->fq_timer_on, 0);
+-	fq_flush_iotlb(cookie);
+-
+ 	for_each_possible_cpu(cpu) {
+ 		unsigned long flags;
+ 		struct iova_fq *fq;
+ 
+-		fq = per_cpu_ptr(cookie->fq, cpu);
++		fq = per_cpu_ptr(cookie->percpu_fq, cpu);
+ 		spin_lock_irqsave(&fq->lock, flags);
+ 		fq_ring_free(cookie, fq);
+ 		spin_unlock_irqrestore(&fq->lock, flags);
+ 	}
+ }
+ 
++static void fq_flush_single(struct iommu_dma_cookie *cookie)
++{
++	struct iova_fq *fq = cookie->single_fq;
++	unsigned long flags;
++
++	spin_lock_irqsave(&fq->lock, flags);
++	fq_ring_free(cookie, fq);
++	spin_unlock_irqrestore(&fq->lock, flags);
++}
++
++static void fq_flush_timeout(struct timer_list *t)
++{
++	struct iommu_dma_cookie *cookie = from_timer(cookie, t, fq_timer);
++
++	atomic_set(&cookie->fq_timer_on, 0);
++	fq_flush_iotlb(cookie);
++
++	if (cookie->options.flags & IOMMU_DMA_OPTS_SINGLE_QUEUE)
++		fq_flush_single(cookie);
++	else
++		fq_flush_percpu(cookie);
++}
++
+ static void queue_iova(struct iommu_dma_cookie *cookie,
+ 		unsigned long pfn, unsigned long pages,
+ 		struct list_head *freelist)
+@@ -188,7 +212,11 @@ static void queue_iova(struct iommu_dma_cookie *cookie,
+ 	 */
+ 	smp_mb();
+ 
+-	fq = raw_cpu_ptr(cookie->fq);
++	if (cookie->options.flags & IOMMU_DMA_OPTS_SINGLE_QUEUE)
++		fq = cookie->single_fq;
++	else
++		fq = raw_cpu_ptr(cookie->percpu_fq);
++
+ 	spin_lock_irqsave(&fq->lock, flags);
+ 
+ 	/*
+@@ -219,58 +247,114 @@ static void queue_iova(struct iommu_dma_cookie *cookie,
+ 			  jiffies + msecs_to_jiffies(IOVA_FQ_TIMEOUT));
+ }
+ 
+-static void iommu_dma_free_fq(struct iommu_dma_cookie *cookie)
++static void iommu_dma_free_fq_single(struct iova_fq *fq)
+ {
+-	int cpu, idx;
++	int idx;
+ 
+-	if (!cookie->fq)
++	if (!fq)
+ 		return;
++	fq_ring_for_each(idx, fq)
++		put_pages_list(&fq->entries[idx].freelist);
++	vfree(fq);
++}
++
++static void iommu_dma_free_fq_percpu(struct iova_fq __percpu *percpu_fq)
++{
++	int cpu, idx;
+ 
+-	del_timer_sync(&cookie->fq_timer);
+ 	/* The IOVAs will be torn down separately, so just free our queued pages */
+ 	for_each_possible_cpu(cpu) {
+-		struct iova_fq *fq = per_cpu_ptr(cookie->fq, cpu);
++		struct iova_fq *fq = per_cpu_ptr(percpu_fq, cpu);
+ 
+ 		fq_ring_for_each(idx, fq)
+ 			put_pages_list(&fq->entries[idx].freelist);
+ 	}
+ 
+-	free_percpu(cookie->fq);
++	free_percpu(percpu_fq);
++}
++
++static void iommu_dma_free_fq(struct iommu_dma_cookie *cookie)
++{
++	if (!cookie->fq_domain)
++		return;
++
++	del_timer_sync(&cookie->fq_timer);
++	if (cookie->options.flags & IOMMU_DMA_OPTS_SINGLE_QUEUE)
++		iommu_dma_free_fq_single(cookie->single_fq);
++	else
++		iommu_dma_free_fq_percpu(cookie->percpu_fq);
++}
++
++
++static void iommu_dma_init_one_fq(struct iova_fq *fq)
++{
++	int i;
++
++	fq->head = 0;
++	fq->tail = 0;
++
++	spin_lock_init(&fq->lock);
++
++	for (i = 0; i < IOVA_FQ_SIZE; i++)
++		INIT_LIST_HEAD(&fq->entries[i].freelist);
++}
++
++static int iommu_dma_init_fq_single(struct iommu_dma_cookie *cookie)
++{
++	struct iova_fq *queue;
++
++	queue = vzalloc(sizeof(*queue));
++	if (!queue)
++		return -ENOMEM;
++	iommu_dma_init_one_fq(queue);
++	cookie->single_fq = queue;
++
++	return 0;
++}
++
++static int iommu_dma_init_fq_percpu(struct iommu_dma_cookie *cookie)
++{
++	struct iova_fq __percpu *queue;
++	int cpu;
++
++	queue = alloc_percpu(struct iova_fq);
++	if (!queue)
++		return -ENOMEM;
++
++	for_each_possible_cpu(cpu)
++		iommu_dma_init_one_fq(per_cpu_ptr(queue, cpu));
++	cookie->percpu_fq = queue;
++	return 0;
+ }
+ 
+ /* sysfs updates are serialised by the mutex of the group owning @domain */
+-int iommu_dma_init_fq(struct iommu_domain *domain)
++int iommu_dma_init_fq(struct device *dev, struct iommu_domain *domain)
+ {
+ 	struct iommu_dma_cookie *cookie = domain->iova_cookie;
+-	struct iova_fq __percpu *queue;
+-	int i, cpu;
++	const struct iommu_ops *ops = dev_iommu_ops(dev);
++	int rc;
+ 
+ 	if (cookie->fq_domain)
+ 		return 0;
+ 
++	if (ops->tune_dma_iommu)
++		ops->tune_dma_iommu(dev, &cookie->options);
++
+ 	atomic64_set(&cookie->fq_flush_start_cnt,  0);
+ 	atomic64_set(&cookie->fq_flush_finish_cnt, 0);
+ 
+-	queue = alloc_percpu(struct iova_fq);
+-	if (!queue) {
+-		pr_warn("iova flush queue initialization failed\n");
+-		return -ENOMEM;
+-	}
+-
+-	for_each_possible_cpu(cpu) {
+-		struct iova_fq *fq = per_cpu_ptr(queue, cpu);
+-
+-		fq->head = 0;
+-		fq->tail = 0;
+-
+-		spin_lock_init(&fq->lock);
++	if (cookie->options.flags & IOMMU_DMA_OPTS_SINGLE_QUEUE)
++		rc = iommu_dma_init_fq_single(cookie);
++	else
++		rc = iommu_dma_init_fq_percpu(cookie);
+ 
+-		for (i = 0; i < IOVA_FQ_SIZE; i++)
+-			INIT_LIST_HEAD(&fq->entries[i].freelist);
++	if (rc) {
++		pr_warn("iova flush queue initialization failed\n");
++		/* fall back to strict mode */
++		domain->type = IOMMU_DOMAIN_DMA;
++		return rc;
+ 	}
+ 
+-	cookie->fq = queue;
+-
+ 	timer_setup(&cookie->fq_timer, fq_flush_timeout, 0);
+ 	atomic_set(&cookie->fq_timer_on, 0);
+ 	/*
+@@ -297,6 +381,7 @@ static struct iommu_dma_cookie *cookie_alloc(enum iommu_dma_cookie_type type)
+ 	if (cookie) {
+ 		INIT_LIST_HEAD(&cookie->msi_page_list);
+ 		cookie->type = type;
++		cookie->options.flags = IOMMU_DMA_OPTS_PER_CPU_QUEUE;
+ 	}
+ 	return cookie;
+ }
+@@ -585,9 +670,9 @@ static int iommu_dma_init_domain(struct iommu_domain *domain, dma_addr_t base,
+ 	if (ret)
+ 		goto done_unlock;
+ 
+-	/* If the FQ fails we can simply fall back to strict mode */
+-	if (domain->type == IOMMU_DOMAIN_DMA_FQ && iommu_dma_init_fq(domain))
+-		domain->type = IOMMU_DOMAIN_DMA;
++	/* If the FQ fails we fall back to strict mode */
++	if (domain->type == IOMMU_DOMAIN_DMA_FQ)
++		iommu_dma_init_fq(dev, domain);
+ 
+ 	ret = iova_reserve_iommu_regions(dev, domain);
+ 
+diff --git a/drivers/iommu/dma-iommu.h b/drivers/iommu/dma-iommu.h
+index 942790009292..4f727ab56d3c 100644
+--- a/drivers/iommu/dma-iommu.h
++++ b/drivers/iommu/dma-iommu.h
+@@ -12,7 +12,7 @@
+ int iommu_get_dma_cookie(struct iommu_domain *domain);
+ void iommu_put_dma_cookie(struct iommu_domain *domain);
+ 
+-int iommu_dma_init_fq(struct iommu_domain *domain);
++int iommu_dma_init_fq(struct device *dev, struct iommu_domain *domain);
+ 
+ void iommu_dma_get_resv_regions(struct device *dev, struct list_head *list);
+ 
+@@ -20,7 +20,7 @@ extern bool iommu_dma_forcedac;
+ 
+ #else /* CONFIG_IOMMU_DMA */
+ 
+-static inline int iommu_dma_init_fq(struct iommu_domain *domain)
++static inline int iommu_dma_init_fq(struct device *dev, struct iommu_domain *domain)
+ {
+ 	return -EINVAL;
+ }
+diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+index ae549b032a16..869dd0b6e1f3 100644
+--- a/drivers/iommu/iommu.c
++++ b/drivers/iommu/iommu.c
+@@ -2920,9 +2920,7 @@ static int iommu_change_dev_def_domain(struct iommu_group *group,
+ 
+ 	/* We can bring up a flush queue without tearing down the domain */
+ 	if (type == IOMMU_DOMAIN_DMA_FQ && prev_dom->type == IOMMU_DOMAIN_DMA) {
+-		ret = iommu_dma_init_fq(prev_dom);
+-		if (!ret)
+-			prev_dom->type = IOMMU_DOMAIN_DMA_FQ;
++		ret = iommu_dma_init_fq(dev, prev_dom);
+ 		goto out;
+ 	}
+ 
+diff --git a/drivers/iommu/s390-iommu.c b/drivers/iommu/s390-iommu.c
+index 161b0be5aba6..65dd469ad524 100644
+--- a/drivers/iommu/s390-iommu.c
++++ b/drivers/iommu/s390-iommu.c
+@@ -451,6 +451,15 @@ static void s390_iommu_get_resv_regions(struct device *dev,
+ 	}
+ }
+ 
++static void s390_iommu_tune_dma_iommu(struct device *dev,
++					     struct dma_iommu_options *options)
++{
++	struct zpci_dev *zdev = to_zpci_dev(dev);
++
++	if (zdev->tlb_refresh)
++		options->flags |= IOMMU_DMA_OPTS_SINGLE_QUEUE;
++}
++
+ static struct iommu_device *s390_iommu_probe_device(struct device *dev)
+ {
+ 	struct zpci_dev *zdev;
+@@ -793,6 +802,7 @@ static const struct iommu_ops s390_iommu_ops = {
+ 	.device_group = generic_device_group,
+ 	.pgsize_bitmap = SZ_4K,
+ 	.get_resv_regions = s390_iommu_get_resv_regions,
++	.tune_dma_iommu = s390_iommu_tune_dma_iommu,
+ 	.default_domain_ops = &(const struct iommu_domain_ops) {
+ 		.attach_dev	= s390_iommu_attach_device,
+ 		.map_pages	= s390_iommu_map_pages,
+diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+index 932e5532ee33..2b43a3de2c4f 100644
+--- a/include/linux/iommu.h
++++ b/include/linux/iommu.h
+@@ -219,6 +219,21 @@ struct iommu_iotlb_gather {
+ 	bool			queued;
  };
  
 +/**
-+ * zynqmp_gqspi_update_stripe - For GQSPI controller data stripe capabilities
-+ * @op:	Pointer to mem ops
-+ * Return:      Status of the data stripe
++ * struct dma_iommu_options - Options for dma-iommu
 + *
-+ * Returns true if data stripe need to be enabled, else returns false
++ * @flags: Flag bits for enabling/disabling dma-iommu settings
++ *
++ * This structure is intended to provide IOMMU drivers a way to influence the
++ * behavior of the dma-iommu DMA API implementation. This allows optimizing for
++ * example for a virtualized environment with slow IOTLB flushes.
 + */
-+bool zynqmp_gqspi_update_stripe(const struct spi_mem_op *op)
-+{
-+	if (op->cmd.opcode ==  SPINOR_OP_BE_4K ||
-+	    op->cmd.opcode ==  SPINOR_OP_BE_32K ||
-+	    op->cmd.opcode ==  SPINOR_OP_CHIP_ERASE ||
-+	    op->cmd.opcode ==  SPINOR_OP_SE ||
-+	    op->cmd.opcode ==  SPINOR_OP_BE_32K_4B ||
-+	    op->cmd.opcode ==  SPINOR_OP_SE_4B ||
-+	    op->cmd.opcode == SPINOR_OP_BE_4K_4B ||
-+	    op->cmd.opcode ==  SPINOR_OP_WRSR ||
-+	    op->cmd.opcode ==  SPINOR_OP_BRWR ||
-+	    (op->cmd.opcode ==  SPINOR_OP_WRSR2 && !op->addr.nbytes))
-+		return false;
-+
-+	return true;
-+}
++struct dma_iommu_options {
++#define IOMMU_DMA_OPTS_PER_CPU_QUEUE	(0L << 0)
++#define IOMMU_DMA_OPTS_SINGLE_QUEUE	(1L << 0)
++	u64	flags;
++};
 +
  /**
-  * zynqmp_gqspi_read - For GQSPI controller read operation
-  * @xqspi:	Pointer to the zynqmp_qspi structure
-@@ -470,7 +497,14 @@ static void zynqmp_qspi_chipselect(struct spi_device *qspi, bool is_high)
+  * struct iommu_ops - iommu ops and capabilities
+  * @capable: check capability
+@@ -242,6 +257,9 @@ struct iommu_iotlb_gather {
+  *		- IOMMU_DOMAIN_IDENTITY: must use an identity domain
+  *		- IOMMU_DOMAIN_DMA: must use a dma domain
+  *		- 0: use the default setting
++ * @tune_dma_iommu: Allows the IOMMU driver to modify the default
++ *		    options of the dma-iommu layer for a specific
++ *		    device.
+  * @default_domain_ops: the default ops for domains
+  * @remove_dev_pasid: Remove any translation configurations of a specific
+  *                    pasid, so that any DMA transactions with this pasid
+@@ -278,6 +296,9 @@ struct iommu_ops {
+ 	int (*def_domain_type)(struct device *dev);
+ 	void (*remove_dev_pasid)(struct device *dev, ioasid_t pasid);
  
- 	genfifoentry |= GQSPI_GENFIFO_MODE_SPI;
- 
--	if (qspi->cs_index_mask & GQSPI_SELECT_UPPER_CS) {
-+	if ((qspi->cs_index_mask & GQSPI_SELECT_LOWER_CS) &&
-+	    (qspi->cs_index_mask & GQSPI_SELECT_UPPER_CS)) {
-+		zynqmp_gqspi_selectslave(xqspi,
-+					 GQSPI_SELECT_FLASH_CS_BOTH,
-+					 GQSPI_SELECT_FLASH_BUS_BOTH);
-+		if (!xqspi->is_parallel)
-+			xqspi->is_parallel = true;
-+	} else if (qspi->cs_index_mask & GQSPI_SELECT_UPPER_CS) {
- 		zynqmp_gqspi_selectslave(xqspi,
- 					 GQSPI_SELECT_FLASH_CS_UPPER,
- 					 GQSPI_SELECT_FLASH_BUS_LOWER);
-@@ -1139,6 +1173,8 @@ static int zynqmp_qspi_exec_op(struct spi_mem *mem,
- 	}
- 
- 	if (op->data.nbytes) {
-+		if (xqspi->is_parallel && zynqmp_gqspi_update_stripe(op))
-+			genfifoentry |= GQSPI_GENFIFO_STRIPE;
- 		reinit_completion(&xqspi->data_completion);
- 		if (op->data.dir == SPI_MEM_DATA_OUT) {
- 			xqspi->txbuf = (u8 *)op->data.buf.out;
-@@ -1334,6 +1370,7 @@ static int zynqmp_qspi_probe(struct platform_device *pdev)
- 	ctlr->bits_per_word_mask = SPI_BPW_MASK(8);
- 	ctlr->dev.of_node = np;
- 	ctlr->auto_runtime_pm = true;
-+	ctlr->multi_cs_cap = true;
- 
- 	ret = devm_spi_register_controller(&pdev->dev, ctlr);
- 	if (ret) {
++	void (*tune_dma_iommu)(struct device *dev,
++			       struct dma_iommu_options *options);
++
+ 	const struct iommu_domain_ops *default_domain_ops;
+ 	unsigned long pgsize_bitmap;
+ 	struct module *owner;
+
 -- 
-2.25.1
+2.37.2
 
 
