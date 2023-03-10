@@ -4,54 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38C2EC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 02:36:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8876FC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 02:36:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zNawnoaaHjlLZq3/CNT/WHhi0vSTAU+m29M2fAmbgCA=; b=tS99Oj3M04WXjROR/WsFOyj2pt
-	o2yg+Jm5jCHu3AEkfBrvW/1kt+fED6Sc2OHFdzdE7qxnnKMfGHLzf+OqqRX0TPlGd8OfNdFU6T/OB
-	bL9IM5rh4kf4T3SoRf3SjbYs2kgDjrwOxlS6HcmprZrspxsTfOxTDYRFJBOwHzjLkNwTDHOEhXmti
-	iJaJv7aatJo6hx//8THSp02e81+DqjprWaD+ap2WD5M9tRaJvJMBI3gYBCOqj2/J6xhBuURNSBmXY
-	4Nib1blpMdvcwmKXOy5YogIsJRjcDBMkZsB0cXxnGOmJkpoR1BfsFIJ6P171HPokwhnO/ce+C8kTs
-	AKTPV5Tg==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sJQQkamtHAcgkCGJ0h3Tqt0rl885miX0Xvw7NZPq2Hg=; b=En5wLDmUIvREB9JmAE0GZDdX4R
+	WA8RhMIUyE05ZWyRjYtmjIyR9upOdwjkBGtCEBvOeKnL39Kk9qsos73RwFUIcjCU5bMK4shVcYWti
+	DnO5piLbJE0AHmDHwVb3Kivh/fHzgRgWwGMpiPoIrHeCTfgZEiVYGbVwDdMsyqZ7m1YLvx1xIpAe5
+	wUbJiSszhIfOW/BP7shwIaeKFR2GoB8SE7uabmx9XUV8hp29uRS6fhEKdKIM56mnzWuSe6kWGo8A+
+	YWRrTIdTZY3kWRlJcDri2YaWnumpGfxG4oM4Kjf4UOjCYhOJ+E//eHj9P3tmJZrGuouhPATOI5BJ5
+	g4iNnSQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paSc2-00CjUj-Bf; Fri, 10 Mar 2023 02:36:06 +0000
+	id 1paScG-00CjdT-CF; Fri, 10 Mar 2023 02:36:20 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paSbl-00CjLG-6S; Fri, 10 Mar 2023 02:35:50 +0000
-X-UUID: 412c884cbeec11eda799af78a38f2b8e-20230309
+	id 1paSbm-00CjM6-0W; Fri, 10 Mar 2023 02:35:51 +0000
+X-UUID: 41edca02beec11eda799af78a38f2b8e-20230309
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=zNawnoaaHjlLZq3/CNT/WHhi0vSTAU+m29M2fAmbgCA=;
-	b=ueMifWn34AJSr5r6sCPhxUhU//hAHGKUO6ZMjk8SOsq4Q/zh35QxAZ9te6ufKkxdLKjZOyONiROkfYyeORVeliKO3jrmp59tNx6JYbk8NJuIysD7gAU/xMdiQLf+ga9Hnl0wE7RMZ9Ndjui1759PvEj07WYnEd+CErHuco3U0yo=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=sJQQkamtHAcgkCGJ0h3Tqt0rl885miX0Xvw7NZPq2Hg=;
+	b=Ha5iwfe1U8hWlBIyN6cqbk1bPGRxTRDWf+WOoAJIjHsjdRlmB5qfspSF9M9Jv9g+VlGAsAGUXB8BL9JjsiQ/P60SePEWDQQwQsjjJUHBXbu4kQz7J1lVj2O6u5rr/oZO64QOp+7aiOSBdogAD6smF142R7kbrtPNYWkQHzuYDJU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.20,REQID:23d3be8f-0a65-469e-a926-06a672c3b42f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:95
-X-CID-INFO: VERSION:1.1.20,REQID:23d3be8f-0a65-469e-a926-06a672c3b42f,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
-	:quarantine,TS:95
-X-CID-META: VersionHash:25b5999,CLOUDID:d3a958f5-ddba-41c3-91d9-10eeade8eac7,B
-	ulkID:2303101035468Q959H96,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-	,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-UUID: 412c884cbeec11eda799af78a38f2b8e-20230309
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-CID-O-INFO: VERSION:1.1.20,REQID:43ffb228-1f9e-4fe6-b54b-ae9dc254fd37,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:25b5999,CLOUDID:d6a958f5-ddba-41c3-91d9-10eeade8eac7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-UUID: 41edca02beec11eda799af78a38f2b8e-20230309
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <kyrie.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 843689804; Thu, 09 Mar 2023 19:35:43 -0700
+	with ESMTP id 1289752845; Thu, 09 Mar 2023 19:35:44 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Fri, 10 Mar 2023 10:35:05 +0800
+ 15.2.1118.25; Fri, 10 Mar 2023 10:35:07 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Fri, 10 Mar 2023 10:35:05 +0800
+ 15.2.1118.25 via Frontend Transport; Fri, 10 Mar 2023 10:35:06 +0800
 From: kyrie.wu <kyrie.wu@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
 	<mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
@@ -62,17 +58,18 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	Tomasz Figa <tfiga@chromium.org>, <xia.jiang@mediatek.com>,
 	<maoguang.meng@mediatek.com>, Irui Wang <irui.wang@mediatek.com>
-Subject: [V2,0/7] Fixes jpeg crash issue in cuj test
-Date: Fri, 10 Mar 2023 10:34:54 +0800
-Message-ID: <1678415701-1691-1-git-send-email-kyrie.wu@mediatek.com>
+Subject: [V2,2/7] media: mtk-jpeg: add jpeg single core initial function
+Date: Fri, 10 Mar 2023 10:34:56 +0800
+Message-ID: <1678415701-1691-3-git-send-email-kyrie.wu@mediatek.com>
 X-Mailer: git-send-email 2.6.4
+In-Reply-To: <1678415701-1691-1-git-send-email-kyrie.wu@mediatek.com>
+References: <1678415701-1691-1-git-send-email-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_183549_255383_6BAE3CB2 
-X-CRM114-Status: UNSURE (   9.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230309_183550_070703_8D7067F1 
+X-CRM114-Status: GOOD (  14.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,53 +86,111 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: kyrie wu <kyrie.wu@mediatek.com>
 
-This series is used to fix jpeg dec & enc crash in cuj test.
-The problem was found frequently that executing CUJ
-ui.EverydayMultiTaskingCUJ.*_ytmusic test cases on Tomato/Dojo
-devices with the HW jpeg decoder enabled. Firstly the single core
-and multi-core judgment methods were modified to make the driver
-compatible with both cases. Secondly, the jpeg dec & enc worker
-initialization method and the timing issue of remove buffer
-were corrected, eliminating crash problems. Finally, some variables
-and hw dev initialization methods are refactored to reduce code
-redundancy and improve program robustness. 
+add single core initial function to init reg_base,
+irq and clk.
 
-This series has been tested with MT8195 & MT8188.
-Jpeg encoding and decoding worked for these devices.
-
-Patch 1 fixes single core and multi-core judgment methods.
-
-Patch 2 optimized jpeg single core initial methods.
-
-Patch 3 optimized sw flow of jpeg enc&dec worker to remove buffer.
-
-Patch 4 reconstructs the initialization mode of worker.
-
-Patch 5 Remove some unnecessary variables.
-
-Patch 6 refactor some variables.
-
-Patch 7 refactor hw dev initializaiton sw flow.
-
+Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+Signed-off-by: irui wang <irui.wang@mediatek.com>
 ---
-Changes compared with v1
-- No change compared with v1
+ .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 74 +++++++++++--------
+ 1 file changed, 44 insertions(+), 30 deletions(-)
 
-kyrie wu (7):
-  media: mtk-jpeg: Fixes jpeghw multi-core judgement
-  media: mtk-jpeg: add jpeg single core initial function
-  media: mtk-jpeg: Fixes jpeg enc&dec worker sw flow
-  media: mtk-jpeg: reconstructs the initialization mode of worker
-  media: mtk-jpeg: Remove some unnecessary variables
-  media: mtk-jpeg: refactor some variables
-  media: mtk-jpeg: refactor hw dev initializaiton
-
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 130 +++++++++++-------
- .../platform/mediatek/jpeg/mtk_jpeg_core.h    |  28 ++--
- .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  |  43 ++----
- .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  |  38 ++---
- 4 files changed, 113 insertions(+), 126 deletions(-)
-
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 6d052747a15e..daa4a6448311 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1671,10 +1671,50 @@ static void mtk_jpeg_job_timeout_work(struct work_struct *work)
+ 	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+ }
+ 
++static int mtk_jpeg_single_core_init(struct platform_device *pdev,
++				     struct mtk_jpeg_dev *jpeg_dev)
++{
++	struct mtk_jpeg_dev *jpeg = jpeg_dev;
++	int jpeg_irq, ret;
++
++	INIT_DELAYED_WORK(&jpeg->job_timeout_work,
++			  mtk_jpeg_job_timeout_work);
++
++	jpeg->reg_base = devm_platform_ioremap_resource(pdev, 0);
++	if (IS_ERR(jpeg->reg_base)) {
++		ret = PTR_ERR(jpeg->reg_base);
++		return ret;
++	}
++
++	jpeg_irq = platform_get_irq(pdev, 0);
++	if (jpeg_irq < 0)
++		return jpeg_irq;
++
++	ret = devm_request_irq(&pdev->dev,
++			       jpeg_irq,
++			       jpeg->variant->irq_handler,
++			       0,
++			       pdev->name, jpeg);
++	if (ret) {
++		dev_err(&pdev->dev, "Failed to request jpeg_irq %d (%d)\n",
++			jpeg_irq, ret);
++		return ret;
++	}
++
++	ret = devm_clk_bulk_get(jpeg->dev,
++				jpeg->variant->num_clks,
++				jpeg->variant->clks);
++	if (ret) {
++		dev_err(&pdev->dev, "Failed to init clk\n");
++		return ret;
++	}
++
++	return 0;
++}
++
+ static int mtk_jpeg_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_jpeg_dev *jpeg;
+-	int jpeg_irq;
+ 	int ret;
+ 
+ 	jpeg = devm_kzalloc(&pdev->dev, sizeof(*jpeg), GFP_KERNEL);
+@@ -1693,36 +1733,10 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	if (!jpeg->variant->multi_core) {
+-		INIT_DELAYED_WORK(&jpeg->job_timeout_work,
+-				  mtk_jpeg_job_timeout_work);
+-
+-		jpeg->reg_base = devm_platform_ioremap_resource(pdev, 0);
+-		if (IS_ERR(jpeg->reg_base)) {
+-			ret = PTR_ERR(jpeg->reg_base);
+-			return ret;
+-		}
+-
+-		jpeg_irq = platform_get_irq(pdev, 0);
+-		if (jpeg_irq < 0)
+-			return jpeg_irq;
+-
+-		ret = devm_request_irq(&pdev->dev,
+-				       jpeg_irq,
+-				       jpeg->variant->irq_handler,
+-				       0,
+-				       pdev->name, jpeg);
+-		if (ret) {
+-			dev_err(&pdev->dev, "Failed to request jpeg_irq %d (%d)\n",
+-				jpeg_irq, ret);
+-			return ret;
+-		}
+-
+-		ret = devm_clk_bulk_get(jpeg->dev,
+-					jpeg->variant->num_clks,
+-					jpeg->variant->clks);
++		ret = mtk_jpeg_single_core_init(pdev, jpeg);
+ 		if (ret) {
+-			dev_err(&pdev->dev, "Failed to init clk\n");
+-			return ret;
++			v4l2_err(&jpeg->v4l2_dev, "mtk_jpeg_single_core_init failed.");
++			return -EINVAL;
+ 		}
+ 	}
+ 
 -- 
 2.18.0
 
