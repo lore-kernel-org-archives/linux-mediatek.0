@@ -4,155 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4C0FC6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 16:45:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E46FC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 16:47:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Cc:To:Content-Type:Message-Id:Date:Subject:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZR06JSdEyIC2f6QZ14lanfJf0Kl1ogE9u/otyqeldFQ=; b=KUeWXRW9bcGasbVUpRMcYHeVWo
-	Y2Dce6pfc3tzmZQN1yCu5Iisv6upa754FuffHHJcIa7f+tQBpdOPOaMPdxJTY7Nrixk4U14RJ7sIC
-	o1/5c/oynaqCbg2qxIjyLJjrlu+JIhspnsywbsw+hZk3FafLEZvi/ne80efFHVFrq7s24nZERQqkn
-	w1zseQjW9kkWfytHDrtlEIff9wt0BXhjGHkmLF/MUKf6O3u+lERgFb/azmdmM0xYFMmUiSGIwR/gT
-	oDyCsIYa4BGQFB6nEcDxQfGMF2xYKQMN4HQFAyZmlgDlg1VQYuRmvv0ZYx4T00SLUoiNf4kY/2I53
-	p3w+SJdw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hwhYtKzDnXEsLBl9Tm3BqnXbNzyUsQ3KuTYFbJoohGM=; b=cCCrii7LTidcVaKrcng+NLTTVM
+	DasnWrgORvuxrOblUjUCCllslyCkOPyvpFAWvlj5fZUc/wECameEdtoAi3GgwQ62CBzWiKwyzXmVU
+	BfkXZMupilQcgQGKZB4MpWbz+tl+d+vJKU5L7v19foKFkR3AyiK2qjX4Qq4SjP7iCNbhW+5Q6v5dB
+	9+9Xn7RUaMtUk0l8iUgC+eJjwXPuzlVlZDloR93c3kV+R7n9p5WFn6oodw332DputP1kdzlHyJxXw
+	EOCZrNimmvOBlhqINJxqja4nwl1OLtEXJu0D7SYUV3dE8agZpyrLeB/cn+5S+m8Fi6JGq7e62ZYt+
+	PAVL/FFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pafsM-00FLwm-OR; Fri, 10 Mar 2023 16:45:50 +0000
+	id 1paftp-00FMkH-Kw; Fri, 10 Mar 2023 16:47:21 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pafs9-00FLrH-2Q; Fri, 10 Mar 2023 16:45:38 +0000
+	id 1pafsO-00FLxW-Ug; Fri, 10 Mar 2023 16:45:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
-	:Cc:To:Content-Type:Message-Id:Date:Subject:From:Sender:Reply-To:Content-ID:
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
 	Content-Description:In-Reply-To:References;
-	bh=ZR06JSdEyIC2f6QZ14lanfJf0Kl1ogE9u/otyqeldFQ=; b=NdgUHArBwFZITXfnru6xcA9TKx
-	yEHDlnhUTQhUL4yctUrnmAToy/Tk4IeEAezzddh3LkM++tKiqavyWDnYNPzrWs6+DTMMMR+vRv9LN
-	9Dc2t8oXBQNOZiJ7Y+P5wdxAipeHfiy64zX+MIYxCEiP2LSCx4F5PVr4g4Rhm7An441PLhMEM+6RV
-	G6BXt5EcJq6zzwTLQAKIzC55ySZTfUV6z0VIKfraJyif9R1F1gKLJvGLomZFrAY9hK+1Vnqy3jkPB
-	o3gMk9QZJPRJfcKV3iONFZ2b/IFQRY82VT3A6HOqbG7sYtguiraBTNAbaJT6dbonGz0gywB+e1Q6G
-	bl1Ar8VQ==;
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+	bh=hwhYtKzDnXEsLBl9Tm3BqnXbNzyUsQ3KuTYFbJoohGM=; b=o7K5hGcf9aEWhbrkyZVoNImJ3w
+	8Wlm+7cR61o8NBMdRaKQvo0OTFcMZ2WWidFyXMCBtdt+ix/oKJeF4MEGqf3Lw7wIbr50WhDZP2drB
+	9n0zeeZ/Q0DaSIBOdl+NGjB4SjxPwpcsbVIIAOyrYbs9gYHXiZCrNQmwfQBcfYU2gPj0a8NkNkd5T
+	/GFc0IqZZCz2P07YT0dIn3GnlK+wD2JIwXekDoDYj0xY8rfVO/e3/zpyiNYGr1zHOYclG0QXmuUpE
+	4sOYhge1dGu5CEKJhivIQPVblAnrzMDFNM7F48ktWLlDmjaItmPruQq7SiqIFbHkLKXKxA07WFW4I
+	nkjquOcQ==;
+Received: from mail-oi1-f181.google.com ([209.85.167.181])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pafId-000Vqy-0c;
-	Fri, 10 Mar 2023 16:08:59 +0000
-Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 32AFm2I6033912;
-	Fri, 10 Mar 2023 16:08:23 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=from : subject : date :
- message-id : content-type : to : cc : content-transfer-encoding :
- mime-version; s=pp1; bh=ZR06JSdEyIC2f6QZ14lanfJf0Kl1ogE9u/otyqeldFQ=;
- b=OTe6m8sd/4fLFsug1R7Vh+Nk9orGcd1FJnPVcJ77+I+p6rPZBB70QUq50lxPrsJRHhiA
- wjEBtK3Yki0xtLLytObctJHoTBbkIrVW/rBQ+xiVKDquH4B+FGMRmIWaWfkfomfleIhr
- CgRrMZn9uVaH22a/FZcqEZoHcsdNXoxgt2MFtDZPee0pfqkyuCioAJvcnxOUPYRvj3wJ
- tLQwuQTYxDoQ0yrRjWYtJmM1wCtMmznPs4ijEfyx7EIFwQu/pp/HAJI6DQ+vEmIn5zNR
- 2KokRJ3GMRgGcKYugBoy7vRh/lp7rHeHaauZ0aitiwVgXS/We6z9I+SgFFjg4hInO1NO 4g== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3p87gtrh7w-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 10 Mar 2023 16:08:22 +0000
-Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 32AFmY3V035953;
-	Fri, 10 Mar 2023 16:08:21 GMT
-Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com [169.51.49.98])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3p87gtrh76-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 10 Mar 2023 16:08:21 +0000
-Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
-	by ppma03ams.nl.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 32A8LYMi019977;
-	Fri, 10 Mar 2023 16:08:18 GMT
-Received: from smtprelay01.fra02v.mail.ibm.com ([9.218.2.227])
-	by ppma03ams.nl.ibm.com (PPS) with ESMTPS id 3p6ftvm40d-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 10 Mar 2023 16:08:18 +0000
-Received: from smtpav07.fra02v.mail.ibm.com (smtpav07.fra02v.mail.ibm.com [10.20.54.106])
-	by smtprelay01.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 32AG8EeX5112492
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 10 Mar 2023 16:08:14 GMT
-Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 92BD520040;
-	Fri, 10 Mar 2023 16:08:14 +0000 (GMT)
-Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 0BF6220043;
-	Fri, 10 Mar 2023 16:08:13 +0000 (GMT)
-Received: from tuxmaker.boeblingen.de.ibm.com (unknown [9.152.85.9])
-	by smtpav07.fra02v.mail.ibm.com (Postfix) with ESMTP;
-	Fri, 10 Mar 2023 16:08:12 +0000 (GMT)
-From: Niklas Schnelle <schnelle@linux.ibm.com>
-Subject: [PATCH v8 0/6] iommu/dma: s390 DMA API conversion and optimized
- IOTLB flushing
-Date: Fri, 10 Mar 2023 17:07:45 +0100
-Message-Id: <20230310-dma_iommu-v8-0-2347dfbed7af@linux.ibm.com>
-Content-Type: text/plain; charset="utf-8"
-X-B4-Tracking: v=1; b=H4sIANFVC2QC/0WNyQrCMBRFf6VkbUqmanDlf4hImr6aBxlKYqVQ+
- u8+3Hh353KHnTWoCI1du51V+GDDkgnsqWM+uPwCjhMxU0JpoaXgU3JPLCmtfABhrB+0PZsLo/z
- oGvCxuuwDNfIaI5lLhRm338H9QTzXkvg7VHD/WaWEHBSpl1ZabQyXvPmQIUa4Rczr1uOYel8SO
- 44v818SqrIAAAA=
-To: Joerg Roedel <joro@8bytes.org>, Matthew Rosato <mjrosato@linux.ibm.com>,
-        Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>,
-        Robin Murphy <robin.murphy@arm.com>, Jason Gunthorpe <jgg@ziepe.ca>
-Cc: Gerd Bayer <gbayer@linux.ibm.com>, Julian Ruess <julianr@linux.ibm.com>,
-        Pierre Morel <pmorel@linux.ibm.com>,
-        Alexandra Winter <wintera@linux.ibm.com>,
-        Heiko Carstens <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
-        Alexander Gordeev <agordeev@linux.ibm.com>,
-        Christian Borntraeger <borntraeger@linux.ibm.com>,
-        Sven Schnelle <svens@linux.ibm.com>,
-        Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
-        Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
-        Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-        David Woodhouse <dwmw2@infradead.org>,
-        Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Konrad Dybcio <konrad.dybcio@linaro.org>,
-        Yong Wu <yong.wu@mediatek.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-        Orson Zhai <orsonzhai@gmail.com>,
-        Baolin Wang <baolin.wang@linux.alibaba.com>,
-        Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Samuel Holland <samuel@sholland.org>,
-        Thierry Reding <thierry.reding@gmail.com>,
-        Krishna Reddy <vdumpa@nvidia.com>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Niklas Schnelle <schnelle@linux.ibm.com>,
-        Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
-        netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-        iommu@lists.linux.dev, asahi@lists.linux.dev,
-        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-        linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
-        linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
-X-Mailer: b4 0.12.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=8086;
- i=schnelle@linux.ibm.com; h=from:subject:message-id;
- bh=5ugqHRtwa175iTk6uy6ZO/L17cynkBtaxZWfDk2PN10=;
- b=owGbwMvMwCH2Wz534YHOJ2GMp9WSGFK4Q59F+sq9atpx+4tStaPFJusZm113nIx7xGt2QmZJy
- J07P2Q/d5SyMIhxMMiKKbIs6nL2W1cwxXRPUH8HzBxWJpAhDFycAjCRMAGG/+4lKWpMdz+vVciM
- 6rGt/nCxb1b9wuNrOe96Hr36S/GabAvDX/HEc1GfdlWalofP3xTsKV96XfhP2OSNVXP2P7FI/zV
- pLQ8A
-X-Developer-Key: i=schnelle@linux.ibm.com; a=openpgp;
- fpr=9DB000B2D2752030A5F72DDCAFE43F15E8C26090
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: 5gBCNF1yrkWkoVesy1HWWpBtBYNdB07q
-X-Proofpoint-GUID: oPCmQHgrqyQNSADUd1pVxHqkNty6kKxt
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+	id 1pae32-000Ubf-09;
+	Fri, 10 Mar 2023 14:48:46 +0000
+Received: by mail-oi1-f181.google.com with SMTP id bg11so4402220oib.5;
+        Fri, 10 Mar 2023 06:48:43 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678459722;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=hwhYtKzDnXEsLBl9Tm3BqnXbNzyUsQ3KuTYFbJoohGM=;
+        b=5XfoI4d4scrLthazyZyWB1E3ivv5qAmnODyOKfsJd1MgztKD7dTdtlFS5nuowVbU2W
+         HQMq3f+fBSHfmoc4gh9wAIKUg0LXsjvUp8231f7eCyPM1f7WcDnjObRjN0OVp8CVxfOb
+         aANhEAW72IIwS2Ai4sPI2pQx0EXbOtQKYvcMrxDPY/vpvyioLsBfTDEhdQI28cM9dlgW
+         zDb/GnSJqzf5eXhpy4A+niYe6ctCKddEQBn1MJax6YlN+HB3Mp5+BnuvJDydqlnDVvV1
+         eB+c1Lz/+53gqgzxUQruExqDw92jTl8PS9Sdq4hWIpyr7kcuRDwP5sQJEVfGYn+I2lI7
+         B3BQ==
+X-Gm-Message-State: AO0yUKVAUZuxKOcNsUJSv3XgAzZnQmyIcjJmFmoqMkRvgswd7OPKNFt1
+	dB19EpXHrZILPdkhWLmUIA==
+X-Google-Smtp-Source: AK7set/2Hv/GHCQ4CWKw9+OchH8gffT8eqBP4iLmC17qsMPdXt7UFyt1xWM3HZum7IWwuaM8TqbJlg==
+X-Received: by 2002:a05:6808:1d7:b0:383:ef56:a34c with SMTP id x23-20020a05680801d700b00383ef56a34cmr1364469oic.2.1678459722220;
+        Fri, 10 Mar 2023 06:48:42 -0800 (PST)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id y129-20020acae187000000b0038476262f65sm967331oig.33.2023.03.10.06.48.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 10 Mar 2023 06:48:41 -0800 (PST)
+Received: (nullmailer pid 1544713 invoked by uid 1000);
+	Fri, 10 Mar 2023 14:47:21 -0000
+From: Rob Herring <robh@kernel.org>
+To: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Tony Lindgren <tony@atomide.com>, Haojian Zhuang <haojian.zhuang@linaro.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-renesas-soc@vger.kernel.org, linux-sunxi@lists.linux.dev
+Subject: [PATCH] pinctrl: Use of_property_present() for testing DT property presence
+Date: Fri, 10 Mar 2023 08:47:20 -0600
+Message-Id: <20230310144721.1544669-1-robh@kernel.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
- definitions=2023-03-10_07,2023-03-10_01,2023-02-09_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0 impostorscore=0
- mlxscore=0 mlxlogscore=999 adultscore=0 lowpriorityscore=0 spamscore=0
- clxscore=1011 priorityscore=1501 bulkscore=0 suspectscore=0 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2212070000
- definitions=main-2303100128
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230310_160855_717138_5AD54813 
-X-CRM114-Status: GOOD (  33.16  )
+X-CRM114-CacheID: sfid-20230310_144844_691634_1E6426C7 
+X-CRM114-Status: GOOD (  18.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -167,167 +89,149 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi All,
+It is preferred to use typed property access functions (i.e.
+of_property_read_<type> functions) rather than low-level
+of_get_property/of_find_property functions for reading properties. As
+part of this, convert of_get_property/of_find_property calls to the
+recently added of_property_present() helper when we just want to test
+for presence of a property and nothing more.
 
-This patch series converts s390's PCI support from its platform specific DMA
-API implementation in arch/s390/pci/pci_dma.c to the common DMA IOMMU layer.
-The conversion itself is done in patches 3-4 with patch 2 providing the final
-necessary IOMMU driver improvement to handle s390's special IOTLB flush
-out-of-resource indication in virtualized environments. Patches 1-2 may be
-applied independently. The conversion itself only touches the s390 IOMMU driver
-and s390 arch code moving over remaining functions from the s390 DMA API
-implementation. No changes to common code are necessary.
-
-After patch 4 the basic conversion is done and on our partitioning machine
-hypervisor LPAR performance matches or exceeds the existing code. When running
-under z/VM or KVM however, performance plummets to about half of the existing
-code due to a much higher rate of IOTLB flushes for unmapped pages. Due to the
-hypervisors use of IOTLB flushes to synchronize their shadow tables these are
-very expensive and minimizing them is key for regaining the performance loss.
-
-To this end patches 5-6 propose a new, single queue, IOTLB flushing scheme as
-an alternative to the existing per-CPU flush queues. Introducing an alternative
-scheme was also suggested by Robin Murphy[1]. In the previous RFC of this
-conversion Robin suggested reusing more of the existing queuing logic which
-I incorporated since v2. The single queue mode is introduced in patch
-5 together with a new dma_iommu_options struct and tune_dma_iommu callback in
-IOMMU ops which allows IOMMU drivers to switch to a single flush queue.
-
-Then patch 6 enables variable queue sizes using power of 2 queue sizes and
-shift/mask to keep performance as close to the existing code as possible. The
-variable queue size and a variable timeout are added to the dma_iommu_options
-struct and utilized by s390 in the z/VM and KVM guest cases. As it is
-implemented in common code the single queue IOTLB flushing scheme can of course
-be used by other platforms with expensive IOTLB flushes. Particularly
-virtio-iommu may be a candidate.
-
-In a previous version I verified that the new scheme does work on my x86_64
-Ryzen workstation by locally modifying iommu_subsys_init() to default to the
-single queue mode and verifying its use via "/sys/.../iommu_group/type". I did
-not find problems with an AMD GPU, Intel NIC (with SR-IOV and KVM
-pass-through), NVMes or any on board peripherals.
-
-For this version I switched to b4 prep/b4 send so this is now available
-with b4 generated tags in the b4/dma_iommu topic branch of my
-git.kernel.org repository[3]. And we also get base-commit, and change-id
-tags as well as PGP signed mails.
-
-NOTE: Due to the large drop in performance I think we should not merge the DMA
-API conversion (patch 4) until we have a more suited IOVA flushing scheme
-with similar improvements as the proposed changes.
-
-Best regards,
-Niklas
-
-[0] https://lore.kernel.org/linux-iommu/20221109142903.4080275-1-schnelle@linux.ibm.com/
-[1] https://lore.kernel.org/linux-iommu/3e402947-61f9-b7e8-1414-fde006257b6f@arm.com/
-[2] https://lore.kernel.org/linux-iommu/a8e778da-7b41-a6ba-83c3-c366a426c3da@arm.com/
-[3] https://git.kernel.org/pub/scm/linux/kernel/git/niks/linux.git/
-
-Changes sinve v7:
-- Add R-b from Matt
-- Rebase on v6.3-rc1
-- Switched to b4 prep / b4 send adding base-commit, change-id, PGP signatures.
-  For the cost of no per-patch change lists.
-
-Changes since v6:
-- Rebased on iommu-next branch (Matt)
-  - No need for ops->set_platform_dma() anymore
-  - Add gfp_t gfp parameters for page allocations
-- In patch 4 removed a superflous s390_domain->dma_table assignment
-- Added R-bs from Matt
-
-Changes since v5:
-- Instead of introducing a new IOMMU domain type utilize a new options
-  mechanism that allows IOMMU drivers to tune the DMA IOMMU flushing (Jason,
-  Robin)
-- The above reworks patches 5 and 6
-- Dropped patch 7 as its functionality is no longer needed
-
-Changes since v4:
-- Picked up R-b's for patch 1, 2 and 3
-- In patch 5 fixed iommu_group_store_type() mistakenly initializing DMA-SQ
-  instead of DMA-FQ. This was caused by iommu_dma_init_fq() being called before
-  domain->type is set, instead pass the type as paramater. This also closes
-  a window where domain->type is still DMA while the FQ is already used. (Gerd)
-- Replaced a missed check for IOMMU_DOMAIN_DMA_FQ with the new generic
-  __IOMMU_DOMAIN_DMA_LAZY in patch 5
-- Made the ISM PCI Function Type a define (Matt)
-- Removed stale TODO comment (Matt)
-
-Changes since v3:
-- Reword commit message of patch 2 for more clarity
-- Correct typo in comment added by patch 2 (Alexandra)
-- Adapted signature of .iommu_tlb_sync mapo for sun50i IOMMU driver added in
-  v6.2-rc1 (kernel test robot)
-- Add R-b from Alexandra for patch 1
-
-Changes since v2:
-- Move the IOTLB out-of-resource handling into the IOMMU enabling it also for
-  the IOMMU API (patch 2). This also makes this independent from the DMA API
-  conversion (Robin, Jason).
-- Rename __IOMMU_DOMAIN_DMA_FQ to __IOMMU_DOMAIN_DMA_LAZY when introducing
-  single queue flushing mode.
-- Make selecting between single and per-CPU flush queues an explicit IOMMU op
-  (patch 7)
-
-Changes since RFC v1:
-- Patch 1 uses dma_set_mask_and_coherent() (Christoph)
-- Patch 3 now documents and allows the use of iommu.strict=0|1 on s390 and
-  deprecates s390_iommu=strict while making it an alias.
-- Patches 5-7 completely reworked to reuse existing queue logic (Robin)
-- Added patch 4 to allow using iommu.strict=0|1 to override
-  ops->def_domain_type.
-
+Signed-off-by: Rob Herring <robh@kernel.org>
 ---
-Niklas Schnelle (6):
-      s390/ism: Set DMA coherent mask
-      iommu: Allow .iotlb_sync_map to fail and handle s390's -ENOMEM return
-      s390/pci: prepare is_passed_through() for dma-iommu
-      s390/pci: Use dma-iommu layer
-      iommu/dma: Allow a single FQ in addition to per-CPU FQs
-      iommu/dma: Make flush queue sizes and timeout driver configurable
+ drivers/pinctrl/mediatek/pinctrl-moore.c |  2 +-
+ drivers/pinctrl/pinctrl-single.c         |  4 ++--
+ drivers/pinctrl/pinctrl-stmfx.c          |  2 +-
+ drivers/pinctrl/renesas/pinctrl.c        |  4 ++--
+ drivers/pinctrl/stm32/pinctrl-stm32.c    |  2 +-
+ drivers/pinctrl/sunxi/pinctrl-sunxi.c    | 20 ++++++++++----------
+ 6 files changed, 17 insertions(+), 17 deletions(-)
 
- Documentation/admin-guide/kernel-parameters.txt |   9 +-
- arch/s390/include/asm/pci.h                     |   7 -
- arch/s390/include/asm/pci_clp.h                 |   3 +
- arch/s390/include/asm/pci_dma.h                 | 121 +---
- arch/s390/pci/Makefile                          |   2 +-
- arch/s390/pci/pci.c                             |  22 +-
- arch/s390/pci/pci_bus.c                         |   5 -
- arch/s390/pci/pci_debug.c                       |  12 +-
- arch/s390/pci/pci_dma.c                         | 735 ------------------------
- arch/s390/pci/pci_event.c                       |  17 +-
- arch/s390/pci/pci_sysfs.c                       |  19 +-
- drivers/iommu/Kconfig                           |   4 +-
- drivers/iommu/amd/iommu.c                       |   5 +-
- drivers/iommu/apple-dart.c                      |   5 +-
- drivers/iommu/dma-iommu.c                       | 189 ++++--
- drivers/iommu/dma-iommu.h                       |   4 +-
- drivers/iommu/intel/iommu.c                     |   5 +-
- drivers/iommu/iommu.c                           |  24 +-
- drivers/iommu/msm_iommu.c                       |   5 +-
- drivers/iommu/mtk_iommu.c                       |   5 +-
- drivers/iommu/s390-iommu.c                      | 435 +++++++++++++-
- drivers/iommu/sprd-iommu.c                      |   5 +-
- drivers/iommu/sun50i-iommu.c                    |   4 +-
- drivers/iommu/tegra-gart.c                      |   5 +-
- drivers/s390/net/ism_drv.c                      |   2 +-
- include/linux/iommu.h                           |  29 +-
- 26 files changed, 671 insertions(+), 1007 deletions(-)
----
-base-commit: fe15c26ee26efa11741a7b632e9f23b01aca4cc6
-change-id: 20230310-dma_iommu-5e048c538647
-
-Best regards,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.c b/drivers/pinctrl/mediatek/pinctrl-moore.c
+index 007b98ce5631..8649a2f9d324 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-moore.c
++++ b/drivers/pinctrl/mediatek/pinctrl-moore.c
+@@ -586,7 +586,7 @@ static int mtk_build_gpiochip(struct mtk_pinctrl *hw)
+ 	 * Documentation/devicetree/bindings/gpio/gpio.txt on how to
+ 	 * bind pinctrl and gpio drivers via the "gpio-ranges" property.
+ 	 */
+-	if (!of_find_property(hw->dev->of_node, "gpio-ranges", NULL)) {
++	if (!of_property_present(hw->dev->of_node, "gpio-ranges")) {
+ 		ret = gpiochip_add_pin_range(chip, dev_name(hw->dev), 0, 0,
+ 					     chip->ngpio);
+ 		if (ret < 0) {
+diff --git a/drivers/pinctrl/pinctrl-single.c b/drivers/pinctrl/pinctrl-single.c
+index 190923757cda..0dabbcf68b9f 100644
+--- a/drivers/pinctrl/pinctrl-single.c
++++ b/drivers/pinctrl/pinctrl-single.c
+@@ -939,11 +939,11 @@ static int pcs_parse_pinconf(struct pcs_device *pcs, struct device_node *np,
+ 
+ 	/* cacluate how much properties are supported in current node */
+ 	for (i = 0; i < ARRAY_SIZE(prop2); i++) {
+-		if (of_find_property(np, prop2[i].name, NULL))
++		if (of_property_present(np, prop2[i].name))
+ 			nconfs++;
+ 	}
+ 	for (i = 0; i < ARRAY_SIZE(prop4); i++) {
+-		if (of_find_property(np, prop4[i].name, NULL))
++		if (of_property_present(np, prop4[i].name))
+ 			nconfs++;
+ 	}
+ 	if (!nconfs)
+diff --git a/drivers/pinctrl/pinctrl-stmfx.c b/drivers/pinctrl/pinctrl-stmfx.c
+index 1181c4b506b1..3c031692e44d 100644
+--- a/drivers/pinctrl/pinctrl-stmfx.c
++++ b/drivers/pinctrl/pinctrl-stmfx.c
+@@ -632,7 +632,7 @@ static int stmfx_pinctrl_probe(struct platform_device *pdev)
+ 	pctl->dev = &pdev->dev;
+ 	pctl->stmfx = stmfx;
+ 
+-	if (!of_find_property(np, "gpio-ranges", NULL)) {
++	if (!of_property_present(np, "gpio-ranges")) {
+ 		dev_err(pctl->dev, "missing required gpio-ranges property\n");
+ 		return -EINVAL;
+ 	}
+diff --git a/drivers/pinctrl/renesas/pinctrl.c b/drivers/pinctrl/renesas/pinctrl.c
+index b74147800319..5c71e168b370 100644
+--- a/drivers/pinctrl/renesas/pinctrl.c
++++ b/drivers/pinctrl/renesas/pinctrl.c
+@@ -125,8 +125,8 @@ static int sh_pfc_dt_subnode_to_map(struct pinctrl_dev *pctldev,
+ 	 * inside a subnode nor across subnodes.
+ 	 */
+ 	if (!pmx->func_prop_name) {
+-		if (of_find_property(np, "groups", NULL) ||
+-		    of_find_property(np, "pins", NULL)) {
++		if (of_property_present(np, "groups")||
++		    of_property_present(np, "pins")) {
+ 			pmx->func_prop_name = "function";
+ 			pmx->groups_prop_name = "groups";
+ 			pmx->pins_prop_name = "pins";
+diff --git a/drivers/pinctrl/stm32/pinctrl-stm32.c b/drivers/pinctrl/stm32/pinctrl-stm32.c
+index cb33a23ab0c1..66a25becd8f5 100644
+--- a/drivers/pinctrl/stm32/pinctrl-stm32.c
++++ b/drivers/pinctrl/stm32/pinctrl-stm32.c
+@@ -1374,7 +1374,7 @@ static struct irq_domain *stm32_pctrl_get_irq_domain(struct platform_device *pde
+ 	struct device_node *parent;
+ 	struct irq_domain *domain;
+ 
+-	if (!of_find_property(np, "interrupt-parent", NULL))
++	if (!of_property_present(np, "interrupt-parent"))
+ 		return NULL;
+ 
+ 	parent = of_irq_find_parent(np);
+diff --git a/drivers/pinctrl/sunxi/pinctrl-sunxi.c b/drivers/pinctrl/sunxi/pinctrl-sunxi.c
+index f35179eceb4e..1dc1882cbdd7 100644
+--- a/drivers/pinctrl/sunxi/pinctrl-sunxi.c
++++ b/drivers/pinctrl/sunxi/pinctrl-sunxi.c
+@@ -224,16 +224,16 @@ static int sunxi_pctrl_get_group_pins(struct pinctrl_dev *pctldev,
+ 
+ static bool sunxi_pctrl_has_bias_prop(struct device_node *node)
+ {
+-	return of_find_property(node, "bias-pull-up", NULL) ||
+-		of_find_property(node, "bias-pull-down", NULL) ||
+-		of_find_property(node, "bias-disable", NULL) ||
+-		of_find_property(node, "allwinner,pull", NULL);
++	return of_property_present(node, "bias-pull-up") ||
++		of_property_present(node, "bias-pull-down") ||
++		of_property_present(node, "bias-disable") ||
++		of_property_present(node, "allwinner,pull");
+ }
+ 
+ static bool sunxi_pctrl_has_drive_prop(struct device_node *node)
+ {
+-	return of_find_property(node, "drive-strength", NULL) ||
+-		of_find_property(node, "allwinner,drive", NULL);
++	return of_property_present(node, "drive-strength") ||
++		of_property_present(node, "allwinner,drive");
+ }
+ 
+ static int sunxi_pctrl_parse_bias_prop(struct device_node *node)
+@@ -241,13 +241,13 @@ static int sunxi_pctrl_parse_bias_prop(struct device_node *node)
+ 	u32 val;
+ 
+ 	/* Try the new style binding */
+-	if (of_find_property(node, "bias-pull-up", NULL))
++	if (of_property_present(node, "bias-pull-up"))
+ 		return PIN_CONFIG_BIAS_PULL_UP;
+ 
+-	if (of_find_property(node, "bias-pull-down", NULL))
++	if (of_property_present(node, "bias-pull-down"))
+ 		return PIN_CONFIG_BIAS_PULL_DOWN;
+ 
+-	if (of_find_property(node, "bias-disable", NULL))
++	if (of_property_present(node, "bias-disable"))
+ 		return PIN_CONFIG_BIAS_DISABLE;
+ 
+ 	/* And fall back to the old binding */
+@@ -1424,7 +1424,7 @@ static int sunxi_pinctrl_setup_debounce(struct sunxi_pinctrl *pctl,
+ 		return 0;
+ 
+ 	/* If we don't have any setup, bail out */
+-	if (!of_find_property(node, "input-debounce", NULL))
++	if (!of_property_present(node, "input-debounce"))
+ 		return 0;
+ 
+ 	losc = devm_clk_get(pctl->dev, "losc");
 -- 
-Niklas Schnelle
-Linux on Z Development
-
-IBM Deutschland Research & Development GmbH
-Vorsitzender des Aufsichtsrats: Gregor Pillen
-Geschäftsführung: David Faller
-Sitz der Gesellschaft: Böblingen / Registergericht: Amtsgericht Stuttgart, HRB 243294
-IBM Data Privacy Statement - https://www.ibm.com/privacy 
+2.39.2
 
 
