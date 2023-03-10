@@ -4,77 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA035C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 10:23:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CBFCC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 10:43:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sHc02Bqeqt1C7WoOr04FIucmx4YqEdZ758jRMdp13wE=; b=WEncstpSB74wWzXd6VDeW+6zr3
-	akDmYR0/marssnfYd5AQJW8rUJhbJ/nvinTgs6VJsTDvt1O2U2Swm0OXzUzY9za5gI/Yd8/QhkL/G
-	3IyqJqFLl85MMGshH2+FGOOg27IiDOMOxTuZ/JkpSoE5nOmT98094MaUQ7gtZrtqoC3CbcVY8EkrL
-	oVpy6UyD+Uu37UsLCf7ey5IzOm+sP75acHTksf7RwkTTA877tT/M9DUqB6WuiiT8dHtGgeIPD3h6D
-	0his+xW3cEP6VnjSoxZYCMnKr4HZyatI0gjVO613zRiSJweNqD6Xn3xwmfN6QRq+3Rzjcr63ODPKM
-	t/USNC6A==;
+	bh=6D8DgvSllDpIpjkRMtHsbcOPCoCHnTYInoVGhS4b+QA=; b=YuZn8Ut/iJpIBkNIfb/5haDA+r
+	UtcDIBlB96IPbw4ypnwY5hmHoafHY7xsh+euI4CVzisGzh8/WBZzMbhGZ4ylUsstSGzoRRaWzUnZJ
+	FolzBsu/0eqq2LTstJvL3bk/QsEBnDqv/9ueRUy58Bt9BKBqPSdb30g9H2Cf2izIcWcTdxO2hDz5Y
+	4nMwUaXDOy9qZIqIQS61ZEZLFLvqL+T2/tSwpH1hf41UDRfdI5xKJX52iZLSwfIR/QRlnfG0cJrv3
+	FLoxSl0qi1prs7rMrxNgG2vtKThQIr7R5+Ejl3TEc2lt6AfNrIdXSvajUvqhIcgaBzSKXWj+Bqn0S
+	k7uNcG0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paZtn-00E9o2-TT; Fri, 10 Mar 2023 10:22:55 +0000
-Received: from sender4-op-o10.zoho.com ([136.143.188.10])
+	id 1paaDy-00EE6c-Ii; Fri, 10 Mar 2023 10:43:46 +0000
+Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paZtH-00E9dk-7J; Fri, 10 Mar 2023 10:22:31 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1678443709; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=HL+mpXGzO2n7kJaxMGabVrdt2/v6BkB2ZR/vv8rP62hVVUq1cUqFkNYCJYKH+TUiEu2hMRjHQkoT8hWamap6Pb2fcoRMq8pcrr03F1PcvHzg/6QAew9TMfvBBe/0GsrDUveieeVLz2amzjVJnAcOs8iYs9fulZyE4pPSBfn3OEM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1678443709; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=sHc02Bqeqt1C7WoOr04FIucmx4YqEdZ758jRMdp13wE=; 
-	b=Y22bKSpl27BBAE3xiJq4eySja+X1LXUCk84XWQ9xJxU5ZhxDYKDuNQgi30CdR4Qmi81uJt7iPFOsdm8HTOF2bF49rWpb9fJRmsqltD7QwoZLN8mEkdvzpiFuBVMT8nDz1dFOJ4dxw7wr+X8CsWLjqcXTYd+Z7/Im6gDoXsN7Osw=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1678443709;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=sHc02Bqeqt1C7WoOr04FIucmx4YqEdZ758jRMdp13wE=;
-	b=ZEp9c76ztW+EY2sBxsB0ZbRii7UfhZARUXcD5EwDOLnVkq3N0KUICVSvhQI/Yw08
-	lKzHSphzlYRg7yrM5TfYhx75SChUBflWi1D60BHpYUSBoXTZLEoFrb8TjHy5XaRcu6E
-	Sv8+1P3qBWwcCfW3GU2UFZvQVaBexivs/JDPf/Ps=
-Received: from [10.10.10.3] (212.68.60.226 [212.68.60.226]) by mx.zohomail.com
-	with SMTPS id 1678443708111445.26386587299385; Fri, 10 Mar 2023 02:21:48 -0800 (PST)
-Message-ID: <10f872cc-b502-61ca-aefa-3047a9dfe5cd@arinc9.com>
-Date: Fri, 10 Mar 2023 13:21:42 +0300
+	id 1paaDt-00EE4y-RO; Fri, 10 Mar 2023 10:43:43 +0000
+Received: by mail-lj1-x22f.google.com with SMTP id h3so4824477lja.12;
+        Fri, 10 Mar 2023 02:43:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678445017;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=6D8DgvSllDpIpjkRMtHsbcOPCoCHnTYInoVGhS4b+QA=;
+        b=nCHfG0VG+xIVMI3Uz30+lCPQjHMFNzvzKvLr/uxFUsFQf3sK0QzWXC1lkMYIpnb+yo
+         kTfC3hUaq8cgGe9xMk6AcbdnaIcg7HQQTQy9FYUYrxXA8lGpEBgL1Dmir6Vjlq8dfPLs
+         C7qPdt6AmXMhTO+LAlZFKkmu7qpBvf+EAlj48MXE+EFWNTkHYnE9PYxJfTlLY0JQzVRe
+         AVPRBJUNvn2rznC1jaKvMtoRuQcxNZy6ZCXkCfDrMOAox6Fj/UPpj2Qw3RPLR5Sm6Qw0
+         QLFfzrkeRntLiy2SEYLW90oHWj4Bztsxrd9uCIC8aMvEDbCJnw1v2hI9WbY/GoLyvewF
+         cJRw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678445017;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=6D8DgvSllDpIpjkRMtHsbcOPCoCHnTYInoVGhS4b+QA=;
+        b=zC0447W97lSFUjWwyuCTp8nugPQfFwTT7vCdLKy2g/ZZdAncN7HpFh01TlT1dIdxz8
+         6Xpcnl+NaOPxw0IWfJYnk2+C93IF1QRs3RZjFSpUMqNo5LV4DRrMvt4ZQvgfUo+I64xU
+         jswA7mtFndixurCU3sTvJKaVQAMRyt5lDPv3sm6AZpJ94x39kY1jfn2ILYDh01z6hPlh
+         bDLfuwilWvL9XY6FChWObAnXLALqQcXVLBR7sknJnXikiV/fawzEcU0uR718f8iy7JMB
+         hoeSSF7V04Mcf8tEc+t5696TfyMR/ub86SJqeppERLyq2eYI75mt7oB7A8kkbtZALrhc
+         SDDg==
+X-Gm-Message-State: AO0yUKWiVV4r+SfundliKmPMQ0Vbxgik1LTtm9rdOO9oVejgDsm8GTXO
+	hs0VtVsqkNqqDp1J+ZXolxQ=
+X-Google-Smtp-Source: AK7set+p71/bzHEgwcLpPLO/Pz2JDQS28ccp+iIU3K53kTB52otuWjNtgd3ESU/TF0IRcMCTp5ShaA==
+X-Received: by 2002:a2e:4619:0:b0:290:8289:8cba with SMTP id t25-20020a2e4619000000b0029082898cbamr310434lja.8.1678445017151;
+        Fri, 10 Mar 2023 02:43:37 -0800 (PST)
+Received: from [192.168.26.149] (ip-194-187-74-233.konfederacka.maverick.com.pl. [194.187.74.233])
+        by smtp.googlemail.com with ESMTPSA id l20-20020a2e9094000000b00297dad1a2b0sm187498ljg.103.2023.03.10.02.43.33
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 10 Mar 2023 02:43:36 -0800 (PST)
+Message-ID: <453c9298-d64a-aa77-28ba-ac986dfdd722@gmail.com>
+Date: Fri, 10 Mar 2023 11:43:32 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH v3 net 2/2] net: dsa: mt7530: set PLL frequency and trgmii
- only when trgmii is used
-To: Sean Wang <sean.wang@mediatek.com>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:96.0) Gecko/20100101
+ Thunderbird/96.0
+Subject: Re: [PATCH V3] nvmem: add explicit config option to read OF fixed
+ cells
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Miquel Raynal <miquel.raynal@bootlin.com>,
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+ Alyssa Rosenzweig <alyssa@rosenzweig.io>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>,
- Russell King <rmk+kernel@armlinux.org.uk>
-Cc: netdev@vger.kernel.org, erkin.bozoglu@xeront.com,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230310073338.5836-1-arinc.unal@arinc9.com>
- <20230310073338.5836-2-arinc.unal@arinc9.com>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20230310073338.5836-2-arinc.unal@arinc9.com>
+ Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Vincent Shih <vincent.sunplus@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>,
+ Michal Simek <michal.simek@xilinx.com>,
+ Alessandro Zummo <a.zummo@towertech.it>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Evgeniy Polyakov <zbr@ioremap.net>, linux-mtd@lists.infradead.org,
+ linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-rtc@vger.kernel.org, Michael Walle <michael@walle.cc>,
+ =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
+References: <20230309112028.19215-1-zajec5@gmail.com>
+ <ac94f04b-4b25-81e4-386f-55b0a2c7c85f@linaro.org>
+From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+In-Reply-To: <ac94f04b-4b25-81e4-386f-55b0a2c7c85f@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230310_022223_364468_DAE5E635 
-X-CRM114-Status: GOOD (  26.45  )
+X-CRM114-CacheID: sfid-20230310_024341_929618_090C8410 
+X-CRM114-Status: GOOD (  33.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,117 +125,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10.03.2023 10:33, arinc9.unal@gmail.com wrote:
-> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+On 10.03.2023 10:22, Srinivas Kandagatla wrote:
 > 
-> As my testing on the MCM MT7530 switch on MT7621 SoC shows, setting the PLL
-> frequency does not affect MII modes other than trgmii on port 5 and port 6.
-> So the assumption is that the operation here called "setting the PLL
-> frequency" actually sets the frequency of the TRGMII TX clock.
+> On 09/03/2023 11:20, Rafał Miłecki wrote:
+>> From: Rafał Miłecki <rafal@milecki.pl>
+>>
+>> NVMEM subsystem looks for fixed NVMEM cells (specified in DT) by
+>> default. This behaviour was totally safe in early days before adding
+>> support for dynamic cells and with simple DT syntax.
+>>
+>> With every new supported NVMEM device with dynamic cells the current
+>> behaviour becomes non-optimal:
+>> 1. It results in unneeded iterating over DT nodes
+>> 2. It may result in false discovery of cells (in case DT subnodes
+>>     contain "reg" property)
+>>
 > 
-> Make it so that it and the rest of the trgmii setup run only when the
-> trgmii mode is used.
+> Am really not sure what is going on here,
+> I did raise some issues with this overall approch to start with at [1] none of which are discussed and now I see v3 :-)
 > 
-> Tested rgmii and trgmii modes of port 6 on MCM MT7530 on MT7621AT Unielec
-> U7621-06 and standalone MT7530 on MT7623NI Bananapi BPI-R2.
-> 
-> Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
-> Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> ---
->   drivers/net/dsa/mt7530.c | 62 ++++++++++++++++++++--------------------
->   1 file changed, 31 insertions(+), 31 deletions(-)
-> 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index b1a79460df0e..c2d81b7a429d 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -430,8 +430,6 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
->   	switch (interface) {
->   	case PHY_INTERFACE_MODE_RGMII:
->   		trgint = 0;
-> -		/* PLL frequency: 125MHz */
-> -		ncpo1 = 0x0c80;
->   		break;
->   	case PHY_INTERFACE_MODE_TRGMII:
->   		trgint = 1;
-> @@ -462,38 +460,40 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
->   	mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
->   		   P6_INTF_MODE(trgint));
->   
-> -	/* Lower Tx Driving for TRGMII path */
-> -	for (i = 0 ; i < NUM_TRGMII_CTRL ; i++)
-> -		mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
-> -			     TD_DM_DRVP(8) | TD_DM_DRVN(8));
-> -
-> -	/* Disable MT7530 core and TRGMII Tx clocks */
-> -	core_clear(priv, CORE_TRGMII_GSW_CLK_CG,
-> -		   REG_GSWCK_EN | REG_TRGMIICK_EN);
-> -
-> -	/* Setup the MT7530 TRGMII Tx Clock */
-> -	core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
-> -	core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
-> -	core_write(priv, CORE_PLL_GROUP10, RG_LCDDS_SSC_DELTA(ssc_delta));
-> -	core_write(priv, CORE_PLL_GROUP11, RG_LCDDS_SSC_DELTA1(ssc_delta));
-> -	core_write(priv, CORE_PLL_GROUP4,
-> -		   RG_SYSPLL_DDSFBK_EN | RG_SYSPLL_BIAS_EN |
-> -		   RG_SYSPLL_BIAS_LPF_EN);
-> -	core_write(priv, CORE_PLL_GROUP2,
-> -		   RG_SYSPLL_EN_NORMAL | RG_SYSPLL_VODEN |
-> -		   RG_SYSPLL_POSDIV(1));
-> -	core_write(priv, CORE_PLL_GROUP7,
-> -		   RG_LCDDS_PCW_NCPO_CHG | RG_LCCDS_C(3) |
-> -		   RG_LCDDS_PWDB | RG_LCDDS_ISO_EN);
-> -
-> -	/* Enable MT7530 core and TRGMII Tx clocks */
-> -	core_set(priv, CORE_TRGMII_GSW_CLK_CG,
-> -		 REG_GSWCK_EN | REG_TRGMIICK_EN);
-> -
-> -	if (!trgint)
-> +	if (trgint) {
-> +		/* Lower Tx Driving for TRGMII path */
-> +		for (i = 0 ; i < NUM_TRGMII_CTRL ; i++)
-> +			mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
-> +				     TD_DM_DRVP(8) | TD_DM_DRVN(8));
-> +
-> +		/* Disable MT7530 core and TRGMII Tx clocks */
-> +		core_clear(priv, CORE_TRGMII_GSW_CLK_CG,
-> +			   REG_GSWCK_EN | REG_TRGMIICK_EN);
-> +
-> +		/* Setup the MT7530 TRGMII Tx Clock */
-> +		core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
-> +		core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
-> +		core_write(priv, CORE_PLL_GROUP10, RG_LCDDS_SSC_DELTA(ssc_delta));
-> +		core_write(priv, CORE_PLL_GROUP11, RG_LCDDS_SSC_DELTA1(ssc_delta));
-> +		core_write(priv, CORE_PLL_GROUP4,
-> +			   RG_SYSPLL_DDSFBK_EN | RG_SYSPLL_BIAS_EN |
-> +			   RG_SYSPLL_BIAS_LPF_EN);
-> +		core_write(priv, CORE_PLL_GROUP2,
-> +			   RG_SYSPLL_EN_NORMAL | RG_SYSPLL_VODEN |
-> +			   RG_SYSPLL_POSDIV(1));
-> +		core_write(priv, CORE_PLL_GROUP7,
-> +			   RG_LCDDS_PCW_NCPO_CHG | RG_LCCDS_C(3) |
-> +			   RG_LCDDS_PWDB | RG_LCDDS_ISO_EN);
-> +
-> +		/* Enable MT7530 core and TRGMII Tx clocks */
-> +		core_set(priv, CORE_TRGMII_GSW_CLK_CG,
-> +			 REG_GSWCK_EN | REG_TRGMIICK_EN);
-> +	} else {
->   		for (i = 0 ; i < NUM_TRGMII_CTRL; i++)
->   			mt7530_rmw(priv, MT7530_TRGMII_RD(i),
->   				   RD_TAP_MASK, RD_TAP(16));
+> [1] https://lore.kernel.org/lkml/20230309094010.1051573-1-michael@walle.cc/T/#m7706b640979aabf251436e017b8189413661a53a
 
-This code runs if the phy mode is not trgmii. Other than trgmii, only 
-the rgmii mode is supported on the hardware so this runs when the rgmii 
-mode is used on port 6.
+I updated commit message to address your concerns. I thought I made it
+clear. I don't know how to emphasize it better.
 
-I've tested the rgmii mode on MCM and standalone MT7530 without running 
-this code and it works fine. Close to gigabit download/upload speed and 
-no packet loss. I don't understand why the TRGMII RX registers are 
-modified when the trgmii mode is not used at all.
+I'll try to answer nevertheless, please see below.
 
-I don't suppose anyone from MediaTek would clarify, so this presumably 
-dead code will remain.
 
-Arınç
+On 9.03.2023 10:37, Srinivas Kandagatla wrote:
+ > On 24/02/2023 07:29, Rafał Miłecki wrote:
+ >> From: Rafał Miłecki <rafal@milecki.pl>
+ >>
+ >> NVMEM subsystem looks for fixed NVMEM cells (specified in DT) by
+ >> default. This behaviour made sense in early days before adding support
+ >> for dynamic cells.
+ >>
+ >> With every new supported NVMEM device with dynamic cells current
+ >> behaviour becomes non-optimal. It results in unneeded iterating over DT
+ >> nodes and may result in false discovery of cells (depending on used DT
+ >> properties).
+ >
+ >>
+ >> This behaviour has actually caused a problem already with the MTD
+ >> subsystem. MTD subpartitions were incorrectly treated as NVMEM cells.
+ >>
+ >> Also with upcoming support for NVMEM layouts no new binding or driver
+ >> should support fixed cells defined in device node.
+ >
+ > This is not very clear, are you saying that we should not support fixed cells? If that is the case then you are proabably taking this in wrong direction. nvmem was built based on the fact that drivers can read from a fixed offsets. Dynamic cells is something very new, that does not mean that we should ditch fixed cells support in dt.
+
+I DON'T deprecate or drop support for fixed layouts (fixed NVMEM cells).
+Period.
+I WON'T drop support for old binding. We stay backward compatible.
+Period.
+
+In this patch's body I wrote:
+"with the support for NVMEM layouts we may & should have *new* bindings allow fixed NVMEM cells only in the "nvmem-layout" subnode"
+that clearly means I still want to ALLOW fixed NVMEM cells - just in the *nvmem-layout* node.
+
+I want to KEEP support for fixed NVMEM cells.
+I just want them to be preferably defined in the "nvmem-layout" node.
+
+
+ >> Solve this by modifying drivers for bindings that support specifying
+ >> fixed NVMEM cells in DT. Make them explicitly tell NVMEM subsystem to
+ >> read cells from DT.
+ >
+ > Shouldn't this be opposite, let the new providers tell that cells are created at runtime?
+ >
+ > or even better if there is a way to detect if we can set this flag dynamically based on layout/post-processing configuration.
+ >
+ > that should be much cleaner approch.
+
+I tried to address this concert in the following part of commit body:
+
+ > The best approach seems to be making NVMEM core looking for fixed DT
+ > cells in **device** node an opt-in feature. It's a feature that over
+ > time should get deprecated in a favor of using "nvmem-layouts" also for
+ > fixed NVMEM cells.
+
+New NVMEM provider bindings and drivers will get developed. I would
+want all new bindings to use "nvmem-layout" for describing NVMEM cells
+(no matter if fixed or dynamic).
+
+That means all new drivers WILL NOT need to set "use_fixed_of_cells".
+
+So over time "use_fixed_of_cells" will become a minority. It'w would be
+pitty to have every new driver to request NVMEM code to skip looking for
+NVMEM cells in **device** node.
+
+So my answer is: no. I don't believe it should be opposite. Looking for
+fixed NVMEM cells in **device** DT node should be an opt-in.
+
+If by some miracle I manage to get my patches through then you'll forget
+about "use_fixed_of_cells" next month. Noone will need it for any new
+stuff. It'll stay for backward compatibility only.
 
