@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EBAEC6FD19
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 07:34:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E73EC64EC4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 07:34:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zarTkLijwIfhb3++coRGP/AsVqk8HV3V1KUfOUgPVtk=; b=p7RKF8MEPIsS+aLZp8OiVlsOsx
-	KJFQtuw1NwVpN6Kz+3OebMnBydNrOhW/LQD2OKhM10x6PI1W3YjL46D5lSEv8RABc0nL7492iIdMy
-	cAdLveYcxgL3LRezP1pUzV1QJ4LnUQ1k07iyCyW3OKUowfzsVjgd8THuIXP6kX+0j6fVyfiypI/x7
-	b+SX4pcewqM2qpnhFdXHtGbJ/9+DGXOkGlJYFjuozY7rAdTsiJ049U57Wn7tCQt2JMfIFHXlBwU+I
-	33u7QhsQAO1Cm+9kFItKlfvw4x7zJvZJAlgYtk2G1nMY7EFCSYcmcxWs8+VqlbkyClsDC/Rzk0M4K
-	HPlpamew==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=w1qQOPUYZltp62usDX13u0lfSl6bY/5+CW4Brvbfffs=; b=jUSC59DEK21VgIo/NACl16HdKq
+	2AzSYqC6+c+lv2meCZxrbqp8B+7IMEqCAknx8EtANM9QI0vQqEsIvTuUHMqI3I1IQC6HlwTtrCqlp
+	qllquoI5KE4rPX8414MDtPgHeHO2wzn4qeA46jn23aRco1ynVHhD/IKhB/WAKT/g6nCCFam5v5Yfo
+	waQHpUciKVRYilTdLKobgrEILgPcYhUTEGFQmgfTXbwqWQCPB3ghQyb6zCb34ijBQPg7/+CxaxUO4
+	QVbe1A8faVN1c7DVdUBx25eUOG64XNzWPkByJ4w3JQf/tC8TcdhFYR3kWHcUMAxGTWuSKVpPqJ1ja
+	Z3YXQ2XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paXGJ-00DQ2I-IW; Fri, 10 Mar 2023 07:33:59 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1paXGS-00DQ7E-Oq; Fri, 10 Mar 2023 07:34:08 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paXG8-00DPxd-I6; Fri, 10 Mar 2023 07:33:49 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id h11so4146394wrm.5;
-        Thu, 09 Mar 2023 23:33:45 -0800 (PST)
+	id 1paXG9-00DPy5-Oj; Fri, 10 Mar 2023 07:33:51 +0000
+Received: by mail-wm1-x336.google.com with SMTP id j19-20020a05600c191300b003eb3e1eb0caso5306293wmq.1;
+        Thu, 09 Mar 2023 23:33:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678433624;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=zarTkLijwIfhb3++coRGP/AsVqk8HV3V1KUfOUgPVtk=;
-        b=JzR3GSzGt6g7r6i4Cwic2dUusdk/8qRxYUN/wpStfXAPOmEF1yGACv2eH3kQGepu8+
-         di2klWZbKaTV059r+B0wKDMMRMn6tD/qA1zOBnT7aQr2k0cg0lbSTms0fg4Mn+0DVRvu
-         MBepKuw6rj9cwHTCI6q54QNE0hRSYeCsExGOmG0Nk5HKjpylZS8flUqZz8mUKtZfsmjS
-         U+Hmy1VNJTFE/YsqwOBAQJVfuO3j6dW/sJSrztzHrzghLfEkibEzqS0dS1H+SNY2+fAA
-         9WByQ3A62u2/y6AfL5Ezw1EUFBl7yVcgoEHGbwbVamu5KnyD+FHqzKn8FAhNscSh48cn
-         k9lA==
+        d=gmail.com; s=20210112; t=1678433626;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=w1qQOPUYZltp62usDX13u0lfSl6bY/5+CW4Brvbfffs=;
+        b=qGCFeI2uqTNIpuk4x4yI01LMktwcIsPFqS6d7dSQ61jZXyA0sm5CKaie+4FhNm8xig
+         guwmjxnV/UyBRNKxExDQZ7e7+WrHvR7BDnlzrI0BpqXkCeE2UYwV7zvkV8zDXTf3bMQF
+         6o1OzgUtsGCuFm25+oaHLGwLclmGjSGTK8Q83uOeGK8R6/2Dx4Zy0sezKPjBlyBT63jG
+         lGAq5gxKDe5ZAIcviO1IXpfj97Q9DyOkvY9/lbIkLaHYODABPpkj631SZLGh31D603UT
+         7WkoTraZV7kSTsfjhsWUa5o0QtA+GHRw/9icYx7mzC7BslR/A3bDermFZ9abXMSewRz6
+         oTWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678433624;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=zarTkLijwIfhb3++coRGP/AsVqk8HV3V1KUfOUgPVtk=;
-        b=BaVBJkjRempRZ/FQoEIdVV7gVd/CLT7nB6d9jSkFydKQazx+bRwlwfdVX4sndxKqeO
-         Mwowbu3DujOrfd06SZJGUQPFZB9W1Ltf66WmTHnTErb08om/NAsDL2bnxeCr1qKYTXZm
-         qrG+zzAOhnfeWdgZnIOyID7pWstKJ5HgijBddfmWQdvfUN0+6wirF0gfYOavwm9uadMG
-         i24of2Ya+97wKtsUFsQqbDqB4nBT5heU40jbbTwrYqSqR2tGZFYIWs3WO9uCqzcG6Hmx
-         voSD9zdPRKp5D0eRd9Yqe8KyASn7TgKjfT5pI3m0nyE153dLlvcYgACBpgm0wz01fE14
-         +bgg==
-X-Gm-Message-State: AO0yUKWmYX9M7gpbM788B55yoeG6SQSQXrYo4RH3cPzGBKeUsI77Xeno
-	4kyQWjXS14kuNuF6totDiR0=
-X-Google-Smtp-Source: AK7set+zzlSuseUVR2p0H+i3yVkYgwFZudbMm/ifjGFcScl8DRFJsT55wM1RvasPdakrhp0aDQHY1Q==
-X-Received: by 2002:a5d:4012:0:b0:2c5:532a:98c4 with SMTP id n18-20020a5d4012000000b002c5532a98c4mr502630wrp.33.1678433624124;
-        Thu, 09 Mar 2023 23:33:44 -0800 (PST)
+        d=1e100.net; s=20210112; t=1678433626;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=w1qQOPUYZltp62usDX13u0lfSl6bY/5+CW4Brvbfffs=;
+        b=GuWCsSFpOpJ8UjhI2Pvve3qPLvKtSmUMHHTivg3D6FsHQbtx36GWDLn26Nis02qPvD
+         OvaEMYjl88od5MU/FZS9bxkmmHL0F7GHubKV6mgrEONUGRxqNaJEJjnsydiOJFbVhaoE
+         nWYtVpaWLglha7Vp+veXADwB+Ud9dkKJp0A6cMCaVhD658ncBXKJQWlGXvI6QM5cQ07T
+         g3q1156fCJ7Gya8Bqkq0q4K+4F8J2DQ0z1bbYYXy8I4n7zkTV+KPYaWjIfLQHGy4SOhc
+         IXgSehoxD4YMMN3JFXpAiQMtBlEN+x7YEhzduZGP+n8Do1ThFxjB/5xCuDQ1rvOeCEaQ
+         h48Q==
+X-Gm-Message-State: AO0yUKVy6xN3jm4V89VkOYMEZtsCpws0ik5zM3YkCXByhNSF7ktW/0JA
+	SbpZeAd1cggTh7IshWgc3hc=
+X-Google-Smtp-Source: AK7set++j3HjZjV2R6SCTjuiZsJUwAPEIbbQJZLscHhcR/855Ychfiok3Wx21zhrfFuBw8+bVXZhcg==
+X-Received: by 2002:a05:600c:474d:b0:3eb:39e2:915b with SMTP id w13-20020a05600c474d00b003eb39e2915bmr1654219wmo.31.1678433626057;
+        Thu, 09 Mar 2023 23:33:46 -0800 (PST)
 Received: from arinc9-PC.lan ([212.68.60.226])
-        by smtp.gmail.com with ESMTPSA id bi11-20020a05600c3d8b00b003daffc2ecdesm2023129wmb.13.2023.03.09.23.33.42
+        by smtp.gmail.com with ESMTPSA id bi11-20020a05600c3d8b00b003daffc2ecdesm2023129wmb.13.2023.03.09.23.33.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Mar 2023 23:33:43 -0800 (PST)
+        Thu, 09 Mar 2023 23:33:45 -0800 (PST)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Sean Wang <sean.wang@mediatek.com>,
@@ -80,16 +81,18 @@ Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 net 1/2] net: dsa: mt7530: remove now incorrect comment regarding port 5
-Date: Fri, 10 Mar 2023 10:33:37 +0300
-Message-Id: <20230310073338.5836-1-arinc.unal@arinc9.com>
+Subject: [PATCH v3 net 2/2] net: dsa: mt7530: set PLL frequency and trgmii only when trgmii is used
+Date: Fri, 10 Mar 2023 10:33:38 +0300
+Message-Id: <20230310073338.5836-2-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
+In-Reply-To: <20230310073338.5836-1-arinc.unal@arinc9.com>
+References: <20230310073338.5836-1-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_233348_624963_3E1E496D 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20230309_233349_838897_DD1C31A9 
+X-CRM114-Status: GOOD (  17.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,33 +109,107 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Remove now incorrect comment regarding port 5 as GMAC5. This is supposed to
-be supported since commit 38f790a80560 ("net: dsa: mt7530: Add support for
-port 5") under mt7530_setup_port5().
+As my testing on the MCM MT7530 switch on MT7621 SoC shows, setting the PLL
+frequency does not affect MII modes other than trgmii on port 5 and port 6.
+So the assumption is that the operation here called "setting the PLL
+frequency" actually sets the frequency of the TRGMII TX clock.
 
-Fixes: 38f790a80560 ("net: dsa: mt7530: Add support for port 5")
+Make it so that it and the rest of the trgmii setup run only when the
+trgmii mode is used.
+
+Tested rgmii and trgmii modes of port 6 on MCM MT7530 on MT7621AT Unielec
+U7621-06 and standalone MT7530 on MT7623NI Bananapi BPI-R2.
+
+Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
+Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
-
-v3: Resend so the bot can test it now.
-
----
- drivers/net/dsa/mt7530.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/dsa/mt7530.c | 62 ++++++++++++++++++++--------------------
+ 1 file changed, 31 insertions(+), 31 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index a508402c4ecb..b1a79460df0e 100644
+index b1a79460df0e..c2d81b7a429d 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -2201,7 +2201,7 @@ mt7530_setup(struct dsa_switch *ds)
+@@ -430,8 +430,6 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+ 	switch (interface) {
+ 	case PHY_INTERFACE_MODE_RGMII:
+ 		trgint = 0;
+-		/* PLL frequency: 125MHz */
+-		ncpo1 = 0x0c80;
+ 		break;
+ 	case PHY_INTERFACE_MODE_TRGMII:
+ 		trgint = 1;
+@@ -462,38 +460,40 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+ 	mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
+ 		   P6_INTF_MODE(trgint));
  
- 	mt7530_pll_setup(priv);
+-	/* Lower Tx Driving for TRGMII path */
+-	for (i = 0 ; i < NUM_TRGMII_CTRL ; i++)
+-		mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
+-			     TD_DM_DRVP(8) | TD_DM_DRVN(8));
+-
+-	/* Disable MT7530 core and TRGMII Tx clocks */
+-	core_clear(priv, CORE_TRGMII_GSW_CLK_CG,
+-		   REG_GSWCK_EN | REG_TRGMIICK_EN);
+-
+-	/* Setup the MT7530 TRGMII Tx Clock */
+-	core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
+-	core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
+-	core_write(priv, CORE_PLL_GROUP10, RG_LCDDS_SSC_DELTA(ssc_delta));
+-	core_write(priv, CORE_PLL_GROUP11, RG_LCDDS_SSC_DELTA1(ssc_delta));
+-	core_write(priv, CORE_PLL_GROUP4,
+-		   RG_SYSPLL_DDSFBK_EN | RG_SYSPLL_BIAS_EN |
+-		   RG_SYSPLL_BIAS_LPF_EN);
+-	core_write(priv, CORE_PLL_GROUP2,
+-		   RG_SYSPLL_EN_NORMAL | RG_SYSPLL_VODEN |
+-		   RG_SYSPLL_POSDIV(1));
+-	core_write(priv, CORE_PLL_GROUP7,
+-		   RG_LCDDS_PCW_NCPO_CHG | RG_LCCDS_C(3) |
+-		   RG_LCDDS_PWDB | RG_LCDDS_ISO_EN);
+-
+-	/* Enable MT7530 core and TRGMII Tx clocks */
+-	core_set(priv, CORE_TRGMII_GSW_CLK_CG,
+-		 REG_GSWCK_EN | REG_TRGMIICK_EN);
+-
+-	if (!trgint)
++	if (trgint) {
++		/* Lower Tx Driving for TRGMII path */
++		for (i = 0 ; i < NUM_TRGMII_CTRL ; i++)
++			mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
++				     TD_DM_DRVP(8) | TD_DM_DRVN(8));
++
++		/* Disable MT7530 core and TRGMII Tx clocks */
++		core_clear(priv, CORE_TRGMII_GSW_CLK_CG,
++			   REG_GSWCK_EN | REG_TRGMIICK_EN);
++
++		/* Setup the MT7530 TRGMII Tx Clock */
++		core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
++		core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
++		core_write(priv, CORE_PLL_GROUP10, RG_LCDDS_SSC_DELTA(ssc_delta));
++		core_write(priv, CORE_PLL_GROUP11, RG_LCDDS_SSC_DELTA1(ssc_delta));
++		core_write(priv, CORE_PLL_GROUP4,
++			   RG_SYSPLL_DDSFBK_EN | RG_SYSPLL_BIAS_EN |
++			   RG_SYSPLL_BIAS_LPF_EN);
++		core_write(priv, CORE_PLL_GROUP2,
++			   RG_SYSPLL_EN_NORMAL | RG_SYSPLL_VODEN |
++			   RG_SYSPLL_POSDIV(1));
++		core_write(priv, CORE_PLL_GROUP7,
++			   RG_LCDDS_PCW_NCPO_CHG | RG_LCCDS_C(3) |
++			   RG_LCDDS_PWDB | RG_LCDDS_ISO_EN);
++
++		/* Enable MT7530 core and TRGMII Tx clocks */
++		core_set(priv, CORE_TRGMII_GSW_CLK_CG,
++			 REG_GSWCK_EN | REG_TRGMIICK_EN);
++	} else {
+ 		for (i = 0 ; i < NUM_TRGMII_CTRL; i++)
+ 			mt7530_rmw(priv, MT7530_TRGMII_RD(i),
+ 				   RD_TAP_MASK, RD_TAP(16));
++	}
++
+ 	return 0;
+ }
  
--	/* Enable Port 6 only; P5 as GMAC5 which currently is not supported */
-+	/* Enable port 6 */
- 	val = mt7530_read(priv, MT7530_MHWTRAP);
- 	val &= ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
- 	val |= MHWTRAP_MANUAL;
 -- 
 2.37.2
 
