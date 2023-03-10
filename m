@@ -4,101 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ACECC6FD1E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 20:23:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68418C6FD19
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 21:47:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4FSUfPM9PzkBQgHDUuENGncvGQIkUiTKD50SixP/pVQ=; b=tUq3wTpwCpOqfhylYVmnNvHvhw
-	6/CC1nEYBnuXiSHcmPuWjBk2JNZUkcTXtLPG+als+ycbRXPGaWZifvJfYyzzFiLxqzTq3reEkKJIK
-	38hm9Da2ZigctbH52J3iEWEZplG4CQGOLJxOVYmatnvAyBNW/PtUcyZm1E9TM+UUA8XckkGJn94j1
-	l7RnmBXauP0BFZ3hUA9c4Sh9mrgCPxsHuz7PkPMZXJjAdwoGsi2wP3mPKdNC+0tz7FDqH6YwhamwT
-	torkf4MekY0aSYQLHUPxO6MWZhXKifzUmU+Hsbd6RORsktGF03rugvUHPYjJN0tTpc7r2SBNrISJp
-	cxNT9ezA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=wk7HS+JU2o5z8u8D+phfvsWKJzSNNAcdYUjf3Uh+O54=; b=UayDbk1jV40SD/1C7bJ4kCflTS
+	ilxsuokI1Rav+L6woPNay7oJzOFpFvG+Zp+mUqUSiKvwOhR/nCoppv8h+7hmKexaJbPznHJx/up03
+	wTHuvWM84MkM2s8b3x3kaxKNiyoeUZ1x2+HWR8t8a8IFwYUVDlJZTkDvliIDJ5PcfK12YONYOeHtZ
+	j6+SfbUA0ooX5aEk22V11vbydAqIkx6MVHdnWn31Zq91MPWZJ3QRXRHQ+YO+Cv2+pWwKiJiQN2U8p
+	V2KxLT6I8ltBVbptUaxIs5uiuXBDFBzKb94g8tH8iHo4OP5wsV5/7k58/k4n963E1z/eU2KXcd4o7
+	YUbHsDqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pajGj-00G0vU-6d; Fri, 10 Mar 2023 20:23:13 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1pakZq-00GDEd-Dl; Fri, 10 Mar 2023 21:47:02 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pajGY-00G0tI-I2; Fri, 10 Mar 2023 20:23:04 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id m25-20020a7bcb99000000b003e7842b75f2so4238225wmi.3;
-        Fri, 10 Mar 2023 12:22:58 -0800 (PST)
+	id 1pakYn-00GCcl-Ux
+	for linux-mediatek@lists.infradead.org; Fri, 10 Mar 2023 21:46:00 +0000
+Received: by mail-ed1-x534.google.com with SMTP id i34so26055079eda.7
+        for <linux-mediatek@lists.infradead.org>; Fri, 10 Mar 2023 13:45:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678479778;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=4FSUfPM9PzkBQgHDUuENGncvGQIkUiTKD50SixP/pVQ=;
-        b=nqYajTJnlqn2QszL583h60rJxUCMetnsvZgOsAO3yQAfcrcBdEo8ujageLvtqCYR1C
-         EWgzG34cjLhLbcN7aJJpu48AZ4GJOjR/lpJu3wYFmjF8nEqXcEIUWHhA/XO01XBK/KOl
-         cW4rWfcpfb+IWiCe5/+7ZV5n5gYAttg7um8uQH9aMdNGjyZIvqHHcr/gXZ4S/31TsRXz
-         gWu3t9TM1IV3j3/3DNK8Dg60318W85GLtsAc7npo0uVGZvcoer/OD3fANpZRJkO4vkU7
-         ycrXXqP0TTHiM3zAo+1tjLoQGM7zk5RgYPG2JXldcnhAbIdK5G+jqkQssPhif40m7KGy
-         SDaw==
+        d=linaro.org; s=google; t=1678484756;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=wk7HS+JU2o5z8u8D+phfvsWKJzSNNAcdYUjf3Uh+O54=;
+        b=Er3ZlEVmoHoIsKsxxmk3YiAdjEKW2o7aagUdkvk8ACc/AZti0eUPVtEBK8r4r0smjz
+         pB+sZJQgrdwpZYqfgqnS00yJsCXRm4tuxpKc9Sv323GEDDFRnD1x9yhqAjA0TAH+pD39
+         /NgNPgn1qAdB2VMocKQHi9RfthoRIiGig5whQaEgGz2y6LGsFtY8/7u3AgHnh1ysTixO
+         lo6Fd82XFMyeVBYZ+eAjyGMolA6uQ3qrk/k7hLR6+oBu47T9as0SzNFVZLaPbQ5p0hEu
+         xzfTRrmQl+xvZUdIRvF+timC/BMSv6n2PpI4xuBenWLMdJ9K0wzRhzAUHGQoc6i5W58C
+         qjbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678479778;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=4FSUfPM9PzkBQgHDUuENGncvGQIkUiTKD50SixP/pVQ=;
-        b=ZCrYBnLQycvBp6t9rv9Moygk1dhYsb7t0c1lJRqRfREB68dNAV4nxlSpQFRN3MGiUQ
-         uKWm2v8r3t/htBEaXGY20gdKiC+Fa0rxhfnwR1VDGsx7InOMZrt6NtM4UXXPKIOgeYDb
-         Xmqdq4wZ1tsRQIlPeHXk0AhiLVoyzxW5D4SUob1wSoiERVpqHORC/aMSYzB7oYFFryus
-         glCPrx9Ld29DGI7EVtc/W3fwuibAf2hTsFW4x+NCcQ7Pk1d3lOM25usd69oZXiQSM7mL
-         AuqawKqWtzmLdONEo01yIZHcEoOFTbg81y/qJ1iDyB9yOcj/W/UsMQDi31RApElXUOYe
-         ZVMA==
-X-Gm-Message-State: AO0yUKUzWmuLlw0VWxLI6lxmT2naubEbYLfT8oSYOMbkT+QA+tZwC9bk
-	l2U/Qruo5r+IqIf6+W2I5UQ=
-X-Google-Smtp-Source: AK7set+Y2IDpfiEwJF5RRzfh95sswmbosQPuhKf9C3F+lrJubOCiXt2+E2ADzjiE7HXqA7OK3SfoaQ==
-X-Received: by 2002:a05:600c:4f01:b0:3ea:f6c4:3060 with SMTP id l1-20020a05600c4f0100b003eaf6c43060mr3857549wmq.18.1678479777626;
-        Fri, 10 Mar 2023 12:22:57 -0800 (PST)
-Received: from ?IPv6:2a02:168:6806:0:66a2:bd80:e6ae:416? ([2a02:168:6806:0:66a2:bd80:e6ae:416])
-        by smtp.gmail.com with ESMTPSA id k6-20020a5d5186000000b002c707785da4sm576606wrv.107.2023.03.10.12.22.56
+        d=1e100.net; s=20210112; t=1678484756;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=wk7HS+JU2o5z8u8D+phfvsWKJzSNNAcdYUjf3Uh+O54=;
+        b=nAFDjm/UlyUrHOG9cp2DgcCAALw6UaOmThJlKuY9g1wUHUjL4G3QmjeSgvm7BK+POC
+         19nUsXYjjXASPoRCZj/ruyNa6jlwd3+e2oeZgqdZwUaegOIokXBOhDTMYim7o+sgxK0I
+         2ygsqKN6VGpLNf1qeP+M3+FXYl9mOr7puPxaYzb9pGQ3Tr/W7iLmjeGQTVN89W+7ke7G
+         7VnPnM9KMebjnRxpdTYT+5dELuajA18z60RLAcfLwjOvUu6eq0gITF5vxChAu0mEKXDv
+         fifxSFLIMmxvdZMtb9G519BEC7yifuuonf8SV8HATY6Z/Co7pnr1De5e3oj17+WwM/kQ
+         +PyA==
+X-Gm-Message-State: AO0yUKX++kcOvTQzuRe33XPwR1+OzLM7hpQugRqL4ycWIP9/yMm8nzeb
+	5xD+sy3pV+sgSZRP0ntqcxHZXg==
+X-Google-Smtp-Source: AK7set+WoLtwDyXQs64e0OH3A2wuyS/PRDS8GfsEZZYgVKRSciJQ1Uv0cpz+JjrSwSdUGQxlZtR+eQ==
+X-Received: by 2002:a05:6402:202e:b0:4be:3b3e:c226 with SMTP id ay14-20020a056402202e00b004be3b3ec226mr23145020edb.7.1678484756376;
+        Fri, 10 Mar 2023 13:45:56 -0800 (PST)
+Received: from krzk-bin.. ([2a02:810d:15c0:828:34:52e3:a77e:cac5])
+        by smtp.gmail.com with ESMTPSA id u7-20020a50d507000000b004be11e97ca2sm471873edi.90.2023.03.10.13.45.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Mar 2023 12:22:57 -0800 (PST)
-Message-ID: <10da10caea22a8f5da8f1779df3e13b948e8a363.camel@gmail.com>
-Subject: Re: [PATCH net-next v2 4/6] net: mdio: scan bus based on bus
- capabilities for C22 and C45
-From: Klaus Kudielka <klaus.kudielka@gmail.com>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Michael Walle <michael@walle.cc>, Heiner Kallweit
- <hkallweit1@gmail.com>,  Russell King <linux@armlinux.org.uk>, "David S.
- Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Felix Fietkau
- <nbd@nbd.name>, John Crispin <john@phrozen.org>,  Sean Wang
- <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
- Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Bryan Whitehead <bryan.whitehead@microchip.com>,
- UNGLinuxDriver@microchip.com, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,  Jose Abreu
- <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Joel
- Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
- netdev@vger.kernel.org,  linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,  linux-mediatek@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,  linux-aspeed@lists.ozlabs.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>
-Date: Fri, 10 Mar 2023 21:22:56 +0100
-In-Reply-To: <70f5bca0-322c-4bae-b880-742e56365abe@lunn.ch>
-References: 	<20230116-net-next-remove-probe-capabilities-v2-0-15513b05e1f4@walle.cc>
-	 <20230116-net-next-remove-probe-capabilities-v2-4-15513b05e1f4@walle.cc>
-	 <449bde236c08d5ab5e54abd73b645d8b29955894.camel@gmail.com>
-	 <100c439a-2a4d-4cb2-96f2-5bf273e2121a@lunn.ch>
-	 <712bc92ca6d576f33f63f1e9c2edf0030b10d3ae.camel@gmail.com>
-	 <db6b8a09-b680-4baa-8963-d355ad29eb09@lunn.ch>
-	 <0e10aa8492eadb587949d8744b56fccaabbd183b.camel@gmail.com>
-	 <72530e86-9ba9-4a01-9cd2-68835ecae7a0@lunn.ch>
-	 <09d65e1ee0679e1e74b4f3a5a4c55bd48332f043.camel@gmail.com>
-	 <70f5bca0-322c-4bae-b880-742e56365abe@lunn.ch>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.46.4-1 
+        Fri, 10 Mar 2023 13:45:55 -0800 (PST)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Tony Lindgren <tony@atomide.com>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-omap@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 1/9] regulator: lp872x: Mark OF related data as maybe unused
+Date: Fri, 10 Mar 2023 22:45:45 +0100
+Message-Id: <20230310214553.275450-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230310_122302_616049_D1601466 
-X-CRM114-Status: GOOD (  12.94  )
+X-CRM114-CacheID: sfid-20230310_134558_020523_9236EBCC 
+X-CRM114-Status: GOOD (  12.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,89 +99,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2023-03-09 at 17:36 +0100, Andrew Lunn wrote:
->=20
-> I was wrong about something i said earlier. A C22 scan reads two
-> registers for each of the 32 possible locations of a C22 PHY on the
-> bus. A C45 scan is however much more expensive. It will read 30 time
-> two registers for each of the 32 possible locations of a C45 PHY on
-> the bus.
->=20
-> One things that could help is moving some code around a bit. Currently
-> mv88e6xxx_mdios_register() is called at the end of
-> mv88e6xxx_probe(). Try moving it to the beginning of
-> mv88e6xxx_setup(). The call to mv88e6xxx_mdios_unregister() then need
-> to move into mv88e6xxx_teardown().
->=20
+The driver can be compile tested with !CONFIG_OF making certain data
+unused:
 
-Yes, that helps. Primarily, because mdiobus_scan_bus_c45 now is called only=
- once,
-and at least some things are done in parallel.
+  drivers/regulator/lp872x.c:931:34: error: ‘lp872x_dt_ids’ defined but not used [-Werror=unused-const-variable=]
 
-(Still, ~2s waiting for the C45 scan to complete).
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ drivers/regulator/lp872x.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-[    0.382715] mdio_bus mv88e6xxx-0: *** mdiobus_scan_bus_c22 call ***
-[    0.387571] mmc0: new high speed MMC card at address 0001
-[    0.387953] mmcblk0: mmc0:0001 H8G4a\x92 7.28 GiB=20
-[    0.388929]  mmcblk0: p1
-[    0.389197] mmcblk0boot0: mmc0:0001 H8G4a\x92 4.00 MiB=20
-[    0.389508] mmcblk0boot1: mmc0:0001 H8G4a\x92 4.00 MiB=20
-[    0.389850] mmcblk0rpmb: mmc0:0001 H8G4a\x92 4.00 MiB, chardev (250:0)
-[    0.393323] ata2: SATA link down (SStatus 0 SControl 300)
-[    0.486839] mdio_bus mv88e6xxx-0: *** mdiobus_scan_bus_c22 return ***
-[    0.486850] mdio_bus mv88e6xxx-0: *** mdiobus_scan_bus_c45 call ***
-[    0.554696] ata1: SATA link up 6.0 Gbps (SStatus 133 SControl 300)
-[    0.555373] ata1.00: supports DRM functions and may not be fully accessi=
-ble
-[    0.555378] ata1.00: ATA-10: KINGSTON SKC600MS512G, S4800105, max UDMA/1=
-33
-[    0.555384] ata1.00: 1000215216 sectors, multi 1: LBA48 NCQ (depth 32)
-[    0.556055] ata1.00: Features: Trust Dev-Sleep
-[    0.556150] ata1.00: supports DRM functions and may not be fully accessi=
-ble
-[    0.556800] ata1.00: configured for UDMA/133
-[    0.556981] scsi 0:0:0:0: Direct-Access     ATA      KINGSTON SKC600M 01=
-05 PQ: 0 ANSI: 5
-[    0.557506] sd 0:0:0:0: [sda] 1000215216 512-byte logical blocks: (512 G=
-B/477 GiB)
-[    0.557515] sd 0:0:0:0: [sda] 4096-byte physical blocks
-[    0.557552] sd 0:0:0:0: [sda] Write Protect is off
-[    0.557557] sd 0:0:0:0: [sda] Mode Sense: 00 3a 00 00
-[    0.557613] sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled,=
- doesn't support DPO or FUA
-[    0.557736] sd 0:0:0:0: [sda] Preferred minimum I/O size 4096 bytes
-[    0.558295]  sda: sda1
-[    0.558417] sd 0:0:0:0: [sda] Attached SCSI removable disk
-[    0.685992] sfp sfp: module TP-LINK          TL-SM321B        rev      s=
-n 1403076900       dc 140401
-[    0.686009] mvneta f1034000.ethernet eth2: switched to inband/1000base-x=
- link mode
-[    2.820390] mdio_bus mv88e6xxx-0: *** mdiobus_scan_bus_c45 return ***
-[    3.464461] mv88e6085 f1072004.mdio-mii:10: configuring for fixed/rgmii-=
-id link mode
-[    3.466123] mv88e6085 f1072004.mdio-mii:10: configuring for fixed/rgmii-=
-id link mode
-[    3.467397] mv88e6085 f1072004.mdio-mii:10: Link is Up - 1Gbps/Full - fl=
-ow control off
-[    3.471263] mv88e6085 f1072004.mdio-mii:10: Link is Up - 1Gbps/Full - fl=
-ow control off
-[    3.538112] mv88e6085 f1072004.mdio-mii:10 lan0 (uninitialized): PHY [mv=
-88e6xxx-0:00] driver [Marvell 88E1540] (irq=3D68)
-[    3.602833] mv88e6085 f1072004.mdio-mii:10 lan1 (uninitialized): PHY [mv=
-88e6xxx-0:01] driver [Marvell 88E1540] (irq=3D69)
-[    3.674111] mv88e6085 f1072004.mdio-mii:10 lan2 (uninitialized): PHY [mv=
-88e6xxx-0:02] driver [Marvell 88E1540] (irq=3D70)
-[    3.746290] mv88e6085 f1072004.mdio-mii:10 lan3 (uninitialized): PHY [mv=
-88e6xxx-0:03] driver [Marvell 88E1540] (irq=3D71)
-[    3.818291] mv88e6085 f1072004.mdio-mii:10 lan4 (uninitialized): PHY [mv=
-88e6xxx-0:04] driver [Marvell 88E1540] (irq=3D72)
-[    3.820845] device eth1 entered promiscuous mode
-[    3.821730] device eth0 entered promiscuous mode
-[    3.821749] DSA: tree 0 setup
-[    3.822563] Freeing unused kernel image (initmem) memory: 1024K
-[    3.822727] Run /init as init process
-
-
-Regards, Klaus
+diff --git a/drivers/regulator/lp872x.c b/drivers/regulator/lp872x.c
+index c576894c3d52..c3a6e77db4d0 100644
+--- a/drivers/regulator/lp872x.c
++++ b/drivers/regulator/lp872x.c
+@@ -928,7 +928,7 @@ static int lp872x_probe(struct i2c_client *cl)
+ 	return lp872x_regulator_register(lp);
+ }
+ 
+-static const struct of_device_id lp872x_dt_ids[] = {
++static const struct of_device_id lp872x_dt_ids[] __maybe_unused = {
+ 	{ .compatible = "ti,lp8720", },
+ 	{ .compatible = "ti,lp8725", },
+ 	{ }
+-- 
+2.34.1
 
 
