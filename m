@@ -4,77 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E46FC64EC4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 16:47:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAC91C6FA99
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 17:00:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=hwhYtKzDnXEsLBl9Tm3BqnXbNzyUsQ3KuTYFbJoohGM=; b=cCCrii7LTidcVaKrcng+NLTTVM
-	DasnWrgORvuxrOblUjUCCllslyCkOPyvpFAWvlj5fZUc/wECameEdtoAi3GgwQ62CBzWiKwyzXmVU
-	BfkXZMupilQcgQGKZB4MpWbz+tl+d+vJKU5L7v19foKFkR3AyiK2qjX4Qq4SjP7iCNbhW+5Q6v5dB
-	9+9Xn7RUaMtUk0l8iUgC+eJjwXPuzlVlZDloR93c3kV+R7n9p5WFn6oodw332DputP1kdzlHyJxXw
-	EOCZrNimmvOBlhqINJxqja4nwl1OLtEXJu0D7SYUV3dE8agZpyrLeB/cn+5S+m8Fi6JGq7e62ZYt+
-	PAVL/FFg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=WdlGZkMRPNoVnTmOdWDP6rWo7x6dipoNOzIkEhAeL38=; b=D1hVxfxQJe4PK4njLzjO40O9ro
+	JmO5agkyWrrWs3uoEKCsloJP94ew8y2sJ0CEsxP8Obo5DUbfFUXrXGUlG6XA5XCYLXAJJ1HosmwhX
+	cLGw37fMVEOotkkfP71hM567pq+C/XrQkI32BJVq9Duatr8dJYkr3aPcTcepNhP4BS/aiaksP03Vb
+	7jj89CpMvJMA280WYewX82pWiHcFVFy4jhKKMEnuy9cT43Q7DLEtrijNr5Bi74ooNEu1RtgswFl8x
+	/15VVNT+AWgUnipfPlXxdRcaJckE8U2ywv1MB5ZV8Ik+5F3n+HXAjdlOtu77yvJ2b1sszg0kGI/Nj
+	k9Ics9Lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paftp-00FMkH-Kw; Fri, 10 Mar 2023 16:47:21 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pag6c-00FRiI-DV; Fri, 10 Mar 2023 17:00:34 +0000
+Received: from mail-mw2nam12on20610.outbound.protection.outlook.com ([2a01:111:f400:fe5a::610] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pafsO-00FLxW-Ug; Fri, 10 Mar 2023 16:45:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=hwhYtKzDnXEsLBl9Tm3BqnXbNzyUsQ3KuTYFbJoohGM=; b=o7K5hGcf9aEWhbrkyZVoNImJ3w
-	8Wlm+7cR61o8NBMdRaKQvo0OTFcMZ2WWidFyXMCBtdt+ix/oKJeF4MEGqf3Lw7wIbr50WhDZP2drB
-	9n0zeeZ/Q0DaSIBOdl+NGjB4SjxPwpcsbVIIAOyrYbs9gYHXiZCrNQmwfQBcfYU2gPj0a8NkNkd5T
-	/GFc0IqZZCz2P07YT0dIn3GnlK+wD2JIwXekDoDYj0xY8rfVO/e3/zpyiNYGr1zHOYclG0QXmuUpE
-	4sOYhge1dGu5CEKJhivIQPVblAnrzMDFNM7F48ktWLlDmjaItmPruQq7SiqIFbHkLKXKxA07WFW4I
-	nkjquOcQ==;
-Received: from mail-oi1-f181.google.com ([209.85.167.181])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pae32-000Ubf-09;
-	Fri, 10 Mar 2023 14:48:46 +0000
-Received: by mail-oi1-f181.google.com with SMTP id bg11so4402220oib.5;
-        Fri, 10 Mar 2023 06:48:43 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678459722;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=hwhYtKzDnXEsLBl9Tm3BqnXbNzyUsQ3KuTYFbJoohGM=;
-        b=5XfoI4d4scrLthazyZyWB1E3ivv5qAmnODyOKfsJd1MgztKD7dTdtlFS5nuowVbU2W
-         HQMq3f+fBSHfmoc4gh9wAIKUg0LXsjvUp8231f7eCyPM1f7WcDnjObRjN0OVp8CVxfOb
-         aANhEAW72IIwS2Ai4sPI2pQx0EXbOtQKYvcMrxDPY/vpvyioLsBfTDEhdQI28cM9dlgW
-         zDb/GnSJqzf5eXhpy4A+niYe6ctCKddEQBn1MJax6YlN+HB3Mp5+BnuvJDydqlnDVvV1
-         eB+c1Lz/+53gqgzxUQruExqDw92jTl8PS9Sdq4hWIpyr7kcuRDwP5sQJEVfGYn+I2lI7
-         B3BQ==
-X-Gm-Message-State: AO0yUKVAUZuxKOcNsUJSv3XgAzZnQmyIcjJmFmoqMkRvgswd7OPKNFt1
-	dB19EpXHrZILPdkhWLmUIA==
-X-Google-Smtp-Source: AK7set/2Hv/GHCQ4CWKw9+OchH8gffT8eqBP4iLmC17qsMPdXt7UFyt1xWM3HZum7IWwuaM8TqbJlg==
-X-Received: by 2002:a05:6808:1d7:b0:383:ef56:a34c with SMTP id x23-20020a05680801d700b00383ef56a34cmr1364469oic.2.1678459722220;
-        Fri, 10 Mar 2023 06:48:42 -0800 (PST)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id y129-20020acae187000000b0038476262f65sm967331oig.33.2023.03.10.06.48.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Mar 2023 06:48:41 -0800 (PST)
-Received: (nullmailer pid 1544713 invoked by uid 1000);
-	Fri, 10 Mar 2023 14:47:21 -0000
-From: Rob Herring <robh@kernel.org>
-To: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Tony Lindgren <tony@atomide.com>, Haojian Zhuang <haojian.zhuang@linaro.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-renesas-soc@vger.kernel.org, linux-sunxi@lists.linux.dev
-Subject: [PATCH] pinctrl: Use of_property_present() for testing DT property presence
-Date: Fri, 10 Mar 2023 08:47:20 -0600
-Message-Id: <20230310144721.1544669-1-robh@kernel.org>
-X-Mailer: git-send-email 2.39.2
+	id 1pag6R-00FRf3-Gr; Fri, 10 Mar 2023 17:00:25 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=JLAm42iBomwJYfdwrReG9V9CfbNMxC3x6wtkhFoa1tU4SfwJjtoKVZLwPrpiWuRO1/YIFtQimvWQ0tC3WRVseNC3/fu2C7yy8ueuvd9w6UwLrG837h2TUlY/g4XZtPWJzGiT6zg5tFtmtzSg8tPgTrz2xtbxFB21h0ErBKS5G5mPmNnKt01a+K6Je83hXrJFfBWsVwr67fOK6sefOyXzG27Ux5/QOYst/m3pCepbU1HIU7795mIfgUkDZ7ey/a3NUqoYTnpZ32nBrRy8+v6/hFQWVwYlu4Nw/zZ12YY2byR1q+/hJaiHX1WhUfJtmhlCr/kLjRppRPJq64+hGTen+w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=WdlGZkMRPNoVnTmOdWDP6rWo7x6dipoNOzIkEhAeL38=;
+ b=T4WJ4l4/vkFrpK8nfdq8k9N4lGXMBnClWWv8orywQMjtlH82P+q6yzRrE6zVPpyoWIZMlC0Oz3c1xr048qdhVvDukeFPHHyzAsLc4Dk+AYNawGivaGpAQ315UT+O+3pH7XdHvTNtkt8YZKYVbr1+giZ5s3aVCdEZxG3ipOLUZlhl54CvqlStoebJ30AzRX0UULBciblOkABzoeQYUPmKPkoo/oUyPY57RivHLj1Qo+7jTje7H31DMQqCWiHbZzpszsH1Uo05FhuuFATZ56e8bfZGFQj/dlGJyP85ogr//L4CRE5Yr6nEnqvZ8WeIQnnXqWBtwhWsY0MFxk+s7u9Fxg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=gmail.com smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=WdlGZkMRPNoVnTmOdWDP6rWo7x6dipoNOzIkEhAeL38=;
+ b=1f3PVEJa3vJ1FDU0RZLCF1Hm7RqOhvhpweon9KxSYTECxZUOhmz+YLtv4OGYIl15mTMysASYsS4IW7mdnxwiLW4jg+dy/9o8KLxoa8Y+N+o/yycquI3FREpVAk/lQnaAwdBPouaH+xzOonTtxoRAZlekbQEcv6xFP+2Pvb/aAAg=
+Received: from BLAPR03CA0054.namprd03.prod.outlook.com (2603:10b6:208:32d::29)
+ by DS0PR12MB7629.namprd12.prod.outlook.com (2603:10b6:8:13e::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.20; Fri, 10 Mar
+ 2023 17:00:13 +0000
+Received: from BL02EPF00010207.namprd05.prod.outlook.com
+ (2603:10b6:208:32d:cafe::79) by BLAPR03CA0054.outlook.office365.com
+ (2603:10b6:208:32d::29) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.20 via Frontend
+ Transport; Fri, 10 Mar 2023 17:00:13 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
+Received: from SATLEXMB04.amd.com (165.204.84.17) by
+ BL02EPF00010207.mail.protection.outlook.com (10.167.241.197) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.6178.13 via Frontend Transport; Fri, 10 Mar 2023 17:00:13 +0000
+Received: from AUS-LX-MLIMONCI.amd.com (10.180.168.240) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.34; Fri, 10 Mar
+ 2023 11:00:11 -0600
+From: Mario Limonciello <mario.limonciello@amd.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+CC: Mario Limonciello <mario.limonciello@amd.com>, Anson Tsao
+	<anson.tsao@amd.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Kalle Valo
+	<kvalo@kernel.org>, "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+	<edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+	<pabeni@redhat.com>, <linux-wireless@vger.kernel.org>,
+	<netdev@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: [PATCH] wifi: mt76: mt7921e: Set memory space enable in PCI_COMMAND if unset
+Date: Fri, 10 Mar 2023 11:00:02 -0600
+Message-ID: <20230310170002.200-1-mario.limonciello@amd.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.180.168.240]
+X-ClientProxiedBy: SATLEXMB04.amd.com (10.181.40.145) To SATLEXMB04.amd.com
+ (10.181.40.145)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL02EPF00010207:EE_|DS0PR12MB7629:EE_
+X-MS-Office365-Filtering-Correlation-Id: e78a3a8c-93cd-4e33-2cc0-08db2188ea3d
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	GM2HJFmz1qMUy4OU9gS5zEbg7uEHKCHzDPAQQjEX/HadNml37zMvj/ODtpkYXaJ7gEdVDC0NhMsPuMI26pU+FU/jFoe3NS037/0zLW6sVsinZO3bybLX/kZ53suIG5skoe+xrr2tyjx1us1zX52t263ak31Cr5w7tgPhGrON2CpOD+V8+9ENkoCvL6zkCkdBgCkj9TfB1MmSLskuY9Rmcwv3ny+7VQ5+EQRqm0ct5CcYAPYN3s7ZprrXNpvAhaC3kfUWnFT7SWB4tcgz7UoGUPjbBjcdlkRecdy6SI7FXRHhE7Ppgwt+Cw2eZJv6Z5n0+3QHG4scFS0Vhb8ZeXLiP6cyioK03Px2r4Icgb5srOjy8dh6lC7Lt9vyrGUd9WnSiAn39tzqcHkbc4gFmBbJCJcQd0DMWV1ST2ZB4w3oSKQ1X7GIeFSvRqr2hkycew3AEzqP8Ckp0WWNDTszm8R/HKZKUJwwPClC08QhKoq5Dj4LCNDIo4EgpdCSVSO2FpLMEalw/8O+eKQxbmSG5vR7roCGrOeMYySl8gso3Bj8L62bJNbe3uVesEkMZZ2gNLDZ1Ok+BqTclOYlJI4w1Z9myApcorBlQcGDnfCA3njX4N+mYOxn1BJ9Aq3coimoiEr0NywcqueGdKJK32lhgmiahPziK1ZbnEycsU7yIkFr0+xph9fuKusy0nfOzBdadbaLd18XYXb61QKAaAuNa0XPHd3z0wNjaGxeAoDhGAkA1xM=
+X-Forefront-Antispam-Report: 	CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:SATLEXMB04.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230025)(4636009)(396003)(376002)(136003)(346002)(39860400002)(451199018)(36840700001)(40470700004)(46966006)(2906002)(81166007)(82740400003)(83380400001)(36756003)(40460700003)(7416002)(5660300002)(44832011)(70206006)(70586007)(40480700001)(8936002)(356005)(8676002)(4326008)(6916009)(316002)(54906003)(41300700001)(86362001)(36860700001)(7696005)(478600001)(426003)(82310400005)(47076005)(2616005)(336012)(186003)(1076003)(16526019)(6666004)(26005)(36900700001);DIR:OUT;SFP:1101;
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Mar 2023 17:00:13.1734
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: e78a3a8c-93cd-4e33-2cc0-08db2188ea3d
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[SATLEXMB04.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: 	BL02EPF00010207.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB7629
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230310_144844_691634_1E6426C7 
-X-CRM114-Status: GOOD (  18.89  )
+X-CRM114-CacheID: sfid-20230310_090023_834957_3F75E3B5 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,149 +120,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It is preferred to use typed property access functions (i.e.
-of_property_read_<type> functions) rather than low-level
-of_get_property/of_find_property functions for reading properties. As
-part of this, convert of_get_property/of_find_property calls to the
-recently added of_property_present() helper when we just want to test
-for presence of a property and nothing more.
+When the BIOS has been configured for Fast Boot, systems with mt7921e
+have non-functional wifi.  Turning on Fast boot caused both bus master
+enable and memory space enable bits in PCI_COMMAND not to get configured.
 
-Signed-off-by: Rob Herring <robh@kernel.org>
+The mt7921 driver already sets bus master enable, but explicitly check
+and set memory access enable as well to fix this problem.
+
+Tested-by: Anson Tsao <anson.tsao@amd.com>
+Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 ---
- drivers/pinctrl/mediatek/pinctrl-moore.c |  2 +-
- drivers/pinctrl/pinctrl-single.c         |  4 ++--
- drivers/pinctrl/pinctrl-stmfx.c          |  2 +-
- drivers/pinctrl/renesas/pinctrl.c        |  4 ++--
- drivers/pinctrl/stm32/pinctrl-stm32.c    |  2 +-
- drivers/pinctrl/sunxi/pinctrl-sunxi.c    | 20 ++++++++++----------
- 6 files changed, 17 insertions(+), 17 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.c b/drivers/pinctrl/mediatek/pinctrl-moore.c
-index 007b98ce5631..8649a2f9d324 100644
---- a/drivers/pinctrl/mediatek/pinctrl-moore.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-moore.c
-@@ -586,7 +586,7 @@ static int mtk_build_gpiochip(struct mtk_pinctrl *hw)
- 	 * Documentation/devicetree/bindings/gpio/gpio.txt on how to
- 	 * bind pinctrl and gpio drivers via the "gpio-ranges" property.
- 	 */
--	if (!of_find_property(hw->dev->of_node, "gpio-ranges", NULL)) {
-+	if (!of_property_present(hw->dev->of_node, "gpio-ranges")) {
- 		ret = gpiochip_add_pin_range(chip, dev_name(hw->dev), 0, 0,
- 					     chip->ngpio);
- 		if (ret < 0) {
-diff --git a/drivers/pinctrl/pinctrl-single.c b/drivers/pinctrl/pinctrl-single.c
-index 190923757cda..0dabbcf68b9f 100644
---- a/drivers/pinctrl/pinctrl-single.c
-+++ b/drivers/pinctrl/pinctrl-single.c
-@@ -939,11 +939,11 @@ static int pcs_parse_pinconf(struct pcs_device *pcs, struct device_node *np,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+index 8a53d8f286db..24a2aafa6e2a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+@@ -256,6 +256,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+ 	struct mt7921_dev *dev;
+ 	struct mt76_dev *mdev;
+ 	int ret;
++	u16 cmd;
  
- 	/* cacluate how much properties are supported in current node */
- 	for (i = 0; i < ARRAY_SIZE(prop2); i++) {
--		if (of_find_property(np, prop2[i].name, NULL))
-+		if (of_property_present(np, prop2[i].name))
- 			nconfs++;
- 	}
- 	for (i = 0; i < ARRAY_SIZE(prop4); i++) {
--		if (of_find_property(np, prop4[i].name, NULL))
-+		if (of_property_present(np, prop4[i].name))
- 			nconfs++;
- 	}
- 	if (!nconfs)
-diff --git a/drivers/pinctrl/pinctrl-stmfx.c b/drivers/pinctrl/pinctrl-stmfx.c
-index 1181c4b506b1..3c031692e44d 100644
---- a/drivers/pinctrl/pinctrl-stmfx.c
-+++ b/drivers/pinctrl/pinctrl-stmfx.c
-@@ -632,7 +632,7 @@ static int stmfx_pinctrl_probe(struct platform_device *pdev)
- 	pctl->dev = &pdev->dev;
- 	pctl->stmfx = stmfx;
+ 	ret = pcim_enable_device(pdev);
+ 	if (ret)
+@@ -265,6 +266,11 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+ 	if (ret)
+ 		return ret;
  
--	if (!of_find_property(np, "gpio-ranges", NULL)) {
-+	if (!of_property_present(np, "gpio-ranges")) {
- 		dev_err(pctl->dev, "missing required gpio-ranges property\n");
- 		return -EINVAL;
- 	}
-diff --git a/drivers/pinctrl/renesas/pinctrl.c b/drivers/pinctrl/renesas/pinctrl.c
-index b74147800319..5c71e168b370 100644
---- a/drivers/pinctrl/renesas/pinctrl.c
-+++ b/drivers/pinctrl/renesas/pinctrl.c
-@@ -125,8 +125,8 @@ static int sh_pfc_dt_subnode_to_map(struct pinctrl_dev *pctldev,
- 	 * inside a subnode nor across subnodes.
- 	 */
- 	if (!pmx->func_prop_name) {
--		if (of_find_property(np, "groups", NULL) ||
--		    of_find_property(np, "pins", NULL)) {
-+		if (of_property_present(np, "groups")||
-+		    of_property_present(np, "pins")) {
- 			pmx->func_prop_name = "function";
- 			pmx->groups_prop_name = "groups";
- 			pmx->pins_prop_name = "pins";
-diff --git a/drivers/pinctrl/stm32/pinctrl-stm32.c b/drivers/pinctrl/stm32/pinctrl-stm32.c
-index cb33a23ab0c1..66a25becd8f5 100644
---- a/drivers/pinctrl/stm32/pinctrl-stm32.c
-+++ b/drivers/pinctrl/stm32/pinctrl-stm32.c
-@@ -1374,7 +1374,7 @@ static struct irq_domain *stm32_pctrl_get_irq_domain(struct platform_device *pde
- 	struct device_node *parent;
- 	struct irq_domain *domain;
++	pci_read_config_word(pdev, PCI_COMMAND, &cmd);
++	if (!(cmd & PCI_COMMAND_MEMORY)) {
++		cmd |= PCI_COMMAND_MEMORY;
++		pci_write_config_word(pdev, PCI_COMMAND, cmd);
++	}
+ 	pci_set_master(pdev);
  
--	if (!of_find_property(np, "interrupt-parent", NULL))
-+	if (!of_property_present(np, "interrupt-parent"))
- 		return NULL;
- 
- 	parent = of_irq_find_parent(np);
-diff --git a/drivers/pinctrl/sunxi/pinctrl-sunxi.c b/drivers/pinctrl/sunxi/pinctrl-sunxi.c
-index f35179eceb4e..1dc1882cbdd7 100644
---- a/drivers/pinctrl/sunxi/pinctrl-sunxi.c
-+++ b/drivers/pinctrl/sunxi/pinctrl-sunxi.c
-@@ -224,16 +224,16 @@ static int sunxi_pctrl_get_group_pins(struct pinctrl_dev *pctldev,
- 
- static bool sunxi_pctrl_has_bias_prop(struct device_node *node)
- {
--	return of_find_property(node, "bias-pull-up", NULL) ||
--		of_find_property(node, "bias-pull-down", NULL) ||
--		of_find_property(node, "bias-disable", NULL) ||
--		of_find_property(node, "allwinner,pull", NULL);
-+	return of_property_present(node, "bias-pull-up") ||
-+		of_property_present(node, "bias-pull-down") ||
-+		of_property_present(node, "bias-disable") ||
-+		of_property_present(node, "allwinner,pull");
- }
- 
- static bool sunxi_pctrl_has_drive_prop(struct device_node *node)
- {
--	return of_find_property(node, "drive-strength", NULL) ||
--		of_find_property(node, "allwinner,drive", NULL);
-+	return of_property_present(node, "drive-strength") ||
-+		of_property_present(node, "allwinner,drive");
- }
- 
- static int sunxi_pctrl_parse_bias_prop(struct device_node *node)
-@@ -241,13 +241,13 @@ static int sunxi_pctrl_parse_bias_prop(struct device_node *node)
- 	u32 val;
- 
- 	/* Try the new style binding */
--	if (of_find_property(node, "bias-pull-up", NULL))
-+	if (of_property_present(node, "bias-pull-up"))
- 		return PIN_CONFIG_BIAS_PULL_UP;
- 
--	if (of_find_property(node, "bias-pull-down", NULL))
-+	if (of_property_present(node, "bias-pull-down"))
- 		return PIN_CONFIG_BIAS_PULL_DOWN;
- 
--	if (of_find_property(node, "bias-disable", NULL))
-+	if (of_property_present(node, "bias-disable"))
- 		return PIN_CONFIG_BIAS_DISABLE;
- 
- 	/* And fall back to the old binding */
-@@ -1424,7 +1424,7 @@ static int sunxi_pinctrl_setup_debounce(struct sunxi_pinctrl *pctl,
- 		return 0;
- 
- 	/* If we don't have any setup, bail out */
--	if (!of_find_property(node, "input-debounce", NULL))
-+	if (!of_property_present(node, "input-debounce"))
- 		return 0;
- 
- 	losc = devm_clk_get(pctl->dev, "losc");
+ 	ret = pci_alloc_irq_vectors(pdev, 1, 1, PCI_IRQ_ALL_TYPES);
 -- 
-2.39.2
+2.34.1
 
 
