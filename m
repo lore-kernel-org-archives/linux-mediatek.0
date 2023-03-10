@@ -4,138 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3C43C64EC4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 18:31:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ACECC6FD1E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 20:23:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SWBkcYuh4IJnIezE2OpMdAYZOU5hzcvpExBHImMkgyg=; b=f+9DmoiCX5xhwEoS3pbZBpHY0R
-	SXzIU+rH5j8N/txuHHyCzfEL2PB7XS5p8tC5En/uITKAxlbLJiytwR0okvAmiXnjyCZDVxCPaOiNu
-	tsKzUYtHbl9p9Rgo0JEgKyKvV7bnpNWGWzgXiV6rMWUbFoqoGIcqTtCtC3bx50UAgNvuE/S9YEHxC
-	ln0VuriDSTLYttLR94eZYT+8tLLsIpnWP96Q/dxku5gIjv3QDZnyWHzxBpajAkzeCy/H8Pqdg8/BL
-	QtTNhS/GI+AuGP9PZ+ZbLN5x9GgNr++9qTVLfIQluyJTnt9AftRhNvoD6uOHmnaqSnzBWFFb91qb3
-	IW6J1iyQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4FSUfPM9PzkBQgHDUuENGncvGQIkUiTKD50SixP/pVQ=; b=tUq3wTpwCpOqfhylYVmnNvHvhw
+	6/CC1nEYBnuXiSHcmPuWjBk2JNZUkcTXtLPG+als+ycbRXPGaWZifvJfYyzzFiLxqzTq3reEkKJIK
+	38hm9Da2ZigctbH52J3iEWEZplG4CQGOLJxOVYmatnvAyBNW/PtUcyZm1E9TM+UUA8XckkGJn94j1
+	l7RnmBXauP0BFZ3hUA9c4Sh9mrgCPxsHuz7PkPMZXJjAdwoGsi2wP3mPKdNC+0tz7FDqH6YwhamwT
+	torkf4MekY0aSYQLHUPxO6MWZhXKifzUmU+Hsbd6RORsktGF03rugvUHPYjJN0tTpc7r2SBNrISJp
+	cxNT9ezA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pahWR-00FlJf-WD; Fri, 10 Mar 2023 18:31:21 +0000
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+	id 1pajGj-00G0vU-6d; Fri, 10 Mar 2023 20:23:13 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pafIg-00FDmF-KL; Fri, 10 Mar 2023 16:09:00 +0000
-Received: from pps.filterd (m0098421.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 32AG3wnt029782;
-	Fri, 10 Mar 2023 16:08:26 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=from : date : subject :
- mime-version : content-type : content-transfer-encoding : message-id :
- references : in-reply-to : to : cc; s=pp1;
- bh=SWBkcYuh4IJnIezE2OpMdAYZOU5hzcvpExBHImMkgyg=;
- b=EnsdmQxwg6sqFxXGVArxbm0LSZKXNyjNXxHnHYy81QLyNi0ul0ufKjeTVw/xBPr1GfBH
- IVwGJALaYaw7vnSAI/EO9foGLmh47xsMnbGHUVVJaoc7Ayw2cjGQVgyDa/21zpSS2Avx
- WPyAbdgn2CSTAJ8WLcwrG9iBSjYdqcLGbtmsWj4LHu3yK2rxl5MycfVosm3bH2ZZUeYS
- qLu6+pcb4SUP7YEtgCXFNDaDVaF/BEJQvlhcABTTet4DMuNfADohliasmv0uVdxeEhp7
- eY75B+cHdzyWgXNUGcm4lxw3LHHbQwe5GgkhBCv32qfulEWti9ZHvkOjd9F+AhS0dv5F 1w== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3p87r9r2ct-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 10 Mar 2023 16:08:26 +0000
-Received: from m0098421.ppops.net (m0098421.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 32AG4ctu031743;
-	Fri, 10 Mar 2023 16:08:25 GMT
-Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com [169.51.49.102])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3p87r9r2bj-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 10 Mar 2023 16:08:25 +0000
-Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
-	by ppma06ams.nl.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 32A8USa4022977;
-	Fri, 10 Mar 2023 16:08:22 GMT
-Received: from smtprelay06.fra02v.mail.ibm.com ([9.218.2.230])
-	by ppma06ams.nl.ibm.com (PPS) with ESMTPS id 3p6fysv3ab-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 10 Mar 2023 16:08:22 +0000
-Received: from smtpav07.fra02v.mail.ibm.com (smtpav07.fra02v.mail.ibm.com [10.20.54.106])
-	by smtprelay06.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 32AG8Je631981916
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 10 Mar 2023 16:08:19 GMT
-Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 39A6920040;
-	Fri, 10 Mar 2023 16:08:19 +0000 (GMT)
-Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id BA7022004E;
-	Fri, 10 Mar 2023 16:08:17 +0000 (GMT)
-Received: from tuxmaker.boeblingen.de.ibm.com (unknown [9.152.85.9])
-	by smtpav07.fra02v.mail.ibm.com (Postfix) with ESMTP;
-	Fri, 10 Mar 2023 16:08:17 +0000 (GMT)
-From: Niklas Schnelle <schnelle@linux.ibm.com>
-Date: Fri, 10 Mar 2023 17:07:48 +0100
-Subject: [PATCH v8 3/6] s390/pci: prepare is_passed_through() for dma-iommu
+	id 1pajGY-00G0tI-I2; Fri, 10 Mar 2023 20:23:04 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id m25-20020a7bcb99000000b003e7842b75f2so4238225wmi.3;
+        Fri, 10 Mar 2023 12:22:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678479778;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=4FSUfPM9PzkBQgHDUuENGncvGQIkUiTKD50SixP/pVQ=;
+        b=nqYajTJnlqn2QszL583h60rJxUCMetnsvZgOsAO3yQAfcrcBdEo8ujageLvtqCYR1C
+         EWgzG34cjLhLbcN7aJJpu48AZ4GJOjR/lpJu3wYFmjF8nEqXcEIUWHhA/XO01XBK/KOl
+         cW4rWfcpfb+IWiCe5/+7ZV5n5gYAttg7um8uQH9aMdNGjyZIvqHHcr/gXZ4S/31TsRXz
+         gWu3t9TM1IV3j3/3DNK8Dg60318W85GLtsAc7npo0uVGZvcoer/OD3fANpZRJkO4vkU7
+         ycrXXqP0TTHiM3zAo+1tjLoQGM7zk5RgYPG2JXldcnhAbIdK5G+jqkQssPhif40m7KGy
+         SDaw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678479778;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=4FSUfPM9PzkBQgHDUuENGncvGQIkUiTKD50SixP/pVQ=;
+        b=ZCrYBnLQycvBp6t9rv9Moygk1dhYsb7t0c1lJRqRfREB68dNAV4nxlSpQFRN3MGiUQ
+         uKWm2v8r3t/htBEaXGY20gdKiC+Fa0rxhfnwR1VDGsx7InOMZrt6NtM4UXXPKIOgeYDb
+         Xmqdq4wZ1tsRQIlPeHXk0AhiLVoyzxW5D4SUob1wSoiERVpqHORC/aMSYzB7oYFFryus
+         glCPrx9Ld29DGI7EVtc/W3fwuibAf2hTsFW4x+NCcQ7Pk1d3lOM25usd69oZXiQSM7mL
+         AuqawKqWtzmLdONEo01yIZHcEoOFTbg81y/qJ1iDyB9yOcj/W/UsMQDi31RApElXUOYe
+         ZVMA==
+X-Gm-Message-State: AO0yUKUzWmuLlw0VWxLI6lxmT2naubEbYLfT8oSYOMbkT+QA+tZwC9bk
+	l2U/Qruo5r+IqIf6+W2I5UQ=
+X-Google-Smtp-Source: AK7set+Y2IDpfiEwJF5RRzfh95sswmbosQPuhKf9C3F+lrJubOCiXt2+E2ADzjiE7HXqA7OK3SfoaQ==
+X-Received: by 2002:a05:600c:4f01:b0:3ea:f6c4:3060 with SMTP id l1-20020a05600c4f0100b003eaf6c43060mr3857549wmq.18.1678479777626;
+        Fri, 10 Mar 2023 12:22:57 -0800 (PST)
+Received: from ?IPv6:2a02:168:6806:0:66a2:bd80:e6ae:416? ([2a02:168:6806:0:66a2:bd80:e6ae:416])
+        by smtp.gmail.com with ESMTPSA id k6-20020a5d5186000000b002c707785da4sm576606wrv.107.2023.03.10.12.22.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 10 Mar 2023 12:22:57 -0800 (PST)
+Message-ID: <10da10caea22a8f5da8f1779df3e13b948e8a363.camel@gmail.com>
+Subject: Re: [PATCH net-next v2 4/6] net: mdio: scan bus based on bus
+ capabilities for C22 and C45
+From: Klaus Kudielka <klaus.kudielka@gmail.com>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Michael Walle <michael@walle.cc>, Heiner Kallweit
+ <hkallweit1@gmail.com>,  Russell King <linux@armlinux.org.uk>, "David S.
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
+ Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Felix Fietkau
+ <nbd@nbd.name>, John Crispin <john@phrozen.org>,  Sean Wang
+ <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
+ Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Bryan Whitehead <bryan.whitehead@microchip.com>,
+ UNGLinuxDriver@microchip.com, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,  Jose Abreu
+ <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Joel
+ Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ netdev@vger.kernel.org,  linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,  linux-mediatek@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,  linux-aspeed@lists.ozlabs.org,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>
+Date: Fri, 10 Mar 2023 21:22:56 +0100
+In-Reply-To: <70f5bca0-322c-4bae-b880-742e56365abe@lunn.ch>
+References: 	<20230116-net-next-remove-probe-capabilities-v2-0-15513b05e1f4@walle.cc>
+	 <20230116-net-next-remove-probe-capabilities-v2-4-15513b05e1f4@walle.cc>
+	 <449bde236c08d5ab5e54abd73b645d8b29955894.camel@gmail.com>
+	 <100c439a-2a4d-4cb2-96f2-5bf273e2121a@lunn.ch>
+	 <712bc92ca6d576f33f63f1e9c2edf0030b10d3ae.camel@gmail.com>
+	 <db6b8a09-b680-4baa-8963-d355ad29eb09@lunn.ch>
+	 <0e10aa8492eadb587949d8744b56fccaabbd183b.camel@gmail.com>
+	 <72530e86-9ba9-4a01-9cd2-68835ecae7a0@lunn.ch>
+	 <09d65e1ee0679e1e74b4f3a5a4c55bd48332f043.camel@gmail.com>
+	 <70f5bca0-322c-4bae-b880-742e56365abe@lunn.ch>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.4-1 
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20230310-dma_iommu-v8-3-2347dfbed7af@linux.ibm.com>
-References: <20230310-dma_iommu-v8-0-2347dfbed7af@linux.ibm.com>
-In-Reply-To: <20230310-dma_iommu-v8-0-2347dfbed7af@linux.ibm.com>
-To: Joerg Roedel <joro@8bytes.org>, Matthew Rosato <mjrosato@linux.ibm.com>,
-        Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>,
-        Robin Murphy <robin.murphy@arm.com>, Jason Gunthorpe <jgg@ziepe.ca>
-Cc: Gerd Bayer <gbayer@linux.ibm.com>, Julian Ruess <julianr@linux.ibm.com>,
-        Pierre Morel <pmorel@linux.ibm.com>,
-        Alexandra Winter <wintera@linux.ibm.com>,
-        Heiko Carstens <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
-        Alexander Gordeev <agordeev@linux.ibm.com>,
-        Christian Borntraeger <borntraeger@linux.ibm.com>,
-        Sven Schnelle <svens@linux.ibm.com>,
-        Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
-        Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
-        Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-        David Woodhouse <dwmw2@infradead.org>,
-        Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Konrad Dybcio <konrad.dybcio@linaro.org>,
-        Yong Wu <yong.wu@mediatek.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-        Orson Zhai <orsonzhai@gmail.com>,
-        Baolin Wang <baolin.wang@linux.alibaba.com>,
-        Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Samuel Holland <samuel@sholland.org>,
-        Thierry Reding <thierry.reding@gmail.com>,
-        Krishna Reddy <vdumpa@nvidia.com>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Niklas Schnelle <schnelle@linux.ibm.com>,
-        Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
-        netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-        iommu@lists.linux.dev, asahi@lists.linux.dev,
-        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-        linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
-        linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
-X-Mailer: b4 0.12.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1902;
- i=schnelle@linux.ibm.com; h=from:subject:message-id;
- bh=UFZ4h7XPUa2PISPEnSCNuaMyGMwcJutgOErG7r5Bobo=;
- b=owGbwMvMwCH2Wz534YHOJ2GMp9WSGFK4Q1/5pd0uL0hYeOJb8f2g/6yv0h49kVhmcFiQQ/IS9
- wT7PLMdHaUsDGIcDLJiiiyLupz91hVMMd0T1N8BM4eVCWQIAxenAEzkuxUjw+mW5vk7o363eb4M
- NtzyzFhJ7mfynvpP6xmWv9nwQrk6TJzhD58D1/bHO/w9k5Om+Rn/vrrMIO6C3bnoSz7uzfMUStW
- 28AAA
-X-Developer-Key: i=schnelle@linux.ibm.com; a=openpgp;
- fpr=9DB000B2D2752030A5F72DDCAFE43F15E8C26090
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: MSjQmyGt5rG2WTKkx9qooV8XA6W5sxbk
-X-Proofpoint-ORIG-GUID: ah10nOs4nm9WTZ8iDuTBDNkA2uZifsi8
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
- definitions=2023-03-10_06,2023-03-10_01,2023-02-09_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0 spamscore=0
- priorityscore=1501 clxscore=1015 lowpriorityscore=0 mlxlogscore=999
- mlxscore=0 phishscore=0 impostorscore=0 adultscore=0 bulkscore=0
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2212070000 definitions=main-2303100124
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230310_080858_799213_A326539A 
-X-CRM114-Status: GOOD (  21.46  )
+X-CRM114-CacheID: sfid-20230310_122302_616049_D1601466 
+X-CRM114-Status: GOOD (  12.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,60 +113,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-With the IOMMU always controlled through the IOMMU driver testing for
-zdev->s390_domain is not a valid indication of the device being
-passed-through. Instead test if zdev->kzdev is set.
+On Thu, 2023-03-09 at 17:36 +0100, Andrew Lunn wrote:
+>=20
+> I was wrong about something i said earlier. A C22 scan reads two
+> registers for each of the 32 possible locations of a C22 PHY on the
+> bus. A C45 scan is however much more expensive. It will read 30 time
+> two registers for each of the 32 possible locations of a C45 PHY on
+> the bus.
+>=20
+> One things that could help is moving some code around a bit. Currently
+> mv88e6xxx_mdios_register() is called at the end of
+> mv88e6xxx_probe(). Try moving it to the beginning of
+> mv88e6xxx_setup(). The call to mv88e6xxx_mdios_unregister() then need
+> to move into mv88e6xxx_teardown().
+>=20
 
-Reviewed-by: Pierre Morel <pmorel@linux.ibm.com>
-Reviewed-by: Matthew Rosato <mjrosato@linux.ibm.com>
-Signed-off-by: Niklas Schnelle <schnelle@linux.ibm.com>
----
- arch/s390/pci/pci_event.c | 15 +++++++++++----
- 1 file changed, 11 insertions(+), 4 deletions(-)
+Yes, that helps. Primarily, because mdiobus_scan_bus_c45 now is called only=
+ once,
+and at least some things are done in parallel.
 
-diff --git a/arch/s390/pci/pci_event.c b/arch/s390/pci/pci_event.c
-index b9324ca2eb94..4ef5a6a1d618 100644
---- a/arch/s390/pci/pci_event.c
-+++ b/arch/s390/pci/pci_event.c
-@@ -59,9 +59,16 @@ static inline bool ers_result_indicates_abort(pci_ers_result_t ers_res)
- 	}
- }
- 
--static bool is_passed_through(struct zpci_dev *zdev)
-+static bool is_passed_through(struct pci_dev *pdev)
- {
--	return zdev->s390_domain;
-+	struct zpci_dev *zdev = to_zpci(pdev);
-+	bool ret;
-+
-+	mutex_lock(&zdev->kzdev_lock);
-+	ret = !!zdev->kzdev;
-+	mutex_unlock(&zdev->kzdev_lock);
-+
-+	return ret;
- }
- 
- static bool is_driver_supported(struct pci_driver *driver)
-@@ -176,7 +183,7 @@ static pci_ers_result_t zpci_event_attempt_error_recovery(struct pci_dev *pdev)
- 	}
- 	pdev->error_state = pci_channel_io_frozen;
- 
--	if (is_passed_through(to_zpci(pdev))) {
-+	if (is_passed_through(pdev)) {
- 		pr_info("%s: Cannot be recovered in the host because it is a pass-through device\n",
- 			pci_name(pdev));
- 		goto out_unlock;
-@@ -239,7 +246,7 @@ static void zpci_event_io_failure(struct pci_dev *pdev, pci_channel_state_t es)
- 	 * we will inject the error event and let the guest recover the device
- 	 * itself.
- 	 */
--	if (is_passed_through(to_zpci(pdev)))
-+	if (is_passed_through(pdev))
- 		goto out;
- 	driver = to_pci_driver(pdev->dev.driver);
- 	if (driver && driver->err_handler && driver->err_handler->error_detected)
+(Still, ~2s waiting for the C45 scan to complete).
 
--- 
-2.37.2
+[    0.382715] mdio_bus mv88e6xxx-0: *** mdiobus_scan_bus_c22 call ***
+[    0.387571] mmc0: new high speed MMC card at address 0001
+[    0.387953] mmcblk0: mmc0:0001 H8G4a\x92 7.28 GiB=20
+[    0.388929]  mmcblk0: p1
+[    0.389197] mmcblk0boot0: mmc0:0001 H8G4a\x92 4.00 MiB=20
+[    0.389508] mmcblk0boot1: mmc0:0001 H8G4a\x92 4.00 MiB=20
+[    0.389850] mmcblk0rpmb: mmc0:0001 H8G4a\x92 4.00 MiB, chardev (250:0)
+[    0.393323] ata2: SATA link down (SStatus 0 SControl 300)
+[    0.486839] mdio_bus mv88e6xxx-0: *** mdiobus_scan_bus_c22 return ***
+[    0.486850] mdio_bus mv88e6xxx-0: *** mdiobus_scan_bus_c45 call ***
+[    0.554696] ata1: SATA link up 6.0 Gbps (SStatus 133 SControl 300)
+[    0.555373] ata1.00: supports DRM functions and may not be fully accessi=
+ble
+[    0.555378] ata1.00: ATA-10: KINGSTON SKC600MS512G, S4800105, max UDMA/1=
+33
+[    0.555384] ata1.00: 1000215216 sectors, multi 1: LBA48 NCQ (depth 32)
+[    0.556055] ata1.00: Features: Trust Dev-Sleep
+[    0.556150] ata1.00: supports DRM functions and may not be fully accessi=
+ble
+[    0.556800] ata1.00: configured for UDMA/133
+[    0.556981] scsi 0:0:0:0: Direct-Access     ATA      KINGSTON SKC600M 01=
+05 PQ: 0 ANSI: 5
+[    0.557506] sd 0:0:0:0: [sda] 1000215216 512-byte logical blocks: (512 G=
+B/477 GiB)
+[    0.557515] sd 0:0:0:0: [sda] 4096-byte physical blocks
+[    0.557552] sd 0:0:0:0: [sda] Write Protect is off
+[    0.557557] sd 0:0:0:0: [sda] Mode Sense: 00 3a 00 00
+[    0.557613] sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled,=
+ doesn't support DPO or FUA
+[    0.557736] sd 0:0:0:0: [sda] Preferred minimum I/O size 4096 bytes
+[    0.558295]  sda: sda1
+[    0.558417] sd 0:0:0:0: [sda] Attached SCSI removable disk
+[    0.685992] sfp sfp: module TP-LINK          TL-SM321B        rev      s=
+n 1403076900       dc 140401
+[    0.686009] mvneta f1034000.ethernet eth2: switched to inband/1000base-x=
+ link mode
+[    2.820390] mdio_bus mv88e6xxx-0: *** mdiobus_scan_bus_c45 return ***
+[    3.464461] mv88e6085 f1072004.mdio-mii:10: configuring for fixed/rgmii-=
+id link mode
+[    3.466123] mv88e6085 f1072004.mdio-mii:10: configuring for fixed/rgmii-=
+id link mode
+[    3.467397] mv88e6085 f1072004.mdio-mii:10: Link is Up - 1Gbps/Full - fl=
+ow control off
+[    3.471263] mv88e6085 f1072004.mdio-mii:10: Link is Up - 1Gbps/Full - fl=
+ow control off
+[    3.538112] mv88e6085 f1072004.mdio-mii:10 lan0 (uninitialized): PHY [mv=
+88e6xxx-0:00] driver [Marvell 88E1540] (irq=3D68)
+[    3.602833] mv88e6085 f1072004.mdio-mii:10 lan1 (uninitialized): PHY [mv=
+88e6xxx-0:01] driver [Marvell 88E1540] (irq=3D69)
+[    3.674111] mv88e6085 f1072004.mdio-mii:10 lan2 (uninitialized): PHY [mv=
+88e6xxx-0:02] driver [Marvell 88E1540] (irq=3D70)
+[    3.746290] mv88e6085 f1072004.mdio-mii:10 lan3 (uninitialized): PHY [mv=
+88e6xxx-0:03] driver [Marvell 88E1540] (irq=3D71)
+[    3.818291] mv88e6085 f1072004.mdio-mii:10 lan4 (uninitialized): PHY [mv=
+88e6xxx-0:04] driver [Marvell 88E1540] (irq=3D72)
+[    3.820845] device eth1 entered promiscuous mode
+[    3.821730] device eth0 entered promiscuous mode
+[    3.821749] DSA: tree 0 setup
+[    3.822563] Freeing unused kernel image (initmem) memory: 1024K
+[    3.822727] Run /init as init process
+
+
+Regards, Klaus
 
 
