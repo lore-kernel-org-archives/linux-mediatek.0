@@ -4,83 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87958C6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Mar 2023 22:46:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8C55C64EC4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 00:50:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=KK2kVS/pDWxq/x5pUQs4W8hA5sU/CpHNUPW7RfmKdu0=; b=GpkgsCv11tbh8i8WiIwZNBy8hD
-	7Bers99Ak8WnkdBhE46YUaj5BBRTPXUAl4YSNN+HXjHoG3Hw5sVtL6461UAkA0CCe9i693mHLx82X
-	mz7iDNo6eoy3ac7Dwt2c9cTqdsv0RtNhoqmKzbowaVpc2or8gKik535ugznY4QCrEr60UmFRwi9iz
-	FY8saxFCD3WxsW8j4Tav4AAfKwpH0FePn3a0UevbQYTBhbFXUeDf7a9nyIWmGsA/vUxMpiOtZIb+t
-	fndT+4NfSjgYREvDSae2ZJS0KgruFkJ/9ZyHdBfPJGStnCphDDVulnOkwQs+S1SDX5y1mcMpdW/Bu
-	6VkxKYuA==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dQnOg8JWy4btDSR5+c/gj471wc0iTGxUlJqHKUtLXfM=; b=QXOwCRe48uaDaeqvq9/c6dz+yP
+	e6evEZ2yZ7AjEFK2aRZSZtCqzn1ol3jR8tPhj88kWFKwzxPrssb9wynVBfn74sedVFaqQiEzQpzvE
+	PBkL8fac6cQYlO5YQwzSGEuwAuURZlee9ep1HI00Q8Sz8RcvPvRMrR8yfHBz4KXAThkVOLYDh3Djr
+	7Zst4ewOm5wR8Ow8kVCboNSpLS9itIev9554pkto3VRAI+joPP6ca1RnQ/kvygIAiYbEwXa/mRqo3
+	jJiWocooWggYjGXc3wYJ2zdUgcjo1rMkbzJeJy4gJWh1iRQBV6OU1J97phN9+W7a/IyS+orjgy2TK
+	eFgowsCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paP2E-00CFYG-IA; Thu, 09 Mar 2023 22:46:54 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1paQxx-00CVuz-Ei; Fri, 10 Mar 2023 00:50:37 +0000
+Received: from dispatch1-us1.ppe-hosted.com ([148.163.129.49])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paNul-00C0b5-Dh
-	for linux-mediatek@lists.infradead.org; Thu, 09 Mar 2023 21:35:09 +0000
-Received: by mail-ed1-x530.google.com with SMTP id i34so12643926eda.7
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Mar 2023 13:35:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1678397703;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:from:to:cc:subject:date:message-id:reply-to;
-        bh=KK2kVS/pDWxq/x5pUQs4W8hA5sU/CpHNUPW7RfmKdu0=;
-        b=oBBXq4iAeXbCsT2PF/6pqeDn93WEhifSbV1qlFa/7iop2+zWVFoeABEAekMO3CFjo8
-         XXFd5i2aeyKAoNCdnQEt/4uAjlOK6cjFdPbuGtqF/txObVlNkQwgyPHFXVzDNoHgTnRR
-         rbpW2nXtXY4BLA0DPrDKkKgmfaZVSLLq/BXxs6eYSYcWD5MNVmyFED/xQHLX4yhhxcWL
-         ru/lfliBr65TCIfvp6fTHZN9Jly/jxxB/fjLOL7OSb4u5/2I7a5UAAuTw/9EWTwf+GNM
-         1b+Xfi3rSFDIlGp/PJtFNMlsbCYUyB6GNpBEmGc55AAsMCj/rbV0o/F1u1pzCU6CFKQe
-         E7Zw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678397703;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=KK2kVS/pDWxq/x5pUQs4W8hA5sU/CpHNUPW7RfmKdu0=;
-        b=14XoU9FKfvzazRe7/6nIjL9K0/qTkri4QVANekNazOxtv4hhLRUF5HNIxnL4D3CteV
-         f3HyUKiLxnNinVJ4odINqMM/c3Yj8Kvb5L6dXk0aJZDGcKJebHA7IbbJHZflFYUn53AF
-         LXMwUwBfIjKRHbs4678UbQcG3psBo6fgloVzKZBKGOIm5NVd/QA62A1ucYTbUNsF86OR
-         38HVrgeXmop3OdQ3Ez/R7TnOPWSUQxol7audVF+OR2f7WQNgcRKOd/jO+XUJAocnHGSU
-         fQe64/X4rSR4vcWJyqVz2lX+Co4/Ib82Kys3OQ1QrgGfg5i3aHvxSsB9f39ycA2PZTUC
-         DMVw==
-X-Gm-Message-State: AO0yUKUDftx/MORq5CJ3PFGt6UVESju/OoQvfUvdCzVVFeYCZkKmBkax
-	6vM2eSoDXu7mNCQP36sS+PK22PJxhQo2sQhz+c8=
-X-Google-Smtp-Source: AK7set/lpUBZ9Bne9GGWFN6gWynBHiCiKi1zXGKsV102g3fb0dLfD4PR0FwBl6fJxgTrdcDKS96V+A==
-X-Received: by 2002:aa7:d7c8:0:b0:4ac:c85c:fb8d with SMTP id e8-20020aa7d7c8000000b004acc85cfb8dmr24734520eds.10.1678397703225;
-        Thu, 09 Mar 2023 13:35:03 -0800 (PST)
-Received: from ryzen9.fritz.box ([81.221.122.240])
-        by smtp.gmail.com with ESMTPSA id 8-20020a508748000000b004af7191fe35sm211486edv.22.2023.03.09.13.35.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Mar 2023 13:35:02 -0800 (PST)
-From: =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>
-To: linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-serial@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	matthias.bgg@gmail.com,
-	gregkh@linuxfoundation.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org,
-	maz@kernel.org,
-	tglx@linutronix.de
-Subject: [PATCH v11 0/3] Add minimal MT8365 and MT8365-EVK support
-Date: Thu,  9 Mar 2023 22:34:58 +0100
-Message-Id: <20230309213501.794764-1-bero@baylibre.com>
-X-Mailer: git-send-email 2.40.0.rc2
+	id 1paQxu-00CVu5-Vc
+	for linux-mediatek@lists.infradead.org; Fri, 10 Mar 2023 00:50:36 +0000
+X-Virus-Scanned: Proofpoint Essentials engine
+Received: from mail3.candelatech.com (mail2.candelatech.com [208.74.158.173])
+	by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id B66FEAC007F;
+	Fri, 10 Mar 2023 00:50:29 +0000 (UTC)
+Received: from [192.168.100.159] (50-251-239-81-static.hfc.comcastbusiness.net [50.251.239.81])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by mail3.candelatech.com (Postfix) with ESMTPSA id E9B5213C2B0;
+	Thu,  9 Mar 2023 16:50:28 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com E9B5213C2B0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
+	s=default; t=1678409429;
+	bh=EJVz+TdW6NbIT299nfmymNsW/oWJlLvv8nx9PWrZf5o=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=IHYTV6jHESZccrd7gdQoaK0DYMFw/Cr8XtLPj8b0gyBT6dJJ5kwmHLp+tUQ1dda4v
+	 +jFE16DHevvR1Zr738s1dStf9LuB7vRu8PwHqWY3YkUtgNXHOwwl0YFwVFOw1DTOzK
+	 kPU+49zzlEOLcF2UIhbCA1y9f0J+i0/b0fadi6yo=
+Message-ID: <79728d21-400d-d294-f48e-a2ee091869bf@candelatech.com>
+Date: Thu, 9 Mar 2023 16:50:28 -0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v2] wifi: mt76: mt7921: use driver flags rather than
+ mac80211 flags to mcu
+Content-Language: en-US
+To: Deren Wu <deren.wu@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+ YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>,
+ Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin <km.lin@mediatek.com>,
+ Robin Chiu <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>,
+ Posh Sun <posh.sun@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>
+References: <0c2eed5226aef8e7e219c748b9d20cb234cf9f8f.1678186986.git.deren.wu@mediatek.com>
+From: Ben Greear <greearb@candelatech.com>
+Organization: Candela Technologies
+In-Reply-To: <0c2eed5226aef8e7e219c748b9d20cb234cf9f8f.1678186986.git.deren.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-MDID: 1678409431-Xzc1GRKUxN6I
+X-MDID-O: us5;ut7;1678409431;Xzc1GRKUxN6I;<greearb@candelatech.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_133507_698992_51A46933 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20230309_165035_150905_9C7B8019 
+X-CRM114-Status: GOOD (  14.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,77 +86,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-v11:
-  - Fix typo in systimer (Thanks Angelo)
+On 3/7/23 03:22, Deren Wu wrote:
+> From: Neil Chen <yn.chen@mediatek.com>
+> 
+> FIF_* flags from mac80211 is not ABI. mt7921 should not pass it into mcu
+> directly. Remap FIF_* to driver defined flags as mcu command input.
+> 
+> Fixes: c222f77fd421 ("wifi: mt76: mt7921: fix rx filter incorrect by drv/fw inconsistent")
+> Signed-off-by: Neil Chen <yn.chen@mediatek.com> > Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 
-v10:
-  - Fix systimer properties (Thanks Amjad)
-  - Drop components of the patchset that have already been merged
+I tried this plus the patch it is fixing on 6.2.2+ kernel with 7922 radios,
+and behaviour seems worse than before the two patches were applied.
 
-v9:
-  - Fix a regression in v8 that broke the USB port
-  - Remove superfluous include in mt8365.dtsi
-  - Fix some naming issues pointed out by dtbs_check
+Original problem I was trying to fix is that my STAs will connect fine on 5Ghz,
+but then when I try to move them to 2.4Ghz, most will not scan anything.
+Packet sniff shows probe responses and requests, so I suspected firmware is
+filtering when it should not.
 
-v8:
-  - Add binding descriptions for mediatek,mt8365-systimer and
-    mediatek,mt8365-uart
-  - Specify ranges with parameters for u3phy
+With the two patches applied, even 5Ghz is showing failure, with lots of
+beacon loss messages (I am disabling beacon filtering, which previously worked
+fine on 7921 nic in 5.19 kernel).
 
-Tested-by: Kevin Hilman <khilman@baylibre.com>
+Are there other patches that I should consider to get 7922 to work better in 6.2.2+
+kernel?
 
-v7:
-  - Update GIC information in mt8365.dtsi (thanks to Marc Zyngier for
-    pointing out the problem)
-  - Adjust the timer to match the updated GIC information
-
-v6:
-  - Add systimer in mt8365.dtsi
-  - Add I/D caches and L2 cache details in mt8365.dtsi
-  - Move bl31_secmon_reserved from mt8365.dtsi to mt8365-evk.dts
-  - Fix inconsistent indentation in mt8365-pinctrl example
-  - Further mt8365.dtsi cleanups
-  - Submit to additional maintainers spotted by get_maintainer.pl
-
-v5:
-  - Reorder top-level entries in mediatek,mt8365-pinctrl.yaml to match
-    example-schema
-  - Use consistent quotes
-
-v4:
-  - Remove pins-are-numbered references that have been holding things up
-    now that the patches removing it from dt-bindings have landed in linux-next
-
-v3:
-  - Remove a number of components that are not yet supported (they will
-    come back alongside the corresponding drivers)
-  - Address issues found by dt_binding_check (mostly fixing pinctrl
-    bindings)
-  - Address issues pointed out in comments
-  - Reorder patches
-
-v2:
-  - Add missing dt-bindings documentation
-  - Small cleanups addressing issues in v1 pointed out by Krzysztof Kozlowski
+[root@ct523c-3b7f ~]# cat /debug/ieee80211/wiphy0/mt76/version
+chipset:       7922
+ASIC-Revision: 0x79220010
+hw_sw_ver:     0x8a108a10
+build_date:    20221227123154a
+bus:           0000:04:00.0
+fwcfg:         fwcfg-mmio-0000:04:00.0.txt
+WM-hw_sw_ver:  ____000000
+WM-build_date: 20221227123243
+WA-hw_sw_ver:
+WA-build_date:
 
 
-Bernhard Rosenkränzer (2):
-  dt-bindings: irq: mtk, sysirq: add support for mt8365
-  dt-bindings: serial: mediatek,uart: add MT8365
-
-Fabien Parent (1):
-  arm64: dts: mediatek: Initial mt8365-evk support
-
- .../interrupt-controller/mediatek,sysirq.txt  |   1 +
- .../bindings/serial/mediatek,uart.yaml        |   1 +
- arch/arm64/boot/dts/mediatek/Makefile         |   1 +
- arch/arm64/boot/dts/mediatek/mt8365-evk.dts   | 168 ++++++++
- arch/arm64/boot/dts/mediatek/mt8365.dtsi      | 377 ++++++++++++++++++
- 5 files changed, 548 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8365-evk.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8365.dtsi
+Thanks,
+Ben
 
 -- 
-2.40.0.rc2
+Ben Greear <greearb@candelatech.com>
+Candela Technologies Inc  http://www.candelatech.com
+
 
 
