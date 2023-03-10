@@ -4,108 +4,138 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAC91C6FA99
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 17:00:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98295C6FA99
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 17:16:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=WdlGZkMRPNoVnTmOdWDP6rWo7x6dipoNOzIkEhAeL38=; b=D1hVxfxQJe4PK4njLzjO40O9ro
-	JmO5agkyWrrWs3uoEKCsloJP94ew8y2sJ0CEsxP8Obo5DUbfFUXrXGUlG6XA5XCYLXAJJ1HosmwhX
-	cLGw37fMVEOotkkfP71hM567pq+C/XrQkI32BJVq9Duatr8dJYkr3aPcTcepNhP4BS/aiaksP03Vb
-	7jj89CpMvJMA280WYewX82pWiHcFVFy4jhKKMEnuy9cT43Q7DLEtrijNr5Bi74ooNEu1RtgswFl8x
-	/15VVNT+AWgUnipfPlXxdRcaJckE8U2ywv1MB5ZV8Ik+5F3n+HXAjdlOtu77yvJ2b1sszg0kGI/Nj
-	k9Ics9Lw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CPjiaxkDrxOhM80KIjTs4JVtVyYlieaiFF9qFB3yuTs=; b=oBbKH9KOPAlL7a5ZwmISVRmu+v
+	hKAGULKdldRPn9TEqPy49M473DuLuSCrMLobnR8e8DEQmZ5Okrhoa0qXmliFtW+hb/iu2bLHxPz+A
+	WOlBLAr1PusbYrYlIowvHU8hW28Z1h/wP07u/DFiHqjgtADuJ6yCgJ5qWka1Oaisuba6nFHHpoYFB
+	wU1uJ4nCNVkXWfRk+FsUFfRPA9zqyNrtK1q2LfXD9Te0EG2Q8jxIWZeIRH0epV89zi9bplNoAQ838
+	OKFnbBo7WyNT+aB2MJi0RwpFPVPZW8SYkofuDO4CUo4BcmnDqjo3VH7El0KhlwD3dfAnQYXs+mrPm
+	vV2SRRLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pag6c-00FRiI-DV; Fri, 10 Mar 2023 17:00:34 +0000
-Received: from mail-mw2nam12on20610.outbound.protection.outlook.com ([2a01:111:f400:fe5a::610] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+	id 1pagLy-00FVFP-K5; Fri, 10 Mar 2023 17:16:28 +0000
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pag6R-00FRf3-Gr; Fri, 10 Mar 2023 17:00:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=JLAm42iBomwJYfdwrReG9V9CfbNMxC3x6wtkhFoa1tU4SfwJjtoKVZLwPrpiWuRO1/YIFtQimvWQ0tC3WRVseNC3/fu2C7yy8ueuvd9w6UwLrG837h2TUlY/g4XZtPWJzGiT6zg5tFtmtzSg8tPgTrz2xtbxFB21h0ErBKS5G5mPmNnKt01a+K6Je83hXrJFfBWsVwr67fOK6sefOyXzG27Ux5/QOYst/m3pCepbU1HIU7795mIfgUkDZ7ey/a3NUqoYTnpZ32nBrRy8+v6/hFQWVwYlu4Nw/zZ12YY2byR1q+/hJaiHX1WhUfJtmhlCr/kLjRppRPJq64+hGTen+w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=WdlGZkMRPNoVnTmOdWDP6rWo7x6dipoNOzIkEhAeL38=;
- b=T4WJ4l4/vkFrpK8nfdq8k9N4lGXMBnClWWv8orywQMjtlH82P+q6yzRrE6zVPpyoWIZMlC0Oz3c1xr048qdhVvDukeFPHHyzAsLc4Dk+AYNawGivaGpAQ315UT+O+3pH7XdHvTNtkt8YZKYVbr1+giZ5s3aVCdEZxG3ipOLUZlhl54CvqlStoebJ30AzRX0UULBciblOkABzoeQYUPmKPkoo/oUyPY57RivHLj1Qo+7jTje7H31DMQqCWiHbZzpszsH1Uo05FhuuFATZ56e8bfZGFQj/dlGJyP85ogr//L4CRE5Yr6nEnqvZ8WeIQnnXqWBtwhWsY0MFxk+s7u9Fxg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=gmail.com smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=WdlGZkMRPNoVnTmOdWDP6rWo7x6dipoNOzIkEhAeL38=;
- b=1f3PVEJa3vJ1FDU0RZLCF1Hm7RqOhvhpweon9KxSYTECxZUOhmz+YLtv4OGYIl15mTMysASYsS4IW7mdnxwiLW4jg+dy/9o8KLxoa8Y+N+o/yycquI3FREpVAk/lQnaAwdBPouaH+xzOonTtxoRAZlekbQEcv6xFP+2Pvb/aAAg=
-Received: from BLAPR03CA0054.namprd03.prod.outlook.com (2603:10b6:208:32d::29)
- by DS0PR12MB7629.namprd12.prod.outlook.com (2603:10b6:8:13e::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.20; Fri, 10 Mar
- 2023 17:00:13 +0000
-Received: from BL02EPF00010207.namprd05.prod.outlook.com
- (2603:10b6:208:32d:cafe::79) by BLAPR03CA0054.outlook.office365.com
- (2603:10b6:208:32d::29) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.20 via Frontend
- Transport; Fri, 10 Mar 2023 17:00:13 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
-Received: from SATLEXMB04.amd.com (165.204.84.17) by
- BL02EPF00010207.mail.protection.outlook.com (10.167.241.197) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.6178.13 via Frontend Transport; Fri, 10 Mar 2023 17:00:13 +0000
-Received: from AUS-LX-MLIMONCI.amd.com (10.180.168.240) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.34; Fri, 10 Mar
- 2023 11:00:11 -0600
-From: Mario Limonciello <mario.limonciello@amd.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-CC: Mario Limonciello <mario.limonciello@amd.com>, Anson Tsao
-	<anson.tsao@amd.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
-	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Kalle Valo
-	<kvalo@kernel.org>, "David S. Miller" <davem@davemloft.net>, Eric Dumazet
-	<edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
-	<pabeni@redhat.com>, <linux-wireless@vger.kernel.org>,
-	<netdev@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH] wifi: mt76: mt7921e: Set memory space enable in PCI_COMMAND if unset
-Date: Fri, 10 Mar 2023 11:00:02 -0600
-Message-ID: <20230310170002.200-1-mario.limonciello@amd.com>
-X-Mailer: git-send-email 2.25.1
+	id 1pafIY-00FDi4-G6; Fri, 10 Mar 2023 16:08:51 +0000
+Received: from pps.filterd (m0098410.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 32AFIlWj009172;
+	Fri, 10 Mar 2023 16:08:23 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=from : date : subject :
+ mime-version : content-type : content-transfer-encoding : message-id :
+ references : in-reply-to : to : cc; s=pp1;
+ bh=CPjiaxkDrxOhM80KIjTs4JVtVyYlieaiFF9qFB3yuTs=;
+ b=tXavVzjnWXnUWxo/+5gRNAvh+SrSRHn8w7I5IyuwiGH7B/7vhSDBzr8X+SOjp4La5Ofi
+ E8yWW7ATRkL3vyOkkVhvOJuih5cAwAqjwOZNB7TLZtc8R4PrbH0ETKkNlQANATXjPZu7
+ r9zreoSN0NRl592tbnyqE1ixnXvv32rk7kh1QC5Fez8klPSXWb3F69+4DO4JLZ1MYNev
+ SgjY9jPPWVQs/0bAwqDBknyQ6wVkehaMYZQHebz02lw3slEHZeMZYUilAg9OzjwPBh82
+ LrPxVNYRJjF124LC4pgAjm9Ew/iY+2kmrRDybvLWh7fRcABbfoUFY/TsKcczEFnHlSle gw== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3p873597vq-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 10 Mar 2023 16:08:23 +0000
+Received: from m0098410.ppops.net (m0098410.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 32AFJhvL012093;
+	Fri, 10 Mar 2023 16:08:22 GMT
+Received: from ppma04ams.nl.ibm.com (63.31.33a9.ip4.static.sl-reverse.com [169.51.49.99])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3p873597uy-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 10 Mar 2023 16:08:22 +0000
+Received: from pps.filterd (ppma04ams.nl.ibm.com [127.0.0.1])
+	by ppma04ams.nl.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 32A7uOH3030374;
+	Fri, 10 Mar 2023 16:08:19 GMT
+Received: from smtprelay03.fra02v.mail.ibm.com ([9.218.2.224])
+	by ppma04ams.nl.ibm.com (PPS) with ESMTPS id 3p6g8642fa-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 10 Mar 2023 16:08:19 +0000
+Received: from smtpav07.fra02v.mail.ibm.com (smtpav07.fra02v.mail.ibm.com [10.20.54.106])
+	by smtprelay03.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 32AG8G1F43712872
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 10 Mar 2023 16:08:16 GMT
+Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 23A5720040;
+	Fri, 10 Mar 2023 16:08:16 +0000 (GMT)
+Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id A02E52004B;
+	Fri, 10 Mar 2023 16:08:14 +0000 (GMT)
+Received: from tuxmaker.boeblingen.de.ibm.com (unknown [9.152.85.9])
+	by smtpav07.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Fri, 10 Mar 2023 16:08:14 +0000 (GMT)
+From: Niklas Schnelle <schnelle@linux.ibm.com>
+Date: Fri, 10 Mar 2023 17:07:46 +0100
+Subject: [PATCH v8 1/6] s390/ism: Set DMA coherent mask
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.180.168.240]
-X-ClientProxiedBy: SATLEXMB04.amd.com (10.181.40.145) To SATLEXMB04.amd.com
- (10.181.40.145)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL02EPF00010207:EE_|DS0PR12MB7629:EE_
-X-MS-Office365-Filtering-Correlation-Id: e78a3a8c-93cd-4e33-2cc0-08db2188ea3d
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	GM2HJFmz1qMUy4OU9gS5zEbg7uEHKCHzDPAQQjEX/HadNml37zMvj/ODtpkYXaJ7gEdVDC0NhMsPuMI26pU+FU/jFoe3NS037/0zLW6sVsinZO3bybLX/kZ53suIG5skoe+xrr2tyjx1us1zX52t263ak31Cr5w7tgPhGrON2CpOD+V8+9ENkoCvL6zkCkdBgCkj9TfB1MmSLskuY9Rmcwv3ny+7VQ5+EQRqm0ct5CcYAPYN3s7ZprrXNpvAhaC3kfUWnFT7SWB4tcgz7UoGUPjbBjcdlkRecdy6SI7FXRHhE7Ppgwt+Cw2eZJv6Z5n0+3QHG4scFS0Vhb8ZeXLiP6cyioK03Px2r4Icgb5srOjy8dh6lC7Lt9vyrGUd9WnSiAn39tzqcHkbc4gFmBbJCJcQd0DMWV1ST2ZB4w3oSKQ1X7GIeFSvRqr2hkycew3AEzqP8Ckp0WWNDTszm8R/HKZKUJwwPClC08QhKoq5Dj4LCNDIo4EgpdCSVSO2FpLMEalw/8O+eKQxbmSG5vR7roCGrOeMYySl8gso3Bj8L62bJNbe3uVesEkMZZ2gNLDZ1Ok+BqTclOYlJI4w1Z9myApcorBlQcGDnfCA3njX4N+mYOxn1BJ9Aq3coimoiEr0NywcqueGdKJK32lhgmiahPziK1ZbnEycsU7yIkFr0+xph9fuKusy0nfOzBdadbaLd18XYXb61QKAaAuNa0XPHd3z0wNjaGxeAoDhGAkA1xM=
-X-Forefront-Antispam-Report: 	CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:SATLEXMB04.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230025)(4636009)(396003)(376002)(136003)(346002)(39860400002)(451199018)(36840700001)(40470700004)(46966006)(2906002)(81166007)(82740400003)(83380400001)(36756003)(40460700003)(7416002)(5660300002)(44832011)(70206006)(70586007)(40480700001)(8936002)(356005)(8676002)(4326008)(6916009)(316002)(54906003)(41300700001)(86362001)(36860700001)(7696005)(478600001)(426003)(82310400005)(47076005)(2616005)(336012)(186003)(1076003)(16526019)(6666004)(26005)(36900700001);DIR:OUT;SFP:1101;
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Mar 2023 17:00:13.1734
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: e78a3a8c-93cd-4e33-2cc0-08db2188ea3d
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[SATLEXMB04.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	BL02EPF00010207.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB7629
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20230310-dma_iommu-v8-1-2347dfbed7af@linux.ibm.com>
+References: <20230310-dma_iommu-v8-0-2347dfbed7af@linux.ibm.com>
+In-Reply-To: <20230310-dma_iommu-v8-0-2347dfbed7af@linux.ibm.com>
+To: Joerg Roedel <joro@8bytes.org>, Matthew Rosato <mjrosato@linux.ibm.com>,
+        Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>,
+        Robin Murphy <robin.murphy@arm.com>, Jason Gunthorpe <jgg@ziepe.ca>
+Cc: Gerd Bayer <gbayer@linux.ibm.com>, Julian Ruess <julianr@linux.ibm.com>,
+        Pierre Morel <pmorel@linux.ibm.com>,
+        Alexandra Winter <wintera@linux.ibm.com>,
+        Heiko Carstens <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
+        Alexander Gordeev <agordeev@linux.ibm.com>,
+        Christian Borntraeger <borntraeger@linux.ibm.com>,
+        Sven Schnelle <svens@linux.ibm.com>,
+        Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+        Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+        Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+        David Woodhouse <dwmw2@infradead.org>,
+        Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
+        Bjorn Andersson <andersson@kernel.org>,
+        Konrad Dybcio <konrad.dybcio@linaro.org>,
+        Yong Wu <yong.wu@mediatek.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+        Orson Zhai <orsonzhai@gmail.com>,
+        Baolin Wang <baolin.wang@linux.alibaba.com>,
+        Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+        Jernej Skrabec <jernej.skrabec@gmail.com>,
+        Samuel Holland <samuel@sholland.org>,
+        Thierry Reding <thierry.reding@gmail.com>,
+        Krishna Reddy <vdumpa@nvidia.com>,
+        Jonathan Hunter <jonathanh@nvidia.com>,
+        Niklas Schnelle <schnelle@linux.ibm.com>,
+        Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
+        netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+        iommu@lists.linux.dev, asahi@lists.linux.dev,
+        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+        linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
+X-Mailer: b4 0.12.1
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1331;
+ i=schnelle@linux.ibm.com; h=from:subject:message-id;
+ bh=QP466Tmuhke9ZpYBaps9u7QPQnPFsiOIACaxA8oBroY=;
+ b=owGbwMvMwCH2Wz534YHOJ2GMp9WSGFK4Q5+vllZav+rNo0U7la52x0cImVZcN1RS98zw3P39X
+ dcKy9xDHaUsDGIcDLJiiiyLupz91hVMMd0T1N8BM4eVCWQIAxenAEyk5BAjw1fbxSKbZiyYNOfX
+ i9e+U6NU79z3+X/DQu1J5mrDsK1bQmIZGaZefqL26+xhvtRDD/vNeD1lsyY9V5Rb46KxIP5eF2/
+ uLW4A
+X-Developer-Key: i=schnelle@linux.ibm.com; a=openpgp;
+ fpr=9DB000B2D2752030A5F72DDCAFE43F15E8C26090
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: t6DB5i8vhkARvWYCiBWLQXRiiRuyxhWc
+X-Proofpoint-GUID: CyMGare_uRiBCY_5gvYk6zMLo51yZXdw
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
+ definitions=2023-03-10_06,2023-03-10_01,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0 phishscore=0
+ bulkscore=0 mlxscore=0 adultscore=0 lowpriorityscore=0 spamscore=0
+ clxscore=1015 priorityscore=1501 suspectscore=0 mlxlogscore=999
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2212070000 definitions=main-2303100124
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230310_090023_834957_3F75E3B5 
-X-CRM114-Status: GOOD (  11.49  )
+X-CRM114-CacheID: sfid-20230310_080850_574471_CFC37D62 
+X-CRM114-Status: GOOD (  20.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,44 +150,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When the BIOS has been configured for Fast Boot, systems with mt7921e
-have non-functional wifi.  Turning on Fast boot caused both bus master
-enable and memory space enable bits in PCI_COMMAND not to get configured.
+A future change will convert the DMA API implementation from the
+architecture specific arch/s390/pci/pci_dma.c to using the common code
+drivers/iommu/dma-iommu.c which the utilizes the same IOMMU hardware
+through the s390-iommu driver. Unlike the s390 specific DMA API this
+requires devices to correctly call set the coherent mask to be allowed
+to use IOVAs >2^32 in dma_alloc_coherent(). This was however not done
+for ISM devices. ISM requires such addresses since currently the DMA
+aperture for PCI devices starts at 2^32 and all calls to
+dma_alloc_coherent() would thus fail.
 
-The mt7921 driver already sets bus master enable, but explicitly check
-and set memory access enable as well to fix this problem.
-
-Tested-by: Anson Tsao <anson.tsao@amd.com>
-Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+Reviewed-by: Alexandra Winter <wintera@linux.ibm.com>
+Reviewed-by: Matthew Rosato <mjrosato@linux.ibm.com>
+Signed-off-by: Niklas Schnelle <schnelle@linux.ibm.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ drivers/s390/net/ism_drv.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index 8a53d8f286db..24a2aafa6e2a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -256,6 +256,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
- 	struct mt7921_dev *dev;
- 	struct mt76_dev *mdev;
- 	int ret;
-+	u16 cmd;
- 
- 	ret = pcim_enable_device(pdev);
+diff --git a/drivers/s390/net/ism_drv.c b/drivers/s390/net/ism_drv.c
+index eb7e13486087..a40e3afeaaa8 100644
+--- a/drivers/s390/net/ism_drv.c
++++ b/drivers/s390/net/ism_drv.c
+@@ -661,7 +661,7 @@ static int ism_probe(struct pci_dev *pdev, const struct pci_device_id *id)
  	if (ret)
-@@ -265,6 +266,11 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+ 		goto err_disable;
+ 
+-	ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(64));
++	ret = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(64));
  	if (ret)
- 		return ret;
+ 		goto err_resource;
  
-+	pci_read_config_word(pdev, PCI_COMMAND, &cmd);
-+	if (!(cmd & PCI_COMMAND_MEMORY)) {
-+		cmd |= PCI_COMMAND_MEMORY;
-+		pci_write_config_word(pdev, PCI_COMMAND, cmd);
-+	}
- 	pci_set_master(pdev);
- 
- 	ret = pci_alloc_irq_vectors(pdev, 1, 1, PCI_IRQ_ALL_TYPES);
+
 -- 
-2.34.1
+2.37.2
 
 
