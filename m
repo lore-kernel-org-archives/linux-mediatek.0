@@ -4,72 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04369C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 02:37:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B46DCC6FA99
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Mar 2023 03:21:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rnHDPaF+R8FF8PJd9FlWmcGdhDJGTaMa9mgP/cJusow=; b=13MtWCFX3fPKbzlV80LQwPEmF4
-	BBhrptWLeLkWJaDmWWe/wZVdm8qqaJDTauVpxod7v0DznhJCrRR9HEa781zJd3FJm0mSITnxWQDiZ
-	LHlADMbBow4PdmUZ6rG8wW63uJVs6T5VjxrrBbSYT2blanMwDkLxuhuTVlstsm1zr/xe9cJLvQobN
-	5yEEIX/ToZG0IeSi7aItiB3zfveNQthgko+qXKQ9/kw7+wwxYOX0MgAJ66XzpWWYbupeYqauJAAxP
-	Kh4xOOAlugtq+HiykL0GD/hJsN5EDqVLoaNoGiVLBM4/3cPEBlGxTzGOk/QFHt+yp8NcjlsqXk4lE
-	tIMN2mfg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jbTDjvc5ieqfrIhKoRc6A4Iamnhwe4zfbF/KdHYvMbM=; b=1dD81FzOx4wnDKo7b4/6HncGZC
+	wsoT4qD7cAtNj0cRQuP7HzLzFFUyEIyh/3x4dCVqIzsAm8qKeIPwnyfuFEB2GjgB3oJ2Nthvzuk5e
+	k9CE04NXiwg3qxjucvEMJ8n4z6bCXISLLWYEt/oCOXSgnHZpIFE4CeE9omB+gmyRKJKayaIa6WvUN
+	Z8OF0HTZQFb7OAYE4t27SRkoqrt6P06Q0ZsOEqnhLi6Ko2JBBlV86ZpQYbrjPc0dFBnMctuqTl0lk
+	9nU2ChQokT1cT4eD2NA1olqvWbdS/tR4WSqTVGRsD9tgbOVDsl97HRMWv5SLbJTs8Vib1/KG4yrQQ
+	qSOkL1xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paScv-00Ck4X-JM; Fri, 10 Mar 2023 02:37:01 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1paTJd-00CrBS-KC; Fri, 10 Mar 2023 03:21:09 +0000
+Received: from mail-vs1-xe34.google.com ([2607:f8b0:4864:20::e34])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paSbr-00CjPQ-0m; Fri, 10 Mar 2023 02:35:56 +0000
-X-UUID: 4510b7b2beec11eda799af78a38f2b8e-20230309
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=rnHDPaF+R8FF8PJd9FlWmcGdhDJGTaMa9mgP/cJusow=;
-	b=gT/jw7DyCTQItuUhokRCw8dVJld95KxQfJiBOnoZZ1nZeKYt1vRQWw+1FdUdrs5DEliXB+LcRBW+rz3+db6Rw5Jlp4UWdPjOtpPL3dA5YeTI3XD4n0u4wG/v4i8CGTkewlfjW9S9GbJonD29F64us7LNXPxQ/1JINBPrVoWJU4E=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.20,REQID:d9331d1a-6197-43cf-92ea-6ede0f40ff4b,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:25b5999,CLOUDID:a5fdcab2-beed-4dfc-bd9c-e1b22fa6ccc4,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-UUID: 4510b7b2beec11eda799af78a38f2b8e-20230309
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <kyrie.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 611674520; Thu, 09 Mar 2023 19:35:49 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Fri, 10 Mar 2023 10:35:12 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Fri, 10 Mar 2023 10:35:11 +0800
-From: kyrie.wu <kyrie.wu@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <nicolas.dufresne@collabora.com>,
-	kyrie wu <kyrie.wu@mediatek.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Tomasz Figa <tfiga@chromium.org>, <xia.jiang@mediatek.com>,
-	<maoguang.meng@mediatek.com>, Irui Wang <irui.wang@mediatek.com>
-Subject: [V2,7/7] media: mtk-jpeg: refactor hw dev initializaiton
-Date: Fri, 10 Mar 2023 10:35:01 +0800
-Message-ID: <1678415701-1691-8-git-send-email-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1678415701-1691-1-git-send-email-kyrie.wu@mediatek.com>
-References: <1678415701-1691-1-git-send-email-kyrie.wu@mediatek.com>
+	id 1paTJa-00CrA8-Lt
+	for linux-mediatek@lists.infradead.org; Fri, 10 Mar 2023 03:21:08 +0000
+Received: by mail-vs1-xe34.google.com with SMTP id f13so3521523vsg.6
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Mar 2023 19:21:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1678418465;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=jbTDjvc5ieqfrIhKoRc6A4Iamnhwe4zfbF/KdHYvMbM=;
+        b=ePB0Z4h/EVZe6K5HjRzYtbfXmGb1TicluV0XhOHpbVkr/KNK62T6oukk0GlEiwZa3n
+         mzt/b6VrT0J9pDhKgzgTuLe8B/ow3gEPUmo+4uQBs/CmbCWkkSKxeB+yMDA6hHHqfunD
+         gHJQ/rJEcbNFBbLF8zOtsNxZFidTempbV9t34=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678418465;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=jbTDjvc5ieqfrIhKoRc6A4Iamnhwe4zfbF/KdHYvMbM=;
+        b=cq/wTvXncdj9Q6HTqwgyn95CUwtIDll47JmUR+ESIyUdTrLquk3CFedC30foGd7zlm
+         pTz96g1sHeAZx91DQvf3/b8LB/LSC2NMdr7HGr/WlSnqP6Z43d6B+A3I+0d/pO+4jNZr
+         46abnZwu6YqUTGNWRn4uMjobRw78P45Poz6LmrApSf9GBhMxaipFNVY1Ei9Ej+yb3RtV
+         R7a7nIgKYnRn73PaJJywO1fSBpWgozLM+ogCShtr+eC2QZdbBV5ea9bkoA4ahhtILMO2
+         IyhzB7pkwXCIpRcB8vJ9Ws7GkRlJM4RbY+xMxqI7dCYGGxC+0VzVLtUb0M6g1xkXSvob
+         q9fw==
+X-Gm-Message-State: AO0yUKVVjdQbl+YrquCd7Ia1fHbKBV7sNyu+hv/ZAhCPvx0+1KHSWbLh
+	U/09r9OhKIiKlOWO22PNFgbxsgTjJEHA0VHMOkwkIA==
+X-Google-Smtp-Source: AK7set+si04/1KeeWL6kRQ5LkOK77tstrb85bSbjd1w4JQ4/NvTHJ5iJ4Kv4gkWbOuFVDQCpn5vP7kaNIm7RZOiAPQ8=
+X-Received: by 2002:a05:6102:3192:b0:421:c926:4b6d with SMTP id
+ c18-20020a056102319200b00421c9264b6dmr361086vsh.0.1678418464888; Thu, 09 Mar
+ 2023 19:21:04 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20230307154524.118541-1-bchihi@baylibre.com> <20230307154524.118541-2-bchihi@baylibre.com>
+ <CAGXv+5FUrWEF4SZ6DKjoF8Oai--JGFffzQ3_DyzQrUrThVEQ7Q@mail.gmail.com> <e5959cb5-af8c-9410-9530-b3e19e9b647a@linaro.org>
+In-Reply-To: <e5959cb5-af8c-9410-9530-b3e19e9b647a@linaro.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 10 Mar 2023 11:20:53 +0800
+Message-ID: <CAGXv+5EhTi5t1yqDP8BqdCzWzNFSYu4n39kBi0YhEvJQPu7bLg@mail.gmail.com>
+Subject: Re: [PATCH 1/4] dt-bindings: thermal: mediatek: Add AP domain to LVTS
+ thermal controllers for mt8195
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: bchihi@baylibre.com, angelogioacchino.delregno@collabora.com, 
+	rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com, 
+	matthias.bgg@gmail.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
+	rdunlap@infradead.org, ye.xingchen@zte.com.cn, p.zabel@pengutronix.de, 
+	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	devicetree@vger.kernel.org, khilman@baylibre.com, james.lo@mediatek.com, 
+	rex-bc.chen@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_183555_078574_FAA9CA2E 
-X-CRM114-Status: GOOD (  13.82  )
+X-CRM114-CacheID: sfid-20230309_192106_789920_C94F87EE 
+X-CRM114-Status: GOOD (  28.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,98 +91,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: kyrie wu <kyrie.wu@mediatek.com>
+On Thu, Mar 9, 2023 at 6:39=E2=80=AFPM Daniel Lezcano <daniel.lezcano@linar=
+o.org> wrote:
+>
+> On 09/03/2023 05:40, Chen-Yu Tsai wrote:
+> > On Wed, Mar 8, 2023 at 12:46=E2=80=AFAM <bchihi@baylibre.com> wrote:
+> >>
+> >> From: Balsam CHIHI <bchihi@baylibre.com>
+> >>
+> >> Add AP Domain to LVTS thermal controllers dt-binding definition for mt=
+8195.
+> >>
+> >> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+> >> ---
+> >>   include/dt-bindings/thermal/mediatek,lvts-thermal.h | 10 ++++++++++
+> >>   1 file changed, 10 insertions(+)
+> >>
+> >> diff --git a/include/dt-bindings/thermal/mediatek,lvts-thermal.h b/inc=
+lude/dt-bindings/thermal/mediatek,lvts-thermal.h
+> >> index c09398920468..8fa5a46675c4 100644
+> >> --- a/include/dt-bindings/thermal/mediatek,lvts-thermal.h
+> >> +++ b/include/dt-bindings/thermal/mediatek,lvts-thermal.h
+> >> @@ -16,4 +16,14 @@
+> >>   #define MT8195_MCU_LITTLE_CPU2  6
+> >>   #define MT8195_MCU_LITTLE_CPU3  7
+> >>
+> >> +#define MT8195_AP_VPU0  8
+> >
+> > Can't this start from 0? This is a different hardware block. The index
+> > namespace is separate. Same question for MT8192.
+>
+> The ID is used to differentiate the thermal zone identifier in the
+> device tree from the driver.
+>
+> +               vpu0-thermal {
+> +                       polling-delay =3D <0>;
+> +                       polling-delay-passive =3D <0>;
+> +                       thermal-sensors =3D <&lvts_ap MT8195_AP_VPU0>;
+> +
+> +                       trips {
+> +                               vpu0_crit: trip-crit {
+> +                                       temperature =3D <100000>;
+> +                                       hysteresis =3D <2000>;
+> +                                       type =3D "critical";
+> +                               };
+> +                       };
+> +               };
+>
+> If MT8195_AP_VPU0 is 0, then the code won't be able to differentiate
+> MT8195_AP_VPU0 and MT8195_MCU_BIG_CPU0
+>
+> The LVTS driver will call devm_thermal_of_zone_register() with the
+> sensor id. If MT8195_MCU_BIG_CPU0 and MT8195_AP_VPU0 have the same id,
+> then at the moment of registering the MT8195_AP_VPU0, the underlying OF
+> thermal framework code will use MT8195_MCU_BIG_CPU0 description instead
+> because it will be the first to be find in the DT.
+>
+> If MT8195_AP_VPU0 is described in DT before, then the same will happen
+> when registering MT8195_MCU_BIG_CPU0, MT8195_AP_VPU0 will be registered
+> instead.
+>
+> IOW all ids must be different.
 
-Add a atomic_t variable for initialization of hw dev.
+I see. I didn't realize the lookup namespace covered the whole platform.
+In that case, please ignore my request.
 
-Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
-Signed-off-by: irui wang <irui.wang@mediatek.com>
----
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c |  1 +
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h |  2 ++
- .../media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c   | 12 ++++--------
- .../media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c   | 12 ++++--------
- 4 files changed, 11 insertions(+), 16 deletions(-)
+ChenYu
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index ab06c1ee80d4..1dd03938df7e 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1742,6 +1742,7 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
- 			num_child++;
- 
- 		atomic_set(&jpeg->hw_rdy, num_child);
-+		atomic_set(&jpeg->hw_index, 0);
- 
- 		jpeg->workqueue = alloc_ordered_workqueue(MTK_JPEG_NAME,
- 							  WQ_MEM_RECLAIM
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-index 89242e407dc9..8ba6e757e11a 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-@@ -208,6 +208,7 @@ struct mtk_jpegdec_comp_dev {
-  * @hw_rdy:		jpg hw ready flag
-  * @reg_decbase:	jpg decode register base addr
-  * @dec_hw_dev:	jpg decode hardware device
-+ * @hw_index:		jpg hw index
-  */
- struct mtk_jpeg_dev {
- 	struct mutex		lock;
-@@ -229,6 +230,7 @@ struct mtk_jpeg_dev {
- 
- 	void __iomem *reg_decbase[MTK_JPEGDEC_HW_MAX];
- 	struct mtk_jpegdec_comp_dev *dec_hw_dev[MTK_JPEGDEC_HW_MAX];
-+	atomic_t hw_index;
- };
- 
- /**
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-index b7c2de2489b0..869068fac5e2 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-@@ -638,14 +638,10 @@ static int mtk_jpegdec_hw_probe(struct platform_device *pdev)
- 		return dev_err_probe(&pdev->dev, ret,
- 				     "Failed to register JPEGDEC irq handler.\n");
- 
--	for (i = 0; i < MTK_JPEGDEC_HW_MAX; i++) {
--		if (master_dev->dec_hw_dev[i])
--			continue;
--
--		master_dev->dec_hw_dev[i] = dev;
--		master_dev->reg_decbase[i] = dev->reg_base;
--		dev->master_dev = master_dev;
--	}
-+	i = atomic_add_return(1, &master_dev->hw_index) - 1;
-+	master_dev->dec_hw_dev[i] = dev;
-+	master_dev->reg_decbase[i] = dev->reg_base;
-+	dev->master_dev = master_dev;
- 
- 	platform_set_drvdata(pdev, dev);
- 	pm_runtime_enable(&pdev->dev);
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-index e35ee1bdce3d..71e85b4bbf12 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-@@ -362,14 +362,10 @@ static int mtk_jpegenc_hw_probe(struct platform_device *pdev)
- 	if (ret)
- 		return ret;
- 
--	for (i = 0; i < MTK_JPEGENC_HW_MAX; i++) {
--		if (master_dev->enc_hw_dev[i])
--			continue;
--
--		master_dev->enc_hw_dev[i] = dev;
--		master_dev->reg_encbase[i] = dev->reg_base;
--		dev->master_dev = master_dev;
--	}
-+	i = atomic_add_return(1, &master_dev->hw_index) - 1;
-+	master_dev->enc_hw_dev[i] = dev;
-+	master_dev->reg_encbase[i] = dev->reg_base;
-+	dev->master_dev = master_dev;
- 
- 	platform_set_drvdata(pdev, dev);
- 	pm_runtime_enable(&pdev->dev);
--- 
-2.18.0
-
+> The namespace is already described by the macro name AFAICS, so whatever
+> the values, we see only the macro names and those IDs are private the
+> kernel implementation.
+>
+> If the numbering is really important, may be something like:
+>
+> #define MT8195_MCU_BIG_CPU0     00
+> #define MT8195_MCU_BIG_CPU1     01
+> #define MT8195_MCU_BIG_CPU2     02
+> #define MT8195_MCU_BIG_CPU3     03
+> #define MT8195_MCU_LITTLE_CPU0  04
+> #define MT8195_MCU_LITTLE_CPU1  05
+> #define MT8195_MCU_LITTLE_CPU2  06
+> #define MT8195_MCU_LITTLE_CPU3  07
+>
+> #define MT8195_AP_VPU1  10
+> #define MT8195_AP_GPU0  11
+> #define MT8195_AP_GPU1  12
+> #define MT8195_AP_VDEC  13
+> #define MT8195_AP_IMG   14
+> #define MT8195_AP_INFRA 15
+> #define MT8195_AP_CAM0  16
+> #define MT8195_AP_CAM1  17
+>
+> But I would suggest considering this change as a separate patch after
+> the AP domain is added.
+>
+>
+> --
+> <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software for AR=
+M SoCs
+>
+> Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+> <http://twitter.com/#!/linaroorg> Twitter |
+> <http://www.linaro.org/linaro-blog/> Blog
+>
 
