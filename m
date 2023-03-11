@@ -4,68 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF66CC6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Mar 2023 13:45:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49530C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Mar 2023 14:52:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M/yxGBjJWYHSDKTiHFSEDygkdbxssA9wfkJfJYmMlGw=; b=ZpGxq5Tz3ihcVOMGR7thVvBl+9
-	9M9Mb47EBZf04hDFC0xab0oMpBacje6I3dYFfMPA+zfoKxmXo4qQkqPQ9/+8kn74j20ehjlkZjVyj
-	JMXV8gTtBt81OwCUaGtFob2kcqwDG8av0biMalQLhNquqw5gz/ZplR65E9l9H9lkEHP5QWZuYAv9o
-	5tD+x4fIvHk7A3ecrUIAapANxpjSOeXo/qg+OCCnumqgJWGjfpj3dRXC4kWjCRdMIP7QEpema793d
-	QdvCICgq8p56vQDg10inQ4SOY1QNhfRxfm45CGQO3zQiKvsxxiSXwFzY9QRscW3/1zKu4rR0dOc2p
-	uA4U5pEg==;
+	bh=NRYY6rG5UF0dAE0NROl0xPSrnEgMkVgMOmtVduooGLs=; b=qj+kc8KzrkNQ6bpoe+c2V7imkj
+	dUFFqIKroFjuG+OaewuXKIJ9iUPdw5871DbX3j/VnsIgHa4uMQL95UsLdmUEWlwW2sDQkn7o5aXCG
+	sXcJ3l0JnzAbrzUpFa1r2sdSKOrYtGPQno8Yj+wz0QpzIq6djHtR6gWBnpjPvEbm/5CQCEby3JeK8
+	s//5Mf3MQj1U0l64ouF7Cqw1ErphUYMyG5S20wh44XlcYnF9H2DCbr4wgEv6/1fWHLGRTpzOL6K3o
+	QODnCOwc7qTuMXGQy1XDv2YoxS97U3DgWdljIcq/uzqSoqcKcZIXn3nmKpPKb7VWXXeYaVGjshKbz
+	cqmf7QHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pazXH-000eBC-3Y; Sat, 11 Mar 2023 13:45:23 +0000
-Received: from mail-oi1-f177.google.com ([209.85.167.177])
+	id 1pb0Zi-000kc3-A6; Sat, 11 Mar 2023 14:51:58 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pazXD-000e98-V7; Sat, 11 Mar 2023 13:45:21 +0000
-Received: by mail-oi1-f177.google.com with SMTP id c11so6405597oiw.2;
-        Sat, 11 Mar 2023 05:45:17 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678542316;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=M/yxGBjJWYHSDKTiHFSEDygkdbxssA9wfkJfJYmMlGw=;
-        b=jW+B5A7cAJXULykILmHmp4nlS82lcRZnHyOFPUh7U9LlNm0h/4KzOyCoZfZsSNEc/U
-         uilngiPPLJ5Fa1+vCmGIZ5FipLM7NFabjEoeOG4NJR+hhdD8GBf+kQeJy9PXaidqgaQU
-         VQtxMsz5ICYu3RC46UF4hhSz/JbJX/4s/9XVIg9Ep0GPKzZE4n48wdsDaPG8YONswlxn
-         tojGqgaMrIa0oco6tBJuRtCycboNeItaub465gHdvJnNjxDKyV948nRrTlLoJLOkzulR
-         2ouV6BobyLmZZZCQWIm8r/VthzvAIvUM8H/0q0RvoqBZ0YlVea3rFQxswLbyJP6mWkgj
-         C25g==
-X-Gm-Message-State: AO0yUKX58HQjMIQMs6onuxmk3rq4d0NmHIu7YpMn0yZ/giuiuLTKHuns
-	I7pB0P/gh31TbNEhwPvg/A==
-X-Google-Smtp-Source: AK7set832JJbSMM00eLNYQW7qdwTXKNOJD+8e5BwJxEJiJKYv+ZhJ1MVeE7vGwHtwXoHgfdJlO/7vA==
-X-Received: by 2002:a05:6808:b12:b0:384:18f4:1536 with SMTP id s18-20020a0568080b1200b0038418f41536mr13462686oij.32.1678542316277;
-        Sat, 11 Mar 2023 05:45:16 -0800 (PST)
-Received: from robh_at_kernel.org ([2605:ef80:80f8:ec2:d840:96d4:1bbf:55f])
-        by smtp.gmail.com with ESMTPSA id s188-20020acadbc5000000b003847ca255fasm1054934oig.30.2023.03.11.05.45.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 11 Mar 2023 05:45:15 -0800 (PST)
-Received: (nullmailer pid 31469 invoked by uid 1000);
-	Sat, 11 Mar 2023 13:45:13 -0000
-Date: Sat, 11 Mar 2023 07:45:13 -0600
-From: Rob Herring <robh@kernel.org>
-To: Bernhard =?iso-8859-1?Q?Rosenkr=E4nzer?= <bero@baylibre.com>
-Cc: linux-serial@vger.kernel.org, gregkh@linuxfoundation.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, maz@kernel.org, tglx@linutronix.de, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, robh+dt@kernel.org, linux-kernel@vger.kernel.org, angelogioacchino.delregno@collabora.com, krzysztof.kozlowski+dt@linaro.org
-Subject: Re: [PATCH v11 2/3] dt-bindings: serial: mediatek,uart: add MT8365
-Message-ID: <167854230361.31217.14194578578496265497.robh@kernel.org>
-References: <20230309213501.794764-1-bero@baylibre.com>
- <20230309213501.794764-3-bero@baylibre.com>
+	id 1pb0Ze-000kaJ-VR; Sat, 11 Mar 2023 14:51:56 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pb0ZG-0000dl-0v;
+	Sat, 11 Mar 2023 15:51:30 +0100
+Date: Sat, 11 Mar 2023 14:51:27 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
+	Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
+	Alexander Couzens <lynxis@fe80.eu>
+Subject: Re: Aw: Re: [PATCH net-next v12 08/18] net: ethernet: mtk_eth_soc:
+ fix 1000Base-X and 2500Base-X modes
+Message-ID: <ZAyVbzuKq2haFfQa@makrotopia.org>
+References: <ZAiFOTRQI36nGo+w@makrotopia.org>
+ <ZAiJqvzcUob2Aafq@shell.armlinux.org.uk>
+ <20230308134642.cdxqw4lxtlgfsl4g@skbuf>
+ <ZAiXvNT8EzHTmFPh@shell.armlinux.org.uk>
+ <ZAiciK5fElvLXYQ9@makrotopia.org>
+ <ZAijM91F18lWC80+@shell.armlinux.org.uk>
+ <ZAik+I1Ei+grJdUQ@makrotopia.org>
+ <ZAioqp21521NsttV@shell.armlinux.org.uk>
+ <trinity-79e9f0b8-a267-4bf9-a3d4-1ec691eb5238-1678536337569@3c-app-gmx-bs24>
+ <trinity-a69cee2e-40c5-44b5-ac97-2cb35e1d2462-1678541173568@3c-app-gmx-bs24>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230309213501.794764-3-bero@baylibre.com>
+In-Reply-To: <trinity-a69cee2e-40c5-44b5-ac97-2cb35e1d2462-1678541173568@3c-app-gmx-bs24>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230311_054520_020221_967E8FB0 
-X-CRM114-Status: UNSURE (   8.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230311_065155_037119_1D66DCD5 
+X-CRM114-Status: GOOD (  26.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,18 +89,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Thu, 09 Mar 2023 22:35:00 +0100, Bernhard Rosenkränzer wrote:
-> Add binding description for mediatek,mt8365-uart
+On Sat, Mar 11, 2023 at 02:26:13PM +0100, Frank Wunderlich wrote:
+> > Gesendet: Samstag, 11. März 2023 um 13:05 Uhr
+> > Von: "Frank Wunderlich" <frank-w@public-files.de>
+> > > Gesendet: Mittwoch, 08. März 2023 um 16:24 Uhr
+> > > Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
+> > > > > It would be nice to add these to my database - please send me the
+> > > > > output of ethtool -m $iface raw on > foo.bin for each module.
+> > > 
+> > > so if you can do that for me, then I can see whether it's likely that
+> > > the patches that are already in mainline will do anything to solve
+> > > the workaround you've had to add for the hw signals.
+> > 
+> > i got the 2.5G copper sfps, and tried them...they work well with the v12 (including this patch), but not in v13...
+> > 
+> > i dumped the eeprom like you mention for your database:
+> > 
+> > $ hexdump -C 2g5_sfp.bin 
+> > 00000000  03 04 07 00 01 00 00 00  00 02 00 05 19 00 00 00  |................|
+> > 00000010  1e 14 00 00 4f 45 4d 20  20 20 20 20 20 20 20 20  |....OEM         |
+> > 00000020  20 20 20 20 00 00 00 00  53 46 50 2d 32 2e 35 47  |    ....SFP-2.5G|
+> > 00000030  2d 54 20 20 20 20 20 20  31 2e 30 20 03 52 00 19  |-T      1.0 .R..|
+> > 00000040  00 1a 00 00 53 4b 32 33  30 31 31 31 30 30 30 38  |....SK2301110008|
+> > 00000050  20 20 20 20 32 33 30 31  31 30 20 20 68 f0 01 e8  |    230110  h...|
+> > 00000060  00 00 11 37 4f 7a dc ff  3d c0 6e 74 9b 7c 06 ca  |...7Oz..=.nt.|..|
+> > 00000070  e1 d0 f9 00 00 00 00 00  00 00 00 00 08 f0 fc 64  |...............d|
+> > 00000080  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+> > *
+> > 00000100  5f 00 ce 00 5a 00 d3 00  8c a0 75 30 88 b8 79 18  |_...Z.....u0..y.|
+> > 00000110  1d 4c 01 f4 19 64 03 e8  4d f0 06 30 3d e8 06 f2  |.L...d..M..0=...|
+> > 00000120  2b d4 00 c7 27 10 00 df  00 00 00 00 00 00 00 00  |+...'...........|
+> > 00000130  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+> > 00000140  00 00 00 00 3f 80 00 00  00 00 00 00 01 00 00 00  |....?...........|
+> > 00000150  01 00 00 00 01 00 00 00  01 00 00 00 00 00 00 f1  |................|
+> > 00000160  29 1a 82 41 0b b8 13 88  0f a0 ff ff ff ff 80 ff  |)..A............|
+> > 00000170  00 00 ff ff 00 00 ff ff  04 ff ff ff ff ff ff 00  |................|
+> > 00000180  43 4e 53 38 54 55 54 41  41 43 33 30 2d 31 34 31  |CNS8TUTAAC30-141|
+> > 00000190  30 2d 30 34 56 30 34 20  49 fb 46 00 00 00 00 29  |0-04V04 I.F....)|
+> > 000001a0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+> > 000001b0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 aa aa  |................|
+> > 000001c0  47 4c 43 2d 54 20 20 20  20 20 20 20 20 20 20 20  |GLC-T           |
+> > 000001d0  20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 97  |               .|
+> > 000001e0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+> > 000001f0  00 00 00 00 00 00 00 00  00 40 00 40 00 00 00 00  |.........@.@....|
+> > 
+> > how can we add a quirk to support this?
 > 
-> Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  Documentation/devicetree/bindings/serial/mediatek,uart.yaml | 1 +
->  1 file changed, 1 insertion(+)
+> tried to add the quirk like this onto v13
 > 
+> --- a/drivers/net/phy/sfp.c
+> +++ b/drivers/net/phy/sfp.c
+> @@ -403,6 +403,8 @@ static const struct sfp_quirk sfp_quirks[] = {
+>         SFP_QUIRK_F("OEM", "RTSFP-10G", sfp_fixup_rollball_cc),
+>         SFP_QUIRK_F("Turris", "RTSFP-10", sfp_fixup_rollball),
+>         SFP_QUIRK_F("Turris", "RTSFP-10G", sfp_fixup_rollball),
+> +
+> +       SFP_QUIRK_M("OEM", "SFP-2.5G-T", sfp_quirk_2500basex),
+>  };
+> 
+> but still no link...
+> 
+> how can i verify the quirk was applied? see only this in dmesg:
+> 
+> [    2.192274] sfp sfp-1: module OEM              SFP-2.5G-T       rev 1.0  sn SK2301110008     dc 230110  
+> 
+> also tried to force speed (module should support 100/1000/2500), but it seems i can set speed option only on
+> gmac (eth1) and not on the sfp (phy).
+> 
+> i guess between mac and sfp speed is always 2500base-X and after the phy (if there is any) the link speed is
+> maybe different.
 
-Applied, thanks!
+As discussed in the previous iteration of the series where I suggested to
+add work-arounds disabling in-band AN for 1000Base-X and 2500Base-X having
+those will also affect fiber transceivers which transparently pass-through
+the electrical SerDes signal into light. Russell explained it very well
+and I now agree that a good solution would be to add a new SFP quirk
+indicating that a SFP module got a "hidden" PHY which doesn't like in-band
+autonegotiation.
 
+tl;dr What you are seeing is the expected behavior.
+Try 'ethtool -s eth1 autoneg off', and the link should come up.
+
+
+Cheers
+
+
+Daniel
+
+
+> 
+> regards Frank
+> 
 
