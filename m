@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AF87C6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Mar 2023 16:05:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0DEEC6FD1C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Mar 2023 16:10:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K54OHgmN8fzCR8nXYTAA10aWWoOdsi0wXP2XNLDX9vc=; b=qgwKtpCcP0mLYjUU4Ne8ewIHnT
-	twmS2sfXtnp+pkDxhIWGte1o6xCGbCHmSm3WllknGLR1ZLPJ670Oq0WQYXjXsfuNNNFX3VWg/2YU7
-	7Gr1W0wEgu7PcWf/oD4lh3iVwJ06bFy8lunbPigaMhXMQXUZ5VG0Ar87sPQieZ0JXTJMIZWH5Kilz
-	ekSQHKmxJZd7A7AEZN07WqRDi7mEYb7BX6x68QxOiNLNvefLk4q3tIW60MhK0ZDoLZ5oTl5S/WXSE
-	bwen8wimxCE6IZ3jQmH8gKD8S5T4u4q04R1t5mAKbIZPGW5vOTz1PIZcZIE2SJbxuYyc6RdadIZHI
-	sUJuooOA==;
+	bh=fzWZK/2DOJOXsvG+XJAqxVL+3bPwefI5Iyt8l7pygUU=; b=tp+oOtIQJ8cEFwVRW4hgX+040+
+	DdL6llu7zgGLfjH4kEJg6dzArSlxkW01UZJTAgYbFleFEz5Q8G32u6pLdmLihdiu8n7S8n2lc5Adn
+	mQlthJPe8eeH19haeqn6E1WN6MQTGpRSwD+naj9IY1aoqNLMpXeQvmqNzwZBdU4XkXndPCLm7fIV5
+	8sDIQMnGsjiM5jD5PbfG4r7f25jMsywrtuTyo1nFs12Jg27/Kp0FOjSU9HtSH3nMmQ/P6iqNNicZr
+	mqwTw/nfPejIGI6swnsXBwLujbbfwUlMLTpQobRI84JX2IQS5nQZ7ActoHE6MVzjjt0jeIaF2mil0
+	iNQQ22Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pb1j7-000qJh-FI; Sat, 11 Mar 2023 16:05:45 +0000
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+	id 1pb1n9-000r1f-HL; Sat, 11 Mar 2023 16:09:55 +0000
+Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pb1iw-000qFS-Qk
-	for linux-mediatek@lists.infradead.org; Sat, 11 Mar 2023 16:05:36 +0000
-Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-5416b0ab0ecso29235617b3.6
-        for <linux-mediatek@lists.infradead.org>; Sat, 11 Mar 2023 08:05:33 -0800 (PST)
+	id 1pb1my-000qyt-QZ
+	for linux-mediatek@lists.infradead.org; Sat, 11 Mar 2023 16:09:46 +0000
+Received: by mail-yb1-xb30.google.com with SMTP id h97so1058834ybi.5
+        for <linux-mediatek@lists.infradead.org>; Sat, 11 Mar 2023 08:09:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20210112; t=1678550733;
+        d=google.com; s=20210112; t=1678550982;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=K54OHgmN8fzCR8nXYTAA10aWWoOdsi0wXP2XNLDX9vc=;
-        b=h34LVM3UqmqUgwxpTXBJ/4CwnImSFFUMozqSylfyzNzIg8rEUFi/BCA/5SfPAhPXSK
-         zVyg4dkH/np2nYMcxgt34KGbvvU69/pstFffIbpXSdjTuqr7mHRcatJl8wcG+ChH9+dA
-         A5V6TTYkNmvyKGoj+SnE4wGxe2nzztZ+0cYdHj/So+YjENl4RPexyIQNksQlU5AqWmJ0
-         wlqIaTJA+4pIrmihYkk+CWZVx2geZVmmUhYo5eOPcvWV+YR6xqVFHKFMSoocJOLnX6CR
-         WwHQ52y8meSmlDKg6ykn0PXkeSs5FMhUOArFwyfH5cPvgTYIVyDHckPo68ZLvtp94miA
-         EPcA==
+        bh=fzWZK/2DOJOXsvG+XJAqxVL+3bPwefI5Iyt8l7pygUU=;
+        b=NEU+nw8LaiuwdyVp2yAz91CWBZNF3qBVdmKv6heVA54lqDYYTkQrItkE9diE+ifQvu
+         JvEPZtVIR0BDGlJwIrgrBc7d2s6maquNDE8jtzghRqbxKRpUVOdpMfOby2LbDLTkQM9I
+         nhAsUBIxRZ1zNOu529mfMDU1amVxwVhKh3u8EvhIS2FqswVJB4uYyDfQGcMUoTguAgj6
+         fwP5UaRMUCK8TTDU1bS0mmVSCxZVRjVXI9NBr51EZ6g+91OBMQZshXNjyXxCbmVTQWBG
+         jAhwLRB5tfqbjvCqVcvBLfPwrkizvdEYZcD/7Lw/+NG4spsuOWY2d9moj1xd8BzIAC+E
+         bxCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678550733;
+        d=1e100.net; s=20210112; t=1678550982;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=K54OHgmN8fzCR8nXYTAA10aWWoOdsi0wXP2XNLDX9vc=;
-        b=NTaMTNpqP75uW242nB29iDM9K52DvaPW/TdjzR6JkTF4e7t3prXqDufnuP3ewUv4f0
-         ohgO6Nhe9wffoLb9VLBQqf/pUrNUaasHwc35yAblmW0qigdCN6nOoZkvlnSMtYne9vGj
-         jXIdp/GVmJD6LJ25bd3pz5m+wQrBLP2I12o3g8XvJdTkRxmT+qg/353g/oXhsxG0kgNQ
-         4SJECgqpMMp9D/oE2WTOWmK8BLuA7b6a/B3wP93XShD91W4070/hPfxJ1U/ZAWowkDmd
-         VoZqy/56pFEqN8Nu1VvipdW9AWhwqdBYCr2QJFzI6a83KclgmN+bXUGioRKmYkdvnzDe
-         c4TA==
-X-Gm-Message-State: AO0yUKXzeVONds98BvKCIU5bDiiRkmtFfo63gj986HI8Kwex9thKAAtV
-	OKZbVs/5uLZ2kv5L2XsF92e7pxes2XkIEVch7EwizQ==
-X-Google-Smtp-Source: AK7set9ic8NaN+kdm7NG2bG/3UThQQCFa78uyAWSZO+HX+TKv1qILKSdYFavvGkzUkH3l060xAj5J+UbUwRtinZAjtU=
-X-Received: by 2002:a81:400c:0:b0:540:62be:42b with SMTP id
- l12-20020a81400c000000b0054062be042bmr2285636ywn.6.1678550732657; Sat, 11 Mar
- 2023 08:05:32 -0800 (PST)
+        bh=fzWZK/2DOJOXsvG+XJAqxVL+3bPwefI5Iyt8l7pygUU=;
+        b=JpqQ4uUtdx3tFKXhPNGeK3kHYJ27drBdx4TvsXRzc36/3jAka1TNhFrfUwmQlfXxGP
+         bNY4JshxJVKH766rWkjVziZc8PkYXqbXxSLs8JW8Xo4eozGVcfkFx/mxFRe4HnffDSTt
+         Q/pySW8FBv9YPyfw3So5HuJofEuiiW48ua9+jqWUKmiY/PYV+I+Y/ataeceiCm75w/Oy
+         lOY0gC+7pZrsCCHLOsSbC/aP0SAx7C9DAzcWVvTjDBXe+SrRzAOgRgtuCZkQLAPf6SrJ
+         7h616m4oTiwj4GGsaQq4/r982/MJRkzvn+q8OaVU6vzOArqk8pXiKf8Pe0KD7NGIfvLk
+         e+/g==
+X-Gm-Message-State: AO0yUKW0v9z+Tn4dI/uYwJYSL4tpt3lGngkawSSkRC1HVd3cVXZoICJ/
+	aW3bNkOKlWvg5iecXQKC/uz1zPugUGmxLKgFe7eDMg==
+X-Google-Smtp-Source: AK7set/M/rmOrpL0L838CFr6LBaCI08Xy5jWKITiGoAakJxe2vY4+K5X0NVyMqq5eu3mW3qdOhSXtUFtnmiWfHsmpwQ=
+X-Received: by 2002:a25:8d8e:0:b0:b30:2539:a2b0 with SMTP id
+ o14-20020a258d8e000000b00b302539a2b0mr3437066ybl.9.1678550982435; Sat, 11 Mar
+ 2023 08:09:42 -0800 (PST)
 MIME-Version: 1.0
-References: <20230311111658.251951-1-krzysztof.kozlowski@linaro.org> <20230311111658.251951-2-krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230311111658.251951-2-krzysztof.kozlowski@linaro.org>
+References: <20230311111658.251951-1-krzysztof.kozlowski@linaro.org> <20230311111658.251951-4-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230311111658.251951-4-krzysztof.kozlowski@linaro.org>
 From: Guenter Roeck <groeck@google.com>
-Date: Sat, 11 Mar 2023 08:05:21 -0800
-Message-ID: <CABXOdTePJ_gcBYcJ7fE2pX5E71oBmq41KzxiMmVJ_GcDRi7MGw@mail.gmail.com>
-Subject: Re: [PATCH 2/5] i2c: owl: drop of_match_ptr for ID table
+Date: Sat, 11 Mar 2023 08:09:31 -0800
+Message-ID: <CABXOdTero=NcfJRmyOCWrt8aOVWsyEUWy0h1Y1msTmDL0VS6ew@mail.gmail.com>
+Subject: Re: [PATCH 4/5] i2c: cros-ec-tunnel: Mark ACPI and OF related data as
+ maybe unused
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Cc: Benson Leung <bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>, 
 	Qii Wang <qii.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -77,8 +78,8 @@ Cc: Benson Leung <bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230311_080534_912299_38118740 
-X-CRM114-Status: GOOD (  16.82  )
+X-CRM114-CacheID: sfid-20230311_080944_882687_5ACBFF2A 
+X-CRM114-Status: GOOD (  14.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,33 +97,44 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Sat, Mar 11, 2023 at 3:17=E2=80=AFAM Krzysztof Kozlowski
 <krzysztof.kozlowski@linaro.org> wrote:
 >
-> The driver can match only via the DT table so the table should be always
-> used and the of_match_ptr does not have any sense (this also allows ACPI
-> matching via PRP0001, even though it might not be relevant here).
+> The driver can be compile tested with !CONFIG_OF or !CONFIG_ACPI making
+> certain data unused:
 >
->   drivers/i2c/busses/i2c-owl.c:510:34: error: =E2=80=98owl_i2c_of_match=
-=E2=80=99 defined but not used [-Werror=3Dunused-const-variable=3D]
+>   drivers/i2c/busses/i2c-cros-ec-tunnel.c:295:34: error: =E2=80=98cros_ec=
+_i2c_of_match=E2=80=99 defined but not used [-Werror=3Dunused-const-variabl=
+e=3D]
 >
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Reviewed-by: Guenter Roeck <groeck@chromium.org>
 
 > ---
->  drivers/i2c/busses/i2c-owl.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/i2c/busses/i2c-cros-ec-tunnel.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >
-> diff --git a/drivers/i2c/busses/i2c-owl.c b/drivers/i2c/busses/i2c-owl.c
-> index 98882fe4e965..99ddd8894964 100644
-> --- a/drivers/i2c/busses/i2c-owl.c
-> +++ b/drivers/i2c/busses/i2c-owl.c
-> @@ -519,7 +519,7 @@ static struct platform_driver owl_i2c_driver =3D {
->         .probe          =3D owl_i2c_probe,
->         .driver         =3D {
->                 .name   =3D "owl-i2c",
-> -               .of_match_table =3D of_match_ptr(owl_i2c_of_match),
-> +               .of_match_table =3D owl_i2c_of_match,
->                 .probe_type =3D PROBE_PREFER_ASYNCHRONOUS,
->         },
+> diff --git a/drivers/i2c/busses/i2c-cros-ec-tunnel.c b/drivers/i2c/busses=
+/i2c-cros-ec-tunnel.c
+> index 4e787dc709f9..8b3ff5bb14d8 100644
+> --- a/drivers/i2c/busses/i2c-cros-ec-tunnel.c
+> +++ b/drivers/i2c/busses/i2c-cros-ec-tunnel.c
+> @@ -292,13 +292,13 @@ static int ec_i2c_remove(struct platform_device *de=
+v)
+>         return 0;
+>  }
+>
+> -static const struct of_device_id cros_ec_i2c_of_match[] =3D {
+> +static const struct of_device_id cros_ec_i2c_of_match[] __maybe_unused =
+=3D {
+>         { .compatible =3D "google,cros-ec-i2c-tunnel" },
+>         {},
+>  };
+>  MODULE_DEVICE_TABLE(of, cros_ec_i2c_of_match);
+>
+> -static const struct acpi_device_id cros_ec_i2c_tunnel_acpi_id[] =3D {
+> +static const struct acpi_device_id cros_ec_i2c_tunnel_acpi_id[] __maybe_=
+unused =3D {
+>         { "GOOG0012", 0 },
+>         { }
 >  };
 > --
 > 2.34.1
