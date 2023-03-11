@@ -4,84 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B27BC6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Mar 2023 15:40:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEB67C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Mar 2023 16:05:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L1cjWa/ZkeQ8ynLS3HKj8W+1nV4bPBS6kn+zz6pEL5o=; b=QOaQpN9B9XfkOWY65/74f6HVDs
-	aTtdPFyVdrByd8rk9o/pDmFOnqLUr5IeKBmUEisQqX+NAFcHXheyDLluAGVEiWRyVf95k5ECkBIpE
-	PaKqpcAvS5rIu2BZYfrSTCNuFshw3M9ISsi+lbXpZBeXhyBS1gK/Y4kS1ToVQql9SULODS2RcsReM
-	kGGCHQAVNQwP4hQkZ78DfiRdRcpEogfAL2wIA1S6+5xfM/oikf5QDZixbbRhPFeegVAFNL2kJfBYP
-	o1i1pbRB1atjVz85w1S535IfMTO7WGsJsE+eSDO830C+yvez1RmlpyDrQXbkR+QMf2oqV1cp+HLaO
-	R0tjJ25A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/G/X5+IzPvIp/u0h6IkNiabirE8Y9puo1twyHDWLaMA=; b=3hL1/i1SmPIwWY3Ir5K+bpsxpT
+	KIYJLCZZu+zzlGdixGraMXnupQCwRZjsxiGWGOnf+pNLKXa8jbyodyzs7fCChi4A8fzIMdrK1uO0s
+	5FH/YKkiAKC9F9Yq4e7JprDQy7oifEUxl22Udp0xkOx6S9uIcCI54zWa9Eh6VBX8fKwC7WHkqcb5D
+	OnkKlltfGuJJb2MmCDvte/Cymro/v1Y1npg5DDOqdrvqNF1xRtGQHTKIsOAa1S3EWvq8yPS9cUzDZ
+	M7asHjrAYDtXHmwVwNhqM1ejONNaUG6CyiZX6IzJhtwoiDO/vF3FkpWyw6zOeBuhpk66eoooS4QD7
+	+XUcVW6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pb1Kh-000naR-Qk; Sat, 11 Mar 2023 15:40:31 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1pb1iM-000q89-GE; Sat, 11 Mar 2023 16:04:58 +0000
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pb1KX-000nY8-Aq; Sat, 11 Mar 2023 15:40:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=L1cjWa/ZkeQ8ynLS3HKj8W+1nV4bPBS6kn+zz6pEL5o=; b=lDIfeYMpfdi1Shz/zgmeAVzusF
-	x0OEDGQ7Z6xWJV0WYKAedb45mhigl1d3v7Rp4+oxS6/c7dG4Gtq5h8DXWBlX2hNo1fHCotl1eOB/J
-	GWSyM2lJOXImtgRMI7Ct7afh4KEiz7rG2+6+STKjo44VLsu9aDw855+FMSxYMvtefYn8=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1pb1Jo-0074HD-9X; Sat, 11 Mar 2023 16:39:36 +0100
-Date: Sat, 11 Mar 2023 16:39:36 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Klaus Kudielka <klaus.kudielka@gmail.com>
-Cc: Michael Walle <michael@walle.cc>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Bryan Whitehead <bryan.whitehead@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-aspeed@lists.ozlabs.org,
-	Jesse Brandeburg <jesse.brandeburg@intel.com>
-Subject: Re: [PATCH net-next v2 4/6] net: mdio: scan bus based on bus
- capabilities for C22 and C45
-Message-ID: <a57a216d-ff5a-46e6-9780-e53772dcefc8@lunn.ch>
-References: <100c439a-2a4d-4cb2-96f2-5bf273e2121a@lunn.ch>
- <712bc92ca6d576f33f63f1e9c2edf0030b10d3ae.camel@gmail.com>
- <db6b8a09-b680-4baa-8963-d355ad29eb09@lunn.ch>
- <0e10aa8492eadb587949d8744b56fccaabbd183b.camel@gmail.com>
- <72530e86-9ba9-4a01-9cd2-68835ecae7a0@lunn.ch>
- <09d65e1ee0679e1e74b4f3a5a4c55bd48332f043.camel@gmail.com>
- <70f5bca0-322c-4bae-b880-742e56365abe@lunn.ch>
- <10da10caea22a8f5da8f1779df3e13b948e8a363.camel@gmail.com>
- <4abd56aa-5b9f-4e16-b0ca-11989bb8c764@lunn.ch>
- <bff0e542b8c04980e9e3af1d3e6bf739c87eb514.camel@gmail.com>
+	id 1pb1iK-000q7C-GA
+	for linux-mediatek@lists.infradead.org; Sat, 11 Mar 2023 16:04:57 +0000
+Received: by mail-yw1-x1130.google.com with SMTP id 00721157ae682-53916ab0c6bso158700197b3.7
+        for <linux-mediatek@lists.infradead.org>; Sat, 11 Mar 2023 08:04:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20210112; t=1678550689;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/G/X5+IzPvIp/u0h6IkNiabirE8Y9puo1twyHDWLaMA=;
+        b=VJCB1uC5JrWowq+lL5LKURGf9F6grJOUQgJ0kSJDYl76qXzRvwoWda/HsCN3ZQfB6G
+         DSa+tDW+3NlqICRdnvqurB7WtF4geijT6FWAWjF5vYBcGOMBSO+1Q9eRCHPobKdAjwQ1
+         5IMWSXKnOoZV9qWXWjzPcRwhEtN3R1J/XMn5Camro6uha3/YC1gYfzuJD+0Bifq/2szQ
+         2yglUr8Wne8GE1Q1FEjzSeQqs8bga5ij4uo5HJrjsjP7Q+j5GYzuIbycLrUsL03VsSpA
+         FXTf1oCE4sO7FH0IIq6YUPwhvli0m6vKvVi25DbrRop6B43Y22XPpMy33rMhzYsz7vuk
+         cj+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678550689;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=/G/X5+IzPvIp/u0h6IkNiabirE8Y9puo1twyHDWLaMA=;
+        b=7mR8UW4jQIA0Tuyt926XeO13DV2MLGOfcZo7b5s/YYg1bXuXSYujcUwlDPPpYICuoG
+         53GzUTVd4C5ptpzObnB3iooJK7Jvdkvu2vkHTL5tmOKKpm2wvNoEbgF1JzwS4rUOp0hw
+         QTGK6g5tEHlSI0EBkzHPIgZ9XSeUx93wH/Rh9jUwFaAHEZra3YSgUzpTc9RLtIT/zIFU
+         SA/6/qlRLLmRzQJevhvGhnqilAOk0Mqgoc2U95FF1tvpVFntzxnYkmMVmoRg6TT/2UF5
+         JiYUo5jw40ee1o6j2iv1vC1qc979ZJt5Q9lxfKQoMB7KOrOGBKTCTrtYXlAWpYn9/T5I
+         NfGg==
+X-Gm-Message-State: AO0yUKXiFconmYV30c2VqlDNH18l0wnBxd3Ztm4uVsxgpj5ExiGHLvbl
+	XqZMCZ0lx5IMJVPUO2RWcmXsmnQHmKrofwBcGQkd7w==
+X-Google-Smtp-Source: AK7set9c9qRxU35UmkHTgz32UHoKUY+oqyuYpi2DEgv0Gw4dOgKiDSabwSr9lVyr+LPm+IMt8NbrQV2unV0hRjZR+Y8=
+X-Received: by 2002:a81:ae4e:0:b0:52f:3399:ed08 with SMTP id
+ g14-20020a81ae4e000000b0052f3399ed08mr18340951ywk.6.1678550689567; Sat, 11
+ Mar 2023 08:04:49 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <bff0e542b8c04980e9e3af1d3e6bf739c87eb514.camel@gmail.com>
+References: <20230311111658.251951-1-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230311111658.251951-1-krzysztof.kozlowski@linaro.org>
+From: Guenter Roeck <groeck@google.com>
+Date: Sat, 11 Mar 2023 08:04:38 -0800
+Message-ID: <CABXOdTdm74LsShmx+Xv5W6D-Ub2q4ccU+SV4+VJUpBJmpXxLvw@mail.gmail.com>
+Subject: Re: [PATCH 1/5] i2c: mt65xx: drop of_match_ptr for ID table
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Benson Leung <bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>, 
+	Qii Wang <qii.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Ard Biesheuvel <ardb@kernel.org>, 
+	Michal Simek <michal.simek@xilinx.com>, linux-i2c@vger.kernel.org, 
+	chrome-platform@lists.linux.dev, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-actions@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230311_074021_397671_5DA01BE5 
-X-CRM114-Status: GOOD (  15.48  )
+X-CRM114-CacheID: sfid-20230311_080456_572569_D4BC4D18 
+X-CRM114-Status: GOOD (  17.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,36 +93,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Mar 11, 2023 at 07:49:23AM +0100, Klaus Kudielka wrote:
-> On Sat, 2023-03-11 at 00:49 +0100, Andrew Lunn wrote:
-> > > Yes, that helps. Primarily, because mdiobus_scan_bus_c45 now is called only once,
-> > > and at least some things are done in parallel.
-> > 
-> > Great. Could you cook up a proper patch and submit it?
-> 
-> I can give it a try. The commit message will be from my perspective,
-> and the change Suggested-By you.
+On Sat, Mar 11, 2023 at 3:17=E2=80=AFAM Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
+>
+> The driver can match only via the DT table so the table should be always
+> used and the of_match_ptr does not have any sense (this also allows ACPI
+> matching via PRP0001, even though it might not be relevant here).
+>
+>   drivers/i2c/busses/i2c-mt65xx.c:514:34: error: =E2=80=98mtk_i2c_of_matc=
+h=E2=80=99 defined but not used [-Werror=3Dunused-const-variable=3D]
+>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-The commit message is fine.
+Reviewed-by: Guenter Roeck <groeck@chromium.org>
 
-I have one more idea which can speed things up. The scanning of the
-MDIO bus works in two different ways depending on if there is a DT
-node, describing what should be found on the bus. For mv88e6xxx, using
-DT is optional. Some boards do, some don't.
-
-If there is a DT node, only the addresses listed in DT are scanned.
-
-If there is no DT node, by default, all 32 addresses on the bus are
-scanned. However, DSA makes another assumption. There is a one to one
-mapping between port number and PHY address on the MDIO bus. Port 0
-uses MDIO address 0. Port 7 uses MDIO address 7 etc. If you have an 8
-port switch, there is no point scanning addresses 8 to 31, they will
-never be used.
-
-The mdio bus structure has a member phy_mask. This is a bitmap. If bit
-N is set, address N is not scanned. So i suggest you extend
-mv88e6xxx_mdio_register() to set phy_mask based on
-mv88e6xxx_num_ports(chip).
-
-	Andrew
+> ---
+>  drivers/i2c/busses/i2c-mt65xx.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt6=
+5xx.c
+> index 43dd966d5ef5..59eaefe999b1 100644
+> --- a/drivers/i2c/busses/i2c-mt65xx.c
+> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> @@ -1546,7 +1546,7 @@ static struct platform_driver mtk_i2c_driver =3D {
+>         .driver =3D {
+>                 .name =3D I2C_DRV_NAME,
+>                 .pm =3D &mtk_i2c_pm,
+> -               .of_match_table =3D of_match_ptr(mtk_i2c_of_match),
+> +               .of_match_table =3D mtk_i2c_of_match,
+>         },
+>  };
+>
+> --
+> 2.34.1
+>
 
