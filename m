@@ -4,84 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC4A6C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Mar 2023 17:58:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8417C6FD1C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Mar 2023 20:03:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0SuW2teqPrJO0c83NljG0OZlfdMMqc0MljQGQttnRBc=; b=hsDxO55uRPvL/ccZ0qUt7CCrRp
-	W1wcyZNkcpJgmktyxHs0iMosk3BUu6ovRi+h3/O2wEsmvHLNewo/H1njWYVNnzFCFZ1KKTzwtBnxq
-	OKaOFSMp5pQ8lRKLfQCKgRpX2pdtY8A8LQM29HrYR8S8A1DJirl7iXujWBnkd5oZXAqWP0DhYFvUn
-	0eoy9wma5l0fSWV2ltRp4SkG73fFI/1BcDk+ROC7F6OX1NJ18Dtjx2T42KzpFiJ7btOTmIhrmKAIV
-	vheH5MaUESnyzmHddEGzQqgfFXzzt/bbvW6bDbZ0fEpREoYonju9hkMgeMOicAsOp6cC7i3ZBTpsJ
-	3V19X8qw==;
+	bh=oxQBQ/iYwJaiqGFLxQQATPCED2i75wotjOsicLf0y90=; b=Q6K/ukR63l1YoVCHU7jbR1C2Bf
+	EtqtOPclCIHkM8Mrqx47HYQgQH08qhkQHee7yRHJNQoNzH3Fme0VHxCU7RsIp1VocBwV3lMz+YNeF
+	oNlWZdCQAkyc5NptvhITgMzqZxJPFAmDa+CfsLGVulM2duVG/Mv3ternGfaUt9pyBCz3Ge3PkmCy3
+	NNGbGeill458mQh/ttWxEESTxlMl8pF6t6PUZoxiSf/L54ojyQTOPuMfQEkAhvd9y/39g+yp0sabg
+	A7IbDXfedvTHfp8cGFvxSLiLilxMKQmA44WnwQcXfgghz8Y2RuDGd21omhsRZCR/RSV81vsY/cIPm
+	6SlkSLNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pb3Tw-0010s2-Qn; Sat, 11 Mar 2023 17:58:12 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1pb5Ql-0019im-FE; Sat, 11 Mar 2023 20:03:03 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pb3Tm-0010q7-7O; Sat, 11 Mar 2023 17:58:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=0SuW2teqPrJO0c83NljG0OZlfdMMqc0MljQGQttnRBc=; b=sQgqYODQW6+hMJ349CW0h7g+VR
-	3Fe0n53zYw4LUHpulr7v4SlGWofZ+pTierKd0l12AlOJHuQ83eUj4tqvSX2kf3tIqqPt9FIaXRhD0
-	wSdBUNnELsujz4wEPv/XasLijg7mlCDwN6Ew8wMg804jluCcCj9BJ8BV77MNfamkkpo8=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1pb3TD-0074hS-FW; Sat, 11 Mar 2023 18:57:27 +0100
-Date: Sat, 11 Mar 2023 18:57:27 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Klaus Kudielka <klaus.kudielka@gmail.com>
-Cc: Michael Walle <michael@walle.cc>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Bryan Whitehead <bryan.whitehead@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1pb5Qh-0019Pw-AO; Sat, 11 Mar 2023 20:03:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=oxQBQ/iYwJaiqGFLxQQATPCED2i75wotjOsicLf0y90=; b=ZCpNkFBXTjLIGZ9M3z3A0YEb9z
+	o7FRN8Szck+iHfgpI6OvW58wNFqtDntjUvt1RS44x9VxYs+7UKJeIMcnUyEKiK57n6KFSNlM+Q1Zl
+	domKOWdmZwdF2EdXalsFBr+vrDYIpxnk33vH7VszEtGrIKTNcmQSINR06J11NKJUo5M9KaJvhRZy9
+	D/lmZa7/pwaQv6sgB+uujicM0l8jpkLcNazWEovdVjY1WTx1bwOwz8gHGxHOMR/ngBjsO3rvMD4Rp
+	R8urUWxpjRYekA2jPtDLAR91ta1dZ5lQHNl2j/Gs/NvkRCbeVgjyA1FAHk4vM1Ao+C2U8Tjq+pul7
+	sJiCa9hQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:52694)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1pb5OI-0000M3-5Q; Sat, 11 Mar 2023 20:00:30 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1pb5O8-0005yI-LM; Sat, 11 Mar 2023 20:00:20 +0000
+Date: Sat, 11 Mar 2023 20:00:20 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Daniel Golle <daniel@makrotopia.org>,
+	Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-aspeed@lists.ozlabs.org,
-	Jesse Brandeburg <jesse.brandeburg@intel.com>
-Subject: Re: [PATCH net-next v2 4/6] net: mdio: scan bus based on bus
- capabilities for C22 and C45
-Message-ID: <f70aa0ea-5d8e-4cc3-bd5e-5b4a79d67281@lunn.ch>
-References: <0e10aa8492eadb587949d8744b56fccaabbd183b.camel@gmail.com>
- <72530e86-9ba9-4a01-9cd2-68835ecae7a0@lunn.ch>
- <09d65e1ee0679e1e74b4f3a5a4c55bd48332f043.camel@gmail.com>
- <70f5bca0-322c-4bae-b880-742e56365abe@lunn.ch>
- <10da10caea22a8f5da8f1779df3e13b948e8a363.camel@gmail.com>
- <4abd56aa-5b9f-4e16-b0ca-11989bb8c764@lunn.ch>
- <bff0e542b8c04980e9e3af1d3e6bf739c87eb514.camel@gmail.com>
- <a57a216d-ff5a-46e6-9780-e53772dcefc8@lunn.ch>
- <2f64385a350359c5755eb4d2479e2efef7a96216.camel@gmail.com>
- <49a9154ae4e2b3e6bc85e560368f6474f97cea88.camel@gmail.com>
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
+	Alexander Couzens <lynxis@fe80.eu>
+Subject: Re: Re: [PATCH net-next v12 08/18] net: ethernet: mtk_eth_soc: fix
+ 1000Base-X and 2500Base-X modes
+Message-ID: <ZAzd1A0SAKZK0hF5@shell.armlinux.org.uk>
+References: <ZAiCh8wkdTBT+6Id@shell.armlinux.org.uk>
+ <ZAiFOTRQI36nGo+w@makrotopia.org>
+ <ZAiJqvzcUob2Aafq@shell.armlinux.org.uk>
+ <20230308134642.cdxqw4lxtlgfsl4g@skbuf>
+ <ZAiXvNT8EzHTmFPh@shell.armlinux.org.uk>
+ <ZAiciK5fElvLXYQ9@makrotopia.org>
+ <ZAijM91F18lWC80+@shell.armlinux.org.uk>
+ <ZAik+I1Ei+grJdUQ@makrotopia.org>
+ <ZAioqp21521NsttV@shell.armlinux.org.uk>
+ <trinity-79e9f0b8-a267-4bf9-a3d4-1ec691eb5238-1678536337569@3c-app-gmx-bs24>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <49a9154ae4e2b3e6bc85e560368f6474f97cea88.camel@gmail.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <trinity-79e9f0b8-a267-4bf9-a3d4-1ec691eb5238-1678536337569@3c-app-gmx-bs24>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230311_095802_292138_6F3ADA88 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20230311_120259_550219_17A9A290 
+X-CRM114-Status: GOOD (  24.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,26 +103,160 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Well, maybe I misunderstood the argument with DT completely, so I gave it a try:
+On Sat, Mar 11, 2023 at 01:05:37PM +0100, Frank Wunderlich wrote:
+> Hi
 > 
-> --- a/drivers/net/dsa/mv88e6xxx/chip.c
-> +++ b/drivers/net/dsa/mv88e6xxx/chip.c
-> @@ -3797,6 +3797,7 @@ static int mv88e6xxx_mdio_register(struct mv88e6xxx_chip *chip,
->         bus->read_c45 = mv88e6xxx_mdio_read_c45;
->         bus->write_c45 = mv88e6xxx_mdio_write_c45;
->         bus->parent = chip->dev;
-> +       bus->phy_mask = GENMASK(31, mv88e6xxx_num_ports(chip));
->  
->         if (!external) {
->                 err = mv88e6xxx_g2_irq_mdio_setup(chip, bus);
-> 
+> > Gesendet: Mittwoch, 08. März 2023 um 16:24 Uhr
+> > Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
+> > > > It would be nice to add these to my database - please send me the
+> > > > output of ethtool -m $iface raw on > foo.bin for each module.
 > > 
+> > so if you can do that for me, then I can see whether it's likely that
+> > the patches that are already in mainline will do anything to solve
+> > the workaround you've had to add for the hw signals.
 > 
-> Now THAT one makes a difference! With this on top, I'm back at normal boot time!
-> I hope this is what you had in mind?
+> i got the 2.5G copper sfps, and tried them...they work well with the v12 (including this patch), but not in v13...
+> 
+> i dumped the eeprom like you mention for your database:
+> 
+> $ hexdump -C 2g5_sfp.bin 
+> 00000000  03 04 07 00 01 00 00 00  00 02 00 05 19 00 00 00  |................|
+> 00000010  1e 14 00 00 4f 45 4d 20  20 20 20 20 20 20 20 20  |....OEM         |
+> 00000020  20 20 20 20 00 00 00 00  53 46 50 2d 32 2e 35 47  |    ....SFP-2.5G|
+> 00000030  2d 54 20 20 20 20 20 20  31 2e 30 20 03 52 00 19  |-T      1.0 .R..|
+> 00000040  00 1a 00 00 53 4b 32 33  30 31 31 31 30 30 30 38  |....SK2301110008|
+> 00000050  20 20 20 20 32 33 30 31  31 30 20 20 68 f0 01 e8  |    230110  h...|
+> 00000060  00 00 11 37 4f 7a dc ff  3d c0 6e 74 9b 7c 06 ca  |...7Oz..=.nt.|..|
+> 00000070  e1 d0 f9 00 00 00 00 00  00 00 00 00 08 f0 fc 64  |...............d|
+> 00000080  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+> *
+> 00000100  5f 00 ce 00 5a 00 d3 00  8c a0 75 30 88 b8 79 18  |_...Z.....u0..y.|
+> 00000110  1d 4c 01 f4 19 64 03 e8  4d f0 06 30 3d e8 06 f2  |.L...d..M..0=...|
+> 00000120  2b d4 00 c7 27 10 00 df  00 00 00 00 00 00 00 00  |+...'...........|
+> 00000130  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+> 00000140  00 00 00 00 3f 80 00 00  00 00 00 00 01 00 00 00  |....?...........|
+> 00000150  01 00 00 00 01 00 00 00  01 00 00 00 00 00 00 f1  |................|
+> 00000160  29 1a 82 41 0b b8 13 88  0f a0 ff ff ff ff 80 ff  |)..A............|
+> 00000170  00 00 ff ff 00 00 ff ff  04 ff ff ff ff ff ff 00  |................|
+> 00000180  43 4e 53 38 54 55 54 41  41 43 33 30 2d 31 34 31  |CNS8TUTAAC30-141|
+> 00000190  30 2d 30 34 56 30 34 20  49 fb 46 00 00 00 00 29  |0-04V04 I.F....)|
+> 000001a0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+> 000001b0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 aa aa  |................|
+> 000001c0  47 4c 43 2d 54 20 20 20  20 20 20 20 20 20 20 20  |GLC-T           |
+> 000001d0  20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 97  |               .|
+> 000001e0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+> 000001f0  00 00 00 00 00 00 00 00  00 40 00 40 00 00 00 00  |.........@.@....|
+> 
+> how can we add a quirk to support this?
 
-Yep, that is what i meant. Please could you also submit a patch for this?
+Why does it need a quirk?
 
-     Andrew
+> 
+> some more information:
+> 
+> root@bpi-r3:~# ethtool eth1
+> Settings for eth1:
+>         Supported ports: [ FIBRE ]
+>         Supported link modes:   2500baseX/Full
+>         Supported pause frame use: Symmetric Receive-only
+>         Supports auto-negotiation: Yes
+>         Supported FEC modes: Not reported
+>         Advertised link modes:  2500baseX/Full
+>         Advertised pause frame use: Symmetric Receive-only
+>         Advertised auto-negotiation: Yes
+>         Advertised FEC modes: Not reported
+>         Speed: 2500Mb/s
+>         Duplex: Full
+>         Auto-negotiation: on
+>         Port: FIBRE
+>         PHYAD: 0
+>         Transceiver: internal
+>         Current message level: 0x000000ff (255)
+>                                drv probe link timer ifdown ifup rx_err tx_err
+>         Link detected: yes
+> root@bpi-r3:~# ethtool -m eth1
+>         Identifier                                : 0x03 (SFP)
+>         Extended identifier                       : 0x04 (GBIC/SFP defined by 2-wire interface ID)
+>         Connector                                 : 0x07 (LC)
+>         Transceiver codes                         : 0x00 0x01 0x00 0x00 0x00 0x00 0x02 0x00 0x00
+>         Transceiver type                          : SONET: OC-48, short reach
+>         Encoding                                  : 0x05 (SONET Scrambled)
+>         BR, Nominal                               : 2500MBd
+>         Rate identifier                           : 0x00 (unspecified)
+>         Length (SMF,km)                           : 0km
+>         Length (SMF)                              : 0m
+>         Length (50um)                             : 300m
+>         Length (62.5um)                           : 200m
+>         Length (Copper)                           : 0m
+>         Length (OM3)                              : 0m
+>         Laser wavelength                          : 850nm
+>         Vendor name                               : OEM
+>         Vendor OUI                                : 00:00:00
+>         Vendor PN                                 : SFP-2.5G-T
+>         Vendor rev                                : 1.0
+>         Option values                             : 0x00 0x1a
+>         Option                                    : RX_LOS implemented
+>         Option                                    : TX_FAULT implemented
+>         Option                                    : TX_DISABLE implemented
+>         BR margin, max                            : 0%
+>         BR margin, min                            : 0%
+>         Vendor SN                                 : SK2301110008
+>         Date code                                 : 230110
+>         Optical diagnostics support               : Yes
+>         Laser bias current                        : 6.000 mA
+>         Laser output power                        : 0.5000 mW / -3.01 dBm
+>         Receiver signal average optical power     : 0.4000 mW / -3.98 dBm
+>         Module temperature                        : 28.21 degrees C / 82.78 degrees F
+>         Module voltage                            : 3.3067 V
+>         Alarm/warning flags implemented           : Yes
+>         Laser bias current high alarm             : Off
+>         Laser bias current low alarm              : Off
+>         Laser bias current high warning           : Off
+>         Laser bias current low warning            : Off
+>         Laser output power high alarm             : Off
+>         Laser output power low alarm              : Off
+>         Laser output power high warning           : Off
+>         Laser output power low warning            : Off
+>         Module temperature high alarm             : Off
+>         Module temperature low alarm              : Off
+>         Module temperature high warning           : Off
+>         Module temperature low warning            : Off
+>         Module voltage high alarm                 : Off
+>         Module voltage low alarm                  : Off
+>         Module voltage high warning               : Off
+>         Module voltage low warning                : Off
+>         Laser rx power high alarm                 : Off
+>         Laser rx power low alarm                  : Off
+>         Laser rx power high warning               : Off
+>         Laser rx power low warning                : Off
+>         Laser bias current high alarm threshold   : 15.000 mA
+>         Laser bias current low alarm threshold    : 1.000 mA
+>         Laser bias current high warning threshold : 13.000 mA
+>         Laser bias current low warning threshold  : 2.000 mA
+>         Laser output power high alarm threshold   : 1.9952 mW / 3.00 dBm
+>         Laser output power low alarm threshold    : 0.1584 mW / -8.00 dBm
+>         Laser output power high warning threshold : 1.5848 mW / 2.00 dBm
+>         Laser output power low warning threshold  : 0.1778 mW / -7.50 dBm
+>         Module temperature high alarm threshold   : 95.00 degrees C / 203.00 degrees F
+>         Module temperature low alarm threshold    : -50.00 degrees C / -58.00 degrees F
+>         Module temperature high warning threshold : 90.00 degrees C / 194.00 degrees F
+>         Module temperature low warning threshold  : -45.00 degrees C / -49.00 degrees F
+>         Module voltage high alarm threshold       : 3.6000 V
+>         Module voltage low alarm threshold        : 3.0000 V
+>         Module voltage high warning threshold     : 3.5000 V
+>         Module voltage low warning threshold      : 3.1000 V
+>         Laser rx power high alarm threshold       : 1.1220 mW / 0.50 dBm
+>         Laser rx power low alarm threshold        : 0.0199 mW / -17.01 dBm
+>         Laser rx power high warning threshold     : 1.0000 mW / 0.00 dBm
+>         Laser rx power low warning threshold      : 0.0223 mW / -16.52 dBm
+> 
+> i guess this sfp have a phy as it can operate in 100/1000/2500 mode like described on the module.
 
+It would help to know the kernel messages.
+
+Thanks.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
