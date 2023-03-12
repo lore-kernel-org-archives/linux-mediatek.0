@@ -4,97 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28C74C6FD19
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 16:19:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 778ADC6FD19
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 16:51:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=hUEeE3nBedsQFEtxQBGYVtB8v88ttPwoL2Q6sSoY4u0=; b=K5Ym5/VD54QmfpaHymLZdMj8ix
-	HN17oHD4v8epn7p/ZqIQAhq8vlQWmn3ITAGxjHKW62I7CJZWOIR9zI2SIO7TPv3Bl6ui1rXv9curK
-	YCtST35eGelKHZc8ATSrSKyWm7PeqyzlzxSEaQ/yTSpVF/CtW5bY7/qh7F/hxf2Ehs9jLwnr18csz
-	yi9cka2juogsL267JeNWQmJZZVrNgf8dfBVp1o8jbvKClKy7tRklZ0XcTAvf/e7N4eykOO/YkVFgc
-	DRyrBT10d7/nQRn+Lxi7m7SmjpvLSytilTdlxqfPO499yijKteRbPMU/TiPYbHa99mBRTaODCPqLo
-	Muh+l/Kw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:References:In-Reply-To:Date:Content-Type:Subject:To
+	:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xIdXo3qX2wvsPVbhmNONb2BIlBIqKTBjbUHbHOzd2qw=; b=fFZO2zprFcSJJY
+	u20qLcn1oZVHcy2rd9VRQPstNqmycZqQ2L4CYce52V7Me3hI/I0cXCfsfbXd2sJ85TXlI7rzREnd9
+	t4HsvYBxZsVAjbYk8tPIxNsB2QgAKZHa7AUVt92Xn6exI0TbFcJ1z7Ym+v7NHFO6pcNq8/Am8aK9T
+	kXJWg+86aL9HJy8vu14PIHcZTnP0fKHJ/QTiwf9NAlgxULFLf8aac86vfVbSKo6p6lWp3+yjqCw4X
+	/vfjqHLiz2I95RS/BmtUiqOW5iQ7NNrJLWQC5h3pehgH56y4fLzElkpSZYJ8zgv22gTgPML17CgLk
+	GSwEFgiePlXePWraH91w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbOPl-002rbF-Gm; Sun, 12 Mar 2023 16:19:17 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1pbOuq-002xO8-ON; Sun, 12 Mar 2023 16:51:24 +0000
+Received: from mout.gmx.net ([212.227.17.20])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbOMP-002pfu-97
-	for linux-mediatek@lists.infradead.org; Sun, 12 Mar 2023 16:15:52 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pbOLz-0007ne-Qq; Sun, 12 Mar 2023 17:15:23 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pbOLu-003f1Q-OX; Sun, 12 Mar 2023 17:15:18 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pbOLt-004K82-SG; Sun, 12 Mar 2023 17:15:17 +0100
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Peter De Schrijver <pdeschrijver@nvidia.com>,
-	Prashant Gaikwad <pgaikwad@nvidia.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Michal Simek <michal.simek@xilinx.com>,
-	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Sudeep Holla <sudeep.holla@arm.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Nishanth Menon <nm@ti.com>,
-	Tero Kristo <kristo@kernel.org>,
-	Santosh Shilimkar <ssantosh@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Andy Gross <agross@kernel.org>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Tomasz Figa <tomasz.figa@gmail.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-tegra@vger.kernel.org,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	Cristian Marussi <cristian.marussi@arm.com>,
-	linux-stm32@st-md-mailman.stormreply.com,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	linux-omap@vger.kernel.org
-Subject: [PATCH 00/30] clk: Convert to platform remove callback returning void
-Date: Sun, 12 Mar 2023 17:14:42 +0100
-Message-Id: <20230312161512.2715500-1-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.39.1
+	id 1pbOun-002xNH-0E; Sun, 12 Mar 2023 16:51:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1678639848; i=frank-w@public-files.de;
+	bh=sIt2zQeXUcSu3B3Uu/HeWZKfcMagHZ+3Xer5rVPvPls=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=jRovmK7FQO1cRFfCpsghJEalG0Twjhrs4eZEKuxnbzEIVtC9pz1ERTyWH7rxO12TO
+	 d3gib2iETJi+Psw9VJHLiQdgS8oqgHFMnz8qXKcjh0CaQnBFbuz+BlZvmODu0UBc/P
+	 rvI1Qaccq17zX9pBX97Rn3lAu9nHMqwrQ4M7mUsDZMaMC7tua+NGmeIvotmSVkAj3G
+	 R8PqTF19i9HJv/mMYXU/uCWMUtNhBqsTD+fxROrT2pEsvC4fDrj7c9lI9KAoF7MnFj
+	 yu0z4zKCiKE8qXj7vzXjuETq5NWU9DbJbyVpb3bXaQvgBT7b6BJNTE88xjr7PNvWHW
+	 uXDIOwgBcQ9ng==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.155.253] ([217.61.155.253]) by web-mail.gmx.net
+ (3c-app-gmx-bap51.server.lan [172.19.172.121]) (via HTTP); Sun, 12 Mar 2023
+ 17:50:48 +0100
 MIME-Version: 1.0
+Message-ID: <trinity-eb5bbb4a-b96f-4436-ae9f-8ee5f4b8fe9b-1678639848562@3c-app-gmx-bap51>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Subject: Aw: Re: Re: [PATCH net-next v12 08/18] net: ethernet: mtk_eth_soc:
+ fix 1000Base-X and 2500Base-X modes
 Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=12722; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=jEZJnYWtfk7vegzrpMfq7GOJ196G8jvqX57CAPZ3iLs=; b=owEBbQGS/pANAwAKAcH8FHityuwJAcsmYgBkDfoRCG0Wyura3TxaQuw3cux0jAyL9llKLY77P 7TVq8P1y0uJATMEAAEKAB0WIQR+cioWkBis/z50pAvB/BR4rcrsCQUCZA36EQAKCRDB/BR4rcrs CSrbB/0eTnnVnWWyRB+p1/djaWfBVCMXK5yG1M9edyo+3DajyEVRFBHCH7ZUu83CV2dgxo7UJIX E8j559eX1I4Xs7CdWM9g3txmTi89gR8mxPpItCyvzeKDeWNpfH6erYcPHetwR5J4VWYNcUaWJ0p guxIAwoDLonXH9LYLTC44CGLsV9wADqd5cml++KFj/Ni1gEDhM6G/lZzSFby2cBPgN+CjT5p/nP 4gAmE8S5gn4UAI78Nej7/lg/7IaUXBaAP1F4+eAxzRSmWDNilyzosmJlF9qcslx8qrHPp/n49b2 1O6n4b7iRwP+oZOCuNqzV27cseb7a/H3t2oDUeBeFjdz4z8o
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Date: Sun, 12 Mar 2023 17:50:48 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <trinity-27a405f3-fece-4500-82ef-4082af428a7a-1678631183133@3c-app-gmx-bap51>
+References: <ZAiJqvzcUob2Aafq@shell.armlinux.org.uk>
+ <20230308134642.cdxqw4lxtlgfsl4g@skbuf>
+ <ZAiXvNT8EzHTmFPh@shell.armlinux.org.uk> <ZAiciK5fElvLXYQ9@makrotopia.org>
+ <ZAijM91F18lWC80+@shell.armlinux.org.uk> <ZAik+I1Ei+grJdUQ@makrotopia.org>
+ <ZAioqp21521NsttV@shell.armlinux.org.uk>
+ <trinity-79e9f0b8-a267-4bf9-a3d4-1ec691eb5238-1678536337569@3c-app-gmx-bs24>
+ <ZAzd1A0SAKZK0hF5@shell.armlinux.org.uk>
+ <4B891976-C29E-4D98-B604-3AC4507D3661@public-files.de>
+ <ZAzk71mTxgV/pRxC@shell.armlinux.org.uk>
+ <trinity-8577978d-1c11-4f6d-ae11-aef37e8b78b0-1678624836722@3c-app-gmx-bap51>
+ <trinity-27a405f3-fece-4500-82ef-4082af428a7a-1678631183133@3c-app-gmx-bap51>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:9wKjp5XBZND5nbJ+nHFm8BH56OTKmKX9GvyKIsYgker4byg+vJN1XKpEIVXSQq1TqZjZQ
+ vaSwmT45RfuToSsY6gnabCWB7vbfDPcHHa+9IyVMZAMe6IokNjjP1ToMALMva3LMNWQWfNiVBrw4
+ UiR44u50vbAkqKwyPKavZVzJTMCWuUucTR7mhs511LPj2eIp0O1gTUeylpIKgo5PO1JEbDg9HYdY
+ Dpfyrx48Ck88B4kaAQZ14eHyEftLm8EhLR15qRMWItJNAm+Q32lK5oBes507iK3LFltXIsIl3OoO
+ dY=
+UI-OutboundReport: notjunk:1;M01:P0:HblYQUuZE4M=;EbF6xMHyP1csC3UiShZ2RuHWiiG
+ EbkuiyP77t+tw8kDrJsV7eaKZBJOTUroD+/Si4CrBWkLk1LkBnJekuUK2qRJ4IJVwzxD7DC/u
+ gYvHah3JNnx19MYNGb30IBMq1F0YBXUGEqxGW/5Hy1YQ0xPpI0HZ0eiHvLUXeEccSlS+P855M
+ CWvOehCujMbRcHOhTMiYqFQNmaeEjR9yGl4eW+nEiZb/44dwBPL8q6nnhrJ6aTZNntXyVUP4f
+ A98QpbI19gFGLnHYLOgmUZB1yzsCHkfxH8DFCO/Kd2ay+wZCHSYyODpxKAx0TUtdSoSvR4LFd
+ R6bqcGKdda2YR9VaggDVCW3JyItbih9e98wVTGmfbx4gXS7EnDydWJrJ1XL6Zxbz9j6oP4RGn
+ wLghwknkbuxR/vy5vFOPmnkqKniE/SZjDnK3s3Qm/7+o684TgiD/8kGYpAn1kd1WOHC8iUw6W
+ UnWx+T0YbUms9x0djeP0TpsHTaUPgD6GJQ14fplMTqOqtPsBlP57SkWk+mbOLo1M329Vb05hZ
+ 5ucFZ+8GGRwbkTbhQ4DYFveiI93w2UXlbUf/hz+4j+Er4nYp/Hgm0SnM3j6/p4NaZm64OQkjS
+ iTaStKfE5KTov6EaJ2BgpfD6BrkMc7dGPHd4uQ09ydnBbKpQ6tdEXWOSWa78TRRyavWnw0ImF
+ ZYup3Xts7GIn6BCExvNlAH/NtFruVS8oDZJAW077ZmPlRp/yGSUBCWWM7e2oUwrDCarngt6ij
+ c4HQeYIzrConSoff3HzHipH2uK0oVDI160L/neijfDn12UKUScG+lUKhuo129ugJlvY4H9Nin
+ k+V33eABiPsoTfLLcyMUjSEg==
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230312_091549_826644_BC7F4002 
-X-CRM114-Status: GOOD (  12.67  )
+X-CRM114-CacheID: sfid-20230312_095121_354759_B7B26893 
+X-CRM114-Status: GOOD (  14.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,230 +95,77 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <vladimir.oltean@nxp.com>, Daniel Golle <daniel@makrotopia.org>, Eric Dumazet <edumazet@google.com>, Florian Fainelli <f.fainelli@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Alexander Couzens <lynxis@fe80.eu>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Jianhui Zhao <zhaojh329@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, =?UTF-8?Q?Bj=C3=B8rn_Mork?= <bjorn@mork.no>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+Just to make it clear...the issue with the copper-sfps is no regression of=
+ this series it exists before.
+i only had none of them to test for until this weekend....my 1g fibre-sfp =
+were working fine with the inband-flag.
 
-this patch series adapts the platform drivers below drivers/clk
-to use the .remove_new() callback. Compared to the traditional .remove()
-callback .remove_new() returns no value. This is a good thing because
-the driver core doesn't (and cannot) cope for errors during remove. The
-only effect of a non-zero return value in .remove() is that the driver
-core emits a warning. The device is removed anyhow and an early return
-from .remove() usually yields a resource leak.
+this patch tries to fix it in mtk driver, this was rejected (as far as i u=
+nderstand it should be handled in phylink core instead of pcs driver).
+and no more in the v13, so we try to fix it another way.
 
-There were three drivers that did such an early error return in their
-remove callback. Two of them are fixed, the tegra one is more
-complicated. I only converted it to return zero (which only suppresses
-the duplicated warning by the driver core, but doesn't make the resource
-leak better or worse.) This needs some more attention by someone who
-understands the driver in question.
+whatever i do in phylink_parse_mode the link is always inband...i tried to=
+ add a new state to have the configuration not FIXED or PHY or INBAND
 
-By changing the remove callback to return void driver authors cannot
-reasonably assume any more that there is some kind of cleanup later
-which prevents that such programming errors are introduced in the first
-place.
+drivers/net/phy/phylink.c
+@@ -151,6 +151,7 @@ static const char *phylink_an_mode_str(unsigned int mo=
+de)
+                [MLO_AN_PHY] =3D "phy",
+                [MLO_AN_FIXED] =3D "fixed",
+                [MLO_AN_INBAND] =3D "inband",
++               [MLO_AN_INBAND_DISABLED] =3D "inband disabled",
+        };
 
-Note that this series depends on commit 5c5a7680e67b ("platform: Provide
-a remove callback that returns no value") which is included in v6.3-rc1.
+include/linux/phylink.h
+@@ -20,6 +20,7 @@ enum {
+        MLO_AN_PHY =3D 0, /* Conventional PHY */
+        MLO_AN_FIXED,   /* Fixed-link mode */
+        MLO_AN_INBAND,  /* In-band protocol */
++       MLO_AN_INBAND_DISABLED
 
-Uwe Kleine-König (30):
-  clk: mediatek: Make mtk_clk_simple_remove() return void
-  clk: tegra: Don't warn three times about failure to unregister
-  clk: xilinx: Drop if block with always false condition
-  clk: axs10x: Convert to platform remove callback returning void
-  clk: bcm: Convert to platform remove callback returning void
-  clk: axi-clkgen: Convert to platform remove callback returning void
-  clk: axm5516: Convert to platform remove callback returning void
-  clk: fixed-factor: Convert to platform remove callback returning void
-  clk: fixed-mmio: Convert to platform remove callback returning void
-  clk: fixed-rate: Convert to platform remove callback returning void
-  clk: hsdk-pll: Convert to platform remove callback returning void
-  clk: palmas: Convert to platform remove callback returning void
-  clk: pwm: Convert to platform remove callback returning void
-  clk: s2mps11: Convert to platform remove callback returning void
-  clk: scpi: Convert to platform remove callback returning void
-  clk: stm32mp1: Convert to platform remove callback returning void
-  clk: hisilicon: Convert to platform remove callback returning void
-  clk: keystone: Convert to platform remove callback returning void
-  clk: mediatek: Convert to platform remove callback returning void
-  clk: mmp: Convert to platform remove callback returning void
-  clk: mvebu: Convert to platform remove callback returning void
-  clk: qcom: Convert to platform remove callback returning void
-  clk: renesas: Convert to platform remove callback returning void
-  clk: samsung: Convert to platform remove callback returning void
-  clk: stm32: Convert to platform remove callback returning void
-  clk: tegra: Convert to platform remove callback returning void
-  clk: ti: Convert to platform remove callback returning void
-  clk: uniphier: Convert to platform remove callback returning void
-  clk: x86: Convert to platform remove callback returning void
-  clk: xilinx: Convert to platform remove callback returning void
+is my start the right way?
 
- drivers/clk/axs10x/i2s_pll_clock.c             |  5 ++---
- drivers/clk/axs10x/pll_clock.c                 |  5 ++---
- drivers/clk/bcm/clk-bcm2711-dvp.c              |  6 ++----
- drivers/clk/bcm/clk-bcm63xx-gate.c             |  6 ++----
- drivers/clk/bcm/clk-raspberrypi.c              |  6 ++----
- drivers/clk/clk-axi-clkgen.c                   |  6 ++----
- drivers/clk/clk-axm5516.c                      |  5 ++---
- drivers/clk/clk-fixed-factor.c                 |  6 ++----
- drivers/clk/clk-fixed-mmio.c                   |  6 ++----
- drivers/clk/clk-fixed-rate.c                   |  6 ++----
- drivers/clk/clk-hsdk-pll.c                     |  5 ++---
- drivers/clk/clk-palmas.c                       |  5 ++---
- drivers/clk/clk-pwm.c                          |  6 ++----
- drivers/clk/clk-s2mps11.c                      |  6 ++----
- drivers/clk/clk-scpi.c                         |  5 ++---
- drivers/clk/clk-stm32mp1.c                     |  6 ++----
- drivers/clk/hisilicon/clk-hi3519.c             |  5 ++---
- drivers/clk/hisilicon/clk-hi3559a.c            |  5 ++---
- drivers/clk/hisilicon/crg-hi3516cv300.c        |  5 ++---
- drivers/clk/hisilicon/crg-hi3798cv200.c        |  5 ++---
- drivers/clk/keystone/sci-clk.c                 |  6 ++----
- drivers/clk/mediatek/clk-mt2701-aud.c          |  6 +++---
- drivers/clk/mediatek/clk-mt2701-bdp.c          |  2 +-
- drivers/clk/mediatek/clk-mt2701-eth.c          |  2 +-
- drivers/clk/mediatek/clk-mt2701-g3d.c          |  2 +-
- drivers/clk/mediatek/clk-mt2701-hif.c          |  2 +-
- drivers/clk/mediatek/clk-mt2701-img.c          |  2 +-
- drivers/clk/mediatek/clk-mt2701-vdec.c         |  2 +-
- drivers/clk/mediatek/clk-mt2712-bdp.c          |  2 +-
- drivers/clk/mediatek/clk-mt2712-img.c          |  2 +-
- drivers/clk/mediatek/clk-mt2712-jpgdec.c       |  2 +-
- drivers/clk/mediatek/clk-mt2712-mfg.c          |  2 +-
- drivers/clk/mediatek/clk-mt2712-vdec.c         |  2 +-
- drivers/clk/mediatek/clk-mt2712-venc.c         |  2 +-
- drivers/clk/mediatek/clk-mt2712.c              |  2 +-
- drivers/clk/mediatek/clk-mt6765-audio.c        |  2 +-
- drivers/clk/mediatek/clk-mt6765-cam.c          |  2 +-
- drivers/clk/mediatek/clk-mt6765-img.c          |  2 +-
- drivers/clk/mediatek/clk-mt6765-mipi0a.c       |  2 +-
- drivers/clk/mediatek/clk-mt6765-mm.c           |  2 +-
- drivers/clk/mediatek/clk-mt6765-vcodec.c       |  2 +-
- drivers/clk/mediatek/clk-mt6779-aud.c          |  2 +-
- drivers/clk/mediatek/clk-mt6779-cam.c          |  2 +-
- drivers/clk/mediatek/clk-mt6779-img.c          |  2 +-
- drivers/clk/mediatek/clk-mt6779-ipe.c          |  2 +-
- drivers/clk/mediatek/clk-mt6779-mfg.c          |  2 +-
- drivers/clk/mediatek/clk-mt6779-vdec.c         |  2 +-
- drivers/clk/mediatek/clk-mt6779-venc.c         |  2 +-
- drivers/clk/mediatek/clk-mt6779.c              |  2 +-
- drivers/clk/mediatek/clk-mt6795-apmixedsys.c   |  6 ++----
- drivers/clk/mediatek/clk-mt6795-infracfg.c     |  6 ++----
- drivers/clk/mediatek/clk-mt6795-mfg.c          |  2 +-
- drivers/clk/mediatek/clk-mt6795-mm.c           |  6 ++----
- drivers/clk/mediatek/clk-mt6795-pericfg.c      |  6 ++----
- drivers/clk/mediatek/clk-mt6795-topckgen.c     |  2 +-
- drivers/clk/mediatek/clk-mt6795-vdecsys.c      |  2 +-
- drivers/clk/mediatek/clk-mt6795-vencsys.c      |  2 +-
- drivers/clk/mediatek/clk-mt6797-img.c          |  2 +-
- drivers/clk/mediatek/clk-mt6797-vdec.c         |  2 +-
- drivers/clk/mediatek/clk-mt6797-venc.c         |  2 +-
- drivers/clk/mediatek/clk-mt7622-aud.c          |  6 +++---
- drivers/clk/mediatek/clk-mt7622-eth.c          |  2 +-
- drivers/clk/mediatek/clk-mt7622-hif.c          |  2 +-
- drivers/clk/mediatek/clk-mt7629-hif.c          |  2 +-
- drivers/clk/mediatek/clk-mt7981-eth.c          |  2 +-
- drivers/clk/mediatek/clk-mt7981-infracfg.c     |  2 +-
- drivers/clk/mediatek/clk-mt7981-topckgen.c     |  2 +-
- drivers/clk/mediatek/clk-mt7986-topckgen.c     |  2 +-
- drivers/clk/mediatek/clk-mt8173-apmixedsys.c   |  6 ++----
- drivers/clk/mediatek/clk-mt8173-img.c          |  2 +-
- drivers/clk/mediatek/clk-mt8173-infracfg.c     |  6 ++----
- drivers/clk/mediatek/clk-mt8173-mm.c           |  6 ++----
- drivers/clk/mediatek/clk-mt8173-pericfg.c      |  2 +-
- drivers/clk/mediatek/clk-mt8173-topckgen.c     |  2 +-
- drivers/clk/mediatek/clk-mt8173-vdecsys.c      |  2 +-
- drivers/clk/mediatek/clk-mt8173-vencsys.c      |  2 +-
- drivers/clk/mediatek/clk-mt8183-audio.c        |  6 +++---
- drivers/clk/mediatek/clk-mt8183-cam.c          |  2 +-
- drivers/clk/mediatek/clk-mt8183-img.c          |  2 +-
- drivers/clk/mediatek/clk-mt8183-ipu0.c         |  2 +-
- drivers/clk/mediatek/clk-mt8183-ipu1.c         |  2 +-
- drivers/clk/mediatek/clk-mt8183-ipu_adl.c      |  2 +-
- drivers/clk/mediatek/clk-mt8183-ipu_conn.c     |  2 +-
- drivers/clk/mediatek/clk-mt8183-mfgcfg.c       |  2 +-
- drivers/clk/mediatek/clk-mt8183-vdec.c         |  2 +-
- drivers/clk/mediatek/clk-mt8183-venc.c         |  2 +-
- drivers/clk/mediatek/clk-mt8183.c              |  2 +-
- drivers/clk/mediatek/clk-mt8186-apmixedsys.c   |  6 ++----
- drivers/clk/mediatek/clk-mt8186-cam.c          |  2 +-
- drivers/clk/mediatek/clk-mt8186-img.c          |  2 +-
- drivers/clk/mediatek/clk-mt8186-imp_iic_wrap.c |  2 +-
- drivers/clk/mediatek/clk-mt8186-infra_ao.c     |  2 +-
- drivers/clk/mediatek/clk-mt8186-ipe.c          |  2 +-
- drivers/clk/mediatek/clk-mt8186-mcu.c          |  6 ++----
- drivers/clk/mediatek/clk-mt8186-mdp.c          |  2 +-
- drivers/clk/mediatek/clk-mt8186-mfg.c          |  2 +-
- drivers/clk/mediatek/clk-mt8186-mm.c           |  6 ++----
- drivers/clk/mediatek/clk-mt8186-topckgen.c     |  2 +-
- drivers/clk/mediatek/clk-mt8186-vdec.c         |  2 +-
- drivers/clk/mediatek/clk-mt8186-venc.c         |  2 +-
- drivers/clk/mediatek/clk-mt8186-wpe.c          |  2 +-
- drivers/clk/mediatek/clk-mt8192-aud.c          |  6 +++---
- drivers/clk/mediatek/clk-mt8192-cam.c          |  2 +-
- drivers/clk/mediatek/clk-mt8192-img.c          |  2 +-
- drivers/clk/mediatek/clk-mt8192-imp_iic_wrap.c |  2 +-
- drivers/clk/mediatek/clk-mt8192-ipe.c          |  2 +-
- drivers/clk/mediatek/clk-mt8192-mdp.c          |  2 +-
- drivers/clk/mediatek/clk-mt8192-mfg.c          |  2 +-
- drivers/clk/mediatek/clk-mt8192-msdc.c         |  2 +-
- drivers/clk/mediatek/clk-mt8192-scp_adsp.c     |  2 +-
- drivers/clk/mediatek/clk-mt8192-vdec.c         |  2 +-
- drivers/clk/mediatek/clk-mt8192-venc.c         |  2 +-
- drivers/clk/mediatek/clk-mt8192.c              |  2 +-
- drivers/clk/mediatek/clk-mt8195-apmixedsys.c   |  6 ++----
- drivers/clk/mediatek/clk-mt8195-apusys_pll.c   |  6 ++----
- drivers/clk/mediatek/clk-mt8195-cam.c          |  2 +-
- drivers/clk/mediatek/clk-mt8195-ccu.c          |  2 +-
- drivers/clk/mediatek/clk-mt8195-img.c          |  2 +-
- drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c |  2 +-
- drivers/clk/mediatek/clk-mt8195-infra_ao.c     |  2 +-
- drivers/clk/mediatek/clk-mt8195-ipe.c          |  2 +-
- drivers/clk/mediatek/clk-mt8195-mfg.c          |  2 +-
- drivers/clk/mediatek/clk-mt8195-peri_ao.c      |  2 +-
- drivers/clk/mediatek/clk-mt8195-scp_adsp.c     |  2 +-
- drivers/clk/mediatek/clk-mt8195-topckgen.c     |  6 ++----
- drivers/clk/mediatek/clk-mt8195-vdec.c         |  2 +-
- drivers/clk/mediatek/clk-mt8195-vdo0.c         |  6 ++----
- drivers/clk/mediatek/clk-mt8195-vdo1.c         |  6 ++----
- drivers/clk/mediatek/clk-mt8195-venc.c         |  2 +-
- drivers/clk/mediatek/clk-mt8195-vpp0.c         |  6 ++----
- drivers/clk/mediatek/clk-mt8195-vpp1.c         |  6 ++----
- drivers/clk/mediatek/clk-mt8195-wpe.c          |  2 +-
- drivers/clk/mediatek/clk-mt8365-apu.c          |  2 +-
- drivers/clk/mediatek/clk-mt8365-cam.c          |  2 +-
- drivers/clk/mediatek/clk-mt8365-mfg.c          |  2 +-
- drivers/clk/mediatek/clk-mt8365-vdec.c         |  2 +-
- drivers/clk/mediatek/clk-mt8365-venc.c         |  2 +-
- drivers/clk/mediatek/clk-mtk.c                 |  4 +---
- drivers/clk/mediatek/clk-mtk.h                 |  2 +-
- drivers/clk/mmp/clk-audio.c                    |  6 ++----
- drivers/clk/mvebu/armada-37xx-periph.c         |  6 ++----
- drivers/clk/mvebu/armada-37xx-tbg.c            |  6 ++----
- drivers/clk/mvebu/armada-37xx-xtal.c           |  6 ++----
- drivers/clk/qcom/apcs-msm8916.c                |  6 ++----
- drivers/clk/qcom/apcs-sdx55.c                  |  6 ++----
- drivers/clk/qcom/clk-rpm.c                     |  5 ++---
- drivers/clk/qcom/gcc-msm8960.c                 |  6 ++----
- drivers/clk/renesas/rcar-usb2-clock-sel.c      |  6 ++----
- drivers/clk/samsung/clk-exynos-audss.c         |  6 ++----
- drivers/clk/samsung/clk-exynos-clkout.c        |  6 ++----
- drivers/clk/stm32/clk-stm32mp13.c              |  6 ++----
- drivers/clk/tegra/clk-dfll.c                   |  5 ++++-
- drivers/clk/tegra/clk-tegra124-dfll-fcpu.c     | 17 ++++++++---------
- drivers/clk/ti/adpll.c                         |  6 ++----
- drivers/clk/uniphier/clk-uniphier-core.c       |  6 ++----
- drivers/clk/x86/clk-fch.c                      |  7 +++----
- drivers/clk/x86/clk-pmc-atom.c                 |  5 ++---
- drivers/clk/xilinx/clk-xlnx-clock-wizard.c     |  6 ++----
- drivers/clk/xilinx/xlnx_vcu.c                  |  8 ++------
- 159 files changed, 234 insertions(+), 335 deletions(-)
+i noticed that sfp-handling is always calling phylink_sfp_config_optical a=
+nd this calls phylink_sfp_set_config with fixed MLO_AN_INBAND.
 
+https://elixir.bootlin.com/linux/v6.3-rc1/source/drivers/net/phy/phylink.c=
+#L3038
 
-base-commit: fe15c26ee26efa11741a7b632e9f23b01aca4cc6
--- 
-2.39.1
+This looks wrong for me...
+First not all sfp are optical (ethtool shows FIBRE for copper-sfps too) an=
+d not all use inband mode...
+after changing this to my new state i see it in the configuration message.
 
+@@ -3044,7 +3049,7 @@ static int phylink_sfp_config_optical(struct phylink=
+ *pl)
+
+        pl->link_port =3D pl->sfp_port;
+
+-       phylink_sfp_set_config(pl, MLO_AN_INBAND, pl->sfp_support, &config=
+);
++       phylink_sfp_set_config(pl, MLO_AN_INBAND_DISABLED, pl->sfp_support=
+, &config);
+
+        return 0;
+ }
+
+root@bpi-r3:~# ip link set eth1 up
+[   30.186811] mtk_soc_eth 15100000.ethernet eth1: configuring for inband =
+disabled/2500base-x link mode
+
+changing the mode itself is not enough for getting the link up...
+have not found spacial handling of MLO_AN_INBAND except in phylink_mac_ini=
+tial_config where i added my mode to the
+MLO_AN_INBAND as fallthrough (there is not autoneg set/done). also disable=
+d link_config.an_enabled whereever i've found,
+but this does not bring up the link on the copper sfps...it looks like the=
+re must be a state-change...
+
+but here i'm stuck with my limited knowledge ;(
+
+regards Frank
 
