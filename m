@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCC15C6FA99
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 13:48:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41725C6FD19
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 13:51:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=buQg6sc8yXPiuj0KpLg54vXnkMGR4QG/BKa5y0Xpa2Y=; b=w+kcAxWDDaF5eGSL3QpbZnzNZe
-	uBu27r/otu114E3JZNTvMYdQ4SLmbhkIcuYkY1DpkyCzsWwfrypt+Fd3Diw2kpSAhwLrHawdBI8ba
-	z5fuSzVu1ElcqKuHd/itL2YTKWidjvokzE+k7YhsV8wuEKjvBAVGVmBzzvI1ZFhjlYhoEfo95LtfU
-	TPsbh9JRUkqqIt26s9Hjz+FvnbMVRbzstllPj5e2owIMrnA9UbTKKYpBkhb56CgSMPk/Y+DTefC5e
-	3LZ0pqN96HUJNEb+moAlLSXSf/oqL+Em9x10N+NMc3MY01zlMCKPrnpfrJdRddtU1sdFwBElQomEE
-	EQ1yVN3A==;
+	bh=TNgYfofTMT0DwU3/gnE/zf49ZhjV1abWtqYCyvkVzBQ=; b=g79rAMwZyGvtO69l2+wM7GpBk2
+	JhNzM5IKEYVE5b8h9GNbo9nAAV7buhd4H+NEi4nDTyGoBOMGBgvT9w5TvsWQAZyVuB9Kx09Mq9Yh6
+	7PBF0gFPKzNTvQeo+4CSZP2eteyazh+nUQYeqlKgS61fXYTnroQOyc/5V1lwVY3ubHXYXjSTcldA6
+	4BYY81z4NyBty4rRk0dBIfcTU1G00GNSH+Q9csGgX3Z7LZ12E3460Ql1fCfPTsCxhW7+5wW6MYB6p
+	DzUEzRD9QMc2z87Zrrh+tKWnGc0WtUr5H7RFKrVPvKBQu1S7c8JpJKOE21Sc+X38gkSB8baBKE28l
+	fC+0iXUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbM3s-002XnA-HJ; Sun, 12 Mar 2023 13:48:32 +0000
+	id 1pbM6Z-002ZFq-RD; Sun, 12 Mar 2023 13:51:20 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbM0s-002WDu-8M
-	for linux-mediatek@bombadil.infradead.org; Sun, 12 Mar 2023 13:45:26 +0000
+	id 1pbM1T-002WWr-0I
+	for linux-mediatek@bombadil.infradead.org; Sun, 12 Mar 2023 13:46:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
 	:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=buQg6sc8yXPiuj0KpLg54vXnkMGR4QG/BKa5y0Xpa2Y=; b=B8zk4DAsFZx1BDRwHvrmOHVlxJ
-	C0b/D8cLa+6HiTKL2/cZJN6/4wHiGd8jstF9vM/7JEtOTcmE3nKwHRGFhJiZlZNw0i0FCmh3Tp+J4
-	/ar/TavQtyrkhrIINitIis2Ba76gJ67qQ9XIZWimyQCTKDAMjeGAgPiK5eK8FE933lAOi4eXcD0yz
-	9mVeKpk0CUECiMPLUdMsdSMmi0Aw49f6aMxB/3D23WgPVKAlcFx8zKb6UJtRiF0Tg/06s5wxceies
-	tN0uZuCNu4MQDf5F2ybiWTp/UbnpKBGjjVFRlIIzkiuqeoYniDv8QI0mBL+iw5uSM/GKRwRnTcXXK
-	Qf3HUwDA==;
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	bh=TNgYfofTMT0DwU3/gnE/zf49ZhjV1abWtqYCyvkVzBQ=; b=HQnlObf4+3Oj1eQwJPuOYvrAN4
+	VrBQBnhsj0526SBP6q7EcK+fs5ZiU5XLk4ekGet6k/8XWGkE73QxcNMpuQJRSIA8fs81CC/pAJM8f
+	CDyqHiesLzDnGhRxbjzynbE+xnvrKIZ4t/7snALxxvwLfhY2nAG+vlWl+R0JBNtqKaGl8B1L2KBcA
+	eIVjs8IIzuQ5Gc357fyyoConEMBzTwRozWCJBr95JfPG0r8nldht6LkcZIqBfhN9k4EnaFmPwtEvb
+	YDGNEUAEMHVOA4HdoWyZqUKws4W3WnuyRbu7eL8YocpD2LsUZ9eIIFbeKZ2Isn+rMHYk+cYmUtxMf
+	M6xZJP8g==;
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pbLW7-0011Cz-01
+	id 1pbLWX-0011C3-16
 	for linux-mediatek@lists.infradead.org;
-	Sun, 12 Mar 2023 13:14:26 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id da10so38595886edb.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 12 Mar 2023 06:13:37 -0700 (PDT)
+	Sun, 12 Mar 2023 13:14:10 +0000
+Received: by mail-ed1-x536.google.com with SMTP id ek18so7377009edb.6
+        for <linux-mediatek@lists.infradead.org>; Sun, 12 Mar 2023 06:14:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678626815;
+        d=linaro.org; s=google; t=1678626845;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=buQg6sc8yXPiuj0KpLg54vXnkMGR4QG/BKa5y0Xpa2Y=;
-        b=GnWL3jRt7rNHd4ypSq8umyqs1x7+0wYjNeYAKRv1DYI86Q1oa+IH8PWctC1Wn1hOy1
-         y93TFuRwH5JaVlqiteoJQLpQ/TFWQauBKf6VIy3rgszMH7kuzi0S7xxTV/DUlNx6kGWz
-         bHPb++v6s5Yugrzys+edgMF3SIe18dNXHurPcmVp+cQwX6OFWKlw6aENyrobhpJE+WzO
-         oOjc55XzuJIQ+fjO7bGFVCQ9ieALrkOjivsIggJcLhUhMHqPqaqX/EMKpWTLFVuy6Hg8
-         u77f9u6QLYp9a+86xO1rMpEyWn1T3CAZdJK+Kz82pdXVzRTthcPtlqhx5FyVWNv5poo/
-         sGOA==
+        bh=TNgYfofTMT0DwU3/gnE/zf49ZhjV1abWtqYCyvkVzBQ=;
+        b=EgkbAPHTPzo9cfWlbLRM6KLB9a2CDiyTPjgvZIkiQB2D3eAiH7zCEO3VPovDUd+GB4
+         KX5pcpWniraKhokFUITVAYNqggo8wmVnv51oebW8T+jTWoS8EYz5RuidnQho16MtLB5Y
+         6HnazuF5aS+d0nJV3e7wA/9S90PNSqDWAroW/WjB+cwKhBYuD2AiqFCxO/6DSf+Lzzh5
+         s1erEPkcKXTBdvZZEH+znboKjx0L7miHhUyOS7X5sprDW30hvRNz7iLwKLf6cCe9e+VE
+         4sxLBtwFF/inQe5VeT2sEqF81F41KzmIGM4nDHT9s2mV60jv2F0INyTIWn4VM/cwT76j
+         nAww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678626815;
+        d=1e100.net; s=20210112; t=1678626845;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=buQg6sc8yXPiuj0KpLg54vXnkMGR4QG/BKa5y0Xpa2Y=;
-        b=NDhNdf2mwHzib2dzHgRwESd+KCtzbQtRV6zSlLuMgdPndbYDBsG4kA1IHMDyNV2qy/
-         yo491VmidKhPdiw/s82TnWC3hzWfi7QVyqPoNkF3BH7+9zrXl4VyOzHYLfRz1MeigClK
-         2sHflSj1Jj9sm9zySS+exW/LoZcHJ9V8VToacB1LtrCT3f/eMkRpBBR84l48wTjPYJBB
-         khB6tl2t+De87v9TILLPwevVR73m9s3H1RgIAly86UR88VpqGX8rFrHj/htuQLl0wpbd
-         fswyenennuGeV4ZTGKbMPu8Hq1yse9SL3bTIbmicCmkruLwIAEwfhjsG1fmA9sdRl5jl
-         T9kA==
-X-Gm-Message-State: AO0yUKX47fKD78AgZ7GlqwX361iqmCBKQTE8DPH7r3e8gM9h/blvx0ZZ
-	vt7F2mWAmSE09FQbmniXI/jrkg==
-X-Google-Smtp-Source: AK7set8WaF2rUwXzajL4x+ub2degb8HIZtrdNRoJNVJTVfKoaxigWqj4b6PT5ae6Lxjnr++xATWHbg==
-X-Received: by 2002:a17:907:9806:b0:920:388c:7cb8 with SMTP id ji6-20020a170907980600b00920388c7cb8mr6643262ejc.40.1678626815715;
-        Sun, 12 Mar 2023 06:13:35 -0700 (PDT)
+        bh=TNgYfofTMT0DwU3/gnE/zf49ZhjV1abWtqYCyvkVzBQ=;
+        b=f4YiScyu9tp8plrQDFGx7C+D7ygcT3pl/SJC7y6aZlfS7WTvcGe+cb9+5XwbD+rO9Y
+         80fuEDDjqCGxixioWzkOgsTz12fyNcwIhEM0K0+c/BI5flopYmGpuvqdo8Kte+VIMk13
+         WOt47cjeu++Qt/DY3xdgEn6FMlA14UetBNmznejyhzIoMQexO4+FMeE5l+mQVm1LdsMo
+         VTPATTTXrBwb62kvx/kE/bFshcy7KUH9WpY9oGhuaHtZa4emR551Wy99yrOZ7lZWRMC3
+         /AQ57ZvW6roUJ6ukKsoaay+5K5UJZCQfPNhln2yPUbg59tk88pQjm+Ya9FYy48xi5d9V
+         L8tg==
+X-Gm-Message-State: AO0yUKVgo8xZUZJ24vZTkoRT1ICRqDBngto+mf+P2LRFHUFTRp2HV9wL
+	Tl++bhj4lb37LNu26sinLEVhMg==
+X-Google-Smtp-Source: AK7set/vg3wcNxuj5n3r+oFsWS7o7VFQ0ZolSjtjcry30Pr24as5+4q+gdgTFv63DmbvH/wtTzc+Fw==
+X-Received: by 2002:a17:906:4f94:b0:8ed:e8d6:42c4 with SMTP id o20-20020a1709064f9400b008ede8d642c4mr31116353eju.12.1678626845092;
+        Sun, 12 Mar 2023 06:14:05 -0700 (PDT)
 Received: from krzk-bin.. ([2a02:810d:15c0:828:d9f6:3e61:beeb:295a])
-        by smtp.gmail.com with ESMTPSA id r19-20020a1709067fd300b008eddbd46d7esm2213279ejs.31.2023.03.12.06.13.33
+        by smtp.gmail.com with ESMTPSA id r19-20020a1709067fd300b008eddbd46d7esm2213279ejs.31.2023.03.12.06.14.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 12 Mar 2023 06:13:35 -0700 (PDT)
+        Sun, 12 Mar 2023 06:14:04 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Joe Tessler <jrt@google.com>,
 	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
@@ -122,9 +122,9 @@ To: Joe Tessler <jrt@google.com>,
 	linux-sunxi@lists.linux.dev,
 	linux-rockchip@lists.infradead.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 06/28] media: rc: ir-rx51: drop of_match_ptr for ID table
-Date: Sun, 12 Mar 2023 14:12:56 +0100
-Message-Id: <20230312131318.351173-6-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 21/28] media: i2c: isl7998x: drop of_match_ptr for ID table
+Date: Sun, 12 Mar 2023 14:13:11 +0100
+Message-Id: <20230312131318.351173-21-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
 References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
@@ -132,8 +132,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230312_131339_323861_F8E27F9B 
-X-CRM114-Status: GOOD (  14.81  )
+X-CRM114-CacheID: sfid-20230312_131405_526906_FF0A3F9E 
+X-CRM114-Status: GOOD (  13.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,31 +148,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The driver can match only via the DT table so the table should be always
-used and the of_match_ptr does not have any sense (this also allows ACPI
-matching via PRP0001, even though it might not be relevant here).  This
-also fixes !CONFIG_OF error:
+The driver will match mostly by DT table (even thought there is regular
+ID table) so there is little benefit in of_match_ptr (this also allows
+ACPI matching via PRP0001, even though it might not be relevant here).
+This also fixes !CONFIG_OF error:
 
-  drivers/media/rc/ir-rx51.c:264:34: error: ‘ir_rx51_match’ defined but not used [-Werror=unused-const-variable=]
+  drivers/media/i2c/isl7998x.c:1557:34: error: ‘isl7998x_of_match’ defined but not used [-Werror=unused-const-variable=]
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- drivers/media/rc/ir-rx51.c | 2 +-
+ drivers/media/i2c/isl7998x.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/rc/ir-rx51.c b/drivers/media/rc/ir-rx51.c
-index adbbe639a261..13e81bf8005d 100644
---- a/drivers/media/rc/ir-rx51.c
-+++ b/drivers/media/rc/ir-rx51.c
-@@ -275,7 +275,7 @@ static struct platform_driver ir_rx51_platform_driver = {
- 	.resume		= ir_rx51_resume,
- 	.driver		= {
- 		.name	= KBUILD_MODNAME,
--		.of_match_table = of_match_ptr(ir_rx51_match),
-+		.of_match_table = ir_rx51_match,
+diff --git a/drivers/media/i2c/isl7998x.c b/drivers/media/i2c/isl7998x.c
+index ae7af2cc94f5..b2b351816b82 100644
+--- a/drivers/media/i2c/isl7998x.c
++++ b/drivers/media/i2c/isl7998x.c
+@@ -1611,7 +1611,7 @@ static const struct dev_pm_ops isl7998x_pm_ops = {
+ static struct i2c_driver isl7998x_i2c_driver = {
+ 	.driver = {
+ 		.name = "isl7998x",
+-		.of_match_table = of_match_ptr(isl7998x_of_match),
++		.of_match_table = isl7998x_of_match,
+ 		.pm = &isl7998x_pm_ops,
  	},
- };
- module_platform_driver(ir_rx51_platform_driver);
+ 	.probe_new	= isl7998x_probe,
 -- 
 2.34.1
 
