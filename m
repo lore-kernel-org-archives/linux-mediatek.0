@@ -4,102 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92229C6FA99
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 09:04:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D70BBC6FA99
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 09:42:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Pc80kOGlqxH4dxS+XiPVwGBzRY6XRSb/pMTBjXDBKDE=; b=O/oMPZ14l8VMY7cLJyQg17AgrG
-	jbH1O7laTqbH0wzzGgR9fcwNG1Ji9SO9tQBOhwgkTK/pIXpNuqfgrQRBz1JV/V9E1ZGEY9OxE2k0D
-	sxiALhjte8L0F+lS/KtGzhhwZNGDOgif+YJNLQ2ACcjMcxDuqvUNs1G1KUfzojU5qZmQkW5BG1q3f
-	U7Gj1IamIps4A3+a6Wn6753/6i/N9RYxBVfyVLl1LmrYq5S4YFEwiWcT5QV17VH0JKYlwK13AGDBj
-	P5DjeVj2ghGfFCXIY6lOpEIVgYKQuyckSMCRuzZjd4czMXM6x2SVRneB2VEg4q320GYn35jR6p4CG
-	TLQQUiuw==;
+	bh=2PsOAzVqf05NGT4ISlB3zQ90ePYfBtUiywnLfEvTUnY=; b=utHisGM36fxkY94qWlx89H6U99
+	ega/HJ9Si0DJcTkgag6Xd5OL2siR5vaxHY2imJV0b1Mn069VYas6q25ZJ+p70h4DVeR2pJ54uYAFj
+	zm/DTnPtBTpgBkkOf22f9UV0z6YiFzq3Q/DSn0ZM/EnK0wk7wiY9LbxzzaYNbDy6PWxhbf6GIF4Hl
+	2pIS7bzw4LV3wr2ixXqsqqsht+no34ZFFIdaS2/vPR7C5boaa8Mji71HnPDe9UQ/gq0KyNUM2Wq+S
+	rCIcFSbFUQb/mB13IQ5mP5Sap9YxkeKRjG+B5NZ9ctjGzzHLu03WRfOD/W+LAMQ7CwvejifhLzv/T
+	fdRg4T4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbHd0-002090-MX; Sun, 12 Mar 2023 09:04:30 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1pbIDn-0022di-86; Sun, 12 Mar 2023 09:42:31 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbHcm-00207T-Uu; Sun, 12 Mar 2023 09:04:18 +0000
-Received: by mail-wm1-x335.google.com with SMTP id r19-20020a05600c459300b003eb3e2a5e7bso6021881wmo.0;
-        Sun, 12 Mar 2023 01:04:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678611853;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=Pc80kOGlqxH4dxS+XiPVwGBzRY6XRSb/pMTBjXDBKDE=;
-        b=C3cg//7XD2AcK5g+5oCgxoHKpG4SvHhXCR6v3qVBpiEF+WUBvq8ZZ5tLZALnAauFJj
-         rEjcj8NQdRwYA4ux+JtDErrDB5Nzgzw/AjFO7u0h0p6bfBrcaoPow6njYj1Dpibayb5/
-         rgQXZOJX2QpGVTOFfuhNc4VViO3V+jQGWDutKXSO3z29+LOIX7NHJe8BgWUeV0Qk+DSk
-         mMlP6cSn2QTc59qxxyX991VOGeYMydMOolYIb9WD2htJwDY+uEmUa0Eg8folOgr2R58c
-         RDylORvHuf3pHLcGdHNCl4UQ7gXNtsoP/5FQmSl+eZlfQ7tij9W7fxrqeMU92uRl/3o4
-         YRng==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678611853;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Pc80kOGlqxH4dxS+XiPVwGBzRY6XRSb/pMTBjXDBKDE=;
-        b=sGUQg+lAAd6B/x3tj24ConplUvRw2tTw1cGTPwxTYw8JKxcVdKsHaaRutds9gj0Hri
-         zry4+T/+uOdFR3mtUwLeCblspYHJe/oF3XILAkb5GchGJ26xfEplXsKpM6EgvG50NlCj
-         GHhWmVpVU47wsOAGvzfx280hXMiGvMzvp2SAEi77E2vcqgIdHtPTqt5bfKK2nUJAgcZa
-         cDTcpagR8NOuMyf9Y1h1NUI8f+5bnNGipSGzp3rlYAzVzlSPzOfsqIA7njAt8PeLKlkL
-         vGv1XpJL+rGyrFpIA2oOiSaMJKqM3SrgnTkUosFltAUHl/RQ1WuwkcBeO8cSbMbifVTr
-         B0FQ==
-X-Gm-Message-State: AO0yUKUXC2goeNlY+CBgme7IUklm1wbbDQB0fMVkDp1PDPGFQ2MTj+KP
-	242x8zCNIg5liQb9AdLXeTY=
-X-Google-Smtp-Source: AK7set+ky1MP5G4zegthCZnFjMiOBM5971of0IvZsyf8jSOYuUK5Q1+66wGmT3hiJ3eY3UnFWhYJRw==
-X-Received: by 2002:a05:600c:1d02:b0:3e9:c2f4:8ad4 with SMTP id l2-20020a05600c1d0200b003e9c2f48ad4mr7065700wms.8.1678611853347;
-        Sun, 12 Mar 2023 01:04:13 -0800 (PST)
-Received: from ?IPv6:2a02:168:6806:0:b020:289a:731d:fbb8? ([2a02:168:6806:0:b020:289a:731d:fbb8])
-        by smtp.gmail.com with ESMTPSA id p23-20020a1c7417000000b003e11f280b8bsm5233062wmc.44.2023.03.12.01.04.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 12 Mar 2023 01:04:12 -0800 (PST)
-Message-ID: <0a1ec04fe494fcd8c68d03e4f544d7162c0e4f39.camel@gmail.com>
-Subject: Re: [PATCH net-next v2 4/6] net: mdio: scan bus based on bus
- capabilities for C22 and C45
-From: Klaus Kudielka <klaus.kudielka@gmail.com>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Michael Walle <michael@walle.cc>, Heiner Kallweit
- <hkallweit1@gmail.com>,  Russell King <linux@armlinux.org.uk>, "David S.
- Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Felix Fietkau
- <nbd@nbd.name>, John Crispin <john@phrozen.org>,  Sean Wang
- <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
- Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Bryan Whitehead <bryan.whitehead@microchip.com>,
- UNGLinuxDriver@microchip.com, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,  Jose Abreu
- <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Joel
- Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
- netdev@vger.kernel.org,  linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,  linux-mediatek@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,  linux-aspeed@lists.ozlabs.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>
-Date: Sun, 12 Mar 2023 10:04:11 +0100
-In-Reply-To: <29ee3cc4-a1d6-4a07-8d90-4b2f26059e7d@lunn.ch>
-References: <db6b8a09-b680-4baa-8963-d355ad29eb09@lunn.ch>
-	 <0e10aa8492eadb587949d8744b56fccaabbd183b.camel@gmail.com>
-	 <72530e86-9ba9-4a01-9cd2-68835ecae7a0@lunn.ch>
-	 <09d65e1ee0679e1e74b4f3a5a4c55bd48332f043.camel@gmail.com>
-	 <70f5bca0-322c-4bae-b880-742e56365abe@lunn.ch>
-	 <10da10caea22a8f5da8f1779df3e13b948e8a363.camel@gmail.com>
-	 <4abd56aa-5b9f-4e16-b0ca-11989bb8c764@lunn.ch>
-	 <bff0e542b8c04980e9e3af1d3e6bf739c87eb514.camel@gmail.com>
-	 <a57a216d-ff5a-46e6-9780-e53772dcefc8@lunn.ch>
-	 <2f64385a350359c5755eb4d2479e2efef7a96216.camel@gmail.com>
-	 <29ee3cc4-a1d6-4a07-8d90-4b2f26059e7d@lunn.ch>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.46.4-1 
+	id 1pbIDc-0022cM-Nz; Sun, 12 Mar 2023 09:42:22 +0000
+Received: from pendragon.ideasonboard.com (85-76-49-20-nat.elisa-mobile.fi [85.76.49.20])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id E5D30814;
+	Sun, 12 Mar 2023 10:42:14 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1678614135;
+	bh=2ZEVl5rsK5H4zvdfeUpUGY8WalO/tOcjHbf6ZixUYTY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=uW96zgPhEyFUlg4cwx9U8aHK5ydpIh7K+GzgaU9BL/vhdw/+zL9BwsVRIklgwy83n
+	 znnzlWCsVkBmtHm+lRiw3bEhYFZhWAax0IaEGUVALEnD+uuJxSGkkm7T2ZqG7LsoeF
+	 i/JJlR0QZobdvA1oeaCuik3cfnIoI/l0HyEqwgro=
+Date: Sun, 12 Mar 2023 11:42:16 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Tony Lindgren <tony@atomide.com>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-omap@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org
+Subject: Re: [PATCH 2/9] regulator: max20086: Mark OF related data as maybe
+ unused
+Message-ID: <20230312094216.GC707@pendragon.ideasonboard.com>
+References: <20230310214553.275450-1-krzysztof.kozlowski@linaro.org>
+ <20230310214553.275450-2-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230310214553.275450-2-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230312_010417_061280_BC8973BA 
-X-CRM114-Status: GOOD (  12.34  )
+X-CRM114-CacheID: sfid-20230312_014220_967828_21C28D77 
+X-CRM114-Status: GOOD (  19.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,38 +73,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 2023-03-12 at 03:53 +0100, Andrew Lunn wrote:
-> >=20
-> > What you are proposing here would not show any improvement on the
-> > Omnia, as only the 6 ports would be scanned - right?=20
->=20
-> Correct. But their also should not of been any noticeable slow down,
-> because there should not be any additional scanning when everything is
-> described in DT. And the move of the MDIO bus registration from probe
-> to setup should actually make it faster than before.
->=20
+Hi Krzysztof,
 
-But then, why *do* I see such a big difference on the Omnia?
+Thank you for the patch.
 
-mdiobus_scan_bus_c45() takes:
-~2.7 seconds without phy_mask patch
-~0.2 seconds with phy_mask patch
+On Fri, Mar 10, 2023 at 10:45:46PM +0100, Krzysztof Kozlowski wrote:
+> The driver can be compile tested with !CONFIG_OF making certain data
+> unused:
+> 
+>   drivers/regulator/max20086-regulator.c:289:34: error: ‘max20086_dt_ids’ defined but not used [-Werror=unused-const-variable=]
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+>  drivers/regulator/max20086-regulator.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/regulator/max20086-regulator.c b/drivers/regulator/max20086-regulator.c
+> index b8bf76c170fe..c98a72f43935 100644
+> --- a/drivers/regulator/max20086-regulator.c
+> +++ b/drivers/regulator/max20086-regulator.c
+> @@ -286,7 +286,7 @@ static const struct i2c_device_id max20086_i2c_id[] = {
+>  
+>  MODULE_DEVICE_TABLE(i2c, max20086_i2c_id);
+>  
+> -static const struct of_device_id max20086_dt_ids[] = {
+> +static const struct of_device_id max20086_dt_ids[] __maybe_unused = {
 
-(It's not a big deal, but somehow strange)
+The following change would also work, as the of_match_table field of
+struct device_driver isn't conditioned by CONFIG_OF:
 
-Regards, Klaus
+diff --git a/drivers/regulator/max20086-regulator.c b/drivers/regulator/max20086-regulator.c
+index b8bf76c170fe..ad92f84b4abb 100644
+--- a/drivers/regulator/max20086-regulator.c
++++ b/drivers/regulator/max20086-regulator.c
+@@ -320,7 +320,7 @@ MODULE_DEVICE_TABLE(of, max20086_dt_ids);
+ static struct i2c_driver max20086_regulator_driver = {
+ 	.driver = {
+ 		.name = "max20086",
+-		.of_match_table = of_match_ptr(max20086_dt_ids),
++		.of_match_table = max20086_dt_ids,
+ 	},
+ 	.probe_new = max20086_i2c_probe,
+ 	.id_table = max20086_i2c_id,
 
+Your patch should reduce the module size without any real drawback as
+far as I can see, so that's probably best. I'm fine with either
+approach, so
 
-PS: There was another open question: How long does the first
-unsuccessful mv88e6xxx_probe() take, when calling
-mv88e6xxx_mdios_register() from mv88e6xxx_setup()?
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-I would say "negligible":
+>  	{
+>  		.compatible = "maxim,max20086",
+>  		.data = &(const struct max20086_chip_info) {
 
-[    0.194414] mv88e6085 f1072004.mdio-mii:10: *** mv88e6xxx_probe call ***
-[    0.194739] mv88e6085 f1072004.mdio-mii:10: switch 0x1760 detected: Marv=
-ell 88E6176, revision 1
-[    0.208163] mv88e6085 f1072004.mdio-mii:10: *** mv88e6xxx_probe return -=
-517 ***
+-- 
+Regards,
 
+Laurent Pinchart
 
