@@ -4,62 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4A57C6FA99
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 13:17:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C352C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 13:17:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pr1jUKnL41ZyOFBU50NsUPyS/zukAR1uIPxn6pkxwwo=; b=Ctb48n/6WH5jhr7+7g8+jatc6T
-	eWDUfKfbU9gfS1qtcaoKWhbQ0rcRduYcizSvhLcdqYJzjOrTggbMOXd3DexM42RXGQ7HzcPTPV3LW
-	1pjoeLyvzwbRuGiNU8cH8ygv9iK0bjgR6mCfAespDCq2L4gQ3L18GkEEImj5D5qGe7Z6qXKPOJAyP
-	aCNEaZK1qJkaHOiANO7TMlSb8WS7AEZtjOeSLD2pUijpYp2x4ZbWS1xUF3Xwf6cM2ZUmeNp+65jiA
-	WV/yMBEpefrc7XtsMdiCaD5TS3YDVEiRl1zqADr7jyh7Ig0Fz1BuBgnrZfsyK4rzsK8VuZrYxdzvQ
-	E05GjUCQ==;
+	bh=CwcHrV5a02s5JB75+HpDxEu4ezBqVrMI6kJUFyMDg/I=; b=tMmB5nMvVO5sA6ZONzsdA4imho
+	+tXJUYyPAjMALSrU7sEWw5WnqZfv3I7ZUc9rzAvW3ET1eNIy1lVVTWXRrghSJpyw4XTfeCBsktrkZ
+	mx5pRsTECJiTEablNk4KL46I/gMP0mUqAlos5vm6cPySefgrvwi7Qj4KvkJjkr71aFeRelpthAWMl
+	E5N3OAvnM0jSBgdLTWZ0jjjZYjz/eNLub0ekcZJqf6zCChqwoJyWRpBcA8dqAsfJX4zehfUeEsP0Q
+	2xOTmWqRnJmpHMMrnUSckubkxnZE9LdLrfDntgsox06U5AlZyR+MSQnGoqoXHCFURyQLH7kNd3dHW
+	E6RqwhfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbLZM-002KH8-2x; Sun, 12 Mar 2023 13:17:00 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1pbLZP-002KIn-P8; Sun, 12 Mar 2023 13:17:03 +0000
+Received: from desiato.infradead.org ([90.155.92.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbLW6-002IMi-5c
-	for linux-mediatek@lists.infradead.org; Sun, 12 Mar 2023 13:13:40 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id s11so38491954edy.8
-        for <linux-mediatek@lists.infradead.org>; Sun, 12 Mar 2023 06:13:38 -0700 (PDT)
+	id 1pbLWB-002IVu-6F
+	for linux-mediatek@bombadil.infradead.org; Sun, 12 Mar 2023 13:13:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=CwcHrV5a02s5JB75+HpDxEu4ezBqVrMI6kJUFyMDg/I=; b=olqnPyDXAbcwUHu2dtxTXUHkD2
+	yWrGUZTgzuhywYWUFKkEAlERU3G8U4OFia4T06Jz6xYa3k9VB2yQPu39kfP2rnugTKo2GioTthog6
+	RVQmhZP3QmvnU+8J/qU0453LmdSVt4+sNGg6euM+VHrG0sdzeln22WvaSU67V6t1+p+lsYjR+llvR
+	2WY09rLngNiSYzcpL3wXpLfCnz5QOQ6GFJV7ns3nbC4wAWtIYPPknFPEoVkXnXJmy8yNWbX9AMBQe
+	y1SqYojMuN/8og3fB7NnckJ/oelX/y0GNIgvPaY29dIvOnvTmwIwYL1X1I96Fz8URYpNefoCzcnyi
+	yA7GBxRA==;
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pbLW3-0011C2-2G
+	for linux-mediatek@lists.infradead.org;
+	Sun, 12 Mar 2023 13:13:40 +0000
+Received: by mail-ed1-x531.google.com with SMTP id er25so10368003edb.5
+        for <linux-mediatek@lists.infradead.org>; Sun, 12 Mar 2023 06:13:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678626817;
+        d=linaro.org; s=google; t=1678626812;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=pr1jUKnL41ZyOFBU50NsUPyS/zukAR1uIPxn6pkxwwo=;
-        b=d/Be+KE/rae1AooRcRo7NJaoA4jh14ihaoslOYJLSEXJQusR7E+0E7WGgKwVRvJoU4
-         7cdi5lsie8od8sSeQOijQ+CU4K2wFTybbFVmGoqHZm94v3n/12QgP7a8B5fLk8P3oQWA
-         Oi+Wf1t4BtkYlyqaXjU8X/nXEzUjjdeyZmjOvBGcEe/zF3N/ZANNaRkblY9p/FtqC7p/
-         QCvhTboN2UXxOhL+7/WonTj8O2ca0sj3nz65riaVKnjdeP2wrgFMxLx26N7hQlzLO47j
-         ME0hrCDR4+HnZG+PoqQA8nwhxmvt0zQP33761Ra+sweUSgGDS99wyFfsfyWun3OK5zxy
-         bVSA==
+        bh=CwcHrV5a02s5JB75+HpDxEu4ezBqVrMI6kJUFyMDg/I=;
+        b=bV/PAEtQn1KGw/Zi6jTCgqYa5nRbO5IPf2+hM5MLwAk5Uk0e9xROyciD1SeTbKeIvo
+         MlkLJZ7Bn9rWTiPWyy1rXLIb0NPN7l/0SUcmQ1gPA0Px803dGmfYFSsMi0zSxvCDYIEp
+         xAfx/2AAA1BZBrfbtUqRJvxUVRAewGUUTagEKg9AHpIaQNB2T1bQ98IqMD5mo2GoWKwK
+         +FQom24Ip58JAYs2KpB60hA0ik3xFPiniQmemJhG9dzrzLF06IvbDUiE2YiA/R8WS7FC
+         c4jhRSJ9/XJbJhFhHSbrl0/vOmemeevZCwfrLAtLWu/L6nb0K50kiGKmyGQmjBDX2sbg
+         iSvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678626817;
+        d=1e100.net; s=20210112; t=1678626812;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=pr1jUKnL41ZyOFBU50NsUPyS/zukAR1uIPxn6pkxwwo=;
-        b=bKc7Z3NUX+8VUDs9M/mBcIW6/W7vNkPWTBmTntpWQl4le090J63g3i7J4zLKY7cJkW
-         QHa1GAeB4bYaUdkebIrQtzzwPjqpqeJkDyGTMZwm7Pr8kMyqAIzsaSfuH54sEAemsEGr
-         B98FbgIk2Fpy27amH5pAh/jnGqexE9Y0IxFUHB141YVJIZZQUepeTNUtGeOE2UUQIh1T
-         CLpCoFe4P35I1WqnyBYsynuuJ54AM6xUEPScKErmE73jRFqcz1Oa8qEoLHl9eI/3h2i4
-         tltANdxReIc3JwduNKMZOTlPQMfr34GvKangfLlnWPC3JD1LGG7xUEtXi1RB+Z8PzUZ7
-         rrew==
-X-Gm-Message-State: AO0yUKWmoucEx2oCk8SROZ8qCYLsEgYOnpoWlOw1R4K0LlYiEzD5NAT4
-	MjsMlULlr5dJ9pRMZP0C6PvSbg==
-X-Google-Smtp-Source: AK7set/eBPmURAU386Ic8efAZKpGibHAFxF6646hcUlmwtY5zSg8zn253Ru88JXsM5LrkN6l2cpu5w==
-X-Received: by 2002:a17:906:6988:b0:923:c55d:efd2 with SMTP id i8-20020a170906698800b00923c55defd2mr3351678ejr.68.1678626817635;
-        Sun, 12 Mar 2023 06:13:37 -0700 (PDT)
+        bh=CwcHrV5a02s5JB75+HpDxEu4ezBqVrMI6kJUFyMDg/I=;
+        b=z5464wq8NePMoT6PrDVs7HcIlVWzqgSTmqLS0sXnYuJipmRPXB9N7ol/Dv9I1TjEyB
+         gYcywHk+0r+Ht1F4yM+NXs9IenlBAv4NQ6pcFOvo8B0pk4dgLndLmhlpq3bPDmMI0ECH
+         xJVUuPOh8KVOf3iLiGQzLfj8BWaI47GUDXUh2B02aa/+rBSLvLB711rNUJko9NbQ5/J3
+         R5i64Y7Ez4zJQALomqc+/u4myUXkC/gn+XGBIWNo5ctHves0sC/IMHzKui2mZS13z2dx
+         fk2ipZWROLEXuIJxzoafmXkzInCK5X4UCVjGhkN24Ev9K7o6exTokDMEQ7TJ2G0NF34h
+         WqaQ==
+X-Gm-Message-State: AO0yUKWBHixVMmbQvowlkK8j7sxHE11GXieOlDfN9hgfTHBJcvT2HPGY
+	XLtB7s8macKqsUU4Xg67d1gAcg==
+X-Google-Smtp-Source: AK7set9S2U41oyugwgVu8YTpoQzzlycJss1HXlDHk5bJDxiw4kxZXbt8ZreuYC74Gl5l/Mtsa+88Og==
+X-Received: by 2002:a05:6402:1005:b0:4f9:f45e:c8b3 with SMTP id c5-20020a056402100500b004f9f45ec8b3mr5024696edu.27.1678626811779;
+        Sun, 12 Mar 2023 06:13:31 -0700 (PDT)
 Received: from krzk-bin.. ([2a02:810d:15c0:828:d9f6:3e61:beeb:295a])
-        by smtp.gmail.com with ESMTPSA id r19-20020a1709067fd300b008eddbd46d7esm2213279ejs.31.2023.03.12.06.13.35
+        by smtp.gmail.com with ESMTPSA id r19-20020a1709067fd300b008eddbd46d7esm2213279ejs.31.2023.03.12.06.13.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 12 Mar 2023 06:13:37 -0700 (PDT)
+        Sun, 12 Mar 2023 06:13:31 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Joe Tessler <jrt@google.com>,
 	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
@@ -107,9 +122,9 @@ To: Joe Tessler <jrt@google.com>,
 	linux-sunxi@lists.linux.dev,
 	linux-rockchip@lists.infradead.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 07/28] media: platform: allegro-dvt: drop of_match_ptr for ID table
-Date: Sun, 12 Mar 2023 14:12:57 +0100
-Message-Id: <20230312131318.351173-7-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 04/28] media: rc: gpio-ir-recv: drop of_match_ptr for ID table
+Date: Sun, 12 Mar 2023 14:12:54 +0100
+Message-Id: <20230312131318.351173-4-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
 References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
@@ -117,8 +132,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230312_061339_113321_BB6A9140 
-X-CRM114-Status: GOOD (  14.95  )
+X-CRM114-CacheID: sfid-20230312_131336_029457_DB028771 
+X-CRM114-Status: GOOD (  14.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,26 +153,26 @@ used and the of_match_ptr does not have any sense (this also allows ACPI
 matching via PRP0001, even though it might not be relevant here).  This
 also fixes !CONFIG_OF error:
 
-  drivers/media/platform/allegro-dvt/allegro-core.c:3995:34: error: ‘allegro_dt_ids’ defined but not used [-Werror=unused-const-variable=]
+  drivers/media/rc/gpio-ir-recv.c:197:34: error: ‘gpio_ir_recv_of_match’ defined but not used [-Werror=unused-const-variable=]
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- drivers/media/platform/allegro-dvt/allegro-core.c | 2 +-
+ drivers/media/rc/gpio-ir-recv.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/allegro-dvt/allegro-core.c b/drivers/media/platform/allegro-dvt/allegro-core.c
-index 2423714afcb9..7fc197a02cc2 100644
---- a/drivers/media/platform/allegro-dvt/allegro-core.c
-+++ b/drivers/media/platform/allegro-dvt/allegro-core.c
-@@ -4009,7 +4009,7 @@ static struct platform_driver allegro_driver = {
- 	.remove = allegro_remove,
+diff --git a/drivers/media/rc/gpio-ir-recv.c b/drivers/media/rc/gpio-ir-recv.c
+index 8dbe780dae4e..ae1199cc73fd 100644
+--- a/drivers/media/rc/gpio-ir-recv.c
++++ b/drivers/media/rc/gpio-ir-recv.c
+@@ -205,7 +205,7 @@ static struct platform_driver gpio_ir_recv_driver = {
+ 	.remove = gpio_ir_recv_remove,
  	.driver = {
- 		.name = "allegro",
--		.of_match_table = of_match_ptr(allegro_dt_ids),
-+		.of_match_table = allegro_dt_ids,
- 		.pm = &allegro_pm_ops,
- 	},
- };
+ 		.name   = KBUILD_MODNAME,
+-		.of_match_table = of_match_ptr(gpio_ir_recv_of_match),
++		.of_match_table = gpio_ir_recv_of_match,
+ #ifdef CONFIG_PM
+ 		.pm	= &gpio_ir_recv_pm_ops,
+ #endif
 -- 
 2.34.1
 
