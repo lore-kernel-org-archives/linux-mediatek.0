@@ -4,136 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB780C6FD19
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 13:52:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AB45C6FD19
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 14:27:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bfEjbOEBC8Ag5735P/rqZiEX/nqcdTDOC9PYAPQl5HY=; b=hIs7JVbjPqhmbg19L4wryXPKkR
-	lP7rjvjdEPvnq6AJnDf1ROfDhNyNwH+2wlFpQScoh6Xef6Ad35L2KWXK7MIpFkTIxMOAkVsUqhEpk
-	kJMg25khw3CsNcnfxmEi+Na58hTTI5b0nwXMZrc/KG/ey/EIOcIvzrSzcdY5gKyvarUYQgRmeD0mh
-	Khy6TrkzUY2eoW2yh3jsqLNptJR63O/x0pMSmOSjrxsP3Z6w1ZWIsy8oyrzAjz11sPVo2j3h4n9W8
-	DG+iIuhxHFCJLQtJPFD3WpXXU/B/6w2ULdcukYzCMqTsdc31hj91qiIRK+ZaBqyhJJ/8loJS5N9kK
-	E6hGoxBQ==;
+	bh=4BJ7Bv/QE8HAhtbKaGmWjS43IA1cgQtQK26oAc9lJSU=; b=Lw27c5Cbv9qtmNqThZdgEsMsUm
+	gYEQBAzCRSx8gcRxVeVWG6JuIrwLKWhZZm5rf3OQnHzaP8DM7g/9+NuEwN4uGJMmVp8+Z8abT2Aoo
+	lVj1E0HdW1le+jt3+yoRZTKtEfgDu2MXhxap5ouNw8ekWWeJOsDeoeEro+vFV0NaIHIW91ANd3uj3
+	20zrY2psC+Srmw/cn+q9X+gd18L3LZX50h4G4RMp39C1vHMMjAg1qpvYWHiEk+47xrESpHT9rXmQo
+	+gmY+KdsUa7qKruqZBFg3PY+yTN5PBjmrwywJihvEK605HvYz/QxLPUPa/Qfh2dM6l7r/K1A9za6P
+	4SirmxHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbM7w-002Zvv-6B; Sun, 12 Mar 2023 13:52:44 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pbMf8-002fma-GY; Sun, 12 Mar 2023 14:27:02 +0000
+Received: from mout.gmx.net ([212.227.17.20])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbM1i-002Wg6-Tb
-	for linux-mediatek@bombadil.infradead.org; Sun, 12 Mar 2023 13:46:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=bfEjbOEBC8Ag5735P/rqZiEX/nqcdTDOC9PYAPQl5HY=; b=pMc3Q2lOfs78TqfQ+XflGqg0Fv
-	tK6Ljp1Isua5ZAXUN5/tXRzoo+Z3LMhgTTqqJQXFbsUPQgtlS0cRy5evue8AEziRNc6CL+uFxksyE
-	A5RruchViyh/QxW52KgIganeP8L8Ev84WD+IPdH9gcmwqCA+9LgmvDGoSPVbrGVYYXzKpJeP0Pxj5
-	AroHaQFJiNypuM4dmDhBtLu2Z1M1L5FOCUc7VejoKBDgDBJd5Pbf1REerBQflqOUUey1KyE8GXBAJ
-	eIKsIwSHg+IgjeTbzpEVdDXOJfxNkewRCBQ/DUE1BWH2W8tJpleldxz31hh/e2FCGPGcJXjo8iS1g
-	3pRfwu1Q==;
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pbLWU-0011Iq-2D
-	for linux-mediatek@lists.infradead.org;
-	Sun, 12 Mar 2023 13:14:07 +0000
-Received: by mail-ed1-x536.google.com with SMTP id er25so10371230edb.5
-        for <linux-mediatek@lists.infradead.org>; Sun, 12 Mar 2023 06:14:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678626841;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=bfEjbOEBC8Ag5735P/rqZiEX/nqcdTDOC9PYAPQl5HY=;
-        b=uissALC9Qm6G3yTfi85yX5AZcJ4Dc0T+ZSTTKU0wpK9U2V+VDFH343iZjKC5N4s8V8
-         Qp9COEJvlzCvWlb23mcYWEdcMc9pbjSuLJ33+tz+X+jWMZtcLKOcvkPj2fJY7WdI8v6P
-         qeowegW6LOAq8GiD1h+HIkQ+puCRyyQWHwdYCcrlPZ6Vh93gluUCiol9RzZfw0oufC3G
-         DKN/V59iphzKV7hQP5j1PbiPzW0aKpCKWusOS+ijCjSjX2qXzgzuwPhhxcj5tD8u+jqy
-         gwla21lfQPZJNhCA9eIisu6WuJeZDVUE+4YaZsUYsp+KLTLS/bKPYcuYJMrZOeTcl/iv
-         stDg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678626841;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=bfEjbOEBC8Ag5735P/rqZiEX/nqcdTDOC9PYAPQl5HY=;
-        b=7H5gCrXczuU66BZNZ6bY2AT7tXlKHn0nxIAo5pezgZgMZc6hY6iqVABroAtCbN9FjZ
-         FYDIw8DrynOXeOszukGu8E62GLY5FMSskywXLCXpwjhZgGi7lY2YkFfOZc/TT3Mblm+i
-         KiWHKq1Dg7V/I1N83XWOnPuq0OUX6BHjrFePhiZ4X5JCLapAgJ4V1qzBL3DuYWGms92D
-         giX8ZLzGoHFaad2yqGfNL6k8mHh6cdLUIuCelkshDszZ+h/Cx2vZnH/iXRBtYMi6Y6Ek
-         4/O6BRAt/igr5MDBGEWGkhEukWiD4wG6Rm4TgYs353JGSxVD8nyRlss/TI4MQ7VunPAV
-         PucA==
-X-Gm-Message-State: AO0yUKU3/KgsOIilDyD4kHCXslAFnO7RB7OH5mYNxZMFfXeiTBB18h/t
-	zmiZM59UejiJhrHq22jDYTjGaA==
-X-Google-Smtp-Source: AK7set/qUd+AuzKeWJtvFJW5YvrmY0+P99WMaVJpgFheOKbbtpLVYddA6FcuMGTWaLuCaaa5fxGzrQ==
-X-Received: by 2002:a17:907:7e87:b0:8b2:e81:df2b with SMTP id qb7-20020a1709077e8700b008b20e81df2bmr38467057ejc.44.1678626841335;
-        Sun, 12 Mar 2023 06:14:01 -0700 (PDT)
-Received: from krzk-bin.. ([2a02:810d:15c0:828:d9f6:3e61:beeb:295a])
-        by smtp.gmail.com with ESMTPSA id r19-20020a1709067fd300b008eddbd46d7esm2213279ejs.31.2023.03.12.06.13.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 12 Mar 2023 06:14:01 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Joe Tessler <jrt@google.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Michael Tretter <m.tretter@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Jacopo Mondi <jacopo+renesas@jmondi.org>,
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
-	=?UTF-8?q?Niklas=20S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
-	Rui Miguel Silva <rmfrfs@gmail.com>,
-	Wenyou Yang <wenyou.yang@microchip.com>,
-	Bin Liu <bin.liu@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
-	Houlong Wei <houlong.wei@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
-	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Yong Deng <yong.deng@magewell.com>,
-	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	"Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Sean Young <sean@mess.org>,
-	linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-amlogic@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-sunxi@lists.linux.dev,
-	linux-rockchip@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 19/28] media: platform: mdp: mark OF related data as maybe unused
-Date: Sun, 12 Mar 2023 14:13:09 +0100
-Message-Id: <20230312131318.351173-19-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
-References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
+	id 1pbMf4-002flu-Ih; Sun, 12 Mar 2023 14:27:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1678631183; i=frank-w@public-files.de;
+	bh=8gKmDff4fx4P4y7WV2067v+MtnzHHo6PoNVb2ypzQEc=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=bz5/DNvoIUvR6IGhiyPE5jf27AC799hRswTuQ1aX1LaEJna929zlhnh56cHb/wuu9
+	 uwxmiI3r5YWe1Spyk5GaLeJLp2AXeRmGVee7YICvXlJIYD72dOe5CsxjvClnvXRnt+
+	 iQn2ir5fPbWQ9uHCDUurisFv0zOn0Io5q1Xlp+VrGdhaR3ioqHvc1JBRQzFCEs7a/K
+	 22W0zrVN0X+6+WLPP6auapLT/Yv5fjg9hf4ibwagjMHjJY96WxtM6eS8AhLkSe6fWh
+	 tQTfG7oCz1bCryl+pon/whdu9SY6FEZygNbyiaR643TTMh5Lh1kLHOr7pnYhWy+5iq
+	 2jcLoFm5yKJaQ==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.155.253] ([217.61.155.253]) by web-mail.gmx.net
+ (3c-app-gmx-bap51.server.lan [172.19.172.121]) (via HTTP); Sun, 12 Mar 2023
+ 15:26:23 +0100
 MIME-Version: 1.0
+Message-ID: <trinity-27a405f3-fece-4500-82ef-4082af428a7a-1678631183133@3c-app-gmx-bap51>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>, Daniel Golle
+ <daniel@makrotopia.org>, Vladimir Oltean <vladimir.oltean@nxp.com>,
+ netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Heiner
+ Kallweit <hkallweit1@gmail.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>, John Crispin <john@phrozen.org>, Felix
+ Fietkau <nbd@nbd.name>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, DENG Qingfang <dqfext@gmail.com>, Landen Chao
+ <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Paolo Abeni
+ <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>, Eric Dumazet
+ <edumazet@google.com>, "David S. Miller" <davem@davemloft.net>, Vladimir
+ Oltean <olteanv@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Andrew
+ Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
+ =?UTF-8?Q?Bj=C3=B8rn_Mork?= <bjorn@mork.no>, Alexander Couzens
+ <lynxis@fe80.eu>
+Subject: Aw: Re: Re: [PATCH net-next v12 08/18] net: ethernet: mtk_eth_soc:
+ fix 1000Base-X and 2500Base-X modes
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Date: Sun, 12 Mar 2023 15:26:23 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <trinity-8577978d-1c11-4f6d-ae11-aef37e8b78b0-1678624836722@3c-app-gmx-bap51>
+References: <ZAiJqvzcUob2Aafq@shell.armlinux.org.uk>
+ <20230308134642.cdxqw4lxtlgfsl4g@skbuf>
+ <ZAiXvNT8EzHTmFPh@shell.armlinux.org.uk> <ZAiciK5fElvLXYQ9@makrotopia.org>
+ <ZAijM91F18lWC80+@shell.armlinux.org.uk> <ZAik+I1Ei+grJdUQ@makrotopia.org>
+ <ZAioqp21521NsttV@shell.armlinux.org.uk>
+ <trinity-79e9f0b8-a267-4bf9-a3d4-1ec691eb5238-1678536337569@3c-app-gmx-bs24>
+ <ZAzd1A0SAKZK0hF5@shell.armlinux.org.uk>
+ <4B891976-C29E-4D98-B604-3AC4507D3661@public-files.de>
+ <ZAzk71mTxgV/pRxC@shell.armlinux.org.uk>
+ <trinity-8577978d-1c11-4f6d-ae11-aef37e8b78b0-1678624836722@3c-app-gmx-bap51>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:8Dr+JbZAG9ReX8C7mk7Vo758aZ6vkIpxnCQlU/ppmzdxB2U5/9GlsHVagRkJvrGo9uIgc
+ 9kl4wlKNJpMQKnmQaEtUkHWqAceUpdRm+N0KFLg/L1d5pm7cpM+kFeufcr3Wn43GTR6trmyxY2VX
+ 7ZUwB8/Z/9xqErQbbFfJDUTMg15NQ7FwVrYMLLzqA5HubC++Eamx4f1Fnxeln0kXORT6lHCzquKk
+ paMHjUYsZbxeTFeodfKTXw2IGYQAjwXGXvKMZJ+wnIZ9Yvk8NmOfH3JlQpCqt/e2B9pf/Xs0+8k/
+ QQ=
+UI-OutboundReport: notjunk:1;M01:P0:a1KgfutJ3bA=;+wMz+CmGCfod2DAgCSEq7Q8DBpJ
+ jAR0XkWMzx9WEzb959bifW4ZCFZ8mP0ktv0wY6q8PiKxIrVMTXgkhuHrtiZFiUeMrMVnjcqhe
+ +05OZs/8ZxrckwscPZqYpBWPgM6wLDd624Z8K8eD2JoHP5RWavscb6m4ke0wVPsXfA5ZH8dju
+ KkQVR4zeGJbnbKRbbdpWx7NC8/fytZ95CSGkRAKz0AQU3LwRI7Alwy35FJGxm639DzvkN1hxX
+ Qq2OeR3gcp9BwLVcY/SCMCIsznnKu4hw5ACWQ/obVHSESiZGkNCkEbW4DnOvF1jt9fZ4EDd0z
+ AN1/0OKMOGpqIyxXBfcjofUn7COi96P7uFprUg/uK8vFDNnuTkeXdDvhdfWWT3cmdeL9uIFPW
+ wBmCMAYzke6Nyybwye5Jf9265wVS2N+B0SgNZt5tiF4HiQ2JybySjXBReNCTaW1zg971znHHf
+ I8BgG/QhzuMKvwFTs+RYuJwAk0mTy41VFzfMuyZljbM44V/RsoHtH8keUbPm3O1llsigEQCFp
+ Jp5cv3mA7q0DZ6zCTUj9IQuWnGc4Sx7302wY144wpT30Wcg+AK5DihZ+Q9Z2wu7nw4tn1yi6Q
+ MQEUA6nrNYjLGfvanWsyoRjOLC8dpl8Lrs8soj0905NgQKfTbfSBHIo78Pw/+IXoXDMYWgwHX
+ UgF8nX8rDb4g5u5QRwlRgTN8tBVCEb4vl0BIP1WyautDSWneM9hjTRh6oreN4LzyhT603qals
+ FfGLNGhjFJ3lSKKohz7I87zaP9w2OMcdHbOlBT4jsxlX31v1JzGzpAHUW55cQQdSzQzVBp6Y6
+ FcXy5ihg4kQplw7SpPz+C2Fg==
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230312_131403_155200_EA0680F1 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20230312_072658_945349_5E632077 
+X-CRM114-Status: UNSURE (   7.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,30 +114,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The driver can be compile tested with !CONFIG_OF making certain data
-unused:
+and i can confirm that disabling autoneg on userspace brings up link on th=
+e 2.5g rj45 sfp
 
-  drivers/media/platform/mediatek/mdp/mtk_mdp_core.c:31:34: error: ‘mtk_mdp_comp_dt_ids’ defined but not used [-Werror=unused-const-variable=]
+root@bpi-r3:~# ip link set eth1 up
+[   73.433869] mtk_soc_eth 15100000.ethernet eth1: configuring for inband/=
+2500base-x link mode
+root@bpi-r3:~# ip link show eth1
+3: eth1: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc fq_codel state=
+ DOWN mode DEFAULT group default qlen 1000
+    link/ether 92:2f:d3:16:6f:94 brd ff:ff:ff:ff:ff:ff
+root@bpi-r3:~# ethtool -s eth1 autoneg off
+root@bpi-r3:~# [  147.190136] mtk_soc_eth 15100000.ethernet eth1: Link is =
+Up - 2.5Gbps/Full - flow control off
+[  147.198600] IPv6: ADDRCONF(NETDEV_CHANGE): eth1: link becomes ready
+root@bpi-r3:~#
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- drivers/media/platform/mediatek/mdp/mtk_mdp_core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+wonder which flags this changes compared to the original state...these i h=
+ave to set in code when the sfp is recognized.
 
-diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-index d83c4964eaf9..37f2dd08ecec 100644
---- a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-+++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-@@ -28,7 +28,7 @@ EXPORT_SYMBOL(mtk_mdp_dbg_level);
- 
- module_param(mtk_mdp_dbg_level, int, 0644);
- 
--static const struct of_device_id mtk_mdp_comp_dt_ids[] = {
-+static const struct of_device_id mtk_mdp_comp_dt_ids[] __maybe_unused = {
- 	{
- 		.compatible = "mediatek,mt8173-mdp-rdma",
- 		.data = (void *)MTK_MDP_RDMA
--- 
-2.34.1
+setting these flags in the phylink_parse_mode (or skipping set AN-flags) s=
+eem to break it completely
 
+regards Frank
 
