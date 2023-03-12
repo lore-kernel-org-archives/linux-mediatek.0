@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20B93C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 13:19:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B1F0C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 13:19:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JSjnY2UnQpgl55C0x0EbScbpZu8mF5QaFScRi5nrBhc=; b=1ZbMfsPzS5aQ/F1AUHBlGesGdk
-	4kRrZuPXEUxqmtM5L3BpfxQMKKKZM7TN6nh0XdPISS5mEQI8GjNT3Imp16BDBBcw5ykdrlNR0g/zi
-	5P256FFhdb+EJNyh0X4esEjRtQtqcXCG0vwtRopdRZq5BU9eCGgZ5jMoxP0d8Us88dqZaFMzPIMUf
-	E/w3rMAYN2H3wMGEknnPoBrKKBV08MhVqa/5qs7j1K2wNCjyj4UvpNG7wdnYZFa6hMafviF/ATVKS
-	k88Z31VCYRjxPokBXop0pUKZbU6vbi1qX8xSs5DdX1D6Bep2QwdxLIIqh7t2bTMRW3yTI5r7AzdGG
-	NUsCSnRg==;
+	bh=FklNTrfw75FQnVJC7no5/FQCPZiirAS85g1dWyaYnQ0=; b=cHxK6wk0mPbNizPJJil5nzXfL1
+	oPdCKkldw8qwfNYomLfkMZkfJpxpoBqzFGW1+Dn0uXfSrQan73leS3tlkz6qzV3qKvuEE0YnIjZnX
+	14Zs2IY0XINz9TwUp279EFYA3jWwIq40VaFFNyO7/eIH9IWU/Kbgs7cjEUWgVuXubFHKwxkwumV4B
+	esItRG2IYmKe58y+bF/VEJcytboWewCmpZd9Ev66a/EIPDVyBegU7ocfspVm1V74zMfTwRmzppndS
+	ZG34ppkcGMknAVpEP5olqu5/pUI666RqCPaCPuIjDLxIDtKlBCXAgwS3/9eelmkS3Oj2WfX3gVivx
+	fToPBUrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbLbZ-002LSY-IH; Sun, 12 Mar 2023 13:19:17 +0000
+	id 1pbLbd-002LUU-TL; Sun, 12 Mar 2023 13:19:21 +0000
 Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbLWF-002IMT-VN
-	for linux-mediatek@lists.infradead.org; Sun, 12 Mar 2023 13:13:49 +0000
-Received: by mail-ed1-x534.google.com with SMTP id r15so11314656edq.11
-        for <linux-mediatek@lists.infradead.org>; Sun, 12 Mar 2023 06:13:47 -0700 (PDT)
+	id 1pbLWH-002IOO-Tv
+	for linux-mediatek@lists.infradead.org; Sun, 12 Mar 2023 13:13:51 +0000
+Received: by mail-ed1-x534.google.com with SMTP id y4so9043684edo.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 12 Mar 2023 06:13:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678626827;
+        d=linaro.org; s=google; t=1678626829;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=JSjnY2UnQpgl55C0x0EbScbpZu8mF5QaFScRi5nrBhc=;
-        b=Dc26ZIuGptSW54drxYTvMfBZdnM7T2sqH0Ibrn8Isnx72gXt6vIiQrkYJ/ZXRTKeJu
-         wXhScqvsjvycZ/sKKYPGCAOgFQPC157JwyaE2cQ5Co/gRVglSKhEm/qSXfGf8d6yTlWu
-         NQEJdDvJriyTDULJvI7FxJ1RcMzG6pc3xa2jz7zclJQIsfcQW/69r3MrW5frrZZEiMUs
-         8GlhS8zDtnKywTPP15jmvqXI2iI0UA8V27Mp8bX/cYx8afzVMoEJ++NwRakEsYUy8UnR
-         X9/AcWhpkrweQyKVI5gMG7fObgCTsIyIHVoFEj8R4G5wb79/ddG9Kmwm4kVDZBQihQMt
-         3fnw==
+        bh=FklNTrfw75FQnVJC7no5/FQCPZiirAS85g1dWyaYnQ0=;
+        b=YAxPlJhF1+DE9jUIWYyITWyk7/AONuibeqeBOgc+dWF5fRBbLmZqbk1IYqYlHABI85
+         gz1wXPUZjU5FC3mPpXfAfbwnto9A2C8UR5j79ptmQvXc8NIm93NUj7vnZscY32eF5vOQ
+         MNqXBlnv4ABmODy3pYii1yEyd13GeBgb4NroSTWOAXhnpEoT/yi4gqdHK3skNRal/Ae+
+         3cMpgvlN2t9T17SYFpZKlQ7VLMYX986I32TaxVNtQfKWUgod+jAHKsvNHdpkbRKt4aYk
+         B2uanB4ZtOcer65Igqf0RJ3h8hJb/2Xmwgp0Xi2cgPElJofc8L4SdOxvKNLQznQt+/k0
+         yqZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678626827;
+        d=1e100.net; s=20210112; t=1678626829;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=JSjnY2UnQpgl55C0x0EbScbpZu8mF5QaFScRi5nrBhc=;
-        b=vvhooGb7n0mfAOhbd2nJ8+3zDqBQyKOb0Jy+tcIxjQLjlB/lpEXIOWwlC5I2uvnOhC
-         bICBW7kCCVJWXhaNew7fQEd+mcOw5Im4KcxrTgTEGLNuCEWl/+gsP4xAwptR0/3q/Om/
-         FBlNm/nOhy1BiIYK29CaA3i8Fyl4V9SzR/qHie7kvzc1HnzdEZv6UGiBv/id7AEya7RQ
-         dNACrC0RFTwzohT08V4f8innCeLJbFW/WSjAqDgNLytnW8AeEIfaNe4zmwns9NHtho2u
-         SoceohI2NijzXiDVO0KPf1EbO43Pi0UUNsOU2uW31nJDIPW7HQBMzWs4FSb46FJzA/O3
-         JlmQ==
-X-Gm-Message-State: AO0yUKUBJmxJc1e6FF0yEy/QVY1zjAx1bYVhpyTdDl8QO5n9fQoertOn
-	9/AGUsZ5D0fBhP9Pb77hzRiZoA==
-X-Google-Smtp-Source: AK7set/fcAtAWgh3+TRqI/ZkpAQaBtS1MV/NpNDoPVgH7rYzBAYx5gtRCk/B6oCX3nWaWawSfNsODg==
-X-Received: by 2002:a17:906:db05:b0:889:5686:486a with SMTP id xj5-20020a170906db0500b008895686486amr37991558ejb.30.1678626827320;
-        Sun, 12 Mar 2023 06:13:47 -0700 (PDT)
+        bh=FklNTrfw75FQnVJC7no5/FQCPZiirAS85g1dWyaYnQ0=;
+        b=nMqYQn74cl8cG0zPGrcytQ2oZHrZOFvC+Fc8ui2ua3kb7Pf7ItzFuY5UWIQlaM2YfX
+         z1tUG1/H0MFHdULpXlK8sywrVK8aBiWX1YDVG20zSgm8cn4EzhwOnxuuMQoX4KmlEqMU
+         g0+EOb6iyNCGFDWBRgwKSN5sNfJWMeANdXXTwgNa/nW8r0WjumsEPczrgg/pNtY6wscE
+         uXd3NVEqcOL/BtZndMvIe1JKAEAzrq+7G3e1wKAdxo+Qq6kmydL75JIiji4GHKabpPft
+         BgH80s/Z1ppwDkFPsjc5rDUHXvwQxqUzSvqKTwhCA9xAJGZmhFgsvm7NAWGNV8w9tUn5
+         1hUQ==
+X-Gm-Message-State: AO0yUKWi4iBe67ZiR9fNlTK2VagBGdRLrmMFZBVWvH/vRgok8bAUWx1d
+	HsJU1/Fj8bWirr9kZ5x8Tm/6KA==
+X-Google-Smtp-Source: AK7set+1VMb4vP5AkQiutwwyqAr2RuSDyquikjNxXi+uMI4iRdw2RCO1AJJ8nzH1kwmE3q0OOnHeOw==
+X-Received: by 2002:aa7:dbc8:0:b0:4f9:deb4:b97f with SMTP id v8-20020aa7dbc8000000b004f9deb4b97fmr5865130edt.13.1678626829419;
+        Sun, 12 Mar 2023 06:13:49 -0700 (PDT)
 Received: from krzk-bin.. ([2a02:810d:15c0:828:d9f6:3e61:beeb:295a])
-        by smtp.gmail.com with ESMTPSA id r19-20020a1709067fd300b008eddbd46d7esm2213279ejs.31.2023.03.12.06.13.45
+        by smtp.gmail.com with ESMTPSA id r19-20020a1709067fd300b008eddbd46d7esm2213279ejs.31.2023.03.12.06.13.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 12 Mar 2023 06:13:47 -0700 (PDT)
+        Sun, 12 Mar 2023 06:13:49 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Joe Tessler <jrt@google.com>,
 	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
@@ -107,9 +107,9 @@ To: Joe Tessler <jrt@google.com>,
 	linux-sunxi@lists.linux.dev,
 	linux-rockchip@lists.infradead.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 12/28] media: platform: verisilicon: drop of_match_ptr for ID table
-Date: Sun, 12 Mar 2023 14:13:02 +0100
-Message-Id: <20230312131318.351173-12-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 13/28] media: platform: marvell: drop of_match_ptr for ID table
+Date: Sun, 12 Mar 2023 14:13:03 +0100
+Message-Id: <20230312131318.351173-13-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
 References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
@@ -117,8 +117,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230312_061348_147305_D20E5388 
-X-CRM114-Status: GOOD (  15.06  )
+X-CRM114-CacheID: sfid-20230312_061350_109749_AE2C826D 
+X-CRM114-Status: GOOD (  15.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,25 +138,25 @@ used and the of_match_ptr does not have any sense (this also allows ACPI
 matching via PRP0001, even though it might not be relevant here).  This
 also fixes !CONFIG_OF error:
 
-  drivers/media/platform/verisilicon/hantro_drv.c:622:34: error: ‘of_hantro_match’ defined but not used [-Werror=unused-const-variable=]
+  drivers/media/platform/marvell/mmp-driver.c:364:34: error: ‘mmpcam_of_match’ defined but not used [-Werror=unused-const-variable=]
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- drivers/media/platform/verisilicon/hantro_drv.c | 2 +-
+ drivers/media/platform/marvell/mmp-driver.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index b0aeedae7b65..4041b5b38c4b 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -1135,7 +1135,7 @@ static struct platform_driver hantro_driver = {
- 	.remove = hantro_remove,
+diff --git a/drivers/media/platform/marvell/mmp-driver.c b/drivers/media/platform/marvell/mmp-driver.c
+index ef22bf8f276c..b7747c7bae45 100644
+--- a/drivers/media/platform/marvell/mmp-driver.c
++++ b/drivers/media/platform/marvell/mmp-driver.c
+@@ -372,7 +372,7 @@ static struct platform_driver mmpcam_driver = {
+ 	.remove		= mmpcam_platform_remove,
  	.driver = {
- 		   .name = DRIVER_NAME,
--		   .of_match_table = of_match_ptr(of_hantro_match),
-+		   .of_match_table = of_hantro_match,
- 		   .pm = &hantro_pm_ops,
- 	},
+ 		.name	= "mmp-camera",
+-		.of_match_table = of_match_ptr(mmpcam_of_match),
++		.of_match_table = mmpcam_of_match,
+ 		.pm = &mmpcam_pm_ops,
+ 	}
  };
 -- 
 2.34.1
