@@ -4,96 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E702C6FD19
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 20:23:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DD85C6FD19
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 23:58:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zx5Hx16VtrsWGIQLk9WwOhEjwlykZ68lI6lzjbPZklw=; b=Ddwg59Z0WGYc9ZnW7wpZxZt5FP
-	q9R1P9jEy+vzfsOmoYGHCaXB+DOVPrTRlPH1zJdB7b4Taadp/wJd/7rnp0H5MBF8oTJe0VgG25id4
-	BXvxwFDV4lkrW1EKlY1VivmwHyjUI4Zl6zlC6bgdQPHCda7GVjFRFBRVjNojTE/A9zPGIwhWqee9O
-	gNjhuVPAvklBEbtSXcKAYcAcIFm/Jhh4V2Mw9KEKoWTLPqIq5LwUxXqjeLsa5MJy3OAYESqtiFGyo
-	YOlNInAWoi/U22tfRyTmpFXCavVRz2x688HwK2GDqZ2J7puyf/hwRo3HGHDZMxSHF/xvXSulXyuWA
-	N9PEohVg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0L7vTZLcerwnAyoI0HVYfhsjcRF+aysJp1HB0AOdCV4=; b=RHWgXP5YPhE2+fjF+0c5puXQda
+	LIpmQXm7RovY272IM2ztE+kA0+5UFmt3muNmF9KtZBPsQJhPEHD1hAEnYgkVB04CMp9ty6Ttl0HOZ
+	Rhh46M/tKKwV4owm5Hof4zraTc2611y0HxiqdvCIoU1DW5J2y8u/p8EmEMn5nT8WBuRxckbenhCgg
+	qMgNtVsISiHlUevPE1hYJr6FpCtA0lmJ6uoxQgImypRSPmoQuE/FO+H30lQG2nNe4g14u/rzx06YP
+	RiZoQBRyS7LyKeUXNW/bJpC2CN1C1JOTc917DK/NmkXF4EewzmUhAYQrXShvxq8+DMCrwehq74x6r
+	jKfEOWwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbSDz-003TnR-AB; Sun, 12 Mar 2023 20:23:23 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1pbVaE-003qNL-P0; Sun, 12 Mar 2023 23:58:34 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbSDj-003Tfy-Ud; Sun, 12 Mar 2023 20:23:09 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id fd5so6984684edb.7;
-        Sun, 12 Mar 2023 13:23:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=googlemail.com; s=20210112; t=1678652584;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=zx5Hx16VtrsWGIQLk9WwOhEjwlykZ68lI6lzjbPZklw=;
-        b=Hf8bDIgSRyHgy9bXQ/Gk4nexYiqXGYoCYtQ04Ivh+iCVbpJ2b5wzrRnb++ax5WG5YU
-         l1ECC7hckmqBIWK0FYKledOUlR/8oGb9iU/bprqDFfYvUnH9HXOkXMuEU7AitS1oLCXw
-         myetldVYFfznoSCvDzeKhgZkcDBm8pW0l/vGCJjUPX1DzrdmVRAKk857IvrVjfQ9XSKG
-         2N5oK1VtlQxJyFx4Mf99gdPkQnYe53VpL6QT66oSCLZqVHMC0inMBQbwy20+y8itU9ok
-         BWs74qxV0g+EZr9O9dScl2udx1DcuJJXJz0jv3NNva7rrPcHkok53W0tVeIcIuzzmOKr
-         qkHw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678652584;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=zx5Hx16VtrsWGIQLk9WwOhEjwlykZ68lI6lzjbPZklw=;
-        b=BdVZ8GdX+RxEg+Ea8z5wgtQfsAeHrOJZjbXlMVx8xpj5Nz5kP9uuZjzr1t6VTUnfFb
-         OF7qNJ79ZEtplCS4i3S1XLNN+cjOIa0WIKakYN4OsloRephp2CmFdTW8saWz2YY9M8QP
-         0p/LH/ePZCwvoMUKLgd6Ut5eFBQSAYjFKFNvJgY0mq3OOZmfxKiuxkFI0TjpGNQZERzL
-         VLo00pxelrDRkpxdb2HKe7gbUGXRXbsIEdF+yclmLkzzvuG05CcJlUQ818LuNd9L6aFr
-         +1T6MPup3qlcpTuD/MAtdS6dbH8SGiign8uNwXSAatX1500xkk/O9jCl9/RJZkv148o3
-         k5oA==
-X-Gm-Message-State: AO0yUKXIaM7S6H++QDJqbKLJSWThvlXHVzkiv4OyNS9RQU7Q0qFrpTwE
-	tDYMNBIcBjC4z/UhF2dp3D8M5RVlzuImZ6z6HRY=
-X-Google-Smtp-Source: AK7set9zgGbqFrzGWxNsXVoKpAldwMmxSrIf9cZOIFv0n5RvCM/bJPrPW3NGvz9pmm0rGWW96q1mG4aHSyR0BOq+UH0=
-X-Received: by 2002:a17:906:e58:b0:922:ff34:d814 with SMTP id
- q24-20020a1709060e5800b00922ff34d814mr2005221eji.6.1678652584109; Sun, 12 Mar
- 2023 13:23:04 -0700 (PDT)
+	id 1pbVa3-003qLH-UD; Sun, 12 Mar 2023 23:58:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=0L7vTZLcerwnAyoI0HVYfhsjcRF+aysJp1HB0AOdCV4=; b=RigY3aTC9kT+QiKNzqRX38zVCH
+	H9IyfEUEinWJxoVVOnQL7KViGfh7ztg4ru5NXEGuXPJCagcFhLsCPgYkFt0Kq4kJQ3Kjrxr03MMdr
+	rJAatoXBJw2VG1GfOT1bgchjypQ3DpfV21hmdBXDLsOb6ziWbAAjef7IoVoF2hHdfhII=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1pbVZI-0078fQ-FU; Mon, 13 Mar 2023 00:57:36 +0100
+Date: Mon, 13 Mar 2023 00:57:36 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Klaus Kudielka <klaus.kudielka@gmail.com>
+Cc: Michael Walle <michael@walle.cc>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Bryan Whitehead <bryan.whitehead@microchip.com>,
+	UNGLinuxDriver@microchip.com,
+	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Jose Abreu <joabreu@synopsys.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-aspeed@lists.ozlabs.org,
+	Jesse Brandeburg <jesse.brandeburg@intel.com>
+Subject: Re: [PATCH net-next v2 4/6] net: mdio: scan bus based on bus
+ capabilities for C22 and C45
+Message-ID: <04d0bf49-452c-472c-add4-a0d5bd944476@lunn.ch>
+References: <09d65e1ee0679e1e74b4f3a5a4c55bd48332f043.camel@gmail.com>
+ <70f5bca0-322c-4bae-b880-742e56365abe@lunn.ch>
+ <10da10caea22a8f5da8f1779df3e13b948e8a363.camel@gmail.com>
+ <4abd56aa-5b9f-4e16-b0ca-11989bb8c764@lunn.ch>
+ <bff0e542b8c04980e9e3af1d3e6bf739c87eb514.camel@gmail.com>
+ <a57a216d-ff5a-46e6-9780-e53772dcefc8@lunn.ch>
+ <2f64385a350359c5755eb4d2479e2efef7a96216.camel@gmail.com>
+ <29ee3cc4-a1d6-4a07-8d90-4b2f26059e7d@lunn.ch>
+ <0a1ec04fe494fcd8c68d03e4f544d7162c0e4f39.camel@gmail.com>
+ <024b696003d8403d62c45411c813058684e0418c.camel@gmail.com>
 MIME-Version: 1.0
-References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org> <20230312131318.351173-2-krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230312131318.351173-2-krzysztof.kozlowski@linaro.org>
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Date: Sun, 12 Mar 2023 21:22:53 +0100
-Message-ID: <CAFBinCDTRjqLfJvs=dtQNS0=5mZSDAdR8tQNt_qLt-BH9+P7MA@mail.gmail.com>
-Subject: Re: [PATCH 02/28] media: cec: meson: drop of_match_ptr for ID table
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Joe Tessler <jrt@google.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Michael Tretter <m.tretter@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Jacopo Mondi <jacopo+renesas@jmondi.org>, 
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
-	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
-	=?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>, 
-	Rui Miguel Silva <rmfrfs@gmail.com>, Wenyou Yang <wenyou.yang@microchip.com>, 
-	Bin Liu <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, 
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
-	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, 
-	Sylwester Nawrocki <s.nawrocki@samsung.com>, Patrice Chotard <patrice.chotard@foss.st.com>, 
-	Yong Deng <yong.deng@magewell.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, "Lad, Prabhakar" <prabhakar.csengg@gmail.com>, 
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Sean Young <sean@mess.org>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <024b696003d8403d62c45411c813058684e0418c.camel@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230312_132308_118705_FD078016 
-X-CRM114-Status: UNSURE (   9.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230312_165824_015451_669E1E72 
+X-CRM114-Status: GOOD (  18.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,17 +96,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Mar 12, 2023 at 2:13=E2=80=AFPM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
->
-> The driver can match only via the DT table so the table should be always
-> used and the of_match_ptr does not have any sense (this also allows ACPI
-> matching via PRP0001, even though it might not be relevant here).
->
->   drivers/media/cec/platform/meson/ao-cec.c:711:34: error: =E2=80=98meson=
-_ao_cec_of_match=E2=80=99 defined but not used [-Werror=3Dunused-const-vari=
-able=3D]
->
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+On Sun, Mar 12, 2023 at 04:15:41PM +0100, Klaus Kudielka wrote:
+> On Sun, 2023-03-12 at 10:04 +0100, Klaus Kudielka wrote:
+> > On Sun, 2023-03-12 at 03:53 +0100, Andrew Lunn wrote:
+> > > 
+> > > Correct. But their also should not of been any noticeable slow down,
+> > > because there should not be any additional scanning when everything is
+> > > described in DT. And the move of the MDIO bus registration from probe
+> > > to setup should actually make it faster than before.
+> > > 
+> > 
+> > But then, why *do* I see such a big difference on the Omnia?
+> > 
+> > mdiobus_scan_bus_c45() takes:
+> > ~2.7 seconds without phy_mask patch
+> > ~0.2 seconds with phy_mask patch
+> 
+> Following up myself, the answer is in the call path
+> mv88e6xxx_mdios_register()
+> 	 -> mv88e6xxx_mdio_register()
+> 		-> of_mdiobus_register()
+> 
+> A child node "mdio" would be needed for the scan to be limited by
+> the device tree. And this one is *not* in armada-385-turris-omnia.dts.
+> 
+> My (incorrect) understanding was, the child node "ports" would trigger
+> that behaviour.
+
+Yes, of_mdiobus_register() calls mdiobus_register() if there is no
+MDIO node in DT. And that will result in a full bus scan, limited by
+phy_mask.
+
+And for completeness, there is one additional case. When there is a DT
+description, reg = <> is optional for a PHY. Most cases, it is used,
+but if you have a board designs which can take different pin
+compatible PHYs, the address of the PHY might not be known. After
+probing PHYs which are listed in DT with reg properties, it will scan
+the bus for additional PHYs and assign them to entries which do not
+have reg properties.
+
+	Andrew
 
