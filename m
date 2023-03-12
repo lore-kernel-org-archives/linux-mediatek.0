@@ -4,115 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAE4DC6FA99
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 16:00:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FA69C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 16:18:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jt8vqkt3D7Z2Fi87Nw6x+o+NQgvfy3r/Jc/ROLkIwo0=; b=EIMGdmBa/qVZH9aV84jgYgMpJU
-	D8sbtUefcbm9G5da5pakZ68pEvtLJuN7SunA6+ik/NIWXfMzmCpv91QlW8WE9R5ZTEqyJ504giolQ
-	tDE0RohWAyyICb5NaAtGQfbNkDDIK1UJhmmg9wQsUbANV75+KM6fkdcHgzaPl1TaXQi5y8++e+JNh
-	XgG/+5yr0td7ixYxTKhiqF0kcUBPedbih/qJ9dUZidIF7A8iuXz3KBnBwXy+m7LLtIZmltTadaV18
-	Ye1SAcqwlLSLVDr3VmQLGR/mffaGNRa944hKvZOzajDX/k4Ju5VyPxpB29V0YhKMpikMSx2nw2w33
-	Fu4KvDuQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ihvV19RDIWfHOTugDr0+CppTvHlRBjgnRfxzNyvz9wE=; b=klC8lVabLjd+3M7ZTeuPcNWept
+	LilvPSimnk9a8syqrIWtn1t0hYqgX+6p2FWuZskXrHkuK0EykzWJlRQKExVHJla7njH7ay4RLvoH1
+	eXLrDVaMycNY4YO3qOQNQctFNTnMsZ5cx84LVlrP7ZVXvYFKYE2dIgDoxoWj0jmEtW9jbuxalB3w4
+	FfGh9EybBY/jmn4GCIm+fNBUH2BYB5YTzepUuE3/l+VHpP2nQwOSEcCKk2iEL8SZncqcS3m0EJgnD
+	QssAt2rTNB8npVM6PK6yKNHq9GYLHi7NYgTZvlANPB2iqST5WBrSRCnliDJoW5Y+UwK1wOAtn+I2G
+	cnpVWMdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbO7K-002nxJ-6h; Sun, 12 Mar 2023 16:00:14 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1pbOPD-002rHh-FN; Sun, 12 Mar 2023 16:18:43 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbO76-002nuO-I9; Sun, 12 Mar 2023 16:00:03 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id mg1so1600073pjb.0;
-        Sun, 12 Mar 2023 08:59:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678636798;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=jt8vqkt3D7Z2Fi87Nw6x+o+NQgvfy3r/Jc/ROLkIwo0=;
-        b=OT1U0V/W0xeJaMbLBSuWRgYmAMealeSIYIY4dRhL+0PZuOFEWTryn1oCB+qGbNAGxP
-         OlLXqN3UiPjdH3tocDY3axsrOSNgNutEepV+tPAxLUw7KfwpWsgifYk0sgQkUnVfah2I
-         lR0g9AwnXwtp23piiT4fbrGFLbzBjifw7BE5o/qK/Jgrrzlp8YRc64OozC+w13z6sfRv
-         d3H1HAfYt3aaqWEsnx/0MNSuuSWtcxpk4OxH8NLJr8JBTzxtlePYfpu2XqQw0DFGPIE+
-         Pqmmb4ePhQNM8sbRd/IB4F5FwqfNgKPq4abLYYmM+OarRZP3kkWtBahZUX5OzfK5K7bU
-         cgUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678636798;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=jt8vqkt3D7Z2Fi87Nw6x+o+NQgvfy3r/Jc/ROLkIwo0=;
-        b=Yi6EfPn1yeAg+ZQFY90ntzzz4Dinry5EhIigYi4AEz6D+KfwbDSdcxa4vATlaKYthP
-         iBVtrECOFEYMgwjQeM5cuchvBh6yt+rhcy1hxPrDeQrNlEHspzABAn8yK3w5rNIBoKL/
-         PUBE+5gCPpNS94wOmHUDC7KVmzip8gMjajs2/NtPp5koBtIFUvvM9Ml2LcjXe5R5UB/J
-         60WOzo2wT+AXz7A16HQYQYOtKQAnRSJ9uONiXV+FTdM4TImCDgfXadeRk/Zs+W3JhRDI
-         ruRn0nEO2o1xC87ErRBmcQGVoXwro/8eYT0LeuZRzZ5AtzsrbJElaNJkMlEE8emEmAeS
-         fLjA==
-X-Gm-Message-State: AO0yUKXn9N5i9ne9NZO7SMqJnhr+jQfJ6OcyV8y6DDN+2JAQz1pTpIbg
-	CamOkHUgOX4gEOfc86jgE/YVJsWYTMnMDML22EM=
-X-Google-Smtp-Source: AK7set95icMPGU9E+m9B3yKoSKHdK6jpuMisAiqtJWhJikOIwCJ79Ibv/KkZi7yZNDQm3h1fCQwtSrP0cbfs8rf5MRU=
-X-Received: by 2002:a17:902:fb4e:b0:19f:3a0f:cccf with SMTP id
- lf14-20020a170902fb4e00b0019f3a0fcccfmr951270plb.3.1678636797627; Sun, 12 Mar
- 2023 08:59:57 -0700 (PDT)
+	id 1pbOMC-002paM-Kl
+	for linux-mediatek@lists.infradead.org; Sun, 12 Mar 2023 16:15:40 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pbOLz-0007qV-P1; Sun, 12 Mar 2023 17:15:23 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pbOLz-003f2s-4x; Sun, 12 Mar 2023 17:15:23 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pbOLy-004K9B-98; Sun, 12 Mar 2023 17:15:22 +0100
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-clk@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 19/30] clk: mediatek: Convert to platform remove callback returning void
+Date: Sun, 12 Mar 2023 17:15:01 +0100
+Message-Id: <20230312161512.2715500-20-u.kleine-koenig@pengutronix.de>
+X-Mailer: git-send-email 2.39.1
+In-Reply-To: <20230312161512.2715500-1-u.kleine-koenig@pengutronix.de>
+References: <20230312161512.2715500-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-References: <20230310173217.3429788-1-amit.kumar-mahapatra@amd.com> <20230310173217.3429788-10-amit.kumar-mahapatra@amd.com>
-In-Reply-To: <20230310173217.3429788-10-amit.kumar-mahapatra@amd.com>
-From: Jonas Gorski <jonas.gorski@gmail.com>
-Date: Sun, 12 Mar 2023 16:59:46 +0100
-Message-ID: <CAOiHx==+gX-S43=Fd1jRu=t=Cy8=6dePbGDDmGRUFhq8dVCwGg@mail.gmail.com>
-Subject: Re: [PATCH V6 09/15] spi: Add stacked and parallel memories support
- in SPI core
-To: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
-Cc: broonie@kernel.org, miquel.raynal@bootlin.com, richard@nod.at, 
-	vigneshr@ti.com, jic23@kernel.org, tudor.ambarus@microchip.com, 
-	pratyush@kernel.org, Sanju.Mehta@amd.com, chin-ting_kuo@aspeedtech.com, 
-	clg@kaod.org, kdasu.kdev@gmail.com, f.fainelli@gmail.com, rjui@broadcom.com, 
-	sbranden@broadcom.com, eajames@linux.ibm.com, olteanv@gmail.com, 
-	han.xu@nxp.com, john.garry@huawei.com, shawnguo@kernel.org, 
-	s.hauer@pengutronix.de, narmstrong@baylibre.com, khilman@baylibre.com, 
-	matthias.bgg@gmail.com, haibo.chen@nxp.com, linus.walleij@linaro.org, 
-	daniel@zonque.org, haojian.zhuang@gmail.com, robert.jarzmik@free.fr, 
-	agross@kernel.org, bjorn.andersson@linaro.org, heiko@sntech.de, 
-	krzysztof.kozlowski@linaro.org, andi@etezian.org, mcoquelin.stm32@gmail.com, 
-	alexandre.torgue@foss.st.com, wens@csie.org, jernej.skrabec@gmail.com, 
-	samuel@sholland.org, masahisa.kojima@linaro.org, jaswinder.singh@linaro.org, 
-	rostedt@goodmis.org, mingo@redhat.com, l.stelmach@samsung.com, 
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, 
-	alex.aring@gmail.com, stefan@datenfreihafen.org, kvalo@kernel.org, 
-	james.schulman@cirrus.com, david.rhodes@cirrus.com, 
-	tanureal@opensource.cirrus.com, rf@opensource.cirrus.com, perex@perex.cz, 
-	tiwai@suse.com, npiggin@gmail.com, christophe.leroy@csgroup.eu, 
-	mpe@ellerman.id.au, oss@buserror.net, windhl@126.com, 
-	yangyingliang@huawei.com, william.zhang@broadcom.com, 
-	kursad.oney@broadcom.com, anand.gore@broadcom.com, rafal@milecki.pl, 
-	git@amd.com, linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	joel@jms.id.au, andrew@aj.id.au, radu_nicolae.pirea@upb.ro, 
-	nicolas.ferre@microchip.com, alexandre.belloni@bootlin.com, 
-	claudiu.beznea@microchip.com, bcm-kernel-feedback-list@broadcom.com, 
-	fancer.lancer@gmail.com, kernel@pengutronix.de, festevam@gmail.com, 
-	linux-imx@nxp.com, jbrunet@baylibre.com, martin.blumenstingl@googlemail.com, 
-	avifishman70@gmail.com, tmaimon77@gmail.com, tali.perry1@gmail.com, 
-	venture@google.com, yuenn@google.com, benjaminfair@google.com, 
-	yogeshgaur.83@gmail.com, konrad.dybcio@somainline.org, 
-	alim.akhtar@samsung.com, ldewangan@nvidia.com, thierry.reding@gmail.com, 
-	jonathanh@nvidia.com, michal.simek@amd.com, linux-aspeed@lists.ozlabs.org, 
-	openbmc@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
-	linux-tegra@vger.kernel.org, netdev@vger.kernel.org, 
-	linux-wpan@vger.kernel.org, libertas-dev@lists.infradead.org, 
-	linux-wireless@vger.kernel.org, linux-mtd@lists.infradead.org, 
-	lars@metafoo.de, Michael.Hennerich@analog.com, linux-iio@vger.kernel.org, 
-	michael@walle.cc, palmer@dabbelt.com, linux-riscv@lists.infradead.org, 
-	alsa-devel@alsa-project.org, patches@opensource.cirrus.com, 
-	linuxppc-dev@lists.ozlabs.org, amitrkcian2002@gmail.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=21166; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=KF+g9q1reJzWvdfls8YQVm2+v74wmRfuk2qSt/B8rws=; b=owEBbQGS/pANAwAKAcH8FHityuwJAcsmYgBkDfpgnE5WTo2JCisMSxXG7j3+1kmXNntVdUCGa 5XDf1fISXqJATMEAAEKAB0WIQR+cioWkBis/z50pAvB/BR4rcrsCQUCZA36YAAKCRDB/BR4rcrs CQwkCACMFMdOG/RNM5hmU7yU4BGAeo0YkT1YIkJOfIKLlR6HwBXC22ShIEh63ElG8h/qqfdgTCB oTpIK/GxS5MMXlUb9FaH16mzoNNVU9nmQnasx/SoatovMVM0EjN3AkkhNIv7cCRE9Rfk+e9zw4W xAoy+AUQ/K3GYssGZ8EAqPb+7HYriWhSiuNzzcKqobbLqUHxEyjju4px/PRsANH5HUN6UfGQch/ ozWZQTNuBA8EzApqFlvzxT1fLWUhzVYVFtadg1pr3/emQa2YY3Y1WXKuNNvo9GksGW0cjMkGjeR phuOBEJ+5ckvW9g+x7izXeq4+a4d+Ix0fvIQz6pB27zcgqN9
+X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230312_090000_706504_1AF2DEC5 
-X-CRM114-Status: GOOD (  39.38  )
+X-CRM114-CacheID: sfid-20230312_091537_025682_18D47044 
+X-CRM114-Status: GOOD (  16.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,538 +78,533 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+The .remove() callback for a platform driver returns an int which makes
+many driver authors wrongly assume it's possible to do error handling by
+returning an error code. However the value returned is (mostly) ignored
+and this typically results in resource leaks. To improve here there is a
+quest to make the remove callback return void. In the first step of this
+quest all drivers are converted to .remove_new() which already returns
+void.
 
-On Fri, 10 Mar 2023 at 18:37, Amit Kumar Mahapatra
-<amit.kumar-mahapatra@amd.com> wrote:
->
-> For supporting multiple CS the SPI device need to be aware of all the CS
-> values. So, the "chip_select" member in the spi_device structure is now an
-> array that holds all the CS values.
->
-> spi_device structure now has a "cs_index_mask" member. This acts as an
-> index to the chip_select array. If nth bit of spi->cs_index_mask is set
-> then the driver would assert spi->chip_select[n].
->
-> In parallel mode all the chip selects are asserted/de-asserted
-> simultaneously and each byte of data is stored in both devices, the even
-> bits in one, the odd bits in the other. The split is automatically handled
-> by the GQSPI controller. The GQSPI controller supports a maximum of two
-> flashes connected in parallel mode. A "multi-cs-cap" flag is added in the
-> spi controntroller data, through ctlr->multi-cs-cap the spi core will make
-> sure that the controller is capable of handling multiple chip selects at
-> once.
->
-> For supporting multiple CS via GPIO the cs_gpiod member of the spi_device
-> structure is now an array that holds the gpio descriptor for each
-> chipselect.
->
-> Multi CS support using GPIO is not tested due to unavailability of
-> necessary hardware setup.
+Trivially convert this driver from always returning zero in the remove
+callback to the void returning variant.
 
-Can you pinmux your SPI controller's (cs) pins as GPIO? If so, you
-should be able use that for testing.
+Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+---
+ drivers/clk/mediatek/clk-mt6795-apmixedsys.c | 6 ++----
+ drivers/clk/mediatek/clk-mt6795-infracfg.c   | 6 ++----
+ drivers/clk/mediatek/clk-mt6795-mm.c         | 6 ++----
+ drivers/clk/mediatek/clk-mt6795-pericfg.c    | 6 ++----
+ drivers/clk/mediatek/clk-mt8173-apmixedsys.c | 6 ++----
+ drivers/clk/mediatek/clk-mt8173-infracfg.c   | 6 ++----
+ drivers/clk/mediatek/clk-mt8173-mm.c         | 6 ++----
+ drivers/clk/mediatek/clk-mt8186-apmixedsys.c | 6 ++----
+ drivers/clk/mediatek/clk-mt8186-mcu.c        | 6 ++----
+ drivers/clk/mediatek/clk-mt8186-mm.c         | 6 ++----
+ drivers/clk/mediatek/clk-mt8195-apmixedsys.c | 6 ++----
+ drivers/clk/mediatek/clk-mt8195-apusys_pll.c | 6 ++----
+ drivers/clk/mediatek/clk-mt8195-topckgen.c   | 6 ++----
+ drivers/clk/mediatek/clk-mt8195-vdo0.c       | 6 ++----
+ drivers/clk/mediatek/clk-mt8195-vdo1.c       | 6 ++----
+ drivers/clk/mediatek/clk-mt8195-vpp0.c       | 6 ++----
+ drivers/clk/mediatek/clk-mt8195-vpp1.c       | 6 ++----
+ 17 files changed, 34 insertions(+), 68 deletions(-)
 
->
-> Signed-off-by: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
-> ---
->  drivers/spi/spi.c       | 225 +++++++++++++++++++++++++++-------------
->  include/linux/spi/spi.h |  34 ++++--
->  2 files changed, 182 insertions(+), 77 deletions(-)
->
-> diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-> index c725b4bab7af..742bd688381c 100644
-> --- a/drivers/spi/spi.c
-> +++ b/drivers/spi/spi.c
-> @@ -612,10 +612,17 @@ static int spi_dev_check(struct device *dev, void *data)
->  {
->         struct spi_device *spi = to_spi_device(dev);
->         struct spi_device *new_spi = data;
-> -
-> -       if (spi->controller == new_spi->controller &&
-> -           spi_get_chipselect(spi, 0) == spi_get_chipselect(new_spi, 0))
-> -               return -EBUSY;
-> +       int idx, nw_idx;
-> +
-> +       if (spi->controller == new_spi->controller) {
-> +               for (idx = 0; idx < SPI_CS_CNT_MAX; idx++) {
-> +                       for (nw_idx = 0; nw_idx < SPI_CS_CNT_MAX; nw_idx++) {
-> +                               if (spi_get_chipselect(spi, idx) ==
-> +                                   spi_get_chipselect(new_spi, nw_idx))
-> +                                       return -EBUSY;
-> +                       }
-> +               }
+diff --git a/drivers/clk/mediatek/clk-mt6795-apmixedsys.c b/drivers/clk/mediatek/clk-mt6795-apmixedsys.c
+index 59761c72d3bc..d71784f82d85 100644
+--- a/drivers/clk/mediatek/clk-mt6795-apmixedsys.c
++++ b/drivers/clk/mediatek/clk-mt6795-apmixedsys.c
+@@ -130,7 +130,7 @@ static int clk_mt6795_apmixed_probe(struct platform_device *pdev)
+ 	return ret;
+ }
+ 
+-static int clk_mt6795_apmixed_remove(struct platform_device *pdev)
++static void clk_mt6795_apmixed_remove(struct platform_device *pdev)
+ {
+ 	struct device_node *node = pdev->dev.of_node;
+ 	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+@@ -139,13 +139,11 @@ static int clk_mt6795_apmixed_remove(struct platform_device *pdev)
+ 	mtk_clk_unregister_ref2usb_tx(clk_data->hws[CLK_APMIXED_REF2USB_TX]);
+ 	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
+ 	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+ }
+ 
+ static struct platform_driver clk_mt6795_apmixed_drv = {
+ 	.probe = clk_mt6795_apmixed_probe,
+-	.remove = clk_mt6795_apmixed_remove,
++	.remove_new = clk_mt6795_apmixed_remove,
+ 	.driver = {
+ 		.name = "clk-mt6795-apmixed",
+ 		.of_match_table = of_match_clk_mt6795_apmixed,
+diff --git a/drivers/clk/mediatek/clk-mt6795-infracfg.c b/drivers/clk/mediatek/clk-mt6795-infracfg.c
+index 23d9fc057e61..e74902d51db7 100644
+--- a/drivers/clk/mediatek/clk-mt6795-infracfg.c
++++ b/drivers/clk/mediatek/clk-mt6795-infracfg.c
+@@ -126,7 +126,7 @@ static int clk_mt6795_infracfg_probe(struct platform_device *pdev)
+ 	return ret;
+ }
+ 
+-static int clk_mt6795_infracfg_remove(struct platform_device *pdev)
++static void clk_mt6795_infracfg_remove(struct platform_device *pdev)
+ {
+ 	struct device_node *node = pdev->dev.of_node;
+ 	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+@@ -135,8 +135,6 @@ static int clk_mt6795_infracfg_remove(struct platform_device *pdev)
+ 	mtk_clk_unregister_cpumuxes(cpu_muxes, ARRAY_SIZE(cpu_muxes), clk_data);
+ 	mtk_clk_unregister_gates(infra_gates, ARRAY_SIZE(infra_gates), clk_data);
+ 	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+ }
+ 
+ static struct platform_driver clk_mt6795_infracfg_drv = {
+@@ -145,7 +143,7 @@ static struct platform_driver clk_mt6795_infracfg_drv = {
+ 		.of_match_table = of_match_clk_mt6795_infracfg,
+ 	},
+ 	.probe = clk_mt6795_infracfg_probe,
+-	.remove = clk_mt6795_infracfg_remove,
++	.remove_new = clk_mt6795_infracfg_remove,
+ };
+ module_platform_driver(clk_mt6795_infracfg_drv);
+ 
+diff --git a/drivers/clk/mediatek/clk-mt6795-mm.c b/drivers/clk/mediatek/clk-mt6795-mm.c
+index eebb6143ada2..426f9897877d 100644
+--- a/drivers/clk/mediatek/clk-mt6795-mm.c
++++ b/drivers/clk/mediatek/clk-mt6795-mm.c
+@@ -107,7 +107,7 @@ static int clk_mt6795_mm_probe(struct platform_device *pdev)
+ 	return ret;
+ }
+ 
+-static int clk_mt6795_mm_remove(struct platform_device *pdev)
++static void clk_mt6795_mm_remove(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *node = dev->parent->of_node;
+@@ -116,8 +116,6 @@ static int clk_mt6795_mm_remove(struct platform_device *pdev)
+ 	of_clk_del_provider(node);
+ 	mtk_clk_unregister_gates(mm_gates, ARRAY_SIZE(mm_gates), clk_data);
+ 	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+ }
+ 
+ static struct platform_driver clk_mt6795_mm_drv = {
+@@ -125,7 +123,7 @@ static struct platform_driver clk_mt6795_mm_drv = {
+ 		.name = "clk-mt6795-mm",
+ 	},
+ 	.probe = clk_mt6795_mm_probe,
+-	.remove = clk_mt6795_mm_remove,
++	.remove_new = clk_mt6795_mm_remove,
+ };
+ module_platform_driver(clk_mt6795_mm_drv);
+ 
+diff --git a/drivers/clk/mediatek/clk-mt6795-pericfg.c b/drivers/clk/mediatek/clk-mt6795-pericfg.c
+index 08aaa9b09c36..9e30d8d186a2 100644
+--- a/drivers/clk/mediatek/clk-mt6795-pericfg.c
++++ b/drivers/clk/mediatek/clk-mt6795-pericfg.c
+@@ -135,7 +135,7 @@ static int clk_mt6795_pericfg_probe(struct platform_device *pdev)
+ 	return ret;
+ }
+ 
+-static int clk_mt6795_pericfg_remove(struct platform_device *pdev)
++static void clk_mt6795_pericfg_remove(struct platform_device *pdev)
+ {
+ 	struct device_node *node = pdev->dev.of_node;
+ 	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+@@ -144,8 +144,6 @@ static int clk_mt6795_pericfg_remove(struct platform_device *pdev)
+ 	mtk_clk_unregister_composites(peri_clks, ARRAY_SIZE(peri_clks), clk_data);
+ 	mtk_clk_unregister_gates(peri_gates, ARRAY_SIZE(peri_gates), clk_data);
+ 	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+ }
+ 
+ static struct platform_driver clk_mt6795_pericfg_drv = {
+@@ -154,7 +152,7 @@ static struct platform_driver clk_mt6795_pericfg_drv = {
+ 		.of_match_table = of_match_clk_mt6795_pericfg,
+ 	},
+ 	.probe = clk_mt6795_pericfg_probe,
+-	.remove = clk_mt6795_pericfg_remove,
++	.remove_new = clk_mt6795_pericfg_remove,
+ };
+ module_platform_driver(clk_mt6795_pericfg_drv);
+ 
+diff --git a/drivers/clk/mediatek/clk-mt8173-apmixedsys.c b/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
+index a56c5845d07a..b7ca15949fd1 100644
+--- a/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
++++ b/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
+@@ -130,7 +130,7 @@ static int clk_mt8173_apmixed_probe(struct platform_device *pdev)
+ 	return r;
+ }
+ 
+-static int clk_mt8173_apmixed_remove(struct platform_device *pdev)
++static void clk_mt8173_apmixed_remove(struct platform_device *pdev)
+ {
+ 	struct device_node *node = pdev->dev.of_node;
+ 	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+@@ -139,13 +139,11 @@ static int clk_mt8173_apmixed_remove(struct platform_device *pdev)
+ 	mtk_clk_unregister_ref2usb_tx(clk_data->hws[CLK_APMIXED_REF2USB_TX]);
+ 	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
+ 	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+ }
+ 
+ static struct platform_driver clk_mt8173_apmixed_drv = {
+ 	.probe = clk_mt8173_apmixed_probe,
+-	.remove = clk_mt8173_apmixed_remove,
++	.remove_new = clk_mt8173_apmixed_remove,
+ 	.driver = {
+ 		.name = "clk-mt8173-apmixed",
+ 		.of_match_table = of_match_clk_mt8173_apmixed,
+diff --git a/drivers/clk/mediatek/clk-mt8173-infracfg.c b/drivers/clk/mediatek/clk-mt8173-infracfg.c
+index 729b3c408c7b..c71c0e5c607d 100644
+--- a/drivers/clk/mediatek/clk-mt8173-infracfg.c
++++ b/drivers/clk/mediatek/clk-mt8173-infracfg.c
+@@ -128,7 +128,7 @@ static int clk_mt8173_infracfg_probe(struct platform_device *pdev)
+ 	return r;
+ }
+ 
+-static int clk_mt8173_infracfg_remove(struct platform_device *pdev)
++static void clk_mt8173_infracfg_remove(struct platform_device *pdev)
+ {
+ 	struct device_node *node = pdev->dev.of_node;
+ 	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+@@ -137,8 +137,6 @@ static int clk_mt8173_infracfg_remove(struct platform_device *pdev)
+ 	mtk_clk_unregister_cpumuxes(cpu_muxes, ARRAY_SIZE(cpu_muxes), clk_data);
+ 	mtk_clk_unregister_gates(infra_gates, ARRAY_SIZE(infra_gates), clk_data);
+ 	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+ }
+ 
+ static struct platform_driver clk_mt8173_infracfg_drv = {
+@@ -147,7 +145,7 @@ static struct platform_driver clk_mt8173_infracfg_drv = {
+ 		.of_match_table = of_match_clk_mt8173_infracfg,
+ 	},
+ 	.probe = clk_mt8173_infracfg_probe,
+-	.remove = clk_mt8173_infracfg_remove,
++	.remove_new = clk_mt8173_infracfg_remove,
+ };
+ module_platform_driver(clk_mt8173_infracfg_drv);
+ 
+diff --git a/drivers/clk/mediatek/clk-mt8173-mm.c b/drivers/clk/mediatek/clk-mt8173-mm.c
+index 315430ad1581..a941b4c688a5 100644
+--- a/drivers/clk/mediatek/clk-mt8173-mm.c
++++ b/drivers/clk/mediatek/clk-mt8173-mm.c
+@@ -136,7 +136,7 @@ static int clk_mt8173_mm_probe(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
+-static int clk_mt8173_mm_remove(struct platform_device *pdev)
++static void clk_mt8173_mm_remove(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *node = dev->parent->of_node;
+@@ -146,8 +146,6 @@ static int clk_mt8173_mm_remove(struct platform_device *pdev)
+ 	of_clk_del_provider(node);
+ 	mtk_clk_unregister_gates(data->gates_clk, data->gates_num, clk_data);
+ 	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+ }
+ 
+ static struct platform_driver clk_mt8173_mm_drv = {
+@@ -155,7 +153,7 @@ static struct platform_driver clk_mt8173_mm_drv = {
+ 		.name = "clk-mt8173-mm",
+ 	},
+ 	.probe = clk_mt8173_mm_probe,
+-	.remove = clk_mt8173_mm_remove,
++	.remove_new = clk_mt8173_mm_remove,
+ };
+ 
+ builtin_platform_driver(clk_mt8173_mm_drv);
+diff --git a/drivers/clk/mediatek/clk-mt8186-apmixedsys.c b/drivers/clk/mediatek/clk-mt8186-apmixedsys.c
+index 1d673c6278a9..392ffc1acb05 100644
+--- a/drivers/clk/mediatek/clk-mt8186-apmixedsys.c
++++ b/drivers/clk/mediatek/clk-mt8186-apmixedsys.c
+@@ -169,7 +169,7 @@ static int clk_mt8186_apmixed_probe(struct platform_device *pdev)
+ 	return r;
+ }
+ 
+-static int clk_mt8186_apmixed_remove(struct platform_device *pdev)
++static void clk_mt8186_apmixed_remove(struct platform_device *pdev)
+ {
+ 	struct device_node *node = pdev->dev.of_node;
+ 	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+@@ -178,13 +178,11 @@ static int clk_mt8186_apmixed_remove(struct platform_device *pdev)
+ 	mtk_clk_unregister_pllfhs(plls, ARRAY_SIZE(plls), pllfhs,
+ 				  ARRAY_SIZE(pllfhs), clk_data);
+ 	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+ }
+ 
+ static struct platform_driver clk_mt8186_apmixed_drv = {
+ 	.probe = clk_mt8186_apmixed_probe,
+-	.remove = clk_mt8186_apmixed_remove,
++	.remove_new = clk_mt8186_apmixed_remove,
+ 	.driver = {
+ 		.name = "clk-mt8186-apmixed",
+ 		.of_match_table = of_match_clk_mt8186_apmixed,
+diff --git a/drivers/clk/mediatek/clk-mt8186-mcu.c b/drivers/clk/mediatek/clk-mt8186-mcu.c
+index e52a2d986c99..e36519996873 100644
+--- a/drivers/clk/mediatek/clk-mt8186-mcu.c
++++ b/drivers/clk/mediatek/clk-mt8186-mcu.c
+@@ -86,7 +86,7 @@ static int clk_mt8186_mcu_probe(struct platform_device *pdev)
+ 	return r;
+ }
+ 
+-static int clk_mt8186_mcu_remove(struct platform_device *pdev)
++static void clk_mt8186_mcu_remove(struct platform_device *pdev)
+ {
+ 	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+ 	struct device_node *node = pdev->dev.of_node;
+@@ -94,13 +94,11 @@ static int clk_mt8186_mcu_remove(struct platform_device *pdev)
+ 	of_clk_del_provider(node);
+ 	mtk_clk_unregister_composites(mcu_muxes, ARRAY_SIZE(mcu_muxes), clk_data);
+ 	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+ }
+ 
+ static struct platform_driver clk_mt8186_mcu_drv = {
+ 	.probe = clk_mt8186_mcu_probe,
+-	.remove = clk_mt8186_mcu_remove,
++	.remove_new = clk_mt8186_mcu_remove,
+ 	.driver = {
+ 		.name = "clk-mt8186-mcu",
+ 		.of_match_table = of_match_clk_mt8186_mcu,
+diff --git a/drivers/clk/mediatek/clk-mt8186-mm.c b/drivers/clk/mediatek/clk-mt8186-mm.c
+index 0b72607777fa..bd54f13939a9 100644
+--- a/drivers/clk/mediatek/clk-mt8186-mm.c
++++ b/drivers/clk/mediatek/clk-mt8186-mm.c
+@@ -89,7 +89,7 @@ static int clk_mt8186_mm_probe(struct platform_device *pdev)
+ 	return r;
+ }
+ 
+-static int clk_mt8186_mm_remove(struct platform_device *pdev)
++static void clk_mt8186_mm_remove(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *node = dev->parent->of_node;
+@@ -98,13 +98,11 @@ static int clk_mt8186_mm_remove(struct platform_device *pdev)
+ 	of_clk_del_provider(node);
+ 	mtk_clk_unregister_gates(mm_clks, ARRAY_SIZE(mm_clks), clk_data);
+ 	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+ }
+ 
+ static struct platform_driver clk_mt8186_mm_drv = {
+ 	.probe = clk_mt8186_mm_probe,
+-	.remove = clk_mt8186_mm_remove,
++	.remove_new = clk_mt8186_mm_remove,
+ 	.driver = {
+ 		.name = "clk-mt8186-mm",
+ 	},
+diff --git a/drivers/clk/mediatek/clk-mt8195-apmixedsys.c b/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
+index 1bc917f2667e..232781c70df2 100644
+--- a/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
++++ b/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
+@@ -146,7 +146,7 @@ static int clk_mt8195_apmixed_probe(struct platform_device *pdev)
+ 	return r;
+ }
+ 
+-static int clk_mt8195_apmixed_remove(struct platform_device *pdev)
++static void clk_mt8195_apmixed_remove(struct platform_device *pdev)
+ {
+ 	struct device_node *node = pdev->dev.of_node;
+ 	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+@@ -155,13 +155,11 @@ static int clk_mt8195_apmixed_remove(struct platform_device *pdev)
+ 	mtk_clk_unregister_gates(apmixed_clks, ARRAY_SIZE(apmixed_clks), clk_data);
+ 	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
+ 	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+ }
+ 
+ static struct platform_driver clk_mt8195_apmixed_drv = {
+ 	.probe = clk_mt8195_apmixed_probe,
+-	.remove = clk_mt8195_apmixed_remove,
++	.remove_new = clk_mt8195_apmixed_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-apmixed",
+ 		.of_match_table = of_match_clk_mt8195_apmixed,
+diff --git a/drivers/clk/mediatek/clk-mt8195-apusys_pll.c b/drivers/clk/mediatek/clk-mt8195-apusys_pll.c
+index 0b52f6a009c4..d8ba3c5a5942 100644
+--- a/drivers/clk/mediatek/clk-mt8195-apusys_pll.c
++++ b/drivers/clk/mediatek/clk-mt8195-apusys_pll.c
+@@ -85,7 +85,7 @@ static int clk_mt8195_apusys_pll_probe(struct platform_device *pdev)
+ 	return r;
+ }
+ 
+-static int clk_mt8195_apusys_pll_remove(struct platform_device *pdev)
++static void clk_mt8195_apusys_pll_remove(struct platform_device *pdev)
+ {
+ 	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+ 	struct device_node *node = pdev->dev.of_node;
+@@ -93,8 +93,6 @@ static int clk_mt8195_apusys_pll_remove(struct platform_device *pdev)
+ 	of_clk_del_provider(node);
+ 	mtk_clk_unregister_plls(apusys_plls, ARRAY_SIZE(apusys_plls), clk_data);
+ 	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+ }
+ 
+ static const struct of_device_id of_match_clk_mt8195_apusys_pll[] = {
+@@ -104,7 +102,7 @@ static const struct of_device_id of_match_clk_mt8195_apusys_pll[] = {
+ 
+ static struct platform_driver clk_mt8195_apusys_pll_drv = {
+ 	.probe = clk_mt8195_apusys_pll_probe,
+-	.remove = clk_mt8195_apusys_pll_remove,
++	.remove_new = clk_mt8195_apusys_pll_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-apusys_pll",
+ 		.of_match_table = of_match_clk_mt8195_apusys_pll,
+diff --git a/drivers/clk/mediatek/clk-mt8195-topckgen.c b/drivers/clk/mediatek/clk-mt8195-topckgen.c
+index cf520f85de73..c970cdd13c0b 100644
+--- a/drivers/clk/mediatek/clk-mt8195-topckgen.c
++++ b/drivers/clk/mediatek/clk-mt8195-topckgen.c
+@@ -1316,7 +1316,7 @@ static int clk_mt8195_topck_probe(struct platform_device *pdev)
+ 	return r;
+ }
+ 
+-static int clk_mt8195_topck_remove(struct platform_device *pdev)
++static void clk_mt8195_topck_remove(struct platform_device *pdev)
+ {
+ 	struct clk_hw_onecell_data *top_clk_data = platform_get_drvdata(pdev);
+ 	struct device_node *node = pdev->dev.of_node;
+@@ -1328,13 +1328,11 @@ static int clk_mt8195_topck_remove(struct platform_device *pdev)
+ 	mtk_clk_unregister_factors(top_divs, ARRAY_SIZE(top_divs), top_clk_data);
+ 	mtk_clk_unregister_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_fixed_clks), top_clk_data);
+ 	mtk_free_clk_data(top_clk_data);
+-
+-	return 0;
+ }
+ 
+ static struct platform_driver clk_mt8195_topck_drv = {
+ 	.probe = clk_mt8195_topck_probe,
+-	.remove = clk_mt8195_topck_remove,
++	.remove_new = clk_mt8195_topck_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-topck",
+ 		.of_match_table = of_match_clk_mt8195_topck,
+diff --git a/drivers/clk/mediatek/clk-mt8195-vdo0.c b/drivers/clk/mediatek/clk-mt8195-vdo0.c
+index 839b730688ac..86663db54a72 100644
+--- a/drivers/clk/mediatek/clk-mt8195-vdo0.c
++++ b/drivers/clk/mediatek/clk-mt8195-vdo0.c
+@@ -124,7 +124,7 @@ static int clk_mt8195_vdo0_probe(struct platform_device *pdev)
+ 	return r;
+ }
+ 
+-static int clk_mt8195_vdo0_remove(struct platform_device *pdev)
++static void clk_mt8195_vdo0_remove(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *node = dev->parent->of_node;
+@@ -133,13 +133,11 @@ static int clk_mt8195_vdo0_remove(struct platform_device *pdev)
+ 	of_clk_del_provider(node);
+ 	mtk_clk_unregister_gates(vdo0_clks, ARRAY_SIZE(vdo0_clks), clk_data);
+ 	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+ }
+ 
+ static struct platform_driver clk_mt8195_vdo0_drv = {
+ 	.probe = clk_mt8195_vdo0_probe,
+-	.remove = clk_mt8195_vdo0_remove,
++	.remove_new = clk_mt8195_vdo0_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-vdo0",
+ 	},
+diff --git a/drivers/clk/mediatek/clk-mt8195-vdo1.c b/drivers/clk/mediatek/clk-mt8195-vdo1.c
+index 7df695b28925..05119b31077d 100644
+--- a/drivers/clk/mediatek/clk-mt8195-vdo1.c
++++ b/drivers/clk/mediatek/clk-mt8195-vdo1.c
+@@ -151,7 +151,7 @@ static int clk_mt8195_vdo1_probe(struct platform_device *pdev)
+ 	return r;
+ }
+ 
+-static int clk_mt8195_vdo1_remove(struct platform_device *pdev)
++static void clk_mt8195_vdo1_remove(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *node = dev->parent->of_node;
+@@ -160,13 +160,11 @@ static int clk_mt8195_vdo1_remove(struct platform_device *pdev)
+ 	of_clk_del_provider(node);
+ 	mtk_clk_unregister_gates(vdo1_clks, ARRAY_SIZE(vdo1_clks), clk_data);
+ 	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+ }
+ 
+ static struct platform_driver clk_mt8195_vdo1_drv = {
+ 	.probe = clk_mt8195_vdo1_probe,
+-	.remove = clk_mt8195_vdo1_remove,
++	.remove_new = clk_mt8195_vdo1_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-vdo1",
+ 	},
+diff --git a/drivers/clk/mediatek/clk-mt8195-vpp0.c b/drivers/clk/mediatek/clk-mt8195-vpp0.c
+index e19664af09b6..fdb9f0507e52 100644
+--- a/drivers/clk/mediatek/clk-mt8195-vpp0.c
++++ b/drivers/clk/mediatek/clk-mt8195-vpp0.c
+@@ -116,7 +116,7 @@ static int clk_mt8195_vpp0_probe(struct platform_device *pdev)
+ 	return r;
+ }
+ 
+-static int clk_mt8195_vpp0_remove(struct platform_device *pdev)
++static void clk_mt8195_vpp0_remove(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *node = dev->parent->of_node;
+@@ -125,13 +125,11 @@ static int clk_mt8195_vpp0_remove(struct platform_device *pdev)
+ 	of_clk_del_provider(node);
+ 	mtk_clk_unregister_gates(vpp0_clks, ARRAY_SIZE(vpp0_clks), clk_data);
+ 	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+ }
+ 
+ static struct platform_driver clk_mt8195_vpp0_drv = {
+ 	.probe = clk_mt8195_vpp0_probe,
+-	.remove = clk_mt8195_vpp0_remove,
++	.remove_new = clk_mt8195_vpp0_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-vpp0",
+ 	},
+diff --git a/drivers/clk/mediatek/clk-mt8195-vpp1.c b/drivers/clk/mediatek/clk-mt8195-vpp1.c
+index e6c458fc1531..075c569867d1 100644
+--- a/drivers/clk/mediatek/clk-mt8195-vpp1.c
++++ b/drivers/clk/mediatek/clk-mt8195-vpp1.c
+@@ -114,7 +114,7 @@ static int clk_mt8195_vpp1_probe(struct platform_device *pdev)
+ 	return r;
+ }
+ 
+-static int clk_mt8195_vpp1_remove(struct platform_device *pdev)
++static void clk_mt8195_vpp1_remove(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *node = dev->parent->of_node;
+@@ -123,13 +123,11 @@ static int clk_mt8195_vpp1_remove(struct platform_device *pdev)
+ 	of_clk_del_provider(node);
+ 	mtk_clk_unregister_gates(vpp1_clks, ARRAY_SIZE(vpp1_clks), clk_data);
+ 	mtk_free_clk_data(clk_data);
+-
+-	return 0;
+ }
+ 
+ static struct platform_driver clk_mt8195_vpp1_drv = {
+ 	.probe = clk_mt8195_vpp1_probe,
+-	.remove = clk_mt8195_vpp1_remove,
++	.remove_new = clk_mt8195_vpp1_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-vpp1",
+ 	},
+-- 
+2.39.1
 
-AFAICT unused chip selects are initialized to 0, so all single chip
-select devices would have it as their second one. This will then cause
-this check to reject every single chip select device after the first
-one. So you first need to make sure to only compare valid chip
-selects.
-
-So the loop condition should be something along idx <
-spi_get_num_chipselect(), not idx < SPI_CS_CNT_MAX.
-
-> +       }
->         return 0;
->  }
->
-> @@ -629,7 +636,7 @@ static int __spi_add_device(struct spi_device *spi)
->  {
->         struct spi_controller *ctlr = spi->controller;
->         struct device *dev = ctlr->dev.parent;
-> -       int status;
-> +       int status, idx;
->
->         /*
->          * We need to make sure there's no other device with this
-> @@ -638,8 +645,7 @@ static int __spi_add_device(struct spi_device *spi)
->          */
->         status = bus_for_each_dev(&spi_bus_type, NULL, spi, spi_dev_check);
->         if (status) {
-> -               dev_err(dev, "chipselect %d already in use\n",
-> -                               spi_get_chipselect(spi, 0));
-> +               dev_err(dev, "chipselect %d already in use\n", spi_get_chipselect(spi, 0));
-
-The message might be misleading for multi cs devices where the first
-one is free, but the second one is already in use.
-
-So maybe move this error message into spi_dev_check(), where you have
-that information available. You then even have the chance to state
-what is using the CS then, but that might be something for a different
-patch.
-
-
->                 return status;
->         }
->
-> @@ -649,8 +655,10 @@ static int __spi_add_device(struct spi_device *spi)
->                 return -ENODEV;
->         }
->
-> -       if (ctlr->cs_gpiods)
-> -               spi_set_csgpiod(spi, 0, ctlr->cs_gpiods[spi_get_chipselect(spi, 0)]);
-> +       if (ctlr->cs_gpiods) {
-> +               for (idx = 0; idx < SPI_CS_CNT_MAX; idx++)
-> +                       spi_set_csgpiod(spi, idx, ctlr->cs_gpiods[spi_get_chipselect(spi, idx)]);
-> +       }
->
->         /*
->          * Drivers may modify this initial i/o setup, but will
-> @@ -690,13 +698,15 @@ int spi_add_device(struct spi_device *spi)
->  {
->         struct spi_controller *ctlr = spi->controller;
->         struct device *dev = ctlr->dev.parent;
-> -       int status;
-> +       int status, idx;
->
-> -       /* Chipselects are numbered 0..max; validate. */
-> -       if (spi_get_chipselect(spi, 0) >= ctlr->num_chipselect) {
-> -               dev_err(dev, "cs%d >= max %d\n", spi_get_chipselect(spi, 0),
-> -                       ctlr->num_chipselect);
-> -               return -EINVAL;
-> +       for (idx = 0; idx < SPI_CS_CNT_MAX; idx++) {
-> +               /* Chipselects are numbered 0..max; validate. */
-> +               if (spi_get_chipselect(spi, idx) >= ctlr->num_chipselect) {
-> +                       dev_err(dev, "cs%d >= max %d\n", spi_get_chipselect(spi, idx),
-> +                               ctlr->num_chipselect);
-> +                       return -EINVAL;
-> +               }
->         }
->
->         /* Set the bus ID string */
-> @@ -713,12 +723,15 @@ static int spi_add_device_locked(struct spi_device *spi)
->  {
->         struct spi_controller *ctlr = spi->controller;
->         struct device *dev = ctlr->dev.parent;
-> +       int idx;
->
-> -       /* Chipselects are numbered 0..max; validate. */
-> -       if (spi_get_chipselect(spi, 0) >= ctlr->num_chipselect) {
-> -               dev_err(dev, "cs%d >= max %d\n", spi_get_chipselect(spi, 0),
-> -                       ctlr->num_chipselect);
-> -               return -EINVAL;
-> +       for (idx = 0; idx < SPI_CS_CNT_MAX; idx++) {
-> +               /* Chipselects are numbered 0..max; validate. */
-> +               if (spi_get_chipselect(spi, idx) >= ctlr->num_chipselect) {
-> +                       dev_err(dev, "cs%d >= max %d\n", spi_get_chipselect(spi, idx),
-> +                               ctlr->num_chipselect);
-> +                       return -EINVAL;
-> +               }
->         }
->
->         /* Set the bus ID string */
-> @@ -966,58 +979,119 @@ static void spi_res_release(struct spi_controller *ctlr, struct spi_message *mes
->  static void spi_set_cs(struct spi_device *spi, bool enable, bool force)
->  {
->         bool activate = enable;
-> +       u32 cs_num = __ffs(spi->cs_index_mask);
-> +       int idx;
->
->         /*
-> -        * Avoid calling into the driver (or doing delays) if the chip select
-> -        * isn't actually changing from the last time this was called.
-> +        * In parallel mode all the chip selects are asserted/de-asserted
-> +        * at once
->          */
-> -       if (!force && ((enable && spi->controller->last_cs == spi_get_chipselect(spi, 0)) ||
-> -                      (!enable && spi->controller->last_cs != spi_get_chipselect(spi, 0))) &&
-> -           (spi->controller->last_cs_mode_high == (spi->mode & SPI_CS_HIGH)))
-> -               return;
-> -
-> -       trace_spi_set_cs(spi, activate);
-> -
-> -       spi->controller->last_cs = enable ? spi_get_chipselect(spi, 0) : -1;
-> -       spi->controller->last_cs_mode_high = spi->mode & SPI_CS_HIGH;
-> -
-> -       if ((spi_get_csgpiod(spi, 0) || !spi->controller->set_cs_timing) && !activate)
-> -               spi_delay_exec(&spi->cs_hold, NULL);
-> -
-> -       if (spi->mode & SPI_CS_HIGH)
-> -               enable = !enable;
-> +       if ((spi->cs_index_mask & SPI_PARALLEL_CS_MASK) == SPI_PARALLEL_CS_MASK) {
-> +               spi->controller->last_cs_mode_high = spi->mode & SPI_CS_HIGH;
-> +
-> +               if ((spi_get_csgpiod(spi, 0) || !spi->controller->set_cs_timing) && !activate)
-> +                       spi_delay_exec(&spi->cs_hold, NULL);
-> +
-> +               if (spi->mode & SPI_CS_HIGH)
-> +                       enable = !enable;
-> +
-> +               if (spi_get_csgpiod(spi, 0) && spi_get_csgpiod(spi, 1)) {
-> +                       if (!(spi->mode & SPI_NO_CS)) {
-> +                               /*
-> +                                * Historically ACPI has no means of the GPIO polarity and
-> +                                * thus the SPISerialBus() resource defines it on the per-chip
-> +                                * basis. In order to avoid a chain of negations, the GPIO
-> +                                * polarity is considered being Active High. Even for the cases
-> +                                * when _DSD() is involved (in the updated versions of ACPI)
-> +                                * the GPIO CS polarity must be defined Active High to avoid
-> +                                * ambiguity. That's why we use enable, that takes SPI_CS_HIGH
-> +                                * into account.
-> +                                */
-> +                               if (has_acpi_companion(&spi->dev)) {
-> +                                       for (idx = 0; idx < SPI_CS_CNT_MAX; idx++)
-> +                                               gpiod_set_value_cansleep(spi_get_csgpiod(spi, idx),
-> +                                                                        !enable);
-> +                               } else {
-> +                                       for (idx = 0; idx < SPI_CS_CNT_MAX; idx++)
-> +                                               /* Polarity handled by GPIO library */
-> +                                               gpiod_set_value_cansleep(spi_get_csgpiod(spi, idx),
-> +                                                                        activate);
-> +                               }
-> +                       }
-> +                       /* Some SPI masters need both GPIO CS & slave_select */
-> +                       if ((spi->controller->flags & SPI_MASTER_GPIO_SS) &&
-> +                           spi->controller->set_cs)
-> +                               spi->controller->set_cs(spi, !enable);
-
-> +                       else if (spi->controller->set_cs)
-> +                               spi->controller->set_cs(spi, !enable);
-
-this else if belongs to the following brace as the else of the if
-(spi_get_csgpiod(spi, 0) && spi_get_csgpiod(spi, 1). Currently it
-would make the first check redundant, as the second case would always
-be true if the first one is.
-
-Actually shouldn't you iterate over the cs's here in case one is using
-set_cs() and the other one is gpiod? You can only get here if both are
-backed by gpiods. And you would only set the first cs, but not the
-second one. The ->set_cs() callback doesn't allow specifying which of
-the (multiple) cs's should be set though.
-
-> +               }
->
-> -       if (spi_get_csgpiod(spi, 0)) {
-> -               if (!(spi->mode & SPI_NO_CS)) {
-> -                       /*
-> -                        * Historically ACPI has no means of the GPIO polarity and
-> -                        * thus the SPISerialBus() resource defines it on the per-chip
-> -                        * basis. In order to avoid a chain of negations, the GPIO
-> -                        * polarity is considered being Active High. Even for the cases
-> -                        * when _DSD() is involved (in the updated versions of ACPI)
-> -                        * the GPIO CS polarity must be defined Active High to avoid
-> -                        * ambiguity. That's why we use enable, that takes SPI_CS_HIGH
-> -                        * into account.
-> -                        */
-> -                       if (has_acpi_companion(&spi->dev))
-> -                               gpiod_set_value_cansleep(spi_get_csgpiod(spi, 0), !enable);
-> -                       else
-> -                               /* Polarity handled by GPIO library */
-> -                               gpiod_set_value_cansleep(spi_get_csgpiod(spi, 0), activate);
-> +               for (idx = 0; idx < SPI_CS_CNT_MAX; idx++) {
-> +                       if (spi_get_csgpiod(spi, idx) || !spi->controller->set_cs_timing) {
-> +                               if (activate)
-> +                                       spi_delay_exec(&spi->cs_setup, NULL);
-> +                               else
-> +                                       spi_delay_exec(&spi->cs_inactive, NULL);
-> +                       }
-
-Won't you delay twice if both CS's are backed by gpiod (and the
-controller does not implement set_cs_timing)? You should probably
-break after the first or so.
-
-I wonder if it would makes sense to have a helper function to set cs
-state to all cs's indicated by cs_index_mask so you can share most of
-the logic between the single and multi cs paths.
-
-Currently it seems both paths have a lot of code (and comment)
-duplication, with the difference being one path is touching one cs and
-the other two (or all).
-
->                 }
-> -               /* Some SPI masters need both GPIO CS & slave_select */
-> -               if ((spi->controller->flags & SPI_MASTER_GPIO_SS) &&
-> -                   spi->controller->set_cs)
-> +       } else {
-> +               /*
-> +                * Avoid calling into the driver (or doing delays) if the chip select
-> +                * isn't actually changing from the last time this was called.
-> +                */
-> +               if (!force && ((enable && spi->controller->last_cs ==
-> +                               spi_get_chipselect(spi, cs_num)) ||
-> +                               (!enable && spi->controller->last_cs !=
-> +                                spi_get_chipselect(spi, cs_num))) &&
-> +                   (spi->controller->last_cs_mode_high ==
-> +                    (spi->mode & SPI_CS_HIGH)))
-> +                       return;
-> +
-> +               trace_spi_set_cs(spi, activate);
-> +
-> +               spi->controller->last_cs = enable ? spi_get_chipselect(spi, cs_num) : -1;
-> +               spi->controller->last_cs_mode_high = spi->mode & SPI_CS_HIGH;
-> +
-> +               if ((spi_get_csgpiod(spi, cs_num) || !spi->controller->set_cs_timing) && !activate)
-> +                       spi_delay_exec(&spi->cs_hold, NULL);
-> +
-> +               if (spi->mode & SPI_CS_HIGH)
-> +                       enable = !enable;
-> +
-> +               if (spi_get_csgpiod(spi, cs_num)) {
-> +                       if (!(spi->mode & SPI_NO_CS)) {
-> +                               /*
-> +                                * Historically ACPI has no means of the GPIO polarity and
-> +                                * thus the SPISerialBus() resource defines it on the per-chip
-> +                                * basis. In order to avoid a chain of negations, the GPIO
-> +                                * polarity is considered being Active High. Even for the cases
-> +                                * when _DSD() is involved (in the updated versions of ACPI)
-> +                                * the GPIO CS polarity must be defined Active High to avoid
-> +                                * ambiguity. That's why we use enable, that takes SPI_CS_HIGH
-> +                                * into account.
-> +                                */
-> +                               if (has_acpi_companion(&spi->dev))
-> +                                       gpiod_set_value_cansleep(spi_get_csgpiod(spi, cs_num),
-> +                                                                !enable);
-> +                               else
-> +                                       /* Polarity handled by GPIO library */
-> +                                       gpiod_set_value_cansleep(spi_get_csgpiod(spi, cs_num),
-> +                                                                activate);
-> +                       }
-> +                       /* Some SPI masters need both GPIO CS & slave_select */
-> +                       if ((spi->controller->flags & SPI_MASTER_GPIO_SS) &&
-> +                           spi->controller->set_cs)
-> +                               spi->controller->set_cs(spi, !enable);
-> +               } else if (spi->controller->set_cs) {
->                         spi->controller->set_cs(spi, !enable);
-> -       } else if (spi->controller->set_cs) {
-> -               spi->controller->set_cs(spi, !enable);
-> -       }
-> +               }
->
-> -       if (spi_get_csgpiod(spi, 0) || !spi->controller->set_cs_timing) {
-> -               if (activate)
-> -                       spi_delay_exec(&spi->cs_setup, NULL);
-> -               else
-> -                       spi_delay_exec(&spi->cs_inactive, NULL);
-> +               if (spi_get_csgpiod(spi, cs_num) || !spi->controller->set_cs_timing) {
-> +                       if (activate)
-> +                               spi_delay_exec(&spi->cs_setup, NULL);
-> +                       else
-> +                               spi_delay_exec(&spi->cs_inactive, NULL);
-> +               }
->         }
->  }
->
-> @@ -2246,8 +2320,8 @@ static void of_spi_parse_dt_cs_delay(struct device_node *nc,
->  static int of_spi_parse_dt(struct spi_controller *ctlr, struct spi_device *spi,
->                            struct device_node *nc)
->  {
-> -       u32 value;
-> -       int rc;
-> +       u32 value, cs[SPI_CS_CNT_MAX] = {0};
-> +       int rc, idx;
->
->         /* Mode (clock phase/polarity/etc.) */
->         if (of_property_read_bool(nc, "spi-cpha"))
-> @@ -2320,13 +2394,21 @@ static int of_spi_parse_dt(struct spi_controller *ctlr, struct spi_device *spi,
->         }
->
->         /* Device address */
-> -       rc = of_property_read_u32(nc, "reg", &value);
-> -       if (rc) {
-> +       rc = of_property_read_variable_u32_array(nc, "reg", &cs[0], 1,
-> +                                                SPI_CS_CNT_MAX);
-> +       if (rc < 0 || rc > ctlr->num_chipselect) {
->                 dev_err(&ctlr->dev, "%pOF has no valid 'reg' property (%d)\n",
->                         nc, rc);
->                 return rc;
-> +       } else if ((of_property_read_bool(nc, "parallel-memories")) &&
-> +                  (!ctlr->multi_cs_cap)) {
-> +               dev_err(&ctlr->dev, "SPI controller doesn't support multi CS\n");
-> +               return -EINVAL;
->         }
-> -       spi_set_chipselect(spi, 0, value);
-> +       for (idx = 0; idx < rc; idx++)
-> +               spi_set_chipselect(spi, idx, cs[idx]);
-> +       /* By default set the spi->cs_index_mask as 1 */
-> +       spi->cs_index_mask = 0x01;
->
->         /* Device speed */
->         if (!of_property_read_u32(nc, "spi-max-frequency", &value))
-> @@ -3846,6 +3928,7 @@ static int __spi_validate(struct spi_device *spi, struct spi_message *message)
->         struct spi_controller *ctlr = spi->controller;
->         struct spi_transfer *xfer;
->         int w_size;
-> +       u32 cs_num = __ffs(spi->cs_index_mask);
->
->         if (list_empty(&message->transfers))
->                 return -EINVAL;
-> @@ -3858,7 +3941,7 @@ static int __spi_validate(struct spi_device *spi, struct spi_message *message)
->          * cs_change is set for each transfer.
->          */
->         if ((spi->mode & SPI_CS_WORD) && (!(ctlr->mode_bits & SPI_CS_WORD) ||
-> -                                         spi_get_csgpiod(spi, 0))) {
-> +                                         spi_get_csgpiod(spi, cs_num))) {
-
-Wouldn't you need to check for any of the cs_index_mask enabled CS's,
-and not just the first one? AFAICT you would currently fail to catch a
-SPI_CS_WORD transfer with both cs enabled where the first one is a
-SPI_CS_WORD capable native CS and the second one a gpiod.
-
->                 size_t maxsize;
->                 int ret;
->
-> diff --git a/include/linux/spi/spi.h b/include/linux/spi/spi.h
-> index bdb35a91b4bf..452682aa1a39 100644
-> --- a/include/linux/spi/spi.h
-> +++ b/include/linux/spi/spi.h
-> @@ -19,6 +19,11 @@
->  #include <linux/acpi.h>
->  #include <linux/u64_stats_sync.h>
->
-> +/* Max no. of CS supported per spi device */
-> +#define SPI_CS_CNT_MAX 2
-> +
-> +/* chip select mask */
-> +#define SPI_PARALLEL_CS_MASK   (BIT(0) | BIT(1))
->  struct dma_chan;
->  struct software_node;
->  struct ptp_system_timestamp;
-> @@ -166,6 +171,7 @@ extern void spi_transfer_cs_change_delay_exec(struct spi_message *msg,
->   *     deasserted. If @cs_change_delay is used from @spi_transfer, then the
->   *     two delays will be added up.
->   * @pcpu_statistics: statistics for the spi_device
-> + * @cs_index_mask: Bit mask of the active chipselect(s) in the chipselect array
->   *
->   * A @spi_device is used to interchange data between an SPI slave
->   * (usually a discrete chip) and CPU memory.
-> @@ -181,7 +187,7 @@ struct spi_device {
->         struct spi_controller   *controller;
->         struct spi_controller   *master;        /* Compatibility layer */
->         u32                     max_speed_hz;
-> -       u8                      chip_select;
-> +       u8                      chip_select[SPI_CS_CNT_MAX];
->         u8                      bits_per_word;
->         bool                    rt;
->  #define SPI_NO_TX      BIT(31)         /* No transmit wire */
-> @@ -202,7 +208,7 @@ struct spi_device {
->         void                    *controller_data;
->         char                    modalias[SPI_NAME_SIZE];
->         const char              *driver_override;
-> -       struct gpio_desc        *cs_gpiod;      /* Chip select gpio desc */
-> +       struct gpio_desc        *cs_gpiod[SPI_CS_CNT_MAX];      /* Chip select gpio desc */
->         struct spi_delay        word_delay; /* Inter-word delay */
->         /* CS delays */
->         struct spi_delay        cs_setup;
-> @@ -212,6 +218,13 @@ struct spi_device {
->         /* The statistics */
->         struct spi_statistics __percpu  *pcpu_statistics;
->
-> +       /* Bit mask of the chipselect(s) that the driver need to use from
-> +        * the chipselect array.When the controller is capable to handle
-> +        * multiple chip selects & memories are connected in parallel
-> +        * then more than one bit need to be set in cs_index_mask.
-> +        */
-> +       u32                     cs_index_mask : 2;
-
-SPI_CS_CNT_MAX?
-
-> +
->         /*
->          * likely need more hooks for more protocol options affecting how
->          * the controller talks to each chip, like:
-> @@ -268,22 +281,22 @@ static inline void *spi_get_drvdata(struct spi_device *spi)
->
->  static inline u8 spi_get_chipselect(struct spi_device *spi, u8 idx)
->  {
-> -       return spi->chip_select;
-> +       return spi->chip_select[idx];
->  }
->
->  static inline void spi_set_chipselect(struct spi_device *spi, u8 idx, u8 chipselect)
->  {
-> -       spi->chip_select = chipselect;
-> +       spi->chip_select[idx] = chipselect;
->  }
->
->  static inline struct gpio_desc *spi_get_csgpiod(struct spi_device *spi, u8 idx)
->  {
-> -       return spi->cs_gpiod;
-> +       return spi->cs_gpiod[idx];
->  }
->
->  static inline void spi_set_csgpiod(struct spi_device *spi, u8 idx, struct gpio_desc *csgpiod)
->  {
-> -       spi->cs_gpiod = csgpiod;
-> +       spi->cs_gpiod[idx] = csgpiod;
->  }
->
->  /**
-> @@ -388,6 +401,8 @@ extern struct spi_device *spi_new_ancillary_device(struct spi_device *spi, u8 ch
->   * @bus_lock_spinlock: spinlock for SPI bus locking
->   * @bus_lock_mutex: mutex for exclusion of multiple callers
->   * @bus_lock_flag: indicates that the SPI bus is locked for exclusive use
-> + * @multi_cs_cap: indicates that the SPI Controller can assert/de-assert
-> + *     more than one chip select at once.
->   * @setup: updates the device mode and clocking records used by a
->   *     device's SPI controller; protocol code may call this.  This
->   *     must fail if an unrecognized or unsupported mode is requested.
-> @@ -585,6 +600,13 @@ struct spi_controller {
->         /* Flag indicating that the SPI bus is locked for exclusive use */
->         bool                    bus_lock_flag;
->
-> +       /*
-> +        * Flag indicating that the spi-controller has multi chip select
-> +        * capability and can assert/de-assert more than one chip select
-> +        * at once.
-> +        */
-> +       bool                    multi_cs_cap;
-
-I admit I haven't followed the first iterations, but Is there a reason
-this isn't a SPI_XXX flag in spi.h? There seem to be quite a few free
-bits left.
-
-I would think multi_cs can be emulated (somewhat) via gpiod for the
-second CS as long as the controller supports set_cs() (and
-SPI_NO_CS?).
-
-> +
->         /* Setup mode and clock, etc (spi driver may call many times).
->          *
->          * IMPORTANT:  this may be called when transfers to another
-> --
-> 2.25.1
->
-
-Regards
-Jonas
 
