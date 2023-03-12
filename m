@@ -4,76 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4408C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 13:20:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB226C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 13:24:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Mi2x5KmVHY8aFVS8WFaKRIl7phB/m6sMx8X9ScJ0O1Y=; b=SLnXlChbl4COxU20vqeACOStXS
-	tkQRcsMXtoj3y24ydLryxhmKrFGEV25nIE+tWyNQP4BpzLKcedqO4iuD/ZpXSIfDpwJxx2t62OBbV
-	tNyyhGZ8pKr7S3llsuI5ZhpwuKQYeKmYma7O5/OJUiZdfaNgrJ/yrMF7bXDSv1CbTe0xkHWBFRndA
-	kE3gsuOA/DcWFAoj3jrWzKfrviIwPc5eXa4dOuVpgcWZ9cIlNbldYFvKxylL5VkmIHL8K4I5dX7A0
-	D9IhQqOf3ylvuHx0G45pvs1SytrVYkAN9TdoK+MctEF/mByurC0SXwiaxdZX8tI26/ZfkHuy7OwAN
-	wvH9EfWA==;
+	bh=Z7zCiKznvtISJjaLkQGP6+7WjJ33gWstbauf9XZGz6U=; b=uTG0iHUhVjJ5mDHqFd/kGPoZtm
+	ALkc4LRPSKf+7xQvHRxWjuwwVndXVBV4WHs67bVG4wfd6LM1w5OteZwRzxjTKCWYTEohXE7hI2+fM
+	9G55XIaJ6SjB69+n9y3ijnpYhV6MfouBMrtW9YP+UEE6aISjHn6auD2IEhFCf7Ll2ZoVSwDVciDsh
+	XFsVwLcqspvy5raUlcHiqTVAA1EHEgIC+WbR9Q7Y2PIs/Nw6KyJ2r+Dq+CnvcfGO2PXV/Sk84z50S
+	TBxTQxXzPVHMI56AlllI0Uv+OACyLLB6dNzs8aSV+srgLV6zD99pSb/tS8C+5wl1LNpLx8fPxmFdG
+	NBHqr/gQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbLcX-002Lvk-Bd; Sun, 12 Mar 2023 13:20:17 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1pbLgU-002NuL-3w; Sun, 12 Mar 2023 13:24:22 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbLWM-002Igi-7H
-	for linux-mediatek@bombadil.infradead.org; Sun, 12 Mar 2023 13:13:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=Mi2x5KmVHY8aFVS8WFaKRIl7phB/m6sMx8X9ScJ0O1Y=; b=Iljn4Qu8XJqujSk1dRZfLXYm7c
-	EWdYr1QckfbH33RbeLjyPfiAM6tffqRIRxyri3t8QSpIfan3JXJKHkY9qwJr3GRNusKrVSXAil9od
-	ZUnt4bld43EjUZJjp/DkqlvLPD+SVlda4zgkDEaS8vDPeSMCmocHPfiNo8C9lhuqpNVqXDfYzLrgk
-	xwP+qxBC3CazrtottqjZUhCFX9AvFkRfF5LbHBoSsqKZxXoc0znnXxZqD+Rd9c8T6/E4bt1z4H8oe
-	l9Gpbpd8sbnCoDgtqr3HLF1t/clU/DiUW7cvUjXjVicQLF4gRYgFmDp/q723e+Zl3y2QkO0GCbgTi
-	z5M8ckzQ==;
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
-	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbLWF-00B3ed-A2
-	for linux-mediatek@lists.infradead.org; Sun, 12 Mar 2023 13:13:51 +0000
-Received: by mail-ed1-x529.google.com with SMTP id da10so38596890edb.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 12 Mar 2023 06:13:46 -0700 (PDT)
+	id 1pbLWV-002IS0-Nb
+	for linux-mediatek@lists.infradead.org; Sun, 12 Mar 2023 13:14:06 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id da10so38598967edb.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 12 Mar 2023 06:14:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678626825;
+        d=linaro.org; s=google; t=1678626843;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Mi2x5KmVHY8aFVS8WFaKRIl7phB/m6sMx8X9ScJ0O1Y=;
-        b=GG1FZzu4R08U7ZrQJTDqnm9yyObLtqMDWCx3B/cxyKmqz+Inu/lGru3GBlSAmoNZ2d
-         WS9SlIFw7l28qxUjUEIBnfHvBpm5c6g1F4pUDGTJklw6dfbWjyAvPQGUtVzR7OyvFiyQ
-         dyuSUmpAGQUkWb8ymF+2KyhC2+95GCs3P8qBCovptLLx92YGuEIvrF2/nQKp3RKdKB2q
-         4WRWxJI+thxZatMOq8kxvNE8yRXL8FB+dRcXQH7oOSuC9AcNWcYgasCTPck/INBz0sk4
-         D5bd8nEqJArLbuAbevCLQSORbLT9ASQ4UO6q9+5gCJHqKdXkvauSNJboZF8dLbTMmvXn
-         eDAg==
+        bh=Z7zCiKznvtISJjaLkQGP6+7WjJ33gWstbauf9XZGz6U=;
+        b=hkgeQTl7kiZH/3Q54ASwYRPqBYEKm9l2FvNF4N6ujUzpjYBOHSlr9uaGtfsFgk5dUy
+         Lf7kyZH3h1JJOZsT/VqnMhAwIr9habC6FILxMvlJg+5lDE8Gm8v9LoOiSX0AgLvzYOXV
+         D1eMF/v8xIRnSfqePFrzRlbuWXhKfLcsc5BxUvRxpTQsE40ns4iU8iLxwlkwixvZdt1i
+         plgBO2DlKmx7mC/7hZlCbT6NpXJAd3vc/duYJ32+zVYAhmGzyshA+m/npMOTDXiqIciY
+         cqtNGAb85Dl+16dZ0hHPIPDKjL/nPIK6PpZ9XRG6VOw8dR+hyXC1DPyCGKqcyAUvnNbP
+         D7MA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678626825;
+        d=1e100.net; s=20210112; t=1678626843;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Mi2x5KmVHY8aFVS8WFaKRIl7phB/m6sMx8X9ScJ0O1Y=;
-        b=Kvb9cXBkC+vSeoE5TFwm7YebzL27NgOsLc2bTCAMIps2QCuYqX78Sjbn/sr6c3JBfh
-         H+3J0GGQF+OLZP1DtTmfOV90jmWNa96afJgBJ4IwWSRgacqO2aZjAhcaED5zJMaSgvmb
-         wFYIjyyNMwDgQvvNlmrJLQrkB8Q334XcTX8Rma5gJF0Tkmy2CFKnIK90q8+v/gexj6SJ
-         f2GHBbgbVKmgqETIJ1djPBZfKTWhNFRMoI8Wnm5VBp1b/hwNNUitdUZS4vam8JjoeqYV
-         JRDYKDKzAFVDNAQ0ooCQA4l63WWM2PqHWjEuCI+bWO0uDa/xNc5QRZVU0BA7pI6QmZrs
-         N6yw==
-X-Gm-Message-State: AO0yUKWvRCF0Kn4zCKiGsvFSEmTQRgI/bIgSe5lLiCoiFabnPD+zIBno
-	zevSEUayn5LEiALYIocfwf4F7A==
-X-Google-Smtp-Source: AK7set+7qUF+bcLWEkAr4Cox0v1rHikG9c/U926xfMgDAeF0Y5GVKCnNz9afn9B0OfITyqkEgAYQeQ==
-X-Received: by 2002:a05:6402:1005:b0:4f9:f45e:c8b3 with SMTP id c5-20020a056402100500b004f9f45ec8b3mr5025265edu.27.1678626825396;
-        Sun, 12 Mar 2023 06:13:45 -0700 (PDT)
+        bh=Z7zCiKznvtISJjaLkQGP6+7WjJ33gWstbauf9XZGz6U=;
+        b=XvWqqcqjWsx8B7PeM6fZDFN/0s03HByqXBu9zmXeL/sVZ90F/8Eee8JHvDNQ+NIQ+p
+         CMsMMi7phEKzjU2zPOLxtoQkk+HH/rU/uWpmh/LwajCfC5BlyyDi1cqb2Yvz+JKGg+Vu
+         xXvIm0wS9kwTcEBQ3UV2bbX0JmDLybIOHYnsMOs/jHYTtvfql2wlua5/XDBV2pujQbM/
+         Ud8Xt+JmiHjOLJN5GL6hlU2S/NPgZZW5T/x6PgHQB7FJJrlZHGqsg3/N/FtEvYxDP/B6
+         k2jGKphrh9patPGVvMclGh50b5y3fOoQygdnOAVTpOdhsP5nCiXpdmVhragvt9pmqmA8
+         a4Ig==
+X-Gm-Message-State: AO0yUKWb/NMoXOY5NbuG7zep/mLz9bGlKUJ7dfl3PyPnTPwAbIzqzEPC
+	n1xZrq0/80Eas4pEQwDdUPpkXQ==
+X-Google-Smtp-Source: AK7set9rwzHv7NjHz3Ld8t1U7IlpFCFMC7/C2h9WMvqIP99asEQnOhRylPIAm1sXrRZyif38WBVBkg==
+X-Received: by 2002:a17:906:855:b0:921:c122:52a7 with SMTP id f21-20020a170906085500b00921c12252a7mr4317759ejd.22.1678626843141;
+        Sun, 12 Mar 2023 06:14:03 -0700 (PDT)
 Received: from krzk-bin.. ([2a02:810d:15c0:828:d9f6:3e61:beeb:295a])
-        by smtp.gmail.com with ESMTPSA id r19-20020a1709067fd300b008eddbd46d7esm2213279ejs.31.2023.03.12.06.13.43
+        by smtp.gmail.com with ESMTPSA id r19-20020a1709067fd300b008eddbd46d7esm2213279ejs.31.2023.03.12.06.14.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 12 Mar 2023 06:13:45 -0700 (PDT)
+        Sun, 12 Mar 2023 06:14:02 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Joe Tessler <jrt@google.com>,
 	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
@@ -121,9 +107,9 @@ To: Joe Tessler <jrt@google.com>,
 	linux-sunxi@lists.linux.dev,
 	linux-rockchip@lists.infradead.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 11/28] media: platform: ti: am437x: drop of_match_ptr for ID table
-Date: Sun, 12 Mar 2023 14:13:01 +0100
-Message-Id: <20230312131318.351173-11-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 20/28] media: platform: jpeg: always reference OF data
+Date: Sun, 12 Mar 2023 14:13:10 +0100
+Message-Id: <20230312131318.351173-20-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
 References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
@@ -131,8 +117,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230312_131347_837817_78B13380 
-X-CRM114-Status: GOOD (  13.90  )
+X-CRM114-CacheID: sfid-20230312_061404_001933_74F2A595 
+X-CRM114-Status: GOOD (  14.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,26 +138,41 @@ used and the of_match_ptr does not have any sense (this also allows ACPI
 matching via PRP0001, even though it might not be relevant here).  This
 also fixes !CONFIG_OF error:
 
-  drivers/media/platform/ti/am437x/am437x-vpfe.c:2620:34: error: ‘vpfe_of_match’ defined but not used [-Werror=unused-const-variable=]
+  drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c:1890:38: error: ‘mtk8195_jpegdec_drvdata’ defined but not used [-Werror=unused-const-variable=]
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- drivers/media/platform/ti/am437x/am437x-vpfe.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/media/platform/ti/am437x/am437x-vpfe.c b/drivers/media/platform/ti/am437x/am437x-vpfe.c
-index 2dfae9bc0bba..fe89b8e250e7 100644
---- a/drivers/media/platform/ti/am437x/am437x-vpfe.c
-+++ b/drivers/media/platform/ti/am437x/am437x-vpfe.c
-@@ -2629,7 +2629,7 @@ static struct platform_driver vpfe_driver = {
- 	.driver = {
- 		.name	= VPFE_MODULE_NAME,
- 		.pm	= &vpfe_pm_ops,
--		.of_match_table = of_match_ptr(vpfe_of_match),
-+		.of_match_table = vpfe_of_match,
- 	},
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 969516a940ba..bd12e73492e5 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1898,7 +1898,6 @@ static const struct mtk_jpeg_variant mtk8195_jpegdec_drvdata = {
+ 	.cap_q_default_fourcc = V4L2_PIX_FMT_YUV420M,
  };
  
+-#if defined(CONFIG_OF)
+ static const struct of_device_id mtk_jpeg_match[] = {
+ 	{
+ 		.compatible = "mediatek,mt8173-jpgdec",
+@@ -1924,14 +1923,13 @@ static const struct of_device_id mtk_jpeg_match[] = {
+ };
+ 
+ MODULE_DEVICE_TABLE(of, mtk_jpeg_match);
+-#endif
+ 
+ static struct platform_driver mtk_jpeg_driver = {
+ 	.probe = mtk_jpeg_probe,
+ 	.remove = mtk_jpeg_remove,
+ 	.driver = {
+ 		.name           = MTK_JPEG_NAME,
+-		.of_match_table = of_match_ptr(mtk_jpeg_match),
++		.of_match_table = mtk_jpeg_match,
+ 		.pm             = &mtk_jpeg_pm_ops,
+ 	},
+ };
 -- 
 2.34.1
 
