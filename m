@@ -4,90 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBBC9C74A4B
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 20:10:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E702C6FD19
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Mar 2023 20:23:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EEa+VzyXGmMo8k+OhfFO6nrKKSd1RKBu+PutBDnuaPU=; b=seQZo5FsUsCvD1ZAdPSlqtpG4p
-	OzXUfh/jk5LJKkxyOm27A49DQG3hYQItQ8M5TqJyMcckL5rI/W/fQml2Zvh0w+IEytDGf+ksfhQeu
-	b859tKgs6HYeOPU08cZYg4Gmo7SRGnuf7ab/iITzZBvkNU5qQ3CJfdFamf0i7NZWa4pY5ww6Jog2M
-	lwPkiM8lwVjPvZ1dLF3OtmBzLGLjrlWAwAznpWAAiOtUYXtJytWrEtEnPw4Qvfq8CBW8/G42E8VAx
-	yia6UEg8uzURIIj02H1VgrJbVVz8p3NnXc3luRTDX3k8x9PiT27X398hsbxRdD18V5rjh/K6O7Z8F
-	Yodex0XA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zx5Hx16VtrsWGIQLk9WwOhEjwlykZ68lI6lzjbPZklw=; b=Ddwg59Z0WGYc9ZnW7wpZxZt5FP
+	q9R1P9jEy+vzfsOmoYGHCaXB+DOVPrTRlPH1zJdB7b4Taadp/wJd/7rnp0H5MBF8oTJe0VgG25id4
+	BXvxwFDV4lkrW1EKlY1VivmwHyjUI4Zl6zlC6bgdQPHCda7GVjFRFBRVjNojTE/A9zPGIwhWqee9O
+	gNjhuVPAvklBEbtSXcKAYcAcIFm/Jhh4V2Mw9KEKoWTLPqIq5LwUxXqjeLsa5MJy3OAYESqtiFGyo
+	YOlNInAWoi/U22tfRyTmpFXCavVRz2x688HwK2GDqZ2J7puyf/hwRo3HGHDZMxSHF/xvXSulXyuWA
+	N9PEohVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbS1B-003Qrc-5q; Sun, 12 Mar 2023 20:10:09 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1pbSDz-003TnR-AB; Sun, 12 Mar 2023 20:23:23 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbS17-003Qqu-Nd; Sun, 12 Mar 2023 20:10:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=EEa+VzyXGmMo8k+OhfFO6nrKKSd1RKBu+PutBDnuaPU=; b=j1nEDkOjxpnnRy0axAW7EmHNun
-	n/36i/yQUnBRvy76G6quvVhPn5cPmeG/cbz8OPkzyOIEqlaJ3MYL4REE5sCCWL7NTFBwAVDLrRvUP
-	FKH6+T+ohBePyo/iNMIMD9WIFjj75Mrbqpuga9DiME6TLk/uqYJBShxNmqlCsVFMPI1RRA/jW6PuM
-	YUCXE+bmzbqsc/gsu3PgZMtILlofxWv+dngPHLlRhGORoQC/p3sws097Kvik2mfU8wk+kU7b+d80O
-	/7W5eYyUmcAF2QPu4inYwlpcMcSYSN6qGD92AYRcyev6BuY6lfKNFtBNru70O4HJ2lvLsoh7JncEM
-	YVN8npjw==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:49170)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1pbS14-0001rj-JQ; Sun, 12 Mar 2023 20:10:02 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1pbS13-00070e-4S; Sun, 12 Mar 2023 20:10:01 +0000
-Date: Sun, 12 Mar 2023 20:10:01 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Daniel Golle <daniel@makrotopia.org>,
-	Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
-	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
-	Alexander Couzens <lynxis@fe80.eu>
-Subject: Re: Re: Re: [PATCH net-next v12 08/18] net: ethernet: mtk_eth_soc:
- fix 1000Base-X and 2500Base-X modes
-Message-ID: <ZA4xmRTTm0vjHmMN@shell.armlinux.org.uk>
-References: <ZAijM91F18lWC80+@shell.armlinux.org.uk>
- <ZAik+I1Ei+grJdUQ@makrotopia.org>
- <ZAioqp21521NsttV@shell.armlinux.org.uk>
- <trinity-79e9f0b8-a267-4bf9-a3d4-1ec691eb5238-1678536337569@3c-app-gmx-bs24>
- <ZAzd1A0SAKZK0hF5@shell.armlinux.org.uk>
- <4B891976-C29E-4D98-B604-3AC4507D3661@public-files.de>
- <ZAzk71mTxgV/pRxC@shell.armlinux.org.uk>
- <trinity-8577978d-1c11-4f6d-ae11-aef37e8b78b0-1678624836722@3c-app-gmx-bap51>
- <trinity-27a405f3-fece-4500-82ef-4082af428a7a-1678631183133@3c-app-gmx-bap51>
- <trinity-eb5bbb4a-b96f-4436-ae9f-8ee5f4b8fe9b-1678639848562@3c-app-gmx-bap51>
+	id 1pbSDj-003Tfy-Ud; Sun, 12 Mar 2023 20:23:09 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id fd5so6984684edb.7;
+        Sun, 12 Mar 2023 13:23:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlemail.com; s=20210112; t=1678652584;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=zx5Hx16VtrsWGIQLk9WwOhEjwlykZ68lI6lzjbPZklw=;
+        b=Hf8bDIgSRyHgy9bXQ/Gk4nexYiqXGYoCYtQ04Ivh+iCVbpJ2b5wzrRnb++ax5WG5YU
+         l1ECC7hckmqBIWK0FYKledOUlR/8oGb9iU/bprqDFfYvUnH9HXOkXMuEU7AitS1oLCXw
+         myetldVYFfznoSCvDzeKhgZkcDBm8pW0l/vGCJjUPX1DzrdmVRAKk857IvrVjfQ9XSKG
+         2N5oK1VtlQxJyFx4Mf99gdPkQnYe53VpL6QT66oSCLZqVHMC0inMBQbwy20+y8itU9ok
+         BWs74qxV0g+EZr9O9dScl2udx1DcuJJXJz0jv3NNva7rrPcHkok53W0tVeIcIuzzmOKr
+         qkHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678652584;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=zx5Hx16VtrsWGIQLk9WwOhEjwlykZ68lI6lzjbPZklw=;
+        b=BdVZ8GdX+RxEg+Ea8z5wgtQfsAeHrOJZjbXlMVx8xpj5Nz5kP9uuZjzr1t6VTUnfFb
+         OF7qNJ79ZEtplCS4i3S1XLNN+cjOIa0WIKakYN4OsloRephp2CmFdTW8saWz2YY9M8QP
+         0p/LH/ePZCwvoMUKLgd6Ut5eFBQSAYjFKFNvJgY0mq3OOZmfxKiuxkFI0TjpGNQZERzL
+         VLo00pxelrDRkpxdb2HKe7gbUGXRXbsIEdF+yclmLkzzvuG05CcJlUQ818LuNd9L6aFr
+         +1T6MPup3qlcpTuD/MAtdS6dbH8SGiign8uNwXSAatX1500xkk/O9jCl9/RJZkv148o3
+         k5oA==
+X-Gm-Message-State: AO0yUKXIaM7S6H++QDJqbKLJSWThvlXHVzkiv4OyNS9RQU7Q0qFrpTwE
+	tDYMNBIcBjC4z/UhF2dp3D8M5RVlzuImZ6z6HRY=
+X-Google-Smtp-Source: AK7set9zgGbqFrzGWxNsXVoKpAldwMmxSrIf9cZOIFv0n5RvCM/bJPrPW3NGvz9pmm0rGWW96q1mG4aHSyR0BOq+UH0=
+X-Received: by 2002:a17:906:e58:b0:922:ff34:d814 with SMTP id
+ q24-20020a1709060e5800b00922ff34d814mr2005221eji.6.1678652584109; Sun, 12 Mar
+ 2023 13:23:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <trinity-eb5bbb4a-b96f-4436-ae9f-8ee5f4b8fe9b-1678639848562@3c-app-gmx-bap51>
+References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org> <20230312131318.351173-2-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230312131318.351173-2-krzysztof.kozlowski@linaro.org>
+From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Date: Sun, 12 Mar 2023 21:22:53 +0100
+Message-ID: <CAFBinCDTRjqLfJvs=dtQNS0=5mZSDAdR8tQNt_qLt-BH9+P7MA@mail.gmail.com>
+Subject: Re: [PATCH 02/28] media: cec: meson: drop of_match_ptr for ID table
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Joe Tessler <jrt@google.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Michael Tretter <m.tretter@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Jacopo Mondi <jacopo+renesas@jmondi.org>, 
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
+	=?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>, 
+	Rui Miguel Silva <rmfrfs@gmail.com>, Wenyou Yang <wenyou.yang@microchip.com>, 
+	Bin Liu <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, 
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
+	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, 
+	Sylwester Nawrocki <s.nawrocki@samsung.com>, Patrice Chotard <patrice.chotard@foss.st.com>, 
+	Yong Deng <yong.deng@magewell.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, 
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Samuel Holland <samuel@sholland.org>, "Lad, Prabhakar" <prabhakar.csengg@gmail.com>, 
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Sean Young <sean@mess.org>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230312_131005_793672_41F9DAF3 
-X-CRM114-Status: GOOD (  15.64  )
+X-CRM114-CacheID: sfid-20230312_132308_118705_FD078016 
+X-CRM114-Status: UNSURE (   9.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,35 +108,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Mar 12, 2023 at 05:50:48PM +0100, Frank Wunderlich wrote:
-> Just to make it clear...the issue with the copper-sfps is no regression of this series it exists before.
-> i only had none of them to test for until this weekend....my 1g fibre-sfp were working fine with the inband-flag.
-> 
-> this patch tries to fix it in mtk driver, this was rejected (as far as i understand it should be handled in phylink core instead of pcs driver).
-> and no more in the v13, so we try to fix it another way.
-> 
-> whatever i do in phylink_parse_mode the link is always inband...i tried to add a new state to have the configuration not FIXED or PHY or INBAND
-> 
-> drivers/net/phy/phylink.c
-> @@ -151,6 +151,7 @@ static const char *phylink_an_mode_str(unsigned int mode)
->                 [MLO_AN_PHY] = "phy",
->                 [MLO_AN_FIXED] = "fixed",
->                 [MLO_AN_INBAND] = "inband",
-> +               [MLO_AN_INBAND_DISABLED] = "inband disabled",
->         };
-> 
-> include/linux/phylink.h
-> @@ -20,6 +20,7 @@ enum {
->         MLO_AN_PHY = 0, /* Conventional PHY */
->         MLO_AN_FIXED,   /* Fixed-link mode */
->         MLO_AN_INBAND,  /* In-band protocol */
-> +       MLO_AN_INBAND_DISABLED
-> 
-> is my start the right way?
-
-Oh ffs.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+On Sun, Mar 12, 2023 at 2:13=E2=80=AFPM Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
+>
+> The driver can match only via the DT table so the table should be always
+> used and the of_match_ptr does not have any sense (this also allows ACPI
+> matching via PRP0001, even though it might not be relevant here).
+>
+>   drivers/media/cec/platform/meson/ao-cec.c:711:34: error: =E2=80=98meson=
+_ao_cec_of_match=E2=80=99 defined but not used [-Werror=3Dunused-const-vari=
+able=3D]
+>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 
