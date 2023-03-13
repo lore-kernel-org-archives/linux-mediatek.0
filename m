@@ -4,62 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 616E3C6FD19
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 19:08:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 332D3C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 19:08:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dpW8tIdtMCVLbm8bvFpURHkHOH3/68LedyCnubCgW4k=; b=Z9zSeVK7pkgPLlNdZU7Y/um9SY
-	+D/ku2ktA4lGe4/etXn8HrWehoptLwR4YaMploy9pL2HYng0tdstUUj46JbdIIoaBKm7l65oEXZk0
-	EFKSmq0Y6YxPCuvjZqx/mN93Ls3oKFjii+ylre6qTcR6jUFKtmdY42SLdYx3a+3YWw9AHpV120bDg
-	f9DHhgkH19YmmVqN5pizA7qdo7GgF0ANBB387TKRQ9HDVl0xhNUIkeydRX9g/xWM9RzfSoXjy2ou6
-	sKwD5snQLNVE16pGFuTYpoqDT7DfbfulAy4Nm1np9xa2VIi2kkI9xhKYL3Z7+P6Zbn4GLpNiQuV5m
-	llHCcNSA==;
+	bh=TFjBcFNs2wVUK0e5AkwuzEEoFxbSyvsgnOxjOKvdklM=; b=z/mNaN44jyTzgFnQxW9wXuxkXw
+	SaDqCsTp3yJKHPNZpX6ddHENg8qorQHdJIV0CGkWXKM+MUo2E1Z+nq1+nlQEPE0fZ85+Qpzw/nKNF
+	kCMQkDZ5iHhLEmdtlD4WDwnHErsYMaqChGQZKQQ6Nc3NdNhwZZb0QdiUd7XshYHZIKuOmx01FlRBi
+	QRTPs9HHzEV+bShXiP4/nCIajJyKrHHl+XI+5Ueqs00NT2g6A6D5ACKmPsje4/+r2AaSxHXMgD2rt
+	50lSOIie8Ni8WmFa0XRAwEOamGU9BXKpiExhhdQ/gwVzuH1QuvY+8JDqS3ALMVwoxLa2M5okxd1tF
+	J2i1BNtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbnWW-007RgG-F3; Mon, 13 Mar 2023 19:07:56 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1pbnWv-007Rql-8M; Mon, 13 Mar 2023 19:08:21 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbnWL-007Rbz-OQ; Mon, 13 Mar 2023 19:07:47 +0000
+	id 1pbnWe-007Rja-9g; Mon, 13 Mar 2023 19:08:05 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 52644B811F0;
-	Mon, 13 Mar 2023 19:07:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E98ABC433D2;
-	Mon, 13 Mar 2023 19:07:38 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTPS id 7E669CE1126;
+	Mon, 13 Mar 2023 19:08:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4587EC433D2;
+	Mon, 13 Mar 2023 19:07:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1678734461;
-	bh=NSgcGMlvHaZdY1J2Us1HiQZa412OdeIu/4FLhrIhJVY=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=Hke5SM/mxLaeP5gd2fw1qU77XLIYsy+ZXz0S7dsUv8LMn1YYsIlQ6sXh+uiX1zMho
-	 wMadRJNLkrsf+GDOtvxXZ7rhhtkafdpZp1pXKaGOJp9aWdzK+9CKn/67GFQ1EWF6A2
-	 c4s27L+XyF3z4d18AuPa8c/tist0WAr6kC1SvAacWEA/KYWex07XzZw2tDWVJO85ID
-	 44i1KbUg9ph5zxCOfrcQxri2+1o25dXnLu2gRnZYcZkWxCTkWGOhQImXGWGa7BUmto
-	 UQl8KN52L6Qz4CjVdj743JQ1EDE66kiT6ixeUJwJlUxpWl0gKjHrbJMH88r+oIaSfc
-	 W/tGN9jJcNGEQ==
+	s=k20201202; t=1678734480;
+	bh=5jfl9/hlfxAkBs3SczAn6QYlPXw9oRLcWoCeAZ5s0Zk=;
+	h=From:To:In-Reply-To:References:Subject:Date:From;
+	b=qy4U8EsWT9qdg/BRniO8wddtjYJExE2O0HT9PPvdGgN9jxC9enNuu0Z2Xtn6G5UV6
+	 bC2miBMO0DXSvemVXs/Hszmr1FNrHmFOE7RB+89UH8vKMXUESE5FPnILrYViv7OGND
+	 Ujak4aldgjlCMSP3Kxf0WBF7ll03WguZ6QiafKA9bJqTwbXFJst7It72+zJ36tOr7n
+	 hA2wnnUlRTAwHVynEBeKhK7Tuze5tkj5aEza8sWAfagHejYDOQsY+FCUOEeFV+sr7h
+	 CAeElN01aEgm7N6Dh8pFbIsc3bBpxnphPQlc5Kt83f/PNAjReRabIhaizmmBcarWh7
+	 8/KD0VLoPzSAA==
 From: Mark Brown <broonie@kernel.org>
-To: lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, 
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
- Trevor Wu <trevor.wu@mediatek.com>
-Cc: jiaxin.yu@mediatek.com, alsa-devel@alsa-project.org, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <20230307040938.7484-1-trevor.wu@mediatek.com>
-References: <20230307040938.7484-1-trevor.wu@mediatek.com>
-Subject: Re: [PATCH 0/4] ASoC: mediatek: fix coverity problems
-Message-Id: <167873445867.106067.16026073006550113761.b4-ty@kernel.org>
-Date: Mon, 13 Mar 2023 19:07:38 +0000
+To: Liam Girdwood <lgirdwood@gmail.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Tony Lindgren <tony@atomide.com>, Andy Gross <agross@kernel.org>, 
+ Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konrad.dybcio@linaro.org>, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-omap@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230310214553.275450-1-krzysztof.kozlowski@linaro.org>
+References: <20230310214553.275450-1-krzysztof.kozlowski@linaro.org>
+Subject: Re: (subset) [PATCH 1/9] regulator: lp872x: Mark OF related data
+ as maybe unused
+Message-Id: <167873447700.106292.3339315429044423313.b4-ty@kernel.org>
+Date: Mon, 13 Mar 2023 19:07:57 +0000
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-Mailer: b4 0.13-dev-bd1bf
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_120745_983145_EAEC3C6A 
-X-CRM114-Status: GOOD (  12.64  )
+X-CRM114-CacheID: sfid-20230313_120804_530514_A8CB1F28 
+X-CRM114-Status: GOOD (  12.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,32 +79,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 07 Mar 2023 12:09:34 +0800, Trevor Wu wrote:
-> Coverity reports some UNINIT and CERT STR31-C problems, so we add
-> initialization and dai id check to resolve problems.
+On Fri, 10 Mar 2023 22:45:45 +0100, Krzysztof Kozlowski wrote:
+> The driver can be compile tested with !CONFIG_OF making certain data
+> unused:
 > 
-> Trevor Wu (4):
->   ASoC: mediatek: mt8195: add dai id check before accessing array
->   ASoC: mediatek: mt9195-mt6359: fix UNINIT problem
->   ASoC: mediatek: mt6358: fix UNINIT problem
->   ASoC: mediatek: mt6359: fix UNINIT problem
+>   drivers/regulator/lp872x.c:931:34: error: ‘lp872x_dt_ids’ defined but not used [-Werror=unused-const-variable=]
 > 
-> [...]
+> 
 
 Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
 
 Thanks!
 
-[1/4] ASoC: mediatek: mt8195: add dai id check before accessing array
-      commit: ff728899065922534d80170685fb807194d6487b
-[2/4] ASoC: mediatek: mt9195-mt6359: fix UNINIT problem
-      commit: 1a3f0116b74ba2f9477c28fcf9d66ac7126455fd
-[3/4] ASoC: mediatek: mt6358: fix UNINIT problem
-      commit: 9760e01b3851dc51d1901876668168328d34a647
-[4/4] ASoC: mediatek: mt6359: fix UNINIT problem
-      commit: 3a60fa4c063dacc5eb66660aa23107f3cb8a477e
+[1/9] regulator: lp872x: Mark OF related data as maybe unused
+      commit: 70b26bb55f719e2900404459128d41c8425c8dde
+[2/9] regulator: max20086: Mark OF related data as maybe unused
+      commit: 4a5850865641d0b83caaad81ca0bbd722ac514fb
+[3/9] regulator: mp8859: Mark OF related data as maybe unused
+      commit: 334e6b85a348a79bb018003f09e1cc94accd53a2
+[4/9] regulator: mt6397-regulator: Mark OF related data as maybe unused
+      commit: 38cc873cb1cf27965dacbbc5957a7a8aee89679c
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
