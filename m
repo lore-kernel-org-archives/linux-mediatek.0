@@ -4,57 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7151EC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 23:51:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0F9EC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 23:54:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ETipKauCB8Ei7IGF1ikhncA3DjCbFvZXwzJqo+1AHTI=; b=JQhn8Tly89jcN2
-	m/oUxxwiD7HIn7UMIi9yozA5ROHH+WJH6jcpp16UgF8NqrlXB07gFH2s6QY7ZK41OVrLizBxm+37f
-	/LzLcT/+NyGoM5gBEtw7lFErLhp6biafHBhv2la1u6DcPkj7AIGhFzS1qn0mpsCKJwH6lmQXyaXXU
-	iGakja8WTzXKx0owdxV/p91rGV0E1mdM45tMwfCYsJ5QtdqY3W2yEMyyrPVD+jUtgHcpNxfh+T22D
-	Hty5BLIKm8ywfmuxxTvLkhXZhz1H53wdV14vwT4O2IP1cmx0v0Ajc6RnhdiGUlIpZ7KpLKL1vyQ7M
-	bze6gvnFkDX1uhhjp9OA==;
+	List-Owner; bh=b9tqzrgI8xxtk/gIFSKImQ9UC0NRlRXaTXs16f53z0I=; b=uiJTNiUzFeajZl
+	VdUDJWC0qWWTFPuBkN3T5lOGCTPwjbVjnJ9bithYaS1SjewCcV3Y+PYNSbu2wzb8z59EUKHb3h/xU
+	DrrIx0RncyfCoyUaMv9EtJ1aE6JHRPUD5DMe1LaQrAXQ8bMYwUpncv/oRLVjeqWgrvkykoGdX0EpV
+	n/oVLOsIMtnRaPY51n4TiDTXVnLZHF4bUPsUGAdx0CqObWXKAv6vTQ/m02ch3OBwYVk46PwXfOWG5
+	E7V0upHFWkMp/SG5rNZPokNbkvnsJoSt4PHMjJa4GeSN8PlqShnqhl7xEChoUQQHWu9sR/Wqvwo2d
+	SWQnfVrtI57t/sdNdXPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbrx6-008Lo3-SM; Mon, 13 Mar 2023 23:51:40 +0000
+	id 1pbrzM-008M6k-B1; Mon, 13 Mar 2023 23:54:00 +0000
 Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbrwv-008Lmr-Sz; Mon, 13 Mar 2023 23:51:31 +0000
+	id 1pbrzB-008M4e-9n; Mon, 13 Mar 2023 23:53:50 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 79423B81670;
-	Mon, 13 Mar 2023 23:51:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 50790C433EF;
-	Mon, 13 Mar 2023 23:51:26 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id CF3CDB81642;
+	Mon, 13 Mar 2023 23:53:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB5FCC433EF;
+	Mon, 13 Mar 2023 23:53:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1678751487;
-	bh=4ba/LXqyFOYnPz1mlKuD3GEqjFZuQ2b9fp0nAZ/ueqw=;
+	s=k20201202; t=1678751626;
+	bh=gSAvD8e0r3C0d1zGg6+R2BHZ7ljZS6nIV2sHt+LmnIE=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=Syy5G1QewWWlZ9TK7ummt8gGsimvVOpxB46dZV+nbGl0ZBXIs5D6XBxc/oTSrtPds
-	 /f7hXPQEB/BKeAPNVg4BhKpX17YXyt4zg5v7Q0uLv3hfpJtAVldzJblH7P/Hkgg1IM
-	 HoQLM4cpXsvSfnlz53OEFG4xvWJ6Tf88IuPo/St6trdeCGG+kDBPrFneBSM0M5OND8
-	 870RhbaOzGLdtLX8cQq0rtHklpBk6abM7+1G/VlXUhUAC3jB+stpO/D0S5xqsE/Vx3
-	 EPxEojQLs+F12KA7iXywyE+B+TRjD338wp0r5iNe+GWR+AI1JtKaqRR22XVemKCBi1
-	 Er/97XRKJBERg==
-Date: Mon, 13 Mar 2023 16:51:25 -0700
+	b=ancY9WMY/uv/1HxBZAT5oqADuUq9bshYi8NtqOgyyPxeCw3pxhYSzAxe8LvEIkhfU
+	 Z+tYK5oIvRwcvh31DwBIY4MFjmc0Xz45zqafxk3oiIM/SNGeT8r3Qs3SEWqky64NyK
+	 E8oShOIWbXoWozxraHxk7LKv6xsCucetzIoF7OsqWBSdeuNkacylYMI/ZDBZe3Swe/
+	 bZee4zWUZ5w2buRnfISTgcZoTpW7uDsK0IEely5YiWNt1ZziYtJZNgWrSzeVTD1Qxc
+	 /q6SF/czgyVFfGLOeS4YXXKOHI1kloxkO6u3Hmiallyo6aRG84CXGM3eBKjkb6BAP1
+	 kF/5bfJaOMOww==
+Date: Mon, 13 Mar 2023 16:53:44 -0700
 From: Jakub Kicinski <kuba@kernel.org>
 To: Daniel Golle <daniel@makrotopia.org>
-Subject: Re: [PATCH net-next v13 00/16] net: ethernet: mtk_eth_soc: various
- enhancements
-Message-ID: <20230313165125.4743e5c7@kernel.org>
-In-Reply-To: <cover.1678357225.git.daniel@makrotopia.org>
+Subject: Re: [PATCH net-next v13 16/16] net: ethernet: mtk_eth_soc: convert
+ caps in mtk_soc_data struct to u64
+Message-ID: <20230313165344.4db8f750@kernel.org>
+In-Reply-To: <2d10d7a2de2a94f475c5134868580ddef4852c11.1678357225.git.daniel@makrotopia.org>
 References: <cover.1678357225.git.daniel@makrotopia.org>
+	<2d10d7a2de2a94f475c5134868580ddef4852c11.1678357225.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_165130_249798_CB04EBAE 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20230313_165349_521524_5D0901EC 
+X-CRM114-Status: GOOD (  11.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,18 +67,17 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <vladimir.oltean@nxp.com>, Eric Dumazet <edumazet@google.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Heiner Kallweit <hkallweit1@gmail.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, devicetree@vger.kernel.org, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Alexander Couzens <lynxis@fe80.eu>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, =?UTF-8?B?QmrDuHJu?= Mork <bjorn@mork.no>, Felix Fietkau <nbd@nbd.name>
+Cc: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <vladimir.oltean@nxp.com>, Eric Dumazet <edumazet@google.com>, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Heiner Kallweit <hkallweit1@gmail.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Alexander Couzens <lynxis@fe80.eu>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, =?UTF-8?B?QmrDuHJu?= Mork <bjorn@mork.no>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 9 Mar 2023 10:54:23 +0000 Daniel Golle wrote:
-> This series brings a variety of fixes and enhancements for mtk_eth_soc,
-> adds support for the MT7981 SoC and facilitates sharing the SGMII PCS
-> code between mtk_eth_soc and mt7530.
-> Also prepare support for MT7988 which has been done while net-next was
-> closed.
+On Thu, 9 Mar 2023 10:58:58 +0000 Daniel Golle wrote:
+> From: Lorenzo Bianconi <lorenzo@kernel.org>
+> 
+> This is a preliminary patch to introduce support for MT7988 SoC.
 
-The netdev review queue is too long for me to comprehend, since the
-discussion is still ongoing on v12 (even tho seemingly tangential) 
-I'll drop this, please repost once conclusion is reached.
+When posting v14 please do us a favor and withhold this patch.
+
+It looks like the series doesn't need it and the limit on patches 
+in one series is 15.
 
