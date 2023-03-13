@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 121F6C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 15:00:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEF6AC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 15:01:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gGDnk7puZ8lK4RQ5erIV7021+ZCUekxP1LPuUFA+M1s=; b=Q9GziFNnWffAHGxRGzVO0wlEia
-	3hQM1JGVXazZrIHsJTQCn1T6ZEAmGYAYg7+y+FwCQTmf482RkeJHRA7Nr3goYor7sDTfFQceSRpIJ
-	ouKXFRQtwwyhShG0JRTQIfu7NxJT+vaj7UloNW7tCdN/APfVz3/fGWoiVkicZlBxBjkL0Zs5CGNeZ
-	+UohaqqXq+5mSooi77ePM1orDbcOtC8PcodR3tGX3coI8wUOLYuBWfaqAHyhntArPuiOUqSyn0MFX
-	GrycWQyBBlEGiwmKg+5x/kAgSU+karxoJ+P4w+iV5RLB/p1WXA51L5KXDIBvr728UQF5Z8DVh+/DE
-	9NtcLhBQ==;
+	bh=yghTjwmYI9uEVYDFL2Nwk0M9ZxsrOb3Hz6jNkyaXYc0=; b=yAn02wkBOhxePBnvWTX5FpZSMv
+	EKYDjhwh4ETE7WLsPrceoU4T3Dju/MEmMNSikGlR9eGHL9cNLTsa48a71UN6In0UFfneNDEwZcYcd
+	+zsMPpK10X2bUhMkcgnVkRqzf9oUFOgzlyscYXuN9qF+B7ULP0g9Net63CAEYLxAcW9/WQb0ljPZ+
+	OCeVcu0ZqBPwpAcKPuFUgFM8Rzp7NLxOduQ0QsJXakaiACgZpmOjy9HEYrWM+fmud8KzChcFHiGAG
+	X6PI0o5HSi/hRlLXlE7p5jrub6vMvT+31lQKh32TF07ypBFlyZl5xm51Nij6J9c0J6ogx1jfi+ypW
+	Rg05kl5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbjf0-006Ibk-QK; Mon, 13 Mar 2023 15:00:27 +0000
+	id 1pbjfq-006Ixm-AR; Mon, 13 Mar 2023 15:01:18 +0000
 Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbjd7-006Hoi-Ln; Mon, 13 Mar 2023 14:58:31 +0000
+	id 1pbjeG-006IIX-OQ; Mon, 13 Mar 2023 14:59:42 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id E90B3B81184;
-	Mon, 13 Mar 2023 14:58:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9CA66C433D2;
-	Mon, 13 Mar 2023 14:58:26 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 68D40B81186;
+	Mon, 13 Mar 2023 14:59:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9103AC4339C;
+	Mon, 13 Mar 2023 14:59:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1678719506;
-	bh=jxq03yf7Xaet9VvXtMUxebKs/p10RnENOfVyO8UP0Lk=;
+	s=k20201202; t=1678719577;
+	bh=aor2P1UgUGdPxdi86bjLDcwfFhylwJzACimW7kInbvY=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=DLFsLjwo+BuHJT1ZiIB6bTBvN4gZMT25idQ6lmBXeqJaNIAChRP+0fDpi3hUr6C9Q
-	 oOMKZXCBRRoUSXHlmcEnePsR06R6o2cr+/GSXH6tE2nKh6nXZpVl/MG4QLbquyNKDC
-	 LWITduQsZqaKKdGI/crSA/t0VYnNvkz9V/TCHY02eLUFMgJiBvsQX/Za52pNDiF2l+
-	 uGQscnQyTocAPZSec3mVWpRxME/rEL9V9SOwumrPhDYcmxmBkGsMAK6D2D7u9WFagf
-	 YKdUJqMkT7E7eBtKI8izB8gWyG14cYQuPpUZxwUtX8q7ul4S8AchypF2U6knDo8Uhr
-	 76rn2PJNZ11Iw==
-Received: by mail-lj1-f169.google.com with SMTP id f16so12896216ljq.10;
-        Mon, 13 Mar 2023 07:58:26 -0700 (PDT)
-X-Gm-Message-State: AO0yUKWKHuhWs8NBs00sFsbDIhdC0sgxC5dFeecCBRIc+wYQL0Tn9G1P
-	md2+n/0aGU7Vbgwky1BE+L/39ywPG+37/X/RJA==
-X-Google-Smtp-Source: AK7set93ppgf/8A7GowcaF9AMzop4M7RVXL14Ayxlc7lTWoPuXT4WNBru8d2Tw5m+TfhTYQd+XOp94bBcFBQulE38wc=
+	b=ohdN82SqGXRPJX3cyxSWQf7frIUq0JfGIXjdIMSBt+ODshEooBncUrzBJMWUejGvQ
+	 TVqEgCw1SAcdZhShx4HKRmVC6L/jo1TumrNmv9IYzJ6uGQqseaqe+WDQkSiz1X6EAA
+	 /v2Uuj4zRaNcWKEeeQdjMhl7OasG/jyZN5TFKVR4cik9TUFUl2im4NPDP/nvqosyZ9
+	 OnKo0gCMIuvWcubKsDfYYfBa4CNZXMhXxEVIByMn1gEzK3ALcplzpXbjE6JbtKl2Ak
+	 5PhETfpa+eNm/MkD9yBHkR6T8DYaHd2I9LoPQzTIzri9QWBAOSnJEhPGQ4ysBPrxma
+	 8TkJR2PgPrcUA==
+Received: by mail-lj1-f176.google.com with SMTP id h3so12906308lja.12;
+        Mon, 13 Mar 2023 07:59:37 -0700 (PDT)
+X-Gm-Message-State: AO0yUKVF5xSooyOA2EAVhiD5ElVWm8WSPPFac4+83hIhpJrDhBTAatam
+	CVKD3+cKIJBdcjktP/+jsrRS7B6lu/A3SDaN7A==
+X-Google-Smtp-Source: AK7set9FaEtus4V62k/yFd+Xl5REF0wUiIoL+llixgQGs2HHbtV1FOqc3QoH58tm6Az3ceEjZOG27aSTKnhUcRUDXCY=
 X-Received: by 2002:a2e:a36a:0:b0:295:9040:fb0b with SMTP id
- i10-20020a2ea36a000000b002959040fb0bmr10850100ljn.10.1678719504691; Mon, 13
- Mar 2023 07:58:24 -0700 (PDT)
+ i10-20020a2ea36a000000b002959040fb0bmr10851484ljn.10.1678719575627; Mon, 13
+ Mar 2023 07:59:35 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230220-display-v1-0-45cbc68e188b@baylibre.com> <20230220-display-v1-3-45cbc68e188b@baylibre.com>
-In-Reply-To: <20230220-display-v1-3-45cbc68e188b@baylibre.com>
+References: <20230220-display-v1-0-45cbc68e188b@baylibre.com> <20230220-display-v1-4-45cbc68e188b@baylibre.com>
+In-Reply-To: <20230220-display-v1-4-45cbc68e188b@baylibre.com>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Mon, 13 Mar 2023 22:58:12 +0800
-X-Gmail-Original-Message-ID: <CAAOTY__Qam0O+VhU1st20O=srxggPXNyrCE2T76E+E8hd3Q7qQ@mail.gmail.com>
-Message-ID: <CAAOTY__Qam0O+VhU1st20O=srxggPXNyrCE2T76E+E8hd3Q7qQ@mail.gmail.com>
-Subject: Re: [PATCH 03/21] dt-bindings: display: mediatek: color: add binding
+Date: Mon, 13 Mar 2023 22:59:23 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9zsX1CF6xf3TRm6+ZWkMNuXijYC_ErOHdgUi=O2kVVzA@mail.gmail.com>
+Message-ID: <CAAOTY_9zsX1CF6xf3TRm6+ZWkMNuXijYC_ErOHdgUi=O2kVVzA@mail.gmail.com>
+Subject: Re: [PATCH 04/21] dt-bindings: display: mediatek: dither: add binding
  for MT8365 SoC
 To: Alexandre Mergnat <amergnat@baylibre.com>
 Cc: Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>, 
@@ -73,8 +73,8 @@ Cc: Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_075830_256459_AE658EEB 
-X-CRM114-Status: GOOD (  13.48  )
+X-CRM114-CacheID: sfid-20230313_075941_117913_47D13362 
+X-CRM114-Status: GOOD (  13.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,7 +95,7 @@ Alexandre Mergnat <amergnat@baylibre.com> =E6=96=BC 2023=E5=B9=B43=E6=9C=88=
 9=E6=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=8B=E5=8D=8810:23=E5=AF=AB=E9=81=93=EF=
 =BC=9A
 >
-> Display Color for MT8365 is compatible with another SoC.
+> Display Dither for MT8365 is compatible with another SoC.
 > Then, add MT8365 binding along with MT8183 SoC.
 
 Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
@@ -103,26 +103,26 @@ Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 >
 > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 > ---
->  Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml |=
- 1 +
+>  Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml =
+| 1 +
 >  1 file changed, 1 insertion(+)
 >
 > diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
-color.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,co=
-lor.yaml
-> index d2f89ee7996f..9d081da433e8 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.y=
-aml
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.y=
-aml
-> @@ -39,6 +39,7 @@ properties:
->                - mediatek,mt8186-disp-color
->                - mediatek,mt8192-disp-color
->                - mediatek,mt8195-disp-color
-> +              - mediatek,mt8365-disp-color
->            - const: mediatek,mt8173-disp-color
+dither.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,d=
+ither.yaml
+> index 8ad8187c02d1..a7706cd65675 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.=
+yaml
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.=
+yaml
+> @@ -29,6 +29,7 @@ properties:
+>                - mediatek,mt8186-disp-dither
+>                - mediatek,mt8192-disp-dither
+>                - mediatek,mt8195-disp-dither
+> +              - mediatek,mt8365-disp-dither
+>            - const: mediatek,mt8183-disp-dither
+>
 >    reg:
->      maxItems: 1
 >
 > --
 > b4 0.10.1
