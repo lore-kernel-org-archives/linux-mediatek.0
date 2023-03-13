@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 543C9C6FD19
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 14:46:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C702C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 14:46:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ncMw54NVFjLG6iTIGh/c/rSD7OTpjRGDNxsvFRtIlBM=; b=RtNKA2XA3NcDGi/WlXCdVxsPiv
-	Jh6c9V4Y0QZM/GO7UgQHraIHeRNdDwQPQKg/1xih0aw5aF7pSrDAWu04RRdvHGp3Hv595W8oDCNZJ
-	K+KiVwfzCRgJW4YmRy/ZO33gPvPH+UMh6jhTl2wByU6MdoqQjYtx5ZyGLvWjvPJExGOAr8/+sMYEc
-	YuzrR7cxyM6R/LwTD4O3zR3fzAJwMB/mG48RrwSRIWbt8jeYrx7KqwuBUT8YTJpitUY5LHgEmF71f
-	oeQhbvzlDZgeyk7ewvypCE39KRefAQo1fx2yyY1pljwa4IqPWg8A62ykiGh22bPFON3H6nqkGaLLG
-	1PKBamqA==;
+	bh=N+s0Tr88i0EZKnilT/p+vaANkUpAI81qU/b+DskZC9I=; b=Ax9Dv4Jeveq5YXZXeP2P1YKOzp
+	lTK5zZmNX2soPgd++jH479wjvNgqm0T6eVwH3Frob/qY8QfkBg6zoYGVlAoA/o7vwlpukBqRHTFSL
+	fKefjP1RbP1X2mqvZ+WzFfIBs5ISbuc0sn8NB52zI3TDgeFa7MDA7XEselEEJBSz8zcW33GSwHr5J
+	Q+k4OwChKTMuJZ2PjOsV6jSRbz0bMtjU6o1yyEjLO8/4JHK3ny+mY1TLdsN9RyXdEFUHEzL/XBy9D
+	V9PMOX3JhBcIOpJ1I2EwMamcpTOmCx5vdUJ6m6nR+pyMQbn/FQzngE+3gunW4A9jTxv0EoT+bsqFn
+	gjd4S0cA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbjRL-006CF7-Mb; Mon, 13 Mar 2023 14:46:19 +0000
-Received: from gofer.mess.org ([2a02:8011:d000:212::1])
+	id 1pbjRa-006COR-86; Mon, 13 Mar 2023 14:46:34 +0000
+Received: from gofer.mess.org ([88.97.38.141])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbjR3-006C20-6u; Mon, 13 Mar 2023 14:46:02 +0000
+	id 1pbjR8-006C7c-6R; Mon, 13 Mar 2023 14:46:09 +0000
 Received: by gofer.mess.org (Postfix, from userid 1000)
-	id 0CA6A1000B8; Mon, 13 Mar 2023 14:45:44 +0000 (GMT)
+	id A56CC100072; Mon, 13 Mar 2023 14:45:56 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mess.org; s=2020;
-	t=1678718744; bh=MQpbYRSJt2Nky5m/Hb4UlOgCs8k1dpHDoiIla4to54M=;
+	t=1678718756; bh=SPJRtiBE7xPZNdaMyjvNHQcheMbaGg07J1nGRebzO/Y=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=VfhWWs0CDcE1gvNX2bXlLWyiGqQNluLYD0O0MSFqBVnkM6DU9I2mGeJ+uh0PUnSB1
-	 qEMx2alInfFAXtyAxi+XiPNFq/nvUtpwZMC/o7yPi1mpdC3r8GhRep1wRVxKv4nniH
-	 neI4CR1YoTW11uB79YwAZsajpesqobvK/q/lo+6qrYsBFdzWx8IVJ9NdUHozUz1xb1
-	 dDzcX/jrJ/vpNyVtCP6kcmm5OvP4zWiNl6esTu34QIANrW2+XE9BebzE23GLOJqLov
-	 0jWohIUUN+7quOtf6VpPlPOXGqXxSZuw5fqzdLHRoz410t4mWFKIjBTWf3+HmNaZuJ
-	 ZxrWX35f85+mA==
-Date: Mon, 13 Mar 2023 14:45:43 +0000
+	b=rZu0MaM6/9PwI7AHozOATv7eGrTxNeV50Xoh89ZkGO4ifvbHdiz18hxsTuO/yLBco
+	 9XadZ5vQD/DCbTF+8ZCCrWVgbfwELO3+bhsRDfRZEP3XCnCdTlA/+qzrzBIM/QgLhn
+	 3MsOUVw3ALieLxUWWnzkKQAbfC4XdR/jypFaqKaPqX+AMIYNQoD3RGO9diwJt3l/rR
+	 8/M03eGACPOFX5yRWWdRx364KxUAzgP4zSnkbvTm88278RJo4hf21KruaTd2mshojs
+	 lvbuEpw1LHJzQZuGzTNuD6VhZYm0203UhIP1ruuNkyMgJfsOvIXoa6UUNIVM8u/4db
+	 6hxECZ1Wh78wQ==
+Date: Mon, 13 Mar 2023 14:45:56 +0000
 From: Sean Young <sean@mess.org>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Cc: Joe Tessler <jrt@google.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
@@ -77,19 +77,19 @@ Cc: Joe Tessler <jrt@google.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
 	linux-arm-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 04/28] media: rc: gpio-ir-recv: drop of_match_ptr for ID
+Subject: Re: [PATCH 05/28] media: rc: gpio-ir-tx: drop of_match_ptr for ID
  table
-Message-ID: <ZA83FwxxePyIXPvL@gofer.mess.org>
+Message-ID: <ZA83JBcG46hjPp5w@gofer.mess.org>
 References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
- <20230312131318.351173-4-krzysztof.kozlowski@linaro.org>
+ <20230312131318.351173-5-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230312131318.351173-4-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230312131318.351173-5-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_074601_427046_B847A4FD 
-X-CRM114-Status: GOOD (  18.44  )
+X-CRM114-CacheID: sfid-20230313_074606_398255_CCB4BBDB 
+X-CRM114-Status: GOOD (  19.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,13 +104,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Mar 12, 2023 at 02:12:54PM +0100, Krzysztof Kozlowski wrote:
+On Sun, Mar 12, 2023 at 02:12:55PM +0100, Krzysztof Kozlowski wrote:
 > The driver can match only via the DT table so the table should be always
 > used and the of_match_ptr does not have any sense (this also allows ACPI
 > matching via PRP0001, even though it might not be relevant here).  This
 > also fixes !CONFIG_OF error:
 > 
->   drivers/media/rc/gpio-ir-recv.c:197:34: error: ‘gpio_ir_recv_of_match’ defined but not used [-Werror=unused-const-variable=]
+>   drivers/media/rc/gpio-ir-tx.c:24:34: error: ‘gpio_ir_tx_of_match’ defined but not used [-Werror=unused-const-variable=]
 > 
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
@@ -120,22 +120,22 @@ Thanks
 Sean
 
 > ---
->  drivers/media/rc/gpio-ir-recv.c | 2 +-
+>  drivers/media/rc/gpio-ir-tx.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/drivers/media/rc/gpio-ir-recv.c b/drivers/media/rc/gpio-ir-recv.c
-> index 8dbe780dae4e..ae1199cc73fd 100644
-> --- a/drivers/media/rc/gpio-ir-recv.c
-> +++ b/drivers/media/rc/gpio-ir-recv.c
-> @@ -205,7 +205,7 @@ static struct platform_driver gpio_ir_recv_driver = {
->  	.remove = gpio_ir_recv_remove,
+> diff --git a/drivers/media/rc/gpio-ir-tx.c b/drivers/media/rc/gpio-ir-tx.c
+> index 2b829c146db1..1a8fea357f14 100644
+> --- a/drivers/media/rc/gpio-ir-tx.c
+> +++ b/drivers/media/rc/gpio-ir-tx.c
+> @@ -199,7 +199,7 @@ static struct platform_driver gpio_ir_tx_driver = {
+>  	.probe	= gpio_ir_tx_probe,
 >  	.driver = {
->  		.name   = KBUILD_MODNAME,
-> -		.of_match_table = of_match_ptr(gpio_ir_recv_of_match),
-> +		.of_match_table = gpio_ir_recv_of_match,
->  #ifdef CONFIG_PM
->  		.pm	= &gpio_ir_recv_pm_ops,
->  #endif
+>  		.name	= DRIVER_NAME,
+> -		.of_match_table = of_match_ptr(gpio_ir_tx_of_match),
+> +		.of_match_table = gpio_ir_tx_of_match,
+>  	},
+>  };
+>  module_platform_driver(gpio_ir_tx_driver);
 > -- 
 > 2.34.1
 
