@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E47D8C6FD19
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 21:10:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 922E4C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 21:12:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n9xABVi9xTX3sYpyPG86wyS9dmTZ5RSzu4zqx6NQ57w=; b=r4I2qa+eVt8RHE
-	6I+isyCGgOBBmEs4IyEoeO9LkNKl3SwZVzQd1tTp92tPHX95lsNgmmfivfHBxvStnyL23sjrTIIgp
-	inSbqJ26B4T5/QT4cPXBrAkV3vnbelyKHZieFhQP2Sr0h6EhdHhWYdwvvsyELczsNEXWpYq0Qqbsa
-	N0nd/0z3CGr8IuHcHB/85Tc+6zoniV57GXLisJCa/Grc4Cho2IyB5wXjiG0w+fXBOkIgMOTwsEvTO
-	byzFbXL54oixVhSNvFzqIQQlXQZDh7Xq7fBuWrvPWCVXG20mYJnm5qFpN3h7PBWAhfCvlx03wehYS
-	mE+JcGDKAEUpkC4Bd7xQ==;
+	List-Owner; bh=stx8+LDoYxsSWuIVsc9qEwQhICZXgPwQTyxvAeBki7E=; b=isr3crNpF9LSkb
+	P7aqFa4uqROSU1Njzv7FK+jO3HtinSDahDSZwK5+OUWAGDX0LCFIHWdfLU1yXMc/ruUdQ8+ZT9xAE
+	m/P9yak1R8EYxsTbsKYs3g0xu33+MCv7MHqAVOcw+9SHe4CWOT4DBYBPapKhLuYy3Xuiu1DsmXo1e
+	Y8mA+Pd+KybBilMsPdHNTmc3R5tYkeCHbfL4gQnki0na1+gYSobi/zZfhLv3pVhS3b9o8ILFR5AX9
+	y7Zw1yT6lP9AyYUIhKlTMrv//qNfU8sI+QuZbHcjnC6XWlfwq+MJzjJjvbNGtBuzWY0+/hcN9i1Ox
+	PsZlsfHhzzlTP6n5UMXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbpRS-007qGV-Eo; Mon, 13 Mar 2023 21:10:50 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1pbpSb-007qm6-HL; Mon, 13 Mar 2023 21:12:01 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbpHX-007kps-Fx; Mon, 13 Mar 2023 21:00:44 +0000
-Received: by mail-ed1-x534.google.com with SMTP id ek18so22900348edb.6;
-        Mon, 13 Mar 2023 14:00:35 -0700 (PDT)
+	id 1pbpHf-007l4O-IT; Mon, 13 Mar 2023 21:00:47 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id cy23so53935697edb.12;
+        Mon, 13 Mar 2023 14:00:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678741235;
+        d=gmail.com; s=20210112; t=1678741242;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=n9xABVi9xTX3sYpyPG86wyS9dmTZ5RSzu4zqx6NQ57w=;
-        b=d0KCdHSbqqa855MIrgrgBhpuvvH6Sp1dUhm1z8UW7aYtrgCrmtvu9bTSfjtZ41Z4xs
-         9/3K14Yv6IrndeWOeAU9rddQ9n614q+G1GkTfsQalJQ3v+CEBj5q6m7G2vUchLIYnmzE
-         zaHHYoJMvrAgfeyAXMiCe4LXj17yhIeJBeQoiV2BR290yUmt+nIwvs2/uLM5xU9CQfKS
-         /vdNgq9Cf4z5BkqX4SXcwsk+BxjFnResDSk0Ot8KhinkoXVgKokF2qGhzbtPKH7hf+LI
-         SZPcpDS6d8etpbWvEexgJXy7UiFNv7xhaBvdLPNurra4/WukPNcQM/J2u84kv5+Gfpwy
-         3mgg==
+        bh=stx8+LDoYxsSWuIVsc9qEwQhICZXgPwQTyxvAeBki7E=;
+        b=EaX9PUwAlrHjERnWyO5IquQBH8GadSJdIeaZHBygM3pviufndXKul+om6IKTFxnX4J
+         eUHUyMnkU/rL09ltVM69Au/zt66kCVkpR+sJ4PLiRXgSbjmDQ89vjW8KVwyWweEndilb
+         1UkLGTVew5yozM99Amaph5JHOQpxjF4G8uibQl0yRXFmY1Yp/a0FI5mF0KwJmnymZaoq
+         fjhRRsPz3Lw8Hol8MKXaHnwlBVOR/caJbwIH8UN5rPnC73b3tpLCmfv+r87ELX90C8ui
+         Fv+EOpEnk22bzRtAKyNWvOdnmCXlIhAmiQuOxRxj33WWInhIsY4RA9LdJiv2hcuvECT9
+         3Dkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678741235;
+        d=1e100.net; s=20210112; t=1678741242;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=n9xABVi9xTX3sYpyPG86wyS9dmTZ5RSzu4zqx6NQ57w=;
-        b=pGnQsLwU1UjQSqyc3J6Oc39aCOz2KR3fF/tB4Mbp4JHmAlb9oFcYtvZo46c7v6EYe1
-         sJVHEK2FUXHQi1U2mnQ1CF82P4a+WY7HxaAxzw2YYkjuH3qaq/KvZ1H7IurKKZS1KPPT
-         N04lsX4WMN0xxEA0xTFLrWaldbHT8xB7SzKc7GPtazhfN8KgHGnzODyMUUCBVAIwEyuC
-         8MAeXM7egBo5k3B2yxhoY2r5erjldEisTjwxtybvBA3zf6J+fdkm1c7AoK4e5AQ421oJ
-         djkSKO7gADn5YzvuMEDSXq9Y0Zc7Um38KpGZgw71yQsYVjai7L6A37VZk15/75Q9uj+I
-         GKSg==
-X-Gm-Message-State: AO0yUKVCotxVyOe4x5c9tnhlWf/Lm7hm5dwUphW5JuVTDClU0YUZNJB1
-	WoQ1TBAr5mxU7pqvijnviWQ=
-X-Google-Smtp-Source: AK7set//RDjZDpjs0z7q/DUoPq5RSSYLFVpv/JBReZIuEIAS4kd84AXGWc75+ljxqFUEv9Aca0WQSA==
-X-Received: by 2002:a17:906:dac3:b0:8a9:fa2f:e440 with SMTP id xi3-20020a170906dac300b008a9fa2fe440mr44000207ejb.55.1678741234782;
-        Mon, 13 Mar 2023 14:00:34 -0700 (PDT)
+        bh=stx8+LDoYxsSWuIVsc9qEwQhICZXgPwQTyxvAeBki7E=;
+        b=QJg2EWHd6uHWLsFEFzKHBrEKYwCu+FZnm8bSPLUFjtFpoIbjncix1w3n9WFr/yQJZ1
+         DAX2DRnffht8Kj6jopJivAZacSCEHS5hilyHpo/D916oI7OC6x4y8FaJvHAVHqbaXxtm
+         8msqH4XBvX4PMY0CZHvtiov2XN8CcqEGbcc/isEjrNtT93JbIQHF661JvL5N3R13U4N5
+         y+QQfLrRHFavHI66bznngi7SD37cdhwtw8q81k+l+60Lc5+LRAZ+Tvv6xZG1Xwhzbsxx
+         L0enKATckonci04uDlPWQ4+N3r30Px+I6EQoS0+5kULSfyGOdjFBVdkkQwmmOC3mctVX
+         M1vA==
+X-Gm-Message-State: AO0yUKVoJofXH1/u4HJBF7nAabLEDVIdW8yMGj0K+0lsv7XB8sL8I9YG
+	D2IikBAiqFD5hR27TPBmPFCOZ9pAApt/UkCE
+X-Google-Smtp-Source: AK7set8kYT6TJM18sX2D+zdCgoK4V11tJGpUglgc5VQcfEgHRRh+ZgxL4N1vSUNaKIx5/UviYpMZgQ==
+X-Received: by 2002:a17:907:6e8a:b0:92a:f756:28fa with SMTP id sh10-20020a1709076e8a00b0092af75628famr3983429ejc.31.1678741242222;
+        Mon, 13 Mar 2023 14:00:42 -0700 (PDT)
 Received: from arinc9-PC.lan ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id j11-20020a170906830b00b008ee5356801dsm219853ejx.187.2023.03.13.14.00.32
+        by smtp.gmail.com with ESMTPSA id j11-20020a170906830b00b008ee5356801dsm219853ejx.187.2023.03.13.14.00.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Mar 2023 14:00:34 -0700 (PDT)
+        Mon, 13 Mar 2023 14:00:41 -0700 (PDT)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Linus Walleij <linus.walleij@linaro.org>,
 	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Subject: [PATCH v2 17/21] dt-bindings: pinctrl: mediatek: drop quotes from referred schemas
-Date: Mon, 13 Mar 2023 23:59:17 +0300
-Message-Id: <20230313205921.35342-18-arinc.unal@arinc9.com>
+Subject: [PATCH v2 20/21] dt-bindings: pinctrl: mediatek: mt7620: split binding
+Date: Mon, 13 Mar 2023 23:59:20 +0300
+Message-Id: <20230313205921.35342-21-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20230313205921.35342-1-arinc.unal@arinc9.com>
 References: <20230313205921.35342-1-arinc.unal@arinc9.com>
@@ -74,8 +74,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_140041_407749_D429BE38 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20230313_140044_435670_9AA578A1 
+X-CRM114-Status: GOOD (  10.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,242 +93,984 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Drop the quotes from the referred schemas.
+The MT7628 and MT7688 SoCs contain different pin muxing information,
+therefore, should be split. This can be done now that there are compatible
+strings to distinguish them from other SoCs.
+
+Split the schema out to mediatek,mt76x8-pinctrl.yaml.
+
+Remove mediatek,mt76x8-pinctrl from mt7620.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- .../bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml           | 4 ++--
- .../bindings/pinctrl/mediatek,mt6779-pinctrl.yaml           | 4 ++--
- .../bindings/pinctrl/mediatek,mt6795-pinctrl.yaml           | 4 ++--
- .../bindings/pinctrl/mediatek,mt7622-pinctrl.yaml           | 6 +++---
- .../bindings/pinctrl/mediatek,mt7986-pinctrl.yaml           | 6 +++---
- .../bindings/pinctrl/mediatek,mt8183-pinctrl.yaml           | 4 ++--
- .../bindings/pinctrl/mediatek,mt8186-pinctrl.yaml           | 2 +-
- .../bindings/pinctrl/mediatek,mt8188-pinctrl.yaml           | 2 +-
- .../bindings/pinctrl/mediatek,mt8192-pinctrl.yaml           | 4 ++--
- .../bindings/pinctrl/mediatek,mt8195-pinctrl.yaml           | 4 ++--
- 10 files changed, 20 insertions(+), 20 deletions(-)
+ .../pinctrl/mediatek,mt7620-pinctrl.yaml      | 379 +--------------
+ .../pinctrl/mediatek,mt76x8-pinctrl.yaml      | 450 ++++++++++++++++++
+ 2 files changed, 459 insertions(+), 370 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt76x8-pinctrl.yaml
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
-index 3b3d59140073..bccff08a5ba3 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
-@@ -67,7 +67,7 @@ required:
-   - "#gpio-cells"
+diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml
+index 808dd8bd276f..591bc0664ec6 100644
+--- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml
+@@ -11,15 +11,13 @@ maintainers:
+   - Sergio Paracuellos <sergio.paracuellos@gmail.com>
  
- allOf:
--  - $ref: "pinctrl.yaml#"
-+  - $ref: pinctrl.yaml#
+ description: |
+-  MediaTek MT7620 pin controller for MT7620, MT7628 and MT7688 SoCs.
++  MediaTek MT7620 pin controller for MT7620 SoC.
+   The pin controller can only set the muxing of pin groups. Muxing individual
+   pins is not supported. There is no pinconf support.
+ 
+ properties:
+   compatible:
+-    enum:
+-      - ralink,mt7620-pinctrl
+-      - ralink,mt76x8-pinctrl
++    const: ralink,mt7620-pinctrl
  
  patternProperties:
-   'pins$':
-@@ -83,7 +83,7 @@ patternProperties:
-           pins it needs, and how they should be configured, with regard to muxer
-           configuration, pullups, drive strength, input enable/disable and input
-           schmitt.
--        $ref: "/schemas/pinctrl/pincfg-node.yaml"
-+        $ref: /schemas/pinctrl/pincfg-node.yaml
- 
-         properties:
-           pinmux:
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
-index e5e7143674b5..7f0e2d6cd6d9 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
-@@ -58,7 +58,7 @@ required:
-   - "#gpio-cells"
- 
- allOf:
--  - $ref: "pinctrl.yaml#"
-+  - $ref: pinctrl.yaml#
-   - if:
-       properties:
-         compatible:
-@@ -124,7 +124,7 @@ patternProperties:
-           pins it needs, and how they should be configured, with regard to muxer
-           configuration, pullups, drive strength, input enable/disable and input
-           schmitt.
--        $ref: "/schemas/pinctrl/pincfg-node.yaml"
-+        $ref: /schemas/pinctrl/pincfg-node.yaml
- 
-         properties:
-           pinmux:
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml
-index 742ca9bd67d2..7cad814a5d53 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml
-@@ -82,7 +82,7 @@ patternProperties:
-               }
-             };
-           };
--        $ref: "pinmux-node.yaml"
-+        $ref: pinmux-node.yaml
- 
-         properties:
-           pinmux:
-@@ -156,7 +156,7 @@ patternProperties:
-           - pinmux
- 
- allOf:
--  - $ref: "pinctrl.yaml#"
-+  - $ref: pinctrl.yaml#
- 
- required:
-   - compatible
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-index 38dc41c735eb..bd72a326e6e0 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-@@ -43,7 +43,7 @@ properties:
-     const: 2
- 
- allOf:
--  - $ref: "pinctrl.yaml#"
-+  - $ref: pinctrl.yaml#
- 
- required:
-   - compatible
-@@ -70,7 +70,7 @@ patternProperties:
-         additionalProperties: false
-         description:
-           pinmux configuration nodes.
--        $ref: "/schemas/pinctrl/pinmux-node.yaml"
-+        $ref: /schemas/pinctrl/pinmux-node.yaml
-         properties:
+   '-pins$':
+@@ -37,19 +35,10 @@ patternProperties:
            function:
              description:
-@@ -249,7 +249,7 @@ patternProperties:
-         additionalProperties: false
-         description:
-           pinconf configuration nodes.
--        $ref: "/schemas/pinctrl/pincfg-node.yaml"
-+        $ref: /schemas/pinctrl/pincfg-node.yaml
+               A string containing the name of the function to mux to the group.
+-            anyOf:
+-              - description: For MT7620 SoC
+-                enum: [ephy, gpio, gpio i2s, gpio uartf, i2c, i2s uartf, mdio, nand, pa,
+-                       pcie refclk, pcie rst, pcm gpio, pcm i2s, pcm uartf, refclk,
+-                       rgmii1, rgmii2, sd, spi, spi refclk, uartf, uartlite, wdt refclk,
+-                       wdt rst, wled]
+-
+-              - description: For MT7628 and MT7688 SoCs
+-                enum: [antenna, debug, gpio, i2c, i2s, jtag, p0led_an, p0led_kn,
+-                       p1led_an, p1led_kn, p2led_an, p2led_kn, p3led_an, p3led_kn,
+-                       p4led_an, p4led_kn, pcie, pcm, perst, pwm, pwm0, pwm1, pwm_uart2,
+-                       refclk, rsvd, sdxc, sdxc d5 d4, sdxc d6, sdxc d7, spi, spi cs1,
+-                       spis, sw_r, uart0, uart1, uart2, utif, wdt, wled_an, wled_kn, -]
++            enum: [ephy, gpio, gpio i2s, gpio uartf, i2c, i2s uartf, mdio, nand,
++                   pa, pcie refclk, pcie rst, pcm gpio, pcm i2s, pcm uartf,
++                   refclk, rgmii1, rgmii2, sd, spi, spi refclk, uartf, uartlite,
++                   wdt refclk, wdt rst, wled]
  
-         properties:
            groups:
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-index 7157500a7f81..31c36689438c 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-@@ -57,7 +57,7 @@ properties:
-     const: 2
- 
- allOf:
--  - $ref: "pinctrl.yaml#"
-+  - $ref: pinctrl.yaml#
- 
- required:
-   - compatible
-@@ -128,7 +128,7 @@ patternProperties:
-           "wf_dbdc"         "wifi"      74, 75, 76, 77, 78, 79, 80, 81, 82, 83,
-                                         84, 85
- 
--        $ref: "/schemas/pinctrl/pinmux-node.yaml"
-+        $ref: /schemas/pinctrl/pinmux-node.yaml
-         properties:
-           function:
              description:
-@@ -261,7 +261,7 @@ patternProperties:
-         additionalProperties: false
-         description:
-           pinconf configuration nodes.
--        $ref: "/schemas/pinctrl/pincfg-node.yaml"
-+        $ref: /schemas/pinctrl/pincfg-node.yaml
+@@ -61,24 +50,6 @@ patternProperties:
+           - function
  
-         properties:
-           pins:
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
-index 372a3aefa937..bf67d4672455 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
-@@ -57,7 +57,7 @@ properties:
-     const: 2
+         allOf:
+-          - if:
+-              properties:
+-                function:
+-                  const: antenna
+-            then:
+-              properties:
+-                groups:
+-                  enum: [i2s]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: debug
+-            then:
+-              properties:
+-                groups:
+-                  enum: [i2c]
+-
+           - if:
+               properties:
+                 function:
+@@ -95,17 +66,8 @@ patternProperties:
+             then:
+               properties:
+                 groups:
+-                  anyOf:
+-                    - description: For MT7620 SoC
+-                      enum: [ephy, i2c, mdio, nd_sd, pa, pcie, rgmii1, rgmii2,
+-                             spi, spi refclk, uartf, uartlite, wdt, wled]
+-
+-                    - description: For MT7628 and MT7688 SoCs
+-                      enum: [gpio, i2c, i2s, p0led_an, p0led_kn, p1led_an,
+-                             p1led_kn, p2led_an, p2led_kn, p3led_an, p3led_kn,
+-                             p4led_an, p4led_kn, perst, pwm0, pwm1, refclk,
+-                             sdmode, spi, spi cs1, spis, uart0, uart1, uart2,
+-                             wdt, wled_an, wled_kn]
++                  enum: [ephy, i2c, mdio, nd_sd, pa, pcie, rgmii1, rgmii2, spi,
++                         spi refclk, uartf, uartlite, wdt, wled]
  
+           - if:
+               properties:
+@@ -134,15 +96,6 @@ patternProperties:
+                 groups:
+                   enum: [i2c]
+ 
+-          - if:
+-              properties:
+-                function:
+-                  const: i2s
+-            then:
+-              properties:
+-                groups:
+-                  enum: [i2s]
+-
+           - if:
+               properties:
+                 function:
+@@ -152,17 +105,6 @@ patternProperties:
+                 groups:
+                   enum: [uartf]
+ 
+-          - if:
+-              properties:
+-                function:
+-                  const: jtag
+-            then:
+-              properties:
+-                groups:
+-                  enum: [p0led_an, p0led_kn, p1led_an, p1led_kn, p2led_an,
+-                         p2led_kn, p3led_an, p3led_kn, p4led_an, p4led_kn,
+-                         sdmode]
+-
+           - if:
+               properties:
+                 function:
+@@ -181,96 +123,6 @@ patternProperties:
+                 groups:
+                   enum: [nd_sd]
+ 
+-          - if:
+-              properties:
+-                function:
+-                  const: p0led_an
+-            then:
+-              properties:
+-                groups:
+-                  enum: [p0led_an]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: p0led_kn
+-            then:
+-              properties:
+-                groups:
+-                  enum: [p0led_kn]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: p1led_an
+-            then:
+-              properties:
+-                groups:
+-                  enum: [p1led_an]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: p1led_kn
+-            then:
+-              properties:
+-                groups:
+-                  enum: [p1led_kn]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: p2led_an
+-            then:
+-              properties:
+-                groups:
+-                  enum: [p2led_an]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: p2led_kn
+-            then:
+-              properties:
+-                groups:
+-                  enum: [p2led_kn]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: p3led_an
+-            then:
+-              properties:
+-                groups:
+-                  enum: [p3led_an]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: p3led_kn
+-            then:
+-              properties:
+-                groups:
+-                  enum: [p3led_kn]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: p4led_an
+-            then:
+-              properties:
+-                groups:
+-                  enum: [p4led_an]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: p4led_kn
+-            then:
+-              properties:
+-                groups:
+-                  enum: [p4led_kn]
+-
+           - if:
+               properties:
+                 function:
+@@ -280,15 +132,6 @@ patternProperties:
+                 groups:
+                   enum: [pa]
+ 
+-          - if:
+-              properties:
+-                function:
+-                  const: pcie
+-            then:
+-              properties:
+-                groups:
+-                  enum: [gpio]
+-
+           - if:
+               properties:
+                 function:
+@@ -307,15 +150,6 @@ patternProperties:
+                 groups:
+                   enum: [pcie]
+ 
+-          - if:
+-              properties:
+-                function:
+-                  const: pcm
+-            then:
+-              properties:
+-                groups:
+-                  enum: [i2s]
+-
+           - if:
+               properties:
+                 function:
+@@ -343,51 +177,6 @@ patternProperties:
+                 groups:
+                   enum: [uartf]
+ 
+-          - if:
+-              properties:
+-                function:
+-                  const: perst
+-            then:
+-              properties:
+-                groups:
+-                  enum: [perst]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: pwm
+-            then:
+-              properties:
+-                groups:
+-                  enum: [uart1, uart2]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: pwm0
+-            then:
+-              properties:
+-                groups:
+-                  enum: [pwm0]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: pwm1
+-            then:
+-              properties:
+-                groups:
+-                  enum: [pwm1]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: pwm_uart2
+-            then:
+-              properties:
+-                groups:
+-                  enum: [spis]
+-
+           - if:
+               properties:
+                 function:
+@@ -395,12 +184,7 @@ patternProperties:
+             then:
+               properties:
+                 groups:
+-                  anyOf:
+-                    - description: For MT7620 SoC
+-                      enum: [mdio]
+-
+-                    - description: For MT7628 and MT7688 SoCs
+-                      enum: [gpio, refclk, spi cs1]
++                  enum: [mdio]
+ 
+           - if:
+               properties:
+@@ -420,15 +204,6 @@ patternProperties:
+                 groups:
+                   enum: [rgmii2]
+ 
+-          - if:
+-              properties:
+-                function:
+-                  const: rsvd
+-            then:
+-              properties:
+-                groups:
+-                  enum: [p0led_an, p0led_kn, wled_an, wled_kn]
+-
+           - if:
+               properties:
+                 function:
+@@ -438,42 +213,6 @@ patternProperties:
+                 groups:
+                   enum: [nd_sd]
+ 
+-          - if:
+-              properties:
+-                function:
+-                  const: sdxc
+-            then:
+-              properties:
+-                groups:
+-                  enum: [sdmode]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: sdxc d5 d4
+-            then:
+-              properties:
+-                groups:
+-                  enum: [uart2]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: sdxc d6
+-            then:
+-              properties:
+-                groups:
+-                  enum: [pwm1]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: sdxc d7
+-            then:
+-              properties:
+-                groups:
+-                  enum: [pwm0]
+-
+           - if:
+               properties:
+                 function:
+@@ -483,15 +222,6 @@ patternProperties:
+                 groups:
+                   enum: [spi]
+ 
+-          - if:
+-              properties:
+-                function:
+-                  const: spi cs1
+-            then:
+-              properties:
+-                groups:
+-                  enum: [spi cs1]
+-
+           - if:
+               properties:
+                 function:
+@@ -501,51 +231,6 @@ patternProperties:
+                 groups:
+                   enum: [spi refclk]
+ 
+-          - if:
+-              properties:
+-                function:
+-                  const: spis
+-            then:
+-              properties:
+-                groups:
+-                  enum: [spis]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: sw_r
+-            then:
+-              properties:
+-                groups:
+-                  enum: [uart1]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: uart0
+-            then:
+-              properties:
+-                groups:
+-                  enum: [uart0]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: uart1
+-            then:
+-              properties:
+-                groups:
+-                  enum: [uart1]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: uart2
+-            then:
+-              properties:
+-                groups:
+-                  enum: [uart2]
+-
+           - if:
+               properties:
+                 function:
+@@ -564,25 +249,6 @@ patternProperties:
+                 groups:
+                   enum: [uartlite]
+ 
+-          - if:
+-              properties:
+-                function:
+-                  const: utif
+-            then:
+-              properties:
+-                groups:
+-                  enum: [p1led_an, p1led_kn, p2led_an, p2led_kn, p3led_an,
+-                         p3led_kn, p4led_an, p4led_kn, pwm0, pwm1, sdmode, spis]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: wdt
+-            then:
+-              properties:
+-                groups:
+-                  enum: [wdt]
+-
+           - if:
+               properties:
+                 function:
+@@ -610,33 +276,6 @@ patternProperties:
+                 groups:
+                   enum: [wled]
+ 
+-          - if:
+-              properties:
+-                function:
+-                  const: wled_an
+-            then:
+-              properties:
+-                groups:
+-                  enum: [wled_an]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: wled_kn
+-            then:
+-              properties:
+-                groups:
+-                  enum: [wled_kn]
+-
+-          - if:
+-              properties:
+-                function:
+-                  const: "-"
+-            then:
+-              properties:
+-                groups:
+-                  enum: [i2c, spi cs1, uart0]
+-
  allOf:
--  - $ref: "pinctrl.yaml#"
+   - $ref: pinctrl.yaml#
+ 
+diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt76x8-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt76x8-pinctrl.yaml
+new file mode 100644
+index 000000000000..31849dd5940b
+--- /dev/null
++++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt76x8-pinctrl.yaml
+@@ -0,0 +1,450 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/pinctrl/mediatek,mt76x8-pinctrl.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT76X8 Pin Controller
++
++maintainers:
++  - Arınç ÜNAL <arinc.unal@arinc9.com>
++  - Sergio Paracuellos <sergio.paracuellos@gmail.com>
++
++description: |
++  MediaTek MT76X8 pin controller for MT7628 and MT7688 SoCs.
++  The pin controller can only set the muxing of pin groups. Muxing individual
++  pins is not supported. There is no pinconf support.
++
++properties:
++  compatible:
++    const: ralink,mt76x8-pinctrl
++
++patternProperties:
++  '-pins$':
++    type: object
++    additionalProperties: false
++
++    patternProperties:
++      '^(.*-)?pinmux$':
++        type: object
++        description: node for pinctrl.
++        $ref: pinmux-node.yaml#
++        additionalProperties: false
++
++        properties:
++          function:
++            description:
++              A string containing the name of the function to mux to the group.
++            enum: [antenna, debug, gpio, i2c, i2s, jtag, p0led_an, p0led_kn,
++                   p1led_an, p1led_kn, p2led_an, p2led_kn, p3led_an, p3led_kn,
++                   p4led_an, p4led_kn, pcie, pcm, perst, pwm, pwm0, pwm1,
++                   pwm_uart2, refclk, rsvd, sdxc, sdxc d5 d4, sdxc d6, sdxc d7,
++                   spi, spi cs1, spis, sw_r, uart0, uart1, uart2, utif, wdt,
++                   wled_an, wled_kn, -]
++
++          groups:
++            description:
++              An array of strings. Each string contains the name of a group.
++            maxItems: 1
++
++        required:
++          - groups
++          - function
++
++        allOf:
++          - if:
++              properties:
++                function:
++                  const: antenna
++            then:
++              properties:
++                groups:
++                  enum: [i2s]
++
++          - if:
++              properties:
++                function:
++                  const: debug
++            then:
++              properties:
++                groups:
++                  enum: [i2c]
++
++          - if:
++              properties:
++                function:
++                  const: gpio
++            then:
++              properties:
++                groups:
++                  enum: [gpio, i2c, i2s, p0led_an, p0led_kn, p1led_an, p1led_kn,
++                         p2led_an, p2led_kn, p3led_an, p3led_kn, p4led_an,
++                         p4led_kn, perst, pwm0, pwm1, refclk, sdmode, spi,
++                         spi cs1, spis, uart0, uart1, uart2, wdt, wled_an,
++                         wled_kn]
++
++          - if:
++              properties:
++                function:
++                  const: i2c
++            then:
++              properties:
++                groups:
++                  enum: [i2c]
++
++          - if:
++              properties:
++                function:
++                  const: i2s
++            then:
++              properties:
++                groups:
++                  enum: [i2s]
++
++          - if:
++              properties:
++                function:
++                  const: jtag
++            then:
++              properties:
++                groups:
++                  enum: [p0led_an, p0led_kn, p1led_an, p1led_kn, p2led_an,
++                         p2led_kn, p3led_an, p3led_kn, p4led_an, p4led_kn,
++                         sdmode]
++
++          - if:
++              properties:
++                function:
++                  const: p0led_an
++            then:
++              properties:
++                groups:
++                  enum: [p0led_an]
++
++          - if:
++              properties:
++                function:
++                  const: p0led_kn
++            then:
++              properties:
++                groups:
++                  enum: [p0led_kn]
++
++          - if:
++              properties:
++                function:
++                  const: p1led_an
++            then:
++              properties:
++                groups:
++                  enum: [p1led_an]
++
++          - if:
++              properties:
++                function:
++                  const: p1led_kn
++            then:
++              properties:
++                groups:
++                  enum: [p1led_kn]
++
++          - if:
++              properties:
++                function:
++                  const: p2led_an
++            then:
++              properties:
++                groups:
++                  enum: [p2led_an]
++
++          - if:
++              properties:
++                function:
++                  const: p2led_kn
++            then:
++              properties:
++                groups:
++                  enum: [p2led_kn]
++
++          - if:
++              properties:
++                function:
++                  const: p3led_an
++            then:
++              properties:
++                groups:
++                  enum: [p3led_an]
++
++          - if:
++              properties:
++                function:
++                  const: p3led_kn
++            then:
++              properties:
++                groups:
++                  enum: [p3led_kn]
++
++          - if:
++              properties:
++                function:
++                  const: p4led_an
++            then:
++              properties:
++                groups:
++                  enum: [p4led_an]
++
++          - if:
++              properties:
++                function:
++                  const: p4led_kn
++            then:
++              properties:
++                groups:
++                  enum: [p4led_kn]
++
++          - if:
++              properties:
++                function:
++                  const: pcie
++            then:
++              properties:
++                groups:
++                  enum: [gpio]
++
++          - if:
++              properties:
++                function:
++                  const: pcm
++            then:
++              properties:
++                groups:
++                  enum: [i2s]
++
++          - if:
++              properties:
++                function:
++                  const: perst
++            then:
++              properties:
++                groups:
++                  enum: [perst]
++
++          - if:
++              properties:
++                function:
++                  const: pwm
++            then:
++              properties:
++                groups:
++                  enum: [uart1, uart2]
++
++          - if:
++              properties:
++                function:
++                  const: pwm0
++            then:
++              properties:
++                groups:
++                  enum: [pwm0]
++
++          - if:
++              properties:
++                function:
++                  const: pwm1
++            then:
++              properties:
++                groups:
++                  enum: [pwm1]
++
++          - if:
++              properties:
++                function:
++                  const: pwm_uart2
++            then:
++              properties:
++                groups:
++                  enum: [spis]
++
++          - if:
++              properties:
++                function:
++                  const: refclk
++            then:
++              properties:
++                groups:
++                  enum: [gpio, refclk, spi cs1]
++
++          - if:
++              properties:
++                function:
++                  const: rsvd
++            then:
++              properties:
++                groups:
++                  enum: [p0led_an, p0led_kn, wled_an, wled_kn]
++
++          - if:
++              properties:
++                function:
++                  const: sdxc
++            then:
++              properties:
++                groups:
++                  enum: [sdmode]
++
++          - if:
++              properties:
++                function:
++                  const: sdxc d5 d4
++            then:
++              properties:
++                groups:
++                  enum: [uart2]
++
++          - if:
++              properties:
++                function:
++                  const: sdxc d6
++            then:
++              properties:
++                groups:
++                  enum: [pwm1]
++
++          - if:
++              properties:
++                function:
++                  const: sdxc d7
++            then:
++              properties:
++                groups:
++                  enum: [pwm0]
++
++          - if:
++              properties:
++                function:
++                  const: spi
++            then:
++              properties:
++                groups:
++                  enum: [spi]
++
++          - if:
++              properties:
++                function:
++                  const: spi cs1
++            then:
++              properties:
++                groups:
++                  enum: [spi cs1]
++
++          - if:
++              properties:
++                function:
++                  const: spis
++            then:
++              properties:
++                groups:
++                  enum: [spis]
++
++          - if:
++              properties:
++                function:
++                  const: sw_r
++            then:
++              properties:
++                groups:
++                  enum: [uart1]
++
++          - if:
++              properties:
++                function:
++                  const: uart0
++            then:
++              properties:
++                groups:
++                  enum: [uart0]
++
++          - if:
++              properties:
++                function:
++                  const: uart1
++            then:
++              properties:
++                groups:
++                  enum: [uart1]
++
++          - if:
++              properties:
++                function:
++                  const: uart2
++            then:
++              properties:
++                groups:
++                  enum: [uart2]
++
++          - if:
++              properties:
++                function:
++                  const: utif
++            then:
++              properties:
++                groups:
++                  enum: [p1led_an, p1led_kn, p2led_an, p2led_kn, p3led_an,
++                         p3led_kn, p4led_an, p4led_kn, pwm0, pwm1, sdmode, spis]
++
++          - if:
++              properties:
++                function:
++                  const: wdt
++            then:
++              properties:
++                groups:
++                  enum: [wdt]
++
++          - if:
++              properties:
++                function:
++                  const: wled_an
++            then:
++              properties:
++                groups:
++                  enum: [wled_an]
++
++          - if:
++              properties:
++                function:
++                  const: wled_kn
++            then:
++              properties:
++                groups:
++                  enum: [wled_kn]
++
++          - if:
++              properties:
++                function:
++                  const: "-"
++            then:
++              properties:
++                groups:
++                  enum: [i2c, spi cs1, uart0]
++
++allOf:
 +  - $ref: pinctrl.yaml#
- 
- required:
-   - compatible
-@@ -80,7 +80,7 @@ patternProperties:
-           pins it needs, and how they should be configured, with regard to muxer
-           configuration, pullups, drive strength, input enable/disable and input
-           schmitt.
--        $ref: "/schemas/pinctrl/pincfg-node.yaml"
-+        $ref: /schemas/pinctrl/pincfg-node.yaml
- 
-         properties:
-           pinmux:
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8186-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8186-pinctrl.yaml
-index eb6a5cdecc6c..69136ddd0bbc 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8186-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8186-pinctrl.yaml
-@@ -94,7 +94,7 @@ patternProperties:
-               }
-             };
-           };
--        $ref: "pinmux-node.yaml"
-+        $ref: pinmux-node.yaml
- 
-         properties:
-           pinmux:
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml
-index 028146fb173f..e994b0c70dbf 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml
-@@ -74,7 +74,7 @@ patternProperties:
-     patternProperties:
-       '^pins':
-         type: object
--        $ref: "/schemas/pinctrl/pincfg-node.yaml"
-+        $ref: /schemas/pinctrl/pincfg-node.yaml
-         additionalProperties: false
-         description:
-           A pinctrl node should contain at least one subnode representing the
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8192-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8192-pinctrl.yaml
-index 8cca1ce40f25..c43338cafd61 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8192-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8192-pinctrl.yaml
-@@ -65,7 +65,7 @@ patternProperties:
-           pins it needs, and how they should be configured, with regard to muxer
-           configuration, pullups, drive strength, input enable/disable and input
-           schmitt.
--        $ref: "pinmux-node.yaml"
-+        $ref: pinmux-node.yaml
- 
-         properties:
-           pinmux:
-@@ -126,7 +126,7 @@ patternProperties:
-         additionalProperties: false
- 
- allOf:
--  - $ref: "pinctrl.yaml#"
-+  - $ref: pinctrl.yaml#
- 
- required:
-   - compatible
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml
-index b8ba260d74cd..33cb71775db9 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml
-@@ -87,7 +87,7 @@ patternProperties:
-               }
-             };
-           };
--        $ref: "pinmux-node.yaml"
-+        $ref: pinmux-node.yaml
- 
-         properties:
-           pinmux:
-@@ -216,7 +216,7 @@ patternProperties:
-           - pinmux
- 
- allOf:
--  - $ref: "pinctrl.yaml#"
-+  - $ref: pinctrl.yaml#
- 
- required:
-   - compatible
++
++required:
++  - compatible
++
++additionalProperties: false
++
++examples:
++  - |
++    pinctrl {
++      compatible = "ralink,mt76x8-pinctrl";
++
++      i2c_pins: i2c0-pins {
++        pinmux {
++          groups = "i2c";
++          function = "i2c";
++        };
++      };
++    };
 -- 
 2.37.2
 
