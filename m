@@ -4,115 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E874FC6FD19
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 22:02:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1907FC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 23:01:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DMLvNFiF6A+cLlm+Md6S//7sOrhzSCiOnPwGbda9MTs=; b=QxKTeACraiS5R2xoqPv5bh2MUG
-	Wi5WRVlF5E+VAR3ap624RCdF4sY0GqsJ1dtTi7S37XztmrEwoyf0WTmqi6oJ0Y4f9J0TsNtGkP8yx
-	JaOye9vW7nQ4TL+IoI2PSVN14GZoMMG/FDAqxh1m5GLcm8v5Q3UdK627yjojgD43cH+qjn4NTTBvY
-	Ke7qSqvq950Qb3rCZ1sxl8yE5L2i1SjtjlGBrtIR+e11jbgTUAGPbTYO4Y2/OliGPSol7xnTGaa7u
-	zftSZsaIB0dvbZ6SZwBCmNVZm9SRXYDxyfp1uNwBlr41SGAOAbZhP/6FGMeuzKoV9ch/XOlUCnE+v
-	UpXtuO4g==;
+	bh=hQAhFIXkwSE0gRmxGtQZbDk7OJOVM3UvlPBLhtkap6I=; b=C8Wh1GFXUcEL90F6DXqCkt7q0+
+	E40/8LvwUP9p/dIPG8zBybriwyUqroK1489wnPTUM6IP7KJtF3WRayB/xtcoHYKliIhRy865mdB7/
+	84iOxbfiO1/W+YSD7j0kh9E0+QPgu6nOH8tEk0OSVJctUy7Fbo1wnm6IQal1Prkgjhv3Vk+LNJdBN
+	J1ke1756P2Ar9siFGvmRt4OkJ8RJE1duPXW4NMmj/M18eK0N8Rh4SSke66HZz1otjI7AO1tGoVfQZ
+	Z/6lIdX2y3xonHYcpaS7hrKwtvHghOmAW3q+SWuN3XxXIc2Wq3pZMmU1fMCBdyKijEfE96CSd4GgX
+	awuRYRjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbqEv-0081XY-K3; Mon, 13 Mar 2023 22:01:57 +0000
-Received: from mail-il1-x12f.google.com ([2607:f8b0:4864:20::12f])
+	id 1pbrAJ-008EnX-57; Mon, 13 Mar 2023 23:01:15 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbqEk-0081Ul-0T; Mon, 13 Mar 2023 22:01:47 +0000
-Received: by mail-il1-x12f.google.com with SMTP id h5so3651806ile.13;
-        Mon, 13 Mar 2023 15:01:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678744904;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:sender
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=DMLvNFiF6A+cLlm+Md6S//7sOrhzSCiOnPwGbda9MTs=;
-        b=aWXb3DK3A5HljkDmtHfJIax0Z4RexrlgcAXu6rc5w2LBmdFm0ZhzhLWq9rUOZmDdp2
-         qjfynGlY/ln39BF9ghwsOTTnx2ty5W57Izt1vktIL66IwFpZ/SXIeL7yDa5HJPkJlCYF
-         NuKPKFxU3VSN9QKyNg+xaVoMZ5ANKIiFT49KWS508WvyJUv1PSNLqT36iEIBajXHYKM2
-         acqHQd4/vdBLJ+TdQuHL6ydeVF/R7kSdyCG95wHm3s6ebS7yK6DpiZc5sxZdrmyjrlR3
-         Jyx/d7UvLyTcSFtZrbuWKS9R4+hA1qJSfOEOf/z7YJ4IiYDiNLA5Q6zZJgMbK8TX/7NT
-         YeRg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678744904;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:sender
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=DMLvNFiF6A+cLlm+Md6S//7sOrhzSCiOnPwGbda9MTs=;
-        b=tzh8yS1KkUZ2jPTrBHO+QHU4GiV9T10f4+1sjQQvkvW1y7oEWrDv5bk53IzsLT5P8J
-         o8lUbVBCY8EBGUqligXPsb/OsTXsRbe66TVru/bqsecDfcb2dh9CstXyES9LCyHa+E5v
-         oAA2n3vOd0XBn9TT17Wb6W278kvdR7xNK0193mAviD+wGakOu6PXiZ42tIbZn0VPogB4
-         tp1pjpS1Z1R0sAr0mm0PSELjy/1p+p5sP3KJeo/gzmuL44d5jYpKcEQ3X9iOJh8FY4dD
-         YD7WI0IMRGdsX7vU0K/13IdM7SIAWvkmjP5lBzDKhHmgf8vrMZNo+/5+nHYNQXnKpWt2
-         2ZIw==
-X-Gm-Message-State: AO0yUKUZ4RZANpEegzR3YmwdSx726cSL03ZS3AYPPDBLGdZeLKaxTYpC
-	OSup0stqUXBhHrQ3utIu60Q=
-X-Google-Smtp-Source: AK7set/CnpGrRNOlgdLP6A3PzpsbmZdrv5qoYIZVsXl6Lk7tiSYIV4Z0CbZ7o/CqEdQmrdQf0Yh05w==
-X-Received: by 2002:a05:6e02:dc1:b0:315:5467:4a3f with SMTP id l1-20020a056e020dc100b0031554674a3fmr720344ilj.30.1678744904090;
-        Mon, 13 Mar 2023 15:01:44 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
-        by smtp.gmail.com with ESMTPSA id d19-20020a056e020bf300b00316e3a38becsm282388ilu.18.2023.03.13.15.01.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Mar 2023 15:01:43 -0700 (PDT)
-Date: Mon, 13 Mar 2023 15:01:40 -0700
-From: Guenter Roeck <linux@roeck-us.net>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Joe Tessler <jrt@google.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Michael Tretter <m.tretter@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Jacopo Mondi <jacopo+renesas@jmondi.org>,
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
-	Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
-	Rui Miguel Silva <rmfrfs@gmail.com>,
-	Wenyou Yang <wenyou.yang@microchip.com>,
-	Bin Liu <bin.liu@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1pbr6r-008DF3-A5; Mon, 13 Mar 2023 22:57:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=hQAhFIXkwSE0gRmxGtQZbDk7OJOVM3UvlPBLhtkap6I=; b=LV2ZMtfcORpFnX1jZ25qRSnGtH
+	qFW724J4HbDIezqqUiJKid+N9fsY1F4FlYNjsE7tMcy915S84c6JOV4n4egaqZw426u14AHUiJFBP
+	nkeOcJIlFqX/4pTfpu9Z19oka20uxoMZXgWCM/Ly8gnlaiIR7XCizXT7Crx73R/4g4wnwAmiG0lYw
+	2VcARPZkRVi96OZh322tp+2/D1O8jsRMSD2Z2fqKcpxKa4h/c/qJDB7N7RNjfyAGYQJV5rgTa+UwI
+	pdsEdarMy4cen5NuWw1rRM64kE8y4qDs0AGQmUmVOlE4Wq166H3nJlbu3Ubk+ab+OmS2E2pAi8ZCS
+	eX0RVCDQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:46584)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1pbr6d-000425-Ox; Mon, 13 Mar 2023 22:57:27 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1pbr6V-00088s-Rz; Mon, 13 Mar 2023 22:57:19 +0000
+Date: Mon, 13 Mar 2023 22:57:19 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Daniel Golle <daniel@makrotopia.org>,
+	Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
-	Houlong Wei <houlong.wei@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
-	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Yong Deng <yong.deng@magewell.com>,
-	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	"Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Philipp Zabel <p.zabel@pengutronix.de>, Sean Young <sean@mess.org>,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-amlogic@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 01/28] media: cec: ch7322: drop of_match_ptr for ID table
-Message-ID: <b83d6b81-c4ec-4fb8-b626-84af80d1c4a3@roeck-us.net>
-References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
+	Alexander Couzens <lynxis@fe80.eu>
+Subject: Re: Re: Re: Re: [PATCH net-next v12 08/18] net: ethernet:
+ mtk_eth_soc: fix 1000Base-X and 2500Base-X modes
+Message-ID: <ZA+qTyQ3n6YiURkQ@shell.armlinux.org.uk>
+References: <ZAik+I1Ei+grJdUQ@makrotopia.org>
+ <ZAioqp21521NsttV@shell.armlinux.org.uk>
+ <trinity-79e9f0b8-a267-4bf9-a3d4-1ec691eb5238-1678536337569@3c-app-gmx-bs24>
+ <ZAzd1A0SAKZK0hF5@shell.armlinux.org.uk>
+ <4B891976-C29E-4D98-B604-3AC4507D3661@public-files.de>
+ <ZAzk71mTxgV/pRxC@shell.armlinux.org.uk>
+ <trinity-8577978d-1c11-4f6d-ae11-aef37e8b78b0-1678624836722@3c-app-gmx-bap51>
+ <ZA4wlQ8P48aDhDly@shell.armlinux.org.uk>
+ <ZA8B/kI0fLx4gkQm@shell.armlinux.org.uk>
+ <trinity-93681801-f99c-40e2-9fbd-45888b3069aa-1678732740564@3c-app-gmx-bs66>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <trinity-93681801-f99c-40e2-9fbd-45888b3069aa-1678732740564@3c-app-gmx-bs66>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_150146_095573_F1F73FD8 
-X-CRM114-Status: GOOD (  19.55  )
+X-CRM114-CacheID: sfid-20230313_155741_826339_BE178357 
+X-CRM114-Status: GOOD (  23.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,39 +103,125 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Mar 12, 2023 at 02:12:51PM +0100, Krzysztof Kozlowski wrote:
-> The driver can match only via the DT table so the table should be always
-> used and the of_match_ptr does not have any sense (this also allows ACPI
-> matching via PRP0001, even though it might not be relevant here).
+On Mon, Mar 13, 2023 at 07:39:00PM +0100, Frank Wunderlich wrote:
+> > Gesendet: Montag, 13. M�rz 2023 um 11:59 Uhr
+> > Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
 > 
->   drivers/media/cec/i2c/ch7322.c:583:34: error: ‘ch7322_of_match’ defined but not used [-Werror=unused-const-variable=]
+> > Since describing what I wanted you to test didn't work, here's a patch
+> > instead, based upon the quirk that you provided (which is what I'd have
+> > written anyway). Add a "#define DEBUG" to the top of
+> > drivers/net/phy/phylink.c in addition to applying this patch, and please
+> > test the resulting kernel, sending me the resulting kernel messages, and
+> > also reporting whether this works or not.
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
-
-FWIW: There is also
-https://patches.linaro.org/project/linux-media/patch/20230215214724.3798917-1-linux@roeck-us.net/
-
-The lack of ACPI support is a real problem and very relevant.
-
-Guenter
-
-> ---
->  drivers/media/cec/i2c/ch7322.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> Hi
 > 
-> diff --git a/drivers/media/cec/i2c/ch7322.c b/drivers/media/cec/i2c/ch7322.c
-> index 34fad7123704..3c6e6496a001 100644
-> --- a/drivers/media/cec/i2c/ch7322.c
-> +++ b/drivers/media/cec/i2c/ch7322.c
-> @@ -589,7 +589,7 @@ MODULE_DEVICE_TABLE(of, ch7322_of_match);
->  static struct i2c_driver ch7322_i2c_driver = {
->  	.driver = {
->  		.name = "ch7322",
-> -		.of_match_table = of_match_ptr(ch7322_of_match),
-> +		.of_match_table = ch7322_of_match,
->  	},
->  	.probe_new	= ch7322_probe,
->  	.remove		= ch7322_remove,
+> thx for the patch...sorry for misunderstanding. i thought the sfp quirk only sets a flag and i need to change
+> something in phylink.c to do the same as done on userspace, so i tried to simulate the userspace call there only for testing.
+> 
+> here relevant parts of debug
+> 
+> [    1.990637] sfp sfp-1: module OEM              SFP-2.5G-T       rev 1.0  sn SK2301110008     dc 230110  
+> [    2.000147] mtk_soc_eth 15100000.ethernet eth1: optical SFP: interfaces=[mac=2-4,21-22, sfp=]
+
+First thing... why are the SFP interfaces here empty? They should be
+listing at least 22 for this SFP. Looking at the full log, you have
+omitted:
+
+[    2.008678] mtk_soc_eth 15100000.ethernet eth1: unsupported SFP module: no common interface modes
+
+which seems to suggest that we need more than what I provided - and
+is a big pointer to why it isn't working... and I guess has been there
+all along.
+
+This means that the interface configuration never gets updated, so
+its pointless trying to add quirks etc. Error messages are rather
+a key point.
+
+So everything after this is just not relevant. Let's fix that. Here's
+an updated patch which sets an interface mode for this SFP and sets a
+link mode for it (although we use 2500baseX rather than baseT here
+just to test this). I'm guessing it also does rate adaption, which we
+will have to work out later.
+
+Thanks.
+
+diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
+index 1a2f074685fa..08eeffa96ae4 100644
+--- a/drivers/net/phy/phylink.c
++++ b/drivers/net/phy/phylink.c
+@@ -3001,7 +3001,8 @@ static int phylink_sfp_config_optical(struct phylink *pl)
+ 	config.speed = SPEED_UNKNOWN;
+ 	config.duplex = DUPLEX_UNKNOWN;
+ 	config.pause = MLO_PAUSE_AN;
+-	config.an_enabled = true;
++	config.an_enabled = linkmode_test_bit(ETHTOOL_LINK_MODE_Autoneg_BIT,
++					      support);
+ 
+ 	/* For all the interfaces that are supported, reduce the sfp_support
+ 	 * mask to only those link modes that can be supported.
+diff --git a/drivers/net/phy/sfp-bus.c b/drivers/net/phy/sfp-bus.c
+index daac293e8ede..1dd50f2ca05d 100644
+--- a/drivers/net/phy/sfp-bus.c
++++ b/drivers/net/phy/sfp-bus.c
+@@ -151,6 +151,10 @@ void sfp_parse_support(struct sfp_bus *bus, const struct sfp_eeprom_id *id,
+ 	unsigned int br_min, br_nom, br_max;
+ 	__ETHTOOL_DECLARE_LINK_MODE_MASK(modes) = { 0, };
+ 
++	phylink_set(modes, Autoneg);
++	phylink_set(modes, Pause);
++	phylink_set(modes, Asym_Pause);
++
+ 	/* Decode the bitrate information to MBd */
+ 	br_min = br_nom = br_max = 0;
+ 	if (id->base.br_nominal) {
+@@ -329,10 +333,6 @@ void sfp_parse_support(struct sfp_bus *bus, const struct sfp_eeprom_id *id,
+ 		bus->sfp_quirk->modes(id, modes, interfaces);
+ 
+ 	linkmode_or(support, support, modes);
+-
+-	phylink_set(support, Autoneg);
+-	phylink_set(support, Pause);
+-	phylink_set(support, Asym_Pause);
+ }
+ EXPORT_SYMBOL_GPL(sfp_parse_support);
+ 
+diff --git a/drivers/net/phy/sfp.c b/drivers/net/phy/sfp.c
+index 39e3095796d0..5910c0e936a0 100644
+--- a/drivers/net/phy/sfp.c
++++ b/drivers/net/phy/sfp.c
+@@ -360,6 +360,21 @@ static void sfp_quirk_2500basex(const struct sfp_eeprom_id *id,
+ 	__set_bit(PHY_INTERFACE_MODE_2500BASEX, interfaces);
+ }
+ 
++static void sfp_quirk_disable_autoneg(const struct sfp_eeprom_id *id,
++				      unsigned long *modes,
++				      unsigned long *interfaces)
++{
++	linkmode_clear_bit(ETHTOOL_LINK_MODE_Autoneg_BIT, modes);
++}
++
++static void sfp_quirk_oem_2_5g(const struct sfp_eeprom_id *id,
++			       unsigned long *modes,
++			       unsigned long *interfaces)
++{
++	sfp_quirk_2500basex(id, modes, interfaces);
++	sfp_quirk_disable_autoneg(id, modes, interfaces);
++}
++
+ static void sfp_quirk_ubnt_uf_instant(const struct sfp_eeprom_id *id,
+ 				      unsigned long *modes,
+ 				      unsigned long *interfaces)
+@@ -401,6 +416,7 @@ static const struct sfp_quirk sfp_quirks[] = {
+ 	SFP_QUIRK_M("UBNT", "UF-INSTANT", sfp_quirk_ubnt_uf_instant),
+ 
+ 	SFP_QUIRK_F("OEM", "SFP-10G-T", sfp_fixup_rollball_cc),
++	SFP_QUIRK_M("OEM", "SFP-2.5G-T", sfp_quirk_oem_2_5g),
+ 	SFP_QUIRK_F("OEM", "RTSFP-10", sfp_fixup_rollball_cc),
+ 	SFP_QUIRK_F("OEM", "RTSFP-10G", sfp_fixup_rollball_cc),
+ 	SFP_QUIRK_F("Turris", "RTSFP-10", sfp_fixup_rollball),
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
