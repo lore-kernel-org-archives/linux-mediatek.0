@@ -4,129 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AA82C6FD19
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 17:25:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DC77C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 18:01:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:In-Reply-To:References:CC:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8fBHeyw5bQP/z7k6Vn/utUOab2TmzpDhKUvzbkOF3/0=; b=L20BGEdMCPAtoRedt0MPKe2tb/
-	NMagUzJWQ3xJ6NwszYdvO4mYgaorJ7wXOOaimN2SWOA66FnPJl+9Lv4IfXQXQEZJK+nVvXYn7AkRB
-	+ZJbVSVxdedN1bvrdS8zoep//3VyKdjWh1c1ze9hrfn9LOnw+qkPuo9L+oE4PVZOR7hnHixJ+/RWp
-	9JQR1OjRv+fD6l+/qUPDWun7HeY66NXzw/Rz4LmWzKNYoEWPKbfpP/hUnk0EuEpKLaKToLn58zG6H
-	bk4B6ZKeHElra+8q5MugTWg/JR/+qnQ0Vp6+NNW26uMXhsp9JgiR2nBKP0wtJK78USzl+uoaBVtcv
-	H2WjIyRw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rf7wbS4X7Z+OEHvQtCAJYBYoPARoCBclJ71xk+511/c=; b=rZJraYidRC3AJZ9pV6RJgK4W2+
+	YiOkBhg5d+Sf5ids5jBr7VrTD0iUeyOtLgK1RcvGnWOV1V0pMMyNs+PaP+FK2DXMskPtLLBB0mhpd
+	MbkkwgsBCPzbKAPxKM6ZoP0gqY47uhDMET9ltxaSV7fRnhpZCfs+vPvbYspFgChcZGyuJ8CfJSD1T
+	nEiYIP6V3Ih5n4cEBq8YimP0i/Uk6TYX05wRDj/meRZvn3ARzsLwigkvBDkdbQn38kgk6yrslNDAh
+	s7fiP2STNXk6RiwCFAQD+MXf1lNGyFTL0x5ELd0ADmDr6w7Hx0TLlnuIonn13ZqAAxMqm2fmFiNiK
+	r7hf8qbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pblut-0075Nq-En; Mon, 13 Mar 2023 17:25:00 +0000
-Received: from mx0a-001ae601.pphosted.com ([67.231.149.25] helo=mx0b-001ae601.pphosted.com)
+	id 1pbmU8-007DT5-QF; Mon, 13 Mar 2023 18:01:24 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pblmM-0071lX-Eg; Mon, 13 Mar 2023 17:16:14 +0000
-Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
-	by mx0a-001ae601.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 32DGwxce029694;
-	Mon, 13 Mar 2023 12:15:32 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=from : to : cc :
- references : in-reply-to : subject : date : message-id : mime-version :
- content-type : content-transfer-encoding; s=PODMain02222019;
- bh=8fBHeyw5bQP/z7k6Vn/utUOab2TmzpDhKUvzbkOF3/0=;
- b=piE2nikkI1yWqF2z8FACr8QXUEETBafumy6JGyAvhmhazu0+U4LwK0G20kUP+qCENoyI
- ofpAKD9L4c8+WP4wfL7j3t0fVKgQZ7Lx9ZzfH4GRsNyUfJ2pQ/TWMphEUBjOTZbhFBh8
- ODmK5zhSDvEdOVSog2k17T4/VOAzJU0Su5we7yd2DYlMiYv5Xb3Z7RLRD0fCCL0Shrqm
- XE6pBlXLmYRbgY6zKMSju8OPFBvzcWeB7RWJfa55kJQlpLqWS0UZPq7THDV6vYKWC60L
- pkmtPXOAuaFmKqpHtjutE+a55p+QNjwUYHej2XkwiFh9eCr9LPEBOZI51IdPiSAXk1Er zA== 
-Received: from ediex02.ad.cirrus.com ([84.19.233.68])
-	by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 3p8qx7b7bk-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 13 Mar 2023 12:15:31 -0500
-Received: from ediex01.ad.cirrus.com (198.61.84.80) by ediex02.ad.cirrus.com
- (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.25; Mon, 13 Mar
- 2023 12:15:27 -0500
-Received: from ediswmail.ad.cirrus.com (198.61.86.93) by ediex01.ad.cirrus.com
- (198.61.84.80) with Microsoft SMTP Server id 15.2.1118.25 via Frontend
- Transport; Mon, 13 Mar 2023 12:15:27 -0500
-Received: from LONN2DGDQ73 (unknown [198.90.238.129])
-	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id E067FB06;
-	Mon, 13 Mar 2023 17:15:24 +0000 (UTC)
-From: Stefan Binding <sbinding@opensource.cirrus.com>
-To: 'Amit Kumar Mahapatra' <amit.kumar-mahapatra@amd.com>,
-        <broonie@kernel.org>, <miquel.raynal@bootlin.com>, <richard@nod.at>,
-        <vigneshr@ti.com>, <jic23@kernel.org>, <tudor.ambarus@microchip.com>,
-        <pratyush@kernel.org>, <Sanju.Mehta@amd.com>,
-        <chin-ting_kuo@aspeedtech.com>, <clg@kaod.org>, <kdasu.kdev@gmail.com>,
-        <f.fainelli@gmail.com>, <rjui@broadcom.com>, <sbranden@broadcom.com>,
-        <eajames@linux.ibm.com>, <olteanv@gmail.com>, <han.xu@nxp.com>,
-        <john.garry@huawei.com>, <shawnguo@kernel.org>,
-        <s.hauer@pengutronix.de>, <narmstrong@baylibre.com>,
-        <khilman@baylibre.com>, <matthias.bgg@gmail.com>, <haibo.chen@nxp.com>,
-        <linus.walleij@linaro.org>, <daniel@zonque.org>,
-        <haojian.zhuang@gmail.com>, <robert.jarzmik@free.fr>,
-        <agross@kernel.org>, <bjorn.andersson@linaro.org>, <heiko@sntech.de>,
-        <krzysztof.kozlowski@linaro.org>, <andi@etezian.org>,
-        <mcoquelin.stm32@gmail.com>, <alexandre.torgue@foss.st.com>,
-        <wens@csie.org>, <jernej.skrabec@gmail.com>, <samuel@sholland.org>,
-        <masahisa.kojima@linaro.org>, <jaswinder.singh@linaro.org>,
-        <rostedt@goodmis.org>, <mingo@redhat.com>, <l.stelmach@samsung.com>,
-        <davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>,
-        <pabeni@redhat.com>, <alex.aring@gmail.com>,
-        <stefan@datenfreihafen.org>, <kvalo@kernel.org>,
-        <james.schulman@cirrus.com>, <david.rhodes@cirrus.com>,
-        <tanureal@opensource.cirrus.com>, <rf@opensource.cirrus.com>,
-        <perex@perex.cz>, <tiwai@suse.com>, <npiggin@gmail.com>,
-        <christophe.leroy@csgroup.eu>, <mpe@ellerman.id.au>,
-        <oss@buserror.net>, <windhl@126.com>, <yangyingliang@huawei.com>,
-        <william.zhang@broadcom.com>, <kursad.oney@broadcom.com>,
-        <jonas.gorski@gmail.com>, <anand.gore@broadcom.com>,
-        <rafal@milecki.pl>
-CC: <git@amd.com>, <linux-spi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <joel@jms.id.au>, <andrew@aj.id.au>, <radu_nicolae.pirea@upb.ro>,
-        <nicolas.ferre@microchip.com>, <alexandre.belloni@bootlin.com>,
-        <claudiu.beznea@microchip.com>,
-        <bcm-kernel-feedback-list@broadcom.com>, <fancer.lancer@gmail.com>,
-        <kernel@pengutronix.de>, <festevam@gmail.com>, <linux-imx@nxp.com>,
-        <jbrunet@baylibre.com>, <martin.blumenstingl@googlemail.com>,
-        <avifishman70@gmail.com>, <tmaimon77@gmail.com>,
-        <tali.perry1@gmail.com>, <venture@google.com>, <yuenn@google.com>,
-        <benjaminfair@google.com>, <yogeshgaur.83@gmail.com>,
-        <konrad.dybcio@somainline.org>, <alim.akhtar@samsung.com>,
-        <ldewangan@nvidia.com>, <thierry.reding@gmail.com>,
-        <jonathanh@nvidia.com>, <michal.simek@amd.com>,
-        <linux-aspeed@lists.ozlabs.org>, <openbmc@lists.ozlabs.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-rpi-kernel@lists.infradead.org>,
-        <linux-amlogic@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
-        <linux-rockchip@lists.infradead.org>,
-        <linux-samsung-soc@vger.kernel.org>,
-        <linux-stm32@st-md-mailman.stormreply.com>,
-        <linux-sunxi@lists.linux.dev>, <linux-tegra@vger.kernel.org>,
-        <netdev@vger.kernel.org>, <linux-wpan@vger.kernel.org>,
-        <libertas-dev@lists.infradead.org>, <linux-wireless@vger.kernel.org>,
-        <linux-mtd@lists.infradead.org>, <lars@metafoo.de>,
-        <Michael.Hennerich@analog.com>, <linux-iio@vger.kernel.org>,
-        <michael@walle.cc>, <palmer@dabbelt.com>,
-        <linux-riscv@lists.infradead.org>, <alsa-devel@alsa-project.org>,
-        <patches@opensource.cirrus.com>, <linuxppc-dev@lists.ozlabs.org>,
-        <amitrkcian2002@gmail.com>
-References: <20230310173217.3429788-1-amit.kumar-mahapatra@amd.com> <20230310173217.3429788-10-amit.kumar-mahapatra@amd.com>
-In-Reply-To: <20230310173217.3429788-10-amit.kumar-mahapatra@amd.com>
-Subject: RE: [PATCH V6 09/15] spi: Add stacked and parallel memories support in SPI core
-Date: Mon, 13 Mar 2023 17:15:24 +0000
-Message-ID: <000001d955cf$67e96300$37bc2900$@opensource.cirrus.com>
+	id 1pbmTv-007DOq-56; Mon, 13 Mar 2023 18:01:14 +0000
+Received: from pendragon.ideasonboard.com (unknown [89.244.118.114])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id AC8596FA;
+	Mon, 13 Mar 2023 19:01:04 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1678730464;
+	bh=KFRH9dk+wuBnJkvtBF7vt1Bq819DqwDOz+UEakDAoVU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=m/w7Ll7YqXXBCxMRVrn8Mj4hKtTWVJapLkl0NTsoxA+v4QULuDkgv72paTOVm6NuF
+	 MI4cBgBmE45SX9gh/jsupRffjhUZk7trqEOnjYPqDzgOwCsk/d0b7ZLjvSXdPpsvhU
+	 sL17MnDRpdVpGCtKWeDGYjHmTMh6YZQJXHsPCrIA=
+Date: Mon, 13 Mar 2023 20:01:08 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: tfiga@chromium.org, m.szyprowski@samsung.com, mchehab@kernel.org,
+	ming.qian@nxp.com, shijie.qin@nxp.com, eagle.zhou@nxp.com,
+	bin.liu@mediatek.com, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, tiffany.lin@mediatek.com,
+	andrew-ct.chen@mediatek.com, yunfei.dong@mediatek.com,
+	stanimir.k.varbanov@gmail.com, quic_vgarodia@quicinc.com,
+	agross@kernel.org, andersson@kernel.org, konrad.dybcio@linaro.org,
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+	daniel.almeida@collabora.com, hverkuil-cisco@xs4all.nl,
+	jerbel@kernel.org, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, kernel@collabora.com
+Subject: Re: [RFC 1/4] media: videobuf2: Use vb2_get_buffer() as helper
+ everywhere
+Message-ID: <20230313180108.GA22646@pendragon.ideasonboard.com>
+References: <20230313135916.862852-1-benjamin.gaignard@collabora.com>
+ <20230313135916.862852-2-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-X-Mailer: Microsoft Outlook 16.0
-Thread-Index: AQDIpqAVbrqiWV0KFJ1wbuwYQjJiLAJ1loHLsQakKTA=
-Content-Language: en-gb
-X-Proofpoint-ORIG-GUID: LKmAPu7Cz3GFND25oRtReIuS_wrgSkPX
-X-Proofpoint-GUID: LKmAPu7Cz3GFND25oRtReIuS_wrgSkPX
-X-Proofpoint-Spam-Reason: safe
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20230313135916.862852-2-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_101610_736086_45B17052 
-X-CRM114-Status: GOOD (  36.61  )
+X-CRM114-CacheID: sfid-20230313_110111_640694_685736EA 
+X-CRM114-Status: GOOD (  37.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -141,691 +76,491 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Benjamin,
 
-I tested this patch on an existing laptop which uses SPI with a GPIO
-Chipselect,
-(HP EliteBook 860 G9), and I get the error:
+Thank you for the patch.
 
-[    2.671655] pxa2xx-spi pxa2xx-spi.2: chipselect 1 already in use
-[    2.671711] spi_master spi0: error -EBUSY: failed to add SPI device
-CSC3551:00 from ACPI
-[    2.690903] Serial bus multi instantiate pseudo device driver:
-probe of CSC3551:00 failed with error -16
+On Mon, Mar 13, 2023 at 02:59:13PM +0100, Benjamin Gaignard wrote:
+> The first step before changing how vb2 buffers are stored into queue
+> is to avoid direct call to bufs arrays.
 
-Please don't merge this until we have fully investigated.
+s/call/access/
 
-Thanks,
-Stefan Binding
+> This patch add 2 helpers functions to set and delete vb2 buffers
 
-> -----Original Message-----
-> From: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
-> Sent: 10 March 2023 17:32
-> To: broonie@kernel.org; miquel.raynal@bootlin.com; richard@nod.at;
-> vigneshr@ti.com; jic23@kernel.org; tudor.ambarus@microchip.com;
-> pratyush@kernel.org; Sanju.Mehta@amd.com; chin-
-> ting_kuo@aspeedtech.com; clg@kaod.org; kdasu.kdev@gmail.com;
-> f.fainelli@gmail.com; rjui@broadcom.com; sbranden@broadcom.com;
-> eajames@linux.ibm.com; olteanv@gmail.com; han.xu@nxp.com;
-> john.garry@huawei.com; shawnguo@kernel.org;
-> s.hauer@pengutronix.de; narmstrong@baylibre.com;
-> khilman@baylibre.com; matthias.bgg@gmail.com;
-> haibo.chen@nxp.com; linus.walleij@linaro.org; daniel@zonque.org;
-> haojian.zhuang@gmail.com; robert.jarzmik@free.fr;
-> agross@kernel.org; bjorn.andersson@linaro.org; heiko@sntech.de;
-> krzysztof.kozlowski@linaro.org; andi@etezian.org;
-> mcoquelin.stm32@gmail.com; alexandre.torgue@foss.st.com;
-> wens@csie.org; jernej.skrabec@gmail.com; samuel@sholland.org;
-> masahisa.kojima@linaro.org; jaswinder.singh@linaro.org;
-> rostedt@goodmis.org; mingo@redhat.com;
-> l.stelmach@samsung.com; davem@davemloft.net;
-> edumazet@google.com; kuba@kernel.org; pabeni@redhat.com;
-> alex.aring@gmail.com; stefan@datenfreihafen.org; kvalo@kernel.org;
-> james.schulman@cirrus.com; david.rhodes@cirrus.com;
-> tanureal@opensource.cirrus.com; rf@opensource.cirrus.com;
-> perex@perex.cz; tiwai@suse.com; npiggin@gmail.com;
-> christophe.leroy@csgroup.eu; mpe@ellerman.id.au;
-> oss@buserror.net; windhl@126.com; yangyingliang@huawei.com;
-> william.zhang@broadcom.com; kursad.oney@broadcom.com;
-> jonas.gorski@gmail.com; anand.gore@broadcom.com;
-> rafal@milecki.pl
-> Cc: git@amd.com; linux-spi@vger.kernel.org; linux-
-> kernel@vger.kernel.org; joel@jms.id.au; andrew@aj.id.au;
-> radu_nicolae.pirea@upb.ro; nicolas.ferre@microchip.com;
-> alexandre.belloni@bootlin.com; claudiu.beznea@microchip.com; bcm-
-> kernel-feedback-list@broadcom.com; fancer.lancer@gmail.com;
-> kernel@pengutronix.de; festevam@gmail.com; linux-imx@nxp.com;
-> jbrunet@baylibre.com; martin.blumenstingl@googlemail.com;
-> avifishman70@gmail.com; tmaimon77@gmail.com;
-> tali.perry1@gmail.com; venture@google.com; yuenn@google.com;
-> benjaminfair@google.com; yogeshgaur.83@gmail.com;
-> konrad.dybcio@somainline.org; alim.akhtar@samsung.com;
-> ldewangan@nvidia.com; thierry.reding@gmail.com;
-> jonathanh@nvidia.com; michal.simek@amd.com; linux-
-> aspeed@lists.ozlabs.org; openbmc@lists.ozlabs.org; linux-arm-
-> kernel@lists.infradead.org; linux-rpi-kernel@lists.infradead.org;
-linux-
-> amlogic@lists.infradead.org; linux-mediatek@lists.infradead.org;
-linux-
-> arm-msm@vger.kernel.org; linux-rockchip@lists.infradead.org; linux-
-> samsung-soc@vger.kernel.org; linux-stm32@st-md-
-> mailman.stormreply.com; linux-sunxi@lists.linux.dev; linux-
-> tegra@vger.kernel.org; netdev@vger.kernel.org; linux-
-> wpan@vger.kernel.org; libertas-dev@lists.infradead.org; linux-
-> wireless@vger.kernel.org; linux-mtd@lists.infradead.org;
-> lars@metafoo.de; Michael.Hennerich@analog.com; linux-
-> iio@vger.kernel.org; michael@walle.cc; palmer@dabbelt.com; linux-
-> riscv@lists.infradead.org; alsa-devel@alsa-project.org;
-> patches@opensource.cirrus.com; linuxppc-dev@lists.ozlabs.org;
-> amitrkcian2002@gmail.com; amit.kumar-mahapatra@amd.com
-> Subject: [PATCH V6 09/15] spi: Add stacked and parallel memories
-> support in SPI core
-> 
-> For supporting multiple CS the SPI device need to be aware of all
-the
-> CS
-> values. So, the "chip_select" member in the spi_device structure is
-> now an
-> array that holds all the CS values.
-> 
-> spi_device structure now has a "cs_index_mask" member. This acts as
-> an
-> index to the chip_select array. If nth bit of spi->cs_index_mask is
-set
-> then the driver would assert spi->chip_select[n].
-> 
-> In parallel mode all the chip selects are asserted/de-asserted
-> simultaneously and each byte of data is stored in both devices, the
-> even
-> bits in one, the odd bits in the other. The split is automatically
-handled
-> by the GQSPI controller. The GQSPI controller supports a maximum of
-> two
-> flashes connected in parallel mode. A "multi-cs-cap" flag is added
-in
-> the
-> spi controntroller data, through ctlr->multi-cs-cap the spi core
-will
-> make
-> sure that the controller is capable of handling multiple chip
-selects at
-> once.
-> 
-> For supporting multiple CS via GPIO the cs_gpiod member of the
-> spi_device
-> structure is now an array that holds the gpio descriptor for each
-> chipselect.
-> 
-> Multi CS support using GPIO is not tested due to unavailability of
-> necessary hardware setup.
-> 
-> Signed-off-by: Amit Kumar Mahapatra <amit.kumar-
-> mahapatra@amd.com>
+s/add/adds/
+
+> from a queue. With these 2 and vb2_get_buffer(), bufs field of
+> struct vb2_queue becomes like a private member of the structure.
+
+As the patch does more than using vb2_get_buffer() everywhere, I would
+rewrite the subject line to
+
+media: videobuf2: Access vb2_queue bufs array through helper functions
+
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 > ---
->  drivers/spi/spi.c       | 225
-+++++++++++++++++++++++++++------------
-> -
->  include/linux/spi/spi.h |  34 ++++--
->  2 files changed, 182 insertions(+), 77 deletions(-)
+>  .../media/common/videobuf2/videobuf2-core.c   | 69 ++++++++++---------
+>  .../media/common/videobuf2/videobuf2-v4l2.c   | 17 +++--
+>  drivers/media/platform/amphion/vpu_dbg.c      |  4 +-
+>  .../platform/mediatek/jpeg/mtk_jpeg_core.c    |  2 +-
+>  .../vcodec/vdec/vdec_vp9_req_lat_if.c         |  2 +-
+>  drivers/media/test-drivers/visl/visl-dec.c    | 16 +++--
+>  include/media/videobuf2-core.h                | 20 ++++++
+>  7 files changed, 81 insertions(+), 49 deletions(-)
 > 
-> diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-> index c725b4bab7af..742bd688381c 100644
-> --- a/drivers/spi/spi.c
-> +++ b/drivers/spi/spi.c
-> @@ -612,10 +612,17 @@ static int spi_dev_check(struct device *dev,
-> void *data)
->  {
->  	struct spi_device *spi = to_spi_device(dev);
->  	struct spi_device *new_spi = data;
-> -
-> -	if (spi->controller == new_spi->controller &&
-> -	    spi_get_chipselect(spi, 0) == spi_get_chipselect(new_spi,
-0))
-> -		return -EBUSY;
-> +	int idx, nw_idx;
-> +
-> +	if (spi->controller == new_spi->controller) {
-> +		for (idx = 0; idx < SPI_CS_CNT_MAX; idx++) {
-> +			for (nw_idx = 0; nw_idx < SPI_CS_CNT_MAX;
-> nw_idx++) {
-> +				if (spi_get_chipselect(spi, idx) ==
-> +				    spi_get_chipselect(new_spi,
-> nw_idx))
-> +					return -EBUSY;
-> +			}
-> +		}
-> +	}
->  	return 0;
->  }
-> 
-> @@ -629,7 +636,7 @@ static int __spi_add_device(struct spi_device
-> *spi)
->  {
->  	struct spi_controller *ctlr = spi->controller;
->  	struct device *dev = ctlr->dev.parent;
-> -	int status;
-> +	int status, idx;
-> 
->  	/*
->  	 * We need to make sure there's no other device with this
-> @@ -638,8 +645,7 @@ static int __spi_add_device(struct spi_device
-> *spi)
->  	 */
->  	status = bus_for_each_dev(&spi_bus_type, NULL, spi,
-> spi_dev_check);
->  	if (status) {
-> -		dev_err(dev, "chipselect %d already in use\n",
-> -				spi_get_chipselect(spi, 0));
-> +		dev_err(dev, "chipselect %d already in use\n",
-> spi_get_chipselect(spi, 0));
->  		return status;
->  	}
-> 
-> @@ -649,8 +655,10 @@ static int __spi_add_device(struct spi_device
-> *spi)
->  		return -ENODEV;
->  	}
-> 
-> -	if (ctlr->cs_gpiods)
-> -		spi_set_csgpiod(spi, 0, ctlr-
-> >cs_gpiods[spi_get_chipselect(spi, 0)]);
-> +	if (ctlr->cs_gpiods) {
-> +		for (idx = 0; idx < SPI_CS_CNT_MAX; idx++)
-> +			spi_set_csgpiod(spi, idx, ctlr-
-> >cs_gpiods[spi_get_chipselect(spi, idx)]);
-> +	}
-> 
->  	/*
->  	 * Drivers may modify this initial i/o setup, but will
-> @@ -690,13 +698,15 @@ int spi_add_device(struct spi_device *spi)
->  {
->  	struct spi_controller *ctlr = spi->controller;
->  	struct device *dev = ctlr->dev.parent;
-> -	int status;
-> +	int status, idx;
-> 
-> -	/* Chipselects are numbered 0..max; validate. */
-> -	if (spi_get_chipselect(spi, 0) >= ctlr->num_chipselect) {
-> -		dev_err(dev, "cs%d >= max %d\n",
-> spi_get_chipselect(spi, 0),
-> -			ctlr->num_chipselect);
-> -		return -EINVAL;
-> +	for (idx = 0; idx < SPI_CS_CNT_MAX; idx++) {
-> +		/* Chipselects are numbered 0..max; validate. */
-> +		if (spi_get_chipselect(spi, idx) >= ctlr-
-> >num_chipselect) {
-> +			dev_err(dev, "cs%d >= max %d\n",
-> spi_get_chipselect(spi, idx),
-> +				ctlr->num_chipselect);
-> +			return -EINVAL;
-> +		}
->  	}
-> 
->  	/* Set the bus ID string */
-> @@ -713,12 +723,15 @@ static int spi_add_device_locked(struct
-> spi_device *spi)
->  {
->  	struct spi_controller *ctlr = spi->controller;
->  	struct device *dev = ctlr->dev.parent;
-> +	int idx;
-> 
-> -	/* Chipselects are numbered 0..max; validate. */
-> -	if (spi_get_chipselect(spi, 0) >= ctlr->num_chipselect) {
-> -		dev_err(dev, "cs%d >= max %d\n",
-> spi_get_chipselect(spi, 0),
-> -			ctlr->num_chipselect);
-> -		return -EINVAL;
-> +	for (idx = 0; idx < SPI_CS_CNT_MAX; idx++) {
-> +		/* Chipselects are numbered 0..max; validate. */
-> +		if (spi_get_chipselect(spi, idx) >= ctlr-
-> >num_chipselect) {
-> +			dev_err(dev, "cs%d >= max %d\n",
-> spi_get_chipselect(spi, idx),
-> +				ctlr->num_chipselect);
-> +			return -EINVAL;
-> +		}
->  	}
-> 
->  	/* Set the bus ID string */
-> @@ -966,58 +979,119 @@ static void spi_res_release(struct
-> spi_controller *ctlr, struct spi_message *mes
->  static void spi_set_cs(struct spi_device *spi, bool enable, bool
-force)
->  {
->  	bool activate = enable;
-> +	u32 cs_num = __ffs(spi->cs_index_mask);
-> +	int idx;
-> 
->  	/*
-> -	 * Avoid calling into the driver (or doing delays) if the chip
-> select
-> -	 * isn't actually changing from the last time this was called.
-> +	 * In parallel mode all the chip selects are
-asserted/de-asserted
-> +	 * at once
->  	 */
-> -	if (!force && ((enable && spi->controller->last_cs ==
-> spi_get_chipselect(spi, 0)) ||
-> -		       (!enable && spi->controller->last_cs !=
-> spi_get_chipselect(spi, 0))) &&
-> -	    (spi->controller->last_cs_mode_high == (spi->mode &
-> SPI_CS_HIGH)))
-> -		return;
-> -
-> -	trace_spi_set_cs(spi, activate);
-> -
-> -	spi->controller->last_cs = enable ? spi_get_chipselect(spi, 0)
-: -
-> 1;
-> -	spi->controller->last_cs_mode_high = spi->mode &
-> SPI_CS_HIGH;
-> -
-> -	if ((spi_get_csgpiod(spi, 0) ||
-!spi->controller->set_cs_timing)
-> && !activate)
-> -		spi_delay_exec(&spi->cs_hold, NULL);
-> -
-> -	if (spi->mode & SPI_CS_HIGH)
-> -		enable = !enable;
-> +	if ((spi->cs_index_mask & SPI_PARALLEL_CS_MASK) ==
-> SPI_PARALLEL_CS_MASK) {
-> +		spi->controller->last_cs_mode_high = spi->mode &
-> SPI_CS_HIGH;
-> +
-> +		if ((spi_get_csgpiod(spi, 0) || !spi->controller-
-> >set_cs_timing) && !activate)
-> +			spi_delay_exec(&spi->cs_hold, NULL);
-> +
-> +		if (spi->mode & SPI_CS_HIGH)
-> +			enable = !enable;
-> +
-> +		if (spi_get_csgpiod(spi, 0) && spi_get_csgpiod(spi,
-1)) {
-> +			if (!(spi->mode & SPI_NO_CS)) {
-> +				/*
-> +				 * Historically ACPI has no means of
-the
-> GPIO polarity and
-> +				 * thus the SPISerialBus() resource
-> defines it on the per-chip
-> +				 * basis. In order to avoid a chain of
-> negations, the GPIO
-> +				 * polarity is considered being Active
-> High. Even for the cases
-> +				 * when _DSD() is involved (in the
-> updated versions of ACPI)
-> +				 * the GPIO CS polarity must be
-> defined Active High to avoid
-> +				 * ambiguity. That's why we use
-> enable, that takes SPI_CS_HIGH
-> +				 * into account.
-> +				 */
-> +				if (has_acpi_companion(&spi->dev)) {
-> +					for (idx = 0; idx <
-> SPI_CS_CNT_MAX; idx++)
-> +
-> 	gpiod_set_value_cansleep(spi_get_csgpiod(spi, idx),
-> +
-> !enable);
-> +				} else {
-> +					for (idx = 0; idx <
-> SPI_CS_CNT_MAX; idx++)
-> +						/* Polarity handled by
-> GPIO library */
-> +
-> 	gpiod_set_value_cansleep(spi_get_csgpiod(spi, idx),
-> +
-> activate);
-> +				}
-> +			}
-> +			/* Some SPI masters need both GPIO CS &
-> slave_select */
-> +			if ((spi->controller->flags &
-> SPI_MASTER_GPIO_SS) &&
-> +			    spi->controller->set_cs)
-> +				spi->controller->set_cs(spi, !enable);
-> +			else if (spi->controller->set_cs)
-> +				spi->controller->set_cs(spi, !enable);
-> +		}
-> 
-> -	if (spi_get_csgpiod(spi, 0)) {
-> -		if (!(spi->mode & SPI_NO_CS)) {
-> -			/*
-> -			 * Historically ACPI has no means of the GPIO
-> polarity and
-> -			 * thus the SPISerialBus() resource defines it
-on
-> the per-chip
-> -			 * basis. In order to avoid a chain of
-negations,
-> the GPIO
-> -			 * polarity is considered being Active High.
-Even
-> for the cases
-> -			 * when _DSD() is involved (in the updated
-> versions of ACPI)
-> -			 * the GPIO CS polarity must be defined Active
-> High to avoid
-> -			 * ambiguity. That's why we use enable, that
-> takes SPI_CS_HIGH
-> -			 * into account.
-> -			 */
-> -			if (has_acpi_companion(&spi->dev))
-> -
-> 	gpiod_set_value_cansleep(spi_get_csgpiod(spi, 0), !enable);
-> -			else
-> -				/* Polarity handled by GPIO library */
-> -
-> 	gpiod_set_value_cansleep(spi_get_csgpiod(spi, 0), activate);
-> +		for (idx = 0; idx < SPI_CS_CNT_MAX; idx++) {
-> +			if (spi_get_csgpiod(spi, idx) ||
-!spi->controller-
-> >set_cs_timing) {
-> +				if (activate)
-> +					spi_delay_exec(&spi-
-> >cs_setup, NULL);
-> +				else
-> +					spi_delay_exec(&spi-
-> >cs_inactive, NULL);
-> +			}
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index cf6727d9c81f..b51152ace763 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -359,7 +359,7 @@ static void __setup_offsets(struct vb2_buffer *vb)
+>  	unsigned long off = 0;
+>  
+>  	if (vb->index) {
+> -		struct vb2_buffer *prev = q->bufs[vb->index - 1];
+> +		struct vb2_buffer *prev = vb2_get_buffer(q, vb->index - 1);
+>  		struct vb2_plane *p = &prev->planes[prev->num_planes - 1];
+>  
+>  		off = PAGE_ALIGN(p->m.offset + p->length);
+> @@ -437,7 +437,7 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
 >  		}
-> -		/* Some SPI masters need both GPIO CS &
-> slave_select */
-> -		if ((spi->controller->flags & SPI_MASTER_GPIO_SS) &&
-> -		    spi->controller->set_cs)
-> +	} else {
-> +		/*
-> +		 * Avoid calling into the driver (or doing delays) if
-the
-> chip select
-> +		 * isn't actually changing from the last time this was
-> called.
-> +		 */
-> +		if (!force && ((enable && spi->controller->last_cs ==
-> +				spi_get_chipselect(spi, cs_num)) ||
-> +				(!enable && spi->controller->last_cs
-!=
-> +				 spi_get_chipselect(spi, cs_num))) &&
-> +		    (spi->controller->last_cs_mode_high ==
-> +		     (spi->mode & SPI_CS_HIGH)))
-> +			return;
+>  		call_void_bufop(q, init_buffer, vb);
+>  
+> -		q->bufs[vb->index] = vb;
+> +		vb2_set_buffer(q, vb);
+>  
+>  		/* Allocate video buffer memory for the MMAP type */
+>  		if (memory == VB2_MEMORY_MMAP) {
+> @@ -445,7 +445,7 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+>  			if (ret) {
+>  				dprintk(q, 1, "failed allocating memory for buffer %d\n",
+>  					buffer);
+> -				q->bufs[vb->index] = NULL;
+> +				vb2_del_buffer(q, vb);
+>  				kfree(vb);
+
+vb2_del_buffer() make it sounds like the buffer gets deleted, yet you
+free it right after. That could be confusing. One option would be to
+call the function vb2_remove_buffer() (or possibly even better as it's
+more explicit, vb2_queue_remove_buffer()). Another one would be to move
+the kfree() call to vb2_del_buffer().
+
+Similarly, vb2_add_buffer() or vb2_queue_add_buffer() would be better
+names for vb2_set_buffer().
+
+>  				break;
+>  			}
+> @@ -460,7 +460,7 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+>  				dprintk(q, 1, "buffer %d %p initialization failed\n",
+>  					buffer, vb);
+>  				__vb2_buf_mem_free(vb);
+> -				q->bufs[vb->index] = NULL;
+> +				vb2_del_buffer(q, vb);
+>  				kfree(vb);
+>  				break;
+>  			}
+> @@ -483,7 +483,7 @@ static void __vb2_free_mem(struct vb2_queue *q, unsigned int buffers)
+>  
+>  	for (buffer = q->num_buffers - buffers; buffer < q->num_buffers;
+>  	     ++buffer) {
+> -		vb = q->bufs[buffer];
+> +		vb = vb2_get_buffer(q, buffer);
+
+I wonder if this could be optimized in subsequent patches by using a
+list walk instead of a for loop on the buffer index. Same in multiple
+locations below. I'd add the list walks right after this patch. A
+vb2_buffer list walk macro (for_each_vb2_buffer for instance) would be
+useful.
+
+>  		if (!vb)
+>  			continue;
+>  
+> @@ -511,7 +511,7 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+>  	/* Call driver-provided cleanup function for each buffer, if provided */
+>  	for (buffer = q->num_buffers - buffers; buffer < q->num_buffers;
+>  	     ++buffer) {
+> -		struct vb2_buffer *vb = q->bufs[buffer];
+> +		struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
+>  
+>  		if (vb && vb->planes[0].mem_priv)
+>  			call_void_vb_qop(vb, buf_cleanup, vb);
+> @@ -591,8 +591,10 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+>  	/* Free vb2 buffers */
+>  	for (buffer = q->num_buffers - buffers; buffer < q->num_buffers;
+>  	     ++buffer) {
+> -		kfree(q->bufs[buffer]);
+> -		q->bufs[buffer] = NULL;
+> +		struct vb2_buffer *vb2 = vb2_get_buffer(q, buffer);
 > +
-> +		trace_spi_set_cs(spi, activate);
-> +
-> +		spi->controller->last_cs = enable ?
-> spi_get_chipselect(spi, cs_num) : -1;
-> +		spi->controller->last_cs_mode_high = spi->mode &
-> SPI_CS_HIGH;
-> +
-> +		if ((spi_get_csgpiod(spi, cs_num) || !spi->controller-
-> >set_cs_timing) && !activate)
-> +			spi_delay_exec(&spi->cs_hold, NULL);
-> +
-> +		if (spi->mode & SPI_CS_HIGH)
-> +			enable = !enable;
-> +
-> +		if (spi_get_csgpiod(spi, cs_num)) {
-> +			if (!(spi->mode & SPI_NO_CS)) {
-> +				/*
-> +				 * Historically ACPI has no means of
-the
-> GPIO polarity and
-> +				 * thus the SPISerialBus() resource
-> defines it on the per-chip
-> +				 * basis. In order to avoid a chain of
-> negations, the GPIO
-> +				 * polarity is considered being Active
-> High. Even for the cases
-> +				 * when _DSD() is involved (in the
-> updated versions of ACPI)
-> +				 * the GPIO CS polarity must be
-> defined Active High to avoid
-> +				 * ambiguity. That's why we use
-> enable, that takes SPI_CS_HIGH
-> +				 * into account.
-> +				 */
-> +				if (has_acpi_companion(&spi->dev))
-> +
-> 	gpiod_set_value_cansleep(spi_get_csgpiod(spi, cs_num),
-> +
-> !enable);
-> +				else
-> +					/* Polarity handled by GPIO
-> library */
-> +
-> 	gpiod_set_value_cansleep(spi_get_csgpiod(spi, cs_num),
-> +
-> activate);
-> +			}
-> +			/* Some SPI masters need both GPIO CS &
-> slave_select */
-> +			if ((spi->controller->flags &
-> SPI_MASTER_GPIO_SS) &&
-> +			    spi->controller->set_cs)
-> +				spi->controller->set_cs(spi, !enable);
-> +		} else if (spi->controller->set_cs) {
->  			spi->controller->set_cs(spi, !enable);
-> -	} else if (spi->controller->set_cs) {
-> -		spi->controller->set_cs(spi, !enable);
-> -	}
-> +		}
-> 
-> -	if (spi_get_csgpiod(spi, 0) ||
-!spi->controller->set_cs_timing) {
-> -		if (activate)
-> -			spi_delay_exec(&spi->cs_setup, NULL);
-> -		else
-> -			spi_delay_exec(&spi->cs_inactive, NULL);
-> +		if (spi_get_csgpiod(spi, cs_num) || !spi->controller-
-> >set_cs_timing) {
-> +			if (activate)
-> +				spi_delay_exec(&spi->cs_setup,
-> NULL);
-> +			else
-> +				spi_delay_exec(&spi->cs_inactive,
-> NULL);
-> +		}
+> +		vb2_del_buffer(q, vb2);
+> +		kfree(vb2);
 >  	}
->  }
-> 
-> @@ -2246,8 +2320,8 @@ static void of_spi_parse_dt_cs_delay(struct
-> device_node *nc,
->  static int of_spi_parse_dt(struct spi_controller *ctlr, struct
-spi_device
-> *spi,
->  			   struct device_node *nc)
+>  
+>  	q->num_buffers -= buffers;
+> @@ -628,7 +630,7 @@ static bool __buffers_in_use(struct vb2_queue *q)
 >  {
-> -	u32 value;
-> -	int rc;
-> +	u32 value, cs[SPI_CS_CNT_MAX] = {0};
-> +	int rc, idx;
-> 
->  	/* Mode (clock phase/polarity/etc.) */
->  	if (of_property_read_bool(nc, "spi-cpha"))
-> @@ -2320,13 +2394,21 @@ static int of_spi_parse_dt(struct
-> spi_controller *ctlr, struct spi_device *spi,
+>  	unsigned int buffer;
+>  	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
+> -		if (vb2_buffer_in_use(q, q->bufs[buffer]))
+> +		if (vb2_buffer_in_use(q, vb2_get_buffer(q, buffer)))
+>  			return true;
 >  	}
-> 
->  	/* Device address */
-> -	rc = of_property_read_u32(nc, "reg", &value);
-> -	if (rc) {
-> +	rc = of_property_read_variable_u32_array(nc, "reg", &cs[0], 1,
-> +						 SPI_CS_CNT_MAX);
-> +	if (rc < 0 || rc > ctlr->num_chipselect) {
->  		dev_err(&ctlr->dev, "%pOF has no valid 'reg' property
-> (%d)\n",
->  			nc, rc);
->  		return rc;
-> +	} else if ((of_property_read_bool(nc, "parallel-memories"))
-> &&
-> +		   (!ctlr->multi_cs_cap)) {
-> +		dev_err(&ctlr->dev, "SPI controller doesn't support
-> multi CS\n");
-> +		return -EINVAL;
+>  	return false;
+> @@ -636,7 +638,7 @@ static bool __buffers_in_use(struct vb2_queue *q)
+>  
+>  void vb2_core_querybuf(struct vb2_queue *q, unsigned int index, void *pb)
+>  {
+> -	call_void_bufop(q, fill_user_buffer, q->bufs[index], pb);
+> +	call_void_bufop(q, fill_user_buffer, vb2_get_buffer(q, index), pb);
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_core_querybuf);
+>  
+> @@ -1547,7 +1549,7 @@ int vb2_core_prepare_buf(struct vb2_queue *q, unsigned int index, void *pb)
+>  	struct vb2_buffer *vb;
+>  	int ret;
+>  
+> -	vb = q->bufs[index];
+> +	vb = vb2_get_buffer(q, index);
+>  	if (vb->state != VB2_BUF_STATE_DEQUEUED) {
+>  		dprintk(q, 1, "invalid buffer state %s\n",
+>  			vb2_state_name(vb->state));
+> @@ -1618,7 +1620,7 @@ static int vb2_start_streaming(struct vb2_queue *q)
+>  		 * correctly return them to vb2.
+>  		 */
+>  		for (i = 0; i < q->num_buffers; ++i) {
+> -			vb = q->bufs[i];
+> +			vb = vb2_get_buffer(q, i);
+>  			if (vb->state == VB2_BUF_STATE_ACTIVE)
+>  				vb2_buffer_done(vb, VB2_BUF_STATE_QUEUED);
+>  		}
+> @@ -1646,7 +1648,7 @@ int vb2_core_qbuf(struct vb2_queue *q, unsigned int index, void *pb,
+>  		return -EIO;
 >  	}
-> -	spi_set_chipselect(spi, 0, value);
-> +	for (idx = 0; idx < rc; idx++)
-> +		spi_set_chipselect(spi, idx, cs[idx]);
-> +	/* By default set the spi->cs_index_mask as 1 */
-> +	spi->cs_index_mask = 0x01;
-> 
->  	/* Device speed */
->  	if (!of_property_read_u32(nc, "spi-max-frequency", &value))
-> @@ -3846,6 +3928,7 @@ static int __spi_validate(struct spi_device
-> *spi, struct spi_message *message)
->  	struct spi_controller *ctlr = spi->controller;
->  	struct spi_transfer *xfer;
->  	int w_size;
-> +	u32 cs_num = __ffs(spi->cs_index_mask);
-> 
->  	if (list_empty(&message->transfers))
->  		return -EINVAL;
-> @@ -3858,7 +3941,7 @@ static int __spi_validate(struct spi_device
-> *spi, struct spi_message *message)
->  	 * cs_change is set for each transfer.
+>  
+> -	vb = q->bufs[index];
+> +	vb = vb2_get_buffer(q, index);
+>  
+>  	if (!req && vb->state != VB2_BUF_STATE_IN_REQUEST &&
+>  	    q->requires_requests) {
+> @@ -2022,12 +2024,15 @@ static void __vb2_queue_cancel(struct vb2_queue *q)
+>  	 * to vb2 in stop_streaming().
 >  	 */
->  	if ((spi->mode & SPI_CS_WORD) && (!(ctlr->mode_bits &
-> SPI_CS_WORD) ||
-> -					  spi_get_csgpiod(spi, 0))) {
-> +					  spi_get_csgpiod(spi,
-> cs_num))) {
->  		size_t maxsize;
->  		int ret;
-> 
-> diff --git a/include/linux/spi/spi.h b/include/linux/spi/spi.h
-> index bdb35a91b4bf..452682aa1a39 100644
-> --- a/include/linux/spi/spi.h
-> +++ b/include/linux/spi/spi.h
-> @@ -19,6 +19,11 @@
->  #include <linux/acpi.h>
->  #include <linux/u64_stats_sync.h>
-> 
-> +/* Max no. of CS supported per spi device */
-> +#define SPI_CS_CNT_MAX 2
+>  	if (WARN_ON(atomic_read(&q->owned_by_drv_count))) {
+> -		for (i = 0; i < q->num_buffers; ++i)
+> -			if (q->bufs[i]->state == VB2_BUF_STATE_ACTIVE) {
+> +		for (i = 0; i < q->num_buffers; ++i) {
+> +			struct vb2_buffer *vb2 = vb2_get_buffer(q, i);
+
+videobuf2 usually names vb2_buffer variables just 'vb' (there's no
+occurrence of 'vb2' in the existing code base). Could you rename this
+and other variables in this patch ?
+
 > +
-> +/* chip select mask */
-> +#define SPI_PARALLEL_CS_MASK	(BIT(0) | BIT(1))
->  struct dma_chan;
->  struct software_node;
->  struct ptp_system_timestamp;
-> @@ -166,6 +171,7 @@ extern void
-> spi_transfer_cs_change_delay_exec(struct spi_message *msg,
->   *	deasserted. If @cs_change_delay is used from @spi_transfer,
-> then the
->   *	two delays will be added up.
->   * @pcpu_statistics: statistics for the spi_device
-> + * @cs_index_mask: Bit mask of the active chipselect(s) in the
-> chipselect array
->   *
->   * A @spi_device is used to interchange data between an SPI slave
->   * (usually a discrete chip) and CPU memory.
-> @@ -181,7 +187,7 @@ struct spi_device {
->  	struct spi_controller	*controller;
->  	struct spi_controller	*master;	/* Compatibility layer
-> */
->  	u32			max_speed_hz;
-> -	u8			chip_select;
-> +	u8			chip_select[SPI_CS_CNT_MAX];
->  	u8			bits_per_word;
->  	bool			rt;
->  #define SPI_NO_TX	BIT(31)		/* No transmit wire */
-> @@ -202,7 +208,7 @@ struct spi_device {
->  	void			*controller_data;
->  	char			modalias[SPI_NAME_SIZE];
->  	const char		*driver_override;
-> -	struct gpio_desc	*cs_gpiod;	/* Chip select gpio
-desc
-> */
-> +	struct gpio_desc	*cs_gpiod[SPI_CS_CNT_MAX];	/*
-Chip
-> select gpio desc */
->  	struct spi_delay	word_delay; /* Inter-word delay */
->  	/* CS delays */
->  	struct spi_delay	cs_setup;
-> @@ -212,6 +218,13 @@ struct spi_device {
->  	/* The statistics */
->  	struct spi_statistics __percpu	*pcpu_statistics;
-> 
-> +	/* Bit mask of the chipselect(s) that the driver need to use
-> from
-> +	 * the chipselect array.When the controller is capable to
-handle
-> +	 * multiple chip selects & memories are connected in parallel
-> +	 * then more than one bit need to be set in cs_index_mask.
-> +	 */
-> +	u32			cs_index_mask : 2;
-> +
+> +			if (vb2->state == VB2_BUF_STATE_ACTIVE) {
+>  				pr_warn("driver bug: stop_streaming operation is leaving buf %p in active state\n",
+> -					q->bufs[i]);
+> -				vb2_buffer_done(q->bufs[i], VB2_BUF_STATE_ERROR);
+> +					vb2);
+> +				vb2_buffer_done(vb2, VB2_BUF_STATE_ERROR);
+>  			}
+> +		}
+>  		/* Must be zero now */
+>  		WARN_ON(atomic_read(&q->owned_by_drv_count));
+>  	}
+> @@ -2061,7 +2066,7 @@ static void __vb2_queue_cancel(struct vb2_queue *q)
+>  	 * be changed, so we can't move the buf_finish() to __vb2_dqbuf().
+>  	 */
+>  	for (i = 0; i < q->num_buffers; ++i) {
+> -		struct vb2_buffer *vb = q->bufs[i];
+> +		struct vb2_buffer *vb = vb2_get_buffer(q, i);
+>  		struct media_request *req = vb->req_obj.req;
+>  
+>  		/*
+> @@ -2215,7 +2220,7 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
+>  	 * return its buffer and plane numbers.
+>  	 */
+>  	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
+> -		vb = q->bufs[buffer];
+> +		vb = vb2_get_buffer(q, buffer);
+>  
+>  		for (plane = 0; plane < vb->num_planes; ++plane) {
+>  			if (vb->planes[plane].m.offset == off) {
+> @@ -2262,7 +2267,7 @@ int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
+>  		return -EINVAL;
+>  	}
+>  
+> -	vb = q->bufs[index];
+> +	vb = vb2_get_buffer(q, index);
+>  
+>  	if (plane >= vb->num_planes) {
+>  		dprintk(q, 1, "buffer plane out of range\n");
+> @@ -2339,7 +2344,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+>  	if (ret)
+>  		goto unlock;
+>  
+> -	vb = q->bufs[buffer];
+> +	vb = vb2_get_buffer(q, buffer);
+>  
 >  	/*
->  	 * likely need more hooks for more protocol options affecting
-> how
->  	 * the controller talks to each chip, like:
-> @@ -268,22 +281,22 @@ static inline void *spi_get_drvdata(struct
-> spi_device *spi)
-> 
->  static inline u8 spi_get_chipselect(struct spi_device *spi, u8 idx)
->  {
-> -	return spi->chip_select;
-> +	return spi->chip_select[idx];
->  }
-> 
->  static inline void spi_set_chipselect(struct spi_device *spi, u8
-idx, u8
-> chipselect)
->  {
-> -	spi->chip_select = chipselect;
-> +	spi->chip_select[idx] = chipselect;
->  }
-> 
->  static inline struct gpio_desc *spi_get_csgpiod(struct spi_device
-*spi,
-> u8 idx)
->  {
-> -	return spi->cs_gpiod;
-> +	return spi->cs_gpiod[idx];
->  }
-> 
->  static inline void spi_set_csgpiod(struct spi_device *spi, u8 idx,
-struct
-> gpio_desc *csgpiod)
->  {
-> -	spi->cs_gpiod = csgpiod;
-> +	spi->cs_gpiod[idx] = csgpiod;
->  }
-> 
->  /**
-> @@ -388,6 +401,8 @@ extern struct spi_device
-> *spi_new_ancillary_device(struct spi_device *spi, u8 ch
->   * @bus_lock_spinlock: spinlock for SPI bus locking
->   * @bus_lock_mutex: mutex for exclusion of multiple callers
->   * @bus_lock_flag: indicates that the SPI bus is locked for
-exclusive
-> use
-> + * @multi_cs_cap: indicates that the SPI Controller can assert/de-
-> assert
-> + *	more than one chip select at once.
->   * @setup: updates the device mode and clocking records used by a
->   *	device's SPI controller; protocol code may call this.  This
->   *	must fail if an unrecognized or unsupported mode is
-> requested.
-> @@ -585,6 +600,13 @@ struct spi_controller {
->  	/* Flag indicating that the SPI bus is locked for exclusive
-use */
->  	bool			bus_lock_flag;
-> 
-> +	/*
-> +	 * Flag indicating that the spi-controller has multi chip
-select
-> +	 * capability and can assert/de-assert more than one chip
-> select
-> +	 * at once.
-> +	 */
-> +	bool			multi_cs_cap;
+>  	 * MMAP requires page_aligned buffers.
+> @@ -2679,7 +2684,7 @@ static int __vb2_init_fileio(struct vb2_queue *q, int read)
+>  	 * Check if plane_count is correct
+>  	 * (multiplane buffers are not supported).
+>  	 */
+> -	if (q->bufs[0]->num_planes != 1) {
+> +	if (vb2_get_buffer(q, 0)->num_planes != 1) {
+
+This may become problematic as there will be no guarantee going forward
+that buffer 0 exists. Maybe it's fine for the fileio helpers though.
+
+>  		ret = -EBUSY;
+>  		goto err_reqbufs;
+>  	}
+> @@ -2688,12 +2693,14 @@ static int __vb2_init_fileio(struct vb2_queue *q, int read)
+>  	 * Get kernel address of each buffer.
+>  	 */
+>  	for (i = 0; i < q->num_buffers; i++) {
+> -		fileio->bufs[i].vaddr = vb2_plane_vaddr(q->bufs[i], 0);
+> +		struct vb2_buffer *vb2 = vb2_get_buffer(q, i);
 > +
->  	/* Setup mode and clock, etc (spi driver may call many times).
->  	 *
->  	 * IMPORTANT:  this may be called when transfers to another
-> --
-> 2.25.1
+> +		fileio->bufs[i].vaddr = vb2_plane_vaddr(vb2, 0);
+>  		if (fileio->bufs[i].vaddr == NULL) {
+>  			ret = -EINVAL;
+>  			goto err_reqbufs;
+>  		}
+> -		fileio->bufs[i].size = vb2_plane_size(q->bufs[i], 0);
+> +		fileio->bufs[i].size = vb2_plane_size(vb2, 0);
+>  	}
+>  
+>  	/*
+> @@ -2821,15 +2828,15 @@ static size_t __vb2_perform_fileio(struct vb2_queue *q, char __user *data, size_
+>  
+>  		fileio->cur_index = index;
+>  		buf = &fileio->bufs[index];
+> -		b = q->bufs[index];
+> +		b = vb2_get_buffer(q, index);
+>  
+>  		/*
+>  		 * Get number of bytes filled by the driver
+>  		 */
+>  		buf->pos = 0;
+>  		buf->queued = 0;
+> -		buf->size = read ? vb2_get_plane_payload(q->bufs[index], 0)
+> -				 : vb2_plane_size(q->bufs[index], 0);
+> +		buf->size = read ? vb2_get_plane_payload(b, 0)
+> +				 : vb2_plane_size(b, 0);
+>  		/* Compensate for data_offset on read in the multiplanar case. */
+>  		if (is_multiplanar && read &&
+>  				b->planes[0].data_offset < buf->size) {
+> @@ -2872,7 +2879,7 @@ static size_t __vb2_perform_fileio(struct vb2_queue *q, char __user *data, size_
+>  	 * Queue next buffer if required.
+>  	 */
+>  	if (buf->pos == buf->size || (!read && fileio->write_immediately)) {
+> -		struct vb2_buffer *b = q->bufs[index];
+> +		struct vb2_buffer *b = vb2_get_buffer(q, index);
+>  
+>  		/*
+>  		 * Check if this is the last buffer to read.
+> @@ -2899,7 +2906,7 @@ static size_t __vb2_perform_fileio(struct vb2_queue *q, char __user *data, size_
+>  		 */
+>  		buf->pos = 0;
+>  		buf->queued = 1;
+> -		buf->size = vb2_plane_size(q->bufs[index], 0);
+> +		buf->size = vb2_plane_size(vb2_get_buffer(q, index), 0);
+>  		fileio->q_count += 1;
+>  		/*
+>  		 * If we are queuing up buffers for the first time, then
+> @@ -2970,7 +2977,7 @@ static int vb2_thread(void *data)
+>  		 * Call vb2_dqbuf to get buffer back.
+>  		 */
+>  		if (prequeue) {
+> -			vb = q->bufs[index++];
+> +			vb = vb2_get_buffer(q, index++);
+>  			prequeue--;
+>  		} else {
+>  			call_void_qop(q, wait_finish, q);
+> @@ -2979,7 +2986,7 @@ static int vb2_thread(void *data)
+>  			call_void_qop(q, wait_prepare, q);
+>  			dprintk(q, 5, "file io: vb2_dqbuf result: %d\n", ret);
+>  			if (!ret)
+> -				vb = q->bufs[index];
+> +				vb = vb2_get_buffer(q, index);
+>  		}
+>  		if (ret || threadio->stop)
+>  			break;
+> diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> index 1f5d235a8441..01b2bb957239 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> @@ -383,7 +383,7 @@ static int vb2_queue_or_prepare_buf(struct vb2_queue *q, struct media_device *md
+>  		return -EINVAL;
+>  	}
+>  
+> -	if (q->bufs[b->index] == NULL) {
+> +	if (!vb2_get_buffer(q, b->index)) {
+>  		/* Should never happen */
+>  		dprintk(q, 1, "%s: buffer is NULL\n", opname);
+>  		return -EINVAL;
+> @@ -394,7 +394,7 @@ static int vb2_queue_or_prepare_buf(struct vb2_queue *q, struct media_device *md
+>  		return -EINVAL;
+>  	}
+>  
+> -	vb = q->bufs[b->index];
+> +	vb = vb2_get_buffer(q, b->index);
+>  	vbuf = to_vb2_v4l2_buffer(vb);
+>  	ret = __verify_planes_array(vb, b);
+>  	if (ret)
+> @@ -628,11 +628,14 @@ static const struct vb2_buf_ops v4l2_buf_ops = {
+>  struct vb2_buffer *vb2_find_buffer(struct vb2_queue *q, u64 timestamp)
+>  {
+>  	unsigned int i;
+> +	struct vb2_buffer *vb2;
+>  
+> -	for (i = 0; i < q->num_buffers; i++)
+> -		if (q->bufs[i]->copied_timestamp &&
+> -		    q->bufs[i]->timestamp == timestamp)
+> -			return vb2_get_buffer(q, i);
+> +	for (i = 0; i < q->num_buffers; i++) {
+> +		vb2 = vb2_get_buffer(q, i);
+> +		if (vb2->copied_timestamp &&
+> +		    vb2->timestamp == timestamp)
+> +			return vb2;
+> +	}
+>  	return NULL;
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_find_buffer);
+> @@ -664,7 +667,7 @@ int vb2_querybuf(struct vb2_queue *q, struct v4l2_buffer *b)
+>  		dprintk(q, 1, "buffer index out of range\n");
+>  		return -EINVAL;
+>  	}
+> -	vb = q->bufs[b->index];
+> +	vb = vb2_get_buffer(q, b->index);
+>  	ret = __verify_planes_array(vb, b);
+>  	if (!ret)
+>  		vb2_core_querybuf(q, b->index, b);
+> diff --git a/drivers/media/platform/amphion/vpu_dbg.c b/drivers/media/platform/amphion/vpu_dbg.c
+> index 44b830ae01d8..8a423c1f6b55 100644
+> --- a/drivers/media/platform/amphion/vpu_dbg.c
+> +++ b/drivers/media/platform/amphion/vpu_dbg.c
+> @@ -133,7 +133,7 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
+>  
+>  	vq = v4l2_m2m_get_src_vq(inst->fh.m2m_ctx);
+>  	for (i = 0; i < vq->num_buffers; i++) {
+> -		struct vb2_buffer *vb = vq->bufs[i];
+> +		struct vb2_buffer *vb = vb2_get_buffer(vq, i);
+>  		struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
+>  
+>  		if (vb->state == VB2_BUF_STATE_DEQUEUED)
+> @@ -148,7 +148,7 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
+>  
+>  	vq = v4l2_m2m_get_dst_vq(inst->fh.m2m_ctx);
+>  	for (i = 0; i < vq->num_buffers; i++) {
+> -		struct vb2_buffer *vb = vq->bufs[i];
+> +		struct vb2_buffer *vb = vb2_get_buffer(vq, i);
+>  		struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
+>  
+>  		if (vb->state == VB2_BUF_STATE_DEQUEUED)
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> index 969516a940ba..0be07f691d9a 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> @@ -603,7 +603,7 @@ static int mtk_jpeg_qbuf(struct file *file, void *priv, struct v4l2_buffer *buf)
+>  		return -EINVAL;
+>  	}
+>  
+> -	vb = vq->bufs[buf->index];
+> +	vb = vb2_get_buffer(vq, buf->index);
+>  	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(vb);
+>  	jpeg_src_buf->bs_size = buf->m.planes[0].bytesused;
+>  
+> diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+> index cbb6728b8a40..f5958b6d834a 100644
+> --- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+> +++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+> @@ -1701,7 +1701,7 @@ static int vdec_vp9_slice_setup_core_buffer(struct vdec_vp9_slice_instance *inst
+>  
+>  	/* update internal buffer's width/height */
+>  	for (i = 0; i < vq->num_buffers; i++) {
+> -		if (vb == vq->bufs[i]) {
+> +		if (vb == vb2_get_buffer(vq, i)) {
+>  			instance->dpb[i].width = w;
+>  			instance->dpb[i].height = h;
+>  			break;
+> diff --git a/drivers/media/test-drivers/visl/visl-dec.c b/drivers/media/test-drivers/visl/visl-dec.c
+> index 318d675e5668..328016b456ba 100644
+> --- a/drivers/media/test-drivers/visl/visl-dec.c
+> +++ b/drivers/media/test-drivers/visl/visl-dec.c
+> @@ -290,13 +290,14 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct visl_run *run)
+>  	for (i = 0; i < out_q->num_buffers; i++) {
+>  		char entry[] = "index: %u, state: %s, request_fd: %d, ";
+>  		u32 old_len = len;
+> -		char *q_status = visl_get_vb2_state(out_q->bufs[i]->state);
+> +		struct vb2_buffer *vb2 = vb2_get_buffer(out_q, i);
+> +		char *q_status = visl_get_vb2_state(vb2->state);
+>  
+>  		len += scnprintf(&buf[len], TPG_STR_BUF_SZ - len,
+>  				 entry, i, q_status,
+> -				 to_vb2_v4l2_buffer(out_q->bufs[i])->request_fd);
+> +				 to_vb2_v4l2_buffer(vb2)->request_fd);
+>  
+> -		len += visl_fill_bytesused(to_vb2_v4l2_buffer(out_q->bufs[i]),
+> +		len += visl_fill_bytesused(to_vb2_v4l2_buffer(vb2),
+>  					   &buf[len],
+>  					   TPG_STR_BUF_SZ - len);
+>  
+> @@ -342,13 +343,14 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct visl_run *run)
+>  	len = 0;
+>  	for (i = 0; i < cap_q->num_buffers; i++) {
+>  		u32 old_len = len;
+> -		char *q_status = visl_get_vb2_state(cap_q->bufs[i]->state);
+> +		struct vb2_buffer *vb2 = vb2_get_buffer(cap_q, i);
+> +		char *q_status = visl_get_vb2_state(vb2->state);
+>  
+>  		len += scnprintf(&buf[len], TPG_STR_BUF_SZ - len,
+>  				 "index: %u, status: %s, timestamp: %llu, is_held: %d",
+> -				 cap_q->bufs[i]->index, q_status,
+> -				 cap_q->bufs[i]->timestamp,
+> -				 to_vb2_v4l2_buffer(cap_q->bufs[i])->is_held);
+> +				 vb2->index, q_status,
+> +				 vb2->timestamp,
+> +				 to_vb2_v4l2_buffer(vb2)->is_held);
+>  
+>  		tpg_gen_text(&ctx->tpg, basep, line++ * line_height, 16, &buf[old_len]);
+>  		frame_dprintk(ctx->dev, run->dst->sequence, "%s", &buf[old_len]);
+> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+> index 4b6a9d2ea372..d18c57e7aef0 100644
+> --- a/include/media/videobuf2-core.h
+> +++ b/include/media/videobuf2-core.h
+> @@ -1244,6 +1244,26 @@ static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
+>  	return NULL;
+>  }
+>  
+> +/**
+> + * vb2_set_buffer() - set a buffer to a queue
+> + * @q:	pointer to &struct vb2_queue with videobuf2 queue.
+> + * @vb:	pointer to &struct vb2_buffer to be added to the queue.
+> + */
+> +static inline void vb2_set_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
+> +{
+> +	q->bufs[vb->index] = vb;
+> +}
+> +
+> +/**
+> + * vb2_del_buffer() - remove a buffer from a queue
+> + * @q:	pointer to &struct vb2_queue with videobuf2 queue.
+> + * @vb:	pointer to &struct vb2_buffer to be removed from the queue.
+> + */
+> +static inline void vb2_del_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
+> +{
+> +	q->bufs[vb->index] = NULL;
+> +}
+> +
+>  /*
+>   * The following functions are not part of the vb2 core API, but are useful
+>   * functions for videobuf2-*.
 
+-- 
+Regards,
 
+Laurent Pinchart
 
