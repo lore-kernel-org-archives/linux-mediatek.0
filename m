@@ -4,67 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 332D3C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 19:08:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A994FC6FD19
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 19:22:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
-	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TFjBcFNs2wVUK0e5AkwuzEEoFxbSyvsgnOxjOKvdklM=; b=z/mNaN44jyTzgFnQxW9wXuxkXw
-	SaDqCsTp3yJKHPNZpX6ddHENg8qorQHdJIV0CGkWXKM+MUo2E1Z+nq1+nlQEPE0fZ85+Qpzw/nKNF
-	kCMQkDZ5iHhLEmdtlD4WDwnHErsYMaqChGQZKQQ6Nc3NdNhwZZb0QdiUd7XshYHZIKuOmx01FlRBi
-	QRTPs9HHzEV+bShXiP4/nCIajJyKrHHl+XI+5Ueqs00NT2g6A6D5ACKmPsje4/+r2AaSxHXMgD2rt
-	50lSOIie8Ni8WmFa0XRAwEOamGU9BXKpiExhhdQ/gwVzuH1QuvY+8JDqS3ALMVwoxLa2M5okxd1tF
-	J2i1BNtg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NLy/CfxyjrkMH4abzpNE9BsY7WmJfcpuu3WPXS5/mLc=; b=BPPxF2rCXOFz0BCqRu0QqfpjWi
+	XDMDCu14U2MRp2leikG7P42Z88UtlncgTwSXEt8gzp98g4LtJtN4ER5ro5ZphtZVORVHFm2JhY7hE
+	gkXtjfufqDvWAjyPmQyvYPJLbVPXuOjNZrRvCPgrLvGtmdqjetYIsi6tvRYpiJ9s9GrCOvNzHQ+Hl
+	N7XyTniGYYwyz3pYnt6ErOlZrCq2A/A81jEWD3RtCMNGAASV0N7fisCnMuyVGtr42C9w0gYtrr/Fi
+	uj4ikdZx9EstExzSYKNFbL9qc/5uLphfuU3zi+t/7P4aTHJAXFi7UuzBRpgDDk3bHUziL6R6VyBT/
+	Mj5LddWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbnWv-007Rql-8M; Mon, 13 Mar 2023 19:08:21 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1pbnke-007VrD-Ho; Mon, 13 Mar 2023 19:22:32 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbnWe-007Rja-9g; Mon, 13 Mar 2023 19:08:05 +0000
+	id 1pbnkT-007Vno-7h; Mon, 13 Mar 2023 19:22:22 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 7E669CE1126;
-	Mon, 13 Mar 2023 19:08:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4587EC433D2;
-	Mon, 13 Mar 2023 19:07:57 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 8B28DB811DD;
+	Mon, 13 Mar 2023 19:22:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF695C433A0;
+	Mon, 13 Mar 2023 19:22:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1678734480;
-	bh=5jfl9/hlfxAkBs3SczAn6QYlPXw9oRLcWoCeAZ5s0Zk=;
-	h=From:To:In-Reply-To:References:Subject:Date:From;
-	b=qy4U8EsWT9qdg/BRniO8wddtjYJExE2O0HT9PPvdGgN9jxC9enNuu0Z2Xtn6G5UV6
-	 bC2miBMO0DXSvemVXs/Hszmr1FNrHmFOE7RB+89UH8vKMXUESE5FPnILrYViv7OGND
-	 Ujak4aldgjlCMSP3Kxf0WBF7ll03WguZ6QiafKA9bJqTwbXFJst7It72+zJ36tOr7n
-	 hA2wnnUlRTAwHVynEBeKhK7Tuze5tkj5aEza8sWAfagHejYDOQsY+FCUOEeFV+sr7h
-	 CAeElN01aEgm7N6Dh8pFbIsc3bBpxnphPQlc5Kt83f/PNAjReRabIhaizmmBcarWh7
-	 8/KD0VLoPzSAA==
+	s=k20201202; t=1678735338;
+	bh=ZkbNkZ34NZMdf0rITcJevdNA8xkyXVHk3RQ3QHQCPo8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FYRY/VOEfWWIWUGkUCEd2cUc6VwsJNb9sQK7C/5po95pQcevLD7l0xgF0y6QmJ/Tm
+	 eNj5ZgbZf07KGpnlv0sHLqA1u5wZT0twxjYVECSoYCaXO76bNQS4iFXDW7j1ubbi5l
+	 JYEPa6C9b/XNYnXmhBYcWPZ3g07cMVQbfCzCd+0tIpcdMnYqk51NEXVVLMbLpTrRFf
+	 MRw1pjkhKY72BsZ57jxfMu5FlyeusoXdjuIffEqvxR3MJIOP+hy8V2KMXtYLDpgvZl
+	 pnIRq8MjquCtUDVkmqock3S5sWKiNTiW32jKwkGSc5Rfjphd83d35JcoL8yK/iB0QT
+	 HV2ZFtRbGLYCA==
+Date: Mon, 13 Mar 2023 19:22:10 +0000
 From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Tony Lindgren <tony@atomide.com>, Andy Gross <agross@kernel.org>, 
- Bjorn Andersson <andersson@kernel.org>, 
- Konrad Dybcio <konrad.dybcio@linaro.org>, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-omap@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230310214553.275450-1-krzysztof.kozlowski@linaro.org>
-References: <20230310214553.275450-1-krzysztof.kozlowski@linaro.org>
-Subject: Re: (subset) [PATCH 1/9] regulator: lp872x: Mark OF related data
- as maybe unused
-Message-Id: <167873447700.106292.3339315429044423313.b4-ty@kernel.org>
-Date: Mon, 13 Mar 2023 19:07:57 +0000
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Kamal Dasu <kdasu.kdev@gmail.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Daniel Mack <daniel@zonque.org>,
+	Haojian Zhuang <haojian.zhuang@gmail.com>,
+	Robert Jarzmik <robert.jarzmik@free.fr>,
+	Heiko Stuebner <heiko@sntech.de>, Andi Shyti <andi@etezian.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 01/16] spi: armada-3700: Drop of_match_ptr for ID table
+Message-ID: <9bf3dd37-71c2-4118-a8da-40e656b42d10@sirena.org.uk>
+References: <20230310222857.315629-1-krzysztof.kozlowski@linaro.org>
+ <7a65d775-cf07-4393-8b10-2cef4d5266ab@sirena.org.uk>
+ <08e98d1d-e79b-fe7e-0d59-827f72277fc5@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.13-dev-bd1bf
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="w3ox4e/H/VGMGGHy"
+Content-Disposition: inline
+In-Reply-To: <08e98d1d-e79b-fe7e-0d59-827f72277fc5@linaro.org>
+X-Cookie: Type louder, please.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_120804_530514_A8CB1F28 
-X-CRM114-Status: GOOD (  12.75  )
+X-CRM114-CacheID: sfid-20230313_122221_579738_F85E9623 
+X-CRM114-Status: GOOD (  19.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,46 +92,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 10 Mar 2023 22:45:45 +0100, Krzysztof Kozlowski wrote:
-> The driver can be compile tested with !CONFIG_OF making certain data
-> unused:
-> 
->   drivers/regulator/lp872x.c:931:34: error: ‘lp872x_dt_ids’ defined but not used [-Werror=unused-const-variable=]
-> 
-> 
 
-Applied to
+--w3ox4e/H/VGMGGHy
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+On Mon, Mar 13, 2023 at 07:39:45PM +0100, Krzysztof Kozlowski wrote:
+> On 13/03/2023 14:55, Mark Brown wrote:
+> > On Fri, Mar 10, 2023 at 11:28:42PM +0100, Krzysztof Kozlowski wrote:
 
-Thanks!
+> >>   drivers/spi/spi-armada-3700.c:807:34: error: =E2=80=98a3700_spi_dt_i=
+ds=E2=80=99 defined but not used [-Werror=3Dunused-const-variable=3D]
 
-[1/9] regulator: lp872x: Mark OF related data as maybe unused
-      commit: 70b26bb55f719e2900404459128d41c8425c8dde
-[2/9] regulator: max20086: Mark OF related data as maybe unused
-      commit: 4a5850865641d0b83caaad81ca0bbd722ac514fb
-[3/9] regulator: mp8859: Mark OF related data as maybe unused
-      commit: 334e6b85a348a79bb018003f09e1cc94accd53a2
-[4/9] regulator: mt6397-regulator: Mark OF related data as maybe unused
-      commit: 38cc873cb1cf27965dacbbc5957a7a8aee89679c
+> > It would be much better to fix of_match_ptr() and/or the module stuff
+> > that also references the match table here.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+> Why? The recommendation is in general not to use of_match_ptr, because
+> there are little benefits but it disables matching via PRP0001. Jonathan
+> in parallel thread explicitly said of_match_ptr should disappear and he
+> is not accepting any new code with it. And in general he is right.
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+If that's the case then why are you adding maybe unused annotations for
+half the drivers rather than removing their of_match_ptr() usages?
+There doesn't seem to be any logic here, it's just randomly making
+changes as far as I can tell.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+The PRP0001 stuff isn't an issue, of_match_ptr() can just be changed to
+do the right thing for CONFIG_ACPI.  It doesn't buy us huge amounts but
+it also costs us very little and may be useful in future.  When there's
+missing annotations it's not causing issues for practical configurations
+as far as I can tell, and if the macro were updated for CONFIG_ACPI it'd
+be even less of an issue.
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+--w3ox4e/H/VGMGGHy
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Thanks,
-Mark
+-----BEGIN PGP SIGNATURE-----
 
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmQPd+EACgkQJNaLcl1U
+h9DNrwf/S3t3cwLWoA+nkWX0VuXmOpSbOw7CSZL7nvCqVHn162nrIu6LmmcfJG/5
+TvxaEb4hrOmkhboKNrvX8JYqykzRJE12GtrxlveQhR45dqP5F9pFGMDpR62fk0LL
+NChJLRUKXP9asPzr3MxBXKfZ1PdpCctyZTIQb2hF6+u4FDHA7v0jinpxpyKXiJjI
+PyAjXx4BUFspLxkUdkJE8coTxx1IeckxcmbEtpSj3iSDUzmIM0mfzc2ZpvoKPCBo
+PNjLoEXpL1MRbe7LyijpEe66LxerpAYjUKtav8A4iJERLpIB4o1QY8wqNwZ3+P5+
+NdQrFLt5aqs/+fwE4YQl+4Q6BNUkWQ==
+=fkKm
+-----END PGP SIGNATURE-----
+
+--w3ox4e/H/VGMGGHy--
 
