@@ -4,80 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62500C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 11:00:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E0E9C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 11:51:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+JRXZxwFQvV/9ugP2yIyDpmVR7lwS7JaHigMB2zQJQQ=; b=uPSvqlYKNxj4X05DAMNpkxpe4g
-	qt7gNzlPR1c297QZCIP1YU79MKDsnsFrS6bGEG840ml/KM80VOptWA25x0XiKtE/249QPkgxRzZwn
-	I/8Ca8BXfzA035LHaLQd7wsrxaTfd2+FIYV1z4LDAqvnld0nVFSc5Fb7kBG9XTmqlfM6wwcwX5UmH
-	gYNZoC1sRfB7iOt79XafLQoGRM0ZEJsJroq6aZ+oaQr+WG7udJoYRx/P2AzqFIhq5HvoMoqkNw6WE
-	j2DJCNlUyqlGSr70VyBPj8ByVqnXC8vu/Y5MYjp3cKg4kSN+erGSmi1Zp3m1s4kLXrlsqiRQbkBgo
-	MA88HuQA==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kFl9jBhLriu/Twcul4uEsnOONXfFAvy+t/b7MmNQQ4k=; b=rMRgqZr9pQKQ9N9msjbrEICsdh
+	676iQsYirSY3qoi10S9LDxSztevYHAhbwpwEMY84WqD4bRMdWL5QheKE2uod76QkC0swtg3ndecRS
+	5RDCeXZossWESte5lI3Ed6xVVwBQ7ikcCPlqUcxKio8fo7ZH33An23xCWe7Ua+e1lG1z+2qNiOgJf
+	dx6o+WZ2CHGXyqqcffTUzNZg0JILEFg0IguVBvI7TBz39uGE0pLN2Zpx1FwTf554vW0OyiUK4kowx
+	bYnX6ez1N0ItpEUpPAekqRjxrWXFWiLDT+w5EnROi3THi6M9zObG8SJxOv8PndH2VH6M1AESWkzUD
+	AjBm0fPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbfuj-005J0h-5R; Mon, 13 Mar 2023 11:00:25 +0000
-Received: from mail-qv1-f50.google.com ([209.85.219.50])
+	id 1pbghd-005WgR-N8; Mon, 13 Mar 2023 11:50:57 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbfuc-005Ixg-Ia; Mon, 13 Mar 2023 11:00:23 +0000
-Received: by mail-qv1-f50.google.com with SMTP id jl13so3985585qvb.10;
-        Mon, 13 Mar 2023 04:00:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678705216;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=+JRXZxwFQvV/9ugP2yIyDpmVR7lwS7JaHigMB2zQJQQ=;
-        b=tYwuC+1L29yUHZRkIDwhNcS3ZVwJNtHlAaHRRsYYx1aJTlQIMykj6ZTdE5ctV/4AJu
-         92bJDkpCUzSat23LnujoJjZBiGwAvJXEc9GhUxZ/isi8qXdBVJgXUO4fVtXSHNoGiggN
-         V6cX4uItCAi9JWp3ZbIj+gisN8N3Dnt5DA+d8TD9+Wk9gNveNbJUcpToAzhAgry/a3f+
-         cM54jkULqveiM48P0YKu7bF00JbKiJ4+CttIJ7GwaFXX56cnF/idoJkZ/KDQYVpI+5vT
-         PZLs6FeOQx9kFemyg3dkRE88P+UW8Nyx8e1Wu+U7QfVBkQaafMqDibDMefoQAXC/Tfm7
-         TeLQ==
-X-Gm-Message-State: AO0yUKXUACr/+MwMIEl+Ms7bTG26XfeVz9xLcD8RVX36q4NC684AQ+k2
-	42XVOMMuaPBCjv53MWq6/9V3BDUR+xKvGA==
-X-Google-Smtp-Source: AK7set/NbcqVlQlKxyCT8DZlQuUcXl1NvPKLeqW/Xz1rSwVmHedXPxXKOaxhwf6zs/N8RAoYMYDZJg==
-X-Received: by 2002:a05:6214:300e:b0:56e:ff20:57c2 with SMTP id ke14-20020a056214300e00b0056eff2057c2mr10210893qvb.10.1678705215907;
-        Mon, 13 Mar 2023 04:00:15 -0700 (PDT)
-Received: from mail-yw1-f178.google.com (mail-yw1-f178.google.com. [209.85.128.178])
-        by smtp.gmail.com with ESMTPSA id dt37-20020a05620a47a500b007343fceee5fsm5175014qkb.8.2023.03.13.04.00.14
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 13 Mar 2023 04:00:14 -0700 (PDT)
-Received: by mail-yw1-f178.google.com with SMTP id 00721157ae682-540cb2fb5b9so129486467b3.3;
-        Mon, 13 Mar 2023 04:00:14 -0700 (PDT)
-X-Received: by 2002:a0d:ec14:0:b0:544:4008:baa1 with SMTP id
- q20-20020a0dec14000000b005444008baa1mr452333ywn.4.1678705213702; Mon, 13 Mar
- 2023 04:00:13 -0700 (PDT)
+	id 1pbgdG-005Uhh-36; Mon, 13 Mar 2023 11:46:28 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id CD0AF611FC;
+	Mon, 13 Mar 2023 11:46:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9640BC433EF;
+	Mon, 13 Mar 2023 11:46:16 +0000 (UTC)
+Message-ID: <4ee5e059-6e9f-0804-30ec-ff073f436780@xs4all.nl>
+Date: Mon, 13 Mar 2023 12:46:14 +0100
 MIME-Version: 1.0
-References: <20230310144721.1544669-1-robh@kernel.org> <CAMuHMdUaeyHs9fQxS+16F62uHaifJYMXKJpL2-xi-SL5HCrTHQ@mail.gmail.com>
-In-Reply-To: <CAMuHMdUaeyHs9fQxS+16F62uHaifJYMXKJpL2-xi-SL5HCrTHQ@mail.gmail.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 13 Mar 2023 12:00:00 +0100
-X-Gmail-Original-Message-ID: <CAMuHMdX1=+WwWjfiWDYOjSzTjcYBEY+QR=XKuU+o5_SCyU7rag@mail.gmail.com>
-Message-ID: <CAMuHMdX1=+WwWjfiWDYOjSzTjcYBEY+QR=XKuU+o5_SCyU7rag@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: Use of_property_present() for testing DT
- property presence
-To: Rob Herring <robh@kernel.org>
-Cc: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, 
-	Tony Lindgren <tony@atomide.com>, Haojian Zhuang <haojian.zhuang@linaro.org>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-omap@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
-	linux-renesas-soc@vger.kernel.org, linux-sunxi@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH 01/28] media: cec: ch7322: drop of_match_ptr for ID table
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Joe Tessler <jrt@google.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Manivannan Sadhasivam <mani@kernel.org>,
+ Michael Tretter <m.tretter@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Jacopo Mondi <jacopo+renesas@jmondi.org>,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ =?UTF-8?Q?Niklas_S=c3=b6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+ Rui Miguel Silva <rmfrfs@gmail.com>, Wenyou Yang
+ <wenyou.yang@microchip.com>, Bin Liu <bin.liu@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Houlong Wei <houlong.wei@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Patrice Chotard <patrice.chotard@foss.st.com>,
+ Yong Deng <yong.deng@magewell.com>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ "Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Sean Young <sean@mess.org>,
+ linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
+References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_040018_636242_2A06FDD6 
-X-CRM114-Status: GOOD (  27.35  )
+X-CRM114-CacheID: sfid-20230313_044626_282134_D3C00A85 
+X-CRM114-Status: GOOD (  21.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,58 +96,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 13, 2023 at 10:00=E2=80=AFAM Geert Uytterhoeven
-<geert@linux-m68k.org> wrote:
-> On Fri, Mar 10, 2023 at 3:56=E2=80=AFPM Rob Herring <robh@kernel.org> wro=
-te:
-> > It is preferred to use typed property access functions (i.e.
-> > of_property_read_<type> functions) rather than low-level
-> > of_get_property/of_find_property functions for reading properties. As
-> > part of this, convert of_get_property/of_find_property calls to the
-> > recently added of_property_present() helper when we just want to test
-> > for presence of a property and nothing more.
-> >
-> > Signed-off-by: Rob Herring <robh@kernel.org>
->
-> Thanks for your patch!
->
-> > --- a/drivers/pinctrl/renesas/pinctrl.c
-> > +++ b/drivers/pinctrl/renesas/pinctrl.c
-> > @@ -125,8 +125,8 @@ static int sh_pfc_dt_subnode_to_map(struct pinctrl_=
-dev *pctldev,
-> >          * inside a subnode nor across subnodes.
-> >          */
-> >         if (!pmx->func_prop_name) {
-> > -               if (of_find_property(np, "groups", NULL) ||
-> > -                   of_find_property(np, "pins", NULL)) {
-> > +               if (of_property_present(np, "groups")||
-> > +                   of_property_present(np, "pins")) {
-> >                         pmx->func_prop_name =3D "function";
-> >                         pmx->groups_prop_name =3D "groups";
-> >                         pmx->pins_prop_name =3D "pins";
->
-> Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
->
-> This check is used to auto-detect if the standard property names
-> should be used, or the "renesas,"-prefixed ones.
-> As the last users of the latter were removed from DTS in v4.10,
-> perhaps I should just remove these checks instead?
+On 12/03/2023 14:12, Krzysztof Kozlowski wrote:
+> The driver can match only via the DT table so the table should be always
+> used and the of_match_ptr does not have any sense (this also allows ACPI
+> matching via PRP0001, even though it might not be relevant here).
+> 
+>   drivers/media/cec/i2c/ch7322.c:583:34: error: ‘ch7322_of_match’ defined but not used [-Werror=unused-const-variable=]
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Sent a patch just doing that, so you can drop this chunk.
-https://lore.kernel.org/linux-renesas-soc/ff9c14781110bbf19b56b45dd1f01e6da=
-90319ad.1678704441.git.geert+renesas@glider.be
+Reviewed-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 
-Gr{oetje,eeting}s,
+I assume you want to take this series, but if you prefer to have us do it, then
+just let me know.
 
-                        Geert
+Thanks!
 
---=20
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
-.org
+	Hans
 
-In personal conversations with technical people, I call myself a hacker. Bu=
-t
-when I'm talking to journalists I just say "programmer" or something like t=
-hat.
-                                -- Linus Torvalds
+> ---
+>  drivers/media/cec/i2c/ch7322.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/media/cec/i2c/ch7322.c b/drivers/media/cec/i2c/ch7322.c
+> index 34fad7123704..3c6e6496a001 100644
+> --- a/drivers/media/cec/i2c/ch7322.c
+> +++ b/drivers/media/cec/i2c/ch7322.c
+> @@ -589,7 +589,7 @@ MODULE_DEVICE_TABLE(of, ch7322_of_match);
+>  static struct i2c_driver ch7322_i2c_driver = {
+>  	.driver = {
+>  		.name = "ch7322",
+> -		.of_match_table = of_match_ptr(ch7322_of_match),
+> +		.of_match_table = ch7322_of_match,
+>  	},
+>  	.probe_new	= ch7322_probe,
+>  	.remove		= ch7322_remove,
+
 
