@@ -4,89 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06DD2C6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 23:17:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0E7BC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 23:23:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:In-Reply-To:References:Message-ID:Date:Subject:CC:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QE4eytkZSBFk8y0/R7L/Gkjc2fD5ByR1b/iKNGtjGLk=; b=swTZ7yTMuafR51aHeJxzQtWqsx
-	Y8MDhQO57qi1KMrb9zIgJ6jkGndT/juQT62Aw6WYW5jM1MlZfG/SNpRKBUVdjolmJiEEV7MuIaL/y
-	2tc9e3exzpksH1VlY+s+4eslIEM4dvrMCPMRWJOpX1fuk/+2uFpRquR/hVMMq9J2lv+bPaeJWS4vM
-	sT3hdUGWwTXKZru1lc8mv7r/2g5YlxtIDoD5HDznj22ASojyEExrszCUKPDs+4YBsZY0VZNNQO4Qv
-	6X9SVBlqjZOFyQwUu6tEA3osuQilOmzYQO2rOd4gopMQDtfuPf6YHY108r7T0QMsfdHypfFuG1vZN
-	Rnr+B1bA==;
+	bh=e2T3EnCeToIbB1oGc6Q3Dvzk4LxSn3pFP8jTx088sJs=; b=IOTCqmmA43zhNgH3uT1udW+ty9
+	UjmrUgI0DmIJIL4Vsl50ooqRq4Pr+KNdU8rIc8SXiwdVQkfMMMCrOGwFrB5srWjYHMtNeWYwEO2hY
+	f4r03VZYgsE52niRFI86i3K48cmL4xfakyInlonSYjFi+Ob7yegbxBYHtK5tXD/Xsf5l1B3CvWB7a
+	CPFFbvR8d0/ZHF2pHhdHy3iPm+jvk6RYESWa+1MEvaTM9d7wppEB2phq01BIZTy6JV/ZPKDswFesD
+	de1c/lZ1Cm5w6UzGYhDr9ehEv3xCkWULZBggvjCAYy6sxr9J1yQogQP7XVXdQEVm6IDeLRNvUnRE/
+	b+JLB1Lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbrPQ-008J4w-5Z; Mon, 13 Mar 2023 23:16:52 +0000
-Received: from eu-smtp-delivery-151.mimecast.com ([185.58.85.151])
+	id 1pbrVU-008K0P-50; Mon, 13 Mar 2023 23:23:08 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbrPE-008J0I-Pm
-	for linux-mediatek@lists.infradead.org; Mon, 13 Mar 2023 23:16:43 +0000
-Received: from AcuMS.aculab.com (156.67.243.121 [156.67.243.121]) by
- relay.mimecast.com with ESMTP with both STARTTLS and AUTH (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- uk-mta-180-8ouOqbSxPl2e6lYMDXaiTw-1; Mon, 13 Mar 2023 23:16:33 +0000
-X-MC-Unique: 8ouOqbSxPl2e6lYMDXaiTw-1
-Received: from AcuMS.Aculab.com (10.202.163.4) by AcuMS.aculab.com
- (10.202.163.4) with Microsoft SMTP Server (TLS) id 15.0.1497.47; Mon, 13 Mar
- 2023 23:16:31 +0000
-Received: from AcuMS.Aculab.com ([::1]) by AcuMS.aculab.com ([::1]) with mapi
- id 15.00.1497.047; Mon, 13 Mar 2023 23:16:31 +0000
-From: David Laight <David.Laight@ACULAB.COM>
-To: 'Laurent Pinchart' <laurent.pinchart@ideasonboard.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>
-CC: "tfiga@chromium.org" <tfiga@chromium.org>, "m.szyprowski@samsung.com"
-	<m.szyprowski@samsung.com>, "mchehab@kernel.org" <mchehab@kernel.org>,
-	"ming.qian@nxp.com" <ming.qian@nxp.com>, "shijie.qin@nxp.com"
-	<shijie.qin@nxp.com>, "eagle.zhou@nxp.com" <eagle.zhou@nxp.com>,
-	"bin.liu@mediatek.com" <bin.liu@mediatek.com>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "tiffany.lin@mediatek.com"
-	<tiffany.lin@mediatek.com>, "andrew-ct.chen@mediatek.com"
-	<andrew-ct.chen@mediatek.com>, "yunfei.dong@mediatek.com"
-	<yunfei.dong@mediatek.com>, "stanimir.k.varbanov@gmail.com"
-	<stanimir.k.varbanov@gmail.com>, "quic_vgarodia@quicinc.com"
-	<quic_vgarodia@quicinc.com>, "agross@kernel.org" <agross@kernel.org>,
-	"andersson@kernel.org" <andersson@kernel.org>, "konrad.dybcio@linaro.org"
-	<konrad.dybcio@linaro.org>, "ezequiel@vanguardiasur.com.ar"
-	<ezequiel@vanguardiasur.com.ar>, "p.zabel@pengutronix.de"
-	<p.zabel@pengutronix.de>, "daniel.almeida@collabora.com"
-	<daniel.almeida@collabora.com>, "hverkuil-cisco@xs4all.nl"
-	<hverkuil-cisco@xs4all.nl>, "jerbel@kernel.org" <jerbel@kernel.org>,
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-arm-msm@vger.kernel.org"
-	<linux-arm-msm@vger.kernel.org>, "linux-rockchip@lists.infradead.org"
-	<linux-rockchip@lists.infradead.org>, "kernel@collabora.com"
-	<kernel@collabora.com>
-Subject: RE: [RFC 2/4] media: videobuf2: Replace bufs array by a list
-Thread-Topic: [RFC 2/4] media: videobuf2: Replace bufs array by a list
-Thread-Index: AQHZVddlMXgQQm2s8UOyg8hXE6z+xq75Vx6A
-Date: Mon, 13 Mar 2023 23:16:31 +0000
-Message-ID: <86df05244d974416903e919d387a0a0b@AcuMS.aculab.com>
-References: <20230313135916.862852-1-benjamin.gaignard@collabora.com>
- <20230313135916.862852-3-benjamin.gaignard@collabora.com>
- <20230313181155.GC22646@pendragon.ideasonboard.com>
-In-Reply-To: <20230313181155.GC22646@pendragon.ideasonboard.com>
-Accept-Language: en-GB, en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [10.202.205.107]
+	id 1pbrVI-008JyU-J8; Mon, 13 Mar 2023 23:22:58 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id DAB2561542;
+	Mon, 13 Mar 2023 23:22:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2BD1CC433EF;
+	Mon, 13 Mar 2023 23:22:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1678749775;
+	bh=e2T3EnCeToIbB1oGc6Q3Dvzk4LxSn3pFP8jTx088sJs=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=bR116asJKEglby1yrat+gFGDWWT5x1rh4z3Z2BeehrZWPc05TN4B/G8vaJXUllt+/
+	 w9KCV3Z3HkzdK8nnYL+jFZpQL3haeCSge+8rhfEOLxUGdLX7Xap9NjmYdXdNQxvjii
+	 zaXtb8vCenhjps1oGXxbtRMOqO+YnTXy6UlWOIKmCoW0u3K3fFB99/+TuzBik4cUtg
+	 vXtj57ybwUGw5XaVjX7P2HoeVHR+NZ5LEvNRXcZseTSQHM7/Pk8/W3sSO+Cp7YuShA
+	 UV+40FCJSQbqtet2ILUmUUq1dscMyxWwD8Afl5ovKK4fuMCaOhQBzxsFX+P1AP4ya5
+	 podxAbjicU2QA==
+Message-ID: <6c52bcda08b62593c541d52e269d3982.sboyd@kernel.org>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: aculab.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
+References: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v6 00/54] MediaTek clocks: full module build and cleanups
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, wenst@chromium.org, johnson.wang@mediatek.com, miles.chen@mediatek.com, chun-jie.chen@mediatek.com, daniel@makrotopia.org, fparent@baylibre.com, msp@baylibre.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com, zhaojh329@gmail.com, sam.shih@mediatek.com, edward-jw.yang@mediatek.com, yangyingliang@huawei.com, granquet@baylibre.com, pablo.sun@mediatek.com, sean.wang@mediatek.com, chen.zhong@mediatek.com, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, kernel@collabora.com
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, mturquette@baylibre.com
+Date: Mon, 13 Mar 2023 16:22:52 -0700
+User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_161641_152673_158C3209 
-X-CRM114-Status: GOOD (  11.34  )
+X-CRM114-CacheID: sfid-20230313_162256_742666_5F0D08A6 
+X-CRM114-Status: GOOD (  17.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,25 +70,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogTGF1cmVudCBQaW5jaGFydA0KPiBTZW50OiAxMyBNYXJjaCAyMDIzIDE4OjEyDQo+IA0K
-PiBIaSBCZW5qYW1pbiwNCj4gDQo+IFRoYW5rIHlvdSBmb3IgdGhlIHBhdGNoLg0KPiANCj4gT24g
-TW9uLCBNYXIgMTMsIDIwMjMgYXQgMDI6NTk6MTRQTSArMDEwMCwgQmVuamFtaW4gR2FpZ25hcmQg
-d3JvdGU6DQo+ID4gUmVwbGFjaW5nIGJ1ZnMgYXJyYXkgYnkgYSBsaXN0IGFsbG93cyB0byByZW1v
-dmUgdGhlIDMyIGJ1ZmZlcnMNCj4gPiBsaW1pdCBwZXIgcXVldWUuDQoNCklzIHRoZSBsaW1pdCBh
-Y3R1YWxseSBhIHByb2JsZW0/DQpBcnJheXMgb2YgcG9pbnRlcnMgaGF2ZSBsb2NraW5nIGFuZCBj
-YWNoaW5nIGFkdmFudGFnZXMgb3Zlcg0KbGlua2VkIGxpc3RzLg0KDQouLi4NCj4gPiBAQCAtMTIz
-OSw4ICsxMjQyLDEyIEBAIHN0YXRpYyBpbmxpbmUgdm9pZCB2YjJfY2xlYXJfbGFzdF9idWZmZXJf
-ZGVxdWV1ZWQoc3RydWN0IHZiMl9xdWV1ZSAqcSkNCj4gPiAgc3RhdGljIGlubGluZSBzdHJ1Y3Qg
-dmIyX2J1ZmZlciAqdmIyX2dldF9idWZmZXIoc3RydWN0IHZiMl9xdWV1ZSAqcSwNCj4gPiAgCQkJ
-CQkJdW5zaWduZWQgaW50IGluZGV4KQ0KPiA+ICB7DQo+ID4gLQlpZiAoaW5kZXggPCBxLT5udW1f
-YnVmZmVycykNCj4gPiAtCQlyZXR1cm4gcS0+YnVmc1tpbmRleF07DQo+ID4gKwlzdHJ1Y3QgdmIy
-X2J1ZmZlciAqdmI7DQo+ID4gKw0KPiA+ICsJbGlzdF9mb3JfZWFjaF9lbnRyeSh2YiwgJnEtPmFs
-bG9jYXRlZF9idWZzLCBhbGxvY2F0ZWRfZW50cnkpDQo+ID4gKwkJaWYgKHZiLT5pbmRleCA9PSBp
-bmRleCkNCj4gPiArCQkJcmV0dXJuIHZiOw0KPiA+ICsNCj4gPiAgCXJldHVybiBOVUxMOw0KDQpZ
-b3UgcmVhbGx5IGRvbid0IHdhbnQgdG8gYmUgZG9pbmcgdGhhdC4uLi4NCg0KVGhlcmUgYXJlIHNj
-aGVtZXMgZm9yIHVuYm91bmRlZCBhcnJheXMuDQpTY2FubmluZyBhIGxpbmtlZCBsaXN0IGlzbid0
-IGEgdmVyeSBnb29kIG9uZS4NCg0KCURhdmlkDQoNCi0NClJlZ2lzdGVyZWQgQWRkcmVzcyBMYWtl
-c2lkZSwgQnJhbWxleSBSb2FkLCBNb3VudCBGYXJtLCBNaWx0b24gS2V5bmVzLCBNSzEgMVBULCBV
-Sw0KUmVnaXN0cmF0aW9uIE5vOiAxMzk3Mzg2IChXYWxlcykNCg==
+Quoting AngeloGioacchino Del Regno (2023-03-06 06:04:49)
+>=20
+> This huge series adds more cleanups on top, reducing size and adding more
+> commonization for clock drivers probe/remove, which also includes a new
+> common probe mechanism for multimedia clock drivers that are usually
+> probed by mtk-mmsys instead of a dt clock node: thanks to this, it was
+> finally possible to convert almost all clock drivers to the common probe
+> mechanism, which *finally again* makes us able to build all these drivers
+> as modules!
+>=20
+> Since this looked like being *the* way forward, I went on converting some
+> more drivers away from OF_CLK_DECLARE_DRIVER to full platform_driver(s),
+> allowing for more (actually, almost all!) drivers to be built as modules.
+>=20
+> While at it, I also added some more consistency in macros usage by
+> removing all of the duplicated full macro declaration for MediaTek gate
+> clocks and replacing all of those with using the GATE_MTK macro instead,
+> producing a nice reduction in amount of lines per file but, more
+> importantly, improving readability and eventual future batch changes.
+>=20
+> This amount of commonization will also, in my opinion, greatly improve
+> the review process for new clock drivers, as they will be mostly just a
+> list of clocks and won't contain much new code, as it's all going to be
+> handled in the common places, which also reduces chances to see new clock
+> driver related bugs emerging on one SoC or the other.
+>=20
+> Since I don't own devices with all of the supported MediaTek SoCs, I
+> could not test some of the conversions on real hardware... but I am
+> confident that this will work as the drivers are *very* similar on a
+> per-generation basis.
+>=20
+> This series was build-tested for all (both module and built-in build)
+> and was manually tested on MT6795, MT8173, MT8192, MT8195.
+>=20
 
+Applied the whole series to clk-next.
 
