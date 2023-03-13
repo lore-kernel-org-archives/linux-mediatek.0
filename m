@@ -4,63 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3591AC6FD19
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 18:15:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2823C6FD19
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 18:20:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ejA8MmGoaO1zXV3ZtAo7KOyq1qm3Qy3yMbTErqQghIs=; b=F7jJbMm7F/n3iUb6a1rEvEwIaA
-	4aZ28R45kY5TPQi1ItZ7upZ7vac5WYJ/NPegXEz5zmD+NSImIhgYVYCB1Nbi2kMfEuhllpFKX9jj2
-	7DBoWFgxXujiX/NkNvZwhwkKTa7A+I+HxQznvMNlwL0OYjPC05o/WAOSjAVVq7Q8d34KcuFIq/hMs
-	okmUcyf1qYWw2V2YTcX1174EELSS01oxkk5VbtTNm0C7c3NtO1KDaJJK/lcORTd9IJuYZfBCc7+n7
-	VhGKYj7GLJTZ1UKI/Trt444Lq06WFS5dtbh1XqeP+YFnT/fB4RyPyam+FnqTPY95oFcsvthIrxDWe
-	Vx4AvHyQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vTsMXNc65OipbsCbY1erxjCgutOBgLPWH4O5ZeTp2K0=; b=af1KkezrEPRRJdHtgsKSTuVLdk
+	PPGc/W/LbT/Idj2yi1iBB6jwxBZOeZxDdrEfjJvRSVCsEeUUSYWFnmYgXJ5kYPZgxlTaaWH6v8MqQ
+	2VhSiekhYUHbNywnzztfjz8L8zQhaicO6yATBQVkfbIP3ESxPRtkEElzUwlHE0dQ1VVI3FdsueIMH
+	OODA3M0e2AHx3ZoNzWTi8V0byAFk4XxCtmD4+Ibd8QMvu1ubJmsoJTxsDpgoaoDrR2vwAuWhIK+UO
+	WnBggTy+whTI/djCUDxJy8scVet1dHkdINEweChdCg7z2DjG12Xd3V0wEWOuURT0yOScF2k7Xfuyg
+	vDzem6eQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbmhD-007GAB-R9; Mon, 13 Mar 2023 18:14:55 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1pbmmo-007HGO-UA; Mon, 13 Mar 2023 18:20:42 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbmh4-007G7w-2K; Mon, 13 Mar 2023 18:14:47 +0000
-Received: from pendragon.ideasonboard.com (unknown [89.244.118.114])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 5D6B16FA;
-	Mon, 13 Mar 2023 19:14:44 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1678731284;
-	bh=ECiuzkN+DQNQmLQ9FTJM9eiXiAf3Dhfgrx4QRUBTQag=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Hp3tT8MEY1rg0ePG1lryXVLvQL0nDEttkrDEwbh9XQRRhQxYs/wPJoW700jfDUeCF
-	 qFrwMfZYGqpNq3oN/L5IQrZVh0/Sm2OnHOfg3vg1xaZFkPfRu9dY9YGq3jw/XRu87T
-	 J57mJg9x30wvyFq0EAMz4gQknKoQlaikH07FFnXs=
-Date: Mon, 13 Mar 2023 20:14:48 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: tfiga@chromium.org, m.szyprowski@samsung.com, mchehab@kernel.org,
-	ming.qian@nxp.com, shijie.qin@nxp.com, eagle.zhou@nxp.com,
-	bin.liu@mediatek.com, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, tiffany.lin@mediatek.com,
-	andrew-ct.chen@mediatek.com, yunfei.dong@mediatek.com,
-	stanimir.k.varbanov@gmail.com, quic_vgarodia@quicinc.com,
-	agross@kernel.org, andersson@kernel.org, konrad.dybcio@linaro.org,
-	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
-	daniel.almeida@collabora.com, hverkuil-cisco@xs4all.nl,
-	jerbel@kernel.org, linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [RFC 3/4] media: videobuf2: Use bitmap to manage vb2 index
-Message-ID: <20230313181448.GD22646@pendragon.ideasonboard.com>
-References: <20230313135916.862852-1-benjamin.gaignard@collabora.com>
- <20230313135916.862852-4-benjamin.gaignard@collabora.com>
+	id 1pbmmc-007HDN-Of; Mon, 13 Mar 2023 18:20:32 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id DDBAF6146B;
+	Mon, 13 Mar 2023 18:20:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB93AC433D2;
+	Mon, 13 Mar 2023 18:20:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1678731629;
+	bh=1k+17pceWuz4rSCcRjkRFIddbKW4ybClD+tgo7no39E=;
+	h=From:To:In-Reply-To:References:Subject:Date:From;
+	b=Ilby0VO8KhswP+sNBOB1Scx6AP/OGbMJswQgv6SUaOS/JihC1/IN66ytBUWIYi/L9
+	 jg1hnG1M4HK7pzXvCisry0+UdXjEQeyE0jEmIR9wieYbq+9hIKVXZwAh6Rb0HN2Qos
+	 qYwaGbi3GO1cwASGE05A+h2zZ4Dgm6K0whZdHye188J7bVITqcTeL6GjWu1bPC2RBB
+	 3wBN+JNxQuUglraoSEBrhIaund88t9dkv2zpiK37WJHYkx0ahbQth9HmhERlb76Egu
+	 fuudSeztn+3Pd45badX1HRQODgBEWpcEmqvXtYag7AYFMm6jcNNxOb1YwlY/us59uf
+	 Nz+oFG/J9J1aw==
+From: Mark Brown <broonie@kernel.org>
+To: Kamal Dasu <kdasu.kdev@gmail.com>, 
+ Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>, 
+ Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>, 
+ Andi Shyti <andi@etezian.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+ Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230310222857.315629-1-krzysztof.kozlowski@linaro.org>
+References: <20230310222857.315629-1-krzysztof.kozlowski@linaro.org>
+Subject: Re: (subset) [PATCH 01/16] spi: armada-3700: Drop of_match_ptr for
+ ID table
+Message-Id: <167873162468.102913.17330751630125213207.b4-ty@kernel.org>
+Date: Mon, 13 Mar 2023 18:20:24 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20230313135916.862852-4-benjamin.gaignard@collabora.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.13-dev-bd1bf
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_111446_276542_3A0E4E53 
-X-CRM114-Status: GOOD (  24.38  )
+X-CRM114-CacheID: sfid-20230313_112030_922465_A3A15EE6 
+X-CRM114-Status: GOOD (  14.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,122 +84,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
-
-Thank you for the patch.
-
-On Mon, Mar 13, 2023 at 02:59:15PM +0100, Benjamin Gaignard wrote:
-> Using a bitmap to get vb2 index will allow to avoid holes
-> in the indexes when introducing DELETE_BUF ioctl.
+On Fri, 10 Mar 2023 23:28:42 +0100, Krzysztof Kozlowski wrote:
+> The driver can match only via the DT table so the table should be always
+> used and the of_match_ptr does not have any sense (this also allows ACPI
+> matching via PRP0001, even though it is not relevant here).
 > 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
->  .../media/common/videobuf2/videobuf2-core.c   | 22 ++++++++++++++++++-
->  include/media/videobuf2-core.h                |  6 +++++
->  2 files changed, 27 insertions(+), 1 deletion(-)
+>   drivers/spi/spi-armada-3700.c:807:34: error: ‘a3700_spi_dt_ids’ defined but not used [-Werror=unused-const-variable=]
 > 
-> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> index 96597d339a07..3554811ec06a 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> @@ -397,6 +397,22 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
->  		vb->skip_cache_sync_on_finish = 1;
->  }
->  
-> +/*
-> + * __vb2_get_index() - find a free index in the queue for vb2 buffer.
-> + *
-> + * Returns an index for vb2 buffer.
-> + */
-> +static int __vb2_get_index(struct vb2_queue *q)
-> +{
-> +	unsigned long index;
-> +
-> +	index = bitmap_find_next_zero_area(q->bmap, q->idx_max, 0, 1, 0);
-> +	if (index > q->idx_max)
-> +		dprintk(q, 1, "no index available for buffer\n");
+> 
+> [...]
 
-Ignoring the error is scary. If we limited the total number of buffers
-as proposed in the review of 2/4, the error wouldn't occur.
+Applied to
 
-I'm also wondering if it wouldn't be better to use the IDA API to
-allocate IDs, and possibly the IDR API as well to replace the list.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
-> +
-> +	return index;
-> +}
-> +
->  /*
->   * __vb2_queue_alloc() - allocate vb2 buffer structures and (for MMAP type)
->   * video buffer memory for all buffers/planes on the queue and initializes the
-> @@ -423,7 +439,7 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
->  		vb->state = VB2_BUF_STATE_DEQUEUED;
->  		vb->vb2_queue = q;
->  		vb->num_planes = num_planes;
-> -		vb->index = q->num_buffers + buffer;
-> +		vb->index = __vb2_get_index(q);
->  		vb->type = q->type;
->  		vb->memory = memory;
->  		init_buffer_cache_hints(q, vb);
-> @@ -2438,6 +2454,9 @@ int vb2_core_queue_init(struct vb2_queue *q)
->  	mutex_init(&q->mmap_lock);
->  	init_waitqueue_head(&q->done_wq);
->  
-> +	q->idx_max = ALIGN(256, BITS_PER_LONG);
-> +	q->bmap = bitmap_zalloc(q->idx_max, GFP_KERNEL);
-> +
->  	q->memory = VB2_MEMORY_UNKNOWN;
->  
->  	if (q->buf_struct_size == 0)
-> @@ -2465,6 +2484,7 @@ void vb2_core_queue_release(struct vb2_queue *q)
->  	mutex_lock(&q->mmap_lock);
->  	__vb2_queue_free(q, q->num_buffers);
->  	mutex_unlock(&q->mmap_lock);
-> +	bitmap_free(q->bmap);
->  }
->  EXPORT_SYMBOL_GPL(vb2_core_queue_release);
->  
-> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-> index 47f1f35eb9cb..4fddc6ae9f20 100644
-> --- a/include/media/videobuf2-core.h
-> +++ b/include/media/videobuf2-core.h
-> @@ -561,6 +561,8 @@ struct vb2_buf_ops {
->   * @dma_dir:	DMA mapping direction.
->   * @allocated_bufs: list of buffer allocated for the queue.
->   * @num_buffers: number of allocated/used buffers
-> + * @bmap: Bitmap of buffers index
-> + * @idx_max: number of bits in bmap
->   * @queued_list: list of buffers currently queued from userspace
->   * @queued_count: number of buffers queued and ready for streaming.
->   * @owned_by_drv_count: number of buffers owned by the driver
-> @@ -624,6 +626,8 @@ struct vb2_queue {
->  	enum dma_data_direction		dma_dir;
->  	struct list_head		allocated_bufs;
->  	unsigned int			num_buffers;
-> +	unsigned long			*bmap;
-> +	int				idx_max;
->  
->  	struct list_head		queued_list;
->  	unsigned int			queued_count;
-> @@ -1259,6 +1263,7 @@ static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
->  static inline void vb2_set_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
->  {
->  	list_add_tail(&vb->allocated_entry, &q->allocated_bufs);
-> +	__set_bit(vb->index, q->bmap);
->  }
->  
->  /**
-> @@ -1268,6 +1273,7 @@ static inline void vb2_set_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
->   */
->  static inline void vb2_del_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
->  {
-> +	__clear_bit(vb->index, q->bmap);
->  	list_del(&vb->allocated_entry);
->  }
->  
+Thanks!
 
--- 
-Regards,
+[12/16] spi: pxa2xx: Mark OF related data as maybe unused
+        commit: d94df25e8b9c8deefc5d7fcd344eb5d4bd41cf7b
+[13/16] spi: bcm-qspi: Mark OF related data as maybe unused
+        commit: 6340fdf2e13c5f1ff3a9622f0cb3b8e9c3955a31
+[14/16] spi: sh-msiof: Mark OF related data as maybe unused
+        commit: d946b6b0ed01949b1a3856e03469361fc9168318
+[15/16] spi: sc18is602: Mark OF related data as maybe unused
+        commit: 833f43308234600e934e9c6fa70fd8b7eebc632b
+[16/16] spi: rspi: Mark OF related data as maybe unused
+        commit: edfa970370a759c2c6a38b2884887937b1aea552
 
-Laurent Pinchart
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
