@@ -4,61 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0387DC7618B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 10:18:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E69DC6FD19
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 10:59:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Pu34PbFZ5FfJ/wQb9nAc+sbAn6wAX0E9mo/4/HaLNYc=; b=KKta/Fy2cD8InhsoEeu7Czum6D
-	Mc2/mlCHZYfw+cI8+GJSZKFYIUl8W6o/OOv5Q8S6/Y/jYN0j8VAFTv775aAmeLes8gdb+BwCeY5Eu
-	+fm184W4BO2P5b5Ixvm5JiqQNGKOK+hf51qnMx6CB5t/1DNdo8dbsnmQH0m7yzOC8V/GDJxysbBO1
-	5r5RD19H3xVUgP2awEPm+OPb2vDq2fjF8uY50eFB2z7H4aAroxfDlzUARfFTMTZZlEEv1O+mJ8Kq9
-	dDNeS19Mku39e1GWg76dKD0ho7x58eAR2XBGQoBJUkx/AoFbPMZn5ooqJ1AJ5CL0XferwlFQ5h9fw
-	8wl2V2Ig==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=O3FD0vzHt3JrLF9veBne7WsgoaPrHJaK9x+MbUdxVfM=; b=ILsXHRzsKd+p2NZwXrV4dib2+i
+	BIo+5pK3vc2LgLRSe4oviR1/Y6eg+vae7y+kuoX3e13RkP6vzjdaT9n+jc1Br3URv2TButLGv/ocw
+	2fkj+imedQzj+ffRmYFLTprwqEJNi71DRWv2WK8CBSPo/JJGXYryQcuedQQS++Ar9YDDfz18FHg8r
+	aG5MgRm0GWZtKu7NTYOAgjVQihJcsV4+Rt/IGfACJXgl2OCJsYJxfjv27sEL175XGAB8yKPSMnxEE
+	c+iktBuxT5B+enSd75gHk5giw2sVyH5PnI1fqVJ2hK6bz7PZkwa2ncaaCsnR+4hb46NoDgWv8QjSF
+	EfHXYYmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbfGB-00596l-D4; Mon, 13 Mar 2023 10:18:31 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbfG0-00595N-4a; Mon, 13 Mar 2023 10:18:22 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 44B714B3;
-	Mon, 13 Mar 2023 03:18:58 -0700 (PDT)
-Received: from slackpad.lan (unknown [172.31.20.19])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A408A3F71A;
-	Mon, 13 Mar 2023 03:18:11 -0700 (PDT)
-Date: Mon, 13 Mar 2023 10:17:51 +0000
-From: Andre Przywara <andre.przywara@arm.com>
-To: Rob Herring <robh@kernel.org>
-Cc: Sean Wang <sean.wang@kernel.org>, Linus Walleij
- <linus.walleij@linaro.org>, Tony Lindgren <tony@atomide.com>, Haojian
- Zhuang <haojian.zhuang@linaro.org>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Geert Uytterhoeven
- <geert+renesas@glider.be>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec
- <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-omap@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-renesas-soc@vger.kernel.org, linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH] pinctrl: Use of_property_present() for testing DT
- property presence
-Message-ID: <20230313101751.18003b2d@slackpad.lan>
-In-Reply-To: <20230310144721.1544669-1-robh@kernel.org>
-References: <20230310144721.1544669-1-robh@kernel.org>
-Organization: Arm Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.31; x86_64-slackware-linux-gnu)
+	id 1pbftz-005Il6-UI; Mon, 13 Mar 2023 10:59:39 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pbftr-005IjZ-9a; Mon, 13 Mar 2023 10:59:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=O3FD0vzHt3JrLF9veBne7WsgoaPrHJaK9x+MbUdxVfM=; b=UEyD6dAm73IB1ECkQrVap24JDu
+	hTrdEpEMZaOMIZ+mxsredAZNENAmujF3Z2ZfAgdR9IvDWJMYGoBXNnRyFWbcU4Jr2gl50uQ83oY3q
+	VdlBi5yEs36XmA4RLG6dvhPdWVyVrABO4oxnkpawfgHVeaEpYOQNc/dAnEnQx9LjRNqPKIVq7UPr3
+	/9Kd3Cu5Vw+40McdcT0GFTreMLN6S43oKcJ/PdsSJ9GyrrG9PqS0jnXh9G56tj5FfKeqCNXujuUnm
+	J+eHz6Dh/O0hpdlAVYBfFWf7QRnTStpOn22HYd/SNAYxsgpBIOav5nfTz9OOad5E+BvYRN2G5scKM
+	cBtrJOLg==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:49632)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1pbftf-0002mf-1t; Mon, 13 Mar 2023 10:59:19 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1pbftW-0007g1-GX; Mon, 13 Mar 2023 10:59:10 +0000
+Date: Mon, 13 Mar 2023 10:59:10 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Daniel Golle <daniel@makrotopia.org>,
+	Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
+	Alexander Couzens <lynxis@fe80.eu>
+Subject: Re: Re: Re: [PATCH net-next v12 08/18] net: ethernet: mtk_eth_soc:
+ fix 1000Base-X and 2500Base-X modes
+Message-ID: <ZA8B/kI0fLx4gkQm@shell.armlinux.org.uk>
+References: <ZAiciK5fElvLXYQ9@makrotopia.org>
+ <ZAijM91F18lWC80+@shell.armlinux.org.uk>
+ <ZAik+I1Ei+grJdUQ@makrotopia.org>
+ <ZAioqp21521NsttV@shell.armlinux.org.uk>
+ <trinity-79e9f0b8-a267-4bf9-a3d4-1ec691eb5238-1678536337569@3c-app-gmx-bs24>
+ <ZAzd1A0SAKZK0hF5@shell.armlinux.org.uk>
+ <4B891976-C29E-4D98-B604-3AC4507D3661@public-files.de>
+ <ZAzk71mTxgV/pRxC@shell.armlinux.org.uk>
+ <trinity-8577978d-1c11-4f6d-ae11-aef37e8b78b0-1678624836722@3c-app-gmx-bap51>
+ <ZA4wlQ8P48aDhDly@shell.armlinux.org.uk>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <ZA4wlQ8P48aDhDly@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_031820_330265_103814D6 
-X-CRM114-Status: GOOD (  25.15  )
+X-CRM114-CacheID: sfid-20230313_035931_599354_D797BA79 
+X-CRM114-Status: GOOD (  31.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,157 +103,129 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 10 Mar 2023 08:47:20 -0600
-Rob Herring <robh@kernel.org> wrote:
-
-> It is preferred to use typed property access functions (i.e.
-> of_property_read_<type> functions) rather than low-level
-> of_get_property/of_find_property functions for reading properties. As
-> part of this, convert of_get_property/of_find_property calls to the
-> recently added of_property_present() helper when we just want to test
-> for presence of a property and nothing more.
+On Sun, Mar 12, 2023 at 08:05:41PM +0000, Russell King (Oracle) wrote:
+> On Sun, Mar 12, 2023 at 01:40:36PM +0100, Frank Wunderlich wrote:
+> > > Gesendet: Samstag, 11. März 2023 um 21:30 Uhr
+> > > Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
+> > 
+> > > On Sat, Mar 11, 2023 at 09:21:47PM +0100, Frank Wunderlich wrote:
+> > > > Am 11. März 2023 21:00:20 MEZ schrieb "Russell King (Oracle)" <linux@armlinux.org.uk>:
+> > > > >On Sat, Mar 11, 2023 at 01:05:37PM +0100, Frank Wunderlich wrote:
+> > > > 
+> > > > >> i got the 2.5G copper sfps, and tried them...they work well with the v12 (including this patch), but not in v13... 
+> > > > 
+> > > > >> how can we add a quirk to support this?
+> > > > >
+> > > > >Why does it need a quirk?
+> > > > 
+> > > > To disable the inband-mode for this 2.5g copper
+> > > > sfp. But have not found a way to set a flag which i
+> > > > can grab in phylink.
+> > > 
+> > > We could make sfp_parse_support() set Autoneg, Pause, and Asym_Pause
+> > > in "modes" at the top of that function, and then use the SFP modes
+> > > quirk to clear the Autoneg bit for this SFP. Would that work for you?
+> > 
+> > i already tried this (without moving the autoneg/pause to sfp_parse_support):
+> > 
+> > static void sfp_quirk_disable_autoneg(const struct sfp_eeprom_id *id,
+> > 				unsigned long *modes,
+> > 				unsigned long *interfaces)
+> > {
+> > 	linkmode_clear_bit(ETHTOOL_LINK_MODE_Autoneg_BIT, modes);
+> > }
+> > 
+> > quirk was executed, but no change (no link on 2g5 sfp).
 > 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->  drivers/pinctrl/mediatek/pinctrl-moore.c |  2 +-
->  drivers/pinctrl/pinctrl-single.c         |  4 ++--
->  drivers/pinctrl/pinctrl-stmfx.c          |  2 +-
->  drivers/pinctrl/renesas/pinctrl.c        |  4 ++--
->  drivers/pinctrl/stm32/pinctrl-stm32.c    |  2 +-
->  drivers/pinctrl/sunxi/pinctrl-sunxi.c    | 20 ++++++++++----------
-
-
-For sunxi: Reviewed-by: Andre Przywara <andre.przywara@arm.com>
-
-Cheers,
-Andre
-
->  6 files changed, 17 insertions(+), 17 deletions(-)
+> It won't have any effect on its own - because sfp_parse_support() does
+> this:
 > 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.c b/drivers/pinctrl/mediatek/pinctrl-moore.c
-> index 007b98ce5631..8649a2f9d324 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-moore.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-moore.c
-> @@ -586,7 +586,7 @@ static int mtk_build_gpiochip(struct mtk_pinctrl *hw)
->  	 * Documentation/devicetree/bindings/gpio/gpio.txt on how to
->  	 * bind pinctrl and gpio drivers via the "gpio-ranges" property.
->  	 */
-> -	if (!of_find_property(hw->dev->of_node, "gpio-ranges", NULL)) {
-> +	if (!of_property_present(hw->dev->of_node, "gpio-ranges")) {
->  		ret = gpiochip_add_pin_range(chip, dev_name(hw->dev), 0, 0,
->  					     chip->ngpio);
->  		if (ret < 0) {
-> diff --git a/drivers/pinctrl/pinctrl-single.c b/drivers/pinctrl/pinctrl-single.c
-> index 190923757cda..0dabbcf68b9f 100644
-> --- a/drivers/pinctrl/pinctrl-single.c
-> +++ b/drivers/pinctrl/pinctrl-single.c
-> @@ -939,11 +939,11 @@ static int pcs_parse_pinconf(struct pcs_device *pcs, struct device_node *np,
->  
->  	/* cacluate how much properties are supported in current node */
->  	for (i = 0; i < ARRAY_SIZE(prop2); i++) {
-> -		if (of_find_property(np, prop2[i].name, NULL))
-> +		if (of_property_present(np, prop2[i].name))
->  			nconfs++;
->  	}
->  	for (i = 0; i < ARRAY_SIZE(prop4); i++) {
-> -		if (of_find_property(np, prop4[i].name, NULL))
-> +		if (of_property_present(np, prop4[i].name))
->  			nconfs++;
->  	}
->  	if (!nconfs)
-> diff --git a/drivers/pinctrl/pinctrl-stmfx.c b/drivers/pinctrl/pinctrl-stmfx.c
-> index 1181c4b506b1..3c031692e44d 100644
-> --- a/drivers/pinctrl/pinctrl-stmfx.c
-> +++ b/drivers/pinctrl/pinctrl-stmfx.c
-> @@ -632,7 +632,7 @@ static int stmfx_pinctrl_probe(struct platform_device *pdev)
->  	pctl->dev = &pdev->dev;
->  	pctl->stmfx = stmfx;
->  
-> -	if (!of_find_property(np, "gpio-ranges", NULL)) {
-> +	if (!of_property_present(np, "gpio-ranges")) {
->  		dev_err(pctl->dev, "missing required gpio-ranges property\n");
->  		return -EINVAL;
->  	}
-> diff --git a/drivers/pinctrl/renesas/pinctrl.c b/drivers/pinctrl/renesas/pinctrl.c
-> index b74147800319..5c71e168b370 100644
-> --- a/drivers/pinctrl/renesas/pinctrl.c
-> +++ b/drivers/pinctrl/renesas/pinctrl.c
-> @@ -125,8 +125,8 @@ static int sh_pfc_dt_subnode_to_map(struct pinctrl_dev *pctldev,
->  	 * inside a subnode nor across subnodes.
->  	 */
->  	if (!pmx->func_prop_name) {
-> -		if (of_find_property(np, "groups", NULL) ||
-> -		    of_find_property(np, "pins", NULL)) {
-> +		if (of_property_present(np, "groups")||
-> +		    of_property_present(np, "pins")) {
->  			pmx->func_prop_name = "function";
->  			pmx->groups_prop_name = "groups";
->  			pmx->pins_prop_name = "pins";
-> diff --git a/drivers/pinctrl/stm32/pinctrl-stm32.c b/drivers/pinctrl/stm32/pinctrl-stm32.c
-> index cb33a23ab0c1..66a25becd8f5 100644
-> --- a/drivers/pinctrl/stm32/pinctrl-stm32.c
-> +++ b/drivers/pinctrl/stm32/pinctrl-stm32.c
-> @@ -1374,7 +1374,7 @@ static struct irq_domain *stm32_pctrl_get_irq_domain(struct platform_device *pde
->  	struct device_node *parent;
->  	struct irq_domain *domain;
->  
-> -	if (!of_find_property(np, "interrupt-parent", NULL))
-> +	if (!of_property_present(np, "interrupt-parent"))
->  		return NULL;
->  
->  	parent = of_irq_find_parent(np);
-> diff --git a/drivers/pinctrl/sunxi/pinctrl-sunxi.c b/drivers/pinctrl/sunxi/pinctrl-sunxi.c
-> index f35179eceb4e..1dc1882cbdd7 100644
-> --- a/drivers/pinctrl/sunxi/pinctrl-sunxi.c
-> +++ b/drivers/pinctrl/sunxi/pinctrl-sunxi.c
-> @@ -224,16 +224,16 @@ static int sunxi_pctrl_get_group_pins(struct pinctrl_dev *pctldev,
->  
->  static bool sunxi_pctrl_has_bias_prop(struct device_node *node)
->  {
-> -	return of_find_property(node, "bias-pull-up", NULL) ||
-> -		of_find_property(node, "bias-pull-down", NULL) ||
-> -		of_find_property(node, "bias-disable", NULL) ||
-> -		of_find_property(node, "allwinner,pull", NULL);
-> +	return of_property_present(node, "bias-pull-up") ||
-> +		of_property_present(node, "bias-pull-down") ||
-> +		of_property_present(node, "bias-disable") ||
-> +		of_property_present(node, "allwinner,pull");
->  }
->  
->  static bool sunxi_pctrl_has_drive_prop(struct device_node *node)
->  {
-> -	return of_find_property(node, "drive-strength", NULL) ||
-> -		of_find_property(node, "allwinner,drive", NULL);
-> +	return of_property_present(node, "drive-strength") ||
-> +		of_property_present(node, "allwinner,drive");
->  }
->  
->  static int sunxi_pctrl_parse_bias_prop(struct device_node *node)
-> @@ -241,13 +241,13 @@ static int sunxi_pctrl_parse_bias_prop(struct device_node *node)
->  	u32 val;
->  
->  	/* Try the new style binding */
-> -	if (of_find_property(node, "bias-pull-up", NULL))
-> +	if (of_property_present(node, "bias-pull-up"))
->  		return PIN_CONFIG_BIAS_PULL_UP;
->  
-> -	if (of_find_property(node, "bias-pull-down", NULL))
-> +	if (of_property_present(node, "bias-pull-down"))
->  		return PIN_CONFIG_BIAS_PULL_DOWN;
->  
-> -	if (of_find_property(node, "bias-disable", NULL))
-> +	if (of_property_present(node, "bias-disable"))
->  		return PIN_CONFIG_BIAS_DISABLE;
->  
->  	/* And fall back to the old binding */
-> @@ -1424,7 +1424,7 @@ static int sunxi_pinctrl_setup_debounce(struct sunxi_pinctrl *pctl,
->  		return 0;
->  
->  	/* If we don't have any setup, bail out */
-> -	if (!of_find_property(node, "input-debounce", NULL))
-> +	if (!of_property_present(node, "input-debounce"))
->  		return 0;
->  
->  	losc = devm_clk_get(pctl->dev, "losc");
+>         if (bus->sfp_quirk && bus->sfp_quirk->modes)
+>                 bus->sfp_quirk->modes(id, modes, interfaces);
+> 
+>         linkmode_or(support, support, modes);
+> 
+>         phylink_set(support, Autoneg);
+>         phylink_set(support, Pause);
+>         phylink_set(support, Asym_Pause);
+> 
+> Which means clearing Autoneg in "modes" via the modes SFP quirk will
+> have *absolutely* *no* *effect* what so ever.
+> 
+> The fact that you replied having *not* followed my suggestion and then
+> itimiating that it doesn't work is very frustrating.
+> 
+> > i guess you mean moving code handling the dt-property for inband-mode in phylink_parse_mode (phylink.c) to the sfp-function (drivers/net/phy/sfp-bus.c)
+> 
+> No.
+> 
+> [rest of email cut because I can't be bothered to read it after this]
+> 
+> Please try what I suggested. You might find that it works.
 
+Since describing what I wanted you to test didn't work, here's a patch
+instead, based upon the quirk that you provided (which is what I'd have
+written anyway). Add a "#define DEBUG" to the top of
+drivers/net/phy/phylink.c in addition to applying this patch, and please
+test the resulting kernel, sending me the resulting kernel messages, and
+also reporting whether this works or not.
+
+Thanks.
+
+diff --git a/drivers/net/phy/sfp-bus.c b/drivers/net/phy/sfp-bus.c
+index daac293e8ede..1dd50f2ca05d 100644
+--- a/drivers/net/phy/sfp-bus.c
++++ b/drivers/net/phy/sfp-bus.c
+@@ -151,6 +151,10 @@ void sfp_parse_support(struct sfp_bus *bus, const struct sfp_eeprom_id *id,
+ 	unsigned int br_min, br_nom, br_max;
+ 	__ETHTOOL_DECLARE_LINK_MODE_MASK(modes) = { 0, };
+ 
++	phylink_set(modes, Autoneg);
++	phylink_set(modes, Pause);
++	phylink_set(modes, Asym_Pause);
++
+ 	/* Decode the bitrate information to MBd */
+ 	br_min = br_nom = br_max = 0;
+ 	if (id->base.br_nominal) {
+@@ -329,10 +333,6 @@ void sfp_parse_support(struct sfp_bus *bus, const struct sfp_eeprom_id *id,
+ 		bus->sfp_quirk->modes(id, modes, interfaces);
+ 
+ 	linkmode_or(support, support, modes);
+-
+-	phylink_set(support, Autoneg);
+-	phylink_set(support, Pause);
+-	phylink_set(support, Asym_Pause);
+ }
+ EXPORT_SYMBOL_GPL(sfp_parse_support);
+ 
+diff --git a/drivers/net/phy/sfp.c b/drivers/net/phy/sfp.c
+index 39e3095796d0..b054360bf636 100644
+--- a/drivers/net/phy/sfp.c
++++ b/drivers/net/phy/sfp.c
+@@ -360,6 +360,13 @@ static void sfp_quirk_2500basex(const struct sfp_eeprom_id *id,
+ 	__set_bit(PHY_INTERFACE_MODE_2500BASEX, interfaces);
+ }
+ 
++static void sfp_quirk_disable_autoneg(const struct sfp_eeprom_id *id,
++				      unsigned long *modes,
++				      unsigned long *interfaces)
++{
++	linkmode_clear_bit(ETHTOOL_LINK_MODE_Autoneg_BIT, modes);
++}
++
+ static void sfp_quirk_ubnt_uf_instant(const struct sfp_eeprom_id *id,
+ 				      unsigned long *modes,
+ 				      unsigned long *interfaces)
+@@ -401,6 +408,7 @@ static const struct sfp_quirk sfp_quirks[] = {
+ 	SFP_QUIRK_M("UBNT", "UF-INSTANT", sfp_quirk_ubnt_uf_instant),
+ 
+ 	SFP_QUIRK_F("OEM", "SFP-10G-T", sfp_fixup_rollball_cc),
++	SFP_QUIRK_M("OEM", "SFP-2.5G-T", sfp_quirk_disable_autoneg),
+ 	SFP_QUIRK_F("OEM", "RTSFP-10", sfp_fixup_rollball_cc),
+ 	SFP_QUIRK_F("OEM", "RTSFP-10G", sfp_fixup_rollball_cc),
+ 	SFP_QUIRK_F("Turris", "RTSFP-10", sfp_fixup_rollball),
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
