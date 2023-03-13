@@ -4,76 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A013C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 15:21:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5284AC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 17:01:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FxLuLmqYxL7Ox4fSDT2Aa24YuJlu81NAHwSQchywrOc=; b=tPnO2C6YOkOxXW3tRa6CkMFcVm
-	hlN1ANj2EoExfHg+1wccnENi2sIdQvhktafppPsTATRqeYK4jbstPT0uo0Q6UagcPkEHWIVBKNCDR
-	VjlzEk0zF9SgJJfJcOhefWd8fbrAriWN6jTiGnMJrrrBzTcdJHaEBOSq/+kxwNtt1Iy1udwyiHY+S
-	rmj2LECJuFxTbrw7oo0aHQgy4mAZ3TpZ8H9GmRIPs2cwDAOV5dkHHaM1MvRHxdy0rStPmoLKjkLJk
-	ZDj5PT6NZ4raiDde73I4VONZc1yCTosNlCYHFj9ahesgCPWRHRPdhJ2qxoSz0NUK3Hikchwxnfy//
-	1nhyKgTw==;
+	bh=DEN6OzebqeUEkOR2BvFF2V2mgJks6MIfqdS/JlUmunY=; b=VL4AanOvuej+kNbsP5xJ6wmrsV
+	G/atzxlYATV8OR9+90YEMTzbMi3K1MVlT0qSjc9BLden76vImQGAEUiICJtj/Br1Kyhflk7oCTOCS
+	6quXvvsei2NSQPlbTZ35A74hshWE3/6Z08t+ADGyr0fMeOL+7sJryCi4umlndrTvy1770SDBKbUNs
+	lp6bLIwZ2zULm4OIW/idL/R8yxaIkwrmeF+3wdu/7xQTq8Cc33GgC7JDIzGC7LB44Vse3wiYWzbgm
+	B067BBONEDohBlLpHiVZ3TaIL/oouaVrr8VlSNNxgbFpyj84Vs+LnRJFsqyc6OLv/QyjWBE3UFG6W
+	O9wNnxfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbjzY-006PFz-94; Mon, 13 Mar 2023 15:21:40 +0000
+	id 1pblXY-006vfs-Nq; Mon, 13 Mar 2023 17:00:52 +0000
 Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbjzJ-006PB1-6H; Mon, 13 Mar 2023 15:21:27 +0000
+	id 1pblMn-006rbU-JD; Mon, 13 Mar 2023 16:49:47 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 81C4AB8118A;
-	Mon, 13 Mar 2023 15:21:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3329FC4339C;
-	Mon, 13 Mar 2023 15:21:22 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id D7852B811A0;
+	Mon, 13 Mar 2023 16:49:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD418C433EF;
+	Mon, 13 Mar 2023 16:49:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1678720882;
-	bh=wOHm5m6ReGiTMjg65yU9qaHxrijWEjIw7pPKeJiQgZU=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=OUUHQodE9JDEhnimPb4A+ScsqyQWzs2ZXXN56JZUxx013GW7PBsqzY2YzYB4iYFT/
-	 7o4gdJUaWQvP3x5cZhLFhQrnNFyx4J9sfDqS1Bhqo2UnCTtJ1YjjlALi/zckbPdQ5N
-	 ymDPvXulN2SHf5q3ji061uodkQKq00m/6YHwHxgBvpgwhSLvStTdfmJZ9I6RmP/XHI
-	 rjd0nrnk/s/dFkXEFhLer1DWz5Zbgw8QWbYm1meM45C29w2ChJCzYt2UZYjovp1K9t
-	 oPRNcx1c7VtU60XzJQMh5XJNaztVN1Zl6yT3mEmrTgcaadgxieLmCV7WbRVFMyhF8D
-	 fxCurl6qT/6Rg==
-Received: by mail-lf1-f51.google.com with SMTP id r27so16156149lfe.10;
-        Mon, 13 Mar 2023 08:21:22 -0700 (PDT)
-X-Gm-Message-State: AO0yUKUvELGpdmUKeNFx7jELU7FCont/mkEmqE+wSkuFOiQ/XFBIpgOv
-	I9wdo498ni2Mp5W3X76U0vyS2UWI2OOMz4n8Bg==
-X-Google-Smtp-Source: AK7set8c5sO7hWTagu0j7z99ZxWvxbRa9EwPdzCx0PtR3FDTJLZOe1sVBKQ3Vev10nkQOZOgZI/r80Ju5W7KnZEDkS0=
-X-Received: by 2002:ac2:52a9:0:b0:4e8:3fba:621d with SMTP id
- r9-20020ac252a9000000b004e83fba621dmr1728626lfm.7.1678720880217; Mon, 13 Mar
- 2023 08:21:20 -0700 (PDT)
+	s=k20201202; t=1678726182;
+	bh=8KYXMoHAD5Z4NBIseAq6bsT/0yPZHnSTiR9g+F3H6mQ=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=a2JoV3Ky1b2rAYHvjxOxSJk1TNI3heElPwvSF5YrOvneNeV0VdzwNhQXiUrffvmto
+	 JA7P0WeiStnDt/6J8n1J9O5jnVgObXfH8lS4KXLMLBqO4DJUKBDJIvP6ivTa/Y09Sn
+	 HR1pOKRuwrPDI/baAtt5wUZ6Gocqmmqr2buMgjA/aCshs3yaJSkT/BdMx60/VeJQN4
+	 dkvphu6x3RN4fI6sEcajBAho9BdeW92stv1wsZ7bHVNaqIqINFZydvDFvpdEiWiF0m
+	 eG/X/a/XjC1FXr2cscVZU8Cm2pQpTkDOWTAiQQum9/Cqx4Qc/c+wOmHVG5htVbTJPc
+	 eI6rbG1xa4RhQ==
+From: Mark Brown <broonie@kernel.org>
+To: miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com, 
+ jic23@kernel.org, pratyush@kernel.org, Sanju.Mehta@amd.com, 
+ chin-ting_kuo@aspeedtech.com, clg@kaod.org, kdasu.kdev@gmail.com, 
+ f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, 
+ eajames@linux.ibm.com, olteanv@gmail.com, han.xu@nxp.com, 
+ john.garry@huawei.com, shawnguo@kernel.org, s.hauer@pengutronix.de, 
+ khilman@baylibre.com, matthias.bgg@gmail.com, haibo.chen@nxp.com, 
+ linus.walleij@linaro.org, daniel@zonque.org, haojian.zhuang@gmail.com, 
+ robert.jarzmik@free.fr, agross@kernel.org, heiko@sntech.de, 
+ krzysztof.kozlowski@linaro.org, andi@etezian.org, mcoquelin.stm32@gmail.com, 
+ alexandre.torgue@foss.st.com, wens@csie.org, jernej.skrabec@gmail.com, 
+ samuel@sholland.org, masahisa.kojima@linaro.org, jaswinder.singh@linaro.org, 
+ rostedt@goodmis.org, mingo@redhat.com, l.stelmach@samsung.com, 
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org, 
+ pabeni@redhat.com, alex.aring@gmail.com, stefan@datenfreihafen.org, 
+ kvalo@kernel.org, james.schulman@cirrus.com, david.rhodes@cirrus.com, 
+ tanureal@opensource.cirrus.com, rf@opensource.cirrus.com, perex@perex.cz, 
+ tiwai@suse.com, npiggin@gmail.com, christophe.leroy@csgroup.eu, 
+ mpe@ellerman.id.au, oss@buserror.net, windhl@126.com, 
+ yangyingliang@huawei.com, william.zhang@broadcom.com, 
+ kursad.oney@broadcom.com, jonas.gorski@gmail.com, anand.gore@broadcom.com, 
+ rafal@milecki.pl, Tudor Ambarus <tudor.ambarus@linaro.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Bjorn Andersson <andersson@kernel.org>, 
+ Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
+Cc: git@amd.com, linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ joel@jms.id.au, andrew@aj.id.au, radu_nicolae.pirea@upb.ro, 
+ nicolas.ferre@microchip.com, alexandre.belloni@bootlin.com, 
+ claudiu.beznea@microchip.com, bcm-kernel-feedback-list@broadcom.com, 
+ fancer.lancer@gmail.com, kernel@pengutronix.de, festevam@gmail.com, 
+ linux-imx@nxp.com, jbrunet@baylibre.com, martin.blumenstingl@googlemail.com, 
+ avifishman70@gmail.com, tmaimon77@gmail.com, tali.perry1@gmail.com, 
+ venture@google.com, yuenn@google.com, benjaminfair@google.com, 
+ yogeshgaur.83@gmail.com, konrad.dybcio@somainline.org, 
+ alim.akhtar@samsung.com, ldewangan@nvidia.com, thierry.reding@gmail.com, 
+ jonathanh@nvidia.com, michal.simek@amd.com, linux-aspeed@lists.ozlabs.org, 
+ openbmc@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
+ linux-tegra@vger.kernel.org, netdev@vger.kernel.org, 
+ linux-wpan@vger.kernel.org, libertas-dev@lists.infradead.org, 
+ linux-wireless@vger.kernel.org, linux-mtd@lists.infradead.org, 
+ lars@metafoo.de, Michael.Hennerich@analog.com, linux-iio@vger.kernel.org, 
+ michael@walle.cc, palmer@dabbelt.com, linux-riscv@lists.infradead.org, 
+ alsa-devel@alsa-project.org, patches@opensource.cirrus.com, 
+ linuxppc-dev@lists.ozlabs.org, amitrkcian2002@gmail.com
+In-Reply-To: <20230306172109.595464-1-amit.kumar-mahapatra@amd.com>
+References: <20230306172109.595464-1-amit.kumar-mahapatra@amd.com>
+Subject: Re: (subset) [PATCH V5 00/15] spi: Add support for
+ stacked/parallel memories
+Message-Id: <167872615942.75015.12960472969249845825.b4-ty@kernel.org>
+Date: Mon, 13 Mar 2023 16:49:19 +0000
 MIME-Version: 1.0
-References: <20230220-display-v1-0-45cbc68e188b@baylibre.com> <20230220-display-v1-19-45cbc68e188b@baylibre.com>
-In-Reply-To: <20230220-display-v1-19-45cbc68e188b@baylibre.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Mon, 13 Mar 2023 23:21:08 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_-wEzu6JavEAyRo8njOLRMq3i3wEcemNsuMaK00W9QqpQ@mail.gmail.com>
-Message-ID: <CAAOTY_-wEzu6JavEAyRo8njOLRMq3i3wEcemNsuMaK00W9QqpQ@mail.gmail.com>
-Subject: Re: [PATCH 19/21] drm/mediatek: dpi: add support for dpi clock
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>, 
-	Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Sam Ravnborg <sam@ravnborg.org>, 
-	Rob Herring <robh+dt@kernel.org>, =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	David Airlie <airlied@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Xinlei Lee <xinlei.lee@mediatek.com>, Guillaume La Roque <glaroque@baylibre.com>, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	dri-devel@lists.freedesktop.org, Fabien Parent <fparent@baylibre.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, linux-pwm@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13-dev-bd1bf
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_082125_543451_3239C68C 
-X-CRM114-Status: GOOD (  21.19  )
+X-CRM114-CacheID: sfid-20230313_094946_042225_6E79C08E 
+X-CRM114-Status: GOOD (  14.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,96 +117,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Alexandre:
+On Mon, 06 Mar 2023 22:50:54 +0530, Amit Kumar Mahapatra wrote:
+> This patch is in the continuation to the discussions which happened on
+> 'commit f89504300e94 ("spi: Stacked/parallel memories bindings")' for
+> adding dt-binding support for stacked/parallel memories.
+> 
+> This patch series updated the spi-nor, spi core and the spi drivers
+> to add stacked and parallel memories support.
+> 
+> [...]
 
-Alexandre Mergnat <amergnat@baylibre.com> =E6=96=BC 2023=E5=B9=B43=E6=9C=88=
-9=E6=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=8B=E5=8D=8810:23=E5=AF=AB=E9=81=93=EF=
-=BC=9A
->
-> From: Fabien Parent <fparent@baylibre.com>
->
-> MT8365 requires an additional clock for DPI. Add support for that
-> additional clock.
->
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_dpi.c | 18 +++++++++++++++++-
->  1 file changed, 17 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediate=
-k/mtk_dpi.c
-> index 4317595a15d1..474c6e5bbf04 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> @@ -68,6 +68,7 @@ struct mtk_dpi {
->         struct device *dev;
->         struct clk *engine_clk;
->         struct clk *pixel_clk;
-> +       struct clk *dpi_clk;
->         struct clk *tvd_clk;
->         int irq;
->         struct drm_display_mode mode;
-> @@ -464,6 +465,7 @@ static void mtk_dpi_power_off(struct mtk_dpi *dpi)
->         mtk_dpi_disable(dpi);
->         clk_disable_unprepare(dpi->pixel_clk);
->         clk_disable_unprepare(dpi->engine_clk);
-> +       clk_disable_unprepare(dpi->dpi_clk);
->  }
->
->  static int mtk_dpi_power_on(struct mtk_dpi *dpi)
-> @@ -473,10 +475,16 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
->         if (++dpi->refcount !=3D 1)
->                 return 0;
->
-> +       ret =3D clk_prepare_enable(dpi->dpi_clk);
-> +       if (ret) {
-> +               dev_err(dpi->dev, "failed to enable dpi clock: %d\n", ret=
-);
-> +               goto err_refcount;
-> +       }
-> +
->         ret =3D clk_prepare_enable(dpi->engine_clk);
->         if (ret) {
->                 dev_err(dpi->dev, "Failed to enable engine clock: %d\n", =
-ret);
-> -               goto err_refcount;
-> +               goto err_engine;
->         }
->
->         ret =3D clk_prepare_enable(dpi->pixel_clk);
-> @@ -489,6 +497,8 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
->
->  err_pixel:
->         clk_disable_unprepare(dpi->engine_clk);
-> +err_engine:
-> +       clk_disable_unprepare(dpi->dpi_clk);
->  err_refcount:
->         dpi->refcount--;
->         return ret;
-> @@ -1044,6 +1054,12 @@ static int mtk_dpi_probe(struct platform_device *p=
-dev)
->                 return ret;
->         }
->
-> +       dpi->dpi_clk =3D devm_clk_get_optional(dev, "dpi");
+Applied to
 
-For MT8365, DPI clock is not optional, so make sure that MT8365 DPI
-should have this clock.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
-Regards,
-Chun-Kuang.
+Thanks!
 
-> +       if (IS_ERR(dpi->dpi_clk)) {
-> +               return dev_err_probe(dev, ret, "Failed to get dpi clock: =
-%p\n",
-> +                                    dpi->dpi_clk);
-> +       }
-> +
->         dpi->irq =3D platform_get_irq(pdev, 0);
->         if (dpi->irq <=3D 0)
->                 return -EINVAL;
->
-> --
-> b4 0.10.1
+[01/15] spi: Replace all spi->chip_select and spi->cs_gpiod references with function call
+        commit: 9e264f3f85a56cc109cc2d6010a48aa89d5c1ff1
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
