@@ -4,91 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1907FC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 23:01:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFB35C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 23:09:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hQAhFIXkwSE0gRmxGtQZbDk7OJOVM3UvlPBLhtkap6I=; b=C8Wh1GFXUcEL90F6DXqCkt7q0+
-	E40/8LvwUP9p/dIPG8zBybriwyUqroK1489wnPTUM6IP7KJtF3WRayB/xtcoHYKliIhRy865mdB7/
-	84iOxbfiO1/W+YSD7j0kh9E0+QPgu6nOH8tEk0OSVJctUy7Fbo1wnm6IQal1Prkgjhv3Vk+LNJdBN
-	J1ke1756P2Ar9siFGvmRt4OkJ8RJE1duPXW4NMmj/M18eK0N8Rh4SSke66HZz1otjI7AO1tGoVfQZ
-	Z/6lIdX2y3xonHYcpaS7hrKwtvHghOmAW3q+SWuN3XxXIc2Wq3pZMmU1fMCBdyKijEfE96CSd4GgX
-	awuRYRjA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gL3c+nIzz+2dg94HcxfMd8gjHRKKwhDskVMQz416N44=; b=N5eJlPvYI1MIGTGossyIrWUxJk
+	cjMES6MLT+aXFiZGwY0sKUglDHXyXMZ5qdLER11Uer6CCREaB+GcYlmoRdgjIedVkhi5ydD5ls+nO
+	j/wbCYNkyhgXnKi64MjWPGwaC8gziXISfdD2nH3UDzpJOzolzN6lXg7fQ40Sm9VVg8o5lF3L4kPqm
+	5EKvQCliXuzLGcle58fBgcIsDkM7bYIMBi+pr6VYkHWgUVdcCUfm3DudTw0P/z0Vg6tKzdvdX4raH
+	nAY4sQ3r4Pd9X2U9QS/g9+jaYyuFbdRODM6ntQskOacDxH4KsHqnis0ZVqU5rQ5zd1CZhhPXAWOKM
+	XB5iem3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbrAJ-008EnX-57; Mon, 13 Mar 2023 23:01:15 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1pbrHr-008Hsg-1C; Mon, 13 Mar 2023 23:09:03 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbr6r-008DF3-A5; Mon, 13 Mar 2023 22:57:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=hQAhFIXkwSE0gRmxGtQZbDk7OJOVM3UvlPBLhtkap6I=; b=LV2ZMtfcORpFnX1jZ25qRSnGtH
-	qFW724J4HbDIezqqUiJKid+N9fsY1F4FlYNjsE7tMcy915S84c6JOV4n4egaqZw426u14AHUiJFBP
-	nkeOcJIlFqX/4pTfpu9Z19oka20uxoMZXgWCM/Ly8gnlaiIR7XCizXT7Crx73R/4g4wnwAmiG0lYw
-	2VcARPZkRVi96OZh322tp+2/D1O8jsRMSD2Z2fqKcpxKa4h/c/qJDB7N7RNjfyAGYQJV5rgTa+UwI
-	pdsEdarMy4cen5NuWw1rRM64kE8y4qDs0AGQmUmVOlE4Wq166H3nJlbu3Ubk+ab+OmS2E2pAi8ZCS
-	eX0RVCDQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:46584)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1pbr6d-000425-Ox; Mon, 13 Mar 2023 22:57:27 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1pbr6V-00088s-Rz; Mon, 13 Mar 2023 22:57:19 +0000
-Date: Mon, 13 Mar 2023 22:57:19 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Daniel Golle <daniel@makrotopia.org>,
-	Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao <zhaojh329@gmail.com>,
-	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
-	Alexander Couzens <lynxis@fe80.eu>
-Subject: Re: Re: Re: Re: [PATCH net-next v12 08/18] net: ethernet:
- mtk_eth_soc: fix 1000Base-X and 2500Base-X modes
-Message-ID: <ZA+qTyQ3n6YiURkQ@shell.armlinux.org.uk>
-References: <ZAik+I1Ei+grJdUQ@makrotopia.org>
- <ZAioqp21521NsttV@shell.armlinux.org.uk>
- <trinity-79e9f0b8-a267-4bf9-a3d4-1ec691eb5238-1678536337569@3c-app-gmx-bs24>
- <ZAzd1A0SAKZK0hF5@shell.armlinux.org.uk>
- <4B891976-C29E-4D98-B604-3AC4507D3661@public-files.de>
- <ZAzk71mTxgV/pRxC@shell.armlinux.org.uk>
- <trinity-8577978d-1c11-4f6d-ae11-aef37e8b78b0-1678624836722@3c-app-gmx-bap51>
- <ZA4wlQ8P48aDhDly@shell.armlinux.org.uk>
- <ZA8B/kI0fLx4gkQm@shell.armlinux.org.uk>
- <trinity-93681801-f99c-40e2-9fbd-45888b3069aa-1678732740564@3c-app-gmx-bs66>
+	id 1pbrHU-008Hm1-IM; Mon, 13 Mar 2023 23:08:43 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id C1EAE6154C;
+	Mon, 13 Mar 2023 23:08:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9D29FC433D2;
+	Mon, 13 Mar 2023 23:08:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1678748919;
+	bh=sX1ACa8gZtf3/q/1WhrJLcKXpRal2/Mfj8Av3ufc8ns=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=Xq2keRQghnMwbefmaBZ6xsMXuSwSa74vY/KqoUPNTulknCK+0G3emZRmqK08+JfQz
+	 Wmq5qkpWG3uCeLD9ZJhv0nSjFHXhxM7u7UN4+rPq15yDjUIPdX7y7GjfxAySEV6PzG
+	 fU4e/ytmllN6e7nNlxktChKsNno30AqCsbjfYYkkVYtuvLeto49+T9mdv0CjYR6brK
+	 hfOY06by5ZFfohpilacFLnv0vrfNxghjWd4mde3IPriMs4PzCKf8OMJRqCk1vb4aJx
+	 njMVGgCahhwrPovtJ+/7vMwuXq8nSc3uJtWGB+JeVZqXNHeOp89I70C7XTJxTs3Hq4
+	 jwRcs1litggVw==
+Date: Mon, 13 Mar 2023 16:08:37 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: <haozhe.chang@mediatek.com>
+Cc: M Chetan Kumar <m.chetan.kumar@intel.com>, Intel Corporation
+ <linuxwwan@intel.com>, Loic Poulain <loic.poulain@linaro.org>, Sergey
+ Ryazanov <ryazanov.s.a@gmail.com>, Johannes Berg
+ <johannes@sipsolutions.net>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Stephan
+ Gerhold <stephan@gerhold.net>, Chandrashekar Devegowda
+ <chandrashekar.devegowda@intel.com>, Chiranjeevi Rapolu
+ <chiranjeevi.rapolu@linux.intel.com>, Liu Haijun <haijun.liu@mediatek.com>,
+ Ricardo Martinez <ricardo.martinez@linux.intel.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Oliver Neukum <oneukum@suse.com>, Shang XiaoJing
+ <shangxiaojing@huawei.com>, "open list:INTEL WWAN IOSM DRIVER"
+ <netdev@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "open
+ list:REMOTE PROCESSOR MESSAGING (RPMSG) WWAN CONTROL..."
+ <linux-remoteproc@vger.kernel.org>, "open list:USB SUBSYSTEM"
+ <linux-usb@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, <lambert.wang@mediatek.com>,
+ <xiayu.zhang@mediatek.com>, <hua.yang@mediatek.com>
+Subject: Re: [PATCH RESEND net-next v7] wwan: core: Support slicing in port
+ TX flow of WWAN subsystem
+Message-ID: <20230313160837.77f4ced0@kernel.org>
+In-Reply-To: <20230308081939.5512-1-haozhe.chang@mediatek.com>
+References: <20230308081939.5512-1-haozhe.chang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <trinity-93681801-f99c-40e2-9fbd-45888b3069aa-1678732740564@3c-app-gmx-bs66>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_155741_826339_BE178357 
-X-CRM114-Status: GOOD (  23.83  )
+X-CRM114-CacheID: sfid-20230313_160840_918287_D536C2BE 
+X-CRM114-Status: GOOD (  15.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,125 +89,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 13, 2023 at 07:39:00PM +0100, Frank Wunderlich wrote:
-> > Gesendet: Montag, 13. März 2023 um 11:59 Uhr
-> > Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
-> 
-> > Since describing what I wanted you to test didn't work, here's a patch
-> > instead, based upon the quirk that you provided (which is what I'd have
-> > written anyway). Add a "#define DEBUG" to the top of
-> > drivers/net/phy/phylink.c in addition to applying this patch, and please
-> > test the resulting kernel, sending me the resulting kernel messages, and
-> > also reporting whether this works or not.
-> 
-> Hi
-> 
-> thx for the patch...sorry for misunderstanding. i thought the sfp quirk only sets a flag and i need to change
-> something in phylink.c to do the same as done on userspace, so i tried to simulate the userspace call there only for testing.
-> 
-> here relevant parts of debug
-> 
-> [    1.990637] sfp sfp-1: module OEM              SFP-2.5G-T       rev 1.0  sn SK2301110008     dc 230110  
-> [    2.000147] mtk_soc_eth 15100000.ethernet eth1: optical SFP: interfaces=[mac=2-4,21-22, sfp=]
+On Wed, 8 Mar 2023 16:19:35 +0800 haozhe.chang@mediatek.com wrote:
+>  /**
+>   * wwan_create_port - Add a new WWAN port
+>   * @parent: Device to use as parent and shared by all WWAN ports
+>   * @type: WWAN port type
+>   * @ops: WWAN port operations
+> + * @frag_len: WWAN port TX fragments length, if WWAN_NO_FRAGMENT is set,
+> + *            the WWAN core don't fragment control packages.
+> + * @headroom_len: WWAN port TX fragments reserved headroom length, if WWAN_NO_HEADROOM
+> + *                is set, the WWAN core don't reserve headroom in control packages.
+>   * @drvdata: Pointer to caller driver data
+>   *
+>   * Allocate and register a new WWAN port. The port will be automatically exposed
+> @@ -86,6 +100,8 @@ struct wwan_port_ops {
+>  struct wwan_port *wwan_create_port(struct device *parent,
+>  				   enum wwan_port_type type,
+>  				   const struct wwan_port_ops *ops,
+> +				   size_t frag_len,
+> +				   unsigned int headroom_len,
+>  				   void *drvdata);
+>  
 
-First thing... why are the SFP interfaces here empty? They should be
-listing at least 22 for this SFP. Looking at the full log, you have
-omitted:
+Too many arguments, and poor extensibility.
+Please wrap the new params into a capability struct:
 
-[    2.008678] mtk_soc_eth 15100000.ethernet eth1: unsupported SFP module: no common interface modes
+struct wwan_port_caps {
+	unsigned int frag_len;
+	unsigned int headroom_len;
+};
 
-which seems to suggest that we need more than what I provided - and
-is a big pointer to why it isn't working... and I guess has been there
-all along.
+pass a pointer to this kind of structure in.
 
-This means that the interface configuration never gets updated, so
-its pointless trying to add quirks etc. Error messages are rather
-a key point.
-
-So everything after this is just not relevant. Let's fix that. Here's
-an updated patch which sets an interface mode for this SFP and sets a
-link mode for it (although we use 2500baseX rather than baseT here
-just to test this). I'm guessing it also does rate adaption, which we
-will have to work out later.
-
-Thanks.
-
-diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
-index 1a2f074685fa..08eeffa96ae4 100644
---- a/drivers/net/phy/phylink.c
-+++ b/drivers/net/phy/phylink.c
-@@ -3001,7 +3001,8 @@ static int phylink_sfp_config_optical(struct phylink *pl)
- 	config.speed = SPEED_UNKNOWN;
- 	config.duplex = DUPLEX_UNKNOWN;
- 	config.pause = MLO_PAUSE_AN;
--	config.an_enabled = true;
-+	config.an_enabled = linkmode_test_bit(ETHTOOL_LINK_MODE_Autoneg_BIT,
-+					      support);
- 
- 	/* For all the interfaces that are supported, reduce the sfp_support
- 	 * mask to only those link modes that can be supported.
-diff --git a/drivers/net/phy/sfp-bus.c b/drivers/net/phy/sfp-bus.c
-index daac293e8ede..1dd50f2ca05d 100644
---- a/drivers/net/phy/sfp-bus.c
-+++ b/drivers/net/phy/sfp-bus.c
-@@ -151,6 +151,10 @@ void sfp_parse_support(struct sfp_bus *bus, const struct sfp_eeprom_id *id,
- 	unsigned int br_min, br_nom, br_max;
- 	__ETHTOOL_DECLARE_LINK_MODE_MASK(modes) = { 0, };
- 
-+	phylink_set(modes, Autoneg);
-+	phylink_set(modes, Pause);
-+	phylink_set(modes, Asym_Pause);
-+
- 	/* Decode the bitrate information to MBd */
- 	br_min = br_nom = br_max = 0;
- 	if (id->base.br_nominal) {
-@@ -329,10 +333,6 @@ void sfp_parse_support(struct sfp_bus *bus, const struct sfp_eeprom_id *id,
- 		bus->sfp_quirk->modes(id, modes, interfaces);
- 
- 	linkmode_or(support, support, modes);
--
--	phylink_set(support, Autoneg);
--	phylink_set(support, Pause);
--	phylink_set(support, Asym_Pause);
- }
- EXPORT_SYMBOL_GPL(sfp_parse_support);
- 
-diff --git a/drivers/net/phy/sfp.c b/drivers/net/phy/sfp.c
-index 39e3095796d0..5910c0e936a0 100644
---- a/drivers/net/phy/sfp.c
-+++ b/drivers/net/phy/sfp.c
-@@ -360,6 +360,21 @@ static void sfp_quirk_2500basex(const struct sfp_eeprom_id *id,
- 	__set_bit(PHY_INTERFACE_MODE_2500BASEX, interfaces);
- }
- 
-+static void sfp_quirk_disable_autoneg(const struct sfp_eeprom_id *id,
-+				      unsigned long *modes,
-+				      unsigned long *interfaces)
-+{
-+	linkmode_clear_bit(ETHTOOL_LINK_MODE_Autoneg_BIT, modes);
-+}
-+
-+static void sfp_quirk_oem_2_5g(const struct sfp_eeprom_id *id,
-+			       unsigned long *modes,
-+			       unsigned long *interfaces)
-+{
-+	sfp_quirk_2500basex(id, modes, interfaces);
-+	sfp_quirk_disable_autoneg(id, modes, interfaces);
-+}
-+
- static void sfp_quirk_ubnt_uf_instant(const struct sfp_eeprom_id *id,
- 				      unsigned long *modes,
- 				      unsigned long *interfaces)
-@@ -401,6 +416,7 @@ static const struct sfp_quirk sfp_quirks[] = {
- 	SFP_QUIRK_M("UBNT", "UF-INSTANT", sfp_quirk_ubnt_uf_instant),
- 
- 	SFP_QUIRK_F("OEM", "SFP-10G-T", sfp_fixup_rollball_cc),
-+	SFP_QUIRK_M("OEM", "SFP-2.5G-T", sfp_quirk_oem_2_5g),
- 	SFP_QUIRK_F("OEM", "RTSFP-10", sfp_fixup_rollball_cc),
- 	SFP_QUIRK_F("OEM", "RTSFP-10G", sfp_fixup_rollball_cc),
- 	SFP_QUIRK_F("Turris", "RTSFP-10", sfp_fixup_rollball),
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+Next time someone needs to add a quirk they can just add a field and
+won't need to change all the drivers.
 
