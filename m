@@ -4,73 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37F23C74A4B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 08:45:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 141B8C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 08:46:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u1bPz+A+PBrulRB7Ix/OlZHV2Xn2t70PiSaDnvNG+20=; b=QaOircbEbWKsGt+4CB9CopCwSs
-	rP6Rc127ckq42HgggKFWH409FTEGkia315UcOPgBrU+lRoimxCTw2ohPtLjJmaCC29q45AVI+v+Kv
-	E8/iuw1sfoi6eu0uwNjMqEdtfiAWO7Zf8zAvCQ9MT04Mw0pzyGq008Qttk5WzSQKV/HuQlQmwLVT7
-	31wwjuVbP++RLaBk+CNBgtlfvki2w8A1PteJixmaDsXVdxuHC8QQVzf4ZkHpMFaQ3RO0kADv0uvMo
-	LOJ7nzV78WV96acZLk7194fOQOoXqYEqaVO5u/da3ZEiUbniB/R1tL6qGOFimYyaRi2Z7SZoCghgv
-	0O1qkZvg==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DVJEpXUX/eFrQfSD+3MWEA3mqtI1PytTFJNyTYmDcCU=; b=vEUcDCVpUM4tHq0SjF17rnLwba
+	PCawpU5LkLRBZWmr7U1pbfBuw6GlD0T+xUdD4QrtvM0S0wnMSffnD3fxJc1P3pxqseLc3rgvAtXjU
+	TrzcFy9F5vBOU9Cam8bncJs/RkrrdazucfExz2Op+hzcDOLCVBMWIojTjXjJSl2mXC1s/AMbmXryg
+	QQfO6VufWOQjzPEgWvimZMl8nh+9V4s1vMhRsNClVuI9kEEahqAUdPWgXWLqDkjuQSk8aRGS8BzeT
+	mG8BQtHBe3+dsTfnAXA6yD9PHfEHI2aK6EWmzwVRjc5gs68uRcKv3Q3aeEOaxSOW0HGg70jaUb69M
+	/BSYQj3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbdnj-004omM-I0; Mon, 13 Mar 2023 08:45:03 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pbdog-004p94-NO; Mon, 13 Mar 2023 08:46:02 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbdnB-004ofI-DB; Mon, 13 Mar 2023 08:44:30 +0000
+	id 1pbdoU-004p3U-6e; Mon, 13 Mar 2023 08:45:51 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3916C6603084;
-	Mon, 13 Mar 2023 08:44:27 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4C086660217A;
+	Mon, 13 Mar 2023 08:45:48 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678697068;
-	bh=7sp5OBBrmpEeatddKwhM+lwytmkkMBBdKyeH5esSn5w=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=URmi3h55rHOXuFaFDpXyjqFwC2AM9oj/jA/N6W3on5mk7UzK2MxULSlHGp7T77hBe
-	 dWYzpktDKUExA68Q7xud0dv+wpUZkc+M4SnVJ59FA/3XwHenlTs1fGyEDt+sL9AYyg
-	 s4sO12HOKDWiJiMNtNyv4vTa/3qyYbstAM4Ebp74pYfrAQB2MwSvedqtL3+CVW/Miq
-	 PE232fdSbE1cB4VSLlSnFZz8j4epOxMNgKOdOgGrJG2u4DKxey1y+zJFy8JxTNnrW9
-	 vePjz3sD+DWyldubvYworA66OgL1GkyFoMg9AGeIrP8E+maWaAA/OAnQ3L4qA2HuME
-	 feZ0B1u7L+o1A==
-Message-ID: <e067d343-c47e-e2bf-4ae8-51873759d39b@collabora.com>
-Date: Mon, 13 Mar 2023 09:44:24 +0100
+	s=mail; t=1678697149;
+	bh=lTDRBLheRzJD0JjEVCsdrfB9802O7wR6meIpoKLcxaY=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=idwJ7r14FC6XKQrv7+SO/qq7b4jjZMgLw1KTQQjynzhBjEDqPNjYjkLUlCbGYblP+
+	 39KqZuji2yyWeosH2Q0VbqegtpGNgW1Z6RSzj/6xpAH1ewHzS+tFAglJ4zcJNoIJ9Z
+	 plEf5DYsL+2ObJjOw3a2ncy75Xdxj7zK6kDDSh5aZC1lIoObV0TGu6g7YubHSg8XCH
+	 AM5tJaSUqYiGgjeWzvnEl3Ba5kZHBw7NXS3+bHZiOQXpQCRLY2Q1e/qiFWGLFhLrLI
+	 ZTGM3f8uRSMT1WQ60T1BVAp8wHEjjLds0+dZFQFq3zNTDHQt6uwfw0jnA6+pk4U2zw
+	 BdE7966QFhu1Q==
+Message-ID: <7999691d-e3a5-03b1-25fe-a59f8b59fb4d@collabora.com>
+Date: Mon, 13 Mar 2023 09:45:45 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.8.0
-Subject: Re: [PATCH] pinctrl: Use of_property_present() for testing DT
- property presence
+Subject: Re: [PATCH 4/9] regulator: mt6397-regulator: Mark OF related data as
+ maybe unused
 Content-Language: en-US
-To: Rob Herring <robh@kernel.org>, Sean Wang <sean.wang@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>, Tony Lindgren <tony@atomide.com>,
- Haojian Zhuang <haojian.zhuang@linaro.org>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-renesas-soc@vger.kernel.org,
- linux-sunxi@lists.linux.dev
-References: <20230310144721.1544669-1-robh@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Tony Lindgren <tony@atomide.com>,
+ Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-omap@vger.kernel.org, linux-arm-msm@vger.kernel.org
+References: <20230310214553.275450-1-krzysztof.kozlowski@linaro.org>
+ <20230310214553.275450-4-krzysztof.kozlowski@linaro.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230310144721.1544669-1-robh@kernel.org>
+In-Reply-To: <20230310214553.275450-4-krzysztof.kozlowski@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_014429_610117_3D2F5275 
-X-CRM114-Status: UNSURE (   9.82  )
+X-CRM114-CacheID: sfid-20230313_014550_397914_D342EDA0 
+X-CRM114-Status: UNSURE (   7.94  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,15 +81,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/03/23 15:47, Rob Herring ha scritto:
-> It is preferred to use typed property access functions (i.e.
-> of_property_read_<type> functions) rather than low-level
-> of_get_property/of_find_property functions for reading properties. As
-> part of this, convert of_get_property/of_find_property calls to the
-> recently added of_property_present() helper when we just want to test
-> for presence of a property and nothing more.
+Il 10/03/23 22:45, Krzysztof Kozlowski ha scritto:
+> The driver can be compile tested with !CONFIG_OF making certain data
+> unused:
 > 
-> Signed-off-by: Rob Herring <robh@kernel.org>
+>    drivers/regulator/mt6397-regulator.c:400:34: error: ‘mt6397_of_match’ defined but not used [-Werror=unused-const-variable=]
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
