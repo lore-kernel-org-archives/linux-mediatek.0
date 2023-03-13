@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E0E9C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 11:51:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C375C6FD19
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 11:52:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kFl9jBhLriu/Twcul4uEsnOONXfFAvy+t/b7MmNQQ4k=; b=rMRgqZr9pQKQ9N9msjbrEICsdh
-	676iQsYirSY3qoi10S9LDxSztevYHAhbwpwEMY84WqD4bRMdWL5QheKE2uod76QkC0swtg3ndecRS
-	5RDCeXZossWESte5lI3Ed6xVVwBQ7ikcCPlqUcxKio8fo7ZH33An23xCWe7Ua+e1lG1z+2qNiOgJf
-	dx6o+WZ2CHGXyqqcffTUzNZg0JILEFg0IguVBvI7TBz39uGE0pLN2Zpx1FwTf554vW0OyiUK4kowx
-	bYnX6ez1N0ItpEUpPAekqRjxrWXFWiLDT+w5EnROi3THi6M9zObG8SJxOv8PndH2VH6M1AESWkzUD
-	AjBm0fPg==;
+	bh=4fMohQWcJtaLn4xmq3BFK7cxe/mMQYVAfoTglB2rIII=; b=WCZT6prJui7EG9D6dFMlwiwp58
+	pdWyKe5gjV7YzrjvjPTxsjOM5P1eQrUFRpm1GvclOf1fbPTDHLeWg18KHIxxL8V1WY3VKHs0ybz5C
+	bMxEwgJFDg9pQOtZyYAwMuG1+DpK/LTIjj860zmOgmr0latuxItJF5cAzdrx9avtj2jmzYqfsZMIo
+	wgw5fKfXvBrZ4qtF3pVSapHX943UcFtwI6GrVsGXtpwJq0Bulao31PnguxUo8gduN5hAX47vZv9m9
+	oQqZeSoHsDdYMtO+Blfy5neh0If72mGnOUK5y4II6EyeP6GGVDN+8afmxxyGzFncTVfyYUGIACUZA
+	ScGLyUbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbghd-005WgR-N8; Mon, 13 Mar 2023 11:50:57 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pbgj5-005XND-M6; Mon, 13 Mar 2023 11:52:27 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbgdG-005Uhh-36; Mon, 13 Mar 2023 11:46:28 +0000
+	id 1pbgdc-005UtO-TR; Mon, 13 Mar 2023 11:46:50 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id CD0AF611FC;
-	Mon, 13 Mar 2023 11:46:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9640BC433EF;
-	Mon, 13 Mar 2023 11:46:16 +0000 (UTC)
-Message-ID: <4ee5e059-6e9f-0804-30ec-ff073f436780@xs4all.nl>
-Date: Mon, 13 Mar 2023 12:46:14 +0100
+	by ams.source.kernel.org (Postfix) with ESMTPS id 7C55EB8104F;
+	Mon, 13 Mar 2023 11:46:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9CF14C433D2;
+	Mon, 13 Mar 2023 11:46:38 +0000 (UTC)
+Message-ID: <6f3f5ae4-393a-e25f-997f-c1450cd506b1@xs4all.nl>
+Date: Mon, 13 Mar 2023 12:46:37 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.8.0
-Subject: Re: [PATCH 01/28] media: cec: ch7322: drop of_match_ptr for ID table
+Subject: Re: [PATCH 02/28] media: cec: meson: drop of_match_ptr for ID table
 Content-Language: en-US
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
  Joe Tessler <jrt@google.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -75,13 +75,14 @@ To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
  linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org,
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
 References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
+ <20230312131318.351173-2-krzysztof.kozlowski@linaro.org>
 From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230312131318.351173-2-krzysztof.kozlowski@linaro.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_044626_282134_D3C00A85 
-X-CRM114-Status: GOOD (  21.11  )
+X-CRM114-CacheID: sfid-20230313_044649_326677_24829488 
+X-CRM114-Status: GOOD (  20.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,35 +102,32 @@ On 12/03/2023 14:12, Krzysztof Kozlowski wrote:
 > used and the of_match_ptr does not have any sense (this also allows ACPI
 > matching via PRP0001, even though it might not be relevant here).
 > 
->   drivers/media/cec/i2c/ch7322.c:583:34: error: ‘ch7322_of_match’ defined but not used [-Werror=unused-const-variable=]
+>   drivers/media/cec/platform/meson/ao-cec.c:711:34: error: ‘meson_ao_cec_of_match’ defined but not used [-Werror=unused-const-variable=]
 > 
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Reviewed-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-
-I assume you want to take this series, but if you prefer to have us do it, then
-just let me know.
 
 Thanks!
 
 	Hans
 
 > ---
->  drivers/media/cec/i2c/ch7322.c | 2 +-
+>  drivers/media/cec/platform/meson/ao-cec.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/drivers/media/cec/i2c/ch7322.c b/drivers/media/cec/i2c/ch7322.c
-> index 34fad7123704..3c6e6496a001 100644
-> --- a/drivers/media/cec/i2c/ch7322.c
-> +++ b/drivers/media/cec/i2c/ch7322.c
-> @@ -589,7 +589,7 @@ MODULE_DEVICE_TABLE(of, ch7322_of_match);
->  static struct i2c_driver ch7322_i2c_driver = {
->  	.driver = {
->  		.name = "ch7322",
-> -		.of_match_table = of_match_ptr(ch7322_of_match),
-> +		.of_match_table = ch7322_of_match,
+> diff --git a/drivers/media/cec/platform/meson/ao-cec.c b/drivers/media/cec/platform/meson/ao-cec.c
+> index 6b440f0635d9..223c092dbb6a 100644
+> --- a/drivers/media/cec/platform/meson/ao-cec.c
+> +++ b/drivers/media/cec/platform/meson/ao-cec.c
+> @@ -719,7 +719,7 @@ static struct platform_driver meson_ao_cec_driver = {
+>  	.remove  = meson_ao_cec_remove,
+>  	.driver  = {
+>  		.name = "meson-ao-cec",
+> -		.of_match_table = of_match_ptr(meson_ao_cec_of_match),
+> +		.of_match_table = meson_ao_cec_of_match,
 >  	},
->  	.probe_new	= ch7322_probe,
->  	.remove		= ch7322_remove,
+>  };
+>  
 
 
