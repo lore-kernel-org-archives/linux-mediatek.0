@@ -4,60 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4508C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 13:15:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C93DC6FD19
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 13:56:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7MUKwK4mMLPh7ybgb0zp1vSLgBpL+VO4MptFgIGqwuU=; b=VRpKK8B3bqjdRbpCVvqD812yum
-	Lzslav+fw4llFkEo5fOBkkTtjpLDoxIJW2We472kAQ/WoyMeC0vbi0DqZfWeb1sg8RCUA2ChBytd7
-	lfZ4IFJWCVEEtzqFzqDwT6axsjkmcz6Nkq+ZoQVBHvlzFetHe0PKRZ4rpBTeAc5jwpz1NivZW5KD0
-	R5GoO2xy6lyN8U4N7qylYAtsPqo9Pj2f3Dxg+8BmYYeM++N01VzhfjSTobtQ8J/Mp8JC5xWWSGUO6
-	rXVFbSIcgWCYwjP9pqT926g0JH347jK+FvoD02D/ZAkkG84gJnh6PE6iJYgiMATxi0i9lYicZiJM4
-	Fz1Nri5Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QZLHa97T2lfgDx+ZU6uYQ6bA/C6+hQ7+aBTPBuZdrtA=; b=pw4F56NY1vh5nFnQCng4/l+RI7
+	x0tWlPEz/F45EJYnXotOgFOkBOz+R8RAPkInOAlvu4vsX0KLSZDI1CQBTtGYbIWdpxwMobHcp+0el
+	hHt479hgR/5yXvipeHvaNMbPlsdFcX1Q3rFfNG6AJ9xpSIrH1zcyris5ChI/zkPN4YLeoz3c5UbeN
+	5SP4A1qlBIUI9tAs+8fJQ9YiupAlUOPA9MHdf157qZI3W0BVs6lbfOmAVGXkTEmoGg6cuO4OdGqir
+	MAH4qLZkekn1RaHVbyKqowMI2BBm/SDsiuf06pl51upYqUC3G+1xQehGFZhCRm8GL6vyeWjboi0U3
+	VxrH+WIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbi0w-005pDK-2N; Mon, 13 Mar 2023 13:14:58 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pbiev-0060dl-DS; Mon, 13 Mar 2023 13:56:17 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbhyW-005o07-Eq; Mon, 13 Mar 2023 13:12:29 +0000
+	id 1pbiei-0060Zq-2f; Mon, 13 Mar 2023 13:56:07 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 121CEB810EE;
-	Mon, 13 Mar 2023 13:12:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 743B3C433EF;
-	Mon, 13 Mar 2023 13:12:23 +0000 (UTC)
-Message-ID: <b3a32197-c15d-bfdb-051d-724c63ad8cf0@xs4all.nl>
-Date: Mon, 13 Mar 2023 14:12:22 +0100
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 91957612C9;
+	Mon, 13 Mar 2023 13:56:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80A2FC4339B;
+	Mon, 13 Mar 2023 13:55:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1678715763;
+	bh=XrmPKmwKZEzUZa89QLtk4Hd7HK8rWUR7XZq2R52mvKw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ZVNK4YgYZJ4K0piJo8DAROawkHWiV1+E7FZWwtIO/Rt2OOgmhtH/LqF7k/X39Ds9L
+	 JSsJgJmRbkxqRUf5YCq+wkPHuyCBL2P0ko7LAjoBHxoTm0qDuxjZA1RM98qbYPlOym
+	 wsLZ27sFCNUI2w7Fz0XFd/lZGognWMCA9U6zy5Uu+BgEoDaC/VIFVXXOQ7Gwxt8Eyg
+	 DzeQcuT/4u9w83j46qXdIoAqx0e+xCT1jbWKVGEHftI6gGQ7X/bhw8k/W9Qi6NXwBz
+	 AIhlybAlFKfBPsrkJjnaC3Mm6Jma9WXfIWBT9YlWkNAQ/6NtDWlbhl/U6beUoCKvsU
+	 sD/YvX7+JerIw==
+Date: Mon, 13 Mar 2023 13:55:55 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Kamal Dasu <kdasu.kdev@gmail.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Daniel Mack <daniel@zonque.org>,
+	Haojian Zhuang <haojian.zhuang@gmail.com>,
+	Robert Jarzmik <robert.jarzmik@free.fr>,
+	Heiko Stuebner <heiko@sntech.de>, Andi Shyti <andi@etezian.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 01/16] spi: armada-3700: Drop of_match_ptr for ID table
+Message-ID: <7a65d775-cf07-4393-8b10-2cef4d5266ab@sirena.org.uk>
+References: <20230310222857.315629-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH] media: mediatek: vcodec: Use 4K frame size when supported
- by stateful decoder
-Content-Language: en-US
-To: Pin-yen Lin <treapking@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Tzung-Bi Shih <tzungbi@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chen-Yu Tsai <wenst@chromium.org>, linux-media@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20230302131821.2060936-1-treapking@chromium.org>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230302131821.2060936-1-treapking@chromium.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="6DRAQdU86hSK7NNa"
+Content-Disposition: inline
+In-Reply-To: <20230310222857.315629-1-krzysztof.kozlowski@linaro.org>
+X-Cookie: Type louder, please.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_061228_671680_B7794A3A 
-X-CRM114-Status: GOOD (  21.87  )
+X-CRM114-CacheID: sfid-20230313_065604_181499_6BF6F0B8 
+X-CRM114-Status: GOOD (  13.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,61 +90,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02/03/2023 14:18, Pin-yen Lin wrote:
-> After commit b018be06f3c7 ("media: mediatek: vcodec: Read max resolution
-> from dec_capability"), the stateful video decoder driver never really
-> sets its output frame size to 4K.
-> 
-> Parse the decoder capability reported by the firmware, and update the
-> output frame size in mtk_init_vdec_params to enable 4K frame size when
-> available.
-> 
-> Fixes: b018be06f3c7 ("media: mediatek: vcodec: Read max resolution from dec_capability")
-> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-> ---
-> 
->  .../mediatek/vcodec/mtk_vcodec_dec_stateful.c        | 12 +++++++++++-
->  1 file changed, 11 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c
-> index 035c86e7809f..679f4dc9acfb 100644
-> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c
-> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c
-> @@ -11,7 +11,7 @@
->  #include "mtk_vcodec_dec_pm.h"
->  #include "vdec_drv_if.h"
->  
-> -static const struct mtk_video_fmt mtk_video_formats[] = {
-> +static struct mtk_video_fmt mtk_video_formats[] = {
->  	{
->  		.fourcc = V4L2_PIX_FMT_H264,
->  		.type = MTK_FMT_DEC,
-> @@ -580,6 +580,16 @@ static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_ctx *ctx)
->  
->  static void mtk_init_vdec_params(struct mtk_vcodec_ctx *ctx)
->  {
-> +	unsigned int i;
-> +
-> +	if (!(ctx->dev->dec_capability & VCODEC_CAPABILITY_4K_DISABLED)) {
-> +		for (i = 0; i < num_supported_formats; i++) {
-> +			mtk_vdec_framesizes[i].stepwise.max_width =
-> +				VCODEC_DEC_4K_CODED_WIDTH;
-> +			mtk_vdec_framesizes[i].stepwise.max_height =
-> +				VCODEC_DEC_4K_CODED_HEIGHT;
-> +		}
-> +	}
 
-This doesn't apply: commit cfce5b186537 ("media: mediatek: vcodec: decoder: Embed
-framesize inside mtk_video_fmt") removed mtk_vdec_framesizes.
+--6DRAQdU86hSK7NNa
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Please post a v2 if this is still relevant.
+On Fri, Mar 10, 2023 at 11:28:42PM +0100, Krzysztof Kozlowski wrote:
+> The driver can match only via the DT table so the table should be always
+> used and the of_match_ptr does not have any sense (this also allows ACPI
+> matching via PRP0001, even though it is not relevant here).
+>=20
+>   drivers/spi/spi-armada-3700.c:807:34: error: =E2=80=98a3700_spi_dt_ids=
+=E2=80=99 defined but not used [-Werror=3Dunused-const-variable=3D]
 
-Regards,
+It would be much better to fix of_match_ptr() and/or the module stuff
+that also references the match table here.
 
-	Hans
+--6DRAQdU86hSK7NNa
+Content-Type: application/pgp-signature; name="signature.asc"
 
->  }
->  
->  static struct vb2_ops mtk_vdec_frame_vb2_ops = {
+-----BEGIN PGP SIGNATURE-----
 
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmQPK2oACgkQJNaLcl1U
+h9CaXwf8DMJQ+FCZOrCTMX1qtiYniAQfqUZMw81w1uhZli/zJ0bkKyQuozjfL87N
+j5LsX0tvE/nD48FYdMKnHL1aZ7gnmS3iVWPTCb2hYYCjMiRddTVEe4Sw9o13d/zo
+8lJrUeGddSjzluNsDnpxQzwtR/z33eHcjNGU3KkauqbVczIkrQS9vSXiRxLydFPk
++T3QQHtIn3Ya4Q3IRY9TO4eAMBFZgoHeeMWyYA98GSVmrrTdygzyGXKvdv6xeJQD
+cBAtY0MVSyUACuxgGJWvxTi1eGiHvQ0a4aWEgO6J29PAJJyMr71SaiKHcBI5W6CB
+RRo4kwWeaZerBbrW1ByTmVBKFXbQIQ==
+=vTNz
+-----END PGP SIGNATURE-----
+
+--6DRAQdU86hSK7NNa--
 
