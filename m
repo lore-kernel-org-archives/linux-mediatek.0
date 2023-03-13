@@ -4,77 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFB35C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 23:09:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06DD2C6FD1C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 23:17:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:In-Reply-To:References:Message-ID:Date:Subject:CC:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gL3c+nIzz+2dg94HcxfMd8gjHRKKwhDskVMQz416N44=; b=N5eJlPvYI1MIGTGossyIrWUxJk
-	cjMES6MLT+aXFiZGwY0sKUglDHXyXMZ5qdLER11Uer6CCREaB+GcYlmoRdgjIedVkhi5ydD5ls+nO
-	j/wbCYNkyhgXnKi64MjWPGwaC8gziXISfdD2nH3UDzpJOzolzN6lXg7fQ40Sm9VVg8o5lF3L4kPqm
-	5EKvQCliXuzLGcle58fBgcIsDkM7bYIMBi+pr6VYkHWgUVdcCUfm3DudTw0P/z0Vg6tKzdvdX4raH
-	nAY4sQ3r4Pd9X2U9QS/g9+jaYyuFbdRODM6ntQskOacDxH4KsHqnis0ZVqU5rQ5zd1CZhhPXAWOKM
-	XB5iem3w==;
+	bh=QE4eytkZSBFk8y0/R7L/Gkjc2fD5ByR1b/iKNGtjGLk=; b=swTZ7yTMuafR51aHeJxzQtWqsx
+	Y8MDhQO57qi1KMrb9zIgJ6jkGndT/juQT62Aw6WYW5jM1MlZfG/SNpRKBUVdjolmJiEEV7MuIaL/y
+	2tc9e3exzpksH1VlY+s+4eslIEM4dvrMCPMRWJOpX1fuk/+2uFpRquR/hVMMq9J2lv+bPaeJWS4vM
+	sT3hdUGWwTXKZru1lc8mv7r/2g5YlxtIDoD5HDznj22ASojyEExrszCUKPDs+4YBsZY0VZNNQO4Qv
+	6X9SVBlqjZOFyQwUu6tEA3osuQilOmzYQO2rOd4gopMQDtfuPf6YHY108r7T0QMsfdHypfFuG1vZN
+	Rnr+B1bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbrHr-008Hsg-1C; Mon, 13 Mar 2023 23:09:03 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pbrPQ-008J4w-5Z; Mon, 13 Mar 2023 23:16:52 +0000
+Received: from eu-smtp-delivery-151.mimecast.com ([185.58.85.151])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbrHU-008Hm1-IM; Mon, 13 Mar 2023 23:08:43 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id C1EAE6154C;
-	Mon, 13 Mar 2023 23:08:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9D29FC433D2;
-	Mon, 13 Mar 2023 23:08:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1678748919;
-	bh=sX1ACa8gZtf3/q/1WhrJLcKXpRal2/Mfj8Av3ufc8ns=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=Xq2keRQghnMwbefmaBZ6xsMXuSwSa74vY/KqoUPNTulknCK+0G3emZRmqK08+JfQz
-	 Wmq5qkpWG3uCeLD9ZJhv0nSjFHXhxM7u7UN4+rPq15yDjUIPdX7y7GjfxAySEV6PzG
-	 fU4e/ytmllN6e7nNlxktChKsNno30AqCsbjfYYkkVYtuvLeto49+T9mdv0CjYR6brK
-	 hfOY06by5ZFfohpilacFLnv0vrfNxghjWd4mde3IPriMs4PzCKf8OMJRqCk1vb4aJx
-	 njMVGgCahhwrPovtJ+/7vMwuXq8nSc3uJtWGB+JeVZqXNHeOp89I70C7XTJxTs3Hq4
-	 jwRcs1litggVw==
-Date: Mon, 13 Mar 2023 16:08:37 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: <haozhe.chang@mediatek.com>
-Cc: M Chetan Kumar <m.chetan.kumar@intel.com>, Intel Corporation
- <linuxwwan@intel.com>, Loic Poulain <loic.poulain@linaro.org>, Sergey
- Ryazanov <ryazanov.s.a@gmail.com>, Johannes Berg
- <johannes@sipsolutions.net>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Stephan
- Gerhold <stephan@gerhold.net>, Chandrashekar Devegowda
- <chandrashekar.devegowda@intel.com>, Chiranjeevi Rapolu
- <chiranjeevi.rapolu@linux.intel.com>, Liu Haijun <haijun.liu@mediatek.com>,
- Ricardo Martinez <ricardo.martinez@linux.intel.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Oliver Neukum <oneukum@suse.com>, Shang XiaoJing
- <shangxiaojing@huawei.com>, "open list:INTEL WWAN IOSM DRIVER"
- <netdev@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "open
- list:REMOTE PROCESSOR MESSAGING (RPMSG) WWAN CONTROL..."
- <linux-remoteproc@vger.kernel.org>, "open list:USB SUBSYSTEM"
- <linux-usb@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>, <lambert.wang@mediatek.com>,
- <xiayu.zhang@mediatek.com>, <hua.yang@mediatek.com>
-Subject: Re: [PATCH RESEND net-next v7] wwan: core: Support slicing in port
- TX flow of WWAN subsystem
-Message-ID: <20230313160837.77f4ced0@kernel.org>
-In-Reply-To: <20230308081939.5512-1-haozhe.chang@mediatek.com>
-References: <20230308081939.5512-1-haozhe.chang@mediatek.com>
+	id 1pbrPE-008J0I-Pm
+	for linux-mediatek@lists.infradead.org; Mon, 13 Mar 2023 23:16:43 +0000
+Received: from AcuMS.aculab.com (156.67.243.121 [156.67.243.121]) by
+ relay.mimecast.com with ESMTP with both STARTTLS and AUTH (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ uk-mta-180-8ouOqbSxPl2e6lYMDXaiTw-1; Mon, 13 Mar 2023 23:16:33 +0000
+X-MC-Unique: 8ouOqbSxPl2e6lYMDXaiTw-1
+Received: from AcuMS.Aculab.com (10.202.163.4) by AcuMS.aculab.com
+ (10.202.163.4) with Microsoft SMTP Server (TLS) id 15.0.1497.47; Mon, 13 Mar
+ 2023 23:16:31 +0000
+Received: from AcuMS.Aculab.com ([::1]) by AcuMS.aculab.com ([::1]) with mapi
+ id 15.00.1497.047; Mon, 13 Mar 2023 23:16:31 +0000
+From: David Laight <David.Laight@ACULAB.COM>
+To: 'Laurent Pinchart' <laurent.pinchart@ideasonboard.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>
+CC: "tfiga@chromium.org" <tfiga@chromium.org>, "m.szyprowski@samsung.com"
+	<m.szyprowski@samsung.com>, "mchehab@kernel.org" <mchehab@kernel.org>,
+	"ming.qian@nxp.com" <ming.qian@nxp.com>, "shijie.qin@nxp.com"
+	<shijie.qin@nxp.com>, "eagle.zhou@nxp.com" <eagle.zhou@nxp.com>,
+	"bin.liu@mediatek.com" <bin.liu@mediatek.com>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "tiffany.lin@mediatek.com"
+	<tiffany.lin@mediatek.com>, "andrew-ct.chen@mediatek.com"
+	<andrew-ct.chen@mediatek.com>, "yunfei.dong@mediatek.com"
+	<yunfei.dong@mediatek.com>, "stanimir.k.varbanov@gmail.com"
+	<stanimir.k.varbanov@gmail.com>, "quic_vgarodia@quicinc.com"
+	<quic_vgarodia@quicinc.com>, "agross@kernel.org" <agross@kernel.org>,
+	"andersson@kernel.org" <andersson@kernel.org>, "konrad.dybcio@linaro.org"
+	<konrad.dybcio@linaro.org>, "ezequiel@vanguardiasur.com.ar"
+	<ezequiel@vanguardiasur.com.ar>, "p.zabel@pengutronix.de"
+	<p.zabel@pengutronix.de>, "daniel.almeida@collabora.com"
+	<daniel.almeida@collabora.com>, "hverkuil-cisco@xs4all.nl"
+	<hverkuil-cisco@xs4all.nl>, "jerbel@kernel.org" <jerbel@kernel.org>,
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linux-arm-msm@vger.kernel.org"
+	<linux-arm-msm@vger.kernel.org>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "kernel@collabora.com"
+	<kernel@collabora.com>
+Subject: RE: [RFC 2/4] media: videobuf2: Replace bufs array by a list
+Thread-Topic: [RFC 2/4] media: videobuf2: Replace bufs array by a list
+Thread-Index: AQHZVddlMXgQQm2s8UOyg8hXE6z+xq75Vx6A
+Date: Mon, 13 Mar 2023 23:16:31 +0000
+Message-ID: <86df05244d974416903e919d387a0a0b@AcuMS.aculab.com>
+References: <20230313135916.862852-1-benjamin.gaignard@collabora.com>
+ <20230313135916.862852-3-benjamin.gaignard@collabora.com>
+ <20230313181155.GC22646@pendragon.ideasonboard.com>
+In-Reply-To: <20230313181155.GC22646@pendragon.ideasonboard.com>
+Accept-Language: en-GB, en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.202.205.107]
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: aculab.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: base64
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_160840_918287_D536C2BE 
-X-CRM114-Status: GOOD (  15.05  )
+X-CRM114-CacheID: sfid-20230313_161641_152673_158C3209 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,38 +101,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 8 Mar 2023 16:19:35 +0800 haozhe.chang@mediatek.com wrote:
->  /**
->   * wwan_create_port - Add a new WWAN port
->   * @parent: Device to use as parent and shared by all WWAN ports
->   * @type: WWAN port type
->   * @ops: WWAN port operations
-> + * @frag_len: WWAN port TX fragments length, if WWAN_NO_FRAGMENT is set,
-> + *            the WWAN core don't fragment control packages.
-> + * @headroom_len: WWAN port TX fragments reserved headroom length, if WWAN_NO_HEADROOM
-> + *                is set, the WWAN core don't reserve headroom in control packages.
->   * @drvdata: Pointer to caller driver data
->   *
->   * Allocate and register a new WWAN port. The port will be automatically exposed
-> @@ -86,6 +100,8 @@ struct wwan_port_ops {
->  struct wwan_port *wwan_create_port(struct device *parent,
->  				   enum wwan_port_type type,
->  				   const struct wwan_port_ops *ops,
-> +				   size_t frag_len,
-> +				   unsigned int headroom_len,
->  				   void *drvdata);
->  
+RnJvbTogTGF1cmVudCBQaW5jaGFydA0KPiBTZW50OiAxMyBNYXJjaCAyMDIzIDE4OjEyDQo+IA0K
+PiBIaSBCZW5qYW1pbiwNCj4gDQo+IFRoYW5rIHlvdSBmb3IgdGhlIHBhdGNoLg0KPiANCj4gT24g
+TW9uLCBNYXIgMTMsIDIwMjMgYXQgMDI6NTk6MTRQTSArMDEwMCwgQmVuamFtaW4gR2FpZ25hcmQg
+d3JvdGU6DQo+ID4gUmVwbGFjaW5nIGJ1ZnMgYXJyYXkgYnkgYSBsaXN0IGFsbG93cyB0byByZW1v
+dmUgdGhlIDMyIGJ1ZmZlcnMNCj4gPiBsaW1pdCBwZXIgcXVldWUuDQoNCklzIHRoZSBsaW1pdCBh
+Y3R1YWxseSBhIHByb2JsZW0/DQpBcnJheXMgb2YgcG9pbnRlcnMgaGF2ZSBsb2NraW5nIGFuZCBj
+YWNoaW5nIGFkdmFudGFnZXMgb3Zlcg0KbGlua2VkIGxpc3RzLg0KDQouLi4NCj4gPiBAQCAtMTIz
+OSw4ICsxMjQyLDEyIEBAIHN0YXRpYyBpbmxpbmUgdm9pZCB2YjJfY2xlYXJfbGFzdF9idWZmZXJf
+ZGVxdWV1ZWQoc3RydWN0IHZiMl9xdWV1ZSAqcSkNCj4gPiAgc3RhdGljIGlubGluZSBzdHJ1Y3Qg
+dmIyX2J1ZmZlciAqdmIyX2dldF9idWZmZXIoc3RydWN0IHZiMl9xdWV1ZSAqcSwNCj4gPiAgCQkJ
+CQkJdW5zaWduZWQgaW50IGluZGV4KQ0KPiA+ICB7DQo+ID4gLQlpZiAoaW5kZXggPCBxLT5udW1f
+YnVmZmVycykNCj4gPiAtCQlyZXR1cm4gcS0+YnVmc1tpbmRleF07DQo+ID4gKwlzdHJ1Y3QgdmIy
+X2J1ZmZlciAqdmI7DQo+ID4gKw0KPiA+ICsJbGlzdF9mb3JfZWFjaF9lbnRyeSh2YiwgJnEtPmFs
+bG9jYXRlZF9idWZzLCBhbGxvY2F0ZWRfZW50cnkpDQo+ID4gKwkJaWYgKHZiLT5pbmRleCA9PSBp
+bmRleCkNCj4gPiArCQkJcmV0dXJuIHZiOw0KPiA+ICsNCj4gPiAgCXJldHVybiBOVUxMOw0KDQpZ
+b3UgcmVhbGx5IGRvbid0IHdhbnQgdG8gYmUgZG9pbmcgdGhhdC4uLi4NCg0KVGhlcmUgYXJlIHNj
+aGVtZXMgZm9yIHVuYm91bmRlZCBhcnJheXMuDQpTY2FubmluZyBhIGxpbmtlZCBsaXN0IGlzbid0
+IGEgdmVyeSBnb29kIG9uZS4NCg0KCURhdmlkDQoNCi0NClJlZ2lzdGVyZWQgQWRkcmVzcyBMYWtl
+c2lkZSwgQnJhbWxleSBSb2FkLCBNb3VudCBGYXJtLCBNaWx0b24gS2V5bmVzLCBNSzEgMVBULCBV
+Sw0KUmVnaXN0cmF0aW9uIE5vOiAxMzk3Mzg2IChXYWxlcykNCg==
 
-Too many arguments, and poor extensibility.
-Please wrap the new params into a capability struct:
-
-struct wwan_port_caps {
-	unsigned int frag_len;
-	unsigned int headroom_len;
-};
-
-pass a pointer to this kind of structure in.
-
-Next time someone needs to add a quirk they can just add a field and
-won't need to change all the drivers.
 
