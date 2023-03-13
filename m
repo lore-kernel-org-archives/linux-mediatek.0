@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1225BC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 14:00:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 085A1C6FD19
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 14:01:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qAu2QekX6pwchfkyCbTDd5KczTMQSYWI2/Ze2e6JEJo=; b=N8ATu9m1SjlXvteZSd5f3v+jUO
-	AJwfWJ+cMy89OhQj2xxKXK/oiaBwx2yqK+LnUmFEWn+atqsH7VA/OAAB1M62eLU05qgI/oEX5Ekg8
-	FmPF2orHJyflVql2Gkb7L3u+rUWodoWVkCoJVNr5qwDvagLAlHAzM8tBjSFwYx30xTBB6hCkWOW7R
-	EsvtbPiyVSQ3sx9VztwhZxT0BSBQsdeVtB9shDT4i87Is760y5QkihDQw8FnYMWupm2Gq9+TkjogQ
-	wp9QlKTz3ZIBYhTXwtWVaJda3pz+DRZie8HHHQwUPu5+J2wJXwBv3ecM6Q3a1vJSctmNpA3yuzui/
-	MkzMitJA==;
+	bh=PZuGf1mlSUTkmfIxo+EJL7kNSaW8VlLBt7Li2MTvXuE=; b=r8BOMHANw3n9/24PyWiXr6WJvU
+	N5JtmleCxIuuCvYh0UjAVHvs7lxa2/tTLDlrgDNe7udPlZmZp7QygP8MO18m/zhIfNieMo+L7lzr1
+	kp1a6L3KK6mEbW/XM0GfK1kZvXu/WqUEKrf+yyNHoHgSPSUwt4XgC0zfduCoPSqXSwISAGV2n4gX1
+	3bYBgRDgExX1I1ka064GraNg3Mumr1qymoUs1zZ6W5lE2/C9shXAHCDrcMi7HiHfEaAp+zeV51rHa
+	5DloRLRQ8v5kScTvJuwEjTLGhq9iIK3P+8x6gounHERJkicxTb3ajSNSayDhjP1gq5nOy9PHE+cJu
+	5naonUUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbijH-0062R4-KM; Mon, 13 Mar 2023 14:00:47 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pbijg-0062eX-PC; Mon, 13 Mar 2023 14:01:12 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbii2-0061f2-Cn; Mon, 13 Mar 2023 13:59:33 +0000
+	id 1pbii2-0061fQ-TM; Mon, 13 Mar 2023 13:59:33 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:7a7b:d0cc:67e9:4297])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5D5CE66030C0;
-	Mon, 13 Mar 2023 13:59:26 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1A4FA66030DE;
+	Mon, 13 Mar 2023 13:59:27 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1678715967;
-	bh=n8cd6a2Nzlrp0LhIUmAbPhk3AaD6uOUzcXdTUoEPFoI=;
+	bh=MTvegXhMpPXwPhoNdwtKrByhIzVdZZIQRvTrqjWmlRg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=hQA9+Y0Q7jQEFOF6N106zJxZ7ElPQ5jSqBF2FraL9yIdBvCl5ioYf6L4eIVz0k6Mb
-	 GULf+Dy9D36r7WA1lwfyNJtwPdGcsIE/ymYgD58rc9TWwwQv7r3gr2y7NnRUw10BaC
-	 /94NI79rkreKD0ayKtAnuAw0KaHM6x5MmDf5gE0xVW0x2Rc2JSVoC3ypQJ8lZE+VtQ
-	 MwhECKHjyTgTF/QHixfEX7NTNGLSXcpBRqglldpIlfaJPS7stvWauByREi/Qjw/5Og
-	 VvIVGZ75IE+rm+KVTpnypcfvcN+mkl73CkPTZHy0BYzeZ2HNBXMpjpwxsLaxo4MIcu
-	 9+CcUP4aCGGrg==
+	b=chTWqyXASFpt6tnIK/8K9JTWlQI4YkXIJ6ZvZZ+ygtTEj5OvN1vIJDUQW4e0kv1Xv
+	 CQfqtkjrYr5fWDOOaQAHSwUZ5iB3yOEdGjr7sZAuXGkrhkf3dsFGfHNxcCmT5/lomU
+	 lHn5c4e7S/Poq6kx8qmp6tmwq+w9E1d3ZZcNuDQv99bPnW867GbL9QbsFHteS2OqOZ
+	 bsJCB/ylaxG02Ug/9LFyxpkwUBgjZqV4ERSlN/1JLJJpPyCuGCEpPF445ePH8Gg6uI
+	 B6DyrEcEQJ0PJZQJiTc4YpSdHnZOaMZ1d2G68CwklT8WMoW1BmgmHTp+msHyeJXE4k
+	 KcYAHeGlf6vmg==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: tfiga@chromium.org,
 	m.szyprowski@samsung.com,
@@ -73,17 +73,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [RFC 3/4] media: videobuf2: Use bitmap to manage vb2 index
-Date: Mon, 13 Mar 2023 14:59:15 +0100
-Message-Id: <20230313135916.862852-4-benjamin.gaignard@collabora.com>
+Subject: [RFC 4/4] media: videobuf2: Stop define VB2_MAX_FRAME as global
+Date: Mon, 13 Mar 2023 14:59:16 +0100
+Message-Id: <20230313135916.862852-5-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230313135916.862852-1-benjamin.gaignard@collabora.com>
 References: <20230313135916.862852-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_065930_791758_966D8E21 
-X-CRM114-Status: GOOD (  14.29  )
+X-CRM114-CacheID: sfid-20230313_065931_255974_4ECB5F8F 
+X-CRM114-Status: GOOD (  11.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,107 +98,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Using a bitmap to get vb2 index will allow to avoid holes
-in the indexes when introducing DELETE_BUF ioctl.
+After changing bufs arrays to a list VB2_MAX_FRAME doesn't mean
+anything for videobuf2 core.
+Remove it from the core definitions but keep it for drivers internal
+needs.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../media/common/videobuf2/videobuf2-core.c   | 22 ++++++++++++++++++-
- include/media/videobuf2-core.h                |  6 +++++
- 2 files changed, 27 insertions(+), 1 deletion(-)
+ drivers/media/common/videobuf2/videobuf2-core.c               | 2 ++
+ drivers/media/platform/amphion/vdec.c                         | 1 +
+ .../media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c | 2 ++
+ drivers/media/platform/qcom/venus/hfi.h                       | 2 ++
+ drivers/media/platform/verisilicon/hantro_hw.h                | 2 ++
+ include/media/videobuf2-core.h                                | 1 -
+ include/media/videobuf2-v4l2.h                                | 4 ----
+ 7 files changed, 9 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index 96597d339a07..3554811ec06a 100644
+index 3554811ec06a..754570ab23b3 100644
 --- a/drivers/media/common/videobuf2/videobuf2-core.c
 +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -397,6 +397,22 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
- 		vb->skip_cache_sync_on_finish = 1;
- }
+@@ -31,6 +31,8 @@
  
-+/*
-+ * __vb2_get_index() - find a free index in the queue for vb2 buffer.
-+ *
-+ * Returns an index for vb2 buffer.
-+ */
-+static int __vb2_get_index(struct vb2_queue *q)
-+{
-+	unsigned long index;
-+
-+	index = bitmap_find_next_zero_area(q->bmap, q->idx_max, 0, 1, 0);
-+	if (index > q->idx_max)
-+		dprintk(q, 1, "no index available for buffer\n");
-+
-+	return index;
-+}
-+
- /*
-  * __vb2_queue_alloc() - allocate vb2 buffer structures and (for MMAP type)
-  * video buffer memory for all buffers/planes on the queue and initializes the
-@@ -423,7 +439,7 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
- 		vb->state = VB2_BUF_STATE_DEQUEUED;
- 		vb->vb2_queue = q;
- 		vb->num_planes = num_planes;
--		vb->index = q->num_buffers + buffer;
-+		vb->index = __vb2_get_index(q);
- 		vb->type = q->type;
- 		vb->memory = memory;
- 		init_buffer_cache_hints(q, vb);
-@@ -2438,6 +2454,9 @@ int vb2_core_queue_init(struct vb2_queue *q)
- 	mutex_init(&q->mmap_lock);
- 	init_waitqueue_head(&q->done_wq);
+ #include <trace/events/vb2.h>
  
-+	q->idx_max = ALIGN(256, BITS_PER_LONG);
-+	q->bmap = bitmap_zalloc(q->idx_max, GFP_KERNEL);
++#define VB2_MAX_FRAME	32
 +
- 	q->memory = VB2_MEMORY_UNKNOWN;
+ static int debug;
+ module_param(debug, int, 0644);
  
- 	if (q->buf_struct_size == 0)
-@@ -2465,6 +2484,7 @@ void vb2_core_queue_release(struct vb2_queue *q)
- 	mutex_lock(&q->mmap_lock);
- 	__vb2_queue_free(q, q->num_buffers);
- 	mutex_unlock(&q->mmap_lock);
-+	bitmap_free(q->bmap);
- }
- EXPORT_SYMBOL_GPL(vb2_core_queue_release);
+diff --git a/drivers/media/platform/amphion/vdec.c b/drivers/media/platform/amphion/vdec.c
+index 87f9f8e90ab1..bef0c1b869be 100644
+--- a/drivers/media/platform/amphion/vdec.c
++++ b/drivers/media/platform/amphion/vdec.c
+@@ -28,6 +28,7 @@
  
+ #define VDEC_MIN_BUFFER_CAP		8
+ #define VDEC_MIN_BUFFER_OUT		8
++#define VB2_MAX_FRAME			32
+ 
+ struct vdec_fs_info {
+ 	char name[8];
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+index f5958b6d834a..ba208caf3043 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+@@ -16,6 +16,8 @@
+ #include "../vdec_drv_if.h"
+ #include "../vdec_vpu_if.h"
+ 
++#define VB2_MAX_FRAME	32
++
+ /* reset_frame_context defined in VP9 spec */
+ #define VP9_RESET_FRAME_CONTEXT_NONE0 0
+ #define VP9_RESET_FRAME_CONTEXT_NONE1 1
+diff --git a/drivers/media/platform/qcom/venus/hfi.h b/drivers/media/platform/qcom/venus/hfi.h
+index f25d412d6553..bd5ca5a8b945 100644
+--- a/drivers/media/platform/qcom/venus/hfi.h
++++ b/drivers/media/platform/qcom/venus/hfi.h
+@@ -10,6 +10,8 @@
+ 
+ #include "hfi_helper.h"
+ 
++#define VB2_MAX_FRAME				32
++
+ #define VIDC_SESSION_TYPE_VPE			0
+ #define VIDC_SESSION_TYPE_ENC			1
+ #define VIDC_SESSION_TYPE_DEC			2
+diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
+index e83f0c523a30..9e8faf7ba6fb 100644
+--- a/drivers/media/platform/verisilicon/hantro_hw.h
++++ b/drivers/media/platform/verisilicon/hantro_hw.h
+@@ -15,6 +15,8 @@
+ #include <media/v4l2-vp9.h>
+ #include <media/videobuf2-core.h>
+ 
++#define VB2_MAX_FRAME	32
++
+ #define DEC_8190_ALIGN_MASK	0x07U
+ 
+ #define MB_DIM			16
 diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-index 47f1f35eb9cb..4fddc6ae9f20 100644
+index 4fddc6ae9f20..92f5b5e16003 100644
 --- a/include/media/videobuf2-core.h
 +++ b/include/media/videobuf2-core.h
-@@ -561,6 +561,8 @@ struct vb2_buf_ops {
-  * @dma_dir:	DMA mapping direction.
-  * @allocated_bufs: list of buffer allocated for the queue.
-  * @num_buffers: number of allocated/used buffers
-+ * @bmap: Bitmap of buffers index
-+ * @idx_max: number of bits in bmap
-  * @queued_list: list of buffers currently queued from userspace
-  * @queued_count: number of buffers queued and ready for streaming.
-  * @owned_by_drv_count: number of buffers owned by the driver
-@@ -624,6 +626,8 @@ struct vb2_queue {
- 	enum dma_data_direction		dma_dir;
- 	struct list_head		allocated_bufs;
- 	unsigned int			num_buffers;
-+	unsigned long			*bmap;
-+	int				idx_max;
+@@ -20,7 +20,6 @@
+ #include <media/media-request.h>
+ #include <media/frame_vector.h>
  
- 	struct list_head		queued_list;
- 	unsigned int			queued_count;
-@@ -1259,6 +1263,7 @@ static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
- static inline void vb2_set_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
- {
- 	list_add_tail(&vb->allocated_entry, &q->allocated_bufs);
-+	__set_bit(vb->index, q->bmap);
- }
+-#define VB2_MAX_FRAME	(32)
+ #define VB2_MAX_PLANES	(8)
  
  /**
-@@ -1268,6 +1273,7 @@ static inline void vb2_set_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
-  */
- static inline void vb2_del_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
- {
-+	__clear_bit(vb->index, q->bmap);
- 	list_del(&vb->allocated_entry);
- }
+diff --git a/include/media/videobuf2-v4l2.h b/include/media/videobuf2-v4l2.h
+index 5a845887850b..88a7a565170e 100644
+--- a/include/media/videobuf2-v4l2.h
++++ b/include/media/videobuf2-v4l2.h
+@@ -15,10 +15,6 @@
+ #include <linux/videodev2.h>
+ #include <media/videobuf2-core.h>
  
+-#if VB2_MAX_FRAME != VIDEO_MAX_FRAME
+-#error VB2_MAX_FRAME != VIDEO_MAX_FRAME
+-#endif
+-
+ #if VB2_MAX_PLANES != VIDEO_MAX_PLANES
+ #error VB2_MAX_PLANES != VIDEO_MAX_PLANES
+ #endif
 -- 
 2.34.1
 
