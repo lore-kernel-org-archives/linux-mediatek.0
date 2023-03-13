@@ -4,66 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 693C1C6FD19
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 09:46:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0387DC7618B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 10:18:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ndXEHm6RuJkUPiVWgMkyhedP37xGL3caBYSF6Dk9DZg=; b=v8sKgURLC7/0cRYqgJ1cbViBww
-	o/4RGn5EA0x/N/qbRrA/+P6XrdBgGykrtLqJOtIoiQz/LG0XPX63u/LDJuF7sXBrV3n7t0A7q8t3t
-	Uxd+kvwaknL4jU8A7TAWqNlLHUyHhW8AutaMN4f7/pMjj1Xj0WD7cksJbGXYXOTEPEhB7jVPaU0Dw
-	2f6ohkkuHLv7zD7v/ZY3F+MCsZth6pVZZ4rKiJHjrEbGyq/grtQLJLei8gqOSzacI8gSzV2MYjQQx
-	MRslQhs+M9lahsu9YrisiNSeSog5Te5gZw+LRzh1oX7hZJv3l4Af8NfwxDROsdT4EuTNLJdwgb6YL
-	fNYujKoQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Pu34PbFZ5FfJ/wQb9nAc+sbAn6wAX0E9mo/4/HaLNYc=; b=KKta/Fy2cD8InhsoEeu7Czum6D
+	Mc2/mlCHZYfw+cI8+GJSZKFYIUl8W6o/OOv5Q8S6/Y/jYN0j8VAFTv775aAmeLes8gdb+BwCeY5Eu
+	+fm184W4BO2P5b5Ixvm5JiqQNGKOK+hf51qnMx6CB5t/1DNdo8dbsnmQH0m7yzOC8V/GDJxysbBO1
+	5r5RD19H3xVUgP2awEPm+OPb2vDq2fjF8uY50eFB2z7H4aAroxfDlzUARfFTMTZZlEEv1O+mJ8Kq9
+	dDNeS19Mku39e1GWg76dKD0ho7x58eAR2XBGQoBJUkx/AoFbPMZn5ooqJ1AJ5CL0XferwlFQ5h9fw
+	8wl2V2Ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbelB-00527O-OQ; Mon, 13 Mar 2023 09:46:29 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbel3-00524z-7g
-	for linux-mediatek@lists.infradead.org; Mon, 13 Mar 2023 09:46:23 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pbekf-0001xo-DD; Mon, 13 Mar 2023 10:45:57 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pbeke-003okY-2i; Mon, 13 Mar 2023 10:45:56 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1pbekd-004Utn-Ao; Mon, 13 Mar 2023 10:45:55 +0100
-Date: Mon, 13 Mar 2023 10:45:55 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 01/30] clk: mediatek: Make mtk_clk_simple_remove() return
- void
-Message-ID: <20230313094555.5w36kjkybiukan5j@pengutronix.de>
-References: <20230312161512.2715500-1-u.kleine-koenig@pengutronix.de>
- <20230312161512.2715500-2-u.kleine-koenig@pengutronix.de>
- <d0a2eb84-4420-8b6c-bd97-e58aa47be289@collabora.com>
+	id 1pbfGB-00596l-D4; Mon, 13 Mar 2023 10:18:31 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pbfG0-00595N-4a; Mon, 13 Mar 2023 10:18:22 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 44B714B3;
+	Mon, 13 Mar 2023 03:18:58 -0700 (PDT)
+Received: from slackpad.lan (unknown [172.31.20.19])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A408A3F71A;
+	Mon, 13 Mar 2023 03:18:11 -0700 (PDT)
+Date: Mon, 13 Mar 2023 10:17:51 +0000
+From: Andre Przywara <andre.przywara@arm.com>
+To: Rob Herring <robh@kernel.org>
+Cc: Sean Wang <sean.wang@kernel.org>, Linus Walleij
+ <linus.walleij@linaro.org>, Tony Lindgren <tony@atomide.com>, Haojian
+ Zhuang <haojian.zhuang@linaro.org>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Geert Uytterhoeven
+ <geert+renesas@glider.be>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec
+ <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-omap@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-renesas-soc@vger.kernel.org, linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH] pinctrl: Use of_property_present() for testing DT
+ property presence
+Message-ID: <20230313101751.18003b2d@slackpad.lan>
+In-Reply-To: <20230310144721.1544669-1-robh@kernel.org>
+References: <20230310144721.1544669-1-robh@kernel.org>
+Organization: Arm Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.31; x86_64-slackware-linux-gnu)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="nats3dcih3a6v62j"
-Content-Disposition: inline
-In-Reply-To: <d0a2eb84-4420-8b6c-bd97-e58aa47be289@collabora.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_024621_282380_29420FCA 
-X-CRM114-Status: GOOD (  14.49  )
+X-CRM114-CacheID: sfid-20230313_031820_330265_103814D6 
+X-CRM114-Status: GOOD (  25.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,59 +73,157 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, 10 Mar 2023 08:47:20 -0600
+Rob Herring <robh@kernel.org> wrote:
 
---nats3dcih3a6v62j
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> It is preferred to use typed property access functions (i.e.
+> of_property_read_<type> functions) rather than low-level
+> of_get_property/of_find_property functions for reading properties. As
+> part of this, convert of_get_property/of_find_property calls to the
+> recently added of_property_present() helper when we just want to test
+> for presence of a property and nothing more.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>  drivers/pinctrl/mediatek/pinctrl-moore.c |  2 +-
+>  drivers/pinctrl/pinctrl-single.c         |  4 ++--
+>  drivers/pinctrl/pinctrl-stmfx.c          |  2 +-
+>  drivers/pinctrl/renesas/pinctrl.c        |  4 ++--
+>  drivers/pinctrl/stm32/pinctrl-stm32.c    |  2 +-
+>  drivers/pinctrl/sunxi/pinctrl-sunxi.c    | 20 ++++++++++----------
 
-Hello Angelo,
 
-On Mon, Mar 13, 2023 at 09:54:07AM +0100, AngeloGioacchino Del Regno wrote:
-> Il 12/03/23 17:14, Uwe Kleine-K=F6nig ha scritto:
-> > mtk_clk_simple_remove() returned zero unconditionally. Make it return no
-> > value instead and convert the respective drivers to .remove_new.
-> >=20
-> > This makes the semantics in the callers of mtk_clk_simple_remove() clea=
-rer
-> > and prepares for the quest to make platform driver's remove function re=
-turn
-> > void.
-> >=20
-> > Signed-off-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
->=20
-> Hello Uwe,
->=20
-> since there's a big cleanup series that is well reviewed and that is touc=
-hing
-> practically all MediaTek clock drivers, can you please rebase this commit=
- over
-> [1]?
+For sunxi: Reviewed-by: Andre Przywara <andre.przywara@arm.com>
 
-I'll wait a bit until this series is in and then rebase and resend.
-Thanks for letting me know.
+Cheers,
+Andre
 
-Best regards
-Uwe
+>  6 files changed, 17 insertions(+), 17 deletions(-)
+> 
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.c b/drivers/pinctrl/mediatek/pinctrl-moore.c
+> index 007b98ce5631..8649a2f9d324 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-moore.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-moore.c
+> @@ -586,7 +586,7 @@ static int mtk_build_gpiochip(struct mtk_pinctrl *hw)
+>  	 * Documentation/devicetree/bindings/gpio/gpio.txt on how to
+>  	 * bind pinctrl and gpio drivers via the "gpio-ranges" property.
+>  	 */
+> -	if (!of_find_property(hw->dev->of_node, "gpio-ranges", NULL)) {
+> +	if (!of_property_present(hw->dev->of_node, "gpio-ranges")) {
+>  		ret = gpiochip_add_pin_range(chip, dev_name(hw->dev), 0, 0,
+>  					     chip->ngpio);
+>  		if (ret < 0) {
+> diff --git a/drivers/pinctrl/pinctrl-single.c b/drivers/pinctrl/pinctrl-single.c
+> index 190923757cda..0dabbcf68b9f 100644
+> --- a/drivers/pinctrl/pinctrl-single.c
+> +++ b/drivers/pinctrl/pinctrl-single.c
+> @@ -939,11 +939,11 @@ static int pcs_parse_pinconf(struct pcs_device *pcs, struct device_node *np,
+>  
+>  	/* cacluate how much properties are supported in current node */
+>  	for (i = 0; i < ARRAY_SIZE(prop2); i++) {
+> -		if (of_find_property(np, prop2[i].name, NULL))
+> +		if (of_property_present(np, prop2[i].name))
+>  			nconfs++;
+>  	}
+>  	for (i = 0; i < ARRAY_SIZE(prop4); i++) {
+> -		if (of_find_property(np, prop4[i].name, NULL))
+> +		if (of_property_present(np, prop4[i].name))
+>  			nconfs++;
+>  	}
+>  	if (!nconfs)
+> diff --git a/drivers/pinctrl/pinctrl-stmfx.c b/drivers/pinctrl/pinctrl-stmfx.c
+> index 1181c4b506b1..3c031692e44d 100644
+> --- a/drivers/pinctrl/pinctrl-stmfx.c
+> +++ b/drivers/pinctrl/pinctrl-stmfx.c
+> @@ -632,7 +632,7 @@ static int stmfx_pinctrl_probe(struct platform_device *pdev)
+>  	pctl->dev = &pdev->dev;
+>  	pctl->stmfx = stmfx;
+>  
+> -	if (!of_find_property(np, "gpio-ranges", NULL)) {
+> +	if (!of_property_present(np, "gpio-ranges")) {
+>  		dev_err(pctl->dev, "missing required gpio-ranges property\n");
+>  		return -EINVAL;
+>  	}
+> diff --git a/drivers/pinctrl/renesas/pinctrl.c b/drivers/pinctrl/renesas/pinctrl.c
+> index b74147800319..5c71e168b370 100644
+> --- a/drivers/pinctrl/renesas/pinctrl.c
+> +++ b/drivers/pinctrl/renesas/pinctrl.c
+> @@ -125,8 +125,8 @@ static int sh_pfc_dt_subnode_to_map(struct pinctrl_dev *pctldev,
+>  	 * inside a subnode nor across subnodes.
+>  	 */
+>  	if (!pmx->func_prop_name) {
+> -		if (of_find_property(np, "groups", NULL) ||
+> -		    of_find_property(np, "pins", NULL)) {
+> +		if (of_property_present(np, "groups")||
+> +		    of_property_present(np, "pins")) {
+>  			pmx->func_prop_name = "function";
+>  			pmx->groups_prop_name = "groups";
+>  			pmx->pins_prop_name = "pins";
+> diff --git a/drivers/pinctrl/stm32/pinctrl-stm32.c b/drivers/pinctrl/stm32/pinctrl-stm32.c
+> index cb33a23ab0c1..66a25becd8f5 100644
+> --- a/drivers/pinctrl/stm32/pinctrl-stm32.c
+> +++ b/drivers/pinctrl/stm32/pinctrl-stm32.c
+> @@ -1374,7 +1374,7 @@ static struct irq_domain *stm32_pctrl_get_irq_domain(struct platform_device *pde
+>  	struct device_node *parent;
+>  	struct irq_domain *domain;
+>  
+> -	if (!of_find_property(np, "interrupt-parent", NULL))
+> +	if (!of_property_present(np, "interrupt-parent"))
+>  		return NULL;
+>  
+>  	parent = of_irq_find_parent(np);
+> diff --git a/drivers/pinctrl/sunxi/pinctrl-sunxi.c b/drivers/pinctrl/sunxi/pinctrl-sunxi.c
+> index f35179eceb4e..1dc1882cbdd7 100644
+> --- a/drivers/pinctrl/sunxi/pinctrl-sunxi.c
+> +++ b/drivers/pinctrl/sunxi/pinctrl-sunxi.c
+> @@ -224,16 +224,16 @@ static int sunxi_pctrl_get_group_pins(struct pinctrl_dev *pctldev,
+>  
+>  static bool sunxi_pctrl_has_bias_prop(struct device_node *node)
+>  {
+> -	return of_find_property(node, "bias-pull-up", NULL) ||
+> -		of_find_property(node, "bias-pull-down", NULL) ||
+> -		of_find_property(node, "bias-disable", NULL) ||
+> -		of_find_property(node, "allwinner,pull", NULL);
+> +	return of_property_present(node, "bias-pull-up") ||
+> +		of_property_present(node, "bias-pull-down") ||
+> +		of_property_present(node, "bias-disable") ||
+> +		of_property_present(node, "allwinner,pull");
+>  }
+>  
+>  static bool sunxi_pctrl_has_drive_prop(struct device_node *node)
+>  {
+> -	return of_find_property(node, "drive-strength", NULL) ||
+> -		of_find_property(node, "allwinner,drive", NULL);
+> +	return of_property_present(node, "drive-strength") ||
+> +		of_property_present(node, "allwinner,drive");
+>  }
+>  
+>  static int sunxi_pctrl_parse_bias_prop(struct device_node *node)
+> @@ -241,13 +241,13 @@ static int sunxi_pctrl_parse_bias_prop(struct device_node *node)
+>  	u32 val;
+>  
+>  	/* Try the new style binding */
+> -	if (of_find_property(node, "bias-pull-up", NULL))
+> +	if (of_property_present(node, "bias-pull-up"))
+>  		return PIN_CONFIG_BIAS_PULL_UP;
+>  
+> -	if (of_find_property(node, "bias-pull-down", NULL))
+> +	if (of_property_present(node, "bias-pull-down"))
+>  		return PIN_CONFIG_BIAS_PULL_DOWN;
+>  
+> -	if (of_find_property(node, "bias-disable", NULL))
+> +	if (of_property_present(node, "bias-disable"))
+>  		return PIN_CONFIG_BIAS_DISABLE;
+>  
+>  	/* And fall back to the old binding */
+> @@ -1424,7 +1424,7 @@ static int sunxi_pinctrl_setup_debounce(struct sunxi_pinctrl *pctl,
+>  		return 0;
+>  
+>  	/* If we don't have any setup, bail out */
+> -	if (!of_find_property(node, "input-debounce", NULL))
+> +	if (!of_property_present(node, "input-debounce"))
+>  		return 0;
+>  
+>  	losc = devm_clk_get(pctl->dev, "losc");
 
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---nats3dcih3a6v62j
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmQO8NAACgkQwfwUeK3K
-7AlSiAf/USrTyLSCOBQ/pxTpNaDcBd1ckdBpfIm3VyM/+KK5lPesPql8tHCB5xbo
-zwj78lmc3iBA2w5KuR8Hg3oxPVvXCysR/XmSBMizRzotJyts7D3zl/0geMWok5w8
-uGeXfeWjsEvuWWEbYP87D6c2H3A+gT2xMC3Rj822nrOFbedND9UwK4FZAtMBrqm+
-tYPONXJcv2lxQ8pcgpRRdZ6jfsT508k4EZ4o1lZPywn+72KwcrRX3shcCyd4k586
-EnRNPqoDKmJZ44a/Bq86qh/BoTsqlqpv5DV1lKwIjHceR551lBS2hnIbT1O5FV6w
-AE+mTyE2NCdTZpOO38xyNT6tKqouVA==
-=fX9n
------END PGP SIGNATURE-----
-
---nats3dcih3a6v62j--
 
