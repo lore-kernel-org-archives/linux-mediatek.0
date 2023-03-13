@@ -4,100 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EBC8C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 18:39:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47EA6C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 18:40:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4UaT2NemMC9brdeaPl0tU4PcTYW3oib3/bqmGYEEuBo=; b=Cs8uO2rYlGao0zG5mPSfhnzqs+
-	sUjAWDikjrVH02RGOZtqLVNeIiCJ9AL9C3HusF7BLFiANSe+9aosswQ9U9VytKD0w3mtC7d5xiCR9
-	TOThWiE+/sGYATaYIbSeAlglA3MhJNVUjmkCgOxWYhUaATbR9tqWKX9tp11TIWOmqgWhVJ7e4vcz4
-	vJNvCcCch9Zt2SsM1S4baiX3sTZb3xd6fX6qtMUnUI+JHYtVadbJR4MgWlWZScyx8yGs/cA/mX2gf
-	qmfKpRIV6dsPN58oLNoNwydm81GJOeBrv/8wpWGhhfYB2tu1oKVSgLBDYX0iQkbyQRdibR7ilOIp5
-	rmY7gVog==;
+	bh=9zExCwPnErlKajEOP0iCBdbzhLSrwamo47isrOodA8E=; b=o55KMRHeiYvUEjojitbS3hWjol
+	ZNjH79c/zf4Q0QPmCIi9ogk7wFcH24RTR6GqpXeInyYQbRNoJJuUJB6aLEkgvx4DcfVG7K/NoF4GX
+	MDknIFeOPBW966ffk5r2ClszJb1eLpK2vSFD/VIZEIJ/OMA2GgwkRV8YcLy1K2nqZzaRpGnpxsoRa
+	gn7/xt643KzkK8byczeZ461shiZDSbYXlTpgq1LEWfYEjHVcSZJtbQfiiHpBvw/9LyiBQc/NgYbCX
+	Yb8oEc8SFfvKXKh+Ek+Elf1rzPbuZXkgGeVIo3r/1cKHlQc9iPSwDNM78aE5PDE9WhJFOgoCHV90s
+	tA55khsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbn5B-007Kfc-Iv; Mon, 13 Mar 2023 18:39:41 +0000
-Received: from mout.gmx.net ([212.227.15.19])
+	id 1pbn5T-007Kks-3W; Mon, 13 Mar 2023 18:39:59 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbn56-007KeV-C6; Mon, 13 Mar 2023 18:39:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1678732740; i=frank-w@public-files.de;
-	bh=vnVRR7H0dRwp116/xX+I5PhqibcTnq0j1/I79a6rbt4=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=bAYgS+SOutp5qT7W189Mtkc/EoCKBYaYiOk7mJhTFnnWzQnI2BaBDc3xmC7xEjR55
-	 Oqgy98Xc4DvUC4wNHlnYoDuFEKlyhuftCu04f12kp/g5P4NOSrHNPkIBWIpPCXeO/w
-	 24I3jL7tx6CbdBu04xnzL9qyrmS+a2yquhN9XCty6iIB5E8wGhkZ1NYPG/eq97sFl+
-	 68xdKYZryviFvQ4MaAvrKAK3x1HNRwcVG8SaUnglbXtV2ldXuOym1LzHXY65ZrpB6l
-	 a71LWsYYIar84zB5/joWn9CiZ2TW7eS2OZhl5Qmn4dt4a771C17IUIjfKKlLfW6vWd
-	 kl0aLAL0suL1A==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.158.159] ([217.61.158.159]) by web-mail.gmx.net
- (3c-app-gmx-bs66.server.lan [172.19.170.210]) (via HTTP); Mon, 13 Mar 2023
- 19:39:00 +0100
+	id 1pbn5O-007KhD-Qk
+	for linux-mediatek@lists.infradead.org; Mon, 13 Mar 2023 18:39:56 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id h8so8800782ede.8
+        for <linux-mediatek@lists.infradead.org>; Mon, 13 Mar 2023 11:39:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1678732787;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=9zExCwPnErlKajEOP0iCBdbzhLSrwamo47isrOodA8E=;
+        b=uIeD7q3LNKkRWYZ9x8e/DAt+K6iRlUftQBydBEx4UHpvBDJR0suSy6kKS6TldE9c34
+         SmKeIpWFcWo2C4Q8oCZBpXd9MrPJICfDSlUXHnSWoW9QBQCzXO5kW1+Rc0/OzP7YdHjr
+         YpKt/FL3vDjk59/IKcM3Hjl0tBFQXWnZfqUBKEkQplyCg9nu7co6+ODh1oOaxYAjiqhu
+         oVN62b79jjOSFMcBGMCdjJVHqf4qucXnYktTu9HEOlEs5cv3IKf2DHByIFn2kf4CFeMG
+         rqUkBqFdPK7U7r5Tw10fD7v2Zb+cJdcd3N7no0lHMaGkFh8m+9+A3aLpKVdabeeaNxqM
+         ZFbw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678732787;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=9zExCwPnErlKajEOP0iCBdbzhLSrwamo47isrOodA8E=;
+        b=L/fd23qfAvwJYitpN/1f+ctyCMU5gsZvg2ydkiWTbvryIuuU12OzyzPKULaUUdyzaw
+         RH8FGAkHWqBeIS9NdWGScAkOCLqqrI2ZSWzsX8tjDo59tGBWPDZm4wbciiO3nEJEZik/
+         yJ7jyyVRyvXIX0yyic6KE5HsUQNkUbQvV7KHLAe+sabuoz55jQNKtPQaei9hF2hZzrZy
+         hM7y48NFKroM1QcFgJy6GVO2pUqG9wnVLRCqyaAjlNJlz68nDUkZ2LWsvawduH6Az6VP
+         SP2aN/9J1/uw5VxBZLD64KyT0KWE+XdWiqkGvJT8y+uWNNiJPIsWpS+ZvZX9CDhX/glP
+         2A7A==
+X-Gm-Message-State: AO0yUKUwqcROW2/2rf1NEHX/6/bEdY0E7zsJfrG23GLmLJ3lpgwoskif
+	098gijYcQPNvpqWlemLxGgrxiA==
+X-Google-Smtp-Source: AK7set81xBbnSqYRHnX0F1ox3kM2TNm7ygVSDDdDqZIaM3C2UJ2RgnK9MzZ5m7B9CkB5dN74bv4LDw==
+X-Received: by 2002:a17:906:178f:b0:878:72d0:2817 with SMTP id t15-20020a170906178f00b0087872d02817mr33528937eje.29.1678732787544;
+        Mon, 13 Mar 2023 11:39:47 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:69db:4882:d071:27c4? ([2a02:810d:15c0:828:69db:4882:d071:27c4])
+        by smtp.gmail.com with ESMTPSA id c37-20020a509fa8000000b004fb17f10326sm133916edf.10.2023.03.13.11.39.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 13 Mar 2023 11:39:47 -0700 (PDT)
+Message-ID: <08e98d1d-e79b-fe7e-0d59-827f72277fc5@linaro.org>
+Date: Mon, 13 Mar 2023 19:39:45 +0100
 MIME-Version: 1.0
-Message-ID: <trinity-93681801-f99c-40e2-9fbd-45888b3069aa-1678732740564@3c-app-gmx-bs66>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Daniel Golle <daniel@makrotopia.org>, Vladimir Oltean
- <vladimir.oltean@nxp.com>, netdev@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Heiner Kallweit <hkallweit1@gmail.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
- John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH 01/16] spi: armada-3700: Drop of_match_ptr for ID table
+Content-Language: en-US
+To: Mark Brown <broonie@kernel.org>
+Cc: Kamal Dasu <kdasu.kdev@gmail.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>,
+ Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>,
+ Andi Shyti <andi@etezian.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, DENG Qingfang
- <dqfext@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang
- <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski
- <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>, "David S. Miller"
- <davem@davemloft.net>, Vladimir Oltean <olteanv@gmail.com>, Florian
- Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Jianhui Zhao
- <zhaojh329@gmail.com>, =?UTF-8?Q?Bj=C3=B8rn_Mork?= <bjorn@mork.no>,
- Alexander Couzens <lynxis@fe80.eu>
-Subject: Aw: Re: Re: Re: [PATCH net-next v12 08/18] net: ethernet:
- mtk_eth_soc: fix 1000Base-X and 2500Base-X modes
+ linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20230310222857.315629-1-krzysztof.kozlowski@linaro.org>
+ <7a65d775-cf07-4393-8b10-2cef4d5266ab@sirena.org.uk>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <7a65d775-cf07-4393-8b10-2cef4d5266ab@sirena.org.uk>
 Content-Type: text/plain; charset=UTF-8
-Date: Mon, 13 Mar 2023 19:39:00 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <ZA8B/kI0fLx4gkQm@shell.armlinux.org.uk>
-References: <ZAiciK5fElvLXYQ9@makrotopia.org>
- <ZAijM91F18lWC80+@shell.armlinux.org.uk> <ZAik+I1Ei+grJdUQ@makrotopia.org>
- <ZAioqp21521NsttV@shell.armlinux.org.uk>
- <trinity-79e9f0b8-a267-4bf9-a3d4-1ec691eb5238-1678536337569@3c-app-gmx-bs24>
- <ZAzd1A0SAKZK0hF5@shell.armlinux.org.uk>
- <4B891976-C29E-4D98-B604-3AC4507D3661@public-files.de>
- <ZAzk71mTxgV/pRxC@shell.armlinux.org.uk>
- <trinity-8577978d-1c11-4f6d-ae11-aef37e8b78b0-1678624836722@3c-app-gmx-bap51>
- <ZA4wlQ8P48aDhDly@shell.armlinux.org.uk>
- <ZA8B/kI0fLx4gkQm@shell.armlinux.org.uk>
-Content-Transfer-Encoding: quoted-printable
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:F36nI6lCjaGvE9iW/olT5af3T1lus8s5NdMk0i96PzDNje8Vgi1yT25FZOFvH+go4cfu8
- YF62npVZCcSjOJ13eNpaTbRKX3znmrvyt0mqt4/MNYM9b0KhSLgyhOwmIZhZmZ9epDly86fXGEqq
- XKnvQWEubkZhGuY33qIcJSsLMb19ufLMD+ZxxazCKVZkAMpUCW2nYR6yJKUlCzlD1lzJuhJjZquy
- 97SP44YGQ9o0fYSgebLfZoWAN6YaEayFRJFdQ4JRhq+IHExjdFa6PYn1LlLdyorC908iZ73wivem
- Bs=
-UI-OutboundReport: notjunk:1;M01:P0:A3Bhvf3YgSA=;DYQ3ENw4UTM7sRf0hpJwY5A5OQ6
- U71Dm0loE5cbRcAVkWmRiLqeImB56sd3lV0XbRk+El2+yb8MCcznUrZaPN7eSa2jD+enh12Kx
- eQv9w4r7TSedZw5NOI5QC8E9Tvhkc+RVvy12JVtknPdR7VqTR2lVZE/QnqwBViym5XiYEIZJx
- ei+wB43UaImFCUAliSsArVDSJU2CxsIWPhuFVXnYsaVkxSeHuwvSRbAqUJQtwO4oSfZFhL6+r
- 3//nmLzSe+tOCY8377SUPRTX+dcVFveo1g+RWLLAnsRjsGVxfzjURTWfSNq8ibRC6if33tCw5
- fUSlsIOhHS98X5R/eUnBzMJkHQiXKva8g3XLNISQQWNiBfC82m9VZvyTFPiO2BxnEeJRHJPI0
- E+m5K+h0a445r9k2ozN/llRggXrZbA3TraY1EbWbqOYLp5P7T9ipjcndX8xMooye8w1VtOmgG
- jgf6KynlEyYXJl9WvlfHpqsj0HtweQV7wILLoawvdQHLRqB+Mk8yOggKPBMrecaK+smnSa4UU
- fQKpJRRHccWf9qaykgWsD1As18vUl9krRuLefH9VxKZZVt1fHgELxlF5oHRhzaKBuOEXzPTka
- G7QTGsETK3ziOUJwEzHVCk8Kb4Q5chZTNCm6YH/LE1v2Wjc6BPkut94nQMADSwsIi07ywq0eU
- rTDLiIGYwKFG6dAe4x3DGzGgEfsR/SJOmITMr5xd+Bd6rY9G6tZvoA/fds4vPVgB1aT1GDiZr
- hkwPKRlwOHOJODPAkJ3ziACrxxGtJmh37NymUdCid84MwRKLOJS2UgZXuC+PuNTB4wO+kCx4A
- 2yUIjwRzH4WUmfD+UwG96AUrk5Vlpso1drid14mPw0qfg=
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_113936_819333_1A485AA8 
-X-CRM114-Status: GOOD (  12.61  )
+X-CRM114-CacheID: sfid-20230313_113954_968158_7145222D 
+X-CRM114-Status: GOOD (  13.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,77 +106,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Gesendet: Montag, 13=2E M=C3=A4rz 2023 um 11:59 Uhr
-> Von: "Russell King (Oracle)" <linux@armlinux=2Eorg=2Euk>
+On 13/03/2023 14:55, Mark Brown wrote:
+> On Fri, Mar 10, 2023 at 11:28:42PM +0100, Krzysztof Kozlowski wrote:
+>> The driver can match only via the DT table so the table should be always
+>> used and the of_match_ptr does not have any sense (this also allows ACPI
+>> matching via PRP0001, even though it is not relevant here).
+>>
+>>   drivers/spi/spi-armada-3700.c:807:34: error: ‘a3700_spi_dt_ids’ defined but not used [-Werror=unused-const-variable=]
+> 
+> It would be much better to fix of_match_ptr() and/or the module stuff
+> that also references the match table here.
 
-> Since describing what I wanted you to test didn't work, here's a patch
-> instead, based upon the quirk that you provided (which is what I'd have
-> written anyway)=2E Add a "#define DEBUG" to the top of
-> drivers/net/phy/phylink=2Ec in addition to applying this patch, and plea=
-se
-> test the resulting kernel, sending me the resulting kernel messages, and
-> also reporting whether this works or not=2E
+Why? The recommendation is in general not to use of_match_ptr, because
+there are little benefits but it disables matching via PRP0001. Jonathan
+in parallel thread explicitly said of_match_ptr should disappear and he
+is not accepting any new code with it. And in general he is right.
 
-Hi
+https://lore.kernel.org/all/20230311183534.1d0dfd64@jic23-huawei/
 
-thx for the patch=2E=2E=2Esorry for misunderstanding=2E i thought the sfp =
-quirk only sets a flag and i need to change
-something in phylink=2Ec to do the same as done on userspace, so i tried t=
-o simulate the userspace call there only for testing=2E
+and earlier:
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=444f5f854b35
 
-here relevant parts of debug
-
-[    1=2E990637] sfp sfp-1: module OEM              SFP-2=2E5G-T       rev=
- 1=2E0  sn SK2301110008     dc 230110 =20
-[    2=2E000147] mtk_soc_eth 15100000=2Eethernet eth1: optical SFP: interf=
-aces=3D[mac=3D2-4,21-22, sfp=3D]
-
-[   56=2E321102] mtk_soc_eth 15100000=2Eethernet eth1: configuring for inb=
-and/2500base-x link mode
-[   56=2E329543] mtk_soc_eth 15100000=2Eethernet eth1: major config 2500ba=
-se-x
-[   56=2E336144] mtk_soc_eth 15100000=2Eethernet eth1: phylink_mac_config:=
- mode=3Dinband/2500base-x/Unknown/Unknown/none adv=3D00,00000000,00000000,0=
-000e240 pause=3D04 link=3D0 an=3D1
-
-full log here:
-
-https://pastebin=2Ecom/vaXtXFY8
-
-unfortunately this does not bring link up
-
-root@bpi-r3:~# ethtool eth1
-Settings for eth1:
-        Supported ports: [ MII ]
-        Supported link modes:   2500baseX/Full
-        Supported pause frame use: Symmetric Receive-only
-        Supports auto-negotiation: Yes
-        Supported FEC modes: Not reported
-        Advertised link modes:  2500baseX/Full
-        Advertised pause frame use: Symmetric Receive-only
-        Advertised auto-negotiation: Yes
-        Advertised FEC modes: Not reported
-        Speed: Unknown!
-        Duplex: Unknown! (255)
-        Auto-negotiation: on
-        Port: MII
-        PHYAD: 0
-        Transceiver: internal
-        Current message level: 0x000000ff (255)
-                               drv probe link timer ifdown ifup rx_err tx_=
-err
-        Link detected: no
-
-also after calling this link does not came up
-
-root@bpi-r3:~# ethtool -s eth1 autoneg off
-[  542=2E690293] mtk_soc_eth 15100000=2Eethernet eth1: phylink_change_inba=
-nd_advert: mode=3Dinband/2500base-x adv=3D00,00000000,00000000,0000e200 pau=
-se=3D04
-
-so it looks like it needs to be configured first in inband mode and then a=
-utoneg needs to be disabled=2E
-
-regards Frank
+Best regards,
+Krzysztof
 
 
