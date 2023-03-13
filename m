@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D225DC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 18:48:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76A5CC74A5B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 18:49:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
 	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9Z8ToBN/G7IYieOVNp9lKp1J2Q80IWODciLboMPS0yU=; b=TDidyW1AaWy/41342O+etK9uGa
-	ko96fy4UiRJOS22Eg6UHMrrcW2SZjQEnhT0p4x5Dzix8j2EsgWX7WNslT6tdIpwXRSjBPnXjf2l8v
-	PR7UbDb0m9zBpsCkVdk/TODcYyHHa8XpWjDB0YGpQyf7UQlzCNIMLVG6s+hq1sEsTecAyWg5HNnKK
-	WgrSabqtMehBVJE9rbbEW0iXPxPTad2uu13f5NtWvEh28VRimmPKBaR2CE1oqhCkHlNTGICAxa9w/
-	dMLaRyJRgNUkSk7d2A8o/ncA3kmyQuRh3NTa88qkv2GFFc5Bl0KzFTbXvRupABifYUShyIT0UzK+/
-	iHKM8nGQ==;
+	bh=/d48bhLyzRVyeGxbnJF3Qv5h7/XTC0mhguBxZRlvvqU=; b=fdfTK4Xsiu0u8wQ9hY+kxvIZlx
+	hHg717Gwf43S/8QvUCimZIr11ejvYcewXKr1Tz+kPdrWf0/V9w3/jd9TqvNMbU131EWhyW2dkofUl
+	r4m8NNVRaBdsoOG9Y6IWA//qfkUDhco0NlCzm3ytsynzT0H7/bgclJ0FbjGnLYlWSfWzPmvKUyqM6
+	iZlPP7O4D9w/9StEJV8yTyBwJUy8BANzxWyHXd9SVsz1k8sAqKf7S6o6EYQzMwFX7QAHQyHhCZWX4
+	kRazQlKFzoKlsZX2FZTW/dE0+AD2c4Mx64krgOrlBb6m8COYixeUxR7L73zpYNZY1EWwoySABQ3u7
+	FtgfakXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbnDr-007MrJ-Mb; Mon, 13 Mar 2023 18:48:39 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pbnE7-007N1o-RN; Mon, 13 Mar 2023 18:48:55 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbnD5-007MPQ-HQ; Mon, 13 Mar 2023 18:47:55 +0000
+	id 1pbnDG-007MU6-Sr; Mon, 13 Mar 2023 18:48:04 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 0E0C961485;
-	Mon, 13 Mar 2023 18:47:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C72F2C433EF;
-	Mon, 13 Mar 2023 18:47:50 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 623BDB811EA;
+	Mon, 13 Mar 2023 18:48:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0BAB5C433D2;
+	Mon, 13 Mar 2023 18:48:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1678733270;
-	bh=9Z8ToBN/G7IYieOVNp9lKp1J2Q80IWODciLboMPS0yU=;
+	s=k20201202; t=1678733280;
+	bh=/d48bhLyzRVyeGxbnJF3Qv5h7/XTC0mhguBxZRlvvqU=;
 	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=TaGuVYZDc7uUdi8c441+1M+3zcsjxtDhKRgMzvCHIeBAQMPvEnku7WxdqEp7RpMF5
-	 2mAYyi4flD6+U41V98C2zQV/0tO6//FYZ/BfXGyebSyDbSEQtx1GgbL8WtcKRZaQD/
-	 FnmUkNSE1bVUABWmkedcWLBo/o9vdRFpHEFQMHwAPXogd9/mmRM2B6UJ1bUBtabYfR
-	 7hVChr4e3aIyTxhWoX2tovwHAHijnQ7s3JPgCTxHPzxnJ6BEQjXLAjfKFodDXnY1ov
-	 x3nKVR5/J9KwwhqElDqz7K46hK/BpJT0618xeURhRWfZfYJVaIZS7M703vvBIRQmu4
-	 t32S/NefLh8fA==
-Message-ID: <4fe51e2b88df2c189a1a93453766a066.sboyd@kernel.org>
+	b=GfHGVKoxU0W/N2wLo63mnd3Wc7tjoxw0cGbP7H/w/QB19ZggiY552NYKNip1AuS7O
+	 yyEhBH5QUlTGepcYtQ0rYggBoxFGql5gkm+/6tE56b+9lS7Aszl6U3Uw11ZuLiRxbl
+	 icEgjpYGDpuvQaidAQ+DoXKSfAmEC9XMwwHAe5fteGtrtJ8x/7Lx0KXHS9HEmbzWLO
+	 RTfX5PzuiaXOTdpdG4PJEil+sMdxq5mEBJWaH60BSkHM8rFfpRuQ3Gzu7rihSDEYUp
+	 Hi1BVYbP7E5WI9ncfgl22zSPBmHMqY9zEoEFS18oQT76bnG8/W0hZTazCNFmWO9OX/
+	 Tze0GVrUJZQOg==
+Message-ID: <f0333440693d55316a064e3ad1dbd307.sboyd@kernel.org>
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20230206100105.861720-7-angelogioacchino.delregno@collabora.com>
-References: <20230206100105.861720-1-angelogioacchino.delregno@collabora.com> <20230206100105.861720-7-angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v3 6/7] clk: mediatek: mt8192: Add support for frequency hopping through FHCTL
+In-Reply-To: <20230206100105.861720-8-angelogioacchino.delregno@collabora.com>
+References: <20230206100105.861720-1-angelogioacchino.delregno@collabora.com> <20230206100105.861720-8-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v3 7/7] clk: mediatek: mt8195: Add support for frequency hopping through FHCTL
 From: Stephen Boyd <sboyd@kernel.org>
 Cc: mturquette@baylibre.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, edward-jw.yang@mediatek.com, johnson.wang@mediatek.com, wenst@chromium.org, miles.chen@mediatek.com, chun-jie.chen@mediatek.com, rex-bc.chen@mediatek.com, jose.exposito89@gmail.com, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Date: Mon, 13 Mar 2023 11:47:48 -0700
+Date: Mon, 13 Mar 2023 11:47:58 -0700
 User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_114751_695230_AA01139F 
+X-CRM114-CacheID: sfid-20230313_114803_238886_0F670028 
 X-CRM114-Status: UNSURE (   7.94  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -71,7 +71,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting AngeloGioacchino Del Regno (2023-02-06 02:01:04)
+Quoting AngeloGioacchino Del Regno (2023-02-06 02:01:05)
 > Add FHCTL parameters and register PLLs through FHCTL to add support
 > for frequency hopping and SSC. FHCTL will be enabled only on PLLs
 > specified in devicetree.
