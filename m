@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7F15C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 08:44:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37F23C74A4B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 08:45:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=belhBBFe6e6zrwkZ/uONMoBKOQx9piug4tKXxgccGMg=; b=Mw1TLxObBtYdA0sfjm4AoEraAC
-	4osqFuDeFtLpoPzzDjsQRNbxnCvAaal46oBPRUkrKFb8FEc75XsqCJvaqPLq/epCaXe4u77+A42Na
-	hbBfh/pg9GAbutrbl54c2XDF+Vsr3xvPOa22HjTIZDkFeD2dtdAzJpyHcDGiScpqWa3lhr/kZ9H4n
-	SYei7Ywwl47wbaIUfCOlHxUgVg06u4giy7ciBHbCyObxMFOR82wPeOgU66igdLfbzkazBTJgbBUcR
-	8OerNqyUsWYkyO+UGW/obZB1sseJpZXGzCg9EbcPBSpYbP0UUMibEoi969OT/3lSPKkW75uqj9dRS
-	IhqlJuzw==;
+	bh=u1bPz+A+PBrulRB7Ix/OlZHV2Xn2t70PiSaDnvNG+20=; b=QaOircbEbWKsGt+4CB9CopCwSs
+	rP6Rc127ckq42HgggKFWH409FTEGkia315UcOPgBrU+lRoimxCTw2ohPtLjJmaCC29q45AVI+v+Kv
+	E8/iuw1sfoi6eu0uwNjMqEdtfiAWO7Zf8zAvCQ9MT04Mw0pzyGq008Qttk5WzSQKV/HuQlQmwLVT7
+	31wwjuVbP++RLaBk+CNBgtlfvki2w8A1PteJixmaDsXVdxuHC8QQVzf4ZkHpMFaQ3RO0kADv0uvMo
+	LOJ7nzV78WV96acZLk7194fOQOoXqYEqaVO5u/da3ZEiUbniB/R1tL6qGOFimYyaRi2Z7SZoCghgv
+	0O1qkZvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbdmh-004oW2-VX; Mon, 13 Mar 2023 08:43:59 +0000
+	id 1pbdnj-004omM-I0; Mon, 13 Mar 2023 08:45:03 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbdmU-004oOx-Sd; Mon, 13 Mar 2023 08:43:48 +0000
+	id 1pbdnB-004ofI-DB; Mon, 13 Mar 2023 08:44:30 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 901456602F64;
-	Mon, 13 Mar 2023 08:43:41 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3916C6603084;
+	Mon, 13 Mar 2023 08:44:27 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678697022;
-	bh=4665rYemk6A2Xust8XxLzgdzG2cxoWIBxqr5W23dBBU=;
+	s=mail; t=1678697068;
+	bh=7sp5OBBrmpEeatddKwhM+lwytmkkMBBdKyeH5esSn5w=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=gCrSGv+pa3FO7jv7lAjrOcRNNwZOhG8bnVPxVcMAZV3jbVupV2eD23h7+xM5UqZKq
-	 yIFrUAQpgZPrQXJPWQ2RFLfEftrGAy4qlZzCnQzI2CffgTmAbylpOxjEby0sKHIkgx
-	 X21RB9a4WBM4zQnnwGQ8H6eObyuYDcE+e29GQJhU/l1syW31ydi1sCab54psgqSK49
-	 SzKU25O5AzqhcHcmAuU4EH/4+uOO4Fv8/WJJ7cHNE2p3/uyB0JFITvnz9cMkxRw4Oa
-	 CQZUPWa6x3vmdim8mSJTPEIiZ9jPW9E6ZMWg9gOyShmzJRunuRFwEJ24aqDDWvQDCr
-	 CiN7YlGwWzXLg==
-Message-ID: <ffaf4d60-f8d1-2456-88eb-8c91ed4a6b4a@collabora.com>
-Date: Mon, 13 Mar 2023 09:43:38 +0100
+	b=URmi3h55rHOXuFaFDpXyjqFwC2AM9oj/jA/N6W3on5mk7UzK2MxULSlHGp7T77hBe
+	 dWYzpktDKUExA68Q7xud0dv+wpUZkc+M4SnVJ59FA/3XwHenlTs1fGyEDt+sL9AYyg
+	 s4sO12HOKDWiJiMNtNyv4vTa/3qyYbstAM4Ebp74pYfrAQB2MwSvedqtL3+CVW/Miq
+	 PE232fdSbE1cB4VSLlSnFZz8j4epOxMNgKOdOgGrJG2u4DKxey1y+zJFy8JxTNnrW9
+	 vePjz3sD+DWyldubvYworA66OgL1GkyFoMg9AGeIrP8E+maWaAA/OAnQ3L4qA2HuME
+	 feZ0B1u7L+o1A==
+Message-ID: <e067d343-c47e-e2bf-4ae8-51873759d39b@collabora.com>
+Date: Mon, 13 Mar 2023 09:44:24 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.8.0
-Subject: Re: [PATCH] PCI: Use of_property_present() for testing DT property
- presence
+Subject: Re: [PATCH] pinctrl: Use of_property_present() for testing DT
+ property presence
 Content-Language: en-US
-To: Rob Herring <robh@kernel.org>, Thierry Reding <thierry.reding@gmail.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
- <jianjun.wang@mediatek.com>, Tyrel Datwyler <tyreld@linux.ibm.com>,
- Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>,
- Christophe Leroy <christophe.leroy@csgroup.eu>,
+To: Rob Herring <robh@kernel.org>, Sean Wang <sean.wang@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Tony Lindgren <tony@atomide.com>,
+ Haojian Zhuang <haojian.zhuang@linaro.org>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
  Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-tegra@vger.kernel.org,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linuxppc-dev@lists.ozlabs.org,
- linux-arm-kernel@lists.infradead.org
-References: <20230310144719.1544443-1-robh@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-renesas-soc@vger.kernel.org,
+ linux-sunxi@lists.linux.dev
+References: <20230310144721.1544669-1-robh@kernel.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230310144719.1544443-1-robh@kernel.org>
+In-Reply-To: <20230310144721.1544669-1-robh@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_014347_083753_A9D7A06B 
-X-CRM114-Status: UNSURE (   8.84  )
+X-CRM114-CacheID: sfid-20230313_014429_610117_3D2F5275 
+X-CRM114-Status: UNSURE (   9.82  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,8 +96,7 @@ Il 10/03/23 15:47, Rob Herring ha scritto:
 > 
 > Signed-off-by: Rob Herring <robh@kernel.org>
 
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> # 
-pcie-mediatek
 
 
