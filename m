@@ -4,99 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 068E4C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 12:47:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 245DFC7618A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 12:48:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=helyLAaSkHezCDHRaiPEnQcGx2qVQUT/bMk+TbB5Rk8=; b=FZPvHy6UEi/ADwwCookm+QxtGF
-	HKrzUbClTnYimVJMDWFfgTA9KKb/EITWoSc4+7+DHKFKCv4suIPDPURlOpnpdWE5bBkiGeoxMSwU3
-	UPC90ZHsEQkiHQ/AJ8kMO+6a3uG3EybuR/bOFCxqdHTlYNJNszksMpKN5d6ZM42F7P2R+YFgVPM6r
-	iAoN2dUqoFzZ35BCP4TSspWecyzK5P3A+eWpkes1BTVBfACVCcKabTZR8HMTwTc3Djg2cH/FjxnbW
-	/b1mIFoD1PDs8tWq3yx8I2jOUz8E5LnekBqsn9uUpREf4f9vT91ZbUxFPZkGwSxENxtVdX/8pJwe0
-	U3IZs9NQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=O+apCs7qP7t/VIB29ccFVCLFKJAUAuodR42k+LynC6I=; b=NKVytAbbidW8wkCerqHuK2GFqQ
+	OgYfY9k69ybMJOyKEnKO2cI9pJR9fKKkQevE26tidn89/DeGfD82gvvLoOknsol8xys+RfFzq7szJ
+	FIvgjuRLDtEbESXbGbS3LgPMEBtHuFkN/yxfROVzsWdVQxNnAay17Q9vh2yd+1itP93INP+rf1ZLy
+	taoto1NWT7CxUea6WrXqWC8s/sxVB9WyHY3c1xBCrJ/zZZAEF0gVS7O094a3sliBoms40RJAinW2G
+	j1nNz1UF+nNKM9vccwQJHY7qimXkxqiK9QYf3hS0kiQJneu+WJDsiImgaLj3i5I2PcLw+dWt/G7qU
+	HE+ui9kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc43N-00ABgk-32;
-	Tue, 14 Mar 2023 12:46:57 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pc44i-00ACYB-21;
+	Tue, 14 Mar 2023 12:48:20 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc43M-00ABfP-1y
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 14 Mar 2023 12:46:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=helyLAaSkHezCDHRaiPEnQcGx2qVQUT/bMk+TbB5Rk8=; b=gKO77W3NT1vlpE4bcYMdu3ZFgL
-	XQlgLkNp9idqgJlK/cIwt0DvQHj4ibKkXNl7chDR0L3EFNGCjJasEqKnAp8zueBfZr4FaQJQBArOI
-	8zFWCiTN7XgHCr+1fx3068QMGzj8HHbe5ezFvupjBovfyuddCy884c3+mhYQBYyrzCzmxiVB/xznd
-	V1p8BaXn+wjijxVme+i6LPm0FMqZRoXyIGUXyPu97nPGTaYhs9iGPl2AOpVLYEITs/kPA5YOUZEH+
-	NQfGi5uYJGYgsW+Zru5tmMpF5Px981LdNb71rJA5a2i1khVKBwEfn4bX5358yN9HYWRWI/7zH+iZA
-	qWHMcB3A==;
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc1nu-001k1y-1i
-	for linux-mediatek@lists.infradead.org;
-	Tue, 14 Mar 2023 10:22:52 +0000
-Received: by mail-pl1-x634.google.com with SMTP id a2so16068704plm.4
-        for <linux-mediatek@lists.infradead.org>; Tue, 14 Mar 2023 03:22:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1678789367;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=helyLAaSkHezCDHRaiPEnQcGx2qVQUT/bMk+TbB5Rk8=;
-        b=bYvaecdDD3x6Hr9bDFOAZzQPuTYOvrXzOL2W3Z+W8i6brWc5Ctp8SyoWm2aVQpeEgb
-         6DIfZYAAyXId56J9EwmapBH2fqXJff9mRmVFyNPtdlY6dHsezZZGzTIaNsKWeWFZro93
-         xjxNL0a1AR576oyFoGzpXuNQtGpZbBjuJ2Zv0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678789367;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=helyLAaSkHezCDHRaiPEnQcGx2qVQUT/bMk+TbB5Rk8=;
-        b=ndTNm4VHT41KpNh1bc1bRf9TQK4NwR1naxVr6zhI1oFUv9E6B4FQthSbjGUJ6xOqLA
-         1fN4+OM6P6RQEUntSbih0jNFO3Qn2KsdYS0bLcylCvDA8OESbL1cVHW3sxOfxq6zhZWB
-         nN+TdyUla/LEjG8zo+jq3beLI4uRt1i5oTUNKceL+1tgeR6NSfrzNMbb9Mnp1TpJ/MX0
-         u5FoyFHrygI+dH7LMdsp5C62FGpO8T+lDmsgqrqiukopdpzaB3Oybm5L4nTMoRU1vMl7
-         P3KBA+ZCGYGJRZn4HvmIhulas01QkI4lnqDcE781du6CjQ6V0AiXKmWUdqM/kDU96jew
-         CLeA==
-X-Gm-Message-State: AO0yUKVWOuJRqguiQW8zMlofPZucJRUgnfynyY32zxbV5hGj1GOFXk2L
-	fh17/3Fkh6+MplOu86smq266jw==
-X-Google-Smtp-Source: AK7set9qMrH1n8EpNSZoO1e/VzYoi2/xCMSAQ7Q4krIxrlPWf/u8a4TA/vrS/7VRxRZOGEdKrwLXwA==
-X-Received: by 2002:a17:903:481:b0:1a0:5bb1:3f13 with SMTP id jj1-20020a170903048100b001a05bb13f13mr3142238plb.39.1678789367645;
-        Tue, 14 Mar 2023 03:22:47 -0700 (PDT)
-Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:3718:fdeb:7d7e:b6c0])
-        by smtp.gmail.com with ESMTPSA id j5-20020a170902c3c500b0019cb131b8a5sm1417194plj.32.2023.03.14.03.22.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Mar 2023 03:22:47 -0700 (PDT)
-From: Pin-yen Lin <treapking@chromium.org>
-To: Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mediatek@lists.infradead.org,
-	linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Pin-yen Lin <treapking@chromium.org>
-Subject: [PATCH v2] media: mediatek: vcodec: Use 4K frame size when supported by stateful decoder
-Date: Tue, 14 Mar 2023 18:22:41 +0800
-Message-Id: <20230314102241.1971120-1-treapking@chromium.org>
-X-Mailer: git-send-email 2.40.0.rc1.284.g88254d51c5-goog
+	id 1pc44f-00ACWH-2y;
+	Tue, 14 Mar 2023 12:48:19 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1pc44R-0002yc-00;
+	Tue, 14 Mar 2023 13:48:03 +0100
+Date: Tue, 14 Mar 2023 12:47:59 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Felix Fietkau <nbd@nbd.name>
+Subject: Re: [BUG] MTK SoC Ethernet throughput TX only ~620Mbit/s since
+ 6.2-rc1
+Message-ID: <ZBBs/xE0+ULtJNIJ@makrotopia.org>
+References: <trinity-92c3826f-c2c8-40af-8339-bc6d0d3ffea4-1678213958520@3c-app-gmx-bs16>
+ <4a229d53-f058-115a-afc6-dd544a0dedf2@nbd.name>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <4a229d53-f058-115a-afc6-dd544a0dedf2@nbd.name>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230314_102250_700525_2636B672 
-X-CRM114-Status: GOOD (  14.06  )
+X-CRM114-CacheID: sfid-20230314_054817_982108_00FD2FF5 
+X-CRM114-Status: GOOD (  19.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,59 +58,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-After commit b018be06f3c7 ("media: mediatek: vcodec: Read max resolution
-from dec_capability"), the stateful video decoder driver never really
-sets its output frame size to 4K.
+Hi Felix,
 
-Parse the decoder capability reported by the firmware, and update the
-output frame size in mtk_init_vdec_params to enable 4K frame size when
-available.
+On Tue, Mar 14, 2023 at 11:30:53AM +0100, Felix Fietkau wrote:
+> On 07.03.23 19:32, Frank Wunderlich wrote:
+> > Hi,
+> > 
+> > i've noticed that beginning on 6.2-rc1 the throughput on my Bananapi-R2 and Bananapi-R3 goes from 940Mbit/s down do 620Mbit/s since 6.2-rc1.
+> > Only TX (from SBC PoV) is affected, RX is still 940Mbit/s.
+> > 
+> > i bisected this to this commit:
+> > 
+> > f63959c7eec3151c30a2ee0d351827b62e742dcb ("net: ethernet: mtk_eth_soc: implement multi-queue support for per-port queues")
+> > 
+> > Daniel reported me that this is known so far and they need assistance from MTK and i should report it officially.
+> > 
+> > As far as i understand it the commit should fix problems with clients using non-GBE speeds (10/100 Mbit/s) on the Gbit-capable dsa
+> > interfaces (mt753x connected) behind the mac, but now the Gigabit speed is no more reached.
+> > I see no CRC/dropped packets, retransmitts or similar.
+> > 
+> > after reverting the commit above i get 940Mbit like in rx direction, but this will introduce the problems mentioned above so this not a complete fix.
+> I don't have a BPI-R2, but I tested on BPI-R3 and can't reproduce this
+> issue. Do you see it on all ports, or only on specific ones?
 
-Fixes: b018be06f3c7 ("media: mediatek: vcodec: Read max resolution from dec_capability")
-Signed-off-by: Pin-yen Lin <treapking@chromium.org>
+I also can't reproduce this if unsing any of the gigE ports wired via
+MT7531 on the R3. However, I can reproduce the issue if using a 1 GBit/s
+SFP module in slot SFP1 of the R3 (connected directly to GMAC2/eth1).
 
----
+Users have reported this also to be a problem also on MT7622 on devices
+directly connecting a PHY (and not using MT7531).
 
-Changes in v2:
-- Rebase to media_tree/master
+In all cases, reverting the commit above fixes the issue.
 
- .../mediatek/vcodec/mtk_vcodec_dec_stateful.c        | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c
-index 035c86e7809f..29991551cf61 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c
-@@ -11,7 +11,7 @@
- #include "mtk_vcodec_dec_pm.h"
- #include "vdec_drv_if.h"
- 
--static const struct mtk_video_fmt mtk_video_formats[] = {
-+static struct mtk_video_fmt mtk_video_formats[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_H264,
- 		.type = MTK_FMT_DEC,
-@@ -580,6 +580,16 @@ static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_ctx *ctx)
- 
- static void mtk_init_vdec_params(struct mtk_vcodec_ctx *ctx)
- {
-+	unsigned int i;
-+
-+	if (!(ctx->dev->dec_capability & VCODEC_CAPABILITY_4K_DISABLED)) {
-+		for (i = 0; i < num_supported_formats; i++) {
-+			mtk_video_formats[i].frmsize.max_width =
-+				VCODEC_DEC_4K_CODED_WIDTH;
-+			mtk_video_formats[i].frmsize.max_height =
-+				VCODEC_DEC_4K_CODED_HEIGHT;
-+		}
-+	}
- }
- 
- static struct vb2_ops mtk_vdec_frame_vb2_ops = {
--- 
-2.40.0.rc1.284.g88254d51c5-goog
+Cheers
 
+
+Daniel
 
