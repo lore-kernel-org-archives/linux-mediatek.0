@@ -4,91 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67D03C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 20:02:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55253C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 20:06:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z2aWBeYsPOZw3VmzBEuzhxtl3VZ6kigXr5nDO9DM/2U=; b=G2xTl7YbAIYiahYaHKIl7xMcs/
-	kwrwflfK2Up8ZWNc+SEGOTQNiv1bR4M3xci3h+Tg5VduPPBHW0VDRpTCN3XiVLrnjZpASKNjjeMV8
-	6c3djkToTybrWmc3h+jXpUpbmKXZrkxdQv+0w+pTnBOYG2xR9wApJfY5yRLPcR6nMQnbzU6sBI1Yx
-	ImFGpCvH5pP3Ku7HYWF2XIfkcAAUBzh6X1Tup8DscP+FrehZ/j/0T4i6+bBFFHvi0sI4QJrM7l0z3
-	KlMbVK2UsUwGBzP9/Zw/FvQipIs5OGAvcqGzJc973+f1QP+5jSL9rktUBzo8MRMK8aWCDW2wUVyj8
-	M6ESIM3g==;
+	bh=OjikSDB/A+i4L9BeqERv0l8R/cRWGNu1EDH8YsBPfDg=; b=LN2HlOKMSJqjSSZktY24eetw2k
+	j0d1oYXCmksa3HfpLEfDVUajn2685FHR6eho2apd0ApjkdmkzC2OI4UHWnNRtuwiBZzPXWOqLBU6a
+	Bo0JCvaxVEi9cI3hWr7On5b9wayAgkisCsEBbeWdtcGKgAabuu82p+XAMzPAFvWY7RjgDdgC01C0L
+	T7SC+rr5zxiZN6qmYELrTL1J6lI2SEB+lyhx1lZCzkywL2CE5ExaZ1R8361wo7v66zfNEs05vwtme
+	eY/6AkxwfGTeKKUaWQiI7t0n0MHOkGvBwRsyhs/vRRuSi/2wjFDKm5bIoBj/QcUvJ/eYeRRyPIX73
+	ajZq4b/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcAqY-00BQEy-2U;
-	Tue, 14 Mar 2023 20:02:10 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1pcAub-00BRDF-2G;
+	Tue, 14 Mar 2023 20:06:26 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcAqW-00BQDG-0t;
-	Tue, 14 Mar 2023 20:02:09 +0000
-Received: by mail-ed1-x534.google.com with SMTP id x13so19502912edd.1;
-        Tue, 14 Mar 2023 13:02:02 -0700 (PDT)
+	id 1pcAuX-00BRBu-20;
+	Tue, 14 Mar 2023 20:06:19 +0000
+Received: by mail-ed1-x531.google.com with SMTP id cn21so36727810edb.0;
+        Tue, 14 Mar 2023 13:06:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678824121;
+        d=gmail.com; s=20210112; t=1678824376;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Z2aWBeYsPOZw3VmzBEuzhxtl3VZ6kigXr5nDO9DM/2U=;
-        b=lw9U5mN5yNQ8LCsLdSPoz/LDlbOc3gdpgfgiPbj+UqVyBLryGF2SizPvnYrGuXei2B
-         8CW7NuAiXt4lKM4L9hLgAXaccTOgRMCI1EvGQWwXwoLfbSjekCLkx04ulURMT7COkO4t
-         J++Ji4mnWJ2UzCR+dvqXSdOOQb3sEJxSRc0R9uXLeMKtpVefTko8JVJiowBonJ/C3gBf
-         QQfQI+JmzBhQwe8tsP9bYsRCCsLEEdhQi0ckBlSevIeYHRThMVn730fagDOm32V7a1HE
-         ZDvYKKwjM/xqSLM7VFhMoyBfgNqbVnesZJb6FBMHIWhX9FQIa+DGEu+4K8/FRwIdyO0Q
-         eW2Q==
+        bh=OjikSDB/A+i4L9BeqERv0l8R/cRWGNu1EDH8YsBPfDg=;
+        b=WhPYLI/Cny3mi6cww7cX6wbq3H92VOuCnEWKRdB6U2tK6BG3rs+aYdOWOJYDJMkf0a
+         YREyt5dhSV4EDSdN3YXUQLBsIucZwPq/g8ic4KrDpZeXc5d1yJ9FbiK60ubHgENmR5D5
+         AAP53U0dQ7M5LI77LqhB/hg3e2yuBptasDRCRWIoWeeiK6v5YIew+G1K9/3S5GpYUOvY
+         QKLtZqoUVDyLcXFxp+NL0kVxXSyrAN+LeHXs7HkVk9yTsuGEcryrqh3wmQVTVLuwQU6z
+         Bjn65mXLdmql8HJo/MZhcBsxZSdc64nEb/gFUi4xL+our/ooo2UtSGFmUvy6UwasRWa1
+         fFhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678824121;
+        d=1e100.net; s=20210112; t=1678824376;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Z2aWBeYsPOZw3VmzBEuzhxtl3VZ6kigXr5nDO9DM/2U=;
-        b=2KMwP8sQOLYFilqrDV8IKWYhmDiOmIDuzu/mPSVrpJcvHlDfRGKnMt4el/JszIh2Mc
-         p09CkCbtrn6f2A1G4VxcatWxdm6GnbzfcpnSwX/dXLK0sdkO1Yvmmuu8M/sv0mvu7R3z
-         09JmpV9BO3u5wJ0ovxiUw1dyFzmqdg9jTkWs4t8+oNTpp+zbFvKTwgrweargJM/KR9AO
-         pghTSrJzmm4iTk2Ouh1moKAoa+UB79kQuxw28hY6T6rZFn4UCUNTavMbG/NJyYH/roZf
-         skd1/A00gqstjIJS418pSRbtsEm7Ohf/r3SiJMGNAyvdflozSSFlquDPx6m8ohB59Pu8
-         rw5A==
-X-Gm-Message-State: AO0yUKWqUNXHtCP0QL+2nmCoX24PrNc/qoVHTMQjXNMAuyXG6lBQ7k62
-	9Tn3M6wV0m6UM8i5w4ycneM=
-X-Google-Smtp-Source: AK7set9e9EO060s4bRckBVlG+IlgdCeWavxzh4N5oYIX6Pb2j4hXy67uRYvwwfD6th6kq9HthDHzWQ==
-X-Received: by 2002:a05:6402:ce:b0:4fa:96fd:797b with SMTP id i14-20020a05640200ce00b004fa96fd797bmr363385edu.6.1678824121330;
-        Tue, 14 Mar 2023 13:02:01 -0700 (PDT)
+        bh=OjikSDB/A+i4L9BeqERv0l8R/cRWGNu1EDH8YsBPfDg=;
+        b=izsFwT0KWo/SDuw+sSBr4O3uc2Y+oNIAGw/8fnW4mb2965f0ie1xdyRtP9bvjYSlL9
+         6dqHSZCgsSTO1fU0/vggKkySmnJKmuyctZT1uqQk+2+iEvXO97Tip64Q2jDh/grxGOll
+         eVTawc163VOElCxog7352KZAz1w7WpJNJuVINW4D79woDuNVuqNALwqwc0vm0fWmp4tG
+         dre9Dd0lP5sbcnD1LNugFgq2ofVOGs2QHeqFwgYXtLCuHsiHGR/E93VryQmh5TfjLZcL
+         6Xgpxt38F8D2NR/nkfrHPRJR2lsIpbaowR9grtJW7cdnEcuYX0YNBJYv7dLXu7rYqoaf
+         sIKQ==
+X-Gm-Message-State: AO0yUKXejO7SYZTDeTvjZbYwUGZKTVdwJgL+864JmC6PQcxTM1qxttHb
+	Sl7pkpIBIFc7G2tbUrRg6B4=
+X-Google-Smtp-Source: AK7set/OF3AdfTGjwEHlL5tu1CQX7SQa6dKdOeg+TCkjQnwZiD4NH1p423e+b6+vxXGoSHFc7z6hVw==
+X-Received: by 2002:a17:906:32d4:b0:878:7f6e:38a7 with SMTP id k20-20020a17090632d400b008787f6e38a7mr3719709ejk.44.1678824375883;
+        Tue, 14 Mar 2023 13:06:15 -0700 (PDT)
 Received: from jernej-laptop.localnet (82-149-1-233.dynamic.telemach.net. [82.149.1.233])
-        by smtp.gmail.com with ESMTPSA id lj6-20020a170906f9c600b008bbc9115038sm1534607ejb.56.2023.03.14.13.01.59
+        by smtp.gmail.com with ESMTPSA id w11-20020a1709062f8b00b00923bb9f0c36sm1535480eji.127.2023.03.14.13.06.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Mar 2023 13:02:00 -0700 (PDT)
+        Tue, 14 Mar 2023 13:06:15 -0700 (PDT)
 From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: Sean Wang <sean.wang@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>, Tony Lindgren <tony@atomide.com>,
- Haojian Zhuang <haojian.zhuang@linaro.org>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>, Chen-Yu Tsai <wens@csie.org>,
- Samuel Holland <samuel@sholland.org>,
+To: Joerg Roedel <joro@8bytes.org>, Matthew Rosato <mjrosato@linux.ibm.com>,
+ Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>,
+ Robin Murphy <robin.murphy@arm.com>, Jason Gunthorpe <jgg@ziepe.ca>,
+ Niklas Schnelle <schnelle@linux.ibm.com>
+Cc: Gerd Bayer <gbayer@linux.ibm.com>, Julian Ruess <julianr@linux.ibm.com>,
+ Pierre Morel <pmorel@linux.ibm.com>,
+ Alexandra Winter <wintera@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Sven Schnelle <svens@linux.ibm.com>,
+ Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+ Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+ Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+ David Woodhouse <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>,
+ Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Yong Wu <yong.wu@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Rob Herring <robh@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-renesas-soc@vger.kernel.org,
- linux-sunxi@lists.linux.dev
-Subject:  Re: [PATCH] pinctrl: Use of_property_present() for testing DT property
- presence
-Date: Tue, 14 Mar 2023 21:01:59 +0100
-Message-ID: <3218406.aeNJFYEL58@jernej-laptop>
-In-Reply-To: <20230310144721.1544669-1-robh@kernel.org>
-References: <20230310144721.1544669-1-robh@kernel.org>
+ Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+ Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+ Samuel Holland <samuel@sholland.org>,
+ Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy <vdumpa@nvidia.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Niklas Schnelle <schnelle@linux.ibm.com>, Jonathan Corbet <corbet@lwn.net>,
+ linux-s390@vger.kernel.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, iommu@lists.linux.dev, asahi@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
+Subject:  Re: [PATCH v8 2/6] iommu: Allow .iotlb_sync_map to fail and handle s390's
+ -ENOMEM return
+Date: Tue, 14 Mar 2023 21:06:12 +0100
+Message-ID: <3724716.kQq0lBPeGt@jernej-laptop>
+In-Reply-To: <20230310-dma_iommu-v8-2-2347dfbed7af@linux.ibm.com>
+References:  <20230310-dma_iommu-v8-0-2347dfbed7af@linux.ibm.com>
+ <20230310-dma_iommu-v8-2-2347dfbed7af@linux.ibm.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7Bit
 Content-Type: text/plain; charset="us-ascii"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230314_130208_313148_57858B04 
-X-CRM114-Status: GOOD (  25.07  )
+X-CRM114-CacheID: sfid-20230314_130617_659234_56B0AC3C 
+X-CRM114-Status: GOOD (  29.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,164 +121,349 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dne petek, 10. marec 2023 ob 15:47:20 CET je Rob Herring napisal(a):
-> It is preferred to use typed property access functions (i.e.
-> of_property_read_<type> functions) rather than low-level
-> of_get_property/of_find_property functions for reading properties. As
-> part of this, convert of_get_property/of_find_property calls to the
-> recently added of_property_present() helper when we just want to test
-> for presence of a property and nothing more.
+Dne petek, 10. marec 2023 ob 17:07:47 CET je Niklas Schnelle napisal(a):
+> On s390 when using a paging hypervisor, .iotlb_sync_map is used to sync
+> mappings by letting the hypervisor inspect the synced IOVA range and
+> updating a shadow table. This however means that .iotlb_sync_map can
+> fail as the hypervisor may run out of resources while doing the sync.
+> This can be due to the hypervisor being unable to pin guest pages, due
+> to a limit on mapped addresses such as vfio_iommu_type1.dma_entry_limit
+> or lack of other resources. Either way such a failure to sync a mapping
+> should result in a DMA_MAPPING_ERROR.
 > 
-> Signed-off-by: Rob Herring <robh@kernel.org>
+> Now especially when running with batched IOTLB flushes for unmap it may
+> be that some IOVAs have already been invalidated but not yet synced via
+> .iotlb_sync_map. Thus if the hypervisor indicates running out of
+> resources, first do a global flush allowing the hypervisor to free
+> resources associated with these mappings as well a retry creating the
+> new mappings and only if that also fails report this error to callers.
+> 
+> Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
+> Reviewed-by: Matthew Rosato <mjrosato@linux.ibm.com>
+> Signed-off-by: Niklas Schnelle <schnelle@linux.ibm.com>
 > ---
->  drivers/pinctrl/mediatek/pinctrl-moore.c |  2 +-
->  drivers/pinctrl/pinctrl-single.c         |  4 ++--
->  drivers/pinctrl/pinctrl-stmfx.c          |  2 +-
->  drivers/pinctrl/renesas/pinctrl.c        |  4 ++--
->  drivers/pinctrl/stm32/pinctrl-stm32.c    |  2 +-
->  drivers/pinctrl/sunxi/pinctrl-sunxi.c    | 20 ++++++++++----------
+>  drivers/iommu/amd/iommu.c    |  5 +++--
+>  drivers/iommu/apple-dart.c   |  5 +++--
+>  drivers/iommu/intel/iommu.c  |  5 +++--
+>  drivers/iommu/iommu.c        | 20 ++++++++++++++++----
+>  drivers/iommu/msm_iommu.c    |  5 +++--
+>  drivers/iommu/mtk_iommu.c    |  5 +++--
+>  drivers/iommu/s390-iommu.c   | 29 ++++++++++++++++++++++++-----
+>  drivers/iommu/sprd-iommu.c   |  5 +++--
+>  drivers/iommu/sun50i-iommu.c |  4 +++-
 
-For sunxi:
-Reviewed-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+For sun50i:
+Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
 
 Best regards,
 Jernej
 
->  6 files changed, 17 insertions(+), 17 deletions(-)
+>  drivers/iommu/tegra-gart.c   |  5 +++--
+>  include/linux/iommu.h        |  4 ++--
+>  11 files changed, 66 insertions(+), 26 deletions(-)
 > 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.c
-> b/drivers/pinctrl/mediatek/pinctrl-moore.c index 007b98ce5631..8649a2f9d324
-> 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-moore.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-moore.c
-> @@ -586,7 +586,7 @@ static int mtk_build_gpiochip(struct mtk_pinctrl *hw)
->  	 * Documentation/devicetree/bindings/gpio/gpio.txt on how to
->  	 * bind pinctrl and gpio drivers via the "gpio-ranges" property.
->  	 */
-> -	if (!of_find_property(hw->dev->of_node, "gpio-ranges", NULL)) {
-> +	if (!of_property_present(hw->dev->of_node, "gpio-ranges")) {
->  		ret = gpiochip_add_pin_range(chip, dev_name(hw->dev), 
-0, 0,
->  					     chip->ngpio);
->  		if (ret < 0) {
-> diff --git a/drivers/pinctrl/pinctrl-single.c
-> b/drivers/pinctrl/pinctrl-single.c index 190923757cda..0dabbcf68b9f 100644
-> --- a/drivers/pinctrl/pinctrl-single.c
-> +++ b/drivers/pinctrl/pinctrl-single.c
-> @@ -939,11 +939,11 @@ static int pcs_parse_pinconf(struct pcs_device *pcs,
-> struct device_node *np,
-> 
->  	/* cacluate how much properties are supported in current node */
->  	for (i = 0; i < ARRAY_SIZE(prop2); i++) {
-> -		if (of_find_property(np, prop2[i].name, NULL))
-> +		if (of_property_present(np, prop2[i].name))
->  			nconfs++;
->  	}
->  	for (i = 0; i < ARRAY_SIZE(prop4); i++) {
-> -		if (of_find_property(np, prop4[i].name, NULL))
-> +		if (of_property_present(np, prop4[i].name))
->  			nconfs++;
->  	}
->  	if (!nconfs)
-> diff --git a/drivers/pinctrl/pinctrl-stmfx.c
-> b/drivers/pinctrl/pinctrl-stmfx.c index 1181c4b506b1..3c031692e44d 100644
-> --- a/drivers/pinctrl/pinctrl-stmfx.c
-> +++ b/drivers/pinctrl/pinctrl-stmfx.c
-> @@ -632,7 +632,7 @@ static int stmfx_pinctrl_probe(struct platform_device
-> *pdev) pctl->dev = &pdev->dev;
->  	pctl->stmfx = stmfx;
-> 
-> -	if (!of_find_property(np, "gpio-ranges", NULL)) {
-> +	if (!of_property_present(np, "gpio-ranges")) {
->  		dev_err(pctl->dev, "missing required gpio-ranges 
-property\n");
->  		return -EINVAL;
->  	}
-> diff --git a/drivers/pinctrl/renesas/pinctrl.c
-> b/drivers/pinctrl/renesas/pinctrl.c index b74147800319..5c71e168b370 100644
-> --- a/drivers/pinctrl/renesas/pinctrl.c
-> +++ b/drivers/pinctrl/renesas/pinctrl.c
-> @@ -125,8 +125,8 @@ static int sh_pfc_dt_subnode_to_map(struct pinctrl_dev
-> *pctldev, * inside a subnode nor across subnodes.
->  	 */
->  	if (!pmx->func_prop_name) {
-> -		if (of_find_property(np, "groups", NULL) ||
-> -		    of_find_property(np, "pins", NULL)) {
-> +		if (of_property_present(np, "groups")||
-> +		    of_property_present(np, "pins")) {
->  			pmx->func_prop_name = "function";
->  			pmx->groups_prop_name = "groups";
->  			pmx->pins_prop_name = "pins";
-> diff --git a/drivers/pinctrl/stm32/pinctrl-stm32.c
-> b/drivers/pinctrl/stm32/pinctrl-stm32.c index cb33a23ab0c1..66a25becd8f5
-> 100644
-> --- a/drivers/pinctrl/stm32/pinctrl-stm32.c
-> +++ b/drivers/pinctrl/stm32/pinctrl-stm32.c
-> @@ -1374,7 +1374,7 @@ static struct irq_domain
-> *stm32_pctrl_get_irq_domain(struct platform_device *pde struct device_node
-> *parent;
->  	struct irq_domain *domain;
-> 
-> -	if (!of_find_property(np, "interrupt-parent", NULL))
-> +	if (!of_property_present(np, "interrupt-parent"))
->  		return NULL;
-> 
->  	parent = of_irq_find_parent(np);
-> diff --git a/drivers/pinctrl/sunxi/pinctrl-sunxi.c
-> b/drivers/pinctrl/sunxi/pinctrl-sunxi.c index f35179eceb4e..1dc1882cbdd7
-> 100644
-> --- a/drivers/pinctrl/sunxi/pinctrl-sunxi.c
-> +++ b/drivers/pinctrl/sunxi/pinctrl-sunxi.c
-> @@ -224,16 +224,16 @@ static int sunxi_pctrl_get_group_pins(struct
-> pinctrl_dev *pctldev,
-> 
->  static bool sunxi_pctrl_has_bias_prop(struct device_node *node)
->  {
-> -	return of_find_property(node, "bias-pull-up", NULL) ||
-> -		of_find_property(node, "bias-pull-down", NULL) ||
-> -		of_find_property(node, "bias-disable", NULL) ||
-> -		of_find_property(node, "allwinner,pull", NULL);
-> +	return of_property_present(node, "bias-pull-up") ||
-> +		of_property_present(node, "bias-pull-down") ||
-> +		of_property_present(node, "bias-disable") ||
-> +		of_property_present(node, "allwinner,pull");
+> diff --git a/drivers/iommu/amd/iommu.c b/drivers/iommu/amd/iommu.c
+> index 5a505ba5467e..ff309bd1bb8f 100644
+> --- a/drivers/iommu/amd/iommu.c
+> +++ b/drivers/iommu/amd/iommu.c
+> @@ -2187,14 +2187,15 @@ static int amd_iommu_attach_device(struct
+> iommu_domain *dom, return ret;
 >  }
 > 
->  static bool sunxi_pctrl_has_drive_prop(struct device_node *node)
+> -static void amd_iommu_iotlb_sync_map(struct iommu_domain *dom,
+> -				     unsigned long iova, size_t 
+size)
+> +static int amd_iommu_iotlb_sync_map(struct iommu_domain *dom,
+> +				    unsigned long iova, size_t 
+size)
 >  {
-> -	return of_find_property(node, "drive-strength", NULL) ||
-> -		of_find_property(node, "allwinner,drive", NULL);
-> +	return of_property_present(node, "drive-strength") ||
-> +		of_property_present(node, "allwinner,drive");
+>  	struct protection_domain *domain = to_pdomain(dom);
+>  	struct io_pgtable_ops *ops = &domain->iop.iop.ops;
+> 
+>  	if (ops->map_pages)
+>  		domain_flush_np_cache(domain, iova, size);
+> +	return 0;
 >  }
 > 
->  static int sunxi_pctrl_parse_bias_prop(struct device_node *node)
-> @@ -241,13 +241,13 @@ static int sunxi_pctrl_parse_bias_prop(struct
-> device_node *node) u32 val;
+>  static int amd_iommu_map_pages(struct iommu_domain *dom, unsigned long
+> iova, diff --git a/drivers/iommu/apple-dart.c b/drivers/iommu/apple-dart.c
+> index 06169d36eab8..cbed1f87eae9 100644
+> --- a/drivers/iommu/apple-dart.c
+> +++ b/drivers/iommu/apple-dart.c
+> @@ -506,10 +506,11 @@ static void apple_dart_iotlb_sync(struct iommu_domain
+> *domain, apple_dart_domain_flush_tlb(to_dart_domain(domain));
+>  }
 > 
->  	/* Try the new style binding */
-> -	if (of_find_property(node, "bias-pull-up", NULL))
-> +	if (of_property_present(node, "bias-pull-up"))
->  		return PIN_CONFIG_BIAS_PULL_UP;
+> -static void apple_dart_iotlb_sync_map(struct iommu_domain *domain,
+> -				      unsigned long iova, size_t 
+size)
+> +static int apple_dart_iotlb_sync_map(struct iommu_domain *domain,
+> +				     unsigned long iova, size_t 
+size)
+>  {
+>  	apple_dart_domain_flush_tlb(to_dart_domain(domain));
+> +	return 0;
+>  }
 > 
-> -	if (of_find_property(node, "bias-pull-down", NULL))
-> +	if (of_property_present(node, "bias-pull-down"))
->  		return PIN_CONFIG_BIAS_PULL_DOWN;
+>  static phys_addr_t apple_dart_iova_to_phys(struct iommu_domain *domain,
+> diff --git a/drivers/iommu/intel/iommu.c b/drivers/iommu/intel/iommu.c
+> index 7c2f4bd33582..b795b2f323e3 100644
+> --- a/drivers/iommu/intel/iommu.c
+> +++ b/drivers/iommu/intel/iommu.c
+> @@ -4745,8 +4745,8 @@ static bool risky_device(struct pci_dev *pdev)
+>  	return false;
+>  }
 > 
-> -	if (of_find_property(node, "bias-disable", NULL))
-> +	if (of_property_present(node, "bias-disable"))
->  		return PIN_CONFIG_BIAS_DISABLE;
+> -static void intel_iommu_iotlb_sync_map(struct iommu_domain *domain,
+> -				       unsigned long iova, size_t 
+size)
+> +static int intel_iommu_iotlb_sync_map(struct iommu_domain *domain,
+> +				      unsigned long iova, size_t 
+size)
+>  {
+>  	struct dmar_domain *dmar_domain = to_dmar_domain(domain);
+>  	unsigned long pages = aligned_nrpages(iova, size);
+> @@ -4756,6 +4756,7 @@ static void intel_iommu_iotlb_sync_map(struct
+> iommu_domain *domain,
 > 
->  	/* And fall back to the old binding */
-> @@ -1424,7 +1424,7 @@ static int sunxi_pinctrl_setup_debounce(struct
-> sunxi_pinctrl *pctl, return 0;
+>  	xa_for_each(&dmar_domain->iommu_array, i, info)
+>  		__mapping_notify_one(info->iommu, dmar_domain, pfn, 
+pages);
+> +	return 0;
+>  }
 > 
->  	/* If we don't have any setup, bail out */
-> -	if (!of_find_property(node, "input-debounce", NULL))
-> +	if (!of_property_present(node, "input-debounce"))
->  		return 0;
+>  static void intel_iommu_remove_dev_pasid(struct device *dev, ioasid_t
+> pasid) diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+> index 10db680acaed..ae549b032a16 100644
+> --- a/drivers/iommu/iommu.c
+> +++ b/drivers/iommu/iommu.c
+> @@ -2410,8 +2410,17 @@ int iommu_map(struct iommu_domain *domain, unsigned
+> long iova, return -EINVAL;
 > 
->  	losc = devm_clk_get(pctl->dev, "losc");
+>  	ret = __iommu_map(domain, iova, paddr, size, prot, gfp);
+> -	if (ret == 0 && ops->iotlb_sync_map)
+> -		ops->iotlb_sync_map(domain, iova, size);
+> +	if (ret == 0 && ops->iotlb_sync_map) {
+> +		ret = ops->iotlb_sync_map(domain, iova, size);
+> +		if (ret)
+> +			goto out_err;
+> +	}
+> +
+> +	return ret;
+> +
+> +out_err:
+> +	/* undo mappings already done */
+> +	iommu_unmap(domain, iova, size);
+> 
+>  	return ret;
+>  }
+> @@ -2552,8 +2561,11 @@ ssize_t iommu_map_sg(struct iommu_domain *domain,
+> unsigned long iova, sg = sg_next(sg);
+>  	}
+> 
+> -	if (ops->iotlb_sync_map)
+> -		ops->iotlb_sync_map(domain, iova, mapped);
+> +	if (ops->iotlb_sync_map) {
+> +		ret = ops->iotlb_sync_map(domain, iova, mapped);
+> +		if (ret)
+> +			goto out_err;
+> +	}
+>  	return mapped;
+> 
+>  out_err:
+> diff --git a/drivers/iommu/msm_iommu.c b/drivers/iommu/msm_iommu.c
+> index 454f6331c889..2033716eac78 100644
+> --- a/drivers/iommu/msm_iommu.c
+> +++ b/drivers/iommu/msm_iommu.c
+> @@ -486,12 +486,13 @@ static int msm_iommu_map(struct iommu_domain *domain,
+> unsigned long iova, return ret;
+>  }
+> 
+> -static void msm_iommu_sync_map(struct iommu_domain *domain, unsigned long
+> iova, -			       size_t size)
+> +static int msm_iommu_sync_map(struct iommu_domain *domain, unsigned long
+> iova, +			      size_t size)
+>  {
+>  	struct msm_priv *priv = to_msm_priv(domain);
+> 
+>  	__flush_iotlb_range(iova, size, SZ_4K, false, priv);
+> +	return 0;
+>  }
+> 
+>  static size_t msm_iommu_unmap(struct iommu_domain *domain, unsigned long
+> iova, diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index d5a4955910ff..29769fb5c51e 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -750,12 +750,13 @@ static void mtk_iommu_iotlb_sync(struct iommu_domain
+> *domain, mtk_iommu_tlb_flush_range_sync(gather->start, length, dom->bank);
+> }
+> 
+> -static void mtk_iommu_sync_map(struct iommu_domain *domain, unsigned long
+> iova, -			       size_t size)
+> +static int mtk_iommu_sync_map(struct iommu_domain *domain, unsigned long
+> iova, +			      size_t size)
+>  {
+>  	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+> 
+>  	mtk_iommu_tlb_flush_range_sync(iova, size, dom->bank);
+> +	return 0;
+>  }
+> 
+>  static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
+> diff --git a/drivers/iommu/s390-iommu.c b/drivers/iommu/s390-iommu.c
+> index fbf59a8db29b..17174b35db11 100644
+> --- a/drivers/iommu/s390-iommu.c
+> +++ b/drivers/iommu/s390-iommu.c
+> @@ -205,6 +205,14 @@ static void s390_iommu_release_device(struct device
+> *dev) __s390_iommu_detach_device(zdev);
+>  }
+> 
+> +
+> +static int zpci_refresh_all(struct zpci_dev *zdev)
+> +{
+> +	return zpci_refresh_trans((u64)zdev->fh << 32, zdev->start_dma,
+> +				  zdev->end_dma - zdev->start_dma 
++ 1);
+> +
+> +}
+> +
+>  static void s390_iommu_flush_iotlb_all(struct iommu_domain *domain)
+>  {
+>  	struct s390_domain *s390_domain = to_s390_domain(domain);
+> @@ -212,8 +220,7 @@ static void s390_iommu_flush_iotlb_all(struct
+> iommu_domain *domain)
+> 
+>  	rcu_read_lock();
+>  	list_for_each_entry_rcu(zdev, &s390_domain->devices, iommu_list) {
+> -		zpci_refresh_trans((u64)zdev->fh << 32, zdev-
+>start_dma,
+> -				   zdev->end_dma - zdev-
+>start_dma + 1);
+> +		zpci_refresh_all(zdev);
+>  	}
+>  	rcu_read_unlock();
+>  }
+> @@ -237,20 +244,32 @@ static void s390_iommu_iotlb_sync(struct iommu_domain
+> *domain, rcu_read_unlock();
+>  }
+> 
+> -static void s390_iommu_iotlb_sync_map(struct iommu_domain *domain,
+> +static int s390_iommu_iotlb_sync_map(struct iommu_domain *domain,
+>  				      unsigned long iova, size_t 
+size)
+>  {
+>  	struct s390_domain *s390_domain = to_s390_domain(domain);
+>  	struct zpci_dev *zdev;
+> +	int ret = 0;
+> 
+>  	rcu_read_lock();
+>  	list_for_each_entry_rcu(zdev, &s390_domain->devices, iommu_list) {
+>  		if (!zdev->tlb_refresh)
+>  			continue;
+> -		zpci_refresh_trans((u64)zdev->fh << 32,
+> -				   iova, size);
+> +		ret = zpci_refresh_trans((u64)zdev->fh << 32,
+> +					 iova, size);
+> +		/*
+> +		 * let the hypervisor discover invalidated entries
+> +		 * allowing it to free IOVAs and unpin pages
+> +		 */
+> +		if (ret == -ENOMEM) {
+> +			ret = zpci_refresh_all(zdev);
+> +			if (ret)
+> +				break;
+> +		}
+>  	}
+>  	rcu_read_unlock();
+> +
+> +	return ret;
+>  }
+> 
+>  static int s390_iommu_validate_trans(struct s390_domain *s390_domain,
+> diff --git a/drivers/iommu/sprd-iommu.c b/drivers/iommu/sprd-iommu.c
+> index ae94d74b73f4..74bcae69653c 100644
+> --- a/drivers/iommu/sprd-iommu.c
+> +++ b/drivers/iommu/sprd-iommu.c
+> @@ -315,8 +315,8 @@ static size_t sprd_iommu_unmap(struct iommu_domain
+> *domain, unsigned long iova, return size;
+>  }
+> 
+> -static void sprd_iommu_sync_map(struct iommu_domain *domain,
+> -				unsigned long iova, size_t size)
+> +static int sprd_iommu_sync_map(struct iommu_domain *domain,
+> +			       unsigned long iova, size_t size)
+>  {
+>  	struct sprd_iommu_domain *dom = to_sprd_domain(domain);
+>  	unsigned int reg;
+> @@ -328,6 +328,7 @@ static void sprd_iommu_sync_map(struct iommu_domain
+> *domain,
+> 
+>  	/* clear IOMMU TLB buffer after page table updated */
+>  	sprd_iommu_write(dom->sdev, reg, 0xffffffff);
+> +	return 0;
+>  }
+> 
+>  static void sprd_iommu_sync(struct iommu_domain *domain,
+> diff --git a/drivers/iommu/sun50i-iommu.c b/drivers/iommu/sun50i-iommu.c
+> index 2d993d0cea7d..60a983f4a494 100644
+> --- a/drivers/iommu/sun50i-iommu.c
+> +++ b/drivers/iommu/sun50i-iommu.c
+> @@ -402,7 +402,7 @@ static void sun50i_iommu_flush_iotlb_all(struct
+> iommu_domain *domain) spin_unlock_irqrestore(&iommu->iommu_lock, flags);
+>  }
+> 
+> -static void sun50i_iommu_iotlb_sync_map(struct iommu_domain *domain,
+> +static int sun50i_iommu_iotlb_sync_map(struct iommu_domain *domain,
+>  					unsigned long iova, 
+size_t size)
+>  {
+>  	struct sun50i_iommu_domain *sun50i_domain = 
+to_sun50i_domain(domain);
+> @@ -412,6 +412,8 @@ static void sun50i_iommu_iotlb_sync_map(struct
+> iommu_domain *domain, spin_lock_irqsave(&iommu->iommu_lock, flags);
+>  	sun50i_iommu_zap_range(iommu, iova, size);
+>  	spin_unlock_irqrestore(&iommu->iommu_lock, flags);
+> +
+> +	return 0;
+>  }
+> 
+>  static void sun50i_iommu_iotlb_sync(struct iommu_domain *domain,
+> diff --git a/drivers/iommu/tegra-gart.c b/drivers/iommu/tegra-gart.c
+> index a482ff838b53..44966d7b07ba 100644
+> --- a/drivers/iommu/tegra-gart.c
+> +++ b/drivers/iommu/tegra-gart.c
+> @@ -252,10 +252,11 @@ static int gart_iommu_of_xlate(struct device *dev,
+>  	return 0;
+>  }
+> 
+> -static void gart_iommu_sync_map(struct iommu_domain *domain, unsigned long
+> iova, -				size_t size)
+> +static int gart_iommu_sync_map(struct iommu_domain *domain, unsigned long
+> iova, +			       size_t size)
+>  {
+>  	FLUSH_GART_REGS(gart_handle);
+> +	return 0;
+>  }
+> 
+>  static void gart_iommu_sync(struct iommu_domain *domain,
+> diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+> index 6595454d4f48..932e5532ee33 100644
+> --- a/include/linux/iommu.h
+> +++ b/include/linux/iommu.h
+> @@ -333,8 +333,8 @@ struct iommu_domain_ops {
+>  			      struct iommu_iotlb_gather 
+*iotlb_gather);
+> 
+>  	void (*flush_iotlb_all)(struct iommu_domain *domain);
+> -	void (*iotlb_sync_map)(struct iommu_domain *domain, unsigned long 
+iova,
+> -			       size_t size);
+> +	int (*iotlb_sync_map)(struct iommu_domain *domain, unsigned long 
+iova,
+> +			      size_t size);
+>  	void (*iotlb_sync)(struct iommu_domain *domain,
+>  			   struct iommu_iotlb_gather *iotlb_gather);
 
 
 
