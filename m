@@ -4,78 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EB47C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 06:48:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58563C6FD1C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 07:26:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VLEwZG+K5If1XG31L81o0B8wj/oAKIdjUErA7QakB/Y=; b=YXspreyWHEjsxLh65D7pmbidtS
-	iBRgI3Ok6n/cN0Vlh2Dvk1WRMs+64eUKos5JbV08a9BVHf7/KzEdHCfd7hX6EMkuJR9cY3Jc70ajL
-	zzjFwUnTXxSMIJHWVZiequxuZnMtTOCKAew/bNWIGuyzu6XTmpc2Zg8v9mf+brdIuOuEKlfQcELxf
-	5AccEvo2HnycwyB6ihWWahHvM0La9eNkw7qCAFKUwrKJaMf5lJqwVtaxscBnW+ABpaSHPO1haZUj8
-	rGckohh9ayXL2NRQy3w8o25gHKLLM2j6NOHgc0CqRw46sbq8fElHT2rbah60I+1rSz0hHmrH7bWM9
-	PVk8SPFw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0BSMzhQxV0HjibSsjHG5IXMuBDWYtIn/i372U14mmuQ=; b=CMXB/miN/1vUOTpDKx3MT12jzc
+	BiQJOSuNV+B0UbeatJYux2Jfgi1fPxUxFKw+gzWvENJW0IcuP//uQLZ+blZbOEKY9mqNAaVYrpqht
+	1S1HLwpK3h6eV2c5gHVBB3E5NgxEO2pYGvd3cT8on2A3EzdUPWDMUVwyRyWKDzVBL0cq/vyLN32oE
+	ZO/qFonCb7oVgXrBEoYwAn5eUFH0hFq5b047QolUWJCxlNlysCbUA5BPlXDhBwUxDtWe6phnc34Tt
+	w3DZCtWz0d3DswX9UhV2f8acFvFLfsJlp7anNBdqg7fXWLpVKajctA8A1Ia4I3z5x8MJaPaBv+brg
+	bLbf4eoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbySg-009F5v-ME; Tue, 14 Mar 2023 06:48:42 +0000
-Received: from mail-io1-xd2c.google.com ([2607:f8b0:4864:20::d2c])
+	id 1pbz32-009M4z-Rs; Tue, 14 Mar 2023 07:26:18 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbySQ-009EzY-00
-	for linux-mediatek@lists.infradead.org; Tue, 14 Mar 2023 06:48:29 +0000
-Received: by mail-io1-xd2c.google.com with SMTP id v10so6002562iox.8
-        for <linux-mediatek@lists.infradead.org>; Mon, 13 Mar 2023 23:48:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1678776503;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=VLEwZG+K5If1XG31L81o0B8wj/oAKIdjUErA7QakB/Y=;
-        b=SsS5gi6jc4SKTBaMtIUxlxwJ9fHmgIvDZdQUp4rgJjJ9YF9sCetp08MsS80solmwYR
-         7j9sXVksjByPcl3HUQ3BUAgpIShQmg0PuFVlPEjSONufvTOatwv4FeDv5eZPnuv5veQI
-         0xIVY5J2SobjWPlPrysORvKNKEypfO+J8obNc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678776503;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=VLEwZG+K5If1XG31L81o0B8wj/oAKIdjUErA7QakB/Y=;
-        b=BlH0EIWfZG3YKz94S4FBFqBIL1VAZ9/A9iVhJzTDzrsBXkiXBW9eS+UtUNToq3NdLb
-         LL+5Zi1ehLIZnnukYziRwH7jrkfYib3C7aZ8y95BClT7jlTEm1M6fCIgP9lbjkmFVY+j
-         kXWErWedDIanBm5k4PEL/EI+0ZAmvpAg+5RzXyrSdHtTJzFJIEbUxQc6vaIj/a7qF5ak
-         91RhG9UDVykrDPas6FBjkrCkMbI9kUjgGiYVWDKJCQkYwFhG1IB6PnBazBDynANacnMe
-         9Hrxv7qIgsYOuiHbD0KsHM0uIjUcjIRHrntLptcNZEg0KCF5tJvQXI0r4ZoQQIsnPf5W
-         Xb8A==
-X-Gm-Message-State: AO0yUKWew6IIQVd4MODVmOlmY/Hj4x69cCXyxm9LHlK9xJ+RY3PFWvF4
-	X/jjKq6vq0N93h0TZ7gjm9WxwqLO4m3Ziojrpe+LrA==
-X-Google-Smtp-Source: AK7set/nrtwAWWXklgEcYSS7gTcgiOAry6UysyFd30DNrr9roLVmAoH48HSI9olsf2mB8oed7L7Bg1XJFQCxDvKesy8=
-X-Received: by 2002:a05:6602:115:b0:745:6788:149f with SMTP id
- s21-20020a056602011500b007456788149fmr16670096iot.0.1678776503657; Mon, 13
- Mar 2023 23:48:23 -0700 (PDT)
+	id 1pbz2v-009M27-6T; Tue, 14 Mar 2023 07:26:11 +0000
+X-UUID: 796c1f06c23911eda5805dcd735d5b48-20230314
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=0BSMzhQxV0HjibSsjHG5IXMuBDWYtIn/i372U14mmuQ=;
+	b=L5fz/pItbq8eqOTJPwmfa0a4j7Pr7V0rOFdt1ryyWZkCtCk1RCIj5O6SY0ZOEgMf/ak//+jDRjBIEGnL1q1JQBsRmGTNpqfK3zMND0iY6GQqL67JmIXtz46P9slbmyUcGUlOEn0Ul01mA+FHigrGQIi600WxAlrieXeJ7r/X6Rs=;
+X-CID-P-RULE: Spam_GS6885AD
+X-CID-O-INFO: VERSION:1.1.21,REQID:f8f0e5bb-9071-434e-a2d7-cb6109525573,IP:0,U
+	RL:0,TC:0,Content:0,EDM:25,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS6885AD,ACT
+	ION:quarantine,TS:120
+X-CID-INFO: VERSION:1.1.21,REQID:f8f0e5bb-9071-434e-a2d7-cb6109525573,IP:0,URL
+	:0,TC:0,Content:0,EDM:25,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:120
+X-CID-META: VersionHash:83295aa,CLOUDID:b1a2bcf5-ddba-41c3-91d9-10eeade8eac7,B
+	ulkID:230314152603F5LKW9QJ,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
+	C:nil,Content:0,EDM:5,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 796c1f06c23911eda5805dcd735d5b48-20230314
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 391066232; Tue, 14 Mar 2023 00:26:02 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Tue, 14 Mar 2023 15:25:59 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Tue, 14 Mar 2023 15:25:59 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
+	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang
+	<hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter
+	<daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v3] media: mediatek: vcodec: Force capture queue format to MM21
+Date: Tue, 14 Mar 2023 15:25:57 +0800
+Message-ID: <20230314072557.29669-1-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20230306140543.1813621-1-angelogioacchino.delregno@collabora.com> <6c52bcda08b62593c541d52e269d3982.sboyd@kernel.org>
-In-Reply-To: <6c52bcda08b62593c541d52e269d3982.sboyd@kernel.org>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 14 Mar 2023 14:48:12 +0800
-Message-ID: <CAGXv+5E+SsN085WHzdLGzdWGMwpWLNhgyR5NvobOf75sPG0cRA@mail.gmail.com>
-Subject: Re: [PATCH v6 00/54] MediaTek clocks: full module build and cleanups
-To: Stephen Boyd <sboyd@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, mturquette@baylibre.com, 
-	matthias.bgg@gmail.com, johnson.wang@mediatek.com, miles.chen@mediatek.com, 
-	chun-jie.chen@mediatek.com, daniel@makrotopia.org, fparent@baylibre.com, 
-	msp@baylibre.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com, 
-	zhaojh329@gmail.com, sam.shih@mediatek.com, edward-jw.yang@mediatek.com, 
-	yangyingliang@huawei.com, granquet@baylibre.com, pablo.sun@mediatek.com, 
-	sean.wang@mediatek.com, chen.zhong@mediatek.com, linux-kernel@vger.kernel.org, 
-	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_234826_045593_196D63EE 
-X-CRM114-Status: GOOD (  21.46  )
+X-CRM114-CacheID: sfid-20230314_002609_266170_EA4BED7D 
+X-CRM114-Status: GOOD (  13.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,57 +93,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 14, 2023 at 7:22=E2=80=AFAM Stephen Boyd <sboyd@kernel.org> wro=
-te:
->
-> Quoting AngeloGioacchino Del Regno (2023-03-06 06:04:49)
-> >
-> > This huge series adds more cleanups on top, reducing size and adding mo=
-re
-> > commonization for clock drivers probe/remove, which also includes a new
-> > common probe mechanism for multimedia clock drivers that are usually
-> > probed by mtk-mmsys instead of a dt clock node: thanks to this, it was
-> > finally possible to convert almost all clock drivers to the common prob=
-e
-> > mechanism, which *finally again* makes us able to build all these drive=
-rs
-> > as modules!
-> >
-> > Since this looked like being *the* way forward, I went on converting so=
-me
-> > more drivers away from OF_CLK_DECLARE_DRIVER to full platform_driver(s)=
-,
-> > allowing for more (actually, almost all!) drivers to be built as module=
-s.
-> >
-> > While at it, I also added some more consistency in macros usage by
-> > removing all of the duplicated full macro declaration for MediaTek gate
-> > clocks and replacing all of those with using the GATE_MTK macro instead=
-,
-> > producing a nice reduction in amount of lines per file but, more
-> > importantly, improving readability and eventual future batch changes.
-> >
-> > This amount of commonization will also, in my opinion, greatly improve
-> > the review process for new clock drivers, as they will be mostly just a
-> > list of clocks and won't contain much new code, as it's all going to be
-> > handled in the common places, which also reduces chances to see new clo=
-ck
-> > driver related bugs emerging on one SoC or the other.
-> >
-> > Since I don't own devices with all of the supported MediaTek SoCs, I
-> > could not test some of the conversions on real hardware... but I am
-> > confident that this will work as the drivers are *very* similar on a
-> > per-generation basis.
-> >
-> > This series was build-tested for all (both module and built-in build)
-> > and was manually tested on MT6795, MT8173, MT8192, MT8195.
-> >
->
-> Applied the whole series to clk-next.
+Libyuv is one software library used to covert format. Only covert
+mediatek uncompressed mode MM21 to standard yuv420 for MT21 is
+compressed mode. Need to set capture queue format to MM21 in order
+to use Libyuv when scp firmware support MM21 and MT21.
 
-Hadn't gotten around to retesting this. FWIW,
+Fixes: 7501edef6b1f ("media: mediatek: vcodec: Different codec using different capture format")
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+changed with v2:
+- re-write commit message.
+- change the driver flow.
+changed with v1:
+- add Fixes tag.
+---
+ .../platform/mediatek/vcodec/mtk_vcodec_dec.c | 24 +++----------------
+ 1 file changed, 3 insertions(+), 21 deletions(-)
 
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+index 641f533c417f..c99705681a03 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+@@ -39,10 +39,9 @@ static bool mtk_vdec_get_cap_fmt(struct mtk_vcodec_ctx *ctx, int format_index)
+ {
+ 	const struct mtk_vcodec_dec_pdata *dec_pdata = ctx->dev->vdec_pdata;
+ 	const struct mtk_video_fmt *fmt;
+-	struct mtk_q_data *q_data;
+ 	int num_frame_count = 0, i;
+-	bool ret = true;
+ 
++	fmt = &dec_pdata->vdec_formats[format_index];
+ 	for (i = 0; i < *dec_pdata->num_formats; i++) {
+ 		if (dec_pdata->vdec_formats[i].type != MTK_FMT_FRAME)
+ 			continue;
+@@ -50,27 +49,10 @@ static bool mtk_vdec_get_cap_fmt(struct mtk_vcodec_ctx *ctx, int format_index)
+ 		num_frame_count++;
+ 	}
+ 
+-	if (num_frame_count == 1)
++	if (num_frame_count == 1 || fmt->fourcc == V4L2_PIX_FMT_MM21)
+ 		return true;
+ 
+-	fmt = &dec_pdata->vdec_formats[format_index];
+-	q_data = &ctx->q_data[MTK_Q_DATA_SRC];
+-	switch (q_data->fmt->fourcc) {
+-	case V4L2_PIX_FMT_VP8_FRAME:
+-		if (fmt->fourcc == V4L2_PIX_FMT_MM21)
+-			ret = true;
+-		break;
+-	case V4L2_PIX_FMT_H264_SLICE:
+-	case V4L2_PIX_FMT_VP9_FRAME:
+-		if (fmt->fourcc == V4L2_PIX_FMT_MM21)
+-			ret = false;
+-		break;
+-	default:
+-		ret = true;
+-		break;
+-	}
+-
+-	return ret;
++	return false;
+ }
+ 
+ static struct mtk_q_data *mtk_vdec_get_q_data(struct mtk_vcodec_ctx *ctx,
+-- 
+2.25.1
 
-on MT8183, MT8186, MT8192, MT8195
 
