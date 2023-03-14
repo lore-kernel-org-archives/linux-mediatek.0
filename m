@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A611C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 00:36:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCF2CC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 00:36:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	MIME-Version:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=AaGEegH7rRcetmtGc/yZk+8R1wa4adiaQvnD7B5+y2Q=; b=sVS
-	BSb1bBnZdGBJup0u0+FKIOwlsZpyTlTrKYL5KJ+u76IqP/jaTJv8Uh6PkhmPwPy9vdprCsNvggabL
-	JemPE87WDwUUBAyrTIlwCPJ6kEu7sGp9xhTNsRQ1hrDuBJf7gypVuCX+fi+DtkSGmJe61lV1s38ar
-	VSMKtJUmWA8X5vtN3GElCx1vd24MOOi8MMiv+nFayotmuiOdKcHZ6Xk61pfJ8zmEPbbzFuD15/XdM
-	vBc0pJXncAzSBr/EYIhzh80kUx8gFQ+xGN1CrEGr30w6pU08WcO2w66ythjoYow+/je78uHjM/J8P
-	Fczq22pm6+jQmu9wWgr/5FhaMziwMDw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AFpSdl91p+yHkJBKisXVGqbEGN/oM0+lPdNuX2ACPOw=; b=fJL4yAtcgz7t9ragxQNOPf9UGW
+	ogNQ0kfZqu6bs9F7bXO6i/BohQ3NtbBACHwlu8tJ0wrNC98GzjAxFItqBTmlBqF4TDmEwXP5kwGn0
+	3qQviwqia8Lya0WXCK0ndYFZJUH1CO4JNxZ4qgpAWVc8axMnTYFPbm3rx2dzlqJA4qTeCoCMJWxf8
+	jW5gLx88K1PREMb86SgyRR4DNyGe3f6q/QH6Q13RM8Sz/usAObJcNUkPSiWFpP+nbtW6e/quFAq7I
+	U4AeyOYJoCl1NomcafqXYPrbzwzRbYg+yrumLZ9/Ao8OCh8a183ZNnrdllRRs+FUbylKVDCzsIpIh
+	r78cG1fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbseA-008QqT-Nv; Tue, 14 Mar 2023 00:36:10 +0000
+	id 1pbseJ-008QtB-Uo; Tue, 14 Mar 2023 00:36:20 +0000
 Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbse7-008Qog-Gn; Tue, 14 Mar 2023 00:36:08 +0000
+	id 1pbse9-008Qps-6C; Tue, 14 Mar 2023 00:36:10 +0000
 Received: from local
 	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1pbsdl-0005Ll-0T;
-	Tue, 14 Mar 2023 01:35:45 +0100
-Date: Tue, 14 Mar 2023 00:34:05 +0000
+	id 1pbse4-0005Ly-1O;
+	Tue, 14 Mar 2023 01:36:04 +0100
+Date: Tue, 14 Mar 2023 00:34:26 +0000
 From: Daniel Golle <daniel@makrotopia.org>
 To: devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -53,15 +53,17 @@ To: devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
 	Florian Fainelli <f.fainelli@gmail.com>,
 	Andrew Lunn <andrew@lunn.ch>,
 	Vladimir Oltean <vladimir.oltean@nxp.com>
-Subject: [PATCH net 0/2] net: ethernet: mtk_eth_soc: minor SGMII fixes
-Message-ID: <cover.1678753669.git.daniel@makrotopia.org>
+Subject: [PATCH 1/2] net: ethernet: mtk_eth_soc: reset PCS state
+Message-ID: <c820a882db107db60ee2c0f31f633c4b629ec8e2.1678753669.git.daniel@makrotopia.org>
+References: <cover.1678753669.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <cover.1678753669.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_173607_575846_07CFA389 
-X-CRM114-Status: UNSURE (   9.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230313_173609_243522_3EF0AA52 
+X-CRM114-Status: GOOD (  10.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,33 +79,50 @@ Cc: Alexander Couzens <lynxis@fe80.eu>, =?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mor
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This small series brings two minor fixes for the SGMII unit found in
-MediaTek's router SoCs.
+Reset the internal PCS state machine when changing interface mode.
+This prevents confusing the state machine when changing interface
+modes, e.g. from SGMII to 2500Base-X or vice-versa.
 
-The first patch resets the PCS internal state machine on major
-configuration changes, just like it is also done in MediaTek's SDK.
+Fixes: 7e538372694b ("net: ethernet: mediatek: Re-add support SGMII")
+Reviewed-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+Tested-by: Bjørn Mork <bjorn@mork.no>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 4 ++++
+ drivers/net/ethernet/mediatek/mtk_sgmii.c   | 4 ++++
+ 2 files changed, 8 insertions(+)
 
-The second patch makes sure we only write values and restart AN if
-actually needed, thus preventing unnesseray loss of an existing link
-in some cases.
-
-Both patches have previously been submitted as part of the series
-"net: ethernet: mtk_eth_soc: various enhancements" which grew a bit
-too big and it has correctly been criticized that some of the patches
-should rather go as fixes to net-next.
-
-This new series tries to address this.
-
-Daniel Golle (2):
-  net: ethernet: mtk_eth_soc: reset PCS state
-  net: ethernet: mtk_eth_soc: only write values if needed
-
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  4 +++
- drivers/net/ethernet/mediatek/mtk_sgmii.c   | 28 ++++++++++++---------
- 2 files changed, 20 insertions(+), 12 deletions(-)
-
-
-base-commit: 512dd354718b98c60d4ff6017ff8c9f66c10d03f
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index b65de174c3d9..084a6badef6d 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -542,6 +542,10 @@
+ #define SGMII_SEND_AN_ERROR_EN		BIT(11)
+ #define SGMII_IF_MODE_MASK		GENMASK(5, 1)
+ 
++/* Register to reset SGMII design */
++#define SGMII_RESERVED_0	0x34
++#define SGMII_SW_RESET		BIT(0)
++
+ /* Register to set SGMII speed, ANA RG_ Control Signals III*/
+ #define SGMSYS_ANA_RG_CS3	0x2028
+ #define RG_PHY_SPEED_MASK	(BIT(2) | BIT(3))
+diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii.c b/drivers/net/ethernet/mediatek/mtk_sgmii.c
+index bb00de1003ac..612f65bb0345 100644
+--- a/drivers/net/ethernet/mediatek/mtk_sgmii.c
++++ b/drivers/net/ethernet/mediatek/mtk_sgmii.c
+@@ -88,6 +88,10 @@ static int mtk_pcs_config(struct phylink_pcs *pcs, unsigned int mode,
+ 		regmap_update_bits(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL,
+ 				   SGMII_PHYA_PWD, SGMII_PHYA_PWD);
+ 
++		/* Reset SGMII PCS state */
++		regmap_update_bits(mpcs->regmap, SGMII_RESERVED_0,
++				   SGMII_SW_RESET, SGMII_SW_RESET);
++
+ 		if (interface == PHY_INTERFACE_MODE_2500BASEX)
+ 			rgc3 = RG_PHY_SPEED_3_125G;
+ 		else
 -- 
 2.39.2
+
 
