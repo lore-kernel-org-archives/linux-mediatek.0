@@ -4,132 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50A11C74A44
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 19:53:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67D03C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 20:02:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	In-Reply-To:Content-Transfer-Encoding:Content-Type:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=miaZJb4PZsa2Hwm97y0rCb7WKkOgjMPcOqjtuUXZxmw=; b=cqulU52tf52WF9rPYXgSCHo1/S
-	pp0ijeXP4MuXgWKq899NzY2ibON/U5MJUHFdnvcu0smrxqrjx/XiE8/toZRgnTu8H7+m11gojMj7F
-	OD8GGJNJ7hRMF9VleWMXlyHRtVO8VKjcS/edBF+NUrPujQLKce65VvRgm6pYesL+1dtLqtGx64DKa
-	vVz6FqmNm6eS9cyDJfypZu78W1Zdo18zRcE6x7PTllChfLSpwM88QquMcAXcODXDoHf1uHrn9aTCl
-	G5gxiIWO1mFY4J+0JPnzxPiIRmTq/3wOSVvldzcPDC/PDG3LFLbZxFOUIe1GzZwWZTkcRN0pc7WJx
-	i5fDsnvg==;
+	bh=Z2aWBeYsPOZw3VmzBEuzhxtl3VZ6kigXr5nDO9DM/2U=; b=G2xTl7YbAIYiahYaHKIl7xMcs/
+	kwrwflfK2Up8ZWNc+SEGOTQNiv1bR4M3xci3h+Tg5VduPPBHW0VDRpTCN3XiVLrnjZpASKNjjeMV8
+	6c3djkToTybrWmc3h+jXpUpbmKXZrkxdQv+0w+pTnBOYG2xR9wApJfY5yRLPcR6nMQnbzU6sBI1Yx
+	ImFGpCvH5pP3Ku7HYWF2XIfkcAAUBzh6X1Tup8DscP+FrehZ/j/0T4i6+bBFFHvi0sI4QJrM7l0z3
+	KlMbVK2UsUwGBzP9/Zw/FvQipIs5OGAvcqGzJc973+f1QP+5jSL9rktUBzo8MRMK8aWCDW2wUVyj8
+	M6ESIM3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcAiH-00BOIL-2P;
-	Tue, 14 Mar 2023 19:53:37 +0000
-Received: from mail-db3eur04on062d.outbound.protection.outlook.com ([2a01:111:f400:fe0c::62d] helo=EUR04-DB3-obe.outbound.protection.outlook.com)
+	id 1pcAqY-00BQEy-2U;
+	Tue, 14 Mar 2023 20:02:10 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcAiC-00BODO-26;
-	Tue, 14 Mar 2023 19:53:34 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=VJVi4Xo5tQUCiVCEkAk61y7bEj/fA7KkVKxZYZyFlnpmy+KFYokeP+oj+UxvU/bZ06PL/OE0/BiVfB8FFpfwnLugd50Od2+g7WnElk/L1sIjvO0v2vJcxvAFjfZ3HIZR4IEnLQTJ58zfUK25jOqT4eWXy128VLDn18+MjjMoZS6rKD9AWxfwH/hK5bhHHO003EW20/9KdSXjZQeiunjyKHO2DPBR5hlrVmmvpex67JcKcU6rM23g2l1KjHE6Dl+mv3TcYFzUDlRQ6dyM0+LM7Lw/MPGI6Oi4Ud1UgKyI2eH36BmYl1kBmealpoVR6Asoz66LJTK3bg/CS9Av1gcN6A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=miaZJb4PZsa2Hwm97y0rCb7WKkOgjMPcOqjtuUXZxmw=;
- b=oO7nx/NrdBI8o3Jdae3qrML879xlHmb6uKVGTvhD9DQOLXoFA7dyKadF93achxOx3bityMdhqUJxVPs8RodnsDP9+Qv80CntsSP232XrBa2HxBdJIKymbRMzoXcBjFHWsUdypnY5bmICqL2q/wgskqYUTScpSgQFmdSBkOmEcme51Quim/62gn+2Nb7gR9vl4FGOtvKm0Fp+QTpeCK1P/aVpeOF4bi/oFg0Di6cx3TTa5SVqk8i8XgclRFr1bZ0vrYbmExDAkJToqCMrDZTxUixHC7WeE9JMDLZYoGrdJfz01lpE/I2aPvtlbd+UyGDozdeoeFLDyv3YuEO4k/6TGA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=miaZJb4PZsa2Hwm97y0rCb7WKkOgjMPcOqjtuUXZxmw=;
- b=fGFHB+3jbw8UtRFRKEOFv58adBkFBSr5awMmd4cEqZszUe9oGGfRTXGbeWEE3VZCblfopKVm3TdjdEtmWHJ3W1TJ+1fhI12muNZQ1Wqh6EroAHB4cuvnCfF7gWGwrdADF9nocvr7WebZSw2V9z9URhHHJh6vzo+Sn6w/dpAFhU4=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from AM0PR04MB6452.eurprd04.prod.outlook.com (2603:10a6:208:16d::21)
- by GV1PR04MB9088.eurprd04.prod.outlook.com (2603:10a6:150:23::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.26; Tue, 14 Mar
- 2023 19:53:27 +0000
-Received: from AM0PR04MB6452.eurprd04.prod.outlook.com
- ([fe80::29a3:120c:7d42:3ca8]) by AM0PR04MB6452.eurprd04.prod.outlook.com
- ([fe80::29a3:120c:7d42:3ca8%7]) with mapi id 15.20.6178.026; Tue, 14 Mar 2023
- 19:53:27 +0000
-Date: Tue, 14 Mar 2023 21:53:22 +0200
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Subject: Re: [PATCH net-next v13 11/16] net: dsa: mt7530: use external PCS
- driver
-Message-ID: <20230314195322.tsciinumrxtw64o5@skbuf>
-References: <cover.1678357225.git.daniel@makrotopia.org>
- <2ac2ee40d3b0e705461b50613fda6a7edfdbc4b3.1678357225.git.daniel@makrotopia.org>
- <e99cc7d1-554d-5d4d-e69a-a38ded02bb08@arinc9.com>
- <ZBCyqdfaeF/q8oZr@makrotopia.org>
- <c07651cd-27b4-5ba4-8116-398522327d27@arinc9.com>
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <c07651cd-27b4-5ba4-8116-398522327d27@arinc9.com>
-X-ClientProxiedBy: AS4P192CA0023.EURP192.PROD.OUTLOOK.COM
- (2603:10a6:20b:5e1::9) To AM0PR04MB6452.eurprd04.prod.outlook.com
- (2603:10a6:208:16d::21)
+	id 1pcAqW-00BQDG-0t;
+	Tue, 14 Mar 2023 20:02:09 +0000
+Received: by mail-ed1-x534.google.com with SMTP id x13so19502912edd.1;
+        Tue, 14 Mar 2023 13:02:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678824121;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Z2aWBeYsPOZw3VmzBEuzhxtl3VZ6kigXr5nDO9DM/2U=;
+        b=lw9U5mN5yNQ8LCsLdSPoz/LDlbOc3gdpgfgiPbj+UqVyBLryGF2SizPvnYrGuXei2B
+         8CW7NuAiXt4lKM4L9hLgAXaccTOgRMCI1EvGQWwXwoLfbSjekCLkx04ulURMT7COkO4t
+         J++Ji4mnWJ2UzCR+dvqXSdOOQb3sEJxSRc0R9uXLeMKtpVefTko8JVJiowBonJ/C3gBf
+         QQfQI+JmzBhQwe8tsP9bYsRCCsLEEdhQi0ckBlSevIeYHRThMVn730fagDOm32V7a1HE
+         ZDvYKKwjM/xqSLM7VFhMoyBfgNqbVnesZJb6FBMHIWhX9FQIa+DGEu+4K8/FRwIdyO0Q
+         eW2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678824121;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Z2aWBeYsPOZw3VmzBEuzhxtl3VZ6kigXr5nDO9DM/2U=;
+        b=2KMwP8sQOLYFilqrDV8IKWYhmDiOmIDuzu/mPSVrpJcvHlDfRGKnMt4el/JszIh2Mc
+         p09CkCbtrn6f2A1G4VxcatWxdm6GnbzfcpnSwX/dXLK0sdkO1Yvmmuu8M/sv0mvu7R3z
+         09JmpV9BO3u5wJ0ovxiUw1dyFzmqdg9jTkWs4t8+oNTpp+zbFvKTwgrweargJM/KR9AO
+         pghTSrJzmm4iTk2Ouh1moKAoa+UB79kQuxw28hY6T6rZFn4UCUNTavMbG/NJyYH/roZf
+         skd1/A00gqstjIJS418pSRbtsEm7Ohf/r3SiJMGNAyvdflozSSFlquDPx6m8ohB59Pu8
+         rw5A==
+X-Gm-Message-State: AO0yUKWqUNXHtCP0QL+2nmCoX24PrNc/qoVHTMQjXNMAuyXG6lBQ7k62
+	9Tn3M6wV0m6UM8i5w4ycneM=
+X-Google-Smtp-Source: AK7set9e9EO060s4bRckBVlG+IlgdCeWavxzh4N5oYIX6Pb2j4hXy67uRYvwwfD6th6kq9HthDHzWQ==
+X-Received: by 2002:a05:6402:ce:b0:4fa:96fd:797b with SMTP id i14-20020a05640200ce00b004fa96fd797bmr363385edu.6.1678824121330;
+        Tue, 14 Mar 2023 13:02:01 -0700 (PDT)
+Received: from jernej-laptop.localnet (82-149-1-233.dynamic.telemach.net. [82.149.1.233])
+        by smtp.gmail.com with ESMTPSA id lj6-20020a170906f9c600b008bbc9115038sm1534607ejb.56.2023.03.14.13.01.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 14 Mar 2023 13:02:00 -0700 (PDT)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
+To: Sean Wang <sean.wang@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Tony Lindgren <tony@atomide.com>,
+ Haojian Zhuang <haojian.zhuang@linaro.org>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>, Chen-Yu Tsai <wens@csie.org>,
+ Samuel Holland <samuel@sholland.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Rob Herring <robh@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-renesas-soc@vger.kernel.org,
+ linux-sunxi@lists.linux.dev
+Subject:  Re: [PATCH] pinctrl: Use of_property_present() for testing DT property
+ presence
+Date: Tue, 14 Mar 2023 21:01:59 +0100
+Message-ID: <3218406.aeNJFYEL58@jernej-laptop>
+In-Reply-To: <20230310144721.1544669-1-robh@kernel.org>
+References: <20230310144721.1544669-1-robh@kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM0PR04MB6452:EE_|GV1PR04MB9088:EE_
-X-MS-Office365-Filtering-Correlation-Id: e50a914e-ab2d-4382-03d0-08db24c5c72b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	QveSU+4/1TzNL1BIUPJeDWTSuMVjO1nDABoe1F+ktkLrsYbBNNFRWZAXf4IJ5U5h0eQ6sA9Fu6Isag78vHXjbndA9rLwa3h16GE6MUYGjJ+/dfoRhxtsMsFOIbjLuNMeKsBgxH3ars60VgQhfn/w1eh5Guy/BHU69LL6P6OwsvoJ9UhSVvusqw3AF1PjV+pcc5LEfYtadX2D7R0iSoNnofIjSXIR720udpc3gL7NvWghmdjJozn/sTQ85dFixf/qHz/uk1blRKoglfUXJcFILj53gvh2XdLVRcHbQmguUlD6TEKLXODP3+wTV0GxJ3JaH6VZNvq0sOMsB5q2jKwbwRyZN9806ylauEnYPtB/s1+Oijmi11z62MyNxe05CSjEe6dY6ZRndUQlVpwIgQWEAMZPXa3FKOe6AMJmTrABM6y7cuV55Hefl/nC3N5a28FJjC1wCUtbNDogyWvM8H9K5n8LSL1ThMvfVtEZyES+GMQ4BxXvZa56AaBeIAYOxk/imjsanMmW7qhIwvzLqu/I/xVcIYJV7VhkIOMLjyx3O7rxLd96/t3DTL3TJas9nYGV23m9kD1N8aMJqWxGJrH8U8NNFRLN0BcfdjXiQDj/1G0gqYR5OJGQUCuBTstTLA11cMKGhppnJ5/H1fJ+mQpbiQ==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM0PR04MB6452.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(7916004)(39860400002)(366004)(346002)(376002)(136003)(396003)(451199018)(7416002)(44832011)(4744005)(5660300002)(8936002)(2906002)(41300700001)(38100700002)(86362001)(478600001)(8676002)(66946007)(66556008)(6486002)(6666004)(66476007)(6916009)(4326008)(33716001)(316002)(54906003)(9686003)(186003)(6506007)(6512007)(1076003)(26005);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?b29FSmlhRS9UN1ZFOTF1ejJtV0VjYnppeVI2YmkrS0hMNDdYQkZLbjAveGd5?=
- =?utf-8?B?aXJxM2hIdXZNZmkvZ0VrOXFvMjdHVThzSkloeXRpL1VENXhtcWJBaGkyQmMz?=
- =?utf-8?B?QXB6ejJLdHhleGRRYmlzekdaUy9yUjNSdzlQTTdVV2V0QXVjL1U4MWlUWTRp?=
- =?utf-8?B?Y1hPVjl1d1BxekRYZXB2d1R2aDRLZFlHQURQbG1VS1V2OEJUdXRsdi9KNUJh?=
- =?utf-8?B?V1dvM1FIZjAvM09VN2p2Wk9DMVRGNDZRc2llaFhzenptbHlabDRxajQxMHNB?=
- =?utf-8?B?Wnh5ZEtGUjAva1J1TzdXMUQwN0d3SnpVNHFCT0VjNWVOTkU5STJhdHNGdFhz?=
- =?utf-8?B?bm1VbjZkUDBqazZyelU5Mm94YlZWWm9SK0Nzb3BWWCtLbXpLQkpCeFY4MGNX?=
- =?utf-8?B?OTZBUDRrN1JUSDRLNHplUHg1bk9DeGM1eVd1WXo5UHo2Z29jWHluU2VDSE1M?=
- =?utf-8?B?SGg3ZXFJUEhIamZJeXh1K1NWbUJqdnFtR0Y5dEV4aDdiMHhFK3owUnI0c3hS?=
- =?utf-8?B?TjM3QUdYL29NaDNDS2tLWUdQNnp1MWIzb3NxL1ZiWDd3dXZNZjVoQWtQL053?=
- =?utf-8?B?emVDV2dyU3U3NWFzWDRZYUtjM0Q3dFdiSGFRVDNMOHB1Mkc2SnltN01mMkRR?=
- =?utf-8?B?NWFLK1lwQ1lXeFNjMCtUUHdoc0lMOUZXbGQxYmI1YytmTE53YWJBYnowMU9a?=
- =?utf-8?B?NG0wR2RNUTZlbXdKeWFIdWdyMm00dHdlWUZqOTVxNkdFdFpWNHJXVzBKeVR6?=
- =?utf-8?B?YURwbWIvbkM5ZUM5SjJtaGlmQnNtd2E2RW9hTkJ6NHliT2lxYzhWM2lFMVp3?=
- =?utf-8?B?UjJnV2I1QnJHSk1aQURjdXJZd0Q0OUQzQnNqckYxYWlZMzVLTUltakczc1pI?=
- =?utf-8?B?OHB3Z2FmamFLbXZ4b0NnVXJ2MEhlYVk0Vm9HWHVOVXNveVM0aFhiOEV2UFJE?=
- =?utf-8?B?bWp2dUkyckt2WWp0WWYwcUx0aDlacmgyRGJ4M015WnBydmJCbjNURjRXNTZv?=
- =?utf-8?B?cVl0Y3B4blRVc2xzcGUxMlBXSndSWmg2S1REODNuUXl6WGdJSWxwMnNyOWls?=
- =?utf-8?B?V1NkeHl1Nm83dlBvTHY4YUd3R25lUitMdUJaUU1MNFBtS2JsbXhjYnYvVnBC?=
- =?utf-8?B?Qm5ZNGtxdzhheXVvdlUySDBrNVdKOS9ONCtWdHNRcWdaVll5ZTgwdVdFZGl4?=
- =?utf-8?B?WjFVUVZFaDhXSXJPUk9OR2FOR2ZHZE9PT2hzaWNodXFRWXpXTys5ZnNiZTBD?=
- =?utf-8?B?bmFubmVKRVZCSEpLT2prdzdpSm9sK3VPaDh2MHkwRGgwNFhLMU1JWE94TXVP?=
- =?utf-8?B?RDU1d2J2VTQxRnp6WFhqeUN5Y1VMYnBZUWxxbVQzQ0twN216T0hwTVRWSHhx?=
- =?utf-8?B?ZElLa2JqVFhLYUNIbDM5c3BUM0x1RjFXeGFoVmxIMFRkUDZQRGNRSkE3ekJX?=
- =?utf-8?B?WVZpRS9kL2RYWngrU1AwdzMzOTRLQWI3WWh1UWxBdnBNU0NhSkxwWmkzSFJ5?=
- =?utf-8?B?TklBUWk1TWpzVjh2elZrMHJVZHZ2V0VEYi9jOTZ3ZXE1QmorbXFBZG1UU2E3?=
- =?utf-8?B?V3dWMm5jZmZXeVN6aDZsNFI5N3hTMmkyQnpGcm1BRE84b0xieHo5emgveW4x?=
- =?utf-8?B?aFF0VHh0K0d3ZmNWcFZ6QzlvQVROMHNkcU1WSTAwN05RaGNUalZFaXc1MkVr?=
- =?utf-8?B?ZDBpNDVyQTVkMHJLWldRYmRjYnZGdUVBemtJcWEza3ZqbWRBUjlITlR1SWJY?=
- =?utf-8?B?bGphNFVCenJpYklNWko4MGU4cGNBK0E0VFUzT1dRTU5UYXB3dFBrcTJUNDhv?=
- =?utf-8?B?ejN6UDZGMlhBNmtEZ1hXMG8zMFJkaDRtcGpnZGFkNzVTL3o2NU4rOVZtbmpi?=
- =?utf-8?B?VFhMS0k0c21Ec2NIdVNPQS9CVm82VkdsdStnYUxoSkcvRC8yY3BzcFdVTjli?=
- =?utf-8?B?enBpU2pERHgwczE1akJ5SUJudHB1Yy8yckZDUkEyOHhtR3ErdTdkUzJFVnJB?=
- =?utf-8?B?Y241Vi83Rjlab09EalhjcFlZZFdydTJZY0N0S2tOaDMzY3hyUVpCVnJkc1JC?=
- =?utf-8?B?QmcwaW5HeXFCVnB2cXJyUWNqRUZEb1hLbWVpeHh3RWw4elZ0R3h2RG1wWmpD?=
- =?utf-8?B?ZnlEYU9EeHZIMVhqUEI4RksyU0xWQkt0RHhna3E1UFhlb2czZjFUT0xDVWZZ?=
- =?utf-8?B?Qmc9PQ==?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e50a914e-ab2d-4382-03d0-08db24c5c72b
-X-MS-Exchange-CrossTenant-AuthSource: AM0PR04MB6452.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Mar 2023 19:53:27.4355
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: SBiPiLx/UklGNEHRL1LRRAdOXqYzzi8waHFAFQUmuMYd2Ckm2Fifv5QGCb+U7JoYiAYThLnkA1kU0iWFrMC+5g==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV1PR04MB9088
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230314_125332_957745_BD78EB33 
-X-CRM114-Status: GOOD (  10.85  )
+X-CRM114-CacheID: sfid-20230314_130208_313148_57858B04 
+X-CRM114-Status: GOOD (  25.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -141,18 +100,169 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Daniel Golle <daniel@makrotopia.org>, Eric Dumazet <edumazet@google.com>, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Heiner Kallweit <hkallweit1@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Alexander Couzens <lynxis@fe80.eu>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, =?utf-8?B?QmrDuHJu?= Mork <bjorn@mork.no>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 14, 2023 at 09:21:40PM +0300, Arınç ÜNAL wrote:
-> I was going to send a mail to netdev mailing list to ask for opinions
-> whether we should rename the mt7530 DSA driver to mt753x and rename these
-> functions you mentioned to mt753x so it's crystal clear what code is for
-> what hardware. Now that we glossed over it here, I guess I can ask it here
-> instead.
+Dne petek, 10. marec 2023 ob 15:47:20 CET je Rob Herring napisal(a):
+> It is preferred to use typed property access functions (i.e.
+> of_property_read_<type> functions) rather than low-level
+> of_get_property/of_find_property functions for reading properties. As
+> part of this, convert of_get_property/of_find_property calls to the
+> recently added of_property_present() helper when we just want to test
+> for presence of a property and nothing more.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>  drivers/pinctrl/mediatek/pinctrl-moore.c |  2 +-
+>  drivers/pinctrl/pinctrl-single.c         |  4 ++--
+>  drivers/pinctrl/pinctrl-stmfx.c          |  2 +-
+>  drivers/pinctrl/renesas/pinctrl.c        |  4 ++--
+>  drivers/pinctrl/stm32/pinctrl-stm32.c    |  2 +-
+>  drivers/pinctrl/sunxi/pinctrl-sunxi.c    | 20 ++++++++++----------
 
-My 2 cents - make your first 100 useful commits on this driver, which at
-the very least produce a change in the compiled output, and then go on a
-renaming spree as much as you want.
+For sunxi:
+Reviewed-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+
+Best regards,
+Jernej
+
+>  6 files changed, 17 insertions(+), 17 deletions(-)
+> 
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.c
+> b/drivers/pinctrl/mediatek/pinctrl-moore.c index 007b98ce5631..8649a2f9d324
+> 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-moore.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-moore.c
+> @@ -586,7 +586,7 @@ static int mtk_build_gpiochip(struct mtk_pinctrl *hw)
+>  	 * Documentation/devicetree/bindings/gpio/gpio.txt on how to
+>  	 * bind pinctrl and gpio drivers via the "gpio-ranges" property.
+>  	 */
+> -	if (!of_find_property(hw->dev->of_node, "gpio-ranges", NULL)) {
+> +	if (!of_property_present(hw->dev->of_node, "gpio-ranges")) {
+>  		ret = gpiochip_add_pin_range(chip, dev_name(hw->dev), 
+0, 0,
+>  					     chip->ngpio);
+>  		if (ret < 0) {
+> diff --git a/drivers/pinctrl/pinctrl-single.c
+> b/drivers/pinctrl/pinctrl-single.c index 190923757cda..0dabbcf68b9f 100644
+> --- a/drivers/pinctrl/pinctrl-single.c
+> +++ b/drivers/pinctrl/pinctrl-single.c
+> @@ -939,11 +939,11 @@ static int pcs_parse_pinconf(struct pcs_device *pcs,
+> struct device_node *np,
+> 
+>  	/* cacluate how much properties are supported in current node */
+>  	for (i = 0; i < ARRAY_SIZE(prop2); i++) {
+> -		if (of_find_property(np, prop2[i].name, NULL))
+> +		if (of_property_present(np, prop2[i].name))
+>  			nconfs++;
+>  	}
+>  	for (i = 0; i < ARRAY_SIZE(prop4); i++) {
+> -		if (of_find_property(np, prop4[i].name, NULL))
+> +		if (of_property_present(np, prop4[i].name))
+>  			nconfs++;
+>  	}
+>  	if (!nconfs)
+> diff --git a/drivers/pinctrl/pinctrl-stmfx.c
+> b/drivers/pinctrl/pinctrl-stmfx.c index 1181c4b506b1..3c031692e44d 100644
+> --- a/drivers/pinctrl/pinctrl-stmfx.c
+> +++ b/drivers/pinctrl/pinctrl-stmfx.c
+> @@ -632,7 +632,7 @@ static int stmfx_pinctrl_probe(struct platform_device
+> *pdev) pctl->dev = &pdev->dev;
+>  	pctl->stmfx = stmfx;
+> 
+> -	if (!of_find_property(np, "gpio-ranges", NULL)) {
+> +	if (!of_property_present(np, "gpio-ranges")) {
+>  		dev_err(pctl->dev, "missing required gpio-ranges 
+property\n");
+>  		return -EINVAL;
+>  	}
+> diff --git a/drivers/pinctrl/renesas/pinctrl.c
+> b/drivers/pinctrl/renesas/pinctrl.c index b74147800319..5c71e168b370 100644
+> --- a/drivers/pinctrl/renesas/pinctrl.c
+> +++ b/drivers/pinctrl/renesas/pinctrl.c
+> @@ -125,8 +125,8 @@ static int sh_pfc_dt_subnode_to_map(struct pinctrl_dev
+> *pctldev, * inside a subnode nor across subnodes.
+>  	 */
+>  	if (!pmx->func_prop_name) {
+> -		if (of_find_property(np, "groups", NULL) ||
+> -		    of_find_property(np, "pins", NULL)) {
+> +		if (of_property_present(np, "groups")||
+> +		    of_property_present(np, "pins")) {
+>  			pmx->func_prop_name = "function";
+>  			pmx->groups_prop_name = "groups";
+>  			pmx->pins_prop_name = "pins";
+> diff --git a/drivers/pinctrl/stm32/pinctrl-stm32.c
+> b/drivers/pinctrl/stm32/pinctrl-stm32.c index cb33a23ab0c1..66a25becd8f5
+> 100644
+> --- a/drivers/pinctrl/stm32/pinctrl-stm32.c
+> +++ b/drivers/pinctrl/stm32/pinctrl-stm32.c
+> @@ -1374,7 +1374,7 @@ static struct irq_domain
+> *stm32_pctrl_get_irq_domain(struct platform_device *pde struct device_node
+> *parent;
+>  	struct irq_domain *domain;
+> 
+> -	if (!of_find_property(np, "interrupt-parent", NULL))
+> +	if (!of_property_present(np, "interrupt-parent"))
+>  		return NULL;
+> 
+>  	parent = of_irq_find_parent(np);
+> diff --git a/drivers/pinctrl/sunxi/pinctrl-sunxi.c
+> b/drivers/pinctrl/sunxi/pinctrl-sunxi.c index f35179eceb4e..1dc1882cbdd7
+> 100644
+> --- a/drivers/pinctrl/sunxi/pinctrl-sunxi.c
+> +++ b/drivers/pinctrl/sunxi/pinctrl-sunxi.c
+> @@ -224,16 +224,16 @@ static int sunxi_pctrl_get_group_pins(struct
+> pinctrl_dev *pctldev,
+> 
+>  static bool sunxi_pctrl_has_bias_prop(struct device_node *node)
+>  {
+> -	return of_find_property(node, "bias-pull-up", NULL) ||
+> -		of_find_property(node, "bias-pull-down", NULL) ||
+> -		of_find_property(node, "bias-disable", NULL) ||
+> -		of_find_property(node, "allwinner,pull", NULL);
+> +	return of_property_present(node, "bias-pull-up") ||
+> +		of_property_present(node, "bias-pull-down") ||
+> +		of_property_present(node, "bias-disable") ||
+> +		of_property_present(node, "allwinner,pull");
+>  }
+> 
+>  static bool sunxi_pctrl_has_drive_prop(struct device_node *node)
+>  {
+> -	return of_find_property(node, "drive-strength", NULL) ||
+> -		of_find_property(node, "allwinner,drive", NULL);
+> +	return of_property_present(node, "drive-strength") ||
+> +		of_property_present(node, "allwinner,drive");
+>  }
+> 
+>  static int sunxi_pctrl_parse_bias_prop(struct device_node *node)
+> @@ -241,13 +241,13 @@ static int sunxi_pctrl_parse_bias_prop(struct
+> device_node *node) u32 val;
+> 
+>  	/* Try the new style binding */
+> -	if (of_find_property(node, "bias-pull-up", NULL))
+> +	if (of_property_present(node, "bias-pull-up"))
+>  		return PIN_CONFIG_BIAS_PULL_UP;
+> 
+> -	if (of_find_property(node, "bias-pull-down", NULL))
+> +	if (of_property_present(node, "bias-pull-down"))
+>  		return PIN_CONFIG_BIAS_PULL_DOWN;
+> 
+> -	if (of_find_property(node, "bias-disable", NULL))
+> +	if (of_property_present(node, "bias-disable"))
+>  		return PIN_CONFIG_BIAS_DISABLE;
+> 
+>  	/* And fall back to the old binding */
+> @@ -1424,7 +1424,7 @@ static int sunxi_pinctrl_setup_debounce(struct
+> sunxi_pinctrl *pctl, return 0;
+> 
+>  	/* If we don't have any setup, bail out */
+> -	if (!of_find_property(node, "input-debounce", NULL))
+> +	if (!of_property_present(node, "input-debounce"))
+>  		return 0;
+> 
+>  	losc = devm_clk_get(pctl->dev, "losc");
+
+
+
+
 
