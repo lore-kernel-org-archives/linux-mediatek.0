@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79A00C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 16:03:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CB8EC6FD1C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 16:04:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PfjFZ5rXzr3BIOF/GtTdCC+o1HvEGjF/qwaSlO3r/Sk=; b=jeP+7xfLHMnt31WNKYKdvTkC6K
-	H68IQm80usXJVziP8Y7G5oFOY1zOZSWrh+4YDx3vxwlE6vVYpLtU0nlB7BJPkbEHLqiIiAbjbJ633
-	OiVYlziqIJL/eBoiOuGtgj4QZ+QSTDyivPtkf66RzyArpuB2YAZ6J8Rj81HGFr1BDRO9L6RZ8FmpX
-	KqMxQbdMspnHJ9XSSBkXWsbJVEIr8mdSw85LpiKKsNVui93YY1yVwaSZKpOvhs/RYWNi+RVJ61uKZ
-	heEhgbaNZ191BaGpMMD8N8rvARX6c7qDvT+kfRkAE9QZlTHBRI8cue5ntaJzOFuydNKwQv6FRIOpG
-	qsVa5dfA==;
+	bh=VzvoSA87yEUtF+tV1RSI+R4AM6DEhHX5TP5UQ8plIOc=; b=YsziDUGdo0elwAHPhsKxe033jS
+	BbAVsLU74XSy6T8o5bhvCwA4/c+wz9bVSgiN74OIn0PciMR2t+Xk+aLgMabCqxyF+s1Zm060E0fNl
+	UeTJVUMJlwP9CBZHwK03AqvjYR/WDSF1U9DfMtWcdAsFv5IFYll/VjxupVO53gJO894YrqHEzdNXQ
+	qxnDowAkGFjP43sUFntrE5wvSU1KERtplI4wyfLNsBOD0F6WC0FhOSztwoVce6UXk9vQ3tOdS/qXP
+	PipqoWQ65bg0lkolESy0bC5R7oNaqpZHRxk12PeTGXe7UyBjAD3Q9VFmz0kAcyYS6MHu4gFxG0ZkZ
+	uyJoMK3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc77Q-00AipO-0R;
-	Tue, 14 Mar 2023 16:03:20 +0000
-Received: from relay2-d.mail.gandi.net ([217.70.183.194])
+	id 1pc78a-00AjHh-0m;
+	Tue, 14 Mar 2023 16:04:32 +0000
+Received: from relay4-d.mail.gandi.net ([2001:4b98:dc4:8::224])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc77I-00Aike-2d;
-	Tue, 14 Mar 2023 16:03:15 +0000
+	id 1pc78V-00AjEK-0J;
+	Tue, 14 Mar 2023 16:04:29 +0000
 Received: (Authenticated sender: paul.kocialkowski@bootlin.com)
-	by mail.gandi.net (Postfix) with ESMTPSA id 02D474000A;
-	Tue, 14 Mar 2023 16:02:56 +0000 (UTC)
+	by mail.gandi.net (Postfix) with ESMTPSA id 50870E0017;
+	Tue, 14 Mar 2023 16:04:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1678809787;
+	t=1678809862;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=PfjFZ5rXzr3BIOF/GtTdCC+o1HvEGjF/qwaSlO3r/Sk=;
-	b=Sf8NBWQgwLcalyizQeDgcbWTJBfhbNu7MgV+yCyqYvr7LR05IJHLkXzBdrWUIumTxANHn+
-	hB2lPIAKzi7PvefYp99DwN8aiv6h6xV84w1Z29T02/TP3Z/1CoDzcU/bFRHCZs0SWhsz2N
-	BhCaPOG/prYzw8L5sgOQMkCl+63t9qSqxMcHFEs+O8k1jdyCuZ+C0saia/3u12WSv1LMHF
-	ZFr1XpWb4UCCE8eYDePcW5uZtlAtB+j3qPKWw2aBAQiJIRucxMto3eeBgeDn10TFk9xtTh
-	H931WYtAY7hVHHwBcZoKAzGdAAp678EK8Juf6ZsL5nqnuoAnLe1pE+od7WFhKQ==
-Date: Tue, 14 Mar 2023 17:02:56 +0100
+	bh=VzvoSA87yEUtF+tV1RSI+R4AM6DEhHX5TP5UQ8plIOc=;
+	b=Mf7kF6fAwocwFnRSgH139yTFgwuKjJqXByVHbKuJCYcIvus7Q+p+nnSARLdf2u3y1lhBvv
+	E0giuU+tv2ElM8Ui7R5XfrCYAmsz9pn9BIENV+MyJrXvGw2AQRngo8ezPizJ8dzyYKGf//
+	uBsF0SwJ3i7l/7u/3bRcm9RAuaJBvI18qel5c1uTvFp6nooDaCFqtS+buXYs8sZMmQfd9B
+	bFWO/Am/FKbpGfrdBFN9/nSlRmAGeNbZCp+x2GxTxCmUwgXU1ybYHcp6Jq4jbZzUzUfL4J
+	y0A04F7q1E8AU2+AcGLuJmWn1v820ubStPcmoSwWyiqMV3Tn0ZGioFcKi3k5fw==
+Date: Tue, 14 Mar 2023 17:04:13 +0100
 From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Cc: Joe Tessler <jrt@google.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
@@ -81,19 +81,19 @@ Cc: Joe Tessler <jrt@google.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
 	linux-arm-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 16/28] media: platform: sun6i-csi: drop of_match_ptr for
- ID table
-Message-ID: <ZBCasA/J2Ci6OEZw@aptenodytes>
+Subject: Re: [PATCH 17/28] media: platform: sun6i-mipi-csi2: drop
+ of_match_ptr for ID table
+Message-ID: <ZBCa/SjuJj3LnZ55@aptenodytes>
 References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
- <20230312131318.351173-16-krzysztof.kozlowski@linaro.org>
+ <20230312131318.351173-17-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="Il/EvjUmeeGoz4+Y"
+	protocol="application/pgp-signature"; boundary="mCL4hlvlOht5eppU"
 Content-Disposition: inline
-In-Reply-To: <20230312131318.351173-16-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230312131318.351173-17-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230314_090313_259387_0F2FFB4D 
-X-CRM114-Status: GOOD (  18.36  )
+X-CRM114-CacheID: sfid-20230314_090427_441368_1BA9DE68 
+X-CRM114-Status: GOOD (  18.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,7 +109,7 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---Il/EvjUmeeGoz4+Y
+--mCL4hlvlOht5eppU
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
@@ -122,9 +122,9 @@ On Sun 12 Mar 23, 14:13, Krzysztof Kozlowski wrote:
 > matching via PRP0001, even though it might not be relevant here).  This
 > also fixes !CONFIG_OF error:
 >=20
->   drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c:401:34: error: =E2=
-=80=98sun6i_csi_of_match=E2=80=99 defined but not used [-Werror=3Dunused-co=
-nst-variable=3D]
+>   drivers/media/platform/sunxi/sun6i-mipi-csi2/sun6i_mipi_csi2.c:751:34: =
+error: =E2=80=98sun6i_mipi_csi2_of_match=E2=80=99 defined but not used [-We=
+rror=3Dunused-const-variable=3D]
 >=20
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
@@ -136,22 +136,22 @@ Thanks !
 Paul
 
 > ---
->  drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c | 2 +-
+>  drivers/media/platform/sunxi/sun6i-mipi-csi2/sun6i_mipi_csi2.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 >=20
-> diff --git a/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c b/drivers=
-/media/platform/sunxi/sun6i-csi/sun6i_csi.c
-> index e3e6650181c8..187a2419da96 100644
-> --- a/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c
-> +++ b/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c
-> @@ -429,7 +429,7 @@ static struct platform_driver sun6i_csi_platform_driv=
-er =3D {
->  	.remove	=3D sun6i_csi_remove,
+> diff --git a/drivers/media/platform/sunxi/sun6i-mipi-csi2/sun6i_mipi_csi2=
+=2Ec b/drivers/media/platform/sunxi/sun6i-mipi-csi2/sun6i_mipi_csi2.c
+> index a220ce849b41..0851b6b4e1ff 100644
+> --- a/drivers/media/platform/sunxi/sun6i-mipi-csi2/sun6i_mipi_csi2.c
+> +++ b/drivers/media/platform/sunxi/sun6i-mipi-csi2/sun6i_mipi_csi2.c
+> @@ -759,7 +759,7 @@ static struct platform_driver sun6i_mipi_csi2_platfor=
+m_driver =3D {
+>  	.remove	=3D sun6i_mipi_csi2_remove,
 >  	.driver	=3D {
->  		.name		=3D SUN6I_CSI_NAME,
-> -		.of_match_table	=3D of_match_ptr(sun6i_csi_of_match),
-> +		.of_match_table	=3D sun6i_csi_of_match,
->  		.pm		=3D &sun6i_csi_pm_ops,
+>  		.name		=3D SUN6I_MIPI_CSI2_NAME,
+> -		.of_match_table	=3D of_match_ptr(sun6i_mipi_csi2_of_match),
+> +		.of_match_table	=3D sun6i_mipi_csi2_of_match,
+>  		.pm		=3D &sun6i_mipi_csi2_pm_ops,
 >  	},
 >  };
 > --=20
@@ -163,20 +163,20 @@ Paul Kocialkowski, Bootlin
 Embedded Linux and kernel engineering
 https://bootlin.com
 
---Il/EvjUmeeGoz4+Y
+--mCL4hlvlOht5eppU
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAmQQmrAACgkQ3cLmz3+f
-v9G0UQgAgqkiTU6DCCn3MAsOxs7XlE6PTVir0WIBXYAO1uUS6eNKjIyBKLCVmKwL
-iTgalBnhTb3SW6j5kYlUmMY0FdvMgQfM1W7uAX52Vk/O0NF2DHSHVLje/jSCbwR+
-DqCCHKeVGRqWZxpPtb4GcbMEtY7xwooPm0SwEGeVcXo9sT9LUght/zJ3Pa6Eet2O
-sSo4BVIZvlqDPwSEuiB4SLH0QJDUI8rzrtYBa2bEzstHwimw0reAtAFpT/g/QnI/
-t+URgXSvKsMgPMaiOtQmsOG5c9mUKipHQVUdeIMxe4KGcIxCWz1DWXgE1FUqHaB9
-1MO6S1SgXwRmWZDToL97PcRr9fqX5A==
-=aAGN
+iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAmQQmv0ACgkQ3cLmz3+f
+v9F4tQf/c8SNKs/s9jh+SCYcb7LnsBT/jMWTrMfcIpvS6n8ytOrw1m5hW2dErbKo
+aA+ODD31BjqVISeN9aDhSGcu7KVahfkt5vb+izqXoHS8RiRFYN2ulUcCOUwf30kn
+rzD4t0QhdFmfegTq2WfFbKMcUYBY39R3BbRE3ZbyuzNT63BO0mGcuoC1ssnekVxR
+4lj/mfgmMjy4+S54g6x6mwn1v3aVK9xkoCxeQo+arhJt9HieG4B0AL2R2eOyoUDa
+UdVjvYd8owBs+thW9y4oY2R+SWMPrGJcZNOjljHVzwT2j7RK6VGMOiiDQDzU8iAC
+hllLNwa3mx5T3fw3QMPZ+NhvyPy6Qg==
+=/D8E
 -----END PGP SIGNATURE-----
 
---Il/EvjUmeeGoz4+Y--
+--mCL4hlvlOht5eppU--
 
