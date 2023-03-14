@@ -4,66 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 121CBC6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 12:43:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 068E4C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 12:47:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7qer/TEf3ViRgymBCPA0wrGw/QtouPYPu9K32fep8uA=; b=lHLlxF2fT62AsHs2vrGQEHXz8A
-	EUCPp1j8XNbovvt3H/5kaSTLWY+gTiWbhHxKXxMbEx7G/pi51VRuxcN9eks0vYddO6wuTahRCsGvM
-	Y2jA0eKkVUkOWlcE5psrTehth9kcDEXzo32ZRlHofdXa8YlVHuGdqU5tNMZjZN+jpCYzQrZ1epuXD
-	B1ipXlMzKZD8vmivmsQyM2XpVS1k4pu+XuaQqMywavVFelZ/Ih7ITtT9n27KVW+nm0ITqzVyiBT57
-	awExiZ3EPZ8zl3v8XP0KYPCMGbVlBM5EcmYRP1YRTnVQpfLLAqC/2++314aYbKqmTT34mwSsgtAZm
-	9t/9Wa9A==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=helyLAaSkHezCDHRaiPEnQcGx2qVQUT/bMk+TbB5Rk8=; b=FZPvHy6UEi/ADwwCookm+QxtGF
+	HKrzUbClTnYimVJMDWFfgTA9KKb/EITWoSc4+7+DHKFKCv4suIPDPURlOpnpdWE5bBkiGeoxMSwU3
+	UPC90ZHsEQkiHQ/AJ8kMO+6a3uG3EybuR/bOFCxqdHTlYNJNszksMpKN5d6ZM42F7P2R+YFgVPM6r
+	iAoN2dUqoFzZ35BCP4TSspWecyzK5P3A+eWpkes1BTVBfACVCcKabTZR8HMTwTc3Djg2cH/FjxnbW
+	/b1mIFoD1PDs8tWq3yx8I2jOUz8E5LnekBqsn9uUpREf4f9vT91ZbUxFPZkGwSxENxtVdX/8pJwe0
+	U3IZs9NQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc406-00A9Qb-0Z;
-	Tue, 14 Mar 2023 12:43:34 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pc43N-00ABgk-32;
+	Tue, 14 Mar 2023 12:46:57 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc401-00A9Mi-2e;
-	Tue, 14 Mar 2023 12:43:32 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 39EF361766;
-	Tue, 14 Mar 2023 12:43:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 433E7C433EF;
-	Tue, 14 Mar 2023 12:43:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1678797809;
-	bh=VqcU0kjoPpaodik/tmc2o/BUXU32GcZs2CiF6oE5zjw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=HqUIFRksW8bruJ6/JG28Rr0lNPfr3ucevPS5CtJIvbdLHnXakhZaEk0tllFAYaNyy
-	 y2CxuqITsHCeum9ddvz70XpUnnCcxmG31LpQyYQVedYV3+df5FeIArQfie9d6JnAiK
-	 P2WHQI8Pv43XNIxvw2yWFM2fCH+bXRw+ypWX4jPeFhVzX09a2P89YhIWrzTVvjjYsi
-	 dxqa7kzrbMGCWpRHjeoDf67mleyHJJc7se1BDBkM47VwFI1LExUyqoaBgb+4JVOW9B
-	 B+i3p+953tvhrK73vHvFUuY34BfY9xCXGhRoYPuw/PgYXyK1IkDq4X49i0ezQnzZwU
-	 Y8J7XvOhLGlVQ==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Roger Lu <roger.lu@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sasha Levin <sashal@kernel.org>,
+	id 1pc43M-00ABfP-1y
+	for linux-mediatek@bombadil.infradead.org;
+	Tue, 14 Mar 2023 12:46:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=helyLAaSkHezCDHRaiPEnQcGx2qVQUT/bMk+TbB5Rk8=; b=gKO77W3NT1vlpE4bcYMdu3ZFgL
+	XQlgLkNp9idqgJlK/cIwt0DvQHj4ibKkXNl7chDR0L3EFNGCjJasEqKnAp8zueBfZr4FaQJQBArOI
+	8zFWCiTN7XgHCr+1fx3068QMGzj8HHbe5ezFvupjBovfyuddCy884c3+mhYQBYyrzCzmxiVB/xznd
+	V1p8BaXn+wjijxVme+i6LPm0FMqZRoXyIGUXyPu97nPGTaYhs9iGPl2AOpVLYEITs/kPA5YOUZEH+
+	NQfGi5uYJGYgsW+Zru5tmMpF5Px981LdNb71rJA5a2i1khVKBwEfn4bX5358yN9HYWRWI/7zH+iZA
+	qWHMcB3A==;
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pc1nu-001k1y-1i
+	for linux-mediatek@lists.infradead.org;
+	Tue, 14 Mar 2023 10:22:52 +0000
+Received: by mail-pl1-x634.google.com with SMTP id a2so16068704plm.4
+        for <linux-mediatek@lists.infradead.org>; Tue, 14 Mar 2023 03:22:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1678789367;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=helyLAaSkHezCDHRaiPEnQcGx2qVQUT/bMk+TbB5Rk8=;
+        b=bYvaecdDD3x6Hr9bDFOAZzQPuTYOvrXzOL2W3Z+W8i6brWc5Ctp8SyoWm2aVQpeEgb
+         6DIfZYAAyXId56J9EwmapBH2fqXJff9mRmVFyNPtdlY6dHsezZZGzTIaNsKWeWFZro93
+         xjxNL0a1AR576oyFoGzpXuNQtGpZbBjuJ2Zv0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678789367;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=helyLAaSkHezCDHRaiPEnQcGx2qVQUT/bMk+TbB5Rk8=;
+        b=ndTNm4VHT41KpNh1bc1bRf9TQK4NwR1naxVr6zhI1oFUv9E6B4FQthSbjGUJ6xOqLA
+         1fN4+OM6P6RQEUntSbih0jNFO3Qn2KsdYS0bLcylCvDA8OESbL1cVHW3sxOfxq6zhZWB
+         nN+TdyUla/LEjG8zo+jq3beLI4uRt1i5oTUNKceL+1tgeR6NSfrzNMbb9Mnp1TpJ/MX0
+         u5FoyFHrygI+dH7LMdsp5C62FGpO8T+lDmsgqrqiukopdpzaB3Oybm5L4nTMoRU1vMl7
+         P3KBA+ZCGYGJRZn4HvmIhulas01QkI4lnqDcE781du6CjQ6V0AiXKmWUdqM/kDU96jew
+         CLeA==
+X-Gm-Message-State: AO0yUKVWOuJRqguiQW8zMlofPZucJRUgnfynyY32zxbV5hGj1GOFXk2L
+	fh17/3Fkh6+MplOu86smq266jw==
+X-Google-Smtp-Source: AK7set9qMrH1n8EpNSZoO1e/VzYoi2/xCMSAQ7Q4krIxrlPWf/u8a4TA/vrS/7VRxRZOGEdKrwLXwA==
+X-Received: by 2002:a17:903:481:b0:1a0:5bb1:3f13 with SMTP id jj1-20020a170903048100b001a05bb13f13mr3142238plb.39.1678789367645;
+        Tue, 14 Mar 2023 03:22:47 -0700 (PDT)
+Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:3718:fdeb:7d7e:b6c0])
+        by smtp.gmail.com with ESMTPSA id j5-20020a170902c3c500b0019cb131b8a5sm1417194plj.32.2023.03.14.03.22.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 14 Mar 2023 03:22:47 -0700 (PDT)
+From: Pin-yen Lin <treapking@chromium.org>
+To: Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-mediatek@lists.infradead.org,
+	linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 02/13] soc: mediatek: mtk-svs: keep svs alive if CONFIG_DEBUG_FS not supported
-Date: Tue, 14 Mar 2023 08:43:14 -0400
-Message-Id: <20230314124325.470931-2-sashal@kernel.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230314124325.470931-1-sashal@kernel.org>
-References: <20230314124325.470931-1-sashal@kernel.org>
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Pin-yen Lin <treapking@chromium.org>
+Subject: [PATCH v2] media: mediatek: vcodec: Use 4K frame size when supported by stateful decoder
+Date: Tue, 14 Mar 2023 18:22:41 +0800
+Message-Id: <20230314102241.1971120-1-treapking@chromium.org>
+X-Mailer: git-send-email 2.40.0.rc1.284.g88254d51c5-goog
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230314_054329_898085_39B7B8AF 
-X-CRM114-Status: GOOD (  11.17  )
+X-CRM114-CacheID: sfid-20230314_102250_700525_2636B672 
+X-CRM114-Status: GOOD (  14.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,73 +111,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Roger Lu <roger.lu@mediatek.com>
+After commit b018be06f3c7 ("media: mediatek: vcodec: Read max resolution
+from dec_capability"), the stateful video decoder driver never really
+sets its output frame size to 4K.
 
-[ Upstream commit 8bf305087629a98224aa97769587434ea4016767 ]
+Parse the decoder capability reported by the firmware, and update the
+output frame size in mtk_init_vdec_params to enable 4K frame size when
+available.
 
-Some projects might not support CONFIG_DEBUG_FS but still needs svs to be
-alive. Therefore, enclose debug cmd codes with CONFIG_DEBUG_FS to make sure
-svs can be alive when CONFIG_DEBUG_FS not supported.
+Fixes: b018be06f3c7 ("media: mediatek: vcodec: Read max resolution from dec_capability")
+Signed-off-by: Pin-yen Lin <treapking@chromium.org>
 
-Signed-off-by: Roger Lu <roger.lu@mediatek.com>
-Link: https://lore.kernel.org/r/20230111074528.29354-8-roger.lu@mediatek.com
-Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/soc/mediatek/mtk-svs.c | 6 ++++++
- 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index 00526fd37d7b8..e55fb16fdc5ac 100644
---- a/drivers/soc/mediatek/mtk-svs.c
-+++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -138,6 +138,7 @@
+Changes in v2:
+- Rebase to media_tree/master
+
+ .../mediatek/vcodec/mtk_vcodec_dec_stateful.c        | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c
+index 035c86e7809f..29991551cf61 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c
+@@ -11,7 +11,7 @@
+ #include "mtk_vcodec_dec_pm.h"
+ #include "vdec_drv_if.h"
  
- static DEFINE_SPINLOCK(svs_lock);
+-static const struct mtk_video_fmt mtk_video_formats[] = {
++static struct mtk_video_fmt mtk_video_formats[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_H264,
+ 		.type = MTK_FMT_DEC,
+@@ -580,6 +580,16 @@ static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_ctx *ctx)
  
-+#ifdef CONFIG_DEBUG_FS
- #define debug_fops_ro(name)						\
- 	static int svs_##name##_debug_open(struct inode *inode,		\
- 					   struct file *filp)		\
-@@ -170,6 +171,7 @@ static DEFINE_SPINLOCK(svs_lock);
- 	}
- 
- #define svs_dentry_data(name)	{__stringify(name), &svs_##name##_debug_fops}
-+#endif
- 
- /**
-  * enum svsb_phase - svs bank phase enumeration
-@@ -628,6 +630,7 @@ static int svs_adjust_pm_opp_volts(struct svs_bank *svsb)
- 	return ret;
+ static void mtk_init_vdec_params(struct mtk_vcodec_ctx *ctx)
+ {
++	unsigned int i;
++
++	if (!(ctx->dev->dec_capability & VCODEC_CAPABILITY_4K_DISABLED)) {
++		for (i = 0; i < num_supported_formats; i++) {
++			mtk_video_formats[i].frmsize.max_width =
++				VCODEC_DEC_4K_CODED_WIDTH;
++			mtk_video_formats[i].frmsize.max_height =
++				VCODEC_DEC_4K_CODED_HEIGHT;
++		}
++	}
  }
  
-+#ifdef CONFIG_DEBUG_FS
- static int svs_dump_debug_show(struct seq_file *m, void *p)
- {
- 	struct svs_platform *svsp = (struct svs_platform *)m->private;
-@@ -843,6 +846,7 @@ static int svs_create_debug_cmds(struct svs_platform *svsp)
- 
- 	return 0;
- }
-+#endif /* CONFIG_DEBUG_FS */
- 
- static u32 interpolate(u32 f0, u32 f1, u32 v0, u32 v1, u32 fx)
- {
-@@ -2444,11 +2448,13 @@ static int svs_probe(struct platform_device *pdev)
- 		goto svs_probe_iounmap;
- 	}
- 
-+#ifdef CONFIG_DEBUG_FS
- 	ret = svs_create_debug_cmds(svsp);
- 	if (ret) {
- 		dev_err(svsp->dev, "svs create debug cmds fail: %d\n", ret);
- 		goto svs_probe_iounmap;
- 	}
-+#endif
- 
- 	return 0;
- 
+ static struct vb2_ops mtk_vdec_frame_vb2_ops = {
 -- 
-2.39.2
+2.40.0.rc1.284.g88254d51c5-goog
 
 
