@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66A4DC74A5B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 12:43:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 121CBC6FD1C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 12:43:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7qer/TEf3ViRgymBCPA0wrGw/QtouPYPu9K32fep8uA=; b=TjiKHTTjfylU060LSzLMy9/1ZQ
-	zWTED06IYTSNNQrIpkqB3+mG5Gi3XfJJvh3ZdiXx1pB4UoWWyHZ24t7JAJt0dKQGpHJUpcDkwQHD8
-	V8BOIPdiCPR2WRIZjlD465/eWoCoBxPQ9czpiB7b3GUqy00hmlsQsvmAnBW80LEQpnMfRMAqJrGbZ
-	eA7eUGLgU1eP0wig26lbiBlhWQrxqZuj3f3SR8x7QznGak44KvOXpdV68lxyomerlkaax0KHElgFX
-	vKNEOHxrYg6ZPpaRISxUY8oqGobevvp3ahBghOBNLOigAA4axIiu2LAiIsXFGaECWs/A4pAeIhgjF
-	VNC9a1PA==;
+	bh=7qer/TEf3ViRgymBCPA0wrGw/QtouPYPu9K32fep8uA=; b=lHLlxF2fT62AsHs2vrGQEHXz8A
+	EUCPp1j8XNbovvt3H/5kaSTLWY+gTiWbhHxKXxMbEx7G/pi51VRuxcN9eks0vYddO6wuTahRCsGvM
+	Y2jA0eKkVUkOWlcE5psrTehth9kcDEXzo32ZRlHofdXa8YlVHuGdqU5tNMZjZN+jpCYzQrZ1epuXD
+	B1ipXlMzKZD8vmivmsQyM2XpVS1k4pu+XuaQqMywavVFelZ/Ih7ITtT9n27KVW+nm0ITqzVyiBT57
+	awExiZ3EPZ8zl3v8XP0KYPCMGbVlBM5EcmYRP1YRTnVQpfLLAqC/2++314aYbKqmTT34mwSsgtAZm
+	9t/9Wa9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc3zo-00A9IF-11;
-	Tue, 14 Mar 2023 12:43:16 +0000
+	id 1pc406-00A9Qb-0Z;
+	Tue, 14 Mar 2023 12:43:34 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc3zj-00A9Fp-1W;
-	Tue, 14 Mar 2023 12:43:13 +0000
+	id 1pc401-00A9Mi-2e;
+	Tue, 14 Mar 2023 12:43:32 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 5FAE76175A;
-	Tue, 14 Mar 2023 12:43:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25323C4339B;
-	Tue, 14 Mar 2023 12:43:09 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 39EF361766;
+	Tue, 14 Mar 2023 12:43:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 433E7C433EF;
+	Tue, 14 Mar 2023 12:43:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1678797789;
+	s=k20201202; t=1678797809;
 	bh=VqcU0kjoPpaodik/tmc2o/BUXU32GcZs2CiF6oE5zjw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Sn9OrqdRBX3nRz6P18VSTNwiBMyXr7N/XjYvB3KnqNnh2UUMen30kAjO8brzQLtm1
-	 Ibhl0IdK9g5+L5z6gMMH+WPg2TTuMQN6XfaXZXtRVNduUgieuSKdZxUEybyu5Aq1Bs
-	 NSnVNu4PcfGtqjtzXrQWGCm9vxPC63bNS6VtAFt0DmF+j46rrbDr/Dyum6Y/fVmC7s
-	 vLgZlk163tO6InZVFzWgPJ/7N/DLAIKDpLj4oV6fb4keqlDvTIbVtx8N/7zT+gT1Dq
-	 yThnU0ZDuDpr/8ERASAs/LNxDWQfbPf/6w/T+7RyKWciTo59r3XqpPvmudCTAtvCha
-	 /4yzJ1WVBBMWQ==
+	b=HqUIFRksW8bruJ6/JG28Rr0lNPfr3ucevPS5CtJIvbdLHnXakhZaEk0tllFAYaNyy
+	 y2CxuqITsHCeum9ddvz70XpUnnCcxmG31LpQyYQVedYV3+df5FeIArQfie9d6JnAiK
+	 P2WHQI8Pv43XNIxvw2yWFM2fCH+bXRw+ypWX4jPeFhVzX09a2P89YhIWrzTVvjjYsi
+	 dxqa7kzrbMGCWpRHjeoDf67mleyHJJc7se1BDBkM47VwFI1LExUyqoaBgb+4JVOW9B
+	 B+i3p+953tvhrK73vHvFUuY34BfY9xCXGhRoYPuw/PgYXyK1IkDq4X49i0ezQnzZwU
+	 Y8J7XvOhLGlVQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -51,18 +51,18 @@ Cc: Roger Lu <roger.lu@mediatek.com>,
 	Sasha Levin <sashal@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.2 02/13] soc: mediatek: mtk-svs: keep svs alive if CONFIG_DEBUG_FS not supported
-Date: Tue, 14 Mar 2023 08:42:54 -0400
-Message-Id: <20230314124305.470657-2-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.1 02/13] soc: mediatek: mtk-svs: keep svs alive if CONFIG_DEBUG_FS not supported
+Date: Tue, 14 Mar 2023 08:43:14 -0400
+Message-Id: <20230314124325.470931-2-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230314124305.470657-1-sashal@kernel.org>
-References: <20230314124305.470657-1-sashal@kernel.org>
+In-Reply-To: <20230314124325.470931-1-sashal@kernel.org>
+References: <20230314124325.470931-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230314_054311_570225_5E4E293A 
+X-CRM114-CacheID: sfid-20230314_054329_898085_39B7B8AF 
 X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
