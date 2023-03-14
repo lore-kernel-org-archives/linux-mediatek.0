@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2147C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 16:31:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55A0FC6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 16:32:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6Z20n8EovjQK6WWHRBaG09kppsRVXiyp2olQcDL0XJ8=; b=xej9XCqkW4ap0HQK0/cgh7Gq6s
-	X6WGpVNYXYMFjjTI/Iosm8Y6QAVgXZBDdlujnVGXMtj3yvspK0M1lVdZJphx5/ekQHdMKV5u0doom
-	lkgstDS2qu5qBe57IPq3u7VxZP5uFzWzeekTOGrgJHXDMmZ/ncn14xBNn4MWfoRpLT6AFcJdvi0rh
-	cR5htSe5fMDHUagzZ+Hvd7lby2ytUqGS3nPaxFWWYWSZW5ANP3uOGsbejC24v9n/e+txaniaFNC96
-	SMhy32ki4HRocHTZ4j+13Lj/NpClRJ4ZExlJQoj1JfclpZ6w6AmNYseaB6AnFeUUx99eX1hw1IVqS
-	DzW9icbg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hZMmUYtKJ8wmH3Y0b7DE4LXgBhnyqMdRf+GRKEQEn4c=; b=ITdjRprnMoEynKfH/M+eAWSoTm
+	o/eIzixYxeQtfHogyGqZu6pEgPHRQNTGA0MkeYFe0UKmbWL8zy0tgb17BTMz8dxDzJ4WKuCHTjXZ+
+	RwV/4GdA++EWcZxXSeDo0oq2Ae9ADjdW5P7wGu3OuUpEZfpU7Bajr5rc26Ziad19P+iTsuZjpN+C2
+	yFpq7jW6gOWLwwWlvp1MCKoqNkd8/6XsirJ+DuOKo8Gvc4hVJYBGWoK48yq54T8cvyaIGVM3ly4xg
+	F86JmrSX9L5O9Ltr/6og05REmq3K9h2ujSiHfid/nhjXUs+cSpl08196PyPPkjT3Y+7thhIdyXrn/
+	riQjlNKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc7Yo-00AqNx-1L;
-	Tue, 14 Mar 2023 16:31:38 +0000
+	id 1pc7a0-00AqhE-3C;
+	Tue, 14 Mar 2023 16:32:53 +0000
 Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc7Yl-00AqMM-2L
+	id 1pc7Zw-00AqeJ-1J
 	for linux-mediatek@lists.infradead.org;
-	Tue, 14 Mar 2023 16:31:36 +0000
-Received: by mail-ed1-x532.google.com with SMTP id da10so64515833edb.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 14 Mar 2023 09:31:35 -0700 (PDT)
+	Tue, 14 Mar 2023 16:32:51 +0000
+Received: by mail-ed1-x532.google.com with SMTP id r11so12787742edd.5
+        for <linux-mediatek@lists.infradead.org>; Tue, 14 Mar 2023 09:32:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678811494;
-        h=content-transfer-encoding:in-reply-to:from:references:to
+        d=linaro.org; s=google; t=1678811567;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=6Z20n8EovjQK6WWHRBaG09kppsRVXiyp2olQcDL0XJ8=;
-        b=JK44/SsDXBuPDZzc56hUjt+1W7VutqTow1gDp4b7GRufbuYANwBW3zJWk/Fdr5oy1V
-         5NvGdMpCt9KdMMZ0wXSMshyMmavoyRhfXn4dByC3Ra59ZWEliXiB8mN8v7xyWYoY+EKx
-         9NbExJxy4XW5gsNpzG0e2gSwtq/3tG8E45K4EBifKcy720nyV6KKjD8tKWWC0RxYMvI4
-         CZgvENMmgS4n83pA7Klyg+owq9LWy3TuivG7ClIC6BZPRDK/whWULBNFJTPomgpe6M8U
-         PpRFx1/qm8hUiI8BU9FhfgfI7bFQIDM024dDiYyf9bSQQj+BqJ/PDrxtzbJWxOGY3L03
-         zCCw==
+        bh=hZMmUYtKJ8wmH3Y0b7DE4LXgBhnyqMdRf+GRKEQEn4c=;
+        b=HOMoHJbvrS91PZJdsSoMVF4wEKhsJzukL0cbjFvfv9908EoWA62ipm8dzNSPoyH2Ha
+         7OrEZpotzbre+nBpyPdyCuM1aR627eF/GX/nRY34d9dg7fNOraC8g8rZ62ciV9E0hR8V
+         3Y+INXEIbwCT8XLueIXSFY2B6uLFjwOHG7cb+vpszvgBJ8GHEy/28Ic8maoK3PKBHVM9
+         fRqEFDoV4KXJPzGJVeUJWwCV2m6Ea2UK+eEQksGSdmaedxi7sxEBkXLx9uGM7ZPzKnWY
+         G09Xgt268QjmkKJ8+FXqyp0Z7H5o5pmGIIV/JtvItiyFAVHe5RytDR3FtLM7nk8CmKeL
+         5/xg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678811494;
-        h=content-transfer-encoding:in-reply-to:from:references:to
+        d=1e100.net; s=20210112; t=1678811567;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=6Z20n8EovjQK6WWHRBaG09kppsRVXiyp2olQcDL0XJ8=;
-        b=yFr67EOMuys3/GjQyNGER9Y4rRqphr+Qy+kU4dUS/Hlp1g2KxDjdGRKyCqjz4R1LY4
-         GCS9RCw70zGj1+elTq5bNVstwYS5u1B+pAASzU1M0DlAEM7QFIg31HkwearJt4xMoT4W
-         pMg4+TGC9/AVue6nIWGWGYpiLKHvyGSWQgEMWVW104/PMkn71N6POLhZnNin7VHPVMtm
-         wEVyLZpHqtHQudaAcbpepqV+dAfVtAFecb6js75V554S0nikKjyMTSOrQq08MNXNXz/U
-         tCH58dlx1YNBVl6ZAB1/uH70p+WwoM4pcMIHoKanRiWVtiWst+jOEdIbGkJ3SMhmO5mp
-         GsQw==
-X-Gm-Message-State: AO0yUKW1ySiEHuFng/AfeqoMrTOYtD9XMle86iOtqzpC8J3pjffOLXom
-	G5tBJDVXhLdlqdWA1E7YhYic7g==
-X-Google-Smtp-Source: AK7set/vSQlRu82Czuk12ElmMiD/0af+VwTO3KMyjJOjl9VfNhfnYkq0M4g5zeFFPauB5KWKj9oZYg==
-X-Received: by 2002:a17:907:31c1:b0:92d:6078:3878 with SMTP id xf1-20020a17090731c100b0092d60783878mr2427954ejb.33.1678811493961;
-        Tue, 14 Mar 2023 09:31:33 -0700 (PDT)
+        bh=hZMmUYtKJ8wmH3Y0b7DE4LXgBhnyqMdRf+GRKEQEn4c=;
+        b=xwkOpCHIseunhXiFqF865IRt3OHKBIiEc+HsBJv3j/r3I870xNfPt7oyzxzjfUjiS2
+         t0szQrDCAvh2C4qU6VaqIkKbzCbw0oZePc/kmuTTx7jTu0BpTmfkhkG+3VQZCfSHQKyq
+         EXjU+DqhlNhgtOki/2NEEv0LG7bVjZzrNzde4bHCAN0Es0EyRt+lKBzo5FHNA8xg0KCJ
+         5wIT/8Xa+ndfkLFLHdFGa7gmpd/K+7T5C1AVxwdoZc99+QiyaB2yJ5TxMsx1M6zStVVm
+         NW5+6c54iMWf//WXHZGefEuS/E2qV5sLfgeCp4RAC8oGEHYvSFCSQdLNC1y5r6/JsY62
+         LueA==
+X-Gm-Message-State: AO0yUKXoGwc9LN52jIMfsDAnCATq+x41SIVdDS3L3FLzVdSDpJhm6Ldr
+	uMqZT3+/7D9EEi1UfOCWNnwbHw==
+X-Google-Smtp-Source: AK7set+myyCkcdJ6jQlFEHkzUZ2F1WAxX5BcejY0gf0Rd4/49aK9Lc6ALEebeykXKuMeNvyqb5FwSA==
+X-Received: by 2002:a05:6402:74e:b0:4fd:23c9:11ed with SMTP id p14-20020a056402074e00b004fd23c911edmr5057745edy.17.1678811567132;
+        Tue, 14 Mar 2023 09:32:47 -0700 (PDT)
 Received: from ?IPV6:2a02:810d:15c0:828:59be:4b3f:994b:e78c? ([2a02:810d:15c0:828:59be:4b3f:994b:e78c])
-        by smtp.gmail.com with ESMTPSA id 18-20020a508e12000000b004fa380a14e7sm1281024edw.77.2023.03.14.09.31.31
+        by smtp.gmail.com with ESMTPSA id cd3-20020a170906b34300b00921357fb28csm1341977ejb.123.2023.03.14.09.32.45
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 14 Mar 2023 09:31:33 -0700 (PDT)
-Message-ID: <5092a0b0-6a31-f984-e28c-ca11bafef6bb@linaro.org>
-Date: Tue, 14 Mar 2023 17:31:31 +0100
+        Tue, 14 Mar 2023 09:32:46 -0700 (PDT)
+Message-ID: <bafa692c-f3a3-d317-278d-2dd3b5ff8af3@linaro.org>
+Date: Tue, 14 Mar 2023 17:32:44 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.8.0
 Subject: Re: [PATCH 01/28] media: cec: ch7322: drop of_match_ptr for ID table
 Content-Language: en-US
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Joe Tessler <jrt@google.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Guenter Roeck <linux@roeck-us.net>
+Cc: Joe Tessler <jrt@google.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
  Neil Armstrong <neil.armstrong@linaro.org>,
  Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
  Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
@@ -106,14 +107,15 @@ To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Joe Tessler <jrt@google.com>,
  linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org,
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
 References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
- <4ee5e059-6e9f-0804-30ec-ff073f436780@xs4all.nl>
+ <b83d6b81-c4ec-4fb8-b626-84af80d1c4a3@roeck-us.net>
+ <74ae8afe-c537-1714-77ec-8a80d8ddad69@xs4all.nl>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <4ee5e059-6e9f-0804-30ec-ff073f436780@xs4all.nl>
+In-Reply-To: <74ae8afe-c537-1714-77ec-8a80d8ddad69@xs4all.nl>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230314_093135_764773_2477E14B 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20230314_093248_555722_65F98A32 
+X-CRM114-Status: GOOD (  13.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,22 +130,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/03/2023 12:46, Hans Verkuil wrote:
-> On 12/03/2023 14:12, Krzysztof Kozlowski wrote:
->> The driver can match only via the DT table so the table should be always
->> used and the of_match_ptr does not have any sense (this also allows ACPI
->> matching via PRP0001, even though it might not be relevant here).
+On 14/03/2023 09:34, Hans Verkuil wrote:
+> On 13/03/2023 23:01, Guenter Roeck wrote:
+>> On Sun, Mar 12, 2023 at 02:12:51PM +0100, Krzysztof Kozlowski wrote:
+>>> The driver can match only via the DT table so the table should be always
+>>> used and the of_match_ptr does not have any sense (this also allows ACPI
+>>> matching via PRP0001, even though it might not be relevant here).
+>>>
+>>>   drivers/media/cec/i2c/ch7322.c:583:34: error: ‘ch7322_of_match’ defined but not used [-Werror=unused-const-variable=]
+>>>
+>>> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 >>
->>   drivers/media/cec/i2c/ch7322.c:583:34: error: ‘ch7322_of_match’ defined but not used [-Werror=unused-const-variable=]
+>> Reviewed-by: Guenter Roeck <linux@roeck-us.net>
 >>
->> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>> FWIW: There is also
+>> https://patches.linaro.org/project/linux-media/patch/20230215214724.3798917-1-linux@roeck-us.net/
 > 
-> Reviewed-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-> 
-> I assume you want to take this series, but if you prefer to have us do it, then
-> just let me know.
+> I superseded that patch in patchwork in favor of this patch since this is part of
+> a larger series.
 
-I prefer if you to take it. Please grab it! :)
+I am personally fan of FIFO, so Guenter's patch should go in.
+
+> 
+> Krzysztof, please let me know if you will take this series yourself or want me to
+> make a PR for it.
+
+I prefer if you take entire patchset.
+
 
 Best regards,
 Krzysztof
