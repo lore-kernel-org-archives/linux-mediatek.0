@@ -4,178 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96C15C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 03:30:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6411C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 03:38:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YB3yxUOsQmhtjVAdLcEVGQ6CFjaKhKCpaCeu6BBWLso=; b=jrzqrYrYsaP11F7fHTHUrc5y2T
-	DZhX9Wn93p02b5LHvoE2INC6Slhau1tVM+X/UVVl4MPaQrTXYf7vCzE5M5q5r0BkgJpqJ4ObWx0qh
-	naNAaj8a/dpOwzDxpVLMkrNA40ti/fRQwC0esdmQEpfrQJL2lVixwVRw+GdZszXCJSRZ88pzYAID4
-	OK00Y98b8a2QQWmttLgFKOoGPc7LKhLHwcRys16Q+v/Wrc+uxS3VzFIn5ax4xOeoHIT3DgD6OXJ4r
-	nZOg/Sv/G1cR0q2xXUXOeaV+R7P2hvHQ/LgmkG+eU0APJ0X+T5K2S4tcFV0BhqJSPEuSo+N0GVKA6
-	qCDZbzdA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZweiLKOcU8/tC8Kh5P7k6KbpF/iIBaT8U8FrYcEGMFY=; b=nUV0JTDYIRZkpyRzQvOSbFVOkX
+	cSnzONrrC5RgMlJJyApy2uYgxFzl/KfpqWiugkTP1NdmX4GdJqhWui2NYHYFr7PBYCj1rwi5Bz/zu
+	hG0MHyZOALKEMENhpR5m+4I/+dmjneSWMP1kI0+Rux/rrtRcKvxf9eXPSQqRxKP94vh7yiWNUSkpu
+	3ShCCJtv0In9G+Ec0LUV42nvus6hzn1cseN0Y2156NQ69tczM83mr5qOFeYiFmp/g8MMw2Qo5Ivn1
+	hVUo4rggixzQ4Ynz5Yeie2XHFwq0K1Z8vKT0sgfXGhRlWhJwzZf3d/+pyRC6NAqM2UaAYmVKtfCSL
+	Ry5y+Mqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbvMS-008rFL-I4; Tue, 14 Mar 2023 03:30:04 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pbvUI-008sL6-8I; Tue, 14 Mar 2023 03:38:10 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbvMF-008rC8-V9; Tue, 14 Mar 2023 03:29:53 +0000
-X-UUID: 75e58226c21811eda799af78a38f2b8e-20230313
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=YB3yxUOsQmhtjVAdLcEVGQ6CFjaKhKCpaCeu6BBWLso=;
-	b=Jww+WMSsyTaTfw+H/Yr3XjiAFSyjsOfs7mjeuZhv2/tLtC50KGDuld/zuvWaMHge/i6CvtVPKQ0tjvgHOQivUQpRO68u7ZY2J1z+X/CBkXO/OLC04nWp/9Nrt1Pe2wtikWjUBZstQL+WVrWRuQG7HkVSR6hUniJ2gBBXsIguQo4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.20,REQID:c814a877-5cba-4ca4-9b8f-d75458cbd66c,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:25b5999,CLOUDID:66d24628-564d-42d9-9875-7c868ee415ec,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-UUID: 75e58226c21811eda799af78a38f2b8e-20230313
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <powen.kao@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 41420133; Mon, 13 Mar 2023 20:29:43 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Tue, 14 Mar 2023 11:29:07 +0800
-Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.239)
- by mtkmbs10n1.mediatek.com (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Tue, 14 Mar 2023 11:29:07 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=BJ7pR3zfift5BGgtmLAT68Xppmy9vvFiwCwC67rVF1F99IXqdZcYUWc9F56blv9qVlh6dYJmg8N72S38d10ztyBCQFKbUm89Ls231ihEP8ux/146ak4vjmxCk0myxgzZ8FWooCBFnZRrPl/WpDtBldNdUV5DSAEYxAjstGF4GpkkCSQhS8rDIeQDkeXNSxpaNRBuxlNPx/8rhpyRuVXbEQEo7SrFfiHZK7mX1eh6JCCbRxSZz4uMJwTazdm7xOS5PvUG0Fpx1NPZ60dTLgdvSQXzi/UUIGzLSrWItaakx0syMsH1yrGNs0X98hY5fJsfjCAEemT/vJlGoqC3lZlVmg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=YB3yxUOsQmhtjVAdLcEVGQ6CFjaKhKCpaCeu6BBWLso=;
- b=TiLeFQUtrePGqJ06ibrDMhZSuaMx6XDgHKw/zIWHjm3+bzAGEwbdfOq+K8OVOg8Ne8RC2SVWSojSYVm8HRInm5xfAbtN5tXJl6m2dNmeD4I9sGQ0jxsswc0goFzL/GrdRBLCZjcGKsHEk6q8LG8PqhjbSAZJsAghriLsG0bfnBhgC3XgVcllAEP1FrUhn2sy8KxBv6/I4Ao/YcQtnhOZ/f8DRBlsl+IRn4UJRNVaz6RrTjQdc7njQdS9AKD0MTUrpJcy/IYCbFvQ9ryMWnxA8EyAu61jbRrqkVJsLc71UigjeYXQakTYmeUZVkWyE1ktSQ/Ic/AKoHs8oPnJ6d4kDg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	id 1pbvUD-008sK7-Re; Tue, 14 Mar 2023 03:38:08 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id cn6so1488502pjb.2;
+        Mon, 13 Mar 2023 20:38:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=YB3yxUOsQmhtjVAdLcEVGQ6CFjaKhKCpaCeu6BBWLso=;
- b=i9C1NuPcypRmkTZyt0GhwgPBV1I+xQb3vZmCBaC6mteZ1Qkmwre0H32Bj6cRrcvUH18KttkXv2OfoRyJkwrYTnIVUejdRC3gjSuxlnBL3tuJzAhdj2pIhNfbpKJ3srEt+A1TuD1bYFmrctxc+zzpSfgY2pS1uUO1UwmCdewFciQ=
-Received: from TYZPR03MB5825.apcprd03.prod.outlook.com (2603:1096:400:120::13)
- by TYUPR03MB7031.apcprd03.prod.outlook.com (2603:1096:400:35a::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.24; Tue, 14 Mar
- 2023 03:29:04 +0000
-Received: from TYZPR03MB5825.apcprd03.prod.outlook.com
- ([fe80::c85b:1180:16d0:a852]) by TYZPR03MB5825.apcprd03.prod.outlook.com
- ([fe80::c85b:1180:16d0:a852%3]) with mapi id 15.20.6178.026; Tue, 14 Mar 2023
- 03:29:04 +0000
-From: =?utf-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?= <Powen.Kao@mediatek.com>
-To: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"jejb@linux.ibm.com" <jejb@linux.ibm.com>, "martin.petersen@oracle.com"
-	<martin.petersen@oracle.com>, "bvanassche@acm.org" <bvanassche@acm.org>,
-	"linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>,
-	=?utf-8?B?U3RhbmxleSBDaHUgKOacseWOn+mZnik=?= <stanley.chu@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-CC: =?utf-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
-	=?utf-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
-	=?utf-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
-	=?utf-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
-	=?utf-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
-	wsd_upstream <wsd_upstream@mediatek.com>,
-	=?utf-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
-	=?utf-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
-	<Chaotian.Jing@mediatek.com>, =?utf-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
-	<Naomi.Chu@mediatek.com>, =?utf-8?B?TWFzb24gWmhhbmcgKOeroOi+iSk=?=
-	<Mason.Zhang@mediatek.com>
-Subject: Re: [PATCH v4 5/5] scsi: ufs: ufs-mediatek: Add MCQ support for MTK
- platform
-Thread-Topic: [PATCH v4 5/5] scsi: ufs: ufs-mediatek: Add MCQ support for MTK
- platform
-Thread-Index: AQHZUMHeiTtckt+rnE64S7y815hYyK75RjeAgABigwA=
-Date: Tue, 14 Mar 2023 03:29:04 +0000
-Message-ID: <15ad91681f8f7981ff0be9702a3026ec6c0239e7.camel@mediatek.com>
-References: <20230307065448.15279-1-powen.kao@mediatek.com>
-	 <20230307065448.15279-6-powen.kao@mediatek.com>
-	 <5d317f56-b1ba-e35a-a558-e462a70a4717@acm.org>
-In-Reply-To: <5d317f56-b1ba-e35a-a558-e462a70a4717@acm.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB5825:EE_|TYUPR03MB7031:EE_
-x-ms-office365-filtering-correlation-id: 82c5edc5-4f35-42f7-77ca-08db243c4310
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: NUnrCuGczc7LDWyc9nJ22y1e4ER9EJHOnQ8v9ss5XDUtWvt1KbmgkT67WDvJvfGqWM/9qb9QYUuftFWVN/yaD7tY9AdbwFRqXf//iTt0tDmyti8oDdfaZjNNxCwIWpyFpkmwzIKqPPi2v8jWKLCJmr8wBGU/DKsoE4/XnPb93mxFNn3S9w6WKkRvlha9BCXeN0c5oqqYtriGEZbIjjZoZ+GUVDDxYwGRwWPckiavwCqajbyHKJ1HBrpSipUTl77GG4nmF/0vVGFcWG4fFJRg2xXuQJ6yQ1JSoEsN2FjbCNeq31GrXG/MV0n57plwkiSW2uOUsZrlfvXLWvr23Q1tG64CtzFQCI291S5r1/GzMXdq8+CDSiPqKxMt1avBIHdgP4dP0/J0UyJOj2V/VnXw8Q/IL9wmGEOU6H2VE8X304yDlOlkRrD2rl7x7KsxSSt/zMjJ6mEEYGA4s9kEm33uBfOSaVkAXYSBLk2CedVf2yNOPqst4Zql10biZqwjQfm8CRA1+z53u55UF7dRbf41RdmZ3CHMIA/li5AHQAVUL6Nc0PTRU21jwawdMssjNjY5YTEWRwY+eVop/nx+pQ56+AY7oszqzZk0MzjZ9mbMNyq5TsUZeco04vJEfGW5P7zEp5V1ZK+nrZAFDRQA+C4qXExQTv15RAaYQb4F1x6mDcMPzQITRtvWGyEnBcR7n7FtSeZh4YBmvVmnKq6JTaz5oBfUwVVGNi0CiGLSZHQGyTBth9qLfE0Y4i67O6C28qDmCnRQS0OWPLE6w1Fh5ws6Cw==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB5825.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(366004)(376002)(396003)(39860400002)(136003)(346002)(451199018)(71200400001)(2906002)(41300700001)(8676002)(76116006)(66446008)(4326008)(64756008)(66556008)(85182001)(36756003)(66476007)(316002)(478600001)(54906003)(86362001)(66946007)(110136005)(122000001)(38100700002)(6486002)(38070700005)(5660300002)(53546011)(6512007)(26005)(6506007)(2616005)(186003)(107886003)(8936002)(99106002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?QW1Qdi82bkRQT0RMb01CamZ4VEdxSEtVbHZXK2V2c0hBRXNPeDhZZ2YxY1F1?=
- =?utf-8?B?NS9aWC9Sa1M3VWNlREIzQ0ZLQVBYYlZCWjNDQjNFZXlmVVBaZENVbWRZcHpz?=
- =?utf-8?B?Mk95TkxORzhsUGlDdW8ycGlyNis3RFkrV3ArcFJrLzhzNHErVmhSQi95ellM?=
- =?utf-8?B?Q0ozSllIakF0VEt1SDNLeUROd3pnMzV0QkM2dlRncCsweVgySGY5RWlkOXI1?=
- =?utf-8?B?TjBZczhIWnR1eUFYWWVsSUU4S3lsa0lzOG1mRUJsVExkbjJMLzFKYldHNkxB?=
- =?utf-8?B?aklaQ0VDdzdDYkRjVDBQMGZ1ZUJDeTZUemhWbmtHbXg2c25IalFRT2xYVE9j?=
- =?utf-8?B?UklOdDJwbktLQnBaQWtnTzdnNnNpbVVSd2lUYzJIU1ZrUmdlNUFlclE5aFpw?=
- =?utf-8?B?SEN4YWt2SjhCTzROTHRZV2RZL3dkc043REhoYWEvWnI0NkRlSG9qV09ZQ3hn?=
- =?utf-8?B?Q0RnRlp2dW90WDNxWll5ZVFVbERTR09SRjcwNlRTeEJwQ21DQWJvYS8xOVJD?=
- =?utf-8?B?MGkxVVg1Ky9JL0hQdW44Ly9kV3FVMUg2aUttcDBoeTdQc1BjWnBQaEwxOHBn?=
- =?utf-8?B?VTZKaEk3d0Vocll1VGNOQ3JvRVRYbW51bnJkZmZLUkRWNEhJWkN5ZXpDbExR?=
- =?utf-8?B?VzM2SmpiMlNoNXBya3lpWmgrM3hGNEI3QTlid1VOWnE3My9VYkdtUzF0b09w?=
- =?utf-8?B?cklIYk80RURtRlpETDR5N2g0ZEgzVTJTWXltdy94aWM5bHdxRFNyMUZDQTl1?=
- =?utf-8?B?Zml5dXNrdy9mbFM4R1o5UHd1VVhZM2JscTE2ZUY1cHVZOEFPNGJpYnozL2R5?=
- =?utf-8?B?OG5QL1NWYUZnU1Jsd01NdDFjQXVMTlMyVi9TOTRzVUQwU1lJbDlxd1pFb3Jv?=
- =?utf-8?B?NnpQMTViVFZFUExPM2pMYnFsMDhad1FSc0NKeU5rUi9LOFh3TFpmMytaVjdJ?=
- =?utf-8?B?REtJenlNWElISXE0azB5RXV4djFBQW9RVWhkM0JRT2FWS3hIaXRsbUJkaERC?=
- =?utf-8?B?ci9BR0liRVR0Umw5UXRIVlhjWFFBL29LbWtCQzVaWlczRjNzL0UrcHVoTnEr?=
- =?utf-8?B?NnFBQjlBQ2MrSDFEZkRmRllxbE5hSWtRcWNWdityTGloMVZwRGZJcjUxQWky?=
- =?utf-8?B?Yy9lZTZTWEZwZ3U3TmthYnRMR1V2NFRQaGRpUENJSzQzb2VLcENoQ0xxblky?=
- =?utf-8?B?aGxwdXJpVER6cm8zdkVGajl6SlFFUkIxRng1dmQ3T1FYVmxpMG9aWVJEbHd1?=
- =?utf-8?B?L0RJc2xFaWUxUlQ3Z3JkbkpuYlNrb21hcjRQTXdnak5OaE9BSFRYQ0FqTmRN?=
- =?utf-8?B?TVlENlUxbWFSbTlmVTduTkV0anU4K1RHVFUyN0RoNkJNNXNrbFNHNk5US1Y2?=
- =?utf-8?B?L2lVNVRKeHkwNjVkbVdHMmhtS1lubFBrTW84ZVBuNi9ZNE1JTHlOUVZpQndr?=
- =?utf-8?B?NUxBbEpPV292UzBkRTVGWWJDQWlvZnBkZE9vVzlFQkZ6cTRIRm9EYUZEc3FR?=
- =?utf-8?B?U3I2Vk9UUjVCRFJ4aUVXeWF0QSs2OWR6YitaKzIvWnZKMjJPa09hVVQ4RE1C?=
- =?utf-8?B?SGViN0NsdVQ0LzRSNnZpMW04YzZmdHZTbWwwR2ZnRXpuLzFKRU83RUp0MW9u?=
- =?utf-8?B?TXVqWFdJN2w5cjRGelVEUjVpQTJqY0Q0aTd2a04yblZzc1dHZzBnOThpd0dq?=
- =?utf-8?B?dGxBblprWEhUWnAwWFdtQ0dsNG10S2FYTWYyTjZGZnRSNnZrZDdzV1R3clVX?=
- =?utf-8?B?MVpzYlZmL2lqandZQ2NoMFBEZTU0UERPR283UmVTV2RkVW5WSGp3dHdwaUVQ?=
- =?utf-8?B?eGdJNEk3Ykp6Mm5UM29XMkF0ZGU3N2xLbmhmSWV6dXdUejlwdHUvSzRyNU9k?=
- =?utf-8?B?SDFjUzIvVDlvTk5MOFZEdW9zUXlhZ1RPYzVpN2c2Q3JRaVZxWi9CazQ0Y2VI?=
- =?utf-8?B?ejVyNG83ZU1NUnNad0dUU3NFZytSYzh0MkN0L2s0VUxtZ0lxS2xMR1ZzSFdQ?=
- =?utf-8?B?NzVybzA1N1g5R2d3NW5SR1lIdDczWWhCa29TbTM3ZVBxTXRUSytlN1VFOEJQ?=
- =?utf-8?B?YmZkb2M5RUZDVkRuMjB0MitYazF2UEV2KzVzU3ZiQmJzUklqN2c2Nk9KR3oy?=
- =?utf-8?B?S1dSazVvSlcwZFQ3blJ2a1MwdU9TN3V6OWJSMEtoZU5PRmN2cUk0SGhzTXRl?=
- =?utf-8?B?RlE9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <F1C65DD2291CC74BB3EE8597137594CD@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=gmail.com; s=20210112; t=1678765084;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ZweiLKOcU8/tC8Kh5P7k6KbpF/iIBaT8U8FrYcEGMFY=;
+        b=hhQnEgZBs8HgMQAAKe98L+9T42skpTd/1Z5nGIX3ky+ws2CKECfjSl7M2NsUZTmLqw
+         g3gFKeS8spfXEPyKw2Q6Yo1W4VVuAXyeFQVD5+Kkhs2zaMtEqSArLZnPg9LTJ33Xwokb
+         DL4uWsAmYKjK6hUFFzLg9arLFACtcgjAG8/CbDTEeJM2rB3s4vrie27mqrgXfx6Kx30o
+         TeKw9cMbkdEELwDicfO3Kfx4wXsLfqjfg9rFosPuZk/8TwXiEvShC06YVlRumS8yLQAm
+         HcydqLMsm5hi0ycqW3g0mmzh/BacBkBds5Mb5dwPVYblsCTN6d8MclsmM8eI5hy+5xgy
+         48bQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678765084;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ZweiLKOcU8/tC8Kh5P7k6KbpF/iIBaT8U8FrYcEGMFY=;
+        b=zMt3cW6goPac+hLg6Kz6tt6UxugXvRCDqcGnZLMYMM0vOcOqH6FhFjwuTkWXoALmlC
+         8y0F+twZmZCV7mTC5Bx3Cj7ERlTfPpXCLDIm5icY5C7N76mJKdcvgXXIaLHm9uk6utRY
+         3YCSzLPvEIaEcAGzV/P2KWxC20GDMAa0kk7rnjyThKwCgarSju1GKNUmgMLvQ4Zj+JiA
+         gfldB+miv8KxySB9ozUXMIl6/JcyrXNp42J5yLGXoL0hXFUBiBjKA2LbhFwRbrBK8Eiu
+         DJcnxJsioVzU+Muca+bkOxURmyrIi7bgDEVdm3iA8mbA5klSgYsNnXRz6YasbLzdxcnS
+         7lSg==
+X-Gm-Message-State: AO0yUKUwjE5wNYGHKdwtKPwQ2AETpl8388G6PSs/bX2Usvzkdc6b3DxT
+	yzY8u1ltjrD1sdwLbna6qd+hW01xAdB8ea50mq8=
+X-Google-Smtp-Source: AK7set88P8qV/EWx8SLyzIyXqJ4aeHidNdSmSojaiUyfbgreT2S+RbBY5zzjve7MKybLLiV3UDiteJLCO5DtUoPPFDc=
+X-Received: by 2002:a17:90a:6e06:b0:23b:5161:f66f with SMTP id
+ b6-20020a17090a6e0600b0023b5161f66fmr2428507pjk.9.1678765084289; Mon, 13 Mar
+ 2023 20:38:04 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB5825.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 82c5edc5-4f35-42f7-77ca-08db243c4310
-X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Mar 2023 03:29:04.4222
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: CSbG0HAfIVI/SrZqqN8oqTM5CDgF+Jg7F+VMK6mElfar3TMCk9bmygjn4I4X50UcZ1neyPBw68Hcou19k0XBBg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYUPR03MB7031
-X-MTK: N
+References: <20230306062633.200427-1-zyytlz.wz@163.com> <CAJedcCzeVwwi9SkkwouFXUAVhF-tKF4dkqsFqVQwszSwY1SJ0A@mail.gmail.com>
+ <57c17bfd-83f3-fcce-0eab-e28469fb0ced@collabora.com> <11c2bce1e5286ad3a9a5be2ee59c2beac168f135.camel@mediatek.com>
+ <CAJedcCx13sz5h=fWvJU38P_1W-zd6yZe=iSMpO28_E_kAqUGDA@mail.gmail.com>
+ <cfa2f64d2d01ffc53a6afdc9a5b867bbcb07b5f6.camel@mediatek.com>
+ <CAJedcCwhk_XuMF8keGZGBTVBZSMuoQeyV_7L1H2VeT2x_vj-ZQ@mail.gmail.com>
+ <86c98d73b0d294e143014ea5e15d0a5d065e1a66.camel@mediatek.com>
+ <CAJedcCyiczZiKm=zQyYwJCszmEHKYX+sVEBx7UC082pS5K5Oww@mail.gmail.com>
+ <0bf5c11128f96d820f8e3ffaf5e9402aa0c0a1a5.camel@mediatek.com>
+ <CAJedcCyVOpNyXsm6NW738tPvGF_nNDh_NCKXqKWgrnhKV5y-2g@mail.gmail.com>
+ <CAJedcCw6ZiTfKRGkO9OQ+5Ykx=S3b5MMKW_vD3SX+i+tON6hVA@mail.gmail.com> <7dac4bde1216df33c12ecc3fb19ac1499478facf.camel@mediatek.com>
+In-Reply-To: <7dac4bde1216df33c12ecc3fb19ac1499478facf.camel@mediatek.com>
+From: Zheng Hacker <hackerzheng666@gmail.com>
+Date: Tue, 14 Mar 2023 11:37:52 +0800
+Message-ID: <CAJedcCwkCwtDM3Yo5gCQX7G_WpFg6YVgFAPzjHa61X0nNcL0pA@mail.gmail.com>
+Subject: Re: [RESEND PATCH] media: mtk-jpeg: Fix use after free bug due to
+ uncanceled work
+To: =?UTF-8?B?S3lyaWUgV3UgKOWQtOaZlyk=?= <Kyrie.Wu@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "linux@roeck-us.net" <linux@roeck-us.net>, 
+	"mchehab@kernel.org" <mchehab@kernel.org>, "zyytlz.wz@163.com" <zyytlz.wz@163.com>, 
+	=?UTF-8?B?QmluIExpdSAo5YiY5b2sKQ==?= <bin.liu@mediatek.com>, 
+	"alex000young@gmail.com" <alex000young@gmail.com>, =?UTF-8?B?SXJ1aSBXYW5nICjnjovnkZ4p?= <Irui.Wang@mediatek.com>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
+	"1395428693sheep@gmail.com" <1395428693sheep@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_202952_041353_6861A5D1 
-X-CRM114-Status: GOOD (  22.40  )
+X-CRM114-CacheID: sfid-20230313_203805_951434_7BB82183 
+X-CRM114-Status: GOOD (  59.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -190,49 +103,464 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDIzLTAzLTEzIGF0IDE0OjM2IC0wNzAwLCBCYXJ0IFZhbiBBc3NjaGUgd3JvdGU6
-DQo+IE9uIDMvNi8yMyAyMjo1NCwgUG8tV2VuIEthbyB3cm90ZToNCj4gPiArc3RhdGljIHVuc2ln
-bmVkIGludCBtdGtfbWNxX2lycVtVRlNIQ0RfTUFYX1FfTlJdOw0KPiANCj4gU2hvdWxkbid0IHRo
-ZXJlIGJlIG9uZSBpbnN0YW5jZSBvZiB0aGlzIGFycmF5IHBlciBjb250cm9sbGVyIHN1Y2gNCj4g
-dGhhdCANCj4gdGhpcyBkcml2ZXIgY2FuIHN1cHBvcnQgbXVsdGlwbGUgaG9zdCBjb250cm9sbGVy
-cyBpbnN0ZWFkIG9mIG9ubHkNCj4gb25lPw0KPiANCg0KVHJ1ZSwgSSB3aWxsIGZpeCB0aGUgZmxv
-dyB0byBnZXQgaXJxIGFmdGVyIGBzdHJ1Y3QgdWZzX2hiYWAgaXMNCmFsbG9jYXRlZCBzbyB0aGF0
-IHRoZXNlIGluZm9tYXRpb24gY2FuIGJlIHN0b3JlZCBhcyBwZXIgaG9zdCBpbnN0YW5jZS4gDQoN
-Cj4gPiAtCWVyciA9IHVmc2hjZF9tYWtlX2hiYV9vcGVyYXRpb25hbChoYmEpOw0KPiA+ICsJaWYg
-KCFoYmEtPm1jcV9lbmFibGVkKSB7DQo+ID4gKwkJZXJyID0gdWZzaGNkX21ha2VfaGJhX29wZXJh
-dGlvbmFsKGhiYSk7DQo+ID4gKwl9IGVsc2Ugew0KPiA+ICsJCXVmc19tdGtfY29uZmlnX21jcSho
-YmEsIGZhbHNlKTsNCj4gPiArCQl1ZnNoY2RfbWNxX21ha2VfcXVldWVzX29wZXJhdGlvbmFsKGhi
-YSk7DQo+ID4gKwkJdWZzaGNkX21jcV9jb25maWdfbWFjKGhiYSwgaGJhLT5udXRycyk7DQo+ID4g
-KwkJdWZzaGNkX3dyaXRlbChoYmEsIHVmc2hjZF9yZWFkbChoYmEsIFJFR19VRlNfTUVNX0NGRykg
-fA0KPiA+IDB4MSwNCj4gPiArCQkJICAgICAgUkVHX1VGU19NRU1fQ0ZHKTsNCj4gPiArCX0NCj4g
-DQo+IHVmc2hjZF9jb25maWdfbWNxKCkgaW4gdGhlIFVGU0hDRCBjb3JlIGFscmVhZHkgY2FsbHMg
-DQo+IHVmc2hjZF9tY3FfY29uZmlnX21hYygpLiBXaHkgaXMgdGhlcmUgYW5vdGhlciBjYWxsIHRv
-IA0KPiB1ZnNoY2RfbWNxX2NvbmZpZ19tYWMoKSBpbiB0aGUgTWVkaWFUZWsgZHJpdmVyPw0KDQpN
-Q1EgY29uZmlndXJhdGlvbiB3aWxsIGJlIHJlc2V0IHRocm91Z2ggSENFIGN5Y2xlIG9uIG91ciBo
-b3N0DQpjb250cm9sbGVyLCBoZW5jZSB3ZSBuZWVkIHRvIHJlY29uZmlndXJlIHRob3NlIHJlZ2lz
-dGVycy4gDQoNCj4gDQo+ID4gKwkvKg0KPiA+ICsJICogRGlzYWJsZSBNQ1FfQ1FfRVZFTlQgaW50
-ZXJydXB0Lg0KPiA+ICsJICogVXNlIENRIFRhaWwgRW50cnkgUHVzaCBTdGF0dXMgaW5zdGVhZC4N
-Cj4gPiArCSAqLw0KPiA+ICsJdWZzaGNkX2Rpc2FibGVfaW50cihoYmEsIE1DUV9DUV9FVkVOVF9T
-VEFUVVMpOw0KPiANCj4gVUZTIGhvc3QgY29udHJvbGxlciBkcml2ZXJzIHNob3VsZCBub3QgY2Fs
-bCB1ZnNoY2RfZGlzYWJsZV9pbnRyKCkuDQo+IA0KPiAgRnJvbSB0aGUgVUZTSENJIDQuMCBzcGVj
-aWZpY2F0aW9uOiAiTUNRIENRIEV2ZW50IFN0YXR1cyAoQ1FFUyk6DQo+IFRoaXMgDQo+IGJpdCBp
-cyB0cmFuc3BhcmVudCBhbmQgYmVjb21lcyDigJgx4oCZIHdoZW4gYWxsIG9mIHRoZSBmb2xsb3dp
-bmcNCj4gY29uZGl0aW9ucyANCj4gYXJlIG1ldDoNCj4g4oCiIENvbnRyb2xsZXIgaXMgb3BlcmF0
-aW5nIGluIE1DUSBtb2RlIChDb25maWcuUVQ9MSkNCj4g4oCiIEVTSSBpcyBub3QgZW5hYmxlZCAo
-Q29uZmlnLkVTSUU9MCkNCj4g4oCiIENRRVMgc2V0IG9ubHkgZm9yIEV2ZW50cyBpbiBRdWV1ZXMg
-dGhhdCBkbyBub3QgaGF2ZSBpbnRlcnJ1cHQgDQo+IGFnZ3JlZ2F0aW9uIGVuYWJsZWQgb3IgdGhl
-IEV2ZW50cyB0aGF0IGRvIG5vdCBiZWxvbmcgdG8NCj4gTUNRSUFDUnkuSUFDVEggDQo+IGNvdW50
-ZXIgb3BlcmF0aW9uIGNyaXRlcmlhLg0KPiDigKIgQXQgbGVhc3Qgb25lIGJpdCBpbiBDUUlTeSBp
-cyBzZXQgYW5kIGFzc29jaWF0ZWQgYml0IGluIENRSUV5IGlzDQo+IHNldC4gDQo+IHk9MC4uMzEi
-DQo+IA0KPiBJcyB0aGVyZSBwZXJoYXBzIGEgYnVnIGluIHRoZSBNZWRpYVRlayBjb250cm9sbGVy
-IHRoYXQgY2F1c2VzIHRoZSBNQ1ENCj4gQ1EgDQo+IEV2ZW50IFN0YXR1cyB0byBiZSBzZXQgaW4g
-RVNJIG1vZGU/IElmIG5vdCwgY2FuIHRoZSBhYm92ZSANCj4gdWZzaGNkX2Rpc2FibGVfaW50cigp
-IGNhbGwgYmUgbGVmdCBvdXQ/DQoNCldlIGRpZCBub3QgaW1wbGVtZW50IEVTSSBhdCBoYXJkd2Fy
-ZSBsZXZlbCBidXQgcGVyIHF1ZXVlIGh3IGludGVycnVwdC4NCldpdGhvdXQgZGlzYWJsaW5nIE1D
-UV9DUV9FVkVOVF9TVEFUVVMsIHRoZXJlIHdpbGwgYmUgdHdvIGludGVycnVwdHMsDQpDUUVTICh0
-cmFkaXRpb25hbCBpbnRlcnJ1cHQpIGFuZCBDUSBUYWlsIEVudHJ5IFB1c2ggSW50ZXJydXB0IChw
-ZXINCnF1ZXVlIGh3IGludGVycnVwdCksIHJhaXNlZCBvbiBhIHNpZ25sZSBjb21tYW5kIGFycml2
-YWwuDQoNCkkgd291bGRuJ3QgY29uc2lkZXIgaXQgYXMgYSBidWcsIGJ1dCBkaWZmZXJlbnQgaW50
-ZXJydXB0IGRlc2lnbi4NCj4gDQo+IFRoYW5rcywNCj4gDQo+IEJhcnQuDQo+IA0KDQpUaGFua3Mg
-Zm9yIHlvdXIgcmV2aWV3DQoNClBvd2VuDQo=
+Kyrie Wu (=E5=90=B4=E6=99=97) <Kyrie.Wu@mediatek.com> =E4=BA=8E2023=E5=B9=
+=B43=E6=9C=8814=E6=97=A5=E5=91=A8=E4=BA=8C 10:49=E5=86=99=E9=81=93=EF=BC=9A
+>
+> On Thu, 2023-03-09 at 15:31 +0800, Zheng Hacker wrote:
+> > Dear Kyrie,
+> >
+> > Guenter gave some advice about this issue in [1]. As we are not
+> > familiar with the code here, could you please see if the bug really
+> > exists?
+> >
+> > [1]
+> > https://lore.kernel.org/all/e03134f9-9433-ab6b-170a-8ce752fccdeb@roeck-=
+us.net/
+> >
+> > Best regards,
+> > Zheng
+> Dear zheng,
+>
+> I have no more questions for your patch, thank you for your
+> contribution to mtk jpeg driver.
+>
+Thanks for your detailed review and explanation about the code. I have
+learned a lot
+from it. Have a nice day :)
+
+Best regards,
+Zheng
+
+> >
+> >
+> >
+> > Zheng Hacker <hackerzheng666@gmail.com> =E4=BA=8E2023=E5=B9=B43=E6=9C=
+=888=E6=97=A5=E5=91=A8=E4=B8=89 17:11=E5=86=99=E9=81=93=EF=BC=9A
+> > >
+> > > Dear Kyrie,
+> > >
+> > > Sorry for my misunderstanding. I've seen the timeout worker is
+> > > bound
+> > > with mtk_jpegdec_timeout_work rather than
+> > > mtk_jpeg_job_timeout_work.So
+> > > the competition won't happen.
+> > >
+> > > Back to the beginning scene, I still don't know if it's a UAF issue
+> > > or
+> > > not. The normal schedule is very strong to me. If we can call
+> > > mtk_jpeg_remove directly without calling mtk_jpeg_release,
+> > > The UAF is still possible. Otherwis, I think it's safe here.
+> > >
+> > > Best regards,
+> > > Zheng
+> > >
+> > > Kyrie Wu (=E5=90=B4=E6=99=97) <Kyrie.Wu@mediatek.com> =E4=BA=8E2023=
+=E5=B9=B43=E6=9C=888=E6=97=A5=E5=91=A8=E4=B8=89 15:39=E5=86=99=E9=81=93=EF=
+=BC=9A
+> > > >
+> > > > On Wed, 2023-03-08 at 14:10 +0800, Zheng Hacker wrote:
+> > > > > Hi Kyrie,
+> > > > >
+> > > > > After reviewing the code, I found anothe possible code path. As
+> > > > > I am
+> > > > > not familiar with the module. It has high possibility it's
+> > > > > wrong.
+> > > > > Could please help me check this? Very much appreciated for your
+> > > > > valuable time.
+> > > > >
+> > > > > In summary, mtk_jpegdec_worker was set in mtk_jpeg_open and
+> > > > > started
+> > > > > in
+> > > > > mtk_jpeg_multicore_dec_device_run, which made it running on
+> > > > > cpu1.
+> > > > > Inside the mtk_jpeg_multicore_dec_device_run, it will call
+> > > > > schedule_delayed_work  to start the timeout_work, which will
+> > > > > make it
+> > > > > running on cpu2. Meanwhile, we can call
+> > > > > mtk_jpeg_release to cancel the job. But there might be a race
+> > > > > between
+> > > > > mtk_jpegdec_worker and v4l2_m2m_cancel_job. It may call
+> > > > > v4l2_m2m_job_finish too early to wake up the event.
+> > > > > The remove will go on, the other race is as described earlier.
+> > > > >
+> > > > > cpu0                         cpu1                  cpu2
+> > > > > (1)->device_run
+> > > > > mtk_jpeg_multicore
+> > > > > _dec_device_run
+> > > > > queue_work
+> > > > > (jpeg->workqueue,
+> > > > > &ctx->jpeg_work);
+> > > > >                       (2)mtk_jpegdec_worker
+> > > > > (3)mtk_jpeg_release
+> > > > > v4l2_m2m_cancel_job
+> > > > > wait event
+> > > > >
+> > > > >                       schedule_delayed_work
+> > > > >                                             (4)mtk_jpeg_job_tim
+> > > > > eout_w
+> > > > > ork
+> > > > >                       (5)v4l2_m2m_job_finish
+> > > > >                       wake up
+> > > > > (6)mtk_jpeg_remove
+> > > > > v4l2_m2m_release
+> > > > > kfree(m2m_dev)
+> > > > >                                             (7)v4l2_m2m_get_cur
+> > > > > r_priv
+> > > > >
+> > > >
+> > > > Dear zheng,
+> > > >
+> > > > The mtk_jpeg_multicore_dec_device_run function is used for multi-
+> > > > hw
+> > > > jpeg decoding. Instead of scheduling mtk_jpeg_job_timeout_work,
+> > > > mtk_jpegdec_worker is scheduled in this function.
+> > > >
+> > > > The mtk_jpeg_dec_device_run function is used for single hw jpeg
+> > > > decoding, which schedules mtk_jpeg_job_timeout_work.
+> > > >
+> > > > A driver is either a single hw driver or a multi-hw driver and
+> > > > cannot
+> > > > represent both at the same time.
+> > > > mtk_jpeg_job_timeout_work and mtk_jpegdec_worker cannot be
+> > > > scheduled at
+> > > > the same time.
+> > > > So mtk_jpeg_job_timeout_work calls v4l2_m2m_job_finish would not
+> > > > cause
+> > > > competition between the mtk_jpegdec_worker and
+> > > > v4l2_m2m_cancel_job.
+> > > >
+> > > > Regards,
+> > > > Kyrie.
+> > > >
+> > > >
+> > > > > Kyrie Wu (=E5=90=B4=E6=99=97) <Kyrie.Wu@mediatek.com> =E4=BA=8E20=
+23=E5=B9=B43=E6=9C=888=E6=97=A5=E5=91=A8=E4=B8=89 11:32=E5=86=99=E9=81=93=
+=EF=BC=9A
+> > > > > >
+> > > > > > On Wed, 2023-03-08 at 10:20 +0800, Zheng Hacker wrote:
+> > > > > > > Hi Kyrie,
+> > > > > > >
+> > > > > > > Thank you for your careful analysis and response. I still
+> > > > > > > have
+> > > > > > > some
+> > > > > > > areas that I don't quite understand and would like to ask
+> > > > > > > for
+> > > > > > > clarification. That is, how do the function pointers for
+> > > > > > > stop
+> > > > > > > streaming, initialized as mtk_jpeg_enc_stop_streaming and
+> > > > > > > mtk_jpeg_dec_stop_streaming, ensure that the worker is
+> > > > > > > canceled?
+> > > > > > > I
+> > > > > > > would greatly appreciate your response.
+> > > > > > >
+> > > > > > > Best regards,
+> > > > > > > Zheng
+> > > > > >
+> > > > > > Dear zheng,
+> > > > > >
+> > > > > > For stop streaming, what I mean is that stoppping jpeg
+> > > > > > decoding or
+> > > > > > encoding.
+> > > > > > Ok, let me introduce the sw flow of stop streaming:
+> > > > > > Firstly, the app will call v4l2_m2m_ioctl_streamoff, which
+> > > > > > will
+> > > > > > call
+> > > > > > v4l2_m2m_cancel_job, if it finds a job running(as you note,
+> > > > > > cpu1 is
+> > > > > > running), it will wait event, the event is wake up by
+> > > > > > v4l2_m2m_job_finish function. And v4l2_m2m_job_finish is
+> > > > > > called by
+> > > > > > jpeg
+> > > > > > dec/enc irq handler, which means that the waitting would
+> > > > > > result mtk
+> > > > > > hw
+> > > > > > to finish dec/enc, irq will occur and irq handler would
+> > > > > > cancel
+> > > > > > timeout
+> > > > > > worker. The follow is shown as blow.
+> > > > > > v4l2_m2m_ioctl_streamoff
+> > > > > >    v4l2_m2m_cancel_job                mtk_jpeg_enc_irq/mtk_jp
+> > > > > > eg_dec
+> > > > > > _irq
+> > > > > >        wait evnet <------ wake up ------v4l2_m2m_job_finish
+> > > > > >                                         cancel timeout work
+> > > > > >
+> > > > > > As mentioned above, if it is normal stop streaming action,
+> > > > > > there
+> > > > > > will
+> > > > > > be no happen that the timeout worker does not canceled.
+> > > > > >
+> > > > > > But if mtk_jpeg_remove is called directly without above flow,
+> > > > > > it
+> > > > > > would
+> > > > > > cause lots of issues.
+> > > > > >
+> > > > > > Regards,
+> > > > > > Kyrie.
+> > > > > > >
+> > > > > > > Kyrie Wu (=E5=90=B4=E6=99=97) <Kyrie.Wu@mediatek.com> =E4=BA=
+=8E2023=E5=B9=B43=E6=9C=888=E6=97=A5=E5=91=A8=E4=B8=89 10:02=E5=86=99=E9=81=
+=93=EF=BC=9A
+> > > > > > > >
+> > > > > > > > On Tue, 2023-03-07 at 23:03 +0800, Zheng Hacker wrote:
+> > > > > > > > > The timer function was set in mtk_jpeg_probe with
+> > > > > > > > > mtk_jpeg_job_timeout_work function.
+> > > > > > > > > And the worker is started in mtk_jpeg_dec_device_run.
+> > > > > > > > > There are two functions (mtk_jpeg_enc_irq and
+> > > > > > > > > mtk_jpeg_dec_irq)
+> > > > > > > > > which
+> > > > > > > > > may cancel the worker.
+> > > > > > > > > They are used as IRQ handler function which is saved as
+> > > > > > > > > function
+> > > > > > > > > pointer in a variable.
+> > > > > > > > > In mtk_jpeg_probe, they are registered by
+> > > > > > > > > devm_request_irq:
+> > > > > > > > >
+> > > > > > > > > ret =3D devm_request_irq(&pdev->dev,
+> > > > > > > > >                jpeg_irq,
+> > > > > > > > >                jpeg->variant->irq_handler,
+> > > > > > > > >                0,
+> > > > > > > > >                pdev->name, jpeg);
+> > > > > > > > >     if (ret) {
+> > > > > > > > >       dev_err(&pdev->dev, "Failed to request jpeg_irq
+> > > > > > > > > %d
+> > > > > > > > > (%d)\n",
+> > > > > > > > >         jpeg_irq, ret);
+> > > > > > > > >       return ret;
+> > > > > > > > >     }
+> > > > > > > > >
+> > > > > > > > > However, if we remove the module without triggering the
+> > > > > > > > > irq,
+> > > > > > > > > the
+> > > > > > > > > worker will never be removed.
+> > > > > > > > >
+> > > > > > > > > As for the schedule, mtk_jpeg_dec_device_run and
+> > > > > > > > > mtk_jpeg_enc_device_run will start the worker.
+> > > > > > > > > The schedule invoking is quite complicated. As far as I
+> > > > > > > > > know,
+> > > > > > > > > the
+> > > > > > > > > invoking chain is as follows:
+> > > > > > > > >
+> > > > > > > > > v4l2_m2m_init->v4l2_m2m_device_run_work-
+> > > > > > > > > >v4l2_m2m_try_run
+> > > > > > > > >
+> > > > > > > > > the v4l2_m2m_device_run_work function is also a worker
+> > > > > > > > > which
+> > > > > > > > > is
+> > > > > > > > > set
+> > > > > > > > > in
+> > > > > > > > > v4l2_m2m_init and started in
+> > > > > > > > > v4l2_m2m_schedule_next_job.
+> > > > > > > > >
+> > > > > > > > > Before calling remove function, the  mtk_jpeg_release
+> > > > > > > > > was
+> > > > > > > > > invoked
+> > > > > > > > > to
+> > > > > > > > > release the related resource.
+> > > > > > > > >
+> > > > > > > > > v4l2_m2m_cancel_job will cancel the job by calling
+> > > > > > > > > m2m_dev->m2m_ops->job_abort(m2m_ctx->priv).
+> > > > > > > > >
+> > > > > > > > > But this will only cancel the current queue by
+> > > > > > > > > list_del(&m2m_dev->curr_ctx->queue);
+> > > > > > > > >
+> > > > > > > > > I think this can not cancel the posted task mentioned
+> > > > > > > > > before.
+> > > > > > > > > So
+> > > > > > > > > I
+> > > > > > > > > think if mtk_jpeg_job_timeout_work
+> > > > > > > > >
+> > > > > > > > > is working on, and using jpeg->m2m_dev after freeing it
+> > > > > > > > > in
+> > > > > > > > > mtk_jpeg_remove, it will cause a UAF bug.
+> > > > > > > > >
+> > > > > > > > > static int mtk_jpeg_release(struct file *file)
+> > > > > > > > > {
+> > > > > > > > >   struct mtk_jpeg_dev *jpeg =3D video_drvdata(file);
+> > > > > > > > >   struct mtk_jpeg_ctx *ctx =3D mtk_jpeg_fh_to_ctx(file-
+> > > > > > > > > > private_data);
+> > > > > > > > >
+> > > > > > > > >   mutex_lock(&jpeg->lock);
+> > > > > > > > >   v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
+> > > > > > > > >   [1] v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
+> > > > > > > > >   v4l2_fh_del(&ctx->fh);
+> > > > > > > > >   v4l2_fh_exit(&ctx->fh);
+> > > > > > > > >   kfree(ctx);
+> > > > > > > > >   mutex_unlock(&jpeg->lock);
+> > > > > > > > >   return 0;
+> > > > > > > > > }
+> > > > > > > > >
+> > > > > > > > > void v4l2_m2m_ctx_release(struct v4l2_m2m_ctx *m2m_ctx)
+> > > > > > > > > {
+> > > > > > > > >   /* wait until the current context is dequeued from
+> > > > > > > > > job_queue */
+> > > > > > > > >   [2] v4l2_m2m_cancel_job(m2m_ctx);
+> > > > > > > > >
+> > > > > > > > >   vb2_queue_release(&m2m_ctx->cap_q_ctx.q);
+> > > > > > > > >   vb2_queue_release(&m2m_ctx->out_q_ctx.q);
+> > > > > > > > >
+> > > > > > > > >   kfree(m2m_ctx);
+> > > > > > > > > }
+> > > > > > > > >
+> > > > > > > > > Note that all of this is static analysis, which may be
+> > > > > > > > > false
+> > > > > > > > > positive.
+> > > > > > > > > Feel free to tell me if there is something I've missed.
+> > > > > > > > >
+> > > > > > > > > Regard,
+> > > > > > > > > Zheng
+> > > > > > > >
+> > > > > > > > Dear Zheng,
+> > > > > > > >
+> > > > > > > > You set up an application scenario:
+> > > > > > > > cpu1 is using the mtk-jpeg driver and timeout work has
+> > > > > > > > been
+> > > > > > > > scheduled.
+> > > > > > > > At the same time cpu0 wanted to remove the mtk-jpeg
+> > > > > > > > driver,
+> > > > > > > > which
+> > > > > > > > caused the UAF bug.
+> > > > > > > > I wonder if such an irrational application scenario could
+> > > > > > > > exist.
+> > > > > > > > This
+> > > > > > > > scenario, as you described, not only leads to the
+> > > > > > > > problems you
+> > > > > > > > mentioned, but also to output&capture memory leaks and
+> > > > > > > > unreleased
+> > > > > > > > resources, such as spinlock.
+> > > > > > > > Typically, if we want to remove the driver, we firstly do
+> > > > > > > > stop
+> > > > > > > > streaming, which ensures that the worker has been
+> > > > > > > > canceled.
+> > > > > > > > I agree with your changes from the perspective of
+> > > > > > > > strengthening
+> > > > > > > > the
+> > > > > > > > robustness of the driver code.
+> > > > > > > >
+> > > > > > > > Regards,
+> > > > > > > > Kyrie.
+> > > > > > > > >
+> > > > > > > > > Irui Wang (=E7=8E=8B=E7=91=9E) <Irui.Wang@mediatek.com> =
+=E4=BA=8E2023=E5=B9=B43=E6=9C=887=E6=97=A5=E5=91=A8=E4=BA=8C
+> > > > > > > > > 18:23=E5=86=99=E9=81=93=EF=BC=9A
+> > > > > > > > > >
+> > > > > > > > > > Dear Angelo and Zheng,
+> > > > > > > > > >
+> > > > > > > > > > Thanks for your patch and comments.
+> > > > > > > > > >
+> > > > > > > > > > Dear Kyrie,
+> > > > > > > > > >
+> > > > > > > > > > Please help to check this, thanks.
+> > > > > > > > > >
+> > > > > > > > > > Best Regards
+> > > > > > > > > >
+> > > > > > > > > > On Tue, 2023-03-07 at 10:49 +0100, AngeloGioacchino
+> > > > > > > > > > Del
+> > > > > > > > > > Regno
+> > > > > > > > > > wrote:
+> > > > > > > > > > > Il 07/03/23 10:27, Zheng Hacker ha scritto:
+> > > > > > > > > > > > Hi,
+> > > > > > > > > > > >
+> > > > > > > > > > > > Is there anyone who can help with this? I can
+> > > > > > > > > > > > provide
+> > > > > > > > > > > > more
+> > > > > > > > > > > > details
+> > > > > > > > > > > > like invoking chain if needed.
+> > > > > > > > > > > >
+> > > > > > > > > > >
+> > > > > > > > > > > Providing more details is always good. Please do.
+> > > > > > > > > > >
+> > > > > > > > > > > Meanwhile, adding Irui Wang to the loop: he's doing
+> > > > > > > > > > > mtk-
+> > > > > > > > > > > jpeg.
+> > > > > > > > > > >
+> > > > > > > > > > > Regards,
+> > > > > > > > > > > Angelo
+> > > > > > > > > > >
+> > > > > > > > > > > > Thanks,
+> > > > > > > > > > > > Zheng
+> > > > > > > > > > > >
+> > > > > > > > > > > > Zheng Wang <zyytlz.wz@163.com> =E4=BA=8E2023=E5=B9=
+=B43=E6=9C=886=E6=97=A5=E5=91=A8=E4=B8=80
+> > > > > > > > > > > > 14:28=E5=86=99=E9=81=93=EF=BC=9A
+> > > > > > > > > > > > >
+> > > > > > > > > > > > > In mtk_jpeg_probe, &jpeg->job_timeout_work is
+> > > > > > > > > > > > > bound
+> > > > > > > > > > > > > with
+> > > > > > > > > > > > > mtk_jpeg_job_timeout_work. Then
+> > > > > > > > > > > > > mtk_jpeg_dec_device_run
+> > > > > > > > > > > > > and mtk_jpeg_enc_device_run may be called to
+> > > > > > > > > > > > > start
+> > > > > > > > > > > > > the
+> > > > > > > > > > > > > work.
+> > > > > > > > > > > > > If we remove the module which will call
+> > > > > > > > > > > > > mtk_jpeg_remove
+> > > > > > > > > > > > > to make cleanup, there may be a unfinished
+> > > > > > > > > > > > > work. The
+> > > > > > > > > > > > > possible sequence is as follows, which will
+> > > > > > > > > > > > > cause a
+> > > > > > > > > > > > > typical UAF bug.
+> > > > > > > > > > > > >
+> > > > > > > > > > > > > Fix it by canceling the work before cleanup in
+> > > > > > > > > > > > > the
+> > > > > > > > > > > > > mtk_jpeg_remove
+> > > > > > > > > > > > >
+> > > > > > > > > > > > > CPU0                  CPU1
+> > > > > > > > > > > > >
+> > > > > > > > > > > > >                      |mtk_jpeg_job_timeout_work
+> > > > > > > > > > > > > mtk_jpeg_remove     |
+> > > > > > > > > > > > >    v4l2_m2m_release  |
+> > > > > > > > > > > > >      kfree(m2m_dev); |
+> > > > > > > > > > > > >                      |
+> > > > > > > > > > > > >                      | v4l2_m2m_get_curr_priv
+> > > > > > > > > > > > >                      |   m2m_dev->curr_ctx
+> > > > > > > > > > > > > //use
+> > > > > > > > > > > > >
+> > > > > > > > > > > > > Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
+> > > > > > > > > > > > > ---
+> > > > > > > > > > > > >
+> > > > > > > > > > > > > drivers/media/platform/mediatek/jpeg/mtk_jpeg_c
+> > > > > > > > > > > > > ore.c
+> > > > > > > > > > > > > >
+> > > > > > > > > > > > >
+> > > > > > > > > > > > > 2 +-
+> > > > > > > > > > > > >   1 file changed, 1 insertion(+), 1 deletion(-)
+> > > > > > > > > > > > >
+> > > > > > > > > > > > > diff --git
+> > > > > > > > > > > > > a/drivers/media/platform/mediatek/jpeg/mtk_jpeg
+> > > > > > > > > > > > > _core.
+> > > > > > > > > > > > > c
+> > > > > > > > > > > > > b/drivers/media/platform/mediatek/jpeg/mtk_jpeg
+> > > > > > > > > > > > > _core.
+> > > > > > > > > > > > > c
+> > > > > > > > > > > > > index 969516a940ba..364513e7897e 100644
+> > > > > > > > > > > > > ---
+> > > > > > > > > > > > > a/drivers/media/platform/mediatek/jpeg/mtk_jpeg
+> > > > > > > > > > > > > _core.
+> > > > > > > > > > > > > c
+> > > > > > > > > > > > > +++
+> > > > > > > > > > > > > b/drivers/media/platform/mediatek/jpeg/mtk_jpeg
+> > > > > > > > > > > > > _core.
+> > > > > > > > > > > > > c
+> > > > > > > > > > > > > @@ -1793,7 +1793,7 @@ static int
+> > > > > > > > > > > > > mtk_jpeg_probe(struct
+> > > > > > > > > > > > > platform_device *pdev)
+> > > > > > > > > > > > >   static int mtk_jpeg_remove(struct
+> > > > > > > > > > > > > platform_device
+> > > > > > > > > > > > > *pdev)
+> > > > > > > > > > > > >   {
+> > > > > > > > > > > > >          struct mtk_jpeg_dev *jpeg =3D
+> > > > > > > > > > > > > platform_get_drvdata(pdev);
+> > > > > > > > > > > > > -
+> > > > > > > > > > > > > +       cancel_delayed_work(&jpeg-
+> > > > > > > > > > > > > >job_timeout_work);
+> > > > > > > > > > > > >          pm_runtime_disable(&pdev->dev);
+> > > > > > > > > > > > >          video_unregister_device(jpeg->vdev);
+> > > > > > > > > > > > >          v4l2_m2m_release(jpeg->m2m_dev);
+> > > > > > > > > > > > > --
+> > > > > > > > > > > > > 2.25.1
+> > > > > > > > > > > > >
+> > > > > > > > > > >
+> > > > > > > > > > >
+> > > > > > > > > > >
 
