@@ -4,96 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58972C74A4B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 16:05:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2147C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 16:31:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c2+H7wt3YGMoJy1kI08Oezx1jFQC9X+jtLDpoYMlXss=; b=hn1Mi/HkEzxoX1SivgiQzbgigO
-	VySdUQITYbPZ9eJnqsOwzlRZhmpRN7quUqvL5hRO7Gfhc8p5KfAtSN60cB77cyAaugbmhnTEZOw1D
-	DpC2K14JePoKP1YT4H4wrmmcbjmw22h6vGi3cJds2f6jN8kH0BdicRwPQ4E+fYO4/T+7C5GlnWX6S
-	bJKohnw9rjrh6w5cKx2hcwe3di/MvmMpbGggZC9i+ZWfhVnYYmTVimIJ2UOi1HNIghIyQoGCMHm9T
-	b/EdT++53qg8qClSpedoAN+Ze8RqfKXIixs0a1Xm/DdYZ7/pLQardrpe+tJ4kzgnvHECw9s7G0wnx
-	yDCE8O6w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6Z20n8EovjQK6WWHRBaG09kppsRVXiyp2olQcDL0XJ8=; b=xej9XCqkW4ap0HQK0/cgh7Gq6s
+	X6WGpVNYXYMFjjTI/Iosm8Y6QAVgXZBDdlujnVGXMtj3yvspK0M1lVdZJphx5/ekQHdMKV5u0doom
+	lkgstDS2qu5qBe57IPq3u7VxZP5uFzWzeekTOGrgJHXDMmZ/ncn14xBNn4MWfoRpLT6AFcJdvi0rh
+	cR5htSe5fMDHUagzZ+Hvd7lby2ytUqGS3nPaxFWWYWSZW5ANP3uOGsbejC24v9n/e+txaniaFNC96
+	SMhy32ki4HRocHTZ4j+13Lj/NpClRJ4ZExlJQoj1JfclpZ6w6AmNYseaB6AnFeUUx99eX1hw1IVqS
+	DzW9icbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc795-00AjW1-0j;
-	Tue, 14 Mar 2023 16:05:03 +0000
-Received: from relay4-d.mail.gandi.net ([217.70.183.196])
+	id 1pc7Yo-00AqNx-1L;
+	Tue, 14 Mar 2023 16:31:38 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc78z-00AjQf-0g;
-	Tue, 14 Mar 2023 16:04:58 +0000
-Received: (Authenticated sender: paul.kocialkowski@bootlin.com)
-	by mail.gandi.net (Postfix) with ESMTPSA id 5259EE000A;
-	Tue, 14 Mar 2023 16:04:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1678809893;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=c2+H7wt3YGMoJy1kI08Oezx1jFQC9X+jtLDpoYMlXss=;
-	b=ohgih14REmXqm2YF0JReNRyzYFa6p8DeLxCOosBOjCP69WgwLl4SrXk9XakcXKF0kd9xwy
-	iMCvNea8EW5AtPT1hqpXjAuy/hc08syMWVHptjb3t3f/VlI/gwsFTpM/GkF3gADXnCx7Sa
-	heStzYo3ZsO4uFShLISuSNrbNPDvvUn/SwHvbVuXlTsShQXYB2aIQPMGAR3hifMfAzym1f
-	vvExPpy3d7rvd/a5XYG/A7SnTG3bNwlMZpT47oWKVFLprwab4fy8qdRnSHXwrSrhA3RsMQ
-	HriELQR7raePfh3IEayUhBeiw+dLQhEZAA6NXmgA3hYX14DWwAULtDN/5eNAeg==
-Date: Tue, 14 Mar 2023 17:04:48 +0100
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Joe Tessler <jrt@google.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Michael Tretter <m.tretter@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Jacopo Mondi <jacopo+renesas@jmondi.org>,
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
-	Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
-	Rui Miguel Silva <rmfrfs@gmail.com>,
-	Wenyou Yang <wenyou.yang@microchip.com>,
-	Bin Liu <bin.liu@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
-	Houlong Wei <houlong.wei@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
-	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Yong Deng <yong.deng@magewell.com>, Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	"Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Philipp Zabel <p.zabel@pengutronix.de>, Sean Young <sean@mess.org>,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-amlogic@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 18/28] media: platform: sun8i-a83t-mipi-csi2: drop
- of_match_ptr for ID table
-Message-ID: <ZBCbIILFhcDMIg+h@aptenodytes>
-References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
- <20230312131318.351173-18-krzysztof.kozlowski@linaro.org>
+	id 1pc7Yl-00AqMM-2L
+	for linux-mediatek@lists.infradead.org;
+	Tue, 14 Mar 2023 16:31:36 +0000
+Received: by mail-ed1-x532.google.com with SMTP id da10so64515833edb.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 14 Mar 2023 09:31:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1678811494;
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=6Z20n8EovjQK6WWHRBaG09kppsRVXiyp2olQcDL0XJ8=;
+        b=JK44/SsDXBuPDZzc56hUjt+1W7VutqTow1gDp4b7GRufbuYANwBW3zJWk/Fdr5oy1V
+         5NvGdMpCt9KdMMZ0wXSMshyMmavoyRhfXn4dByC3Ra59ZWEliXiB8mN8v7xyWYoY+EKx
+         9NbExJxy4XW5gsNpzG0e2gSwtq/3tG8E45K4EBifKcy720nyV6KKjD8tKWWC0RxYMvI4
+         CZgvENMmgS4n83pA7Klyg+owq9LWy3TuivG7ClIC6BZPRDK/whWULBNFJTPomgpe6M8U
+         PpRFx1/qm8hUiI8BU9FhfgfI7bFQIDM024dDiYyf9bSQQj+BqJ/PDrxtzbJWxOGY3L03
+         zCCw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678811494;
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=6Z20n8EovjQK6WWHRBaG09kppsRVXiyp2olQcDL0XJ8=;
+        b=yFr67EOMuys3/GjQyNGER9Y4rRqphr+Qy+kU4dUS/Hlp1g2KxDjdGRKyCqjz4R1LY4
+         GCS9RCw70zGj1+elTq5bNVstwYS5u1B+pAASzU1M0DlAEM7QFIg31HkwearJt4xMoT4W
+         pMg4+TGC9/AVue6nIWGWGYpiLKHvyGSWQgEMWVW104/PMkn71N6POLhZnNin7VHPVMtm
+         wEVyLZpHqtHQudaAcbpepqV+dAfVtAFecb6js75V554S0nikKjyMTSOrQq08MNXNXz/U
+         tCH58dlx1YNBVl6ZAB1/uH70p+WwoM4pcMIHoKanRiWVtiWst+jOEdIbGkJ3SMhmO5mp
+         GsQw==
+X-Gm-Message-State: AO0yUKW1ySiEHuFng/AfeqoMrTOYtD9XMle86iOtqzpC8J3pjffOLXom
+	G5tBJDVXhLdlqdWA1E7YhYic7g==
+X-Google-Smtp-Source: AK7set/vSQlRu82Czuk12ElmMiD/0af+VwTO3KMyjJOjl9VfNhfnYkq0M4g5zeFFPauB5KWKj9oZYg==
+X-Received: by 2002:a17:907:31c1:b0:92d:6078:3878 with SMTP id xf1-20020a17090731c100b0092d60783878mr2427954ejb.33.1678811493961;
+        Tue, 14 Mar 2023 09:31:33 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:59be:4b3f:994b:e78c? ([2a02:810d:15c0:828:59be:4b3f:994b:e78c])
+        by smtp.gmail.com with ESMTPSA id 18-20020a508e12000000b004fa380a14e7sm1281024edw.77.2023.03.14.09.31.31
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 14 Mar 2023 09:31:33 -0700 (PDT)
+Message-ID: <5092a0b0-6a31-f984-e28c-ca11bafef6bb@linaro.org>
+Date: Tue, 14 Mar 2023 17:31:31 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="VxKfudML6kIseEz3"
-Content-Disposition: inline
-In-Reply-To: <20230312131318.351173-18-krzysztof.kozlowski@linaro.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH 01/28] media: cec: ch7322: drop of_match_ptr for ID table
+Content-Language: en-US
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Joe Tessler <jrt@google.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Manivannan Sadhasivam <mani@kernel.org>,
+ Michael Tretter <m.tretter@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Jacopo Mondi <jacopo+renesas@jmondi.org>,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ =?UTF-8?Q?Niklas_S=c3=b6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+ Rui Miguel Silva <rmfrfs@gmail.com>, Wenyou Yang
+ <wenyou.yang@microchip.com>, Bin Liu <bin.liu@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Houlong Wei <houlong.wei@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Patrice Chotard <patrice.chotard@foss.st.com>,
+ Yong Deng <yong.deng@magewell.com>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ "Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Sean Young <sean@mess.org>,
+ linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
+References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
+ <4ee5e059-6e9f-0804-30ec-ff073f436780@xs4all.nl>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <4ee5e059-6e9f-0804-30ec-ff073f436780@xs4all.nl>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230314_090457_517618_24996FC7 
-X-CRM114-Status: GOOD (  18.16  )
+X-CRM114-CacheID: sfid-20230314_093135_764773_2477E14B 
+X-CRM114-Status: GOOD (  11.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,78 +128,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 13/03/2023 12:46, Hans Verkuil wrote:
+> On 12/03/2023 14:12, Krzysztof Kozlowski wrote:
+>> The driver can match only via the DT table so the table should be always
+>> used and the of_match_ptr does not have any sense (this also allows ACPI
+>> matching via PRP0001, even though it might not be relevant here).
+>>
+>>   drivers/media/cec/i2c/ch7322.c:583:34: error: ‘ch7322_of_match’ defined but not used [-Werror=unused-const-variable=]
+>>
+>> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> 
+> Reviewed-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+> 
+> I assume you want to take this series, but if you prefer to have us do it, then
+> just let me know.
 
---VxKfudML6kIseEz3
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I prefer if you to take it. Please grab it! :)
 
-Hi Krzysztof,
+Best regards,
+Krzysztof
 
-On Sun 12 Mar 23, 14:13, Krzysztof Kozlowski wrote:
-> The driver can match only via the DT table so the table should be always
-> used and the of_match_ptr does not have any sense (this also allows ACPI
-> matching via PRP0001, even though it might not be relevant here).  This
-> also fixes !CONFIG_OF error:
->=20
->   drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/sun8i_a83t_mipi_csi2.=
-c:818:34: error: =E2=80=98sun8i_a83t_mipi_csi2_of_match=E2=80=99 defined bu=
-t not used [-Werror=3Dunused-const-variable=3D]
->=20
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-Looks good to me:
-Reviewed-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-
-Thanks !
-
-Paul
-
-> ---
->  .../platform/sunxi/sun8i-a83t-mipi-csi2/sun8i_a83t_mipi_csi2.c  | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/sun8i_a83t=
-_mipi_csi2.c b/drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/sun8i_a83t=
-_mipi_csi2.c
-> index cd2e92ae2293..1f0cc7b1ba47 100644
-> --- a/drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/sun8i_a83t_mipi_c=
-si2.c
-> +++ b/drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/sun8i_a83t_mipi_c=
-si2.c
-> @@ -826,7 +826,7 @@ static struct platform_driver sun8i_a83t_mipi_csi2_pl=
-atform_driver =3D {
->  	.remove	=3D sun8i_a83t_mipi_csi2_remove,
->  	.driver	=3D {
->  		.name		=3D SUN8I_A83T_MIPI_CSI2_NAME,
-> -		.of_match_table	=3D of_match_ptr(sun8i_a83t_mipi_csi2_of_match),
-> +		.of_match_table	=3D sun8i_a83t_mipi_csi2_of_match,
->  		.pm		=3D &sun8i_a83t_mipi_csi2_pm_ops,
->  	},
->  };
-> --=20
-> 2.34.1
->=20
-
---=20
-Paul Kocialkowski, Bootlin
-Embedded Linux and kernel engineering
-https://bootlin.com
-
---VxKfudML6kIseEz3
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAmQQmyAACgkQ3cLmz3+f
-v9FJ+wf/Vs+zvL4HtIgKv1HYr45R/bI+XzRQ4edLJ+86siTyMIe6/xFs4hPJqnc/
-Kuop0jFCkE6h2zK7PLMPUxXZrLAThJRzd6YcMHKFN2JutU93IMSmu5Uz6R7NvnOd
-a0EpxMMQ8VZw+1bth4K5ttM6ZOI7uNuhD6ipUvXq7QLifzs9UJ7392zOtafnn0Sd
-vHbZ+ADRZzdCYpp4MjkR5rMxMyxBUpQ8PchA4eANo+Uq+gCKQWkoWGW9DSQ84eJN
-I8+xB1hddqMNyazPRNC+r01B6GydbodK+KdDjbE8xgLGy7Q1V4NPbmV1UkH+p+Oa
-pO1TUIhFzI6T+zb/bNmkmLiKPBkdmA==
-=crX/
------END PGP SIGNATURE-----
-
---VxKfudML6kIseEz3--
 
