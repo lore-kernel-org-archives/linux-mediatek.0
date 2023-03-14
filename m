@@ -4,58 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0F9EC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Mar 2023 23:54:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35B79C6FD19
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 00:10:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b9tqzrgI8xxtk/gIFSKImQ9UC0NRlRXaTXs16f53z0I=; b=uiJTNiUzFeajZl
-	VdUDJWC0qWWTFPuBkN3T5lOGCTPwjbVjnJ9bithYaS1SjewCcV3Y+PYNSbu2wzb8z59EUKHb3h/xU
-	DrrIx0RncyfCoyUaMv9EtJ1aE6JHRPUD5DMe1LaQrAXQ8bMYwUpncv/oRLVjeqWgrvkykoGdX0EpV
-	n/oVLOsIMtnRaPY51n4TiDTXVnLZHF4bUPsUGAdx0CqObWXKAv6vTQ/m02ch3OBwYVk46PwXfOWG5
-	E7V0upHFWkMp/SG5rNZPokNbkvnsJoSt4PHMjJa4GeSN8PlqShnqhl7xEChoUQQHWu9sR/Wqvwo2d
-	SWQnfVrtI57t/sdNdXPA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=i8oVlIyRb3g9hitITpuyAJ2inpWGjISnSgyu0MdKIhw=; b=a1/yiptevv9BTtE+qHsEV6vX8r
+	dG+rNepOnIrw9S+HB/1pRfrNw1be7u5cXPiYydj1FSg/1iL7U8O5kkVei1JIPg7/QeGCbMqMI1d3v
+	dk5w37YrdWXmqnxUwVBoUVXEUZUjBiu2Rx0/sIf3/mftxRB3d4rPVcWYzqmosIf2l537eBoZQ8MWf
+	Bu1vLBNaV92BVQsJlRE44snUfgdzaSlCFAes/iXi6xIao3iMvetRU79ubizmPw5G4BV0AfmDuAWev
+	ha9HrlnPbQr8At13EhKzghtW6NxMkI2E2AU2OuZ6a/ZRC+53sdHbaFBiO7pBDUn022y2paj5OCnlW
+	78ZOr5lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbrzM-008M6k-B1; Mon, 13 Mar 2023 23:54:00 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1pbsFN-008OD7-6Y; Tue, 14 Mar 2023 00:10:33 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbrzB-008M4e-9n; Mon, 13 Mar 2023 23:53:50 +0000
+	id 1pbsFC-008O9r-Rb; Tue, 14 Mar 2023 00:10:24 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id CF3CDB81642;
-	Mon, 13 Mar 2023 23:53:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB5FCC433EF;
-	Mon, 13 Mar 2023 23:53:45 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id DCCB661563;
+	Tue, 14 Mar 2023 00:10:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 3899FC433EF;
+	Tue, 14 Mar 2023 00:10:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1678751626;
-	bh=gSAvD8e0r3C0d1zGg6+R2BHZ7ljZS6nIV2sHt+LmnIE=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=ancY9WMY/uv/1HxBZAT5oqADuUq9bshYi8NtqOgyyPxeCw3pxhYSzAxe8LvEIkhfU
-	 Z+tYK5oIvRwcvh31DwBIY4MFjmc0Xz45zqafxk3oiIM/SNGeT8r3Qs3SEWqky64NyK
-	 E8oShOIWbXoWozxraHxk7LKv6xsCucetzIoF7OsqWBSdeuNkacylYMI/ZDBZe3Swe/
-	 bZee4zWUZ5w2buRnfISTgcZoTpW7uDsK0IEely5YiWNt1ZziYtJZNgWrSzeVTD1Qxc
-	 /q6SF/czgyVFfGLOeS4YXXKOHI1kloxkO6u3Hmiallyo6aRG84CXGM3eBKjkb6BAP1
-	 kF/5bfJaOMOww==
-Date: Mon, 13 Mar 2023 16:53:44 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Subject: Re: [PATCH net-next v13 16/16] net: ethernet: mtk_eth_soc: convert
- caps in mtk_soc_data struct to u64
-Message-ID: <20230313165344.4db8f750@kernel.org>
-In-Reply-To: <2d10d7a2de2a94f475c5134868580ddef4852c11.1678357225.git.daniel@makrotopia.org>
-References: <cover.1678357225.git.daniel@makrotopia.org>
-	<2d10d7a2de2a94f475c5134868580ddef4852c11.1678357225.git.daniel@makrotopia.org>
+	s=k20201202; t=1678752618;
+	bh=lwSrZHpB/2H3KGj25BHrgbq8Bljm/f9GEWsbt/dHqTI=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=oKn5ya6t2iobg/GAg+FG4/Ru8R6m48f55SKtsFOueUuCxVCaO+hiJOrYxRmlXJWZk
+	 TU0ydkcxTJgta69faBgNpx5AyRKOc35Q7SQg9kkTHCAxZXiTVrfl8WBalQYPvYZl2r
+	 JE+NCQQOlnkmn8oAtJhiFfnUPZkukaauznRO0MWgxxoKNQkknHXdtN/fBsqbKBPRhf
+	 zeDoyitIfyBicarXLdPYRMHSTwoquxFHFcYUi1W2j0SRQyvSJiO+1h1cqyLuKNsYna
+	 FNMyJv1zgQlNqiG32erH2pK/s/p10Oc6PdljqVkEPDpurAqqDOW3WEy529x8w2nPrZ
+	 1Q4OFl41hzFCg==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 1C6FEE66CBA;
+	Tue, 14 Mar 2023 00:10:18 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH v3 net 1/2] net: dsa: mt7530: remove now incorrect comment
+ regarding port 5
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id:  <167875261811.15210.2328160287953861315.git-patchwork-notify@kernel.org>
+Date: Tue, 14 Mar 2023 00:10:18 +0000
+References: <20230310073338.5836-1-arinc.unal@arinc9.com>
+In-Reply-To: <20230310073338.5836-1-arinc.unal@arinc9.com>
+To: =?utf-8?b?QXLEsW7DpyDDnE5BTCA8YXJpbmM5LnVuYWxAZ21haWwuY29tPg==?=@ci.codeaurora.org
+Cc: sean.wang@mediatek.com, Landen.Chao@mediatek.com, dqfext@gmail.com,
+ andrew@lunn.ch, f.fainelli@gmail.com, olteanv@gmail.com, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ opensource@vdorst.com, rmk+kernel@armlinux.org.uk, arinc.unal@arinc9.com,
+ netdev@vger.kernel.org, erkin.bozoglu@xeront.com,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_165349_521524_5D0901EC 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20230313_171022_970758_A8DB635C 
+X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,17 +78,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <vladimir.oltean@nxp.com>, Eric Dumazet <edumazet@google.com>, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@armlinux.org.uk>, Heiner Kallweit <hkallweit1@gmail.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Alexander Couzens <lynxis@fe80.eu>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, =?UTF-8?B?QmrDuHJu?= Mork <bjorn@mork.no>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 9 Mar 2023 10:58:58 +0000 Daniel Golle wrote:
-> From: Lorenzo Bianconi <lorenzo@kernel.org>
+Hello:
+
+This series was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Fri, 10 Mar 2023 10:33:37 +0300 you wrote:
+> From: Arınç ÜNAL <arinc.unal@arinc9.com>
 > 
-> This is a preliminary patch to introduce support for MT7988 SoC.
+> Remove now incorrect comment regarding port 5 as GMAC5. This is supposed to
+> be supported since commit 38f790a80560 ("net: dsa: mt7530: Add support for
+> port 5") under mt7530_setup_port5().
+> 
+> Fixes: 38f790a80560 ("net: dsa: mt7530: Add support for port 5")
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> 
+> [...]
 
-When posting v14 please do us a favor and withhold this patch.
+Here is the summary with links:
+  - [v3,net,1/2] net: dsa: mt7530: remove now incorrect comment regarding port 5
+    https://git.kernel.org/netdev/net/c/feb03fd11c56
+  - [v3,net,2/2] net: dsa: mt7530: set PLL frequency and trgmii only when trgmii is used
+    https://git.kernel.org/netdev/net/c/0b086d76e7b0
 
-It looks like the series doesn't need it and the limit on patches 
-in one series is 15.
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
