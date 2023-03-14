@@ -4,84 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F0BEC6FD1C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 13:26:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDB0DC6FD1C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 13:40:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rfEnNx/AtmKQ6+j2cB2Tu1ghvgv+nXYlVjsWMHYFeWs=; b=GSDe761mLZfdJXxRf9Ys56O2Uy
-	nszKznTA336uF3eEOYXGRyFJiTaoNXjKUaBD0z8zheM2sUcCCZdmmMRFLoFV1b43qOCl1IVN/i5z9
-	0jNRrZy5ljYQADDcId9At4/d6fm/OaHo9IbluHx5gFxodjQPEY2XlbiBzsXX2h3wylwbDbpB83P9x
-	3stKZXgZFJl2XZIsjxyLdUR+nh5HamL6Obz8Wiqrb5D4vylhW4tPIwKRkZEFg+P5rho0g3jSne3ZY
-	6Wmfc8RhiTboOnvbDbZAxjh5o4OMjtVMExUOKVKNGatyL6YrNaxdrgKVNo9bhW4+a/6ZOiqwcyn0D
-	Cutm/6kw==;
+	bh=rUQI6BU1IBTSG/kudnwVdGHgTOU2we1fQXVkabTw92g=; b=gAdNT2duzCbLmXmkRbf8qEPEv2
+	hwdMTymh/hUfXYVumycmk67YEapy3nNvO3b1//TgAj3TDGSrJmTdxdD1eIEFOp0Zy6vk3eczPqz98
+	C08rFLEtBZtTDZkx9Fj+Q+YESnpLoZgPGiljA8T+bcYXa2R9qu5AgXuOlt+Ix+nzLDfHGJy5xYGnN
+	jLZUyyVhSfbXOiw00Uo4+HNR5llizD8YQcxV1LVOTCvA2WF3obTZtjAuDkFu6yXBtXneCf7DdVlCD
+	QxJYfPV7vTigubFeOwXimQsAAJad2V80nwbO+XbdG7amw0xnKVq0XR/bTp/y0znRn1nQ7xaXUcMTi
+	b61ZLwkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc4fz-00AI94-2H;
-	Tue, 14 Mar 2023 13:26:51 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1pc4tW-00AKJb-28;
+	Tue, 14 Mar 2023 13:40:50 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc4ft-00AI6C-31;
-	Tue, 14 Mar 2023 13:26:48 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1pc4tS-00AKJ2-1t;
+	Tue, 14 Mar 2023 13:40:48 +0000
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id C3FD6B811F5;
-	Tue, 14 Mar 2023 13:26:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E68B5C433EF;
-	Tue, 14 Mar 2023 13:26:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1678800402;
-	bh=rfEnNx/AtmKQ6+j2cB2Tu1ghvgv+nXYlVjsWMHYFeWs=;
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B331B6602FE7;
+	Tue, 14 Mar 2023 13:40:41 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1678801245;
+	bh=SFPwXvcjYlpe+WHZRER6c+pWCXhtFKTjbX1zkF7J7ao=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=HQdvzfIbZzXtrHVHeJg8joac91CkFNUhUzka7UIgOQ3I0FVOwkfTcWeroLJ31/N7O
-	 01OIfdO5oayYpm8+UDO0/KWpqhZlwRH++bOxN+0CTXQ6T/vAaAhHIWq3PWORYgNdu+
-	 z8HPP+L3vWZpC3QqInApRRu4W0ND12eVv9xd3zqw9nh3ErFL+dJoUC2MTlBkeIT8mz
-	 yRgg+BoDNQO8M885SHiRpZ4NlCsM74IxZcOG+swSKa0mEd8MzUkgN3Wh2np3OsVUhq
-	 wKWf8t4NW/4d/W9C03p5tiQl8tBdkxFnmud7ENuSVhpviYrfKxe4rpki0XfhGzz31+
-	 O0suXgkmHMBgg==
-Date: Tue, 14 Mar 2023 13:26:34 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Kamal Dasu <kdasu.kdev@gmail.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Daniel Mack <daniel@zonque.org>,
-	Haojian Zhuang <haojian.zhuang@gmail.com>,
-	Robert Jarzmik <robert.jarzmik@free.fr>,
-	Heiko Stuebner <heiko@sntech.de>, Andi Shyti <andi@etezian.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Stephen Boyd <sboyd@kernel.org>,
+	b=URtjOTkW6TkqD7dIl9lJAed9SJ5pALFeq7VnUAo7hHEoDZCN5h8tZVJai+SwcL/30
+	 QbYGjxpYRH0EvmOVkKhfK44JjvFbZUUOsByrNE5H7OXm5MRzdBA51V57vGiuBoebjG
+	 puOPfP9F0mMRnV7ALTzcSuvlwkuqwLu1AW2HQWtTgOM9Qe8X5TPWPO/0VS4J5LpHfV
+	 QX2IAuX2s6UEJdz357jNLiBPDlpKGAwKILc6FWwduDBclFXleme5oLRiscHQRMVynT
+	 5vrKCG4nNqq+mYN6lQiferPbBCQBlyBPUS9ZHQaOCmp435gp5EvfpZ9NrM4cW4uzpI
+	 pzDszWupqPZQw==
+Date: Tue, 14 Mar 2023 09:40:36 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Mark Brown <broonie@kernel.org>, kernel@collabora.com,
+	Akihiko Odaki <akihiko.odaki@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Jiaxin Yu <jiaxin.yu@mediatek.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 01/16] spi: armada-3700: Drop of_match_ptr for ID table
-Message-ID: <5782b7a2-3942-4bed-9a70-55a43833f69c@sirena.org.uk>
-References: <20230310222857.315629-1-krzysztof.kozlowski@linaro.org>
- <7a65d775-cf07-4393-8b10-2cef4d5266ab@sirena.org.uk>
- <08e98d1d-e79b-fe7e-0d59-827f72277fc5@linaro.org>
- <9bf3dd37-71c2-4118-a8da-40e656b42d10@sirena.org.uk>
- <ed293caf-e787-a29e-f1c5-bdcaf1aa483a@linaro.org>
+	Takashi Iwai <tiwai@suse.com>, Tzung-Bi Shih <tzungbi@kernel.org>,
+	alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] ASoC: mt8192: Remove function name log messages
+Message-ID: <20230314134036.wo6oib55dhzsgv4d@notapiano>
+References: <20230313212908.2282961-1-nfraprado@collabora.com>
+ <20230313212908.2282961-2-nfraprado@collabora.com>
+ <f8d1fb49-c802-5c2f-0c7a-aeea1b25968c@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="elD8KD6t7+wRv3Op"
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <ed293caf-e787-a29e-f1c5-bdcaf1aa483a@linaro.org>
-X-Cookie: For office use only.
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <f8d1fb49-c802-5c2f-0c7a-aeea1b25968c@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230314_062646_282644_0DBA498E 
-X-CRM114-Status: GOOD (  24.75  )
+X-CRM114-CacheID: sfid-20230314_064046_757706_352F65CA 
+X-CRM114-Status: GOOD (  12.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,56 +82,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Mar 14, 2023 at 09:30:15AM +0100, AngeloGioacchino Del Regno wrote:
+> Il 13/03/23 22:29, Nícolas F. R. A. Prado ha scritto:
+> > There are some log messages in the mt8192 sound code that print the
+> > function name, presumably to aid in tracing. However this can also be
+> > achieved by ftrace and without spamming the console, so remove these
+> > messages.
+> 
+> Yeah, I totally agree.
+> Did you check the others (8173, 83, 86, 95) as well?
 
---elD8KD6t7+wRv3Op
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Not yet. I can check later if the patches from Mark didn't already address this
+for those other SoCs and send another patch/series if needed.
 
-On Tue, Mar 14, 2023 at 07:44:04AM +0100, Krzysztof Kozlowski wrote:
-> On 13/03/2023 20:22, Mark Brown wrote:
+> 
+> > 
+> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> 
 
-> > If that's the case then why are you adding maybe unused annotations for
-> > half the drivers rather than removing their of_match_ptr() usages?
-> > There doesn't seem to be any logic here, it's just randomly making
-> > changes as far as I can tell.
-
-> These are not random but depend on whether OF is the only matching
-> method or one of few. Although for IIO all of my patches would be
-> dropping the of_match_ptr... For some cases in other patchsets I added
-> __maybe_unused also because of_match_node(), when the table is not used
-> in driver of_match_table.
-
-This logic is both not apparent when looking at the patches and doesn't
-move us in any particular direction - I'd expect this stuff to be
-written the same way for all drivers, there's no reason for it to vary.
-That just adds complication, it's more random obscure rules people have
-to learn.
-
-> > The PRP0001 stuff isn't an issue, of_match_ptr() can just be changed to
-> > do the right thing for CONFIG_ACPI.
-
-> That's actually interesting idea, kind of obvious so I wonder why it
-> wasn't done like this in the first place in 886ca88be6b3 ("ACPI / bus:
-> Respect PRP0001 when retrieving device match data"). Maybe not to
-> populate OF device ID tables for the ACPI systems which do not care
-> about PRP0001?
-
-Or just it didn't occur to anyone at the time.
-
---elD8KD6t7+wRv3Op
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmQQdgoACgkQJNaLcl1U
-h9Anagf/THfRG/RbMsHxaqKJsYsu8z++5R15gbuBbWAl1XHrOE03sdWawbw9nx6/
-7FjyWP0YguU7o9glL92CdGxV9CSl2mMJw06/Mvasde/AqKVs1hIrTEBLc8esfnmK
-y/l3de8OGXwYRz7UontPhCtwqNjdwza95hPCqQNLi1LhQ8DwEK9TIRvpfsD15NfI
-p+M8l80hFu85Hz+2LrWrmgcbQwuvowzOGYminHMypypU2qkEka6P8Avhuz9sB6Jj
-H1qukPGKGE02cXrtNfCG6DPdWzp2vPcIzeyFSendbDtHhlOets4W06I02bN3bFD8
-VlVyWgaICjPC/DjVXOuTe1yovomvig==
-=lrkL
------END PGP SIGNATURE-----
-
---elD8KD6t7+wRv3Op--
+Thanks,
+Nícolas
 
