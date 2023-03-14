@@ -4,91 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EFBDC6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 13:59:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB259C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Mar 2023 14:09:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c7aPb9OOiczw1p7VOWvnhe1L3K0+a2uiqigSXulCgho=; b=DgJNaSIIRh8fv265M6h9jtTetT
-	Jb9sKvAqGZnkX+jLBEc83hgg4ajArfeB0L2dfslWJjeu91VfxnmiFdi7EYPUqndGljH+ZmPeUvMS5
-	Dkm984dqdeDED3kc8/DKNTqBjVsezJVPGsweeRXdoaRTHMA/vl/ykAYMQX0ByTCRqKWEy9hT1tFKR
-	ZVMWAFPVloONLLBY+OpqBxq/3vTtAdW1xJlJ0o+d1/Atp4Ju8zleoB4fJyUprIzU81lOqKveN4PDg
-	RM40qzXWLIHlZF72hwfMIZUlfrdFrFRID1YfdPcLcfrUlUuzlFr0prp+sw4QsbUU+WR7qs6CtmPXu
-	CTKpsgHA==;
+	bh=tzJAUCZ6cxLrmbrtWQpROUkZsp4GEMuB07PexleiZ+w=; b=BkPIYWVTLhOp9gLYICLnjqt2Io
+	K5c4zPZGvqUTHwI5bEugx4m+yhuQjZNNl5nK+jEugjbz79Osf1n417jVKlmwPT182fskft89BpI/R
+	1U36Lq7g81XMGuvn+EsLUWdIh1SPHZUQDEfCiprIkPc/E+4JFw4jD5vwtRMOMu/796nBXVOuyR+HA
+	eYvV24KCxjgGLXsL5V0wmINSCV5M8fPnzUvjKhxmt9CQnxc0fi/X7n9O57pfgVxbD8msLQlmWhOFs
+	WedgvYbILI8RPM72mAEyHc48sulmVVOoh/Fq5datxY7jBu6ELjyVXOi0eG8ik1XIBm4wfHy4xcyZQ
+	c2QisiAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc5BR-00ANcr-2X;
-	Tue, 14 Mar 2023 13:59:21 +0000
-Received: from mout.gmx.net ([212.227.17.22])
+	id 1pc5Kw-00APOh-2P;
+	Tue, 14 Mar 2023 14:09:10 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc5BM-00ANaE-2z;
-	Tue, 14 Mar 2023 13:59:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1678802351; i=frank-w@public-files.de;
-	bh=H5jSBsXfpV8vfbpCM7sa9WUmHavxWAwDYJRxSvRoQa8=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=CsNlR9dbIdycw2Btnq6aJpvHy0H/7syh9WpfeS5PaxMuRNnb5bj2n02dUV32Sb9bT
-	 uAGkFJ5ne0RnK4vKo+LRky1RHeF7nu1vbfAP2isVhCLFdiNZ7hjRx6grLeK9XdPSez
-	 W9O2UMNH4Dg9Z5r+EWwyI5l1NmL9mkRRDQXqKt1bI3xOngPPoancE6MJ5r+oVXLeXX
-	 7tJsBbZhyXsP3ZptBLKlw/ezA7kbDn/vPjcQjcD3i0lP4svCBmqzaaceuK1W5/3IcF
-	 S2AQAXghA814NiW5aVuxO9+helWRHpNQsOGr4g0UaiRVhTlKhclmU3inrmGk0dTHTB
-	 fBfH23Kb6fWKg==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [91.64.11.45] ([91.64.11.45]) by web-mail.gmx.net
- (3c-app-gmx-bap50.server.lan [172.19.172.120]) (via HTTP); Tue, 14 Mar 2023
- 14:59:11 +0100
+	id 1pc5Ku-00APKo-1h
+	for linux-mediatek@lists.infradead.org;
+	Tue, 14 Mar 2023 14:09:09 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id ek18so31401523edb.6
+        for <linux-mediatek@lists.infradead.org>; Tue, 14 Mar 2023 07:09:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1678802939;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=tzJAUCZ6cxLrmbrtWQpROUkZsp4GEMuB07PexleiZ+w=;
+        b=XWYGpCXsXZSlzHoyVy0l5aiph3FOO2/v3CYmo3g2Q6Y8p9WODnROgeWPRB5msTBbwo
+         7l3tqUWOjzgqts93xe51UgHj5V8paUByMG2sa5LGco51hN5okT/iWqxklrtCwG1riHhc
+         3MB+mkutYvDHWdjhcPs3ly350WIiGXC3lDrE7poc+bBNajIbhM+sJ8hiWZW808Omn0lU
+         P6F7w1GsdIwRxU/8jTii8fyE/wvXgit0oCCGkjYGf+ha0qAJnVSnubn3Jd6Fi27kI8DL
+         rPsX+XA/nChlURMKCHsIUW/eLGf782bfXH+Iot8jOvHbbOkTi0jqXfSITCHp4OgMWKha
+         dkYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678802939;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=tzJAUCZ6cxLrmbrtWQpROUkZsp4GEMuB07PexleiZ+w=;
+        b=m7kA0eeFhuhuPOX30IvTZ9Nl7N0J6sdkzOkmlxxhMStPoVDoKnptL0NdNf5ImHe/5s
+         +qtmGvMEBHRolDimcuUQDJtuqEO3rT7nYw+kivvdxt6ip+RE58hfZQqBw3gbDTOsvmv/
+         u+IGFr3L1q2Bx2TMYWrqx5mC38qNToLknflPIPGFPY6pFvMIMr7rdJy07WhOUTDSkJny
+         sbd2pKoPW73OEE5FLgoCfLFsuoSLuK4+nn4PQSyTxhR0AW71wh9FmEN0YaijA/cqRqWc
+         ixfbxrklBWURLJi6MmY3prSRMZCw+U417eP/OGmN3eR8Rt9D38m9o0czz6so6S5GI1Vz
+         5Kbg==
+X-Gm-Message-State: AO0yUKV55T7SvpiQlPGKow/3JfrWHDEGlieGTp8RUDv4FektgSbmvPTE
+	WyDlV71/3nI/tRcBa05Q3s50fc9GpP9KiRy9pCI=
+X-Google-Smtp-Source: AK7set9aDeRx5ilJ6vQTpGKrxu3nveAK78en09LF2SpzRa5pCE4uh4jYbgWXGNpLBKydzg7vdbhePQ==
+X-Received: by 2002:a05:6402:692:b0:4fb:892c:9ec7 with SMTP id f18-20020a056402069200b004fb892c9ec7mr8065848edy.18.1678802939660;
+        Tue, 14 Mar 2023 07:08:59 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:59be:4b3f:994b:e78c? ([2a02:810d:15c0:828:59be:4b3f:994b:e78c])
+        by smtp.gmail.com with ESMTPSA id co2-20020a0564020c0200b004fce9ff4830sm1079104edb.88.2023.03.14.07.08.58
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 14 Mar 2023 07:08:59 -0700 (PDT)
+Message-ID: <d3e49808-368d-f92a-b710-6d359fc6b7c2@linaro.org>
+Date: Tue, 14 Mar 2023 15:08:57 +0100
 MIME-Version: 1.0
-Message-ID: <trinity-99c1353c-98c3-4608-8079-9a818909e6c4-1678802351739@3c-app-gmx-bap50>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Aw: Re: [PATCH net-next v12 08/18] net: ethernet: mtk_eth_soc: fix
- 1000Base-X and 2500Base-X modes
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v8 1/7] dt-bindings: mediatek: mt8188: Add binding for MM
+ & INFRA IOMMU
+Content-Language: en-US
+To: =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?WW91bGluIFBlaSAo6KO05Y+L5p6XKQ==?= <youlin.pei@mediatek.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?SmlhbmppYW8gWmVuZyAo5pu+5YGl5aejKQ==?=
+ <Jianjiao.Zeng@mediatek.com>, "robin.murphy@arm.com" <robin.murphy@arm.com>,
+ "joro@8bytes.org" <joro@8bytes.org>,
+ =?UTF-8?B?Q2hlbmdjaSBYdSAo6K645om/6LWQKQ==?= <Chengci.Xu@mediatek.com>,
+ =?UTF-8?B?WUYgV2FuZyAo546L5LqR6aOeKQ==?= <YF.Wang@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "iommu@lists.linux.dev" <iommu@lists.linux.dev>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?TWluZ3l1YW4gTWEgKOmprOm4o+i/nCk=?= <Mingyuan.Ma@mediatek.com>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>, "will@kernel.org"
+ <will@kernel.org>
+References: <20230307080555.14399-1-yong.wu@mediatek.com>
+ <20230307080555.14399-2-yong.wu@mediatek.com>
+ <388e2274-d46a-68a4-3e85-5bd597085041@linaro.org>
+ <aba29e7fd9a461f2d94c83cf2c7496521433847d.camel@mediatek.com>
+ <4ac7e2e0-9b19-c911-7297-3510e55d6cfd@linaro.org>
+ <43989ca5ffa67be0a21874dbdbdf38872f16378e.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <43989ca5ffa67be0a21874dbdbdf38872f16378e.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
-Date: Tue, 14 Mar 2023 14:59:11 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <ZBBIDqZaqdSfwu9g@shell.armlinux.org.uk>
-References: <4B891976-C29E-4D98-B604-3AC4507D3661@public-files.de>
- <ZAzk71mTxgV/pRxC@shell.armlinux.org.uk>
- <trinity-8577978d-1c11-4f6d-ae11-aef37e8b78b0-1678624836722@3c-app-gmx-bap51>
- <ZA4wlQ8P48aDhDly@shell.armlinux.org.uk>
- <ZA8B/kI0fLx4gkQm@shell.armlinux.org.uk>
- <trinity-93681801-f99c-40e2-9fbd-45888b3069aa-1678732740564@3c-app-gmx-bs66>
- <ZA+qTyQ3n6YiURkQ@shell.armlinux.org.uk>
- <trinity-e2c457f1-c897-45f1-907a-8ea3664b7512-1678783872771@3c-app-gmx-bap66>
- <ZBA6gszARdJY26Mz@shell.armlinux.org.uk>
- <trinity-bc4bbf4e-812a-4682-ac8c-5178320467f5-1678788102813@3c-app-gmx-bap66>
- <ZBBIDqZaqdSfwu9g@shell.armlinux.org.uk>
-Content-Transfer-Encoding: quoted-printable
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:NhK14wNUkflro3RqDPkDuJrdLBQ+eZgN416pIUJfkynHCgThTB1VAWOMSDrDZuikOQfUw
- 1iciGy0pZl87hzyoa2smS3HyUnDQPs9bBwcrO/cON/Uivue46pBI03HuTw0D0u6TysbvXbo/Zbex
- +DTPgFHdcdlrlek9l+4Yf582x6BbnBefHFD/9UcMqT+Gt1aRSD/MaM+IiVlsu7buvcpWs0ZI+VBX
- KD1iuO0RP2o0Ldq0BoePuCnaKO8HGoPFw04vkbxnmHqS+e1RBqsJRVRvEQDkEzCYSdcATRGqWWjL
- 2o=
-UI-OutboundReport: notjunk:1;M01:P0:oxG0TvV7TbI=;gg5M9XZ+TKu0eW25vHrBYq/dDo/
- iuDYdMGNWW7vQtvEGJy54P4lvzMdLZ5aKHwGt/LWMI8eFZ0JnRY1/edDv/q/J9xj6/UvHfr5M
- Tl7nj/oQLlX5+x7NIp4I84gHM92BfZ9z7GaR/njg9gRpZ4f/QWJpuGjVGJhPW3FjnxpSgyY3q
- vhOSGx0P2hYy8LKjDGHSQ6CWUEe8ECdYSiy40Vy0mBCFf2d11LZ1n8TwI24NxF677rWimpAut
- JoZN+qa1JVoSwAjcBLsg1sx6bErG5JtEoYAzBSGs+8Fx6IIEmHPDf517+y8uQLcv6lioi1MhN
- 1zLnATVr+L7ZzNKAYBHjsND6BueUnPsKYD/Q63fhGaCdYI2NjGD+2Sg6EHz2ZIG7fT7O1u61s
- 310gBcnwVg8LoEfQIPXXFvHyVdXb1jIg24qgdf/XqzqOIX2XafnWuYNdqE3B9AEGPOWkv3M+q
- HRvW+4BDf39ZjEx7TvWhphLzbs8NCSkXeYRRkS5W/jPbkcLQUNgptRGc9TjyOyNhcflB7vA6N
- IXoUR9WEHKHi1Ac+W9Eqyv0pYmex3iOh7w0qBaOOjC0xHl46iD44q1e2aAeAvI7dRgDViMvU8
- t+l7qsVPkMl4MZJsp+DQP/QhOLT0YM7qYuo0HpDCsuS/yMzFfUbVI+zDzWEOPv0URmT4hvJTg
- 4M4ju+gWI+2wZR0ftO9Z54QEVNTWv/fINjOLiVb7x/NcRFJKRIbK08xpN+qGuYxHXu6u7NucH
- 61uYBoPDdjSQCYSMrBljiqSQXwwq/yjw1T1a3gM9doYqidO/zFogB93mzE1b7b0fScd5VsK42
- AjGOczVxs33e/3yhvn1k/HAg==
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230314_065917_272639_20ACECE6 
-X-CRM114-Status: GOOD (  15.76  )
+X-CRM114-CacheID: sfid-20230314_070908_563851_F4AB4868 
+X-CRM114-Status: GOOD (  15.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,184 +117,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+On 14/03/2023 11:14, Yong Wu (吴勇) wrote:
+> On Tue, 2023-03-14 at 07:46 +0100, Krzysztof Kozlowski wrote:
+>> On 14/03/2023 03:41, Yong Wu (吴勇) wrote:
+>>> Hi Krzysztof,
+>>>
+>>> Thanks very much for your help review.
+>>>
+>>> On Wed, 2023-03-08 at 11:35 +0100, Krzysztof Kozlowski wrote:
+>>>> On 07/03/2023 09:05, Yong Wu wrote:
+>>>>> From: "Chengci.Xu" <chengci.xu@mediatek.com>
+>>>>>
+>>>>> Add descriptions for mt8188 IOMMU which also use ARM Short-
+>>>>> Descriptor
+>>>>> translation table format.
+>>>>>
+>>>>> In mt8188, there are two smi-common HW and IOMMU, one is for
+>>>>> vdo(video
+>>>>> output), the other is for vpp(video processing pipe). They
+>>>>> connects
+>>>>> with different smi-larbs, then some setting(larbid_remap) is
+>>>>> different.
+>>>>> Differentiate them with the compatible string.
+>>>>>
+>>>>> Something like this:
+>>>>>
+>>>>>   IOMMU(VDO)          IOMMU(VPP)
+>>>>>       |                   |
+>>>>> SMI_COMMON_VDO      SMI_COMMON_VPP
+>>>>>
+>>>>> ---------------     ----------------
+>>>>>   |     |    ...      |     |    ...
+>>>>> larb0 larb2  ...    larb1 larb3  ...
+>>>>>
+>>>>> We also have an IOMMU that is for infra master like PCIe.
+>>>>> And infra master don't have the larb and ports.
+>>>>>
+>>>>> Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
+>>>>> Reviewed-by: Yong Wu <yong.wu@mediatek.com>
+>>>>> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>>>>
+>>>> Indeed, I missed broken checkpatch/DCO chain.
+>>>
+>>> Just confirm what this means.
+>>>
+>>> Do you mean MAINTAINERS need to be updated since we add a prefix
+>>> "mediatek," for the header file?
+>>
+>> No it means, run checkpatch.
+> 
+> 
+> "WARNING:FILE_PATH_CHANGES: added, moved or deleted file(s), does
+> MAINTAINERS need updating?"
+>   
+>  This is the only warning when I run checkpatch. I will update the
+> MAINTAINERS in next version. Please tell me if I missed other parts.
 
-very good=2E=2E=2Edo not need the manual autoneg with the last Patch :)
+Hm, I guess you are right. Your Signed-off-by is missing.
 
-> Gesendet: Dienstag, 14=2E M=C3=A4rz 2023 um 11:10 Uhr
-> Von: "Russell King (Oracle)" <linux@armlinux=2Eorg=2Euk>
+Best regards,
+Krzysztof
 
-> For 802=2E3z modes, MLO_AN_INBAND with Autoneg clear in the advertising =
-mode
-> disables in-band negotiation=2E This is exactly how "ethtool -s ethX
-> autoneg off" works=2E
-
-ok, this seems now correctly set=2E
-
-> > > The patch below should result in ethtool reporting 2500baseT rather =
-than
-> > > 2500baseX, and that an=3D1 should now be an=3D0=2E Please try it, an=
-d dump the
-> > > ethtool eth1 before asking for autoneg to be manually disabled, and =
-also
-> > > report the kernel messages=2E
-
-root@bpi-r3:~# ip link set eth1 up                                        =
-                                                                           =
-                                      =20
-[   91=2E624075] mtk_soc_eth 15100000=2Eethernet eth1: configuring for inb=
-and/2500base-x link mode                                                   =
-                                          =20
-[   91=2E632485] mtk_soc_eth 15100000=2Eethernet eth1: major config 2500ba=
-se-x                                                                       =
-                                          =20
-[   91=2E639094] mtk_soc_eth 15100000=2Eethernet eth1: phylink_mac_config:=
- mode=3Dinband/2500base-x/Unknown/Unknown/none adv=3D00,00000000,00008000,0=
-0006400 pause=3D00 link=3D0 an=3D0                  =20
-root@bpi-r3:~# [   95=2E808983] mtk_soc_eth 15100000=2Eethernet eth1: Link=
- is Up - Unknown/Unknown - flow control off                                =
-                                          =20
-[   95=2E817706] IPv6: ADDRCONF(NETDEV_CHANGE): eth1: link becomes ready  =
-                                                                           =
-                                        =20
-                                                                          =
-                                                                           =
-                                      =20
-root@bpi-r3:~# ethtool eth1                                               =
-                                                                           =
-                                      =20
-Settings for eth1:                                                        =
-                                                                           =
-                                      =20
-        Supported ports: [ FIBRE ]                                        =
-                                                                           =
-                                      =20
-        Supported link modes:   2500baseT/Full                            =
-                                                                           =
-                                      =20
-        Supported pause frame use: Symmetric Receive-only                 =
-                                                                           =
-                                      =20
-        Supports auto-negotiation: No                                     =
-                                                                           =
-                                      =20
-        Supported FEC modes: Not reported                                 =
-                                                                           =
-                                      =20
-        Advertised link modes:  2500baseT/Full                            =
-                                                                           =
-                                      =20
-        Advertised pause frame use: Symmetric Receive-only                =
-                                                                           =
-                                      =20
-        Advertised auto-negotiation: No                                   =
-                                                                           =
-                                      =20
-        Advertised FEC modes: Not reported                                =
-                                                                           =
-                                      =20
-        Speed: Unknown!                                                   =
-                                                                           =
-                                      =20
-        Duplex: Unknown! (255)                                            =
-                                                                           =
-                                      =20
-        Auto-negotiation: off                                             =
-                                                                           =
-                                      =20
-        Port: FIBRE                                                       =
-                                                                           =
-                                      =20
-        PHYAD: 0                                                          =
-                                                                           =
-                                      =20
-        Transceiver: internal                                             =
-                                                                           =
-                                      =20
-        Current message level: 0x000000ff (255)                           =
-                                                                           =
-                                      =20
-                               drv probe link timer ifdown ifup rx_err tx_=
-err                                                                        =
-                                      =20
-        Link detected: yes=20
-
-root@bpi-r3:~# dmesg | grep -i 'sfp\|eth1'                                =
-                                                                           =
-                                      =20
-[    0=2E000000] Linux version 6=2E3=2E0-rc1-bpi-r3-sfp13 (frank@frank-G5)=
- (aarch64-linux-gnu-gcc (Ubuntu 11=2E3=2E0-1ubuntu1~22=2E04) 11=2E3=2E0, GN=
-U ld (GNU Binutils for Ubuntu) 2=2E38) #2 SMP Tue Mar 143
-[    1=2E658048] sfp sfp-1: Host maximum power 1=2E0W                     =
-                                                                           =
-                                          =20
-[    1=2E663128] sfp sfp-2: Host maximum power 1=2E0W                     =
-                                                                           =
-                                          =20
-[    1=2E812401] mtk_soc_eth 15100000=2Eethernet eth1: mediatek frame engi=
-ne at 0xffffffc00af80000, irq 123                                          =
-                                          =20
-[    2=2E001796] sfp sfp-1: module OEM              SFP-2=2E5G-T       rev=
- 1=2E0  sn SK2301110008     dc 230110                                      =
-                                            =20
-[    2=2E011307] mtk_soc_eth 15100000=2Eethernet eth1: optical SFP: interf=
-aces=3D[mac=3D2-4,21-22, sfp=3D22]                                         =
-                                                =20
-[    2=2E020000] mtk_soc_eth 15100000=2Eethernet eth1: optical SFP: chosen=
- 2500base-x interface                                                      =
-                                          =20
-[    2=2E028080] mtk_soc_eth 15100000=2Eethernet eth1: requesting link mod=
-e inband/2500base-x with support 00,00000000,00008000,00006400             =
-                                          =20
-[   91=2E624075] mtk_soc_eth 15100000=2Eethernet eth1: configuring for inb=
-and/2500base-x link mode                                                   =
-                                          =20
-[   91=2E632485] mtk_soc_eth 15100000=2Eethernet eth1: major config 2500ba=
-se-x                                                                       =
-                                          =20
-[   91=2E639094] mtk_soc_eth 15100000=2Eethernet eth1: phylink_mac_config:=
- mode=3Dinband/2500base-x/Unknown/Unknown/none adv=3D00,00000000,00008000,0=
-0006400 pause=3D00 link=3D0 an=3D0                  =20
-[   95=2E808983] mtk_soc_eth 15100000=2Eethernet eth1: Link is Up - Unknow=
-n/Unknown - flow control off                                               =
-                                          =20
-[   95=2E817706] IPv6: ADDRCONF(NETDEV_CHANGE): eth1: link becomes ready
-
-so you can see the link-up comes directly after the interface up
-
-does the ethtool-output look like expected? i see speed/duplex is set as s=
-upported/advertised but not active
-
-        Supported link modes:   2500baseT/Full
-        Advertised link modes:  2500baseT/Full
-vs=2E
-        Speed: Unknown!                                                   =
-                                                                           =
-                                      =20
-        Duplex: Unknown! (255)=20
-
-maybe because of the
-
-@@ -3003,7 +3007,8 @@ static int phylink_sfp_config_optical(struct phylink=
- *pl)
-        config=2Espeed =3D SPEED_UNKNOWN;
-        config=2Eduplex =3D DUPLEX_UNKNOWN;
-        config=2Epause =3D MLO_PAUSE_AN;
-
-imho ETHTOOL_LINK_MODE_2500baseT_Full_BIT sets only the supported which in=
-tersected with the advertised from the other side maximum should be taken a=
-s actual mode=2E=2E=2Eso this part seems not correctly working at the momen=
-t=2E
-
-the "Supported ports: [ FIBRE ]" is also misleading for copper sfp, but im=
-ho all SFP are shown like this=2E
-
-full log if needed:
-https://pastebin=2Ecom/6yWe4Kyi
-
-next step:
-is it possible to have pause for rate adaption (handling rx pause frames c=
-orrectly)?
-
-regards Frank
 
