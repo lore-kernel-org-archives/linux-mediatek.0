@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDDD4C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Mar 2023 17:34:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30ECAC61DA4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Mar 2023 17:35:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f4RksfPONkCdlIzGWCI4gEmQh2PUbMXq0YFoK8rSx6E=; b=UKW8xsh5pgsB0xtuZXWANKy4uo
-	r8KunIlxi+v009Zr+4u0U2M0E6rd2zIuVajFu6Zd5TiOTaVroQ4Ew8PX2mDQqIIjGhN2+KbLsn9/s
-	INaf7h+FPzIfa/a5PO33ui1EZrmj/f6Ltra6bTX/wzdQGe8hCs0ODcZyAchrbw+MiICJsFvIFkOHG
-	zeMZ1SZYg5mgL6Ws9Y9AmOznBRmU7igbfrELmNiiwMLaLfep8mak2+aHnBW8HbxbtNIakcBxc5Kuu
-	D+k83QjwEBN+L7IxQE4ie6rsRcuS7749qwT+kLbKdNKsjVMsfIaJzGYzxQwGXusyVo+CN3O713tw2
-	Rl1mAe+w==;
+	bh=mXziicv2uYfxyPIhD3Zm1hNxYuWnUEu3waNVg+uvUJE=; b=s1hk+nYz8b930bminW4UE67BUR
+	8g8vDHlYZisTbuiVI0iqthA6rB4yCnu03q7nxD0wb2B9qjojEKX6OqH4eZjwOK6W8Dmfbzj/MEGI6
+	V0zzzYe9x/upJUUfAMgZKNBiKUs+vXBYzjEVKQq/6TDatyyHBilZqZhJS/SgkWokKP1LA7dlp/xCW
+	hVeSvrtL+IWmJtWUgA5OZffn7ij48+0lpHG1X3jzm++hEFuM12H1lK+qMd7wZfAJMEqEdPPEFEnU0
+	Es76/pW6nuR3Ydr7WWdUUsYJcoOKH/GNyrRLK8tEOmBG1uure8lJOLCtkYPg/8t7th2amSmD/Vdeg
+	fiC9LlTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcV11-00E9SW-0w;
-	Wed, 15 Mar 2023 17:34:19 +0000
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+	id 1pcV2H-00E9dJ-0o;
+	Wed, 15 Mar 2023 17:35:37 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcV0x-00E9Qx-1e
+	id 1pcV2C-00E9bM-05
 	for linux-mediatek@lists.infradead.org;
-	Wed, 15 Mar 2023 17:34:17 +0000
-Received: by mail-pj1-x102b.google.com with SMTP id y2so19659742pjg.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 Mar 2023 10:34:11 -0700 (PDT)
+	Wed, 15 Mar 2023 17:35:35 +0000
+Received: by mail-pl1-x636.google.com with SMTP id iw3so4031874plb.6
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 Mar 2023 10:35:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678901651;
+        d=linaro.org; s=google; t=1678901729;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=f4RksfPONkCdlIzGWCI4gEmQh2PUbMXq0YFoK8rSx6E=;
-        b=ALLgMueiI4TdIzfTHW2Rn0pxzSF5Hg74eyv0v6DvLaJrYmL81uzLko1Xi+IdFFbH4r
-         d2wIOD8VxqSPX1DAJ8LZLVB6NpvqaW+cUaaMTVU5IQTdNDNNsC6+5dlZTil7XL1+Vs6/
-         GCsbaXj7owb7YxqZrRoeeKfYbf+c0MuT8m/nT1xHwwyK5G0uAIl8GNAs/2yrxqtOQk0t
-         pYB/vgUHRWAgGWq+TvqavP1Z3JArvQJCiHo3si8vPOSA8Q1OUX9W6hl4BJtcfP9L9PKq
-         Wst/e1697jinwVOhhj8K3ap7XwCfaJftZq1WQIPSbgh4ayPz7KryEa6U6Pw1HaYmuZYm
-         ZBow==
+        bh=mXziicv2uYfxyPIhD3Zm1hNxYuWnUEu3waNVg+uvUJE=;
+        b=fkLlxUwfoqSQHAO6oaqAO7XW8uw0SRJENlx1a6WanyTBPduDiqnW1Flid+CdRIZen4
+         npJjplws76ONO61ktvNoD/uZnlfHK5SvRoidwhwcxhPfOQz3FZBABkyvFIMImFo4i8u6
+         b/r3LljfIzFMIwjhGjERRjctXBfpbVvs0N0Be425ywz3G1mO2VVyEfrWZNX83LDkjROH
+         Qy7ZbXHqcqKEOaEz8mnSvLRHLsEHL4mgbIX1EjmhtpU1lv8u6vKIRV7fMtcKY5Jdrtj6
+         6l0jLLtnUzQeDHA1RdSruCEoe80y0/mgHn2AKveyI2NR53TBAARSa4i/y6wLLEle2nfJ
+         qESQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678901651;
+        d=1e100.net; s=20210112; t=1678901729;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=f4RksfPONkCdlIzGWCI4gEmQh2PUbMXq0YFoK8rSx6E=;
-        b=Pjzvzob6qG2lkW6U+JY+WV4epkhHc3eu1y1rAGk4YomWv21KPV8c73mjdXogJNzmxk
-         HpSspbmW8L0bFY5cWxHTAfUFvMkCFIqhqMd8h3bfrZH0CssmtsSG4uO5fcP0qKkA6bCz
-         eBIIeoXzAM3V5stkpEJPQx0rIuzKBwO0YbUenZEAYLJT9S6iIvQiuqnpZUP+RLs4XAr2
-         HRikH+cND/sFAKKYZPKdRv9AMeZ7ahPIOMi5APmYijLjjY1hUEFmHZX0HnOZfIMl9MqJ
-         lEcKByY2HfM49i3cHnbo0BIMkvwt/rFVPM+rpM3nNSbNrlDeb5XT2vedsVqPxHECP1zg
-         TbPw==
-X-Gm-Message-State: AO0yUKWQbcBrojMyXfDoJndz5IIqAfRvvSNYVNQbrd+sGa4OY88QunlI
-	HHK4dMLYdvyY4bCWXkTRRXtxng==
-X-Google-Smtp-Source: AK7set9x7hqjnN6KvkKgVfidPa131/IDdJPRASJD+jji6O92VQMV1e3hnubtncWiTLiBrYRoBg6eVg==
-X-Received: by 2002:a17:90a:1913:b0:237:659a:a456 with SMTP id 19-20020a17090a191300b00237659aa456mr410281pjg.49.1678901650925;
-        Wed, 15 Mar 2023 10:34:10 -0700 (PDT)
+        bh=mXziicv2uYfxyPIhD3Zm1hNxYuWnUEu3waNVg+uvUJE=;
+        b=CvKnf+mxWD11InkFFlIjhzcp2UoRiE3gUKbuGSS2VCoDXkcZ+nKpO9CDzIAVrhma3v
+         VKTcoXgR0aWI5w+4PC1EI3lqhQPiq9YZfjSOWfEHsCC4fVcYZe3WVFCSUPbxsHWeAbgX
+         ZTBuWRnogNDcv8m4ooEa8Gh6nKe77JhpaA4knRvjwvc5h84B3QIcA5S6Jng2feTFKVzi
+         bzL0X6uXetD5knvTI4QVNAOsUtdp4wenDmjSZ3/Z/GHr3XEYwBwtaGv9zx2i4TWArKc3
+         eEn54FwBwgKI3P03FbIL+1uRm38OKKyRXVjMl7ANSIRQXBlLNDFlYTDbJ2eJpTeRKOW4
+         u2AA==
+X-Gm-Message-State: AO0yUKU73Uq+GYzWyPW+sysnUYKdOATErcukJllVTdzWTzIhb/GcYgt8
+	ZD99o96URLyn6n4EAvqY/VXA+A==
+X-Google-Smtp-Source: AK7set9IdG4vaM5Q83M61wkjdQOyn5rQzQLAMeHMzSFiLlu8+VEy+S5l6kmmjS2QXhyoKMs5tmECtg==
+X-Received: by 2002:a17:90a:34d:b0:23c:ffe0:ccf9 with SMTP id 13-20020a17090a034d00b0023cffe0ccf9mr511760pjf.39.1678901728834;
+        Wed, 15 Mar 2023 10:35:28 -0700 (PDT)
 Received: from p14s ([2604:3d09:148c:c800:c20b:6fb4:a029:ed06])
-        by smtp.gmail.com with ESMTPSA id y72-20020a638a4b000000b005030a00085asm3669025pgd.46.2023.03.15.10.34.09
+        by smtp.gmail.com with ESMTPSA id s13-20020a170902988d00b0019a7363e752sm3880048plp.276.2023.03.15.10.35.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Mar 2023 10:34:10 -0700 (PDT)
-Date: Wed, 15 Mar 2023 11:34:08 -0600
+        Wed, 15 Mar 2023 10:35:28 -0700 (PDT)
+Date: Wed, 15 Mar 2023 11:35:26 -0600
 From: Mathieu Poirier <mathieu.poirier@linaro.org>
 To: Tinghan Shen <tinghan.shen@mediatek.com>
 Cc: Bjorn Andersson <andersson@kernel.org>,
@@ -75,7 +75,7 @@ Cc: Bjorn Andersson <andersson@kernel.org>,
 	Project_Global_Chrome_Upstream_Group@mediatek.com
 Subject: Re: [PATCH v8 05/11] remoteproc: mediatek: Extract remoteproc
  initialization flow
-Message-ID: <20230315173408.GA2357129@p14s>
+Message-ID: <20230315173526.GB2357129@p14s>
 References: <20230303083355.3378-1-tinghan.shen@mediatek.com>
  <20230303083355.3378-6-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
@@ -83,8 +83,8 @@ Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20230303083355.3378-6-tinghan.shen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230315_103415_645592_F9422D0A 
-X-CRM114-Status: GOOD (  26.64  )
+X-CRM114-CacheID: sfid-20230315_103532_074557_AC818124 
+X-CRM114-Status: GOOD (  25.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,14 +99,9 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Shen,
-
 On Fri, Mar 03, 2023 at 04:33:49PM +0800, Tinghan Shen wrote:
 > This is the preparation for probing multi-core SCP. The remoteproc
 > initialization flow is similar on cores and is reuesd to avoid
-
-s/reuesd/reused
-
 > redundant code.
 > 
 > The registers of config and l1tcm are shared for multi-core
@@ -188,9 +183,6 @@ s/reuesd/reused
 >  					scp_irq_handler, IRQF_ONESHOT,
 >  					pdev->name, scp);
 > -
-
-Spurious change
-
 >  	if (ret) {
 >  		dev_err(dev, "failed to request irq\n");
 >  		goto remove_subdev;
@@ -205,6 +197,12 @@ Spurious change
 > +	struct mtk_scp_of_regs scp_regs;
 > +	int ret;
 > +
+
+        struct device *dev = &pdev->dev;
+        struct mtk_scp_of_regs scp_regs;
+        struct resource *res;
+        int ret;
+
 > +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "cfg");
 > +	scp_regs.reg_base = devm_ioremap_resource(dev, res);
 > +	if (IS_ERR(scp_regs.reg_base))
@@ -222,13 +220,6 @@ Spurious change
 > +		scp_regs.l1tcm_size = resource_size(res);
 > +		scp_regs.l1tcm_phys = res->start;
 > +	}
-
-If l1tcm is not specified scp_regs::[l1tcm_size, l1tcm_phys] contains garbage
-that is then communicated to scp_rproc_init().  It seems to be the case in the
-original code as well.
-
-More comments to come.
-
 > +
 > +	return scp_rproc_init(pdev, &scp_regs);
 > +}
