@@ -4,97 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59144C61DA4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Mar 2023 13:22:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AC07C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Mar 2023 13:58:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3/cG1woHh53iE47t9IaTZRCKGzkSSa7msGm/VhK5acs=; b=TyD5KR7VSPBDWOD0njOu6SG/Lt
-	PbMtQaCdBDK0C00+fvsQokcH65xPhMPy+M85BkyMFJ7LLIFa1QpJ24vW6Sro3+hqX9mg8SqHpOTPD
-	ohKeisVQ1pQ29wgPf1ZRL8CUuKtG+xd+VvXClt+PkXa9UxHXc5R2hIlM5nPCEwGQrU2KMqoK8y+Ub
-	wP7B//Rq/ffqCp+z769ZcrzhtToDZ84m3TKtCnxtTTgtlxw/kzsIRFJVyoQ1jPFeIEdaOr+pkAI9/
-	0++V6HMYP88uILRIXfwOpW30H0GSzrhz1eoXZiB2i6HqVjsg2Dl7AHJTJIJA4RrVgQlZr5n1gpWrL
-	KhS5nQxQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mXJWhmNC8QxCMr0jE5a6lmegW5FPUVlqo6Xd0B4NHuI=; b=mt/ulVAR8opThP49so7mWpqcFG
+	VbEkpJ3zxniihuIokdBJ7rVf0HPr7mH0Gu6g6NxnycUEf67Cv/92m4PTXAV5qZYkuWPZ8UKZsPE7W
+	ilDwfRhph4x6dyTWgY5MikBwKcfby8YQfaaT/WVJjO5Vn4ziFUQ4yad6ih8MW+bJ8uJ3dKyStbT2X
+	i6q3zwZ9oW2ZLV6yZUAbDUO2EuHdPPY5xh02d6PZ6f0oWj4Cq9/OdF2uOiwslccCJ5zvxzF00yaox
+	ngJDZEJRibns/gSG8yS4YYsRPyZO+t+ZDHwbNw4fNeGv/+ocbqg/ssELjfvM3CxiEcdTYFXEW7Pog
+	A6gf2o7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcR59-00DQtB-0c;
-	Wed, 15 Mar 2023 13:22:19 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1pcRdw-00DXW3-13;
+	Wed, 15 Mar 2023 13:58:16 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcR56-00DQsC-1G
-	for linux-mediatek@lists.infradead.org;
-	Wed, 15 Mar 2023 13:22:17 +0000
-Received: by mail-ed1-x529.google.com with SMTP id o12so75450308edb.9
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 Mar 2023 06:22:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678886534;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=3/cG1woHh53iE47t9IaTZRCKGzkSSa7msGm/VhK5acs=;
-        b=Pow9GvwqHtlC0BOvs0ezBbgaYHV1fPye+3TLKkG54DJjkKbhnZ0jvlBHw2AU7b8xk+
-         xlyLpnuvF6TO4/Xlw3hjx/D9jn9U7lh1TOA1VhYXCwT/ENqpDfkaXE7uTOM0lEPv8BY0
-         X9hSLHtDIH1hLGjLbyDwUMNaL6t86ek10Oh2x2ou4ZAG31I9uaPyQUD82MQdcHZb5nrQ
-         y0pe/Wjfscfxi1+n0D8qW/ARD3wKOPhonm6yf60hUOlHOAQR8EE1RtDTN9czBoMNJDoy
-         uwl9HTafH1IbiWmNx7Eh9Xl9w4Ko+C6+AiB1IvBGOriWO7bHbDy7EVEpCj+Fz6GIQYA3
-         2LdQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678886534;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=3/cG1woHh53iE47t9IaTZRCKGzkSSa7msGm/VhK5acs=;
-        b=XDL8crEOCmb2KiiyjKevbefwWekXPJAcVz2GQr77p8K2XarFeTt5NQZkv22qEz5ZVN
-         aKOMBPqQkg1RuFDVZ6WUmMtMFySFbmap5MX9qdTP9eA6ZmRD53T1UQn5/JggEGuiMPbD
-         NJze+mAKCchuo4W/CIUwf52DtafIowik0f5AF9GtKgN4+lsTU9dv3kzgKARo8RoZQ64+
-         8hqB7K+gWoTrWbbj2znkednEv5EwLgSA2kcKO9h+YmOfr7Zl5qkthgZ2pUJN0EDv/qtA
-         RTcJVjHe4NCK2Ksf+VWjVoFP0TAQ3D1iryQ7AOefalkmc5vv8XXCTvblPQI4gbDtYdkU
-         vXRA==
-X-Gm-Message-State: AO0yUKVifxsm0Bq5NjDtN3jAoCggNwYnvmxNnIgghGY3dV/prRjzX6De
-	+RLgkw69/SMGkFuX0/T9GreUKw==
-X-Google-Smtp-Source: AK7set9OR91fwXBsgIoFh/ZQ0DkKpqVOc2a+qrrIMeS4gnjZr0ycWRM6ou2nEein8GfBPtd1Otjl3w==
-X-Received: by 2002:a17:906:4ecc:b0:91f:9cab:3edc with SMTP id i12-20020a1709064ecc00b0091f9cab3edcmr5490125ejv.51.1678886533882;
-        Wed, 15 Mar 2023 06:22:13 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:940e:8615:37dc:c2bd? ([2a02:810d:15c0:828:940e:8615:37dc:c2bd])
-        by smtp.gmail.com with ESMTPSA id v10-20020a170906858a00b008d173604d72sm2534521ejx.174.2023.03.15.06.22.12
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 15 Mar 2023 06:22:13 -0700 (PDT)
-Message-ID: <d356f2b4-354a-d4de-6e7a-6392d1943cdc@linaro.org>
-Date: Wed, 15 Mar 2023 14:22:11 +0100
+	id 1pcRds-00DXTi-1V;
+	Wed, 15 Mar 2023 13:58:13 +0000
+Received: from nicolas-tpx395.localdomain (192-222-136-102.qc.cable.ebox.net [192.222.136.102])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6ACC0660304F;
+	Wed, 15 Mar 2023 13:58:01 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1678888684;
+	bh=uJqR7EssC//Fq/VnhmhfKuiFmnGhoDw1Z52cTcjrpVU=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=Ma4KyOxNTTffxcyxbnl1X2J+7Njd+LaQyivOPbIi6i+utwTW50beH5GMWO2sQSOcB
+	 maGk7KOVzQf+8PxfTlIcLEvrEu7qH6OJof9IPsgUINsvhrQCO2XCZcNRRHjLrIilpI
+	 sAOTs/7Hc6bmwrKlI5yw62hpBlPQ/V3KyuNnNUDdQ9bepJbGuEl0NYoddDzcBVhxvf
+	 ij2wB4847oUulw25PblhthMc4tXZH53bjlsDQzsgJq69DBbbLhxYyMHfpfSWd49ERi
+	 RFknrqq/TSXIca/wf91CIwIweWGRP5V98MBRZV8AG/2Glgp3z161dtCCnRrSSAQG8q
+	 Tj1xEQbRrt7WA==
+Message-ID: <bdade438cd93230daa47ee48eafab60f65cd4224.camel@collabora.com>
+Subject: Re: [RFC 2/4] media: videobuf2: Replace bufs array by a list
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Benjamin Gaignard
+	 <benjamin.gaignard@collabora.com>
+Cc: tfiga@chromium.org, m.szyprowski@samsung.com, mchehab@kernel.org, 
+ ming.qian@nxp.com, shijie.qin@nxp.com, eagle.zhou@nxp.com,
+ bin.liu@mediatek.com,  matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com,  tiffany.lin@mediatek.com,
+ andrew-ct.chen@mediatek.com, yunfei.dong@mediatek.com, 
+ stanimir.k.varbanov@gmail.com, quic_vgarodia@quicinc.com,
+ agross@kernel.org,  andersson@kernel.org, konrad.dybcio@linaro.org,
+ ezequiel@vanguardiasur.com.ar,  p.zabel@pengutronix.de,
+ daniel.almeida@collabora.com, hverkuil-cisco@xs4all.nl,  jerbel@kernel.org,
+ linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ kernel@collabora.com
+Date: Wed, 15 Mar 2023 09:57:51 -0400
+In-Reply-To: <20230313181155.GC22646@pendragon.ideasonboard.com>
+References: <20230313135916.862852-1-benjamin.gaignard@collabora.com>
+	 <20230313135916.862852-3-benjamin.gaignard@collabora.com>
+	 <20230313181155.GC22646@pendragon.ideasonboard.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.3 (3.46.3-1.fc37) 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH 15/21] dt-bindings: soc: mediatek: add display mutex for
- MT8365 SoC
-Content-Language: en-US
-To: Alexandre Mergnat <amergnat@baylibre.com>, Daniel Vetter
- <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>,
- Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding
- <thierry.reding@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Sam Ravnborg <sam@ravnborg.org>, Rob Herring <robh+dt@kernel.org>,
- =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Xinlei Lee <xinlei.lee@mediatek.com>
-Cc: Guillaume La Roque <glaroque@baylibre.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- dri-devel@lists.freedesktop.org, Fabien Parent <fparent@baylibre.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, linux-pwm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20230220-display-v1-0-45cbc68e188b@baylibre.com>
- <20230220-display-v1-15-45cbc68e188b@baylibre.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230220-display-v1-15-45cbc68e188b@baylibre.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230315_062216_430601_914871DB 
-X-CRM114-Status: UNSURE (   7.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230315_065812_654013_AA26A28D 
+X-CRM114-Status: GOOD (  13.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,16 +87,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09/03/2023 15:23, Alexandre Mergnat wrote:
-> Add compatible for the MT8365 SoC.
-> 
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> ---
+Le lundi 13 mars 2023 =C3=A0 20:11 +0200, Laurent Pinchart a =C3=A9crit=C2=
+=A0:
+> > -	/* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME */
+> > -	num_buffers =3D min_t(unsigned int, num_buffers,
+> > -			=C2=A0=C2=A0=C2=A0 VB2_MAX_FRAME - q->num_buffers);
+> > -
+>=20
+> We can indeed drop this check now, but shouldn't we introduce some kind
+> of resource accounting and limitation ? Otherwise any unpriviledged
+> userspace will be able to starve system memory. This could be
+> implemented on top, as the problem largely exists today already, but I'd
+> like to at least record this in a TODO comment.
 
+The current limit already isn't work for resource accounting and limitation=
+ for
+m2m drivers. You can open a device, allocate 32 buffers, and close that dev=
+ice
+keeping the memory around. And redo this process as many times as you want.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+A TODO is most appropriate, but I would prefer to see this done at a memory
+layer level (rather then v4l2 specific), so that limits and accounting work=
+s
+with containers and other sandboxes.
 
-Best regards,
-Krzysztof
+>=20
+> I also wonder if we should still limit the number of allocated buffers.
+> The limit could be large, for instance 1024 buffers, and it would be an
+> in-kernel limit that could be increased later if needed. I'm concerned
+> that dropping the limit completely will allow userspace to request
+> UINT_MAX buffers, which may cause integer overflows somewhere. Limiting
+> the number of buffers would avoid extensive review of all the code that
+> deals with counting buffers.
 
 
