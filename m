@@ -4,67 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F77DC6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Mar 2023 13:19:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59144C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Mar 2023 13:22:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3F1z0WVreCCiuFyV616SLzGFnQzvM0ucFsGI75maKY4=; b=qfJaWMnNrsEzmn2HWaAqGvlCZa
-	mZQcD19G+c9ohRpVdJ6qjOfiTG7qwrH5vNyeruP6l2Fy2FxuKTgpGnJj2+GjeqB19svk3Hrsjnjoc
-	ds2SrUDWFuZlriWK1aNvb9FZDw8J7K1uCENKyqU5oysdUqgBq2AxfklsPjJMsOlj6osOYDcdeuc2n
-	yBLGiyiCHLQ6YTdLmadFyW90HMWfdKoSkWPgPAvKY7yJkFbaHYZ6RmpUEKsKnq5j/wMxjjco9i8aq
-	DZwwMYwAKaDVXlkXDELHjlNdLaoUnI5D2r00ShQzRgkEZM2kjVfMrd3ASBmbTbLnOczXrRbbqb+nM
-	5zzi61Ng==;
+	bh=3/cG1woHh53iE47t9IaTZRCKGzkSSa7msGm/VhK5acs=; b=TyD5KR7VSPBDWOD0njOu6SG/Lt
+	PbMtQaCdBDK0C00+fvsQokcH65xPhMPy+M85BkyMFJ7LLIFa1QpJ24vW6Sro3+hqX9mg8SqHpOTPD
+	ohKeisVQ1pQ29wgPf1ZRL8CUuKtG+xd+VvXClt+PkXa9UxHXc5R2hIlM5nPCEwGQrU2KMqoK8y+Ub
+	wP7B//Rq/ffqCp+z769ZcrzhtToDZ84m3TKtCnxtTTgtlxw/kzsIRFJVyoQ1jPFeIEdaOr+pkAI9/
+	0++V6HMYP88uILRIXfwOpW30H0GSzrhz1eoXZiB2i6HqVjsg2Dl7AHJTJIJA4RrVgQlZr5n1gpWrL
+	KhS5nQxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcR2a-00DQPK-1s;
-	Wed, 15 Mar 2023 13:19:40 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pcR59-00DQtB-0c;
+	Wed, 15 Mar 2023 13:22:19 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcR2S-00DQLa-1J;
-	Wed, 15 Mar 2023 13:19:33 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 4424561D78;
-	Wed, 15 Mar 2023 13:19:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E55B2C4339B;
-	Wed, 15 Mar 2023 13:19:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1678886368;
-	bh=3djw40rUw+nNpWOAp6TWK8VOxJM0awfRn9QjEkHNKHU=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=p4mBqVpmQqEMVYVJfpmuIorD57kG3lYxffPv8FymWpo+oa1igyr9QmzShnpRkmQjr
-	 vUcbNL2SrLmsLfttD/qAkP83LbDvzTLCP+ZgFJ+vlpDkpj+ayiv9IyqhVi+PXTeD9R
-	 p5Rb6yfIoyAhcubaB6aPioQT17mW921CqMT0mF5INNZqY4xNVM6A0ckFvuECsO6P1N
-	 AupXtcFddWgsJzkScqnIio8WCUMa3CsufmGXHG9F/1DeTjngoc881sED5Ns3bE8sbL
-	 9Lku4MJXOK5zUofRkbF7LF9BE38dCCHJjHqSjeEi2Llwli+U4o4oCylraGLzAozTYE
-	 lIUBVexzbta2g==
-From: Mark Brown <broonie@kernel.org>
-To: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- kernel@collabora.com, Akihiko Odaki <akihiko.odaki@gmail.com>, 
- Jaroslav Kysela <perex@perex.cz>, Jiaxin Yu <jiaxin.yu@mediatek.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Takashi Iwai <tiwai@suse.com>, 
- Tzung-Bi Shih <tzungbi@kernel.org>, alsa-devel@alsa-project.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20230313212908.2282961-1-nfraprado@collabora.com>
-References: <20230313212908.2282961-1-nfraprado@collabora.com>
-Subject: Re: [PATCH 0/2] ASoC: mt8192: Address spammy log messages
-Message-Id: <167888636565.25434.17339984677925115588.b4-ty@kernel.org>
-Date: Wed, 15 Mar 2023 13:19:25 +0000
+	id 1pcR56-00DQsC-1G
+	for linux-mediatek@lists.infradead.org;
+	Wed, 15 Mar 2023 13:22:17 +0000
+Received: by mail-ed1-x529.google.com with SMTP id o12so75450308edb.9
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 Mar 2023 06:22:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1678886534;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=3/cG1woHh53iE47t9IaTZRCKGzkSSa7msGm/VhK5acs=;
+        b=Pow9GvwqHtlC0BOvs0ezBbgaYHV1fPye+3TLKkG54DJjkKbhnZ0jvlBHw2AU7b8xk+
+         xlyLpnuvF6TO4/Xlw3hjx/D9jn9U7lh1TOA1VhYXCwT/ENqpDfkaXE7uTOM0lEPv8BY0
+         X9hSLHtDIH1hLGjLbyDwUMNaL6t86ek10Oh2x2ou4ZAG31I9uaPyQUD82MQdcHZb5nrQ
+         y0pe/Wjfscfxi1+n0D8qW/ARD3wKOPhonm6yf60hUOlHOAQR8EE1RtDTN9czBoMNJDoy
+         uwl9HTafH1IbiWmNx7Eh9Xl9w4Ko+C6+AiB1IvBGOriWO7bHbDy7EVEpCj+Fz6GIQYA3
+         2LdQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678886534;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=3/cG1woHh53iE47t9IaTZRCKGzkSSa7msGm/VhK5acs=;
+        b=XDL8crEOCmb2KiiyjKevbefwWekXPJAcVz2GQr77p8K2XarFeTt5NQZkv22qEz5ZVN
+         aKOMBPqQkg1RuFDVZ6WUmMtMFySFbmap5MX9qdTP9eA6ZmRD53T1UQn5/JggEGuiMPbD
+         NJze+mAKCchuo4W/CIUwf52DtafIowik0f5AF9GtKgN4+lsTU9dv3kzgKARo8RoZQ64+
+         8hqB7K+gWoTrWbbj2znkednEv5EwLgSA2kcKO9h+YmOfr7Zl5qkthgZ2pUJN0EDv/qtA
+         RTcJVjHe4NCK2Ksf+VWjVoFP0TAQ3D1iryQ7AOefalkmc5vv8XXCTvblPQI4gbDtYdkU
+         vXRA==
+X-Gm-Message-State: AO0yUKVifxsm0Bq5NjDtN3jAoCggNwYnvmxNnIgghGY3dV/prRjzX6De
+	+RLgkw69/SMGkFuX0/T9GreUKw==
+X-Google-Smtp-Source: AK7set9OR91fwXBsgIoFh/ZQ0DkKpqVOc2a+qrrIMeS4gnjZr0ycWRM6ou2nEein8GfBPtd1Otjl3w==
+X-Received: by 2002:a17:906:4ecc:b0:91f:9cab:3edc with SMTP id i12-20020a1709064ecc00b0091f9cab3edcmr5490125ejv.51.1678886533882;
+        Wed, 15 Mar 2023 06:22:13 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:940e:8615:37dc:c2bd? ([2a02:810d:15c0:828:940e:8615:37dc:c2bd])
+        by smtp.gmail.com with ESMTPSA id v10-20020a170906858a00b008d173604d72sm2534521ejx.174.2023.03.15.06.22.12
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 15 Mar 2023 06:22:13 -0700 (PDT)
+Message-ID: <d356f2b4-354a-d4de-6e7a-6392d1943cdc@linaro.org>
+Date: Wed, 15 Mar 2023 14:22:11 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.13-dev-bd1bf
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH 15/21] dt-bindings: soc: mediatek: add display mutex for
+ MT8365 SoC
+Content-Language: en-US
+To: Alexandre Mergnat <amergnat@baylibre.com>, Daniel Vetter
+ <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>,
+ Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding
+ <thierry.reding@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Sam Ravnborg <sam@ravnborg.org>, Rob Herring <robh+dt@kernel.org>,
+ =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@gmail.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Xinlei Lee <xinlei.lee@mediatek.com>
+Cc: Guillaume La Roque <glaroque@baylibre.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ dri-devel@lists.freedesktop.org, Fabien Parent <fparent@baylibre.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, linux-pwm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20230220-display-v1-0-45cbc68e188b@baylibre.com>
+ <20230220-display-v1-15-45cbc68e188b@baylibre.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230220-display-v1-15-45cbc68e188b@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230315_061932_478827_17E26AFE 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20230315_062216_430601_914871DB 
+X-CRM114-Status: UNSURE (   7.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,44 +109,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 13 Mar 2023 17:29:05 -0400, Nícolas F. R. A. Prado wrote:
-> A couple commits to make the mt8192 sound driver not spam the console.
+On 09/03/2023 15:23, Alexandre Mergnat wrote:
+> Add compatible for the MT8365 SoC.
 > 
-> 
-> Nícolas F. R. A. Prado (2):
->   ASoC: mt8192: Remove function name log messages
->   ASoC: mt8192: Move spammy messages to debug level
-> 
-> [...]
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> ---
 
-Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Thanks!
-
-[1/2] ASoC: mt8192: Remove function name log messages
-      commit: f147ca85d6ecaf65106d1650f3c2e8afacbc833f
-[2/2] ASoC: mt8192: Move spammy messages to debug level
-      commit: 5f2a53c0687b151c2ecad19995108b40df76ba86
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Best regards,
+Krzysztof
 
 
