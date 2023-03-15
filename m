@@ -4,82 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 918CCC61DA4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Mar 2023 10:46:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FD66C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Mar 2023 11:45:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ga3oIbX8eM+V8hmfHPqYil9G6oCIh+neGBPxCd1NTBs=; b=lG1mNW2Kmq2OSHbEOH+XK5h2hi
-	7o6JuOCyogtFoYmyzQdqGxipR2Aq9VXwT+QRYEWiw6AQr/pExwsjR0CWMhv/M5MmTrjzZI4awgDBp
-	bkiBgSw9exCozDl3HcyEILOs0siRaOda2/wVQCmzuxhpVVvuBomcOyqJW9kTSZPZoe44rCSwKFWXB
-	bVveqD13MLkl8cAUmOAAmPHEIbQst4lcIrhH/fdWBPceva3sQwuqyhgPL+DRQD4ZMgkeiAgnH9J5c
-	Ontz5O6Sqy+e/rWMaXPmLWUqfH72c5gilo97XTVGCELVTFuQA9ifws0OSJL0JHKM0sXBjEMrLlOCY
-	JzAh+dpQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8pVoHzcnVsdUKSRmD7CFv1XjbBsBrHZrxHjiGf+h8UI=; b=n6G9aN9uk7SZPlkcJ8+m9BxJmd
+	NKxm1u16vfF4epS3SXyelCQkILLD50k/FITjbG3rMHmb9eez57EBmWRFL73Z0fHu1/V0STxyJYMc8
+	vg/Paux/gPbFJWmnNrW1/Q46M6FtUIhR9c5s1pZW83St/hUWRd+FRMjGCR8+odTIYX7JEXMVhXcL7
+	+R+kViszlJI8KcZapp/pfsJzrTOj/K3p/OihaBiYCJ7UyVsjXVqNumP4dUyUfwBkHzgi+NuRsih9q
+	z0fO//sHJuseLWtyYbJvhdDOnpN8sPyQQJE897sqj5OTOkfSnsCX2mnLlLlIlybvE0HbP4StF6Qp8
+	784ClM/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcOeO-00D6Gn-2p;
-	Wed, 15 Mar 2023 10:46:32 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pcPZR-00DDiS-1R;
+	Wed, 15 Mar 2023 11:45:29 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcOdu-00D6D1-0k;
-	Wed, 15 Mar 2023 10:46:03 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 41C8D66015F1;
-	Wed, 15 Mar 2023 10:45:59 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678877160;
-	bh=2lu6PO85yn+bXYwQVx0BtD+c64sEAEGM7jdKQhcGME8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=XiamhNz3BoS2Am/A916XWJivnLGJ5CbmEZpenv49PmVgRCy5qL1V/oXw16h6Mnotl
-	 Z94E0gppdt/i81ppf7yISjD6rvxasFgEInXQPNXHDlX3uS8J6ayjDYaAhNHcywlCeg
-	 1iuk1I6lqn39B6HRHiUSBqH7GDRIuKL3uoU2u3Oj4ob/DGjeeI4+qpmj0ErBLFkKgw
-	 uwPEGsOULUOvOZwmlK6orcLbZr2fcPnaWkQdEonEXQFnJdynrI+8iw0r/TbinPVYnI
-	 o6qiJhlEpNs7qK7S0eYk2ECctMGxZveWgc9Pt2T6+RwJ2tAlPC2ZFdl4yKFtU+tYZ/
-	 Y1W0EDhUVPbtA==
-Message-ID: <e55bc87c-c174-6acb-d48e-9a05b9551754@collabora.com>
-Date: Wed, 15 Mar 2023 11:45:56 +0100
+	id 1pcPZO-00DDhi-1M;
+	Wed, 15 Mar 2023 11:45:27 +0000
+X-UUID: dbfc5616c32611ed86fbcd8805c7ac66-20230315
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=8pVoHzcnVsdUKSRmD7CFv1XjbBsBrHZrxHjiGf+h8UI=;
+	b=nykKKgERG2vVHmJ7KtUybaAPcrwikTvsfWMgwFnsyvZHbFQbz4G49gSqMbiOAmkzpgm0xhReZhXzh5As8S6s8XoLHvTkQJwrTkf6LVxfE7lANIIjKoHW2eWhA33+ipyL7Gan3zhnsGSG+A7wSzpfrBsKIDQhvkZQ6V8YO+Hui5c=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.21,REQID:be4bf320-bd35-4cd2-9cd1-51f23d8d5415,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:83295aa,CLOUDID:e74b56b3-beed-4dfc-bd9c-e1b22fa6ccc4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: dbfc5616c32611ed86fbcd8805c7ac66-20230315
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <johnson.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1324747190; Wed, 15 Mar 2023 04:45:18 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Wed, 15 Mar 2023 19:45:15 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Wed, 15 Mar 2023 19:45:15 +0800
+From: Johnson Wang <johnson.wang@mediatek.com>
+To: <matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>
+CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Johnson Wang
+	<johnson.wang@mediatek.com>
+Subject: [PATCH] soc: mediatek: pm-domains: Add buck isolation setting for MT8188
+Date: Wed, 15 Mar 2023 19:45:05 +0800
+Message-ID: <20230315114505.25144-1-johnson.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v2 03/18] dt-bindings: pinctrl: mediatek,mt8365-pinctrl:
- add drive strength property
-Content-Language: en-US
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Zhiyong Tao <zhiyong.tao@mediatek.com>, Guenter Roeck <linux@roeck-us.net>,
- Linus Walleij <linus.walleij@linaro.org>,
- =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- Wim Van Sebroeck <wim@linux-watchdog.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Chaotian Jing <chaotian.jing@mediatek.com>, Rob Herring
- <robh+dt@kernel.org>, Wenbin Mei <wenbin.mei@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mmc@vger.kernel.org,
- Alexandre Bailon <abailon@baylibre.com>, devicetree@vger.kernel.org,
- Amjad Ouled-Ameur <aouledameur@baylibre.com>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-gpio@vger.kernel.org, linux-watchdog@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Fabien Parent <fparent@baylibre.com>
-References: <20230203-evk-board-support-v2-0-6ec7cdb10ccf@baylibre.com>
- <20230203-evk-board-support-v2-3-6ec7cdb10ccf@baylibre.com>
- <3b7c6f28-57bd-33de-5531-8c4eae8cf6eb@linaro.org>
- <6e08d78f-ef4c-b228-f7d2-d63767ea87b8@collabora.com>
- <62ed2988-2347-9fd9-82f9-6dcc9ae75808@collabora.com>
- <CAFGrd9rZxwtxx5f8Gp35-5152EPGiyEdZjps1Mhn5bL6QfufnA@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAFGrd9rZxwtxx5f8Gp35-5152EPGiyEdZjps1Mhn5bL6QfufnA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230315_034602_440295_1803BE2A 
-X-CRM114-Status: GOOD (  16.04  )
+X-CRM114-CacheID: sfid-20230315_044526_466998_F86B8849 
+X-CRM114-Status: GOOD (  12.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,35 +81,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/03/23 09:11, Alexandre Mergnat ha scritto:
-> Le ven. 10 mars 2023 à 10:49, AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> a écrit :
->>
->> Il 10/03/23 10:46, AngeloGioacchino Del Regno ha scritto:
->>>
->>> Anyway, Alexandre: can you please perform a cleanup to the MT8365 pinctrl binding?
-> 
-> Yes I can ! :D
-> Should I do it directly in this patch series or (I prefer) in a new one ?
-> 
+For ADSP_AO, CAM_VCORE and IMG_VCORE power domains in MT8188,
+we have to add the buck isolation setting to make them work properly.
 
-Doing that in a new one is fine... it's a cleanup that is not strictly related to
-what you're introducing in this series.
+Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+---
+ drivers/soc/mediatek/mt8188-pm-domains.h | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
 
->>> The cleanup means you're setting mediatek,drive-strength-adv as deprecated and
->>> adding the right properties (...and possibly changing the devicetrees to use it).
->>>
->>> For more information, you can look at commit history for the (unfortunately, named
->>> incorrectly) MT8195 pinctrl documentation: bindings/pinctrl/pinctrl-mt8195.yaml
->>> where we performed the same cleanup that I'm asking you to do, except we didn't
->>> have to set any property as deprecated because there was *no devicetree upstream*
->>> that was actually using that property (hence not an ABI breakage).
-> 
-> Thanks for the information, that helps.
-
-You're welcome!
-
-Regards,
-Angelo
+diff --git a/drivers/soc/mediatek/mt8188-pm-domains.h b/drivers/soc/mediatek/mt8188-pm-domains.h
+index 0692cb444ed0..e6dbdc0aa684 100644
+--- a/drivers/soc/mediatek/mt8188-pm-domains.h
++++ b/drivers/soc/mediatek/mt8188-pm-domains.h
+@@ -165,6 +165,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+ 		.ctl_offs = 0x35C,
+ 		.pwr_sta_offs = 0x16C,
+ 		.pwr_sta2nd_offs = 0x170,
++		.ext_buck_iso_offs = 0x3EC,
++		.ext_buck_iso_mask = BIT(10),
+ 		.bp_infracfg = {
+ 			BUS_PROT_WR(MT8188_TOP_AXI_PROT_EN_2_ADSP_AO_STEP1,
+ 				    MT8188_TOP_AXI_PROT_EN_2_SET,
+@@ -175,7 +177,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+ 				    MT8188_TOP_AXI_PROT_EN_2_CLR,
+ 				    MT8188_TOP_AXI_PROT_EN_2_STA),
+ 		},
+-		.caps = MTK_SCPD_ALWAYS_ON,
++		.caps = MTK_SCPD_ALWAYS_ON | MTK_SCPD_EXT_BUCK_ISO,
+ 	},
+ 	[MT8188_POWER_DOMAIN_ADSP_INFRA] = {
+ 		.name = "adsp_infra",
+@@ -479,6 +481,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+ 		.ctl_offs = 0x3A4,
+ 		.pwr_sta_offs = 0x16C,
+ 		.pwr_sta2nd_offs = 0x170,
++		.ext_buck_iso_offs = 0x3EC,
++		.ext_buck_iso_mask = BIT(12),
+ 		.bp_infracfg = {
+ 			BUS_PROT_WR(MT8188_TOP_AXI_PROT_EN_MM_IMG_VCORE_STEP1,
+ 				    MT8188_TOP_AXI_PROT_EN_MM_SET,
+@@ -493,7 +497,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+ 				    MT8188_TOP_AXI_PROT_EN_MM_2_CLR,
+ 				    MT8188_TOP_AXI_PROT_EN_MM_2_STA),
+ 		},
+-		.caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_DOMAIN_SUPPLY,
++		.caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_DOMAIN_SUPPLY |
++			MTK_SCPD_EXT_BUCK_ISO,
+ 	},
+ 	[MT8188_POWER_DOMAIN_IMG_MAIN] = {
+ 		.name = "img_main",
+@@ -541,6 +546,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+ 		.ctl_offs = 0x3A0,
+ 		.pwr_sta_offs = 0x16C,
+ 		.pwr_sta2nd_offs = 0x170,
++		.ext_buck_iso_offs = 0x3EC,
++		.ext_buck_iso_mask = BIT(11),
+ 		.bp_infracfg = {
+ 			BUS_PROT_WR(MT8188_TOP_AXI_PROT_EN_MM_CAM_VCORE_STEP1,
+ 				    MT8188_TOP_AXI_PROT_EN_MM_SET,
+@@ -563,7 +570,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+ 				    MT8188_TOP_AXI_PROT_EN_MM_2_CLR,
+ 				    MT8188_TOP_AXI_PROT_EN_MM_2_STA),
+ 		},
+-		.caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_DOMAIN_SUPPLY,
++		.caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_DOMAIN_SUPPLY |
++			MTK_SCPD_EXT_BUCK_ISO,
+ 	},
+ 	[MT8188_POWER_DOMAIN_CAM_MAIN] = {
+ 		.name = "cam_main",
+-- 
+2.18.0
 
 
