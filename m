@@ -4,93 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FD86C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Mar 2023 09:13:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5C25C61DA4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Mar 2023 09:26:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8eWJAVwfdAMUCwI3o2WJJsF7HeRR9gB8W1OrllJjb5o=; b=wSfej8lWVJb534fcrcqzv80F3J
-	vennYyGkWr3hEwrez6+3IgtbFUo1w3W0SLwMS8IAOktu5tCys5kTs3d5lbKnygcN1Y5ilXAPEgoQ/
-	LIFYGVTFkkDrnJpPcLHSr1QD/WPWij6A5rfomvVbRu7W1US2kQFwJtzXWJ13a9b0xPOsd/EtJaWSk
-	1xILuah3oMyUiNNSflkMufoAVV7TVqiLM5xfW0Kbn3dEcWc69sw0wN+hbsAsWt6ALZVdn9NQaB2uc
-	In8KFf/ObN5xoSVwafj1AK/CNDbHgYKl4ZS5Q32puIn/KD0yGtkNmYI5lz/MgGn32tR8jJt3902we
-	+Rh0CgPA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ah3hCHxRKLhXbUb0/zDpGbrf+oZe//U+DP3mMWw+T8c=; b=WS2jxRCVlNbOxX2QS123Z85rMk
+	rV7o6V9e0eyZbaiKgrxNoS7b3LzWN/EzA5VYLF1yKywPTOrbIaFTz6eie5PwBWTXluQMg/L0gw3Zc
+	znx0QvRiq0jX/UDOrPhkMIhZUjWqq4YjMB4yzDs9OnJ0cuXBGDXPi3IWOqK0zxJr5IVtmySXvN3rj
+	dofmCdXp3jQmuAzWhvP5h5SPs8pUQ7t0XauYJNqOol8sCRt7rbvbElieptq/Kah5ZPHsTue7s8W4B
+	d5P0QElDeIalZT3bON9TbkpKB+cxbLkK224AeRVSeF4TY8VMCSzYiJEJrMH7emZpPt5YCsehrYi6v
+	ybJrPE6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcNBo-00Cu2k-00;
-	Wed, 15 Mar 2023 09:12:56 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1pcNPD-00Cw3V-29;
+	Wed, 15 Mar 2023 09:26:47 +0000
+Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcNBl-00Cu1P-0z
+	id 1pcNPA-00Cw1n-22
 	for linux-mediatek@lists.infradead.org;
-	Wed, 15 Mar 2023 09:12:54 +0000
-Received: by mail-wr1-x431.google.com with SMTP id q16so16613270wrw.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 Mar 2023 02:12:50 -0700 (PDT)
+	Wed, 15 Mar 2023 09:26:46 +0000
+Received: by mail-yb1-xb2e.google.com with SMTP id cj14so7396162ybb.12
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 Mar 2023 02:26:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678871569;
-        h=content-transfer-encoding:in-reply-to:organization:from:references
-         :to:content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=8eWJAVwfdAMUCwI3o2WJJsF7HeRR9gB8W1OrllJjb5o=;
-        b=XzSmAIL6WPDc9unS6StGpnGGh/CGMJ8Wy8hZjsWSd8gRTPzMl4yLkyH89Z+NjNNOEE
-         /Zl4VkWXiNeVyyMGC7M7hiIBT32VcDKSLy3AiNF1yo1y17rrs6Q98cNSLWgczakKjRen
-         nr+onVKwv62YRyFi0/Ar2V62oOKd932RzGtYRliH1EwMglxP5NqYCJwxiWMCjhIRnRog
-         2R4k6Q7byMQpvMmJkzinKqrxYlBIs2v9GCUanWcefXQXQ8MJEjRntl+eLd6HQc/jPsgZ
-         n2XpIhHApTZItuwQB5/c5PwtrzQI3mSIHqoIDWaieiCE+5NREvvA69rUWPdAieBmH6G8
-         8Huw==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1678872395;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Ah3hCHxRKLhXbUb0/zDpGbrf+oZe//U+DP3mMWw+T8c=;
+        b=d5zFDRwPxETDMQPbed+EfhECDqFpfx8TgxdVjJLVO33pllTKXnCeZ6Hk9QAQn7Dw4+
+         oWwetYLyd4CtHpCifM8AroVKcjrw/2ujfEkNx21G9ysAvCmRlxgPsHRPxWKrE2hdexcp
+         2idemqhli6FqtgkUkuZRShsSSKCkHav0hjtzcnLS7vLs5njq0I3+r1M58wEZWZSRe/5w
+         MCX69ZCeDYaPs4V+n656TCYSZm7Bait5OLJkSVV06dPD39msVSlk9Vj+T+JqXAaZEp+K
+         GA8c9VFqG4DPd1462qMWj+Lsk0Zv64cNfsfFiHVdem5Z+73jTMqu/Y35+PZOiQVe4uUq
+         AS9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678871569;
-        h=content-transfer-encoding:in-reply-to:organization:from:references
-         :to:content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=8eWJAVwfdAMUCwI3o2WJJsF7HeRR9gB8W1OrllJjb5o=;
-        b=MK4EGNjOqaryDov2gfK4GcR4UADtnszpMCJg2pD9I3ayFJdL4QDlrnn8kSQpXaXpLm
-         5SYnPOd+4toEd0T7dDO6F6xlngS2Fbd9sInj/pyjjI6khLjdg2ITdb607sJ55ih0Xs3W
-         LxRDtoldTfqfFqslV8JHUWfdUJCO3XNL4w3FkNnimo5G1A2yBymsFoCl4JRXmlqivqA7
-         1YXM2YM/n97n07iviDel2I+Ghq7ISU+H11rkBaiVUg+kATdDbvGiaLxI2WQEdChf1rxL
-         3+rQ317rEVR94JSKhYPoSB2mogu8NRDQjSN1cNxUFmR4j92eImrMyrM9E3dYaYUZyX5c
-         4xVw==
-X-Gm-Message-State: AO0yUKULHY0v2rkulPx6UVVnVgRsgdsAEY81QKmXXvRPoAP2SD92Lb/9
-	csF67owHTUP3tl/VCAL1BpA2bQ==
-X-Google-Smtp-Source: AK7set+eEbACpzLETf5+yoKzRbTbJU8SVnRF6TSezwW6SQk2wIN2YnBbU8HXUTnpArYwaQ5lSXadsw==
-X-Received: by 2002:a5d:4c8e:0:b0:2cf:e710:a4b9 with SMTP id z14-20020a5d4c8e000000b002cfe710a4b9mr1357985wrs.32.1678871569378;
-        Wed, 15 Mar 2023 02:12:49 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:982:cbb0:5d2d:8427:397b:8fe7? ([2a01:e0a:982:cbb0:5d2d:8427:397b:8fe7])
-        by smtp.gmail.com with ESMTPSA id n4-20020a5d6b84000000b002cfe685bfd6sm4027654wrx.108.2023.03.15.02.12.48
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 15 Mar 2023 02:12:48 -0700 (PDT)
-Message-ID: <f4801f1d-cd6a-2a3f-155c-e72d3d28da30@linaro.org>
-Date: Wed, 15 Mar 2023 10:12:47 +0100
+        d=1e100.net; s=20210112; t=1678872395;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Ah3hCHxRKLhXbUb0/zDpGbrf+oZe//U+DP3mMWw+T8c=;
+        b=CMV/gSiMP4YEzl/HSPvkPoyuBFLQPBf6eadU2vzXGrFaF/fDKNWai/8DUGa/SvRYTW
+         2JWK2W+mT89Sqt+z12jyxWkrYXYhH3ZLWEgsuGpqMjMEvGI+XM+niJowkPvnqES8eoMF
+         EC8ObZAxZ762UubXKqtdumg1Fg5Ss9ImgtmC4GruKy1ERe3iqK8nxSDSeHdSZKd89EpE
+         UjTyweBcw13t0d3sFrEqq2OZYXn8IbeYFZJwZJnrFXjVTaf8h8GZg3axU9uWTsnf+aJe
+         Ds+z3k8ghHj6Pi1q43jjOfLeuOFsG+hX5VPeVkIP0deARfPsggvIzdKb6UQLEYajjK35
+         LcJw==
+X-Gm-Message-State: AO0yUKU8uDkzvzl8gKW73VbeKJf2enw9S8AnqNCrR6GiKlUZrxO8578/
+	4yLNbO7igjZTMIRnAXXsz8oKZ7N9xkCMNiTd44Przg==
+X-Google-Smtp-Source: AK7set85Tksbs5R01RThGTgUkuOcBof0bxceE3ivDeTB4gA3qDm/+jVks8dAQC4UN3fTwJGP5ML+MUn6x7iNEe2KU4g=
+X-Received: by 2002:a05:6902:10e:b0:98e:6280:74ca with SMTP id
+ o14-20020a056902010e00b0098e628074camr23209983ybh.1.1678872394826; Wed, 15
+ Mar 2023 02:26:34 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH 7/9] regulator: rpi-panel-attiny: Drop of_match_ptr for ID
- table
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Tony Lindgren <tony@atomide.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-omap@vger.kernel.org, linux-arm-msm@vger.kernel.org
-References: <20230310214553.275450-1-krzysztof.kozlowski@linaro.org>
- <20230310214553.275450-7-krzysztof.kozlowski@linaro.org>
-From: Neil Armstrong <neil.armstrong@linaro.org>
-Organization: Linaro Developer Services
-In-Reply-To: <20230310214553.275450-7-krzysztof.kozlowski@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20230220-display-v1-0-45cbc68e188b@baylibre.com>
+ <20230220-display-v1-7-45cbc68e188b@baylibre.com> <CAAOTY_819JuuidLgTOm+Ps=WnueW0Quos+abEDjrx8q8GifGKA@mail.gmail.com>
+In-Reply-To: <CAAOTY_819JuuidLgTOm+Ps=WnueW0Quos+abEDjrx8q8GifGKA@mail.gmail.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Wed, 15 Mar 2023 10:26:23 +0100
+Message-ID: <CAFGrd9qVhJb--COXJmGHuW6NxDnXZGdQnxbHGRvaA5Jqhx-yNg@mail.gmail.com>
+Subject: Re: [PATCH 07/21] dt-bindings: display: mediatek: dpi: add binding
+ for MT8365
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>, 
+	Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Sam Ravnborg <sam@ravnborg.org>, 
+	Rob Herring <robh+dt@kernel.org>, =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@gmail.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Xinlei Lee <xinlei.lee@mediatek.com>, 
+	Guillaume La Roque <glaroque@baylibre.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
+	Fabien Parent <fparent@baylibre.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230315_021253_363737_ACDF11F2 
-X-CRM114-Status: GOOD (  18.37  )
+X-CRM114-CacheID: sfid-20230315_022644_669362_5DAC7224 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,36 +96,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: neil.armstrong@linaro.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/03/2023 22:45, Krzysztof Kozlowski wrote:
-> The driver can match only via the DT table so the table should be always
-> used and the of_match_ptr does not have any sense (this also allows ACPI
-> matching via PRP0001, even though it is not relevant here).
-> 
->    drivers/regulator/rpi-panel-attiny-regulator.c:390:34: error: ‘attiny_dt_ids’ defined but not used [-Werror=unused-const-variable=]
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
->   drivers/regulator/rpi-panel-attiny-regulator.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/regulator/rpi-panel-attiny-regulator.c b/drivers/regulator/rpi-panel-attiny-regulator.c
-> index 34514976475e..3953fc1f389f 100644
-> --- a/drivers/regulator/rpi-panel-attiny-regulator.c
-> +++ b/drivers/regulator/rpi-panel-attiny-regulator.c
-> @@ -396,7 +396,7 @@ MODULE_DEVICE_TABLE(of, attiny_dt_ids);
->   static struct i2c_driver attiny_regulator_driver = {
->   	.driver = {
->   		.name = "rpi_touchscreen_attiny",
-> -		.of_match_table = of_match_ptr(attiny_dt_ids),
-> +		.of_match_table = attiny_dt_ids,
->   	},
->   	.probe_new = attiny_i2c_probe,
->   	.remove	= attiny_i2c_remove,
+Hi Chun-Kuang,
 
+Le lun. 13 mars 2023 =C3=A0 16:17, Chun-Kuang Hu <chunkuang.hu@kernel.org> =
+a =C3=A9crit :
+>
+> Hi, Alexandre:
+>
+> Alexandre Mergnat <amergnat@baylibre.com> =E6=96=BC 2023=E5=B9=B43=E6=9C=
+=889=E6=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=8B=E5=8D=8810:23=E5=AF=AB=E9=81=93=
+=EF=BC=9A
+> >
+> > From: Fabien Parent <fparent@baylibre.com>
+> >
+> > DPI for MT8365 is compatible with MT8192 but requires an additional
+> > clock. Modify the documentation to requires this clock only on MT8365 S=
+oCs.
+>
+> If MT8365 DPI has additional clock, why it is compatible with MT8192 DPI?
+> I think some part of MT8165 DPI works under the speed control by the
+> DPI clock and this is different with MT8192 DPI, how could these two
+> are compatible?
 
-Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
+AFAII, The mtk_dpi driver manage the 4th clock as optional
+dpi->dpi_clk =3D devm_clk_get_optional(dev, "dpi");
+And all configuration variables for mt8192 are the same for mt8365.
+These configuration clock variables (like cal_factor) aren't
+correlated with the 4th clock.
+The clock number doesn't impact the configuration variable because the
+4th clock is simply retrieved from DTS, saved in the driver structure
+and prepare/unprepare/enable/disable, like other clocks.
+
+Regards,
+Alex
 
