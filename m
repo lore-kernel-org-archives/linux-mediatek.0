@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37002C6FD19
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Mar 2023 10:25:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FA30C6FD19
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Mar 2023 11:10:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SIJTB2iw2ZKbVZypN9eh4Lmwq+P7EW/KvxfnNL94MRc=; b=nsaYUqWUhJJZvVB518NyDns1uc
-	DFYZxhePDg82U4ItqVmgDXv5zT0rsxlV+V8MKX4V5FXudLOZskmMi49yY5w84JbUodRYh3/yicb3w
-	AYQcGWNVsTiaePh2V5j5HRSZsByE4zALGJUajP8mbl29sardtyNVii/6dE61Mpvpc+zntuYWCUlEe
-	tT/pvqDK6yHSqypvtI1/4PdGsS0cvGKeuApYtkvReHatvTu+z7VZIL2y12G9/7n4zcGOoczhO4TGz
-	DkSTtPft2m7wK/oMaEdZq8FFSqPuIUavd7ixHOkt0gICaVvlldbNIYrpfcrL3KCQZG/h7B0pDXzOb
-	95szg9mA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VfPC5VKx2oVWtngJw76NtBCJ44uq8j3AAfOFLh7Nvso=; b=ANDf5869UwsJBTsJh+r8uJzGxw
+	G3QAcCWmZMEWVxrcHhy59FEgbEdexj7ATf+5X7RwuuNUqh4HFDIx2gazlniDnUJSiGDX+XnxTiEsy
+	PY5hXjYbOoEaRvKh2RNwCXtWjdkHKjeQadrMaqFw5eDyFyTcrVESsBbO/2euDlZxrkzeTpO1FkG6U
+	zUgHObvPSR6Cgrip6lozm5zEbZB60zLtTAmTHJSgSAaGpPyXJU3ikNATqe/HoUEnl08OpbJBTgAXj
+	IOl4hp+DbYrfJdns7ZmCdKoB3ndkX51eY2ZI6QC6xYU5tAwVjgvujU+3tvd8+vlfSlup62kHo3brx
+	zobxbJsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pckn5-00G3RW-0i;
-	Thu, 16 Mar 2023 10:24:59 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pclUb-00GAMm-0F;
+	Thu, 16 Mar 2023 11:09:57 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pckmz-00G3Nv-0i;
-	Thu, 16 Mar 2023 10:24:56 +0000
-X-UUID: c8f0f0c2c3e411ed86fbcd8805c7ac66-20230316
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=SIJTB2iw2ZKbVZypN9eh4Lmwq+P7EW/KvxfnNL94MRc=;
-	b=eeHeASbfC77etrde7DA+MUitBUz4AhQT+i6P4ftH6QWPOLqQ98KaNFto29qQKpP0Y8n9lxjbtDy9G/4jFPil8L4c9557MwsIJBJuwOgSBGXaqlfKAMQxWng1xN7eWy1ezguQu9bid0mLikDBdXj9Q2n7U0BKf2lVnErL50mH2nA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.21,REQID:b553f132-8533-4d77-9f5e-649d48af1c73,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:83295aa,CLOUDID:c3769228-564d-42d9-9875-7c868ee415ec,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: c8f0f0c2c3e411ed86fbcd8805c7ac66-20230316
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yong.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 253913833; Thu, 16 Mar 2023 03:24:50 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Thu, 16 Mar 2023 18:14:48 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Thu, 16 Mar 2023 18:14:47 +0800
-From: Yong Wu <yong.wu@mediatek.com>
-To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>
-CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Yong Wu <yong.wu@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>, Yunfei Wang
-	<yf.wang@mediatek.com>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <jianjiao.zeng@mediatek.com>,
-	<chengci.xu@mediatek.com>
-Subject: [PATCH v3] iommu/mediatek: Set dma_mask for PGTABLE_PA_35_EN
-Date: Thu, 16 Mar 2023 18:14:45 +0800
-Message-ID: <20230316101445.12443-1-yong.wu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1pclUV-00GAJE-03;
+	Thu, 16 Mar 2023 11:09:52 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id BDE95B82107;
+	Thu, 16 Mar 2023 11:09:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C2C5C433A0;
+	Thu, 16 Mar 2023 11:09:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1678964986;
+	bh=VfPC5VKx2oVWtngJw76NtBCJ44uq8j3AAfOFLh7Nvso=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=ot1uiIqCRdvbzUCUvor586j2NbaqealDUs/54l3q38YibKgzGjgWgtM6SrmT94Xef
+	 UjR0FcucXSghxtO+zFLUT/K5cOAGJyKP0SjIFlBY4gPK6XbZfwIasTM52za0QLh6E9
+	 DGwE1mm9HOKG43pPPbk7aCDPzhwP6ck54Nl/aObd8+vTQf0ogdCcmCntXrvm2pjFEe
+	 xhvNo0ldz+uRPnoeUJYI4qHLS5/iWLTkI+w+BaPiTM+buF4IopmCvu6JDdbgRx+7Ll
+	 ZITHZfj2ObpatIchjL1Ql6SoqNzwcpJqD2EIYsPaeSO1VXTeAac9+zID1etwC+CA4B
+	 X8IaM/pdCXGgQ==
+Received: by mail-lj1-f174.google.com with SMTP id l22so1215943ljc.11;
+        Thu, 16 Mar 2023 04:09:46 -0700 (PDT)
+X-Gm-Message-State: AO0yUKVZdOQNNnqUpdn4AmOuc3g1huaQmwUCxX9yMSuToB+CbDfYNg43
+	q+lWBf0Wf1s7/cI15o7LW0DKJ5TA0qobjll+2Q==
+X-Google-Smtp-Source: AK7set8Uait8tPk1OmPFdx09+OFJ8l/Lh1GbWVJppjXlK8js1MN+hKB5QFvJbeFyKKPywkVWSqe/eCCX6VpDoroIM1U=
+X-Received: by 2002:a2e:a30b:0:b0:299:580a:9473 with SMTP id
+ l11-20020a2ea30b000000b00299580a9473mr794092lje.10.1678964984542; Thu, 16 Mar
+ 2023 04:09:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20230306080659.15261-1-jason-jh.lin@mediatek.com> <490e5a70-885d-4214-c6b4-91ddd59db883@collabora.com>
+In-Reply-To: <490e5a70-885d-4214-c6b4-91ddd59db883@collabora.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 16 Mar 2023 19:09:32 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9snhUYJ7Ox7w9-efARjToAa0ZaXDzQOMfFSuPEmuz-rw@mail.gmail.com>
+Message-ID: <CAAOTY_9snhUYJ7Ox7w9-efARjToAa0ZaXDzQOMfFSuPEmuz-rw@mail.gmail.com>
+Subject: Re: [PATCH v8 0/2] Change mmsys compatible for mt8195 mediatek-drm
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>, 
+	Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, 
+	Nathan Lu <nathan.lu@mediatek.com>, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230316_032453_265590_7FDA016A 
-X-CRM114-Status: GOOD (  11.25  )
+X-CRM114-CacheID: sfid-20230316_040951_368871_20C3CAF2 
+X-CRM114-Status: GOOD (  17.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,43 +86,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When we enable PGTABLE_PA_35_EN, the PA for pgtable may be 35bits.
-Thus add dma_mask for it.
+Hi, Angelo:
 
-Fixes: 301c3ca12576 ("iommu/mediatek: Allow page table PA up to 35bit")
-Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
-v3: Sorry for a typo. Change from "if (!ret)" to "if (ret)".
+AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =E6=96=
+=BC
+2023=E5=B9=B43=E6=9C=8816=E6=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=8B=E5=8D=885:0=
+3=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> Il 06/03/23 09:06, Jason-JH.Lin ha scritto:
+> > For previous MediaTek SoCs, such as MT8173, there are 2 display HW
+> > pipelines binding to 1 mmsys with the same power domain, the same
+> > clock driver and the same mediatek-drm driver.
+> >
+> > For MT8195, VDOSYS0 and VDOSYS1 are 2 display HW pipelines binding to
+> > 2 different power domains, different clock drivers and different
+> > mediatek-drm drivers.
+> >
+> > Moreover, Hardware pipeline of VDOSYS0 has these components: COLOR,
+> > CCORR, AAL, GAMMA, DITHER. They are related to the PQ (Picture Quality)
+> > and they makes VDOSYS0 supports PQ function while they are not
+> > including in VDOSYS1.
+> >
+> > Hardware pipeline of VDOSYS1 has the component ETHDR (HDR related
+> > component). It makes VDOSYS1 supports the HDR function while it's not
+> > including in VDOSYS0.
+> >
+> > To summarize0:
+> > Only VDOSYS0 can support PQ adjustment.
+> > Only VDOSYS1 can support HDR adjustment.
+> >
+> > Therefore, we need to separate these two different mmsys hardwares to
+> > 2 different compatibles for MT8195.
+>
+>
+> Hello Chun-Kuang, Matthias,
+>
+> Since this series is ready, can you please pick it?
+>
+> I would imagine that commit [1/2] would go through CK and commit [2/2] go=
+es
+> through Matthias.
 
-v2: Just move this out from mt8188 series. Nothing change.
+[1/2] has been applied to mediatek-drm-next [1].
 
-v1: https://lore.kernel.org/linux-mediatek/20230307080555.14399-3-yong.wu@mediatek.com/
----
- drivers/iommu/mtk_iommu.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-next
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index d5a4955910ff..6a00ce208dc2 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -1258,6 +1258,14 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 			return PTR_ERR(data->bclk);
- 	}
- 
-+	if (MTK_IOMMU_HAS_FLAG(data->plat_data, PGTABLE_PA_35_EN)) {
-+		ret = dma_set_mask(dev, DMA_BIT_MASK(35));
-+		if (ret) {
-+			dev_err(dev, "Failed to set dma_mask 35.\n");
-+			return ret;
-+		}
-+	}
-+
- 	pm_runtime_enable(dev);
- 
- 	if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_MM)) {
--- 
-2.25.1
+Regards,
+Chun-Kuang.
 
+>
+> Thanks,
+> Angelo
+>
 
