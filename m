@@ -4,88 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08C45C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Mar 2023 19:56:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F52FC7618A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Mar 2023 20:52:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oAb0Oji62P7W7XMEmvi9IDXPe1aS1U+EKgRKp0alIOU=; b=mYRLW1/PCbDItffHiePRTERO81
-	1ihYsptHYWUKS4ve/5Vies7u6+Rfoj4jIL/fjb3qqlXXVV8ZhX5lKEL2EYaSMM3B2N3uwvTe+kL4X
-	/Mx62VLlhwzAIx4rlB1WEW8eDVQnJFMfFmGKwGfSVzVPE0F7FUeY3qukPM556MpvJJaQJnM64vEbI
-	Jr2nNvM6I7k8TBypz9Xdls1l51GLB398/ydxORUZoAzdJA8K0Y77himKSHBmMsvyvvjulPZ/HLUmA
-	e45xYPSO1B+SH4oyRQH8aTqW20cfu0Pg1zTLjhD/piRLOTwDuVRmzBM5I1WZovEmhwozVbM6OOgtT
-	JS0SLK8Q==;
+	bh=mYj5s0VQqdIrOS0nX9IOIqNGVF8ihEK7YqHoMcFQwi4=; b=DZcc8YsMbOt+ZW3y5gTteTlqqu
+	lSSVOhjOjjRTGCE74x+bIsm+RC/BLAVl0w360sKwVlR0X3/E8IDwb0x0VV1w03OahNqnFAVaWgmLL
+	OOFl8U0Kdtz9O5kp1kUIzNgh/QUcH++q2N4uJhIHq6PszE+oyqaCPcO94B+18JZvmgDeR3YMJoyO6
+	n8xMiBeoRkDR/aSUp3GBDQMgp9po+EZsSGQmxctDJxmr7mYDGvpVe/LMGKjbzYJxnvQ3c6KV5TnvT
+	g+9YenCLRa6r/90wq4vMhmHezy2zlRTajOIBJJPVW6NCYKVsfAKIfkwXnWy9VakT9UJPnguxWQgVm
+	t05qLLww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pctiM-00HRJA-37;
-	Thu, 16 Mar 2023 19:56:42 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pcuZm-00HYjX-1Q;
+	Thu, 16 Mar 2023 20:51:54 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pctiG-00HRGd-1f;
-	Thu, 16 Mar 2023 19:56:38 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1pcuZi-00HYhC-1S;
+	Thu, 16 Mar 2023 20:51:52 +0000
+Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 1F41DB82344;
-	Thu, 16 Mar 2023 19:56:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 36125C4339E;
-	Thu, 16 Mar 2023 19:56:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1678996593;
-	bh=FjeRS+GUqcasumeqOw3zjV7lK1bI7k7/Hp9EIdfabys=;
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CD6766603096;
+	Thu, 16 Mar 2023 20:51:44 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1678999906;
+	bh=k3z29yPOnuz0kpwls7c9eR3QIXarYfLJxqFV5EuLcLg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Eio5cQ/zqDLPE6/XVa6WTcbwNtK/j7T5AfhlG2ky6ZpLdl0UwIPyvQXod7lBeKWQu
-	 tIvVHJB2x3l7/l1ze8n6Kn3vot6YlBWrMiLqVOeXA6dJBYyg2CpIafH8zEquTyRbY3
-	 4I1s8DHvRR8Gtzso8fRR9r3Inpl25rpliVS2txcxX91QKUEfwjU/7e4+/rKMSZVolP
-	 CuLCwgEMbKlh84YDfyGF0XKA6s9R/kUQQUzAQ+k0yEWhahAxUcrhA6wcrK/rpDKbpG
-	 SZROrcAhBlu2Z3FeEG2x5rMzg36G4oP4ZgCxfPrH6+Jq04kozxHxbVyYhO2AXwZv6n
-	 CZolY5XVV9N/g==
-Date: Thu, 16 Mar 2023 20:56:30 +0100
-From: Wolfram Sang <wsa@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Benson Leung <bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>,
-	Qii Wang <qii.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	b=nh/NeXJh/Ryon7FaBxfjX3GELNPbyT8cyUiEtLU0EhxnORZPm/wrQxYXQaVnIeqRh
+	 Kbr22sPvqZBaG0AqeDW2XAFb3aPiNZe02TWhtp+coMGMYD1WDmzh+XBmJFtYDw4u/P
+	 CGZBzjmUhQ8HInBX9tWBTseElnSLaDX7b+9TBTdcZUg5wqWS1pjhz3jx6GCn7l9z3x
+	 YtCEYb2GW0WquyemRuSMmpq2kcZH7ayDuXWDrl2em5DwcHs0BGEW/CCmflEv8dMx6I
+	 Ni2ulSHZNirqMll9c7dbKvntDwR81uB37qlDkDFULsVXFphfePk4fjK61vExOlOzS8
+	 h95mPzFzX2eDA==
+Date: Thu, 16 Mar 2023 16:51:40 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Nicolas Dufresne <nicolas@ndufresne.ca>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Ard Biesheuvel <ardb@kernel.org>,
-	Michal Simek <michal.simek@xilinx.com>, linux-i2c@vger.kernel.org,
-	chrome-platform@lists.linux.dev, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-actions@lists.infradead.org
-Subject: Re: [PATCH 4/5] i2c: cros-ec-tunnel: Mark ACPI and OF related data
- as maybe unused
-Message-ID: <ZBN0bsPpAj9KKf0v@shikoro>
-Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Benson Leung <bleung@chromium.org>,
-	Guenter Roeck <groeck@chromium.org>,
-	Qii Wang <qii.wang@mediatek.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Ard Biesheuvel <ardb@kernel.org>,
-	Michal Simek <michal.simek@xilinx.com>, linux-i2c@vger.kernel.org,
-	chrome-platform@lists.linux.dev, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	Hsin-Yi Wang <hsinyi@chromium.org>,
+	Fritz Koenig <frkoenig@chromium.org>,
+	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	linux-actions@lists.infradead.org
-References: <20230311111658.251951-1-krzysztof.kozlowski@linaro.org>
- <20230311111658.251951-4-krzysztof.kozlowski@linaro.org>
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v3] media: mediatek: vcodec: Force capture queue format
+ to MM21
+Message-ID: <20230316205140.sjkdwrpj2xwquho2@notapiano>
+References: <20230314072557.29669-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="NPOuvBlA3xuTK4qO"
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20230311111658.251951-4-krzysztof.kozlowski@linaro.org>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230314072557.29669-1-yunfei.dong@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230316_125636_856937_A514A868 
-X-CRM114-Status: GOOD (  11.03  )
+X-CRM114-CacheID: sfid-20230316_135150_853734_77A814F1 
+X-CRM114-Status: GOOD (  26.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,44 +85,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Yunfei,
 
---NPOuvBlA3xuTK4qO
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+thanks for the patch.
 
-On Sat, Mar 11, 2023 at 12:16:57PM +0100, Krzysztof Kozlowski wrote:
-> The driver can be compile tested with !CONFIG_OF or !CONFIG_ACPI making
-> certain data unused:
->=20
->   drivers/i2c/busses/i2c-cros-ec-tunnel.c:295:34: error: =E2=80=98cros_ec=
-_i2c_of_match=E2=80=99 defined but not used [-Werror=3Dunused-const-variabl=
-e=3D]
->=20
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+On Tue, Mar 14, 2023 at 03:25:57PM +0800, Yunfei Dong wrote:
+> Libyuv is one software library used to covert format. Only covert
+> mediatek uncompressed mode MM21 to standard yuv420 for MT21 is
+> compressed mode. Need to set capture queue format to MM21 in order
+> to use Libyuv when scp firmware support MM21 and MT21.
 
-Applied to for-next, thanks!
+This commit message is a bit confusing still. Here's a suggestion:
 
+	While the decoder can produce frames in both MM21 and MT21C formats, only MM21
+	is currently supported by userspace tools (like gstreamer and libyuv). In order
+	to ensure userspace keeps working after the SCP firmware is updated to support
+	both MM21 and MT21C formats, force the MM21 format for the capture queue.
 
---NPOuvBlA3xuTK4qO
-Content-Type: application/pgp-signature; name="signature.asc"
+	This is meant as a stopgap solution while dynamic format switching between 
+	MM21 and MT21C isn't implemented in the driver.
 
------BEGIN PGP SIGNATURE-----
+> 
+> Fixes: 7501edef6b1f ("media: mediatek: vcodec: Different codec using different capture format")
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> ---
+> changed with v2:
+> - re-write commit message.
+> - change the driver flow.
+> changed with v1:
+> - add Fixes tag.
+> ---
+>  .../platform/mediatek/vcodec/mtk_vcodec_dec.c | 24 +++----------------
+>  1 file changed, 3 insertions(+), 21 deletions(-)
+> 
 
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmQTdG4ACgkQFA3kzBSg
-KbZUJA/+JrUEht5HB7GAzwM81ZXqE5QvGi66MxVAr4lAwp+QJGCEDswnvZQ1ZHld
-prFBkMgmWnfCdmmUycQ1jE0qlj0ddLansZNQ8xgLMaEhQPwnVKSVbtuo5GeLOf7e
-yne/7/QYZds1eAPvkiLirbeeJ/cySkyfdqIkQjdMlLhNrhBADPD7QXoGlGHmxQI0
-pSQg3zwHxfsUv6vlIpa1DGa8Kxqy7C88kjTOXMjMZIv4YE2A6ejFDKofiwlZUvoj
-ygLrcmtPGY7WwrAOuanemyprTlGzsTocCGVgFb/Qtgv/EsW+mihmK+HNAutPwc8r
-f6S7eiXCrp1Hh7AZfuC30OYE8Yz1GXGP1voAKrtJepVl449KuNtfwJCEyY5K29kL
-eY2EqIe7KZodmZFgouk9NsThf/E+DnSxXuuPlbq5o5zwycBMxVF7rfa8Tw9fTe8q
-bWgVLpJnF4NGC6bm+OIHMPPdjNqL9MYFh2cV5GgDXjsh5JPPfAJavvaNuQXy0WdO
-Gc/5NKKTWUa7dCm7J+8qI9znH2GDP4VtfQkywj0PpemWRNfwPLFXHOrnXABjAATD
-K+8A7pH48l3H4j6wU/AOo/zcAHOTAU0Fb1e4IUTx80RIL25cP1xY7mX9agxB0Puv
-JzJuHu0VVLxBumer+SxpZblUmFAtk1Yf2oKBJeJ9994AOp3D41M=
-=Vfz1
------END PGP SIGNATURE-----
+While this change works (that is, I'm able to run fluster tests on both MT8192
+and MT8195 using the new MM21+MT21C firmware), it causes a regression on
+v4l2-compliance:
 
---NPOuvBlA3xuTK4qO--
+	[..]
+	Format ioctls:
+	[..]
+			fail: v4l2-test-formats.cpp(478): pixelformat 3132544d (MT21) for buftype 9 not reported by ENUM_FMT
+		test VIDIOC_G_FMT: FAIL
+			fail: v4l2-test-formats.cpp(478): pixelformat 3132544d (MT21) for buftype 9 not reported by ENUM_FMT
+		test VIDIOC_TRY_FMT: FAIL
+			fail: v4l2-test-formats.cpp(478): pixelformat 3132544d (MT21) for buftype 9 not reported by ENUM_FMT
+		test VIDIOC_S_FMT: FAIL
+	[..]
+	Total for mtk-vcodec-dec device /dev/video2: 46, Succeeded: 43, Failed: 3, Warnings: 0
+
+The patch makes only MM21 show in VIDIOC_ENUM_FMT, but VIDIOC_S_FMT,
+VIDIOC_G_FMT and VIDIOC_TRY_FMT still show MT21. So I think you need to do the
+same forcing of MM21 for those ioctls.
+
+Thanks,
+Nícolas
+
+> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+> index 641f533c417f..c99705681a03 100644
+> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+> @@ -39,10 +39,9 @@ static bool mtk_vdec_get_cap_fmt(struct mtk_vcodec_ctx *ctx, int format_index)
+>  {
+>  	const struct mtk_vcodec_dec_pdata *dec_pdata = ctx->dev->vdec_pdata;
+>  	const struct mtk_video_fmt *fmt;
+> -	struct mtk_q_data *q_data;
+>  	int num_frame_count = 0, i;
+> -	bool ret = true;
+>  
+> +	fmt = &dec_pdata->vdec_formats[format_index];
+>  	for (i = 0; i < *dec_pdata->num_formats; i++) {
+>  		if (dec_pdata->vdec_formats[i].type != MTK_FMT_FRAME)
+>  			continue;
+> @@ -50,27 +49,10 @@ static bool mtk_vdec_get_cap_fmt(struct mtk_vcodec_ctx *ctx, int format_index)
+>  		num_frame_count++;
+>  	}
+>  
+> -	if (num_frame_count == 1)
+> +	if (num_frame_count == 1 || fmt->fourcc == V4L2_PIX_FMT_MM21)
+>  		return true;
+>  
+> -	fmt = &dec_pdata->vdec_formats[format_index];
+> -	q_data = &ctx->q_data[MTK_Q_DATA_SRC];
+> -	switch (q_data->fmt->fourcc) {
+> -	case V4L2_PIX_FMT_VP8_FRAME:
+> -		if (fmt->fourcc == V4L2_PIX_FMT_MM21)
+> -			ret = true;
+> -		break;
+> -	case V4L2_PIX_FMT_H264_SLICE:
+> -	case V4L2_PIX_FMT_VP9_FRAME:
+> -		if (fmt->fourcc == V4L2_PIX_FMT_MM21)
+> -			ret = false;
+> -		break;
+> -	default:
+> -		ret = true;
+> -		break;
+> -	}
+> -
+> -	return ret;
+> +	return false;
+>  }
+>  
+>  static struct mtk_q_data *mtk_vdec_get_q_data(struct mtk_vcodec_ctx *ctx,
+> -- 
+> 2.25.1
+> 
 
