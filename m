@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96384C6FD19
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Mar 2023 10:21:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59AC4C6FD19
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Mar 2023 10:21:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8zV39akSKgTXnbIsuHdwXtYxXMFzl6o5v6caNUB0if4=; b=W/mYfkHctsAN5UVwJCjew2/bhk
-	t0izGsDI3qEubcilfGXoqb8T5ypRxfr4fS2FKRa8vi1iPuq8MiKG4H5zlt9a0wjBe2DWGK6SLlKhx
-	lPZVyripLtGHtOOXHKz/U6ZSdgMc+J+p/B3Spuk3NPIwFeXR3PNN/3bDpbxayzil28D48WSUTaMxd
-	7RVGxao56riYV9d7sHq3ZIF98bUIAYy9dYvY9pnbcDkeBuZ3XooxyoLurNL2ct79PhxiryN6q5arE
-	UVdMB/8Q1BMQykKipn28L9g79xfukWOwMNT0TBmI/vo/qIUFMZFKejhrNgaK7VbcEMeLqQebK5ChX
-	VZrVHWMg==;
+	bh=J9kJVsxcim4PLtHe23b8aBLEQQUlMpe/iSUKuiqOVtA=; b=0BIZayLRY9B8qECRtaXKdo4Dwt
+	Yhc2HZwHi4G6QoQlDwWq/X27fqRgCjF3T+P2WgpIAdADtrj7AHOS0i5EPwisS0zu2l1iGDtpAMH9y
+	Bm2OoZjTOANGNg0iabyg2qDSdNNF2AytcmQS3bdpkyPZybGT84bFstwdiOIrsv1UFdGfe4Ex3gATW
+	dxIJIOXrlrJ9zcuUGlMAv7TYIb6JRxRAyhtf0LbCYHAbC/Ymxglx5c2g4a4KRh6tbl+1IhU4f5C4h
+	BUQ6OgGsryCkyAT1/K9NXtyCrfRaSHE54eR+72xXBFrW55l8xCdnEyKgZRIXEYX2FwryatN5jLzUd
+	rlf8kTGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pckjE-00G0wA-0B;
-	Thu, 16 Mar 2023 10:21:00 +0000
+	id 1pckjK-00G103-33;
+	Thu, 16 Mar 2023 10:21:06 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pckj3-00G0o7-2x;
+	id 1pckj3-00G0oH-2x;
 	Thu, 16 Mar 2023 10:20:51 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 28F90660309E;
-	Thu, 16 Mar 2023 10:20:46 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E845C66030A0;
+	Thu, 16 Mar 2023 10:20:47 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678962046;
-	bh=t6e55TKXpWDXs7rKf1rewUoc056XoaKTiofz8DN9RjM=;
+	s=mail; t=1678962048;
+	bh=vym02gfUeFtMkZA43yUlFdqpHJiV8QIzeChJfzjI5R4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=RynW8u0Dr4ZczODzCd2SqpQk6l0qle1QQQKYJReaYbbgC/NiBVgsx8YY/z1d86idK
-	 f4IQC1dpbvJM61+JNY8IKP3oQ3PpwHoBs7UUqYHCj6Hf+mpHt16S/pCwrxDVGXPCQb
-	 2CpXPfrQWFani4dmmdV1QUymIn8bWPeUP6lXbkml5nQ+M2RQaejKmWT8827i8yhght
-	 mM5Rc3MYdRtOp7i5UkB5BO7y3t40z1vH9I7tV5N3MeYSICkOyFEoBOcu1ZgiYofuTo
-	 0K53H3tkpCB5WHdMIl6yQ8txBdOSaapyxAbhB24sRX3Q9svQ2dhqp7TneaTHHTbDLC
-	 oCABAxTCASlUQ==
+	b=kpuX2RQEQblFvVlA7uJOEnSjVUFXexzWEE/YHcNPmudmm7wBcVbhDyeCcz0HytihH
+	 QYyQvyV1KUPfBuFYVRXjYBWitRc1/PDQVEoJ3NwwBdlagUZLljRznoSR9VBltb115K
+	 sSIb8uAvevtYftC68I6ie/HvBHpjGLp3GDzeN7VwZC6QKZwBs4Tt7akIlqvaMdGgYg
+	 9wUqlcy4JrZGu5PCvcsn45YWj80jUHqUoSXEnH5CVmUYUyB+TJ0mXOdlNvGbaRPTqq
+	 i442BMbVucu3fEyfzp45+wMpBVdKbUA54NgVaZfU3/d60oaM7ykeJnezgsvJAa97lk
+	 5ZmtnXLNoHEhA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: airlied@gmail.com
 Cc: daniel@ffwll.ch,
@@ -59,17 +59,17 @@ Cc: daniel@ffwll.ch,
 	linux-mediatek@lists.infradead.org,
 	wenst@chromium.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v5 01/12] dt-bindings: gpu: mali-bifrost: Split out MediaTek power-domains variation
-Date: Thu, 16 Mar 2023 11:20:30 +0100
-Message-Id: <20230316102041.210269-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v5 03/12] dt-bindings: gpu: mali-bifrost: Fix power-domain-names validation
+Date: Thu, 16 Mar 2023 11:20:32 +0100
+Message-Id: <20230316102041.210269-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230316102041.210269-1-angelogioacchino.delregno@collabora.com>
 References: <20230316102041.210269-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230316_032050_109155_9A2C5E9D 
-X-CRM114-Status: UNSURE (   9.95  )
+X-CRM114-CacheID: sfid-20230316_032050_110141_F282C1E7 
+X-CRM114-Status: UNSURE (   7.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,62 +85,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation for adding new bindings for new MediaTek SoCs, split out
-the power-domains variation from the `else` in the current
-mediatek,mt8183-mali conditional.
+Commit ("dt-bindings: gpu: mali-bifrost: Add Mediatek MT8183")
+incorrectly introduced power domain names for MT8183, causing
+validation issues.
 
-The sram-supply part is left in place to be disallowed for anything
-that is not compatible with "mediatek,mt8183-mali" as this regulator
-is MediaTek-specific and it is, and will ever be, used only for this
-specific string due to the addition of the mediatek-regulator-coupler
-driver.
+Add power-domain-names to the base schema, allowing a maximum of
+five elements; since platforms having a single power domain don't
+need any actual domain name, disallow that for each sub-schema.
 
+Fixes: a7a596cd3115 ("dt-bindings: gpu: mali-bifrost: Add Mediatek MT8183")
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- .../devicetree/bindings/gpu/arm,mali-bifrost.yaml        | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+ .../devicetree/bindings/gpu/arm,mali-bifrost.yaml          | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-index 78964c140b46..7e110751353e 100644
+index 5b7f1c9d2b30..7c61524aae26 100644
 --- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
 +++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-@@ -109,6 +109,9 @@ allOf:
-           contains:
-             const: amlogic,meson-g12a-mali
-     then:
-+      properties:
-+        power-domains:
-+          maxItems: 1
+@@ -65,6 +65,10 @@ properties:
+     minItems: 1
+     maxItems: 5
+ 
++  power-domain-names:
++    minItems: 2
++    maxItems: 5
++
+   resets:
+     minItems: 1
+     maxItems: 3
+@@ -112,6 +116,7 @@ allOf:
+       properties:
+         power-domains:
+           maxItems: 1
++        power-domain-names: false
        required:
          - resets
    - if:
-@@ -131,6 +134,8 @@ allOf:
-             - const: gpu
-             - const: bus
+@@ -136,6 +141,7 @@ allOf:
              - const: bus_ace
-+        power-domains:
-+          maxItems: 1
+         power-domains:
+           maxItems: 1
++        power-domain-names: false
          resets:
            minItems: 3
          reset-names:
-@@ -164,8 +169,6 @@ allOf:
-         - power-domain-names
-     else:
-       properties:
--        power-domains:
--          maxItems: 1
-         sram-supply: false
-   - if:
-       properties:
-@@ -180,6 +183,8 @@ allOf:
-           items:
-             - const: gpu
+@@ -186,6 +192,7 @@ allOf:
              - const: bus
-+        power-domains:
-+          maxItems: 1
+         power-domains:
+           maxItems: 1
++        power-domain-names: false
        required:
          - clock-names
  
