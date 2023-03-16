@@ -4,69 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA964C6FD19
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Mar 2023 09:03:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B525CC6FD19
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Mar 2023 09:04:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NoyY3ropWlS1QhbNGs3msh9xMc/2EgjLjsg1i5DfMT0=; b=ddgT2e5JzIiFax2QAwZ9+5EtT4
-	yUI8Mf4tTJscFrioUl1TXpJnQObpHyU4yiaUaeyizWGYE4s1S4L0TyRDxDIQdVruMe32gbQEN1Ym0
-	do2MFPR99Lvvatnv2ERy4H9VDMhJXkd7DyQ73hoydAa688f4wPoLBq/LVJcsYZiRVAg9f4GXJxKiU
-	LEDnU6M5KcdnepqAFrJeyKZnXWWizDixW+uiWueGV7bMODiito67oJTZB8q9Wl0G4P0uVxGFlOPPk
-	JVciyrB9+w+IoCYIeGLPM9tsDrqZb8jT248BePdndGT8ZLbw4VtlvkJkZSTNQ3xZO6JkyF1RY/Pjr
-	ew3cRCuA==;
+	bh=omaJGV98ZBt/nLZwT/Okr6Klt8ZnrOEX1Yyne7eWaNo=; b=usJvIgS9ljYf+7L8TcwS3kXNe3
+	wYaZCWdxnPu9OnEXYUYR7CmbI7dzOwySsU1oD+jW6c0jYAGZxKT1KiwqlSF2EqmDBYI3CJ/UQVoIq
+	wLU8uQXBuC3b1fvc5gxAu1wG4XspJXujdXIwu6tPcLuiWVrjyxkfTq33Acm9E/mkyfumDkny+ybJZ
+	cMAO9t/xx/sNFj6hEvG/OA2qbUH0QRIk/l4M1AxryZXGELsZMiKXfzh6HYbXPkiDGCd/yXJLBpnji
+	sg53HkUqvxlXlN0xEDb4V65MbVRlK1TGEkdGSlzSjbYeu4oNra2BN7hhUZH8pnn+OB3b4E4K6gn7O
+	v2RcGC+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcjWS-00Fotz-1w;
-	Thu, 16 Mar 2023 09:03:44 +0000
+	id 1pcjWr-00Fp37-20;
+	Thu, 16 Mar 2023 09:04:09 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcjWO-00FosX-0g;
-	Thu, 16 Mar 2023 09:03:41 +0000
+	id 1pcjWn-00Fp0x-0B;
+	Thu, 16 Mar 2023 09:04:07 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 36FEC66003B0;
-	Thu, 16 Mar 2023 09:03:38 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 818A666003B0;
+	Thu, 16 Mar 2023 09:04:03 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678957418;
-	bh=EpLAQhKe/JmigVZzxVHT7Ip5Ff3Z539uGU8VPw07mAU=;
+	s=mail; t=1678957443;
+	bh=RZUD6ZfSGRTeOd8k3yIR1WJ84mfgoTCh6HqZtNF8ZVw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=bZEHI4+DqI61fKr3sXHlQior2URWzKF8jlQKDBGAMMaHnPG67TS7TrWYhuyEpr0pn
-	 bJOJJlYXLez2PHstNwVypr3K6MjZwqnXFriu0Yecb8MpfygMIEl2mBZRYsL7N009Vm
-	 8nKg8JbAwybAOdtvXToydhCFrkdJVkatXZfzHRI8JVEm5gv+fLVbO8Z6XnUoYFtmIR
-	 uYrRnk5KfmUAxhTt20RnEWWhrTI3UmfhmFjsi4RcBrT7Car1lwXtp/Assku79V+Zf2
-	 1xO/wbzdYDtT/o9KtqmOEaj2MGhePCF26n0bCCMUCIUXji2Ri3Pk95bhZM+e9Fj7Y3
-	 WnChMGh5nepLg==
-Message-ID: <490e5a70-885d-4214-c6b4-91ddd59db883@collabora.com>
-Date: Thu, 16 Mar 2023 10:03:35 +0100
+	b=k4dVN9ok+bwTxCcKL4jnqkfTsApX+3UunOfIVkxm2gxfkOLBjz5uW/ngAKsi+ZDIL
+	 JQusrGsykE6HbEBflLx+QybiHzk93RXpA9ujRGoiBd+ElnUpCYcThfOmmkL2hUbgEt
+	 IS6C98gDCrU6/otGb+lKr++pKxxK7Ywu6Ahq1Mw2fzWTdlpWCkA4mruAzXo+p/RqSH
+	 nXtCy4AkvAjQhkbUxSgfG/V67cjFrVicEjb2SAzc7GvF56RQ+IK9UjY3RJiMoWKOFo
+	 u39JF/GP5JMUD8vRufv4Ew9/i7lgxgV1cOsjGoUKLebiPHXZ+pwnADX/S206Xu4FWN
+	 5wZuYcxgteZVA==
+Message-ID: <4445a2fb-5fab-c12f-c59e-cf1e9d67db21@collabora.com>
+Date: Thu, 16 Mar 2023 10:04:00 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.8.0
-Subject: Re: [PATCH v8 0/2] Change mmsys compatible for mt8195 mediatek-drm
+Subject: Re: [PATCH 2/3] spmi: mtk-pmif: Convert to platform remove callback
+ returning void
 Content-Language: en-US
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rex-BC Chen <rex-bc.chen@mediatek.com>,
- Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
- Nathan Lu <nathan.lu@mediatek.com>, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20230306080659.15261-1-jason-jh.lin@mediatek.com>
+To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel@pengutronix.de
+References: <20230306073446.2194048-1-u.kleine-koenig@pengutronix.de>
+ <20230306073446.2194048-3-u.kleine-koenig@pengutronix.de>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230306080659.15261-1-jason-jh.lin@mediatek.com>
+In-Reply-To: <20230306073446.2194048-3-u.kleine-koenig@pengutronix.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230316_020340_377687_D90F505F 
-X-CRM114-Status: GOOD (  12.98  )
+X-CRM114-CacheID: sfid-20230316_020405_218745_54757D34 
+X-CRM114-Status: GOOD (  12.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,40 +78,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/03/23 09:06, Jason-JH.Lin ha scritto:
-> For previous MediaTek SoCs, such as MT8173, there are 2 display HW
-> pipelines binding to 1 mmsys with the same power domain, the same
-> clock driver and the same mediatek-drm driver.
+Il 06/03/23 08:34, Uwe Kleine-König ha scritto:
+> The .remove() callback for a platform driver returns an int which makes
+> many driver authors wrongly assume it's possible to do error handling by
+> returning an error code. However the value returned is (mostly) ignored
+> and this typically results in resource leaks. To improve here there is a
+> quest to make the remove callback return void. In the first step of this
+> quest all drivers are converted to .remove_new() which already returns
+> void.
 > 
-> For MT8195, VDOSYS0 and VDOSYS1 are 2 display HW pipelines binding to
-> 2 different power domains, different clock drivers and different
-> mediatek-drm drivers.
+> Trivially convert this driver from always returning zero in the remove
+> callback to the void returning variant.
 > 
-> Moreover, Hardware pipeline of VDOSYS0 has these components: COLOR,
-> CCORR, AAL, GAMMA, DITHER. They are related to the PQ (Picture Quality)
-> and they makes VDOSYS0 supports PQ function while they are not
-> including in VDOSYS1.
-> 
-> Hardware pipeline of VDOSYS1 has the component ETHDR (HDR related
-> component). It makes VDOSYS1 supports the HDR function while it's not
-> including in VDOSYS0.
-> 
-> To summarize0:
-> Only VDOSYS0 can support PQ adjustment.
-> Only VDOSYS1 can support HDR adjustment.
-> 
-> Therefore, we need to separate these two different mmsys hardwares to
-> 2 different compatibles for MT8195.
+> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Hello Chun-Kuang, Matthias,
-
-Since this series is ready, can you please pick it?
-
-I would imagine that commit [1/2] would go through CK and commit [2/2] goes
-through Matthias.
-
-Thanks,
-Angelo
 
 
