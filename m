@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA0D0C74A5B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Mar 2023 13:51:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9CE2C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Mar 2023 15:52:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BrRP5tTiR4rQkLHT4fF7oBzX2wegTAfABMTHn7JfsGE=; b=G6rBCvPuHg/t0f+jyAz1vMwZYr
-	DMSyBYLVk2XMeHc1KefRrpklC5J8BjpQKdLBLBIdiaUpwtCZtI/NAyd6g/nm9aWtaywCDctENoJC+
-	CVS0OG7q6NJ/uPwkhRCENvTtRrHTZan3p1Qvgn2N/3h0yEfkfwl3aIQnMBhY8Rvl3fsbK+9GM2F5+
-	unVrQlYW5DRJEOKutIRB4sWK1llXbuVq4TORwlgWss02Jq47fo+eElL5cI0AH95zJGPSuGK3CbztT
-	HWyDeLCIJxkTFyjhMNbtqXjDTI3Td7j2pJNIz+ltF1qKRM7bnXwvI5t37gxHHJKiEtoUKYwFhG5XI
-	464BR2Vg==;
+	bh=ZRKkx/kUNPtYLFQluT6S7veNjHMIxLl5hTJR/jaRrSI=; b=ITDPgPFy9QEUb+PBcaf2iHnJFr
+	LzSijq3OGb2KHJqcnhe585Pru8X8loQ13P9zFbEa3cXX2n3Qqf7A6QxWCfT+3e0xj+D+28vF2psnP
+	XdlR93xnppXUMVmf4AwncsLl1G6vKmWHmhZU2sf4YN77kgUnkb7VD7ZSoLRNGajwVNuPOYVzeQtNs
+	zF/0HTHe5nhu8o7G0ZrSjpv8g0WTfFB01PkEhXG7c/Lqf6AhK7qQBNLCoprU2pZRXwZWDa62RhBdA
+	Kzl5KUZ1UHEtp+3241bPXAYuC94gEGGzZzQM7El18kWW5Bne8JxkdbZT22ZnY/OIbabXyHOD3Yy3o
+	PIz1BM3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pco0T-00Gatb-2s;
-	Thu, 16 Mar 2023 13:51:01 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pcptZ-00GuKe-0N;
+	Thu, 16 Mar 2023 15:52:01 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pco0Q-00Gart-0i;
-	Thu, 16 Mar 2023 13:50:59 +0000
+	id 1pcptU-00GuJN-39;
+	Thu, 16 Mar 2023 15:51:58 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id CB981B8219F;
-	Thu, 16 Mar 2023 13:50:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 54CC7C4339E;
-	Thu, 16 Mar 2023 13:50:53 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id DD79762097;
+	Thu, 16 Mar 2023 15:51:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 664B5C433EF;
+	Thu, 16 Mar 2023 15:51:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1678974655;
-	bh=lXUl7La5cJcJdgZLmoOZmsmMW91Ldc6U+hd0ZTgsng8=;
+	s=k20201202; t=1678981915;
+	bh=zcCZCxOddrY19dAifEoyyXbquULTfQJDNveTVJQHbvo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ig9GWJb6NXq5yRP3ueSxciQWa7tpd/uiQwIrYL/9GSs0OOkGuG04h0P2XMqVFDA24
-	 A6CjmJu28EymnJXEHNrKUfP9B8CyMv0xJGsG43kRXLNR8QtZE/VdFTYfvN8ORTgCcb
-	 D8GL1jtvpFsTxP6GbOCMfuHABUBRcmZo/zWqYfkXTZi/LePFnfOCedLE0cTBVB7v24
-	 OZP7PQx+/7Wanoq7TCNtmV81HBzhjcajY++kGBmHtDOl3syQTZOfI4WellVgQ01cZh
-	 oYvc+uPZUwnt8UzWONxW2C1zb+WH3b7hLSQ+yM6G+xAXat+gIZ6L+sDF5x053rsMiP
-	 U270LzOAPLyNg==
-Date: Thu, 16 Mar 2023 13:50:50 +0000
+	b=TnWrTRkhsriTufDefygk8Ww1IBalyeTruIf2nR/17/pSFOGkGUCvgXRqV2HFOWnQE
+	 94h9ApXSBJLsIfTYBABn7sIUUjY3mCpQGTm0lfmR9WEH3/9K/4IOFo+dbLxgWMoEcJ
+	 ptdJcsVu7FPdLxmEYvCds/oEgOvWSFFWI9ETI9ycSeJF5xBn8DPIiZhYHN7+6XAZ5j
+	 Sfipf1G1RMge8Ph2xaX2faK/ssY1SN2kKHxhraflL5S8FXS5FtWxdRGg6Y7yHTu+wp
+	 RP/AQ3hwm2T9BWoaD74VtyuGNt2IpChEMYrvlt3KY6SDR9opQklUgYY3yqmHSeTxrP
+	 2HUg8xr9rD89Q==
+Date: Thu, 16 Mar 2023 15:51:49 +0000
 From: Lee Jones <lee@kernel.org>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Daniel Thompson <daniel.thompson@linaro.org>,
-	Jingoo Han <jingoohan1@gmail.com>, Helge Deller <deller@gmx.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dri-devel@lists.freedesktop.org, linux-fbdev@vger.kernel.org,
-	kernel@pengutronix.de, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 09/13] backlight: mt6370-backlight: Convert to platform
- remove callback returning void
-Message-ID: <20230316135050.GX9667@google.com>
-References: <20230308073945.2336302-1-u.kleine-koenig@pengutronix.de>
- <20230308073945.2336302-10-u.kleine-koenig@pengutronix.de>
+To: ChiaEn Wu <chiaen_wu@richtek.com>
+Cc: corbet@lwn.net, pavel@ucw.cz, matthias.bgg@gmail.com,
+	andriy.shevchenko@linux.intel.com, jacek.anaszewski@gmail.com,
+	angelogioacchino.delregno@collabora.com, linux-doc@vger.kernel.org,
+	peterwu.pub@gmail.com, cy_huang@richtek.com,
+	linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	szunichen@gmail.com
+Subject: Re: [PATCH v18 3/3] docs: leds: Add MT6370 RGB LED pattern document
+Message-ID: <20230316155149.GK9667@google.com>
+References: <cover.1678430444.git.chiaen_wu@richtek.com>
+ <38f1e863b0f099158a63fb6f95056a1cb30d80a0.1678430444.git.chiaen_wu@richtek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230308073945.2336302-10-u.kleine-koenig@pengutronix.de>
+In-Reply-To: <38f1e863b0f099158a63fb6f95056a1cb30d80a0.1678430444.git.chiaen_wu@richtek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230316_065058_406069_CD76C443 
-X-CRM114-Status: GOOD (  16.42  )
+X-CRM114-CacheID: sfid-20230316_085157_097941_848EF63E 
+X-CRM114-Status: GOOD (  23.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,25 +79,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 08 Mar 2023, Uwe Kleine-König wrote:
+On Fri, 10 Mar 2023, ChiaEn Wu wrote:
 
-> The .remove() callback for a platform driver returns an int which makes
-> many driver authors wrongly assume it's possible to do error handling by
-> returning an error code. However the value returned is (mostly) ignored
-> and this typically results in resource leaks. To improve here there is a
-> quest to make the remove callback return void. In the first step of this
-> quest all drivers are converted to .remove_new() which already returns
-> void.
+> From: ChiYuan Huang <cy_huang@richtek.com>
 >
-> Trivially convert this driver from always returning zero in the remove
-> callback to the void returning variant.
+> Document the MT6370 RGB LED pattern trigger.
 >
-> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+> This simply describe how the pattern works, each timing period, and the
+> pattern diagram for MT6370 RGB LED.
+>
+> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
 > ---
->  drivers/video/backlight/mt6370-backlight.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
+> v18:
+> - Revise the text in document title and description.
+> ---
+>  Documentation/leds/leds-mt6370-rgb.rst | 64 ++++++++++++++++++++++++++++++++++
 
-Applied, thanks
+These 3 patches now look good.
+
+You do not need to make any more changes to these.
+
+>  1 file changed, 64 insertions(+)
+>  create mode 100644 Documentation/leds/leds-mt6370-rgb.rst
+>
+> diff --git a/Documentation/leds/leds-mt6370-rgb.rst b/Documentation/leds/leds-mt6370-rgb.rst
+> new file mode 100644
+> index 00000000..abf739e
+> --- /dev/null
+> +++ b/Documentation/leds/leds-mt6370-rgb.rst
+> @@ -0,0 +1,64 @@
+> +.. SPDX-License-Identifier: GPL-2.0
+> +
+> +=========================================
+> +The device for Mediatek MT6370 RGB LED
+> +=========================================
+> +
+> +Description
+> +-----------
+> +
+> +The MT6370 integrates a four-channel RGB LED driver, designed to provide a
+> +variety of lighting effect for mobile device applications. The RGB LED devices
+> +includes a smart LED string controller and it can drive 3 channels of LEDs with
+> +a sink current up to 24mA and a CHG_VIN power good indicator LED with sink
+> +current up to 6mA. It provides three operation modes for RGB LEDs:
+> +PWM Dimming mode, breath pattern mode, and constant current mode. The device
+> +can increase or decrease the brightness of the RGB LED via an I2C interface.
+> +
+> +The breath pattern for a channel can be programmed using the "pattern" trigger,
+> +using the hw_pattern attribute.
+> +
+> +/sys/class/leds/<led>/hw_pattern
+
+However, this needs an entry in Documentation/ABI/testing.
+
+> +--------------------------------
+> +
+> +Specify a hardware breath pattern for a MT6370 RGB LED.
+> +
+> +The breath pattern is a series of timing pairs, with the hold-time expressed in
+> +milliseconds. And the brightness is controlled by
+> +'/sys/class/leds/<led>/brightness'. The pattern doesn't include the brightness
+> +setting. Hardware pattern only controls the timing for each pattern stage
+> +depending on the current brightness setting.
+> +
+> +Pattern diagram::
+> +
+> +     "0 Tr1 0 Tr2 0 Tf1 0 Tf2 0 Ton 0 Toff" --> '0' for dummy brightness code
+> +
+> +      ^
+> +      |           ============
+> +      |          /            \                                /
+> +Icurr |         /              \                              /
+> +      |        /                \                            /
+> +      |       /                  \                          /   .....repeat
+> +      |      /                    \                        /
+> +      |   ---                      ---                  ---
+> +      |---                            ---            ---
+> +      +----------------------------------============------------> Time
+> +       < Tr1><Tr2><   Ton    ><Tf1><Tf2 ><  Toff    >< Tr1><Tr2>
+> +
+> +Timing description::
+> +
+> +Tr1:    First rising time for duty 0 to 30%.
+> +Tr2:    Second rising time for duty 31% to 100%.
+> +Ton:    On time for duty 100%.
+> +Tf1:    First falling time for duty 100% to 31%.
+> +Tf2:    Second falling time for duty 30% to 0%.
+> +Toff:   Off time for duty 0%.
+> +
+> +Tr1/Tr2/Tf1/Tf2/Ton: 125ms to 3125ms, 200ms per step.
+> +Toff: 250ms to 6250ms, 400ms per step.
+> +
+> +Pattern example::
+> +
+> +       "0 125 0 125 0 125 0 125 0 625 0 1050"
+> +
+> +This Will configure Tr1/Tr2/Tf1/Tf2 to 125m, Ton to 625ms, and Toff to 1050ms.
+> --
+> 2.7.4
+>
 
 --
 Lee Jones [李琼斯]
