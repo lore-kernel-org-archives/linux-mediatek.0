@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7117CC6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Mar 2023 08:43:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2941FC6FD19
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Mar 2023 08:45:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yzOxYM14Wnsij37Eyxr9rhW4DC/pA+5OHN33WD5/4fw=; b=k+8qP7MZ4Cs4Rkkhy7QpsviCp+
-	9ZYiaPbLoXChXQaHx2NOgKG1A7T7wJ8qe8wKfFaeggdTmFgnBOeJ+rb29cZM2WYvd4caMjWwNGVw1
-	eB65ikO0zYPJxGpf2ItNHvF6XCjbl7vXdnDeKOE6ykGwR0dr3TiTA38uV0MuBWRy8IqhN81ksG6Hg
-	Jp6K/O6ycz/jmrCTYNMstjgYmN9I/96c2VGPs/x9psBxybnHhzerfs4nWSR88KWvINFFj3I7OIsnx
-	J37eN7PHq+D1OUaK2l9jX6VYNFts1ERgUVbTyhYr6jpDw+u9Jw9twTnWWYKdd3aljUxqEUdqBmRmO
-	xR8TiPJg==;
+	bh=Rg5tdkkABbxAWTnFGpK/6gzu0k2JQnPkVJCmdfQuiTM=; b=bkb13PZ1imE6bDDpE0hlfIRKKY
+	y/Si6JyPNsp6GOIGqDVS29eLgW/xT/HWp3TvvdxgW2PMkipdlg7e3nKo4zgzM0pu8LHpZ3PdbyTIj
+	rDbZaEojIF7dGDIgDggXm1VSvUeeWL8uS8aRKqmdgE8f/tbm8u2KV5/7CvZbs0fnyQP316yRMuS2u
+	Bp8thKs/rmrgNKUGxAo1QdCiw+fuq2LImObTsqJUil9BgfGnAFTD+6GfKstiENOrb8ELxFsK6UtbX
+	Z7+XkkFYYXz87/tLkUmkY3e/2otR2jfbLMnG0NIG6pP8hIsewVrUMi64FjIWT9y0a8JDIy2GOsh8M
+	ruZR0WLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcjCR-00FiId-0p;
-	Thu, 16 Mar 2023 08:43:03 +0000
+	id 1pcjEN-00FjTx-2U;
+	Thu, 16 Mar 2023 08:45:03 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcjBk-00Fhli-1I;
-	Thu, 16 Mar 2023 08:42:21 +0000
+	id 1pcjEJ-00FjRD-0f;
+	Thu, 16 Mar 2023 08:45:00 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 91183660309E;
-	Thu, 16 Mar 2023 08:42:18 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 68693660309D;
+	Thu, 16 Mar 2023 08:44:57 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678956139;
-	bh=cG6H7BTbIv6IpK2irAivbNXa/2Qr4JqONKmvATOLV8s=;
+	s=mail; t=1678956297;
+	bh=mBF272Uv22RD+C2JSIo/V6wQ2xTMSJyHuJQJDxdUJzc=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=TupGBTUMLtM7f80hXLyC8T+OcpT7EhdIVxETU1GD/V9RtPIOohdT4V3oYnBEU/tZe
-	 Kkjh8Mn9z4gbbhyr5P0t/g3td61k/AVcjq+kN7bpfbuB2GHLvHMF2rDotAcTf6baDf
-	 8mZo/NT35s5HqDCdsR8RvJ4lATJtz1LT0NZtaNgfL5qBmFvOadZjyMpJjmW1bwLLyE
-	 tChcxEhh2TaCc8rIRFJ2XShbuI02nQhmIUEPAG1Ja1mH+rTBXGHo8FRVfk2XSo4qrL
-	 FjAjKjB/kTdm5JfjeGJHbHOO2S2xjLVDswVF4dF+XavqL5uHCc5y9Ii3J8nolQ++2t
-	 0wwH0KpVIlhpQ==
-Message-ID: <e47821cd-d31d-6c60-841f-8503a27133eb@collabora.com>
-Date: Thu, 16 Mar 2023 09:42:16 +0100
+	b=f7flbqQBE9G9uumXYQRgci8KZQqZU6MrjKG2KPRb+fg59r0zjrylsv823wlDdKNvI
+	 iDJ58VV25/+9JpQ6KVmViHZ8ZLoyM8a31oantlSNzqHD7wQx8dxiA0xlj3jmqs5dfG
+	 nU8TJAJ+S7n1RyySAfA6pqf2/9LgxwOBdCHHzWfIdMCmunD4/HSulF8Jwr+imVXRdJ
+	 e/N474YFsBS6yilSUvXqHVt+m6flIaiDnkhea51PApoWeg2Ix5h0PsWsAIDLMH0BlG
+	 +pIb+EzxGNRt3mUcUcMt+ucLGGbRtHIRBRdIt95+Eq4SbMZZjphsuPgHci1KncN819
+	 DtI3ScwVipU5Q==
+Message-ID: <7d3f2789-2282-9d6e-87b0-d1effe2be7fa@collabora.com>
+Date: Thu, 16 Mar 2023 09:44:54 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.8.0
-Subject: Re: [PATCH 113/173] ASoC: mediatek: mt8195-afe-pcm: Convert to
- platform remove callback returning void
-To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: alsa-devel@alsa-project.org, kernel@pengutronix.de,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230315150745.67084-1-u.kleine-koenig@pengutronix.de>
- <20230315150745.67084-114-u.kleine-koenig@pengutronix.de>
+Subject: Re: [PATCH -next] remoteproc/mtk_scp: Fix one kernel-doc comment
 Content-Language: en-US
+To: Yang Li <yang.lee@linux.alibaba.com>, andersson@kernel.org
+Cc: mathieu.poirier@linaro.org, matthias.bgg@gmail.com,
+ linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Abaci Robot <abaci@linux.alibaba.com>
+References: <20230316084011.99613-1-yang.lee@linux.alibaba.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230315150745.67084-114-u.kleine-koenig@pengutronix.de>
+In-Reply-To: <20230316084011.99613-1-yang.lee@linux.alibaba.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230316_014220_581339_A734D81B 
-X-CRM114-Status: GOOD (  13.27  )
+X-CRM114-CacheID: sfid-20230316_014459_373811_6BCC174A 
+X-CRM114-Status: UNSURE (   6.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,19 +78,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/03/23 16:06, Uwe Kleine-König ha scritto:
-> The .remove() callback for a platform driver returns an int which makes
-> many driver authors wrongly assume it's possible to do error handling by
-> returning an error code. However the value returned is (mostly) ignored
-> and this typically results in resource leaks. To improve here there is a
-> quest to make the remove callback return void. In the first step of this
-> quest all drivers are converted to .remove_new() which already returns
-> void.
+Il 16/03/23 09:40, Yang Li ha scritto:
+> Fixs the function name in kernel-doc comments to clear the below
+> warning:
 > 
-> Trivially convert this driver from always returning zero in the remove
-> callback to the void returning variant.
+> drivers/remoteproc/mtk_scp_ipi.c:136: warning: expecting prototype for scp_ipi_lock(). Prototype was for scp_ipi_unlock() instead
 > 
-> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+> Reported-by: Abaci Robot <abaci@linux.alibaba.com>
+> Link: https://bugzilla.openanolis.cn/show_bug.cgi?id=4544
+> Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
