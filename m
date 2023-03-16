@@ -4,84 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5290CC6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Mar 2023 09:56:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B51CBC6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Mar 2023 10:09:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=E3luwH/uHCqwW5gihxkvn9YknVDNMaQ0MphZ/44G34M=; b=CMNLslceI/59K35bDiH2jSJKDP
-	1ufbMciiH0UQjnlzTPJev7zGyrOIqIwcz5yocQ999AwC+S3nlw6D4AXC/bnigCQrslvPis5lKuwMh
-	B/5UZLLppNwvlHCUBmY4fujtpKbQkR9C/d787kJdh2yNtZ/HNsc78EqA4rbMJvgiiJ67JTmpqihsH
-	u+G9253qm8cV02HEbWnKxVbjJhtO9UUMQDJQ1bCoVFaBgJ0k3lRnm8Z8aCwnnuzO1i38LG7/s0uxe
-	HDxKpcqW/g1vKqsuIoHJ3qzVWKG7giOaUWWZiWOFad5TujqTXf8Re/XyQTD08gYxtMCiOgSj1/1vn
-	bzXnjbtQ==;
+	bh=ZfzoZKJtoawO3aaYUUf/ZGoFyZqUd733ZH+FnZyVT4E=; b=Psbao4TMFmwR/p6Rj4Pjd1KOre
+	cywAlMcmh96Nkscqtb6BdVsZqvQs425mzGLuE1ZQupHN/+CJfd573X9WKs/PALi0RvRDKE1Dq5fjc
+	QZOPdRBCPCILg6yVkdNqLJGgEA9RWXWv2rtf0bUMBgL7hIKIpmaZEBBQUz9AUllOHzHAn7cuTH+P4
+	dxv3gQqFTeI68E+DF99Q/prRZpbHCQlv+KjfMkuux+yhz6bt+pHRWg6xX/BCHRH1BV1v6ozWtcrHP
+	0n+B6KmGG5fSuGs3lSwmqSv1GS4JzuBAEtaYGLab4MVuhMUoSc1kyCrb+3K2D1SqrWw5MIYOGFrCY
+	PFyykeaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pckLp-00Fwoi-2b;
-	Thu, 16 Mar 2023 09:56:49 +0000
-Received: from mout.kundenserver.de ([212.227.126.187])
+	id 1pckXV-00Fymf-1e;
+	Thu, 16 Mar 2023 10:08:53 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pckLm-00FwmU-0U;
-	Thu, 16 Mar 2023 09:56:48 +0000
-Received: from maxwell.fritz.box ([109.42.114.157]) by
- mrelayeu.kundenserver.de (mreue009 [213.165.67.97]) with ESMTPSA (Nemesis) id
- 1Mz9d5-1qOfzi43et-00wAuI; Thu, 16 Mar 2023 10:53:42 +0100
-From: Jochen Henneberg <jh@henneberg-systemdesign.com>
-To: netdev@vger.kernel.org
-Cc: Jochen Henneberg <jh@henneberg-systemdesign.com>,
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wong Vee Khee <veekhee@apple.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Revanth Kumar Uppala <ruppala@nvidia.com>,
-	Andrey Konovalov <andrey.konovalov@linaro.org>,
-	Tan Tee Min <tee.min.tan@linux.intel.com>,
-	Voon Weifeng <weifeng.voon@intel.com>,
-	Mohammad Athari Bin Ismail <mohammad.athari.ismail@intel.com>,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] net: stmmac: Fix for mismatched host/device DMA address width
-Date: Thu, 16 Mar 2023 10:53:06 +0100
-Message-Id: <20230316095306.721255-1-jh@henneberg-systemdesign.com>
-X-Mailer: git-send-email 2.39.2
+	id 1pckXS-00FylW-0k;
+	Thu, 16 Mar 2023 10:08:52 +0000
+X-UUID: 86352e8ac3e211ed86fbcd8805c7ac66-20230316
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ZfzoZKJtoawO3aaYUUf/ZGoFyZqUd733ZH+FnZyVT4E=;
+	b=JDWEJp7dGorQH7RmQFERSVJf8hmpyPOoG+DqlB/R5wFy2D2ylLU+IOOSHMs55XOcHIuIkylPmteLOD3mvZ/4HgDfMyZWAoOUATDgyD2T8asXczuptw31UvrylcmuAID9IqiaPpx3Pg/UU+frI0Nqvq4ctouB3AhtgSBnr5MuaVM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.21,REQID:9a66b766-b2f5-483a-adf9-1a2d7c42c7bd,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:83295aa,CLOUDID:21ea72b3-beed-4dfc-bd9c-e1b22fa6ccc4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 86352e8ac3e211ed86fbcd8805c7ac66-20230316
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <haozhe.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1673684849; Thu, 16 Mar 2023 03:08:40 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Thu, 16 Mar 2023 17:58:36 +0800
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Thu, 16 Mar 2023 17:58:34 +0800
+From: <haozhe.chang@mediatek.com>
+To: M Chetan Kumar <m.chetan.kumar@intel.com>, Intel Corporation
+	<linuxwwan@intel.com>, Loic Poulain <loic.poulain@linaro.org>, "Sergey
+ Ryazanov" <ryazanov.s.a@gmail.com>, Johannes Berg
+	<johannes@sipsolutions.net>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+	<pabeni@redhat.com>, "Stephan Gerhold" <stephan@gerhold.net>, Chandrashekar
+ Devegowda <chandrashekar.devegowda@intel.com>, Chiranjeevi Rapolu
+	<chiranjeevi.rapolu@linux.intel.com>, Liu Haijun <haijun.liu@mediatek.com>,
+	Ricardo Martinez <ricardo.martinez@linux.intel.com>, Greg Kroah-Hartman
+	<gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Oliver
+ Neukum" <oneukum@suse.com>, haozhe chang <haozhe.chang@mediatek.com>, "Shang
+ XiaoJing" <shangxiaojing@huawei.com>, "open list:INTEL WWAN IOSM DRIVER"
+	<netdev@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "open
+ list:REMOTE PROCESSOR MESSAGING (RPMSG) WWAN CONTROL..."
+	<linux-remoteproc@vger.kernel.org>, "open list:USB SUBSYSTEM"
+	<linux-usb@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+	<linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>
+CC: <lambert.wang@mediatek.com>, <xiayu.zhang@mediatek.com>,
+	<hua.yang@mediatek.com>
+Subject: [PATCH net-next v8] wwan: core: Support slicing in port TX flow of WWAN subsystem
+Date: Thu, 16 Mar 2023 17:58:20 +0800
+Message-ID: <20230316095826.181904-1-haozhe.chang@mediatek.com>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:nY7ERpKZBgVOUk7Gn2LBmd/GSuaQyU91ZLWQq4/NIDQk2uggQwv
- aHAZs+rMqa+VgBbzvz1IQq2psnFGRPpAZJheK6mqaVhndQAqsZ9fs9aHSvI0XntkEf2HCNI
- kggZpn2U1oA4WJiY2gwVEi4IK39h7faGZiBfsdwJLMI4VQlKhqKJOXSrn0WCznFk/vmbJUM
- KN0GpTZhLn6b16ZwfMwKA==
-UI-OutboundReport: notjunk:1;M01:P0:wp1lOLvxgcg=;gP2Y38D0aX/zJFjmMuI9l0jvPEl
- kdoP/BAMwrRFM+7JQRaJZz3bvwuFnn3kc48sx7oBfcQiUkfNr0gfr1T0PCCDAbbJd/OX1varW
- VnodkRyN1QBIxEkFF8250KqtNZf47WlpCf89pgUtkrurYcHthyyeNSuw4g8hzESdBhM5mDtr+
- GIK+H6nuuoyY7NdcJlpf6Q8gOuFU0dCBl8u7Z9Nqw0IKv2zH70dEVXY7fd/ziNtkBpKBBpAQy
- K58UjJh3AfUt4b2GBPm1WVfVy+5whbvyDRFJSO57gPjPRV63tfmeIdnAooFEdhzuj8szIaFAe
- OhRjbuHDsCOi4RMJI8JhRGXFwfAzDgab5f8cgrj/7cNp/ifcgbQYvG6bUbfIFAebAuJ6mirgm
- k9iLmeUA881yul1Z6IyDeYxVKphuveA5hmcErm8jH9YCmIT8lN/r5vVmRNBQV4k7iPtrPTLqZ
- mLPy2mk9QDdj65dtG1UxE/K45Fv+joPMIyzD8K0ue3vHzBayl2XDtzQyYBWYdyIgvIPkUwyst
- znP6FuD9t4iQWsI9YRqHW+UqNxsrC8s/VXojphyL83adpreLfmR/TqF4tFAY5rFnOwoDVTdI+
- XzA5mxtrrDdsBLBTAw/uWkSfIR5mpj2EjEfRMnD2iLfpbK10xSV5QZhwUWeMEX4XUm3vi+kAd
- hbPeL6vKtw2LvmM7SuZVtlKwUUGu56rFu66N9EECig==
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230316_025646_480423_D6190605 
-X-CRM114-Status: GOOD (  24.76  )
+X-CRM114-CacheID: sfid-20230316_030850_286247_ADDA321C 
+X-CRM114-Status: GOOD (  25.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,187 +97,340 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Curently DMA address width is either read from a RO device register or
-force set from the platform data. This breaks DMA when the host DMA
-address width is <=32it but the device is >32bit.
+From: haozhe chang <haozhe.chang@mediatek.com>
 
-Right now the driver may decide to use a 2nd DMA descriptor for
-another buffer (happens in case of TSO xmit) assuming that 32bit
-addressing is used due to platform configuration but the device will
-still use both descriptor addresses as one address.
+wwan_port_fops_write inputs the SKB parameter to the TX callback of
+the WWAN device driver. However, the WWAN device (e.g., t7xx) may
+have an MTU less than the size of SKB, causing the TX buffer to be
+sliced and copied once more in the WWAN device driver.
 
-This can be observed with the Intel EHL platform driver that sets
-32bit for addr64 but the MAC reports 40bit. The TX queue gets stuck in
-case of TCP with iptables NAT configuration on TSO packets.
+This patch implements the slicing in the WWAN subsystem and gives
+the WWAN devices driver the option to slice(by frag_len) or not. By
+doing so, the additional memory copy is reduced.
 
-The logic should be like this: Whatever we do on the host side (memory
-allocation GFP flags) should happen with the host DMA width, whenever
-we decide how to set addresses on the device registers we must use the
-device DMA address width.
+Meanwhile, this patch gives WWAN devices driver the option to reserve
+headroom in fragments for the device-specific metadata.
 
-This patch renames the platform address width field from addr64 (term
-used in device datasheet) to host_addr and uses this value exclusively
-for host side operations while all chip operations consider the device
-DMA width as read from the device register.
+Signed-off-by: haozhe chang <haozhe.chang@mediatek.com>
+Reviewed-by: Loic Poulain <loic.poulain@linaro.org>
+Reviewed-by: Jakub Kicinski <kuba@kernel.org>
 
-Fixes: 7cfc4486e7ea (stmmac: intel: Configure EHL PSE0 GbE and PSE1 GbE to 32 bits DMA addressing)
-Signed-off-by: Jochen Henneberg <jh@henneberg-systemdesign.com>
 ---
- drivers/net/ethernet/stmicro/stmmac/common.h  |  1 +
- .../net/ethernet/stmicro/stmmac/dwmac-imx.c   |  2 +-
- .../net/ethernet/stmicro/stmmac/dwmac-intel.c |  4 +--
- .../ethernet/stmicro/stmmac/dwmac-mediatek.c  |  2 +-
- .../net/ethernet/stmicro/stmmac/stmmac_main.c | 30 ++++++++++---------
- include/linux/stmmac.h                        |  2 +-
- 6 files changed, 22 insertions(+), 19 deletions(-)
+Changes in v2
+  -send fragments to device driver by skb frag_list.
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/common.h b/drivers/net/ethernet/stmicro/stmmac/common.h
-index 6b5d96bced47..55a728b1b708 100644
---- a/drivers/net/ethernet/stmicro/stmmac/common.h
-+++ b/drivers/net/ethernet/stmicro/stmmac/common.h
-@@ -418,6 +418,7 @@ struct dma_features {
- 	unsigned int frpbs;
- 	unsigned int frpes;
- 	unsigned int addr64;
-+	unsigned int host_addr;
- 	unsigned int rssen;
- 	unsigned int vlhash;
- 	unsigned int sphen;
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-imx.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-imx.c
-index ac8580f501e2..bc06c517df9c 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-imx.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-imx.c
-@@ -289,7 +289,7 @@ static int imx_dwmac_probe(struct platform_device *pdev)
- 		goto err_parse_dt;
+Changes in v3
+  -move frag_len and headroom_len setting to wwan_create_port.
+
+Changes in v4
+  -change unreadable parameters to macro definition.
+
+Changes in v5
+  -optimize comments for WWAN_NO_HEADROOM, WWAN_NO_FRAGMENT.
+
+Changes in v6
+  -add reviewer to patch commit.
+
+Changes in v7
+  -rebase and resend
+
+Changes in v8
+  -merge to a single parameter struct.
+---
+ drivers/net/wwan/iosm/iosm_ipc_port.c  |  3 +-
+ drivers/net/wwan/mhi_wwan_ctrl.c       |  2 +-
+ drivers/net/wwan/rpmsg_wwan_ctrl.c     |  2 +-
+ drivers/net/wwan/t7xx/t7xx_port_wwan.c | 36 ++++++++--------
+ drivers/net/wwan/wwan_core.c           | 58 +++++++++++++++++++-------
+ drivers/net/wwan/wwan_hwsim.c          |  2 +-
+ drivers/usb/class/cdc-wdm.c            |  3 +-
+ include/linux/wwan.h                   | 11 +++++
+ 8 files changed, 81 insertions(+), 36 deletions(-)
+
+diff --git a/drivers/net/wwan/iosm/iosm_ipc_port.c b/drivers/net/wwan/iosm/iosm_ipc_port.c
+index b6d81c627277..5d5b4183e14a 100644
+--- a/drivers/net/wwan/iosm/iosm_ipc_port.c
++++ b/drivers/net/wwan/iosm/iosm_ipc_port.c
+@@ -63,7 +63,8 @@ struct iosm_cdev *ipc_port_init(struct iosm_imem *ipc_imem,
+ 	ipc_port->ipc_imem = ipc_imem;
+ 
+ 	ipc_port->iosm_port = wwan_create_port(ipc_port->dev, port_type,
+-					       &ipc_wwan_ctrl_ops, ipc_port);
++					       &ipc_wwan_ctrl_ops, NULL,
++					       ipc_port);
+ 
+ 	return ipc_port;
+ }
+diff --git a/drivers/net/wwan/mhi_wwan_ctrl.c b/drivers/net/wwan/mhi_wwan_ctrl.c
+index f7ca52353f40..e9f979d2d851 100644
+--- a/drivers/net/wwan/mhi_wwan_ctrl.c
++++ b/drivers/net/wwan/mhi_wwan_ctrl.c
+@@ -237,7 +237,7 @@ static int mhi_wwan_ctrl_probe(struct mhi_device *mhi_dev,
+ 
+ 	/* Register as a wwan port, id->driver_data contains wwan port type */
+ 	port = wwan_create_port(&cntrl->mhi_dev->dev, id->driver_data,
+-				&wwan_pops, mhiwwan);
++				&wwan_pops, NULL, mhiwwan);
+ 	if (IS_ERR(port)) {
+ 		kfree(mhiwwan);
+ 		return PTR_ERR(port);
+diff --git a/drivers/net/wwan/rpmsg_wwan_ctrl.c b/drivers/net/wwan/rpmsg_wwan_ctrl.c
+index 31c24420ab2e..06f4b02f1552 100644
+--- a/drivers/net/wwan/rpmsg_wwan_ctrl.c
++++ b/drivers/net/wwan/rpmsg_wwan_ctrl.c
+@@ -129,7 +129,7 @@ static int rpmsg_wwan_ctrl_probe(struct rpmsg_device *rpdev)
+ 
+ 	/* Register as a wwan port, id.driver_data contains wwan port type */
+ 	port = wwan_create_port(parent, rpdev->id.driver_data,
+-				&rpmsg_wwan_pops, rpwwan);
++				&rpmsg_wwan_pops, NULL, rpwwan);
+ 	if (IS_ERR(port))
+ 		return PTR_ERR(port);
+ 
+diff --git a/drivers/net/wwan/t7xx/t7xx_port_wwan.c b/drivers/net/wwan/t7xx/t7xx_port_wwan.c
+index 24bd21942403..17389c8f6600 100644
+--- a/drivers/net/wwan/t7xx/t7xx_port_wwan.c
++++ b/drivers/net/wwan/t7xx/t7xx_port_wwan.c
+@@ -54,13 +54,13 @@ static void t7xx_port_ctrl_stop(struct wwan_port *port)
+ static int t7xx_port_ctrl_tx(struct wwan_port *port, struct sk_buff *skb)
+ {
+ 	struct t7xx_port *port_private = wwan_port_get_drvdata(port);
+-	size_t len, offset, chunk_len = 0, txq_mtu = CLDMA_MTU;
+ 	const struct t7xx_port_conf *port_conf;
++	struct sk_buff *cur = skb, *cloned;
+ 	struct t7xx_fsm_ctl *ctl;
+ 	enum md_state md_state;
++	int cnt = 0, ret;
+ 
+-	len = skb->len;
+-	if (!len || !port_private->chan_enable)
++	if (!port_private->chan_enable)
+ 		return -EINVAL;
+ 
+ 	port_conf = port_private->port_conf;
+@@ -72,23 +72,21 @@ static int t7xx_port_ctrl_tx(struct wwan_port *port, struct sk_buff *skb)
+ 		return -ENODEV;
  	}
  
--	plat_dat->addr64 = dwmac->ops->addr_width;
-+	plat_dat->host_addr = dwmac->ops->addr_width;
- 	plat_dat->init = imx_dwmac_init;
- 	plat_dat->exit = imx_dwmac_exit;
- 	plat_dat->clks_config = imx_dwmac_clks_config;
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-intel.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-intel.c
-index 7deb1f817dac..193c3a842500 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-intel.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-intel.c
-@@ -684,7 +684,7 @@ static int ehl_pse0_common_data(struct pci_dev *pdev,
- 
- 	intel_priv->is_pse = true;
- 	plat->bus_id = 2;
--	plat->addr64 = 32;
-+	plat->host_dma_addr = 32;
- 
- 	plat->clk_ptp_rate = 200000000;
- 
-@@ -725,7 +725,7 @@ static int ehl_pse1_common_data(struct pci_dev *pdev,
- 
- 	intel_priv->is_pse = true;
- 	plat->bus_id = 3;
--	plat->addr64 = 32;
-+	plat->host_dma_addr = 32;
- 
- 	plat->clk_ptp_rate = 200000000;
- 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-index 2f7d8e4561d9..968c8172c5bd 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-@@ -591,7 +591,7 @@ static int mediatek_dwmac_common_data(struct platform_device *pdev,
- 	plat->use_phy_wol = priv_plat->mac_wol ? 0 : 1;
- 	plat->riwt_off = 1;
- 	plat->maxmtu = ETH_DATA_LEN;
--	plat->addr64 = priv_plat->variant->dma_bit_mask;
-+	plat->host_dma_addr = priv_plat->variant->dma_bit_mask;
- 	plat->bsp_priv = priv_plat;
- 	plat->init = mediatek_dwmac_init;
- 	plat->clks_config = mediatek_dwmac_clks_config;
-diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-index 4886668a54c5..9f9cad178360 100644
---- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-@@ -1430,7 +1430,7 @@ static int stmmac_init_rx_buffers(struct stmmac_priv *priv,
- 	struct stmmac_rx_buffer *buf = &rx_q->buf_pool[i];
- 	gfp_t gfp = (GFP_ATOMIC | __GFP_NOWARN);
- 
--	if (priv->dma_cap.addr64 <= 32)
-+	if (priv->dma_cap.host_addr <= 32)
- 		gfp |= GFP_DMA32;
- 
- 	if (!buf->page) {
-@@ -4586,7 +4586,7 @@ static inline void stmmac_rx_refill(struct stmmac_priv *priv, u32 queue)
- 	unsigned int entry = rx_q->dirty_rx;
- 	gfp_t gfp = (GFP_ATOMIC | __GFP_NOWARN);
- 
--	if (priv->dma_cap.addr64 <= 32)
-+	if (priv->dma_cap.host_addr <= 32)
- 		gfp |= GFP_DMA32;
- 
- 	while (dirty-- > 0) {
-@@ -6204,7 +6204,7 @@ static int stmmac_dma_cap_show(struct seq_file *seq, void *v)
- 	seq_printf(seq, "\tFlexible RX Parser: %s\n",
- 		   priv->dma_cap.frpsel ? "Y" : "N");
- 	seq_printf(seq, "\tEnhanced Addressing: %d\n",
--		   priv->dma_cap.addr64);
-+		   priv->dma_cap.host_addr);
- 	seq_printf(seq, "\tReceive Side Scaling: %s\n",
- 		   priv->dma_cap.rssen ? "Y" : "N");
- 	seq_printf(seq, "\tVLAN Hash Filtering: %s\n",
-@@ -7177,20 +7177,22 @@ int stmmac_dvr_probe(struct device *device,
- 		dev_info(priv->device, "SPH feature enabled\n");
- 	}
- 
--	/* The current IP register MAC_HW_Feature1[ADDR64] only define
--	 * 32/40/64 bit width, but some SOC support others like i.MX8MP
--	 * support 34 bits but it map to 40 bits width in MAC_HW_Feature1[ADDR64].
--	 * So overwrite dma_cap.addr64 according to HW real design.
-+	/* Ideally our host DMA address width is the same as for the
-+	 * device. However, it may differ and then we have to use our
-+	 * host DMA width for allocation and the device DMA width for
-+	 * register handling.
- 	 */
--	if (priv->plat->addr64)
--		priv->dma_cap.addr64 = priv->plat->addr64;
-+	if (priv->plat->host_dma_addr)
-+		priv->dma_cap.host_addr = priv->plat->host_dma_addr;
-+	else
-+		priv->dma_cap.host_addr = priv->dma_cap.addr64;
- 
--	if (priv->dma_cap.addr64) {
-+	if (priv->dma_cap.host_addr) {
- 		ret = dma_set_mask_and_coherent(device,
--				DMA_BIT_MASK(priv->dma_cap.addr64));
-+				DMA_BIT_MASK(priv->dma_cap.host_addr));
- 		if (!ret) {
--			dev_info(priv->device, "Using %d bits DMA width\n",
--				 priv->dma_cap.addr64);
-+			dev_info(priv->device, "Using %d/%d bits DMA host/device width\n",
-+				 priv->dma_cap.host_addr, priv->dma_cap.addr64);
- 
- 			/*
- 			 * If more than 32 bits can be addressed, make sure to
-@@ -7205,7 +7207,7 @@ int stmmac_dvr_probe(struct device *device,
- 				goto error_hw_init;
- 			}
- 
--			priv->dma_cap.addr64 = 32;
-+			priv->dma_cap.host_addr = 32;
+-	for (offset = 0; offset < len; offset += chunk_len) {
+-		struct sk_buff *skb_ccci;
+-		int ret;
+-
+-		chunk_len = min(len - offset, txq_mtu - sizeof(struct ccci_header));
+-		skb_ccci = t7xx_port_alloc_skb(chunk_len);
+-		if (!skb_ccci)
+-			return -ENOMEM;
+-
+-		skb_put_data(skb_ccci, skb->data + offset, chunk_len);
+-		ret = t7xx_port_send_skb(port_private, skb_ccci, 0, 0);
++	while (cur) {
++		cloned = skb_clone(cur, GFP_KERNEL);
++		cloned->len = skb_headlen(cur);
++		ret = t7xx_port_send_skb(port_private, cloned, 0, 0);
+ 		if (ret) {
+-			dev_kfree_skb_any(skb_ccci);
++			dev_kfree_skb(cloned);
+ 			dev_err(port_private->dev, "Write error on %s port, %d\n",
+ 				port_conf->name, ret);
+-			return ret;
++			return cnt ? cnt + ret : ret;
  		}
++		cnt += cur->len;
++		if (cur == skb)
++			cur = skb_shinfo(skb)->frag_list;
++		else
++			cur = cur->next;
  	}
  
-diff --git a/include/linux/stmmac.h b/include/linux/stmmac.h
-index a152678b82b7..1cc4d61d6155 100644
---- a/include/linux/stmmac.h
-+++ b/include/linux/stmmac.h
-@@ -215,7 +215,7 @@ struct plat_stmmacenet_data {
- 	int unicast_filter_entries;
- 	int tx_fifo_size;
- 	int rx_fifo_size;
--	u32 addr64;
-+	u32 host_dma_addr;
- 	u32 rx_queues_to_use;
- 	u32 tx_queues_to_use;
- 	u8 rx_sched_algorithm;
+ 	dev_kfree_skb(skb);
+@@ -154,13 +152,17 @@ static int t7xx_port_wwan_disable_chl(struct t7xx_port *port)
+ static void t7xx_port_wwan_md_state_notify(struct t7xx_port *port, unsigned int state)
+ {
+ 	const struct t7xx_port_conf *port_conf = port->port_conf;
++	unsigned int header_len = sizeof(struct ccci_header);
++	struct wwan_port_caps caps;
+ 
+ 	if (state != MD_STATE_READY)
+ 		return;
+ 
+ 	if (!port->wwan.wwan_port) {
++		caps.frag_len = CLDMA_MTU - header_len;
++		caps.headroom_len = header_len;
+ 		port->wwan.wwan_port = wwan_create_port(port->dev, port_conf->port_type,
+-							&wwan_ops, port);
++							&wwan_ops, &caps, port);
+ 		if (IS_ERR(port->wwan.wwan_port))
+ 			dev_err(port->dev, "Unable to create WWWAN port %s", port_conf->name);
+ 	}
+diff --git a/drivers/net/wwan/wwan_core.c b/drivers/net/wwan/wwan_core.c
+index 966d0ccd2276..2e1c01cf00a9 100644
+--- a/drivers/net/wwan/wwan_core.c
++++ b/drivers/net/wwan/wwan_core.c
+@@ -67,6 +67,8 @@ struct wwan_device {
+  * @rxq: Buffer inbound queue
+  * @waitqueue: The waitqueue for port fops (read/write/poll)
+  * @data_lock: Port specific data access serialization
++ * @headroom_len: SKB reserved headroom size
++ * @frag_len: Length to fragment packet
+  * @at_data: AT port specific data
+  */
+ struct wwan_port {
+@@ -79,6 +81,8 @@ struct wwan_port {
+ 	struct sk_buff_head rxq;
+ 	wait_queue_head_t waitqueue;
+ 	struct mutex data_lock;	/* Port specific data access serialization */
++	size_t headroom_len;
++	size_t frag_len;
+ 	union {
+ 		struct {
+ 			struct ktermios termios;
+@@ -426,6 +430,7 @@ static int __wwan_port_dev_assign_name(struct wwan_port *port, const char *fmt)
+ struct wwan_port *wwan_create_port(struct device *parent,
+ 				   enum wwan_port_type type,
+ 				   const struct wwan_port_ops *ops,
++				   struct wwan_port_caps *caps,
+ 				   void *drvdata)
+ {
+ 	struct wwan_device *wwandev;
+@@ -459,6 +464,8 @@ struct wwan_port *wwan_create_port(struct device *parent,
+ 
+ 	port->type = type;
+ 	port->ops = ops;
++	port->frag_len = caps ? caps->frag_len : SIZE_MAX;
++	port->headroom_len = caps ? caps->headroom_len : 0;
+ 	mutex_init(&port->ops_lock);
+ 	skb_queue_head_init(&port->rxq);
+ 	init_waitqueue_head(&port->waitqueue);
+@@ -702,30 +709,53 @@ static ssize_t wwan_port_fops_read(struct file *filp, char __user *buf,
+ static ssize_t wwan_port_fops_write(struct file *filp, const char __user *buf,
+ 				    size_t count, loff_t *offp)
+ {
++	struct sk_buff *skb, *head = NULL, *tail = NULL;
+ 	struct wwan_port *port = filp->private_data;
+-	struct sk_buff *skb;
++	size_t frag_len, remain = count;
+ 	int ret;
+ 
+ 	ret = wwan_wait_tx(port, !!(filp->f_flags & O_NONBLOCK));
+ 	if (ret)
+ 		return ret;
+ 
+-	skb = alloc_skb(count, GFP_KERNEL);
+-	if (!skb)
+-		return -ENOMEM;
++	do {
++		frag_len = min(remain, port->frag_len);
++		skb = alloc_skb(frag_len + port->headroom_len, GFP_KERNEL);
++		if (!skb) {
++			ret = -ENOMEM;
++			goto freeskb;
++		}
++		skb_reserve(skb, port->headroom_len);
++
++		if (!head) {
++			head = skb;
++		} else if (!tail) {
++			skb_shinfo(head)->frag_list = skb;
++			tail = skb;
++		} else {
++			tail->next = skb;
++			tail = skb;
++		}
+ 
+-	if (copy_from_user(skb_put(skb, count), buf, count)) {
+-		kfree_skb(skb);
+-		return -EFAULT;
+-	}
++		if (copy_from_user(skb_put(skb, frag_len), buf + count - remain, frag_len)) {
++			ret = -EFAULT;
++			goto freeskb;
++		}
+ 
+-	ret = wwan_port_op_tx(port, skb, !!(filp->f_flags & O_NONBLOCK));
+-	if (ret) {
+-		kfree_skb(skb);
+-		return ret;
+-	}
++		if (skb != head) {
++			head->data_len += skb->len;
++			head->len += skb->len;
++			head->truesize += skb->truesize;
++		}
++	} while (remain -= frag_len);
++
++	ret = wwan_port_op_tx(port, head, !!(filp->f_flags & O_NONBLOCK));
++	if (!ret)
++		return count;
+ 
+-	return count;
++freeskb:
++	kfree_skb(head);
++	return ret;
+ }
+ 
+ static __poll_t wwan_port_fops_poll(struct file *filp, poll_table *wait)
+diff --git a/drivers/net/wwan/wwan_hwsim.c b/drivers/net/wwan/wwan_hwsim.c
+index 2397a903d8f5..dfbdaa259a3f 100644
+--- a/drivers/net/wwan/wwan_hwsim.c
++++ b/drivers/net/wwan/wwan_hwsim.c
+@@ -205,7 +205,7 @@ static struct wwan_hwsim_port *wwan_hwsim_port_new(struct wwan_hwsim_dev *dev)
+ 
+ 	port->wwan = wwan_create_port(&dev->dev, WWAN_PORT_AT,
+ 				      &wwan_hwsim_port_ops,
+-				      port);
++				      NULL, port);
+ 	if (IS_ERR(port->wwan)) {
+ 		err = PTR_ERR(port->wwan);
+ 		goto err_free_port;
+diff --git a/drivers/usb/class/cdc-wdm.c b/drivers/usb/class/cdc-wdm.c
+index 1f0951be15ab..c553decb5461 100644
+--- a/drivers/usb/class/cdc-wdm.c
++++ b/drivers/usb/class/cdc-wdm.c
+@@ -929,7 +929,8 @@ static void wdm_wwan_init(struct wdm_device *desc)
+ 		return;
+ 	}
+ 
+-	port = wwan_create_port(&intf->dev, desc->wwanp_type, &wdm_wwan_port_ops, desc);
++	port = wwan_create_port(&intf->dev, desc->wwanp_type, &wdm_wwan_port_ops,
++				NULL, desc);
+ 	if (IS_ERR(port)) {
+ 		dev_err(&intf->dev, "%s: Unable to create WWAN port\n",
+ 			dev_name(intf->usb_dev));
+diff --git a/include/linux/wwan.h b/include/linux/wwan.h
+index 24d76500b1cc..01fa15506286 100644
+--- a/include/linux/wwan.h
++++ b/include/linux/wwan.h
+@@ -64,11 +64,21 @@ struct wwan_port_ops {
+ 			    poll_table *wait);
+ };
+ 
++/** struct wwan_port_caps - The WWAN port capbilities
++ * @frag_len: WWAN port TX fragments length
++ * @headroom_len: WWAN port TX fragments reserved headroom length
++ */
++struct wwan_port_caps {
++	size_t frag_len;
++	unsigned int headroom_len;
++};
++
+ /**
+  * wwan_create_port - Add a new WWAN port
+  * @parent: Device to use as parent and shared by all WWAN ports
+  * @type: WWAN port type
+  * @ops: WWAN port operations
++ * @caps: WWAN port capabilities
+  * @drvdata: Pointer to caller driver data
+  *
+  * Allocate and register a new WWAN port. The port will be automatically exposed
+@@ -86,6 +96,7 @@ struct wwan_port_ops {
+ struct wwan_port *wwan_create_port(struct device *parent,
+ 				   enum wwan_port_type type,
+ 				   const struct wwan_port_ops *ops,
++				   struct wwan_port_caps *caps,
+ 				   void *drvdata);
+ 
+ /**
 -- 
-2.39.2
+2.17.0
 
 
