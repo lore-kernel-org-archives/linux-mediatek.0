@@ -4,87 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51BF8C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Mar 2023 09:54:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5290CC6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Mar 2023 09:56:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=USr1mcavu183aIUMW2zaakLobziUEqGaltzaDkGJe7k=; b=pcq6e6EE10EBzP7PwoFAIA9Jka
-	vaVV97595wpn02ruIj1cez1qgQVIC3ONz9sfnjO8qvGb8tMZFqPWoOQ8A+jdIKoq6WX7H6YpPZ+U1
-	YEIklacsMN0wfvBEtmGMvRTKTWaIigSfuuEk7AdkU7/lD6RlWUHGk7Z+182eVW44K3dRtNTG8euTS
-	IuQIwupaeSmiqGZmP1IYVMwgnmwJfNBR9YAuTzdg2QevOwiK0qrM6nQO4Cdlg7xF3pyUawUdQF89w
-	0xNUqUvnG2cjZO4QF1qw629uZyZvUuopIxDj5pZmwz1qUL/bIkM5uo7G8X6R09RDJd2W/j4nazHJT
-	Glu0ltOg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=E3luwH/uHCqwW5gihxkvn9YknVDNMaQ0MphZ/44G34M=; b=CMNLslceI/59K35bDiH2jSJKDP
+	1ufbMciiH0UQjnlzTPJev7zGyrOIqIwcz5yocQ999AwC+S3nlw6D4AXC/bnigCQrslvPis5lKuwMh
+	B/5UZLLppNwvlHCUBmY4fujtpKbQkR9C/d787kJdh2yNtZ/HNsc78EqA4rbMJvgiiJ67JTmpqihsH
+	u+G9253qm8cV02HEbWnKxVbjJhtO9UUMQDJQ1bCoVFaBgJ0k3lRnm8Z8aCwnnuzO1i38LG7/s0uxe
+	HDxKpcqW/g1vKqsuIoHJ3qzVWKG7giOaUWWZiWOFad5TujqTXf8Re/XyQTD08gYxtMCiOgSj1/1vn
+	bzXnjbtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pckJ5-00Fw8g-2x;
-	Thu, 16 Mar 2023 09:53:59 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pckLp-00Fwoi-2b;
+	Thu, 16 Mar 2023 09:56:49 +0000
+Received: from mout.kundenserver.de ([212.227.126.187])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pckIz-00Fw4E-35;
-	Thu, 16 Mar 2023 09:53:56 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AE59F660309E;
-	Thu, 16 Mar 2023 09:53:48 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678960429;
-	bh=U016GfVVdnxsip9oeySV3RsjrHt+GbtN8I0vEam86cw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=D1ZYug/Rc7GC9oaJibLCGVC1ot6HrZSJaaD6dBId+/IevQCU8BtC3krYiV1jYB1vG
-	 QntG3e3/vTGxkEjKz92r3TfeVbI0b974DjcPXf4GI2j705nXTtC9lwiOAd2/AnY/F6
-	 z0CXJd7cBrVcF76ENARf0NTaYVTa7yGwdM/0MVCXo3vZlYh0D5bvxoNXrF0aymJ3Zb
-	 F8uYdm9tAIDz6DQWBRSVg36L9plmJGvA5FyZrNRsHMRHMDyI3PxKybudbJIEiuNwVP
-	 V/QFPGh4hL2xHjhAFEFAKBm5yn+8gIYX9WiQd8Y0uE7XWaJ+xmz5ux83Th4WlKzPyS
-	 T+JmIMMYGK3Ig==
-Message-ID: <e5ceec9e-d51b-2aeb-1db7-b79b151bd44c@collabora.com>
-Date: Thu, 16 Mar 2023 10:53:45 +0100
+	id 1pckLm-00FwmU-0U;
+	Thu, 16 Mar 2023 09:56:48 +0000
+Received: from maxwell.fritz.box ([109.42.114.157]) by
+ mrelayeu.kundenserver.de (mreue009 [213.165.67.97]) with ESMTPSA (Nemesis) id
+ 1Mz9d5-1qOfzi43et-00wAuI; Thu, 16 Mar 2023 10:53:42 +0100
+From: Jochen Henneberg <jh@henneberg-systemdesign.com>
+To: netdev@vger.kernel.org
+Cc: Jochen Henneberg <jh@henneberg-systemdesign.com>,
+	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Jose Abreu <joabreu@synopsys.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wong Vee Khee <veekhee@apple.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Revanth Kumar Uppala <ruppala@nvidia.com>,
+	Andrey Konovalov <andrey.konovalov@linaro.org>,
+	Tan Tee Min <tee.min.tan@linux.intel.com>,
+	Voon Weifeng <weifeng.voon@intel.com>,
+	Mohammad Athari Bin Ismail <mohammad.athari.ismail@intel.com>,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] net: stmmac: Fix for mismatched host/device DMA address width
+Date: Thu, 16 Mar 2023 10:53:06 +0100
+Message-Id: <20230316095306.721255-1-jh@henneberg-systemdesign.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v29 1/7] dt-bindings: mediatek: add ethdr definition for
- mt8195
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
- "nathan@kernel.org" <nathan@kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "daniel@ffwll.ch" <daniel@ffwll.ch>, =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?=
- <ck.hu@mediatek.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "clang-built-linux@googlegroups.com" <clang-built-linux@googlegroups.com>,
- "ndesaulniers@google.com" <ndesaulniers@google.com>
-References: <20221227081011.6426-1-nancy.lin@mediatek.com>
- <20221227081011.6426-2-nancy.lin@mediatek.com>
- <4aff6a7a3b606f26ec793192d9c75774276935e0.camel@mediatek.com>
- <2700bd6c-f00d-fa99-b730-2fcdf89089fa@linaro.org>
- <1d65e8b2de708db18b5f7a0faaa53834e1002d9f.camel@mediatek.com>
- <b04eb48e-c9aa-0404-33ec-bef623b8282f@linaro.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <b04eb48e-c9aa-0404-33ec-bef623b8282f@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:nY7ERpKZBgVOUk7Gn2LBmd/GSuaQyU91ZLWQq4/NIDQk2uggQwv
+ aHAZs+rMqa+VgBbzvz1IQq2psnFGRPpAZJheK6mqaVhndQAqsZ9fs9aHSvI0XntkEf2HCNI
+ kggZpn2U1oA4WJiY2gwVEi4IK39h7faGZiBfsdwJLMI4VQlKhqKJOXSrn0WCznFk/vmbJUM
+ KN0GpTZhLn6b16ZwfMwKA==
+UI-OutboundReport: notjunk:1;M01:P0:wp1lOLvxgcg=;gP2Y38D0aX/zJFjmMuI9l0jvPEl
+ kdoP/BAMwrRFM+7JQRaJZz3bvwuFnn3kc48sx7oBfcQiUkfNr0gfr1T0PCCDAbbJd/OX1varW
+ VnodkRyN1QBIxEkFF8250KqtNZf47WlpCf89pgUtkrurYcHthyyeNSuw4g8hzESdBhM5mDtr+
+ GIK+H6nuuoyY7NdcJlpf6Q8gOuFU0dCBl8u7Z9Nqw0IKv2zH70dEVXY7fd/ziNtkBpKBBpAQy
+ K58UjJh3AfUt4b2GBPm1WVfVy+5whbvyDRFJSO57gPjPRV63tfmeIdnAooFEdhzuj8szIaFAe
+ OhRjbuHDsCOi4RMJI8JhRGXFwfAzDgab5f8cgrj/7cNp/ifcgbQYvG6bUbfIFAebAuJ6mirgm
+ k9iLmeUA881yul1Z6IyDeYxVKphuveA5hmcErm8jH9YCmIT8lN/r5vVmRNBQV4k7iPtrPTLqZ
+ mLPy2mk9QDdj65dtG1UxE/K45Fv+joPMIyzD8K0ue3vHzBayl2XDtzQyYBWYdyIgvIPkUwyst
+ znP6FuD9t4iQWsI9YRqHW+UqNxsrC8s/VXojphyL83adpreLfmR/TqF4tFAY5rFnOwoDVTdI+
+ XzA5mxtrrDdsBLBTAw/uWkSfIR5mpj2EjEfRMnD2iLfpbK10xSV5QZhwUWeMEX4XUm3vi+kAd
+ hbPeL6vKtw2LvmM7SuZVtlKwUUGu56rFu66N9EECig==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230316_025354_255509_8A99F7AE 
-X-CRM114-Status: GOOD (  15.58  )
+X-CRM114-CacheID: sfid-20230316_025646_480423_D6190605 
+X-CRM114-Status: GOOD (  24.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,101 +96,187 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/03/23 07:31, Krzysztof Kozlowski ha scritto:
-> On 16/03/2023 07:19, Nancy Lin (林欣螢) wrote:
->> On Wed, 2023-03-15 at 08:16 +0100, Krzysztof Kozlowski wrote:
->>> On 15/03/2023 04:45, Nancy Lin (林欣螢) wrote:
->>>
+Curently DMA address width is either read from a RO device register or
+force set from the platform data. This breaks DMA when the host DMA
+address width is <=32it but the device is >32bit.
 
-..snip..
+Right now the driver may decide to use a 2nd DMA descriptor for
+another buffer (happens in case of TSO xmit) assuming that 32bit
+addressing is used due to platform configuration but the device will
+still use both descriptor addresses as one address.
 
->>>>
->>>>
->>>> [1].
->>>> Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.e
->>>> xamp
->>>> le.dtb
->>>> /proj/mtk19347/cros/src/third_party/kernel/v5.10/Documentation/devi
->>>> cetr
->>>> ee/bindings/display/mediatek/mediatek,ethdr.example.dtb:
->>>> hdr-engine@1c114000: mediatek,gce-client-reg:0: [4294967295, 7,
->>>> 16384,
->>>> 4096, 4294967295, 7, 20480, 4096, 4294967295, 7, 28672, 4096,
->>>> 4294967295, 7, 36864, 4096, 4294967295, 7, 40960, 4096, 4294967295,
->>>> 7,
->>>> 45056, 4096, 4294967295, 7, 49152, 4096] is too long
->>>>          From schema:
->>>
->>> This looks like known issue with phandles with variable number of
->>> arguments. Either we add it to the exceptions or just define it in
->>> reduced way like in other cases - only maxItems: 1 without describing
->>> items.
->>>
+This can be observed with the Intel EHL platform driver that sets
+32bit for addr64 but the MAC reports 40bit. The TX queue gets stuck in
+case of TCP with iptables NAT configuration on TSO packets.
 
-...
+The logic should be like this: Whatever we do on the host side (memory
+allocation GFP flags) should happen with the host DMA width, whenever
+we decide how to set addresses on the device registers we must use the
+device DMA address width.
 
->>
->> But I have several items for this vendor property in the binding
->> example.
-> 
-> Do you? I thought you have one phandle?
-> 
->> Can I remove maxItems? Change the mediatek,gce-client-reg as [1].
->>
->> [1]
->>    mediatek,gce-client-reg:
->>      $ref: /schemas/types.yaml#/definitions/phandle-array
->>      description: The register of display function block to be set by
->> gce.
->>        There are 4 arguments in this property, gce node, subsys id,
->> offset and
->>        register size. The subsys id is defined in the gce header of each
->> chips
->>        include/dt-bindings/gce/<chip>-gce.h, mapping to the register of
->> display
->>        function block.
-> 
-> No, this needs some constraints.
+This patch renames the platform address width field from addr64 (term
+used in device datasheet) to host_addr and uses this value exclusively
+for host side operations while all chip operations consider the device
+DMA width as read from the device register.
 
-Hello Krzysztof, Nancy,
+Fixes: 7cfc4486e7ea (stmmac: intel: Configure EHL PSE0 GbE and PSE1 GbE to 32 bits DMA addressing)
+Signed-off-by: Jochen Henneberg <jh@henneberg-systemdesign.com>
+---
+ drivers/net/ethernet/stmicro/stmmac/common.h  |  1 +
+ .../net/ethernet/stmicro/stmmac/dwmac-imx.c   |  2 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-intel.c |  4 +--
+ .../ethernet/stmicro/stmmac/dwmac-mediatek.c  |  2 +-
+ .../net/ethernet/stmicro/stmmac/stmmac_main.c | 30 ++++++++++---------
+ include/linux/stmmac.h                        |  2 +-
+ 6 files changed, 22 insertions(+), 19 deletions(-)
 
-Since this series has reached v29, can we please reach an agreement on the bindings
-to use here, so that we can get this finally upstreamed?
+diff --git a/drivers/net/ethernet/stmicro/stmmac/common.h b/drivers/net/ethernet/stmicro/stmmac/common.h
+index 6b5d96bced47..55a728b1b708 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/common.h
++++ b/drivers/net/ethernet/stmicro/stmmac/common.h
+@@ -418,6 +418,7 @@ struct dma_features {
+ 	unsigned int frpbs;
+ 	unsigned int frpes;
+ 	unsigned int addr64;
++	unsigned int host_addr;
+ 	unsigned int rssen;
+ 	unsigned int vlhash;
+ 	unsigned int sphen;
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-imx.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-imx.c
+index ac8580f501e2..bc06c517df9c 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-imx.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-imx.c
+@@ -289,7 +289,7 @@ static int imx_dwmac_probe(struct platform_device *pdev)
+ 		goto err_parse_dt;
+ 	}
+ 
+-	plat_dat->addr64 = dwmac->ops->addr_width;
++	plat_dat->host_addr = dwmac->ops->addr_width;
+ 	plat_dat->init = imx_dwmac_init;
+ 	plat_dat->exit = imx_dwmac_exit;
+ 	plat_dat->clks_config = imx_dwmac_clks_config;
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-intel.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-intel.c
+index 7deb1f817dac..193c3a842500 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-intel.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-intel.c
+@@ -684,7 +684,7 @@ static int ehl_pse0_common_data(struct pci_dev *pdev,
+ 
+ 	intel_priv->is_pse = true;
+ 	plat->bus_id = 2;
+-	plat->addr64 = 32;
++	plat->host_dma_addr = 32;
+ 
+ 	plat->clk_ptp_rate = 200000000;
+ 
+@@ -725,7 +725,7 @@ static int ehl_pse1_common_data(struct pci_dev *pdev,
+ 
+ 	intel_priv->is_pse = true;
+ 	plat->bus_id = 3;
+-	plat->addr64 = 32;
++	plat->host_dma_addr = 32;
+ 
+ 	plat->clk_ptp_rate = 200000000;
+ 
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+index 2f7d8e4561d9..968c8172c5bd 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+@@ -591,7 +591,7 @@ static int mediatek_dwmac_common_data(struct platform_device *pdev,
+ 	plat->use_phy_wol = priv_plat->mac_wol ? 0 : 1;
+ 	plat->riwt_off = 1;
+ 	plat->maxmtu = ETH_DATA_LEN;
+-	plat->addr64 = priv_plat->variant->dma_bit_mask;
++	plat->host_dma_addr = priv_plat->variant->dma_bit_mask;
+ 	plat->bsp_priv = priv_plat;
+ 	plat->init = mediatek_dwmac_init;
+ 	plat->clks_config = mediatek_dwmac_clks_config;
+diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+index 4886668a54c5..9f9cad178360 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
++++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+@@ -1430,7 +1430,7 @@ static int stmmac_init_rx_buffers(struct stmmac_priv *priv,
+ 	struct stmmac_rx_buffer *buf = &rx_q->buf_pool[i];
+ 	gfp_t gfp = (GFP_ATOMIC | __GFP_NOWARN);
+ 
+-	if (priv->dma_cap.addr64 <= 32)
++	if (priv->dma_cap.host_addr <= 32)
+ 		gfp |= GFP_DMA32;
+ 
+ 	if (!buf->page) {
+@@ -4586,7 +4586,7 @@ static inline void stmmac_rx_refill(struct stmmac_priv *priv, u32 queue)
+ 	unsigned int entry = rx_q->dirty_rx;
+ 	gfp_t gfp = (GFP_ATOMIC | __GFP_NOWARN);
+ 
+-	if (priv->dma_cap.addr64 <= 32)
++	if (priv->dma_cap.host_addr <= 32)
+ 		gfp |= GFP_DMA32;
+ 
+ 	while (dirty-- > 0) {
+@@ -6204,7 +6204,7 @@ static int stmmac_dma_cap_show(struct seq_file *seq, void *v)
+ 	seq_printf(seq, "\tFlexible RX Parser: %s\n",
+ 		   priv->dma_cap.frpsel ? "Y" : "N");
+ 	seq_printf(seq, "\tEnhanced Addressing: %d\n",
+-		   priv->dma_cap.addr64);
++		   priv->dma_cap.host_addr);
+ 	seq_printf(seq, "\tReceive Side Scaling: %s\n",
+ 		   priv->dma_cap.rssen ? "Y" : "N");
+ 	seq_printf(seq, "\tVLAN Hash Filtering: %s\n",
+@@ -7177,20 +7177,22 @@ int stmmac_dvr_probe(struct device *device,
+ 		dev_info(priv->device, "SPH feature enabled\n");
+ 	}
+ 
+-	/* The current IP register MAC_HW_Feature1[ADDR64] only define
+-	 * 32/40/64 bit width, but some SOC support others like i.MX8MP
+-	 * support 34 bits but it map to 40 bits width in MAC_HW_Feature1[ADDR64].
+-	 * So overwrite dma_cap.addr64 according to HW real design.
++	/* Ideally our host DMA address width is the same as for the
++	 * device. However, it may differ and then we have to use our
++	 * host DMA width for allocation and the device DMA width for
++	 * register handling.
+ 	 */
+-	if (priv->plat->addr64)
+-		priv->dma_cap.addr64 = priv->plat->addr64;
++	if (priv->plat->host_dma_addr)
++		priv->dma_cap.host_addr = priv->plat->host_dma_addr;
++	else
++		priv->dma_cap.host_addr = priv->dma_cap.addr64;
+ 
+-	if (priv->dma_cap.addr64) {
++	if (priv->dma_cap.host_addr) {
+ 		ret = dma_set_mask_and_coherent(device,
+-				DMA_BIT_MASK(priv->dma_cap.addr64));
++				DMA_BIT_MASK(priv->dma_cap.host_addr));
+ 		if (!ret) {
+-			dev_info(priv->device, "Using %d bits DMA width\n",
+-				 priv->dma_cap.addr64);
++			dev_info(priv->device, "Using %d/%d bits DMA host/device width\n",
++				 priv->dma_cap.host_addr, priv->dma_cap.addr64);
+ 
+ 			/*
+ 			 * If more than 32 bits can be addressed, make sure to
+@@ -7205,7 +7207,7 @@ int stmmac_dvr_probe(struct device *device,
+ 				goto error_hw_init;
+ 			}
+ 
+-			priv->dma_cap.addr64 = 32;
++			priv->dma_cap.host_addr = 32;
+ 		}
+ 	}
+ 
+diff --git a/include/linux/stmmac.h b/include/linux/stmmac.h
+index a152678b82b7..1cc4d61d6155 100644
+--- a/include/linux/stmmac.h
++++ b/include/linux/stmmac.h
+@@ -215,7 +215,7 @@ struct plat_stmmacenet_data {
+ 	int unicast_filter_entries;
+ 	int tx_fifo_size;
+ 	int rx_fifo_size;
+-	u32 addr64;
++	u32 host_dma_addr;
+ 	u32 rx_queues_to_use;
+ 	u32 tx_queues_to_use;
+ 	u8 rx_sched_algorithm;
+-- 
+2.39.2
 
-I will put some examples to try to get this issue resolved.
-
-### Example 1: Constrain the number of GCE entries to *seven* array elements (7x4!)
-
-   mediatek,gce-client-reg:
-     $ref: /schemas/types.yaml#/definitions/phandle-array
-     maxItems: 1
-     description: The register of display function block to be set by gce.
-       There are 4 arguments in this property, gce node, subsys id, offset and
-       register size. The subsys id is defined in the gce header of each chips
-       include/dt-bindings/gce/<chip>-gce.h, mapping to the register of display
-       function block.
-     items:
-       minItems: 28
-       maxItems: 28
-       items:                     <----- this block doesn't seem to get checked :\
-         - description: phandle of GCE
-         - description: GCE subsys id
-         - description: register offset
-         - description: register size
-
-
-### Example 2: Don't care about constraining the number of arguments
-
-   mediatek,gce-client-reg:
-     $ref: /schemas/types.yaml#/definitions/phandle-array
-     maxItems: 1
-     description: The register of display function block to be set by gce.
-       There are 4 arguments in this property, gce node, subsys id, offset and
-       register size. The subsys id is defined in the gce header of each chips
-       include/dt-bindings/gce/<chip>-gce.h, mapping to the register of display
-       function block.
-
-
-Regards,
-Angelo
 
