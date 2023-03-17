@@ -4,83 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A068C6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 12:09:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B5BEC74A5B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 12:35:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TjGy87pNKsb6y2cBmiWPHVqOZpmYwx0L2pBm6FPlioo=; b=cNpqwbfLffdrNaCvFL7CVwW/tw
-	q2rciw9taOhogEMcO/aUB9cE5ufmGYYMA+bChmnfKbtXEKnC/JuVj8AjqdbjcWCQcslkrzmuLxJmz
-	rTePIVByGgVBWHxckhG7daPcgWjg5gDlfjKLSw2QRVcQL/lTe4gRazv2Gavs5TaZm0YZ2xBuaytCL
-	GWZa4RrWhVGTYf3kbsP7lwEEbbyZfxf5qrJY9tCEcieygLa44Hnc7SeHxdi9+n1jIWK6NJyXVCdz5
-	wHSzaleUjPnzfeV68IIT5Dn1GR27d9Vc5LBB2sF4g2xL/btnnrqaax4LZB5yHYKEvG6Urec4gusw0
-	eYjXv/Fw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=thMf+lug8NwzjJ8UrWmYkebi5ayFtZtj8+KQizln9XY=; b=nTRZLMJANXPMA8ydX0hYhwbhLo
+	qC9SIQ+K4Ibos3EA3qohWOGKYPbs9OSMgNkXM7O3NIj/Ko2O7JHtkVFpx4W59j1HeuU0KQj1vyii9
+	MruvWJwIqnC2jBMAcXqWStNel+Avt5w3Vb+HYAJGxhHbaM0Lbd8hboEmzQaea9rgYpIP1c96uWSQa
+	hXLyOsShNvHsUJTm6Jo3PRhXLy9FLQ08lMSUv7RfuMFwn0NKHvgMdPaI6sZHzOSo3K9sRxYR4aEId
+	+t6XgNGJaESeAoxxNAh3DSALwdjRuDk93rlWFj0Bbj1WnQRzs+gafJ6B0BRbzbDY6QYa892pM3wHX
+	2IibB5IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pd8tA-002AQ3-0V;
-	Fri, 17 Mar 2023 12:08:52 +0000
-Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
+	id 1pd9Ii-002DRo-1M;
+	Fri, 17 Mar 2023 12:35:16 +0000
+Received: from mail-oa1-x2d.google.com ([2001:4860:4864:20::2d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pd8t5-002AON-1K
+	id 1pd9If-002DQS-0D
 	for linux-mediatek@lists.infradead.org;
-	Fri, 17 Mar 2023 12:08:50 +0000
-Received: by mail-yb1-xb29.google.com with SMTP id p203so5299851ybb.13
-        for <linux-mediatek@lists.infradead.org>; Fri, 17 Mar 2023 05:08:43 -0700 (PDT)
+	Fri, 17 Mar 2023 12:35:14 +0000
+Received: by mail-oa1-x2d.google.com with SMTP id 586e51a60fabf-17ac5ee3f9cso5522122fac.12
+        for <linux-mediatek@lists.infradead.org>; Fri, 17 Mar 2023 05:35:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1679054922;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=TjGy87pNKsb6y2cBmiWPHVqOZpmYwx0L2pBm6FPlioo=;
-        b=7xIEFhptaAK8MOSW/KceXs42/aS/R0TPdFaNQBFbHxeQNT2G2qEOR4ut2cSERK9jRZ
-         a31SiWJWCrHhbWBSFreq5X1iFizZEjZIcOJN+YYW1HNqxhVoxWc3Oq3GN9JU+fYgnddF
-         qnfVMZqZAv4hbcZMsDyxVdUrqqBBGy70R3UjRhmOvH4+slSl21MUEjenmsaa5U61vRxF
-         Zv2O4FMnSrfyIQa/juBUsKyNJolMwS3SKIThkxNHc4NYapqXToXNBT1I6nI6uo8OZ2zv
-         ePcBmKUaLc8odWHqfX9mEGfcoYyPxySm3bow7Jz4wqAKGl/pzkvwNRednOiExEgaW0Yd
-         Mmxg==
+        d=linaro.org; s=google; t=1679056509;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=thMf+lug8NwzjJ8UrWmYkebi5ayFtZtj8+KQizln9XY=;
+        b=xmfw8yR+09QFjq8j8pD21JCCAbazLOrVVwkXx1uQOnrsMhQ56LaTqz7iofglA+G4YA
+         XfVcmSQjfkaPKV5kiDToJk0K/tAg2frbid7zBizW7wmcCWRFpXBx7RCmGUcZlGk7oZb/
+         b3EX6cdBQgxMYrL6vJY0bJ0UgFa1ER0tTx7yhA5xvFDZLerC/J2V9cbX5OhDhsT74mUR
+         bDsTNr4cyQkk7Fib1uj1jTU797Ij9r+Yyf2xSgja8yc4Hz4ziuufP5/2b7z1Jv7sDBpQ
+         IOoZUV3r3H+0KD+js1JmHQM0z97//loglRePmJYZ0aObiGUVpXR5SIay1ZGSgOxkHFYZ
+         +iJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679054922;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=TjGy87pNKsb6y2cBmiWPHVqOZpmYwx0L2pBm6FPlioo=;
-        b=bK7AaOureFfg4+1kQXQwMPPw9p12z8jg5qAX5BVgeze02ggPsojRIjlaZRN3Hhw3bS
-         cDOiC3f9YmUZkHzc6s2PJtIZ9MOgeMBsT4xMF+ECXvPG6APsPF7mXxL6BhQfsZhzXbxS
-         Vi10PdG139Ywgy3LmR0aoNZEjlBN0CrCpPBxap6qFjXtYlcdDJfeWQwqPHDA+S8v4ANs
-         OdWBQNkVI2HjUIx2rTypJuv/5/yf0iXJCNzhhb3MyQmYt00bjSQLspIQOlRUzu4sw8aG
-         gWqIEEGskTSOTHMVit+euSGbXVwTRhN3KrP0LD0g2rh9ciXqIPscwY9SCwbRdaNKAA1m
-         tXBA==
-X-Gm-Message-State: AO0yUKU06oCGvVc4CTiKoTfXN78gNrHxCI32Vy6nhEdC2fhawWJJUbwh
-	TlQ5fAt3h+prDwx0w6aCdxbd5lrw76J7E2w4E64FfA==
-X-Google-Smtp-Source: AK7set/61F0QRhWRgg7+EjPAdnt8sqw4F2reO2/4CNJsbOeWAawezoBi8JybRiyvSSaD/Go45y0C6kZXjlKT4HS18yY=
-X-Received: by 2002:a5b:bc7:0:b0:b3b:6452:6a0d with SMTP id
- c7-20020a5b0bc7000000b00b3b64526a0dmr10618375ybr.1.1679054922495; Fri, 17 Mar
- 2023 05:08:42 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1679056509;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=thMf+lug8NwzjJ8UrWmYkebi5ayFtZtj8+KQizln9XY=;
+        b=Fmq4u6KifrXnLKmNKYRXEZEX4f9jATNBHl0iYlVnZSiLUvpRWkuJjZ/N8j92vG5+PW
+         n18ryw5bGHIkEWbZQrA5eEXReoPc2xHhuiGVYcOFT37D+xoCTgryUNumv4qNczVvi2n2
+         wKPKyoOcapdjbD+VbvALvR+EiT/QqezUwvaJAFsoaVt6anFjafQrr6TSA8YAY9cpWiJo
+         WjnBewh+5UJNdJbOCBSIXmlG0ozpQvZJ67ejTqi4iLjzvnap9JH/1PocP92e4xZiP25E
+         cufCoGFRbgmEPMzqV373kMGVSSvFJ67bjjWB9VQiiwd7rzI9XE3gAkgxw/sAxMFBp8xW
+         Up0w==
+X-Gm-Message-State: AO0yUKW8J3HO1LvKYCjRAm+yL1kVhyy2zt38tPGe98j/wA2RJ0NXEbvJ
+	M/6Evc+KPPC/XDbcHh+ZDjfIMxsLx7cv+qVmzddB0Q==
+X-Google-Smtp-Source: AK7set/Ipwo0vFR/sCF+tDORfKSTUbgHqFFe4H0pGWPJ3eeNy9t52Zo2aJ2GyN3NAEbtCN4lI2/IPaKVe6oKYMf2UTE=
+X-Received: by 2002:a05:6870:be99:b0:17a:ac8f:57fb with SMTP id
+ nx25-20020a056870be9900b0017aac8f57fbmr6036066oab.6.1679056508771; Fri, 17
+ Mar 2023 05:35:08 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230306-ccorr-binding-fix-v2-0-4822939a837d@baylibre.com> <008996c3-074c-b443-73f2-c14f0fdf8e4e@gmail.com>
-In-Reply-To: <008996c3-074c-b443-73f2-c14f0fdf8e4e@gmail.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Fri, 17 Mar 2023 13:08:31 +0100
-Message-ID: <CAFGrd9rAH4LmuZ915+sNbUcriOWU8hNXZWr94_BEjzey5YbBRw@mail.gmail.com>
-Subject: Re: [PATCH v2] dt-bindings: display: mediatek: Fix the duplicated fallback
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Allen-KH Cheng <allen-kh.cheng@mediatek.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh@kernel.org>, 
-	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
+References: <20230317080942.183514-1-yanchao.yang@mediatek.com> <20230317080942.183514-2-yanchao.yang@mediatek.com>
+In-Reply-To: <20230317080942.183514-2-yanchao.yang@mediatek.com>
+From: Loic Poulain <loic.poulain@linaro.org>
+Date: Fri, 17 Mar 2023 13:34:32 +0100
+Message-ID: <CAMZdPi9_xYO_MQ0BpxcqDci761uu=ZoczGMg81qkEDeOsP6apw@mail.gmail.com>
+Subject: Re: [PATCH net-next v4 01/10] net: wwan: tmi: Add PCIe core
+To: Yanchao Yang <yanchao.yang@mediatek.com>
+Cc: Sergey Ryazanov <ryazanov.s.a@gmail.com>, Johannes Berg <johannes@sipsolutions.net>, 
+	"David S . Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, netdev ML <netdev@vger.kernel.org>, 
+	kernel ML <linux-kernel@vger.kernel.org>, Intel experts <linuxwwan@intel.com>, 
+	Chetan <m.chetan.kumar@intel.com>, MTK ML <linux-mediatek@lists.infradead.org>, 
+	Liang Lu <liang.lu@mediatek.com>, Haijun Liu <haijun.liu@mediatek.com>, 
+	Hua Yang <hua.yang@mediatek.com>, Ting Wang <ting.wang@mediatek.com>, 
+	Felix Chen <felix.chen@mediatek.com>, Mingliang Xu <mingliang.xu@mediatek.com>, 
+	Min Dong <min.dong@mediatek.com>, Aiden Wang <aiden.wang@mediatek.com>, 
+	Guohao Zhang <guohao.zhang@mediatek.com>, Chris Feng <chris.feng@mediatek.com>, 
+	Lambert Wang <lambert.wang@mediatek.com>, Mingchuang Qiao <mingchuang.qiao@mediatek.com>, 
+	Xiayu Zhang <xiayu.zhang@mediatek.com>, Haozhe Chang <haozhe.chang@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230317_050847_448218_7CD95CC9 
-X-CRM114-Status: GOOD (  19.90  )
+X-CRM114-CacheID: sfid-20230317_053513_115562_D2762A13 
+X-CRM114-Status: GOOD (  26.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,101 +96,155 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias,
+Hi Yanchao,
 
-This version is outdated.
-Here the last one:
-https://lore.kernel.org/all/20230306-ccorr-binding-fix-v5-0-6c56aaecc3b1@ba=
-ylibre.com/
+On Fri, 17 Mar 2023 at 09:10, Yanchao Yang <yanchao.yang@mediatek.com> wrote:
+>
+> Registers the TMI device driver with the kernel. Set up all the fundamental
+> configurations for the device: PCIe layer, Modem Host Cross Core Interface
+> (MHCCIF), Reset Generation Unit (RGU), modem common control operations and
+> build infrastructure.
+>
+> * PCIe layer code implements driver probe and removal, MSI-X interrupt
+> initialization and de-initialization, and the way of resetting the device.
+> * MHCCIF provides interrupt channels to communicate events such as handshake,
+> PM and port enumeration.
+> * RGU provides interrupt channels to generate notifications from the device
+> so that the TMI driver could get the device reset.
+> * Modem common control operations provide the basic read/write functions of
+> the device's hardware registers, mask/unmask/get/clear functions of the
+> device's interrupt registers and inquiry functions of the device's status.
+>
+> Signed-off-by: Yanchao Yang <yanchao.yang@mediatek.com>
+> Signed-off-by: Ting Wang <ting.wang@mediatek.com>
+> ---
+>  drivers/net/wwan/Kconfig                 |  14 +
+>  drivers/net/wwan/Makefile                |   1 +
+>  drivers/net/wwan/mediatek/Makefile       |   8 +
+>  drivers/net/wwan/mediatek/mtk_dev.h      | 203 ++++++
+>  drivers/net/wwan/mediatek/pcie/mtk_pci.c | 887 +++++++++++++++++++++++
+>  drivers/net/wwan/mediatek/pcie/mtk_pci.h | 144 ++++
+>  drivers/net/wwan/mediatek/pcie/mtk_reg.h |  69 ++
+>  7 files changed, 1326 insertions(+)
+>  create mode 100644 drivers/net/wwan/mediatek/Makefile
+>  create mode 100644 drivers/net/wwan/mediatek/mtk_dev.h
+>  create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_pci.c
+>  create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_pci.h
+>  create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_reg.h
+>
+
+[...]
+
+> +static int mtk_pci_get_virq_id(struct mtk_md_dev *mdev, int irq_id)
+> +{
+> +       struct pci_dev *pdev = to_pci_dev(mdev->dev);
+> +       int nr = 0;
+> +
+> +       if (pdev->msix_enabled)
+> +               nr = irq_id % mdev->msi_nvecs;
+> +
+> +       return pci_irq_vector(pdev, nr);
+> +}
+> +
+> +static int mtk_pci_register_irq(struct mtk_md_dev *mdev, int irq_id,
+> +                               int (*irq_cb)(int irq_id, void *data), void *data)
+> +{
+> +       struct mtk_pci_priv *priv = mdev->hw_priv;
+> +
+> +       if (unlikely((irq_id < 0 || irq_id >= MTK_IRQ_CNT_MAX) || !irq_cb))
+> +               return -EINVAL;
+> +
+> +       if (priv->irq_cb_list[irq_id]) {
+> +               dev_err(mdev->dev,
+> +                       "Unable to register irq, irq_id=%d, it's already been register by %ps.\n",
+> +                       irq_id, priv->irq_cb_list[irq_id]);
+> +               return -EFAULT;
+> +       }
+> +       priv->irq_cb_list[irq_id] = irq_cb;
+> +       priv->irq_cb_data[irq_id] = data;
+
+So it looks like you re-implement your own irq chip internally. What
+about creating a new irq-chip/domain for this (cf irq_domain_add_simple)?
+That would allow the client code to use the regular irq interface and helpers
+and it should simply code and improve its debuggability (/proc/irq...).
+
+[...]
+
+> +static int mtk_mhccif_register_evt(struct mtk_md_dev *mdev, u32 chs,
+> +                                  int (*evt_cb)(u32 status, void *data), void *data)
+> +{
+> +       struct mtk_pci_priv *priv = mdev->hw_priv;
+> +       struct mtk_mhccif_cb *cb;
+> +       unsigned long flag;
+> +       int ret = 0;
+> +
+> +       if (!chs || !evt_cb)
+> +               return -EINVAL;
+> +
+> +       spin_lock_irqsave(&priv->mhccif_lock, flag);
+
+Why spinlock here and not mutex. AFAIU, you always take this lock in a
+non-atomic/process context.
+
+> +       list_for_each_entry(cb, &priv->mhccif_cb_list, entry) {
+> +               if (cb->chs & chs) {
+> +                       ret = -EFAULT;
+> +                       dev_err(mdev->dev,
+> +                               "Unable to register evt, chs=0x%08X&0x%08X registered_cb=%ps\n",
+> +                               chs, cb->chs, cb->evt_cb);
+> +                       goto err;
+> +               }
+> +       }
+> +       cb = devm_kzalloc(mdev->dev, sizeof(*cb), GFP_ATOMIC);
+> +       if (!cb) {
+> +               ret = -ENOMEM;
+> +               goto err;
+> +       }
+> +       cb->evt_cb = evt_cb;
+> +       cb->data = data;
+> +       cb->chs = chs;
+> +       list_add_tail(&cb->entry, &priv->mhccif_cb_list);
+> +
+> +err:
+> +       spin_unlock_irqrestore(&priv->mhccif_lock, flag);
+> +
+> +       return ret;
+> +}
+
+[...]
+
+> +
+> +MODULE_LICENSE("GPL");
+> diff --git a/drivers/net/wwan/mediatek/pcie/mtk_pci.h b/drivers/net/wwan/mediatek/pcie/mtk_pci.h
+> new file mode 100644
+> index 000000000000..b487ca9b302e
+> --- /dev/null
+> +++ b/drivers/net/wwan/mediatek/pcie/mtk_pci.h
+
+Why a separated header file, isn't the content (e.g. mtk_pci_priv)
+used only from mtk_pci.c?
+
+> @@ -0,0 +1,144 @@
+> +/* SPDX-License-Identifier: BSD-3-Clause-Clear
+> + *
+> + * Copyright (c) 2022, MediaTek Inc.
+> + */
+> +
+> +#ifndef __MTK_PCI_H__
+> +#define __MTK_PCI_H__
+> +
+> +#include <linux/pci.h>
+> +#include <linux/spinlock.h>
+> +
+> +#include "../mtk_dev.h"
+> +
+> +enum mtk_atr_type {
+> +       ATR_PCI2AXI = 0,
+> +       ATR_AXI2PCI
+> +};
+
+[...]
 
 Regards,
-Alex
-
-Le ven. 17 mars 2023 =C3=A0 12:25, Matthias Brugger
-<matthias.bgg@gmail.com> a =C3=A9crit :
->
->
->
-> On 06/03/2023 17:15, Alexandre Mergnat wrote:
-> > The item which have the mediatek,mt8192-disp-ccorr const compatible alr=
-eady
-> > exist above. Remove duplicated fallback.
-> >
-> > Fixes: 137272ef1b0f ("dt-bindings: display: mediatek: Fix the fallback =
-for mediatek,mt8186-disp-ccorr")
->
-> We can argue if dt-binding patches should have a fixes tag at all. Given =
-the
-> fact that there are so many warnings still around, I don't see any value =
-add to
-> backport these to stable kernel.
->
-> That said, this is defenitely no fix, as it's only a code clean-up. No wa=
-rning,
-> no bug, no functional error fixed here :)
->
-> > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> > ---
-> > Fix MTK color correction binding
-> >
-> > The fallback compatible has been duplicated in the 137272ef1b0f commit.
-> >
-> > To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> > To: Philipp Zabel <p.zabel@pengutronix.de>
-> > To: David Airlie <airlied@gmail.com>
-> > To: Daniel Vetter <daniel@ffwll.ch>
-> > To: Rob Herring <robh+dt@kernel.org>
-> > To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-> > To: Matthias Brugger <matthias.bgg@gmail.com>
-> > To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com=
->
-> > To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> > Cc: Rob Herring <robh@kernel.org>
-> > Cc: dri-devel@lists.freedesktop.org
-> > Cc: linux-mediatek@lists.infradead.org
-> > Cc: devicetree@vger.kernel.org
-> > Cc: linux-kernel@vger.kernel.org
-> > Cc: linux-arm-kernel@lists.infradead.org
-> > ---
-> > Changes in v2:
-> > - Fix commit title.
-> > - Link to v1: https://lore.kernel.org/r/20230306-ccorr-binding-fix-v1-0=
--177d81d60c69@baylibre.com
-> > ---
-> >   Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yam=
-l | 3 ---
-> >   1 file changed, 3 deletions(-)
-> >
-> > diff --git a/Documentation/devicetree/bindings/display/mediatek/mediate=
-k,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,=
-ccorr.yaml
-> > index b04820c95b22..3aaf44719786 100644
-> > --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr=
-.yaml
-> > +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr=
-.yaml
-> > @@ -29,9 +29,6 @@ properties:
-> >             - enum:
-> >                 - mediatek,mt8188-disp-ccorr
-> >                 - mediatek,mt8195-disp-ccorr
-> > -          - const: mediatek,mt8192-disp-ccorr
-> > -      - items:
-> > -          - enum:
-> >                 - mediatek,mt8186-disp-ccorr
->
-> Please sort compatibles, that will allow for easier reading once we add m=
-ore to
-> the file.
->
-> Regards,
-> Matthias
->
-> >             - const: mediatek,mt8192-disp-ccorr
-> >
-> >
-> > ---
-> > base-commit: add072536971d7ce891fde3cdbf68c55e7cfa95a
-> > change-id: 20230306-ccorr-binding-fix-718c6d725088
-> >
-> > Best regards,
+Loic
 
