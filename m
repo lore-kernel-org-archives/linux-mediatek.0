@@ -4,73 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5C2AC6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 06:30:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0534FC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 07:29:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xqeNtvkOt380WvrUL9+n5dvMHV6xjQJa/F/8T0qazGA=; b=CLz1A0XP7uQl14QdiWfjQQdhgG
-	qg/E+1umaKxTyeNiUKAnucOEVT4IvSEmV7ecubGPzwHWTJt80KMmxSyRzA7/ANnZJXS894PAWnWyz
-	9HRiVACyyMwS5B+FLqt/I+JRhvLGJYfZXoFbAmcgEbn04VVEiuhm06sQudqCqb9XBu9Lt4OP5zHqW
-	qMbmaUMHYXRyJegi7mA+280HLpR/yW5M3+b1pRJPRFyO2GmnEZ6U/jQSA5UW13lAcUHkYVDn03u5e
-	Fr3ymI/JWp41/vfP4xo71StM3E6BUUrYIcbt+uSEIW0mQIWTvSYP6aDgSGnj9DMYPFl5Jq3mjUVPF
-	uTqQsCnA==;
+	Message-ID:In-reply-to:Date:Subject:Cc:To:From:References:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gZ9KX/PCzFZhbw0PzsuQE02nyn5hDgXI2fnvdbb1Idw=; b=Q/Ns93mszsQgeJOtYjmNsBKzLn
+	q1Sb/RukTq4ekebtFB89oCCnyVhG2YAeq8VXjygyhmgGfbGqh9H1T6AYUsfWPmAWO3nTQZjiMxAo/
+	t0BePCYOO3k/dfHFO1B3B44PrhxVhcjt2AEKSPzi0NADoPxHSWvsxixGKdWob96ktx4lH9FrmSHMd
+	HzcHkZxVW5d5k8iXADF336bDfrl4L+pK5xJl8aRGpdDBsDdmomwy1pRyhu+jlgCBO5IH2luTSZR/U
+	SdxbHmcDfrk1wYLgMidPdYzy9zWAikg7ad0x+NrLQ5Za5T6aji/USGwIfbWf2Y8YjB1iF4zBvQ4p+
+	AHPEggmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pd3bB-001CaD-3A;
-	Fri, 17 Mar 2023 06:29:57 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pd4X1-001IGz-2z;
+	Fri, 17 Mar 2023 07:29:43 +0000
+Received: from mout.kundenserver.de ([217.72.192.74])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pd3b9-001CZh-0D;
-	Fri, 17 Mar 2023 06:29:56 +0000
-X-UUID: 1e6479d6c48d11edb5598346aad47b14-20230316
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=xqeNtvkOt380WvrUL9+n5dvMHV6xjQJa/F/8T0qazGA=;
-	b=uwhldcv7l9C3VRVkMbeptZzqJiCxLx0CUAwEY/9mP36tO9lghsshT0cD5ltt2qcwo1UBiOuuPtMueoCktKETRF83eItpy5vnhBndGP05uHrn75xWetn0Vv4Fv9u/qvr6k3tTm1dcnoLFNRkIHubhQDqSJTTU2FB8P4H/Xmn3trI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.21,REQID:7ba790c7-b9f1-4d3c-af74-83daacff4608,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:83295aa,CLOUDID:7f6289b3-beed-4dfc-bd9c-e1b22fa6ccc4,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: 1e6479d6c48d11edb5598346aad47b14-20230316
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <allen-kh.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2133520472; Thu, 16 Mar 2023 23:29:49 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Fri, 17 Mar 2023 14:19:46 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Fri, 17 Mar 2023 14:19:46 +0800
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<angelogioacchino.delregno@collabora.com>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Allen-KH Cheng
-	<allen-kh.cheng@mediatek.com>
-Subject: [PATCH v3] arm64: dts: mediatek: Add cpufreq nodes for MT8192
-Date: Fri, 17 Mar 2023 14:19:44 +0800
-Message-ID: <20230317061944.15434-1-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pd4Wy-001IGH-1M;
+	Fri, 17 Mar 2023 07:29:42 +0000
+Received: from maxwell ([109.42.112.148]) by mrelayeu.kundenserver.de
+ (mreue106 [213.165.67.113]) with ESMTPSA (Nemesis) id
+ 1MJn8J-1pxDxV14DR-00K6xA; Fri, 17 Mar 2023 08:28:28 +0100
+References: <20230316095306.721255-1-jh@henneberg-systemdesign.com>
+ <20230316131503.738933-1-jh@henneberg-systemdesign.com>
+ <ZBOhy02DFBlnIQR1@shell.armlinux.org.uk>
+User-agent: mu4e 1.8.14; emacs 28.2
+From: Jochen Henneberg <jh@henneberg-systemdesign.com>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: netdev@vger.kernel.org, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu
+ <joabreu@synopsys.com>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
+ Abeni <pabeni@redhat.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam
+ <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Wong Vee Khee
+ <veekhee@apple.com>, Kurt Kanzenbach <kurt@linutronix.de>, Revanth Kumar
+ Uppala <ruppala@nvidia.com>, Andrey Konovalov
+ <andrey.konovalov@linaro.org>, Tan Tee Min <tee.min.tan@linux.intel.com>,
+ Voon Weifeng <weifeng.voon@intel.com>, Mohammad Athari Bin Ismail
+ <mohammad.athari.ismail@intel.com>,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net V2] net: stmmac: Fix for mismatched host/device DMA
+ address width
+Date: Fri, 17 Mar 2023 08:22:57 +0100
+In-reply-to: <ZBOhy02DFBlnIQR1@shell.armlinux.org.uk>
+Message-ID: <87edpng7l9.fsf@henneberg-systemdesign.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-MTK: N
+X-Provags-ID: V03:K1:5QIZD/zEoIlUl4J9g1YiRKLAvKnLDmfGku0rnPpP1GG1pOn9VFa
+ gZ65HdQ0A+BnO6uOKrPi9+upVoPI97O/Vt5RPMeh+n9Yp7gDzxgJXLzIgNfbJoN0W+UT0+V
+ g5vHPFtmWyMvG1ZqxHCzKb496+Q1ZfunoHrMGb8GRQla4ubIUed752mK8Q1uWvwhX6HNpJE
+ Oo6tRW5cs3XaDQHjb2gzw==
+UI-OutboundReport: notjunk:1;M01:P0:7PiMw8IYENA=;k4c5pIjPJUsV5oRScIM0B9sC78P
+ HjQyFk/eU/EPi0rAE0h+h6T1NUTPYSytJoYuLnow2QN9Bai97/Wpw5ZAxEiA8C8uCKrn30pcD
+ O4q36cWjc7Tw4QMS4IoQyiEpNnJ1bYaUNgkjEk5YwE63pyvhF3ZO00N72zC1wlYI1GTV2+g9z
+ Cgqui2M39MKGpH5YqXKxkj6p4o12zcN4cLG6/AEA0UdeZJXQd1EaRnSK+k1J7qq+FBfVc3GHM
+ mBNDOYIk/046k5x2HgPRJlp9vRvl2ExAhLbYG2M10xR9TJd7Rrrg/C5TUNOHbbQhJIYLdLuV5
+ 7ssRvmZ3jjywLS66YPNvUHDVRMsXjAN34Z7Ia3EYEscnw8ew8fb0gexYfG4pc+Z4HC06K/EOp
+ efyVVnjCbqQYkO0ahy7lWEEPfrfeYfk80mgPqKXiOAsqJ2/BMvgi9nmI+SVy5dLV0V22JcAF+
+ +Paj4fxH3fvgqLZwcGv4B4btmESueFsBFoeY0ivu6gBw4hJSRWyrI/ISQGqu5dLUkSNr3cGS1
+ Rl+K/n6hayQi8cDWYf/uCyGHJ3+lQbMGJHAofBZsAclRclNJmJIDMEtlDu+UWldoRV4n4UMqH
+ NEVLn0rwTFsa6hJJlLL8+fmg6ZsLtO7JYLgWk4MTdf/Nw1y6gGg8gcsC8zNSAwFJGcnXlVghQ
+ dEiUuZVi4zRt8zK/f6LdNNG+F3VK1wz332jRWT9eMA==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230316_232955_132484_ECBD300B 
-X-CRM114-Status: UNSURE (   9.01  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230317_002940_747455_4A627DDF 
+X-CRM114-Status: GOOD (  21.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,100 +92,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the cpufreq nodes for MT8192 SoC.
 
-Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
----
-Change from v2:
-    Fix wrong performance-domains
-    [Allen-KH Cheng <allen-kh.cheng@mediatek.com>]
----
----
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+"Russell King (Oracle)" <linux@armlinux.org.uk> writes:
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index 87b91c8feaf9..ba49f37933d6 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -70,6 +70,7 @@
- 			d-cache-line-size = <64>;
- 			d-cache-sets = <128>;
- 			next-level-cache = <&l2_0>;
-+			performance-domains = <&performance 0>;
- 			capacity-dmips-mhz = <530>;
- 		};
- 
-@@ -87,6 +88,7 @@
- 			d-cache-line-size = <64>;
- 			d-cache-sets = <128>;
- 			next-level-cache = <&l2_0>;
-+			performance-domains = <&performance 0>;
- 			capacity-dmips-mhz = <530>;
- 		};
- 
-@@ -104,6 +106,7 @@
- 			d-cache-line-size = <64>;
- 			d-cache-sets = <128>;
- 			next-level-cache = <&l2_0>;
-+			performance-domains = <&performance 0>;
- 			capacity-dmips-mhz = <530>;
- 		};
- 
-@@ -121,6 +124,7 @@
- 			d-cache-line-size = <64>;
- 			d-cache-sets = <128>;
- 			next-level-cache = <&l2_0>;
-+			performance-domains = <&performance 0>;
- 			capacity-dmips-mhz = <530>;
- 		};
- 
-@@ -138,6 +142,7 @@
- 			d-cache-line-size = <64>;
- 			d-cache-sets = <256>;
- 			next-level-cache = <&l2_1>;
-+			performance-domains = <&performance 1>;
- 			capacity-dmips-mhz = <1024>;
- 		};
- 
-@@ -155,6 +160,7 @@
- 			d-cache-line-size = <64>;
- 			d-cache-sets = <256>;
- 			next-level-cache = <&l2_1>;
-+			performance-domains = <&performance 1>;
- 			capacity-dmips-mhz = <1024>;
- 		};
- 
-@@ -172,6 +178,7 @@
- 			d-cache-line-size = <64>;
- 			d-cache-sets = <256>;
- 			next-level-cache = <&l2_1>;
-+			performance-domains = <&performance 1>;
- 			capacity-dmips-mhz = <1024>;
- 		};
- 
-@@ -189,6 +196,7 @@
- 			d-cache-line-size = <64>;
- 			d-cache-sets = <256>;
- 			next-level-cache = <&l2_1>;
-+			performance-domains = <&performance 1>;
- 			capacity-dmips-mhz = <1024>;
- 		};
- 
-@@ -318,6 +326,12 @@
- 		compatible = "simple-bus";
- 		ranges;
- 
-+		performance: performance-controller@11bc10 {
-+			compatible = "mediatek,cpufreq-hw";
-+			reg = <0 0x0011bc10 0 0x120>, <0 0x0011bd30 0 0x120>;
-+			#performance-domain-cells = <1>;
-+		};
-+
- 		gic: interrupt-controller@c000000 {
- 			compatible = "arm,gic-v3";
- 			#interrupt-cells = <4>;
--- 
-2.18.0
+> On Thu, Mar 16, 2023 at 02:15:03PM +0100, Jochen Henneberg wrote:
+>> Currently DMA address width is either read from a RO device register
+>> or force set from the platform data. This breaks DMA when the host DMA
+>> address width is <=32it but the device is >32bit.
+>> 
+>> Right now the driver may decide to use a 2nd DMA descriptor for
+>> another buffer (happens in case of TSO xmit) assuming that 32bit
+>> addressing is used due to platform configuration but the device will
+>> still use both descriptor addresses as one address.
+>> 
+>> This can be observed with the Intel EHL platform driver that sets
+>> 32bit for addr64 but the MAC reports 40bit. The TX queue gets stuck in
+>> case of TCP with iptables NAT configuration on TSO packets.
+>> 
+>> The logic should be like this: Whatever we do on the host side (memory
+>> allocation GFP flags) should happen with the host DMA width, whenever
+>> we decide how to set addresses on the device registers we must use the
+>> device DMA address width.
+>> 
+>> This patch renames the platform address width field from addr64 (term
+>> used in device datasheet) to host_addr and uses this value exclusively
+>> for host side operations while all chip operations consider the device
+>> DMA width as read from the device register.
+>> 
+>> Fixes: 7cfc4486e7ea ("stmmac: intel: Configure EHL PSE0 GbE and PSE1 GbE to 32 bits DMA addressing")
+>> Signed-off-by: Jochen Henneberg <jh@henneberg-systemdesign.com>
+>> ---
+>> V2: Fixes from checkpatch.pl for commit message
+>> 
+>>  drivers/net/ethernet/stmicro/stmmac/common.h  |  1 +
+>>  .../net/ethernet/stmicro/stmmac/dwmac-imx.c   |  2 +-
+>>  .../net/ethernet/stmicro/stmmac/dwmac-intel.c |  4 +--
+>>  .../ethernet/stmicro/stmmac/dwmac-mediatek.c  |  2 +-
+>>  .../net/ethernet/stmicro/stmmac/stmmac_main.c | 30 ++++++++++---------
+>>  include/linux/stmmac.h                        |  2 +-
+>>  6 files changed, 22 insertions(+), 19 deletions(-)
+>> 
+>> diff --git a/drivers/net/ethernet/stmicro/stmmac/common.h b/drivers/net/ethernet/stmicro/stmmac/common.h
+>> index 6b5d96bced47..55a728b1b708 100644
+>> --- a/drivers/net/ethernet/stmicro/stmmac/common.h
+>> +++ b/drivers/net/ethernet/stmicro/stmmac/common.h
+>> @@ -418,6 +418,7 @@ struct dma_features {
+>>  	unsigned int frpbs;
+>>  	unsigned int frpes;
+>>  	unsigned int addr64;
+>> +	unsigned int host_addr;
+>
+> Obvious question: is host_addr an address? From the above description it
+> sounds like this is more of a host address width indicator.
+>
+> Maybe call these "dev_addr_width" and "host_addr_width" so it's clear
+> what each of these are?
 
+You are right. I chose the name because the original field was called
+addr64 which follows the naming from the chip specification. I will
+switch to host_dma_width which makes it more clear that it's a DMA
+address width. For both the platform field as well as the driver's
+private data.
 
