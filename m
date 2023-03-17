@@ -4,93 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51855C74A5B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 11:57:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A068C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 12:09:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qgvWbwsyEB+gGG8DJc2B/pZSZJeuWMK+G3i6ZsnIT1k=; b=V/l1HZXPYjbeZBuNN4G7P+STAp
-	JIjqqbadGEk03Wxb1n9JS9gE0MfdURtuCjBJXrBzqbjQDlnbPNijozYsV78QKgdywhZ63ThxqFU15
-	bvkvNvh41TnEYeWpS45qKtHVNVPAVNPvkGMi/HKKLA/tHKRZY6gyioNjcFfJd0goMblR9LHXYEC/b
-	7tksD3tTaXWx9O/jFXGV7rod4jZjtzeCpfa3c8Y4BMu2qt9xbEF8zW+jpNJhmWvPHZowmz4/PS38Z
-	dHmTSi92wtxzR6oxVYYfBBhPldlJmPDBBaIUFPDTgON5vesCXsR2BkqMsby+HW1O7BTKujvRBfQdJ
-	wvVGsorQ==;
+	bh=TjGy87pNKsb6y2cBmiWPHVqOZpmYwx0L2pBm6FPlioo=; b=cNpqwbfLffdrNaCvFL7CVwW/tw
+	q2rciw9taOhogEMcO/aUB9cE5ufmGYYMA+bChmnfKbtXEKnC/JuVj8AjqdbjcWCQcslkrzmuLxJmz
+	rTePIVByGgVBWHxckhG7daPcgWjg5gDlfjKLSw2QRVcQL/lTe4gRazv2Gavs5TaZm0YZ2xBuaytCL
+	GWZa4RrWhVGTYf3kbsP7lwEEbbyZfxf5qrJY9tCEcieygLa44Hnc7SeHxdi9+n1jIWK6NJyXVCdz5
+	wHSzaleUjPnzfeV68IIT5Dn1GR27d9Vc5LBB2sF4g2xL/btnnrqaax4LZB5yHYKEvG6Urec4gusw0
+	eYjXv/Fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pd8iJ-0028wd-1e;
-	Fri, 17 Mar 2023 11:57:39 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1pd8tA-002AQ3-0V;
+	Fri, 17 Mar 2023 12:08:52 +0000
+Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pd8iF-0028uo-0F
+	id 1pd8t5-002AON-1K
 	for linux-mediatek@lists.infradead.org;
-	Fri, 17 Mar 2023 11:57:38 +0000
-Received: by mail-wm1-x334.google.com with SMTP id ay8so3169735wmb.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 17 Mar 2023 04:57:31 -0700 (PDT)
+	Fri, 17 Mar 2023 12:08:50 +0000
+Received: by mail-yb1-xb29.google.com with SMTP id p203so5299851ybb.13
+        for <linux-mediatek@lists.infradead.org>; Fri, 17 Mar 2023 05:08:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1679054250;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=qgvWbwsyEB+gGG8DJc2B/pZSZJeuWMK+G3i6ZsnIT1k=;
-        b=pxUX4MkdHQrAtuiOU3oXvUpzKVpIKtpaMMepwzt+mpVsB7GCPRsfv47EH36hQItV/e
-         zxXZEtzjMErI5HFo+2ONrE+ieAKTzu6r0jczVNF8EGi8pa0De1tvzjUD58ctdtF0lDSs
-         49JEnyexq4t0pL1bKHB9BjlMp9XKjEBv7+UBzhksVxxJh7Ty87ji28arijtidYnSmh/2
-         qNwct20R8zF/DNDBoFgRJjzGk4tmol1E1RN9T9gerJPfd13UYLRqTNCoXUSPU9D8TTgD
-         7dMLfNIMQiz1cshss/dOWca4cdfiJk9/srojK3ZpF6Xm6WW1GIIg8rZfrQXlD1lORDSI
-         GF0g==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112; t=1679054922;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=TjGy87pNKsb6y2cBmiWPHVqOZpmYwx0L2pBm6FPlioo=;
+        b=7xIEFhptaAK8MOSW/KceXs42/aS/R0TPdFaNQBFbHxeQNT2G2qEOR4ut2cSERK9jRZ
+         a31SiWJWCrHhbWBSFreq5X1iFizZEjZIcOJN+YYW1HNqxhVoxWc3Oq3GN9JU+fYgnddF
+         qnfVMZqZAv4hbcZMsDyxVdUrqqBBGy70R3UjRhmOvH4+slSl21MUEjenmsaa5U61vRxF
+         Zv2O4FMnSrfyIQa/juBUsKyNJolMwS3SKIThkxNHc4NYapqXToXNBT1I6nI6uo8OZ2zv
+         ePcBmKUaLc8odWHqfX9mEGfcoYyPxySm3bow7Jz4wqAKGl/pzkvwNRednOiExEgaW0Yd
+         Mmxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679054250;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=qgvWbwsyEB+gGG8DJc2B/pZSZJeuWMK+G3i6ZsnIT1k=;
-        b=SJeObey4y97JNxAwCPK99bLA5nVQ0ygTU2lEaFd/GtGsyoN6ziMzof4LyD9TeMARfn
-         ex16BUPc7EF652r9manfoohyNb4YFdROr2+iqhuoFMMeqMvdGSXOy+xtAc+mdcqFeGGJ
-         eiC+R1xKfQs6mweiQVTbd7k/ANek7EKYG/87ZSwsHm04hVXnzDCKmnWrP/+aadRNrB0v
-         /ZwIoF/iFjtYWrDKwmPthcEK83ug7CXmut247OjvNuWmWSCRXC4qKfkU7TmTaZ5uzkyr
-         3sMbIEqKIJqB7XJ0KDwoJzT3ymabAVKwi9ZZ8rQP4YoOTX+suGb8XSg5kQo9Y9oxeKty
-         hdhQ==
-X-Gm-Message-State: AO0yUKVkOAl+P4iWM9bS5pcucjpOfyUfq1bsSPx6H93KVonlu11zCko/
-	Zwim6sx1/IiYVUdVS7wxaq4KpA==
-X-Google-Smtp-Source: AK7set8GSaMaBFVqOeBLDlwhD3HnE+PH9ZmLeqoREQYjdYbOiuC3GMqSxbZGn33oQJQV0LXhpudmNQ==
-X-Received: by 2002:a05:600c:198e:b0:3eb:2f3b:4477 with SMTP id t14-20020a05600c198e00b003eb2f3b4477mr23903615wmq.28.1679054249817;
-        Fri, 17 Mar 2023 04:57:29 -0700 (PDT)
-Received: from ?IPV6:2a05:6e02:1041:c10:1dfd:dcd7:94d3:86b3? ([2a05:6e02:1041:c10:1dfd:dcd7:94d3:86b3])
-        by smtp.googlemail.com with ESMTPSA id n13-20020a05600c3b8d00b003e8dcc67bdesm8058955wms.30.2023.03.17.04.57.28
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 17 Mar 2023 04:57:29 -0700 (PDT)
-Message-ID: <59fc344b-4d1a-e0b2-92b5-2341b014ae11@linaro.org>
-Date: Fri, 17 Mar 2023 12:57:28 +0100
+        d=1e100.net; s=20210112; t=1679054922;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=TjGy87pNKsb6y2cBmiWPHVqOZpmYwx0L2pBm6FPlioo=;
+        b=bK7AaOureFfg4+1kQXQwMPPw9p12z8jg5qAX5BVgeze02ggPsojRIjlaZRN3Hhw3bS
+         cDOiC3f9YmUZkHzc6s2PJtIZ9MOgeMBsT4xMF+ECXvPG6APsPF7mXxL6BhQfsZhzXbxS
+         Vi10PdG139Ywgy3LmR0aoNZEjlBN0CrCpPBxap6qFjXtYlcdDJfeWQwqPHDA+S8v4ANs
+         OdWBQNkVI2HjUIx2rTypJuv/5/yf0iXJCNzhhb3MyQmYt00bjSQLspIQOlRUzu4sw8aG
+         gWqIEEGskTSOTHMVit+euSGbXVwTRhN3KrP0LD0g2rh9ciXqIPscwY9SCwbRdaNKAA1m
+         tXBA==
+X-Gm-Message-State: AO0yUKU06oCGvVc4CTiKoTfXN78gNrHxCI32Vy6nhEdC2fhawWJJUbwh
+	TlQ5fAt3h+prDwx0w6aCdxbd5lrw76J7E2w4E64FfA==
+X-Google-Smtp-Source: AK7set/61F0QRhWRgg7+EjPAdnt8sqw4F2reO2/4CNJsbOeWAawezoBi8JybRiyvSSaD/Go45y0C6kZXjlKT4HS18yY=
+X-Received: by 2002:a5b:bc7:0:b0:b3b:6452:6a0d with SMTP id
+ c7-20020a5b0bc7000000b00b3b64526a0dmr10618375ybr.1.1679054922495; Fri, 17 Mar
+ 2023 05:08:42 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH 1/4] dt-bindings: thermal: mediatek: Add AP domain to LVTS
- thermal controllers for mt8195
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, bchihi@baylibre.com,
- angelogioacchino.delregno@collabora.com, rafael@kernel.org,
- amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com,
- krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org,
- ye.xingchen@zte.com.cn, p.zabel@pengutronix.de, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- khilman@baylibre.com, james.lo@mediatek.com, rex-bc.chen@mediatek.com
-References: <20230307154524.118541-1-bchihi@baylibre.com>
- <20230307154524.118541-2-bchihi@baylibre.com>
- <CAGXv+5FUrWEF4SZ6DKjoF8Oai--JGFffzQ3_DyzQrUrThVEQ7Q@mail.gmail.com>
- <e5959cb5-af8c-9410-9530-b3e19e9b647a@linaro.org>
- <20230316223543.GA4008428-robh@kernel.org>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20230316223543.GA4008428-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20230306-ccorr-binding-fix-v2-0-4822939a837d@baylibre.com> <008996c3-074c-b443-73f2-c14f0fdf8e4e@gmail.com>
+In-Reply-To: <008996c3-074c-b443-73f2-c14f0fdf8e4e@gmail.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Fri, 17 Mar 2023 13:08:31 +0100
+Message-ID: <CAFGrd9rAH4LmuZ915+sNbUcriOWU8hNXZWr94_BEjzey5YbBRw@mail.gmail.com>
+Subject: Re: [PATCH v2] dt-bindings: display: mediatek: Fix the duplicated fallback
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Allen-KH Cheng <allen-kh.cheng@mediatek.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh@kernel.org>, 
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230317_045735_113605_420E905F 
-X-CRM114-Status: GOOD (  21.30  )
+X-CRM114-CacheID: sfid-20230317_050847_448218_7CD95CC9 
+X-CRM114-Status: GOOD (  19.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,81 +95,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Matthias,
 
-Hi Rob,
+This version is outdated.
+Here the last one:
+https://lore.kernel.org/all/20230306-ccorr-binding-fix-v5-0-6c56aaecc3b1@ba=
+ylibre.com/
 
-On 16/03/2023 23:35, Rob Herring wrote:
-> On Thu, Mar 09, 2023 at 11:39:13AM +0100, Daniel Lezcano wrote:
->> On 09/03/2023 05:40, Chen-Yu Tsai wrote:
->>> On Wed, Mar 8, 2023 at 12:46 AM <bchihi@baylibre.com> wrote:
->>>>
->>>> From: Balsam CHIHI <bchihi@baylibre.com>
->>>>
->>>> Add AP Domain to LVTS thermal controllers dt-binding definition for mt8195.
->>>>
->>>> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
->>>> ---
->>>>    include/dt-bindings/thermal/mediatek,lvts-thermal.h | 10 ++++++++++
->>>>    1 file changed, 10 insertions(+)
->>>>
->>>> diff --git a/include/dt-bindings/thermal/mediatek,lvts-thermal.h b/include/dt-bindings/thermal/mediatek,lvts-thermal.h
->>>> index c09398920468..8fa5a46675c4 100644
->>>> --- a/include/dt-bindings/thermal/mediatek,lvts-thermal.h
->>>> +++ b/include/dt-bindings/thermal/mediatek,lvts-thermal.h
->>>> @@ -16,4 +16,14 @@
->>>>    #define MT8195_MCU_LITTLE_CPU2  6
->>>>    #define MT8195_MCU_LITTLE_CPU3  7
->>>>
->>>> +#define MT8195_AP_VPU0  8
->>>
->>> Can't this start from 0? This is a different hardware block. The index
->>> namespace is separate. Same question for MT8192.
->>
->> The ID is used to differentiate the thermal zone identifier in the device
->> tree from the driver.
->>
->> +		vpu0-thermal {
->> +			polling-delay = <0>;
->> +			polling-delay-passive = <0>;
->> +			thermal-sensors = <&lvts_ap MT8195_AP_VPU0>;
->> +
->> +			trips {
->> +				vpu0_crit: trip-crit {
->> +					temperature = <100000>;
->> +					hysteresis = <2000>;
->> +					type = "critical";
->> +				};
->> +			};
->> +		};
->>
->> If MT8195_AP_VPU0 is 0, then the code won't be able to differentiate
->> MT8195_AP_VPU0 and MT8195_MCU_BIG_CPU0
->>
->> The LVTS driver will call devm_thermal_of_zone_register() with the sensor
->> id. If MT8195_MCU_BIG_CPU0 and MT8195_AP_VPU0 have the same id, then at the
->> moment of registering the MT8195_AP_VPU0, the underlying OF thermal
->> framework code will use MT8195_MCU_BIG_CPU0 description instead because it
->> will be the first to be find in the DT.
->>
->> If MT8195_AP_VPU0 is described in DT before, then the same will happen when
->> registering MT8195_MCU_BIG_CPU0, MT8195_AP_VPU0 will be registered instead.
->>
->> IOW all ids must be different.
-> 
-> That's broken for how producer/consumer phandle+args bindings work.
+Regards,
+Alex
 
-Do you mean this is broken for thermal zone description in the DT in 
-general ?
-
-What would be the correct approach ?
-
-
-
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
-
+Le ven. 17 mars 2023 =C3=A0 12:25, Matthias Brugger
+<matthias.bgg@gmail.com> a =C3=A9crit :
+>
+>
+>
+> On 06/03/2023 17:15, Alexandre Mergnat wrote:
+> > The item which have the mediatek,mt8192-disp-ccorr const compatible alr=
+eady
+> > exist above. Remove duplicated fallback.
+> >
+> > Fixes: 137272ef1b0f ("dt-bindings: display: mediatek: Fix the fallback =
+for mediatek,mt8186-disp-ccorr")
+>
+> We can argue if dt-binding patches should have a fixes tag at all. Given =
+the
+> fact that there are so many warnings still around, I don't see any value =
+add to
+> backport these to stable kernel.
+>
+> That said, this is defenitely no fix, as it's only a code clean-up. No wa=
+rning,
+> no bug, no functional error fixed here :)
+>
+> > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> > ---
+> > Fix MTK color correction binding
+> >
+> > The fallback compatible has been duplicated in the 137272ef1b0f commit.
+> >
+> > To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> > To: Philipp Zabel <p.zabel@pengutronix.de>
+> > To: David Airlie <airlied@gmail.com>
+> > To: Daniel Vetter <daniel@ffwll.ch>
+> > To: Rob Herring <robh+dt@kernel.org>
+> > To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+> > To: Matthias Brugger <matthias.bgg@gmail.com>
+> > To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com=
+>
+> > To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> > Cc: Rob Herring <robh@kernel.org>
+> > Cc: dri-devel@lists.freedesktop.org
+> > Cc: linux-mediatek@lists.infradead.org
+> > Cc: devicetree@vger.kernel.org
+> > Cc: linux-kernel@vger.kernel.org
+> > Cc: linux-arm-kernel@lists.infradead.org
+> > ---
+> > Changes in v2:
+> > - Fix commit title.
+> > - Link to v1: https://lore.kernel.org/r/20230306-ccorr-binding-fix-v1-0=
+-177d81d60c69@baylibre.com
+> > ---
+> >   Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yam=
+l | 3 ---
+> >   1 file changed, 3 deletions(-)
+> >
+> > diff --git a/Documentation/devicetree/bindings/display/mediatek/mediate=
+k,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+ccorr.yaml
+> > index b04820c95b22..3aaf44719786 100644
+> > --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr=
+.yaml
+> > +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr=
+.yaml
+> > @@ -29,9 +29,6 @@ properties:
+> >             - enum:
+> >                 - mediatek,mt8188-disp-ccorr
+> >                 - mediatek,mt8195-disp-ccorr
+> > -          - const: mediatek,mt8192-disp-ccorr
+> > -      - items:
+> > -          - enum:
+> >                 - mediatek,mt8186-disp-ccorr
+>
+> Please sort compatibles, that will allow for easier reading once we add m=
+ore to
+> the file.
+>
+> Regards,
+> Matthias
+>
+> >             - const: mediatek,mt8192-disp-ccorr
+> >
+> >
+> > ---
+> > base-commit: add072536971d7ce891fde3cdbf68c55e7cfa95a
+> > change-id: 20230306-ccorr-binding-fix-718c6d725088
+> >
+> > Best regards,
 
