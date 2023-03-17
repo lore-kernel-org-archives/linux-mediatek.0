@@ -4,110 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8236DC74A5B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 09:04:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13DECC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 09:16:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F+9q32H5maQAY7+Dr81+RVllp8r8V/8Ihh6QFteXqFU=; b=IcSZIvDsfiT8CjJWymONldgNVh
-	50XLNFcj6lGtbyWm7gN92VEVDXhd+yGkAVLe8AoM6WfyLZlKlG5UjGjHX/qVqas1MTxMaWPSpZjoY
-	lECm5O05DvJug0sv4fbsRv3sbXn5+/7P+v3Kku7Kl7PfrFqztR+A5WKOreOsTuaeFk/8lWudKN6lR
-	ftFBNzwt9W1ph3yuNCfqHFYhBaFq7EK4eZwP1PO7E9gwBcY8pPs6u5HJAssC3MjFrllY4RmpBBoW0
-	0VX1sK+gXWXXPyPLy94U/f7V3qMnU5hRN4ixxeysJjz6qqn7tK5RFd6s0Iw8XD036jVlxwcfuHFw6
-	s3YXAHCw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HK6jXpbP8L8/LEWjHAidc1nyc9oWHOpCfxw/41IYs64=; b=Y6DBpuNq4+TfT9J3yGFbPQuT3Z
+	thHi3RrHUn6FYsRHZLxY0OT9QwAFb8b1PguL03o9DkTM9sD+GpiWmqU8dNsApUiG+JlXclSivniel
+	tP4VnpKLWk7RhqpKbeYNgDiBKHVKxZjMITtiIqLv8/OLRca4e+ww+rpQ9LjaqGb6gQHPn0qULf4Fr
+	LYYfcHbjgbJ98tKgQdcmcokCY9ZV8kAZBtes5jnqQKUajN9g4O2U0mRBTOolJgTTSwAA0wtLZm6EZ
+	rew+ataUPg9Sl6JC+tbyyjAn6d5gWe0Mei86RBmld+fZFs4JRC3xyh7kUI9YCZ5EBPMVKbxVmcfWc
+	cetH+cJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pd60J-001e38-2d;
-	Fri, 17 Mar 2023 09:04:03 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1pd6Bu-001gZh-0z;
+	Fri, 17 Mar 2023 09:16:02 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pd60H-001e1a-1z
-	for linux-mediatek@lists.infradead.org;
-	Fri, 17 Mar 2023 09:04:03 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id w9so17717415edc.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 17 Mar 2023 02:04:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1679043840;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=F+9q32H5maQAY7+Dr81+RVllp8r8V/8Ihh6QFteXqFU=;
-        b=monslhkk1VBvMFaXE+OmJpTJ7739bvnwzQ1nH76yBk0x2FvUZw9b+Eu8kFOwfvJDyQ
-         EMTxv3ziUDzdDYeevUA8okud/BGIBN7JVK/57Q4RaX3SKWkBwygjKPH64x0bG5c0Lgqa
-         A4kqEOuXntc2b9UGi+QJj3o814dpeuwV6GV3vpJZSFwr9wuXSnXECIYc+19S8HR2pI/T
-         rmOFjTzUfN7KMBXlFGr0glqk4sooxMJ1UYIRmKssQXUXE5z8QSUU/sa5wbNDkK6eDj4P
-         bPD/AR27HeaDD9i0DFNqnyU1ZBJnP6W2m6M/Sic6cDta89U0qQxoIDpf8pVcDSlRm+/7
-         KR3Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679043840;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=F+9q32H5maQAY7+Dr81+RVllp8r8V/8Ihh6QFteXqFU=;
-        b=FqAtpsSoNhctRIcj8GdyZ51vcGgU295jtdaBESjnaSnbGQwc/Tr5Oi/vHeZvYWYoZn
-         +glUkrYkSma7U1kO73jvX2sad0llIhsAjouVUPJAQBwIGUI4+w9gw9FIKLiYKTfTSgMb
-         01PxyhVKpq8OZtN/HVqCd20aQO5hJcOpI7uMye8aUoKWr501Is/O0sL0M++K5n8FJSrT
-         MVWQttv6qcqbJQrnX6/jrEK62MnMWy5INHNKaGsEjqlA+xQQP7+D29+v9ZnjS+vE0Qfu
-         jjaNI4FsHFwHAd8U1tBbHh3ixlfXH0hSYCXL9FxgpXyxlZeVodEY8b2qJJw3lEYkglGr
-         Xrew==
-X-Gm-Message-State: AO0yUKW/eKQw0+GHa7mDnzeDKG+qrgoLJWY6fgjREQXUvbcSa5ZjMRoZ
-	Vq7QchnPI3v/CF/NzL0V2RgZzw==
-X-Google-Smtp-Source: AK7set8bTjVCu5fhcJEjLTpRFEkjqV3j8SkNDWaEpR82X2mKS8ejahTe3YQClj1j5CUX+i8qaGJ3Tw==
-X-Received: by 2002:a17:907:9622:b0:932:35b1:47fa with SMTP id gb34-20020a170907962200b0093235b147famr601376ejc.64.1679043840103;
-        Fri, 17 Mar 2023 02:04:00 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:848a:1971:93e0:b465? ([2a02:810d:15c0:828:848a:1971:93e0:b465])
-        by smtp.gmail.com with ESMTPSA id lg10-20020a170906f88a00b008cc920469b5sm744608ejb.18.2023.03.17.02.03.58
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 17 Mar 2023 02:03:59 -0700 (PDT)
-Message-ID: <4027714e-b4e8-953b-68e2-f74f7a7f0e8e@linaro.org>
-Date: Fri, 17 Mar 2023 10:03:58 +0100
+	id 1pd6Bq-001gYN-2Y;
+	Fri, 17 Mar 2023 09:16:00 +0000
+X-UUID: 503891b0c4a411ed86fbcd8805c7ac66-20230317
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=HK6jXpbP8L8/LEWjHAidc1nyc9oWHOpCfxw/41IYs64=;
+	b=QkQbVtPinI/H0TkZKgTMpubRkBO0ctMLWVVU66yRKHGfWwDcwzQwjmYqYuucr2cGchOdYdxFWp5Os7j5MD2yFECyHFPkI0xFMbC/fQzPcLOhYF/cUD50HBMbmXC8QJYyfBMYDfU8LdVkKYaKIdKhNs8WN6NmXnp+dtnhCv8xVy4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.21,REQID:8ab152ae-b222-469b-903e-1912cf5959cd,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:83295aa,CLOUDID:114f8fb3-beed-4dfc-bd9c-e1b22fa6ccc4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 503891b0c4a411ed86fbcd8805c7ac66-20230317
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <yong.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1009374898; Fri, 17 Mar 2023 02:15:51 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Fri, 17 Mar 2023 16:55:48 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Fri, 17 Mar 2023 16:55:47 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Rob Herring
+	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Yong Wu <yong.wu@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	<iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <mingyuan.ma@mediatek.com>,
+	<yf.wang@mediatek.com>, <jianjiao.zeng@mediatek.com>,
+	<chengci.xu@mediatek.com>
+Subject: [PATCH v9 0/7] MT8188 IOMMU SUPPORT
+Date: Fri, 17 Mar 2023 16:55:34 +0800
+Message-ID: <20230317085541.20447-1-yong.wu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH v29 1/7] dt-bindings: mediatek: add ethdr definition for
- mt8195
-Content-Language: en-US
-To: =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
- "nathan@kernel.org" <nathan@kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "daniel@ffwll.ch" <daniel@ffwll.ch>, =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?=
- <ck.hu@mediatek.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "clang-built-linux@googlegroups.com" <clang-built-linux@googlegroups.com>,
- "ndesaulniers@google.com" <ndesaulniers@google.com>
-References: <20221227081011.6426-1-nancy.lin@mediatek.com>
- <20221227081011.6426-2-nancy.lin@mediatek.com>
- <4aff6a7a3b606f26ec793192d9c75774276935e0.camel@mediatek.com>
- <2700bd6c-f00d-fa99-b730-2fcdf89089fa@linaro.org>
- <1d65e8b2de708db18b5f7a0faaa53834e1002d9f.camel@mediatek.com>
- <b04eb48e-c9aa-0404-33ec-bef623b8282f@linaro.org>
- <e5ceec9e-d51b-2aeb-1db7-b79b151bd44c@collabora.com>
- <0ebf187d-972e-4228-d8a0-8c0ce02f642d@linaro.org>
- <72cf6344a1c5942bff0872d05dce82b787b49b76.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <72cf6344a1c5942bff0872d05dce82b787b49b76.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230317_020401_656904_070D43D9 
-X-CRM114-Status: GOOD (  15.47  )
+X-CRM114-CacheID: sfid-20230317_021558_835148_40FC0BDA 
+X-CRM114-Status: GOOD (  17.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,81 +87,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/03/2023 08:55, Nancy Lin (林欣螢) wrote:
-> On Thu, 2023-03-16 at 12:36 +0100, Krzysztof Kozlowski wrote:
->> On 16/03/2023 10:53, AngeloGioacchino Del Regno wrote:
->>
->>> Hello Krzysztof, Nancy,
->>>
->>> Since this series has reached v29, can we please reach an agreement
->>> on the bindings
->>> to use here, so that we can get this finally upstreamed?
->>>
->>> I will put some examples to try to get this issue resolved.
->>>
->>> ### Example 1: Constrain the number of GCE entries to *seven* array
->>> elements (7x4!)
->>>
->>>    mediatek,gce-client-reg:
->>>      $ref: /schemas/types.yaml#/definitions/phandle-array
->>>      maxItems: 1
->>>      description: The register of display function block to be set
->>> by gce.
->>>        There are 4 arguments in this property, gce node, subsys id,
->>> offset and
->>>        register size. The subsys id is defined in the gce header of
->>> each chips
->>>        include/dt-bindings/gce/<chip>-gce.h, mapping to the
->>> register of display
->>>        function block.
->>>      items:
->>>        minItems: 28
->>>        maxItems: 28
->>>        items:                     <----- this block doesn't seem to
->>> get checked :\
->>>          - description: phandle of GCE
->>>          - description: GCE subsys id
->>>          - description: register offset
->>>          - description: register size
->>
->> This is what we would like to have but it requires exception in
->> dtschema. Thus:
->>
->>>
->>>
->>> ### Example 2: Don't care about constraining the number of
->>> arguments
->>>
->>>    mediatek,gce-client-reg:
->>>      $ref: /schemas/types.yaml#/definitions/phandle-array
->>>      maxItems: 1
->>>      description: The register of display function block to be set
->>> by gce.
->>>        There are 4 arguments in this property, gce node, subsys id,
->>> offset and
->>>        register size. The subsys id is defined in the gce header of
->>> each chips
->>>        include/dt-bindings/gce/<chip>-gce.h, mapping to the
->>> register of display
->>>        function block.
->>
->> use this.
->>
->> Best regards,
->> Krzysztof
-> 
-> 
-> Hi Krzysztof, Angelo,
-> 
-> Thanks for the comment.
-> The Example 2 can pass dt_binding_check. 
-> 
-> But the example in the binding has 7 items [1] and dts [2]. Does the
-> "maxItems: 1" affect any other schema or dts check? 
+MT8188 have 3 IOMMU HWs. 2 IOMMU HW is for multimedia, and 1 IOMMU HW
+is for infra-master, like PCIe.
 
-Ah, then it should be maxItems: 7, not 1.
+About the 2 MM IOMMU HW, the connection could be something like this:
 
-Best regards,
-Krzysztof
+        IOMMU(VDO)          IOMMU(VPP)
+           |                   |
+      SMI_COMMON(VDO)      SMI_COMMON(VPP)
+      ---------------     ----------------
+      |      |   ...      |      |     ...
+    larb0 larb2  ...    larb1 larb3    ...
+
+INFRA IOMMU does not have SMI, the master connects to IOMMU directly.
+
+Although multiple banks supported in MT8188, we only use one of them,
+which means PCIe is put in bank0 of INFRA IOMMU.
+
+So we have two pgtable for MT8188, specifically, these two MM IOMMU HW
+share a pgtable while INFRA IOMMU HW use a independent pgtable.
+
+Another change is that we add some SMC command for INFRA master to 
+enable/disable INFRA IOMMU in ATF considering security concerns.
+
+We also adjust the flow of mtk_iommu_config to reduce indention.
+
+change since v9:
+  - Move the patch about setting set_dma_mask out from this patchset.
+  - Add a MAINTAINER patch since the header file was added a prefix "mediatek,"
+
+change since v8:
+    https://lore.kernel.org/linux-mediatek/20230307080555.14399-1-yong.wu@mediatek.com/
+  - Base on v6.3-rc1 and mtk-iommu-dma-range-v5:
+    https://lore.kernel.org/linux-mediatek/20230307023507.13306-1-yong.wu@mediatek.com/
+  - Add a new patch set_dma_mask about since mt8188 support the PA of pgtable 35bits.
+
+changes since v7:
+    https://lore.kernel.org/linux-mediatek/20230216053322.11596-1-yong.wu@mediatek.com/
+  - Base on mtk-iommu-dma-range-v4:
+    https://lore.kernel.org/linux-mediatek/20230215062544.8677-1-yong.wu@mediatek.com/
+  - Add a new patch for two IOMMU share pagetable issue.
+  - Add a new patch for adding iova_region_larb_msk for mt8188.
+  - Add the comment in the dt-binding header file about larb index.
+    This is for readable when updating the iova_region_larb_msk.
+    
+    Since there is something wrong for chengci's mail account when sending
+    to devicetree mail list, we don't know why. I help send this patchset.
+    https://lore.kernel.org/linux-mediatek/5a916595-12ee-92e6-d380-84146dd75218@linaro.org/
+
+changes since v6:
+    https://lore.kernel.org/linux-mediatek/20221223101439.494-1-chengci.xu@mediatek.com/
+  - base on tag: next-20221220.
+  - update commit message of patch[2/4].
+
+changes since v5:
+  - base on tag: next-20221205.
+  - add flag PGTABLE_PA_35_EN for all IOMMU in MT8188.
+  - modify the type of "portid_msk" from "u32" to "unsigned long".
+
+changes since v4:
+  - base on tag: next-20221018.
+  - add patch[2/4] to reduce indention by adjust mtk_iommu_config flow.
+
+changes since v3:
+  - base on tag: next-20220916.
+  - use license "GPL-2.0-only OR BSD-2-Clause" in bingings head file.
+  - drop redundant "portid" assignment when configure infra master.
+  - reduce indentation by using "else if" when config infra master.
+  - update probe flow about "pericfg" for CFG_IFA_MASTER_IN_ATF.
+  - drop unused "pericfg_comp_str" in mt8188_data_infra.
+  - drop words like "This commit/patch".
+
+changes since v2:
+  - base on tag: next-20220831.
+  - rename "mt8188-memory-port.h" to "mediatek,mt8188-memory-port.h".
+  - use dual-license in "mediatek,mt8188-memory-port.h"
+  - remove unnecessary "()" when define SMI_LARB_ID
+
+changes since v1:
+  - base on tag: next-20220803.
+  - adds MT8188 IOMMU support.
+
+Chengci.Xu (5):
+  dt-bindings: mediatek: mt8188: Add binding for MM & INFRA IOMMU
+  iommu/mediatek: Fix two IOMMU share pagetable issue
+  iommu/mediatek: Adjust mtk_iommu_config flow
+  iommu/mediatek: Add enable IOMMU SMC command for INFRA masters
+  iommu/mediatek: Add MT8188 IOMMU Support
+
+Yong Wu (2):
+  iommu/mediatek: mt8188: Add iova_region_larb_msk
+  MAINTAINERS: iommu/mediatek: Update the header file name
+
+ .../bindings/iommu/mediatek,iommu.yaml        |  12 +-
+ MAINTAINERS                                   |   2 +-
+ drivers/iommu/mtk_iommu.c                     | 151 ++++--
+ .../memory/mediatek,mt8188-memory-port.h      | 489 ++++++++++++++++++
+ include/soc/mediatek/smi.h                    |   1 +
+ 5 files changed, 622 insertions(+), 33 deletions(-)
+ create mode 100644 include/dt-bindings/memory/mediatek,mt8188-memory-port.h
+
+-- 
+2.18.0
+
 
 
