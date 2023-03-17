@@ -4,71 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E81E3C74A5B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 20:56:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 965CDC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 21:30:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wWVS4S6J65BvH0oRIVS/7c6LDOVdjwmPQ6PMnkrK3cw=; b=3aJpmrutnGjhqCfL25Vx9Qz8zT
-	W9LkDzehiiu05rHHg3JAEA/RDpZ93SXR3sl5019R+uu21BkKJyUuTZvBClIcYt+Eo0jfs138Kymn9
-	amdXEgzOctzE+SMqZQ0HjiCgXNq/feyQ51pmgpxMhtdHwZA7J2yVTTcQRMX/TvuA0HPGXcnCrSKhG
-	r/Qb6nBZjHoHN04YkBaZVVcyj6UPPeJBpN5XhVnPpiEuE85tcsErwXJttN5HH85TVpYI6maoB/ig8
-	Az4+RtgqyWJy+FMmZvL8+ayfV77G20vjfjEnvSrCHN9qBQgVQnV5fSkOdoqBiw7IFx4fxUIXGstj1
-	dxoSxVHA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=svSDOZGqlBpqSZHit5yPFayaIWAjSd1camlnzH3nrTQ=; b=g1A+hrl4y+f3pa
+	XMkj1gv/tDdQXEgeby40fZiUB5Sdp7erTGIF1RcjVfzLwNp1BK62j/JJl835hHdz7O+LT0b794xdd
+	GtQWVTBFuzCqpwQ4j/UJn/+Nwus1h6DOmys7jxyEhMoNX5IfnIijWLQzCk+whR5Zpoe1AMByow+9X
+	3bKkf+F4fSn3mqMjWuWnNOOoBVkxv+8jKIWgCY9yGdtLADF82qJNgM4vUoTz6uonlOrANAU36Mxah
+	zHO3jEIzGTuUScQtJxGilbCi0cZTpzayE1VMrAkaKDCA2yayQlapQYGERXskGt80LpKEOtzWLnqkB
+	eSI8sWPUF09fE/P+x5cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdH7c-003Mnb-0Q;
-	Fri, 17 Mar 2023 20:56:20 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pdHeY-003Rvk-1C;
+	Fri, 17 Mar 2023 21:30:22 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdH7V-003Mky-13;
-	Fri, 17 Mar 2023 20:56:15 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id B2624B82586;
-	Fri, 17 Mar 2023 20:56:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7AE28C4339B;
-	Fri, 17 Mar 2023 20:56:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1679086570;
-	bh=VzXlHxYNFbUcVstTyt9EJfj+teDRoE31sK1fPAn46Oc=;
-	h=Date:From:To:Cc:Subject:From;
-	b=BaWU4SPzIsEjzmEUwROAS+A0XupSs9pAyKe6SsluWorDLlQLQ48c/R4PXMIjUoedc
-	 l6OqnAFh9uO30POohnzH1oJgyTxZ+f/Hqmxf7TTBIbB1INTdvPH5ykgGPIRQUFM0M6
-	 /BPC2XuqpbKgsrSyVHiKQpPrFv3l4mhFidDd7VyrpyK86bvhFkoftJsZVJu/vVEDIT
-	 tBeZaCGmCb+uokVSbHxAJB1Is5v9mVVkDLuAUoezD8pLhBuHxs1nvpGNQQQAo5xLHq
-	 4Y6JbrC9reKmg13EYFaXLK/HYGfy8PdYc4yuwIfSXuhppR2Sv38Y6n2qwZ7nNYnT4I
-	 r5R2eub3YFFyA==
-Date: Fri, 17 Mar 2023 14:56:39 -0600
-From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
-	linux-hardening@vger.kernel.org
-Subject: [PATCH][next] wifi: mt76: mt7921: Replace fake flex-arrays with
- flexible-array members
-Message-ID: <ZBTUB/kJYQxq/6Cj@work>
+	id 1pdHeU-003Ruk-2Y;
+	Fri, 17 Mar 2023 21:30:20 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id eg48so25306565edb.13;
+        Fri, 17 Mar 2023 14:30:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1679088617;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=svSDOZGqlBpqSZHit5yPFayaIWAjSd1camlnzH3nrTQ=;
+        b=qBjj+LCXL5CTTsQjeYzBYKmGk2JhYuqNk8h6xWpIf1IjIO8QqgA7NL+XgzI5VSAhq6
+         +ESqetLdqoUO1N/V7cprhJuS4aMIcKzl8WyyAnCLi/OuHZ1sUTZ8h07C6DIRD4vFwX0Y
+         5e3YVxnm8HS9IBg+N5T3e09pqbNnMHT2/bwX+OBfukrU8PuulcNTemocib1jv8O3qk3J
+         3/nSSe7o6fFWVUFsBbI6oStAea9lmd962aGT7Y5SERvdxi1Ades20WQshTQUsZ6uNn8k
+         Xqo+Pl8izHzS6FsZCu9vNy1z7jXMPe96DaNLv1yUfB8oo5DuzmFZU2CUsZ6vMQrqZnQy
+         Dtxw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679088617;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=svSDOZGqlBpqSZHit5yPFayaIWAjSd1camlnzH3nrTQ=;
+        b=WOgwKdlzJ9PQdRUOHqVVt41a2cmCBdqL2GTH7CAQAegP7zdSZ8J/uHKVvb2RtiZ3F2
+         40Dq7u0dxy3cTEdeXrjXjLH79EZNmvnYVV9KyC01yETXqn7W7lDFuxYAy/JqrPzeRWue
+         CN+Z1fG6WprL/+ST3HhLH7eMUTeEDWoTSVl7rbLA+nWDpUkEnchD3fD/0m9y6PYOACc0
+         tCmyK45RAqqSIvz2B5rGW1pQC/jcvizyMQV3GkjRcxWBPqsXxAL39DyGNLMYNkU7aN8G
+         E4m/KvCC/03QVl39Qx3bWKFWSNn6kVg9YJqOjuu3F2RyWKtbTK9qVfA0Q/Jx51YyexKA
+         Bwkg==
+X-Gm-Message-State: AO0yUKVVAx6FymCTYU54N1Y54YdtDIqU53JBMtalQTFt69nPIsYetIHy
+	88QegaTA5JTqQl23ZKlJov8=
+X-Google-Smtp-Source: AK7set/pQx743ufDsmhqP+LNcld2+2C21qsGT/HHcejhagzLMOTjwEqtBzNzdsTyK4LILTlswmXGfg==
+X-Received: by 2002:a17:906:118e:b0:92f:b290:78c with SMTP id n14-20020a170906118e00b0092fb290078cmr912511eja.21.1679088616596;
+        Fri, 17 Mar 2023 14:30:16 -0700 (PDT)
+Received: from arinc9-PC.lan ([149.91.1.15])
+        by smtp.gmail.com with ESMTPSA id v19-20020a17090651d300b0092b86d41dbasm1404683ejk.114.2023.03.17.14.30.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 17 Mar 2023 14:30:16 -0700 (PDT)
+From: arinc9.unal@gmail.com
+X-Google-Original-From: arinc.unal@arinc9.com
+To: Linus Walleij <linus.walleij@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Subject: [PATCH v3 00/21] pinctrl: ralink: fix ABI, improve driver, move to mediatek, improve dt-bindings
+Date: Sat, 18 Mar 2023 00:29:50 +0300
+Message-Id: <20230317213011.13656-1-arinc.unal@arinc9.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230317_135613_659060_5E792BD7 
-X-CRM114-Status: GOOD (  11.33  )
+X-CRM114-CacheID: sfid-20230317_143018_852680_2603A861 
+X-CRM114-Status: GOOD (  17.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,85 +86,122 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: linux-kernel@vger.kernel.org, Daniel Santos <daniel.santos@pobox.com>, erkin.bozoglu@xeront.com, =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, linux-mips@vger.kernel.org, devicetree@vger.kernel.org, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Andy Teng <andy.teng@mediatek.com>, Hui Liu <hui.liu@mediatek.com>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Del Regno <angelogioacchino.delregno@collabora.com>, =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>, linux-gpio@vger.kernel.org, Sean Wang <sean.wang@kernel.org>, Daniel Golle <daniel@makrotopia.org>, William Dean <williamsukatube@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Zero-length arrays as fake flexible arrays are deprecated and we are
-moving towards adopting C99 flexible-array members instead.
+This is an ambitious effort I've been wanting to do for months.
 
-Address the following warnings found with GCC-13 and
--fstrict-flex-arrays=3 enabled:
-drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c:266:25: warning: array subscript 0 is outside array bounds of ‘struct mt7921_asar_dyn_limit_v2[0]’ [-Warray-bounds=]
-drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c:263:25: warning: array subscript 0 is outside array bounds of ‘struct mt7921_asar_dyn_limit[0]’ [-Warray-bounds=]
-drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c:223:28: warning: array subscript <unknown> is outside array bounds of ‘struct mt7921_asar_geo_limit_v2[0]’ [-Warray-bounds=]
-drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c:220:28: warning: array subscript <unknown> is outside array bounds of ‘struct mt7921_asar_geo_limit[0]’ [-Warray-bounds=]
-drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c:334:37: warning: array subscript i is outside array bounds of ‘u8[0]’ {aka ‘unsigned char[]’} [-Warray-bounds=]
+Straight off the bat, I'm fixing the ABI that I broke a while back, by
+reintroducing the ralink,rt2880-pinmux compatible string.
 
-Notice that the DECLARE_FLEX_ARRAY() helper allows for flexible-array
-members in unions.
+If you take a look at the schema for mt7620 and rt305x, some functions got
+multiple lists for groups. Like refclk on mt7620. Because mt7620 and
+mt7628/mt7688 SoCs use the same compatible string, it's impossible to
+differentiate on the binding which SoC a devicetree is actually for.
+Therefore, the binding will allow all groups listed for that function. For
+example, if the SoC is mt7620, only the refclk function for the mdio group
+can be used. If one were to put "spi cs1" as the function there, there
+wouldn't be a warning.
 
-This helps with the ongoing efforts to tighten the FORTIFY_SOURCE
-routines on memcpy() and help us make progress towards globally
-enabling -fstrict-flex-arrays=3 [1].
+I address this by introducing new compatible strings for these SoCs, then
+split the schemas. I also separate mt7628/mt7688 from mt7620 pinctrl
+subdriver in the process.
 
-Link: https://github.com/KSPP/linux/issues/21
-Link: https://github.com/KSPP/linux/issues/272
-Link: https://gcc.gnu.org/pipermail/gcc-patches/2022-October/602902.html [1]
-Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+I wanted to split the rt305x driver too but too much code would be reused
+so I backed down from that.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h b/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h
-index 35268b0890ad..6f2c4a572572 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h
-@@ -24,7 +24,7 @@ struct mt7921_asar_dyn {
- 	u8 names[4];
- 	u8 enable;
- 	u8 nr_tbl;
--	struct mt7921_asar_dyn_limit tbl[0];
-+	DECLARE_FLEX_ARRAY(struct mt7921_asar_dyn_limit, tbl);
- } __packed;
- 
- struct mt7921_asar_dyn_limit_v2 {
-@@ -37,7 +37,7 @@ struct mt7921_asar_dyn_v2 {
- 	u8 enable;
- 	u8 rsvd;
- 	u8 nr_tbl;
--	struct mt7921_asar_dyn_limit_v2 tbl[0];
-+	DECLARE_FLEX_ARRAY(struct mt7921_asar_dyn_limit_v2, tbl);
- } __packed;
- 
- struct mt7921_asar_geo_band {
-@@ -55,7 +55,7 @@ struct mt7921_asar_geo {
- 	u8 names[4];
- 	u8 version;
- 	u8 nr_tbl;
--	struct mt7921_asar_geo_limit tbl[0];
-+	DECLARE_FLEX_ARRAY(struct mt7921_asar_geo_limit, tbl);
- } __packed;
- 
- struct mt7921_asar_geo_limit_v2 {
-@@ -69,7 +69,7 @@ struct mt7921_asar_geo_v2 {
- 	u8 version;
- 	u8 rsvd;
- 	u8 nr_tbl;
--	struct mt7921_asar_geo_limit_v2 tbl[0];
-+	DECLARE_FLEX_ARRAY(struct mt7921_asar_geo_limit_v2, tbl);
- } __packed;
- 
- struct mt7921_asar_cl {
-@@ -85,7 +85,7 @@ struct mt7921_asar_fg {
- 	u8 rsvd;
- 	u8 nr_flag;
- 	u8 rsvd1;
--	u8 flag[0];
-+	u8 flag[];
- } __packed;
- 
- struct mt7921_acpi_sar {
--- 
-2.34.1
+This platform from Ralink was acquired by MediaTek in 2011. Then, MediaTek
+introduced new SoCs which utilise this platform. We're moving the Ralink
+pinctrl driver to MediaTek, and rename the schemas for MediaTek SoCs to
+mediatek.
+
+I've renamed the ralink core driver to mtmips. I decided to call the core
+mtmips as I've seen folks from MediaTek use the same name when they added
+support for MT7621 pinctrl on U-Boot. Feel free to comment on this.
+
+Arınç
+
+v3:
+- Address Rob's indentation report.
+- Add Rob's reviewed-by.
+- Rebase to linusw/linux-pinctrl.git devel.
+
+v2:
+- Address Rob and Krzysztof's reviews, add Rob's acked-by.
+- More more cleanups, hooray!
+- Don't add new mediatek compatible strings, we don't do that here. RIP
+Chadwick Boseman.
+- Don't deprecate ralink,mt7620-pinctrl, we need it now.
+- More slight changes I can't currently remember to mention.
+
+RFC to v1:
+- Address Rob and Krzysztof's reviews, add Rob's acked-by.
+- More cleanups, hooray!
+- Keep ralink,rt2880-pinmux deprecated.
+- Deprecate ralink,mt7620-pinctrl. Another one bites the dust!
+- More slight changes I can't currently remember to mention.
+
+Arınç ÜNAL (21):
+  pinctrl: ralink: reintroduce ralink,rt2880-pinmux compatible string
+  pinctrl: ralink: rt305x: add new compatible string for every SoC
+  pinctrl: ralink: mt7620: split out to mt76x8
+  pinctrl: ralink: move to mediatek as mtmips
+  pinctrl: mediatek: remove OF_GPIO as reverse dependency
+  dt-bindings: pinctrl: ralink: move additionalProperties to top
+  dt-bindings: pinctrl: ralink: drop quotes from referred schemas
+  dt-bindings: pinctrl: ralink: add new compatible strings
+  dt-bindings: pinctrl: ralink: {mt7620,mt7621}: rename to mediatek
+  dt-bindings: pinctrl: mediatek: mt6795: rename to mediatek,mt6795-pinctrl
+  dt-bindings: pinctrl: mediatek: mt8186: rename to mediatek,mt8186-pinctrl
+  dt-bindings: pinctrl: mediatek: mt8192: rename to mediatek,mt8192-pinctrl
+  dt-bindings: pinctrl: mediatek: mt8195: rename to mediatek,mt8195-pinctrl
+  dt-bindings: pinctrl: mediatek: fix naming inconsistency
+  dt-bindings: pinctrl: {mediatek,ralink}: fix formatting
+  dt-bindings: pinctrl: mediatek: fix pinmux header location
+  dt-bindings: pinctrl: mediatek: drop quotes from referred schemas
+  dt-bindings: pinctrl: mediatek: mt7986: fix patternProperties regex
+  dt-bindings: pinctrl: ralink: rt305x: split binding
+  dt-bindings: pinctrl: mediatek: mt7620: split binding
+  MAINTAINERS: move ralink pinctrl to mediatek mips pinctrl
+
+ .../pinctrl/mediatek,mt65xx-pinctrl.yaml        |  32 +-
+ .../pinctrl/mediatek,mt6779-pinctrl.yaml        |  39 +-
+ ...mt6795.yaml => mediatek,mt6795-pinctrl.yaml} |  51 +--
+ .../pinctrl/mediatek,mt7620-pinctrl.yaml        | 298 ++++++++++++++
+ ...inctrl.yaml => mediatek,mt7621-pinctrl.yaml} |  17 +-
+ .../pinctrl/mediatek,mt7622-pinctrl.yaml        |  34 +-
+ ...inctrl.yaml => mediatek,mt76x8-pinctrl.yaml} | 252 ++----------
+ .../pinctrl/mediatek,mt7981-pinctrl.yaml        |  35 +-
+ .../pinctrl/mediatek,mt7986-pinctrl.yaml        |  80 ++--
+ .../pinctrl/mediatek,mt8183-pinctrl.yaml        |  32 +-
+ ...mt8186.yaml => mediatek,mt8186-pinctrl.yaml} |  55 ++-
+ .../pinctrl/mediatek,mt8188-pinctrl.yaml        |  80 ++--
+ ...mt8192.yaml => mediatek,mt8192-pinctrl.yaml} |  57 +--
+ ...mt8195.yaml => mediatek,mt8195-pinctrl.yaml} |  51 ++-
+ .../pinctrl/mediatek,mt8365-pinctrl.yaml        |  30 +-
+ .../bindings/pinctrl/ralink,rt2880-pinctrl.yaml |  11 +-
+ .../bindings/pinctrl/ralink,rt305x-pinctrl.yaml |  89 +----
+ .../bindings/pinctrl/ralink,rt3352-pinctrl.yaml | 243 ++++++++++++
+ .../bindings/pinctrl/ralink,rt3883-pinctrl.yaml |  11 +-
+ .../bindings/pinctrl/ralink,rt5350-pinctrl.yaml | 206 ++++++++++
+ MAINTAINERS                                     |  29 +-
+ drivers/pinctrl/Kconfig                         |   1 -
+ drivers/pinctrl/Makefile                        |   1 -
+ drivers/pinctrl/mediatek/Kconfig                |  54 ++-
+ drivers/pinctrl/mediatek/Makefile               |  63 +--
+ drivers/pinctrl/mediatek/pinctrl-mt7620.c       | 137 +++++++
+ .../{ralink => mediatek}/pinctrl-mt7621.c       |  31 +-
+ drivers/pinctrl/mediatek/pinctrl-mt76x8.c       | 283 ++++++++++++++
+ .../pinctrl-mtmips.c}                           |  90 ++---
+ .../pinctrl-mtmips.h}                           |  16 +-
+ .../{ralink => mediatek}/pinctrl-rt2880.c       |  21 +-
+ .../{ralink => mediatek}/pinctrl-rt305x.c       |  47 +--
+ .../{ralink => mediatek}/pinctrl-rt3883.c       |  29 +-
+ drivers/pinctrl/ralink/Kconfig                  |  35 --
+ drivers/pinctrl/ralink/Makefile                 |   8 -
+ drivers/pinctrl/ralink/pinctrl-mt7620.c         | 391 -------------------
+ 36 files changed, 1742 insertions(+), 1197 deletions(-)
+
 
 
