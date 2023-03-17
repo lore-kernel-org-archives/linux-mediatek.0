@@ -4,94 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF392C74A5B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 22:46:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09A07C74A5B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 23:36:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IRRRjQq3YR+UffmCBrvj5g0GLFd9Ga+6nn8JCLDb/LY=; b=WiFu0PebulPTDw
-	Z1T1daEArCddQM3HAlTNpD6vyo9L/QSYxqjCdJaWGaRc1hQSvJZd8CXofFLJ9KQZxLmC5RlujnSWU
-	T4VhFaAufOEcZpMsTEWQwsriRBa0sECyEKCJsUfSAWqfWwSQbzk2LcNr12OGndgcqLAQl9ScgQ8kR
-	S20IVM4Vh1GL/KhiYTYi38fCvQTwlfib0jZQaT6Qcg2v2s8dvgRKWSIkqI59UIxqoqcVCE0deRYib
-	lms6j0e2HzM0seY5V2btCkpqlH4DrE/z5bww22GFH+J8VLPF0XWdk35SNYL7LA2VMizJQhAtKKkO7
-	k9QoDt0MhqkGsLOIlIqA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=P0aF6ySv7asajF8QSLAx821GR/b/dPYB7aTm0dn3L94=; b=hgL54kQuXRyLGfzkYI1I5GTtB9
+	i6xGzRY59IjO3hY3HTMHnkN2JH+yXOMMoOnTu0eteKhroJ8eK2MksFssVruDAA2uRBMAZA21c+B8M
+	iPPYM8lSNF9e3qKn+Om5OFrcJ1WASzhkyv6NNIwLDzl/G0TVwBEoBtco7oKGHLhe0eem7fdAunX4/
+	nye9rGgZbvBz2z6TbDJJmM6aXCZUUq8MnfgOnSAzMMVQdZPCWD7bvLKaDHgr09N5iDj5zDc/bnqX6
+	I4TVrf0p++j82NlDoK4HxS9EZA0TIoarI6ozHil8DqDMJyS1NC6TFDjPoiUFhxwCrBKU7mfTWUWGI
+	Xf5E0WIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdIpt-003bJu-2Q;
-	Fri, 17 Mar 2023 22:46:09 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pdJcW-003g4J-1U;
+	Fri, 17 Mar 2023 23:36:24 +0000
+Received: from mail-il1-f173.google.com ([209.85.166.173])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdIpl-003bFo-1C;
-	Fri, 17 Mar 2023 22:46:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=IRRRjQq3YR+UffmCBrvj5g0GLFd9Ga+6nn8JCLDb/LY=; b=jhB6f2LTl5rHWu4wjFc683TW6q
-	gPzMPzsYBNh567D5jt4cIiF2UGrNfZvYhROIHrgvTccHh9Q13G9yE1tgigo2xVyDfbhsuwYYHTXvu
-	726I47o8VtPv02ComSRqxcnluHH8Dw2Yx00AL/Tihb0Aevp5arGEHz6LBWpyDw97t+8EBrQuQqIEG
-	aIqeOZqzsKQngvhThnEuntx+N1w952O8Nm7JJ6v3os/4YKChh5jfPfoz3XnkMimxeCZ7Z/KJVj0a0
-	ZkX14j+f0KYQqeoB7svnAi9JWu2bFAhKirZpMmf41iKoYjd/IY3D+X6bQlNl4SI2fvnJzNTwzAcr8
-	YSgjXbBQ==;
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdHfE-002vWU-26;
-	Fri, 17 Mar 2023 21:31:07 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id cy23so25349458edb.12;
-        Fri, 17 Mar 2023 14:31:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679088659;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=IRRRjQq3YR+UffmCBrvj5g0GLFd9Ga+6nn8JCLDb/LY=;
-        b=gd7/k2Dsv3cvSTMDoIhJiW+kYCEnvSwtq3EhasiCnlb8kdELNv3Yku+pkcoPbQW9Yv
-         bWRTaXjlNaFwbdgalWz7ZwT/oqaLrgDVIpBHwAIhN+s5NZRo391aSb4g4X7xbgcELdrH
-         oomojyX4lmS8BLqNcCwSHj8BzyaCXGMtFGrCtLFkhGGdwR+COApf2RVlDjLm6Pt9J2YM
-         zGUO4GrFy4HvY/1jkaUvct3Mnwg4tHFVl39iy2pQGVjlXi0+xLQSQIxuBuKYncQoVoWV
-         whSRoMX3RE7qckKUDUFGAW2hMgSFe3mZIQw27AuaM2Yi8bUbXHIOWLG7EVcBJ4vNaI4Q
-         prIg==
+	id 1pdJcQ-003g2T-1A;
+	Fri, 17 Mar 2023 23:36:21 +0000
+Received: by mail-il1-f173.google.com with SMTP id h7so3572991ila.5;
+        Fri, 17 Mar 2023 16:36:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679088659;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=IRRRjQq3YR+UffmCBrvj5g0GLFd9Ga+6nn8JCLDb/LY=;
-        b=3IqcIUfy9h1o5cN2a9su/jX6IIzC5bYc3GE+kwpJKqRnAxOmd7UxpXbas7Bp5W/Wzh
-         mPgu9eDkmYuUrmNJrK6tjwkSKY8hMnLtbsCtO5DY31Nv9AmlcvItMLXJuP1OFI8/9y5v
-         nN+e50t1LQM5U80tgveRsQjf/st7SfUOy9bsEHlvI4ruj87m0YHolaDniGTm3vfVxHhx
-         WO9HPawbf1ghDgRMGezma2B8D2SUVuVC4Mrj+aMTCVusLSL6aqxnihl9GLw7KNwRtzaV
-         cw9r2QEKtPxAySj8HSkkBKXRG3GDQlz0qFVlcrr3ZHj7dT6BMBTJe5lKATLsE7B92BMI
-         Z5WQ==
-X-Gm-Message-State: AO0yUKXT/eRsknYRyF7S86Kwj1O6/CSEdP/ZunyK3k4x66ivW4SB4+Zy
-	ZCpIqs1myQn0DsPyVvPNyFA=
-X-Google-Smtp-Source: AK7set/wLlTE2egESzRiiLAbGob9reK+bCtPzcpYCbbRURE3vgs3lFuaz+ljmGw5GJFnbMJTZoOQsA==
-X-Received: by 2002:a17:906:37d4:b0:922:78e2:7680 with SMTP id o20-20020a17090637d400b0092278e27680mr797923ejc.52.1679088659557;
-        Fri, 17 Mar 2023 14:30:59 -0700 (PDT)
-Received: from arinc9-PC.lan ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id v19-20020a17090651d300b0092b86d41dbasm1404683ejk.114.2023.03.17.14.30.57
+        d=1e100.net; s=20210112; t=1679096174;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=P0aF6ySv7asajF8QSLAx821GR/b/dPYB7aTm0dn3L94=;
+        b=XOFuAy2YLUihQbzF2XDMwr0VmMejLVQdmgJf/bJdY9Z9hJo4YSdRoK0LBqKh2WOpO7
+         juyK7kQazzZfK8JvWIV5IXs4D/ZXMVMRHVzS/Jvjl6qLmIXFgdfxqjU145Aj1MqyVdne
+         sCRpQ5hy3sMWn2weymf9unkFWFiKA2xpuZYmR/LVZD3KVT69+/6xu5bWzuXhJUrTQWT1
+         uTzmIJkIJoeGkwsXOd2A0RkCO8ubfaLA12lpuvwWGv3XuabRgmg1GV8n1bLh/9VAihX2
+         O5T72hZhLU/n/eYvqNvxxLG/y3vf9XGdrYddV75b5XRezYVOfbsU2UWIQv6SZ9OxYXCS
+         njDA==
+X-Gm-Message-State: AO0yUKX1l6OtxZDO3K6SmdZFqxY8/B9uU7FVxDnxnJPQzxUOtyMlvBrg
+	ZxJoSHHn2wVXBBCoB+qO2w==
+X-Google-Smtp-Source: AK7set8i36jIwNGiz3lVm0JEUk3Sk3gigF6WNTviKuhT/8WfE7jes3Obudbc+M/tAFS0rHecCDO7zg==
+X-Received: by 2002:a92:ca8d:0:b0:314:e56:54fc with SMTP id t13-20020a92ca8d000000b003140e5654fcmr245501ilo.1.1679096174333;
+        Fri, 17 Mar 2023 16:36:14 -0700 (PDT)
+Received: from robh_at_kernel.org ([64.188.179.249])
+        by smtp.gmail.com with ESMTPSA id f6-20020a056e020c6600b00315327197d4sm960686ilj.23.2023.03.17.16.36.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Mar 2023 14:30:59 -0700 (PDT)
-From: arinc9.unal@gmail.com
-X-Google-Original-From: arinc.unal@arinc9.com
-To: Linus Walleij <linus.walleij@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Subject: [PATCH v3 17/21] dt-bindings: pinctrl: mediatek: drop quotes from referred schemas
-Date: Sat, 18 Mar 2023 00:30:07 +0300
-Message-Id: <20230317213011.13656-18-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20230317213011.13656-1-arinc.unal@arinc9.com>
-References: <20230317213011.13656-1-arinc.unal@arinc9.com>
+        Fri, 17 Mar 2023 16:36:13 -0700 (PDT)
+Received: (nullmailer pid 3967802 invoked by uid 1000);
+	Fri, 17 Mar 2023 23:36:10 -0000
+From: Rob Herring <robh@kernel.org>
+To: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+	Florian Fainelli <f.fainelli@gmail.com>, 
+	Appana Durga Kedareswara rao <appana.durga.rao@xilinx.com>, 
+	Naga Sureshkumar Relli <naga.sureshkumar.relli@xilinx.com>, Wolfgang Grandegger <wg@grandegger.com>, 
+	Marc Kleine-Budde <mkl@pengutronix.de>, Michal Simek <michal.simek@xilinx.com>, 
+	Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>, 
+	Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, 
+	Tobias Waldekranz <tobias@waldekranz.com>, Lars Povlsen <lars.povlsen@microchip.com>, 
+	Steen Hegelund <Steen.Hegelund@microchip.com>, Daniel Machon <daniel.machon@microchip.com>, 
+	UNGLinuxDriver@microchip.com, Andy Gross <agross@kernel.org>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org, linux-kernel@vger.kernel.org, linux-sunxi@lists.linux.dev, linux-aspeed@lists.ozlabs.org, linux-can@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-mediatek@lists.infradead.org
+Subject: [PATCH] dt-bindings: net: Drop unneeded quotes
+Date: Fri, 17 Mar 2023 18:36:03 -0500
+Message-Id: <20230317233605.3967621-1-robh@kernel.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230317_213105_055122_AA5EF477 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20230317_163618_428754_3F74201B 
+X-CRM114-Status: GOOD (  14.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,250 +93,645 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, Daniel Santos <daniel.santos@pobox.com>, erkin.bozoglu@xeront.com, Rob Herring <robh@kernel.org>, =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, linux-mips@vger.kernel.org, devicetree@vger.kernel.org, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Andy Teng <andy.teng@mediatek.com>, Hui Liu <hui.liu@mediatek.com>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Del Regno <angelogioacchino.delregno@collabora.com>, =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>, linux-gpio@vger.kernel.org, Sean Wang <sean.wang@kernel.org>, Daniel Golle <daniel@makrotopia.org>, William Dean <williamsukatube@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+Cleanup bindings dropping unneeded quotes. Once all these are fixed,
+checking for this can be enabled in yamllint.
 
-Drop the quotes from the referred schemas.
-
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- .../bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml           | 4 ++--
- .../bindings/pinctrl/mediatek,mt6779-pinctrl.yaml           | 4 ++--
- .../bindings/pinctrl/mediatek,mt6795-pinctrl.yaml           | 4 ++--
- .../bindings/pinctrl/mediatek,mt7622-pinctrl.yaml           | 6 +++---
- .../bindings/pinctrl/mediatek,mt7986-pinctrl.yaml           | 6 +++---
- .../bindings/pinctrl/mediatek,mt8183-pinctrl.yaml           | 4 ++--
- .../bindings/pinctrl/mediatek,mt8186-pinctrl.yaml           | 2 +-
- .../bindings/pinctrl/mediatek,mt8188-pinctrl.yaml           | 2 +-
- .../bindings/pinctrl/mediatek,mt8192-pinctrl.yaml           | 4 ++--
- .../bindings/pinctrl/mediatek,mt8195-pinctrl.yaml           | 4 ++--
- 10 files changed, 20 insertions(+), 20 deletions(-)
+ .../devicetree/bindings/net/actions,owl-emac.yaml  |  2 +-
+ .../bindings/net/allwinner,sun4i-a10-emac.yaml     |  2 +-
+ .../bindings/net/allwinner,sun4i-a10-mdio.yaml     |  2 +-
+ .../devicetree/bindings/net/altr,tse.yaml          |  2 +-
+ .../bindings/net/aspeed,ast2600-mdio.yaml          |  2 +-
+ .../devicetree/bindings/net/brcm,amac.yaml         |  2 +-
+ .../devicetree/bindings/net/brcm,systemport.yaml   |  2 +-
+ .../bindings/net/broadcom-bluetooth.yaml           |  2 +-
+ .../devicetree/bindings/net/can/xilinx,can.yaml    |  6 +++---
+ .../devicetree/bindings/net/dsa/brcm,sf2.yaml      |  2 +-
+ .../devicetree/bindings/net/dsa/qca8k.yaml         |  2 +-
+ .../devicetree/bindings/net/engleder,tsnep.yaml    |  2 +-
+ .../devicetree/bindings/net/ethernet-phy.yaml      |  2 +-
+ .../bindings/net/fsl,qoriq-mc-dpmac.yaml           |  2 +-
+ .../bindings/net/intel,ixp4xx-ethernet.yaml        |  8 ++++----
+ .../devicetree/bindings/net/intel,ixp4xx-hss.yaml  | 14 +++++++-------
+ .../devicetree/bindings/net/marvell,mvusb.yaml     |  2 +-
+ .../devicetree/bindings/net/mdio-gpio.yaml         |  2 +-
+ .../devicetree/bindings/net/mediatek,net.yaml      |  2 +-
+ .../bindings/net/mediatek,star-emac.yaml           |  2 +-
+ .../bindings/net/microchip,lan966x-switch.yaml     |  2 +-
+ .../bindings/net/microchip,sparx5-switch.yaml      |  4 ++--
+ .../devicetree/bindings/net/mscc,miim.yaml         |  2 +-
+ .../devicetree/bindings/net/nfc/marvell,nci.yaml   |  2 +-
+ .../devicetree/bindings/net/nfc/nxp,pn532.yaml     |  2 +-
+ .../bindings/net/pse-pd/podl-pse-regulator.yaml    |  2 +-
+ .../devicetree/bindings/net/qcom,ipq4019-mdio.yaml |  2 +-
+ .../devicetree/bindings/net/qcom,ipq8064-mdio.yaml |  2 +-
+ .../devicetree/bindings/net/rockchip,emac.yaml     |  2 +-
+ .../devicetree/bindings/net/snps,dwmac.yaml        |  2 +-
+ .../devicetree/bindings/net/stm32-dwmac.yaml       |  4 ++--
+ .../devicetree/bindings/net/ti,cpsw-switch.yaml    | 10 +++++-----
+ .../devicetree/bindings/net/ti,davinci-mdio.yaml   |  2 +-
+ .../devicetree/bindings/net/ti,dp83822.yaml        |  2 +-
+ .../devicetree/bindings/net/ti,dp83867.yaml        |  2 +-
+ .../devicetree/bindings/net/ti,dp83869.yaml        |  2 +-
+ 36 files changed, 53 insertions(+), 53 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
-index 3b3d59140073..bccff08a5ba3 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
-@@ -67,7 +67,7 @@ required:
-   - "#gpio-cells"
+diff --git a/Documentation/devicetree/bindings/net/actions,owl-emac.yaml b/Documentation/devicetree/bindings/net/actions,owl-emac.yaml
+index d30fada2ac39..5718ab4654b2 100644
+--- a/Documentation/devicetree/bindings/net/actions,owl-emac.yaml
++++ b/Documentation/devicetree/bindings/net/actions,owl-emac.yaml
+@@ -16,7 +16,7 @@ description: |
+   operation modes at 10/100 Mb/s data transfer rates.
  
  allOf:
--  - $ref: "pinctrl.yaml#"
-+  - $ref: pinctrl.yaml#
+-  - $ref: "ethernet-controller.yaml#"
++  - $ref: ethernet-controller.yaml#
  
- patternProperties:
-   'pins$':
-@@ -83,7 +83,7 @@ patternProperties:
-           pins it needs, and how they should be configured, with regard to muxer
-           configuration, pullups, drive strength, input enable/disable and input
-           schmitt.
--        $ref: "/schemas/pinctrl/pincfg-node.yaml"
-+        $ref: /schemas/pinctrl/pincfg-node.yaml
- 
-         properties:
-           pinmux:
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
-index e5e7143674b5..7f0e2d6cd6d9 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
-@@ -58,7 +58,7 @@ required:
-   - "#gpio-cells"
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/net/allwinner,sun4i-a10-emac.yaml b/Documentation/devicetree/bindings/net/allwinner,sun4i-a10-emac.yaml
+index 987b91b9afe9..eb26623dab51 100644
+--- a/Documentation/devicetree/bindings/net/allwinner,sun4i-a10-emac.yaml
++++ b/Documentation/devicetree/bindings/net/allwinner,sun4i-a10-emac.yaml
+@@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
+ title: Allwinner A10 EMAC Ethernet Controller
  
  allOf:
--  - $ref: "pinctrl.yaml#"
-+  - $ref: pinctrl.yaml#
+-  - $ref: "ethernet-controller.yaml#"
++  - $ref: ethernet-controller.yaml#
+ 
+ maintainers:
+   - Chen-Yu Tsai <wens@csie.org>
+diff --git a/Documentation/devicetree/bindings/net/allwinner,sun4i-a10-mdio.yaml b/Documentation/devicetree/bindings/net/allwinner,sun4i-a10-mdio.yaml
+index ede977cdfb8d..85f552b907f3 100644
+--- a/Documentation/devicetree/bindings/net/allwinner,sun4i-a10-mdio.yaml
++++ b/Documentation/devicetree/bindings/net/allwinner,sun4i-a10-mdio.yaml
+@@ -11,7 +11,7 @@ maintainers:
+   - Maxime Ripard <mripard@kernel.org>
+ 
+ allOf:
+-  - $ref: "mdio.yaml#"
++  - $ref: mdio.yaml#
+ 
+ # Select every compatible, including the deprecated ones. This way, we
+ # will be able to report a warning when we have that compatible, since
+diff --git a/Documentation/devicetree/bindings/net/altr,tse.yaml b/Documentation/devicetree/bindings/net/altr,tse.yaml
+index 8d1d94494349..9d02af468906 100644
+--- a/Documentation/devicetree/bindings/net/altr,tse.yaml
++++ b/Documentation/devicetree/bindings/net/altr,tse.yaml
+@@ -66,7 +66,7 @@ required:
+   - tx-fifo-depth
+ 
+ allOf:
+-  - $ref: "ethernet-controller.yaml#"
++  - $ref: ethernet-controller.yaml#
    - if:
        properties:
          compatible:
-@@ -124,7 +124,7 @@ patternProperties:
-           pins it needs, and how they should be configured, with regard to muxer
-           configuration, pullups, drive strength, input enable/disable and input
-           schmitt.
--        $ref: "/schemas/pinctrl/pincfg-node.yaml"
-+        $ref: /schemas/pinctrl/pincfg-node.yaml
- 
-         properties:
-           pinmux:
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml
-index c3bf98749fa4..601d86aecdd4 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml
-@@ -82,7 +82,7 @@ patternProperties:
-               }
-             };
-           };
--        $ref: "pinmux-node.yaml"
-+        $ref: pinmux-node.yaml
- 
-         properties:
-           pinmux:
-@@ -156,7 +156,7 @@ patternProperties:
-           - pinmux
+diff --git a/Documentation/devicetree/bindings/net/aspeed,ast2600-mdio.yaml b/Documentation/devicetree/bindings/net/aspeed,ast2600-mdio.yaml
+index f81eda8cb0a5..d6ef468495c5 100644
+--- a/Documentation/devicetree/bindings/net/aspeed,ast2600-mdio.yaml
++++ b/Documentation/devicetree/bindings/net/aspeed,ast2600-mdio.yaml
+@@ -15,7 +15,7 @@ description: |+
+   MAC.
  
  allOf:
--  - $ref: "pinctrl.yaml#"
-+  - $ref: pinctrl.yaml#
+-  - $ref: "mdio.yaml#"
++  - $ref: mdio.yaml#
  
- required:
-   - compatible
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-index 38dc41c735eb..bd72a326e6e0 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-@@ -43,7 +43,7 @@ properties:
-     const: 2
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/net/brcm,amac.yaml b/Documentation/devicetree/bindings/net/brcm,amac.yaml
+index ee2eac8f5710..210fb29c4e7b 100644
+--- a/Documentation/devicetree/bindings/net/brcm,amac.yaml
++++ b/Documentation/devicetree/bindings/net/brcm,amac.yaml
+@@ -10,7 +10,7 @@ maintainers:
+   - Florian Fainelli <f.fainelli@gmail.com>
  
  allOf:
--  - $ref: "pinctrl.yaml#"
-+  - $ref: pinctrl.yaml#
+-  - $ref: "ethernet-controller.yaml#"
++  - $ref: ethernet-controller.yaml#
+   - if:
+       properties:
+         compatible:
+diff --git a/Documentation/devicetree/bindings/net/brcm,systemport.yaml b/Documentation/devicetree/bindings/net/brcm,systemport.yaml
+index 5fc9c9fafd85..b40006d44791 100644
+--- a/Documentation/devicetree/bindings/net/brcm,systemport.yaml
++++ b/Documentation/devicetree/bindings/net/brcm,systemport.yaml
+@@ -66,7 +66,7 @@ required:
+   - phy-mode
+ 
+ allOf:
+-  - $ref: "ethernet-controller.yaml#"
++  - $ref: ethernet-controller.yaml#
+ 
+ unevaluatedProperties: false
+ 
+diff --git a/Documentation/devicetree/bindings/net/broadcom-bluetooth.yaml b/Documentation/devicetree/bindings/net/broadcom-bluetooth.yaml
+index b964c7dcec15..cc70b00c6ce5 100644
+--- a/Documentation/devicetree/bindings/net/broadcom-bluetooth.yaml
++++ b/Documentation/devicetree/bindings/net/broadcom-bluetooth.yaml
+@@ -121,7 +121,7 @@ required:
+   - compatible
+ 
+ dependencies:
+-  brcm,requires-autobaud-mode: [ 'shutdown-gpios' ]
++  brcm,requires-autobaud-mode: [ shutdown-gpios ]
+ 
+ if:
+   not:
+diff --git a/Documentation/devicetree/bindings/net/can/xilinx,can.yaml b/Documentation/devicetree/bindings/net/can/xilinx,can.yaml
+index 65af8183cb9c..897d2cbda45b 100644
+--- a/Documentation/devicetree/bindings/net/can/xilinx,can.yaml
++++ b/Documentation/devicetree/bindings/net/can/xilinx,can.yaml
+@@ -35,15 +35,15 @@ properties:
+     maxItems: 1
+ 
+   tx-fifo-depth:
+-    $ref: "/schemas/types.yaml#/definitions/uint32"
++    $ref: /schemas/types.yaml#/definitions/uint32
+     description: CAN Tx fifo depth (Zynq, Axi CAN).
+ 
+   rx-fifo-depth:
+-    $ref: "/schemas/types.yaml#/definitions/uint32"
++    $ref: /schemas/types.yaml#/definitions/uint32
+     description: CAN Rx fifo depth (Zynq, Axi CAN, CAN FD in sequential Rx mode)
+ 
+   tx-mailbox-count:
+-    $ref: "/schemas/types.yaml#/definitions/uint32"
++    $ref: /schemas/types.yaml#/definitions/uint32
+     description: CAN Tx mailbox buffer count (CAN FD)
  
  required:
-   - compatible
-@@ -70,7 +70,7 @@ patternProperties:
-         additionalProperties: false
-         description:
-           pinmux configuration nodes.
--        $ref: "/schemas/pinctrl/pinmux-node.yaml"
-+        $ref: /schemas/pinctrl/pinmux-node.yaml
-         properties:
-           function:
-             description:
-@@ -249,7 +249,7 @@ patternProperties:
-         additionalProperties: false
-         description:
-           pinconf configuration nodes.
--        $ref: "/schemas/pinctrl/pincfg-node.yaml"
-+        $ref: /schemas/pinctrl/pincfg-node.yaml
+diff --git a/Documentation/devicetree/bindings/net/dsa/brcm,sf2.yaml b/Documentation/devicetree/bindings/net/dsa/brcm,sf2.yaml
+index eed16e216fb6..37bf33bd4670 100644
+--- a/Documentation/devicetree/bindings/net/dsa/brcm,sf2.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/brcm,sf2.yaml
+@@ -103,7 +103,7 @@ required:
+   - "#size-cells"
  
-         properties:
-           groups:
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-index 7157500a7f81..31c36689438c 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
+ allOf:
+-  - $ref: "dsa.yaml#"
++  - $ref: dsa.yaml#
+   - if:
+       properties:
+         compatible:
+diff --git a/Documentation/devicetree/bindings/net/dsa/qca8k.yaml b/Documentation/devicetree/bindings/net/dsa/qca8k.yaml
+index 389892592aac..fe9ebe285938 100644
+--- a/Documentation/devicetree/bindings/net/dsa/qca8k.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/qca8k.yaml
+@@ -66,7 +66,7 @@ properties:
+                  With the legacy mapping the reg corresponding to the internal
+                  mdio is the switch reg with an offset of -1.
+ 
+-$ref: "dsa.yaml#"
++$ref: dsa.yaml#
+ 
+ patternProperties:
+   "^(ethernet-)?ports$":
+diff --git a/Documentation/devicetree/bindings/net/engleder,tsnep.yaml b/Documentation/devicetree/bindings/net/engleder,tsnep.yaml
+index 4116667133ce..82a5d7927ca4 100644
+--- a/Documentation/devicetree/bindings/net/engleder,tsnep.yaml
++++ b/Documentation/devicetree/bindings/net/engleder,tsnep.yaml
+@@ -62,7 +62,7 @@ properties:
+ 
+   mdio:
+     type: object
+-    $ref: "mdio.yaml#"
++    $ref: mdio.yaml#
+     description: optional node for embedded MDIO controller
+ 
+ required:
+diff --git a/Documentation/devicetree/bindings/net/ethernet-phy.yaml b/Documentation/devicetree/bindings/net/ethernet-phy.yaml
+index 1327b81f15a2..ac04f8efa35c 100644
+--- a/Documentation/devicetree/bindings/net/ethernet-phy.yaml
++++ b/Documentation/devicetree/bindings/net/ethernet-phy.yaml
+@@ -83,7 +83,7 @@ properties:
+       0: Disable 2.4 Vpp operating mode.
+       1: Request 2.4 Vpp operating mode from link partner.
+       Absence of this property will leave configuration to default values.
+-    $ref: "/schemas/types.yaml#/definitions/uint32"
++    $ref: /schemas/types.yaml#/definitions/uint32
+     enum: [0, 1]
+ 
+   broken-turn-around:
+diff --git a/Documentation/devicetree/bindings/net/fsl,qoriq-mc-dpmac.yaml b/Documentation/devicetree/bindings/net/fsl,qoriq-mc-dpmac.yaml
+index 6e0763898d3a..a1b71b35319e 100644
+--- a/Documentation/devicetree/bindings/net/fsl,qoriq-mc-dpmac.yaml
++++ b/Documentation/devicetree/bindings/net/fsl,qoriq-mc-dpmac.yaml
+@@ -14,7 +14,7 @@ description:
+   located under the 'dpmacs' node for the fsl-mc bus DTS node.
+ 
+ allOf:
+-  - $ref: "ethernet-controller.yaml#"
++  - $ref: ethernet-controller.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/net/intel,ixp4xx-ethernet.yaml b/Documentation/devicetree/bindings/net/intel,ixp4xx-ethernet.yaml
+index 4e1b79818aff..d79901451abd 100644
+--- a/Documentation/devicetree/bindings/net/intel,ixp4xx-ethernet.yaml
++++ b/Documentation/devicetree/bindings/net/intel,ixp4xx-ethernet.yaml
+@@ -8,7 +8,7 @@ $schema: "http://devicetree.org/meta-schemas/core.yaml#"
+ title: Intel IXP4xx ethernet
+ 
+ allOf:
+-  - $ref: "ethernet-controller.yaml#"
++  - $ref: ethernet-controller.yaml#
+ 
+ maintainers:
+   - Linus Walleij <linus.walleij@linaro.org>
+@@ -28,7 +28,7 @@ properties:
+     description: Ethernet MMIO address range
+ 
+   queue-rx:
+-    $ref: '/schemas/types.yaml#/definitions/phandle-array'
++    $ref: /schemas/types.yaml#/definitions/phandle-array
+     items:
+       - items:
+           - description: phandle to the RX queue node
+@@ -36,7 +36,7 @@ properties:
+     description: phandle to the RX queue on the NPE
+ 
+   queue-txready:
+-    $ref: '/schemas/types.yaml#/definitions/phandle-array'
++    $ref: /schemas/types.yaml#/definitions/phandle-array
+     items:
+       - items:
+           - description: phandle to the TX READY queue node
+@@ -48,7 +48,7 @@ properties:
+   phy-handle: true
+ 
+   intel,npe-handle:
+-    $ref: '/schemas/types.yaml#/definitions/phandle-array'
++    $ref: /schemas/types.yaml#/definitions/phandle-array
+     items:
+       - items:
+           - description: phandle to the NPE this ethernet instance is using
+diff --git a/Documentation/devicetree/bindings/net/intel,ixp4xx-hss.yaml b/Documentation/devicetree/bindings/net/intel,ixp4xx-hss.yaml
+index e6329febb60c..5adf95e75781 100644
+--- a/Documentation/devicetree/bindings/net/intel,ixp4xx-hss.yaml
++++ b/Documentation/devicetree/bindings/net/intel,ixp4xx-hss.yaml
+@@ -24,7 +24,7 @@ properties:
+     description: The HSS instance
+ 
+   intel,npe-handle:
+-    $ref: '/schemas/types.yaml#/definitions/phandle-array'
++    $ref: /schemas/types.yaml#/definitions/phandle-array
+     items:
+       items:
+         - description: phandle to the NPE this HSS instance is using
+@@ -33,7 +33,7 @@ properties:
+       and the instance to use in the second cell
+ 
+   intel,queue-chl-rxtrig:
+-    $ref: '/schemas/types.yaml#/definitions/phandle-array'
++    $ref: /schemas/types.yaml#/definitions/phandle-array
+     items:
+       - items:
+           - description: phandle to the RX trigger queue on the NPE
+@@ -41,7 +41,7 @@ properties:
+     description: phandle to the RX trigger queue on the NPE
+ 
+   intel,queue-chl-txready:
+-    $ref: '/schemas/types.yaml#/definitions/phandle-array'
++    $ref: /schemas/types.yaml#/definitions/phandle-array
+     items:
+       - items:
+           - description: phandle to the TX ready queue on the NPE
+@@ -49,7 +49,7 @@ properties:
+     description: phandle to the TX ready queue on the NPE
+ 
+   intel,queue-pkt-rx:
+-    $ref: '/schemas/types.yaml#/definitions/phandle-array'
++    $ref: /schemas/types.yaml#/definitions/phandle-array
+     items:
+       - items:
+           - description: phandle to the RX queue on the NPE
 @@ -57,7 +57,7 @@ properties:
-     const: 2
+     description: phandle to the packet RX queue on the NPE
+ 
+   intel,queue-pkt-tx:
+-    $ref: '/schemas/types.yaml#/definitions/phandle-array'
++    $ref: /schemas/types.yaml#/definitions/phandle-array
+     maxItems: 4
+     items:
+       items:
+@@ -66,7 +66,7 @@ properties:
+     description: phandle to the packet TX0, TX1, TX2 and TX3 queues on the NPE
+ 
+   intel,queue-pkt-rxfree:
+-    $ref: '/schemas/types.yaml#/definitions/phandle-array'
++    $ref: /schemas/types.yaml#/definitions/phandle-array
+     maxItems: 4
+     items:
+       items:
+@@ -76,7 +76,7 @@ properties:
+       RXFREE3 queues on the NPE
+ 
+   intel,queue-pkt-txdone:
+-    $ref: '/schemas/types.yaml#/definitions/phandle-array'
++    $ref: /schemas/types.yaml#/definitions/phandle-array
+     items:
+       - items:
+           - description: phandle to the TXDONE queue on the NPE
+diff --git a/Documentation/devicetree/bindings/net/marvell,mvusb.yaml b/Documentation/devicetree/bindings/net/marvell,mvusb.yaml
+index 8e288ab38fd7..3a3325168048 100644
+--- a/Documentation/devicetree/bindings/net/marvell,mvusb.yaml
++++ b/Documentation/devicetree/bindings/net/marvell,mvusb.yaml
+@@ -20,7 +20,7 @@ description: |+
+   definition.
  
  allOf:
--  - $ref: "pinctrl.yaml#"
-+  - $ref: pinctrl.yaml#
+-  - $ref: "mdio.yaml#"
++  - $ref: mdio.yaml#
  
- required:
-   - compatible
-@@ -128,7 +128,7 @@ patternProperties:
-           "wf_dbdc"         "wifi"      74, 75, 76, 77, 78, 79, 80, 81, 82, 83,
-                                         84, 85
- 
--        $ref: "/schemas/pinctrl/pinmux-node.yaml"
-+        $ref: /schemas/pinctrl/pinmux-node.yaml
-         properties:
-           function:
-             description:
-@@ -261,7 +261,7 @@ patternProperties:
-         additionalProperties: false
-         description:
-           pinconf configuration nodes.
--        $ref: "/schemas/pinctrl/pincfg-node.yaml"
-+        $ref: /schemas/pinctrl/pincfg-node.yaml
- 
-         properties:
-           pins:
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
-index 372a3aefa937..bf67d4672455 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
-@@ -57,7 +57,7 @@ properties:
-     const: 2
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/net/mdio-gpio.yaml b/Documentation/devicetree/bindings/net/mdio-gpio.yaml
+index 137657341802..eb4171a1940e 100644
+--- a/Documentation/devicetree/bindings/net/mdio-gpio.yaml
++++ b/Documentation/devicetree/bindings/net/mdio-gpio.yaml
+@@ -12,7 +12,7 @@ maintainers:
+   - Russell King <linux@armlinux.org.uk>
  
  allOf:
--  - $ref: "pinctrl.yaml#"
-+  - $ref: pinctrl.yaml#
+-  - $ref: "mdio.yaml#"
++  - $ref: mdio.yaml#
  
- required:
-   - compatible
-@@ -80,7 +80,7 @@ patternProperties:
-           pins it needs, and how they should be configured, with regard to muxer
-           configuration, pullups, drive strength, input enable/disable and input
-           schmitt.
--        $ref: "/schemas/pinctrl/pincfg-node.yaml"
-+        $ref: /schemas/pinctrl/pincfg-node.yaml
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+index 7ef696204c5a..49e7f5e1a531 100644
+--- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
++++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+@@ -91,7 +91,7 @@ properties:
+     const: 0
  
-         properties:
-           pinmux:
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8186-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8186-pinctrl.yaml
-index eb6a5cdecc6c..69136ddd0bbc 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8186-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8186-pinctrl.yaml
-@@ -94,7 +94,7 @@ patternProperties:
-               }
-             };
-           };
--        $ref: "pinmux-node.yaml"
-+        $ref: pinmux-node.yaml
+ allOf:
+-  - $ref: "ethernet-controller.yaml#"
++  - $ref: ethernet-controller.yaml#
+   - if:
+       properties:
+         compatible:
+diff --git a/Documentation/devicetree/bindings/net/mediatek,star-emac.yaml b/Documentation/devicetree/bindings/net/mediatek,star-emac.yaml
+index 64c893c98d80..2e889f9a563e 100644
+--- a/Documentation/devicetree/bindings/net/mediatek,star-emac.yaml
++++ b/Documentation/devicetree/bindings/net/mediatek,star-emac.yaml
+@@ -15,7 +15,7 @@ description:
+   modes with flow-control as well as CRC offloading and VLAN tags.
  
-         properties:
-           pinmux:
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml
-index 028146fb173f..e994b0c70dbf 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml
-@@ -74,7 +74,7 @@ patternProperties:
-     patternProperties:
-       '^pins':
+ allOf:
+-  - $ref: "ethernet-controller.yaml#"
++  - $ref: ethernet-controller.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/net/microchip,lan966x-switch.yaml b/Documentation/devicetree/bindings/net/microchip,lan966x-switch.yaml
+index dc116f14750e..306ef9ecf2b9 100644
+--- a/Documentation/devicetree/bindings/net/microchip,lan966x-switch.yaml
++++ b/Documentation/devicetree/bindings/net/microchip,lan966x-switch.yaml
+@@ -73,7 +73,7 @@ properties:
+       "^port@[0-9a-f]+$":
          type: object
--        $ref: "/schemas/pinctrl/pincfg-node.yaml"
-+        $ref: /schemas/pinctrl/pincfg-node.yaml
-         additionalProperties: false
-         description:
-           A pinctrl node should contain at least one subnode representing the
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8192-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8192-pinctrl.yaml
-index 8cca1ce40f25..c43338cafd61 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8192-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8192-pinctrl.yaml
-@@ -65,7 +65,7 @@ patternProperties:
-           pins it needs, and how they should be configured, with regard to muxer
-           configuration, pullups, drive strength, input enable/disable and input
-           schmitt.
--        $ref: "pinmux-node.yaml"
-+        $ref: pinmux-node.yaml
+ 
+-        $ref: "/schemas/net/ethernet-controller.yaml#"
++        $ref: /schemas/net/ethernet-controller.yaml#
+         unevaluatedProperties: false
  
          properties:
-           pinmux:
-@@ -126,7 +126,7 @@ patternProperties:
-         additionalProperties: false
+diff --git a/Documentation/devicetree/bindings/net/microchip,sparx5-switch.yaml b/Documentation/devicetree/bindings/net/microchip,sparx5-switch.yaml
+index 57ffeb8fc876..fcafef8d5a33 100644
+--- a/Documentation/devicetree/bindings/net/microchip,sparx5-switch.yaml
++++ b/Documentation/devicetree/bindings/net/microchip,sparx5-switch.yaml
+@@ -99,7 +99,7 @@ properties:
+ 
+           microchip,bandwidth:
+             description: Specifies bandwidth in Mbit/s allocated to the port.
+-            $ref: "/schemas/types.yaml#/definitions/uint32"
++            $ref: /schemas/types.yaml#/definitions/uint32
+             maximum: 25000
+ 
+           microchip,sd-sgpio:
+@@ -107,7 +107,7 @@ properties:
+               Index of the ports Signal Detect SGPIO in the set of 384 SGPIOs
+               This is optional, and only needed if the default used index is
+               is not correct.
+-            $ref: "/schemas/types.yaml#/definitions/uint32"
++            $ref: /schemas/types.yaml#/definitions/uint32
+             minimum: 0
+             maximum: 383
+ 
+diff --git a/Documentation/devicetree/bindings/net/mscc,miim.yaml b/Documentation/devicetree/bindings/net/mscc,miim.yaml
+index 2c451cfa4e0b..5b292e7c9e46 100644
+--- a/Documentation/devicetree/bindings/net/mscc,miim.yaml
++++ b/Documentation/devicetree/bindings/net/mscc,miim.yaml
+@@ -10,7 +10,7 @@ maintainers:
+   - Alexandre Belloni <alexandre.belloni@bootlin.com>
  
  allOf:
--  - $ref: "pinctrl.yaml#"
-+  - $ref: pinctrl.yaml#
+-  - $ref: "mdio.yaml#"
++  - $ref: mdio.yaml#
  
- required:
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/net/nfc/marvell,nci.yaml b/Documentation/devicetree/bindings/net/nfc/marvell,nci.yaml
+index 308485a8ee6c..8e9a95f24c80 100644
+--- a/Documentation/devicetree/bindings/net/nfc/marvell,nci.yaml
++++ b/Documentation/devicetree/bindings/net/nfc/marvell,nci.yaml
+@@ -28,7 +28,7 @@ properties:
+     maxItems: 1
+ 
+   reset-n-io:
+-    $ref: "/schemas/types.yaml#/definitions/phandle-array"
++    $ref: /schemas/types.yaml#/definitions/phandle-array
+     maxItems: 1
+     description: |
+       Output GPIO pin used to reset the chip (active low)
+diff --git a/Documentation/devicetree/bindings/net/nfc/nxp,pn532.yaml b/Documentation/devicetree/bindings/net/nfc/nxp,pn532.yaml
+index 0509e0166345..07c67c1e985f 100644
+--- a/Documentation/devicetree/bindings/net/nfc/nxp,pn532.yaml
++++ b/Documentation/devicetree/bindings/net/nfc/nxp,pn532.yaml
+@@ -31,7 +31,7 @@ required:
    - compatible
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml
-index b8ba260d74cd..33cb71775db9 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml
-@@ -87,7 +87,7 @@ patternProperties:
-               }
-             };
-           };
--        $ref: "pinmux-node.yaml"
-+        $ref: pinmux-node.yaml
  
-         properties:
-           pinmux:
-@@ -216,7 +216,7 @@ patternProperties:
-           - pinmux
+ dependencies:
+-  interrupts: [ 'reg' ]
++  interrupts: [ reg ]
+ 
+ additionalProperties: false
+ 
+diff --git a/Documentation/devicetree/bindings/net/pse-pd/podl-pse-regulator.yaml b/Documentation/devicetree/bindings/net/pse-pd/podl-pse-regulator.yaml
+index c6b1c188abf7..94a527e6aa1b 100644
+--- a/Documentation/devicetree/bindings/net/pse-pd/podl-pse-regulator.yaml
++++ b/Documentation/devicetree/bindings/net/pse-pd/podl-pse-regulator.yaml
+@@ -13,7 +13,7 @@ description: Regulator based PoDL PSE controller. The device must be referenced
+   by the PHY node to control power injection to the Ethernet cable.
  
  allOf:
--  - $ref: "pinctrl.yaml#"
-+  - $ref: pinctrl.yaml#
+-  - $ref: "pse-controller.yaml#"
++  - $ref: pse-controller.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/net/qcom,ipq4019-mdio.yaml b/Documentation/devicetree/bindings/net/qcom,ipq4019-mdio.yaml
+index 7631ecc8fd01..3407e909e8a7 100644
+--- a/Documentation/devicetree/bindings/net/qcom,ipq4019-mdio.yaml
++++ b/Documentation/devicetree/bindings/net/qcom,ipq4019-mdio.yaml
+@@ -51,7 +51,7 @@ required:
+   - "#size-cells"
+ 
+ allOf:
+-  - $ref: "mdio.yaml#"
++  - $ref: mdio.yaml#
+ 
+   - if:
+       properties:
+diff --git a/Documentation/devicetree/bindings/net/qcom,ipq8064-mdio.yaml b/Documentation/devicetree/bindings/net/qcom,ipq8064-mdio.yaml
+index d7748dd33199..144001ff840c 100644
+--- a/Documentation/devicetree/bindings/net/qcom,ipq8064-mdio.yaml
++++ b/Documentation/devicetree/bindings/net/qcom,ipq8064-mdio.yaml
+@@ -14,7 +14,7 @@ description:
+   used to communicate with the gmac phy connected.
+ 
+ allOf:
+-  - $ref: "mdio.yaml#"
++  - $ref: mdio.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/net/rockchip,emac.yaml b/Documentation/devicetree/bindings/net/rockchip,emac.yaml
+index a6d4f14df442..364028b3bba4 100644
+--- a/Documentation/devicetree/bindings/net/rockchip,emac.yaml
++++ b/Documentation/devicetree/bindings/net/rockchip,emac.yaml
+@@ -61,7 +61,7 @@ required:
+   - mdio
+ 
+ allOf:
+-  - $ref: "ethernet-controller.yaml#"
++  - $ref: ethernet-controller.yaml#
+   - if:
+       properties:
+         compatible:
+diff --git a/Documentation/devicetree/bindings/net/snps,dwmac.yaml b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
+index 16b7d2904696..74f2ddc12018 100644
+--- a/Documentation/devicetree/bindings/net/snps,dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
+@@ -555,7 +555,7 @@ dependencies:
+   snps,reset-delays-us: ["snps,reset-gpio"]
+ 
+ allOf:
+-  - $ref: "ethernet-controller.yaml#"
++  - $ref: ethernet-controller.yaml#
+   - if:
+       properties:
+         compatible:
+diff --git a/Documentation/devicetree/bindings/net/stm32-dwmac.yaml b/Documentation/devicetree/bindings/net/stm32-dwmac.yaml
+index 5c93167b3b41..caae3c2a9419 100644
+--- a/Documentation/devicetree/bindings/net/stm32-dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/stm32-dwmac.yaml
+@@ -26,7 +26,7 @@ select:
+     - compatible
+ 
+ allOf:
+-  - $ref: "snps,dwmac.yaml#"
++  - $ref: snps,dwmac.yaml#
+ 
+ properties:
+   compatible:
+@@ -73,7 +73,7 @@ properties:
+         - ptp_ref
+ 
+   st,syscon:
+-    $ref: "/schemas/types.yaml#/definitions/phandle-array"
++    $ref: /schemas/types.yaml#/definitions/phandle-array
+     items:
+       - items:
+           - description: phandle to the syscon node which encompases the glue register
+diff --git a/Documentation/devicetree/bindings/net/ti,cpsw-switch.yaml b/Documentation/devicetree/bindings/net/ti,cpsw-switch.yaml
+index e36c7817be69..b04ac4966608 100644
+--- a/Documentation/devicetree/bindings/net/ti,cpsw-switch.yaml
++++ b/Documentation/devicetree/bindings/net/ti,cpsw-switch.yaml
+@@ -62,10 +62,10 @@ properties:
+ 
+   interrupt-names:
+     items:
+-      - const: "rx_thresh"
+-      - const: "rx"
+-      - const: "tx"
+-      - const: "misc"
++      - const: rx_thresh
++      - const: rx
++      - const: tx
++      - const: misc
+ 
+   pinctrl-names: true
+ 
+@@ -154,7 +154,7 @@ patternProperties:
+     type: object
+     description:
+       CPSW MDIO bus.
+-    $ref: "ti,davinci-mdio.yaml#"
++    $ref: ti,davinci-mdio.yaml#
+ 
  
  required:
-   - compatible
+diff --git a/Documentation/devicetree/bindings/net/ti,davinci-mdio.yaml b/Documentation/devicetree/bindings/net/ti,davinci-mdio.yaml
+index a339202c5e8e..53604fab0b73 100644
+--- a/Documentation/devicetree/bindings/net/ti,davinci-mdio.yaml
++++ b/Documentation/devicetree/bindings/net/ti,davinci-mdio.yaml
+@@ -13,7 +13,7 @@ description:
+   TI SoC Davinci/Keystone2 MDIO Controller
+ 
+ allOf:
+-  - $ref: "mdio.yaml#"
++  - $ref: mdio.yaml#
+ 
+ properties:
+   compatible:
+diff --git a/Documentation/devicetree/bindings/net/ti,dp83822.yaml b/Documentation/devicetree/bindings/net/ti,dp83822.yaml
+index f2489a9c852f..633a551c1501 100644
+--- a/Documentation/devicetree/bindings/net/ti,dp83822.yaml
++++ b/Documentation/devicetree/bindings/net/ti,dp83822.yaml
+@@ -21,7 +21,7 @@ description: |
+     http://www.ti.com/lit/ds/symlink/dp83822i.pdf
+ 
+ allOf:
+-  - $ref: "ethernet-phy.yaml#"
++  - $ref: ethernet-phy.yaml#
+ 
+ properties:
+   reg:
+diff --git a/Documentation/devicetree/bindings/net/ti,dp83867.yaml b/Documentation/devicetree/bindings/net/ti,dp83867.yaml
+index b8c0e4b5b494..d3c3e589bd6f 100644
+--- a/Documentation/devicetree/bindings/net/ti,dp83867.yaml
++++ b/Documentation/devicetree/bindings/net/ti,dp83867.yaml
+@@ -8,7 +8,7 @@ $schema: "http://devicetree.org/meta-schemas/core.yaml#"
+ title: TI DP83867 ethernet PHY
+ 
+ allOf:
+-  - $ref: "ethernet-controller.yaml#"
++  - $ref: ethernet-controller.yaml#
+ 
+ maintainers:
+   - Andrew Davis <afd@ti.com>
+diff --git a/Documentation/devicetree/bindings/net/ti,dp83869.yaml b/Documentation/devicetree/bindings/net/ti,dp83869.yaml
+index b04ff0014a59..4f1e5224bb00 100644
+--- a/Documentation/devicetree/bindings/net/ti,dp83869.yaml
++++ b/Documentation/devicetree/bindings/net/ti,dp83869.yaml
+@@ -8,7 +8,7 @@ $schema: "http://devicetree.org/meta-schemas/core.yaml#"
+ title: TI DP83869 ethernet PHY
+ 
+ allOf:
+-  - $ref: "ethernet-phy.yaml#"
++  - $ref: ethernet-phy.yaml#
+ 
+ maintainers:
+   - Andrew Davis <afd@ti.com>
 -- 
-2.37.2
+2.39.2
 
 
