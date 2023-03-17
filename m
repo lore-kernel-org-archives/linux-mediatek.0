@@ -4,64 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D788C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 01:07:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 512DBC74A5B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 03:09:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Btw2IbhcauwRzTEH0FiI/ezzT5rLsKZRy+WoQuUgv/M=; b=uCnkK0aWnHzFhj47sVVLhtQPD9
-	b3SpXEViycM7YaBn2q7EBmV4y6K+5ZhtWgT9/eNllj2UAkT7Z4oj20AA0bwywpCBx/TctQ90hWDxu
-	eV/1qY4IsoVySs76B105+F3ECufBnAnu1wjWXGDRe9vICBg60ZTpP0kQX+pCxZbEnlmJyg6oIzrjn
-	NXzYhXRGWMvvOWtidyBtSRUsPNRIoC4nFTF9zdgio02QzXYOHv5vNRs8oberKJRvATtkPXBgzQGft
-	w0PRfBil3EVK5QknPOU2l0CYHaIA9NIWH30uglAbopqu7GQeTzW20kgHxfpD0of3wuS3MASM669JW
-	QUU44jiw==;
+	bh=R5Xe9zYM3rwVYaJvJAQuuKTtJxWoPUf9jJ9amzAM90A=; b=EgsqBQ+7AvnZ5mwWe1dcMCcump
+	evq49IkcxyhX4sSXHeRwZTEcV/KkLpKp1LEkHVr7GUdtZhGZ3z+hbSGNeNjn74m7oWAtr5mwxMnhc
+	3lHmsmJH918TILS6MYffGI93OfS2dWLIwaeTqqQJ37rmnjRmYaRl0tne4S+k5je+LZJRn0isSCAiK
+	dPh4+4neuGTAUQIyxr2u81y0L+9o0T5XJOn8+N0lhlMKZxv9oW1/en2E6575lRO25i8MDnaDW4XaC
+	Asy+LhxFmflIgHebauD3+Uch6PcivKBKrhYD24n1rbjwtB1LAahfbmYEtcBg7a8DJHx6ExncE4CG4
+	GWumSK+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcyZA-000WX1-37;
-	Fri, 17 Mar 2023 01:07:32 +0000
-Received: from mg.richtek.com ([220.130.44.152])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcyZ6-000WV5-1z;
-	Fri, 17 Mar 2023 01:07:31 +0000
-X-MailGates: (flag:4,DYNAMIC,BADHELO,RELAY,NOHOST:PASS)(compute_score:DE
-	LIVER,40,3)
-Received: from 192.168.10.46
-	by mg.richtek.com with MailGates ESMTP Server V5.0(15352:0:AUTH_RELAY)
-	(envelope-from <cy_huang@richtek.com>); Fri, 17 Mar 2023 09:06:28 +0800 (CST)
-Received: from ex4.rt.l (192.168.10.47) by ex3.rt.l (192.168.10.46) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.25; Fri, 17 Mar
- 2023 09:06:28 +0800
-Received: from linuxcarl2.richtek.com (192.168.10.154) by ex4.rt.l
- (192.168.10.45) with Microsoft SMTP Server id 15.2.1118.25 via Frontend
- Transport; Fri, 17 Mar 2023 09:06:28 +0800
-Date: Fri, 17 Mar 2023 09:06:28 +0800
-From: ChiYuan Huang <cy_huang@richtek.com>
-To: Lee Jones <lee@kernel.org>
-CC: ChiaEn Wu <chiaen_wu@richtek.com>, <corbet@lwn.net>, <pavel@ucw.cz>,
-	<matthias.bgg@gmail.com>, <andriy.shevchenko@linux.intel.com>,
-	<jacek.anaszewski@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<linux-doc@vger.kernel.org>, <peterwu.pub@gmail.com>,
-	<linux-leds@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<szunichen@gmail.com>
-Subject: Re: [PATCH v18 3/3] docs: leds: Add MT6370 RGB LED pattern document
-Message-ID: <20230317010628.GA32541@linuxcarl2.richtek.com>
-References: <cover.1678430444.git.chiaen_wu@richtek.com>
- <38f1e863b0f099158a63fb6f95056a1cb30d80a0.1678430444.git.chiaen_wu@richtek.com>
- <20230316155149.GK9667@google.com>
+	id 1pd0T4-000kKN-13;
+	Fri, 17 Mar 2023 03:09:22 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pd0T1-000kIc-2G;
+	Fri, 17 Mar 2023 03:09:21 +0000
+X-UUID: 17c3bb58c47111edb5598346aad47b14-20230316
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=R5Xe9zYM3rwVYaJvJAQuuKTtJxWoPUf9jJ9amzAM90A=;
+	b=gpy6nhzsVeEgW/iFMqYMFWy+BJu4D1p7aHv6PbG0TgO2i/kYT4YeYouNv4ofQXpqHhIswY32PLpvyO9JtoYBiscz5nn9eARDbLqXBrRWd10+AOvgNNNFGXwM4qqg7bV0an30fzrl4fAogXAOBEeQ4GPPGW/lXUQPc4Ui17NUaao=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.21,REQID:ba2e2037-c947-4f40-af3b-692b52c61a8b,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:83295aa,CLOUDID:18ada228-564d-42d9-9875-7c868ee415ec,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 17c3bb58c47111edb5598346aad47b14-20230316
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1288881292; Thu, 16 Mar 2023 20:09:12 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.25; Fri, 17 Mar 2023 11:08:36 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.25 via Frontend Transport; Fri, 17 Mar 2023 11:08:35 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
+	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang
+	<hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter
+	<daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v4,2/2] media: mediatek: vcodec: Using MM21 as the default capture format
+Date: Fri, 17 Mar 2023 11:08:33 +0800
+Message-ID: <20230317030833.16836-2-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230317030833.16836-1-yunfei.dong@mediatek.com>
+References: <20230317030833.16836-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230316155149.GK9667@google.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230316_180729_108478_878F41A8 
-X-CRM114-Status: GOOD (  25.35  )
+X-CRM114-CacheID: sfid-20230316_200919_738779_85F05150 
+X-CRM114-Status: GOOD (  10.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,110 +93,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 16, 2023 at 03:51:49PM +0000, Lee Jones wrote:
-> On Fri, 10 Mar 2023, ChiaEn Wu wrote:
-> 
-> > From: ChiYuan Huang <cy_huang@richtek.com>
-> >
-> > Document the MT6370 RGB LED pattern trigger.
-> >
-> > This simply describe how the pattern works, each timing period, and the
-> > pattern diagram for MT6370 RGB LED.
-> >
-> > Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
-> > Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
-> > ---
-> > v18:
-> > - Revise the text in document title and description.
-> > ---
-> >  Documentation/leds/leds-mt6370-rgb.rst | 64 ++++++++++++++++++++++++++++++++++
-> 
-> These 3 patches now look good.
-> 
-> You do not need to make any more changes to these.
-> 
-> >  1 file changed, 64 insertions(+)
-> >  create mode 100644 Documentation/leds/leds-mt6370-rgb.rst
-> >
-> > diff --git a/Documentation/leds/leds-mt6370-rgb.rst b/Documentation/leds/leds-mt6370-rgb.rst
-> > new file mode 100644
-> > index 00000000..abf739e
-> > --- /dev/null
-> > +++ b/Documentation/leds/leds-mt6370-rgb.rst
-> > @@ -0,0 +1,64 @@
-> > +.. SPDX-License-Identifier: GPL-2.0
-> > +
-> > +=========================================
-> > +The device for Mediatek MT6370 RGB LED
-> > +=========================================
-> > +
-> > +Description
-> > +-----------
-> > +
-> > +The MT6370 integrates a four-channel RGB LED driver, designed to provide a
-> > +variety of lighting effect for mobile device applications. The RGB LED devices
-> > +includes a smart LED string controller and it can drive 3 channels of LEDs with
-> > +a sink current up to 24mA and a CHG_VIN power good indicator LED with sink
-> > +current up to 6mA. It provides three operation modes for RGB LEDs:
-> > +PWM Dimming mode, breath pattern mode, and constant current mode. The device
-> > +can increase or decrease the brightness of the RGB LED via an I2C interface.
-> > +
-> > +The breath pattern for a channel can be programmed using the "pattern" trigger,
-> > +using the hw_pattern attribute.
-> > +
-> > +/sys/class/leds/<led>/hw_pattern
-> 
-> However, this needs an entry in Documentation/ABI/testing.
->
-This comes from the led-trigger-pattern and already documented in 'sysfs-class-led-trigger-pattern'.
+For the capture queue only support MM21 format with LibYuv, need to set MM21 as the
+default format.
 
-> > +--------------------------------
-> > +
-> > +Specify a hardware breath pattern for a MT6370 RGB LED.
-> > +
-> > +The breath pattern is a series of timing pairs, with the hold-time expressed in
-> > +milliseconds. And the brightness is controlled by
-> > +'/sys/class/leds/<led>/brightness'. The pattern doesn't include the brightness
-> > +setting. Hardware pattern only controls the timing for each pattern stage
-> > +depending on the current brightness setting.
-> > +
-> > +Pattern diagram::
-> > +
-> > +     "0 Tr1 0 Tr2 0 Tf1 0 Tf2 0 Ton 0 Toff" --> '0' for dummy brightness code
-> > +
-> > +      ^
-> > +      |           ============
-> > +      |          /            \                                /
-> > +Icurr |         /              \                              /
-> > +      |        /                \                            /
-> > +      |       /                  \                          /   .....repeat
-> > +      |      /                    \                        /
-> > +      |   ---                      ---                  ---
-> > +      |---                            ---            ---
-> > +      +----------------------------------============------------> Time
-> > +       < Tr1><Tr2><   Ton    ><Tf1><Tf2 ><  Toff    >< Tr1><Tr2>
-> > +
-> > +Timing description::
-> > +
-> > +Tr1:    First rising time for duty 0 to 30%.
-> > +Tr2:    Second rising time for duty 31% to 100%.
-> > +Ton:    On time for duty 100%.
-> > +Tf1:    First falling time for duty 100% to 31%.
-> > +Tf2:    Second falling time for duty 30% to 0%.
-> > +Toff:   Off time for duty 0%.
-> > +
-> > +Tr1/Tr2/Tf1/Tf2/Ton: 125ms to 3125ms, 200ms per step.
-> > +Toff: 250ms to 6250ms, 400ms per step.
-> > +
-> > +Pattern example::
-> > +
-> > +       "0 125 0 125 0 125 0 125 0 625 0 1050"
-> > +
-> > +This Will configure Tr1/Tr2/Tf1/Tf2 to 125m, Ton to 625ms, and Toff to 1050ms.
-> > --
-> > 2.7.4
-> >
-> 
-> --
-> Lee Jones [李琼斯]
+Fixes: 7501edef6b1f ("media: mediatek: vcodec: Different codec using different capture format")
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+ .../platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c   | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
+index 04beb3f08eea..3000db975e5f 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
+@@ -392,14 +392,14 @@ static void mtk_vcodec_get_supported_formats(struct mtk_vcodec_ctx *ctx)
+ 	if (num_formats)
+ 		return;
+ 
+-	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_MM21) {
+-		mtk_vcodec_add_formats(V4L2_PIX_FMT_MM21, ctx);
+-		cap_format_count++;
+-	}
+ 	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_MT21C) {
+ 		mtk_vcodec_add_formats(V4L2_PIX_FMT_MT21C, ctx);
+ 		cap_format_count++;
+ 	}
++	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_MM21) {
++		mtk_vcodec_add_formats(V4L2_PIX_FMT_MM21, ctx);
++		cap_format_count++;
++	}
+ 	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_H264_SLICE) {
+ 		mtk_vcodec_add_formats(V4L2_PIX_FMT_H264_SLICE, ctx);
+ 		out_format_count++;
+-- 
+2.25.1
+
 
