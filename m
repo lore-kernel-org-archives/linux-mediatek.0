@@ -4,77 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 965CDC6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 21:30:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30C1CC74A5B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 21:30:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=svSDOZGqlBpqSZHit5yPFayaIWAjSd1camlnzH3nrTQ=; b=g1A+hrl4y+f3pa
-	XMkj1gv/tDdQXEgeby40fZiUB5Sdp7erTGIF1RcjVfzLwNp1BK62j/JJl835hHdz7O+LT0b794xdd
-	GtQWVTBFuzCqpwQ4j/UJn/+Nwus1h6DOmys7jxyEhMoNX5IfnIijWLQzCk+whR5Zpoe1AMByow+9X
-	3bKkf+F4fSn3mqMjWuWnNOOoBVkxv+8jKIWgCY9yGdtLADF82qJNgM4vUoTz6uonlOrANAU36Mxah
-	zHO3jEIzGTuUScQtJxGilbCi0cZTpzayE1VMrAkaKDCA2yayQlapQYGERXskGt80LpKEOtzWLnqkB
-	eSI8sWPUF09fE/P+x5cw==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GPpFzY0H3ocypf25nzBsMZcz2jHpyh97I8lhoOmDtHQ=; b=NqC1Dc14FaHigz
+	0sgst1uxjdxsJ+Pmu6oThm8TQOBJ5Y7e46YVMwiNXZO/sVrBsSklG4z/XcWiMJ6eK0MoyygTM4nt7
+	loAGSgEDCLarWnAjA5GsSYX3g9UJuAAWfD7+P9Vjip+hM+GoPoukmUuBR5ISLVWT7hc+BuKToPKCn
+	Nkuk1diIi7cRqV7rU87QfZJuUqL3UpvRMrsGrOSy9Gl3Kb+tIjhTVkTmd8F/8FHpLO3ojClq8+Xcw
+	byT/tBDUHrQhVkl/B4eY06U5flpND+FSa7d/5UwqUtmLHqe0Iogs3qnEG6+BdUKmcReHSRSGnYS2t
+	6DQTIMI2xlsXGChRgbJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdHeY-003Rvk-1C;
-	Fri, 17 Mar 2023 21:30:22 +0000
+	id 1pdHea-003Rww-30;
+	Fri, 17 Mar 2023 21:30:24 +0000
 Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdHeU-003Ruk-2Y;
-	Fri, 17 Mar 2023 21:30:20 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id eg48so25306565edb.13;
-        Fri, 17 Mar 2023 14:30:17 -0700 (PDT)
+	id 1pdHeY-003Rvi-2Z;
+	Fri, 17 Mar 2023 21:30:24 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id o12so25376673edb.9;
+        Fri, 17 Mar 2023 14:30:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679088617;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=svSDOZGqlBpqSZHit5yPFayaIWAjSd1camlnzH3nrTQ=;
-        b=qBjj+LCXL5CTTsQjeYzBYKmGk2JhYuqNk8h6xWpIf1IjIO8QqgA7NL+XgzI5VSAhq6
-         +ESqetLdqoUO1N/V7cprhJuS4aMIcKzl8WyyAnCLi/OuHZ1sUTZ8h07C6DIRD4vFwX0Y
-         5e3YVxnm8HS9IBg+N5T3e09pqbNnMHT2/bwX+OBfukrU8PuulcNTemocib1jv8O3qk3J
-         3/nSSe7o6fFWVUFsBbI6oStAea9lmd962aGT7Y5SERvdxi1Ades20WQshTQUsZ6uNn8k
-         Xqo+Pl8izHzS6FsZCu9vNy1z7jXMPe96DaNLv1yUfB8oo5DuzmFZU2CUsZ6vMQrqZnQy
-         Dtxw==
+        d=gmail.com; s=20210112; t=1679088621;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=GPpFzY0H3ocypf25nzBsMZcz2jHpyh97I8lhoOmDtHQ=;
+        b=Oa1shaEabrkzIwGb8LHYQAFL4Ho6oDqeN2TfX7YQ2U+J6nE9MJnwxk8BJXu/Yz7QrR
+         7y4b/1bBpU9uhFTVwl4aWiA/sjp7Dng38gIR2xBRj6c36Tvu0R3RcnKdVQrivH/plen3
+         fMVh5DVPROQHh7Q9m7pRrOTRKAGzZPVymRJ938lDQtpMLljFcx3OZrkhJgsosj2Qdkn/
+         SUTuqYHb6E+DLx7D9cm13g3Sm4ywaP7+gaBnmweMm7BRPWstbU1Hwe6zxnmNn9hC9BQW
+         smH1zpvxq5MnPxx1x0pe0W+V988tQMmRuvKrQ5d3RsrL7F4w9XPwhSkP/8tElKFliT6I
+         DVzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679088617;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=svSDOZGqlBpqSZHit5yPFayaIWAjSd1camlnzH3nrTQ=;
-        b=WOgwKdlzJ9PQdRUOHqVVt41a2cmCBdqL2GTH7CAQAegP7zdSZ8J/uHKVvb2RtiZ3F2
-         40Dq7u0dxy3cTEdeXrjXjLH79EZNmvnYVV9KyC01yETXqn7W7lDFuxYAy/JqrPzeRWue
-         CN+Z1fG6WprL/+ST3HhLH7eMUTeEDWoTSVl7rbLA+nWDpUkEnchD3fD/0m9y6PYOACc0
-         tCmyK45RAqqSIvz2B5rGW1pQC/jcvizyMQV3GkjRcxWBPqsXxAL39DyGNLMYNkU7aN8G
-         E4m/KvCC/03QVl39Qx3bWKFWSNn6kVg9YJqOjuu3F2RyWKtbTK9qVfA0Q/Jx51YyexKA
-         Bwkg==
-X-Gm-Message-State: AO0yUKVVAx6FymCTYU54N1Y54YdtDIqU53JBMtalQTFt69nPIsYetIHy
-	88QegaTA5JTqQl23ZKlJov8=
-X-Google-Smtp-Source: AK7set/pQx743ufDsmhqP+LNcld2+2C21qsGT/HHcejhagzLMOTjwEqtBzNzdsTyK4LILTlswmXGfg==
-X-Received: by 2002:a17:906:118e:b0:92f:b290:78c with SMTP id n14-20020a170906118e00b0092fb290078cmr912511eja.21.1679088616596;
-        Fri, 17 Mar 2023 14:30:16 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1679088621;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=GPpFzY0H3ocypf25nzBsMZcz2jHpyh97I8lhoOmDtHQ=;
+        b=lpXWiuTLjMVOnnBrbvOrFr4qYm0xQkLl6jMoNNLsq2tckZrgQV6maClwCrds5VQqXq
+         b/t5ABQM3ISSytY8c375alNSQdEO/v8klN6HnVsMXuwy8qVo/4fEonrAzBBEfP0vQ2Wc
+         uJ1SejMzlVGrppbSvdPjPXGYUxYcgoj9oVP/B3KAE5z8RheBSRFARi8Pk5uGss7l2tFR
+         ZnJxKan1hDHe8uxyXxJQv/TbdKLNX6IUw/yrndDG+983RQzfxBcbGyh0FQ8OClSiw8T1
+         n3fy/rhLq5LOKgFhU4MmcJG2KR5joCcgPTag4tHcNEKD4xuT7W+qp2sOzgF7yObkcIlp
+         veGA==
+X-Gm-Message-State: AO0yUKWzzlrOZU6m8oRRCwcP3YtjpNrBaAGAkncnigBBIg7bSNO2TxNg
+	Af1dGo/Q+ueK2zCj35hI72w=
+X-Google-Smtp-Source: AK7set+tHHmi6qkolpcnuJDFVW4c6/ogWFo+Kv7rhpvUnOMQvShD3seRfaKPclm53t3IOgVIbOkX8A==
+X-Received: by 2002:aa7:cfc8:0:b0:4fc:73dc:5def with SMTP id r8-20020aa7cfc8000000b004fc73dc5defmr3832240edy.41.1679088621453;
+        Fri, 17 Mar 2023 14:30:21 -0700 (PDT)
 Received: from arinc9-PC.lan ([149.91.1.15])
-        by smtp.gmail.com with ESMTPSA id v19-20020a17090651d300b0092b86d41dbasm1404683ejk.114.2023.03.17.14.30.13
+        by smtp.gmail.com with ESMTPSA id v19-20020a17090651d300b0092b86d41dbasm1404683ejk.114.2023.03.17.14.30.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Mar 2023 14:30:16 -0700 (PDT)
+        Fri, 17 Mar 2023 14:30:21 -0700 (PDT)
 From: arinc9.unal@gmail.com
 X-Google-Original-From: arinc.unal@arinc9.com
 To: Linus Walleij <linus.walleij@linaro.org>,
 	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Subject: [PATCH v3 00/21] pinctrl: ralink: fix ABI, improve driver, move to mediatek, improve dt-bindings
-Date: Sat, 18 Mar 2023 00:29:50 +0300
-Message-Id: <20230317213011.13656-1-arinc.unal@arinc9.com>
+Subject: [PATCH v3 02/21] pinctrl: ralink: rt305x: add new compatible string for every SoC
+Date: Sat, 18 Mar 2023 00:29:52 +0300
+Message-Id: <20230317213011.13656-3-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
+In-Reply-To: <20230317213011.13656-1-arinc.unal@arinc9.com>
+References: <20230317213011.13656-1-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230317_143018_852680_2603A861 
-X-CRM114-Status: GOOD (  17.80  )
+X-CRM114-CacheID: sfid-20230317_143022_839457_027F8B8F 
+X-CRM114-Status: GOOD (  12.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,118 +93,33 @@ Cc: linux-kernel@vger.kernel.org, Daniel Santos <daniel.santos@pobox.com>, erkin
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is an ambitious effort I've been wanting to do for months.
+From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Straight off the bat, I'm fixing the ABI that I broke a while back, by
-reintroducing the ralink,rt2880-pinmux compatible string.
+Add new compatible strings to make every SoC, or SoCs that use the same
+pinmux data have a unique compatible string. This ensures that the pin
+muxing information of every SoC, or a set of SoCs that use the same pinmux
+data can be properly documented.
 
-If you take a look at the schema for mt7620 and rt305x, some functions got
-multiple lists for groups. Like refclk on mt7620. Because mt7620 and
-mt7628/mt7688 SoCs use the same compatible string, it's impossible to
-differentiate on the binding which SoC a devicetree is actually for.
-Therefore, the binding will allow all groups listed for that function. For
-example, if the SoC is mt7620, only the refclk function for the mdio group
-can be used. If one were to put "spi cs1" as the function there, there
-wouldn't be a warning.
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+---
+ drivers/pinctrl/ralink/pinctrl-rt305x.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-I address this by introducing new compatible strings for these SoCs, then
-split the schemas. I also separate mt7628/mt7688 from mt7620 pinctrl
-subdriver in the process.
-
-I wanted to split the rt305x driver too but too much code would be reused
-so I backed down from that.
-
-This platform from Ralink was acquired by MediaTek in 2011. Then, MediaTek
-introduced new SoCs which utilise this platform. We're moving the Ralink
-pinctrl driver to MediaTek, and rename the schemas for MediaTek SoCs to
-mediatek.
-
-I've renamed the ralink core driver to mtmips. I decided to call the core
-mtmips as I've seen folks from MediaTek use the same name when they added
-support for MT7621 pinctrl on U-Boot. Feel free to comment on this.
-
-Arınç
-
-v3:
-- Address Rob's indentation report.
-- Add Rob's reviewed-by.
-- Rebase to linusw/linux-pinctrl.git devel.
-
-v2:
-- Address Rob and Krzysztof's reviews, add Rob's acked-by.
-- More more cleanups, hooray!
-- Don't add new mediatek compatible strings, we don't do that here. RIP
-Chadwick Boseman.
-- Don't deprecate ralink,mt7620-pinctrl, we need it now.
-- More slight changes I can't currently remember to mention.
-
-RFC to v1:
-- Address Rob and Krzysztof's reviews, add Rob's acked-by.
-- More cleanups, hooray!
-- Keep ralink,rt2880-pinmux deprecated.
-- Deprecate ralink,mt7620-pinctrl. Another one bites the dust!
-- More slight changes I can't currently remember to mention.
-
-Arınç ÜNAL (21):
-  pinctrl: ralink: reintroduce ralink,rt2880-pinmux compatible string
-  pinctrl: ralink: rt305x: add new compatible string for every SoC
-  pinctrl: ralink: mt7620: split out to mt76x8
-  pinctrl: ralink: move to mediatek as mtmips
-  pinctrl: mediatek: remove OF_GPIO as reverse dependency
-  dt-bindings: pinctrl: ralink: move additionalProperties to top
-  dt-bindings: pinctrl: ralink: drop quotes from referred schemas
-  dt-bindings: pinctrl: ralink: add new compatible strings
-  dt-bindings: pinctrl: ralink: {mt7620,mt7621}: rename to mediatek
-  dt-bindings: pinctrl: mediatek: mt6795: rename to mediatek,mt6795-pinctrl
-  dt-bindings: pinctrl: mediatek: mt8186: rename to mediatek,mt8186-pinctrl
-  dt-bindings: pinctrl: mediatek: mt8192: rename to mediatek,mt8192-pinctrl
-  dt-bindings: pinctrl: mediatek: mt8195: rename to mediatek,mt8195-pinctrl
-  dt-bindings: pinctrl: mediatek: fix naming inconsistency
-  dt-bindings: pinctrl: {mediatek,ralink}: fix formatting
-  dt-bindings: pinctrl: mediatek: fix pinmux header location
-  dt-bindings: pinctrl: mediatek: drop quotes from referred schemas
-  dt-bindings: pinctrl: mediatek: mt7986: fix patternProperties regex
-  dt-bindings: pinctrl: ralink: rt305x: split binding
-  dt-bindings: pinctrl: mediatek: mt7620: split binding
-  MAINTAINERS: move ralink pinctrl to mediatek mips pinctrl
-
- .../pinctrl/mediatek,mt65xx-pinctrl.yaml        |  32 +-
- .../pinctrl/mediatek,mt6779-pinctrl.yaml        |  39 +-
- ...mt6795.yaml => mediatek,mt6795-pinctrl.yaml} |  51 +--
- .../pinctrl/mediatek,mt7620-pinctrl.yaml        | 298 ++++++++++++++
- ...inctrl.yaml => mediatek,mt7621-pinctrl.yaml} |  17 +-
- .../pinctrl/mediatek,mt7622-pinctrl.yaml        |  34 +-
- ...inctrl.yaml => mediatek,mt76x8-pinctrl.yaml} | 252 ++----------
- .../pinctrl/mediatek,mt7981-pinctrl.yaml        |  35 +-
- .../pinctrl/mediatek,mt7986-pinctrl.yaml        |  80 ++--
- .../pinctrl/mediatek,mt8183-pinctrl.yaml        |  32 +-
- ...mt8186.yaml => mediatek,mt8186-pinctrl.yaml} |  55 ++-
- .../pinctrl/mediatek,mt8188-pinctrl.yaml        |  80 ++--
- ...mt8192.yaml => mediatek,mt8192-pinctrl.yaml} |  57 +--
- ...mt8195.yaml => mediatek,mt8195-pinctrl.yaml} |  51 ++-
- .../pinctrl/mediatek,mt8365-pinctrl.yaml        |  30 +-
- .../bindings/pinctrl/ralink,rt2880-pinctrl.yaml |  11 +-
- .../bindings/pinctrl/ralink,rt305x-pinctrl.yaml |  89 +----
- .../bindings/pinctrl/ralink,rt3352-pinctrl.yaml | 243 ++++++++++++
- .../bindings/pinctrl/ralink,rt3883-pinctrl.yaml |  11 +-
- .../bindings/pinctrl/ralink,rt5350-pinctrl.yaml | 206 ++++++++++
- MAINTAINERS                                     |  29 +-
- drivers/pinctrl/Kconfig                         |   1 -
- drivers/pinctrl/Makefile                        |   1 -
- drivers/pinctrl/mediatek/Kconfig                |  54 ++-
- drivers/pinctrl/mediatek/Makefile               |  63 +--
- drivers/pinctrl/mediatek/pinctrl-mt7620.c       | 137 +++++++
- .../{ralink => mediatek}/pinctrl-mt7621.c       |  31 +-
- drivers/pinctrl/mediatek/pinctrl-mt76x8.c       | 283 ++++++++++++++
- .../pinctrl-mtmips.c}                           |  90 ++---
- .../pinctrl-mtmips.h}                           |  16 +-
- .../{ralink => mediatek}/pinctrl-rt2880.c       |  21 +-
- .../{ralink => mediatek}/pinctrl-rt305x.c       |  47 +--
- .../{ralink => mediatek}/pinctrl-rt3883.c       |  29 +-
- drivers/pinctrl/ralink/Kconfig                  |  35 --
- drivers/pinctrl/ralink/Makefile                 |   8 -
- drivers/pinctrl/ralink/pinctrl-mt7620.c         | 391 -------------------
- 36 files changed, 1742 insertions(+), 1197 deletions(-)
-
+diff --git a/drivers/pinctrl/ralink/pinctrl-rt305x.c b/drivers/pinctrl/ralink/pinctrl-rt305x.c
+index f6092c64383e..fa3743c7680f 100644
+--- a/drivers/pinctrl/ralink/pinctrl-rt305x.c
++++ b/drivers/pinctrl/ralink/pinctrl-rt305x.c
+@@ -118,6 +118,8 @@ static int rt305x_pinctrl_probe(struct platform_device *pdev)
+ 
+ static const struct of_device_id rt305x_pinctrl_match[] = {
+ 	{ .compatible = "ralink,rt305x-pinctrl" },
++	{ .compatible = "ralink,rt3352-pinctrl" },
++	{ .compatible = "ralink,rt5350-pinctrl" },
+ 	{ .compatible = "ralink,rt2880-pinmux" },
+ 	{}
+ };
+-- 
+2.37.2
 
 
