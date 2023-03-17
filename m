@@ -4,57 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C485DC6FD1D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 15:43:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C844FC74A5B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 16:16:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TDhQL06bwybuvijWfPquue79gyq1yUmwDLPZetsiGbc=; b=EsZBWNL60kdlb+GH+++JHz2+5n
-	uXd6kF1bvLx2jbqBERCHlm/0KIQNz6VtGV+vMOS5EJ5JwohMAufZRiF7d9bPVmsPvKBXpglJW7Z4a
-	HsrtTIdx2DswaeJJgipoPF+GpJHdzILRuWVreahc4kuKLYGPMThnDSWuR1V1PO3zsfvpFXsW3PqjH
-	t6T0pr+EEw4ODp09/5KzrHMRGt0E6sNuL4plK5f5VfuCf+QOq7OoVEXkUA2oQGoCRUFhJD/pNCa8c
-	4ajhvqcgwIVWEpaqyLZWn5qRHoZ4qzr01a6CP/MLsek7CThjQGJyavBMmLXgdhxbfhh9I4LuCuNR7
-	QncsM0Qg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VbQDZr65QTBBX8FlJ62VuxlyrO6edp3YYEfu2/JI8kM=; b=3BHywgk7kGR3v5klQ7RNz9dHIp
+	zTNlIH11ZgbqmDfCTD6uly/wVA74GFPrloHdo9zgxf19OqaOi81xwPUpm8bPSGIh2YcAhyorJqGP1
+	Yoa8CVKOwCGFVT/6oYGYQqgRHitTgcxnMLpvRC0Cklmia8A33r2Fk0/88WlEk7wF+j4ewXFvJ0ASV
+	Ks+NL7sGqPOh3GVBymmu2vH/XSJjxG/xnWhV3Q6MmdgSW6l0kWLz8nl4P3L0xRWxBQphDF0Su2qCk
+	LQgBxCCIPmFk2YiQ02S1Ba1E1GRBEVH0dBk7AM7lpkLzSYmGaf1upc2kj8aw2dIjobVfc7b/jhtkV
+	Bq7FN6Pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdCEi-002eHV-1m;
-	Fri, 17 Mar 2023 15:43:20 +0000
-Received: from mg.richtek.com ([220.130.44.152])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdCEd-002eG7-38;
-	Fri, 17 Mar 2023 15:43:18 +0000
-X-MailGates: (flag:4,DYNAMIC,BADHELO,RELAY,NOHOST:PASS)(compute_score:DE
-	LIVER,40,3)
-Received: from 192.168.10.47
-	by mg.richtek.com with MailGates ESMTP Server V5.0(14117:0:AUTH_RELAY)
-	(envelope-from <cy_huang@richtek.com>); Fri, 17 Mar 2023 23:42:42 +0800 (CST)
-Received: from ex4.rt.l (192.168.10.47) by ex4.rt.l (192.168.10.47) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.25; Fri, 17 Mar
- 2023 23:42:42 +0800
-Received: from linuxcarl2.richtek.com (192.168.10.154) by ex4.rt.l
- (192.168.10.45) with Microsoft SMTP Server id 15.2.1118.25 via Frontend
- Transport; Fri, 17 Mar 2023 23:42:42 +0800
-From: <cy_huang@richtek.com>
-To: <pavel@ucw.cz>, <lee@kernel.org>
-CC: <matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<cy_huang@richtek.com>, <chiaen_wu@richtek.com>,
-	<jacek.anaszewski@gmail.com>, <linux-leds@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH] leds: rgb: mt6370: Fix implicit declaration for FIELD_GET
-Date: Fri, 17 Mar 2023 23:42:40 +0800
-Message-ID: <1679067760-19098-1-git-send-email-cy_huang@richtek.com>
-X-Mailer: git-send-email 1.8.3.1
+	id 1pdCkz-002jRp-1J;
+	Fri, 17 Mar 2023 16:16:41 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pdCkv-002jQ2-0O;
+	Fri, 17 Mar 2023 16:16:38 +0000
+Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B99A166030BB;
+	Fri, 17 Mar 2023 16:16:30 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1679069792;
+	bh=49PZcSvk47SlrfLl7/yknVPtoQk4XUEFnqrmnkayK1I=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jltYPnZPzubr2lTQ/mLSolkU80AW0fOvMP1z7YZd8IoIwIRKndJ2VxpVOxFUy6SpV
+	 UZD+CfZfOjt3Sffj7yVlyxFJ2k2hHkgnET5izAl6StKCNgZtj1IV0w+lOq8yGgPPoP
+	 ChC0gCNvnUbxoeYxWSM7kmYzgqlffRJhCKL10QwOtr6JyfzDS4chHNk+o3d5DglyIA
+	 WGtKoQXzs3VnVe43ID8r35N1EjUVHUBpTwAu36xFqJdUBj0nBFaXjdy2/PulIrPyHo
+	 zHx6u2eAgGuxKmcPVf2hjbLV/FgKGPfehNIPeRWBWSkNHdrRB8k8OpMUAqEDN9vxEQ
+	 41U1E37EjGkbg==
+Date: Fri, 17 Mar 2023 12:16:25 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Nicolas Dufresne <nicolas@ndufresne.ca>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Hsin-Yi Wang <hsinyi@chromium.org>,
+	Fritz Koenig <frkoenig@chromium.org>,
+	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v4,2/2] media: mediatek: vcodec: Using MM21 as the
+ default capture format
+Message-ID: <20230317161625.x6hm6cxr36hnhmcz@notapiano>
+References: <20230317030833.16836-1-yunfei.dong@mediatek.com>
+ <20230317030833.16836-2-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230317030833.16836-2-yunfei.dong@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230317_084316_443673_3D0E6D1A 
-X-CRM114-Status: UNSURE (   7.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230317_091637_288658_06ACE15A 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,39 +86,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChiYuan Huang <cy_huang@richtek.com>
+Hi Yunfei,
 
-0-DAY CI Kernel Test Service reported the implicit declaration error below:
+thanks for the patch.
 
-drivers/leds/rgb/leds-mt6370-rgb.c: In function'mt6370_check_vendor_info':
->> drivers/leds/rgb/leds-mt6370-rgb.c:889:15: error: implicit  declaration
-   of function 'FIELD_GET' [-Werror=implicit-function-declaration]
-  889 |         vid = FIELD_GET(MT6370_VENDOR_ID_MASK, devinfo);
-      |
+The commit title should be in imperative, so I suggest:
 
-Add the missing header 'bitfield.h' to fix it.
+	media: mediatek: vcodec: Make MM21 the default capture format
 
-Reported-by: kernel test robot <lkp@intel.com>
-Link: https://lore.kernel.org/oe-kbuild-all/202303171729.CcgyFx17-lkp@intel.com/
-Fixes: 55a8a5c16eb3 ("leds: rgb: mt6370: Add MediaTek MT6370 current sink type LED Indicator support")
-Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
----
- drivers/leds/rgb/leds-mt6370-rgb.c | 1 +
- 1 file changed, 1 insertion(+)
+On Fri, Mar 17, 2023 at 11:08:33AM +0800, Yunfei Dong wrote:
+> For the capture queue only support MM21 format with LibYuv, need to set MM21 as the
+> default format.
 
-diff --git a/drivers/leds/rgb/leds-mt6370-rgb.c b/drivers/leds/rgb/leds-mt6370-rgb.c
-index 9c1e6d5..bb62431 100644
---- a/drivers/leds/rgb/leds-mt6370-rgb.c
-+++ b/drivers/leds/rgb/leds-mt6370-rgb.c
-@@ -7,6 +7,7 @@
-  *   Alice Chen <alice_chen@richtek.com>
-  */
- 
-+#include <linux/bitfield.h>
- #include <linux/bitops.h>
- #include <linux/kernel.h>
- #include <linux/leds.h>
--- 
-2.7.4
+Again, I think this commit message could be improved a bit. Here's a suggestion:
 
+	Given that only the MM21 capture format is supported by userspace tools (like
+	gstreamer and libyuv), make it the default capture format.
+
+	This allows us to force the MM21 format even when a MM21 and MT21C capable
+	firmware is available (which is needed while dynamic format switching isn't
+	implemented in the driver), without causing the following regressions on
+	v4l2-compliance:
+
+				fail: v4l2-test-formats.cpp(478): pixelformat 3132544d (MT21) for buftype 9 not reported by ENUM_FMT
+			test VIDIOC_G_FMT: FAIL
+				fail: v4l2-test-formats.cpp(478): pixelformat 3132544d (MT21) for buftype 9 not reported by ENUM_FMT
+			test VIDIOC_TRY_FMT: FAIL
+				fail: v4l2-test-formats.cpp(478): pixelformat 3132544d (MT21) for buftype 9 not reported by ENUM_FMT
+			test VIDIOC_S_FMT: FAIL
+
+Also, I think it would be slightly better if this was the first patch in the
+series, so that v4l2-compliance doesn't fail in between the patches.
+
+> 
+> Fixes: 7501edef6b1f ("media: mediatek: vcodec: Different codec using different capture format")
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+
+With this change I've confirmed that all v4l2-compliance tests are passing again:
+
+Total for mtk-vcodec-dec device /dev/video2: 46, Succeeded: 46, Failed: 0, Warnings: 0
+
+So, after the above comments are addressed,
+
+Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
+Thanks,
+Nícolas
 
