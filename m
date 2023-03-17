@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5C71C74A5B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 19:55:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C51A2C6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 20:38:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6I4zaJWeXHuTHctz9grpTrdUNl5lczn9OJW2lI57m1Q=; b=YK+iI49HfRWMs3GAd8srwxyiCE
-	/Dh0HPdp3GDn0VY/fxCN11U95Sy2hJcAqsLcchnZjLDLaUiNxAFjLJhOyANXxJjtbLu/ZMFaFJllm
-	+RNLpT3naVW/R3nwItZJm8z1GKBykwMdtXpZoBmPGAxQx0PMzhSoWMcBU8tA9azjw7p7Gcbl1laMT
-	afMB/Ie04Mk9O0E1OvJ/ZucacZ41hBZCDPonKqbJqU0BLYqLMxgZDLcxhMEKeL8qSHZX3cPoMsadP
-	VkZYJVDMth5y7tzKVCi0jKEeLpvXYhYFHg8TnQoPXQ1Qn5a3FbijjcsAwNQ2NWausuNkXvPcaiq7E
-	3FcLg2Gw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=WjIwrwxKeq5Ld9Ij9H2Gbwf8PRvgEpDh113K4y969wE=; b=5D6p3qkJLLV3fo
+	wE8RjVI0TFbjGLRjbZu3YyA1x/pONXlZfkp7AwQEKwhMYqu0munShpzOOiogQeGPZYdUzyGBgMM+E
+	E/ksyyzfXcULdnv+Wr0Tt1GAwM796kIUPwRfX8F3nVW26/M8bf5IoqM//yQhHdaNmVpnvcTRdLEsE
+	IHVTlbKBUWdJTDTk9BQH5jVkihvkRDgolMttAa3N19OtNV3UwRgBJbEVCx+Gf+sWXL9bc7miuNGPX
+	vwV6sZpIw9M//Qq9eqwvbOoZCZanbYv47GEPz8gGgzdK84lkkvhmozDwIBaFRyWpBSQmEnXNzSL4I
+	P5NmpkBByS9fAY03by0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdGAN-003Egj-2t;
-	Fri, 17 Mar 2023 19:55:07 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pdGqd-003KAE-0G;
+	Fri, 17 Mar 2023 20:38:47 +0000
+Received: from sender4-op-o10.zoho.com ([136.143.188.10])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdGAI-003Ee6-2k;
-	Fri, 17 Mar 2023 19:55:04 +0000
-Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C1AF066030C4;
-	Fri, 17 Mar 2023 19:54:57 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679082898;
-	bh=xUkcVXnyTuTsmAI0NLMHRHqskyN4MCp0kwSVC7VaIMY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=j1GA1r2CQzoOUARFqEqGeWG95yccuewWR/wmYs+KK6oUouC4k+KOCz+ZZzpTeKExy
-	 wRXD2cUWmenfH1PbHLYezgOmBy/fpYKgzCRxIhesaVKXnWCyYyGbMsqNDme2HYjYmX
-	 Oq7hYyr/jmpTiPwa09MFeg2U5icaF0MQn/1YHUp+2qmlY6wcHIJs1Qd1i5seHj02se
-	 PS9HTYyqLwVD3E+G+yO5Zlkbpveq39VAltdpcoLmBLMeza9Si0Ogn9fs0pCIUHv+6U
-	 qASBE6rjOmNuo6uaBt7LbNfPNdfGyXBzq5ZJnB7xxq0Vo1fBrXRhz7SQ1hArmBMvYx
-	 rb0oDKZxxgnig==
-Date: Fri, 17 Mar 2023 15:54:53 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3] arm64: dts: mediatek: Add cpufreq nodes for MT8192
-Message-ID: <20230317195453.lpymxjk7oqvbxkq5@notapiano>
-References: <20230317061944.15434-1-allen-kh.cheng@mediatek.com>
+	id 1pdGqa-003K9c-1O;
+	Fri, 17 Mar 2023 20:38:45 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1679085506; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Xw/JmgIpXeWcbao/wk4KwQ4Jquj/5Ho6qfNyIdO4Ur9aMayyP5TrN4EJzDccCEWYKoi4giSEwrW8C7YmlUOx5lLKRARF5SvcfAOUPlUqOtzkuvyJxE0ICjHeIj6/XOEN0YueD64oXSDgmxlcsfdP12Ve3Tut9SiH7UwHypfT2tI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1679085506; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=WjIwrwxKeq5Ld9Ij9H2Gbwf8PRvgEpDh113K4y969wE=; 
+	b=LMni3nsGFnG2FVnh6j6xH22hvSZ6yIBCrpnLHfsA/dr1HxdNGBW3iVIQHTXhOVPzKYUuycLznExUjo8h5UKKTL/SF/44yWFqQpXVvYb5NDnuILezptc2szB91vBW92Xc0Q/ToflYp23Z/AovR6QALoXUAsa/VJTtN1VCOY34Cnc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1679085506;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=WjIwrwxKeq5Ld9Ij9H2Gbwf8PRvgEpDh113K4y969wE=;
+	b=h2jZZs7IRiH7FdUfBugzOWe/DM0kpKGcr02Mcdb8/PX8HJ9rm3kNyMUqKb9N9t/b
+	oYooBgEjewh5KXrq5ufHqBSB8F1msv9f8aEqaMtg8Eu518AB6iU0gnkQrohkv1nRhQp
+	8vPyCEZaBehcCPGd5eKq36itLWJWYLFZ757aLLkI=
+Received: from [10.10.10.3] (149.91.1.15 [149.91.1.15]) by mx.zohomail.com
+	with SMTPS id 1679085504453905.0224911165027; Fri, 17 Mar 2023 13:38:24 -0700 (PDT)
+Message-ID: <022c66f3-75d4-5ab4-4a4d-e8260fd70904@arinc9.com>
+Date: Fri, 17 Mar 2023 23:38:16 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v2 20/21] dt-bindings: pinctrl: mediatek: mt7620: split
+ binding
+To: Rob Herring <robh@kernel.org>
+References: <20230313205921.35342-1-arinc.unal@arinc9.com>
+ <20230313205921.35342-21-arinc.unal@arinc9.com>
+ <20230317190331.GA2628708-robh@kernel.org>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20230317190331.GA2628708-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230317061944.15434-1-allen-kh.cheng@mediatek.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230317_125503_025656_715A25BB 
-X-CRM114-Status: UNSURE (   7.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230317_133844_550641_3713CD8B 
+X-CRM114-Status: GOOD (  12.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,29 +77,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, Daniel Santos <daniel.santos@pobox.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, erkin.bozoglu@xeront.com, =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, linux-mips@vger.kernel.org, devicetree@vger.kernel.org, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Andy Teng <andy.teng@mediatek.com>, Hui Liu <hui.liu@mediatek.com>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Del Regno <angelogioacchino.delregno@collabora.com>, linux-gpio@vger.kernel.org, Zhiyong Tao <zhiyong.tao@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Daniel Golle <daniel@makrotopia.org>, William Dean <williamsukatube@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 17, 2023 at 02:19:44PM +0800, Allen-KH Cheng wrote:
-> Add the cpufreq nodes for MT8192 SoC.
+On 17.03.2023 22:03, Rob Herring wrote:
+> On Mon, Mar 13, 2023 at 11:59:20PM +0300, arinc9.unal@gmail.com wrote:
+>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+>>
+>> The MT7628 and MT7688 SoCs contain different pin muxing information,
+>> therefore, should be split. This can be done now that there are compatible
+>> strings to distinguish them from other SoCs.
+>>
+>> Split the schema out to mediatek,mt76x8-pinctrl.yaml.
+>>
+>> Remove mediatek,mt76x8-pinctrl from mt7620.
+>>
+>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+>> ---
+>>   .../pinctrl/mediatek,mt7620-pinctrl.yaml      | 379 +--------------
+>>   .../pinctrl/mediatek,mt76x8-pinctrl.yaml      | 450 ++++++++++++++++++
+>>   2 files changed, 459 insertions(+), 370 deletions(-)
+>>   create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt76x8-pinctrl.yaml
+>>
+>> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml
+>> index 808dd8bd276f..591bc0664ec6 100644
+>> --- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml
+>> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml
+>> @@ -11,15 +11,13 @@ maintainers:
+>>     - Sergio Paracuellos <sergio.paracuellos@gmail.com>
+>>   
+>>   description: |
+>> -  MediaTek MT7620 pin controller for MT7620, MT7628 and MT7688 SoCs.
+>> +  MediaTek MT7620 pin controller for MT7620 SoC.
 > 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Saying MT7620 twice is redundant. Otherwise,
+> 
+> Reviewed-by: Rob Herring <robh@kernel.org>
 
-Reviewed-by: N�colas F. R. A. Prado <nfraprado@collabora.com>
-Tested-by: N�colas F. R. A. Prado <nfraprado@collabora.com>
+It's not always a one to one relation so I'd rather explicitly point the 
+SoC out like on other schemas like MT7621. Thanks for reviewing!
 
-Tested on Asurada Spherion Chromebook as well. In particular, verified that
-applying this commit makes suspend/resume work. Before, it would hang during
-resume:
-
-	Enabling non-boot CPUs ...
-	Detected VIPT I-cache on CPU1
-	GICv3: CPU1: found redistributor 100 region 0:0x000000000c060000
-	CPU1: Booted secondary processor 0x0000000100 [0x412fd050]
-
-But with this commit applied the machine is able to proceed bringing up the
-secondary processors and complete resume.
-
-Thanks,
-N�colas
+Arınç
 
