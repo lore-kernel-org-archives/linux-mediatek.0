@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA4FCC74A5B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 09:38:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C17BC74A5B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 09:58:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W4ZtIXw0ir18QEQZljYtT4f7hKsW6tJ5NYQpUlJrVvM=; b=cx5mzHAjZsrzm/gFIuAsVal+AI
-	4LsNSHzfb07KnJn/KnGSQAMYQZ55boMYsn75LOYkQ/HnJK7SOoap3nqm8WdToJndpdrYVeRJ+g7Hf
-	4+IJr3pgg41pPgEROjQIHrYzE4KwDb/XqEk90ghFiS8GJQyAHp4sTxAJ6P2+762sscXiiPeWgp3ms
-	T2rrDHwKZt6ICAmyndOjSnPebRH4I8jMKMev+HV+rr8UIDwL2Fluphf1rB/qIZqID66r6Ue7wFnM1
-	iP0PiehT3uGHTO7/BdSlalSRZxxu7hQZ/DlSqlTR1aKLofgVaam9raHwwDXHRBA5kUDu5R6T6GXmN
-	NUUwvlMA==;
+	bh=yQ9HXiahWwR1D9Pumov3WiZT9OJZoJCA5nXf8+QG9RE=; b=4/PwD39rXLEjBFBhBTaQbaVPYk
+	bZRl+LhFP7H7hZ4MvSmSmTH7M5BwFJifv2CkFAnimxs2/tbQztpoWOP8pQ8F+6vbQU5Re2P5Fbht9
+	o7KF68aCYCOo2gw4UlvpBhfM8jhzCnI1rjpRB8DQnMf4MgwUbuBO6Z5sxVsBKNKCcA82LTWTP6AvP
+	0zTkqkFjl0tH2/H+WKCC+5hh5Z0Sj9pqpbWt0fcItyMgM7ag1+JeiCZgASaG5GhVMlQPnHU76cjaZ
+	8LQmYzIzUaAfyFF8Kex2E+Ba+9fza3ajDXsiYJSp320s8Zm25mMwULGWBYKAiAgIOBGo8ucYTy6ZS
+	IdHUc9SA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pd6XG-001lRZ-2u;
-	Fri, 17 Mar 2023 09:38:06 +0000
+	id 1pd6qh-001oZ2-10;
+	Fri, 17 Mar 2023 09:58:11 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pd6XD-001lQC-0D;
-	Fri, 17 Mar 2023 09:38:04 +0000
+	id 1pd6qc-001oXa-1j;
+	Fri, 17 Mar 2023 09:58:08 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AA6F3660309E;
-	Fri, 17 Mar 2023 09:38:00 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4DAE4660309E;
+	Fri, 17 Mar 2023 09:58:03 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679045881;
-	bh=rmmWudAsSvMomWU/4fDVcXJ8Rtt1hVjirKy1iG0ELDs=;
+	s=mail; t=1679047084;
+	bh=tXDWTLClrv/QmGecD8rHF7kXTlD8mLRA4GFHO0CFYr0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aBnKahfJNgs/WHPGR5Z2WVQlkVBpkAadZjyTZUgUEZ7nZDC3i5EGLvepHobwTWD4D
-	 7vc9MJxqJk6pXw3GuXacqWZCXQmuh4te0jaQ7SUBdz5Kr0E94PFH+S40qtVlqZ3Y3x
-	 4rYQTCMbfHKf462ylqImBcZTQQnypHMvt8RoueLMyjyukz/HjOHI0r+vbFvQ+Buurk
-	 WZQdnuhpNmvPbSY2HKe4LJtO0I+1ySONKuAA8FluTO2fRg0Ag7XYdk6c5AsgkGu8bZ
-	 Cd24vQ4qRawksvtR02G+AVvYBdzWwzwCmu0EDGB0YL4qO7VGAKyerLfkU4AHZttOqQ
-	 cqnUwyX3YSyPw==
-Message-ID: <fdd0a157-eedb-bf21-c632-79b02a4cd6b0@collabora.com>
-Date: Fri, 17 Mar 2023 10:37:58 +0100
+	b=YKD74482ToL3Qoudx0OsGSVtXkCtxQ/PBbhgnu4poZfps52fk7HDAxNUAMcd7274Q
+	 5z7fY2Dwn0sJIwAvB2f9Aja/fFJ8zobnRSPEjlzd1K00p4vEjVq9ClQujh9/rVgo8b
+	 5UwFhDu8LMLTbT8vRjsrE3uShn/oN1hIw2+wJHxzYTNUSiWuqFIEI511apNStJ9nwE
+	 mDqZefQ6g1FFS3OBwqaG9mUNiNceq55nkZskerrk8J/hJRaFWeI7dEZgCylUCFjZkc
+	 vWqO+1GP290byKLMqivviOgBMkQGWUHTOPhPMtKvKQGAZNmq/xvrHMCZvFzXTQukQH
+	 JqsU5qC6jDNTQ==
+Message-ID: <34c758c0-cbbb-da11-6263-e7b084040ed6@collabora.com>
+Date: Fri, 17 Mar 2023 10:58:00 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.0
 Subject: Re: [PATCH v29 1/7] dt-bindings: mediatek: add ethdr definition for
  mt8195
 Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
+To: =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
  "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
  "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
  "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
  "robh+dt@kernel.org" <robh+dt@kernel.org>,
  "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
@@ -82,13 +82,15 @@ References: <20221227081011.6426-1-nancy.lin@mediatek.com>
  <0ebf187d-972e-4228-d8a0-8c0ce02f642d@linaro.org>
  <72cf6344a1c5942bff0872d05dce82b787b49b76.camel@mediatek.com>
  <4027714e-b4e8-953b-68e2-f74f7a7f0e8e@linaro.org>
+ <fdd0a157-eedb-bf21-c632-79b02a4cd6b0@collabora.com>
+ <5695b8e5ab8339764c646ee581529cb6cee04346.camel@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <4027714e-b4e8-953b-68e2-f74f7a7f0e8e@linaro.org>
+In-Reply-To: <5695b8e5ab8339764c646ee581529cb6cee04346.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230317_023803_365584_97B650B0 
-X-CRM114-Status: GOOD (  15.42  )
+X-CRM114-CacheID: sfid-20230317_025806_836871_F7DE061A 
+X-CRM114-Status: GOOD (  18.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,92 +105,148 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/03/23 10:03, Krzysztof Kozlowski ha scritto:
-> On 17/03/2023 08:55, Nancy Lin (林欣螢) wrote:
->> On Thu, 2023-03-16 at 12:36 +0100, Krzysztof Kozlowski wrote:
->>> On 16/03/2023 10:53, AngeloGioacchino Del Regno wrote:
+Il 17/03/23 10:52, Nancy Lin (林欣螢) ha scritto:
+> On Fri, 2023-03-17 at 10:37 +0100, AngeloGioacchino Del Regno wrote:
+>> Il 17/03/23 10:03, Krzysztof Kozlowski ha scritto:
+>>> On 17/03/2023 08:55, Nancy Lin (林欣螢) wrote:
+>>>> On Thu, 2023-03-16 at 12:36 +0100, Krzysztof Kozlowski wrote:
+>>>>> On 16/03/2023 10:53, AngeloGioacchino Del Regno wrote:
+>>>>>
+>>>>>> Hello Krzysztof, Nancy,
+>>>>>>
+>>>>>> Since this series has reached v29, can we please reach an
+>>>>>> agreement
+>>>>>> on the bindings
+>>>>>> to use here, so that we can get this finally upstreamed?
+>>>>>>
+>>>>>> I will put some examples to try to get this issue resolved.
+>>>>>>
+>>>>>> ### Example 1: Constrain the number of GCE entries to *seven*
+>>>>>> array
+>>>>>> elements (7x4!)
+>>>>>>
+>>>>>>      mediatek,gce-client-reg:
+>>>>>>        $ref: /schemas/types.yaml#/definitions/phandle-array
+>>>>>>        maxItems: 1
+>>>>>>        description: The register of display function block to
+>>>>>> be set
+>>>>>> by gce.
+>>>>>>          There are 4 arguments in this property, gce node,
+>>>>>> subsys id,
+>>>>>> offset and
+>>>>>>          register size. The subsys id is defined in the gce
+>>>>>> header of
+>>>>>> each chips
+>>>>>>          include/dt-bindings/gce/<chip>-gce.h, mapping to the
+>>>>>> register of display
+>>>>>>          function block.
+>>>>>>        items:
+>>>>>>          minItems: 28
+>>>>>>          maxItems: 28
+>>>>>>          items:                     <----- this block doesn't
+>>>>>> seem to
+>>>>>> get checked :\
+>>>>>>            - description: phandle of GCE
+>>>>>>            - description: GCE subsys id
+>>>>>>            - description: register offset
+>>>>>>            - description: register size
+>>>>>
+>>>>> This is what we would like to have but it requires exception in
+>>>>> dtschema. Thus:
+>>>>>
+>>>>>>
+>>>>>>
+>>>>>> ### Example 2: Don't care about constraining the number of
+>>>>>> arguments
+>>>>>>
+>>>>>>      mediatek,gce-client-reg:
+>>>>>>        $ref: /schemas/types.yaml#/definitions/phandle-array
+>>>>>>        maxItems: 1
+>>>>>>        description: The register of display function block to
+>>>>>> be set
+>>>>>> by gce.
+>>>>>>          There are 4 arguments in this property, gce node,
+>>>>>> subsys id,
+>>>>>> offset and
+>>>>>>          register size. The subsys id is defined in the gce
+>>>>>> header of
+>>>>>> each chips
+>>>>>>          include/dt-bindings/gce/<chip>-gce.h, mapping to the
+>>>>>> register of display
+>>>>>>          function block.
+>>>>>
+>>>>> use this.
+>>>>>
+>>>>> Best regards,
+>>>>> Krzysztof
+>>>>
+>>>>
+>>>> Hi Krzysztof, Angelo,
+>>>>
+>>>> Thanks for the comment.
+>>>> The Example 2 can pass dt_binding_check.
+>>>>
+>>>> But the example in the binding has 7 items [1] and dts [2]. Does
+>>>> the
+>>>> "maxItems: 1" affect any other schema or dts check?
 >>>
->>>> Hello Krzysztof, Nancy,
->>>>
->>>> Since this series has reached v29, can we please reach an agreement
->>>> on the bindings
->>>> to use here, so that we can get this finally upstreamed?
->>>>
->>>> I will put some examples to try to get this issue resolved.
->>>>
->>>> ### Example 1: Constrain the number of GCE entries to *seven* array
->>>> elements (7x4!)
->>>>
->>>>     mediatek,gce-client-reg:
->>>>       $ref: /schemas/types.yaml#/definitions/phandle-array
->>>>       maxItems: 1
->>>>       description: The register of display function block to be set
->>>> by gce.
->>>>         There are 4 arguments in this property, gce node, subsys id,
->>>> offset and
->>>>         register size. The subsys id is defined in the gce header of
->>>> each chips
->>>>         include/dt-bindings/gce/<chip>-gce.h, mapping to the
->>>> register of display
->>>>         function block.
->>>>       items:
->>>>         minItems: 28
->>>>         maxItems: 28
->>>>         items:                     <----- this block doesn't seem to
->>>> get checked :\
->>>>           - description: phandle of GCE
->>>>           - description: GCE subsys id
->>>>           - description: register offset
->>>>           - description: register size
+>>> Ah, then it should be maxItems: 7, not 1.
 >>>
->>> This is what we would like to have but it requires exception in
->>> dtschema. Thus:
->>>
->>>>
->>>>
->>>> ### Example 2: Don't care about constraining the number of
->>>> arguments
->>>>
->>>>     mediatek,gce-client-reg:
->>>>       $ref: /schemas/types.yaml#/definitions/phandle-array
->>>>       maxItems: 1
->>>>       description: The register of display function block to be set
->>>> by gce.
->>>>         There are 4 arguments in this property, gce node, subsys id,
->>>> offset and
->>>>         register size. The subsys id is defined in the gce header of
->>>> each chips
->>>>         include/dt-bindings/gce/<chip>-gce.h, mapping to the
->>>> register of display
->>>>         function block.
->>>
->>> use this.
->>>
+>>
+>> Keep in mind for your v30:
+>>
+>> maxItems: 7 will pass - but only if minItems is *not* 7 :-)
+>>
+>> -> (so, do not declare minItems, as default is 1) <-
+>>
+>> Regards,
+>> Angelo
+>>
+> Hi Angelo,
+> 
+> I still have one message [1] when runing dt_binding_check for "example
+> 2 + maxItems: 7" [2].
+> 
+> [1]
+> /proj/mtk19347/cros/src/third_party/kernel/v5.10/Documentation/devicetr
+> ee/bindings/display/mediatek/mediatek,ethdr.example.dtb:
+> hdr-engine@1c114000: mediatek,gce-client-reg: [[4294967295, 7, 16384,
+> 4096, 4294967295, 7, 20480, 4096, 4294967295, 7, 28672, 4096,
+> 4294967295, 7, 36864, 4096, 4294967295, 7, 40960, 4096, 4294967295, 7,
+> 45056, 4096, 4294967295, 7, 49152, 4096]] is too short
+> 
+> 
+> [2]
+>     mediatek,gce-client-reg:
+>       $ref: /schemas/types.yaml#/definitions/phandle-array
+>       maxItems: 7
+>       description: The register of display function block to be set by
+> gce.
+>         There are 4 arguments in this property, gce node, subsys id,
+> offset and
+>         register size. The subsys id is defined in the gce header of
+> each chips
+>         include/dt-bindings/gce/<chip>-gce.h, mapping to the register of
+> display
+>         function block.
+> 
+
+Maybe I'm wrong about the "do not declare minItems"... try with
+
+minItems: 1
+maxItems: 7
+
+
+...does it work now?
+
+> Regards,
+> Nancy
+> 
+> 
 >>> Best regards,
 >>> Krzysztof
->>
->>
->> Hi Krzysztof, Angelo,
->>
->> Thanks for the comment.
->> The Example 2 can pass dt_binding_check.
->>
->> But the example in the binding has 7 items [1] and dts [2]. Does the
->> "maxItems: 1" affect any other schema or dts check?
-> 
-> Ah, then it should be maxItems: 7, not 1.
-> 
+>>>
 
-Keep in mind for your v30:
 
-maxItems: 7 will pass - but only if minItems is *not* 7 :-)
 
--> (so, do not declare minItems, as default is 1) <-
-
-Regards,
-Angelo
-
-> Best regards,
-> Krzysztof
-> 
 
