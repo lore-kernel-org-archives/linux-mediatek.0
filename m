@@ -4,82 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE698C74A5B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 08:15:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9F7EC6FD1D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 08:22:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FGfHOBVymC0DHuKRYmnC5Uxx4OWvdn5zdJ7U9DYtQ5U=; b=Y//jpvHerAUc8FhQh1nDZTAXi0
-	AHiPPkDz70sC/q9t521SgCkOuDj+U7knOr6iLhJf2lwln9IvvbvxO0GfctIKlYXz1pmdn7nIZtdEm
-	PklwXaXKkcqHBXOivadRxWsd9GbtaZsEiiiESxEMXXrD3smwFYh4TTSoPTBvtWIti7TDXvnVqmfu8
-	M8a++L9NFVcXa74V+zCXd+K5EfxpM2eJoAscPJoQ0pKu39+zFvDeLJ+JXGctfjPE0WQ/FELSk3KAP
-	6dekKpOt7HJAP36jsOx1SDtiEdXb9lxyPAwYHngAS2HthftiPrWPW0NW9g4kJXIfdWk8OfNWtft07
-	YaDeqqMg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BNc/kHo5aLGE/5t+pmARrsiWsmKKjUhLotGyzn2m4ag=; b=4Pe2sDU0udTUteBiMUSLLDIigs
+	kSE4aGCPNTOM6+uzebNYsGQpecVJHJfyT7t9IIgbGEoGPWz/55xsU0vvG7DVeopwo/pU9hzNXe2AG
+	tEoxluGtpKJlFJzMUSFjgI49Le12u9ZjULMUsuMGnCPFjP6je71Fks8LJJoqkskzLk+1LYhFYKAEm
+	ntBV0+hzfl7SNp3BztGpXozWEgC08BoyI3W+0GeRwIHEDb1BUFvdR+gC4WRcKIFae03cmIxXd2Pxs
+	gJLtUPNBjjnOsr3GIXt0PJR7FGM3dijjOmMQIH0zDCdpfpS74pnC60C6RrzmI8ZcoBmuPS8nSuCqp
+	4+SaHiiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pd5FO-001Qm6-2Y;
-	Fri, 17 Mar 2023 08:15:34 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pd5MJ-001SRi-2y;
+	Fri, 17 Mar 2023 08:22:43 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pd5FL-001Qku-0i
-	for linux-mediatek@lists.infradead.org;
-	Fri, 17 Mar 2023 08:15:32 +0000
-X-UUID: df53772ec49b11edb5598346aad47b14-20230317
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FGfHOBVymC0DHuKRYmnC5Uxx4OWvdn5zdJ7U9DYtQ5U=;
-	b=ikcEbLkIxAEIvahriLsuh87t+6pHsv62MC2euRW7W9W4qEOlBJ6pq1fuLCxlffXOOWcIw3Nul//yFdEu+x7OqO1j1SkiVGlFbGd9tr17LgJXEBn00x6Yg/FDGWEzfkWUqdjNezUVC38sZdappQlZYPcKaLgfK1dj7yDJyyXGVe8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.21,REQID:9530e3f3-c77a-4971-8cc8-bcb5bf48ed9e,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:83295aa,CLOUDID:c35aac28-564d-42d9-9875-7c868ee415ec,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-UUID: df53772ec49b11edb5598346aad47b14-20230317
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <yanchao.yang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1316639907; Fri, 17 Mar 2023 01:15:26 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.25; Fri, 17 Mar 2023 16:15:14 +0800
-Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.25 via Frontend Transport; Fri, 17 Mar 2023 16:15:13 +0800
-From: Yanchao Yang <yanchao.yang@mediatek.com>
-To: Loic Poulain <loic.poulain@linaro.org>, Sergey Ryazanov
-	<ryazanov.s.a@gmail.com>, Johannes Berg <johannes@sipsolutions.net>, "David S
- . Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, netdev ML
-	<netdev@vger.kernel.org>, kernel ML <linux-kernel@vger.kernel.org>
-CC: Intel experts <linuxwwan@intel.com>, Chetan <m.chetan.kumar@intel.com>,
-	MTK ML <linux-mediatek@lists.infradead.org>, Liang Lu
-	<liang.lu@mediatek.com>, Haijun Liu <haijun.liu@mediatek.com>, Hua Yang
-	<hua.yang@mediatek.com>, Ting Wang <ting.wang@mediatek.com>, Felix Chen
-	<felix.chen@mediatek.com>, Mingliang Xu <mingliang.xu@mediatek.com>, Min Dong
-	<min.dong@mediatek.com>, Aiden Wang <aiden.wang@mediatek.com>, Guohao Zhang
-	<guohao.zhang@mediatek.com>, Chris Feng <chris.feng@mediatek.com>, Yanchao
- Yang <yanchao.yang@mediatek.com>, Lambert Wang <lambert.wang@mediatek.com>,
-	Mingchuang Qiao <mingchuang.qiao@mediatek.com>, Xiayu Zhang
-	<xiayu.zhang@mediatek.com>, Haozhe Chang <haozhe.chang@mediatek.com>
-Subject: [PATCH net-next v4 10/10] net: wwan: tmi: Add maintainers and documentation
-Date: Fri, 17 Mar 2023 16:09:42 +0800
-Message-ID: <20230317080942.183514-11-yanchao.yang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230317080942.183514-1-yanchao.yang@mediatek.com>
-References: <20230317080942.183514-1-yanchao.yang@mediatek.com>
+	id 1pd5MC-001SNK-02;
+	Fri, 17 Mar 2023 08:22:38 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 999446221B;
+	Fri, 17 Mar 2023 08:22:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 46FA0C433D2;
+	Fri, 17 Mar 2023 08:22:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1679041355;
+	bh=4rP7Q179tbTvCSUKwAzPPtZsKqDUSIpQRWF6HpGnePA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=dVhwKFKiV1cxOEDYVLNmAw+Ttc+ctOvR2CMYxrlVnt5c+VR+IBkiBEBXvfg4c+P2v
+	 ww7kr5s7k0Ey/V+3DcdmZDySMEd0l/S+lZkzunftFdGpb3UB62OIqwSJ4taQm24DED
+	 y9aFiwIogQBsz8EOkTbSIocdmHV/pv+MlsBqtdCpebFetJPmUUMVvePRnzSIshTvqZ
+	 QLuPPNREusjSJNG5CmkLB7l9yW5QnI2VtPQSYRbVyr5LrfCvYIJJsw2NNjf5e7kPr8
+	 RCB/dy8Tc9+fyirQFGo4Hs90MNOmyddUAynKTBHkYq8337LYShi7p8CN8NrNvcQGTY
+	 H72KsiFEsDZhw==
+From: Lee Jones <lee@kernel.org>
+To: lee@kernel.org,
+	dri-devel@lists.freedesktop.org
+Cc: linux-kernel@vger.kernel.org,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH 07/37] drm/mediatek/mtk_disp_aal: Remove half completed incorrect struct header
+Date: Fri, 17 Mar 2023 08:16:48 +0000
+Message-Id: <20230317081718.2650744-8-lee@kernel.org>
+X-Mailer: git-send-email 2.40.0.rc1.284.g88254d51c5-goog
+In-Reply-To: <20230317081718.2650744-1-lee@kernel.org>
+References: <20230317081718.2650744-1-lee@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230317_011531_265098_99634561 
-X-CRM114-Status: GOOD (  14.44  )
+X-CRM114-CacheID: sfid-20230317_012236_095483_53232A95 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,107 +80,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adds maintainers and documentation for MediaTek TMI 5G WWAN modem
-device driver.
+Fixes the following W=1 kernel build warning(s):
 
-Signed-off-by: Yanchao Yang <yanchao.yang@mediatek.com>
-Signed-off-by: Felix Chen <felix.chen@mediatek.com>
+ drivers/gpu/drm/mediatek/mtk_disp_aal.c:39: warning: Function parameter or member 'clk' not described in 'mtk_disp_aal'
+ drivers/gpu/drm/mediatek/mtk_disp_aal.c:39: warning: Function parameter or member 'regs' not described in 'mtk_disp_aal'
+ drivers/gpu/drm/mediatek/mtk_disp_aal.c:39: warning: Function parameter or member 'cmdq_reg' not described in 'mtk_disp_aal'
+ drivers/gpu/drm/mediatek/mtk_disp_aal.c:39: warning: Function parameter or member 'data' not described in 'mtk_disp_aal'
+
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: David Airlie <airlied@gmail.com>
+Cc: Daniel Vetter <daniel@ffwll.ch>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: dri-devel@lists.freedesktop.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org
+Signed-off-by: Lee Jones <lee@kernel.org>
 ---
- .../networking/device_drivers/wwan/index.rst  |  1 +
- .../networking/device_drivers/wwan/tmi.rst    | 48 +++++++++++++++++++
- MAINTAINERS                                   | 11 +++++
- 3 files changed, 60 insertions(+)
- create mode 100644 Documentation/networking/device_drivers/wwan/tmi.rst
+ drivers/gpu/drm/mediatek/mtk_disp_aal.c | 5 -----
+ 1 file changed, 5 deletions(-)
 
-diff --git a/Documentation/networking/device_drivers/wwan/index.rst b/Documentation/networking/device_drivers/wwan/index.rst
-index 370d8264d5dc..8298629b4d55 100644
---- a/Documentation/networking/device_drivers/wwan/index.rst
-+++ b/Documentation/networking/device_drivers/wwan/index.rst
-@@ -10,6 +10,7 @@ Contents:
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+index 434e8a9ce8ab7..d4e831c6f03cf 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+@@ -26,11 +26,6 @@ struct mtk_disp_aal_data {
+ 	bool has_gamma;
+ };
  
-    iosm
-    t7xx
-+   tmi
- 
- .. only::  subproject and html
- 
-diff --git a/Documentation/networking/device_drivers/wwan/tmi.rst b/Documentation/networking/device_drivers/wwan/tmi.rst
-new file mode 100644
-index 000000000000..3655779bf692
---- /dev/null
-+++ b/Documentation/networking/device_drivers/wwan/tmi.rst
-@@ -0,0 +1,48 @@
-+.. SPDX-License-Identifier: BSD-3-Clause-Clear
-+
-+.. Copyright (c) 2022, MediaTek Inc.
-+
-+.. _tmi_driver_doc:
-+
-+====================================================
-+TMI driver for MTK PCIe based T-series 5G Modem
-+====================================================
-+The TMI(T-series Modem Interface) driver is a WWAN PCIe host driver developed
-+for data exchange over PCIe interface between Host platform and MediaTek's
-+T-series 5G modem. The driver exposes control plane and data plane interfaces
-+to applications. The control plane provides device node interfaces for control
-+data transactions. The data plane provides network link interfaces for IP data
-+transactions.
-+
-+Control channel userspace ABI
-+=============================
-+/dev/wwan0at0 character device
-+------------------------------
-+The driver exposes an AT port by implementing AT WWAN Port.
-+The userspace end of the control channel pipe is a /dev/wwan0at0 character
-+device. Application shall use this interface to issue AT commands.
-+
-+/dev/wwan0mbim0 character device
-+--------------------------------
-+The driver exposes an MBIM interface to the MBIM function by implementing
-+MBIM WWAN Port. The userspace end of the control channel pipe is a
-+/dev/wwan0mbim0 character device. Applications shall use this interface
-+for MBIM protocol communication.
-+
-+Data channel userspace ABI
-+==========================
-+wwan0-X network device
-+----------------------
-+The TMI driver exposes IP link interfaces "wwan0-X" of type "wwan" for IP
-+traffic. Iproute network utility is used for creating "wwan0-X" network
-+interfaces and for associating it with the MBIM IP session.
-+
-+The userspace management application is responsible for creating a new IP link
-+prior to establishing an MBIM IP session where the SessionId is greater than 0.
-+
-+For example, creating a new IP link for an MBIM IP session with SessionId 1:
-+
-+  ip link add dev wwan0-1 parentdev wwan0 type wwan linkid 1
-+
-+The driver will automatically map the "wwan0-1" network device to MBIM IP
-+session 1.
-diff --git a/MAINTAINERS b/MAINTAINERS
-index edd3d562beee..5224a42be5ff 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -13187,6 +13187,17 @@ L:	netdev@vger.kernel.org
- S:	Supported
- F:	drivers/net/wwan/t7xx/
- 
-+MEDIATEK TMI 5G WWAN MODEM DRIVER
-+M:	Yanchao Yang <yanchao.yang@mediatek.com>
-+M:	Min Dong <min.dong@mediatek.com>
-+M:	MediaTek Corporation <linuxwwan@mediatek.com>
-+R:	Liang Lu <liang.lu@mediatek.com>
-+R:	Haijun Liu <haijun.liu@mediatek.com>
-+R:	Lambert Wang <lambert.wang@mediatek.com>
-+L:	netdev@vger.kernel.org
-+S:	Supported
-+F:	drivers/net/wwan/tmi/
-+
- MEDIATEK USB3 DRD IP DRIVER
- M:	Chunfeng Yun <chunfeng.yun@mediatek.com>
- L:	linux-usb@vger.kernel.org
+-/**
+- * struct mtk_disp_aal - DISP_AAL driver structure
+- * @ddp_comp - structure containing type enum and hardware resources
+- * @crtc - associated crtc to report irq events to
+- */
+ struct mtk_disp_aal {
+ 	struct clk *clk;
+ 	void __iomem *regs;
 -- 
-2.32.0
+2.40.0.rc1.284.g88254d51c5-goog
 
 
