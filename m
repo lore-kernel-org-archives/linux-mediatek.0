@@ -4,87 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28D28C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Mar 2023 23:11:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D788C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Mar 2023 01:07:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2BeCZSdN3o0+g9nGC8N+LpsPqap3J67+DNmxUtN89CI=; b=mfAjMwaPrDXQfRZLBc7IYPDAAj
-	Md6B6oF2jaR+uu5+zU+Au/F4ZjnDLMU+zKZUW2rOFYW8tuz4bZ28AiX+ciQtMKk1nfc+ag7WYOZpr
-	sisHVdHA7dN9/0CieqeZKZLNRcR41YCl/FqiVs9DLrN1zNC4ZCO0/u8mKW/BeBLd+v5ED0QVpF2mP
-	/i214pUO3MRRSXH4icHyq5qyWfi6GZHpjD8XR9OSyPhEMxH4UXu/EMp8RBkn7vm9lUINv+dRPB2pY
-	N6AvoyHFN/X+3UyUHv9ZSQkARCXvF5OPkGPnORjxXjzatckHXemxCUYXVTNyqZPC+FySvKcp9Ela3
-	+pAYDwmw==;
+	bh=Btw2IbhcauwRzTEH0FiI/ezzT5rLsKZRy+WoQuUgv/M=; b=uCnkK0aWnHzFhj47sVVLhtQPD9
+	b3SpXEViycM7YaBn2q7EBmV4y6K+5ZhtWgT9/eNllj2UAkT7Z4oj20AA0bwywpCBx/TctQ90hWDxu
+	eV/1qY4IsoVySs76B105+F3ECufBnAnu1wjWXGDRe9vICBg60ZTpP0kQX+pCxZbEnlmJyg6oIzrjn
+	NXzYhXRGWMvvOWtidyBtSRUsPNRIoC4nFTF9zdgio02QzXYOHv5vNRs8oberKJRvATtkPXBgzQGft
+	w0PRfBil3EVK5QknPOU2l0CYHaIA9NIWH30uglAbopqu7GQeTzW20kgHxfpD0of3wuS3MASM669JW
+	QUU44jiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcwko-000HFy-24;
-	Thu, 16 Mar 2023 23:11:26 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcwkk-000HE0-0H;
-	Thu, 16 Mar 2023 23:11:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=2BeCZSdN3o0+g9nGC8N+LpsPqap3J67+DNmxUtN89CI=; b=l7uBeCoiqmfiGlgs5kb3jYWIo+
-	nL+f0+87aA+uQV8HUvu5Jr56NZER4f87EapO+uZrOepUl4sgLjh6OQuZHgwkyZe45wHlr5VWjRsJ1
-	o0PmRt6gp19W7+i/ESzSg6Iy/lNQswMNacsYc+9USJEq1ldFVrea2rLLkma2N1ukgikGli4+KZrjO
-	9XYys6FEpjyYZPCFEX9PMbVKovRAUWJ0sej6TYNvcQ1/sxuyOqw9a/3wbtreeYB/a8raS6wEngWqd
-	ejTjMcc0SHXAm47+nYvoVjwmMHpqhDe3xpczgzAsVk9C2vuQEvKEQGaDHccirO90cBuLBUqFqCGwm
-	MhW+egqQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:46154)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1pcwjX-0001SC-CT; Thu, 16 Mar 2023 23:10:07 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1pcwjT-0002qB-LM; Thu, 16 Mar 2023 23:10:03 +0000
-Date: Thu, 16 Mar 2023 23:10:03 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Jochen Henneberg <jh@henneberg-systemdesign.com>
-Cc: netdev@vger.kernel.org, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wong Vee Khee <veekhee@apple.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Revanth Kumar Uppala <ruppala@nvidia.com>,
-	Andrey Konovalov <andrey.konovalov@linaro.org>,
-	Tan Tee Min <tee.min.tan@linux.intel.com>,
-	Voon Weifeng <weifeng.voon@intel.com>,
-	Mohammad Athari Bin Ismail <mohammad.athari.ismail@intel.com>,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net V2] net: stmmac: Fix for mismatched host/device DMA
- address width
-Message-ID: <ZBOhy02DFBlnIQR1@shell.armlinux.org.uk>
-References: <20230316095306.721255-1-jh@henneberg-systemdesign.com>
- <20230316131503.738933-1-jh@henneberg-systemdesign.com>
+	id 1pcyZA-000WX1-37;
+	Fri, 17 Mar 2023 01:07:32 +0000
+Received: from mg.richtek.com ([220.130.44.152])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1pcyZ6-000WV5-1z;
+	Fri, 17 Mar 2023 01:07:31 +0000
+X-MailGates: (flag:4,DYNAMIC,BADHELO,RELAY,NOHOST:PASS)(compute_score:DE
+	LIVER,40,3)
+Received: from 192.168.10.46
+	by mg.richtek.com with MailGates ESMTP Server V5.0(15352:0:AUTH_RELAY)
+	(envelope-from <cy_huang@richtek.com>); Fri, 17 Mar 2023 09:06:28 +0800 (CST)
+Received: from ex4.rt.l (192.168.10.47) by ex3.rt.l (192.168.10.46) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.25; Fri, 17 Mar
+ 2023 09:06:28 +0800
+Received: from linuxcarl2.richtek.com (192.168.10.154) by ex4.rt.l
+ (192.168.10.45) with Microsoft SMTP Server id 15.2.1118.25 via Frontend
+ Transport; Fri, 17 Mar 2023 09:06:28 +0800
+Date: Fri, 17 Mar 2023 09:06:28 +0800
+From: ChiYuan Huang <cy_huang@richtek.com>
+To: Lee Jones <lee@kernel.org>
+CC: ChiaEn Wu <chiaen_wu@richtek.com>, <corbet@lwn.net>, <pavel@ucw.cz>,
+	<matthias.bgg@gmail.com>, <andriy.shevchenko@linux.intel.com>,
+	<jacek.anaszewski@gmail.com>, <angelogioacchino.delregno@collabora.com>,
+	<linux-doc@vger.kernel.org>, <peterwu.pub@gmail.com>,
+	<linux-leds@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<szunichen@gmail.com>
+Subject: Re: [PATCH v18 3/3] docs: leds: Add MT6370 RGB LED pattern document
+Message-ID: <20230317010628.GA32541@linuxcarl2.richtek.com>
+References: <cover.1678430444.git.chiaen_wu@richtek.com>
+ <38f1e863b0f099158a63fb6f95056a1cb30d80a0.1678430444.git.chiaen_wu@richtek.com>
+ <20230316155149.GK9667@google.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="utf-8"
 Content-Disposition: inline
-In-Reply-To: <20230316131503.738933-1-jh@henneberg-systemdesign.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230316155149.GK9667@google.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230316_161122_128203_C1B6A9F2 
-X-CRM114-Status: GOOD (  26.51  )
+X-CRM114-CacheID: sfid-20230316_180729_108478_878F41A8 
+X-CRM114-Status: GOOD (  25.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,60 +76,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 16, 2023 at 02:15:03PM +0100, Jochen Henneberg wrote:
-> Currently DMA address width is either read from a RO device register
-> or force set from the platform data. This breaks DMA when the host DMA
-> address width is <=32it but the device is >32bit.
+On Thu, Mar 16, 2023 at 03:51:49PM +0000, Lee Jones wrote:
+> On Fri, 10 Mar 2023, ChiaEn Wu wrote:
 > 
-> Right now the driver may decide to use a 2nd DMA descriptor for
-> another buffer (happens in case of TSO xmit) assuming that 32bit
-> addressing is used due to platform configuration but the device will
-> still use both descriptor addresses as one address.
+> > From: ChiYuan Huang <cy_huang@richtek.com>
+> >
+> > Document the MT6370 RGB LED pattern trigger.
+> >
+> > This simply describe how the pattern works, each timing period, and the
+> > pattern diagram for MT6370 RGB LED.
+> >
+> > Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+> > Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+> > ---
+> > v18:
+> > - Revise the text in document title and description.
+> > ---
+> >  Documentation/leds/leds-mt6370-rgb.rst | 64 ++++++++++++++++++++++++++++++++++
 > 
-> This can be observed with the Intel EHL platform driver that sets
-> 32bit for addr64 but the MAC reports 40bit. The TX queue gets stuck in
-> case of TCP with iptables NAT configuration on TSO packets.
+> These 3 patches now look good.
 > 
-> The logic should be like this: Whatever we do on the host side (memory
-> allocation GFP flags) should happen with the host DMA width, whenever
-> we decide how to set addresses on the device registers we must use the
-> device DMA address width.
+> You do not need to make any more changes to these.
 > 
-> This patch renames the platform address width field from addr64 (term
-> used in device datasheet) to host_addr and uses this value exclusively
-> for host side operations while all chip operations consider the device
-> DMA width as read from the device register.
+> >  1 file changed, 64 insertions(+)
+> >  create mode 100644 Documentation/leds/leds-mt6370-rgb.rst
+> >
+> > diff --git a/Documentation/leds/leds-mt6370-rgb.rst b/Documentation/leds/leds-mt6370-rgb.rst
+> > new file mode 100644
+> > index 00000000..abf739e
+> > --- /dev/null
+> > +++ b/Documentation/leds/leds-mt6370-rgb.rst
+> > @@ -0,0 +1,64 @@
+> > +.. SPDX-License-Identifier: GPL-2.0
+> > +
+> > +=========================================
+> > +The device for Mediatek MT6370 RGB LED
+> > +=========================================
+> > +
+> > +Description
+> > +-----------
+> > +
+> > +The MT6370 integrates a four-channel RGB LED driver, designed to provide a
+> > +variety of lighting effect for mobile device applications. The RGB LED devices
+> > +includes a smart LED string controller and it can drive 3 channels of LEDs with
+> > +a sink current up to 24mA and a CHG_VIN power good indicator LED with sink
+> > +current up to 6mA. It provides three operation modes for RGB LEDs:
+> > +PWM Dimming mode, breath pattern mode, and constant current mode. The device
+> > +can increase or decrease the brightness of the RGB LED via an I2C interface.
+> > +
+> > +The breath pattern for a channel can be programmed using the "pattern" trigger,
+> > +using the hw_pattern attribute.
+> > +
+> > +/sys/class/leds/<led>/hw_pattern
 > 
-> Fixes: 7cfc4486e7ea ("stmmac: intel: Configure EHL PSE0 GbE and PSE1 GbE to 32 bits DMA addressing")
-> Signed-off-by: Jochen Henneberg <jh@henneberg-systemdesign.com>
-> ---
-> V2: Fixes from checkpatch.pl for commit message
-> 
->  drivers/net/ethernet/stmicro/stmmac/common.h  |  1 +
->  .../net/ethernet/stmicro/stmmac/dwmac-imx.c   |  2 +-
->  .../net/ethernet/stmicro/stmmac/dwmac-intel.c |  4 +--
->  .../ethernet/stmicro/stmmac/dwmac-mediatek.c  |  2 +-
->  .../net/ethernet/stmicro/stmmac/stmmac_main.c | 30 ++++++++++---------
->  include/linux/stmmac.h                        |  2 +-
->  6 files changed, 22 insertions(+), 19 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/common.h b/drivers/net/ethernet/stmicro/stmmac/common.h
-> index 6b5d96bced47..55a728b1b708 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/common.h
-> +++ b/drivers/net/ethernet/stmicro/stmmac/common.h
-> @@ -418,6 +418,7 @@ struct dma_features {
->  	unsigned int frpbs;
->  	unsigned int frpes;
->  	unsigned int addr64;
-> +	unsigned int host_addr;
+> However, this needs an entry in Documentation/ABI/testing.
+>
+This comes from the led-trigger-pattern and already documented in 'sysfs-class-led-trigger-pattern'.
 
-Obvious question: is host_addr an address? From the above description it
-sounds like this is more of a host address width indicator.
-
-Maybe call these "dev_addr_width" and "host_addr_width" so it's clear
-what each of these are?
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+> > +--------------------------------
+> > +
+> > +Specify a hardware breath pattern for a MT6370 RGB LED.
+> > +
+> > +The breath pattern is a series of timing pairs, with the hold-time expressed in
+> > +milliseconds. And the brightness is controlled by
+> > +'/sys/class/leds/<led>/brightness'. The pattern doesn't include the brightness
+> > +setting. Hardware pattern only controls the timing for each pattern stage
+> > +depending on the current brightness setting.
+> > +
+> > +Pattern diagram::
+> > +
+> > +     "0 Tr1 0 Tr2 0 Tf1 0 Tf2 0 Ton 0 Toff" --> '0' for dummy brightness code
+> > +
+> > +      ^
+> > +      |           ============
+> > +      |          /            \                                /
+> > +Icurr |         /              \                              /
+> > +      |        /                \                            /
+> > +      |       /                  \                          /   .....repeat
+> > +      |      /                    \                        /
+> > +      |   ---                      ---                  ---
+> > +      |---                            ---            ---
+> > +      +----------------------------------============------------> Time
+> > +       < Tr1><Tr2><   Ton    ><Tf1><Tf2 ><  Toff    >< Tr1><Tr2>
+> > +
+> > +Timing description::
+> > +
+> > +Tr1:    First rising time for duty 0 to 30%.
+> > +Tr2:    Second rising time for duty 31% to 100%.
+> > +Ton:    On time for duty 100%.
+> > +Tf1:    First falling time for duty 100% to 31%.
+> > +Tf2:    Second falling time for duty 30% to 0%.
+> > +Toff:   Off time for duty 0%.
+> > +
+> > +Tr1/Tr2/Tf1/Tf2/Ton: 125ms to 3125ms, 200ms per step.
+> > +Toff: 250ms to 6250ms, 400ms per step.
+> > +
+> > +Pattern example::
+> > +
+> > +       "0 125 0 125 0 125 0 125 0 625 0 1050"
+> > +
+> > +This Will configure Tr1/Tr2/Tf1/Tf2 to 125m, Ton to 625ms, and Toff to 1050ms.
+> > --
+> > 2.7.4
+> >
+> 
+> --
+> Lee Jones [李琼斯]
 
